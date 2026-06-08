@@ -605,10 +605,22 @@ function _initZoomAndResize() {
     }
   });
 
+  // Schutz für den Visual Viewport (mobiler Browser-Zoom/Pan-Schutz bei Tastatur-Einblendung)
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('scroll', () => {
+      if (window.visualViewport.offsetLeft !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY);
+      }
+    });
+  }
+
   document.addEventListener('focusin', () => {
     setTimeout(() => {
       if (window.scrollX !== 0 || window.pageXOffset !== 0) {
         window.scrollTo(0, window.scrollY || window.pageYOffset);
+      }
+      if (window.visualViewport && window.visualViewport.offsetLeft !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY);
       }
     }, 80);
   });
@@ -620,9 +632,11 @@ let currentScale = 1.0;
 
 function _syncBodyHeight() {
   const appRoot = document.getElementById('appRoot');
-  if (appRoot) {
+  const appWrapper = document.getElementById('appWrapper');
+  if (appRoot && appWrapper) {
     const unscaledHeight = appRoot.offsetHeight || appRoot.scrollHeight;
     const scaledHeight = unscaledHeight * currentScale;
+    appWrapper.style.height = scaledHeight + 'px';
     document.body.style.minHeight = scaledHeight + 'px';
   }
 }
@@ -633,7 +647,14 @@ function applyScaleFactor() {
 
   const targetWidth = 1150;
   let scale = window.innerWidth / targetWidth;
-  scale = Math.max(1.0, Math.min(1.6, scale));
+  
+  if (window.innerWidth < targetWidth) {
+    appRoot.style.width = targetWidth + 'px';
+  } else {
+    appRoot.style.width = '100%';
+  }
+
+  scale = Math.max(0.6, Math.min(1.6, scale));
 
   currentScale = scale;
   document.documentElement.style.setProperty('--app-scale', scale);

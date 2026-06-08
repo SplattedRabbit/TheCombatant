@@ -81,17 +81,15 @@ input[type=number]::-webkit-outer-spin-button {
   100% { box-shadow: 0 0 2px #2a9d8f; }
 }
 
-/* Mobil-Zoom bei Fokus verhindern: Inputs auf Touch-Geräten auf mindestens 16px setzen */
+/* Mobil-Zoom bei Fokus verhindern: Inputs auf Touch-Geräten bei Fokus auf mindestens 16px setzen, ohne readonly-Elemente zu verzerren */
 @media (hover: none) and (pointer: coarse) {
-  input[type="text"],
-  input[type="search"],
-  input:not([type]),
-  select,
-  textarea {
+  input[type="text"]:not([readonly]):focus,
+  input[type="number"]:not([readonly]):focus,
+  input[type="search"]:not([readonly]):focus,
+  input:not([type]):not([readonly]):focus,
+  select:focus,
+  textarea:focus {
     font-size: 16px !important;
-    height: 32px !important;
-    padding: 4px 8px !important;
-    box-sizing: border-box !important;
   }
 }
 
