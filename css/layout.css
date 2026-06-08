@@ -207,6 +207,15 @@ html, body {
   overflow-x: hidden;
 }
 
+#appWrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #appRoot {
   width: 100%;
   display: flex;
@@ -214,5 +223,6 @@ html, body {
   align-items: center;
   transform-origin: top center;
   transform: scale(var(--app-scale));
+  flex-shrink: 0;
 }
 

@@ -632,9 +632,11 @@ let currentScale = 1.0;
 
 function _syncBodyHeight() {
   const appRoot = document.getElementById('appRoot');
-  if (appRoot) {
+  const appWrapper = document.getElementById('appWrapper');
+  if (appRoot && appWrapper) {
     const unscaledHeight = appRoot.offsetHeight || appRoot.scrollHeight;
     const scaledHeight = unscaledHeight * currentScale;
+    appWrapper.style.height = scaledHeight + 'px';
     document.body.style.minHeight = scaledHeight + 'px';
   }
 }
