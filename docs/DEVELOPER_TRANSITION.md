@@ -120,3 +120,18 @@ Folgende Meilensteine stehen als Nächstes an:
 
 ### B. Zielgerichtete Buffs & Zauber (Targeting-System - v3.3+)
 * Ermöglicht das Anwählen von Mitspielern/Gegnern, um Buffs (z. B. *Heldenmut*, *Stärke des Stiers*) oder Zustände direkt per WebRTC zu übertragen und reaktiv auf dem Zielbogen zu berechnen.
+
+### C. DM-UI Komplett-Refactoring & Redesign (v3.4+)
+* **Modularisierung des DM-Screens:** Aufspalten von `dm-screen.js` (Einführung separater Renderer für Spieler-Zeilen, Gegner-Zeilen, Kampagnen-Metadaten).
+* **Modernes DM-Dashboard:** Visuelle Neugestaltung des alten Initiative-Monitors und der HP-Kontrollen im pergamentartigen Gothic-Stil (analog zum edlen Diablo-HP-Globe und dem Dashboard der Spielerseite).
+
+### D. Brainstorming-Backlog / Ideenpool (v3.5+)
+* **Für den Spielleiter (DM):**
+  - **Monster-Kompendium (SRD):** Schnellauswahl für Standard-Gegner (z. B. Ork, Goblin, Skelett), um sie mit einem Klick inklusive aller Attribute, RK und Rettungswürfe direkt in die Initiative-Leiste zu laden.
+  - **Automatischer Runden-Countdowns für Effekte:** Rundenbasierte Statuseffekte (z. B. *Betäubt* für 2 Runden), die beim Weiterschalten der Initiative-Runde automatisch heruntergezählt und gelöscht werden.
+  - **Schadens- & Wurf-Historie (Combat Log):** Ein gemeinsamer Verlauf aller getätigten Aktionen und Schadensereignisse der Kampfbegegnung.
+* **Für die Spieler:**
+  - **Ausrüstungs- & Traglast-Rechner:** Automatisches Berechnen von Traglastgrenzen (Light/Medium/Heavy Load) basierend auf der Stärke und den Ausrüstungs-Gewichten sowie Abzug von Geschwindigkeitsstrafen.
+  - **Buff-Manager (Temporäre Effekte):** Ein Schnellwahl-Panel für aktive Buffs (z. B. *Magierrüstung* [+4 RK], *Hast* [+1 Angriff/Ref/RK]), das alle Werte temporär anhebt und übersichtlich kennzeichnet.
+* **Für die Multiplayer-Erfahrung:**
+  - **Live-Würfel-Feed:** Klicks auf den 🎲-Button (z. B. "Reflexwurf: 18") senden das Ergebnis live per WebRTC an den DM-Bildschirm und an die anderen Spieler, sodass es in einem kleinen Feed eingeblendet wird.
