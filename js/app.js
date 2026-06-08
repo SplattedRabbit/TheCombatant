@@ -605,10 +605,22 @@ function _initZoomAndResize() {
     }
   });
 
+  // Schutz für den Visual Viewport (mobiler Browser-Zoom/Pan-Schutz bei Tastatur-Einblendung)
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('scroll', () => {
+      if (window.visualViewport.offsetLeft !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY);
+      }
+    });
+  }
+
   document.addEventListener('focusin', () => {
     setTimeout(() => {
       if (window.scrollX !== 0 || window.pageXOffset !== 0) {
         window.scrollTo(0, window.scrollY || window.pageYOffset);
+      }
+      if (window.visualViewport && window.visualViewport.offsetLeft !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY);
       }
     }, 80);
   });
