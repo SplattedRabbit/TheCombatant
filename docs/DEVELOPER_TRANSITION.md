@@ -17,6 +17,7 @@ Bitte lies dieses Dokument aufmerksam durch, um die Architektur, die Dateistrukt
    node scratch/search_rules.js "Deine Suchabfrage"
    ```
 3. **Persistente UI-Entwicklungen:** Achte bei UI-Aktualisierungen darauf, dass der Tastaturfokus und die Cursor-Position durch den `Focus-Schutz` (`DeltaRenderer.applyWithFocusGuard`) nicht verloren gehen.
+4. **Lokales WLAN-Hosting:** Beim Starten von `Start_Server.bat` werden alle verfügbaren IPv4-Adressen deines PCs im Netzwerk ermittelt und in der Konsole ausgegeben, um das Tablet schnell zu verbinden. Run as Administrator, um auf der IP lauschen zu können.
 
 ---
 
