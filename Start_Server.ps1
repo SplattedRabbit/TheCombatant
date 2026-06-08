@@ -98,6 +98,9 @@ while ($listener.IsListening) {
             }
             
             $response.ContentType = $mime
+            $response.Headers.Add("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+            $response.Headers.Add("Pragma", "no-cache")
+            $response.Headers.Add("Expires", "0")
             $response.ContentLength64 = $bytes.Length
             $response.OutputStream.Write($bytes, 0, $bytes.Length)
             Write-Host "[200 OK] $localPath" -ForegroundColor Green
