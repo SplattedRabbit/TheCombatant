@@ -112,26 +112,26 @@ Folgende Fehler wurden erfolgreich behoben und sollten als Referenz bei zukünft
 
 ## 6. Zukünftige Roadmap & Backlog
 
-Folgende Meilensteine stehen als Nächstes an:
+Folgende Versionen und Meilensteine sind für die Weiterentwicklung fest eingeplant:
 
-### A. Magische Waffen & Ausrüstung (Armory - v3.2+)
-* Integration von Schadenseigenschaften (z. B. *Flammend* +1w6 Feuerschaden) und Waffeneffekten (z. B. *Scharf* zur Verdoppelung des Bedrohungsbereichs im UI).
-* Dynamische Rüstungs- und Schild-Ausrüstung im UI zur automatischen AC-Neuberechnung.
+### ⚔️ v3.2 — Magische Waffen & Ausrüstung (Armory)
+* **Zusätzlicher Waffenschaden:** Einbau von Schadensarten (z. B. *Flammend* [+1W6 Feuer], *Frost* [+1W6 Kälte]) direkt in die Wurf-Breakdowns.
+* **Waffeneffekte:** Unterstützung von Attributen wie *Scharf (Keen)* zur Verdoppelung des Bedrohungsbereichs im UI.
+* **Ausrüstbare Rüstungen & Schilde:** Einbau von ausrüstbaren Gegenständen im Rüstungs-Tab zur automatischen Live-Berechnung von RK (AC), maximalem Geschicklichkeitsbonus und Rüstungsmalus.
 
-### B. Zielgerichtete Buffs & Zauber (Targeting-System - v3.3+)
-* Ermöglicht das Anwählen von Mitspielern/Gegnern, um Buffs (z. B. *Heldenmut*, *Stärke des Stiers*) oder Zustände direkt per WebRTC zu übertragen und reaktiv auf dem Zielbogen zu berechnen.
+### 🔮 v3.3 — Buff- & Auren-Manager (Targeting-System)
+* **Persönliche Buffs:** Ein Schnellwahl-Panel für eigene Effekte (z. B. *Magierrüstung* [+4 RK], *Stärke des Stiers* [+4 STR]), das die Werte im Bogen temporär anpasst.
+* **Netzwerk-Auren (WebRTC):** Möglichkeit, Buffs (wie *Bardenmusik* oder Paladin-Auren) an verbündete Ziele zu senden. Der Empfänger erhält ein temporäres Icon und berechnet die Effekte reaktiv in seine Würfe ein.
 
-### C. DM-UI Komplett-Refactoring & Redesign (v3.4+)
-* **Modularisierung des DM-Screens:** Aufspalten von `dm-screen.js` (Einführung separater Renderer für Spieler-Zeilen, Gegner-Zeilen, Kampagnen-Metadaten).
-* **Modernes DM-Dashboard:** Visuelle Neugestaltung des alten Initiative-Monitors und der HP-Kontrollen im pergamentartigen Gothic-Stil (analog zum edlen Diablo-HP-Globe und dem Dashboard der Spielerseite).
+### 🏰 v3.4 — DM-UI Komplett-Refactoring & Redesign
+* **Code-Entflechtung:** Modularisierung der `dm-screen.js` (Separate Komponenten für Spieler-Zeilen, Gegner-Zeilen, Kampagnen-Metadaten).
+* **Visuelles Redesign:** Modernisierung des Initiative-Monitors und der Lebenspunkt-Kontrollen im Pergament-Gothic-Stil (passend zum Spielerbogen und dem Diablo-HP-Globe).
+* **Tierbegleiter & Vertraute:** Option für Spieler, ihre Begleiter als eigenständige Kampfteilnehmer an den DM-Screen zu senden (inklusive getrennter TP-Erfassung und Platzierung in der Initiative).
 
-### D. Brainstorming-Backlog / Ideenpool (v3.5+)
-* **Für den Spielleiter (DM):**
-  - **Monster-Kompendium (SRD):** Schnellauswahl für Standard-Gegner (z. B. Ork, Goblin, Skelett), um sie mit einem Klick inklusive aller Attribute, RK und Rettungswürfe direkt in die Initiative-Leiste zu laden.
-  - **Automatischer Runden-Countdowns für Effekte:** Rundenbasierte Statuseffekte (z. B. *Betäubt* für 2 Runden), die beim Weiterschalten der Initiative-Runde automatisch heruntergezählt und gelöscht werden.
-  - **Schadens- & Wurf-Historie (Combat Log):** Ein gemeinsamer Verlauf aller getätigten Aktionen und Schadensereignisse der Kampfbegegnung.
-* **Für die Spieler:**
-  - **Ausrüstungs- & Traglast-Rechner:** Automatisches Berechnen von Traglastgrenzen (Light/Medium/Heavy Load) basierend auf der Stärke und den Ausrüstungs-Gewichten sowie Abzug von Geschwindigkeitsstrafen.
-  - **Buff-Manager (Temporäre Effekte):** Ein Schnellwahl-Panel für aktive Buffs (z. B. *Magierrüstung* [+4 RK], *Hast* [+1 Angriff/Ref/RK]), das alle Werte temporär anhebt und übersichtlich kennzeichnet.
-* **Für die Multiplayer-Erfahrung:**
-  - **Live-Würfel-Feed:** Klicks auf den 🎲-Button (z. B. "Reflexwurf: 18") senden das Ergebnis live per WebRTC an den DM-Bildschirm und an die anderen Spieler, sodass es in einem kleinen Feed eingeblendet wird.
+### 🪙 v3.5 — Loot-Generator & Universeller Ressourcen-Tracker
+* **Loot- & Schatz-Generator (DM):** Integriertes Tool für den DM zur automatischen Generierung zufälliger Beute (Gold, Edelsteine, Schriftrollen, Zaubertränke) basierend auf dem Begegnungsgrad (EL) und den D&D 3.5e Tabellen.
+* **Custom Ressourcen-Tracker (Spieler):** Ein frei konfigurierbarer Tracker auf dem Haupt-Tab (z. B. für *Heiltrank* [3/3] oder *Zauberstab-Ladungen* [42/50]) mit einfachen Plus/Minus-Schaltflächen.
+
+### 🐉 v3.6 — Monster-Kompendium (SRD JSON-Integration)
+* **SRD-Import:** Integration einer fertigen, gemeinfreien JSON-Datenbank aller standardmäßigen D&D 3.5e Kreaturen.
+* **Ein-Klick-Begegnungsaufbau:** Der DM kann Gegner per Suche im DM-Screen finden und mit allen Attributen, Rettungswürfen und RK direkt als neue Zeilen in den aktiven Kampf spawnen lassen.
