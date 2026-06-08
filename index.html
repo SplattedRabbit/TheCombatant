@@ -10,64 +10,6 @@
     window.onunhandledrejection = function(event) {
       showError(event.reason ? (event.reason.stack || event.reason) : 'Unhandled promise rejection');
     };
-    
-    // Live Diagnostic Console Log Overlay on Tablet
-    (function() {
-      const debugDiv = document.createElement('div');
-      debugDiv.id = 'pwa-debug-overlay';
-      debugDiv.style = 'position:fixed; bottom:0; left:0; right:0; height:90px; background:rgba(26,15,0,0.95); color:#86e386; font-family:monospace; font-size:8px; z-index:999999; overflow-y:auto; padding:5px; border-top:2px solid #c8a96e; pointer-events:none; box-shadow:0 -5px 15px rgba(0,0,0,0.5);';
-      document.addEventListener('DOMContentLoaded', () => document.body.appendChild(debugDiv));
-
-      function log(msg, type = 'log') {
-        const p = document.createElement('div');
-        p.style.margin = '1px 0';
-        p.style.lineHeight = '1.2';
-        p.style.borderBottom = '0.5px solid rgba(200,169,110,0.15)';
-        p.style.color = type === 'error' ? '#ff5c5c' : (type === 'warn' ? '#eccb70' : '#86e386');
-        p.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
-        debugDiv.appendChild(p);
-        debugDiv.scrollTop = debugDiv.scrollHeight;
-      }
-
-      const originalLog = console.log;
-      const originalError = console.error;
-      const originalWarn = console.warn;
-
-      console.log = function(...args) {
-        originalLog.apply(console, args);
-        log(args.join(' '));
-      };
-      console.error = function(...args) {
-        originalError.apply(console, args);
-        log(args.join(' '), 'error');
-      };
-      console.warn = function(...args) {
-        originalWarn.apply(console, args);
-        log(args.join(' '), 'warn');
-      };
-
-      // Diagnostic viewport event logger
-      window.addEventListener('resize', () => {
-        log(`RESIZE: w.innerWidth=${window.innerWidth}, w.innerHeight=${window.innerHeight}`);
-      });
-      window.addEventListener('scroll', () => {
-        log(`SCROLL: w.scrollX=${window.scrollX}, w.scrollY=${window.scrollY}`);
-      });
-      if (window.visualViewport) {
-        window.visualViewport.addEventListener('scroll', () => {
-          log(`VISUAL-SCROLL: offsetLeft=${window.visualViewport.offsetLeft.toFixed(1)}, offsetTop=${window.visualViewport.offsetTop.toFixed(1)}`);
-        });
-        window.visualViewport.addEventListener('resize', () => {
-          log(`VISUAL-RESIZE: width=${window.visualViewport.width.toFixed(1)}, height=${window.visualViewport.height.toFixed(1)}`);
-        });
-      }
-      document.addEventListener('focusin', (e) => {
-        log(`FOCUS-IN: <${e.target.tagName} id="${e.target.id || ''}" class="${e.target.className || ''}">`);
-      });
-      document.addEventListener('focusout', (e) => {
-        log(`FOCUS-OUT: <${e.target.tagName}>`);
-      });
-    })();
 
     window.addEventListener('error', function(event) {
       if (event.target && (event.target.tagName === 'SCRIPT' || event.target.tagName === 'LINK')) {
