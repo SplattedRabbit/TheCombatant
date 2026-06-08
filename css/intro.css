@@ -1,0 +1,416 @@
+/* Premium Medieval Intro Animation Style Sheet */
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: radial-gradient(circle, #1a0f00 0%, #080402 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+}
+
+.intro-overlay.dismissed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Rising Atmospheric Embers */
+.intro-embers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ember {
+  position: absolute;
+  bottom: -20px;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #ffaa00 20%, #ff3300 70%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 8px #ff7700, 0 0 15px #ff3300;
+  animation: floatEmber infinite linear;
+}
+
+@keyframes floatEmber {
+  0% {
+    transform: translateY(0) scale(0.6) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.75;
+  }
+  85% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(-105vh) scale(1.2) translateX(40px);
+    opacity: 0;
+  }
+}
+
+/* Clashing Visual Elements */
+.intro-visuals {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  z-index: 2;
+  animation: screenShake 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transition: transform 0.3s ease;
+}
+
+@keyframes screenShake {
+  0%, 33%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  34% {
+    transform: translate3d(-10px, 8px, 0) rotate(-1.5deg);
+  }
+  36% {
+    transform: translate3d(10px, -8px, 0) rotate(1.5deg);
+  }
+  38% {
+    transform: translate3d(-6px, -4px, 0) rotate(-0.8deg);
+  }
+  40% {
+    transform: translate3d(6px, 4px, 0) rotate(0.8deg);
+  }
+  42% {
+    transform: translate3d(-3px, 2px, 0) rotate(-0.3deg);
+  }
+  44% {
+    transform: translate3d(3px, -2px, 0) rotate(0.3deg);
+  }
+  46% {
+    transform: translate3d(-1px, 1px, 0) rotate(0deg);
+  }
+  48% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+/* Dragon Head Wrapper */
+.dragon-wrapper {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  left: calc(50% - 70px);
+  top: 150px;
+  transform-origin: center center;
+  z-index: 2;
+  animation: dragonRoar 1.2s cubic-bezier(0.25, 1, 0.4, 1.1) forwards;
+}
+
+.dragon-svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes dragonRoar {
+  0%, 33% {
+    transform: scale(0);
+    opacity: 0;
+    filter: drop-shadow(0 0 0px #ff3300);
+  }
+  34% {
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 30px #ffaa00);
+  }
+  85% {
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 15px #ff5500);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: drop-shadow(0 0 20px #ffaa00);
+  }
+}
+
+/* Sword Wrappers */
+.sword-wrapper {
+  position: absolute;
+  width: 60px;
+  height: 235px;
+  top: 35px;
+  left: calc(50% - 30px);
+  transform-origin: 50% 78.72%;
+  z-index: 3;
+}
+
+.sword-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+.sword-wrapper.left {
+  animation: swordLeftClash 1.2s cubic-bezier(0.15, 0.85, 0.3, 1) forwards;
+}
+
+@keyframes swordLeftClash {
+  0% {
+    transform: translate(-140px, -120px) rotate(-105deg) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  33% {
+    /* Impact */
+    transform: translate(0, 0) rotate(-45deg) scale(1.08);
+  }
+  38% {
+    /* Bounce */
+    transform: translate(-4px, 3px) rotate(-43deg) scale(0.96);
+  }
+  48%, 100% {
+    /* Settle */
+    transform: translate(0, 0) rotate(-45deg) scale(1);
+  }
+}
+
+.sword-wrapper.right {
+  animation: swordRightClash 1.2s cubic-bezier(0.15, 0.85, 0.3, 1) forwards;
+}
+
+@keyframes swordRightClash {
+  0% {
+    transform: translate(140px, -120px) rotate(105deg) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  33% {
+    /* Impact */
+    transform: translate(0, 0) rotate(45deg) scale(1.08);
+  }
+  38% {
+    /* Bounce */
+    transform: translate(4px, 3px) rotate(43deg) scale(0.96);
+  }
+  48%, 100% {
+    /* Settle */
+    transform: translate(0, 0) rotate(45deg) scale(1);
+  }
+}
+
+/* Clash Flash Effect */
+.clash-flash {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: calc(50% - 20px);
+  top: 200px;
+  background: radial-gradient(circle, #ffffff 10%, #fff6bd 35%, #ff7700 70%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
+  animation: flashExpansion 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes flashExpansion {
+  0%, 32% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  33% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.9;
+  }
+  60%, 100% {
+    transform: scale(25);
+    opacity: 0;
+  }
+}
+
+/* Glorious Shimmering Title Text Styles */
+.intro-text-container {
+  text-align: center;
+  margin-top: 15px;
+  z-index: 2;
+  position: relative;
+}
+
+@keyframes textFadeIn {
+  0%, 38% {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(4px);
+  }
+  75%, 100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Mortal Kombat Style V2.0 Logo */
+.mk-v2-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+  height: 90px;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.mk-char {
+  display: inline-block;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 84px;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, #ff5252 0%, #b71c1c 50%, #7f0000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255, 61, 0, 0.95)) drop-shadow(0 5px 20px rgba(0, 0, 0, 0.98));
+  opacity: 0;
+  transform-origin: center center;
+}
+
+.char-2 {
+  animation: mkSlam 0.45s cubic-bezier(0.15, 0.85, 0.3, 1.1) 1.0s forwards;
+}
+.char-dot {
+  animation: mkSlam 0.45s cubic-bezier(0.15, 0.85, 0.3, 1.1) 1.3s forwards;
+}
+.char-0 {
+  animation: mkSlam 0.45s cubic-bezier(0.15, 0.85, 0.3, 1.1) 1.6s forwards;
+}
+
+@keyframes mkSlam {
+  0% {
+    transform: scale(8) rotate(45deg);
+    opacity: 0;
+    filter: blur(12px);
+  }
+  70% {
+    transform: scale(0.9) rotate(-5deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+  85% {
+    transform: scale(1.15) rotate(3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.intro-title {
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 38px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  margin-bottom: 4px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  animation: titleSpacing 3.2s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+             textFadeIn 2.2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+@keyframes titleSpacing {
+  0%, 38% {
+    letter-spacing: 1px;
+  }
+  100% {
+    letter-spacing: 5px;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #c8a96e 0%, #ffd700 25%, #fffae0 50%, #ffd700 75%, #c8a96e 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 3.5s infinite linear;
+  display: inline-block;
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* Tap/Click to Skip indicator */
+.intro-skip {
+  position: absolute;
+  bottom: 25px;
+  font-family: 'Crimson Text', serif;
+  font-size: 10px;
+  color: var(--pb);
+  letter-spacing: 0.8px;
+  opacity: 0;
+  padding: 6px 14px;
+  border: 0.5px solid transparent;
+  border-radius: 20px;
+  transition: all 0.25s;
+  z-index: 5;
+  animation: skipIndicatorFade 3s forwards;
+}
+
+.intro-skip:hover {
+  background: rgba(200, 169, 110, 0.12);
+  border-color: rgba(200, 169, 110, 0.35);
+  color: var(--p);
+  transform: translateY(-1px);
+}
+
+@keyframes skipIndicatorFade {
+  0%, 65% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.55;
+  }
+}
+
+@media (max-width: 450px) {
+  .intro-visuals {
+    transform: scale(0.8);
+  }
+  .intro-title {
+    font-size: 28px;
+  }
+  .mk-char {
+    font-size: 56px;
+  }
+  .mk-v2-container {
+    gap: 10px;
+    margin-bottom: 5px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 360px) {
+  .intro-visuals {
+    transform: scale(0.68);
+  }
+}

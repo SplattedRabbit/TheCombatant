@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=IM+Fell+English+SC&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --p: #f4e8c1;
+  --pd: #e8d5a0;
+  --pb: #c8a96e;
+  --ink: #1a0f00;
+  --inkm: #3d2b00;
+  --inkl: #6b4c1e;
+  --red: #8b1a1a;
+  --gold: #9a7a2e;
+}
+
+body {
+  background: #2a1a0a;
+  font-family: 'Crimson Text', Georgia, serif;
+  color: #1a0f00;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Animations */
+@keyframes gapPulse {
+  from { background: rgba(139,26,26,.15); }
+  to   { background: rgba(139,26,26,.4);  }
+}
+
+.fancy {
+  text-align: center;
+  color: var(--gold);
+  font-size: 11px;
+  margin: 3px 0;
+  letter-spacing: 4px;
+  opacity: .7;
+}
+
+/* Connection indicator dot */
+.conn-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.conn-connected {
+  background-color: #2a9d8f;
+  box-shadow: 0 0 6px #2a9d8f;
+  animation: pulseGreen 2s infinite;
+}
+.conn-degraded {
+  background-color: #e9c46a;
+  box-shadow: 0 0 6px #e9c46a;
+}
+.conn-disconnected {
+  background-color: #e76f51;
+  box-shadow: 0 0 6px #e76f51;
+}
+
+@keyframes pulseGreen {
+  0% { box-shadow: 0 0 2px #2a9d8f; }
+  50% { box-shadow: 0 0 8px #2a9d8f; }
+  100% { box-shadow: 0 0 2px #2a9d8f; }
+}
+
+/* Mobil-Zoom bei Fokus verhindern: Inputs auf Touch-Geräten auf mindestens 16px setzen */
+@media (hover: none) and (pointer: coarse) {
+  input[type="text"],
+  input[type="search"],
+  input:not([type]),
+  select,
+  textarea {
+    font-size: 16px !important;
+    height: 32px !important;
+    padding: 4px 8px !important;
+    box-sizing: border-box !important;
+  }
+}
+

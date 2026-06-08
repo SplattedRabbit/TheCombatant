@@ -1,0 +1,409 @@
+/* Condition Select Popup */
+.cond-popup {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 2px);
+  z-index: 300;
+  background: var(--p);
+  border: 1.5px solid var(--pb);
+  border-radius: 3px;
+  padding: 6px;
+  width: 230px;
+  box-shadow: 2px 4px 12px rgba(26, 15, 0, .35);
+}
+
+.cond-popup.open {
+  display: block;
+}
+
+.cond-popup-title {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 9px;
+  color: var(--red);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  border-bottom: .5px solid var(--pb);
+  padding-bottom: 2px;
+}
+
+.cond-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-bottom: 4px;
+}
+
+.cond-chip {
+  font-size: 8px;
+  padding: 3px 6px;
+  border: .5px solid var(--pb);
+  border-radius: 2px;
+  background: rgba(244, 232, 193, .8);
+  color: var(--inkm);
+  cursor: pointer;
+  font-family: 'Crimson Text', serif;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-height: 24px;
+}
+
+.cond-chip.on {
+  background: rgba(139, 26, 26, .15);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.cond-chip:active {
+  opacity: .7;
+}
+
+.cond-dur {
+  width: 22px;
+  background: rgba(255, 255, 255, .6);
+  border: .5px solid var(--pb);
+  border-radius: 1px;
+  padding: 0 2px;
+  font-family: 'Crimson Text', serif;
+  font-size: 8px;
+  color: var(--inkm);
+  text-align: center;
+  display: none;
+}
+
+.cond-chip.on .cond-dur {
+  display: inline-block;
+}
+
+/* Rules Reference Modal Drawer */
+.ref-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(42, 26, 10, .55);
+  align-items: center;
+  justify-content: center;
+}
+
+.ref-overlay.open {
+  display: flex;
+}
+
+.ref-modal {
+  background: var(--p);
+  border: 2px solid var(--pb);
+  border-radius: 4px;
+  padding: 14px 16px 12px;
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 6px 24px rgba(26, 15, 0, .5);
+  position: relative;
+}
+
+.ref-modal h3 {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 15px;
+  color: var(--red);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--pb);
+  padding-bottom: 4px;
+}
+
+.ref-modal .ref-body {
+  font-size: 11px;
+  color: var(--inkm);
+  line-height: 1.6;
+}
+
+.ref-modal .ref-body strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.ref-modal .ref-close {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--inkl);
+  font-family: 'Crimson Text', serif;
+}
+
+.ref-modal .ref-close:hover {
+  color: var(--red);
+}
+
+/* Rules Reference Chips list */
+.cond-ref-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding: 4px;
+}
+
+.cond-ref-chip {
+  font-size: 9px;
+  padding: 4px 7px;
+  border: .5px solid var(--pb);
+  border-radius: 2px;
+  background: rgba(244, 232, 193, .8);
+  color: var(--inkm);
+  cursor: pointer;
+  font-family: 'Crimson Text', serif;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.cond-ref-chip:hover {
+  background: rgba(200, 169, 110, .5);
+  color: var(--ink);
+}
+
+/* Quick reference widgets */
+.qref {
+  font-size: 8.5px;
+  line-height: 1.5;
+  color: var(--inkm);
+}
+
+.qref-h {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 9px;
+  color: var(--red);
+  margin-bottom: 1px;
+}
+
+.qhr {
+  border: none;
+  border-top: .5px solid var(--pb);
+  margin: 2px 0;
+}
+
+/* Role Choice Overlay Landing Portal */
+.role-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: radial-gradient(circle, rgba(20, 12, 6, 0.98) 0%, rgba(5, 3, 1, 0.99) 100%);
+  display: none; /* Toggled via JS */
+  align-items: center;
+  justify-content: center;
+  font-family: 'Crimson Text', serif;
+  color: var(--ink);
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.role-container {
+  max-width: 620px;
+  width: 100%;
+  background: var(--p);
+  border: 2px solid var(--pb);
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(139, 26, 26, 0.05);
+  padding: 30px 40px;
+  text-align: center;
+  position: relative;
+}
+
+.role-container::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 0.5px solid rgba(200, 169, 110, 0.3);
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+.role-title {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 26px;
+  color: var(--red);
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.role-subtitle {
+  font-size: 13px;
+  color: var(--inkl);
+  font-style: italic;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.role-card {
+  background: rgba(244, 232, 193, 0.5);
+  border: 1px solid var(--pb);
+  border-radius: 3px;
+  padding: 25px 20px;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.25s, 
+              border-color 0.25s,
+              background-color 0.25s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.role-card::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 0.5px dashed rgba(200, 169, 110, 0.2);
+  pointer-events: none;
+  border-radius: 1px;
+}
+
+.role-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--red);
+  background: rgba(244, 232, 193, 0.8);
+  box-shadow: 0 8px 24px rgba(139, 26, 26, 0.15);
+}
+
+.role-card:active {
+  transform: translateY(-2px);
+}
+
+.role-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+  transition: transform 0.3s;
+}
+
+.role-card:hover .role-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.role-card-title {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 18px;
+  color: var(--red);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.role-card-desc {
+  font-size: 11px;
+  color: var(--inkm);
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .role-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .role-container {
+    padding: 20px 20px;
+  }
+  .role-title {
+    font-size: 22px;
+  }
+}
+
+/* System Dropdown Menu - Ancient Scroll Paper */
+.system-dropdown {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: var(--p);
+  border: 2px solid var(--pb);
+  border-radius: 4px;
+  padding: 10px 8px;
+  width: 170px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 
+              inset 0 0 15px rgba(200, 169, 110, 0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+  transform: scale(var(--app-scale)) translateY(-10px);
+}
+
+.system-dropdown.open {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(var(--app-scale)) translateY(0);
+}
+
+/* Menu Items - Elegant Scroll Action Buttons */
+.fab-item {
+  width: 100%;
+  background: rgba(200, 169, 110, 0.08);
+  border: 0.5px solid var(--pb);
+  border-radius: 2px;
+  padding: 5px 8px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 9.5px;
+  color: var(--inkm);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.fab-item:hover {
+  background: rgba(139, 26, 26, 0.05);
+  border-color: var(--red);
+  color: var(--red);
+  transform: translateX(-2px);
+}
+
+.fab-item:active {
+  transform: scale(0.98);
+}
+
+/* Scaling all floating overlays & modals uniformly */
+#roleOverlay,
+#refOverlay,
+#customAlertOverlay,
+#customConfirmOverlay,
+#customPromptOverlay,
+#newDayTemplateOverlay,
+#attackChoiceOverlay,
+#sessionOverlay,
+#spellScrollOverlay,
+#featScrollOverlay,
+#castSpontaneousSpellOverlay,
+#prepareSpellOverlay,
+#wildShapeDialogOverlay,
+#rollBreakdown {
+  transform: scale(var(--app-scale));
+  transform-origin: center center;
+}
+
+/* Make all dropdowns/selects readable and prevent native unscaled tiny display */
+select, select.cinput {
+  font-size: 11px !important;
+  height: 18px !important;
+  padding: 0 2px !important;
+  font-family: 'Crimson Text', serif !important;
+}
+select option {
+  font-size: 11px !important;
+  font-family: 'Crimson Text', serif !important;
+}
+

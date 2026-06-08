@@ -1,0 +1,657 @@
+/* Player Screen & Interactive Character Sheet Styling */
+
+#playerScreen {
+  display: none; /* Toggled via JS mode */
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 10px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Modern 2-column sidebar grid layout for the player screen */
+.player-main-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1.35fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.player-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Header style within player screen */
+.player-hdr-bar {
+  background: var(--pd);
+  border: 2px solid var(--pb);
+  border-radius: 4px;
+  padding: 12px 18px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 16px rgba(26, 15, 0, 0.25);
+  position: relative;
+}
+
+.player-hdr-bar::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 0.5px solid rgba(200, 169, 110, 0.25);
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+.pc-name-field {
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.pc-name-field:focus {
+  border-color: var(--red) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-radius: 2px;
+}
+
+.pc-hp-cur-field, .pc-hp-max-field {
+  font-family: 'IM Fell English SC', serif;
+  text-align: center;
+  border-bottom: 1px solid transparent;
+}
+
+.pc-hp-cur-field:focus, .pc-hp-max-field:focus {
+  border-bottom: 1px solid var(--pb);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+}
+
+/* Save & Attribute Rollers */
+.roll-save-btn {
+  background: rgba(244, 232, 193, 0.6);
+  border: 1px solid var(--pb);
+  color: var(--ink);
+  transition: transform 0.15s, background-color 0.15s, border-color 0.15s;
+  padding: 4px 8px;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.roll-save-btn:hover {
+  background: rgba(139, 26, 26, 0.08);
+  border-color: var(--red);
+  color: var(--red);
+  transform: translateX(3px);
+}
+
+.roll-save-btn strong {
+  color: var(--red);
+  font-size: 11px;
+}
+
+/* Attribute Cards */
+.attr-box {
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.attr-box:hover {
+  transform: translateY(-1px);
+  border-color: var(--red) !important;
+  box-shadow: 0 2px 8px rgba(139, 26, 26, 0.1);
+}
+
+.roll-attr-btn {
+  transition: transform 0.1s, background-color 0.15s, color 0.15s;
+}
+
+.roll-attr-btn:hover {
+  transform: scale(1.05);
+  background: rgba(139, 26, 26, 0.15) !important;
+  color: var(--red) !important;
+  border-color: var(--red) !important;
+}
+
+/* Weapons List Input Styling */
+#pcWeaponsList .cinput {
+  background: rgba(255, 255, 255, 0.4);
+  border: 0.5px solid var(--pb);
+  padding: 2px 4px;
+  transition: background-color 0.15s;
+}
+
+#pcWeaponsList .cinput:focus {
+  background: rgba(255, 255, 255, 0.7);
+  outline: 1px solid var(--pb);
+}
+
+/* Spell Bubbles (Modern, Circular, Highly Interactive) */
+.spell-bubble {
+  transition: transform 0.15s;
+}
+
+.spell-bubble:hover {
+  transform: scale(1.3);
+}
+
+/* Custom Scrollbar for Slots/Abilities */
+#pcResources div::-webkit-scrollbar {
+  width: 4px;
+}
+
+#pcResources div::-webkit-scrollbar-track {
+  background: rgba(200, 169, 110, 0.1);
+  border-radius: 2px;
+}
+
+#pcResources div::-webkit-scrollbar-thumb {
+  background: rgba(139, 26, 26, 0.3);
+  border-radius: 2px;
+}
+
+#pcResources div::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 26, 26, 0.5);
+}
+
+/* Add custom ability animations */
+#addAbilityForm {
+  animation: slideDown 0.25s ease-out;
+}
+
+
+
+/* Roll Breakdown: old floating tooltip removed. Dialog is now an overlay modal handled by JS (showRollBreakdown in dialogs.js). */
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive grid layouts */
+@media (max-width: 950px) {
+  .player-main-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 650px) {
+  #pcResources .pbody {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+  #pcResources div {
+    border-right: none !important;
+    padding-right: 0 !important;
+    border-bottom: 0.5px solid rgba(200, 169, 110, 0.4);
+    padding-bottom: 12px;
+  }
+}
+
+/* Premium Medieval-style Tab Bar for PC Dashboard */
+.right-tab-btn {
+  background: rgba(200, 169, 110, 0.08) !important;
+  border: 0.5px solid var(--pb) !important;
+  color: var(--inkm) !important;
+  padding: 4px 10px !important;
+  font-family: 'IM Fell English SC', serif !important;
+  font-size: 8.5px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  border-radius: 2px !important;
+  transition: all 0.2s ease !important;
+}
+
+.right-tab-btn:hover {
+  background: rgba(139, 26, 26, 0.05) !important;
+  border-color: var(--red) !important;
+  color: var(--red) !important;
+  transform: translateY(-1px);
+}
+
+.right-tab-btn.btn-p {
+  background: linear-gradient(135deg, #c8a96e, #9a7a2e) !important;
+  color: white !important;
+  border: 0.5px solid var(--red) !important;
+  box-shadow: 0 2px 5px rgba(139, 26, 26, 0.2) !important;
+}
+
+.right-tab-btn.btn-p:hover {
+  background: linear-gradient(135deg, #9a7a2e, #7c5c1d) !important;
+  color: white !important;
+  border-color: var(--red) !important;
+}
+
+/* Thematic Class-Specific Active Emblems Styling */
+.use-icon {
+  font-size: 13px;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  margin-right: 2px;
+}
+
+.use-icon:hover {
+  transform: scale(1.3) rotate(6deg);
+}
+
+.use-icon.used {
+  opacity: 0.25 !important;
+  filter: grayscale(100%) contrast(70%) !important;
+  text-shadow: none !important;
+  transform: scale(0.9) !important;
+}
+
+/* Specific glows for class icons */
+.use-icon-rage {
+  text-shadow: 0 0 5px #ef4444, 0 0 10px rgba(239, 68, 68, 0.5);
+}
+.use-icon-smite {
+  text-shadow: 0 0 5px #f59e0b, 0 0 10px rgba(245, 158, 11, 0.5);
+}
+.use-icon-turn {
+  text-shadow: 0 0 4px #eab308, 0 0 8px rgba(234, 179, 8, 0.4);
+}
+.use-icon-music {
+  text-shadow: 0 0 4px #ec4899, 0 0 8px rgba(236, 72, 153, 0.4);
+}
+.use-icon-wild {
+  text-shadow: 0 0 4px #10b981, 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+/* Premium Medieval-style Main Tab Bar for Player Screen */
+.player-tab-bar {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1.5px solid var(--pb);
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.player-tab-btn {
+  background: rgba(200, 169, 110, 0.08);
+  border: 0.5px solid var(--pb);
+  color: var(--inkm);
+  padding: 6px 12px;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 9.5px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px 2px 0 0;
+  transition: all 0.2s ease;
+  margin-bottom: -1px;
+}
+
+.player-tab-btn:hover {
+  background: rgba(139, 26, 26, 0.05);
+  border-color: var(--red);
+  color: var(--red);
+  transform: translateY(-1px);
+}
+
+.player-tab-btn.active {
+  background: linear-gradient(135deg, #c8a96e, #9a7a2e);
+  color: white;
+  border: 0.5px solid var(--red);
+  box-shadow: 0 -2px 5px rgba(139, 26, 26, 0.1);
+}
+
+.player-tab-btn.active:hover {
+  background: linear-gradient(135deg, #9a7a2e, #7c5c1d);
+  color: white;
+  border-color: var(--red);
+}
+
+/* Tab Panels */
+.player-tab-panel {
+  display: none;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.player-tab-panel.active {
+  display: block;
+}
+
+/* Overview Layout: Grid of Attributes & Defenses */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   DIABLO-STYLE HEALTH GLOBE STYLING
+   ========================================== */
+
+#pcHealthGlobe {
+  background: var(--pd);
+  border: 2px solid var(--pb);
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(26, 15, 0, 0.25);
+  position: relative;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Globe visual container */
+.globe-wrapper {
+  width: 110px;
+  height: 110px;
+  margin: 6px auto;
+  position: relative;
+}
+
+/* Gothic outer ring frame */
+.globe-ring {
+  position: absolute;
+  inset: -4.5px;
+  border-radius: 50%;
+  border: 3px double var(--pb);
+  background: radial-gradient(circle, transparent 75%, rgba(200, 169, 110, 0.15) 90%, rgba(139, 26, 26, 0.2) 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.65), inset 0 0 10px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Inner liquid chamber sphere */
+.liquid-chamber {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle, #1a0808 0%, #060202 85%);
+  position: relative;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.95);
+  border: 2px solid #231912;
+}
+
+/* Speck glass reflections */
+.globe-glass {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.15) 100%);
+  box-shadow: inset 0 6px 9px rgba(255, 255, 255, 0.25), inset 0 -6px 9px rgba(0, 0, 0, 0.4);
+  z-index: 8;
+  pointer-events: none;
+}
+
+.globe-highlight {
+  position: absolute;
+  top: 4px;
+  left: 13px;
+  right: 13px;
+  height: 26px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 50% 50% 45% 45% / 70% 70% 30% 30%;
+  z-index: 9;
+  pointer-events: none;
+}
+
+/* Fluid level containers */
+.liquid-base {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(0deg, #3d0000 0%, #8b0000 40%, #c80000 80%, #ff3333 100%);
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible; /* Waves can pop up */
+}
+
+.liquid-temp {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(0deg, #0d2a58 0%, #1e4588 50%, #00b8f0 100%);
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
+  box-shadow: 0 0 8px rgba(0, 184, 240, 0.5);
+  opacity: 0.9;
+}
+
+/* Wave SVGs with looping translations */
+.wave-svg {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 18px;
+  top: -17px;
+  pointer-events: none;
+}
+
+.wave-front {
+  animation: wave-move-left 4.5s linear infinite;
+  z-index: 4;
+}
+
+.wave-back {
+  animation: wave-move-right 7.5s linear infinite;
+  opacity: 0.65;
+  z-index: 3;
+}
+
+@keyframes wave-move-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes wave-move-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Floating Numeric Text Display */
+.globe-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 12;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.85);
+  pointer-events: auto;
+}
+
+.globe-hp-cur {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 19px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 45px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+  border-bottom: 1px solid transparent;
+}
+
+.globe-hp-cur:focus {
+  border-bottom-color: var(--pb);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+}
+
+.globe-hp-divider {
+  width: 35px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 1px 0;
+}
+
+.globe-hp-max {
+  font-family: 'Crimson Text', serif;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 35px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+  border-bottom: 1px solid transparent;
+}
+
+.globe-hp-max:focus {
+  border-bottom-color: var(--pb);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+}
+
+.globe-temp-hp-badge {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  border: 1px solid #00c0ff;
+  border-radius: 2px;
+  padding: 1px 3.5px;
+  color: #00c0ff;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 7.5px;
+  font-weight: bold;
+  margin-top: 2px;
+  box-shadow: 0 1px 4px rgba(0, 192, 255, 0.45);
+}
+
+/* Control Pedestal Deck underneath the Globe */
+.globe-control-deck {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 0.5px solid rgba(200, 169, 110, 0.25);
+  padding-top: 5px;
+  margin-top: 2px;
+}
+
+.globe-control-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.globe-dmg-input {
+  width: 36px;
+  height: 18px;
+  text-align: center;
+  border-radius: 2px;
+  border: 0.5px solid var(--pb);
+  font-family: 'Crimson Text', serif;
+  font-size: 9.5px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--ink);
+  transition: background-color 0.15s;
+}
+
+.globe-dmg-input:focus {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--red);
+}
+
+.globe-btn {
+  height: 18px;
+  padding: 0 5px;
+  font-size: 7.5px;
+  font-weight: bold;
+  line-height: 16px;
+  font-family: 'IM Fell English SC', serif;
+  margin: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 0.5px solid var(--pb);
+}
+
+.globe-btn-dmg {
+  background: rgba(139, 26, 26, 0.08);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.globe-btn-dmg:hover {
+  background: var(--red);
+  color: #ffffff;
+  box-shadow: 0 0 6px rgba(139, 26, 26, 0.35);
+}
+
+.globe-btn-heal {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: #10b981;
+  color: #047857;
+}
+
+.globe-btn-heal:hover {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.35);
+}
+
+.globe-btn-temp {
+  background: rgba(42, 74, 138, 0.06);
+  border-color: #2a4a8a;
+  color: #1a2a6a;
+}
+
+.globe-btn-temp:hover {
+  background: #2a4a8a;
+  color: #ffffff;
+  box-shadow: 0 0 6px rgba(42, 74, 138, 0.35);
+}
+
+.globe-btn-cond {
+  height: 13px;
+  font-size: 7px;
+  padding: 0 4px;
+  line-height: 11px;
+  font-family: 'Crimson Text', serif;
+  background: rgba(200, 169, 110, 0.1);
+  color: var(--inkm);
+  border-color: var(--pb);
+}
+
+.globe-btn-cond:hover {
+  background: rgba(200, 169, 110, 0.2);
+  color: var(--red);
+}
+
+.globe-chk-row {
+  display: flex;
+  gap: 6px;
+  font-size: 7px;
+  color: var(--inkl);
+  font-weight: 600;
+  justify-content: center;
+  user-select: none;
+}
+
+
