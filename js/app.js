@@ -645,7 +645,7 @@ function applyScaleFactor() {
 
   const targetWidth = 1150;
   let scale = window.innerWidth / targetWidth;
-  scale = Math.max(1.0, Math.min(1.6, scale));
+  scale = Math.max(0.5, Math.min(1.6, scale));
 
   currentScale = scale;
   document.documentElement.style.setProperty('--app-scale', scale);
