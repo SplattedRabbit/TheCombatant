@@ -1,7 +1,7 @@
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { getAblMod, formatMod } from './PCUtils.js';
-import { showRollBreakdown } from '../dialogs.js';
+import { showRollBreakdown, showInfoDialog } from '../dialogs.js';
 
 export function renderPCDefenses(pc) {
   const defenses = document.getElementById('pcDefenses');
@@ -22,15 +22,46 @@ export function renderPCDefenses(pc) {
   defenses.innerHTML = `
     <div class="phdr"><h2>🛡️ Verteidigung &amp; Rettung</h2></div>
     <div class="pbody" style="display:flex; flex-direction:column; gap:6px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(200, 169, 110, 0.05); border:0.5px solid var(--pb); border-radius:2px; padding:3px 6px; margin-bottom:2px;">
+        <label style="display:flex; align-items:center; gap:4px; cursor:pointer; color:var(--inkm); margin:0; font-weight:bold; font-size:8px; font-family:'IM Fell English SC', serif;">
+          <input type="checkbox" class="pc-autoac-checkbox" ${pc.autoAC ? 'checked' : ''} style="margin: 0; width: 11px; height: 11px;">
+          🛡️ Rüstungsklasse automatisch berechnen (Auto-RK)
+        </label>
+      </div>
+
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px;">
-        <div><label style="font-size:9px; font-weight:600; color:var(--inkl);">AC (Rüstung)</label><input type="number" value="${pc.ac}" class="cinput pc-ac-input"></div>
-        <div><label style="font-size:9px; font-weight:600; color:var(--inkl);">AC Touch</label><input type="number" value="${pc.acTouch}" class="cinput pc-acTouch-input"></div>
-        <div><label style="font-size:9px; font-weight:600; color:var(--inkl);">AC Flat</label><input type="number" value="${pc.acFlat}" class="cinput pc-acFlat-input"></div>
+        <div>
+          <label style="font-size:9px; font-weight:600; color:var(--inkl);">AC (RK)</label>
+          <input type="number" value="${pc.ac}" class="cinput pc-ac-input" ${pc.autoAC ? 'readonly style="background:rgba(0,0,0,0.05); color:var(--red); font-weight:bold; cursor:pointer;"' : ''}>
+        </div>
+        <div>
+          <label style="font-size:9px; font-weight:600; color:var(--inkl);">Touch</label>
+          <input type="number" value="${pc.acTouch}" class="cinput pc-acTouch-input" ${pc.autoAC ? 'readonly style="background:rgba(0,0,0,0.05); color:var(--red); font-weight:bold; cursor:pointer;"' : ''}>
+        </div>
+        <div>
+          <label style="font-size:9px; font-weight:600; color:var(--inkl);">Flat-Footed</label>
+          <input type="number" value="${pc.acFlat}" class="cinput pc-acFlat-input" ${pc.autoAC ? 'readonly style="background:rgba(0,0,0,0.05); color:var(--red); font-weight:bold; cursor:pointer;"' : ''}>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; margin-top:-2px; margin-bottom:2px;">
+        <div>
+          <label style="font-size:8px; font-weight:600; color:var(--inkl);" title="Natürlicher Rüstungsbonus (z.B. Amulett)">Natürliche Rüst.</label>
+          <input type="number" value="${pc.acNatural || 0}" class="cinput pc-acNatural-input" style="height:15px; font-size:8px; text-align:center;">
+        </div>
+        <div>
+          <label style="font-size:8px; font-weight:600; color:var(--inkl);" title="Ablenkungsbonus auf RK (z.B. Schutzring)">Ablenkung</label>
+          <input type="number" value="${pc.acDeflection || 0}" class="cinput pc-acDeflection-input" style="height:15px; font-size:8px; text-align:center;">
+        </div>
+        <div>
+          <label style="font-size:8px; font-weight:600; color:var(--inkl);" title="Sonstige Modifikatoren auf RK">Sonstiges (RK)</label>
+          <input type="number" value="${pc.acMisc || 0}" class="cinput pc-acMisc-input" style="height:15px; font-size:8px; text-align:center;">
+        </div>
       </div>
       
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px;">
         <div><label style="font-size:9px; font-weight:600; color:var(--inkl);">Zauberresistenz (SR)</label><input type="number" value="${pc.sr}" class="cinput pc-sr-input"></div>
-        <div><label style="font-size:9px; font-weight:600; color:var(--inkl);">Geschwindigkeit (Speed)</label><input type="number" value="${pc.bw}" class="cinput pc-bw-input" title="Bewegungsrate (ft)"></div>
+        <div><label style="font-size:9px; font-weight:600; color:var(--inkl);">Geschwindigkeit (Speed)</label><input type="number" value="${pc.bw}" class="cinput pc-bw-input" title="Bewegungsrate (ft)" ${pc.getEquippedArmor() ? 'readonly style="background:rgba(0,0,0,0.05); color:var(--red); font-weight:bold;"' : ''}></div>
       </div>
       
       <hr style="border:none; border-top:.5px solid var(--pb); margin:2px 0;">
@@ -150,9 +181,97 @@ export function renderPCDefenses(pc) {
   `;
 
   // Bind Defense & Special inputs
-  defenses.querySelector('.pc-ac-input').onchange = (e) => CombatState.updatePCNumber('ac', e.target.value);
-  defenses.querySelector('.pc-acTouch-input').onchange = (e) => CombatState.updatePCNumber('acTouch', e.target.value);
-  defenses.querySelector('.pc-acFlat-input').onchange = (e) => CombatState.updatePCNumber('acFlat', e.target.value);
+  defenses.querySelector('.pc-autoac-checkbox').onchange = (e) => {
+    CombatState.setPCAutoAC(e.target.checked);
+    uiRegistry.renderPlayerScreen();
+  };
+
+  if (pc.autoAC) {
+    const showACSourcesPopup = (title, statObj) => {
+      const grouped = {};
+      const appliedModifiers = [];
+      
+      statObj.modifiers.forEach(m => {
+        const val = parseInt(m.value) || 0;
+        if (val === 0) return;
+        if (m.type === 'dodge' || m.type === 'untyped') {
+          appliedModifiers.push({ label: m.source || 'Modifikator', value: val });
+        } else {
+          if (!grouped[m.type] || val > grouped[m.type].value) {
+            grouped[m.type] = { label: m.source || 'Modifikator', value: val };
+          }
+        }
+      });
+      
+      Object.keys(grouped).forEach(type => {
+        appliedModifiers.push(grouped[type]);
+      });
+
+      const rowsHtml = [
+        `<div style="display:flex; justify-content:space-between; padding:3px 0; border-bottom:0.5px solid rgba(200,169,110,0.15);">
+          <span style="font-family:'Crimson Text',serif; font-size:11px; color:var(--inkm);">Basiswert:</span>
+          <span style="font-family:'Crimson Text',serif; font-size:11px; font-weight:bold; color:var(--ink);">10</span>
+        </div>`
+      ];
+
+      appliedModifiers.forEach(item => {
+        const sign = item.value >= 0 ? '+' : '';
+        rowsHtml.push(`
+          <div style="display:flex; justify-content:space-between; padding:3px 0; border-bottom:0.5px solid rgba(200,169,110,0.15);">
+            <span style="font-family:'Crimson Text',serif; font-size:11px; color:var(--inkm);">${item.label}:</span>
+            <span style="font-family:'Crimson Text',serif; font-size:11px; font-weight:bold; color:var(--ink);">${sign}${item.value}</span>
+          </div>
+        `);
+      });
+
+      const totalVal = statObj.getValue();
+      const bodyHtml = `
+        <div style="display:flex; flex-direction:column; gap:2px;">
+          ${rowsHtml.join('')}
+          <div style="display:flex; justify-content:space-between; margin-top:8px; padding-top:6px; font-family:'IM Fell English SC',serif; font-size:12px; font-weight:bold; color:var(--red);">
+            <span>Gesamtwert:</span>
+            <span style="font-size:14px;">${totalVal}</span>
+          </div>
+        </div>
+      `;
+
+      showInfoDialog({
+        id: 'rollBreakdown',
+        title: title,
+        bodyHtml,
+        buttonText: 'Schließen',
+        width: 255
+      });
+    };
+
+    defenses.querySelector('.pc-ac-input').onclick = (e) => {
+      showACSourcesPopup('🛡️ Rüstungsklasse (AC)', pc.ac);
+    };
+    defenses.querySelector('.pc-acTouch-input').onclick = (e) => {
+      showACSourcesPopup('🛡️ Berührungs-RK (Touch AC)', pc.acTouch);
+    };
+    defenses.querySelector('.pc-acFlat-input').onclick = (e) => {
+      showACSourcesPopup('🛡️ Auf dem falschen Fuß (Flat-Footed AC)', pc.acFlat);
+    };
+  } else {
+    defenses.querySelector('.pc-ac-input').onchange = (e) => CombatState.updatePCNumber('ac', e.target.value);
+    defenses.querySelector('.pc-acTouch-input').onchange = (e) => CombatState.updatePCNumber('acTouch', e.target.value);
+    defenses.querySelector('.pc-acFlat-input').onchange = (e) => CombatState.updatePCNumber('acFlat', e.target.value);
+  }
+
+  defenses.querySelector('.pc-acNatural-input').onchange = (e) => {
+    CombatState.updatePCField('acNatural', parseInt(e.target.value) || 0);
+    uiRegistry.renderPlayerScreen();
+  };
+  defenses.querySelector('.pc-acDeflection-input').onchange = (e) => {
+    CombatState.updatePCField('acDeflection', parseInt(e.target.value) || 0);
+    uiRegistry.renderPlayerScreen();
+  };
+  defenses.querySelector('.pc-acMisc-input').onchange = (e) => {
+    CombatState.updatePCField('acMisc', parseInt(e.target.value) || 0);
+    uiRegistry.renderPlayerScreen();
+  };
+
   defenses.querySelector('.pc-sr-input').onchange = (e) => CombatState.updatePCNumber('sr', e.target.value);
   defenses.querySelector('.pc-bw-input').onchange = (e) => {
     CombatState.updatePCNumber('bw', e.target.value);

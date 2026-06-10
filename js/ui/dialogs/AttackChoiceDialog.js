@@ -1,53 +1,8 @@
 import { AttackEngine } from '../../rules/AttackEngine.js';
-import { WeaponRegistry } from '../../models/Weapon.js';
+import { WeaponRegistry, matchesFeatOption, getCritThreatDisplay } from '../../models/Weapon.js';
 
-function matchesFeatOption(w, option) {
-  if (!option) return false;
-  const opt = option.toLowerCase().trim();
-  if (w.name && w.name.toLowerCase().includes(opt)) return true;
-  if (w.type) {
-    const typeDef = WeaponRegistry[w.type];
-    if (typeDef) {
-      if (typeDef.key.toLowerCase() === opt ||
-          typeDef.nameDe.toLowerCase() === opt ||
-          typeDef.nameEn.toLowerCase() === opt) {
-        return true;
-      }
-      if (opt === 'langbogen' || opt === 'longbow') {
-        if (typeDef.key === 'comp_longbow') return true;
-      }
-      if (opt === 'kurzbogen' || opt === 'shortbow') {
-        if (typeDef.key === 'comp_shortbow') return true;
-      }
-    }
-  }
-  return false;
-}
 
-function getCritThreatDisplay(critStr, isKeen) {
-  if (!critStr) return '20 / x2';
-  if (!isKeen) return critStr;
-  
-  const parts = critStr.split('/');
-  const threatPart = parts[0].trim();
-  const multiplierPart = parts[1] ? parts[1].trim() : 'x2';
-  
-  if (threatPart === '20') {
-    return `19-20 / ${multiplierPart}`;
-  } else if (threatPart.includes('-')) {
-    const range = threatPart.split('-');
-    const min = parseInt(range[0]);
-    const max = parseInt(range[1]) || 20;
-    if (!isNaN(min) && !isNaN(max)) {
-      const count = max - min + 1;
-      const newMin = max - (count * 2) + 1;
-      return `${newMin}-20 / ${multiplierPart}`;
-    }
-  }
-  return critStr;
-}
-
-export function showAttackChoiceDialog(pc, weapon, event) {
+export function showAttackChoiceDialog(pc, weapon, event, options = {}) {
   const existing = document.getElementById('attackChoiceOverlay');
   if (existing) existing.remove();
 
@@ -109,7 +64,7 @@ export function showAttackChoiceDialog(pc, weapon, event) {
           ${hasPaladin && isMelee ? `
             <label style="display:flex; align-items:center; gap:4px; cursor:pointer; margin:0; font-weight:bold; color:var(--red);">
               <input type="checkbox" class="dialog-smite-toggle" style="margin:0; width:11px; height:11px;">
-              Böses niederstrecken (+${Math.max(0, pc.getAttributeMod('cha'))} Angr. / +${paladinClass.level} Schd.)
+               Böses niederstrecken (+${Math.max(0, pc.getAttributeMod('cha'))} Angr. / +${paladinClass.level} Schd.)
             </label>
           ` : ''}
           ${favoredEnemyBonus > 0 ? `
@@ -164,8 +119,8 @@ export function showAttackChoiceDialog(pc, weapon, event) {
   let currentView = 'grid'; // 'grid', 'std', 'full'
 
   function calculateSequences() {
-    const stdSeq = AttackEngine.calculateAttackSequence(pc, weapon, false, { smite: smiteActive, favoredEnemy: favoredEnemyActive, sneakAttack: sneakActive });
-    const fullSeq = AttackEngine.calculateAttackSequence(pc, weapon, true, { smite: smiteActive, favoredEnemy: favoredEnemyActive, sneakAttack: sneakActive });
+    const stdSeq = AttackEngine.calculateAttackSequence(pc, weapon, false, { smite: smiteActive, favoredEnemy: favoredEnemyActive, sneakAttack: sneakActive, ...options });
+    const fullSeq = AttackEngine.calculateAttackSequence(pc, weapon, true, { smite: smiteActive, favoredEnemy: favoredEnemyActive, sneakAttack: sneakActive, ...options });
     return { stdSeq, fullSeq };
   }
 

@@ -90,13 +90,7 @@
 
 /* Attribute Cards */
 .attr-box {
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-}
-
-.attr-box:hover {
-  transform: translateY(-1px);
-  border-color: var(--red) !important;
-  box-shadow: 0 2px 8px rgba(139, 26, 26, 0.1);
+  /* Hover-Effekt für Nicht-Buttons entfernt */
 }
 
 .roll-attr-btn {
@@ -653,5 +647,49 @@
   justify-content: center;
   user-select: none;
 }
+
+/* ARPG Equipment Styles */
+.arpg-slot {
+  position: relative;
+}
+.stash-item-card-container {
+  /* Hover-Effekte entfernt */
+}
+.stash-item-card {
+  /* Hover-Effekte entfernt */
+}
+.equip-btn {
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.equip-btn:hover {
+  background-color: rgba(200, 169, 110, 0.15) !important;
+  border-color: var(--red) !important;
+  color: var(--red) !important;
+}
+
+/* Rarity animations */
+@keyframes magicGlow {
+  0%, 100% { box-shadow: 0 0 4px rgba(42, 106, 138, 0.2), inset 0 0 6px rgba(42, 106, 138, 0.05); }
+  50% { box-shadow: 0 0 8px rgba(42, 106, 138, 0.35), inset 0 0 10px rgba(42, 106, 138, 0.15); }
+}
+@keyframes rareGlow {
+  0%, 100% { box-shadow: 0 0 4px rgba(138, 43, 226, 0.2), inset 0 0 6px rgba(138, 43, 226, 0.05); }
+  50% { box-shadow: 0 0 8px rgba(138, 43, 226, 0.35), inset 0 0 10px rgba(138, 43, 226, 0.15); }
+}
+@keyframes legendaryGlow {
+  0%, 100% { box-shadow: 0 0 6px rgba(210, 105, 30, 0.3), inset 0 0 8px rgba(210, 105, 30, 0.1); }
+  50% { box-shadow: 0 0 12px rgba(210, 105, 30, 0.45), inset 0 0 15px rgba(210, 105, 30, 0.2); }
+}
+
+.rarity-magic {
+  animation: magicGlow 3s infinite ease-in-out;
+}
+.rarity-rare {
+  animation: rareGlow 3s infinite ease-in-out;
+}
+.rarity-legendary {
+  animation: legendaryGlow 3s infinite ease-in-out;
+}
+
 
 

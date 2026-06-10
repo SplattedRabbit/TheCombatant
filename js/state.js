@@ -47,7 +47,13 @@ import {
   savePCSpellTemplate,
   deletePCSpellTemplate,
   applyPCSpellTemplate,
-  clearPreparedSpells
+  clearPreparedSpells,
+  addPCArmor,
+  removePCArmor,
+  togglePCArmorEquip,
+  updatePCArmorField,
+  setPCAutoAC,
+  togglePCWeaponEquip
 } from './state/PCManager.js';
 
 import {
@@ -117,6 +123,12 @@ export {
   deletePCSpellTemplate,
   applyPCSpellTemplate,
   clearPreparedSpells,
+  addPCArmor,
+  removePCArmor,
+  togglePCArmorEquip,
+  updatePCArmorField,
+  setPCAutoAC,
+  togglePCWeaponEquip,
   
   updateMeta,
   addCombatant,
@@ -179,6 +191,12 @@ export const CombatState = {
   deletePCSpellTemplate,
   applyPCSpellTemplate,
   clearPreparedSpells,
+  addPCArmor,
+  removePCArmor,
+  togglePCArmorEquip,
+  updatePCArmorField,
+  setPCAutoAC,
+  togglePCWeaponEquip,
   updateMeta,
   addCombatant,
   removeCombatant,

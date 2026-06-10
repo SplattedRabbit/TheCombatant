@@ -1,5 +1,6 @@
 import { Stat } from './Stat.js';
 import { Weapon } from './Weapon.js';
+import { Armor } from './Armor.js';
 import { Combatant } from './Combatant.js';
 
 const uid = () => {
@@ -56,5 +57,7 @@ export {
   createInitialState,
   Stat,
   Weapon,
+  Armor,
   Combatant
 };
+

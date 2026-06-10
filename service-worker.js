@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.1.5-cache-v10';
+const CACHE_NAME = 'dnd-combatsheet-v3.2.1-cache-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -18,8 +18,10 @@ const ASSETS = [
   './js/app.js',
   './js/models/Stat.js',
   './js/models/Weapon.js',
+  './js/models/Armor.js',
   './js/models/Combatant.js',
   './js/models/model-core.js',
+  './js/data/armor-data.js',
   './js/network/NetworkManager.js',
   './js/network/SyncProtocol.js',
   './js/network/DeltaRenderer.js',

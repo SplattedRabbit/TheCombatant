@@ -24,7 +24,7 @@ export const WeaponRegistry = {
   spear: { key: 'spear', nameDe: 'Speer', nameEn: 'Speer', grip: '2h', damageDice: '1w8', crit: 'x3' },
   halberd: { key: 'halberd', nameDe: 'Hellebarde', nameEn: 'Halberd', grip: '2h', damageDice: '1w10', crit: 'x3' },
   scythe: { key: 'scythe', nameDe: 'Sense', nameEn: 'Scythe', grip: '2h', damageDice: '2w4', crit: 'x4' },
-  quarterstaff: { key: 'quarterstaff', nameDe: 'Kampfstab', nameEn: 'Quarterstaff', grip: '2h', damageDice: '1w6', crit: 'x2', isMonk: true },
+  quarterstaff: { key: 'quarterstaff', nameDe: 'Kampfstab', nameEn: 'Quarterstaff', grip: '2h', damageDice: '1w6', crit: 'x2', isMonk: true, isDouble: true },
   spiked_chain: { key: 'spiked_chain', nameDe: 'Dornenkette', nameEn: 'Spiked Chain', grip: '2h', damageDice: '2w4', crit: 'x2', isLight: true }, // spiked chain is finessable
 
   // Ranged
@@ -89,6 +89,10 @@ export class Weapon {
     this.extraDamage = w.extraDamage || ''; // Extra damage dice (e.g. "1w6 Feuer")
     this.strengthRating = w.strengthRating !== undefined ? parseInt(w.strengthRating) : 0;
 
+    this.isEquipped = w.isEquipped || false;
+    this.hand = w.hand || 'main';
+    this.isDoubleWielded = w.isDoubleWielded || false;
+
     // Overrides
     this.gripOverride = w.gripOverride || '';
     this.damageDiceOverride = w.damageDiceOverride || '';
@@ -125,7 +129,104 @@ export class Weapon {
       strengthRating: this.strengthRating,
       gripOverride: this.gripOverride,
       damageDiceOverride: this.damageDiceOverride,
-      critOverride: this.critOverride
+      critOverride: this.critOverride,
+      isEquipped: this.isEquipped,
+      hand: this.hand,
+      isDoubleWielded: this.isDoubleWielded
     };
   }
 }
+
+export function isLightWeapon(w) {
+  if (!w) return false;
+  if (typeof w === 'object') {
+    const typeDef = WeaponRegistry[w.type];
+    if (typeDef && typeDef.isLight !== undefined) {
+      return typeDef.isLight;
+    }
+    return isLightWeapon(w.name);
+  }
+  const n = w.toLowerCase().trim();
+  return n.includes('dolch') || n.includes('dagger') ||
+         n.includes('kurzschwert') || n.includes('short sword') ||
+         n.includes('handbeil') || n.includes('handaxe') ||
+         n.includes('keule') || n.includes('mace') ||
+         n.includes('sichel') || n.includes('sickle') ||
+         n.includes('rapier') ||
+         n.includes('peitsche') || n.includes('whip') ||
+         n.includes('dornenkette') || n.includes('spiked chain') ||
+         n.includes('waffenlos') || n.includes('faust') || n.includes('unarmed') ||
+         n.includes('klaue') || n.includes('claw') ||
+         n.includes('biss') || n.includes('bite');
+}
+
+export function matchesFeatOption(w, option) {
+  if (!option) return false;
+  const opt = option.toLowerCase().trim();
+  if (w.name && w.name.toLowerCase().includes(opt)) return true;
+  if (w.type) {
+    const typeDef = WeaponRegistry[w.type];
+    if (typeDef) {
+      if (typeDef.key.toLowerCase() === opt ||
+          typeDef.nameDe.toLowerCase() === opt ||
+          typeDef.nameEn.toLowerCase() === opt) {
+        return true;
+      }
+      if (opt === 'langbogen' || opt === 'longbow') {
+        if (typeDef.key === 'comp_longbow') return true;
+      }
+      if (opt === 'kurzbogen' || opt === 'shortbow') {
+        if (typeDef.key === 'comp_shortbow') return true;
+      }
+    }
+  }
+  return false;
+}
+
+export function isMonkWeapon(w, grip) {
+  if (!w) return false;
+  if (typeof w === 'object') {
+    const typeDef = WeaponRegistry[w.type];
+    if (typeDef && typeDef.isMonk !== undefined) {
+      return typeDef.isMonk;
+    }
+    return isMonkWeapon(w.name, w.grip);
+  }
+  const name = w;
+  if (grip === 'unarmed') return true;
+  const n = name.toLowerCase().trim();
+  return n.includes('waffenlos') || 
+         n.includes('faust') || 
+         n.includes('unarmed') || 
+         n.includes('kama') || 
+         n.includes('nunchaku') || 
+         n.includes('kampfstab') || 
+         n.includes('quarterstaff') || 
+         n.includes('sai') || 
+         n.includes('shuriken') || 
+         n.includes('siangham');
+}
+
+export function getCritThreatDisplay(critStr, isKeen) {
+  if (!critStr) return '20 / x2';
+  if (!isKeen) return critStr;
+  
+  const parts = critStr.split('/');
+  const threatPart = parts[0].trim();
+  const multiplierPart = parts[1] ? parts[1].trim() : 'x2';
+  
+  if (threatPart === '20') {
+    return `19-20 / ${multiplierPart}`;
+  } else if (threatPart.includes('-')) {
+    const range = threatPart.split('-');
+    const min = parseInt(range[0]);
+    const max = parseInt(range[1]) || 20;
+    if (!isNaN(min) && !isNaN(max)) {
+      const count = max - min + 1;
+      const newMin = max - (count * 2) + 1;
+      return `${newMin}-20 / ${multiplierPart}`;
+    }
+  }
+  return critStr;
+}
+

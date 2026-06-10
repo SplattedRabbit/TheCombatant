@@ -36,6 +36,38 @@ export function renderSpellbookTab(pc) {
 
   const isSlotsCalculated = hasClasses;
 
+  // Calculate Arcane Spell Failure (ASF)
+  let totalASF = 0;
+  const isWizardOrSorcerer = hasClasses && pc.classes.some(c => c.classType === 'wizard' || c.classType === 'sorcerer');
+  const isBard = hasClasses && pc.classes.some(c => c.classType === 'bard');
+  
+  if (isWizardOrSorcerer || isBard) {
+    const equippedArmor = typeof pc.getEquippedArmor === 'function' ? pc.getEquippedArmor() : null;
+    const equippedShield = typeof pc.getEquippedShield === 'function' ? pc.getEquippedShield() : null;
+    
+    if (isWizardOrSorcerer) {
+      if (equippedArmor) totalASF += equippedArmor.spellFailure;
+      if (equippedShield) totalASF += equippedShield.spellFailure;
+    } else if (isBard) {
+      // Bards ignore spell failure for light armor
+      if (equippedArmor && (equippedArmor.speedCategory === 'medium' || equippedArmor.speedCategory === 'heavy')) {
+        totalASF += equippedArmor.spellFailure;
+      }
+      if (equippedShield) {
+        totalASF += equippedShield.spellFailure;
+      }
+    }
+  }
+
+  let asfWarningHtml = '';
+  if (totalASF > 0) {
+    asfWarningHtml = `
+      <div style="background: rgba(139, 26, 26, 0.08); border: 0.5px solid var(--red); border-radius: 3px; padding: 4px 8px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; font-family: 'IM Fell English SC', serif; font-size: 8.5px; color: var(--red); font-weight: bold;">
+        <span>⚠️ Rüstungs-Zauberpatzer: ${totalASF}% Chance auf Fehlschlag bei arkanen Zaubern</span>
+      </div>
+    `;
+  }
+
   // 1. Unified Spell Slots Grid (Top of Spellbook)
   let slotsGridHtml = `
     <div style="background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); border-radius: 2px; padding: 4px 6px; margin-bottom: 6px;">
@@ -137,6 +169,7 @@ export function renderSpellbookTab(pc) {
   }
 
   return `
+    ${asfWarningHtml}
     ${slotsGridHtml}
     ${learnedSpellsHtml}
   `;

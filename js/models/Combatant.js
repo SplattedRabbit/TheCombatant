@@ -1,5 +1,6 @@
 import { Stat } from './Stat.js';
 import { Weapon } from './Weapon.js';
+import { Armor } from './Armor.js';
 import { CombatSpells, getSpellSchoolCode } from '../spells.js';
 import { BarbarianRules } from '../rules/classes/BarbarianRules.js';
 import { MonkRules } from '../rules/classes/MonkRules.js';
@@ -76,6 +77,13 @@ export class Combatant {
           new Weapon({ name: 'Langschwert +1', grip: '1h', damageDice: '1w8', crit: '19-20 / x2', enhancement: 1 }),
           new Weapon({ name: 'Kompositbogen', grip: 'rng', damageDice: '1w6', crit: 'x3', enhancement: 0 })
         ];
+
+    // -- ARMORY (D&D 3.5e) --
+    this.armors = Array.isArray(p.armors) ? p.armors.map(a => new Armor(a)) : [];
+    this.autoAC = p.autoAC !== undefined ? !!p.autoAC : false;
+    this.acNatural = p.acNatural !== undefined ? parseInt(p.acNatural) : 0;
+    this.acDeflection = p.acDeflection !== undefined ? parseInt(p.acDeflection) : 0;
+    this.acMisc = p.acMisc !== undefined ? parseInt(p.acMisc) : 0;
 
     // -- SPECIAL (D&D 3.5e) --
     this.dr = p.dr || '';
@@ -188,18 +196,106 @@ export class Combatant {
       this.wil.addModifier(getMod(this.wis), "untyped", "Weisheits-Modifikator");
       this.wil.modifiers[this.wil.modifiers.length - 1].isClass = true;
 
-      // GES (DEX) modifier to AC, AC Touch, and AC Flat (if negative)
-      const dexMod = getMod(this.dex.getValue());
-      
-      this.ac.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
-      this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
+      if (this.autoAC) {
+        this.ac.base = 10;
+        this.acTouch.base = 10;
+        this.acFlat.base = 10;
 
-      this.acTouch.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
-      this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
+        const equippedArmor = this.getEquippedArmor();
+        const equippedShield = this.getEquippedShield();
 
-      if (dexMod < 0) {
-        this.acFlat.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
-        this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
+        const baseDexMod = getMod(this.dex.getValue());
+
+        let maxDexCap = null;
+        if (equippedArmor && typeof equippedArmor.maxDex === 'number' && equippedArmor.maxDex !== null) {
+          maxDexCap = equippedArmor.maxDex;
+        }
+        if (equippedShield && typeof equippedShield.maxDex === 'number' && equippedShield.maxDex !== null) {
+          if (maxDexCap === null || equippedShield.maxDex < maxDexCap) {
+            maxDexCap = equippedShield.maxDex;
+          }
+        }
+
+        const dexMod = maxDexCap !== null ? Math.min(baseDexMod, maxDexCap) : baseDexMod;
+
+        this.ac.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
+        this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
+
+        this.acTouch.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
+        this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
+
+        if (dexMod < 0) {
+          this.acFlat.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
+          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
+        }
+
+        if (equippedArmor) {
+          const name = equippedArmor.name || "Rüstung";
+          this.ac.addModifier(equippedArmor.armorBonus, "armor", name);
+          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
+          this.acFlat.addModifier(equippedArmor.armorBonus, "armor", name);
+          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
+
+          if (equippedArmor.enhancement > 0) {
+            this.ac.addModifier(equippedArmor.enhancement, "enhancement", `${name} (Magisch)`);
+            this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
+            this.acFlat.addModifier(equippedArmor.enhancement, "enhancement", `${name} (Magisch)`);
+            this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
+          }
+        }
+
+        if (equippedShield) {
+          const name = equippedShield.name || "Schild";
+          this.ac.addModifier(equippedShield.armorBonus, "shield", name);
+          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
+          this.acFlat.addModifier(equippedShield.armorBonus, "shield", name);
+          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
+
+          if (equippedShield.enhancement > 0) {
+            this.ac.addModifier(equippedShield.enhancement, "enhancement", `${name} (Magisch)`);
+            this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
+            this.acFlat.addModifier(equippedShield.enhancement, "enhancement", `${name} (Magisch)`);
+            this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
+          }
+        }
+
+        if (this.acNatural !== 0) {
+          this.ac.addModifier(this.acNatural, "natural", "Natürliche Rüstung");
+          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
+          this.acFlat.addModifier(this.acNatural, "natural", "Natürliche Rüstung");
+          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
+        }
+
+        if (this.acDeflection !== 0) {
+          this.ac.addModifier(this.acDeflection, "deflection", "Ablenkungs-Bonus");
+          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
+          this.acTouch.addModifier(this.acDeflection, "deflection", "Ablenkungs-Bonus");
+          this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
+          this.acFlat.addModifier(this.acDeflection, "deflection", "Ablenkungs-Bonus");
+          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
+        }
+
+        if (this.acMisc !== 0) {
+          this.ac.addModifier(this.acMisc, "untyped", "Sonstiger RK-Bonus");
+          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
+          this.acTouch.addModifier(this.acMisc, "untyped", "Sonstiger RK-Bonus");
+          this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
+          this.acFlat.addModifier(this.acMisc, "untyped", "Sonstiger RK-Bonus");
+          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
+        }
+      } else {
+        const dexMod = getMod(this.dex.getValue());
+        
+        this.ac.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
+        this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
+
+        this.acTouch.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
+        this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
+
+        if (dexMod < 0) {
+          this.acFlat.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
+          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
+        }
       }
 
       if (this.zaMisc !== 0) {
@@ -357,7 +453,7 @@ export class Combatant {
 
         // Two-Weapon Defense Feat: +1 shield bonus to AC & Flat-Footed AC when wielding secondary weapon
         if (hasFeat('two_weapon_defense')) {
-          const hasSecWeapon = Array.isArray(this.weapons) && this.weapons.some(w => w.grip === 'sec');
+          const hasSecWeapon = Array.isArray(this.weapons) && this.weapons.some(w => w.grip === 'sec' || (w.isEquipped && (w.hand === 'off' || w.isDoubleWielded)));
           if (hasSecWeapon) {
             this.ac.addModifier(1, "shield", "Zwei-Waffen-Verteidigung");
             this.ac.modifiers[this.ac.modifiers.length - 1].isFeat = true;
@@ -371,25 +467,55 @@ export class Combatant {
 
   _recalculateSpeed() {
     let speedBonus = 0;
+    const armor = this.getEquippedArmor();
+    const shield = this.getEquippedShield();
+    const hasArmor = !!armor;
+    const hasShield = !!shield;
+
     if (this.type === 'p' && Array.isArray(this.classes)) {
       const barbClass = this.classes.find(c => c.classType === 'barbarian');
       if (barbClass && barbClass.level >= 1) {
-        speedBonus += 10;
+        // Barbarian fast movement does not apply in heavy armor.
+        const isHeavy = armor && armor.speedCategory === 'heavy';
+        if (!isHeavy) {
+          speedBonus += 10;
+        }
       }
       
       const monkClass = this.classes.find(c => c.classType === 'monk');
       if (monkClass && monkClass.level >= 3) {
-        const monkLvl = monkClass.level;
-        let monkSpeed = 10;
-        if (monkLvl >= 18) monkSpeed = 60;
-        else if (monkLvl >= 15) monkSpeed = 50;
-        else if (monkLvl >= 12) monkSpeed = 40;
-        else if (monkLvl >= 9) monkSpeed = 30;
-        else if (monkLvl >= 6) monkSpeed = 20;
-        speedBonus += monkSpeed;
+        // Monk fast movement only applies when wearing NO armor and NO shield.
+        if (!hasArmor && !hasShield) {
+          const monkLvl = monkClass.level;
+          let monkSpeed = 10;
+          if (monkLvl >= 18) monkSpeed = 60;
+          else if (monkLvl >= 15) monkSpeed = 50;
+          else if (monkLvl >= 12) monkSpeed = 40;
+          else if (monkLvl >= 9) monkSpeed = 30;
+          else if (monkLvl >= 6) monkSpeed = 20;
+          speedBonus += monkSpeed;
+        }
       }
     }
-    this.bw = (this.baseBw || 30) + speedBonus;
+
+    let baseAndBonus = (this.baseBw !== undefined ? this.baseBw : 30) + speedBonus;
+
+    // Apply speed reduction for medium or heavy armor
+    if (armor && (armor.speedCategory === 'medium' || armor.speedCategory === 'heavy')) {
+      if (baseAndBonus >= 30) {
+        if (baseAndBonus === 30) baseAndBonus = 20;
+        else if (baseAndBonus === 40) baseAndBonus = 30;
+        else if (baseAndBonus === 50) baseAndBonus = 35;
+        else if (baseAndBonus === 60) baseAndBonus = 40;
+        else baseAndBonus = Math.max(20, baseAndBonus - 10);
+      } else {
+        if (baseAndBonus === 20) baseAndBonus = 15;
+        else if (baseAndBonus === 15) baseAndBonus = 10;
+        else baseAndBonus = Math.max(5, baseAndBonus - 5);
+      }
+    }
+
+    this.bw = baseAndBonus;
   }
 
   enterRage() {
@@ -687,6 +813,16 @@ export class Combatant {
     // 3. Misc Modifier
     total += this.getSkillMisc(skillKey);
 
+    // 3.5 Armor Check Penalty (ACP)
+    if (skillDef.hasACP) {
+      const acp = this.getArmorCheckPenalty();
+      if (skillKey === 'swim') {
+        total -= 2 * acp;
+      } else {
+        total -= acp;
+      }
+    }
+
     // 4. Synergy Bonuses
     if (skillKey === 'balance' && this.getSkillRanks('tumble') >= 5) {
       total += 2;
@@ -813,6 +949,11 @@ export class Combatant {
       acFlat: this.acFlat,
       sr: this.sr,
       weapons: this.weapons,
+      armors: this.armors,
+      autoAC: this.autoAC,
+      acNatural: this.acNatural,
+      acDeflection: this.acDeflection,
+      acMisc: this.acMisc,
       dr: this.dr,
       immunities: this.immunities,
       resistances: this.resistances,
@@ -875,5 +1016,24 @@ export class Combatant {
       }
     }
     return w.damageDice;
+  }
+
+  getEquippedArmor() {
+    if (!Array.isArray(this.armors)) return null;
+    return this.armors.find(a => a.isEquipped && !a.isShield) || null;
+  }
+
+  getEquippedShield() {
+    if (!Array.isArray(this.armors)) return null;
+    return this.armors.find(a => a.isEquipped && a.isShield) || null;
+  }
+
+  getArmorCheckPenalty() {
+    let total = 0;
+    const armor = this.getEquippedArmor();
+    if (armor) total += armor.checkPenalty;
+    const shield = this.getEquippedShield();
+    if (shield) total += shield.checkPenalty;
+    return total;
   }
 }
