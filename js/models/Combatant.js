@@ -1,6 +1,7 @@
 import { Stat } from './Stat.js';
 import { Weapon } from './Weapon.js';
 import { Armor } from './Armor.js';
+import { Item } from './Item.js';
 import { CombatSpells, getSpellSchoolCode } from '../spells.js';
 import { BarbarianRules } from '../rules/classes/BarbarianRules.js';
 import { MonkRules } from '../rules/classes/MonkRules.js';
@@ -80,6 +81,7 @@ export class Combatant {
 
     // -- ARMORY (D&D 3.5e) --
     this.armors = Array.isArray(p.armors) ? p.armors.map(a => new Armor(a)) : [];
+    this.items = Array.isArray(p.items) ? p.items.map(i => new Item(i)) : [];
     this.autoAC = p.autoAC !== undefined ? !!p.autoAC : false;
     this.acNatural = p.acNatural !== undefined ? parseInt(p.acNatural) : 0;
     this.acDeflection = p.acDeflection !== undefined ? parseInt(p.acDeflection) : 0;
@@ -161,10 +163,13 @@ export class Combatant {
       this.za, this.ref, this.wil
     ];
     
-    // Clear all previously active spell/buff, class and feat modifiers
+    // Clear all previously active spell/buff, class, feat and item modifiers
     statsList.forEach(s => {
-      s.modifiers = s.modifiers.filter(m => !m.isSpell && !m.isClass && !m.isFeat);
+      s.modifiers = s.modifiers.filter(m => !m.isSpell && !m.isClass && !m.isFeat && !m.isItem);
     });
+
+    // Apply Magic Items Modifiers first (so attributes are updated for saves/AC calculations)
+    this._applyItemModifiers();
 
     // Sync current saves bases to class-level base saving throws
     this.za.base = this.baseZa.getValue();
@@ -182,6 +187,68 @@ export class Combatant {
     this._applyClassModifiers(getMod);
     this._applyFeatModifiers(getMod);
     this._recalculateSpeed();
+  }
+
+  _applyItemModifiers() {
+    if (!Array.isArray(this.items)) return;
+
+    this.items.forEach(item => {
+      if (!item.isEquipped) return;
+
+      const effects = Array.isArray(item.effects) ? item.effects : [];
+      effects.forEach(eff => {
+        const val = parseInt(eff.value) || 0;
+        if (val === 0) return;
+
+        const sourceName = item.name || "Magischer Gegenstand";
+        const type = eff.type;
+        const target = eff.target;
+
+        if (type === 'attribute') {
+          const stat = this[target];
+          if (stat instanceof Stat) {
+            stat.addModifier(val, "enhancement", sourceName);
+            stat.modifiers[stat.modifiers.length - 1].isItem = true;
+          }
+        } 
+        else if (type === 'save') {
+          if (target === 'fort' || target === 'all') {
+            this.za.addModifier(val, "resistance", sourceName);
+            this.za.modifiers[this.za.modifiers.length - 1].isItem = true;
+          }
+          if (target === 'ref' || target === 'all') {
+            this.ref.addModifier(val, "resistance", sourceName);
+            this.ref.modifiers[this.ref.modifiers.length - 1].isItem = true;
+          }
+          if (target === 'wil' || target === 'all') {
+            this.wil.addModifier(val, "resistance", sourceName);
+            this.wil.modifiers[this.wil.modifiers.length - 1].isItem = true;
+          }
+        } 
+        else if (type === 'ac') {
+          if (this.autoAC) {
+            if (target === 'deflection') {
+              this.ac.addModifier(val, "deflection", sourceName);
+              this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
+              this.acTouch.addModifier(val, "deflection", sourceName);
+              this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isItem = true;
+              this.acFlat.addModifier(val, "deflection", sourceName);
+              this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
+            } else if (target === 'natural') {
+              this.ac.addModifier(val, "natural", sourceName);
+              this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
+              this.acFlat.addModifier(val, "natural", sourceName);
+              this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
+            } else if (target === 'armor') {
+              this.ac.addModifier(val, "armor", sourceName);
+              this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
+              this.acFlat.addModifier(val, "armor", sourceName);
+              this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
+            }
+          }
+        }
+      });
+    });
   }
 
   _applyBaseSavingThrowModifiers(getMod) {
@@ -496,6 +563,19 @@ export class Combatant {
           speedBonus += monkSpeed;
         }
       }
+    }
+
+    if (Array.isArray(this.items)) {
+      this.items.forEach(item => {
+        if (item.isEquipped) {
+          const effects = Array.isArray(item.effects) ? item.effects : [];
+          effects.forEach(eff => {
+            if (eff.type === 'speed') {
+              speedBonus += parseInt(eff.value) || 0;
+            }
+          });
+        }
+      });
     }
 
     let baseAndBonus = (this.baseBw !== undefined ? this.baseBw : 30) + speedBonus;
@@ -950,6 +1030,7 @@ export class Combatant {
       sr: this.sr,
       weapons: this.weapons,
       armors: this.armors,
+      items: this.items,
       autoAC: this.autoAC,
       acNatural: this.acNatural,
       acDeflection: this.acDeflection,

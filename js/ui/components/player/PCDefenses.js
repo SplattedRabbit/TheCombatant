@@ -175,8 +175,10 @@ export function renderPCDefenses(pc) {
         <div>
           <label style="font-size:8px; font-weight:600; color:var(--inkl);">Energie-Resistenzen</label>
           <input type="text" value="${pc.resistances || ''}" class="cinput pc-resistances-input" placeholder="Feuer 5..." style="height:14px; font-size:8px;">
-        </div>
       </div>
+      
+      <hr style="border:none; border-top:.5px solid var(--pb); margin:2px 0;">
+
     </div>
   `;
 
@@ -364,4 +366,8 @@ export function renderPCDefenses(pc) {
       showRollBreakdown('Initiative-Wurf', '1W20', items, e);
     };
   }
+
+
 }
+
+

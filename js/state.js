@@ -53,7 +53,14 @@ import {
   togglePCArmorEquip,
   updatePCArmorField,
   setPCAutoAC,
-  togglePCWeaponEquip
+  togglePCWeaponEquip,
+  addPCItem,
+  deletePCItem,
+  updatePCItem,
+  togglePCItemEquip,
+  addPCItemEffect,
+  deletePCItemEffect,
+  updatePCItemEffect
 } from './state/PCManager.js';
 
 import {
@@ -129,6 +136,13 @@ export {
   updatePCArmorField,
   setPCAutoAC,
   togglePCWeaponEquip,
+  addPCItem,
+  deletePCItem,
+  updatePCItem,
+  togglePCItemEquip,
+  addPCItemEffect,
+  deletePCItemEffect,
+  updatePCItemEffect,
   
   updateMeta,
   addCombatant,
@@ -197,6 +211,13 @@ export const CombatState = {
   updatePCArmorField,
   setPCAutoAC,
   togglePCWeaponEquip,
+  addPCItem,
+  deletePCItem,
+  updatePCItem,
+  togglePCItemEquip,
+  addPCItemEffect,
+  deletePCItemEffect,
+  updatePCItemEffect,
   updateMeta,
   addCombatant,
   removeCombatant,

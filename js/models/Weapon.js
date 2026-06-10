@@ -86,7 +86,23 @@ export class Weapon {
     this.enhancement = w.enhancement !== undefined ? parseInt(w.enhancement) : 0;
     this.attackBonus = w.attackBonus !== undefined ? w.attackBonus : ''; // Custom attack offset (e.g. +1 or -2)
     this.isKeen = w.isKeen || false; // Crit threat range doubler
-    this.extraDamage = w.extraDamage || ''; // Extra damage dice (e.g. "1w6 Feuer")
+
+    this.extraDamageDice = w.extraDamageDice || '';
+    this.extraDamageType = w.extraDamageType || '';
+    // Backward compatibility: If legacy extraDamage exists (e.g. "1w6 Feuer") but no extraDamageDice, parse them!
+    if (w.extraDamage && !this.extraDamageDice) {
+      const parts = w.extraDamage.trim().split(/\s+/);
+      const dice = parts[0];
+      const type = parts.slice(1).join(' ');
+      if (/^\d+[wWdD]\d+$/.test(dice)) {
+        this.extraDamageDice = dice;
+        this.extraDamageType = type;
+      } else {
+        this.extraDamageDice = '';
+        this.extraDamageType = w.extraDamage;
+      }
+    }
+
     this.strengthRating = w.strengthRating !== undefined ? parseInt(w.strengthRating) : 0;
 
     this.isEquipped = w.isEquipped || false;
@@ -117,6 +133,13 @@ export class Weapon {
     return def.crit;
   }
 
+  get extraDamage() {
+    if (this.extraDamageDice) {
+      return (this.extraDamageDice + ' ' + (this.extraDamageType || '')).trim();
+    }
+    return this.extraDamageType || '';
+  }
+
   toJSON() {
     return {
       id: this.id,
@@ -126,6 +149,8 @@ export class Weapon {
       attackBonus: this.attackBonus,
       isKeen: this.isKeen,
       extraDamage: this.extraDamage,
+      extraDamageDice: this.extraDamageDice,
+      extraDamageType: this.extraDamageType,
       strengthRating: this.strengthRating,
       gripOverride: this.gripOverride,
       damageDiceOverride: this.damageDiceOverride,

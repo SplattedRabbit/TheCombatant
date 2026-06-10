@@ -1,6 +1,6 @@
 import { getState, getActivePC, StateEvents } from './state-core.js';
 import { saveToStorage } from './StorageManager.js';
-import { Stat, createCombatant, Weapon, Armor } from '../models/model-core.js';
+import { Stat, createCombatant, Weapon, Armor, Item } from '../models/model-core.js';
 import { BABCalculator } from '../rules/BABCalculator.js';
 import { SaveCalculator } from '../rules/SaveCalculator.js';
 import { SpellSlotCalculator } from '../rules/SpellSlotCalculator.js';
@@ -629,6 +629,114 @@ export function setPCAutoAC(val) {
     recalculatePCStats(pc);
     saveToStorage();
     syncPCToHost();
+  }
+}
+
+export function addPCItem() {
+  const pc = getActivePC();
+  if (pc) {
+    if (!Array.isArray(pc.items)) {
+      pc.items = [];
+    }
+    pc.items.push(new Item({
+      name: 'Neuer Gegenstand',
+      slot: 'slotless',
+      isEquipped: false,
+      effects: [{
+        type: 'attribute',
+        target: 'str',
+        value: 0
+      }]
+    }));
+    saveToStorage();
+    syncPCToHost();
+  }
+}
+
+export function deletePCItem(idx) {
+  const pc = getActivePC();
+  if (pc && Array.isArray(pc.items) && pc.items[idx]) {
+    pc.items.splice(idx, 1);
+    recalculatePCStats(pc);
+    saveToStorage();
+    syncPCToHost();
+  }
+}
+
+export function updatePCItem(idx, key, val) {
+  const pc = getActivePC();
+  if (pc && pc.items && pc.items[idx]) {
+    pc.items[idx][key] = val;
+    recalculatePCStats(pc);
+    saveToStorage();
+    syncPCToHost();
+  }
+}
+
+export function togglePCItemEquip(idx) {
+  const pc = getActivePC();
+  if (pc && Array.isArray(pc.items) && pc.items[idx]) {
+    const target = pc.items[idx];
+    const newEquipped = !target.isEquipped;
+
+    if (newEquipped) {
+      if (target.slot !== 'slotless') {
+        pc.items.forEach((item, itemIdx) => {
+          if (itemIdx !== idx && item.slot === target.slot) {
+            item.isEquipped = false;
+          }
+        });
+      }
+    }
+
+    target.isEquipped = newEquipped;
+    recalculatePCStats(pc);
+    saveToStorage();
+    syncPCToHost();
+  }
+}
+
+export function addPCItemEffect(itemIdx) {
+  const pc = getActivePC();
+  if (pc && pc.items && pc.items[itemIdx]) {
+    const item = pc.items[itemIdx];
+    if (!Array.isArray(item.effects)) {
+      item.effects = [];
+    }
+    item.effects.push({
+      type: 'attribute',
+      target: 'str',
+      value: 0
+    });
+    recalculatePCStats(pc);
+    saveToStorage();
+    syncPCToHost();
+  }
+}
+
+export function deletePCItemEffect(itemIdx, effectIdx) {
+  const pc = getActivePC();
+  if (pc && pc.items && pc.items[itemIdx]) {
+    const item = pc.items[itemIdx];
+    if (Array.isArray(item.effects) && item.effects[effectIdx]) {
+      item.effects.splice(effectIdx, 1);
+      recalculatePCStats(pc);
+      saveToStorage();
+      syncPCToHost();
+    }
+  }
+}
+
+export function updatePCItemEffect(itemIdx, effectIdx, key, val) {
+  const pc = getActivePC();
+  if (pc && pc.items && pc.items[itemIdx]) {
+    const item = pc.items[itemIdx];
+    if (Array.isArray(item.effects) && item.effects[effectIdx]) {
+      item.effects[effectIdx][key] = val;
+      recalculatePCStats(pc);
+      saveToStorage();
+      syncPCToHost();
+    }
   }
 }
 
