@@ -1,76 +1,7 @@
-import { WeaponRegistry } from '../models/Weapon.js';
+import { WeaponRegistry, isLightWeapon, matchesFeatOption, isMonkWeapon } from '../models/Weapon.js';
 
 // --- Pure Helper Functions (Module Scope) ---
 
-function isLightWeapon(w) {
-  if (!w) return false;
-  if (typeof w === 'object') {
-    const typeDef = WeaponRegistry[w.type];
-    if (typeDef && typeDef.isLight !== undefined) {
-      return typeDef.isLight;
-    }
-    return isLightWeapon(w.name);
-  }
-  const n = w.toLowerCase().trim();
-  return n.includes('dolch') || n.includes('dagger') ||
-         n.includes('kurzschwert') || n.includes('short sword') ||
-         n.includes('handbeil') || n.includes('handaxe') ||
-         n.includes('keule') || n.includes('mace') ||
-         n.includes('sichel') || n.includes('sickle') ||
-         n.includes('rapier') ||
-         n.includes('peitsche') || n.includes('whip') ||
-         n.includes('dornenkette') || n.includes('spiked chain') ||
-         n.includes('waffenlos') || n.includes('faust') || n.includes('unarmed') ||
-         n.includes('klaue') || n.includes('claw') ||
-         n.includes('biss') || n.includes('bite');
-}
-
-function matchesFeatOption(w, option) {
-  if (!option) return false;
-  const opt = option.toLowerCase().trim();
-  if (w.name && w.name.toLowerCase().includes(opt)) return true;
-  if (w.type) {
-    const typeDef = WeaponRegistry[w.type];
-    if (typeDef) {
-      if (typeDef.key.toLowerCase() === opt ||
-          typeDef.nameDe.toLowerCase() === opt ||
-          typeDef.nameEn.toLowerCase() === opt) {
-        return true;
-      }
-      if (opt === 'langbogen' || opt === 'longbow') {
-        if (typeDef.key === 'comp_longbow') return true;
-      }
-      if (opt === 'kurzbogen' || opt === 'shortbow') {
-        if (typeDef.key === 'comp_shortbow') return true;
-      }
-    }
-  }
-  return false;
-}
-
-function isMonkWeapon(w, grip) {
-  if (!w) return false;
-  if (typeof w === 'object') {
-    const typeDef = WeaponRegistry[w.type];
-    if (typeDef && typeDef.isMonk !== undefined) {
-      return typeDef.isMonk;
-    }
-    return isMonkWeapon(w.name, w.grip);
-  }
-  const name = w;
-  if (grip === 'unarmed') return true;
-  const n = name.toLowerCase().trim();
-  return n.includes('waffenlos') || 
-         n.includes('faust') || 
-         n.includes('unarmed') || 
-         n.includes('kama') || 
-         n.includes('nunchaku') || 
-         n.includes('kampfstab') || 
-         n.includes('quarterstaff') || 
-         n.includes('sai') || 
-         n.includes('shuriken') || 
-         n.includes('siangham');
-}
 
 /**
  * Builds the initial context object gathering and normalizing stats, modifiers, and flags
@@ -86,7 +17,24 @@ function buildContext(pc, weapon, options) {
   const isUnarmed = weapon.grip === 'unarmed';
   const isLight = isLightWeapon(weapon);
 
-  const hasFeat = (featId) => Array.isArray(pc.feats) && pc.feats.some(f => f.id === featId);
+  const hasFeat = (featId) => {
+    if (Array.isArray(pc.feats) && pc.feats.some(f => f.id === featId)) {
+      return true;
+    }
+    const armor = pc.getEquippedArmor ? pc.getEquippedArmor() : null;
+    const speedCategory = armor ? armor.speedCategory : '';
+    const isWearingMediumOrHeavy = speedCategory === 'medium' || speedCategory === 'heavy';
+    if (!isWearingMediumOrHeavy) {
+      const rangerClass = Array.isArray(pc.classes) && pc.classes.find(c => c.classType === 'ranger');
+      const rangerLvl = rangerClass ? rangerClass.level : 0;
+      if (rangerLvl >= 2 && pc.rangerCombatStyle === 'twoweapon') {
+        if (featId === 'two_weapon_fighting' && rangerLvl >= 2) return true;
+        if (featId === 'improved_two_weapon_fighting' && rangerLvl >= 6) return true;
+        if (featId === 'greater_two_weapon_fighting' && rangerLvl >= 11) return true;
+      }
+    }
+    return false;
+  };
   const hasBuff = (spellKey) => Array.isArray(pc.activeBuffs) && pc.activeBuffs.some(b => b.spellKey === spellKey);
 
   const hasPowerAttack = hasFeat('power_attack');
@@ -103,7 +51,7 @@ function buildContext(pc, weapon, options) {
     (weapon.name.toLowerCase().includes('bite') && pc.activeShape === 'bear')
   ));
 
-  const isOffhand = weapon.grip === 'sec' || isSecondary;
+  const isOffhand = weapon.grip === 'sec' || isSecondary || weapon.hand === 'off' || !!options.isOffhandAttack;
 
   return {
     pc,
@@ -271,7 +219,7 @@ function calculateGeneralDmgModifiers(ctx) {
   if (ctx.isMelee && ctx.paPenalty > 0) {
     if (ctx.isOffhand || (ctx.isLight && !ctx.isUnarmed && !ctx.isNatural)) {
       paDmgBonus = 0;
-    } else if (ctx.weapon.grip === '2h') {
+    } else if (ctx.weapon.grip === '2h' && !ctx.weapon.isDoubleWielded) {
       paDmgBonus = ctx.paPenalty * 2;
       generalDmgBreakdown.push({ label: 'Heftiger Angriff (PA 2-Hand x2)', value: paDmgBonus });
     } else {
@@ -303,14 +251,15 @@ function calculateGeneralDmgModifiers(ctx) {
  * Calculates Two-Weapon Fighting penalties and activation flags
  */
 function calculateTWFPenalties(ctx, isFullAttack) {
-  const hasSecWeapon = Array.isArray(ctx.pc.weapons) && ctx.pc.weapons.some(w => w.grip === 'sec');
+  const offhandWeapon = ctx.pc.weapons ? ctx.pc.weapons.find(w => w.id !== ctx.weapon.id && (w.grip === 'sec' || (w.isEquipped && w.hand === 'off'))) : null;
+  const hasSecWeapon = !!offhandWeapon || !!ctx.weapon.isDoubleWielded;
   const isTWFActive = isFullAttack && ctx.isMelee && hasSecWeapon && !ctx.isNatural;
 
   let twfPenalties = { primary: 0, offhand: 0 };
   if (isTWFActive) {
     const hasTWFeat = ctx.hasFeat('two_weapon_fighting');
-    const offhandWeapon = ctx.pc.weapons.find(w => w.grip === 'sec');
-    const isOffhandLight = isLightWeapon(offhandWeapon);
+    const actualOffhandWeapon = ctx.weapon.isDoubleWielded ? ctx.weapon : offhandWeapon;
+    const isOffhandLight = isLightWeapon(actualOffhandWeapon) || (actualOffhandWeapon && actualOffhandWeapon.isDoubleWielded);
     
     if (hasTWFeat) {
       twfPenalties = isOffhandLight ? { primary: -2, offhand: -2 } : { primary: -4, offhand: -4 };
@@ -347,6 +296,25 @@ function applySneakAttack(ctx, baseDmgDice, dmgBreakdown) {
       finalDmgDice = `${finalDmgDice} + ${saDiceCount}w6`;
       if (!dmgBreakdown.some(b => b.label.includes('Hinterhältiger Angriff'))) {
         dmgBreakdown.push({ label: `Hinterhältiger Angriff (${saDiceCount}W6)`, value: 0 });
+      }
+    }
+  }
+  return finalDmgDice;
+}
+
+function buildFinalDamageDiceAndBreakdown(ctx, baseDmgDice, dmgBreakdown, weapon) {
+  let finalDmgDice = applySneakAttack(ctx, baseDmgDice, dmgBreakdown);
+  const extra = weapon ? weapon.extraDamage : null;
+  if (extra) {
+    const cleanExtra = extra.trim();
+    if (cleanExtra) {
+      if (cleanExtra.startsWith('+')) {
+        finalDmgDice = `${finalDmgDice} ${cleanExtra}`;
+      } else {
+        finalDmgDice = `${finalDmgDice} + ${cleanExtra}`;
+      }
+      if (!dmgBreakdown.some(b => b.label === 'Zusatz-Schaden')) {
+        dmgBreakdown.push({ label: 'Zusatz-Schaden', value: extra });
       }
     }
   }
@@ -398,7 +366,7 @@ function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtkBreakdo
       dmgAbilityMod = ctx.strMod;
       dmgAbilityLabel = 'STR (Flurry 1.0x)';
     } else {
-      if (ctx.weapon.grip === '2h') {
+      if (ctx.weapon.grip === '2h' && !ctx.weapon.isDoubleWielded) {
         dmgAbilityMod = Math.floor(ctx.strMod * 1.5);
         dmgAbilityLabel = 'STR (2-Hand * 1.5)';
       } else if (ctx.isOffhand) {
@@ -434,7 +402,7 @@ function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtkBreakdo
       atkBreakdown,
       dmgTotal,
       dmgBreakdown,
-      damageDice: applySneakAttack(ctx, ctx.pc.getWeaponDamageDice(ctx.weapon) || '1w6', dmgBreakdown),
+      damageDice: buildFinalDamageDiceAndBreakdown(ctx, ctx.pc.getWeaponDamageDice(ctx.weapon) || '1w6', dmgBreakdown, ctx.weapon),
       extraDamage: ctx.weapon.extraDamage
     });
   });
@@ -466,7 +434,7 @@ function appendHasteAttack(ctx, generalAtkMod, generalAtkBreakdown, activeAtkPen
   if (ctx.isFlurryingThis) {
     dmgAbilityMod = ctx.strMod;
     dmgAbilityLabel = 'STR (Flurry 1.0x)';
-  } else if (ctx.weapon.grip === '2h') {
+  } else if (ctx.weapon.grip === '2h' && !ctx.weapon.isDoubleWielded) {
     dmgAbilityMod = Math.floor(ctx.strMod * 1.5);
     dmgAbilityLabel = 'STR (2-Hand * 1.5)';
   } else if (ctx.isOffhand) {
@@ -489,7 +457,7 @@ function appendHasteAttack(ctx, generalAtkMod, generalAtkBreakdown, activeAtkPen
     atkBreakdown,
     dmgTotal,
     dmgBreakdown,
-    damageDice: applySneakAttack(ctx, ctx.pc.getWeaponDamageDice(ctx.weapon) || '1w6', dmgBreakdown),
+    damageDice: buildFinalDamageDiceAndBreakdown(ctx, ctx.pc.getWeaponDamageDice(ctx.weapon) || '1w6', dmgBreakdown, ctx.weapon),
     extraDamage: ctx.weapon.extraDamage
   });
 }
@@ -547,7 +515,7 @@ function appendRapidShotAttack(ctx, generalAtkMod, generalAtkBreakdown, activeAt
     atkBreakdown,
     dmgTotal,
     dmgBreakdown,
-    damageDice: applySneakAttack(ctx, ctx.pc.getWeaponDamageDice(ctx.weapon) || '1w6', dmgBreakdown),
+    damageDice: buildFinalDamageDiceAndBreakdown(ctx, ctx.pc.getWeaponDamageDice(ctx.weapon) || '1w6', dmgBreakdown, ctx.weapon),
     extraDamage: ctx.weapon.extraDamage
   });
 }
@@ -593,7 +561,7 @@ function appendFlurryAttacks(ctx, generalAtkMod, generalAtkBreakdown, activeAtkP
       atkBreakdown,
       dmgTotal,
       dmgBreakdown,
-      damageDice: applySneakAttack(ctx, ctx.pc.getWeaponDamageDice(ctx.weapon) || '1w6', dmgBreakdown),
+      damageDice: buildFinalDamageDiceAndBreakdown(ctx, ctx.pc.getWeaponDamageDice(ctx.weapon) || '1w6', dmgBreakdown, ctx.weapon),
       extraDamage: ctx.weapon.extraDamage
     });
   }
@@ -603,11 +571,11 @@ function appendFlurryAttacks(ctx, generalAtkMod, generalAtkBreakdown, activeAtkP
  * Appends Two-Weapon Fighting off-hand attacks to the sequence list
  */
 function appendOffhandAttacks(ctx, twfPenalties, sequence) {
-  const offhandWeapon = ctx.pc.weapons.find(w => w.grip === 'sec');
+  const offhandWeapon = ctx.weapon.isDoubleWielded ? ctx.weapon : (ctx.pc.weapons ? ctx.pc.weapons.find(w => w.id !== ctx.weapon.id && (w.grip === 'sec' || (w.isEquipped && w.hand === 'off'))) : null);
   if (!offhandWeapon) return;
 
   const ohEnh = parseInt(offhandWeapon.enhancement) || 0;
-  const isOhLight = isLightWeapon(offhandWeapon);
+  const isOhLight = isLightWeapon(offhandWeapon) || offhandWeapon.isDoubleWielded;
   
   let ohAtkMod = ohEnh;
   const ohAtkBreakdown = [];
@@ -709,12 +677,12 @@ function appendOffhandAttacks(ctx, twfPenalties, sequence) {
     ];
 
     sequence.push({
-      name: `Nebenhand-Angriff #${index + 1} (${offhandWeapon.name})`,
+      name: ctx.weapon.isDoubleWielded ? `Nebenhand-Angriff #${index + 1} (Nebenseite)` : `Nebenhand-Angriff #${index + 1} (${offhandWeapon.name})`,
       atkTotal,
       atkBreakdown,
       dmgTotal,
       dmgBreakdown,
-      damageDice: applySneakAttack(ctx, ctx.pc.getWeaponDamageDice(offhandWeapon) || '1w6', dmgBreakdown),
+      damageDice: buildFinalDamageDiceAndBreakdown(ctx, ctx.pc.getWeaponDamageDice(offhandWeapon) || '1w6', dmgBreakdown, offhandWeapon),
       extraDamage: offhandWeapon.extraDamage,
       isOffhand: true
     });

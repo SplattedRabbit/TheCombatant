@@ -24,7 +24,7 @@ function renderPlayerTabBar(pc) {
   container.innerHTML = `
     <button class="player-tab-btn ${activeTab === 'overview' ? 'active' : ''}" data-tab="overview">🛡️ Übersicht</button>
     <button class="player-tab-btn ${activeTab === 'skills' ? 'active' : ''}" data-tab="skills">📜 Skills &amp; Talente</button>
-    <button class="player-tab-btn ${activeTab === 'offense' ? 'active' : ''}" data-tab="offense">⚔️ Waffen</button>
+    <button class="player-tab-btn ${activeTab === 'offense' ? 'active' : ''}" data-tab="offense">⚔️ Ausrüstung</button>
     ${spellsTabHtml}
     <button class="player-tab-btn ${activeTab === 'features' ? 'active' : ''}" data-tab="features">🐾 Klasse &amp; Begleiter</button>
     <button class="player-tab-btn" id="btnSystemMenuPlayer">⚙️ System</button>

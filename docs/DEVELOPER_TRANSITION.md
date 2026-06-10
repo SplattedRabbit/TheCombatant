@@ -119,6 +119,10 @@ Folgende Versionen und Meilensteine sind für die Weiterentwicklung fest eingepl
 * **Waffeneffekte:** Unterstützung von Attributen wie *Scharf (Keen)* zur Verdoppelung des Bedrohungsbereichs im UI.
 * **Ausrüstbare Rüstungen & Schilde:** Einbau von ausrüstbaren Gegenständen im Rüstungs-Tab zur automatischen Live-Berechnung von RK (AC), maximalem Geschicklichkeitsbonus und Rüstungsmalus.
 
+### ⚔️ v3.2.1 — Zwei-Waffen-Kampf & Doppelwaffen (Abgeschlossen)
+* **Status:** Erfolgreich implementiert und verifiziert.
+* **Inhalt:** Unterstützung von Haupthand/Nebenhand-Dropdowns, D&D 3.5e Zwei-Waffen-Kampf-Abzüge (inkl. Ranger-Stil-Abhängigkeiten von Rüstung), Warn-Popups und vollständige Doppelwaffen-Funktionalität (z. B. Kampfstab).
+
 ### 🔮 v3.3 — Buff- & Auren-Manager (Targeting-System)
 * **Persönliche Buffs:** Ein Schnellwahl-Panel für eigene Effekte (z. B. *Magierrüstung* [+4 RK], *Stärke des Stiers* [+4 STR]), das die Werte im Bogen temporär anpasst.
 * **Netzwerk-Auren (WebRTC):** Möglichkeit, Buffs (wie *Bardenmusik* oder Paladin-Auren) an verbündete Ziele zu senden. Der Empfänger erhält ein temporäres Icon und berechnet die Effekte reaktiv in seine Würfe ein.
@@ -135,3 +139,8 @@ Folgende Versionen und Meilensteine sind für die Weiterentwicklung fest eingepl
 ### 🐉 v3.6 — Monster-Kompendium (SRD JSON-Integration)
 * **SRD-Import:** Integration einer fertigen, gemeinfreien JSON-Datenbank aller standardmäßigen D&D 3.5e Kreaturen.
 * **Ein-Klick-Begegnungsaufbau:** Der DM kann Gegner per Suche im DM-Screen finden und mit allen Attributen, Rettungswürfen und RK direkt als neue Zeilen in den aktiven Kampf spawnen lassen.
+
+### v3.7 - Beispieldatengenerator (Auswahlmöglichkeiten und Schnellerstellung)
+* **PC-Generator:** Auswahl an Klassen, Völkern, Kulturen, Sprachen, Waffenkampfer-Varianten, Magier-Varianten, Kleriker-Varianten, Schurken-Varianten, Paladin-Varianten, Druiden-Varianten, Hexenmeister-Varianten, Barden-Varianten und mehr (alles aus dem SRD).
+* **NPC-Generator:** Generiere NPCs basierend auf ihrer Rolle (Händler, Wache, König, Königin, Prinz, Prinzessin, etc.) und ihrer Kultur.
+* **Monster-Generator:** Generiere Monster basierend auf ihrem Typ (Tier, humanoider Feind, Elementar, etc.) und ihrer Umgebung (Wald, Stadt, Dungeon, etc.).

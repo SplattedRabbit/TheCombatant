@@ -171,7 +171,7 @@ export function showCustomAlert(title, message, buttonText = "Verstanden", icon 
   document.addEventListener('keydown', keyHandler);
 }
 
-export function showCustomConfirm(title, message, onConfirm) {
+export function showCustomConfirm(title, message, onConfirm, onCancel) {
   const existing = document.getElementById('customConfirmOverlay');
   if (existing) existing.remove();
 
@@ -262,7 +262,10 @@ export function showCustomConfirm(title, message, onConfirm) {
     if (typeof onConfirm === 'function') onConfirm();
   };
 
-  noBtn.onclick = dismiss;
+  noBtn.onclick = () => {
+    dismiss();
+    if (typeof onCancel === 'function') onCancel();
+  };
 
   yesBtn.onmouseenter = () => {
     yesBtn.style.backgroundColor = 'rgba(139, 26, 26, 0.2)';

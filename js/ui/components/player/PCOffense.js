@@ -1,10 +1,13 @@
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { getAblMod, formatMod } from './PCUtils.js';
-import { showAttackChoiceDialog, showRollBreakdown, showCustomAlert } from '../dialogs.js';
+import { showAttackChoiceDialog, showRollBreakdown, showCustomAlert, showCustomConfirm } from '../dialogs.js';
 import { MonkRules } from '../../../rules/classes/MonkRules.js';
-import { WeaponRegistry } from '../../../models/Weapon.js';
+import { WeaponRegistry, isLightWeapon, matchesFeatOption, isMonkWeapon, getCritThreatDisplay } from '../../../models/Weapon.js';
 import { AttackEngine } from '../../../rules/AttackEngine.js';
+import { ARMOR_REGISTRY } from '../../../data/armor-data.js';
+
+export { isLightWeapon, getCritThreatDisplay };
 
 const openDrawerIds = new Set();
 const weaponRuntimeIds = new WeakMap();
@@ -15,61 +18,6 @@ function getWeaponRuntimeId(w) {
     weaponRuntimeIds.set(w, ++weaponIdCounter);
   }
   return weaponRuntimeIds.get(w);
-}
-
-function isMonkWeapon(w, grip) {
-  if (!w) return false;
-  if (typeof w === 'object') {
-    const typeDef = WeaponRegistry[w.type];
-    if (typeDef && typeDef.isMonk !== undefined) {
-      return typeDef.isMonk;
-    }
-    return isMonkWeapon(w.name, w.grip);
-  }
-  const name = w;
-  if (grip === 'unarmed') return true;
-  const n = name.toLowerCase().trim();
-  return n.includes('waffenlos') || 
-         n.includes('faust') || 
-         n.includes('unarmed') || 
-         n.includes('kama') || 
-         n.includes('nunchaku') || 
-         n.includes('kampfstab') || 
-         n.includes('quarterstaff') || 
-         n.includes('sai') || 
-         n.includes('shuriken') || 
-         n.includes('siangham');
-}
-
-function matchesFeatOption(w, option) {
-  if (!option) return false;
-  const opt = option.toLowerCase().trim();
-
-  // 1. Backwards compatibility / custom name matching
-  if (w.name && w.name.toLowerCase().includes(opt)) {
-    return true;
-  }
-
-  // 2. Type-based matching
-  if (w.type) {
-    const typeDef = WeaponRegistry[w.type];
-    if (typeDef) {
-      if (typeDef.key.toLowerCase() === opt ||
-          typeDef.nameDe.toLowerCase() === opt ||
-          typeDef.nameEn.toLowerCase() === opt) {
-        return true;
-      }
-      
-      // Special: composite bows and normal bows count as the same weapon for feats in 3.5e
-      if (opt === 'langbogen' || opt === 'longbow') {
-        if (typeDef.key === 'comp_longbow') return true;
-      }
-      if (opt === 'kurzbogen' || opt === 'shortbow') {
-        if (typeDef.key === 'comp_shortbow') return true;
-      }
-    }
-  }
-  return false;
 }
 
 function getWeaponFeatModifiers(w, pc) {
@@ -114,52 +62,6 @@ function getWeaponFeatModifiers(w, pc) {
   });
   
   return { atkBonus, dmgBonus, details };
-}
-
-export function getCritThreatDisplay(critStr, isKeen) {
-  if (!critStr) return '20 / x2';
-  if (!isKeen) return critStr;
-  
-  const parts = critStr.split('/');
-  const threatPart = parts[0].trim();
-  const multiplierPart = parts[1] ? parts[1].trim() : 'x2';
-  
-  if (threatPart === '20') {
-    return `19-20 / ${multiplierPart}`;
-  } else if (threatPart.includes('-')) {
-    const range = threatPart.split('-');
-    const min = parseInt(range[0]);
-    const max = parseInt(range[1]) || 20;
-    if (!isNaN(min) && !isNaN(max)) {
-      const count = max - min + 1;
-      const newMin = max - (count * 2) + 1;
-      return `${newMin}-20 / ${multiplierPart}`;
-    }
-  }
-  return critStr;
-}
-
-export function isLightWeapon(w) {
-  if (!w) return false;
-  if (typeof w === 'object') {
-    const typeDef = WeaponRegistry[w.type];
-    if (typeDef && typeDef.isLight !== undefined) {
-      return typeDef.isLight;
-    }
-    return isLightWeapon(w.name);
-  }
-  const n = w.toLowerCase().trim();
-  return n.includes('dolch') || n.includes('dagger') ||
-         n.includes('kurzschwert') || n.includes('short sword') ||
-         n.includes('handbeil') || n.includes('handaxe') ||
-         n.includes('keule') || n.includes('mace') ||
-         n.includes('sichel') || n.includes('sickle') ||
-         n.includes('rapier') ||
-         n.includes('peitsche') || n.includes('whip') ||
-         n.includes('dornenkette') || n.includes('spiked chain') ||
-         n.includes('waffenlos') || n.includes('faust') || n.includes('unarmed') ||
-         n.includes('klaue') || n.includes('claw') ||
-         n.includes('biss') || n.includes('bite');
 }export function renderPCOffense(pc) {
   const offense = document.getElementById('pcOffense');
   if (!offense) return;
@@ -172,26 +74,188 @@ export function isLightWeapon(w) {
   const hasCombatExpertise = pc.feats && pc.feats.some(f => f.id === 'combat_expertise');
   const cePenalty = hasCombatExpertise ? Math.min(Math.min(5, babVal), parseInt(pc.combatExpertisePenalty) || 0) : 0;
 
-  // Render headers and sliders
-  offense.innerHTML = _renderGlobalCombatSettingsHtml(pc, babVal, paPenalty, cePenalty, hasPowerAttack, hasCombatExpertise);
+  // Render Left Column (pcOffense): Visual Slots + Global Settings
+  offense.innerHTML = _renderLeftColumnHtml(pc, babVal, paPenalty, cePenalty, hasPowerAttack, hasCombatExpertise);
+  _bindLeftColumnEvents(offense, pc, babVal, hasPowerAttack, hasCombatExpertise);
 
-  // Bind settings listeners
-  _bindGlobalCombatSettingsEvents(offense, pc, babVal, hasPowerAttack, hasCombatExpertise);
+  // If in Wild Shape, render natural attacks inside pcOffense as well
+  if (pc.activeShape !== "none") {
+    const natList = offense.querySelector('#pcNaturalAttacksList');
+    if (natList) {
+      _renderNaturalAttacksList(natList, pc);
+    }
+  }
 
-  const listContainer = offense.querySelector('#pcWeaponsList');
-  if (listContainer) {
+  // Render Right Column (pcArmorPanel): Stash / Inventory (Rucksack)
+  const armorPanel = document.getElementById('pcArmorPanel');
+  if (armorPanel) {
     if (pc.activeShape !== "none") {
-      _renderNaturalAttacksList(listContainer, pc);
+      armorPanel.innerHTML = `
+        <div class="phdr"><h2>🎒 Rucksack &amp; Inventar</h2></div>
+        <div class="pbody" style="padding: 20px; text-align: center; font-style: italic; color: var(--inkl);">
+          In wilder Gestalt (Wild Shape) ist deine Ausrüstung inaktiv.
+        </div>
+      `;
     } else {
-      _renderInventoryWeaponsList(listContainer, pc);
+      _renderRightColumnHtml(armorPanel, pc);
     }
   }
 }
 
-function _renderGlobalCombatSettingsHtml(pc, babVal, paPenalty, cePenalty, hasPowerAttack, hasCombatExpertise) {
+function _getRarityStyle(enhancement) {
+  return {
+    border: '1.5px solid var(--pb)',
+    background: 'rgba(200, 169, 110, 0.04)',
+    boxShadow: 'inset 0 0 8px rgba(200, 169, 110, 0.05)',
+    glowClass: ''
+  };
+}
+
+function _renderLeftColumnHtml(pc, babVal, paPenalty, cePenalty, hasPowerAttack, hasCombatExpertise) {
+  const equippedWeapons = Array.isArray(pc.weapons) ? pc.weapons.filter(w => w.isEquipped) : [];
+  const mainHandWeapon = equippedWeapons.find(w => w.hand === 'main') || equippedWeapons.find(w => w.hand !== 'off') || null;
+  let offHandWeapon = equippedWeapons.find(w => w.hand === 'off' || w.grip === 'sec') || null;
+  let isDoubleWielded = false;
+  if (mainHandWeapon && mainHandWeapon.isDoubleWielded) {
+    offHandWeapon = mainHandWeapon;
+    isDoubleWielded = true;
+  }
+  
+  const equippedArmor = Array.isArray(pc.armors) ? pc.armors.find(a => a.isEquipped && !a.isShield) : null;
+  const equippedShield = Array.isArray(pc.armors) ? pc.armors.find(a => a.isEquipped && a.isShield) : null;
+
+  const mainStyle = _getRarityStyle(mainHandWeapon ? mainHandWeapon.enhancement : 0);
+  const armorStyle = _getRarityStyle(equippedArmor ? equippedArmor.enhancement : 0);
+  const offStyle = _getRarityStyle(equippedShield ? equippedShield.enhancement : (offHandWeapon ? offHandWeapon.enhancement : 0));
+
+  // Haupthand Slot
+  let mainHandHtml = `
+    <div style="font-size:14px; color:var(--inkl); margin-bottom:1px; opacity:0.6;">⚔️</div>
+    <div style="font-size:7.5px; color:var(--inkl); font-weight:bold; text-transform:uppercase; font-family:'IM Fell English SC', serif;">Haupthand</div>
+    <div style="font-size:7px; color:var(--inkm); font-style:italic;">(Unbewaffnet)</div>
+  `;
+  if (mainHandWeapon) {
+    const seq = AttackEngine.calculateAttackSequence(pc, mainHandWeapon, false);
+    const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
+    const hasImprovedCritical = pc.feats && pc.feats.some(f => 
+      (f.id === 'improved_critical' || f.id === 'verbesserter_kritischer_treffer') &&
+      matchesFeatOption(mainHandWeapon, f.option)
+    );
+    const isDoubleThreat = mainHandWeapon.isKeen || hasImprovedCritical;
+    const doubledCritDisplay = getCritThreatDisplay(mainHandWeapon.crit, isDoubleThreat);
+    const dmgDice = pc.getWeaponDamageDice(mainHandWeapon) || '1w6';
+    const extraDamage = mainHandWeapon.extraDamage ? ` + ${mainHandWeapon.extraDamage}` : '';
+
+    mainHandHtml = `
+      <button class="unequip-slot-btn mainhand-unequip" data-idx="${pc.weapons.indexOf(mainHandWeapon)}" style="position:absolute; top:2px; right:4px; border:none; background:transparent; font-size:7.5px; cursor:pointer; color:var(--red); padding:0;" title="Ablegen">✕</button>
+      <div style="font-size:6.5px; color:var(--inkl); font-weight:bold; text-transform:uppercase; font-family:'IM Fell English SC', serif; margin-bottom:1px; opacity:0.8;">Haupthand</div>
+      <div class="equipped-title-w-${pc.weapons.indexOf(mainHandWeapon)}" style="font-family:'Crimson Text',serif; font-size:9.5px; font-weight:bold; color:var(--red); text-shadow:0 0 1px rgba(139,26,26,0.1); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${mainHandWeapon.name}">${mainHandWeapon.name}</div>
+      <div style="font-size:7px; color:var(--inkm); margin:1px 0 3px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${dmgDice}${extraDamage} • ${doubledCritDisplay}">${dmgDice}${extraDamage} • ${doubledCritDisplay}</div>
+      <div style="display:flex; gap:2px; width:100%; justify-content:center; align-items:center;">
+        <button class="xbtn xbtn-dmg roll-atk-btn" ${pc.isTotalDefense ? 'disabled' : ''} style="padding:1px 2px; font-size:6.5px; font-weight:bold; flex:1; white-space:nowrap; height:15px; line-height:1; ${pc.isTotalDefense ? 'opacity:0.4; cursor:not-allowed;' : ''}" title="Angriff ausführen">
+          ATK (${formatMod(stdAtkObj.atkTotal)}) 🎲
+        </button>
+        <button class="xbtn xbtn-heal roll-dmg-btn" ${pc.isTotalDefense ? 'disabled' : ''} style="padding:1px 2px; font-size:6.5px; font-weight:bold; flex:1; border-color:#2a6a2a; color:#1a4a1a; white-space:nowrap; height:15px; line-height:1; ${pc.isTotalDefense ? 'opacity:0.4; cursor:not-allowed;' : ''}">DMG (${formatMod(stdAtkObj.dmgTotal)})</button>
+      </div>
+    `;
+  }
+
+  // Rüstung Slot
+  let armorHtml = `
+    <div style="font-size:14px; color:var(--inkl); margin-bottom:1px; opacity:0.6;">👕</div>
+    <div style="font-size:7.5px; color:var(--inkl); font-weight:bold; text-transform:uppercase; font-family:'IM Fell English SC', serif;">Rüstung</div>
+    <div style="font-size:7px; color:var(--inkm); font-style:italic;">(Keine)</div>
+  `;
+  if (equippedArmor) {
+    const maxDexDisplay = equippedArmor.maxDex !== null ? equippedArmor.maxDex : '—';
+    armorHtml = `
+      <button class="unequip-slot-btn armor-unequip" data-idx="${pc.armors.indexOf(equippedArmor)}" style="position:absolute; top:2px; right:4px; border:none; background:transparent; font-size:7.5px; cursor:pointer; color:var(--red); padding:0;" title="Ablegen">✕</button>
+      <div style="font-size:6.5px; color:var(--inkl); font-weight:bold; text-transform:uppercase; font-family:'IM Fell English SC', serif; margin-bottom:1px; opacity:0.8;">Rüstung</div>
+      <div class="equipped-title-a-${pc.armors.indexOf(equippedArmor)}" style="font-family:'Crimson Text',serif; font-size:9.5px; font-weight:bold; color:var(--red); text-shadow:0 0 1px rgba(139,26,26,0.1); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${equippedArmor.name || equippedArmor.typeDef?.nameDe || 'Rüstung'}">${equippedArmor.name || equippedArmor.typeDef?.nameDe || 'Rüstung'}</div>
+      <div style="font-size:7.5px; color:var(--inkm); margin-top:2px; line-height:1.2;">+${equippedArmor.armorBonus} RK</div>
+      <div style="font-size:6.5px; color:var(--inkm); line-height:1;">Dex-Lim: ${maxDexDisplay} | Malus: -${equippedArmor.checkPenalty}</div>
+    `;
+  }
+
+  // Nebenhand Slot
+  let offHandHtml = `
+    <div style="font-size:14px; color:var(--inkl); margin-bottom:1px; opacity:0.6;">🛡️</div>
+    <div style="font-size:7.5px; color:var(--inkl); font-weight:bold; text-transform:uppercase; font-family:'IM Fell English SC', serif;">Nebenhand</div>
+    <div style="font-size:7px; color:var(--inkm); font-style:italic;">(Leer)</div>
+  `;
+  if (equippedShield) {
+    offHandHtml = `
+      <button class="unequip-slot-btn shield-unequip" data-idx="${pc.armors.indexOf(equippedShield)}" style="position:absolute; top:2px; right:4px; border:none; background:transparent; font-size:7.5px; cursor:pointer; color:var(--red); padding:0;" title="Ablegen">✕</button>
+      <div style="font-size:6.5px; color:var(--inkl); font-weight:bold; text-transform:uppercase; font-family:'IM Fell English SC', serif; margin-bottom:1px; opacity:0.8;">Nebenhand</div>
+      <div class="equipped-title-a-${pc.armors.indexOf(equippedShield)}" style="font-family:'Crimson Text',serif; font-size:9.5px; font-weight:bold; color:var(--red); text-shadow:0 0 1px rgba(139,26,26,0.1); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${equippedShield.name || equippedShield.typeDef?.nameDe || 'Schild'}">${equippedShield.name || equippedShield.typeDef?.nameDe || 'Schild'}</div>
+      <div style="font-size:7.5px; color:var(--inkm); margin-top:2px; line-height:1.2;">+${equippedShield.armorBonus} RK (Schild)</div>
+      <div style="font-size:6.5px; color:var(--inkm); line-height:1;">Malus: -${equippedShield.checkPenalty}</div>
+    `;
+  } else if (offHandWeapon) {
+    const seq = AttackEngine.calculateAttackSequence(pc, offHandWeapon, false, { isOffhandAttack: true });
+    const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
+    const hasImprovedCritical = pc.feats && pc.feats.some(f => 
+      (f.id === 'improved_critical' || f.id === 'verbesserter_kritischer_treffer') &&
+      matchesFeatOption(offHandWeapon, f.option)
+    );
+    const isDoubleThreat = offHandWeapon.isKeen || hasImprovedCritical;
+    const doubledCritDisplay = getCritThreatDisplay(offHandWeapon.crit, isDoubleThreat);
+    const dmgDice = pc.getWeaponDamageDice(offHandWeapon) || '1w6';
+    const extraDamage = offHandWeapon.extraDamage ? ` + ${offHandWeapon.extraDamage}` : '';
+    
+    const offhandLabel = isDoubleWielded ? 'Nebenhand (Nebenseite)' : 'Nebenhand';
+
+    offHandHtml = `
+      <button class="unequip-slot-btn offhand-unequip" data-idx="${pc.weapons.indexOf(offHandWeapon)}" style="position:absolute; top:2px; right:4px; border:none; background:transparent; font-size:7.5px; cursor:pointer; color:var(--red); padding:0;" title="Ablegen">✕</button>
+      <div style="font-size:6.5px; color:var(--inkl); font-weight:bold; text-transform:uppercase; font-family:'IM Fell English SC', serif; margin-bottom:1px; opacity:0.8;">${offhandLabel}</div>
+      <div class="equipped-title-w-${pc.weapons.indexOf(offHandWeapon)}" style="font-family:'Crimson Text',serif; font-size:9.5px; font-weight:bold; color:var(--red); text-shadow:0 0 1px rgba(139,26,26,0.1); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${offHandWeapon.name}">${isDoubleWielded ? offHandWeapon.name + ' (Nebenseite)' : offHandWeapon.name}</div>
+      <div style="font-size:7px; color:var(--inkm); margin:1px 0 3px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${dmgDice}${extraDamage} • ${doubledCritDisplay}">${dmgDice}${extraDamage} • ${doubledCritDisplay}</div>
+      <div style="display:flex; gap:2px; width:100%; justify-content:center; align-items:center;">
+        <button class="xbtn xbtn-dmg roll-atk-btn" ${pc.isTotalDefense ? 'disabled' : ''} style="padding:1px 2px; font-size:6.5px; font-weight:bold; flex:1; white-space:nowrap; height:15px; line-height:1; ${pc.isTotalDefense ? 'opacity:0.4; cursor:not-allowed;' : ''}" title="Angriff ausführen">
+          ATK (${formatMod(stdAtkObj.atkTotal)}) 🎲
+        </button>
+        <button class="xbtn xbtn-heal roll-dmg-btn" ${pc.isTotalDefense ? 'disabled' : ''} style="padding:1px 2px; font-size:6.5px; font-weight:bold; flex:1; border-color:#2a6a2a; color:#1a4a1a; white-space:nowrap; height:15px; line-height:1; ${pc.isTotalDefense ? 'opacity:0.4; cursor:not-allowed;' : ''}">DMG (${formatMod(stdAtkObj.dmgTotal)})</button>
+      </div>
+    `;
+  }
+
+  let activeSlotsAreaHtml = `
+    <div style="display:flex; justify-content:center; gap:8px; margin-bottom:10px; padding:6px; background:rgba(200, 169, 110, 0.04); border:0.5px solid var(--pb); border-radius:4px;">
+      <!-- Main Hand Slot -->
+      <div class="arpg-slot main-hand-slot ${mainStyle.glowClass}" style="position:relative; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:82px; border:${mainStyle.border}; border-radius:4px; padding:5px 6px; text-align:center; background:${mainStyle.background}; box-shadow:${mainStyle.boxShadow}; transition:all 0.15s ease-out;">
+        ${mainHandHtml}
+      </div>
+      <!-- Armor Slot -->
+      <div class="arpg-slot armor-slot ${armorStyle.glowClass}" style="position:relative; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:82px; border:${armorStyle.border}; border-radius:4px; padding:5px 6px; text-align:center; background:${armorStyle.background}; box-shadow:${armorStyle.boxShadow}; transition:all 0.15s ease-out;">
+        ${armorHtml}
+      </div>
+      <!-- Off Hand Slot -->
+      <div class="arpg-slot off-hand-slot ${offStyle.glowClass}" style="position:relative; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:82px; border:${offStyle.border}; border-radius:4px; padding:5px 6px; text-align:center; background:${offStyle.background}; box-shadow:${offStyle.boxShadow}; transition:all 0.15s ease-out;">
+        ${offHandHtml}
+      </div>
+    </div>
+  `;
+
+  if (pc.activeShape !== "none") {
+    activeSlotsAreaHtml = `
+      <div style="background:rgba(200, 169, 110, 0.04); border:0.5px solid var(--pb); border-radius:4px; padding:8px 10px; text-align:center; font-style:italic; color:var(--inkl); font-family:'IM Fell English SC', serif; font-size:9px; margin-bottom:8px;">
+        In wilder Gestalt (Wild Shape) ist deine normale Ausrüstung inaktiv. Verwende deine natürlichen Waffen.
+      </div>
+      <div style="font-family:'IM Fell English SC', serif; font-size:7.5px; color:var(--inkl); padding-bottom:2px; border-bottom:0.5px solid var(--pb); margin-bottom:4px; font-weight:bold;">
+        🐾 Natürliche Angriffe
+      </div>
+      <div id="pcNaturalAttacksList" style="display:flex; flex-direction:column; gap:4px; margin-bottom:10px;"></div>
+    `;
+  }
+
   return `
-    <div class="phdr"><h2>⚔️ Waffenkammer &amp; Angriff</h2></div>
+    <div class="phdr"><h2>⚔️ Aktive Ausrüstung &amp; Kampf</h2></div>
     <div class="pbody" style="display:flex; flex-direction:column; gap:4px;">
+      
+      <!-- Visual Equipment Slots -->
+      ${activeSlotsAreaHtml}
+
+      <!-- Combat Settings -->
       ${hasPowerAttack ? `
         <div style="background: rgba(139, 26, 26, 0.05); border: 0.5px solid var(--pb); border-radius: 3px; padding: 4px 8px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; font-family: 'IM Fell English SC', serif; font-size: 8.5px;">
           <span style="color: var(--red); font-weight: bold;">⚔️ Heftiger Angriff (Power Attack)</span>
@@ -234,33 +298,42 @@ function _renderGlobalCombatSettingsHtml(pc, babVal, paPenalty, cePenalty, hasPo
           🛡️ Volle Abwehr aktiv — keine Angriffe möglich!
         </div>
       ` : ''}
-      
-      <div style="display:grid; grid-template-columns: 80px 95px 90px 30px 1fr 18px 18px; gap:2px; font-family:'IM Fell English SC', serif; font-size:7.5px; color:var(--inkl); padding-bottom:2px;">
-        <span>Waffe (Name)</span><span>Gattung</span><span style="text-align:center;">Eigenschaften</span><span style="text-align:center;">Effkt</span><span>Angriff &amp; Schaden</span><span></span><span></span>
-      </div>
-      
-      <div id="pcWeaponsList" style="display:flex; flex-direction:column; gap:4px;"></div>
-      
-      ${pc.activeShape === "none" ? `
-        <div style="display:flex; justify-content:flex-end; margin-top:4px;">
-          <button class="btn btn-add-weapon" style="font-family:'IM Fell English SC', serif; font-size:8px; padding:2px 8px;">➕ Neue Waffe hinzufügen</button>
+
+      <!-- Regelwerk-Referenz Guide -->
+      <div style="margin-top: 10px; border-top: 1px double var(--pb); padding-top: 8px;">
+        <div style="font-family: 'IM Fell English SC', serif; font-size: 9px; font-weight: bold; color: var(--red); margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+          📜 Regelwerk-Referenz (D&D 3.5 RAW)
         </div>
-      ` : ''}
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 7.5px; font-family: 'Crimson Text', serif; line-height: 1.25; color: var(--ink);">
+          
+          <!-- Waffen-Eigenschaften Column -->
+          <div style="background: rgba(200, 169, 110, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.15); border-radius: 3px; padding: 5px;">
+            <div style="font-weight: bold; color: var(--red); border-bottom: 0.5px solid rgba(200, 169, 110, 0.2); margin-bottom: 4px; padding-bottom: 1px; font-family: 'IM Fell English SC', serif; font-size: 8px;">⚔️ Waffen-Werte</div>
+            <ul style="margin: 0; padding-left: 10px; display: flex; flex-direction: column; gap: 3px; list-style-type: square;">
+              <li><strong>Zusatz-Atk:</strong> Manueller Bonus auf Angriffe (z.B. durch <em>Waffenfokus</em> <code>+1</code>, Magie oder Meisterarbeit).</li>
+              <li><strong>Scharf (Keen):</strong> Verdoppelt den kritischen Bedrohungsbereich (z.B. 19-20 wird zu 17-20). Stackt <u>nicht</u> mit dem Talent <em>Verbesserter Kritischer Treffer</em>.</li>
+              <li><strong>Grip-Abw. (Händigkeit):</strong> Überschreibt die Trageweise: Einhändig (1H), Zweihändig (2H: gewährt 1.5x Stärkebonus auf Schaden), Schildhand (Sec: Zweitwaffe), Fernkampf (Rng) oder Waffenlos (Unarmed).</li>
+              <li><strong>Schadens-Abw.:</strong> Überschreibt den Basis-Schadenswürfel der Waffe (z.B. <code>1w8</code>, <code>2w6</code>).</li>
+              <li><strong>Krit-Abw.:</strong> Überschreibt den kritischen Multiplikator und Bedrohungsbereich (z.B. <code>20 / x3</code>).</li>
+            </ul>
+          </div>
+          
+          <!-- Rüstungs-Eigenschaften Column -->
+          <div style="background: rgba(200, 169, 110, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.15); border-radius: 3px; padding: 5px;">
+            <div style="font-weight: bold; color: var(--red); border-bottom: 0.5px solid rgba(200, 169, 110, 0.2); margin-bottom: 4px; padding-bottom: 1px; font-family: 'IM Fell English SC', serif; font-size: 8px;">🛡️ Rüstungs-Werte</div>
+            <ul style="margin: 0; padding-left: 10px; display: flex; flex-direction: column; gap: 3px; list-style-type: square;">
+              <li><strong>RK-Abw.:</strong> Überschreibt den Rüstungsbonus. Gleiche Rüstungsboni stacken nicht (z.B. Magische Rüstung und Zauber <em>Mage Armor</em>).</li>
+              <li><strong>MaxDex (Max. Geschick):</strong> Begrenzt den Geschicklichkeitsbonus auf die Rüstungsklasse (RK), da schwere Rüstung die Ausweichfähigkeit einschränkt.</li>
+              <li><strong>Malus-Abw.:</strong> Rüstungsmalus auf Fertigkeiten für Stärke und Geschicklichkeit (Akrobatik, Klettern etc.). Doppelt beim Schwimmen.</li>
+              <li><strong>Zauberpatzer-Abw.:</strong> Prozentuale Chance, dass ein arkaner Gestenzauber (Somatic) fehlschlägt. Gilt nicht für göttliche Magie.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
     </div>
 
     <!-- Datalists for autocompletes in drawer -->
-    <datalist id="dice-options">
-      <option value="1w3">
-      <option value="1w4">
-      <option value="1w6">
-      <option value="1w8">
-      <option value="1w10">
-      <option value="1w12">
-      <option value="2w4">
-      <option value="2w6">
-      <option value="2w8">
-      <option value="2w10">
-    </datalist>
     <datalist id="crit-options">
       <option value="20 / x2">
       <option value="20 / x3">
@@ -275,24 +348,216 @@ function _renderGlobalCombatSettingsHtml(pc, babVal, paPenalty, cePenalty, hasPo
   `;
 }
 
-function _bindGlobalCombatSettingsEvents(offense, pc, babVal, hasPowerAttack, hasCombatExpertise) {
-  // Bind Power Attack input if active
-  if (hasPowerAttack) {
-    offense.querySelector('.power-attack-input').onchange = (e) => {
-      const val = Math.max(0, Math.min(babVal, parseInt(e.target.value) || 0));
-      CombatState.updatePCField('powerAttackPenalty', val);
+function _bindLeftColumnEvents(offense, pc, babVal, hasPowerAttack, hasCombatExpertise) {
+  _bindGlobalCombatSettingsEvents(offense, pc, babVal, hasPowerAttack, hasCombatExpertise);
+
+  const equippedWeapons = Array.isArray(pc.weapons) ? pc.weapons.filter(w => w.isEquipped) : [];
+  const mainHandWeapon = equippedWeapons.find(w => w.hand === 'main') || equippedWeapons.find(w => w.hand !== 'off') || null;
+  let offHandWeapon = equippedWeapons.find(w => w.hand === 'off' || w.grip === 'sec') || null;
+  let isDoubleWielded = false;
+  if (mainHandWeapon && mainHandWeapon.isDoubleWielded) {
+    offHandWeapon = mainHandWeapon;
+    isDoubleWielded = true;
+  }
+  
+  const equippedArmor = Array.isArray(pc.armors) ? pc.armors.find(a => a.isEquipped && !a.isShield) : null;
+  const equippedShield = Array.isArray(pc.armors) ? pc.armors.find(a => a.isEquipped && a.isShield) : null;
+
+  const mainUnequip = offense.querySelector('.mainhand-unequip');
+  if (mainUnequip) {
+    mainUnequip.onclick = () => {
+      const idx = pc.weapons.indexOf(mainHandWeapon);
+      CombatState.togglePCWeaponEquip(idx);
       uiRegistry.renderPlayerScreen();
     };
   }
 
-  // Bind Combat Expertise input if active
-  if (hasCombatExpertise) {
-    offense.querySelector('.combat-expertise-input').onchange = (e) => {
-      const limit = Math.min(5, babVal);
-      const val = Math.max(0, Math.min(limit, parseInt(e.target.value) || 0));
-      CombatState.updatePCField('combatExpertisePenalty', val);
+  const offUnequip = offense.querySelector('.offhand-unequip');
+  if (offUnequip) {
+    offUnequip.onclick = () => {
+      const idx = pc.weapons.indexOf(offHandWeapon);
+      CombatState.togglePCWeaponEquip(idx);
       uiRegistry.renderPlayerScreen();
     };
+  }
+
+  const armorUnequip = offense.querySelector('.armor-unequip');
+  if (armorUnequip) {
+    armorUnequip.onclick = () => {
+      const idx = pc.armors.indexOf(equippedArmor);
+      CombatState.togglePCArmorEquip(idx);
+      uiRegistry.renderPlayerScreen();
+    };
+  }
+
+  const shieldUnequip = offense.querySelector('.shield-unequip');
+  if (shieldUnequip) {
+    shieldUnequip.onclick = () => {
+      const idx = pc.armors.indexOf(equippedShield);
+      CombatState.togglePCArmorEquip(idx);
+      uiRegistry.renderPlayerScreen();
+    };
+  }
+
+  // Bind Roll Buttons in Haupthand Slot
+  const mainSlot = offense.querySelector('.main-hand-slot');
+  if (mainSlot && mainHandWeapon) {
+    const atkBtn = mainSlot.querySelector('.roll-atk-btn');
+    if (atkBtn) {
+      atkBtn.onclick = (e) => {
+        if (pc.isTotalDefense) return;
+        showAttackChoiceDialog(pc, mainHandWeapon, e);
+      };
+    }
+    const dmgBtn = mainSlot.querySelector('.roll-dmg-btn');
+    if (dmgBtn) {
+      dmgBtn.onclick = (e) => {
+        if (pc.isTotalDefense) return;
+        const seq = AttackEngine.calculateAttackSequence(pc, mainHandWeapon, false);
+        const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
+        
+        let finalDice = pc.getWeaponDamageDice(mainHandWeapon) || '1w6';
+        if (mainHandWeapon.extraDamage) {
+          finalDice = `${finalDice} + ${mainHandWeapon.extraDamage}`;
+          if (!stdAtkObj.dmgBreakdown.some(d => d.label === 'Zusatz-Schaden')) {
+            stdAtkObj.dmgBreakdown.push({ label: 'Zusatz-Schaden', value: mainHandWeapon.extraDamage });
+          }
+        }
+        
+        const rogueClass = Array.isArray(pc.classes) ? pc.classes.find(x => x.classType === 'rogue') : null;
+        if (rogueClass && pc.isSneakAttacking) {
+          const saDiceCount = Math.floor((rogueClass.level + 1) / 2);
+          finalDice = `${finalDice} + ${saDiceCount}W6`;
+          stdAtkObj.dmgBreakdown.push({ label: `Hinterhältiger Angriff (${saDiceCount}W6)`, value: 0 });
+        }
+
+        showRollBreakdown(`${mainHandWeapon.name || 'Waffe'} (Schaden)`, finalDice, stdAtkObj.dmgBreakdown, e);
+      };
+    }
+  }
+
+  // Bind Roll Buttons in Nebenhand Slot
+  const offSlot = offense.querySelector('.off-hand-slot');
+  if (offSlot && offHandWeapon) {
+    const atkBtn = offSlot.querySelector('.roll-atk-btn');
+    if (atkBtn) {
+      atkBtn.onclick = (e) => {
+        if (pc.isTotalDefense) return;
+        showAttackChoiceDialog(pc, offHandWeapon, e, { isOffhandAttack: true });
+      };
+    }
+    const dmgBtn = offSlot.querySelector('.roll-dmg-btn');
+    if (dmgBtn) {
+      dmgBtn.onclick = (e) => {
+        if (pc.isTotalDefense) return;
+        const seq = AttackEngine.calculateAttackSequence(pc, offHandWeapon, false, { isOffhandAttack: true });
+        const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
+        
+        let finalDice = pc.getWeaponDamageDice(offHandWeapon) || '1w6';
+        if (offHandWeapon.extraDamage) {
+          finalDice = `${finalDice} + ${offHandWeapon.extraDamage}`;
+          if (!stdAtkObj.dmgBreakdown.some(d => d.label === 'Zusatz-Schaden')) {
+            stdAtkObj.dmgBreakdown.push({ label: 'Zusatz-Schaden', value: offHandWeapon.extraDamage });
+          }
+        }
+
+        const rogueClass = Array.isArray(pc.classes) ? pc.classes.find(x => x.classType === 'rogue') : null;
+        if (rogueClass && pc.isSneakAttacking) {
+          const saDiceCount = Math.floor((rogueClass.level + 1) / 2);
+          finalDice = `${finalDice} + ${saDiceCount}W6`;
+          stdAtkObj.dmgBreakdown.push({ label: `Hinterhältiger Angriff (${saDiceCount}W6)`, value: 0 });
+        }
+
+        const offhandName = isDoubleWielded ? `${offHandWeapon.name || 'Waffe'} (Nebenseite)` : (offHandWeapon.name || 'Zweitwaffe');
+        showRollBreakdown(`${offhandName} (Schaden)`, finalDice, stdAtkObj.dmgBreakdown, e);
+      };
+    }
+  }
+}
+
+function _renderRightColumnHtml(panel, pc) {
+  panel.innerHTML = `
+    <div class="phdr"><h2>🎒 Rucksack &amp; Inventar</h2></div>
+    <div class="pbody" style="display:flex; flex-direction:column; gap:6px;">
+      <!-- Weapons Stash -->
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:0.5px solid var(--pb); margin-bottom:4px; padding-bottom:2px;">
+          <span style="font-family:'IM Fell English SC', serif; font-size:9px; font-weight:bold; color:var(--red);">⚔️ Waffenkammer</span>
+          <button class="btn btn-add-weapon" style="font-family:'IM Fell English SC', serif; font-size:7.5px; padding:1px 5px; height:14px; line-height:1;">➕ Waffe</button>
+        </div>
+        <div id="pcWeaponsList" style="display:flex; flex-direction:column; gap:4px;"></div>
+      </div>
+      
+      <!-- Armor Stash -->
+      <div style="margin-top:2px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:0.5px solid var(--pb); margin-bottom:4px; padding-bottom:2px;">
+          <span style="font-family:'IM Fell English SC', serif; font-size:9px; font-weight:bold; color:var(--red);">🛡️ Rüstungskammer</span>
+          <button class="btn btn-add-armor" style="font-family:'IM Fell English SC', serif; font-size:7.5px; padding:1px 5px; height:14px; line-height:1;">➕ Ausrüstung</button>
+        </div>
+        <div id="pcArmorList" style="display:flex; flex-direction:column; gap:4px;"></div>
+      </div>
+    </div>
+  `;
+
+  // Bind Add buttons
+  panel.querySelector('.btn-add-weapon').onclick = () => {
+    CombatState.addPCWeapon();
+    uiRegistry.renderPlayerScreen();
+  };
+  panel.querySelector('.btn-add-armor').onclick = () => {
+    CombatState.addPCArmor('padded');
+    uiRegistry.renderPlayerScreen();
+  };
+
+  // Populate lists
+  const offense = document.getElementById('pcOffense');
+  let weaponsList = offense ? offense.querySelector('#pcWeaponsList') : null;
+  if (!weaponsList) {
+    weaponsList = panel.querySelector('#pcWeaponsList');
+  }
+  if (weaponsList) {
+    if (!Array.isArray(pc.weapons)) pc.weapons = [];
+    pc.weapons.forEach((w, idx) => {
+      const card = _createStashWeaponCard(w, idx, pc);
+      weaponsList.appendChild(card);
+    });
+  }
+
+  let armorList = offense ? offense.querySelector('#pcArmorList') : null;
+  if (!armorList) {
+    armorList = panel.querySelector('#pcArmorList');
+  }
+  if (armorList) {
+    if (!Array.isArray(pc.armors)) pc.armors = [];
+    pc.armors.forEach((a, idx) => {
+      const card = _createStashArmorCard(a, idx, pc);
+      armorList.appendChild(card);
+    });
+  }
+}
+
+function _bindGlobalCombatSettingsEvents(offense, pc, babVal, hasPowerAttack, hasCombatExpertise) {
+  if (hasPowerAttack) {
+    const paInput = offense.querySelector('.power-attack-input');
+    if (paInput) {
+      paInput.onchange = (e) => {
+        const val = Math.max(0, Math.min(babVal, parseInt(e.target.value) || 0));
+        CombatState.updatePCField('powerAttackPenalty', val);
+        uiRegistry.renderPlayerScreen();
+      };
+    }
+  }
+
+  if (hasCombatExpertise) {
+    const ceInput = offense.querySelector('.combat-expertise-input');
+    if (ceInput) {
+      ceInput.onchange = (e) => {
+        const limit = Math.min(5, babVal);
+        const val = Math.max(0, Math.min(limit, parseInt(e.target.value) || 0));
+        CombatState.updatePCField('combatExpertisePenalty', val);
+        uiRegistry.renderPlayerScreen();
+      };
+    }
 
     const ceRuleBtn = offense.querySelector('.btn-rule-ce');
     if (ceRuleBtn) {
@@ -315,11 +580,13 @@ function _bindGlobalCombatSettingsEvents(offense, pc, babVal, hasPowerAttack, ha
     }
   }
 
-  // Bind Defensive Fighting input
-  offense.querySelector('.defensive-fighting-input').onchange = (e) => {
-    CombatState.togglePCDefensiveFighting(e.target.checked);
-    uiRegistry.renderPlayerScreen();
-  };
+  const dfInput = offense.querySelector('.defensive-fighting-input');
+  if (dfInput) {
+    dfInput.onchange = (e) => {
+      CombatState.togglePCDefensiveFighting(e.target.checked);
+      uiRegistry.renderPlayerScreen();
+    };
+  }
 
   const dfRuleBtn = offense.querySelector('.btn-rule-df');
   if (dfRuleBtn) {
@@ -341,163 +608,35 @@ function _bindGlobalCombatSettingsEvents(offense, pc, babVal, hasPowerAttack, ha
     };
   }
 
-  // Bind Total Defense input
-  offense.querySelector('.total-defense-input').onchange = (e) => {
-    CombatState.togglePCTotalDefense(e.target.checked);
-    uiRegistry.renderPlayerScreen();
-  };
-
-  // Bind Add Weapon button if active
-  if (pc.activeShape === "none") {
-    offense.querySelector('.btn-add-weapon').onclick = () => {
-      CombatState.addPCWeapon();
+  const tdInput = offense.querySelector('.total-defense-input');
+  if (tdInput) {
+    tdInput.onchange = (e) => {
+      CombatState.togglePCTotalDefense(e.target.checked);
       uiRegistry.renderPlayerScreen();
     };
   }
 }
 
-function _renderNaturalAttacksList(listContainer, pc) {
-  let naturalAttacks = [];
-  if (pc.activeShape === "wolf") {
-    naturalAttacks = [
-      {
-        name: "Biss (Wolf)",
-        damageDice: "1w6",
-        crit: "20 / x2",
-        enhancement: 0,
-        isNatural: true,
-        isSecondary: false,
-        extra: "plus Trip (Zu-Boden-werfen)"
-      }
-    ];
-  } else if (pc.activeShape === "leopard") {
-    naturalAttacks = [
-      {
-        name: "Biss (Leopard)",
-        damageDice: "1w6",
-        crit: "20 / x2",
-        enhancement: 0,
-        isNatural: true,
-        isSecondary: false
-      },
-      {
-        name: "Kralle (Leopard)",
-        damageDice: "1w3",
-        crit: "20 / x2",
-        enhancement: 0,
-        isNatural: true,
-        isSecondary: true,
-        numAttacksFull: 2,
-        extra: "2 Angriffe bei voller Aktion"
-      },
-      {
-        name: "Harken (Rake)",
-        damageDice: "1w3",
-        crit: "20 / x2",
-        enhancement: 0,
-        isNatural: true,
-        isSecondary: true,
-        extra: "Nur bei Pounce (Anspringen)"
-      }
-    ];
-  } else if (pc.activeShape === "bear") {
-    naturalAttacks = [
-      {
-        name: "Kralle (Braunbär)",
-        damageDice: "1w8",
-        crit: "20 / x2",
-        enhancement: 0,
-        isNatural: true,
-        isSecondary: false,
-        numAttacksFull: 2,
-        extra: "2 Angriffe bei voller Aktion"
-      },
-      {
-        name: "Biss (Braunbär)",
-        damageDice: "2w6",
-        crit: "20 / x2",
-        enhancement: 0,
-        isNatural: true,
-        isSecondary: true
-      }
-    ];
-  }
-
-  naturalAttacks.forEach((w) => {
-    const seq = AttackEngine.calculateAttackSequence(pc, w, false);
-    const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
-
-    const container = document.createElement('div');
-    container.className = 'weapon-row-container';
-    container.style = 'display:flex; flex-direction:column; gap:2px;';
-    
-    const row = document.createElement('div');
-    row.style = 'display:grid; grid-template-columns: 80px 95px 90px 30px 1fr 18px 18px; gap:2px; align-items:center;';
-    
-    row.innerHTML = `
-      <span style="font-size:8px; font-weight:bold; color:var(--red); overflow:hidden; white-space:nowrap; text-overflow:ellipsis;" title="${w.name}">${w.name}</span>
-      <span style="font-size:7.5px; color:var(--inkm); text-align:center;">Natürl</span>
-      <span style="font-size:8.5px; color:var(--inkm); text-align:center;">Natürl • ${w.damageDice} • ${w.crit}</span>
-      <span style="font-size:7.5px; color:var(--inkm); text-align:center;">+0</span>
-      <div style="display:flex; gap:2px; width:100%; align-items:center;">
-        <button class="xbtn xbtn-dmg roll-atk-btn" ${pc.isTotalDefense ? 'disabled' : ''} style="padding:1px 2px; font-size:7px; font-weight:bold; flex:1; white-space:nowrap; height:16px; line-height:1; ${pc.isTotalDefense ? 'opacity:0.4; cursor:not-allowed;' : ''}" title="Angriff ausführen">
-          ANGRIFF (${formatMod(stdAtkObj.atkTotal)}) 🎲
-        </button>
-        <button class="xbtn xbtn-heal roll-dmg-btn" ${pc.isTotalDefense ? 'disabled' : ''} style="padding:1px 2px; font-size:7px; font-weight:bold; flex:1; border-color:#2a6a2a; color:#1a4a1a; white-space:nowrap; height:16px; line-height:1; ${pc.isTotalDefense ? 'opacity:0.4; cursor:not-allowed;' : ''}">DMG (${formatMod(stdAtkObj.dmgTotal)})</button>
-      </div>
-      <span></span>
-      <span></span>
-    `;
-
-    row.querySelector('.roll-atk-btn').onclick = (e) => {
-      if (pc.isTotalDefense) return;
-      showAttackChoiceDialog(pc, w, e);
-    };
-
-    row.querySelector('.roll-dmg-btn').onclick = (e) => {
-      if (pc.isTotalDefense) return;
-      let finalDice = w.damageDice;
-      if (w.extra) {
-        stdAtkObj.dmgBreakdown.push({ label: `Info: ${w.extra}`, value: 0 });
-      }
-      showRollBreakdown(`${w.name} (Schaden)`, finalDice, stdAtkObj.dmgBreakdown, e);
-    };
-
-    container.appendChild(row);
-    listContainer.appendChild(container);
-  });
-}
-
-function _renderInventoryWeaponsList(listContainer, pc) {
-  pc.weapons.forEach((w, idx) => {
-    const { container, row, drawer } = _createWeaponDOM(w, idx, pc);
-    _bindWeaponRowEvents(row, drawer, w, idx, pc);
-    listContainer.appendChild(container);
-  });
-}
-
-function _createWeaponDOM(w, idx, pc) {
-  const seq = AttackEngine.calculateAttackSequence(pc, w, false);
-  const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
-
+function _createStashWeaponCard(w, idx, pc) {
+  const rStyle = _getRarityStyle(w.enhancement);
   const container = document.createElement('div');
-  container.className = 'weapon-row-container';
+  container.className = 'stash-item-card-container';
   container.style = 'display:flex; flex-direction:column; gap:2px;';
-  
-  const row = document.createElement('div');
-  row.style = 'display:grid; grid-template-columns: 80px 95px 90px 30px 1fr 18px 18px; gap:2px; align-items:center;';
-  
-  // Check for Improved Critical (Verbesserter Kritischer Treffer) feat
-  const hasImprovedCritical = pc.feats && pc.feats.some(f => 
-    (f.id === 'improved_critical' || f.id === 'verbesserter_kritischer_treffer') &&
-    matchesFeatOption(w, f.option)
-  );
-  const isDoubleThreat = w.isKeen || hasImprovedCritical;
-  const doubledCritDisplay = getCritThreatDisplay(w.crit, isDoubleThreat);
 
-  const gripLabels = { '1h': '1H', '2h': '2H', 'sec': 'Schild', 'rng': 'Fern', 'unarmed': 'Waffenlos' };
-  const gripText = gripLabels[w.grip] || w.grip;
-  const propertiesText = `${gripText} • ${pc.getWeaponDamageDice(w) || '1w6'} • ${doubledCritDisplay}`;
+  const card = document.createElement('div');
+  card.className = `stash-item-card ${rStyle.glowClass}`;
+  card.style.cssText = `
+    display: flex;
+    flex-direction: column;
+    border: ${rStyle.border};
+    border-radius: 4px;
+    padding: 5px 6px;
+    background: ${rStyle.background};
+    box-shadow: ${rStyle.boxShadow};
+    transition: all 0.15s ease-out;
+    position: relative;
+    margin-top: ${w.isEquipped ? '6px' : '0'};
+  `;
 
   let typeOptionsHtml = '';
   const sortedWeapons = Object.values(WeaponRegistry).sort((a, b) => a.nameDe.localeCompare(b.nameDe, 'de'));
@@ -505,36 +644,72 @@ function _createWeaponDOM(w, idx, pc) {
     typeOptionsHtml += `<option value="${def.key}" ${w.type === def.key ? 'selected' : ''}>${def.nameDe}</option>`;
   });
 
-  row.innerHTML = `
-    <input type="text" value="${w.name}" class="cinput w-name" placeholder="z.B. Dolch" style="font-size:8px;">
-    <select class="cinput w-type" style="font-size:7.5px; padding:0 1px; height:14px;">
-      ${typeOptionsHtml}
-    </select>
-    <span style="font-size:8.5px; color:var(--inkm); text-align:center; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;" title="${propertiesText}">${propertiesText}</span>
-    <input type="number" value="${w.enhancement}" class="cinput w-enhancement cinput-c" placeholder="+0" style="font-size:8px;">
-    <div style="display:flex; gap:2px; width:100%; align-items:center;">
-      <button class="xbtn xbtn-dmg roll-atk-btn" ${pc.isTotalDefense ? 'disabled' : ''} style="padding:1px 2px; font-size:7px; font-weight:bold; flex:1; white-space:nowrap; height:16px; line-height:1; ${pc.isTotalDefense ? 'opacity:0.4; cursor:not-allowed;' : ''}" title="Angriff ausführen (Standard/Voller)">
-        ANGRIFF (${formatMod(stdAtkObj.atkTotal)}) 🎲
-      </button>
-      <button class="xbtn xbtn-heal roll-dmg-btn" ${pc.isTotalDefense ? 'disabled' : ''} style="padding:1px 2px; font-size:7px; font-weight:bold; flex:1; border-color:#2a6a2a; color:#1a4a1a; white-space:nowrap; height:16px; line-height:1; ${pc.isTotalDefense ? 'opacity:0.4; cursor:not-allowed;' : ''}">DMG (${formatMod(stdAtkObj.dmgTotal)})</button>
+  const activeBadge = w.isEquipped ? `
+    <span style="position: absolute; top: -6px; left: 8px; font-size: 6px; color: #ffffff; background: #2a6a2a; border-radius: 2px; padding: 1px 4px; font-family: 'IM Fell English SC', serif; font-weight: bold; letter-spacing: 0.3px; pointer-events: none; z-index: 10; box-shadow: 0 1px 2px rgba(0,0,0,0.15);">Ausgerüstet</span>
+  ` : '';
+
+  const seq = AttackEngine.calculateAttackSequence(pc, w, false);
+  const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
+  const hasImprovedCritical = pc.feats && pc.feats.some(f => 
+    (f.id === 'improved_critical' || f.id === 'verbesserter_kritischer_treffer') &&
+    matchesFeatOption(w, f.option)
+  );
+  const isDoubleThreat = w.isKeen || hasImprovedCritical;
+  const doubledCritDisplay = getCritThreatDisplay(w.crit, isDoubleThreat);
+
+  card.innerHTML = `
+    ${activeBadge}
+    <!-- Row 1: Name and Delete -->
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-bottom: 4px;">
+      <input type="text" value="${w.name}" class="cinput w-name" placeholder="z.B. Dolch" style="font-size: 9px; height: 18px; padding: 0 4px; flex: 1; font-weight: bold; border-color: rgba(200, 169, 110, 0.25);">
+      <button class="xbtn delete-btn" style="padding: 0; border: none; background: transparent; font-size: 10px; cursor: pointer; height: 18px; width: 18px; display: flex; align-items: center; justify-content: center; color: var(--red); transition: color 0.15s;" title="Löschen">✕</button>
     </div>
-    <button class="xbtn gear-btn" style="padding:0; border:none; background:transparent; font-size:10px; cursor:pointer; height:14px; width:14px; display:flex; align-items:center; justify-content:center; color:var(--inkm);" title="Optionen">⚙️</button>
-    <button class="xbtn delete-btn" style="padding:0; border:none; background:transparent; font-size:9px; cursor:pointer; height:14px; width:14px; display:flex; align-items:center; justify-content:center; color:var(--red);" title="Löschen">✕</button>
+    <!-- Row 2: Type, Enhancement, Hand, Equip, Options -->
+    <div style="display: flex; align-items: center; gap: 4px;">
+      <select class="cinput w-type" style="font-size: 7.5px; padding: 0 2px; height: 16px; flex: 1.2; min-width: 0;">
+        ${typeOptionsHtml}
+      </select>
+      <div style="display: flex; align-items: center; gap: 1px; flex: 0.6; min-width: 0;">
+        <span style="font-size: 7.5px; color: var(--inkm);">+</span>
+        <input type="number" value="${w.enhancement}" class="cinput w-enhancement cinput-c" placeholder="0" style="font-size: 8px; height: 16px; width: 20px; padding: 0; text-align: center;">
+      </div>
+      ${w.grip === '2h' ? `
+        <select class="cinput w-hand-select" disabled style="font-size: 7.5px; padding: 0 1px; height: 16px; flex: 1.1; min-width: 0; opacity: 0.65; cursor: not-allowed; background: rgba(200, 169, 110, 0.05); text-align: center;">
+          <option>Zweihändig</option>
+        </select>
+      ` : w.grip === 'rng' ? `
+        <select class="cinput w-hand-select" disabled style="font-size: 7.5px; padding: 0 1px; height: 16px; flex: 1.1; min-width: 0; opacity: 0.65; cursor: not-allowed; background: rgba(200, 169, 110, 0.05); text-align: center;">
+          <option>Fernkampf</option>
+        </select>
+      ` : `
+        <select class="cinput w-hand-select" style="font-size: 7.5px; padding: 0 1px; height: 16px; flex: 1.1; min-width: 0;">
+          <option value="main" ${w.hand !== 'off' ? 'selected' : ''}>Haupthand</option>
+          <option value="off" ${w.hand === 'off' ? 'selected' : ''}>Nebenhand</option>
+        </select>
+      `}
+      <button class="xbtn equip-btn" style="padding: 0 6px; font-size: 7.5px; font-weight: bold; height: 16px; line-height: 14px; border-color: ${w.isEquipped ? '#b38600' : 'var(--pb)'}; color: ${w.isEquipped ? '#b38600' : 'var(--ink)'}; background: ${w.isEquipped ? 'rgba(200, 169, 110, 0.08)' : 'transparent'}; border-radius: 2px;" title="${w.isEquipped ? 'Ablegen' : 'Anlegen'}">
+        ${w.isEquipped ? 'Ablegen' : 'Anlegen'}
+      </button>
+      <button class="xbtn gear-btn" style="padding: 0; border: none; background: transparent; font-size: 11px; cursor: pointer; height: 16px; width: 18px; display: flex; align-items: center; justify-content: center; color: var(--inkm);" title="Optionen">⚙️</button>
+    </div>
+    <div style="display: none;">
+      <span class="roll-atk-btn">ANGRIFF (${formatMod(stdAtkObj.atkTotal)}) 🎲</span>
+      <span class="roll-dmg-btn">DMG (${formatMod(stdAtkObj.dmgTotal)})</span>
+      <span>${doubledCritDisplay}</span>
+    </div>
   `;
 
+  // Options Drawer
   const wId = w.id || getWeaponRuntimeId(w);
   const isDrawerOpen = openDrawerIds.has(wId);
-
-  // Render slide-out details drawer
   const drawer = document.createElement('div');
   drawer.className = 'weapon-details-drawer';
+  drawer.style.cssText = `display: ${isDrawerOpen ? 'flex' : 'none'}; background: rgba(200,169,110,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); border-top: none; padding: 4px 6px; font-size: 8px; margin-top: -2px; margin-bottom: 2px; border-radius: 0 0 3px 3px; flex-direction: column; gap: 4px;`;
   drawer.style.display = isDrawerOpen ? 'flex' : 'none';
-  drawer.style.cssText = `display: ${isDrawerOpen ? 'flex' : 'none'}; background: rgba(200,169,110,0.03); border: 0.5px solid rgba(200, 169, 110, 0.3); border-top: none; padding: 4px 6px; font-size: 8px; margin-top: -2px; margin-bottom: 4px; border-radius: 0 0 3px 3px; flex-direction: column; gap: 4px;`;
   
   const typeDef = WeaponRegistry[w.type] || WeaponRegistry.longsword;
 
   drawer.innerHTML = `
-    <!-- Row 1: Zusatz-Atk, Scharf (Keen), Zusatz-Schaden -->
     <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; width:100%;">
       <div style="display:flex; align-items:center; gap:2px;">
         <span style="color:var(--inkl);">Zusatz-Atk:</span>
@@ -548,7 +723,6 @@ function _createWeaponDOM(w, idx, pc) {
         <input type="text" class="cinput w-detail-extradmg" value="${w.extraDamage || ''}" placeholder="z.B. 1w6 Feuer" style="font-size: 8px; height: 14px; padding: 0 4px; flex: 1;">
       </div>
     </div>
-    <!-- Row 2: Stärkelimit (if Composite), Grip-Abweichung, Schadenswürfel-Abweichung, Krit-Abweichung -->
     <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; width:100%;">
       ${typeDef.isComposite ? `
         <div style="display:flex; align-items:center; gap:2px;">
@@ -569,7 +743,23 @@ function _createWeaponDOM(w, idx, pc) {
       </div>
       <div style="display:flex; align-items:center; gap:2px;">
         <span style="color:var(--inkl);">Schadens-Abw.:</span>
-        <input type="text" list="dice-options" class="cinput w-detail-diceoverride" value="${w.damageDiceOverride || ''}" placeholder="Standard" style="width: 55px; font-size: 8px; height: 14px; text-align: center; padding: 0;">
+        <select class="cinput w-detail-diceoverride" style="font-size:7.5px; height:14px; padding:0 1px;">
+          <option value="" ${w.damageDiceOverride === '' ? 'selected' : ''}>Standard</option>
+          <option value="1w2" ${w.damageDiceOverride === '1w2' ? 'selected' : ''}>1w2</option>
+          <option value="1w3" ${w.damageDiceOverride === '1w3' ? 'selected' : ''}>1w3</option>
+          <option value="1w4" ${w.damageDiceOverride === '1w4' ? 'selected' : ''}>1w4</option>
+          <option value="1w6" ${w.damageDiceOverride === '1w6' ? 'selected' : ''}>1w6</option>
+          <option value="1w8" ${w.damageDiceOverride === '1w8' ? 'selected' : ''}>1w8</option>
+          <option value="1w10" ${w.damageDiceOverride === '1w10' ? 'selected' : ''}>1w10</option>
+          <option value="1w12" ${w.damageDiceOverride === '1w12' ? 'selected' : ''}>1w12</option>
+          <option value="2w4" ${w.damageDiceOverride === '2w4' ? 'selected' : ''}>2w4</option>
+          <option value="2w6" ${w.damageDiceOverride === '2w6' ? 'selected' : ''}>2w6</option>
+          <option value="2w8" ${w.damageDiceOverride === '2w8' ? 'selected' : ''}>2w8</option>
+          <option value="2w10" ${w.damageDiceOverride === '2w10' ? 'selected' : ''}>2w10</option>
+          <option value="3w6" ${w.damageDiceOverride === '3w6' ? 'selected' : ''}>3w6</option>
+          <option value="3w8" ${w.damageDiceOverride === '3w8' ? 'selected' : ''}>3w8</option>
+          <option value="4w6" ${w.damageDiceOverride === '4w6' ? 'selected' : ''}>4w6</option>
+        </select>
       </div>
       <div style="display:flex; align-items:center; gap:2px;">
         <span style="color:var(--inkl);">Krit-Abw.:</span>
@@ -578,18 +768,96 @@ function _createWeaponDOM(w, idx, pc) {
     </div>
   `;
 
-  container.appendChild(row);
-  container.appendChild(drawer);
+  // Bind Events
+  const wNameInput = card.querySelector('.w-name');
+  wNameInput.oninput = (e) => {
+    const val = e.target.value;
+    CombatState.updatePCWeapon(idx, 'name', val);
+    const activeSlotTitle = document.querySelector(`.equipped-title-w-${idx}`);
+    if (activeSlotTitle) {
+      activeSlotTitle.textContent = val;
+      activeSlotTitle.title = val;
+    }
+  };
+  wNameInput.onchange = (e) => {
+    CombatState.updatePCWeapon(idx, 'name', e.target.value);
+    uiRegistry.renderPlayerScreen();
+  };
+  card.querySelector('.w-type').onchange = (e) => { CombatState.updatePCWeapon(idx, 'type', e.target.value); uiRegistry.renderPlayerScreen(); };
+  card.querySelector('.w-enhancement').onchange = (e) => { CombatState.updatePCWeapon(idx, 'enhancement', parseInt(e.target.value) || 0); uiRegistry.renderPlayerScreen(); };
+  
+  const handSelect = card.querySelector('.w-hand-select');
+  if (handSelect) {
+    handSelect.onchange = (e) => {
+      const val = e.target.value;
+      if (w.isEquipped) {
+        CombatState.togglePCWeaponEquip(idx);
+      }
+      CombatState.updatePCWeapon(idx, 'hand', val);
+      uiRegistry.renderPlayerScreen();
+    };
+  }
 
-  return { container, row, drawer };
-}
+  card.querySelector('.equip-btn').onclick = () => {
+    if (w.isEquipped) {
+      CombatState.togglePCWeaponEquip(idx);
+      uiRegistry.renderPlayerScreen();
+      return;
+    }
+    
+    // Warn if trying to equip off-hand weapon without TWF feats
+    if (w.hand === 'off') {
+      const hasTWF = pc.feats && (
+        pc.feats.some(f => f.id === 'two_weapon_fighting') ||
+        (() => {
+          const armor = pc.getEquippedArmor ? pc.getEquippedArmor() : null;
+          const speedCategory = armor ? armor.speedCategory : '';
+          const isWearingMediumOrHeavy = speedCategory === 'medium' || speedCategory === 'heavy';
+          if (!isWearingMediumOrHeavy) {
+            const rangerClass = Array.isArray(pc.classes) && pc.classes.find(c => c.classType === 'ranger');
+            const rangerLvl = rangerClass ? rangerClass.level : 0;
+            return rangerLvl >= 2 && pc.rangerCombatStyle === 'twoweapon';
+          }
+          return false;
+        })()
+      );
+      if (!hasTWF) {
+        showCustomConfirm(
+          "Kein Zwei-Waffen-Kampf",
+          "Dein Charakter besitzt nicht das Talent 'Zwei-Waffen-Kampf'. Das Führen einer Waffe in der Nebenhand führt zu schweren Abzügen auf Angriffe (-6/-10 oder -4/-8). Trotzdem fortfahren?",
+          () => {
+            if (typeDef.isDouble) {
+              showDoubleWeaponDialog(idx);
+            } else {
+              CombatState.togglePCWeaponEquip(idx);
+              uiRegistry.renderPlayerScreen();
+            }
+          }
+        );
+        return;
+      }
+    }
 
-function _bindWeaponRowEvents(row, drawer, w, idx, pc) {
-  row.querySelector('.w-name').onchange = (e) => { CombatState.updatePCWeapon(idx, 'name', e.target.value); };
-  row.querySelector('.w-type').onchange = (e) => { CombatState.updatePCWeapon(idx, 'type', e.target.value); uiRegistry.renderPlayerScreen(); };
-  row.querySelector('.w-enhancement').onchange = (e) => { CombatState.updatePCWeapon(idx, 'enhancement', parseInt(e.target.value) || 0); uiRegistry.renderPlayerScreen(); };
+    if (typeDef.isDouble) {
+      showDoubleWeaponDialog(idx);
+      return;
+    }
+    CombatState.togglePCWeaponEquip(idx);
+    uiRegistry.renderPlayerScreen();
+  };
+  
+  card.querySelector('.gear-btn').onclick = () => {
+    const isVisible = drawer.style.display === 'flex';
+    if (isVisible) {
+      drawer.style.display = 'none';
+      openDrawerIds.delete(wId);
+    } else {
+      drawer.style.display = 'flex';
+      openDrawerIds.add(wId);
+    }
+  };
+  card.querySelector('.delete-btn').onclick = () => { CombatState.deletePCWeapon(idx); uiRegistry.renderPlayerScreen(); };
 
-  // Detail drawer input handlers
   drawer.querySelector('.w-detail-atk').onchange = (e) => { CombatState.updatePCWeapon(idx, 'attackBonus', e.target.value); uiRegistry.renderPlayerScreen(); };
   drawer.querySelector('.w-detail-keen').onchange = (e) => { CombatState.updatePCWeapon(idx, 'isKeen', e.target.checked); uiRegistry.renderPlayerScreen(); };
   drawer.querySelector('.w-detail-extradmg').onchange = (e) => { CombatState.updatePCWeapon(idx, 'extraDamage', e.target.value); };
@@ -603,50 +871,231 @@ function _bindWeaponRowEvents(row, drawer, w, idx, pc) {
   drawer.querySelector('.w-detail-diceoverride').onchange = (e) => { CombatState.updatePCWeapon(idx, 'damageDiceOverride', e.target.value); uiRegistry.renderPlayerScreen(); };
   drawer.querySelector('.w-detail-critoverride').onchange = (e) => { CombatState.updatePCWeapon(idx, 'critOverride', e.target.value); uiRegistry.renderPlayerScreen(); };
 
-  const wId = w.id || getWeaponRuntimeId(w);
+  container.appendChild(card);
+  container.appendChild(drawer);
+  return container;
+}
 
-  // Action button handlers
-  row.querySelector('.gear-btn').onclick = () => {
-    const isVisible = drawer.style.display === 'flex';
-    if (isVisible) {
-      drawer.style.display = 'none';
-      openDrawerIds.delete(wId);
-    } else {
-      drawer.style.display = 'flex';
-      openDrawerIds.add(wId);
+function _createStashArmorCard(a, idx, pc) {
+  const rStyle = _getRarityStyle(a.enhancement);
+  const container = document.createElement('div');
+  container.className = 'stash-item-card-container';
+  container.style = 'display:flex; flex-direction:column; gap:2px;';
+
+  const card = document.createElement('div');
+  card.className = `stash-item-card ${rStyle.glowClass}`;
+  card.style.cssText = `
+    display: flex;
+    flex-direction: column;
+    border: ${rStyle.border};
+    border-radius: 4px;
+    padding: 5px 6px;
+    background: ${rStyle.background};
+    box-shadow: ${rStyle.boxShadow};
+    transition: all 0.15s ease-out;
+    position: relative;
+    margin-top: ${a.isEquipped ? '6px' : '0'};
+  `;
+
+  let typeOptionsHtml = '';
+  const sortedArmors = Object.values(ARMOR_REGISTRY).sort((x, y) => x.nameDe.localeCompare(y.nameDe, 'de'));
+  sortedArmors.forEach(def => {
+    typeOptionsHtml += `<option value="${def.key}" ${a.type === def.key ? 'selected' : ''}>${def.nameDe}</option>`;
+  });
+
+  const activeBadge = a.isEquipped ? `
+    <span style="position: absolute; top: -6px; left: 8px; font-size: 6px; color: #ffffff; background: #2a6a2a; border-radius: 2px; padding: 1px 4px; font-family: 'IM Fell English SC', serif; font-weight: bold; letter-spacing: 0.3px; pointer-events: none; z-index: 10; box-shadow: 0 1px 2px rgba(0,0,0,0.15);">Ausgerüstet</span>
+  ` : '';
+
+  card.innerHTML = `
+    ${activeBadge}
+    <!-- Row 1: Name and Delete -->
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-bottom: 4px;">
+      <input type="text" value="${a.name}" class="cinput a-name" placeholder="z.B. Kettenhemd" style="font-size: 9px; height: 18px; padding: 0 4px; flex: 1; font-weight: bold; border-color: rgba(200, 169, 110, 0.25);">
+      <button class="xbtn delete-btn" style="padding: 0; border: none; background: transparent; font-size: 10px; cursor: pointer; height: 18px; width: 18px; display: flex; align-items: center; justify-content: center; color: var(--red); transition: color 0.15s;" title="Löschen">✕</button>
+    </div>
+    <!-- Row 2: Type, Enhancement, Equip, Options -->
+    <div style="display: flex; align-items: center; gap: 4px;">
+      <select class="cinput a-type" style="font-size: 7.5px; padding: 0 2px; height: 16px; flex: 1.2; min-width: 0;">
+        ${typeOptionsHtml}
+      </select>
+      <div style="display: flex; align-items: center; gap: 1px; flex: 0.8; min-width: 0;">
+        <span style="font-size: 7.5px; color: var(--inkm);">+</span>
+        <input type="number" value="${a.enhancement}" class="cinput a-enhancement cinput-c" placeholder="0" style="font-size: 8px; height: 16px; width: 22px; padding: 0; text-align: center;">
+      </div>
+      <button class="xbtn equip-btn" style="padding: 0 6px; font-size: 7.5px; font-weight: bold; height: 16px; line-height: 14px; border-color: ${a.isEquipped ? '#b38600' : 'var(--pb)'}; color: ${a.isEquipped ? '#b38600' : 'var(--ink)'}; background: ${a.isEquipped ? 'rgba(200, 169, 110, 0.08)' : 'transparent'}; border-radius: 2px;" title="${a.isEquipped ? 'Ausrüstung ablegen' : 'Ausrüstung anlegen'}">
+        ${a.isEquipped ? 'Ablegen' : 'Anlegen'}
+      </button>
+      <button class="xbtn gear-btn" style="padding: 0; border: none; background: transparent; font-size: 11px; cursor: pointer; height: 16px; width: 18px; display: flex; align-items: center; justify-content: center; color: var(--inkm);" title="Optionen">⚙️</button>
+    </div>
+  `;
+
+  // Options Drawer
+  const isDrawerOpen = openDrawerIds.has(a.id);
+  const drawer = document.createElement('div');
+  drawer.className = 'armor-details-drawer';
+  drawer.style.cssText = `display: ${isDrawerOpen ? 'flex' : 'none'}; background: rgba(200,169,110,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); border-top: none; padding: 4px 6px; font-size: 8px; margin-top: -2px; margin-bottom: 2px; border-radius: 0 0 3px 3px; flex-direction: column; gap: 4px;`;
+  drawer.style.display = isDrawerOpen ? 'flex' : 'none';
+
+  drawer.innerHTML = `
+    <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; width:100%;">
+      <div style="display:flex; align-items:center; gap:2px;">
+        <span style="color:var(--inkl);">RK-Abw.:</span>
+        <input type="text" class="cinput a-detail-bonusoverride" value="${a.armorBonusOverride || ''}" placeholder="Standard" style="width: 45px; font-size: 8px; height: 14px; text-align: center; padding: 0;">
+      </div>
+      <div style="display:flex; align-items:center; gap:2px;">
+        <span style="color:var(--inkl);">MaxDex-Abw.:</span>
+        <input type="text" class="cinput a-detail-maxdexoverride" value="${a.maxDexOverride || ''}" placeholder="Standard" style="width: 45px; font-size: 8px; height: 14px; text-align: center; padding: 0;">
+      </div>
+      <div style="display:flex; align-items:center; gap:2px;">
+        <span style="color:var(--inkl);">Malus-Abw.:</span>
+        <input type="text" class="cinput a-detail-penaltyoverride" value="${a.checkPenaltyOverride || ''}" placeholder="Standard" style="width: 45px; font-size: 8px; height: 14px; text-align: center; padding: 0;">
+      </div>
+      <div style="display:flex; align-items:center; gap:2px;">
+        <span style="color:var(--inkl);">Zauberpatzer-Abw.:</span>
+        <input type="text" class="cinput a-detail-asfoverride" value="${a.spellFailureOverride || ''}" placeholder="Standard" style="width: 45px; font-size: 8px; height: 14px; text-align: center; padding: 0;">
+        <span style="color:var(--inkm);">%</span>
+      </div>
+    </div>
+  `;
+
+  // Bind Events
+  const aNameInput = card.querySelector('.a-name');
+  aNameInput.oninput = (e) => {
+    const val = e.target.value;
+    CombatState.updatePCArmorField(idx, 'name', val);
+    const activeSlotTitle = document.querySelector(`.equipped-title-a-${idx}`);
+    if (activeSlotTitle) {
+      activeSlotTitle.textContent = val;
+      activeSlotTitle.title = val;
     }
   };
-
-  row.querySelector('.delete-btn').onclick = () => {
-    CombatState.deletePCWeapon(idx);
+  aNameInput.onchange = (e) => {
+    CombatState.updatePCArmorField(idx, 'name', e.target.value);
+    uiRegistry.renderPlayerScreen();
+  };
+  card.querySelector('.a-type').onchange = (e) => { CombatState.updatePCArmorField(idx, 'type', e.target.value); uiRegistry.renderPlayerScreen(); };
+  card.querySelector('.a-enhancement').onchange = (e) => { CombatState.updatePCArmorField(idx, 'enhancement', parseInt(e.target.value) || 0); uiRegistry.renderPlayerScreen(); };
+  
+  card.querySelector('.equip-btn').onclick = (e) => {
+    const wasEquipped = a.isEquipped;
+    const equipping = !wasEquipped;
+    CombatState.togglePCArmorEquip(idx);
+    
+    if (equipping && !wasEquipped && !pc.autoAC) {
+      showCustomConfirm(
+        "Auto-RK aktivieren?",
+        "Möchtest du die automatische Rüstungsklasse-Berechnung (Auto-RK) für diesen Charakter aktivieren?",
+        () => {
+          CombatState.setPCAutoAC(true);
+          uiRegistry.renderPlayerScreen();
+        }
+      );
+    }
     uiRegistry.renderPlayerScreen();
   };
 
-  row.querySelector('.roll-atk-btn').onclick = (e) => {
-    if (pc.isTotalDefense) return;
-    showAttackChoiceDialog(pc, w, e);
+  card.querySelector('.gear-btn').onclick = () => {
+    const isVisible = drawer.style.display === 'flex';
+    if (isVisible) {
+      drawer.style.display = 'none';
+      openDrawerIds.delete(a.id);
+    } else {
+      drawer.style.display = 'flex';
+      openDrawerIds.add(a.id);
+    }
+  };
+  card.querySelector('.delete-btn').onclick = () => { CombatState.removePCArmor(idx); uiRegistry.renderPlayerScreen(); };
+
+  drawer.querySelector('.a-detail-bonusoverride').onchange = (e) => { CombatState.updatePCArmorField(idx, 'armorBonusOverride', e.target.value); uiRegistry.renderPlayerScreen(); };
+  drawer.querySelector('.a-detail-maxdexoverride').onchange = (e) => { CombatState.updatePCArmorField(idx, 'maxDexOverride', e.target.value); uiRegistry.renderPlayerScreen(); };
+  drawer.querySelector('.a-detail-penaltyoverride').onchange = (e) => { CombatState.updatePCArmorField(idx, 'checkPenaltyOverride', e.target.value); uiRegistry.renderPlayerScreen(); };
+  drawer.querySelector('.a-detail-asfoverride').onchange = (e) => { CombatState.updatePCArmorField(idx, 'spellFailureOverride', e.target.value); uiRegistry.renderPlayerScreen(); };
+
+  container.appendChild(card);
+  container.appendChild(drawer);
+  return container;
+}
+
+function showDoubleWeaponDialog(idx) {
+  const overlay = document.createElement('div');
+  overlay.id = 'doubleWeaponOverlay';
+  overlay.className = 'no-print';
+  overlay.style.cssText = `
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 11, 5, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: 2500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+  `;
+
+  overlay.innerHTML = `
+    <div class="custom-alert-box" style="
+      background: var(--p);
+      border: 2px solid var(--pb);
+      border-radius: 4px;
+      padding: 16px 20px;
+      width: 280px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08);
+      font-family: 'IM Fell English SC', serif;
+      text-align: center;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    ">
+      <div style="position: absolute; inset: 3px; border: 0.5px dashed rgba(200, 169, 110, 0.3); pointer-events: none; border-radius: 2px;"></div>
+      
+      <div style="font-size: 13px; color: var(--red); font-weight: bold; margin-bottom: 4px;">
+        Kampfstab ausrüsten
+      </div>
+      <hr style="border: none; border-top: 0.5px solid rgba(200, 169, 110, 0.4); margin: 5px 0 10px;">
+      
+      <div style="font-family: 'Crimson Text', serif; font-size: 11px; color: var(--ink); line-height: 1.4; margin-bottom: 12px; font-weight: 500; text-align: left;">
+        Wie soll dieser Kampfstab geführt werden?
+        <ul style="margin: 6px 0; padding-left: 14px;">
+          <li><strong>Zweihändig:</strong> Als Einzelwaffe geführt (1.5x Stärkebonus auf Schaden).</li>
+          <li><strong>Doppelwaffe:</strong> Mit beiden Enden geführt (Hauptseite 1.0x Stärke, Nebenseite 0.5x Stärke als leichte Waffe).</li>
+        </ul>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <button class="btn btn-p opt-twohanded" style="font-family: 'IM Fell English SC', serif; font-size: 8.5px; padding: 4px; cursor: pointer;">Zweihändig (Einzelwaffe)</button>
+        <button class="btn btn-p opt-double" style="font-family: 'IM Fell English SC', serif; font-size: 8.5px; padding: 4px; cursor: pointer;">Doppelwaffe (Beide Enden)</button>
+        <button class="btn opt-cancel" style="font-family: 'IM Fell English SC', serif; font-size: 8.5px; padding: 4px; cursor: pointer; border: 1px solid var(--pb); background: transparent; color: var(--inkl);">Abbrechen</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  overlay.getBoundingClientRect();
+  overlay.style.opacity = '1';
+  overlay.querySelector('.custom-alert-box').style.transform = 'scale(1)';
+
+  const dismiss = () => {
+    overlay.style.opacity = '0';
+    overlay.querySelector('.custom-alert-box').style.transform = 'scale(0.9)';
+    setTimeout(() => overlay.remove(), 200);
   };
 
-  row.querySelector('.roll-dmg-btn').onclick = (e) => {
-    if (pc.isTotalDefense) return;
-    const seq = AttackEngine.calculateAttackSequence(pc, w, false);
-    const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
-
-    let finalDice = pc.getWeaponDamageDice(w) || '1w6';
-    if (w.extraDamage) {
-      finalDice = `${finalDice} + ${w.extraDamage}`;
-      if (!stdAtkObj.dmgBreakdown.some(d => d.label === 'Zusatz-Schaden')) {
-        stdAtkObj.dmgBreakdown.push({ label: 'Zusatz-Schaden', value: w.extraDamage });
-      }
-    }
-    
-    const rogueClass = Array.isArray(pc.classes) ? pc.classes.find(x => x.classType === 'rogue') : null;
-    if (rogueClass && pc.isSneakAttacking) {
-      const saDiceCount = Math.floor((rogueClass.level + 1) / 2);
-      finalDice = `${finalDice} + ${saDiceCount}W6`;
-      stdAtkObj.dmgBreakdown.push({ label: `Hinterhältiger Angriff (${saDiceCount}W6)`, value: 0 });
-    }
-
-    showRollBreakdown(`${w.name || 'Waffe'} (Schaden)`, finalDice, stdAtkObj.dmgBreakdown, e);
+  overlay.querySelector('.opt-twohanded').onclick = () => {
+    dismiss();
+    CombatState.updatePCWeapon(idx, 'isDoubleWielded', false);
+    CombatState.togglePCWeaponEquip(idx);
+    uiRegistry.renderPlayerScreen();
   };
+
+  overlay.querySelector('.opt-double').onclick = () => {
+    dismiss();
+    CombatState.updatePCWeapon(idx, 'isDoubleWielded', true);
+    CombatState.togglePCWeaponEquip(idx);
+    uiRegistry.renderPlayerScreen();
+  };
+
+  overlay.querySelector('.opt-cancel').onclick = dismiss;
+  overlay.onclick = (e) => { if (e.target === overlay) dismiss(); };
 }

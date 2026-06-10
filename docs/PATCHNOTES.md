@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :---: | :---: | :--- |
+| **v3.2.1** | Release | 10.06.2026 | Zwei-Waffen-Kampf & Doppelwaffen (D&D 3.5e RAW, Ranger-Armor Suspension, Kampfstab-Wahl, QoL) |
 | **v3.1.5** | Release | 08.06.2026 | Systemmenü-Dropdown & Tablet-Optimierung (FAB-Entfernung, responsive Dropdowns) |
 | **v3.1.0** | Release | 08.06.2026 | Clean Code Refactoring (Modularisierung, FE/BE-Trennung, app.js-Initialisierung) |
 | **v3.0.0** | Release | 08.06.2026 | Auto-Scaling Stabilisierung, Härtung Talent-Voraussetzungen, Paladin "Untote vertreiben"-Support & Live-Initiative-Anzeige |
@@ -54,6 +55,25 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v3.2.1 — Zwei-Waffen-Kampf & Doppelwaffen (Release v3.2.1)
+
+* **⚔️ Zwei-Waffen-Kampf (TWF) nach D&D 3.5e RAW:**
+  - **Talent-Warnung:** Versucht ein Charakter ohne das Talent *Zwei-Waffen-Kampf* (real oder virtuell) eine Waffe in der Nebenhand auszurüsten, wird er per Warnungs-Dialog vor den schweren Abzügen (`-4/-8` bei leichter bzw. `-6/-10` bei normaler Nebenhand) gewarnt. Das Ausrüsten erfolgt erst nach Bestätigung.
+  - **Dynamische Abzugs-Berechnung:** Im Vollangriff (Full Attack) werden die korrekten Mali auf Angriffe automatisch berechnet und in den Breakdowns gelistet. Bei Standardangriffen (Einzelangriffen) entfallen die TWF-Mali regelkonform.
+  - **Stärkebonus-Skalierung:** Angriffe mit der Nebenhand erhalten automatisch nur 0,5x Stärkemodifikator auf den Schadenswurf.
+  - **Ranger Rüstungs-Einschränkung:** Virtuelle TWF-Talente von Waldläufern (ab Stufe 2) werden dynamisch ausgesetzt, sobald der Charakter eine mittelschwere oder schwere Rüstung trägt. In leichter oder ohne Rüstung sind sie aktiv.
+
+* **🪵 Doppelwaffen-Funktionalität (z. B. Kampfstab):**
+  - **Ausrüst-Wahl-Dialog:** Beim Anlegen eines Kampfstabs (Quarterstaff) öffnet sich ein Pergament-Modal, in dem der Spieler wählt, ob er die Waffe *Zweihändig* (1,5x Stärkeschaden, 2x Power Attack) oder als *Doppelwaffe* (Hauptseite 1,0x Stärke, Nebenseite 0.5x Stärke als leichte Waffe, aktiviert Zwei-Waffen-Kampf) führen möchte.
+
+* **⚙️ UI/QoL Verbesserungen:**
+  - **Explizite Hand-Dropdowns:** Waffen-Karten im Inventar bieten ein Dropdown zur Wahl der Tragehand (Haupthand/Nebenhand).
+  - **Unequip bei Handwechsel:** Ändert man die Hand einer bereits ausgerüsteten Waffe, wird sie automatisch abgelegt, damit sie nur über einen Klick auf „Anlegen“ (unter Einhaltung der Warnungen) neu ausgerüstet werden kann.
+  - **Klarheit bei leerer Haupthand:** Rüstet man eine Waffe in der Nebenhand aus, während die Haupthand leer ist, wird diese nicht mehr fälschlicherweise in beide Slots gespiegelt. Die Haupthand bleibt sauber auf `(Unbewaffnet)`.
+  - **Dynamische Dropdown-Labels:** Bei zweihändig geführten Waffen oder Fernkampfwaffen wird das Hand-Dropdown deaktiviert und zeigt unmissverständlich **„Zweihändig“** bzw. **„Fernkampf“** an (mit angepasster Deckkraft und Mauszeiger).
+
+---
 
 ### v3.1.5 — Systemmenü-Dropdown & Tablet-Optimierung (Release v3.1.5)
 

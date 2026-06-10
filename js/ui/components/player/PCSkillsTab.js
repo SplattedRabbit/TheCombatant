@@ -184,6 +184,15 @@ function bindSkillsEvents(pc, container) {
         }
       }
 
+      // Armor Check Penalty (ACP)
+      if (skill.hasACP) {
+        const acp = pc.getArmorCheckPenalty();
+        if (acp !== 0) {
+          const penaltyVal = key === 'swim' ? -2 * acp : -acp;
+          breakdown.push({ label: 'Rüstungsmalus (ACP)', value: penaltyVal });
+        }
+      }
+
       // Conditions
       const hasShaken = pc.conditions.some(c => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
       if (hasShaken) {
