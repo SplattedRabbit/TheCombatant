@@ -63,15 +63,72 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
     *   Überprüfung der Rage-Boni-Rückgabewerte (z. B. Stärke/Konstitution und Willensrettungswürfe) sowie des RK-Malus und Sicherstellung, dass diese Werte bei aktivem Kampfrausch korrekt auf die Attribute addiert werden.
 
 ## 7. Scrollverhalten wenn Entitäten hinzugefügt werden. Boxen sollen größer werden und nicht das Applayout selbst
-* Ähnliche wie bei Skills, Feates/Talenten, Zauberkompendium und Zauberbuch soll sich auch die Tabelle gelernte Zauber, alle Waffen und Rüstungsitems im Rucksack verhalten
+*   **Beschreibung:** Ähnlich wie bei Skills, Feats/Talenten, Zauberkompendium und Zauberbuch soll sich auch die Tabelle gelernte Zauber, alle Waffen und Rüstungsitems im Rucksack verhalten, um das Strecken des App-Layouts zu verhindern.
+*   **Betroffene Dateien:**
+    *   [PCOffense.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCOffense.js) (Rucksack/Inventar: Waffenkammer & Rüstungskammer)
+    *   [PCSpellbookTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCSpellbookTab.js) (Gelernte Zauber Bibliothek)
+*   **Lösungsansatz:**
+    *   Einführung von `max-height` (z.B. `250px` oder `300px`) und `overflow-y: auto` für die Container `#pcWeaponsList` und `#pcArmorList` in `PCOffense.js`.
+    *   Sicherstellen, dass die Container für gelernte Zauber in `PCSpellbookTab.js` (Klasse `pc-scroll-spellbook`) sauberes internes Scrollen nutzen.
 
-## 8. "Bekannte" Zauber werden nicht berücksitigt beim übertragen der Zauber ins das Zauberbuch. Der Spieler kann mehr Zauber als eigentlich vorgesehen in der Zauberbiblithotek ablegen.
+## 8. "Bekannte" Zauber werden nicht berücksichtigt beim übertragen der Zauber in das Zauberbuch
+*   **Beschreibung:** Der Spieler kann mehr Zauber als eigentlich vorgesehen in der Zauberbibliothek ablegen (Spells Known Limit für Barden & Hexenmeister).
+*   **Betroffene Dateien:**
+    *   [rules.js](file:///c:/Users/Juls/Desktop/CombatApp/js/rules.js) (Definieren der PHB-Tabellen für bekannte Zauber pro Klasse/Stufe)
+    *   [PCSpellDialogs.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCSpellDialogs.js) (Methode `onToggleLearn`)
+*   **Lösungsansatz:**
+    *   Hinzufügen von `SORCERER_KNOWN_TABLE` und `BARD_KNOWN_TABLE` in `CombatRules` (`rules.js`).
+    *   Implementieren einer Validierungsmethode in `rules.js` oder `SpellSlotCalculator.js`.
+    *   In `PCSpellDialogs.js` beim Hinzufügen eines Zaubers prüfen, ob das Limit für den jeweiligen Zaubergrad des Charakters erreicht ist. Falls ja, das Hinzufügen blockieren und ein Warn-Popup anzeigen.
 
 ## 9. An Waffenslots soll ausgewählt werden können ob sie Main- oder Offhand sind
+*   **Beschreibung:** Spieler sollten die Handzuweisung (Haupthand / Nebenhand) direkt in den aktiven Ausrüstungsslots steuern können.
+*   **Betroffene Dateien:**
+    *   [PCOffense.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCOffense.js) (Rendern und Event-Handling der Haupthand- und Nebenhand-Ausrüstungsslots)
+*   **Lösungsansatz:**
+    *   Rendern eines kleinen Dropdowns direkt in den aktiven Waffen-Slots (`Haupthand` / `Nebenhand`) in der Übersicht, sofern es sich um eine einhändige Waffe handelt.
+    *   Auswahl ändert direkt das Attribut `w.hand` in der Charakterdatei und triggert einen Re-Render, um die Waffe sauber in den anderen Slot zu verschieben.
 
 ## 10. Anzeige für Leveldropdown ist abgeschnitten und Level schlecht lesbar
+*   **Beschreibung:** Das Dropdown zur Auswahl der Klassenstufe ist im Attributs-Panel visuell abgeschnitten, wodurch Zahlen teilweise unlesbar sind.
+*   **Betroffene Dateien:**
+    *   [PCAttributes.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCAttributes.js) (Dropdown `.pc-class-lvl-select` in `renderPCAttributes`)
+*   **Lösungsansatz:**
+    *   Styling des `.pc-class-lvl-select` anpassen: Die CSS-Breite von `30px` auf `36px` erhöhen, das Innenabstand (Padding) optimieren und ein sauberes Line-Height vergeben, damit die Zahl mittig platziert und vollständig lesbar ist.
 
-## 11. Skills die ungeübt nicht benutzbar ist sollen ausgegraut werden sofern keine Ränge darauf vergeben sind
+## 11. Skills die ungeübt nicht benutzbar sind sollen ausgegraut werden sofern keine Ränge darauf vergeben sind
+*   **Beschreibung:** Fertigkeiten mit der Eigenschaft "Trained Only" (ungeübt nicht nutzbar) wie z.B. *Zauberkunde* oder *Schlösser öffnen* müssen optisch deaktiviert werden, wenn der Spieler 0 Ränge besitzt.
+*   **Betroffene Dateien:**
+    *   [PCSkillsTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCSkillsTab.js) (Rendern der `skill-row` und Klick-Event-Handler für den Wurf-Button)
+*   **Lösungsansatz:**
+    *   Wenn `skill.trainedOnly && ranks === 0` zutrifft, den Roll-Button mit dem Attribut `disabled` versehen und der Zeile eine CSS-Klasse oder Inline-Styles zur Verringerung der Opazität (`opacity: 0.5; cursor: not-allowed;`) zuweisen.
+    *   Im Klick-Event-Handler prüfen und das Ausführen des Wurfs verhindern.
 
 ## 12. Man kann im "Feats & Skills" Tab im Feld "Neue Ränge" keine 0 eintragen
+*   **Beschreibung:** Das Zurücksetzen von Rängen auf 0 oder die Eingabe von 0 im Ränge-Feld wird blockiert oder nicht reaktiv übernommen.
+*   **Betroffene Dateien:**
+    *   [PCSkillsTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCSkillsTab.js) (Input-Feld `.pc-skill-ranks-inp` und dessen `change`/`input` Listener)
+*   **Lösungsansatz:**
+    *   Sicherstellen, dass leere Eingaben (`""`) oder das manuelle Eintragen von `0` im Change-Event sauber als `0` interpretiert und im State gespeichert werden.
+    *   Den Re-Render-Workflow überprüfen: Falls die Eingabe gelöscht wird, darf die Reaktivität das Eingabefeld nicht sperren oder überschreiben, bevor die Eingabe abgeschlossen ist. Evtl. Optimierung der Wert-Zuweisung und Validierung.
+
+## 13. Talent-Auswahl: Fehlende Obergrenze
+*   **Beschreibung:** Es können beliebig viele Talente gelernt werden. Die Obergrenze nach PHB-Regeln (Level, Klassen-Stufen, ggf. Rasse) muss eingehalten werden.
+*   **Betroffene Dateien:**
+    *   [rules.js](file:///c:/Users/Juls/Desktop/CombatApp/js/rules.js) (Berechnung der Talent-Slots)
+    *   [PCManager.js](file:///c:/Users/Juls/Desktop/CombatApp/js/state/PCManager.js) (Validierungsprüfung in `addPCFeat`)
+    *   [PCFeatsTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCFeatsTab.js) (UI-Anzeige und Sperren von Zeilen)
+*   **Lösungsansatz:**
+    *   Einführung einer Berechnungsmethode `calculateMaxFeats(pc)` in `CombatRules` (General-Feats nach Level: 1 bei Stufe 1, +1 alle 3 Level; Kämpfer-Bonus-Talente; Mönch-Bonus-Talente; Magier-Bonus-Talente).
+    *   In `addPCFeat` prüfen, ob das Talentlimit erreicht ist. Falls ja, das Erlernen verhindern und eine Meldung ausgeben.
+    *   Im Feats-Tab die Anzahl freier Slots anzeigen (z. B. `🎓 Erlernte Talente (3 / 4)`) und bei erreichtem Limit weitere Talente im Kompendium sperren/ausgrauen.
+
+## 14. UI-Workflow: Endlosschleife beim Verlernen von Talenten
+*   **Beschreibung:** Nach dem Klick auf "Verlernen" im Talent-Detail-Dialog schließt sich das Popup nicht, sondern öffnet sich sofort wieder.
+*   **Betroffene Dateien:**
+    *   [FeatScrollDialog.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/dialogs/FeatScrollDialog.js) (Event-Handler für `.btn-unlearn-feat` und `.btn-remove-instance`)
+*   **Lösungsansatz:**
+    *   Im Klick-Handler des Verlernen-Buttons (`unlearnBtn.onclick`) explizit `e.stopPropagation()` and `e.preventDefault()` aufrufen. Dadurch wird verhindert, dass das Klick-Event im Event-Loop weitergeleitet wird und nach dem sofortigen Neuaufbau der Seite durch `renderPlayerScreen` direkt wieder die darunterliegende Zeile/Karte triggert.
+
+
 
