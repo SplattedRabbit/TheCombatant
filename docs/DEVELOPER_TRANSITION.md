@@ -1,6 +1,6 @@
-# Übergabeprotokoll / Developer Transition Briefing: D&D 3.5e Combat App — v3.1.5 (Live)
+# Übergabeprotokoll / Developer Transition Briefing: D&D 3.5e Combat App — v3.2.5 (Live)
 
-Hallo! Du übernimmst das D&D 3.5e Combat App-Projekt. Der aktuelle Stand ist **v3.1.5 (Live)**. Das Projekt wurde vollständig stabilisiert, modularisiert und für die Tablet-Nutzung optimiert (der alte, fehleranfällige FAB wurde durch ein integriertes, responsives Systemmenü-Dropdown ersetzt).
+Hallo! Du übernimmst das D&D 3.5e Combat App-Projekt. Der aktuelle Stand ist **v3.2.5 (Live, Branch: `feature/MagicItems`)**.
 
 Bitte lies dieses Dokument aufmerksam durch, um die Architektur, die Dateistruktur und die Verhaltensregeln der Codebasis zu verstehen.
 
@@ -10,14 +10,18 @@ Bitte lies dieses Dokument aufmerksam durch, um die Architektur, die Dateistrukt
 
 1. **Testlauf vor jedem Turn-Ende:** Führe immer die Testsuite aus, um die Integrität der Anwendung abzusichern:
    ```powershell
-   npm test
+   node --import ./Tests/setup.js --test Tests/**/*.test.js
    ```
+   (PowerShell blockiert `npm test` durch Ausführungsrichtlinien — direkt `node` nutzen.)
 2. **LLM-Kontext-Schonung:** Lade niemals die große PDF-Datei `playershandbook_35e.pdf` in deinen Kontext. Nutze stattdessen das lokale Suchskript:
    ```powershell
    node scratch/search_rules.js "Deine Suchabfrage"
    ```
 3. **Persistente UI-Entwicklungen:** Achte bei UI-Aktualisierungen darauf, dass der Tastaturfokus und die Cursor-Position durch den `Focus-Schutz` (`DeltaRenderer.applyWithFocusGuard`) nicht verloren gehen.
 4. **Lokales WLAN-Hosting:** Beim Starten von `Start_Server.bat` werden alle verfügbaren IPv4-Adressen deines PCs im Netzwerk ermittelt und in der Konsole ausgegeben, um das Tablet schnell zu verbinden. Run as Administrator, um auf der IP lauschen zu können.
+5. **Service Worker Cache-Versionierung:** Das Muster ist `vX.Y.Z-cache-vN`. Beim Hochgehen der Versionsnummer beginnt der Cache-Zähler wieder bei 1. Beim Bugfixing innerhalb einer Version wird nur `N` inkrementiert.
+   - Aktuelle Version: `dnd-combatsheet-v3.2.5-cache-v2`
+   - Betrifft: `service-worker.js` (Zeile 1, `CACHE_NAME`) und `index.html` (Footer-Version).
 
 ---
 
@@ -38,29 +42,35 @@ graph TD
 ```
 
 ### Die Schichten im Detail:
-1. **Domain Models (`js/models/`)**: Reines, regelunabhängiges OOD. Stat-Kapselung mit Modifikatoren-Stacking (`Stat.js`), Waffendaten (`Weapon.js`) und Charakterdaten (`Combatant.js`).
+1. **Domain Models (`js/models/`)**: Reines, regelunabhängiges OOD. Stat-Kapselung mit Modifikatoren-Stacking (`Stat.js`), Waffendaten (`Weapon.js`), Rüstungsdaten (`Armor.js`), magische Gegenstände (`Item.js`) und Charakterdaten (`Combatant.js`).
 2. **Rules & Calculators (`js/rules/`) & Data (`js/data/`)**: Reine D&D 3.5e Regeln. Berechnet stufenbasierte Werte und stellt Definitionstabellen bereit.
 3. **State & Sync (`js/state/`, `js/network/`)**: Verwaltet das In-Memory-Objekt, sichert die Daten ab und synchronisiert kleine Delta-Diffs über WebRTC.
 4. **UI & Views (`js/ui/`, `css/`, `index.html`)**: Rendert Teilbereiche reaktiv auf EventBus-Signale und steuert Dialoge.
 
 ---
 
-## 3. Dateistruktur & Modulübersicht (v3.1.5)
+## 3. Dateistruktur & Modulübersicht (v3.2.5)
 
 ### 3.1. Domain Models (`js/models/`)
 * [Stat.js](file:///c:/Users/Juls/Desktop/CombatApp/js/models/Stat.js): Kapselt D&D-Attribute (Str, Dex, Con etc.), Rettungswürfe und Kampfwerte. Berechnet stapelbare Modifikatoren und Boni regelkonform.
-* [Weapon.js](file:///c:/Users/Juls/Desktop/CombatApp/js/models/Weapon.js): Verwaltet Waffeneigenschaften und liefert Rohdaten (z. B. Bedrohungsbereiche als Objekt statt HTML-Formatierungen).
-* [Combatant.js](file:///c:/Users/Juls/Desktop/CombatApp/js/models/Combatant.js): Charaktermodell für Spieler (`type: 'p'`), Gegner (`type: 'e'`) und Begleiter. Zerlegt in logische private Hilfsmethoden (z. B. `_applyFeatModifiers`).
+* [Weapon.js](file:///c:/Users/Juls/Desktop/CombatApp/js/models/Weapon.js): Verwaltet Waffeneigenschaften. Enthält `WeaponRegistry` mit allen PHB-Waffen, Getter für `grip`/`damageDice`/`crit`/`extraDamage`, Abwärtskompatibilität für alte `extraDamage`-Strings (Parsing in `extraDamageDice` + `extraDamageType`).
+* [Armor.js](file:///c:/Users/Juls/Desktop/CombatApp/js/models/Armor.js): Rüstungs- und Schildmodell mit `ARMOR_REGISTRY`, AC-Bonus, Max-DEX-Limit, Rüstungsmalus, Gewichtskategorie.
+* [Item.js](file:///c:/Users/Juls/Desktop/CombatApp/js/models/Item.js): Magisches Gegenstandsmodell. Unterstützt mehrere Effekte (`effects[]`-Array). Abwärtskompatibilität via Getter/Setter für Legacy-Felder `effectType`/`effectTarget`/`effectValue`.
+* [Combatant.js](file:///c:/Users/Juls/Desktop/CombatApp/js/models/Combatant.js): Charaktermodell für Spieler (`type: 'p'`), Gegner (`type: 'e'`) und Begleiter. Enthält `enterShape()`/`exitShape()` für Druiden-Tiergestalt.
 
 ### 3.2. Data Registry (`js/data/`)
 * [feats-data.js](file:///c:/Users/Juls/Desktop/CombatApp/js/data/feats-data.js): Datenbasis aller ca. 80 Player's Handbook (PHB) Talente.
 * [skills-data.js](file:///c:/Users/Juls/Desktop/CombatApp/js/data/skills-data.js): Definition aller 41 Standard-Fertigkeiten.
+* [armor-data.js](file:///c:/Users/Juls/Desktop/CombatApp/js/data/armor-data.js): Alle PHB-Rüstungen und Schilde mit Typwerten.
 
 ### 3.3. State & Sync (`js/state/` & `js/network/`)
-* [state.js](file:///c:/Users/Juls/Desktop/CombatApp/js/state.js): Fassaden-Schnittstelle, re-exportiert alle State- und Aktionsmethoden.
+* [state.js](file:///c:/Users/Juls/Desktop/CombatApp/js/state.js): Fassaden-Schnittstelle, re-exportiert alle State- und Aktionsmethoden (inkl. neuer Item-Effekt-Aktionen).
 * [state-core.js](file:///c:/Users/Juls/Desktop/CombatApp/js/state/state-core.js): Verwaltet den globalen In-Memory-Zustand und kapselt den Pub/Sub Event Bus (`StateEvents`).
 * [StorageManager.js](file:///c:/Users/Juls/Desktop/CombatApp/js/state/StorageManager.js): LocalStorage-Hydrierung.
-* [PCManager.js](file:///c:/Users/Juls/Desktop/CombatApp/js/state/PCManager.js): Steuert PC-Mutationen, Klassenstufen und Multiklassen-Saves.
+* [PCManager.js](file:///c:/Users/Juls/Desktop/CombatApp/js/state/PCManager.js): Steuert PC-Mutationen, Klassenstufen und Multiklassen-Saves. Enthält alle Item- und Waffen-Aktionen inkl.:
+  - `addPCItem()`, `deletePCItem()`, `updatePCItem()`, `togglePCItemEquip()`
+  - `addPCItemEffect(itemIdx)`, `deletePCItemEffect(itemIdx, effectIdx)`, `updatePCItemEffect(itemIdx, effectIdx, key, val)`
+  - `updatePCWeapon(idx, field, val)` (unterstützt neu: `extraDamageDice`, `extraDamageType`)
 * [EncounterManager.js](file:///c:/Users/Juls/Desktop/CombatApp/js/state/EncounterManager.js): DM-Encounter-Aktionen, Initiativlisten-Steuerung.
 * [NetworkManager.js](file:///c:/Users/Juls/Desktop/CombatApp/js/network/NetworkManager.js): PeerJS- und WebRTC-Sync.
 * [MessageQueue.js](file:///c:/Users/Juls/Desktop/CombatApp/js/network/MessageQueue.js): Debouncing und Pufferung von Sync-Paketen.
@@ -68,79 +78,102 @@ graph TD
 
 ### 3.4. Rules & Calculators (`js/rules/`)
 * [BABCalculator.js](file:///c:/Users/Juls/Desktop/CombatApp/js/rules/BABCalculator.js) / [SaveCalculator.js](file:///c:/Users/Juls/Desktop/CombatApp/js/rules/SaveCalculator.js) / [SpellSlotCalculator.js](file:///c:/Users/Juls/Desktop/CombatApp/js/rules/SpellSlotCalculator.js): Stufenbasierte Wertermittlung.
+* [AttackEngine.js](file:///c:/Users/Juls/Desktop/CombatApp/js/rules/AttackEngine.js): Zentraler Angriffs-Sequenzer. Berechnet Angriffs- und Schadenswürfe inkl. `extraDamage` aus Waffen-Getter.
 * **Klassen-Regeln (`js/rules/classes/`)**: Kapselt klassenspezifische Logik (z. B. `BarbarianRules.js`, `MonkRules.js` für waffenlosen Schaden, `RogueRules.js` für Sneak-Attack-Skalierung, `RangerRules.js` für Erzfeind-Boni).
 
 ### 3.5. Presentation & UI (`js/ui/`)
 * [ui-core.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/ui-core.js): Einstiegspunkt des UI-Renderers.
-* **UI-Tabs (`js/ui/components/player/`)**:
+* **UI-Tabs (`js/ui/components/player/`):**
   - [PCHeader.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCHeader.js) / [PCAttributes.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCAttributes.js) / [PCDefenses.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCDefenses.js).
-  - [PCOffense.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCOffense.js) (Waffenkarten, Drawer-Events).
-  - [PCResources.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCResources.js) (Reiter-Steuerung rechts).
+  - [PCOffense.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCOffense.js): Waffenkarten, Drawer-Events, Waffen- und Rüstungs-Inventar. **Achtung:** Bei Wild Shape (`pc.activeShape !== "none"`) ruft er `_renderNaturalAttacksList()` auf — diese Funktion ist aktuell nicht definiert (⚠ **Bug #16**).
+  - [PCMagicItemsTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCMagicItemsTab.js): Dedizierter Tab für magische Gegenstände. Linke Spalte: Ausgerüstete Slot-Boxen + Slotless-Liste. Rechte Spalte: Rucksack/Inventar mit mehrfachen Effekten pro Gegenstand und Inline-„➕ Effekt"-Button.
+  - [PCResources.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCResources.js): Reiter-Steuerung rechts.
   - [PCSpellbookTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCSpellbookTab.js) / [PCCompendiumTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCCompendiumTab.js) / [PCFeatsTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCFeatsTab.js).
-* **Pergament-Dialoge (`js/ui/dialogs/`)**:
-  - [dialogs.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/dialogs.js): Fassaden-Export für alle Dialoge.
-  - [BaseDialogs.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/dialogs/BaseDialogs.js): System-Alerts, Custom-Prompts.
-  - [AttackChoiceDialog.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/dialogs/AttackChoiceDialog.js): Wurf-Optionen (Standard vs. Voller Angriff, Smite, Sneak).
-  - [PrepareSpellDialog.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/dialogs/PrepareSpellDialog.js): Metamagische Slot-Belegung.
-  - [SpellScrollDialog.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/dialogs/SpellScrollDialog.js) / [FeatScrollDialog.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/dialogs/FeatScrollDialog.js): Detail-Rolls für Zauber und Talente.
-  - [SessionDialog.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/dialogs/SessionDialog.js): Multiplayer-Verbindungen.
+* **Player Sheet Navigation (`js/ui/components/player-sheet.js`):**
+  - Enthält 5 Tabs: Übersicht, Skills & Talente, Ausrüstung, Zauberbuch, Klasse & Begleiter, System.
+  - **Achtung:** Der Tab „Ausrüstung" rendert `renderPCOffense()` – dieser crasht im Wild-Shape-Modus (⚠ **Bug #16**).
+* **Pergament-Dialoge (`js/ui/dialogs/`)**: Wie in v3.1.5.
 
 ---
 
-## 4. Kern-Automatisierungen & D&D-Regeln
+## 4. Tab-Struktur des Spielerbogens
 
-* **Physisches Würfeln:** Es gibt **keine** digitale Physik-Engine. Klicks auf `🎲` oder Waffen-Angriffe öffnen Modals mit der exakten Wurf-Formel (z. B. `d20 + 3 (Base) + 2 (Stärke) + 1 (Fokus) = d20 + 6`). Der Spieler würfelt physisch am Tisch und vergleicht das Ergebnis.
-* **Saves als Stat-Objekte:** Zähigkeit (`za`), Reflex (`ref`) und Willenskraft (`wil`) sind vollwertige `Stat`-Instanzen (keine simplen Getter). Dadurch können temporäre Modifikatoren (z. B. Buff-Zauber) regelkonform gestapelt werden.
-* **Kompensation von UI-Feedback-Loops:** Beim manuellen Editieren von Werten im UI werden aktive Boni (z. B. durch Wut oder Zauber) automatisch von der Eingabe subtrahiert, bevor die neue Basis gespeichert wird, um mathematische Feedback-Schleifen zu verhindern.
-* **Metamagie & Templates:** Caster können Slots mit metamagischen Talenten (Extend, Empower, Maximize, Quicken) belegen. Zaubervorlagen (Templates) können benannt, persistiert, geladen und in den "Tagesreset 🌅" integriert werden.
-* **Systemmenü-Dropdown (v3.1.5):** Um Darstellungsfehler auf Tablets zu beheben, wurde der alte Floating Action Button (FAB) komplett entfernt. Die Systemaktionen befinden sich nun in einem absolut positionierten Dropdown-Menü `#systemDropdownMenu`, das über den `⚙️ System`-Reiter (Spieler) oder `⚙️ System`-Button (DM) getriggert wird.
-
----
-
-## 5. Historisches Fehler-Archiv (Behoben in v2.9.0 - v3.1.5)
-
-Folgende Fehler wurden erfolgreich behoben und sollten als Referenz bei zukünftigen Änderungen im Auge behalten werden:
-
-1. **Fokusverlust bei Sucheingabe (Feats/Spells):** Das Ersetzen von `innerHTML` auf dem gesamten Container zerstörte das Input-Feld. Gelöst durch Teillisten-Aktualisierung (`renderCompendiumOnly`), wodurch das Suchfeld im DOM stabil bleibt.
-2. **Talent-Voraussetzungsprüfung:** Das Umgehen von Talentbedingungen wurde durch `checkFeatPrerequisites` und Validierungen im UI- und State-Layer vollständig unterbunden.
-3. **Klassenwechsel-Lecks (Class Bleed):** Beim Entfernen einer Klasse (z. B. Paladin) blieben Talente wie "Zusätzliches Vertreiben" fälschlicherweise erhalten. Behoben durch eine automatische Bereinigung (`cleanupFeatsDependingOnClass` in `PCManager.js`), die klassenabhängige Zustände restlos tilgt.
-4. **Zoom & Klickflächen-Verschiebung (DPI-Bug):** Der Width-Hack `width: calc(100% / var(--app-scale))` führte bei Windows-Skalierung (z. B. 150% DPI) zu Rundungsfehlern bei Browser-Klickflächen. Gelöst durch Umstellung von `transform-origin: top left` auf `top center` und dynamischer Scrollhöhen-Anpassung via `ResizeObserver` und `body.style.minHeight`.
-5. **Netzwerk-Duplikate:** Importierte PC-Daten erhielten teils neue IDs, was zu Spieler-Klonen auf dem DM-Bildschirm führte. Gelöst durch "In-Place Updates" (Beibehaltung der aktiven WebRTC-ID) und Synchronisations-Safeguards im Host.
-6. **"You Died" Crash:** Ein Absturz beim Fallen unter -10 TP wurde behoben, indem `syncPCToHost` ordnungsgemäß aus `PCManager.js` in das Fassaden-Modul `state.js` exportiert wurde.
+| Tab | Linke Spalte | Rechte Spalte |
+|---|---|---|
+| **Übersicht** | Attribute & Saves | AC/Verteidigung & Regeln |
+| **Skills & Talente** | Fertigkeiten | Talente-Kompendium |
+| **Ausrüstung** | Aktive Slots (Haupthand/Nebenhand/Rüstung) | Rucksack: Waffenliste & Rüstungsliste |
+| **Magische Gegenstände** *(NEU v3.2.5)* | Ausgerüstete Slot-Boxen (11 Slots + Slotless) | Rucksack: Magische Gegenstände mit Multi-Effekten |
+| **Zauberbuch** | Zauberbuch & Slot-Ressourcen | Kompendium & Vorbereitung |
+| **Klasse & Begleiter** | Klassen-Features | Begleiter/Vertrauter |
+| **System** | — | System-Dropdown |
 
 ---
 
-## 6. Zukünftige Roadmap & Backlog
+## 5. Kern-Features & D&D-Regeln
 
-Folgende Versionen und Meilensteine sind für die Weiterentwicklung fest eingeplant:
+* **Physisches Würfeln:** Es gibt **keine** digitale Physik-Engine. Klicks auf `🎲` oder Waffen-Angriffe öffnen Modals mit der exakten Wurf-Formel. Der Spieler würfelt physisch am Tisch.
+* **Saves als Stat-Objekte:** Zähigkeit (`za`), Reflex (`ref`) und Willenskraft (`wil`) sind vollwertige `Stat`-Instanzen.
+* **Magische Gegenstände (v3.2.5):** Items unterstützen mehrere Effekte (`effects[]`). Legacy-Items mit `effectType`/`effectTarget`/`effectValue` werden beim Laden automatisch migriert.
+* **Zusatzschaden bei Waffen (v3.2.5):** `extraDamageDice` (z. B. `1w6`) und `extraDamageType` (z. B. `Feuer`) ersetzen das alte freie `extraDamage`-Textfeld. Der `extraDamage`-Getter baut den String dynamisch zusammen. Legacy-Strings werden beim Laden geparst.
 
-### ⚔️ v3.2 — Magische Waffen & Ausrüstung (Armory)
-* **Zusätzlicher Waffenschaden:** Einbau von Schadensarten (z. B. *Flammend* [+1W6 Feuer], *Frost* [+1W6 Kälte]) direkt in die Wurf-Breakdowns.
-* **Waffeneffekte:** Unterstützung von Attributen wie *Scharf (Keen)* zur Verdoppelung des Bedrohungsbereichs im UI.
-* **Ausrüstbare Rüstungen & Schilde:** Einbau von ausrüstbaren Gegenständen im Rüstungs-Tab zur automatischen Live-Berechnung von RK (AC), maximalem Geschicklichkeitsbonus und Rüstungsmalus.
+---
 
-### ⚔️ v3.2.1 — Zwei-Waffen-Kampf & Doppelwaffen (Abgeschlossen)
-* **Status:** Erfolgreich implementiert und verifiziert.
-* **Inhalt:** Unterstützung von Haupthand/Nebenhand-Dropdowns, D&D 3.5e Zwei-Waffen-Kampf-Abzüge (inkl. Ranger-Stil-Abhängigkeiten von Rüstung), Warn-Popups und vollständige Doppelwaffen-Funktionalität (z. B. Kampfstab).
+## 6. Bekannte offene Bugs (Stand: 10.06.2026)
+
+Vollständige Liste: [Bugtracking.md](file:///c:/Users/Juls/Desktop/CombatApp/docs/Bugtracking.md)
+
+| # | Titel | Priorität |
+|---|---|---|
+| **16** ⚠ | **Crash beim Tab „Ausrüstung" in Wild Shape** — `_renderNaturalAttacksList` ist nicht definiert in `PCOffense.js` (Zeile 85). Wahrscheinlich wurde die Funktion bei der Magic-Items-Implementierung nicht mitübertragen. | **KRITISCH** |
+| **15** | Druiden-Tiergestalt: Attributswerte/RK/Rettungswürfe werden nicht korrekt berechnet. | Hoch |
+| **14** | Endlosschleife beim Verlernen von Talenten (FeatScrollDialog.js). | Mittel |
+| **13** | Talent-Auswahl: Fehlende Obergrenze nach PHB. | Mittel |
+| **12** | Fertigkeiten: Keine 0 eintragbar. | Niedrig |
+| **11** | „Trained Only"-Skills nicht ausgegraut bei 0 Rängen. | Niedrig |
+| **10** | Level-Dropdown abgeschnitten (PCAttributes.js). | Niedrig |
+| **9** | Waffenslots: Hand-Zuweisung (Main/Off) fehlt im aktiven Slot. | Mittel |
+| **8** | Bekannte Zauber-Limit nicht geprüft (Barden/Hexenmeister). | Mittel |
+| **7** | Scrollverhalten bei langen Listen (Weapons/Armor Stash). | Niedrig |
+| **6** | Barbar: Kampfrausch-Werte nicht korrekt. | Hoch |
+| **5** | Schurke: Kein Toggle-Button für Hinterhältigen Angriff im Angriffs-Panel. | Mittel |
+| **4** | Fertigkeiten-Obergrenze wird nicht durchgesetzt. | Mittel |
+| **3** | Talente-Dropdown breiter als Suchfeld. | Niedrig |
+| **2** | Paladin: Handauflegen ignoriert CHA-Modifier. | Mittel |
+| **1** | Fehlende Regelerklärungen bei diversen Klassen. | Niedrig |
+
+---
+
+## 7. Historisches Fehler-Archiv (Behoben in v2.9.0 - v3.2.5)
+
+1. **Fokusverlust bei Sucheingabe (Feats/Spells):** Teillisten-Aktualisierung statt vollständigem `innerHTML`-Ersatz.
+2. **Talent-Voraussetzungsprüfung:** `checkFeatPrerequisites()` in `feats-data.js`, blockiert `addPCFeat()` bei Verstößen.
+3. **Klassenwechsel-Lecks (Class Bleed):** `cleanupFeatsDependingOnClass()` in `PCManager.js`.
+4. **Zoom & Klickflächen-Verschiebung (DPI-Bug):** `transform-origin: top center` + `ResizeObserver`.
+5. **Netzwerk-Duplikate:** In-Place Updates, Full-Sync bei Import, DM-Safeguards.
+6. **„You Died" Crash:** `syncPCToHost` korrekt in `state.js` exportiert.
+7. **Drawer-Persistenz-Bugfix (Waffen):** Stabile `Weapon.id`, `openDrawerIds`-Set in `PCOffense.js`.
+8. **TWF & Doppelwaffen:** Ranger-Rüstungs-Einschränkung, Hand-Dropdowns, Warn-Popups, Kampfstab-Wahl-Dialog.
+
+---
+
+## 8. Zukünftige Roadmap & Backlog
+
+### ⚠️ Sofort (Hotfix vor nächstem Feature)
+* **Bug #16 beheben:** `_renderNaturalAttacksList` in `PCOffense.js` fehlt → Crash beim Tab-Wechsel zu „Ausrüstung" im Wild-Shape-Modus.
 
 ### 🔮 v3.3 — Buff- & Auren-Manager (Targeting-System)
-* **Persönliche Buffs:** Ein Schnellwahl-Panel für eigene Effekte (z. B. *Magierrüstung* [+4 RK], *Stärke des Stiers* [+4 STR]), das die Werte im Bogen temporär anpasst.
-* **Netzwerk-Auren (WebRTC):** Möglichkeit, Buffs (wie *Bardenmusik* oder Paladin-Auren) an verbündete Ziele zu senden. Der Empfänger erhält ein temporäres Icon und berechnet die Effekte reaktiv in seine Würfe ein.
+* **Persönliche Buffs:** Schnellwahl-Panel für eigene Effekte (z. B. *Magierrüstung* [+4 RK], *Stärke des Stiers* [+4 STR]).
+* **Netzwerk-Auren (WebRTC):** Buffs (wie *Bardenmusik* oder Paladin-Auren) an verbündete Ziele senden.
 
 ### 🏰 v3.4 — DM-UI Komplett-Refactoring & Redesign
-* **Code-Entflechtung:** Modularisierung der `dm-screen.js` (Separate Komponenten für Spieler-Zeilen, Gegner-Zeilen, Kampagnen-Metadaten).
-* **Visuelles Redesign:** Modernisierung des Initiative-Monitors und der Lebenspunkt-Kontrollen im Pergament-Gothic-Stil (passend zum Spielerbogen und dem Diablo-HP-Globe).
-* **Tierbegleiter & Vertraute:** Option für Spieler, ihre Begleiter als eigenständige Kampfteilnehmer an den DM-Screen zu senden (inklusive getrennter TP-Erfassung und Platzierung in der Initiative).
+* Modularisierung der `dm-screen.js`, Modernisierung des Initiative-Monitors, Tierbegleiter als eigenständige Kampfteilnehmer.
 
 ### 🪙 v3.5 — Loot-Generator & Universeller Ressourcen-Tracker
-* **Loot- & Schatz-Generator (DM):** Integriertes Tool für den DM zur automatischen Generierung zufälliger Beute (Gold, Edelsteine, Schriftrollen, Zaubertränke) basierend auf dem Begegnungsgrad (EL) und den D&D 3.5e Tabellen.
-* **Custom Ressourcen-Tracker (Spieler):** Ein frei konfigurierbarer Tracker auf dem Haupt-Tab (z. B. für *Heiltrank* [3/3] oder *Zauberstab-Ladungen* [42/50]) mit einfachen Plus/Minus-Schaltflächen.
+* Loot-Generator für DM (Gold, Edelsteine, Tränke nach EL-Tabellen), Custom Ressourcen-Tracker für Spieler.
 
 ### 🐉 v3.6 — Monster-Kompendium (SRD JSON-Integration)
-* **SRD-Import:** Integration einer fertigen, gemeinfreien JSON-Datenbank aller standardmäßigen D&D 3.5e Kreaturen.
-* **Ein-Klick-Begegnungsaufbau:** Der DM kann Gegner per Suche im DM-Screen finden und mit allen Attributen, Rettungswürfen und RK direkt als neue Zeilen in den aktiven Kampf spawnen lassen.
+* SRD-JSON-Datenbank aller D&D 3.5e Kreaturen, Ein-Klick-Begegnungsaufbau im DM-Screen.
 
-### v3.7 - Beispieldatengenerator (Auswahlmöglichkeiten und Schnellerstellung)
-* **PC-Generator:** Auswahl an Klassen, Völkern, Kulturen, Sprachen, Waffenkampfer-Varianten, Magier-Varianten, Kleriker-Varianten, Schurken-Varianten, Paladin-Varianten, Druiden-Varianten, Hexenmeister-Varianten, Barden-Varianten und mehr (alles aus dem SRD).
-* **NPC-Generator:** Generiere NPCs basierend auf ihrer Rolle (Händler, Wache, König, Königin, Prinz, Prinzessin, etc.) und ihrer Kultur.
-* **Monster-Generator:** Generiere Monster basierend auf ihrem Typ (Tier, humanoider Feind, Elementar, etc.) und ihrer Umgebung (Wald, Stadt, Dungeon, etc.).
+### v3.7 — Beispieldatengenerator
+* PC-, NPC- und Monster-Generator mit Klassen-, Völker- und Rollenauswahl aus dem SRD.

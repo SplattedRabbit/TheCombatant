@@ -195,57 +195,59 @@ export class Combatant {
     this.items.forEach(item => {
       if (!item.isEquipped) return;
 
-      const val = parseInt(item.effectValue) || 0;
-      if (val === 0) return;
+      const effects = Array.isArray(item.effects) ? item.effects : [];
+      effects.forEach(eff => {
+        const val = parseInt(eff.value) || 0;
+        if (val === 0) return;
 
-      const sourceName = item.name || "Magischer Gegenstand";
+        const sourceName = item.name || "Magischer Gegenstand";
+        const type = eff.type;
+        const target = eff.target;
 
-      if (item.effectType === 'attribute') {
-        const target = item.effectTarget; // 'str', 'dex', 'con', 'int', 'wis', 'cha'
-        const stat = this[target];
-        if (stat instanceof Stat) {
-          stat.addModifier(val, "enhancement", sourceName);
-          stat.modifiers[stat.modifiers.length - 1].isItem = true;
-        }
-      } 
-      else if (item.effectType === 'save') {
-        const target = item.effectTarget; // 'fort', 'ref', 'wil', 'all'
-        if (target === 'fort' || target === 'all') {
-          this.za.addModifier(val, "resistance", sourceName);
-          this.za.modifiers[this.za.modifiers.length - 1].isItem = true;
-        }
-        if (target === 'ref' || target === 'all') {
-          this.ref.addModifier(val, "resistance", sourceName);
-          this.ref.modifiers[this.ref.modifiers.length - 1].isItem = true;
-        }
-        if (target === 'wil' || target === 'all') {
-          this.wil.addModifier(val, "resistance", sourceName);
-          this.wil.modifiers[this.wil.modifiers.length - 1].isItem = true;
-        }
-      } 
-      else if (item.effectType === 'ac') {
-        const target = item.effectTarget; // 'deflection', 'natural', 'armor'
-        if (this.autoAC) {
-          if (target === 'deflection') {
-            this.ac.addModifier(val, "deflection", sourceName);
-            this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
-            this.acTouch.addModifier(val, "deflection", sourceName);
-            this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isItem = true;
-            this.acFlat.addModifier(val, "deflection", sourceName);
-            this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
-          } else if (target === 'natural') {
-            this.ac.addModifier(val, "natural", sourceName);
-            this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
-            this.acFlat.addModifier(val, "natural", sourceName);
-            this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
-          } else if (target === 'armor') {
-            this.ac.addModifier(val, "armor", sourceName);
-            this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
-            this.acFlat.addModifier(val, "armor", sourceName);
-            this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
+        if (type === 'attribute') {
+          const stat = this[target];
+          if (stat instanceof Stat) {
+            stat.addModifier(val, "enhancement", sourceName);
+            stat.modifiers[stat.modifiers.length - 1].isItem = true;
+          }
+        } 
+        else if (type === 'save') {
+          if (target === 'fort' || target === 'all') {
+            this.za.addModifier(val, "resistance", sourceName);
+            this.za.modifiers[this.za.modifiers.length - 1].isItem = true;
+          }
+          if (target === 'ref' || target === 'all') {
+            this.ref.addModifier(val, "resistance", sourceName);
+            this.ref.modifiers[this.ref.modifiers.length - 1].isItem = true;
+          }
+          if (target === 'wil' || target === 'all') {
+            this.wil.addModifier(val, "resistance", sourceName);
+            this.wil.modifiers[this.wil.modifiers.length - 1].isItem = true;
+          }
+        } 
+        else if (type === 'ac') {
+          if (this.autoAC) {
+            if (target === 'deflection') {
+              this.ac.addModifier(val, "deflection", sourceName);
+              this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
+              this.acTouch.addModifier(val, "deflection", sourceName);
+              this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isItem = true;
+              this.acFlat.addModifier(val, "deflection", sourceName);
+              this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
+            } else if (target === 'natural') {
+              this.ac.addModifier(val, "natural", sourceName);
+              this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
+              this.acFlat.addModifier(val, "natural", sourceName);
+              this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
+            } else if (target === 'armor') {
+              this.ac.addModifier(val, "armor", sourceName);
+              this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
+              this.acFlat.addModifier(val, "armor", sourceName);
+              this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
+            }
           }
         }
-      }
+      });
     });
   }
 
@@ -565,8 +567,13 @@ export class Combatant {
 
     if (Array.isArray(this.items)) {
       this.items.forEach(item => {
-        if (item.isEquipped && item.effectType === 'speed') {
-          speedBonus += parseInt(item.effectValue) || 0;
+        if (item.isEquipped) {
+          const effects = Array.isArray(item.effects) ? item.effects : [];
+          effects.forEach(eff => {
+            if (eff.type === 'speed') {
+              speedBonus += parseInt(eff.value) || 0;
+            }
+          });
         }
       });
     }

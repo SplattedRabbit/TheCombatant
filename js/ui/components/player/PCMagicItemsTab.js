@@ -57,11 +57,18 @@ function _renderLeftColumn(container, pc) {
       bgStyle = 'rgba(200, 169, 110, 0.08)';
       boxGlow = 'inset 0 0 10px rgba(179, 134, 0, 0.1)';
 
+      let effectsListHtml = '';
+      if (Array.isArray(item.effects)) {
+        item.effects.forEach(eff => {
+          effectsListHtml += `<div style="font-size:7.5px; color:var(--inkm); margin-top:2px;">+${eff.value} ${_getEffectTargetDesc(eff)}</div>`;
+        });
+      }
+
       contentHtml = `
         <button class="unequip-slot-btn" data-idx="${idx}" style="position:absolute; top:3px; right:5px; border:none; background:transparent; font-size:8px; cursor:pointer; color:var(--red); padding:0;" title="Ablegen">✕</button>
         <div style="font-size:6.5px; color:var(--inkl); font-weight:bold; text-transform:uppercase; font-family:'IM Fell English SC', serif; margin-bottom:2px; opacity:0.8;">${slotInfo.name}</div>
         <div style="font-family:'Crimson Text',serif; font-size:10px; font-weight:bold; color:var(--red); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${item.name}">${item.name}</div>
-        <div style="font-size:7.5px; color:var(--inkm); margin-top:2px;">+${item.effectValue} ${_getEffectTargetDesc(item)}</div>
+        ${effectsListHtml}
       `;
     } else {
       contentHtml = `
@@ -84,11 +91,19 @@ function _renderLeftColumn(container, pc) {
   if (slotless.length > 0) {
     slotless.forEach(item => {
       const idx = pc.items.indexOf(item);
+      let effectsListHtml = '';
+      if (Array.isArray(item.effects)) {
+        item.effects.forEach(eff => {
+          effectsListHtml += `<span style="font-size:8px; color:var(--inkm);">+${eff.value} ${_getEffectTargetDesc(eff)}</span>`;
+        });
+      }
       slotlessHtml += `
         <div style="display:flex; justify-content:space-between; align-items:center; font-size:8px; border-bottom:0.5px dashed rgba(200,169,110,0.2); padding:3px 2px;">
           <span style="font-family:'Crimson Text', serif; font-weight:bold; color:var(--red); font-size:9.5px;">${item.name}</span>
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-size:8px; color:var(--inkm);">+${item.effectValue} ${_getEffectTargetDesc(item)}</span>
+            <div style="display:flex; flex-direction:column; align-items:flex-end;">
+              ${effectsListHtml}
+            </div>
             <button class="unequip-slot-btn" data-idx="${idx}" style="border:none; background:transparent; font-size:9px; cursor:pointer; color:var(--red); padding:0 2px;" title="Ablegen">✕</button>
           </div>
         </div>
@@ -243,52 +258,64 @@ function _createStashItemCard(item, idx, pc) {
   drawer.className = 'item-details-drawer';
   drawer.style.cssText = `display: ${isDrawerOpen ? 'flex' : 'none'}; background: rgba(200,169,110,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); border-top: none; padding: 4px 6px; font-size: 8px; margin-top: -2px; margin-bottom: 2px; border-radius: 0 0 3px 3px; flex-direction: column; gap: 4px;`;
 
-  let targetOptionsHtml = '';
-  if (item.effectType === 'attribute') {
-    targetOptionsHtml = `
-      <option value="str" ${item.effectTarget === 'str' ? 'selected' : ''}>Stärke (STR)</option>
-      <option value="dex" ${item.effectTarget === 'dex' ? 'selected' : ''}>Geschick (DEX)</option>
-      <option value="con" ${item.effectTarget === 'con' ? 'selected' : ''}>Konstitution (CON)</option>
-      <option value="int" ${item.effectTarget === 'int' ? 'selected' : ''}>Intelligenz (INT)</option>
-      <option value="wis" ${item.effectTarget === 'wis' ? 'selected' : ''}>Weisheit (WIS)</option>
-      <option value="cha" ${item.effectTarget === 'cha' ? 'selected' : ''}>Charisma (CHA)</option>
-    `;
-  } else if (item.effectType === 'save') {
-    targetOptionsHtml = `
-      <option value="fort" ${item.effectTarget === 'fort' ? 'selected' : ''}>Zähigkeit</option>
-      <option value="ref" ${item.effectTarget === 'ref' ? 'selected' : ''}>Reflex</option>
-      <option value="wil" ${item.effectTarget === 'wil' ? 'selected' : ''}>Wille</option>
-      <option value="all" ${item.effectTarget === 'all' ? 'selected' : ''}>Alle Rettungswürfe</option>
-    `;
-  } else if (item.effectType === 'ac') {
-    targetOptionsHtml = `
-      <option value="deflection" ${item.effectTarget === 'deflection' ? 'selected' : ''}>Ablenkung (Deflection)</option>
-      <option value="natural" ${item.effectTarget === 'natural' ? 'selected' : ''}>Natürliche Rüstung</option>
-      <option value="armor" ${item.effectTarget === 'armor' ? 'selected' : ''}>Rüstung</option>
-    `;
-  } else {
-    targetOptionsHtml = `<option value="speed" selected>Bewegung</option>`;
-  }
+  const effects = Array.isArray(item.effects) ? item.effects : [];
+  let effectsRowsHtml = '';
+  effects.forEach((eff, effIdx) => {
+    let targetOptionsHtml = '';
+    if (eff.type === 'attribute') {
+      targetOptionsHtml = `
+        <option value="str" ${eff.target === 'str' ? 'selected' : ''}>Stärke (STR)</option>
+        <option value="dex" ${eff.target === 'dex' ? 'selected' : ''}>Geschick (DEX)</option>
+        <option value="con" ${eff.target === 'con' ? 'selected' : ''}>Konstitution (CON)</option>
+        <option value="int" ${eff.target === 'int' ? 'selected' : ''}>Intelligenz (INT)</option>
+        <option value="wis" ${eff.target === 'wis' ? 'selected' : ''}>Weisheit (WIS)</option>
+        <option value="cha" ${eff.target === 'cha' ? 'selected' : ''}>Charisma (CHA)</option>
+      `;
+    } else if (eff.type === 'save') {
+      targetOptionsHtml = `
+        <option value="fort" ${eff.target === 'fort' ? 'selected' : ''}>Zähigkeit</option>
+        <option value="ref" ${eff.target === 'ref' ? 'selected' : ''}>Reflex</option>
+        <option value="wil" ${eff.target === 'wil' ? 'selected' : ''}>Wille</option>
+        <option value="all" ${eff.target === 'all' ? 'selected' : ''}>Alle Rettungswürfe</option>
+      `;
+    } else if (eff.type === 'ac') {
+      targetOptionsHtml = `
+        <option value="deflection" ${eff.target === 'deflection' ? 'selected' : ''}>Ablenkung (Deflection)</option>
+        <option value="natural" ${eff.target === 'natural' ? 'selected' : ''}>Natürliche Rüstung</option>
+        <option value="armor" ${eff.target === 'armor' ? 'selected' : ''}>Rüstung</option>
+      `;
+    } else {
+      targetOptionsHtml = `<option value="speed" selected>Bewegung</option>`;
+    }
 
-  drawer.innerHTML = `
-    <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+    effectsRowsHtml += `
       <div style="display:flex; align-items:center; gap:4px; width:100%;">
-        <span style="color:var(--inkl); flex-shrink:0;">Effekt:</span>
-        <select class="cinput item-effect-type" style="font-size: 8px; height: 16px; flex: 1.2;">
-          <option value="attribute" ${item.effectType === 'attribute' ? 'selected' : ''}>Attribut</option>
-          <option value="save" ${item.effectType === 'save' ? 'selected' : ''}>Rettungswurf</option>
-          <option value="ac" ${item.effectType === 'ac' ? 'selected' : ''}>AC/RK-Bonus</option>
-          <option value="speed" ${item.effectType === 'speed' ? 'selected' : ''}>Geschwindigkeit</option>
+        <select class="cinput item-effect-type" data-eff-idx="${effIdx}" style="font-size: 8px; height: 16px; flex: 1.2;">
+          <option value="attribute" ${eff.type === 'attribute' ? 'selected' : ''}>Attribut</option>
+          <option value="save" ${eff.type === 'save' ? 'selected' : ''}>Rettungswurf</option>
+          <option value="ac" ${eff.type === 'ac' ? 'selected' : ''}>AC/RK-Bonus</option>
+          <option value="speed" ${eff.type === 'speed' ? 'selected' : ''}>Geschwindigkeit</option>
         </select>
         
-        <select class="cinput item-effect-target" style="font-size: 8px; height: 16px; flex: 1.5;" ${item.effectType === 'speed' ? 'disabled' : ''}>
+        <select class="cinput item-effect-target" data-eff-idx="${effIdx}" style="font-size: 8px; height: 16px; flex: 1.5;" ${eff.type === 'speed' ? 'disabled' : ''}>
           ${targetOptionsHtml}
         </select>
         
         <div style="display:flex; align-items:center; gap:1px; flex-shrink:0;">
           <span style="font-size: 7.5px; color: var(--inkm);">+</span>
-          <input type="number" class="cinput item-effect-value" value="${item.effectValue}" style="font-size: 8px; height: 16px; width: 22px; padding: 0; text-align: center;">
+          <input type="number" class="cinput item-effect-value" data-eff-idx="${effIdx}" value="${eff.value}" style="font-size: 8px; height: 16px; width: 22px; padding: 0; text-align: center;">
         </div>
+        
+        <button class="xbtn delete-effect-btn" data-eff-idx="${effIdx}" style="padding: 0; border: none; background: transparent; font-size: 10px; cursor: pointer; height: 16px; width: 14px; display: flex; align-items: center; justify-content: center; color: var(--red);" title="Effekt löschen">✕</button>
+      </div>
+    `;
+  });
+
+  drawer.innerHTML = `
+    <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+      ${effectsRowsHtml}
+      <div style="display:flex; justify-content:flex-start; margin-top:2px;">
+        <button class="btn add-effect-btn" style="font-family:'IM Fell English SC', serif; font-size:7.5px; padding:1px 5px; height:14px; line-height:1; display:flex; align-items:center; gap:2px;">➕ Effekt</button>
       </div>
     </div>
   `;
@@ -334,39 +361,60 @@ function _createStashItemCard(item, idx, pc) {
     }
   };
 
-  // Drawer events
-  const typeSelect = drawer.querySelector('.item-effect-type');
-  const targetSelect = drawer.querySelector('.item-effect-target');
-  const valInput = drawer.querySelector('.item-effect-value');
+  // Add Effect Action
+  const addBtn = drawer.querySelector('.add-effect-btn');
+  if (addBtn) {
+    addBtn.onclick = () => {
+      CombatState.addPCItemEffect(idx);
+      uiRegistry.renderPlayerScreen();
+    };
+  }
 
-  typeSelect.onchange = (e) => {
-    const val = e.target.value;
-    let defTarget = 'str';
-    if (val === 'save') defTarget = 'fort';
-    else if (val === 'ac') defTarget = 'deflection';
-    else if (val === 'speed') defTarget = 'speed';
+  // Bind change events to all types, targets, values and deletes inside the drawer
+  drawer.querySelectorAll('.item-effect-type').forEach(select => {
+    select.onchange = (e) => {
+      const effIdx = parseInt(select.dataset.effIdx);
+      const val = e.target.value;
+      let defTarget = 'str';
+      if (val === 'save') defTarget = 'fort';
+      else if (val === 'ac') defTarget = 'deflection';
+      else if (val === 'speed') defTarget = 'speed';
 
-    CombatState.updatePCBatch(pc => {
-      pc.items[idx].effectType = val;
-      pc.items[idx].effectTarget = defTarget;
-    });
-    uiRegistry.renderPlayerScreen();
-  };
+      CombatState.updatePCItemEffect(idx, effIdx, 'type', val);
+      CombatState.updatePCItemEffect(idx, effIdx, 'target', defTarget);
+      uiRegistry.renderPlayerScreen();
+    };
+  });
 
-  targetSelect.onchange = (e) => {
-    CombatState.updatePCItem(idx, 'effectTarget', e.target.value);
-    uiRegistry.renderPlayerScreen();
-  };
+  drawer.querySelectorAll('.item-effect-target').forEach(select => {
+    select.onchange = (e) => {
+      const effIdx = parseInt(select.dataset.effIdx);
+      CombatState.updatePCItemEffect(idx, effIdx, 'target', e.target.value);
+      uiRegistry.renderPlayerScreen();
+    };
+  });
 
-  valInput.onchange = (e) => {
-    CombatState.updatePCItem(idx, 'effectValue', parseInt(e.target.value) || 0);
-    uiRegistry.renderPlayerScreen();
-  };
+  drawer.querySelectorAll('.item-effect-value').forEach(input => {
+    input.onchange = (e) => {
+      const effIdx = parseInt(input.dataset.effIdx);
+      CombatState.updatePCItemEffect(idx, effIdx, 'value', parseInt(e.target.value) || 0);
+      uiRegistry.renderPlayerScreen();
+    };
+  });
+
+  drawer.querySelectorAll('.delete-effect-btn').forEach(btn => {
+    btn.onclick = () => {
+      const effIdx = parseInt(btn.dataset.effIdx);
+      CombatState.deletePCItemEffect(idx, effIdx);
+      uiRegistry.renderPlayerScreen();
+    };
+  });
 
   return container;
 }
 
-function _getEffectTargetDesc(item) {
+function _getEffectTargetDesc(eff) {
+  const target = eff.target || eff.effectTarget || 'str';
   const targets = {
     str: 'Stärke (STR)',
     dex: 'Geschick (DEX)',
@@ -383,5 +431,5 @@ function _getEffectTargetDesc(item) {
     armor: 'Rüstungsbonus',
     speed: 'Bewegung'
   };
-  return targets[item.effectTarget] || item.effectTarget;
+  return targets[target] || target;
 }

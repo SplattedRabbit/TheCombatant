@@ -5,7 +5,7 @@ import { Combatant } from '../js/models/Combatant.js';
 import { Item } from '../js/models/Item.js';
 import { Stat } from '../js/models/Stat.js';
 import { getActivePC } from '../js/state/state-core.js';
-import { addPCItem, deletePCItem, updatePCItem, togglePCItemEquip } from '../js/state/PCManager.js';
+import { addPCItem, deletePCItem, updatePCItem, togglePCItemEquip, addPCItemEffect, deletePCItemEffect, updatePCItemEffect } from '../js/state/PCManager.js';
 
 test('Magic Items - Model initialization & default properties', () => {
   const item = new Item({
@@ -237,3 +237,58 @@ test('Magic Items - Expanded Slot Rules (Ring Independence, Multiple Slotless, S
   assert.strictEqual(pc.items[6].isEquipped, true, 'Amulet 2 should be equipped');
   assert.strictEqual(pc.items[5].isEquipped, false, 'Amulet 1 should be unequipped due to neck slot collision');
 });
+
+test('Magic Items - Multiple active effects application', () => {
+  const pc = new Combatant({
+    type: 'p',
+    str: new Stat(10),
+    con: new Stat(10),
+    baseRef: new Stat(0),
+    items: [
+      new Item({
+        name: 'Gürtel der physischen Perfektion',
+        slot: 'waist',
+        isEquipped: true,
+        effects: [
+          { type: 'attribute', target: 'str', value: 4 },
+          { type: 'attribute', target: 'con', value: 2 },
+          { type: 'save', target: 'ref', value: 1 }
+        ]
+      })
+    ]
+  });
+
+  pc.rebuildStatModifiers();
+  assert.strictEqual(pc.str.getValue(), 14, 'Strength should be 14');
+  assert.strictEqual(pc.con.getValue(), 12, 'Constitution should be 12');
+  assert.strictEqual(pc.ref.getValue(), 1, 'Reflex should be 1');
+});
+
+test('Magic Items - State Management for Multiple Effects (CRUD)', () => {
+  const pc = getActivePC();
+  pc.items = []; // Reset items
+
+  // 1. Add item
+  addPCItem();
+  assert.strictEqual(pc.items.length, 1);
+  assert.strictEqual(pc.items[0].effects.length, 1, 'Default item should have 1 effect');
+
+  // 2. Add a second effect to this item
+  addPCItemEffect(0);
+  assert.strictEqual(pc.items[0].effects.length, 2, 'Item should now have 2 effects');
+
+  // 3. Update the second effect
+  updatePCItemEffect(0, 1, 'type', 'save');
+  updatePCItemEffect(0, 1, 'target', 'ref');
+  updatePCItemEffect(0, 1, 'value', 3);
+
+  assert.strictEqual(pc.items[0].effects[1].type, 'save');
+  assert.strictEqual(pc.items[0].effects[1].target, 'ref');
+  assert.strictEqual(pc.items[0].effects[1].value, 3);
+
+  // 4. Delete the first effect
+  deletePCItemEffect(0, 0);
+  assert.strictEqual(pc.items[0].effects.length, 1, 'Item should now have 1 effect left');
+  assert.strictEqual(pc.items[0].effects[0].type, 'save', 'The remaining effect should be the one we updated');
+});
+

@@ -6,7 +6,12 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :---: | :---: | :--- |
+| **v3.2.5** | Release | 10.06.2026 | Wild-Shape-Bugdokumentation, Cache-Bump, Serviceworker-Versionskonvention |
+| **v3.2.4** | Release | 10.06.2026 | Waffen Zusatzschaden: Würfelanzahl + Schadensart via Dropdowns (extraDamageDice/extraDamageType), AttackEngine-Integration |
+| **v3.2.3** | Release | 10.06.2026 | Magische Gegenstände: Multi-Effekte (effects[]-Array), Inline-„➕ Effekt"-Button, Legacy-Abwärtskompatibilität |
+| **v3.2.2** | Release | 10.06.2026 | Neuer Tab „Magische Gegenstände" mit Slot-Boxen (11 Slots + Slotless) und synchronisiertem Rucksack |
 | **v3.2.1** | Release | 10.06.2026 | Zwei-Waffen-Kampf & Doppelwaffen (D&D 3.5e RAW, Ranger-Armor Suspension, Kampfstab-Wahl, QoL) |
+
 | **v3.1.5** | Release | 08.06.2026 | Systemmenü-Dropdown & Tablet-Optimierung (FAB-Entfernung, responsive Dropdowns) |
 | **v3.1.0** | Release | 08.06.2026 | Clean Code Refactoring (Modularisierung, FE/BE-Trennung, app.js-Initialisierung) |
 | **v3.0.0** | Release | 08.06.2026 | Auto-Scaling Stabilisierung, Härtung Talent-Voraussetzungen, Paladin "Untote vertreiben"-Support & Live-Initiative-Anzeige |
@@ -56,7 +61,53 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
 
+### v3.2.5 — Bugdokumentation & Cache-Pflege (Release v3.2.5)
+
+* **📝 Bug-Tracking aktualisiert:**
+  - Bug #15 dokumentiert: Druiden-Tiergestalt — Attributswerte, RK und Rettungswürfe werden nicht korrekt berechnet (`Combatant.enterShape()`).
+  - Bug #16 dokumentiert (KRITISCH): Crash beim Tab-Wechsel zu „Ausrüstung" wenn Druide in Tiergestalt ist. `_renderNaturalAttacksList` fehlt in `PCOffense.js` — wurde bei der Magic-Items-Implementierung nicht berücksichtigt.
+* **🔧 Serviceworker Cache-Konvention festgelegt:**
+  - Versionsformat: `vX.Y.Z-cache-vN`. Beim Erhöhen der Versionsnummer (X, Y oder Z) beginnt der Cache-Zähler `N` wieder bei 1. Aktuell: `dnd-combatsheet-v3.2.5-cache-v2`.
+
+---
+
+### v3.2.4 — Waffen Zusatzschaden via Dropdowns (Release v3.2.4)
+
+* **⚔️ Strukturierter Zusatzschaden für Waffen:**
+  - Das alte Freitextfeld „Zusatzschaden" wurde durch zwei verkoppelte Dropdowns ersetzt:
+    - **Würfelanzahl:** Gleiche Auswahl wie bei Schadens-Abw. (`—`, `1w4`, `1w6`, `1w8`, `1w10`, `2w6`, etc.)
+    - **Schadensart:** Feuer, Kälte, Elektrizität, Säure, Schall, etc.
+  - Die Felder speichern `extraDamageDice` und `extraDamageType` in `Weapon.js`.
+  - Der Legacy-Getter `extraDamage` baut den String (`1w6 Feuer`) dynamisch aus beiden Feldern zusammen; alte Freitext-Strings werden beim Laden automatisch geparst.
+  - `AttackEngine.js` liest `weapon.extraDamage` und nimmt die ausgewählten Würfel mit in die Schadensformel auf, wenn die Waffe ausgerüstet ist.
+* **🧪 Tests:** Neue Tests in `Tests/weapons.test.js` für Getter, Parsing und `AttackEngine`-Integration.
+
+---
+
+### v3.2.3 — Magische Gegenstände: Multi-Effekte (Release v3.2.3)
+
+* **✨ Mehrfach-Effekte pro magischem Gegenstand:**
+  - `Item.js`: Alle Effekte werden im `effects[]`-Array gespeichert. Legacy-Felder `effectType`/`effectTarget`/`effectValue` werden via Getter/Setter auf `effects[0]` gespiegelt (Abwärtskompatibilität automatisch gewährleistet).
+  - `PCMagicItemsTab.js`: Im Konfigurationsbereich (Rucksack) erscheint ein Inline-Button **„➕ Effekt"**, mit dem beliebig viele Effektzeilen hinzugefügt werden können. Jede Zeile hat Typ-, Ziel- und Wert-Dropdown sowie einen Löschen-Button.
+  - `Combatant.js`: Iteriert beim Anwenden von Item-Effekten über das gesamte `effects[]`-Array.
+  - `PCManager.js`: Neue State-Aktionen `addPCItemEffect`, `deletePCItemEffect`, `updatePCItemEffect`.
+* **🧪 Tests:** Neue Tests in `Tests/MagicItems.test.js` für Multi-Effekte, Legacy-Kompatibilität und `Combatant`-Anwendung.
+
+---
+
+### v3.2.2 — Neuer Tab „Magische Gegenstände" (Release v3.2.2)
+
+* **🔮 Dedizierter Tab „Magische Gegenstände" in der Player-Sheet-Navigation:**
+  - Beim Wechsel auf den Tab schalten sowohl die linke als auch die rechte Spalte synchron in den Magic-Items-Modus.
+  - **Linke Spalte — Ausgerüstete Slots:** Slot-Boxen für alle 11 D&D 3.5e magischen Ausrüstungsslots (Kopf, Augen, Hals, Schultern, Körper, Torso, Handgelenke, Hände, Taille, Füße, Ring 1, Ring 2) plus Slotless-Bereich.
+  - **Rechte Spalte — Rucksack:** Inventar-Bereich für magische Gegenstände, analog zu den Waffenkarten. Ausrüsten/Ablegen-Buttons und Konfigurationsformular direkt in der Karte.
+  - **Neue Komponente:** `PCMagicItemsTab.js` als dediziertes UI-Modul unter `js/ui/components/player/`.
+* **🧪 Tests:** Grundlegende Tests für Item-Erstellung, Ausrüsten und Effektanwendung in `Tests/MagicItems.test.js`.
+
+---
+
 ### v3.2.1 — Zwei-Waffen-Kampf & Doppelwaffen (Release v3.2.1)
+
 
 * **⚔️ Zwei-Waffen-Kampf (TWF) nach D&D 3.5e RAW:**
   - **Talent-Warnung:** Versucht ein Charakter ohne das Talent *Zwei-Waffen-Kampf* (real oder virtuell) eine Waffe in der Nebenhand auszurüsten, wird er per Warnungs-Dialog vor den schweren Abzügen (`-4/-8` bei leichter bzw. `-6/-10` bei normaler Nebenhand) gewarnt. Das Ausrüsten erfolgt erst nach Bestätigung.

@@ -8,6 +8,8 @@ import { createCombatant } from '../js/models/model-core.js';
 import { getCritThreatDisplay, isLightWeapon, renderPCOffense } from '../js/ui/components/player/PCOffense.js';
 import { Weapon } from '../js/models/Weapon.js';
 import { uiRegistry } from '../js/ui/ui-shared.js';
+import { AttackEngine } from '../js/rules/AttackEngine.js';
+
 
 test('Weapons - isLightWeapon parsing', () => {
   assert.strictEqual(isLightWeapon('Dolch'), true, 'Dolch should be light');
@@ -297,3 +299,41 @@ test('Weapons - Rule calculations and UI rendering', () => {
   // Restore document.getElementById
   globalThis.document.getElementById = originalGetElementById;
 });
+
+test('Weapons - Extra Damage Dropdowns and Formula Inclusion', () => {
+  // 1. Test backward compatibility: legacy extraDamage string parsing in Weapon constructor
+  const wLegacy = new Weapon({
+    name: 'Flammendes Schwert',
+    extraDamage: '1w6 Feuer'
+  });
+  assert.strictEqual(wLegacy.extraDamageDice, '1w6', 'Should parse legacy extraDamage dice');
+  assert.strictEqual(wLegacy.extraDamageType, 'Feuer', 'Should parse legacy extraDamage type');
+  assert.strictEqual(wLegacy.extraDamage, '1w6 Feuer', 'Getter should return correct extra damage string');
+
+  const wLegacyTextOnly = new Weapon({
+    name: 'Schwert',
+    extraDamage: 'Feuer'
+  });
+  assert.strictEqual(wLegacyTextOnly.extraDamageDice, '', 'Should parse legacy non-dice string');
+  assert.strictEqual(wLegacyTextOnly.extraDamageType, 'Feuer', 'Should parse legacy non-dice string type');
+  assert.strictEqual(wLegacyTextOnly.extraDamage, 'Feuer');
+
+  // 2. Test formula inclusion
+  const pc = createCombatant({
+    type: 'p',
+    weapons: [
+      new Weapon({
+        name: 'Langschwert',
+        type: 'longsword',
+        extraDamageDice: '1w6',
+        extraDamageType: 'Feuer',
+        isEquipped: true
+      })
+    ]
+  });
+
+  const seq = AttackEngine.calculateAttackSequence(pc, pc.weapons[0], false);
+  const stdAtkObj = seq[0];
+  assert.strictEqual(stdAtkObj.damageDice, '1w8 + 1w6 Feuer', 'Computed damage dice formula should include extra damage');
+});
+

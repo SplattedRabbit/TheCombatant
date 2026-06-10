@@ -642,9 +642,11 @@ export function addPCItem() {
       name: 'Neuer Gegenstand',
       slot: 'slotless',
       isEquipped: false,
-      effectType: 'attribute',
-      effectTarget: 'str',
-      effectValue: 0
+      effects: [{
+        type: 'attribute',
+        target: 'str',
+        value: 0
+      }]
     }));
     saveToStorage();
     syncPCToHost();
@@ -691,6 +693,50 @@ export function togglePCItemEquip(idx) {
     recalculatePCStats(pc);
     saveToStorage();
     syncPCToHost();
+  }
+}
+
+export function addPCItemEffect(itemIdx) {
+  const pc = getActivePC();
+  if (pc && pc.items && pc.items[itemIdx]) {
+    const item = pc.items[itemIdx];
+    if (!Array.isArray(item.effects)) {
+      item.effects = [];
+    }
+    item.effects.push({
+      type: 'attribute',
+      target: 'str',
+      value: 0
+    });
+    recalculatePCStats(pc);
+    saveToStorage();
+    syncPCToHost();
+  }
+}
+
+export function deletePCItemEffect(itemIdx, effectIdx) {
+  const pc = getActivePC();
+  if (pc && pc.items && pc.items[itemIdx]) {
+    const item = pc.items[itemIdx];
+    if (Array.isArray(item.effects) && item.effects[effectIdx]) {
+      item.effects.splice(effectIdx, 1);
+      recalculatePCStats(pc);
+      saveToStorage();
+      syncPCToHost();
+    }
+  }
+}
+
+export function updatePCItemEffect(itemIdx, effectIdx, key, val) {
+  const pc = getActivePC();
+  if (pc && pc.items && pc.items[itemIdx]) {
+    const item = pc.items[itemIdx];
+    if (Array.isArray(item.effects) && item.effects[effectIdx]) {
+      item.effects[effectIdx][key] = val;
+      recalculatePCStats(pc);
+      saveToStorage();
+      syncPCToHost();
+    }
   }
 }
 

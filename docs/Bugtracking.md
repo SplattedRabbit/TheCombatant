@@ -130,5 +130,22 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
 *   **Lösungsansatz:**
     *   Im Klick-Handler des Verlernen-Buttons (`unlearnBtn.onclick`) explizit `e.stopPropagation()` and `e.preventDefault()` aufrufen. Dadurch wird verhindert, dass das Klick-Event im Event-Loop weitergeleitet wird und nach dem sofortigen Neuaufbau der Seite durch `renderPlayerScreen` direkt wieder die darunterliegende Zeile/Karte triggert.
 
+## 15. Druiden-Tiergestalt: Fehlerhafte Wert- und RK-Berechnungen
+*   **Beschreibung:** Die Verwandlung in eine Tiergestalt (Wild Shape) des Druiden verändert die Werte nicht korrekt. Die Attributswerte wirken willkürlich, die RK stimmt nicht mit den richtigen Werten des gewählten Tiers überein, und die Rettungswürfe wurden beim Wechsel nicht abgeglichen.
+*   **Betroffene Dateien:**
+    *   [Combatant.js](file:///c:/Users/Juls/Desktop/CombatApp/js/models/Combatant.js) (Klassenspezifische Methoden `enterShape()` und `exitShape()`)
+*   **Lösungsansatz:**
+    *   Tiefere Überprüfung der Wild-Shape-Regeln und der betroffenen Zuweisungen durchführen.
+    *   Sicherstellen, dass die physischen Attribute (Stärke, Geschicklichkeit, Konstitution) durch die des gewählten Tieres ersetzt werden, während die geistigen Attribute (Intelligenz, Weisheit, Charisma) unverändert bleiben (D&D 3.5e RAW).
+    *   Überprüfung der RK-Berechnung der Tiergestalt (natürliche Rüstung der neuen Form anrechnen).
+    *   Rettungswürfe (Fort, Ref, Will) basierend auf den neuen Attributen (insb. Konstitution und Geschicklichkeit) neu berechnen und abgleichen.
 
+---
 
+## 16. ✅ BEHOBEN (v3.2.5-cache-v3): Crash beim Tab-Wechsel zu „Ausrüstung" in Wild Shape
+*   **Beschreibung:** Wechselte ein Druide in Tiergestalt (`pc.activeShape !== "none"`) auf den Tab „Ausrüstung", crashte die Anwendung, weil `renderPCOffense` die Funktion `_renderNaturalAttacksList(natList, pc)` aufrief, die in `PCOffense.js` nicht definiert war.
+*   **Fix (10.06.2026):**
+    *   `_renderNaturalAttacksList(container, pc)` in [PCOffense.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCOffense.js) implementiert.
+    *   Die Funktion nutzt eine lokale `SHAPE_ATTACKS`-Datentabelle mit den korrekten D&D 3.5e Natürlichen Angriffen je Form (Wolf: Biss, Leopard: Biss + 2x Kralle, Braunbär: 2x Kralle + Biss).
+    *   Für jeden Angriff wird ein Pseudo-Weapon-Objekt gebaut, das von `showAttackChoiceDialog` und `showRollBreakdown` verarbeitet werden kann.
+    *   ATK- und DMG-Buttons sind vollständig funktionsfähig.

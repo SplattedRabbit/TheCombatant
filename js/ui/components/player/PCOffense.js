@@ -62,7 +62,115 @@ function getWeaponFeatModifiers(w, pc) {
   });
   
   return { atkBonus, dmgBonus, details };
-}export function renderPCOffense(pc) {
+}
+
+// --- Wild Shape: Natürliche Angriffsdaten je Tierform ---
+const SHAPE_ATTACKS = {
+  wolf: [
+    { name: 'Biss (Wolf)', damageDice: '1w6', strMult: 1.0, isNatural: true, isSecondary: false, specialLabel: 'Trip' }
+  ],
+  leopard: [
+    { name: 'Biss (Leopard)',    damageDice: '1w6', strMult: 1.0, isNatural: true, isSecondary: false },
+    { name: 'Kralle (Leopard)',  damageDice: '1w3', strMult: 0.5, isNatural: true, isSecondary: true  },
+    { name: 'Kralle (Leopard)',  damageDice: '1w3', strMult: 0.5, isNatural: true, isSecondary: true  }
+  ],
+  bear: [
+    { name: 'Kralle (Braunbär)', damageDice: '1w8', strMult: 1.0, isNatural: true, isSecondary: false },
+    { name: 'Kralle (Braunbär)', damageDice: '1w8', strMult: 1.0, isNatural: true, isSecondary: false },
+    { name: 'Biss (Braunbär)',   damageDice: '2w6', strMult: 0.5, isNatural: true, isSecondary: true  }
+  ]
+};
+
+/**
+ * Renders natural attack roll cards for wild-shape forms into the given container.
+ * Uses the same showAttackChoiceDialog / showRollBreakdown calls as normal weapons.
+ */
+function _renderNaturalAttacksList(container, pc) {
+  container.innerHTML = '';
+  const attacks = SHAPE_ATTACKS[pc.activeShape];
+  if (!attacks || attacks.length === 0) {
+    container.innerHTML = '<div style="font-size:8px; color:var(--inkl); font-style:italic;">Keine natürlichen Angriffe definiert.</div>';
+    return;
+  }
+
+  const strMod = pc.getAttributeMod('str');
+  const babVal  = pc.bab.getValue();
+
+  attacks.forEach((atk) => {
+    // Build a pseudo-weapon object that AttackEngine can handle
+    const pseudoWeapon = {
+      name:        atk.name,
+      damageDice:  atk.damageDice,
+      damage:      atk.damageDice,
+      enhancement: 0,
+      attackBonus: 0,
+      isNatural:   true,
+      isSecondary: atk.isSecondary,
+      grip:        'unarmed',
+      crit:        '20 / x2',
+      type:        'unarmed'
+    };
+
+    // Calculate atkTotal and dmgTotal manually for display
+    const atkMod  = babVal + (atk.isSecondary ? -5 : 0) + strMod;
+    const dmgMod  = Math.floor(strMod * atk.strMult);
+    const atkStr  = atkMod >= 0 ? `+${atkMod}` : `${atkMod}`;
+    const dmgStr  = dmgMod >= 0 ? `+${dmgMod}` : `${dmgMod}`;
+
+    const card = document.createElement('div');
+    card.style.cssText = `
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 0.5px solid var(--pb);
+      border-radius: 3px;
+      padding: 4px 7px;
+      background: rgba(200, 169, 110, 0.03);
+      gap: 6px;
+    `;
+
+    const labelPart = atk.isSecondary
+      ? `<span style="font-size:6px; color:var(--inkl); opacity:0.7;">(sekund.)</span>`
+      : '';
+    const specialPart = atk.specialLabel
+      ? `<span style="font-size:6.5px; color:#2e7d32; margin-left:3px;">[${atk.specialLabel}]</span>`
+      : '';
+
+    card.innerHTML = `
+      <div style="flex:1; min-width:0;">
+        <div style="font-family:'Crimson Text',serif; font-size:9px; font-weight:bold; color:var(--red); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+          ${atk.name}${specialPart}
+        </div>
+        <div style="font-size:7px; color:var(--inkm);">${atk.damageDice}${dmgStr !== '+0' ? ' ' + dmgStr : ''} ${labelPart}</div>
+      </div>
+      <div style="display:flex; gap:3px; flex-shrink:0;">
+        <button class="xbtn xbtn-dmg nat-atk-btn" style="padding:1px 5px; font-size:6.5px; font-weight:bold; white-space:nowrap; height:15px; line-height:1;">
+          ATK (${atkStr}) 🎲
+        </button>
+        <button class="xbtn xbtn-heal nat-dmg-btn" style="padding:1px 5px; font-size:6.5px; font-weight:bold; white-space:nowrap; height:15px; line-height:1; border-color:#2a6a2a; color:#1a4a1a;">
+          DMG (${dmgStr})
+        </button>
+      </div>
+    `;
+
+    // ATK button: re-use showAttackChoiceDialog with the pseudo-weapon
+    card.querySelector('.nat-atk-btn').onclick = (e) => {
+      showAttackChoiceDialog(pc, pseudoWeapon, e);
+    };
+
+    // DMG button: show a simple roll breakdown
+    card.querySelector('.nat-dmg-btn').onclick = (e) => {
+      const breakdown = [
+        { label: 'Stärke (' + (atk.strMult === 1.0 ? '1x' : '0.5x') + ')', value: dmgMod }
+      ];
+      showRollBreakdown(`${atk.name} (Schaden)`, `${atk.damageDice}${dmgStr}`, breakdown, e);
+    };
+
+    container.appendChild(card);
+  });
+}
+
+export function renderPCOffense(pc) {
   const offense = document.getElementById('pcOffense');
   if (!offense) return;
 
@@ -721,9 +829,38 @@ function _createStashWeaponCard(w, idx, pc) {
       <label style="display:flex; align-items:center; gap:3px; cursor:pointer; color:var(--inkm); margin: 0;">
         <input type="checkbox" class="w-detail-keen" ${w.isKeen ? 'checked' : ''} style="margin:0; width:10px; height:10px;"> Scharf (Keen)
       </label>
-      <div style="display:flex; align-items:center; gap:2px; flex: 1; min-width: 100px;">
-        <span style="color:var(--inkl);">Zusatz-Schaden:</span>
-        <input type="text" class="cinput w-detail-extradmg" value="${w.extraDamage || ''}" placeholder="z.B. 1w6 Feuer" style="font-size: 8px; height: 14px; padding: 0 4px; flex: 1;">
+      <div style="display:flex; align-items:center; gap:3px; flex: 1; min-width: 150px;">
+        <span style="color:var(--inkl); flex-shrink:0;">Zusatz-Schaden:</span>
+        <select class="cinput w-detail-extradmg-dice" style="font-size:7.5px; height:14px; padding:0 1px; width:45px; flex-shrink:0;">
+          <option value="" ${w.extraDamageDice === '' ? 'selected' : ''}>Kein</option>
+          <option value="1w2" ${w.extraDamageDice === '1w2' ? 'selected' : ''}>1w2</option>
+          <option value="1w3" ${w.extraDamageDice === '1w3' ? 'selected' : ''}>1w3</option>
+          <option value="1w4" ${w.extraDamageDice === '1w4' ? 'selected' : ''}>1w4</option>
+          <option value="1w6" ${w.extraDamageDice === '1w6' ? 'selected' : ''}>1w6</option>
+          <option value="1w8" ${w.extraDamageDice === '1w8' ? 'selected' : ''}>1w8</option>
+          <option value="1w10" ${w.extraDamageDice === '1w10' ? 'selected' : ''}>1w10</option>
+          <option value="1w12" ${w.extraDamageDice === '1w12' ? 'selected' : ''}>1w12</option>
+          <option value="2w4" ${w.extraDamageDice === '2w4' ? 'selected' : ''}>2w4</option>
+          <option value="2w6" ${w.extraDamageDice === '2w6' ? 'selected' : ''}>2w6</option>
+          <option value="2w8" ${w.extraDamageDice === '2w8' ? 'selected' : ''}>2w8</option>
+          <option value="2w10" ${w.extraDamageDice === '2w10' ? 'selected' : ''}>2w10</option>
+          <option value="3w6" ${w.extraDamageDice === '3w6' ? 'selected' : ''}>3w6</option>
+          <option value="3w8" ${w.extraDamageDice === '3w8' ? 'selected' : ''}>3w8</option>
+          <option value="4w6" ${w.extraDamageDice === '4w6' ? 'selected' : ''}>4w6</option>
+        </select>
+        <select class="cinput w-detail-extradmg-type" style="font-size:7.5px; height:14px; padding:0 1px; flex:1; min-width:0;">
+          <option value="" ${w.extraDamageType === '' ? 'selected' : ''}>—</option>
+          <option value="Feuer" ${w.extraDamageType === 'Feuer' ? 'selected' : ''}>Feuer</option>
+          <option value="Kälte" ${w.extraDamageType === 'Kälte' ? 'selected' : ''}>Kälte</option>
+          <option value="Elektrizität" ${w.extraDamageType === 'Elektrizität' ? 'selected' : ''}>Elektrizität</option>
+          <option value="Säure" ${w.extraDamageType === 'Säure' ? 'selected' : ''}>Säure</option>
+          <option value="Schall" ${w.extraDamageType === 'Schall' ? 'selected' : ''}>Schall</option>
+          <option value="Wucht" ${w.extraDamageType === 'Wucht' ? 'selected' : ''}>Wucht</option>
+          <option value="Stich" ${w.extraDamageType === 'Stich' ? 'selected' : ''}>Stich</option>
+          <option value="Schnitt" ${w.extraDamageType === 'Schnitt' ? 'selected' : ''}>Schnitt</option>
+          <option value="Kraft" ${w.extraDamageType === 'Kraft' ? 'selected' : ''}>Kraft</option>
+          <option value="Gottgeweiht" ${w.extraDamageType === 'Gottgeweiht' ? 'selected' : ''}>Gottgeweiht</option>
+        </select>
       </div>
     </div>
     <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; width:100%;">
@@ -863,7 +1000,8 @@ function _createStashWeaponCard(w, idx, pc) {
 
   drawer.querySelector('.w-detail-atk').onchange = (e) => { CombatState.updatePCWeapon(idx, 'attackBonus', e.target.value); uiRegistry.renderPlayerScreen(); };
   drawer.querySelector('.w-detail-keen').onchange = (e) => { CombatState.updatePCWeapon(idx, 'isKeen', e.target.checked); uiRegistry.renderPlayerScreen(); };
-  drawer.querySelector('.w-detail-extradmg').onchange = (e) => { CombatState.updatePCWeapon(idx, 'extraDamage', e.target.value); };
+  drawer.querySelector('.w-detail-extradmg-dice').onchange = (e) => { CombatState.updatePCWeapon(idx, 'extraDamageDice', e.target.value); uiRegistry.renderPlayerScreen(); };
+  drawer.querySelector('.w-detail-extradmg-type').onchange = (e) => { CombatState.updatePCWeapon(idx, 'extraDamageType', e.target.value); uiRegistry.renderPlayerScreen(); };
 
   const strRatingInput = drawer.querySelector('.w-detail-strengthrating');
   if (strRatingInput) {
