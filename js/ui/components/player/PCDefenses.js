@@ -175,6 +175,18 @@ export function renderPCDefenses(pc) {
         <div>
           <label style="font-size:8px; font-weight:600; color:var(--inkl);">Energie-Resistenzen</label>
           <input type="text" value="${pc.resistances || ''}" class="cinput pc-resistances-input" placeholder="Feuer 5..." style="height:14px; font-size:8px;">
+      </div>
+      
+      <hr style="border:none; border-top:.5px solid var(--pb); margin:2px 0;">
+
+      <!-- Magic Items slots card -->
+      <div class="collapsible-card" style="margin-top:2px;">
+        <div class="collapsible-header" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer; background:rgba(200,169,110,0.08); border:0.5px solid var(--pb); border-radius:2px; padding:3px 6px;">
+          <span style="font-family:'IM Fell English SC', serif; font-size:8px; font-weight:bold; color:var(--red);">✨ Ausrüstung (Slots)</span>
+          <span class="collapsible-arrow" style="font-size:7px; color:var(--inkl);">▼</span>
+        </div>
+        <div class="collapsible-content" style="display:none; flex-direction:column; gap:3px; padding:4px 6px; border:0.5px solid var(--pb); border-top:none; background:rgba(255,255,255,0.2); border-radius:0 0 2px 2px;">
+          ${_renderEquippedSlotsHtml(pc)}
         </div>
       </div>
     </div>
@@ -364,4 +376,107 @@ export function renderPCDefenses(pc) {
       showRollBreakdown('Initiative-Wurf', '1W20', items, e);
     };
   }
+
+  // Collapsible toggle for magic items slots card
+  const collHeader = defenses.querySelector('.collapsible-header');
+  const collContent = defenses.querySelector('.collapsible-content');
+  const collArrow = defenses.querySelector('.collapsible-arrow');
+  if (collHeader && collContent) {
+    const isOpen = localStorage.getItem('magic_slots_open') === 'true';
+    if (isOpen) {
+      collContent.style.display = 'flex';
+      collArrow.textContent = '▲';
+    }
+    collHeader.onclick = () => {
+      const currentlyOpen = collContent.style.display === 'flex';
+      if (currentlyOpen) {
+        collContent.style.display = 'none';
+        collArrow.textContent = '▼';
+        localStorage.setItem('magic_slots_open', 'false');
+      } else {
+        collContent.style.display = 'flex';
+        collArrow.textContent = '▲';
+        localStorage.setItem('magic_slots_open', 'true');
+      }
+    };
+  }
+}
+
+function _renderEquippedSlotsHtml(pc) {
+  const slots = {
+    head: 'Kopf',
+    face: 'Gesicht',
+    neck: 'Hals',
+    shoulders: 'Schultern',
+    torso: 'Rumpf',
+    wrists: 'Handgelenke',
+    hands: 'Hände',
+    waist: 'Taille',
+    feet: 'Füße',
+    ring1: 'Ring 1',
+    ring2: 'Ring 2'
+  };
+
+  const equipped = {};
+  if (Array.isArray(pc.items)) {
+    pc.items.forEach(item => {
+      if (item.isEquipped && item.slot !== 'slotless') {
+        equipped[item.slot] = item;
+      }
+    });
+  }
+
+  let html = '';
+  Object.keys(slots).forEach(slotKey => {
+    const item = equipped[slotKey];
+    const itemDisplay = item 
+      ? `<span style="font-weight:bold; color:var(--red); font-family:'Crimson Text', serif; font-size:8.5px;">${item.name} (+${item.effectValue} ${getEffectTargetDisplay(item)})</span>`
+      : `<span style="color:var(--inkl); font-style:italic;">[Leer]</span>`;
+    
+    html += `
+      <div style="display:flex; justify-content:space-between; font-size:7.5px; border-bottom:0.5px dashed rgba(200,169,110,0.15); padding:1.5px 0;">
+        <span style="font-family:'IM Fell English SC', serif; color:var(--inkm); font-weight:bold;">${slots[slotKey]}:</span>
+        <span>${itemDisplay}</span>
+      </div>
+    `;
+  });
+
+  const slotless = Array.isArray(pc.items) ? pc.items.filter(item => item.isEquipped && item.slot === 'slotless') : [];
+  if (slotless.length > 0) {
+    html += `
+      <div style="font-family:'IM Fell English SC', serif; font-size:7.5px; color:var(--red); font-weight:bold; margin-top:4px; border-bottom:0.5px solid rgba(200,169,110,0.2);">
+        Slotfreie Gegenstände
+      </div>
+    `;
+    slotless.forEach(item => {
+      html += `
+        <div style="display:flex; justify-content:space-between; font-size:7.5px; border-bottom:0.5px dashed rgba(200,169,110,0.15); padding:1.5px 0;">
+          <span style="font-family:'Crimson Text', serif; color:var(--red); font-weight:bold;">${item.name}</span>
+          <span style="font-size:7.5px;">+${item.effectValue} ${getEffectTargetDisplay(item)}</span>
+        </div>
+      `;
+    });
+  }
+
+  return html;
+}
+
+function getEffectTargetDisplay(item) {
+  const targets = {
+    str: 'Stärke',
+    dex: 'Geschick',
+    con: 'Konst',
+    int: 'Int',
+    wis: 'Weisheit',
+    cha: 'Charisma',
+    fort: 'Zähigkeit',
+    ref: 'Reflex',
+    wil: 'Wille',
+    all: 'Rettungswürfe',
+    deflection: 'Ablenkung (RK)',
+    natural: 'Natürliche Rüstung',
+    armor: 'Rüstungsbonus',
+    speed: 'Bewegung'
+  };
+  return targets[item.effectTarget] || item.effectTarget;
 }
