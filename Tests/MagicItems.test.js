@@ -179,3 +179,61 @@ test('Magic Items - State Management & Slot Collision Resolution', () => {
   assert.strictEqual(pc.items.length, 1);
   assert.strictEqual(pc.items[0].name, 'Anderer Ring +2');
 });
+
+test('Magic Items - Expanded Slot Rules (Ring Independence, Multiple Slotless, Standard Collisions)', () => {
+  const pc = getActivePC();
+  pc.items = []; // Reset items
+
+  // 1. Add and equip a ring in ring1
+  addPCItem();
+  updatePCItem(0, 'name', 'Ring der Ausweichs +1');
+  updatePCItem(0, 'slot', 'ring1');
+  togglePCItemEquip(0);
+  assert.strictEqual(pc.items[0].isEquipped, true);
+
+  // 2. Add and equip a ring in ring2
+  addPCItem();
+  updatePCItem(1, 'name', 'Ring des Schutzes +2');
+  updatePCItem(1, 'slot', 'ring2');
+  togglePCItemEquip(1);
+  // Both ring1 and ring2 should be equipped since they are separate slots!
+  assert.strictEqual(pc.items[0].isEquipped, true, 'Ring 1 should stay equipped');
+  assert.strictEqual(pc.items[1].isEquipped, true, 'Ring 2 should be equipped');
+
+  // 3. Add and equip a third ring in ring1 (should unequip the ring in ring1 but NOT ring2)
+  addPCItem();
+  updatePCItem(2, 'name', 'Ring des Zauberns +3');
+  updatePCItem(2, 'slot', 'ring1');
+  togglePCItemEquip(2);
+  assert.strictEqual(pc.items[2].isEquipped, true, 'Ring 3 should be equipped');
+  assert.strictEqual(pc.items[0].isEquipped, false, 'First Ring 1 should be unequipped');
+  assert.strictEqual(pc.items[1].isEquipped, true, 'Ring 2 should stay equipped');
+
+  // 4. Add multiple slotless items (they should both remain equipped at the same time)
+  addPCItem();
+  updatePCItem(3, 'name', 'Iounenstein 1');
+  updatePCItem(3, 'slot', 'slotless');
+  togglePCItemEquip(3);
+
+  addPCItem();
+  updatePCItem(4, 'name', 'Iounenstein 2');
+  updatePCItem(4, 'slot', 'slotless');
+  togglePCItemEquip(4);
+
+  assert.strictEqual(pc.items[3].isEquipped, true, 'Slotless 1 should be equipped');
+  assert.strictEqual(pc.items[4].isEquipped, true, 'Slotless 2 should be equipped');
+
+  // 5. Add and equip standard slot items (e.g. neck)
+  addPCItem();
+  updatePCItem(5, 'name', 'Amulett 1');
+  updatePCItem(5, 'slot', 'neck');
+  togglePCItemEquip(5);
+  assert.strictEqual(pc.items[5].isEquipped, true, 'Amulet 1 should be equipped');
+
+  addPCItem();
+  updatePCItem(6, 'name', 'Amulett 2');
+  updatePCItem(6, 'slot', 'neck');
+  togglePCItemEquip(6);
+  assert.strictEqual(pc.items[6].isEquipped, true, 'Amulet 2 should be equipped');
+  assert.strictEqual(pc.items[5].isEquipped, false, 'Amulet 1 should be unequipped due to neck slot collision');
+});

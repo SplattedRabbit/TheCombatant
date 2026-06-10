@@ -7,6 +7,7 @@ import { renderPCSpells, renderPCFeatures } from './player/PCResources.js';
 import { renderPCFeats } from './player/PCFeatsTab.js';
 import { renderPCSkills } from './player/PCSkillsTab.js';
 import { renderPCHealthGlobe } from './player/PCHealthGlobe.js';
+import { renderPCMagicItemsTab } from './player/PCMagicItemsTab.js';
 
 let activeTab = 'overview'; // 'overview', 'skills', 'offense', 'spells', 'features'
 
@@ -25,6 +26,7 @@ function renderPlayerTabBar(pc) {
     <button class="player-tab-btn ${activeTab === 'overview' ? 'active' : ''}" data-tab="overview">🛡️ Übersicht</button>
     <button class="player-tab-btn ${activeTab === 'skills' ? 'active' : ''}" data-tab="skills">📜 Skills &amp; Talente</button>
     <button class="player-tab-btn ${activeTab === 'offense' ? 'active' : ''}" data-tab="offense">⚔️ Ausrüstung</button>
+    <button class="player-tab-btn ${activeTab === 'magicitems' ? 'active' : ''}" data-tab="magicitems">✨ Magische Gegenstände</button>
     ${spellsTabHtml}
     <button class="player-tab-btn ${activeTab === 'features' ? 'active' : ''}" data-tab="features">🐾 Klasse &amp; Begleiter</button>
     <button class="player-tab-btn" id="btnSystemMenuPlayer">⚙️ System</button>
@@ -63,7 +65,7 @@ export function renderPlayerScreen() {
   renderPlayerTabBar(pc);
 
   // Toggle active tab panel CSS classes
-  const panels = ['Overview', 'Skills', 'Offense', 'Spells', 'Features'];
+  const panels = ['Overview', 'Skills', 'Offense', 'MagicItems', 'Spells', 'Features'];
   panels.forEach(p => {
     const el = document.getElementById(`tabPanel${p}`);
     if (el) {
@@ -87,6 +89,8 @@ export function renderPlayerScreen() {
     renderPCFeats(pc);
   } else if (activeTab === 'offense') {
     renderPCOffense(pc);
+  } else if (activeTab === 'magicitems') {
+    renderPCMagicItemsTab(pc);
   } else if (activeTab === 'spells') {
     renderPCSpells(pc);
   } else if (activeTab === 'features') {

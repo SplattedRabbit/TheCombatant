@@ -496,15 +496,6 @@ function _renderRightColumnHtml(panel, pc) {
         </div>
         <div id="pcArmorList" style="display:flex; flex-direction:column; gap:4px; max-height:180px; overflow-y:auto;"></div>
       </div>
-
-      <!-- Magic Items Stash -->
-      <div style="margin-top:2px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:0.5px solid var(--pb); margin-bottom:4px; padding-bottom:2px;">
-          <span style="font-family:'IM Fell English SC', serif; font-size:9px; font-weight:bold; color:var(--red);">✨ Magische Gegenstände</span>
-          <button class="btn btn-add-item" style="font-family:'IM Fell English SC', serif; font-size:7.5px; padding:1px 5px; height:14px; line-height:1;">➕ Gegenstand</button>
-        </div>
-        <div id="pcItemsList" style="display:flex; flex-direction:column; gap:4px; max-height:220px; overflow-y:auto;"></div>
-      </div>
     </div>
   `;
 
@@ -515,10 +506,6 @@ function _renderRightColumnHtml(panel, pc) {
   };
   panel.querySelector('.btn-add-armor').onclick = () => {
     CombatState.addPCArmor('padded');
-    uiRegistry.renderPlayerScreen();
-  };
-  panel.querySelector('.btn-add-item').onclick = () => {
-    CombatState.addPCItem();
     uiRegistry.renderPlayerScreen();
   };
 
@@ -550,18 +537,6 @@ function _renderRightColumnHtml(panel, pc) {
     });
   }
 
-  let itemsList = offense ? offense.querySelector('#pcItemsList') : null;
-  if (!itemsList) {
-    itemsList = panel.querySelector('#pcItemsList');
-  }
-  if (itemsList) {
-    if (!Array.isArray(pc.items)) pc.items = [];
-    itemsList.innerHTML = '';
-    pc.items.forEach((item, idx) => {
-      const card = _createStashItemCard(item, idx, pc);
-      itemsList.appendChild(card);
-    });
-  }
 }
 
 function _bindGlobalCombatSettingsEvents(offense, pc, babVal, hasPowerAttack, hasCombatExpertise) {
@@ -1128,199 +1103,4 @@ function showDoubleWeaponDialog(idx) {
   overlay.onclick = (e) => { if (e.target === overlay) dismiss(); };
 }
 
-function _createStashItemCard(item, idx, pc) {
-  const rStyle = _getRarityStyle(0);
-  const container = document.createElement('div');
-  container.className = 'stash-item-card-container';
-  container.style = 'display:flex; flex-direction:column; gap:2px;';
 
-  const card = document.createElement('div');
-  card.className = `stash-item-card`;
-  card.style.cssText = `
-    display: flex;
-    flex-direction: column;
-    border: 0.5px solid var(--pb);
-    border-radius: 4px;
-    padding: 5px 6px;
-    background: rgba(200, 169, 110, 0.02);
-    transition: all 0.15s ease-out;
-    position: relative;
-    margin-top: ${item.isEquipped ? '6px' : '0'};
-  `;
-
-  if (item.isEquipped) {
-    card.style.border = '1px solid #b38600';
-    card.style.background = 'rgba(200, 169, 110, 0.05)';
-  }
-
-  const activeBadge = item.isEquipped ? `
-    <span style="position: absolute; top: -6px; left: 8px; font-size: 6px; color: #ffffff; background: #2a6a2a; border-radius: 2px; padding: 1px 4px; font-family: 'IM Fell English SC', serif; font-weight: bold; letter-spacing: 0.3px; pointer-events: none; z-index: 10; box-shadow: 0 1px 2px rgba(0,0,0,0.15);">Ausgerüstet</span>
-  ` : '';
-
-  const slots = {
-    head: 'Kopf',
-    face: 'Gesicht',
-    neck: 'Hals',
-    shoulders: 'Schultern',
-    torso: 'Rumpf',
-    wrists: 'Handgelenke',
-    hands: 'Hände',
-    waist: 'Taille',
-    feet: 'Füße',
-    ring1: 'Ring 1',
-    ring2: 'Ring 2',
-    slotless: 'Slotfrei'
-  };
-
-  let slotOptionsHtml = '';
-  Object.keys(slots).forEach(sKey => {
-    slotOptionsHtml += `<option value="${sKey}" ${item.slot === sKey ? 'selected' : ''}>${slots[sKey]}</option>`;
-  });
-
-  card.innerHTML = `
-    ${activeBadge}
-    <!-- Row 1: Name and Delete -->
-    <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-bottom: 4px;">
-      <input type="text" value="${item.name}" class="cinput item-name" placeholder="z.B. Schutzring" style="font-size: 9px; height: 18px; padding: 0 4px; flex: 1; font-weight: bold; border-color: rgba(200, 169, 110, 0.25);">
-      <button class="xbtn delete-btn" style="padding: 0; border: none; background: transparent; font-size: 10px; cursor: pointer; height: 18px; width: 18px; display: flex; align-items: center; justify-content: center; color: var(--red); transition: color 0.15s;" title="Löschen">✕</button>
-    </div>
-    <!-- Row 2: Slot, Equip, Options -->
-    <div style="display: flex; align-items: center; gap: 4px;">
-      <select class="cinput item-slot" style="font-size: 7.5px; padding: 0 2px; height: 16px; flex: 1.5; min-width: 0;">
-        ${slotOptionsHtml}
-      </select>
-      <button class="xbtn equip-btn" style="padding: 0 6px; font-size: 7.5px; font-weight: bold; height: 16px; line-height: 14px; border-color: ${item.isEquipped ? '#b38600' : 'var(--pb)'}; color: ${item.isEquipped ? '#b38600' : 'var(--ink)'}; background: ${item.isEquipped ? 'rgba(200, 169, 110, 0.08)' : 'transparent'}; border-radius: 2px;" title="${item.isEquipped ? 'Gegenstand ablegen' : 'Gegenstand anlegen'}">
-        ${item.isEquipped ? 'Ablegen' : 'Anlegen'}
-      </button>
-      <button class="xbtn gear-btn" style="padding: 0; border: none; background: transparent; font-size: 11px; cursor: pointer; height: 16px; width: 18px; display: flex; align-items: center; justify-content: center; color: var(--inkm);" title="Optionen">⚙️</button>
-    </div>
-  `;
-
-  // Options Drawer
-  const isDrawerOpen = openDrawerIds.has(item.id);
-  const drawer = document.createElement('div');
-  drawer.className = 'item-details-drawer';
-  drawer.style.cssText = `display: ${isDrawerOpen ? 'flex' : 'none'}; background: rgba(200,169,110,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); border-top: none; padding: 4px 6px; font-size: 8px; margin-top: -2px; margin-bottom: 2px; border-radius: 0 0 3px 3px; flex-direction: column; gap: 4px;`;
-
-  let targetOptionsHtml = '';
-  if (item.effectType === 'attribute') {
-    targetOptionsHtml = `
-      <option value="str" ${item.effectTarget === 'str' ? 'selected' : ''}>Stärke (STR)</option>
-      <option value="dex" ${item.effectTarget === 'dex' ? 'selected' : ''}>Geschick (DEX)</option>
-      <option value="con" ${item.effectTarget === 'con' ? 'selected' : ''}>Konstitution (CON)</option>
-      <option value="int" ${item.effectTarget === 'int' ? 'selected' : ''}>Intelligenz (INT)</option>
-      <option value="wis" ${item.effectTarget === 'wis' ? 'selected' : ''}>Weisheit (WIS)</option>
-      <option value="cha" ${item.effectTarget === 'cha' ? 'selected' : ''}>Charisma (CHA)</option>
-    `;
-  } else if (item.effectType === 'save') {
-    targetOptionsHtml = `
-      <option value="fort" ${item.effectTarget === 'fort' ? 'selected' : ''}>Zähigkeit</option>
-      <option value="ref" ${item.effectTarget === 'ref' ? 'selected' : ''}>Reflex</option>
-      <option value="wil" ${item.effectTarget === 'wil' ? 'selected' : ''}>Wille</option>
-      <option value="all" ${item.effectTarget === 'all' ? 'selected' : ''}>Alle Rettungswürfe</option>
-    `;
-  } else if (item.effectType === 'ac') {
-    targetOptionsHtml = `
-      <option value="deflection" ${item.effectTarget === 'deflection' ? 'selected' : ''}>Ablenkung (Deflection)</option>
-      <option value="natural" ${item.effectTarget === 'natural' ? 'selected' : ''}>Natürliche Rüstung</option>
-      <option value="armor" ${item.effectTarget === 'armor' ? 'selected' : ''}>Rüstung</option>
-    `;
-  } else {
-    targetOptionsHtml = `<option value="speed" selected>Bewegung</option>`;
-  }
-
-  drawer.innerHTML = `
-    <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-      <div style="display:flex; align-items:center; gap:4px; width:100%;">
-        <span style="color:var(--inkl); flex-shrink:0;">Effekt:</span>
-        <select class="cinput item-effect-type" style="font-size: 8px; height: 16px; flex: 1.2;">
-          <option value="attribute" ${item.effectType === 'attribute' ? 'selected' : ''}>Attribut</option>
-          <option value="save" ${item.effectType === 'save' ? 'selected' : ''}>Rettungswurf</option>
-          <option value="ac" ${item.effectType === 'ac' ? 'selected' : ''}>AC/RK-Bonus</option>
-          <option value="speed" ${item.effectType === 'speed' ? 'selected' : ''}>Geschwindigkeit</option>
-        </select>
-        
-        <select class="cinput item-effect-target" style="font-size: 8px; height: 16px; flex: 1.5;" ${item.effectType === 'speed' ? 'disabled' : ''}>
-          ${targetOptionsHtml}
-        </select>
-        
-        <div style="display:flex; align-items:center; gap:1px; flex-shrink:0;">
-          <span style="font-size: 7.5px; color: var(--inkm);">+</span>
-          <input type="number" class="cinput item-effect-value" value="${item.effectValue}" style="font-size: 8px; height: 16px; width: 22px; padding: 0; text-align: center;">
-        </div>
-      </div>
-    </div>
-  `;
-
-  container.appendChild(card);
-  container.appendChild(drawer);
-
-  // Bind events
-  card.querySelector('.item-name').onchange = (e) => {
-    CombatState.updatePCItem(idx, 'name', e.target.value);
-    uiRegistry.renderPlayerScreen();
-  };
-
-  card.querySelector('.item-slot').onchange = (e) => {
-    if (item.isEquipped) {
-      CombatState.togglePCItemEquip(idx);
-      CombatState.updatePCItem(idx, 'slot', e.target.value);
-      CombatState.togglePCItemEquip(idx);
-    } else {
-      CombatState.updatePCItem(idx, 'slot', e.target.value);
-    }
-    uiRegistry.renderPlayerScreen();
-  };
-
-  card.querySelector('.equip-btn').onclick = () => {
-    CombatState.togglePCItemEquip(idx);
-    uiRegistry.renderPlayerScreen();
-  };
-
-  card.querySelector('.delete-btn').onclick = () => {
-    CombatState.deletePCItem(idx);
-    uiRegistry.renderPlayerScreen();
-  };
-
-  card.querySelector('.gear-btn').onclick = () => {
-    const isVisible = drawer.style.display === 'flex';
-    if (isVisible) {
-      drawer.style.display = 'none';
-      openDrawerIds.delete(item.id);
-    } else {
-      drawer.style.display = 'flex';
-      openDrawerIds.add(item.id);
-    }
-  };
-
-  // Drawer events
-  const typeSelect = drawer.querySelector('.item-effect-type');
-  const targetSelect = drawer.querySelector('.item-effect-target');
-  const valInput = drawer.querySelector('.item-effect-value');
-
-  typeSelect.onchange = (e) => {
-    const val = e.target.value;
-    let defTarget = 'str';
-    if (val === 'save') defTarget = 'fort';
-    else if (val === 'ac') defTarget = 'deflection';
-    else if (val === 'speed') defTarget = 'speed';
-
-    CombatState.updatePCBatch(pc => {
-      pc.items[idx].effectType = val;
-      pc.items[idx].effectTarget = defTarget;
-    });
-    uiRegistry.renderPlayerScreen();
-  };
-
-  targetSelect.onchange = (e) => {
-    CombatState.updatePCItem(idx, 'effectTarget', e.target.value);
-    uiRegistry.renderPlayerScreen();
-  };
-
-  valInput.onchange = (e) => {
-    CombatState.updatePCItem(idx, 'effectValue', parseInt(e.target.value) || 0);
-    uiRegistry.renderPlayerScreen();
-  };
-
-  return container;
-}
