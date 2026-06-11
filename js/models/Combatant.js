@@ -1,23 +1,35 @@
 /**
  * @module    Combatant
- * @summary   Charaktermodell für Spieler (type:'p'), Gegner (type:'e') und Begleiter. Kapselt alle D&D-Attribute, Saves, Waffen, Rüstungen, Zauber und Wild-Shape-Logik.
+ * @summary   Charaktermodell für Spieler (type:'p'), Gegner (type:'e') und Begleiter. Kapselt D&D-Attribute, Saves, Waffen, Rüstungen und delegiert komplexe Klassentalente, Fertigkeiten und Zauber an Helper-Module.
  * @exports   Combatant (class)
  * @reads     Alle pc.*-Felder — ist das zentrale Datenobjekt
  * @stateOps  Keine — wird von PCManager mutiert, mutiert sich nicht selbst
- * @depends   Stat, Weapon, Armor, Item, BarbarianRules, MonkRules, RangerRules, RogueRules, SpellSlotCalculator
- * @notHere   UI/DOM → js/ui/ | D&D-Würfelmechanik → AttackEngine.js | State-Mutations → PCManager.js
+ * @depends   Stat, Weapon, Armor, Item, CombatantSkills, CombatantSpells, CombatantClassFeatures
+ * @notHere   UI/DOM → js/ui/ | D&D-Würfelmechanik → AttackEngine.js | State-Mutations → PCManager.js | Komplexe Zauber/Skills/Klassen-Details → js/models/helpers/
  */
 import { Stat } from './Stat.js';
 import { Weapon } from './Weapon.js';
 import { Armor } from './Armor.js';
 import { Item } from './Item.js';
-import { CombatSpells, getSpellSchoolCode } from '../spells.js';
-import { BarbarianRules } from '../rules/classes/BarbarianRules.js';
-import { MonkRules } from '../rules/classes/MonkRules.js';
-import { RangerRules } from '../rules/classes/RangerRules.js';
-import { RogueRules } from '../rules/classes/RogueRules.js';
-import { SKILLS_REGISTRY } from '../data/skills-data.js';
-import { SpellSlotCalculator } from '../rules/SpellSlotCalculator.js';
+import { CombatSpells } from '../spells.js';
+import { calculateSkillModifier } from './helpers/skills/CombatantSkills.js';
+import {
+  findSpell,
+  prepareSpell,
+  unprepareSpell,
+  applySpellTemplate,
+  castPreparedSpell,
+  castSpontaneousSpell
+} from './helpers/spells/CombatantSpells.js';
+import {
+  enterShape,
+  exitShape,
+  enterRage,
+  exitRage,
+  getWeaponDamageDice,
+  getFavoredEnemyBonus,
+  getSneakAttackDiceCount
+} from './helpers/classes/CombatantClassFeatures.js';
 
 const uid = () => {
   return Date.now() + '-' + Math.random().toString(36).slice(2, 7);
@@ -608,243 +620,44 @@ export class Combatant {
   }
 
   enterRage() {
-    if (this.isRaging) return;
-    this.isRaging = true;
-    
-    const barbClass = Array.isArray(this.classes) ? this.classes.find(c => c.classType === 'barbarian') : null;
-    const lvl = barbClass ? barbClass.level : 1;
-    const bonuses = BarbarianRules.getRageBonuses(lvl);
-    
-    const hpGain = bonuses.hpPerLevel * this.level;
-    this.maxHP += hpGain;
-    this.hp += hpGain;
-    
-    this.rebuildStatModifiers();
+    enterRage(this);
   }
 
   exitRage() {
-    if (!this.isRaging) return;
-    
-    const barbClass = Array.isArray(this.classes) ? this.classes.find(c => c.classType === 'barbarian') : null;
-    const lvl = barbClass ? barbClass.level : 1;
-    const bonuses = BarbarianRules.getRageBonuses(lvl);
-    
-    this.isRaging = false;
-    
-    const hpLoss = bonuses.hpPerLevel * this.level;
-    this.maxHP = Math.max(1, this.maxHP - hpLoss);
-    this.hp = Math.max(-99, this.hp - hpLoss);
-    
-    this.applyCondition("Erschöpft");
-    this.rebuildStatModifiers();
+    exitRage(this);
   }
 
-  // @feature:wildshape — Transformiert den Charakter in eine Tierform (D&D 3.5e RAW)
+  // @feature:wildshape — Druiden-Tiergestalt-Verwandlung
   enterShape(shapeName) {
-    if (this.activeShape !== "none") {
-      this.exitShape();
-    }
-
-    // Capture original human base attributes and AC base values
-    this.originalStats = {
-      str: this.str.base,
-      dex: this.dex.base,
-      con: this.con.base,
-      ac: this.ac.base,
-      acTouch: this.acTouch.base,
-      acFlat: this.acFlat.base
-    };
-
-    // Load target shape attributes and AC base values
-    if (shapeName === "wolf") {
-      this.str.base = 13;
-      this.dex.base = 15;
-      this.con.base = 15;
-      this.ac.base = 14;
-      this.acTouch.base = 12;
-      this.acFlat.base = 12;
-    } else if (shapeName === "leopard") {
-      this.str.base = 16;
-      this.dex.base = 19;
-      this.con.base = 15;
-      this.ac.base = 15;
-      this.acTouch.base = 14;
-      this.acFlat.base = 12;
-    } else if (shapeName === "bear") {
-      this.str.base = 27;
-      this.dex.base = 13;
-      this.con.base = 19;
-      this.ac.base = 15;
-      this.acTouch.base = 11;
-      this.acFlat.base = 14;
-    } else {
-      this.originalStats = null;
-      return;
-    }
-
-    this.activeShape = shapeName;
-    this.rebuildStatModifiers();
+    enterShape(this, shapeName);
   }
 
   exitShape() {
-    if (this.activeShape === "none" || !this.originalStats) {
-      this.activeShape = "none";
-      this.originalStats = null;
-      return;
-    }
-
-    // Restore original base scores
-    this.str.base = this.originalStats.str;
-    this.dex.base = this.originalStats.dex;
-    this.con.base = this.originalStats.con;
-    this.ac.base = this.originalStats.ac;
-    this.acTouch.base = this.originalStats.acTouch;
-    this.acFlat.base = this.originalStats.acFlat;
-
-    this.activeShape = "none";
-    this.originalStats = null;
-    this.rebuildStatModifiers();
+    exitShape(this);
   }
 
   prepareSpell(spellKey, metamagicList = [], isSpecialist = false) {
-    if (!Array.isArray(this.preparedSpells)) {
-      this.preparedSpells = [];
-    }
-    const id = uid();
-    this.preparedSpells.push({
-      id,
-      spellKey,
-      metamagic: [...metamagicList],
-      isUsed: false,
-      isSpecialist: !!isSpecialist
-    });
-    return id;
+    return prepareSpell(this, spellKey, metamagicList, isSpecialist);
   }
 
   unprepareSpell(id) {
-    if (Array.isArray(this.preparedSpells)) {
-      this.preparedSpells = this.preparedSpells.filter(s => s.id !== id);
-    }
+    unprepareSpell(this, id);
   }
 
   findSpell(key) {
-    if (CombatSpells.REGISTRY[key]) {
-      return CombatSpells.REGISTRY[key];
-    }
-    if (Array.isArray(this.customSpells)) {
-      const found = this.customSpells.find(s => s.id === key || s.nameDe === key);
-      if (found) return found;
-    }
-    return null;
+    return findSpell(this, key);
   }
 
   applySpellTemplate(name) {
-    const template = this.spellTemplates && this.spellTemplates[name];
-    if (!template) return { success: false, error: 'Vorlage nicht gefunden.' };
-
-    this.preparedSpells = [];
-    const unplaced = [];
-    const isWizard = this.classes && this.classes.some(c => c.classType === 'wizard');
-    const specSchool = this.wizardSpecialization || 'none';
-    const hasSpec = isWizard && specSchool !== 'none';
-
-    const templateSpellsByLevel = {};
-    for (let lvl = 0; lvl <= 9; lvl++) {
-      templateSpellsByLevel[lvl] = [];
-    }
-
-    template.forEach(item => {
-      const spell = this.findSpell(item.spellKey);
-      if (!spell) {
-        unplaced.push(item.spellKey);
-        return;
-      }
-      const adjustedLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, item.metamagic);
-      if (adjustedLevel >= 0 && adjustedLevel <= 9) {
-        templateSpellsByLevel[adjustedLevel].push({
-          spellKey: item.spellKey,
-          metamagic: item.metamagic || [],
-          school: spell.school,
-          nameDe: spell.nameDe || spell.nameEn || item.spellKey
-        });
-      } else {
-        unplaced.push(spell.nameDe || spell.nameEn || item.spellKey);
-      }
-    });
-
-    for (let lvl = 0; lvl <= 9; lvl++) {
-      const spellsToAlloc = templateSpellsByLevel[lvl];
-      if (spellsToAlloc.length === 0) continue;
-
-      const maxSlots = this.spellSlots[lvl]?.max || 0;
-      const hasSpecSlotAtLvl = hasSpec && lvl >= 1;
-      const specialistSlotCount = hasSpecSlotAtLvl ? 1 : 0;
-      const regularSlotCount = Math.max(0, maxSlots - specialistSlotCount);
-
-      const matchesSpecialization = (spell) => {
-        const code = getSpellSchoolCode(spell.school, spell.spellKey || '', spell.nameDe || '');
-        return code === specSchool;
-      };
-
-      let specIndex = -1;
-      if (specialistSlotCount > 0) {
-        specIndex = spellsToAlloc.findIndex(s => matchesSpecialization(s));
-      }
-
-      if (specIndex !== -1) {
-        const s = spellsToAlloc[specIndex];
-        spellsToAlloc.splice(specIndex, 1);
-        this.preparedSpells.push({
-          id: uid(),
-          spellKey: s.spellKey,
-          metamagic: [...s.metamagic],
-          isUsed: false,
-          isSpecialist: true
-        });
-      }
-
-      const numToPrep = Math.min(regularSlotCount, spellsToAlloc.length);
-      for (let i = 0; i < numToPrep; i++) {
-        const s = spellsToAlloc[i];
-        this.preparedSpells.push({
-          id: uid(),
-          spellKey: s.spellKey,
-          metamagic: [...s.metamagic],
-          isUsed: false,
-          isSpecialist: false
-        });
-      }
-
-      const remaining = spellsToAlloc.slice(numToPrep);
-      remaining.forEach(s => {
-        unplaced.push(s.nameDe);
-      });
-    }
-
-    return { success: true, unplaced };
+    return applySpellTemplate(this, name);
   }
 
   castPreparedSpell(id) {
-    if (!Array.isArray(this.preparedSpells)) return null;
-    const prep = this.preparedSpells.find(s => s.id === id);
-    if (prep && !prep.isUsed) {
-      prep.isUsed = true;
-      const spell = CombatSpells.REGISTRY[prep.spellKey] || (this.customSpells && this.customSpells.find(s => s.id === prep.spellKey || s.nameDe === prep.spellKey));
-      if (spell) {
-        const adjustedLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, prep.metamagic);
-        if (this.spellSlots && this.spellSlots[adjustedLevel]) {
-          this.spellSlots[adjustedLevel].used = Math.min(this.spellSlots[adjustedLevel].max, (this.spellSlots[adjustedLevel].used || 0) + 1);
-        }
-      }
-    }
-    return prep;
+    return castPreparedSpell(this, id);
   }
 
   castSpontaneousSpell(spellKey, slotLevel) {
-    const lvl = parseInt(slotLevel);
-    if (this.spellSlots && this.spellSlots[lvl]) {
-      this.spellSlots[lvl].used = Math.min(this.spellSlots[lvl].max, (this.spellSlots[lvl].used || 0) + 1);
-    }
+    castSpontaneousSpell(this, spellKey, slotLevel);
   }
 
   // --- Transactions / Encapsulated modifications ---
@@ -889,118 +702,7 @@ export class Combatant {
   }
 
   getSkillModifier(skillKey) {
-    const skillDef = SKILLS_REGISTRY[skillKey];
-    if (!skillDef) return 0;
-
-    let total = 0;
-    
-    // 1. Ranks
-    total += this.getSkillRanks(skillKey);
-
-    // 2. Attribute Modifier
-    total += this.getAttributeMod(skillDef.abl);
-
-    // 3. Misc Modifier
-    total += this.getSkillMisc(skillKey);
-
-    // 3.5 Armor Check Penalty (ACP)
-    if (skillDef.hasACP) {
-      const acp = this.getArmorCheckPenalty();
-      if (skillKey === 'swim') {
-        total -= 2 * acp;
-      } else {
-        total -= acp;
-      }
-    }
-
-    // 4. Synergy Bonuses
-    if (skillKey === 'balance' && this.getSkillRanks('tumble') >= 5) {
-      total += 2;
-    }
-    if (skillKey === 'escape_artist' && this.getSkillRanks('tumble') >= 5) {
-      total += 2;
-    }
-    if (skillKey === 'diplomacy' && this.getSkillRanks('bluff') >= 5) {
-      total += 2;
-    }
-    if (skillKey === 'disguise' && this.getSkillRanks('bluff') >= 5) {
-      total += 2;
-    }
-    if (skillKey === 'intimidate' && this.getSkillRanks('bluff') >= 5) {
-      total += 2;
-    }
-    if (skillKey === 'use_magic_device') {
-      if (this.getSkillRanks('spellcraft') >= 5) total += 2;
-      if (this.getSkillRanks('decipher_script') >= 5) total += 2;
-    }
-
-    // 5. Conditions penalties (Shaken / Sickened)
-    const hasShaken = this.conditions.some(c => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
-    if (hasShaken) {
-      total -= 2;
-    }
-
-    // 6. Feats bonuses
-    if (Array.isArray(this.feats)) {
-      const hasFeat = (featId) => this.feats.some(f => f.id === featId);
-      if (hasFeat('acrobatic') && (skillKey === 'jump' || skillKey === 'tumble')) {
-        total += 2;
-      }
-      if (hasFeat('agile') && (skillKey === 'balance' || skillKey === 'escape_artist')) {
-        total += 2;
-      }
-      if (hasFeat('alertness') && (skillKey === 'listen' || skillKey === 'spot')) {
-        total += 2;
-      }
-      if (hasFeat('animal_affinity') && (skillKey === 'handle_animal' || skillKey === 'ride')) {
-        total += 2;
-      }
-      if (hasFeat('athletic') && (skillKey === 'climb' || skillKey === 'swim')) {
-        total += 2;
-      }
-      if (hasFeat('deceitful') && (skillKey === 'disguise' || skillKey === 'forgery')) {
-        total += 2;
-      }
-      if (hasFeat('deft_hands') && (skillKey === 'sleight_of_hand' || skillKey === 'use_rope')) {
-        total += 2;
-      }
-      if (hasFeat('diligent') && (skillKey === 'appraise' || skillKey === 'decipher_script')) {
-        total += 2;
-      }
-      if (hasFeat('investigator') && (skillKey === 'gather_information' || skillKey === 'search')) {
-        total += 2;
-      }
-      if (hasFeat('negotiator') && (skillKey === 'diplomacy' || skillKey === 'sense_motive')) {
-        total += 2;
-      }
-      if (hasFeat('nimble_fingers') && (skillKey === 'open_lock' || skillKey === 'disable_device')) {
-        total += 2;
-      }
-      if (hasFeat('persuasive') && (skillKey === 'bluff' || skillKey === 'intimidate')) {
-        total += 2;
-      }
-      if (hasFeat('self_sufficient') && (skillKey === 'heal' || skillKey === 'survival')) {
-        total += 2;
-      }
-      if (hasFeat('stealthy') && (skillKey === 'hide' || skillKey === 'move_silently')) {
-        total += 2;
-      }
-      if (hasFeat('magical_aptitude') && (skillKey === 'spellcraft' || skillKey === 'use_magic_device')) {
-        total += 2;
-      }
-      
-      this.feats.forEach(feat => {
-        if (feat.id === 'skill_focus' && feat.option) {
-          const opt = feat.option.toLowerCase().trim();
-          const nameDe = skillDef.nameDe.toLowerCase();
-          if (opt === skillKey || opt.includes(skillKey) || opt.includes(nameDe) || nameDe.includes(opt)) {
-            total += 3;
-          }
-        }
-      });
-    }
-
-    return total;
+    return calculateSkillModifier(this, skillKey);
   }
 
   toJSON() {
@@ -1086,27 +788,15 @@ export class Combatant {
   }
 
   getFavoredEnemyBonus() {
-    const rangerClass = Array.isArray(this.classes) && this.classes.find(c => c.classType === 'ranger');
-    if (!rangerClass) return 0;
-    return RangerRules.getFavoredEnemyBonus(rangerClass.level);
+    return getFavoredEnemyBonus(this);
   }
 
   getSneakAttackDiceCount() {
-    const rogueClass = Array.isArray(this.classes) && this.classes.find(c => c.classType === 'rogue');
-    if (!rogueClass) return 0;
-    return RogueRules.getSneakAttackDiceCount(rogueClass.level);
+    return getSneakAttackDiceCount(this);
   }
 
   getWeaponDamageDice(w) {
-    if (!w) return '1w6';
-    if (w.damageDiceOverride) return w.damageDiceOverride;
-    if (w.type === 'unarmed_strike') {
-      const monkClass = Array.isArray(this.classes) && this.classes.find(c => c.classType === 'monk');
-      if (monkClass) {
-        return MonkRules.getUnarmedDamageDice(monkClass.level);
-      }
-    }
-    return w.damageDice;
+    return getWeaponDamageDice(this, w);
   }
 
   getEquippedArmor() {

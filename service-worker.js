@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.2.5-cache-v3';
+const CACHE_NAME = 'dnd-combatsheet-v3.2.5-cache-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -20,6 +20,20 @@ const ASSETS = [
   './js/models/Weapon.js',
   './js/models/Armor.js',
   './js/models/Combatant.js',
+  './js/models/helpers/skills/SkillBaseCalculator.js',
+  './js/models/helpers/skills/SkillSynergyResolver.js',
+  './js/models/helpers/skills/SkillFeatApplier.js',
+  './js/models/helpers/skills/CombatantSkills.js',
+  './js/models/helpers/spells/SpellFinder.js',
+  './js/models/helpers/spells/SpellPreparation.js',
+  './js/models/helpers/spells/SpellTemplateApplier.js',
+  './js/models/helpers/spells/CombatantSpells.js',
+  './js/models/helpers/classes/DruidHelper.js',
+  './js/models/helpers/classes/BarbarianHelper.js',
+  './js/models/helpers/classes/MonkHelper.js',
+  './js/models/helpers/classes/RangerHelper.js',
+  './js/models/helpers/classes/RogueHelper.js',
+  './js/models/helpers/classes/CombatantClassFeatures.js',
   './js/models/Item.js',
   './js/models/model-core.js',
   './js/data/armor-data.js',
