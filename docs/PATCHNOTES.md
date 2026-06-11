@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :---: | :---: | :--- |
+| **v3.2.7** | Release | 11.06.2026 | D&D 3.5e Volks-Simulation, Stat-Mali Fix & PCResources.js Refactoring |
 | **v3.2.6** | Release | 11.06.2026 | Monolith Refactoring: PCOffense.js Split in 7 UI-Subkomponenten |
 | **v3.2.5** | Release | 10.06.2026 | Wild-Shape-Bugdokumentation, Cache-Bump, Serviceworker-Versionskonvention |
 | **v3.2.4** | Release | 10.06.2026 | Waffen Zusatzschaden: Würfelanzahl + Schadensart via Dropdowns (extraDamageDice/extraDamageType), AttackEngine-Integration |
@@ -61,6 +62,30 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v3.2.7 — Volks-Simulation & PCResources-Refactoring (Release v3.2.7)
+
+* **🧬 D&D 3.5e Volks-Simulation (Races):**
+  - Vollwertige Simulation der Rassen/Völker (Zwerg, Elf, Gnom, Halbling, Halbork, Halbelf).
+  - Rassenbedingte Attribute werden als `racial` Modifikatoren an den Stat-Instanzen verwaltet, wodurch alle abgeleiteten Werte (HP, Initiative, RK, Rettungswürfe, Skills) sich dynamisch und sofort im UI anpassen.
+  - Größenmodifikatoren für kleine Völker (Gnome/Halblinge) gewähren automatisch +1 Größen-RK (Normal, Berührung, Flach) und +1 auf Angriffe.
+  - Rettungswurf-Modifikatoren für Halblinge (+1 Volksbonus auf alle Rettungswürfe) integriert.
+  - Zwergische Immunität gegen Bewegungsverlangsamung durch mittelschwere und schwere Rüstung implementiert.
+  - Spezifische Volksboni für Fertigkeiten automatisch appliziert (z. B. Elf +2 Lauschen/Suchen/Entdecken).
+  - Neues "Volksmerkmale"-Feature-Kärtchen im Klassenmerkmale-Tab zeigt alle aktiven Rassen-Sonderregeln.
+* **🔧 Behebung der Stat-Mali-Berechnung (Stat.js):**
+  - Korrektur eines kritischen Fehlers in `Stat.getValue()`, bei dem typisierte negative Modifikatoren (Mali) fälschlicherweise auf 0 geklammert wurden. Diese werden nun in `penaltiesSum` gesammelt und korrekt abgezogen (wichtig für die Rassen-Mali der Attribute).
+  - Die Testsuite in `stat.test.js` wurde angepasst, um dieses regelkonforme Verhalten zu prüfen.
+* **🎲 Abrundung bei klassenübergreifenden halben Rängen:**
+  - In `SkillBaseCalculator.js` werden Ränge bei Modifikator-Berechnungen nun mit `Math.floor` abgerundet. Halbe Ränge (0,5) bei klassenübergreifenden Fertigkeiten (cross-class skills) verbessern den Fertigkeitswurf laut D&D 3.5e RAW erst dann, wenn sie zu einem vollen Rang aufgerundet wurden.
+* **📦 Refactoring & Aufteilung von PCResources.js:**
+  - Die 808 Zeilen große Monolith-Datei `PCResources.js` wurde gelöscht und modularisiert in:
+    - `ClassFeaturesRegistry.js` (Gemeinsame Registry für Features)
+    - `PCSpellsTab.js` (Einstiegspunkt & Zauberbuch-Struktur)
+    - `PCSpellsTabHandlers.js` (Alle Interaktions- & Zauber-Event-Handler)
+    - `PCFeaturesTab.js` (Feature-Karten & Volksmerkmale)
+* **🗣️ AGENT.md Pflege:**
+  - Festlegung der zwingenden Pflicht auf Deutsch mit dem Benutzer zu kommunizieren direkt als Header-Regel in `AGENT.md`.
 
 ### v3.2.6 — Monolith-Refactoring: PCOffense.js Split (Release v3.2.6)
 
