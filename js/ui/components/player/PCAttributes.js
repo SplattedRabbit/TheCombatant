@@ -83,7 +83,7 @@ export function renderPCAttributes(pc) {
                   `).join('')}
                 </select>
                 <div style="display:flex; align-items:center; gap:4px;">
-                  <select class="cinput pc-class-lvl-select" data-idx="${idx}" style="font-size:8px; height:14px; padding:0; width:36px; text-align:center; line-height:1.2;">
+                  <select class="cinput pc-class-lvl-select" data-idx="${idx}" style="font-size:8px; height:14px; padding:0; width:44px; text-align:center; line-height:1.2;">
                     ${Array.from({ length: 20 }, (_, i) => i + 1).map(lvl => `
                       <option value="${lvl}" ${c.level === lvl ? 'selected' : ''}>${lvl}</option>
                     `).join('')}

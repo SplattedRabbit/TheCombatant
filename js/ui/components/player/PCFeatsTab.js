@@ -196,8 +196,8 @@ export function renderPCFeats(pc) {
       <div style="width: 60%; display:flex; flex-direction:column; gap:4px;">
         <!-- Filters Header -->
         <div style="display:flex; gap:4px; margin-bottom: 4px;">
-          <input type="text" id="compendiumFeatSearch" value="${featSearchQuery}" placeholder="Suchen..." class="cinput" style="flex:1; font-size: 8px; height: 16px;">
-          <select id="compendiumFeatCategory" class="cinput" style="flex:1; font-size: 8px; height: 16px; padding: 0 1px;">
+          <input type="text" id="compendiumFeatSearch" value="${featSearchQuery}" placeholder="Suchen..." class="cinput" style="flex:1; font-size: 11px; height: 18px; padding: 0 4px; font-family: 'Crimson Text', serif; box-sizing: border-box;">
+          <select id="compendiumFeatCategory" class="cinput" style="flex:1; font-size: 11px; height: 18px; padding: 0 2px; font-family: 'Crimson Text', serif; box-sizing: border-box;">
             <option value="all" ${featCategoryFilter === 'all' ? 'selected' : ''}>Alle Klassen</option>
             <option value="general" ${featCategoryFilter === 'general' ? 'selected' : ''}>Allgemein</option>
             <option value="combat" ${featCategoryFilter === 'combat' ? 'selected' : ''}>Kampftalente</option>
