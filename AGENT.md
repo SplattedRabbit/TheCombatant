@@ -1,5 +1,6 @@
 # AGENT.md — AI Agent Navigation & Selbstwartungsanleitung
 # CombatApp (D&D 3.5e) | Lies diese Datei ZUERST, vor jeder anderen.
+# WICHTIG: Kommuniziere mit dem Benutzer IMMER auf Deutsch.
 
 ---
 
