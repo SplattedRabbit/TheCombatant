@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.2.7-cache-v4';
+const CACHE_NAME = 'dnd-combatsheet-v3.3.0-cache-v1';
 const ASSETS = [
   './',
   './index.html',

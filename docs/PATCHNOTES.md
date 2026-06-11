@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :---: | :---: | :--- |
+| **v3.3.0** | Release | 11.06.2026 | Druiden-Tiergestalt RAW Fixes, Modularisierung AttackEngine & Behebung Bug #17 |
 | **v3.2.7** | Release | 11.06.2026 | D&D 3.5e Volks-Simulation, Stat-Mali Fix & PCResources.js Refactoring |
 | **v3.2.6** | Release | 11.06.2026 | Monolith Refactoring: PCOffense.js Split in 7 UI-Subkomponenten |
 | **v3.2.5** | Release | 10.06.2026 | Wild-Shape-Bugdokumentation, Cache-Bump, Serviceworker-Versionskonvention |
@@ -62,6 +63,20 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v3.3.0 — Druiden-Tiergestalt RAW-Fixes, Modularisierung AttackEngine & Behebung Bug #17 (Release v3.3.0)
+
+* **🐾 Druiden-Tiergestalt (Wild Shape RAW-Fixes):**
+  - Physische Rassenmodifikatoren der Grundform werden in Tiergestalt nun regelkonform ignoriert.
+  - Die angeborene natürliche Rüstung der Grundform wird in Tiergestalt nicht mehr addiert.
+  - Der Größenmodifikator auf RK wurde zentralisiert, um doppelte Größen-AC-Boni (z. B. beim Gnom) zu verhindern.
+* **⚔️ Modularisierung & Refactoring der `AttackEngine.js`:**
+  - Aufteilung der ehemals ~799 Zeilen großen monolithischen Angriffs-Engine in 5 sauber entkoppelte Module unter `js/rules/attack/` (Context, Base Attacks, Modifiers, Damage Formulas, Sequence Builder).
+  - Die Datei `AttackEngine.js` dient als leichtgewichtige Fassade (~80 Zeilen); die API-Kompatibilität bleibt zu 100 % erhalten.
+* **🏹 Behebung von Bug #17 (Option-Fallbacks für Smite / Erzfeind / Sneak Attack):**
+  - Implementierung sicherer Fallbacks in `buildContext`: Werden keine expliziten `options` mitgegeben (z. B. bei direkten Schadenswürfen via Klick auf den DMG-Button), greift die Engine vollautomatisch auf die persistenten Charakter-Einstellungen zurück.
+* **🌐 Offline-Fähigkeit & Service-Worker:**
+  - Registrierung aller neuen Dateien im Service Worker und Cache-Erneuerung auf `v3.3.0-cache-v1`.
 
 ### v3.2.7 — Volks-Simulation & PCResources-Refactoring (Release v3.2.7)
 
