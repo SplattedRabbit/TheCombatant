@@ -107,6 +107,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - `js/state/state-core.js` direkt importieren — immer `js/state.js`
 - `playershandbook_35e.pdf` in den Kontext laden — `search_rules.js` nutzen
 - Zeilennummern in `AGENT.md` eintragen — veralten sofort, nur Funktionsnamen
+- Halbe Ränge bei klassenübergreifenden Fertigkeiten (cross-class skills) verbessern den Wurf nicht — Ränge bei Modifikator-Berechnungen immer mit `Math.floor` abrunden.
 
 ---
 
