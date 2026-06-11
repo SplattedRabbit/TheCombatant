@@ -61,32 +61,32 @@ function addRaceModifier(stat, value, type, source) {
 
 function applyRaceModifiers(pc) {
   const race = (pc.race || 'human').toLowerCase();
+  const inWildShape = pc.activeShape !== 'none';
 
+  // @feature:wildshape — Physische Rassenmodifikatoren in Tiergestalt ignorieren (RAW)
   // 1. Attribute Modifiers
   if (race === 'dwarf') {
-    addRaceModifier(pc.con, 2, 'racial', 'Volk (Zwerg)');
+    if (!inWildShape) addRaceModifier(pc.con, 2, 'racial', 'Volk (Zwerg)');
     addRaceModifier(pc.cha, -2, 'racial', 'Volk (Zwerg)');
   } else if (race === 'elf') {
-    addRaceModifier(pc.dex, 2, 'racial', 'Volk (Elf)');
-    addRaceModifier(pc.con, -2, 'racial', 'Volk (Elf)');
+    if (!inWildShape) {
+      addRaceModifier(pc.dex, 2, 'racial', 'Volk (Elf)');
+      addRaceModifier(pc.con, -2, 'racial', 'Volk (Elf)');
+    }
   } else if (race === 'gnome') {
-    addRaceModifier(pc.con, 2, 'racial', 'Volk (Gnom)');
-    addRaceModifier(pc.str, -2, 'racial', 'Volk (Gnom)');
+    if (!inWildShape) {
+      addRaceModifier(pc.con, 2, 'racial', 'Volk (Gnom)');
+      addRaceModifier(pc.str, -2, 'racial', 'Volk (Gnom)');
+    }
   } else if (race === 'halfling') {
-    addRaceModifier(pc.dex, 2, 'racial', 'Volk (Halbling)');
-    addRaceModifier(pc.str, -2, 'racial', 'Volk (Halbling)');
+    if (!inWildShape) {
+      addRaceModifier(pc.dex, 2, 'racial', 'Volk (Halbling)');
+      addRaceModifier(pc.str, -2, 'racial', 'Volk (Halbling)');
+    }
   } else if (race === 'half_orc') {
-    addRaceModifier(pc.str, 2, 'racial', 'Volk (Halbork)');
+    if (!inWildShape) addRaceModifier(pc.str, 2, 'racial', 'Volk (Halbork)');
     addRaceModifier(pc.int, -2, 'racial', 'Volk (Halbork)');
     addRaceModifier(pc.cha, -2, 'racial', 'Volk (Halbork)');
-  }
-
-  // 2. Size Modifiers for Small Races (Gnome, Halfling)
-  if (race === 'gnome' || race === 'halfling') {
-    const sizeSource = race === 'gnome' ? 'Größe (Gnom)' : 'Größe (Halbling)';
-    addRaceModifier(pc.ac, 1, 'size', sizeSource);
-    addRaceModifier(pc.acTouch, 1, 'size', sizeSource);
-    addRaceModifier(pc.acFlat, 1, 'size', sizeSource);
   }
 
   // 3. Saving Throw Modifiers

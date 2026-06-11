@@ -40,7 +40,7 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Magische Gegenstände  | `js/models/Item.js`, `PCMagicItemsTab.js`                | `js/state/PCManager.js` (`addPCItem*`)       |
 | Waffen-UI             | `js/ui/components/player/offense/WeaponStashCard.js` (`createStashWeaponCard`) | `AttackEngine.js`, `js/models/Weapon.js`, `InventoryStashRenderer.js` |
 | Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `offense/ArmorStashCard.js` | `PCOffense.js`, `InventoryStashRenderer.js`  |
-| Angriffs-Engine       | `js/rules/AttackEngine.js`                               | `PCOffense.js`, `dialogs/AttackChoiceDialog.js` |
+| Angriffs-Engine       | `js/rules/AttackEngine.js`, `js/rules/attack/`           | `PCOffense.js`, `dialogs/AttackChoiceDialog.js` |
 | Rettungswürfe         | `js/rules/SaveCalculator.js`                             | `js/models/Combatant.js`, `helpers/modifiers/` |
 | Zauber / Slots        | `PCSpellbookTab.js`, `PCCompendiumTab.js`, `helpers/spells/CombatantSpells.js` | `SpellSlotCalculator.js`, `Combatant.js` |
 | Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `js/ui/components/class-features/` |

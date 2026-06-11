@@ -310,3 +310,65 @@ test('Wild Shape - bear Form wendet Größenmodifikator -1 auf AC an', () => {
   assert.strictEqual(pc.acTouch.getValue(), 10);
   assert.strictEqual(pc.acFlat.getValue(), 14);
 });
+
+test('Wild Shape - Rassenmodifikator (Zwergen-CON) wird in Tiergestalt ignoriert', () => {
+  const pc = new Combatant({ type: 'p', race: 'dwarf' });
+  pc.classes = [{ classType: 'druid', level: 6 }];
+  pc.con.base = 12; // Zwerg erhält normalerweise +2 = 14 Con
+  pc.rebuildStatModifiers();
+
+  // In Zwergen-Grundform: Con sollte 14 sein
+  assert.strictEqual(pc.con.getValue(), 14, 'Zwerg Con in Grundform sollte 14 sein');
+
+  // In Bärengestalt wechseln: Bär hat Con 19 (ohne Rassenmodifikator!)
+  pc.enterShape('bear');
+  assert.strictEqual(pc.con.getValue(), 19, 'In Bärengestalt sollte Con exakt 19 sein (Zwergen-Rassenbonus ignoriert)');
+
+  // Wieder zurückverwandeln: Con sollte wieder 14 sein
+  pc.exitShape();
+  assert.strictEqual(pc.con.getValue(), 14, 'Nach exitShape() sollte Con wieder 14 sein');
+});
+
+test('Wild Shape - Rassen-Größen-RK-Bonus (Gnom) wird in Tiergestalt ignoriert', () => {
+  const pc = new Combatant({ type: 'p', race: 'gnome', autoAC: true });
+  pc.classes = [{ classType: 'druid', level: 6 }];
+  pc.dex.base = 10;
+  pc.rebuildStatModifiers();
+
+  // Gnom hat in Grundform Größe Small (+1 auf RK)
+  assert.strictEqual(pc.getSizeModifier(), 1, 'Gnom hat in Grundform Größe Small');
+  // RK: 10 (base) + 0 (dex) + 1 (size) = 11
+  assert.strictEqual(pc.ac.getValue(), 11, 'Gnom RK in Grundform sollte 11 sein');
+
+  // In Bärengestalt wechseln: Bär ist Large (-1 auf RK). Gnom-Größenbonus darf nicht stacken!
+  pc.enterShape('bear'); // bear has dex base 13 (mod +1), base ac 16, size -1
+  pc.rebuildStatModifiers();
+  
+  // Bär RK: 16 (base) + 0 (dex-diff: 13-13=0) + -1 (bear size) = 15
+  assert.strictEqual(pc.ac.getValue(), 15, 'Bär RK sollte 15 sein (kein Gnom-Größenbonus)');
+  assert.strictEqual(pc.getSizeModifier(), -1, 'In Bärengestalt gilt Größenmodifikator -1');
+
+  pc.exitShape();
+  assert.strictEqual(pc.ac.getValue(), 11, 'Zurück in Grundform: RK wieder 11');
+});
+
+test('Wild Shape - angeborene natürliche Rüstung der Grundform wird in Tiergestalt ignoriert', () => {
+  const pc = new Combatant({ type: 'p', autoAC: true });
+  pc.classes = [{ classType: 'druid', level: 6 }];
+  pc.acNatural = 2; // Grundform hat +2 natural armor
+  pc.dex.base = 10;
+  pc.rebuildStatModifiers();
+
+  // In Grundform: RK = 10 (base) + 2 (acNatural) = 12
+  assert.strictEqual(pc.ac.getValue(), 12, 'RK in Grundform sollte 12 sein');
+
+  // In Bärengestalt wechseln: Bär hat base ac 16 (schließt +5 natural armor ein), size -1
+  pc.enterShape('bear');
+  pc.rebuildStatModifiers();
+  
+  // Bär RK: 16 (base) + 0 (dex) + -1 (size) = 15 (pc.acNatural der Grundform wird ignoriert!)
+  assert.strictEqual(pc.ac.getValue(), 15, 'Bär RK sollte 15 sein (angeborene acNatural ignoriert)');
+
+  pc.exitShape();
+  assert.strictEqual(pc.ac.getValue(), 12, 'Zurück in Grundform: RK wieder 12');
+});
