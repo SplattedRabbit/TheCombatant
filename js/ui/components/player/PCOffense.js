@@ -1,3 +1,12 @@
+/**
+ * @module    PCOffense
+ * @summary   Rendert den Tab „Ausrüstung“: aktive Waffenslots/Rüstungsslots (links) und Waffenkammer/Rüstungskammer-Rucksack (rechts). Bei Wild Shape: natürliche Angriffe statt Slots.
+ * @exports   renderPCOffense(pc), isLightWeapon, getCritThreatDisplay
+ * @reads     pc.weapons, pc.armors, pc.activeShape, pc.feats, pc.bab, pc.isTotalDefense, pc.isDefensiveFighting
+ * @stateOps  togglePCWeaponEquip, togglePCArmorEquip, updatePCWeapon, updatePCArmor, addPCWeapon, addPCArmor, updatePCField
+ * @depends   AttackEngine, WeaponRegistry, ARMOR_REGISTRY, dialogs, MonkRules
+ * @notHere   Magische Gegenstände → PCMagicItemsTab.js | Angriffskalkulation → AttackEngine.js | Zauber → PCSpellbookTab.js
+ */
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { getAblMod, formatMod } from './PCUtils.js';

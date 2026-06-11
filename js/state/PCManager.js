@@ -1,3 +1,12 @@
+/**
+ * @module    PCManager
+ * @summary   Alle State-Mutationen für den Spielercharakter: Klassen, Talente, Waffen, Rüstungen, Zauber, Items, Tagesreset. Exportiert wird via js/state.js (Fassade).
+ * @exports   updatePCField, updatePCBatch, addPCWeapon, updatePCWeapon, togglePCWeaponEquip, addPCArmor, togglePCArmorEquip, addPCItem, updatePCItem, togglePCItemEquip, addPCItemEffect, updatePCItemEffect, deletePCItemEffect, addPCFeat, updatePCClassType, resetDailyResources, ...
+ * @reads     getActivePC(), getState()
+ * @stateOps  Feuert StateEvents.emit('pc_changed') nach jeder Mutation
+ * @depends   state-core, StorageManager, model-core, BABCalculator, SaveCalculator, SpellSlotCalculator, feats-data
+ * @notHere   UI-Rendering → js/ui/ | D&D-Regelberechnungen → js/rules/ | Netzwerk-Sync → SyncProtocol.js
+ */
 import { getState, getActivePC, StateEvents } from './state-core.js';
 import { saveToStorage } from './StorageManager.js';
 import { Stat, createCombatant, Weapon, Armor, Item } from '../models/model-core.js';

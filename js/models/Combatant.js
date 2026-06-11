@@ -1,3 +1,12 @@
+/**
+ * @module    Combatant
+ * @summary   Charaktermodell für Spieler (type:'p'), Gegner (type:'e') und Begleiter. Kapselt alle D&D-Attribute, Saves, Waffen, Rüstungen, Zauber und Wild-Shape-Logik.
+ * @exports   Combatant (class)
+ * @reads     Alle pc.*-Felder — ist das zentrale Datenobjekt
+ * @stateOps  Keine — wird von PCManager mutiert, mutiert sich nicht selbst
+ * @depends   Stat, Weapon, Armor, Item, BarbarianRules, MonkRules, RangerRules, RogueRules, SpellSlotCalculator
+ * @notHere   UI/DOM → js/ui/ | D&D-Würfelmechanik → AttackEngine.js | State-Mutations → PCManager.js
+ */
 import { Stat } from './Stat.js';
 import { Weapon } from './Weapon.js';
 import { Armor } from './Armor.js';
@@ -630,6 +639,7 @@ export class Combatant {
     this.rebuildStatModifiers();
   }
 
+  // @feature:wildshape — Transformiert den Charakter in eine Tierform (D&D 3.5e RAW)
   enterShape(shapeName) {
     if (this.activeShape !== "none") {
       this.exitShape();

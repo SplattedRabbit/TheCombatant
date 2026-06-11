@@ -1,3 +1,12 @@
+/**
+ * @module    AttackEngine
+ * @summary   Zentrale Angriffs-Engine. Berechnet Angriffs- und Schadenssequenzen für alle Waffentypen (Nah, Fern, Natürlich, Waffenlos, TWF, Schlaghagel).
+ * @exports   AttackEngine.calculateAttackSequence(pc, weapon, isFullAttack, options?)
+ * @reads     pc.bab, pc.feats, pc.str/dex/cha, pc.activeShape, weapon.*
+ * @stateOps  Keine — pure Berechnungsfunktion
+ * @depends   WeaponRegistry, isLightWeapon, matchesFeatOption, isMonkWeapon (Weapon.js)
+ * @notHere   UI-Rendering → PCOffense.js | Wild-Shape-Angriffsdaten → PCOffense.js#SHAPE_ATTACKS | State → PCManager.js
+ */
 import { WeaponRegistry, isLightWeapon, matchesFeatOption, isMonkWeapon } from '../models/Weapon.js';
 
 // --- Pure Helper Functions (Module Scope) ---
@@ -27,6 +36,7 @@ function buildContext(pc, weapon, options) {
     if (!isWearingMediumOrHeavy) {
       const rangerClass = Array.isArray(pc.classes) && pc.classes.find(c => c.classType === 'ranger');
       const rangerLvl = rangerClass ? rangerClass.level : 0;
+      // @feature:twf — Ranger virtuelle TWF-Talente (suspend bei mittlerer/schwerer Rüstung)
       if (rangerLvl >= 2 && pc.rangerCombatStyle === 'twoweapon') {
         if (featId === 'two_weapon_fighting' && rangerLvl >= 2) return true;
         if (featId === 'improved_two_weapon_fighting' && rangerLvl >= 6) return true;
@@ -43,6 +53,7 @@ function buildContext(pc, weapon, options) {
 
   const hasHaste = hasBuff('haste');
 
+  // @feature:wildshape — Natürliche Angriffe (Wild Shape) nutzen isNatural/isSecondary statt iterativer GAB
   const isNatural = !!weapon.isNatural;
   const isSecondary = !!weapon.isSecondary || (isNatural && (
     weapon.name.toLowerCase().includes('kralle') || 

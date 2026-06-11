@@ -1,4 +1,14 @@
+/**
+ * @module    PCMagicItemsTab
+ * @summary   Rendert den Tab »Magische Gegenstände«: Slot-Boxen (links, 11 Slots + Slotless) und Rucksack-Inventar mit Multi-Effekt-Editor (rechts).
+ * @exports   renderPCMagicItemsTab(pc)
+ * @reads     pc.items[], item.slot, item.effects[], item.isEquipped
+ * @stateOps  addPCItem, updatePCItem, deletePCItem, togglePCItemEquip, addPCItemEffect, updatePCItemEffect, deletePCItemEffect
+ * @depends   CombatState (state.js), uiRegistry (ui-shared.js)
+ * @notHere   Item-Modell → Item.js | Slot-Kollisionsprüfung → PCManager.js | Waffen/Rüstung → PCOffense.js
+ */
 import { CombatState } from '../../../state.js';
+
 import { uiRegistry } from '../../ui-shared.js';
 
 const openDrawerIds = new Set();

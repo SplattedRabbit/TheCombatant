@@ -1,7 +1,13 @@
 import { ARMOR_REGISTRY } from '../data/armor-data.js';
 
 /**
- * Encapsulates an armor or shield configuration in the player's inventory.
+ * @module    Armor
+ * @summary   Rüstungs- und Schildmodell. Getter für armorBonus/maxDex/checkPenalty/spellFailure/speedCategory mit Override-Support.
+ * @exports   Armor (class)
+ * @reads     armor.type, armor.isEquipped, armor.*Override-Felder
+ * @stateOps  Keine — Mutation via PCManager (addPCArmor, togglePCArmorEquip)
+ * @depends   ARMOR_REGISTRY (armor-data.js)
+ * @notHere   Rüstungs-UI → PCOffense.js | Rüstungsdaten → js/data/armor-data.js
  */
 export class Armor {
   constructor(a = {}) {

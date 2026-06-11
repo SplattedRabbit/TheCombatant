@@ -1,4 +1,14 @@
+/**
+ * @module    DruidFeatures
+ * @summary   Druiden-Klassen-Feature-Karte: Tiergestalt-Ladungen, Verwandlungs-Dialog und Rückwandlungs-Button. Rendert verfügbare Tierformen mit Referenzwerten.
+ * @exports   DruidFeatures (class extends ClassFeatureComponent)
+ * @reads     pc.dailyAbilities (Tiergestalt-Ladungen), pc.activeShape
+ * @stateOps  CombatState.updatePCBatch → pc.enterShape(), pc.exitShape()
+ * @depends   ClassFeatureComponent, CombatState (state.js)
+ * @notHere   Wild-Shape-Angriffsdaten → PCOffense.js#SHAPE_ATTACKS | Attribut-Änderungen → Combatant.js#enterShape
+ */
 import { ClassFeatureComponent } from './ClassFeatureComponent.js';
+
 import { CombatState } from '../../../state.js';
 
 export class DruidFeatures extends ClassFeatureComponent {

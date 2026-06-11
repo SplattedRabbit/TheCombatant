@@ -1,3 +1,12 @@
+/**
+ * @module    Weapon
+ * @summary   WeaponRegistry (alle PHB-Waffen), Weapon-Klasse mit Gettern für grip/damageDice/crit/extraDamage. Hilfsfunktionen: isLightWeapon, matchesFeatOption, getCritThreatDisplay.
+ * @exports   WeaponRegistry, Weapon (class), isLightWeapon, isMonkWeapon, matchesFeatOption, getCritThreatDisplay
+ * @reads     weapon.type, weapon.extraDamageDice, weapon.extraDamageType, weapon.isKeen
+ * @stateOps  Keine — Mutation via PCManager (addPCWeapon, updatePCWeapon, togglePCWeaponEquip)
+ * @depends   Keine externen Imports
+ * @notHere   Angriffsberechnung → AttackEngine.js | Waffen-UI → PCOffense.js
+ */
 export const WeaponRegistry = {
   // Melee - Light
   dagger: { key: 'dagger', nameDe: 'Dolch', nameEn: 'Dagger', grip: '1h', damageDice: '1w4', crit: '19-20 / x2', isLight: true },

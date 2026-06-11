@@ -1,3 +1,12 @@
+/**
+ * @module    SaveCalculator
+ * @summary   Berechnet Basis-Rettungswurf-Boni (Fort/Ref/Wil) aus Klassen-Stufen nach D&D 3.5e RAW.
+ * @exports   SaveCalculator.calculateSaves(classes)
+ * @reads     classes[].classType, classes[].level
+ * @stateOps  Keine — pure Berechnungsfunktion
+ * @depends   CombatRules (rules.js)
+ * @notHere   Talent-Boni auf Saves → Combatant.js#rebuildStatModifiers | Save-UI → PCDefenses.js
+ */
 import { CombatRules } from '../rules.js';
 
 export const SaveCalculator = {
