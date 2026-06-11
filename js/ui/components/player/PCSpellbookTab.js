@@ -1,4 +1,14 @@
+/**
+ * @module    PCSpellbookTab
+ * @summary   Rendert Tab »Zauberbuch«: vorbereitete Zauberslots, Spontanzauber-Verwaltung, Konzentrationsmarker und Zauberlisten nach Klasse/Level.
+ * @exports   renderPCSpellbookTab(pc), renderPreparedSlotsArea(pc, container)
+ * @reads     pc.preparedSpells[], pc.spellSlots, pc.classes, pc.wizardSpecialization, pc.customSpells[]
+ * @stateOps  prepareSpell, unprepareSpell, toggleSpellUsed, updatePCField
+ * @depends   CombatSpells, SpellSlotCalculator, getSpellSchoolCode, getSchoolLabel (spells.js)
+ * @notHere   Zauberkompendium (Suche/Filter) → PCCompendiumTab.js | Zauber-Regeln → SpellSlotCalculator.js | Klassen-Features → class-features/
+ */
 import { CombatSpells } from '../../../spells.js';
+
 import { getSpellSchoolCode, getSchoolLabel } from '../../../spells.js';
 import { SpellSlotCalculator } from '../../../rules/SpellSlotCalculator.js';
 

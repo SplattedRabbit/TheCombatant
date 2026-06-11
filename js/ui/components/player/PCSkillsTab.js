@@ -1,3 +1,12 @@
+/**
+ * @module    PCSkillsTab
+ * @summary   Rendert den Fertigkeiten-Tab mit Rängen, Attributmodifikatoren, Sonstigen Boni, Fertigkeitswürfen und Such-/Filtersteuerung.
+ * @exports   renderPCSkills(pc)
+ * @reads     pc.classes, pc.skills, pc.getSkillRanks, pc.getSkillMisc, pc.getSkillModifier, pc.getAttributeMod, pc.getArmorCheckPenalty, pc.conditions
+ * @stateOps  updatePCBatch (für Ränge und Misc-Werte)
+ * @depends   SKILLS_REGISTRY (skills-data.js), CombatRules (rules.js), CombatState (state.js), uiRegistry, formatMod (PCUtils.js), dialogs.js
+ * @notHere   Fertigkeitsdefinitionen → skills-data.js | Synergieberechnungen im Modell → Combatant.js (getSkillModifier)
+ */
 import { SKILLS_REGISTRY } from '../../../data/skills-data.js';
 import { CombatRules } from '../../../rules.js';
 import { CombatState } from '../../../state.js';

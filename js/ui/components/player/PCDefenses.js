@@ -1,3 +1,12 @@
+/**
+ * @module    PCDefenses
+ * @summary   Rendert RK-Panel (AC/Touch/Flat), Rettungswürfe, Initiative und Bewegungsrate. Enthält Roll-Buttons mit Breakdown-Dialog.
+ * @exports   renderPCDefenses(pc)
+ * @reads     pc.ac, pc.acTouch, pc.acFlat, pc.za, pc.ref, pc.wil, pc.init, pc.speed, pc.str/dex/con/wis
+ * @stateOps  togglePCDefensiveFighting, togglePCTotalDefense, updatePCField
+ * @depends   CombatState, uiRegistry, PCUtils, dialogs
+ * @notHere   Angriffswerte → PCOffense.js | Saves-Berechnung → SaveCalculator.js | RK-Mutationen → PCManager.js
+ */
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { getAblMod, formatMod } from './PCUtils.js';

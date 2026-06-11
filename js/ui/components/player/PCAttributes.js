@@ -1,3 +1,12 @@
+/**
+ * @module    PCAttributes
+ * @summary   Rendert die Attribut-Sektion (STR/DEX/CON/INT/WIS/CHA, BAB) und den Multiclass-Manager des Spielercharakters.
+ * @exports   renderPCAttributes(pc), handleAbilityScoreChange(key, val)
+ * @reads     pc.str, pc.dex, pc.con, pc.int, pc.wis, pc.cha, pc.bab, pc.classes
+ * @stateOps  updatePCNumber, addPCClass, removePCClass, updatePCClassLevel, updatePCClassType, clearPCClasses
+ * @depends   CombatState (state.js), CombatRules (rules.js), uiRegistry, getAblMod, formatMod (PCUtils.js), dialogs.js
+ * @notHere   Offensive Angriffswerte → PCOffense.js | Fertigkeiten → PCSkillsTab.js | Talente → PCFeatsTab.js
+ */
 import { CombatState } from '../../../state.js';
 import { CombatRules } from '../../../rules.js';
 import { uiRegistry } from '../../ui-shared.js';

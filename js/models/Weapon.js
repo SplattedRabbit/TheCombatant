@@ -1,3 +1,12 @@
+/**
+ * @module    Weapon
+ * @summary   WeaponRegistry (alle PHB-Waffen), Weapon-Klasse mit Gettern für grip/damageDice/crit/extraDamage. Hilfsfunktionen: isLightWeapon, matchesFeatOption, getCritThreatDisplay.
+ * @exports   WeaponRegistry, Weapon (class), isLightWeapon, isMonkWeapon, matchesFeatOption, getCritThreatDisplay
+ * @reads     weapon.type, weapon.extraDamageDice, weapon.extraDamageType, weapon.isKeen
+ * @stateOps  Keine — Mutation via PCManager (addPCWeapon, updatePCWeapon, togglePCWeaponEquip)
+ * @depends   Keine externen Imports
+ * @notHere   Angriffsberechnung → AttackEngine.js | Waffen-UI → PCOffense.js
+ */
 export const WeaponRegistry = {
   // Melee - Light
   dagger: { key: 'dagger', nameDe: 'Dolch', nameEn: 'Dagger', grip: '1h', damageDice: '1w4', crit: '19-20 / x2', isLight: true },
@@ -87,6 +96,7 @@ export class Weapon {
     this.attackBonus = w.attackBonus !== undefined ? w.attackBonus : ''; // Custom attack offset (e.g. +1 or -2)
     this.isKeen = w.isKeen || false; // Crit threat range doubler
 
+    // @feature:extradamage — Strukturierter Zusatzschaden: extraDamageDice (Würfelanzahl) + extraDamageType (Schadensart). Legacy-String in extraDamage-Getter aufgelöst.
     this.extraDamageDice = w.extraDamageDice || '';
     this.extraDamageType = w.extraDamageType || '';
     // Backward compatibility: If legacy extraDamage exists (e.g. "1w6 Feuer") but no extraDamageDice, parse them!

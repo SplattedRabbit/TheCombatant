@@ -1,3 +1,12 @@
+/**
+ * @module    PCFeatsTab
+ * @summary   Rendert den Talente-Tab mit erlernten Talenten (links) und interaktivem Kompendium (rechts). Prüft Voraussetzungen und zeigt Bonus-Talente nach Klasse.
+ * @exports   renderPCFeats(pc), checkPrerequisites(feat, pc)
+ * @reads     pc.feats, pc.classes, pc.bab, pc.str/dex/con/int/wis/cha, pc.skills, pc.level
+ * @stateOps  addPCFeat, removePCFeat (via showFeatScrollDialog → CombatState)
+ * @depends   CombatState (state.js), uiRegistry, CombatFeats (feats-data.js), dialogs.js
+ * @notHere   Talent-Definitionen → feats-data.js | Angriffs-Effekte der Talente → AttackEngine.js
+ */
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { CombatFeats } from '../../../data/feats-data.js';

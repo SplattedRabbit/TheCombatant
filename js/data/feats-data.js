@@ -1,3 +1,12 @@
+/**
+ * @module    feats-data
+ * @summary   Statische Registry aller D&D-3.5e-Talente (PHB): Definitionen, Voraussetzungen (BAB, Stat, Feat, Klasse), Kategorien und appEffect-Strings.
+ * @exports   CombatFeats (Objekt mit REGISTRY — alle Talentdefinitionen als Record<id, FeatDef>)
+ * @reads     Keine State-Lesezugriffe — reine Datendatei
+ * @stateOps  Keine
+ * @depends   Keine externen Imports
+ * @notHere   Voraussetzungs-Prüflogik gegen PC → PCFeatsTab.js (checkPrerequisites) | Angriffs-Effekte → AttackEngine.js | Feat-Mutation → PCManager.js (addPCFeat)
+ */
 export const CombatFeats = {
   REGISTRY: {
     // === Allgemeine Attributs- & Kampfwerte-Talente ===

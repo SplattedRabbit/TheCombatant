@@ -1,5 +1,11 @@
 /**
- * D&D 3.5e Magic Item Model
+ * @module    Item
+ * @summary   Modell für magische Gegenstände. Speichert mehrere Effekte im effects[]-Array.
+ * @exports   Item (class)
+ * @reads     item.slot, item.effects[], item.isEquipped
+ * @stateOps  Keine — Mutation via PCManager (addPCItem, togglePCItemEquip, addPCItemEffect, ...)
+ * @depends   Keine externen Imports
+ * @notHere   UI → PCMagicItemsTab.js | Slot-Kollisionsprüfung → PCManager.js
  */
 export class Item {
   constructor(data = {}) {
@@ -28,6 +34,7 @@ export class Item {
     }
   }
 
+  // @feature:magicitem @legacy-compat — Getter/Setter für effectType/effectTarget/effectValue mappen auf effects[0] für Abwärtskompatibilität. Primärer Speicher ist effects[].
   get effectType() {
     return this.effects[0] ? this.effects[0].type : undefined;
   }

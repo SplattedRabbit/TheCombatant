@@ -1,3 +1,12 @@
+/**
+ * @module    SyncProtocol
+ * @summary   WebRTC-Delta-Sync zwischen Host (DM) und Clients (Spieler). Verarbeitet eingehende Pakete, berechnet Diffs, schützt lokalen PC vor Host-Überschreibung.
+ * @exports   getObjectDiff, applyObjectDiff, applyIncomingDelta, getPCStateDiff, getEncounterStateDiff, initializeCaches, clearCachedPCState
+ * @reads     getState(), CombatState.getActivePC()
+ * @stateOps  Ruft EncounterManager.mergeIncomingPC, EncounterManager.applyDamage auf
+ * @depends   CombatState (state.js), state-core, EncounterManager, model-core, DeltaRenderer, NetworkManager
+ * @notHere   Verbindungsaufbau → NetworkManager.js | DOM-Updates → DeltaRenderer.js | PC-Mutationen → PCManager.js
+ */
 import { CombatState } from '../state.js';
 import { getState, StateEvents } from '../state/state-core.js';
 import * as EncounterManager from '../state/EncounterManager.js';

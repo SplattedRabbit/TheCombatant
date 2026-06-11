@@ -1,3 +1,12 @@
+/**
+ * @module    rules
+ * @summary   Statische D&D-3.5e-Regelkonstanten und Berechnungsfunktionen: Klassendaten, BAB-Progressionen, Rettungswurf-Tabellen, Skill-Listen, Zauberslot-Tabellen.
+ * @exports   CombatRules (Objekt mit CLASSES, CLASS_SKILLS, CLASS_PROFILES, BAB/Save-Tabellen, calculateBab, calculateSave, calculateMaxSpellSlots, isClassSkill, getPCMaxRanks)
+ * @reads     pc.classes, pc.str/wis/cha/int (für Zauberslot-Bonus-Berechnung), pc.wizardSpecialization
+ * @stateOps  Keine — reine Berechnungsfunktionen ohne State-Mutation
+ * @depends   Keine externen Imports
+ * @notHere   Angriffs-/Schadensberechnung → AttackEngine.js | Rettungswürfe → SaveCalculator.js | UI → PCAttributes.js, PCSkillsTab.js
+ */
 export const CombatRules = {
   CONDITIONS: [
     {

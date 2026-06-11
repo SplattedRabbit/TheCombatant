@@ -1,14 +1,35 @@
+/**
+ * @module    Combatant
+ * @summary   Charaktermodell für Spieler (type:'p'), Gegner (type:'e') und Begleiter. Kapselt D&D-Attribute, Saves, Waffen, Rüstungen und delegiert komplexe Klassentalente, Fertigkeiten, Zauber und Modifikatoren-Neuberechnung an Helper-Module.
+ * @exports   Combatant (class)
+ * @reads     Alle pc.*-Felder — ist das zentrale Datenobjekt
+ * @stateOps  Keine — wird von PCManager mutiert, mutiert sich nicht selbst
+ * @depends   Stat, Weapon, Armor, Item, CombatantSkills, CombatantSpells, CombatantClassFeatures, CombatantModifiers
+ * @notHere   UI/DOM → js/ui/ | D&D-Würfelmechanik → AttackEngine.js | State-Mutations → PCManager.js | Komplexe Berechnungen & Modifikatoren-Updates → js/models/helpers/
+ */
 import { Stat } from './Stat.js';
 import { Weapon } from './Weapon.js';
 import { Armor } from './Armor.js';
 import { Item } from './Item.js';
-import { CombatSpells, getSpellSchoolCode } from '../spells.js';
-import { BarbarianRules } from '../rules/classes/BarbarianRules.js';
-import { MonkRules } from '../rules/classes/MonkRules.js';
-import { RangerRules } from '../rules/classes/RangerRules.js';
-import { RogueRules } from '../rules/classes/RogueRules.js';
-import { SKILLS_REGISTRY } from '../data/skills-data.js';
-import { SpellSlotCalculator } from '../rules/SpellSlotCalculator.js';
+import { calculateSkillModifier } from './helpers/skills/CombatantSkills.js';
+import {
+  findSpell,
+  prepareSpell,
+  unprepareSpell,
+  applySpellTemplate,
+  castPreparedSpell,
+  castSpontaneousSpell
+} from './helpers/spells/CombatantSpells.js';
+import {
+  enterShape,
+  exitShape,
+  enterRage,
+  exitRage,
+  getWeaponDamageDice,
+  getFavoredEnemyBonus,
+  getSneakAttackDiceCount
+} from './helpers/classes/CombatantClassFeatures.js';
+import { rebuildCombatantModifiers } from './helpers/modifiers/CombatantModifiers.js';
 
 const uid = () => {
   return Date.now() + '-' + Math.random().toString(36).slice(2, 7);
@@ -156,685 +177,48 @@ export class Combatant {
    * Scans active buffs and dynamically injects modifiers into the target Stat objects.
    */
   rebuildStatModifiers() {
-    const statsList = [
-      this.str, this.dex, this.con, this.int, this.wis, this.cha,
-      this.baseZa, this.baseRef, this.baseWil, this.bab,
-      this.ac, this.acTouch, this.acFlat,
-      this.za, this.ref, this.wil
-    ];
-    
-    // Clear all previously active spell/buff, class, feat and item modifiers
-    statsList.forEach(s => {
-      s.modifiers = s.modifiers.filter(m => !m.isSpell && !m.isClass && !m.isFeat && !m.isItem);
-    });
-
-    // Apply Magic Items Modifiers first (so attributes are updated for saves/AC calculations)
-    this._applyItemModifiers();
-
-    // Sync current saves bases to class-level base saving throws
-    this.za.base = this.baseZa.getValue();
-    this.ref.base = this.baseRef.getValue();
-    this.wil.base = this.baseWil.getValue();
-
-    // Helper for attribute mod calculations
-    const getMod = (score) => {
-      const s = parseInt(score) || 10;
-      return s >= 10 ? Math.floor((s - 10) / 2) : (s === 9 || s === 8 ? -1 : (s === 7 || s === 6 ? -2 : (s === 5 || s === 4 ? -4 : -5)));
-    };
-
-    this._applyBaseSavingThrowModifiers(getMod);
-    this._applySpellModifiers();
-    this._applyClassModifiers(getMod);
-    this._applyFeatModifiers(getMod);
-    this._recalculateSpeed();
-  }
-
-  _applyItemModifiers() {
-    if (!Array.isArray(this.items)) return;
-
-    this.items.forEach(item => {
-      if (!item.isEquipped) return;
-
-      const effects = Array.isArray(item.effects) ? item.effects : [];
-      effects.forEach(eff => {
-        const val = parseInt(eff.value) || 0;
-        if (val === 0) return;
-
-        const sourceName = item.name || "Magischer Gegenstand";
-        const type = eff.type;
-        const target = eff.target;
-
-        if (type === 'attribute') {
-          const stat = this[target];
-          if (stat instanceof Stat) {
-            stat.addModifier(val, "enhancement", sourceName);
-            stat.modifiers[stat.modifiers.length - 1].isItem = true;
-          }
-        } 
-        else if (type === 'save') {
-          if (target === 'fort' || target === 'all') {
-            this.za.addModifier(val, "resistance", sourceName);
-            this.za.modifiers[this.za.modifiers.length - 1].isItem = true;
-          }
-          if (target === 'ref' || target === 'all') {
-            this.ref.addModifier(val, "resistance", sourceName);
-            this.ref.modifiers[this.ref.modifiers.length - 1].isItem = true;
-          }
-          if (target === 'wil' || target === 'all') {
-            this.wil.addModifier(val, "resistance", sourceName);
-            this.wil.modifiers[this.wil.modifiers.length - 1].isItem = true;
-          }
-        } 
-        else if (type === 'ac') {
-          if (this.autoAC) {
-            if (target === 'deflection') {
-              this.ac.addModifier(val, "deflection", sourceName);
-              this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
-              this.acTouch.addModifier(val, "deflection", sourceName);
-              this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isItem = true;
-              this.acFlat.addModifier(val, "deflection", sourceName);
-              this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
-            } else if (target === 'natural') {
-              this.ac.addModifier(val, "natural", sourceName);
-              this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
-              this.acFlat.addModifier(val, "natural", sourceName);
-              this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
-            } else if (target === 'armor') {
-              this.ac.addModifier(val, "armor", sourceName);
-              this.ac.modifiers[this.ac.modifiers.length - 1].isItem = true;
-              this.acFlat.addModifier(val, "armor", sourceName);
-              this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isItem = true;
-            }
-          }
-        }
-      });
-    });
-  }
-
-  _applyBaseSavingThrowModifiers(getMod) {
-    // Apply basic attributes & misc modifiers on saves for player characters
-    if (this.type === 'p') {
-      this.za.addModifier(getMod(this.con), "untyped", "Konstitutions-Modifikator");
-      this.za.modifiers[this.za.modifiers.length - 1].isClass = true;
-
-      this.ref.addModifier(getMod(this.dex), "untyped", "Geschicklichkeits-Modifikator");
-      this.ref.modifiers[this.ref.modifiers.length - 1].isClass = true;
-
-      this.wil.addModifier(getMod(this.wis), "untyped", "Weisheits-Modifikator");
-      this.wil.modifiers[this.wil.modifiers.length - 1].isClass = true;
-
-      if (this.autoAC) {
-        this.ac.base = 10;
-        this.acTouch.base = 10;
-        this.acFlat.base = 10;
-
-        const equippedArmor = this.getEquippedArmor();
-        const equippedShield = this.getEquippedShield();
-
-        const baseDexMod = getMod(this.dex.getValue());
-
-        let maxDexCap = null;
-        if (equippedArmor && typeof equippedArmor.maxDex === 'number' && equippedArmor.maxDex !== null) {
-          maxDexCap = equippedArmor.maxDex;
-        }
-        if (equippedShield && typeof equippedShield.maxDex === 'number' && equippedShield.maxDex !== null) {
-          if (maxDexCap === null || equippedShield.maxDex < maxDexCap) {
-            maxDexCap = equippedShield.maxDex;
-          }
-        }
-
-        const dexMod = maxDexCap !== null ? Math.min(baseDexMod, maxDexCap) : baseDexMod;
-
-        this.ac.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
-        this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-
-        this.acTouch.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
-        this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
-
-        if (dexMod < 0) {
-          this.acFlat.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
-          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
-        }
-
-        if (equippedArmor) {
-          const name = equippedArmor.name || "Rüstung";
-          this.ac.addModifier(equippedArmor.armorBonus, "armor", name);
-          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-          this.acFlat.addModifier(equippedArmor.armorBonus, "armor", name);
-          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
-
-          if (equippedArmor.enhancement > 0) {
-            this.ac.addModifier(equippedArmor.enhancement, "enhancement", `${name} (Magisch)`);
-            this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-            this.acFlat.addModifier(equippedArmor.enhancement, "enhancement", `${name} (Magisch)`);
-            this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
-          }
-        }
-
-        if (equippedShield) {
-          const name = equippedShield.name || "Schild";
-          this.ac.addModifier(equippedShield.armorBonus, "shield", name);
-          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-          this.acFlat.addModifier(equippedShield.armorBonus, "shield", name);
-          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
-
-          if (equippedShield.enhancement > 0) {
-            this.ac.addModifier(equippedShield.enhancement, "enhancement", `${name} (Magisch)`);
-            this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-            this.acFlat.addModifier(equippedShield.enhancement, "enhancement", `${name} (Magisch)`);
-            this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
-          }
-        }
-
-        if (this.acNatural !== 0) {
-          this.ac.addModifier(this.acNatural, "natural", "Natürliche Rüstung");
-          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-          this.acFlat.addModifier(this.acNatural, "natural", "Natürliche Rüstung");
-          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
-        }
-
-        if (this.acDeflection !== 0) {
-          this.ac.addModifier(this.acDeflection, "deflection", "Ablenkungs-Bonus");
-          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-          this.acTouch.addModifier(this.acDeflection, "deflection", "Ablenkungs-Bonus");
-          this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
-          this.acFlat.addModifier(this.acDeflection, "deflection", "Ablenkungs-Bonus");
-          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
-        }
-
-        if (this.acMisc !== 0) {
-          this.ac.addModifier(this.acMisc, "untyped", "Sonstiger RK-Bonus");
-          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-          this.acTouch.addModifier(this.acMisc, "untyped", "Sonstiger RK-Bonus");
-          this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
-          this.acFlat.addModifier(this.acMisc, "untyped", "Sonstiger RK-Bonus");
-          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
-        }
-      } else {
-        const dexMod = getMod(this.dex.getValue());
-        
-        this.ac.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
-        this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-
-        this.acTouch.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
-        this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
-
-        if (dexMod < 0) {
-          this.acFlat.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
-          this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isClass = true;
-        }
-      }
-
-      if (this.zaMisc !== 0) {
-        this.za.addModifier(this.zaMisc, "untyped", "Sonstiges (Ausrüstung/Spezial)");
-        this.za.modifiers[this.za.modifiers.length - 1].isClass = true;
-      }
-      if (this.refMisc !== 0) {
-        this.ref.addModifier(this.refMisc, "untyped", "Sonstiges (Ausrüstung/Spezial)");
-        this.ref.modifiers[this.ref.modifiers.length - 1].isClass = true;
-      }
-      if (this.wilMisc !== 0) {
-        this.wil.addModifier(this.wilMisc, "untyped", "Sonstiges (Ausrüstung/Spezial)");
-        this.wil.modifiers[this.wil.modifiers.length - 1].isClass = true;
-      }
-    }
-  }
-
-  _applySpellModifiers() {
-    // 1. Populate active spell/buff modifiers based on spell registry configuration
-    this.activeBuffs.forEach(buff => {
-      const spell = CombatSpells.REGISTRY?.[buff.spellKey];
-      if (spell && Array.isArray(spell.effects)) {
-        spell.effects.forEach(eff => {
-          // Redirect base saving throw targets to total saving throw Stat objects
-          const targetName = eff.target === 'baseZa' ? 'za' : (eff.target === 'baseRef' ? 'ref' : (eff.target === 'baseWil' ? 'wil' : eff.target));
-          const statObj = this[targetName];
-          if (statObj instanceof Stat) {
-            statObj.addModifier(eff.value, eff.type, eff.source);
-            // Flag this modifier as dynamically injected from a spell
-            statObj.modifiers[statObj.modifiers.length - 1].isSpell = true;
-          }
-        });
-      }
-    });
-  }
-
-  _applyClassModifiers(getMod) {
-    // 2. Apply passive class feature modifiers (Divine Grace, Monk AC, etc.)
-    if (this.type === 'p' && Array.isArray(this.classes)) {
-      // A. Paladin: Divine Grace (Stufe >= 2)
-      const paladinClass = this.classes.find(c => c.classType === 'paladin');
-      if (paladinClass && paladinClass.level >= 2 && this.divineGraceActive) {
-        const chaMod = getMod(this.cha);
-        const saves = [this.za, this.ref, this.wil];
-        saves.forEach(s => {
-          s.addModifier(Math.max(0, chaMod), "untyped", "Göttliche Gnade");
-          s.modifiers[s.modifiers.length - 1].isClass = true;
-        });
-      }
-
-      // B. Monk: Wisdom AC Bonus & Level AC Bonus (No armor/shield check)
-      const monkClass = this.classes.find(c => c.classType === 'monk');
-      if (monkClass && monkClass.level >= 1) {
-        const wisMod = getMod(this.wis);
-        const levelBonus = Math.floor(monkClass.level / 5);
-        const totalMonkAC = Math.max(0, wisMod) + levelBonus;
-        
-        if (totalMonkAC > 0) {
-          const acs = [this.ac, this.acTouch, this.acFlat];
-          acs.forEach(s => {
-            s.addModifier(totalMonkAC, "untyped", "Mönch-RK-Bonus");
-            s.modifiers[s.modifiers.length - 1].isClass = true;
-          });
-        }
-      }
-
-      // C. Barbarian: Kampfrausch (Rage) active toggle
-      if (this.isRaging) {
-        const barbClass = Array.isArray(this.classes) ? this.classes.find(c => c.classType === 'barbarian') : null;
-        const lvl = barbClass ? barbClass.level : 1;
-        const bonuses = BarbarianRules.getRageBonuses(lvl);
-
-        this.str.addModifier(bonuses.strBonus, "morale", "Kampfrausch");
-        this.str.modifiers[this.str.modifiers.length - 1].isClass = true;
-
-        this.con.addModifier(bonuses.conBonus, "morale", "Kampfrausch");
-        this.con.modifiers[this.con.modifiers.length - 1].isClass = true;
-
-        this.wil.addModifier(bonuses.wilBonus, "morale", "Kampfrausch");
-        this.wil.modifiers[this.wil.modifiers.length - 1].isClass = true;
-
-        const acs = [this.ac, this.acTouch, this.acFlat];
-        acs.forEach(s => {
-          s.addModifier(bonuses.acPenalty, "untyped", "Kampfrausch");
-          s.modifiers[s.modifiers.length - 1].isClass = true;
-        });
-      }
-
-      // D. Vertrauten-Passive-Boni (Ratte: +2 Zähigkeit, Wiesel: +2 Reflex)
-      if (this.familiarType && this.familiarType !== 'none') {
-        if (this.familiarType === 'rat') {
-          this.za.addModifier(2, "untyped", "Vertrauter (Ratte)");
-          this.za.modifiers[this.za.modifiers.length - 1].isClass = true;
-        } else if (this.familiarType === 'weasel') {
-          this.ref.addModifier(2, "untyped", "Vertrauter (Wiesel)");
-          this.ref.modifiers[this.ref.modifiers.length - 1].isClass = true;
-        }
-      }
-    }
-  }
-
-  _applyFeatModifiers(getMod) {
-    if (this.type === 'p') {
-      // E. Rettungswurf-Talente (Great Fortitude, Lightning Reflexes, Iron Will)
-      if (Array.isArray(this.feats)) {
-        const hasFeat = (featId) => this.feats.some(f => f.id === featId);
-        if (hasFeat('great_fortitude')) {
-          this.za.addModifier(2, "untyped", "Große Zähigkeit");
-          this.za.modifiers[this.za.modifiers.length - 1].isFeat = true;
-        }
-        if (hasFeat('lightning_reflexes')) {
-          this.ref.addModifier(2, "untyped", "Blitzschnelle Reflexe");
-          this.ref.modifiers[this.ref.modifiers.length - 1].isFeat = true;
-        }
-        if (hasFeat('iron_will')) {
-          this.wil.addModifier(2, "untyped", "Eiserner Wille");
-          this.wil.modifiers[this.wil.modifiers.length - 1].isFeat = true;
-        }
-
-        // Dodge Feat: +1 dodge bonus to AC & Touch AC
-        if (hasFeat('dodge')) {
-          this.ac.addModifier(1, "dodge", "Ausweichen");
-          this.ac.modifiers[this.ac.modifiers.length - 1].isFeat = true;
-          this.acTouch.addModifier(1, "dodge", "Ausweichen");
-          this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isFeat = true;
-        }
-
-        // Combat Expertise: adds dodge bonus to AC and Touch AC
-        if (this.combatExpertisePenalty > 0) {
-          this.ac.addModifier(this.combatExpertisePenalty, "dodge", "Kampfgetümmel");
-          this.ac.modifiers[this.ac.modifiers.length - 1].isFeat = true;
-          this.acTouch.addModifier(this.combatExpertisePenalty, "dodge", "Kampfgetümmel");
-          this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isFeat = true;
-        }
-
-        // Defensive Fighting: adds dodge bonus to AC and Touch AC (+3 if tumble ranks >= 5, else +2)
-        if (this.isDefensiveFighting) {
-          const tumbleRanks = this.getSkillRanks('tumble');
-          const dodgeBonus = tumbleRanks >= 5 ? 3 : 2;
-          this.ac.addModifier(dodgeBonus, "dodge", "Verteidigend kämpfen");
-          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-          this.acTouch.addModifier(dodgeBonus, "dodge", "Verteidigend kämpfen");
-          this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
-        }
-
-        // Total Defense: adds dodge bonus to AC and Touch AC (+6 if tumble ranks >= 5, else +4)
-        if (this.isTotalDefense) {
-          const tumbleRanks = this.getSkillRanks('tumble');
-          const dodgeBonus = tumbleRanks >= 5 ? 6 : 4;
-          this.ac.addModifier(dodgeBonus, "dodge", "Volle Abwehr");
-          this.ac.modifiers[this.ac.modifiers.length - 1].isClass = true;
-          this.acTouch.addModifier(dodgeBonus, "dodge", "Volle Abwehr");
-          this.acTouch.modifiers[this.acTouch.modifiers.length - 1].isClass = true;
-        }
-
-        // Two-Weapon Defense Feat: +1 shield bonus to AC & Flat-Footed AC when wielding secondary weapon
-        if (hasFeat('two_weapon_defense')) {
-          const hasSecWeapon = Array.isArray(this.weapons) && this.weapons.some(w => w.grip === 'sec' || (w.isEquipped && (w.hand === 'off' || w.isDoubleWielded)));
-          if (hasSecWeapon) {
-            this.ac.addModifier(1, "shield", "Zwei-Waffen-Verteidigung");
-            this.ac.modifiers[this.ac.modifiers.length - 1].isFeat = true;
-            this.acFlat.addModifier(1, "shield", "Zwei-Waffen-Verteidigung");
-            this.acFlat.modifiers[this.acFlat.modifiers.length - 1].isFeat = true;
-          }
-        }
-      }
-    }
-  }
-
-  _recalculateSpeed() {
-    let speedBonus = 0;
-    const armor = this.getEquippedArmor();
-    const shield = this.getEquippedShield();
-    const hasArmor = !!armor;
-    const hasShield = !!shield;
-
-    if (this.type === 'p' && Array.isArray(this.classes)) {
-      const barbClass = this.classes.find(c => c.classType === 'barbarian');
-      if (barbClass && barbClass.level >= 1) {
-        // Barbarian fast movement does not apply in heavy armor.
-        const isHeavy = armor && armor.speedCategory === 'heavy';
-        if (!isHeavy) {
-          speedBonus += 10;
-        }
-      }
-      
-      const monkClass = this.classes.find(c => c.classType === 'monk');
-      if (monkClass && monkClass.level >= 3) {
-        // Monk fast movement only applies when wearing NO armor and NO shield.
-        if (!hasArmor && !hasShield) {
-          const monkLvl = monkClass.level;
-          let monkSpeed = 10;
-          if (monkLvl >= 18) monkSpeed = 60;
-          else if (monkLvl >= 15) monkSpeed = 50;
-          else if (monkLvl >= 12) monkSpeed = 40;
-          else if (monkLvl >= 9) monkSpeed = 30;
-          else if (monkLvl >= 6) monkSpeed = 20;
-          speedBonus += monkSpeed;
-        }
-      }
-    }
-
-    if (Array.isArray(this.items)) {
-      this.items.forEach(item => {
-        if (item.isEquipped) {
-          const effects = Array.isArray(item.effects) ? item.effects : [];
-          effects.forEach(eff => {
-            if (eff.type === 'speed') {
-              speedBonus += parseInt(eff.value) || 0;
-            }
-          });
-        }
-      });
-    }
-
-    let baseAndBonus = (this.baseBw !== undefined ? this.baseBw : 30) + speedBonus;
-
-    // Apply speed reduction for medium or heavy armor
-    if (armor && (armor.speedCategory === 'medium' || armor.speedCategory === 'heavy')) {
-      if (baseAndBonus >= 30) {
-        if (baseAndBonus === 30) baseAndBonus = 20;
-        else if (baseAndBonus === 40) baseAndBonus = 30;
-        else if (baseAndBonus === 50) baseAndBonus = 35;
-        else if (baseAndBonus === 60) baseAndBonus = 40;
-        else baseAndBonus = Math.max(20, baseAndBonus - 10);
-      } else {
-        if (baseAndBonus === 20) baseAndBonus = 15;
-        else if (baseAndBonus === 15) baseAndBonus = 10;
-        else baseAndBonus = Math.max(5, baseAndBonus - 5);
-      }
-    }
-
-    this.bw = baseAndBonus;
+    rebuildCombatantModifiers(this);
   }
 
   enterRage() {
-    if (this.isRaging) return;
-    this.isRaging = true;
-    
-    const barbClass = Array.isArray(this.classes) ? this.classes.find(c => c.classType === 'barbarian') : null;
-    const lvl = barbClass ? barbClass.level : 1;
-    const bonuses = BarbarianRules.getRageBonuses(lvl);
-    
-    const hpGain = bonuses.hpPerLevel * this.level;
-    this.maxHP += hpGain;
-    this.hp += hpGain;
-    
-    this.rebuildStatModifiers();
+    enterRage(this);
   }
 
   exitRage() {
-    if (!this.isRaging) return;
-    
-    const barbClass = Array.isArray(this.classes) ? this.classes.find(c => c.classType === 'barbarian') : null;
-    const lvl = barbClass ? barbClass.level : 1;
-    const bonuses = BarbarianRules.getRageBonuses(lvl);
-    
-    this.isRaging = false;
-    
-    const hpLoss = bonuses.hpPerLevel * this.level;
-    this.maxHP = Math.max(1, this.maxHP - hpLoss);
-    this.hp = Math.max(-99, this.hp - hpLoss);
-    
-    this.applyCondition("Erschöpft");
-    this.rebuildStatModifiers();
+    exitRage(this);
   }
 
+  // @feature:wildshape — Druiden-Tiergestalt-Verwandlung
   enterShape(shapeName) {
-    if (this.activeShape !== "none") {
-      this.exitShape();
-    }
-
-    // Capture original human base attributes and AC base values
-    this.originalStats = {
-      str: this.str.base,
-      dex: this.dex.base,
-      con: this.con.base,
-      ac: this.ac.base,
-      acTouch: this.acTouch.base,
-      acFlat: this.acFlat.base
-    };
-
-    // Load target shape attributes and AC base values
-    if (shapeName === "wolf") {
-      this.str.base = 13;
-      this.dex.base = 15;
-      this.con.base = 15;
-      this.ac.base = 14;
-      this.acTouch.base = 12;
-      this.acFlat.base = 12;
-    } else if (shapeName === "leopard") {
-      this.str.base = 16;
-      this.dex.base = 19;
-      this.con.base = 15;
-      this.ac.base = 15;
-      this.acTouch.base = 14;
-      this.acFlat.base = 12;
-    } else if (shapeName === "bear") {
-      this.str.base = 27;
-      this.dex.base = 13;
-      this.con.base = 19;
-      this.ac.base = 15;
-      this.acTouch.base = 11;
-      this.acFlat.base = 14;
-    } else {
-      this.originalStats = null;
-      return;
-    }
-
-    this.activeShape = shapeName;
-    this.rebuildStatModifiers();
+    enterShape(this, shapeName);
   }
 
   exitShape() {
-    if (this.activeShape === "none" || !this.originalStats) {
-      this.activeShape = "none";
-      this.originalStats = null;
-      return;
-    }
-
-    // Restore original base scores
-    this.str.base = this.originalStats.str;
-    this.dex.base = this.originalStats.dex;
-    this.con.base = this.originalStats.con;
-    this.ac.base = this.originalStats.ac;
-    this.acTouch.base = this.originalStats.acTouch;
-    this.acFlat.base = this.originalStats.acFlat;
-
-    this.activeShape = "none";
-    this.originalStats = null;
-    this.rebuildStatModifiers();
+    exitShape(this);
   }
 
   prepareSpell(spellKey, metamagicList = [], isSpecialist = false) {
-    if (!Array.isArray(this.preparedSpells)) {
-      this.preparedSpells = [];
-    }
-    const id = uid();
-    this.preparedSpells.push({
-      id,
-      spellKey,
-      metamagic: [...metamagicList],
-      isUsed: false,
-      isSpecialist: !!isSpecialist
-    });
-    return id;
+    return prepareSpell(this, spellKey, metamagicList, isSpecialist);
   }
 
   unprepareSpell(id) {
-    if (Array.isArray(this.preparedSpells)) {
-      this.preparedSpells = this.preparedSpells.filter(s => s.id !== id);
-    }
+    unprepareSpell(this, id);
   }
 
   findSpell(key) {
-    if (CombatSpells.REGISTRY[key]) {
-      return CombatSpells.REGISTRY[key];
-    }
-    if (Array.isArray(this.customSpells)) {
-      const found = this.customSpells.find(s => s.id === key || s.nameDe === key);
-      if (found) return found;
-    }
-    return null;
+    return findSpell(this, key);
   }
 
   applySpellTemplate(name) {
-    const template = this.spellTemplates && this.spellTemplates[name];
-    if (!template) return { success: false, error: 'Vorlage nicht gefunden.' };
-
-    this.preparedSpells = [];
-    const unplaced = [];
-    const isWizard = this.classes && this.classes.some(c => c.classType === 'wizard');
-    const specSchool = this.wizardSpecialization || 'none';
-    const hasSpec = isWizard && specSchool !== 'none';
-
-    const templateSpellsByLevel = {};
-    for (let lvl = 0; lvl <= 9; lvl++) {
-      templateSpellsByLevel[lvl] = [];
-    }
-
-    template.forEach(item => {
-      const spell = this.findSpell(item.spellKey);
-      if (!spell) {
-        unplaced.push(item.spellKey);
-        return;
-      }
-      const adjustedLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, item.metamagic);
-      if (adjustedLevel >= 0 && adjustedLevel <= 9) {
-        templateSpellsByLevel[adjustedLevel].push({
-          spellKey: item.spellKey,
-          metamagic: item.metamagic || [],
-          school: spell.school,
-          nameDe: spell.nameDe || spell.nameEn || item.spellKey
-        });
-      } else {
-        unplaced.push(spell.nameDe || spell.nameEn || item.spellKey);
-      }
-    });
-
-    for (let lvl = 0; lvl <= 9; lvl++) {
-      const spellsToAlloc = templateSpellsByLevel[lvl];
-      if (spellsToAlloc.length === 0) continue;
-
-      const maxSlots = this.spellSlots[lvl]?.max || 0;
-      const hasSpecSlotAtLvl = hasSpec && lvl >= 1;
-      const specialistSlotCount = hasSpecSlotAtLvl ? 1 : 0;
-      const regularSlotCount = Math.max(0, maxSlots - specialistSlotCount);
-
-      const matchesSpecialization = (spell) => {
-        const code = getSpellSchoolCode(spell.school, spell.spellKey || '', spell.nameDe || '');
-        return code === specSchool;
-      };
-
-      let specIndex = -1;
-      if (specialistSlotCount > 0) {
-        specIndex = spellsToAlloc.findIndex(s => matchesSpecialization(s));
-      }
-
-      if (specIndex !== -1) {
-        const s = spellsToAlloc[specIndex];
-        spellsToAlloc.splice(specIndex, 1);
-        this.preparedSpells.push({
-          id: uid(),
-          spellKey: s.spellKey,
-          metamagic: [...s.metamagic],
-          isUsed: false,
-          isSpecialist: true
-        });
-      }
-
-      const numToPrep = Math.min(regularSlotCount, spellsToAlloc.length);
-      for (let i = 0; i < numToPrep; i++) {
-        const s = spellsToAlloc[i];
-        this.preparedSpells.push({
-          id: uid(),
-          spellKey: s.spellKey,
-          metamagic: [...s.metamagic],
-          isUsed: false,
-          isSpecialist: false
-        });
-      }
-
-      const remaining = spellsToAlloc.slice(numToPrep);
-      remaining.forEach(s => {
-        unplaced.push(s.nameDe);
-      });
-    }
-
-    return { success: true, unplaced };
+    return applySpellTemplate(this, name);
   }
 
   castPreparedSpell(id) {
-    if (!Array.isArray(this.preparedSpells)) return null;
-    const prep = this.preparedSpells.find(s => s.id === id);
-    if (prep && !prep.isUsed) {
-      prep.isUsed = true;
-      const spell = CombatSpells.REGISTRY[prep.spellKey] || (this.customSpells && this.customSpells.find(s => s.id === prep.spellKey || s.nameDe === prep.spellKey));
-      if (spell) {
-        const adjustedLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, prep.metamagic);
-        if (this.spellSlots && this.spellSlots[adjustedLevel]) {
-          this.spellSlots[adjustedLevel].used = Math.min(this.spellSlots[adjustedLevel].max, (this.spellSlots[adjustedLevel].used || 0) + 1);
-        }
-      }
-    }
-    return prep;
+    return castPreparedSpell(this, id);
   }
 
   castSpontaneousSpell(spellKey, slotLevel) {
-    const lvl = parseInt(slotLevel);
-    if (this.spellSlots && this.spellSlots[lvl]) {
-      this.spellSlots[lvl].used = Math.min(this.spellSlots[lvl].max, (this.spellSlots[lvl].used || 0) + 1);
-    }
+    castSpontaneousSpell(this, spellKey, slotLevel);
   }
 
   // --- Transactions / Encapsulated modifications ---
@@ -879,118 +263,7 @@ export class Combatant {
   }
 
   getSkillModifier(skillKey) {
-    const skillDef = SKILLS_REGISTRY[skillKey];
-    if (!skillDef) return 0;
-
-    let total = 0;
-    
-    // 1. Ranks
-    total += this.getSkillRanks(skillKey);
-
-    // 2. Attribute Modifier
-    total += this.getAttributeMod(skillDef.abl);
-
-    // 3. Misc Modifier
-    total += this.getSkillMisc(skillKey);
-
-    // 3.5 Armor Check Penalty (ACP)
-    if (skillDef.hasACP) {
-      const acp = this.getArmorCheckPenalty();
-      if (skillKey === 'swim') {
-        total -= 2 * acp;
-      } else {
-        total -= acp;
-      }
-    }
-
-    // 4. Synergy Bonuses
-    if (skillKey === 'balance' && this.getSkillRanks('tumble') >= 5) {
-      total += 2;
-    }
-    if (skillKey === 'escape_artist' && this.getSkillRanks('tumble') >= 5) {
-      total += 2;
-    }
-    if (skillKey === 'diplomacy' && this.getSkillRanks('bluff') >= 5) {
-      total += 2;
-    }
-    if (skillKey === 'disguise' && this.getSkillRanks('bluff') >= 5) {
-      total += 2;
-    }
-    if (skillKey === 'intimidate' && this.getSkillRanks('bluff') >= 5) {
-      total += 2;
-    }
-    if (skillKey === 'use_magic_device') {
-      if (this.getSkillRanks('spellcraft') >= 5) total += 2;
-      if (this.getSkillRanks('decipher_script') >= 5) total += 2;
-    }
-
-    // 5. Conditions penalties (Shaken / Sickened)
-    const hasShaken = this.conditions.some(c => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
-    if (hasShaken) {
-      total -= 2;
-    }
-
-    // 6. Feats bonuses
-    if (Array.isArray(this.feats)) {
-      const hasFeat = (featId) => this.feats.some(f => f.id === featId);
-      if (hasFeat('acrobatic') && (skillKey === 'jump' || skillKey === 'tumble')) {
-        total += 2;
-      }
-      if (hasFeat('agile') && (skillKey === 'balance' || skillKey === 'escape_artist')) {
-        total += 2;
-      }
-      if (hasFeat('alertness') && (skillKey === 'listen' || skillKey === 'spot')) {
-        total += 2;
-      }
-      if (hasFeat('animal_affinity') && (skillKey === 'handle_animal' || skillKey === 'ride')) {
-        total += 2;
-      }
-      if (hasFeat('athletic') && (skillKey === 'climb' || skillKey === 'swim')) {
-        total += 2;
-      }
-      if (hasFeat('deceitful') && (skillKey === 'disguise' || skillKey === 'forgery')) {
-        total += 2;
-      }
-      if (hasFeat('deft_hands') && (skillKey === 'sleight_of_hand' || skillKey === 'use_rope')) {
-        total += 2;
-      }
-      if (hasFeat('diligent') && (skillKey === 'appraise' || skillKey === 'decipher_script')) {
-        total += 2;
-      }
-      if (hasFeat('investigator') && (skillKey === 'gather_information' || skillKey === 'search')) {
-        total += 2;
-      }
-      if (hasFeat('negotiator') && (skillKey === 'diplomacy' || skillKey === 'sense_motive')) {
-        total += 2;
-      }
-      if (hasFeat('nimble_fingers') && (skillKey === 'open_lock' || skillKey === 'disable_device')) {
-        total += 2;
-      }
-      if (hasFeat('persuasive') && (skillKey === 'bluff' || skillKey === 'intimidate')) {
-        total += 2;
-      }
-      if (hasFeat('self_sufficient') && (skillKey === 'heal' || skillKey === 'survival')) {
-        total += 2;
-      }
-      if (hasFeat('stealthy') && (skillKey === 'hide' || skillKey === 'move_silently')) {
-        total += 2;
-      }
-      if (hasFeat('magical_aptitude') && (skillKey === 'spellcraft' || skillKey === 'use_magic_device')) {
-        total += 2;
-      }
-      
-      this.feats.forEach(feat => {
-        if (feat.id === 'skill_focus' && feat.option) {
-          const opt = feat.option.toLowerCase().trim();
-          const nameDe = skillDef.nameDe.toLowerCase();
-          if (opt === skillKey || opt.includes(skillKey) || opt.includes(nameDe) || nameDe.includes(opt)) {
-            total += 3;
-          }
-        }
-      });
-    }
-
-    return total;
+    return calculateSkillModifier(this, skillKey);
   }
 
   toJSON() {
@@ -1076,27 +349,15 @@ export class Combatant {
   }
 
   getFavoredEnemyBonus() {
-    const rangerClass = Array.isArray(this.classes) && this.classes.find(c => c.classType === 'ranger');
-    if (!rangerClass) return 0;
-    return RangerRules.getFavoredEnemyBonus(rangerClass.level);
+    return getFavoredEnemyBonus(this);
   }
 
   getSneakAttackDiceCount() {
-    const rogueClass = Array.isArray(this.classes) && this.classes.find(c => c.classType === 'rogue');
-    if (!rogueClass) return 0;
-    return RogueRules.getSneakAttackDiceCount(rogueClass.level);
+    return getSneakAttackDiceCount(this);
   }
 
   getWeaponDamageDice(w) {
-    if (!w) return '1w6';
-    if (w.damageDiceOverride) return w.damageDiceOverride;
-    if (w.type === 'unarmed_strike') {
-      const monkClass = Array.isArray(this.classes) && this.classes.find(c => c.classType === 'monk');
-      if (monkClass) {
-        return MonkRules.getUnarmedDamageDice(monkClass.level);
-      }
-    }
-    return w.damageDice;
+    return getWeaponDamageDice(this, w);
   }
 
   getEquippedArmor() {
