@@ -34,6 +34,7 @@ export class Item {
     }
   }
 
+  // @feature:magicitem @legacy-compat — Getter/Setter für effectType/effectTarget/effectValue mappen auf effects[0] für Abwärtskompatibilität. Primärer Speicher ist effects[].
   get effectType() {
     return this.effects[0] ? this.effects[0].type : undefined;
   }

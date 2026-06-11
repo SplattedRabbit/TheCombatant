@@ -299,6 +299,7 @@ function calculateManeuverPenalties(ctx, isFullAttack) {
   return { isFlurryingThis, flurryPenalty, isRapidShotThis };
 }
 
+// @feature:sneak-attack — Rogue Hinterhältige Attacke: wird nur bei eligiblen Zielen/Situationen hinzugefügt
 function applySneakAttack(ctx, baseDmgDice, dmgBreakdown) {
   let finalDmgDice = baseDmgDice;
   if (ctx.options.sneakAttack) {

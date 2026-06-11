@@ -96,6 +96,7 @@ export class Weapon {
     this.attackBonus = w.attackBonus !== undefined ? w.attackBonus : ''; // Custom attack offset (e.g. +1 or -2)
     this.isKeen = w.isKeen || false; // Crit threat range doubler
 
+    // @feature:extradamage — Strukturierter Zusatzschaden: extraDamageDice (Würfelanzahl) + extraDamageType (Schadensart). Legacy-String in extraDamage-Getter aufgelöst.
     this.extraDamageDice = w.extraDamageDice || '';
     this.extraDamageType = w.extraDamageType || '';
     // Backward compatibility: If legacy extraDamage exists (e.g. "1w6 Feuer") but no extraDamageDice, parse them!

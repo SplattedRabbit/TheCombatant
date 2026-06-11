@@ -1,3 +1,12 @@
+/**
+ * @module    state
+ * @summary   Fassade — re-exportiert alle State-Operationen aus state-core.js, StorageManager.js, PCManager.js, EncounterManager.js. IMPORTIERE DIESE DATEI, NICHT state-core.js direkt.
+ * @exports   getState, getActivePC, updatePCField, updatePCBatch, addPCWeapon, updatePCWeapon, addPCFeat, addPCArmor, addPCItem, updatePCItemEffect, applyDamage, nextTurn, loadSampleData u.v.m.
+ * @reads     Zustand wird vollständig via getState()/getActivePC() abgefragt
+ * @stateOps  Alle Mutationen via PCManager.js und EncounterManager.js — nie state-core.js direkt nutzen
+ * @depends   state/state-core.js, state/StorageManager.js, state/PCManager.js, state/EncounterManager.js
+ * @notHere   Mutation-Implementierungen → state/PCManager.js | Encounter-Aktionen → state/EncounterManager.js | Core-Events → state/state-core.js
+ */
 // Facade pattern for state management in v3.0
 // Re-exports all functions from sub-managers to maintain 100% backwards compatibility.
 

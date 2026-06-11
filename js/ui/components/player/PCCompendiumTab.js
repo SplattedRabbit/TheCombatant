@@ -1,3 +1,12 @@
+/**
+ * @module    PCCompendiumTab
+ * @summary   Rendert den Zauber-Kompendium-Tab mit Suche, Stufenfilter und Klassenfilterung. Erlaubt das Hinzufügen von Zaubern ins Zauberbuch.
+ * @exports   renderCompendiumTab(pc), getAllCompendiumSpells(pc), isSpellEligibleForPC(spell, pc), getEligibleSpellLevelsForPC(pc), get/setSpellSearchQuery, get/setSpellFilterLevel, get/setShowAllSpells
+ * @reads     pc.classes, pc.learnedSpells, pc.customSpells, pc.wizardProhibited1, pc.wizardProhibited2
+ * @stateOps  Keine direkt — Zauber werden via Callback in PCSpellbookTab.js hinzugefügt
+ * @depends   CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput (spells.js), CombatRules (rules.js)
+ * @notHere   Zauberbuch-Tabs / Slot-Verwaltung → PCSpellbookTab.js | Zauber-Definitionen → spells.js
+ */
 import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput } from '../../../spells.js';
 import { CombatRules } from '../../../rules.js';
 
