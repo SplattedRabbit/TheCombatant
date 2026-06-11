@@ -83,11 +83,11 @@ describe('Startup - Regelschicht (rules/)', () => {
 // ─────────────────────────────────────────────────────────────────────────────
 describe('Startup - UI-Schicht: Player-Komponenten', () => {
 
-  it('PCResources.js lässt sich importieren und exportiert renderPCSpells/renderPCFeatures', async () => {
-    const mod = await import('../js/ui/components/player/PCResources.js');
-    assert.equal(typeof mod.renderPCSpells, 'function', 'renderPCSpells muss exportiert sein');
-    assert.equal(typeof mod.renderPCFeatures, 'function', 'renderPCFeatures muss exportiert sein');
-    assert.equal(typeof mod.renderPCResources, 'function', 'renderPCResources muss exportiert sein');
+  it('PCSpellsTab.js und PCFeaturesTab.js lassen sich importieren und exportieren renderPCSpells/renderPCFeatures', async () => {
+    const spellsMod = await import('../js/ui/components/player/PCSpellsTab.js');
+    const featuresMod = await import('../js/ui/components/player/PCFeaturesTab.js');
+    assert.equal(typeof spellsMod.renderPCSpells, 'function', 'renderPCSpells muss exportiert sein');
+    assert.equal(typeof featuresMod.renderPCFeatures, 'function', 'renderPCFeatures muss exportiert sein');
   });
 
   it('PCSpellDialogs.js lässt sich importieren', async () => {

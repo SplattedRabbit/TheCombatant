@@ -23,10 +23,13 @@ export function rebuildCombatantModifiers(pc) {
     pc.za, pc.ref, pc.wil
   ];
   
-  // Clear all previously active spell/buff, class, feat and item modifiers
+  // Clear all previously active spell/buff, class, feat, item and race modifiers
   statsList.forEach(s => {
-    s.modifiers = s.modifiers.filter(m => !m.isSpell && !m.isClass && !m.isFeat && !m.isItem);
+    s.modifiers = s.modifiers.filter(m => !m.isSpell && !m.isClass && !m.isFeat && !m.isItem && !m.isRace);
   });
+
+  // Apply Race Modifiers first (so attributes are updated before items/feats/saves are recalculated)
+  applyRaceModifiers(pc);
 
   // Apply Magic Items Modifiers first (so attributes are updated for saves/AC calculations)
   applyItemModifiers(pc);
@@ -47,4 +50,49 @@ export function rebuildCombatantModifiers(pc) {
   applyFeatModifiers(pc, getMod);
   applyBaseSavingThrowModifiers(pc, getMod);
   recalculateSpeed(pc);
+}
+
+function addRaceModifier(stat, value, type, source) {
+  stat.addModifier(value, type, source);
+  if (stat.modifiers.length > 0) {
+    stat.modifiers[stat.modifiers.length - 1].isRace = true;
+  }
+}
+
+function applyRaceModifiers(pc) {
+  const race = (pc.race || 'human').toLowerCase();
+
+  // 1. Attribute Modifiers
+  if (race === 'dwarf') {
+    addRaceModifier(pc.con, 2, 'racial', 'Volk (Zwerg)');
+    addRaceModifier(pc.cha, -2, 'racial', 'Volk (Zwerg)');
+  } else if (race === 'elf') {
+    addRaceModifier(pc.dex, 2, 'racial', 'Volk (Elf)');
+    addRaceModifier(pc.con, -2, 'racial', 'Volk (Elf)');
+  } else if (race === 'gnome') {
+    addRaceModifier(pc.con, 2, 'racial', 'Volk (Gnom)');
+    addRaceModifier(pc.str, -2, 'racial', 'Volk (Gnom)');
+  } else if (race === 'halfling') {
+    addRaceModifier(pc.dex, 2, 'racial', 'Volk (Halbling)');
+    addRaceModifier(pc.str, -2, 'racial', 'Volk (Halbling)');
+  } else if (race === 'half_orc') {
+    addRaceModifier(pc.str, 2, 'racial', 'Volk (Halbork)');
+    addRaceModifier(pc.int, -2, 'racial', 'Volk (Halbork)');
+    addRaceModifier(pc.cha, -2, 'racial', 'Volk (Halbork)');
+  }
+
+  // 2. Size Modifiers for Small Races (Gnome, Halfling)
+  if (race === 'gnome' || race === 'halfling') {
+    const sizeSource = race === 'gnome' ? 'Größe (Gnom)' : 'Größe (Halbling)';
+    addRaceModifier(pc.ac, 1, 'size', sizeSource);
+    addRaceModifier(pc.acTouch, 1, 'size', sizeSource);
+    addRaceModifier(pc.acFlat, 1, 'size', sizeSource);
+  }
+
+  // 3. Saving Throw Modifiers
+  if (race === 'halfling') {
+    addRaceModifier(pc.za, 1, 'racial', 'Volk (Halbling)');
+    addRaceModifier(pc.ref, 1, 'racial', 'Volk (Halbling)');
+    addRaceModifier(pc.wil, 1, 'racial', 'Volk (Halbling)');
+  }
 }

@@ -51,6 +51,20 @@ export function renderPCAttributes(pc) {
       
       <!-- Native D&D 3.5e Multiclassing Manager Row -->
       <div style="background:rgba(139,26,26,0.04); border:0.5px solid rgba(139,26,26,0.15); border-radius:2px; padding:5px 6px; margin-bottom:4px; display:flex; flex-direction:column; gap:4px;">
+        <!-- Rasse / Volk Selector -->
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 0.5px solid rgba(139,26,26,0.1); padding-bottom: 4px; margin-bottom: 2px;">
+          <span style="font-family:'IM Fell English SC', serif; font-size:9px; color:var(--red); font-weight:600; letter-spacing:0.3px;">🧬 Volk / Rasse</span>
+          <select id="pcRaceSelect" class="cinput" style="font-size:8px; height:14px; padding:0 2px; width:80px; text-align:center; outline:none; cursor:pointer;">
+            <option value="human" ${pc.race === 'human' ? 'selected' : ''}>Mensch</option>
+            <option value="elf" ${pc.race === 'elf' ? 'selected' : ''}>Elf</option>
+            <option value="dwarf" ${pc.race === 'dwarf' ? 'selected' : ''}>Zwerg</option>
+            <option value="gnome" ${pc.race === 'gnome' ? 'selected' : ''}>Gnom</option>
+            <option value="halfling" ${pc.race === 'halfling' ? 'selected' : ''}>Halbling</option>
+            <option value="half_elf" ${pc.race === 'half_elf' ? 'selected' : ''}>Halbelf</option>
+            <option value="half_orc" ${pc.race === 'half_orc' ? 'selected' : ''}>Halbork</option>
+          </select>
+        </div>
+
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span style="font-family:'IM Fell English SC', serif; font-size:9px; color:var(--red); font-weight:600; letter-spacing:0.3px;">🎭 Klassen &amp; Stufen</span>
           ${classesCount < 4 ? `
@@ -184,6 +198,21 @@ export function renderPCAttributes(pc) {
     };
     babInp.onblur = () => {
       babInp.value = getBabSequence(pc.bab);
+    };
+  }
+  
+  // Bind Race Selector
+  const raceSelect = attributes.querySelector('#pcRaceSelect');
+  if (raceSelect) {
+    raceSelect.onchange = (e) => {
+      const val = e.target.value;
+      CombatState.updatePCBatch(freshPC => {
+        freshPC.race = val;
+        freshPC.isHuman = (val === 'human');
+        const lowSpeedRaces = ['dwarf', 'gnome', 'halfling'];
+        freshPC.baseBw = lowSpeedRaces.includes(val) ? 20 : 30;
+      });
+      uiRegistry.renderPlayerScreen();
     };
   }
 

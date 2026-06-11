@@ -1,166 +1,35 @@
 /**
- * @module    PCResources
- * @summary   Rendert Zauberbuch-, Kompendium- und Klassen-Features-Tab; orchestriert das Strategy-Pattern der ClassFeatureComponents.
- * @exports   renderPCSpells, renderPCFeatures, renderPCResources
- * @reads     pc.classes, pc.spellSlots, pc.learnedSpells, pc.dailyAbilities, pc.preparedSpells
- * @stateOps  CombatState.updatePCBatch, CombatState.saveToStorage, CombatState.resetDailyResources
- * @depends   CombatState, ClassFeature-Komponenten, PCSpellbookTab, PCCompendiumTab, PCSpellDialogs, dialogs
- * @notHere   Slot-Berechnung → SpellSlotCalculator.js | Regeln → rules.js | Zauber-Daten → spells.js
+ * @module    PCSpellsTabHandlers
+ * @summary   Kapselt alle Event-Listener und Aktions-Handler (Zaubern, Vorbereiten, Vorlagen, Tagesreset) für das Zauberbuch-Dashboard.
+ * @exports   bindSpellsEvents(pc, container, renderSpellsFn), activeRightSpellsTab, setActiveRightSpellsTab(val)
+ * @reads     pc.classes, pc.spellSlots, pc.preparedSpells, pc.spellTemplates, pc.name
+ * @stateOps  CombatState.updatePCSpellSlotsUsed, CombatState.updatePCSpellSlotsMax, CombatState.applyPCSpellTemplate, CombatState.clearPreparedSpells, CombatState.resetDailyResources
+ * @depends   CombatState, ClassFeaturesRegistry, PCSpellbookTab, PCCompendiumTab, PCSpellDialogs, dialogs, CombatRules, spells
  */
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
-import { CompanionSheet } from '../CompanionSheet.js';
-import { FamiliarSheet } from '../FamiliarSheet.js';
 import { showCustomConfirm, showCustomAlert, showPrepareSpellDialog, showCastSpontaneousSpellDialog, showCustomPrompt, showNewDayTemplateDialog } from '../dialogs.js';
-
-// Strategy-Pattern Polymorphic Class Feature Imports
-import { GeneralFeatures } from '../class-features/GeneralFeatures.js';
-import { BarbarianFeatures } from '../class-features/BarbarianFeatures.js';
-import { BardFeatures } from '../class-features/BardFeatures.js';
-import { PaladinFeatures } from '../class-features/PaladinFeatures.js';
-import { ClericFeatures } from '../class-features/ClericFeatures.js';
-import { MonkFeatures } from '../class-features/MonkFeatures.js';
-import { RogueFeatures } from '../class-features/RogueFeatures.js';
-import { DruidFeatures } from '../class-features/DruidFeatures.js';
-import { RangerFeatures } from '../class-features/RangerFeatures.js';
-import { WizardFeatures } from '../class-features/WizardFeatures.js';
-import { SorcererFeatures } from '../class-features/SorcererFeatures.js';
-
-import { renderSpellbookTab, findSpell, renderPreparedSlotsArea } from './PCSpellbookTab.js';
+import { findSpell } from './PCSpellbookTab.js';
 import { CombatRules } from '../../../rules.js';
 import { getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../../../spells.js';
 import { 
-  renderCompendiumTab,
   getSpellSearchQuery,
   setSpellSearchQuery,
-  getSpellFilterLevel,
   setSpellFilterLevel,
-  getShowAllSpells,
   setShowAllSpells
 } from './PCCompendiumTab.js';
 import { showSpellDetailsDialog, showSpellCreatorWizard } from './PCSpellDialogs.js';
+import { CLASS_FEATURE_REGISTRY } from './ClassFeaturesRegistry.js';
 
-const CLASS_FEATURE_REGISTRY = [
-  new GeneralFeatures(),
-  new BarbarianFeatures(),
-  new BardFeatures(),
-  new PaladinFeatures(),
-  new ClericFeatures(),
-  new MonkFeatures(),
-  new RogueFeatures(),
-  new DruidFeatures(),
-  new RangerFeatures(),
-  new WizardFeatures(),
-  new SorcererFeatures()
-];
+export let activeRightSpellsTab = null; // 'prepared' or 'compendium'
 
-let activeFeaturesTab = 'companion'; // 'companion' or 'familiar'
-let activeRightSpellsTab = null; // 'prepared' or 'compendium'
-let savedScrollPositions = {};
-
-function saveScrolls() {
-  const comp = document.querySelector('.pc-scroll-compendium');
-  const book = document.querySelector('.pc-scroll-spellbook');
-  const feat = document.querySelector('.pc-scroll-features');
-  
-  if (comp) savedScrollPositions.comp = comp.scrollTop;
-  if (book) savedScrollPositions.book = book.scrollTop;
-  if (feat) savedScrollPositions.feat = feat.scrollTop;
+export function setActiveRightSpellsTab(val) {
+  activeRightSpellsTab = val;
 }
 
-function restoreScrolls() {
-  const comp = document.querySelector('.pc-scroll-compendium');
-  const book = document.querySelector('.pc-scroll-spellbook');
-  const feat = document.querySelector('.pc-scroll-features');
-  
-  if (comp && savedScrollPositions.comp !== undefined) comp.scrollTop = savedScrollPositions.comp;
-  if (book && savedScrollPositions.book !== undefined) book.scrollTop = savedScrollPositions.book;
-  if (feat && savedScrollPositions.feat !== undefined) feat.scrollTop = savedScrollPositions.feat;
-}
-
-/**
- * Renders the Spells Tab: Spellbook & Compendium side-by-side
- */
-export function renderPCSpells(pc) {
-  const spellsTab = document.getElementById('tabPanelSpells');
-  if (!spellsTab) return;
-
-  const bookContainer = document.getElementById('pcSpellbookContainer');
-  const compContainer = document.getElementById('pcCompendiumContainer');
-  
-  const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
-  const isCaster = hasClasses && pc.classes.some(c => ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger'].includes(c.classType));
-
-  if (!isCaster) {
-    spellsTab.innerHTML = `
-      <div class="panel" style="width: 100%;">
-        <div class="phdr"><h2>🔮 Zauberbuch &amp; Slots</h2></div>
-        <div class="pbody empty-msg" style="padding: 30px 10px; text-align: center; font-style: italic; color: var(--inkl);">
-          Dieser Charakter besitzt keine Zauberklassen.
-        </div>
-      </div>
-    `;
-    return;
-  }
-
-  // Restore the normal grid layout if it was overwritten by the safety guard
-  if (!bookContainer || !compContainer) {
-    spellsTab.innerHTML = `
-      <div class="overview-grid" id="pcSpellsTabContainer">
-        <div class="panel" id="pcSpellbookContainer"></div>
-        <div class="panel" id="pcCompendiumContainer"></div>
-      </div>
-    `;
-    return renderPCSpells(pc);
-  }
-
-  const activeCasters = hasClasses ? pc.classes.filter(c => ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger'].includes(c.classType)) : [];
-  const hasPrepared = activeCasters.some(c => ['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType));
-
-  if (activeRightSpellsTab === null) {
-    activeRightSpellsTab = hasPrepared ? 'prepared' : 'compendium';
-  }
-
-  saveScrolls();
-
-  // Render Spellbook (Left)
-  bookContainer.innerHTML = `
-    <div class="phdr">
-      <h2>🔮 Zauberbuch &amp; Slots</h2>
-      <button class="btn btn-new-day" style="font-size: 8px; padding: 2px 8px; font-family: 'IM Fell English SC', serif; font-weight: bold; background: linear-gradient(135deg, #c8a96e, #9a7a2e); color: white; border: 0.5px solid var(--red); border-radius: 2px; cursor: pointer; line-height: 1;" title="Zauberslots und tägliche Fähigkeiten wiederherstellen">
-        Tagesreset 🌅
-      </button>
-    </div>
-    <div class="pbody" style="padding: 6px; display: flex; flex-direction: column; gap: 6px;">
-      ${renderSpellbookTab(pc)}
-    </div>
-  `;
-
-  // Render Dashboard Tabs (Right)
-  compContainer.innerHTML = `
-    <div class="phdr" style="display: flex; justify-content: space-between; align-items: center;">
-      <h2 style="font-size: 10px; margin: 0; line-height: 1;">🔮 Dashboard</h2>
-      <div style="display: flex; gap: 3px;">
-        <button class="btn right-spells-tab-btn ${activeRightSpellsTab === 'prepared' ? 'btn-p' : ''}" data-tab="prepared" style="font-size: 8.5px; padding: 2px 6px; line-height: 1; font-family: 'IM Fell English SC', serif; font-weight: bold;">🌅 Vorbereitung</button>
-        <button class="btn right-spells-tab-btn ${activeRightSpellsTab === 'compendium' ? 'btn-p' : ''}" data-tab="compendium" style="font-size: 8.5px; padding: 2px 6px; line-height: 1; font-family: 'IM Fell English SC', serif; font-weight: bold;">📖 Kompendium</button>
-      </div>
-    </div>
-    <div class="pbody" style="padding: 6px; display: flex; flex-direction: column; gap: 4px;">
-      ${activeRightSpellsTab === 'prepared' ? renderPreparedSlotsArea(pc) : renderCompendiumTab(pc)}
-    </div>
-  `;
-
-  const tabContainer = document.getElementById('pcSpellsTabContainer');
-  if (tabContainer) {
-    bindSpellsEvents(pc, tabContainer);
-  }
-
-  restoreScrolls();
-}
-
-function bindSpellsEvents(pc, container) {
+export function bindSpellsEvents(pc, container, renderSpellsFn) {
   container.onclick = (e) => {
-    if (_handleTabNavigationClick(pc, e)) return;
+    if (_handleTabNavigationClick(pc, e, renderSpellsFn)) return;
     if (_handleNewDayClick(pc, e)) return;
     if (_handleSpellBubbleClick(pc, e, container)) return;
     if (_handleSpellbookActionClick(pc, e)) return;
@@ -169,7 +38,7 @@ function bindSpellsEvents(pc, container) {
   };
 
   container.onchange = (e) => {
-    _handleSpellChange(pc, e, container);
+    _handleSpellChange(pc, e, container, renderSpellsFn);
   };
 
   container.oninput = (e) => {
@@ -177,12 +46,12 @@ function bindSpellsEvents(pc, container) {
   };
 }
 
-function _handleTabNavigationClick(pc, e) {
+function _handleTabNavigationClick(pc, e, renderSpellsFn) {
   const tabBtn = e.target.closest('.right-spells-tab-btn');
   if (tabBtn) {
     e.stopPropagation();
     activeRightSpellsTab = tabBtn.dataset.tab;
-    renderPCSpells(pc);
+    renderSpellsFn(pc);
     return true;
   }
   return false;
@@ -594,7 +463,7 @@ function _handleSpellListClick(pc, e) {
   return false;
 }
 
-function _handleSpellChange(pc, e, container) {
+function _handleSpellChange(pc, e, container, renderSpellsFn) {
   const templateSelect = e.target.closest('.select-spell-template');
   if (templateSelect) {
     const selectedName = e.target.value;
@@ -636,14 +505,14 @@ function _handleSpellChange(pc, e, container) {
   const compLvlSelect = e.target.closest('.comp-level-select');
   if (compLvlSelect) {
     setSpellFilterLevel(e.target.value);
-    renderPCSpells(pc);
+    renderSpellsFn(pc);
     return;
   }
 
   const classFilterChk = e.target.closest('.comp-filter-class-chk');
   if (classFilterChk) {
     setShowAllSpells(!e.target.checked);
-    renderPCSpells(pc);
+    renderSpellsFn(pc);
     return;
   }
 }
@@ -661,147 +530,4 @@ function _handleSpellInput(pc, e, container) {
       item.style.display = matches ? 'flex' : 'none';
     });
   }
-}
-
-/**
- * Renders the Features Tab: Class Features & Companions side-by-side
- */
-export function renderPCFeatures(pc) {
-  const featuresTab = document.getElementById('tabPanelFeatures');
-  if (!featuresTab) return;
-
-  const featuresContainer = document.getElementById('pcFeaturesContainer');
-  const companionsContainer = document.getElementById('pcCompanionsContainer');
-  if (!featuresContainer || !companionsContainer) return;
-
-  saveScrolls();
-
-  const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
-  const hasCompanion = (hasClasses && pc.classes.some(c => ['druid', 'ranger'].includes(c.classType))) || (pc.companionType && pc.companionType !== 'none');
-  const hasFamiliar = (hasClasses && pc.classes.some(c => ['wizard', 'sorcerer'].includes(c.classType))) || (pc.familiarType && pc.familiarType !== 'none');
-
-  // Left Column: Class Features
-  const activeComponents = CLASS_FEATURE_REGISTRY.filter(comp => comp.isEligible(pc));
-  let cardsHtml = activeComponents.map(comp => {
-    const clsInfo = pc.classes ? pc.classes.find(c => c.classType === comp.classKey) : null;
-    const level = clsInfo ? clsInfo.level : 1;
-    return `<div class="feature-comp-wrapper" data-class="${comp.classKey}">${comp.render(pc, level)}</div>`;
-  }).join('');
-
-  featuresContainer.innerHTML = `
-    <div class="phdr">
-      <h2>⚔️ Klassen-Features</h2>
-      <button class="btn btn-new-day" style="font-size: 8px; padding: 2px 8px; font-family: 'IM Fell English SC', serif; font-weight: bold; background: linear-gradient(135deg, #c8a96e, #9a7a2e); color: white; border: 0.5px solid var(--red); border-radius: 2px; cursor: pointer; line-height: 1;" title="Tägliche Fähigkeiten wiederherstellen">
-        Tagesreset 🌅
-      </button>
-    </div>
-    <div class="pbody" style="padding: 6px;">
-      <div style="display: flex; flex-direction: column; gap: 6px; max-height: 520px; overflow-y: auto; padding-right: 2px;" class="pc-scroll-features">
-        ${cardsHtml || '<div style="font-size: 8.5px; color: var(--inkl); font-style: italic; text-align: center; padding: 30px 10px;">Keine aktiven Klassenfeatures.</div>'}
-      </div>
-    </div>
-  `;
-
-  // Right Column: Companions
-  let companionTabHtml = '';
-  if (hasCompanion && hasFamiliar) {
-    companionTabHtml = `
-      <div style="display: flex; gap: 3px; border-bottom: 0.5px solid var(--pb); padding-bottom: 3.5px; margin-bottom: 6px;">
-        <button class="btn companion-sub-tab-btn ${activeFeaturesTab === 'companion' ? 'btn-p' : ''}" data-tab="companion" style="font-size: 7.5px; padding: 2px 6px;">🐾 Tierbegleiter</button>
-        <button class="btn companion-sub-tab-btn ${activeFeaturesTab === 'familiar' ? 'btn-p' : ''}" data-tab="familiar" style="font-size: 7.5px; padding: 2px 6px;">🦇 Vertrauter</button>
-      </div>
-    `;
-    if (activeFeaturesTab !== 'companion' && activeFeaturesTab !== 'familiar') {
-      activeFeaturesTab = 'companion';
-    }
-  } else if (hasCompanion) {
-    activeFeaturesTab = 'companion';
-  } else if (hasFamiliar) {
-    activeFeaturesTab = 'familiar';
-  } else {
-    activeFeaturesTab = 'none';
-  }
-
-  let companionBodyHtml = '';
-  if (activeFeaturesTab === 'companion') {
-    companionBodyHtml = CompanionSheet.render(pc);
-  } else if (activeFeaturesTab === 'familiar') {
-    companionBodyHtml = FamiliarSheet.render(pc);
-  } else {
-    companionBodyHtml = `
-      <div style="font-size: 8.5px; color: var(--inkl); font-style: italic; text-align: center; padding: 35px 10px; background: rgba(0,0,0,0.02); border: 0.5px dashed var(--pb); border-radius: 2px;">
-        🐾 Kein aktiver Tierbegleiter oder Vertrauter.
-      </div>
-    `;
-  }
-
-  companionsContainer.innerHTML = `
-    <div class="phdr"><h2>🐾 Begleiter &amp; Vertraute</h2></div>
-    <div class="pbody" style="padding: 6px; display: flex; flex-direction: column; gap: 4px;">
-      ${companionTabHtml}
-      <div class="companion-panel-content">
-        ${companionBodyHtml}
-      </div>
-    </div>
-  `;
-
-  bindFeaturesEvents(pc, featuresTab);
-
-  restoreScrolls();
-}
-
-function bindFeaturesEvents(pc, container) {
-  container.onclick = (e) => {
-    // 1. Companion sub-tab buttons
-    const tabBtn = e.target.closest('.companion-sub-tab-btn');
-    if (tabBtn) {
-      e.stopPropagation();
-      activeFeaturesTab = tabBtn.dataset.tab;
-      renderPCFeatures(pc);
-      return;
-    }
-
-    // 2. New Day button
-    const newDayBtn = e.target.closest('.btn-new-day');
-    if (newDayBtn) {
-      e.stopPropagation();
-      showCustomConfirm("Ein neuer Tag! 🌅", "Möchtest du alle verbrauchten Zauberslots und täglichen Klassenfähigkeiten wiederherstellen und einen neuen Tag beginnen?", () => {
-        const activeComponents = CLASS_FEATURE_REGISTRY.filter(comp => comp.isEligible(pc));
-        activeComponents.forEach(comp => {
-          const clsInfo = pc.classes ? pc.classes.find(c => c.classType === comp.classKey) : null;
-          const level = clsInfo ? clsInfo.level : 1;
-          comp.onNewDay(pc, level);
-        });
-
-        CombatState.resetDailyResources();
-        uiRegistry.renderPlayerScreen();
-      });
-      return;
-    }
-  };
-
-  if (activeFeaturesTab === 'companion') {
-    CompanionSheet.bindEvents(pc, container, () => renderPCFeatures(pc));
-  } else if (activeFeaturesTab === 'familiar') {
-    FamiliarSheet.bindEvents(pc, container, () => renderPCFeatures(pc));
-  }
-
-  // Bind active components feature events
-  const activeComponents = CLASS_FEATURE_REGISTRY.filter(comp => comp.isEligible(pc));
-  activeComponents.forEach(comp => {
-    const wrapper = container.querySelector(`.feature-comp-wrapper[data-class="${comp.classKey}"]`);
-    if (wrapper) {
-      const clsInfo = pc.classes ? pc.classes.find(c => c.classType === comp.classKey) : null;
-      const level = clsInfo ? clsInfo.level : 1;
-      comp.bindEvents(pc, level, wrapper, () => uiRegistry.renderPlayerScreen());
-    }
-  });
-}
-
-/**
- * Backward compatibility stub
- */
-export function renderPCResources(pc) {
-  renderPCSpells(pc);
-  renderPCFeatures(pc);
 }

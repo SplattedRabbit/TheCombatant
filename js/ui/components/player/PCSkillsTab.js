@@ -178,6 +178,25 @@ function bindSkillsEvents(pc, container) {
         { label: `${skill.abl.toUpperCase()}-Mod`, value: attrMod }
       ];
 
+      // Racial skill bonuses
+      const race = (pc.race || 'human').toLowerCase();
+      let racialBonus = 0;
+      if (race === 'dwarf') {
+        if (key === 'craft') racialBonus = 2;
+      } else if (race === 'elf') {
+        if (['listen', 'search', 'spot'].includes(key)) racialBonus = 2;
+      } else if (race === 'gnome') {
+        if (['listen', 'craft'].includes(key)) racialBonus = 2;
+      } else if (race === 'halfling') {
+        if (['climb', 'jump', 'move_silently', 'listen'].includes(key)) racialBonus = 2;
+      } else if (race === 'half_elf') {
+        if (['listen', 'search', 'spot'].includes(key)) racialBonus = 1;
+        if (['diplomacy', 'gather_information'].includes(key)) racialBonus = 2;
+      }
+      if (racialBonus > 0) {
+        breakdown.push({ label: 'Volksbonus', value: racialBonus });
+      }
+
       if (misc !== 0) {
         breakdown.push({ label: 'Sonstige Boni', value: misc });
       }

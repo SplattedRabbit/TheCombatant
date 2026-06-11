@@ -642,7 +642,7 @@ export const CombatRules = {
 
     // Human bonus feat: assume true if undefined
     const raceStr = (pc.race || '').toLowerCase();
-    const isHuman = pc.isHuman || raceStr === 'human' || raceStr === 'mensch' || pc.isHuman === undefined;
+    const isHuman = pc.isHuman !== undefined ? !!pc.isHuman : (raceStr === 'human' || raceStr === 'mensch' || raceStr === '');
     if (isHuman) {
       maxFeats += 1;
     }
@@ -701,7 +701,7 @@ export const CombatRules = {
     }
 
     const raceStr = (pc.race || '').toLowerCase();
-    const isHuman = pc.isHuman || raceStr === 'human' || raceStr === 'mensch' || pc.isHuman === undefined;
+    const isHuman = pc.isHuman !== undefined ? !!pc.isHuman : (raceStr === 'human' || raceStr === 'mensch' || raceStr === '');
 
     let total = 0;
     pc.classes.forEach((c, idx) => {

@@ -56,8 +56,9 @@ export function recalculateSpeed(pc) {
 
   let baseAndBonus = (pc.baseBw !== undefined ? pc.baseBw : 30) + speedBonus;
 
-  // Apply speed reduction for medium or heavy armor
-  if (armor && (armor.speedCategory === 'medium' || armor.speedCategory === 'heavy')) {
+  // Apply speed reduction for medium or heavy armor (Dwarves are immune to this)
+  const isDwarf = (pc.race || '').toLowerCase() === 'dwarf';
+  if (armor && (armor.speedCategory === 'medium' || armor.speedCategory === 'heavy') && !isDwarf) {
     if (baseAndBonus >= 30) {
       if (baseAndBonus === 30) baseAndBonus = 20;
       else if (baseAndBonus === 40) baseAndBonus = 30;
