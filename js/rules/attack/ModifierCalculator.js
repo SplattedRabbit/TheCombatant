@@ -53,11 +53,6 @@ export function calculateGeneralAtkModifiers(ctx) {
     }
   }
 
-  if (ctx.hasHaste) {
-    generalAtkMod += 1;
-    generalAtkBreakdown.push({ label: 'Zauber: Hast', value: 1 });
-  }
-
   if (ctx.pc.isDefensiveFighting) {
     generalAtkMod -= 4;
     generalAtkBreakdown.push({ label: 'Verteidigend kämpfen', value: -4 });
@@ -94,6 +89,13 @@ export function calculateGeneralAtkModifiers(ctx) {
   if (sizeMod !== 0) {
     generalAtkMod += sizeMod;
     generalAtkBreakdown.push({ label: 'Größenmodifikator', value: sizeMod });
+  }
+
+  if (ctx.buffAtkBonus) {
+    generalAtkMod += ctx.buffAtkBonus;
+  }
+  if (Array.isArray(ctx.buffAtkBreakdown)) {
+    generalAtkBreakdown.push(...ctx.buffAtkBreakdown);
   }
 
   return { generalAtkMod, generalAtkBreakdown };
@@ -154,6 +156,13 @@ export function calculateGeneralDmgModifiers(ctx) {
       generalDmgMod += feBonus;
       generalDmgBreakdown.push({ label: 'Erzfeind-Bonus', value: feBonus });
     }
+  }
+
+  if (ctx.buffDmgBonus) {
+    generalDmgMod += ctx.buffDmgBonus;
+  }
+  if (Array.isArray(ctx.buffDmgBreakdown)) {
+    generalDmgBreakdown.push(...ctx.buffDmgBreakdown);
   }
 
   return { generalDmgMod, generalDmgBreakdown, paDmgBonus };
