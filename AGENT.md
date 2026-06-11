@@ -40,13 +40,13 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Waffen-UI             | `PCOffense.js` (`_createStashWeaponCard`)                | `AttackEngine.js`, `js/models/Weapon.js`     |
 | Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`            | `PCOffense.js` (`_createStashArmorCard`)     |
 | Angriffs-Engine       | `js/rules/AttackEngine.js`                               | `PCOffense.js`, `dialogs/AttackChoiceDialog.js` |
-| Rettungswürfe         | `js/rules/SaveCalculator.js`                             | `js/models/Combatant.js` (`za`/`ref`/`wil`) |
+| Rettungswürfe         | `js/rules/SaveCalculator.js`                             | `js/models/Combatant.js`, `helpers/modifiers/` |
 | Zauber / Slots        | `PCSpellbookTab.js`, `PCCompendiumTab.js`, `helpers/spells/CombatantSpells.js` | `SpellSlotCalculator.js`, `Combatant.js` |
 | Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `js/ui/components/class-features/` |
 | Talente               | `js/data/feats-data.js`                                  | `PCManager.js` (`addPCFeat`), `PCFeatsTab.js` |
 | Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `PCOffense.js` (`w-hand-select`)             |
 | Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `PCOffense.js`, `AttackEngine.js`            |
-| Initiative / RK       | `PCDefenses.js`                                          | `Combatant.js` (`ac`/`acTouch`/`acFlat`)    |
+| Initiative / RK       | `PCDefenses.js`                                          | `Combatant.js`, `helpers/modifiers/`         |
 | HP & Globe            | `PCHealthGlobe.js`                                       | `PCManager.js` (`applyDamage`/`applyHeal`)  |
 | Netzwerk-Sync         | `js/network/SyncProtocol.js`                             | `NetworkManager.js`, `MessageQueue.js`       |
 | Service Worker / Cache| `service-worker.js` Zeile 1                              | `index.html` Fußzeile (Version-String)       |

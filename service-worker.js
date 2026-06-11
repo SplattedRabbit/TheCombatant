@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.2.5-cache-v4';
+const CACHE_NAME = 'dnd-combatsheet-v3.2.5-cache-v5';
 const ASSETS = [
   './',
   './index.html',
@@ -34,6 +34,13 @@ const ASSETS = [
   './js/models/helpers/classes/RangerHelper.js',
   './js/models/helpers/classes/RogueHelper.js',
   './js/models/helpers/classes/CombatantClassFeatures.js',
+  './js/models/helpers/modifiers/ItemModifierApplier.js',
+  './js/models/helpers/modifiers/BaseSavingThrowModifierApplier.js',
+  './js/models/helpers/modifiers/SpellModifierApplier.js',
+  './js/models/helpers/modifiers/ClassModifierApplier.js',
+  './js/models/helpers/modifiers/FeatModifierApplier.js',
+  './js/models/helpers/modifiers/SpeedRecalculator.js',
+  './js/models/helpers/modifiers/CombatantModifiers.js',
   './js/models/Item.js',
   './js/models/model-core.js',
   './js/data/armor-data.js',
