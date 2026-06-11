@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :---: | :---: | :--- |
+| **v3.3.1** | Release | 11.06.2026 | Behebung verbleibender Backlog-Bugs (Bugs #1 bis #18) & Bereinigung |
 | **v3.3.0** | Release | 11.06.2026 | Druiden-Tiergestalt RAW Fixes, Modularisierung AttackEngine & Behebung Bug #17 |
 | **v3.2.7** | Release | 11.06.2026 | D&D 3.5e Volks-Simulation, Stat-Mali Fix & PCResources.js Refactoring |
 | **v3.2.6** | Release | 11.06.2026 | Monolith Refactoring: PCOffense.js Split in 7 UI-Subkomponenten |
@@ -63,6 +64,18 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v3.3.1 — Bugbacklog-Bereinigung & QoL (Release v3.3.1)
+
+* **🐞 Bug-Backlog-Bereinigung (Bugs #1 bis #18):**
+  - **Bug #1 (Regelerklärungen):** Neues UI-Feature-Modul `FighterFeatures` zur Erläuterung der Kämpfer-Bonus-Talente implementiert und registriert.
+  - **Bug #3 (Talente-Tab):** Optische Höhenangleichung und Symmetrie-Fix für Suchfeld und Kategorien-Dropdown.
+  - **Bug #5 (Schurke):** Globaler Sneak-Attack-Schalter im oberen Bereich der Kampfeinstellungen im Offense-Tab integriert.
+  - **Bug #7 (Layout-Scrollen):** Begrenzende Höhen und Scrollbalken für Waffen-, Rüstungs- und Zauberbuchlisten eingeführt.
+  - **Bug #9 (Main-/Offhand):** Einhändige Waffen können nun direkt an den Waffenslots zwischen Haupt- und Nebenhand gewechselt werden.
+  - **Bug #10 (Klassenstufe):** Breite des Stufenauswahl-Dropdowns auf 44px vergrößert, um Abschneiden durch Popups-Styles zu verhindern.
+  - **Bug #12 (Fertigkeits-Ränge):** Sicheres Speichern und Validierung von Rängen (inkl. Wert 0) im Ränge-Input.
+  - **Bug #14 (Talente verlernen):** Propagation des Klicks gestoppt, um Endlosschleife im Dialog zu verhindern.
 
 ### v3.3.0 — Druiden-Tiergestalt RAW-Fixes, Modularisierung AttackEngine & Behebung Bug #17 (Release v3.3.0)
 

@@ -1,4 +1,5 @@
 import { GeneralFeatures } from '../class-features/GeneralFeatures.js';
+import { FighterFeatures } from '../class-features/FighterFeatures.js';
 import { BarbarianFeatures } from '../class-features/BarbarianFeatures.js';
 import { BardFeatures } from '../class-features/BardFeatures.js';
 import { PaladinFeatures } from '../class-features/PaladinFeatures.js';
@@ -12,6 +13,7 @@ import { SorcererFeatures } from '../class-features/SorcererFeatures.js';
 
 export const CLASS_FEATURE_REGISTRY = [
   new GeneralFeatures(),
+  new FighterFeatures(),
   new BarbarianFeatures(),
   new BardFeatures(),
   new PaladinFeatures(),
