@@ -13,7 +13,7 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
 
 ---
 
-## 2. Handauflegen verwendet nicht den Charismamodifier beim Paladin
+## 2. ✅ BEHOBEN: Handauflegen verwendet nicht den Charismamodifier beim Paladin
 *   **Beschreibung:** Die maximale Kapazität des täglichen Pools von *Hände auflegen* (Lay on Hands) wird nicht korrekt mit dem aktuellen Charisma-Modifikator berechnet oder aktualisiert sich nicht reaktiv, wenn das Charisma des Paladins modifiziert wird (z. B. durch Magie).
 *   **Betroffene Dateien:**
     *   [PaladinRules.js](file:///c:/Users/Juls/Desktop/CombatApp/js/rules/classes/PaladinRules.js) (insb. Zeile 29–37)
@@ -34,7 +34,7 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
 
 ---
 
-## 4. Fertigkeiten/Skills nehmen keine "maximale Anzahl an verteilbaren Punkten" an
+## 4. ✅ BEHOBEN: Fertigkeiten/Skills nehmen keine "maximale Anzahl an verteilbaren Punkten" an
 *   **Beschreibung:** Das Fertigkeitensystem prüft beim Verteilen von Rängen nicht die D&D 3.5e Obergrenze. Spieler können beliebig viele Ränge eintragen, anstatt auf das Maximum (`Charakterstufe + 3` für Klassenfertigkeiten bzw. `(Charakterstufe + 3) / 2` für klassenfremde Fertigkeiten) beschränkt zu werden.
 *   **Betroffene Dateien:**
     *   [PCSkillsTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCSkillsTab.js)
@@ -54,7 +54,7 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
 
 ---
 
-## 6. Barbar: Kampfrausch-Werte werden nicht richtig berechnet und angewandt
+## 6. ✅ BEHOBEN: Barbar: Kampfrausch-Werte werden nicht richtig berechnet und angewandt
 *   **Beschreibung:** Die Werte und Modifikatoren des Kampfrauschs (Rage) des Barbaren werden in den Statistiken und Wurfberechnungen nicht korrekt berechnet oder angewandt.
 *   **Betroffene Dateien:**
     *   [BarbarianRules.js](file:///c:/Users/Juls/Desktop/CombatApp/js/rules/classes/BarbarianRules.js)
@@ -71,7 +71,7 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
     *   Einführung von `max-height` (z.B. `250px` oder `300px`) und `overflow-y: auto` für die Container `#pcWeaponsList` und `#pcArmorList` in `PCOffense.js`.
     *   Sicherstellen, dass die Container für gelernte Zauber in `PCSpellbookTab.js` (Klasse `pc-scroll-spellbook`) sauberes internes Scrollen nutzen.
 
-## 8. "Bekannte" Zauber werden nicht berücksichtigt beim übertragen der Zauber in das Zauberbuch
+## 8. ✅ BEHOBEN: "Bekannte" Zauber werden nicht berücksichtigt beim übertragen der Zauber in das Zauberbuch
 *   **Beschreibung:** Der Spieler kann mehr Zauber als eigentlich vorgesehen in der Zauberbibliothek ablegen (Spells Known Limit für Barden & Hexenmeister).
 *   **Betroffene Dateien:**
     *   [rules.js](file:///c:/Users/Juls/Desktop/CombatApp/js/rules.js) (Definieren der PHB-Tabellen für bekannte Zauber pro Klasse/Stufe)
@@ -96,7 +96,7 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
 *   **Lösungsansatz:**
     *   Styling des `.pc-class-lvl-select` anpassen: Die CSS-Breite von `30px` auf `36px` erhöhen, das Innenabstand (Padding) optimieren und ein sauberes Line-Height vergeben, damit die Zahl mittig platziert und vollständig lesbar ist.
 
-## 11. Skills die ungeübt nicht benutzbar sind sollen ausgegraut werden sofern keine Ränge darauf vergeben sind
+## 11. ✅ BEHOBEN: Skills die ungeübt nicht benutzbar sind sollen ausgegraut werden sofern keine Ränge darauf vergeben sind
 *   **Beschreibung:** Fertigkeiten mit der Eigenschaft "Trained Only" (ungeübt nicht nutzbar) wie z.B. *Zauberkunde* oder *Schlösser öffnen* müssen optisch deaktiviert werden, wenn der Spieler 0 Ränge besitzt.
 *   **Betroffene Dateien:**
     *   [PCSkillsTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCSkillsTab.js) (Rendern der `skill-row` und Klick-Event-Handler für den Wurf-Button)
@@ -112,7 +112,7 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
     *   Sicherstellen, dass leere Eingaben (`""`) oder das manuelle Eintragen von `0` im Change-Event sauber als `0` interpretiert und im State gespeichert werden.
     *   Den Re-Render-Workflow überprüfen: Falls die Eingabe gelöscht wird, darf die Reaktivität das Eingabefeld nicht sperren oder überschreiben, bevor die Eingabe abgeschlossen ist. Evtl. Optimierung der Wert-Zuweisung und Validierung.
 
-## 13. Talent-Auswahl: Fehlende Obergrenze
+## 13. ✅ BEHOBEN: Talent-Auswahl: Fehlende Obergrenze
 *   **Beschreibung:** Es können beliebig viele Talente gelernt werden. Die Obergrenze nach PHB-Regeln (Level, Klassen-Stufen, ggf. Rasse) muss eingehalten werden.
 *   **Betroffene Dateien:**
     *   [rules.js](file:///c:/Users/Juls/Desktop/CombatApp/js/rules.js) (Berechnung der Talent-Slots)
@@ -130,7 +130,7 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
 *   **Lösungsansatz:**
     *   Im Klick-Handler des Verlernen-Buttons (`unlearnBtn.onclick`) explizit `e.stopPropagation()` and `e.preventDefault()` aufrufen. Dadurch wird verhindert, dass das Klick-Event im Event-Loop weitergeleitet wird und nach dem sofortigen Neuaufbau der Seite durch `renderPlayerScreen` direkt wieder die darunterliegende Zeile/Karte triggert.
 
-## 15. Druiden-Tiergestalt: Fehlerhafte Wert- und RK-Berechnungen
+## 15. ✅ BEHOBEN: Druiden-Tiergestalt: Fehlerhafte Wert- und RK-Berechnungen
 *   **Beschreibung:** Die Verwandlung in eine Tiergestalt (Wild Shape) des Druiden verändert die Werte nicht korrekt. Die Attributswerte wirken willkürlich, die RK stimmt nicht mit den richtigen Werten des gewählten Tiers überein, und die Rettungswürfe wurden beim Wechsel nicht abgeglichen.
 *   **Betroffene Dateien:**
     *   [Combatant.js](file:///c:/Users/Juls/Desktop/CombatApp/js/models/Combatant.js) (Klassenspezifische Methoden `enterShape()` und `exitShape()`)
@@ -151,7 +151,7 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
     *   ATK- und DMG-Buttons sind vollständig funktionsfähig.
 
 
-## 17. Erzfeind-Bonus: Checkbox-Zustand wird nicht auf Schadenswürfe übertragen
+## 17. ✅ BEHOBEN: Erzfeind-Bonus: Checkbox-Zustand wird nicht auf Schadenswürfe übertragen
 *   **Beschreibung:** Die Checkbox "Gegen Erzfeind (+X Schaden)" existiert derzeit nur als lokaler Zustand innerhalb des `AttackChoiceDialog` (der über den ATK-Knopf geöffnet wird). Wenn der Benutzer jedoch den DMG-Knopf direkt in der Ausrüstungs-Übersicht klickt, wird der Waffenschaden ohne Berücksichtigung des Erzfeind-Bonus berechnet und angezeigt. Da der Erzfeind-Bonus laut D&D 3.5 RAW ausschließlich auf Schadenswürfe (und spezifische Fertigkeitsproben) gilt, aber nicht auf den Angriffswurf selbst, führt dies dazu, dass der Bonus im Kampf-Interface praktisch nie auf den tatsächlichen Schaden angewendet werden kann.
 *   **Betroffene Dateien:**
     *   [EquipmentSlotsRenderer.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/offense/EquipmentSlotsRenderer.js)
@@ -167,7 +167,7 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
 
 ---
 
-## 18. Talent-Auswahl: Mehrfaches Erlernen von nicht-stapelbaren Talenten möglich
+## 18. ✅ BEHOBEN: Talent-Auswahl: Mehrfaches Erlernen von nicht-stapelbaren Talenten möglich
 *   **Beschreibung:** Das System erlaubt es Spielern, beliebige Talente mehrfach zu erlernen. Während D&D 3.5 RAW bestimmte Talente (z. B. *Waffenfokus*, *Zauberfokus*, *Fertigkeitsfokus*, *Zähigkeit*) explizit mehrfach zulässt (meist für unterschiedliche Optionen wie verschiedene Waffen oder Magieschulen), dürfen die meisten Talente (z. B. *Heftiger Angriff*, *Verbesserte Initiative*) nur ein einziges Mal gewählt werden. Derzeit führt `addPCFeat` in `PCManager.js` keine Überprüfung auf Duplikate durch, und das Interface (z. B. das Auswahldropdown für Optionen im Talent-Detail-Dialog) schließt bereits gewählte Optionen (z. B. *Waffenfokus (Langschwert)*) nicht aus, was zu unzulässigen Mehrfach-Einträgen führt.
 *   **Betroffene Dateien:**
     *   [PCManager.js](file:///c:/Users/Juls/Desktop/CombatApp/js/state/PCManager.js)
