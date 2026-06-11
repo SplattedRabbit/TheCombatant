@@ -40,7 +40,11 @@ export function renderEquipmentSlotsHtml(pc, babVal, paPenalty, cePenalty, hasPo
     <div style="font-size:7px; color:var(--inkm); font-style:italic;">(Unbewaffnet)</div>
   `;
   if (mainHandWeapon) {
-    const seq = AttackEngine.calculateAttackSequence(pc, mainHandWeapon, false);
+    const seq = AttackEngine.calculateAttackSequence(pc, mainHandWeapon, false, {
+      smite: pc.isSmiteActive,
+      favoredEnemy: pc.isFavoredEnemyActive,
+      sneakAttack: pc.isSneakAttacking
+    });
     const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
     const hasImprovedCritical = pc.feats && pc.feats.some(f => 
       (f.id === 'improved_critical' || f.id === 'verbesserter_kritischer_treffer') &&
@@ -50,12 +54,21 @@ export function renderEquipmentSlotsHtml(pc, babVal, paPenalty, cePenalty, hasPo
     const doubledCritDisplay = getCritThreatDisplay(mainHandWeapon.crit, isDoubleThreat);
     const dmgDice = pc.getWeaponDamageDice(mainHandWeapon) || '1w6';
     const extraDamage = mainHandWeapon.extraDamage ? ` + ${mainHandWeapon.extraDamage}` : '';
+    const handSelectHtml = mainHandWeapon.grip !== '2H' ? `
+      <select class="cinput weapon-hand-select" data-idx="${pc.weapons.indexOf(mainHandWeapon)}" style="font-size: 7px; padding: 0 1px; height: 12px; line-height: 1; border-radius: 1px; border: 0.5px solid var(--pb); outline: none; background: white; color: var(--ink); margin-top: 1px;">
+        <option value="main" selected>Haupthand</option>
+        <option value="off">Nebenhand</option>
+      </select>
+    ` : '';
 
     mainHandHtml = `
       <button class="unequip-slot-btn mainhand-unequip" data-idx="${pc.weapons.indexOf(mainHandWeapon)}" style="position:absolute; top:2px; right:4px; border:none; background:transparent; font-size:7.5px; cursor:pointer; color:var(--red); padding:0;" title="Ablegen">✕</button>
       <div style="font-size:6.5px; color:var(--inkl); font-weight:bold; text-transform:uppercase; font-family:'IM Fell English SC', serif; margin-bottom:1px; opacity:0.8;">Haupthand</div>
       <div class="equipped-title-w-${pc.weapons.indexOf(mainHandWeapon)}" style="font-family:'Crimson Text',serif; font-size:9.5px; font-weight:bold; color:var(--red); text-shadow:0 0 1px rgba(139,26,26,0.1); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${mainHandWeapon.name}">${mainHandWeapon.name}</div>
-      <div style="font-size:7px; color:var(--inkm); margin:1px 0 3px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${dmgDice}${extraDamage} • ${doubledCritDisplay}">${dmgDice}${extraDamage} • ${doubledCritDisplay}</div>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 4px; margin: 1px 0 3px;">
+        <div style="font-size:7px; color:var(--inkm); overflow:hidden; white-space:nowrap; text-overflow:ellipsis;" title="${dmgDice}${extraDamage} • ${doubledCritDisplay}">${dmgDice}${extraDamage} • ${doubledCritDisplay}</div>
+        ${handSelectHtml}
+      </div>
       <div style="display:flex; gap:2px; width:100%; justify-content:center; align-items:center;">
         <button class="xbtn xbtn-dmg roll-atk-btn" ${pc.isTotalDefense ? 'disabled' : ''} style="padding:1px 2px; font-size:6.5px; font-weight:bold; flex:1; white-space:nowrap; height:15px; line-height:1; ${pc.isTotalDefense ? 'opacity:0.4; cursor:not-allowed;' : ''}" title="Angriff ausführen">
           ATK (${formatMod(stdAtkObj.atkTotal)}) 🎲
@@ -97,7 +110,12 @@ export function renderEquipmentSlotsHtml(pc, babVal, paPenalty, cePenalty, hasPo
       <div style="font-size:6.5px; color:var(--inkm); line-height:1;">Malus: -${equippedShield.checkPenalty}</div>
     `;
   } else if (offHandWeapon) {
-    const seq = AttackEngine.calculateAttackSequence(pc, offHandWeapon, false, { isOffhandAttack: true });
+    const seq = AttackEngine.calculateAttackSequence(pc, offHandWeapon, false, {
+      isOffhandAttack: true,
+      smite: pc.isSmiteActive,
+      favoredEnemy: pc.isFavoredEnemyActive,
+      sneakAttack: pc.isSneakAttacking
+    });
     const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
     const hasImprovedCritical = pc.feats && pc.feats.some(f => 
       (f.id === 'improved_critical' || f.id === 'verbesserter_kritischer_treffer') &&
@@ -107,6 +125,12 @@ export function renderEquipmentSlotsHtml(pc, babVal, paPenalty, cePenalty, hasPo
     const doubledCritDisplay = getCritThreatDisplay(offHandWeapon.crit, isDoubleThreat);
     const dmgDice = pc.getWeaponDamageDice(offHandWeapon) || '1w6';
     const extraDamage = offHandWeapon.extraDamage ? ` + ${offHandWeapon.extraDamage}` : '';
+    const handSelectHtml = (offHandWeapon.grip !== '2H' && !isDoubleWielded) ? `
+      <select class="cinput weapon-hand-select" data-idx="${pc.weapons.indexOf(offHandWeapon)}" style="font-size: 7px; padding: 0 1px; height: 12px; line-height: 1; border-radius: 1px; border: 0.5px solid var(--pb); outline: none; background: white; color: var(--ink); margin-top: 1px;">
+        <option value="main">Haupthand</option>
+        <option value="off" selected>Nebenhand</option>
+      </select>
+    ` : '';
     
     const offhandLabel = isDoubleWielded ? 'Nebenhand (Nebenseite)' : 'Nebenhand';
 
@@ -114,7 +138,10 @@ export function renderEquipmentSlotsHtml(pc, babVal, paPenalty, cePenalty, hasPo
       <button class="unequip-slot-btn offhand-unequip" data-idx="${pc.weapons.indexOf(offHandWeapon)}" style="position:absolute; top:2px; right:4px; border:none; background:transparent; font-size:7.5px; cursor:pointer; color:var(--red); padding:0;" title="Ablegen">✕</button>
       <div style="font-size:6.5px; color:var(--inkl); font-weight:bold; text-transform:uppercase; font-family:'IM Fell English SC', serif; margin-bottom:1px; opacity:0.8;">${offhandLabel}</div>
       <div class="equipped-title-w-${pc.weapons.indexOf(offHandWeapon)}" style="font-family:'Crimson Text',serif; font-size:9.5px; font-weight:bold; color:var(--red); text-shadow:0 0 1px rgba(139,26,26,0.1); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${offHandWeapon.name}">${isDoubleWielded ? offHandWeapon.name + ' (Nebenseite)' : offHandWeapon.name}</div>
-      <div style="font-size:7px; color:var(--inkm); margin:1px 0 3px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;" title="${dmgDice}${extraDamage} • ${doubledCritDisplay}">${dmgDice}${extraDamage} • ${doubledCritDisplay}</div>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 4px; margin: 1px 0 3px;">
+        <div style="font-size:7px; color:var(--inkm); overflow:hidden; white-space:nowrap; text-overflow:ellipsis;" title="${dmgDice}${extraDamage} • ${doubledCritDisplay}">${dmgDice}${extraDamage} • ${doubledCritDisplay}</div>
+        ${handSelectHtml}
+      </div>
       <div style="display:flex; gap:2px; width:100%; justify-content:center; align-items:center;">
         <button class="xbtn xbtn-dmg roll-atk-btn" ${pc.isTotalDefense ? 'disabled' : ''} style="padding:1px 2px; font-size:6.5px; font-weight:bold; flex:1; white-space:nowrap; height:15px; line-height:1; ${pc.isTotalDefense ? 'opacity:0.4; cursor:not-allowed;' : ''}" title="Angriff ausführen">
           ATK (${formatMod(stdAtkObj.atkTotal)}) 🎲
@@ -224,25 +251,13 @@ export function bindEquipmentSlotsEvents(offense, pc, babVal) {
     if (dmgBtn) {
       dmgBtn.onclick = (e) => {
         if (pc.isTotalDefense) return;
-        const seq = AttackEngine.calculateAttackSequence(pc, mainHandWeapon, false);
-        const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
-        
-        let finalDice = pc.getWeaponDamageDice(mainHandWeapon) || '1w6';
-        if (mainHandWeapon.extraDamage) {
-          finalDice = `${finalDice} + ${mainHandWeapon.extraDamage}`;
-          if (!stdAtkObj.dmgBreakdown.some(d => d.label === 'Zusatz-Schaden')) {
-            stdAtkObj.dmgBreakdown.push({ label: 'Zusatz-Schaden', value: mainHandWeapon.extraDamage });
-          }
-        }
-        
-        const rogueClass = Array.isArray(pc.classes) ? pc.classes.find(x => x.classType === 'rogue') : null;
-        if (rogueClass && pc.isSneakAttacking) {
-          const saDiceCount = Math.floor((rogueClass.level + 1) / 2);
-          finalDice = `${finalDice} + ${saDiceCount}W6`;
-          stdAtkObj.dmgBreakdown.push({ label: `Hinterhältiger Angriff (${saDiceCount}W6)`, value: 0 });
-        }
-
-        showRollBreakdown(`${mainHandWeapon.name || 'Waffe'} (Schaden)`, finalDice, stdAtkObj.dmgBreakdown, e);
+        const seq = AttackEngine.calculateAttackSequence(pc, mainHandWeapon, false, {
+          smite: pc.isSmiteActive,
+          favoredEnemy: pc.isFavoredEnemyActive,
+          sneakAttack: pc.isSneakAttacking
+        });
+        const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [], damageDice: '1w6' };
+        showRollBreakdown(`${mainHandWeapon.name || 'Waffe'} (Schaden)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e);
       };
     }
   }
@@ -261,27 +276,42 @@ export function bindEquipmentSlotsEvents(offense, pc, babVal) {
     if (dmgBtn) {
       dmgBtn.onclick = (e) => {
         if (pc.isTotalDefense) return;
-        const seq = AttackEngine.calculateAttackSequence(pc, offHandWeapon, false, { isOffhandAttack: true });
-        const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
-        
-        let finalDice = pc.getWeaponDamageDice(offHandWeapon) || '1w6';
-        if (offHandWeapon.extraDamage) {
-          finalDice = `${finalDice} + ${offHandWeapon.extraDamage}`;
-          if (!stdAtkObj.dmgBreakdown.some(d => d.label === 'Zusatz-Schaden')) {
-            stdAtkObj.dmgBreakdown.push({ label: 'Zusatz-Schaden', value: offHandWeapon.extraDamage });
-          }
-        }
-
-        const rogueClass = Array.isArray(pc.classes) ? pc.classes.find(x => x.classType === 'rogue') : null;
-        if (rogueClass && pc.isSneakAttacking) {
-          const saDiceCount = Math.floor((rogueClass.level + 1) / 2);
-          finalDice = `${finalDice} + ${saDiceCount}W6`;
-          stdAtkObj.dmgBreakdown.push({ label: `Hinterhältiger Angriff (${saDiceCount}W6)`, value: 0 });
-        }
+        const seq = AttackEngine.calculateAttackSequence(pc, offHandWeapon, false, {
+          isOffhandAttack: true,
+          smite: pc.isSmiteActive,
+          favoredEnemy: pc.isFavoredEnemyActive,
+          sneakAttack: pc.isSneakAttacking
+        });
+        const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [], damageDice: '1w6' };
 
         const offhandName = isDoubleWielded ? `${offHandWeapon.name || 'Waffe'} (Nebenseite)` : (offHandWeapon.name || 'Zweitwaffe');
-        showRollBreakdown(`${offhandName} (Schaden)`, finalDice, stdAtkObj.dmgBreakdown, e);
+        showRollBreakdown(`${offhandName} (Schaden)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e);
       };
     }
   }
+
+  // Bind Hand Selection change events
+  offense.querySelectorAll('.weapon-hand-select').forEach(select => {
+    select.onchange = (e) => {
+      const idx = parseInt(select.dataset.idx);
+      const newHand = e.target.value;
+      const targetWeapon = pc.weapons[idx];
+      if (!targetWeapon) return;
+      
+      const oldHand = targetWeapon.hand || 'main';
+      if (oldHand === newHand) return;
+      
+      // Find if another weapon is equipped in the new slot
+      const otherWeapon = pc.weapons.find((w, i) => w.isEquipped && i !== idx && (w.hand === newHand || (newHand === 'main' && w.hand !== 'off')));
+      const otherIdx = otherWeapon ? pc.weapons.indexOf(otherWeapon) : null;
+      
+      CombatState.updatePCBatch(freshPC => {
+        freshPC.weapons[idx].hand = newHand;
+        if (otherIdx !== null) {
+          freshPC.weapons[otherIdx].hand = oldHand;
+        }
+      });
+      uiRegistry.renderPlayerScreen();
+    };
+  });
 }

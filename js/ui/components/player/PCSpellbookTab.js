@@ -141,7 +141,7 @@ export function renderSpellbookTab(pc) {
       <div style="font-family:'IM Fell English SC', serif; font-size:8px; color:var(--red); padding-bottom:2px; border-bottom:0.5px solid rgba(200,169,110,0.2); margin-bottom: 5px; font-weight: bold;">
         📖 Zauberbibliothek (Gelernte Zauber)
       </div>
-      <div style="display: flex; flex-direction: column; gap: 6px; max-height: 400px; overflow-y: auto; padding-right: 2px;" class="pc-scroll-spellbook">
+      <div style="display: flex; flex-direction: column; gap: 6px; max-height: 250px; overflow-y: auto; padding-right: 2px;" class="pc-scroll-spellbook">
         ${Object.keys(grouped).map(lvl => {
           const levelSpells = grouped[lvl];
           return `
@@ -234,7 +234,7 @@ export function renderPreparedSlotsArea(pc) {
           <button class="btn clear-prepared-spells-btn" style="font-size: 7px; padding: 1px 4px; height: 14px; line-height: 1; border-color: var(--red); background: rgba(139,26,26,0.05); color: var(--red); font-weight: bold; cursor: pointer;" title="Alle vorbereiteten Zauber entfernen">🧹 Leeren</button>
         </div>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 5px; max-height: 400px; overflow-y: auto; padding-right: 2px;" class="pc-scroll-spellbook">
+      <div style="display: flex; flex-direction: column; gap: 5px; max-height: 250px; overflow-y: auto; padding-right: 2px;" class="pc-scroll-spellbook">
         ${levelsToRender.map(lvl => {
           const max = pc.spellSlots[lvl]?.max || 0;
           if (max === 0) return '';

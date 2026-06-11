@@ -83,12 +83,13 @@ export function renderPCSkills(pc) {
     const ranksExceeded = ranks > maxRanks;
     const totalMod = pc.getSkillModifier(key);
     const attrMod = pc.getAttributeMod(skill.abl);
+    const isTrainedOnlyDisabled = skill.trainedOnly && ranks === 0;
     
     return `
-      <div class="skill-row" style="display: flex; align-items: center; justify-content: space-between; padding: 3px 4px; border-bottom: 0.5px solid rgba(200, 169, 110, 0.15); font-size: 8px;">
+      <div class="skill-row" style="display: flex; align-items: center; justify-content: space-between; padding: 3px 4px; border-bottom: 0.5px solid rgba(200, 169, 110, 0.15); font-size: 8px; ${isTrainedOnlyDisabled ? 'opacity: 0.5;' : ''}">
         <!-- Left: Dice Roll & Info -->
         <div style="display: flex; align-items: center; gap: 3.5px; flex: 1.2; min-width: 0;">
-          <button class="xbtn roll-skill-btn" data-key="${key}" style="border: none; background: transparent; padding: 0 2px; cursor: pointer; text-align: left; font-family: 'Crimson Text', serif; font-size: 9.5px; font-weight: bold; color: var(--red); display: flex; align-items: center; gap: 2.5px;" title="Fertigkeitswurf für ${skill.nameDe} ausführen">
+          <button class="xbtn roll-skill-btn" data-key="${key}" ${isTrainedOnlyDisabled ? 'disabled' : ''} style="border: none; background: transparent; padding: 0 2px; cursor: ${isTrainedOnlyDisabled ? 'not-allowed' : 'pointer'}; text-align: left; font-family: 'Crimson Text', serif; font-size: 9.5px; font-weight: bold; color: var(--red); display: flex; align-items: center; gap: 2.5px; ${isTrainedOnlyDisabled ? 'opacity: 0.4;' : ''}" title="${isTrainedOnlyDisabled ? 'Geübt (ungeübt nicht nutzbar)' : `Fertigkeitswurf für ${skill.nameDe} ausführen`}">
             🎲 <span style="border-bottom: 0.5px dashed rgba(139, 26, 26, 0.4); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 110px;">${skill.nameDe}</span>
           </button>
           <span style="font-size: 6.5px; color: var(--inkl); font-style: italic; flex-shrink: 0;">(${skill.abl.toUpperCase()})</span>
@@ -219,7 +220,13 @@ function bindSkillsEvents(pc, container) {
     if (ranksInp) {
       const key = ranksInp.dataset.key;
       let val = parseFloat(e.target.value);
-      if (isNaN(val) || val < 0) val = 0;
+      if (e.target.value === '' || isNaN(val) || val < 0) {
+        val = 0;
+      }
+      const maxRanks = CombatRules.getPCMaxRanks(key, pc);
+      if (val > maxRanks) {
+        val = maxRanks;
+      }
 
       CombatState.updatePCBatch(freshPC => {
         if (!freshPC.skills) freshPC.skills = {};

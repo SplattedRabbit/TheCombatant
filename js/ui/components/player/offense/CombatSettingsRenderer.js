@@ -13,6 +13,11 @@ import { uiRegistry } from '../../../ui-shared.js';
 import { showCustomAlert } from '../../dialogs.js';
 
 export function renderCombatSettingsHtml(pc, babVal, paPenalty, cePenalty, hasPowerAttack, hasCombatExpertise) {
+  const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
+  const paladinLvl = (activeClasses.find(c => c.classType === 'paladin') || {}).level || 0;
+  const rangerLvl = (activeClasses.find(c => c.classType === 'ranger') || {}).level || 0;
+  const rogueLvl = (activeClasses.find(c => c.classType === 'rogue') || {}).level || 0;
+
   return `
       <!-- Combat Settings -->
       ${hasPowerAttack ? `
@@ -51,6 +56,30 @@ export function renderCombatSettingsHtml(pc, babVal, paPenalty, cePenalty, hasPo
           🛡️ Volle Abwehr (+RK / keine Angr.)
         </label>
       </div>
+
+      <!-- Class Specific Combat Toggles -->
+      ${(paladinLvl >= 1 || rangerLvl >= 1 || rogueLvl >= 1) ? `
+        <div style="background: rgba(200, 169, 110, 0.05); border: 0.5px solid var(--pb); border-radius: 3px; padding: 4px 8px; margin-bottom: 4px; display: flex; gap: 10px; align-items: center; font-family: 'IM Fell English SC', serif; font-size: 8px; justify-content: flex-start; flex-wrap: wrap;">
+          ${paladinLvl >= 1 ? `
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer; color: var(--red); margin: 0; font-weight: bold;">
+              <input type="checkbox" class="smite-toggle-input" ${pc.isSmiteActive ? 'checked' : ''} style="margin: 0; width: 10px; height: 10px;">
+              🌟 Böses niederstrecken (Smite)
+            </label>
+          ` : ''}
+          ${rangerLvl >= 1 ? `
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer; color: var(--inkm); margin: 0; font-weight: bold;">
+              <input type="checkbox" class="favored-enemy-toggle-input" ${pc.isFavoredEnemyActive ? 'checked' : ''} style="margin: 0; width: 10px; height: 10px;">
+              🏹 Gegen Erzfeind (+X Schaden)
+            </label>
+          ` : ''}
+          ${rogueLvl >= 1 ? `
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer; color: var(--inkm); margin: 0; font-weight: bold;">
+              <input type="checkbox" class="sneak-attack-toggle-input" ${pc.isSneakAttacking ? 'checked' : ''} style="margin: 0; width: 10px; height: 10px;">
+              🗡️ Hinterhältiger Angriff
+            </label>
+          ` : ''}
+        </div>
+      ` : ''}
 
       ${pc.isTotalDefense ? `
         <div style="background: rgba(139, 26, 26, 0.08); border: 0.5px solid var(--red); border-radius: 3px; padding: 4px 8px; margin-bottom: 4px; text-align: center; color: var(--red); font-family: 'IM Fell English SC', serif; font-size: 8px; font-weight: bold;">
@@ -169,6 +198,30 @@ export function bindCombatSettingsEvents(offense, pc, babVal, hasPowerAttack, ha
   if (tdInput) {
     tdInput.onchange = (e) => {
       CombatState.togglePCTotalDefense(e.target.checked);
+      uiRegistry.renderPlayerScreen();
+    };
+  }
+
+  const smiteInput = offense.querySelector('.smite-toggle-input');
+  if (smiteInput) {
+    smiteInput.onchange = (e) => {
+      CombatState.updatePCField('isSmiteActive', e.target.checked);
+      uiRegistry.renderPlayerScreen();
+    };
+  }
+
+  const feInput = offense.querySelector('.favored-enemy-toggle-input');
+  if (feInput) {
+    feInput.onchange = (e) => {
+      CombatState.updatePCField('isFavoredEnemyActive', e.target.checked);
+      uiRegistry.renderPlayerScreen();
+    };
+  }
+
+  const saInput = offense.querySelector('.sneak-attack-toggle-input');
+  if (saInput) {
+    saInput.onchange = (e) => {
+      CombatState.updatePCField('isSneakAttacking', e.target.checked);
       uiRegistry.renderPlayerScreen();
     };
   }

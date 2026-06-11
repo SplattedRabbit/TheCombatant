@@ -141,6 +141,8 @@ export class Combatant {
 
     this.isRaging = !!p.isRaging;
     this.isSneakAttacking = !!p.isSneakAttacking;
+    this.isSmiteActive = !!p.isSmiteActive;
+    this.isFavoredEnemyActive = !!p.isFavoredEnemyActive;
     this.isDefensiveFighting = !!p.isDefensiveFighting;
     this.isTotalDefense = !!p.isTotalDefense;
     this.isFlurrying = !!p.isFlurrying;
@@ -321,6 +323,8 @@ export class Combatant {
       activeBuffs: this.activeBuffs,
       isRaging: this.isRaging,
       isSneakAttacking: this.isSneakAttacking,
+      isSmiteActive: this.isSmiteActive,
+      isFavoredEnemyActive: this.isFavoredEnemyActive,
       isDefensiveFighting: this.isDefensiveFighting,
       isTotalDefense: this.isTotalDefense,
       isFlurrying: this.isFlurrying,
@@ -348,6 +352,14 @@ export class Combatant {
     };
   }
 
+  getSizeModifier() {
+    // @feature:wildshape — Large Brown Bear has size modifier -1
+    if (this.activeShape === 'bear') {
+      return -1;
+    }
+    return 0;
+  }
+
   getFavoredEnemyBonus() {
     return getFavoredEnemyBonus(this);
   }
@@ -361,11 +373,15 @@ export class Combatant {
   }
 
   getEquippedArmor() {
+    // @feature:wildshape — Armor is suppressed in wild shape
+    if (this.activeShape !== 'none') return null;
     if (!Array.isArray(this.armors)) return null;
     return this.armors.find(a => a.isEquipped && !a.isShield) || null;
   }
 
   getEquippedShield() {
+    // @feature:wildshape — Shield is suppressed in wild shape
+    if (this.activeShape !== 'none') return null;
     if (!Array.isArray(this.armors)) return null;
     return this.armors.find(a => a.isEquipped && a.isShield) || null;
   }

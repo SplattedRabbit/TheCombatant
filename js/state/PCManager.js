@@ -13,7 +13,8 @@ import { Stat, createCombatant, Weapon, Armor, Item } from '../models/model-core
 import { BABCalculator } from '../rules/BABCalculator.js';
 import { SaveCalculator } from '../rules/SaveCalculator.js';
 import { SpellSlotCalculator } from '../rules/SpellSlotCalculator.js';
-import { checkFeatPrerequisites, getFeatIdsByClassPrereq } from '../data/feats-data.js';
+import { CombatFeats, checkFeatPrerequisites, getFeatIdsByClassPrereq } from '../data/feats-data.js';
+import { CombatRules } from '../rules.js';
 
 // Import Class Rules
 import { BarbarianRules } from '../rules/classes/BarbarianRules.js';
@@ -150,11 +151,11 @@ export function recalculatePCStats(pc) {
     pc.classType = 'custom';
   }
 
-  recalculateDailyAbilities(pc);
-
   if (typeof pc.rebuildStatModifiers === 'function') {
     pc.rebuildStatModifiers();
   }
+
+  recalculateDailyAbilities(pc);
 }
 
 export function syncPCToHost() {
@@ -464,10 +465,34 @@ export function resetDailyResources() {
 }
 
 export function addPCFeat(featId, option = '') {
-  // Bug 2 Fix: validate prerequisites via the rules layer before adding
   const pc = getActivePC();
   if (!pc) return { success: false, error: 'Kein aktiver Charakter.' };
 
+  // 1. Check duplicate feat (Bug #18)
+  const featDef = CombatFeats.REGISTRY[featId];
+  if (featDef) {
+    const hasFeat = Array.isArray(pc.feats) && pc.feats.some(f => f.id === featId);
+    if (hasFeat) {
+      const isStackable = featDef.hasOption || (featDef.specialRaw && featDef.specialRaw.toLowerCase().includes('multiple times'));
+      if (!isStackable) {
+        return { success: false, error: `Das Talent "${featDef.nameDe}" wurde bereits erlernt und kann nicht mehrfach gewählt werden.` };
+      }
+      
+      const hasExactOption = pc.feats.some(f => f.id === featId && f.option === option);
+      if (hasExactOption) {
+        return { success: false, error: `Das Talent "${featDef.nameDe} (${option})" wurde bereits erlernt.` };
+      }
+    }
+  }
+
+  // 2. Check maximum feats limit (Bug #13)
+  const maxFeats = CombatRules.calculateMaxFeats(pc);
+  const currentFeatsCount = Array.isArray(pc.feats) ? pc.feats.length : 0;
+  if (currentFeatsCount >= maxFeats) {
+    return { success: false, error: `Talentlimit erreicht (${currentFeatsCount} / ${maxFeats}). Du musst erst ein Talent verlernen.` };
+  }
+
+  // 3. Check prerequisites
   const { met, unmetDescs } = checkFeatPrerequisites(featId, pc);
   if (!met) {
     return { success: false, error: `Voraussetzungen nicht erfüllt:\n• ${unmetDescs.join('\n• ')}` };

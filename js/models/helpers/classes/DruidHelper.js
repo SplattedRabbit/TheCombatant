@@ -24,6 +24,9 @@ export function enterShape(pc, shapeName) {
     acFlat: pc.acFlat.base
   };
 
+  const getMod = (val) => Math.floor((val - 10) / 2);
+  const oldConMod = getMod(pc.con.getValue());
+
   if (shapeName === "wolf") {
     pc.str.base = 13;
     pc.dex.base = 15;
@@ -37,14 +40,14 @@ export function enterShape(pc, shapeName) {
     pc.con.base = 15;
     pc.ac.base = 15;
     pc.acTouch.base = 14;
-    pc.acFlat.base = 12;
+    pc.acFlat.base = 11;
   } else if (shapeName === "bear") {
     pc.str.base = 27;
     pc.dex.base = 13;
     pc.con.base = 19;
-    pc.ac.base = 15;
+    pc.ac.base = 16;
     pc.acTouch.base = 11;
-    pc.acFlat.base = 14;
+    pc.acFlat.base = 15;
   } else {
     pc.originalStats = null;
     return;
@@ -52,6 +55,15 @@ export function enterShape(pc, shapeName) {
 
   pc.activeShape = shapeName;
   pc.rebuildStatModifiers();
+
+  const newConMod = getMod(pc.con.getValue());
+  const dConMod = newConMod - oldConMod;
+  if (dConMod !== 0) {
+    const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
+    const totalLevel = activeClasses.reduce((sum, c) => sum + (c.level || 0), 0) || 1;
+    pc.hp = Math.max(1, pc.hp + dConMod * totalLevel);
+    pc.maxHP = Math.max(1, pc.maxHP + dConMod * totalLevel);
+  }
 }
 
 export function exitShape(pc) {
@@ -60,6 +72,9 @@ export function exitShape(pc) {
     pc.originalStats = null;
     return;
   }
+
+  const getMod = (val) => Math.floor((val - 10) / 2);
+  const oldConMod = getMod(pc.con.getValue());
 
   pc.str.base = pc.originalStats.str;
   pc.dex.base = pc.originalStats.dex;
@@ -71,4 +86,13 @@ export function exitShape(pc) {
   pc.activeShape = "none";
   pc.originalStats = null;
   pc.rebuildStatModifiers();
+
+  const newConMod = getMod(pc.con.getValue());
+  const dConMod = newConMod - oldConMod;
+  if (dConMod !== 0) {
+    const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
+    const totalLevel = activeClasses.reduce((sum, c) => sum + (c.level || 0), 0) || 1;
+    pc.hp = Math.max(1, pc.hp + dConMod * totalLevel);
+    pc.maxHP = Math.max(1, pc.maxHP + dConMod * totalLevel);
+  }
 }

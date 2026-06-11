@@ -1,3 +1,12 @@
+/**
+ * @module    FeatScrollDialog
+ * @summary   Pergament-Dialog für Talent-Details: Voraussetzungsprüfung, Optionsauswahl, Erlernen/Verlernen mit Endlosschleifen-Schutz.
+ * @exports   showFeatScrollDialog
+ * @reads     pc.feats, pc.classes, pc.str, pc.dex etc. (via checkPrerequisites)
+ * @stateOps  CombatState.addPCFeat, CombatState.removePCFeat
+ * @depends   CombatState, ui-shared, feats-data, BaseDialogs, PCFeatsTab
+ * @notHere   Talent-Limit-Prüfung → PCManager.js (addPCFeat) | Kompendium-Rendering → PCFeatsTab.js
+ */
 import { CombatState } from '../../state.js';
 import { uiRegistry } from '../ui-shared.js';
 import { CombatFeats } from '../../data/feats-data.js';
@@ -61,12 +70,17 @@ export function showFeatScrollDialog(feat, pc, isLearned, option = '') {
       optionsList = ['Klettern (Climb)', 'Springen (Jump)', 'Schwimmen (Swim)', 'Akrobatik (Tumble)', 'Reiten (Ride)', 'Verstecken (Hide)', 'Leise bewegen (Move Silently)', 'Lauschen (Listen)', 'Entdecken (Spot)', 'Suchen (Search)', 'Diplomatie (Diplomacy)', 'Bluffen (Bluff)', 'Konzentration (Concentration)', 'Zauberkunde (Spellcraft)'];
     }
 
-    const selectOptions = optionsList.map(o => `<option value="${o}">${o}</option>`).join('');
+    // Filter out options already learned by the player for this feat ID (Bug #18)
+    const learnedOptions = learnedInstances.map(inst => inst.option).filter(Boolean);
+    const filteredOptions = optionsList.filter(o => !learnedOptions.includes(o));
+    const selectOptions = filteredOptions.length > 0 
+      ? filteredOptions.map(o => `<option value="${o}">${o}</option>`).join('')
+      : '<option value="" disabled>-- Alle Optionen bereits erlernt --</option>';
     
     optionSelectionHtml = `
       <div style="margin-top: 6px; display:flex; flex-direction:column; gap:2px; font-family:'Crimson Text', serif; font-size:9.5px; font-weight:bold;">
         <label for="featOptionSelect" style="color:#5a3a1a;">Spezifische Auswahl für dieses Talent:</label>
-        <select id="featOptionSelect" class="cinput" style="font-size:9px; height:18px; padding: 0 2px;">
+        <select id="featOptionSelect" class="cinput" style="width: 100%; font-size:9px; height:18px; padding: 0 2px; box-sizing: border-box;">
           ${selectOptions}
         </select>
       </div>
@@ -292,7 +306,9 @@ export function showFeatScrollDialog(feat, pc, isLearned, option = '') {
 
   const unlearnBtn = overlay.querySelector('.btn-unlearn-feat');
   if (unlearnBtn) {
-    unlearnBtn.onclick = () => {
+    unlearnBtn.onclick = (e) => {
+      e.stopPropagation();
+      e.preventDefault();
       CombatState.removePCFeat(feat.id, option);
       dismiss();
       uiRegistry.renderPlayerScreen();
@@ -300,7 +316,9 @@ export function showFeatScrollDialog(feat, pc, isLearned, option = '') {
   }
 
   overlay.querySelectorAll('.btn-remove-instance').forEach(btn => {
-    btn.onclick = () => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      e.preventDefault();
       const fId = btn.dataset.id;
       const opt = btn.dataset.option || '';
       CombatState.removePCFeat(fId, opt);

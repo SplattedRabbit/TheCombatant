@@ -1,3 +1,12 @@
+/**
+ * @module    PCResources
+ * @summary   Rendert Zauberbuch-, Kompendium- und Klassen-Features-Tab; orchestriert das Strategy-Pattern der ClassFeatureComponents.
+ * @exports   renderPCSpells, renderPCFeatures, renderPCResources
+ * @reads     pc.classes, pc.spellSlots, pc.learnedSpells, pc.dailyAbilities, pc.preparedSpells
+ * @stateOps  CombatState.updatePCBatch, CombatState.saveToStorage, CombatState.resetDailyResources
+ * @depends   CombatState, ClassFeature-Komponenten, PCSpellbookTab, PCCompendiumTab, PCSpellDialogs, dialogs
+ * @notHere   Slot-Berechnung → SpellSlotCalculator.js | Regeln → rules.js | Zauber-Daten → spells.js
+ */
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { CompanionSheet } from '../CompanionSheet.js';
@@ -18,6 +27,7 @@ import { WizardFeatures } from '../class-features/WizardFeatures.js';
 import { SorcererFeatures } from '../class-features/SorcererFeatures.js';
 
 import { renderSpellbookTab, findSpell, renderPreparedSlotsArea } from './PCSpellbookTab.js';
+import { CombatRules } from '../../../rules.js';
 import { getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../../../spells.js';
 import { 
   renderCompendiumTab,
@@ -536,6 +546,13 @@ function _handleSpellListClick(pc, e) {
             );
             return true;
           }
+        }
+      // Check spells known limit (Bug #8)
+      if (spell) {
+        const check = CombatRules.checkSpellKnownLimit(activePC, spell, (k) => findSpell(activePC, k));
+        if (!check.success) {
+          showCustomAlert("Zauberlimit überschritten", check.error || "Du kannst keine weiteren bekannten Zauber dieses Grades lernen.");
+          return true;
         }
       }
     }

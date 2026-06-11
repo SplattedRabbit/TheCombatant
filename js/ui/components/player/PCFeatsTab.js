@@ -11,6 +11,7 @@ import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { CombatFeats } from '../../../data/feats-data.js';
 import { showCustomAlert, showFeatScrollDialog } from '../dialogs.js';
+import { CombatRules } from '../../../rules.js';
 
 // Global state for search and filter within the tab
 let featSearchQuery = '';
@@ -170,6 +171,7 @@ export function renderPCFeats(pc) {
   const hasWizard = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === 'wizard');
   const hasMonk = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === 'monk');
   const activeFeats = Array.isArray(pc.feats) ? pc.feats : [];
+  const maxFeats = CombatRules.calculateMaxFeats(pc);
 
   const legendHtml = _renderFeatsLegendHtml(hasFighter, hasWizard, hasMonk);
   const activeFeatsHtml = _renderLearnedFeatsListHtml(pc, activeFeats, hasFighter, hasWizard, hasMonk);
@@ -183,7 +185,7 @@ export function renderPCFeats(pc) {
       <!-- Left Column: Active Feats (40%) -->
       <div style="width: 40%; display:flex; flex-direction:column; gap:4px; border-right: 0.5px solid var(--pb); padding-right: 8px;">
         <h3 style="font-family:'IM Fell English SC', serif; font-size: 11px; color: var(--red); border-bottom: 1px solid var(--pb); padding-bottom: 2px; margin: 0 0 4px 0; font-weight:bold;">
-          🎓 Erlernte Talente (${activeFeats.length})
+          🎓 Erlernte Talente (${activeFeats.length} / ${maxFeats})
         </h3>
         <div class="active-feats-list" style="flex:1; overflow-y:auto; max-height:360px; box-sizing:border-box;">
           ${activeFeatsHtml}
@@ -194,7 +196,7 @@ export function renderPCFeats(pc) {
       <div style="width: 60%; display:flex; flex-direction:column; gap:4px;">
         <!-- Filters Header -->
         <div style="display:flex; gap:4px; margin-bottom: 4px;">
-          <input type="text" id="compendiumFeatSearch" value="${featSearchQuery}" placeholder="Suchen..." class="cinput" style="flex:1.5; font-size: 8px; height: 16px;">
+          <input type="text" id="compendiumFeatSearch" value="${featSearchQuery}" placeholder="Suchen..." class="cinput" style="flex:1; font-size: 8px; height: 16px;">
           <select id="compendiumFeatCategory" class="cinput" style="flex:1; font-size: 8px; height: 16px; padding: 0 1px;">
             <option value="all" ${featCategoryFilter === 'all' ? 'selected' : ''}>Alle Klassen</option>
             <option value="general" ${featCategoryFilter === 'general' ? 'selected' : ''}>Allgemein</option>
@@ -282,7 +284,18 @@ function _renderLearnedFeatsListHtml(pc, activeFeats, hasFighter, hasWizard, has
 
 function _renderCompendiumListHtml(pc, activeFeats, hasFighter, hasWizard, hasMonk) {
   const compList = getCompendiumFeatList(pc);
+  const maxFeats = CombatRules.calculateMaxFeats(pc);
+  const isLimitReached = activeFeats.length >= maxFeats;
   
+  let limitWarningHtml = '';
+  if (isLimitReached) {
+    limitWarningHtml = `
+      <div style="background: rgba(139, 26, 26, 0.08); border: 0.5px solid var(--red); border-radius: 2px; padding: 4px; margin-bottom: 4px; font-family: 'Crimson Text', serif; font-size: 8px; color: var(--red); text-align: center; font-weight: bold;">
+        ⚠️ Talentlimit erreicht (${activeFeats.length} / ${maxFeats}). Du musst erst ein Talent verlernen, um ein neues auszuwählen.
+      </div>
+    `;
+  }
+
   // Apply filtering
   const filteredCompList = compList.filter(item => {
     if (featSearchQuery) {
@@ -305,7 +318,7 @@ function _renderCompendiumListHtml(pc, activeFeats, hasFighter, hasWizard, hasMo
     `;
   }
 
-  return filteredCompList.map(item => {
+  return limitWarningHtml + filteredCompList.map(item => {
     const feat = item.feat;
     const depth = item.depth;
     
@@ -317,7 +330,7 @@ function _renderCompendiumListHtml(pc, activeFeats, hasFighter, hasWizard, hasMo
                          (bonusClass === 'wizard' && hasWizard) ||
                          (bonusClass === 'monk' && hasMonk);
 
-    const isBlocked = !met && !isAlreadyLearned;
+    const isBlocked = (!met || isLimitReached) && !isAlreadyLearned;
     
     let borderStyle = isClassBonus ? 'border: 1px solid #2a6a2a; border-left: 3.5px solid #2a6a2a;' : 'border: 0.5px solid var(--pb);';
     let backgroundStyle = isClassBonus ? 'background: rgba(42, 106, 42, 0.04);' : 'background: transparent;';

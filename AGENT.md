@@ -195,4 +195,4 @@ Beantworte kurz diese 4 Fragen — wenn eine "Nein" ist, nachbessern:
 | > 900Z    | Split bei nächster Gelegenheit — Issue in Bugtracking.md   |
 
 Aktuell zu groß (Backlog):
-- Keine (alle Monolithen erfolgreich modularisiert)
+- `js/data/feats-data.js` (~1154 Zeilen) — Split bei nächster größerer Talent-Feature-Erweiterung empfohlen (z.B. in `feats-combat.js`, `feats-metamagic.js`, `feats-general.js`)

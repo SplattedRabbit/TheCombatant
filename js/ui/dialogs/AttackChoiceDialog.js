@@ -1,5 +1,15 @@
+/**
+ * @module    AttackChoiceDialog
+ * @summary   Dialog zur Angriffsauswahl (Standard/Voller Angriff) mit synchronisierten Checkboxen für Smite, Erzfeind und Hinterhältiger Angriff.
+ * @exports   showAttackChoiceDialog
+ * @reads     pc.classes, pc.isSmiteActive, pc.isFavoredEnemyActive, pc.isSneakAttacking, pc.feats
+ * @stateOps  CombatState.updatePCField (für Toggle-Sync)
+ * @depends   AttackEngine, Weapon, CombatState
+ * @notHere   Schadensberechnung → AttackEngine.js | Schaden-Button-Handler → EquipmentSlotsRenderer.js
+ */
 import { AttackEngine } from '../../rules/AttackEngine.js';
 import { WeaponRegistry, matchesFeatOption, getCritThreatDisplay } from '../../models/Weapon.js';
+import { CombatState } from '../../state.js';
 
 
 export function showAttackChoiceDialog(pc, weapon, event, options = {}) {
@@ -29,9 +39,9 @@ export function showAttackChoiceDialog(pc, weapon, event, options = {}) {
   const isRanged = weapon.grip === 'rng';
   const isMelee = !isRanged;
 
-  let smiteActive = false;
-  let favoredEnemyActive = false;
-  let sneakActive = false;
+  let smiteActive = !!pc.isSmiteActive;
+  let favoredEnemyActive = !!pc.isFavoredEnemyActive;
+  let sneakActive = !!pc.isSneakAttacking;
 
   const formatMod = (n) => (n >= 0 ? '+' : '') + n;
 
@@ -63,19 +73,19 @@ export function showAttackChoiceDialog(pc, weapon, event, options = {}) {
         <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:10px; padding: 4px 8px; background: rgba(200,169,110,0.05); border: 0.5px solid rgba(200,169,110,0.2); border-radius:3px; text-align:left; font-size:8px; font-family:'Crimson Text', serif;">
           ${hasPaladin && isMelee ? `
             <label style="display:flex; align-items:center; gap:4px; cursor:pointer; margin:0; font-weight:bold; color:var(--red);">
-              <input type="checkbox" class="dialog-smite-toggle" style="margin:0; width:11px; height:11px;">
+              <input type="checkbox" class="dialog-smite-toggle" ${smiteActive ? 'checked' : ''} style="margin:0; width:11px; height:11px;">
                Böses niederstrecken (+${Math.max(0, pc.getAttributeMod('cha'))} Angr. / +${paladinClass.level} Schd.)
             </label>
           ` : ''}
           ${favoredEnemyBonus > 0 ? `
             <label style="display:flex; align-items:center; gap:4px; cursor:pointer; margin:0; font-weight:bold; color:#1a4a1a;">
-              <input type="checkbox" class="dialog-fe-toggle" style="margin:0; width:11px; height:11px;">
+              <input type="checkbox" class="dialog-fe-toggle" ${favoredEnemyActive ? 'checked' : ''} style="margin:0; width:11px; height:11px;">
               Gegen Erzfeind (+${favoredEnemyBonus} Schaden)
             </label>
           ` : ''}
           ${sneakAttackDice > 0 ? `
             <label style="display:flex; align-items:center; gap:4px; cursor:pointer; margin:0; font-weight:bold; color:#a0522d;">
-              <input type="checkbox" class="dialog-sneak-toggle" style="margin:0; width:11px; height:11px;">
+              <input type="checkbox" class="dialog-sneak-toggle" ${sneakActive ? 'checked' : ''} style="margin:0; width:11px; height:11px;">
               Hinterhältiger Angriff (+${sneakAttackDice}W6 Schaden)
             </label>
           ` : ''}
@@ -316,6 +326,7 @@ export function showAttackChoiceDialog(pc, weapon, event, options = {}) {
   if (smiteToggle) {
     smiteToggle.onchange = (e) => {
       smiteActive = e.target.checked;
+      CombatState.updatePCField('isSmiteActive', smiteActive);
       updateView();
     };
   }
@@ -324,6 +335,7 @@ export function showAttackChoiceDialog(pc, weapon, event, options = {}) {
   if (feToggle) {
     feToggle.onchange = (e) => {
       favoredEnemyActive = e.target.checked;
+      CombatState.updatePCField('isFavoredEnemyActive', favoredEnemyActive);
       updateView();
     };
   }
@@ -332,6 +344,7 @@ export function showAttackChoiceDialog(pc, weapon, event, options = {}) {
   if (sneakToggle) {
     sneakToggle.onchange = (e) => {
       sneakActive = e.target.checked;
+      CombatState.updatePCField('isSneakAttacking', sneakActive);
       updateView();
     };
   }

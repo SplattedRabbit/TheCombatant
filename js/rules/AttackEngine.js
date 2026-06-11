@@ -192,6 +192,12 @@ function calculateGeneralAtkModifiers(ctx) {
     }
   }
 
+  const sizeMod = (typeof ctx.pc.getSizeModifier === 'function') ? ctx.pc.getSizeModifier() : 0;
+  if (sizeMod !== 0) {
+    generalAtkMod += sizeMod;
+    generalAtkBreakdown.push({ label: 'Größenmodifikator', value: sizeMod });
+  }
+
   return { generalAtkMod, generalAtkBreakdown };
 }
 

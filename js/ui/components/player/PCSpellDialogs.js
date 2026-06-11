@@ -1,8 +1,18 @@
+/**
+ * @module    PCSpellDialogs
+ * @summary   Dialoge für Zauber-Details (Zauberbuch-Toggle), Zauber-Erstellungs-Wizard und Bannschulen-Bereinigung.
+ * @exports   cleanProhibitedSpells, showSpellDetailsDialog, showSpellCreatorWizard
+ * @reads     pc.learnedSpells, pc.classes, pc.wizardProhibited1/2, pc.customSpells
+ * @stateOps  CombatState.saveToStorage, CombatState.syncPCToHost
+ * @depends   CombatState, dialogs, spells.js, PCSpellbookTab, CombatRules
+ * @notHere   Zauberbuch-UI → PCSpellbookTab.js | Kompendium → PCCompendiumTab.js | Slot-Limit → rules.js
+ */
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { showCustomAlert, showCustomConfirm, showSpellScrollDialog } from '../dialogs.js';
 import { getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../../../spells.js';
 import { findSpell } from './PCSpellbookTab.js';
+import { CombatRules } from '../../../rules.js';
 
 export function cleanProhibitedSpells(pc) {
   if (!pc.classes || !pc.classes.some(c => c.classType === 'wizard')) return;
@@ -18,24 +28,24 @@ export function cleanProhibitedSpells(pc) {
 
   pc.learnedSpells.forEach(key => {
     const spell = findSpell(pc, key);
-    if (!spell) {
-      spellsToKeep.push(key);
-      return;
+    if (spell) {
+      const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
+      if (schoolCode && schoolCode !== 'univ') {
+        if (schoolCode === prob1 || schoolCode === prob2) {
+          removedNames.push(spell.nameDe);
+          return; // Skip/Remove this prohibited spell
+        }
+      }
     }
-    const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
-    if (schoolCode && schoolCode !== 'univ' && (schoolCode === prob1 || schoolCode === prob2)) {
-      removedNames.push(spell.nameDe);
-    } else {
-      spellsToKeep.push(key);
-    }
+    spellsToKeep.push(key);
   });
 
   if (removedNames.length > 0) {
     pc.learnedSpells = spellsToKeep;
     setTimeout(() => {
       showCustomAlert(
-        "Bannschulen-Bereinigung",
-        `Folgende Zauber wurden aus deinem Zauberbuch entfernt, da sie zu deinen gewählten Bannschulen gehören:<br><br>• ${removedNames.join('<br>• ')}`
+        "Bannschulen-Bereinigung ⚠️",
+        `Die folgenden Zauber wurden aus deinem Zauberbuch entfernt, da sie deiner gewählten Bannschule angehören:\n\n• ${removedNames.join('\n• ')}`
       );
     }, 100);
   }
@@ -68,6 +78,13 @@ export function showSpellDetailsDialog(spell, key, pc) {
               return;
             }
           }
+        }
+
+        // Check spells known limit (Bug #8)
+        const check = CombatRules.checkSpellKnownLimit(activePC, spell, (k) => findSpell(activePC, k));
+        if (!check.success) {
+          showCustomAlert("Zauberlimit überschritten", check.error || "Du kannst keine weiteren bekannten Zauber dieses Grades lernen.");
+          return;
         }
       }
       activePC.learnedSpells.push(key);
@@ -154,6 +171,15 @@ export function showSpellCreatorWizard(pc) {
       return;
     }
 
+    const classLevels = [];
+    if (Array.isArray(pc.classes)) {
+      pc.classes.forEach(c => {
+        if (['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger'].includes(c.classType)) {
+          classLevels.push({ class: c.classType, level });
+        }
+      });
+    }
+
     const newSpell = {
       id: 'custom_' + Date.now(),
       nameDe,
@@ -165,8 +191,16 @@ export function showSpellCreatorWizard(pc) {
       duration,
       savingThrow,
       spellResistance,
-      description
+      description,
+      classLevels
     };
+
+    // Check spells known limit (Bug #8)
+    const check = CombatRules.checkSpellKnownLimit(pc, newSpell, (k) => findSpell(pc, k));
+    if (!check.success) {
+      showCustomAlert("Zauberlimit überschritten", check.error || "Du kannst keine weiteren bekannten Zauber dieses Grades lernen.");
+      return;
+    }
 
     if (!Array.isArray(pc.customSpells)) {
       pc.customSpells = [];

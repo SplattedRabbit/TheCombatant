@@ -1,9 +1,21 @@
+/**
+ * @module    SorcererFeatures
+ * @summary   UI-Komponente für Hexenmeister-Klassenfeatures: Spontanzauber-Übersicht, Schule-Hinweise.
+ * @exports   SorcererFeatures
+ * @reads     pc.learnedSpells, pc.classes
+ * @stateOps  Keine direkt — Zauber werden via PCSpellDialogs verwaltet
+ * @depends   ClassFeatureComponent, dialogs
+ * @notHere   Spells-Known-Limit → rules.js (checkSpellKnownLimit) | Spontanzauber-Slots → SpellSlotCalculator.js
+ */
 import { ClassFeatureComponent } from './ClassFeatureComponent.js';
 import { showCustomAlert } from '../dialogs.js';
 
 export class SorcererFeatures extends ClassFeatureComponent {
   constructor() {
     super('sorcerer', 'Hexenmeister', 'Sorcerer');
+    this.castingRulesOpen = false;
+    this.eschewRulesOpen = false;
+    this.familiarRulesOpen = false;
   }
 
   render(pc, level) {
@@ -52,21 +64,37 @@ export class SorcererFeatures extends ClassFeatureComponent {
             </div>
             
             <!-- Spontanes Zaubern -->
-            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 8px; padding-bottom: 3.5px; border-bottom: 0.5px dashed rgba(200,169,110,0.15);">
-              <div style="display: flex; align-items: center; gap: 4px;">
-                <span>🔮 <strong>Spontanes Zaubern:</strong></span>
-                <button class="sorcerer-rule-btn" data-rule="casting" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--red); font-family: 'IM Fell English SC', serif; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;">📖 ↗</button>
+            <div style="display: flex; flex-direction: column; border-bottom: 0.5px dashed rgba(200,169,110,0.15); padding-bottom: 4px; margin-bottom: 2px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 8px; padding-bottom: 3.5px;">
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  <span>🔮 <strong>Spontanes Zaubern:</strong></span>
+                  <button class="btn btn-toggle-rules-casting" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
+                </div>
+                <span style="color: var(--inkm); font-size: 7.2px; font-style: italic;">Ohne Vorbereitung</span>
               </div>
-              <span style="color: var(--inkm); font-size: 7.2px; font-style: italic;">Ohne Vorbereitung</span>
+              <div class="casting-rules-box" style="display: ${this.castingRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3px; font-family: 'Crimson Text', serif;">
+                <strong style="color: var(--red); font-family: 'IM Fell English SC', serif;">Spontanes Zaubern:</strong><br>
+                Hexenmeister bereiten ihre Zauber nicht im Voraus vor.<br>
+                • <strong>Attribut (Charisma):</strong> Max Zaubergrad = 10 + Zaubergrad. SG = 10 + Zaubergrad + CHA-Mod.<br>
+                • <strong>Metamagie (3.5e RAW):</strong> Zauberzeit erhöht sich auf Volle Aktion (Full-Round Action) für Zauber, die sonst 1 Standardaktion dauern. <em>Schnelles Zaubern (Quicken Spell)</em> ist nicht nutzbar.
+              </div>
             </div>
 
             <!-- Materialien weglassen -->
-            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 8px; padding: 2px 0; border-bottom: 0.5px dashed rgba(200,169,110,0.15);">
-              <div style="display: flex; align-items: center; gap: 4px;">
-                <span>📜 <strong>Materialien weglassen:</strong></span>
-                <button class="sorcerer-rule-btn" data-rule="eschew" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--red); font-family: 'IM Fell English SC', serif; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;">📖 ↗</button>
+            <div style="display: flex; flex-direction: column; border-bottom: 0.5px dashed rgba(200,169,110,0.15); padding-bottom: 4px; margin-bottom: 2px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 8px; padding: 2px 0;">
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  <span>📜 <strong>Materialien weglassen:</strong></span>
+                  <button class="btn btn-toggle-rules-eschew" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
+                </div>
+                <span style="color: var(--inkm); font-size: 7.2px; font-style: italic;">Eschew Materials Feat</span>
               </div>
-              <span style="color: var(--inkm); font-size: 7.2px; font-style: italic;">Eschew Materials Feat</span>
+              <div class="eschew-rules-box" style="display: ${this.eschewRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3px; font-family: 'Crimson Text', serif;">
+                <strong style="color: var(--red); font-family: 'IM Fell English SC', serif;">Materialien weglassen:</strong><br>
+                Bonus-Talent auf Stufe 1.<br>
+                • <strong>Effekt:</strong> Materialkomponenten im Wert von 1 GM oder weniger entfallen.<br>
+                • <strong>Einschränkung:</strong> Teurere Komponenten oder Magische Fokusse (F) müssen weiterhin gestellt werden.
+              </div>
             </div>
 
             <!-- Vertrauenspartner -->
@@ -74,10 +102,16 @@ export class SorcererFeatures extends ClassFeatureComponent {
               <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div style="display: flex; align-items: center; gap: 4px;">
                   <span>🦇 <strong>Vertrauenspartner (Familiar):</strong></span>
-                  <button class="sorcerer-rule-btn" data-rule="familiar" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--red); font-family: 'IM Fell English SC', serif; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;">📖 ↗</button>
+                  <button class="btn btn-toggle-rules-familiar" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
                 </div>
               </div>
               
+              <div class="familiar-rules-box" style="display: ${this.familiarRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3px; font-family: 'Crimson Text', serif; margin-bottom: 3px;">
+                <strong style="color: var(--red); font-family: 'IM Fell English SC', serif;">Vertrauenspartner (Familiar):</strong><br>
+                • <strong>Tod/Entlassung:</strong> Zähigkeitswurf gegen SG 15 nötig. Bei Misslingen verliert man 200 EP pro Stufe, bei Erfolg 100 EP pro Stufe.<br>
+                • <strong>Bonus:</strong> Gilt bei einer Entfernung bis zu 1 Meile.
+              </div>
+
               <div style="background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); border-radius: 2px; padding: 4px; font-size: 7.2px; line-height: 1.2; margin-top: 1px;">
                 • <strong>Partner:</strong> <span style="color: var(--red); font-weight: bold;">${activeLabel}</span><br>
                 • <strong>Aktivierter Bonus:</strong> <span style="color: var(--ink);">${activeBonus}</span><br>
@@ -94,73 +128,35 @@ export class SorcererFeatures extends ClassFeatureComponent {
   }
 
   bindEvents(pc, level, container, triggerRender) {
-    container.querySelectorAll('.sorcerer-rule-btn').forEach(btn => {
-      btn.onclick = (e) => {
+    const btnCasting = container.querySelector('.btn-toggle-rules-casting');
+    const boxCasting = container.querySelector('.casting-rules-box');
+    if (btnCasting && boxCasting) {
+      btnCasting.onclick = (e) => {
         e.stopPropagation();
-        const rule = btn.dataset.rule;
-        let title = '';
-        let message = '';
-        let icon = '📖';
-
-        if (rule === 'casting') {
-          title = 'Spontanes Zaubern (Spontaneous Casting)';
-          message = `
-            <div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11.5px; line-height: 1.35;">
-              <p>Hexenmeister bereiten ihre Zauber nicht im Voraus vor. Sie wählen ihre Zauber im Moment des Wirkens aus und verwenden freie tägliche Slots.</p>
-              <ul style="margin: 4px 0; padding-left: 14px;">
-                <li><strong>Attribut-Skalierung (Charisma):</strong>
-                  <ul style="margin: 2px 0; padding-left: 12px; list-style-type: circle;">
-                    <li>Bestimmt den maximalen Zaubergrad: <code>10 + Zaubergrad</code>.</li>
-                    <li>Verleiht zusätzliche Bonus-Zauberslots pro Tag.</li>
-                    <li>Rettungswurf-Schwierigkeitsgrad (SG): <code>10 + Zaubergrad + CHA-Modifikator</code>.</li>
-                  </ul>
-                </li>
-                <li><strong>Spontane Metamagie (D&D 3.5e RAW):</strong>
-                  <ul style="margin: 2px 0; padding-left: 12px; list-style-type: circle;">
-                    <li>Das spontane Einweben metamagischer Effekte benötigt zusätzliche Konzentration.</li>
-                    <li>Die Zauberzeit erhöht sich auf eine <strong>Volle Aktion (Full-Round Action)</strong> für Zauber, die normalerweise 1 Standardaktion erfordern (Zauber mit längerer Zauberzeit erfordern 1 zusätzliche Runde).</li>
-                    <li><em>Schnelles Zaubern (Quicken Spell)</em> kann von spontanen Zauberern nicht genutzt werden, um Zauber als freie Aktion zu wirken.</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          `;
-        } else if (rule === 'eschew') {
-          title = 'Materialien weglassen (Eschew Materials)';
-          message = `
-            <div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11.5px; line-height: 1.35;">
-              <p>Der Hexenmeister erhält dieses allgemeine Talent auf Stufe 1 als Bonus-Talent.</p>
-              <ul style="margin: 4px 0; padding-left: 14px;">
-                <li><strong>Effekt:</strong> Du kannst jeden Zauber, der eine Materialkomponente im Wert von <strong>1 GM oder weniger</strong> erfordert, ohne diese Komponente wirken.</li>
-                <li><strong>Teure Komponenten:</strong> Kostet die Materialkomponente mehr als 1 GM, musst du sie wie gewohnt bereitstellen.</li>
-                <li><strong>Fokus-Komponenten:</strong> Fokusse (F) sind von diesem Talent unbeeinflusst und müssen immer vorhanden sein.</li>
-              </ul>
-            </div>
-          `;
-        } else if (rule === 'familiar') {
-          title = 'Vertrauten rufen (Summon Familiar)';
-          message = `
-            <div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11.5px; line-height: 1.35;">
-              <p>Ein Hexenmeister kann einen kleinen tierischen Vertrauenspartner beschwören, der ihm als treuer Begleiter dient und magisch mit ihm verbunden ist.</p>
-              <ul style="margin: 4px 0; padding-left: 14px;">
-                <li><strong>Beschwörungsritual:</strong> Dauert 24 Stunden und erfordert magische Zutaten im Wert von <strong>100 GM</strong>.</li>
-                <li><strong>Harte Strafen bei Tod des Vertrauten (RAW 3.5e):</strong>
-                  <ul style="margin: 2px 0; padding-left: 12px; list-style-type: circle;">
-                    <li>Stirbt der Vertraute (oder wird entlassen), muss der Meister einen <strong>Zähigkeitsrettungswurf gegen SG 15</strong> ablegen.</li>
-                    <li>Bei **Misslingen** verliert der Hexenmeister sofort dauerhaft **200 Erfahrungspunkte (EP) pro Hexenmeisterstufe**.</li>
-                    <li>Bei **Erfolg** wird der EP-Verlust auf **100 EP pro Stufe** halbiert.</li>
-                    <li>Der EP-Stand kann durch diesen Verlust niemals unter 0 fallen.</li>
-                    <li>Ein neuer Vertrauenspartner kann erst nach **1 Jahr und 1 Tag** gerufen werden.</li>
-                  </ul>
-                </li>
-                <li><strong>Reichweite des Bonus:</strong> Die permanenten Fertigkeiten- und Attributsboni gelten, solange sich der Vertraute innerhalb von 1 Meile zum Meister aufhält.</li>
-              </ul>
-            </div>
-          `;
-        }
-
-        showCustomAlert(title, message, 'Schließen', icon);
+        this.castingRulesOpen = !this.castingRulesOpen;
+        boxCasting.style.display = this.castingRulesOpen ? 'block' : 'none';
       };
-    });
+    }
+
+    const btnEschew = container.querySelector('.btn-toggle-rules-eschew');
+    const boxEschew = container.querySelector('.eschew-rules-box');
+    if (btnEschew && boxEschew) {
+      btnEschew.onclick = (e) => {
+        e.stopPropagation();
+        this.eschewRulesOpen = !this.eschewRulesOpen;
+        boxEschew.style.display = this.eschewRulesOpen ? 'block' : 'none';
+      };
+    }
+
+    const btnFamiliar = container.querySelector('.btn-toggle-rules-familiar');
+    const boxFamiliar = container.querySelector('.familiar-rules-box');
+    if (btnFamiliar && boxFamiliar) {
+      btnFamiliar.onclick = (e) => {
+        e.stopPropagation();
+        this.familiarRulesOpen = !this.familiarRulesOpen;
+        boxFamiliar.style.display = this.familiarRulesOpen ? 'block' : 'none';
+      };
+    }
   }
 }
+

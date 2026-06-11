@@ -1,11 +1,18 @@
 /**
- * D&D 3.5e Paladin Class Rules
+ * @module    PaladinRules
+ * @summary   D&D 3.5e Paladin-Klassenregeln: Böses niederstrecken, Hände auflegen, Untote vertreiben.
+ * @exports   PaladinRules
+ * @reads     pc.dailyAbilities, pc.cha, pc.classes
+ * @stateOps  Keine — mutiert pc direkt (aufgerufen durch PCManager)
+ * @depends   Keine externen Imports
+ * @notHere   UI-Rendering → PaladinFeatures.js | Slot-Berechnung → rules.js CLASS_PROFILES
  */
 export const PaladinRules = {
   cleanup(pc) {
     if (pc.divineGraceActive) {
       pc.divineGraceActive = false;
     }
+    pc.isSmiteActive = false;
     const activeClasses = Array.isArray(pc.classes) ? pc.classes.map(c => c.classType) : [];
     const hasCleric = activeClasses.includes('cleric');
     if (Array.isArray(pc.dailyAbilities)) {

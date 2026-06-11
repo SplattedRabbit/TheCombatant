@@ -39,7 +39,7 @@ test('Wild Shape - enterShape(leopard) setzt korrekte Basis-Attributwerte', () =
   assert.strictEqual(pc.con.base, 15, 'CON base sollte 15 sein');
   assert.strictEqual(pc.ac.base, 15, 'AC base sollte 15 sein');
   assert.strictEqual(pc.acTouch.base, 14, 'Touch AC base sollte 14 sein');
-  assert.strictEqual(pc.acFlat.base, 12, 'Flat-Footed AC base sollte 12 sein');
+  assert.strictEqual(pc.acFlat.base, 11, 'Flat-Footed AC base sollte 11 sein');
 });
 
 test('Wild Shape - enterShape(bear) setzt korrekte Basis-Attributwerte', () => {
@@ -49,9 +49,9 @@ test('Wild Shape - enterShape(bear) setzt korrekte Basis-Attributwerte', () => {
   assert.strictEqual(pc.str.base, 27, 'STR base sollte 27 sein');
   assert.strictEqual(pc.dex.base, 13, 'DEX base sollte 13 sein');
   assert.strictEqual(pc.con.base, 19, 'CON base sollte 19 sein');
-  assert.strictEqual(pc.ac.base, 15, 'AC base sollte 15 sein');
+  assert.strictEqual(pc.ac.base, 16, 'AC base sollte 16 sein');
   assert.strictEqual(pc.acTouch.base, 11, 'Touch AC base sollte 11 sein');
-  assert.strictEqual(pc.acFlat.base, 14, 'Flat-Footed AC base sollte 14 sein');
+  assert.strictEqual(pc.acFlat.base, 15, 'Flat-Footed AC base sollte 15 sein');
 });
 
 test('Wild Shape - exitShape() stellt originale Basis-Attributwerte vollständig wieder her', () => {
@@ -266,4 +266,47 @@ test('SHAPE_ATTACKS - wolf/leopard/bear rendern unterschiedlichen Inhalt als non
 
   // none hat keine natürlichen Angriffskinder
   assert.strictEqual(noneResult.natChildren.length, 0, 'none sollte keine natürlichen Angriffseinträge rendern');
+});
+
+test('Wild Shape - enterShape(bear) und exitShape() verändern HP/MaxHP basierend auf Konstitutionsänderung', () => {
+  const pc = new Combatant({ type: 'p' });
+  pc.classes = [{ classType: 'druid', level: 6 }];
+  pc.con.base = 12; // Modifikator +1
+  pc.maxHP = 40;
+  pc.hp = 35;
+  pc.rebuildStatModifiers();
+  
+  // Transform to bear (bear con = 19, mod = +4). Difference is +3 mod.
+  // With level 6, HP/MaxHP should change by +18.
+  pc.enterShape('bear');
+  assert.strictEqual(pc.maxHP, 58, 'MaxHP sollte um 18 gestiegen sein (40 + 18)');
+  assert.strictEqual(pc.hp, 53, 'HP sollte um 18 gestiegen sein (35 + 18)');
+  
+  // Exit shape. Con goes back to 12. HP/MaxHP should drop by 18.
+  pc.exitShape();
+  assert.strictEqual(pc.maxHP, 40, 'MaxHP sollte wieder 40 sein');
+  assert.strictEqual(pc.hp, 35, 'HP sollte wieder 35 sein');
+});
+
+test('Wild Shape - bear Form wendet Größenmodifikator -1 auf AC an', () => {
+  const pc = new Combatant({ type: 'p' });
+  pc.classes = [{ classType: 'druid', level: 6 }];
+  pc.dex.base = 10;
+  pc.con.base = 10;
+  pc.autoAC = true;
+  pc.enterShape('bear'); // bear has dex base 13 (mod +1), base ac 16, touch 11, flat 15, size -1.
+  
+  // Rebuild modifiers
+  pc.rebuildStatModifiers();
+  
+  // Let's verify size modifier is -1
+  assert.strictEqual(pc.getSizeModifier(), -1);
+  
+  // Final AC:
+  // pc.ac = 16 (base) - 1 (size) = 15.
+  // pc.acTouch = 11 (base) - 1 (size) = 10.
+  // pc.acFlat = 15 (base) - 1 (size) = 14.
+  assert.strictEqual(pc.ac.getValue(), 15);
+  assert.strictEqual(pc.acTouch.getValue(), 10);
+  assert.strictEqual(pc.acFlat.getValue(), 14);
 });

@@ -1,3 +1,12 @@
+/**
+ * @module    BardFeatures
+ * @summary   UI-Komponente für Barden-Klassenfeatures: Bardenmusik-Bubbles, Liedkompendium, Bardenwissen-Wurf.
+ * @exports   BardFeatures
+ * @reads     pc.dailyAbilities, pc.bardicMusicExtra, pc.cha, pc.int
+ * @stateOps  CombatState.updatePCBatch, CombatState.saveToStorage
+ * @depends   ClassFeatureComponent, CombatState, dialogs
+ * @notHere   Musik-Slots-Berechnung → rules.js CLASS_PROFILES | Spontanzauber → PCSpellbookTab.js
+ */
 import { ClassFeatureComponent } from './ClassFeatureComponent.js';
 import { CombatState } from '../../../state.js';
 import { showCustomConfirm, showRollBreakdown, showCustomAlert } from '../dialogs.js';
@@ -80,6 +89,7 @@ const BARD_SONGS = [
 export class BardFeatures extends ClassFeatureComponent {
   constructor() {
     super('bard', 'Barde', 'Bard');
+    this.musicRulesOpen = false;
   }
 
   render(pc, level) {
@@ -147,13 +157,22 @@ export class BardFeatures extends ClassFeatureComponent {
             </div>
             
             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 8px; padding-top: 1px;">
-              <span><strong>Bardenmusik:</strong></span>
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <span><strong>Bardenmusik:</strong></span>
+                <button class="btn btn-toggle-rules-music" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
+              </div>
               <div style="display: flex; align-items: center; gap: 2px;">
                 <div style="display: grid; grid-template-columns: repeat(${cols}, auto); gap: 1px; justify-content: end; align-items: center;">${musicBubbles}</div>
                 <span style="font-size: 7.5px; font-weight: bold;">(${remaining}/${musicMax})</span>
               </div>
             </div>
             
+            <div class="music-rules-box" style="display: ${this.musicRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3px; font-family: 'Crimson Text', serif; margin-bottom: 2px;">
+              <strong style="color: var(--red); font-family: 'IM Fell English SC', serif;">Bardenmusik & Bardenwissen:</strong><br>
+              • <strong>Tägliche Nutzungen:</strong> Gleich der Bardenstufe + Boni (z.B. Extra-Musik).<br>
+              • <strong>Bardenwissen (Bardic Knowledge):</strong> Spezielle Wissensprobe (d20 + Bardenstufe + INT-Mod) für legendäre Fakten über Personen, Orte oder Gegenstände.
+            </div>
+
             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 7.5px; border-bottom: 0.5px dashed rgba(200,169,110,0.15); padding-bottom: 3px; margin-bottom: 1px;">
               <span style="color: var(--inkl); font-style: italic;">Extra Musik (Feats/Items):</span>
               <div style="display: flex; align-items: center; gap: 4px;">
@@ -183,6 +202,18 @@ export class BardFeatures extends ClassFeatureComponent {
   bindEvents(pc, level, container, triggerRender) {
     // Unified Event Delegation on Bard Feature Container to eliminate DOM timing issues
     container.onclick = (e) => {
+      // 0. Toggle rules
+      const rulesBtn = e.target.closest('.btn-toggle-rules-music');
+      if (rulesBtn) {
+        e.stopPropagation();
+        this.musicRulesOpen = !this.musicRulesOpen;
+        const box = container.querySelector('.music-rules-box');
+        if (box) {
+          box.style.display = this.musicRulesOpen ? 'block' : 'none';
+        }
+        return;
+      }
+
       // 1. Bardic music bubbles
       const bubble = e.target.closest('.bardic-music-bubble');
       if (bubble) {

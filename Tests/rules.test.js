@@ -6,6 +6,7 @@ import { BABCalculator } from '../js/rules/BABCalculator.js';
 import { SaveCalculator } from '../js/rules/SaveCalculator.js';
 import { SpellSlotCalculator } from '../js/rules/SpellSlotCalculator.js';
 import { Stat } from '../js/models/Stat.js';
+import { CombatRules } from '../js/rules.js';
 
 test('BABCalculator - Einzelklassen-Berechnung', () => {
   // Fighter Level 3 (guter BAB-Verlauf): BAB = 3
@@ -156,4 +157,53 @@ test('SpellSlotCalculator - Multiklassen-Zauberer und Nicht-Zauberer', () => {
   };
   const emptySlots = SpellSlotCalculator.calculateSpellSlots(nonCasterPc);
   assert.deepEqual(emptySlots, { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 });
+});
+
+test('CombatRules - calculateMaxFeats computes correct feat limits', () => {
+  // Fighter level 4, human by default (pc.isHuman is undefined)
+  const pcFighter = {
+    classes: [{ classType: 'fighter', level: 4 }]
+  };
+  // General feats: level 4 gives 2 (lvl 1, 3). Fighter bonus: 1 + floor(4/2) = 3. Human bonus: 1. Total = 6.
+  assert.strictEqual(CombatRules.calculateMaxFeats(pcFighter), 6);
+
+  // Cleric level 5, non-human
+  const pcCleric = {
+    classes: [{ classType: 'cleric', level: 5 }],
+    isHuman: false
+  };
+  // General feats: level 5 gives 2 (lvl 1, 3). Cleric bonus: 0. Human: 0. Total = 2.
+  assert.strictEqual(CombatRules.calculateMaxFeats(pcCleric), 2);
+});
+
+test('CombatRules - checkSpellKnownLimit enforces spontaneous spells limit but allows wizard exceptions', () => {
+  // Mock spell database finder
+  const spellsDB = {
+    'magic_missile': { id: 'magic_missile', classLevels: [{ class: 'sorcerer', level: 1 }, { class: 'wizard', level: 1 }], school: 'evocation' },
+    'shield_spell': { id: 'shield_spell', classLevels: [{ class: 'sorcerer', level: 1 }, { class: 'wizard', level: 1 }], school: 'abjuration' },
+    'grease': { id: 'grease', classLevels: [{ class: 'sorcerer', level: 1 }, { class: 'wizard', level: 1 }], school: 'conjuration' }
+  };
+  const findSpellFn = (key) => spellsDB[key] || null;
+
+  // Sorcerer lvl 1 (Spells known limit for level 1 spells is 2)
+  const pcSorc = {
+    classes: [{ classType: 'sorcerer', level: 1 }],
+    learnedSpells: ['magic_missile', 'shield_spell']
+  };
+
+  // Try to learn a 3rd level 1 spell (grease) - should be blocked
+  const check1 = CombatRules.checkSpellKnownLimit(pcSorc, spellsDB['grease'], findSpellFn);
+  assert.strictEqual(check1.success, false, 'Sollte das Limit blockieren');
+  assert.ok(check1.error.includes('Limit'), 'Fehlermeldung sollte Limit erwähnen');
+
+  // Wizard multiclass (has unlimited caster Wizard) - should pass despite sorcerer limit
+  const pcMulti = {
+    classes: [
+      { classType: 'sorcerer', level: 1 },
+      { classType: 'wizard', level: 1 }
+    ],
+    learnedSpells: ['magic_missile', 'shield_spell']
+  };
+  const check2 = CombatRules.checkSpellKnownLimit(pcMulti, spellsDB['grease'], findSpellFn);
+  assert.strictEqual(check2.success, true, 'Sollte für Magier/Hexenmeister Multiklasse erlaubt sein');
 });

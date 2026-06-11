@@ -1,3 +1,12 @@
+/**
+ * @module    WizardFeatures
+ * @summary   UI-Komponente für Magier-Klassenfeatures: Schulspezialisierung, verbotene Schulen, Zauberbuch-Hinweis.
+ * @exports   WizardFeatures
+ * @reads     pc.wizardSpecialization, pc.learnedSpells, pc.classes
+ * @stateOps  CombatState.updatePCBatch, CombatState.saveToStorage
+ * @depends   ClassFeatureComponent, CombatState, spells.js, PCSpellDialogs
+ * @notHere   Bonus-Zauberplätze → SpellSlotCalculator.js | Zauberbuch-UI → PCSpellbookTab.js
+ */
 import { ClassFeatureComponent } from './ClassFeatureComponent.js';
 import { CombatState } from '../../../state.js';
 import { getSchoolCodeFromInput } from '../../../spells.js';
@@ -16,6 +25,7 @@ const PROHIBITED_SCHOOLS = [
 export class WizardFeatures extends ClassFeatureComponent {
   constructor() {
     super('wizard', 'Magier', 'Wizard');
+    this.wizardRulesOpen = false;
   }
 
   render(pc, level) {
@@ -48,7 +58,10 @@ export class WizardFeatures extends ClassFeatureComponent {
               Klassenfähigkeiten
             </div>
             <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8px; margin-top: 1px;">
-              <span><strong>Schule:</strong></span>
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <span><strong>Schule:</strong></span>
+                <button class="btn btn-toggle-rules-wizard" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
+              </div>
               <select class="cinput wizard-spec" style="width: 60px; font-size: 7.5px; height: 14px; padding: 0 1px; border-radius: 1px; border: 0.5px solid var(--pb); outline: none;">
                 <option value="none" ${pc.wizardSpecialization === 'none' ? 'selected' : ''}>Allgemein</option>
                 <option value="abj" ${pc.wizardSpecialization === 'abj' ? 'selected' : ''}>Schutz</option>
@@ -60,6 +73,12 @@ export class WizardFeatures extends ClassFeatureComponent {
                 <option value="nec" ${pc.wizardSpecialization === 'nec' ? 'selected' : ''}>Nekro</option>
                 <option value="tra" ${pc.wizardSpecialization === 'tra' ? 'selected' : ''}>Verwandlung</option>
               </select>
+            </div>
+            <div class="wizard-rules-box" style="display: ${this.wizardRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3px; font-family: 'Crimson Text', serif; margin-bottom: 2px;">
+              <strong style="color: var(--red); font-family: 'IM Fell English SC', serif; font-size: 8px;">Magier-Schul-Spezialisierung (D&D 3.5 RAW):</strong><br>
+              • <strong>Zusatz-Zauberslots:</strong> +1 Zauberslot pro Zaubergrad am Tag (nur Spezialschule).<br>
+              • <strong>Zauberkunde:</strong> +2 Bonus auf Proben zum Erlernen von Zaubern der Spezialschule.<br>
+              • <strong>Bannschulen:</strong> Spezialisten (außer Erkenntnis) müssen 2 Schulen bannen. Erkenntnismagier bannen 1 Schule. Gebannte Zauber sind gänzlich unbenutzbar.
             </div>
             ${pc.wizardSpecialization !== 'none' ? `
               <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8px;">
@@ -78,14 +97,6 @@ export class WizardFeatures extends ClassFeatureComponent {
                   </select>
                 </div>
               ` : ''}
-              
-              <div style="background: rgba(200, 169, 110, 0.05); border: 0.5px solid var(--pb); border-radius: 2px; padding: 5px; font-size: 7.5px; color: var(--ink); line-height: 1.3; margin-top: 4px; font-family: 'Crimson Text', serif;">
-                <strong style="color: var(--red); font-family: 'IM Fell English SC', serif; font-size: 8px;">Schul-Spezialisierung (D&D 3.5 RAW):</strong><br>
-                • <strong>Zusatz-Zauberslots:</strong> Du erhältst <strong>+1 Zauberslot pro Zaubergrad (Grad 1-9)</strong> am Tag. Dieser Slot darf <em>ausschließlich</em> für einen Zauber deiner Spezialschule verwendet werden.<br>
-                • <strong>Zauberkunde-Bonus:</strong> Du erhältst einen Bonus von <strong>+2 auf Zauberkunde-Würfe</strong>, um neue Zauber deiner Spezialschule zu erlernen.<br>
-                • <strong>Bannschulen:</strong> Zauber aus Bannschulen sind dir gänzlich unzugänglich. Du kannst sie weder lernen, vorbereiten, noch von Schriftrollen (Scrolls) oder Zauberstäben (Wands) wirken.<br>
-                • <strong>Regel-Ausnahme:</strong> Ein Erkenntnis-Magier (Diviner) benötigt nur 1 Bannschule statt 2. Universal-Zauber können niemals gebannt werden.
-              </div>
             ` : ''}
           </div>
         </div>
@@ -94,6 +105,16 @@ export class WizardFeatures extends ClassFeatureComponent {
   }
 
   bindEvents(pc, level, container, triggerRender) {
+    const btnWizard = container.querySelector('.btn-toggle-rules-wizard');
+    const boxWizard = container.querySelector('.wizard-rules-box');
+    if (btnWizard && boxWizard) {
+      btnWizard.onclick = (e) => {
+        e.stopPropagation();
+        this.wizardRulesOpen = !this.wizardRulesOpen;
+        boxWizard.style.display = this.wizardRulesOpen ? 'block' : 'none';
+      };
+    }
+
     const spec = container.querySelector('.wizard-spec');
     if (spec) {
       spec.onchange = (e) => {

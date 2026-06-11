@@ -151,8 +151,32 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
     *   ATK- und DMG-Buttons sind vollständig funktionsfähig.
 
 
-## 17
-Erzfeind liegt im Atkroll != dmg roll
+## 17. Erzfeind-Bonus: Checkbox-Zustand wird nicht auf Schadenswürfe übertragen
+*   **Beschreibung:** Die Checkbox "Gegen Erzfeind (+X Schaden)" existiert derzeit nur als lokaler Zustand innerhalb des `AttackChoiceDialog` (der über den ATK-Knopf geöffnet wird). Wenn der Benutzer jedoch den DMG-Knopf direkt in der Ausrüstungs-Übersicht klickt, wird der Waffenschaden ohne Berücksichtigung des Erzfeind-Bonus berechnet und angezeigt. Da der Erzfeind-Bonus laut D&D 3.5 RAW ausschließlich auf Schadenswürfe (und spezifische Fertigkeitsproben) gilt, aber nicht auf den Angriffswurf selbst, führt dies dazu, dass der Bonus im Kampf-Interface praktisch nie auf den tatsächlichen Schaden angewendet werden kann.
+*   **Betroffene Dateien:**
+    *   [EquipmentSlotsRenderer.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/offense/EquipmentSlotsRenderer.js)
+    *   [NaturalAttacksRenderer.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/offense/NaturalAttacksRenderer.js)
+    *   [CombatSettingsRenderer.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/offense/CombatSettingsRenderer.js)
+    *   [Combatant.js](file:///c:/Users/Juls/Desktop/CombatApp/js/models/Combatant.js)
+    *   [AttackChoiceDialog.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/dialogs/AttackChoiceDialog.js)
+*   **Lösungsansatz:**
+    *   Speicherung des Zustands `"isFavoredEnemyActive"` (und analog für Paladin-Smite `"isSmiteActive"`) direkt im Zustand des Charakters (`pc`).
+    *   Hinzufügen von globalen Checkboxen für diese Klassen-Fähigkeiten (Erzfeind-Zusatzschaden, Böses niederstrecken, Hinterhältiger Angriff) direkt im oberen Bereich der Kampfeinstellungen im Offense-Tab (in `CombatSettingsRenderer.js`), sofern der Charakter entsprechende Klassenstufen (Waldläufer, Paladin, Schurke) besitzt.
+    *   Anpassung der Schadens-Button-Handler (`roll-dmg-btn`) in `EquipmentSlotsRenderer.js` and `NaturalAttacksRenderer.js`, sodass sie den aktuellen Zustand der Toggles aus dem `pc`-Objekt auslesen und als Option an `calculateAttackSequence` übergeben.
+    *   Anpassung von `AttackChoiceDialog.js`, sodass die Checkboxen den persistenten Charakterzustand lesen und modifizieren, um eine konsistente Synchronisation zwischen Angriffs-Detaildialog und direktem Wurf-Interface zu gewährleisten.
 
-## 18 double talents
-Alle statt ausgeählte Talente sind mehrfach wählbar
+---
+
+## 18. Talent-Auswahl: Mehrfaches Erlernen von nicht-stapelbaren Talenten möglich
+*   **Beschreibung:** Das System erlaubt es Spielern, beliebige Talente mehrfach zu erlernen. Während D&D 3.5 RAW bestimmte Talente (z. B. *Waffenfokus*, *Zauberfokus*, *Fertigkeitsfokus*, *Zähigkeit*) explizit mehrfach zulässt (meist für unterschiedliche Optionen wie verschiedene Waffen oder Magieschulen), dürfen die meisten Talente (z. B. *Heftiger Angriff*, *Verbesserte Initiative*) nur ein einziges Mal gewählt werden. Derzeit führt `addPCFeat` in `PCManager.js` keine Überprüfung auf Duplikate durch, und das Interface (z. B. das Auswahldropdown für Optionen im Talent-Detail-Dialog) schließt bereits gewählte Optionen (z. B. *Waffenfokus (Langschwert)*) nicht aus, was zu unzulässigen Mehrfach-Einträgen führt.
+*   **Betroffene Dateien:**
+    *   [PCManager.js](file:///c:/Users/Juls/Desktop/CombatApp/js/state/PCManager.js)
+    *   [FeatScrollDialog.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/dialogs/FeatScrollDialog.js)
+    *   [feats-data.js](file:///c:/Users/Juls/Desktop/CombatApp/js/data/feats-data.js)
+*   **Lösungsansatz:**
+    *   Ergänzung der Validierungslogik in `addPCFeat` (`PCManager.js`):
+        *   Prüfen, ob das Talent bereits erlernt wurde.
+        *   Falls das Talent nicht mehrfach wählbar ist (d h. `specialRaw` enthält nicht "multiple times"), das Hinzufügen blockieren und eine Fehlermeldung zurückgeben.
+        *   Falls das Talent mehrfach wählbar ist und eine Option besitzt (z. B. *Waffenfokus*), prüfen, ob genau diese Option (`option`) bereits erlernt wurde, und Duplikate blockieren.
+    *   Überprüfung der Definitionen in `feats-data.js`: Sicherstellen, dass alle Talente, die laut PHB mehrfach für unterschiedliche Optionen gewählt werden dürfen (z. B. *Waffenspezialisierung*, *Mächtiger Waffenfokus* etc.), den entsprechenden Hinweis `"You can gain this feat multiple times..."` in `specialRaw` enthalten.
+    *   Anpassung von `FeatScrollDialog.js`: Bereits gewählte Optionen (z. B. eine Waffenart für *Waffenfokus*, die der Charakter bereits besitzt) aus dem Auswahldropdown filtern, um Fehler im Vorfeld zu verhindern.

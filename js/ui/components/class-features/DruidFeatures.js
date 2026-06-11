@@ -14,6 +14,7 @@ import { CombatState } from '../../../state.js';
 export class DruidFeatures extends ClassFeatureComponent {
   constructor() {
     super('druid', 'Druide', 'Druid');
+    this.wildshapeRulesOpen = false;
   }
 
   render(pc, level) {
@@ -91,15 +92,26 @@ export class DruidFeatures extends ClassFeatureComponent {
         </div>
         <div class="class-card-body" style="display: flex; padding: 6px; align-items: start; width: 100%;">
           <div style="display: flex; flex-direction: column; gap: 4px; width: 100%;">
-            <div style="font-family:'IM Fell English SC', serif; font-size:8px; color:var(--red); padding-bottom:2px; border-bottom:0.5px solid rgba(200,169,110,0.2);">
+            <div style="font-family:'IM Fell English SC', serif; font-size:8px; color:var(--red); padding-bottom:2px; border-bottom:0.5px solid rgba(200,169,110,0.2); font-weight: bold;">
               Klassenfähigkeiten
             </div>
             ${maxUses > 0 ? `
-              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 8px; padding-top: 1px; margin-bottom: 2px;">
-                <span><strong>Tiergestalt:</strong></span>
-                <div style="display: flex; align-items: center; gap: 2px;">
-                  <div style="display: flex;">${wildBubbles}</div>
-                  <span>(${remaining})</span>
+              <div style="display: flex; flex-direction: column; border-bottom: 0.5px dashed rgba(200,169,110,0.15); padding-bottom: 4px; margin-bottom: 2px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 8px; padding-top: 1px; margin-bottom: 2px;">
+                  <div style="display: flex; align-items: center; gap: 4px;">
+                    <span><strong>Tiergestalt:</strong></span>
+                    <button class="btn btn-toggle-rules-wildshape" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 2px;">
+                    <div style="display: flex;">${wildBubbles}</div>
+                    <span>(${remaining})</span>
+                  </div>
+                </div>
+                <div class="wildshape-rules-box" style="display: ${this.wildshapeRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3px; font-family: 'Crimson Text', serif; margin-bottom: 3px;">
+                  <strong style="color: var(--red); font-family: 'IM Fell English SC', serif;">Tiergestalt (Wild Shape):</strong><br>
+                  Ab Stufe 5 kann der Druide Tiergestalt annehmen.<br>
+                  • <strong>Effekt (3.5e RAW):</strong> Physische Attribute (STR, DEX, CON) werden durch die der Form ersetzt. Geistige Attribute (INT, WIS, CHA) bleiben gleich. Natürliche Rüstung der Form wird angerechnet.<br>
+                  • <strong>Ausrüstung:</strong> Rüstung und Schilde verschmelzen mit dem Körper und verlieren ihre Funktion.
                 </div>
               </div>
               
@@ -135,6 +147,16 @@ export class DruidFeatures extends ClassFeatureComponent {
   }
 
   bindEvents(pc, level, container, triggerRender) {
+    const btnWildshape = container.querySelector('.btn-toggle-rules-wildshape');
+    const boxWildshape = container.querySelector('.wildshape-rules-box');
+    if (btnWildshape && boxWildshape) {
+      btnWildshape.onclick = (e) => {
+        e.stopPropagation();
+        this.wildshapeRulesOpen = !this.wildshapeRulesOpen;
+        boxWildshape.style.display = this.wildshapeRulesOpen ? 'block' : 'none';
+      };
+    }
+
     // 1. Paw/Bubble Click (for manual adjusting)
     container.querySelectorAll('.druid-wild-bubble').forEach(bubble => {
       bubble.onclick = (e) => {

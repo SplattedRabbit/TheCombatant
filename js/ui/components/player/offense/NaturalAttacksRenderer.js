@@ -4,13 +4,14 @@
  * @exports   SHAPE_ATTACKS, renderNaturalAttacksList
  * @reads     pc.activeShape, pc.attributes, pc.bab
  * @stateOps  keine
- * @depends   dialogs.js (showAttackChoiceDialog, showRollBreakdown)
+ * @depends   dialogs.js (showAttackChoiceDialog, showRollBreakdown), AttackEngine.js (AttackEngine)
  * @notHere   Waffenslots -> EquipmentSlotsRenderer.js | Rucksack -> InventoryStashRenderer.js
  */
 
 // @feature:wildshape
 
 import { showAttackChoiceDialog, showRollBreakdown } from '../../dialogs.js';
+import { AttackEngine } from '../../../../rules/AttackEngine.js';
 
 export const SHAPE_ATTACKS = {
   wolf: [
@@ -36,9 +37,6 @@ export function renderNaturalAttacksList(container, pc) {
     return;
   }
 
-  const strMod = pc.getAttributeMod('str');
-  const babVal  = pc.bab.getValue();
-
   attacks.forEach((atk) => {
     // Build a pseudo-weapon object that AttackEngine can handle
     const pseudoWeapon = {
@@ -54,11 +52,17 @@ export function renderNaturalAttacksList(container, pc) {
       type:        'unarmed'
     };
 
-    // Calculate atkTotal and dmgTotal manually for display
-    const atkMod  = babVal + (atk.isSecondary ? -5 : 0) + strMod;
-    const dmgMod  = Math.floor(strMod * atk.strMult);
-    const atkStr  = atkMod >= 0 ? `+${atkMod}` : `${atkMod}`;
-    const dmgStr  = dmgMod >= 0 ? `+${dmgMod}` : `${dmgMod}`;
+    // Calculate attack sequence options from active combat flags
+    const seq = AttackEngine.calculateAttackSequence(pc, pseudoWeapon, false, {
+      smite: pc.isSmiteActive,
+      favoredEnemy: pc.isFavoredEnemyActive,
+      sneakAttack: pc.isSneakAttacking
+    });
+    const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [], damageDice: atk.damageDice };
+
+    const formatMod = (n) => (n >= 0 ? '+' : '') + n;
+    const atkStr  = formatMod(stdAtkObj.atkTotal);
+    const dmgStr  = formatMod(stdAtkObj.dmgTotal);
 
     const card = document.createElement('div');
     card.style.cssText = `
@@ -84,7 +88,7 @@ export function renderNaturalAttacksList(container, pc) {
         <div style="font-family:'Crimson Text',serif; font-size:9px; font-weight:bold; color:var(--red); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
           ${atk.name}${specialPart}
         </div>
-        <div style="font-size:7px; color:var(--inkm);">${atk.damageDice}${dmgStr !== '+0' ? ' ' + dmgStr : ''} ${labelPart}</div>
+        <div style="font-size:7px; color:var(--inkm);">${stdAtkObj.damageDice}${dmgStr !== '+0' ? ' ' + dmgStr : ''} ${labelPart}</div>
       </div>
       <div style="display:flex; gap:3px; flex-shrink:0;">
         <button class="xbtn xbtn-dmg nat-atk-btn" style="padding:1px 5px; font-size:6.5px; font-weight:bold; white-space:nowrap; height:15px; line-height:1;">
@@ -101,14 +105,12 @@ export function renderNaturalAttacksList(container, pc) {
       showAttackChoiceDialog(pc, pseudoWeapon, e);
     };
 
-    // DMG button: show a simple roll breakdown
+    // DMG button: show the roll breakdown from the calculated sequence
     card.querySelector('.nat-dmg-btn').onclick = (e) => {
-      const breakdown = [
-        { label: 'Stärke (' + (atk.strMult === 1.0 ? '1x' : '0.5x') + ')', value: dmgMod }
-      ];
-      showRollBreakdown(`${atk.name} (Schaden)`, `${atk.damageDice}${dmgStr}`, breakdown, e);
+      showRollBreakdown(`${atk.name} (Schaden)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e);
     };
 
     container.appendChild(card);
   });
 }
+

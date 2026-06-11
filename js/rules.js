@@ -436,5 +436,236 @@ export const CombatRules = {
     });
 
     return hasCaster ? slots : { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 };
+  },
+
+  SORCERER_KNOWN_TABLE: {
+    1:  [4, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    2:  [5, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    3:  [5, 3, 0, 0, 0, 0, 0, 0, 0, 0],
+    4:  [6, 3, 1, 0, 0, 0, 0, 0, 0, 0],
+    5:  [6, 4, 2, 0, 0, 0, 0, 0, 0, 0],
+    6:  [7, 4, 2, 1, 0, 0, 0, 0, 0, 0],
+    7:  [7, 5, 3, 2, 0, 0, 0, 0, 0, 0],
+    8:  [8, 5, 3, 2, 1, 0, 0, 0, 0, 0],
+    9:  [8, 5, 4, 3, 2, 0, 0, 0, 0, 0],
+    10: [9, 5, 4, 3, 2, 1, 0, 0, 0, 0],
+    11: [9, 5, 5, 4, 3, 2, 0, 0, 0, 0],
+    12: [9, 5, 5, 4, 3, 2, 1, 0, 0, 0],
+    13: [9, 5, 5, 4, 4, 3, 2, 0, 0, 0],
+    14: [9, 5, 5, 4, 4, 3, 2, 1, 0, 0],
+    15: [9, 5, 5, 4, 4, 4, 3, 2, 0, 0],
+    16: [9, 5, 5, 4, 4, 4, 3, 2, 1, 0],
+    17: [9, 5, 5, 4, 4, 4, 3, 3, 2, 0],
+    18: [9, 5, 5, 4, 4, 4, 3, 3, 2, 1],
+    19: [9, 5, 5, 4, 4, 4, 3, 3, 3, 2],
+    20: [9, 5, 5, 4, 4, 4, 3, 3, 3, 3]
+  },
+
+  BARD_KNOWN_TABLE: {
+    1:  [4, 0, 0, 0, 0, 0, 0],
+    2:  [5, 2, 0, 0, 0, 0, 0],
+    3:  [6, 3, 0, 0, 0, 0, 0],
+    4:  [6, 3, 2, 0, 0, 0, 0],
+    5:  [6, 4, 3, 0, 0, 0, 0],
+    6:  [6, 4, 3, 0, 0, 0, 0],
+    7:  [6, 4, 4, 2, 0, 0, 0],
+    8:  [6, 4, 4, 3, 0, 0, 0],
+    9:  [6, 4, 4, 3, 0, 0, 0],
+    10: [6, 4, 4, 4, 2, 0, 0],
+    11: [6, 5, 5, 4, 3, 0, 0],
+    12: [6, 5, 5, 4, 4, 0, 0],
+    13: [6, 5, 5, 5, 4, 3, 0],
+    14: [6, 5, 5, 5, 4, 4, 0],
+    15: [6, 5, 5, 5, 5, 4, 3],
+    16: [6, 5, 5, 5, 5, 4, 4],
+    17: [6, 5, 5, 5, 5, 5, 4],
+    18: [6, 5, 5, 5, 5, 5, 4],
+    19: [6, 5, 5, 5, 5, 5, 5],
+    20: [6, 5, 5, 5, 5, 5, 5]
+  },
+
+  checkSpellKnownLimit: function(pc, spell, findSpellFn) {
+    if (!pc || !spell) return { success: true };
+
+    // If spell is already learned, unlearning it is always allowed
+    if (Array.isArray(pc.learnedSpells) && pc.learnedSpells.includes(spell.id)) {
+      return { success: true };
+    }
+
+    const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
+    const sorcClass = activeClasses.find(c => c.classType === 'sorcerer');
+    const bardClass = activeClasses.find(c => c.classType === 'bard');
+
+    if (!sorcClass && !bardClass) {
+      return { success: true };
+    }
+
+    // Check if the spell is eligible via an unlimited caster class the PC has levels in
+    const isUnlimitedEligible = activeClasses.some(c => {
+      if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
+      if (['paladin', 'ranger'].includes(c.classType) && c.level < 4) return false;
+      if (!Array.isArray(spell.classLevels)) return false;
+      const clMatch = spell.classLevels.find(cl => cl.class === c.classType);
+      if (!clMatch) return false;
+      const maxLvl = this.getMaxSpellLevel(c.classType, c.level);
+      return clMatch.level <= maxLvl;
+    });
+
+    if (isUnlimitedEligible) {
+      return { success: true };
+    }
+
+    // Check Sorcerer limit
+    let sorcAllowed = false;
+    let sorcLvl = -1;
+    let maxSorcSpells = 0;
+    let currentSorcSpells = 0;
+
+    if (sorcClass) {
+      const sorcMatch = Array.isArray(spell.classLevels) && spell.classLevels.find(cl => cl.class === 'sorcerer');
+      if (sorcMatch) {
+        sorcLvl = sorcMatch.level;
+        const maxCastLvl = this.getMaxSpellLevel('sorcerer', sorcClass.level);
+        if (sorcLvl <= maxCastLvl) {
+          const row = this.SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, sorcClass.level))];
+          maxSorcSpells = row ? (row[sorcLvl] || 0) : 0;
+
+          // Count currently learned Sorcerer spells at this level (excluding unlimited ones)
+          const learnedKeys = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
+          learnedKeys.forEach(key => {
+            const s = findSpellFn(key);
+            if (!s) return;
+
+            // Check if unlimited
+            const sUnlimited = activeClasses.some(c => {
+              if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
+              if (['paladin', 'ranger'].includes(c.classType) && c.level < 4) return false;
+              if (!Array.isArray(s.classLevels)) return false;
+              const clMatch = s.classLevels.find(cl => cl.class === c.classType);
+              if (!clMatch) return false;
+              const maxLvl = this.getMaxSpellLevel(c.classType, c.level);
+              return clMatch.level <= maxLvl;
+            });
+            if (sUnlimited) return;
+
+            // Check if on sorcerer list at sorcLvl
+            if (Array.isArray(s.classLevels)) {
+              const match = s.classLevels.find(cl => cl.class === 'sorcerer' && cl.level === sorcLvl);
+              if (match) currentSorcSpells++;
+            }
+          });
+
+          if (currentSorcSpells < maxSorcSpells) {
+            sorcAllowed = true;
+          }
+        }
+      }
+    }
+
+    // Check Bard limit
+    let bardAllowed = false;
+    let bardLvl = -1;
+    let maxBardSpells = 0;
+    let currentBardSpells = 0;
+
+    if (bardClass) {
+      const bardMatch = Array.isArray(spell.classLevels) && spell.classLevels.find(cl => cl.class === 'bard');
+      if (bardMatch) {
+        bardLvl = bardMatch.level;
+        const maxCastLvl = this.getMaxSpellLevel('bard', bardClass.level);
+        if (bardLvl <= maxCastLvl) {
+          const row = this.BARD_KNOWN_TABLE[Math.max(1, Math.min(20, bardClass.level))];
+          maxBardSpells = row ? (row[bardLvl] || 0) : 0;
+
+          // Count currently learned Bard spells at this level (excluding unlimited ones)
+          const learnedKeys = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
+          learnedKeys.forEach(key => {
+            const s = findSpellFn(key);
+            if (!s) return;
+
+            // Check if unlimited
+            const sUnlimited = activeClasses.some(c => {
+              if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
+              if (['paladin', 'ranger'].includes(c.classType) && c.level < 4) return false;
+              if (!Array.isArray(s.classLevels)) return false;
+              const clMatch = s.classLevels.find(cl => cl.class === c.classType);
+              if (!clMatch) return false;
+              const maxLvl = this.getMaxSpellLevel(c.classType, c.level);
+              return clMatch.level <= maxLvl;
+            });
+            if (sUnlimited) return;
+
+            // Check if on bard list at bardLvl
+            if (Array.isArray(s.classLevels)) {
+              const match = s.classLevels.find(cl => cl.class === 'bard' && cl.level === bardLvl);
+              if (match) currentBardSpells++;
+            }
+          });
+
+          if (currentBardSpells < maxBardSpells) {
+            bardAllowed = true;
+          }
+        }
+      }
+    }
+
+    // If the spell can be learned via Sorcerer or Bard, we allow it.
+    const hasSorcMatch = Array.isArray(spell.classLevels) && spell.classLevels.some(cl => cl.class === 'sorcerer');
+    const hasBardMatch = Array.isArray(spell.classLevels) && spell.classLevels.some(cl => cl.class === 'bard');
+
+    if ((sorcClass && hasSorcMatch) || (bardClass && hasBardMatch)) {
+      if (sorcAllowed || bardAllowed) {
+        return { success: true };
+      }
+
+      let errorMsg = "";
+      if (sorcClass && hasSorcMatch && bardClass && hasBardMatch) {
+        errorMsg = `Limit für bekannte Zauber des Grades ${sorcLvl} (Hexenmeister: ${currentSorcSpells}/${maxSorcSpells}) und des Grades ${bardLvl} (Barde: ${currentBardSpells}/${maxBardSpells}) überschritten!`;
+      } else if (sorcClass && hasSorcMatch) {
+        errorMsg = `Limit für bekannte Zauber des Grades ${sorcLvl} überschritten! (Hexenmeister: ${currentSorcSpells}/${maxSorcSpells})`;
+      } else {
+        errorMsg = `Limit für bekannte Zauber des Grades ${bardLvl} überschritten! (Barde: ${currentBardSpells}/${maxBardSpells})`;
+      }
+      return { success: false, error: errorMsg };
+    }
+
+    return { success: false, error: "Dieser Zauber befindet sich nicht auf deiner Klassenliste." };
+  },
+
+  calculateMaxFeats: function(pc) {
+    if (!pc) return 0;
+    const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
+    const totalLevel = activeClasses.reduce((sum, c) => sum + (c.level || 0), 0) || 1;
+
+    // General feats: 1 at level 1, +1 every 3 levels thereafter (3, 6, 9, 12, 15, 18)
+    let maxFeats = 1 + Math.floor((totalLevel - 1) / 3);
+
+    // Human bonus feat: assume true if undefined
+    const raceStr = (pc.race || '').toLowerCase();
+    const isHuman = pc.isHuman || raceStr === 'human' || raceStr === 'mensch' || pc.isHuman === undefined;
+    if (isHuman) {
+      maxFeats += 1;
+    }
+
+    // Fighter bonus feats
+    const fighterClass = activeClasses.find(c => c.classType === 'fighter');
+    if (fighterClass) {
+      maxFeats += 1 + Math.floor(fighterClass.level / 2);
+    }
+
+    // Wizard bonus feats
+    const wizardClass = activeClasses.find(c => c.classType === 'wizard');
+    if (wizardClass) {
+      maxFeats += 1 + Math.floor(wizardClass.level / 5);
+    }
+
+    // Monk bonus feats
+    const monkClass = activeClasses.find(c => c.classType === 'monk');
+    if (monkClass) {
+      const ml = monkClass.level;
+      maxFeats += ml >= 6 ? 3 : (ml >= 2 ? 2 : (ml >= 1 ? 1 : 0));
+    }
+
+    return maxFeats;
   }
 };

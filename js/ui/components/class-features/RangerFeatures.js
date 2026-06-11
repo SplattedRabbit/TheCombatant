@@ -1,3 +1,12 @@
+/**
+ * @module    RangerFeatures
+ * @summary   UI-Komponente für Waldläufer-Klassenfeatures: Erzfeind-Toggle, Begleiter-Verwaltung, TWF-Hinweise.
+ * @exports   RangerFeatures
+ * @reads     pc.dailyAbilities, pc.isFavoredEnemyActive, pc.classes
+ * @stateOps  CombatState.updatePCBatch, CombatState.saveToStorage
+ * @depends   ClassFeatureComponent, CombatState, dialogs
+ * @notHere   Erzfeind-Schadensberechnung → AttackEngine.js | RangerRules.getFavoredEnemyBonus → RangerRules.js
+ */
 import { ClassFeatureComponent } from './ClassFeatureComponent.js';
 import { CombatState } from '../../../state.js';
 import { showCustomAlert } from '../dialogs.js';
@@ -5,6 +14,10 @@ import { showCustomAlert } from '../dialogs.js';
 export class RangerFeatures extends ClassFeatureComponent {
   constructor() {
     super('ranger', 'Waldläufer', 'Ranger');
+    this.generalRulesOpen = false;
+    this.favoredRulesOpen = false;
+    this.combatstyleRulesOpen = false;
+    this.wildempathyRulesOpen = false;
   }
 
   render(pc, level) {
@@ -54,16 +67,38 @@ export class RangerFeatures extends ClassFeatureComponent {
           <div style="display: flex; flex-direction: column; gap: 4px; width: 100%;">
             <div style="font-family:'IM Fell English SC', serif; font-size:8px; color:var(--red); padding-bottom:2px; border-bottom:0.5px solid rgba(200,169,110,0.2); display: flex; justify-content: space-between; align-items: center;">
               <span>Klassenfähigkeiten</span>
-              <button class="ranger-rule-btn" data-rule="general" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--red); font-family: 'IM Fell English SC', serif; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;">📖 ↗</button>
+              <button class="btn btn-toggle-rules-general" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
+            </div>
+            
+            <div class="general-rules-box" style="display: ${this.generalRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3px; font-family: 'Crimson Text', serif;">
+              <strong style="color: var(--red); font-family: 'IM Fell English SC', serif;">Waldläufer-Klassenfähigkeiten:</strong><br>
+              • <strong>Track (Stufe 1):</strong> Erhält <em>Spurenlesen</em> als Bonus-Talent.<br>
+              • <strong>Endurance (Stufe 3):</strong> Erhält <em>Ausdauer</em> als Bonus-Talent.<br>
+              • <strong>Tierbegleiter (Stufe 4):</strong> Erhält einen Tierbegleiter (Stufe = 1/2 Waldläuferstufe).<br>
+              • <strong>Zaubersprüche (Stufe 4):</strong> Divine Zauber basierend auf Weisheit (Zauberstufe = 1/2 Waldläuferstufe).<br>
+              • <strong>Woodland Stride (Stufe 7):</strong> Kann sich ohne Schaden oder Verlangsamung durch natürliches Unterholz bewegen.<br>
+              • <strong>Swift Tracker (Stufe 8):</strong> Kann Spuren ohne Abzug von -5 mit normaler Geschwindigkeit verfolgen.<br>
+              • <strong>Evasion (Stufe 9):</strong> Erleidet bei erfolgreichem Reflexwurf keinen Schaden (nur in leichter oder keiner Rüstung).<br>
+              • <strong>Camouflage (Stufe 13):</strong> Kann sich in natürlichem Gelände auch ohne Deckung verstecken.<br>
+              • <strong>Hide in Plain Sight (Stufe 17):</strong> Kann sich in natürlichem Gelände auch unter Beobachtung verstecken.
             </div>
             
             <!-- Erzfeind Sektion -->
-            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8px; margin-top: 1px;">
-              <div style="display: flex; align-items: center; gap: 4px;">
-                <span><strong>Erzfeind:</strong></span>
-                <button class="ranger-rule-btn" data-rule="favored" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--red); font-family: 'IM Fell English SC', serif; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;">📖 ↗</button>
+            <div style="display: flex; flex-direction: column; border-bottom: 0.5px dashed rgba(200,169,110,0.2); padding-bottom: 4px; margin-bottom: 2px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8px; margin-top: 1px;">
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  <span><strong>Erzfeind:</strong></span>
+                  <button class="btn btn-toggle-rules-favored" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
+                </div>
+                <input type="text" class="cinput ranger-favored-enemy" value="${pc.favoredEnemy || ''}" placeholder="z. B. Untote" style="width: 70px; font-size: 8px; height: 13px; line-height: 1; border-radius: 1px; border: 0.5px solid var(--pb); padding: 0 2px;">
               </div>
-              <input type="text" class="cinput ranger-favored-enemy" value="${pc.favoredEnemy || ''}" placeholder="z. B. Untote" style="width: 70px; font-size: 8px; height: 13px; line-height: 1; border-radius: 1px; border: 0.5px solid var(--pb); padding: 0 2px;">
+              <div class="favored-rules-box" style="display: ${this.favoredRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3px; font-family: 'Crimson Text', serif;">
+                <strong style="color: var(--red); font-family: 'IM Fell English SC', serif;">Erzfeind (Favored Enemy):</strong><br>
+                Waldläufer erhält Boni gegen bestimmte Kreaturenarten.<br>
+                • <strong>Aktiver Bonus: +${enemyBonus}</strong><br>
+                • <strong>Anwendung:</strong> Gilt für alle <strong>Waffenschadenswürfe</strong> gegen den Erzfeind. Gilt für Proben auf Bluffen, Entdecken, Lauschen, Motiv erkennen und Überleben gegen diese Kreaturen.<br>
+                • <strong style="color: var(--red);">Wichtig (3.5e RAW):</strong> Gewährt <strong>keinen Angriffsbonus</strong> auf Trefferwürfe!
+              </div>
             </div>
             <div style="background: rgba(200, 169, 110, 0.12); border: 0.5px solid var(--pb); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--red); text-align: center; font-weight: bold; line-height: 1.25;">
               ✦ Erzfeind-Bonus: +${enemyBonus} auf Schaden & Fertigkeiten ✦
@@ -71,29 +106,46 @@ export class RangerFeatures extends ClassFeatureComponent {
 
             <!-- Kampfstil Sektion -->
             ${level >= 2 ? `
-              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8px; border-top: 0.5px solid rgba(200,169,110,0.2); padding-top: 3px; margin-top: 2px;">
-                <div style="display: flex; align-items: center; gap: 4px;">
-                  <span><strong>Kampfstil:</strong></span>
-                  <button class="ranger-rule-btn" data-rule="combatstyle" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--red); font-family: 'IM Fell English SC', serif; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;">📖 ↗</button>
+              <div style="display: flex; flex-direction: column; border-bottom: 0.5px dashed rgba(200,169,110,0.2); padding-bottom: 4px; margin-bottom: 2px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8px; padding-top: 3px; margin-top: 2px;">
+                  <div style="display: flex; align-items: center; gap: 4px;">
+                    <span><strong>Kampfstil:</strong></span>
+                    <button class="btn btn-toggle-rules-combatstyle" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
+                  </div>
+                  <select class="cinput ranger-combat-style" style="width: 70px; font-size: 7.5px; height: 14px; padding: 0 1px;">
+                    <option value="none" ${style === 'none' ? 'selected' : ''}>-- Wählen --</option>
+                    <option value="archery" ${style === 'archery' ? 'selected' : ''}>Bogenschießen</option>
+                    <option value="twoweapon" ${style === 'twoweapon' ? 'selected' : ''}>Zwei-Waffen</option>
+                  </select>
                 </div>
-                <select class="cinput ranger-combat-style" style="width: 70px; font-size: 7.5px; height: 14px; padding: 0 1px;">
-                  <option value="none" ${style === 'none' ? 'selected' : ''}>-- Wählen --</option>
-                  <option value="archery" ${style === 'archery' ? 'selected' : ''}>Bogenschießen</option>
-                  <option value="twoweapon" ${style === 'twoweapon' ? 'selected' : ''}>Zwei-Waffen</option>
-                </select>
+                <div class="combatstyle-rules-box" style="display: ${this.combatstyleRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3px; font-family: 'Crimson Text', serif;">
+                  <strong style="color: var(--red); font-family: 'IM Fell English SC', serif;">Kampfstil (Combat Style):</strong><br>
+                  Ab Stufe 2 spezialisiert sich der Waldläufer auf einen Kampfstil. Die Vorteile gelten <strong>nur in leichter/keiner Rüstung</strong>!<br>
+                  • <strong>Bogenschießen:</strong> Stufe 2: <em>Rapid Shot</em>, Stufe 6: <em>Manyshot</em>, Stufe 11: <em>Improved Precise Shot</em>.<br>
+                  • <strong>Zwei-Waffen-Kampf:</strong> Stufe 2: <em>Two-Weapon Fighting</em>, Stufe 6: <em>Improved Two-Weapon Fighting</em>, Stufe 11: <em>Greater Two-Weapon Fighting</em>.
+                </div>
+                ${combatStyleHtml}
               </div>
-              ${combatStyleHtml}
             ` : ''}
 
             <!-- Wildes Mitgefühl Sektion -->
-            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8px; border-top: 0.5px solid rgba(200,169,110,0.2); padding-top: 3px; margin-top: 2px;">
-              <div style="display: flex; align-items: center; gap: 4px;">
-                <span><strong>Wildes Mitgefühl:</strong></span>
-                <button class="ranger-rule-btn" data-rule="wildempathy" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--red); font-family: 'IM Fell English SC', serif; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;">📖 ↗</button>
+            <div style="display: flex; flex-direction: column; border-bottom: 0.5px dashed rgba(200,169,110,0.2); padding-bottom: 4px; margin-bottom: 2px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8px; padding-top: 3px; margin-top: 2px;">
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  <span><strong>Wildes Mitgefühl:</strong></span>
+                  <button class="btn btn-toggle-rules-wildempathy" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
+                </div>
+                <button class="xbtn ranger-wild-empathy-btn" style="font-size: 7.5px; padding: 1px 4px; height: 14px; line-height: 1; font-family: 'IM Fell English SC', serif; cursor: pointer;">
+                  Formel anzeigen 🎲
+                </button>
               </div>
-              <button class="xbtn ranger-wild-empathy-btn" style="font-size: 7.5px; padding: 1px 4px; height: 14px; line-height: 1; font-family: 'IM Fell English SC', serif; cursor: pointer;">
-                Formel anzeigen 🎲
-              </button>
+              <div class="wildempathy-rules-box" style="display: ${this.wildempathyRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3px; font-family: 'Crimson Text', serif;">
+                <strong style="color: var(--red); font-family: 'IM Fell English SC', serif;">Wildes Mitgefühl (Wild Empathy):</strong><br>
+                Verbesserung der Einstellung von Tieren (Diplomatie-Pendant).<br>
+                • <strong>Wurfformel:</strong> 1d20 + Waldläufer-Stufe [${level}] + CHA-Mod.<br>
+                • <strong>Anwendung:</strong> Sichtkontakt und Nähe (max. 9m), Dauer 1 min.<br>
+                • <strong>Bestien:</strong> Mit -4 Abzug auch auf magische Bestien (Int 1-2) anwendbar.
+              </div>
             </div>
 
             <!-- Tierbegleiter & Zauberstufe Fußzeile -->
@@ -138,7 +190,6 @@ export class RangerFeatures extends ClassFeatureComponent {
     const chaScore = pc.cha ? pc.cha.getValue() : 10;
     const chaMod = getAblMod(chaScore);
     const wildEmpathyTotal = level + chaMod;
-    const enemyBonus = Math.floor(level / 5) * 2 + 2;
 
     const empathyBtn = container.querySelector('.ranger-wild-empathy-btn');
     if (empathyBtn) {
@@ -170,89 +221,46 @@ export class RangerFeatures extends ClassFeatureComponent {
       };
     }
 
-    container.querySelectorAll('.ranger-rule-btn').forEach(btn => {
-      btn.onclick = (e) => {
+    // Toggle Buttons for Rules
+    const btnGeneral = container.querySelector('.btn-toggle-rules-general');
+    const boxGeneral = container.querySelector('.general-rules-box');
+    if (btnGeneral && boxGeneral) {
+      btnGeneral.onclick = (e) => {
         e.stopPropagation();
-        const rule = btn.dataset.rule;
-        let title = '';
-        let message = '';
-        let icon = '📖';
-
-        if (rule === 'favored') {
-          title = 'Erzfeind (Favored Enemy)';
-          message = `
-            <div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11.5px; line-height: 1.35;">
-              <p>Der Waldläufer erhält Boni gegen bestimmte Kreaturenarten aufgrund seines Studiums und Trainings.</p>
-              <ul style="margin: 4px 0; padding-left: 14px;">
-                <li><strong>Aktiver Bonus: +${enemyBonus}</strong></li>
-                <li><strong>Bonus-Anwendung:</strong>
-                  <ul style="margin: 2px 0; padding-left: 12px; list-style-type: circle;">
-                    <li>Gilt für alle <strong>Waffenschadenswürfe</strong> gegen den Erzfeind.</li>
-                    <li>Gilt für Proben auf <strong>Bluffen, Entdecken, Lauschen, Motiv erkennen und Überleben</strong> gegen diese Kreaturen.</li>
-                    <li><strong style="color: var(--red);">Wichtig (3.5e RAW):</strong> Gewährt <strong>keinen Angriffsbonus (Attack Roll Bonus)</strong> auf Trefferwürfe!</li>
-                  </ul>
-                </li>
-                <li><strong>Progression:</strong> Auf Stufe 5, 10, 15 und 20 kommt ein weiterer Feind hinzu und ein Bonus erhöht sich um +2 (z. B. +4/+2 auf Stufe 5).</li>
-              </ul>
-            </div>
-          `;
-        } else if (rule === 'combatstyle') {
-          title = 'Kampfstil (Combat Style)';
-          message = `
-            <div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11.5px; line-height: 1.35;">
-              <p>Ab Stufe 2 spezialisiert sich der Waldläufer auf einen Kampfstil. Er erhält Bonus-Talente, ohne deren Voraussetzungen erfüllen zu müssen.</p>
-              <ul style="margin: 4px 0; padding-left: 14px;">
-                <li><strong>Rüstungsbeschränkung:</strong> Die Vorteile gelten <strong>nur in leichter oder keiner Rüstung</strong>! In mittlerer/schwerer Rüstung verliert er alle Kampfstil-Talente.</li>
-                <li><strong>Bogenschießen (Archery):</strong>
-                  <ul style="margin: 2px 0; padding-left: 12px; list-style-type: circle;">
-                    <li>Stufe 2: <em>Rapid Shot (Schnelles Schießen)</em> - Zusätzlicher Fernkampfangriff bei voller Angriffsaktion.</li>
-                    <li>Stufe 6: <em>Manyshot (Mehrfachschuss)</em> - Verschießt als Standardaktion mehrere Pfeile gleichzeitig.</li>
-                    <li>Stufe 11: <em>Improved Precise Shot</em> - Ignoriert Deckung und Tarnung.</li>
-                  </ul>
-                </li>
-                <li><strong>Zwei-Waffen-Kampf (Two-Weapon Combat):</strong>
-                  <ul style="margin: 2px 0; padding-left: 12px; list-style-type: circle;">
-                    <li>Stufe 2: <em>Two-Weapon Fighting</em> - Reduziert die Abzüge für den Kampf mit zwei Waffen.</li>
-                    <li>Stufe 6: <em>Improved Two-Weapon Fighting</em> - Gewährt einen zweiten Nebenhand-Angriff.</li>
-                    <li>Stufe 11: <em>Greater Two-Weapon Fighting</em> - Gewährt einen dritten Nebenhand-Angriff.</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          `;
-        } else if (rule === 'wildempathy') {
-          title = 'Wildes Mitgefühl (Wild Empathy)';
-          message = `
-            <div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11.5px; line-height: 1.35;">
-              <p>Ermöglicht es, die Einstellung von Tieren durch Körpersprache und Verhalten zu verbessern (funktioniert wie Diplomatie).</p>
-              <ul style="margin: 4px 0; padding-left: 14px;">
-                <li><strong>Anwendung:</strong> Erfordert Sichtkontakt und Nähe (max. 30 Fuß / 9 Meter). Dauert 1 Minute.</li>
-                <li><strong>Wurfformel:</strong> <code>1d20 + Waldläufer-Stufe [${level}] + CHA-Mod [${chaMod >= 0 ? '+' : ''}${chaMod}]</code></li>
-                <li><strong>Bestien-Regel:</strong> Kann auch gegen magische Bestien (Int 1 oder 2) eingesetzt werden, allerdings mit einem Abzug von <strong>-4</strong>.</li>
-              </ul>
-            </div>
-          `;
-        } else if (rule === 'general') {
-          title = 'Waldläufer-Klassenfähigkeiten';
-          message = `
-            <div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11px; line-height: 1.3;">
-              <ul style="margin: 4px 0; padding-left: 12px; list-style-type: square;">
-                <li><strong>Track (Stufe 1):</strong> Erhält <em>Spurenlesen</em> als Bonus-Talent.</li>
-                <li><strong>Endurance (Stufe 3):</strong> Erhält <em>Ausdauer</em> als Bonus-Talent.</li>
-                <li><strong>Tierbegleiter (Stufe 4):</strong> Erhält einen Tierbegleiter. Die Begleiter-Stufe für diesen Gefährten entspricht <strong>1/2 Waldläuferstufe</strong>.</li>
-                <li><strong>Zaubersprüche (Stufe 4):</strong> Wirkt divine Zauber basierend auf Weisheit. Seine Zauberstufe entspricht <strong>1/2 Waldläuferstufe</strong>.</li>
-                <li><strong>Woodland Stride (Stufe 7):</strong> Kann sich ohne Schaden oder Verlangsamung durch natürliches Unterholz bewegen.</li>
-                <li><strong>Swift Tracker (Stufe 8):</strong> Kann Spuren ohne den Abzug von -5 mit normaler Geschwindigkeit verfolgen.</li>
-                <li><strong>Evasion (Stufe 9):</strong> Erleidet bei erfolgreichem Reflexwurf keinen Schaden (nur in leichter oder keiner Rüstung).</li>
-                <li><strong>Camouflage (Stufe 13):</strong> Kann sich in natürlichem Gelände auch ohne Deckung verstecken.</li>
-                <li><strong>Hide in Plain Sight (Stufe 17):</strong> Kann sich in natürlichem Gelände auch unter Beobachtung verstecken.</li>
-              </ul>
-            </div>
-          `;
-        }
-
-        showCustomAlert(title, message, 'Schließen', icon);
+        this.generalRulesOpen = !this.generalRulesOpen;
+        boxGeneral.style.display = this.generalRulesOpen ? 'block' : 'none';
       };
-    });
+    }
+
+    const btnFavored = container.querySelector('.btn-toggle-rules-favored');
+    const boxFavored = container.querySelector('.favored-rules-box');
+    if (btnFavored && boxFavored) {
+      btnFavored.onclick = (e) => {
+        e.stopPropagation();
+        this.favoredRulesOpen = !this.favoredRulesOpen;
+        boxFavored.style.display = this.favoredRulesOpen ? 'block' : 'none';
+      };
+    }
+
+    const btnCombatstyle = container.querySelector('.btn-toggle-rules-combatstyle');
+    const boxCombatstyle = container.querySelector('.combatstyle-rules-box');
+    if (btnCombatstyle && boxCombatstyle) {
+      btnCombatstyle.onclick = (e) => {
+        e.stopPropagation();
+        this.combatstyleRulesOpen = !this.combatstyleRulesOpen;
+        boxCombatstyle.style.display = this.combatstyleRulesOpen ? 'block' : 'none';
+      };
+    }
+
+    const btnWildempathy = container.querySelector('.btn-toggle-rules-wildempathy');
+    const boxWildempathy = container.querySelector('.wildempathy-rules-box');
+    if (btnWildempathy && boxWildempathy) {
+      btnWildempathy.onclick = (e) => {
+        e.stopPropagation();
+        this.wildempathyRulesOpen = !this.wildempathyRulesOpen;
+        boxWildempathy.style.display = this.wildempathyRulesOpen ? 'block' : 'none';
+      };
+    }
   }
 }
+

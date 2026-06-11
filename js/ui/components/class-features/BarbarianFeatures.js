@@ -1,9 +1,19 @@
+/**
+ * @module    BarbarianFeatures
+ * @summary   UI-Komponente für Barbar-Klassenfeatures: Kampfrausch-Toggle, Bursts-Bubbles, Regeln-Akkordeon.
+ * @exports   BarbarianFeatures
+ * @reads     pc.dailyAbilities, pc.isRaging, pc.level
+ * @stateOps  CombatState.saveToStorage, CombatState.syncPCToHost
+ * @depends   ClassFeatureComponent, CombatState
+ * @notHere   Kampfrausch-Modifikatoren → Combatant.js (enterRage/exitRage) | Klassenregeln → rules.js CLASS_PROFILES
+ */
 import { ClassFeatureComponent } from './ClassFeatureComponent.js';
 import { CombatState } from '../../../state.js';
 
 export class BarbarianFeatures extends ClassFeatureComponent {
   constructor() {
     super('barbarian', 'Barbar', 'Barbarian');
+    this.rageRulesOpen = false;
   }
 
   render(pc, level) {
@@ -39,11 +49,22 @@ export class BarbarianFeatures extends ClassFeatureComponent {
         <div class="class-card-body" style="display: flex; padding: 6px; align-items: start; width: 100%;">
           <div style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 8.5px;">
-              <span><strong>Kampfrausch-Nutzungen:</strong></span>
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <span><strong>Kampfrausch:</strong></span>
+                <button class="btn btn-toggle-rules-rage" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
+              </div>
               <div style="display: flex; align-items: center; gap: 4px;">
                 <div style="display: flex;">${rageBubbles}</div>
                 <span>(${remaining} übrig)</span>
               </div>
+            </div>
+            <div class="rage-rules-box" style="display: ${this.rageRulesOpen ? 'block' : 'none'}; background: rgba(0, 0, 0, 0.02); border: 0.5px solid rgba(200, 169, 110, 0.25); border-radius: 2px; padding: 4px; font-size: 7.5px; color: var(--inkm); line-height: 1.25; margin-top: 3.5px; font-family: 'Crimson Text', serif; margin-bottom: 2px;">
+              <strong style="color: var(--red); font-family: 'IM Fell English SC', serif;">Kampfrausch (Rage):</strong><br>
+              Ein Barbar kann in einen Kampfrausch verfallen, um kurzzeitig seine Kampfkraft drastisch zu steigern.<br>
+              • <strong>Boni:</strong> +4 Stärke (STR), +4 Konstitution (CON), +2 Moralbonus auf Willensrettungswürfe (Will). Die Trefferpunkte erhöhen sich temporär um +2 pro Charakterstufe.<br>
+              • <strong>Mali:</strong> –2 Rüstungsklasse (RK) durch mangelnde Verteidigung.<br>
+              • <strong>Dauer:</strong> 3 + veränderter Konstitutionsmodifikator Runden.<br>
+              • <strong>Erschöpfung:</strong> Nach dem Kampfrausch ist der Barbar für die Dauer der aktuellen Begegnung erschöpft (–2 STR, –2 DEX, kein Laufen).
             </div>
             <button class="btn toggle-rage-btn" style="font-family: 'IM Fell English SC', serif; font-size: 9px; padding: 4px 10px; width: 100%; border-radius: 2px; ${rageBtnStyle}" ${!canRage ? 'disabled' : ''}>${rageBtnText}</button>
             <div style="margin-top: 4px; padding: 5px; background: rgba(200, 169, 110, 0.05); border: 0.5px solid var(--pb); border-radius: 2px;">
@@ -86,6 +107,16 @@ export class BarbarianFeatures extends ClassFeatureComponent {
   }
 
   bindEvents(pc, level, container, triggerRender) {
+    const btnRage = container.querySelector('.btn-toggle-rules-rage');
+    const boxRage = container.querySelector('.rage-rules-box');
+    if (btnRage && boxRage) {
+      btnRage.onclick = (e) => {
+        e.stopPropagation();
+        this.rageRulesOpen = !this.rageRulesOpen;
+        boxRage.style.display = this.rageRulesOpen ? 'block' : 'none';
+      };
+    }
+
     const rageBtn = container.querySelector('.toggle-rage-btn');
     if (rageBtn) {
       rageBtn.onclick = (e) => {

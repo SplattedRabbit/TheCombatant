@@ -42,9 +42,9 @@ export function rebuildCombatantModifiers(pc) {
     return s >= 10 ? Math.floor((s - 10) / 2) : (s === 9 || s === 8 ? -1 : (s === 7 || s === 6 ? -2 : (s === 5 || s === 4 ? -4 : -5)));
   };
 
-  applyBaseSavingThrowModifiers(pc, getMod);
   applySpellModifiers(pc);
   applyClassModifiers(pc, getMod);
   applyFeatModifiers(pc, getMod);
+  applyBaseSavingThrowModifiers(pc, getMod);
   recalculateSpeed(pc);
 }
