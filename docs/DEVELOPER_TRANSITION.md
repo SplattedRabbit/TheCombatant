@@ -1,6 +1,6 @@
-# Übergabeprotokoll / Developer Transition Briefing: D&D 3.5e Combat App — v3.2.5 (Live)
+# Übergabeprotokoll / Developer Transition Briefing: D&D 3.5e Combat App — v3.2.6 (Live)
 
-Hallo! Du übernimmst das D&D 3.5e Combat App-Projekt. Der aktuelle Stand ist **v3.2.5 (Live, Branch: `feature/MagicItems`)**.
+Hallo! Du übernimmst das D&D 3.5e Combat App-Projekt. Der aktuelle Stand ist **v3.2.6 (Live, Branch: `feature/MagicItems`)**.
 
 Bitte lies dieses Dokument aufmerksam durch, um die Architektur, die Dateistruktur und die Verhaltensregeln der Codebasis zu verstehen.
 
@@ -20,8 +20,8 @@ Bitte lies dieses Dokument aufmerksam durch, um die Architektur, die Dateistrukt
 3. **Persistente UI-Entwicklungen:** Achte bei UI-Aktualisierungen darauf, dass der Tastaturfokus und die Cursor-Position durch den `Focus-Schutz` (`DeltaRenderer.applyWithFocusGuard`) nicht verloren gehen.
 4. **Lokales WLAN-Hosting:** Beim Starten von `Start_Server.bat` werden alle verfügbaren IPv4-Adressen deines PCs im Netzwerk ermittelt und in der Konsole ausgegeben, um das Tablet schnell zu verbinden. Run as Administrator, um auf der IP lauschen zu können.
 5. **Service Worker Cache-Versionierung:** Das Muster ist `vX.Y.Z-cache-vN`. Beim Hochgehen der Versionsnummer beginnt der Cache-Zähler wieder bei 1. Beim Bugfixing innerhalb einer Version wird nur `N` inkrementiert.
-   - Aktuelle Version: `dnd-combatsheet-v3.2.5-cache-v2`
-   - Betrifft: `service-worker.js` (Zeile 1, `CACHE_NAME`) und `index.html` (Footer-Version).
+   - Aktuelle Version: `dnd-combatsheet-v3.2.6-cache-v1`
+  - Betrifft: `service-worker.js` (Zeile 1, `CACHE_NAME`) und `index.html` (Footer-Version).
 
 ---
 
@@ -85,13 +85,12 @@ graph TD
 * [ui-core.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/ui-core.js): Einstiegspunkt des UI-Renderers.
 * **UI-Tabs (`js/ui/components/player/`):**
   - [PCHeader.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCHeader.js) / [PCAttributes.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCAttributes.js) / [PCDefenses.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCDefenses.js).
-  - [PCOffense.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCOffense.js): Waffenkarten, Drawer-Events, Waffen- und Rüstungs-Inventar. **Achtung:** Bei Wild Shape (`pc.activeShape !== "none"`) ruft er `_renderNaturalAttacksList()` auf — diese Funktion ist aktuell nicht definiert (⚠ **Bug #16**).
+  - [PCOffense.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCOffense.js): Fassade für den Ausrüstung-Tab. Delegiert die Generierung des Layouts und die Events an die 7 Subkomponenten unter `js/ui/components/player/offense/` (ID-Helper, Slots, Kampfeinstellungen, Rucksack-Renderer, Waffen/Rüstungskarten).
   - [PCMagicItemsTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCMagicItemsTab.js): Dedizierter Tab für magische Gegenstände. Linke Spalte: Ausgerüstete Slot-Boxen + Slotless-Liste. Rechte Spalte: Rucksack/Inventar mit mehrfachen Effekten pro Gegenstand und Inline-„➕ Effekt"-Button.
   - [PCResources.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCResources.js): Reiter-Steuerung rechts.
   - [PCSpellbookTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCSpellbookTab.js) / [PCCompendiumTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCCompendiumTab.js) / [PCFeatsTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCFeatsTab.js).
 * **Player Sheet Navigation (`js/ui/components/player-sheet.js`):**
-  - Enthält 5 Tabs: Übersicht, Skills & Talente, Ausrüstung, Zauberbuch, Klasse & Begleiter, System.
-  - **Achtung:** Der Tab „Ausrüstung" rendert `renderPCOffense()` – dieser crasht im Wild-Shape-Modus (⚠ **Bug #16**).
+  - Enthält 5 Tabs: Übersicht, Skills & Talente, Ausrüstung, Zauberbuch, Klasse & Begleiter, System. Renders `renderPCOffense()` in Tab Ausrüstung.
 * **Pergament-Dialoge (`js/ui/dialogs/`)**: Wie in v3.1.5.
 
 ---

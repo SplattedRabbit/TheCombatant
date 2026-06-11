@@ -35,17 +35,17 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Feature               | Primärdatei(en)                                          | Sekundär / Aufrufer                          |
 |-----------------------|----------------------------------------------------------|----------------------------------------------|
 | Wild Shape            | `js/models/helpers/classes/DruidHelper.js`                | `Combatant.js`, `PCOffense.js`, `DruidFeatures.js` |
-| Natürliche Angriffe   | `js/ui/components/player/PCOffense.js` (`SHAPE_ATTACKS`) | `js/rules/AttackEngine.js` (`isNatural`)     |
+| Natürliche Angriffe   | `js/ui/components/player/offense/NaturalAttacksRenderer.js` (`SHAPE_ATTACKS`) | `js/rules/AttackEngine.js` (`isNatural`), `PCOffense.js` |
 | Magische Gegenstände  | `js/models/Item.js`, `PCMagicItemsTab.js`                | `js/state/PCManager.js` (`addPCItem*`)       |
-| Waffen-UI             | `PCOffense.js` (`_createStashWeaponCard`)                | `AttackEngine.js`, `js/models/Weapon.js`     |
-| Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`            | `PCOffense.js` (`_createStashArmorCard`)     |
+| Waffen-UI             | `js/ui/components/player/offense/WeaponStashCard.js` (`createStashWeaponCard`) | `AttackEngine.js`, `js/models/Weapon.js`, `InventoryStashRenderer.js` |
+| Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `offense/ArmorStashCard.js` | `PCOffense.js`, `InventoryStashRenderer.js`  |
 | Angriffs-Engine       | `js/rules/AttackEngine.js`                               | `PCOffense.js`, `dialogs/AttackChoiceDialog.js` |
 | Rettungswürfe         | `js/rules/SaveCalculator.js`                             | `js/models/Combatant.js`, `helpers/modifiers/` |
 | Zauber / Slots        | `PCSpellbookTab.js`, `PCCompendiumTab.js`, `helpers/spells/CombatantSpells.js` | `SpellSlotCalculator.js`, `Combatant.js` |
 | Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `js/ui/components/class-features/` |
 | Talente               | `js/data/feats-data.js`                                  | `PCManager.js` (`addPCFeat`), `PCFeatsTab.js` |
-| Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `PCOffense.js` (`w-hand-select`)             |
-| Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `PCOffense.js`, `AttackEngine.js`            |
+| Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.js`                 |
+| Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `offense/WeaponStashCard.js`, `AttackEngine.js` |
 | Initiative / RK       | `PCDefenses.js`                                          | `Combatant.js`, `helpers/modifiers/`         |
 | HP & Globe            | `PCHealthGlobe.js`                                       | `PCManager.js` (`applyDamage`/`applyHeal`)  |
 | Netzwerk-Sync         | `js/network/SyncProtocol.js`                             | `NetworkManager.js`, `MessageQueue.js`       |
@@ -195,4 +195,4 @@ Beantworte kurz diese 4 Fragen — wenn eine "Nein" ist, nachbessern:
 | > 900Z    | Split bei nächster Gelegenheit — Issue in Bugtracking.md   |
 
 Aktuell zu groß (Backlog):
-- `js/ui/components/player/PCOffense.js` (>1200Z) → Split geplant
+- Keine (alle Monolithen erfolgreich modularisiert)

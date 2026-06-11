@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :---: | :---: | :--- |
+| **v3.2.6** | Release | 11.06.2026 | Monolith Refactoring: PCOffense.js Split in 7 UI-Subkomponenten |
 | **v3.2.5** | Release | 10.06.2026 | Wild-Shape-Bugdokumentation, Cache-Bump, Serviceworker-Versionskonvention |
 | **v3.2.4** | Release | 10.06.2026 | Waffen Zusatzschaden: Würfelanzahl + Schadensart via Dropdowns (extraDamageDice/extraDamageType), AttackEngine-Integration |
 | **v3.2.3** | Release | 10.06.2026 | Magische Gegenstände: Multi-Effekte (effects[]-Array), Inline-„➕ Effekt"-Button, Legacy-Abwärtskompatibilität |
@@ -60,6 +61,28 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v3.2.6 — Monolith-Refactoring: PCOffense.js Split (Release v3.2.6)
+
+* **⚔️ Modularisierung des Ausrüstungs-Tabs (PCOffense.js):**
+  - Der UI-Monolith `PCOffense.js` wurde von über 1.250 Zeilen auf ca. 50 Zeilen geschrumpft.
+  - Die gesamte Funktionalität wurde in 7 granular strukturierte JS-Komponenten unter `js/ui/components/player/offense/` aufgeteilt:
+    - **`PCOffenseHelper.js`:** ID-Vergaberoutine, Seltenheits-Styling und Waffentalent-Boni.
+    - **`NaturalAttacksRenderer.js`:** Hält `SHAPE_ATTACKS` und rendert Tiergestalt-Waffen.
+    - **`CombatSettingsRenderer.js`:** Steuert die Inputs/Toggles für Heftigen Angriff, Kampfgetümmel, Verteidigendes Kämpfen und Volle Abwehr.
+    - **`EquipmentSlotsRenderer.js`:** Rendert die drei Slots (Haupthand, Nebenhand, Rüstung) und bindet Wurf- und Unequip-Aktionen.
+    - **`WeaponStashCard.js`:** Verwaltet Waffen-Backpack-Karten, Zusatzschadens-Drawer und Doppelwaffen-Dialog.
+    - **`ArmorStashCard.js`:** Rüstungs-Rucksack-Karten und Auto-RK-Abfrage.
+    - **`InventoryStashRenderer.js`:** Rucksack-Grundlayout, Listen-Befüllung und Add-Buttons.
+  - `PCOffense.js` fungiert als reiner Fassaden-Einstiegspunkt. Alle unit-relevanten Hilfsfunktionen (`isLightWeapon`, `getCritThreatDisplay`) werden transparent weiterreexportiert.
+* **🌐 Offline-Fähigkeit & Service-Worker:**
+  - Alle 7 neuen Dateien wurden im Service Worker registriert.
+  - Die Cache-Version wurde auf `dnd-combatsheet-v3.2.6-cache-v1` hochgestuft.
+* **📝 AGENT.md Pflege:**
+  - Alle neuen Komponenten haben den standardkonformen `@module`-Header erhalten.
+  - Der Feature-to-File-Index wurde angepasst, `PCOffense.js` wurde aus dem Größen-Backlog gelöscht.
+
+---
 
 ### v3.2.5 — Bugdokumentation & Cache-Pflege (Release v3.2.5)
 

@@ -149,3 +149,10 @@ Dieses Dokument dient der Erfassung und Vorbereitung von Korrekturen für bekann
     *   Die Funktion nutzt eine lokale `SHAPE_ATTACKS`-Datentabelle mit den korrekten D&D 3.5e Natürlichen Angriffen je Form (Wolf: Biss, Leopard: Biss + 2x Kralle, Braunbär: 2x Kralle + Biss).
     *   Für jeden Angriff wird ein Pseudo-Weapon-Objekt gebaut, das von `showAttackChoiceDialog` und `showRollBreakdown` verarbeitet werden kann.
     *   ATK- und DMG-Buttons sind vollständig funktionsfähig.
+
+
+## 17
+Erzfeind liegt im Atkroll != dmg roll
+
+## 18 double talents
+Alle statt ausgeählte Talente sind mehrfach wählbar

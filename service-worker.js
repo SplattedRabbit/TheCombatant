@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.2.5-cache-v5';
+const CACHE_NAME = 'dnd-combatsheet-v3.2.6-cache-v1';
 const ASSETS = [
   './',
   './index.html',
@@ -62,6 +62,13 @@ const ASSETS = [
   './js/ui/components/player/PCAttributes.js',
   './js/ui/components/player/PCDefenses.js',
   './js/ui/components/player/PCOffense.js',
+  './js/ui/components/player/offense/PCOffenseHelper.js',
+  './js/ui/components/player/offense/NaturalAttacksRenderer.js',
+  './js/ui/components/player/offense/CombatSettingsRenderer.js',
+  './js/ui/components/player/offense/EquipmentSlotsRenderer.js',
+  './js/ui/components/player/offense/WeaponStashCard.js',
+  './js/ui/components/player/offense/ArmorStashCard.js',
+  './js/ui/components/player/offense/InventoryStashRenderer.js',
   './js/ui/components/player/PCMagicItemsTab.js',
   './js/ui/components/player/PCResources.js',
   './js/ui/components/player/PCSpellbookTab.js',
