@@ -547,13 +547,12 @@ function _handleSpellListClick(pc, e) {
             return true;
           }
         }
+      }
       // Check spells known limit (Bug #8)
-      if (spell) {
-        const check = CombatRules.checkSpellKnownLimit(activePC, spell, (k) => findSpell(activePC, k));
-        if (!check.success) {
-          showCustomAlert("Zauberlimit überschritten", check.error || "Du kannst keine weiteren bekannten Zauber dieses Grades lernen.");
-          return true;
-        }
+      const check = CombatRules.checkSpellKnownLimit(activePC, spell, (k) => findSpell(activePC, k));
+      if (!check.success) {
+        showCustomAlert("Zauberlimit überschritten", check.error || "Du kannst keine weiteren bekannten Zauber dieses Grades lernen.");
+        return true;
       }
     }
 
