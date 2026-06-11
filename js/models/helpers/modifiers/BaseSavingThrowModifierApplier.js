@@ -37,12 +37,8 @@ export function applyBaseSavingThrowModifiers(pc, getMod) {
           }
         }
 
-        if (pc.acNatural !== 0) {
-          pc.ac.addModifier(pc.acNatural, "natural", "Natürliche Rüstung");
-          pc.ac.modifiers[pc.ac.modifiers.length - 1].isClass = true;
-          pc.acFlat.addModifier(pc.acNatural, "natural", "Natürliche Rüstung");
-          pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isClass = true;
-        }
+        // @feature:wildshape — Angeborene natürliche Rüstung (acNatural) der Grundform in Tiergestalt ignorieren (RAW)
+
 
         if (pc.acDeflection !== 0) {
           pc.ac.addModifier(pc.acDeflection, "deflection", "Ablenkungs-Bonus");
@@ -149,16 +145,6 @@ export function applyBaseSavingThrowModifiers(pc, getMod) {
           pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isClass = true;
         }
       }
-
-      const sizeMod = (typeof pc.getSizeModifier === 'function') ? pc.getSizeModifier() : 0;
-      if (sizeMod !== 0) {
-        pc.ac.addModifier(sizeMod, "untyped", "Größenmodifikator");
-        pc.ac.modifiers[pc.ac.modifiers.length - 1].isClass = true;
-        pc.acTouch.addModifier(sizeMod, "untyped", "Größenmodifikator");
-        pc.acTouch.modifiers[pc.acTouch.modifiers.length - 1].isClass = true;
-        pc.acFlat.addModifier(sizeMod, "untyped", "Größenmodifikator");
-        pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isClass = true;
-      }
     } else {
       const dexMod = getMod(pc.dex.getValue());
       
@@ -172,6 +158,16 @@ export function applyBaseSavingThrowModifiers(pc, getMod) {
         pc.acFlat.addModifier(dexMod, "untyped", "Geschicklichkeits-Modifikator");
         pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isClass = true;
       }
+    }
+
+    const sizeMod = (typeof pc.getSizeModifier === 'function') ? pc.getSizeModifier() : 0;
+    if (sizeMod !== 0) {
+      pc.ac.addModifier(sizeMod, "untyped", "Größenmodifikator");
+      pc.ac.modifiers[pc.ac.modifiers.length - 1].isClass = true;
+      pc.acTouch.addModifier(sizeMod, "untyped", "Größenmodifikator");
+      pc.acTouch.modifiers[pc.acTouch.modifiers.length - 1].isClass = true;
+      pc.acFlat.addModifier(sizeMod, "untyped", "Größenmodifikator");
+      pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isClass = true;
     }
 
     if (pc.zaMisc !== 0) {

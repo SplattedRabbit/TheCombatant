@@ -313,6 +313,13 @@ test('Combat Action - Smite Evil and Favored Enemy Options', () => {
   const seqBoth = AttackEngine.calculateAttackSequence(pc, sword, false, { smite: true, favoredEnemy: true });
   assert.strictEqual(seqBoth[0].atkTotal, 16);
   assert.strictEqual(seqBoth[0].dmgTotal, 11); // 2 + 5 (smite) + 4 (FE)
+
+  // Scenario 5: Fallback to character property toggles when options are not passed (or empty)
+  pc.isFavoredEnemyActive = true;
+  pc.isSmiteActive = true;
+  const seqFallback = AttackEngine.calculateAttackSequence(pc, sword, false);
+  assert.strictEqual(seqFallback[0].atkTotal, 16); // 11 + 2 + 3 (smite)
+  assert.strictEqual(seqFallback[0].dmgTotal, 11); // 2 + 5 (smite) + 4 (FE)
 });
 
 test('Combat Action - Defensive Fighting and Tumble Ranks', () => {

@@ -100,9 +100,8 @@ test('Stat - Negativwerte und sonstige Ränder', () => {
   s.addModifier(-2, 'untyped', 'Schwächung');
   assert.strictEqual(s.getValue(), 8);
 
-  // Typisierte Strafen (negative Werte) verhalten sich laut Math.max(grouped[m.type] || 0, val)
-  // so, dass sie ignoriert werden, da Math.max(0, -2) = 0 ergibt.
-  // Wir testen und dokumentieren dieses Verhalten hier.
+  // Typisierte Strafen (negative Werte) verhalten sich laut D&D 3.5e-Regeln so,
+  // dass sie ebenfalls subtrahiert werden (sie stapeln sich).
   s.addModifier(-2, 'morale', 'Furcht-Typisiert');
-  assert.strictEqual(s.getValue(), 8, 'Typisierte negative Boni werden laut aktueller Implementierung ignoriert (Math.max mit 0)');
+  assert.strictEqual(s.getValue(), 6, 'Typisierte negative Boni (Mali) müssen angewendet werden');
 });

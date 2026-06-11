@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.2.6-cache-v2';
+const CACHE_NAME = 'dnd-combatsheet-v3.2.7-cache-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -70,7 +70,9 @@ const ASSETS = [
   './js/ui/components/player/offense/ArmorStashCard.js',
   './js/ui/components/player/offense/InventoryStashRenderer.js',
   './js/ui/components/player/PCMagicItemsTab.js',
-  './js/ui/components/player/PCResources.js',
+  './js/ui/components/player/ClassFeaturesRegistry.js',
+  './js/ui/components/player/PCSpellsTab.js',
+  './js/ui/components/player/PCFeaturesTab.js',
   './js/ui/components/player/PCSpellbookTab.js',
   './js/ui/components/player/PCCompendiumTab.js',
   './js/ui/components/player/PCSpellDialogs.js',
@@ -111,6 +113,11 @@ const ASSETS = [
   './js/data/feats-data.js',
   './js/data/skills-data.js',
   './js/rules/AttackEngine.js',
+  './js/rules/attack/AttackContext.js',
+  './js/rules/attack/BaseAttackCalculator.js',
+  './js/rules/attack/ModifierCalculator.js',
+  './js/rules/attack/DamageFormulaBuilder.js',
+  './js/rules/attack/SequenceBuilder.js',
   './js/state/state-core.js',
   './js/state/StorageManager.js',
   './js/state/PCManager.js',

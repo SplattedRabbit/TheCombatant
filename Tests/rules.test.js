@@ -7,6 +7,7 @@ import { SaveCalculator } from '../js/rules/SaveCalculator.js';
 import { SpellSlotCalculator } from '../js/rules/SpellSlotCalculator.js';
 import { Stat } from '../js/models/Stat.js';
 import { CombatRules } from '../js/rules.js';
+import { Combatant } from '../js/models/Combatant.js';
 
 test('BABCalculator - Einzelklassen-Berechnung', () => {
   // Fighter Level 3 (guter BAB-Verlauf): BAB = 3
@@ -206,4 +207,120 @@ test('CombatRules - checkSpellKnownLimit enforces spontaneous spells limit but a
   };
   const check2 = CombatRules.checkSpellKnownLimit(pcMulti, spellsDB['grease'], findSpellFn);
   assert.strictEqual(check2.success, true, 'Sollte für Magier/Hexenmeister Multiklasse erlaubt sein');
+});
+
+test('CombatRules - calculateTotalSkillPoints calculates correct skill points', () => {
+  // Fighter level 1, non-human, INT 12 (+1 mod)
+  const pcFighter1 = {
+    classes: [{ classType: 'fighter', level: 1 }],
+    int: new Stat(12),
+    isHuman: false
+  };
+  assert.strictEqual(CombatRules.calculateTotalSkillPoints(pcFighter1), 12);
+
+  // Fighter level 2, non-human, INT 12 (+1 mod)
+  const pcFighter2 = {
+    classes: [{ classType: 'fighter', level: 2 }],
+    int: new Stat(12),
+    isHuman: false
+  };
+  assert.strictEqual(CombatRules.calculateTotalSkillPoints(pcFighter2), 15);
+
+  // Rogue level 1, human, INT 10 (+0 mod)
+  const pcRogue1 = {
+    classes: [{ classType: 'rogue', level: 1 }],
+    int: new Stat(10),
+    isHuman: true
+  };
+  assert.strictEqual(CombatRules.calculateTotalSkillPoints(pcRogue1), 36);
+
+  // Multiclass: Wizard 1 / Cleric 1, non-human, INT 14 (+2 mod)
+  // Wizard 1: (2 + 2) * 4 = 16
+  // Cleric 1: (2 + 2) = 4
+  // Total: 20
+  const pcMulti = {
+    classes: [
+      { classType: 'wizard', level: 1 },
+      { classType: 'cleric', level: 1 }
+    ],
+    int: new Stat(14),
+    isHuman: false
+  };
+  assert.strictEqual(CombatRules.calculateTotalSkillPoints(pcMulti), 20);
+});
+
+test('CombatRules - calculateSpentSkillPoints calculates correct spent points', () => {
+  // Cleric: jump is cross-class (classType cleric doesn't have jump)
+  // concentration is class skill for cleric
+  const pcCleric = {
+    classes: [{ classType: 'cleric', level: 1 }],
+    skills: {
+      jump: { ranks: 2, misc: 0 }, // 2 ranks * 2 (cross-class) = 4 SP
+      concentration: { ranks: 4, misc: 0 } // 4 ranks * 1 (class) = 4 SP
+    }
+  };
+  assert.strictEqual(CombatRules.calculateSpentSkillPoints(pcCleric), 8);
+});
+
+test('CombatRules - Racial Attribute Modifiers and Size AC are applied correctly', () => {
+  // Elf (+2 Dex, -2 Con)
+  const pcElf = new Combatant({
+    race: 'elf',
+    str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10
+  });
+  // After rebuildCombatantModifiers (run in constructor)
+  assert.strictEqual(pcElf.dex.getValue(), 12, 'Elfen sollten +2 Ges erhalten');
+  assert.strictEqual(pcElf.con.getValue(), 8, 'Elfen sollten -2 Kon erhalten');
+
+  // Gnome (+2 Con, -2 Str, Small size AC +1)
+  const pcGnome = new Combatant({
+    race: 'gnome',
+    str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10
+  });
+  assert.strictEqual(pcGnome.con.getValue(), 12, 'Gnome sollten +2 Kon erhalten');
+  assert.strictEqual(pcGnome.str.getValue(), 8, 'Gnome sollten -2 Str erhalten');
+  assert.strictEqual(pcGnome.ac.getValue(), 11, 'Gnome sollten +1 Größenbonus auf RK erhalten');
+  assert.strictEqual(pcGnome.acTouch.getValue(), 11, 'Gnome sollten +1 Größenbonus auf Touch-RK erhalten');
+  assert.strictEqual(pcGnome.acFlat.getValue(), 11, 'Gnome sollten +1 Größenbonus auf Flat-RK erhalten');
+});
+
+test('CombatRules - Racial Speed calculations and Dwarf armor immunity', () => {
+  // Halfling speed 20 ft
+  const pcHalfling = new Combatant({
+    race: 'halfling',
+    baseBw: 20
+  });
+  assert.strictEqual(pcHalfling.bw, 20);
+
+  // Dwarf speed 20 ft, immune to medium/heavy armor speed penalties
+  const pcDwarf = new Combatant({
+    race: 'dwarf',
+    baseBw: 20,
+    armors: [{ type: 'half_plate', speedCategory: 'heavy', isEquipped: true, checkPenalty: -7 }]
+  });
+  // Heavy armor speed penalty should NOT reduce Dwarf speed below 20 ft
+  assert.strictEqual(pcDwarf.bw, 20, 'Zwerg sollte in schwerer Rüstung keine Verlangsamung erleiden');
+});
+
+test('CombatRules - Racial Skill and Saving Throw bonuses are applied correctly', () => {
+  // Elf gets +2 on Listen/Search/Spot
+  const pcElf = new Combatant({
+    race: 'elf',
+    skills: {
+      listen: { ranks: 0, misc: 0 },
+      search: { ranks: 2, misc: 0 } // 2 ranks + 0 (Int mod) + 2 (Elf bonus) = 4
+    }
+  });
+  assert.strictEqual(pcElf.getSkillModifier('listen'), 2, 'Elf sollte +2 Volksbonus auf Lauschen erhalten');
+  assert.strictEqual(pcElf.getSkillModifier('search'), 4, 'Elf sollte +2 Volksbonus auf Suchen erhalten');
+
+  // Halfling gets +1 on all saves
+  const pcHalfling = new Combatant({
+    race: 'halfling',
+    baseZa: 2, baseRef: 2, baseWil: 2
+  });
+  assert.strictEqual(pcHalfling.za.getValue(), 3, 'Halbling sollte +1 Volksbonus auf ZÄ erhalten');
+  // Reflex save: 2 base + 1 Dex (from racial +2 Dex) + 1 racial Reflex bonus = 4
+  assert.strictEqual(pcHalfling.ref.getValue(), 4, 'Halbling sollte +1 Volksbonus auf REF erhalten (+1 Dex-Bonus)');
+  assert.strictEqual(pcHalfling.wil.getValue(), 3, 'Halbling sollte +1 Volksbonus auf WIL erhalten');
 });

@@ -28,6 +28,21 @@ export function calculateSkillModifier(pc, skillKey) {
   // 3. Feats
   total += applyFeatSkillBonuses(pc, skillKey, skillDef);
 
+  // 3.5. Racial skill bonuses
+  const race = (pc.race || 'human').toLowerCase();
+  if (race === 'dwarf') {
+    if (skillKey === 'craft') total += 2;
+  } else if (race === 'elf') {
+    if (['listen', 'search', 'spot'].includes(skillKey)) total += 2;
+  } else if (race === 'gnome') {
+    if (skillKey === 'listen' || skillKey === 'craft') total += 2;
+  } else if (race === 'halfling') {
+    if (['climb', 'jump', 'move_silently', 'listen'].includes(skillKey)) total += 2;
+  } else if (race === 'half_elf') {
+    if (['listen', 'search', 'spot'].includes(skillKey)) total += 1;
+    if (['diplomacy', 'gather_information'].includes(skillKey)) total += 2;
+  }
+
   // 4. Conditions penalties (Shaken / Sickened)
   const hasShaken = pc.conditions.some(c => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
   if (hasShaken) {

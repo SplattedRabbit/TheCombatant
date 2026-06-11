@@ -12,7 +12,7 @@ export function calculateBaseSkillValue(pc, skillKey, skillDef) {
   let total = 0;
 
   // 1. Ranks
-  total += pc.getSkillRanks(skillKey);
+  total += Math.floor(pc.getSkillRanks(skillKey));
 
   // 2. Attribute Modifier
   total += pc.getAttributeMod(skillDef.abl);

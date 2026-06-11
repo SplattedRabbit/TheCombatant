@@ -138,6 +138,8 @@ export class Combatant {
     this.spellTemplates = p.spellTemplates || {};
     this.feats = Array.isArray(p.feats) ? [...p.feats] : [];
     this.skills = p.skills || {};
+    this.race = p.race || 'human';
+    this.isHuman = p.isHuman !== undefined ? !!p.isHuman : (this.race === 'human');
 
     this.isRaging = !!p.isRaging;
     this.isSneakAttacking = !!p.isSneakAttacking;
@@ -348,7 +350,9 @@ export class Combatant {
       activeShape: this.activeShape,
       originalStats: this.originalStats,
       feats: this.feats,
-      skills: this.skills
+      skills: this.skills,
+      race: this.race,
+      isHuman: this.isHuman
     };
   }
 
@@ -356,6 +360,10 @@ export class Combatant {
     // @feature:wildshape — Large Brown Bear has size modifier -1
     if (this.activeShape === 'bear') {
       return -1;
+    }
+    const race = (this.race || 'human').toLowerCase();
+    if (race === 'gnome' || race === 'halfling') {
+      return 1;
     }
     return 0;
   }
