@@ -23,6 +23,18 @@ export function renderPCSkills(pc) {
 
   const totalLevel = Array.isArray(pc.classes) ? pc.classes.reduce((sum, c) => sum + (c.level || 0), 0) : 1;
 
+  const spentSP = CombatRules.calculateSpentSkillPoints(pc);
+  const totalSP = CombatRules.calculateTotalSkillPoints(pc);
+  const isOverspent = spentSP > totalSP;
+  const badgeBg = isOverspent ? 'rgba(139, 26, 26, 0.15)' : 'rgba(139, 26, 26, 0.08)';
+  const badgeBorderColor = isOverspent ? 'var(--red)' : 'var(--pb)';
+
+  const spBadgeHtml = `
+    <span style="font-size: 8px; font-weight: bold; background: ${badgeBg}; color: var(--red); border: 0.5px solid ${badgeBorderColor}; padding: 2px 5px; border-radius: 1.5px; white-space: nowrap; height: 16px; display: inline-flex; align-items: center; box-sizing: border-box;" title="Verteilte Skillpunkte (SP): ${spentSP} von ${totalSP} verbraucht">
+      ${spentSP}/${totalSP} SP
+    </span>
+  `;
+
   // Render search controls
   const searchHtml = `
     <div style="display: flex; gap: 3px; align-items: center; margin-bottom: 5px; background: rgba(0,0,0,0.02); padding: 3px; border-radius: 2px; border: 0.5px solid var(--pb);">
@@ -32,6 +44,7 @@ export function renderPCSkills(pc) {
         <option value="class" ${skillFilterType === 'class' ? 'selected' : ''}>Nur Klassen-Skills</option>
         <option value="trained" ${skillFilterType === 'trained' ? 'selected' : ''}>Mit Rängen</option>
       </select>
+      ${spBadgeHtml}
     </div>
   `;
 

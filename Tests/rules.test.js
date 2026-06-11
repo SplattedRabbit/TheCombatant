@@ -207,3 +207,56 @@ test('CombatRules - checkSpellKnownLimit enforces spontaneous spells limit but a
   const check2 = CombatRules.checkSpellKnownLimit(pcMulti, spellsDB['grease'], findSpellFn);
   assert.strictEqual(check2.success, true, 'Sollte für Magier/Hexenmeister Multiklasse erlaubt sein');
 });
+
+test('CombatRules - calculateTotalSkillPoints calculates correct skill points', () => {
+  // Fighter level 1, non-human, INT 12 (+1 mod)
+  const pcFighter1 = {
+    classes: [{ classType: 'fighter', level: 1 }],
+    int: new Stat(12),
+    isHuman: false
+  };
+  assert.strictEqual(CombatRules.calculateTotalSkillPoints(pcFighter1), 12);
+
+  // Fighter level 2, non-human, INT 12 (+1 mod)
+  const pcFighter2 = {
+    classes: [{ classType: 'fighter', level: 2 }],
+    int: new Stat(12),
+    isHuman: false
+  };
+  assert.strictEqual(CombatRules.calculateTotalSkillPoints(pcFighter2), 15);
+
+  // Rogue level 1, human, INT 10 (+0 mod)
+  const pcRogue1 = {
+    classes: [{ classType: 'rogue', level: 1 }],
+    int: new Stat(10),
+    isHuman: true
+  };
+  assert.strictEqual(CombatRules.calculateTotalSkillPoints(pcRogue1), 36);
+
+  // Multiclass: Wizard 1 / Cleric 1, non-human, INT 14 (+2 mod)
+  // Wizard 1: (2 + 2) * 4 = 16
+  // Cleric 1: (2 + 2) = 4
+  // Total: 20
+  const pcMulti = {
+    classes: [
+      { classType: 'wizard', level: 1 },
+      { classType: 'cleric', level: 1 }
+    ],
+    int: new Stat(14),
+    isHuman: false
+  };
+  assert.strictEqual(CombatRules.calculateTotalSkillPoints(pcMulti), 20);
+});
+
+test('CombatRules - calculateSpentSkillPoints calculates correct spent points', () => {
+  // Cleric: jump is cross-class (classType cleric doesn't have jump)
+  // concentration is class skill for cleric
+  const pcCleric = {
+    classes: [{ classType: 'cleric', level: 1 }],
+    skills: {
+      jump: { ranks: 2, misc: 0 }, // 2 ranks * 2 (cross-class) = 4 SP
+      concentration: { ranks: 4, misc: 0 } // 4 ranks * 1 (class) = 4 SP
+    }
+  };
+  assert.strictEqual(CombatRules.calculateSpentSkillPoints(pcCleric), 8);
+});
