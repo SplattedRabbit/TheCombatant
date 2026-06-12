@@ -602,7 +602,12 @@ export function bindPCBuffsEvents(pc, defenses) {
 
       const name = nameInput.value.trim();
       if (!name) {
-        alert('Bitte gib einen Namen für den Buff ein.');
+        showCustomAlert(
+          "Eingabe ungültig", 
+          "Bitte gib einen Namen für den eigenen Buff ein.", 
+          "Verstanden", 
+          "⚠️"
+        );
         return;
       }
 
