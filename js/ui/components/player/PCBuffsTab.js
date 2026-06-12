@@ -16,6 +16,62 @@ import {
   checkBuffConflict
 } from '../../../rules/BuffRules.js';
 import { showBuffDetailsDialog } from './PCBuffsDialog.js';
+import { findSpell } from './PCSpellbookTab.js';
+
+export function isBuffEligible(pc, key, isClass) {
+  if (isClass) {
+    const classBuff = CLASS_BUFFS.find(b => b.key === key);
+    if (!classBuff) return false;
+    if (!classBuff.classRequirements || classBuff.classRequirements.length === 0) return true;
+    if (!Array.isArray(pc.classes)) return false;
+    return classBuff.classRequirements.every(req => {
+      const pcCls = pc.classes.find(c => c.classType === req.classType);
+      return pcCls && pcCls.level >= req.level;
+    });
+  } else {
+    return Array.isArray(pc.learnedSpells) && pc.learnedSpells.includes(key);
+  }
+}
+
+export function isBuffSuppressed(pc, buff) {
+  if (!buff || !Array.isArray(pc.activeBuffs) || !Array.isArray(buff.effects) || buff.effects.length === 0) {
+    return false;
+  }
+
+  let nonStackingEffectsCount = 0;
+  let suppressedEffectsCount = 0;
+
+  for (const eff of buff.effects) {
+    if (eff.type === 'dodge' || eff.type === 'untyped') {
+      continue;
+    }
+
+    nonStackingEffectsCount++;
+    const val = parseInt(eff.value) || 0;
+
+    const isEffectSuppressed = pc.activeBuffs.some(other => {
+      if (other.id === buff.id) return false;
+      
+      const otherEffects = other.effects || [];
+      return otherEffects.some(otherEff => {
+        if (otherEff.target === eff.target && otherEff.type === eff.type) {
+          const otherVal = parseInt(otherEff.value) || 0;
+          if (otherVal > val) return true;
+          if (otherVal === val) {
+            return other.id < buff.id;
+          }
+        }
+        return false;
+      });
+    });
+
+    if (isEffectSuppressed) {
+      suppressedEffectsCount++;
+    }
+  }
+
+  return nonStackingEffectsCount > 0 && suppressedEffectsCount === nonStackingEffectsCount;
+}
 
 export function activateBuffByKey(pc, key, isClass) {
   let hasScaling = false;
@@ -45,7 +101,7 @@ export function activateBuffByKey(pc, key, isClass) {
     durationFormula.toLowerCase().includes('stufe')
   );
 
-  const performActivation = (casterLevel) => {
+  const performActivation = (casterLevel, shouldDeduct) => {
     const resolvedEffects = effects.map(eff => {
       let val = parseInt(eff.value) || 0;
       if (eff.valueFormula) {
@@ -63,6 +119,18 @@ export function activateBuffByKey(pc, key, isClass) {
 
     const activate = () => {
       CombatState.updatePCBatch(freshPc => {
+        if (shouldDeduct && !isClass) {
+          const spellData = findSpell(freshPc, key);
+          if (spellData) {
+            const prep = freshPc.preparedSpells?.find(s => s.spellKey === key && !s.isUsed);
+            if (prep) {
+              freshPc.castPreparedSpell(prep.id);
+            } else {
+              freshPc.castSpontaneousSpell(key, spellData.level);
+            }
+          }
+        }
+
         if (!Array.isArray(freshPc.activeBuffs)) freshPc.activeBuffs = [];
         freshPc.activeBuffs = freshPc.activeBuffs.filter(b => b.spellKey !== key);
         
@@ -77,6 +145,17 @@ export function activateBuffByKey(pc, key, isClass) {
           effects: resolvedEffects
         });
       });
+
+      if (shouldDeduct && !isClass) {
+        const wasPrep = pc.preparedSpells?.some(s => s.spellKey === key && !s.isUsed);
+        const spellData = findSpell(pc, key);
+        const lvl = spellData ? spellData.level : 0;
+        const msg = wasPrep
+          ? `Vorbereiteter Zauberplatz für <strong>${buffName}</strong> wurde abgezogen.`
+          : `Spontaner Zauberplatz des Grades <strong>${lvl}</strong> für <strong>${buffName}</strong> wurde abgezogen.`;
+        showCustomAlert("Zauberplatz verbraucht ✨", msg);
+      }
+
       uiRegistry.renderPlayerScreen();
     };
 
@@ -102,27 +181,60 @@ export function activateBuffByKey(pc, key, isClass) {
     }
   };
 
-  if (hasScaling || isRoundBased) {
-    let defaultCL = 1;
-    if (Array.isArray(pc.classes)) {
-      pc.classes.forEach(c => {
-        if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)) {
-          if (c.level > defaultCL) defaultCL = c.level;
-        }
-      });
+  const continueActivation = (shouldDeduct) => {
+    if (hasScaling || isRoundBased) {
+      let defaultCL = 1;
+      if (Array.isArray(pc.classes)) {
+        pc.classes.forEach(c => {
+          if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)) {
+            if (c.level > defaultCL) defaultCL = c.level;
+          }
+        });
+      }
+      showCustomPrompt(
+        "Zauberstufe", 
+        `Bitte gib die Zauberstufe (Caster Level) für <strong>${buffName}</strong> ein:`, 
+        "z. B. 5", 
+        (clText) => {
+          const cl = parseInt(clText) || 1;
+          performActivation(cl, shouldDeduct);
+        }, 
+        defaultCL.toString()
+      );
+    } else {
+      performActivation(1, shouldDeduct);
     }
-    showCustomPrompt(
-      "Zauberstufe", 
-      `Bitte gib die Zauberstufe (Caster Level) für <strong>${buffName}</strong> ein:`, 
-      "z. B. 5", 
-      (clText) => {
-        const cl = parseInt(clText) || 1;
-        performActivation(cl);
-      }, 
-      defaultCL.toString()
-    );
+  };
+
+  // Check spell slot availability if caster
+  const spellData = !isClass ? findSpell(pc, key) : null;
+  const hasCasterClass = Array.isArray(pc.classes) && pc.classes.some(c => 
+    ['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)
+  );
+  const needsSlot = !isClass && spellData && hasCasterClass;
+
+  if (needsSlot) {
+    const hasPrep = Array.isArray(pc.preparedSpells) && pc.preparedSpells.some(s => s.spellKey === key && !s.isUsed);
+    const hasSponClass = Array.isArray(pc.classes) && pc.classes.some(c => ['sorcerer', 'bard'].includes(c.classType));
+    const isLearned = Array.isArray(pc.learnedSpells) && pc.learnedSpells.includes(key);
+    const lvl = spellData.level;
+    const hasSponSlot = hasSponClass && isLearned && pc.spellSlots?.[lvl] && (pc.spellSlots[lvl].used || 0) < (pc.spellSlots[lvl].max || 0);
+
+    const slotAvailable = hasPrep || hasSponSlot;
+
+    if (!slotAvailable) {
+      showCustomConfirm(
+        "Keine freien Zauberplätze",
+        `Du hast keinen freien Zauberplatz für <strong>${buffName}</strong> übrig (weder vorbereitet noch freie spontane Slots).<br><br>Möchtest du den Buff trotzdem aktivieren?`,
+        () => {
+          continueActivation(false);
+        }
+      );
+    } else {
+      continueActivation(true);
+    }
   } else {
-    performActivation(1);
+    continueActivation(false);
   }
 }
 
@@ -199,12 +311,17 @@ export function renderPCBuffsTab(pc) {
           <span style="font-size:7px; color:var(--inkl); margin-right:2px;">Rd.</span>`
         : '';
 
+      const isSuppressed = isBuffSuppressed(pc, buff);
+      const pillStyle = isSuppressed
+        ? 'background:rgba(200, 169, 110, 0.02); border:0.5px dashed rgba(139, 26, 26, 0.45); opacity:0.65; filter:grayscale(30%);'
+        : 'background:rgba(200, 169, 110, 0.05); border:0.5px solid var(--pb);';
+      const warningBadge = isSuppressed ? ' <span style="color:var(--red); font-weight:bold; font-size:7.5px;" title="Unterdrückt durch einen stärkeren aktiven Buff">⚠️</span>' : '';
+
       return `
         <div class="active-buff-pill" style="
           display:inline-flex;
           align-items:center;
-          background:rgba(200, 169, 110, 0.05);
-          border:0.5px solid var(--pb);
+          ${pillStyle}
           border-radius:12px;
           padding:2px 6px;
           gap:4px;
@@ -221,7 +338,7 @@ export function renderPCBuffsTab(pc) {
             align-items:center;
             gap:2px;
           " title="D&D 3.5e RAW Regelerklärung anzeigen">
-            ✨ ${displayName}
+            ✨ ${displayName}${warningBadge}
             <span style="font-size:7px; color:var(--inkl); opacity:0.85; font-weight:normal;">(${shortEffectsSummary})</span>
             <span style="font-size:7.5px; opacity:0.75; margin-left:1px; color:var(--red);">📖</span>
           </span>
@@ -255,12 +372,19 @@ export function renderPCBuffsTab(pc) {
   } else {
     quickToggleHtml = quickBuffs.map(qb => {
       const isActive = Array.isArray(pc.activeBuffs) && pc.activeBuffs.some(b => b.spellKey === qb.key);
-      const isSuppressed = !isActive && checkBuffConflict(pc, qb.key).status === 'suppressed';
+      const activeInstance = isActive ? pc.activeBuffs.find(b => b.spellKey === qb.key) : null;
+      const isSuppressed = isActive 
+        ? isBuffSuppressed(pc, activeInstance) 
+        : (checkBuffConflict(pc, qb.key).status === 'suppressed');
+      
       const btnStyle = isActive
-        ? `background: #8b1a1a; color: #f4e8c1; border-color: #8b1a1a; font-weight: bold;`
+        ? (isSuppressed
+          ? `background: rgba(139, 26, 26, 0.15); color: rgba(139, 26, 26, 0.6); border-color: rgba(139, 26, 26, 0.45); opacity: 0.7; filter: grayscale(40%); font-weight: bold;`
+          : `background: #8b1a1a; color: #f4e8c1; border-color: #8b1a1a; font-weight: bold;`)
         : (isSuppressed 
           ? `background: rgba(200, 169, 110, 0.03); color: rgba(20, 15, 5, 0.4); border-color: rgba(200, 169, 110, 0.3); opacity: 0.5; filter: grayscale(60%);`
           : `background: rgba(200, 169, 110, 0.08); color: var(--ink); border-color: var(--pb);`);
+      
       const checkmark = isActive ? '✓ ' : '';
       const warningBadge = isSuppressed ? ' ⚠️' : '';
       return `
@@ -509,7 +633,8 @@ export function bindPCBuffsEvents(pc, defenses) {
       }
 
       const matchedClassBuffs = CLASS_BUFFS.filter(b => 
-        b.name.toLowerCase().includes(q) || b.key.toLowerCase().includes(q)
+        (b.name.toLowerCase().includes(q) || b.key.toLowerCase().includes(q)) &&
+        isBuffEligible(pc, b.key, true)
       ).map(b => ({
         key: b.key,
         name: b.name,
@@ -522,7 +647,7 @@ export function bindPCBuffsEvents(pc, defenses) {
       if (CombatSpells.REGISTRY) {
         for (const key of Object.keys(CombatSpells.REGISTRY)) {
           const spell = CombatSpells.REGISTRY[key];
-          if (spell && Array.isArray(spell.effects)) {
+          if (spell && Array.isArray(spell.effects) && isBuffEligible(pc, key, false)) {
             const nameDe = (spell.nameDe || '').toLowerCase();
             const nameEn = (spell.nameEn || '').toLowerCase();
             if (nameDe.includes(q) || nameEn.includes(q) || key.toLowerCase().includes(q)) {

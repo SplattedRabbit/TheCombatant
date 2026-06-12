@@ -6,11 +6,18 @@
 
 ## 1. Pflichtbefehle
 
+> [!IMPORTANT]
+> **Token-Schonung bei Unittests:** Das Ausführen aller 170+ Tests erzeugt enormen Output und verbraucht wertvolle Context-Token. Führe im Alltag immer nur den spezifischen Test aus, der zu deiner Änderung passt. Den globalen Testlauf machst du ausschließlich **einmalig direkt vor dem Turn-Ende**.
+
 ```powershell
-# Tests ausführen (IMMER vor Turn-Ende)
+# 1. GEZIELTES TESTEN (Standard-Workflow während der Entwicklung):
+# Finde den spezifischen Test in /Tests/ und führe nur diesen aus (Beispiel):
+node --import ./Tests/setup.js --test Tests/bugfixes_v350.test.js
+
+# 2. GLOBALER TESTLAUF (NUR einmalig direkt vor dem Turn-Ende erlaubt):
 node --import ./Tests/setup.js --test Tests/**/*.test.js
 
-# D&D-Regelwerk durchsuchen (NIE die PDF laden)
+# 3. D&D-REGELWERK DURCHSUCHEN (NIE die PDF laden):
 node scratch/search_rules.js "<Suchabfrage>"
 ```
 
@@ -44,7 +51,7 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Rettungswürfe         | `js/rules/SaveCalculator.js`                             | `js/models/Combatant.js`, `helpers/modifiers/` |
 | Zauber / Slots        | `PCSpellbookTab.js`, `PCCompendiumTab.js`, `helpers/spells/CombatantSpells.js` | `SpellSlotCalculator.js`, `Combatant.js` |
 | Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `js/ui/components/class-features/` |
-| Talente               | `js/data/feats-data.js`                                  | `PCManager.js` (`addPCFeat`), `PCFeatsTab.js` |
+| Talente               | `js/data/feats-data.js`, `js/data/feats-combat.js`, `js/data/feats-magic.js`, `js/data/feats-general.js` | `PCManager.js` (`addPCFeat`), `PCFeatsTab.js` |
 | Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.js`                 |
 | Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `offense/WeaponStashCard.js`, `AttackEngine.js` |
 | Initiative / RK       | `PCDefenses.js`                                          | `Combatant.js`, `helpers/modifiers/`         |
@@ -109,6 +116,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - `playershandbook_35e.pdf` in den Kontext laden — `search_rules.js` nutzen
 - Zeilennummern in `AGENT.md` eintragen — veralten sofort, nur Funktionsnamen
 - Halbe Ränge bei klassenübergreifenden Fertigkeiten (cross-class skills) verbessern den Wurf nicht — Ränge bei Modifikator-Berechnungen immer mit `Math.floor` abrunden.
+- Dialogfenster für Zauberauswahl, Buffauswahl oder Vorbereitung mit weniger als `480px` bis `520px` Breite dimensionieren — dies führt zu abgeschnittenen Inhalten und Metamagic-Optionen.
 
 ---
 
@@ -197,4 +205,4 @@ Beantworte kurz diese 4 Fragen — wenn eine "Nein" ist, nachbessern:
 | > 900Z    | Split bei nächster Gelegenheit — Issue in Bugtracking.md   |
 
 Aktuell zu groß (Backlog):
-- `js/data/feats-data.js` (~1154 Zeilen) — Split bei nächster größerer Talent-Feature-Erweiterung empfohlen (z.B. in `feats-combat.js`, `feats-metamagic.js`, `feats-general.js`)
+- Keine (feats-data.js wurde in feats-combat.js, feats-magic.js und feats-general.js aufgeteilt)

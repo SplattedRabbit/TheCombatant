@@ -18,9 +18,29 @@ const createMockElement = (tagName = 'div') => {
     tagName: tagName.toUpperCase(),
     id: '',
     className: '',
-    style: {
+    _style: {
       setProperty() {},
-      display: 'block'
+      display: 'block',
+      opacity: '0'
+    },
+    get style() {
+      return this._style;
+    },
+    set style(val) {
+      if (typeof val === 'string') {
+        const parts = val.split(';');
+        parts.forEach(p => {
+          const colon = p.indexOf(':');
+          if (colon > -1) {
+            const propName = p.slice(0, colon).trim();
+            const propVal = p.slice(colon + 1).trim();
+            const camelName = propName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+            this._style[camelName] = propVal;
+          }
+        });
+      } else {
+        Object.assign(this._style, val);
+      }
     },
     textContent: '',
     value: '',
@@ -48,6 +68,9 @@ const createMockElement = (tagName = 'div') => {
       if (!this._queries[selector]) {
         this._queries[selector] = createMockElement();
         this._queries[selector].parentElement = this;
+        if (selector === '.pc-prompt-input') {
+          this._queries[selector].value = '5';
+        }
       }
       return this._queries[selector];
     },
@@ -56,6 +79,11 @@ const createMockElement = (tagName = 'div') => {
     },
     addEventListener() {},
     removeEventListener() {},
+    focus() {},
+    select() {},
+    getBoundingClientRect() {
+      return { top: 0, left: 0, width: 0, height: 0 };
+    },
     click() {
       if (typeof this.onclick === 'function') {
         this.onclick({ target: this, preventDefault() {}, stopPropagation() {} });
@@ -70,8 +98,10 @@ const createMockElement = (tagName = 'div') => {
   };
 };
 
+const mockBody = createMockElement('body');
 globalThis.document = {
   activeElement: null,
+  body: mockBody,
   getElementById(id) {
     const el = createMockElement();
     el.id = id;
@@ -153,4 +183,11 @@ const __dirname = path.dirname(__filename);
 const spellsPath = path.resolve(__dirname, '../data/spells_de.json');
 const spellsData = JSON.parse(fs.readFileSync(spellsPath, 'utf8'));
 Object.assign(CombatSpells.REGISTRY, spellsData);
+
+// Mock dynamic UI shared registry functions
+import { uiRegistry } from '../js/ui/ui-shared.js';
+uiRegistry.renderPlayerScreen = () => {};
+uiRegistry.renderAll = () => {};
+uiRegistry.renderInitBar = () => {};
+uiRegistry.renderConc = () => {};
 

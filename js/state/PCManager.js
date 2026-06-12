@@ -485,11 +485,11 @@ export function addPCFeat(featId, option = '') {
     }
   }
 
-  // 2. Check maximum feats limit (Bug #13)
-  const maxFeats = CombatRules.calculateMaxFeats(pc);
-  const currentFeatsCount = Array.isArray(pc.feats) ? pc.feats.length : 0;
-  if (currentFeatsCount >= maxFeats) {
-    return { success: false, error: `Talentlimit erreicht (${currentFeatsCount} / ${maxFeats}). Du musst erst ein Talent verlernen.` };
+  // 2. Check maximum feats limit with slot allocation validation
+  const nextFeats = [...(pc.feats || []), { id: featId, option: option || '' }];
+  const validation = CombatRules.validateFeatsAssignment(pc, nextFeats);
+  if (!validation.success) {
+    return { success: false, error: validation.error };
   }
 
   // 3. Check prerequisites

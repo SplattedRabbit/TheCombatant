@@ -30,6 +30,13 @@ function resolveAtkDmgBuffs(pc, target) {
   
   if (Array.isArray(pc.activeBuffs)) {
     pc.activeBuffs.forEach(buff => {
+      // Skip if it's a local shared buff but the caster did not target themselves
+      if (!buff.isRemote && buff.sharedWith && Array.isArray(buff.sharedWith)) {
+        if (!buff.sharedWith.includes(pc.id)) {
+          return;
+        }
+      }
+
       // If the buff already has resolved effects, we ONLY use those.
       // Otherwise, for backwards-compatibility, we look up the spell in the registry.
       if (Array.isArray(buff.effects)) {
@@ -148,7 +155,13 @@ export function buildContext(pc, weapon, options = {}) {
     }
     return false;
   };
-  const hasBuff = (spellKey) => Array.isArray(pc.activeBuffs) && pc.activeBuffs.some(b => b.spellKey === spellKey);
+  const hasBuff = (spellKey) => Array.isArray(pc.activeBuffs) && pc.activeBuffs.some(b => {
+    if (b.spellKey !== spellKey) return false;
+    if (!b.isRemote && b.sharedWith && Array.isArray(b.sharedWith)) {
+      return b.sharedWith.includes(pc.id);
+    }
+    return true;
+  });
 
   const hasPowerAttack = hasFeat('power_attack');
   const paPenalty = hasPowerAttack ? Math.min(babVal, parseInt(pc.powerAttackPenalty) || 0) : 0;

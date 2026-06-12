@@ -62,7 +62,7 @@ export class WizardFeatures extends ClassFeatureComponent {
                 <span><strong>Schule:</strong></span>
                 <button class="btn btn-toggle-rules-wizard" style="font-size: 8px; padding: 2px 5px; border-radius: 2px; cursor: pointer; background: rgba(200, 169, 110, 0.08); border: 0.5px solid var(--pb); color: var(--inkm); font-family: 'IM Fell English SC', serif; font-weight: bold; height: 15px; line-height: 11px; display: inline-flex; align-items: center; justify-content: center;" title="Regeln einblenden">📖 ▼</button>
               </div>
-              <select class="cinput wizard-spec" style="width: 60px; font-size: 7.5px; height: 14px; padding: 0 1px; border-radius: 1px; border: 0.5px solid var(--pb); outline: none;">
+              <select class="cinput wizard-spec" style="width: 95px; font-size: 7.5px; height: 14px; padding: 0 1px; border-radius: 1px; border: 0.5px solid var(--pb); outline: none;">
                 <option value="none" ${pc.wizardSpecialization === 'none' ? 'selected' : ''}>Allgemein</option>
                 <option value="abj" ${pc.wizardSpecialization === 'abj' ? 'selected' : ''}>Schutz</option>
                 <option value="con" ${pc.wizardSpecialization === 'con' ? 'selected' : ''}>Beschwörung</option>
@@ -83,7 +83,7 @@ export class WizardFeatures extends ClassFeatureComponent {
             ${pc.wizardSpecialization !== 'none' ? `
               <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8px;">
                 <span>Bann 1:</span>
-                <select class="cinput wizard-prob1" style="width: 60px; font-size: 7.5px; height: 14px; padding: 0 1px; border-radius: 1px; border: 0.5px solid var(--pb); outline: none;">
+                <select class="cinput wizard-prob1" style="width: 95px; font-size: 7.5px; height: 14px; padding: 0 1px; border-radius: 1px; border: 0.5px solid var(--pb); outline: none;">
                   <option value="" ${!prob1Code ? 'selected' : ''}>-- Wählen --</option>
                   ${prob1Options}
                 </select>
@@ -91,7 +91,7 @@ export class WizardFeatures extends ClassFeatureComponent {
               ${pc.wizardSpecialization !== 'div' ? `
                 <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8px;">
                   <span>Bann 2:</span>
-                  <select class="cinput wizard-prob2" style="width: 60px; font-size: 7.5px; height: 14px; padding: 0 1px; border-radius: 1px; border: 0.5px solid var(--pb); outline: none;">
+                  <select class="cinput wizard-prob2" style="width: 95px; font-size: 7.5px; height: 14px; padding: 0 1px; border-radius: 1px; border: 0.5px solid var(--pb); outline: none;">
                     <option value="" ${!prob2Code ? 'selected' : ''}>-- Wählen --</option>
                     ${prob2Options}
                   </select>

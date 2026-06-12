@@ -2,6 +2,7 @@ import { CombatState } from '../../state.js';
 import { getSpellSchoolCode, getSchoolLabel, CombatSpells } from '../../spells.js';
 import { showCustomAlert, showCustomConfirm } from './BaseDialogs.js';
 import { SpellSlotCalculator } from '../../rules/SpellSlotCalculator.js';
+import { showCastSuccessDialog } from '../components/player/PCBuffsDialog.js';
 
 function findSpell(pc, key) {
   if (CombatSpells.REGISTRY[key]) {
@@ -90,7 +91,7 @@ export function showPrepareSpellDialog(pc, spellKey, onSaveCallback) {
       border: 2px solid var(--pb);
       border-radius: 4px;
       padding: 16px 20px;
-      width: 260px;
+      width: 520px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08);
       font-family: 'Crimson Text', serif;
       position: relative;
@@ -260,7 +261,7 @@ export function showCastSpontaneousSpellDialog(pc, spellKey, onSaveCallback) {
       border: 2px solid var(--pb);
       border-radius: 4px;
       padding: 16px 20px;
-      width: 260px;
+      width: 520px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08);
       font-family: 'Crimson Text', serif;
       position: relative;
@@ -341,10 +342,12 @@ export function showCastSpontaneousSpellDialog(pc, spellKey, onSaveCallback) {
   overlay.querySelector('.cast-confirm-btn').onclick = () => {
     let cost = 0;
     const selectedMetaNames = [];
+    const selectedMetaIds = [];
     overlay.querySelectorAll('.cast-meta-chk:checked').forEach(chk => {
       cost += parseInt(chk.dataset.cost);
       const featInfo = metamagicFeats.find(f => f.id === chk.dataset.id);
       if (featInfo) selectedMetaNames.push(featInfo.name);
+      selectedMetaIds.push(chk.dataset.id);
     });
     const finalLevel = spell.level + cost;
     if (finalLevel > 9) return;
@@ -357,24 +360,31 @@ export function showCastSpontaneousSpellDialog(pc, spellKey, onSaveCallback) {
       const timeText = selectedMetaNames.length > 0 ? "1 volle Aktion (Spontane Metamagie)" : (spell.castingTime || '1 Standardaktion');
       const metaSuffix = selectedMetaNames.length > 0 ? ` (${selectedMetaNames.join(', ')})` : '';
 
-      showCustomAlert("Zauber gewirkt! ✨", `
-        <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
-          <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
-            ${pc.name} wirkt ${spell.nameDe}${metaSuffix}!
+      if (spell.effects && spell.effects.length > 0) {
+        showCastSuccessDialog(pc, spell, spellKey, selectedMetaIds, () => {
+          if (typeof onSaveCallback === 'function') onSaveCallback();
+          dismiss();
+        });
+      } else {
+        showCustomAlert("Zauber gewirkt! ✨", `
+          <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
+            <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
+              ${pc.name} wirkt ${spell.nameDe}${metaSuffix}!
+            </div>
+            • <strong>Schule:</strong> ${spell.school}<br>
+            • <strong>Grad:</strong> Grad ${finalLevel} (Basis ${spell.level})<br>
+            • <strong>Zeitaufwand:</strong> ${timeText}<br>
+            • <strong>Reichweite:</strong> ${spell.range || 'Berührung'}<br>
+            • <strong>Rettungswurf:</strong> ${spell.savingThrow || 'Keiner'}<br><br>
+            <div style="font-size: 8px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px; border-radius: 2px; line-height: 1.25;">
+              ${spell.description}
+            </div>
           </div>
-          • <strong>Schule:</strong> ${spell.school}<br>
-          • <strong>Grad:</strong> Grad ${finalLevel} (Basis ${spell.level})<br>
-          • <strong>Zeitaufwand:</strong> ${timeText}<br>
-          • <strong>Reichweite:</strong> ${spell.range || 'Berührung'}<br>
-          • <strong>Rettungswurf:</strong> ${spell.savingThrow || 'Keiner'}<br><br>
-          <div style="font-size: 8px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px; border-radius: 2px; line-height: 1.25;">
-            ${spell.description}
-          </div>
-        </div>
-      `, "Fertig!", "");
+        `, "Fertig!", "");
 
-      if (typeof onSaveCallback === 'function') onSaveCallback();
-      dismiss();
+        if (typeof onSaveCallback === 'function') onSaveCallback();
+        dismiss();
+      }
     };
 
     const maxSlots = pc.spellSlots[finalLevel]?.max || 0;

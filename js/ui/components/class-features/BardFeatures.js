@@ -10,6 +10,8 @@
 import { ClassFeatureComponent } from './ClassFeatureComponent.js';
 import { CombatState } from '../../../state.js';
 import { showCustomConfirm, showRollBreakdown, showCustomAlert } from '../dialogs.js';
+import { applyFeatSkillBonuses } from '../../../models/helpers/skills/SkillFeatApplier.js';
+import { SKILLS_REGISTRY } from '../../../data/skills-data.js';
 
 const BARD_SONGS = [
   {
@@ -335,16 +337,30 @@ export class BardFeatures extends ClassFeatureComponent {
       const perfBtn = e.target.closest('.roll-bard-perform-btn');
       if (perfBtn) {
         e.stopPropagation();
-        const getAblMod = (score) => {
-          const s = parseInt(score) || 10;
-          return s >= 10 ? Math.floor((s - 10) / 2) : (s === 9 || s === 8 ? -1 : (s === 7 || s === 6 ? -2 : (s === 5 || s === 4 ? -4 : -5)));
-        };
-        const chaMod = getAblMod(pc.cha ? pc.cha.getValue() : 10);
-        const ranks = level + 3; // Standard raw ranks for bard perform at level
-        showRollBreakdown("Auftreten-Wurf (Perform)", "1W20", [
-          { label: "Ränge in Auftreten (assumed)", value: ranks },
-          { label: "CHA-Mod", value: chaMod }
-        ], e);
+        const ranks = pc.getSkillRanks('perform');
+        const attrMod = pc.getAttributeMod('cha');
+        const misc = pc.getSkillMisc('perform');
+        
+        const breakdown = [
+          { label: "Ränge in Auftreten", value: ranks },
+          { label: "CHA-Mod", value: attrMod }
+        ];
+        
+        if (misc !== 0) {
+          breakdown.push({ label: "Sonstige Boni", value: misc });
+        }
+        
+        const featBonus = applyFeatSkillBonuses(pc, 'perform', SKILLS_REGISTRY['perform']);
+        if (featBonus > 0) {
+          breakdown.push({ label: "Talentboni", value: featBonus });
+        }
+        
+        const hasShaken = pc.conditions.some(c => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
+        if (hasShaken) {
+          breakdown.push({ label: 'Zustand (Erschüttet/Schüttelnd)', value: -2 });
+        }
+        
+        showRollBreakdown("Auftreten-Wurf (Perform)", "1W20", breakdown, e);
         return;
       }
 

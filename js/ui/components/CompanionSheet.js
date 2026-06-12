@@ -3,9 +3,13 @@ import { showRollBreakdown, showCustomConfirm } from './dialogs.js';
 
 export class CompanionSheet {
   static getCompanionBaseStats(type, level = 1) {
+    let stats = null;
+    let baseHD = 2;
+    let attackScaleType = 'str'; // 'str' or 'dex'
+
     switch (type) {
       case 'wolf':
-        return {
+        stats = {
           name: 'Wolf',
           ac: 14,
           str: 13,
@@ -19,8 +23,11 @@ export class CompanionSheet {
           ],
           specials: 'Geruchssinn, Link, Zauber teilen'
         };
+        baseHD = 2;
+        attackScaleType = 'str';
+        break;
       case 'leopard':
-        return {
+        stats = {
           name: 'Leopard',
           ac: 15,
           str: 16,
@@ -36,8 +43,11 @@ export class CompanionSheet {
           ],
           specials: 'Geruchssinn, Link, Zauber teilen, Anspringen'
         };
+        baseHD = 3;
+        attackScaleType = 'dex';
+        break;
       case 'bear':
-        return {
+        stats = {
           name: 'Braunbär',
           ac: 15,
           str: 27,
@@ -52,6 +62,9 @@ export class CompanionSheet {
           ],
           specials: 'Geruchssinn, Link, Zauber teilen, Umklammern (Grab)'
         };
+        baseHD = 6;
+        attackScaleType = 'str';
+        break;
       case 'custom':
         return {
           name: 'Benutzerdefiniert',
@@ -70,6 +83,80 @@ export class CompanionSheet {
       default:
         return null;
     }
+
+    // Apply scaling based on effective Druid Level
+    let bonusHD = 0;
+    let natArmorBonus = 0;
+    let strDexBonus = 0;
+
+    if (level >= 18) {
+      bonusHD = 12; natArmorBonus = 12; strDexBonus = 6;
+    } else if (level >= 15) {
+      bonusHD = 10; natArmorBonus = 10; strDexBonus = 5;
+    } else if (level >= 12) {
+      bonusHD = 8; natArmorBonus = 8; strDexBonus = 4;
+    } else if (level >= 9) {
+      bonusHD = 6; natArmorBonus = 6; strDexBonus = 3;
+    } else if (level >= 6) {
+      bonusHD = 4; natArmorBonus = 4; strDexBonus = 2;
+    } else if (level >= 3) {
+      bonusHD = 2; natArmorBonus = 2; strDexBonus = 1;
+    }
+
+    const oldStrMod = Math.floor((stats.str - 10) / 2);
+    const oldDexMod = Math.floor((stats.dex - 10) / 2);
+    const oldBAB = Math.floor(baseHD * 0.75);
+
+    stats.ac += natArmorBonus;
+    stats.str += strDexBonus;
+    stats.dex += strDexBonus;
+
+    const newStrMod = Math.floor((stats.str - 10) / 2);
+    const newDexMod = Math.floor((stats.dex - 10) / 2);
+    const newBAB = Math.floor((baseHD + bonusHD) * 0.75);
+    const newConMod = Math.floor((stats.con - 10) / 2);
+
+    stats.maxHP += Math.floor(bonusHD * 4.5) + bonusHD * newConMod;
+    
+    // Scale attacks and damage
+    const babDiff = newBAB - oldBAB;
+    const strDiff = newStrMod - oldStrMod;
+    const dexDiff = newDexMod - oldDexMod;
+    const bonusDiff = babDiff + (attackScaleType === 'dex' ? dexDiff : strDiff);
+
+    stats.attacks = stats.attacks.map(att => {
+      const scaledBonus = att.bonus + bonusDiff;
+      let scaledDamage = att.damage;
+      
+      // Scale damage formula dynamically
+      if (type === 'wolf') {
+        scaledDamage = `1w6+${Math.floor(newStrMod * 1.5)}`;
+      } else if (type === 'leopard') {
+        if (att.name.includes('Biss')) {
+          scaledDamage = `1w6+${newStrMod}`;
+        } else {
+          scaledDamage = `1w3+${Math.floor(newStrMod / 2)}`;
+        }
+      } else if (type === 'bear') {
+        if (att.name.includes('Kralle')) {
+          scaledDamage = `1w8+${newStrMod}`;
+        } else {
+          scaledDamage = `2d6+${Math.floor(newStrMod / 2)}`;
+        }
+      }
+
+      return {
+        ...att,
+        bonus: scaledBonus,
+        damage: scaledDamage
+      };
+    });
+
+    if (bonusHD > 0) {
+      stats.specials += `, +${bonusHD} HD (Boni eingerechnet)`;
+    }
+
+    return stats;
   }
 
   static render(pc) {

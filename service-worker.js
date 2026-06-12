@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.3.4-cache-v1';
+const CACHE_NAME = 'dnd-combatsheet-v3.3.5-cache-v1';
 const ASSETS = [
   './',
   './index.html',
@@ -117,6 +117,9 @@ const ASSETS = [
   './js/rules/SaveCalculator.js',
   './js/rules/SpellSlotCalculator.js',
   './js/data/feats-data.js',
+  './js/data/feats-combat.js',
+  './js/data/feats-magic.js',
+  './js/data/feats-general.js',
   './js/data/skills-data.js',
   './js/rules/AttackEngine.js',
   './js/rules/attack/AttackContext.js',
