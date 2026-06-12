@@ -81,12 +81,12 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
   let effectsHtml = '';
   if (effectsList.length > 0) {
     effectsHtml = `
-      <div style="margin-top:6px;">
-        <strong style="color:var(--red); font-size:10.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive Modifikatoren:</strong>
-        <div style="display:flex; flex-direction:column; gap:2.5px; margin-top:4px;">
+      <div style="margin-top:8px;">
+        <strong style="color:#8b1a1a; font-size:11.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.4px;">Aktive Modifikatoren:</strong>
+        <div style="display:flex; flex-direction:column; gap:3px; margin-top:4px;">
           ${effectsList.map(eff => {
             const sign = eff.value >= 0 ? '+' : '';
-            return `<div style="font-size:9.5px; background:rgba(200, 169, 110, 0.05); border:0.5px solid rgba(200,169,110,0.25); border-radius:2px; padding:3px 6px; display:flex; justify-content:space-between; align-items:center;">
+            return `<div style="font-size:10.5px; background:rgba(139, 26, 26, 0.03); border:0.5px solid rgba(139,26,26,0.25); border-radius:2px; padding:4px 8px; display:flex; justify-content:space-between; align-items:center;">
               <span>• <strong>${translateTarget(eff.target)}:</strong></span>
               <strong>${sign}${eff.value} (${translateType(eff.type)})</strong>
             </div>`;
@@ -99,24 +99,24 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
   const bodyHtml = `
     <div class="ancient-parchment" style="
       background: #f4e8c1; 
-      border: 1px solid var(--pb); 
-      padding: 12px 16px; 
-      border-radius: 3px; 
-      box-shadow: inset 0 0 25px rgba(200, 169, 110, 0.12); 
+      border: 2px solid #8b1a1a; 
+      padding: 16px 20px; 
+      border-radius: 4px; 
+      box-shadow: inset 0 0 35px rgba(139, 26, 26, 0.15); 
       font-family: 'Crimson Text', serif; 
       color: #1a0f00; 
       line-height: 1.45; 
       text-align: left; 
       box-sizing: border-box;
     ">
-      <div style="font-style:italic; font-size:9.5px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
+      <div style="font-style:italic; font-size:10px; color:#8b1a1a; font-weight:bold; border-bottom:1px solid rgba(139,26,26,0.3); padding-bottom:4px; margin-bottom:8px;">
         ${school || 'Effekt'}
       </div>
-      <div style="display:grid; grid-template-columns: 1fr; gap:4px; font-size:9.5px; border-bottom:0.5px dashed var(--pb); padding-bottom:8px; margin-bottom:10px; font-weight:600;">
+      <div style="display:grid; grid-template-columns: 1fr; gap:4px; font-size:10px; border-bottom:0.5px dashed rgba(139, 26, 26, 0.4); padding-bottom:8px; margin-bottom:10px; font-weight:600;">
         <div><strong>Zeitdauer:</strong> ${durationStr}</div>
         ${(isAlreadyActiveIndex !== null && pc.activeBuffs?.[isAlreadyActiveIndex]?.casterLevel) ? `<div><strong>Wirker-Stufe (Caster Level):</strong> ${pc.activeBuffs[isAlreadyActiveIndex].casterLevel}</div>` : ''}
       </div>
-      ${description ? `<div style="font-size:10.5px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic; white-space:pre-wrap;">${description}</div>` : ''}
+      ${description ? `<div style="font-size:11px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic; white-space:pre-wrap;">${description}</div>` : ''}
       ${effectsHtml}
     </div>
   `;
@@ -131,8 +131,8 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
   overlay.style.cssText = `
     position: fixed;
     inset: 0;
-    background: rgba(18, 11, 5, 0.55);
-    backdrop-filter: blur(2px);
+    background: rgba(18, 11, 5, 0.65);
+    backdrop-filter: blur(3px);
     z-index: 2500;
     display: flex;
     align-items: center;
@@ -150,9 +150,9 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
       border: 2px solid var(--pb);
       border-radius: 4px;
       padding: 16px 20px;
-      width: 480px;
+      width: 580px;
       max-width: 92vw;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(200,169,110,0.1);
       font-family: 'IM Fell English SC', serif;
       text-align: center;
       position: relative;
@@ -161,7 +161,7 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
     ">
       <div style="position: absolute; inset: 3px; border: 0.5px dashed rgba(200, 169, 110, 0.3); pointer-events: none; border-radius: 2px;"></div>
 
-      <div style="font-size: 12px; color: var(--red); font-weight: bold; margin-bottom: 4px; letter-spacing: 0.3px;">
+      <div style="font-size: 15px; color: var(--red); font-weight: bold; margin-bottom: 4px; letter-spacing: 0.8px;">
         ✨ Buff-Regeln: ${displayName}
       </div>
       <hr style="border: none; border-top: 0.5px solid rgba(200, 169, 110, 0.4); margin: 5px 0 10px;">
@@ -170,15 +170,35 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
         ${bodyHtml}
       </div>
 
-      <div style="display:flex; justify-content:center; gap:8px; margin-top:10px;">
+      <div style="display:flex; justify-content:center; gap:12px; margin-top:10px;">
         ${showActions ? `
-          <button class="btn btn-p action-activate-buff" style="font-family:'IM Fell English SC',serif; font-size:9px; padding:4px 18px; cursor:pointer;">Aktivieren</button>
-          <button class="btn btn-p action-toggle-favorite" style="font-family:'IM Fell English SC',serif; font-size:9px; padding:4px 18px; cursor:pointer;">${toggleBtnText}</button>
+          <button class="btn btn-p action-activate-buff" style="
+            font-family: 'IM Fell English SC', serif;
+            font-size: 9.5px;
+            padding: 4px 22px;
+            cursor: pointer;
+            background: rgba(139, 26, 26, 0.1);
+            border: 1px solid var(--pb);
+            border-radius: 2px;
+            color: var(--red);
+            font-weight: bold;
+          ">Aktivieren</button>
+          <button class="btn btn-p action-toggle-favorite" style="
+            font-family: 'IM Fell English SC', serif;
+            font-size: 9.5px;
+            padding: 4px 22px;
+            cursor: pointer;
+            background: rgba(139, 26, 26, 0.1);
+            border: 1px solid var(--pb);
+            border-radius: 2px;
+            color: var(--red);
+            font-weight: bold;
+          ">${toggleBtnText}</button>
         ` : ''}
         <button class="btn action-close-buff" style="
           font-family: 'IM Fell English SC', serif;
-          font-size: 9px;
-          padding: 4px 18px;
+          font-size: 9.5px;
+          padding: 4px 22px;
           cursor: pointer;
           border: 1px solid var(--pb);
           background: rgba(0,0,0,0.03);
