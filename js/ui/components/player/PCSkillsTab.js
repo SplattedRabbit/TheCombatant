@@ -165,8 +165,9 @@ export function renderPCSkills(pc) {
     const hasSkillExtras = totalMod !== (ranks + attrMod + misc);
     let attrTooltip = `Bezugsattribut-Modifikator (${skill.abl.toUpperCase()}: ${formatMod(attrMod)})`;
     const attrStat = pc[skill.abl];
-    const isAttrBuffed = attrStat && attrStat.getValue() !== attrStat.base;
-    if (isAttrBuffed && attrStat) {
+    const isAttrBuffed = attrStat && attrStat.modifiers.some(m => !m.isRace && m.value !== 0);
+    const hasAttrModifiers = attrStat && attrStat.modifiers.some(m => m.value !== 0);
+    if (hasAttrModifiers && attrStat) {
       const attrModifiers = attrStat.modifiers.filter(m => m.value !== 0);
       attrTooltip += `\nBasiswert: ${attrStat.base} (${formatMod(getAblMod(attrStat.base))})\nAktiver Wert: ${attrStat.getValue()} (${formatMod(attrMod)})\nAktive Boni:\n` + 
         attrModifiers.map(m => `• ${m.source}: ${formatMod(m.value)}`).join('\n');

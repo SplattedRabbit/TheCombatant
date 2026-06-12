@@ -43,7 +43,7 @@ export function renderPCDefensesTab(pc) {
     return {
       displayValue: otherMods,
       tooltip,
-      hasExtras: extras.length > 0
+      hasExtras: extras.some(m => !m.isRace)
     };
   };
 

@@ -49,7 +49,8 @@ export function renderPCAttributes(pc) {
     const stat = pc[key];
     const score = stat.getValue();
     const mod = getAblMod(score);
-    const isBuffed = score !== stat.base;
+    const isBuffed = stat.modifiers.some(m => !m.isRace && m.value !== 0);
+    const hasModifiers = stat.modifiers.some(m => m.value !== 0);
     
     let tooltip = `${label}wert`;
     let borderStyle = 'border: 0.5px solid var(--pb);';
@@ -57,6 +58,8 @@ export function renderPCAttributes(pc) {
     if (isBuffed) {
       borderStyle = 'border: 0.5px solid var(--red) !important;';
       bgStyle = 'background: rgba(139, 26, 26, 0.05) !important;';
+    }
+    if (hasModifiers) {
       const modifiers = stat.modifiers.filter(m => m.value !== 0);
       tooltip += `\nBasiswert: ${stat.base}\nAktiver Wert: ${score}\nAktive Boni:\n` + 
         modifiers.map(m => `• ${m.source}: ${formatMod(m.value)}`).join('\n');
