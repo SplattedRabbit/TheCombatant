@@ -76,17 +76,9 @@ export function renderPCDefenses(pc) {
 
   // Sub-Tab Navigation Bar
   const tabBarHtml = `
-    <div class="player-tab-bar" style="display:flex; gap:4px; border-bottom:1.5px solid var(--pb); padding:4px 4px 0; margin-bottom:8px; border-radius:3px 3px 0 0; background:rgba(200, 169, 110, 0.03);">
-      <button class="player-tab-btn sub-tab-btn ${activeSubTab === 'defenses' ? 'active' : ''}" data-subtab="defenses" style="
-        flex:1;
-        text-align:center;
-        margin-bottom:-1px;
-      ">🛡️ Rettung &amp; Verteidigung</button>
-      <button class="player-tab-btn sub-tab-btn ${activeSubTab === 'buffs' ? 'active' : ''}" data-subtab="buffs" style="
-        flex:1;
-        text-align:center;
-        margin-bottom:-1px;
-      ">✨ Buffs &amp; Auren (${Array.isArray(pc.activeBuffs) ? pc.activeBuffs.length : 0})</button>
+    <div class="panel-tab-bar">
+      <button class="sub-tab-btn ${activeSubTab === 'defenses' ? 'active' : ''}" data-subtab="defenses">🛡️ Rettung &amp; Verteidigung</button>
+      <button class="sub-tab-btn ${activeSubTab === 'buffs' ? 'active' : ''}" data-subtab="buffs">✨ Buffs &amp; Auren (${Array.isArray(pc.activeBuffs) ? pc.activeBuffs.length : 0})</button>
     </div>
   `;
 
