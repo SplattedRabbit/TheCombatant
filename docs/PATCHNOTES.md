@@ -6,6 +6,9 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v3.3.5** | Release | 12.06.2026 | Refactoring feats-data.js (Aufteilung in Kategorie-Dateien) |
+| **v3.3.4** | Release | 12.06.2026 | Modularisierung von PCDefenses in DDD-Schichten |
+| **v3.3.3** | Release | 12.06.2026 | Buff- & Auren-Manager Upgrades (Quick-Selection & Optionen) |
 | **v3.3.2** | Release | 12.06.2026 | D&D 3.5e RAW Buff- & Auren-Manager (Backend & UI) |
 | **v3.3.1** | Release | 11.06.2026 | Behebung verbleibender Backlog-Bugs (Bugs #1 bis #18) & Bereinigung |
 | **v3.3.0** | Release | 11.06.2026 | Druiden-Tiergestalt RAW Fixes, Modularisierung AttackEngine & Behebung Bug #17 |
@@ -64,6 +67,26 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v3.3.5 — Refactoring feats-data.js (Release v3.3.5)
+
+* **⚙️ Code-Refactoring & Modularisierung:**
+  - **Talent-Datenbank Split:** Die monolithische Datei `feats-data.js` (~1154 Zeilen) wurde zur Einhaltung der Richtlinien in drei kleinere, kategorisierte Dateien aufgeteilt: `feats-combat.js` (Kampftalente), `feats-magic.js` (Magietalente) und `feats-general.js` (Allgemeine Talente).
+  - **Facade Pattern:** `feats-data.js` wurde als abwärtskompatible Fassade neu geschrieben. Sie importiert und mergt die getrennten Registries dynamisch unter Beibehaltung aller alten Funktionsschnittstellen (`checkFeatPrerequisites`, `getFeatIdsByClassPrereq`).
+  - **Service-Worker:** Registrierung der neuen Modular-Dateien in der Caching-Liste und Bump auf `v3.3.5-cache-v1` für stabile Offline-Fähigkeit.
+
+### v3.3.4 — PCDefenses Modularisierung (Release v3.3.4)
+
+* **🧹 Code-Struktur & Bugfixes:**
+  - **PCDefenses Split:** Refactoring der Benutzeroberfläche zur Einhaltung von DDD-Schichten.
+  - **Skalierungs-Fixes:** Anpassung der Zoom-Faktoren und Click-Areas für die Buff-Detailbox.
+  - **State-Fixes:** Behebung der doppelten Werte-Anwendung bei bestimmten Zauber-Effekten.
+
+### v3.3.3 — Buff- & Auren-Manager Upgrades (Release v3.3.3)
+
+* **✨ UI-Upgrades:**
+  - **Quick Selection & Custom Buffs:** Neue Schnellauswahl-Optionen und benutzerfreundliche Dialoge für Buff-Vorlagen.
+  - **Custom Alerts:** Ersetzen nativer Systemdialoge durch gestylte In-App Benachrichtigungen.
 
 ### v3.3.2 — D&D 3.5e RAW Buff- & Auren-Manager (Release v3.3.2)
 

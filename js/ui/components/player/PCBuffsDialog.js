@@ -1,7 +1,7 @@
 /**
  * @module    PCBuffsDialog
  * @summary   Interactive parchment dialog overlay for displaying spell/class buffs and configuring quick selection favorites.
- * @exports   showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex)
+ * @exports   showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex), showCastSuccessDialog(pc, spell, metamagic, onAppliedCallback)
  */
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
@@ -10,7 +10,9 @@ import { CLASS_BUFFS } from '../../../data/class-buffs-data.js';
 import {
   translateTarget,
   translateType,
-  checkBuffConflict
+  checkBuffConflict,
+  resolveSpellEffectValue,
+  calculateDurationRounds
 } from '../../../rules/BuffRules.js';
 import { activateBuffByKey } from './PCBuffsTab.js';
 
@@ -242,6 +244,230 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
       uiRegistry.renderPlayerScreen();
     };
   }
+
+  const keyHandler = (e) => {
+    if (e.key === 'Escape') {
+      dismiss();
+      document.removeEventListener('keydown', keyHandler);
+    }
+  };
+  document.addEventListener('keydown', keyHandler);
+}
+
+export function showCastSuccessDialog(pc, spell, key, metamagic = [], onAppliedCallback = null) {
+  let defaultCL = 1;
+  if (Array.isArray(pc.classes)) {
+    pc.classes.forEach(c => {
+      if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)) {
+        if (c.level > defaultCL) defaultCL = c.level;
+      }
+    });
+  }
+
+  const METAMAGIC_COSTS = { extend_spell: 1, empower_spell: 2, maximize_spell: 3, quicken_spell: 4 };
+  const metamagicNames = { extend_spell: 'Verlängert', empower_spell: 'Verstärkt', maximize_spell: 'Maximiert', quicken_spell: 'Beschleunigt' };
+  const appliedMeta = metamagic.map(mId => metamagicNames[mId] || mId);
+  const metaSuffix = appliedMeta.length > 0 ? ` (${appliedMeta.join(', ')})` : '';
+  const metamagicAdjustment = metamagic.reduce((sum, fId) => sum + (METAMAGIC_COSTS[fId] || 0), 0);
+  const finalLevel = spell.level + metamagicAdjustment;
+  const spellName = spell.nameDe || spell.nameEn || key;
+
+  const allPcs = CombatState.getState().combatants || [];
+  const allies = allPcs.filter(c => c.type === 'p' && c.id !== pc.id);
+  const alliesHtml = allies.map(ally => `
+    <label style="display: flex; align-items: center; gap: 6px; font-size: 9px; cursor: pointer; color: var(--ink);">
+      <input type="checkbox" class="cast-target-chk" value="${ally.id}" style="margin:0;">
+      <span>${ally.name}</span>
+    </label>
+  `).join('');
+
+  const overlay = document.createElement('div');
+  overlay.id = 'castSuccessDialogOverlay';
+  overlay.className = 'no-print';
+  overlay.style.cssText = `
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 11, 5, 0.65);
+    backdrop-filter: blur(3px);
+    z-index: 2500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+  `;
+
+  overlay.innerHTML = `
+    <div class="custom-alert-box" style="
+      background: var(--p);
+      border: 2px solid var(--pb);
+      border-radius: 4px;
+      padding: 16px 20px;
+      width: 520px;
+      max-width: 95vw;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08);
+      font-family: 'Crimson Text', serif;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-align: left;
+    ">
+      <div style="position: absolute; inset: 3px; border: 0.5px dashed rgba(200, 169, 110, 0.3); pointer-events: none; border-radius: 2px;"></div>
+
+      <div style="font-family:'IM Fell English SC', serif; font-size: 13px; color: var(--red); font-weight: bold; margin-bottom: 6px; text-align: center;">
+        Zauber erfolgreich gewirkt! ✨
+      </div>
+      <hr style="border: none; border-top: 0.5px solid rgba(200, 169, 110, 0.4); margin: 4px 0 8px;">
+
+      <div style="font-size: 11px; font-weight: bold; color: var(--red); text-align: center; font-family:'IM Fell English SC', serif;">
+        ${spellName}${metaSuffix}
+      </div>
+      <div style="font-size: 8.5px; color: var(--inkl); text-align: center; margin-bottom: 8px; font-style: italic;">
+        ${spell.school} • Grad ${finalLevel}
+      </div>
+      <div style="font-size: 8px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px; border-radius: 2px; line-height: 1.25; margin-bottom: 10px; max-height: 80px; overflow-y: auto; color: var(--ink);">
+        ${spell.description}
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; font-size: 9px; color: var(--ink);">
+        <strong>Wirkerstufe (Caster Level):</strong>
+        <input type="number" class="cast-cl-input" value="${defaultCL}" min="1" max="40" style="
+          width: 40px;
+          height: 16px;
+          font-size: 9px;
+          text-align: center;
+          border: 0.5px solid var(--pb);
+          border-radius: 2px;
+          background: rgba(0,0,0,0.03);
+          color: var(--ink);
+          font-weight: bold;
+        ">
+      </div>
+
+      <div style="margin-bottom: 12px; color: var(--ink);">
+        <strong style="font-size: 9px; color: var(--red); font-family:'IM Fell English SC', serif; display: block; margin-bottom: 4px;">Ziele für den Buff / die Aura:</strong>
+        <div style="display: flex; flex-direction: column; gap: 4px; max-height: 120px; overflow-y: auto; padding: 4px; border: 0.5px solid rgba(200, 169, 110, 0.2); background: rgba(0,0,0,0.01); border-radius: 2px;">
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 9px; cursor: pointer; color: var(--ink);">
+            <input type="checkbox" class="cast-target-chk" value="${pc.id}" checked style="margin:0;">
+            <span><strong>${pc.name}</strong> (Selbst)</span>
+          </label>
+          ${alliesHtml}
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 4px; justify-content: flex-end;">
+          <button type="button" class="btn btn-group-toggle" style="font-size: 7.5px; padding: 2px 6px; border: 0.5px solid var(--pb); background: transparent; color: var(--ink); cursor: pointer;">Ganze Gruppe</button>
+          <button type="button" class="btn btn-none-toggle" style="font-size: 7.5px; padding: 2px 6px; border: 0.5px solid var(--pb); background: transparent; color: var(--ink); cursor: pointer;">Zurücksetzen</button>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 8px; justify-content: center;">
+        <button class="btn btn-p apply-buff-btn" style="font-family:'IM Fell English SC', serif; font-size: 9px; padding: 4px 14px; cursor: pointer;">Als Buff anwenden</button>
+        <button class="btn close-dialog-btn" style="font-family:'IM Fell English SC', serif; font-size: 9px; padding: 4px 14px; cursor: pointer; border-color: var(--pb); background: transparent; color: var(--ink);">Nur zaubern (Kein Buff)</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  overlay.getBoundingClientRect(); // force reflow
+  overlay.style.opacity = '1';
+  overlay.querySelector('.custom-alert-box').style.transform = 'scale(1)';
+
+  const groupBtn = overlay.querySelector('.btn-group-toggle');
+  groupBtn.onclick = () => {
+    overlay.querySelectorAll('.cast-target-chk').forEach(chk => {
+      chk.checked = true;
+    });
+  };
+
+  const noneBtn = overlay.querySelector('.btn-none-toggle');
+  noneBtn.onclick = () => {
+    overlay.querySelectorAll('.cast-target-chk').forEach(chk => {
+      chk.checked = false;
+    });
+  };
+
+  const dismiss = () => {
+    overlay.style.opacity = '0';
+    overlay.querySelector('.custom-alert-box').style.transform = 'scale(0.9)';
+    setTimeout(() => { overlay.remove(); }, 200);
+    if (typeof onAppliedCallback === 'function') onAppliedCallback();
+  };
+
+  overlay.querySelector('.close-dialog-btn').onclick = dismiss;
+  overlay.onclick = (e) => { if (e.target === overlay) dismiss(); };
+
+  overlay.querySelector('.apply-buff-btn').onclick = () => {
+    const clInput = overlay.querySelector('.cast-cl-input');
+    const cl = parseInt(clInput.value) || 1;
+    
+    // Compile checked targets
+    const selectedIds = Array.from(overlay.querySelectorAll('.cast-target-chk:checked')).map(chk => chk.value);
+    
+    // Resolve effects & duration
+    let rounds = calculateDurationRounds(spell.duration, cl);
+    if (rounds !== null && metamagic.includes('extend_spell')) {
+      rounds = rounds * 2;
+    }
+
+    const effects = spell.effects || [];
+    const resolvedEffects = effects.map(eff => {
+      let val = parseInt(eff.value) || 0;
+      if (eff.valueFormula) {
+        val = resolveSpellEffectValue(eff.valueFormula, cl, val);
+      }
+      return {
+        target: eff.target,
+        value: val,
+        type: eff.type,
+        source: eff.source || spellName
+      };
+    });
+
+    const activate = () => {
+      CombatState.updatePCBatch(freshPc => {
+        if (!Array.isArray(freshPc.activeBuffs)) freshPc.activeBuffs = [];
+        freshPc.activeBuffs = freshPc.activeBuffs.filter(b => b.spellKey !== key);
+        
+        freshPc.activeBuffs.push({
+          id: 'spell_' + key + '_' + Date.now(),
+          spellKey: key,
+          name: spellName + metaSuffix,
+          durationFormula: spell.duration,
+          casterLevel: cl,
+          durationMaxRounds: rounds,
+          durationRemainingRounds: rounds,
+          effects: resolvedEffects,
+          sharedWith: selectedIds
+        });
+      });
+
+      uiRegistry.renderPlayerScreen();
+      dismiss();
+    };
+
+    // Conflict check on caster (if Self is selected)
+    const isSelfTarget = selectedIds.includes(pc.id);
+    const conflict = isSelfTarget ? checkBuffConflict(pc, key, resolvedEffects) : { status: 'ok' };
+
+    if (conflict.status === 'suppressed') {
+      showCustomConfirm(
+        "Stacking-Konflikt", 
+        `Ein stärkerer oder gleichwertiger Buff (<strong>${conflict.conflictingBuffName}</strong>) ist bereits aktiv.<br><br>Dein neuer Buff <strong>${conflict.buffName}</strong> (+${conflict.newValue} auf ${conflict.targetLabel}) hat denselben Bonus-Typ und würde daher <strong>keine Wirkung</strong> zeigen.<br><br>Möchtest du den Buff dennoch aktivieren?`,
+        () => {
+          activate();
+        }
+      );
+    } else if (conflict.status === 'overrides') {
+      activate();
+      showCustomAlert(
+        "Buff überlagert", 
+        `Durch das Aktivieren von <strong>${conflict.buffName}</strong> (+${conflict.newValue}) wird der schwächere aktive Buff <strong>${conflict.conflictingBuffName}</strong> (+${conflict.activeValue}) auf <strong>${conflict.targetLabel}</strong> überlagert.`,
+        "Verstanden", 
+        "✨"
+      );
+    } else {
+      activate();
+    }
+  };
 
   const keyHandler = (e) => {
     if (e.key === 'Escape') {

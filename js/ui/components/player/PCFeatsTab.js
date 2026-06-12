@@ -171,7 +171,42 @@ export function renderPCFeats(pc) {
   const hasWizard = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === 'wizard');
   const hasMonk = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === 'monk');
   const activeFeats = Array.isArray(pc.feats) ? pc.feats : [];
-  const maxFeats = CombatRules.calculateMaxFeats(pc);
+
+  const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
+  const totalLevel = activeClasses.reduce((sum, c) => sum + (c.level || 0), 0) || 1;
+  const raceStr = (pc.race || '').toLowerCase();
+  const isHuman = pc.isHuman !== undefined ? !!pc.isHuman : (raceStr === 'human' || raceStr === 'mensch' || raceStr === '');
+
+  const generalMax = 1 + Math.floor((totalLevel - 1) / 3) + (isHuman ? 1 : 0);
+  const fighterClass = activeClasses.find(c => c.classType === 'fighter');
+  const fighterMax = fighterClass ? 1 + Math.floor(fighterClass.level / 2) : 0;
+  const wizardClass = activeClasses.find(c => c.classType === 'wizard');
+  const wizardMax = wizardClass ? 1 + Math.floor(wizardClass.level / 5) : 0;
+  const monkClass = activeClasses.find(c => c.classType === 'monk');
+  const monkMax = monkClass ? (monkClass.level >= 6 ? 3 : (monkClass.level >= 2 ? 2 : (monkClass.level >= 1 ? 1 : 0))) : 0;
+
+  const totalMax = generalMax + fighterMax + wizardMax + monkMax;
+
+  // Distribute chosen feats to slots to show detailed slot usage
+  const monkBonusIds = ['improved_unarmed_strike', 'improved_grapple', 'deflect_arrows', 'snatch_arrows', 'stunning_fist', 'improved_trip', 'improved_overrun'];
+  let monkFilled = 0;
+  let wizardFilled = 0;
+  let fighterFilled = 0;
+  let generalFilled = 0;
+
+  for (const f of activeFeats) {
+    const featDef = CombatFeats.REGISTRY[f.id];
+    if (!featDef) continue;
+    if (monkMax > 0 && monkFilled < monkMax && monkBonusIds.includes(f.id)) {
+      monkFilled++;
+    } else if (wizardMax > 0 && wizardFilled < wizardMax && (featDef.category === 'metamagic' || featDef.category === 'item_creation')) {
+      wizardFilled++;
+    } else if (fighterMax > 0 && fighterFilled < fighterMax && featDef.category === 'combat') {
+      fighterFilled++;
+    } else {
+      generalFilled++;
+    }
+  }
 
   const legendHtml = _renderFeatsLegendHtml(hasFighter, hasWizard, hasMonk);
   const activeFeatsHtml = _renderLearnedFeatsListHtml(pc, activeFeats, hasFighter, hasWizard, hasMonk);
@@ -184,9 +219,15 @@ export function renderPCFeats(pc) {
     <div style="display:flex; gap:10px; height:100%; min-height: 380px;">
       <!-- Left Column: Active Feats (40%) -->
       <div style="width: 40%; display:flex; flex-direction:column; gap:4px; border-right: 0.5px solid var(--pb); padding-right: 8px;">
-        <h3 style="font-family:'IM Fell English SC', serif; font-size: 11px; color: var(--red); border-bottom: 1px solid var(--pb); padding-bottom: 2px; margin: 0 0 4px 0; font-weight:bold;">
-          🎓 Erlernte Talente (${activeFeats.length} / ${maxFeats})
+        <h3 style="font-family:'IM Fell English SC', serif; font-size: 11px; color: var(--red); border-bottom: 1px solid var(--pb); padding-bottom: 2px; margin: 0 0 4px 0; font-weight:bold; text-align: center;">
+          🎓 Talente (${activeFeats.length} / ${totalMax})
         </h3>
+        <div style="font-size: 7.5px; font-weight: normal; color: var(--inkm); margin-bottom: 6px; display: flex; flex-direction: column; gap: 2.5px; background: rgba(0,0,0,0.01); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px 6px; border-radius: 2px;">
+          <div style="display:flex; justify-content:space-between;"><span>Allgemeine Slots:</span> <strong style="color:var(--red);">${generalFilled} / ${generalMax}</strong></div>
+          ${fighterMax > 0 ? `<div style="display:flex; justify-content:space-between;"><span>Kämpfer-Slots:</span> <strong style="color:var(--red);">${fighterFilled} / ${fighterMax}</strong></div>` : ''}
+          ${wizardMax > 0 ? `<div style="display:flex; justify-content:space-between;"><span>Magier-Slots:</span> <strong style="color:var(--red);">${wizardFilled} / ${wizardMax}</strong></div>` : ''}
+          ${monkMax > 0 ? `<div style="display:flex; justify-content:space-between;"><span>Mönch-Slots:</span> <strong style="color:var(--red);">${monkFilled} / ${monkMax}</strong></div>` : ''}
+        </div>
         <div class="active-feats-list" style="flex:1; overflow-y:auto; max-height:360px; box-sizing:border-box;">
           ${activeFeatsHtml}
         </div>
@@ -284,14 +325,28 @@ function _renderLearnedFeatsListHtml(pc, activeFeats, hasFighter, hasWizard, has
 
 function _renderCompendiumListHtml(pc, activeFeats, hasFighter, hasWizard, hasMonk) {
   const compList = getCompendiumFeatList(pc);
-  const maxFeats = CombatRules.calculateMaxFeats(pc);
-  const isLimitReached = activeFeats.length >= maxFeats;
+  
+  const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
+  const totalLevel = activeClasses.reduce((sum, c) => sum + (c.level || 0), 0) || 1;
+  const raceStr = (pc.race || '').toLowerCase();
+  const isHuman = pc.isHuman !== undefined ? !!pc.isHuman : (raceStr === 'human' || raceStr === 'mensch' || raceStr === '');
+
+  const generalMax = 1 + Math.floor((totalLevel - 1) / 3) + (isHuman ? 1 : 0);
+  const fighterClass = activeClasses.find(c => c.classType === 'fighter');
+  const fighterMax = fighterClass ? 1 + Math.floor(fighterClass.level / 2) : 0;
+  const wizardClass = activeClasses.find(c => c.classType === 'wizard');
+  const wizardMax = wizardClass ? 1 + Math.floor(wizardClass.level / 5) : 0;
+  const monkClass = activeClasses.find(c => c.classType === 'monk');
+  const monkMax = monkClass ? (monkClass.level >= 6 ? 3 : (monkClass.level >= 2 ? 2 : (monkClass.level >= 1 ? 1 : 0))) : 0;
+
+  const totalMax = generalMax + fighterMax + wizardMax + monkMax;
+  const isLimitReached = activeFeats.length >= totalMax;
   
   let limitWarningHtml = '';
   if (isLimitReached) {
     limitWarningHtml = `
       <div style="background: rgba(139, 26, 26, 0.08); border: 0.5px solid var(--red); border-radius: 2px; padding: 4px; margin-bottom: 4px; font-family: 'Crimson Text', serif; font-size: 8px; color: var(--red); text-align: center; font-weight: bold;">
-        ⚠️ Talentlimit erreicht (${activeFeats.length} / ${maxFeats}). Du musst erst ein Talent verlernen, um ein neues auszuwählen.
+        ⚠️ Talentlimit erreicht (${activeFeats.length} / ${totalMax}). Du musst erst ein Talent verlernen, um ein neues auszuwählen.
       </div>
     `;
   }

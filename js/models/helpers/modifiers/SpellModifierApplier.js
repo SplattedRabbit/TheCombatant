@@ -63,6 +63,13 @@ export function applySpellModifiers(pc) {
   if (!Array.isArray(pc.activeBuffs)) return;
 
   pc.activeBuffs.forEach(buff => {
+    // Skip if it's a local shared buff but the caster did not target themselves
+    if (!buff.isRemote && buff.sharedWith && Array.isArray(buff.sharedWith)) {
+      if (!buff.sharedWith.includes(pc.id)) {
+        return;
+      }
+    }
+
     // If the buff already has resolved effects, we ONLY use those.
     // Otherwise, for backwards-compatibility, we look up the spell in the registry.
     if (Array.isArray(buff.effects)) {

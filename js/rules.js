@@ -7,6 +7,8 @@
  * @depends   Keine externen Imports
  * @notHere   Angriffs-/Schadensberechnung → AttackEngine.js | Rettungswürfe → SaveCalculator.js | UI → PCAttributes.js, PCSkillsTab.js
  */
+import { CombatFeats } from './data/feats-data.js';
+
 export const CombatRules = {
   CONDITIONS: [
     {
@@ -667,6 +669,71 @@ export const CombatRules = {
     }
 
     return maxFeats;
+  },
+
+  validateFeatsAssignment: function(pc, featsList) {
+    if (!pc) return { success: true };
+    const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
+    const totalLevel = activeClasses.reduce((sum, c) => sum + (c.level || 0), 0) || 1;
+    const raceStr = (pc.race || '').toLowerCase();
+    const isHuman = pc.isHuman !== undefined ? !!pc.isHuman : (raceStr === 'human' || raceStr === 'mensch' || raceStr === '');
+
+    let generalMax = 1 + Math.floor((totalLevel - 1) / 3) + (isHuman ? 1 : 0);
+
+    const fighterClass = activeClasses.find(c => c.classType === 'fighter');
+    let fighterMax = fighterClass ? 1 + Math.floor(fighterClass.level / 2) : 0;
+
+    const wizardClass = activeClasses.find(c => c.classType === 'wizard');
+    let wizardMax = wizardClass ? 1 + Math.floor(wizardClass.level / 5) : 0;
+
+    const monkClass = activeClasses.find(c => c.classType === 'monk');
+    let monkMax = monkClass ? (monkClass.level >= 6 ? 3 : (monkClass.level >= 2 ? 2 : (monkClass.level >= 1 ? 1 : 0))) : 0;
+
+    const totalMax = generalMax + fighterMax + wizardMax + monkMax;
+    if (featsList.length > totalMax) {
+      return { success: false, error: `Talentlimit überschritten (Maximal ${totalMax} Talente erlaubt, du hast ${featsList.length} gewählt).` };
+    }
+
+    const monkBonusIds = ['improved_unarmed_strike', 'improved_grapple', 'deflect_arrows', 'snatch_arrows', 'stunning_fist', 'improved_trip', 'improved_overrun'];
+
+    let monkFilled = 0;
+    let wizardFilled = 0;
+    let fighterFilled = 0;
+    let unassigned = [];
+
+    for (const f of featsList) {
+      const featDef = CombatFeats.REGISTRY[f.id];
+      if (!featDef) continue;
+
+      let assigned = false;
+
+      if (monkMax > 0 && monkFilled < monkMax && monkBonusIds.includes(f.id)) {
+        monkFilled++;
+        assigned = true;
+      }
+      else if (wizardMax > 0 && wizardFilled < wizardMax && (featDef.category === 'metamagic' || featDef.category === 'item_creation')) {
+        wizardFilled++;
+        assigned = true;
+      }
+      else if (fighterMax > 0 && fighterFilled < fighterMax && featDef.category === 'combat') {
+        fighterFilled++;
+        assigned = true;
+      }
+
+      if (!assigned) {
+        unassigned.push(f);
+      }
+    }
+
+    if (unassigned.length > generalMax) {
+      if (featsList.length === totalMax) {
+        return { success: false, error: `Talentwahl ungültig: Deine Talente können den Bonusslots nicht zugeordnet werden. Bitte überprüfe die Kategorien (Kämpfer benötigt Kampftalente, Magier benötigt Metamagie/Erschaffung, Mönch benötigt Mönchs-Bonustalente).` };
+      } else {
+        return { success: false, error: `Limit für allgemeine Talente überschritten (Maximal ${generalMax} allgemeine Talente erlaubt).` };
+      }
+    }
+
+    return { success: true };
   },
 
   CLASS_BASE_SKILLS: {

@@ -62,7 +62,7 @@ export function renderPCSkills(pc) {
       </span>
       <span style="display: inline-flex; align-items: center; gap: 2.5px;">
         <span style="font-size: 6px; color: var(--red); background: rgba(139,26,26,0.08); padding: 0.5px 2px; border-radius: 1px; font-weight: bold;" title="Trained Only">Geübt</span>
-        <span>Ungeübt nicht nutzbar</span>
+        <span>Ungeübt nicht nutzbar (ausgegraut &amp; Würfeln deaktiviert)</span>
       </span>
     </div>
   `;

@@ -10,6 +10,7 @@ import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { showCustomConfirm, showCustomAlert, showPrepareSpellDialog, showCastSpontaneousSpellDialog, showCustomPrompt, showNewDayTemplateDialog } from '../dialogs.js';
 import { findSpell } from './PCSpellbookTab.js';
+import { showCastSuccessDialog } from './PCBuffsDialog.js';
 import { CombatRules } from '../../../rules.js';
 import { getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../../../spells.js';
 import { 
@@ -188,29 +189,35 @@ function _handleSpellbookActionClick(pc, e) {
       
       const spell = findSpell(pc, prep.spellKey);
       if (spell) {
-        const METAMAGIC_COSTS = { extend_spell: 1, empower_spell: 2, maximize_spell: 3, quicken_spell: 4 };
-        const metamagicNames = { extend_spell: 'Verlängert', empower_spell: 'Verstärkt', maximize_spell: 'Maximiert', quicken_spell: 'Beschleunigt' };
-        const appliedMeta = prep.metamagic.map(mId => metamagicNames[mId] || mId);
-        const metaSuffix = appliedMeta.length > 0 ? ` (${appliedMeta.join(', ')})` : '';
-        
-        const metamagicAdjustment = prep.metamagic.reduce((sum, fId) => sum + (METAMAGIC_COSTS[fId] || 0), 0);
-        const finalLevel = spell.level + metamagicAdjustment;
+        if (spell.effects && spell.effects.length > 0) {
+          showCastSuccessDialog(pc, spell, prep.spellKey, prep.metamagic || [], () => {
+            uiRegistry.renderPlayerScreen();
+          });
+        } else {
+          const METAMAGIC_COSTS = { extend_spell: 1, empower_spell: 2, maximize_spell: 3, quicken_spell: 4 };
+          const metamagicNames = { extend_spell: 'Verlängert', empower_spell: 'Verstärkt', maximize_spell: 'Maximiert', quicken_spell: 'Beschleunigt' };
+          const appliedMeta = prep.metamagic.map(mId => metamagicNames[mId] || mId);
+          const metaSuffix = appliedMeta.length > 0 ? ` (${appliedMeta.join(', ')})` : '';
+          
+          const metamagicAdjustment = prep.metamagic.reduce((sum, fId) => sum + (METAMAGIC_COSTS[fId] || 0), 0);
+          const finalLevel = spell.level + metamagicAdjustment;
 
-        showCustomAlert("Zauber gewirkt! ✨", `
-          <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
-            <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
-              ${pc.name} wirkt vorbereiteten Zauber: ${spell.nameDe}${metaSuffix}!
+          showCustomAlert("Zauber gewirkt! ✨", `
+            <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
+              <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
+                ${pc.name} wirkt vorbereiteten Zauber: ${spell.nameDe}${metaSuffix}!
+              </div>
+              • <strong>Schule:</strong> ${spell.school}<br>
+              • <strong>Effektiver Grad:</strong> Grad ${finalLevel} (Basis ${spell.level})<br>
+              • <strong>Zeitaufwand:</strong> ${spell.castingTime || '1 Standardaktion'}<br>
+              • <strong>Reichweite:</strong> ${spell.range || 'Berührung'}<br>
+              • <strong>Rettungswurf:</strong> ${spell.savingThrow || 'Keiner'}<br><br>
+              <div style="font-size: 8px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px; border-radius: 2px; line-height: 1.25;">
+                ${spell.description}
+              </div>
             </div>
-            • <strong>Schule:</strong> ${spell.school}<br>
-            • <strong>Effektiver Grad:</strong> Grad ${finalLevel} (Basis ${spell.level})<br>
-            • <strong>Zeitaufwand:</strong> ${spell.castingTime || '1 Standardaktion'}<br>
-            • <strong>Reichweite:</strong> ${spell.range || 'Berührung'}<br>
-            • <strong>Rettungswurf:</strong> ${spell.savingThrow || 'Keiner'}<br><br>
-            <div style="font-size: 8px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px; border-radius: 2px; line-height: 1.25;">
-              ${spell.description}
-            </div>
-          </div>
-        `, "Fertig!", "");
+          `, "Fertig!", "");
+        }
       }
       uiRegistry.renderPlayerScreen();
     }
@@ -343,21 +350,27 @@ function _handleSpellListClick(pc, e) {
         CombatState.updatePCSpellSlotsUsed(lvl, newUsed);
       }
       
-      showCustomAlert("Zauber gewirkt! ✨", `
-        <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
-          <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
-            ${pc.name} wirkt ${spell.nameDe}!
+      if (spell.effects && spell.effects.length > 0) {
+        showCastSuccessDialog(pc, spell, key, [], () => {
+          uiRegistry.renderPlayerScreen();
+        });
+      } else {
+        showCustomAlert("Zauber gewirkt! ✨", `
+          <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
+            <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
+              ${pc.name} wirkt ${spell.nameDe}!
+            </div>
+            • <strong>Schule:</strong> ${spell.school}<br>
+            • <strong>Grad:</strong> Grad ${spell.level}<br>
+            • <strong>Zeitaufwand:</strong> ${spell.castingTime || '1 Standardaktion'}<br>
+            • <strong>Reichweite:</strong> ${spell.range || 'Berührung'}<br>
+            • <strong>Rettungswurf:</strong> ${spell.savingThrow || 'Keiner'}<br><br>
+            <div style="font-size: 8px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px; border-radius: 2px; line-height: 1.25;">
+              ${spell.description}
+            </div>
           </div>
-          • <strong>Schule:</strong> ${spell.school}<br>
-          • <strong>Grad:</strong> Grad ${spell.level}<br>
-          • <strong>Zeitaufwand:</strong> ${spell.castingTime || '1 Standardaktion'}<br>
-          • <strong>Reichweite:</strong> ${spell.range || 'Berührung'}<br>
-          • <strong>Rettungswurf:</strong> ${spell.savingThrow || 'Keiner'}<br><br>
-          <div style="font-size: 8px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px; border-radius: 2px; line-height: 1.25;">
-            ${spell.description}
-          </div>
-        </div>
-      `, "Fertig!", "");
+        `, "Fertig!", "");
+      }
     };
 
     if (maxSlots > 0 && usedSlots >= maxSlots) {
