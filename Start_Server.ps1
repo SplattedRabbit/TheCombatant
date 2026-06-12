@@ -113,7 +113,17 @@ while ($listener.IsListening) {
         }
         $response.OutputStream.Close()
     } catch {
-        # Fehler abfangen, damit der Server nicht abstürzt bei einzelnen Verbindungsabbrüchen
         Write-Host "[WARN] Verbindungsfehler: $_" -ForegroundColor Yellow
+        try {
+            if ($null -ne $response) {
+                $response.StatusCode = 500
+                $errBytes = [System.Text.Encoding]::UTF8.GetBytes("Internal Server Error: $_")
+                $response.ContentType = "text/plain; charset=utf-8"
+                $response.OutputStream.Write($errBytes, 0, $errBytes.Length)
+                $response.OutputStream.Close()
+            }
+        } catch {
+            # Ignorieren, falls die Verbindung bereits tot ist
+        }
     }
 }

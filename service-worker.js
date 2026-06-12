@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.4.0-cache-v3';
+const CACHE_NAME = 'dnd-combatsheet-v3.4.0-cache-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -131,7 +131,10 @@ const ASSETS = [
   './js/state/state-core.js',
   './js/state/StorageManager.js',
   './js/state/PCManager.js',
-  './js/state/EncounterManager.js'
+  './js/state/EncounterManager.js',
+  './js/ui/components/player/PCSkillsTab.js',
+  './js/ui/components/player/PCSpellsTabHandlers.js',
+  './data/spells_de.json'
 ];
 
 
@@ -184,6 +187,11 @@ self.addEventListener('fetch', event => {
           return cachedResponse;
         }
         console.log('Fetch failed and no cache found, offline mode active.');
+        return new Response('Offline and resource not cached', {
+          status: 503,
+          statusText: 'Service Unavailable',
+          headers: new Headers({ 'Content-Type': 'text/plain; charset=utf-8' })
+        });
       });
     })
   );
