@@ -207,3 +207,38 @@ test('Buff Stacking - Damage Roll Buffs in AttackEngine (Step 1.2 & 1.3)', () =>
   // Total damage bonus = 2 (luck_higher) + 3 (untyped) = 5
   assert.strictEqual(seq3[0].dmgTotal, 5, 'Damage should receive +5 (highest luck + untyped)');
 });
+
+test('Buff Stacking - No double-application for buffs with both spellKey and effects (Step 1.1 & 1.2)', () => {
+  const pc = new Combatant({
+    name: 'Test double-apply',
+    type: 'p',
+    ac: 10,
+    acTouch: 10,
+    acFlat: 10,
+    autoAC: true,
+    str: 10,
+    bab: 5,
+    activeBuffs: [
+      {
+        id: 'spell_haste_test',
+        spellKey: 'haste',
+        name: 'Hast',
+        effects: [
+          { target: 'atk', value: 1, type: 'dodge', source: 'Hast' },
+          { target: 'acDodge', value: 1, type: 'dodge', source: 'Hast' }
+        ]
+      }
+    ]
+  });
+
+  pc.rebuildStatModifiers();
+
+  // 1. Check AC Touch (should only have +1 dodge from haste, not +2)
+  assert.strictEqual(pc.acTouch.getValue(), 11, 'Touch AC should be 11 (haste only applied once)');
+
+  // 2. Check Attack Engine (should only have +1 dodge from haste, not +2)
+  const sword = new Weapon({ name: 'Langschwert', gripOverride: '1h' });
+  pc.weapons = [sword];
+  const seq = AttackEngine.calculateAttackSequence(pc, sword, false);
+  assert.strictEqual(seq[0].atkTotal, 6, 'Attack total should be 6 (haste applied once)');
+});

@@ -174,7 +174,10 @@ export function renderPCBuffsTab(pc) {
           cha: 'CHA',
           za: 'Fort',
           ref: 'Ref',
-          wil: 'Will'
+          wil: 'Will',
+          baseZa: 'Fort',
+          baseRef: 'Ref',
+          baseWil: 'Will'
         }[eff.target] || eff.target;
         return `${sign}${eff.value} ${targetShort}`;
       }).join(', ');
