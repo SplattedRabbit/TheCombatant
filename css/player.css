@@ -694,7 +694,7 @@
 /* Sub-Tab Navigation Bar inside Panel Header */
 .panel-tab-bar {
   display: flex;
-  background: var(--pb);
+  background: rgba(244, 232, 193, 0.45);
   border-bottom: 1.5px solid var(--pb);
   border-radius: 1.5px 1.5px 0 0;
   overflow: hidden;
@@ -702,35 +702,35 @@
 
 .sub-tab-btn {
   flex: 1;
-  padding: 5px 8px;
+  padding: 3px 8px;
   font-family: 'IM Fell English SC', serif;
   font-size: 10.5px;
   font-weight: bold;
   border: none;
   background: transparent;
-  color: var(--inkm);
-  opacity: 0.75;
+  color: var(--inkl);
+  opacity: 0.8;
   cursor: pointer;
   text-align: center;
   transition: all 0.15s ease;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1.5px solid transparent;
 }
 
 .sub-tab-btn:first-child {
-  border-right: 1px solid rgba(26, 15, 0, 0.15);
+  border-right: 1.5px solid var(--pb);
 }
 
 .sub-tab-btn:hover {
   opacity: 1;
-  background: rgba(244, 232, 193, 0.25);
+  background: rgba(200, 169, 110, 0.15);
   color: var(--red);
 }
 
 .sub-tab-btn.active {
-  background: rgba(244, 232, 193, 0.7);
+  background: var(--pb);
   color: var(--red);
   opacity: 1;
-  border-bottom: 2px solid var(--red);
+  border-bottom: 1.5px solid rgba(139, 26, 26, 0.55);
 }
 
 
