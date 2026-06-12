@@ -43,7 +43,7 @@ export function renderPCHeader(pc, activeTab) {
         <!-- Circular Gold Shield HP Emblem -->
         <div style="position: relative;">
           <div class="hp-emblem" style="position: relative; width: 56px; height: 56px; border-radius: 50%; background: radial-gradient(circle, #f4e8c1 0%, #c8a96e 70%, #9a7a2e 100%); border: 2px double var(--red); box-shadow: 0 3px 8px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.4); display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: 'IM Fell English SC', serif; color: var(--red); text-shadow: 0 0.5px 0.5px rgba(255,255,255,0.5);">
-            <span style="font-size: 7px; font-weight: bold; line-height: 1; color: var(--inkl); margin-top: 1px; letter-spacing: 0.5px;">TREFFERP.</span>
+            <span style="font-size: 8px; font-weight: bold; line-height: 1; color: var(--inkl); margin-top: 2px; letter-spacing: 0.5px;">HP</span>
             <div style="display: flex; align-items: center; justify-content: center; height: 16px; margin: 1px 0;">
               <input type="number" value="${pc.hp}" class="pc-hp-cur-field" style="width: 25px; text-align: center; background: transparent; border: none; font-family: 'IM Fell English SC', serif; font-size: 15px; outline: none; font-weight: bold; color: var(--red); padding: 0;" title="Aktuelle TP direkt editieren">
             </div>

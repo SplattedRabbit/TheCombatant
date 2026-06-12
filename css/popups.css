@@ -390,6 +390,7 @@
 #castSpontaneousSpellOverlay,
 #prepareSpellOverlay,
 #wildShapeDialogOverlay,
+#buffDetails,
 #rollBreakdown {
   transform: scale(var(--app-scale));
   transform-origin: center center;
