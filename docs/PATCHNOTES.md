@@ -5,22 +5,21 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 ---
 
 | Version | Status | Datum | Hauptfokus |
-| :--- | :---: | :---: | :--- |
+| :--- | :--- | :--- | :--- |
 | **v3.3.2** | Release | 12.06.2026 | D&D 3.5e RAW Buff- & Auren-Manager (Backend & UI) |
 | **v3.3.1** | Release | 11.06.2026 | Behebung verbleibender Backlog-Bugs (Bugs #1 bis #18) & Bereinigung |
 | **v3.3.0** | Release | 11.06.2026 | Druiden-Tiergestalt RAW Fixes, Modularisierung AttackEngine & Behebung Bug #17 |
 | **v3.2.7** | Release | 11.06.2026 | D&D 3.5e Volks-Simulation, Stat-Mali Fix & PCResources.js Refactoring |
-| **v3.2.6** | Release | 11.06.2026 | Monolith Refactoring: PCOffense.js Split in 7 UI-Subkomponenten |
+| **v3.2.6** | Release | 11.06.2026 | Monolith Refactoring: PCOffense.js Split in 7 UI-Subkomponentenv3.2.5 |
 | **v3.2.5** | Release | 10.06.2026 | Wild-Shape-Bugdokumentation, Cache-Bump, Serviceworker-Versionskonvention |
 | **v3.2.4** | Release | 10.06.2026 | Waffen Zusatzschaden: Würfelanzahl + Schadensart via Dropdowns (extraDamageDice/extraDamageType), AttackEngine-Integration |
 | **v3.2.3** | Release | 10.06.2026 | Magische Gegenstände: Multi-Effekte (effects[]-Array), Inline-„➕ Effekt"-Button, Legacy-Abwärtskompatibilität |
 | **v3.2.2** | Release | 10.06.2026 | Neuer Tab „Magische Gegenstände" mit Slot-Boxen (11 Slots + Slotless) und synchronisiertem Rucksack |
 | **v3.2.1** | Release | 10.06.2026 | Zwei-Waffen-Kampf & Doppelwaffen (D&D 3.5e RAW, Ranger-Armor Suspension, Kampfstab-Wahl, QoL) |
-
 | **v3.1.5** | Release | 08.06.2026 | Systemmenü-Dropdown & Tablet-Optimierung (FAB-Entfernung, responsive Dropdowns) |
 | **v3.1.0** | Release | 08.06.2026 | Clean Code Refactoring (Modularisierung, FE/BE-Trennung, app.js-Initialisierung) |
 | **v3.0.0** | Release | 08.06.2026 | Auto-Scaling Stabilisierung, Härtung Talent-Voraussetzungen, Paladin "Untote vertreiben"-Support & Live-Initiative-Anzeige |
-| **v2.9.1** | Release | 08.06.2026 | Zoom/Click-Area-Fix (150% DPI): `transform-origin: top center` + Width-Hack entfernt + ResizeObserver Scroll-Kompensation |
+| **v2.9.1** | Release | 08.06.2026 | Zoom/Click-Area-Fix (150% DPI): transform-origin: top center + Width-Hack entfernt + ResizeObserver Scroll-Kompensation |
 | **v2.9.0** | Release | 08.06.2026 | Bugtracking & QoL: Fokusverlust-Fix Talentsuche, Prerequisite-Validierung, Class-Bleed-Fix, Unified Roll-Breakdown Dialog, showInfoDialog-Basisfunktion |
 | **v2.8.5** | Release | 08.06.2026, 11:00 | Zaubertemplates: Speichern, Löschen, Laden, Slot-Checks und erweiterter Tagesreset für vorbereitende Casters |
 | **v2.8.0** | Release | 08.06.2026, 10:30 | Metamagie & Zaubervorbereitung: Vorbereitende vs. spontane Klassen, Metamagic-Checks & Slots-RAW |
