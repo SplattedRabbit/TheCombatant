@@ -21,6 +21,50 @@ export function renderPCDefensesTab(pc) {
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
 
+  // Helpers for breakdown/tooltips
+  const getSaveMiscBreakdown = (type, attrMod) => {
+    const baseVal = type === 'za' ? pc.baseZa.base : type === 'ref' ? pc.baseRef.base : pc.baseWil.base;
+    const saveStat = type === 'za' ? pc.za : type === 'ref' ? pc.ref : pc.wil;
+    const miscVal = type === 'za' ? pc.zaMisc : type === 'ref' ? pc.refMisc : type === 'wilMisc';
+    
+    const total = saveStat.getValue();
+    const otherMods = total - baseVal - attrMod;
+    
+    const attrName = type === 'za' ? 'Konstitutions-Modifikator' : type === 'ref' ? 'Geschicklichkeits-Modifikator' : 'Weisheits-Modifikator';
+    const miscName = 'Sonstiges (Ausrüstung/Spezial)';
+    
+    const extras = saveStat.modifiers.filter(m => m.source !== attrName && m.source !== miscName && m.value !== 0);
+    
+    let tooltip = `Sonstiger Modifikator (Eigenwert: ${miscVal})`;
+    if (extras.length > 0) {
+      tooltip += `\nAktive Effekte:\n` + extras.map(m => `• ${m.source}: ${formatMod(m.value)}`).join('\n');
+    }
+    
+    return {
+      displayValue: otherMods,
+      tooltip,
+      hasExtras: extras.length > 0
+    };
+  };
+
+  const getAcTooltip = (stat, name) => {
+    const items = ['Basiswert: 10'];
+    if (Array.isArray(stat.modifiers)) {
+      stat.modifiers.forEach(m => {
+        if (m.value !== 0) items.push(`• ${m.source || 'Modifikator'}: ${formatMod(m.value)}`);
+      });
+    }
+    return `${name} Aufschlüsselung:\n` + items.join('\n');
+  };
+
+  const zaMiscData = getSaveMiscBreakdown('za', conMod);
+  const refMiscData = getSaveMiscBreakdown('ref', dexMod);
+  const wilMiscData = getSaveMiscBreakdown('wil', wisMod);
+
+  const acTooltip = getAcTooltip(pc.ac, 'Rüstungsklasse (AC)');
+  const acTouchTooltip = getAcTooltip(pc.acTouch, 'Touch AC');
+  const acFlatTooltip = getAcTooltip(pc.acFlat, 'Flat-Footed AC');
+
   return `
     <div style="display:flex; flex-direction:column; gap:6px;">
       <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(200, 169, 110, 0.05); border:0.5px solid var(--pb); border-radius:2px; padding:3px 6px; margin-bottom:2px;">
@@ -33,15 +77,15 @@ export function renderPCDefensesTab(pc) {
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px;">
         <div>
           <label style="font-size:9px; font-weight:600; color:var(--inkl);">AC (RK)</label>
-          <input type="number" value="${pc.ac}" class="cinput pc-ac-input" ${pc.autoAC ? 'readonly style="background:rgba(0,0,0,0.05); color:var(--red); font-weight:bold; cursor:pointer;"' : ''}>
+          <input type="number" value="${pc.ac}" class="cinput pc-ac-input" ${pc.autoAC ? `readonly style="background:rgba(0,0,0,0.05); color:var(--red); font-weight:bold; cursor:pointer;" title="${acTooltip}"` : ''}>
         </div>
         <div>
           <label style="font-size:9px; font-weight:600; color:var(--inkl);">Touch</label>
-          <input type="number" value="${pc.acTouch}" class="cinput pc-acTouch-input" ${pc.autoAC ? 'readonly style="background:rgba(0,0,0,0.05); color:var(--red); font-weight:bold; cursor:pointer;"' : ''}>
+          <input type="number" value="${pc.acTouch}" class="cinput pc-acTouch-input" ${pc.autoAC ? `readonly style="background:rgba(0,0,0,0.05); color:var(--red); font-weight:bold; cursor:pointer;" title="${acTouchTooltip}"` : ''}>
         </div>
         <div>
           <label style="font-size:9px; font-weight:600; color:var(--inkl);">Flat-Footed</label>
-          <input type="number" value="${pc.acFlat}" class="cinput pc-acFlat-input" ${pc.autoAC ? 'readonly style="background:rgba(0,0,0,0.05); color:var(--red); font-weight:bold; cursor:pointer;"' : ''}>
+          <input type="number" value="${pc.acFlat}" class="cinput pc-acFlat-input" ${pc.autoAC ? `readonly style="background:rgba(0,0,0,0.05); color:var(--red); font-weight:bold; cursor:pointer;" title="${acFlatTooltip}"` : ''}>
         </div>
       </div>
 
@@ -116,7 +160,7 @@ export function renderPCDefensesTab(pc) {
           <span style="font-size:8px; font-weight:bold; color:var(--pb); text-align:center;">+</span>
           <input type="text" value="${formatMod(conMod)}" readonly tabindex="-1" class="cinput cinput-c" style="font-size:8px; width:30px; text-align:center; padding:0; height:14px; font-weight:bold; background:rgba(0,0,0,0.05); color:var(--red); border-color:var(--pb);" title="KON-Modifikator">
           <span style="font-size:8px; font-weight:bold; color:var(--pb); text-align:center;">+</span>
-          <input type="number" value="${pc.zaMisc || 0}" class="cinput pc-zaMisc-inp cinput-c" style="font-size:8px; width:30px; text-align:center; padding:0; height:14px;" title="Sonstiger Modifikator">
+          <input type="number" value="${zaMiscData.displayValue}" class="cinput pc-zaMisc-inp cinput-c" style="font-size:8px; width:30px; text-align:center; padding:0; height:14px; ${zaMiscData.hasExtras ? 'border-color: var(--red) !important; background: rgba(139, 26, 26, 0.05) !important; color: var(--red); font-weight: bold;' : ''}" title="${zaMiscData.tooltip}">
           <span style="font-size:8px; font-weight:bold; color:var(--pb); text-align:center;">=</span>
           <button class="btn roll-save-btn" data-save="za" style="text-align:center; display:flex; justify-content:center; align-items:center; gap:2px; font-weight:bold; height:16px; padding:0 3px; font-size:8.5px; border-radius:2px; line-height:1;">
             <strong>${formatMod(totFort)} 🎲</strong>
@@ -130,7 +174,7 @@ export function renderPCDefensesTab(pc) {
           <span style="font-size:8px; font-weight:bold; color:var(--pb); text-align:center;">+</span>
           <input type="text" value="${formatMod(dexMod)}" readonly tabindex="-1" class="cinput cinput-c" style="font-size:8px; width:30px; text-align:center; padding:0; height:14px; font-weight:bold; background:rgba(0,0,0,0.05); color:var(--red); border-color:var(--pb);" title="GES-Modifikator">
           <span style="font-size:8px; font-weight:bold; color:var(--pb); text-align:center;">+</span>
-          <input type="number" value="${pc.refMisc || 0}" class="cinput pc-refMisc-inp cinput-c" style="font-size:8px; width:30px; text-align:center; padding:0; height:14px;" title="Sonstiger Modifikator">
+          <input type="number" value="${refMiscData.displayValue}" class="cinput pc-refMisc-inp cinput-c" style="font-size:8px; width:30px; text-align:center; padding:0; height:14px; ${refMiscData.hasExtras ? 'border-color: var(--red) !important; background: rgba(139, 26, 26, 0.05) !important; color: var(--red); font-weight: bold;' : ''}" title="${refMiscData.tooltip}">
           <span style="font-size:8px; font-weight:bold; color:var(--pb); text-align:center;">=</span>
           <button class="btn roll-save-btn" data-save="ref" style="text-align:center; display:flex; justify-content:center; align-items:center; gap:2px; font-weight:bold; height:16px; padding:0 3px; font-size:8.5px; border-radius:2px; line-height:1;">
             <strong>${formatMod(totRef)} 🎲</strong>
@@ -144,7 +188,7 @@ export function renderPCDefensesTab(pc) {
           <span style="font-size:8px; font-weight:bold; color:var(--pb); text-align:center;">+</span>
           <input type="text" value="${formatMod(wisMod)}" readonly tabindex="-1" class="cinput cinput-c" style="font-size:8px; width:30px; text-align:center; padding:0; height:14px; font-weight:bold; background:rgba(0,0,0,0.05); color:var(--red); border-color:var(--pb);" title="WEI-Modifikator">
           <span style="font-size:8px; font-weight:bold; color:var(--pb); text-align:center;">+</span>
-          <input type="number" value="${pc.wilMisc || 0}" class="cinput pc-wilMisc-inp cinput-c" style="font-size:8px; width:30px; text-align:center; padding:0; height:14px;" title="Sonstiger Modifikator">
+          <input type="number" value="${wilMiscData.displayValue}" class="cinput pc-wilMisc-inp cinput-c" style="font-size:8px; width:30px; text-align:center; padding:0; height:14px; ${wilMiscData.hasExtras ? 'border-color: var(--red) !important; background: rgba(139, 26, 26, 0.05) !important; color: var(--red); font-weight: bold;' : ''}" title="${wilMiscData.tooltip}">
           <span style="font-size:8px; font-weight:bold; color:var(--pb); text-align:center;">=</span>
           <button class="btn roll-save-btn" data-save="wil" style="text-align:center; display:flex; justify-content:center; align-items:center; gap:2px; font-weight:bold; height:16px; padding:0 3px; font-size:8.5px; border-radius:2px; line-height:1;">
             <strong>${formatMod(totWil)} 🎲</strong>
@@ -258,12 +302,27 @@ export function bindPCDefensesTabEvents(pc, defenses) {
   }
 
   // Saves input change bindings
+  const calculateNewMisc = (type, attrMod, typedVal) => {
+    const baseVal = type === 'za' ? pc.baseZa.base : type === 'ref' ? pc.baseRef.base : pc.baseWil.base;
+    const saveStat = type === 'za' ? pc.za : type === 'ref' ? pc.ref : pc.wil;
+    const miscVal = type === 'za' ? pc.zaMisc : type === 'ref' ? pc.refMisc : type === 'wilMisc';
+    
+    const total = saveStat.getValue();
+    const otherMods = total - baseVal - attrMod;
+    const extraMods = otherMods - miscVal;
+    
+    return typedVal - extraMods;
+  };
+
   defenses.querySelector('.pc-baseZa-inp').onchange = (e) => {
     CombatState.updatePCNumber('baseZa', e.target.value);
     uiRegistry.renderPlayerScreen();
   };
   defenses.querySelector('.pc-zaMisc-inp').onchange = (e) => {
-    CombatState.updatePCNumber('zaMisc', e.target.value);
+    const typed = parseInt(e.target.value) || 0;
+    const conMod = getAblMod(pc.con);
+    const newMisc = calculateNewMisc('za', conMod, typed);
+    CombatState.updatePCNumber('zaMisc', newMisc);
     uiRegistry.renderPlayerScreen();
   };
   defenses.querySelector('.pc-baseRef-inp').onchange = (e) => {
@@ -271,7 +330,10 @@ export function bindPCDefensesTabEvents(pc, defenses) {
     uiRegistry.renderPlayerScreen();
   };
   defenses.querySelector('.pc-refMisc-inp').onchange = (e) => {
-    CombatState.updatePCNumber('refMisc', e.target.value);
+    const typed = parseInt(e.target.value) || 0;
+    const dexMod = getAblMod(pc.dex);
+    const newMisc = calculateNewMisc('ref', dexMod, typed);
+    CombatState.updatePCNumber('refMisc', newMisc);
     uiRegistry.renderPlayerScreen();
   };
   defenses.querySelector('.pc-baseWil-inp').onchange = (e) => {
@@ -279,7 +341,10 @@ export function bindPCDefensesTabEvents(pc, defenses) {
     uiRegistry.renderPlayerScreen();
   };
   defenses.querySelector('.pc-wilMisc-inp').onchange = (e) => {
-    CombatState.updatePCNumber('wilMisc', e.target.value);
+    const typed = parseInt(e.target.value) || 0;
+    const wisMod = getAblMod(pc.wis);
+    const newMisc = calculateNewMisc('wil', wisMod, typed);
+    CombatState.updatePCNumber('wilMisc', newMisc);
     uiRegistry.renderPlayerScreen();
   };
 

@@ -45,6 +45,35 @@ export function renderPCAttributes(pc) {
     return seq.join(' / ');
   };
 
+  const renderAttrBox = (key, label, icon) => {
+    const stat = pc[key];
+    const score = stat.getValue();
+    const mod = getAblMod(score);
+    const isBuffed = score !== stat.base;
+    
+    let tooltip = `${label}wert`;
+    let borderStyle = 'border: 0.5px solid var(--pb);';
+    let bgStyle = 'background: rgba(200, 169, 110, 0.1);';
+    if (isBuffed) {
+      borderStyle = 'border: 0.5px solid var(--red) !important;';
+      bgStyle = 'background: rgba(139, 26, 26, 0.05) !important;';
+      const modifiers = stat.modifiers.filter(m => m.value !== 0);
+      tooltip += `\nBasiswert: ${stat.base}\nAktiver Wert: ${score}\nAktive Boni:\n` + 
+        modifiers.map(m => `• ${m.source}: ${formatMod(m.value)}`).join('\n');
+    }
+    
+    return `
+      <div class="attr-box" style="display:flex; flex-direction:column; ${bgStyle} ${borderStyle} border-radius:2px; padding:3px; position:relative;" title="${tooltip}">
+        <label style="font-size:8px; font-weight:600; color:var(--inkl);">${icon} ${label}</label>
+        <div style="display:flex; align-items:center; gap:2px; margin-top:2px; justify-content:space-between;">
+          <input type="number" value="${score}" class="cinput pc-${key}-inp" style="width:24px; font-size:9px; height:14px; text-align:center; padding:0; ${isBuffed ? 'color: var(--red); font-weight: bold; border-color: var(--red) !important;' : ''}" title="${tooltip}">
+          <input type="text" value="${formatMod(mod)}" readonly class="cinput" style="width:20px; font-size:8.5px; height:14px; text-align:center; padding:0; font-weight:bold; ${isBuffed ? 'border-color: var(--red) !important; background: rgba(139, 26, 26, 0.08) !important; color: var(--red) !important;' : 'background:rgba(0,0,0,0.05); color:var(--red); border-color:var(--pb);'}" title="Modifikator">
+          <button class="xbtn roll-attr-btn" data-attr="${key}" style="padding:0; width:16px; height:14px; font-size:8px; line-height:14px; display:flex; align-items:center; justify-content:center;" title="${label}wurf (Formel)">🎲</button>
+        </div>
+      </div>
+    `;
+  };
+
   attributes.innerHTML = `
     <div class="phdr"><h2>✨ Attribute &amp; Kompetenz</h2></div>
     <div class="pbody" style="display:flex; flex-direction:column; gap:5px;">
@@ -121,54 +150,12 @@ export function renderPCAttributes(pc) {
       </div>
 
       <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px;">
-        <div class="attr-box" style="display:flex; flex-direction:column; background:rgba(200, 169, 110, 0.1); border:0.5px solid var(--pb); border-radius:2px; padding:3px; position:relative;">
-          <label style="font-size:8px; font-weight:600; color:var(--inkl);">⚔️ Stärke (STR)</label>
-          <div style="display:flex; align-items:center; gap:2px; margin-top:2px; justify-content:space-between;">
-            <input type="number" value="${pc.str}" class="cinput pc-str-inp" style="width:24px; font-size:9px; height:14px; text-align:center; padding:0;" title="Stärkewert">
-            <input type="text" value="${formatMod(strMod)}" readonly class="cinput" style="width:20px; font-size:8.5px; height:14px; text-align:center; padding:0; font-weight:bold; background:rgba(0,0,0,0.05); color:var(--red); border-color:var(--pb);" title="Modifikator">
-            <button class="xbtn roll-attr-btn" data-attr="str" style="padding:0; width:16px; height:14px; font-size:8px; line-height:14px; display:flex; align-items:center; justify-content:center;" title="Stärkewurf (Formel)">🎲</button>
-          </div>
-        </div>
-        <div class="attr-box" style="display:flex; flex-direction:column; background:rgba(200, 169, 110, 0.1); border:0.5px solid var(--pb); border-radius:2px; padding:3px; position:relative;">
-          <label style="font-size:8px; font-weight:600; color:var(--inkl);">🎯 Geschick (DEX)</label>
-          <div style="display:flex; align-items:center; gap:2px; margin-top:2px; justify-content:space-between;">
-            <input type="number" value="${pc.dex}" class="cinput pc-dex-inp" style="width:24px; font-size:9px; height:14px; text-align:center; padding:0;" title="Geschickwert">
-            <input type="text" value="${formatMod(dexMod)}" readonly class="cinput" style="width:20px; font-size:8.5px; height:14px; text-align:center; padding:0; font-weight:bold; background:rgba(0,0,0,0.05); color:var(--red); border-color:var(--pb);" title="Modifikator">
-            <button class="xbtn roll-attr-btn" data-attr="dex" style="padding:0; width:16px; height:14px; font-size:8px; line-height:14px; display:flex; align-items:center; justify-content:center;" title="Geschickwurf (Formel)">🎲</button>
-          </div>
-        </div>
-        <div class="attr-box" style="display:flex; flex-direction:column; background:rgba(200, 169, 110, 0.1); border:0.5px solid var(--pb); border-radius:2px; padding:3px; position:relative;">
-          <label style="font-size:8px; font-weight:600; color:var(--inkl);">🛡️ Konst (CON)</label>
-          <div style="display:flex; align-items:center; gap:2px; margin-top:2px; justify-content:space-between;">
-            <input type="number" value="${pc.con}" class="cinput pc-con-inp" style="width:24px; font-size:9px; height:14px; text-align:center; padding:0;" title="Konstitutionswert">
-            <input type="text" value="${formatMod(conMod)}" readonly class="cinput" style="width:20px; font-size:8.5px; height:14px; text-align:center; padding:0; font-weight:bold; background:rgba(0,0,0,0.05); color:var(--red); border-color:var(--pb);" title="Modifikator">
-            <button class="xbtn roll-attr-btn" data-attr="con" style="padding:0; width:16px; height:14px; font-size:8px; line-height:14px; display:flex; align-items:center; justify-content:center;" title="Konstitutionswurf (Formel)">🎲</button>
-          </div>
-        </div>
-        <div class="attr-box" style="display:flex; flex-direction:column; background:rgba(200, 169, 110, 0.1); border:0.5px solid var(--pb); border-radius:2px; padding:3px; position:relative;">
-          <label style="font-size:8px; font-weight:600; color:var(--inkl);">🧠 Intell (INT)</label>
-          <div style="display:flex; align-items:center; gap:2px; margin-top:2px; justify-content:space-between;">
-            <input type="number" value="${pc.int}" class="cinput pc-int-inp" style="width:24px; font-size:9px; height:14px; text-align:center; padding:0;" title="Intelligenzwert">
-            <input type="text" value="${formatMod(intMod)}" readonly class="cinput" style="width:20px; font-size:8.5px; height:14px; text-align:center; padding:0; font-weight:bold; background:rgba(0,0,0,0.05); color:var(--red); border-color:var(--pb);" title="Modifikator">
-            <button class="xbtn roll-attr-btn" data-attr="int" style="padding:0; width:16px; height:14px; font-size:8px; line-height:14px; display:flex; align-items:center; justify-content:center;" title="Intelligenzwurf (Formel)">🎲</button>
-          </div>
-        </div>
-        <div class="attr-box" style="display:flex; flex-direction:column; background:rgba(200, 169, 110, 0.1); border:0.5px solid var(--pb); border-radius:2px; padding:3px; position:relative;">
-          <label style="font-size:8px; font-weight:600; color:var(--inkl);">🔮 Weisheit (WIS)</label>
-          <div style="display:flex; align-items:center; gap:2px; margin-top:2px; justify-content:space-between;">
-            <input type="number" value="${pc.wis}" class="cinput pc-wis-inp" style="width:24px; font-size:9px; height:14px; text-align:center; padding:0;" title="Weisheitswert">
-            <input type="text" value="${formatMod(wisMod)}" readonly class="cinput" style="width:20px; font-size:8.5px; height:14px; text-align:center; padding:0; font-weight:bold; background:rgba(0,0,0,0.05); color:var(--red); border-color:var(--pb);" title="Modifikator">
-            <button class="xbtn roll-attr-btn" data-attr="wis" style="padding:0; width:16px; height:14px; font-size:8px; line-height:14px; display:flex; align-items:center; justify-content:center;" title="Weisheitswurf (Formel)">🎲</button>
-          </div>
-        </div>
-        <div class="attr-box" style="display:flex; flex-direction:column; background:rgba(200, 169, 110, 0.1); border:0.5px solid var(--pb); border-radius:2px; padding:3px; position:relative;">
-          <label style="font-size:8px; font-weight:600; color:var(--inkl);">✨ Charisma (CHA)</label>
-          <div style="display:flex; align-items:center; gap:2px; margin-top:2px; justify-content:space-between;">
-            <input type="number" value="${pc.cha}" class="cinput pc-cha-inp" style="width:24px; font-size:9px; height:14px; text-align:center; padding:0;" title="Charismawert">
-            <input type="text" value="${formatMod(chaMod)}" readonly class="cinput" style="width:20px; font-size:8.5px; height:14px; text-align:center; padding:0; font-weight:bold; background:rgba(0,0,0,0.05); color:var(--red); border-color:var(--pb);" title="Modifikator">
-            <button class="xbtn roll-attr-btn" data-attr="cha" style="padding:0; width:16px; height:14px; font-size:8px; line-height:14px; display:flex; align-items:center; justify-content:center;" title="Charismawurf (Formel)">🎲</button>
-          </div>
-        </div>
+        ${renderAttrBox('str', 'Stärke', '⚔️')}
+        ${renderAttrBox('dex', 'Geschick', '🎯')}
+        ${renderAttrBox('con', 'Konstitution', '🛡️')}
+        ${renderAttrBox('int', 'Intelligenz', '🧠')}
+        ${renderAttrBox('wis', 'Weisheit', '🔮')}
+        ${renderAttrBox('cha', 'Charisma', '✨')}
       </div>
       <div style="display:flex; justify-content:space-between; align-items:center; margin-top:3px; background:rgba(139,26,26,0.05); border:0.5px solid rgba(139,26,26,0.2); border-radius:2px; padding:4px;">
         <label style="font-size:9px; font-weight:bold; color:var(--red);">⚔️ Basisangriff (BAB):</label>

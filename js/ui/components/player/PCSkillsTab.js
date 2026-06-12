@@ -11,9 +11,72 @@ import { SKILLS_REGISTRY } from '../../../data/skills-data.js';
 import { CombatRules } from '../../../rules.js';
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
-import { formatMod } from './PCUtils.js';
+import { formatMod, getAblMod } from './PCUtils.js';
 import { showRollBreakdown } from '../dialogs.js';
 import { applyFeatSkillBonuses } from '../../../models/helpers/skills/SkillFeatApplier.js';
+
+function getSkillTooltip(pc, key, totalMod, ranks, attrMod, misc, skill) {
+  const lines = [`Gesamtmodifikator: ${formatMod(totalMod)}`];
+  lines.push(`• Ränge: ${ranks}`);
+  lines.push(`• ${skill.abl.toUpperCase()}-Mod: ${formatMod(attrMod)}`);
+  
+  if (misc !== 0) {
+    lines.push(`• Sonstiges (Eigenwert): ${formatMod(misc)}`);
+  }
+
+  // Talent-Boni
+  const featBonus = applyFeatSkillBonuses(pc, key, skill);
+  if (featBonus > 0) {
+    lines.push(`• Talentboni: ${formatMod(featBonus)}`);
+  }
+
+  // Racial
+  const race = (pc.race || 'human').toLowerCase();
+  let racialBonus = 0;
+  if (race === 'dwarf' && key === 'craft') racialBonus = 2;
+  else if (race === 'elf' && ['listen', 'search', 'spot'].includes(key)) racialBonus = 2;
+  else if (race === 'gnome' && ['listen', 'craft'].includes(key)) racialBonus = 2;
+  else if (race === 'halfling' && ['climb', 'jump', 'move_silently', 'listen'].includes(key)) racialBonus = 2;
+  else if (race === 'half_elf') {
+    if (['listen', 'search', 'spot'].includes(key)) racialBonus = 1;
+    if (['diplomacy', 'gather_information'].includes(key)) racialBonus = 2;
+  }
+  if (racialBonus > 0) {
+    lines.push(`• Volksbonus: ${formatMod(racialBonus)}`);
+  }
+
+  // Synergy
+  let synergy = 0;
+  if (key === 'balance' && pc.getSkillRanks('tumble') >= 5) synergy += 2;
+  if (key === 'escape_artist' && pc.getSkillRanks('tumble') >= 5) synergy += 2;
+  if (key === 'diplomacy' && pc.getSkillRanks('bluff') >= 5) synergy += 2;
+  if (key === 'disguise' && pc.getSkillRanks('bluff') >= 5) synergy += 2;
+  if (key === 'intimidate' && pc.getSkillRanks('bluff') >= 5) synergy += 2;
+  if (key === 'use_magic_device') {
+    if (pc.getSkillRanks('spellcraft') >= 5) synergy += 2;
+    if (pc.getSkillRanks('decipher_script') >= 5) synergy += 2;
+  }
+  if (synergy > 0) {
+    lines.push(`• Synergie: ${formatMod(synergy)}`);
+  }
+
+  // ACP
+  if (skill.hasACP) {
+    const acp = pc.getArmorCheckPenalty();
+    if (acp !== 0) {
+      const penaltyVal = key === 'swim' ? -2 * acp : -acp;
+      lines.push(`• Rüstungsmalus (ACP): ${formatMod(penaltyVal)}`);
+    }
+  }
+
+  // Conditions
+  const hasShaken = pc.conditions.some(c => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
+  if (hasShaken) {
+    lines.push(`• Zustand (Erschüttet): -2`);
+  }
+
+  return lines.join('\n');
+}
 
 let skillSearchQuery = '';
 let skillFilterType = 'all'; // 'all', 'class', 'trained'
@@ -99,6 +162,16 @@ export function renderPCSkills(pc) {
     const attrMod = pc.getAttributeMod(skill.abl);
     const isTrainedOnlyDisabled = skill.trainedOnly && ranks === 0;
     
+    const hasSkillExtras = totalMod !== (ranks + attrMod + misc);
+    let attrTooltip = `Bezugsattribut-Modifikator (${skill.abl.toUpperCase()}: ${formatMod(attrMod)})`;
+    const attrStat = pc[skill.abl];
+    const isAttrBuffed = attrStat && attrStat.getValue() !== attrStat.base;
+    if (isAttrBuffed && attrStat) {
+      const attrModifiers = attrStat.modifiers.filter(m => m.value !== 0);
+      attrTooltip += `\nBasiswert: ${attrStat.base} (${formatMod(getAblMod(attrStat.base))})\nAktiver Wert: ${attrStat.getValue()} (${formatMod(attrMod)})\nAktive Boni:\n` + 
+        attrModifiers.map(m => `• ${m.source}: ${formatMod(m.value)}`).join('\n');
+    }
+
     return `
       <div class="skill-row" style="display: flex; align-items: center; justify-content: space-between; padding: 3px 4px; border-bottom: 0.5px solid rgba(200, 169, 110, 0.15); font-size: 8px; ${isTrainedOnlyDisabled ? 'opacity: 0.5;' : ''}">
         <!-- Left: Dice Roll & Info -->
@@ -120,8 +193,8 @@ export function renderPCSkills(pc) {
         <!-- Middle: Gesamt -->
         <div style="display: flex; align-items: center; gap: 2px; flex: 0.5; justify-content: center; flex-shrink: 0;">
           <span style="font-size: 6px; color: var(--inkl);">Gesamt:</span>
-          <span style="font-weight: bold; color: var(--red); font-size: 9px; min-width: 16px; text-align: left;" title="Gesamtmodifikator (Ränge + Attr + Sonst + Synergien - Mali)">
-            ${formatMod(totalMod)}
+          <span style="font-weight: bold; color: var(--red); font-size: 9px; min-width: 16px; text-align: left; ${hasSkillExtras ? 'text-decoration: underline dotted var(--red); cursor: help;' : ''}" title="${getSkillTooltip(pc, key, totalMod, ranks, attrMod, misc, skill)}">
+            ${formatMod(totalMod)}${hasSkillExtras ? ' *' : ''}
           </span>
         </div>
 
@@ -136,7 +209,7 @@ export function renderPCSkills(pc) {
           <!-- Attr Mod (Unveränderbar) -->
           <div style="display: flex; align-items: center; gap: 1px;">
             <span style="font-size: 6px; color: var(--inkl);">Attr:</span>
-            <input type="text" value="${formatMod(attrMod)}" readonly class="cinput" style="width: 18px; font-size: 8px; height: 11px; padding: 0; text-align: center; border-radius: 1px; border: 0.5px solid var(--pb); background: rgba(0,0,0,0.04); color: var(--inkm); cursor: not-allowed; outline: none;" title="Bezugsattribut-Modifikator (${skill.abl.toUpperCase()}: ${formatMod(attrMod)})" tabindex="-1">
+            <input type="text" value="${formatMod(attrMod)}" readonly class="cinput" style="width: 18px; font-size: 8px; height: 11px; padding: 0; text-align: center; border-radius: 1px; border: 0.5px solid var(--pb); ${isAttrBuffed ? 'border-color: var(--red) !important; background: rgba(139, 26, 26, 0.05) !important; color: var(--red) !important; font-weight: bold;' : 'background: rgba(0,0,0,0.04); color: var(--inkm);'} cursor: not-allowed; outline: none;" title="${attrTooltip}" tabindex="-1">
           </div>
 
           <!-- Misc Inp -->
