@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :---: | :---: | :--- |
+| **v3.3.2** | Release | 12.06.2026 | D&D 3.5e RAW Buff- & Auren-Manager (Backend & UI) |
 | **v3.3.1** | Release | 11.06.2026 | Behebung verbleibender Backlog-Bugs (Bugs #1 bis #18) & Bereinigung |
 | **v3.3.0** | Release | 11.06.2026 | Druiden-Tiergestalt RAW Fixes, Modularisierung AttackEngine & Behebung Bug #17 |
 | **v3.2.7** | Release | 11.06.2026 | D&D 3.5e Volks-Simulation, Stat-Mali Fix & PCResources.js Refactoring |
@@ -64,6 +65,16 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v3.3.2 — D&D 3.5e RAW Buff- & Auren-Manager (Release v3.3.2)
+
+* **✨ Buff- & Auren-Manager (D&D 3.5e RAW):**
+  - **Architektur & Berechnungs-Fundament:** Regelkonforme Stacking-Prüfung nach D&D 3.5e RAW (Boni desselben Typs stacken nicht, `dodge` und `untyped` stacken additiv).
+  - **SpellModifierApplier:** Unterstützung für direkt definierte Custom-Buffs/Auren sowie automatische AC-Target-Auflösung (`acShield`, `acDodge`, etc.).
+  - **AttackEngine-Integration:** Dynamische Auswertung aller Buff-Effekte für Angriffs- (`atk`) und Schadenswürfe (`dmg`) inklusive RAW-Stacking-Auflösung in `buildContext` und `ModifierCalculator`.
+  - **Touch-optimiertes UI-Widget:** Button `✨ Buffs (N)` im Header von `PCDefenses.js` und ein pergament-thematisierter Dialog `BuffManagerDialog.js` mit Schnellwahl (10 Kern-Zauber) und Custom-Formular.
+* **🌐 Offline-Fähigkeit & Service-Worker:**
+  - Cache-Erneuerung auf `v3.3.2-cache-v1` und Offline-Caching für `BuffManagerDialog.js`.
 
 ### v3.3.1 — Bugbacklog-Bereinigung & QoL (Release v3.3.1)
 

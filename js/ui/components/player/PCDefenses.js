@@ -10,7 +10,7 @@
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { getAblMod, formatMod } from './PCUtils.js';
-import { showRollBreakdown, showInfoDialog } from '../dialogs.js';
+import { showRollBreakdown, showInfoDialog, showBuffManagerDialog } from '../dialogs.js';
 
 export function renderPCDefenses(pc) {
   const defenses = document.getElementById('pcDefenses');
@@ -29,7 +29,12 @@ export function renderPCDefenses(pc) {
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
 
   defenses.innerHTML = `
-    <div class="phdr"><h2>🛡️ Verteidigung &amp; Rettung</h2></div>
+    <div class="phdr" style="display:flex; justify-content:space-between; align-items:center;">
+      <h2>🛡️ Verteidigung &amp; Rettung</h2>
+      <button class="xbtn pc-buffs-btn" style="padding:1px 5px; font-size:9px; font-weight:bold; font-family:'IM Fell English SC', serif; display:flex; align-items:center; gap:2px; height:18px;" title="Buffs & Auren verwalten">
+        ✨ Buffs (${Array.isArray(pc.activeBuffs) ? pc.activeBuffs.length : 0})
+      </button>
+    </div>
     <div class="pbody" style="display:flex; flex-direction:column; gap:6px;">
       <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(200, 169, 110, 0.05); border:0.5px solid var(--pb); border-radius:2px; padding:3px 6px; margin-bottom:2px;">
         <label style="display:flex; align-items:center; gap:4px; cursor:pointer; color:var(--inkm); margin:0; font-weight:bold; font-size:8px; font-family:'IM Fell English SC', serif;">
@@ -375,8 +380,12 @@ export function renderPCDefenses(pc) {
       showRollBreakdown('Initiative-Wurf', '1W20', items, e);
     };
   }
-
-
+  const buffsBtn = defenses.querySelector('.pc-buffs-btn');
+  if (buffsBtn) {
+    buffsBtn.onclick = () => {
+      showBuffManagerDialog(pc);
+    };
+  }
 }
 
 

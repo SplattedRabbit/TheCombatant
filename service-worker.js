@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.3.1-cache-v1';
+const CACHE_NAME = 'dnd-combatsheet-v3.3.2-cache-v1';
 const ASSETS = [
   './',
   './index.html',
@@ -84,6 +84,7 @@ const ASSETS = [
   './js/ui/dialogs/SessionDialog.js',
   './js/ui/dialogs/SpellScrollDialog.js',
   './js/ui/dialogs/FeatScrollDialog.js',
+  './js/ui/dialogs/BuffManagerDialog.js',
   './js/ui/components/class-features/ClassFeatureComponent.js',
   './js/ui/components/class-features/GeneralFeatures.js',
   './js/ui/components/class-features/FighterFeatures.js',
