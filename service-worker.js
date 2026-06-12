@@ -84,7 +84,6 @@ const ASSETS = [
   './js/ui/dialogs/SessionDialog.js',
   './js/ui/dialogs/SpellScrollDialog.js',
   './js/ui/dialogs/FeatScrollDialog.js',
-  './js/ui/dialogs/BuffManagerDialog.js',
   './js/ui/components/class-features/ClassFeatureComponent.js',
   './js/ui/components/class-features/GeneralFeatures.js',
   './js/ui/components/class-features/FighterFeatures.js',

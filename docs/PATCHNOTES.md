@@ -72,9 +72,9 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
   - **Architektur & Berechnungs-Fundament:** Regelkonforme Stacking-Prüfung nach D&D 3.5e RAW (Boni desselben Typs stacken nicht, `dodge` und `untyped` stacken additiv).
   - **SpellModifierApplier:** Unterstützung für direkt definierte Custom-Buffs/Auren sowie automatische AC-Target-Auflösung (`acShield`, `acDodge`, etc.).
   - **AttackEngine-Integration:** Dynamische Auswertung aller Buff-Effekte für Angriffs- (`atk`) und Schadenswürfe (`dmg`) inklusive RAW-Stacking-Auflösung in `buildContext` und `ModifierCalculator`.
-  - **Touch-optimiertes UI-Widget:** Button `✨ Buffs (N)` im Header von `PCDefenses.js` und ein pergament-thematisierter Dialog `BuffManagerDialog.js` mit Schnellwahl (10 Kern-Zauber) und Custom-Formular.
+  - **Integriertes Dashboard-Subtab:** Das Buff-Management wurde als voll-integrierter Sub-Tab direkt im Panel "Verteidigung & Rettung" (`PCDefenses.js`) eingebaut, gestaltet im einheitlichen, edlen Design der Haupt-Tabs. Spieler können per Klick nahtlos zwischen ihren Rettungswürfen/RK und ihrer Buff-Verwaltung (inklusive der 10 Kern-Zauber-Schnellwahl und dem Custom-Buff-Ersteller) hin- und herwechseln.
 * **🌐 Offline-Fähigkeit & Service-Worker:**
-  - Cache-Erneuerung auf `v3.3.2-cache-v1` und Offline-Caching für `BuffManagerDialog.js`.
+  - Cache-Erneuerung auf `v3.3.2-cache-v1`.
 
 ### v3.3.1 — Bugbacklog-Bereinigung & QoL (Release v3.3.1)
 
