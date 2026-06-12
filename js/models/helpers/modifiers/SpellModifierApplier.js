@@ -63,21 +63,19 @@ export function applySpellModifiers(pc) {
   if (!Array.isArray(pc.activeBuffs)) return;
 
   pc.activeBuffs.forEach(buff => {
-    // 1. Process predefined spell from registry
-    if (buff.spellKey) {
+    // If the buff already has resolved effects, we ONLY use those.
+    // Otherwise, for backwards-compatibility, we look up the spell in the registry.
+    if (Array.isArray(buff.effects)) {
+      buff.effects.forEach(eff => {
+        applyEffect(pc, eff, buff.name || eff.source);
+      });
+    } else if (buff.spellKey) {
       const spell = CombatSpells.REGISTRY?.[buff.spellKey];
       if (spell && Array.isArray(spell.effects)) {
         spell.effects.forEach(eff => {
           applyEffect(pc, eff, spell.nameDe || spell.nameEn || buff.name);
         });
       }
-    }
-    
-    // 2. Process custom effects defined directly on the buff (Custom buffs/Auras)
-    if (Array.isArray(buff.effects)) {
-      buff.effects.forEach(eff => {
-        applyEffect(pc, eff, buff.name || eff.source);
-      });
     }
   });
 }

@@ -30,8 +30,19 @@ function resolveAtkDmgBuffs(pc, target) {
   
   if (Array.isArray(pc.activeBuffs)) {
     pc.activeBuffs.forEach(buff => {
-      // 1. Predefined spell
-      if (buff.spellKey) {
+      // If the buff already has resolved effects, we ONLY use those.
+      // Otherwise, for backwards-compatibility, we look up the spell in the registry.
+      if (Array.isArray(buff.effects)) {
+        buff.effects.forEach(eff => {
+          if (eff.target === target) {
+            effects.push({
+              value: parseInt(eff.value) || 0,
+              type: eff.type || 'untyped',
+              source: buff.name || eff.source || 'Eigener Buff'
+            });
+          }
+        });
+      } else if (buff.spellKey) {
         const spell = CombatSpells.REGISTRY?.[buff.spellKey];
         if (spell && Array.isArray(spell.effects)) {
           spell.effects.forEach(eff => {
@@ -44,18 +55,6 @@ function resolveAtkDmgBuffs(pc, target) {
             }
           });
         }
-      }
-      // 2. Custom buff effects
-      if (Array.isArray(buff.effects)) {
-        buff.effects.forEach(eff => {
-          if (eff.target === target) {
-            effects.push({
-              value: parseInt(eff.value) || 0,
-              type: eff.type || 'untyped',
-              source: buff.name || eff.source || 'Eigener Buff'
-            });
-          }
-        });
       }
     });
   }
