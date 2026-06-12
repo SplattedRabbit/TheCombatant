@@ -612,7 +612,7 @@
     "description": "A banishment spell is a more powerful ver- sion of the dismissal spell. It enables you to force extraplanar creatures out of your home plane. As many as 2 Hit Dice of creatures per caster level can be banished. You can improve the spell’s chance of suc- cess by presenting at least one object or substance that the target hates, fears, or otherwise opposes. For each such object or substance, you gain a +1 bonus on your caster level check to overcome the target’s spell resistance (if any), the saving throw DC increases by 2. For example, if this spell were cast on a demon that hated light and was vulnerable to holy water and cold iron weapons, you might use iron, holy water, and a torch in the spell. The three items would give you a +3 bonus on your check to overcome the demon’s spell resistance and add 6 to the spell’s save DC. At the DM’s option, certain rare items might work twice as well as a normal item for the purpose of the bonuses (each pro- viding a +2 bonus on the caster level check against spell resistance and increasing the save DC by 4). Arcane Focus: Any item that is distasteful to the subject (optional, see above). Barkskin Transmutation"
   },
   "barkskin": {
-    "nameDe": "Barkskin",
+    "nameDe": "Rindenhaut",
     "nameEn": "Barkskin",
     "school": "Transmutation",
     "level": 2,
@@ -633,7 +633,16 @@
     "duration": "10 min./level",
     "savingThrow": "None",
     "spellResistance": "Yes (harmless)",
-    "description": "Barkskin toughens a creature’s skin. The effect grants a +2 enhancement bonus to the creature’s existing natural armor bonus. This enhancement bonus increases by 1 for every three caster levels above 3rd, to a maximum of +5 at caster level 12th. The enhancement bonus provided by barkskin stacks with the target’s natural armor bonus, but not with other enhance- ment bonuses to natural armor. A creature without natural armor has an effective natural armor bonus of +0, much as a character wearing only normal clothing has an armor bonus of +0. Bear’s Endurance Transmutation"
+    "description": "Barkskin toughens a creature’s skin. The effect grants a +2 enhancement bonus to the creature’s existing natural armor bonus. This enhancement bonus increases by 1 for every three caster levels above 3rd, to a maximum of +5 at caster level 12th. The enhancement bonus provided by barkskin stacks with the target’s natural armor bonus, but not with other enhance- ment bonuses to natural armor. A creature without natural armor has an effective natural armor bonus of +0, much as a character wearing only normal clothing has an armor bonus of +0. Bear’s Endurance Transmutation",
+    "effects": [
+      {
+        "target": "acNatural",
+        "value": 2,
+        "valueFormula": "barkskin",
+        "type": "natural",
+        "source": "Rindenhaut"
+      }
+    ]
   },
   "bestow_curse": {
     "nameDe": "Bestow Curse",
@@ -1147,7 +1156,7 @@
     "description": "Clairaudience/clairvoyance creates an invis- ible magical sensor at a specific location"
   },
   "cloak_of_chaos": {
-    "nameDe": "Cloak of Chaos",
+    "nameDe": "Mantel des Chaos",
     "nameEn": "Cloak of Chaos",
     "school": "Abjuration [Chaotic]",
     "level": 8,
@@ -1164,7 +1173,33 @@
     "duration": "1 round/level (D)",
     "savingThrow": "See text",
     "spellResistance": "Yes (harmless)",
-    "description": "A random pattern of color surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by lawful creatures, and causing lawful crea- tures that strike the subjects to become confused. This abjuration has four effects. First, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike protection from law, the benefit of this spell applies against all attacks, not just against attacks by lawful creatures. Second, each warded creature gains spell resistance 25 against lawful spells and spells cast by lawful creatures. Third, the abjuration blocks possession and mental influence, just as protection from law does. Finally, if a lawful creature succeeds on a melee attack against a warded creature, the offending attacker is confused for 1 round (Will save negates, as with the con- fusion spell, but against the save DC of cloak of chaos). Focus: A tiny reliquary containing some sacred relic, such as a scrap of parchment from a chaotic text. The reliquary costs at least 500 gp. Clone Necromancy"
+    "description": "A random pattern of color surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by lawful creatures, and causing lawful crea- tures that strike the subjects to become confused. This abjuration has four effects. First, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike protection from law, the benefit of this spell applies against all attacks, not just against attacks by lawful creatures. Second, each warded creature gains spell resistance 25 against lawful spells and spells cast by lawful creatures. Third, the abjuration blocks possession and mental influence, just as protection from law does. Finally, if a lawful creature succeeds on a melee attack against a warded creature, the offending attacker is confused for 1 round (Will save negates, as with the con- fusion spell, but against the save DC of cloak of chaos). Focus: A tiny reliquary containing some sacred relic, such as a scrap of parchment from a chaotic text. The reliquary costs at least 500 gp. Clone Necromancy",
+    "effects": [
+      {
+        "target": "acDeflection",
+        "value": 4,
+        "type": "deflection",
+        "source": "Mantel des Chaos"
+      },
+      {
+        "target": "baseZa",
+        "value": 4,
+        "type": "resistance",
+        "source": "Mantel des Chaos"
+      },
+      {
+        "target": "baseRef",
+        "value": 4,
+        "type": "resistance",
+        "source": "Mantel des Chaos"
+      },
+      {
+        "target": "baseWil",
+        "value": 4,
+        "type": "resistance",
+        "source": "Mantel des Chaos"
+      }
+    ]
   },
   "clone": {
     "nameDe": "Clone",
@@ -2599,8 +2634,8 @@
     "description": "You, or a messenger touched by you, sends a phantasmal message to others in the form of a dream. At the beginning of the spell, you must name the recipient or identify him or her by some title that leaves no doubt as to identity. The mes- senger then enters a trance, appears in the intended recipient’s dream, and delivers the message. The message can be of any length, and the recipient remembers it perfectly upon waking. The communi- cation is one-way. The recipient cannot ask questions or offer information, nor can the messenger gain any information by observing the dreams of the recipient. Once the message is delivered, the mes- senger’s mind returns instantly to its body. The duration of the spell is the time required for the messenger to enter the recipient’s dream and deliver the message. If the recipient is awake when the spell begins, the messenger can choose to wake up (ending the spell) or remain in the trance. The messenger can remain in the trance until the recipient goes to sleep, then enter the recipient’s dream and de- liver the message as normal. A messenger that is disturbed during the trance comes awake, ending the spell. Creatures who don’t sleep (such as elves, but not half-elves) or don’t dream cannot be contacted by this spell. The messenger is unaware of its own surroundings or of the activities around it while in the trance. It is defenseless both physically and mentally (always fails any saving throw) while in the trance. Eagle’s Splendor Transmutation"
   },
   "eagle_s_splendor": {
-    "nameDe": "Eagle’s Splendor",
-    "nameEn": "Eagle’s Splendor",
+    "nameDe": "Glanz des Adlers",
+    "nameEn": "Eagle's Splendor",
     "school": "Transmutation",
     "level": 2,
     "classLevels": [
@@ -2632,7 +2667,15 @@
     "duration": "1 min./level",
     "savingThrow": "Will negates (harmless)",
     "spellResistance": "Yes",
-    "description": "The transmuted creature becomes more poised, articulate, and personally forceful. The spell grants a +4 enhancement bonus to Charisma, adding the usual benefits to Charisma-based skill checks and other uses of the Charisma modifier. Sorcerers and bards (and other spellcasters who rely on Charisma) affected by this spell do not gain any additional bonus spells for the increased Charisma, but the save DCs for spells they cast while under this spell’s effect do increase. Arcane Material Component: A few feath- ers or a pinch of droppings from an eagle. Eagle’s Splendor, Mass Transmutation"
+    "description": "The transmuted creature becomes more poised, articulate, and personally forceful. The spell grants a +4 enhancement bonus to Charisma, adding the usual benefits to Charisma-based skill checks and other uses of the Charisma modifier. Sorcerers and bards (and other spellcasters who rely on Charisma) affected by this spell do not gain any additional bonus spells for the increased Charisma, but the save DCs for spells they cast while under this spell’s effect do increase. Arcane Material Component: A few feath- ers or a pinch of droppings from an eagle. Eagle’s Splendor, Mass Transmutation",
+    "effects": [
+      {
+        "target": "cha",
+        "value": 4,
+        "type": "enhancement",
+        "source": "Glanz des Adlers"
+      }
+    ]
   },
   "earthquake": {
     "nameDe": "Earthquake",
@@ -2743,7 +2786,7 @@
     "description": "You point your finger and utter the incan- tation, releasing a black ray of crackling negative energy that suppresses the life force of any living creature it strikes. You must make a ranged touch attack to hit. If the attack succeeds, the subject gains 1d4 negative levels. If the subject has at least as many nega- tive levels as HD, it dies. Each negative level gives a creature a –1 penalty on attack rolls, saving throws, skill checks, ability checks, and effective level (for deter- mining the power, duration, DC, and other details of spells or special abilities). Additionally, a spellcaster loses one spell or spell slot from his or her highest avail- able level. Negative levels stack. Assuming the subject survives, it re- gains lost levels after a number of hours equal to your caster level (maximum 15 hours). Usually, negative levels have a chance of permanently draining the victim’s levels, but the negative levels from enervation don’t last long enough to do so. An undead creature struck by the ray gains 1d4×5 temporary hit points for 1 hour. Enlarge Person Transmutation"
   },
   "enlarge_person": {
-    "nameDe": "Enlarge Person",
+    "nameDe": "Person vergrößern",
     "nameEn": "Enlarge Person",
     "school": "Transmutation",
     "level": 1,
@@ -2764,7 +2807,33 @@
     "duration": "1 min./level (D)",
     "savingThrow": "Fortitude negates",
     "spellResistance": "Yes",
-    "description": "This spell causes instant growth of a hu- manoid creature, doubling its height and multiplying its weight by 8. This increase changes the creature’s size category to the next larger one. The target gains a +2 size bonus to Strength, a –2 size penalty to Dexterity (to a minimum of 1), and a –1 penalty on attack rolls and AC due to its increased size. A humanoid creature whose size in- creases to Large has a space of 10 feet and a natural reach of 10 feet. This spell does not change the target’s speed. If insufficient room is available for the desired growth, the creature attains the maximum possible size and may make a Strength check (using its increased Strength) to burst any enclosures in the process. If it fails, it is constrained without harm by the materials enclosing it—the"
+    "description": "This spell causes instant growth of a hu- manoid creature, doubling its height and multiplying its weight by 8. This increase changes the creature’s size category to the next larger one. The target gains a +2 size bonus to Strength, a –2 size penalty to Dexterity (to a minimum of 1), and a –1 penalty on attack rolls and AC due to its increased size. A humanoid creature whose size in- creases to Large has a space of 10 feet and a natural reach of 10 feet. This spell does not change the target’s speed. If insufficient room is available for the desired growth, the creature attains the maximum possible size and may make a Strength check (using its increased Strength) to burst any enclosures in the process. If it fails, it is constrained without harm by the materials enclosing it—the",
+    "effects": [
+      {
+        "target": "str",
+        "value": 2,
+        "type": "size",
+        "source": "Person vergrößern"
+      },
+      {
+        "target": "dex",
+        "value": -2,
+        "type": "size",
+        "source": "Person vergrößern"
+      },
+      {
+        "target": "ac",
+        "value": -1,
+        "type": "size",
+        "source": "Person vergrößern"
+      },
+      {
+        "target": "atk",
+        "value": -1,
+        "type": "size",
+        "source": "Person vergrößern"
+      }
+    ]
   },
   "entangle": {
     "nameDe": "Entangle",
@@ -3447,7 +3516,7 @@
     "description": "This powerful spell brings into being an immobile, invisible cubical prison com- posed of either bars of force or solid walls of force (your choice). Creatures within the area are caught and contained unless they are too big to fit inside, in which case the spell automat- ically fails. Teleportation and other forms of astral travel provide a means of escape, but the force walls or bars extend into the Ethereal Plane, blocking ethereal travel. Like a wall of force spell, a forcecage resists dispel magic, but it is vulnerable to a disinte- grate spell, and it can be destroyed by a sphere of annihilation or a rod of cancellation. Barred Cage: This version of the spell produces a 20-foot cube made of bands of force (similar to a wall of force spell) for bars. The bands are a half-inch wide, with half-inch gaps between them. Any creature capable of passing through such a small space can escape; others are confined. You can’t attack a creature in a barred cage with a weapon unless the weapon can fit between the gaps. Even against such weapons (including arrows and similar ranged attacks), a creature in the barred cage has cover. All spells and breath weapons can pass through the gaps in the bars. Windowless Cell: This version of the spell produces a 10-foot cube with no way in and no way out. Solid walls of force form its six sides. Material Component: Ruby dust worth 1,500 gp, which is tossed into the air and disappears when you cast the spell. Foresight Divination"
   },
   "foresight": {
-    "nameDe": "Foresight",
+    "nameDe": "Vorausahnung",
     "nameEn": "Foresight",
     "school": "Divination",
     "level": 9,
@@ -3472,11 +3541,25 @@
     "duration": "10 min./level",
     "savingThrow": "None or Will negates",
     "spellResistance": "No or Yes (harmless)",
-    "description": "This spell grants you a powerful sixth sense in relation to yourself or another. Once foresight is cast, you receive instan- taneous warnings of impending danger or harm to the subject of the spell. Thus, if you are the subject of the spell, you would be warned in advance if a rogue were about to attempt a sneak attack on you, or if a creature were about to leap out from a hiding place, or if an attacker were specifically targeting you with a spell or ranged weapon. You are never surprised or flat-footed. In addition, the spell gives you a general idea of what action you might take to best protect yourself—duck, jump right, close your eyes, and so on—and gives you a +2 insight bonus to AC and Reflex saves. This insight bonus is lost whenever you would lose a Dexterity bonus to AC. When another creature is the subject of the spell, you receive warnings about that creature. You must communicate what you learn to the other creature for the warning to be useful, and the creature can be caught unprepared in the absence of such a warning. Shouting a warning, yanking a person back, and even telepathically communicating (via an appropriate spell) can all be accomplished before some danger befalls the subject, provided you act on the warning without delay. The subject, however, does not gain the insight bonus to AC and Reflex saves. Arcane Material Component: A hum- mingbird’s feather. Fox’s Cunning Transmutation"
+    "description": "This spell grants you a powerful sixth sense in relation to yourself or another. Once foresight is cast, you receive instan- taneous warnings of impending danger or harm to the subject of the spell. Thus, if you are the subject of the spell, you would be warned in advance if a rogue were about to attempt a sneak attack on you, or if a creature were about to leap out from a hiding place, or if an attacker were specifically targeting you with a spell or ranged weapon. You are never surprised or flat-footed. In addition, the spell gives you a general idea of what action you might take to best protect yourself—duck, jump right, close your eyes, and so on—and gives you a +2 insight bonus to AC and Reflex saves. This insight bonus is lost whenever you would lose a Dexterity bonus to AC. When another creature is the subject of the spell, you receive warnings about that creature. You must communicate what you learn to the other creature for the warning to be useful, and the creature can be caught unprepared in the absence of such a warning. Shouting a warning, yanking a person back, and even telepathically communicating (via an appropriate spell) can all be accomplished before some danger befalls the subject, provided you act on the warning without delay. The subject, however, does not gain the insight bonus to AC and Reflex saves. Arcane Material Component: A hum- mingbird’s feather. Fox’s Cunning Transmutation",
+    "effects": [
+      {
+        "target": "acDeflection",
+        "value": 2,
+        "type": "insight",
+        "source": "Vorausahnung"
+      },
+      {
+        "target": "baseRef",
+        "value": 2,
+        "type": "insight",
+        "source": "Vorausahnung"
+      }
+    ]
   },
   "fox_s_cunning": {
-    "nameDe": "Fox’s Cunning",
-    "nameEn": "Fox’s Cunning",
+    "nameDe": "Schlauheit des Fuchses",
+    "nameEn": "Fox's Cunning",
     "school": "Transmutation",
     "level": 2,
     "classLevels": [
@@ -3500,7 +3583,15 @@
     "duration": "1 min./level",
     "savingThrow": "Will negates (harmless)",
     "spellResistance": "Yes",
-    "description": "The transmuted creature becomes smarter. The spell grants a +4 enhancement bonus to Intelligence, adding the usual benefits to Intelligence-based skill checks and other uses of the Intelligence modifier. Wizards (and other spellcasters who rely on Intelligence) affected by this spell do not gain any additional bonus spells for the increased Intelligence, but the save DCs for spells they cast while under this spell’s effect do increase. This spell doesn’t grant extra skill points. Arcane Material Component: A few hairs, or a pinch of dung, from a fox. Fox’s Cunning, Mass Transmutation"
+    "description": "The transmuted creature becomes smarter. The spell grants a +4 enhancement bonus to Intelligence, adding the usual benefits to Intelligence-based skill checks and other uses of the Intelligence modifier. Wizards (and other spellcasters who rely on Intelligence) affected by this spell do not gain any additional bonus spells for the increased Intelligence, but the save DCs for spells they cast while under this spell’s effect do increase. This spell doesn’t grant extra skill points. Arcane Material Component: A few hairs, or a pinch of dung, from a fox. Fox’s Cunning, Mass Transmutation",
+    "effects": [
+      {
+        "target": "int",
+        "value": 4,
+        "type": "enhancement",
+        "source": "Schlauheit des Fuchses"
+      }
+    ]
   },
   "freedom": {
     "nameDe": "Freedom",
@@ -3863,7 +3954,7 @@
     "description": "This powerful spell is primarily used to defend your stronghold. The ward protects 200 square feet per caster level. The warded area can be as much as 20 feet high, and shaped as you desire. You can ward several stories of a stronghold by dividing the area among them; you must be somewhere within the area to be warded to cast the spell. The spell creates the fol- lowing magical effects within the warded area. Fog: Fog fills all corridors, obscuring all sight, including darkvision, beyond 5 feet. A creature within 5 feet has concealment (attacks have a 20% miss chance). Creatures farther away have total concealment (50% miss chance, and the attacker cannot use sight to locate the target). Saving Throw: None. Spell Resistance: No. Arcane Locks: All doors in the warded area are arcane locked. Saving Throw: None. Spell Resistance: No. Webs: Webs fill all stairs from top to bottom. These strands are identical with those created by the web spell, except that they regrow in 10 minutes if they are burned or torn away while the guards and wards spell lasts. Saving Throw: Reflex negates; see text for web. Spell Resistance: No. Confusion: Where there are choices in direction—such as a corridor intersection or side passage—a minor confusion-type effect functions so as to make it 50% probable that intruders believe they are going in the opposite direction from the one they actually chose. This is an en- chantment, mind-affecting effect. Saving Throw: None. Spell Resistance: Yes. Lost Doors: One door per caster level is covered by a silent image to appear as if it were a plain wall. Saving Throw: Will dis- belief (if interacted with). Spell Resistance: No. In addition, you can place your choice of one of the following five magical effects. 1. Dancing lights in four corridors. You can designate a simple program that causes the lights to repeat as long as the guards and wards spell lasts. Saving Throw: None. Spell Resistance: No. 2. A magic mouth in two places. Saving Throw: None. Spell Resistance: No. 3. A stinking cloud in two places. The vapors appear in the places you designate; they return within 10 minutes if dispersed by wind while the guards and wards spell lasts. Saving Throw: Fortitude negates; see text for stinking cloud. Spell Resistance: No. 4. A gust of wind in one corridor or room. Saving Throw: Fortitude negates. Spell Resistance: Yes."
   },
   "guidance": {
-    "nameDe": "Guidance",
+    "nameDe": "Leitung",
     "nameEn": "Guidance",
     "school": "Divination",
     "level": 0,
@@ -3884,7 +3975,33 @@
     "duration": "1 minute or until discharged",
     "savingThrow": "Will negates (harmless)",
     "spellResistance": "Yes",
-    "description": "This spell imbues the subject with a touch of divine guidance. The creature gets a +1 competence bonus on a single attack roll, saving throw, or skill check. It must choose to use the bonus before making the roll to which it applies. Gust of Wind Evocation [Air]"
+    "description": "This spell imbues the subject with a touch of divine guidance. The creature gets a +1 competence bonus on a single attack roll, saving throw, or skill check. It must choose to use the bonus before making the roll to which it applies. Gust of Wind Evocation [Air]",
+    "effects": [
+      {
+        "target": "atk",
+        "value": 1,
+        "type": "competence",
+        "source": "Leitung"
+      },
+      {
+        "target": "baseZa",
+        "value": 1,
+        "type": "competence",
+        "source": "Leitung"
+      },
+      {
+        "target": "baseRef",
+        "value": 1,
+        "type": "competence",
+        "source": "Leitung"
+      },
+      {
+        "target": "baseWil",
+        "value": 1,
+        "type": "competence",
+        "source": "Leitung"
+      }
+    ]
   },
   "gust_of_wind": {
     "nameDe": "Gust of Wind",
@@ -4033,19 +4150,19 @@
     "castingTime": "1 standard action",
     "range": "Nah (7.5 m + 1.5 m/2 Stufen)",
     "targetOrEffectOrArea": "",
-    "duration": "1 Runde/Stufe",
+    "duration": "1 round/level (D)",
     "savingThrow": "Willen, keine Wirkung (harmlos)",
     "spellResistance": "Ja (harmlos)",
     "description": "Empfänger bewegen und handeln extrem schnell. Sie erhalten +1 Ausweichen-Bonus auf die RK, +1 Bonus auf Angriffswürfe und +1 Bonus auf Reflexwürfe, sowie einen zusätzlichen Angriff bei einem vollen Angriff.",
     "effects": [
       {
-        "target": "acDodge",
+        "target": "atk",
         "value": 1,
         "type": "dodge",
         "source": "Hast"
       },
       {
-        "target": "atk",
+        "target": "acDodge",
         "value": 1,
         "type": "dodge",
         "source": "Hast"
@@ -4211,7 +4328,7 @@
     "description": "Undead cannot see, hear, or smell the warded creatures. Even extraordinary or supernatural sensory capabilities, such as blindsense, blindsight, scent, and tremor- sense, cannot detect or locate warded creatures. Nonintelligent undead creatures are automatically affected and act as though the warded creatures are not there. An intelligent undead creature gets a single Will saving throw. If it fails, the subject can’t see any of the warded crea- tures. However, if it has reason to believe unseen opponents are present, it can at- tempt to find or strike them. If a warded creature attempts to turn or command undead, touches an undead creature, or attacks any creature (even with a spell), the spell ends for all recipients. Hold Animal Enchantment (Compulsion) [Mind- Affecting]"
   },
   "holy_aura": {
-    "nameDe": "Holy Aura",
+    "nameDe": "Heilige Aura",
     "nameEn": "Holy Aura",
     "school": "Abjuration [Good]",
     "level": 8,
@@ -4228,7 +4345,33 @@
     "duration": "1 round/level (D)",
     "savingThrow": "See text",
     "spellResistance": "Yes (harmless)",
-    "description": "A brilliant divine radiance surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by evil creatures, and causing evil creatures to become blinded when they strike the subjects. This abjuration has four effects. First, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike protection from evil, this benefit applies against all attacks, not just against attacks by evil creatures. Second, each warded creature gains spell resistance 25 against evil spells and spells cast by evil creatures. Third, the abjuration blocks possession and mental influence, just as protection from evil does. Finally, if an evil creature succeeds on a melee attack against a warded creature, the offending attacker is blinded (Fortitude save negates, as blindness/deafness, but against holy aura’s save DC). Focus: A tiny reliquary containing some sacred relic, such as a scrap of cloth from a saint’s robe or a piece of parchment from a holy text. The reliquary costs at least 500 gp. Holy Smite Evocation [Good]"
+    "description": "A brilliant divine radiance surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by evil creatures, and causing evil creatures to become blinded when they strike the subjects. This abjuration has four effects. First, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike protection from evil, this benefit applies against all attacks, not just against attacks by evil creatures. Second, each warded creature gains spell resistance 25 against evil spells and spells cast by evil creatures. Third, the abjuration blocks possession and mental influence, just as protection from evil does. Finally, if an evil creature succeeds on a melee attack against a warded creature, the offending attacker is blinded (Fortitude save negates, as blindness/deafness, but against holy aura’s save DC). Focus: A tiny reliquary containing some sacred relic, such as a scrap of cloth from a saint’s robe or a piece of parchment from a holy text. The reliquary costs at least 500 gp. Holy Smite Evocation [Good]",
+    "effects": [
+      {
+        "target": "acDeflection",
+        "value": 4,
+        "type": "deflection",
+        "source": "Heilige Aura"
+      },
+      {
+        "target": "baseZa",
+        "value": 4,
+        "type": "resistance",
+        "source": "Heilige Aura"
+      },
+      {
+        "target": "baseRef",
+        "value": 4,
+        "type": "resistance",
+        "source": "Heilige Aura"
+      },
+      {
+        "target": "baseWil",
+        "value": 4,
+        "type": "resistance",
+        "source": "Heilige Aura"
+      }
+    ]
   },
   "holy_smite": {
     "nameDe": "Holy Smite",
@@ -4968,7 +5111,7 @@
   "mage_armor": {
     "nameDe": "Magierrüstung",
     "nameEn": "Mage Armor",
-    "school": "Beschwörung (Erschaffung)",
+    "school": "Conjuration (Creation) [Force]",
     "level": 1,
     "classLevels": [
       {
@@ -4984,7 +5127,7 @@
     "castingTime": "1 standard action",
     "range": "Berührung",
     "targetOrEffectOrArea": "Target: Creature touched",
-    "duration": "1 Stunde/Stufe (K)",
+    "duration": "1 hour/level (D)",
     "savingThrow": "Willen, keine Wirkung (harmlos)",
     "spellResistance": "Nein",
     "description": "Ein unsichtbares, greifbares Kraftfeld umgibt den Empfänger und gewährt einen +4 Rüstungsbonus auf die Rüstungsklasse. Wirkt nicht kumulativ mit normaler Rüstung.",
@@ -5182,7 +5325,7 @@
     "description": "You transmute as many as three pebbles, which can be no larger than sling bullets, so that they strike with great force when thrown or slung. If hurled, they have a range increment of 20 feet. If slung, treat them as sling bullets (range increment 50 feet). The spell gives them a +1 enhance- ment bonus on attack and damage rolls. The user of the stones makes a normal ranged attack. Each stone that hits deals 1d6+1 points of damage (including the spell’s enhancement bonus), or 2d6+2 points against undead. Magic Vestment Transmutation"
   },
   "magic_vestment": {
-    "nameDe": "Magic Vestment",
+    "nameDe": "Magisches Gewand",
     "nameEn": "Magic Vestment",
     "school": "Transmutation",
     "level": 3,
@@ -5199,10 +5342,19 @@
     "duration": "1 hour/level",
     "savingThrow": "Will negates (harmless,",
     "spellResistance": "Yes (harmless, object)",
-    "description": "You imbue a suit of armor or a shield with an enhancement bonus of +1 per four caster levels (maximum +5 at 20th level). An outfit of regular clothing counts as ar- mor that grants no AC bonus for the pur- pose of this spell. Magic Weapon Transmutation"
+    "description": "You imbue a suit of armor or a shield with an enhancement bonus of +1 per four caster levels (maximum +5 at 20th level). An outfit of regular clothing counts as ar- mor that grants no AC bonus for the pur- pose of this spell. Magic Weapon Transmutation",
+    "effects": [
+      {
+        "target": "acArmor",
+        "value": 1,
+        "valueFormula": "magic_vestment",
+        "type": "enhancement",
+        "source": "Magisches Gewand"
+      }
+    ]
   },
   "magic_weapon": {
-    "nameDe": "Magic Weapon",
+    "nameDe": "Magische Waffe",
     "nameEn": "Magic Weapon",
     "school": "Transmutation",
     "level": 1,
@@ -5231,10 +5383,24 @@
     "duration": "1 min./level",
     "savingThrow": "Will negates (harmless,",
     "spellResistance": "Yes (harmless, object)",
-    "description": "Magic weapon gives a weapon a +1 en- hancement bonus on attack and damage rolls. (An enhancement bonus does not stack with a masterwork weapon’s +1 bonus on attack rolls.) You can’t cast this spell on a natural weapon, such as an unarmed strike (in- stead, see magic fang). A monk’s unarmed strike is considered a weapon, and thus it can be enhanced by this spell. Magic Weapon, Greater Transmutation"
+    "description": "Magic weapon gives a weapon a +1 en- hancement bonus on attack and damage rolls. (An enhancement bonus does not stack with a masterwork weapon’s +1 bonus on attack rolls.) You can’t cast this spell on a natural weapon, such as an unarmed strike (in- stead, see magic fang). A monk’s unarmed strike is considered a weapon, and thus it can be enhanced by this spell. Magic Weapon, Greater Transmutation",
+    "effects": [
+      {
+        "target": "atk",
+        "value": 1,
+        "type": "enhancement",
+        "source": "Magische Waffe"
+      },
+      {
+        "target": "dmg",
+        "value": 1,
+        "type": "enhancement",
+        "source": "Magische Waffe"
+      }
+    ]
   },
   "magic_weapon_greater": {
-    "nameDe": "Magic Weapon, Greater",
+    "nameDe": "Große magische Waffe",
     "nameEn": "Magic Weapon, Greater",
     "school": "Transmutation",
     "level": 3,
@@ -5263,7 +5429,23 @@
     "duration": "1 hour/level",
     "savingThrow": "Will negates (harmless,",
     "spellResistance": "Yes (harmless, object)",
-    "description": "This spell functions like magic weapon, except that it gives a weapon an enhance- ment bonus on attack and damage rolls of +1 per four caster levels (maximum +5). Alternatively, you can affect as many as"
+    "description": "This spell functions like magic weapon, except that it gives a weapon an enhance- ment bonus on attack and damage rolls of +1 per four caster levels (maximum +5). Alternatively, you can affect as many as",
+    "effects": [
+      {
+        "target": "atk",
+        "value": 1,
+        "valueFormula": "magic_weapon_greater",
+        "type": "enhancement",
+        "source": "Große magische Waffe"
+      },
+      {
+        "target": "dmg",
+        "value": 1,
+        "valueFormula": "magic_weapon_greater",
+        "type": "enhancement",
+        "source": "Große magische Waffe"
+      }
+    ]
   },
   "mark_of_justice": {
     "nameDe": "Mark of Justice",
@@ -5997,8 +6179,8 @@
     "description": "This spell functions like Otiluke’s resilient sphere, with the addition that the creatures or objects inside the globe are nearly weightless. Anything contained within an Otiluke’s telekinetic sphere weighs only one- sixteenth of its normal weight. You can telekinetically lift anything in the sphere that normally weighs 5,000 pounds or less. The telekinetic control extends from you out to medium range (100 feet + 10 feet per caster level) after the sphere has succeeded in encapsulating its contents. You can move objects or creatures in the sphere that weigh a total of 5,000 pounds or less by concentrating on the sphere. You can begin moving a sphere in the round after casting the spell. If you concentrate on doing so (a standard action), you can move the sphere as much as 30 feet in a round. If you cease concentrating, the sphere does not move in that round (if on a level surface) or descends at its falling rate (if aloft) until it reaches a level surface, or the spell’s duration expires, or you begin concentrating again. If you cease concen- trating (voluntarily or due to failing a Con- centration check), you can resume concen- trating on your next turn or any later turn during the spell’s duration. The sphere falls at a rate of only 60 feet per round, which is not fast enough to cause damage to the contents of the sphere. You can move the sphere telekinetically even if you are in it. Material Component: A hemispherical piece of clear crystal, a matching hemi- spherical piece of gum arabic, and a pair of small bar magnets. Otto’s Irresistible Dance Enchantment (Compulsion) [Mind- Affecting]"
   },
   "owl_s_wisdom": {
-    "nameDe": "Owl’s Wisdom",
-    "nameEn": "Owl’s Wisdom",
+    "nameDe": "Weisheit der Eule",
+    "nameEn": "Owl's Wisdom",
     "school": "Transmutation",
     "level": 2,
     "classLevels": [
@@ -6034,6 +6216,14 @@
     "duration": "1 min./level",
     "savingThrow": "Will negates (harmless)",
     "spellResistance": "Yes",
+    "effects": [
+      {
+        "target": "wis",
+        "value": 4,
+        "type": "enhancement",
+        "source": "Weisheit der Eule"
+      }
+    ],
     "description": "The transmuted creature becomes wiser. The spell grants a +4 enhancement bonus to Wisdom, adding the usual benefit to Wisdom-related skills. Clerics, druids, paladins, and rangers (and other Wisdom- based spellcasters) who receive owl’s wisdom do not gain any additional bonus spells for the increased Wisdom, but the save DCs for their spells increase. Arcane Material Component: A few feath- ers, or a pinch of droppings, from an owl. Owl’s Wisdom, Mass Transmutation"
   },
   "passwall": {
@@ -6549,7 +6739,7 @@
     "description": "Protection from energy grants temporary immunity to the type of energy you spec- ify when you cast it (acid, cold, electricity, fire, or sonic). When the spell absorbs 12 points per caster level of energy damage (to a maximum of 120 points at 10th level), it is discharged. Note: Protection from energy overlaps (and does not stack with) resist energy. If a character is warded by protection from energy and resist energy, the protection spell absorbs damage until its power is exhausted. Protection from Evil Abjuration [Good]"
   },
   "protection_from_evil": {
-    "nameDe": "Protection from Evil",
+    "nameDe": "Schutz vor Bösem",
     "nameEn": "Protection from Evil",
     "school": "Abjuration [Good]",
     "level": 1,
@@ -6578,7 +6768,33 @@
     "duration": "1 min./level (D)",
     "savingThrow": "Will negates (harmless)",
     "spellResistance": "No; see text",
-    "description": "This spell wards a creature from attacks by evil creatures, from mental control, and from summoned creatures. It creates a magical barrier around the subject at a distance of 1 foot. The barrier moves with the subject and has three major effects. First, the subject gains a +2 deflection bonus to AC and a +2 resistance bonus on saves. Both these bonuses apply against attacks made or effects created by evil creatures. Second, the barrier blocks any attempt to possess the warded creature (by a magic jar attack, for example) or to exercise mental control over the creature (include- ing enchantment (charm) effects and enchantment (compulsion) effects that grant the caster ongoing control over the subject, such as dominate person). The pro- tection does not prevent such effects from targeting the protected creature, but it suppresses the effect for the duration of the protection from evil effect. If the protec- tion from evil effect ends before the effect granting mental control does, the would- be controller would then be able to men- tally command the controlled creature. Likewise, the barrier keeps out a possess- ing life force but does not expel one if it is in place before the spell is cast. This second effect works regardless of align- ment. Third, the spell prevents bodily contact by summoned creatures. This causes the natural weapon attacks of such creatures to fail and the creatures to recoil if such attacks require touching the warded crea- ture. Good summoned creatures are immune to this effect. The protection against contact by summoned creatures ends if the warded creature makes an attack against or tries to force the barrier against the blocked creature. Spell resist- ance can allow a creature to overcome this protection and touch the warded creature. Arcane Material Component: A little pow- dered silver with which you trace a 3-foot - diameter circle on the floor (or ground) around the creature to be warded. Protection from Good Abjuration [Evil]"
+    "description": "This spell wards a creature from attacks by evil creatures, from mental control, and from summoned creatures. It creates a magical barrier around the subject at a distance of 1 foot. The barrier moves with the subject and has three major effects. First, the subject gains a +2 deflection bonus to AC and a +2 resistance bonus on saves. Both these bonuses apply against attacks made or effects created by evil creatures. Second, the barrier blocks any attempt to possess the warded creature (by a magic jar attack, for example) or to exercise mental control over the creature (include- ing enchantment (charm) effects and enchantment (compulsion) effects that grant the caster ongoing control over the subject, such as dominate person). The pro- tection does not prevent such effects from targeting the protected creature, but it suppresses the effect for the duration of the protection from evil effect. If the protec- tion from evil effect ends before the effect granting mental control does, the would- be controller would then be able to men- tally command the controlled creature. Likewise, the barrier keeps out a possess- ing life force but does not expel one if it is in place before the spell is cast. This second effect works regardless of align- ment. Third, the spell prevents bodily contact by summoned creatures. This causes the natural weapon attacks of such creatures to fail and the creatures to recoil if such attacks require touching the warded crea- ture. Good summoned creatures are immune to this effect. The protection against contact by summoned creatures ends if the warded creature makes an attack against or tries to force the barrier against the blocked creature. Spell resist- ance can allow a creature to overcome this protection and touch the warded creature. Arcane Material Component: A little pow- dered silver with which you trace a 3-foot - diameter circle on the floor (or ground) around the creature to be warded. Protection from Good Abjuration [Evil]",
+    "effects": [
+      {
+        "target": "acDeflection",
+        "value": 2,
+        "type": "deflection",
+        "source": "Schutz vor Bösem"
+      },
+      {
+        "target": "baseZa",
+        "value": 2,
+        "type": "resistance",
+        "source": "Schutz vor Bösem"
+      },
+      {
+        "target": "baseRef",
+        "value": 2,
+        "type": "resistance",
+        "source": "Schutz vor Bösem"
+      },
+      {
+        "target": "baseWil",
+        "value": 2,
+        "type": "resistance",
+        "source": "Schutz vor Bösem"
+      }
+    ]
   },
   "protection_from_spells": {
     "nameDe": "Protection from Spells",
@@ -6845,7 +7061,7 @@
     "description": "This spell functions like reduce person, ex- cept that it affects a single willing animal (not one with which you are engaged in combat, for instance). This decrease in size allows the animal to fit better into tight spaces, such as the typical dungeon room or subterranean passage. Reduce the damage dealt by the animal’s natural"
   },
   "reduce_person": {
-    "nameDe": "Reduce Person",
+    "nameDe": "Person verkleinern",
     "nameEn": "Reduce Person",
     "school": "Transmutation",
     "level": 1,
@@ -6866,7 +7082,33 @@
     "duration": "1 min./level (D)",
     "savingThrow": "Fortitude negates",
     "spellResistance": "Yes",
-    "description": "This spell causes instant diminution of a humanoid creature, halving its height, length, and width and dividing its weight by 8. This decrease changes the creature’s size category to the next smaller one. The target gains a +2 size bonus to Dexterity, a –2 size penalty to Strength (to a minimum of 1), and a +1 bonus on attack rolls and AC due to its reduced size. A Small humanoid creature whose size decreases to Tiny has a space of 2-1/2 feet and a natural reach of 0 feet (meaning that it must enter an opponent’s square to attack). A Large humanoid creature whose size decreases to Medium has a space of 5 feet and a natural reach of 5 feet. This spell doesn’t change the target’s speed. All equipment worn or carried by a creature is similarly reduced by the spell. Melee and projectile weapons deal less"
+    "description": "This spell causes instant diminution of a humanoid creature, halving its height, length, and width and dividing its weight by 8. This decrease changes the creature’s size category to the next smaller one. The target gains a +2 size bonus to Dexterity, a –2 size penalty to Strength (to a minimum of 1), and a +1 bonus on attack rolls and AC due to its reduced size. A Small humanoid creature whose size decreases to Tiny has a space of 2-1/2 feet and a natural reach of 0 feet (meaning that it must enter an opponent’s square to attack). A Large humanoid creature whose size decreases to Medium has a space of 5 feet and a natural reach of 5 feet. This spell doesn’t change the target’s speed. All equipment worn or carried by a creature is similarly reduced by the spell. Melee and projectile weapons deal less",
+    "effects": [
+      {
+        "target": "str",
+        "value": -2,
+        "type": "size",
+        "source": "Person verkleinern"
+      },
+      {
+        "target": "dex",
+        "value": 2,
+        "type": "size",
+        "source": "Person verkleinern"
+      },
+      {
+        "target": "ac",
+        "value": 1,
+        "type": "size",
+        "source": "Person verkleinern"
+      },
+      {
+        "target": "atk",
+        "value": 1,
+        "type": "size",
+        "source": "Person verkleinern"
+      }
+    ]
   },
   "refuge": {
     "nameDe": "Refuge",
@@ -7177,10 +7419,10 @@
     "description": ""
   },
   "resistance": {
-    "nameDe": "Resistance",
+    "nameDe": "Resistenz",
     "nameEn": "Resistance",
     "school": "Abjuration",
-    "level": 1,
+    "level": 0,
     "classLevels": [
       {
         "class": "bard",
@@ -7206,7 +7448,27 @@
     "duration": "1 minute",
     "savingThrow": "Will negates (harmless)",
     "spellResistance": "Yes (harmless)",
-    "description": "You imbue the subject with magical en- ergy that protects it from harm, granting it a +1 resistance bonus on saves. Resistance can be made permanent with a permanency spell. Arcane Material Component: A miniature cloak. Resist Energy Abjuration"
+    "description": "You imbue the subject with magical en- ergy that protects it from harm, granting it a +1 resistance bonus on saves. Resistance can be made permanent with a permanency spell. Arcane Material Component: A miniature cloak. Resist Energy Abjuration",
+    "effects": [
+      {
+        "target": "baseZa",
+        "value": 1,
+        "type": "resistance",
+        "source": "Resistenz"
+      },
+      {
+        "target": "baseRef",
+        "value": 1,
+        "type": "resistance",
+        "source": "Resistenz"
+      },
+      {
+        "target": "baseWil",
+        "value": 1,
+        "type": "resistance",
+        "source": "Resistenz"
+      }
+    ]
   },
   "resist_energy": {
     "nameDe": "Resist Energy",
@@ -7803,7 +8065,7 @@
   "shield_of_faith": {
     "nameDe": "Schild des Glaubens",
     "nameEn": "Shield of Faith",
-    "school": "Abbeschwörung",
+    "school": "Abjuration",
     "level": 1,
     "classLevels": [
       {
@@ -7815,7 +8077,7 @@
     "castingTime": "1 standard action",
     "range": "Berührung",
     "targetOrEffectOrArea": "Target: Creature touched",
-    "duration": "1 min./Stufe",
+    "duration": "1 min./level",
     "savingThrow": "Willen, keine Wirkung (harmlos)",
     "spellResistance": "Ja (harmlos)",
     "description": "Ein göttliches Feld umgibt den Empfänger und gewährt einen +2 Ablenkung-Bonus auf die Rüstungsklasse (steigt um +1 pro 6 Zauberstufen, maximal +5).",
@@ -7823,13 +8085,14 @@
       {
         "target": "acDeflection",
         "value": 2,
+        "valueFormula": "shield_of_faith",
         "type": "deflection",
         "source": "Schild des Glaubens"
       }
     ]
   },
   "shield_of_law": {
-    "nameDe": "Shield of Law",
+    "nameDe": "Schild des Gesetzes",
     "nameEn": "Shield of Law",
     "school": "Abjuration [Lawful]",
     "level": 8,
@@ -7846,10 +8109,36 @@
     "duration": "1 round/level (D)",
     "savingThrow": "See text",
     "spellResistance": "Yes (harmless)",
-    "description": "A dim, blue glow surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by chaotic creatures, and slowing chaotic creatures when they strike the subjects. This abjura- tion has four effects. First, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike protection from chaos, this benefit applies against all attacks, not just against attacks by chaotic creatures. Second, a warded creature gains spell resistance 25 against chaotic spells and spells cast by chaotic creatures. Third, the abjuration blocks possession and mental influence, just as protection from chaos does. Finally, if a chaotic creature succeeds on a melee attack against a warded creature, the attacker is slowed (Will save negates, as the slow spell, but against shield of law’s save"
+    "description": "A dim, blue glow surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by chaotic creatures, and slowing chaotic creatures when they strike the subjects. This abjura- tion has four effects. First, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike protection from chaos, this benefit applies against all attacks, not just against attacks by chaotic creatures. Second, a warded creature gains spell resistance 25 against chaotic spells and spells cast by chaotic creatures. Third, the abjuration blocks possession and mental influence, just as protection from chaos does. Finally, if a chaotic creature succeeds on a melee attack against a warded creature, the attacker is slowed (Will save negates, as the slow spell, but against shield of law’s save",
+    "effects": [
+      {
+        "target": "acDeflection",
+        "value": 4,
+        "type": "deflection",
+        "source": "Schild des Gesetzes"
+      },
+      {
+        "target": "baseZa",
+        "value": 4,
+        "type": "resistance",
+        "source": "Schild des Gesetzes"
+      },
+      {
+        "target": "baseRef",
+        "value": 4,
+        "type": "resistance",
+        "source": "Schild des Gesetzes"
+      },
+      {
+        "target": "baseWil",
+        "value": 4,
+        "type": "resistance",
+        "source": "Schild des Gesetzes"
+      }
+    ]
   },
   "shield_other": {
-    "nameDe": "Shield Other",
+    "nameDe": "Schild teilen",
     "nameEn": "Shield Other",
     "school": "Abjuration",
     "level": 2,
@@ -7870,7 +8159,33 @@
     "duration": "1 hour/level (D)",
     "savingThrow": "Will negates (harmless)",
     "spellResistance": "Yes (harmless)",
-    "description": "This spell wards the subject and creates a mystic connection between you and the subject so that some of its wounds are transferred to you. The subject gains a +1 deflection bonus to AC and a +1 resistance bonus on saves. Additionally, the subject takes only half damage from all wounds and attacks (including that dealt by special abilities) that deal hit point damage. The amount of damage not taken by the warded creature is taken by you. Forms of harm that do not involve hit points, such as charm effects, temporary ability damage, level draining, and death effects, are not affected. If the subject suffers a reduction of hit points from a lowered Constitution score, the reduction is not split with you because it is not hit point damage. When the spell ends, subsequent damage is no longer divided between the subject and you, but damage already split is not reassigned to the subject. If you and the subject of the spell move out of range of each other, the spell ends. Focus: A pair of platinum rings (worth at least 50 gp each) worn by both you and the warded creature. Shillelagh Transmutation"
+    "description": "This spell wards the subject and creates a mystic connection between you and the subject so that some of its wounds are transferred to you. The subject gains a +1 deflection bonus to AC and a +1 resistance bonus on saves. Additionally, the subject takes only half damage from all wounds and attacks (including that dealt by special abilities) that deal hit point damage. The amount of damage not taken by the warded creature is taken by you. Forms of harm that do not involve hit points, such as charm effects, temporary ability damage, level draining, and death effects, are not affected. If the subject suffers a reduction of hit points from a lowered Constitution score, the reduction is not split with you because it is not hit point damage. When the spell ends, subsequent damage is no longer divided between the subject and you, but damage already split is not reassigned to the subject. If you and the subject of the spell move out of range of each other, the spell ends. Focus: A pair of platinum rings (worth at least 50 gp each) worn by both you and the warded creature. Shillelagh Transmutation",
+    "effects": [
+      {
+        "target": "acDeflection",
+        "value": 1,
+        "type": "deflection",
+        "source": "Schild teilen"
+      },
+      {
+        "target": "baseZa",
+        "value": 1,
+        "type": "resistance",
+        "source": "Schild teilen"
+      },
+      {
+        "target": "baseRef",
+        "value": 1,
+        "type": "resistance",
+        "source": "Schild teilen"
+      },
+      {
+        "target": "baseWil",
+        "value": 1,
+        "type": "resistance",
+        "source": "Schild teilen"
+      }
+    ]
   },
   "shillelagh": {
     "nameDe": "Shillelagh",
@@ -9165,7 +9480,7 @@
     "description": "Unhallow makes a particular site, building, or structure an unholy site. This has three major effects. First, the site or structure is guarded by a magic circle against good effect. Second, all turning checks made to turn undead take a –4 penalty, and turning checks to rebuke undead gain a +4 profane bonus. Spell resistance does not apply to this effect. (This provision does not apply to the druid version of the spell.) Finally, you may choose to fix a single spell effect to the unhallowed site. The spell effect lasts for one year and functions throughout the entire site, regardless of its normal duration and area or effect. You may designate whether the effect applies to all creatures, creatures that share your faith or alignment, or creatures that adhere to another faith or alignment. For example, you may create a bless effect that aids all creatures of like alignment or faith in the area, or a bane effect that hinders creatures of the opposite alignment or an enemy faith. At the end of the year, the chosen effect lapses, but it can be renewed or replaced simply by casting unhallow again. Spell effects that may be tied to an unhallowed site include aid, bane, bless, cause fear, darkness, daylight, death ward, deeper darkness, detect magic, detect good, dimensional anchor, discern lies, dispel magic, endure elements, freedom of movement, invisibility purge, protection from energy, remove fear, resist energy, silence, tongues, and zone of truth. Saving throws and spell resistance might apply to these spells’ effects. (See the indi- vidual spell descriptions for details.) An area can receive only one unhallow spell (and its associated spell effect) at a time. Unhallow counters but does not dispel hallow. Material Component: Herbs, oils, and incense worth at least 1,000 gp, plus 1,000 gp per level of the spell to be tied to the unhallowed area. Unholy Aura Abjuration [Evil]"
   },
   "unholy_aura": {
-    "nameDe": "Unholy Aura",
+    "nameDe": "Unheilige Aura",
     "nameEn": "Unholy Aura",
     "school": "Abjuration [Evil]",
     "level": 8,
@@ -9182,7 +9497,33 @@
     "duration": "1 round/level (D)",
     "savingThrow": "See text",
     "spellResistance": "Yes (harmless)",
-    "description": "A malevolent darkness surrounds the sub- jects, protecting them from attacks, grant- ing them resistance to spells cast by good creatures, and weakening good creatures when they strike the subjects. This abjura- tion has four effects. First, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike the effect of protection from good, this benefit applies against all attacks, not just against attacks by good creatures. Second, a warded creature gains spell resistance 25 against good spells and spells cast by good creatures. Third, the abjuration blocks possession and mental influence, just as protection from good does. Finally, if a good creature succeeds on a melee attack against a warded creature, the offending attacker takes 1d6 points of temporary Strength damage (Fortitude negates). Focus: A tiny reliquary containing some sacred relic, such as a piece of parchment from an unholy text. The reliquary costs at least 500 gp. Unholy Blight Evocation [Evil]"
+    "description": "A malevolent darkness surrounds the sub- jects, protecting them from attacks, grant- ing them resistance to spells cast by good creatures, and weakening good creatures when they strike the subjects. This abjura- tion has four effects. First, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike the effect of protection from good, this benefit applies against all attacks, not just against attacks by good creatures. Second, a warded creature gains spell resistance 25 against good spells and spells cast by good creatures. Third, the abjuration blocks possession and mental influence, just as protection from good does. Finally, if a good creature succeeds on a melee attack against a warded creature, the offending attacker takes 1d6 points of temporary Strength damage (Fortitude negates). Focus: A tiny reliquary containing some sacred relic, such as a piece of parchment from an unholy text. The reliquary costs at least 500 gp. Unholy Blight Evocation [Evil]",
+    "effects": [
+      {
+        "target": "acDeflection",
+        "value": 4,
+        "type": "deflection",
+        "source": "Unheilige Aura"
+      },
+      {
+        "target": "baseZa",
+        "value": 4,
+        "type": "resistance",
+        "source": "Unheilige Aura"
+      },
+      {
+        "target": "baseRef",
+        "value": 4,
+        "type": "resistance",
+        "source": "Unheilige Aura"
+      },
+      {
+        "target": "baseWil",
+        "value": 4,
+        "type": "resistance",
+        "source": "Unheilige Aura"
+      }
+    ]
   },
   "unholy_blight": {
     "nameDe": "Unholy Blight",
@@ -9850,9 +10191,9 @@
   "shield": {
     "nameDe": "Schild",
     "nameEn": "Shield",
-    "school": "Hervorrufung",
+    "school": "Abjuration [Force]",
     "level": 1,
-    "duration": "1 min./Stufe (K)",
+    "duration": "1 min./level (D)",
     "range": "Persönlich",
     "savingThrow": "Keiner",
     "spellResistance": "Nein",
@@ -9879,9 +10220,9 @@
   "bless": {
     "nameDe": "Segen",
     "nameEn": "Bless",
-    "school": "Verzauberung",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
     "level": 1,
-    "duration": "1 min./Stufe",
+    "duration": "1 min./level",
     "range": "50 ft.",
     "savingThrow": "Keiner",
     "spellResistance": "Ja (harmlos)",
@@ -9892,6 +10233,12 @@
         "value": 1,
         "type": "morale",
         "source": "Segen"
+      },
+      {
+        "target": "baseWil",
+        "value": 1,
+        "type": "morale",
+        "source": "Segen (Gegen Furcht)"
       }
     ],
     "classLevels": [
@@ -9935,7 +10282,7 @@
     "nameEn": "Bull's Strength",
     "school": "Transmutation",
     "level": 2,
-    "duration": "1 min./Stufe",
+    "duration": "1 min./level",
     "range": "Berührung",
     "savingThrow": "Willen, keine Wirkung (harmlos)",
     "spellResistance": "Ja (harmlos)",
@@ -9976,7 +10323,7 @@
     "nameEn": "Cat's Grace",
     "school": "Transmutation",
     "level": 2,
-    "duration": "1 min./Stufe",
+    "duration": "1 min./level",
     "range": "Berührung",
     "savingThrow": "Willen, keine Wirkung (harmlos)",
     "spellResistance": "Ja (harmlos)",
@@ -10017,7 +10364,7 @@
     "nameEn": "Bear's Endurance",
     "school": "Transmutation",
     "level": 2,
-    "duration": "1 min./Stufe",
+    "duration": "1 min./level",
     "range": "Berührung",
     "savingThrow": "Willen, keine Wirkung (harmlos)",
     "spellResistance": "Ja (harmlos)",
@@ -10081,9 +10428,9 @@
   "prayer": {
     "nameDe": "Gebet",
     "nameEn": "Prayer",
-    "school": "Verzauberung",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
     "level": 3,
-    "duration": "1 Runde/Stufe",
+    "duration": "1 round/level",
     "range": "40 ft.",
     "savingThrow": "Keiner",
     "spellResistance": "Ja",
@@ -10091,6 +10438,12 @@
     "effects": [
       {
         "target": "atk",
+        "value": 1,
+        "type": "luck",
+        "source": "Gebet"
+      },
+      {
+        "target": "dmg",
         "value": 1,
         "type": "luck",
         "source": "Gebet"
@@ -10176,6 +10529,385 @@
       {
         "class": "wizard",
         "level": 9
+      }
+    ]
+  },
+  "heroism": {
+    "nameDe": "Heldenmut",
+    "nameEn": "Heroism",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 3,
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Creature touched",
+    "duration": "10 min./level",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes",
+    "description": "This spell imbues a single creature with great bravery and morale in battle. The subject gains a +2 morale bonus on attack rolls, saves, and skill checks.",
+    "effects": [
+      {
+        "target": "atk",
+        "value": 2,
+        "type": "morale",
+        "source": "Heldenmut"
+      },
+      {
+        "target": "baseZa",
+        "value": 2,
+        "type": "morale",
+        "source": "Heldenmut"
+      },
+      {
+        "target": "baseRef",
+        "value": 2,
+        "type": "morale",
+        "source": "Heldenmut"
+      },
+      {
+        "target": "baseWil",
+        "value": 2,
+        "type": "morale",
+        "source": "Heldenmut"
+      }
+    ]
+  },
+  "heroism_greater": {
+    "nameDe": "Großer Heldenmut",
+    "nameEn": "Heroism, Greater",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 5,
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 5
+      },
+      {
+        "class": "sorcerer",
+        "level": 6
+      },
+      {
+        "class": "wizard",
+        "level": 6
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Creature touched",
+    "duration": "1 min./level",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes",
+    "description": "This spell functions like heroism, except the creature gains a +4 morale bonus on attack rolls, saves, and skill checks, immunity to fear effects, and temporary hit points equal to your caster level (maximum 20).",
+    "effects": [
+      {
+        "target": "atk",
+        "value": 4,
+        "type": "morale",
+        "source": "Großer Heldenmut"
+      },
+      {
+        "target": "baseZa",
+        "value": 4,
+        "type": "morale",
+        "source": "Großer Heldenmut"
+      },
+      {
+        "target": "baseRef",
+        "value": 4,
+        "type": "morale",
+        "source": "Großer Heldenmut"
+      },
+      {
+        "target": "baseWil",
+        "value": 4,
+        "type": "morale",
+        "source": "Großer Heldenmut"
+      }
+    ]
+  },
+  "divine_favor": {
+    "nameDe": "Göttliche Gunst",
+    "nameEn": "Divine Favor",
+    "school": "Evocation",
+    "level": 1,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 1
+      },
+      {
+        "class": "paladin",
+        "level": 1
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "1 minute",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Calling upon the strength and wisdom of a deity, you gain a +1 luck bonus on attack and weapon damage rolls for every three caster levels you have (at least +1, maximum +3).",
+    "effects": [
+      {
+        "target": "atk",
+        "value": 1,
+        "valueFormula": "divine_favor",
+        "type": "luck",
+        "source": "Göttliche Gunst"
+      },
+      {
+        "target": "dmg",
+        "value": 1,
+        "valueFormula": "divine_favor",
+        "type": "luck",
+        "source": "Göttliche Gunst"
+      }
+    ]
+  },
+  "divine_power": {
+    "nameDe": "Göttliche Macht",
+    "nameEn": "Divine Power",
+    "school": "Evocation",
+    "level": 4,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 4
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "1 round/level",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Calling upon the divine power of your patron, you imbue yourself with strength and skill in combat. You gain a +6 enhancement bonus to Strength and a +1 luck bonus to attack rolls.",
+    "effects": [
+      {
+        "target": "str",
+        "value": 6,
+        "type": "enhancement",
+        "source": "Göttliche Macht"
+      },
+      {
+        "target": "atk",
+        "value": 1,
+        "type": "luck",
+        "source": "Göttliche Macht"
+      }
+    ]
+  },
+  "aid": {
+    "nameDe": "Hilfe",
+    "nameEn": "Aid",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 2,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 2
+      },
+      {
+        "class": "paladin",
+        "level": 2
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Living creature touched",
+    "duration": "1 min./level",
+    "savingThrow": "None",
+    "spellResistance": "Yes (harmless)",
+    "description": "Aid grants a +1 morale bonus on attack rolls and saves against fear effects, plus temporary hit points equal to 1d8 + caster level (maximum 1d8+10).",
+    "effects": [
+      {
+        "target": "atk",
+        "value": 1,
+        "type": "morale",
+        "source": "Hilfe"
+      },
+      {
+        "target": "baseWil",
+        "value": 1,
+        "type": "morale",
+        "source": "Hilfe (Gegen Furcht)"
+      }
+    ]
+  },
+  "righteous_might": {
+    "nameDe": "Gerechte Macht",
+    "nameEn": "Righteous Might",
+    "school": "Transmutation",
+    "level": 5,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 5
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "1 round/level (D)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Your size increases, doubling your height and multiplying your weight by eight. This increase changes your size category to Large. You gain a +4 size bonus to Strength, a +2 size bonus to Constitution, and an enhancement bonus to your natural armor (starts at +2, and increases to +3 at 12th, +4 at 15th, and +5 at 18th level). You also gain DR 5/evil.",
+    "effects": [
+      {
+        "target": "str",
+        "value": 4,
+        "type": "size",
+        "source": "Gerechte Macht"
+      },
+      {
+        "target": "con",
+        "value": 2,
+        "type": "size",
+        "source": "Gerechte Macht"
+      },
+      {
+        "target": "acNatural",
+        "value": 2,
+        "valueFormula": "righteous_might_na",
+        "type": "natural",
+        "source": "Gerechte Macht"
+      },
+      {
+        "target": "ac",
+        "value": -1,
+        "type": "size",
+        "source": "Gerechte Macht"
+      },
+      {
+        "target": "atk",
+        "value": -1,
+        "type": "size",
+        "source": "Gerechte Macht"
+      }
+    ]
+  },
+  "good_hope": {
+    "nameDe": "Gute Hoffnung",
+    "nameEn": "Good Hope",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 3,
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 3
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "One ally/level",
+    "duration": "1 min./level",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "This spell instills powerful hope in a subject. Each affected creature gains a +2 morale bonus on saving throws, attack rolls, ability checks, skill checks, and weapon damage rolls.",
+    "effects": [
+      {
+        "target": "atk",
+        "value": 2,
+        "type": "morale",
+        "source": "Gute Hoffnung"
+      },
+      {
+        "target": "dmg",
+        "value": 2,
+        "type": "morale",
+        "source": "Gute Hoffnung"
+      },
+      {
+        "target": "baseZa",
+        "value": 2,
+        "type": "morale",
+        "source": "Gute Hoffnung"
+      },
+      {
+        "target": "baseRef",
+        "value": 2,
+        "type": "morale",
+        "source": "Gute Hoffnung"
+      },
+      {
+        "target": "baseWil",
+        "value": 2,
+        "type": "morale",
+        "source": "Gute Hoffnung"
+      }
+    ]
+  },
+  "rage_spell": {
+    "nameDe": "Zorn (Zauber)",
+    "nameEn": "Rage (Spell)",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 3,
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 2
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "One willing creature/three levels",
+    "duration": "1 round/level (D)",
+    "savingThrow": "None",
+    "spellResistance": "Yes",
+    "description": "Each affected creature gains a +2 morale bonus to Strength and Constitution, a +1 morale bonus on Will saves, and a -2 penalty to Armor Class. The effect is otherwise identical with a barbarian's rage.",
+    "effects": [
+      {
+        "target": "str",
+        "value": 2,
+        "type": "morale",
+        "source": "Zorn (Zauber)"
+      },
+      {
+        "target": "con",
+        "value": 2,
+        "type": "morale",
+        "source": "Zorn (Zauber)"
+      },
+      {
+        "target": "baseWil",
+        "value": 1,
+        "type": "morale",
+        "source": "Zorn (Zauber)"
+      },
+      {
+        "target": "ac",
+        "value": -2,
+        "type": "untyped",
+        "source": "Zorn (Zauber)"
       }
     ]
   }

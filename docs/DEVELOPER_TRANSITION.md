@@ -159,21 +159,21 @@ Vollständige Liste: [Bugtracking.md](file:///c:/Users/Juls/Desktop/CombatApp/do
 
 ## 8. Zukünftige Roadmap & Backlog
 
-### ⚠️ Sofort (Hotfix vor nächstem Feature)
-* **Bug #16 beheben:** `_renderNaturalAttacksList` in `PCOffense.js` fehlt → Crash beim Tab-Wechsel zu „Ausrüstung" im Wild-Shape-Modus.
+### ✅ Gelöst in v3.3.x — Buff-Stacking & Hotfixes
+* **Bug #16 behoben:** `_renderNaturalAttacksList` in `PCOffense.js` importiert und integriert.
+* **Persönliche Buffs:** Schnellwahl-Panel für eigene Effekte (z. B. *Magierrüstung* [+4 RK], *Stärke des Stiers* [+4 STR]) und Stacking-Engine nach D&D 3.5e RAW implementiert (v3.3.2).
 
-### 🔮 v3.3 — Buff- & Auren-Manager (Targeting-System)
-* **Persönliche Buffs:** Schnellwahl-Panel für eigene Effekte (z. B. *Magierrüstung* [+4 RK], *Stärke des Stiers* [+4 STR]).
-* **Netzwerk-Auren (WebRTC):** Buffs (wie *Bardenmusik* oder Paladin-Auren) an verbündete Ziele senden.
+### 🔮 v3.4 — Netzwerk-Auren (WebRTC-Targeting)
+* **Netzwerk-Auren:** Buffs (wie *Bardenmusik* oder Paladin-Auren) über das Netzwerk an verbündete Ziele senden.
 
-### 🏰 v3.4 — DM-UI Komplett-Refactoring & Redesign
+### 🏰 v3.5 — DM-UI Komplett-Refactoring & Redesign
 * Modularisierung der `dm-screen.js`, Modernisierung des Initiative-Monitors, Tierbegleiter als eigenständige Kampfteilnehmer.
 
-### 🪙 v3.5 — Loot-Generator & Universeller Ressourcen-Tracker
+### 🪙 v3.6 — Loot-Generator & Universeller Ressourcen-Tracker
 * Loot-Generator für DM (Gold, Edelsteine, Tränke nach EL-Tabellen), Custom Ressourcen-Tracker für Spieler.
 
-### 🐉 v3.6 — Monster-Kompendium (SRD JSON-Integration)
+### 🐉 v3.7 — Monster-Kompendium (SRD JSON-Integration)
 * SRD-JSON-Datenbank aller D&D 3.5e Kreaturen, Ein-Klick-Begegnungsaufbau im DM-Screen.
 
-### v3.7 — Beispieldatengenerator
+### v3.8 — Beispieldatengenerator
 * PC-, NPC- und Monster-Generator mit Klassen-, Völker- und Rollenauswahl aus dem SRD.

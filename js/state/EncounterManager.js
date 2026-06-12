@@ -192,6 +192,7 @@ export function setConditionDuration(id, condName, val) {
 export function tickConditionTimers() {
   const s = getState();
   s.combatants.forEach(c => {
+    // 1. Tick conditions
     c.conditions.forEach(cd => {
       const d = parseInt(cd.dur);
       if (!isNaN(d) && d > 0) {
@@ -200,6 +201,28 @@ export function tickConditionTimers() {
         cd.dur = 0;
       }
     });
+
+    // 2. Tick active buffs
+    if (Array.isArray(c.activeBuffs)) {
+      c.activeBuffs.forEach(buff => {
+        if (typeof buff.durationRemainingRounds === 'number' && buff.durationRemainingRounds > 0) {
+          buff.durationRemainingRounds--;
+        }
+      });
+
+      const beforeLen = c.activeBuffs.length;
+      c.activeBuffs = c.activeBuffs.filter(buff => {
+        return buff.durationRemainingRounds === undefined || 
+               buff.durationRemainingRounds === null || 
+               buff.durationRemainingRounds > 0;
+      });
+
+      if (c.activeBuffs.length !== beforeLen) {
+        if (typeof c.rebuildStatModifiers === 'function') {
+          c.rebuildStatModifiers();
+        }
+      }
+    }
   });
 }
 

@@ -1,0 +1,55 @@
+# 🏰 The Combatant — Feature-Übersicht
+
+**The Combatant** ist ein maßgeschneidertes, mobiles und offline-fähiges Begleit-Tool für **Dungeons & Dragons 3.5e**. Es kombiniert einen hochgradig automatisierten Charakterbogen mit einer Echtzeit-Kampf- und Spielleiter-Schnittstelle.
+
+Hier ist die Übersicht, was Spieler und Spielleiter (DM) erwartet – auf hoher Flughöhe und ohne Detail-Ballast.
+
+---
+
+## 👤 1. Der digitale Charakterbogen (Player Sheet)
+*Alles auf einen Blick – optimiert für die schnelle Nutzung am Spieltisch oder Tablet.*
+* **Visueller HP-Fokus:** Eine auffällige, gotische Lebenspunkte-Kugel (Diablo-Style) für sofortige Statusübersicht.
+* **Automatische Abwehrwerte:** Rüstungsklasse (AC) und Rettungswürfe (Zähigkeit, Reflex, Wille) berechnen sich vollautomatisch inklusive korrekter Stacking-Regeln (z. B. Ausweichboni addieren sich, gleiche Modifikatortypen nicht).
+* **Automatisierter Fertigkeiten-Planer:** Talentierte Klassenfertigkeiten, Ränge und Attributsboni werden live berechnet. Inklusive automatischer Berücksichtigung von **Fertigkeitensynergien** (z. B. bringen 5 Ränge in *Akrobatik* automatisch +2 auf *Balance*).
+* **Talent-Prüfung:** Integrierte Validierung für Talente (Feats) – die App prüft, ob die Voraussetzungen (wie Mindest-Attributswerte oder andere Talente) erfüllt sind.
+
+---
+
+## ⚔️ 2. Dynamisches Kampfsystem (Offense & Attacks)
+*Schluss mit dem ständigen Nachrechnen bei komplexen Angriffsrunden.*
+* **Angriffssequenz-Rechner:** Berechnet auf Knopfdruck vollständige Angriffsreihen (z. B. Haupt- und Zweithandangriffe, Angriffe mit hoher Effizienz) basierend auf dem Basis-Angriffsbonus (BAB), Stärke/Geschicklichkeit und Talenten.
+* **Zweiwaffenkampf & Doppelwaffen:** Volle Unterstützung für Kampf mit zwei Waffen und Doppelwaffen (z. B. Kampfstab) mit dynamischen Abzügen und korrekter Schadensskalierung.
+* **Power Attack Slider:** Ein interaktiver Schieberegler für *Machtvoller Angriff* zieht automatisch den gewünschten Wert vom Angriff ab und addiert ihn (je nach Waffenart ein- oder zweihändig) zum Schaden.
+* **Natürliche Waffen:** Unterstützt Klauen, Bisse und andere natürliche Waffen mit korrekter Einteilung in Primär- und Sekundärangriffe.
+
+---
+
+## 🔮 3. Magie- & Zaubersystem (Spells & Slots)
+*Volle Kontrolle über vorbereitete und spontane Zauber.*
+* **Zauberbibliothek:** Ein integriertes D&D 3.5e SRD Zauber-Kompendium zum schnellen Nachschlagen und Lernen von Zaubern.
+* **Vorbereitung & Spontanes Wirken:** Unterstützung für vorbereitende Zauberer (Kleriker, Magier, Druiden) und spontane Zauberer (Hexenmeister, Barden) mit übersichtlichem Slot-Verbrauch.
+* **Metamagie-Assistent:** Wende metamagische Talente (z. B. *Zauber ausdehnen*, *Zauber maximieren*) an – die App berechnet den angepassten Zaubergrad und prüft freie Slots.
+* **Vorbereitungs-Templates:** Speichere dein Standard-Zaubersetup für den Tag als Vorlage ab. Mit nur einem Klick ist das Zauberbuch nach einer langen Rast wieder bereit.
+
+---
+
+## 🐾 4. Klassenfeatures & Begleiter
+*Maßgeschneiderte Mechaniken für jede Klasse.*
+* **Spezial-Ressourcen:** Tracking von täglichen Ladungen für Klassenmerkmale (z. B. *Zorn* des Barbaren, *Handauflegen* des Paladins, *Lieder* des Barden).
+* **Tierbegleiter & Vertraute:** Eigene, interaktive Begleiter-Bögen direkt im Hauptbogen integriert (für Druiden, Waldläufer, Magier und Hexenmeister).
+* **Wild Shape (Tiergestalt):** Ein-Klick-Transformation für Druiden (z. B. Wolf, Leopard, Bär). Die App überschreibt temporär deine physischen Attribute, deine Rüstungsklasse und passt deine Angriffsoptionen nach den offiziellen D&D-Regeln (RAW) an.
+
+---
+
+## 🔗 5. Live-Spielrunde & DM-Synchronisation
+*Nahtloses Zusammenspiel am Tisch.*
+* **Echtzeit-Synchronisation (WebRTC):** Der Spielleiter startet eine Sitzung direkt im Browser. Spieler verbinden sich per Code über ihr Tablet oder Handy – komplett ohne Cloud-Zwang oder Accounts.
+* **Zentraler DM-Screen:** Der Spielleiter sieht live die HP, Rüstungsklassen und Rettungswürfe aller Charaktere und behält die volle Kontrolle.
+* **Initiative-Tracker:** Der DM startet den Kampf, die Initiative wird automatisch berechnet und die aktive Zugreihenfolge für alle Teilnehmer live synchronisiert.
+
+---
+
+## ⚙️ 6. Technologische Highlights
+*Unkompliziert, schnell und zuverlässig.*
+* **Zero-Install (PWA):** Kann direkt als Web-App auf dem Startbildschirm von Handy oder Tablet installiert werden und funktioniert dank Offline-Caching auch im tiefsten Keller ohne Internet.
+* **Lokaler Server für den DM:** Ein kleines, mitgeliefertes PowerShell-Script startet den Server auf dem DM-Laptop mit einem Klick – keine Installation von Node.js oder externen Datenbanken nötig.

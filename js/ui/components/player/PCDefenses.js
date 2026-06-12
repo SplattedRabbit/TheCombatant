@@ -9,7 +9,7 @@
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { getAblMod, formatMod } from './PCUtils.js';
-import { showRollBreakdown, showInfoDialog } from '../dialogs.js';
+import { showRollBreakdown, showInfoDialog, showCustomConfirm, showCustomAlert, showCustomPrompt } from '../dialogs.js';
 import { CombatSpells } from '../../../spells.js';
 
 // Local UI state for toggling between the defenses panel and buffs manager
@@ -56,6 +56,342 @@ function translateType(type) {
     untyped: 'Ohne Typ'
   };
   return mapping[type] || type;
+}
+
+const CLASS_BUFFS = [
+  {
+    key: 'rage',
+    name: 'Kampfrausch (Rage)',
+    school: 'Klassenfähigkeit (Barbar)',
+    duration: '5 Runden',
+    effects: [
+      { target: 'str', value: 4, type: 'morale', source: 'Kampfrausch' },
+      { target: 'con', value: 4, type: 'morale', source: 'Kampfrausch' },
+      { target: 'wil', value: 2, type: 'morale', source: 'Kampfrausch' },
+      { target: 'ac', value: -2, type: 'untyped', source: 'Kampfrausch' }
+    ]
+  },
+  {
+    key: 'greater_rage',
+    name: 'Großer Kampfrausch (Greater Rage)',
+    school: 'Klassenfähigkeit (Barbar)',
+    duration: '5 Runden',
+    effects: [
+      { target: 'str', value: 6, type: 'morale', source: 'Großer Kampfrausch' },
+      { target: 'con', value: 6, type: 'morale', source: 'Großer Kampfrausch' },
+      { target: 'wil', value: 3, type: 'morale', source: 'Großer Kampfrausch' },
+      { target: 'ac', value: -2, type: 'untyped', source: 'Großer Kampfrausch' }
+    ]
+  },
+  {
+    key: 'inspire_courage_1',
+    name: 'Mut einflößen +1 (Inspire Courage)',
+    school: 'Klassenfähigkeit (Barde)',
+    duration: '5 Runden nach Ende des Gesangs',
+    effects: [
+      { target: 'atk', value: 1, type: 'morale', source: 'Mut einflößen' },
+      { target: 'dmg', value: 1, type: 'morale', source: 'Mut einflößen' }
+    ]
+  },
+  {
+    key: 'inspire_courage_2',
+    name: 'Mut einflößen +2',
+    school: 'Klassenfähigkeit (Barde)',
+    duration: '5 Runden nach Ende des Gesangs',
+    effects: [
+      { target: 'atk', value: 2, type: 'morale', source: 'Mut einflößen' },
+      { target: 'dmg', value: 2, type: 'morale', source: 'Mut einflößen' }
+    ]
+  },
+  {
+    key: 'inspire_courage_3',
+    name: 'Mut einflößen +3',
+    school: 'Klassenfähigkeit (Barde)',
+    duration: '5 Runden nach Ende des Gesangs',
+    effects: [
+      { target: 'atk', value: 3, type: 'morale', source: 'Mut einflößen' },
+      { target: 'dmg', value: 3, type: 'morale', source: 'Mut einflößen' }
+    ]
+  },
+  {
+    key: 'inspire_courage_4',
+    name: 'Mut einflößen +4',
+    school: 'Klassenfähigkeit (Barde)',
+    duration: '5 Runden nach Ende des Gesangs',
+    effects: [
+      { target: 'atk', value: 4, type: 'morale', source: 'Mut einflößen' },
+      { target: 'dmg', value: 4, type: 'morale', source: 'Mut einflößen' }
+    ]
+  },
+  {
+    key: 'aura_of_courage',
+    name: 'Aura der Tapferkeit (Aura of Courage)',
+    school: 'Aura (Paladin)',
+    duration: 'Permanent',
+    effects: [
+      { target: 'baseWil', value: 4, type: 'morale', source: 'Aura der Tapferkeit (Gegen Furcht)' }
+    ]
+  },
+  {
+    key: 'aura_of_resolve',
+    name: 'Aura der Entschlossenheit (Aura of Resolve)',
+    school: 'Aura (Paladin)',
+    duration: 'Permanent',
+    effects: [
+      { target: 'baseWil', value: 4, type: 'morale', source: 'Aura der Entschlossenheit (Gegen Zwang)' }
+    ]
+  }
+];
+
+function resolveSpellEffectValue(formula, casterLevel, defaultValue) {
+  if (!formula) return defaultValue;
+  const cl = parseInt(casterLevel) || 1;
+  switch (formula) {
+    case 'shield_of_faith':
+      return Math.min(5, 2 + Math.floor(cl / 6));
+    case 'barkskin':
+      return Math.min(5, 1 + Math.floor(cl / 3));
+    case 'divine_favor':
+      return Math.max(1, Math.min(3, Math.floor(cl / 3)));
+    case 'righteous_might_na':
+      return Math.min(5, 2 + Math.floor((cl - 9) / 3));
+    case 'magic_vestment':
+    case 'magic_weapon_greater':
+      return Math.min(5, Math.floor(cl / 4));
+    default:
+      return defaultValue;
+  }
+}
+
+function calculateDurationRounds(durationStr, casterLevel) {
+  if (!durationStr) return null;
+  const s = durationStr.toLowerCase().trim();
+  const cl = parseInt(casterLevel) || 1;
+
+  if (s.includes('round/level') || s.includes('runde/stufe')) {
+    return cl;
+  }
+  if (s.includes('10 min./level') || s.includes('10 min./stufe')) {
+    return cl * 100;
+  }
+  if (s.includes('min./level') || s.includes('min./stufe') || s.includes('minute/level') || s.includes('minute/stufe')) {
+    return cl * 10;
+  }
+  if (s.includes('hour/level') || s.includes('std./stufe') || s.includes('stunde/stufe')) {
+    return null;
+  }
+  if (s === '1 minute' || s === '1 min.') {
+    return 10;
+  }
+  if (s === '5 runden' || s === '5 rounds' || s.includes('5 runden') || s.includes('5 rounds')) {
+    return 5;
+  }
+  
+  const roundMatch = s.match(/^(\d+)\s+(round|runde)/);
+  if (roundMatch) {
+    return parseInt(roundMatch[1]);
+  }
+  
+  return null;
+}
+
+function checkBuffConflict(pc, spellKey, customEffects = null) {
+  let newEffects = [];
+  let buffName = '';
+  if (spellKey) {
+    const classBuff = CLASS_BUFFS.find(b => b.key === spellKey);
+    if (classBuff) {
+      newEffects = classBuff.effects || [];
+      buffName = classBuff.name;
+    } else {
+      const spell = CombatSpells.REGISTRY?.[spellKey];
+      if (!spell) return { status: 'ok' };
+      newEffects = spell.effects || [];
+      buffName = spell.nameDe || spell.nameEn || spellKey;
+    }
+  } else if (customEffects) {
+    newEffects = customEffects;
+    buffName = customEffects[0]?.source || 'Eigener Buff';
+  }
+
+  if (newEffects.length === 0) return { status: 'ok' };
+
+  let status = 'ok';
+  let conflictingBuffName = '';
+  let activeValue = 0;
+  let newValue = 0;
+  let targetLabel = '';
+
+  for (const newEff of newEffects) {
+    if (newEff.type === 'dodge' || newEff.type === 'untyped') continue;
+    
+    let val = parseInt(newEff.value) || 0;
+    let cl = 1;
+    if (Array.isArray(pc.classes)) {
+      pc.classes.forEach(c => {
+        if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)) {
+          if (c.level > cl) cl = c.level;
+        }
+      });
+    }
+    if (newEff.valueFormula) {
+      val = resolveSpellEffectValue(newEff.valueFormula, cl, val);
+    }
+
+    if (!Array.isArray(pc.activeBuffs)) continue;
+
+    for (const activeBuff of pc.activeBuffs) {
+      let activeEffects = [];
+      let activeName = activeBuff.name;
+      if (activeBuff.spellKey) {
+        const classBuff = CLASS_BUFFS.find(b => b.key === activeBuff.spellKey);
+        if (classBuff) {
+          activeEffects = classBuff.effects || [];
+          activeName = classBuff.name;
+        } else {
+          const actSpell = CombatSpells.REGISTRY?.[activeBuff.spellKey];
+          if (actSpell) {
+            activeEffects = activeBuff.effects || actSpell.effects || [];
+            activeName = actSpell.nameDe || actSpell.nameEn || activeBuff.spellKey;
+          }
+        }
+      } else {
+        activeEffects = activeBuff.effects || [];
+      }
+
+      for (const activeEff of activeEffects) {
+        if (newEff.target === activeEff.target && newEff.type === activeEff.type) {
+          const actVal = parseInt(activeEff.value) || 0;
+          if (actVal >= val) {
+            if (status !== 'overrides') {
+              status = 'suppressed';
+              conflictingBuffName = activeName;
+              activeValue = actVal;
+              newValue = val;
+              targetLabel = translateTarget(newEff.target);
+            }
+          } else {
+            status = 'overrides';
+            conflictingBuffName = activeName;
+            activeValue = actVal;
+            newValue = val;
+            targetLabel = translateTarget(newEff.target);
+          }
+        }
+      }
+    }
+  }
+
+  return { status, conflictingBuffName, activeValue, newValue, targetLabel, buffName };
+}
+
+function activateBuffByKey(pc, key, isClass) {
+  let hasScaling = false;
+  let durationFormula = '';
+  let effects = [];
+  let buffName = '';
+  
+  if (isClass) {
+    const classBuff = CLASS_BUFFS.find(b => b.key === key);
+    if (classBuff) {
+      effects = classBuff.effects || [];
+      buffName = classBuff.name;
+      durationFormula = classBuff.duration || '';
+    }
+  } else {
+    const spell = CombatSpells.REGISTRY?.[key];
+    if (spell) {
+      effects = spell.effects || [];
+      buffName = spell.nameDe || spell.nameEn || key;
+      durationFormula = spell.duration || '';
+      hasScaling = effects.some(eff => !!eff.valueFormula);
+    }
+  }
+  
+  const isRoundBased = durationFormula && (
+    durationFormula.toLowerCase().includes('level') || 
+    durationFormula.toLowerCase().includes('stufe')
+  );
+
+  const performActivation = (casterLevel) => {
+    const resolvedEffects = effects.map(eff => {
+      let val = parseInt(eff.value) || 0;
+      if (eff.valueFormula) {
+        val = resolveSpellEffectValue(eff.valueFormula, casterLevel, val);
+      }
+      return {
+        target: eff.target,
+        value: val,
+        type: eff.type,
+        source: eff.source || buffName
+      };
+    });
+
+    const rounds = calculateDurationRounds(durationFormula, casterLevel);
+
+    const activate = () => {
+      CombatState.updatePCBatch(freshPc => {
+        if (!Array.isArray(freshPc.activeBuffs)) freshPc.activeBuffs = [];
+        freshPc.activeBuffs = freshPc.activeBuffs.filter(b => b.spellKey !== key);
+        
+        freshPc.activeBuffs.push({
+          id: 'spell_' + key + '_' + Date.now(),
+          spellKey: key,
+          name: buffName,
+          durationFormula: durationFormula,
+          casterLevel: casterLevel,
+          durationMaxRounds: rounds,
+          durationRemainingRounds: rounds,
+          effects: resolvedEffects
+        });
+      });
+      uiRegistry.renderPlayerScreen();
+    };
+
+    const conflict = checkBuffConflict(pc, key, resolvedEffects);
+    if (conflict.status === 'suppressed') {
+      showCustomConfirm(
+        "Stacking-Konflikt", 
+        `Ein stärkerer oder gleichwertiger Buff (<strong>${conflict.conflictingBuffName}</strong>) ist bereits aktiv.<br><br>Dein neuer Buff <strong>${conflict.buffName}</strong> (+${conflict.newValue} auf ${conflict.targetLabel}) hat denselben Bonus-Typ und würde daher <strong>keine Wirkung</strong> zeigen (Numerischer Unterschied: ${conflict.newValue - conflict.activeValue}).<br><br>Möchtest du den Buff dennoch aktivieren?`,
+        () => {
+          activate();
+        }
+      );
+    } else if (conflict.status === 'overrides') {
+      activate();
+      showCustomAlert(
+        "Buff überlagert", 
+        `Durch das Aktivieren von <strong>${conflict.buffName}</strong> (+${conflict.newValue}) wird der schwächere aktive Buff <strong>${conflict.conflictingBuffName}</strong> (+${conflict.activeValue}) auf <strong>${conflict.targetLabel}</strong> überlagert.<br><br>Deine Werte erhöhen sich netto um <strong>+${conflict.newValue - conflict.activeValue}</strong>.`,
+        "Verstanden", 
+        "✨"
+      );
+    } else {
+      activate();
+    }
+  };
+
+  if (hasScaling || isRoundBased) {
+    let defaultCL = 1;
+    if (Array.isArray(pc.classes)) {
+      pc.classes.forEach(c => {
+        if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)) {
+          if (c.level > defaultCL) defaultCL = c.level;
+        }
+      });
+    }
+    showCustomPrompt(
+      "Zauberstufe", 
+      `Bitte gib die Zauberstufe (Caster Level) für <strong>${buffName}</strong> ein:`, 
+      "z. B. 5", 
+      (clText) => {
+        const cl = parseInt(clText) || 1;
+        performActivation(cl);
+      }, 
+      defaultCL.toString()
+    );
+  } else {
+    performActivation(1);
+  }
 }
 
 export function renderPCDefenses(pc) {
@@ -259,11 +595,15 @@ export function renderPCDefenses(pc) {
         let effectsList = [];
 
         if (buff.spellKey) {
-          const spell = CombatSpells.REGISTRY?.[buff.spellKey];
-          if (spell) {
-            displayName = spell.nameDe || spell.nameEn || displayName || buff.spellKey;
-            if (Array.isArray(spell.effects)) {
-              effectsList = spell.effects;
+          const classBuff = CLASS_BUFFS.find(b => b.key === buff.spellKey);
+          if (classBuff) {
+            displayName = classBuff.name;
+            effectsList = classBuff.effects || [];
+          } else {
+            const spell = CombatSpells.REGISTRY?.[buff.spellKey];
+            if (spell) {
+              displayName = spell.nameDe || spell.nameEn || displayName || buff.spellKey;
+              effectsList = buff.effects || spell.effects || [];
             }
           }
         } else if (Array.isArray(buff.effects)) {
@@ -294,6 +634,23 @@ export function renderPCDefenses(pc) {
           return `${sign}${eff.value} ${targetShort}`;
         }).join(', ');
 
+        const roundsHtml = (buff.durationRemainingRounds !== undefined && buff.durationRemainingRounds !== null)
+          ? `<input type="number" class="buff-rounds-input" data-index="${idx}" value="${buff.durationRemainingRounds}" min="0" style="
+              width:22px;
+              height:11px;
+              font-size:7px;
+              text-align:center;
+              border:0.5px solid var(--pb);
+              border-radius:2px;
+              background:rgba(0,0,0,0.03);
+              color:var(--red);
+              font-weight:bold;
+              padding:0;
+              margin:0 2px 0 4px;
+            " title="Verbleibende Runden (0 zum Entfernen)">
+            <span style="font-size:7px; color:var(--inkl); margin-right:2px;">Rd.</span>`
+          : '';
+
         return `
           <div class="active-buff-pill" style="
             display:inline-flex;
@@ -320,6 +677,7 @@ export function renderPCDefenses(pc) {
               <span style="font-size:7px; color:var(--inkl); opacity:0.85; font-weight:normal;">(${shortEffectsSummary})</span>
               <span style="font-size:7.5px; opacity:0.75; margin-left:1px; color:var(--red);">📖</span>
             </span>
+            ${roundsHtml}
             <button class="delete-buff-btn" data-index="${idx}" style="
               background:transparent;
               border:none;
@@ -352,10 +710,14 @@ export function renderPCDefenses(pc) {
 
     const quickToggleHtml = quickSpells.map(qs => {
       const isActive = Array.isArray(pc.activeBuffs) && pc.activeBuffs.some(b => b.spellKey === qs.key);
+      const isSuppressed = !isActive && checkBuffConflict(pc, qs.key).status === 'suppressed';
       const btnStyle = isActive
         ? `background: #8b1a1a; color: #f4e8c1; border-color: #8b1a1a; font-weight: bold;`
-        : `background: rgba(200, 169, 110, 0.08); color: var(--ink); border-color: var(--pb);`;
+        : (isSuppressed 
+          ? `background: rgba(200, 169, 110, 0.03); color: rgba(20, 15, 5, 0.4); border-color: rgba(200, 169, 110, 0.3); opacity: 0.5; filter: grayscale(60%);`
+          : `background: rgba(200, 169, 110, 0.08); color: var(--ink); border-color: var(--pb);`);
       const checkmark = isActive ? '✓ ' : '';
+      const warningBadge = isSuppressed ? ' ⚠️' : '';
       return `
         <button class="quick-buff-btn" data-key="${qs.key}" data-name="${qs.name}" style="
           font-family: 'IM Fell English SC', serif;
@@ -370,7 +732,7 @@ export function renderPCDefenses(pc) {
           overflow: hidden;
           text-overflow: ellipsis;
           ${btnStyle}
-        " title="${qs.name}">${checkmark}${qs.name}</button>
+        " title="${qs.name}${isSuppressed ? ' (Unterdrückt durch einen stärkeren aktiven Buff)' : ''}">${checkmark}${qs.name}${warningBadge}</button>
       `;
     }).join('');
 
@@ -394,6 +756,30 @@ export function renderPCDefenses(pc) {
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:3px;">
             ${quickToggleHtml}
           </div>
+        </div>
+
+        <!-- Autocomplete Buff Search -->
+        <div style="display:flex; flex-direction:column; gap:2px; position:relative;">
+          <div style="font-family:'IM Fell English SC', serif; font-size:7.5px; color:var(--red); font-weight:bold; letter-spacing:0.5px; padding-bottom:1px; border-bottom:0.5px solid rgba(200,169,110,0.2);">
+            🔍 Buff / Aura aus Regelwerk suchen
+          </div>
+          <input type="text" id="buff-search-input" placeholder="Name eingeben (z. B. Heldenmut, Kampfrausch)..." class="cinput" style="height:15px; font-size:8px; padding:0 3px; box-sizing:border-box;" autocomplete="off">
+          
+          <div id="buff-search-results" style="
+            display:none;
+            position:absolute;
+            top:30px;
+            left:0;
+            right:0;
+            background:var(--p);
+            border:1px solid var(--pb);
+            border-radius:2px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.25);
+            max-height:150px;
+            overflow-y:auto;
+            z-index:2000;
+            padding:2px;
+          "></div>
         </div>
 
         <!-- Custom Buff Builder -->
@@ -672,23 +1058,17 @@ export function renderPCDefenses(pc) {
     defenses.querySelectorAll('.quick-buff-btn').forEach(btn => {
       btn.onclick = () => {
         const key = btn.dataset.key;
-        const name = btn.dataset.name;
-        
-        CombatState.updatePCBatch(pc => {
-          if (!Array.isArray(pc.activeBuffs)) pc.activeBuffs = [];
-          const isCurrentlyActive = pc.activeBuffs.some(b => b.spellKey === key);
-          if (isCurrentlyActive) {
-            pc.activeBuffs = pc.activeBuffs.filter(b => b.spellKey !== key);
-          } else {
-            pc.activeBuffs.push({
-              id: 'spell_' + key + '_' + Date.now(),
-              spellKey: key,
-              name: name
-            });
-          }
-        });
-
-        uiRegistry.renderPlayerScreen();
+        const isCurrentlyActive = Array.isArray(pc.activeBuffs) && pc.activeBuffs.some(b => b.spellKey === key);
+        if (isCurrentlyActive) {
+          CombatState.updatePCBatch(freshPc => {
+            if (Array.isArray(freshPc.activeBuffs)) {
+              freshPc.activeBuffs = freshPc.activeBuffs.filter(b => b.spellKey !== key);
+            }
+          });
+          uiRegistry.renderPlayerScreen();
+        } else {
+          activateBuffByKey(pc, key, false);
+        }
       };
     });
 
@@ -705,11 +1085,18 @@ export function renderPCDefenses(pc) {
         let spell = null;
 
         if (buff.spellKey) {
-          spell = CombatSpells.REGISTRY?.[buff.spellKey];
-          if (spell) {
-            displayName = spell.nameDe || spell.nameEn || displayName || buff.spellKey;
-            effectsList = spell.effects || [];
+          const classBuff = CLASS_BUFFS.find(b => b.key === buff.spellKey);
+          if (classBuff) {
+            displayName = classBuff.name;
+            effectsList = classBuff.effects || [];
             isCustom = false;
+          } else {
+            spell = CombatSpells.REGISTRY?.[buff.spellKey];
+            if (spell) {
+              displayName = spell.nameDe || spell.nameEn || displayName || buff.spellKey;
+              effectsList = buff.effects || spell.effects || [];
+              isCustom = false;
+            }
           }
         } else {
           effectsList = buff.effects || [];
@@ -718,8 +1105,13 @@ export function renderPCDefenses(pc) {
         let title = '';
         let bodyHtml = '';
 
-        if (!isCustom && spell) {
-          title = `✨ Buff-Regeln: ${spell.nameDe || spell.nameEn}`;
+        if (!isCustom && (spell || buff.spellKey)) {
+          const sc = spell ? (spell.school || 'Klassenfähigkeit') : 'Klassenfähigkeit';
+          const lv = spell ? (spell.level || 0) : 0;
+          const dur = spell ? (spell.duration || '—') : (CLASS_BUFFS.find(b => b.key === buff.spellKey)?.duration || '—');
+          const desc = spell ? (spell.description || '') : 'Ein klassenspezifischer Buff- oder Auren-Effekt.';
+          
+          title = `✨ Buff-Regeln: ${displayName}`;
           bodyHtml = `
             <div class="ancient-parchment" style="
               background: #f4e8c1; 
@@ -734,20 +1126,18 @@ export function renderPCDefenses(pc) {
               box-sizing: border-box;
             ">
               <div style="font-style:italic; font-size:9.5px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
-                ${spell.school || 'Schule unbekannt'} • Zaubergrad ${spell.level || 0}
+                ${sc} • ${lv > 0 ? 'Zaubergrad ' + lv : 'Fähigkeit'}
               </div>
-              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px 16px; font-size:9.5px; border-bottom:0.5px dashed var(--pb); padding-bottom:8px; margin-bottom:10px; font-weight:600;">
-                <div><strong>Zeitdauer:</strong> ${spell.duration || '—'}</div>
-                <div><strong>Reichweite:</strong> ${spell.range || '—'}</div>
-                <div><strong>Rettungswurf:</strong> ${spell.savingThrow || '—'}</div>
-                <div><strong>Zauberresistenz:</strong> ${spell.spellResistance || '—'}</div>
+              <div style="display:grid; grid-template-columns: 1fr; gap:4px; font-size:9.5px; border-bottom:0.5px dashed var(--pb); padding-bottom:8px; margin-bottom:10px; font-weight:600;">
+                <div><strong>Zeitdauer:</strong> ${dur}</div>
+                ${buff.casterLevel ? `<div><strong>Wirker-Stufe (Caster Level):</strong> ${buff.casterLevel}</div>` : ''}
               </div>
               <div style="font-size:10.5px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic; white-space:pre-wrap;">
-                ${spell.description || 'Keine Regelbeschreibung vorhanden.'}
+                ${desc}
               </div>
               <hr style="border:none; border-top:1px dashed var(--pb); margin:6px 0;">
               <div style="margin-top:6px;">
-                <strong style="color:var(--red); font-size:10.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive RAW-Modifikatoren:</strong>
+                <strong style="color:var(--red); font-size:10.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive Modifikatoren:</strong>
                 <div style="display:flex; flex-direction:column; gap:2.5px; margin-top:4px;">
                   ${effectsList.map(eff => {
                     const sign = eff.value >= 0 ? '+' : '';
@@ -812,16 +1202,126 @@ export function renderPCDefenses(pc) {
     defenses.querySelectorAll('.delete-buff-btn').forEach(btn => {
       btn.onclick = () => {
         const idx = parseInt(btn.dataset.index);
-        
-        CombatState.updatePCBatch(pc => {
-          if (Array.isArray(pc.activeBuffs) && pc.activeBuffs[idx]) {
-            pc.activeBuffs.splice(idx, 1);
+        CombatState.updatePCBatch(freshPc => {
+          if (Array.isArray(freshPc.activeBuffs) && freshPc.activeBuffs[idx]) {
+            freshPc.activeBuffs.splice(idx, 1);
           }
         });
-
         uiRegistry.renderPlayerScreen();
       };
     });
+
+    // Bind Active Buff Rounds Inputs
+    defenses.querySelectorAll('.buff-rounds-input').forEach(inp => {
+      inp.onchange = (e) => {
+        const idx = parseInt(inp.dataset.index);
+        const val = parseInt(e.target.value);
+        CombatState.updatePCBatch(freshPc => {
+          if (Array.isArray(freshPc.activeBuffs) && freshPc.activeBuffs[idx]) {
+            if (val <= 0) {
+              freshPc.activeBuffs.splice(idx, 1);
+            } else {
+              freshPc.activeBuffs[idx].durationRemainingRounds = val;
+            }
+          }
+        });
+        uiRegistry.renderPlayerScreen();
+      };
+    });
+
+    // Bind Autocomplete Buff Search
+    const searchInput = defenses.querySelector('#buff-search-input');
+    const resultsDiv = defenses.querySelector('#buff-search-results');
+    if (searchInput && resultsDiv) {
+      searchInput.oninput = (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        if (!q) {
+          resultsDiv.style.display = 'none';
+          return;
+        }
+
+        const matchedClassBuffs = CLASS_BUFFS.filter(b => 
+          b.name.toLowerCase().includes(q) || b.key.toLowerCase().includes(q)
+        ).map(b => ({
+          key: b.key,
+          name: b.name,
+          school: b.school,
+          duration: b.duration,
+          isClass: true
+        }));
+
+        const matchedSpellBuffs = [];
+        if (CombatSpells.REGISTRY) {
+          for (const key of Object.keys(CombatSpells.REGISTRY)) {
+            const spell = CombatSpells.REGISTRY[key];
+            if (spell && Array.isArray(spell.effects)) {
+              const nameDe = (spell.nameDe || '').toLowerCase();
+              const nameEn = (spell.nameEn || '').toLowerCase();
+              if (nameDe.includes(q) || nameEn.includes(q) || key.toLowerCase().includes(q)) {
+                matchedSpellBuffs.push({
+                  key: key,
+                  name: spell.nameDe || spell.nameEn || key,
+                  school: spell.school || 'Zauber',
+                  duration: spell.duration || '—',
+                  isClass: false
+                });
+              }
+            }
+          }
+        }
+
+        const allMatches = [...matchedClassBuffs, ...matchedSpellBuffs];
+        
+        if (allMatches.length === 0) {
+          resultsDiv.innerHTML = `<div style="font-size:8px; color:var(--inkl); font-style:italic; padding:4px; text-align:center;">Keine Treffer im Regelwerk.</div>`;
+        } else {
+          resultsDiv.innerHTML = allMatches.map(m => {
+            const conflict = checkBuffConflict(pc, m.key);
+            const isSuppressed = conflict.status === 'suppressed';
+            const style = isSuppressed 
+              ? 'color: rgba(20, 15, 5, 0.45); opacity: 0.65; filter: grayscale(50%);' 
+              : 'color: var(--ink);';
+            const warningBadge = isSuppressed ? '<span style="font-size:7px; color:var(--red); font-weight:bold; margin-left:3px;" title="Stacking-Konflikt: Ein stärkerer oder gleichwertiger Buff ist aktiv">⚠️</span>' : '';
+            return `
+              <div class="buff-search-item" data-key="${m.key}" data-isclass="${m.isClass}" style="
+                padding:3px 6px;
+                cursor:pointer;
+                border-bottom:0.5px solid rgba(200, 169, 110, 0.15);
+                font-family:'Crimson Text', serif;
+                font-size:9px;
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                ${style}
+              " onmouseover="this.style.background='rgba(200, 169, 110, 0.08)'" onmouseout="this.style.background='transparent'">
+                <span>
+                  ✨ <strong>${m.name}</strong>${warningBadge}
+                  <div style="font-size:7.5px; color:var(--inkl);">${m.school} • ${m.duration}</div>
+                </span>
+                <span style="font-size:8px; font-weight:bold; color:var(--red);">[Aktivieren]</span>
+              </div>
+            `;
+          }).join('');
+        }
+        resultsDiv.style.display = 'block';
+      };
+
+      resultsDiv.onclick = (e) => {
+        const item = e.target.closest('.buff-search-item');
+        if (!item) return;
+        const key = item.dataset.key;
+        const isClass = item.dataset.isclass === 'true';
+        resultsDiv.style.display = 'none';
+        searchInput.value = '';
+        activateBuffByKey(pc, key, isClass);
+      };
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('#buff-search-input') && !e.target.closest('#buff-search-results')) {
+          resultsDiv.style.display = 'none';
+        }
+      });
+    }
 
     // Bind Add Custom Buff
     const addBtn = defenses.querySelector('#add-custom-buff-btn');
@@ -842,18 +1342,41 @@ export function renderPCDefenses(pc) {
         const type = typeSelect.value;
         const value = parseInt(valueInput.value) || 0;
 
-        CombatState.updatePCBatch(pc => {
-          if (!Array.isArray(pc.activeBuffs)) pc.activeBuffs = [];
-          pc.activeBuffs.push({
-            id: 'custom_' + Date.now(),
-            name: name,
-            effects: [
-              { target, value, type, source: name }
-            ]
+        const performCustomAdd = () => {
+          CombatState.updatePCBatch(freshPc => {
+            if (!Array.isArray(freshPc.activeBuffs)) freshPc.activeBuffs = [];
+            freshPc.activeBuffs.push({
+              id: 'custom_' + Date.now(),
+              name: name,
+              effects: [
+                { target, value, type, source: name }
+              ]
+            });
           });
-        });
+          nameInput.value = '';
+          uiRegistry.renderPlayerScreen();
+        };
 
-        uiRegistry.renderPlayerScreen();
+        const conflict = checkBuffConflict(pc, null, [{ target, value, type, source: name }]);
+        if (conflict.status === 'suppressed') {
+          showCustomConfirm(
+            "Stacking-Konflikt", 
+            `Ein stärkerer oder gleichwertiger Buff (<strong>${conflict.conflictingBuffName}</strong>) ist bereits aktiv.<br><br>Dein neuer Buff <strong>${name}</strong> (+${value} auf ${conflict.targetLabel}) hat denselben Bonus-Typ und würde daher <strong>keine Wirkung</strong> zeigen.<br><br>Möchtest du den Buff dennoch aktivieren?`,
+            () => {
+              performCustomAdd();
+            }
+          );
+        } else if (conflict.status === 'overrides') {
+          performCustomAdd();
+          showCustomAlert(
+            "Buff überlagert", 
+            `Durch das Aktivieren von <strong>${name}</strong> (+${value}) wird der schwächere aktive Buff <strong>${conflict.conflictingBuffName}</strong> (+${conflict.activeValue}) auf <strong>${conflict.targetLabel}</strong> überlagert.<br><br>Deine Werte erhöhen sich netto um <strong>+${value - conflict.activeValue}</strong>.`,
+            "Verstanden", 
+            "✨"
+          );
+        } else {
+          performCustomAdd();
+        }
       };
     }
   }
