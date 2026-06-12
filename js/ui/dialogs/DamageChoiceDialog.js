@@ -47,7 +47,7 @@ export function showDamageChoiceDialog(pc, weapon, event, options = {}) {
       border: 2px solid var(--pb);
       border-radius: 4px;
       padding: 16px 24px;
-      width: 280px;
+      width: 310px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08);
       font-family: 'IM Fell English SC', serif;
       text-align: center;
