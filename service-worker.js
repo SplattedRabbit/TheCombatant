@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.4.0-cache-v1';
+const CACHE_NAME = 'dnd-combatsheet-v3.4.0-cache-v2';
 const ASSETS = [
   './',
   './index.html',
@@ -85,6 +85,7 @@ const ASSETS = [
   './js/ui/components/player/PCHealthGlobe.js',
   './js/ui/dialogs/BaseDialogs.js',
   './js/ui/dialogs/AttackChoiceDialog.js',
+  './js/ui/dialogs/DamageChoiceDialog.js',
   './js/ui/dialogs/PrepareSpellDialog.js',
   './js/ui/dialogs/SessionDialog.js',
   './js/ui/dialogs/SpellScrollDialog.js',

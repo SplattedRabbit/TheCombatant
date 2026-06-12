@@ -10,7 +10,7 @@
 
 // @feature:wildshape
 
-import { showAttackChoiceDialog, showRollBreakdown } from '../../dialogs.js';
+import { showAttackChoiceDialog, showDamageChoiceDialog, showRollBreakdown } from '../../dialogs.js';
 import { AttackEngine } from '../../../../rules/AttackEngine.js';
 
 export const SHAPE_ATTACKS = {
@@ -107,7 +107,16 @@ export function renderNaturalAttacksList(container, pc) {
 
     // DMG button: show the roll breakdown from the calculated sequence
     card.querySelector('.nat-dmg-btn').onclick = (e) => {
-      showRollBreakdown(`${atk.name} (Schaden)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e);
+      const hasPaladin = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === 'paladin');
+      const favoredEnemyBonus = pc.getFavoredEnemyBonus();
+      const sneakAttackDice = pc.getSneakAttackDiceCount();
+      const hasDmgToggles = (hasPaladin && pseudoWeapon.grip !== 'rng') || favoredEnemyBonus > 0 || sneakAttackDice > 0;
+
+      if (hasDmgToggles) {
+        showDamageChoiceDialog(pc, pseudoWeapon, e);
+      } else {
+        showRollBreakdown(`${atk.name} (Schaden)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e);
+      }
     };
 
     container.appendChild(card);

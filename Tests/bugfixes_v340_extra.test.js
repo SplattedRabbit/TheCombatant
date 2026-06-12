@@ -51,3 +51,8 @@ test('Bug 8 - Spell details retrieval from registry and custom spells', () => {
   assert.strictEqual(custom.components, 'V, S');
   assert.strictEqual(custom.targetOrEffectOrArea, '10ft Radius');
 });
+
+test('DamageChoiceDialog export and presence', async () => {
+  const mod = await import('../js/ui/dialogs/DamageChoiceDialog.js');
+  assert.strictEqual(typeof mod.showDamageChoiceDialog, 'function');
+});

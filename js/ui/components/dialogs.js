@@ -10,6 +10,7 @@ export {
 } from '../dialogs/BaseDialogs.js';
 
 export { showAttackChoiceDialog } from '../dialogs/AttackChoiceDialog.js';
+export { showDamageChoiceDialog } from '../dialogs/DamageChoiceDialog.js';
 export { showPrepareSpellDialog, showCastSpontaneousSpellDialog } from '../dialogs/PrepareSpellDialog.js';
 export { showSessionModal } from '../dialogs/SessionDialog.js';
 export { showSpellScrollDialog } from '../dialogs/SpellScrollDialog.js';
