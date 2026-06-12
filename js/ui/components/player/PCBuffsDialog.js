@@ -121,7 +121,7 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
     </div>
   `;
 
-  const overlayId = 'buff-details-dialog-overlay';
+  const overlayId = 'buffDetails';
   const existing = document.getElementById(overlayId);
   if (existing) existing.remove();
 
