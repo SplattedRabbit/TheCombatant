@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v3.4.0-cache-v1';
+const CACHE_NAME = 'dnd-combatsheet-v3.5.0-cache-v1';
 const ASSETS = [
   './',
   './index.html',
@@ -44,6 +44,8 @@ const ASSETS = [
   './js/models/Item.js',
   './js/models/model-core.js',
   './js/data/armor-data.js',
+  './js/data/class-buffs-data.js',
+  './js/rules/BuffRules.js',
   './js/network/NetworkManager.js',
   './js/network/SyncProtocol.js',
   './js/network/DeltaRenderer.js',
@@ -61,6 +63,9 @@ const ASSETS = [
   './js/ui/components/player/PCHeader.js',
   './js/ui/components/player/PCAttributes.js',
   './js/ui/components/player/PCDefenses.js',
+  './js/ui/components/player/PCDefensesTab.js',
+  './js/ui/components/player/PCBuffsTab.js',
+  './js/ui/components/player/PCBuffsDialog.js',
   './js/ui/components/player/PCOffense.js',
   './js/ui/components/player/offense/PCOffenseHelper.js',
   './js/ui/components/player/offense/NaturalAttacksRenderer.js',
