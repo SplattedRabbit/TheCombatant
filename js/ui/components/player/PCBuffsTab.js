@@ -29,7 +29,7 @@ export function isBuffEligible(pc, key, isClass) {
       return pcCls && pcCls.level >= req.level;
     });
   } else {
-    return Array.isArray(pc.learnedSpells) && pc.learnedSpells.includes(key);
+    return true;
   }
 }
 
