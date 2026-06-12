@@ -270,29 +270,68 @@ export function renderPCDefenses(pc) {
           effectsList = buff.effects;
         }
 
-        const effectsText = effectsList.map(eff => {
+        const shortEffectsSummary = effectsList.map(eff => {
           const sign = eff.value >= 0 ? '+' : '';
-          return `<span style="display:inline-block; background:rgba(139,26,26,0.03); border:0.5px solid rgba(139,26,26,0.15); border-radius:2px; padding:1px 3px; font-size:7.5px; margin-right:3px; margin-bottom:2px; font-family:'Crimson Text',serif;">
-            ${translateTarget(eff.target)}: <strong>${sign}${eff.value}</strong> (${translateType(eff.type)})
-          </span>`;
-        }).join('');
+          const targetShort = {
+            atk: 'ATK',
+            dmg: 'DMG',
+            ac: 'RK',
+            acArmor: 'RK',
+            acShield: 'RK',
+            acNatural: 'RK',
+            acDeflection: 'RK',
+            acDodge: 'RK',
+            str: 'STR',
+            dex: 'DEX',
+            con: 'CON',
+            int: 'INT',
+            wis: 'WIS',
+            cha: 'CHA',
+            za: 'Fort',
+            ref: 'Ref',
+            wil: 'Will'
+          }[eff.target] || eff.target;
+          return `${sign}${eff.value} ${targetShort}`;
+        }).join(', ');
 
         return `
-          <div style="position:relative; display:flex; flex-direction:column; gap:2px; background:rgba(200, 169, 110, 0.03); border:0.5px solid var(--pb); border-radius:2px; padding:4px 6px; padding-right:20px; box-sizing:border-box;">
-            <div style="font-size:9.5px; font-weight:bold; color:var(--red); font-family:'IM Fell English SC', serif; letter-spacing:0.2px;">${displayName}</div>
-            <div style="display:flex; flex-wrap:wrap; gap:1px;">${effectsText}</div>
+          <div class="active-buff-pill" style="
+            display:inline-flex;
+            align-items:center;
+            background:rgba(200, 169, 110, 0.05);
+            border:0.5px solid var(--pb);
+            border-radius:12px;
+            padding:2px 6px;
+            gap:4px;
+            box-sizing:border-box;
+            margin-bottom:2px;
+          ">
+            <span class="info-buff-trigger" data-index="${idx}" style="
+              font-size:8px;
+              font-family:'Crimson Text', serif;
+              font-weight:bold;
+              color:var(--red);
+              cursor:pointer;
+              display:inline-flex;
+              align-items:center;
+              gap:2px;
+            " title="D&D 3.5e RAW Regelerklärung anzeigen">
+              ✨ ${displayName}
+              <span style="font-size:7px; color:var(--inkl); opacity:0.85; font-weight:normal;">(${shortEffectsSummary})</span>
+              <span style="font-size:7.5px; opacity:0.75; margin-left:1px; color:var(--red);">📖</span>
+            </span>
             <button class="delete-buff-btn" data-index="${idx}" style="
-              position:absolute;
-              top:2px;
-              right:3px;
               background:transparent;
               border:none;
-              color:var(--red);
-              font-size:9.5px;
+              color:var(--inkl);
+              font-size:8px;
               cursor:pointer;
-              padding:2px;
+              padding:0 2px;
               line-height:1;
-            " title="Buff entfernen">✕</button>
+              display:inline-flex;
+              align-items:center;
+              transition:color 0.15s ease;
+            " title="Buff entfernen" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--inkl)'">✕</button>
           </div>
         `;
       }).join('');
@@ -342,7 +381,7 @@ export function renderPCDefenses(pc) {
           <div style="font-family:'IM Fell English SC', serif; font-size:7.5px; color:var(--red); font-weight:bold; letter-spacing:0.5px; padding-bottom:1px; border-bottom:0.5px solid rgba(200,169,110,0.2);">
             Aktive Buffs &amp; Auren
           </div>
-          <div style="display:flex; flex-direction:column; gap:4px; max-height:120px; overflow-y:auto; padding-right:2px; box-sizing:border-box;">
+          <div style="display:flex; flex-wrap:wrap; gap:4px; max-height:120px; overflow-y:auto; padding-right:2px; box-sizing:border-box;">
             ${activeBuffsHtml}
           </div>
         </div>
@@ -650,6 +689,97 @@ export function renderPCDefenses(pc) {
         });
 
         uiRegistry.renderPlayerScreen();
+      };
+    });
+
+    // Bind Active Buff Info Modals
+    defenses.querySelectorAll('.info-buff-trigger').forEach(trigger => {
+      trigger.onclick = () => {
+        const idx = parseInt(trigger.dataset.index);
+        const buff = pc.activeBuffs?.[idx];
+        if (!buff) return;
+
+        let displayName = buff.name;
+        let effectsList = [];
+        let isCustom = true;
+        let spell = null;
+
+        if (buff.spellKey) {
+          spell = CombatSpells.REGISTRY?.[buff.spellKey];
+          if (spell) {
+            displayName = spell.nameDe || spell.nameEn || displayName || buff.spellKey;
+            effectsList = spell.effects || [];
+            isCustom = false;
+          }
+        } else {
+          effectsList = buff.effects || [];
+        }
+
+        let title = '';
+        let bodyHtml = '';
+
+        if (!isCustom && spell) {
+          title = `✨ Buff: ${spell.nameDe || spell.nameEn}`;
+          bodyHtml = `
+            <div style="font-family:'Crimson Text', serif; font-size:11.5px; color:var(--ink); display:flex; flex-direction:column; gap:6.5px;">
+              <div style="font-style:italic; font-size:10px; color:var(--inkl); border-bottom:0.5px solid var(--pb); padding-bottom:3.5px; margin-bottom:3.5px;">
+                ${spell.school || 'Schule unbekannt'} • Grad ${spell.level || 0}
+              </div>
+              <div style="display:grid; grid-template-columns: 85px 1fr; gap:2.5px; font-size:10.5px; line-height:1.2;">
+                <span style="font-weight:bold; color:var(--inkl);">Zeitdauer:</span> <span>${spell.duration || '—'}</span>
+                <span style="font-weight:bold; color:var(--inkl);">Reichweite:</span> <span>${spell.range || '—'}</span>
+                <span style="font-weight:bold; color:var(--inkl);">Rettungswurf:</span> <span>${spell.savingThrow || '—'}</span>
+                <span style="font-weight:bold; color:var(--inkl);">Zauberresistenz:</span> <span>${spell.spellResistance || '—'}</span>
+              </div>
+              <hr style="border:none; border-top:0.5px dashed var(--pb); margin:4px 0;">
+              <div style="font-size:11px; line-height:1.35; background:rgba(200, 169, 110, 0.05); border-left:2px solid var(--pb); padding-left:6px; margin:2px 0;">
+                <strong>Regelbeschreibung:</strong><br>
+                ${spell.description || 'Keine Beschreibung vorhanden.'}
+              </div>
+              <hr style="border:none; border-top:0.5px dashed var(--pb); margin:4px 0;">
+              <div>
+                <strong style="color:var(--red); font-size:10.5px;">Aktive Modifikatoren (RAW):</strong>
+                <div style="display:flex; flex-direction:column; gap:2px; margin-top:2px;">
+                  ${effectsList.map(eff => {
+                    const sign = eff.value >= 0 ? '+' : '';
+                    return `<div style="font-size:10.5px;">• <strong>${translateTarget(eff.target)}:</strong> ${sign}${eff.value} (${translateType(eff.type)})</div>`;
+                  }).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          title = `✨ Eigener Buff: ${displayName}`;
+          bodyHtml = `
+            <div style="font-family:'Crimson Text', serif; font-size:11.5px; color:var(--ink); display:flex; flex-direction:column; gap:6.5px;">
+              <div style="font-style:italic; font-size:10px; color:var(--inkl); border-bottom:0.5px solid var(--pb); padding-bottom:3.5px; margin-bottom:3.5px;">
+                Benutzerdefinierter Effekt
+              </div>
+              <div style="font-size:11px; line-height:1.35; background:rgba(200, 169, 110, 0.05); border-left:2px solid var(--pb); padding-left:6px; margin:2px 0;">
+                <strong>Beschreibung:</strong><br>
+                Ein benutzerdefinierter Buff, der direkt über das Formular im Bogen hinzugefügt wurde.
+              </div>
+              <hr style="border:none; border-top:0.5px dashed var(--pb); margin:4px 0;">
+              <div>
+                <strong style="color:var(--red); font-size:10.5px;">Aktive Modifikatoren:</strong>
+                <div style="display:flex; flex-direction:column; gap:2px; margin-top:2px;">
+                  ${effectsList.map(eff => {
+                    const sign = eff.value >= 0 ? '+' : '';
+                    return `<div style="font-size:10.5px;">• <strong>${translateTarget(eff.target)}:</strong> ${sign}${eff.value} (${translateType(eff.type)})</div>`;
+                  }).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        showInfoDialog({
+          id: 'buffDetails',
+          title: title,
+          bodyHtml: bodyHtml,
+          buttonText: 'Schließen',
+          width: 275
+        });
       };
     });
 
