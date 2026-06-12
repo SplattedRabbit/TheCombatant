@@ -394,6 +394,225 @@ function activateBuffByKey(pc, key, isClass) {
   }
 }
 
+function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = null) {
+  let displayName = '';
+  let effectsList = [];
+  let durationStr = '—';
+  let description = '';
+  let school = '';
+  let spell = null;
+  let classBuff = null;
+
+  if (isClass) {
+    classBuff = CLASS_BUFFS.find(b => b.key === key);
+    if (classBuff) {
+      displayName = classBuff.name;
+      effectsList = classBuff.effects || [];
+      durationStr = classBuff.duration || '—';
+      description = classBuff.description || 'Klassenspezifischer Buff- oder Auren-Effekt.';
+      school = classBuff.school || 'Klassenfähigkeit';
+    }
+  } else if (key) {
+    classBuff = CLASS_BUFFS.find(b => b.key === key);
+    if (classBuff) {
+      displayName = classBuff.name;
+      effectsList = classBuff.effects || [];
+      durationStr = classBuff.duration || '—';
+      description = classBuff.description || 'Klassenspezifischer Buff- oder Auren-Effekt.';
+      school = classBuff.school || 'Klassenfähigkeit';
+      isClass = true;
+    } else {
+      spell = CombatSpells.REGISTRY?.[key];
+      if (spell) {
+        displayName = spell.nameDe || spell.nameEn || key;
+        effectsList = spell.effects || [];
+        durationStr = spell.duration || '—';
+        description = spell.description || '';
+        school = spell.school || 'Zauber';
+      }
+    }
+  }
+
+  // If this is an active buff instance (with custom values)
+  if (isAlreadyActiveIndex !== null && pc.activeBuffs?.[isAlreadyActiveIndex]) {
+    const activeInstance = pc.activeBuffs[isAlreadyActiveIndex];
+    displayName = activeInstance.name;
+    if (Array.isArray(activeInstance.effects)) {
+      effectsList = activeInstance.effects;
+    }
+    if (activeInstance.durationFormula) {
+      durationStr = activeInstance.durationFormula;
+    }
+  }
+
+  if (!displayName) {
+    // Custom Buff or unknown
+    if (isAlreadyActiveIndex !== null && pc.activeBuffs?.[isAlreadyActiveIndex]) {
+      const activeInstance = pc.activeBuffs[isAlreadyActiveIndex];
+      displayName = activeInstance.name || 'Eigener Buff';
+      effectsList = activeInstance.effects || [];
+    } else {
+      return;
+    }
+  }
+
+  const inQuickSelection = Array.isArray(pc.quickBuffs) && pc.quickBuffs.some(b => b.key === key);
+
+  let effectsHtml = '';
+  if (effectsList.length > 0) {
+    effectsHtml = `
+      <div style="margin-top:6px;">
+        <strong style="color:var(--red); font-size:10.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive Modifikatoren:</strong>
+        <div style="display:flex; flex-direction:column; gap:2.5px; margin-top:4px;">
+          ${effectsList.map(eff => {
+            const sign = eff.value >= 0 ? '+' : '';
+            return `<div style="font-size:9.5px; background:rgba(200, 169, 110, 0.05); border:0.5px solid rgba(200,169,110,0.25); border-radius:2px; padding:3px 6px; display:flex; justify-content:space-between; align-items:center;">
+              <span>• <strong>${translateTarget(eff.target)}:</strong></span>
+              <strong>${sign}${eff.value} (${translateType(eff.type)})</strong>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  const bodyHtml = `
+    <div class="ancient-parchment" style="
+      background: #f4e8c1; 
+      border: 1px solid var(--pb); 
+      padding: 12px 16px; 
+      border-radius: 3px; 
+      box-shadow: inset 0 0 25px rgba(200, 169, 110, 0.12); 
+      font-family: 'Crimson Text', serif; 
+      color: #1a0f00; 
+      line-height: 1.45; 
+      text-align: left; 
+      box-sizing: border-box;
+    ">
+      <div style="font-style:italic; font-size:9.5px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
+        ${school || 'Effekt'}
+      </div>
+      <div style="display:grid; grid-template-columns: 1fr; gap:4px; font-size:9.5px; border-bottom:0.5px dashed var(--pb); padding-bottom:8px; margin-bottom:10px; font-weight:600;">
+        <div><strong>Zeitdauer:</strong> ${durationStr}</div>
+        ${(isAlreadyActiveIndex !== null && pc.activeBuffs?.[isAlreadyActiveIndex]?.casterLevel) ? `<div><strong>Wirker-Stufe (Caster Level):</strong> ${pc.activeBuffs[isAlreadyActiveIndex].casterLevel}</div>` : ''}
+      </div>
+      ${description ? `<div style="font-size:10.5px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic; white-space:pre-wrap;">${description}</div>` : ''}
+      ${effectsHtml}
+    </div>
+  `;
+
+  const overlayId = 'buff-details-dialog-overlay';
+  const existing = document.getElementById(overlayId);
+  if (existing) existing.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = overlayId;
+  overlay.className = 'no-print';
+  overlay.style.cssText = `
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 11, 5, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: 2500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+  `;
+
+  const toggleBtnText = inQuickSelection ? 'Aus Schnellauswahl entfernen' : 'Hinzufügen';
+  const toggleBtnClass = inQuickSelection ? 'btn-p' : 'btn-p';
+  const showActions = !!key;
+
+  overlay.innerHTML = `
+    <div class="custom-alert-box" style="
+      background: var(--p);
+      border: 2px solid var(--pb);
+      border-radius: 4px;
+      padding: 16px 20px;
+      width: 480px;
+      max-width: 92vw;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08);
+      font-family: 'IM Fell English SC', serif;
+      text-align: center;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    ">
+      <div style="position: absolute; inset: 3px; border: 0.5px dashed rgba(200, 169, 110, 0.3); pointer-events: none; border-radius: 2px;"></div>
+
+      <div style="font-size: 12px; color: var(--red); font-weight: bold; margin-bottom: 4px; letter-spacing: 0.3px;">
+        ✨ Buff-Regeln: ${displayName}
+      </div>
+      <hr style="border: none; border-top: 0.5px solid rgba(200, 169, 110, 0.4); margin: 5px 0 10px;">
+
+      <div class="info-dialog-body" style="text-align: left; margin-bottom: 12px;">
+        ${bodyHtml}
+      </div>
+
+      <div style="display:flex; justify-content:center; gap:8px; margin-top:10px;">
+        ${showActions ? `
+          <button class="btn btn-p action-activate-buff" style="font-family:'IM Fell English SC',serif; font-size:9px; padding:4px 18px; cursor:pointer;">Aktivieren</button>
+          <button class="btn btn-p action-toggle-favorite" style="font-family:'IM Fell English SC',serif; font-size:9px; padding:4px 18px; cursor:pointer;">${toggleBtnText}</button>
+        ` : ''}
+        <button class="btn action-close-buff" style="
+          font-family: 'IM Fell English SC', serif;
+          font-size: 9px;
+          padding: 4px 18px;
+          cursor: pointer;
+          border: 1px solid var(--pb);
+          background: rgba(0,0,0,0.03);
+          color: var(--ink);
+        ">Schließen</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  overlay.getBoundingClientRect(); // force reflow
+  overlay.style.opacity = '1';
+  overlay.querySelector('.custom-alert-box').style.transform = 'scale(1)';
+
+  const dismiss = () => {
+    overlay.style.opacity = '0';
+    overlay.querySelector('.custom-alert-box').style.transform = 'scale(0.9)';
+    setTimeout(() => { overlay.remove(); }, 200);
+  };
+
+  overlay.querySelector('.action-close-buff').onclick = dismiss;
+  overlay.onclick = (e) => { if (e.target === overlay) dismiss(); };
+
+  if (showActions) {
+    overlay.querySelector('.action-activate-buff').onclick = () => {
+      dismiss();
+      activateBuffByKey(pc, key, isClass);
+    };
+
+    overlay.querySelector('.action-toggle-favorite').onclick = () => {
+      dismiss();
+      CombatState.updatePCBatch(freshPc => {
+        if (!Array.isArray(freshPc.quickBuffs)) freshPc.quickBuffs = [];
+        const index = freshPc.quickBuffs.findIndex(b => b.key === key);
+        if (index >= 0) {
+          freshPc.quickBuffs.splice(index, 1);
+        } else {
+          freshPc.quickBuffs.push({ key, name: displayName, isClass });
+        }
+      });
+      uiRegistry.renderPlayerScreen();
+    };
+  }
+
+  const keyHandler = (e) => {
+    if (e.key === 'Escape') {
+      dismiss();
+      document.removeEventListener('keydown', keyHandler);
+    }
+  };
+  document.addEventListener('keydown', keyHandler);
+}
+
 export function renderPCDefenses(pc) {
   const defenses = document.getElementById('pcDefenses');
   if (!defenses) return;
@@ -695,46 +914,63 @@ export function renderPCDefenses(pc) {
       }).join('');
     }
 
-    const quickSpells = [
-      { key: 'bless', name: 'Segen' },
-      { key: 'haste', name: 'Hast' },
-      { key: 'mage_armor', name: 'Magierrüstung' },
-      { key: 'shield', name: 'Schild' },
-      { key: 'shield_of_faith', name: 'Schild des Glaubens' },
-      { key: 'bulls_strength', name: 'Stärke des Stiers' },
-      { key: 'cats_grace', name: 'Katzenhafte Anmut' },
-      { key: 'bears_endurance', name: 'Ausdauer des Bären' },
-      { key: 'owl_s_wisdom', name: 'Weisheit der Eule' },
-      { key: 'prayer', name: 'Gebet' }
-    ];
+    const quickBuffs = Array.isArray(pc.quickBuffs) ? pc.quickBuffs : [];
+    let quickToggleHtml = '';
 
-    const quickToggleHtml = quickSpells.map(qs => {
-      const isActive = Array.isArray(pc.activeBuffs) && pc.activeBuffs.some(b => b.spellKey === qs.key);
-      const isSuppressed = !isActive && checkBuffConflict(pc, qs.key).status === 'suppressed';
-      const btnStyle = isActive
-        ? `background: #8b1a1a; color: #f4e8c1; border-color: #8b1a1a; font-weight: bold;`
-        : (isSuppressed 
-          ? `background: rgba(200, 169, 110, 0.03); color: rgba(20, 15, 5, 0.4); border-color: rgba(200, 169, 110, 0.3); opacity: 0.5; filter: grayscale(60%);`
-          : `background: rgba(200, 169, 110, 0.08); color: var(--ink); border-color: var(--pb);`);
-      const checkmark = isActive ? '✓ ' : '';
-      const warningBadge = isSuppressed ? ' ⚠️' : '';
-      return `
-        <button class="quick-buff-btn" data-key="${qs.key}" data-name="${qs.name}" style="
-          font-family: 'IM Fell English SC', serif;
-          font-size: 8px;
-          padding: 3px;
-          cursor: pointer;
-          border: 1px solid;
-          border-radius: 2px;
-          transition: all 0.15s ease;
-          text-align: center;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          ${btnStyle}
-        " title="${qs.name}${isSuppressed ? ' (Unterdrückt durch einen stärkeren aktiven Buff)' : ''}">${checkmark}${qs.name}${warningBadge}</button>
+    if (quickBuffs.length === 0) {
+      quickToggleHtml = `
+        <div style="grid-column: span 2; font-style: italic; color: var(--inkl); font-size: 8px; text-align: center; padding: 12px 0; background:rgba(0,0,0,0.01); border:0.5px dashed var(--pb); border-radius:2px;">
+          Keine Schnellzugriffe definiert. Nutze die Suche, um Buffs hinzuzufügen.
+        </div>
       `;
-    }).join('');
+    } else {
+      quickToggleHtml = quickBuffs.map(qb => {
+        const isActive = Array.isArray(pc.activeBuffs) && pc.activeBuffs.some(b => b.spellKey === qb.key);
+        const isSuppressed = !isActive && checkBuffConflict(pc, qb.key).status === 'suppressed';
+        const btnStyle = isActive
+          ? `background: #8b1a1a; color: #f4e8c1; border-color: #8b1a1a; font-weight: bold;`
+          : (isSuppressed 
+            ? `background: rgba(200, 169, 110, 0.03); color: rgba(20, 15, 5, 0.4); border-color: rgba(200, 169, 110, 0.3); opacity: 0.5; filter: grayscale(60%);`
+            : `background: rgba(200, 169, 110, 0.08); color: var(--ink); border-color: var(--pb);`);
+        const checkmark = isActive ? '✓ ' : '';
+        const warningBadge = isSuppressed ? ' ⚠️' : '';
+        return `
+          <div style="position:relative; display:block; width:100%;">
+            <button class="quick-buff-btn" data-key="${qb.key}" data-isclass="${qb.isClass}" data-name="${qb.name}" style="
+              width: 100%;
+              font-family: 'IM Fell English SC', serif;
+              font-size: 8px;
+              padding: 3px 14px 3px 3px;
+              cursor: pointer;
+              border: 1px solid;
+              border-radius: 2px;
+              transition: all 0.15s ease;
+              text-align: center;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              box-sizing: border-box;
+              ${btnStyle}
+            " title="${qb.name}${isSuppressed ? ' (Unterdrückt durch einen stärkeren aktiven Buff)' : ''}">${checkmark}${qb.name}${warningBadge}</button>
+            <span class="remove-quick-buff-btn" data-key="${qb.key}" style="
+              position: absolute;
+              right: 4px;
+              top: 50%;
+              transform: translateY(-50%);
+              cursor: pointer;
+              color: inherit;
+              opacity: 0.55;
+              font-size: 9px;
+              font-weight: bold;
+              z-index: 10;
+              padding: 2px;
+              line-height: 1;
+              transition: opacity 0.15s;
+            " onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.55'" title="Aus Schnellauswahl entfernen">✕</span>
+          </div>
+        `;
+      }).join('');
+    }
 
     bodyHtml = `
       <div style="display:flex; flex-direction:column; gap:8px;">
@@ -751,7 +987,7 @@ export function renderPCDefenses(pc) {
         <!-- Quick Toggles -->
         <div style="display:flex; flex-direction:column; gap:3px;">
           <div style="font-family:'IM Fell English SC', serif; font-size:7.5px; color:var(--red); font-weight:bold; letter-spacing:0.5px; padding-bottom:1px; border-bottom:0.5px solid rgba(200,169,110,0.2);">
-            Schnellauswahl (Kern-Zauber)
+            Schnellauswahl
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:3px;">
             ${quickToggleHtml}
@@ -1056,8 +1292,10 @@ export function renderPCDefenses(pc) {
     
     // Bind Quick Toggle Buttons
     defenses.querySelectorAll('.quick-buff-btn').forEach(btn => {
-      btn.onclick = () => {
+      btn.onclick = (e) => {
+        if (e.target.classList.contains('remove-quick-buff-btn')) return;
         const key = btn.dataset.key;
+        const isClass = btn.dataset.isclass === 'true';
         const isCurrentlyActive = Array.isArray(pc.activeBuffs) && pc.activeBuffs.some(b => b.spellKey === key);
         if (isCurrentlyActive) {
           CombatState.updatePCBatch(freshPc => {
@@ -1067,8 +1305,22 @@ export function renderPCDefenses(pc) {
           });
           uiRegistry.renderPlayerScreen();
         } else {
-          activateBuffByKey(pc, key, false);
+          activateBuffByKey(pc, key, isClass);
         }
+      };
+    });
+
+    // Bind Quick Toggle Remove Buttons
+    defenses.querySelectorAll('.remove-quick-buff-btn').forEach(btn => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        const key = btn.dataset.key;
+        CombatState.updatePCBatch(freshPc => {
+          if (Array.isArray(freshPc.quickBuffs)) {
+            freshPc.quickBuffs = freshPc.quickBuffs.filter(b => b.key !== key);
+          }
+        });
+        uiRegistry.renderPlayerScreen();
       };
     });
 
@@ -1078,123 +1330,7 @@ export function renderPCDefenses(pc) {
         const idx = parseInt(trigger.dataset.index);
         const buff = pc.activeBuffs?.[idx];
         if (!buff) return;
-
-        let displayName = buff.name;
-        let effectsList = [];
-        let isCustom = true;
-        let spell = null;
-
-        if (buff.spellKey) {
-          const classBuff = CLASS_BUFFS.find(b => b.key === buff.spellKey);
-          if (classBuff) {
-            displayName = classBuff.name;
-            effectsList = classBuff.effects || [];
-            isCustom = false;
-          } else {
-            spell = CombatSpells.REGISTRY?.[buff.spellKey];
-            if (spell) {
-              displayName = spell.nameDe || spell.nameEn || displayName || buff.spellKey;
-              effectsList = buff.effects || spell.effects || [];
-              isCustom = false;
-            }
-          }
-        } else {
-          effectsList = buff.effects || [];
-        }
-
-        let title = '';
-        let bodyHtml = '';
-
-        if (!isCustom && (spell || buff.spellKey)) {
-          const sc = spell ? (spell.school || 'Klassenfähigkeit') : 'Klassenfähigkeit';
-          const lv = spell ? (spell.level || 0) : 0;
-          const dur = spell ? (spell.duration || '—') : (CLASS_BUFFS.find(b => b.key === buff.spellKey)?.duration || '—');
-          const desc = spell ? (spell.description || '') : 'Ein klassenspezifischer Buff- oder Auren-Effekt.';
-          
-          title = `✨ Buff-Regeln: ${displayName}`;
-          bodyHtml = `
-            <div class="ancient-parchment" style="
-              background: #f4e8c1; 
-              border: 1px solid var(--pb); 
-              padding: 12px 16px; 
-              border-radius: 3px; 
-              box-shadow: inset 0 0 25px rgba(200, 169, 110, 0.12); 
-              font-family: 'Crimson Text', serif; 
-              color: #1a0f00; 
-              line-height: 1.45; 
-              text-align: left; 
-              box-sizing: border-box;
-            ">
-              <div style="font-style:italic; font-size:9.5px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
-                ${sc} • ${lv > 0 ? 'Zaubergrad ' + lv : 'Fähigkeit'}
-              </div>
-              <div style="display:grid; grid-template-columns: 1fr; gap:4px; font-size:9.5px; border-bottom:0.5px dashed var(--pb); padding-bottom:8px; margin-bottom:10px; font-weight:600;">
-                <div><strong>Zeitdauer:</strong> ${dur}</div>
-                ${buff.casterLevel ? `<div><strong>Wirker-Stufe (Caster Level):</strong> ${buff.casterLevel}</div>` : ''}
-              </div>
-              <div style="font-size:10.5px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic; white-space:pre-wrap;">
-                ${desc}
-              </div>
-              <hr style="border:none; border-top:1px dashed var(--pb); margin:6px 0;">
-              <div style="margin-top:6px;">
-                <strong style="color:var(--red); font-size:10.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive Modifikatoren:</strong>
-                <div style="display:flex; flex-direction:column; gap:2.5px; margin-top:4px;">
-                  ${effectsList.map(eff => {
-                    const sign = eff.value >= 0 ? '+' : '';
-                    return `<div style="font-size:9.5px; background:rgba(200, 169, 110, 0.05); border:0.5px solid rgba(200,169,110,0.25); border-radius:2px; padding:3px 6px; display:flex; justify-content:space-between; align-items:center;">
-                      <span>• <strong>${translateTarget(eff.target)}:</strong></span>
-                      <strong>${sign}${eff.value} (${translateType(eff.type)})</strong>
-                    </div>`;
-                  }).join('')}
-                </div>
-              </div>
-            </div>
-          `;
-        } else {
-          title = `✨ Eigener Buff: ${displayName}`;
-          bodyHtml = `
-            <div class="ancient-parchment" style="
-              background: #f4e8c1; 
-              border: 1px solid var(--pb); 
-              padding: 12px 16px; 
-              border-radius: 3px; 
-              box-shadow: inset 0 0 25px rgba(200, 169, 110, 0.12); 
-              font-family: 'Crimson Text', serif; 
-              color: #1a0f00; 
-              line-height: 1.45; 
-              text-align: left; 
-              box-sizing: border-box;
-            ">
-              <div style="font-style:italic; font-size:9.5px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
-                Benutzerdefinierter Effekt (Custom Buff)
-              </div>
-              <div style="font-size:10.5px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic;">
-                Ein benutzerdefinierter Buff, der direkt über das Formular im Bogen hinzugefügt wurde.
-              </div>
-              <hr style="border:none; border-top:1px dashed var(--pb); margin:6px 0;">
-              <div style="margin-top:6px;">
-                <strong style="color:var(--red); font-size:10.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive Modifikatoren:</strong>
-                <div style="display:flex; flex-direction:column; gap:2.5px; margin-top:4px;">
-                  ${effectsList.map(eff => {
-                    const sign = eff.value >= 0 ? '+' : '';
-                    return `<div style="font-size:9.5px; background:rgba(200, 169, 110, 0.05); border:0.5px solid rgba(200,169,110,0.25); border-radius:2px; padding:3px 6px; display:flex; justify-content:space-between; align-items:center;">
-                      <span>• <strong>${translateTarget(eff.target)}:</strong></span>
-                      <strong>${sign}${eff.value} (${translateType(eff.type)})</strong>
-                    </div>`;
-                  }).join('')}
-                </div>
-              </div>
-            </div>
-          `;
-        }
-
-        showInfoDialog({
-          id: 'buffDetails',
-          title: title,
-          bodyHtml: bodyHtml,
-          buttonText: 'Schließen',
-          width: 500
-        });
+        showBuffDetailsDialog(pc, buff.spellKey, false, idx);
       };
     });
 
@@ -1298,7 +1434,7 @@ export function renderPCDefenses(pc) {
                   ✨ <strong>${m.name}</strong>${warningBadge}
                   <div style="font-size:7.5px; color:var(--inkl);">${m.school} • ${m.duration}</div>
                 </span>
-                <span style="font-size:8px; font-weight:bold; color:var(--red);">[Aktivieren]</span>
+                <span style="font-size:8px; font-weight:bold; color:var(--red);">[Auswählen]</span>
               </div>
             `;
           }).join('');
@@ -1313,7 +1449,7 @@ export function renderPCDefenses(pc) {
         const isClass = item.dataset.isclass === 'true';
         resultsDiv.style.display = 'none';
         searchInput.value = '';
-        activateBuffByKey(pc, key, isClass);
+        showBuffDetailsDialog(pc, key, isClass);
       };
 
       document.addEventListener('click', (e) => {
