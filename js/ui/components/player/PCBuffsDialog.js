@@ -216,6 +216,7 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
   overlay.querySelector('.custom-alert-box').style.transform = 'scale(1)';
 
   const dismiss = () => {
+    document.removeEventListener('keydown', keyHandler);
     overlay.style.opacity = '0';
     overlay.querySelector('.custom-alert-box').style.transform = 'scale(0.9)';
     setTimeout(() => { overlay.remove(); }, 200);
@@ -248,7 +249,6 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
   const keyHandler = (e) => {
     if (e.key === 'Escape') {
       dismiss();
-      document.removeEventListener('keydown', keyHandler);
     }
   };
   document.addEventListener('keydown', keyHandler);
@@ -386,6 +386,7 @@ export function showCastSuccessDialog(pc, spell, key, metamagic = [], onAppliedC
   };
 
   const dismiss = () => {
+    document.removeEventListener('keydown', keyHandler);
     overlay.style.opacity = '0';
     overlay.querySelector('.custom-alert-box').style.transform = 'scale(0.9)';
     setTimeout(() => { overlay.remove(); }, 200);
@@ -472,7 +473,6 @@ export function showCastSuccessDialog(pc, spell, key, metamagic = [], onAppliedC
   const keyHandler = (e) => {
     if (e.key === 'Escape') {
       dismiss();
-      document.removeEventListener('keydown', keyHandler);
     }
   };
   document.addEventListener('keydown', keyHandler);

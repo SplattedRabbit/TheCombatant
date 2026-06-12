@@ -52,6 +52,7 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Zauber / Slots        | `PCSpellbookTab.js`, `PCCompendiumTab.js`, `helpers/spells/CombatantSpells.js` | `SpellSlotCalculator.js`, `Combatant.js` |
 | Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `js/ui/components/class-features/` |
 | Talente               | `js/data/feats-data.js`, `js/data/feats-combat.js`, `js/data/feats-magic.js`, `js/data/feats-general.js` | `PCManager.js` (`addPCFeat`), `PCFeatsTab.js` |
+| WebRTC-Auren & Buffs  | `js/models/helpers/modifiers/SpellModifierApplier.js`, `js/rules/attack/AttackContext.js` | `js/network/SyncProtocol.js` |
 | Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.js`                 |
 | Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `offense/WeaponStashCard.js`, `AttackEngine.js` |
 | Initiative / RK       | `PCDefenses.js`                                          | `Combatant.js`, `helpers/modifiers/`         |
@@ -117,6 +118,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - Zeilennummern in `AGENT.md` eintragen — veralten sofort, nur Funktionsnamen
 - Halbe Ränge bei klassenübergreifenden Fertigkeiten (cross-class skills) verbessern den Wurf nicht — Ränge bei Modifikator-Berechnungen immer mit `Math.floor` abrunden.
 - Dialogfenster für Zauberauswahl, Buffauswahl oder Vorbereitung mit weniger als `480px` bis `520px` Breite dimensionieren — dies führt zu abgeschnittenen Inhalten und Metamagic-Optionen.
+- Neue Dialoge/Overlays ohne Eintrag in der Skalierungsliste (`#roleOverlay ...`) in `css/popups.css` definieren — da sie sonst unskaliert und auf Tablets/DPI-Skalierungen viel zu klein gerendert werden.
 
 ---
 

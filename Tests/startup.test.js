@@ -196,6 +196,11 @@ describe('Startup - UI-Schicht: Dialoge', () => {
     assert.equal(typeof mod.showAttackChoiceDialog, 'function');
   });
 
+  it('DamageChoiceDialog.js lässt sich importieren', async () => {
+    const mod = await import('../js/ui/dialogs/DamageChoiceDialog.js');
+    assert.equal(typeof mod.showDamageChoiceDialog, 'function');
+  });
+
   it('FeatScrollDialog.js lässt sich importieren', async () => {
     const mod = await import('../js/ui/dialogs/FeatScrollDialog.js');
     assert.equal(typeof mod.showFeatScrollDialog, 'function');

@@ -11,7 +11,7 @@
 import { CombatState } from '../../../../state.js';
 import { uiRegistry } from '../../../ui-shared.js';
 import { formatMod } from '../PCUtils.js';
-import { showAttackChoiceDialog, showRollBreakdown } from '../../dialogs.js';
+import { showAttackChoiceDialog, showDamageChoiceDialog, showRollBreakdown } from '../../dialogs.js';
 import { matchesFeatOption, getCritThreatDisplay } from '../../../../models/Weapon.js';
 import { AttackEngine } from '../../../../rules/AttackEngine.js';
 import { _getRarityStyle } from './PCOffenseHelper.js';
@@ -251,13 +251,22 @@ export function bindEquipmentSlotsEvents(offense, pc, babVal) {
     if (dmgBtn) {
       dmgBtn.onclick = (e) => {
         if (pc.isTotalDefense) return;
-        const seq = AttackEngine.calculateAttackSequence(pc, mainHandWeapon, false, {
-          smite: pc.isSmiteActive,
-          favoredEnemy: pc.isFavoredEnemyActive,
-          sneakAttack: pc.isSneakAttacking
-        });
-        const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [], damageDice: '1w6' };
-        showRollBreakdown(`${mainHandWeapon.name || 'Waffe'} (Schaden)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e);
+        const hasPaladin = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === 'paladin');
+        const favoredEnemyBonus = pc.getFavoredEnemyBonus();
+        const sneakAttackDice = pc.getSneakAttackDiceCount();
+        const hasDmgToggles = (hasPaladin && mainHandWeapon.grip !== 'rng') || favoredEnemyBonus > 0 || sneakAttackDice > 0;
+        
+        if (hasDmgToggles) {
+          showDamageChoiceDialog(pc, mainHandWeapon, e);
+        } else {
+          const seq = AttackEngine.calculateAttackSequence(pc, mainHandWeapon, false, {
+            smite: pc.isSmiteActive,
+            favoredEnemy: pc.isFavoredEnemyActive,
+            sneakAttack: pc.isSneakAttacking
+          });
+          const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [], damageDice: '1w6' };
+          showRollBreakdown(`${mainHandWeapon.name || 'Waffe'} (Schaden)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e);
+        }
       };
     }
   }
@@ -276,16 +285,25 @@ export function bindEquipmentSlotsEvents(offense, pc, babVal) {
     if (dmgBtn) {
       dmgBtn.onclick = (e) => {
         if (pc.isTotalDefense) return;
-        const seq = AttackEngine.calculateAttackSequence(pc, offHandWeapon, false, {
-          isOffhandAttack: true,
-          smite: pc.isSmiteActive,
-          favoredEnemy: pc.isFavoredEnemyActive,
-          sneakAttack: pc.isSneakAttacking
-        });
-        const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [], damageDice: '1w6' };
+        const hasPaladin = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === 'paladin');
+        const favoredEnemyBonus = pc.getFavoredEnemyBonus();
+        const sneakAttackDice = pc.getSneakAttackDiceCount();
+        const hasDmgToggles = (hasPaladin && offHandWeapon.grip !== 'rng') || favoredEnemyBonus > 0 || sneakAttackDice > 0;
 
-        const offhandName = isDoubleWielded ? `${offHandWeapon.name || 'Waffe'} (Nebenseite)` : (offHandWeapon.name || 'Zweitwaffe');
-        showRollBreakdown(`${offhandName} (Schaden)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e);
+        if (hasDmgToggles) {
+          showDamageChoiceDialog(pc, offHandWeapon, e, { isOffhandAttack: true });
+        } else {
+          const seq = AttackEngine.calculateAttackSequence(pc, offHandWeapon, false, {
+            isOffhandAttack: true,
+            smite: pc.isSmiteActive,
+            favoredEnemy: pc.isFavoredEnemyActive,
+            sneakAttack: pc.isSneakAttacking
+          });
+          const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [], damageDice: '1w6' };
+
+          const offhandName = isDoubleWielded ? `${offHandWeapon.name || 'Waffe'} (Nebenseite)` : (offHandWeapon.name || 'Zweitwaffe');
+          showRollBreakdown(`${offhandName} (Schaden)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e);
+        }
       };
     }
   }

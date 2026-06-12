@@ -12,6 +12,7 @@ import { uiRegistry } from '../ui-shared.js';
 import { CombatFeats } from '../../data/feats-data.js';
 import { showCustomAlert } from './BaseDialogs.js';
 import { checkPrerequisites } from '../components/player/PCFeatsTab.js';
+import { SKILLS_REGISTRY } from '../../data/skills-data.js';
 
 /**
  * Spawns a gorgeous, premium D&D-themed scroll parchment dialog for feat details.
@@ -67,7 +68,15 @@ export function showFeatScrollDialog(feat, pc, isLearned, option = '') {
     } else if (feat.optionType === 'school') {
       optionsList = ['Abschwörung (Abjuration)', 'Beschwörung (Conjuration)', 'Erkenntnis (Divination)', 'Hervorrufung (Evocation)', 'Illusion (Illusion)', 'Nekromantie (Necromancy)', 'Transmutation (Transmutation)', 'Verzauberung (Enchantment)'];
     } else if (feat.optionType === 'skill') {
-      optionsList = ['Klettern (Climb)', 'Springen (Jump)', 'Schwimmen (Swim)', 'Akrobatik (Tumble)', 'Reiten (Ride)', 'Verstecken (Hide)', 'Leise bewegen (Move Silently)', 'Lauschen (Listen)', 'Entdecken (Spot)', 'Suchen (Search)', 'Diplomatie (Diplomacy)', 'Bluffen (Bluff)', 'Konzentration (Concentration)', 'Zauberkunde (Spellcraft)'];
+      optionsList = Object.keys(SKILLS_REGISTRY).map(key => {
+        const skill = SKILLS_REGISTRY[key];
+        const englishName = key.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        if (skill.nameDe.includes(`(${englishName})`) || skill.nameDe.includes(englishName)) {
+          return skill.nameDe;
+        }
+        return `${skill.nameDe} (${englishName})`;
+      });
+      optionsList.sort((a, b) => a.localeCompare(b));
     }
 
     // Filter out options already learned by the player for this feat ID (Bug #18)

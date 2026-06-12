@@ -10,6 +10,7 @@
 
 import { isLightWeapon } from '../../models/Weapon.js';
 import { CombatSpells } from '../../spells.js';
+import { CombatState } from '../../state.js';
 
 function getTypeLabel(type) {
   const labels = {
@@ -28,6 +29,7 @@ function getTypeLabel(type) {
 function resolveAtkDmgBuffs(pc, target) {
   const effects = [];
   
+  // 1. Eigene/lokale Buffs
   if (Array.isArray(pc.activeBuffs)) {
     pc.activeBuffs.forEach(buff => {
       // Skip if it's a local shared buff but the caster did not target themselves
@@ -64,6 +66,50 @@ function resolveAtkDmgBuffs(pc, target) {
         }
       }
     });
+  }
+
+  // 2. Geteilte/remote Buffs von Verbündeten
+  try {
+    const state = CombatState.getState();
+    if (state && Array.isArray(state.combatants)) {
+      state.combatants.forEach(other => {
+        if (other.id === pc.id) return;
+        if (Array.isArray(other.activeBuffs)) {
+          other.activeBuffs.forEach(buff => {
+            if (buff.sharedWith && Array.isArray(buff.sharedWith) && buff.sharedWith.includes(pc.id)) {
+              const remoteSource = (buff.name || 'Fremder Buff') + ` (${other.name || 'Verbündeter'})`;
+              
+              if (Array.isArray(buff.effects)) {
+                buff.effects.forEach(eff => {
+                  if (eff.target === target) {
+                    effects.push({
+                      value: parseInt(eff.value) || 0,
+                      type: eff.type || 'untyped',
+                      source: remoteSource
+                    });
+                  }
+                });
+              } else if (buff.spellKey) {
+                const spell = CombatSpells.REGISTRY?.[buff.spellKey];
+                if (spell && Array.isArray(spell.effects)) {
+                  spell.effects.forEach(eff => {
+                    if (eff.target === target) {
+                      effects.push({
+                        value: parseInt(eff.value) || 0,
+                        type: eff.type || 'untyped',
+                        source: remoteSource
+                      });
+                    }
+                  });
+                }
+              }
+            }
+          });
+        }
+      });
+    }
+  } catch (e) {
+    console.error('Error resolving remote attack/damage buffs:', e);
   }
 
   const groupedBoni = {};
@@ -155,13 +201,36 @@ export function buildContext(pc, weapon, options = {}) {
     }
     return false;
   };
-  const hasBuff = (spellKey) => Array.isArray(pc.activeBuffs) && pc.activeBuffs.some(b => {
-    if (b.spellKey !== spellKey) return false;
-    if (!b.isRemote && b.sharedWith && Array.isArray(b.sharedWith)) {
-      return b.sharedWith.includes(pc.id);
+  const hasBuff = (spellKey) => {
+    // 1. Eigene Buffs prüfen
+    if (Array.isArray(pc.activeBuffs)) {
+      const active = pc.activeBuffs.some(b => {
+        if (b.spellKey !== spellKey) return false;
+        if (!b.isRemote && b.sharedWith && Array.isArray(b.sharedWith)) {
+          return b.sharedWith.includes(pc.id);
+        }
+        return true;
+      });
+      if (active) return true;
     }
-    return true;
-  });
+
+    // 2. Remote Buffs prüfen
+    try {
+      const state = CombatState.getState();
+      if (state && Array.isArray(state.combatants)) {
+        return state.combatants.some(other => {
+          if (other.id === pc.id) return false;
+          return Array.isArray(other.activeBuffs) && other.activeBuffs.some(b => {
+            if (b.spellKey !== spellKey) return false;
+            return b.sharedWith && Array.isArray(b.sharedWith) && b.sharedWith.includes(pc.id);
+          });
+        });
+      }
+    } catch (e) {
+      console.error('Error in hasBuff remote check:', e);
+    }
+    return false;
+  };
 
   const hasPowerAttack = hasFeat('power_attack');
   const paPenalty = hasPowerAttack ? Math.min(babVal, parseInt(pc.powerAttackPenalty) || 0) : 0;

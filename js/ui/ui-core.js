@@ -6,6 +6,7 @@ import {
   showCustomAlert, 
   showCustomConfirm, 
   showAttackChoiceDialog, 
+  showDamageChoiceDialog, 
   showSessionModal, 
   showRollBreakdown 
 } from './components/dialogs.js';
@@ -96,6 +97,7 @@ export const CombatUI = {
   showCustomAlert,
   showCustomConfirm,
   showAttackChoiceDialog,
+  showDamageChoiceDialog,
   showSessionModal,
   showRollBreakdown,
   initUI,

@@ -66,6 +66,7 @@ export function showInfoDialog({ id, title, bodyHtml, buttonText = 'Fertig', wid
   overlay.querySelector('.custom-alert-box').style.transform = 'scale(1)';
 
   const dismiss = () => {
+    document.removeEventListener('keydown', keyHandler);
     overlay.style.opacity = '0';
     overlay.querySelector('.custom-alert-box').style.transform = 'scale(0.9)';
     setTimeout(() => { overlay.remove(); if (onClose) onClose(); }, 200);
@@ -77,7 +78,6 @@ export function showInfoDialog({ id, title, bodyHtml, buttonText = 'Fertig', wid
   const keyHandler = (e) => {
     if (e.key === 'Enter' || e.key === 'Escape') {
       dismiss();
-      document.removeEventListener('keydown', keyHandler);
     }
   };
   document.addEventListener('keydown', keyHandler);
@@ -149,6 +149,7 @@ export function showCustomAlert(title, message, buttonText = "Verstanden", icon 
 
   const closeBtn = overlay.querySelector('.pc-alert-close-btn');
   const dismiss = () => {
+    document.removeEventListener('keydown', keyHandler);
     overlay.style.opacity = '0';
     overlay.querySelector('.custom-alert-box').style.transform = 'scale(0.9)';
     setTimeout(() => {
@@ -165,7 +166,6 @@ export function showCustomAlert(title, message, buttonText = "Verstanden", icon 
   const keyHandler = (e) => {
     if (e.key === 'Enter' || e.key === 'Escape') {
       dismiss();
-      document.removeEventListener('keydown', keyHandler);
     }
   };
   document.addEventListener('keydown', keyHandler);

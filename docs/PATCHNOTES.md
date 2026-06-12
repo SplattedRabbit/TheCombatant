@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v3.4.0** | Release | 12.06.2026 | WebRTC Buff- & Auren-Propagation (Netzwerk-Auren) |
 | **v3.3.5** | Release | 12.06.2026 | Refactoring feats-data.js (Aufteilung in Kategorie-Dateien) |
 | **v3.3.4** | Release | 12.06.2026 | Modularisierung von PCDefenses in DDD-Schichten |
 | **v3.3.3** | Release | 12.06.2026 | Buff- & Auren-Manager Upgrades (Quick-Selection & Optionen) |
@@ -67,6 +68,15 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v3.4.0 — WebRTC Buff- & Auren-Propagation (Release v3.4.0)
+
+* **🌐 WebRTC-Netzwerk-Propagation (Netzwerk-Auren):**
+  - **Pull-basierte Synchronisation:** Clients scannen reaktiv die Buff-Listen aller anderen aktiven Combatants in der Kampfbegegnung (`state.combatants`).
+  - **SpellModifierApplier:** Wenn ein Verbündeter einen Buff mit gesetztem `sharedWith` sendet, der den eigenen PC betrifft, wird dieser reaktiv als Remote-Buff angewendet.
+  - **AttackEngine-Integration:** Einbindung fremder Buffs in die Angriffs- & Schadensberechnung von `AttackContext.js`. Die Buff-Quelle wird dynamisch im Roll-Breakdown benannt (z. B. `+1 Moral (Segen von Alistair)`).
+  - **Fehlerfreie Selbstheilung:** Verschwindet der Wirker aus der Sitzung oder deaktiviert er den Buff, aktualisieren sich die Werte aller Empfänger augenblicklich und fehlerfrei.
+  - **Service-Worker & Cache:** Erhöhung des Cache-Namens auf `dnd-combatsheet-v3.4.0-cache-v1` für stabile Offline-Bereitstellung.
 
 ### v3.3.5 — Refactoring feats-data.js (Release v3.3.5)
 

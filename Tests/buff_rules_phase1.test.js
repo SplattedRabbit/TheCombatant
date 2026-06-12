@@ -27,8 +27,8 @@ test('Buff Rules Phase 1 - isBuffEligible checking', () => {
   });
 
   // Spell eligibility
-  assert.strictEqual(isBuffEligible(pc, 'bulls_strength', false), true, 'learned spells should be eligible');
-  assert.strictEqual(isBuffEligible(pc, 'haste', false), false, 'unlearned spells should not be eligible');
+  assert.strictEqual(isBuffEligible(pc, 'bulls_strength', false), true, 'spell buffs should be eligible');
+  assert.strictEqual(isBuffEligible(pc, 'haste', false), true, 'all spell buffs should be eligible');
 
   // Class eligibility
   assert.strictEqual(isBuffEligible(pc, 'rage', true), true, 'Barbarian lvl 1 has access to rage');
@@ -118,4 +118,27 @@ test('Buff Rules Phase 1 - Attack/Damage context target exclusion', () => {
   pc.activeBuffs[0].sharedWith.push('my_pc_id');
   ctx = buildContext(pc, weapon);
   assert.strictEqual(ctx.buffAtkBonus, 1, 'Should receive Haste bonus if included');
+});
+
+test('Buff Rules Phase 1 - Spell Buff Eligibility for Cleric/Druid/Fighter without learnedSpells', () => {
+  const cleric = new Combatant({
+    id: 'cleric_test',
+    name: 'Cleric Hero',
+    type: 'p',
+    classes: [{ classType: 'cleric', level: 5 }]
+  });
+
+  // Since Cleric doesn't have learnedSpells, it should still be eligible for any spell buff
+  assert.strictEqual(isBuffEligible(cleric, 'bulls_strength', false), true, 'Cleric should be eligible for Bulls Strength');
+  assert.strictEqual(isBuffEligible(cleric, 'haste', false), true, 'Cleric should be eligible for Haste');
+
+  const fighter = new Combatant({
+    id: 'fighter_test',
+    name: 'Fighter Hero',
+    type: 'p',
+    classes: [{ classType: 'fighter', level: 5 }]
+  });
+
+  // Fighter has no spells at all, but can be targeted by ally buffs/potions
+  assert.strictEqual(isBuffEligible(fighter, 'bulls_strength', false), true, 'Fighter should be eligible for spell buffs');
 });

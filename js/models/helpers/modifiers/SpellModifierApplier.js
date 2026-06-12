@@ -10,6 +10,7 @@
 
 import { Stat } from '../../Stat.js';
 import { CombatSpells } from '../../../spells.js';
+import { CombatState } from '../../../state.js';
 
 function applyEffect(pc, eff, source) {
   const target = eff.target;
@@ -60,29 +61,66 @@ function applyEffect(pc, eff, source) {
 }
 
 export function applySpellModifiers(pc) {
-  if (!Array.isArray(pc.activeBuffs)) return;
-
-  pc.activeBuffs.forEach(buff => {
-    // Skip if it's a local shared buff but the caster did not target themselves
-    if (!buff.isRemote && buff.sharedWith && Array.isArray(buff.sharedWith)) {
-      if (!buff.sharedWith.includes(pc.id)) {
-        return;
+  // 1. Eigene/lokale Buffs anwenden
+  if (Array.isArray(pc.activeBuffs)) {
+    pc.activeBuffs.forEach(buff => {
+      // Skip if it's a local shared buff but the caster did not target themselves
+      if (!buff.isRemote && buff.sharedWith && Array.isArray(buff.sharedWith)) {
+        if (!buff.sharedWith.includes(pc.id)) {
+          return;
+        }
       }
-    }
 
-    // If the buff already has resolved effects, we ONLY use those.
-    // Otherwise, for backwards-compatibility, we look up the spell in the registry.
-    if (Array.isArray(buff.effects)) {
-      buff.effects.forEach(eff => {
-        applyEffect(pc, eff, buff.name || eff.source);
-      });
-    } else if (buff.spellKey) {
-      const spell = CombatSpells.REGISTRY?.[buff.spellKey];
-      if (spell && Array.isArray(spell.effects)) {
-        spell.effects.forEach(eff => {
-          applyEffect(pc, eff, spell.nameDe || spell.nameEn || buff.name);
+      // If the buff already has resolved effects, we ONLY use those.
+      // Otherwise, for backwards-compatibility, we look up the spell in the registry.
+      if (Array.isArray(buff.effects)) {
+        buff.effects.forEach(eff => {
+          applyEffect(pc, eff, buff.name || eff.source);
         });
+      } else if (buff.spellKey) {
+        const spell = CombatSpells.REGISTRY?.[buff.spellKey];
+        if (spell && Array.isArray(spell.effects)) {
+          spell.effects.forEach(eff => {
+            applyEffect(pc, eff, spell.nameDe || spell.nameEn || buff.name);
+          });
+        }
       }
+    });
+  }
+
+  // 2. Fremde/remote Buffs aus der Encounter-Gruppe anwenden (Pull-basiert)
+  try {
+    const state = CombatState.getState();
+    if (state && Array.isArray(state.combatants)) {
+      state.combatants.forEach(other => {
+        if (other.id === pc.id) return; // Uns selbst haben wir schon oben abgehandelt
+        if (Array.isArray(other.activeBuffs)) {
+          other.activeBuffs.forEach(buff => {
+            if (buff.sharedWith && Array.isArray(buff.sharedWith) && buff.sharedWith.includes(pc.id)) {
+              // Fremder Buff zielt auf uns!
+              const remoteBuff = {
+                ...buff,
+                isRemote: true,
+                name: (buff.name || 'Fremder Buff') + ` (${other.name || 'Verbündeter'})`
+              };
+              if (Array.isArray(remoteBuff.effects)) {
+                remoteBuff.effects.forEach(eff => {
+                  applyEffect(pc, eff, remoteBuff.name || eff.source);
+                });
+              } else if (remoteBuff.spellKey) {
+                const spell = CombatSpells.REGISTRY?.[remoteBuff.spellKey];
+                if (spell && Array.isArray(spell.effects)) {
+                  spell.effects.forEach(eff => {
+                    applyEffect(pc, eff, spell.nameDe || spell.nameEn || remoteBuff.name);
+                  });
+                }
+              }
+            }
+          });
+        }
+      });
     }
-  });
+  } catch (e) {
+    console.error('Error applying remote spell modifiers:', e);
+  }
 }

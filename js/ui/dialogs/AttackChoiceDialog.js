@@ -69,26 +69,12 @@ export function showAttackChoiceDialog(pc, weapon, event, options = {}) {
       </div>
       <hr style="border: none; border-top: 0.5px solid rgba(200, 169, 110, 0.4); margin: 4px 0 10px;">
 
-      ${(hasPaladin && isMelee) || favoredEnemyBonus > 0 || sneakAttackDice > 0 ? `
+      ${hasPaladin && isMelee ? `
         <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:10px; padding: 4px 8px; background: rgba(200,169,110,0.05); border: 0.5px solid rgba(200,169,110,0.2); border-radius:3px; text-align:left; font-size:8px; font-family:'Crimson Text', serif;">
-          ${hasPaladin && isMelee ? `
-            <label style="display:flex; align-items:center; gap:4px; cursor:pointer; margin:0; font-weight:bold; color:var(--red);">
-              <input type="checkbox" class="dialog-smite-toggle" ${smiteActive ? 'checked' : ''} style="margin:0; width:11px; height:11px;">
-               Böses niederstrecken (+${Math.max(0, pc.getAttributeMod('cha'))} Angr. / +${paladinClass.level} Schd.)
-            </label>
-          ` : ''}
-          ${favoredEnemyBonus > 0 ? `
-            <label style="display:flex; align-items:center; gap:4px; cursor:pointer; margin:0; font-weight:bold; color:#1a4a1a;">
-              <input type="checkbox" class="dialog-fe-toggle" ${favoredEnemyActive ? 'checked' : ''} style="margin:0; width:11px; height:11px;">
-              Gegen Erzfeind (+${favoredEnemyBonus} Schaden)
-            </label>
-          ` : ''}
-          ${sneakAttackDice > 0 ? `
-            <label style="display:flex; align-items:center; gap:4px; cursor:pointer; margin:0; font-weight:bold; color:#a0522d;">
-              <input type="checkbox" class="dialog-sneak-toggle" ${sneakActive ? 'checked' : ''} style="margin:0; width:11px; height:11px;">
-              Hinterhältiger Angriff (+${sneakAttackDice}W6 Schaden)
-            </label>
-          ` : ''}
+          <label style="display:flex; align-items:center; gap:4px; cursor:pointer; margin:0; font-weight:bold; color:var(--red);">
+            <input type="checkbox" class="dialog-smite-toggle" ${smiteActive ? 'checked' : ''} style="margin:0; width:11px; height:11px;">
+             Böses niederstrecken (+${Math.max(0, pc.getAttributeMod('cha'))} Angr. / +${paladinClass.level} Schd.)
+          </label>
         </div>
       ` : ''}
       
@@ -331,23 +317,7 @@ export function showAttackChoiceDialog(pc, weapon, event, options = {}) {
     };
   }
 
-  const feToggle = overlay.querySelector('.dialog-fe-toggle');
-  if (feToggle) {
-    feToggle.onchange = (e) => {
-      favoredEnemyActive = e.target.checked;
-      CombatState.updatePCField('isFavoredEnemyActive', favoredEnemyActive);
-      updateView();
-    };
-  }
 
-  const sneakToggle = overlay.querySelector('.dialog-sneak-toggle');
-  if (sneakToggle) {
-    sneakToggle.onchange = (e) => {
-      sneakActive = e.target.checked;
-      CombatState.updatePCField('isSneakAttacking', sneakActive);
-      updateView();
-    };
-  }
 
   // Initial render
   updateView();

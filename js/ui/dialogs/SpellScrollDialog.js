@@ -29,6 +29,8 @@ export function showSpellScrollDialog(spell, isLearned, onToggleLearn) {
   const school = spell.school || '—';
   const level = spell.level !== undefined ? spell.level : '—';
   const sr = spell.spellResistance || '—';
+  const components = spell.components || '—';
+  const targetOrEffectOrArea = spell.targetOrEffectOrArea || '—';
 
   const actionText = isLearned 
     ? "Möchtest du diesen Zauber aus deinem Zauberbuch ENTFERNEN?" 
@@ -76,13 +78,15 @@ export function showSpellScrollDialog(spell, isLearned, onToggleLearn) {
           <div><strong>Schule:</strong> ${school}</div>
           <div><strong>Grad:</strong> Grad ${level}</div>
           <div><strong>Zeitaufwand:</strong> ${spell.castingTime || '1 Standardaktion'}</div>
+          <div><strong>Komponenten:</strong> ${components}</div>
           <div><strong>Reichweite:</strong> ${range}</div>
           <div><strong>Wirkungsdauer:</strong> ${duration}</div>
           <div><strong>Rettungswurf:</strong> ${savingThrow}</div>
-          <div style="grid-column: span 2;"><strong>Zauberresistenz:</strong> ${sr}</div>
+          <div><strong>Zauberresistenz:</strong> ${sr}</div>
+          <div style="grid-column: span 2;"><strong>Ziel/Effekt/Bereich:</strong> ${targetOrEffectOrArea}</div>
         </div>
         <div style="font-size: 10.5px; white-space: pre-wrap; font-style: italic; line-height: 1.5; color: #2a1b0a;">
-          ${spell.description}
+          ${spell.description || 'Keine Beschreibung vorhanden.'}
         </div>
       </div>
 
