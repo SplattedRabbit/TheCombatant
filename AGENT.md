@@ -118,6 +118,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - Zeilennummern in `AGENT.md` eintragen — veralten sofort, nur Funktionsnamen
 - Halbe Ränge bei klassenübergreifenden Fertigkeiten (cross-class skills) verbessern den Wurf nicht — Ränge bei Modifikator-Berechnungen immer mit `Math.floor` abrunden.
 - Dialogfenster für Zauberauswahl, Buffauswahl oder Vorbereitung mit weniger als `480px` bis `520px` Breite dimensionieren — dies führt zu abgeschnittenen Inhalten und Metamagic-Optionen.
+- Neue Dialoge/Overlays ohne Eintrag in der Skalierungsliste (`#roleOverlay ...`) in `css/popups.css` definieren — da sie sonst unskaliert und auf Tablets/DPI-Skalierungen viel zu klein gerendert werden.
 
 ---
 
