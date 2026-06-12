@@ -719,30 +719,42 @@ export function renderPCDefenses(pc) {
         let bodyHtml = '';
 
         if (!isCustom && spell) {
-          title = `✨ Buff: ${spell.nameDe || spell.nameEn}`;
+          title = `✨ Buff-Regeln: ${spell.nameDe || spell.nameEn}`;
           bodyHtml = `
-            <div style="font-family:'Crimson Text', serif; font-size:11.5px; color:var(--ink); display:flex; flex-direction:column; gap:6.5px;">
-              <div style="font-style:italic; font-size:10px; color:var(--inkl); border-bottom:0.5px solid var(--pb); padding-bottom:3.5px; margin-bottom:3.5px;">
-                ${spell.school || 'Schule unbekannt'} • Grad ${spell.level || 0}
+            <div class="ancient-parchment" style="
+              background: #f4e8c1; 
+              border: 1px solid var(--pb); 
+              padding: 12px 16px; 
+              border-radius: 3px; 
+              box-shadow: inset 0 0 25px rgba(200, 169, 110, 0.12); 
+              font-family: 'Crimson Text', serif; 
+              color: #1a0f00; 
+              line-height: 1.45; 
+              text-align: left; 
+              box-sizing: border-box;
+            ">
+              <div style="font-style:italic; font-size:11px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
+                ${spell.school || 'Schule unbekannt'} • Zaubergrad ${spell.level || 0}
               </div>
-              <div style="display:grid; grid-template-columns: 85px 1fr; gap:2.5px; font-size:10.5px; line-height:1.2;">
-                <span style="font-weight:bold; color:var(--inkl);">Zeitdauer:</span> <span>${spell.duration || '—'}</span>
-                <span style="font-weight:bold; color:var(--inkl);">Reichweite:</span> <span>${spell.range || '—'}</span>
-                <span style="font-weight:bold; color:var(--inkl);">Rettungswurf:</span> <span>${spell.savingThrow || '—'}</span>
-                <span style="font-weight:bold; color:var(--inkl);">Zauberresistenz:</span> <span>${spell.spellResistance || '—'}</span>
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px 16px; font-size:11px; border-bottom:0.5px dashed var(--pb); padding-bottom:8px; margin-bottom:10px; font-weight:600;">
+                <div><strong>Zeitdauer:</strong> ${spell.duration || '—'}</div>
+                <div><strong>Reichweite:</strong> ${spell.range || '—'}</div>
+                <div><strong>Rettungswurf:</strong> ${spell.savingThrow || '—'}</div>
+                <div><strong>Zauberresistenz:</strong> ${spell.spellResistance || '—'}</div>
               </div>
-              <hr style="border:none; border-top:0.5px dashed var(--pb); margin:4px 0;">
-              <div style="font-size:11px; line-height:1.35; background:rgba(200, 169, 110, 0.05); border-left:2px solid var(--pb); padding-left:6px; margin:2px 0;">
-                <strong>Regelbeschreibung:</strong><br>
-                ${spell.description || 'Keine Beschreibung vorhanden.'}
+              <div style="font-size:12px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic; white-space:pre-wrap;">
+                ${spell.description || 'Keine Regelbeschreibung vorhanden.'}
               </div>
-              <hr style="border:none; border-top:0.5px dashed var(--pb); margin:4px 0;">
-              <div>
-                <strong style="color:var(--red); font-size:10.5px;">Aktive Modifikatoren (RAW):</strong>
-                <div style="display:flex; flex-direction:column; gap:2px; margin-top:2px;">
+              <hr style="border:none; border-top:1px dashed var(--pb); margin:6px 0;">
+              <div style="margin-top:6px;">
+                <strong style="color:var(--red); font-size:11.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive RAW-Modifikatoren:</strong>
+                <div style="display:flex; flex-direction:column; gap:2.5px; margin-top:4px;">
                   ${effectsList.map(eff => {
                     const sign = eff.value >= 0 ? '+' : '';
-                    return `<div style="font-size:10.5px;">• <strong>${translateTarget(eff.target)}:</strong> ${sign}${eff.value} (${translateType(eff.type)})</div>`;
+                    return `<div style="font-size:11px; background:rgba(200, 169, 110, 0.05); border:0.5px solid rgba(200,169,110,0.25); border-radius:2px; padding:3px 6px; display:flex; justify-content:space-between; align-items:center;">
+                      <span>• <strong>${translateTarget(eff.target)}:</strong></span>
+                      <strong>${sign}${eff.value} (${translateType(eff.type)})</strong>
+                    </div>`;
                   }).join('')}
                 </div>
               </div>
@@ -751,21 +763,34 @@ export function renderPCDefenses(pc) {
         } else {
           title = `✨ Eigener Buff: ${displayName}`;
           bodyHtml = `
-            <div style="font-family:'Crimson Text', serif; font-size:11.5px; color:var(--ink); display:flex; flex-direction:column; gap:6.5px;">
-              <div style="font-style:italic; font-size:10px; color:var(--inkl); border-bottom:0.5px solid var(--pb); padding-bottom:3.5px; margin-bottom:3.5px;">
-                Benutzerdefinierter Effekt
+            <div class="ancient-parchment" style="
+              background: #f4e8c1; 
+              border: 1px solid var(--pb); 
+              padding: 12px 16px; 
+              border-radius: 3px; 
+              box-shadow: inset 0 0 25px rgba(200, 169, 110, 0.12); 
+              font-family: 'Crimson Text', serif; 
+              color: #1a0f00; 
+              line-height: 1.45; 
+              text-align: left; 
+              box-sizing: border-box;
+            ">
+              <div style="font-style:italic; font-size:11px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
+                Benutzerdefinierter Effekt (Custom Buff)
               </div>
-              <div style="font-size:11px; line-height:1.35; background:rgba(200, 169, 110, 0.05); border-left:2px solid var(--pb); padding-left:6px; margin:2px 0;">
-                <strong>Beschreibung:</strong><br>
+              <div style="font-size:12px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic;">
                 Ein benutzerdefinierter Buff, der direkt über das Formular im Bogen hinzugefügt wurde.
               </div>
-              <hr style="border:none; border-top:0.5px dashed var(--pb); margin:4px 0;">
-              <div>
-                <strong style="color:var(--red); font-size:10.5px;">Aktive Modifikatoren:</strong>
-                <div style="display:flex; flex-direction:column; gap:2px; margin-top:2px;">
+              <hr style="border:none; border-top:1px dashed var(--pb); margin:6px 0;">
+              <div style="margin-top:6px;">
+                <strong style="color:var(--red); font-size:11.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive Modifikatoren:</strong>
+                <div style="display:flex; flex-direction:column; gap:2.5px; margin-top:4px;">
                   ${effectsList.map(eff => {
                     const sign = eff.value >= 0 ? '+' : '';
-                    return `<div style="font-size:10.5px;">• <strong>${translateTarget(eff.target)}:</strong> ${sign}${eff.value} (${translateType(eff.type)})</div>`;
+                    return `<div style="font-size:11px; background:rgba(200, 169, 110, 0.05); border:0.5px solid rgba(200,169,110,0.25); border-radius:2px; padding:3px 6px; display:flex; justify-content:space-between; align-items:center;">
+                      <span>• <strong>${translateTarget(eff.target)}:</strong></span>
+                      <strong>${sign}${eff.value} (${translateType(eff.type)})</strong>
+                    </div>`;
                   }).join('')}
                 </div>
               </div>
@@ -778,7 +803,7 @@ export function renderPCDefenses(pc) {
           title: title,
           bodyHtml: bodyHtml,
           buttonText: 'Schließen',
-          width: 275
+          width: 500
         });
       };
     });
