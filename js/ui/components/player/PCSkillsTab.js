@@ -13,6 +13,7 @@ import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { formatMod } from './PCUtils.js';
 import { showRollBreakdown } from '../dialogs.js';
+import { applyFeatSkillBonuses } from '../../../models/helpers/skills/SkillFeatApplier.js';
 
 let skillSearchQuery = '';
 let skillFilterType = 'all'; // 'all', 'class', 'trained'
@@ -177,6 +178,12 @@ function bindSkillsEvents(pc, container) {
         { label: `Ränge`, value: ranks },
         { label: `${skill.abl.toUpperCase()}-Mod`, value: attrMod }
       ];
+
+      // Talent-Boni
+      const featBonus = applyFeatSkillBonuses(pc, key, skill);
+      if (featBonus > 0) {
+        breakdown.push({ label: 'Talentboni', value: featBonus });
+      }
 
       // Racial skill bonuses
       const race = (pc.race || 'human').toLowerCase();
