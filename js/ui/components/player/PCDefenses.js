@@ -733,25 +733,25 @@ export function renderPCDefenses(pc) {
               text-align: left; 
               box-sizing: border-box;
             ">
-              <div style="font-style:italic; font-size:11px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
+              <div style="font-style:italic; font-size:9.5px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
                 ${spell.school || 'Schule unbekannt'} • Zaubergrad ${spell.level || 0}
               </div>
-              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px 16px; font-size:11px; border-bottom:0.5px dashed var(--pb); padding-bottom:8px; margin-bottom:10px; font-weight:600;">
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px 16px; font-size:9.5px; border-bottom:0.5px dashed var(--pb); padding-bottom:8px; margin-bottom:10px; font-weight:600;">
                 <div><strong>Zeitdauer:</strong> ${spell.duration || '—'}</div>
                 <div><strong>Reichweite:</strong> ${spell.range || '—'}</div>
                 <div><strong>Rettungswurf:</strong> ${spell.savingThrow || '—'}</div>
                 <div><strong>Zauberresistenz:</strong> ${spell.spellResistance || '—'}</div>
               </div>
-              <div style="font-size:12px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic; white-space:pre-wrap;">
+              <div style="font-size:10.5px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic; white-space:pre-wrap;">
                 ${spell.description || 'Keine Regelbeschreibung vorhanden.'}
               </div>
               <hr style="border:none; border-top:1px dashed var(--pb); margin:6px 0;">
               <div style="margin-top:6px;">
-                <strong style="color:var(--red); font-size:11.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive RAW-Modifikatoren:</strong>
+                <strong style="color:var(--red); font-size:10.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive RAW-Modifikatoren:</strong>
                 <div style="display:flex; flex-direction:column; gap:2.5px; margin-top:4px;">
                   ${effectsList.map(eff => {
                     const sign = eff.value >= 0 ? '+' : '';
-                    return `<div style="font-size:11px; background:rgba(200, 169, 110, 0.05); border:0.5px solid rgba(200,169,110,0.25); border-radius:2px; padding:3px 6px; display:flex; justify-content:space-between; align-items:center;">
+                    return `<div style="font-size:9.5px; background:rgba(200, 169, 110, 0.05); border:0.5px solid rgba(200,169,110,0.25); border-radius:2px; padding:3px 6px; display:flex; justify-content:space-between; align-items:center;">
                       <span>• <strong>${translateTarget(eff.target)}:</strong></span>
                       <strong>${sign}${eff.value} (${translateType(eff.type)})</strong>
                     </div>`;
@@ -775,19 +775,19 @@ export function renderPCDefenses(pc) {
               text-align: left; 
               box-sizing: border-box;
             ">
-              <div style="font-style:italic; font-size:11px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
+              <div style="font-style:italic; font-size:9.5px; color:var(--inkl); border-bottom:1px solid var(--pb); padding-bottom:4px; margin-bottom:8px;">
                 Benutzerdefinierter Effekt (Custom Buff)
               </div>
-              <div style="font-size:12px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic;">
+              <div style="font-size:10.5px; line-height:1.5; color:#2a1b0a; margin-bottom:10px; font-style:italic;">
                 Ein benutzerdefinierter Buff, der direkt über das Formular im Bogen hinzugefügt wurde.
               </div>
               <hr style="border:none; border-top:1px dashed var(--pb); margin:6px 0;">
               <div style="margin-top:6px;">
-                <strong style="color:var(--red); font-size:11.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive Modifikatoren:</strong>
+                <strong style="color:var(--red); font-size:10.5px; font-family:'IM Fell English SC', serif; letter-spacing:0.3px;">Aktive Modifikatoren:</strong>
                 <div style="display:flex; flex-direction:column; gap:2.5px; margin-top:4px;">
                   ${effectsList.map(eff => {
                     const sign = eff.value >= 0 ? '+' : '';
-                    return `<div style="font-size:11px; background:rgba(200, 169, 110, 0.05); border:0.5px solid rgba(200,169,110,0.25); border-radius:2px; padding:3px 6px; display:flex; justify-content:space-between; align-items:center;">
+                    return `<div style="font-size:9.5px; background:rgba(200, 169, 110, 0.05); border:0.5px solid rgba(200,169,110,0.25); border-radius:2px; padding:3px 6px; display:flex; justify-content:space-between; align-items:center;">
                       <span>• <strong>${translateTarget(eff.target)}:</strong></span>
                       <strong>${sign}${eff.value} (${translateType(eff.type)})</strong>
                     </div>`;
