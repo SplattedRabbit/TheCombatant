@@ -9,7 +9,6 @@
  */
 
 import React, { useState } from 'react';
-import type { StatBlock } from '../../types/combat';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 import { BaseCard } from '../shared/BaseCard';
@@ -55,9 +54,30 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
   };
 
   // Attributswurf ausführen
-  const handleRollAttribute = (label: string, mod: number, e: React.MouseEvent) => {
-    showRollBreakdown(`${label}-Wurf`, '1W20', [
-      { label: `${label}-Mod`, value: mod }
+  const handleRollAttribute = (label: string, key: string, e: React.MouseEvent) => {
+    const stat = pc[key];
+    const score = stat?.getValue?.() ?? stat?.total ?? 0;
+    const baseVal = stat?.base ?? 0;
+    const mod = stat?.mod ?? 0;
+    
+    let detailParts: string[] = [];
+    if (baseVal > 0) {
+      detailParts.push(`${baseVal} Basis`);
+    }
+    
+    if (Array.isArray(stat?.modifiers)) {
+      stat.modifiers.forEach((m: any) => {
+        if (m.value !== 0) {
+          const sign = m.value > 0 ? '+' : '';
+          detailParts.push(`${sign}${m.value} ${m.source || 'Mod'}`);
+        }
+      });
+    }
+    
+    const detailStr = detailParts.length > 1 ? ` (Wert: ${score} = ${detailParts.join(' ')})` : ` (Wert: ${score})`;
+
+    showRollBreakdown(`${label}-Wurf${detailStr}`, '1W20', [
+      { label: `${label}-Modifikator`, value: mod }
     ], e.nativeEvent);
   };
 
@@ -73,41 +93,36 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
 
   // Klasse hinzufügen
   const handleAddClass = () => {
-    CombatState.addPCClass(newClassKey, newClassLvl);
+    if (classesCount >= 5) {
+      showCustomAlert("Klassenlimit", "Mehr als 5 Klassen werden nicht unterstützt.");
+      return;
+    }
+    CombatState.updatePCBatch((freshPC: any) => {
+      if (!Array.isArray(freshPC.classes)) freshPC.classes = [];
+      freshPC.classes.push({ classType: newClassKey, level: newClassLvl });
+      freshPC.rebuildStatModifiers();
+    });
     setShowAddForm(false);
   };
 
   // Klasse entfernen
   const handleRemoveClass = (idx: number) => {
-    const classInfo = pc.classes[idx];
-    const availableClasses = (CombatRules.CLASSES as any[]) || [];
-    const className = availableClasses.find(x => x.key === classInfo?.classType)?.nameDe || 'Klasse';
-    
-    showCustomConfirm(
-      "Klasse entfernen? ⚠️", 
-      `Möchtest du die Klasse "${className}" wirklich entfernen? Dadurch werden alle zugehörigen Klassendaten und Sonderfähigkeiten zurückgesetzt, um Anzeigefehler zu vermeiden.`, 
-      () => {
-        CombatState.removePCClass(idx);
+    CombatState.updatePCBatch((freshPC: any) => {
+      if (Array.isArray(freshPC.classes)) {
+        freshPC.classes.splice(idx, 1);
+        freshPC.rebuildStatModifiers();
       }
-    );
+    });
   };
 
-  // Attributbox-Renderer
-  const renderAttributeBox = (key: 'str' | 'dex' | 'con' | 'int' | 'wis' | 'cha', label: string, icon: string) => {
-    const stat: StatBlock = pc[key];
-    const score = stat.total;
-    const mod = stat.mod;
-    const isBuffed = Array.isArray(stat.modifiers) && stat.modifiers.some((m: any) => !m.isRace && m.value !== 0);
-    const hasModifiers = Array.isArray(stat.modifiers) && stat.modifiers.some((m: any) => m.value !== 0);
+  // Hilfskomponente für Attribut
+  const renderAttributeBox = (key: string, label: string, icon: string) => {
+    const stat = pc[key];
+    const score = stat?.getValue?.() ?? stat?.total ?? 0;
+    const mod = stat?.mod ?? 0;
+    const hasModifiers = Array.isArray(stat?.modifiers) && stat.modifiers.some((m: any) => m.value !== 0);
 
     let tooltip = `${label}wert`;
-    let borderStyle = '0.5px solid var(--pb)';
-    let bgStyle = 'rgba(200, 169, 110, 0.1)';
-    if (isBuffed) {
-      borderStyle = '0.5px solid var(--red)';
-      bgStyle = 'rgba(139, 26, 26, 0.05)';
-    }
-
     if (hasModifiers && stat.modifiers) {
       const activeMods = stat.modifiers.filter((m: any) => m.value !== 0);
       tooltip += `\nBasiswert: ${stat.base}\nAktiver Wert: ${score}\nAktive Boni:\n` + 
@@ -120,8 +135,8 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          background: bgStyle,
-          border: borderStyle,
+          background: 'rgba(200, 169, 110, 0.1)',
+          border: '0.5px solid var(--pb)',
           borderRadius: '2px',
           padding: '3px',
           position: 'relative'
@@ -141,9 +156,9 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
               height: '14px',
               textAlign: 'center',
               padding: 0,
-              color: isBuffed ? 'var(--red)' : 'var(--ink)',
-              fontWeight: isBuffed ? 'bold' : 'normal',
-              borderColor: isBuffed ? 'var(--red)' : 'var(--pb)'
+              color: 'var(--ink)',
+              fontWeight: 'normal',
+              borderColor: 'var(--pb)'
             }}
             title={tooltip}
           />
@@ -159,15 +174,15 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
               textAlign: 'center',
               padding: 0,
               fontWeight: 'bold',
-              borderColor: isBuffed ? 'var(--red)' : 'var(--pb)',
-              background: isBuffed ? 'rgba(139, 26, 26, 0.08)' : 'rgba(0,0,0,0.05)',
-              color: isBuffed ? 'var(--red)' : 'var(--red)',
+              borderColor: 'var(--pb)',
+              background: 'rgba(0,0,0,0.05)',
+              color: 'var(--inkl)'
             }}
             title="Modifikator"
           />
           <button
             className="xbtn roll-attr-btn"
-            onClick={(e) => handleRollAttribute(label, mod, e)}
+            onClick={(e) => handleRollAttribute(label, key, e)}
             style={{ padding: 0, width: '16px', height: '14px', fontSize: '8px', lineHeight: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             title={`${label}wurf (Formel)`}
           >

@@ -172,7 +172,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             readOnly={!!pc.autoAC}
             onClick={(e) => handleAcClick('ac', 'Rüstungsklasse (AC)', e)}
             onChange={(e) => !pc.autoAC && CombatState.updatePCNumber('ac', e.target.value)}
-            style={pc.autoAC ? { background: 'rgba(0,0,0,0.05)', color: 'var(--red)', fontWeight: 'bold', cursor: 'pointer' } : undefined}
+            style={pc.autoAC ? { background: 'rgba(0,0,0,0.05)', color: 'var(--ink)', fontWeight: 'bold', cursor: 'pointer' } : undefined}
             title={pc.autoAC ? acTooltip : undefined}
           />
         </div>
@@ -185,7 +185,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             readOnly={!!pc.autoAC}
             onClick={(e) => handleAcClick('acTouch', 'Touch AC', e)}
             onChange={(e) => !pc.autoAC && CombatState.updatePCNumber('acTouch', e.target.value)}
-            style={pc.autoAC ? { background: 'rgba(0,0,0,0.05)', color: 'var(--red)', fontWeight: 'bold', cursor: 'pointer' } : undefined}
+            style={pc.autoAC ? { background: 'rgba(0,0,0,0.05)', color: 'var(--ink)', fontWeight: 'bold', cursor: 'pointer' } : undefined}
             title={pc.autoAC ? acTouchTooltip : undefined}
           />
         </div>
@@ -198,7 +198,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             readOnly={!!pc.autoAC}
             onClick={(e) => handleAcClick('acFlat', 'Flat-Footed AC', e)}
             onChange={(e) => !pc.autoAC && CombatState.updatePCNumber('acFlat', e.target.value)}
-            style={pc.autoAC ? { background: 'rgba(0,0,0,0.05)', color: 'var(--red)', fontWeight: 'bold', cursor: 'pointer' } : undefined}
+            style={pc.autoAC ? { background: 'rgba(0,0,0,0.05)', color: 'var(--ink)', fontWeight: 'bold', cursor: 'pointer' } : undefined}
             title={pc.autoAC ? acFlatTooltip : undefined}
           />
         </div>
@@ -352,7 +352,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             readOnly
             tabIndex={-1}
             className="cinput cinput-c"
-            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--red)', borderColor: 'var(--pb)' }}
+            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)' }}
             title="KON-Modifikator"
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
@@ -365,7 +365,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
               CombatState.updatePCNumber('zaMisc', newMisc);
             }}
             className="cinput pc-zaMisc-inp cinput-c"
-            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', ...(zaMiscData.hasExtras ? { borderColor: 'var(--red) !important', background: 'rgba(139, 26, 26, 0.05) !important', color: 'var(--red)', fontWeight: 'bold' } : {}) }}
+            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', borderColor: 'var(--pb)' }}
             title={zaMiscData.tooltip}
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>=</span>
@@ -397,7 +397,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             readOnly
             tabIndex={-1}
             className="cinput cinput-c"
-            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--red)', borderColor: 'var(--pb)' }}
+            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)' }}
             title="GES-Modifikator"
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
@@ -410,7 +410,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
               CombatState.updatePCNumber('refMisc', newMisc);
             }}
             className="cinput pc-refMisc-inp cinput-c"
-            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', ...(refMiscData.hasExtras ? { borderColor: 'var(--red) !important', background: 'rgba(139, 26, 26, 0.05) !important', color: 'var(--red)', fontWeight: 'bold' } : {}) }}
+            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', borderColor: 'var(--pb)' }}
             title={refMiscData.tooltip}
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>=</span>
@@ -442,7 +442,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             readOnly
             tabIndex={-1}
             className="cinput cinput-c"
-            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--red)', borderColor: 'var(--pb)' }}
+            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)' }}
             title="WEI-Modifikator"
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
@@ -455,7 +455,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
               CombatState.updatePCNumber('wilMisc', newMisc);
             }}
             className="cinput pc-wilMisc-inp cinput-c"
-            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', ...(wisMiscData.hasExtras ? { borderColor: 'var(--red) !important', background: 'rgba(139, 26, 26, 0.05) !important', color: 'var(--red)', fontWeight: 'bold' } : {}) }}
+            style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', borderColor: 'var(--pb)' }}
             title={wisMiscData.tooltip}
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>=</span>
