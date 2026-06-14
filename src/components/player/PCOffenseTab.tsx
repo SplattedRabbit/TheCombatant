@@ -1,11 +1,11 @@
 /**
  * @module    PCOffenseTab
- * @summary   Rendert den Offense-Tab mit Ausrüstungsslots (Haupthand, Nebenhand, Rüstung), Waffenkammer, Rüstungskammer, BAB-Anzeige und CMB/CMD Werten.
+ * @summary   Rendert den Offense-Tab mit Ausrüstungsslots, Waffenkammer, Rüstungskammer, BAB-Anzeige und CMB/CMD Werten.
  * @exports   PCOffenseTab
- * @reads     pc.weapons, pc.armors, pc.activeShape, pc.feats, pc.bab, pc.str, pc.dex, pc.isTotalDefense, pc.isSmiteActive, pc.isFavoredEnemyActive, pc.isSneakAttacking, pc.autoAC
+ * @reads     pc.weapons, pc.armor, pc.activeShape, pc.feats, pc.bab, pc.str, pc.dex, pc.isTotalDefense, pc.isSmiteActive, pc.isFavoredEnemyActive, pc.isSneakAttacking, pc.autoAC
  * @stateOps  togglePCWeaponEquip, togglePCArmorEquip, updatePCWeapon, deletePCWeapon, addPCWeapon, addPCArmor, removePCArmor, updatePCArmorField, setPCAutoAC, updatePCBatch
- * @depends   React, @core/state.js, @core/rules/AttackEngine.js, @core/models/Weapon.js, @core/data/armor-data.js, @core/ui/components/dialogs.js, src/components/shared/BaseCard
- * @notHere   Attribute & Multiclass -> PCAttributes.tsx | Fertigkeiten -> PCSkillsTab.tsx
+ * @depends   React, @core/state.js, @core/rules/AttackEngine.js, @core/models/Weapon.js, src/components/shared/BaseCard, src/components/player/offense/ActiveEquipmentSlots, src/components/player/offense/WeaponStashCard, src/components/player/offense/ArmorStashCard
+ * @notHere   Ausrüstungs-Slots -> ActiveEquipmentSlots.tsx | Waffen-Stash-Card -> WeaponStashCard.tsx | Rüstungs-Stash-Card -> ArmorStashCard.tsx
  */
 
 import React, { useState } from 'react';
@@ -15,14 +15,16 @@ import { BaseCard } from '../shared/BaseCard';
 // @ts-ignore
 import { AttackEngine } from '@core/rules/AttackEngine.js';
 // @ts-ignore
-import { WeaponRegistry, matchesFeatOption, getCritThreatDisplay } from '@core/models/Weapon.js';
-// @ts-ignore
-import { ARMOR_REGISTRY } from '@core/data/armor-data.js';
+import { WeaponRegistry, matchesFeatOption } from '@core/models/Weapon.js';
 // @ts-ignore
 import { showAttackChoiceDialog, showDamageChoiceDialog, showRollBreakdown, showCustomConfirm } from '@core/ui/components/dialogs.js';
 
+import { ActiveEquipmentSlots } from './offense/ActiveEquipmentSlots';
+import { WeaponStashCard } from './offense/WeaponStashCard';
+import { ArmorStashCard } from './offense/ArmorStashCard';
+
 interface PCOffenseTabProps {
-  pc: any; // Als any deklariert zur Laufzeit-Kompatibilität mit snapshot-serialisierten Klasseninstanzen
+  pc: any; // snapshotted instance runtime compatibility
 }
 
 export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
@@ -146,7 +148,6 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
     const oldHand = targetWeapon.hand || 'main';
     if (oldHand === val) return;
     
-    // Finde Waffe in der Zielhand zum Tauschen
     const otherWeapon = pc.weapons.find((w: any, i: number) => w.equipped && i !== idx && (w.hand === val || (val === 'main' && w.hand !== 'off')));
     const otherIdx = otherWeapon ? pc.weapons.indexOf(otherWeapon) : null;
     
@@ -190,176 +191,11 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
     }
   };
 
-  // Double Weapon Ausrüstungsentscheidung bestätigen
   const handleDoubleWeaponOption = (isDouble: boolean) => {
     if (doubleWeaponIdx === null) return;
     CombatState.updatePCWeapon(doubleWeaponIdx, 'isDoubleWielded', isDouble);
     CombatState.togglePCWeaponEquip(doubleWeaponIdx);
     setDoubleWeaponIdx(null);
-  };
-
-  // Slot-Renderer (Haupthand, Nebenhand, Rüstung)
-  const renderActiveSlot = (type: 'main' | 'off' | 'armor') => {
-    if (type === 'main') {
-      const w = mainHandWeapon;
-      const rStyle = getRarityStyle(w ? w.enhancement : 0);
-      if (!w) {
-        return (
-          <div className="arpg-slot main-hand-slot" style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: '0.5px solid var(--pb)', borderRadius: '4px', padding: '5px 6px', textAlign: 'center' }}>
-            <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>⚔️</div>
-            <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Haupthand</div>
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Unbewaffnet)</div>
-          </div>
-        );
-      }
-      
-      const seq = AttackEngine.calculateAttackSequence(pc, w, false, {
-        smite: pc.isSmiteActive,
-        favoredEnemy: pc.isFavoredEnemyActive,
-        sneakAttack: pc.isSneakAttacking
-      });
-      const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
-      const hasImprovedCritical = pc.feats && pc.feats.some((f: any) => 
-        (f.id === 'improved_critical' || f.id === 'verbesserter_kritischer_treffer') &&
-        matchesFeatOption(w, f.option)
-      );
-      const isDoubleThreat = w.isNatural ? false : (w.isKeen || hasImprovedCritical);
-      const doubledCritDisplay = w.isNatural ? 'x2' : getCritThreatDisplay(w.critRange, w.critMult, isDoubleThreat);
-      const dmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : (w.damage || '1w6');
-      const extraDamage = w.extraDamage ? ` + ${w.extraDamage}` : '';
-
-      return (
-        <div className={`arpg-slot main-hand-slot ${rStyle.glowClass}`} style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: rStyle.border, borderRadius: '4px', padding: '5px 6px', textAlign: 'center', background: rStyle.background, boxShadow: rStyle.boxShadow }}>
-          <button className="unequip-slot-btn" onClick={() => CombatState.togglePCWeaponEquip(pc.weapons.indexOf(w))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
-          <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Haupthand</div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={w.name}>{w.name}</div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', margin: '1px 0 3px' }}>
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={`${dmgDice}${extraDamage} • ${doubledCritDisplay}`}>{dmgDice}${extraDamage} • {doubledCritDisplay}</div>
-            {w.type !== 'unarmed' && w.grip !== '2h' && w.grip !== '2H' && (
-              <select
-                className="cinput weapon-hand-select"
-                value="main"
-                onChange={(e) => handleHandSelectChange(pc.weapons.indexOf(w), e.target.value)}
-                style={{ fontSize: '7px', padding: '0 1px', height: '12px', lineHeight: 1, borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none', background: 'white', color: 'var(--ink)', marginTop: '1px', cursor: 'pointer' }}
-              >
-                <option value="main">Haupthand</option>
-                <option value="off">Nebenhand</option>
-              </select>
-            )}
-          </div>
-          <div style={{ display: 'flex', gap: '2px', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <button className="xbtn xbtn-dmg roll-atk-btn" disabled={pc.isTotalDefense} onClick={(e) => handleRollAttack(w, false, e)} style={{ padding: '1px 2px', fontSize: '6.5px', fontWeight: 'bold', flex: 1, whiteSpace: 'nowrap', height: '15px', lineHeight: 1, opacity: pc.isTotalDefense ? 0.4 : 1, cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer' }} title="Angriff ausführen">
-              ATK ({formatMod(stdAtkObj.atkTotal)}) 🎲
-            </button>
-            <button className="xbtn xbtn-heal roll-dmg-btn" disabled={pc.isTotalDefense} onClick={(e) => handleRollDamage(w, false, e)} style={{ padding: '1px 2px', fontSize: '6.5px', fontWeight: 'bold', flex: 1, borderColor: '#2a6a2a', color: '#1a4a1a', whiteSpace: 'nowrap', height: '15px', lineHeight: 1, opacity: pc.isTotalDefense ? 0.4 : 1, cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer' }}>
-              DMG ({formatMod(stdAtkObj.dmgTotal)})
-            </button>
-          </div>
-        </div>
-      );
-    }
-    
-    if (type === 'off') {
-      const w = offHandWeapon;
-      const sh = equippedShield;
-      const rStyle = getRarityStyle(sh ? sh.enhancement : (w ? w.enhancement : 0));
-
-      if (!sh && !w) {
-        return (
-          <div className="arpg-slot off-hand-slot" style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: '0.5px solid var(--pb)', borderRadius: '4px', padding: '5px 6px', textAlign: 'center' }}>
-            <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>🛡️</div>
-            <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Nebenhand</div>
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Leer)</div>
-          </div>
-        );
-      }
-
-      if (sh) {
-        return (
-          <div className={`arpg-slot off-hand-slot ${rStyle.glowClass}`} style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: rStyle.border, borderRadius: '4px', padding: '5px 6px', textAlign: 'center', background: rStyle.background, boxShadow: rStyle.boxShadow }}>
-            <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armor.indexOf(sh))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
-            <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Nebenhand</div>
-            <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={sh.name}>{sh.name}</div>
-            <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{sh.acBonus} RK (Schild)</div>
-            <div style={{ fontSize: '6.5px', color: 'var(--inkm)', lineHeight: 1 }}>Malus: -{sh.checkPenalty ?? 0}</div>
-          </div>
-        );
-      }
-
-      // Waffe in Nebenhand
-      const seq = AttackEngine.calculateAttackSequence(pc, w, false, {
-        isOffhandAttack: true,
-        smite: pc.isSmiteActive,
-        favoredEnemy: pc.isFavoredEnemyActive,
-        sneakAttack: pc.isSneakAttacking
-      });
-      const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
-      const hasImprovedCritical = pc.feats && pc.feats.some((f: any) => 
-        (f.id === 'improved_critical' || f.id === 'verbesserter_kritischer_treffer') &&
-        matchesFeatOption(w, f.option)
-      );
-      const isDoubleThreat = w.isKeen || hasImprovedCritical;
-      const doubledCritDisplay = getCritThreatDisplay(w.critRange, w.critMult, isDoubleThreat);
-      const dmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : (w.damage || '1w6');
-      const extraDamage = w.extraDamage ? ` + ${w.extraDamage}` : '';
-      const offhandLabel = isDoubleWielded ? 'Nebenhand (Nebenseite)' : 'Nebenhand';
-
-      return (
-        <div className={`arpg-slot off-hand-slot ${rStyle.glowClass}`} style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: rStyle.border, borderRadius: '4px', padding: '5px 6px', textAlign: 'center', background: rStyle.background, boxShadow: rStyle.boxShadow }}>
-          <button className="unequip-slot-btn" onClick={() => CombatState.togglePCWeaponEquip(pc.weapons.indexOf(w))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
-          <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>{offhandLabel}</div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={isDoubleWielded ? w.name + ' (Nebenseite)' : w.name}>
-            {isDoubleWielded ? w.name + ' (Nebenseite)' : w.name}
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', margin: '1px 0 3px' }}>
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={`${dmgDice}${extraDamage} • ${doubledCritDisplay}`}>{dmgDice}${extraDamage} • {doubledCritDisplay}</div>
-            {!isDoubleWielded && w.grip !== '2h' && w.grip !== '2H' && (
-              <select
-                className="cinput weapon-hand-select"
-                value="off"
-                onChange={(e) => handleHandSelectChange(pc.weapons.indexOf(w), e.target.value)}
-                style={{ fontSize: '7px', padding: '0 1px', height: '12px', lineHeight: 1, borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none', background: 'white', color: 'var(--ink)', marginTop: '1px', cursor: 'pointer' }}
-              >
-                <option value="main">Haupthand</option>
-                <option value="off">Nebenhand</option>
-              </select>
-            )}
-          </div>
-          <div style={{ display: 'flex', gap: '2px', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <button className="xbtn xbtn-dmg roll-atk-btn" disabled={pc.isTotalDefense} onClick={(e) => handleRollAttack(w, true, e)} style={{ padding: '1px 2px', fontSize: '6.5px', fontWeight: 'bold', flex: 1, whiteSpace: 'nowrap', height: '15px', lineHeight: 1, opacity: pc.isTotalDefense ? 0.4 : 1, cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer' }} title="Angriff ausführen">
-              ATK ({formatMod(stdAtkObj.atkTotal)}) 🎲
-            </button>
-            <button className="xbtn xbtn-heal roll-dmg-btn" disabled={pc.isTotalDefense} onClick={(e) => handleRollDamage(w, true, e)} style={{ padding: '1px 2px', fontSize: '6.5px', fontWeight: 'bold', flex: 1, borderColor: '#2a6a2a', color: '#1a4a1a', whiteSpace: 'nowrap', height: '15px', lineHeight: 1, opacity: pc.isTotalDefense ? 0.4 : 1, cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer' }}>
-              DMG ({formatMod(stdAtkObj.dmgTotal)})
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    // armor
-    const a = equippedArmor;
-    const rStyle = getRarityStyle(a ? a.enhancement : 0);
-    if (!a) {
-      return (
-        <div className="arpg-slot armor-slot" style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: '0.5px solid var(--pb)', borderRadius: '4px', padding: '5px 6px', textAlign: 'center' }}>
-          <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>👕</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Rüstung</div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Keine)</div>
-        </div>
-      );
-    }
-
-    const maxDexDisplay = a.maxDex !== null && a.maxDex !== undefined ? a.maxDex : '—';
-    return (
-      <div className={`arpg-slot armor-slot ${rStyle.glowClass}`} style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: rStyle.border, borderRadius: '4px', padding: '5px 6px', textAlign: 'center', background: rStyle.background, boxShadow: rStyle.boxShadow }}>
-        <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armor.indexOf(a))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
-        <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Rüstung</div>
-        <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={a.name}>{a.name}</div>
-        <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{a.acBonus} RK</div>
-        <div style={{ fontSize: '6.5px', color: 'var(--inkm)', lineHeight: 1 }}>Dex-Lim: {maxDexDisplay} | Malus: -{a.checkPenalty ?? 0}</div>
-      </div>
-    );
   };
 
   const cmbTooltip = `Kampfmanöver-Bonus (CMB):\nBasisangriffswert (BAB): ${formatMod(babVal)}\nStärke-Mod: ${formatMod(strMod)}\nGrößen-Mod: ${formatMod(sizeMod)}`;
@@ -371,37 +207,19 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
       {/* Linke Spalte: Aktive Ausrüstung & Kampfbalken */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         <BaseCard title="⚔️ Aktive Ausrüstung">
-          {pc.activeShape !== 'none' ? (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <div style={{ background: 'rgba(200, 169, 110, 0.04)', border: '0.5px solid var(--pb)', borderRadius: '4px', padding: '8px 10px', textAlign: 'center', fontStyle: 'italic', color: 'var(--inkl)', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', marginBottom: '8px' }}>
-                In wilder Gestalt (Wild Shape) ist deine normale Ausrüstung inaktiv. Verwende deine natürlichen Waffen.
-              </div>
-              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--inkl)', paddingBottom: '2px', borderBottom: '0.5px solid var(--pb)', marginBottom: '4px', fontWeight: 'bold' }}>
-                🐾 Natürliche Angriffe (Wild Shape)
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                {equippedWeapons.filter((w: any) => w.isNatural).map((w: any, idx: number) => {
-                  const seq = AttackEngine.calculateAttackSequence(pc, w, false);
-                  const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0 };
-                  return (
-                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '3px 6px', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '8.5px' }}>
-                      <span style={{ fontWeight: 'bold', color: 'var(--red)' }}>{w.name}</span>
-                      <div style={{ display: 'flex', gap: '4px' }}>
-                        <button className="xbtn xbtn-dmg" onClick={(e) => handleRollAttack(w, false, e)} style={{ fontSize: '7.5px', padding: '2px 4px' }}>ATK ({formatMod(stdAtkObj.atkTotal)}) 🎲</button>
-                        <button className="xbtn xbtn-heal" onClick={(e) => handleRollDamage(w, false, e)} style={{ fontSize: '7.5px', padding: '2px 4px', borderColor: '#2a6a2a', color: '#1a4a1a' }}>DMG ({w.damage})</button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ) : (
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', padding: '6px', background: 'rgba(200, 169, 110, 0.04)', border: '0.5px solid var(--pb)', borderRadius: '4px' }}>
-              {renderActiveSlot('main')}
-              {renderActiveSlot('armor')}
-              {renderActiveSlot('off')}
-            </div>
-          )}
+          <ActiveEquipmentSlots
+            pc={pc}
+            mainHandWeapon={mainHandWeapon}
+            offHandWeapon={offHandWeapon}
+            equippedShield={equippedShield}
+            equippedArmor={equippedArmor}
+            isDoubleWielded={isDoubleWielded}
+            getRarityStyle={getRarityStyle}
+            formatMod={formatMod}
+            handleHandSelectChange={handleHandSelectChange}
+            handleRollAttack={handleRollAttack}
+            handleRollDamage={handleRollDamage}
+          />
         </BaseCard>
 
         {/* BAB / CMB / CMD */}
@@ -456,199 +274,18 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                 </div>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '220px', overflowY: 'auto', paddingRight: '2px' }}>
-                  {Array.isArray(pc.weapons) && pc.weapons.map((w: any, idx: number) => {
-                    const rStyle = getRarityStyle(w.enhancement);
-                    const isExpanded = !!expandedWeaponIds[w.id];
-                    return (
-                      <div key={w.id || idx} style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
-                        <div
-                          className={`stash-item-card ${rStyle.glowClass}`}
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            border: rStyle.border,
-                            borderRadius: '4px',
-                            padding: '5px 6px',
-                            background: rStyle.background,
-                            boxShadow: rStyle.boxShadow,
-                            position: 'relative',
-                            marginTop: w.equipped ? '6px' : 0
-                          }}
-                        >
-                          {w.equipped && (
-                            <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', zIndex: 10 }}>Ausgerüstet</span>
-                          )}
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
-                            <input
-                              type="text"
-                              value={w.name}
-                              onChange={(e) => CombatState.updatePCWeapon(idx, 'name', e.target.value)}
-                              className="cinput"
-                              placeholder="Name"
-                              style={{ fontSize: '9px', height: '18px', padding: '0 4px', flex: 1, fontWeight: 'bold', borderColor: 'rgba(200, 169, 110, 0.25)' }}
-                            />
-                            <button
-                              onClick={() => CombatState.deletePCWeapon(idx)}
-                              style={{ border: 'none', background: 'transparent', fontSize: '10px', cursor: 'pointer', height: '18px', width: '18px', color: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                            >
-                              ✕
-                            </button>
-                          </div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <select
-                              value={w.type}
-                              onChange={(e) => CombatState.updatePCWeapon(idx, 'type', e.target.value)}
-                              className="cinput"
-                              style={{ fontSize: '7.5px', padding: '0 2px', height: '16px', flex: 1.2, cursor: 'pointer' }}
-                            >
-                              {Object.values(WeaponRegistry).map((def: any) => (
-                                <option key={def.key} value={def.key}>{def.nameDe}</option>
-                              ))}
-                            </select>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '1px', flex: 0.6 }}>
-                              <span style={{ fontSize: '7.5px', color: 'var(--inkm)' }}>+</span>
-                              <input
-                                type="number"
-                                value={w.enhancement}
-                                onChange={(e) => CombatState.updatePCWeapon(idx, 'enhancement', parseInt(e.target.value) || 0)}
-                                className="cinput"
-                                style={{ fontSize: '8px', height: '16px', width: '20px', padding: 0, textAlign: 'center' }}
-                              />
-                            </div>
-                            {w.grip === '2h' || w.grip === '2H' ? (
-                              <select className="cinput" disabled style={{ fontSize: '7.5px', height: '16px', flex: 1.1, opacity: 0.65, background: 'rgba(200,169,110,0.05)', textAlign: 'center' }}>
-                                <option>Zweihändig</option>
-                              </select>
-                            ) : w.grip === 'rng' ? (
-                              <select className="cinput" disabled style={{ fontSize: '7.5px', height: '16px', flex: 1.1, opacity: 0.65, background: 'rgba(200,169,110,0.05)', textAlign: 'center' }}>
-                                <option>Fernkampf</option>
-                              </select>
-                            ) : (
-                              <select
-                                value={w.hand || 'main'}
-                                onChange={(e) => handleHandSelectChange(idx, e.target.value)}
-                                className="cinput"
-                                style={{ fontSize: '7.5px', padding: '0 1px', height: '16px', flex: 1.1, cursor: 'pointer' }}
-                              >
-                                <option value="main">Haupthand</option>
-                                <option value="off">Nebenhand</option>
-                              </select>
-                            )}
-                            <button
-                              className="xbtn equip-btn"
-                              onClick={() => handleWeaponEquipToggle(idx, w)}
-                              style={{ padding: '0 6px', fontSize: '7.5px', fontWeight: 'bold', height: '16px', borderRadius: '2px' }}
-                            >
-                              {w.equipped ? 'Ablegen' : 'Anlegen'}
-                            </button>
-                            <button
-                              className="xbtn"
-                              onClick={() => setExpandedWeaponIds(prev => ({ ...prev, [w.id]: !prev[w.id] }))}
-                              style={{ padding: 0, border: 'none', background: 'transparent', fontSize: '11px', cursor: 'pointer', height: '16px', width: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--inkm)' }}
-                            >
-                              ⚙️
-                            </button>
-                          </div>
-                        </div>
-
-                        {/* Weapon Detail Drawer */}
-                        {isExpanded && (
-                          <div style={{ display: 'flex', background: 'rgba(200,169,110,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderTop: 'none', padding: '4px 6px', fontSize: '8px', marginTop: '-2px', marginBottom: '2px', borderRadius: '0 0 3px 3px', flexDirection: 'column', gap: '4px' }}>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', width: '100%' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-                                <span style={{ color: 'var(--inkl)' }}>Zusatz-Atk:</span>
-                                <input
-                                  type="text"
-                                  value={w.attackBonus || ''}
-                                  onChange={(e) => CombatState.updatePCWeapon(idx, 'attackBonus', e.target.value)}
-                                  className="cinput"
-                                  placeholder="+0"
-                                  style={{ width: '32px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-                                />
-                              </div>
-                              <label style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer', color: 'var(--inkm)', margin: 0 }}>
-                                <input
-                                  type="checkbox"
-                                  checked={w.isKeen || false}
-                                  onChange={(e) => CombatState.updatePCWeapon(idx, 'isKeen', e.target.checked)}
-                                  style={{ margin: 0, width: '10px', height: '10px' }}
-                                />
-                                Scharf (Keen)
-                              </label>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '3px', flex: 1, minWidth: '150px' }}>
-                                <span style={{ color: 'var(--inkl)', flexShrink: 0 }}>Zusatz-Schaden:</span>
-                                <select
-                                  value={w.extraDamageDice || ''}
-                                  onChange={(e) => CombatState.updatePCWeapon(idx, 'extraDamageDice', e.target.value)}
-                                  className="cinput"
-                                  style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', width: '45px', flexShrink: 0, cursor: 'pointer' }}
-                                >
-                                  <option value="">Kein</option>
-                                  {['1w2', '1w3', '1w4', '1w6', '1w8', '1w10', '1w12', '2w4', '2w6', '2w8', '2w10', '3w6', '3w8', '4w6'].map(d => (
-                                    <option key={d} value={d}>{d}</option>
-                                  ))}
-                                </select>
-                                <select
-                                  value={w.extraDamageType || ''}
-                                  onChange={(e) => CombatState.updatePCWeapon(idx, 'extraDamageType', e.target.value)}
-                                  className="cinput"
-                                  style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', flex: 1, minWidth: 0, cursor: 'pointer' }}
-                                >
-                                  <option value="">—</option>
-                                  {['Feuer', 'Kälte', 'Elektrizität', 'Säure', 'Schall', 'Wucht', 'Stich', 'Schnitt', 'Kraft', 'Gottgeweiht'].map(t => (
-                                    <option key={t} value={t}>{t}</option>
-                                  ))}
-                                </select>
-                              </div>
-                            </div>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', width: '100%' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-                                <span style={{ color: 'var(--inkl)' }}>Grip-Abw.:</span>
-                                <select
-                                  value={w.gripOverride || ''}
-                                  onChange={(e) => CombatState.updatePCWeapon(idx, 'gripOverride', e.target.value)}
-                                  className="cinput"
-                                  style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', cursor: 'pointer' }}
-                                >
-                                  <option value="">Standard</option>
-                                  <option value="1h">1-Hand</option>
-                                  <option value="2h">2-Hand</option>
-                                  <option value="sec">Schildh</option>
-                                  <option value="rng">Fernk</option>
-                                  <option value="unarmed">Waffenlos</option>
-                                </select>
-                              </div>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-                                <span style={{ color: 'var(--inkl)' }}>Schadens-Abw.:</span>
-                                <select
-                                  value={w.damageDiceOverride || ''}
-                                  onChange={(e) => CombatState.updatePCWeapon(idx, 'damageDiceOverride', e.target.value)}
-                                  className="cinput"
-                                  style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', cursor: 'pointer' }}
-                                >
-                                  <option value="">Standard</option>
-                                  {['1w2', '1w3', '1w4', '1w6', '1w8', '1w10', '1w12', '2w4', '2w6', '2w8', '2w10', '3w6', '3w8', '4w6'].map(d => (
-                                    <option key={d} value={d}>{d}</option>
-                                  ))}
-                                </select>
-                              </div>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-                                <span style={{ color: 'var(--inkl)' }}>Krit-Abw.:</span>
-                                <input
-                                  type="text"
-                                  value={w.critOverride || ''}
-                                  onChange={(e) => CombatState.updatePCWeapon(idx, 'critOverride', e.target.value)}
-                                  className="cinput"
-                                  placeholder="Standard"
-                                  style={{ width: '70px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                  {Array.isArray(pc.weapons) && pc.weapons.map((w: any, idx: number) => (
+                    <WeaponStashCard
+                      key={w.id || idx}
+                      w={w}
+                      idx={idx}
+                      isExpanded={!!expandedWeaponIds[w.id]}
+                      onToggleExpand={() => setExpandedWeaponIds(prev => ({ ...prev, [w.id]: !prev[w.id] }))}
+                      getRarityStyle={getRarityStyle}
+                      handleHandSelectChange={handleHandSelectChange}
+                      handleWeaponEquipToggle={handleWeaponEquipToggle}
+                    />
+                  ))}
                 </div>
               </div>
 
@@ -666,137 +303,17 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                 </div>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '180px', overflowY: 'auto', paddingRight: '2px' }}>
-                  {Array.isArray(pc.armor) && pc.armor.map((a: any, idx: number) => {
-                    const rStyle = getRarityStyle(a.enhancement);
-                    const isExpanded = !!expandedArmorIds[a.id];
-                    return (
-                      <div key={a.id || idx} style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
-                        <div
-                          className={`stash-item-card ${rStyle.glowClass}`}
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            border: rStyle.border,
-                            borderRadius: '4px',
-                            padding: '5px 6px',
-                            background: rStyle.background,
-                            boxShadow: rStyle.boxShadow,
-                            position: 'relative',
-                            marginTop: a.equipped ? '6px' : 0
-                          }}
-                        >
-                          {a.equipped && (
-                            <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', zIndex: 10 }}>Ausgerüstet</span>
-                          )}
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
-                            <input
-                              type="text"
-                              value={a.name}
-                              onChange={(e) => CombatState.updatePCArmorField(idx, 'name', e.target.value)}
-                              className="cinput"
-                              placeholder="Name"
-                              style={{ fontSize: '9px', height: '18px', padding: '0 4px', flex: 1, fontWeight: 'bold', borderColor: 'rgba(200, 169, 110, 0.25)' }}
-                            />
-                            <button
-                              onClick={() => CombatState.removePCArmor(idx)}
-                              style={{ border: 'none', background: 'transparent', fontSize: '10px', cursor: 'pointer', height: '18px', width: '18px', color: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                            >
-                              ✕
-                            </button>
-                          </div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <select
-                              value={a.type}
-                              onChange={(e) => CombatState.updatePCArmorField(idx, 'type', e.target.value)}
-                              className="cinput"
-                              style={{ fontSize: '7.5px', padding: '0 2px', height: '16px', flex: 1.2, cursor: 'pointer' }}
-                            >
-                              {Object.values(ARMOR_REGISTRY).map((def: any) => (
-                                <option key={def.key} value={def.key}>{def.nameDe}</option>
-                              ))}
-                            </select>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '1px', flex: 0.8 }}>
-                              <span style={{ fontSize: '7.5px', color: 'var(--inkm)' }}>+</span>
-                              <input
-                                type="number"
-                                value={a.enhancement}
-                                onChange={(e) => CombatState.updatePCArmorField(idx, 'enhancement', parseInt(e.target.value) || 0)}
-                                className="cinput"
-                                style={{ fontSize: '8px', height: '16px', width: '22px', padding: 0, textAlign: 'center' }}
-                              />
-                            </div>
-                            <button
-                              className="xbtn equip-btn"
-                              onClick={() => handleArmorEquipToggle(idx, a)}
-                              style={{ padding: '0 6px', fontSize: '7.5px', fontWeight: 'bold', height: '16px', borderRadius: '2px' }}
-                            >
-                              {a.equipped ? 'Ablegen' : 'Anlegen'}
-                            </button>
-                            <button
-                              className="xbtn"
-                              onClick={() => setExpandedArmorIds(prev => ({ ...prev, [a.id]: !prev[a.id] }))}
-                              style={{ padding: 0, border: 'none', background: 'transparent', fontSize: '11px', cursor: 'pointer', height: '16px', width: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--inkm)' }}
-                            >
-                              ⚙️
-                            </button>
-                          </div>
-                        </div>
-
-                        {/* Armor Detail Drawer */}
-                        {isExpanded && (
-                          <div style={{ display: 'flex', background: 'rgba(200,169,110,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderTop: 'none', padding: '4px 6px', fontSize: '8px', marginTop: '-2px', marginBottom: '2px', borderRadius: '0 0 3px 3px', flexDirection: 'column', gap: '4px' }}>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', width: '100%' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-                                <span style={{ color: 'var(--inkl)' }}>RK-Abw.:</span>
-                                <input
-                                  type="text"
-                                  value={a.armorBonusOverride || ''}
-                                  onChange={(e) => CombatState.updatePCArmorField(idx, 'armorBonusOverride', e.target.value)}
-                                  className="cinput"
-                                  placeholder="Standard"
-                                  style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-                                />
-                              </div>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-                                <span style={{ color: 'var(--inkl)' }}>MaxDex-Abw.:</span>
-                                <input
-                                  type="text"
-                                  value={a.maxDexOverride || ''}
-                                  onChange={(e) => CombatState.updatePCArmorField(idx, 'maxDexOverride', e.target.value)}
-                                  className="cinput"
-                                  placeholder="Standard"
-                                  style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-                                />
-                              </div>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-                                <span style={{ color: 'var(--inkl)' }}>Malus-Abw.:</span>
-                                <input
-                                  type="text"
-                                  value={a.checkPenaltyOverride || ''}
-                                  onChange={(e) => CombatState.updatePCArmorField(idx, 'checkPenaltyOverride', e.target.value)}
-                                  className="cinput"
-                                  placeholder="Standard"
-                                  style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-                                />
-                              </div>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-                                <span style={{ color: 'var(--inkl)' }}>Zauberpatzer-Abw.:</span>
-                                <input
-                                  type="text"
-                                  value={a.spellFailureOverride || ''}
-                                  onChange={(e) => CombatState.updatePCArmorField(idx, 'spellFailureOverride', e.target.value)}
-                                  className="cinput"
-                                  placeholder="Standard"
-                                  style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-                                />
-                                <span style={{ color: 'var(--inkm)' }}>%</span>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                  {Array.isArray(pc.armor) && pc.armor.map((a: any, idx: number) => (
+                    <ArmorStashCard
+                      key={a.id || idx}
+                      a={a}
+                      idx={idx}
+                      isExpanded={!!expandedArmorIds[a.id]}
+                      onToggleExpand={() => setExpandedArmorIds(prev => ({ ...prev, [a.id]: !prev[a.id] }))}
+                      getRarityStyle={getRarityStyle}
+                      handleArmorEquipToggle={handleArmorEquipToggle}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
