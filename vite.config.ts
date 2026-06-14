@@ -51,7 +51,7 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'index-react.html'),
+        main: path.resolve(__dirname, 'index.html'),
       },
       output: {
         manualChunks(id) {
@@ -75,6 +75,6 @@ export default defineConfig({
 
   server: {
     port: 5173,
-    open: '/index-react.html',
+    open: '/index.html',
   },
 });

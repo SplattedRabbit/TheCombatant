@@ -62,7 +62,7 @@ node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
   - Um den Verlust von Instanzmethoden zu beheben, rehydriert die Hilfsfunktion `rehydrateCombatant` nach dem Klonen mittels `Object.setPrototypeOf` die Prototypen für `Combatant`, `Stat`, `Weapon`, `Armor` und `Item`.
   - Jede neue Datenstruktur oder Klasse, die im Frontend Methodenaufrufe erfordert, muss in dieser Rehydrierungskette registriert werden.
 * **Cache-Versionierung:** Das Muster ist `dnd-combatsheet-vX.Y.Z-cache-vN`. Bei Bugfixes innerhalb einer Version wird nur `N` inkrementiert.
-  - **Wichtig:** Passe bei einem Inkrement immer gleichzeitig `service-worker.js` (Zeile 1, `CACHE_NAME`) und `index-react.html` (Footer-Version) an!
+  - **Wichtig:** Passe bei einem Inkrement immer gleichzeitig `service-worker.js` (Zeile 1, `CACHE_NAME`) und `index.html` (Footer-Version) an!
 
 ---
 

@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; URL='./dist/index-react.html'" />
-  <title>D&D 3.5e Combat Sheet - Weiterleitung...</title>
-  <script>
-    window.location.replace('./dist/index-react.html');
-  </script>
-</head>
-<body>
-  <p>Falls du nicht automatisch weitergeleitet wirst, <a href="./dist/index-react.html">klicke hier</a>.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="D&D 3.5e Combat App — Offline-fähiger Kampfbogen für Spieler und Spielleiter" />
+    <title>D&D 3.5e Combat App</title>
+    <link rel="icon" type="image/png" href="./icon-192.png" />
+    <link rel="manifest" href="./manifest.json" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- PeerJS: globales window.Peer-Objekt, bewusst außerhalb des Vite-Bundles -->
+    <script src="./peerjs.min.js"></script>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Service Worker Registrierung (Offline-Modus via dist/service-worker.js)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('[SW] Registriert:', reg.scope))
+            .catch(err => console.warn('[SW] Registrierung fehlgeschlagen:', err));
+        });
+      }
+    </script>
+  </body>
 </html>
