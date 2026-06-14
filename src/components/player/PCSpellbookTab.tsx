@@ -1,6 +1,6 @@
 /**
  * @module    PCSpellbookTab
- * @summary   Rendert die linke Spalte des Zauberreiters: Zauberslots, ASF-Warnungen und die Zauberbibliothek mit Vorbereiten/Wirken Aktionen.
+ * @summary   Renders the left column of the spells tab: spell slots, ASF warnings and the spell library with prepare/cast actions.
  * @exports   PCSpellbookTab
  * @reads     pc.learnedSpells, pc.spellSlots, pc.classes, pc.preparedSpells, pc.wizardSpecialization, pc.customSpells
  * @stateOps  updatePCSpellSlotsUsed, updatePCBatch
@@ -27,7 +27,7 @@ export const findSpell = (pc: any, key: string) => {
     return CombatSpells.REGISTRY[key];
   }
   if (Array.isArray(pc.customSpells)) {
-    const found = pc.customSpells.find((s: any) => s.id === key || s.nameDe === key);
+    const found = pc.customSpells.find((s: any) => s.id === key || s.nameDe === key || s.nameEn === key);
     if (found) return found;
   }
   return null;
@@ -116,7 +116,6 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
               freshPc.spellSlots[lvl].used = 0;
             }
           }
-          // applyPCSpellTemplate is handled via state mutations, but since we are in a batch, we can load it:
           const template = freshPc.spellTemplates?.[templateChoice];
           if (template) {
             freshPc.preparedSpells = JSON.parse(JSON.stringify(template));
@@ -147,8 +146,8 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
       });
     } else {
       showCustomConfirm(
-        "Ein neuer Tag! 🌅",
-        "Möchtest du alle verbrauchten Zauberslots und täglichen Klassenfähigkeiten wiederherstellen und einen neuen Tag beginnen?",
+        "A new day! 🌅",
+        "Do you want to restore all expended spell slots and daily class abilities and start a new day?",
         () => { performNewDayReset('keep'); }
       );
     }
@@ -162,7 +161,9 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
 
   sortedSpells.sort((a, b) => {
     if (a.level !== b.level) return a.level - b.level;
-    return (a.nameDe || '').localeCompare(b.nameDe || '');
+    const nameA = a.nameEn || a.nameDe || '';
+    const nameB = b.nameEn || b.nameDe || '';
+    return nameA.localeCompare(nameB);
   });
 
   const groupedSpells: Record<number, any[]> = {};
@@ -175,20 +176,20 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       {totalASF > 0 && (
         <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '3px', padding: '4px 8px', display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold' }}>
-          <span>⚠️ Rüstungs-Zauberpatzer: {totalASF}% Chance auf Fehlschlag bei arkanen Zaubern</span>
+          <span>⚠️ Arcane Spell Failure: {totalASF}% chance of failure for arcane spells</span>
         </div>
       )}
 
       {/* Unified Spell Slots Grid */}
       <div style={{ background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '4px 6px' }}>
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '3px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span>🔮 Zauberslots &amp; Tageskontingente</span>
+          <span>🔮 Spell Slots &amp; Daily Allowances</span>
           <button
             onClick={handleNewDayReset}
             className="btn btn-new-day"
             style={{ fontSize: '7.5px', padding: '1px 4px', height: '14px', lineHeight: 1, fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}
           >
-            🌅 Tagesreset
+            🌅 Daily Reset
           </button>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 8px' }}>
@@ -205,7 +206,7 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
                   onClick={() => handleSpellBubbleClick(spellLvl, i)}
                   className={`spell-bubble use-icon use-icon-spell ${spent ? 'used' : ''}`}
                   style={{ cursor: 'pointer', opacity: spent ? 0.4 : 1, filter: spent ? 'grayscale(80%)' : undefined }}
-                  title={spent ? 'Benutzt (Freigeben)' : 'Verfügbar (Verbrauchen)'}
+                  title={spent ? 'Used (Release)' : 'Available (Expend)'}
                 >
                   🔮
                 </span>
@@ -214,7 +215,7 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
 
             return (
               <div key={spellLvl} style={{ display: 'flex', alignItems: 'center', gap: '3px', fontSize: '9px', lineHeight: 1 }}>
-                <span style={{ fontWeight: 600, minWidth: '35px' }}>Grad {spellLvl}:</span>
+                <span style={{ fontWeight: 600, minWidth: '35px' }}>Level {spellLvl}:</span>
                 <input
                   type="number"
                   value={max}
@@ -236,13 +237,13 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
       {/* Area B: Known Spells Library */}
       <div>
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '5px', fontWeight: 'bold' }}>
-          📖 Zauberbibliothek (Gelernte Zauber)
+          📖 Spell Library (Learned Spells)
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '250px', overflowY: 'auto', paddingRight: '2px' }}>
           {learnedSpells.length === 0 ? (
             <div style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '35px 10px', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px' }}>
-              Dein Zauberbuch ist noch leer.<br />
-              <span style={{ fontSize: '8px', marginTop: '3px', display: 'block' }}>Wechsle zum <strong>Zauberkompendium</strong>, um Zauber hinzuzufügen!</span>
+              Your spellbook is empty.<br />
+              <span style={{ fontSize: '8px', marginTop: '3px', display: 'block' }}>Switch to the <strong>Spell Compendium</strong> to add spells!</span>
             </div>
           ) : (
             Object.keys(groupedSpells).map(lvlKey => {
@@ -252,7 +253,7 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
               return (
                 <div key={lvl} style={{ marginBottom: '2px' }}>
                   <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--inkl)', borderBottom: '0.5px dashed rgba(200, 169, 110, 0.4)', paddingBottom: '1px', fontWeight: 'bold', marginBottom: '4px', letterSpacing: '0.5px' }}>
-                    Grad {lvl}
+                    Level {lvl}
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5px' }}>
                     {levelSpells.map(s => (
@@ -260,9 +261,9 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
                         <span
                           onClick={() => handleSpellDetails(s, s.id)}
                           style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: "'Crimson Text', serif", fontSize: '10px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
-                          title={`${s.nameDe} (${s.school})`}
+                          title={`${s.nameEn || s.nameDe} (${s.school})`}
                         >
-                          📜 {s.nameDe} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({s.school})</span>
+                          📜 {s.nameEn || s.nameDe} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({s.school})</span>
                         </span>
                         <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0, position: 'relative', zIndex: 1 }}>
                           {hasPrepared && (
@@ -271,7 +272,7 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
                               className="btn"
                               style={{ fontSize: '8px', padding: '1px 5px', cursor: 'pointer', borderRadius: '2.5px', borderColor: 'var(--pb)', color: 'var(--ink)', fontWeight: 'bold' }}
                             >
-                              Vorbereiten
+                              Prepare
                             </button>
                           )}
                           {hasSpontaneous && (
@@ -280,14 +281,14 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
                               className="btn"
                               style={{ fontSize: '8px', padding: '1px 5px', cursor: 'pointer', borderRadius: '2.5px', background: 'rgba(139,26,26,0.1)', borderColor: 'var(--red)', color: 'var(--red)', fontWeight: 'bold' }}
                             >
-                              Wirken
+                              Cast
                             </button>
                           )}
                           <button
                             onClick={() => handleRemoveSpell(s.id)}
                             className="btn"
                             style={{ fontSize: '8px', padding: '1px 4px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer' }}
-                            title="Aus Zauberbuch entfernen"
+                            title="Remove from spellbook"
                           >
                             ✕
                           </button>

@@ -130,14 +130,14 @@ export const InitBar: React.FC<InitBarProps> = ({ combatants, turn, round }) => 
     <div style={{ width: '100%' }}>
       {/* Round Header / Title */}
       <div className="slabel">
-        ⚔ Initiative — Runde <span style={{ marginLeft: '4px', color: 'var(--red)', fontWeight: 'bold' }}>{round}</span>
+        ⚔ Initiative — Round <span style={{ marginLeft: '4px', color: 'var(--red)', fontWeight: 'bold' }}>{round}</span>
       </div>
 
       {/* Main timeline bar */}
       <div className="init-bar" id="initBar">
         {combatants.length === 0 ? (
           <div className="empty-msg">
-            Füge Kämpfer hinzu — sie erscheinen hier nach Initiativwert sortiert
+            Add combatants — they will appear here sorted by initiative value
           </div>
         ) : (
           combatants.map((c, idx) => {

@@ -1,6 +1,6 @@
 /**
  * @module    ActiveEquipmentSlots
- * @summary   Rendert die aktiven Ausrüstungs-Slots (Haupthand, Nebenhand, Rüstung) oder Wild Shape Angriffe.
+ * @summary   Renders the active equipment slots (main hand, off-hand, armor) or Wild Shape attacks.
  * @exports   ActiveEquipmentSlots
  * @reads     pc.activeShape, pc.weapons, pc.armor, pc.isTotalDefense, pc.isSmiteActive, pc.isFavoredEnemyActive, pc.isSneakAttacking
  * @stateOps  togglePCWeaponEquip, togglePCArmorEquip
@@ -54,8 +54,8 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
         return (
           <div className="arpg-slot main-hand-slot" style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: '0.5px solid var(--pb)', borderRadius: '4px', padding: '5px 6px', textAlign: 'center' }}>
             <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>⚔️</div>
-            <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Haupthand</div>
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Unbewaffnet)</div>
+            <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Main Hand</div>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Unarmed)</div>
           </div>
         );
       }
@@ -77,8 +77,8 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
 
       return (
         <div className={`arpg-slot main-hand-slot ${rStyle.glowClass}`} style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: rStyle.border, borderRadius: '4px', padding: '5px 6px', textAlign: 'center', background: rStyle.background, boxShadow: rStyle.boxShadow }}>
-          <button className="unequip-slot-btn" onClick={() => CombatState.togglePCWeaponEquip(pc.weapons.indexOf(w))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
-          <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Haupthand</div>
+          <button className="unequip-slot-btn" onClick={() => CombatState.togglePCWeaponEquip(pc.weapons.indexOf(w))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Unequip">✕</button>
+          <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Main Hand</div>
           <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={w.name}>{w.name}</div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', margin: '1px 0 3px' }}>
             <div style={{ fontSize: '7px', color: 'var(--inkm)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={`${dmgDice}${extraDamage} • ${doubledCritDisplay}`}>{dmgDice}{extraDamage} • {doubledCritDisplay}</div>
@@ -89,13 +89,13 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
                 onChange={(e) => handleHandSelectChange(pc.weapons.indexOf(w), e.target.value)}
                 style={{ fontSize: '7px', padding: '0 1px', height: '12px', lineHeight: 1, borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none', background: 'white', color: 'var(--ink)', marginTop: '1px', cursor: 'pointer' }}
               >
-                <option value="main">Haupthand</option>
-                <option value="off">Nebenhand</option>
+                <option value="main">Main Hand</option>
+                <option value="off">Off-Hand</option>
               </select>
             )}
           </div>
           <div style={{ display: 'flex', gap: '2px', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <button className="xbtn xbtn-dmg roll-atk-btn" disabled={pc.isTotalDefense} onClick={(e) => handleRollAttack(w, false, e)} style={{ padding: '1px 2px', fontSize: '6.5px', fontWeight: 'bold', flex: 1, whiteSpace: 'nowrap', height: '15px', lineHeight: 1, opacity: pc.isTotalDefense ? 0.4 : 1, cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer' }} title="Angriff ausführen">
+            <button className="xbtn xbtn-dmg roll-atk-btn" disabled={pc.isTotalDefense} onClick={(e) => handleRollAttack(w, false, e)} style={{ padding: '1px 2px', fontSize: '6.5px', fontWeight: 'bold', flex: 1, whiteSpace: 'nowrap', height: '15px', lineHeight: 1, opacity: pc.isTotalDefense ? 0.4 : 1, cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer' }} title="Roll attack">
               ATK ({formatMod(stdAtkObj.atkTotal)}) 🎲
             </button>
             <button className="xbtn xbtn-heal roll-dmg-btn" disabled={pc.isTotalDefense} onClick={(e) => handleRollDamage(w, false, e)} style={{ padding: '1px 2px', fontSize: '6.5px', fontWeight: 'bold', flex: 1, borderColor: '#2a6a2a', color: '#1a4a1a', whiteSpace: 'nowrap', height: '15px', lineHeight: 1, opacity: pc.isTotalDefense ? 0.4 : 1, cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer' }}>
@@ -115,8 +115,8 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
         return (
           <div className="arpg-slot off-hand-slot" style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: '0.5px solid var(--pb)', borderRadius: '4px', padding: '5px 6px', textAlign: 'center' }}>
             <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>🛡️</div>
-            <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Nebenhand</div>
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Leer)</div>
+            <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Off-Hand</div>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Empty)</div>
           </div>
         );
       }
@@ -124,11 +124,11 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
       if (sh) {
         return (
           <div className={`arpg-slot off-hand-slot ${rStyle.glowClass}`} style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: rStyle.border, borderRadius: '4px', padding: '5px 6px', textAlign: 'center', background: rStyle.background, boxShadow: rStyle.boxShadow }}>
-            <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armors.indexOf(sh))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
-            <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Nebenhand</div>
+            <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armors.indexOf(sh))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Unequip">✕</button>
+            <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Off-Hand</div>
             <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={sh.name}>{sh.name}</div>
-            <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{sh.acBonus} RK (Schild)</div>
-            <div style={{ fontSize: '6.5px', color: 'var(--inkm)', lineHeight: 1 }}>Malus: -{sh.checkPenalty ?? 0}</div>
+            <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{sh.acBonus} AC (Shield)</div>
+            <div style={{ fontSize: '6.5px', color: 'var(--inkm)', lineHeight: 1 }}>ACP: -{sh.checkPenalty ?? 0}</div>
           </div>
         );
       }
@@ -149,14 +149,14 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
       const doubledCritDisplay = getCritThreatDisplay(w.crit, isDoubleThreat);
       const dmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : (w.damage || '1w6');
       const extraDamage = w.extraDamage ? ` + ${w.extraDamage}` : '';
-      const offhandLabel = isDoubleWielded ? 'Nebenhand (Nebenseite)' : 'Nebenhand';
+      const offhandLabel = isDoubleWielded ? 'Off-Hand (Offhand)' : 'Off-Hand';
 
       return (
         <div className={`arpg-slot off-hand-slot ${rStyle.glowClass}`} style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: rStyle.border, borderRadius: '4px', padding: '5px 6px', textAlign: 'center', background: rStyle.background, boxShadow: rStyle.boxShadow }}>
-          <button className="unequip-slot-btn" onClick={() => CombatState.togglePCWeaponEquip(pc.weapons.indexOf(w))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
+          <button className="unequip-slot-btn" onClick={() => CombatState.togglePCWeaponEquip(pc.weapons.indexOf(w))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Unequip">✕</button>
           <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>{offhandLabel}</div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={isDoubleWielded ? w.name + ' (Nebenseite)' : w.name}>
-            {isDoubleWielded ? w.name + ' (Nebenseite)' : w.name}
+          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={isDoubleWielded ? w.name + ' (Offhand)' : w.name}>
+            {isDoubleWielded ? w.name + ' (Offhand)' : w.name}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', margin: '1px 0 3px' }}>
             <div style={{ fontSize: '7px', color: 'var(--inkm)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={`${dmgDice}${extraDamage} • ${doubledCritDisplay}`}>{dmgDice}{extraDamage} • {doubledCritDisplay}</div>
@@ -167,13 +167,13 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
                 onChange={(e) => handleHandSelectChange(pc.weapons.indexOf(w), e.target.value)}
                 style={{ fontSize: '7px', padding: '0 1px', height: '12px', lineHeight: 1, borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none', background: 'white', color: 'var(--ink)', marginTop: '1px', cursor: 'pointer' }}
               >
-                <option value="main">Haupthand</option>
-                <option value="off">Nebenhand</option>
+                <option value="main">Main Hand</option>
+                <option value="off">Off-Hand</option>
               </select>
             )}
           </div>
           <div style={{ display: 'flex', gap: '2px', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <button className="xbtn xbtn-dmg roll-atk-btn" disabled={pc.isTotalDefense} onClick={(e) => handleRollAttack(w, true, e)} style={{ padding: '1px 2px', fontSize: '6.5px', fontWeight: 'bold', flex: 1, whiteSpace: 'nowrap', height: '15px', lineHeight: 1, opacity: pc.isTotalDefense ? 0.4 : 1, cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer' }} title="Angriff ausführen">
+            <button className="xbtn xbtn-dmg roll-atk-btn" disabled={pc.isTotalDefense} onClick={(e) => handleRollAttack(w, true, e)} style={{ padding: '1px 2px', fontSize: '6.5px', fontWeight: 'bold', flex: 1, whiteSpace: 'nowrap', height: '15px', lineHeight: 1, opacity: pc.isTotalDefense ? 0.4 : 1, cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer' }} title="Roll attack">
               ATK ({formatMod(stdAtkObj.atkTotal)}) 🎲
             </button>
             <button className="xbtn xbtn-heal roll-dmg-btn" disabled={pc.isTotalDefense} onClick={(e) => handleRollDamage(w, true, e)} style={{ padding: '1px 2px', fontSize: '6.5px', fontWeight: 'bold', flex: 1, borderColor: '#2a6a2a', color: '#1a4a1a', whiteSpace: 'nowrap', height: '15px', lineHeight: 1, opacity: pc.isTotalDefense ? 0.4 : 1, cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer' }}>
@@ -191,8 +191,8 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
       return (
         <div className="arpg-slot armor-slot" style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: '0.5px solid var(--pb)', borderRadius: '4px', padding: '5px 6px', textAlign: 'center' }}>
           <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>👕</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Rüstung</div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Keine)</div>
+          <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Armor</div>
+          <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(None)</div>
         </div>
       );
     }
@@ -200,11 +200,11 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
     const maxDexDisplay = a.maxDex !== null && a.maxDex !== undefined ? a.maxDex : '—';
     return (
       <div className={`arpg-slot armor-slot ${rStyle.glowClass}`} style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: rStyle.border, borderRadius: '4px', padding: '5px 6px', textAlign: 'center', background: rStyle.background, boxShadow: rStyle.boxShadow }}>
-        <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armors.indexOf(a))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
-        <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Rüstung</div>
+        <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armors.indexOf(a))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Unequip">✕</button>
+        <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Armor</div>
         <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={a.name}>{a.name}</div>
-        <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{a.acBonus} RK</div>
-        <div style={{ fontSize: '6.5px', color: 'var(--inkm)', lineHeight: 1 }}>Dex-Lim: {maxDexDisplay} | Malus: -{a.checkPenalty ?? 0}</div>
+        <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{a.acBonus} AC</div>
+        <div style={{ fontSize: '6.5px', color: 'var(--inkm)', lineHeight: 1 }}>Dex Cap: {maxDexDisplay} | ACP: -{a.checkPenalty ?? 0}</div>
       </div>
     );
   };
@@ -213,10 +213,10 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
         <div style={{ background: 'rgba(200, 169, 110, 0.04)', border: '0.5px solid var(--pb)', borderRadius: '4px', padding: '8px 10px', textAlign: 'center', fontStyle: 'italic', color: 'var(--inkl)', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', marginBottom: '8px' }}>
-          In wilder Gestalt (Wild Shape) ist deine normale Ausrüstung inaktiv. Verwende deine natürlichen Waffen.
+          In Wild Shape, your normal equipment is inactive. Use your natural weapons.
         </div>
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--inkl)', paddingBottom: '2px', borderBottom: '0.5px solid var(--pb)', marginBottom: '4px', fontWeight: 'bold' }}>
-          🐾 Natürliche Angriffe (Wild Shape)
+          🐾 Natural Attacks (Wild Shape)
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           {(SHAPE_ATTACKS[pc.activeShape] || []).map((atk: any, idx: number) => {

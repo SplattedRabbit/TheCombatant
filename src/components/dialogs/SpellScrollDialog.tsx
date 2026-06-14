@@ -13,7 +13,6 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
   onToggleLearn,
   onClose
 }) => {
-  const nameEn = spell.nameEn ? ` (${spell.nameEn})` : '';
   const range = spell.range || '—';
   const duration = spell.duration || '—';
   const savingThrow = spell.savingThrow || '—';
@@ -24,8 +23,8 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
   const targetOrEffectOrArea = spell.targetOrEffectOrArea || '—';
 
   const actionText = isLearned
-    ? "Möchtest du diesen Zauber aus deinem Zauberbuch ENTFERNEN?"
-    : "Möchtest du diesen Zauber in dein Zauberbuch LEGEN?";
+    ? "Do you want to REMOVE this spell from your spellbook?"
+    : "Do you want to ADD this spell to your spellbook?";
 
   const handleConfirm = () => {
     onToggleLearn();
@@ -99,7 +98,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
               fontWeight: 'bold'
             }}
           >
-            {spell.nameDe}{nameEn}
+            {spell.nameEn || spell.nameDe}
           </h3>
           <div
             style={{
@@ -113,15 +112,15 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
               fontWeight: 600
             }}
           >
-            <div><strong>Schule:</strong> {school}</div>
-            <div><strong>Grad:</strong> Grad {level}</div>
-            <div><strong>Zeitaufwand:</strong> {spell.castingTime || '1 Standardaktion'}</div>
-            <div><strong>Komponenten:</strong> {components}</div>
-            <div><strong>Reichweite:</strong> {range}</div>
-            <div><strong>Wirkungsdauer:</strong> {duration}</div>
-            <div><strong>Rettungswurf:</strong> {savingThrow}</div>
-            <div><strong>Zauberresistenz:</strong> {sr}</div>
-            <div style={{ gridColumn: 'span 2' }}><strong>Ziel/Effekt/Bereich:</strong> {targetOrEffectOrArea}</div>
+            <div><strong>School:</strong> {school}</div>
+            <div><strong>Level:</strong> Level {level}</div>
+            <div><strong>Casting Time:</strong> {spell.castingTime || '1 standard action'}</div>
+            <div><strong>Components:</strong> {components}</div>
+            <div><strong>Range:</strong> {range}</div>
+            <div><strong>Duration:</strong> {duration}</div>
+            <div><strong>Saving Throw:</strong> {savingThrow}</div>
+            <div><strong>Spell Resistance:</strong> {sr}</div>
+            <div style={{ gridColumn: 'span 2' }}><strong>Target/Effect/Area:</strong> {targetOrEffectOrArea}</div>
           </div>
           <div
             style={{
@@ -132,7 +131,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
               color: '#2a1b0a'
             }}
           >
-            {spell.description || 'Keine Beschreibung vorhanden.'}
+            {spell.description || 'No description available.'}
           </div>
         </div>
 
@@ -165,7 +164,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
                 e.currentTarget.style.backgroundColor = 'rgba(139, 26, 26, 0.1)';
               }}
             >
-              Ja
+              Yes
             </button>
             <button
               onClick={onClose}
@@ -189,7 +188,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              Nein
+              No
             </button>
           </div>
         </div>

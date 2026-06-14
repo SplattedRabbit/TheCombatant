@@ -271,7 +271,7 @@ export function initReactDialogBridge() {
     ));
   };
 
-  bridge.showParchmentMessage = (text: string, sender: string = 'Spielleiter') => {
+  bridge.showParchmentMessage = (text: string, sender: string = 'Dungeon Master') => {
     mountModal((onCloseModal) => (
       <ParchmentMessageModal
         text={text}

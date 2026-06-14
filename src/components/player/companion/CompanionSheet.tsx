@@ -1,6 +1,6 @@
 /**
  * @module    CompanionSheet
- * @summary   Tierbegleiter-Sheet als React-Komponente. Zeigt Attribute, Trefferpunkte, Rüstungsklasse und Angriffe des Begleiters.
+ * @summary   Animal Companion sheet as a React component. Shows attributes, hit points, armor class, and attacks of the companion.
  * @exports   CompanionSheet
  * @reads     pc.companionType, pc.companionName, pc.companionHP, pc.companionMaxHP
  * @stateOps  CombatState.saveToStorage, CombatState.syncPCToHost
@@ -89,10 +89,10 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
   const handleAttackRoll = (e: React.MouseEvent<HTMLButtonElement>, attName: string, bonus: number, _damage: string, _note: string) => {
     e.stopPropagation();
     const activePC = CombatState.getActivePC();
-    const compName = activePC.companionName || 'Tierbegleiter';
+    const compName = activePC.companionName || 'Animal Companion';
 
     showRollBreakdown(`${compName} - ${attName}`, `1W20`, [
-      { label: "Angriffsbonus (Stärke/Größe)", value: bonus }
+      { label: "Attack Bonus (Strength/Size)", value: bonus }
     ], e.nativeEvent);
   };
 
@@ -101,12 +101,12 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '1px solid var(--pb)', paddingBottom: '3px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', letterSpacing: '0.5px' }}>
-          <span>🐾 Gefährten- &amp; Tierbegleiter-Bogen (Begleiter-Stufe: {effectiveDruidLvl})</span>
+          <span>🐾 Companion &amp; Animal Companion Sheet (Companion Level: {effectiveDruidLvl})</span>
           <span style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'normal', fontStyle: 'italic' }}>D&amp;D 3.5e Rules</span>
         </div>
         <div style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '45px 15px', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px' }}>
-          🐾 Du hast aktuell keinen aktiven Tierbegleiter ausgewählt.<br />
-          <span style={{ fontSize: '7.5px', marginTop: '3px', display: 'block' }}>Wähle unten eine Kreaturenart aus, um deinen Begleiter zu rufen!</span>
+          🐾 You currently have no active animal companion selected.<br />
+          <span style={{ fontSize: '7.5px', marginTop: '3px', display: 'block' }}>Select a creature type below to summon your companion!</span>
           
           <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
             <select 
@@ -115,11 +115,11 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
               className="cinput companion-species-select" 
               style={{ fontSize: '8px', height: '16px', padding: '0 4px', width: '120px' }}
             >
-              <option value="none">-- Auswählen --</option>
+              <option value="none">-- Select --</option>
               <option value="wolf">🐺 Wolf (D&D 3.5e RAW)</option>
               <option value="leopard">🐆 Leopard (D&D 3.5e RAW)</option>
-              <option value="bear">🐻 Braunbär (D&D 3.5e RAW)</option>
-              <option value="custom">🛡️ Benutzerdefiniert</option>
+              <option value="bear">🐻 Brown Bear (D&D 3.5e RAW)</option>
+              <option value="custom">🛡️ Custom</option>
             </select>
           </div>
         </div>
@@ -149,7 +149,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
       <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '1px solid var(--pb)', paddingBottom: '3px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', letterSpacing: '0.5px' }}>
-        <span>🐾 Gefährten- &amp; Tierbegleiter-Bogen (Begleiter-Stufe: {effectiveDruidLvl})</span>
+        <span>🐾 Companion &amp; Animal Companion Sheet (Companion Level: {effectiveDruidLvl})</span>
         <span style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'normal', fontStyle: 'italic' }}>D&amp;D 3.5e Rules</span>
       </div>
 
@@ -163,14 +163,14 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
               className="companion-name-field" 
               value={name} 
               onChange={handleNameChange}
-              placeholder="Name deines Begleiters" 
+              placeholder="Companion Name" 
               style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', background: 'transparent', border: 'none', borderBottom: '0.5px dashed var(--pb)', outline: 'none', width: '120px' }} 
-              title="Begleiter-Name" 
+              title="Companion Name" 
             />
           </div>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Art:</span>
+            <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Type:</span>
             <select 
               value={type}
               onChange={(e) => handleSpeciesChange(e.target.value)}
@@ -179,9 +179,9 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
             >
               <option value="wolf">Wolf</option>
               <option value="leopard">Leopard</option>
-              <option value="bear">Braunbär</option>
-              <option value="custom">Benutzerdef.</option>
-              <option value="none">-- Entlassen --</option>
+              <option value="bear">Brown Bear</option>
+              <option value="custom">Custom</option>
+              <option value="none">-- Dismiss --</option>
             </select>
           </div>
         </div>
@@ -191,12 +191,12 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
           {/* Health Bar Widget */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200,169,110,0.15)', padding: '4px', borderRadius: '2px' }}>
             <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'radial-gradient(circle, #f4e8c1 0%, #c8a96e 70%, #9a7a2e 100%)', border: '1.2px solid var(--red)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", color: 'var(--red)', fontSize: '9px', fontWeight: 'bold' }}>
-              <span style={{ fontSize: '5px', color: 'var(--inkl)', lineHeight: 1, marginTop: '1px' }}>TP</span>
+              <span style={{ fontSize: '5px', color: 'var(--inkl)', lineHeight: 1, marginTop: '1px' }}>HP</span>
               <span style={{ lineHeight: 1.1, fontSize: '10px' }}>{curHP}</span>
             </div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '2px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '7px', fontWeight: 'bold', color: 'var(--inkm)' }}>
-                <span>Begleiter-TP</span>
+                <span>Companion HP</span>
                 <span>{pct}%</span>
               </div>
               <div style={{ height: '6px', background: 'rgba(0,0,0,0.15)', borderRadius: '1.5px', overflow: 'hidden', border: '0.5px solid var(--pb)' }}>
@@ -210,7 +210,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
                   value={curHP} 
                   onChange={handleHpCurChange}
                   style={{ width: '18px', fontSize: '7.5px', textAlign: 'center', height: '12px', padding: '0', borderRadius: '1px', border: '0.5px solid var(--pb)' }} 
-                  title="Aktuelle TP direkt ändern" 
+                  title="Change current HP directly" 
                 />
                 <span style={{ fontSize: '7.5px' }}>/</span>
                 <input 
@@ -219,7 +219,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
                   value={maxHP} 
                   onChange={handleHpMaxChange}
                   style={{ width: '18px', fontSize: '7.5px', textAlign: 'center', height: '12px', padding: '0', borderRadius: '1px', border: '0.5px solid var(--pb)' }} 
-                  title="Maximal-TP direkt ändern" 
+                  title="Change max HP directly" 
                 />
                 <button onClick={() => handleHpAdjust(1)} className="btn companion-hp-adjust-btn" style={{ fontSize: '7px', padding: '0 4px', lineHeight: 1, height: '12px', fontWeight: 'bold' }}>+</button>
               </div>
@@ -229,11 +229,11 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
           {/* AC & Stat Blocks */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', background: 'rgba(200, 169, 110, 0.1)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '3px', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontSize: '6.8px', fontWeight: 'bold', color: 'var(--inkl)' }}>🛡️ RÜSTUNGSKL.</span>
+              <span style={{ fontSize: '6.8px', fontWeight: 'bold', color: 'var(--inkl)' }}>🛡️ ARMOR CLASS</span>
               <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', lineHeight: 1 }}>{displayAC}</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', background: 'rgba(200, 169, 110, 0.1)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '3px', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontSize: '6.8px', fontWeight: 'bold', color: 'var(--inkl)' }}>🏃 BEWEGUNG</span>
+              <span style={{ fontSize: '6.8px', fontWeight: 'bold', color: 'var(--inkl)' }}>🏃 SPEED</span>
               <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', lineHeight: 1 }}>30 ft.</span>
             </div>
           </div>
@@ -276,7 +276,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
         {/* Attacks & Actions Section */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5px', marginTop: '2px' }}>
           <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '7.5px', color: 'var(--red)', borderBottom: '0.5px solid var(--pb)', paddingBottom: '1px', fontWeight: 'bold' }}>
-            ⚔️ Angriffe des Begleiters
+            ⚔️ Companion Attacks
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5px' }}>
             {baseStats && Array.isArray(baseStats.attacks) && baseStats.attacks.length > 0 ? (
@@ -297,13 +297,13 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
                     className="btn roll-companion-attack-btn" 
                     style={{ fontSize: '7.5px', padding: '2px 6px', fontWeight: 'bold', cursor: 'pointer', borderRadius: '2px' }}
                   >
-                    Wurf 🎲
+                    Roll 🎲
                   </button>
                 </div>
               ))
             ) : (
               <div style={{ fontSize: '7px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center' }}>
-                Keine Angriffe verfügbar
+                No attacks available
               </div>
             )}
           </div>
@@ -312,8 +312,8 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
         {/* Rules Summary Footer */}
         {baseStats && baseStats.specials && (
           <div style={{ background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '4.5px', fontSize: '6.8px', color: 'var(--ink)', lineHeight: 1.25 }}>
-            🐾 <strong>Besondere Eigenschaften:</strong> {baseStats.specials}<br />
-            <span style={{ fontSize: '6px', color: 'var(--inkl)', fontStyle: 'italic' }}>(Basiert auf den RAW-Regeln von D&amp;D 3.5e für Tierbegleiter).</span>
+            🐾 <strong>Special Qualities:</strong> {baseStats.specials}<br />
+            <span style={{ fontSize: '6px', color: 'var(--inkl)', fontStyle: 'italic' }}>(Based on D&amp;D 3.5e RAW rules for animal companions).</span>
           </div>
         )}
       </div>

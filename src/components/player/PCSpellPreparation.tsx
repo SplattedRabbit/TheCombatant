@@ -1,6 +1,6 @@
 /**
  * @module    PCSpellPreparation
- * @summary   Rendert die rechte Spalte des Zauberreiters: Liste der vorbereiteten Zauber pro Grad, Slot-Zuweisung, Spezialisten-Slots (Magier) und Spell-Template-Verwaltung.
+ * @summary   Renders the right column of the spells tab: list of prepared spells per level, slot assignment, specialist slots (Wizard) and spell template management.
  * @exports   PCSpellPreparation
  * @reads     pc.preparedSpells, pc.spellSlots, pc.classes, pc.wizardSpecialization, pc.spellTemplates, pc.name
  * @stateOps  castPreparedSpell, unprepareSpell, applyPCSpellTemplate, savePCSpellTemplate, deletePCSpellTemplate, clearPreparedSpells
@@ -37,7 +37,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
   if (!hasPrepared) {
     return (
       <div style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '35px 10px', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px' }}>
-        🌅 Spontane Zauberwirker bereiten keine Zauber vor.
+        🌅 Spontaneous spellcasters do not prepare spells.
       </div>
     );
   }
@@ -60,7 +60,6 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
   const hasSpecSlot = isWizard && wizardSpecialization !== 'none';
 
   const handleCastPrepared = (id: string) => {
-    // pc.castPreparedSpell is a model method. Since pc is a state snapshot, we mutate inside updatePCBatch:
     let castPrep: any = null;
     CombatState.updatePCBatch((freshPc: any) => {
       const p = freshPc.preparedSpells?.find((s: any) => s.id === id);
@@ -91,7 +90,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
           showCastSuccessDialog(pc, spell, castPrep.spellKey, castPrep.metamagic || [], () => {});
         } else {
           const METAMAGIC_COSTS: Record<string, number> = { extend_spell: 1, empower_spell: 2, maximize_spell: 3, quicken_spell: 4 };
-          const metamagicNames: Record<string, string> = { extend_spell: 'Verlängert', empower_spell: 'Verstärkt', maximize_spell: 'Maximiert', quicken_spell: 'Beschleunigt' };
+          const metamagicNames: Record<string, string> = { extend_spell: 'Extended', empower_spell: 'Empowered', maximize_spell: 'Maximized', quicken_spell: 'Quickened' };
           const appliedMeta = castPrep.metamagic.map((mId: string) => metamagicNames[mId] || mId);
           const metaSuffix = appliedMeta.length > 0 ? ` (${appliedMeta.join(', ')})` : '';
 
@@ -99,21 +98,21 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
           const finalLevel = spell.level + metamagicAdjustment;
 
           showCustomAlert(
-            "Zauber gewirkt! ✨",
+            "Spell Cast! ✨",
             `<div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
               <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
-                ${pc.name} wirkt vorbereiteten Zauber: ${spell.nameDe}${metaSuffix}!
+                ${pc.name} casts prepared spell: ${spell.nameEn || spell.nameDe}${metaSuffix}!
               </div>
-              • <strong>Schule:</strong> ${spell.school}<br>
-              • <strong>Effektiver Grad:</strong> Grad ${finalLevel} (Basis ${spell.level})<br>
-              • <strong>Zeitaufwand:</strong> ${spell.castingTime || '1 Standardaktion'}<br>
-              • <strong>Reichweite:</strong> ${spell.range || 'Berührung'}<br>
-              • <strong>Rettungswurf:</strong> ${spell.savingThrow || 'Keiner'}<br><br>
+              • <strong>School:</strong> ${spell.school}<br>
+              • <strong>Effective Level:</strong> Level ${finalLevel} (Base ${spell.level})<br>
+              • <strong>Casting Time:</strong> ${spell.castingTime || '1 standard action'}<br>
+              • <strong>Range:</strong> ${spell.range || 'Touch'}<br>
+              • <strong>Saving Throw:</strong> ${spell.savingThrow || 'None'}<br><br>
               <div style="font-size: 8.5px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px; border-radius: 2px; line-height: 1.25;">
                 ${spell.description}
               </div>
             </div>`,
-            "Fertig!",
+            "Done!",
             ""
           );
         }
@@ -144,11 +143,11 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
   const handleSaveTemplate = () => {
     const preps = pc.preparedSpells || [];
     if (preps.length === 0) {
-      showCustomAlert("Keine Zauber", "Bereite zuerst Zauber vor, um sie als Vorlage zu speichern.");
+      showCustomAlert("No Spells", "Prepare spells first to save them as a template.");
       return;
     }
 
-    showCustomPrompt("Vorlage speichern 💾", "Bitte gib einen Namen für dein Zaubertemplate ein:", "z.B. Standard-Kampf", (name: string) => {
+    showCustomPrompt("Save Template 💾", "Please enter a name for your spell template:", "e.g. Standard Combat", (name: string) => {
       if (!name) return;
       const exists = pc.spellTemplates?.[name];
       const saveAction = () => {
@@ -156,11 +155,11 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
           if (!freshPc.spellTemplates) freshPc.spellTemplates = {};
           freshPc.spellTemplates[name] = JSON.parse(JSON.stringify(freshPc.preparedSpells));
         });
-        showCustomAlert("Gespeichert", `Die Vorlage "${name}" wurde erfolgreich gespeichert.`, "Super", "✨");
+        showCustomAlert("Saved", `The template "${name}" has been successfully saved.`, "Great", "✨");
       };
 
       if (exists) {
-        showCustomConfirm("Vorlage überschreiben?", `Eine Vorlage namens "${name}" existiert bereits. Möchtest du sie überschreiben?`, () => {
+        showCustomConfirm("Overwrite Template?", `A template named "${name}" already exists. Do you want to overwrite it?`, () => {
           saveAction();
         });
       } else {
@@ -171,11 +170,11 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
 
   const handleDeleteTemplate = () => {
     if (!selectedTemplate) {
-      showCustomAlert("Keine Auswahl", "Bitte wähle zuerst eine Vorlage im Dropdown aus, die du löschen möchtest.");
+      showCustomAlert("No Selection", "Please select a template from the dropdown first to delete.");
       return;
     }
 
-    showCustomConfirm("Vorlage löschen?", `Möchtest du die Vorlage "${selectedTemplate}" wirklich unwiderruflich löschen?`, () => {
+    showCustomConfirm("Delete Template?", `Do you really want to permanently delete the template "${selectedTemplate}"?`, () => {
       CombatState.updatePCBatch((freshPc: any) => {
         if (freshPc.spellTemplates) {
           delete freshPc.spellTemplates[selectedTemplate];
@@ -206,13 +205,13 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
     const preps = pc.preparedSpells || [];
     if (preps.length === 0) return;
 
-    showCustomConfirm("Slots leeren?", "Möchtest du alle vorbereiteten Zauber aus deinen Slots entfernen?", () => {
+    showCustomConfirm("Clear Slots?", "Do you want to remove all prepared spells from your slots?", () => {
       CombatState.clearPreparedSpells();
     });
   };
 
   const handleShowPlaceholderAlert = () => {
-    showCustomAlert("Zauber vorbereiten", "Tippe links in deiner <strong>Zauberbibliothek</strong> auf den Button <strong>[Vorbereiten]</strong> des gewünschten Zaubers, um ihn zu konfigurieren.");
+    showCustomAlert("Prepare Spells", "Click on the <strong>[Prepare]</strong> button of the desired spell in your <strong>Spell Library</strong> on the left to configure it.");
   };
 
   const templates = pc.spellTemplates || {};
@@ -220,12 +219,12 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
   return (
     <div style={{ background: 'rgba(200, 169, 110, 0.04)', border: '0.5px solid rgba(200, 169, 110, 0.3)', borderRadius: '2px', padding: '4px 6px' }}>
       <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '5px', fontWeight: 'bold' }}>
-        🌅 Tägliche Slot-Belegung (Vorbereitete Zauber)
+        🌅 Daily Spell Slots (Prepared Spells)
       </div>
 
       {/* Spell Templates Management UI */}
       <div style={{ display: 'flex', gap: '4px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(200, 169, 110, 0.06)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '3px 5px', marginBottom: '6px' }}>
-        <span style={{ fontSize: '8.5px', color: 'var(--inkl)', fontWeight: 'bold' }}>Vorlagen:</span>
+        <span style={{ fontSize: '8.5px', color: 'var(--inkl)', fontWeight: 'bold' }}>Templates:</span>
         <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flex: 1, justifyContent: 'flex-end' }}>
           <select
             value={selectedTemplate}
@@ -233,7 +232,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
             className="cinput select-spell-template"
             style={{ fontSize: '8px', padding: '1px 3px', height: '16px', maxWidth: '95px', borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none', background: 'white', color: 'var(--ink)' }}
           >
-            <option value="">-- Laden --</option>
+            <option value="">-- Load --</option>
             {Object.keys(templates).map(name => (
               <option key={name} value={name}>{name}</option>
             ))}
@@ -242,15 +241,15 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
             onClick={handleSaveTemplate}
             className="btn"
             style={{ fontSize: '8px', padding: '1px 4px', height: '16px', lineHeight: 1, fontWeight: 'bold', borderColor: 'var(--pb)' }}
-            title="Aktuelles Set als Vorlage speichern"
+            title="Save current set as template"
           >
-            💾 Speichern
+            💾 Save
           </button>
           <button
             onClick={handleDeleteTemplate}
             className="btn"
             style={{ fontSize: '8px', padding: '1px 3px', height: '16px', lineHeight: 1, borderColor: 'transparent', color: 'var(--inkl)' }}
-            title="Ausgewählte Vorlage löschen"
+            title="Delete selected template"
           >
             ✕
           </button>
@@ -258,9 +257,9 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
             onClick={handleClearPrepared}
             className="btn"
             style={{ fontSize: '8px', padding: '1px 4px', height: '16px', lineHeight: 1, borderColor: 'var(--red)', background: 'rgba(139,26,26,0.05)', color: 'var(--red)', fontWeight: 'bold' }}
-            title="Alle vorbereiteten Zauber entfernen"
+            title="Remove all prepared spells"
           >
-            🧹 Leeren
+            🧹 Clear
           </button>
         </div>
       </div>
@@ -300,25 +299,25 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
                     onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
                     style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                   >
-                    📜 {p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
+                    📜 {p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
                   </span>
                   <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                     {p.isUsed ? (
-                      <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Verbraucht</span>
+                      <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Expended</span>
                     ) : (
                       <button
                         onClick={() => handleCastPrepared(p.id)}
                         className="btn"
                         style={{ fontSize: '8px', padding: '1px 3px', cursor: 'pointer', borderRadius: '2px', background: 'rgba(139,26,26,0.1)', borderColor: 'var(--red)', color: 'var(--red)', fontWeight: 'bold' }}
                       >
-                        Wirken
+                        Cast
                       </button>
                     )}
                     <button
                       onClick={() => handleUnprepare(p.id)}
                       className="btn"
                       style={{ fontSize: '8px', padding: '1px 3px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer' }}
-                      title="Slot leeren"
+                      title="Clear slot"
                     >
                       ✕
                     </button>
@@ -328,13 +327,13 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
             } else {
               slotsListHtml.push(
                 <div key={`reg_empty_${i}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>
-                  <span>Freier Slot</span>
+                  <span>Empty Slot</span>
                   <button
                     onClick={handleShowPlaceholderAlert}
                     className="btn"
                     style={{ fontSize: '7px', padding: '0.5px 4px', borderColor: 'var(--pb)', background: 'transparent', color: 'var(--ink)', cursor: 'pointer' }}
                   >
-                    ➕ Vorbereiten
+                    ➕ Prepare
                   </button>
                 </div>
               );
@@ -351,25 +350,25 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
                     onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
                     style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                   >
-                    ⭐ 📜 {p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
+                    ⭐ 📜 {p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
                   </span>
                   <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                     {p.isUsed ? (
-                      <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Verbraucht</span>
+                      <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Expended</span>
                     ) : (
                       <button
                         onClick={() => handleCastPrepared(p.id)}
                         className="btn"
                         style={{ fontSize: '8px', padding: '1px 3px', cursor: 'pointer', borderRadius: '2px', background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)', borderColor: 'var(--red)', color: 'white', fontWeight: 'bold' }}
                       >
-                        Wirken
+                        Cast
                       </button>
                     )}
                     <button
                       onClick={() => handleUnprepare(p.id)}
                       className="btn"
                       style={{ fontSize: '8px', padding: '1px 3px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer' }}
-                      title="Slot leeren"
+                      title="Clear slot"
                     >
                       ✕
                     </button>
@@ -379,13 +378,13 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
             } else {
               slotsListHtml.push(
                 <div key="spec_empty" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(200, 169, 110, 0.03)', border: '0.5px dashed #c8a96e', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', color: '#9a7a2e', fontStyle: 'italic' }}>
-                  <span>⭐ Spezial-Slot ({specSchoolName})</span>
+                  <span>⭐ Specialist Slot ({specSchoolName})</span>
                   <button
                     onClick={handleShowPlaceholderAlert}
                     className="btn"
                     style={{ fontSize: '7px', padding: '0.5px 4px', border: '0.5px solid #c8a96e', background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)', color: 'white', cursor: 'pointer' }}
                   >
-                    ➕ Vorbereiten
+                    ➕ Prepare
                   </button>
                 </div>
               );
@@ -401,25 +400,25 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
                   onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
                   style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                 >
-                  ⚠️ 📜 {p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
+                  ⚠️ 📜 {p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
                 </span>
                 <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                   {p.isUsed ? (
-                    <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Verbraucht</span>
+                    <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Expended</span>
                   ) : (
                     <button
                       onClick={() => handleCastPrepared(p.id)}
                       className="btn"
                       style={{ fontSize: '8px', padding: '1px 3px', cursor: 'pointer', borderRadius: '2px', background: 'rgba(139,26,26,0.1)', borderColor: 'var(--red)', color: 'var(--red)', fontWeight: 'bold' }}
                     >
-                      Wirken
+                      Cast
                     </button>
                   )}
                   <button
                     onClick={() => handleUnprepare(p.id)}
                     className="btn"
                     style={{ fontSize: '8px', padding: '1px 3px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer' }}
-                    title="Slot leeren"
+                    title="Clear slot"
                   >
                     ✕
                   </button>
@@ -431,8 +430,8 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
           return (
             <div key={lvl} style={{ marginBottom: '2px' }}>
               <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--inkl)', borderBottom: '0.5px dashed rgba(200, 169, 110, 0.3)', paddingBottom: '1px', fontWeight: 'bold', marginBottom: '4px', display: 'flex', justifyContent: 'space-between' }}>
-                <span>Grad {lvl} Slots</span>
-                <span style={{ fontSize: '8px', fontWeight: 'normal' }}>Vorbereitet: {preps.length} / {max}</span>
+                <span>Level {lvl} Slots</span>
+                <span style={{ fontSize: '8px', fontWeight: 'normal' }}>Prepared: {preps.length} / {max}</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                 {slotsListHtml}

@@ -1,6 +1,6 @@
 /**
  * @module    PCSpellsTab
- * @summary   Wrapper-Komponente für den Zauberbuch-Reiter. Koordiniert das linke Zauberbuch und das rechte Dashboard (Vorbereitung vs. Kompendium).
+ * @summary   Wrapper component for the spellbook tab. Coordinates the left spellbook and the right dashboard (Preparation vs. Compendium).
  * @exports   PCSpellsTab
  * @reads     pc.classes
  * @depends   React, PCSpellbookTab, PCSpellPreparation, PCSpellCompendium
@@ -47,7 +47,7 @@ export const PCSpellsTab: React.FC<PCSpellsTabProps> = ({ pc }) => {
         borderRadius: '4px',
         fontFamily: "'Crimson Text', serif"
       }}>
-        🔮 Dieser Charakter besitzt keine Zauberwirker-Klassen (z. B. Magier, Kleriker, Barde).
+        🔮 This character does not have any spellcasting classes (e.g., Wizard, Cleric, Bard).
       </div>
     );
   }
@@ -85,7 +85,7 @@ export const PCSpellsTab: React.FC<PCSpellsTabProps> = ({ pc }) => {
                 outline: 'none'
               }}
             >
-              🌅 Vorbereitung
+              🌅 Preparation
             </button>
           )}
           <button
@@ -102,7 +102,7 @@ export const PCSpellsTab: React.FC<PCSpellsTabProps> = ({ pc }) => {
               outline: 'none'
             }}
           >
-            📚 Kompendium
+            📚 Compendium
           </button>
         </div>
 

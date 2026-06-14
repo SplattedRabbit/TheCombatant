@@ -14,112 +14,112 @@ import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput } from './spel
 export const CombatRules = {
   CONDITIONS: [
     {
-      n: 'Temp-HP',
-      r: '<strong>Temporäre Trefferpunkte</strong> werden zu den maximalen TP addiert. Schaden wird normal von den aktuellen TP abgezogen. Beim Entfernen des Zustands werden die Temp-HP von den maximalen TP abgezogen (aktuelle TP werden entsprechend gekappt).'
+      n: 'Temp HP',
+      r: '<strong>Temporary Hit Points</strong> are added to maximum HP. Damage is subtracted from current HP as normal. Removing the condition subtracts the temporary hit points from maximum HP (current HP is capped accordingly).'
     },
     {
-      n: 'Blind',
-      r: '<strong>−2 auf Angriffswürfe</strong> und Rüstungsklasse. Gegner gelten als unsichtbar (50% Trefferchance verfehlen). Bewegung halbe Geschwindigkeit. Immunität gegen Sichtzauber.'
+      n: 'Blinded',
+      r: '<strong>−2 to attack rolls</strong> and Armor Class (AC). Enemies are treated as having total concealment (50% miss chance). Move at half speed. Immune to gaze attacks.'
     },
     {
-      n: 'Betäubt',
-      r: 'Kann <strong>keine Aktionen</strong> ausführen, lässt gehaltene Gegenstände fallen. Verliert Ges-Bonus auf RK. Angreifer erhalten +2 auf Angriffswürfe.'
+      n: 'Stunned',
+      r: 'Cannot <strong>take actions</strong>, drops held items. Loses Dex bonus to AC. Attackers gain a +2 bonus on attack rolls.'
     },
     {
-      n: 'Erschöpft',
-      r: '<strong>−6 auf Stärke und Geschicklichkeit</strong>, Bewegungsweite halbiert. Kann nicht rennen oder einen Sturmangriff ausführen. Ruhe 1 Stunde heilt zu Erschüttert.'
+      n: 'Exhausted',
+      r: '<strong>−6 to Strength and Dexterity</strong>, movement speed halved. Cannot run or charge. Resting 1 hour cures to Shaken/Fatigued.'
     },
     {
-      n: 'Erschüttert',
-      r: '<strong>−2 auf Angriffswürfe, Rettungswürfe, Fähigkeitswürfe</strong> und Zauberangriffswürfe. Schwächere Form von Erschöpft.'
+      n: 'Shaken',
+      r: '<strong>−2 to attack rolls, saving throws, ability checks</strong>, and spell attack rolls. Mild form of fear.'
     },
     {
-      n: 'Festgehalten',
-      r: '<strong>Geschwindigkeit 0</strong>, kein Ges-Bonus auf RK. −4 auf Rüstungsklasse. Fernkampfangriffe gegen ihn erhalten +4. Kann nur begrenzte Aktionen ausführen.'
+      n: 'Pinned',
+      r: '<strong>Speed 0</strong>, loses Dex bonus to AC. −4 to AC. Ranged attacks against them gain +4. Can take only limited actions.'
     },
     {
-      n: 'Flach auf dem Boden',
-      r: '<strong>−4 auf Nahkampfangriffe</strong>. Nahkampfangriffe gegen ihn +4, Fernkampfangriffe −4. Aufstehen kostet eine Bewegungsaktion (kann AoO provozieren).'
+      n: 'Prone',
+      r: '<strong>−4 to melee attack rolls</strong>. Melee attacks against them gain +4, ranged attacks suffer −4. Standing up costs a move action (can provoke attacks of opportunity).'
     },
     {
-      n: 'Gelähmt',
-      r: '<strong>Stärke und Geschicklichkeit effektiv 0</strong>. Kann sich nicht bewegen oder handeln. Fällt um, falls stehend. Ziel ist hilflos.'
+      n: 'Paralyzed',
+      r: '<strong>Strength and Dexterity effectively 0</strong>. Cannot move or act. Falls down if standing. Target is helpless.'
     },
     {
-      n: 'Hilflos',
-      r: 'RK = <strong>5 + Größenmodifikator</strong>. Angreifer können einen <strong>Gnadenstoß</strong> ausführen (volle Runde, ZÄ-SG 10 + angerichteter Schaden oder sofortiger Tod). Gebunden, bewusstlos oder schlafen gilt als hilflos.'
+      n: 'Helpless',
+      r: 'AC is <strong>5 + size modifier</strong>. Attackers can perform a <strong>coup de grace</strong> (full-round action, Fortitude save DC 10 + damage dealt or instant death). Bound, unconscious, or sleeping targets are helpless.'
     },
     {
-      n: 'Krank',
-      r: '<strong>−4 auf Stärke und Konstitution</strong>. Reduzierte TP durch Kon-Verlust sind sofort wirksam. Ruhe und Heilzauber können helfen.'
+      n: 'Sickened',
+      r: '<strong>−4 to Strength and Constitution</strong>. Reduced HP from Con loss takes effect immediately. Rest and healing spells can help.'
     },
     {
-      n: 'Niedergestreckt',
-      r: 'Muss eine <strong>Bewegungsaktion zum Aufstehen</strong> aufwenden (provoziert AoO). Kann kämpfen während er liegt (−4 auf Angriffe). Kombination mit Flach auf dem Boden möglich.'
+      n: 'Knocked Down',
+      r: 'Must spend a <strong>move action to stand up</strong> (provokes attacks of opportunity). Can fight while prone (−4 to attacks). Can combine with Prone.'
     },
     {
-      n: 'Panisch',
-      r: '<strong>Muss fliehen</strong>, solange die Bedrohung anhält. −2 auf Angriffs- und Rettungswürfe. Kann nur rennen oder kämpfen wenn er in die Enge getrieben ist. Stärker als Verängstigt.'
+      n: 'Panicked',
+      r: '<strong>Must flee</strong> from danger if possible. −2 to attack rolls, saving throws, and ability checks. Can only run or fight if cornered. Stronger than Frightened.'
     },
     {
-      n: 'Paralysiert',
-      r: '<strong>Stärke und Geschicklichkeit effektiv 0</strong>, kann nicht handeln. Ähnlich wie Gelähmt, aber typisch durch Magie oder Gift. Ziel ist hilflos.'
+      n: 'Paralyzed (Magic/Poison)',
+      r: '<strong>Strength and Dexterity effectively 0</strong>, cannot act. Similar to Paralyzed, but typical for spells or poisons. Target is helpless.'
     },
     {
-      n: 'Schlafend',
-      r: '<strong>Hilflos</strong>. Normales Geräusch (Lärm) oder Schaden weckt ihn. Angreifer erhalten automatisch kritische Treffer (Gnadenstoß). Ges-Bonus auf RK entfällt.'
+      n: 'Sleeping',
+      r: '<strong>Helpless</strong>. Normal noise or damage wakes them. Attackers automatically land critical hits (coup de grace). Loses Dex bonus to AC.'
     },
     {
-      n: 'Schüttelnd',
-      r: '<strong>−2 auf Angriffswürfe, Rettungswürfe und Fertigkeitswürfe</strong>. Ähnlich wie Erschüttert, aber durch Schreck oder Einschüchterung ausgelöst.'
+      n: 'Shaking',
+      r: '<strong>−2 to attack rolls, saving throws, and skill checks</strong>. Similar to Shaken, but triggered by fright or intimidation.'
     },
     {
-      n: 'Sterbend',
-      r: '<strong>Bewusstlos</strong>, verliert jede Runde automatisch 1 Trefferpunkt. W10-Wurf am Ende jedes eigenen Zuges: ≥ 10 = stabilisiert. Stabilisiert = keine weiteren TP-Verluste, aber noch bewusstlos.'
+      n: 'Dying',
+      r: '<strong>Unconscious</strong>, automatically loses 1 hit point per round. D10 roll at the end of turn: 10 = stabilize. Stabilized = no further HP loss, but still unconscious.'
     },
     {
-      n: 'Taub',
-      r: 'Kann <strong>keine akustischen Signale</strong> wahrnehmen. <strong>20% Zauberversagen</strong> bei verbalen Komponenten. Misslingenswurf beim Zaubern (ZÄ SG 20 + Zauberstufe).'
+      n: 'Deafened',
+      r: 'Cannot <strong>hear acoustic signals</strong>. <strong>20% spell failure chance</strong> for verbal components. Miscast check (Fortitude DC 20 + spell level).'
     },
     {
-      n: 'Tot',
-      r: 'Bei <strong>−10 TP oder weniger</strong>, oder durch Todeseffekte. Kann nur durch <em>Wiederbelebung</em>, <em>Auferweckung</em> oder <em>Wahre Auferstehung</em> zurückgebracht werden.'
+      n: 'Dead',
+      r: 'At <strong>−10 HP or lower</strong>, or from death effects. Can only be brought back by <em>Raise Dead</em>, <em>Resurrection</em>, or <em>True Resurrection</em>.'
     },
     {
-      n: 'Überrascht',
-      r: 'Verliert die <strong>erste Runde</strong> komplett (keine Aktionen, keine AoO). Verliert Ges-Bonus auf RK in der Überraschungsrunde. Gilt nur in der ersten Kampfrunde.'
+      n: 'Surprised',
+      r: 'Loses the <strong>first round</strong> completely (no actions, no attacks of opportunity). Loses Dex bonus to AC in the surprise round.'
     },
     {
-      n: 'Unfähig',
-      r: 'Ähnlich wie bewusstlos, aber durch <strong>nichtletalen Schaden</strong>. Erholt sich mit 1 TP/Stunde oder durch Heilung. Gilt als hilflos.'
+      n: 'Disabled',
+      r: 'Similar to unconscious, but due to <strong>nonlethal damage</strong>. Recovers 1 HP/hour or through healing. Treated as helpless.'
     },
     {
-      n: 'Verängstigt',
-      r: '<strong>−2 auf Angriffs- und Rettungswürfe</strong>. Muss die Quelle der Angst meiden, flieht wenn möglich. Kann kämpfen wenn er nicht fliehen kann. Schwächer als Panisch.'
+      n: 'Frightened',
+      r: '<strong>−2 to attack rolls and saving throws</strong>. Must avoid the source of fear, flees if possible. Can fight if unable to flee. Weaker than Panicked.'
     },
     {
-      n: 'Verwirrt',
-      r: 'Würfle <strong>1W100</strong> zu Beginn des Zuges: 01–10 normal handeln, 11–20 kein Angriff, 21–50 handlungsunfähig, 51–70 nächste Kreatur angreifen, 71–100 sich selbst angreifen.'
+      n: 'Confused',
+      r: 'Roll <strong>d100</strong> at start of turn: 01–10 act normally, 11–20 do nothing, 21–50 helpless, 51–70 attack nearest creature, 71–100 attack self.'
     },
     {
-      n: 'Verzaubert',
-      r: 'Betrachtet den <strong>Zauberer als Freund</strong> und vertrauenswürdige Person. Greift ihn nicht an. Spezifische Effekte je nach Zauber (<em>Freund</em>, <em>Beherrschung</em> usw.).'
+      n: 'Charmed',
+      r: 'Treats the <strong>caster as a friend</strong> and trusted ally. Will not attack them. Specific effects depend on the spell (e.g. <em>Charm Person</em>, <em>Dominate Person</em>).'
     }
   ],
   
   CLASSES: [
-    { key: 'fighter', nameDe: 'Kämpfer', nameEn: 'Fighter', bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' } },
-    { key: 'cleric', nameDe: 'Kleriker', nameEn: 'Cleric', bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' } },
-    { key: 'rogue', nameDe: 'Schurke', nameEn: 'Rogue', bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' } },
-    { key: 'wizard', nameDe: 'Magier', nameEn: 'Wizard', bab: 'poor',  saves: { fort: 'poor', ref: 'poor', wil: 'good' } },
-    { key: 'barbarian', nameDe: 'Barbar', nameEn: 'Barbarian', bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' } },
-    { key: 'bard', nameDe: 'Barde', nameEn: 'Bard', bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'good' } },
-    { key: 'druid', nameDe: 'Druide', nameEn: 'Druid', bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' } },
-    { key: 'monk', nameDe: 'Mönch', nameEn: 'Monk', bab: 'avg',  saves: { fort: 'good', ref: 'good', wil: 'good' } },
+    { key: 'fighter', nameDe: 'Fighter', nameEn: 'Fighter', bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' } },
+    { key: 'cleric', nameDe: 'Cleric', nameEn: 'Cleric', bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' } },
+    { key: 'rogue', nameDe: 'Rogue', nameEn: 'Rogue', bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' } },
+    { key: 'wizard', nameDe: 'Wizard', nameEn: 'Wizard', bab: 'poor',  saves: { fort: 'poor', ref: 'poor', wil: 'good' } },
+    { key: 'barbarian', nameDe: 'Barbarian', nameEn: 'Barbarian', bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' } },
+    { key: 'bard', nameDe: 'Bard', nameEn: 'Bard', bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'good' } },
+    { key: 'druid', nameDe: 'Druid', nameEn: 'Druid', bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' } },
+    { key: 'monk', nameDe: 'Monk', nameEn: 'Monk', bab: 'avg',  saves: { fort: 'good', ref: 'good', wil: 'good' } },
     { key: 'paladin', nameDe: 'Paladin', nameEn: 'Paladin', bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' } },
-    { key: 'ranger', nameDe: 'Waldläufer', nameEn: 'Ranger', bab: 'good', saves: { fort: 'good', ref: 'good', wil: 'poor' } },
-    { key: 'sorcerer', nameDe: 'Hexenmeister', nameEn: 'Sorcerer', bab: 'poor', saves: { fort: 'poor', ref: 'poor', wil: 'good' } },
-    { key: 'custom', nameDe: 'Benutzerdefiniert', nameEn: 'Custom', bab: 'custom', saves: { fort: 'custom', ref: 'custom', wil: 'custom' } }
+    { key: 'ranger', nameDe: 'Ranger', nameEn: 'Ranger', bab: 'good', saves: { fort: 'good', ref: 'good', wil: 'poor' } },
+    { key: 'sorcerer', nameDe: 'Sorcerer', nameEn: 'Sorcerer', bab: 'poor', saves: { fort: 'poor', ref: 'poor', wil: 'good' } },
+    { key: 'custom', nameDe: 'Custom', nameEn: 'Custom', bab: 'custom', saves: { fort: 'custom', ref: 'custom', wil: 'custom' } }
   ],
   
   CLASS_SKILLS: {
@@ -191,12 +191,12 @@ export const CombatRules = {
 
   CLASS_PROFILES: {
     barbarian: {
-      nameDe: "Barbar",
+      nameDe: "Barbarian",
       getResources(level, stats) {
         return [
           {
             key: "rage",
-            name: "Kampfrausch (Rage)",
+            name: "Rage",
             max: 1 + Math.floor(level / 4),
             type: "daily"
           }
@@ -211,13 +211,13 @@ export const CombatRules = {
         return [
           {
             key: "smite_evil",
-            name: "Böses niederstrecken",
+            name: "Smite Evil",
             max: 1 + Math.floor((level - 1) / 5),
             type: "daily"
           },
           {
             key: "lay_on_hands",
-            name: "Hände auflegen (Pool)",
+            name: "Lay on Hands (Pool)",
             max: Math.max(0, level * chaMod),
             type: "pool"
           }
@@ -225,14 +225,14 @@ export const CombatRules = {
       }
     },
     cleric: {
-      nameDe: "Kleriker",
+      nameDe: "Cleric",
       getResources(level, stats) {
         const score = stats.cha ? stats.cha.getValue() : 10;
         const chaMod = Math.floor((score - 10) / 2);
         return [
           {
             key: "turn_undead",
-            name: "Untote vertreiben",
+            name: "Turn Undead",
             max: Math.max(1, 3 + chaMod),
             type: "daily"
           }
@@ -240,12 +240,12 @@ export const CombatRules = {
       }
     },
     bard: {
-      nameDe: "Barde",
+      nameDe: "Bard",
       getResources(level, stats) {
         return [
           {
             key: "bardic_music",
-            name: "Bardisches Lied",
+            name: "Bardic Music",
             max: level,
             type: "daily"
           }
@@ -253,7 +253,7 @@ export const CombatRules = {
       }
     },
     druid: {
-      nameDe: "Druide",
+      nameDe: "Druid",
       getResources(level, stats) {
         let maxWildShape = 0;
         if (level >= 18) maxWildShape = 6;
@@ -267,7 +267,7 @@ export const CombatRules = {
         if (maxWildShape > 0) {
           res.push({
             key: "wild_shape",
-            name: "Tiergestalt (Wild Shape)",
+            name: "Wild Shape",
             max: maxWildShape,
             type: "daily"
           });

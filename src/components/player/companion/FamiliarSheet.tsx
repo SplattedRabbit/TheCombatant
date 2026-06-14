@@ -1,6 +1,6 @@
 /**
  * @module    FamiliarSheet
- * @summary   Vertrauten-Sheet als React-Komponente. Zeigt Attribute, Trefferpunkte, Rüstungsklasse, Rettungswürfe und Angriffe des Vertrauten.
+ * @summary   Familiar sheet as a React component. Shows attributes, hit points, armor class, saving throws, and attacks of the familiar.
  * @exports   FamiliarSheet
  * @reads     pc.familiarType, pc.familiarName, pc.familiarHP, pc.maxHP, pc.baseZa, pc.baseRef, pc.baseWil, pc.bab
  * @stateOps  CombatState.updatePCBatch, CombatState.saveToStorage, CombatState.syncPCToHost
@@ -67,8 +67,8 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
 
     if (oldType !== 'none' && newType === 'none') {
       showCustomConfirm(
-        "Vertrauten entlassen?",
-        `Möchtest du deinen Vertrauten entlassen? Dies verlangt laut RAW einen Rettungswurf wegen Erfahrungspunktverlust!`,
+        "Dismiss Familiar?",
+        `Do you want to dismiss your familiar? According to RAW, this requires a saving throw to avoid experience point loss!`,
         () => {
           applySpeciesChange();
         }
@@ -108,10 +108,10 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
   const handleAttackRoll = (e: React.MouseEvent<HTMLButtonElement>, attName: string, bonus: number, _damage: string, _note: string) => {
     e.stopPropagation();
     const activePC = CombatState.getActivePC();
-    const famName = activePC.familiarName || 'Vertrauter';
+    const famName = activePC.familiarName || 'Familiar';
 
     showRollBreakdown(`${famName} - ${attName}`, `1W20`, [
-      { label: "Angriffsbonus (Geschicklichkeit/Größe)", value: bonus }
+      { label: "Attack Bonus (Dexterity/Size)", value: bonus }
     ], e.nativeEvent);
   };
 
@@ -120,12 +120,12 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '1px solid var(--pb)', paddingBottom: '3px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', letterSpacing: '0.5px' }}>
-          <span>🦇 Vertrauten-Bogen (Effektive Magier/Hexenmeister-Stufe: {effectiveFamiliarLvl})</span>
+          <span>🦇 Familiar Sheet (Effective Wizard/Sorcerer Level: {effectiveFamiliarLvl})</span>
           <span style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'normal', fontStyle: 'italic' }}>D&amp;D 3.5e Rules</span>
         </div>
         <div style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '45px 15px', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px' }}>
-          🦇 Du hast aktuell keinen aktiven Vertrauten ausgewählt.<br />
-          <span style={{ fontSize: '7.5px', marginTop: '3px', display: 'block' }}>Wähle unten eine Kreaturenart aus, um deinen Vertrauten zu rufen!</span>
+          🦇 You currently have no active familiar selected.<br />
+          <span style={{ fontSize: '7.5px', marginTop: '3px', display: 'block' }}>Select a creature type below to summon your familiar!</span>
           
           <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
             <select 
@@ -134,17 +134,17 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
               className="cinput familiar-species-select" 
               style={{ fontSize: '8px', height: '16px', padding: '0 4px', width: '120px' }}
             >
-              <option value="none">-- Auswählen --</option>
-              <option value="bat">🦇 Fledermaus (+3 Lauschen)</option>
-              <option value="cat">🐈 Katze (+3 Leise bewegen)</option>
-              <option value="hawk">🦅 Falke (+3 Entdecken in hellem Licht)</option>
-              <option value="lizard">🦎 Eidechse (+3 Klettern)</option>
-              <option value="owl">🦉 Eule (+3 Entdecken in Schatten)</option>
-              <option value="rat">🐀 Ratte (+2 Zähigkeits-Rettungswurf)</option>
-              <option value="raven">🐦 Rabe (+3 Schätzen / spricht Sprache)</option>
-              <option value="snake">🐍 Schlange (+3 Bluffen)</option>
-              <option value="toad">🐸 Kröte (+3 Trefferpunkte)</option>
-              <option value="weasel">🦦 Wiesel (+2 Reflex-Rettungswurf)</option>
+              <option value="none">-- Select --</option>
+              <option value="bat">🦇 Bat (+3 Listen)</option>
+              <option value="cat">🐈 Cat (+3 Move Silently)</option>
+              <option value="hawk">🦅 Hawk (+3 Spot in bright light)</option>
+              <option value="lizard">🦎 Lizard (+3 Climb)</option>
+              <option value="owl">🦉 Owl (+3 Spot in shadows)</option>
+              <option value="rat">🐀 Rat (+2 Fortitude Save)</option>
+              <option value="raven">🐦 Raven (+3 Appraise / speaks language)</option>
+              <option value="snake">🐍 Snake (+3 Bluff)</option>
+              <option value="toad">🐸 Toad (+3 Hit Points)</option>
+              <option value="weasel">🦦 Weasel (+2 Reflex Save)</option>
             </select>
           </div>
         </div>
@@ -185,17 +185,17 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
   const masterBab = pc.bab ? pc.bab.base : 0;
   const attacks = FamiliarRules.getFamiliarAttacks(type, masterBab, str, dex);
 
-  let specialsList = ['Wachsamkeit (Alertness)', 'Verbessertes Entrinnen (Improved Evasion)', 'Zauber teilen (Share Spells)', 'Empathische Verbindung (Empathic Link)'];
-  if (effectiveFamiliarLvl >= 3) specialsList.push('Kontaktzauber übertragen (Deliver touch spells)');
-  if (effectiveFamiliarLvl >= 5) specialsList.push('Mit Meister sprechen (Speak with master)');
-  if (effectiveFamiliarLvl >= 7) specialsList.push('Mit Tieren seiner Art sprechen (Speak with animals)');
-  if (effectiveFamiliarLvl >= 11) specialsList.push(`Zauberresistenz (SR ${effectiveFamiliarLvl + 5})`);
-  if (effectiveFamiliarLvl >= 13) specialsList.push('Hellsehen (Scry on familiar)');
+  let specialsList = ['Alertness', 'Improved Evasion', 'Share Spells', 'Empathic Link'];
+  if (effectiveFamiliarLvl >= 3) specialsList.push('Deliver touch spells');
+  if (effectiveFamiliarLvl >= 5) specialsList.push('Speak with master');
+  if (effectiveFamiliarLvl >= 7) specialsList.push('Speak with animals of its kind');
+  if (effectiveFamiliarLvl >= 11) specialsList.push(`Spell Resistance (SR ${effectiveFamiliarLvl + 5})`);
+  if (effectiveFamiliarLvl >= 13) specialsList.push('Scry on familiar');
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
       <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '1px solid var(--pb)', paddingBottom: '3px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', letterSpacing: '0.5px' }}>
-        <span>🦇 Vertrauten-Bogen (Effektive Magier/Hexenmeister-Stufe: {effectiveFamiliarLvl})</span>
+        <span>🦇 Familiar Sheet (Effective Wizard/Sorcerer Level: {effectiveFamiliarLvl})</span>
         <span style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'normal', fontStyle: 'italic' }}>D&amp;D 3.5e Rules</span>
       </div>
 
@@ -209,31 +209,31 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
               className="familiar-name-field" 
               value={name} 
               onChange={handleNameChange}
-              placeholder="Name deines Vertrauten" 
+              placeholder="Familiar Name" 
               style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', background: 'transparent', border: 'none', borderBottom: '0.5px dashed var(--pb)', outline: 'none', width: '120px' }} 
-              title="Vertrauens-Name" 
+              title="Familiar Name" 
             />
           </div>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Art:</span>
+            <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Type:</span>
             <select 
               value={type}
               onChange={(e) => handleSpeciesChange(e.target.value)}
               className="cinput familiar-species-select" 
               style={{ fontSize: '7.5px', height: '14px', padding: '0', width: '75px', margin: '0' }}
             >
-              <option value="bat">Fledermaus</option>
-              <option value="cat">Katze</option>
-              <option value="hawk">Falke</option>
-              <option value="lizard">Eidechse</option>
-              <option value="owl">Eule</option>
-              <option value="rat">Ratte</option>
-              <option value="raven">Rabe</option>
-              <option value="snake">Schlange</option>
-              <option value="toad">Kröte</option>
-              <option value="weasel">Wiesel</option>
-              <option value="none">-- Entlassen --</option>
+              <option value="bat">Bat</option>
+              <option value="cat">Cat</option>
+              <option value="hawk">Hawk</option>
+              <option value="lizard">Lizard</option>
+              <option value="owl">Owl</option>
+              <option value="rat">Rat</option>
+              <option value="raven">Raven</option>
+              <option value="snake">Snake</option>
+              <option value="toad">Toad</option>
+              <option value="weasel">Weasel</option>
+              <option value="none">-- Dismiss --</option>
             </select>
           </div>
         </div>
@@ -243,12 +243,12 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
           {/* Health Bar Widget */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200,169,110,0.15)', padding: '4px', borderRadius: '2px' }}>
             <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'radial-gradient(circle, #f4e8c1 0%, #c8a96e 70%, #9a7a2e 100%)', border: '1.2px solid var(--red)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", color: 'var(--red)', fontSize: '9px', fontWeight: 'bold' }}>
-              <span style={{ fontSize: '5px', color: 'var(--inkl)', lineHeight: 1, marginTop: '1px' }}>TP</span>
+              <span style={{ fontSize: '5px', color: 'var(--inkl)', lineHeight: 1, marginTop: '1px' }}>HP</span>
               <span style={{ lineHeight: 1.1, fontSize: '10px' }}>{curHP}</span>
             </div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '2px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '7px', fontWeight: 'bold', color: 'var(--inkm)' }}>
-                <span>Vertrauten-TP</span>
+                <span>Familiar HP</span>
                 <span>{pct}%</span>
               </div>
               <div style={{ height: '6px', background: 'rgba(0,0,0,0.15)', borderRadius: '1.5px', overflow: 'hidden', border: '0.5px solid var(--pb)' }}>
@@ -262,7 +262,7 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
                   value={curHP} 
                   onChange={handleHpCurChange}
                   style={{ width: '18px', fontSize: '7.5px', textAlign: 'center', height: '12px', padding: '0', borderRadius: '1px', border: '0.5px solid var(--pb)' }} 
-                  title="Aktuelle TP direkt ändern" 
+                  title="Change current HP directly" 
                 />
                 <span style={{ fontSize: '7.5px' }}>/ {maxHP}</span>
                 <button onClick={() => handleHpAdjust(1)} className="btn familiar-hp-adjust-btn" style={{ fontSize: '7px', padding: '0 4px', lineHeight: 1, height: '12px', fontWeight: 'bold' }}>+</button>
@@ -273,16 +273,16 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
           {/* AC & Saving Throws */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', background: 'rgba(200, 169, 110, 0.1)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '3px', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontSize: '6.8px', fontWeight: 'bold', color: 'var(--inkl)' }}>🛡️ RÜSTUNGSKL.</span>
+              <span style={{ fontSize: '6.8px', fontWeight: 'bold', color: 'var(--inkl)' }}>🛡️ ARMOR CLASS</span>
               <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', lineHeight: 1 }}>{displayAC}</span>
               <span style={{ fontSize: '5px', color: 'var(--inkl)', fontStyle: 'italic' }}>(+{natArmor} Nat.)</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', background: 'rgba(200, 169, 110, 0.1)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '3px', alignItems: 'center', justifyContent: 'center', gap: '1px' }}>
-              <span style={{ fontSize: '5.5px', fontWeight: 'bold', color: 'var(--inkl)', lineHeight: 1 }}>RETTUNGSWÜRFE</span>
+              <span style={{ fontSize: '5.5px', fontWeight: 'bold', color: 'var(--inkl)', lineHeight: 1 }}>SAVING THROWS</span>
               <div style={{ fontSize: '7px', fontWeight: 'bold', color: 'var(--red)', lineHeight: 1 }}>
-                ZÄ: {formatMod(famFort)}<br />
-                RE: {formatMod(famRef)}<br />
-                WI: {formatMod(famWil)}
+                FORT: {formatMod(famFort)}<br />
+                REF: {formatMod(famRef)}<br />
+                WILL: {formatMod(famWil)}
               </div>
             </div>
           </div>
@@ -326,7 +326,7 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
         {attacks.length > 0 && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5px', marginTop: '2px' }}>
             <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '7.5px', color: 'var(--red)', borderBottom: '0.5px solid var(--pb)', paddingBottom: '1px', fontWeight: 'bold' }}>
-              ⚔️ Angriffe des Vertrauten
+              ⚔️ Familiar Attacks
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5px' }}>
               {attacks.map((att: any, idx: number) => (
@@ -346,7 +346,7 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
                     className="btn roll-familiar-attack-btn" 
                     style={{ fontSize: '7.5px', padding: '2px 6px', fontWeight: 'bold', cursor: 'pointer', borderRadius: '2px' }}
                   >
-                    Wurf 🎲
+                    Roll 🎲
                   </button>
                 </div>
               ))}
@@ -357,9 +357,9 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
         {/* Rules Summary Footer */}
         {baseStats && (
           <div style={{ background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '4.5px', fontSize: '6.8px', color: 'var(--ink)', lineHeight: 1.25 }}>
-            🔮 <strong>Gewährter Meister-Bonus:</strong> <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>{baseStats.bonus}</span><br />
-            🐾 <strong>Spezielle Eigenschaften:</strong> {specialsList.join(', ')}<br />
-            <span style={{ fontSize: '6px', color: 'var(--inkl)', fontStyle: 'italic' }}>(Basiert auf den RAW-Regeln von D&amp;D 3.5e für Vertraute).</span>
+            🔮 <strong>Granted Master Bonus:</strong> <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>{baseStats.bonus}</span><br />
+            🐾 <strong>Special Qualities:</strong> {specialsList.join(', ')}<br />
+            <span style={{ fontSize: '6px', color: 'var(--inkl)', fontStyle: 'italic' }}>(Based on D&amp;D 3.5e RAW rules for familiars).</span>
           </div>
         )}
       </div>

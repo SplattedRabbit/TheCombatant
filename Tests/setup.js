@@ -180,7 +180,7 @@ import { CombatSpells } from '../js/spells.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const spellsPath = path.resolve(__dirname, '../data/spells_de.json');
+const spellsPath = path.resolve(__dirname, '../data/spells.json');
 const spellsData = JSON.parse(fs.readFileSync(spellsPath, 'utf8'));
 Object.assign(CombatSpells.REGISTRY, spellsData);
 

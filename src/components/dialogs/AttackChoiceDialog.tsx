@@ -89,13 +89,13 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
         <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '2px' }}>
-          ⚔️ {weapon.name || 'Waffe'}
+          ⚔️ {weapon.name || 'Weapon'}
         </div>
         <div className="dialog-subtitle" style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '6px' }}>
-          {currentView === 'grid' && 'Angriffsart wählen'}
+          {currentView === 'grid' && 'Choose attack type'}
           {currentView === 'std' && (
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-              <span>Standard-Angriff gewählt</span>
+              <span>Standard Attack selected</span>
               <span
                 onClick={() => setCurrentView('grid')}
                 style={{
@@ -110,13 +110,13 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                   fontWeight: 'bold'
                 }}
               >
-                ← Zurück
+                ← Back
               </span>
             </div>
           )}
           {currentView === 'full' && (
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-              <span>Voller Angriff gewählt</span>
+              <span>Full Attack selected</span>
               <span
                 onClick={() => setCurrentView('grid')}
                 style={{
@@ -131,7 +131,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                   fontWeight: 'bold'
                 }}
               >
-                ← Zurück
+                ← Back
               </span>
             </div>
           )}
@@ -147,7 +147,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                 onChange={handleSmiteChange}
                 style={{ margin: 0, width: '11px', height: '11px', cursor: 'pointer' }}
               />
-              Böses niederstrecken (+{Math.max(0, pc.getAttributeMod('cha'))} Angr. / +{paladinClass.level} Schd.)
+              Smite Evil (+{Math.max(0, pc.getAttributeMod('cha'))} Atk / +{paladinClass.level} Dmg)
             </label>
           </div>
         )}
@@ -176,17 +176,17 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                   e.currentTarget.style.borderColor = 'var(--pb)';
                 }}
               >
-                <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>Standard-Angriff</div>
+                <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>Standard Attack</div>
                 <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px' }}>
-                  Ein einzelner Angriff mit deinem vollen Angriffsbonus.
+                  A single attack with your full attack bonus.
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '4px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '4px' }}>
-                  <span style={{ fontSize: '7px', color: 'var(--inkl)' }}>Formel:</span>
+                  <span style={{ fontSize: '7px', color: 'var(--inkl)' }}>Formula:</span>
                   <span style={{ fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)' }}>
-                    1W20 {formatMod(stdAtk.atkTotal)}
+                    1d20 {formatMod(stdAtk.atkTotal)}
                     {doubledCritDisplay && (
                       <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'normal', marginLeft: '3px' }}>
-                        (Krit: {doubledCritDisplay})
+                        (Crit: {doubledCritDisplay})
                       </span>
                     )}
                   </span>
@@ -215,23 +215,23 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>Voller Angriff (Full Attack)</span>
+                  <span style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>Full Attack</span>
                   <span style={{ fontSize: '7px', background: 'rgba(139,26,26,0.1)', color: 'var(--red)', padding: '0 3px', borderRadius: '1px', fontWeight: 'bold' }}>
                     {fullSeq.length}x
                   </span>
                 </div>
                 <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px' }}>
-                  Führe alle dir zustehenden Angriffe aus.
+                  Perform all available attacks.
                 </div>
                 <div style={{ marginTop: '4px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '4px', fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif" }}>
                   {fullSeq.map((atk: any, idx: number) => (
                     <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px' }}>
                       <span>{atk.name}:</span>
                       <span style={{ fontWeight: 'bold', color: 'var(--red)' }}>
-                        1W20 {formatMod(atk.atkTotal)}
+                        1d20 {formatMod(atk.atkTotal)}
                         {doubledCritDisplay && (
                           <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'normal', marginLeft: '3px' }}>
-                            (Krit: {doubledCritDisplay})
+                            (Crit: {doubledCritDisplay})
                           </span>
                         )}
                       </span>
@@ -245,7 +245,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
           {currentView === 'std' && (
             <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '10px', fontFamily: "'Crimson Text', serif" }}>
               <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '5px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
-                Angriffsmodifikatoren
+                Attack Modifiers
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '9.5px', color: 'var(--inkm)' }}>
                 {Array.isArray(stdAtk.atkBreakdown) && stdAtk.atkBreakdown.map((item: any, idx: number) => (
@@ -256,14 +256,14 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                 ))}
                 <hr style={{ border: 'none', borderTop: '0.5px dashed rgba(200,169,110,0.3)', margin: '4px 0' }} />
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
-                  <span>Gesamt-Modifikator:</span>
+                  <span>Total Modifier:</span>
                   <span>{formatMod(stdAtk.atkTotal)}</span>
                 </div>
               </div>
               <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.3)', margin: '6px 0 4px' }} />
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
-                <span>WURF-FORMEL:</span>
-                <span>1W20 {formatMod(stdAtk.atkTotal)}</span>
+                <span>ROLL FORMULA:</span>
+                <span>1d20 {formatMod(stdAtk.atkTotal)}</span>
               </div>
             </div>
           )}
@@ -271,14 +271,14 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
           {currentView === 'full' && (
             <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '8px 10px', maxHeight: '200px', overflowY: 'auto' }}>
               <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '3px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
-                Angriffsmodifikatoren (Voller Angriff)
+                Attack Modifiers (Full Attack)
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                 {fullSeq.map((atk: any, idx: number) => (
                   <div key={idx} style={{ marginTop: '4px', borderBottom: '0.5px dotted rgba(200, 169, 110, 0.2)', paddingBottom: '3px', fontFamily: "'Crimson Text', serif" }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', color: 'var(--red)', fontSize: '9.5px', fontFamily: "'IM Fell English SC', serif" }}>
                       <span>{atk.name}:</span>
-                      <span>1W20 {formatMod(atk.atkTotal)}</span>
+                      <span>1d20 {formatMod(atk.atkTotal)}</span>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5px', fontSize: '7.5px', color: 'var(--inkm)', paddingLeft: '6px', marginTop: '1px' }}>
                       {Array.isArray(atk.atkBreakdown) && atk.atkBreakdown.map((item: any, bIdx: number) => (
@@ -313,7 +313,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
             transition: 'color 0.15s, border-color 0.15s'
           }}
         >
-          {currentView === 'grid' ? 'Abbrechen' : 'Fertig!'}
+          {currentView === 'grid' ? 'Cancel' : 'Done!'}
         </button>
       </div>
     </div>

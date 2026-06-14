@@ -1,6 +1,6 @@
 /**
  * @module    PCBuffsTab
- * @summary   Rendert den Buff-Manager Tab mit der Liste der aktiven Buffs, der Schnellauswahl, der Suche im Regelwerk und dem Custom Buff Builder.
+ * @summary   Renders the buff manager tab with the list of active buffs, quick select, rulebook search, and the custom buff builder.
  * @exports   PCBuffsTab
  * @reads     pc.activeBuffs, pc.quickBuffs, pc.classes, pc.learnedSpells, pc.spellSlots, pc.preparedSpells
  * @stateOps  updatePCBatch, activateBuffByKey, checkBuffConflict, showCustomConfirm, showCustomAlert
@@ -123,7 +123,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
     ).map((b: any) => ({
       key: b.key,
       name: b.name,
-      school: b.school || 'Klasse',
+      school: b.school || 'Class',
       duration: b.duration || '—',
       isClass: true
     }));
@@ -138,8 +138,8 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
           if (nameDe.includes(q) || nameEn.includes(q) || key.toLowerCase().includes(q)) {
             matchedSpellBuffs.push({
               key: key,
-              name: spell.nameDe || spell.nameEn || key,
-              school: spell.school || 'Zauber',
+              name: spell.nameEn || spell.nameDe || key,
+              school: spell.school || 'Spell',
               duration: spell.duration || '—',
               isClass: false
             });
@@ -160,7 +160,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
   const handleAddCustomBuff = () => {
     const name = customName.trim();
     if (!name) {
-      showCustomAlert("Eingabe ungültig", "Bitte gib einen Namen für den eigenen Buff ein.", "Verstanden", "⚠️");
+      showCustomAlert("Invalid Input", "Please enter a name for the custom buff.", "Got it", "⚠️");
       return;
     }
 
@@ -179,16 +179,16 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
     const conflict = checkBuffConflict(pc, null, [{ target: customTarget, value: customValue, type: customType, source: name }]);
     if (conflict.status === 'suppressed') {
       showCustomConfirm(
-        "Stacking-Konflikt",
-        `Ein stärkerer oder gleichwertiger Buff (<strong>${conflict.conflictingBuffName}</strong>) ist bereits aktiv.<br><br>Dein neuer Buff <strong>${name}</strong> (+${customValue} auf ${conflict.targetLabel}) hat denselben Bonus-Typ und würde daher <strong>keine Wirkung</strong> zeigen.<br><br>Möchtest du den Buff dennoch aktivieren?`,
+        "Stacking Conflict",
+        `A stronger or equivalent buff (<strong>${conflict.conflictingBuffName}</strong>) is already active.<br><br>Your new buff <strong>${name}</strong> (+${customValue} to ${conflict.targetLabel}) has the same bonus type and would therefore have <strong>no effect</strong>.<br><br>Do you still want to activate the buff?`,
         () => { performCustomAdd(); }
       );
     } else if (conflict.status === 'overrides') {
       performCustomAdd();
       showCustomAlert(
-        "Buff überlagert",
-        `Durch das Aktivieren von <strong>${name}</strong> (+${customValue}) wird der schwächere aktive Buff <strong>${conflict.conflictingBuffName}</strong> (+${conflict.activeValue}) auf <strong>${conflict.targetLabel}</strong> überlagert.<br><br>Deine Werte erhöhen sich netto um <strong>+${customValue - conflict.activeValue}</strong>.`,
-        "Verstanden",
+        "Buff Overridden",
+        `Activating <strong>${name}</strong> (+${customValue}) will override the weaker active buff <strong>${conflict.conflictingBuffName}</strong> (+${conflict.activeValue}) on <strong>${conflict.targetLabel}</strong>.<br><br>Your net stats will increase by <strong>+${customValue - conflict.activeValue}</strong>.`,
+        "Got it",
         "✨"
       );
     } else {
@@ -203,12 +203,12 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
       {/* List of active buffs */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
-          Aktive Buffs &amp; Auren
+          Active Buffs &amp; Auras
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', maxHeight: '120px', overflowY: 'auto', paddingRight: '2px', boxSizing: 'border-box' }}>
           {activeBuffs.length === 0 ? (
             <div style={{ width: '100%', fontStyle: 'italic', color: 'var(--inkl)', fontSize: '9px', textAlign: 'center', padding: '10px 0', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px' }}>
-              Keine aktiven Buffs oder Auren.
+              No active buffs or auras.
             </div>
           ) : (
             activeBuffs.map((buff: any, idx: number) => {
@@ -223,7 +223,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                 } else {
                   const spell = CombatSpells.REGISTRY?.[buff.spellKey];
                   if (spell) {
-                    displayName = spell.nameDe || spell.nameEn || displayName || buff.spellKey;
+                    displayName = spell.nameEn || spell.nameDe || displayName || buff.spellKey;
                     effectsList = buff.effects || spell.effects || [];
                   }
                 }
@@ -236,12 +236,12 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                 const targetShort: Record<string, string> = {
                   atk: 'ATK',
                   dmg: 'DMG',
-                  ac: 'RK',
-                  acArmor: 'RK',
-                  acShield: 'RK',
-                  acNatural: 'RK',
-                  acDeflection: 'RK',
-                  acDodge: 'RK',
+                  ac: 'AC',
+                  acArmor: 'AC',
+                  acShield: 'AC',
+                  acNatural: 'AC',
+                  acDeflection: 'AC',
+                  acDodge: 'AC',
                   str: 'STR',
                   dex: 'DEX',
                   con: 'CON',
@@ -293,7 +293,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                       alignItems: 'center',
                       gap: '2px'
                     }}
-                    title="D&D 3.5e RAW Regelerklärung anzeigen"
+                    title="Show D&D 3.5e RAW rule explanation"
                   >
                     ✨ {displayName}{warningBadge}
                     <span style={{ fontSize: '8px', color: 'var(--inkl)', opacity: 0.85, fontWeight: 'normal' }}>({shortEffectsSummary})</span>
@@ -320,9 +320,9 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                           padding: 0,
                           margin: '0 2px 0 4px'
                         }}
-                        title="Verbleibende Runden (0 zum Entfernen)"
+                        title="Remaining rounds (0 to remove)"
                       />
-                      <span style={{ fontSize: '8px', color: 'var(--inkl)', marginRight: '2px' }}>Rd.</span>
+                      <span style={{ fontSize: '8px', color: 'var(--inkl)', marginRight: '2px' }}>Rds</span>
                     </>
                   )}
                   <button
@@ -339,7 +339,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                       display: 'inline-flex',
                       alignItems: 'center'
                     }}
-                    title="Buff entfernen"
+                    title="Remove buff"
                   >
                     ✕
                   </button>
@@ -353,12 +353,12 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
       {/* Quick Toggles */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
-          Schnellauswahl
+          Quick Select
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3px' }}>
           {quickBuffs.length === 0 ? (
             <div style={{ gridColumn: 'span 2', fontStyle: 'italic', color: 'var(--inkl)', fontSize: '9px', textAlign: 'center', padding: '12px 0', background: 'rgba(0,0,0,0.01)', border: '0.5px dashed var(--pb)', borderRadius: '2px' }}>
-              Keine Schnellzugriffe definiert. Nutze die Suche, um Buffs hinzuzufügen.
+              No quick access slots defined. Use the search to add buffs.
             </div>
           ) : (
             quickBuffs.map((qb: any) => {
@@ -398,7 +398,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                           ? { background: 'rgba(200, 169, 110, 0.03)', color: 'rgba(20, 15, 5, 0.4)', borderColor: 'rgba(200, 169, 110, 0.3)', opacity: 0.5, filter: 'grayscale(60%)' }
                           : { background: 'rgba(200, 169, 110, 0.08)', color: 'var(--ink)', borderColor: 'var(--pb)' }))
                     }}
-                    title={`${qb.name}${isSuppressed ? ' (Unterdrückt durch einen stärkeren aktiven Buff)' : ''}`}
+                    title={`${qb.name}${isSuppressed ? ' (Suppressed by a stronger active buff)' : ''}`}
                   >
                     {checkmark}{qb.name}{warningBadge}
                   </button>
@@ -422,7 +422,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                       lineHeight: 1,
                       transition: 'opacity 0.15s'
                     }}
-                    title="Aus Schnellauswahl entfernen"
+                    title="Remove from quick select"
                   >
                     ✕
                   </span>
@@ -436,7 +436,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
       {/* Autocomplete Buff Search */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', position: 'relative' }}>
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
-          🔍 Buff / Aura aus Regelwerk suchen
+          🔍 Search Buff / Aura from Rulebook
         </div>
         <input
           type="text"
@@ -447,7 +447,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
             setIsSearchOpen(true);
           }}
           onFocus={() => setIsSearchOpen(true)}
-          placeholder="Name eingeben (z. B. Heldenmut, Kampfrausch)..."
+          placeholder="Enter name (e.g. Heroism, Rage)..."
           className="cinput"
           style={{ height: '18px', fontSize: '9px', padding: '0 3px', boxSizing: 'border-box' }}
           autoComplete="off"
@@ -473,7 +473,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
           >
             {searchResults.length === 0 ? (
               <div style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', padding: '4px', textAlign: 'center' }}>
-                Keine Treffer im Regelwerk.
+                No matches found in the rulebook.
               </div>
             ) : (
               searchResults.map((m: any) => {
@@ -503,7 +503,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                       ✨ <strong>{m.name}</strong>{warningBadge}
                       <div style={{ fontSize: '8px', color: 'var(--inkl)' }}>{m.school} • {m.duration}</div>
                     </span>
-                    <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>[Auswählen]</span>
+                    <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>[Select]</span>
                   </div>
                 );
               })
@@ -515,7 +515,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
       {/* Custom Buff Builder */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '6px' }}>
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px' }}>
-          Eigenen Buff / Aura erstellen
+          Create Custom Buff / Aura
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.2fr 0.6fr', gap: '3px', alignItems: 'end' }}>
@@ -525,40 +525,40 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
               type="text"
               value={customName}
               onChange={(e) => setCustomName(e.target.value)}
-              placeholder="z. B. Lied"
+              placeholder="e.g. Song"
               className="cinput"
               style={{ height: '18px', fontSize: '9px', padding: '0 3px', boxSizing: 'border-box' }}
             />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'left' }}>
-            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", lineHeight: 1 }}>Zielwert</label>
+            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", lineHeight: 1 }}>Target Stat</label>
             <select
               value={customTarget}
               onChange={(e) => setCustomTarget(e.target.value)}
               className="cinput"
               style={{ height: '18px', fontSize: '9px', padding: 0, boxSizing: 'border-box' }}
             >
-              <option value="atk">Angriffswurf (ATK)</option>
-              <option value="dmg">Schadenswurf (DMG)</option>
-              <option value="ac">Rüstungsklasse (AC)</option>
-              <option value="acDodge">Ausweich-RK (Dodge)</option>
-              <option value="acDeflection">Ablenkung (Deflection)</option>
-              <option value="acShield">Schild-RK (Shield)</option>
-              <option value="acArmor">Rüstungs-RK (Armor)</option>
-              <option value="acNatural">Natürliche Rüstung</option>
-              <option value="str">Stärke (STR)</option>
-              <option value="dex">Geschick (DEX)</option>
-              <option value="con">Konstitution (CON)</option>
-              <option value="int">Intelligenz (INT)</option>
-              <option value="wis">Weisheit (WIS)</option>
+              <option value="atk">Attack Roll (ATK)</option>
+              <option value="dmg">Damage Roll (DMG)</option>
+              <option value="ac">Armor Class (AC)</option>
+              <option value="acDodge">Dodge AC</option>
+              <option value="acDeflection">Deflection AC</option>
+              <option value="acShield">Shield AC</option>
+              <option value="acArmor">Armor AC</option>
+              <option value="acNatural">Natural Armor AC</option>
+              <option value="str">Strength (STR)</option>
+              <option value="dex">Dexterity (DEX)</option>
+              <option value="con">Constitution (CON)</option>
+              <option value="int">Intelligence (INT)</option>
+              <option value="wis">Wisdom (WIS)</option>
               <option value="cha">Charisma (CHA)</option>
-              <option value="za">Zähigkeit (Fort)</option>
+              <option value="za">Fortitude (Fort)</option>
               <option value="ref">Reflex (Ref)</option>
-              <option value="wil">Willen (Will)</option>
+              <option value="wil">Will (Will)</option>
             </select>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'left' }}>
-            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", lineHeight: 1 }}>Wert</label>
+            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", lineHeight: 1 }}>Value</label>
             <input
               type="number"
               value={customValue}
@@ -571,25 +571,25 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
 
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '3px', alignItems: 'end', marginTop: '2px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'left' }}>
-            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", lineHeight: 1 }}>Bonustyp</label>
+            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", lineHeight: 1 }}>Bonus Type</label>
             <select
               value={customType}
               onChange={(e) => setCustomType(e.target.value)}
               className="cinput"
               style={{ height: '18px', fontSize: '9px', padding: 0, boxSizing: 'border-box' }}
             >
-              <option value="untyped">Ohne Typ (Untyped)</option>
-              <option value="morale">Moral (Morale)</option>
-              <option value="luck">Glück (Luck)</option>
-              <option value="dodge">Ausweichen (Dodge)</option>
-              <option value="enhancement">Verbesserung (Enhancement)</option>
-              <option value="deflection">Ablenkung (Deflection)</option>
-              <option value="armor">Rüstung (Armor)</option>
-              <option value="shield">Schild (Shield)</option>
-              <option value="natural">Natürlich (Natural)</option>
-              <option value="insight">Einsicht (Insight)</option>
-              <option value="sacred">Heilig (Sacred)</option>
-              <option value="profane">Unheilig (Profane)</option>
+              <option value="untyped">Untyped</option>
+              <option value="morale">Morale</option>
+              <option value="luck">Luck</option>
+              <option value="dodge">Dodge</option>
+              <option value="enhancement">Enhancement</option>
+              <option value="deflection">Deflection</option>
+              <option value="armor">Armor</option>
+              <option value="shield">Shield</option>
+              <option value="natural">Natural</option>
+              <option value="insight">Insight</option>
+              <option value="sacred">Sacred</option>
+              <option value="profane">Profane</option>
             </select>
           </div>
           <button
@@ -607,10 +607,11 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
               lineHeight: '13px'
             }}
           >
-            Hinzufügen
+            Add
           </button>
         </div>
       </div>
     </div>
   );
 };
+

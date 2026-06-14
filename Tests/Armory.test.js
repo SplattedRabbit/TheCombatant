@@ -176,7 +176,7 @@ test('Armory - Weapon extra damage formulas integration', () => {
   // longsword base dice is "1w8"
   assert.strictEqual(stdAtk.damageDice, '1w8 + 1w6 Feuer', 'Damage dice formula should append extra damage');
   
-  // dmgBreakdown should contain 'Zusatz-Schaden'
-  const hasExtraDmgMod = stdAtk.dmgBreakdown.some(m => m.label === 'Zusatz-Schaden' && m.value === '1w6 Feuer');
+  // dmgBreakdown should contain 'Extra Damage'
+  const hasExtraDmgMod = stdAtk.dmgBreakdown.some(m => m.label === 'Extra Damage' && m.value === '1w6 Feuer');
   assert.ok(hasExtraDmgMod, 'Damage breakdown should log extra damage as info');
 });

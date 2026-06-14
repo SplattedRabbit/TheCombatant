@@ -411,7 +411,7 @@ test('Combat Action - Rogue Sneak Attack Damage Addition', () => {
   // Sneak Attack ON -> +3d6 damage dice string
   const seqOn = AttackEngine.calculateAttackSequence(pc, dagger, false, { sneakAttack: true });
   assert.strictEqual(seqOn[0].damageDice, '1w4 + 3w6');
-  assert.ok(seqOn[0].dmgBreakdown.some(b => b.label.includes('Hinterhältiger Angriff')));
+  assert.ok(seqOn[0].dmgBreakdown.some(b => b.label.includes('Sneak Attack')));
 });
 
 test('Class Passive - Monk Unarmed Damage Scaling', () => {

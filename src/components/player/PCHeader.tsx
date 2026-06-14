@@ -1,11 +1,11 @@
 /**
  * @module    PCHeader
- * @summary   Header-Komponente für den Spielercharakter mit Name, Rasse, Klasse/Stufe, Alignment, Initiative, HP-Anzeige und Schadenscontroller.
+ * @summary   Header component for the player character with name, race, class/level, alignment, initiative, HP display, and damage controller.
  * @exports   PCHeader
  * @reads     pc.name, pc.race, pc.classes, pc.size, pc.alignment, pc.hp, pc.maxHP, pc.conditions, pc.init, pc.iniMisc, pc.dex, pc.feats
  * @stateOps  updatePCField, updatePCNumber, applyDamage, applyTempHP
  * @depends   React, @core/state.js, src/hooks/useCombatState
- * @notHere   Attribute & Multiclass-Manager -> PCAttributes.tsx | HP-Globus -> PCHealthGlobe.tsx
+ * @notHere   Attributes & Multiclass Manager -> PCAttributes.tsx | HP Globe -> PCHealthGlobe.tsx
  */
 
 import React, { useState, useEffect } from 'react';
@@ -25,7 +25,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
   const [showYouDied, setShowYouDied] = useState<boolean>(false);
   const [youDiedStep, setYouDiedStep] = useState<number>(0); // 0: hidden, 1: fade-in, 2: visible
 
-  // Hilfsfunktionen analog zu PCUtils.js / PCHeader.js
+  // Helper functions similar to PCUtils.js / PCHeader.js
   const getAblMod = (stat: any) => {
     const score = typeof stat?.getValue === 'function' ? stat.getValue() : (stat ?? 10);
     return Math.floor((score - 10) / 2);
@@ -36,7 +36,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
   const totIni = dexMod + (parseInt((pc as any).iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
   const finalIni = (pc.initiative || 0) > 0 ? (pc.initiative || 0) + totIni : '--';
 
-  // Temp HP ermitteln
+  // Get Temp HP
   const tempHPObj = pc.conditions.find((c: any) => c === 'Temp-HP' || (c && c.n === 'Temp-HP'));
   const tempHP = tempHPObj ? (parseInt((tempHPObj as any).tmpVal) || 0) : 0;
 
@@ -55,38 +55,38 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
   };
   const fc = getFillCls(totalPct, pc.hp);
 
-  // Rasse übersetzen
+  // Translate Race
   const getRaceName = (race: string) => {
     const names: Record<string, string> = {
-      human: 'Mensch',
+      human: 'Human',
       elf: 'Elf',
-      dwarf: 'Zwerg',
-      gnome: 'Gnom',
-      halfling: 'Halbling',
-      half_elf: 'Halbelf',
-      half_orc: 'Halbork',
+      dwarf: 'Dwarf',
+      gnome: 'Gnome',
+      halfling: 'Halfling',
+      half_elf: 'Half-Elf',
+      half_orc: 'Half-Orc',
     };
     return names[race.toLowerCase()] || race;
   };
 
-  // Klassen-String erzeugen
+  // Generate Class String
   const getClassesString = () => {
-    if (!Array.isArray(pc.classes) || pc.classes.length === 0) return 'Stufe 1';
+    if (!Array.isArray(pc.classes) || pc.classes.length === 0) return 'Level 1';
     return pc.classes
       .map((c: any) => {
         const clsNames: Record<string, string> = {
-          barbarian: 'Barbar',
-          bard: 'Barde',
-          cleric: 'Kleriker',
-          druid: 'Druide',
-          fighter: 'Kämpfer',
-          monk: 'Mönch',
+          barbarian: 'Barbarian',
+          bard: 'Bard',
+          cleric: 'Cleric',
+          druid: 'Druid',
+          fighter: 'Fighter',
+          monk: 'Monk',
           paladin: 'Paladin',
-          ranger: 'Waldläufer',
-          rogue: 'Schurke',
-          sorcerer: 'Hexenmeister',
-          wizard: 'Magier',
-          custom: 'Spezial',
+          ranger: 'Ranger',
+          rogue: 'Rogue',
+          sorcerer: 'Sorcerer',
+          wizard: 'Wizard',
+          custom: 'Custom',
         };
         const name = clsNames[c.classType.toLowerCase()] || c.classType;
         return `${name} ${c.level}`;
@@ -94,18 +94,18 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
       .join(' / ');
   };
 
-  // Größe übersetzen
+  // Translate Size
   const getSizeName = (size: string) => {
     const sizes: Record<string, string> = {
-      medium: 'Mittel',
-      small: 'Klein',
-      large: 'Groß',
-      tiny: 'Sehr Klein',
+      medium: 'Medium',
+      small: 'Small',
+      large: 'Large',
+      tiny: 'Tiny',
     };
-    return sizes[size.toLowerCase()] || size || 'Mittel';
+    return sizes[size.toLowerCase()] || size || 'Medium';
   };
 
-  // Schaden / Heilung / TempHP Handler
+  // Damage / Healing / TempHP Handler
   const getCalculatedValue = () => {
     let val = parseInt(dmgValue) || 0;
     if (val > 0) {
@@ -139,16 +139,14 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
     }
   };
 
-  // You Died Overlay Überwachung
+  // You Died Overlay monitoring
   useEffect(() => {
     if (pc.hp <= -10 && !(pc as any).deathScreenShown) {
-      // Setze im State, dass die Sterbeanimation getriggert wird
       CombatState.updatePCField('deathScreenShown', true);
       setShowYouDied(true);
       setYouDiedStep(1);
       setTimeout(() => setYouDiedStep(2), 50);
     } else if (pc.hp > -10 && (pc as any).deathScreenShown) {
-      // Setze zurück, wenn HP wieder steigen (z.B. Heilung)
       CombatState.updatePCField('deathScreenShown', false);
       setShowYouDied(false);
       setYouDiedStep(0);
@@ -192,10 +190,10 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
             <span style={{ fontSize: '20px' }}>🧙‍♂️</span>
             <div style={{ textAlign: 'left' }}>
               <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '13px', display: 'block' }}>
-                Charakter-Assistent (Wizard)
+                Character Wizard
               </strong>
               <span style={{ fontSize: '11px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
-                Erstelle deinen D&D 3.5e Charakter Schritt für Schritt mit dem geführten, regelkonformen Assistenten.
+                Create your D&D 3.5e character step-by-step with the guided, rules-compliant assistant.
               </span>
             </div>
           </div>
@@ -204,12 +202,12 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
             onClick={() => CombatState.setRole('wizard')}
             style={{ fontSize: '11px', padding: '4px 12px', whiteSpace: 'nowrap' }}
           >
-            Assistent starten
+            Start Assistant
           </button>
         </div>
       )}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
-        {/* Links: Charakter Name & Metadaten */}
+        {/* Left: Character Name & Metadata */}
         <div style={{ flex: '1', minWidth: '200px', display: 'flex', flexDirection: 'column', gap: '3px' }}>
           <h1
             style={{
@@ -222,7 +220,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
               gap: '6px',
             }}
           >
-            Charakterbogen:
+            Character Sheet:
             <input
               type="text"
               value={pc.name}
@@ -241,7 +239,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
             />
           </h1>
 
-          {/* Rasse, Klassen, Größe, Alignment */}
+          {/* Race, Classes, Size, Alignment */}
           <div
             style={{
               fontSize: '8.5px',
@@ -264,10 +262,10 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
               📏 {getSizeName(pc.size || 'medium')}
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span>Gesinnung:</span>
+              <span>Alignment:</span>
               <input
                 type="text"
-                placeholder="z.B. RG"
+                placeholder="e.g. LG"
                 value={pc.alignment || ''}
                 onChange={(e) => CombatState.updatePCField('alignment', e.target.value)}
                 style={{
@@ -286,7 +284,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
           </div>
         </div>
 
-        {/* Rechts: Premium Status & Combat Widget */}
+        {/* Right: Premium Status & Combat Widget */}
         <div
           style={{
             display: activeTab === 'overview' ? 'none' : 'flex',
@@ -338,7 +336,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
                     color: 'var(--red)',
                     padding: 0,
                   }}
-                  title="Aktuelle TP direkt editieren"
+                  title="Edit current HP directly"
                 />
               </div>
               <span style={{ height: '0.5px', background: 'var(--red)', width: '34px', opacity: 0.5 }}></span>
@@ -358,7 +356,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
                     color: 'var(--inkl)',
                     padding: 0,
                   }}
-                  title="Maximal-TP direkt editieren"
+                  title="Edit max HP directly"
                 />
               </div>
             </div>
@@ -386,7 +384,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
                   boxShadow: '0 2px 5px rgba(0,192,255,0.45), inset 0 1px 2px rgba(255,255,255,0.2)',
                   zIndex: 15,
                 }}
-                title="Aktive temporäre TP"
+                title="Active temporary HP"
               >
                 +{tempHP}
               </div>
@@ -396,7 +394,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
           {/* Double-Layered Health Bar */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5px', width: '120px' }}>
             <div style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'IM Fell English SC', serif", display: 'flex', justifyContent: 'space-between', lineHeight: 1, letterSpacing: '0.2px' }}>
-              <span>Gesundheit</span>
+              <span>Health</span>
               <span>{totalPct}%</span>
             </div>
 
@@ -452,7 +450,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
               <input
                 type="number"
-                placeholder="Wert"
+                placeholder="Val"
                 value={dmgValue}
                 onChange={(e) => setDmgValue(e.target.value)}
                 style={{
@@ -472,17 +470,17 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
                 className="xbtn xbtn-dmg pc-dmg-btn"
                 style={{ height: '22px', padding: '0 6px', fontSize: '8px', fontWeight: 'bold', lineHeight: '20px', fontFamily: "'IM Fell English SC', serif", margin: 0 }}
                 onClick={handleApplyDamage}
-                title="Schaden abziehen"
+                title="Subtract damage"
               >
-                - Schad.
+                - Damage
               </button>
               <button
                 className="xbtn xbtn-heal pc-heal-btn"
                 style={{ height: '22px', padding: '0 6px', fontSize: '8px', fontWeight: 'bold', lineHeight: '20px', fontFamily: "'IM Fell English SC', serif", margin: 0 }}
                 onClick={handleApplyHeal}
-                title="Heilung anwenden"
+                title="Apply healing"
               >
-                + Heil.
+                + Heal
               </button>
               <button
                 className="xbtn xbtn-temp-hp pc-temp-hp-btn"
@@ -499,7 +497,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
                   margin: 0,
                 }}
                 onClick={handleApplyTempHP}
-                title="Temporäre TP hinzufügen"
+                title="Add temporary HP"
               >
                 + Temp
               </button>
@@ -513,7 +511,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
                   onChange={(e) => setIsHalf(e.target.checked)}
                   style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
                 />
-                <span>Halbiert (Reflex)</span>
+                <span>Half (Reflex)</span>
               </label>
               <label style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer', userSelect: 'none' }}>
                 <input
@@ -522,7 +520,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
                   onChange={(e) => setIsDouble(e.target.checked)}
                   style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
                 />
-                <span>Doppelt (Krit)</span>
+                <span>Double (Crit)</span>
               </label>
             </div>
           </div>
@@ -593,7 +591,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
                 animation: 'fadeInButton 2s 1.5s forwards',
               }}
             >
-              Ich weiß...
+              I know...
             </button>
           </div>
 

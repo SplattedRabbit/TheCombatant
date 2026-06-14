@@ -1,43 +1,43 @@
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 /**
- * Zeigt einen Dialog mit einer detaillierten Erläuterung des ausgewählten D&D 3.5-Attributs an.
- * @param key Attributs-Kürzel ('str' | 'dex' | 'con' | 'int' | 'wis' | 'cha')
+ * Shows a dialog with a detailed explanation of the selected D&D 3.5 attribute.
+ * @param key Attribute abbreviation ('str' | 'dex' | 'con' | 'int' | 'wis' | 'cha')
  */
 export const showAttributeExplanation = (key: 'str' | 'dex' | 'con' | 'int' | 'wis' | 'cha') => {
   const explanations = {
     str: {
-      title: 'Stärke (STR)',
+      title: 'Strength (STR)',
       icon: '💪',
-      desc: 'Macht:\nBestimmt die körperliche Kraft deines Charakters. Sie ist besonders wichtig für Kämpfer, Barbaren, Paladine, Waldläufer und Mönche, da sie direkt deren Kampfkraft beeinflusst.\n\nBeeinflusst:\n• Nahkampfangriffs- und Schadenswürfe\n• Schadenswürfe mit Wurfwaffen\n• Schaden mit Zweihandwaffen (1.5-facher Stärkebonus)\n• Fertigkeiten: Klettern (Climb), Springen (Jump), Schwimmen (Swim)\n• Tragfähigkeit (Tragkraft) deines Charakters'
+      desc: 'Controls:\nDetermines your character\'s physical power. It is particularly important for Fighters, Barbarians, Paladins, Rangers, and Monks, as it directly influences their combat effectiveness.\n\nInfluences:\n• Melee attack and damage rolls\n• Damage rolls with thrown weapons\n• Damage with two-handed weapons (1.5x Strength bonus)\n• Skills: Climb, Jump, Swim\n• Carrying capacity of your character'
     },
     dex: {
-      title: 'Geschicklichkeit (DEX)',
+      title: 'Dexterity (DEX)',
       icon: '🏹',
-      desc: 'Macht:\nBestimmt Flinkheit, Reflexe, Gleichgewicht und Zielsicherheit. Sie ist das wichtigste Attribut für Schurken und Fernkämpfer.\n\nBeeinflusst:\n• Fernkampfangriffswürfe und Initiativewürfe\n• Rüstungsklasse (RK) - erschwert es Gegnern, dich zu treffen\n• Reflex-Rettungswürfe (Ausweichen vor Zaubern/Fallen)\n• Fertigkeiten: Leise bewegen, Verstecken, Schlösser öffnen, Akrobatik, Taschendiebstahl'
+      desc: 'Controls:\nDetermines hand-eye coordination, agility, reflexes, balance, and aim. It is the most important attribute for Rogues and ranged attackers.\n\nInfluences:\n• Ranged attack rolls and Initiative checks\n• Armor Class (AC) - makes it harder for enemies to hit you\n• Reflex saving throws (dodging spells/traps)\n• Skills: Move Silently, Hide, Open Lock, Tumble, Sleight of Hand'
     },
     con: {
-      title: 'Konstitution (CON)',
+      title: 'Constitution (CON)',
       icon: '🛡️',
-      desc: 'Macht:\nRepräsentiert Gesundheit, Ausdauer und Zähigkeit. Sie ist für alle Klassen gleichermaßen wichtig, da sie das Überleben im Kampf sichert.\n\nBeeinflusst:\n• Zusätzliche Trefferpunkte (TP) pro Trefferwürfel/Stufe\n• Zähigkeits-Rettungswürfe (Widerstand gegen Gift, Krankheit, Lähmung)\n• Fertigkeit: Konzentration (wichtig für Zauberwirker unter Beschuss)'
+      desc: 'Controls:\nRepresents health, stamina, and durability. It is equally important for all classes, as it ensures survival in combat.\n\nInfluences:\n• Extra Hit Points (HP) per Hit Die/level\n• Fortitude saving throws (resistance against poison, disease, paralysis)\n• Skill: Concentration (important for spellcasters under attack)'
     },
     int: {
-      title: 'Intelligenz (INT)',
+      title: 'Intelligence (INT)',
       icon: '🧠',
-      desc: 'Macht:\nSpiegelt mentale Schärfe, Lernfähigkeit und Gedächtnis wider. Wichtig für Magier und Charaktere, die viele Fertigkeiten nutzen wollen.\n\nBeeinflusst:\n• Anzahl der Fertigkeitspunkte bei der Erstellung (x4 auf Stufe 1) und bei jedem Stufenaufstieg\n• Höchster Zaubergrad und Schwierigkeitsgrad (SG) für Magier-Zauber\n• Fertigkeiten: Wissen (alle), Suchen, Sprachen sprechen, Handwerk, Appretieren'
+      desc: 'Controls:\nReflects mental acuity, learning ability, and memory. Important for Wizards and characters who want to use many skills.\n\nInfluences:\n• Number of skill points at character creation (x4 at level 1) and at each level up\n• Maximum spell level and Difficulty Class (DC) for Wizard spells\n• Skills: Knowledge (all), Search, Speak Language, Craft, Appraise'
     },
     wis: {
-      title: 'Weisheit (WIS)',
+      title: 'Wisdom (WIS)',
       icon: '👁️',
-      desc: 'Macht:\nBeschreibt Intuition, Willenskraft, Wahrnehmung und Urteilsvermögen. Wichtig für Kleriker, Druiden, Waldläufer und Mönche.\n\nBeeinflusst:\n• Willens-Rettungswürfe (Widerstand gegen Gedankenkontrolle und Illusionen)\n• Höchster Zaubergrad und Schwierigkeitsgrad (SG) für Kleriker-, Druiden- und Waldläufer-Zauber\n• Fertigkeiten: Lauschen, Entdecken, Motiv erkennen, Heilen, Überlebenskunst'
+      desc: 'Controls:\nDescribes intuition, willpower, perception, and judgment. Important for Clerics, Druids, Rangers, and Monks.\n\nInfluences:\n• Will saving throws (resistance against mind control and illusions)\n• Maximum spell level and Difficulty Class (DC) for Cleric, Druid, and Ranger spells\n• Skills: Listen, Spot, Sense Motive, Heal, Survival'
     },
     cha: {
       title: 'Charisma (CHA)',
       icon: '👑',
-      desc: 'Macht:\nMisst Ausstrahlung, Persönlichkeit, Überzeugungskraft und Führungsstärke. Wichtig für Hexenmeister, Barden und Paladine.\n\nBeeinflusst:\n• Höchster Zaubergrad und Schwierigkeitsgrad (SG) für Hexenmeister- und Barden-Zauber\n• Proben zum Vertreiben von Untoten (Kleriker & Paladine)\n• Fertigkeiten: Bluffen, Diplomatie, Einschüchtern, Motivieren, Tiersprache'
+      desc: 'Controls:\nMeasures force of personality, persuasiveness, personal magnetism, and leadership ability. Important for Sorcerers, Bards, and Paladins.\n\nInfluences:\n• Maximum spell level and Difficulty Class (DC) for Sorcerer and Bard spells\n• Turn Undead checks (Clerics & Paladins)\n• Skills: Bluff, Diplomacy, Intimidate, Gather Information, Handle Animal'
     }
   };
   const info = explanations[key];
   // @ts-ignore
-  showCustomAlert(info.title, info.desc, 'Verstanden', info.icon);
+  showCustomAlert(info.title, info.desc, 'Understood', info.icon);
 };

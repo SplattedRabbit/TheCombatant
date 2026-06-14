@@ -7,80 +7,80 @@ interface RacialTraitsCardProps {
 export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
   const race = (pc.race || 'human').toLowerCase();
   const raceNames: Record<string, string> = {
-    human: 'Mensch',
+    human: 'Human',
     elf: 'Elf',
-    dwarf: 'Zwerg',
-    gnome: 'Gnom',
-    halfling: 'Halbling',
-    half_elf: 'Halbelf',
-    half_orc: 'Halbork'
+    dwarf: 'Dwarf',
+    gnome: 'Gnome',
+    halfling: 'Halfling',
+    half_elf: 'Half-Elf',
+    half_orc: 'Half-Orc'
   };
-  const raceName = raceNames[race] || 'Mensch';
+  const raceName = raceNames[race] || 'Human';
 
   const getRacialTraitsContent = () => {
     if (race === 'human') {
       return (
         <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Zusätzliches Talent:</strong> 1 zusätzliches Talent auf Stufe 1.</li>
-          <li><strong>Zusätzliche Skillpunkte:</strong> +4 Skillpunkte auf Stufe 1, +1 auf jeder weiteren Stufe.</li>
+          <li><strong>Extra Feat:</strong> 1 extra feat at level 1.</li>
+          <li><strong>Extra Skill Points:</strong> +4 skill points at level 1, +1 at each additional level.</li>
         </ul>
       );
     } else if (race === 'dwarf') {
       return (
         <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Attributsmodifikationen:</strong> +2 Konstitution, -2 Charisma (bereits eingerechnet).</li>
-          <li><strong>Dunkelsicht (Darkvision):</strong> Kann im Dunkeln bis zu 60 Fuß weit sehen.</li>
-          <li><strong>Fester Stand (Stability):</strong> +4 auf Würfe zur Abwehr von Ansturm (Bull Rush) oder Niederwerfen (Trip).</li>
-          <li><strong>Volksboni gegen Gift/Zauber:</strong> +2 Rettungswurf-Bonus gegen Gifte, Zauber und zauberähnliche Effekte.</li>
-          <li><strong>Steingefühl (Stonecunning):</strong> +2 auf Suchen-Würfe bezüglich ungewöhnlicher Steinarbeiten.</li>
-          <li><strong>Rüstungsresistenz:</strong> Bewegungsrate wird durch schwere Rüstung oder schwere Last nicht reduziert.</li>
+          <li><strong>Ability Score Adjustments:</strong> +2 Constitution, -2 Charisma (already included).</li>
+          <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
+          <li><strong>Stability:</strong> +4 bonus on ability checks made to resist being bull rushed or tripped.</li>
+          <li><strong>Racial Bonuses against Poison/Spells:</strong> +2 saving throw bonus against poison, spells, and spell-like effects.</li>
+          <li><strong>Stonecunning:</strong> +2 bonus on Search checks to notice unusual stonework.</li>
+          <li><strong>Speed:</strong> Movement speed is not reduced by wearing heavy armor or carrying a heavy load.</li>
         </ul>
       );
     } else if (race === 'elf') {
       return (
         <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Attributsmodifikationen:</strong> +2 Geschicklichkeit, -2 Konstitution (bereits eingerechnet).</li>
-          <li><strong>Immunitäten:</strong> Immun gegen magische Schlafeffekte.</li>
-          <li><strong>Volksboni gegen Verzauberung:</strong> +2 Rettungswurf-Bonus gegen Verzauberungszauber oder -effekte.</li>
-          <li><strong>Geschärfte Sinne:</strong> +2 Volksbonus auf Suchen, Entdecken und Lauschen (bereits eingerechnet).</li>
-          <li><strong>Umgang mit Waffen:</strong> Automatisch geübt mit Langschwert, Rapier, Langbogen und Kurzbogen.</li>
+          <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, -2 Constitution (already included).</li>
+          <li><strong>Immunities:</strong> Immune to magic sleep effects.</li>
+          <li><strong>Saving Throw Bonuses against Enchantment:</strong> +2 saving throw bonus against enchantment spells or effects.</li>
+          <li><strong>Keen Senses:</strong> +2 racial bonus on Search, Spot, and Listen checks (already included).</li>
+          <li><strong>Weapon Familiarity:</strong> Automatically proficient with longsword, rapier, longbow, and shortbow.</li>
         </ul>
       );
     } else if (race === 'gnome') {
       return (
         <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Attributsmodifikationen:</strong> +2 Konstitution, -2 Stärke (bereits eingerechnet).</li>
-          <li><strong>Größenkategorie Klein:</strong> +1 Größenbonus auf RK, +1 Größenbonus auf Angriffswürfe, +4 auf Verstecken (bereits eingerechnet).</li>
-          <li><strong>Volksboni gegen Illusion:</strong> +2 Rettungswurf-Bonus gegen Illusionen.</li>
-          <li><strong>Ausweichen gegen Riesen:</strong> +4 Ausweichbonus auf RK gegen Gegner der Kategorie Riese.</li>
-          <li><strong>Geschärfte Sinne:</strong> +2 Volksbonus auf Lauschen und Handwerk (Alchemie).</li>
+          <li><strong>Ability Score Adjustments:</strong> +2 Constitution, -2 Strength (already included).</li>
+          <li><strong>Small Size:</strong> +1 size bonus to AC, +1 size bonus on attack rolls, +4 bonus on Hide checks (already included).</li>
+          <li><strong>Saving Throw Bonuses against Illusion:</strong> +2 saving throw bonus against illusion spells or effects.</li>
+          <li><strong>Defensive Training against Giants:</strong> +4 dodge bonus to AC against monsters of the giant type.</li>
+          <li><strong>Keen Senses:</strong> +2 racial bonus on Listen and Craft (alchemy) checks.</li>
         </ul>
       );
     } else if (race === 'halfling') {
       return (
         <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Attributsmodifikationen:</strong> +2 Geschicklichkeit, -2 Stärke (bereits eingerechnet).</li>
-          <li><strong>Größenkategorie Klein:</strong> +1 Größenbonus auf RK, +1 Größenbonus auf Angriffswürfe, +4 auf Verstecken (bereits eingerechnet).</li>
-          <li><strong>Glückspilz:</strong> +1 Volksbonus auf alle Rettungswürfe (bereits eingerechnet).</li>
-          <li><strong>Furchtlosigkeit:</strong> +2 Moralbonus auf Rettungswürfe gegen Furcht.</li>
-          <li><strong>Geschärfte Sinne:</strong> +2 Volksbonus auf Klettern, Springen, Lauschen und Leise bewegen (bereits eingerechnet).</li>
+          <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, -2 Strength (already included).</li>
+          <li><strong>Small Size:</strong> +1 size bonus to AC, +1 size bonus on attack rolls, +4 bonus on Hide checks (already included).</li>
+          <li><strong>Halfling Luck:</strong> +1 racial bonus on all saving throws (already included).</li>
+          <li><strong>Fearless:</strong> +2 morale bonus on saving throws against fear.</li>
+          <li><strong>Keen Senses:</strong> +2 racial bonus on Climb, Jump, Listen, and Move Silently checks (already included).</li>
         </ul>
       );
     } else if (race === 'half_elf') {
       return (
         <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Immunitäten:</strong> Immun gegen magische Schlafeffekte, +2 Rettungswurf-Bonus gegen Verzauberungszauber oder -effekte.</li>
-          <li><strong>Geschärfte Sinne:</strong> +1 Volksbonus auf Lauschen, Entdecken und Suchen (bereits eingerechnet).</li>
-          <li><strong>Diplomatisches Geschick:</strong> +2 Volksbonus auf Diplomatie und Informationen sammeln (bereits eingerechnet).</li>
-          <li><strong>Elbisches Blut:</strong> Gilt in allen Belangen als Elf.</li>
+          <li><strong>Immunities:</strong> Immune to magic sleep effects, +2 saving throw bonus against enchantment spells or effects.</li>
+          <li><strong>Keen Senses:</strong> +1 racial bonus on Listen, Spot, and Search checks (already included).</li>
+          <li><strong>Diplomatic Senses:</strong> +2 racial bonus on Diplomacy and Gather Information checks (already included).</li>
+          <li><strong>Elven Blood:</strong> For all effects, a half-elf is considered an elf.</li>
         </ul>
       );
     } else if (race === 'half_orc') {
       return (
         <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Attributsmodifikationen:</strong> +2 Stärke, -2 Intelligenz, -2 Charisma (bereits eingerechnet).</li>
-          <li><strong>Dunkelsicht (Darkvision):</strong> Kann im Dunkeln bis zu 60 Fuß weit sehen.</li>
-          <li><strong>Orkisches Blut:</strong> Gilt in allen Belangen als Ork.</li>
+          <li><strong>Ability Score Adjustments:</strong> +2 Strength, -2 Intelligence, -2 Charisma (already included).</li>
+          <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
+          <li><strong>Orc Blood:</strong> For all effects, a half-orc is considered an orc.</li>
         </ul>
       );
     }
@@ -91,7 +91,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
     <div style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', padding: '6px 8px', background: 'rgba(200, 169, 110, 0.03)', marginBottom: '6px', display: 'flex', flexDirection: 'column', gap: '3.5px' }}>
       <div style={{ display: 'flex', justifySelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', paddingBottom: '2px' }}>
         <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>
-          🧬 Volksmerkmale: {raceName}
+          🧬 Racial Traits: {raceName}
         </span>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>

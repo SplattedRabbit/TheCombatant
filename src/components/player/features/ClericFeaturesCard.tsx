@@ -39,30 +39,30 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
   };
 
   const handleRollTurn = (e: React.MouseEvent) => {
-    showRollBreakdown("Vertreibungswurf (Charisma-Wurf)", "1W20", [
-      { label: "Charisma-Mod", value: chaMod }
+    showRollBreakdown("Turn Undead Check (Charisma Check)", "1d20", [
+      { label: "Charisma Mod", value: chaMod }
     ], e.nativeEvent);
   };
 
   return (
     <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
       <div className="class-card-hdr" style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
-        <span>🎭 Kleriker (Stufe {level})</span>
+        <span>🎭 Cleric (Level {level})</span>
       </div>
       <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
           <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
-            Klassenfähigkeiten
+            Class Features
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '0.5px dashed rgba(200,169,110,0.2)', paddingBottom: '4px', marginBottom: '2px' }}>
             <div style={{ display: 'flex', justifySelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', fontSize: '8px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <span><strong>Vertreiben:</strong></span>
+                <span><strong>Turn Undead:</strong></span>
                 <button 
                   onClick={() => setTurnRulesOpen(!turnRulesOpen)}
                   className="btn btn-toggle-rules-turn" 
                   style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
-                  title="Regeln einblenden"
+                  title="Show rules"
                 >
                   📖 {turnRulesOpen ? '▲' : '▼'}
                 </button>
@@ -78,7 +78,7 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
                         onClick={() => handleTurnBubbleClick(bubbleIdx)}
                         className={`cleric-turn-bubble use-icon use-icon-turn ${spent ? 'used' : ''}`}
                         style={{ cursor: 'pointer' }}
-                        title={spent ? 'Benutzt' : 'Verfügbar'}
+                        title={spent ? 'Used' : 'Available'}
                       >
                         ☀️
                       </span>
@@ -91,11 +91,11 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
             
             {turnRulesOpen && (
               <div className="turn-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Untote vertreiben (Turn Undead):</strong><br />
-                Als Standardaktion kann ein Kleriker versuchen, untote Kreaturen in einem Radius von 18m (60 ft) zu vertreiben.<br />
-                • <strong>1. Vertreibungswurf (1W20 + CHA):</strong> Bestimmt die maximalen Trefferwürfel (HD) des stärksten betroffenen Untoten (Kleriker-Stufe -4 bis +4).<br />
-                • <strong>2. Vertreibungsschaden (2W6 + Stufe + CHA):</strong> Bestimmt die Gesamtzahl an Trefferwürfeln (HD) aller Untoten, die beeinflusst werden.<br />
-                • <strong>Effekt:</strong> Betroffene Untote fliehen 10 Runden (1 Minute) lang. Wenn deine Klerikerstufe mindestens doppelt so hoch ist wie die HD des Untoten, wird dieser stattdessen vernichtet.
+                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Turn Undead:</strong><br />
+                As a standard action, a cleric can attempt to turn undead creatures within a 60 ft radius.<br />
+                • <strong>1. Turning Check (1d20 + CHA):</strong> Determines the maximum Hit Dice (HD) of the most powerful undead affected (Cleric level -4 to +4).<br />
+                • <strong>2. Turning Damage (2d6 + Cleric level + CHA):</strong> Determines the total Hit Dice (HD) of undead affected.<br />
+                • <strong>Effect:</strong> Affected undead flee for 10 rounds (1 minute). If your cleric level is at least twice the HD of the undead, it is destroyed instead.
               </div>
             )}
           </div>
@@ -104,7 +104,7 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
             className="btn roll-turn-btn" 
             style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', width: '100%', cursor: 'pointer', marginTop: '4px' }}
           >
-            Vertreiben würfeln 🎲
+            Roll Turn Undead 🎲
           </button>
         </div>
       </div>

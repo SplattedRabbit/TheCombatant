@@ -1,11 +1,10 @@
 /**
  * @module    PCOffenseTab
- * @summary   Rendert den Offense-Tab mit Ausrüstungsslots, Waffenkammer, Rüstungskammer, BAB-Anzeige und CMB/CMD Werten.
+ * @summary   Renders the offense tab with equipment slots, weapon stash, armor stash, BAB display and CMB/CMD values.
  * @exports   PCOffenseTab
  * @reads     pc.weapons, pc.armor, pc.activeShape, pc.feats, pc.bab, pc.str, pc.dex, pc.isTotalDefense, pc.isSmiteActive, pc.isFavoredEnemyActive, pc.isSneakAttacking, pc.autoAC
  * @stateOps  togglePCWeaponEquip, togglePCArmorEquip, updatePCWeapon, deletePCWeapon, addPCWeapon, addPCArmor, removePCArmor, updatePCArmorField, setPCAutoAC, updatePCBatch
  * @depends   React, @core/state.js, @core/rules/AttackEngine.js, @core/models/Weapon.js, src/components/shared/BaseCard, src/components/player/offense/ActiveEquipmentSlots, src/components/player/offense/WeaponStashCard, src/components/player/offense/ArmorStashCard
- * @notHere   Ausrüstungs-Slots -> ActiveEquipmentSlots.tsx | Waffen-Stash-Card -> WeaponStashCard.tsx | Rüstungs-Stash-Card -> ArmorStashCard.tsx
  */
 
 import React, { useState } from 'react';
@@ -41,7 +40,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
   const [expandedArmorIds, setExpandedArmorIds] = useState<Record<string, boolean>>({});
   const [doubleWeaponIdx, setDoubleWeaponIdx] = useState<number | null>(null);
 
-  // Hilfsfunktionen
+  // Helper functions
   const formatMod = (val: number) => (val >= 0 ? `+${val}` : `${val}`);
   
 
@@ -49,7 +48,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
 
 
 
-  // Equipment slots filtern
+  // Filter equipment slots
   const equippedWeapons = Array.isArray(pc.weapons) ? pc.weapons.filter((w: any) => w.isEquipped) : [];
   const mainHandWeapon = equippedWeapons.find((w: any) => w.hand === 'main') || equippedWeapons.find((w: any) => w.hand !== 'off') || null;
   let offHandWeapon = equippedWeapons.find((w: any) => w.hand === 'off' || w.grip === 'sec') || null;
@@ -82,7 +81,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
       return;
     }
     
-    // Warnung bei Nebenhand-Waffe ohne TWF
+    // Warning for off-hand weapon without TWF
     if (w.hand === 'off') {
       const hasTWF = pc.feats && (
         pc.feats.some((f: any) => f.id === 'two_weapon_fighting') ||
@@ -100,8 +99,8 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
       );
       if (!hasTWF) {
         showCustomConfirm(
-          "Kein Zwei-Waffen-Kampf",
-          "Dein Charakter besitzt nicht das Talent 'Zwei-Waffen-Kampf'. Das Führen einer Waffe in der Nebenhand führt zu schweren Abzügen auf Angriffe. Trotzdem fortfahren?",
+          "No Two-Weapon Fighting",
+          "Your character does not possess the 'Two-Weapon Fighting' feat. Wielding a weapon in your off-hand will result in severe penalties to attack rolls. Do you still wish to proceed?",
           () => {
             const def = WeaponRegistry[w.type] || WeaponRegistry.longsword;
             if (def.isDouble) {
@@ -129,8 +128,8 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
     
     if (equipping && !pc.autoAC) {
       showCustomConfirm(
-        "Auto-RK aktivieren?",
-        "Möchtest du die automatische Rüstungsklasse-Berechnung (Auto-RK) für diesen Charakter aktivieren?",
+        "Activate Auto-AC?",
+        "Do you want to enable automatic Armor Class (Auto-AC) calculation for this character?",
         () => {
           CombatState.setPCAutoAC(true);
         }
@@ -183,8 +182,8 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
         sneakAttack: pc.isSneakAttacking
       });
       const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [], damageDice: '1w6' };
-      const wName = isOffhand && isDoubleWielded ? `${w.name} (Nebenseite)` : w.name;
-      showRollBreakdown(`${wName} (Schaden)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e.nativeEvent);
+      const wName = isOffhand && isDoubleWielded ? `${w.name} (Off-hand)` : w.name;
+      showRollBreakdown(`${wName} (Damage)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e.nativeEvent);
     }
   };
 
@@ -231,13 +230,13 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
     e.preventDefault();
     e.stopPropagation();
     showCustomAlert(
-      "Kampfgetümmel (Combat Expertise)",
+      "Combat Expertise",
       `<div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11px;">
-        <p><strong>Konzept:</strong> Du kannst deine offensive Genauigkeit opfern, um eine stärkere Rüstungsklasse aufzubauen.</p>
-        <p><strong>Regel (D&D 3.5 RAW):</strong> Wenn du einen Angriff oder einen vollen Angriff deklarierst, kannst du einen Malus auf deine Angriffswürfe (bis zu deinem aktuellen GAB, maximal jedoch -5) wählen. Dieser Malus wird als Ausweichbonus (Dodge) auf deine Rüstungsklasse (RK) und Berührungs-RK bis zu deiner nächsten Runde addiert.</p>
-        <p><strong>Obergrenzen:</strong> Der gewählte Malus darf deinen Grundangriffsbonus (GAB) nicht überschreiten und ist generell durch das Talent auf maximal -5 begrenzt.</p>
+        <p><strong>Concept:</strong> You can sacrifice offensive accuracy to build up a higher Armor Class.</p>
+        <p><strong>Rule (D&D 3.5 RAW):</strong> When you make an attack or a full-attack, you can choose to take a penalty on your attack rolls (up to your current BAB, up to a maximum of -5). This penalty is added as a dodge bonus to your Armor Class (AC) and Touch AC until your next turn.</p>
+        <p><strong>Limits:</strong> The chosen penalty cannot exceed your Base Attack Bonus (BAB) and is generally limited to a maximum of -5 by the feat.</p>
       </div>`,
-      "Verstanden",
+      "Understood",
       "🛡️"
     );
   };
@@ -246,13 +245,13 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
     e.preventDefault();
     e.stopPropagation();
     showCustomAlert(
-      "Verteidigend kämpfen (Defensive Fighting)",
+      "Fighting Defensively",
       `<div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11px;">
-        <p><strong>Konzept:</strong> Ein grundlegendes Kampfmanöver, das jeder Charakter im Nahkampf (auch ohne spezielle Talente) ausführen kann.</p>
-        <p><strong>Regel (D&D 3.5 RAW):</strong> Wenn du angreifst (als Standardaktion oder voller Angriff), kannst du dich entscheiden, verteidigend zu kämpfen. Du erleidest einen Malus von <strong>-4</strong> auf alle Angriffswürfe in dieser Runde, erhältst dafür aber einen Ausweichbonus (Dodge) von <strong>+2</strong> auf deine RK und Berührungs-RK bis zu deiner nächsten Runde.</p>
-        <p><strong>Akrobatik-Synergie (Tumble):</strong> Wenn du <strong>5 oder mehr Ränge</strong> in der Fertigkeit Akrobatik hast, erhöht sich der gewehrte RK-Ausweichbonus von +2 auf <strong>+3</strong>.</p>
+        <p><strong>Concept:</strong> A basic combat maneuver that any character can perform in melee (even without special feats).</p>
+        <p><strong>Rule (D&D 3.5 RAW):</strong> When you attack (as a standard action or full-attack), you can choose to fight defensively. You take a <strong>-4</strong> penalty on all attack rolls in this round, but gain a <strong>+2</strong> dodge bonus to your AC and Touch AC until your next turn.</p>
+        <p><strong>Tumble Synergy:</strong> If you have <strong>5 or more ranks</strong> in the Tumble skill, the AC dodge bonus increases from +2 to <strong>+3</strong>.</p>
       </div>`,
-      "Verstanden",
+      "Understood",
       "⚔️"
     );
   };
@@ -268,9 +267,9 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', width: '100%', boxSizing: 'border-box' }}>
       
-      {/* Linke Spalte: Aktive Ausrüstung & Kampfbalken */}
+      {/* Left Column: Active Equipment & Combat panel */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        <BaseCard title="⚔️ Aktive Ausrüstung &amp; Kampf">
+        <BaseCard title="⚔️ Active Equipment &amp; Combat">
           <ActiveEquipmentSlots
             pc={pc}
             mainHandWeapon={mainHandWeapon}
@@ -289,9 +288,9 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '10px' }}>
             {hasPowerAttack && (
               <div style={{ background: 'rgba(139, 26, 26, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '3px', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px' }}>
-                <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>⚔️ Heftiger Angriff (Power Attack)</span>
+                <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>⚔️ Power Attack</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span style={{ color: 'var(--inkm)', fontSize: '7.5px' }}>Malus (Max {babVal}):</span>
+                  <span style={{ color: 'var(--inkm)', fontSize: '7.5px' }}>Penalty (Max {babVal}):</span>
                   <input
                     type="number"
                     min="0"
@@ -308,17 +307,17 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
             {hasCombatExpertise && (
               <div style={{ background: 'rgba(42, 106, 138, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '3px', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px' }}>
                 <span style={{ color: '#2a6a8a', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
-                  🛡️ Kampfgetümmel (Combat Expertise)
+                  🛡️ Combat Expertise
                   <button
                     onClick={showCombatExpertiseRules}
                     style={{ background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', padding: '1px 4px', cursor: 'pointer', fontSize: '8px', color: 'var(--pb)', height: '14px', borderRadius: '1.5px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', lineHeight: '10px', marginLeft: '4px' }}
-                    title="Regeln anzeigen"
+                    title="Show Rules"
                   >
                     📖 ↗
                   </button>
                 </span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span style={{ color: 'var(--inkm)', fontSize: '7.5px' }}>Malus (Max {Math.min(5, babVal)}):</span>
+                  <span style={{ color: 'var(--inkm)', fontSize: '7.5px' }}>Penalty (Max {Math.min(5, babVal)}):</span>
                   <input
                     type="number"
                     min="0"
@@ -342,12 +341,12 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                     onChange={(e) => handleDefensiveFightingChange(e.target.checked)}
                     style={{ margin: 0, width: '10px', height: '10px' }}
                   />
-                  ⚔️ Verteidigend kämpfen (-4 Atk / +RK)
+                  ⚔️ Fight Defensively (-4 Atk / +AC)
                 </label>
                 <button
                   onClick={showDefensiveFightingRules}
                   style={{ background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', padding: '1px 4px', cursor: 'pointer', fontSize: '8px', color: 'var(--pb)', height: '14px', borderRadius: '1.5px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', lineHeight: '10px', marginLeft: '4px' }}
-                  title="Regeln anzeigen"
+                  title="Show Rules"
                 >
                   📖 ↗
                 </button>
@@ -359,7 +358,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                   onChange={(e) => handleTotalDefenseChange(e.target.checked)}
                   style={{ margin: 0, width: '10px', height: '10px' }}
                 />
-                🛡️ Volle Abwehr (+RK / keine Angr.)
+                🛡️ Total Defense (+AC / no attacks)
               </label>
             </div>
 
@@ -374,7 +373,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                       onChange={(e) => handleSmiteChange(e.target.checked)}
                       style={{ margin: 0, width: '10px', height: '10px' }}
                     />
-                    🌟 Böses niederstrecken (Smite)
+                    🌟 Smite Evil
                   </label>
                 )}
                 {rangerLvl >= 1 && (
@@ -385,7 +384,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                       onChange={(e) => handleFavoredEnemyChange(e.target.checked)}
                       style={{ margin: 0, width: '10px', height: '10px' }}
                     />
-                    🏹 Gegen Erzfeind (+X Schaden)
+                    🏹 Against Favored Enemy (+X Damage)
                   </label>
                 )}
                 {rogueLvl >= 1 && (
@@ -396,7 +395,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                       onChange={(e) => handleSneakAttackChange(e.target.checked)}
                       style={{ margin: 0, width: '10px', height: '10px' }}
                     />
-                    🗡️ Hinterhältiger Angriff
+                    🗡️ Sneak Attack
                   </label>
                 )}
               </div>
@@ -404,7 +403,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
 
             {pc.isTotalDefense && (
               <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '3px', padding: '4px 8px', textAlign: 'center', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold' }}>
-                🛡️ Volle Abwehr aktiv — keine Angriffe möglich!
+                🛡️ Total Defense active — no attacks possible!
               </div>
             )}
           </div>
@@ -412,29 +411,29 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
           {/* Rules Reference */}
           <div style={{ marginTop: '10px', borderTop: '1px double var(--pb)', paddingTop: '8px' }}>
             <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              📜 Regelwerk-Referenz (D&D 3.5 RAW)
+              📜 Rules Reference (D&D 3.5 RAW)
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '7.5px', fontFamily: "'Crimson Text', serif", lineHeight: 1.25, color: 'var(--ink)' }}>
-              {/* Waffen-Werte Column */}
+              {/* Weapons Stats Column */}
               <div style={{ background: 'rgba(200, 169, 110, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.15)', borderRadius: '3px', padding: '5px' }}>
-                <div style={{ fontWeight: 'bold', color: 'var(--red)', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', marginBottom: '4px', paddingBottom: '1px', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>⚔️ Waffen-Werte</div>
+                <div style={{ fontWeight: 'bold', color: 'var(--red)', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', marginBottom: '4px', paddingBottom: '1px', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>⚔️ Weapon Stats</div>
                 <ul style={{ margin: 0, paddingLeft: '10px', display: 'flex', flexDirection: 'column', gap: '3px', listStyleType: 'square' }}>
-                  <li><strong>Zusatz-Atk:</strong> Manueller Bonus auf Angriffe (z.B. durch <em>Waffenfokus</em> <code>+1</code>, Magie oder Meisterarbeit).</li>
-                  <li><strong>Scharf (Keen):</strong> Verdoppelt den kritischen Bedrohungsbereich (z.B. 19-20 wird zu 17-20). Stackt <u>nicht</u> mit dem Talent <em>Verbesserter Kritischer Treffer</em>.</li>
-                  <li><strong>Grip-Abw. (Händigkeit):</strong> Überschreibt die Trageweise: Einhändig (1H), Zweihändig (2H: gewährt 1.5x Stärkebonus auf Schaden), Schildhand (Sec: Zweitwaffe), Fernkampf (Rng) oder Waffenlos (Unarmed).</li>
-                  <li><strong>Schadens-Abw.:</strong> Überschreibt den Basis-Schadenswürfel der Waffe (z.B. <code>1w8</code>, <code>2w6</code>).</li>
-                  <li><strong>Krit-Abw.:</strong> Überschreibt den kritischen Multiplikator und Bedrohungsbereich (z.B. <code>20 / x3</code>).</li>
+                  <li><strong>Extra Atk:</strong> Manual attack bonus (e.g., from <em>Weapon Focus</em> <code>+1</code>, magic, or masterwork).</li>
+                  <li><strong>Keen:</strong> Doubles the threat range (e.g., 19-20 becomes 17-20). Does <u>not</u> stack with the <em>Improved Critical</em> feat.</li>
+                  <li><strong>Grip Overwrite:</strong> Overwrites how the weapon is held: One-handed (1H), Two-handed (2H: grants 1.5x Str bonus to damage), Off-hand (Sec: dual-wielding), Ranged (Rng), or Unarmed.</li>
+                  <li><strong>Dmg Overwrite:</strong> Overwrites the base damage die of the weapon (e.g., <code>1d8</code>, <code>2d6</code>).</li>
+                  <li><strong>Crit Overwrite:</strong> Overwrites the critical multiplier and threat range (e.g., <code>20 / x3</code>).</li>
                 </ul>
               </div>
               
-              {/* Rüstungs-Werte Column */}
+              {/* Armor Stats Column */}
               <div style={{ background: 'rgba(200, 169, 110, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.15)', borderRadius: '3px', padding: '5px' }}>
-                <div style={{ fontWeight: 'bold', color: 'var(--red)', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', marginBottom: '4px', paddingBottom: '1px', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>🛡️ Rüstungs-Werte</div>
+                <div style={{ fontWeight: 'bold', color: 'var(--red)', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', marginBottom: '4px', paddingBottom: '1px', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>🛡️ Armor Stats</div>
                 <ul style={{ margin: 0, paddingLeft: '10px', display: 'flex', flexDirection: 'column', gap: '3px', listStyleType: 'square' }}>
-                  <li><strong>RK-Abw.:</strong> Überschreibt den Rüstungsbonus. Keine Rüstungsboni stacken (z.B. Magische Rüstung und Zauber <em>Mage Armor</em>).</li>
-                  <li><strong>MaxDex (Max. Geschick):</strong> Begrenzt den Geschicklichkeitsbonus auf die Rüstungsklasse (RK), da schwere Rüstung die Ausweichfähigkeit einschränkt.</li>
-                  <li><strong>Malus-Abw.:</strong> Rüstungsmalus auf Fertigkeiten für Stärke und Geschicklichkeit (Akrobatik, Klettern etc.). Doppelt beim Schwimmen.</li>
-                  <li><strong>Zauberpatzer-Abw.:</strong> Prozentuale Chance, dass ein arkaner Gestenzauber (Somatic) fehlschlägt. Gilt nicht für göttliche Magie.</li>
+                  <li><strong>AC Overwrite:</strong> Overwrites the armor bonus. Armor bonuses do not stack (e.g., Magic Armor and the <em>Mage Armor</em> spell).</li>
+                  <li><strong>MaxDex:</strong> Limits the Dexterity bonus to AC, as heavy armor restricts mobility.</li>
+                  <li><strong>ACP Overwrite (Armor Check Penalty):</strong> Armor check penalty to Strength- and Dexterity-based skills (Tumble, Climb, etc.). Doubled for Swim.</li>
+                  <li><strong>ASF Overwrite (Arcane Spell Failure):</strong> Percent chance that an arcane spell with somatic components fails. Does not apply to divine spells.</li>
                 </ul>
               </div>
             </div>
@@ -442,25 +441,25 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
         </BaseCard>
       </div>
 
-      {/* Rechte Spalte: Rucksack & Inventar */}
+      {/* Right Column: Backpack & Inventory */}
       <div>
-        <BaseCard title="🎒 Rucksack &amp; Inventar">
+        <BaseCard title="🎒 Backpack &amp; Inventory">
           {pc.activeShape !== 'none' ? (
             <div style={{ padding: '20px', textAlign: 'center', fontStyle: 'italic', color: 'var(--inkl)', fontSize: '8.5px' }}>
-              In wilder Gestalt (Wild Shape) ist deine Ausrüstung inaktiv.
+              In Wild Shape, your equipment is inactive.
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {/* Waffenkammer */}
+              {/* Weapon Stash */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid var(--pb)', marginBottom: '4px', paddingBottom: '2px' }}>
-                  <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>⚔️ Waffenkammer</span>
+                  <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>⚔️ Weapon Stash</span>
                   <button
                     className="btn"
                     onClick={() => CombatState.addPCWeapon()}
                     style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '7.5px', padding: '1px 5px', height: '14px', lineHeight: 1 }}
                   >
-                    ➕ Waffe
+                    ➕ Weapon
                   </button>
                 </div>
                 
@@ -480,16 +479,16 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                 </div>
               </div>
 
-              {/* Rüstungskammer */}
+              {/* Armor Stash */}
               <div style={{ marginTop: '2px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid var(--pb)', marginBottom: '4px', paddingBottom: '2px' }}>
-                  <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>🛡️ Rüstungskammer</span>
+                  <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>🛡️ Armor Stash</span>
                   <button
                     className="btn"
                     onClick={() => CombatState.addPCArmor('padded')}
                     style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '7.5px', padding: '1px 5px', height: '14px', lineHeight: 1 }}
                   >
-                    ➕ Rüstung
+                    ➕ Armor
                   </button>
                 </div>
                 
@@ -543,22 +542,22 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
             <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }}></div>
             
             <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px' }}>
-              Doppelwaffe ausrüsten
+              Equip Double Weapon
             </div>
             <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 10px' }} />
             
             <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '11px', color: 'var(--ink)', lineHeight: '1.4', marginBottom: '12px', fontWeight: 500, textAlign: 'left' }}>
-              Wie soll diese Waffe geführt werden?
+              How should this weapon be wielded?
               <ul style={{ margin: '6px 0', paddingLeft: '14px' }}>
-                <li><strong>Zweihändig:</strong> Als Einzelwaffe geführt (1.5x Stärkebonus auf Schaden).</li>
-                <li><strong>Doppelwaffe:</strong> Mit beiden Enden geführt (Hauptseite 1.0x Stärke, Nebenseite 0.5x Stärke als leichte Waffe).</li>
+                <li><strong>Two-handed:</strong> Wielded as a single weapon (1.5x Str bonus to damage).</li>
+                <li><strong>Double weapon:</strong> Wielded with both ends (Primary side 1.0x Str, Off-hand side 0.5x Str as a light weapon).</li>
               </ul>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <button className="btn btn-p" onClick={() => handleDoubleWeaponOption(false)} style={{ fontSize: '8.5px', padding: '4px', cursor: 'pointer' }}>Zweihändig (Einzelwaffe)</button>
-              <button className="btn btn-p" onClick={() => handleDoubleWeaponOption(true)} style={{ fontSize: '8.5px', padding: '4px', cursor: 'pointer' }}>Doppelwaffe (Beide Enden)</button>
-              <button className="btn" onClick={() => setDoubleWeaponIdx(null)} style={{ fontSize: '8.5px', padding: '4px', cursor: 'pointer', border: '1px solid var(--pb)', background: 'transparent', color: 'var(--inkl)' }}>Abbrechen</button>
+              <button className="btn btn-p" onClick={() => handleDoubleWeaponOption(false)} style={{ fontSize: '8.5px', padding: '4px', cursor: 'pointer' }}>Two-handed (Single Weapon)</button>
+              <button className="btn btn-p" onClick={() => handleDoubleWeaponOption(true)} style={{ fontSize: '8.5px', padding: '4px', cursor: 'pointer' }}>Double Weapon (Both Ends)</button>
+              <button className="btn" onClick={() => setDoubleWeaponIdx(null)} style={{ fontSize: '8.5px', padding: '4px', cursor: 'pointer', border: '1px solid var(--pb)', background: 'transparent', color: 'var(--inkl)' }}>Cancel</button>
             </div>
           </div>
         </div>

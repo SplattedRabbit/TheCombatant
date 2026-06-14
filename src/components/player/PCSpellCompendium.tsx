@@ -1,6 +1,6 @@
 /**
  * @module    PCSpellCompendium
- * @summary   Rendert das Zauberkompendium (rechte Spalte): Suchfunktion, Stufen- und Klassenfilterung, Details-Anzeige und "Lernen"-Aktion für das Zauberbuch.
+ * @summary   Renders the spell compendium (right column): search function, level and class filtering, details display and "Learn" action for the spellbook.
  * @exports   PCSpellCompendium
  * @reads     pc.classes, pc.learnedSpells, pc.customSpells, pc.wizardProhibited1, pc.wizardProhibited2
  * @stateOps  updatePCBatch
@@ -60,7 +60,9 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
 
     list.sort((a, b) => {
       if (a.level !== b.level) return a.level - b.level;
-      return (a.nameDe || '').localeCompare(b.nameDe || '');
+      const nameA = a.nameEn || a.nameDe || '';
+      const nameB = b.nameEn || b.nameDe || '';
+      return nameA.localeCompare(nameB);
     });
 
     return list;
@@ -77,8 +79,8 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
           const prob2 = getSchoolCodeFromInput(pc.wizardProhibited2);
           if (schoolCode === prob1 || schoolCode === prob2) {
             showCustomAlert(
-              "Bannschule",
-              `Du kannst den Zauber "${spell.nameDe}" nicht lernen, da er zur Bannschule "${getSchoolLabel(schoolCode)}" gehört!`
+              "Prohibited School",
+              `You cannot learn the spell "${spell.nameEn || spell.nameDe}" because it belongs to your prohibited school "${getSchoolLabel(schoolCode)}"!`
             );
             return;
           }
@@ -87,7 +89,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
       // Check spells known limit (Bug #8)
       const check = CombatRules.checkSpellKnownLimit(pc, spell, (k: string) => findSpell(pc, k));
       if (!check.success) {
-        showCustomAlert("Zauberlimit überschritten", check.error || "Du kannst keine weiteren bekannten Zauber dieses Grades lernen.");
+        showCustomAlert("Spell Limit Exceeded", check.error || "You cannot learn any more known spells of this level.");
         return;
       }
     }
@@ -104,7 +106,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
     const spell = findSpell(pc, key);
     if (!spell) return;
 
-    showCustomConfirm("Zauber löschen?", `Möchtest du deinen eigenen Zauber "${spell.nameDe}" unwiderruflich aus der Datenbank löschen?`, () => {
+    showCustomConfirm("Delete Spell?", `Do you want to permanently delete your custom spell "${spell.nameEn || spell.nameDe}" from the database?`, () => {
       CombatState.updatePCBatch((freshPc: any) => {
         if (Array.isArray(freshPc.customSpells)) {
           freshPc.customSpells = freshPc.customSpells.filter((s: any) => s.id !== key);
@@ -133,7 +135,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Zauber suchen..."
+          placeholder="Search spell..."
           className="cinput comp-search-input"
           style={{ flex: 1, fontSize: '9px', height: '18px', padding: '0 4px' }}
         />
@@ -143,9 +145,9 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
           className="cinput comp-level-select"
           style={{ width: '60px', fontSize: '9px', height: '18px', padding: 0, outline: 'none', cursor: 'pointer' }}
         >
-          <option value="all">Alle</option>
+          <option value="all">All</option>
           {eligibleLevels.map(i => (
-            <option key={i} value={String(i)}>Grad {i}</option>
+            <option key={i} value={String(i)}>Level {i}</option>
           ))}
         </select>
         <button
@@ -153,7 +155,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
           className="btn btn-p wizard-open-btn"
           style={{ fontSize: '9px', padding: '2px 6px', height: '18px', lineHeight: '12px', fontFamily: "'IM Fell English SC', serif", cursor: 'pointer' }}
         >
-          ✦ Erstellen
+          ✦ Create
         </button>
       </div>
 
@@ -167,7 +169,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
               onChange={(e) => setFilterClassAndLevel(e.target.checked)}
               style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
             />
-            <span>Nur passende Zauber für meine Klasse &amp; Stufe anzeigen</span>
+            <span>Only show spells matching my class &amp; level</span>
           </label>
         </div>
       )}
@@ -176,7 +178,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '300px', overflowY: 'auto', paddingRight: '2px' }} className="pc-scroll-compendium">
         {filteredSpells.length === 0 ? (
           <div style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '35px 0', background: 'rgba(0,0,0,0.01)', border: '0.5px dashed rgba(200, 169, 110, 0.2)', borderRadius: '2px' }}>
-            Keine passenden Zauber im Kompendium gefunden.
+            No matching spells found in the compendium.
           </div>
         ) : (
           filteredSpells.map(s => {
@@ -187,24 +189,24 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
               <div key={s.id} className="compendium-spell-item" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.25)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '3px 5px', fontSize: '9px' }}>
                 <div onClick={() => handleShowDetails(s)} style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer', flex: 1 }}>
                   <span style={{ fontWeight: 600, color: 'var(--red)', fontFamily: "'Crimson Text', serif", fontSize: '10px' }}>
-                    📜 {s.nameDe} <span style={{ fontSize: '8.5px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>Grad {s.level} · {s.school}</span>
+                    📜 {s.nameEn || s.nameDe} <span style={{ fontSize: '8.5px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>Level {s.level} · {s.school}</span>
                   </span>
-                  {s.nameEn && (
+                  {s.nameEn && s.nameEn !== s.nameDe && (
                     <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic', paddingLeft: '12px', marginTop: '-1px' }}>
-                      {s.nameEn}
+                      {s.nameDe}
                     </span>
                   )}
                 </div>
                 <div style={{ display: 'flex', gap: '2.5px', alignItems: 'center' }}>
                   {isLearned ? (
-                    <span style={{ fontSize: '8px', color: '#1a5c1a', fontWeight: 'bold', padding: '1px 4px' }}>Im Buch ✓</span>
+                    <span style={{ fontSize: '8px', color: '#1a5c1a', fontWeight: 'bold', padding: '1px 4px' }}>In Book ✓</span>
                   ) : (
                     <button
                       onClick={() => handleLearnSpell(s.id)}
                       className="btn learn-spell-btn"
                       style={{ fontSize: '7.5px', padding: '1px 4px', borderColor: '#c8a96e', color: '#c8a96e', fontWeight: 'bold' }}
                     >
-                      + Buch
+                      + Book
                     </button>
                   )}
                   {isCustom && (
@@ -212,7 +214,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
                       onClick={() => handleDeleteCustomSpell(s.id)}
                       className="btn delete-custom-spell-btn"
                       style={{ fontSize: '8px', padding: '1px 3px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer' }}
-                      title="Diesen eigenen Zauber unwiderruflich löschen"
+                      title="Permanently delete this custom spell"
                     >
                       ✕
                     </button>

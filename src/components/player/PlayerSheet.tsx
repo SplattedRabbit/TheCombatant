@@ -61,7 +61,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
 
   const handleExport = () => {
     setIsSystemOpen(false);
-    const encounterName = pc.name.trim() || 'charakter';
+    const encounterName = pc.name.trim() || 'character';
     const safeName = encounterName.replace(/[^a-zA-Z0-9]/gi, '_').toLowerCase();
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(CombatState.getState(), null, 2));
     const downloadAnchor = document.createElement('a');
@@ -87,18 +87,18 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
       try {
         const loadedState = JSON.parse(evt.target?.result as string);
         if (!loadedState.combatants) {
-          alert("Ungültiges Dateiformat. Keine Kämpfer gefunden.");
+          alert("Invalid file format. No combatants found.");
           return;
         }
         showCustomConfirm(
-          "Charakter importieren",
-          "Möchtest du diese Daten importieren? Aktuelle Daten werden überschrieben.",
+          "Import Character",
+          "Do you want to import this data? Current character data will be overwritten.",
           () => {
             CombatState.importEncounterState(loadedState);
           }
         );
       } catch (err: any) {
-        alert("Fehler beim Lesen der Datei: " + err.message);
+        alert("Error reading file: " + err.message);
       }
     };
     reader.readAsText(file);
@@ -115,8 +115,8 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
   const handleClearStorage = () => {
     setIsSystemOpen(false);
     showCustomConfirm(
-      "App-Daten bereinigen",
-      "Möchtest du den gesamten App-Speicher und Cache wirklich vollständig bereinigen? Dadurch werden alle gespeicherten Charaktere, Begegnungen, Einstellungen sowie der Service-Worker-Cache gelöscht und die App frisch geladen.",
+      "Clear App Data",
+      "Do you really want to completely clear the entire app storage and cache? This will delete all saved characters, encounters, settings, and the service worker cache, and reload the app fresh.",
       async () => {
         localStorage.clear();
         if ('caches' in window) {
@@ -173,30 +173,30 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
 
   return (
     <div id="playerScreen" className="sheet" style={{ display: 'block' }}>
-      {/* PCHeader ganz oben */}
+      {/* PCHeader at the very top */}
       <PCHeader pc={pc} activeTab={activeTab} />
 
-      {/* Tab-Leiste */}
+      {/* Tab Bar */}
       <div className="player-tab-bar no-print" id="playerTabBar" style={{ position: 'relative', zIndex: 100 }}>
         <button onClick={() => setActiveTab('overview')} className={`player-tab-btn ${activeTab === 'overview' ? 'active' : ''}`}>
-          🛡️ Übersicht
+          🛡️ Overview
         </button>
         <button onClick={() => setActiveTab('skills')} className={`player-tab-btn ${activeTab === 'skills' ? 'active' : ''}`}>
-          📜 Skills &amp; Talente
+          📜 Skills &amp; Feats
         </button>
         <button onClick={() => setActiveTab('offense')} className={`player-tab-btn ${activeTab === 'offense' ? 'active' : ''}`}>
-          ⚔️ Ausrüstung
+          ⚔️ Equipment
         </button>
         <button onClick={() => setActiveTab('magicitems')} className={`player-tab-btn ${activeTab === 'magicitems' ? 'active' : ''}`}>
-          ✨ Magische Gegenstände
+          ✨ Magic Items
         </button>
         {hasCasterClass && (
           <button onClick={() => setActiveTab('spells')} className={`player-tab-btn ${activeTab === 'spells' ? 'active' : ''}`}>
-            🔮 Zauberbuch
+            🔮 Spellbook
           </button>
         )}
         <button onClick={() => setActiveTab('features')} className={`player-tab-btn ${activeTab === 'features' ? 'active' : ''}`}>
-          🐾 Klasse &amp; Begleiter
+          🐾 Class &amp; Companion
         </button>
         <div style={{ position: 'relative', display: 'inline-block' }}>
           <button 
@@ -234,30 +234,30 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
                 paddingBottom: '3px',
                 textAlign: 'center'
               }}>
-                📜 System-Optionen
+                📜 System Options
               </div>
               <button className="fab-item" onClick={handleOnlineSession} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Nicht verbunden"></span>Online-Sitzung
+                🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Not connected"></span>Online Session
               </button>
-              <button className="fab-item" onClick={() => { setIsSystemOpen(false); CombatState.setRole('wizard'); }}>🧙‍♂️ Charakter-Assistent</button>
-              <button className="fab-item" onClick={handleSwapRole}>🎭 Rolle wechseln</button>
-              <button className="fab-item" onClick={handlePrint}>🖨 Drucken (A4)</button>
-              <button className="fab-item" onClick={handleExport}>💾 Exportieren</button>
-              <button className="fab-item" onClick={handleImportClick}>📂 Importieren</button>
-              <button className="fab-item" onClick={handleLoadSample}>📋 Beispieldaten</button>
+              <button className="fab-item" onClick={() => { setIsSystemOpen(false); CombatState.setRole('wizard'); }}>🧙‍♂️ Character Wizard</button>
+              <button className="fab-item" onClick={handleSwapRole}>🎭 Change Role</button>
+              <button className="fab-item" onClick={handlePrint}>🖨 Print (A4)</button>
+              <button className="fab-item" onClick={handleExport}>💾 Export</button>
+              <button className="fab-item" onClick={handleImportClick}>📂 Import</button>
+              <button className="fab-item" onClick={handleLoadSample}>📋 Sample Data</button>
               <button 
                 className="fab-item" 
                 onClick={handleClearStorage} 
                 style={{ background: 'rgba(139, 26, 26, 0.12)', color: 'var(--red)', fontWeight: 'bold', borderColor: 'var(--red)' }}
               >
-                🗑️ App-Daten bereinigen
+                🗑️ Clear App Data
               </button>
             </div>
           )}
         </div>
       </div>
 
-      {/* Tab-Panels */}
+      {/* Tab Panels */}
       <div className="player-tab-contents">
         {/* Tab 1: Overview */}
         <div className={`player-tab-panel ${activeTab === 'overview' ? 'active' : ''}`} id="tabPanelOverview">
@@ -270,13 +270,13 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
           </div>
         </div>
 
-        {/* Tab 2: Skills & Talente */}
+        {/* Tab 2: Skills & Feats */}
         <div className={`player-tab-panel ${activeTab === 'skills' ? 'active' : ''}`} id="tabPanelSkills">
           <div className="skills-feats-grid">
-            <BaseCard title="📔 Fertigkeiten (Skills)">
+            <BaseCard title="📔 Skills">
               <PCSkillsTab pc={pc} />
             </BaseCard>
-            <BaseCard title="🎓 Talente &amp; Feats">
+            <BaseCard title="🎓 Feats">
               <PCFeatsTab pc={pc} />
             </BaseCard>
           </div>

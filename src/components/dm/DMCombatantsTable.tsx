@@ -147,7 +147,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
   if (c.type === 'p' && Array.isArray(c.classes) && c.classes.length > 0) {
     const classStr = c.classes.map(cl => {
       const matched = CombatRules.CLASSES.find((x: any) => x.key === cl.classType);
-      const name = matched ? matched.nameDe : cl.classType;
+      const name = matched ? (matched.nameEn || matched.nameDe) : cl.classType;
       return `${name} ${cl.level}`;
     }).join(' / ');
     classBadge = (
@@ -175,9 +175,9 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
   if (c.activeShape && c.activeShape !== 'none') {
     let shapeLabel = c.activeShape;
     if (c.activeShape === 'wolf') shapeLabel = 'Wolf';
-    if (c.activeShape === 'bear') shapeLabel = 'Bär';
+    if (c.activeShape === 'bear') shapeLabel = 'Bear';
     if (c.activeShape === 'leopard') shapeLabel = 'Leopard';
-    shapeBadge = <span className="dm-effect-badge badge-shape">🐾 Gestalt: {shapeLabel}</span>;
+    shapeBadge = <span className="dm-effect-badge badge-shape">🐾 Shape: {shapeLabel}</span>;
   }
 
   // Active buffs badges
@@ -222,7 +222,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
         <button 
           className="recall-btn companion-recall-btn" 
           style={{ fontSize: '7px', padding: '1px 3px', marginLeft: '3px', cursor: 'pointer' }} 
-          title="Tierbegleiter rufen"
+          title="Summon animal companion"
           onClick={() => {
             const companionType = (c as any).companionType;
             const level = c.totalLevel || 1;
@@ -240,7 +240,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
 
             CombatState.addCombatant({
               id: companionId,
-              name: (c as any).companionName || companionStats.name || 'Tierbegleiter',
+              name: (c as any).companionName || companionStats.name || 'Animal Companion',
               type: 'n',
               hp: (c as any).companionHP || companionStats.maxHP || 10,
               maxHP: (c as any).companionMaxHP || companionStats.maxHP || 10,
@@ -253,7 +253,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
             });
           }}
         >
-          🐾 {(c as any).companionName || 'Begleiter'}
+          🐾 {(c as any).companionName || 'Companion'}
         </button>
       );
     } else if ((c as any).familiarType && (c as any).familiarType !== 'none' && !familiarExists) {
@@ -261,7 +261,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
         <button 
           className="recall-btn familiar-recall-btn" 
           style={{ fontSize: '7px', padding: '1px 3px', marginLeft: '3px', cursor: 'pointer' }} 
-          title="Vertrauten rufen"
+          title="Summon familiar"
           onClick={() => {
             const familiarType = (c as any).familiarType;
             const familiarStats = FamiliarRules.getFamiliarBaseStats(familiarType) || {};
@@ -271,7 +271,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
 
             CombatState.addCombatant({
               id: familiarId,
-              name: (c as any).familiarName || familiarStats.name || 'Vertrauter',
+              name: (c as any).familiarName || familiarStats.name || 'Familiar',
               type: 'n',
               hp: curHP,
               maxHP: maxHP,
@@ -284,7 +284,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
             });
           }}
         >
-          🐾 {(c as any).familiarName || 'Vertrauter'}
+          🐾 {(c as any).familiarName || 'Familiar'}
         </button>
       );
     }
@@ -360,10 +360,10 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
               onChange={(val) => CombatState.updateCombatantNumber(c.id, 'hp', val)}
               className="cinput cinput-c hp-cur-in"
               style={hpColor}
-              title="Aktuelle TP"
+              title="Current HP"
             />
             <span className="hp-sep">/</span>
-            <span className="hp-max-txt" title="Max TP">{c.maxHp}</span>
+            <span className="hp-max-txt" title="Max HP">{c.maxHp}</span>
             {tempHP > 0 && (
               <span className="hp-temp-txt" style={{ color: '#00b8f0', fontSize: '7.5px', fontWeight: 'bold', marginLeft: '2px' }}>
                 (+{tempHP})
@@ -375,9 +375,9 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
           </div>
         </div>
 
-        <div className="ac-triple-box" title="RK: Standard / Berührung / Flacher Fuß">
+        <div className="ac-triple-box" title="AC: Standard / Touch / Flat-footed">
           <div className="ac-sub-box standard">
-            <span className="ac-sub-lbl">RK</span>
+            <span className="ac-sub-lbl">AC</span>
             <span className="ac-sub-val">{getVal(c.ac)}</span>
           </div>
           <div className="ac-sub-box touch">
@@ -395,14 +395,14 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
           value={getVal(c.bw)}
           onChange={(val) => CombatState.updateCombatantNumber(c.id, 'bw', val)}
           className="cinput cinput-c char-stat-input"
-          title="Bewegungsweite (ft)"
+          title="Speed (ft)"
         />
         <CombatantInput 
           type="number"
           value={getVal(c.za)}
           onChange={(val) => CombatState.updateCombatantNumber(c.id, 'za', val)}
           className="cinput cinput-c char-stat-input"
-          title="Zähigkeit"
+          title="Fortitude"
         />
         <CombatantInput 
           type="number"
@@ -416,7 +416,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
           value={getVal(c.wil)}
           onChange={(val) => CombatState.updateCombatantNumber(c.id, 'wil', val)}
           className="cinput cinput-c char-stat-input"
-          title="Willen"
+          title="Will"
         />
 
         <div className="action-col">
@@ -427,13 +427,13 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
               onChange={(e) => setDmgInput(e.target.value)}
               className="small-in dmg-val-input" 
               placeholder="0" 
-              title="Schadenswert" 
+              title="Damage value" 
               onKeyDown={(e) => {
                 if (e.key === 'Enter') handleApplyDamage();
               }}
             />
-            <button className="xbtn xbtn-dmg deal-dmg-btn" onClick={handleApplyDamage}>Schaden</button>
-            <button className="xbtn xbtn-heal deal-heal-btn" onClick={handleApplyHealing}>Heilen</button>
+            <button className="xbtn xbtn-dmg deal-dmg-btn" onClick={handleApplyDamage}>Damage</button>
+            <button className="xbtn xbtn-heal deal-heal-btn" onClick={handleApplyHealing}>Heal</button>
             <button 
               className="xbtn xbtn-temp-hp deal-temp-btn" 
               style={{ background: 'rgba(42,74,138,0.06)', borderColor: '#2a4a8a', color: '#1a2a6a' }}
@@ -441,7 +441,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
             >
               +Temp
             </button>
-            <button className="xbtn xbtn-del delete-char-btn no-print" title="Entfernen" onClick={handleDelete}>✕</button>
+            <button className="xbtn xbtn-del delete-char-btn no-print" title="Remove" onClick={handleDelete}>✕</button>
           </div>
         </div>
       </div>
@@ -545,27 +545,27 @@ export const DMCombatantsTable: React.FC<DMCombatantsTableProps> = ({ side, comb
   return (
     <div className="panel">
       <div className="phdr">
-        <h2>{side === 'p' ? '⚔ Spielercharaktere' : '💀 Gegner & NSC'}</h2>
+        <h2>{side === 'p' ? '⚔ Player Characters' : '💀 Enemies & NPCs'}</h2>
         <button className="btn no-print" onClick={() => setShowAddForm(!showAddForm)}>
-          + Hinzufügen
+          + Add
         </button>
       </div>
       <div className="pbody">
         <div className="col-hdr">
           <span>Name</span>
           <span style={{ textAlign: 'center' }}>Init</span>
-          <span style={{ textAlign: 'center' }}>TP</span>
-          <span style={{ textAlign: 'center' }}>RK</span>
-          <span style={{ textAlign: 'center' }}>BW</span>
-          <span style={{ textAlign: 'center' }}>ZÄ</span>
+          <span style={{ textAlign: 'center' }}>HP</span>
+          <span style={{ textAlign: 'center' }}>AC</span>
+          <span style={{ textAlign: 'center' }}>SPD</span>
+          <span style={{ textAlign: 'center' }}>FORT</span>
           <span style={{ textAlign: 'center' }}>REF</span>
-          <span style={{ textAlign: 'center' }}>WIL</span>
-          <span>Schaden · Heilen</span>
+          <span style={{ textAlign: 'center' }}>WILL</span>
+          <span>Damage · Heal</span>
         </div>
 
         {list.length === 0 ? (
           <div className="empty-msg">
-            Noch keine {side === 'p' ? 'Spielercharaktere' : 'Gegner'} hinzugefügt
+            No {side === 'p' ? 'player characters' : 'enemies'} added yet
           </div>
         ) : (
           <div id={side === 'p' ? 'pRows' : 'eRows'}>
@@ -591,32 +591,32 @@ export const DMCombatantsTable: React.FC<DMCombatantsTableProps> = ({ side, comb
             <input type="text" value={addName} onChange={(e) => setAddName(e.target.value)} style={{ width: '65px' }} placeholder="Aranis" />
             <label>Init:</label>
             <input type="number" value={addInit} onChange={(e) => setAddInit(e.target.value)} style={{ width: '25px' }} placeholder="12" />
-            <label>TP:</label>
+            <label>HP:</label>
             <input type="number" value={addHp} onChange={(e) => setAddHp(e.target.value)} style={{ width: '25px' }} placeholder="28" />
-            <label>RK:</label>
+            <label>AC:</label>
             <input type="number" value={addAc} onChange={(e) => setAddAc(e.target.value)} style={{ width: '25px' }} placeholder="15" />
-            <label style={{ marginLeft: '2px' }}>Klasse:</label>
+            <label style={{ marginLeft: '2px' }}>Class:</label>
             <select value={addClass} onChange={(e) => setAddClass(e.target.value)} style={{ width: '80px', fontSize: '8px', height: '14px', padding: '0 1px' }}>
-              <option value="custom">Benutzerdefiniert</option>
-              <option value="fighter">Kämpfer</option>
-              <option value="cleric">Kleriker</option>
-              <option value="rogue">Schurke</option>
-              <option value="wizard">Magier</option>
-              <option value="barbarian">Barbar</option>
-              <option value="bard">Barde</option>
-              <option value="druid">Druide</option>
-              <option value="monk">Mönch</option>
+              <option value="custom">Custom</option>
+              <option value="fighter">Fighter</option>
+              <option value="cleric">Cleric</option>
+              <option value="rogue">Rogue</option>
+              <option value="wizard">Wizard</option>
+              <option value="barbarian">Barbarian</option>
+              <option value="bard">Bard</option>
+              <option value="druid">Druid</option>
+              <option value="monk">Monk</option>
               <option value="paladin">Paladin</option>
-              <option value="ranger">Waldläufer</option>
-              <option value="sorcerer">Hexenmeister</option>
+              <option value="ranger">Ranger</option>
+              <option value="sorcerer">Sorcerer</option>
             </select>
-            <label>Stufe:</label>
+            <label>Level:</label>
             <select value={addLevel} onChange={(e) => setAddLevel(e.target.value)} style={{ width: '30px', fontSize: '8px', height: '14px', padding: '0' }}>
               {Array.from({ length: 20 }, (_, i) => i + 1).map(lv => (
                 <option key={lv} value={String(lv)}>{lv}</option>
               ))}
             </select>
-            <button className="btn btn-p" onClick={handleConfirmAdd} style={{ padding: '1px 5px', height: '14px', lineHeight: '10px' }}>Einfügen</button>
+            <button className="btn btn-p" onClick={handleConfirmAdd} style={{ padding: '1px 5px', height: '14px', lineHeight: '10px' }}>Add</button>
             <button className="btn" onClick={() => setShowAddForm(false)} style={{ padding: '1px 4px', height: '14px', lineHeight: '10px' }}>✕</button>
           </div>
         ) : (
@@ -634,15 +634,15 @@ export const DMCombatantsTable: React.FC<DMCombatantsTableProps> = ({ side, comb
             <input type="text" value={addName} onChange={(e) => setAddName(e.target.value)} style={{ width: '70px' }} placeholder="Goblin #1" />
             <label>Init:</label>
             <input type="number" value={addInit} onChange={(e) => setAddInit(e.target.value)} style={{ width: '28px' }} placeholder="8" />
-            <label>TP:</label>
+            <label>HP:</label>
             <input type="number" value={addHp} onChange={(e) => setAddHp(e.target.value)} style={{ width: '28px' }} placeholder="12" />
-            <label>RK:</label>
+            <label>AC:</label>
             <input type="number" value={addAc} onChange={(e) => setAddAc(e.target.value)} style={{ width: '28px' }} placeholder="13" />
             <select value={addEnemyType} onChange={(e) => setAddEnemyType(e.target.value)} style={{ height: '14px', fontSize: '8.5px', padding: '0 1px' }}>
-              <option value="e">Gegner</option>
-              <option value="n">NSC</option>
+              <option value="e">Enemy</option>
+              <option value="n">NPC</option>
             </select>
-            <button className="btn btn-p" onClick={handleConfirmAdd} style={{ padding: '1px 5px', height: '14px', lineHeight: '10px' }}>Einfügen</button>
+            <button className="btn btn-p" onClick={handleConfirmAdd} style={{ padding: '1px 5px', height: '14px', lineHeight: '10px' }}>Add</button>
             <button className="btn" onClick={() => setShowAddForm(false)} style={{ padding: '1px 4px', height: '14px', lineHeight: '10px' }}>✕</button>
           </div>
         )}

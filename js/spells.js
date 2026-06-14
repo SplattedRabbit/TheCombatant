@@ -11,7 +11,7 @@ export const CombatSpells = {
    */
   async loadSpells() {
     try {
-      const response = await fetch('./data/spells_de.json');
+      const response = await fetch('./data/spells.json');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -78,15 +78,15 @@ export function getSchoolCodeFromInput(inputStr) {
 
 export function getSchoolLabel(code) {
   const labels = {
-    abj: 'Schutzmagie',
-    con: 'Beschwörung',
-    div: 'Erkenntnismagie',
-    enc: 'Verzauberung',
-    evo: 'Hervorrufung',
+    abj: 'Abjuration',
+    con: 'Conjuration',
+    div: 'Divination',
+    enc: 'Enchantment',
+    evo: 'Evocation',
     ill: 'Illusion',
-    nec: 'Nekromantie',
-    tra: 'Verwandlung',
-    univ: 'Allgemein'
+    nec: 'Necromancy',
+    tra: 'Transmutation',
+    univ: 'Universal'
   };
   return labels[code] || code;
 }
@@ -96,7 +96,7 @@ export function findSpell(pc, key) {
     return CombatSpells.REGISTRY[key];
   }
   if (pc && Array.isArray(pc.customSpells)) {
-    const found = pc.customSpells.find(s => s.id === key || s.nameDe === key);
+    const found = pc.customSpells.find(s => s.id === key || s.nameEn === key || s.nameDe === key);
     if (found) return found;
   }
   return null;

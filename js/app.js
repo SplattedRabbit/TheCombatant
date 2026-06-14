@@ -216,16 +216,16 @@ function importEncounter(event) {
     try {
       const loadedState = JSON.parse(e.target.result);
       if (!loadedState.combatants) {
-        alert("Ungültiges Dateiformat. Keine Kämpfer gefunden.");
+        alert("Invalid file format. No combatants found.");
         return;
       }
-      if (confirm("Möchtest du diese Begegnung importieren? Aktuelle Daten werden überschrieben.")) {
+      if (confirm("Do you want to import this encounter? Current data will be overwritten.")) {
         CombatState.importEncounterState(loadedState);
         CombatUI.renderAll();
         CombatUI.renderConc();
       }
     } catch (err) {
-      alert("Fehler beim Lesen der Datei: " + err.message);
+      alert("Error reading file: " + err.message);
     }
   };
   reader.readAsText(file);
@@ -337,8 +337,8 @@ function _initMaintenanceEvents() {
   if (btnClearAll) {
     btnClearAll.onclick = () => {
       CombatUI.showCustomConfirm(
-        "Charakter zurücksetzen",
-        "Möchtest du wirklich alle Werte des Charakters auf die Standardwerte zurücksetzen? Dies kann nicht rückgängig gemacht werden.",
+        "Reset Character",
+        "Are you sure you want to reset all character values to defaults? This cannot be undone.",
         () => {
           CombatState.clearActivePC();
           CombatUI.renderPlayerScreen();
@@ -351,8 +351,8 @@ function _initMaintenanceEvents() {
   if (btnClearStorage) {
     btnClearStorage.onclick = () => {
       CombatUI.showCustomConfirm(
-        "App-Daten bereinigen",
-        "Möchtest du den gesamten App-Speicher und Cache wirklich vollständig bereinigen? Dadurch werden alle gespeicherten Charaktere, Begegnungen, Einstellungen sowie der Service-Worker-Cache gelöscht und die App frisch geladen.",
+        "Clear App Data",
+        "Are you sure you want to completely clear all app storage and cache? This will delete all saved characters, encounters, settings, and the service worker cache, and reload the app.",
         async () => {
           localStorage.clear();
           if ('caches' in window) {
@@ -410,7 +410,7 @@ function _initEncounterControls() {
   const btnReset = document.getElementById('btnReset');
   if (btnReset) {
     btnReset.onclick = () => {
-      if (confirm("Möchtest du das gesamte Kampfblatt wirklich zurücksetzen? Alle Kämpfer, Zauber und Begegnungsdaten werden gelöscht.")) {
+      if (confirm("Are you sure you want to reset the entire combat sheet? All combatants, spells, and encounter data will be deleted.")) {
         CombatState.clearState();
         
         // Clear meta inputs in DOM
@@ -484,7 +484,7 @@ function _initEncounterControls() {
       textEl.value = '';
       
       import('./ui/dialogs/BaseDialogs.js').then(({ showCustomAlert }) => {
-        showCustomAlert('Nachricht gesendet', `Die Botschaft wurde übertragen.`, 'OK', '✉️');
+        showCustomAlert('Message sent', `The message has been transmitted.`, 'OK', '✉️');
       });
     };
   }

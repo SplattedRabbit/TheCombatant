@@ -1,12 +1,3 @@
-/**
- * @module    SpellCreatorDialog
- * @summary   React-Dialog für den Eigenen-Zauber-Ersteller: Formular, Validierung, Speicherung in pc.customSpells.
- * @exports   SpellCreatorDialog
- * @reads     pc.classes, pc.learnedSpells, pc.customSpells
- * @stateOps  CombatState.saveToStorage, CombatState.syncPCToHost
- * @depends   React, @core/state.js, @core/rules.js
- * @notHere   Zauber-Details → SpellDetailsDialog.tsx | Slot-Berechnung → SpellSlotCalculator.js
- */
 import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
@@ -28,16 +19,16 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
   const [nameEn, setNameEn] = useState('');
   const [level, setLevel] = useState(1);
   const [school, setSchool] = useState('');
-  const [castingTime, setCastingTime] = useState('1 Standardaktion');
-  const [range, setRange] = useState('Berührung');
-  const [duration, setDuration] = useState('Sofort');
-  const [savingThrow, setSavingThrow] = useState('Keiner');
-  const [spellResistance, setSpellResistance] = useState('Nein');
+  const [castingTime, setCastingTime] = useState('1 standard action');
+  const [range, setRange] = useState('Touch');
+  const [duration, setDuration] = useState('Instantaneous');
+  const [savingThrow, setSavingThrow] = useState('None');
+  const [spellResistance, setSpellResistance] = useState('No');
   const [description, setDescription] = useState('');
 
   const handleSave = () => {
     if (!nameDe.trim() || !school.trim() || !description.trim()) {
-      showCustomAlert('Fehler', 'Bitte fülle alle Pflichtfelder (*) aus!');
+      showCustomAlert('Error', 'Please fill in all required fields (*)!');
       return;
     }
 
@@ -70,7 +61,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
 
     const check = CombatRules.checkSpellKnownLimit(activePC, newSpell, (k: string) => findSpell(activePC, k));
     if (!check.success) {
-      showCustomAlert('Zauberlimit überschritten', check.error || 'Du kannst keine weiteren bekannten Zauber dieses Grades lernen.');
+      showCustomAlert('Spell Limit Exceeded', check.error || 'You cannot learn any more known spells of this level.');
       return;
     }
 
@@ -84,7 +75,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
 
     CombatState.saveToStorage();
     CombatState.syncPCToHost();
-    showCustomAlert('Erfolg!', `"${nameDe}" wurde erfolgreich erschaffen und deinem Zauberbuch hinzugefügt!`);
+    showCustomAlert('Success!', `"${nameEn || nameDe}" was successfully created and added to your spellbook!`);
     onClose();
   };
 
@@ -106,84 +97,84 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
         onClick={e => e.stopPropagation()}
       >
         <h3 style={{ margin: '0 0 12px', fontFamily: "'Cinzel', serif", fontSize: '13px', textAlign: 'center' }}>
-          ✦ Eigener Zauber-Ersteller ✦
+          ✦ Custom Spell Creator ✦
         </h3>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
             <div>
-              <label style={labelStyle}>Deutscher Name *</label>
-              <input className="cinput" style={inputStyle} placeholder="z. B. Feuerball"
+              <label style={labelStyle}>German Name *</label>
+              <input className="cinput" style={inputStyle} placeholder="e.g. Feuerball"
                 value={nameDe} onChange={e => setNameDe(e.target.value)} />
             </div>
             <div>
-              <label style={labelStyle}>Englischer Name</label>
-              <input className="cinput" style={inputStyle} placeholder="z. B. Fireball"
+              <label style={labelStyle}>English Name</label>
+              <input className="cinput" style={inputStyle} placeholder="e.g. Fireball"
                 value={nameEn} onChange={e => setNameEn(e.target.value)} />
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
             <div>
-              <label style={labelStyle}>Zaubergrad (0–9) *</label>
+              <label style={labelStyle}>Spell Level (0–9) *</label>
               <input className="cinput" type="number" style={{ ...inputStyle, textAlign: 'center' }}
                 min={0} max={9} value={level} onChange={e => setLevel(parseInt(e.target.value) || 0)} />
             </div>
             <div>
-              <label style={labelStyle}>Schule *</label>
-              <input className="cinput" style={inputStyle} placeholder="z. B. Hervorrufung"
+              <label style={labelStyle}>School *</label>
+              <input className="cinput" style={inputStyle} placeholder="e.g. Evocation"
                 value={school} onChange={e => setSchool(e.target.value)} />
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
             <div>
-              <label style={labelStyle}>Zeitaufwand</label>
-              <input className="cinput" style={inputStyle} placeholder="1 Standardaktion"
+              <label style={labelStyle}>Casting Time</label>
+              <input className="cinput" style={inputStyle} placeholder="1 standard action"
                 value={castingTime} onChange={e => setCastingTime(e.target.value)} />
             </div>
             <div>
-              <label style={labelStyle}>Reichweite</label>
-              <input className="cinput" style={inputStyle} placeholder="Berührung"
+              <label style={labelStyle}>Range</label>
+              <input className="cinput" style={inputStyle} placeholder="Touch"
                 value={range} onChange={e => setRange(e.target.value)} />
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
             <div>
-              <label style={labelStyle}>Wirkungsdauer</label>
-              <input className="cinput" style={inputStyle} placeholder="Sofort"
+              <label style={labelStyle}>Duration</label>
+              <input className="cinput" style={inputStyle} placeholder="Instantaneous"
                 value={duration} onChange={e => setDuration(e.target.value)} />
             </div>
             <div>
-              <label style={labelStyle}>Rettungswurf</label>
-              <input className="cinput" style={inputStyle} placeholder="Keiner"
+              <label style={labelStyle}>Saving Throw</label>
+              <input className="cinput" style={inputStyle} placeholder="None"
                 value={savingThrow} onChange={e => setSavingThrow(e.target.value)} />
             </div>
           </div>
 
           <div>
-            <label style={labelStyle}>Zauberresistenz</label>
-            <input className="cinput" style={inputStyle} placeholder="Nein"
+            <label style={labelStyle}>Spell Resistance</label>
+            <input className="cinput" style={inputStyle} placeholder="No"
               value={spellResistance} onChange={e => setSpellResistance(e.target.value)} />
           </div>
 
           <div>
-            <label style={labelStyle}>Regeltext / Beschreibung (Volltext) *</label>
+            <label style={labelStyle}>Spell Description / Rule Text *</label>
             <textarea className="cinput" rows={5}
               style={{ fontSize: '9px', lineHeight: 1.4, resize: 'vertical', width: '100%', boxSizing: 'border-box' }}
-              placeholder="Füge hier die offiziellen Regeln ein..."
+              placeholder="Enter the official rules here..."
               value={description} onChange={e => setDescription(e.target.value)} />
           </div>
 
           <p style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', margin: 0 }}>
-            * Pflichtfelder. Nach dem Speichern wird dieser Zauber sofort in deinem Zauberkompendium registriert.
+            * Required fields. After saving, this spell will be immediately registered in your spell compendium.
           </p>
         </div>
 
         <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end', marginTop: '14px' }}>
-          <button className="xbtn" onClick={handleSave} style={{ minWidth: '100px' }}>✓ Speichern</button>
-          <button className="xbtn" onClick={onClose}>Abbrechen</button>
+          <button className="xbtn" onClick={handleSave} style={{ minWidth: '100px' }}>✓ Save</button>
+          <button className="xbtn" onClick={onClose}>Cancel</button>
         </div>
       </div>
     </div>

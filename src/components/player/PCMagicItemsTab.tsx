@@ -1,6 +1,6 @@
 /**
  * @module    PCMagicItemsTab
- * @summary   Rendert den Tab »Magische Gegenstände«: Slot-Boxen (links, 11 Slots + Slotless) und Rucksack-Inventar mit Multi-Effekt-Editor (rechts).
+ * @summary   Renders the "Magic Items" tab: slot boxes (left, 11 slots + slotless) and backpack inventory with multi-effect editor (right).
  * @exports   PCMagicItemsTab
  * @reads     pc.items[], item.slot, item.effects[], item.isEquipped
  * @stateOps  addPCItem, updatePCItem, deletePCItem, togglePCItemEquip, addPCItemEffect, updatePCItemEffect, deletePCItemEffect
@@ -17,15 +17,15 @@ interface PCMagicItemsTabProps {
 }
 
 const SLOTS: Record<string, { name: string; icon: string }> = {
-  head: { name: 'Kopf', icon: '👑' },
-  face: { name: 'Gesicht', icon: '👓' },
-  neck: { name: 'Hals', icon: '📿' },
-  shoulders: { name: 'Schultern', icon: '🧥' },
-  torso: { name: 'Rumpf', icon: '🥋' },
-  wrists: { name: 'Handgelenke', icon: '🦾' },
-  hands: { name: 'Hände', icon: '🧤' },
-  waist: { name: 'Taille', icon: '🎗️' },
-  feet: { name: 'Füße', icon: '🥾' },
+  head: { name: 'Head', icon: '👑' },
+  face: { name: 'Face', icon: '👓' },
+  neck: { name: 'Neck', icon: '📿' },
+  shoulders: { name: 'Shoulders', icon: '🧥' },
+  torso: { name: 'Torso', icon: '🥋' },
+  wrists: { name: 'Wrists', icon: '🦾' },
+  hands: { name: 'Hands', icon: '🧤' },
+  waist: { name: 'Waist', icon: '🎗️' },
+  feet: { name: 'Feet', icon: '🥾' },
   ring1: { name: 'Ring 1', icon: '💍' },
   ring2: { name: 'Ring 2', icon: '💍' }
 };
@@ -33,20 +33,20 @@ const SLOTS: Record<string, { name: string; icon: string }> = {
 const getEffectTargetDesc = (eff: any) => {
   const target = eff.target || eff.effectTarget || 'str';
   const targets: Record<string, string> = {
-    str: 'Stärke (STR)',
-    dex: 'Geschick (DEX)',
-    con: 'Konst (CON)',
-    int: 'Intelligenz (INT)',
-    wis: 'Weisheit (WIS)',
+    str: 'Strength (STR)',
+    dex: 'Dexterity (DEX)',
+    con: 'Constitution (CON)',
+    int: 'Intelligence (INT)',
+    wis: 'Wisdom (WIS)',
     cha: 'Charisma (CHA)',
-    fort: 'Zähigkeit',
+    fort: 'Fortitude',
     ref: 'Reflex',
-    wil: 'Wille',
-    all: 'Rettungswürfe',
-    deflection: 'Ablenkung (RK)',
-    natural: 'Natürliche Rüstung',
-    armor: 'Rüstungsbonus',
-    speed: 'Bewegung'
+    wil: 'Will',
+    all: 'Saving Throws',
+    deflection: 'Deflection (AC)',
+    natural: 'Natural Armor',
+    armor: 'Armor Bonus',
+    speed: 'Speed'
   };
   return targets[target] || target;
 };
@@ -107,7 +107,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '12px', height: '100%' }}>
-      <BaseCard title="✨ Ausgerüstete magische Gegenstände">
+      <BaseCard title="✨ Equipped Magic Items">
         {/* Grid for 11 slots */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px' }}>
           {Object.keys(SLOTS).map(slotKey => {
@@ -138,7 +138,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                     <button
                       onClick={() => handleUnequipIdx(data.idx)}
                       style={{ position: 'absolute', top: '3px', right: '5px', border: 'none', background: 'transparent', fontSize: '9px', cursor: 'pointer', color: 'var(--red)', padding: 0 }}
-                      title="Ablegen"
+                      title="Unequip"
                     >
                       ✕
                     </button>
@@ -163,7 +163,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                     <div style={{ fontSize: '8px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>
                       {slotInfo.name}
                     </div>
-                    <div style={{ fontSize: '7.5px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Leer)</div>
+                    <div style={{ fontSize: '7.5px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Empty)</div>
                   </>
                 )}
               </div>
@@ -174,12 +174,12 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
         {/* Slotless items section */}
         <div style={{ marginTop: '8px', borderTop: '1px solid var(--pb)', paddingTop: '8px' }}>
           <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '4px', letterSpacing: '0.5px' }}>
-            🎒 Aktiv &amp; Slotfrei (Slotless)
+            🎒 Active &amp; Slotless
           </div>
           <div style={{ background: 'rgba(200, 169, 110, 0.03)', border: '0.5px solid var(--pb)', borderRadius: '3px', padding: '4px 6px' }}>
             {slotless.length === 0 ? (
               <div style={{ textAlign: 'center', fontStyle: 'italic', color: 'var(--inkm)', fontSize: '8px', padding: '6px 0' }}>
-                (Keine slotfreien Gegenstände aktiv)
+                (No active slotless items)
               </div>
             ) : (
               slotless.map((item: any) => {
@@ -198,7 +198,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                       <button
                         onClick={() => handleUnequipIdx(idx)}
                         style={{ border: 'none', background: 'transparent', fontSize: '10px', cursor: 'pointer', color: 'var(--red)', padding: '0 2px' }}
-                        title="Ablegen"
+                        title="Unequip"
                       >
                         ✕
                       </button>
@@ -212,14 +212,14 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
       </BaseCard>
 
       <BaseCard
-        title="🎒 Rucksack &amp; Inventar"
+        title="🎒 Backpack &amp; Inventory"
         headerRight={
           <button
             onClick={handleAddPCItem}
             className="btn"
             style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '1px 5px', height: '15px', lineHeight: 1 }}
           >
-            ➕ Gegenstand
+            ➕ Item
           </button>
         }
       >
@@ -227,7 +227,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '380px', overflowY: 'auto' }}>
           {items.length === 0 ? (
             <div style={{ fontStyle: 'italic', fontSize: '9px', color: 'var(--inkl)', padding: '15px', textAlign: 'center' }}>
-              Keine Gegenstände im Rucksack.
+              No items in backpack.
             </div>
           ) : (
             items.map((item: any, idx: number) => {
@@ -251,7 +251,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                   >
                     {isEquipped && (
                       <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '7px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', letterSpacing: '0.3px', pointerEvents: 'none', zIndex: 10, boxShadow: '0 1px 2px rgba(0,0,0,0.15)' }}>
-                        Ausgerüstet
+                        Equipped
                       </span>
                     )}
 
@@ -261,7 +261,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                         type="text"
                         value={item.name || ''}
                         onChange={(e) => handleItemNameChange(idx, e.target.value)}
-                        placeholder="z.B. Schutzring"
+                        placeholder="e.g. Ring of Protection"
                         className="cinput"
                         style={{ fontSize: '10px', height: '18px', padding: '0 4px', flex: 1, fontWeight: 'bold', borderColor: 'rgba(200, 169, 110, 0.25)' }}
                       />
@@ -269,7 +269,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                         onClick={() => CombatState.deletePCItem(idx)}
                         className="xbtn"
                         style={{ padding: 0, border: 'none', background: 'transparent', fontSize: '11px', cursor: 'pointer', height: '18px', width: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--red)' }}
-                        title="Löschen"
+                        title="Delete"
                       >
                         ✕
                       </button>
@@ -283,18 +283,18 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                         className="cinput"
                         style={{ fontSize: '8px', padding: '0 2px', height: '18px', flex: 1.5, minWidth: 0 }}
                       >
-                        <option value="head">Kopf</option>
-                        <option value="face">Gesicht</option>
-                        <option value="neck">Hals</option>
-                        <option value="shoulders">Schultern</option>
-                        <option value="torso">Rumpf</option>
-                        <option value="wrists">Handgelenke</option>
-                        <option value="hands">Hände</option>
-                        <option value="waist">Taille</option>
-                        <option value="feet">Füße</option>
+                        <option value="head">Head</option>
+                        <option value="face">Face</option>
+                        <option value="neck">Neck</option>
+                        <option value="shoulders">Shoulders</option>
+                        <option value="torso">Torso</option>
+                        <option value="wrists">Wrists</option>
+                        <option value="hands">Hands</option>
+                        <option value="waist">Waist</option>
+                        <option value="feet">Feet</option>
                         <option value="ring1">Ring 1</option>
                         <option value="ring2">Ring 2</option>
-                        <option value="slotless">Slotfrei</option>
+                        <option value="slotless">Slotless</option>
                       </select>
                       <button
                         onClick={() => CombatState.togglePCItemEquip(idx)}
@@ -310,15 +310,15 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                           color: isEquipped ? '#b38600' : 'var(--ink)',
                           background: isEquipped ? 'rgba(200, 169, 110, 0.08)' : 'transparent'
                         }}
-                        title={isEquipped ? 'Gegenstand ablegen' : 'Gegenstand anlegen'}
+                        title={isEquipped ? 'Unequip item' : 'Equip item'}
                       >
-                        {isEquipped ? 'Ablegen' : 'Anlegen'}
+                        {isEquipped ? 'Unequip' : 'Equip'}
                       </button>
                       <button
                         onClick={() => toggleDrawer(item.id)}
                         className="xbtn"
                         style={{ padding: 0, border: 'none', background: 'transparent', fontSize: '11px', cursor: 'pointer', height: '18px', width: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--inkm)' }}
-                        title="Optionen"
+                        title="Options"
                       >
                         ⚙️
                       </button>
@@ -352,10 +352,10 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                                 className="cinput"
                                 style={{ fontSize: '8px', height: '18px', flex: 1.2 }}
                               >
-                                <option value="attribute">Attribut</option>
-                                <option value="save">Rettungswurf</option>
-                                <option value="ac">AC/RK-Bonus</option>
-                                <option value="speed">Geschwindigkeit</option>
+                                <option value="attribute">Attribute</option>
+                                <option value="save">Saving Throw</option>
+                                <option value="ac">AC Bonus</option>
+                                <option value="speed">Speed</option>
                               </select>
 
                               <select
@@ -367,31 +367,31 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                               >
                                 {eff.type === 'attribute' && (
                                   <>
-                                    <option value="str">Stärke (STR)</option>
-                                    <option value="dex">Geschick (DEX)</option>
-                                    <option value="con">Konstitution (CON)</option>
-                                    <option value="int">Intelligenz (INT)</option>
-                                    <option value="wis">Weisheit (WIS)</option>
+                                    <option value="str">Strength (STR)</option>
+                                    <option value="dex">Dexterity (DEX)</option>
+                                    <option value="con">Constitution (CON)</option>
+                                    <option value="int">Intelligence (INT)</option>
+                                    <option value="wis">Wisdom (WIS)</option>
                                     <option value="cha">Charisma (CHA)</option>
                                   </>
                                 )}
                                 {eff.type === 'save' && (
                                   <>
-                                    <option value="fort">Zähigkeit</option>
+                                    <option value="fort">Fortitude</option>
                                     <option value="ref">Reflex</option>
-                                    <option value="wil">Wille</option>
-                                    <option value="all">Alle Rettungswürfe</option>
+                                    <option value="wil">Will</option>
+                                    <option value="all">All Saving Throws</option>
                                   </>
                                 )}
                                 {eff.type === 'ac' && (
                                   <>
-                                    <option value="deflection">Ablenkung (Deflection)</option>
-                                    <option value="natural">Natürliche Rüstung</option>
-                                    <option value="armor">Rüstung</option>
+                                    <option value="deflection">Deflection</option>
+                                    <option value="natural">Natural Armor</option>
+                                    <option value="armor">Armor</option>
                                   </>
                                 )}
                                 {eff.type === 'speed' && (
-                                  <option value="speed">Bewegung</option>
+                                  <option value="speed">Speed</option>
                                 )}
                               </select>
 
@@ -410,7 +410,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                                 onClick={() => CombatState.deletePCItemEffect(idx, effIdx)}
                                 className="xbtn"
                                 style={{ padding: 0, border: 'none', background: 'transparent', fontSize: '10px', cursor: 'pointer', height: '16px', width: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--red)' }}
-                                title="Effekt löschen"
+                                title="Delete effect"
                               >
                                 ✕
                               </button>
@@ -424,7 +424,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
                             className="btn"
                             style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '7.5px', padding: '1px 5px', height: '14px', lineHeight: 1, display: 'flex', alignItems: 'center', gap: '2px' }}
                           >
-                            ➕ Effekt
+                            ➕ Effect
                           </button>
                         </div>
                       </div>

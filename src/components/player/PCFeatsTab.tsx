@@ -1,6 +1,6 @@
 /**
  * @module    PCFeatsTab
- * @summary   Rendert den Talente-Tab mit erlernten Talenten (links) und interaktivem Kompendium (rechts). Prüft Voraussetzungen und zeigt Bonus-Talente nach Klasse.
+ * @summary   Renders the Feats tab with learned feats (left) and interactive compendium (right). Checks prerequisites and shows class-specific bonus feats.
  * @exports   PCFeatsTab
  * @reads     pc.feats, pc.classes, pc.bab, pc.str, pc.dex, pc.con, pc.int, pc.wis, pc.cha, pc.skills, pc.level
  * @stateOps  addPCFeat, removePCFeat
@@ -39,32 +39,32 @@ export const checkPrerequisites = (feat: any, pc: any): { met: boolean; details:
     if (pr.type === 'bab') {
       const pcBab = pc.bab ? (typeof pc.bab.getValue === 'function' ? pc.bab.getValue() : pc.bab.base ?? pc.bab) : 0;
       prMet = pcBab >= pr.value;
-      desc = `Grundangriffsbonus (BAB) +${pr.value} (Aktuell: +${pcBab})`;
+      desc = `Base Attack Bonus (BAB) +${pr.value} (Current: +${pcBab})`;
     } else if (pr.type === 'feat') {
       prMet = learnedIds.includes(pr.id);
       const parentFeat = CombatFeats.REGISTRY[pr.id];
-      const parentName = parentFeat ? parentFeat.nameDe : pr.id;
-      desc = `Talent: ${parentName}`;
+      const parentName = parentFeat ? (parentFeat.nameEn || parentFeat.nameDe) : pr.id;
+      desc = `Feat: ${parentName}`;
     } else if (pr.type === 'classLevel') {
       const cls = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === pr.class) : null;
       const lvl = cls ? cls.level : 0;
       prMet = lvl >= pr.value;
-      const classNameDe = pr.class === 'fighter' ? 'Kämpfer' : pr.class === 'wizard' ? 'Magier' : pr.class;
-      desc = `${classNameDe} Stufe ${pr.value} (Aktuell: Stufe ${lvl})`;
+      const classNameEn = pr.class === 'fighter' ? 'Fighter' : pr.class === 'wizard' ? 'Wizard' : pr.class;
+      desc = `${classNameEn} Level ${pr.value} (Current: Level ${lvl})`;
     } else if (pr.type === 'class') {
       const hasCls = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === pr.class);
       prMet = hasCls;
-      const classNameDe = pr.class === 'wizard' ? 'Magier' : pr.class;
-      desc = `Klasse: ${classNameDe}`;
+      const classNameEn = pr.class === 'wizard' ? 'Wizard' : pr.class;
+      desc = `Class: ${classNameEn}`;
     } else if (pr.type === 'stat') {
-      const nameMap: Record<string, string> = { str: 'Stärke', dex: 'Geschicklichkeit', con: 'Konstitution', int: 'Intelligenz', wis: 'Weisheit', cha: 'Charisma' };
+      const nameMap: Record<string, string> = { str: 'Strength', dex: 'Dexterity', con: 'Constitution', int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma' };
       const pcStat = pc[pr.name] ? getAblVal(pc[pr.name]) : 10;
       prMet = pcStat >= pr.value;
-      desc = `${nameMap[pr.name] || pr.name} ${pr.value}+ (Aktuell: ${pcStat})`;
+      desc = `${nameMap[pr.name] || pr.name} ${pr.value}+ (Current: ${pcStat})`;
     } else if (pr.type === 'level') {
       const pcLevel = pc.level || pc.totalLevel || 1;
       prMet = pcLevel >= pr.value;
-      desc = `Charakterstufe ${pr.value} (Aktuell: ${pcLevel})`;
+      desc = `Character Level ${pr.value} (Current: ${pcLevel})`;
     } else if (pr.type === 'casterLevel') {
       let maxCL = 0;
       if (Array.isArray(pc.classes)) {
@@ -77,26 +77,26 @@ export const checkPrerequisites = (feat: any, pc: any): { met: boolean; details:
         });
       }
       prMet = maxCL >= pr.value;
-      desc = `Zaubererstufe ${pr.value} (Aktuell: ${maxCL})`;
+      desc = `Caster Level ${pr.value} (Current: ${maxCL})`;
     } else if (pr.type === 'custom') {
-      if (pr.desc === 'Fähigkeit, Untote zu vertreiben') {
+      if (pr.desc === 'Fähigkeit, Untote zu vertreiben' || pr.desc === 'Ability to turn undead') {
         const clericClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'cleric') : null;
         const paladinClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'paladin') : null;
         const clericLvl = clericClass ? clericClass.level : 0;
         const paladinLvl = paladinClass ? paladinClass.level : 0;
         prMet = clericLvl >= 1 || paladinLvl >= 4;
-        desc = `Spezial: ${pr.desc} (Kleriker 1+ oder Paladin 4+)`;
-      } else if (pr.desc === 'Bardenmusik') {
+        desc = `Special: Turn Undead ability (Cleric 1+ or Paladin 4+)`;
+      } else if (pr.desc === 'Bardenmusik' || pr.desc === 'Bardic music') {
         const bardClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'bard') : null;
         const bardLvl = bardClass ? bardClass.level : 0;
         prMet = bardLvl >= 1;
-        desc = `Spezial: ${pr.desc} (Barde 1+)`;
-      } else if (pr.desc === 'Tiergestalt (Wild Shape)') {
+        desc = `Special: Bardic Music (Bard 1+)`;
+      } else if (pr.desc === 'Tiergestalt (Wild Shape)' || pr.desc === 'Wild shape') {
         const druidClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'druid') : null;
         const druidLvl = druidClass ? druidClass.level : 0;
         prMet = druidLvl >= 5;
-        desc = `Spezial: ${pr.desc} (Druide 5+)`;
-      } else if (pr.desc === 'Reiten 1 Rang') {
+        desc = `Special: Wild Shape (Druid 5+)`;
+      } else if (pr.desc === 'Reiten 1 Rang' || pr.desc === 'Ride 1 rank') {
         let ranks = 0;
         if (typeof pc.getSkillRanks === 'function') {
           ranks = pc.getSkillRanks('ride');
@@ -104,10 +104,10 @@ export const checkPrerequisites = (feat: any, pc: any): { met: boolean; details:
           ranks = parseFloat(pc.skills['ride'].ranks) || 0;
         }
         prMet = ranks >= 1;
-        desc = `Spezial: ${pr.desc} (aktuell: ${ranks})`;
+        desc = `Special: Ride 1 rank (Current: ${ranks})`;
       } else {
         prMet = true;
-        desc = `Spezial: ${pr.desc}`;
+        desc = `Special: ${pr.desc}`;
       }
     }
 
@@ -190,7 +190,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   const learnedFeatsFiltered = useMemo(() => {
     return activeFeats.filter((f: any) => {
       const reg = CombatFeats.REGISTRY[f.id];
-      const name = reg?.nameDe ?? f.id;
+      const name = (reg?.nameEn || reg?.nameDe) ?? f.id;
       return name.toLowerCase().includes(learnedSearch.toLowerCase().trim());
     });
   }, [activeFeats, learnedSearch]);
@@ -233,7 +233,8 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
         (feat.nameDe || '').toLowerCase().includes(q) ||
         (feat.nameEn || '').toLowerCase().includes(q) ||
         feat.id.toLowerCase().includes(q) ||
-        (feat.benefitDe || '').toLowerCase().includes(q);
+        (feat.benefitDe || '').toLowerCase().includes(q) ||
+        (feat.benefitEn || '').toLowerCase().includes(q);
 
       if (!matchesSearch) return false;
 
@@ -249,24 +250,22 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
     showFeatScrollDialog(feat, pc, isLearned, option || '', e?.nativeEvent);
   };
 
-
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', boxSizing: 'border-box', width: '100%' }}>
       {/* Legend */}
       <div className="feats-legend" style={{ marginBottom: '8px', padding: '5px 8px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '8.5px', display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-        <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '9px' }}>Legende:</span>
+        <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '9px' }}>Legend:</span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', opacity: hasFighter ? 1 : 0.5 }}>
           <span style={{ display: 'inline-block', width: '8px', height: '6px', border: '1.2px solid #2a6a2a', background: 'rgba(42, 106, 42, 0.1)', borderLeftWidth: '3px' }}></span>
-          <span>Kämpfer-Bonus (Kategorie Kampf {hasFighter ? 'Aktiv' : 'Inaktiv'})</span>
+          <span>Fighter Bonus (Combat Category {hasFighter ? 'Active' : 'Inactive'})</span>
         </span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', opacity: hasWizard ? 1 : 0.5 }}>
           <span style={{ display: 'inline-block', width: '8px', height: '6px', border: '1.2px solid #2a6a2a', background: 'rgba(42, 106, 42, 0.1)', borderLeftWidth: '3px' }}></span>
-          <span>Magier-Bonus (Metamagie/Gegenstand {hasWizard ? 'Aktiv' : 'Inaktiv'})</span>
+          <span>Wizard Bonus (Metamagic/Item Creation {hasWizard ? 'Active' : 'Inactive'})</span>
         </span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', opacity: hasMonk ? 1 : 0.5 }}>
           <span style={{ display: 'inline-block', width: '8px', height: '6px', border: '1.2px solid #2a6a2a', background: 'rgba(42, 106, 42, 0.1)', borderLeftWidth: '3px' }}></span>
-          <span>Mönch-Bonus (Mönch-Talente {hasMonk ? 'Aktiv' : 'Inaktiv'})</span>
+          <span>Monk Bonus (Monk Feats {hasMonk ? 'Active' : 'Inactive'})</span>
         </span>
       </div>
 
@@ -274,21 +273,21 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
         {/* Left Column: Active Feats (40%) */}
         <div style={{ width: '40%', display: 'flex', flexDirection: 'column', gap: '4px', borderRight: '0.5px solid var(--pb)', paddingRight: '8px' }}>
           <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', textAlign: 'center' }}>
-            🧬 Talente ({activeFeats.length} / {totalMax})
+            🧬 Feats ({activeFeats.length} / {totalMax})
           </h3>
           
           <div style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkm)', marginBottom: '6px', display: 'flex', flexDirection: 'column', gap: '2.5px', background: 'rgba(0,0,0,0.01)', border: '0.5px solid rgba(200, 169, 110, 0.2)', padding: '4px 6px', borderRadius: '2px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Allgemeine Slots:</span> <strong style={{ color: 'var(--red)' }}>{generalFilled} / {generalMax}</strong></div>
-            {fighterMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Kämpfer-Slots:</span> <strong style={{ color: 'var(--red)' }}>{fighterFilled} / {fighterMax}</strong></div>}
-            {wizardMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Magier-Slots:</span> <strong style={{ color: 'var(--red)' }}>{wizardFilled} / {wizardMax}</strong></div>}
-            {monkMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Mönch-Slots:</span> <strong style={{ color: 'var(--red)' }}>{monkFilled} / {monkMax}</strong></div>}
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>General Slots:</span> <strong style={{ color: 'var(--red)' }}>{generalFilled} / {generalMax}</strong></div>
+            {fighterMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Fighter Slots:</span> <strong style={{ color: 'var(--red)' }}>{fighterFilled} / {fighterMax}</strong></div>}
+            {wizardMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Wizard Slots:</span> <strong style={{ color: 'var(--red)' }}>{wizardFilled} / {wizardMax}</strong></div>}
+            {monkMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Monk Slots:</span> <strong style={{ color: 'var(--red)' }}>{monkFilled} / {monkMax}</strong></div>}
           </div>
 
           <input
             type="text"
             value={learnedSearch}
             onChange={(e) => setLearnedSearch(e.target.value)}
-            placeholder="Erlernte Talente filtern..."
+            placeholder="Filter learned feats..."
             className="cinput"
             style={{ height: '18px', fontSize: '9px', padding: '0 4px', marginBottom: '4px' }}
           />
@@ -296,7 +295,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
           <div className="active-feats-list" style={{ flex: 1, overflowY: 'auto', maxHeight: '360px', boxSizing: 'border-box' }}>
             {learnedFeatsFiltered.length === 0 ? (
               <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '15px' }}>
-                Keine Talente gefunden.
+                No feats found.
               </div>
             ) : (
               learnedFeatsFiltered.map((featInst: any, idx: number) => {
@@ -304,7 +303,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                 if (!feat) return null;
                 
                 const optionLabel = featInst.option ? ` (${featInst.option})` : '';
-                const categoryDe = (({ combat: 'Kampftalent', metamagic: 'Metamagie', item_creation: 'Gegenstandserschaffung', general: 'Allgemein' } as Record<string, string>)[feat.category]) || 'Allgemein';
+                const categoryEn = (({ combat: 'Combat Feat', metamagic: 'Metamagic', item_creation: 'Item Creation', general: 'General' } as Record<string, string>)[feat.category]) || 'General';
                 const isClassBonus = (getBonusFeatClass(feat) === 'fighter' && hasFighter) ||
                                      (getBonusFeatClass(feat) === 'wizard' && hasWizard) ||
                                      (getBonusFeatClass(feat) === 'monk' && hasMonk);
@@ -339,17 +338,17 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)' }}>
-                        {feat.nameDe}{optionLabel}
+                        {feat.nameEn || feat.nameDe}{optionLabel}
                         {!prereqsResult.met && (
-                          <span style={{ color: 'var(--red)', marginLeft: '3px', fontSize: '8px' }} title={`Voraussetzungen nicht erfüllt!\n` + prereqsResult.details.map((d: any) => `${d.met ? '✓' : '✗'} ${d.desc}`).join('\n')}>
+                          <span style={{ color: 'var(--red)', marginLeft: '3px', fontSize: '8px' }} title={`Prerequisites not met!\n` + prereqsResult.details.map((d: any) => `${d.met ? '✓' : '✗'} ${d.desc}`).join('\n')}>
                             ⚠️
                           </span>
                         )}
                       </span>
-                      <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px' }}>{categoryDe}</span>
+                      <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px' }}>{categoryEn}</span>
                     </div>
-                    <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={feat.benefitDe}>
-                      {feat.benefitDe}
+                    <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={feat.benefitEn || feat.benefitDe}>
+                      {feat.benefitEn || feat.benefitDe}
                     </div>
                   </div>
                 );
@@ -366,7 +365,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
               type="text"
               value={compendiumSearch}
               onChange={(e) => setCompendiumSearch(e.target.value)}
-              placeholder="Suchen..."
+              placeholder="Search..."
               className="cinput"
               style={{ flex: 1, fontSize: '11px', height: '18px', padding: '0 4px', fontFamily: "'Crimson Text', serif", boxSizing: 'border-box' }}
             />
@@ -376,23 +375,23 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
               className="cinput"
               style={{ flex: 1, fontSize: '11px', height: '18px', padding: '0 2px', fontFamily: "'Crimson Text', serif", boxSizing: 'border-box' }}
             >
-              <option value="all">Alle Klassen</option>
-              <option value="general">Allgemein</option>
-              <option value="combat">Kampftalente</option>
-              <option value="metamagic">Metamagie</option>
-              <option value="item_creation">Erschaffung</option>
+              <option value="all">All Categories</option>
+              <option value="general">General</option>
+              <option value="combat">Combat Feats</option>
+              <option value="metamagic">Metamagic</option>
+              <option value="item_creation">Item Creation</option>
             </select>
           </div>
 
           <div className="compendium-feats-list" style={{ flex: 1, overflowY: 'auto', maxHeight: '340px', boxSizing: 'border-box', border: '0.5px dashed rgba(200, 169, 110, 0.2)', padding: '4px', borderRadius: '2px' }}>
             {isLimitReached && (
               <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', marginBottom: '4px', fontFamily: "'Crimson Text', serif", fontSize: '8px', color: 'var(--red)', textAlign: 'center', fontWeight: 'bold' }}>
-                ⚠️ Talentlimit erreicht ({activeFeats.length} / {totalMax}). Du musst erst ein Talent verlernen, um ein neues auszuwählen.
+                ⚠️ Feat limit reached ({activeFeats.length} / {totalMax}). You must first remove a feat to choose a new one.
               </div>
             )}
             {compendiumFiltered.length === 0 ? (
               <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '15px' }}>
-                Keine Talente gefunden (Filter aktiv).
+                No feats found (filter active).
               </div>
             ) : (
               compendiumFiltered.map((item) => {
@@ -417,7 +416,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                 if (isAlreadyLearned) icon = '🟢';
                 else if (isBlocked) icon = '🔒';
                 
-                const categoryDe = (({ combat: 'Kampf', metamagic: 'Metamagie', item_creation: 'Erschaffung', general: 'Allgemein' } as Record<string, string>)[feat.category]) || 'Allgemein';
+                const categoryEn = (({ combat: 'Combat', metamagic: 'Metamagic', item_creation: 'Creation', general: 'General' } as Record<string, string>)[feat.category]) || 'General';
                 const depthPadding = depth * 14;
 
                 const matchingInstance = activeFeats.find((f: any) => f.id === feat.id);
@@ -457,11 +456,11 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                     <span style={{ fontSize: '8px', flexShrink: 0 }}>{icon}</span>
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>{feat.nameDe}</span>
-                        <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', marginLeft: 'auto' }}>{categoryDe}</span>
+                        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>{feat.nameEn || feat.nameDe}</span>
+                        <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', marginLeft: 'auto' }}>{categoryEn}</span>
                       </div>
-                      <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={feat.benefitDe}>
-                        {feat.benefitDe}
+                      <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={feat.benefitEn || feat.benefitDe}>
+                        {feat.benefitEn || feat.benefitDe}
                       </div>
                     </div>
                   </div>

@@ -1,6 +1,6 @@
 /**
  * @module    PCFeaturesTab
- * @summary   Rendert Klassen-Features, Volksmerkmale und Begleiter/Vertrauten-Sheets für den Features-Reiter.
+ * @summary   Renders class features, racial traits, and companion/familiar sheets for the features tab.
  * @exports   PCFeaturesTab
  * @reads     pc.classes, pc.race, pc.companionType, pc.familiarType, pc.dailyAbilities
  * @stateOps  CombatState.resetDailyResources
@@ -54,7 +54,7 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
   }, [hasCompanion, hasFamiliar]);
 
   const handleNewDayReset = () => {
-    showCustomConfirm("Ein neuer Tag! 🌅", "Möchtest du alle verbrauchten Zauberslots und täglichen Klassenfähigkeiten wiederherstellen und einen neuen Tag beginnen?", () => {
+    showCustomConfirm("A New Day! 🌅", "Would you like to restore all spent spell slots and daily class features and begin a new day?", () => {
       CombatState.resetDailyResources();
     });
   };
@@ -67,15 +67,15 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', borderRight: '0.5px solid rgba(200, 169, 110, 0.2)', paddingRight: '8px' }}>
         <div style={{ display: 'flex', justifySelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px' }}>
           <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>
-            ⚔️ Klassen-Features
+            ⚔️ Class Features
           </span>
           <button
             onClick={handleNewDayReset}
             className="btn btn-new-day"
             style={{ fontSize: '8px', padding: '2px 8px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)', color: 'white', border: '0.5px solid var(--red)', borderRadius: '2px', cursor: 'pointer', lineHeight: 1 }}
-            title="Tägliche Fähigkeiten wiederherstellen"
+            title="Restore daily abilities"
           >
-            Tagesreset 🌅
+            New Day Reset 🌅
           </button>
         </div>
 
@@ -122,7 +122,7 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
       {/* Right Column: Companions */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '0.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px' }}>
-          🐾 Begleiter &amp; Vertraute
+          🐾 Companions &amp; Familiars
         </div>
 
         {hasCompanionOrFamiliar ? (
@@ -134,14 +134,14 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
                   className={`btn ${activeSubTab === 'companion' ? 'btn-p' : ''}`}
                   style={{ fontSize: '8px', padding: '2px 6px' }}
                 >
-                  🐾 Tierbegleiter
+                  🐾 Animal Companion
                 </button>
                 <button
                   onClick={() => setActiveSubTab('familiar')}
                   className={`btn ${activeSubTab === 'familiar' ? 'btn-p' : ''}`}
                   style={{ fontSize: '8px', padding: '2px 6px' }}
                 >
-                  🦇 Vertrauter
+                  🦇 Familiar
                 </button>
               </div>
             )}
@@ -154,7 +154,7 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
           </div>
         ) : (
           <div style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '35px 10px', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px' }}>
-            🐾 Kein aktiver Tierbegleiter oder Vertrauter.
+            🐾 No active animal companion or familiar.
           </div>
         )}
       </div>

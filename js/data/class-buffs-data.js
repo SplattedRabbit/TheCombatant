@@ -6,149 +6,149 @@
 export const CLASS_BUFFS = [
   {
     key: 'rage',
-    name: 'Kampfrausch (Rage)',
-    school: 'Klassenfähigkeit (Barbar)',
-    duration: '5 Runden',
-    description: 'Ein Barbar kann in Kampfrausch verfallen. Gewährt +4 Moralbonus auf Stärke und Konstitution, +2 Moralbonus auf Willensrettungswürfe und einen Malus von -2 auf die Rüstungsklasse (RK).',
+    name: 'Rage',
+    school: 'Class Feature (Barbarian)',
+    duration: '5 rounds',
+    description: 'A barbarian can fly into a rage. Grants a +4 morale bonus to Strength and Constitution, a +2 morale bonus to Will saves, and a -2 penalty to Armor Class (AC).',
     classRequirements: [{ classType: 'barbarian', level: 1 }],
     effects: [
-      { target: 'str', value: 4, type: 'morale', source: 'Kampfrausch' },
-      { target: 'con', value: 4, type: 'morale', source: 'Kampfrausch' },
-      { target: 'wil', value: 2, type: 'morale', source: 'Kampfrausch' },
-      { target: 'ac', value: -2, type: 'untyped', source: 'Kampfrausch' }
+      { target: 'str', value: 4, type: 'morale', source: 'Rage' },
+      { target: 'con', value: 4, type: 'morale', source: 'Rage' },
+      { target: 'wil', value: 2, type: 'morale', source: 'Rage' },
+      { target: 'ac', value: -2, type: 'untyped', source: 'Rage' }
     ]
   },
   {
     key: 'greater_rage',
-    name: 'Großer Kampfrausch (Greater Rage)',
-    school: 'Klassenfähigkeit (Barbar)',
-    duration: '5 Runden',
-    description: 'Gewährt +6 Moralbonus auf Stärke und Konstitution, +3 Moralbonus auf Willensrettungswürfe und einen Malus von -2 auf die Rüstungsklasse (RK).',
+    name: 'Greater Rage',
+    school: 'Class Feature (Barbarian)',
+    duration: '5 rounds',
+    description: 'Grants a +6 morale bonus to Strength and Constitution, a +3 morale bonus to Will saves, and a -2 penalty to Armor Class (AC).',
     classRequirements: [{ classType: 'barbarian', level: 11 }],
     effects: [
-      { target: 'str', value: 6, type: 'morale', source: 'Großer Kampfrausch' },
-      { target: 'con', value: 6, type: 'morale', source: 'Großer Kampfrausch' },
-      { target: 'wil', value: 3, type: 'morale', source: 'Großer Kampfrausch' },
-      { target: 'ac', value: -2, type: 'untyped', source: 'Großer Kampfrausch' }
+      { target: 'str', value: 6, type: 'morale', source: 'Greater Rage' },
+      { target: 'con', value: 6, type: 'morale', source: 'Greater Rage' },
+      { target: 'wil', value: 3, type: 'morale', source: 'Greater Rage' },
+      { target: 'ac', value: -2, type: 'untyped', source: 'Greater Rage' }
     ]
   },
   {
     key: 'mighty_rage',
-    name: 'Mächtiger Kampfrausch (Mighty Rage)',
-    school: 'Klassenfähigkeit (Barbar)',
-    duration: '5 Runden',
-    description: 'Gewährt +8 Moralbonus auf Stärke und Konstitution, +4 Moralbonus auf Willensrettungswürfe und einen Malus von -2 auf die Rüstungsklasse (RK).',
+    name: 'Mighty Rage',
+    school: 'Class Feature (Barbarian)',
+    duration: '5 rounds',
+    description: 'Grants a +8 morale bonus to Strength and Constitution, a +4 morale bonus to Will saves, and a -2 penalty to Armor Class (AC).',
     classRequirements: [{ classType: 'barbarian', level: 20 }],
     effects: [
-      { target: 'str', value: 8, type: 'morale', source: 'Mächtiger Kampfrausch' },
-      { target: 'con', value: 8, type: 'morale', source: 'Mächtiger Kampfrausch' },
-      { target: 'wil', value: 4, type: 'morale', source: 'Mächtiger Kampfrausch' },
-      { target: 'ac', value: -2, type: 'untyped', source: 'Mächtiger Kampfrausch' }
+      { target: 'str', value: 8, type: 'morale', source: 'Mighty Rage' },
+      { target: 'con', value: 8, type: 'morale', source: 'Mighty Rage' },
+      { target: 'wil', value: 4, type: 'morale', source: 'Mighty Rage' },
+      { target: 'ac', value: -2, type: 'untyped', source: 'Mighty Rage' }
     ]
   },
   {
     key: 'inspire_courage_1',
-    name: 'Mut einflößen +1 (Inspire Courage)',
-    school: 'Klassenfähigkeit (Barde)',
-    duration: '5 Runden nach Ende des Gesangs',
-    description: 'Gewährt einen +1 Moralbonus auf Rettungswürfe gegen Furcht und einen +1 Moralbonus auf Angriffs- und Schadenswürfe.',
+    name: 'Inspire Courage +1',
+    school: 'Class Feature (Bard)',
+    duration: '5 rounds after performance ends',
+    description: 'Grants a +1 morale bonus on saving throws against fear and a +1 morale bonus on attack and weapon damage rolls.',
     classRequirements: [{ classType: 'bard', level: 1 }],
     effects: [
-      { target: 'atk', value: 1, type: 'morale', source: 'Mut einflößen' },
-      { target: 'dmg', value: 1, type: 'morale', source: 'Mut einflößen' }
+      { target: 'atk', value: 1, type: 'morale', source: 'Inspire Courage' },
+      { target: 'dmg', value: 1, type: 'morale', source: 'Inspire Courage' }
     ]
   },
   {
     key: 'inspire_courage_2',
-    name: 'Mut einflößen +2',
-    school: 'Klassenfähigkeit (Barde)',
-    duration: '5 Runden nach Ende des Gesangs',
-    description: 'Gewährt einen +2 Moralbonus auf Rettungswürfe gegen Furcht und einen +2 Moralbonus auf Angriffs- und Schadenswürfe.',
+    name: 'Inspire Courage +2',
+    school: 'Class Feature (Bard)',
+    duration: '5 rounds after performance ends',
+    description: 'Grants a +2 morale bonus on saving throws against fear and a +2 morale bonus on attack and weapon damage rolls.',
     classRequirements: [{ classType: 'bard', level: 8 }],
     effects: [
-      { target: 'atk', value: 2, type: 'morale', source: 'Mut einflößen' },
-      { target: 'dmg', value: 2, type: 'morale', source: 'Mut einflößen' }
+      { target: 'atk', value: 2, type: 'morale', source: 'Inspire Courage' },
+      { target: 'dmg', value: 2, type: 'morale', source: 'Inspire Courage' }
     ]
   },
   {
     key: 'inspire_courage_3',
-    name: 'Mut einflößen +3',
-    school: 'Klassenfähigkeit (Barde)',
-    duration: '5 Runden nach Ende des Gesangs',
-    description: 'Gewährt einen +3 Moralbonus auf Rettungswürfe gegen Furcht und einen +3 Moralbonus auf Angriffs- und Schadenswürfe.',
+    name: 'Inspire Courage +3',
+    school: 'Class Feature (Bard)',
+    duration: '5 rounds after performance ends',
+    description: 'Grants a +3 morale bonus on saving throws against fear and a +3 morale bonus on attack and weapon damage rolls.',
     classRequirements: [{ classType: 'bard', level: 14 }],
     effects: [
-      { target: 'atk', value: 3, type: 'morale', source: 'Mut einflößen' },
-      { target: 'dmg', value: 3, type: 'morale', source: 'Mut einflößen' }
+      { target: 'atk', value: 3, type: 'morale', source: 'Inspire Courage' },
+      { target: 'dmg', value: 3, type: 'morale', source: 'Inspire Courage' }
     ]
   },
   {
     key: 'inspire_courage_4',
-    name: 'Mut einflößen +4',
-    school: 'Klassenfähigkeit (Barde)',
-    duration: '5 Runden nach Ende des Gesangs',
-    description: 'Gewährt einen +4 Moralbonus auf Rettungswürfe gegen Furcht und einen +4 Moralbonus auf Angriffs- und Schadenswürfe.',
+    name: 'Inspire Courage +4',
+    school: 'Class Feature (Bard)',
+    duration: '5 rounds after performance ends',
+    description: 'Grants a +4 morale bonus on saving throws against fear and a +4 morale bonus on attack and weapon damage rolls.',
     classRequirements: [{ classType: 'bard', level: 20 }],
     effects: [
-      { target: 'atk', value: 4, type: 'morale', source: 'Mut einflößen' },
-      { target: 'dmg', value: 4, type: 'morale', source: 'Mut einflößen' }
+      { target: 'atk', value: 4, type: 'morale', source: 'Inspire Courage' },
+      { target: 'dmg', value: 4, type: 'morale', source: 'Inspire Courage' }
     ]
   },
   {
     key: 'aura_of_courage',
-    name: 'Aura der Tapferkeit (Aura of Courage)',
+    name: 'Aura of Courage',
     school: 'Aura (Paladin)',
     duration: 'Permanent',
-    description: 'Ein Paladin ist immun gegen Furcht. Jeder Verbündete innerhalb von 10 Fuß erhält einen Moralbonus von +4 auf Rettungswürfe gegen Furcht.',
+    description: 'A paladin is immune to fear. Each ally within 10 feet gains a +4 morale bonus on saving throws against fear.',
     classRequirements: [{ classType: 'paladin', level: 3 }],
     effects: [
-      { target: 'baseWil', value: 4, type: 'morale', source: 'Aura der Tapferkeit (Gegen Furcht)' }
+      { target: 'baseWil', value: 4, type: 'morale', source: 'Aura of Courage (vs Fear)' }
     ]
   },
   {
     key: 'aura_of_resolve',
-    name: 'Aura der Entschlossenheit (Aura of Resolve)',
+    name: 'Aura of Resolve',
     school: 'Aura (Paladin)',
     duration: 'Permanent',
-    description: 'Ein Paladin ist immun gegen Zwangseffekte. Jeder Verbündete innerhalb von 10 Fuß erhält einen Moralbonus von +4 auf Rettungswürfe gegen Zwangseffekte.',
+    description: 'A paladin is immune to compulsion effects. Each ally within 10 feet gains a +4 morale bonus on saving throws against compulsion.',
     classRequirements: [{ classType: 'paladin', level: 8 }],
     effects: [
-      { target: 'baseWil', value: 4, type: 'morale', source: 'Aura der Entschlossenheit (Gegen Zwang)' }
+      { target: 'baseWil', value: 4, type: 'morale', source: 'Aura of Resolve (vs Compulsion)' }
     ]
   },
   {
     key: 'inspire_competence',
-    name: 'Kompetenz einflößen (Inspire Competence)',
-    school: 'Klassenfähigkeit (Barde)',
-    duration: 'Bis zu 2 Minuten (Konzentration)',
-    description: 'Gewährt einem Verbündeten einen +2 Kompetenzbonus auf Fertigkeitsproben.',
+    name: 'Inspire Competence',
+    school: 'Class Feature (Bard)',
+    duration: 'Up to 2 minutes (concentration)',
+    description: 'Grants an ally a +2 competence bonus on skill checks.',
     classRequirements: [{ classType: 'bard', level: 3 }],
     effects: []
   },
   {
     key: 'inspire_greatness',
-    name: 'Heldenmut einflößen (Inspire Greatness)',
-    school: 'Klassenfähigkeit (Barde)',
-    duration: 'Dauer des Gesangs + 5 Runden',
-    description: 'Gewährt +2 Trefferwürfel (Trefferpunkte, RK- und Rettungswurfanpassung), einen +2 Kompetenzbonus auf Angriffs- und einen +1 Kompetenzbonus auf Zähigkeitsrettungswürfe.',
+    name: 'Inspire Greatness',
+    school: 'Class Feature (Bard)',
+    duration: 'Duration of song + 5 rounds',
+    description: 'Grants +2 Hit Dice (temporary hit points, AC and saving throw adjustments), a +2 competence bonus on attacks, and a +1 competence bonus on Fortitude saves.',
     classRequirements: [{ classType: 'bard', level: 9 }],
     effects: [
-      { target: 'atk', value: 2, type: 'competence', source: 'Heldenmut einflößen' },
-      { target: 'baseZa', value: 1, type: 'competence', source: 'Heldenmut einflößen' }
+      { target: 'atk', value: 2, type: 'competence', source: 'Inspire Greatness' },
+      { target: 'baseZa', value: 1, type: 'competence', source: 'Inspire Greatness' }
     ]
   },
   {
     key: 'inspire_heroics',
-    name: 'Heldentum einflößen (Inspire Heroics)',
-    school: 'Klassenfähigkeit (Barde)',
-    duration: 'Dauer des Gesangs + 5 Runden',
-    description: 'Gewährt +4 Moralbonus auf alle Rettungswürfe und einen +4 Ausweichbonus auf die Rüstungsklasse (RK).',
+    name: 'Inspire Heroics',
+    school: 'Class Feature (Bard)',
+    duration: 'Duration of song + 5 rounds',
+    description: 'Grants a +4 morale bonus on all saves and a +4 dodge bonus to Armor Class (AC).',
     classRequirements: [{ classType: 'bard', level: 15 }],
     effects: [
-      { target: 'baseZa', value: 4, type: 'morale', source: 'Heldentum einflößen' },
-      { target: 'baseRef', value: 4, type: 'morale', source: 'Heldentum einflößen' },
-      { target: 'baseWil', value: 4, type: 'morale', source: 'Heldentum einflößen' },
-      { target: 'acDodge', value: 4, type: 'dodge', source: 'Heldentum einflößen' }
+      { target: 'baseZa', value: 4, type: 'morale', source: 'Inspire Heroics' },
+      { target: 'baseRef', value: 4, type: 'morale', source: 'Inspire Heroics' },
+      { target: 'baseWil', value: 4, type: 'morale', source: 'Inspire Heroics' },
+      { target: 'acDodge', value: 4, type: 'dodge', source: 'Inspire Heroics' }
     ]
   }
 ];

@@ -1,6 +1,6 @@
 /**
  * @module    BaseDialogs
- * @summary   Basis-Modals und Dialogfenster der CombatApp in React (Parchment/Pergament-Design).
+ * @summary   Base modals and dialog windows of CombatApp in React (Parchment/Pergament design).
  * @exports   CustomAlertModal, CustomConfirmModal, CustomPromptModal, NewDayTemplateDialog, RollBreakdownDialog, SampleChoiceDialog
  */
 
@@ -58,7 +58,7 @@ interface CustomAlertModalProps {
   onClose: () => void;
 }
 
-export const CustomAlertModal: React.FC<CustomAlertModalProps> = ({ title, message, buttonText = "Verstanden", icon = "⚠️", onClose }) => {
+export const CustomAlertModal: React.FC<CustomAlertModalProps> = ({ title, message, buttonText = "Understood", icon = "⚠️", onClose }) => {
   return (
     <DialogOverlay onClose={onClose} id="customAlertOverlay">
       <div style={{ fontSize: '15px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
@@ -115,14 +115,14 @@ export const CustomConfirmModal: React.FC<CustomConfirmModalProps> = ({ title, m
           className="btn btn-p confirm-dialog-yes" 
           style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 18px', cursor: 'pointer', borderRadius: '2px' }}
         >
-          Ja
+          Yes
         </button>
         <button 
           onClick={onCancel}
           className="btn confirm-dialog-no" 
           style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 18px', cursor: 'pointer', borderRadius: '2px', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
         >
-          Nein
+          No
         </button>
       </div>
     </DialogOverlay>
@@ -139,7 +139,7 @@ interface CustomPromptModalProps {
   onCancel: () => void;
 }
 
-export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({ title, message, defaultValue, buttonText = "Absenden", onConfirm, onCancel }) => {
+export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({ title, message, defaultValue, buttonText = "Submit", onConfirm, onCancel }) => {
   const [val, setVal] = useState(defaultValue);
 
   return (
@@ -184,7 +184,7 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({ title, mes
           className="btn" 
           style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 18px', cursor: 'pointer', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
         >
-          Abbrechen
+          Cancel
         </button>
       </div>
     </DialogOverlay>
@@ -205,25 +205,24 @@ export const NewDayTemplateDialog: React.FC<NewDayTemplateDialogProps> = ({ temp
   return (
     <DialogOverlay onClose={onCancel} width={450} id="newDayTemplateOverlay">
       <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px' }}>
-        🌅 Tageswechsel & Zauber-Vorbereitung
+        🌅 New Day & Spell Preparation
       </div>
       <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 10px' }} />
       
       <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '11px', color: 'var(--ink)', lineHeight: 1.4, marginBottom: '12px', textAlign: 'left' }}>
-        Wähle aus, welches Zauber-Template für den neuen Tag vorbereitet werden soll. 
-        Tägliche Ressourcen (Zorn, Trefferwürfel etc.) werden in jedem Fall zurückgesetzt.
+        Select which spell template should be prepared for the new day. Daily resources (Rage, Hit Dice, etc.) will be reset in any case.
       </div>
 
       <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px solid var(--pb)', padding: '10px', borderRadius: '3px', marginBottom: '12px', textAlign: 'left' }}>
-        <label style={{ display: 'block', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '4px' }}>Zauber-Setup für heute:</label>
+        <label style={{ display: 'block', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '4px' }}>Spell Setup for Today:</label>
         <select 
           value={selected} 
           onChange={(e) => setSelected(e.target.value)}
           className="cinput" 
           style={{ width: '100%', fontSize: '10px', height: '22px', padding: '2px 4px' }}
         >
-          <option value="none">Keine Zauber automatisch vorbereiten (Zauberbuch leeren)</option>
-          <option value="keep">Aktuell vorbereitete Zauber behalten (Standard)</option>
+          <option value="none">Do not prepare spells automatically (empty spellbook)</option>
+          <option value="keep">Keep currently prepared spells (Default)</option>
           {templateKeys.map(key => (
             <option key={key} value={key}>Template: {key}</option>
           ))}
@@ -236,14 +235,14 @@ export const NewDayTemplateDialog: React.FC<NewDayTemplateDialogProps> = ({ temp
           className="btn btn-p" 
           style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '5px 20px', cursor: 'pointer' }}
         >
-          Tag beginnen 🌅
+          Start Day 🌅
         </button>
         <button 
           onClick={onCancel}
           className="btn" 
           style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '5px 20px', cursor: 'pointer', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
         >
-          Abbrechen
+          Cancel
         </button>
       </div>
     </DialogOverlay>
@@ -295,15 +294,15 @@ export const RollBreakdownDialog: React.FC<RollBreakdownDialogProps> = ({ title,
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
         {listItems}
         <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '0.5px dashed rgba(200,169,110,0.4)', marginTop: '4px', paddingTop: '4px' }}>
-          <span style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkm)' }}>Gesamt-Modifikator:</span>
+          <span style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkm)' }}>Total Modifier:</span>
           <span style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>{modsFormatted}</span>
         </div>
       </div>
       
-      <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.4)', margin: '8px 0' }} />
+      <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '8px 0' }} />
       
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
-        <span>WURF-FORMEL:</span>
+        <span>ROLL FORMULA:</span>
         <span style={{ fontSize: '13px' }}>{formulaFormatted}</span>
       </div>
 
@@ -313,7 +312,7 @@ export const RollBreakdownDialog: React.FC<RollBreakdownDialogProps> = ({ title,
           className="btn btn-p" 
           style={{ width: '100%', marginTop: '12px', fontSize: '9.5px', padding: '4px 0', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}
         >
-          Jetzt Würfeln 🎲
+          Roll Now 🎲
         </button>
       )}
     </DialogOverlay>
@@ -331,14 +330,14 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
   return (
     <DialogOverlay onClose={onCancel} width={450} id="sampleChoiceDialogOverlay">
       <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px' }}>
-        🏰 Beispieldaten laden
+        🏰 Load Sample Data
       </div>
       <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 10px' }} />
       
       {isPlayer ? (
         <>
           <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
-            Wähle einen Stufe 10 Beispielcharakter mit passenden Werten, Waffen und Zaubern aus, der geladen werden soll:
+            Select a level 10 sample character with appropriate stats, weapons, and spells to load:
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -347,9 +346,9 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🔮 Magier (Elf, Stufe 10)</strong>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🔮 Wizard (Elf, Level 10)</strong>
               <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
-                Ein spezialisierter Magier (Hervorrufung) mit einer Eule als Vertrautem und einem gefüllten Zauberbuch.
+                A specialized wizard (Evocation) with an owl familiar and a filled spellbook.
               </span>
             </button>
 
@@ -358,9 +357,9 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🏹 Waldläufer (Mensch, Stufe 10)</strong>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🏹 Ranger (Human, Level 10)</strong>
               <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
-                Ein wendiger Fernkämpfer mit Tierbegleiter (Wolf) und passenden Kampf-Feats für Zweiwaffenkampf / Bogenschießen.
+                An agile ranged combatant with an animal companion (wolf) and matching combat feats for Two-Weapon Fighting / Archery.
               </span>
             </button>
 
@@ -369,9 +368,9 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🛡️ Paladin (Mensch, Stufe 10)</strong>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🛡️ Paladin (Human, Level 10)</strong>
               <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
-                Ein ehrenhafter Ritter mit göttlicher Magie, Auren und mächtigen Nahkampfangriffen (Smite Evil).
+                An honorable knight with divine magic, auras, and powerful melee attacks (Smite Evil).
               </span>
             </button>
           </div>
@@ -379,7 +378,7 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
       ) : (
         <>
           <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
-            Wähle aus, welche Begegnung und Charaktere geladen werden sollen. Für den Spielleiter werden alle drei Helden gleichzeitig angelegt:
+            Select which encounter and characters should be loaded. For the Dungeon Master, all three heroes will be created simultaneously:
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -388,9 +387,9 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🐉 Stufe 10 Helden-Encounter</strong>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🐉 Level 10 Hero Encounter</strong>
               <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
-                Erstellt 3 Stufe 10 Helden (Magier, Waldläufer, Paladin) und positioniert sie gegen einen Drachen und Riesen.
+                Creates 3 level 10 heroes (Wizard, Ranger, Paladin) and positions them against a dragon and giants.
               </span>
             </button>
 
@@ -399,9 +398,9 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🛡️ Nur Aranis (Paladin Stufe 3)</strong>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🛡️ Aranis Only (Paladin Level 3)</strong>
               <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
-                Lädt einen einzelnen Paladin auf Stufe 3 für kleinere Test-Szenarien.
+                Loads a single level 3 paladin for smaller test scenarios.
               </span>
             </button>
           </div>
@@ -414,21 +413,21 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
           className="btn" 
           style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '5px 25px', cursor: 'pointer', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
         >
-          Schließen
+          Close
         </button>
       </div>
     </DialogOverlay>
   );
 };
 
-// 7. Parchment Message Dialog (geheime Botschaft vom Spielleiter)
+// 7. Parchment Message Dialog (secret message from the Dungeon Master)
 interface ParchmentMessageModalProps {
   text: string;
   sender?: string;
   onClose: () => void;
 }
 
-export const ParchmentMessageModal: React.FC<ParchmentMessageModalProps> = ({ text, sender = 'Spielleiter', onClose }) => {
+export const ParchmentMessageModal: React.FC<ParchmentMessageModalProps> = ({ text, sender = 'Dungeon Master', onClose }) => {
   return (
     <DialogOverlay onClose={onClose} width={480} id="parchmentMessageOverlay">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
@@ -443,7 +442,7 @@ export const ParchmentMessageModal: React.FC<ParchmentMessageModalProps> = ({ te
           width: '100%',
           textAlign: 'center'
         }}>
-          ✉️ Botschaft von: {sender}
+          ✉️ Message from: {sender}
         </h2>
         
         <div 
@@ -486,9 +485,10 @@ export const ParchmentMessageModal: React.FC<ParchmentMessageModalProps> = ({ te
             outline: 'none'
           }}
         >
-          Schließen
+          Close
         </button>
       </div>
     </DialogOverlay>
   );
 };
+

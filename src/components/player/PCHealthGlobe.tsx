@@ -1,11 +1,11 @@
 /**
  * @module    PCHealthGlobe
- * @summary   Rendert den Diablo-Style Lebenspunkt-Globus (Health Globe) mit CSS-Flüssigkeitswellen und Conditions-Badges.
+ * @summary   Renders the Diablo-style health point globe (Health Globe) with CSS fluid waves and conditions badges.
  * @exports   PCHealthGlobe
  * @reads     pc.hp, pc.maxHP, pc.conditions, pc.id
  * @stateOps  updatePCNumber, applyDamage, applyTempHP
  * @depends   React, @core/state.js, src/components/shared/BaseCard
- * @notHere   Header HP-Widget -> PCHeader.tsx | Globale State-Bridge -> useCombatState.ts
+ * @notHere   Header HP-Widget -> PCHeader.tsx | Global State-Bridge -> useCombatState.ts
  */
 
 import React, { useState } from 'react';
@@ -23,7 +23,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
   const [isHalf, setIsHalf] = useState<boolean>(false);
   const [isDouble, setIsDouble] = useState<boolean>(false);
 
-  // Temp HP aus Conditions ermitteln
+  // Determine Temp HP from Conditions
   const tempHPObj = pc.conditions.find((c: any) => c === 'Temp-HP' || (c && c.n === 'Temp-HP'));
   const tempHP = tempHPObj ? (parseInt((tempHPObj as any).tmpVal) || 0) : 0;
 
@@ -33,7 +33,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
   const basePct = Math.max(0, Math.min(100, Math.floor((baseHP / baseMaxHP) * 100)));
   const tempPct = Math.max(0, Math.min(100, Math.floor((tempHP / baseMaxHP) * 100)));
 
-  // Filter Conditions für die Anzeige (zeige alles außer Temp-HP)
+  // Filter Conditions for display (show all except Temp-HP)
   const activeConditions = pc.conditions.filter((c: any) => {
     if (typeof c === 'string') return c !== 'Temp-HP';
     return c && c.n !== 'Temp-HP';
@@ -41,14 +41,14 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
 
   const getConditionName = (c: any) => {
     if (typeof c === 'string') return c;
-    return c.n || 'Unbekannt';
+    return c.n || 'Unknown';
   };
 
   const getConditionTooltip = (c: any) => {
     if (typeof c === 'string') return c;
-    let desc = c.n || 'Zustand';
-    if (c.tmpVal) desc += `: Wert ${c.tmpVal}`;
-    if (c.duration) desc += ` (${c.duration} Runden verbleibend)`;
+    let desc = c.n || 'Condition';
+    if (c.tmpVal) desc += `: Value ${c.tmpVal}`;
+    if (c.duration) desc += ` (${c.duration} rounds remaining)`;
     return desc;
   };
 
@@ -86,7 +86,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
   };
 
   return (
-    <BaseCard title="❤️ Vitalität & Status">
+    <BaseCard title="❤️ Vitality & Status">
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', gap: '24px', width: '100%', flexWrap: 'wrap', padding: '4px 8px' }}>
         
         {/* Globe visual container */}
@@ -126,13 +126,13 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
             
             {/* Numerical HP Values overlay inside the orb */}
             <div className="globe-text">
-              <span style={{ fontSize: '7px', color: 'rgba(255,255,255,0.7)', letterSpacing: '1px', fontWeight: 'bold', marginBottom: '2px' }}>TREFFERP.</span>
+              <span style={{ fontSize: '7px', color: 'rgba(255,255,255,0.7)', letterSpacing: '1px', fontWeight: 'bold', marginBottom: '2px' }}>HP</span>
               <input
                 type="number"
                 value={pc.hp}
                 onChange={(e) => CombatState.updatePCNumber('hp', e.target.value)}
                 className="globe-hp-cur"
-                title="Aktuelle TP direkt editieren"
+                title="Edit current HP directly"
               />
               <div className="globe-hp-divider"></div>
               <input
@@ -140,7 +140,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
                 value={pc.maxHP}
                 onChange={(e) => CombatState.updatePCNumber('maxHP', e.target.value)}
                 className="globe-hp-max"
-                title="Maximal-TP direkt editieren"
+                title="Edit max HP directly"
               />
               
               {/* Temp HP Badge overlay inside the Globe */}
@@ -161,7 +161,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
               <input
                 className="globe-dmg-input"
                 type="number"
-                placeholder="Wert"
+                placeholder="Value"
                 value={dmgValue}
                 onChange={(e) => setDmgValue(e.target.value)}
                 style={{
@@ -179,23 +179,23 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
               <button 
                 className="globe-btn globe-btn-dmg" 
                 onClick={handleApplyDamage} 
-                title="Schaden abziehen"
+                title="Subtract damage"
                 style={{ height: '22px', padding: '0 8px', fontSize: '8.5px', lineHeight: '20px' }}
               >
-                - Schad.
+                - Dmg
               </button>
               <button 
                 className="globe-btn globe-btn-heal" 
                 onClick={handleApplyHeal} 
-                title="Heilung anwenden"
+                title="Apply healing"
                 style={{ height: '22px', padding: '0 8px', fontSize: '8.5px', lineHeight: '20px' }}
               >
-                + Heil.
+                + Heal
               </button>
               <button 
                 className="globe-btn globe-btn-temp" 
                 onClick={handleApplyTempHP} 
-                title="Temporäre TP hinzufügen"
+                title="Add temporary HP"
                 style={{ height: '22px', padding: '0 8px', fontSize: '8.5px', lineHeight: '20px' }}
               >
                 + Temp
@@ -211,7 +211,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
                   className="globe-dmg-half"
                   style={{ width: '12px', height: '12px', cursor: 'pointer', margin: 0 }}
                 />
-                <span>Halbiert (Reflex)</span>
+                <span>Halved (Reflex)</span>
               </label>
               <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
                 <input
@@ -221,7 +221,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
                   className="globe-dmg-double"
                   style={{ width: '12px', height: '12px', cursor: 'pointer', margin: 0 }}
                 />
-                <span>Doppelt (Krit)</span>
+                <span>Double (Crit)</span>
               </label>
             </div>
           </div>
@@ -229,7 +229,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
           {/* Conditions Badges */}
           <div style={{ width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.15)', paddingTop: '8px' }}>
             <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px', textAlign: 'center' }}>
-              ✨ Aktive Zustände (Conditions)
+              ✨ Active Conditions
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center' }}>
               {activeConditions.length > 0 ? (
@@ -254,7 +254,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
                   </div>
                 ))
               ) : (
-                <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Keine aktiven Zustände.</span>
+                <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>No active conditions.</span>
               )}
             </div>
           </div>

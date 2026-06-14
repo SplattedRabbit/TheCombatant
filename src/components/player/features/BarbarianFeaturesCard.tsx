@@ -16,7 +16,7 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
   const remaining = Math.max(0, maxUses - usedUses);
 
   const canRage = remaining > 0 || pc.isRaging;
-  const rageBtnText = pc.isRaging ? '🔴 Kampfrausch beenden' : '🔥 Kampfrausch aktivieren!';
+  const rageBtnText = pc.isRaging ? '🔴 End Rage' : '🔥 Activate Rage!';
   
   const getRageBtnStyle = () => {
     if (pc.isRaging) {
@@ -64,18 +64,18 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
   return (
     <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
       <div className="class-card-hdr" style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
-        <span>🎭 Barbar (Stufe {level})</span>
+        <span>🎭 Barbarian (Level {level})</span>
       </div>
       <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '100%' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '8.5px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span><strong>Kampfrausch:</strong></span>
+              <span><strong>Rage:</strong></span>
               <button 
                 onClick={() => setRageRulesOpen(!rageRulesOpen)}
                 className="btn btn-toggle-rules-rage" 
                 style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
-                title="Regeln einblenden"
+                title="Show rules"
               >
                 📖 {rageRulesOpen ? '▲' : '▼'}
               </button>
@@ -91,24 +91,24 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
                       onClick={() => handleBubbleClick(bubbleIdx)}
                       className={`rage-bubble use-icon use-icon-rage ${spent ? 'used' : ''}`} 
                       style={{ cursor: 'pointer' }}
-                      title={spent ? 'Benutzt (Freigeben)' : 'Verfügbar (Verbrauchen)'}
+                      title={spent ? 'Used (Click to restore)' : 'Available (Click to use)'}
                     >
                       🔥
                     </span>
                   );
                 })}
               </div>
-              <span>({remaining} übrig)</span>
+              <span>({remaining} remaining)</span>
             </div>
           </div>
           {rageRulesOpen && (
             <div className="rage-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: "'Crimson Text', serif", marginBottom: '2px' }}>
-              <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Kampfrausch (Rage):</strong><br />
-              Ein Barbar kann in einen Kampfrausch verfallen, um kurzzeitig seine Kampfkraft drastisch zu steigern.<br />
-              • <strong>Boni:</strong> +4 Stärke (STR), +4 Konstitution (CON), +2 Moralbonus auf Willensrettungswürfe (Will). Die Trefferpunkte erhöhen sich temporär um +2 pro Charakterstufe.<br />
-              • <strong>Mali:</strong> –2 Rüstungsklasse (RK) durch mangelnde Verteidigung.<br />
-              • <strong>Dauer:</strong> 3 + veränderter Konstitutionsmodifikator Runden.<br />
-              • <strong>Erschöpfung:</strong> Nach dem Kampfrausch ist der Barbar für die Dauer der aktuellen Begegnung erschöpft (–2 STR, –2 DEX, kein Laufen).
+              <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Rage:</strong><br />
+              A barbarian can fly into a rage to temporarily increase physical power drastically.<br />
+              • <strong>Bonuses:</strong> +4 Strength (STR), +4 Constitution (CON), +2 morale bonus on Will saves. Hit points increase temporarily by +2 per character level.<br />
+              • <strong>Penalties:</strong> –2 Armor Class (AC) due to reckless defense.<br />
+              • <strong>Duration:</strong> 3 + modified Constitution modifier rounds.<br />
+              • <strong>Fatigue:</strong> A barbarian is fatigued after a rage for the duration of the current encounter (–2 STR, –2 DEX, cannot charge or run).
             </div>
           )}
           <button 
@@ -121,39 +121,39 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
           </button>
           <div style={{ marginTop: '4px', padding: '5px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px' }}>
             <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', fontWeight: 'bold', color: 'var(--red)', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', paddingBottom: '2px', marginBottom: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span>Kampfrausch-Effekte:</span>
+              <span>Rage Effects:</span>
               {pc.isRaging ? (
-                <span style={{ background: 'var(--red)', color: '#fff', fontSize: '6px', padding: '1px 3px', borderRadius: '1px', fontFamily: 'sans-serif', fontWeight: 'bold', textTransform: 'uppercase' }}>Aktiv 🟢</span>
+                <span style={{ background: 'var(--red)', color: '#fff', fontSize: '6px', padding: '1px 3px', borderRadius: '1px', fontFamily: 'sans-serif', fontWeight: 'bold', textTransform: 'uppercase' }}>Active 🟢</span>
               ) : (
-                <span style={{ background: 'var(--pb)', color: '#fff', fontSize: '6px', padding: '1px 3px', borderRadius: '1px', fontFamily: 'sans-serif', fontWeight: 'bold', textTransform: 'uppercase' }}>Inaktiv ⚪</span>
+                <span style={{ background: 'var(--pb)', color: '#fff', fontSize: '6px', padding: '1px 3px', borderRadius: '1px', fontFamily: 'sans-serif', fontWeight: 'bold', textTransform: 'uppercase' }}>Inactive ⚪</span>
               )}
             </div>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '7.5px', lineHeight: 1.3 }}>
               <tbody>
                 <tr style={{ borderBottom: '0.25px solid rgba(0,0,0,0.05)' }}>
-                  <td style={{ padding: '2px 0', color: 'var(--ink)' }}><strong>Stärke (STR):</strong></td>
-                  <td style={{ textAlign: 'right', fontFamily: 'monospace', fontWeight: 'bold', color: pc.isRaging ? 'var(--red)' : 'var(--ink)' }}>+4 (Kampfrausch-Bonus)</td>
+                  <td style={{ padding: '2px 0', color: 'var(--ink)' }}><strong>Strength (STR):</strong></td>
+                  <td style={{ textAlign: 'right', fontFamily: 'monospace', fontWeight: 'bold', color: pc.isRaging ? 'var(--red)' : 'var(--ink)' }}>+4 (Rage Bonus)</td>
                 </tr>
                 <tr style={{ borderBottom: '0.25px solid rgba(0,0,0,0.05)' }}>
-                  <td style={{ padding: '2px 0', color: 'var(--ink)' }}><strong>Konstitution (CON):</strong></td>
-                  <td style={{ textAlign: 'right', fontFamily: 'monospace', fontWeight: 'bold', color: pc.isRaging ? 'var(--red)' : 'var(--ink)' }}>+4 (Kampfrausch-Bonus)</td>
+                  <td style={{ padding: '2px 0', color: 'var(--ink)' }}><strong>Constitution (CON):</strong></td>
+                  <td style={{ textAlign: 'right', fontFamily: 'monospace', fontWeight: 'bold', color: pc.isRaging ? 'var(--red)' : 'var(--ink)' }}>+4 (Rage Bonus)</td>
                 </tr>
                 <tr style={{ borderBottom: '0.25px solid rgba(0,0,0,0.05)' }}>
-                  <td style={{ padding: '2px 0', color: 'var(--ink)' }}><strong>Willens-Rettungswurf (Will):</strong></td>
-                  <td style={{ textAlign: 'right', fontFamily: 'monospace', fontWeight: 'bold', color: pc.isRaging ? 'var(--red)' : 'var(--ink)' }}>+2 (Willenskraft)</td>
+                  <td style={{ padding: '2px 0', color: 'var(--ink)' }}><strong>Will Save (Will):</strong></td>
+                  <td style={{ textAlign: 'right', fontFamily: 'monospace', fontWeight: 'bold', color: pc.isRaging ? 'var(--red)' : 'var(--ink)' }}>+2 (Willpower)</td>
                 </tr>
                 <tr style={{ borderBottom: '0.25px solid rgba(0,0,0,0.05)' }}>
-                  <td style={{ padding: '2px 0', color: 'var(--ink)' }}><strong>Rüstungsklasse (RK):</strong></td>
-                  <td style={{ textAlign: 'right', fontFamily: 'monospace', fontWeight: 'bold', color: pc.isRaging ? 'var(--red)' : 'var(--ink)' }}>-2 (Mangelnde Defensive)</td>
+                  <td style={{ padding: '2px 0', color: 'var(--ink)' }}><strong>Armor Class (AC):</strong></td>
+                  <td style={{ textAlign: 'right', fontFamily: 'monospace', fontWeight: 'bold', color: pc.isRaging ? 'var(--red)' : 'var(--ink)' }}>-2 (Reckless Defense)</td>
                 </tr>
                 <tr>
-                  <td style={{ padding: '2px 0', color: 'var(--ink)' }}><strong>Trefferpunkte (HP):</strong></td>
-                  <td style={{ textAlign: 'right', fontFamily: 'monospace', fontWeight: 'bold', color: pc.isRaging ? 'var(--red)' : 'var(--ink)' }}>+{2 * pc.level} (+2 pro Stufe)</td>
+                  <td style={{ padding: '2px 0', color: 'var(--ink)' }}><strong>Hit Points (HP):</strong></td>
+                  <td style={{ textAlign: 'right', fontFamily: 'monospace', fontWeight: 'bold', color: pc.isRaging ? 'var(--red)' : 'var(--ink)' }}>+{2 * pc.level} (+2 per level)</td>
                 </tr>
               </tbody>
             </table>
             <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontStyle: 'italic', marginTop: '4px', borderTop: '0.5px solid rgba(200, 169, 110, 0.1)', paddingTop: '2px' }}>
-              Hinweis: Nach Beendigung des Kampfrauschs wirst du für die Dauer des Kampfes <strong>erschöpft</strong> (–2 Stärke, –2 Geschicklichkeit, kein Laufen).
+              Note: After rage ends, you will be <strong>fatigued</strong> for the duration of the encounter (–2 Strength, –2 Dexterity, cannot charge or run).
             </div>
           </div>
         </div>

@@ -53,8 +53,8 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
       displayName = classBuff.name;
       effectsList = classBuff.effects || [];
       durationStr = classBuff.duration || '—';
-      description = classBuff.description || 'Klassenspezifischer Buff- oder Auren-Effekt.';
-      school = classBuff.school || 'Klassenfähigkeit';
+      description = classBuff.description || 'Class-specific buff or aura effect.';
+      school = classBuff.school || 'Class Feature';
     }
   } else if (spellKey) {
     classBuff = CLASS_BUFFS.find((b: any) => b.key === spellKey);
@@ -62,8 +62,8 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
       displayName = classBuff.name;
       effectsList = classBuff.effects || [];
       durationStr = classBuff.duration || '—';
-      description = classBuff.description || 'Klassenspezifischer Buff- oder Auren-Effekt.';
-      school = classBuff.school || 'Klassenfähigkeit';
+      description = classBuff.description || 'Class-specific buff or aura effect.';
+      school = classBuff.school || 'Class Feature';
       isClass = true;
     } else {
       spell = CombatSpells.REGISTRY?.[spellKey];
@@ -72,7 +72,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
         effectsList = spell.effects || [];
         durationStr = spell.duration || '—';
         description = spell.description || '';
-        school = spell.school || 'Zauber';
+        school = spell.school || 'Spell';
       }
     }
   }
@@ -91,7 +91,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
   if (!displayName) {
     if (isAlreadyActiveIndex !== null && pc.activeBuffs?.[isAlreadyActiveIndex]) {
       const activeInstance = pc.activeBuffs[isAlreadyActiveIndex];
-      displayName = activeInstance.name || 'Eigener Buff';
+      displayName = activeInstance.name || 'Custom Buff';
       effectsList = activeInstance.effects || [];
     } else {
       return null;
@@ -173,7 +173,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
         <div style={{ fontSize: '15px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px', letterSpacing: '0.8px' }}>
-          ✨ Buff-Regeln: {displayName}
+          ✨ Buff Rules: {displayName}
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 10px' }} />
 
@@ -194,12 +194,12 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
             }}
           >
             <div style={{ fontStyle: 'italic', fontSize: '10px', color: '#8b1a1a', fontWeight: 'bold', borderBottom: '1px solid rgba(139,26,26,0.3)', paddingBottom: '4px', marginBottom: '8px' }}>
-              {school || 'Effekt'}
+              {school || 'Effect'}
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '4px', fontSize: '10px', borderBottom: '0.5px dashed rgba(139, 26, 26, 0.4)', paddingBottom: '8px', marginBottom: '10px', fontWeight: 600 }}>
-              <div><strong>Zeitdauer:</strong> {durationStr}</div>
+              <div><strong>Duration:</strong> {durationStr}</div>
               {(isAlreadyActiveIndex !== null && pc.activeBuffs?.[isAlreadyActiveIndex]?.casterLevel) && (
-                <div><strong>Wirker-Stufe (Caster Level):</strong> {pc.activeBuffs[isAlreadyActiveIndex].casterLevel}</div>
+                <div><strong>Caster Level:</strong> {pc.activeBuffs[isAlreadyActiveIndex].casterLevel}</div>
               )}
             </div>
             {description && (
@@ -210,7 +210,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
             {effectsList.length > 0 && (
               <div style={{ marginTop: '8px' }}>
                 <strong style={{ color: '#8b1a1a', fontSize: '11.5px', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.4px' }}>
-                  Aktive Modifikatoren:
+                  Active Modifiers:
                 </strong>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginTop: '4px' }}>
                   {effectsList.map((eff: any, idx: number) => {
@@ -246,7 +246,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
                   fontWeight: 'bold'
                 }}
               >
-                Aktivieren
+                Activate
               </button>
               <button
                 onClick={handleToggleFavorite}
@@ -263,7 +263,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
                   fontWeight: 'bold'
                 }}
               >
-                {inQuickSelection ? 'Aus Schnellauswahl entfernen' : 'Hinzufügen'}
+                {inQuickSelection ? 'Remove from Quick Selection' : 'Add to Quick Selection'}
               </button>
             </>
           )}
@@ -280,7 +280,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
               color: 'var(--ink)'
             }}
           >
-            Schließen
+            Close
           </button>
         </div>
       </div>
@@ -315,7 +315,7 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
   }
 
   const METAMAGIC_COSTS = { extend_spell: 1, empower_spell: 2, maximize_spell: 3, quicken_spell: 4 };
-  const metamagicNames = { extend_spell: 'Verlängert', empower_spell: 'Verstärkt', maximize_spell: 'Maximiert', quicken_spell: 'Beschleunigt' };
+  const metamagicNames = { extend_spell: 'Extended', empower_spell: 'Empowered', maximize_spell: 'Maximized', quicken_spell: 'Quickened' };
   const appliedMeta = metamagic.map(mId => (metamagicNames as any)[mId] || mId);
   const metaSuffix = appliedMeta.length > 0 ? ` (${appliedMeta.join(', ')})` : '';
   const metamagicAdjustment = metamagic.reduce((sum, fId) => sum + ((METAMAGIC_COSTS as any)[fId] || 0), 0);
@@ -393,8 +393,8 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
 
     if (conflict.status === 'suppressed') {
       showCustomConfirm(
-        "Stacking-Konflikt",
-        `Ein stärkerer oder gleichwertiger Buff (<strong>${(conflict as any).conflictingBuffName}</strong>) ist bereits aktiv.<br><br>Dein neuer Buff <strong>${(conflict as any).buffName}</strong> (+${(conflict as any).newValue} auf ${(conflict as any).targetLabel}) hat denselben Bonus-Typ und würde daher <strong>keine Wirkung</strong> zeigen.<br><br>Möchtest du den Buff dennoch aktivieren?`,
+        "Stacking Conflict",
+        `A stronger or equivalent buff (<strong>${(conflict as any).conflictingBuffName}</strong>) is already active.<br><br>Your new buff <strong>${(conflict as any).buffName}</strong> (+${(conflict as any).newValue} on ${(conflict as any).targetLabel}) has the same bonus type and would therefore have <strong>no effect</strong>.<br><br>Do you want to activate the buff anyway?`,
         () => {
           activate();
         }
@@ -402,9 +402,9 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
     } else if (conflict.status === 'overrides') {
       activate();
       showCustomAlert(
-        "Buff überlagert",
-        `Durch das Aktivieren von <strong>${(conflict as any).buffName}</strong> (+${(conflict as any).newValue}) wird der schwächere aktive Buff <strong>${(conflict as any).conflictingBuffName}</strong> (+${(conflict as any).activeValue}) auf <strong>${(conflict as any).targetLabel}</strong> überlagert.`,
-        "Verstanden",
+        "Buff Overridden",
+        `Activating <strong>${(conflict as any).buffName}</strong> (+${(conflict as any).newValue}) overrides the weaker active buff <strong>${(conflict as any).conflictingBuffName}</strong> (+${(conflict as any).activeValue}) on <strong>${(conflict as any).targetLabel}</strong>.`,
+        "Understood",
         "✨"
       );
     } else {
@@ -446,7 +446,7 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
-          Zauber erfolgreich gewirkt! ✨
+          Spell successfully cast! ✨
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
 
@@ -454,14 +454,14 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
           {spellName}{metaSuffix}
         </div>
         <div style={{ fontSize: '8.5px', color: 'var(--inkl)', textAlign: 'center', marginBottom: '8px', fontStyle: 'italic' }}>
-          {spell.school} • Grad {finalLevel}
+          {spell.school} • Level {finalLevel}
         </div>
         <div style={{ fontSize: '8px', fontStyle: 'italic', background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', padding: '4px', borderRadius: '2px', lineHeight: 1.25, marginBottom: '10px', maxHeight: '80px', overflowY: 'auto', color: 'var(--ink)' }}>
           {spell.description}
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '10px', fontSize: '9px', color: 'var(--ink)' }}>
-          <strong>Wirkerstufe (Caster Level):</strong>
+          <strong>Caster Level:</strong>
           <input
             type="number"
             className="cast-cl-input"
@@ -484,7 +484,7 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
         </div>
 
         <div style={{ marginBottom: '12px', color: 'var(--ink)' }}>
-          <strong style={{ fontSize: '9px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", display: 'block', marginBottom: '4px' }}>Ziele für den Buff / die Aura:</strong>
+          <strong style={{ fontSize: '9px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", display: 'block', marginBottom: '4px' }}>Targets for Buff / Aura:</strong>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '120px', overflowY: 'auto', padding: '4px', border: '0.5px solid rgba(200, 169, 110, 0.2)', background: 'rgba(0,0,0,0.01)', borderRadius: '2px' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '9px', cursor: 'pointer', color: 'var(--ink)' }}>
               <input
@@ -493,7 +493,7 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
                 onChange={() => handleTargetToggle(pc.id)}
                 style={{ margin: 0 }}
               />
-              <span><strong>{pc.name}</strong> (Selbst)</span>
+              <span><strong>{pc.name}</strong> (Self)</span>
             </label>
             {allies.map((ally: any) => (
               <label key={ally.id} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '9px', cursor: 'pointer', color: 'var(--ink)' }}>
@@ -514,7 +514,7 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
               className="btn btn-group-toggle"
               style={{ fontSize: '7.5px', padding: '2px 6px', border: '0.5px solid var(--pb)', background: 'transparent', color: 'var(--ink)', cursor: 'pointer' }}
             >
-              Ganze Gruppe
+              Entire Party
             </button>
             <button
               type="button"
@@ -522,7 +522,7 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
               className="btn btn-none-toggle"
               style={{ fontSize: '7.5px', padding: '2px 6px', border: '0.5px solid var(--pb)', background: 'transparent', color: 'var(--ink)', cursor: 'pointer' }}
             >
-              Zurücksetzen
+              Reset
             </button>
           </div>
         </div>
@@ -533,14 +533,14 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
             className="btn btn-p apply-buff-btn"
             style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 14px', cursor: 'pointer' }}
           >
-            Als Buff anwenden
+            Apply as Buff
           </button>
           <button
             onClick={onClose}
             className="btn close-dialog-btn"
             style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 14px', cursor: 'pointer', borderColor: 'var(--pb)', background: 'transparent', color: 'var(--ink)' }}
           >
-            Nur zaubern (Kein Buff)
+            Cast Only (No Buff)
           </button>
         </div>
       </div>

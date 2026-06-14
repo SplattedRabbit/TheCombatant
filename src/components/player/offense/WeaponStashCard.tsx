@@ -1,6 +1,6 @@
 /**
  * @module    WeaponStashCard
- * @summary   Rendert eine einzelne Waffe im Rucksack/Inventar inklusive Detail-Drawer (Einstellungen für Keen, Zusatzschaden, etc.).
+ * @summary   Renders a single weapon in the inventory including detail drawer (settings for Keen, extra damage, etc.).
  * @exports   WeaponStashCard
  * @reads     none (all details read from props w and pc)
  * @stateOps  updatePCWeapon, deletePCWeapon
@@ -52,7 +52,7 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
         }}
       >
         {w.isEquipped && (
-          <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', zIndex: 10 }}>Ausgerüstet</span>
+          <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', zIndex: 10 }}>Equipped</span>
         )}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
           <input
@@ -78,7 +78,7 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
             style={{ fontSize: '7.5px', padding: '0 2px', height: '16px', flex: 1.2, cursor: 'pointer' }}
           >
             {Object.values(WeaponRegistry).map((def: any) => (
-              <option key={def.key} value={def.key}>{def.nameDe}</option>
+              <option key={def.key} value={def.key}>{def.nameEn || def.nameDe}</option>
             ))}
           </select>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1px', flex: 0.6 }}>
@@ -93,11 +93,11 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
           </div>
           {w.grip === '2h' || w.grip === '2H' ? (
             <select className="cinput" disabled style={{ fontSize: '7.5px', height: '16px', flex: 1.1, opacity: 0.65, background: 'rgba(200,169,110,0.05)', textAlign: 'center' }}>
-              <option>Zweihändig</option>
+              <option>Two-Handed</option>
             </select>
           ) : w.grip === 'rng' ? (
             <select className="cinput" disabled style={{ fontSize: '7.5px', height: '16px', flex: 1.1, opacity: 0.65, background: 'rgba(200,169,110,0.05)', textAlign: 'center' }}>
-              <option>Fernkampf</option>
+              <option>Ranged</option>
             </select>
           ) : (
             <select
@@ -106,8 +106,8 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
               className="cinput"
               style={{ fontSize: '7.5px', padding: '0 1px', height: '16px', flex: 1.1, cursor: 'pointer' }}
             >
-              <option value="main">Haupthand</option>
-              <option value="off">Nebenhand</option>
+              <option value="main">Main Hand</option>
+              <option value="off">Off-Hand</option>
             </select>
           )}
           <button
@@ -115,7 +115,7 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
             onClick={() => handleWeaponEquipToggle(idx, w)}
             style={{ padding: '0 6px', fontSize: '7.5px', fontWeight: 'bold', height: '16px', borderRadius: '2px' }}
           >
-            {w.isEquipped ? 'Ablegen' : 'Anlegen'}
+            {w.isEquipped ? 'Unequip' : 'Equip'}
           </button>
           <button
             className="xbtn"
@@ -132,7 +132,7 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
         <div style={{ display: 'flex', background: 'rgba(200,169,110,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderTop: 'none', padding: '4px 6px', fontSize: '8px', marginTop: '-2px', marginBottom: '2px', borderRadius: '0 0 3px 3px', flexDirection: 'column', gap: '4px' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', width: '100%' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Zusatz-Atk:</span>
+              <span style={{ color: 'var(--inkl)' }}>Extra Atk:</span>
               <input
                 type="text"
                 value={w.attackBonus || ''}
@@ -149,17 +149,17 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
                 onChange={(e) => CombatState.updatePCWeapon(idx, 'isKeen', e.target.checked)}
                 style={{ margin: 0, width: '10px', height: '10px' }}
               />
-              Scharf (Keen)
+              Keen
             </label>
             <div style={{ display: 'flex', alignItems: 'center', gap: '3px', flex: 1, minWidth: '150px' }}>
-              <span style={{ color: 'var(--inkl)', flexShrink: 0 }}>Zusatz-Schaden:</span>
+              <span style={{ color: 'var(--inkl)', flexShrink: 0 }}>Extra Damage:</span>
               <select
                 value={w.extraDamageDice || ''}
                 onChange={(e) => CombatState.updatePCWeapon(idx, 'extraDamageDice', e.target.value)}
                 className="cinput"
                 style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', width: '45px', flexShrink: 0, cursor: 'pointer' }}
               >
-                <option value="">Kein</option>
+                <option value="">None</option>
                 {['1w2', '1w3', '1w4', '1w6', '1w8', '1w10', '1w12', '2w4', '2w6', '2w8', '2w10', '3w6', '3w8', '4w6'].map(d => (
                   <option key={d} value={d}>{d}</option>
                 ))}
@@ -171,7 +171,7 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
                 style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', flex: 1, minWidth: 0, cursor: 'pointer' }}
               >
                 <option value="">—</option>
-                {['Feuer', 'Kälte', 'Elektrizität', 'Säure', 'Schall', 'Wucht', 'Stich', 'Schnitt', 'Kraft', 'Gottgeweiht'].map(t => (
+                {['Fire', 'Cold', 'Electricity', 'Acid', 'Sonic', 'Bludgeoning', 'Piercing', 'Slashing', 'Force', 'Holy'].map(t => (
                   <option key={t} value={t}>{t}</option>
                 ))}
               </select>
@@ -179,43 +179,43 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', width: '100%' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Grip-Abw.:</span>
+              <span style={{ color: 'var(--inkl)' }}>Grip Override:</span>
               <select
                 value={w.gripOverride || ''}
                 onChange={(e) => CombatState.updatePCWeapon(idx, 'gripOverride', e.target.value)}
                 className="cinput"
                 style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', cursor: 'pointer' }}
               >
-                <option value="">Standard</option>
+                <option value="">Default</option>
                 <option value="1h">1-Hand</option>
                 <option value="2h">2-Hand</option>
-                <option value="sec">Schildh</option>
-                <option value="rng">Fernk</option>
-                <option value="unarmed">Waffenlos</option>
+                <option value="sec">Shield hand</option>
+                <option value="rng">Ranged</option>
+                <option value="unarmed">Unarmed</option>
               </select>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Schadens-Abw.:</span>
+              <span style={{ color: 'var(--inkl)' }}>Damage Override:</span>
               <select
                 value={w.damageDiceOverride || ''}
                 onChange={(e) => CombatState.updatePCWeapon(idx, 'damageDiceOverride', e.target.value)}
                 className="cinput"
                 style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', cursor: 'pointer' }}
               >
-                <option value="">Standard</option>
+                <option value="">Default</option>
                 {['1w2', '1w3', '1w4', '1w6', '1w8', '1w10', '1w12', '2w4', '2w6', '2w8', '2w10', '3w6', '3w8', '4w6'].map(d => (
                   <option key={d} value={d}>{d}</option>
                 ))}
               </select>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Krit-Abw.:</span>
+              <span style={{ color: 'var(--inkl)' }}>Crit Override:</span>
               <input
                 type="text"
                 value={w.critOverride || ''}
                 onChange={(e) => CombatState.updatePCWeapon(idx, 'critOverride', e.target.value)}
                 className="cinput"
-                placeholder="Standard"
+                placeholder="Default"
                 style={{ width: '70px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
               />
             </div>

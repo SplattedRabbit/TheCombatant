@@ -74,7 +74,7 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
 
     broadcastToClients(packet);
     setMessageText('');
-    showCustomAlert('Nachricht gesendet', 'Die Botschaft wurde übertragen.', 'OK', '✉️');
+    showCustomAlert('Message sent', 'The message has been transmitted.', 'OK', '✉️');
   };
 
   const players = combatants.filter(c => c.type === 'p');
@@ -84,7 +84,7 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
       
       {/* 1. Concentration Spells Panel */}
       <div className="panel">
-        <div className="phdr"><h2>🔮 Konzentrationszauber</h2></div>
+        <div className="phdr"><h2>🔮 Concentration Spells</h2></div>
         <div className="pbody" style={{ padding: '4px 5px' }}>
           <div style={{
             display: 'grid',
@@ -96,16 +96,16 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
             padding: '1px 0 3px',
             letterSpacing: '0.3px'
           }}>
-            <span>Zauberer</span>
-            <span>Zauber</span>
-            <span>Runden</span>
+            <span>Caster</span>
+            <span>Spell</span>
+            <span>Rounds</span>
             <span>✕</span>
           </div>
 
           <div id="concRows" style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
             {concentrations.length === 0 ? (
               <div className="empty-msg" style={{ padding: '3px 0', fontSize: '8.5px', fontStyle: 'italic', color: 'var(--inkl)', textAlign: 'center' }}>
-                Keine aktiven Konzentrationszauber
+                No active concentration spells
               </div>
             ) : (
               concentrations.map(c => (
@@ -127,7 +127,7 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
                     placeholder="∞"
                     onChange={(e) => handleUpdateConcField(c.id, 'dur', e.target.value)}
                     style={{ width: '26px', textAlign: 'center', fontSize: '8.5px', height: '14px', padding: '0' }}
-                    title="Runden"
+                    title="Rounds"
                   />
                   <button
                     className="xbtn xbtn-del delete-spell-btn"
@@ -157,7 +157,7 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
               value={cSpell}
               onChange={(e) => setCSpell(e.target.value)}
               style={{ flex: 1, minWidth: '55px', height: '15px', fontSize: '8.5px', padding: '0 2px' }}
-              placeholder="Zauber..."
+              placeholder="Spell..."
             />
             <input
               className="conc-in"
@@ -165,7 +165,7 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
               value={cDur}
               onChange={(e) => setCDur(e.target.value)}
               style={{ width: '26px', height: '15px', fontSize: '8.5px', padding: '0', textAlign: 'center' }}
-              placeholder="Rd"
+              placeholder="Rds"
             />
             <button
               className="btn btn-p"
@@ -180,17 +180,17 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
 
       {/* 2. DM Message Panel */}
       <div className="panel no-print">
-        <div className="phdr"><h2>📜 Botschaft an Spieler</h2></div>
+        <div className="phdr"><h2>📜 Message to Players</h2></div>
         <div className="pbody" style={{ padding: '5px 6px' }}>
           <div style={{ display: 'flex', gap: '4px', alignItems: 'center', marginBottom: '4px' }}>
-            <label style={{ fontSize: '8.5px', fontWeight: 'bold', color: 'var(--inkm)' }}>Empfänger:</label>
+            <label style={{ fontSize: '8.5px', fontWeight: 'bold', color: 'var(--inkm)' }}>Recipient:</label>
             <select
               className="cinput"
               value={messageTarget}
               onChange={(e) => setMessageTarget(e.target.value)}
               style={{ flex: 1, height: '16px', fontSize: '8px', padding: '0 2px' }}
             >
-              <option value="all">Alle Spieler</option>
+              <option value="all">All Players</option>
               {players.map(p => (
                 <option key={p.id} value={p.id}>{p.name}</option>
               ))}
@@ -202,7 +202,7 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
             value={messageText}
             onChange={(e) => setMessageText(e.target.value)}
             style={{ width: '100%', fontFamily: "'Crimson Text', serif", fontSize: '9px', resize: 'vertical', marginBottom: '4px', boxSizing: 'border-box' }}
-            placeholder="Schreibe eine Nachricht an Spieler (z.B. geheime Entdeckungen)..."
+            placeholder="Write a message to players (e.g. secret discoveries)..."
           />
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <button
@@ -210,7 +210,7 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
               onClick={handleSendMessage}
               style={{ fontSize: '8px', padding: '2px 8px', height: '16px', lineHeight: '10px' }}
             >
-              Senden ✉️
+              Send ✉️
             </button>
           </div>
         </div>

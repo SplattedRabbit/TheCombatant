@@ -22,11 +22,10 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
   onClose,
   onRefresh
 }) => {
-  const nameEn = feat.nameEn ? ` (${feat.nameEn})` : '';
-  const categoryDe =
+  const categoryEn =
     (
-      { combat: 'Kampftalent', metamagic: 'Metamagie', item_creation: 'Gegenstandserschaffung', general: 'Allgemein' } as Record<string, string>
-    )[feat.category] || 'Allgemein';
+      { combat: 'Combat Feat', metamagic: 'Metamagic Feat', item_creation: 'Item Creation Feat', general: 'General Feat' } as Record<string, string>
+    )[feat.category] || 'General Feat';
 
   // Evaluate prerequisites
   const { met, details: prereqsDetails } = checkPrerequisites(feat, pc);
@@ -40,46 +39,42 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
   if (feat.hasOption && (!isLearned || isStackable)) {
     if (feat.optionType === 'weapon') {
       optionsList = [
-        'Langschwert',
-        'Kurzschwert',
-        'Dolch',
-        'Zweihänder',
-        'Kompositbogen',
-        'Langbogen',
-        'Waffenlos',
-        'Kampfstab',
+        'Longsword',
+        'Shortsword',
+        'Dagger',
+        'Greatsword',
+        'Composite Bow',
+        'Longbow',
+        'Unarmed Strike',
+        'Quarterstaff',
         'Kama',
         'Nunchaku',
         'Sai',
         'Shuriken',
         'Siangham',
-        'Armbrust',
-        'Hellebarde',
-        'Morgenstern',
-        'Streitaxt'
+        'Crossbow',
+        'Halberd',
+        'Morningstar',
+        'Battleaxe'
       ];
     } else if (feat.optionType === 'school') {
       optionsList = [
-        'Abschwörung (Abjuration)',
-        'Beschwörung (Conjuration)',
-        'Erkenntnis (Divination)',
-        'Hervorrufung (Evocation)',
-        'Illusion (Illusion)',
-        'Nekromantie (Necromancy)',
-        'Transmutation (Transmutation)',
-        'Verzauberung (Enchantment)'
+        'Abjuration',
+        'Conjuration',
+        'Divination',
+        'Evocation',
+        'Illusion',
+        'Necromancy',
+        'Transmutation',
+        'Enchantment'
       ];
     } else if (feat.optionType === 'skill') {
       optionsList = Object.keys(SKILLS_REGISTRY).map((key) => {
-        const skill = SKILLS_REGISTRY[key];
         const englishName = key
           .split('_')
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(' ');
-        if (skill.nameDe.includes(`(${englishName})`) || skill.nameDe.includes(englishName)) {
-          return skill.nameDe;
-        }
-        return `${skill.nameDe} (${englishName})`;
+        return englishName;
       });
       optionsList.sort((a, b) => a.localeCompare(b));
     }
@@ -97,7 +92,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
     const optToLearn = feat.hasOption ? selectedOption : '';
     const result = CombatState.addPCFeat(feat.id, optToLearn);
     if (result && !result.success) {
-      showCustomAlert('Voraussetzungen fehlen', result.error.replace(/\n/g, '<br>'), 'Verstanden', '🔒');
+      showCustomAlert('Prerequisites Missing', result.error.replace(/\n/g, '<br>'), 'Understood', '🔒');
       return;
     }
     onClose();
@@ -194,7 +189,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
               fontWeight: 'bold'
             }}
           >
-            {feat.nameDe}{nameEn}
+            {feat.nameEn || feat.nameDe}
           </h3>
 
           <div
@@ -209,23 +204,23 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
               fontWeight: 'bold'
             }}
           >
-            <div><strong>Kategorie:</strong> {categoryDe}</div>
-            <div><strong>Erfüllt:</strong> {met ? 'Ja' : 'Nein'}</div>
+            <div><strong>Category:</strong> {categoryEn}</div>
+            <div><strong>Met:</strong> {met ? 'Yes' : 'No'}</div>
             <div style={{ gridColumn: 'span 2' }}>
-              <strong>App-Mechanik:</strong>{' '}
+              <strong>App Mechanics:</strong>{' '}
               <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>
-                {feat.appEffect || 'Keine automatische Werteänderung'}
+                {feat.appEffect || 'No automatic stat changes'}
               </span>
             </div>
           </div>
 
           <div style={{ fontSize: '9.5px', marginBottom: '8px' }}>
             <div style={{ fontWeight: 'bold', color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif", fontSize: '10px' }}>
-              Voraussetzungen:
+              Prerequisites:
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginTop: '2px' }}>
               {prereqsDetails.length === 0 ? (
-                <div style={{ color: '#2a6a2a', fontWeight: 'bold', fontSize: '9px' }}>Keine</div>
+                <div style={{ color: '#2a6a2a', fontWeight: 'bold', fontSize: '9px' }}>None</div>
               ) : (
                 prereqsDetails.map((pr: any, idx: number) => {
                   const color = pr.met ? '#2a6a2a' : '#8b1a1a';
@@ -242,8 +237,8 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
           </div>
 
           <div style={{ fontSize: '9.5px', marginBottom: '6px', lineHeight: 1.35 }}>
-            <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Vorteil (RAW):</strong>
-            <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>{feat.benefitDe}</div>
+            <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Benefit (RAW):</strong>
+            <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>{feat.benefitEn || feat.benefitDe}</div>
           </div>
 
           {feat.normalRaw && (
@@ -255,14 +250,14 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
 
           {feat.specialRaw && (
             <div style={{ fontSize: '9px', marginBottom: '4px', lineHeight: 1.35, borderTop: '0.5px dotted rgba(139,26,26,0.2)', paddingTop: '4px' }}>
-              <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Spezial:</strong>
+              <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Special:</strong>
               <div style={{ color: '#4a3b2a', paddingLeft: '4px' }}>{feat.specialRaw}</div>
             </div>
           )}
 
           {feat.hasOption && (!isLearned || isStackable) && (
             <div style={{ marginTop: '6px', display: 'flex', flexDirection: 'column', gap: '2px', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold' }}>
-              <label htmlFor="featOptionSelect" style={{ color: '#5a3a1a' }}>Spezifische Auswahl für dieses Talent:</label>
+              <label htmlFor="featOptionSelect" style={{ color: '#5a3a1a' }}>Specific selection for this feat:</label>
               <select
                 id="featOptionSelect"
                 className="cinput"
@@ -278,7 +273,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                   ))
                 ) : (
                   <option value="" disabled>
-                    -- Alle Optionen bereits erlernt --
+                    -- All options already learned --
                   </option>
                 )}
               </select>
@@ -287,14 +282,14 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
 
           {learnedInstances.length > 0 && (
             <div style={{ marginTop: '6px', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', borderTop: '0.5px dashed rgba(139,26,26,0.3)', paddingTop: '6px' }}>
-              <div style={{ fontWeight: 'bold', color: '#5a3a1a', marginBottom: '2px' }}>Bereits erlernte Instanzen:</div>
+              <div style={{ fontWeight: 'bold', color: '#5a3a1a', marginBottom: '2px' }}>Already learned instances:</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                 {learnedInstances.map((inst: any, idx: number) => {
                   const optText = inst.option ? `(${inst.option})` : '';
                   return (
                     <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0,0,0,0.03)', border: '0.5px solid rgba(0,0,0,0.1)', borderRadius: '2px', padding: '2px 4px', fontSize: '8.5px' }}>
                       <span style={{ fontWeight: 'bold', color: 'var(--red)' }}>
-                        {feat.nameDe} {optText}
+                        {(feat.nameEn || feat.nameDe)} {optText}
                       </span>
                       <button
                         onClick={(e) => {
@@ -305,7 +300,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                         className="xbtn btn-remove-instance"
                         style={{ color: 'var(--red)', borderColor: 'var(--red)', padding: '0 3px', fontSize: '7px', height: '13px', lineHeight: '13px' }}
                       >
-                        ✕ Entfernen
+                        ✕ Remove
                       </button>
                     </div>
                   );
@@ -320,7 +315,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
           {!isLearned || isStackable ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
               <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.3px' }}>
-                {isLearnBlocked ? '🔒 Voraussetzungen nicht erfüllt!' : 'Möchtest du dieses Talent erlernen?'}
+                {isLearnBlocked ? '🔒 Prerequisites not met!' : 'Do you want to learn this feat?'}
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', width: '100%' }}>
                 <button
@@ -341,7 +336,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                     outline: 'none'
                   }}
                 >
-                  Lernen
+                  Learn
                 </button>
                 <button
                   onClick={onClose}
@@ -359,14 +354,14 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                     outline: 'none'
                   }}
                 >
-                  Schließen
+                  Close
                 </button>
               </div>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
               <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.3px' }}>
-                Möchtest du dieses Talent wieder VERNICHTEN/VERLERNEN?
+                Do you want to unlearn this feat?
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', width: '100%' }}>
                 <button
@@ -386,7 +381,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                     outline: 'none'
                   }}
                 >
-                  Verlernen
+                  Unlearn
                 </button>
                 <button
                   onClick={onClose}
@@ -404,7 +399,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                     outline: 'none'
                   }}
                 >
-                  Schließen
+                  Close
                 </button>
               </div>
             </div>

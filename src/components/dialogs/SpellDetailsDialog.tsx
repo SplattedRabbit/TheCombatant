@@ -1,12 +1,3 @@
-/**
- * @module    SpellDetailsDialog
- * @summary   React-Dialog für Zauber-Details: Toggle Lernen/Vergessen mit Bannschulen- und Zauberlimit-Check.
- * @exports   SpellDetailsDialog
- * @reads     spell, pc.learnedSpells, pc.classes, pc.wizardProhibited1/2
- * @stateOps  CombatState.saveToStorage, CombatState.syncPCToHost
- * @depends   React, @core/state.js, @core/spells.js, @core/rules.js
- * @notHere   Spell-Creator → SpellCreatorDialog.tsx | Bannschulen-Logik → SpellRules.js
- */
 import React from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
@@ -48,8 +39,8 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
             const prob2 = getSchoolCodeFromInput(activePC.wizardProhibited2);
             if (schoolCode === prob1 || schoolCode === prob2) {
               showCustomAlert(
-                'Bannschule',
-                `Du kannst den Zauber "${spell.nameDe}" nicht lernen, da er zur Bannschule "${getSchoolLabel(schoolCode)}" gehört!`
+                'Prohibited School',
+                `You cannot learn the spell "${spell.nameEn || spell.nameDe}" because it belongs to the prohibited school "${getSchoolLabel(schoolCode)}"!`
               );
               return;
             }
@@ -57,7 +48,7 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
         }
         const check = CombatRules.checkSpellKnownLimit(activePC, spell, (k: string) => findSpell(activePC, k));
         if (!check.success) {
-          showCustomAlert('Zauberlimit überschritten', check.error || 'Du kannst keine weiteren bekannten Zauber dieses Grades lernen.');
+          showCustomAlert('Spell Limit Exceeded', check.error || 'You cannot learn any more known spells of this level.');
           return;
         }
       }
@@ -72,8 +63,8 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
     return (
       <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 }}>
         <div className="custom-alert-box" style={{ padding: '16px', minWidth: '300px' }}>
-          <p>Zauber nicht gefunden.</p>
-          <button className="xbtn" onClick={onClose}>Schließen</button>
+          <p>Spell not found.</p>
+          <button className="xbtn" onClick={onClose}>Close</button>
         </div>
       </div>
     );
@@ -94,20 +85,20 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
         onClick={e => e.stopPropagation()}
       >
         <h3 style={{ margin: '0 0 4px', fontFamily: "'Cinzel', serif", fontSize: '14px' }}>
-          {spell.nameDe || spell.nameEn}
+          {spell.nameEn || spell.nameDe}
         </h3>
         {spell.nameEn && spell.nameDe && (
-          <p style={{ margin: '0 0 8px', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>{spell.nameEn}</p>
+          <p style={{ margin: '0 0 8px', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>{spell.nameDe}</p>
         )}
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 12px', fontSize: '9px', marginBottom: '10px' }}>
-          {spell.school && <span><strong>Schule:</strong> {spell.school}</span>}
-          {classLevelsText && <span><strong>Grad:</strong> {classLevelsText}</span>}
-          {spell.castingTime && <span><strong>Zeitaufwand:</strong> {spell.castingTime}</span>}
-          {spell.range && <span><strong>Reichweite:</strong> {spell.range}</span>}
-          {spell.duration && <span><strong>Dauer:</strong> {spell.duration}</span>}
-          {spell.savingThrow && <span><strong>Rettungswurf:</strong> {spell.savingThrow}</span>}
-          {spell.spellResistance && <span><strong>Zauberresistenz:</strong> {spell.spellResistance}</span>}
+          {spell.school && <span><strong>School:</strong> {spell.school}</span>}
+          {classLevelsText && <span><strong>Level:</strong> {classLevelsText}</span>}
+          {spell.castingTime && <span><strong>Casting Time:</strong> {spell.castingTime}</span>}
+          {spell.range && <span><strong>Range:</strong> {spell.range}</span>}
+          {spell.duration && <span><strong>Duration:</strong> {spell.duration}</span>}
+          {spell.savingThrow && <span><strong>Saving Throw:</strong> {spell.savingThrow}</span>}
+          {spell.spellResistance && <span><strong>Spell Resistance:</strong> {spell.spellResistance}</span>}
         </div>
 
         {spell.description && (
@@ -118,9 +109,9 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
 
         <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
           <button className="xbtn" onClick={handleToggleLearn} style={{ minWidth: '90px' }}>
-            {isLearned ? '✗ Vergessen' : '✓ Lernen'}
+            {isLearned ? '✗ Unlearn' : '✓ Learn'}
           </button>
-          <button className="xbtn" onClick={onClose}>Schließen</button>
+          <button className="xbtn" onClick={onClose}>Close</button>
         </div>
       </div>
     </div>

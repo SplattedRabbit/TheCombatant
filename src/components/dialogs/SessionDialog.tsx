@@ -29,7 +29,7 @@ export const SessionDialog: React.FC<SessionDialogProps> = ({ onClose }) => {
   const handleJoinClient = () => {
     const trimmedCode = codeVal.trim().toUpperCase();
     if (trimmedCode.length !== 4) {
-      showCustomAlert("Fehler", "Bitte gib einen gültigen 4-stelligen Code ein.");
+      showCustomAlert("Error", "Please enter a valid 4-digit code.");
       return;
     }
     CombatState.updateSession(true, 'client', trimmedCode);
@@ -80,10 +80,10 @@ export const SessionDialog: React.FC<SessionDialogProps> = ({ onClose }) => {
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
         <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '2px' }}>
-          🌐 Sitzungs-Manager (P2P)
+          🌐 Session Manager (P2P)
         </div>
         <div className="dialog-subtitle" style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '6px' }}>
-          Verbinde dein Spielblatt mit der Spielrunde
+          Connect your character sheet to the session
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 10px' }} />
 
@@ -92,24 +92,24 @@ export const SessionDialog: React.FC<SessionDialogProps> = ({ onClose }) => {
             <>
               {/* Host Option */}
               <div style={{ background: 'rgba(200, 169, 110, 0.05)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '8px 10px', textAlign: 'left' }}>
-                <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>🏰 Spielleiter-Modus (Host)</div>
+                <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>🏰 Dungeon Master Mode (Host)</div>
                 <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px', marginBottom: '6px' }}>
-                  Eröffne ein online Kampfblatt. Spieler können direkt über deinen Sitzungscode beitreten.
+                  Host an online combat sheet. Players can join directly using your session code.
                 </div>
                 <button
                   onClick={handleStartHost}
                   className="btn btn-p btn-start-host"
                   style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '2px 8px', width: '100%', cursor: 'pointer' }}
                 >
-                  Sitzung hosten 🌐
+                  Host Session 🌐
                 </button>
               </div>
 
               {/* Client Option */}
               <div style={{ background: 'rgba(200, 169, 110, 0.05)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '8px 10px', textAlign: 'left' }}>
-                <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>🛡️ Spieler-Modus (Client)</div>
+                <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>🛡️ Player Mode (Client)</div>
                 <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px', marginBottom: '6px' }}>
-                  Tritt der aktiven Sitzung deines DMs bei. Gib den 4-stelligen Zugangscode ein.
+                  Join the active session of your DM. Enter the 4-digit access code.
                 </div>
                 <div style={{ display: 'flex', gap: '4px' }}>
                   <input
@@ -125,16 +125,16 @@ export const SessionDialog: React.FC<SessionDialogProps> = ({ onClose }) => {
                     className="btn btn-join-client"
                     style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '2px 8px', flex: 1, cursor: 'pointer' }}
                   >
-                    Beitreten 🔌
+                    Join 🔌
                   </button>
                 </div>
               </div>
             </>
           ) : session.role === 'host' ? (
             <div style={{ background: 'rgba(42, 106, 42, 0.05)', border: '1px solid #2a6a2a', borderRadius: '3px', padding: '12px 10px', textAlign: 'center' }}>
-              <div style={{ fontSize: '11px', fontWeight: 'bold', color: '#1a4a1a' }}>🟢 Sitzung aktiv (Spielleiter)</div>
+              <div style={{ fontSize: '11px', fontWeight: 'bold', color: '#1a4a1a' }}>🟢 Session Active (Dungeon Master)</div>
               <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '3px', marginBottom: '10px' }}>
-                Dein online Kampfblatt ist live. Spieler können sich mit diesem Code verbinden:
+                Your online combat sheet is live. Players can connect using this code:
               </div>
 
               <div style={{ fontSize: '26px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '2px', fontFamily: "'IM Fell English SC', serif", background: 'rgba(0,0,0,0.04)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '4px 0', marginBottom: '10px', boxShadow: 'inset 0 0 5px rgba(0,0,0,0.05)' }}>
@@ -142,7 +142,7 @@ export const SessionDialog: React.FC<SessionDialogProps> = ({ onClose }) => {
               </div>
 
               <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '10px' }}>
-                Warte auf einlaufende Spieler-Verbindungen...
+                Waiting for incoming player connections...
               </div>
 
               <button
@@ -150,14 +150,14 @@ export const SessionDialog: React.FC<SessionDialogProps> = ({ onClose }) => {
                 className="btn btn-stop-session"
                 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '2px 8px', width: '100%', borderColor: 'var(--red)', color: 'var(--red)', cursor: 'pointer' }}
               >
-                Sitzung beenden ✕
+                End Session ✕
               </button>
             </div>
           ) : (
             <div style={{ background: 'rgba(42, 106, 42, 0.05)', border: '1px solid #2a6a2a', borderRadius: '3px', padding: '12px 10px', textAlign: 'center' }}>
-              <div style={{ fontSize: '11px', fontWeight: 'bold', color: '#1a4a1a' }}>🟢 Verbunden mit Spielrunde</div>
+              <div style={{ fontSize: '11px', fontWeight: 'bold', color: '#1a4a1a' }}>🟢 Connected to Session</div>
               <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '3px', marginBottom: '10px' }}>
-                Erfolgreich eingeloggt in Sitzungs-Code:
+                Successfully logged into session code:
               </div>
 
               <div style={{ fontSize: '22px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '2px', fontFamily: "'IM Fell English SC', serif", background: 'rgba(0,0,0,0.04)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '3px 0', marginBottom: '10px' }}>
@@ -165,7 +165,7 @@ export const SessionDialog: React.FC<SessionDialogProps> = ({ onClose }) => {
               </div>
 
               <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '10px' }}>
-                Gekoppelt als Spieler-Charakter. Synchronisation bereit.
+                Linked as player character. Sync ready.
               </div>
 
               <button
@@ -173,7 +173,7 @@ export const SessionDialog: React.FC<SessionDialogProps> = ({ onClose }) => {
                 className="btn btn-stop-session"
                 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '2px 8px', width: '100%', borderColor: 'var(--red)', color: 'var(--red)', cursor: 'pointer' }}
               >
-                Verbindung trennen ✕
+                Disconnect ✕
               </button>
             </div>
           )}
@@ -195,7 +195,7 @@ export const SessionDialog: React.FC<SessionDialogProps> = ({ onClose }) => {
             outline: 'none'
           }}
         >
-          Schließen
+          Close
         </button>
       </div>
     </div>

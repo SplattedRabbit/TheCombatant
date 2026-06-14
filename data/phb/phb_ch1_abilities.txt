@@ -1,0 +1,481 @@
+CHAPTER 1: 
+ABILITIES
+ 
+
+ 
+ 
+9
+ Balance,  Escape  Artist,  Hide,  Move  Silently,  Open  Lock,  Ride,  
+Sleight  of  Hand,  Tumble,  and  Use  Rope  checks.  These  are  the  
+skills that have Dexterity as their key ability. 
+ 
+Average Dexterity Scores 
+                                                                      Average                                                                      Average                                                                      
+Example Race or Creature Kind Dexterity Modifier 
+Shrieker (fungus) — — 
+Gelatinous cube (ooze) 1 –5 
+Colossal animated object 4–5 –3 
+Purple worm, ogre zombie 6–7 –2 
+Ogre, basilisk, fire giant, tendriculos 8–9 –1 
+Human, triton, boar, giant fire beetle 10–11 +0 
+Bugbear, lammasu, hobgoblin 12–13 +1 
+Displacer beast, hieracosphinx 14–15 +2 
+Blink dog, wraith, lion, octopus 16–17 +3 
+Astral deva (angel), ethereal filcher 18–19 +4 
+Arrowhawk, bone devil 20–21 +5 
+Elder air elemental 32–33 +11
+ 
+ 
+CONSTITUTION (CON) 
+Constitution   represents   your   character’s   health   and   stamina.   A   
+Constitution bonus increases a character’s hit points, so the ability is 
+important for all classes. 
+You apply your character’s Constitution modifier to: 
+ Each  roll  of  a  Hit  Die  (though  a  penalty  can  never  drop  a  result  
+below 1—that is, a character always gains at least 1 hit point each 
+time he or she advances in level). 
+ Fortitude saving throws, for resisting poison and similar threats. 
+ Concentration  checks.  This  is  a  skill,  important  to  spellcasters,  
+that has Constitution as its key ability. 
+If  a  character’s  Constitution  score  changes  enough  to  alter  his  or  
+her Constitution modifier, the character’s hit points also increase or 
+decrease accordingly. 
+ 
+Average Constitution Scores 
+                                                                      Average                                                                      Average                                                                      
+Example Race or Creature Kind Constitution Modifier 
+Ghoul, mummy, shadow — — 
+Centipede swarm, locust swarm 8–9 –1 
+Human, imp, dire weasel, grick 10–11 +0 
+Rust monster, medusa, otyugh, nymph 12–13 +1 
+Light horse, merfolk, troglodyte 14–15 +2 
+Tiger, chimera, assassin vine 16–17 +3 
+Polar bear, gargoyle, umber hulk 18–19 +4 
+Elephant, aboleth, tyrannosaurus 20–21 +5 
+The tarrasque 35 +12 
+ 
+INTELLIGENCE (INT) 
+Intelligence determines how well your character learns and reasons. 
+This  ability  is  important  for  wizards  because  it  affects  how  many  
+spells  they  can  cast,  how  hard  their  spells  are  to  resist,  and  how  
+powerful  their  spells  can  be.  It’s  also  important  for  any  character  
+who wants to have a wide  assortment of skills. 
+You apply your character’s Intelligence modifier to: 
+ The number of languages your character knows at the start of the 
+game. 
+ The number of skill points gained each level. (But your character 
+always gets at least 1 skill point per level.) 
+ Appraise,    Craft,    Decipher    Script,    Disable    Device,    Forgery,    
+Knowledge,  Search,  and  Spellcraft  checks.  These  are  the  skills  
+that have Intelligence as their key ability. 
+A  wizard  gains  bonus  spells  based  on  her  Intelligence  score.  The  
+minimum Intelligence score needed to cast a wizard spell is 10 + the 
+spell’s level. 
+An  animal  has  an  Intelligence  score  of  1  or  2.  A  creature  of  hu-
+manlike intelligence has scores of at least 3. 
+Average Intelligence Scores 
+                                                                      Average                                                                      Average                                                                      
+Example Race or Creature Kind Intelligence Modifier 
+Zombie, golem, ochre jelly — — 
+Carrion crawler, purple worm, camel 1 –5 
+Tiger, hydra, dog, horse 2 –4 
+Gray render, tendriculos, rast 3 –4 
+Otyugh, griffon, displacer beast 4–5 –3 
+Troll, hell hound, ogre, yrthak 6–7 –2 
+Troglodyte, centaur, gnoll 8–9 –1 
+Human, bugbear, wight, night hag 10–11 +0 
+Dragon turtle, cloud giant, lamia 12–13 +1 
+Invisible stalker, wraith, will-o’-wisp 14–15 +2 
+Beholder, succubus, trumpet archon 16–17 +3 
+Mind flayer, death slaad, nightwing 18–19 +4 
+Kraken, titan, nightcrawler 20–21 +5 
+Great wyrm gold dragon 32–33 +11
+ 
+ 
+WISDOM (WIS) 
+Wisdom   describes   a   character’s   willpower,   common   sense,   per-
+ception, and intuition. While Intelligence represents one’s ability to 
+analyze  information,  Wisdom  represents  being  in  tune  with  and  
+aware  of  one’s  surroundings.  An  “absentminded  professor”  has  low  
+Wisdom   and   high   Intelligence.   A   simpleton   (low   Intelligence)   
+might  still  have  great  insight  (high  Wisdom).  Wisdom  is  the  most  
+important  ability  for  clerics  and  druids,  and  it  is  also  important  for  
+paladins  and  rangers.  If  you  want  your  character  to  have  acute  
+senses,  put  a  high  score  in  Wisdom.  Every  creature  has  a  Wisdom  
+score. 
+You apply your character’s Wisdom modifier to: 
+ Will  saving  throws  (for  negating  the  effect  of  charm  person  and  
+other spells). 
+ Heal, Listen, Profession, Sense Motive, Spot, and Survival checks. 
+These are the skills that have Wisdom as their key ability. 
+Clerics,  druids,  paladins,  and  rangers  get  bonus  spells  based  on  
+their Wisdom scores. The minimum Wisdom score needed to cast a 
+cleric, druid, paladin, or ranger spell is 10 + the spell’s level. 
+ 
+Average Wisdom Scores 
+                                                                      Average                                                                      Average                                                                      
+Example Race or Creature Kind Wisdom Modifier 
+Gelatinous cube (ooze), animated object 1 –5 
+Shrieker (fungus) 2 –4 
+Red slaad, githyanki 6–7 –2 
+Purple worm, grimlock, troll 8–9 –1 
+Human, lizardfolk, phantom fungus 10–11 +0 
+Owlbear, hyena, shadow, remorhaz 12–13 +1 
+Wraith, owl, giant praying mantis 14–15 +2 
+Devourer, lillend, androsphinx 16–17 +3 
+Couatl, erinyes devil, guardian naga 18–19 +4 
+Unicorn, storm giant 20–21 +5 
+Great wyrm gold dragon 32–33 +11 
+ 
+CHARISMA (CHA) 
+Charisma measures a character’s force of personality, persuasiveness, 
+personal magnetism, ability to lead, and physical attractiveness. This 
+ability represents actual strength of personality, not merely how one 
+is perceived by others in a social setting. Charisma is most important 
+for  paladins,  sorcerers,  and  bards.  It  is  also  important  for  clerics,  
+since  it  affects  their  ability  to  turn  undead.  Every  creature  has  a  
+Charisma score. 
+You apply your character’s Charisma modifier to: 
+ Bluff,  Diplomacy,  Disguise,  Gather  Information,  Handle  Animal,  
+Intimidate, Perform, and Use Magic Device checks. These are the 
+skills that have Charisma as their key ability. 
+ Checks that represent an attempt to influence others. 
+CHAPTER 1: 
+ABILITIES
+ 
+
+ 
+ 
+10 
+ Turning   checks   for   clerics   and   paladins   attempting   to   turn   
+zombies, vampires, and other undead. 
+Sorcerers  and  bards  get  bonus  spells  based  on  their  Charisma  
+scores.  The  minimum  Charisma  score  needed  to  cast  a  sorcerer  or  
+bard spell is 10 + the spell’s level. 
+ 
+Average Charisma Scores 
+                                                                      Average                                                                      Average                                                                      
+Example Race or Creature Kind Wisdom Modifier 
+Zombie, golem, shrieker (fungus) 1 –5 
+Spider, crocodile, lizard, rhinoceros 2 –4 
+Tendriculos, octopus 3 –4 
+Dire rat, weasel, chuul, donkey 4–5 –3 
+Badger, troll, giant fire beetle, bear 6–7 –2 
+Gnoll, dire boar, manticore, gorgon 8–9 –1 
+Human, wolverine, dretch (demon) 10–11 +0 
+Treant, roper, doppelganger, night hag 12–13 +1 
+Storm giant, barghest, medusa 14–15 +2 
+Ogre mage, pixie, harpy, achaierai 16–17 +3 
+Greater barghest, nixie 18–19 +4 
+Astral deva (angel), kraken 20–21 +5 
+Great wyrm gold dragon 32–33 +11 
+ 
+EXAMPLE OF GENERATING AND 
+ASSIGNING ABILITY SCORES 
+Monte  wants  to  create  a  new  character.  He  rolls  four  six-sided  dice  
+(4d6)  and  gets  5,  4,  4,  and  1.  Ignoring  the  lowest  roll  (1),  he  records  
+the result on scratch paper: 13. He rolls the dice five more times and 
+gets these six scores: 13, 10, 15, 12, 8, and 14. Monte decides to play a 
+strong, tough dwarf fighter. Now he assigns his scores to abilities. 
+Strength   gets   the   highest   score,   15.   His   character   has   a   +2   
+Strength bonus that will serve him well in combat. 
+Constitution gets the next highest score, 14. The dwarf’s +2 racial 
+bonus  to  Constitution  (see  Table  2–1:  Racial  Ability  Adjustments,  
+page 12) improves his Constitution score to 16, which gives him a +3 
+modifier.  This  bonus  gives  the  character  more  hit  points  and  better  
+Fortitude saving throws. 
+Monte  puts  his  lowest  score,  8,  into  Charisma.  The  dwarf’s  –2  
+racial  penalty  to  Charisma  (see  Table  2–1)  reduces  his  Charisma  
+score to 6, for a –2 penalty. 
+Monte  has  two  bonus-range  scores  left  (13  and  12),  plus  an  aver-
+age  score  (10).  Dexterity  gets  the  13  (+1  bonus),  which  helps  with  
+ranged weapon attacks and with Reflex saving throws. (Monte’s also 
+thinking  ahead.  A  Dexterity  score  of  13  qualifies  his  character  for  
+the Dodge feat—see Table 5–1: Feats, page 90). 
+Wisdom  gets  the  12  (+1  bonus).  The  Wisdom  bonus  helps  with  
+perception skills, such as Spot and Listen (see Table 4–2: Skills, page 
+63), as well as with Will saving throws. 
+Intelligence  gets  the  10  (no  bonus  or  penalty).  An  average  Intel-
+ligence isn’t bad for a fighter. 
+Monte records his character’s race, class, ability scores, and ability 
+modifiers on his character sheet. 
+ 
+CHANGING ABILITY SCORES 
+Over  time,  the  ability  scores  your  character  starts  with  can  change.  
+Ability  scores  can  increase  with  no  limit.  Points  at  which  ability  
+changes occur include the following: 
+ Add  1  point  to  any  score  upon  attaining  4th  level  and  at  every  
+fourth level your character attains thereafter (8th, 12th, 16th, and 
+20th level). 
+ Many  spells  and  magical  effects  temporarily  increase  or  decrease  
+ability  scores.  The  ray  of  enfeeblement  spell  reduces  a  creature’s  
+Strength,  and  the  bull’s  strength  spell  increases  it.  Sometimes  a  
+spell simply hampers a character, reducing his or her ability score. 
+A character trapped by an entangle spell, for example, acts as if his 
+or her Dexterity were 4 points lower than it really is. 
+ Several magic items improve ability scores as long as the character 
+is using them. For example, gloves of dexterity improve the wearer’s 
+Dexterity   score.   (Magic   items   are   described   in   the   Dungeon 
+Master’s Guide.) Note that a magic item of this type can’t change an 
+ability score by more than +6. 
+ Some rare magic items can boost an ability score permanently, as 
+can a wish spell. Such an increase is called an inherent bonus. An 
+ability score can’t have an inherent bonus of more than +5. 
+ Poisons,   diseases,   and   other   effects   can   temporarily   harm   an   
+ability  (ability  damage).  Ability  points  lost  to  damage  return  on  
+their own at a rate of 1 point per day for each damaged ability. 
+ Some  effects  drain  abilities,  resulting  in  a  permanent  loss  (ability  
+drain). Points lost this way don’t return on their own, but they can 
+be regained with spells, such as restoration. 
+ As a character ages, some ability scores go up and others go down. 
+See Table 6–5: Aging Effects (page 109). 
+When  an  ability  score  changes,  all  attributes  associated  with  that  
+score change accordingly. For example, when Mialee becomes a 4th-
+level  wizard,  she  decides  to  increase  her  Intelligence  score  to  16.  
+That  score  gives  her  a  3rd-level  bonus  spell  (which  she’ll  pick  up  
+upon  attaining  5th  level,  when  she  becomes  able  to  cast  3rd-level  
+spells), and it increases the number of skill points she gets per level 
+from  4  to  5  (2  per  level  for  her  class,  plus  another  3  per  level  from  
+her  Intelligence  bonus).  As  a  new  4th-level  character,  she  can  get  
+the  skill  points  immediately  after  raising  her  Intelligence,  so  she’ll  
+get  5  points  for  attaining  4th  level  in  the  wizard  class.  She  does  not  
+retroactively  get  additional  points  for  her  previous  levels  (that  is,  
+skill  points  she  would  have  gained  if  she  had  had  an  Intelligence  
+score of 16 starting at 1st level). 
+INTELLIGENCE, WISDOM, AND CHARISMA 
+You can use your character’s Intelligence, Wisdom, and Charisma scores
+to  guide  you  in  roleplaying  your  character.  Here  is  some  background
+(just guidelines) about what these scores can mean. 
+A smart character (one with high Intelligence) is curious, knowledge-
+able, and prone to using big words. A character with a high Intelligence
+but low Wisdom may be smart but absentminded, or knowledgeable but
+lacking in common sense. A character with a high Intelligence but a low
+Charisma  may  be  a  know-it-all  or  a  reclusive  scholar.  A  smart  character
+lacking  in  both  Wisdom  and  Charisma  may  put  her  foot  in  her  mouth
+often. 
+A  character  with  a  low  Intelligence  mispronounces  and  misuses
+words, has trouble following directions, or fails to get the joke. 
+A  character  with  a  high  Wisdom  score  may  be  sensible,  serene,  “in
+tune,”  alert,  or  centered.  A  character  with  a  high  Wisdom  but  low  
+Intelligence may be aware, but simple. A character with high Wisdom but 
+low  Charisma  knows  enough  to  speak  carefully  and  may  become  an  
+advisor  (or  “power  behind  the  throne”)  rather  than  a  leader.  The  wise  
+character lacking in both Intelligence and Charisma is uncouth and unso-
+phisticated. 
+A  character  with  a  low  Wisdom  score  may  be  rash,  imprudent,  irre-
+sponsible, or “out of it.” 
+A character with high Charisma may be attractive, striking, personable, 
+and confident. A character with high Charisma but a low Intelligence can 
+usually pass herself off as knowledgeable, until she meets a true expert. 
+A charismatic character lacking in both Intelligence and Wisdom is likely 
+to be shallow and unaware of others’ feelings. 
+A character with low Charisma may be reserved, gruff, rude, fawning, 
+or simply nondescript. 
+CHAPTER 1: 
+ABILITIES
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+he  elven  woods  are  home  to  the  elves  and  their  allies.  
+Not many dwarves or half-orcs live there. In turn, elves, 
+humans,   halflings,   and   half-orcs   are   hard   to   find   in   
+underground  dwarven  cities.  And  while  nonhumans  may  
+travel  through  the  human  countryside,  most  country  folk  
+are  humans.  In  the  big  cities,  however,  the  promise  of  power  and  
+profit  brings  together  people  of  all  the  common  races:  humans,  
+dwarves, elves, gnomes, half-elves, half-orcs, and halflings. 
+ 
+CHOOSING A RACE 
+After you roll your ability scores and before you write them on your 
+character  sheet,  choose  your  character’s  race.  At  the  same  time,  you  
+should choose a class, since race affects how well a character can do 
+in each class. Once you know your character’s race and class, assign 
+your  ability  score  rolls  to  particular  abilities,  alter  those  abilities  
+according to race, and continue detailing your character. 
+You  can  play  a  character  of  any  race  and  class  combination,  but  
+certain   races   do   better   pursuing   certain   careers.   Halflings,   for   
+example,  can  be  fighters,  but  their  small  size  and  special  features  
+make them better as rogues. 
+Your  character’s  race  gives  you  plenty  of  cues  as  to  what  sort  of  
+person  he  or  she  is,  how  he  or  she  feels  about  characters  of  other  
+races,  and  what  his  or  her  motivations  might  be.  Remember,  how-
+ever, that these descriptions apply only to the majority of each race’s 
+members.  In  each  race,  some  individuals  diverge  from  the  norm,  
+and your character could be one of these. Don’t let a description of a 
+race keep you from detailing your character as you like. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+RACIAL CHARACTERISTICS 
+Your character’s race determines some of his or her qualities. 
+ 
+ABILITY ADJUSTMENTS 
+Find   your   character’s   race   on   Table   2–1:   Racial   Ability   
+Adjustments (see the next page) and apply the adjustments you 
+see there to your character’s ability scores. If these changes put 
+your  score  above  18  or  below  3,  that’s  okay,  except  in  the  case  
+of  Intelligence,  which  does  not  go  below  3  for  characters.  (If  
+your half-orc character would have an adjusted Intelligence of 
+1 or 2, make it 3 instead.) 
+For example, Lidda, a halfling, gets a +2 racial bonus on her 
+Dexterity score and a –2 racial penalty on her Strength score. 
+Knowing  this,  her  player  puts  her  best  score  rolled  (15)  in  
+Dexterity  so  that  it  will  increase  to  17.  She  doesn’t  want  a  
+Strength penalty, so she puts an above-average score (12) in 
+Strength.  Her  Strength  score  drops  to  10,  which  carries  
+neither a bonus nor a penalty. 
+ 
+FAVORED CLASS 
+Each race’s favored class is also given on Table 2–1: Racial 
+Ability  Adjustments.  A  character’s  favored  class  doesn’t  
+count  against  him  or  her  when  determining  experience  
+point  penalties  for  multiclassing  (see  XP  for  Multiclass  
+Characters, page 60). 
+For  example,  as  a  halfling  rogue,  Lidda  can  add  a  second  
+class  later  on  (becoming  a  multiclass  character)  without  
+worrying  about  an  XP  penalty,  because  rogue  is  favored  
+class for halflings. 
+ 
+11
+
+ 
+ 
+12 
+Table 2–1: Racial Ability Adjustments 
+Race Ability Adjustments Favored Class 
+Human              None              Any              
+Dwarf +2 Constitution, –2 Charisma Fighter 
+Elf +2 Dexterity, –2 Constitution Wizard 
+Gnome +2 Constitution, –2 Strength Bard 
+Half-elf               None               Any               
+Half-orc +2 Strength, –2 Intelligence
+1
+,                   Barbarian                   
+                           –2                           Charisma                           
+Halfling +2 Dexterity, –2 Strength Rogue 
+1 A half-orc’s starting Intelligence score is always at least 3. If this 
+adjustment would lower the character’s score to 1 or 2, his score is 
+nevertheless 3.
+ 
+ 
+RACE AND LANGUAGES 
+In a big city, visitors can hear all manner of languages being spoken. 
+Dwarves  haggle  over  gems  in  Dwarven,  elf  sages  engage  in  learned  
+debates  in  Elven,  and  preachers  call  out  prayers  in  Celestial.  The  
+language  heard  most,  however,  is  Common,  a  tongue  shared  by  all  
+who take part in the culture at large. With all these languages in use, 
+it  is  easy  for  people  to  learn  other  languages,  and  adventurers  often  
+speak several tongues. 
+All characters know how to speak Common. A dwarf, elf, gnome, 
+half-elf,   half-orc,   or   halfling   also   speaks   a   racial   language,   as   
+appropriate.  A  smart  character  (one  who  had  an  Intelligence  bonus  
+at  1st  level)  speaks  other  languages  as  well,  one  extra  language  per  
+point   of   Intelligence   bonus   as   a   starting   character.   Select   your   
+character’s bonus languages (if any) from the list found in his or her 
+race’s description later in this chapter. 
+Literacy:  Any  character  except  a  barbarian  can  read  and  write  all  
+the  languages  he  or  she  speaks.  (A  barbarian  can  become  literate  by  
+spending skill points, see Illiteracy, page 25.) 
+Class-Related   Languages:   Clerics,   druids,   and   wizards   can   
+choose  certain  languages  as  bonus  languages  even  if  they’re  not  on  
+the lists found in the race descriptions. These class-related languages 
+are as follows: 
+Cleric: Abyssal, Celestial, Infernal. 
+Druid: Sylvan. 
+Wizard: Draconic. 
+ 
+HUMANS 
+Most  humans  are  the  descendants  of  pioneers,  conquerors,  traders,  
+travelers,   refugees,   and   other   people   on   the   move.   As   a   result,   
+human  lands  are  home  to  a  mix  of  people—physically,  culturally,  
+religiously,  and  politically  different.  Hardy  or  fine,  light-skinned  or  
+dark,  showy  or  austere,  primitive  or  civilized,  devout  or  impious,  
+humans run the gamut. 
+Personality:  Humans  are  the  most  adaptable,  flexible,  and  ambi-
+tious  people  among  the  common  races.  They  are  diverse  in  their  
+tastes,  morals,  customs,  and  habits.  Others  accuse  them  of  having  
+little respect for history, but it’s only natural that humans, with their 
+relatively  short  life  spans  and  constantly  changing  cultures,  would  
+have  a  shorter  collective  memory  than  dwarves,  elves,  gnomes,  or  
+halflings. 
+Physical  Description:  Humans  typically  stand  from  5  feet  to  a  
+little  over  6  feet  tall  and  weigh  from  125  to  250  pounds,  with  men  
+noticeably taller and heavier than women. Thanks to their penchant 
+for migration and conquest, and to their short life spans, humans are 
+more physically diverse than other common races. Their skin shades 
+range  from  nearly  black  to  very  pale,  their  hair  from  black  to  blond  
+(curly, kinky, or straight), and their facial hair (for men) from sparse 
+to  thick.  Plenty  of  humans  have  a  dash  of  nonhuman  blood,  and  
+they  may  demonstrate  hints  of  elf,  orc,  or  other  lineages.  Members  
+of  this  race  are  often  ostentatious  or  unorthodox  in  their  grooming  
+Illus. by T. Lockwood 

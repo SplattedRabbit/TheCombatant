@@ -1,6 +1,6 @@
 /**
  * @module    PCDefensesTab
- * @summary   Rendert Rettungswürfe, AC, Initiative und physische Resistenzen UI-Elemente und verwaltet deren Event-Bindings.
+ * @summary   Renders saving throws, AC, initiative, and physical resistances UI elements and manages their event bindings.
  * @exports   PCDefensesTab
  * @reads     pc.ac, pc.acTouch, pc.acFlat, pc.acNatural, pc.acDeflection, pc.acMisc, pc.sr, pc.bw, pc.feats, pc.iniMisc, pc.init, pc.con, pc.dex, pc.wis, pc.baseZa, pc.baseRef, pc.baseWil, pc.za, pc.ref, pc.wil, pc.zaMisc, pc.refMisc, pc.wilMisc
  * @stateOps  setPCAutoAC, updatePCNumber, updatePCField, showRollBreakdown
@@ -52,15 +52,15 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
     const total = saveStat?.getValue?.() ?? saveStat?.total ?? 0;
     const otherMods = total - baseVal - attrMod;
 
-    const attrName = type === 'za' ? 'Konstitutions-Modifikator' : type === 'ref' ? 'Geschicklichkeits-Modifikator' : 'Weisheits-Modifikator';
-    const miscName = 'Sonstiges (Ausrüstung/Spezial)';
+    const attrName = type === 'za' ? 'Constitution Modifier' : type === 'ref' ? 'Dexterity Modifier' : 'Wisdom Modifier';
+    const miscName = 'Other (Equipment/Special)';
 
     const modifiers = Array.isArray(saveStat?.modifiers) ? saveStat.modifiers : [];
     const extras = modifiers.filter((m: any) => m.source !== attrName && m.source !== miscName && m.value !== 0);
 
-    let tooltip = `Sonstiger Modifikator (Eigenwert: ${miscVal})`;
+    let tooltip = `Other modifier (Value: ${miscVal})`;
     if (extras.length > 0) {
-      tooltip += `\nAktive Effekte:\n` + extras.map((m: any) => `• ${m.source}: ${formatMod(m.value)}`).join('\n');
+      tooltip += `\nActive Effects:\n` + extras.map((m: any) => `• ${m.source}: ${formatMod(m.value)}`).join('\n');
     }
 
     return {
@@ -71,19 +71,19 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
   };
 
   const getAcTooltip = (stat: any, name: string) => {
-    const items = ['Basiswert: 10'];
+    const items = ['Base value: 10'];
     const modifiers = Array.isArray(stat?.modifiers) ? stat.modifiers : [];
     modifiers.forEach((m: any) => {
-      if (m.value !== 0) items.push(`• ${m.source || 'Modifikator'}: ${formatMod(m.value)}`);
+      if (m.value !== 0) items.push(`• ${m.source || 'Modifier'}: ${formatMod(m.value)}`);
     });
-    return `${name} Aufschlüsselung:\n` + items.join('\n');
+    return `${name} Breakdown:\n` + items.join('\n');
   };
 
   const zaMiscData = getSaveMiscBreakdown('za', conMod);
   const refMiscData = getSaveMiscBreakdown('ref', dexMod);
   const wisMiscData = getSaveMiscBreakdown('wil', wisMod);
 
-  const acTooltip = getAcTooltip(pc.ac, 'Rüstungsklasse (AC)');
+  const acTooltip = getAcTooltip(pc.ac, 'Armor Class (AC)');
   const acTouchTooltip = getAcTooltip(pc.acTouch, 'Touch AC');
   const acFlatTooltip = getAcTooltip(pc.acFlat, 'Flat-Footed AC');
 
@@ -94,12 +94,12 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
   const handleAcClick = (type: 'ac' | 'acTouch' | 'acFlat', name: string, e: React.MouseEvent) => {
     if (!pc.autoAC) return;
     const stat = pc[type];
-    const items = [{ label: 'Basiswert', value: 10 }];
+    const items = [{ label: 'Base value', value: 10 }];
     const modifiers = Array.isArray(stat?.modifiers) ? stat.modifiers : [];
     modifiers.forEach((m: any) => {
-      if (m.value !== 0) items.push({ label: m.source || 'Modifikator', value: m.value });
+      if (m.value !== 0) items.push({ label: m.source || 'Modifier', value: m.value });
     });
-    showRollBreakdown(`${name} - Aufschlüsselung`, 'Basis 10', items, e.nativeEvent);
+    showRollBreakdown(`${name} - Breakdown`, 'Base 10', items, e.nativeEvent);
   };
 
   const handleSaveRoll = (type: 'za' | 'ref' | 'wil', label: string, e: React.MouseEvent) => {
@@ -107,25 +107,25 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
     const saveStat = type === 'za' ? pc.za : type === 'ref' ? pc.ref : pc.wil;
 
     const baseVal = baseStat?.getValue?.() ?? baseStat?.base ?? 0;
-    const items = [{ label: 'Klassen-Basis', value: baseVal }];
+    const items = [{ label: 'Class Base', value: baseVal }];
 
     const modifiers = Array.isArray(saveStat?.modifiers) ? saveStat.modifiers : [];
     modifiers.forEach((m: any) => {
-      items.push({ label: m.source || 'Modifikator', value: m.value });
+      items.push({ label: m.source || 'Modifier', value: m.value });
     });
 
-    showRollBreakdown(`Rettungswurf: ${label}`, '1W20', items, e.nativeEvent);
+    showRollBreakdown(`Saving Throw: ${label}`, '1d20', items, e.nativeEvent);
   };
 
   const handleIniRoll = (e: React.MouseEvent) => {
     const items = [
-      { label: 'GES-Mod (DEX)', value: dexMod },
-      { label: 'Misc-Mod (Sonst)', value: parseInt(pc.iniMisc) || 0 }
+      { label: 'DEX Mod', value: dexMod },
+      { label: 'Misc Mod', value: parseInt(pc.iniMisc) || 0 }
     ];
     if (hasImprovedInit) {
-      items.push({ label: 'Talent: Verbesserte Initiative', value: 4 });
+      items.push({ label: 'Feat: Improved Initiative', value: 4 });
     }
-    showRollBreakdown('Initiative-Wurf', '1W20', items, e.nativeEvent);
+    showRollBreakdown('Initiative Roll', '1d20', items, e.nativeEvent);
   };
 
   const calculateNewMisc = (type: 'za' | 'ref' | 'wil', attrMod: number, typedVal: number) => {
@@ -158,19 +158,19 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             onChange={handleAutoACChange}
             style={{ margin: 0, width: '13px', height: '13px' }}
           />
-          🛡️ Rüstungsklasse automatisch berechnen (Auto-RK)
+          🛡️ Calculate Armor Class automatically (Auto AC)
         </label>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px' }}>
         <div>
-          <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>AC (RK)</label>
+          <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>AC</label>
           <input
             type="number"
             value={pc.ac ?? 10}
             className="cinput pc-ac-input"
             readOnly={!!pc.autoAC}
-            onClick={(e) => handleAcClick('ac', 'Rüstungsklasse (AC)', e)}
+            onClick={(e) => handleAcClick('ac', 'Armor Class (AC)', e)}
             onChange={(e) => !pc.autoAC && CombatState.updatePCNumber('ac', e.target.value)}
             style={pc.autoAC ? { background: 'rgba(0,0,0,0.05)', color: 'var(--ink)', fontWeight: 'bold', cursor: 'pointer' } : undefined}
             title={pc.autoAC ? acTooltip : undefined}
@@ -206,7 +206,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px', marginTop: '-2px', marginBottom: '2px' }}>
         <div>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }} title="Natürlicher Rüstungsbonus (z.B. Amulett)">Natürliche Rüst.</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }} title="Natural armor bonus (e.g. Amulet)">Natural Armor</label>
           <input
             type="number"
             value={pc.acNatural || 0}
@@ -216,7 +216,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           />
         </div>
         <div>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }} title="Ablenkungsbonus auf RK (z.B. Schutzring)">Ablenkung</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }} title="Deflection bonus to AC (e.g. Ring of Protection)">Deflection</label>
           <input
             type="number"
             value={pc.acDeflection || 0}
@@ -226,7 +226,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           />
         </div>
         <div>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }} title="Sonstige Modifikatoren auf RK">Sonstiges (RK)</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }} title="Other modifiers to AC">Other (AC)</label>
           <input
             type="number"
             value={pc.acMisc || 0}
@@ -239,7 +239,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
         <div>
-          <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>Zauberresistenz (SR)</label>
+          <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>Spell Resistance (SR)</label>
           <input
             type="number"
             value={pc.sr ?? 0}
@@ -248,13 +248,13 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           />
         </div>
         <div>
-          <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>Geschwindigkeit (Speed)</label>
+          <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>Speed</label>
           <input
             type="number"
             value={pc.bw ?? 30}
             onChange={(e) => !getEquippedArmor() && CombatState.updatePCNumber('bw', e.target.value)}
             className="cinput pc-bw-input"
-            title="Bewegungsrate (ft)"
+            title="Movement speed (ft)"
             readOnly={!!getEquippedArmor()}
             style={getEquippedArmor() ? { background: 'rgba(0,0,0,0.05)', color: 'var(--red)', fontWeight: 'bold' } : undefined}
           />
@@ -266,11 +266,11 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
       {/* Initiative Block */}
       <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr 1fr 0.7fr', gap: '3px', alignItems: 'center', background: 'rgba(200, 169, 110, 0.1)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '3px 4px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <span style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', lineHeight: 1 }}>Initiative-Mod</span>
+          <span style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', lineHeight: 1 }}>Initiative Mod</span>
           <span style={{ fontSize: '12px', fontWeight: 'bold', color: 'var(--red)', textAlign: 'center', paddingTop: '1px' }}>{formatMod(totIni)}</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>DEX-Mod</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>DEX Mod</label>
           <input
             type="text"
             value={formatMod(dexMod)}
@@ -281,7 +281,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Misc-Mod</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Misc Mod</label>
           <input
             type="number"
             value={pc.iniMisc || 0}
@@ -291,7 +291,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Gewürfelt</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Rolled</label>
           <input
             type="number"
             value={pc.init || 0}
@@ -301,18 +301,18 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Summe</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Total</label>
           <span className="pc-init-total" style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', lineHeight: '15px', minWidth: '28px', textAlign: 'center', background: 'rgba(139,26,26,0.08)', border: '0.5px solid rgba(139,26,26,0.3)', borderRadius: '2px', padding: '0 2px' }}>
             {(pc.init || 0) > 0 ? (pc.init || 0) + totIni : '--'}
           </span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Formel</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Formula</label>
           <button
             onClick={handleIniRoll}
             className="xbtn roll-ini-btn"
             style={{ padding: 0, width: '18px', height: '15px', fontSize: '9px', lineHeight: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            title="Initiativewurf (Formel)"
+            title="Initiative roll (Formula)"
           >
             🎲
           </button>
@@ -322,20 +322,20 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
       <hr style={{ border: 'none', borderTop: '.5px solid var(--pb)', margin: '4px 0' }} />
 
       <div style={{ display: 'grid', gridTemplateColumns: '80px 30px 8px 30px 8px 30px 8px 1fr', gap: '2px', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--inkl)', textAlign: 'center', paddingBottom: '2px' }}>
-        <span style={{ textAlign: 'left' }}>Rettungswurf</span>
-        <span>Basis</span>
+        <span style={{ textAlign: 'left' }}>Saving Throw</span>
+        <span>Base</span>
         <span></span>
-        <span>Attribut</span>
+        <span>Ability</span>
         <span></span>
-        <span>Sonst.</span>
+        <span>Misc</span>
         <span></span>
-        <span>Gesamt</span>
+        <span>Total</span>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', paddingBottom: '2px' }}>
         {/* Zähigkeit (Fort) Equation Row */}
         <div style={{ display: 'grid', gridTemplateColumns: '80px 30px 8px 30px 8px 30px 8px 1fr', gap: '2px', alignItems: 'center' }}>
-          <span style={{ fontSize: '9px', fontWeight: 600, textAlign: 'left' }} title="Zähigkeit (Fortitude)">⚔️ Zäh (Fort)</span>
+          <span style={{ fontSize: '9px', fontWeight: 600, textAlign: 'left' }} title="Fortitude">⚔️ Fortitude</span>
           <input
             type="number"
             value={pc.baseZa?.base ?? 0}
@@ -353,7 +353,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             tabIndex={-1}
             className="cinput cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)' }}
-            title="KON-Modifikator"
+            title="CON Modifier"
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
           <input
@@ -370,7 +370,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>=</span>
           <button
-            onClick={(e) => handleSaveRoll('za', 'Zähigkeit', e)}
+            onClick={(e) => handleSaveRoll('za', 'Fortitude', e)}
             className="btn roll-save-btn"
             style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2px', fontWeight: 'bold', height: '18px', padding: '0 3px', fontSize: '9px', borderRadius: '2px', lineHeight: 1 }}
           >
@@ -380,7 +380,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
 
         {/* Reflex (Ref) Equation Row */}
         <div style={{ display: 'grid', gridTemplateColumns: '80px 30px 8px 30px 8px 30px 8px 1fr', gap: '2px', alignItems: 'center' }}>
-          <span style={{ fontSize: '9px', fontWeight: 600, textAlign: 'left' }} title="Reflex (Reflex)">🎯 Ref (Ges)</span>
+          <span style={{ fontSize: '9px', fontWeight: 600, textAlign: 'left' }} title="Reflex">🎯 Reflex</span>
           <input
             type="number"
             value={pc.baseRef?.base ?? 0}
@@ -398,7 +398,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             tabIndex={-1}
             className="cinput cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)' }}
-            title="GES-Modifikator"
+            title="DEX Modifier"
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
           <input
@@ -425,7 +425,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
 
         {/* Willen (Will) Equation Row */}
         <div style={{ display: 'grid', gridTemplateColumns: '80px 30px 8px 30px 8px 30px 8px 1fr', gap: '2px', alignItems: 'center' }}>
-          <span style={{ fontSize: '9px', fontWeight: 600, textAlign: 'left' }} title="Willenskraft (Will)">🔮 Will (Wei)</span>
+          <span style={{ fontSize: '9px', fontWeight: 600, textAlign: 'left' }} title="Will">🔮 Will</span>
           <input
             type="number"
             value={pc.baseWil?.base ?? 0}
@@ -443,7 +443,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             tabIndex={-1}
             className="cinput cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)' }}
-            title="WEI-Modifikator"
+            title="WIS Modifier"
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
           <input
@@ -460,7 +460,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>=</span>
           <button
-            onClick={(e) => handleSaveRoll('wil', 'Willen', e)}
+            onClick={(e) => handleSaveRoll('wil', 'Will', e)}
             className="btn roll-save-btn"
             style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2px', fontWeight: 'bold', height: '18px', padding: '0 3px', fontSize: '9px', borderRadius: '2px', lineHeight: 1 }}
           >
@@ -473,52 +473,52 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
 
       {/* Integrated Physical Resistances & Reach */}
       <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', letterSpacing: '0.5px', fontWeight: 'bold' }}>
-        🛡️ Physische Resistenzen &amp; Reichweite
+        🛡️ Physical Resistances &amp; Reach
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px', marginTop: '1px' }}>
         <div>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }}>Schadensreduktion (DR)</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }}>Damage Reduction (DR)</label>
           <input
             type="text"
             value={pc.dr || ''}
             onChange={(e) => CombatState.updatePCField('dr', e.target.value)}
             className="cinput pc-dr-input"
-            placeholder="z. B. 5/Silber"
+            placeholder="e.g. 5/silver"
             style={{ height: '16px', fontSize: '9px' }}
           />
         </div>
         <div>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }}>Reichweite (Reach)</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }}>Reach</label>
           <input
             type="text"
             value={pc.reach || ''}
             onChange={(e) => CombatState.updatePCField('reach', e.target.value)}
             className="cinput pc-reach-input"
-            placeholder="z. B. 5 ft"
+            placeholder="e.g. 5 ft"
             style={{ height: '16px', fontSize: '9px' }}
           />
         </div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px', marginTop: '2px' }}>
         <div>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }}>Immunitäten</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }}>Immunities</label>
           <input
             type="text"
             value={pc.immunities || ''}
             onChange={(e) => CombatState.updatePCField('immunities', e.target.value)}
             className="cinput pc-immunities-input"
-            placeholder="Gift, Schlaf..."
+            placeholder="poison, sleep..."
             style={{ height: '16px', fontSize: '9px' }}
           />
         </div>
         <div>
-          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }}>Energie-Resistenzen</label>
+          <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }}>Energy Resistances</label>
           <input
             type="text"
             value={pc.resistances || ''}
             onChange={(e) => CombatState.updatePCField('resistances', e.target.value)}
             className="cinput pc-resistances-input"
-            placeholder="Feuer 5..."
+            placeholder="fire 5..."
             style={{ height: '16px', fontSize: '9px' }}
           />
         </div>

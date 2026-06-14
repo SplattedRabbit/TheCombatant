@@ -1,11 +1,11 @@
 /**
  * @module    PCAttributes
- * @summary   Rendert die Attribut-Sektion (STR/DEX/CON/INT/WIS/CHA, BAB), Volk-Selektion und Multiclass-Manager des Spielercharakters.
+ * @summary   Renders the attribute section (STR/DEX/CON/INT/WIS/CHA, BAB), race selection, and multiclass manager of the player character.
  * @exports   PCAttributes
  * @reads     pc.str, pc.dex, pc.con, pc.int, pc.wis, pc.cha, pc.bab, pc.classes, pc.race
  * @stateOps  updatePCNumber, addPCClass, removePCClass, updatePCClassLevel, updatePCClassType, clearPCClasses, updatePCBatch
  * @depends   React, @core/state.js, @core/rules.js, @core/ui/components/dialogs.js, src/components/shared/BaseCard
- * @notHere   Angriffe -> PCOffenseTab.tsx | Fertigkeiten -> PCSkillsTab.tsx
+ * @notHere   Offense -> PCOffenseTab.tsx | Skills -> PCSkillsTab.tsx
  */
 
 import React, { useState } from 'react';
@@ -29,12 +29,12 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
 
   const classesCount = Array.isArray(pc.classes) ? pc.classes.length : 0;
 
-  // Modifikator formatieren (+X oder -X)
+  // Format modifier (+X or -X)
   const formatMod = (val: number) => {
     return val >= 0 ? `+${val}` : `${val}`;
   };
 
-  // BAB Sequenz erzeugen (z.B. +6 / +1)
+  // Generate BAB sequence (e.g. +6 / +1)
   const getBabSequence = (bab: number) => {
     const seq = [formatMod(bab)];
     if (bab >= 6) seq.push(formatMod(bab - 5));
@@ -43,18 +43,18 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     return seq.join(' / ');
   };
 
-  // Attribut-Änderung validieren und anwenden
+  // Validate and apply attribute change
   const handleAbilityChange = (key: string, val: string) => {
     let num = parseInt(val);
     if (isNaN(num)) num = 10;
     if (num < 3) {
-      showCustomAlert("Achtung!", "Sprich mit deinem SL, du hast ein Problem.");
+      showCustomAlert("Warning!", "Talk to your DM, you have a problem.");
       num = 3;
     }
     CombatState.updatePCNumber(key, num);
   };
 
-  // Attributswurf ausführen
+  // Roll ability check
   const handleRollAttribute = (label: string, key: string, e: React.MouseEvent) => {
     const stat = pc[key];
     const score = stat?.getValue?.() ?? stat?.total ?? 0;
@@ -63,7 +63,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     
     let detailParts: string[] = [];
     if (baseVal > 0) {
-      detailParts.push(`${baseVal} Basis`);
+      detailParts.push(`${baseVal} Base`);
     }
     
     if (Array.isArray(stat?.modifiers)) {
@@ -75,14 +75,14 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
       });
     }
     
-    const detailStr = detailParts.length > 1 ? ` (Wert: ${score} = ${detailParts.join(' ')})` : ` (Wert: ${score})`;
+    const detailStr = detailParts.length > 1 ? ` (Value: ${score} = ${detailParts.join(' ')})` : ` (Value: ${score})`;
 
-    showRollBreakdown(`${label}-Wurf${detailStr}`, '1W20', [
-      { label: `${label}-Modifikator`, value: mod }
+    showRollBreakdown(`${label} Roll${detailStr}`, '1d20', [
+      { label: `${label} Modifier`, value: mod }
     ], e.nativeEvent);
   };
 
-  // Volk / Rasse ändern
+  // Change race
   const handleRaceChange = (val: string) => {
     CombatState.updatePCBatch((freshPC: any) => {
       freshPC.race = val;
@@ -92,10 +92,10 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     });
   };
 
-  // Klasse hinzufügen
+  // Add class
   const handleAddClass = () => {
     if (classesCount >= 5) {
-      showCustomAlert("Klassenlimit", "Mehr als 5 Klassen werden nicht unterstützt.");
+      showCustomAlert("Class Limit", "More than 5 classes are not supported.");
       return;
     }
     CombatState.updatePCBatch((freshPC: any) => {
@@ -106,7 +106,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     setShowAddForm(false);
   };
 
-  // Klasse entfernen
+  // Remove class
   const handleRemoveClass = (idx: number) => {
     CombatState.updatePCBatch((freshPC: any) => {
       if (Array.isArray(freshPC.classes)) {
@@ -116,17 +116,17 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     });
   };
 
-  // Hilfskomponente für Attribut
+  // Helper component for attributes
   const renderAttributeBox = (key: 'str' | 'dex' | 'con' | 'int' | 'wis' | 'cha', label: string, icon: string) => {
     const stat = pc[key];
     const score = stat?.getValue?.() ?? stat?.total ?? 0;
     const mod = stat?.mod ?? 0;
     const hasModifiers = Array.isArray(stat?.modifiers) && stat.modifiers.some((m: any) => m.value !== 0);
 
-    let tooltip = `${label}wert`;
+    let tooltip = `${label} Score`;
     if (hasModifiers && stat.modifiers) {
       const activeMods = stat.modifiers.filter((m: any) => m.value !== 0);
-      tooltip += `\nBasiswert: ${stat.base}\nAktiver Wert: ${score}\nAktive Boni:\n` + 
+      tooltip += `\nBase Value: ${stat.base}\nActive Value: ${score}\nActive Bonuses:\n` + 
         activeMods.map((m: any) => `• ${m.source}: ${formatMod(m.value)}`).join('\n');
     }
 
@@ -152,7 +152,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
             cursor: 'pointer'
           }}
           onClick={() => showAttributeExplanation(key)}
-          title="Klicke für eine kurze Erläuterung"
+          title="Click for a brief explanation"
         >
           {icon} {label}
         </label>
@@ -190,13 +190,13 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
               background: 'rgba(0,0,0,0.05)',
               color: 'var(--inkl)'
             }}
-            title="Modifikator"
+            title="Modifier"
           />
           <button
             className="xbtn roll-attr-btn"
             onClick={(e) => handleRollAttribute(label, key, e)}
             style={{ padding: 0, width: '16px', height: '14px', fontSize: '8px', lineHeight: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            title={`${label}wurf (Formel)`}
+            title={`${label} Roll (Formula)`}
           >
             🎲
           </button>
@@ -208,7 +208,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
   const availableClasses = (CombatRules.CLASSES as any[]) || [];
 
   return (
-    <BaseCard title="✨ Attribute & Kompetenz">
+    <BaseCard title="✨ Attributes & BAB">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
         
         {/* Rasse & Multiclassing Manager */}
@@ -226,7 +226,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
         >
           {/* Rasse Selector */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid rgba(139,26,26,0.1)', paddingBottom: '4px', marginBottom: '2px' }}>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.3px' }}>🧬 Volk / Rasse</span>
+            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.3px' }}>🧬 Race</span>
             <select
               id="pcRaceSelect"
               value={pc.race || 'human'}
@@ -234,26 +234,26 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
               className="cinput"
               style={{ fontSize: '8px', height: '14px', padding: '0 2px', width: '80px', textAlign: 'center', outline: 'none', cursor: 'pointer' }}
             >
-              <option value="human">Mensch</option>
+              <option value="human">Human</option>
               <option value="elf">Elf</option>
-              <option value="dwarf">Zwerg</option>
-              <option value="gnome">Gnom</option>
-              <option value="halfling">Halbling</option>
-              <option value="half_elf">Halbelf</option>
-              <option value="half_orc">Halbork</option>
+              <option value="dwarf">Dwarf</option>
+              <option value="gnome">Gnome</option>
+              <option value="halfling">Halfling</option>
+              <option value="half_elf">Half-Elf</option>
+              <option value="half_orc">Half-Orc</option>
             </select>
           </div>
 
           {/* Klassen & Stufen Header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.3px' }}>🎭 Klassen &amp; Stufen</span>
+            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.3px' }}>🎭 Classes &amp; Levels</span>
             {classesCount < 4 && !showAddForm && (
               <button
                 className="btn btn-p"
                 onClick={() => setShowAddForm(true)}
                 style={{ fontSize: '7px', padding: '1px 4px', lineHeight: 1, borderColor: 'var(--pb)', background: 'rgba(139,26,26,0.05)', color: 'var(--red)' }}
               >
-                + Klasse
+                + Class
               </button>
             )}
           </div>
@@ -276,7 +276,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                       .filter((x: any) => x.key !== 'custom')
                       .map((cls: any) => (
                         <option key={cls.key} value={cls.key}>
-                          {cls.nameDe} ({cls.nameEn})
+                          {cls.nameEn || cls.nameDe}
                         </option>
                       ))}
                   </select>
@@ -298,7 +298,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                       className="xbtn xbtn-del btn-remove-class"
                       onClick={() => handleRemoveClass(idx)}
                       style={{ padding: '0 3px', fontSize: '7.5px', height: '13px', lineHeight: '11px' }}
-                      title="Klasse entfernen"
+                      title="Remove Class"
                     >
                       ✕
                     </button>
@@ -307,7 +307,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
               ))
             ) : (
               <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '2px 0' }}>
-                Benutzerdefinierte Stufen / Custom
+                Custom Levels / Custom
               </div>
             )}
           </div>
@@ -326,7 +326,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                     .filter((cls: any) => cls.key !== 'custom')
                     .map((cls: any) => (
                       <option key={cls.key} value={cls.key}>
-                        {cls.nameDe} ({cls.nameEn})
+                        {cls.nameEn || cls.nameDe}
                       </option>
                     ))}
                 </select>
@@ -344,7 +344,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                 </select>
               </div>
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '2px' }}>
-                <button className="btn btn-p" onClick={handleAddClass} style={{ fontSize: '7px', padding: '1px 5px' }}>Hinzufügen</button>
+                <button className="btn btn-p" onClick={handleAddClass} style={{ fontSize: '7px', padding: '1px 5px' }}>Add</button>
                 <button className="btn" onClick={() => setShowAddForm(false)} style={{ fontSize: '7px', padding: '1px 5px' }}>✕</button>
               </div>
             </div>
@@ -353,17 +353,17 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
 
         {/* Attribute Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
-          {renderAttributeBox('str', 'Stärke', '⚔️')}
-          {renderAttributeBox('dex', 'Geschick', '🎯')}
-          {renderAttributeBox('con', 'Konstitution', '🛡️')}
-          {renderAttributeBox('int', 'Intelligenz', '🧠')}
-          {renderAttributeBox('wis', 'Weisheit', '🔮')}
+          {renderAttributeBox('str', 'Strength', '⚔️')}
+          {renderAttributeBox('dex', 'Dexterity', '🎯')}
+          {renderAttributeBox('con', 'Constitution', '🛡️')}
+          {renderAttributeBox('int', 'Intelligence', '🧠')}
+          {renderAttributeBox('wis', 'Wisdom', '🔮')}
           {renderAttributeBox('cha', 'Charisma', '✨')}
         </div>
 
         {/* BAB */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '3px', background: 'rgba(139,26,26,0.05)', border: '0.5px solid rgba(139,26,26,0.2)', borderRadius: '2px', padding: '4px' }}>
-          <label style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>⚔️ Basisangriff (BAB):</label>
+          <label style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>⚔️ Base Attack Bonus (BAB):</label>
           <input
             type="text"
             value={getBabSequence(typeof pc.bab === 'number' ? pc.bab : (typeof pc.bab?.getValue === 'function' ? pc.bab.getValue() : 0))}

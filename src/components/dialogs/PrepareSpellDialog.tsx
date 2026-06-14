@@ -40,10 +40,10 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
   const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
 
   const metamagicFeats = [
-    { id: 'extend_spell', label: 'Zauber verlängern (+1 Grad)', cost: 1, name: 'Verlängert' },
-    { id: 'empower_spell', label: 'Zauber verstärken (+2 Grade)', cost: 2, name: 'Verstärkt' },
-    { id: 'maximize_spell', label: 'Zauber maximieren (+3 Grade)', cost: 3, name: 'Maximiert' },
-    { id: 'quicken_spell', label: 'Zauber beschleunigen (+4 Grade)', cost: 4, name: 'Beschleunigt' }
+    { id: 'extend_spell', label: 'Extend Spell (+1 Level)', cost: 1, name: 'Extended' },
+    { id: 'empower_spell', label: 'Empower Spell (+2 Levels)', cost: 2, name: 'Empowered' },
+    { id: 'maximize_spell', label: 'Maximize Spell (+3 Levels)', cost: 3, name: 'Maximized' },
+    { id: 'quicken_spell', label: 'Quicken Spell (+4 Levels)', cost: 4, name: 'Quickened' }
   ];
 
   const learnedFeats = metamagicFeats.filter((f) => pc.feats && pc.feats.some((feat: any) => feat.id === f.id));
@@ -80,11 +80,11 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
     const currentPrepsCount = SpellSlotCalculator.countPreparedSpellsAtLevel(pc, finalLevel);
 
     if (maxSlots === 0) {
-      showCustomConfirm("Keine Slots!", `Du hast keine Zauberslots auf Grad ${finalLevel}. Möchtest du "${spell.nameDe}" trotzdem vorbereiten?`, () => {
+      showCustomConfirm("No Slots!", `You have no spell slots of level ${finalLevel}. Do you want to prepare "${spell.nameEn || spell.nameDe}" anyway?`, () => {
         performPrep();
       });
     } else if (currentPrepsCount >= maxSlots) {
-      showCustomConfirm("Alle Slots belegt!", `Du hast bereits ${currentPrepsCount} von ${maxSlots} Slots des Grades ${finalLevel} belegt. Möchtest du "${spell.nameDe}" trotzdem vorbereiten?`, () => {
+      showCustomConfirm("All Slots Filled!", `You have already filled ${currentPrepsCount} out of ${maxSlots} slots of level ${finalLevel}. Do you want to prepare "${spell.nameEn || spell.nameDe}" anyway?`, () => {
         performPrep();
       });
     } else {
@@ -126,24 +126,24 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
-          Zauber vorbereiten 📜
+          Prepare Spell 📜
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
 
         <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)', marginBottom: '2px', textAlign: 'center' }}>
-          {spell.nameDe} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span>
+          {spell.nameEn || spell.nameDe} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span>
         </div>
         <div style={{ fontSize: '8px', color: 'var(--inkl)', textAlign: 'center', marginBottom: '10px' }}>
-          Basisgrad: Grad {spell.level}
+          Base Level: Level {spell.level}
         </div>
 
         {learnedFeats.length === 0 ? (
           <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '8px', textAlign: 'left' }}>
-            Keine Metamagie-Talente erlernt.
+            No Metamagic feats learned.
           </div>
         ) : (
           <div style={{ textAlign: 'left', marginBottom: '8px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '3px' }}>Metamagie anwenden:</div>
+            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '3px' }}>Apply Metamagic:</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {learnedFeats.map((feat) => (
                 <label key={feat.id} style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '8px', cursor: 'pointer', color: 'var(--ink)' }}>
@@ -170,18 +170,18 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
                 onChange={(e) => setSpecChecked(e.target.checked)}
                 style={{ cursor: isMatchingSchool ? 'pointer' : 'not-allowed', margin: 0 }}
               />
-              <span>In Spezialistenslot vorbereiten ({getSchoolLabel(wizardSpecialization)})</span>
+              <span>Prepare in specialty slot ({getSchoolLabel(wizardSpecialization)})</span>
             </label>
             {!isMatchingSchool && (
               <div style={{ fontSize: '6.5px', color: 'var(--red)', fontStyle: 'italic', marginTop: '2px' }}>
-                Zauber gehört nicht zur Spezialisierungsschule.
+                Spell does not belong to the specialization school.
               </div>
             )}
           </div>
         )}
 
         <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '4px', textAlign: 'center', marginBottom: '12px', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
-          Finaler Grad: <span id="finalPrepLevelText">Grad {finalLevel}</span>
+          Final Level: <span id="finalPrepLevelText">Level {finalLevel}</span>
         </div>
 
         <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
@@ -197,7 +197,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
               opacity: isTooHigh ? 0.5 : 1
             }}
           >
-            Vorbereiten
+            Prepare
           </button>
           <button
             onClick={onCancel}
@@ -212,7 +212,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
               color: 'var(--ink)'
             }}
           >
-            Abbrechen
+            Cancel
           </button>
         </div>
       </div>
@@ -238,10 +238,10 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
   if (!spell) return null;
 
   const metamagicFeats = [
-    { id: 'extend_spell', label: 'Zauber verlängern (+1 Grad)', cost: 1, name: 'Verlängert' },
-    { id: 'empower_spell', label: 'Zauber verstärken (+2 Grade)', cost: 2, name: 'Verstärkt' },
-    { id: 'maximize_spell', label: 'Zauber maximieren (+3 Grade)', cost: 3, name: 'Maximiert' },
-    { id: 'quicken_spell', label: 'Zauber beschleunigen (+4 Grade) [Nicht nutzbar]', cost: 4, name: 'Beschleunigt', disabled: true }
+    { id: 'extend_spell', label: 'Extend Spell (+1 Level)', cost: 1, name: 'Extended' },
+    { id: 'empower_spell', label: 'Empower Spell (+2 Levels)', cost: 2, name: 'Empowered' },
+    { id: 'maximize_spell', label: 'Maximize Spell (+3 Levels)', cost: 3, name: 'Maximized' },
+    { id: 'quicken_spell', label: 'Quicken Spell (+4 Levels) [Not usable]', cost: 4, name: 'Quickened', disabled: true }
   ];
 
   const learnedFeats = metamagicFeats.filter((f) => pc.feats && pc.feats.some((feat: any) => feat.id === f.id));
@@ -274,7 +274,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
         .map(id => metamagicFeats.find(f => f.id === id)?.name)
         .filter(Boolean);
 
-      const timeText = selectedMetaNames.length > 0 ? "1 volle Aktion (Spontane Metamagie)" : (spell.castingTime || '1 Standardaktion');
+      const timeText = selectedMetaNames.length > 0 ? "1 full action (Spontaneous Metamagic)" : (spell.castingTime || '1 standard action');
       const metaSuffix = selectedMetaNames.length > 0 ? ` (${selectedMetaNames.join(', ')})` : '';
 
       if (spell.effects && spell.effects.length > 0) {
@@ -282,21 +282,21 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
           onConfirm();
         });
       } else {
-        showCustomAlert("Zauber gewirkt! ✨", `
+        showCustomAlert("Spell cast! ✨", `
           <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
             <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
-              ${pc.name} wirkt ${spell.nameDe}${metaSuffix}!
+              ${pc.name} casts ${spell.nameEn || spell.nameDe}${metaSuffix}!
             </div>
-            • <strong>Schule:</strong> ${spell.school}<br>
-            • <strong>Grad:</strong> Grad ${finalLevel} (Basis ${spell.level})<br>
-            • <strong>Zeitaufwand:</strong> ${timeText}<br>
-            • <strong>Reichweite:</strong> ${spell.range || 'Berührung'}<br>
-            • <strong>Rettungswurf:</strong> ${spell.savingThrow || 'Keiner'}<br><br>
+            • <strong>School:</strong> ${spell.school}<br>
+            • <strong>Level:</strong> Level ${finalLevel} (Base ${spell.level})<br>
+            • <strong>Casting Time:</strong> ${timeText}<br>
+            • <strong>Range:</strong> ${spell.range || 'Touch'}<br>
+            • <strong>Saving Throw:</strong> ${spell.savingThrow || 'None'}<br><br>
             <div style="font-size: 8px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px; border-radius: 2px; line-height: 1.25;">
               ${spell.description}
             </div>
           </div>
-        `, "Fertig!", "");
+        `, "Done!", "");
         onConfirm();
       }
     };
@@ -305,11 +305,11 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
     const usedSlots = pc.spellSlots[finalLevel]?.used || 0;
 
     if (maxSlots === 0) {
-      showCustomConfirm("Keine Slots!", `Du hast keine Zauberslots auf Grad ${finalLevel}. Möchtest du "${spell.nameDe}" trotzdem wirken?`, () => {
+      showCustomConfirm("No Slots!", `You have no spell slots of level ${finalLevel}. Do you want to cast "${spell.nameEn || spell.nameDe}" anyway?`, () => {
         performCast();
       });
     } else if (usedSlots >= maxSlots) {
-      showCustomConfirm("Keine freien Slots!", `Du hast alle Slots des Grades ${finalLevel} verbraucht. Möchtest du "${spell.nameDe}" trotzdem wirken?`, () => {
+      showCustomConfirm("No Free Slots!", `You have expended all spell slots of level ${finalLevel}. Do you want to cast "${spell.nameEn || spell.nameDe}" anyway?`, () => {
         performCast();
       });
     } else {
@@ -351,24 +351,24 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
-          Zauber wirken ✨
+          Cast Spell ✨
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
 
         <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)', marginBottom: '2px', textAlign: 'center' }}>
-          {spell.nameDe} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span>
+          {spell.nameEn || spell.nameDe} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span>
         </div>
         <div style={{ fontSize: '8px', color: 'var(--inkl)', textAlign: 'center', marginBottom: '10px' }}>
-          Basisgrad: Grad {spell.level}
+          Base Level: Level {spell.level}
         </div>
 
         {learnedFeats.length === 0 ? (
           <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '8px', textAlign: 'left' }}>
-            Keine Metamagie-Talente erlernt.
+            No Metamagic feats learned.
           </div>
         ) : (
           <div style={{ textAlign: 'left', marginBottom: '8px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '3px' }}>Metamagie anwenden (erhöht Zauberzeit):</div>
+            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '3px' }}>Apply Metamagic (increases casting time):</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {learnedFeats.map((feat) => {
                 const isDisabled = feat.disabled;
@@ -404,11 +404,11 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
             lineHeight: 1.2
           }}
         >
-          ⚠️ Spontane Metamagie verlängert die Zauberzeit auf 1 volle Aktion (oder +1 Runde)!
+          ⚠️ Spontaneous Metamagic increases casting time to 1 full round action (or +1 round)!
         </div>
 
         <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '4px', textAlign: 'center', marginBottom: '12px', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
-          Benötigter Grad: <span id="finalCastLevelText">Grad {finalLevel}</span>
+          Required Level: <span id="finalCastLevelText">Level {finalLevel}</span>
         </div>
 
         <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
@@ -424,7 +424,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
               opacity: isTooHigh ? 0.5 : 1
             }}
           >
-            Wirken
+            Cast
           </button>
           <button
             onClick={onCancel}
@@ -439,7 +439,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
               color: 'var(--ink)'
             }}
           >
-            Abbrechen
+            Cancel
           </button>
         </div>
       </div>

@@ -108,8 +108,8 @@ export default function App() {
           <div className="hp-emblem" style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'radial-gradient(circle, #f4e8c1 0%, #c8a96e 70%, #9a7a2e 100%)', border: '2px double var(--red)', display: 'inline-flex', justifyContent: 'center', alignItems: 'center', animation: 'spin 2s linear infinite', marginBottom: '15px' }}>
             <span style={{ fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>D&D</span>
           </div>
-          <h2 style={{ color: 'var(--red)', letterSpacing: '1px' }}>Lade D&D 3.5e Combat Engine...</h2>
-          <p style={{ color: 'var(--inkl)', fontStyle: 'italic', fontSize: '11px' }}>Bitte warten, Abenteuer wird initialisiert.</p>
+          <h2 style={{ color: 'var(--red)', letterSpacing: '1px' }}>Loading D&D 3.5e Combat Engine...</h2>
+          <p style={{ color: 'var(--inkl)', fontStyle: 'italic', fontSize: '11px' }}>Please wait, adventure is initializing.</p>
           <style>{`
             @keyframes spin {
               0% { transform: rotate(0deg); }
@@ -136,14 +136,14 @@ export default function App() {
       content = (
         <div className="sheet" style={{ maxWidth: '500px', margin: '40px auto', textAlign: 'center', padding: '24px' }}>
           <h2 style={{ fontFamily: "'IM Fell English SC', serif", color: 'var(--red)', fontSize: '20px', marginBottom: '10px' }}>
-            Kein aktiver Charakter
+            No Active Character
           </h2>
           <hr style={{ border: 'none', borderTop: '0.5px solid var(--pb)', margin: '10px 0 20px' }} />
           <p style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--inkm)', lineHeight: 1.5, marginBottom: '20px' }}>
-            Es ist aktuell kein aktiver Spieler-Charakter (PC) in dieser Sitzung geladen.
+            There is currently no active player character (PC) loaded in this session.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-            <button className="btn btn-p" onClick={() => window.location.reload()}>🔄 Seite neu laden</button>
+            <button className="btn btn-p" onClick={() => window.location.reload()}>🔄 Reload Page</button>
             <button 
               className="btn" 
               onClick={() => {
@@ -154,7 +154,7 @@ export default function App() {
                 CombatState.setRole('choice');
               }}
             >
-              🎭 Rolle wechseln
+              🎭 Change Role
             </button>
           </div>
         </div>

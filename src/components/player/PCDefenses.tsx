@@ -18,13 +18,13 @@ export const PCDefenses: React.FC<PCDefensesProps> = ({ pc }) => {
           onClick={() => setSubTab('defenses')}
           className={`sub-tab-btn ${subTab === 'defenses' ? 'active' : ''}`}
         >
-          🛡️ Rettung &amp; Verteidigung
+          🛡️ Saves &amp; Defenses
         </button>
         <button
           onClick={() => setSubTab('buffs')}
           className={`sub-tab-btn ${subTab === 'buffs' ? 'active' : ''}`}
         >
-          ✨ Buffs &amp; Auren ({buffCount})
+          ✨ Buffs &amp; Auras ({buffCount})
         </button>
       </div>
 

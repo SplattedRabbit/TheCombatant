@@ -1,0 +1,1033 @@
+CHAPTER 9: 
+ADVENTURING
+ 
+
+ 
+ 
+163
+Table 9–4: Hampered Movement 
+                                                                Additional                                
+Condition               Example               Movement               Cost 
+Difficult terrain Rubble, undergrowth, steep ×2 
+ slope, ice, cracked and pitted surface, 
+                                uneven                                floor                                
+Obstacle1 Low wall, deadfall, broken pillar ×2 
+Poor visibility Darkness or fog ×2 
+Impassable Floor-to-ceiling wall, closed door, — 
+                                blocked                                passage                                
+1 May require a skill check
+ 
+ 
+ Local, for exploring an area, measured in feet per minute. 
+ Overland,  for  getting  from  place  to  place,  measured  in  miles  per  
+hour or miles per day. 
+ 
+Modes of Movement: While moving at the different move-
+ment scales, creatures generally walk, hustle, or run. 
+Walk:  A  walk  represents  unhurried  but  purposeful  move-
+ment at 3 miles per hour for an unencumbered human. 
+Hustle: A hustle is a jog at about 6 miles per hour for an 
+unencumbered  human.  A  character  moving  his  or  her  
+speed twice in a single round, or moving that speed in 
+the  same  round  that  he  or  she  performs  a  standard  
+action  or  another  move  action  is  hustling  when  he  or  
+she moves. 
+Run (×3): Moving three times speed is a running pace 
+for  a  character  in  heavy  armor.  It  represents  about  9  
+miles per hour for a human in full plate. 
+Run (×4): Moving four times speed is a running pace 
+for a character in light, medium, or no armor. It repre-
+sents  about  12  miles  per  hour  for  an  unencumbered  
+human, or 8 miles per hour for a human in chainmail. 
+ 
+TACTICAL MOVEMENT 
+Use  tactical  movement  for  combat,  as  detailed  on  
+page  147.  Characters  generally  don’t  walk  during  
+combat—they  hustle  or  run.  A  character  who  
+moves  his  or  her  speed  and  takes  some  action,  
+such as attacking or casting a spell, is hustling for 
+about  half  the  round  and  doing  something  
+else the other half. 
+Hampered Movement: Difficult ter-
+rain,   obstacles,   or   poor   visibility   can   
+hamper  movement.  When  movement  is  
+hampered, each square moved into usu-
+ally  counts  as  two  squares,  effectively  
+reducing  the  distance  that  a  character  
+can  cover  in  a  move.  For  example,  a  
+character   moving   through   difficult   
+terrain  (such  as  undergrowth)  pays  2  
+squares    of    movement    per    square    
+moved into (double the normal cost). 
+If  more  than  one  condition  applies,  
+multiply  together  all  additional  costs  
+that  apply.  (This  is  a  specific  exception  
+to  the  normal  rule  for  doubling;  
+see   page   304.)   For   instance,   a   
+character  moving  through  diffi-
+cult   terrain   in   darkness   would   
+pay  4  squares  of  movement  per  
+square  moved  into  (double  cost  
+times  double  cost  is  quadruple  
+cost). 
+In   some   situations,   your   movement   may   be   so   
+hampered  that  you  don’t  have  sufficient  speed  even  to  move  5  
+feet  (1  square).  In  such  a  case,  you  may  use  a  full-round  action  to  
+move  5  feet  (1  square)  in  any  direction,  even  diagonally.  Even  
+though  this  looks  like  a  5-foot  step,  it’s  not,  and  thus  it  provokes  
+attacks  of  opportunity  normally.  (You  can’t  take  advantage  of  this  
+rule   to   move   through   impassable   terrain   or   to   move   when   all   
+movement is prohibited to you, such as while paralyzed.) 
+You  can’t  run  or  charge  through  any  square  that  would  hamper  
+your movement. 
+ 
+LOCAL MOVEMENT 
+Characters  exploring  an  area  use  local  movement,  measured  in  feet  
+per minute. 
+Walk: A character can walk without a problem on the local scale. 
+Hustle:  A  character  can  hustle  without  a  problem  on  the  local  
+scale.  See  Overland  Movement,  below,  for  movement  measured  in  
+miles per hour. 
+Run: A character with a Constitution score of 9 or higher can run 
+for a minute without a problem. Generally, a character can run for a 
+minute  or  two  before  having  to  rest  for  a  minute  (see  Run,  page  
+144). 
+ 
+ 
+Adventurers prepare for their 
+next challenge. 
+ 
+Illus. by J. Jarvis 
+CHAPTER 9: 
+ADVENTURING
+ 
+
+ 
+ 
+164 
+Table 9–5: Terrain and Overland Movement 
+Terrain  Highway Road or Trail Trackless 
+Desert, sandy ×1 ×1/2 ×1/2 
+Forest                            ×1                            ×1                            ×1/2                            
+Hills                               ×1                               ×3/4                               ×1/2                               
+Jungle                            ×1                            ×3/4                            ×1/4                            
+Moor                             ×1                             ×1                             ×3/4                             
+Mountains                   ×3/4                    ×3/4                    ×1/2                   
+Plains                            ×1                            ×1                            ×3/4                            
+Swamp                          ×1                          ×3/4                          ×1/2                          
+Tundra, frozen ×1 ×3/4 ×3/4 
+ 
+Table 9–6: Mounts and Vehicles 
+Mount/Vehicle Per Hour Per Day 
+Mount (carrying load) 
+Light horse or light warhorse 6 miles 48 miles 
+Light horse (151–450 lb.)
+1
+                    4                    miles                    32                    miles                    
+Light warhorse (231–690 lb.)
+1
+              4              miles                 32              miles              
+Heavy horse or heavy warhorse 5 miles 40 miles 
+Heavy horse (201–600 lb.)
+1
+ 3-1/2 miles 28 miles 
+Heavy warhorse (301–900 lb.)
+1
+ 3-1/2 miles 28 miles 
+Pony or warpony 4 miles 32 miles 
+Pony (76–225 lb.)
+1
+                                3                                miles                                24                                miles                                
+Warpony (101–300 lb.)
+1
+                        3                        miles                        24                        miles                        
+Donkey or mule 3 miles 24 miles 
+Donkey (51–150 lb.)
+1
+                            2                            miles                            16                            miles                            
+Mule (231–690 lb.)
+1
+                              2                              miles                              16                              miles                              
+Dog, riding 4 miles 32 miles 
+Dog, riding (101–300 lb.)
+1
+                    3                    miles                    24                    miles                    
+Cart or wagon 2 miles 16 miles 
+Ship 
+Raft or barge (poled or towed)
+2
+ 1/2 mile 5 miles 
+Keelboat (rowed)
+2
+ 1 mile 10 miles 
+Rowboat (rowed)
+2
+ 1-1/2 miles 15 miles 
+Sailing ship (sailed) 2 miles 48 miles 
+Warship (sailed and rowed) 2-1/2 miles 60 miles 
+Longship (sailed and rowed) 3 miles 72 miles 
+Galley (rowed and sailed) 4 miles 96 miles 
+1 Quadrupeds, such as horses, can carry heavier loads than characters 
+can. See Carrying Capacity, above, for more information. 
+2 Rafts, barges, keelboats, and rowboats are used on lakes and rivers. 
+If going downstream, add the speed of the current (typically 3 miles 
+per hour) to the speed of the vehicle. In addition to 10 hours of 
+being rowed, the vehicle can also float an additional 14 hours, if 
+someone can guide it, so add an additional 42 miles to the daily 
+distance traveled. These vehicles can’t be rowed against any 
+significant current, but they can be pulled upstream by draft animals 
+on the shores.
+ 
+ 
+OVERLAND MOVEMENT 
+Characters   covering   long   distances   cross-country   use   overland   
+movement.  Overland  movement  is  measured  in  miles  per  hour  or  
+miles  per  day.  A  day  represents  8  hours  of  actual  travel  time.  For  
+rowed  watercraft,  a  day  represents  10  hours  of  rowing.  For  a  sailing  
+ship, it represents 24 hours. 
+Walk:  A  character  can  walk  8  hours  in  a  day  of  travel  without  a  
+problem. Walking for longer than that can wear him or her out (see 
+Forced March, below). 
+Hustle:  A  character  can  hustle  for  1  hour  without  a  problem.  
+Hustling  for  a  second  hour  in  between  sleep  cycles  deals  1  point  of  
+nonlethal damage, and each additional hour deals twice the damage 
+taken  during  the  previous  hour  of  hustling.  A  character  who  takes  
+any  nonlethal  damage  from  hustling  becomes  fatigued.  A  fatigued  
+character  can’t  run  or  charge  and  takes  a  penalty  of  –2  to  Strength  
+and Dexterity. Eliminating the nonlethal damage also eliminates the 
+fatigue. 
+Run:   A   character   can’t   run   for   an   extended   period   of   time.   
+Attempts to run and rest in cycles effectively work out to a hustle. 
+Terrain:  The  terrain  through  which  a  character  travels  affects  
+how  much  distance  he  or  she  can  cover  in  an  hour  or  a  day  (see  
+Table 9–5: Terrain and Overland Movement). Travel is quickest on a 
+highway,  not  quite  as  fast  on  a  road  or  trail,  and  slowest  through  
+trackless terrain. A highway is a straight, major, paved road. A road is 
+typically  a  dirt  track.  A  trail  is  like  a  road,  except  that  it  allows  only  
+single-file travel and does not benefit a party traveling with vehicles. 
+Trackless terrain is a wild area with no paths. 
+Forced March: In a day of normal walking, a character walks for 
+8 hours. The rest of the daylight time is spent making and breaking 
+camp, resting, and eating. 
+A character can walk for more than 8 hours in a day by making a 
+forced  march.  For  each  hour  of  marching  beyond  8  hours,  a  Con-
+stitution  check  (DC  10,  +2  per  extra  hour)  is  required.  If  the  check  
+fails, the character takes 1d6 points of nonlethal damage. A character 
+who  takes  any  nonlethal  damage  from  a  forced  march  becomes  
+fatigued.   Eliminating   the   nonlethal   damage   also   eliminates   the   
+fatigue.  It’s  possible  for  a  character  to  march  into  unconsciousness  
+by pushing himself too hard. 
+Mounted  Movement:  A  mount  bearing  a  rider  can  move  at  a  
+hustle.   The   damage   it   takes   when   doing   so,   however,   is   lethal   
+damage, not nonlethal damage. The creature can also be ridden in a 
+forced  march,  but  its  Constitution  checks  automatically  fail,  and,  
+again,  the  damage  it  takes  is  lethal  damage.  Mounts  also  become  
+fatigued   when   they   take   any   damage   from   hustling   or   forced   
+marches. 
+See  Table  9–6:  Mounts  and  Vehicles  for  mounted  speeds  and  
+speeds for vehicles pulled by draft animals. 
+Waterborne  Movement:  See  Table  9–6:  Mounts  and  Vehicles  
+for speeds for water vehicles. 
+ 
+EXPLORATION 
+Adventurers  spend  time  exploring  dark  caverns,  cursed  ruins,  cat-
+acombs,  and  other  dangerous  and  forbidding  areas.  A  little  careful  
+forethought can help the characters in their adventures. 
+ 
+PREPARATIONS 
+Characters should have the supplies they need for their adventures: 
+arrows,  food,  water,  torches,  bedrolls,  or  whatever  is  needed  for  the  
+task  at  hand.  Rope,  chains,  crowbars,  and  other  tools  can  come  in  
+handy,  too.  Characters  should  have  ranged  weapons,  if  possible,  for  
+combats in which they can’t close with the enemy (or don’t want to). 
+Horses  are  useful  for  overland  journeys,  while  sure-footed  pack  
+donkeys and mules can be handy for exploring ruins and dungeons. 
+ 
+VISION AND LIGHT 
+Characters  need  a  way  to  see  in  the  dark,  dangerous  places  where  
+they  often  find  adventures.  Dwarves  and  half-orcs  have  darkvision,  
+but everyone else needs light to see by. Typically, adventurers bring 
+along torches or lanterns, and spellcasters have spells that can create 
+light.  See  Table  9–7:  Light  Sources  and  Illumination  for  the  radius  
+that a light source illuminates and how long it lasts. 
+In an area of bright light, all characters can see clearly. A creature 
+can’t hide in an area of bright light unless it is invisible or has cover. 
+In  an  area  of  shadowy  illumination,  a  character  can  see  dimly.  
+Creatures  within  this  area  have  concealment  (see  page  152)  relative  
+to that character. A creature in an area of shadowy illumination can 
+make a Hide check to conceal itself (see page 76). 
+In  areas  of  darkness,  creatures  without  darkvision  are  effectively  
+blinded.  In  addition  to  the  obvious  effects,  a  blinded  creature  has  a  
+50% miss chance in combat (all opponents have total concealment), 
+CHAPTER 9: 
+ADVENTURING
+ 
+
+ 
+ 
+165
+Table 9–7: Light Sources and Illumination 
+Object                              Bright                              Shadowy                              Duration                              
+Candle                             n/a
+1
+ 5 ft. 1 hr. 
+Everburning torch 20 ft. 40 ft. Permanent 
+Lamp, common 15 ft. 30 ft. 6 hr./pint 
+Lantern, bullseye
+2
+ 60-ft. cone 120-ft. cone 6 hr./pint 
+Lantern, hooded 30 ft. 60 ft. 6 hr./pint 
+Sunrod 30 ft. 60 ft. 6 hr. 
+Torch 20 ft. 40 ft. 1 hr. 
+ 
+Spell                                Bright                                Shadowy                                Duration                                
+Continual flame 20 ft. 40 ft. Permanent 
+Dancing lights (torches)  20 ft. (each) 40 ft. (each) 1 min. 
+Daylight 60 ft. 120 ft. 30 min. 
+Light 20 ft. 40 ft. 10 min. 
+1 A candle does not provide bright illumination, only shadowy 
+illumination. 
+2 A bullseye lantern illuminates a cone, not a radius.
+ 
+ 
+loses  any  Dexterity  bonus  to  AC,  takes  
+a   –2   penalty   to   AC,   moves   at   half   
+speed,   and   takes   a   –4   penalty   on   
+Search checks and most Strength and 
+Dexterity-based skill checks. 
+Characters   with   low-light   vision   
+(elves, gnomes, and half-elves) can see 
+objects  twice  as  far  away  as  the  given  
+radius.  Double  the  effective  radius  of  
+bright  light  and  of  shadowy  illumina-
+tion     for     such     characters.     For     
+example,   a   torch   provides   bright   
+illumination  to  a  radius  of  40  feet  
+(rather  than  20  feet)  for  a  character  
+with     low-light     vision,     and     it     
+provides  shadowy  illumination  to  a  
+radius   of   80   feet   (rather   than   40   
+feet). 
+Characters       with       darkvision       
+(dwarves  and  half-orcs)  can  see  lit  
+areas  normally  as  well  as  dark  areas  
+within 60 feet. A creature can’t hide 
+within   60   feet   of   a   character   with   
+darkvision   unless   it   is   invisible   or   has   
+cover. 
+ 
+BREAKING AND 
+ENTERING 
+There  inevitably  comes  a  time  when  a  
+character     must     break     something,     
+whether it’s a door, a chain, or a chest 
+full of treasure. 
+When   attempting   to   break   an   
+object,  you  have  two  choices:  smash  it  
+with  a  weapon  or  break  it  with  sheer  
+strength. 
+ 
+Smashing an Object 
+Smashing   a   weapon   or   shield   with   a   slashing   or   bludgeoning   
+weapon  is  accomplished  by  the  sunder  special  attack  (see  Sunder,  
+page  158).  Smashing  an  object  is  a  lot  like  sundering  a  weapon  or  
+shield,  except  that  your  attack  roll  is  opposed  by  the  object’s  AC.  
+Generally,  you  can  smash  an  object  only  with  a  bludgeoning  or  
+slashing weapon. 
+Armor  Class:  Objects  are  easier  to  hit  than  creatures  because  
+they  usually  don’t  move,  but  many  are  tough  enough  to  shrug  off  
+some damage from each blow. An object’s Armor Class is equal to 10 
++  its  size  modifier  +  its  Dexterity  modifier.  An  inanimate  object  has  
+not only a Dexterity of 0 (–5 penalty to AC), but also an additional –2 
+penalty to its AC. Furthermore, if you take a full-round action to line 
+up  a  shot,  you  get  an  automatic  hit  with  a  melee  weapon  and  a  +5  
+bonus on attack rolls with a ranged weapon. 
+Hardness:  Each  object  has  hardness—a  number  that  represents  
+how  well  it  resists  damage.  Whenever  an  object  takes  damage,  
+subtract its hardness from the damage. Only damage in excess of its 
+hardness  is  deducted  from  the  object’s  hit  points  (see  Table  9–8:  
+Common  Armor,  Weapon,  and  Shield  Hardness  and  Hit  Points;  
+Table  9–9:  Substance  Hardness  and  Hit  Points;  and  Table  9–11:  
+Object Hardness and Hit Points). 
+Hit Points: An object’s hit point total depends on what it is made 
+of  and  how  big  it  is  (see  Table  9–8,  Table  9–9,  and  Table  9–11).  
+When an object’s hit points reach 0, it’s ruined. 
+Very   large   objects   have   separate   hit   point   totals   for   
+different  sections.  For  example,  you  can  attack  and  ruin  a  
+wagon wheel without destroying the whole wagon. 
+Energy  Attacks:  Acid  and  sonic  attacks  deal  
+damage  to  most  objects  just  as  they  do  to  
+creatures;    roll    damage    and    apply    it    
+normally  after  a  successful  hit.  Elec-
+tricity  and  fire  attacks  deal  half  
+damage  to  most  objects;  divide  
+the  damage  dealt  by  2  before  
+applying the hardness. Cold 
+attacks    deal    one-quarter    
+damage   to   most   objects;   
+divide  the  damage  dealt  
+by  4  before  applying  the  
+hardness. 
+Ranged  Weapon  Dam-
+age:   Objects   take   half   
+damage from ranged weap-
+ons  (unless  the  weapon  is  a  
+siege     engine     or     something     
+similar).  Divide  the  damage  dealt  
+by  2  before  applying  the  object’s  
+hardness. 
+Ineffective  Weapons:  The  DM  may  
+determine  that  certain  weapons  just  
+can’t  effectively  deal  damage  to  certain  
+objects.  For  example,  you  may  have  a  
+hard  time  chopping  down  a  door  by  
+shooting  arrows  at  it  or  cutting  a  robe  
+with a club. 
+Immunities:  Objects  are  immune  to  
+nonlethal    damage    and    to    critical    hits.    Even    
+animated objects, which are otherwise considered 
+creatures,  have  these  immunities  because  they  
+are constructs. 
+Magic  Armor,  Shields,  and  Weapons:  Each  +1  of  
+enhancement  bonus  adds  2  to  the  hardness  of  
+armor,  a  weapon,  or  a  shield  and  +10  to  the  item’s  hit  
+points.  For  example,  a  +1  longsword  has  hardness  12  and  
+15 hp, while a +3 heavy steel shield has hardness 16 and 50 hp. 
+Vulnerability  to  Certain  Attacks:  The  DM  may  rule  that  certain  
+attacks  are  especially  successful  against  some  objects.  For  example,  
+it’s easy to light a curtain on fire, chop down a tree with an ax, or rip 
+up  a  scroll.  In  such  cases,  attacks  deal  double  their  normal  damage  
+and may (at the DM’s discretion) ignore the object’s hardness. 
+Damaged  Objects:  A  damaged  object  remains  fully  functional  until  
+the item’s hit points are reduced to 0, at which point it is destroyed. 
+For instance, the wielder of a damaged weapon takes no penalty due 
+to   the   weapon’s   damage,   and   damaged   armor   and   shields   still   
+Illus. by S. Wood 
+CHAPTER 9: 
+ADVENTURING
+ 
+
+ 
+ 
+166 
+provide their full normal bonus to AC. Damaged (but not destroyed) 
+objects can be repaired with the Craft skill (see page 70). 
+Saving   Throws:   Nonmagical,   unattended   items   never   make   
+saving   throws.   They   are   considered   to   have   failed   their   saving   
+throws,  so  they  always  are  affected  by  (for  instance)  a  disintegrate 
+spell.  An  item  attended  by  a  character  (being  grasped,  touched,  or  
+worn)  makes  saving  throws  as  the  character  (that  is,  using  the  
+character’s saving throw bonus). 
+Table 9–8: Common Armor, Weapon, 
+and Shield Hardness and Hit Points 
+Weapon or Shield Example Hardness HP
+1
+ 
+Light blade Short sword 10 2 
+One-handed blade Longsword 10 5 
+Two-handed blade Greatsword 10 10 
+Light metal-hafted weapon Light mace 10 10 
+One-handed metal-hafted weapon  Heavy mace 10 20 
+Light hafted weapon Handaxe 5 2 
+One-handed hafted weapon Battleaxe 5 5 
+Two-handed hafted weapon Greataxe 5 10 
+Projectile weapon Crossbow 5 5 
+Armor                                                —                                                special
+2
+          armor          
+   bonus × 5 
+Buckler                                              —                                              10                                              5                                              
+Light wooden shield — 5 7 
+Heavy wooden shield — 5 15 
+Light steel shield — 10 10 
+Heavy steel shield — 10 20 
+Tower shield — 5 20 
+1 The hp value given is for Medium armor, weapons, and shields. 
+Divide by 2 for each size category of the item smaller than Medium, or 
+multiply it by 2 for each size category larger than Medium. 
+2 Varies by material; see Table 9–9. 
+ 
+Table 9–9: Substance Hardness and Hit Points 
+Substance           Hardness               Hit           Points           
+Paper or cloth 0 2/inch of thickness 
+Rope 0 2/inch of thickness 
+Glass 1 1/inch of thickness 
+Ice 0 3/inch of thickness 
+Leather or hide 2 5/inch of thickness 
+Wood 5 10/inch of thickness 
+Stone 8 15/inch of thickness 
+Iron or steel 10 30/inch of thickness 
+Mithral 15 30/inch of thickness 
+Adamantine 20 40/inch of thickness 
+Table 9–10: Size and Armor Class of Objects 
+Size (Example) AC Modifier Size (Example) AC Modifier 
+Colossal (broad –8 Medium (barrel) +0 
+side of a barn)  Small (chair) +1 
+Gargantuan (narrow     –4 Tiny (book) +2 
+side of a barn)  Diminutive (scroll) +4 
+Huge (wagon) –2 Fine (potion) +8 
+Large (big door) –1 
+ 
+Table 9–11: Object Hardness and Hit Points 
+Object Hardness Hit Points Break DC 
+Rope (1 inch diam.) 0 2 23 
+Simple wooden door 5 10 13 
+Small chest 5 1 17 
+Good wooden door 5 15 18 
+Treasure                       chest                       5                       15                       23                       
+Strong wooden door 5 20 23 
+Masonry wall (1 ft. thick) 8 90 35 
+Hewn stone (3 ft. thick) 8 540 50 
+Chain                                        10                                        5                                        26                                        
+Manacles                       10                       10                       26                       
+Masterwork                       manacles                       10                       10                       28                       
+Iron door (2 in. thick) 10 60 28 
+ 
+Table 9–12: DCs to Break or Burst Items 
+Strength Check to: DC 
+Break down simple door 13 
+Break down good door 18 
+Break down strong door 23 
+Burst rope bonds 23 
+Bend iron bars 24 
+Break down barred door 25 
+Burst chain bonds 26 
+Break down iron door 28 
+ 
+Condition                                 DC                                 Adjustment
+1
+ 
+Hold portal                                             +5                                             
+Arcane lock                                           +10                                           
+1 If both apply, use the larger number. 
+HOW  PLAYERS CAN HELP 
+Here are a few ways in which you can help the game go more smoothly.
+Mapping: Someone should keep a map of places you explorer so that
+you  know  where  you’ve  been  and  where  you  have  yet  to  explore.  The
+responsibility for mapping can be rotated from person to person, if more
+than  one  player  likes  to  do  this  sort  of  thing,  but  as  a  rule  the  same
+person should be the mapper through a single playing session. 
+A map is most useful and most important when the characters are in
+a  dungeon  setting—an  environment  with  lots  of  corridors,  doors,  and
+rooms  that  would  be  almost  impossible  to  navigate  through  without  a
+record of what parts the characters have already explored. 
+To make a map, you start with a blank sheet of paper (graph paper is
+best)  and  draw  the  floor  plan  of  the  dungeon  as  you  and  your  group  
+discover  it  and  the  Dungeon  Master  describes  what  you’re  seeing.  For
+example,  when  the  characters  come  to  a  new,  empty  room,  the  DM
+might  say,  “The  door  you  have  opened  leads  east  into  a  room  23  feet
+wide and 30 feet deep. The door is in the middle of the room’s west wall,
+and  you  can  see  two  other  doors:  one  in  the  north  wall  near  the  corner
+with  the  east  wall,  and  one  in  the  east  wall  about  5  feet  south  of  the
+middle.” Or, if it’s easier for you to visualize, the DM might express the
+information  this  way:  “From  the  north  edge  of  the  door,  the  wall  goes  
+two squares north, six squares east, five squares south, six squares west, 
+and  then  north  back  to  the  door.  There’s  a  door  on  the  sixth  square  o
+f 
+the north wall and on the fourth square of the east wall.” 
+Party  Notes:It  often  pays  to  keep  notes:  names  of  NPCs  the  heroes  
+have  met,  treasure  the  group  has  won,  secrets  the  characters  have  
+learned,  and  so  forth.  The  Dungeon  Master  might  keep  track  of  all  this  
+information  for  his  or  her  own  benefit,  but  even  so  it  can  be  handy  for  
+you to jot down facts that might be needed later—at the least, doing this 
+prevents  you  from  having  to  ask  the  Dungeon  Master,  “What  was  the  
+name of that old man we met in the woods last week?” 
+Character Notes: You should keep track of hit points, spells, and other 
+characteristics about your character that change during an adventure on 
+scratch paper. Between playing sessions, you might decide to write some 
+of  this  information  directly  on  your  character  sheet—but  don’t  worry  
+about  updating  the  sheet  constantly.  For  instance,  it  would  be  tedious  
+(and  could  make  a  mess  of  the  sheet)  if  you  erased  your  character’s  
+current hit points and wrote in a new number every time he or she took 
+damage. 
+CHAPTER 9: 
+ADVENTURING
+ 
+
+ 
+ 
+167
+Magic  items  always  get  saving  throws.  A  magic  item’s  Fortitude,  
+Reflex,  and  Will  save  bonuses  are  equal  to  2  +  one-half  its  caster  
+level.  An  attended  magic  item  either  makes  saving  throws  as  its  
+owner  or  uses  its  own  saving  throw  bonus,  whichever  is  better.  
+(Caster  levels  of  magic  items  are  covered  in  the  Dungeon  Master’s  
+Guide.) 
+Example of Breaking an Object: Lidda, a rogue, can’t pick the lock on 
+the big treasure chest that Mialee, the elf, just found behind a secret 
+door,  so  Krusk,  the  barbarian,  volunteers  to  open  it  in  a  more  
+straightforward  manner.  The  chest,  made  of  wood,  has  hardness  5,  
+so the chest takes only 5 points of damage from his attack. The wood 
+is  1  inch  thick,  so  it  had  10  hit  points.  Now  it  has  5.  Krusk  has  
+gouged the wood but not yet broken the chest open. On his second 
+attack,  he  deals  4  points  of  damage.  That’s  lower  than  the  chest’s  
+hardness, so the chest takes no damage at all—a glancing blow. His 
+third  blow,  however,  deals  12  points  of  damage  (which  means  the  
+chest takes 7), and the chest breaks open. 
+Animated   Objects:   Animated   objects   (see   the   Monster   Manual) 
+count  as  creatures  for  purposes  of  determining  their  Armor  Class  
+(do not treat them as inanimate objects). 
+ 
+Breaking Items 
+When a character tries to break something with sudden force rather 
+than by dealing damage, use a Strength check (rather than an attack 
+roll  and  damage  roll,  as  with  the  sunder  special  attack)  to  see  
+whether   he   or   she   succeeds.   The   DC   depends   more   on   the   
+construction  of  the  item  than  on  the  material.  For  instance,  an  iron  
+door with a weak lock can be forced open much more easily than it 
+can be hacked down. 
+If an item has lost half or more of its hit points, the DC to break it 
+drops by 2. 
+Larger  and  smaller  creatures  get  size  bonuses  and  size  penalties  
+on   Strength   checks   to   break   open   doors   as   follows:   Fine   –16,   
+Diminutive  –12,  Tiny  –8,  Small  –4,  Large  +4,  Huge  +8,  Gargantuan  
++12, Colossal +16. 
+A  crowbar  (page  126)  or  portable  ram  (page  127)  improves  a  
+character’s chance of breaking open a door. 
+ 
+MARCHING ORDER 
+The  characters  in  a  party  need  to  decide  what  their  matching  order  
+is.  Marching  order  is  the  relative  position  of  the  characters  to  each  
+other  while  they  are  moving  (who  is  in  front  of  or  next  to  whom).  
+Arrange  your  miniature  figures  on  the  battle  grid  to  represent  the  
+PC’s  relative  locations.  You  can  change  the  marching  order  as  the  
+party  enters  different  areas,  as  characters  get  wounded,  or  at  other  
+times for any reason. 
+In  a  marching  order,  the  sturdiest  characters,  such  as  barbarians,  
+fighters,  and  paladins,  usually  go  in  front.  Wizards,  sorcerers,  and  
+bards  often  find  a  place  in  the  middle  or  back  of  the  party,  where  
+they  are  protected  from  direct  attack.  Clerics  and  druids  are  good  
+choices  for  rear  guard.  They’re  tough  enough  to  withstand  a  rear  
+attack,  and  they’re  important  enough  as  healers  that  it’s  risky  to  put  
+them  in  the  front  line.  Rogues,  rangers,  and  monks  might  serve  as  
+stealthy  scouts,  though  they  have  to  be  careful  if  they’re  away  from  
+the safety of the party. 
+If the characters are not far apart, they can protect each other, but 
+they’re  more  vulnerable  to  many  spells  when  they  cluster  together,  
+so sometimes it pays to spread out a little. 
+ 
+TREASURE 
+When  characters  undertake  adventures,  they  usually  end  up  with  
+some  amount  of  silver,  gold,  gems,  or  other  treasure.  These  rewards  
+might  be  ancient  treasures  that  they  have  unearthed,  the  hoards  of  
+the  villains  they  have  conquered,  or  pay  from  a  patron  who  hired  
+them to go on the adventure. 
+Splitting  Treasure:  Split  treasure  evenly  among  the  characters  
+who  participated.  Some  characters  may  be  of  higher  level  than  
+others,  or  some  might  happen  to  have  done  more  on  a  particular  
+adventure  than  others  did,  but  the  simplest,  fastest,  and  best  policy  
+is to split treasure up evenly. 
+Illus. by J. Foster 
+Lidda savors the rewards of opening the treasure chest.
+CHAPTER 9: 
+ADVENTURING
+ 
+
+ 
+ 
+168 
+Special  Items:  While  gems  can  be  
+cashed  in  for  gold  pieces  and  the  coins  
+split evenly among adventurers, some 
+treasures  can’t  be  split  up  so  easily.  
+Magic   items,   for   instance,   can   be   
+sold,  but  only  for  half  of  what  they  
+would   cost   to   buy,   so   it’s   usually   
+better  for  characters  to  keep  them.  
+When  a  character  gets  a  magic  item,  
+count  half  its  cost  against  his  or  her  
+share   of   the   treasure.   For   instance,   if   
+Jozan,  Lidda,  Mialee,  and  Tordek  split  a  
+treasure  of  5,000  gp  and  a  +1  large  steel  
+shield,   the   group   would   count   the   
+magic   shield   as   worth   500   gp,   
+roughly  half  the  price  someone  
+would  have  to  pay  to  
+buy    one.    Since    
+the     treasure     is     
+worth    5,500    gp    
+altogether, three char-
+acters    would    each    
+get   1,375   gp,   and   
+the   fourth   char-
+acter (probably 
+Tordek         or         
+Jozan) would get the shield (valued at 
+500 gp) plus 875 gp in coin. 
+If more than one character wants 
+a  single  item,  those  interested  in  it  
+can  bid  for  it.  For  example,  Jozan  
+and  Tordek  both  want  the  shield,  
+so    they    bid    over    how    much    
+they’re  each  willing  to  “pay”  for  
+it.  Tordek  wins  the  bid  at  800  
+gp.     That     means     the     total     
+treasure   is   5,800   gp.   Mialee,   
+Jozan,    and    Lidda    each    get    
+1,450  gp,  and  Tordek  gets  the  
+shield (800 gp) plus 650 gp. 
+A  character  can  only  bid  as  
+much  as  his  or  her  share  of  the  
+treasure would amount to, unless 
+he  or  she  has  extra  gold  pieces  
+or  treasure  to  back  up  the  bid.  
+For  example,  if  Tordek  had  no  
+other   treasure   from   earlier   
+adventures,    the    most    he    
+could   bid   for   the   magic   
+shield    is    1,250    gp—he    
+would  get  the  shield,  and  
+the    other    three    char-
+acters   would   split   the   
+5,000 gp. 
+If  no  one  is  willing  
+to  take  a  special  item,  
+the   party   members   
+should   sell   it   (for   
+half    its    cost,    as    
+listed        in        the        
+Dungeon    Master’s    
+Guide, if they can 
+find     a     buyer)     
+and split the gold evenly. 
+ 
+Costs:  Sometimes  characters  incur  costs  on  adventures.  A  char-
+acter  turned  to  stone  by  a  basilisk  may  need  a  break  enchantment 
+spell, and it costs at least 450 gp to pay a cleric to cast that spell. (See 
+Table 7–8: Goods and Services, page 128. A cleric must be at least 9th 
+level to cast break enchantment, which is a 5th-level spell). The default 
+policy  is  to  pay  these  costs  out  of  the  treasure  found  on  the  adven-
+ture,  as  a  sort  of  “adventurer’s  insurance,”  and  then  to  split  what-
+ever’s left. 
+Party  Fund: The party may also want to have a pool of 
+money  that  its  members  can  use  to  buy  things  that  
+benefit  the  whole  group,  such  as  potions  of  healing  or  
+holy water. 
+Amassing  Wealth:  When  you  and  your  friends  
+have   split   up   the   treasure   among   the   characters,   
+record your character’s share on your character sheet. 
+Soon,  he  or  she  will  have  enough  gold  to  buy  better  
+weapons and equipment, even magic items. 
+ 
+OTHER REWARDS 
+The   other   rewards   that   characters   can   
+earn,  and  there  are  many,  depend  more  
+on  the  characters’  actions  and  the  style  
+of  campaign  that  the  DM  is  running.  
+They  bear  mention,  but  the  rules  cannot  
+define  them.  These  rewards  develop  natu-
+rally in the campaign. 
+ 
+REPUTATION 
+You  can’t  put  it  in  the  bank,  but  many  
+characters  enjoy  and  even  pursue  fame  
+and   notoriety.   Someone   who   seeks   a   
+reputation    should    wear    distinctive    
+clothes  or  armor,  should  treat  bards  
+well,   and   might   even   want   to   
+invent a personal symbol for signet 
+rings,  surcoats,  banners,  and  other  
+forms of display. 
+ 
+FOLLOWERS 
+When  others  hear  of  the  characters,  they  may  
+offer  their  services  as  followers.  Followers  may  
+be  apprentices,  admirers,  henchmen,  students,  
+or sidekicks. 
+ 
+LAND 
+A  character  (or  a  party)  might  gain  land  through  
+force  of  arms  or  be  granted  a  tract  of  land  by  a  
+powerful figure. Land brings in revenue appropriate 
+to  its  type  (such  as  taxes  on  harvests  in  arable  land),  
+and  it  provides  a  place  for  a  character  (or  party)  to  
+build a stronghold of some kind. In addition to being a 
+base   and   a   safe   place,   a   stronghold   can   serve   as   a   
+church,  a  monastery,  a  wizards’  school,  or  fulfil  some  
+other purpose, as the master of the stronghold wishes. 
+ 
+TITLES AND HONORS 
+High    priests,    nobles,    and    royals    often    
+acknowledge    the    services    of    powerful    
+characters   by   granting   them   honors   and   
+titles. These awards are sometimes handed out along 
+with  gifts  of  gold  or  land,  memberships  in  elite  orders,  or  
+medals, signet rings, diadems, and other symbolic items. 
+Illus. by S. Wood 
+Gold piece 
+[exact size] 
+CHAPTER 9: 
+ADVENTURING
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+efore  setting  out  on  a  dangerous  journey  with  her  com-
+panions,  Mialee  sits  in  her  study  and  opens  her  spellbook.  
+First  she  pages  through  it,  selecting  the  spells  that  she  
+thinks will be most useful on her adventure. When she has 
+chosen  the  spells  she  wants  (which  could  mean  choosing  
+the  same  spell  more  than  once),  she  meditates  on  the  pages  that  
+describe  each  one.  The  arcane  symbols,  which  she  has  penned  by  
+hand,  would  be  nonsense  to  anyone  else,  but  they  unlock  power  
+from her mind. As she concentrates, she all but finishes casting each 
+spell  that  she  prepares.  Each  spell  now  lacks  only  its  final  trigger.  
+When  she  closes  the  book,  her  mind  is  full  of  spells,  each  of  which  
+she can complete at will in a brief time. 
+A  spell  is  a  one-time  magical  effect.  Spells  come  in  two  types:  
+arcane  (cat  by  bards,  sorcerers,  and  wizards)  and  divine  (cast  by  
+clerics,   druids,   and   experienced   paladins   and   rangers).   Some   
+spellcasters  select  their  spells  from  a  limited  list  of  spells  known,  
+while  others  have  access  to  a  wide  variety  of  options.  Most  spell-
+casters  prepare  their  spells  in  advance—whether  from  a  spellbook  
+or  through  devout  prayers  and  meditation—while  some  cast  spells  
+spontaneously  without  preparation.  Despite  these  different  ways  
+that characters use to learn or prepare their spells, when it comes to 
+casting them, the spells are very much alike. 
+Cutting  across  the  categories  of  arcane  and  divine  spells  are  the  
+eight  schools  of  magic.  These  schools  represent  the  different  ways  
+that   spells   take   effect.   This   chapter   describes   the   differences   
+between  the  eight  schools  of  magic.  In  addition,  it  provides  an  
+overview  of  the  spell  description  format,  an  extensive  discussion  of  
+how  spells  work,  information  about  what  happens  when  magical  
+effects  combine,  and  an  explanation  of  the  differences  between  the  
+kinds of special abilities, some of which are magical. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+CASTING SPELLS 
+Whether  a  spell  is  arcane  or  divine,  and  whether  a  character  
+prepares spells in advance or chooses them on the spot, casting a 
+spell works the same way. 
+ 
+HOW DOES SPELLCASTING WORK? 
+Spells operate in different ways depending on the type of spell 
+you’re casting. Here are three basic examples. 
+Charm    Person:    Tordek    is    bullying    some    goblins    into    
+revealing  the  whereabouts  of  their  camp  when  Mialee  casts  
+charm  person  on  one  of  them.  The  DM  rolls  a  Will  saving  
+throw  for  the  goblin  against  Mialee’s  save  DC  of  13  for  her  
+1st-level spells, and the save fails. Mialee is a 1st-level wizard, 
+so for the next hour the goblin regards her as his friend, and 
+she gets the information out of him. 
+Summon  Monster  I:  Lidda  is  fighting  a  hobgoblin,  and  
+Mialee  casts  summon  monster  I  to  conjure  a  celestial  dog.  
+She  can  have  the  dog  materialize  in  any  location  that  she  
+can  see  within  25  feet.  She  chooses  to  have  it  materialize  
+on  the  opposite  side  of  the  hobgoblin  from  Lidda.  One  
+round later, when Mialee is finished casting the spell, the 
+dog  appears.  It  attacks  immediately  and  gets  a  +2  bonus  
+on its attack roll because it is flanking the hobgoblin. On 
+Lidda’s  next  turn,  she  makes  a  sneak  attack  against  the  
+hobgoblin  and  kills  it.  The  dog  disappears  at  the  start  of  
+Mialee’s  next  turn  because  summon  monster  I  lasts  only  1  
+round for a 1st-level caster. 
+Burning  Hands:  Mialee  wants  to  cast  burning  hands  on  
+some  Small  centipedes,  and  she  wants  to  hit  as  many  of  
+169
+
+ 
+ 
+170 
+them  as  she  can.  She  moves  to  a  spot  that  puts  three  centipedes  
+within  15  feet  of  her,  but  none  next  to  her,  so  they  can’t  attack  her  
+while  she  is  casting  casting.  She  chooses  a  direction  and  casts  her  
+spell. A cone of magical flame shoots out 15 feet, catching the three 
+centipedes  in  its  area.  Mialee’s  player  rolls  1d4  to  see  how  much  
+damage each centipede takes and gets a result of 3. The DM makes a 
+Reflex  save  (DC  13  for  one  of  Mialee’s  1st-level  spells)  for  each  
+centipede,  and  only  one  succeeds.  Two  centipedes  take  3  points  of  
+damage  each  and  drop.  The  lucky  one  takes  half  damage  (1  point)  
+and survives. 
+Casting  a  spell  can  be  a  straightforward  process,  such  as  when  
+Jozan  casts  cure  light  wounds  to  remove  some  of  the  damage  that  
+Tordek  has  taken,  or  it  can  be  complicated,  such  as  when  Jozan  is  
+attempting to aim an insect plague by ear at a group of nagas who have 
+hidden  themselves  in  a  deeper  darkness  spell,  all  the  while  avoiding  
+the attacks of the nagas’ troglodyte servants. 
+ 
+CHOOSING A SPELL 
+First  you  must  choose  which  spell  to  cast.  If  you’re  a  cleric,  druid,  
+experienced  paladin,  experienced  ranger,  or  wizard,  you  select  from  
+among spells prepared earlier in the day and not yet cast (see Prepar-
+ing Wizard Spells, page 177, and Preparing Divine Spells, page 179). 
+If  you’re  a  bard  or  sorcerer,  you  can  select  any  spell  you  know,  pro-
+vided you are capable of casting spells of that level or higher. 
+To cast a spell, you must be able to speak (if the spell has a verbal 
+component),  gesture  (if  it  has  a  somatic  component),  and  manipu-
+late  the  material  components  or  focus  (if  any).  Additionally,  you  
+must concentrate to cast a spell—and it’s hard to concentrate in the 
+head of battle. (See below for details.) 
+If  a  spell  has  multiple  versions,  you  choose  which  version  to  use  
+when you cast it. You don’t have to prepare (or learn, in the case of a 
+bard  or  sorcerer)  a  specific  version  of  the  spell.  For  example,  resist 
+energy  protects  a  creature  from  fire,  cold,  or  other  energy  types.  You  
+choose when you cast the spell which energy type it will protect the 
+subject from. 
+Once you’ve cast a prepared spell, you can’t cast it again until you 
+prepare it again. (If you’ve prepared multiple copies of a single spell, 
+you  can  cast  each  copy  once.)  If  you’re  a  bard  or  sorcerer,  casting  a  
+spell counts against your daily limit for spells of that spell level, but 
+you can cast the same spell again if you haven’t reached your limit. 
+ 
+CONCENTRATION 
+To  cast  a  spell,  you  must  concentrate.  If  something  interrupts  your  
+concentration while you’re casting, you must make a Concentration 
+check  or  lose  the  spell.  The  more  distracting  the  interruption  and  
+the higher the level of the spell you are trying to cast, the higher the 
+DC  is  (More  powerful  spells  require  more  mental  effort.)  If  you  fail  
+the check, you lose the spell just as if you had cast it to no effect. 
+Injury:  Getting  hurt  or  being  affected  by  hostile  magic  while  
+trying to cast a spell can break your concentration and ruin the spell. 
+If  while  trying  to  cast  a  spell  you  take  damage,  you  must  make  a  
+Concentration check (DC 10 + points of damage taken + the level of 
+the  spell  you’re  casting).  If  you  fail  the  check,  you  lose  the  spell  
+without  effect.  The  interrupting  event  strikes  during  spellcasting  if  
+it comes between when you start and when you complete a spell (for 
+a  spell  with  a  casting  time  of  1  full  round  or  more)  or  if  it  comes  in  
+response  to  your  casting  the  spell  (such  as  an  attack  of  opportunity  
+provoked  by  the  spell  or  a  contingent  attack,  such  as  a  readied  
+action). 
+If  you  are  taking  continuous  damage,  such  as  from  Melf’s  acid  
+arrow,  half  the  damage  is  considered  to  take  place  while  you  are  
+casting a spell. You must make a Concentration check (DC 10 + 1/2 
+the  damage  that  the  continuous  source  last  dealt  +  the  level  of  the  
+spell  you’re  casting).  If  the  last  damage  dealt  was  the  last  damage  
+that  the  effect  could  deal  (such  as  the  last  round  of  a  Melf’s  acid  
+arrow),   then   the   damage   is   over,   and   it   does   not   distract   you.   
+Repeated  damage,  such  as  from  a  spiritual weapon, does not count as 
+continuous damage. 
+Spell: If you are affected by a spell while attempting to cast a spell 
+of your own, you must make a Concentration check or lose the spell 
+you are casting. If the spell affecting you deals damage, the DC is 10 
++ points of damage + the level of the spell you’re casting. If the spell 
+interferes with you or distracts you in some other way, the DC is the 
+spell’s  saving  throw  DC  +  the  level  of  the  spell  you’re  casting.  For  a  
+spell  with  no  saving  throw,  it’s  the  DC  that  the  spell’s  saving  throw  
+would have if a save were allowed. 
+Grappling  or  Pinned:  The  only  spells  you  can  cast  while  grap-
+pling  or  pinned  are  those  without  somatic  components  and  whose  
+material  components  (if  any)  you  have  in  hand.  Even  so,  you  must  
+make  a  Concentration  check  (DC  20  +  the  level  of  the  spell  you’re  
+casting) or lose the spell. 
+Vigorous Motion: If you are riding on a moving mount, taking a 
+bouncy ride in a wagon, on a small boat in rough water, below-decks 
+in  a  storm-tossed  ship,  or  simply  being  jostled  in  a  similar  fashion,  
+you must make a Concentration check (DC 10 + the level of the spell 
+you’re casting) or lose the spell. 
+Violent  Motion:  If  you  are  on  a  galloping  horse,  taking  a  very  
+rough  ride  in  a  wagon,  on  a  small  boat  in  rapids  or  in  a  storm,  on  
+deck  in  a  storm-tossed  ship,  or  being  tossed  roughly  about  in  a  
+similar fashion, you must make a Concentration check (DC 15 + the 
+level of the spell you’re casting) or lose the spell. 
+Violent  Weather:  You  must  make  a  Concentration  check  if  you  
+try  to  cast  a  spell  in  violent  weather.  If  you  are  in  a  high  wind  
+carrying  blinding  rain  or  sleet,  the  DC  is  5  +  the  level  of  the  spell  
+you’re casting. If you are in wind-driven hail, dust, or debris, the DC 
+is  10  +  the  level  of  the  spell  you’re  casting.  In  either  case,  you  lose  
+the spell if you fail the Concentration check. If the weather is caused 
+by a spell, use the rules in the Spell subsection above. 
+Casting  Defensively:  If  you  want  to  cast  a  spell  without  pro-
+voking  any  attacks  of  opportunity,  you  need  to  dodge  and  weave.  
+You  must  make  a  Concentration  check  (DC  15  +  the  level  of  the  
+spell you’re casting) to succeed. You lose the spell if you fail. 
+Entangled: If you want to cast a spell while entangled in a net or 
+by a tanglefoot bag (page 128) or while you’re affected by a spell with 
+similar  effects  (such  as  entangle),  you  must  make  a  DC  15  Concen-
+tration check to cast the spell. You lose the spell if you fail. 
+ 
+COUNTERSPELLS 
+It is possible to cast any spell as a counterspell. By doing so, you are 
+using  the  spell’s  energy  to  disrupt  the  casting  of  the  same  spell  by  
+another character. Counterspelling works even if one spell is divine 
+and the other arcane. 
+How  Counterspells  Work:  To  use  a  counterspell,  you  must  
+select  an  opponent  as  the  target  of  the  counterspell.  You  do  this  by  
+choosing  the  ready  action  (page  160).  In  doing  so,  you  elect  to  wait  
+to  complete  your  action  until  your  opponent  tries  to  cast  a  spell.  
+(You may still move your speed, since ready is a standard action.) 
+If  the  target  of  your  counterspell  tries  to  cast  a  spell,  make  a  
+Spellcraft  check  (DC  15  +  the  spell’s  level).  This  check  is  a  free  
+action.  If  the  check  succeeds,  you  correctly  identify  the  opponent’s  
+spell  and  can  attempt  to  counter  it.  If  the  check  fails,  you  can’t  do  
+either of these things. 
+To complete the action, you must then cast the correct spell. As a 
+general  rule,  a  spell  can  only  counter  itself.  For  example,  a  fireball 
+spell  is  effective  as  a  counter  to  another  fireball  spell,  but  not  to  any  
+other  spell,  no  matter  how  similar.  Fireball  cannot  counter  delayed 
+blast  fireball or vice versa. If you are able to cast the same spell and 
+you  have  it  prepared  (if  you  prepare  spells),  you  cast  it,  altering  it  
+slightly  to  create  a  counterspell  effect.  If  the  target  is  within  range,  
+both spells automatically negate each other with no other results. 
+Counterspelling  Metamagic  Spells:  Metamagic  feats  are  not  
+taken   into   account   when   determining   whether   a   spell   can   be   
+countered.  For  example,  a  normal  fireball  can  counter  a  maximized  

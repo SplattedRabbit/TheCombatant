@@ -1,0 +1,866 @@
+
+
+
+
+
+
+ 
+
+ 
+ 
+3
+ 
+Contents
+ 
+Introduction........................................................... 4
+ 
+Character Creation Summary........................ 6
+ 
+Chapter 1: Abilities.............................................. 7
+Ability Scores ....................................................... 7
+The Abilities ......................................................... 8
+Changing Ability Scores.................................10
+ 
+Chapter 2: Races..................................................11
+Choosing a Race ................................................11
+Racial Characteristics ......................................11
+Humans ...............................................................12
+Dwarves ...............................................................14
+Elves......................................................................15
+Gnomes ................................................................16
+Half-Elves............................................................18
+Half-Orcs .............................................................18
+Halflings ..............................................................19
+ 
+Chapter 3: Classes...............................................21
+The Classes..........................................................21
+Class and Level Bonuses .................................21
+Level-Dependent Benefits .............................22
+Class Descriptions ............................................23
+Barbarian .............................................................24
+Bard .......................................................................26
+Cleric ....................................................................30
+Druid.....................................................................33
+Fighter..................................................................37
+Monk ....................................................................39
+Paladin..................................................................42
+Ranger ..................................................................46
+Rogue....................................................................49
+Sorcerer................................................................51
+Wizard ..................................................................55
+Experience and Levels ....................................58
+Multiclass Characters ......................................59
+ 
+Chapter 4: Skills..................................................61
+Skill Summary ...................................................61
+Acquiring Skill Ranks .....................................61
+Using Skills ........................................................62
+Skill Descriptions .............................................66
+ 
+Chapter 5: Feats...................................................87
+Acquiring Feats .................................................87
+Prerequisites .......................................................87
+Types of Feats.....................................................87
+Feat Descriptions ..............................................89
+ 
+Chapter 6: Description.................................. 103
+Alignment ........................................................ 103
+Religion ............................................................ 106
+Vital Statistics ................................................. 109
+Looks, Personality, 
+and Background ........................................ 110
+Customizing Your Character ..................... 110
+ 
+Chapter 7: Equipment................................... 111
+Equipping a Character ................................. 111
+Wealth and Money ....................................... 112
+Weapons ........................................................... 112
+Armor ................................................................ 122
+Goods and Services ........................................ 126
+ 
+Chapter 8: Combat........................................... 133
+The Battle Grid................................................ 133
+How Combat Works ..................................... 133
+Combat Statistics............................................ 133
+Combat Basics ................................................. 135
+Initiative ........................................................... 136
+Attacks of Opportunity ................................ 137
+Actions in Combat ......................................... 138
+Injury and Death ............................................ 145
+Movement, Position, 
+And Distance .............................................. 146
+Combat Modifiers.......................................... 150
+Special Attacks ................................................ 154
+Special Initiative Actions ............................ 160
+ 
+Chapter 9: Adventuring................................ 161
+Carrying Capacity .......................................... 161
+Movement ........................................................ 162
+Exploration ...................................................... 164
+Treasure............................................................. 167
+Other Rewards ................................................ 168
+ 
+Chapter 10: Magic............................................. 169
+Casting Spells .................................................. 169
+Spell Descriptions.......................................... 172
+Arcane Spells ................................................... 177
+Divine Spells.................................................... 179
+Special Abilities .............................................. 180
+ 
+Chapter 11: Spells............................................. 181
+Bard Spells........................................................ 181
+Cleric Spells ..................................................... 183
+Cleric Domains ............................................... 185
+Druid Spells ..................................................... 189
+Paladin Spells .................................................. 191
+Ranger Spells...................................................191
+Sorcerer/Wizard Spells ................................ 192
+Spells..................................................................
+196
+ 
+Appendix: General Guidelines 
+and Glossary.................................................. 304
+ 
+Index...................................................................... 315
+ 
+Character Sheet................................................. 318
+ 
+List of Numbered Tables 
+Table 1–1: Ability Modifiers 
+and Bonus Spells ............................................8
+Table 2–1: Racial Ability Adjustments ...... 12
+Table 3–1: Base Save and 
+Base Attack Bonuses .................................. 22
+Table 3–2: Experience and Level- 
+Dependent Benefits ................................... 22
+Table 3–3: The Barbarian ............................... 25
+Table 3–4: The Bard ......................................... 27
+Table 3–5: Bard Spells Known ..................... 28
+Table 3–6: The Cleric ...................................... 31
+Table 3–7: Deities ............................................. 32
+Table 3–8: The Druid ...................................... 35
+Table 3–9: The Fighter.................................... 39
+Table 3–10: The Monk.................................... 40
+Table 3–11: Small or Large Monk
+Unarmed Damage .......................................41
+Table 3–12: The Paladin..................................43
+Table 3–13: The Ranger ..................................46
+Table 3–14: Ranger Favored Enemies ........47
+Table 3–15: The Rogue....................................49
+Table 3–16: The Sorcerer ................................52
+Table 3–17: Sorcerer Spells Known ............54
+Table 3–18: The Wizard ..................................55
+Table 4–1: Skill Points per Level ..................62
+Table 4–2: Skills ................................................63
+Table 4–3: Difficulty Class Examples .........64
+Table 4–4: Example Opposed Checks ........64
+Table 4–5: Skill Synergies ..............................66
+Table 4–6: Example Ability Checks ............66
+Table 5–1: Feats .................................................90
+Table 6–1: Creature, Race, and 
+Class Alignments ...................................... 104
+Table 6–2: Deities by Race .......................... 106
+Table 6–3: Deities by Class.......................... 106
+Table 6–4: Random Starting Ages ............ 109
+Table 6–5: Aging Effects .............................. 109
+Table 6–6: Random Height 
+and Weight ................................................. 109
+Table 7–1: Random Starting Gold ............ 111
+Table 7–2: Coins............................................. 112
+Table 7–3: Trade Goods................................ 112
+Table 7–4 Tiny and Large 
+Weapon Damage....................................... 114
+Table 7–5: Weapons ...................................... 116
+Table 7–6: Armor and Shields.................... 123
+Table 7–7: Donning Armor......................... 123
+Table 7–8: Goods and Services................... 128
+Table 8–1: Size Modifiers ............................ 134
+Table 8–2: Actions in Combat.................... 141
+Table 8–3: Tactical Speed ............................ 147
+Table 8–4: Creature Size and Scale ........... 149
+Table 8–5: Attack Roll Modifiers .............. 151
+Table 8–6: Armor Class Modifiers ............ 151
+Table 8–7: Special Attacks........................... 154
+Table 8–8: Common Armor, Weapon, and 
+Shield Hardness and Hit Points .......... 158
+Table 8–9: Turning Undead ....................... 159
+Table 8–10: Two-Weapon 
+Fighting Penalties .................................... 160
+Table 9–1: Carrying Capacity ..................... 162
+Table 9–2: Carrying Loads........................... 162
+Table 9–3: Movement and Distance ........ 162
+Table 9–4: Hampered Movement............. 163
+Table 9–5: Terrain and Overland 
+Movement .................................................. 164
+Table 9–6: Mounts and Vehicles............... 164
+Table 9–7: Light Sources 
+and Illumination....................................... 165
+Table 9–8: Common Armor, Weapon, and 
+Shield Hardness and Hit Points ............... 166
+Table 9–9: Substance Hardness 
+and Hit Points............................................ 166
+Table 9–10: Size and Armor Class 
+of Objects .................................................... 166
+Table 9–11: Object Hardness 
+and Hit Points............................................ 166
+Table 9–12: DCs to Break or 
+Burst Items ................................................. 166
+Table 10–1: Items Affected by 
+Magical Attacks ......................................... 177
+T
+ABLE OF 
+CONTENTS
+ 
+
+ 
+ 
+4 
+Introduction 
+This  is  the  Dungeons  &  Dragons®  Roleplaying  Game,  the  game  
+that  defines  the  genre  and  has  set  the  standard  for  fantasy  role-
+playing for more than 30 years. 
+D&D®  is  a  game  of  your  imagination  in  which  you  participate  in  
+thrilling adventures and dangerous quests by taking on the role of a 
+hero—a  character  you  create.  Your  character  might  be  a  strong  
+fighter or a clever rogue, a devout cleric or a powerful wizard. With a 
+few  trusted  allies  at  your  side,  you  explore  ruins  and  monster-filled  
+dungeons in search of treasure. The game offers endless possibilities 
+and  a  multitude  of  choices—more  choices  than  even  the  most  
+sophisticated computer game, because you can do whatever you can 
+imagine. 
+ 
+THE D&D GAME 
+The  D&D  game  is  a  fantasy  game  of  your  imagination.  It’s  part  
+acting,  part  storytelling,  part  social  interaction,  part  war  game,  and  
+part dice rolling. You and your friends create characters that develop 
+and  grow  with  each  adventure  they  complete.  One  player  is  the  
+Dungeon  Master  (DM).  The  DM  controls  the  monsters  and  ene-
+mies,  narrates  the  action,  referees  the  game,  and  sets  up  the  adven-
+tures. Together, the Dungeon Master and the players make the game 
+come alive. 
+This Player’s  Handbook  has  all  the  rules  players  need  to  create  
+characters, select equipment, and engage in combat with a variety of 
+supernatural and mythical foes. 
+The Dungeon Master’s Guide, available separately, provides the DM 
+with  advice,  guidelines,  and  everything  he  or  she  needs  to  create  
+challenges,  adventures,  and  full-fledged  D&D  campaigns,  including  
+sections on prestige classes, magic items, and character rewards. 
+The Monster  Manual,  available  separately,  contains  material  that  
+players  and  DMs  alike  will  find  useful.  With  hundreds  of  monsters  
+to  populate  all  levels  of  dungeons,  this  tome  also  includes  monster  
+creation   rules,   information   on   playing   monsters   as   characters,   
+details  on  monster  tactics,  and  powered-up  versions  of  standard  
+creatures. 
+Together,  these  three  volumes  comprise  the  core  rules  for  the  
+Dungeons & Dragons game. 
+ 
+THREE DIMENSIONS 
+The Dungeons  &  Dragons game is a game of imagination, but it 
+is  also  a  game  of  tactics  and  strategy.  Miniatures  and  a  battle  grid  
+provide  the  best  way  to  visualize  the  action.  Miniatures,  represent-
+ing  characters  and  monsters  in  the  game,  can  be  purchased  from  
+most  hobby  shops.  The  Dungeon  Master’s  Guide  includes  a  paper  
+battle grid. More durable versions may be purchased separately. 
+The game assumes the use of miniatures and a battle grid, and the 
+rules are written from this perspective. 
+ 
+CHARACTERS 
+Your  characters  star  in  the  adventures  you  play,  just  like  the  heroes  
+of a book or movie. As a player, you create a character using the rules 
+in  this  book.  Your  character  might  be  a  savage  barbarian  from  the  
+frozen wastes or a clever rogue with a quick wit and a quicker blade. 
+You  might  be  a  deadly  archer  trained  in  survival  techniques  or  a  
+wizard   who   has   mastered   the   arcane   arts.   As   your   character   
+participates  in  adventures,  he  or  she  gains  experience  and  becomes  
+more powerful. 
+ 
+ADVENTURES 
+Your  character  is  an  adventurer,  a  hero  who  sets  out  on  epic  quests  
+for  fortune  and  glory.  Other  characters  join  your  adventuring  party  
+to explore dungeons and battle monsters such as the terrible dragon 
+or the carnivorous troll. These quests unfold as stories created by the 
+actions   your   characters   perform   and   the   situations   your   DM   
+presents. 
+A Dungeons  &  Dragons  adventure  features  plenty  of  action,  
+exciting  combat,  terrifying  monsters,  epic  challenges,  and  all  kinds  
+of  mysteries  to  uncover.  What  lies  at  the  heart  of  the  dungeons?  
+What waits around the next corner or behind the next door? Playing 
+the  roles  of  your  characters,  you  and  your  friends  face  the  dangers  
+and explore a world of medieval fantasy. 
+One  adventure  might  play  out  in  a  single  game  session;  another  
+might  stretch  across  several  sessions  of  play.  A  session  lasts  as  long  
+as you and your friends want to play, from a couple of hours to an all-
+day  affair.  The  game  can  be  stopped  at  any  time  and  picked  up  
+wherever you left off when everyone gets back together. 
+Every  adventure  is  different,  every  quest  unique.  Your  character  
+might  explore  ancient  ruins  guarded  by  devious  traps  or  loot  the  
+tomb of a long-forgotten wizard. You might sneak into a castle to spy 
+on  an  enemy  or  face  the  life-draining  touch  of  an  undead  creature.  
+Anything  is  possible  in  a  Dungeons  &  Dragons  game,  and  your  
+character can try to do anything you can imagine. 
+ 
+PLAYING THE GAME 
+Dungeons & Dragons uses a core mechanic to resolve all actions 
+in the game. This central game rule keeps play fast and intuitive. 
+The  Core  Mechanic:  Whenever  you  attempt  an  action  that  has  
+some  chance  of  failure,  you  roll  a  twenty-sided  die  (d20).  To  deter-
+mine  if  your  character  succeeds  at  a  task  (such  as  attacking  a  mon-
+ster or using a skill), you do this: 
+ 
+WHY A REVISION? 
+The  new  Dungeons  &  Dragons  game  debuted  in  2000.  In  the  three
+years  since  the  d20  Open  System  energies  the  RPG  industry,  we’ve
+gathered  tons  of  data  on  how  the  game  is  being  played.  We  consider
+D&D to be a living game that constantly evolves as it is played. 
+We’ve gathered feedback from as many people who have played D&D
+as  we  could.  We’ve  talked  to  you  at  conventions,  examined  countless
+message boards devoted to the game, and collected information from a
+variety  of  customer-response  outlets  including  our  customer  service
+department. We used all this data to retool the game from the ground up
+and incorporate everyone’s suggestions. We listened to what you had to
+say,  and  we  responded  enthusiastically  to  improve  the  game  and  this
+product. 
+If this is your first experience with D&D, we welcome you to a wonder-
+ful world of adventure and imagination. If you used the prior version o
+f
+this book, rest assured that this revision is a testament to our dedication 
+to  continuous  product  improvement.  We’ve  updated  errata,  clarified  
+rules, and made the game even better than it was. But also rest assured 
+that this is an upgrade of the d20 System, not a new edition of the game. 
+This revision is compatible with all existing products, and those products 
+can be used with the revision with only minor adjustments. 
+What’s  new  in  the  revised  Player’s  Handbook?  We’ve  increased  the  
+number  of  feats  and  spells  to  choose  from,  and  we’ve  added  new  class  
+features  to  the  barbarian,  bard,  druid,  monk,  ranger,  and  sorcerer.  The  
+entire book has been polished and refined, all in response to your feed-
+back  and  to  reflect  the  way  the  game  is  actually  being  played.  We’ve  
+streamlined  some  rules,  expanded  others.  We’ve  overhauled  skills  and  
+spells. 
+Take a look, play the game. We think you’ll like how everything turned 
+out. 
+INTRODUCTION
+ 
+
+ 
+ 
+5
+ Roll a d20. 
+ Add any relevant modifiers. 
+ Compare the result to a target number. 
+If  the  result  equals  or  exceeds  the  target  number  (set  by  the  DM  
+or given in the rules), your character succeeds. If the result is lower 
+than the target number, you fail. 
+ 
+THE RULES 
+Important:  You  don’t  have  to  memorize  this  book  to  play  the  
+game.  Once  you  understand  the  basics,  start  playing!  Use  this  book  
+as  reference  during  play.  When  in  doubt,  stick  to  the  basics,  keep  
+playing, and have fun. 
+One  part  of  the  book  you  may  end  up  referring  to  frequently,  at  
+least  for  a  while,  is  the  glossary  that  begins  on  page  304.  Here’s  
+where  you’ll  find  definitions  of  the  terms  we  use  in  the  rules  and  
+information  on  how  a  character  is  affected  by  certain  conditions  
+(such  as  being  stunned).  If  you  come  across  a  term  you’re  not  
+familiar with and you want to know more, look it up in the glossary 
+(and also check the index, of course). 
+ 
+WHAT YOU NEED TO PLAY 
+Your group needs these items to play D&D. 
+ The Player’s Handbook, Dungeon Master’s Guide, and Monster Manual 
+revised core rulebooks. (All players might want to have their own 
+copies of the books.) 
+ A  copy  of  the  character  sheet  at  the  back  of  this  book  for  each  
+player. 
+ A battle grid. The Dungeon Master’s Guide contains one. 
+ Miniatures  to  represent  each  character  and  the  monsters  that  
+challenge them. 
+ A  set  of  dice  for  each  player.  A  set  of  dice  includes  at  least  one  
+four-sided  die  (d4),  four  six-sided  dice  (d6),  one  eight-sided  die  
+(d8), two ten-sided dice (d10), one twelve-sided die (d12), and one 
+twenty-sided die (d20). 
+ Pencils,  scrap  paper,  and  graph  paper  to  keep  notes  and  to  map  
+the locations your characters will explore. 
+ 
+DICE 
+We  describe  dice  rolls  with  expressions  such  as  “3d4+3,”  which  
+means  “roll  three  four-sided  dice  and  add  3”  (resulting  in  a  number  
+between 6 and 15). The first number tells you how many dice to roll 
+(adding the results together). The number immediately after the “d” 
+tells  you  the  type  of  dice  to  use.  Any  number  after  that  indicates  a  
+quantity that is added or subtracted from the result. Some examples 
+include: 
+1d8: One eight-sided die, generating a number from 1 to 8. This is 
+the amount of damage a longsword deals. 
+1d8+2: One eight-sided die plus 2, generating a number from 3 to 
+10.  A  character  with  a  +2  Strength  bonus  deals  this  amount  of  
+damage when using a longsword. 
+2d4+2:  Two  four-sided  dice  plus  2,  resulting  in  a  number  from  4  
+to  10.  This  is  the  amount  of  damage  a  3rd-level  wizard  deals  with  a  
+magic missile spell. 
+d%:   Percentile   dice   work   a   little   differently.   You   generate   a   
+number  between  1  and  100  by  rolling  two  different-colored  ten-
+sided  dice.  One  color  (designated  before  you  roll)  is  the  tens  digit.  
+The other is the ones digit. A roll of 7 and 1, for example, give you a 
+result  of  71.  Two  0s  represents  100.  Some  percentile  show  the  tens  
+digit in tens (00, 10, 20, etc.) and the ones digit in ones (0, 1, 2, etc.). 
+In this case, a roll of 70 and 1 is 71, and 00 and 0 is 100. 
+Important!  Not  every  action  requires  a  die  roll.  Roll  dice  in  
+combat  and  other  dramatic  situations  when  success  is  never  a  cer-
+tainty. 
+The  d20  is  used  to  determine  whether  or  not  your  character  suc-
+ceeds  at  an  action.  The  other  dice  are  used  to  determine  what  hap-
+pens after you succeed. 
+Players  should  roll  dice  openly  so  that  everyone  can  see  the  re-
+sults.  The  DM  may  make  some  rolls  in  secret  to  build  suspense  and  
+maintain mystery. 
+ 
+WHAT CHARACTERS CAN DO 
+A character can try to do anything you can imagine, just as long as it 
+fits  the  scene  the  DM  describes.  Depending  on  the  situation,  your  
+character might want to listen at a door, search an area, bargain with 
+a shopkeeper, talk to an ally, jump across a pit, move, use an item, or 
+attack an opponent. 
+Characters   accomplish   tasks   by   making   skill   checks,   ability   
+checks, or attack rolls, using the core mechanic. 
+ 
+Skill Checks 
+To  make  a  skill  check,  roll  a  d20  and  add  your  character’s  skill  
+modifier. Compare the result to the Difficulty Class (DC) of the task 
+at hand. 
+An   unopposed   skill   check’s   success   depends   on   your   result   
+compared  to  a  DC  set  by  the  DM  or  the  skill’s  description  (see  
+Chapter 4). 
+An  opposed  skill  check’s  success  depends  on  your  result  com-
+pared  to  the  result  of  the  character  opposing  your  action.  The  
+opponent’s  check  might  be  made  using  the  same  skill  or  a  different  
+skill, as set forth in the skill’s description. 
+ 
+Ability Checks 
+Ability checks are used when a character doesn’t have any ranks in a 
+skill and tries to use that skill untrained. (Some skills, however, can’t 
+be used untrained.) 
+Ability  checks  are  also  used  to  determine  success  when  no  skill  
+applies. 
+To  make  an  ability  check,  roll  a  d20  and  add  your  character’s  
+modifier for the appropriate ability. 
+ 
+Attack Rolls 
+To  attack  an  opponent,  roll  a  d20  and  add  your  character’s  attack  
+bonus.  If  the  result  equals  or  exceeds  the  opponent’s  Armor  Class  
+(AC), the attack succeeds. 
+On a successful attack, roll the dice indicated for the weapon you 
+used to determine how much damage your attack deals. 
+Damage  reduces  hit  points  (hp).  When  all  of  a  character’s  hit  
+points  are  gone,  the  character  falls  unconscious  and  is  dying.  (See  
+Chapter 8: Combat for details.) 
+A  critical  hit  deals  more  damage.  If  you  roll  a  natural  20  on  an  
+attack roll, you threaten a critical hit. Roll again to confirm it. If the 
+second attack roll is successful, then the critical hit is confirmed and 
+you deal more damage (see page 140 for more information). 
+ 
+THE COMBAT ROUND 
+Combat  is  played  in  round.  Each  round  represents  6  seconds  in  the  
+game  world,  regardless  of  how  long  it  takes  to  play  out  the  round.  
+Combat  starts  with  initiative  checks  to  determine  the  order  of  play  
+for  the  entire  battle.  There  are  three  types  of  actions:  standard  
+actions, move actions, and full-round actions. In a round, you can do 
+one  of  these  four  things:  Take  a  standard  action  and  then  a  move  
+action; take a move action and then a standard action; take two move 
+actions;  or  perform  a  full-round  action.  (See  Chapter  8:  Combat  for  
+details.) 
+ 
+THE PLAYER’S ROLE 
+As  a  player,  you  use  this  handbook  to  create  and  run  a  character.  
+Your  character  is  an  adventurer,  part  of  a  team  that  regularly  delves  
+into  dungeons  and  battles  monsters.  Play  wherever  everyone  feels  
+comfortable and there’s a place to set the battle grid and miniatures, 
+roll the dice, and spread out your books and character sheets. 
+The  DM  sets  each  scene  and  describes  the  action.  It’s  your  job  to  
+decide what your character is like, how he or she relates to the other 
+adventurers, and act accordingly. You can play a serious paladin or a 
+INTRODUCTION
+ 
+
+ 
+ 
+6 
+wisecracking  rogue,  a  reckless  barbarian  or  a  cautious  wizard.  With  
+your  character  in  mind,  respond  to  each  situation  as  it  comes  up.  
+Sometimes combat is called for, but other situation might be solved 
+through magic, negotiation, or judicious skill use. 
+Also  consider  how  you  respond.  Do  you  narrate  your  character0s  
+action  (“Tordek  moves  to  the  doorway  and  attacks  the  bugbear”)  or  
+speak  as  your  character  (“I  move  to  the  doorway  and  take  a  mighty  
+swing at the monster”)? Either method is fine, and you can even vary 
+your approach to match the situation. 
+D&D  is  a  social  experience  as  well  as  an  imaginative  one.  Be  
+creative,  be  daring,  and  be  true  to  your  character...  and  most  of  all,  
+have fun! 
+ 
+CHARACTER CREATION 
+Review Chapters 1 through 5, then follow these steps to create a 1st-
+level  character.  You  need  a  photocopy  of  the  character  sheet,  a  
+pencil, scrap paper, and four 6-sided dice. 
+ 
+CHECK WITH YOUR DUNGEON MASTER 
+Your  DM  may  have  house  rules  or  campaign  standards  that  vary  
+from  these  rules.  You  should  also  find  out  what  the  other  players  
+have created so that your character fits into the group. 
+ 
+ROLL ABILITY SCORES 
+Roll   your   character’s   six   ability   scores.   Determine   each   one   by   
+rolling  four  six-sided  dice,  ignoring  the  lowest  die  roll,  and  totaling  
+the other three. Record your six results on scrap paper. 
+See Chapter 1 (beginning on the next page) for more details. 
+ 
+CHOOSE YOUR CLASS AND RACE 
+Choose your class and race at the same time, because some races are 
+better suited to certain classes. The classes, detailed in Chapter 3, are 
+barbarian,  bard,  cleric,  druid,  fighter,  monk,  paladin,  ranger,  rogue,  
+sorcerer,   and   wizard.   Each   class   description   includes   a   “Races”   
+section that provides some advice. 
+The Races, described in Chapter 2, are human, dwarf, elf, gnome, 
+halflings, half-elf, and half-orc. 
+Write your class and race selections on your character sheet. 
+ 
+ASSIGN AND ADJUST ABILITY SCORES 
+Now  that  you  know  your  character’s  class  and  race,  take  the  ability  
+scores  you  rolled  earlier  and  assign  each  to  one  of  the  six  abilities:  
+Strength,    Dexterity,    Constitution,    Intelligence,    Wisdom,    and    
+Charisma. Adjust these scores up or down, according to your race, as 
+indicated on Table 2–1: Racial Ability Adjustments (page 12). 
+Put high scores in abilities that support your class selection. Each 
+class  description  includes  an  “Abilities”  section  that  provides  some  
+advice. 
+For each ability score, record the character’s modifier, as indicated 
+on  Table  1–1:  Ability  Modifiers  and  Bonus  Spells  (page  8).  Ability  
+modifiers  adjust  many  die  rolls  in  the  game,  including  attack  rolls,  
+damage rolls, skill checks, and saving throws. 
+Record  your  adjusted  ability  scores  and  their  modifiers  on  your  
+character sheet. 
+ 
+REVIEW THE STARTING PACKAGE 
+There  is  at  least  one  starting  package  at  the  end  of  each  class  
+description. Look at the class’s starting package. It offers a fast way to 
+complete the next several steps of character creation. If you like the 
+feat,  skills,  and  equipment  listed  there,  record  this  information  on  
+your character sheet. Otherwise, use this information as a guide and 
+make your own decisions. 
+ 
+RECORD RACIAL AND CLASS FEATURES 
+Your  character’s  race  and  class  provide  certain  features.  Most  of  
+these are automatic, but some involve making choices and thinking 
+ahead  about  upcoming  character  creation  steps.  Feel  free  to  look  
+ahead or to backtrack and do something over if you need to. 
+ 
+SELECT SKILLS 
+Your  character’s  class  and  Intelligence  modifier  determine  how  
+many skill points you have to buy skills (see page 62). 
+Skills  are  measured  in  ranks.  Each  rank  adds  +1  to  skill  checks  
+made using a specific skill. 
+At 1st level, you can buy as many as 4 ranks in a class skill (a skill 
+on  your  class’s  list  of  class  skills)  for  4  skill  points,  or  as  many  as  2  
+ranks  in  a  cross-class  skill  (a  skill  from  another  class’s  list  of  class  
+skills)  for  the  same  cost.  (You  get  more  out  of  purchasing  class  
+skills.) 
+Buying  skills  goes  faster  if  you  spend  4  skill  points  (your  maxi-
+mum) on every skill you buy, as we’ve done in the starting packages. 
+Once  you’ve  selected  your  skills,  determine  the  skill  modifier  for  
+each  one.  To  do  this,  add  the  skill  ranks  to  the  ability  modifier  
+associated with the skill and record it on your character sheet. 
+Table  4–2:  Skills  (page  63)  lists  all  the  skills  in  the  game  and  
+indicates which skills are class skills for which classes. 
+  
+SELECT A FEAT 
+Each 1st-level character starts with a feat. Table 5–1: Feats (page 90) 
+lists all feats, their prerequisites (if any), and a brief description. 
+ 
+REVIEW DESCRIPTION CHAPTER 
+Look over Chapter 6: Description. It helps you detail your character. 
+You can this now or wait until later. 
+ 
+SELECT EQUIPMENT 
+Use  the  equipment  from  your  class’s  starting  package,  or  randomly  
+determine  your  starting  gold  (see  page  111)  and  buy  your  own  gear  
+piece by piece, using the information in Chapter 7: Equipment. 
+ 
+RECORD COMBAT NUMBERS 
+Determine these statistics and record them on your character sheet. 
+Hit   Points:   Your   hit   points   (hp)   determine   how   hard   your   
+character  is  to  kill.  At  1st  level,  wizards  and  sorcerers  get  4  hp;  
+rogues  and  bards  get  6  hp;  clerics,  druids,  monks,  and  rangers  get  8  
+hp; fighters and paladins get 10 hp; and barbarians get 12 hp. To this 
+number, add you character’s Constitution modifier. 
+Armor Class: Your Armor Class (AC) determines how hard your 
+character  is  to  hit.  Add  the  following  numbers  together  to  get  your  
+AC: 10 + your armor bonus + your shield bonus + your size modifier 
++ your Dexterity modifier. 
+Initiative:    Your    character’s    initiative    modifier    equals    your    
+Dexterity   modifier.   The   Improved   Initiative   feat   provides   an   
+additional modifier if you select it. 
+Attack  Bonuses:  Your  class  determines  your  base  attack  bonus.  
+To  determine  your  melee  attack  bonus  for  when  you  get  into  close-
+combat fights, add your Strength modifier to your base attack bonus. 
+To  determine  your  ranged  attack  bonus  for  when  you  attack  from  a  
+distance, add your Dexterity modifier to your base attack bonus. 
+Saving  Throws:  Your  class  determines  your  base  saving  throw  
+bonuses.  To  these  numbers,  add  your  Constitution  modifier  to  get  
+your Fortitude save, your Dexterity modifier to get your Reflex save, 
+and your Wisdom modifier to get your Will save. 
+ 
+DETAILS, DETAILS, DETAILS 
+Now  choose  a  name  for  your  character,  determine  the  character’s  
+gender,   choose   an   alignment,   decide   the   character’s   age   and   
+appearance, and so on. Chapter 6: Description can help with this. 
+There’s no need to develop your character completely. With your 
+DM’s  permission,  you  can  always  add  or  even  change  details  as  you  
+play and as get a better feel for your character. 
+INTRODUCTION
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ust about every die roll you make is going to be modified 
+based on your character’s abilities. A tough character has 
+a  better  chance  of  surviving  a  wyvern’s  poison  sting.  A  
+perceptive  character  is  more  likely  to  notice  bugbears  
+sneaking  up  from  behind.  A  stupid  character  is  not  as  
+likely  to  find  a  secret  door  that  leads  to  a  hidden  treasure  
+chamber.  Your  ability  scores  tell  you  what  your  modifiers  are  for  
+rolls such as these. 
+Your  character  has  six  abilities:  Strength  (abbreviated  Str),  Dex-
+terity  (Dex),  Constitution  (Con),  Intelligence  (Int),  Wisdom  (Wis),  
+and Charisma (Cha). Each of your character’s above-average abilities 
+gives  you  a  benefit  on  certain  die  rolls,  and  each  below-average  
+ability  gives  you  a  disadvantage  on  other  die  rolls.  When  creating  
+your  character,  you  roll  your  scores  randomly,  assign  them  to  the  
+abilities  as  you  like,  and  raise  and  lower  them  according  to  the  
+character’s  race.  Later,  you  can  increase  them  as  your  character  
+advances in experience. 
+ 
+ABILITY SCORES 
+To  create  an  ability  score  for  your  character,  roll  four  six-sided  dice  
+(4d6). Disregard the lowest die roll and total the three highest ones. 
+The  result  is  a  number  between  3  (horrible)  and  18  (tremendous).  
+The  average  ability  score  for  the  typical  commoner  is  10  or  11,  but  
+your  character  is  not  typical.  The  most  common  ability  scores  for  
+player  characters  (PCs)  are  12  and  13.  (That’s  right,  the  average  
+player character is above average.) 
+Make this roll six times, recording each result on a piece of paper. 
+Once you have six scores, assign each score to one of the six abilities. 
+At this step, you need to know what kind of person your character is 
+going to be, including his or her race and class, in order to know 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+how  best  to  distribute  the  ability  scores.  Choosing  a  race  other  
+than  human  or  half-elf  causes  some  of  these  ability  scores  to  
+change (see Table 2–1: Racial Ability Adjustments, page 12). 
+ 
+ABILITY MODIFIERS 
+Each ability, after changes made because of race, has a modifier 
+ranging  from  –5  to  +5.  Table  1–1:  Ability  Modifiers  and  Bonus  
+Spells (on the next page) shows the modifier for each score. It 
+also  shows  bonus  spells,  which  you’ll  need  to  know  about  if  
+your character is a spellcaster. 
+The modifier is the number you apply to the die roll when 
+your  character  tries  to  do  something  related  to  that  ability.  
+For instance, you apply your character’s Strength modifier to 
+your  roll  when  he  or  she  tries  to  hit  someone  with  a  sword.  
+You also use the modifier with some numbers that aren’t die 
+rolls—for  example,  you  apply  your  character’s  Dexterity  
+modifier   to   his   or   her   Armor   Class   (AC).   A   positive   
+modifier is called a bonus, and a negative modifier is called 
+a penalty. 
+ 
+ABILITIES AND SPELLCASTERS 
+The   ability   that   governs   bonus   spells   (see   Chapter   3:   
+Classes)   depends   on   what   type   of   spellcaster   your   
+character  is:  Intelligence  for  wizards;  Wisdom  for  clerics,  
+druids,  paladins,  and  rangers;  or  Charisma  for  sorcerers  and  
+bards.  In  addition  to  having  a  high  ability  score,  a  spellcaster  
+must be of high enough class level to be able to cast spells of 
+a given spell level. (See the class descriptions in Chapter 3 
+for   details.)   For   instance,   the   wizard   Mialee   has   an   
+
+ 
+ 
+8 
+Intelligence score of 15, so she’s smart enough to get one bonus 1st-
+level  spell  and  one  bonus  2nd-level  spell.  (She  will  not  actually  get  
+the 2nd-level spell until she is 3rd level wizard, since that’s the min-
+imum level a wizard must be to cast 2nd-level spells.) 
+If  your  character’s  ability  score  is  9  or  lower,  you  can’t  cast  spells  
+tied   to   that   ability.   For   example,   if   Mialee’s   Intelligence   score   
+dropped  to  9  because  of  a  poison  that  reduces  intellect,  she  would  
+not be able to cast even her simplest spells until cured. 
+ 
+REROLLING 
+If your scores are too low, you may scrap them and roll all six scores 
+again.   Your   scores   are   considered   too   low   if   the   sum   of   your   
+modifiers  (before  adjustments  because  of  race)  is  0  or  lower,  or  if  
+your highest score is 13 or lower. 
+ 
+THE ABILITIES 
+Each ability partially describes your character and affects some of his 
+or her actions. 
+The   description   of   each   ability   includes   a   list   of   races   and   
+creatures  along  with  their  average  scores  in  that  ability.  (Not  every  
+creature  has  a  score  in  every  ability,  as  you’ll  see  when  you  look  at  
+the  lists  that  follow.)  These  scores  are  for  an  average,  young  adult  
+creature of the indicated race or kind, such as a dwarf tax collector, a 
+halfling merchant, or an unexceptional gnoll. An adventurer—say, a 
+dwarf  fighter  or  a  gnoll  ranger—probably  has  better  scores,  at  least  
+in   the   abilities   that   matter   most   to   that   character,   and   player   
+characters are above average overall. 
+ 
+STRENGTH (STR) 
+Strength measures your character’s muscle and physical power. This 
+ability   is   especially   important   for   fighters,   barbarians,   paladins,   
+rangers,   and   monks   because   it   helps   them   prevail   in   combat.   
+Strength  also  limits  the  amount  of  equipment  your  character  can  
+carry (see Chapter 9: Adventuring). 
+You apply your character’s Strength modifier to: 
+ Melee attack rolls. 
+ Damage  rolls  when  using  a  melee  weapon  or  a  thrown  weapon  
+(including  a  sling).  (Exceptions:  Off-hand  attacks  receive  only  one  
+half  the  character’s  Strength  bonus,  while  two-handed  attacks  
+receive  one  and  a  half  times  the  Strength  bonus.  A  Strength  
+penalty,  but  not  a  bonus,  applies  to  attacks  made  with  a  bow  that  
+is not a composite bow.) 
+ Climb,  Jump,  and  Swim  checks.  These  are  the  skills  that  have  
+Strength as their key ability. 
+ Strength checks (for breaking down doors and the like). 
+ 
+Average Strength Scores 
+                                                                      Average                                                                      Average                                                                      
+Example Race or Creature Kind Strength Modifier
+ 
+Allip, shadow, will-o’-wisp — — 
+Lantern archon, bat, toad 1 –5 
+Rat swarm 2 –4 
+Stirge, monkey, Tiny monstrous spider 3 –4 
+Grig, Small monstrous centipede 4–5 –3 
+Hawk, cockatrice, pixie 6–7 –2 
+Quasit, badger 8–9 –1 
+Human, beholder, dire rat 10–11 +0 
+Mind flayer, dog, pony, ghoul 12–13 +1 
+Gnoll, dire badger, baboon, manta ray 14–15 +2 
+Black pudding, choker, Large shark 16–17 +3 
+Centaur, displacer beast, minotaur 18–19 +4 
+Ape, ogre, flesh golem, gorgon 20–21 +5 
+Fire giant, triceratops, elephant 30–31 +10 
+Great wyrm gold dragon 46–47 +18 
+ 
+DEXTERITY (DEX) 
+Dexterity  measures  hand-eye  coordination,  agility,  reflexes,  and  bal-
+ance. This ability is the most important ability for rogues, but it’s also 
+high  on  the  list  for  characters  who  typically  wear  light  or  medium  
+armor  (rangers  and  barbarians)  or  no  armor  at  all  (monks,  wizards,  
+and sorcerers), and for anyone who wants to be a skilled archer. 
+You apply your character’s Dexterity modifier to: 
+ Ranged  attack  rolls,  including  those  for  attacks  made  with  bows,  
+crossbows, throwing axes, and other ranged weapons. 
+ Armor  Class  (AC),  provided  that  the  character  can  react  to  the  
+attack. 
+ Reflex saving throws, for avoiding fireballs and other attacks that 
+you can escape by moving quickly. 
+TABLE 1–1: ABILITY MODIFIERS AND BONUS SPELLS 
+ ——————————————————— Bonus Spells (by Spell Level) —————————————————— 
+Score                Modifier                0                  1st                2nd                   3rd                    4th                5th                6th                7th                8th                9th 
+  1 –5 —————————————————— Can’t cast spells tied to this ability —————————————————— 
+  2–3 –4 —————————————————— Can’t cast spells tied to this ability —————————————————— 
+  4–5 –3 —————————————————— Can’t cast spells tied to this ability —————————————————— 
+  6–7 –2 —————————————————— Can’t cast spells tied to this ability —————————————————— 
+  8–9 –1 —————————————————— Can’t cast spells tied to this ability —————————————————— 
+10–11                     0                  —                 —                 —                     —                     —                 —                 —                 —                 —                 —                 
+12–13                    +1                 —                  1                  —                     —                     —                 —                 —                 —                 —                 —                 
+14–15                    +2                 —                  1                   1                 —                     —                 —                 —                 —                 —                 —                 
+16–17                    +3                 —                  1                   1                 1                 —                 —                 —                 —                 —                 —                 
+18–19                    +4                  —                  1                   1                  1                  1                  —                  —                  —                  —                  —                  
+20–21                    +5                  —                  2                   1                  1                  1                   1                  —                  —                  —                  —                  
+22–23                    +6                   —                   2                   2                       1                       1                   1                   1                   —                   —                   —                   
+24–25                    +7                   —                   2                   2                       2                       1                   1                   1                   1                   —                   —                   
+26–27                    +8                   —                   2                   2                       2                       2                   1                   1                   1                   1                   —                   
+28–29                    +9                   —                   3                   2                       2                       2                   2                   1                   1                   1                   1                   
+30–31                   +10                   —                   3                   3                       2                       2                   2                   2                   1                   1                   1                   
+32–33                   +11                   —                   3                   3                       3                       2                   2                   2                   2                   1                   1                   
+34–35                   +12                   —                   3                   3                       3                       3                   2                   2                   2                   2                   1                   
+36–37                   +13                   —                   4                   3                       3                       3                   3                   2                   2                   2                   2                   
+38–39                   +14                   —                   4                   4                       3                       3                   3                   3                   2                   2                   2                   
+40–41                   +15                   —                   4                   4                       4                       3                   3                   3                   3                   2                   2                   
+42–43                   +16                   —                   4                   4                       4                       4                   3                   3                   3                   3                   2                   
+44–45                   +17                   —                   5                   4                       4                       4                   4                   3                   3                   3                   3                   
+etc. . . .
+ 
+  
+ 

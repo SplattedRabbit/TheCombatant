@@ -41,8 +41,8 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
 
   const handleReset = () => {
     showCustomConfirm(
-      "Kampfblatt zurücksetzen",
-      "Möchtest du das gesamte Kampfblatt wirklich zurücksetzen? Alle Kämpfer, Zauber und Begegnungsdaten werden gelöscht.",
+      "Reset Combat Sheet",
+      "Are you sure you want to reset the entire combat sheet? All combatants, spells, and encounter data will be deleted.",
       () => {
         CombatState.clearState();
       }
@@ -96,18 +96,18 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
       try {
         const loadedState = JSON.parse(evt.target?.result as string);
         if (!loadedState.combatants) {
-          alert("Ungültiges Dateiformat. Keine Kämpfer gefunden.");
+          alert("Invalid file format. No combatants found.");
           return;
         }
         showCustomConfirm(
-          "Begegnung importieren",
-          "Möchtest du diese Begegnung importieren? Aktuelle Daten werden überschrieben.",
+          "Import Encounter",
+          "Do you want to import this encounter? Current data will be overwritten.",
           () => {
             CombatState.importEncounterState(loadedState);
           }
         );
       } catch (err: any) {
-        alert("Fehler beim Lesen der Datei: " + err.message);
+        alert("Error reading file: " + err.message);
       }
     };
     reader.readAsText(file);
@@ -125,8 +125,8 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
   const handleClearStorage = () => {
     setIsSystemOpen(false);
     showCustomConfirm(
-      "App-Daten bereinigen",
-      "Möchtest du den gesamten App-Speicher und Cache wirklich vollständig bereinigen? Dadurch werden alle gespeicherten Charaktere, Begegnungen, Einstellungen sowie der Service-Worker-Cache gelöscht und die App frisch geladen.",
+      "Clear App Data",
+      "Are you sure you want to completely clear the entire app storage and cache? This will delete all saved characters, encounters, settings, and the service worker cache, and reload the app fresh.",
       async () => {
         localStorage.clear();
         if ('caches' in window) {
@@ -189,23 +189,23 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
         <div className="legend">
           <div className="leg-item">
             <div className="leg-dot dot-p"></div>
-            Spieler
+            Player
           </div>
           <div className="leg-item">
             <div className="leg-dot dot-e"></div>
-            Gegner
+            Enemy
           </div>
           <div className="leg-item">
             <div className="leg-dot dot-n"></div>
-            NSC
+            NPC
           </div>
-          <span>· ▼ aktiver Zug</span>
+          <span>· ▼ active turn</span>
         </div>
 
         <div className="btns">
-          <button className="btn" onClick={handlePrev}>◀ Zurück</button>
-          <button className="btn btn-p" onClick={handleNext}>Nächster Zug ▶</button>
-          <button className="btn" onClick={handleNewRound}>Neue Runde +</button>
+          <button className="btn" onClick={handlePrev}>◀ Back</button>
+          <button className="btn btn-p" onClick={handleNext}>Next Turn ▶</button>
+          <button className="btn" onClick={handleNewRound}>New Round +</button>
           <button className="btn" onClick={handleReset}>⟳ Reset</button>
           <div style={{ position: 'relative', display: 'inline-block' }}>
             <button 
@@ -242,22 +242,22 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
                   paddingBottom: '3px',
                   textAlign: 'center'
                 }}>
-                  📜 System-Optionen
+                  📜 System Options
                 </div>
                 <button className="fab-item" onClick={handleOnlineSession} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                  🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Nicht verbunden"></span>Online-Sitzung
+                  🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Not connected"></span>Online Session
                 </button>
-                <button className="fab-item" onClick={handleSwapRole}>🎭 Rolle wechseln</button>
-                <button className="fab-item" onClick={handlePrint}>🖨 Drucken (A4)</button>
-                <button className="fab-item" onClick={handleExport}>💾 Exportieren</button>
-                <button className="fab-item" onClick={handleImportClick}>📂 Importieren</button>
-                <button className="fab-item" onClick={handleLoadSample}>📋 Beispieldaten</button>
+                <button className="fab-item" onClick={handleSwapRole}>🎭 Change Role</button>
+                <button className="fab-item" onClick={handlePrint}>🖨 Print (A4)</button>
+                <button className="fab-item" onClick={handleExport}>💾 Export</button>
+                <button className="fab-item" onClick={handleImportClick}>📂 Import</button>
+                <button className="fab-item" onClick={handleLoadSample}>📋 Sample Data</button>
                 <button 
                   className="fab-item" 
                   onClick={handleClearStorage} 
                   style={{ background: 'rgba(139, 26, 26, 0.12)', color: 'var(--red)', fontWeight: 'bold', borderColor: 'var(--red)' }}
                 >
-                  🗑️ App-Daten bereinigen
+                  🗑️ Clear App Data
                 </button>
               </div>
             )}

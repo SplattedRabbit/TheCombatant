@@ -58,7 +58,7 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
     dmgTotal: 0,
     dmgBreakdown: [],
     atkBreakdown: [],
-    damageDice: '1w6'
+    damageDice: '1d6'
   };
 
   let modsSum = 0;
@@ -73,7 +73,8 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
   });
 
   const modsFormatted = modsSum >= 0 ? `+${modsSum}` : `${modsSum}`;
-  const formulaFormatted = modsSum === 0 ? stdAtkObj.damageDice : `${stdAtkObj.damageDice} ${modsFormatted}`;
+  const rawDice = stdAtkObj.damageDice ? stdAtkObj.damageDice.toLowerCase().replace('w', 'd') : '1d6';
+  const formulaFormatted = modsSum === 0 ? rawDice : `${rawDice} ${modsFormatted}`;
 
   return (
     <div
@@ -107,10 +108,10 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
         <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '2px' }}>
-          ⚔️ {weapon.name || 'Waffe'} (Schaden)
+          ⚔️ {weapon.name || 'Weapon'} (Damage)
         </div>
         <div className="dialog-subtitle" style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '6px' }}>
-          Schadensoptionen wählen
+          Choose damage options
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 10px' }} />
 
@@ -124,7 +125,7 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
                   onChange={handleSmiteChange}
                   style={{ margin: 0, width: '11px', height: '11px', cursor: 'pointer' }}
                 />
-                Böses niederstrecken (+{paladinClass.level} Schaden)
+                Smite Evil (+{paladinClass.level} Damage)
               </label>
             )}
             {favoredEnemyBonus > 0 && (
@@ -135,7 +136,7 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
                   onChange={handleFavoredEnemyChange}
                   style={{ margin: 0, width: '11px', height: '11px', cursor: 'pointer' }}
                 />
-                Gegen Erzfeind (+{favoredEnemyBonus} Schaden)
+                Vs Favored Enemy (+{favoredEnemyBonus} Damage)
               </label>
             )}
             {sneakAttackDice > 0 && (
@@ -146,7 +147,7 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
                   onChange={handleSneakChange}
                   style={{ margin: 0, width: '11px', height: '11px', cursor: 'pointer' }}
                 />
-                Hinterhältiger Angriff (+{sneakAttackDice}W6 Schaden)
+                Sneak Attack (+{sneakAttackDice}d6 Damage)
               </label>
             )}
           </div>
@@ -155,7 +156,7 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
         <div className="dialog-content-area" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '10px', fontFamily: "'Crimson Text', serif" }}>
             <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '5px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
-              Schadensmodifikatoren
+              Damage Modifiers
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '9.5px', color: 'var(--inkm)' }}>
               {rows.map((row: any, idx: number) => (
@@ -166,13 +167,13 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
               ))}
               <hr style={{ border: 'none', borderTop: '0.5px dashed rgba(200,169,110,0.3)', margin: '4px 0' }} />
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
-                <span>Gesamt-Modifikator:</span>
+                <span>Total Modifier:</span>
                 <span>{modsFormatted}</span>
               </div>
             </div>
             <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.3)', margin: '6px 0 4px' }} />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
-              <span>WURF-FORMEL:</span>
+              <span>ROLL FORMULA:</span>
               <span>{formulaFormatted}</span>
             </div>
           </div>
@@ -196,7 +197,7 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
             transition: 'color 0.15s, border-color 0.15s'
           }}
         >
-          Fertig!
+          Done!
         </button>
       </div>
     </div>

@@ -19,72 +19,72 @@ const BARD_SONGS = [
     nameDe: 'Gegengesang',
     nameEn: 'Countersong',
     minLvl: 1,
-    desc: '• Reichweite: 9m Radius\n• Effekt: Kontert magische Schalleffekte. Verbündete dürfen bei Rettungswürfen deinen Auftreten-Wurf nutzen.',
-    effect: '🎵 Gegengesang aktiviert!\nVerbündete im Umkreis von 9m dürfen für die nächsten 10 Runden bei schallbasierten Rettungswürfen deinen Auftreten-Wurf nutzen.'
+    desc: '• Range: 30 ft. radius\n• Effect: Counters sound-based magical effects. Allies can use your Perform check result for saving throws.',
+    effect: '🎵 Countersong active!\nAllies within 30 ft. can use your Perform check result for sound-based saving throws for the next 10 rounds.'
   },
   {
     key: 'fascinate',
     nameDe: 'Faszinieren',
     nameEn: 'Fascinate',
     minLvl: 1,
-    desc: '• Reichweite: 27m Radius | Dauer: 1 Rd./Stufe\n• Effekt: Zieht Ziele in den Bann. Willens-SG = dein Auftreten-Wurf. Ziele verharren still.',
-    effect: '🎵 Faszinieren gestartet!\nZiel(e) müssen einen Willensrettungswurf gegen dein Auftreten-Wurf-Ergebnis bestehen. Jede offensichtliche Bedrohung bricht den Effekt sofort.'
+    desc: '• Range: 90 ft. radius | Duration: 1 rd./level\n• Effect: Captivates targets. Will DC = your Perform check. Targets sit quietly.',
+    effect: '🎵 Fascinate started!\nTarget(s) must succeed on a Will save against your Perform check result. Any obvious threat breaks the effect immediately.'
   },
   {
     key: 'inspire_courage',
     nameDe: 'Mut einflößen',
     nameEn: 'Inspire Courage',
     minLvl: 1,
-    desc: '• Boni: +1 Moralbonus auf Rettungswürfe gegen Furcht/Bezauberung sowie Angriffs-/Schadenswürfe.\n• Skalierung: +2 ab Stufe 8, +3 ab 14, +4 ab 20.',
-    effect: '🎵 Mut einflößen gestartet!\nAlle Gefährten erhalten einen +[BONUS] Moralbonus auf Angriffs- und Waffenschadenswürfe sowie Rettungswürfe gegen Furcht/Bezauberung. Hält für die Dauer des Lieds und 5 Runden danach an.'
+    desc: '• Bonuses: +1 morale bonus on saving throws against fear/charm and attack/damage rolls.\n• Scaling: +2 at level 8, +3 at 14, +4 at 20.',
+    effect: '🎵 Inspire Courage started!\nAll allies receive a +[BONUS] morale bonus on attack and weapon damage rolls, and saving throws against fear/charm. Lasts for the duration of the song plus 5 rounds after.'
   },
   {
     key: 'inspire_competence',
     nameDe: 'Kompetenz einflößen',
     nameEn: 'Inspire Competence',
     minLvl: 3,
-    desc: '• Reichweite: 9m (1 Gefährte) | Dauer: bis zu 2 Min. (Konzentration)\n• Effekt: Gewährt +2 Kompetenzbonus auf alle Fertigkeitswürfe.',
-    effect: '🎵 Kompetenz einflößen gestartet!\nEin Gefährte in 9m Reichweite erhält einen +2 Kompetenzbonus auf alle Fertigkeitswürfe einer bestimmten Fertigkeit (Dauer: bis zu 2 Min. Konzentration).'
+    desc: '• Range: 30 ft. (1 ally) | Duration: up to 2 min. (concentration)\n• Effect: Grants +2 competence bonus on all skill checks.',
+    effect: '🎵 Inspire Competence started!\nAn ally within 30 ft. receives a +2 competence bonus on checks with a designated skill (Duration: up to 2 min. concentration).'
   },
   {
     key: 'suggestion',
     nameDe: 'Einflüsterung',
     nameEn: 'Suggestion',
     minLvl: 6,
-    desc: '• Ziel: 1 fasziniertes Wesen | Willens-SG: 10 + 1/2 Bardenstufe + CHA-Mod\n• Effekt: Wirkt Einflüsterung. Kostet 0 zusätzliche Musik-Nutzungen (RAW!).',
-    effect: '🎵 Einflüsterung gewirkt!\nWirkt Einflüsterung auf ein bereits fasziniertes Ziel. \n• Rettungswurf-SG: Willen-SG = [SG] (Willen negiert).'
+    desc: '• Target: 1 fascinated creature | Will DC: 10 + 1/2 bard level + CHA mod\n• Effect: Casts suggestion. Costs 0 additional music uses (RAW!).',
+    effect: '🎵 Suggestion cast!\nCasts suggestion on an already fascinated target. \n• Save DC: Will DC = [SG] (Will negates).'
   },
   {
     key: 'inspire_greatness',
     nameDe: 'Größe einflößen',
     nameEn: 'Inspire Greatness',
     minLvl: 9,
-    desc: '• Ziele: 1 Gefährte (+1 pro 3 Stufen ab 9)\n• Effekt: +2d10 Trefferwürfel, temporäre TP, +2 Kompetenz auf Angriffe, +1 Kompetenz auf Zähigkeit.',
-    effect: '🎵 Größe einflößen gestartet!\nZiel(e) erhalten +2 temporäre Trefferwürfel (2W10), temporäre TP, einen +2 Kompetenzbonus auf Angriffe und einen +1 Kompetenzbonus auf Zähigkeitswürfe.'
+    desc: '• Targets: 1 ally (+1 per 3 levels above 9)\n• Effect: +2d10 Hit Dice, temporary HP, +2 competence on attacks, +1 competence on Fortitude.',
+    effect: '🎵 Inspire Greatness started!\nTarget(s) receive +2 temporary Hit Dice (2d10), temporary HP, a +2 competence bonus on attacks, and a +1 competence bonus on Fortitude saves.'
   },
   {
     key: 'song_of_freedom',
     nameDe: 'Lied der Freiheit',
     nameEn: 'Song of Freedom',
     minLvl: 12,
-    desc: '• Reichweite: 9m | Aktivierung: 1 Minute spielen\n• Effekt: Wirkt wie Verzauberung brechen (Zauberstufe = Bardenstufe).',
-    effect: '🎵 Lied der Freiheit angestimmt!\nNach 1 Minute Singen wirkt ein Effekt wie Verzauberung brechen (Zauberstufe = Bardenstufe) auf ein Ziel in 9m.'
+    desc: '• Range: 30 ft. | Activation: Perform for 1 minute\n• Effect: Acts like break enchantment (caster level = bard level).',
+    effect: '🎵 Song of Freedom started!\nAfter 1 minute of singing, acts like break enchantment (caster level = bard level) on a target within 30 ft.'
   },
   {
     key: 'inspire_heroics',
     nameDe: 'Heldenmut einflößen',
     nameEn: 'Inspire Heroics',
     minLvl: 15,
-    desc: '• Ziele: 1 Gefährte (+1 pro 3 Stufen ab 15) | Aktivierung: 1 Runde singen\n• Effekt: +4 Moralbonus auf Rettungswürfe, +4 Ausweichbonus auf RK.',
-    effect: '🎵 Heldenmut einflößen gestartet!\nGewährt Ziel(en) einen +4 Moralbonus auf alle Rettungswürfe und einen +4 Ausweichbonus auf die Rüstungsklasse (AC). Hält so lange sie hören + 5 Runden danach.'
+    desc: '• Targets: 1 ally (+1 per 3 levels above 15) | Activation: Perform for 1 round\n• Effect: +4 morale bonus on saving throws, +4 dodge bonus to AC.',
+    effect: '🎵 Inspire Heroics started!\nGrants target(s) a +4 morale bonus on all saving throws and a +4 dodge bonus to Armor Class (AC). Lasts as long as they hear it plus 5 rounds after.'
   },
   {
     key: 'mass_suggestion',
     nameDe: 'Massen-Einflüsterung',
     nameEn: 'Mass Suggestion',
     minLvl: 18,
-    desc: '• Willens-SG: 10 + 1/2 Bardenstufe + CHA-Mod\n• Effekt: Wie Einflüsterung, betrifft aber zeitgleich alle faszinierten Wesen in Reichweite.',
-    effect: '🎵 Massen-Einflüsterung gewirkt!\nWirkt Einflüsterung gleichzeitig auf alle faszinierten Kreaturen in Reichweite.\n• Rettungswurf-SG: Willen-SG = [SG] (Willen negiert).'
+    desc: '• Will DC: 10 + 1/2 bard level + CHA mod\n• Effect: Like suggestion, but affects all fascinated creatures within range simultaneously.',
+    effect: '🎵 Mass Suggestion cast!\nCasts suggestion on all fascinated creatures within range simultaneously.\n• Save DC: Will DC = [SG] (Will negates).'
   }
 ];
 
@@ -129,25 +129,25 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
     const misc = pc.getSkillMisc('perform');
     
     const breakdown = [
-      { label: "Ränge in Auftreten", value: ranks },
+      { label: "Perform Ranks", value: ranks },
       { label: "CHA-Mod", value: attrMod }
     ];
     
     if (misc !== 0) {
-      breakdown.push({ label: "Sonstige Boni", value: misc });
+      breakdown.push({ label: "Misc Bonuses", value: misc });
     }
     
     const featBonus = applyFeatSkillBonuses(pc, 'perform', SKILLS_REGISTRY['perform']);
     if (featBonus > 0) {
-      breakdown.push({ label: "Talentboni", value: featBonus });
+      breakdown.push({ label: "Feat Bonuses", value: featBonus });
     }
     
     const hasShaken = pc.conditions.some((c: any) => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
     if (hasShaken) {
-      breakdown.push({ label: 'Zustand (Erschüttet/Schüttelnd)', value: -2 });
+      breakdown.push({ label: 'Condition (Shaken)', value: -2 });
     }
     
-    showRollBreakdown("Auftreten-Wurf (Perform)", "1W20", breakdown, e.nativeEvent);
+    showRollBreakdown("Perform Check", "1W20", breakdown, e.nativeEvent);
   };
 
   const handleRollBardicKnowledge = () => {
@@ -161,13 +161,13 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
     const html = `
       <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.4;">
         <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
-          ${pc.name} nutzt Bardenwissen!
+          ${pc.name} uses Bardic Knowledge!
         </div>
-        • <strong>Klasse:</strong> Barde<br>
-        • <strong>Fähigkeit:</strong> Bardenwissen (Bardic Knowledge)<br>
-        • <strong>Modifikator:</strong> <span style="color: var(--red); font-weight: bold;">+${totalBonus}</span> (Bardenstufe ${level} + INT-Mod ${intMod >= 0 ? '+' : ''}${intMod})<br>
-        • <strong>Wurf-Art:</strong> Spezialisierter Wissenswurf (D&D 3.5 RAW)<br>
-        • <strong>SG-Bereich:</strong> SG 10 bis SG 30+ (je nach Seltenheit)<br><br>
+        • <strong>Class:</strong> Bard<br>
+        • <strong>Ability:</strong> Bardic Knowledge<br>
+        • <strong>Modifier:</strong> <span style="color: var(--red); font-weight: bold;">+${totalBonus}</span> (Bard Level ${level} + INT Mod ${intMod >= 0 ? '+' : ''}${intMod})<br>
+        • <strong>Check Type:</strong> Specialized Knowledge check (D&D 3.5 RAW)<br>
+        • <strong>DC Range:</strong> DC 10 to DC 30+ (depending on rarity)<br><br>
         
         <div style="
           background: rgba(139, 26, 26, 0.04);
@@ -178,42 +178,42 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
           margin-bottom: 8px;
           font-family: 'Crimson Text', serif;
         ">
-          <div style="font-family: 'IM Fell English SC', serif; font-size: 7.5px; color: var(--inkl); text-transform: uppercase; letter-spacing: 0.5px;">Würfelformel</div>
+          <div style="font-family: 'IM Fell English SC', serif; font-size: 7.5px; color: var(--inkl); text-transform: uppercase; letter-spacing: 0.5px;">Roll Formula</div>
           <div style="font-family: 'IM Fell English SC', serif; font-size: 15px; font-weight: bold; color: var(--red); margin: 2px 0; line-height: 1;">
             d20 ${totalBonus >= 0 ? '+' : ''}${totalBonus}
           </div>
           <div style="font-size: 7.5px; color: var(--inkm); line-height: 1.2;">
-            d20 + ${level} (Bardenstufe) ${intMod >= 0 ? '+' : '-'} ${Math.abs(intMod)} (Intelligenz-Modifikator)
+            d20 + ${level} (Bard Level) ${intMod >= 0 ? '+' : '-'} ${Math.abs(intMod)} (Intelligence Modifier)
           </div>
         </div>
 
         <div style="font-size: 8px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 5px; border-radius: 2px; line-height: 1.25; margin-bottom: 6px;">
-          Ein Barde besitzt ein breites, verstreutes Wissen über Sagen, Legenden, berühmte Personen und historische Geheimnisse. Dies entspricht einem Wissenswurf mit seiner Bardenstufe + Intelligenzmodifikator.
+          A bard has a wide, scattered knowledge of lore, legends, famous people, and historical secrets. This corresponds to a Knowledge check with their bard level + Intelligence modifier.
         </div>
 
-        <div style="font-size: 8px; font-weight: bold; color: var(--red); font-family: 'IM Fell English SC', serif; margin-bottom: 2px;">Schwierigkeitsgrade (SG / DCs):</div>
+        <div style="font-size: 8px; font-weight: bold; color: var(--red); font-family: 'IM Fell English SC', serif; margin-bottom: 2px;">Difficulty Classes (DCs):</div>
         <table style="width: 100%; border-collapse: collapse; font-size: 7.5px; line-height: 1.25; margin-bottom: 4px;">
           <tr style="border-bottom: 0.25px solid rgba(0,0,0,0.05);">
-            <td style="padding: 2.5px 0;"><strong>SG 10:</strong></td>
-            <td style="padding: 2.5px 0; text-align: right; color: var(--inkm);">Bekannte Mythen, lokale Sagen, herrschende Familien.</td>
+            <td style="padding: 2.5px 0;"><strong>DC 10:</strong></td>
+            <td style="padding: 2.5px 0; text-align: right; color: var(--inkm);">Common myths, local legends, ruling families.</td>
           </tr>
           <tr style="border-bottom: 0.25px solid rgba(0,0,0,0.05);">
-            <td style="padding: 2.5px 0;"><strong>SG 20:</strong></td>
-            <td style="padding: 2.5px 0; text-align: right; color: var(--inkm);">Ungewöhnliche Legenden, historische Details.</td>
+            <td style="padding: 2.5px 0;"><strong>DC 20:</strong></td>
+            <td style="padding: 2.5px 0; text-align: right; color: var(--inkm);">Uncommon legends, historical details.</td>
           </tr>
           <tr style="border-bottom: 0.25px solid rgba(0,0,0,0.05);">
-            <td style="padding: 2.5px 0;"><strong>SG 25:</strong></td>
-            <td style="padding: 2.5px 0; text-align: right; color: var(--inkm);">Spezifisches Wissen über seltene Relikte, obskure Fakten.</td>
+            <td style="padding: 2.5px 0;"><strong>DC 25:</strong></td>
+            <td style="padding: 2.5px 0; text-align: right; color: var(--inkm);">Specific knowledge about rare relics, obscure facts.</td>
           </tr>
           <tr style="border-bottom: 0.25px solid rgba(0,0,0,0.05);">
-            <td style="padding: 2.5px 0;"><strong>SG 30:</strong></td>
-            <td style="padding: 2.5px 0; text-align: right; color: var(--inkm);">Verlorene Reiche, legendäre Helden, kryptische Mythen.</td>
+            <td style="padding: 2.5px 0;"><strong>DC 30:</strong></td>
+            <td style="padding: 2.5px 0; text-align: right; color: var(--inkm);">Lost kingdoms, legendary heroes, cryptic myths.</td>
           </tr>
         </table>
       </div>
     `;
 
-    showCustomAlert("Bardenwissen 📜", html, "Schließen", "", null);
+    showCustomAlert("Bardic Knowledge 📜", html, "Close", "", null);
   };
 
   const handleCastSong = (song: typeof BARD_SONGS[number]) => {
@@ -243,23 +243,23 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
       }
 
       showCustomAlert(
-        "Bardenmusik angestimmt! 🎵",
+        "Bardic Music Started! 🎵",
         `
         <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.4;">
           <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
-            ${pc.name} spielt ${song.nameDe}!
+            ${pc.name} plays ${song.nameEn || song.nameDe}!
           </div>
           <div style="font-size: 8.5px; background: rgba(200, 169, 110, 0.05); border: 0.5px solid rgba(200, 169, 110, 0.3); padding: 5px; border-radius: 2px; line-height: 1.3;">
             ${effectHtml.replace(/\n/g, '<br>')}
           </div>
           ${isZeroCost ? `
             <div style="font-size: 6.8px; color: var(--red); font-style: italic; margin-top: 4px; text-align: center;">
-              ✦ RAW Bonus: Kostet 0 zusätzliche Musik-Nutzungen (baut auf Faszinieren auf).
+              ✦ RAW Bonus: Costs 0 additional music uses (builds on Fascinate).
             </div>
           ` : ''}
         </div>
         `,
-        "Fertig!",
+        "Done!",
         "",
         null
       );
@@ -267,7 +267,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
 
     const isZeroCost = song.key === 'suggestion' || song.key === 'mass_suggestion';
     if (!isZeroCost && remaining <= 0) {
-      showCustomConfirm("Keine Musik-Slots!", "Du hast keine freien Nutzungen für Bardenmusik mehr. Möchtest du dieses Lied trotzdem anstimmen?", () => {
+      showCustomConfirm("No Music Slots!", "You have no uses of bardic music left. Do you want to perform this song anyway?", () => {
         performCast();
       });
     } else {
@@ -278,22 +278,22 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
   return (
     <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
       <div className="class-card-hdr" style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
-        <span>🎭 Barde (Stufe {level})</span>
+        <span>🎭 Bard (Level {level})</span>
       </div>
       <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
           <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
-            Klassenfähigkeiten
+            Class Features
           </div>
           
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '8px', paddingTop: '1px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span><strong>Bardenmusik:</strong></span>
+              <span><strong>Bardic Music:</strong></span>
               <button 
                 onClick={() => setMusicRulesOpen(!musicRulesOpen)}
                 className="btn btn-toggle-rules-music" 
                 style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
-                title="Regeln einblenden"
+                title="Show rules"
               >
                 📖 {musicRulesOpen ? '▲' : '▼'}
               </button>
@@ -309,7 +309,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
                       onClick={() => handleBubbleClick(bubbleIdx)}
                       className={`bardic-music-bubble use-icon use-icon-music ${spent ? 'used' : ''}`} 
                       style={{ marginRight: '0 !important', cursor: 'pointer' } as any}
-                      title={spent ? 'Benutzt (Freigeben)' : 'Verfügbar (Verbrauchen)'}
+                      title={spent ? 'Used (Click to restore)' : 'Available (Click to use)'}
                     >
                       🎵
                     </span>
@@ -322,14 +322,14 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
           
           {musicRulesOpen && (
             <div className="music-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif", marginBottom: '2px' }}>
-              <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Bardenmusik & Bardenwissen:</strong><br />
-              • <strong>Tägliche Nutzungen:</strong> Gleich der Bardenstufe + Boni (z.B. Extra-Musik).<br />
-              • <strong>Bardenwissen (Bardic Knowledge):</strong> Spezielle Wissensprobe (d20 + Bardenstufe + INT-Mod) für legendäre Fakten über Personen, Orte oder Gegenstände.
+              <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Bardic Music & Bardic Knowledge:</strong><br />
+              • <strong>Daily Uses:</strong> Equal to Bard level + bonuses (e.g., Extra Music).<br />
+              • <strong>Bardic Knowledge:</strong> Special knowledge check (d20 + bard level + INT mod) for lore about people, places, or items.
             </div>
           )}
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '7.5px', borderBottom: '0.5px dashed rgba(200,169,110,0.15)', paddingBottom: '3px', marginBottom: '1px' }}>
-            <span style={{ color: 'var(--inkl)', fontStyle: 'italic' }}>Extra Musik (Feats/Items):</span>
+            <span style={{ color: 'var(--inkl)', fontStyle: 'italic' }}>Extra Music (Feats/Items):</span>
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
               <button 
                 onClick={() => handleAdjustExtraMusic(-1)}
@@ -350,28 +350,28 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
           </div>
 
           <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingTop: '2px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
-            Bardenlieder-Kompendium
+            Bardic Song Compendium
           </div>
           <div className="bard-songs-list" style={{ display: 'flex', flexDirection: 'column', gap: '3px', paddingRight: '2px', marginTop: '2px', border: '0.5px solid rgba(200,169,110,0.15)', borderRadius: '2px', padding: '2px' }}>
             {BARD_SONGS.map((song) => {
               const isLocked = level < song.minLvl;
               const lockIcon = isLocked ? '🔒' : '🎵';
               const songClass = isLocked ? 'locked-song' : 'unlocked-song';
-              const courageBonusText = song.key === 'inspire_courage' ? ` (Moralbonus: +${inspireBonus})` : '';
+              const courageBonusText = song.key === 'inspire_courage' ? ` (Morale bonus: +${inspireBonus})` : '';
 
               return (
                 <div key={song.key} className={`bard-song-item ${songClass}`} style={{ background: isLocked ? 'rgba(0,0,0,0.03)' : 'rgba(200,169,110,0.05)', border: `0.5px solid ${isLocked ? 'rgba(0,0,0,0.08)' : 'rgba(200,169,110,0.2)'}`, borderRadius: '2px', padding: '3px', display: 'flex', flexDirection: 'column', gap: '1.5px', fontSize: '7.5px', marginBottom: '2px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 'bold', color: isLocked ? 'var(--inkl)' : 'var(--red)' }}>
-                    <span>{lockIcon} {song.nameDe} <span style={{ fontSize: '6.5px', fontWeight: 'normal', color: 'var(--ink)' }}>({song.nameEn})</span>{courageBonusText}</span>
+                    <span>{lockIcon} {song.nameEn || song.nameDe}{courageBonusText}</span>
                     {isLocked ? (
-                      <span style={{ fontSize: '6.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Stufe {song.minLvl}</span>
+                      <span style={{ fontSize: '6.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Level {song.minLvl}</span>
                     ) : (
                       <button 
                         onClick={() => handleCastSong(song)}
                         className="btn cast-bard-song-btn" 
                         style={{ fontSize: '6px', padding: '1px 3px', borderRadius: '1px', cursor: 'pointer', background: 'rgba(139,26,26,0.08)', borderColor: 'var(--red)', color: 'var(--red)', fontWeight: 'bold', height: '12px', lineHeight: '8px' }}
                       >
-                        Singen 🎵
+                        Perform 🎵
                       </button>
                     )}
                   </div>
@@ -384,8 +384,8 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px', marginTop: '4px' }}>
-            <button onClick={handleRollBardicKnowledge} className="btn roll-bard-know-btn" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Bardenwissen 📜</button>
-            <button onClick={handleRollPerform} className="btn roll-bard-perform-btn" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Auftreten 🎲</button>
+            <button onClick={handleRollBardicKnowledge} className="btn roll-bard-know-btn" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Bardic Knowledge 📜</button>
+            <button onClick={handleRollPerform} className="btn roll-bard-perform-btn" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Perform 🎲</button>
           </div>
         </div>
       </div>

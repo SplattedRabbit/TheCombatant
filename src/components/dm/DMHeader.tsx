@@ -36,29 +36,29 @@ export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
       
       <div className="hdr-meta" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px 12px', fontSize: '9px', color: 'var(--inkm)' }}>
         <span>
-          Begegnung:{' '}
+          Encounter:{' '}
           <input
             type="text"
             className="cinput"
             value={meta.begegnung}
             onChange={(e) => handleChangeMeta('begegnung', e.target.value)}
-            placeholder="z.B. Kobold-Hinterhalt"
+            placeholder="e.g. Goblin Ambush"
             style={{ width: '120px', fontSize: '9px', height: '15px', padding: '0 2px' }}
           />
         </span>
         <span>
-          Ort:{' '}
+          Location:{' '}
           <input
             type="text"
             className="cinput"
             value={meta.ort}
             onChange={(e) => handleChangeMeta('ort', e.target.value)}
-            placeholder="Dungeon, Ebene..."
+            placeholder="Dungeon, Level..."
             style={{ width: '90px', fontSize: '9px', height: '15px', padding: '0 2px' }}
           />
         </span>
         <span>
-          XP-Budget:{' '}
+          XP Budget:{' '}
           <input
             type="text"
             className="cinput"
@@ -69,7 +69,7 @@ export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
           />
         </span>
         <span>
-          XP verteilt:{' '}
+          XP Awarded:{' '}
           <input
             type="text"
             className="cinput"
@@ -80,7 +80,7 @@ export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
           />
         </span>
         <span>
-          Sitzung:{' '}
+          Session:{' '}
           <input
             type="text"
             className="cinput"

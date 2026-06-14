@@ -1,0 +1,2131 @@
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+89
+FEAT DESCRIPTIONS 
+Here is the format for feat descriptions. 
+ 
+FEAT NAME [TYPE OF FEAT] 
+Description of what the feat does or represents in plain language. 
+Prerequisite:  A  minimum  ability  score,  another  feat  or  feats,  a  
+minimum base attack bonus, a minimum number of ranks in one or 
+more  skills,  or  a  class  level  that  a  character  must  have  in  order  to  
+acquire  this  feat.  This  entry  is  absent  if  a  feat  has  no  prerequisite.  A  
+feat may have more than one prerequisite. 
+Benefit:  What  the  feat  enables  the  character  (“you”  in  the  feat  
+description)  to  do.  If  a  character  has  the  same  feat  more  than  once,  
+its  benefits  do  not  stack  unless  indicated  otherwise  in  the  descrip-
+tion. In general, having a feat twice is the same as having it once. 
+Normal:  What  a  character  who  does  not  have  this  feat  is  limited  
+to   or   restricted   from   doing.   If   not   having   the   feat   causes   no   
+particular drawback, this entry is absent. 
+Special: Additional facts about the feat that may be helpful when 
+you decide whether to acquire the feat. 
+ 
+ACROBATIC [GENERAL] 
+You have excellent body awareness and coordination. 
+Benefit:  You  get  a  +2  bonus  on  all  Jump  checks  and  Tumble  
+checks. 
+ 
+AGILE [GENERAL] 
+You are particularly flexible and poised. 
+Benefit:  You  get  a  +2  bonus  on  all  Balance  checks  and  Escape  
+Artist checks. 
+ 
+ALERTNESS [GENERAL] 
+You have finely tuned senses. 
+Benefit: You get a +2 bonus on all Listen checks and Spot checks. 
+Special:  The  master  of  a  familiar  (see  the  Familiars  sidebar,  page  
+52)  gains  the  benefit  of  the  Alertness  feat  whenever  the  familiar  is  
+within arm’s reach. 
+ 
+ANIMAL AFFINITY [GENERAL] 
+You are good with animals. 
+Benefit:  You  get  a  +2  bonus  on  all  Handle  Animal  checks  and  
+Ride checks. 
+ 
+ARMOR PROFICIENCY (HEAVY) [GENERAL] 
+You  are  proficient  with  heavy  armor  (see  Table  7–6:  Armor  and  
+Shields, page 123). 
+Prerequisites:   Armor   Proficiency   (light),   Armor   Proficiency   
+(medium). 
+Benefit: See Armor Proficiency (light). 
+Normal: See Armor Proficiency (light). 
+Special:  Fighters,  paladins,  and  clerics  automatically  have  Armor  
+Proficiency (heavy) as a bonus feat. They need not select it. 
+ 
+ARMOR PROFICIENCY (LIGHT) [GENERAL] 
+You  are  proficient  with  light  armor  (see  Table  7–6:  Armor  and  
+Shields, page 123). 
+Benefit:  When  you  wear  a  type  of  armor  with  which  you  are  
+proficient,  the  armor  check  penalty  for  that  armor  applies  only  to  
+Balance,  Climb,  Escape  Artist,  Hide,  Jump,  Move  Silently,  Pick  
+Pocket, and Tumble checks. 
+Normal: A character who is wearing armor with which she is not 
+proficient  applies  its  armor  check  penalty  to  attack  rolls  and  to  all  
+skill checks that involve moving, including Ride. 
+Special:   All   characters   except   wizards,   sorcerers,   and   monks   
+automatically  have  Armor  Proficiency  (light)  as  a  bonus  feat.  They  
+need not select it. 
+ARMOR PROFICIENCY (MEDIUM) 
+[GENERAL] 
+You  are  proficient  with  medium  armor  (see  Table  7–6:  Armor  and  
+Shields, page 123). 
+Prerequisite: Armor Proficiency (light). 
+Benefit: See Armor Proficiency (light). 
+Normal: See Armor Proficiency (light). 
+Special:  Fighters,  barbarians,  paladins,  clerics,  druids,  and  bards  
+automatically  have  Armor  Proficiency  (medium)  as  a  bonus  feat.  
+They need not select it. 
+ 
+ATHLETIC [GENERAL] 
+You have a knack for athletic endeavors. 
+Benefit:  You  get  a  +2  bonus  on  all  Climb  checks  and  Swim  
+checks. 
+ 
+AUGMENT SUMMONING [GENERAL] 
+Your summoned creatures are more powerful than normal. 
+Prerequisite: Spell Focus (conjuration). 
+Benefit: Each creature you conjure with any summon spell gains a 
++4   enhancement   bonus   to   Strength   and   Constitution   for   the   
+duration of the spell that summoned it. 
+ 
+BLIND-FIGHT [GENERAL] 
+You know how to fight in melee without being able to see your foes. 
+Benefit:  In  melee,  every  time  you  miss  because  of  concealment,  
+you can reroll your miss chance percentile roll one time to see if you 
+actually hit (see Concealment, page 152). 
+An  invisible  attacker  gets  no  advantages  related  to  hitting  you  in  
+melee.  That  is,  you  don’t  lose  your  Dexterity  bonus  to  Armor  Class,  
+and  the  attacker  doesn’t  get  the  usual  +2  bonus  for  being  invisible  
+(see  Table  8–5:  Attack  Roll  Modifiers  and  Table  8–6:  Armor  Class  
+Modifiers,  page  151).  The  invisible  attacker’s  bonuses  do  still  apply  
+for ranged attacks, however. 
+You  take  only  half  the  usual  penalty  to  speed  for  being  unable  to  
+see.  Darkness  and  poor  visibility  in  general  reduces  your  speed  to  
+three-quarters normal, instead of one-half (see Table 9–4: Hampered 
+Movement, page 163). 
+Normal:   Regular   attack   roll   modifiers   for   invisible   attackers   
+trying  to  hit  you  (see  Table  8–5:  Attack  Roll  Modifiers,  page  151)  
+apply,  and  you  lose  your  Dexterity  bonus  to  AC.  The  speed  reduc-
+tion  for  darkness  and  poor  visibility  (see  Table  9–4:  Hampered  
+Movement, page 163) also applies. 
+Special: The Blind-Fight feat is of no use against a character who 
+is the subject of a blink spell (see page 206). 
+A  fighter  may  select  Blind-Fight  as  one  of  his  fighter  bonus  feats  
+(see page 38). 
+ 
+BREW POTION [ITEM CREATION] 
+You  can  create  potions,  which  carry  spells  within  themselves.  See  
+the Dungeon Master’s Guide for rules on potions. 
+Prerequisite: Caster level 3rd. 
+Benefit:  You  can  create  a  potion  of  any  3rd-level  or  lower  spell  
+that  you  know  and  that  targets  one  or  more  creatures.  Brewing  a  
+potion  takes  one  day.  When  you  create  a  potion,  you  set  the  caster  
+level,  which  must  be  sufficient  to  cast  the  spell  in  question  and  no  
+higher  than  your  own  level.  The  base  price  of  a  potion  is  its  spell  
+level  ×    its  caster  level  ×    50  gp.  To  brew  a  potion,  you  must  spend  
+1/25  of  this  base  price  in  XP  and  use  up  raw  materials  costing  one  
+half this base price. 
+When you create a potion, you make any choices that you would 
+normally make when casting the spell. Whoever drinks the potion is 
+the target of the spell. 
+Any potion that stores a spell with a costly material component or 
+an XP cost also carries a commensurate cost. In addition to the costs 
+derived   from   the   base   price,   you   must   expend   the   material   
+component or pay the XP when creating the potion. 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+90 
+  
+Table 5–1: Feats 
+General Feats Prerequisites Benefit 
+Acrobatic — +2 bonus on Jump and Tumble checks 
+Agile — +2 bonus on Balance and Escape Artist checks 
+Alertness — +2 bonus on Listen and Spot checks 
+Animal Affinity — +2 bonus on Handle Animal and Ride checks 
+Armor Proficiency (light) — No armor check penalty on attack rolls 
+Armor Proficiency (medium) Armor Proficiency (light) No armor check penalty on attack rolls 
+Armor Proficiency (heavy) Armor Proficiency (medium) No armor check penalty on attack rolls 
+Athletic — +2 bonus on Climb and Swim checks 
+Augment Summoning Spell Focus (conjuration) Summoned creatures gain +4 Str, +4 Con 
+Blind-Fight
+1
+ — Reroll miss chance for concealment 
+Combat Casting — +4 bonus on Concentration checks for defensive casting 
+Combat Expertise
+1
+ Int 13 Trade attack bonus for AC (max 5 points) 
+Improved Disarm
+1
+ Combat Expertise +4 bonus on disarm attempts; no attack of opportunity 
+Improved Feint
+1
+ Combat Expertise Feint in combat as move action 
+Improved Trip
+1
+ Combat Expertise +4 bonus on trip attempts; no attack of opportunity 
+Whirlwind Attack
+1
+ Dex 13, Combat Expertise, Dodge, Mobility, One melee attack against each opponent within reach 
+ Spring Attack, base attack bonus +4 
+Combat Reflexes
+1
+ — Additional attacks of opportunity 
+Deceitful — +2 bonus on Disguise and Forgery checks 
+Deft Hands — +2 bonus on Sleight of Hand and Use Rope checks 
+Diligent — +2 bonus on Appraise and Decipher Script checks 
+Dodge
+1
+ Dex 13 +1 dodge bonus to AC against selected target 
+Mobility
+1
+ Dodge +4 dodge bonus to AC against some attacks of opportunity 
+Spring Attack
+1
+ Mobility, base attack bonus +4 Move before and after melee attack 
+Endurance — +4 bonus on checks or saves to resist nonlethal damage 
+Diehard Endurance Remain conscious at –1 to –9 hp 
+Eschew Materials — Cast spells without material components 
+Exotic Weapon Proficiency
+1, 2
+ Base attack bonus +1 No penalty on attacks with specific exotic weapon 
+Extra Turning
+3
+ Ability to turn or rebuke creatures Can turn or rebuke 4 more times per day 
+Great Fortitude — +2 bonus on Fortitude saves 
+Improved Counterspell — Counterspell with spell of same school 
+Improved Critical
+1, 2
+ Proficient with weapon, base attack bonus +8 Double threat range of weapon 
+Improved Initiative — +4 bonus on initiative checks 
+Improved Turning Ability to turn or rebuke creatures +1 level for turning checks 
+Improved Unarmed Strike
+1
+ — Considered armed even when unarmed 
+Improved Grapple
+1
+ Dex 13, Improved Unarmed Strike +4 bonus on grapple checks; no attack of opportunity 
+Deflect Arrows
+1
+ Dex 13, Improved Unarmed Strike Deflect one ranged attack per round 
+Snatch Arrows
+1
+ Dex 15, Deflect Arrows, Catch a deflected ranged attack 
+ Improved Unarmed Strike 
+Stunning Fist
+1
+ Dex 13, Wis 13, Improved Unarmed Strike, Stun opponent with unarmed strike 
+ base attack bonus +8 
+Investigator — +2 bonus on Gather Information and Search checks 
+Iron Will — +2 bonus on Will saves 
+Leadership Character Level 6th Attract cohort and followers 
+Lightning Reflexes — +2 bonus on Reflex saves 
+Magical Aptitude — +2 bonus on Spellcraft and Use Magic Device checks 
+Martial Weapon Proficiency
+2
+ — No penalty on attacks with specific martial weapon 
+Mounted Combat
+1
+ Ride 1 rank Negate hits on mount with Ride check 
+Mounted Archery
+1
+ Mounted Combat Half penalty for ranged attacks while mounted 
+Ride-By Attack
+1
+ Mounted Combat Move before and after a mounted charge 
+Spirited Charge
+1
+ Mounted Combat, Ride-By Attack Double damage with mounted charge 
+Trample
+1
+ Mounted Combat Target cannot avoid mounted overrun 
+Natural Spell Wis 13, Ability to use wild shape Cast spells while in wild shape 
+Negotiator — +2 bonus on Diplomacy and Sense Motive checks 
+Nimble Fingers — +2 bonus on Disable Device and Open Lock checks 
+Persuasive — +2 bonus on Bluff checks and Intimidate checks 
+Point Blank Shot
+1
+ — +1 bonus on ranged attack and damage within 30 ft. 
+Far Shot
+1
+ Point Blank Shot Increase range increment by 50% or 100% 
+Precise Shot
+1
+ Point Blank Shot No –4 penalty for shooting into melee 
+Rapid Shot
+1
+ Dex 13, Point Blank Shot One extra ranged attack each round 
+Manyshot
+1
+ Dex 17, Point Blank Shot, Rapid Shot, Shoot two or more arrows simultaneously 
+ base attack bonus +6 
+Shot on the Run
+1
+ Dex 13, Dodge, Mobility, Point Blank Shot, Move before and after ranged attack 
+ base attack bonus +4 
+Improved Precise Shot
+1
+ Dex 19, Point Blank Shot, Precise Shot, Ignore less than total cover/concealment on ranged attack 
+ base attack bonus +11 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+91
+  
+Power Attack
+1
+ Str 13 Trade attack bonus for damage (up to base attack bonus) 
+Cleave
+1
+ Power Attack Extra melee attack after dropping target 
+Great Cleave
+1
+ Cleave, Power Attack, base attack bonus +4 No limit to cleave attacks each round 
+Improved Bull Rush
+1
+ Power Attack +4 bonus on bull rush attempts; no attack of opportunity 
+Improved Overrun
+1
+ Power Attack +4 bonus on overrun attempts; no attack of opportunity 
+Improved Sunder
+1
+ Power Attack +4 bonus on sunder attempts; no attack of opportunity 
+Quick Draw
+1
+ Base attack bonus +1 Draw weapon as free weapon 
+Rapid Reload
+1
+ Weapon Proficiency with crossbow Reload crossbow more quickly 
+Run — Run 5 times normal speed, +4 bonus on Jump checks 
+  Made after a running start 
+Self-Sufficient — +2 bonus on Heal and Survival checks 
+Shield Proficiency — No armor check penalty on attack rolls 
+Improved Shield Bash
+1
+ Shield Proficiency Retain shield bonus to AC when shield bashing 
+Tower Shield Proficiency Shield Proficiency No armor check penalty on attack rolls 
+Simple Weapon Proficiency — No –4 penalty on attack rolls with simple weapons 
+Skill Focus
+2
+ — +3 bonus on checks with selected skill 
+Spell Focus
+2
+ — +1 bonus on save DCs against specific school of magic 
+Greater Spell Focus
+2
+ — +1 bonus on save DCs against specific school of magic 
+Spell Mastery
+2
+ Wizard level 1st Can prepare some spells without spellbook 
+Spell Penetration — +2 bonus on caster level checks to defeat spell resistance 
+Greater Spell Penetration Spell Penetration +4 to caster level checks to defeat spell resistance 
+Stealthy — +2 bonus on Hide and Move Silently checks 
+Toughness
+3
+ — +3 hit points 
+Track — Use Survival skill to track 
+Two-Weapon Fighting
+1
+ Dex 15 Reduce two-weapon fighting penalties by 2 
+Two-Weapon Defense
+1
+ Two-Weapon Fighting Off-hand weapon grants +1 shield bonus to AC 
+Improved Two-Weapon Fighting
+1
+    Dex 17, Two-Weapon Fighting, Gain second off-hand attack 
+ base attack bonus +6 
+Greater Two-Weapon Fighting Dex 19, Improved Two-Weapon Gain third off-hand attack 
+ Fighting, Two-Weapon Fighting, 
+ base attack bonus +11 
+Weapon Finesse
+1, 2
+ Proficiency with weapon, Use Dex modifier instead of Str modifier on attack rolls 
+ base attack bonus +1 with light melee weapons 
+Weapon Focus
+1, 2
+ Proficiency with weapon, base attack bonus +1 +1 bonus on attack rolls with selected weapon 
+Weapon Specialization
+1, 2
+ Proficiency with weapon, Weapon Focus +2 bonus on damage rolls with selected weapon 
+ with weapon, fighter level 4th 
+Greater Weapon Focus
+1, 2
+ Proficiency with weapon, Weapon Focus +2 bonus on attack rolls with selected weapon 
+ with weapon, fighter level 8th 
+Greater Weapon Specialization
+1, 2
+   Proficiency with weapon, Greater Weapon Focus +4 bonus on damage rolls with selected weapon 
+ with weapon, Weapon Focus with weapon, 
+ Weapon Specialization with weapon, fighter level 12th 
+ 
+Item Creation Feats Prerequisites Benefit 
+Brew Potion Spellcaster level 3rd Create magic potions 
+Craft Magic Arms and Armor  Spellcaster level 5th Create magic weapons, armor, and shields 
+Craft Rod  Spellcaster level 9th Create magic rods 
+Craft Staff  Spellcaster level 12th Create magic staffs 
+Craft Wand  Spellcaster level 5th Create magic wands 
+Craft Wondrous Item  Spellcaster level 3rd Create magic wondrous items 
+Forge Ring  Spellcaster level 12th Create magic rings 
+Scribe Scroll  Spellcaster level 1st Create magic scrolls 
+ 
+Metamagic Feats Prerequisites Benefit 
+Empower Spell — Increase spell’s variable, numeric effects by 50% 
+Enlarge Spell — Double spell’s range 
+Extend Spell — Double spell’s duration 
+Heighten Spell — Cast spells as higher level 
+Maximize Spell — Maximize spell’s variable, numeric effects 
+Quicken Spell — Cast spells as free action 
+Silent Spell — Cast spells without verbal components 
+Still Spell — Cast spells without somatic components 
+Widen Spell — Double spell’s area 
+ 
+1 A fighter may select this feat as one of his fighter bonus feats. 
+2 You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new weapon, skill, school of magic, or 
+selection of spells. 
+3 You can gain this feat multiple times. Its effects stack. 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+92 
+CLEAVE [GENERAL] 
+You can follow through with powerful blows. 
+Prerequisites: Str 13, Power Attack. 
+Benefit: If you deal a creature enough damage to make it drop 
+(typically  by  dropping  it  to  below  0  hit  points  or  killing  it),  you  get  
+an  immediate,  extra  melee  attack  against  another  creature  within  
+reach. You cannot take a 5-foot step before making this extra attack. 
+The  extra  attack  is  with  the  same  weapon  and  at  the  same  bonus  as  
+the  attack  that  dropped  the  previous  creature.  You  can  use  this  
+ability once per round. 
+Special:  A  fighter  may  select  Cleave  as  one  of  his  fighter  bonus  
+feats (see page 38). 
+ 
+COMBAT CASTING [GENERAL] 
+You are adept at casting spells in combat. 
+Benefit:  You  get  a  +4  bonus  on  Concentration  checks  made  to  
+cast  a  spell  or  use  a  spell-like  ability  while  on  the  defensive  (see  
+Casting  on  the  Defensive,  page  140)  or  while  you  are  grappling  or  
+pinned. 
+ 
+COMBAT EXPERTISE [GENERAL] 
+You  are  trained  at  using  your  combat  skill  for  defense  as  well  as  
+offense. 
+Prerequisite: Int 13. 
+Benefit: When you use the attack action or the full attack action 
+in melee, you can take a penalty of as much as –5 on your attack roll 
+and  add  the  same  number  (+5  or  less)  as  a  dodge  bonus  to  your  
+Armor  Class.  This  number  may  not  exceed  your  base  attack  bonus.  
+The  changes  to  attack  rolls  and  Armor  Class  last  until  your  next  
+action. 
+Normal: A character without the Combat Expertise feat can fight 
+defensively  while  using  the  attack  or  full  attack  action  to  take  a  –4  
+penalty on attack rolls and gain a +2 dodge bonus to Armor Class. 
+Special:  A  fighter  may  select  Combat  Expertise  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+COMBAT REFLEXES [GENERAL] 
+You can respond quickly and repeatedly to opponents who let their 
+defenses down. 
+Benefit:  When  foes  leave  themselves  open,  you  may  make  a  
+number of additional attacks of opportunity equal to your Dexterity 
+bonus. For example, a fighter with a Dexterity of 15 can make a total 
+of   three   attacks   of   opportunity   in   1   round—the   one   attack   of   
+opportunity  any  character  is  entitled  to,  plus  two  more  because  of  
+his  +2  Dexterity  bonus.  If  four  goblins  move  out  of  the  character’s  
+threatened  squares,  he  can  make  one  attack  of  opportunity  each  
+against  three  of  the  four.  You  can  still  make  only  one  attack  of  
+opportunity per opportunity. 
+With  this  feat,  you  may  also  make  attacks  of  opportunity  while  
+flat-footed. 
+Normal:  A  character  without  this  feat  can  make  only  one  attack  
+of  opportunity  per  round  and  can’t  make  attacks  of  opportunity  
+while flat-footed. 
+Special:  The  Combat  Reflexes  feat  does  not  allow  a  rogue  to  use  
+her opportunist ability (see page 51) more than once per round. 
+A  fighter  may  select  Combat  Reflexes  as  one  of  his  fighter  bonus  
+feats (see page 38) 
+A monk may select Combat Reflexes as a bonus feat at 2nd level. 
+ 
+CRAFT MAGIC ARMS AND ARMOR 
+[ITEM CREATION] 
+You can create magic weapons, armor, and shields. 
+Prerequisite: Caster level 5th. 
+Benefit:  You  can  create  any  magic  weapon,  armor,  or  shield  
+whose  prerequisites  you  meet  (see  the  Dungeon  Master’s  Guide  for  
+prerequisites  and  other  information  on  these  items).  Enhancing  a  
+weapon,  suit  of  armor,  or  shield  takes  one  day  for  each  1,000  gp  in  
+the price of its magical features. To enhance a weapon, suit of armor, 
+or  shield,  you  must  spend  1/25  of  its  features’  total  price  in  XP  and  
+use up raw materials costing one-half of this total price. 
+The  weapon,  armor,  or  shield  to  be  enhanced  must  be  a  mas-
+terwork  item  that  you  provide.  Its  cost  is  not  included  in  the  above  
+cost. 
+You  can  also  mend  a  broken  magic  weapon,  suit  of  armor,  or  
+shield  if  it  is  one  that  you  could  make.  Doing  so  costs  half  the  XP,  
+half  the  raw  materials,  and  half  the  time  it  would  take  to  craft  that  
+item in the first place. 
+ 
+CRAFT ROD [ITEM CREATION] 
+You can create magic rods, which have varied magical effects. 
+Prerequisite: Caster level 9th. 
+Benefit:  You  can  create  any  rod  whose  prerequisites  you  meet  
+(see  the  Dungeon  Master’s  Guide  for  prerequisites  and  other  infor-
+mation on rods). Crafting a rod takes one day for each 1,000 gp in its 
+base price. To craft a rod, you must spend 1/25 of its base price in XP 
+and use up raw materials costing one-half of its base price. 
+Some  rods  incur  extra  costs  in  material  components  or  XP,  as  
+noted  in  their  descriptions.  These  costs  are  in  addition  to  those  
+derived from the rod’s base price. 
+ 
+CRAFT STAFF [ITEM CREATION] 
+You can create magic staffs, each of which has mul-
+tiple magical effects. 
+Prerequisite: Caster level 12th. 
+Benefit:  You  can  create  any  staff  
+whose  prerequisites  you  meet  
+(see     the     Dungeon     Master’s     
+Guide   for   prerequisites   and   
+other information on staffs). 
+Crafting   a   staff   takes   
+one  day  for  each  1,000  
+gp  in  its  base  price.  To  
+craft  a  staff,  you  must  spend  
+1/25 of its base price in XP and 
+use  up  raw  materials  costing  
+one-half   of   its   base   price.   A   
+newly    created    staff    
+has 50 charges. 
+Some    staffs    incur    
+extra    costs    in    material    
+components    or    XP,    as    
+noted    in    their    descrip-
+tions.   These   costs   are   in   
+addition    to    those    derived    
+from the staff ’s base price. 
+ 
+CRAFT WAND [ITEM CREATION] 
+You  can  create  wands,  which  hold  spells  (see  the  Dungeon  Master’s  
+Guide for rules on wands). 
+Prerequisite: Caster level 5th. 
+Benefit: You can create a wand of any 4th-level or lower spell that 
+you  know.  Crafting  a  wand  takes  one  day  for  each  1,000  gp  in  its  
+base  price.  The  base  price  of  a  wand  is  its  caster  level  ×    the  spell  
+level  ×  750  gp.  To  craft  a  wand,  you  must  spend  1/25  of  this  base  
+price  in  XP  and  use  up  raw  materials  costing  one-half  of  this  base  
+price. A newly created wand has 50 charges. 
+Any wand that stores a spell with a costly material component or 
+an XP cost also carries a commensurate cost. In addition to the cost 
+derived  from  the  base  price,  you  must  expend  fifty  copies  of  the  
+material component or pay fifty times the XP cost. 
+ 
+CRAFT WONDROUS ITEM [ITEM CREATION] 
+You can create a wide variety of magic items, such as a crystal ball or a 
+flying carpet. 
+Prerequisite: Caster level 3rd. 
+Lidda dodges
+the ray of a spell cas
+t
+by an evil cleric.
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+93
+Benefit:  You  can  create  any  wondrous  item  whose  prerequisites  
+you meet (see the Dungeon Master’s Guide for prerequisites and other 
+information   on   wondrous   items).   Enchanting   a   wondrous   item   
+takes  one  day  for  each  1,000  gp  in  its  price.  To  enchant  a  wondrous  
+item, you must spend 1/25 of the item’s price in XP and use up raw 
+materials costing half of this price. 
+You  can  also  mend  a  broken  wondrous  item  if  it  is  one  that  you  
+could  make.  Doing  so  costs  half  the  XP,  half  the  raw  materials,  and  
+half the time it would take to craft that item in the first place. 
+Some  wondrous  items  incur  extra  costs  in  material  components  
+or  XP,  as  noted  in  their  descriptions.  These  costs  are  in  addition  to  
+those derived from the item’s base price. You must pay such a cost to 
+create an item or to mend a broken one. 
+ 
+DECEITFUL [GENERAL] 
+You have a knack for disguising the truth. 
+Benefit:  You  get  a  +2  bonus  on  all  Disguise  checks  and  Forgery  
+checks. 
+ 
+DEFLECT ARROWS [GENERAL] 
+You  can  deflect  incoming  arrows,  as  well  as  crossbow  bolts,  spears,  
+and other projectile or thrown weapons. 
+Prerequisites: Dex 13, Improved Unarmed Strike. 
+Benefit:  You  must  have  at  least  one  hand  free  (holding  nothing)  
+to  use  this  feat.  Once  per  round  when  you  would  normally  be  hit  
+with a ranged weapon, you may deflect it so that you take no damage 
+from   it.   You   must   be   aware   of   the   attack   and   not   flat-footed.   
+Attempting  to  deflect  a  ranged  weapon  doesn’t  count  as  an  action.  
+Unusually  massive  ranged  weapons,  such  as  boulders  hurled  by  
+giants,  and  ranged  attacks  generated  by  spell  effects,  such  as  Melf’s 
+acid arrow, can’t be deflected. 
+Special: A monk may select Deflect Arrows as a bonus feat at 2nd 
+level, even if she does not meet the prerequisites. 
+A  fighter  may  select  Deflect  Arrows  as  one  of  his  fighter  bonus  
+feats (see page 38). 
+ 
+DEFT HANDS [GENERAL] 
+You have exceptional manual dexterity. 
+Benefit:  You  get  a  +2  bonus  on  all  Sleight  of  Hand  checks  and  
+Use Rope checks. 
+ 
+DIEHARD [GENERAL] 
+You can remain conscious after attacks that would fell others. 
+Prerequisite: Endurance. 
+Benefit:  When  reduced  to  between  –1  and  –9  hit  points,  you  
+automatically  become  stable.  You  don’t  have  to  roll  d%  to  see  if  you  
+lose 1 hit point each round. 
+When  reduced  to  negative  hit  points,  you  may  choose  to  act  as  if  
+you  were  disabled,  rather  than  dying.  You  must  make  this  decision  
+as soon as you are reduced to negative hit points (even if it isn’t your 
+turn).  If  you  do  not  choose  to  act  as  if  you  were  disabled,  you  
+immediately fall unconscious. 
+When  using  this  feat,  you  can  take  either  a  single  move  or  stan-
+dard action each turn, but not both, and you cannot take a full-round 
+action. You can take a move action without further injuring yourself, 
+but if you perform any standard action (or any other action the DM 
+deems  as  strenuous,  including  some  free  actions,  such  as  casting  a  
+quickened  spell)  you  take  1  point  of  damage  after  completing  the  
+act. If you reach –10 hit points, you immediately die. 
+Normal: A character without this feat who is reduced to between 
+–1  and  –9  hit  points  is  unconscious  and  dying,  as  described  in  
+Chapter 8: Combat. 
+ 
+DILIGENT [GENERAL] 
+Your   meticulousness   allows   you   to   analyze   minute   details   that   
+others miss. 
+Benefit: You get a +2 bonus on all Appraise checks and Decipher 
+Script checks. 
+ 
+DODGE [GENERAL] 
+You are adept at dodging blows. 
+Prerequisite: Dex 13. 
+Benefit:  During  your  action,  you  designate  an  opponent  and  
+receive  a  +1  dodge  bonus  to  Armor  Class  against  attacks  from  that  
+opponent. You can select a new opponent on any action. 
+A  condition  that  makes  you  lose  your  Dexterity  bonus  to  Armor  
+Class   (if   any)   also   makes   you   lose   dodge   bonuses.   Also,   dodge   
+bonuses  (such  as  this  one  and  a  dwarf’s  racial  bonus  on  dodge  
+attempts  against  giants)  stack  with  each  other,  unlike  most  other  
+types of bonuses. 
+Special:  A  fighter  may  select  Dodge  as  one  of  his  fighter  bonus  
+feats (see page 38). 
+ 
+EMPOWER SPELL [METAMAGIC] 
+You can cast spells to greater effect. 
+Benefit:  All  variable,  numeric  effects  of  an  empowered  spell  are  
+increased by one-half. An empowered spell deals half again as much 
+damage  as  normal,  cures  half  again  as  many  hit  points,  affects  half  
+again  as  many  targets,  and  so  forth,  as  appropriate.  For  example,  an  
+empowered magic  missile  deals  1-1/2  times  its  normal  damage  (roll  
+1d4+1  and  multiply  the  result  by  1-1/2  for  each  missile).  Saving  
+throws  and  opposed  rolls  (such  as  the  one  you  make  when  you  cast  
+dispel   magic)   are   not   affected,   nor   are   spells   without   random   
+variables. An empowered spell uses up a spell slot two levels higher 
+than the spell’s actual level. 
+ 
+ENDURANCE [GENERAL] 
+You are capable of amazing feats of stamina. 
+Benefit:  You  gain  a  +4  bonus  on  the  following  checks  and  saves:  
+Swim   checks   made   to   resist   nonlethal   damage   (see   page   84),   
+Constitution   checks   made   to   continue   running   (see   page   144),   
+Constitution  checks  made  to  avoid  nonlethal  damage  from  a  forced  
+march (see page 164), Constitution checks made to hold your breath 
+(see  page  84),  Constitution  checks  
+made  to  avoid  nonlethal  damage  
+from   starvation   or   thirst   (see   
+page  304  of  the  Dun-
+geon   Master’s   Guide), 
+Fortitude saves made to avoid 
+nonlethal damage from hot or 
+cold  environments  (see  pages  
+302 and 303 of the Dungeon 
+Master’s  Guide),  and  Forti-
+tude   saves   made   to   resist   
+damage     from     suffocation     
+(see  page  304  of  the  Dun-
+geon  Master’s  Guide).  Also,  
+you  may  sleep  in  light  
+or     medium     armor     
+without    becoming    
+fatigued. 
+Normal:   A   
+character 
+without this 
+feat      who      
+sleeps     in     
+medium 
+Illus. by J. Foster 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+94 
+or heavier armor is automatically fatigued the next day. 
+Special:  A  ranger  automatically  gains  Endurance  as  a  bonus  feat  
+at 3rd level (see page 48). He need not select it. 
+ 
+ENLARGE SPELL [METAMAGIC] 
+You can cast spells farther than normal. 
+Benefit:  You  can  alter  a  spell  with  a  range  of  close,  medium,  or  
+long to increase its range by 100%. An enlarged spell with a range of 
+close  now  has  a  range  of  50  ft.  +  5  ft./level,  while  medium-range  
+spells have a range of 200 ft. + 20 ft./level and long-range spells have 
+a range of 800 ft. + 80 ft./level. An enlarged spell uses up a spell slot 
+one level higher than the spell’s actual level. 
+Spells  whose  ranges  are  not  defined  by  distance,  as  well  as  spells  
+whose ranges are not close, medium, or long, do not have increased 
+ranges. 
+ 
+ESCHEW MATERIALS [GENERAL] 
+You can cast spells without relying on material components. 
+Benefit:  You  can  cast  any  spell  that  has  a  material  component  
+costing 1 gp or less without needing that component. (The casting of 
+the spell still provokes attacks of opportunity as normal.) If the spell 
+requires  a  material  component  that  costs  more  than  1  gp,  you  must  
+have  the  material  component  at  hand  to  cast  the  spell,  just  as  
+normal. 
+ 
+EXOTIC WEAPON PROFICIENCY [GENERAL] 
+Choose  a  type  of  exotic  weapon,  such  as  dire  flail  or  shuriken  (see  
+Table  7–5:  Weapons,  page  116,  for  a  list  of  exotic  weapons).  You  
+understand how to use that type of exotic weapon in combat. 
+Prerequisite: Base attack bonus +1 (plus Str 13 for bastard sword 
+or dwarven waraxe). 
+Benefit: You make attack rolls with the weapon normally. 
+Normal: A character who uses a weapon with which he or she is 
+not proficient takes a –4 penalty on attack rolls. 
+Special: You can gain Exotic Weapon Proficiency multiple times. 
+Each  time  you  take  the  feat,  it  applies  to  a  new  type  of  exotic  
+weapon.  Proficiency  with  the  bastard  sword  or  the  dwarven  waraxe  
+has an additional prerequisite of Str 13. 
+A  fighter  may  select  Exotic  Weapon  Proficiency  as  one  of  his  
+fighter bonus feats (see page 38) 
+EXTEND SPELL [METAMAGIC] 
+You can cast spells that last longer than normal. 
+Benefit:  An  extended  spell  lasts  twice  as  long  as  normal.  A  spell  
+with a duration of concentration, instantaneous, or permanent is not 
+affected by this feat. An extended spell uses up a spell slot one level 
+higher than the spell’s actual level. 
+ 
+EXTRA TURNING [GENERAL] 
+You can turn or rebuke creatures more often than normal. 
+Prerequisite: Ability to turn or rebuke creatures. 
+Benefit:  Each  time  you  take  this  feat,  you  can  use  your  ability  to  
+turn or rebuke creatures four more times per day than normal. 
+If  you  have  the  ability  to  turn  or  rebuke  more  than  one  kind  of  
+creature   (such   as   a   good-aligned   cleric   with   access   to   the   Fire   
+domain,  who  can  turn  undead  and  water  creatures  and  can  also  
+rebuke  fire  creatures),  each  of  your  turning  or  rebuking  abilities  
+gains four additional uses per day. 
+Normal:  Without  this  feat,  a  character  can  typically  turn  or  
+rebuke undead (or other creatures) a number of times per day equal 
+to 3 + his or her Charisma modifier. 
+Special:  You  can  gain  Extra  Turning  multiple  times.  Its  effects  
+stack. Each time you take the feat, you can use each of your turning 
+or rebuking abilities four additional times per day. 
+ 
+FAR SHOT [GENERAL] 
+You can get greater distance out of a ranged weapon. 
+Prerequisite: Point Blank Shot. 
+Benefit:  When  you  use  a  projectile  weapon,  such  as  a  bow,  its  
+range  increment  increases  by  one-half  (multiply  by  1-1/2).  When  
+you use a thrown weapon, its range increment is doubled. 
+Special: A fighter may select Far Shot as one of his fighter bonus 
+feats (see page 38). 
+ 
+FORGE RING [ITEM CREATION] 
+You can create magic rings, which have varied magical effects. 
+Prerequisite: Caster level 12th. 
+Benefit:  You  can  create  any  ring  whose  prerequisites  you  meet  
+(see  the  Dungeon  Master’s  Guide  for  prerequisites  and  other  infor-
+mation  on  rings).  Crafting  a  ring  takes  one  day  for  each  1,000  gp  in  
+its base price. To craft a ring, you must spend 1/25 of its base price in 
+XP and use up raw materials costing one-half of its base price. 
+You can also mend a broken ring if it is one that you could make. 
+Doing so costs half the XP, half the raw materials, and half the time 
+it would take to forge that ring in the first place. 
+Some magic rings incur extra costs in material components or XP, 
+as noted in their descriptions. For example, a ring of three wishes costs 
+15,000  XP  in  addition  to  costs  derived  from  its  base  price  (as  many  
+XP  as  it  costs  to  cast  wish  three  times).  You  must  pay  such  a  cost  to  
+forge such a ring or to mend a broken one. 
+ 
+GREAT CLEAVE [GENERAL] 
+You can wield a melee weapon with such power that you can strike 
+multiple times when you fell your foes. 
+Prerequisites: Str 13, Cleave, Power Attack, base attack bonus +4. 
+Benefit: This feat works like Cleave, except that there is no limit 
+to the number of times you can use it per round. 
+Special:  A  fighter  may  select  Great  Cleave  as  one  of  his  fighter  
+bonus feats (see page 38). 
+ 
+GREAT FORTITUDE [GENERAL] 
+You are tougher than normal. 
+Benefit: You get a +2 bonus on all Fortitude saving throws. 
+ 
+GREATER SPELL FOCUS [GENERAL] 
+Choose  a  school  of  magic  to  which  you  already  have  applied  the  
+Spell Focus feat. Your spells of that school are now even more potent 
+than before. 
+Benefit:  Add  +1  to  the  Difficulty  Class  for  all  saving  throws  
+against spells from the school of magic you select. This bonus stacks 
+with the bonus from Spell Focus. 
+Special:  You  can  gain  this  feat  multiple  times.  Its  effects  do  not  
+stack. Each time you take the feat, it applies to a new school of magic 
+to which you already have applied the Spell Focus feat. 
+ 
+GREATER SPELL PENETRATION [GENERAL] 
+Your spells are remarkably potent, breaking through spell resistance 
+more readily than normal. 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+95
+Prerequisite: Spell Penetration. 
+Benefit: You get a +2 bonus on caster level checks (1d20 + caster 
+level)  made  to  overcome  a  creature’s  spell  resistance.  This  bonus  
+stacks with the one from Spell Penetration (see page 100). 
+ 
+GREATER TWO-WEAPON FIGHTING 
+[GENERAL] 
+You are a master at fighting two-handed. 
+Prerequisites:  Dex  19,  Improved  Two-Weapon  Fighting,  Two-
+Weapon Fighting, base attack bonus +11. 
+Benefit: You get a third attack with your off-hand weapon, albeit 
+at a –10 penalty. 
+Special:  A  fighter  may  select  Greater  Two-Weapon  Fighting  as  
+one of his fighter bonus feats (see page 38). 
+An  11th-level  ranger  who  has  chosen  the  two-weapon  combat  
+style  is  treated  as  having  Greater  Two-Weapon  Fighting,  even  if  he  
+does  not  have  the  prerequisites  for  it,  but  only  when  he  is  wearing  
+light or no armor (see page 48). 
+ 
+GREATER WEAPON FOCUS [GENERAL] 
+Choose  one  type  of  weapon,  such  as  greataxe,  for  which  you  have  
+already selected Weapon Focus. You can also choose unarmed strike 
+or   grapple   as   your   weapon   for   purposes   of   this   feat.   You   are   
+especially good at using this weapon. 
+Prerequisites: Proficiency with selected weapon, Weapon Focus 
+with selected weapon, fighter level 8th. 
+Benefit:  You  gain  a  +1  bonus  on  all  attack  rolls  you  make  using  
+the selected weapon. This bonus stacks with other bonuses on attack 
+rolls, including the one from Weapon Focus (see below). 
+Special:  You  can  gain  Greater  Weapon  Focus  multiple  times.  Its  
+effects  do  not  stack.  Each  time  you  take  the  feat,  it  applies  to  a  new  
+type of weapon. 
+A  fighter  must  have  Greater  Weapon  Focus  with  a  given  weapon  
+to gain the Greater Weapon Specialization feat for that weapon.  
+A  fighter  may  select  Greater  Weapon  Focus  as  one  of  his  fighter  
+bonus feats (see page 38). 
+ 
+GREATER WEAPON SPECIALIZATION 
+[GENERAL] 
+Choose  one  type  of  weapon,  such  as  greataxe,  for  which  you  have  
+already   selected   Weapon   Specialization.   You   can   also   choose   
+unarmed  strike  or  grapple  as  your  weapon  for  purposes  of  this  feat.  
+You deal extra damage when using this weapon. 
+Prerequisites:    Proficiency    with    selected    weapon,    Greater    
+Weapon  Focus  with  selected  weapon,  Weapon  Focus  with  selected  
+weapon,  Weapon  Specialization  with  selected  weapon,  fighter  level  
+12th. 
+Benefit: You gain a +2 bonus on all damage rolls you make using 
+the  selected  weapon.  This  bonus  stacks  with  other  bonuses  on  
+damage  rolls,  including  the  one  from  Weapon  Specialization  (see  
+below). 
+Special:  You  can  gain  Greater  Weapon  Specialization  multiple  
+times. Its effects do not stack. Each time you take the feat, it applies 
+to a new type of weapon. 
+A  fighter  may  select  Greater  Weapon  Specialization  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+HEIGHTEN SPELL [METAMAGIC] 
+You can cast a spell as if it were a higher-level spell than it actually is. 
+Benefit:  A  heightened  spell  has  a  higher  spell  level  than  normal  
+(up  to  a  maximum  of  9th  level).  Unlike  other  metamagic  feats,  
+Heighten Spell actually increases the effective level of the spell that 
+it  modifies.  All  effects  dependent  on  spell  level  (such  as  saving  
+throw DCs and ability to penetrate a lesser globe of invulnerability) are 
+calculated according to the heightened level. The heightened spell is 
+as  difficult  to  prepare  and  cast  as  a  spell  of  its  effective  level.  For  
+example,   a   cleric   could   prepare   hold   person   as   a   4th-level   spell   
+(instead of a 2nd-level spell), and it would in all ways be treated as a 
+4th-level spell. 
+ 
+IMPROVED BULL RUSH [GENERAL] 
+You know how to push opponents back. 
+Prerequisites: Str 13, Power Attack. 
+Benefit:  When  you  perform  a  bull  rush  (page  154),  you  do  not  
+provoke an attack of opportunity from the defender. You also gain a 
++4 bonus on the opposed Strength check you make to push back the 
+defender. 
+Special:  A  fighter  may  select  Improved  Bull  Rush  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+IMPROVED COUNTERSPELL [GENERAL] 
+You understand the nuances of magic to such an extent that you can 
+counter your opponent’s spells with great efficiency. 
+Benefit:  When  counterspelling,  you  may  use  a  spell  of  the  same  
+school that is one or more spell levels higher than the target spell. 
+Normal: Without this feat, you may counter a spell only with the 
+same  spell  or  with  a  spell  specifically  designated  as  countering  the  
+target spell. 
+ 
+IMPROVED CRITICAL [GENERAL] 
+Choose  one  type  of  weapon,  such  as  longsword  or  greataxe.  With  
+that weapon, you know how to hit where it hurts. 
+Prerequisite: Proficient with weapon, base attack bonus +8. 
+Benefit: When using the weapon you selected, your threat range 
+is  doubled.  For  example,  a  longsword  usually  threatens  a  critical  hit  
+on  a  roll  of  19–20  (two  numbers).  If  a  character  using  a  longsword  
+has Improved Critical (longsword), the threat range becomes 17–20 
+(four numbers). 
+Special:  You  can  gain  Improved  Critical  multiple  times.  The  
+effects  do  not  stack.  Each  time  you  take  the  feat,  it  applies  to  a  new  
+type of weapon. 
+This  effect  doesn’t  stack  with  any  other  effect  that  expands  the  
+threat range of a weapon (such as the keen edge spell). 
+A fighter may select Improved Critical as one of his fighter bonus 
+feats (see page 38). 
+ 
+IMPROVED DISARM [GENERAL] 
+You know how to disarm opponents in melee combat. 
+Prerequisites: Int 13, Combat Expertise. 
+Benefit:  You  do  not  provoke  an  attack  of  opportunity  when  you  
+attempt  to  disarm  an  opponent,  nor  does  the  opponent  have  a  
+chance  to  disarm  you.  You  also  gain  a  +4  bonus  on  the  opposed  
+attack roll you make to disarm your opponent. 
+Normal: See the normal disarm rules, page 155. 
+Special:  A  fighter  may  select  Improved  Disarm  as  one  of  his  
+fighter bonus feats (see page 38). 
+A monk may select Improved Disarm as a bonus feat at 6th level, 
+even if she does not meet the prerequisites. 
+ 
+IMPROVED FEINT [GENERAL] 
+You are skilled at misdirecting your opponent’s attention in combat. 
+Prerequisites: Int 13, Combat Expertise. 
+Benefit: You can make a Bluff check to feint in combat as a move 
+action. 
+Normal: Feinting in combat is a standard action. 
+A  fighter  may  select  Improved  Feint  as  one  of  his  fighter  bonus  
+feats (see page 38). 
+ 
+IMPROVED GRAPPLE [GENERAL] 
+You are skilled at grappling opponents. 
+Prerequisites: Dex 13, Improved Unarmed Strike. 
+Benefit:  You  do  not  provoke  an  attack  of  opportunity  when  you  
+make a touch attack to start a grapple. You also gain a +4 bonus on all 
+grapple checks, regardless of whether you started the grapple. 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+96 
+Normal: Without this feat, you provoke an attack of opportunity 
+when you make a touch attack to start a grapple. 
+Special:  A  fighter  may  select  Improved  Grapple  as  one  of  his  
+fighter bonus feats (see page 38). 
+A monk may select Improved Grapple as a bonus feat at 1st level, 
+even if she does not meet the prerequisites. 
+ 
+IMPROVED INITIATIVE [GENERAL] 
+You can react more quickly than normal in a fight. 
+Benefit: You get a +4 bonus on initiative checks. 
+Special:  A  fighter  may  select  Improved  Initiative  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+IMPROVED OVERRUN [GENERAL] 
+You are skilled at knocking down opponents. 
+Prerequisites: Str 13, Power Attack. 
+Benefit:  When  you  attempt  to  overrun  an  opponent,  the  target  
+may  not  choose  to  avoid  you.  You  also  gain  a  +4  bonus  on  your  
+Strength check to knock down your opponent. 
+Normal: Without this feat, the target of an overrun can choose to 
+avoid you or to block you. 
+Special:  A  fighter  may  select  Improved  Overrun  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+IMPROVED PRECISE SHOT [GENERAL] 
+Your ranged attacks can ignore the effects of cover or concealment. 
+Prerequisites:   Dex   19,   Point   Blank   Shot,   Precise   Shot,   base   
+attack bonus +11. 
+Benefit:  Your  ranged  attacks  ignore  the  AC  bonus  granted  to  
+targets   by   anything   less   than   total   cover,   and   the   miss   chance   
+granted  to  targets  by  anything  less  than  total  concealment.  Total  
+cover  and  total  concealment  provide  their  normal  benefits  against  
+your ranged attacks. 
+In  addition,  when  you  shoot  or  throw  ranged  weapons  at  a  grap-
+pling  opponent,  you  automatically  strike  at  the  opponent  you  have  
+chosen. 
+Normal:  See  pages  150–152  for  rules  on  the  effects  of  cover  and  
+concealment.  Without  this  feat,  a  character  who  shoots  or  throws  a  
+ranged  weapon  at  a  target  involved  in  a  grapple  must  roll  randomly  
+to see which grappling combatant the attack strikes. 
+Special: A fighter may select Improved Precise Shot as one of his 
+fighter bonus feats (see page 38). 
+An  11th-level  ranger  who  has  chosen  the  archery  combat  style  is  
+treated  as  having  Improved  Precise  Shot,  even  if  he  does  not  have  
+the  prerequisites  for  it,  but  only  when  he  is  wearing  light  or  no  
+armor (see page 48). 
+ 
+IMPROVED SHIELD BASH [GENERAL] 
+You  can  bash  with  a  shield  while  retaining  its  shield  bonus  to  your  
+Armor Class. 
+Prerequisite: Shield Proficiency. 
+Benefit: When you perform a shield bash, you may still apply the 
+shield’s shield bonus to your AC. 
+Normal:  Without  this  feat,  a  character  who  performs  a  shield  
+bash loses the shield’s shield bonus to AC until his or her next turn. 
+Special: A fighter may select Improved Shield Bash as one of his 
+fighter bonus feats (see page 38). 
+ 
+IMPROVED SUNDER [GENERAL] 
+You are skilled at attacking your opponents’ weapons and shields, as 
+well as other objects. 
+Prerequisites: Str 13, Power Attack. 
+Benefit: When you strike at an object held or carried by an 
+opponent (such as a weapon or shield), you do not provoke an attack 
+of opportunity (see Sunder, page 158). 
+You  also  gain  a  +4  bonus  on  any  attack  roll  made  to  attack  an  
+object held or carried by another character. 
+Normal: Without this feat, you provoke an attack of opportunity 
+when you strike at an object held or carried by another character. 
+Special:  A  fighter  may  select  Improved  Sunder  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+IMPROVED TRIP [GENERAL] 
+You  are  trained  not  only  in  tripping  opponents  safely  but  also  in  
+following through with an attack. 
+Prerequisites: Int 13, Combat Expertise. 
+Benefit:  You  do  not  provoke  an  attack  of  opportunity  when  you  
+attempt to trip an opponent while you are unarmed. You also gain a 
++4 bonus on your Strength check to trip your opponent. 
+If  you  trip  an  opponent  in  melee  combat,  you  immediately  get  a  
+melee attack against that opponent as if you hadn’t used your attack 
+for  the  trip  attempt.  For  example,  at  11th  level,  Tordek  gets  three  
+attacks  at  bonuses  of  +11,  +6,  and  +1.  In  the  current  round,  he  
+attempts  to  trip  his  opponent.  His  first  attempt  fails  (using  up  his  
+first   attack).   His   second   attempt   succeeds,   and   he   immediately   
+makes  a  melee  attack  against  his  opponent  with  a  bonus  of  +6.  
+Finally, he takes his last attack at a bonus of +1. 
+Normal: Without this feat, you provoke an attack of opportunity 
+when  you  attempt  to  trip  an  opponent  while  you  are  unarmed.  See  
+Trip, page 158. 
+Special:  At  6th  level,  a  monk  may  select  Improved  Trip  as  a  
+bonus feat, even if she does not have the prerequisites. 
+A  fighter  may  select  Improved  Trip  as  one  of  his  fighter  bonus  
+feats (see page 38). 
+ 
+IMPROVED TURNING [GENERAL] 
+Your turning or rebuking attempts are more powerful than normal. 
+Prerequisite: Ability to turn or rebuke creatures. 
+Benefit:  You  turn  or  rebuke  creatures  as  if  you  were  one  level  
+higher than you are in the class that grants you the ability. 
+ 
+IMPROVED TWO-WEAPON FIGHTING 
+[GENERAL] 
+You are an expert in fighting two-handed. 
+Prerequisites: Dex 17, Two-Weapon Fighting, base attack bonus 
++6. 
+Benefit:  In  addition  to  the  standard  single  extra  attack  you  get  
+with an off-hand weapon, you get a second attack with it, albeit at a –
+5 penalty (see Table 8–10, page 160). 
+Normal: Without this feat, you can only get a single extra attack 
+with an off-hand weapon. 
+Special: A fighter may select Improved Two-Weapon Fighting as 
+one of his fighter bonus feats. 
+A  6th-level  ranger  who  has  chosen  the  two-weapon  combat  style  
+is  treated  as  having  Improved  Two-Weapon  Fighting,  even  if  he  
+does  not  have  the  prerequisites  for  it,  but  only  when  he  is  wearing  
+light or no armor (see page 48). 
+ 
+IMPROVED UNARMED STRIKE [GENERAL] 
+You are skilled at fighting while unarmed. 
+Benefit: You are considered to be armed even when unarmed —
+that  is,  you  do  not  provoke  attacks  or  opportunity  from  armed  
+opponents  when  you  attack  them  while  unarmed.  However,  you  
+still  get  an  attack  of  opportunity  against  any  opponent  who  makes  
+an unarmed attack on you. 
+In  addition,  your  unarmed  strikes  can  deal  lethal  or  nonlethal  
+damage, at your option. 
+Normal:  Without  this  feat,  you  are  considered  unarmed  when  
+attacking  with  an  unarmed  strike,  and  you  can  deal  only  nonlethal  
+damage with such an attack. 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+97
+Special:  A  monk  automatically  gains  Improved  Unarmed  Strike  
+as a bonus feat at 1st level. She need not select it. 
+A  fighter  may  select  Improved  Unarmed  Strike  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+INVESTIGATOR [GENERAL] 
+You have a knack for finding information. 
+Benefit:  You  get  a  +2  bonus  on  all  Gather  Information  checks  
+and Search checks. 
+ 
+IRON WILL [GENERAL] 
+You have a stronger will than normal. 
+Benefit: You get a +2 bonus on all Will saving throws. 
+ 
+LEADERSHIP [GENERAL] 
+You are the sort of person others want to follow, and you have done 
+some work attempting to recruit cohorts and followers. 
+Prerequisite: Character level 6th. 
+Benefit:    You    can    attract    loyal    companions    and    
+devoted followers, subordinates who assist you. Your DM 
+has  information  on  what  sort  of  cohort  and  how  many  
+followers you can recruit. 
+Special: Check with your DM before selecting this feat, and work 
+with your DM to determine an appropriate cohort and followers for 
+your  character  (the  Dungeon Master’s Guide has more information on 
+cohorts and followers). 
+ 
+LIGHTNING REFLEXES [GENERAL] 
+You have faster than normal reflexes. 
+Benefit: You get a +2 bonus on all Reflex saving throws. 
+ 
+MAGICAL APTITUDE [GENERAL] 
+You have a knack for magical endeavors. 
+Benefit:  You  get  a  +2  bonus  on  all  Spellcraft  checks  and  Use  
+Magic Device checks. 
+ 
+MANYSHOT [GENERAL] 
+You can fire multiple arrows simultaneously against a nearby target. 
+Prerequisites: Dex 17, Point Blank Shot, Rapid Shot, base attack 
+bonus +6 
+Benefit: As a standard action, you may fire two arrows at a single 
+opponent within 30 feet. Both arrows use the same attack roll (with 
+a  –4  penalty)  to  determine  success  and  deal  damage  normally  (but  
+see Special). 
+For every five points of base attack bonus you have above +6, you 
+may  add  one  additional  arrow  to  this  attack,  to  a  maximum  of  four  
+arrows  at  a  base  attack  bonus  of  +16.  However,  each  arrow  after  the  
+second  adds  a  cumulative  –2  penalty  on  the  attack  roll  (for  a  total  
+penalty of –6 for three arrows and –8 for four). 
+Damage  reduction  and  other  resistances  apply  separately  against  
+each arrow fired. 
+Special:  Regardless  of  the  number  of  arrows  you  fire,  you  apply  
+precision-based damage (such as sneak attack damage) only once. If 
+you  score  a  critical  hit,  only  the  first  arrow  fired  deals  critical  
+damage; all others deal regular damage. 
+A  fighter  may  select  Manyshot  as  one  of  his  fighter  bonus  feats  
+(see page 38). 
+A  6th-level  ranger  who  has  chosen  the  archery  combat  style  is  
+treated   as   having   Manyshot   even   if   he   does   not   have   the   
+prerequisites  for  it,  but  only  when  he  is  wearing  light  or  no  armor  
+(see page 48). 
+ 
+MARTIAL WEAPON PROFICIENCY 
+[GENERAL] 
+Choose  a  type  of  martial  weapon,  such  as  a  longbow  
+(see Table 7–5: Weapons, page 116, for a list of martial 
+weapons).  You  understand  how  to  use  that  type  of  
+martial   weapon   in   combat.   
+Use  this  feat  to  expand  the  
+list  of  weapons  with  which  
+you  are  proficient  beyond  the  basic  list  in  your  
+class description. 
+Benefit:  You  make  attack  rolls  with  the  selected  
+weapon normally. 
+Normal:  When  using  a  weapon  with  which  you  are  
+not proficient, you take a –4 penalty on attack rolls. 
+Special:  Barbarians,  fighters,  paladins,  and  rangers  are  
+proficient  with  all  martial  weapons.  They  need  not  select  
+this feat. 
+You   can   gain   Martial   Weapon   Proficiency   multiple   
+times.  Each  time  you  take  the  feat,  it  applies  to  a  new  type  of  
+weapon.  
+A  cleric  who  chooses  the  War  domain  automatically  gains  the  
+Martial   Weapon   Proficiency   feat   related   to   his   deity’s   favored   
+weapon as a bonus feat, if the weapon is a martial one. He need not 
+select it. 
+A  sorcerer  or  wizard  who  casts  the  spell  Tenser’s  transformation  on  
+himself or herself gains proficiency with all martial weapons for the 
+duration of the spell. 
+ 
+MAXIMIZE SPELL [METAMAGIC] 
+You can cast spells to maximum effect. 
+Benefit:  All  variable,  numeric  effects  of  a  spell  modified  by  this  
+feat  are  maximized.  A  maximized  spell  deals  maximum  damage,  
+cures  the  maximum  number  of  hit  points,  affects  the  maximum  
+number  of  targets,  etc.,  as  appropriate.  For  example,  a  maximized  
+fireball deals 6 points of damage per caster level (up to a maximum of 
+60 points of damage at 10th caster level). Saving throws and opposed 
+rolls  (such  as  the  one  you  make  when  you  cast  dispel  magic)  are  not  
+affected, nor are spells without random variables. A maximized spell 
+uses up a spell slot three levels higher than the spell’s actual level. 
+Illus. by J. Jarvis 
+Attacking with two arrows,
+thanks to the Manyshot feat. 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+98 
+An  empowered,  maximized  spell  gains  the  separate  benefits  of  
+each  feat:  the  maximum  result  plus  one-half  the  normally  rolled  
+result. An empowered, maximized fireball cast by a 15th-level wizard 
+deals points of damage equal to 60 plus one half of 10d6. 
+ 
+MOBILITY [GENERAL] 
+You are skilled at dodging past opponents and avoiding blows. 
+Prerequisites: Dex 13, Dodge. 
+Benefit: You get a +4 dodge bonus to Armor Class against attacks 
+of opportunity caused when you move out of or within a threatened 
+area.  A  condition  that  makes  you  lose  your  Dexterity  bonus  to  
+Armor  Class  (if  any)  also  makes  you  lose  dodge  bonuses.  Dodge  
+bonuses  (such  as  this  one  and  a  dwarf’s  racial  bonus  on  dodge  
+attempts  against  giants)  stack  with  each  other,  unlike  most  types  of  
+bonuses. 
+Special: A fighter may select Mobility as one of his fighter bonus 
+feats (see page 38). 
+ 
+MOUNTED ARCHERY [GENERAL] 
+You are skilled at using ranged weapons while mounted. 
+Prerequisites: Ride 1 rank, Mounted Combat. 
+Benefit: The penalty you take when using a ranged weapon while 
+mounted is halved: –2 instead of –4 if your mount is taking a double 
+move,  and  –4  instead  of  –8  if  your  mount  is  running  (see  Mounted  
+Combat, page 157). 
+Special:  A  fighter  may  select  Mounted  Archery  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+MOUNTED COMBAT [GENERAL] 
+You are skilled in mounted combat. 
+Prerequisite: Ride 1 rank. 
+Benefit: Once per round when your mount is hit in combat, you 
+may attempt a Ride check (as a reaction) to negate the hit. The hit is 
+negated  if  your  Ride  check  result  is  greater  than  the  opponent’s  
+attack  roll.  (Essentially,  the  Ride  check  result  becomes  the  mount’s  
+Armor Class if it’s higher than the mount’s regular AC.) 
+Special:  A  fighter  may  select  Mounted  Combat  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+NATURAL SPELL [GENERAL] 
+You can cast spells while in a wild shape. 
+Prerequisites: Wis 13, wild shape ability. 
+Benefit: You can complete the verbal and somatic components of 
+spells  while  in  a  wild  shape.  For  example,  while  in  the  form  of  a  
+hawk,  you  could  substitute  screeches  and  gestures  with  your  talons  
+for  the  normal  verbal  and  somatic  components  of  a  spell.  You  can  
+also  use  any  material  components  or  focuses  you  possess,  even  if  
+such items are melded within your current form. This feat does not 
+permit the use of magic items while you are in a form that could not 
+ordinarily  use  them,  and  you  do  not  gain  the  ability  to  speak  while  
+in a wild shape. 
+ 
+NEGOTIATOR [GENERAL] 
+You are good at gauging and swaying attitudes. 
+Benefit:  You  get  a  +2  bonus  on  all  Diplomacy  checks  and  Sense  
+Motive checks. 
+ 
+NIMBLE FINGERS [GENERAL] 
+You are adept at manipulating small, delicate objects. 
+Benefit:  You  get  a  +2  bonus  on  all  Disable  Device  checks  and  
+Open Lock checks. 
+ 
+PERSUASIVE [GENERAL] 
+You have a way with words and body language. 
+Benefit:  You  get  a  +2  bonus  on  all  Bluff  checks  and  Intimidate  
+checks. 
+POINT BLANK SHOT [GENERAL] 
+You are skilled at making well-placed shots with ranged weapons at 
+close range. 
+Benefit:  You  get  a  +1  bonus  on  attack  and  damage  rolls  with  
+ranged weapons at ranges of up to 30 feet. 
+Special:  A  fighter  may  select  Point  Blank  Shot  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+POWER ATTACK [GENERAL] 
+You can make exceptionally powerful melee attacks. 
+Prerequisite: Str 13. 
+Benefit:  On  your  action,  before  making  attack  rolls  for  a  round,  
+you may choose to subtract a number from all melee attack rolls and 
+add  the  same  number  to  all  melee  damage  rolls.  This  number  may  
+not exceed your base attack bonus. The penalty on attacks and bonus 
+on damage apply until your next turn. 
+Special:  If  you  attack  with  a  two-handed  weapon,  or  with  a  one-
+handed weapon wielded in two hands, instead add twice the number 
+subtracted  from  your  attack  rolls.  You  can’t  add  the  bonus  from  
+Power  Attack  to  the  damage  dealt  with  a  light  weapon  (except  with  
+unarmed   strikes   or   natural   weapon   attacks),   even   though   the   
+penalty  on  attack  rolls  still  applies.  (Normally,  you  treat  a  double  
+weapon  as  a  one-handed  weapon  and  a  light  weapon.  If  you  choose  
+to  use  a  double  weapon  like  a  two-handed  weapon,  attacking  with  
+only one end of it in a round, you treat it as a two-handed weapon.) 
+A fighter may select Power Attack as one of his fighter bonus feats 
+(see page 38). 
+ 
+PRECISE SHOT [GENERAL] 
+You are skilled at timing and aiming ranged attacks. 
+Prerequisite: Point Blank Shot. 
+Benefit: You can shoot or throw ranged weapons at an opponent 
+engaged  in  melee  without  taking  the  standard  –4  penalty  on  your  
+attack roll (see Shooting or Throwing into a Melee, page 140). 
+Special:  A  fighter  may  select  Precise  Shot  as  one  of  his  fighter  
+bonus feats (see page 38). 
+ 
+QUICK DRAW [GENERAL] 
+You can draw weapons with startling speed. 
+Prerequisite: Base attack bonus +1. 
+Benefit:  You  can  draw  a  weapon  as  a  free  action  instead  of  as  a  
+move  action.  You  can  draw  a  hidden  weapon  (see  the  Sleight  of  
+Hand skill, page 81) as a move action. 
+A  character  who  has  selected  this  feat  may  throw  weapons  at  his  
+full normal rate of attacks (much like a character with a bow). 
+Normal:  Without  this  feat,  you  may  draw  a  weapon  as  a  move  
+action,  or  (if  your  base  attack  bonus  is  +1  or  higher)  as  a  free  action  
+as part of movement (see page 142). Without this feat, you can draw 
+a hidden weapon as a standard action. 
+Special:  A  fighter  may  select  Quick  Draw  as  one  of  his  fighter  
+bonus feats (see page 38). 
+ 
+QUICKEN SPELL [METAMAGIC] 
+You can cast a spell with a moment’s thought. 
+Benefit:  Casting  a  quickened  spell  is  a  free  action.  You  can  per-
+form  another  action,  even  casting  another  spell,  in  the  same  round  
+as you cast a quickened spell. You may cast only one quickened spell 
+per  round.  A  spell  whose  casting  time  is  more  than  1  full-round  
+action  cannot  be  quickened.  A  quickened  spell  uses  up  a  spell  slot  
+four  levels  higher  than  the  spell’s  actual  level.  Casting  a  quickened  
+spell doesn’t provoke an attack of opportunity. 
+Special: This feat can’t be applied to any spell cast spontaneously 
+(including  sorcerer  spells,  bard  spells,  and  cleric  or  druid  spells  cast  
+spontaneously),  since  applying  a  metamagic  feat  to  a  spontaneously  
+cast  spell  automatically  increases  the  casting  time  to  a  full-round  
+action. 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+99
+RAPID RELOAD [GENERAL] 
+Choose  a  type  of  crossbow  (hand,  light,  or  heavy).  You  can  reload  a  
+crossbow of that type more quickly than normal. 
+Prerequisite: Weapon Proficiency (crossbow type chosen). 
+Benefit: The time required for you to reload your chosen type of 
+crossbow is reduced to a free action (for a hand or light crossbow) or 
+a move action (for a heavy crossbow). 
+Reloading     a     crossbow     still     
+provokes   an   attack   of   oppor-
+tunity. 
+If   you   have   selected   this   
+feat     for     hand     
+crossbow or light 
+crossbow,        you        
+may     fire     that     
+weapon       as       
+many 
+times  in  a  full  attack  
+action    as    you    could    
+attack  if  you  were  using  a  
+bow. 
+Normal:  A  character  with-
+out   this   feat   needs   a   move   
+action  to  reload  a  hand  or  
+light   crossbow,   or   a   full-
+round   action   to   reload   a   
+heavy crossbow.  
+Special:  You  can  gain  Rapid  
+Reload    multiple    times.    Each    
+time you take the feat, it applies 
+to a new type of crossbow. 
+A  fighter  may  select  Rapid  
+Reload   as   one   of   his   fighter   
+bonus feats (see page 38). 
+ 
+RAPID SHOT 
+[GENERAL] 
+You      can      use      ranged      
+weapons    with    exceptional    
+speed. 
+Prerequisites:  Dex  13,  Point  
+Blank Shot. 
+Benefit:  You  can  get  one  extra  attack  per  
+round with a ranged weapon. The attack is at your 
+highest  base  attack  bonus,  but  each  attack  you  
+make  in  that  round  (the  extra  one  and  the  normal  
+ones)  takes  a  –2  penalty.  You  must  use  the  full  
+attack action (see page 143) to use this feat. 
+Special: A fighter may select Rapid Shot as one 
+of his fighter bonus feats (see page 38). 
+A 2nd-level ranger who has chosen the archery 
+combat style is treated as having Rapid Shot, even 
+if  he  does  not  have  the  prerequisites  for  it,  but  
+only  when  he  is  wearing  light  or  no  armor  (see  
+page 48). 
+ 
+RIDE-BY ATTACK [GENERAL] 
+You  are  skilled  at  making  fast  attacks  for  your  
+mount. 
+Prerequisites:  Ride  1  rank,  Mounted  
+Combat. 
+Benefit:       When       you       are       
+mounted    and    use    the    charge    
+action, you may move and attack as 
+if  with  a  standard  charge  and  then  move  again  (continuing  the  
+straight line of the charge). Your total movement for the round can’t 
+exceed  double  your  mounted  speed.  You  and  your  mount  do  not  
+provoke an attack of opportunity from the opponent that you attack. 
+Special: A fighter may select Ride-By Attack as one of his fighter 
+bonus feats (see page 38). 
+ 
+RUN [GENERAL] 
+You are fleet of foot. 
+Benefit:    When    run-
+ning,  you  move  five  times  
+your     normal     speed     (if     
+wearing     light     or     no     
+armor   and   carrying   no   
+more  than  a  light  load)  
+or     four     times     your     
+speed  (if  wearing  med-
+ium  or  heavy  armor  or  
+carrying  a  medium  or  
+heavy   load).   If   you   
+make  a  jump  after  a  
+running   start   (see   
+the  Jump  skill  des-
+cription,  page  77),  you  
+gain  a  +4  bonus  on  your  
+Jump   check.   While   run-
+ning,   you   retain   your   Dex-
+terity bonus to AC. 
+Normal: You move four 
+times    your    speed    while    
+running  (if  wearing  light  
+or  no  armor  and  carrying  
+no more than a light load) 
+or  three  times  your  speed  
+(if   wearing   medium   or   heavy   
+armor or carrying a medium or heavy 
+load),  and  you  lose  your  Dexterity  
+bonus to AC. 
+ 
+SCRIBE SCROLL 
+[ITEM CREATION] 
+You  can  create  scrolls,  from  which  
+you  or  another  spellcaster  can  cast  
+the  scribed  spells.  See  the  Dungeon 
+Master’s Guide for rules on scrolls. 
+Prerequisite: Caster level 1st. 
+Benefit:  You  can  create  a  scroll  
+of    any    spell    that    you    know.    
+Scribing  a  scroll  takes  one  day  
+for  each  1,000  gp  in  its  base  
+price.   The   base   price   of   a   
+scroll  is  its  spell  level  ×  its  
+caster level × 25 gp. To scribe 
+a   scroll,   you   must   spend   
+1/25  of  this  base  price  in  XP  
+and    use    up    raw    materials    
+costing  one-half  of  this  base  
+price. 
+Any scroll that stores a spell 
+with      a      costly      material      
+component   or   an   XP   cost   
+also    carries    a    commen-
+surate  cost.  In  addition  to  
+the  costs  derived  from  the  
+Mialee casts a spell from
+a scroll she scribed. 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+100 
+base  price,  you  must  expend  the  material  component  or  pay  the  XP  
+when scribing the scroll. 
+ 
+SELF-SUFFICIENT [GENERAL] 
+You can take care of yourself in harsh environments and situations. 
+Benefit:  You  get  a  +2  bonus  on  all  Heal  checks  and  Survival  
+checks. 
+ 
+SHIELD PROFICIENCY [GENERAL] 
+You are proficient with bucklers, small shields, and large shields. 
+Benefit: You can use a shield and take only the standard penalties 
+(see Table 7–6: Armor and Shields, page 123). 
+Normal:  When  you  are  using  a  shield  with  which  
+you  are  not  proficient,  you  take  the  shield’s  
+armor check penalty on attack rolls and 
+on    all    skill    checks    that    involve    
+moving, including Ride checks. 
+Special:       Barbarians,       bards,       
+clerics,   druids,   fighters,   paladins,   
+and     rangers     automatically     have     
+Shield   Proficiency   as   a   bonus   feat.   
+They need not select it. 
+ 
+SHOT ON THE RUN 
+[GENERAL] 
+You   are   highly   trained   in   skirmish   
+ranged weapon tactics. 
+Prerequisites:     Dex     13,     Dodge,     
+Mobility,  Point  Blank  Shot,  base  attack  
+bonus +4. 
+Benefit: When using the attack action 
+with a ranged weapon, you can move both 
+before  and  after  the  attack,  provided  that  
+your   total   distance   moved   is   not   greater   
+than your speed. 
+Special:  A  fighter  may  select  Shot  on  the  Run  as  one  of  his  
+fighter bonus feats (see page 38). 
+ 
+SILENT SPELL [METAMAGIC] 
+You can cast spells silently. 
+Benefit:  A  silent  spell  can  be  cast  with  no  verbal  components.  
+Spells  without  verbal  components  are  not  affected.  A  silent  spell  
+uses up a spell slot one level higher than the spell’s actual level. 
+Special: Bard spells cannot be enhanced by this metamagic feat. 
+ 
+SIMPLE WEAPON PROFICIENCY [GENERAL] 
+You  understand  how  to  use  all  types  of  simple  weapons  in  combat  
+(see Table 7–5: Weapons, page 116, for a list of simple weapons). 
+Benefit: You make attack rolls with simple weapons normally. 
+Normal:   When   using   a   weapon   with   which   you   are   not   
+proficient, you take a –4 penalty on attack rolls. 
+Special:  All  characters  except  for  druids,  monks,  rogues,  and  
+wizards  are  automatically  proficient  with  all  simple  weapons.  They  
+need not select this feat. 
+A  sorcerer  or  wizard  who  casts  the  spell  Tenser’s  transformation  on  
+himself or herself gains proficiency with all simple weapons for the 
+duration of the spell. 
+ 
+SKILL FOCUS [GENERAL] 
+Choose a skill, such as Move Silently. You have a special knack with 
+that skill. 
+Benefit: You get a +3 bonus on all checks involving that skill. 
+Special:  You  can  gain  this  feat  multiple  times.  Its  effects  do  not  
+stack. Each time you take the feat, it applies to a new skill. 
+SNATCH ARROWS [GENERAL] 
+You  are  adept  at  grabbing  incoming  arrows,  as  well  as  crossbow  
+bolts, spears, and other projectile or thrown weapons. 
+Prerequisites:   Dex   15,   Deflect   Arrows,   Improved   Unarmed   
+Strike. 
+Benefit:  When  using  the  Deflect  Arrows  feat  (page  93),  you  may  
+catch  the  weapon  instead  of  just  deflecting  it.  Thrown  weapons,  
+such  as  spears  or  axes,  can  immediately  be  thrown  back  at  the  
+original attacker (even though it isn’t your turn) or kept for later use. 
+You must have at least one hand free (holding nothing) to use this 
+feat. 
+Special: A fighter may select Snatch Arrows as one of his fighter 
+bonus feats (see page 38). 
+ 
+SPELL FOCUS [GENERAL] 
+Choose   a   school   of   magic,   such   as   
+illusion.  Your  spells  of  that  school  are  
+more potent than normal. 
+Benefit:  Add  +1  to  the  Difficulty  
+Class   for   all   saving   throws   against   
+spells  from  the  school  of  magic  you  
+select. 
+Special:   You   can   gain   this   feat   
+multiple times. Its effects do not stack. 
+Each  time  you  take  the  feat,  it  applies  
+to a new school of magic. 
+ 
+SPELL MASTERY [SPECIAL] 
+You  are  so  intimately  familiar  with  certain  
+spells  that  you  don’t  need  a  spellbook  to  
+prepare them anymore. 
+Prerequisite: Wizard level 1st. 
+Benefit:  Each  time  you  take  this  feat,  
+choose    a    number    of    spells    equal    to    your    
+Intelligence  modifier  that  you  already  know.  From  that  point  on,  
+you can prepare these spells without referring to a spellbook. 
+Normal:  Without  this  feat,  you  must  use  a  spellbook  to  prepare  
+all your spells, except read magic. 
+ 
+SPELL PENETRATION [GENERAL] 
+Your  spells  are  especially  potent,  breaking  through  spell  resistance  
+more readily than normal. 
+Benefit: You get a +2 bonus on caster level checks (1d20 + caster 
+level) made to overcome a creature’s spell resistance. 
+ 
+SPIRITED CHARGE [GENERAL] 
+You are trained at making a devastating mounted charge. 
+Prerequisites: Ride 1 rank, Mounted Combat, Ride-By Attack. 
+Benefit:  When  mounted  and  using  the  charge  action,  you  deal  
+double damage with a melee weapon (or triple damage with a lance). 
+Special: A fighter may select Spirited Charge as one of his fighter 
+bonus feats (see page 38). 
+ 
+SPRING ATTACK [GENERAL] 
+You are trained in fast melee attacks and fancy footwork. 
+Prerequisites: Dex 13, Dodge, Mobility, base attack bonus +4. 
+Benefit: When using the attack action with a melee weapon, you 
+can  move  both  before  and  after  the  attack,  provided  that  your  total  
+distance  moved  is  not  greater  than  your  speed.  Moving  in  this  way  
+does  not  provoke  an  attack  of  opportunity  from  the  defender  you  
+attack,  though  it  might  provoke  attacks  of  opportunity  from  other  
+creatures,  if  appropriate.  You  can’t  use  this  feat  if  you  are  wearing  
+heavy armor. 
+You must move at least 5 feet both before and after you make your 
+attack in order to utilize the benefits of Spring Attack. 
+Illus. by W. Reynolds 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+101
+Special:  A  fighter  may  select  Spring  Attack  as  one  of  his  fighter  
+bonus feats (see page 38). 
+ 
+STEALTHY [GENERAL] 
+You are particularly good at avoiding notice. 
+Benefit:  You  get  a  +2  bonus  on  all  Hide  checks  and  Move  
+Silently checks. 
+ 
+STILL SPELL [METAMAGIC] 
+You can cast spells without gestures. 
+Benefit:  A  stilled  spell  can  be  cast  with  no  somatic  components.  
+Spells  without  somatic  components  are  not  affected.  A  stilled  spell  
+uses up a spell slot one level higher than the spell’s actual level. 
+ 
+STUNNING FIST [GENERAL] 
+You know how to strike opponents in vulnerable areas. 
+Prerequisites:  Dex  13,  Wis  13,  Improved  Unarmed  Strike,  base  
+attack bonus +8. 
+Benefit: You must declare that you are using this feat before you 
+make  your  attack  roll  (thus,  a  failed  attack  roll  ruins  the  attempt).  
+Stunning Fist forces a foe damaged by your unarmed attack to make 
+a  Fortitude  saving  throw  (DC  10  +  1/2  your  character  level  +  your  
+Wis  modifier),  in  addition  to  dealing  damage  normally.  A  defender  
+who fails this saving throw is stunned for 1 round (until just before 
+your  next  action).  A  stunned  character  can’t  act,  loses  any  Dexterity  
+bonus  to  AC,  and  takes  a  –2  penalty  to  AC.  You  may  attempt  a  
+stunning attack once per day for every four levels you have attained 
+(but  see  Special),  and  no  more  than  once  per  round.  Constructs,  
+oozes,  plants,  undead,  incorporeal  creatures,  and  creatures  immune  
+to critical hits cannot be stunned. 
+Special:  A  monk  may  select  Stunning  Fist  as  a  bonus  feat  at  1st  
+level,  even  if  she  does  not  meet  the  prerequisites.  A  monk  who  
+selects this feat may attempt a stunning attack a number of times per 
+day  equal  to  her  monk  level,  plus  one  more  time  per  day  for  every  
+four levels she has in classes other than monk. 
+A  fighter  may  select  Stunning  Fist  as  one  of  his  fighter  bonus  
+feats (see page 38). 
+ 
+TOUGHNESS [GENERAL] 
+You are tougher than normal. 
+Benefit: You gain +3 hit points. 
+Special:  A  character  may  gain  this  feat  multiple  times.  Its  effects  
+stack. 
+ 
+TOWER SHIELD PROFICIENCY [GENERAL] 
+You are proficient with tower shields. 
+Prerequisite: Shield Proficiency. 
+Benefit:  You  can  use  a  tower  shield  and  suffer  only  the  standard  
+penalties (see Table 7–6: Armor and Shields, page 123). 
+Normal:  A  character  who  is  using  a  shield  with  which  he  or  she  
+is  not  proficient  takes  the  shield’s  armor  check  penalty  on  attack  
+rolls and on all skill checks that involve moving, including Ride. 
+Special:  Fighters  automatically  have  Tower  Shield  Proficiency  as  
+a bonus feat. They need not select it. 
+ 
+TRACK [GENERAL] 
+You  can  follow  the  trails  of  creatures  and  characters  across  most  
+types of terrain. 
+Benefit:  To  find  tracks  or  to  follow  them  for  1  mile  requires  a  
+successful  Survival  check.  You  must  make  another  Survival  check  
+every time the tracks become difficult to follow, such as when other 
+tracks cross them or when the tracks backtrack and diverge. 
+You  move  at  half  your  normal  speed  (or  at  your  normal  speed  
+with a –5 penalty on the check, or at up to twice your normal speed 
+with  a  –20  penalty  on  the  check).  The  DC  depends  on  the  surface  
+and the prevailing conditions, as given on the table below: 
+ 
+Surface                       Survival                       DC                       Surface                       Survival                       DC                       
+Very soft ground 5 Firm ground 15 
+Soft ground 10 Hard ground 20
+ 
+ 
+Very  Soft  Ground:  Any  surface  (fresh  snow,  thick  dust,  wet  mud)  
+that holds deep, clear impressions of footprints. 
+Soft  Ground:  Any  surface  soft  enough  to  yield  to  pressure,  but  
+firmer  than  wet  mud  or  fresh  snow,  in  which  a  creature  leaves  
+frequent but shallow footprints. 
+Firm Ground: Most normal outdoor surfaces (such as lawns, fields, 
+woods,  and  the  like)  or  exceptionally  soft  or  dirty  indoor  surfaces  
+(thick rugs and very dirty or dusty floors). The creature might leave 
+some  traces  (broken  branches  or  tufts  of  hair),  but  it  leaves  only  
+occasional or partial footprints. 
+Hard  Ground:  Any  surface  that  doesn’t  hold  footprints  at  all,  such  
+as  bare  rock  or  an  indoor  floor.  Most  streambeds  fall  into  this  
+category,  since  any  footprints  left  behind  are  obscured  or  washed  
+away.  The  creature  leaves  only  traces  (scuff  marks  or  displaced  
+pebbles).  
+Several modifiers may apply to the Survival check, as given on the 
+table below. 
+ 
+Condition Survival DC Modifier 
+Every three creatures in the group being tracked –1 
+Size of creature or creatures being tracked:
+1
+  
+Fine                                                                                     +8                                                                                     
+Diminutive                                                                          +4                                                                          
+Tiny                                                                                      +2                                                                                      
+Small                                                                                   +1                                                                                   
+Medium                                                                              +0                                                                              
+Large                                                                                    –1                                                                                    
+Huge                                                                                   –2                                                                                   
+Gargantuan                                                                         –4                                                                         
+Colossal                                                                               –8                                                                               
+Every 24 hours since the trail was made +1 
+Every hour of rain since the trail was made +1 
+Fresh snow cover since the trail was made +10 
+Poor visibility:
+2
+  
+Overcast or moonless night +6 
+Moonlight                                                                           +3                                                                           
+Fog or precipitation +3 
+Tracked party hides trail (and moves at half speed) +5 
+1 For a group of mixed sizes, apply only the modifier for the largest size 
+category. 
+2 Apply only the largest modifier from this category.
+ 
+ 
+If  you  fail  a  Survival  check,  you  can  retry  after  1  hour  (outdoors)  or  
+10 minutes (indoors) of searching. 
+Normal:  Without  this  feat,  you  can  use  the  Survival  skill  to  find  
+tracks,  but  you  can  follow  them  only  if  the  DC  for  the  task  is  10  or  
+lower.  Alternatively,  you  can  use  the  Search  skill  to  find  a  footprint  
+or similar sign of a creature’s passage using the DCs given above, but 
+you  can’t  use  Search  to  follow  tracks,  even  if  someone  else  has  
+already found them. 
+Special:  A  ranger  automatically  has  Track  as  a  bonus  feat.  He  
+need not select it. 
+This feat does not allow you to find or follow the tracks made by a 
+subject of a pass without trace spell. 
+ 
+TRAMPLE [GENERAL] 
+You are trained in using your mount to knock down opponents. 
+Prerequisites: Ride 1 rank, Mounted Combat. 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+102 
+Benefit:   When   you   attempt   to   overrun   an   opponent   while   
+mounted, your target may not choose to avoid you. Your mount may 
+make  one  hoof  attack  against  any  target  you  knock  down,  gaining  
+the  standard  +4  bonus  on  attack  rolls  against  prone  targets  (see  
+Overrun, page 157). 
+Special: A fighter may select Trample as one of his fighter bonus 
+feats (see page 38). 
+ 
+TWO-WEAPON DEFENSE [GENERAL] 
+Your two-weapon fighting style bolsters your defense as well as your 
+offense. 
+Prerequisites: Dex 15, Two-Weapon Fighting. 
+Benefit:  When  wielding  a  double  weapon  or  two  weapons  (not  
+including natural weapons or unarmed strikes), you gain a +1 shield 
+bonus to your AC. 
+When  you  are  fighting  defensively  or  using  the  total  defense  
+action, this shield bonus increases to +2. 
+Special:  A  fighter  may  select  Two-Weapon  Defense  as  one  of  his  
+fighter bonus feats. 
+ 
+TWO-WEAPON FIGHTING [GENERAL] 
+You can fight with a weapon in each hand. You can make one extra 
+attack each round with the second weapon. 
+Prerequisite: Dex 15. 
+Benefit:  Your  penalties  on  attack  rolls  for  fighting  with  two  
+weapons are reduced. The penalty for your primary hand lessens by 
+2 and the one for your off hand lessens by 6. 
+Normal:  See  Two-Weapon  Fighting,  page  160,  and  Table  8–10:  
+Two-Weapon Fighting Penalties, page 160. 
+Special:  A  2nd-level  ranger  who  has  chosen  the  two-weapon  
+combat  style  is  treated  as  having  Two-Weapon  Fighting,  even  if  he  
+does  not  have  the  prerequisite  for  it,  but  only  when  he  is  wearing  
+light or no armor (see page 48). 
+A  fighter  may  select  Two-Weapon  Fighting  as  one  of  his  fighter  
+bonus feats (see page 38). 
+ 
+WEAPON FINESSE [GENERAL] 
+You are especially skilled at using weapons that can benefit as much 
+from Dexterity as from Strength. 
+Prerequisite: Base attack bonus +1. 
+Benefit: With a light weapon, rapier, whip, or spiked chain made 
+for  a  creature  of  your  size  category,  you  may  use  your  Dexterity  
+modifier  instead  of  your  Strength  modifier  on  attack  rolls.  If  you  
+carry a shield, its armor check penalty applies to your attack rolls. 
+Special:  A  fighter  may  select  Weapon  Finesse  as  one  of  his  
+fighter bonus feats (see page 38). 
+Natural weapons are always considered light weapons. 
+ 
+WEAPON FOCUS [GENERAL] 
+Choose  one  type  of  weapon,  such  as  greataxe.  You  can  also  choose  
+unarmed  strike  or  grapple  (or  ray,  if  you  are  a  spellcaster)  as  your  
+weapon  for  purposes  of  this  feat.  You  are  especially  good  at  using  
+this  weapon.  (If  you  have  chosen  ray,  you  are  especially  good  with  
+rays, such as the one produced by the ray of frost spell.) 
+Prerequisites:   Proficiency   with   selected   weapon,   base   attack   
+bonus +1. 
+Benefit:  You  gain  a  +1  bonus  on  all  attack  rolls  you  make  using  
+the selected weapon. 
+Special:  You  can  gain  this  feat  multiple  times.  Its  effects  do  not  
+stack. Each time you take the feat, it applies to a new type of weapon. 
+A  fighter  may  select  Weapon  Focus  as  one  of  his  fighter  bonus  
+feats  (see  page  38).  He  must  have  Weapon  Focus  with  a  weapon  to  
+gain the Weapon Specialization feat for that weapon. 
+ 
+WEAPON SPECIALIZATION [GENERAL] 
+Choose  one  type  of  weapon,  such  as  greataxe,  for  which  you  have  
+already   selected   the   Weapon   Focus   feat.   You   can   also   choose   
+unarmed  strike  or  grapple  as  your  weapon  for  purposes  of  this  feat.  
+You deal extra damage when using this weapon. 
+Prerequisites: Proficiency with selected weapon, Weapon Focus 
+with selected weapon, fighter level 4th. 
+Benefit: You gain a +2 bonus on all damage rolls you make using 
+the selected weapon. 
+Special:  You  can  gain  this  feat  multiple  times.  Its  effects  do  not  
+stack. Each time you take the feat, it applies to a new type of weapon. 
+A  fighter  may  select  Weapon  Specialization  as  one  of  his  fighter  
+bonus feats (see page 38). 
+ 
+WHIRLWIND ATTACK [GENERAL] 
+You can strike nearby opponents in an amazing, spinning attack. 
+Prerequisites:    Dex    13,    Int    13,    Combat    Expertise,    Dodge,    
+Mobility, Spring Attack, base attack bonus +4. 
+Benefit:  When  you  use  the  full  attack  action,  you  can  give  up  
+your  regular  attacks  and  instead  make  one  melee  attack  at  your  full  
+base attack bonus against each opponent within reach. 
+When  you  use  the  Whirlwind  Attack  feat,  you  also  forfeit  any  
+bonus or extra attacks granted by other feats, spells, or abilities (such 
+as the Cleave feat or the haste spell). 
+Special:  A  fighter  may  select  Whirlwind  Attack  as  one  of  his  
+fighter bonus feats. 
+ 
+WIDEN SPELL [METAMAGIC] 
+You can increase the area of your spells. 
+Benefit:  You  can  alter  a  burst,  emanation,  line,  or  spread  shaped  
+spell  to  increase  its  area.  Any  numeric  measurements  of  the  spell’s  
+area  increase  by  100%.  For  example,  a  fireball  spell  (which  normally  
+produces a 20-foot-radius spread) that is widened now fills a 40-foot-
+radius spread. A widened spell uses up a spell slot three levels higher 
+than the spell’s actual level. 
+Spells  that  do  not  have  an  area  of  one  of  these  four  sorts  are  not  
+affected by this feat. 
+ 
+ 
+ 
+ 
+CHAPTER 5: 
+FEATS
+ 
+
+ 
+ 
+103
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+hat  does  your  character  look  like?  How  old  is  she?  
+What  sort  of  first  impression  does  she  make?  When  
+she  prays,  what  deity  or  deities  does  she  call  on,  if  
+any? What led her to become an adventurer? 
+This  chapter  helps  you  establish  your  character’s  
+identity  by  creating  details  that  make  her  more  lifelike,  like  a  main  
+character  in  a  novel  or  a  movie.  For  many  players,  the  action  lies  
+here, in defining the character as a person to be roleplayed. 
+When  you  first  play  a  character,  it’s  fine  to  leave  the  details  
+sketchy.  As  you  play  the  character  over  time,  you  will  get  a  better  
+sense  of  who  you  want  her  to  be.  You  will  develop  her  details  in  
+much the same way that an author develops a character over several 
+drafts of a novel or over several novels in a series. 
+This  chapter  covers  alignment  (the  character’s  place  in  the  strug-
+gle  between  good  and  evil),  religion  (a  character’s  deity  or  deities),  
+vital   statistics   (name,   gender,   age,   and   so   on),   and   personal   
+description. 
+ 
+ALIGNMENT 
+In the temple of Pelor is an ancient tome. When the temple recruits 
+adventurers  for  its  most  sensitive  and  important  quests,  each  one  
+who  wants  to  participate  must  kiss  the  book.  Those  who  are  evil  in  
+their  hearts  are  blasted  by  holy  power,  and  even  those  who  are  nei-
+ther good nor evil are stunned. Only those who are good can kiss the 
+tome   without   harm   and   are   trusted   with   the   temple’s   most   
+important work. Good and evil are not philosophical concepts in the 
+D&D game. They are the forces that define the cosmos. 
+Devils  in  human  guise  stalk  the  land,  tempting  people  toward  
+evil.  Holy  clerics  use  the  power  of  good  to  protect  worshipers.  De-
+votees of evil gods bring ruin on innocents to win the favor of their 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+deities,  while  trusting  that  rewards  await  them  in  the  afterlife.  
+Crusading  paladins  fearlessly  confront  evildoers,  knowing  that  
+this  short  life  is  nothing  worth  clinging  to.  Warlords  turn  to  
+whichever  supernatural  power  will  help  them  conquer,  and  
+proxies for good and evil gods promise rewards in return for the 
+warlords’ oaths of obedience. 
+A   creature’s   general   moral   and   personal   attitudes   are   
+represented   by   its   alignment:   lawful   good,   neutral   good,   
+chaotic  good,  lawful  neutral,  neutral,  chaotic  neutral,  lawful  
+evil,  neutral  evil,  and  chaotic  evil.  (See  Table  6–1:  Creature,  
+Race, and Class Alignments, on the next page, for examples of 
+which creatures, races, and classes favor which alignments.) 
+Choose  an  alignment  for  your  character,  using  his  or  her  
+race and class as a guide. Most player characters are good or 
+neutral  rather  than  evil.  In  general,  evil  alignments  are  for  
+villains and monsters. 
+Alignment   is   a   tool   for   developing   your   character’s   
+identity.   It   is   not   a   straitjacket   for   restricting   your   
+character.  Each  alignment  represents  a  broad  range  of  
+personality  types  or  personal  philosophies,  so  two  lawful  
+good  characters  can  still  be  quite  different  from  each  
+other.  In  addition,  few  people  are  completely  consistent.  
+A  lawful  good  character  may  have  a  greedy  streak  that  
+occasionally  tempts  him  to  take  something  or  hoard  
+something   he   has   even   if   that’s   not   lawful   or   good   
+behavior. People are also not consistent from day to day. A 
+good character can lose his temper, a neutral character can 
+be inspired to perform a noble act, and so on. 
+ 
+103
+
+ 
+ 
+104 
+Choosing  an  alignment  for  your  character  means  stating  your  
+intent to play that character a certain way. If your character acts in a 
+way  more  appropriate  to  another  alignment,  the  DM  may  decide  
+that your character’s alignment has changed to match her actions. 
+ 
+TYPICAL ALIGNMENTS 
+Creatures  and  members  of  classes  shown  in  italic  type  on  Table  6–1  
+are  always  of  the  indicated  alignment.  Except  for  paladins,  they  are  
+born into that alignment. It is inherent, part of their nature. Usually, 
+a   creature   with   an   inherent   alignment   has   some   connection   
+(through  ancestry,  history,  or  magic)  to  the  Outer  Planes  or  is  a  
+magical beast. 
+For other creatures, races, and classes, the indicated alignment on 
+Table  6–1  is  the  typical  or  most  common  one.  Normal  sentient  
+creatures  can  be  of  any  alignment.  They  may  have  inherent  ten-
+dencies toward a particular alignment, but individuals can vary from 
+this norm. Depending on the type of creature, these tendencies may 
+be  stronger  or  weaker.  For  example,  kobolds  and  beholders  are  
+usually lawful evil, but kobolds display more variation in alignment 
+than  beholders  because  their  inborn  alignment  tendency  isn’t  as  
+strong. Also, sentient creatures have cultural tendencies that usually 
+reinforce alignment tendencies. For example, orcs tend to be chaotic 
+evil,  and  their  culture  tends  to  produce  chaotic  evil  members.  A  
+human  raised  among  orcs  is  more  likely  than  normal  to  be  chaotic  
+evil, while an orc raised among humans is less likely to be so. 
+ 
+Table 6–1: Creature, Race, and Class Alignments 
+Lawful Good Neutral Good Chaotic Good 
+Archons Guardinals Eladrins 
+Gold dragons Gnomes Copper dragons 
+Lammasus                   Centaurs                   Unicorns 
+Dwarves                      Giant                      eagles                      Elves                      
+Paladins Pseudodragons             Rangers             
+ 
+Lawful Neutral Neutral Chaotic Neutral 
+Monks Animals                       Half-elves                       
+Wizards                      Halflings                      Half-orcs                      
+Formians                     Humans                      Barbarians                     
+Azers                            Lizardfolk                            Bards                            
+                                    Druids                                    Rogues                                    
+ 
+Lawful Evil Neutral Evil Chaotic Evil 
+Devils                           Drow                           Demons 
+Blue dragons Goblins Red dragons 
+Beholders Allips Vampires 
+Ogre mages Ettercaps Troglodytes 
+Hobgoblins Devourers                    Gnolls                    
+Kobolds                                            Ogres                      
+                                                                        Orcs 
+ 
+GOOD VS. EVIL 
+Good  characters  and  creatures  protect  innocent  life.  Evil  characters  
+and  creatures  debase  or  destroy  innocent  life,  whether  for  fun  or  
+profit. 
+“Good”  implies  altruism,  respect  for  life,  and  a  concern  for  the  
+dignity of sentient beings. Good characters make personal sacrifices 
+to help others. 
+“Evil”  implies  hurting,  oppressing,  and  killing  others.  Some  evil  
+creatures  simply  have  no  compassion  for  others  and  kill  without  
+qualms if doing so is convenient. Others actively pursue evil, killing 
+for sport or out of duty to some evil deity or master.  
+People   who   are   neutral   with   respect   to   good   and   evil   have   
+compunctions  against  killing  the  innocent  but  lack  the  commit-
+ment to make sacrifices to protect or help others. Neutral people are 
+committed  to  others  by  personal  relationships.  A  neutral  person  
+may sacrifice himself to protect his family or even his homeland, but 
+he would not do so for strangers who are not related to him. 
+Being  good  or  evil  can  be  a  conscious  choice,  as  with  the  paladin  
+who  attempts  to  live  up  to  her  ideals  or  the  evil  cleric  who  causes  
+pain  and  terror  to  emulate  his  god.  For  most  people,  though,  being  
+good  or  evil  is  an  attitude  that  one  recognizes  but  does  not  choose.  
+Being  neutral  on  the  good–evil  axis  usually  represents  a  lack  of  
+commitment  one  way  or  the  other,  but  for  some  it  represents  a  
+positive commitment to a balanced view. While acknowledging that 
+good  and  evil  are  objective  states,  not  just  opinions,  these  folk  
+maintain  that  a  balance  between  the  two  is  the  proper  place  for  
+people, or at least for them. 
+Animals and other creatures incapable of moral action are neutral 
+rather  than  good  or  evil.  Even  deadly  vipers  and  tigers  that  eat  
+people are neutral because they lack the capacity for morally right or 
+wrong behavior. 
+ 
+LAW VS. CHAOS 
+Lawful  characters  tell  the  truth,  keep  their  word,  respect  authority,  
+honor  tradition,  and  judge  those  who  fall  short  of  their  duties.  
+Chaotic  characters  follow  their  consciences,  resent  being  told  what  
+to  do,  favor  new  ideas  over  tradition,  and  do  what  they  promise  if  
+they feel like it. 
+“Law” implies honor, trustworthiness, obedience to authority, and 
+reliability.    On    the    downside,    lawfulness    can    include    close-
+mindedness,   reactionary   adherence   to   tradition,   judgmentalness,   
+and  a  lack  of  adaptability.  Those  who  consciously  promote  lawful-
+ness  say  that  only  lawful  behavior  creates  a  society  in  which  people  
+can  depend  on  each  other  and  make  the  right  decisions  in  full  
+confidence that others will act as they should. 
+“Chaos”   implies   freedom,   adaptability,   and   flexibility.   On   the   
+downside,   chaos   can   include   recklessness,   resentment   toward   
+legitimate  authority,  arbitrary  actions,  and  irresponsibility.  Those  
+who  promote  chaotic  behavior  say  that  only  unfettered  personal  
+freedom  allows  people  to  express  themselves  fully  and  lets  society  
+benefit from the potential that its individuals have within them. 
+Someone  who  is  neutral  with  respect  to  law  and  chaos  has  a  
+normal respect for authority and feels neither a compulsion to obey 
+nor  a  compulsion  to  rebel.  She  is  honest  but  can  be  tempted  into  
+lying or deceiving others. 
+Devotion  to  law  or  chaos  may  be  a  conscious  choice,  but  more  
+often  it  is  a  personality  trait  that  is  recognized  rather  than  being  
+chosen.  Neutrality  on  the  lawful–chaotic  axis  is  usually  simply  a  
+middle state, a state of not feeling compelled toward one side or the 
+other.   Some   few   such   neutrals,   however,   espouse   neutrality   as   
+superior  to  law  or  chaos,  regarding  each  as  an  extreme  with  its  own  
+blind spots and drawbacks. 
+Animals and other creatures incapable of moral action are neutral. 
+Dogs  may  be  obedient  and  cats  free-spirited,  but  they  do  not  have  
+the moral capacity to be truly lawful or chaotic. 
+ 
+THE NINE ALIGNMENTS 
+Nine distinct alignments define all the possible combinations of the 
+lawful–chaotic   axis   with   the   good–evil   axis.   Each   alignment   
+description  below  depicts  a  typical  character  of  that  alignment.  
+Remember  that  individuals  vary  from  this  norm,  and  that  a  given  
+character  may  act  more  or  less  in  accord  with  his  or  her  alignment  
+from day to day. Use these descriptions as guidelines, not as scripts. 
+The first six alignments, lawful good through chaotic neutral, are 
+the   standard   alignments   for   player   characters.   The   three   evil   
+alignments are for monsters and villains. 
+Lawful Good, “Crusader”: A lawful good character acts as a good 
+person  is  expected  or  required  to  act.  She  combines  a  commitment  
+to  oppose  evil  with  the  discipline  to  fight  relentlessly.  She  tells  the  
+truth,  keeps  her  word,  helps  those  in  need,  and  speaks  out  against  
+injustice.   A   lawful   good   character   hates   to   see   the   guilty   go   

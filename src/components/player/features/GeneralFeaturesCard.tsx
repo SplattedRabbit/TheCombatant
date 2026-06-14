@@ -28,7 +28,7 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
   };
 
   const handleDelete = (idx: number, name: string) => {
-    showCustomConfirm("Löschen?", `Möchtest du "${name}" löschen?`, () => {
+    showCustomConfirm("Delete?", `Do you want to delete "${name}"?`, () => {
       CombatState.removePCDailyAbility(idx);
     });
   };
@@ -50,13 +50,13 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
   return (
     <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
       <div className="class-card-hdr" style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>
-        <span>📋 Allgemeine Tagesfähigkeiten</span>
+        <span>📋 General Daily Abilities</span>
       </div>
       
       <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%' }}>
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
-            <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', margin: 0, lineHeight: 1 }}>Tagesfähigkeiten</h3>
+            <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', margin: 0, lineHeight: 1 }}>Daily Abilities</h3>
             <button 
               onClick={() => setShowAddForm(!showAddForm)}
               className="btn" 
@@ -69,7 +69,7 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '165px', overflowY: 'auto' }}>
             {!hasGeneralAbilities ? (
               <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '4px 0' }}>
-                Keine Fähigkeiten eingetragen
+                No abilities registered
               </div>
             ) : (
               pc.dailyAbilities.map((ab: any, idx: number) => {
@@ -88,7 +88,7 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
                         onClick={() => handleSpend(idx, -1)}
                         className="xbtn xbtn-heal" 
                         style={{ padding: 0, fontSize: '8.5px', width: '15px', height: '15px', display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
-                        title="Nutzung wiederherstellen"
+                        title="Restore use"
                       >
                         +
                       </button>
@@ -96,7 +96,7 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
                         onClick={() => handleSpend(idx, 1)}
                         className="xbtn xbtn-dmg" 
                         style={{ padding: 0, fontSize: '8.5px', width: '15px', height: '15px', display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
-                        title="Nutzung verbrauchen"
+                        title="Spend use"
                       >
                         -
                       </button>
@@ -104,7 +104,7 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
                         onClick={() => handleDelete(idx, ab.name)}
                         className="xbtn xbtn-del" 
                         style={{ padding: '0 2px', fontSize: '8px', marginLeft: '1px', height: '15px', lineHeight: '13px' }} 
-                        title="Fähigkeit löschen"
+                        title="Delete ability"
                       >
                         ✕
                       </button>
@@ -121,7 +121,7 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
                 type="text" 
                 value={newAbName}
                 onChange={(e) => setNewAbName(e.target.value)}
-                placeholder="Zorn des Helden" 
+                placeholder="Hero's Wrath" 
                 className="cinput" 
                 style={{ fontSize: '8px', height: '14px' }}
               />

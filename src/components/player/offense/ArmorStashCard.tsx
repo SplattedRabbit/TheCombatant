@@ -1,6 +1,6 @@
 /**
  * @module    ArmorStashCard
- * @summary   Rendert eine einzelne Rüstung/einen Schild im Rucksack/Inventar inklusive Detail-Drawer (Einstellungen für RK-Abweichung, MaxDex, checkPenalty etc.).
+ * @summary   Renders a single armor/shield in the inventory including detail drawer (settings for AC override, MaxDex, checkPenalty etc.).
  * @exports   ArmorStashCard
  * @reads     none (all details read from props a)
  * @stateOps  updatePCArmorField, removePCArmor
@@ -50,7 +50,7 @@ export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
         }}
       >
         {a.isEquipped && (
-          <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', zIndex: 10 }}>Ausgerüstet</span>
+          <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', zIndex: 10 }}>Equipped</span>
         )}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
           <input
@@ -76,10 +76,10 @@ export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
             style={{ fontSize: '7.5px', padding: '0 2px', height: '16px', flex: 1.2, cursor: 'pointer' }}
           >
             {Object.values(ARMOR_REGISTRY).map((def: any) => (
-              <option key={def.key} value={def.key}>{def.nameDe}</option>
+              <option key={def.key} value={def.key}>{def.nameEn || def.nameDe}</option>
             ))}
           </select>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1px', flex: 0.8 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flex: 0.8 }}>
             <span style={{ fontSize: '7.5px', color: 'var(--inkm)' }}>+</span>
             <input
               type="number"
@@ -94,7 +94,7 @@ export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
             onClick={() => handleArmorEquipToggle(idx, a)}
             style={{ padding: '0 6px', fontSize: '7.5px', fontWeight: 'bold', height: '16px', borderRadius: '2px' }}
           >
-            {a.isEquipped ? 'Ablegen' : 'Anlegen'}
+            {a.isEquipped ? 'Unequip' : 'Equip'}
           </button>
           <button
             className="xbtn"
@@ -111,46 +111,46 @@ export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
         <div style={{ display: 'flex', background: 'rgba(200,169,110,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderTop: 'none', padding: '4px 6px', fontSize: '8px', marginTop: '-2px', marginBottom: '2px', borderRadius: '0 0 3px 3px', flexDirection: 'column', gap: '4px' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', width: '100%' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>RK-Abw.:</span>
+              <span style={{ color: 'var(--inkl)' }}>AC Override:</span>
               <input
                 type="text"
                 value={a.armorBonusOverride || ''}
                 onChange={(e) => CombatState.updatePCArmorField(idx, 'armorBonusOverride', e.target.value)}
                 className="cinput"
-                placeholder="Standard"
+                placeholder="Default"
                 style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
               />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>MaxDex-Abw.:</span>
+              <span style={{ color: 'var(--inkl)' }}>MaxDex Override:</span>
               <input
                 type="text"
                 value={a.maxDexOverride || ''}
                 onChange={(e) => CombatState.updatePCArmorField(idx, 'maxDexOverride', e.target.value)}
                 className="cinput"
-                placeholder="Standard"
+                placeholder="Default"
                 style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
               />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Malus-Abw.:</span>
+              <span style={{ color: 'var(--inkl)' }}>ACP Override:</span>
               <input
                 type="text"
                 value={a.checkPenaltyOverride || ''}
                 onChange={(e) => CombatState.updatePCArmorField(idx, 'checkPenaltyOverride', e.target.value)}
                 className="cinput"
-                placeholder="Standard"
+                placeholder="Default"
                 style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
               />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Zauberpatzer-Abw.:</span>
+              <span style={{ color: 'var(--inkl)' }}>Spell Failure Override:</span>
               <input
                 type="text"
                 value={a.spellFailureOverride || ''}
                 onChange={(e) => CombatState.updatePCArmorField(idx, 'spellFailureOverride', e.target.value)}
                 className="cinput"
-                placeholder="Standard"
+                placeholder="Default"
                 style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
               />
               <span style={{ color: 'var(--inkm)' }}>%</span>

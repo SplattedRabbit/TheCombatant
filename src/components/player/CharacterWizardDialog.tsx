@@ -1,8 +1,8 @@
 /**
  * @module    CharacterWizardDialog
- * @summary   Schritt-für-Schritt-Assistent zur regelkonformen (RAW) Charaktererstellung für D&D 3.5e.
- *            Bietet ein vollwertiges Layout mit 74-Punkte-Verteilung, Level-Up-Schleife,
- *            Fertigkeiten-Verteilung und Talentwahl mit Prerequisites-Check.
+ * @summary   Step-by-step wizard for rules-compliant (RAW) character creation for D&D 3.5e.
+ *            Offers a full layout with 74-point buy distribution, level-up loop,
+ *            skill points distribution, and feat selection with prerequisites check.
  */
 
 import React, { useState, useEffect, useMemo } from 'react';
@@ -30,102 +30,142 @@ interface RaceDetail {
   traits: string[];
 }
 
+const translatePrereq = (desc: string): string => {
+  if (!desc) return '';
+  let res = desc;
+  res = res.replace(/Grundangriffsbonus/g, 'Base Attack Bonus');
+  res = res.replace(/aktuell/g, 'current');
+  res = res.replace(/Talent:/g, 'Feat:');
+  res = res.replace(/Stufe/g, 'Level');
+  res = res.replace(/Stärke/g, 'Strength');
+  res = res.replace(/Geschicklichkeit/g, 'Dexterity');
+  res = res.replace(/Konstitution/g, 'Constitution');
+  res = res.replace(/Intelligenz/g, 'Intelligence');
+  res = res.replace(/Weisheit/g, 'Wisdom');
+  res = res.replace(/Charisma/g, 'Charisma');
+  res = res.replace(/Charakterstufe/g, 'Character Level');
+  res = res.replace(/Zaubererstufe/g, 'Caster Level');
+  res = res.replace(/Klasse:/g, 'Class:');
+  res = res.replace(/Fähigkeit, Untote zu vertreiben/g, 'Ability to turn undead');
+  res = res.replace(/Kleriker/g, 'Cleric');
+  res = res.replace(/Paladin/g, 'Paladin');
+  res = res.replace(/Bardenmusik/g, 'Bardic music');
+  res = res.replace(/Barde/g, 'Bard');
+  res = res.replace(/Tiergestalt/g, 'Wild Shape');
+  res = res.replace(/Druide/g, 'Druid');
+  res = res.replace(/Reiten 1 Rang/g, 'Ride 1 rank');
+  
+  res = res.replace(/\bfighter\b/g, 'Fighter');
+  res = res.replace(/\brogue\b/g, 'Rogue');
+  res = res.replace(/\bcleric\b/g, 'Cleric');
+  res = res.replace(/\bwizard\b/g, 'Wizard');
+  res = res.replace(/\bbarbarian\b/g, 'Barbarian');
+  res = res.replace(/\bbard\b/g, 'Bard');
+  res = res.replace(/\bdruid\b/g, 'Druid');
+  res = res.replace(/\bmonk\b/g, 'Monk');
+  res = res.replace(/\bpaladin\b/g, 'Paladin');
+  res = res.replace(/\branger\b/g, 'Ranger');
+  res = res.replace(/\bsorcerer\b/g, 'Sorcerer');
+
+  return res;
+};
+
 const RACES: RaceDetail[] = [
   {
     key: 'human',
-    name: 'Mensch',
-    modifiers: 'Keine Modifikatoren',
+    name: 'Human',
+    modifiers: 'No modifiers',
     size: 'Medium',
     traits: [
-      'Zusätzliches Talent auf Stufe 1.',
-      '4 zusätzliche Fertigkeitspunkte auf Stufe 1, sowie +1 Punkt bei jedem weiteren Levelaufstieg.',
-      'Keine Attributsabzüge.'
+      'Bonus feat at level 1.',
+      '4 extra skill points at level 1, plus 1 extra point at each additional level.',
+      'No ability penalties.'
     ]
   },
   {
     key: 'elf',
     name: 'Elf',
-    modifiers: '+2 Geschicklichkeit (DEX), -2 Konstitution (CON)',
+    modifiers: '+2 Dexterity (DEX), -2 Constitution (CON)',
     size: 'Medium',
     traits: [
-      '+2 Volksbonus auf Lauschen (Listen), Suchen (Search) und Entdecken (Spot).',
-      'Immunität gegen magischen Schlaf.',
-      '+2 Volksbonus auf Rettungswürfe gegen Verzauberungen.',
-      'Umgang mit Langschwert, Rapier, Langbogen und Kurzbogen.'
+      '+2 racial bonus on Listen, Search, and Spot checks.',
+      'Immunity to magic sleep effects.',
+      '+2 racial bonus on saving throws against enchantment spells or effects.',
+      'Weapon Proficiency: Longsword, rapier, longbow, and shortbow.'
     ]
   },
   {
     key: 'dwarf',
-    name: 'Zwerg',
-    modifiers: '+2 Konstitution (CON), -2 Charisma (CHA)',
+    name: 'Dwarf',
+    modifiers: '+2 Constitution (CON), -2 Charisma (CHA)',
     size: 'Medium',
     traits: [
-      'Dunkelsicht 60 ft. (Sehen im Dunkeln).',
-      '+2 Volksbonus auf Rettungswürfe gegen Gifte, Zauber und zauberähnliche Effekte.',
-      '+2 Volksbonus auf Handwerk (Craft) für Stein und Metall.',
-      'Stabilität (+4 Bonus gegen Zu-Boden-Werfen oder Ansturm).'
+      'Darkvision 60 ft. (can see in the dark).',
+      '+2 racial bonus on saving throws against poisons, spells, and spell-like effects.',
+      '+2 racial bonus on Craft checks related to stone and metal.',
+      'Stability (+4 bonus on ability checks made to resist being bull rushed or tripped).'
     ]
   },
   {
     key: 'gnome',
-    name: 'Gnom',
-    modifiers: '+2 Konstitution (CON), -2 Stärke (STR)',
+    name: 'Gnome',
+    modifiers: '+2 Constitution (CON), -2 Strength (STR)',
     size: 'Small',
     traits: [
-      'Größenklasse: Klein (+1 Bonus auf Rüstungsklasse und Angriffswürfe, +4 auf Verstecken).',
-      '+2 Volksbonus auf Lauschen (Listen) und Handwerk (Alchemie).',
-      '+1 Rettungswurf-Bonus gegen Illusionen.',
-      '+1 Volksangriffsbonus gegen Kobolde und Goblins.'
+      'Size: Small (+1 bonus to Armor Class, +1 bonus on attack rolls, +4 bonus on Hide checks).',
+      '+2 racial bonus on Listen and Craft (alchemy) checks.',
+      '+1 racial bonus on saving throws against illusions.',
+      '+1 racial attack bonus against kobolds and goblins.'
     ]
   },
   {
     key: 'halfling',
-    name: 'Halbling',
-    modifiers: '+2 Geschicklichkeit (DEX), -2 Stärke (STR)',
+    name: 'Halfling',
+    modifiers: '+2 Dexterity (DEX), -2 Strength (STR)',
     size: 'Small',
     traits: [
-      'Größenklasse: Klein (+1 Bonus auf Rüstungsklasse und Angriffswürfe, +4 auf Verstecken).',
-      '+2 Volksbonus auf Klettern (Climb), Springen (Jump), Lauschen (Listen) und Leise bewegen (Move Silently).',
-      '+1 Bonus auf alle Rettungswürfe.',
-      '+2 Volksbonus auf Rettungswürfe gegen Angst.'
+      'Size: Small (+1 bonus to Armor Class, +1 bonus on attack rolls, +4 bonus on Hide checks).',
+      '+2 racial bonus on Climb, Jump, Listen, and Move Silently checks.',
+      '+1 racial bonus on all saving throws.',
+      '+2 racial bonus on saving throws against fear.'
     ]
   },
   {
     key: 'half_elf',
-    name: 'Halbelf',
-    modifiers: 'Keine Modifikatoren',
+    name: 'Half-Elf',
+    modifiers: 'No modifiers',
     size: 'Medium',
     traits: [
-      'Immunität gegen magischen Schlaf.',
-      '+2 Volksbonus auf Rettungswürfe gegen Verzauberungen.',
-      '+1 Volksbonus auf Lauschen (Listen), Suchen (Search) und Entdecken (Spot).',
-      '+2 Volksbonus auf Diplomatie (Diplomacy) und Informationen sammeln (Gather Information).'
+      'Immunity to magic sleep effects.',
+      '+2 racial bonus on saving throws against enchantment spells or effects.',
+      '+1 racial bonus on Listen, Search, and Spot checks.',
+      '+2 racial bonus on Diplomacy and Gather Information checks.'
     ]
   },
   {
     key: 'half_orc',
-    name: 'Halbork',
-    modifiers: '+2 Stärke (STR), -2 Intelligenz (INT), -2 Charisma (CHA)',
+    name: 'Half-Orc',
+    modifiers: '+2 Strength (STR), -2 Intelligence (INT), -2 Charisma (CHA)',
     size: 'Medium',
     traits: [
-      'Dunkelsicht 60 ft. (Sehen im Dunkeln).',
-      'Besonders stark, aber Abstriche bei geistigen Attributen.'
+      'Darkvision 60 ft. (can see in the dark).',
+      'Particularly strong, but has lower mental stats.'
     ]
   }
 ];
 
 const CLASSES_LIST = [
-  { key: 'fighter', name: 'Kämpfer', hd: 10, skillBase: 2, desc: 'Nahkampfspezialist, erhält viele Bonustalente.' },
-  { key: 'rogue', name: 'Schurke', hd: 6, skillBase: 8, desc: 'Fallenentschärfer, Hinterhältiger Angriff, extrem viele Fertigkeiten.' },
-  { key: 'cleric', name: 'Kleriker', hd: 8, skillBase: 2, desc: 'Göttlicher Zauberwirker, Rüstungsträger, Untote vertreiben.' },
-  { key: 'wizard', name: 'Magier', hd: 4, skillBase: 2, desc: 'Arkaner Zauberer mit Zauberbuch, mächtige Zaubersprüche.' },
-  { key: 'barbarian', name: 'Barbar', hd: 12, skillBase: 2, desc: 'Zäher Kämpfer im Kampfrausch, hohe Trefferwürfel.' },
-  { key: 'bard', name: 'Barde', hd: 6, skillBase: 4, desc: 'Unterstützer mit Liedern, Zaubern und vielseitigen Talenten.' },
-  { key: 'druid', name: 'Druide', hd: 8, skillBase: 4, desc: 'Naturzauberer, Tiergestalt-Wandlung, Tierbegleiter.' },
-  { key: 'monk', name: 'Mönch', hd: 8, skillBase: 4, desc: 'Waffenloser Kampfkünstler, hohe RK und schnelle Bewegung.' },
-  { key: 'paladin', name: 'Paladin', hd: 10, skillBase: 2, desc: 'Heiliger Streiter, Hände auflegen, Immunitäten.' },
-  { key: 'ranger', name: 'Waldläufer', hd: 8, skillBase: 6, desc: 'Spurenleser, Erzfeind, Zweiwaffenkampf oder Bogenschießen.' },
-  { key: 'sorcerer', name: 'Hexenmeister', hd: 4, skillBase: 2, desc: 'Spontaner arkaner Zauberwirker mit angeborener Magie.' }
+  { key: 'fighter', name: 'Fighter', hd: 10, skillBase: 2, desc: 'Melee combat specialist, gains many bonus feats.' },
+  { key: 'rogue', name: 'Rogue', hd: 6, skillBase: 8, desc: 'Trap disarmer, sneak attack, extremely high number of skills.' },
+  { key: 'cleric', name: 'Cleric', hd: 8, skillBase: 2, desc: 'Divine spellcaster, armor wearer, turn undead.' },
+  { key: 'wizard', name: 'Wizard', hd: 4, skillBase: 2, desc: 'Arcane spellcaster with a spellbook, powerful spells.' },
+  { key: 'barbarian', name: 'Barbarian', hd: 12, skillBase: 2, desc: 'Tough warrior in a rage, high hit die.' },
+  { key: 'bard', name: 'Bard', hd: 6, skillBase: 4, desc: 'Supporter with songs, spells, and versatile abilities.' },
+  { key: 'druid', name: 'Druid', hd: 8, skillBase: 4, desc: 'Nature spellcaster, wild shape transformation, animal companion.' },
+  { key: 'monk', name: 'Monk', hd: 8, skillBase: 4, desc: 'Unarmed martial artist, high AC, and fast movement.' },
+  { key: 'paladin', name: 'Paladin', hd: 10, skillBase: 2, desc: 'Holy warrior, lay on hands, immunities.' },
+  { key: 'ranger', name: 'Ranger', hd: 8, skillBase: 6, desc: 'Tracker, favored enemy, two-weapon fighting or archery.' },
+  { key: 'sorcerer', name: 'Sorcerer', hd: 4, skillBase: 2, desc: 'Spontaneous arcane spellcaster with innate magic.' }
 ];
 
 export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ onClose }) => {
@@ -319,7 +359,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     // 1. General Character Feat
     if (totalLevel === 1 || totalLevel === 3 || totalLevel === 6 || totalLevel === 9 || totalLevel === 12 || totalLevel === 15 || totalLevel === 18) {
       slots.push({
-        label: `Charakter-Talent (Stufe ${totalLevel})`,
+        label: `Character Feat (Level ${totalLevel})`,
         allowedCategories: ['combat', 'general', 'metamagic', 'item_creation']
       });
     }
@@ -327,7 +367,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     // 2. Human Bonus Feat
     if (totalLevel === 1 && isHuman) {
       slots.push({
-        label: 'Mensch-Bonus-Talent',
+        label: 'Human Bonus Feat',
         allowedCategories: ['combat', 'general', 'metamagic', 'item_creation']
       });
     }
@@ -344,20 +384,20 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     if (currentClassType === 'fighter') {
       if (classLevel === 1 || classLevel % 2 === 0) {
         slots.push({
-          label: `Kämpfer-Bonus-Talent (Klasse Stufe ${classLevel})`,
+          label: `Fighter Bonus Feat (Class Level ${classLevel})`,
           allowedCategories: ['combat']
         });
       }
     } else if (currentClassType === 'wizard') {
       if (classLevel === 1) {
         slots.push({
-          label: `Magier-Bonus-Talent (Schriftrolle herstellen)`,
+          label: `Wizard Bonus Feat (Scribe Scroll)`,
           allowedCategories: ['item_creation'],
           defaultFeat: 'scribe_scroll'
         });
       } else if (classLevel % 5 === 0) {
         slots.push({
-          label: `Magier-Bonus-Talent (Klasse Stufe ${classLevel})`,
+          label: `Wizard Bonus Feat (Class Level ${classLevel})`,
           allowedCategories: ['metamagic', 'item_creation']
         });
       }
@@ -476,26 +516,26 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       const hp = parseInt(currentConfig.hpRoll) || 0;
       const hd = getClassHitDie(currentConfig.classType);
       if (!currentConfig.classType) {
-        showCustomAlert("Klasse fehlt", "Bitte wähle eine Klasse für diese Stufe.", "OK", "🧙‍♂️");
+        showCustomAlert("Class Missing", "Please select a class for this level.", "OK", "🧙‍♂️");
         return;
       }
       if (hp < 1 || hp > hd) {
-        showCustomAlert("Ungültige Trefferpunkte", `Bitte gib eine gültige Trefferpunkte-Zahl zwischen 1 und ${hd} an.`, "OK", "🎲");
+        showCustomAlert("Invalid Hit Points", `Please enter a valid hit points value between 1 and ${hd}.`, "OK", "🎲");
         return;
       }
       const isAbilityIncreaseReq = (currentLevelIndex + 1) % 4 === 0;
       if (isAbilityIncreaseReq && !currentConfig.abilityIncrease) {
-        showCustomAlert("Attributserhöhung fehlt", "Bitte wähle die Attributserhöhung für diese Stufe.", "OK", "✨");
+        showCustomAlert("Ability Increase Missing", "Please select an ability increase for this level.", "OK", "✨");
         return;
       }
       if (currentLevelRemainingSkillPoints !== 0) {
-        showCustomAlert("Fertigkeitspunkte offen", `Du musst alle ${currentLevelMaxSkillPoints} Fertigkeitspunkte verteilen (verbleibend: ${currentLevelRemainingSkillPoints}).`, "OK", "📝");
+        showCustomAlert("Skill Points Unassigned", `You must distribute all ${currentLevelMaxSkillPoints} skill points (remaining: ${currentLevelRemainingSkillPoints}).`, "OK", "📝");
         return;
       }
       // Check if all feat slots are filled
       const emptyFeats = currentFeatSlots.some((_, idx) => !currentConfig.feats?.[idx]);
       if (emptyFeats) {
-        showCustomAlert("Talente offen", "Bitte wähle alle Talente für diese Stufe aus.", "OK", "🔒");
+        showCustomAlert("Feats Unassigned", "Please select all feats for this level.", "OK", "🔒");
         return;
       }
 
@@ -522,7 +562,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
 
   const handleSaveCharacter = () => {
     CombatState.updatePCBatch((pc: any) => {
-      pc.name = name.trim() || 'Held';
+      pc.name = name.trim() || 'Hero';
       pc.race = selectedRace;
       pc.isHuman = selectedRace === 'human';
       
@@ -614,14 +654,14 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', textAlign: 'left', marginTop: '10px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <label style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
-                Charaktername
+                Character Name
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="cinput"
-                placeholder="Abenteurername eingeben..."
+                placeholder="Enter adventurer name..."
                 style={{
                   width: '100%',
                   maxWidth: '400px',
@@ -637,7 +677,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
               {/* Race Grid */}
               <div>
                 <label style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', display: 'block', marginBottom: '10px', letterSpacing: '0.5px' }}>
-                  Volk auswählen
+                  Select Race
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   {RACES.map(race => (
@@ -682,16 +722,16 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       {activeRaceInfo.name}
                     </h3>
                     <div style={{ fontSize: '12px', color: 'var(--inkl)', marginBottom: '12px', fontStyle: 'italic' }}>
-                      Größe: {activeRaceInfo.size === 'Small' ? 'Klein (Small)' : 'Mittelgroß (Medium)'}
+                      Size: {activeRaceInfo.size === 'Small' ? 'Small' : 'Medium'}
                     </div>
                     <div style={{ fontSize: '13px', marginBottom: '14px' }}>
-                      <strong>Attribute:</strong>{' '}
+                      <strong>Abilities:</strong>{' '}
                       <span style={{ color: activeRaceInfo.modifiers.includes('+') ? 'green' : 'inherit', fontWeight: 'bold' }}>
                         {activeRaceInfo.modifiers}
                       </span>
                     </div>
                     <div style={{ borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', paddingTop: '10px' }}>
-                      <strong style={{ fontSize: '12px', display: 'block', marginBottom: '6px', color: 'var(--ink)' }}>Volksmerkmale:</strong>
+                      <strong style={{ fontSize: '12px', display: 'block', marginBottom: '6px', color: 'var(--ink)' }}>Racial Traits:</strong>
                       <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '12px', fontFamily: "'Crimson Text', serif", lineHeight: 1.45, color: 'var(--ink)' }}>
                         {activeRaceInfo.traits.map((t, idx) => (
                           <li key={idx} style={{ marginBottom: '6px' }}>{t}</li>
@@ -701,7 +741,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   </div>
                 ) : (
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '13px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', lineHeight: 1.5 }}>
-                    Bewege den Mauszeiger über ein Volk oder wähle eines aus, um Details zu sehen.
+                    Hover over or select a race to view its details.
                   </div>
                 )}
               </div>
@@ -713,14 +753,14 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         return (
           <div style={{ textAlign: 'left', marginTop: '10px' }}>
             <p style={{ fontFamily: "'Crimson Text', serif", fontSize: '14px', margin: '0 0 20px 0', lineHeight: 1.5, color: 'var(--inkm)' }}>
-              Verteile insgesamt **74 Punkte** auf deine 6 Attribute. Volksboni werden separat berechnet und rechts live als finaler Wert dargestellt.
+              Distribute a total of **74 points** among your 6 ability scores. Racial bonuses are calculated separately and displayed live on the right as final values.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '30px' }}>
               {/* Point buy selectors */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {(['str', 'dex', 'con', 'int', 'wis', 'cha'] as const).map(k => {
-                  const labelMap = { str: 'Stärke (STR)', dex: 'Geschicklichkeit (DEX)', con: 'Konstitution (CON)', int: 'Intelligenz (INT)', wis: 'Weisheit (WIS)', cha: 'Charisma (CHA)' };
+                  const labelMap = { str: 'Strength (STR)', dex: 'Dexterity (DEX)', con: 'Constitution (CON)', int: 'Intelligence (INT)', wis: 'Wisdom (WIS)', cha: 'Charisma (CHA)' };
                   const base = baseStats[k];
                   const racMod = getRacialModifier(selectedRace, k);
                   const finalVal = base + racMod;
@@ -746,7 +786,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                           borderBottom: '1px dashed var(--red)'
                         }}
                         onClick={() => showAttributeExplanation(k)}
-                        title="Klicke für eine kurze Erläuterung"
+                        title="Click for a brief explanation"
                       >
                         {labelMap[k]}
                       </strong>
@@ -797,7 +837,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       </div>
                       
                       <div style={{ fontSize: '11px', color: 'var(--inkl)', fontStyle: 'italic', width: '60px', textAlign: 'center' }}>
-                        {getRacialModifierString(k) ? `${getRacialModifierString(k)} Volk` : '—'}
+                        {getRacialModifierString(k) ? `${getRacialModifierString(k)} Race` : '—'}
                       </div>
 
                       <div style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', width: '60px', textAlign: 'right' }}>
@@ -823,7 +863,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                 }}
               >
                 <div style={{ fontSize: '12px', color: 'var(--inkl)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>
-                  Punkteverteilung
+                  Point Distribution
                 </div>
                 
                 <div style={{ fontSize: '64px', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", color: totalStatsSpent === 74 ? 'green' : 'var(--red)' }}>
@@ -832,11 +872,11 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                 
                 <div style={{ fontSize: '13px', fontStyle: 'italic', color: 'var(--inkm)', textAlign: 'center', marginTop: '10px', lineHeight: 1.5 }}>
                   {totalStatsSpent === 74 ? (
-                    <span style={{ color: 'green', fontWeight: 'bold' }}>✓ Perfekt! Alle 74 Punkte sind verteilt. Klicke auf Weiter.</span>
+                    <span style={{ color: 'green', fontWeight: 'bold' }}>✓ Perfect! All 74 points are distributed. Click Next.</span>
                   ) : totalStatsSpent < 74 ? (
-                    `Verteile noch ${74 - totalStatsSpent} Punkte.`
+                    `Distribute ${74 - totalStatsSpent} more points.`
                   ) : (
-                    `Du hast ${totalStatsSpent - 74} Punkte zu viel verteilt!`
+                    `You have distributed ${totalStatsSpent - 74} too many points!`
                   )}
                 </div>
               </div>
@@ -848,9 +888,9 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         if (!isTargetLevelSet) {
           return (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px 20px', textAlign: 'center' }}>
-              <h3 style={{ color: 'var(--red)', fontSize: '18px', margin: 0 }}>Zielstufe festlegen</h3>
+              <h3 style={{ color: 'var(--red)', fontSize: '18px', margin: 0 }}>Set Target Level</h3>
               <p style={{ fontFamily: "'Crimson Text', serif", fontSize: '14px', color: 'var(--inkm)', maxWidth: '450px', lineHeight: 1.5 }}>
-                Wähle die Stufe aus, bis zu der dein Charakter generiert werden soll. Wir gehen danach jede Stufe einzeln durch, um Klasse, LP, Fähigkeiten und Talente zu wählen.
+                Choose the level to which your character should be generated. We will then go through each level individually to choose class, HP, skills, and feats.
               </p>
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginTop: '10px' }}>
@@ -880,7 +920,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                 className="btn btn-p"
                 style={{ marginTop: '20px', padding: '8px 24px', fontSize: '13px' }}
               >
-                ✦ Stufen-Konfiguration starten
+                ✦ Start Level Configuration
               </button>
             </div>
           );
@@ -923,7 +963,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       whiteSpace: 'nowrap'
                     }}
                   >
-                    Stufe {cfg.level} ({cfg.classType ? clsName : 'Ungebildet'})
+                    Level {cfg.level} ({cfg.classType ? clsName : 'No Class'})
                   </div>
                 );
               })}
@@ -933,20 +973,20 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
               {/* Left Column */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <h4 style={{ color: 'var(--red)', margin: '0 0 4px 0', fontSize: '14px', borderBottom: '0.5px solid var(--pb)', paddingBottom: '3px' }}>
-                  Stufe {currentLevelIndex + 1}: Klasse & LP
+                  Level {currentLevelIndex + 1}: Class & HP
                 </h4>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>Klasse wählen</label>
+                  <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>Select Class</label>
                   <select
                     value={currentConfig.classType}
                     onChange={(e) => updateLevelConfig(currentLevelIndex, 'classType', e.target.value)}
                     className="cinput"
                     style={{ width: '100%', padding: '6px', fontSize: '12px', boxSizing: 'border-box' }}
                   >
-                    <option value="" disabled>-- Bitte wählen --</option>
+                    <option value="" disabled>-- Please select --</option>
                     {CLASSES_LIST.map(c => (
-                      <option key={c.key} value={c.key}>{c.name} (W{c.hd}, {c.skillBase} Skills)</option>
+                      <option key={c.key} value={c.key}>{c.name} (d{c.hd}, {c.skillBase} Skills)</option>
                     ))}
                   </select>
                 </div>
@@ -954,7 +994,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                 {currentConfig.classType && (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '6px' }}>
                     <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>
-                      Trefferpunkte (Trefferwürfel: W{getClassHitDie(currentConfig.classType)})
+                      Hit Points (Hit Die: d{getClassHitDie(currentConfig.classType)})
                     </label>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                       <input
@@ -972,8 +1012,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       />
                       <span style={{ fontSize: '11px', color: 'var(--inkl)', fontStyle: 'italic' }}>
                         {currentLevelIndex === 0 
-                          ? 'Maximalwert vorausgewählt' 
-                          : `Erlaubt: 1 bis ${getClassHitDie(currentConfig.classType)}`}
+                          ? 'Maximum value pre-selected' 
+                          : `Allowed: 1 to ${getClassHitDie(currentConfig.classType)}`}
                       </span>
                     </div>
                   </div>
@@ -982,7 +1022,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                 {(currentLevelIndex + 1) % 4 === 0 && (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '8px' }}>
                     <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
-                      ✦ Attributserhöhung (+1)
+                      ✦ Ability Score Increase (+1)
                     </label>
                     <select
                       value={currentConfig.abilityIncrease || ''}
@@ -990,12 +1030,12 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       className="cinput"
                       style={{ width: '100%', padding: '6px', fontSize: '12px', boxSizing: 'border-box' }}
                     >
-                      <option value="" disabled>-- Attribut wählen --</option>
-                      <option value="str">Stärke (STR)</option>
-                      <option value="dex">Geschicklichkeit (DEX)</option>
-                      <option value="con">Konstitution (CON)</option>
-                      <option value="int">Intelligenz (INT)</option>
-                      <option value="wis">Weisheit (WIS)</option>
+                      <option value="" disabled>-- Select Ability --</option>
+                      <option value="str">Strength (STR)</option>
+                      <option value="dex">Dexterity (DEX)</option>
+                      <option value="con">Constitution (CON)</option>
+                      <option value="int">Intelligence (INT)</option>
+                      <option value="wis">Wisdom (WIS)</option>
                       <option value="cha">Charisma (CHA)</option>
                     </select>
                   </div>
@@ -1022,7 +1062,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       fontFamily: "'IM Fell English SC', serif"
                     }}
                   >
-                    📝 Fertigkeiten ({currentLevelRemainingSkillPoints} / {currentLevelMaxSkillPoints})
+                    📝 Skills ({currentLevelRemainingSkillPoints} / {currentLevelMaxSkillPoints})
                   </button>
                   <button
                     onClick={() => {
@@ -1044,9 +1084,9 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       fontFamily: "'IM Fell English SC', serif",
                       opacity: currentFeatSlots.length === 0 ? 0.5 : 1
                     }}
-                    title={currentFeatSlots.length === 0 ? "Keine Talentslots auf dieser Stufe verfügbar" : ""}
+                    title={currentFeatSlots.length === 0 ? "No feat slots available at this level" : ""}
                   >
-                    🛡️ Talente ({currentFeatSlots.filter((_, idx) => !currentConfig.feats?.[idx]).length} offen)
+                    🛡️ Feats ({currentFeatSlots.filter((_, idx) => !currentConfig.feats?.[idx]).length} open)
                   </button>
                 </div>
 
@@ -1054,13 +1094,13 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   <>
                     {!currentConfig.classType ? (
                       <div style={{ padding: '40px', fontSize: '12px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center' }}>
-                        Wähle links eine Klasse aus, um Fertigkeitspunkte zu verteilen.
+                        Select a class on the left to distribute skill points.
                       </div>
                     ) : (
                       <>
                         <input
                           type="text"
-                          placeholder="Fertigkeit suchen..."
+                          placeholder="Search skill..."
                           value={skillSearch}
                           onChange={(e) => setSkillSearch(e.target.value)}
                           className="cinput"
@@ -1078,10 +1118,14 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                           }}
                         >
                           {Object.entries(SKILLS_REGISTRY)
-                            .filter(([_, def]: any) => def.nameDe.toLowerCase().includes(skillSearch.toLowerCase()))
+                            .filter(([_, def]: any) => {
+                              const s = skillSearch.toLowerCase();
+                              return (def.nameEn || def.nameDe || '').toLowerCase().includes(s) || 
+                                     (def.nameDe || '').toLowerCase().includes(s);
+                            })
                             .map(([key, def]: any) => {
                               const isClassSkill = CombatRules.CLASS_SKILLS[currentConfig.classType]?.includes(key) || 
-                                                  (key.startsWith('knowledge_') && (currentConfig.classType === 'wizard' || currentConfig.classType === 'bard'));
+                                                   (key.startsWith('knowledge_') && (currentConfig.classType === 'wizard' || currentConfig.classType === 'bard'));
                               
                               let isEverClassSkill = false;
                               for (let i = 0; i <= currentLevelIndex; i++) {
@@ -1113,7 +1157,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                                   }}
                                 >
                                   <div style={{ textAlign: 'left', flex: 1 }}>
-                                    <strong>{def.nameDe}</strong>{' '}
+                                    <strong>{def.nameEn || def.nameDe}</strong>{' '}
                                     <span style={{ fontSize: '10px', color: 'var(--inkl)' }}>({def.abl.toUpperCase()})</span>
                                     <span 
                                       style={{
@@ -1126,7 +1170,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                                         display: 'inline-block'
                                       }}
                                     >
-                                      {isClassSkill ? 'Klasse' : 'Fremd'}
+                                      {isClassSkill ? 'Class' : 'Cross-Class'}
                                     </span>
                                   </div>
 
@@ -1207,15 +1251,15 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                           >
                             <div style={{ textAlign: 'left' }}>
                               <span style={{ fontSize: '9px', textTransform: 'uppercase', color: 'var(--inkl)', display: 'block' }}>
-                                {slot.label} {isPreFilled && '(Festgelegt)'}
+                                {slot.label} {isPreFilled && '(Fixed)'}
                               </span>
                               <strong style={{ fontSize: '12px', color: selectedFeat ? 'var(--ink)' : 'var(--red)' }}>
-                                {selectedFeat ? selectedFeat.nameDe : '— Bitte Talent auswählen —'}
+                                {selectedFeat ? (selectedFeat.nameEn || selectedFeat.nameDe) : '— Please select a feat —'}
                               </strong>
                             </div>
                             {!isPreFilled && (
                               <span style={{ fontSize: '11px', color: 'var(--red)', fontWeight: isActive ? 'bold' : 'normal' }}>
-                                {isActive ? '👉 Ausgewählt' : 'Wählen'}
+                                {isActive ? '👉 Selected' : 'Select'}
                               </span>
                             )}
                           </div>
@@ -1227,13 +1271,13 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '4px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                           <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--inkm)' }}>
-                            Verfügbare Talente ({currentFeatSlots[featSelectSlotIndex].label}):
+                            Available feats ({currentFeatSlots[featSelectSlotIndex].label}):
                           </span>
                         </div>
                         
                         <input
                           type="text"
-                          placeholder="Talent suchen..."
+                          placeholder="Search feat..."
                           value={featSearch}
                           onChange={(e) => setFeatSearch(e.target.value)}
                           className="cinput"
@@ -1257,7 +1301,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                         >
                           {filteredFeats.length === 0 ? (
                             <div style={{ padding: '20px', fontSize: '11px', fontStyle: 'italic', color: 'var(--inkl)', textAlign: 'center' }}>
-                              Keine passenden Talente gefunden.
+                              No matching feats found.
                             </div>
                           ) : (
                             filteredFeats.map((item: any) => {
@@ -1269,16 +1313,16 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                               const isBlocked = !prereqs.met || isAlreadyLearned;
                               
                               let statusIcon = '⚪';
-                              let statusTitle = 'Wählbar';
+                              let statusTitle = 'Selectable';
                               if (isAlreadyLearned) {
                                 statusIcon = '🟢';
-                                statusTitle = 'Bereits erlernt';
+                                statusTitle = 'Already learned';
                               } else if (isAlreadySelected) {
                                 statusIcon = '✨';
-                                statusTitle = 'Auf dieser Stufe ausgewählt';
+                                statusTitle = 'Selected at this level';
                               } else if (isBlocked) {
                                 statusIcon = '🔒';
-                                statusTitle = 'Voraussetzungen nicht erfüllt';
+                                statusTitle = 'Prerequisites not met';
                               }
 
                               const parentFeat = feat.parent ? CombatFeats.REGISTRY[feat.parent] : null;
@@ -1320,32 +1364,32 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
                                     <span style={{ fontSize: '10px' }} title={statusTitle}>{statusIcon}</span>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flex: 1 }}>
-                                      <strong style={{ fontSize: '11.5px', color: isBlocked ? 'var(--inkm)' : 'var(--red)' }}>{feat.nameDe}</strong>
-                                      <span style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>{feat.nameEn}</span>
+                                      <strong style={{ fontSize: '11.5px', color: isBlocked ? 'var(--inkm)' : 'var(--red)' }}>{feat.nameEn || feat.nameDe}</strong>
+                                      <span style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>{feat.nameDe}</span>
                                     </div>
                                   </div>
                                   
                                   {parentFeat && !featSearch && (
                                     <div style={{ fontSize: '9px', color: 'var(--inkm)', fontStyle: 'italic', marginBottom: '3px', paddingLeft: '16px' }}>
-                                      ↳ Baut auf: <strong>{parentFeat.nameDe}</strong>
+                                      ↳ Requires: <strong>{parentFeat.nameEn || parentFeat.nameDe}</strong>
                                     </div>
                                   )}
 
                                   <div style={{ fontSize: '10.5px', color: 'var(--ink)', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, marginBottom: '3px', paddingLeft: '16px' }}>
-                                    {feat.benefitDe}
+                                    {feat.benefitRaw || feat.benefitDe}
                                   </div>
 
                                   {feat.prereqs && feat.prereqs.length > 0 && (
                                     <div style={{ fontSize: '9.5px', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '2px', marginTop: '2px', paddingLeft: '16px' }}>
                                       <span style={{ color: prereqs.met ? 'green' : 'var(--red)', fontWeight: 'bold' }}>
-                                        Voraussetzungen:
+                                        Prerequisites:
                                       </span>{' '}
                                       {prereqs.unmetDescs.length > 0 ? (
                                         <span style={{ color: 'var(--red)', fontStyle: 'italic' }}>
-                                          Nicht erfüllt: {prereqs.unmetDescs.join(', ')}
+                                          Not met: {prereqs.unmetDescs.map(translatePrereq).join(', ')}
                                         </span>
                                       ) : (
-                                        <span style={{ color: 'green', fontStyle: 'italic' }}>Erfüllt</span>
+                                        <span style={{ color: 'green', fontStyle: 'italic' }}>Met</span>
                                       )}
                                     </div>
                                   )}
@@ -1371,30 +1415,30 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         return (
           <div style={{ textAlign: 'left', marginTop: '10px' }}>
             <p style={{ fontFamily: "'Crimson Text', serif", fontSize: '14px', marginBottom: '20px', color: 'var(--inkm)' }}>
-              Überprüfe hier die Angaben deines neuen Charakters. Durch Klicken auf **Erstellen &amp; Speichern** werden die Daten auf deinen aktiven Bogen übertragen.
+              Review the details of your new character here. Clicking **Create &amp; Save** will transfer the data to your active sheet.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
               {/* Core Information Card */}
               <div style={{ padding: '16px', border: '1px solid var(--pb)', background: 'rgba(244,232,193,0.3)', borderRadius: '4px' }}>
                 <h4 style={{ margin: '0 0 10px 0', color: 'var(--red)', fontSize: '14px', borderBottom: '0.5px solid var(--pb)', paddingBottom: '3px' }}>
-                  Identität &amp; Gesundheit
+                  Identity &amp; Health
                 </h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px' }}>
                   <div><strong>Name:</strong> {name}</div>
-                  <div><strong>Volk:</strong> {RACES.find(r => r.key === selectedRace)?.name}</div>
+                  <div><strong>Race:</strong> {RACES.find(r => r.key === selectedRace)?.name}</div>
                   <div>
-                    <strong>Klassenkombination:</strong>{' '}
+                    <strong>Class Combination:</strong>{' '}
                     {isTargetLevelSet && currentDraft && currentDraft.classesList
                       .map(c => `${CLASSES_LIST.find(x => x.key === c.classType)?.name || c.classType} ${c.level}`)
                       .join(' / ')}
                   </div>
-                  <div><strong>Zielstufe:</strong> {targetLevel}</div>
+                  <div><strong>Target Level:</strong> {targetLevel}</div>
                   <div>
-                    <strong>Trefferpunkte (LP):</strong> {finalMaxHP} (Basis {totalHPRolls} + {conMod * targetLevel} Kon-Modifikator)
+                    <strong>Hit Points (HP):</strong> {finalMaxHP} (Base {totalHPRolls} + {conMod * targetLevel} Con modifier)
                   </div>
                   <div>
-                    <strong>Grundangriffsbonus (BAB):</strong> +{isTargetLevelSet && currentDraft && currentDraft.babVal}
+                    <strong>Base Attack Bonus (BAB):</strong> +{isTargetLevelSet && currentDraft && currentDraft.babVal}
                   </div>
                 </div>
               </div>
@@ -1402,11 +1446,11 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
               {/* Attributes Card */}
               <div style={{ padding: '16px', border: '1px solid var(--pb)', background: 'rgba(244,232,193,0.3)', borderRadius: '4px' }}>
                 <h4 style={{ margin: '0 0 10px 0', color: 'var(--red)', fontSize: '14px', borderBottom: '0.5px solid var(--pb)', paddingBottom: '3px' }}>
-                  Finale Attribute
+                  Final Ability Scores
                 </h4>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '13px' }}>
                   {(['str', 'dex', 'con', 'int', 'wis', 'cha'] as const).map(k => {
-                    const labelMap = { str: 'Stärke (STR)', dex: 'Geschicklichkeit (DEX)', con: 'Konstitution (CON)', int: 'Intelligenz (INT)', wis: 'Weisheit (WIS)', cha: 'Charisma (CHA)' };
+                    const labelMap = { str: 'Strength (STR)', dex: 'Dexterity (DEX)', con: 'Constitution (CON)', int: 'Intelligence (INT)', wis: 'Wisdom (WIS)', cha: 'Charisma (CHA)' };
                     const finalVal = isTargetLevelSet && currentDraft ? currentDraft.stats[k] : 10;
                     const finalM = isTargetLevelSet && currentDraft ? currentDraft.statMods[k] : 0;
                     
@@ -1418,7 +1462,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                             borderBottom: '1px dashed var(--red)'
                           }}
                           onClick={() => showAttributeExplanation(k)}
-                          title="Klicke für eine kurze Erläuterung"
+                          title="Click for a brief explanation"
                         >
                           {labelMap[k].split(' ')[0]}:
                         </span>
@@ -1434,7 +1478,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             {/* Feats summary */}
             <div style={{ padding: '16px', border: '1px solid var(--pb)', background: 'rgba(244,232,193,0.3)', borderRadius: '4px', marginTop: '15px' }}>
               <h4 style={{ margin: '0 0 10px 0', color: 'var(--red)', fontSize: '14px', borderBottom: '0.5px solid var(--pb)', paddingBottom: '3px' }}>
-                Gewählte Talente
+                Selected Feats
               </h4>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {levelConfigs.flatMap((cfg, idx) => 
@@ -1445,9 +1489,9 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       <div 
                         key={`${idx}-${fIdx}`} 
                         style={{ padding: '3px 8px', background: 'rgba(139,26,26,0.06)', border: '1px solid var(--pb)', borderRadius: '3px', fontSize: '11px' }}
-                        title={feat.benefitDe}
+                        title={feat.benefitRaw || feat.benefitDe}
                       >
-                        {feat.nameDe}
+                        {feat.nameEn || feat.nameDe}
                       </div>
                     );
                   }) : []
@@ -1463,10 +1507,10 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   };
 
   const stepsList = [
-    { num: 1, label: 'Identität & Volk' },
-    { num: 2, label: 'Attribute (74 Pkt)' },
-    { num: 3, label: 'Stufenaufstieg-Loop' },
-    { num: 4, label: 'Zusammenfassung' }
+    { num: 1, label: 'Identity & Race' },
+    { num: 2, label: 'Abilities (74 Pts)' },
+    { num: 3, label: 'Level-Up Loop' },
+    { num: 4, label: 'Summary' }
   ];
 
   // Build the complete tree hierarchy of all feats
@@ -1541,7 +1585,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       {/* Header */}
       <div>
         <div style={{ fontSize: '20px', color: 'var(--red)', fontWeight: 'bold', textAlign: 'center', letterSpacing: '1px' }}>
-          🧙‍♂️ Charakter-Erstellungs-Assistent (Wizard)
+          🧙‍♂️ Character Creation Assistant (Wizard)
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '8px 0 16px' }} />
       </div>
@@ -1560,7 +1604,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             className="btn"
             style={{ padding: '4px 16px', fontSize: '12px' }}
           >
-            Abbrechen
+            Cancel
           </button>
           
           <div style={{ display: 'flex', gap: '10px' }}>
@@ -1570,7 +1614,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
               className="btn"
               style={{ padding: '4px 16px', fontSize: '12px', opacity: step === 1 ? 0.5 : 1 }}
             >
-              Zurück
+              Back
             </button>
             
             {step < 4 ? (
@@ -1592,7 +1636,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   ) ? 0.5 : 1
                 }}
               >
-                Weiter
+                Next
               </button>
             ) : (
               <button 
@@ -1603,7 +1647,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   fontSize: '12px'
                 }}
               >
-                ✦ Erstellen &amp; Speichern
+                ✦ Create &amp; Save
               </button>
             )}
           </div>
@@ -1637,7 +1681,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   {s.num}. {s.label}
                   {s.num === 3 && step === 3 && selectedRace && (
                     <span style={{ fontSize: '9px', display: 'block', fontStyle: 'italic', color: 'var(--inkm)' }}>
-                      {name || 'Charakter'} ({RACES.find(r => r.key === selectedRace)?.name}) — Lvl 1 bis {targetLevel}
+                      {name || 'Character'} ({RACES.find(r => r.key === selectedRace)?.name}) — Lvl 1 to {targetLevel}
                     </span>
                   )}
                 </span>

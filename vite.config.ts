@@ -21,7 +21,7 @@ function copyStaticAssets() {
         // PeerJS: globales Script, nicht über Vite gebundelt (window.Peer API)
         [path.resolve(__dirname, 'js/peerjs.min.js'), path.join(distDir, 'peerjs.min.js')],
         // Zauber-Datenbank: zu groß für Bundle, wird zur Laufzeit geladen
-        [path.resolve(__dirname, 'data/spells_de.json'), path.join(distDir, 'data/spells_de.json')],
+        [path.resolve(__dirname, 'data/spells.json'), path.join(distDir, 'data/spells.json')],
         // PWA-Assets
         [path.resolve(__dirname, 'manifest.json'), path.join(distDir, 'manifest.json')],
         [path.resolve(__dirname, 'icon-192.png'), path.join(distDir, 'icon-192.png')],

@@ -14,8 +14,8 @@ export function applySneakAttack(ctx, baseDmgDice, dmgBreakdown) {
     const saDiceCount = ctx.pc.getSneakAttackDiceCount();
     if (saDiceCount > 0) {
       finalDmgDice = `${finalDmgDice} + ${saDiceCount}w6`;
-      if (!dmgBreakdown.some(b => b.label.includes('Hinterhältiger Angriff'))) {
-        dmgBreakdown.push({ label: `Hinterhältiger Angriff (${saDiceCount}W6)`, value: 0 });
+      if (!dmgBreakdown.some(b => b.label.includes('Sneak Attack'))) {
+        dmgBreakdown.push({ label: `Sneak Attack (${saDiceCount}d6)`, value: 0 });
       }
     }
   }
@@ -33,8 +33,8 @@ export function buildFinalDamageDiceAndBreakdown(ctx, baseDmgDice, dmgBreakdown,
       } else {
         finalDmgDice = `${finalDmgDice} + ${cleanExtra}`;
       }
-      if (!dmgBreakdown.some(b => b.label === 'Zusatz-Schaden')) {
-        dmgBreakdown.push({ label: 'Zusatz-Schaden', value: extra });
+      if (!dmgBreakdown.some(b => b.label === 'Extra Damage')) {
+        dmgBreakdown.push({ label: 'Extra Damage', value: extra });
       }
     }
   }

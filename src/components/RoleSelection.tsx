@@ -18,31 +18,31 @@ export const RoleSelection: React.FC = () => {
   return (
     <div className="role-overlay" id="roleOverlay" style={{ display: 'flex' }}>
       <div className="role-container">
-        <div className="role-title">D&amp;D 3.5e Kampfblatt</div>
-        <div className="role-subtitle">Bitte wähle deine Rolle für diese Sitzung</div>
+        <div className="role-title">D&amp;D 3.5e Combat Sheet</div>
+        <div className="role-subtitle">Please select your role for this session</div>
         
         <div className="role-grid">
           <div className="role-card" id="btnChooseDM" onClick={() => handleSelectRole('dm')}>
             <div className="role-icon">🏰</div>
-            <div className="role-card-title">Spielleiter (DM)</div>
+            <div className="role-card-title">Dungeon Master (DM)</div>
             <div className="role-card-desc">
-              Verwalte die Initiative-Reihenfolge, verwalte Lebenspunkte, würfle verdeckt und leite die Kampfbegegnung.
+              Manage initiative order, track hit points, roll checks, and lead the combat encounter.
             </div>
           </div>
           
           <div className="role-card" id="btnChoosePlayer" onClick={() => handleSelectRole('player')}>
             <div className="role-icon">🛡️</div>
-            <div className="role-card-title">Spieler (PC)</div>
+            <div className="role-card-title">Player Character (PC)</div>
             <div className="role-card-desc">
-              Greife auf deinen interaktiven D&amp;D 3.5e Charakterbogen zu, führe Würfe durch und verwalte deine Ressourcen direkt.
+              Access your interactive D&amp;D 3.5e character sheet, roll checks, and manage your resources directly.
             </div>
           </div>
 
           <div className="role-card" id="btnChooseWizard" onClick={() => handleSelectRole('wizard')}>
             <div className="role-icon">🧙‍♂️</div>
-            <div className="role-card-title">Charakter-Assistent</div>
+            <div className="role-card-title">Character Wizard</div>
             <div className="role-card-desc">
-              Erstelle einen neuen Charakter Schritt für Schritt mit dem geführten, regelkonformen Assistenten.
+              Create a new character step-by-step with the guided, rules-compliant wizard.
             </div>
           </div>
         </div>

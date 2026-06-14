@@ -1,6 +1,6 @@
 /**
  * @module    PCCompanionWrapper
- * @summary   Wrapper-Komponente für das Tierbegleiter- und Vertrauten-Sheet.
+ * @summary   Wrapper component for the animal companion and familiar sheet.
  * @exports   PCCompanionWrapper
  * @reads     pc
  * @depends   React, CompanionSheet, FamiliarSheet

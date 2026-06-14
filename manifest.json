@@ -1,7 +1,7 @@
 {
   "name": "D&D 3.5e DM Combat Sheet",
   "short_name": "Combat Sheet",
-  "description": "Dungeons & Dragons 3.5e Dungeon Master Kampfhilfe und Initiative Tracker",
+  "description": "Dungeons & Dragons 3.5e Dungeon Master combat helper and initiative tracker",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2a1a0a",

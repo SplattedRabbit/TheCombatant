@@ -1,11 +1,10 @@
 /**
  * @module    PCSkillsTab
- * @summary   Rendert die D&D 3.5e Fertigkeitsliste (Skills Tab) mit Such- & Filterfunktion, SP-Badge, Rängen und detailliertem Modifikator-Tooltip.
+ * @summary   Renders the D&D 3.5e skill list (Skills Tab) with search & filter functionality, SP badge, ranks and detailed modifier tooltip.
  * @exports   PCSkillsTab
  * @reads     pc.skills, pc.classes, pc.race, pc.feats, pc.conditions, pc.armor
  * @stateOps  updatePCBatch
  * @depends   React, @core/state.js, @core/rules.js, @core/data/skills-data.js, @core/models/helpers/skills/CombatantSkills.js, @core/models/helpers/skills/SkillFeatApplier.js, @core/ui/components/dialogs.js
- * @notHere   Attribute -> PCAttributes.tsx | Ausrüstung -> PCOffenseTab.tsx
  */
 
 import React, { useState, useMemo } from 'react';
@@ -23,7 +22,7 @@ import { applyFeatSkillBonuses } from '@core/models/helpers/skills/SkillFeatAppl
 import { showRollBreakdown } from '@core/ui/components/dialogs.js';
 
 interface PCSkillsTabProps {
-  pc: any; // Als any deklariert zur Laufzeit-Kompatibilität mit dynamischen Prototyp-Methoden
+  pc: any; // Declared as any for runtime compatibility with dynamic prototype methods
 }
 
 export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
@@ -75,30 +74,30 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
 
   if (!patchedPC) return null;
 
-  // SP-Punkte berechnen
+  // Calculate SP points
   const spentSP = CombatRules.calculateSpentSkillPoints(patchedPC);
   const totalSP = CombatRules.calculateTotalSkillPoints(patchedPC);
   const isOverspent = spentSP > totalSP;
   const badgeBg = isOverspent ? 'rgba(139, 26, 26, 0.15)' : 'rgba(139, 26, 26, 0.08)';
   const badgeBorderColor = isOverspent ? 'var(--red)' : 'var(--pb)';
 
-  // Tooltip für Aufschlüsselung erzeugen
+  // Generate tooltip for breakdown
   const getSkillTooltip = (key: string, totalMod: number, ranks: number, attrMod: number, misc: number, skill: any) => {
-    const lines = [`Gesamtmodifikator: ${formatMod(totalMod)}`];
-    lines.push(`• Ränge: ${ranks}`);
+    const lines = [`Total Modifier: ${formatMod(totalMod)}`];
+    lines.push(`• Ranks: ${ranks}`);
     lines.push(`• ${skill.abl.toUpperCase()}-Mod: ${formatMod(attrMod)}`);
     
     if (misc !== 0) {
-      lines.push(`• Sonstiges (Eigenwert): ${formatMod(misc)}`);
+      lines.push(`• Misc (base value): ${formatMod(misc)}`);
     }
 
-    // Talent-Boni
+    // Feat bonuses
     const featBonus = applyFeatSkillBonuses(patchedPC, key, skill);
     if (featBonus > 0) {
-      lines.push(`• Talentboni: ${formatMod(featBonus)}`);
+      lines.push(`• Feat bonuses: ${formatMod(featBonus)}`);
     }
 
-    // Volksboni
+    // Racial bonuses
     const race = (patchedPC.race || 'human').toLowerCase();
     let racialBonus = 0;
     if (race === 'dwarf' && key === 'craft') racialBonus = 2;
@@ -110,10 +109,10 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       if (['diplomacy', 'gather_information'].includes(key)) racialBonus = 2;
     }
     if (racialBonus > 0) {
-      lines.push(`• Volksbonus: ${formatMod(racialBonus)}`);
+      lines.push(`• Racial bonus: ${formatMod(racialBonus)}`);
     }
 
-    // Synergie-Effekt
+    // Synergy effects
     let synergy = 0;
     if (key === 'balance' && patchedPC.getSkillRanks('tumble') >= 5) synergy += 2;
     if (key === 'escape_artist' && patchedPC.getSkillRanks('tumble') >= 5) synergy += 2;
@@ -125,37 +124,37 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       if (patchedPC.getSkillRanks('decipher_script') >= 5) synergy += 2;
     }
     if (synergy > 0) {
-      lines.push(`• Synergie: ${formatMod(synergy)}`);
+      lines.push(`• Synergy: ${formatMod(synergy)}`);
     }
 
-    // Rüstungsmalus (ACP)
+    // Armor check penalty (ACP)
     if (skill.hasACP) {
       const acp = patchedPC.getArmorCheckPenalty();
       if (acp !== 0) {
         const penaltyVal = key === 'swim' ? -2 * acp : -acp;
-        lines.push(`• Rüstungsmalus (ACP): ${formatMod(penaltyVal)}`);
+        lines.push(`• Armor Check Penalty (ACP): ${formatMod(penaltyVal)}`);
       }
     }
 
-    // Conditions (Zustände)
+    // Conditions
     const hasShaken = patchedPC.conditions.some((c: any) => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
     if (hasShaken) {
-      lines.push(`• Zustand (Erschüttet): -2`);
+      lines.push(`• Condition (Shaken): -2`);
     }
 
     return lines.join('\n');
   };
 
-  // Würfeln
+  // Roll skill
   const handleRollSkill = (key: string, skill: any, ranks: number, attrMod: number, misc: number, e: React.MouseEvent) => {
     const breakdown = [
-      { label: `Ränge`, value: ranks },
+      { label: `Ranks`, value: ranks },
       { label: `${skill.abl.toUpperCase()}-Mod`, value: attrMod }
     ];
 
     const featBonus = applyFeatSkillBonuses(patchedPC, key, skill);
     if (featBonus > 0) {
-      breakdown.push({ label: 'Talentboni', value: featBonus });
+      breakdown.push({ label: 'Feat bonuses', value: featBonus });
     }
 
     const race = (patchedPC.race || 'human').toLowerCase();
@@ -169,22 +168,22 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       if (['diplomacy', 'gather_information'].includes(key)) racialBonus = 2;
     }
     if (racialBonus > 0) {
-      breakdown.push({ label: 'Volksbonus', value: racialBonus });
+      breakdown.push({ label: 'Racial bonus', value: racialBonus });
     }
 
     if (misc !== 0) {
-      breakdown.push({ label: 'Sonstige Boni', value: misc });
+      breakdown.push({ label: 'Misc bonuses', value: misc });
     }
 
-    // Synergien
-    if (key === 'balance' && patchedPC.getSkillRanks('tumble') >= 5) breakdown.push({ label: 'Synergie (Akrobatik)', value: 2 });
-    if (key === 'escape_artist' && patchedPC.getSkillRanks('tumble') >= 5) breakdown.push({ label: 'Synergie (Akrobatik)', value: 2 });
-    if (key === 'diplomacy' && patchedPC.getSkillRanks('bluff') >= 5) breakdown.push({ label: 'Synergie (Bluffen)', value: 2 });
-    if (key === 'disguise' && patchedPC.getSkillRanks('bluff') >= 5) breakdown.push({ label: 'Synergie (Bluffen)', value: 2 });
-    if (key === 'intimidate' && patchedPC.getSkillRanks('bluff') >= 5) breakdown.push({ label: 'Synergie (Bluffen)', value: 2 });
+    // Synergies
+    if (key === 'balance' && patchedPC.getSkillRanks('tumble') >= 5) breakdown.push({ label: 'Synergy (Tumble)', value: 2 });
+    if (key === 'escape_artist' && patchedPC.getSkillRanks('tumble') >= 5) breakdown.push({ label: 'Synergy (Tumble)', value: 2 });
+    if (key === 'diplomacy' && patchedPC.getSkillRanks('bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
+    if (key === 'disguise' && patchedPC.getSkillRanks('bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
+    if (key === 'intimidate' && patchedPC.getSkillRanks('bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
     if (key === 'use_magic_device') {
-      if (patchedPC.getSkillRanks('spellcraft') >= 5) breakdown.push({ label: 'Synergie (Zauberkunde)', value: 2 });
-      if (patchedPC.getSkillRanks('decipher_script') >= 5) breakdown.push({ label: 'Synergie (Schriftzeichen)', value: 2 });
+      if (patchedPC.getSkillRanks('spellcraft') >= 5) breakdown.push({ label: 'Synergy (Spellcraft)', value: 2 });
+      if (patchedPC.getSkillRanks('decipher_script') >= 5) breakdown.push({ label: 'Synergy (Decipher Script)', value: 2 });
     }
 
     // ACP
@@ -192,17 +191,17 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       const acp = patchedPC.getArmorCheckPenalty();
       if (acp !== 0) {
         const penaltyVal = key === 'swim' ? -2 * acp : -acp;
-        breakdown.push({ label: 'Rüstungsmalus (ACP)', value: penaltyVal });
+        breakdown.push({ label: 'Armor Check Penalty (ACP)', value: penaltyVal });
       }
     }
 
     // Conditions
     const hasShaken = patchedPC.conditions.some((c: any) => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
     if (hasShaken) {
-      breakdown.push({ label: 'Zustand (Erschüttet)', value: -2 });
+      breakdown.push({ label: 'Condition (Shaken)', value: -2 });
     }
 
-    showRollBreakdown(`Fertigkeitswurf: ${skill.nameDe}`, '1W20', breakdown, e.nativeEvent);
+    showRollBreakdown(`Skill check: ${skill.nameEn || skill.nameDe}`, '1d20', breakdown, e.nativeEvent);
   };
 
   const handleRanksChange = (key: string, val: string) => {
@@ -229,12 +228,13 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     });
   };
 
-  // Liste der gefilterten & sortierten Skills
+  // Filter & sort skills list
   const filteredSkillKeys = useMemo(() => {
     return Object.keys(SKILLS_REGISTRY).filter(key => {
       const skill = SKILLS_REGISTRY[key];
       const q = searchQuery.toLowerCase().trim();
-      const matchesQuery = skill.nameDe.toLowerCase().includes(q) || key.includes(q);
+      const name = skill.nameEn || skill.nameDe;
+      const matchesQuery = name.toLowerCase().includes(q) || key.includes(q);
 
       let matchesFilter = true;
       if (filterType === 'class') {
@@ -244,19 +244,23 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       }
 
       return matchesQuery && matchesFilter;
-    }).sort((a, b) => SKILLS_REGISTRY[a].nameDe.localeCompare(SKILLS_REGISTRY[b].nameDe));
+    }).sort((a, b) => {
+      const nameA = SKILLS_REGISTRY[a].nameEn || SKILLS_REGISTRY[a].nameDe;
+      const nameB = SKILLS_REGISTRY[b].nameEn || SKILLS_REGISTRY[b].nameDe;
+      return nameA.localeCompare(nameB);
+    });
   }, [searchQuery, filterType, patchedPC]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
       
-      {/* Such- & Filtersteuerung */}
+      {/* Search & Filter Controls */}
       <div style={{ display: 'flex', gap: '3px', alignItems: 'center', marginBottom: '5px', background: 'rgba(0,0,0,0.02)', padding: '3px', borderRadius: '2px', border: '0.5px solid var(--pb)' }}>
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Fertigkeit suchen..."
+          placeholder="Search skill..."
           style={{ flex: 1, fontSize: '8px', height: '16px', padding: '0 4px' }}
           className="cinput"
         />
@@ -266,9 +270,9 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
           className="cinput"
           style={{ width: '75px', fontSize: '7.5px', height: '16px', padding: 0, outline: 'none', cursor: 'pointer' }}
         >
-          <option value="all">Alle Skills</option>
-          <option value="class">Klassen-Skills</option>
-          <option value="trained">Mit Rängen</option>
+          <option value="all">All Skills</option>
+          <option value="class">Class Skills</option>
+          <option value="trained">With Ranks</option>
         </select>
         
         <span
@@ -286,30 +290,30 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
             alignItems: 'center',
             boxSizing: 'border-box'
           }}
-          title={`Verteilte Skillpunkte (SP): ${spentSP} von ${totalSP} verbraucht`}
+          title={`Spent Skill Points (SP): ${spentSP} of ${totalSP} consumed`}
         >
           {spentSP}/{totalSP} SP
         </span>
       </div>
 
-      {/* Legende */}
+      {/* Legend */}
       <div className="skills-legend" style={{ marginBottom: '5px', padding: '4px 6px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '7.5px', display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-        <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>Legende:</span>
+        <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>Legend:</span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5px' }}>
-          <span style={{ fontSize: '6px', fontWeight: 'bold', color: '#1a5c1a', background: 'rgba(26,92,26,0.08)', padding: '0.5px 2px', borderRadius: '1px' }}>K</span>
-          <span>Klassenfertigkeit</span>
+          <span style={{ fontSize: '6px', fontWeight: 'bold', color: '#1a5c1a', background: 'rgba(26,92,26,0.08)', padding: '0.5px 2px', borderRadius: '1px' }}>C</span>
+          <span>Class Skill</span>
         </span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5px' }}>
-          <span style={{ fontSize: '6px', color: '#7c5c1d', background: 'rgba(200,169,110,0.08)', padding: '0.5px 2px', borderRadius: '1px' }}>KÜ</span>
-          <span>Klassenübergreifend</span>
+          <span style={{ fontSize: '6px', color: '#7c5c1d', background: 'rgba(200,169,110,0.08)', padding: '0.5px 2px', borderRadius: '1px' }}>CC</span>
+          <span>Cross-Class</span>
         </span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5px' }}>
-          <span style={{ fontSize: '6px', color: 'var(--red)', background: 'rgba(139,26,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', fontWeight: 'bold' }}>Geübt</span>
-          <span>Trained Only (ungeübt nicht nutzbar)</span>
+          <span style={{ fontSize: '6px', color: 'var(--red)', background: 'rgba(139,26,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', fontWeight: 'bold' }}>Trained</span>
+          <span>Trained Only (cannot be used untrained)</span>
         </span>
       </div>
 
-      {/* Fertigkeitsliste */}
+      {/* Skills list */}
       <div style={{ display: 'flex', flexDirection: 'column', maxHeight: '380px', overflowY: 'auto', paddingRight: '2px' }} className="pc-scroll-skills">
         {filteredSkillKeys.length > 0 ? (
           filteredSkillKeys.map(key => {
@@ -338,7 +342,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                   opacity: isTrainedOnlyDisabled ? 0.5 : 1
                 }}
               >
-                {/* Links: Dice Roll & Info */}
+                {/* Left: Dice Roll & Info */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '3.5px', flex: 1.2, minWidth: 0 }}>
                   <button
                     disabled={isTrainedOnlyDisabled}
@@ -358,24 +362,24 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                       gap: '2.5px',
                       opacity: isTrainedOnlyDisabled ? 0.4 : 1
                     }}
-                    title={isTrainedOnlyDisabled ? 'Geübt (ungeübt nicht nutzbar)' : `Fertigkeitswurf für ${skill.nameDe} ausführen`}
+                    title={isTrainedOnlyDisabled ? 'Trained Only (cannot be used untrained)' : `Roll skill check for ${skill.nameEn || skill.nameDe}`}
                   >
-                    🎲 <span style={{ borderBottom: '0.5px dashed rgba(139, 26, 26, 0.4)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '110px' }}>{skill.nameDe}</span>
+                    🎲 <span style={{ borderBottom: '0.5px dashed rgba(139, 26, 26, 0.4)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '110px' }}>{skill.nameEn || skill.nameDe}</span>
                   </button>
                   <span style={{ fontSize: '6.5px', color: 'var(--inkl)', flexShrink: 0 }}>({skill.abl.toUpperCase()})</span>
                   {isClass ? (
-                    <span style={{ fontSize: '5.5px', fontWeight: 'bold', color: '#1a5c1a', background: 'rgba(26,92,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0 }} title={`Klassenfertigkeit (Max. Ränge: ${maxRanks})`}>K</span>
+                    <span style={{ fontSize: '5.5px', fontWeight: 'bold', color: '#1a5c1a', background: 'rgba(26,92,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0 }} title={`Class Skill (Max Ranks: ${maxRanks})`}>C</span>
                   ) : (
-                    <span style={{ fontSize: '5.5px', color: '#7c5c1d', background: 'rgba(200,169,110,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0 }} title={`Klassenübergreifend (Max. Ränge: ${maxRanks})`}>KÜ</span>
+                    <span style={{ fontSize: '5.5px', color: '#7c5c1d', background: 'rgba(200,169,110,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0 }} title={`Cross-Class (Max Ranks: ${maxRanks})`}>CC</span>
                   )}
                   {skill.trainedOnly && ranks === 0 && (
-                    <span style={{ fontSize: '5.5px', color: 'var(--red)', background: 'rgba(139,26,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0, fontWeight: 'bold' }} title="Trained Only">Geübt</span>
+                    <span style={{ fontSize: '5.5px', color: 'var(--red)', background: 'rgba(139,26,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0, fontWeight: 'bold' }} title="Trained Only">Trained</span>
                   )}
                 </div>
 
-                {/* Mitte: Gesamtmodifikator */}
+                {/* Center: Total Modifier */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '2px', flex: 0.5, justifyContent: 'center', flexShrink: 0 }}>
-                  <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Gesamt:</span>
+                  <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Total:</span>
                   <span
                     style={{
                       fontWeight: 'bold',
@@ -392,11 +396,11 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                   </span>
                 </div>
 
-                {/* Rechts: Eingaben */}
+                {/* Right: Inputs */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0, flex: 1.3, justifyContent: 'flex-end' }}>
-                  {/* Ränge */}
+                  {/* Ranks */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-                    <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Ränge:</span>
+                    <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Ranks:</span>
                     <input
                       type="number"
                       step="0.5"
@@ -418,11 +422,11 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                         fontWeight: ranksExceeded ? 'bold' : 'normal',
                         borderColor: ranksExceeded ? 'var(--red)' : 'var(--pb)'
                       }}
-                      title={`Erworbene Ränge (Max. erlaubt: ${maxRanks})`}
+                      title={`Acquired Ranks (Max allowed: ${maxRanks})`}
                     />
                   </div>
 
-                  {/* Attribut (Readonly) */}
+                  {/* Attribute (Readonly) */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
                     <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Attr:</span>
                     <input
@@ -446,9 +450,9 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     />
                   </div>
 
-                  {/* Sonstiges */}
+                  {/* Misc */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-                    <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Sonst:</span>
+                    <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Misc:</span>
                     <input
                       type="number"
                       value={misc}
@@ -463,7 +467,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                         border: '0.5px solid var(--pb)',
                         outline: 'none'
                       }}
-                      title="Sonstige Modifikatoren (z.B. Volksboni, Ausrüstung)"
+                      title="Other modifiers (e.g. racial bonuses, equipment)"
                     />
                   </div>
                 </div>
@@ -472,7 +476,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
           })
         ) : (
           <div style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '25px 0' }}>
-            Keine Fertigkeiten gefunden.
+            No skills found.
           </div>
         )}
       </div>
