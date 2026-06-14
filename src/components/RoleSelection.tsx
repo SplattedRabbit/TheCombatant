@@ -11,7 +11,7 @@ import React from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 export const RoleSelection: React.FC = () => {
-  const handleSelectRole = (role: 'dm' | 'player') => {
+  const handleSelectRole = (role: 'dm' | 'player' | 'wizard') => {
     CombatState.setRole(role);
   };
 
@@ -35,6 +35,14 @@ export const RoleSelection: React.FC = () => {
             <div className="role-card-title">Spieler (PC)</div>
             <div className="role-card-desc">
               Greife auf deinen interaktiven D&amp;D 3.5e Charakterbogen zu, führe Würfe durch und verwalte deine Ressourcen direkt.
+            </div>
+          </div>
+
+          <div className="role-card" id="btnChooseWizard" onClick={() => handleSelectRole('wizard')}>
+            <div className="role-icon">🧙‍♂️</div>
+            <div className="role-card-title">Charakter-Assistent</div>
+            <div className="role-card-desc">
+              Erstelle einen neuen Charakter Schritt für Schritt mit dem geführten, regelkonformen Assistenten.
             </div>
           </div>
         </div>

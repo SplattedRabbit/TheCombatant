@@ -193,17 +193,20 @@
   z-index: 1000;
   background: radial-gradient(circle, rgba(20, 12, 6, 0.98) 0%, rgba(5, 3, 1, 0.99) 100%);
   display: none; /* Toggled via JS */
+  overflow-y: auto;
   align-items: center;
   justify-content: center;
   font-family: 'Crimson Text', serif;
   color: var(--ink);
-  padding: 20px;
+  padding: 40px 20px;
+  box-sizing: border-box;
   backdrop-filter: blur(10px);
 }
 
 .role-container {
-  max-width: 620px;
+  max-width: 780px;
   width: 100%;
+  margin: auto;
   background: var(--p);
   border: 2px solid var(--pb);
   border-radius: 4px;
@@ -241,7 +244,7 @@
 
 .role-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
@@ -308,7 +311,7 @@
   text-align: center;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .role-grid {
     grid-template-columns: 1fr;
     gap: 15px;

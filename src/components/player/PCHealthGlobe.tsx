@@ -27,7 +27,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
   const tempHPObj = pc.conditions.find((c: any) => c === 'Temp-HP' || (c && c.n === 'Temp-HP'));
   const tempHP = tempHPObj ? (parseInt((tempHPObj as any).tmpVal) || 0) : 0;
 
-  const baseMaxHP = Math.max(1, pc.maxHp - tempHP);
+  const baseMaxHP = Math.max(1, pc.maxHP - tempHP);
   const baseHP = Math.max(0, pc.hp - tempHP);
 
   const basePct = Math.max(0, Math.min(100, Math.floor((baseHP / baseMaxHP) * 100)));
@@ -137,7 +137,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
               <div className="globe-hp-divider"></div>
               <input
                 type="number"
-                value={pc.maxHp}
+                value={pc.maxHP}
                 onChange={(e) => CombatState.updatePCNumber('maxHP', e.target.value)}
                 className="globe-hp-max"
                 title="Maximal-TP direkt editieren"

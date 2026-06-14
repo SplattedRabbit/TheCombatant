@@ -16,6 +16,7 @@ import { BaseCard } from '../shared/BaseCard';
 import { CombatRules } from '@core/rules.js';
 // @ts-ignore
 import { showCustomAlert, showCustomConfirm, showRollBreakdown } from '@core/ui/components/dialogs.js';
+import { showAttributeExplanation } from './attributeHelper';
 
 interface PCAttributesProps {
   pc: any;
@@ -116,7 +117,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
   };
 
   // Hilfskomponente für Attribut
-  const renderAttributeBox = (key: string, label: string, icon: string) => {
+  const renderAttributeBox = (key: 'str' | 'dex' | 'con' | 'int' | 'wis' | 'cha', label: string, icon: string) => {
     const stat = pc[key];
     const score = stat?.getValue?.() ?? stat?.total ?? 0;
     const mod = stat?.mod ?? 0;
@@ -143,7 +144,18 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
         }}
         title={tooltip}
       >
-        <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }}>{icon} {label}</label>
+        <label 
+          style={{ 
+            fontSize: '8px', 
+            fontWeight: 600, 
+            color: 'var(--inkl)',
+            cursor: 'pointer'
+          }}
+          onClick={() => showAttributeExplanation(key)}
+          title="Klicke für eine kurze Erläuterung"
+        >
+          {icon} {label}
+        </label>
         <div style={{ display: 'flex', alignItems: 'center', gap: '2px', marginTop: '2px', justifyContent: 'space-between' }}>
           <input
             type="number"

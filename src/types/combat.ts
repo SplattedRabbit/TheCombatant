@@ -131,6 +131,7 @@ export interface Combatant {
   type: CombatantType;
   hp: number;
   maxHp: number;
+  maxHP: number;
   tempHp: number;
   ac: number;
   initiative: number;
@@ -217,7 +218,7 @@ export interface EncounterMeta {
 
 export interface SessionInfo {
   active: boolean;
-  role: 'host' | 'player' | 'choice';
+  role: 'host' | 'player' | 'choice' | 'wizard';
   roomCode: string;
 }
 

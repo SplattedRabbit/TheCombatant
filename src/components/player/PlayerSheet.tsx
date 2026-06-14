@@ -235,6 +235,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
               <button className="fab-item" onClick={handleOnlineSession} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
                 🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Nicht verbunden"></span>Online-Sitzung
               </button>
+              <button className="fab-item" onClick={() => { setIsSystemOpen(false); CombatState.setRole('wizard'); }}>🧙‍♂️ Charakter-Assistent</button>
               <button className="fab-item" onClick={handleSwapRole}>🎭 Rolle wechseln</button>
               <button className="fab-item" onClick={handlePrint}>🖨 Drucken (A4)</button>
               <button className="fab-item" onClick={handleExport}>💾 Exportieren</button>

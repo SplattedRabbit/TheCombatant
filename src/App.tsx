@@ -3,6 +3,7 @@ import { useCombatState } from './hooks/useCombatState';
 import { RoleSelection } from './components/RoleSelection';
 import { DMScreen } from './components/dm/DMScreen';
 import { PlayerSheet } from './components/player/PlayerSheet';
+import { CharacterWizardDialog } from './components/player/CharacterWizardDialog';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 
@@ -126,9 +127,11 @@ export default function App() {
     return <RoleSelection />;
   }
 
-  let content;
+  let content: any;
   if (role === 'host' || role === 'dm') {
     content = <DMScreen state={state} />;
+  } else if (role === 'wizard') {
+    content = <CharacterWizardDialog onClose={() => CombatState.setRole('choice')} />;
   } else {
     // Player
     if (!activePC) {

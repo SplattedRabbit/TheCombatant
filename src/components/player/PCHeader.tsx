@@ -40,11 +40,11 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
   const tempHPObj = pc.conditions.find((c: any) => c === 'Temp-HP' || (c && c.n === 'Temp-HP'));
   const tempHP = tempHPObj ? (parseInt((tempHPObj as any).tmpVal) || 0) : 0;
 
-  const baseMaxHP = Math.max(1, pc.maxHp - tempHP);
+  const baseMaxHP = Math.max(1, pc.maxHP - tempHP);
   const baseHP = Math.max(0, pc.hp - tempHP);
   const basePct = Math.max(0, Math.min(100, Math.floor((baseHP / baseMaxHP) * 100)));
   const tempPct = Math.max(0, Math.min(100, Math.floor((tempHP / baseMaxHP) * 100)));
-  const totalPct = Math.max(0, Math.min(100, Math.floor((pc.hp / pc.maxHp) * 100)));
+  const totalPct = Math.max(0, Math.min(100, Math.floor((pc.hp / pc.maxHP) * 100)));
 
   // Health-bar color class
   const getFillCls = (pct: number, hp: number) => {
@@ -174,6 +174,40 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
         boxSizing: 'border-box'
       }}
     >
+      {pc.name === 'Held' && (
+        <div 
+          style={{
+            background: 'linear-gradient(135deg, rgba(139, 26, 26, 0.08) 0%, rgba(200, 169, 110, 0.15) 100%)',
+            border: '1px solid var(--pb)',
+            borderRadius: '4px',
+            padding: '12px 16px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '6px',
+            boxShadow: '0 2px 5px rgba(0,0,0,0.05)'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '20px' }}>🧙‍♂️</span>
+            <div style={{ textAlign: 'left' }}>
+              <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '13px', display: 'block' }}>
+                Charakter-Assistent (Wizard)
+              </strong>
+              <span style={{ fontSize: '11px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+                Erstelle deinen D&D 3.5e Charakter Schritt für Schritt mit dem geführten, regelkonformen Assistenten.
+              </span>
+            </div>
+          </div>
+          <button 
+            className="btn btn-p" 
+            onClick={() => CombatState.setRole('wizard')}
+            style={{ fontSize: '11px', padding: '4px 12px', whiteSpace: 'nowrap' }}
+          >
+            Assistent starten
+          </button>
+        </div>
+      )}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
         {/* Links: Charakter Name & Metadaten */}
         <div style={{ flex: '1', minWidth: '200px', display: 'flex', flexDirection: 'column', gap: '3px' }}>
@@ -311,7 +345,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '12px', marginTop: '1px' }}>
                 <input
                   type="number"
-                  value={pc.maxHp}
+                  value={pc.maxHP}
                   onChange={(e) => CombatState.updatePCNumber('maxHP', e.target.value)}
                   style={{
                     width: '28px',
