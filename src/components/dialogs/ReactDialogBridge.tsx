@@ -12,7 +12,8 @@ import {
   CustomPromptModal, 
   NewDayTemplateDialog, 
   RollBreakdownDialog, 
-  SampleChoiceDialog 
+  SampleChoiceDialog,
+  ParchmentMessageModal 
 } from './BaseDialogs';
 import { AttackChoiceDialog } from './AttackChoiceDialog';
 import { DamageChoiceDialog } from './DamageChoiceDialog';
@@ -268,6 +269,27 @@ export function initReactDialogBridge() {
         onClose={onCloseModal}
       />
     ));
+  };
+
+  bridge.showParchmentMessage = (text: string, sender: string = 'Spielleiter') => {
+    mountModal((onCloseModal) => (
+      <ParchmentMessageModal
+        text={text}
+        sender={sender}
+        onClose={onCloseModal}
+      />
+    ));
+    return {
+      dismiss: () => {
+        // Find and remove the newly mounted React dialog overlay
+        const overlays = document.querySelectorAll('#parchmentMessageOverlay');
+        overlays.forEach(o => {
+          const container = o.closest('.react-modal-container');
+          if (container) container.remove();
+          else o.remove();
+        });
+      }
+    };
   };
 
 

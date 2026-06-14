@@ -402,6 +402,17 @@
   transform-origin: center center;
 }
 
+#parchmentMessageOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(18, 11, 5, 0.55);
+  backdrop-filter: blur(2px);
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Make all dropdowns/selects readable and prevent native unscaled tiny display */
 select, select.cinput {
   font-size: 11px !important;
