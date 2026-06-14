@@ -35,6 +35,14 @@ function walkDir(dir) {
   return results;
 }
 
+// Copy index-react.html to index.html in dist for GitHub Pages root resolution
+const indexReactPath = path.join(distDir, 'index-react.html');
+const indexHtmlPath = path.join(distDir, 'index.html');
+if (fs.existsSync(indexReactPath)) {
+  fs.copyFileSync(indexReactPath, indexHtmlPath);
+  console.log('SW: index-react.html -> index.html kopiert für GitHub Pages');
+}
+
 const distAssets = walkDir(distDir);
 
 // 2. Root-SW lesen um aktuelle Cache-Version zu extrahieren
