@@ -49,16 +49,17 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Wild Shape            | `js/models/helpers/classes/DruidHelper.js`                | `Combatant.js`, `PCOffense.js`, `DruidFeatures.js` |
 | Natürliche Angriffe   | `js/ui/components/player/offense/NaturalAttacksRenderer.js` (`SHAPE_ATTACKS`) | `js/rules/AttackEngine.js` (`isNatural`), `PCOffense.js` |
 | Magische Gegenstände  | `js/models/Item.js`, `PCMagicItemsTab.js`                | `js/state/PCManager.js` (`addPCItem*`)       |
-| Waffen-UI             | `js/ui/components/player/offense/WeaponStashCard.js` (`createStashWeaponCard`) | `AttackEngine.js`, `js/models/Weapon.js`, `InventoryStashRenderer.js` |
-| Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `offense/ArmorStashCard.js` | `PCOffense.js`, `InventoryStashRenderer.js`  |
+| Waffen-UI             | `js/ui/components/player/offense/WeaponStashCard.js` (`createStashWeaponCard`), `src/components/player/offense/WeaponStashCard.tsx` | `AttackEngine.js`, `js/models/Weapon.js`, `InventoryStashRenderer.js` |
+| Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `offense/ArmorStashCard.js`, `src/components/player/offense/ArmorStashCard.tsx` | `PCOffense.js`, `InventoryStashRenderer.js`  |
+| Ausrüstung (React)    | `src/components/player/PCOffenseTab.tsx`, `ActiveEquipmentSlots.tsx` | `PlayerSheet.tsx` |
 | Angriffs-Engine       | `js/rules/AttackEngine.js`, `js/rules/attack/`           | `PCOffense.js`, `dialogs/AttackChoiceDialog.js` |
 | Rettungswürfe         | `js/rules/SaveCalculator.js`                             | `js/models/Combatant.js`, `helpers/modifiers/` |
 | Zauber / Slots        | `PCSpellbookTab.js`, `PCCompendiumTab.js`, `helpers/spells/CombatantSpells.js` | `SpellSlotCalculator.js`, `Combatant.js` |
 | Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `js/ui/components/class-features/` |
 | Talente               | `js/data/feats-data.js`, `js/data/feats-combat.js`, `js/data/feats-magic.js`, `js/data/feats-general.js` | `PCManager.js` (`addPCFeat`), `PCFeatsTab.js` |
 | WebRTC-Auren & Buffs  | `js/models/helpers/modifiers/SpellModifierApplier.js`, `js/rules/attack/AttackContext.js` | `js/network/SyncProtocol.js` |
-| Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.js`                 |
-| Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `offense/WeaponStashCard.js`, `AttackEngine.js` |
+| Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.js`, `PCOffenseTab.tsx`                 |
+| Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `offense/WeaponStashCard.js`, `AttackEngine.js`, `PCOffenseTab.tsx` |
 | Initiative / RK       | `PCDefenses.js`                                          | `Combatant.js`, `helpers/modifiers/`         |
 | HP & Globe            | `PCHealthGlobe.js`                                       | `PCManager.js` (`applyDamage`/`applyHeal`)  |
 | Netzwerk-Sync         | `js/network/SyncProtocol.js`                             | `NetworkManager.js`, `MessageQueue.js`       |
