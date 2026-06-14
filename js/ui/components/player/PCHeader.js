@@ -158,7 +158,6 @@ export function renderPCHeader(pc, activeTab) {
     }
   };
 
-
 }
 
 export function triggerYouDiedOverlay(pc) {

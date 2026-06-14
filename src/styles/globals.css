@@ -1,0 +1,23 @@
+/*
+ * globals.css — Globale CSS-Integration
+ * Importiert alle bestehenden Vanilla-App-Stylesheets als globale Styles
+ * in die React-App. Keine Änderungen an den Original-CSS-Dateien nötig.
+ */
+
+/* Reihenfolge: Basis → Layout → Inhalt → Overlays */
+@import '../../css/main.css';
+@import '../../css/layout.css';
+@import '../../css/combatants.css';
+@import '../../css/player.css';
+@import '../../css/popups.css';
+@import '../../css/intro.css';
+
+/* ---------------------------------------------------------------------------
+   React-spezifische Basisübersteuerungen
+   (ohne die Vanilla-Klassen zu brechen)
+   --------------------------------------------------------------------------- */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}

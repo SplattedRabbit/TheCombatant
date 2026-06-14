@@ -198,7 +198,7 @@
 
 .col-hdr {
   display: grid;
-  grid-template-columns: 65px 20px 52px 20px 20px 20px 20px 20px 1fr;
+  grid-template-columns: 170px 25px 70px 90px 30px 25px 25px 25px 1fr;
   gap: 2px;
   padding: 2px 3px;
   font-family: 'IM Fell English SC', serif;
@@ -206,6 +206,7 @@
   color: var(--inkm);
   letter-spacing: .3px;
   background: rgba(200, 169, 110, .2);
+  align-items: center;
 }
 
 .crow {
@@ -221,9 +222,9 @@
 
 .crow-inner {
   display: grid;
-  grid-template-columns: 65px 20px 52px 20px 20px 20px 20px 20px 1fr;
+  grid-template-columns: 170px 25px 70px 90px 30px 25px 25px 25px 1fr;
   gap: 2px;
-  align-items: start;
+  align-items: center;
 }
 
 .cinput {
@@ -256,12 +257,13 @@
   display: flex;
   gap: 2px;
   align-items: center;
+  justify-content: center;
 }
 
 .hp-cur-in {
   font-family: 'IM Fell English SC', serif;
   font-size: 11px;
-  width: 24px;
+  width: 28px;
   text-align: right;
   border: none;
   background: transparent;
@@ -278,6 +280,9 @@
 .hp-max-txt {
   font-size: 9px;
   color: var(--inkl);
+  display: inline-block;
+  width: 28px;
+  text-align: left;
 }
 
 .hp-sep {

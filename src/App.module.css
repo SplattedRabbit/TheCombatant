@@ -1,0 +1,284 @@
+/*
+ * App.module.css — Root-Komponenten-Styles (CSS Modules)
+ * Milestone 1 Smoke-Test UI — Premium D&D Design
+ */
+
+/* ---- Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---- Design Tokens ---- */
+:root {
+  --dnd-gold: #c9a84c;
+  --dnd-gold-light: #e8c97a;
+  --dnd-gold-dark: #8b6914;
+  --dnd-red: #8b1a1a;
+  --dnd-red-bright: #c0392b;
+  --bg-void: #0a0a0f;
+  --bg-deep: #10111a;
+  --bg-surface: #161824;
+  --bg-card: #1c1f30;
+  --bg-card-hover: #222640;
+  --border-subtle: rgba(201, 168, 76, 0.15);
+  --border-gold: rgba(201, 168, 76, 0.4);
+  --text-primary: #e8e4d8;
+  --text-secondary: #9a9580;
+  --text-gold: #c9a84c;
+  --success: #2ecc71;
+  --success-bg: rgba(46, 204, 113, 0.12);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(201, 168, 76, 0.1);
+}
+
+/* ---- Layout ---- */
+.app {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Header ---- */
+.header {
+  background: linear-gradient(135deg, #12141f 0%, #1a1c2e 50%, #0f1019 100%);
+  border-bottom: 1px solid var(--border-gold);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.logoIcon {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.6));
+}
+
+.logoText h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dnd-gold-light);
+  letter-spacing: 0.04em;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+}
+
+.badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+/* ---- Status Bar ---- */
+.statusBar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  min-width: 70px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.pill:hover {
+  background: rgba(201, 168, 76, 0.06);
+  border-color: var(--border-gold);
+}
+
+.pill--success {
+  border-color: rgba(46, 204, 113, 0.3);
+  background: var(--success-bg);
+}
+
+.pillLabel {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.pillValue {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-gold);
+  margin-top: 1px;
+}
+
+/* ---- Main ---- */
+.main {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--dnd-gold), transparent);
+  opacity: 0.4;
+}
+
+.card:hover {
+  border-color: var(--border-gold);
+}
+
+.card h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dnd-gold-light);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.03em;
+}
+
+.subtext {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem 0;
+  line-height: 1.5;
+}
+
+.subtext code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  background: rgba(201, 168, 76, 0.1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  padding: 0 4px;
+  color: var(--dnd-gold-light);
+}
+
+/* ---- Info Grid ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.infoBlock {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.infoBlock:hover {
+  background: rgba(201, 168, 76, 0.05);
+  border-color: var(--border-gold);
+}
+
+.infoBlock dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  margin-bottom: 0.3rem;
+}
+
+.infoBlock dd {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ---- Code Block ---- */
+.code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  color: var(--dnd-gold-light);
+  overflow-x: auto;
+  line-height: 1.6;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+/* ---- Milestone List ---- */
+.milestoneList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.milestone {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.milestone--done {
+  color: var(--text-primary);
+  border-color: rgba(46, 204, 113, 0.25);
+  background: rgba(46, 204, 113, 0.06);
+}
+
+.milestoneIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}

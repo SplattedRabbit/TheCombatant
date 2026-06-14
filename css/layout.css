@@ -226,3 +226,117 @@ html, body {
   flex-shrink: 0;
 }
 
+/* DM Screen v3.5.0 Layout Grid */
+.dm-layout-grid {
+  display: grid;
+  grid-template-columns: 2.1fr 0.9fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dm-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dm-side-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 3-fach AC Box */
+.ac-triple-box {
+  display: flex;
+  background: var(--p);
+  border: 1px solid var(--pb);
+  border-radius: 3px;
+  overflow: hidden;
+  width: 90px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.ac-sub-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.ac-sub-box:not(:last-child) {
+  border-right: 0.5px solid var(--pb);
+}
+
+.ac-sub-lbl {
+  font-size: 5.5px;
+  color: var(--inkl);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.ac-sub-val {
+  font-size: 8px;
+  font-weight: bold;
+  color: var(--ink);
+}
+
+.ac-sub-box.standard {
+  background: rgba(200, 169, 110, 0.1);
+}
+
+/* Effect Badges */
+.crow-effects-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding: 2px 5px;
+  background: rgba(0, 0, 0, 0.03);
+  border-top: 0.5px dashed rgba(200, 169, 110, 0.3);
+}
+
+.dm-effect-badge {
+  font-size: 7px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.badge-shape {
+  background: #2e7d32;
+  color: white;
+}
+
+.badge-buff {
+  background: #c8a96e;
+  color: #1f1405;
+}
+
+.badge-condition {
+  background: #555;
+  color: #fff;
+}
+
+.remove-effect-btn {
+  cursor: pointer;
+  color: rgba(255,255,255,0.7);
+  font-size: 7px;
+  font-weight: bold;
+}
+
+.badge-buff .remove-effect-btn {
+  color: rgba(31,20,5,0.7);
+}
+
+.remove-effect-btn:hover {
+  color: #ff5c5c;
+}
+
+

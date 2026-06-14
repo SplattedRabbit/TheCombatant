@@ -6,7 +6,8 @@ export {
   showCustomConfirm,
   showCustomPrompt,
   showNewDayTemplateDialog,
-  showRollBreakdown
+  showRollBreakdown,
+  showSampleChoiceDialog
 } from '../dialogs/BaseDialogs.js';
 
 export { showAttackChoiceDialog } from '../dialogs/AttackChoiceDialog.js';

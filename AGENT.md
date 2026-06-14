@@ -58,7 +58,8 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Initiative / RK       | `PCDefenses.js`                                          | `Combatant.js`, `helpers/modifiers/`         |
 | HP & Globe            | `PCHealthGlobe.js`                                       | `PCManager.js` (`applyDamage`/`applyHeal`)  |
 | Netzwerk-Sync         | `js/network/SyncProtocol.js`                             | `NetworkManager.js`, `MessageQueue.js`       |
-| Service Worker / Cache| `service-worker.js` Zeile 1                              | `index.html` Fußzeile (Version-String)       |
+| Service Worker / Cache| `service-worker.js`, `scratch/update_sw.js`       | `index.html`, `index-react.html`               |
+| DM-Screen & Init-Bar  | `src/components/dm/DMScreen.tsx`, `DMCombatantsTable.tsx`, `InitBar.tsx` | `src/App.tsx`, `src/components/player/PlayerSheet.tsx` |
 
 ---
 

@@ -292,7 +292,7 @@
         <div class="leg-dot dot-n"></div>
         NSC
       </div>
-      <span>· ▼ aktiver Zug · rote Punkte = Zustände</span>
+      <span>· ▼ aktiver Zug</span>
     </div>
     
     <div class="btns">
@@ -306,149 +306,167 @@
 
   <div class="fancy">— ✦ —</div>
 
-  <div class="mgrid">
-    <div class="panel">
-      <div class="phdr">
-        <h2>⚔ Spielercharaktere</h2>
-        <button class="btn no-print" id="btnShowAddP">+ Hinzufügen</button>
-      </div>
-      <div class="pbody">
-        <div class="col-hdr">
-          <span>Name</span>
-          <span style="text-align:center">Init</span>
-          <span>TP</span>
-          <span style="text-align:center">RK</span>
-          <span style="text-align:center">BW</span>
-          <span style="text-align:center">ZÄ</span>
-          <span style="text-align:center">REF</span>
-          <span style="text-align:center">WIL</span>
-          <span>Schaden · Heilen · Zustände</span>
+  <div class="dm-layout-grid">
+    <!-- Linke Hauptspalte: Spieler & Gegner untereinander -->
+    <div class="dm-main-col">
+      <div class="panel">
+        <div class="phdr">
+          <h2>⚔ Spielercharaktere</h2>
+          <button class="btn no-print" id="btnShowAddP">+ Hinzufügen</button>
         </div>
-        <div id="pRows"></div>
-        
-        <div class="add-form no-print" id="addPForm" style="display:none; flex-wrap:wrap; gap:3px; align-items:center;">
-          <label>Name:</label><input id="pN" type="text" style="width:65px;" placeholder="Aranis">
-          <label>Init:</label><input id="pI" type="number" style="width:25px;" placeholder="12">
-          <label>TP:</label><input id="pH" type="number" style="width:25px;" placeholder="28">
-          <label>RK:</label><input id="pA" type="number" style="width:25px;" placeholder="15">
-          <label style="margin-left:2px;">Klasse:</label>
-          <select id="pClass" style="width:80px; font-size:8px; height:14px; padding:0 1px;">
-            <option value="custom">Benutzerdefiniert</option>
-            <option value="fighter">Kämpfer</option>
-            <option value="cleric">Kleriker</option>
-            <option value="rogue">Schurke</option>
-            <option value="wizard">Magier</option>
-            <option value="barbarian">Barbar</option>
-            <option value="bard">Barde</option>
-            <option value="druid">Druide</option>
-            <option value="monk">Mönch</option>
-            <option value="paladin">Paladin</option>
-            <option value="ranger">Waldläufer</option>
-            <option value="sorcerer">Hexenmeister</option>
-          </select>
-          <label>Stufe:</label>
-          <select id="pLevel" style="width:30px; font-size:8px; height:14px; padding:0;">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-          </select>
-          <button class="btn btn-p" id="btnConfirmAddP" style="padding:1px 5px; height:14px; line-height:10px;">Einfügen</button>
-          <button class="btn" id="btnHideAddP" style="padding:1px 4px; height:14px; line-height:10px;">✕</button>
-        </div>
-      </div>
-    </div>
-    
-    <div class="panel">
-      <div class="phdr">
-        <h2>💀 Gegner &amp; NSC</h2>
-        <button class="btn no-print" id="btnShowAddE">+ Hinzufügen</button>
-      </div>
-      <div class="pbody">
-        <div class="col-hdr">
-          <span>Name</span>
-          <span style="text-align:center">Init</span>
-          <span>TP</span>
-          <span style="text-align:center">RK</span>
-          <span style="text-align:center">BW</span>
-          <span style="text-align:center">ZÄ</span>
-          <span style="text-align:center">REF</span>
-          <span style="text-align:center">WIL</span>
-          <span>Schaden · Heilen · Zustände</span>
-        </div>
-        <div id="eRows"></div>
-        
-        <div class="add-form no-print" id="addEForm" style="display:none;">
-          <label>Name:</label><input id="eN" type="text" style="width:70px;" placeholder="Goblin #1">
-          <label>Init:</label><input id="eI" type="number" style="width:28px;" placeholder="8">
-          <label>TP:</label><input id="eH" type="number" style="width:28px;" placeholder="12">
-          <label>RK:</label><input id="eA" type="number" style="width:28px;" placeholder="13">
-          <select id="eT">
-            <option value="e">Gegner</option>
-            <option value="n">NSC</option>
-          </select>
-          <button class="btn btn-p" id="btnConfirmAddE">Einfügen</button>
-          <button class="btn" id="btnHideAddE">✕</button>
+        <div class="pbody">
+          <div class="col-hdr">
+            <span>Name</span>
+            <span style="text-align:center">Init</span>
+            <span style="text-align:center">TP</span>
+            <span style="text-align:center">RK</span>
+            <span style="text-align:center">BW</span>
+            <span style="text-align:center">ZÄ</span>
+            <span style="text-align:center">REF</span>
+            <span style="text-align:center">WIL</span>
+            <span>Schaden · Heilen</span>
+          </div>
+          <div id="pRows"></div>
+          
+          <div class="add-form no-print" id="addPForm" style="display:none; flex-wrap:wrap; gap:3px; align-items:center;">
+            <label>Name:</label><input id="pN" type="text" style="width:65px;" placeholder="Aranis">
+            <label>Init:</label><input id="pI" type="number" style="width:25px;" placeholder="12">
+            <label>TP:</label><input id="pH" type="number" style="width:25px;" placeholder="28">
+            <label>RK:</label><input id="pA" type="number" style="width:25px;" placeholder="15">
+            <label style="margin-left:2px;">Klasse:</label>
+            <select id="pClass" style="width:80px; font-size:8px; height:14px; padding:0 1px;">
+              <option value="custom">Benutzerdefiniert</option>
+              <option value="fighter">Kämpfer</option>
+              <option value="cleric">Kleriker</option>
+              <option value="rogue">Schurke</option>
+              <option value="wizard">Magier</option>
+              <option value="barbarian">Barbar</option>
+              <option value="bard">Barde</option>
+              <option value="druid">Druide</option>
+              <option value="monk">Mönch</option>
+              <option value="paladin">Paladin</option>
+              <option value="ranger">Waldläufer</option>
+              <option value="sorcerer">Hexenmeister</option>
+            </select>
+            <label>Stufe:</label>
+            <select id="pLevel" style="width:30px; font-size:8px; height:14px; padding:0;">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+            </select>
+            <button class="btn btn-p" id="btnConfirmAddP" style="padding:1px 5px; height:14px; line-height:10px;">Einfügen</button>
+            <button class="btn" id="btnHideAddP" style="padding:1px 4px; height:14px; line-height:10px;">✕</button>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="bgrid">
-    <div class="panel">
-      <div class="phdr"><h2>🔮 Konzentrationszauber</h2></div>
-      <div class="pbody" style="padding:4px 5px;">
-        <div style="display:grid;grid-template-columns:58px 1fr 26px 18px;gap:2px;font-family:'IM Fell English SC',serif;font-size:7.5px;color:var(--inkl);padding:1px 0 3px;letter-spacing:.3px;">
-          <span>Zauberer</span><span>Zauber</span><span>Runden</span><span>✕</span>
+      
+      <div class="panel">
+        <div class="phdr">
+          <h2>💀 Gegner &amp; NSC</h2>
+          <button class="btn no-print" id="btnShowAddE">+ Hinzufügen</button>
         </div>
-        <div id="concRows"></div>
-        
-        <div class="no-print" style="margin-top:4px;display:flex;gap:3px;align-items:center;">
-          <input class="conc-in" id="cWho" type="text" style="width:55px;" placeholder="Name">
-          <input class="conc-in" id="cSpell" type="text" style="flex:1;min-width:55px;" placeholder="Zauber...">
-          <input class="conc-in" id="cDur" type="number" style="width:26px;" placeholder="Rd">
-          <button class="btn btn-p" id="btnAddConc" style="font-size:8px;padding:2px 7px;">+</button>
+        <div class="pbody">
+          <div class="col-hdr">
+            <span>Name</span>
+            <span style="text-align:center">Init</span>
+            <span style="text-align:center">TP</span>
+            <span style="text-align:center">RK</span>
+            <span style="text-align:center">BW</span>
+            <span style="text-align:center">ZÄ</span>
+            <span style="text-align:center">REF</span>
+            <span style="text-align:center">WIL</span>
+            <span>Schaden · Heilen</span>
+          </div>
+          <div id="eRows"></div>
+          
+          <div class="add-form no-print" id="addEForm" style="display:none;">
+            <label>Name:</label><input id="eN" type="text" style="width:70px;" placeholder="Goblin #1">
+            <label>Init:</label><input id="eI" type="number" style="width:28px;" placeholder="8">
+            <label>TP:</label><input id="eH" type="number" style="width:28px;" placeholder="12">
+            <label>RK:</label><input id="eA" type="number" style="width:28px;" placeholder="13">
+            <select id="eT">
+              <option value="e">Gegner</option>
+              <option value="n">NSC</option>
+            </select>
+            <button class="btn btn-p" id="btnConfirmAddE">Einfügen</button>
+            <button class="btn" id="btnHideAddE">✕</button>
+          </div>
         </div>
       </div>
     </div>
     
-    <div class="panel">
-      <div class="phdr"><h2>🎲 Schnellreferenz</h2></div>
-      <div class="pbody qref">
-        <div class="qref-h">Angriff</div>
-        <div>Nah: 1W20 + BAB + Stä ± Größe</div>
-        <div>Fern: 1W20 + BAB + Ges ± Größe</div>
-        <div>Krit. best.: 1W20 + alle Angriffsboni</div>
-        <hr class="qhr">
-        <div class="qref-h">Rettungswürfe</div>
-        <div>ZÄ (Zähigkeit): Basis + Kon-Mod</div>
-        <div>REF (Reflex): Basis + Ges-Mod</div>
-        <div>WIL (Willen): Basis + Wei-Mod</div>
-        <hr class="qhr">
-        <div class="qref-h">Konzentration bei Schaden</div>
-        <div>SG 10 + Schaden + Zauberstufe · ZÄ</div>
-        <hr class="qhr">
-        <div class="qref-h">Sterbend / Tod</div>
-        <div>0 TP = bewusstlos · −1 bis −9 = sterbend</div>
-        <div>Sterbend: −1 TP/Runde · W10 ≥ 10 = stabil</div>
-        <div>−10 TP = sofortiger Tod</div>
-        
+    <!-- Rechte Toolbox-Spalte -->
+    <div class="dm-side-col">
+      <div class="panel">
+        <div class="phdr"><h2>🔮 Konzentrationszauber</h2></div>
+        <div class="pbody" style="padding:4px 5px;">
+          <div style="display:grid;grid-template-columns:58px 1fr 26px 18px;gap:2px;font-family:'IM Fell English SC',serif;font-size:7.5px;color:var(--inkl);padding:1px 0 3px;letter-spacing:.3px;">
+            <span>Zauberer</span><span>Zauber</span><span>Runden</span><span>✕</span>
+          </div>
+          <div id="concRows"></div>
+          
+          <div class="no-print" style="margin-top:4px;display:flex;gap:3px;align-items:center;">
+            <input class="conc-in" id="cWho" type="text" style="width:55px;" placeholder="Name">
+            <input class="conc-in" id="cSpell" type="text" style="flex:1;min-width:55px;" placeholder="Zauber...">
+            <input class="conc-in" id="cDur" type="number" style="width:26px;" placeholder="Rd">
+            <button class="btn btn-p" id="btnAddConc" style="font-size:8px;padding:2px 7px;">+</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="panel no-print">
+        <div class="phdr"><h2>📜 Botschaft an Spieler</h2></div>
+        <div class="pbody" style="padding: 5px 6px;">
+          <div style="display: flex; gap: 4px; align-items: center; margin-bottom: 4px;">
+            <label style="font-size: 8px; font-weight: bold; color: var(--inkm);">Empfänger:</label>
+            <select id="dmMessageTarget" class="cinput" style="flex: 1; height: 16px; font-size: 8px; padding: 0 2px;"></select>
+          </div>
+          <textarea id="dmMessageText" class="cinput" rows="2" style="width: 100%; font-family: 'Crimson Text', serif; font-size: 9px; resize: vertical; margin-bottom: 4px; box-sizing: border-box;" placeholder="Schreibe eine Nachricht an Spieler (z.B. geheime Entdeckungen)..."></textarea>
+          <div style="display: flex; justify-content: flex-end;">
+            <button class="btn btn-p" id="btnSendDMMessage" style="font-size: 8px; padding: 2px 8px; height: 16px; line-height: 10px;">Senden ✉️</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="panel">
+        <div class="phdr"><h2>🎲 Schnellreferenz</h2></div>
+        <div class="pbody qref">
+          <div class="qref-h">Angriff</div>
+          <div>Nah: 1W20 + BAB + Stä ± Größe</div>
+          <div>Fern: 1W20 + BAB + Ges ± Größe</div>
+          <div>Krit. best.: 1W20 + alle Angriffsboni</div>
+          <hr class="qhr">
+          <div class="qref-h">Rettungswürfe</div>
+          <div>ZÄ (Zähigkeit): Basis + Kon-Mod</div>
+          <div>REF (Reflex): Basis + Ges-Mod</div>
+          <div>WIL (Willen): Basis + Wei-Mod</div>
+          <hr class="qhr">
+          <div class="qref-h">Konzentration bei Schaden</div>
+          <div>SG 10 + Schaden + Zauberstufe · ZÄ</div>
+          <hr class="qhr">
+          <div class="qref-h">Sterbend / Tod</div>
+          <div>0 TP = bewusstlos · −1 bis −9 = sterbend</div>
+          <div>Sterbend: −1 TP/Runde · W10 ≥ 10 = stabil</div>
+          <div>−10 TP = sofortiger Tod</div>
+          
+        </div>
       </div>
     </div>
   </div>
@@ -585,7 +603,7 @@
     </svg>
   </div>
   <div style="text-align:center;font-size:7.5px;color:var(--inkl);font-style:italic;margin-top:1px;">
-    D&amp;D 3.5e · Core Rules · Spieler-Charakterbogen Kampfhilfe (v3.4.0-cache-v4)
+    D&amp;D 3.5e · Core Rules · Spieler-Charakterbogen Kampfhilfe (v3.5.0-cache-v8)
   </div>
 </div>
 
