@@ -2,6 +2,10 @@
  * @module    PCHeader
  * @summary   Header component for the player character with name, race, class/level, alignment, initiative, HP display, and damage controller.
  * @exports   PCHeader
+/**
+ * @module    PCHeader
+ * @summary   Header component for the player character with name, race, class/level, alignment, initiative, HP display, and damage controller.
+ * @exports   PCHeader
  * @reads     pc.name, pc.race, pc.classes, pc.size, pc.alignment, pc.hp, pc.maxHP, pc.conditions, pc.init, pc.iniMisc, pc.dex, pc.feats
  * @stateOps  updatePCField, updatePCNumber, applyDamage, applyTempHP
  * @depends   React, @core/state.js, src/hooks/useCombatState
@@ -9,6 +13,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import type { Combatant } from '../../types/combat';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
@@ -528,7 +533,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
       </div>
 
       {/* You Died Overlay (Dark Souls Style Easter Egg) */}
-      {showYouDied && (
+      {showYouDied && createPortal(
         <div
           id="you-died-overlay"
           style={{
@@ -612,7 +617,8 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
               }
             `}
           </style>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
