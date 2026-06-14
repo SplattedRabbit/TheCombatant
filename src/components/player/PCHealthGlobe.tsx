@@ -87,7 +87,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
 
   return (
     <BaseCard title="❤️ Vitalität & Status">
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', gap: '16px', width: '100%', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', gap: '24px', width: '100%', flexWrap: 'wrap', padding: '4px 8px' }}>
         
         {/* Globe visual container */}
         <div className="globe-wrapper" style={{ margin: '0' }}>
@@ -154,7 +154,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
         </div>
         
         {/* Right column: Controls & Conditions */}
-        <div style={{ display: 'flex', flexDirection: 'column', flex: '1', minWidth: '180px', gap: '8px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', flex: '1.2', minWidth: '200px', gap: '10px' }}>
           {/* Control pedestal deck */}
           <div className="globe-control-deck" style={{ borderTop: 'none', paddingTop: '0', marginTop: '0', width: '100%' }}>
             <div className="globe-control-row">
@@ -165,40 +165,61 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
                 value={dmgValue}
                 onChange={(e) => setDmgValue(e.target.value)}
                 style={{
-                  width: '38px',
-                  height: '20px',
+                  width: '42px',
+                  height: '22px',
                   textAlign: 'center',
                   borderRadius: '2px',
                   border: '0.5px solid var(--pb)',
                   fontFamily: "'Crimson Text', serif",
-                  fontSize: '11px',
+                  fontSize: '12px',
                   outline: 'none',
                   background: 'rgba(255,255,255,0.6)'
                 }}
               />
-              <button className="globe-btn globe-btn-dmg" onClick={handleApplyDamage} title="Schaden abziehen">- Schad.</button>
-              <button className="globe-btn globe-btn-heal" onClick={handleApplyHeal} title="Heilung anwenden">+ Heil.</button>
-              <button className="globe-btn globe-btn-temp" onClick={handleApplyTempHP} title="Temporäre TP hinzufügen">+ Temp</button>
+              <button 
+                className="globe-btn globe-btn-dmg" 
+                onClick={handleApplyDamage} 
+                title="Schaden abziehen"
+                style={{ height: '22px', padding: '0 8px', fontSize: '8.5px', lineHeight: '20px' }}
+              >
+                - Schad.
+              </button>
+              <button 
+                className="globe-btn globe-btn-heal" 
+                onClick={handleApplyHeal} 
+                title="Heilung anwenden"
+                style={{ height: '22px', padding: '0 8px', fontSize: '8.5px', lineHeight: '20px' }}
+              >
+                + Heil.
+              </button>
+              <button 
+                className="globe-btn globe-btn-temp" 
+                onClick={handleApplyTempHP} 
+                title="Temporäre TP hinzufügen"
+                style={{ height: '22px', padding: '0 8px', fontSize: '8.5px', lineHeight: '20px' }}
+              >
+                + Temp
+              </button>
             </div>
             
-            <div className="globe-chk-row" style={{ display: 'flex', gap: '8px', fontSize: '7px', color: 'var(--inkl)', justifyContent: 'center', marginTop: '4px' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer' }}>
+            <div className="globe-chk-row" style={{ display: 'flex', gap: '10px', fontSize: '8px', color: 'var(--inkl)', justifyContent: 'center', marginTop: '6px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
                 <input
                   type="checkbox"
                   checked={isHalf}
                   onChange={(e) => setIsHalf(e.target.checked)}
                   className="globe-dmg-half"
-                  style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
+                  style={{ width: '12px', height: '12px', cursor: 'pointer', margin: 0 }}
                 />
                 <span>Halbiert (Reflex)</span>
               </label>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
                 <input
                   type="checkbox"
                   checked={isDouble}
                   onChange={(e) => setIsDouble(e.target.checked)}
                   className="globe-dmg-double"
-                  style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
+                  style={{ width: '12px', height: '12px', cursor: 'pointer', margin: 0 }}
                 />
                 <span>Doppelt (Krit)</span>
               </label>
@@ -206,11 +227,11 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
           </div>
 
           {/* Conditions Badges */}
-          <div style={{ width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.15)', paddingTop: '6px' }}>
+          <div style={{ width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.15)', paddingTop: '8px' }}>
             <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px', textAlign: 'center' }}>
               ✨ Aktive Zustände (Conditions)
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center' }}>
               {activeConditions.length > 0 ? (
                 activeConditions.map((cond, idx) => (
                   <div

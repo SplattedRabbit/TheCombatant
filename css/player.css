@@ -350,8 +350,8 @@
 
 /* Globe visual container */
 .globe-wrapper {
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   margin: 6px auto;
   position: relative;
 }
@@ -393,10 +393,10 @@
 
 .globe-highlight {
   position: absolute;
-  top: 4px;
-  left: 13px;
-  right: 13px;
-  height: 26px;
+  top: 5px;
+  left: 15px;
+  right: 15px;
+  height: 30px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
   border-radius: 50% 50% 45% 45% / 70% 70% 30% 30%;
   z-index: 9;
