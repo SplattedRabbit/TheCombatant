@@ -47,6 +47,10 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
 
   const handleSwapRole = () => {
     setIsSystemOpen(false);
+    import('@core/network/NetworkManager.js').then(({ cleanupPeer }) => {
+      cleanupPeer();
+    });
+    CombatState.updateSession(false, 'choice', '');
     CombatState.setRole('choice');
   };
 

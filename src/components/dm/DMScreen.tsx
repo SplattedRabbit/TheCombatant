@@ -58,6 +58,10 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
 
   const handleSwapRole = () => {
     setIsSystemOpen(false);
+    import('@core/network/NetworkManager.js').then(({ cleanupPeer }) => {
+      cleanupPeer();
+    });
+    CombatState.updateSession(false, 'choice', '');
     CombatState.setRole('choice');
   };
 

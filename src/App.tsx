@@ -146,7 +146,18 @@ export default function App() {
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
             <button className="btn btn-p" onClick={() => window.location.reload()}>🔄 Seite neu laden</button>
-            <button className="btn" onClick={() => CombatState.setRole('choice')}>🎭 Rolle wechseln</button>
+            <button 
+              className="btn" 
+              onClick={() => {
+                import('@core/network/NetworkManager.js').then(({ cleanupPeer }) => {
+                  cleanupPeer();
+                });
+                CombatState.updateSession(false, 'choice', '');
+                CombatState.setRole('choice');
+              }}
+            >
+              🎭 Rolle wechseln
+            </button>
           </div>
         </div>
       );
