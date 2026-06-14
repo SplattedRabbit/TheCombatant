@@ -132,7 +132,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 
 - Aktuelle Bug-Liste: `docs/Bugtracking.md`
 - Versionshistorie & Features: `docs/PATCHNOTES.md`
-- Vollständige Architektur-Doku: `docs/DEVELOPER_TRANSITION.md`
+- Entwicklerhandbuch: `docs/DEVELOPER_GUIDE.md`
 
 ---
 
