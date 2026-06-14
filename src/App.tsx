@@ -34,11 +34,9 @@ export default function App() {
       const targetWidth = 1150;
       let scale = window.innerWidth / targetWidth;
       
-      if (window.innerWidth < targetWidth) {
-        appRoot.style.width = targetWidth + 'px';
-      } else {
-        appRoot.style.width = '100%';
-      }
+      // Fix: Festgelegte Breite auf targetWidth (1150px) belassen, damit die Skalierung
+      // exakt der Bildschirmbreite entspricht und kein horizontaler Überlauf entsteht.
+      appRoot.style.width = targetWidth + 'px';
 
       scale = Math.max(0.6, Math.min(1.6, scale));
       currentScale = scale;
