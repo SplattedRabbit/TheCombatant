@@ -63,7 +63,7 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Initiative / RK       | `PCDefenses.js`                                          | `Combatant.js`, `helpers/modifiers/`         |
 | HP & Globe            | `PCHealthGlobe.js`                                       | `PCManager.js` (`applyDamage`/`applyHeal`)  |
 | Netzwerk-Sync         | `js/network/SyncProtocol.js`                             | `NetworkManager.js`, `MessageQueue.js`       |
-| Service Worker / Cache| `service-worker.js`, `scratch/update_sw.js`              | `index.html`, `index-react.html`             |
+| Service Worker / Cache| `service-worker.js`, `scratch/update_sw.js`              | `index.html`                                 |
 | DM-Screen & Init-Bar  | `src/components/dm/DMScreen.tsx`, `DMCombatantsTable.tsx`, `InitBar.tsx` | `src/App.tsx`, `src/components/player/PlayerSheet.tsx` |
 
 ---
@@ -111,7 +111,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - **N=1** wenn X, Y oder Z hochgehen
 - Immer **beide** Stellen gleichzeitig bumpen:
   - `service-worker.js` Zeile 1: `const CACHE_NAME = '...'`
-  - `index-react.html` Footer-Versionsstring
+  - `index.html` Footer-Versionsstring
 
 ---
 

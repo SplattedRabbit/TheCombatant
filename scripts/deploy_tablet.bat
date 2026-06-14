@@ -24,7 +24,7 @@ echo [3/3] Fertig!
 echo.
 echo  Kopiere den Ordner "tablet_package\" auf dein Tablet.
 echo  Starte dort mit:  python -m http.server 8080
-echo  Oeffne dann:      http://localhost:8080/index-react.html
+echo  Oeffne dann:      http://localhost:8080/index.html
 echo.
 echo  Beim ersten Laden cached der Service Worker alle Dateien.
 echo  Danach laeuft die App vollstaendig offline.

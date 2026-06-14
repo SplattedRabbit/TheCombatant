@@ -75,9 +75,9 @@ while ($listener.IsListening) {
         $localPath = [System.Uri]::UnescapeDataString($request.Url.LocalPath)
         
         # Routing-Logik für React-Migration
-        # Wenn root angefragt wird, liefere standardmäßig die React index-react.html aus dist/
+        # Wenn root angefragt wird, liefere standardmäßig die React index.html aus dist/
         if ($localPath -eq "/") {
-            $relativePath = "index-react.html"
+            $relativePath = "index.html"
         } else {
             $relativePath = $localPath.TrimStart('/')
         }

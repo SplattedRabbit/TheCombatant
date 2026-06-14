@@ -17,7 +17,7 @@ initReactDialogBridge();
 
 const rootEl = document.getElementById('root');
 if (!rootEl) {
-  throw new Error('[CombatApp] Root-Element #root nicht gefunden. Prüfe index-react.html.');
+  throw new Error('[CombatApp] Root-Element #root nicht gefunden. Prüfe index.html.');
 }
 
 createRoot(rootEl).render(
