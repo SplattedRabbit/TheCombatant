@@ -9,6 +9,22 @@
  */
 
 // @feature:wildshape — Druiden-Tiergestalt-Verwandlung
+export const SHAPE_ATTACKS = {
+  wolf: [
+    { name: 'Biss (Wolf)', damageDice: '1w6', strMult: 1.0, isNatural: true, isSecondary: false, specialLabel: 'Trip' }
+  ],
+  leopard: [
+    { name: 'Biss (Leopard)',    damageDice: '1w6', strMult: 1.0, isNatural: true, isSecondary: false },
+    { name: 'Kralle (Leopard)',  damageDice: '1w3', strMult: 0.5, isNatural: true, isSecondary: true  },
+    { name: 'Kralle (Leopard)',  damageDice: '1w3', strMult: 0.5, isNatural: true, isSecondary: true  }
+  ],
+  bear: [
+    { name: 'Kralle (Braunbär)', damageDice: '1w8', strMult: 1.0, isNatural: true, isSecondary: false },
+    { name: 'Kralle (Braunbär)', damageDice: '1w8', strMult: 1.0, isNatural: true, isSecondary: false },
+    { name: 'Biss (Braunbär)',   damageDice: '2w6', strMult: 0.5, isNatural: true, isSecondary: true  }
+  ]
+};
+
 export function enterShape(pc, shapeName) {
   if (pc.activeShape !== "none") {
     exitShape(pc);

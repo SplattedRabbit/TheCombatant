@@ -165,17 +165,12 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
 
   return (
     <div
+      className="player-hdr-bar no-print"
       style={{
         display: 'flex',
         flexDirection: 'column',
         gap: '6px',
         width: '100%',
-        background: 'rgba(0, 0, 0, 0.2)',
-        border: '0.5px solid var(--pb)',
-        borderRadius: '4px',
-        padding: '10px 14px',
-        marginBottom: '10px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
         boxSizing: 'border-box'
       }}
     >

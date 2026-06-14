@@ -13,6 +13,8 @@
 import { useState, useEffect, useMemo, useContext } from 'react';
 import { CombatEngineContext } from '../context/CombatEngineContext';
 import type { CombatStateSnapshot, Combatant, UseCombatStateReturn } from '../types/combat';
+// @ts-ignore
+import { Stat, Weapon, Armor, Item, Combatant as CombatantClass } from '@core/models/model-core.js';
 
 // ---------------------------------------------------------------------------
 // Typen für die Vanilla-Engine (minimale Beschreibung)
@@ -23,12 +25,58 @@ import type { CombatStateSnapshot, Combatant, UseCombatStateReturn } from '../ty
 // Verhindert, dass React stale References cached.
 // ---------------------------------------------------------------------------
 
+function rehydrateCombatant(c: any): any {
+  if (!c) return c;
+  
+  Object.setPrototypeOf(c, CombatantClass.prototype);
+  
+  const statFields = [
+    'ac', 'acTouch', 'acFlat', 
+    'str', 'dex', 'con', 'int', 'wis', 'cha', 
+    'bab', 'za', 'ref', 'wil', 
+    'baseZa', 'baseRef', 'baseWil'
+  ];
+  for (const field of statFields) {
+    if (c[field]) {
+      Object.setPrototypeOf(c[field], Stat.prototype);
+    }
+  }
+  
+  if (Array.isArray(c.weapons)) {
+    c.weapons.forEach((w: any) => {
+      Object.setPrototypeOf(w, Weapon.prototype);
+    });
+  }
+  
+  if (Array.isArray(c.armors)) {
+    c.armors.forEach((a: any) => {
+      Object.setPrototypeOf(a, Armor.prototype);
+    });
+  }
+  
+  if (Array.isArray(c.items)) {
+    c.items.forEach((i: any) => {
+      Object.setPrototypeOf(i, Item.prototype);
+    });
+  }
+  
+  return c;
+}
+
 function createSnapshot(raw: unknown): CombatStateSnapshot {
   const r = (raw as any) ?? {};
 
   return {
     combatants: Array.isArray(r.combatants)
-      ? (JSON.parse(JSON.stringify(r.combatants)) as Combatant[])
+      ? (JSON.parse(JSON.stringify(r.combatants)) as any[]).map((c: any) => {
+          const maxHpVal = c.maxHP !== undefined ? c.maxHP : c.maxHp;
+          const mapped = {
+            ...c,
+            maxHp: maxHpVal,
+            maxHP: maxHpVal,
+          };
+          return rehydrateCombatant(mapped);
+        }) as Combatant[]
       : [],
     meta: {
       round: typeof r.round === 'number' ? r.round : 1,
@@ -41,7 +89,9 @@ function createSnapshot(raw: unknown): CombatStateSnapshot {
     },
     session: {
       active: r.session?.active ?? false,
-      role: (r.session?.role ?? r.mode ?? 'choice') as 'host' | 'player' | 'choice',
+      role: (r.session?.active && r.session?.role && r.session.role !== 'choice'
+        ? r.session.role
+        : (r.mode ?? 'choice')) as 'host' | 'player' | 'choice',
       roomCode: r.session?.roomCode ?? '',
     },
     concentrations: Array.isArray(r.concentrations)
@@ -78,19 +128,31 @@ export function useCombatState(): UseCombatStateReturn {
   useEffect(() => {
     if (!isReady || !getState || !getActivePC || !StateEvents) return;
 
-    // Initialen Snapshot und PC setzen
-    setSnapshot(createSnapshot(getState()));
-    setActivePC((getActivePC() as Combatant | null));
-
-    // Event-Handler
-    const onStateChanged = (rawState: unknown) => {
-      setSnapshot(createSnapshot(rawState));
-      setActivePC((getActivePC() as Combatant | null));
+    const mapPC = (rawPC: any) => {
+      if (!rawPC) return null;
+      const cloned = JSON.parse(JSON.stringify(rawPC));
+      const maxHpVal = cloned.maxHP !== undefined ? cloned.maxHP : cloned.maxHp;
+      const mapped = {
+        ...cloned,
+        maxHp: maxHpVal,
+        maxHP: maxHpVal,
+      };
+      return rehydrateCombatant(mapped);
     };
 
-    const onPCChanged = (rawState: unknown) => {
-      setSnapshot(createSnapshot(rawState));
-      setActivePC((getActivePC() as Combatant | null));
+    // Initialen Snapshot und PC setzen
+    setSnapshot(createSnapshot(getState()));
+    setActivePC(mapPC(getActivePC()) as Combatant | null);
+
+    // Event-Handler
+    const onStateChanged = () => {
+      setSnapshot(createSnapshot(getState()));
+      setActivePC(mapPC(getActivePC()) as Combatant | null);
+    };
+
+    const onPCChanged = () => {
+      setSnapshot(createSnapshot(getState()));
+      setActivePC(mapPC(getActivePC()) as Combatant | null);
     };
 
     StateEvents.on('state_changed', onStateChanged);

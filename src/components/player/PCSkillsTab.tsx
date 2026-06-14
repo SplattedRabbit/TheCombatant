@@ -50,15 +50,15 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     
     patched.getAttributeMod = (abl: string) => {
       const stat = (patched as any)[abl];
-      const score = stat ? stat.total : 10;
+      const score = stat ? (typeof stat.getValue === 'function' ? stat.getValue() : stat) : 10;
       return Math.floor((score - 10) / 2);
     };
     
     patched.getArmorCheckPenalty = () => {
       let acp = 0;
-      if (Array.isArray(patched.armor)) {
-        patched.armor.forEach((a: any) => {
-          if (a.equipped) {
+      if (Array.isArray(patched.armors)) {
+        patched.armors.forEach((a: any) => {
+          if (a.isEquipped) {
             acp += (parseInt(a.checkPenaltyOverride) || parseInt(a.checkPenalty) || 0);
           }
         });

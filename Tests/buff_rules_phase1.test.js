@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 import { Combatant } from '../js/models/Combatant.js';
 import { CombatSpells } from '../js/spells.js';
-import { isBuffEligible } from '../js/ui/components/player/PCBuffsTab.js';
+import { isBuffEligible } from '../js/rules/BuffRules.js';
 import { applySpellModifiers } from '../js/models/helpers/modifiers/SpellModifierApplier.js';
 import { buildContext } from '../js/rules/attack/AttackContext.js';
 

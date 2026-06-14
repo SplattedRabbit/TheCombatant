@@ -4,7 +4,7 @@
  * @exports   PCSpellCompendium
  * @reads     pc.classes, pc.learnedSpells, pc.customSpells, pc.wizardProhibited1, pc.wizardProhibited2
  * @stateOps  updatePCBatch
- * @depends   React, @core/state.js, @core/spells.js, @core/rules.js, @core/ui/components/player/PCCompendiumTab.js, @core/ui/components/player/PCSpellDialogs.js, @core/ui/components/dialogs.js
+ * @depends   React, @core/state.js, @core/spells.js, @core/rules.js, @core/ui/components/dialogs.js
  */
 
 import React, { useState, useMemo } from 'react';
@@ -13,14 +13,16 @@ import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '@core/spells.js';
 // @ts-ignore
-import { CombatRules } from '@core/rules.js';
+import { CombatRules, getEligibleSpellLevelsForPC, isSpellEligibleForPC, getAllCompendiumSpells } from '@core/rules.js';
 // @ts-ignore
 import { showCustomConfirm, showCustomAlert } from '@core/ui/components/dialogs.js';
-// @ts-ignore
-import { showSpellDetailsDialog, showSpellCreatorWizard } from '@core/ui/components/player/PCSpellDialogs.js';
-// @ts-ignore
-import { getEligibleSpellLevelsForPC, isSpellEligibleForPC, getAllCompendiumSpells } from '@core/ui/components/player/PCCompendiumTab.js';
 import { findSpell } from './PCSpellbookTab';
+
+const showSpellDetailsDialog = (...args: any[]) =>
+  (window as any).__REACT_DIALOG_BRIDGE__?.showSpellDetailsDialog?.(...args);
+const showSpellCreatorWizard = (...args: any[]) =>
+  (window as any).__REACT_DIALOG_BRIDGE__?.showSpellCreatorWizard?.(...args);
+
 
 interface PCSpellCompendiumProps {
   pc: any;

@@ -19,6 +19,7 @@ import { PCSkillsTab } from './PCSkillsTab';
 import { PCDefenses } from './PCDefenses';
 import { PCFeatsTab } from './PCFeatsTab';
 import { PCMagicItemsTab } from './PCMagicItemsTab';
+import { BaseCard } from '../shared/BaseCard';
 import { PCSpellsTab } from './PCSpellsTab';
 import { PCFeaturesTab } from './PCFeaturesTab';
 // @ts-ignore
@@ -38,33 +39,6 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
 
   const casterClasses = ['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'];
   const hasCasterClass = Array.isArray(pc.classes) && pc.classes.some((c: any) => casterClasses.includes(c.classType));
-
-  const tabStyle = (tab: TabType): React.CSSProperties => ({
-    fontFamily: "'IM Fell English SC', serif",
-    fontSize: '9px',
-    padding: '4px 10px',
-    cursor: 'pointer',
-    background: activeTab === tab ? 'rgba(200,169,110,0.1)' : 'transparent',
-    border: '0.5px solid var(--pb)',
-    borderBottom: activeTab === tab ? 'none' : '0.5px solid var(--pb)',
-    borderRadius: '2px 2px 0 0',
-    color: activeTab === tab ? 'var(--red)' : 'var(--inkl)',
-    fontWeight: activeTab === tab ? 'bold' : 'normal',
-    outline: 'none',
-  });
-
-  const systemTabStyle: React.CSSProperties = {
-    fontFamily: "'IM Fell English SC', serif",
-    fontSize: '9px',
-    padding: '4px 10px',
-    cursor: 'pointer',
-    background: isSystemOpen ? 'rgba(200,169,110,0.1)' : 'transparent',
-    border: '0.5px solid var(--pb)',
-    borderBottom: isSystemOpen ? 'none' : '0.5px solid var(--pb)',
-    borderRadius: '2px 2px 0 0',
-    color: 'var(--inkl)',
-    outline: 'none',
-  };
 
   const handleOnlineSession = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsSystemOpen(false);
@@ -183,188 +157,146 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
     };
   }, [isSystemOpen]);
 
-  // Positioning the dropdown dynamically
-  const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({
-    position: 'absolute',
-    display: 'none',
-    zIndex: 2200,
-  });
-
+  // Force scale and height recalculation after tab changes
   useEffect(() => {
-    if (isSystemOpen && systemBtnRef.current) {
-      const rect = systemBtnRef.current.getBoundingClientRect();
-      const scrollX = window.scrollX || window.pageXOffset;
-      const scrollY = window.scrollY || window.pageYOffset;
-      
-      const menuWidth = 170;
-      const scale = parseFloat(document.documentElement.style.getPropertyValue('--app-scale')) || 1.0;
-      const scaledWidth = menuWidth * scale;
+    const timer = setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 50);
+    return () => clearTimeout(timer);
+  }, [activeTab]);
 
-      const style: React.CSSProperties = {
-        position: 'absolute',
-        display: 'flex',
-        flexDirection: 'column',
-        zIndex: 2200,
-        top: `${rect.bottom + scrollY}px`,
-        transformOrigin: 'top left',
-      };
 
-      if (rect.left + scaledWidth > window.innerWidth) {
-        style.left = `${rect.right + scrollX - scaledWidth}px`;
-        style.transformOrigin = 'top right';
-      } else {
-        style.left = `${rect.left + scrollX}px`;
-        style.transformOrigin = 'top left';
-      }
-
-      setDropdownStyle(style);
-    } else {
-      setDropdownStyle({
-        position: 'absolute',
-        display: 'none',
-        zIndex: 2200,
-      });
-    }
-  }, [isSystemOpen]);
 
   return (
-    <div>
+    <div id="playerScreen" className="sheet" style={{ display: 'block' }}>
       {/* PCHeader ganz oben */}
       <PCHeader pc={pc} activeTab={activeTab} />
 
-      {/* Grid Layout für den Rest des Bogens */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 2fr',
-          gap: '12px',
-          width: '100%',
-          marginTop: '4px',
-          boxSizing: 'border-box'
-        }}
-      >
-        {/* Linke Spalte: Vitalität & Attribute */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <PCHealthGlobe pc={pc} />
-          <PCAttributes pc={pc} />
-        </div>
-
-        {/* Rechte Spalte: Navigations-Tabs */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          {/* Tab-Leiste */}
-          <div
-            className="playerTabBar"
-            style={{
-              display: 'flex',
-              gap: '4px',
-              borderBottom: '1px solid var(--pb)',
-              paddingBottom: '4px',
-              marginBottom: '6px',
-            }}
+      {/* Tab-Leiste */}
+      <div className="player-tab-bar no-print" id="playerTabBar" style={{ position: 'relative', zIndex: 100 }}>
+        <button onClick={() => setActiveTab('overview')} className={`player-tab-btn ${activeTab === 'overview' ? 'active' : ''}`}>
+          🛡️ Übersicht
+        </button>
+        <button onClick={() => setActiveTab('skills')} className={`player-tab-btn ${activeTab === 'skills' ? 'active' : ''}`}>
+          📜 Skills &amp; Talente
+        </button>
+        <button onClick={() => setActiveTab('offense')} className={`player-tab-btn ${activeTab === 'offense' ? 'active' : ''}`}>
+          ⚔️ Ausrüstung
+        </button>
+        <button onClick={() => setActiveTab('magicitems')} className={`player-tab-btn ${activeTab === 'magicitems' ? 'active' : ''}`}>
+          ✨ Magische Gegenstände
+        </button>
+        {hasCasterClass && (
+          <button onClick={() => setActiveTab('spells')} className={`player-tab-btn ${activeTab === 'spells' ? 'active' : ''}`}>
+            🔮 Zauberbuch
+          </button>
+        )}
+        <button onClick={() => setActiveTab('features')} className={`player-tab-btn ${activeTab === 'features' ? 'active' : ''}`}>
+          🐾 Klasse &amp; Begleiter
+        </button>
+        <div style={{ position: 'relative', display: 'inline-block' }}>
+          <button 
+            ref={systemBtnRef}
+            onClick={() => setIsSystemOpen(!isSystemOpen)}
+            className={`player-tab-btn ${isSystemOpen ? 'active' : ''}`}
+            style={{ margin: 0 }}
           >
-            <button onClick={() => setActiveTab('overview')} className={`player-tab-btn ${activeTab === 'overview' ? 'active' : ''}`} style={tabStyle('overview')}>
-              🛡️ Übersicht
-            </button>
-            <button onClick={() => setActiveTab('skills')} className={`player-tab-btn ${activeTab === 'skills' ? 'active' : ''}`} style={tabStyle('skills')}>
-              📜 Fertigkeiten
-            </button>
-            <button onClick={() => setActiveTab('feats')} className={`player-tab-btn ${activeTab === 'feats' ? 'active' : ''}`} style={tabStyle('feats')}>
-              🧬 Talente
-            </button>
-            <button onClick={() => setActiveTab('offense')} className={`player-tab-btn ${activeTab === 'offense' ? 'active' : ''}`} style={tabStyle('offense')}>
-              ⚔️ Ausrüstung
-            </button>
-            <button onClick={() => setActiveTab('magicitems')} className={`player-tab-btn ${activeTab === 'magicitems' ? 'active' : ''}`} style={tabStyle('magicitems')}>
-              ✨ Magische Items
-            </button>
-            {hasCasterClass && (
-              <button onClick={() => setActiveTab('spells')} className={`player-tab-btn ${activeTab === 'spells' ? 'active' : ''}`} style={tabStyle('spells')}>
-                🔮 Zauberbuch
-              </button>
-            )}
-            <button onClick={() => setActiveTab('features')} className={`player-tab-btn ${activeTab === 'features' ? 'active' : ''}`} style={tabStyle('features')}>
-              🐾 Klasse &amp; Begleiter
-            </button>
-            <button 
-              ref={systemBtnRef}
-              onClick={() => setIsSystemOpen(!isSystemOpen)}
-              className="player-tab-btn" 
-              style={systemTabStyle}
+            ⚙️ System
+          </button>
+          {isSystemOpen && (
+            <div 
+              className="system-dropdown no-print open" 
+              ref={dropdownRef}
+              style={{
+                position: 'absolute',
+                top: '100%',
+                right: 0,
+                display: 'flex',
+                zIndex: 2200,
+                transform: 'translateY(4px)',
+                transformOrigin: 'top right',
+                opacity: 1,
+                pointerEvents: 'auto',
+              }}
             >
-              ⚙️ System
-            </button>
-          </div>
-
-          {/* Tab-Panel */}
-          <div style={{ flex: 1 }}>
-            {activeTab === 'overview' && (
-              <PCDefenses pc={pc} />
-            )}
-
-            {activeTab === 'skills' && (
-              <PCSkillsTab pc={pc} />
-            )}
-
-            {activeTab === 'feats' && (
-              <PCFeatsTab pc={pc} />
-            )}
-
-            {activeTab === 'offense' && (
-              <PCOffenseTab pc={pc} />
-            )}
-
-            {activeTab === 'magicitems' && (
-              <PCMagicItemsTab pc={pc} />
-            )}
-
-            {activeTab === 'spells' && hasCasterClass && (
-              <PCSpellsTab pc={pc} />
-            )}
-
-            {activeTab === 'features' && (
-              <PCFeaturesTab pc={pc} />
-            )}
-          </div>
+              <div style={{
+                fontFamily: "'IM Fell English SC', serif",
+                fontSize: '10px',
+                color: 'var(--red)',
+                fontWeight: 'bold',
+                letterSpacing: '1px',
+                marginBottom: '5px',
+                borderBottom: '0.5px solid var(--pb)',
+                paddingBottom: '3px',
+                textAlign: 'center'
+              }}>
+                📜 System-Optionen
+              </div>
+              <button className="fab-item" onClick={handleOnlineSession} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Nicht verbunden"></span>Online-Sitzung
+              </button>
+              <button className="fab-item" onClick={handleSwapRole}>🎭 Rolle wechseln</button>
+              <button className="fab-item" onClick={handlePrint}>🖨 Drucken (A4)</button>
+              <button className="fab-item" onClick={handleExport}>💾 Exportieren</button>
+              <button className="fab-item" onClick={handleImportClick}>📂 Importieren</button>
+              <button className="fab-item" onClick={handleLoadSample}>📋 Beispieldaten</button>
+              <button 
+                className="fab-item" 
+                onClick={handleClearStorage} 
+                style={{ background: 'rgba(139, 26, 26, 0.12)', color: 'var(--red)', fontWeight: 'bold', borderColor: 'var(--red)' }}
+              >
+                🗑️ App-Daten bereinigen
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* React System Dropdown Portal */}
-      {isSystemOpen && (
-        <div 
-          className="system-dropdown no-print open" 
-          ref={dropdownRef}
-          style={dropdownStyle}
-        >
-          <div style={{
-            fontFamily: "'IM Fell English SC', serif",
-            fontSize: '10px',
-            color: 'var(--red)',
-            fontWeight: 'bold',
-            letterSpacing: '1px',
-            marginBottom: '5px',
-            borderBottom: '0.5px solid var(--pb)',
-            paddingBottom: '3px',
-            textAlign: 'center'
-          }}>
-            📜 System-Optionen
+      {/* Tab-Panels */}
+      <div className="player-tab-contents">
+        {/* Tab 1: Overview */}
+        <div className={`player-tab-panel ${activeTab === 'overview' ? 'active' : ''}`} id="tabPanelOverview">
+          <div className="overview-grid">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <PCAttributes pc={pc} />
+              <PCHealthGlobe pc={pc} />
+            </div>
+            <PCDefenses pc={pc} />
           </div>
-          <button className="fab-item" onClick={handleOnlineSession} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-            🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Nicht verbunden"></span>Online-Sitzung
-          </button>
-          <button className="fab-item" onClick={handleSwapRole}>🎭 Rolle wechseln</button>
-          <button className="fab-item" onClick={handlePrint}>🖨 Drucken (A4)</button>
-          <button className="fab-item" onClick={handleExport}>💾 Exportieren</button>
-          <button className="fab-item" onClick={handleImportClick}>📂 Importieren</button>
-          <button className="fab-item" onClick={handleLoadSample}>📋 Beispieldaten</button>
-          <button 
-            className="fab-item" 
-            onClick={handleClearStorage} 
-            style={{ background: 'rgba(139, 26, 26, 0.12)', color: 'var(--red)', fontWeight: 'bold', borderColor: 'var(--red)' }}
-          >
-            🗑️ App-Daten bereinigen
-          </button>
         </div>
-      )}
+
+        {/* Tab 2: Skills & Talente */}
+        <div className={`player-tab-panel ${activeTab === 'skills' ? 'active' : ''}`} id="tabPanelSkills">
+          <div className="skills-feats-grid">
+            <BaseCard title="📔 Fertigkeiten (Skills)">
+              <PCSkillsTab pc={pc} />
+            </BaseCard>
+            <BaseCard title="🎓 Talente &amp; Feats">
+              <PCFeatsTab pc={pc} />
+            </BaseCard>
+          </div>
+        </div>
+
+        {/* Tab 3: Weapons / Offense */}
+        <div className={`player-tab-panel ${activeTab === 'offense' ? 'active' : ''}`} id="tabPanelOffense">
+          <PCOffenseTab pc={pc} />
+        </div>
+
+        {/* Tab: Magic Items */}
+        <div className={`player-tab-panel ${activeTab === 'magicitems' ? 'active' : ''}`} id="tabPanelMagicItems">
+          <PCMagicItemsTab pc={pc} />
+        </div>
+
+        {/* Tab 4: Spellbook & Compendium */}
+        <div className={`player-tab-panel ${activeTab === 'spells' ? 'active' : ''}`} id="tabPanelSpells">
+          {hasCasterClass && <PCSpellsTab pc={pc} />}
+        </div>
+
+        {/* Tab 5: Features & Companions */}
+        <div className={`player-tab-panel ${activeTab === 'features' ? 'active' : ''}`} id="tabPanelFeatures">
+          <PCFeaturesTab pc={pc} />
+        </div>
+      </div>
 
       {/* Hidden file input for Import */}
       <input 

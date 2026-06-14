@@ -57,5 +57,17 @@ node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
 * **Stat-System (`Stat.js`):** Berechnet stapelbare Boni. Dodge- und untypisierte Boni kumulieren (additiv). Boni anderer Typen (z. B. Enhancement, Deflection) stacken nicht — es zählt nur der höchste Wert.
 * **Waffeneigenschaften (`Weapon.js`):** Unterstützt `extraDamageDice` (z. B. `1w6`) und `extraDamageType` (z. B. `Feuer`). Legacy-Strings werden beim Laden geparst.
 * **Magische Gegenstände (`Item.js`):** Unterstützen ein `effects[]`-Array für mehrere Effekte pro Item.
+* **React State-Bridge & Prototyp-Rehydrierung (`useCombatState.ts`):**
+  - Der Hook klont den mutable Engine-State tief (`JSON.parse(JSON.stringify(raw))`), damit React bei Änderungen frische Objekt- und Array-Referenzen (z.B. für `pc.feats`, `pc.weapons` etc.) erhält und `useMemo`-Zustände zuverlässig aktualisiert.
+  - Um den Verlust von Instanzmethoden zu beheben, rehydriert die Hilfsfunktion `rehydrateCombatant` nach dem Klonen mittels `Object.setPrototypeOf` die Prototypen für `Combatant`, `Stat`, `Weapon`, `Armor` und `Item`.
+  - Jede neue Datenstruktur oder Klasse, die im Frontend Methodenaufrufe erfordert, muss in dieser Rehydrierungskette registriert werden.
 * **Cache-Versionierung:** Das Muster ist `dnd-combatsheet-vX.Y.Z-cache-vN`. Bei Bugfixes innerhalb einer Version wird nur `N` inkrementiert.
-  * **Wichtig:** Passe bei einem Inkrement immer gleichzeitig `service-worker.js` (Zeile 1, `CACHE_NAME`) und `index.html` (Footer-Version) an!
+  - **Wichtig:** Passe bei einem Inkrement immer gleichzeitig `service-worker.js` (Zeile 1, `CACHE_NAME`) und `index-react.html` (Footer-Version) an!
+
+---
+
+## 5. UI-Spezifika & Fallstricke
+
+* **Dialog-Mindestbreite:** Dialogfenster für Zauberauswahl, Buffauswahl oder Vorbereitung müssen mindestens `480px` bis `520px` breit sein — geringere Breiten schneiden Inhalte und Metamagic-Optionen ab.
+* **Popup-Skalierung:** Neue Dialoge/Overlays müssen in die Skalierungsliste (`#roleOverlay ...`) in `css/popups.css` eingetragen werden — sonst werden sie auf Tablets und bei hoher DPI-Skalierung viel zu klein gerendert.
+

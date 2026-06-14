@@ -8,6 +8,8 @@
  * @notHere   Angriffs-/Schadensberechnung → AttackEngine.js | Rettungswürfe → SaveCalculator.js | UI → PCAttributes.js, PCSkillsTab.js
  */
 import { CombatFeats } from './data/feats-data.js';
+import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput } from './spells.js';
+
 
 export const CombatRules = {
   CONDITIONS: [
@@ -803,3 +805,173 @@ export const CombatRules = {
     return spent;
   }
 };
+
+export function getAllCompendiumSpells(pc) {
+  const list = [];
+  for (const [key, value] of Object.entries(CombatSpells.REGISTRY)) {
+    list.push({ ...value, id: key });
+  }
+  if (pc && Array.isArray(pc.customSpells)) {
+    pc.customSpells.forEach(s => {
+      list.push(s);
+    });
+  }
+  return list;
+}
+
+export function isSpellEligibleForPC(spell, pc) {
+  if (!pc || !Array.isArray(pc.classes) || pc.classes.length === 0) {
+    return true;
+  }
+
+  // Block spells belonging to wizard prohibited schools
+  const isWizard = pc.classes.some(c => c.classType === 'wizard');
+  if (isWizard) {
+    const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
+    if (schoolCode && schoolCode !== 'univ') {
+      const prob1 = getSchoolCodeFromInput(pc.wizardProhibited1);
+      const prob2 = getSchoolCodeFromInput(pc.wizardProhibited2);
+      if (schoolCode === prob1 || schoolCode === prob2) {
+        return false;
+      }
+    }
+  }
+
+  if (!Array.isArray(spell.classLevels)) {
+    return true;
+  }
+  return pc.classes.some(c => {
+    const classMatch = spell.classLevels.find(cl => cl.class === c.classType);
+    if (!classMatch) return false;
+    const maxLvl = CombatRules.getMaxSpellLevel(c.classType, c.level);
+    return classMatch.level <= maxLvl;
+  });
+}
+
+export function getEligibleSpellLevelsForPC(pc) {
+  if (!pc || !Array.isArray(pc.classes) || pc.classes.length === 0) {
+    return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  }
+  
+  const levels = new Set();
+  pc.classes.forEach(c => {
+    let table;
+    if (['wizard', 'cleric', 'druid'].includes(c.classType)) {
+      table = CombatRules.WIZ_CLER_DRU_TABLE;
+    } else if (c.classType === 'sorcerer') {
+      table = CombatRules.SORCERER_TABLE;
+    } else if (c.classType === 'bard') {
+      table = CombatRules.BARD_TABLE;
+    } else if (['paladin', 'ranger'].includes(c.classType)) {
+      table = CombatRules.PALADIN_RANGER_TABLE;
+    } else {
+      return;
+    }
+    
+    const row = table[c.level];
+    if (Array.isArray(row)) {
+      row.forEach((val, lvl) => {
+        if (['paladin', 'ranger'].includes(c.classType) && lvl === 0) {
+          return;
+        }
+        levels.add(lvl);
+      });
+    }
+  });
+  
+  return Array.from(levels).sort((a, b) => a - b);
+}
+
+export function checkPrerequisites(feat, pc) {
+  if (!feat.prereqs || feat.prereqs.length === 0) return { met: true, details: [] };
+  
+  let met = true;
+  const details = [];
+  const learnedIds = Array.isArray(pc.feats) ? pc.feats.map(f => f.id) : [];
+  
+  feat.prereqs.forEach(pr => {
+    let prMet = false;
+    let desc = '';
+    
+    if (pr.type === 'bab') {
+      const pcBab = pc.bab ? pc.bab.getValue() : 0;
+      prMet = pcBab >= pr.value;
+      desc = `Grundangriffsbonus (BAB) +${pr.value} (Aktuell: +${pcBab})`;
+    } else if (pr.type === 'feat') {
+      prMet = learnedIds.includes(pr.id);
+      const parentFeat = CombatFeats.REGISTRY[pr.id];
+      const parentName = parentFeat ? parentFeat.nameDe : pr.id;
+      desc = `Talent: ${parentName}`;
+    } else if (pr.type === 'classLevel') {
+      const cls = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === pr.class) : null;
+      const lvl = cls ? cls.level : 0;
+      prMet = lvl >= pr.value;
+      const classNameDe = pr.class === 'fighter' ? 'Kämpfer' : pr.class === 'wizard' ? 'Magier' : pr.class;
+      desc = `${classNameDe} Stufe ${pr.value} (Aktuell: Stufe ${lvl})`;
+    } else if (pr.type === 'class') {
+      const hasCls = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === pr.class);
+      prMet = hasCls;
+      const classNameDe = pr.class === 'wizard' ? 'Magier' : pr.class;
+      desc = `Klasse: ${classNameDe}`;
+    } else if (pr.type === 'stat') {
+      const nameMap = { str: 'Stärke', dex: 'Geschicklichkeit', con: 'Konstitution', int: 'Intelligenz', wis: 'Weisheit', cha: 'Charisma' };
+      const pcStat = pc[pr.name] ? pc[pr.name].getValue() : 10;
+      prMet = pcStat >= pr.value;
+      desc = `${nameMap[pr.name] || pr.name} ${pr.value}+ (Aktuell: ${pcStat})`;
+    } else if (pr.type === 'level') {
+      const pcLevel = pc.level || 1;
+      prMet = pcLevel >= pr.value;
+      desc = `Charakterstufe ${pr.value} (Aktuell: ${pcLevel})`;
+    } else if (pr.type === 'casterLevel') {
+      let maxCL = 0;
+      if (Array.isArray(pc.classes)) {
+        pc.classes.forEach(c => {
+          if (['wizard', 'cleric', 'druid', 'sorcerer', 'bard'].includes(c.classType)) {
+            maxCL = Math.max(maxCL, c.level);
+          } else if (['paladin', 'ranger'].includes(c.classType) && c.level >= 4) {
+            maxCL = Math.max(maxCL, Math.floor(c.level / 2));
+          }
+        });
+      }
+      prMet = maxCL >= pr.value;
+      desc = `Zaubererstufe ${pr.value} (Aktuell: ${maxCL})`;
+    } else if (pr.type === 'custom') {
+      if (pr.desc === 'Fähigkeit, Untote zu vertreiben') {
+        const clericClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'cleric') : null;
+        const paladinClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'paladin') : null;
+        const clericLvl = clericClass ? clericClass.level : 0;
+        const paladinLvl = paladinClass ? paladinClass.level : 0;
+        prMet = clericLvl >= 1 || paladinLvl >= 4;
+        desc = `Spezial: ${pr.desc} (Kleriker 1+ oder Paladin 4+)`;
+      } else if (pr.desc === 'Bardenmusik') {
+        const bardClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'bard') : null;
+        const bardLvl = bardClass ? bardClass.level : 0;
+        prMet = bardLvl >= 1;
+        desc = `Spezial: ${pr.desc} (Barde 1+)`;
+      } else if (pr.desc === 'Tiergestalt (Wild Shape)') {
+        const druidClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'druid') : null;
+        const druidLvl = druidClass ? druidClass.level : 0;
+        prMet = druidLvl >= 5;
+        desc = `Spezial: ${pr.desc} (Druide 5+)`;
+      } else if (pr.desc === 'Reiten 1 Rang') {
+        let ranks = 0;
+        if (typeof pc.getSkillRanks === 'function') {
+          ranks = pc.getSkillRanks('ride');
+        } else if (pc.skills && pc.skills['ride']) {
+          ranks = parseFloat(pc.skills['ride'].ranks) || 0;
+        }
+        prMet = ranks >= 1;
+        desc = `Spezial: ${pr.desc} (aktuell: ${ranks})`;
+      } else {
+        prMet = true;
+        desc = `Spezial: ${pr.desc}`;
+      }
+    }
+    
+    if (!prMet) met = false;
+    details.push({ met: prMet, desc });
+  });
+  
+  return { met, details };
+}
+

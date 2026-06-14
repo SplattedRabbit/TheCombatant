@@ -2,25 +2,13 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert';
-import { CombatSpells } from '../js/spells.js';
-import { findSpell, renderSpellbookTab, renderPreparedSlotsArea } from '../js/ui/components/player/PCSpellbookTab.js';
+import { CombatSpells, findSpell } from '../js/spells.js';
 import {
   getAllCompendiumSpells,
   isSpellEligibleForPC,
-  getEligibleSpellLevelsForPC,
-  renderCompendiumTab,
-  setSpellSearchQuery,
-  getSpellSearchQuery,
-  setSpellFilterLevel,
-  getSpellFilterLevel,
-  setShowAllSpells,
-  getShowAllSpells
-} from '../js/ui/components/player/PCCompendiumTab.js';
-import { renderPCSkills } from '../js/ui/components/player/PCSkillsTab.js';
-import { renderPCHealthGlobe, updatePCHealthGlobeDisplay } from '../js/ui/components/player/PCHealthGlobe.js';
-import { renderPCHeader } from '../js/ui/components/player/PCHeader.js';
+  getEligibleSpellLevelsForPC
+} from '../js/rules.js';
 import { Combatant } from '../js/models/Combatant.js';
-import { Stat } from '../js/models/Stat.js';
 
 // Setup mock spells in registry
 CombatSpells.REGISTRY['magic_missile'] = {
@@ -74,82 +62,6 @@ test('PCSpellbookTab - findSpell finds standard and custom spells', () => {
   assert.strictEqual(spellNone, null);
 });
 
-test('PCSpellbookTab - renderSpellbookTab HTML layout structure & slots', () => {
-  const pc = {
-    classes: [{ classType: 'wizard', level: 3 }],
-    spellSlots: {
-      0: { max: 4, used: 2 },
-      1: { max: 2, used: 1 },
-      2: { max: 1, used: 0 }
-    },
-    learnedSpells: ['magic_missile'],
-    customSpells: []
-  };
-
-  const html = renderSpellbookTab(pc);
-
-  // Checks header title
-  assert.ok(html.includes('🔮 Zauberslots &amp; Tageskontingente'));
-
-  // Checks newly compacted bubbles container (no wrapping, no scrollbar auto overflow)
-  assert.ok(html.includes('display: flex; gap: 0.5px; flex-wrap: nowrap;'));
-
-  // Checks that slots bubbles exist
-  assert.ok(html.includes('class="spell-bubble use-icon use-icon-spell'));
-
-  // Checks used slots representation
-  assert.ok(html.includes('used'));
-
-  // Checks learned spells header
-  assert.ok(html.includes('Grad 1'));
-  
-  // Checks spell name rendering
-  assert.ok(html.includes('Magisches Geschoss'));
-});
-
-test('PCSpellbookTab - renderPreparedSlotsArea prepared slots list', () => {
-  const pc = new Combatant({
-    classes: [{ classType: 'wizard', level: 3 }],
-    spellSlots: {
-      0: { max: 4, used: 2 },
-      1: { max: 2, used: 1 },
-      2: { max: 1, used: 0 }
-    },
-    learnedSpells: ['magic_missile'],
-    preparedSpells: [
-      { id: 'prep_1', spellKey: 'magic_missile', metamagic: [], isUsed: false, isSpecialist: false }
-    ]
-  });
-
-  const html = renderPreparedSlotsArea(pc);
-
-  // Checks prepared section header
-  assert.ok(html.includes('🌅 Tägliche Slot-Belegung (Vorbereitete Zauber)'));
-
-  // Checks prepared spell name rendering
-  assert.ok(html.includes('Magisches Geschoss'));
-  
-  // Checks action buttons
-  assert.ok(html.includes('class="btn cast-prepared-btn"'));
-  assert.ok(html.includes('class="btn unprepare-prepared-btn"'));
-});
-
-test('PCCompendiumTab - state getters & setters validation', () => {
-  setSpellSearchQuery('Feuerball');
-  assert.strictEqual(getSpellSearchQuery(), 'Feuerball');
-
-  setSpellFilterLevel('3');
-  assert.strictEqual(getSpellFilterLevel(), '3');
-
-  setShowAllSpells(true);
-  assert.strictEqual(getShowAllSpells(), true);
-
-  // Reset state
-  setSpellSearchQuery('');
-  setSpellFilterLevel('all');
-  setShowAllSpells(false);
-});
-
 test('PCCompendiumTab - getAllCompendiumSpells gets all spells including custom', () => {
   const pc = {
     customSpells: [
@@ -185,7 +97,6 @@ test('PCCompendiumTab - getEligibleSpellLevelsForPC returns eligible spell level
     classes: [{ classType: 'paladin', level: 4 }]
   };
   const paladinLevels = getEligibleSpellLevelsForPC(pcPaladin);
-  // D&D 3.5e Paladin lvl 4 table row is [0, 0] -> wait, level 0 is skipped for paladins, so level 1 is eligible.
   assert.deepEqual(paladinLevels, [1]);
 
   // Wizard Level 3 gets levels 0, 1, 2
@@ -194,171 +105,4 @@ test('PCCompendiumTab - getEligibleSpellLevelsForPC returns eligible spell level
   };
   const wizardLevels = getEligibleSpellLevelsForPC(pcWizard);
   assert.deepEqual(wizardLevels, [0, 1, 2]);
-});
-
-test('PCCompendiumTab - renderCompendiumTab renders filtered and correct list', () => {
-  const pc = {
-    classes: [{ classType: 'wizard', level: 5 }],
-    learnedSpells: ['magic_missile'],
-    customSpells: []
-  };
-
-  setSpellSearchQuery('Feuer');
-  const html = renderCompendiumTab(pc);
-
-  // Check search bar elements exist
-  assert.ok(html.includes('Zauber suchen...'));
-  
-  // Feuerball matches "Feuer" query
-  assert.ok(html.includes('Feuerball'));
-
-  // Leichte Wunden heilen does not match "Feuer" query
-  assert.ok(!html.includes('Leichte Wunden heilen'));
-
-  // Reset query
-  setSpellSearchQuery('');
-});
-
-test('PCSkillsTab - renderPCSkills UI components structure', () => {
-  const pc = new Combatant({
-    classes: [{ classType: 'rogue', level: 3 }],
-    skills: {
-      climb: { ranks: 4, misc: 1 },
-      hide: { ranks: 2, misc: 0 }
-    }
-  });
-
-  const originalGetElementById = globalThis.document.getElementById;
-  let renderedHtml = '';
-  
-  globalThis.document.getElementById = (id) => {
-    if (id === 'pcSkillsBody') {
-      return {
-        set innerHTML(val) {
-          renderedHtml = val;
-        },
-        get innerHTML() {
-          return renderedHtml;
-        }
-      };
-    }
-    return originalGetElementById(id);
-  };
-
-  renderPCSkills(pc);
-
-  // Restore
-  globalThis.document.getElementById = originalGetElementById;
-
-  // Validate the generated HTML
-  assert.ok(renderedHtml.includes('Fertigkeit suchen...'));
-  // Spot (Entdecken) is in registry and should be rendered
-  assert.ok(renderedHtml.includes('Entdecken'));
-  // Climb is in registry and should be rendered
-  assert.ok(renderedHtml.includes('Klettern'));
-  // Rogue has Climb and Hide as class skills ('K') - max ranks: 3 lvl + 3 = 6
-  assert.ok(renderedHtml.includes('title="Klassenfertigkeit (Max. Ränge: 6)">K</span>'));
-  // Rogue does not have Spellcraft as class skill ('KÜ' for cross-class) - max ranks: (3 + 3) / 2 = 3
-  assert.ok(renderedHtml.includes('title="Klassenübergreifend (Max. Ränge: 3)">KÜ</span>'));
-  // Spellcraft is trained only, and ranks are 0 -> should show "Geübt" label
-  assert.ok(renderedHtml.includes('title="Kann unübgeübt nicht genutzt werden (Trained Only)">Geübt</span>'));
-
-  // Checks the centered Gesamt total label and readonly attribute modifier input
-  assert.ok(renderedHtml.includes('Gesamt:'));
-  assert.ok(renderedHtml.includes('Attr:'));
-  assert.ok(renderedHtml.includes('readonly'));
-
-  // Checks the new skills legend
-  assert.ok(renderedHtml.includes('Klassenfertigkeit (Max. Ränge: Stufe + 3)'));
-});
-
-test('PCHealthGlobe - render and update calculations', () => {
-  const pc = new Combatant({
-    hp: 80,
-    maxHP: 100,
-    conditions: [
-      { n: 'Temp-HP', tmpVal: 20 }
-    ]
-  });
-
-  const originalGetElementById = globalThis.document.getElementById;
-  
-  // Create mock container using setup's mock factory via document.createElement
-  const container = globalThis.document.createElement('div');
-  container.id = 'pcHealthGlobe';
-
-  globalThis.document.getElementById = (id) => {
-    if (id === 'pcHealthGlobe') {
-      return container;
-    }
-    return originalGetElementById(id);
-  };
-
-  renderPCHealthGlobe(pc);
-
-  // Restore document.getElementById
-  globalThis.document.getElementById = originalGetElementById;
-
-  // Assert basic rendering structure
-  const html = container.innerHTML;
-  assert.ok(html.includes('globe-wrapper'), 'Should render globe-wrapper');
-  assert.ok(html.includes('liquid-chamber'), 'Should render liquid-chamber');
-  assert.ok(html.includes('liquid-base'), 'Should render liquid-base');
-  assert.ok(html.includes('liquid-temp'), 'Should render liquid-temp');
-  assert.ok(html.includes('globe-hp-cur'), 'Should render current HP input');
-
-  // Verify fill calculations:
-  // pc.hp = 80, maxHP = 100, tempHP = 20
-  // baseMaxHP = maxHP - tempHP = 80
-  // baseHP = hp - tempHP = 60
-  // basePct = baseHP / baseMaxHP * 100 = 60 / 80 * 100 = 75%
-  // tempPct = tempHP / baseMaxHP * 100 = 20 / 80 * 100 = 25%
-  assert.ok(html.includes('height: 75%'), 'Red liquid should be 75% high');
-  assert.ok(html.includes('height: 25%'), 'Blue liquid should be 25% high');
-  assert.ok(html.includes('bottom: 75%'), 'Blue liquid should start at bottom: 75%');
-  assert.ok(html.includes('display: block'), 'Temp HP bar should be visible');
-  assert.ok(html.includes('+20 Temp'), 'Temp HP badge should display +20 Temp');
-});
-
-test('PCHeader - renders final initiative correctly under health bar', () => {
-  const originalGetElementById = globalThis.document.getElementById;
-  const headerContainer = globalThis.document.createElement('div');
-  headerContainer.id = 'playerHeader';
-
-  globalThis.document.getElementById = (id) => {
-    if (id === 'playerHeader') {
-      return headerContainer;
-    }
-    return originalGetElementById(id);
-  };
-
-  // 1. PC has not rolled initiative (init = 0)
-  const pcNoRoll = new Combatant({
-    name: 'Unrolled Hero',
-    type: 'p',
-    dex: 14, // +2 mod
-    init: 0
-  });
-
-  renderPCHeader(pcNoRoll, 'feats');
-  let html = headerContainer.innerHTML;
-  assert.ok(html.includes('Initiative: --'), 'Should show Initiative: -- when not rolled');
-
-  // 2. PC has rolled initiative (init = 12), has Improved Initiative feat (+4) and iniMisc = 1
-  const pcWithRoll = new Combatant({
-    name: 'Rolled Hero',
-    type: 'p',
-    dex: 14, // +2 mod
-    iniMisc: 1,
-    init: 12,
-    feats: [{ id: 'improved_initiative' }]
-  });
-
-  renderPCHeader(pcWithRoll, 'feats');
-  html = headerContainer.innerHTML;
-  // 12 (rolled) + 2 (dex) + 1 (misc) + 4 (feat) = 19
-  assert.ok(html.includes('Initiative: 19'), 'Should show Initiative: 19 when rolled with modifiers');
-
-  // Restore document.getElementById
-  globalThis.document.getElementById = originalGetElementById;
 });

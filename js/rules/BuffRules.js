@@ -4,7 +4,9 @@
  * @exports   resolveSpellEffectValue, calculateDurationRounds, checkBuffConflict, translateTarget, translateType
  */
 import { CLASS_BUFFS } from '../data/class-buffs-data.js';
-import { CombatSpells } from '../spells.js';
+import { CombatSpells, findSpell } from '../spells.js';
+import { CombatState } from '../state.js';
+
 
 export function translateTarget(target) {
   const mapping = {
@@ -191,3 +193,243 @@ export function checkBuffConflict(pc, spellKey, customEffects = null) {
 
   return { status, conflictingBuffName, activeValue, newValue, targetLabel, buffName };
 }
+
+export function isBuffEligible(pc, key, isClass) {
+  if (isClass) {
+    const classBuff = CLASS_BUFFS.find(b => b.key === key);
+    if (!classBuff) return false;
+    if (!classBuff.classRequirements || classBuff.classRequirements.length === 0) return true;
+    if (!Array.isArray(pc.classes)) return false;
+    return classBuff.classRequirements.every(req => {
+      const pcCls = pc.classes.find(c => c.classType === req.classType);
+      return pcCls && pcCls.level >= req.level;
+    });
+  } else {
+    return true;
+  }
+}
+
+export function isBuffSuppressed(pc, buff) {
+  if (!buff || !Array.isArray(pc.activeBuffs) || !Array.isArray(buff.effects) || buff.effects.length === 0) {
+    return false;
+  }
+
+  let nonStackingEffectsCount = 0;
+  let suppressedEffectsCount = 0;
+
+  for (const eff of buff.effects) {
+    if (eff.type === 'dodge' || eff.type === 'untyped') {
+      continue;
+    }
+
+    nonStackingEffectsCount++;
+    const val = parseInt(eff.value) || 0;
+
+    const isEffectSuppressed = pc.activeBuffs.some(other => {
+      if (other.id === buff.id) return false;
+      
+      const otherEffects = other.effects || [];
+      return otherEffects.some(otherEff => {
+        if (otherEff.target === eff.target && otherEff.type === eff.type) {
+          const otherVal = parseInt(otherEff.value) || 0;
+          if (otherVal > val) return true;
+          if (otherVal === val) {
+            return other.id < buff.id;
+          }
+        }
+        return false;
+      });
+    });
+
+    if (isEffectSuppressed) {
+      suppressedEffectsCount++;
+    }
+  }
+
+  return nonStackingEffectsCount > 0 && suppressedEffectsCount === nonStackingEffectsCount;
+}
+
+export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
+  const {
+    showCustomConfirm = (title, msg, onConfirm) => onConfirm(),
+    showCustomAlert = () => {},
+    showCustomPrompt = (title, msg, def, onConfirm) => onConfirm(def),
+    renderPlayerScreen = () => {}
+  } = dialogs;
+
+  let hasScaling = false;
+  let durationFormula = '';
+  let effects = [];
+  let buffName = '';
+  
+  if (isClass) {
+    const classBuff = CLASS_BUFFS.find(b => b.key === key);
+    if (classBuff) {
+      effects = classBuff.effects || [];
+      buffName = classBuff.name;
+      durationFormula = classBuff.duration || '';
+    }
+  } else {
+    const spell = CombatSpells.REGISTRY?.[key];
+    if (spell) {
+      effects = spell.effects || [];
+      buffName = spell.nameDe || spell.nameEn || key;
+      durationFormula = spell.duration || '';
+      hasScaling = effects.some(eff => !!eff.valueFormula);
+    }
+  }
+  
+  const isRoundBased = durationFormula && (
+    durationFormula.toLowerCase().includes('level') || 
+    durationFormula.toLowerCase().includes('stufe')
+  );
+
+  const performActivation = (casterLevel, shouldDeduct) => {
+    const resolvedEffects = effects.map(eff => {
+      let val = parseInt(eff.value) || 0;
+      if (eff.valueFormula) {
+        val = resolveSpellEffectValue(eff.valueFormula, casterLevel, val);
+      }
+      return {
+        target: eff.target,
+        value: val,
+        type: eff.type,
+        source: eff.source || buffName
+      };
+    });
+
+    const rounds = calculateDurationRounds(durationFormula, casterLevel);
+
+    const activate = () => {
+      CombatState.updatePCBatch(freshPc => {
+        if (shouldDeduct && !isClass) {
+          const spellData = findSpell(freshPc, key);
+          if (spellData) {
+            const prep = freshPc.preparedSpells?.find(s => s.spellKey === key && !s.isUsed);
+            if (prep) {
+              freshPc.castPreparedSpell(prep.id);
+            } else {
+              freshPc.castSpontaneousSpell(key, spellData.level);
+            }
+          }
+        }
+
+        if (!Array.isArray(freshPc.activeBuffs)) freshPc.activeBuffs = [];
+        freshPc.activeBuffs = freshPc.activeBuffs.filter(b => b.spellKey !== key);
+        
+        freshPc.activeBuffs.push({
+          id: 'spell_' + key + '_' + Date.now(),
+          spellKey: key,
+          name: buffName,
+          durationFormula: durationFormula,
+          casterLevel: casterLevel,
+          durationMaxRounds: rounds,
+          durationRemainingRounds: rounds,
+          effects: resolvedEffects
+        });
+      });
+
+      if (shouldDeduct && !isClass) {
+        const wasPrep = pc.preparedSpells?.some(s => s.spellKey === key && !s.isUsed);
+        const spellData = findSpell(pc, key);
+        const lvl = spellData ? spellData.level : 0;
+        const msg = wasPrep
+          ? `Vorbereiteter Zauberplatz für <strong>${buffName}</strong> wurde abgezogen.`
+          : `Spontaner Zauberplatz des Grades <strong>${lvl}</strong> für <strong>${buffName}</strong> wurde abgezogen.`;
+        showCustomAlert("Zauberplatz verbraucht ✨", msg);
+      }
+
+      renderPlayerScreen();
+    };
+
+    const conflict = checkBuffConflict(pc, key, resolvedEffects);
+    if (conflict.status === 'suppressed') {
+      showCustomConfirm(
+        "Stacking-Konflikt", 
+        `Ein stärkerer oder gleichwertiger Buff (<strong>${conflict.conflictingBuffName}</strong>) ist bereits aktiv.<br><br>Dein neuer Buff <strong>${conflict.buffName}</strong> (+${conflict.newValue} auf ${conflict.targetLabel}) hat denselben Bonus-Typ und würde daher <strong>keine Wirkung</strong> zeigen (Numerischer Unterschied: ${conflict.newValue - conflict.activeValue}).<br><br>Möchtest du den Buff dennoch aktivieren?`,
+        () => {
+          activate();
+        }
+      );
+    } else if (conflict.status === 'overrides') {
+      activate();
+      showCustomAlert(
+        "Buff überlagert", 
+        `Durch das Aktivieren von <strong>${conflict.buffName}</strong> (+${conflict.newValue}) wird der schwächere aktive Buff <strong>${conflict.conflictingBuffName}</strong> (+${conflict.activeValue}) auf <strong>${conflict.targetLabel}</strong> überlagert.<br><br>Deine Werte erhöhen sich netto um <strong>+${conflict.newValue - conflict.activeValue}</strong>.`,
+        "Verstanden", 
+        "✨"
+      );
+    } else {
+      activate();
+    }
+  };
+
+  const continueActivation = (shouldDeduct) => {
+    if (hasScaling || isRoundBased) {
+      let defaultCL = 1;
+      if (Array.isArray(pc.classes)) {
+        pc.classes.forEach(c => {
+          if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)) {
+            if (c.level > defaultCL) defaultCL = c.level;
+          }
+        });
+      }
+      showCustomPrompt(
+        "Zauberstufe", 
+        `Bitte gib die Zauberstufe (Caster Level) für <strong>${buffName}</strong> ein:`, 
+        String(defaultCL), 
+        (clText) => {
+          const cl = parseInt(clText) || 1;
+          performActivation(cl, shouldDeduct);
+        }
+      );
+    } else {
+      performActivation(1, shouldDeduct);
+    }
+  };
+
+  // Determine if spell slots should be deducted
+  if (!isClass) {
+    const spellData = findSpell(pc, key);
+    const hasCasterClass = Array.isArray(pc.classes) && pc.classes.some(c => 
+      ['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)
+    );
+    const needsSlot = spellData && hasCasterClass;
+
+    if (needsSlot) {
+      const hasPrep = Array.isArray(pc.preparedSpells) && pc.preparedSpells.some(s => s.spellKey === key && !s.isUsed);
+      const isSpellKnown = Array.isArray(pc.learnedSpells) && pc.learnedSpells.includes(key);
+      const spellLevel = spellData.level;
+      const isSpontaneousCaster = pc.classes?.some(c => ['sorcerer', 'bard'].includes(c.classType));
+      const hasSponSlot = isSpontaneousCaster && isSpellKnown && pc.spellSlots?.[spellLevel] && (pc.spellSlots[spellLevel].max - pc.spellSlots[spellLevel].used) > 0;
+
+      const slotAvailable = hasPrep || hasSponSlot;
+
+      if (!slotAvailable) {
+        showCustomConfirm(
+          "Keine freien Zauberplätze",
+          `Du hast keinen freien Zauberplatz für <strong>${buffName}</strong> übrig (weder vorbereitet noch freie spontane Slots).<br><br>Möchtest du den Buff trotzdem aktivieren?`,
+          () => {
+            continueActivation(false);
+          }
+        );
+      } else {
+        showCustomConfirm(
+          "Zauber wirken?", 
+          `Möchtest du einen Zauberslot verwenden, um <strong>${buffName}</strong> zu wirken?`, 
+          () => {
+            continueActivation(true);
+          },
+          () => {
+            continueActivation(false);
+          }
+        );
+      }
+    } else {
+      continueActivation(false);
+    }
+  } else {
+    continueActivation(false);
+  }
+}
+

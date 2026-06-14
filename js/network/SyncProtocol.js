@@ -314,6 +314,8 @@ export function applyIncomingDelta(packet, role, conn = null) {
         }
         DeltaRenderer.updateCombatantNameAndStats(packet.id, packet.diff);
         
+        StateEvents.emit('state_changed', s);
+
         // Propagate diff to all other clients so they see the changes in real-time
         import('./NetworkManager.js').then(({ broadcastToClients }) => {
           broadcastToClients(packet);
@@ -336,6 +338,7 @@ export function applyIncomingDelta(packet, role, conn = null) {
     if (packet.type === 'update_pc' && role === 'host') {
       const success = EncounterManager.mergeIncomingPC(packet.pc);
       if (success) {
+        StateEvents.emit('state_changed', s);
         import('../ui/ui-shared.js').then(({ uiRegistry }) => {
           if (uiRegistry.renderInitBar) uiRegistry.renderInitBar();
           if (uiRegistry.renderAll) uiRegistry.renderAll();
@@ -401,6 +404,8 @@ export function applyIncomingDelta(packet, role, conn = null) {
         }
       });
 
+      StateEvents.emit('state_changed', s);
+
       DeltaRenderer.applyBoardDiffUI(packet.diff);
       return;
     }
@@ -418,6 +423,7 @@ export function applyIncomingDelta(packet, role, conn = null) {
             c.rebuildStatModifiers();
           }
         });
+        StateEvents.emit('state_changed', s);
         import('../ui/ui-shared.js').then(({ uiRegistry }) => {
           if (uiRegistry.renderInitBar) uiRegistry.renderInitBar();
           if (uiRegistry.renderPlayerScreen) uiRegistry.renderPlayerScreen();

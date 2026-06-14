@@ -7,21 +7,21 @@
 ## 1. Pflichtbefehle
 
 > [!IMPORTANT]
-> **Token-Schonung bei Unittests:** Das Ausführen aller 180+ Tests erzeugt enormen Output und verbraucht wertvolle Context-Token. Verwende immer den `--test-reporter=dot` Parameter, um den Output auf ein Minimum zu reduzieren. Führe im Alltag immer nur den spezifischen Test aus, der zu deiner Änderung passt. Den globalen Testlauf machst du ausschließlich **einmalig direkt vor dem Turn-Ende**.
+> **Testumfang nach Änderungstyp** — `--test-reporter=dot` immer verwenden:
+> - **UI-Fix / Datenpflege / Text:** Nur gezielter Test der betroffenen Datei.
+> - **Regel-Logik / State / neue Datei:** Gezielter Test, dann **einmalig** globaler Lauf vor Turn-Ende.
 
 ```powershell
-# 1. GEZIELTES TESTEN (Standard-Workflow während der Entwicklung):
-# Verwende --test-reporter=dot für minimalen Token-Verbrauch!
+# GEZIELTER TEST (Standard):
 node --import ./Tests/setup.js --test --test-reporter=dot Tests/bugfixes_v350.test.js
 
-# 2. GLOBALER TESTLAUF (NUR einmalig direkt vor dem Turn-Ende erlaubt):
-# Verwende --test-reporter=dot für minimalen Token-Verbrauch!
+# GLOBALER TESTLAUF (nur bei strukturellen Änderungen, einmalig vor Turn-Ende):
 node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
 
-# 3. D&D-REGELWERK DURCHSUCHEN (NIE die PDF/TXT laden):
+# D&D-REGELWERK DURCHSUCHEN (NIE die TXT laden):
 node scratch/search_rules.js "<Suchabfrage>"
 
-# 4. ZAUBER-DATENBANK DURCHSUCHEN (NIE spells_de.json direkt laden):
+# ZAUBER-DATENBANK DURCHSUCHEN (NIE spells_de.json direkt laden):
 node scratch/search_spells.js "<Zaubername>"
 ```
 
@@ -49,7 +49,7 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Wild Shape            | `js/models/helpers/classes/DruidHelper.js`                | `Combatant.js`, `PCOffense.js`, `DruidFeatures.js` |
 | Natürliche Angriffe   | `js/ui/components/player/offense/NaturalAttacksRenderer.js` (`SHAPE_ATTACKS`) | `js/rules/AttackEngine.js` (`isNatural`), `PCOffense.js` |
 | Magische Gegenstände  | `js/models/Item.js`, `PCMagicItemsTab.js`                | `js/state/PCManager.js` (`addPCItem*`)       |
-| Waffen-UI             | `js/ui/components/player/offense/WeaponStashCard.js` (`createStashWeaponCard`), `src/components/player/offense/WeaponStashCard.tsx` | `AttackEngine.js`, `js/models/Weapon.js`, `InventoryStashRenderer.js` |
+| Waffen-UI             | `js/ui/components/player/offense/WeaponStashCard.js`, `src/components/player/offense/WeaponStashCard.tsx` | `AttackEngine.js`, `js/models/Weapon.js`, `InventoryStashRenderer.js` |
 | Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `offense/ArmorStashCard.js`, `src/components/player/offense/ArmorStashCard.tsx` | `PCOffense.js`, `InventoryStashRenderer.js`  |
 | Ausrüstung (React)    | `src/components/player/PCOffenseTab.tsx`, `ActiveEquipmentSlots.tsx` | `PlayerSheet.tsx` |
 | Angriffs-Engine       | `js/rules/AttackEngine.js`, `js/rules/attack/`           | `PCOffense.js`, `dialogs/AttackChoiceDialog.js` |
@@ -58,12 +58,12 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `js/ui/components/class-features/` |
 | Talente               | `js/data/feats-data.js`, `js/data/feats-combat.js`, `js/data/feats-magic.js`, `js/data/feats-general.js` | `PCManager.js` (`addPCFeat`), `PCFeatsTab.js` |
 | WebRTC-Auren & Buffs  | `js/models/helpers/modifiers/SpellModifierApplier.js`, `js/rules/attack/AttackContext.js` | `js/network/SyncProtocol.js` |
-| Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.js`, `PCOffenseTab.tsx`                 |
+| Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.js`, `PCOffenseTab.tsx` |
 | Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `offense/WeaponStashCard.js`, `AttackEngine.js`, `PCOffenseTab.tsx` |
 | Initiative / RK       | `PCDefenses.js`                                          | `Combatant.js`, `helpers/modifiers/`         |
 | HP & Globe            | `PCHealthGlobe.js`                                       | `PCManager.js` (`applyDamage`/`applyHeal`)  |
 | Netzwerk-Sync         | `js/network/SyncProtocol.js`                             | `NetworkManager.js`, `MessageQueue.js`       |
-| Service Worker / Cache| `service-worker.js`, `scratch/update_sw.js`       | `index.html`, `index-react.html`               |
+| Service Worker / Cache| `service-worker.js`, `scratch/update_sw.js`              | `index.html`, `index-react.html`             |
 | DM-Screen & Init-Bar  | `src/components/dm/DMScreen.tsx`, `DMCombatantsTable.tsx`, `InitBar.tsx` | `src/App.tsx`, `src/components/player/PlayerSheet.tsx` |
 
 ---
@@ -107,11 +107,11 @@ togglePCTotalDefense(bool)
 
 Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 
-- **N++** bei jedem Bugfix / kleinerer Änderung innerhalb einer Version
+- **N++** bei Bugfix / kleinerer Änderung innerhalb einer Version
 - **N=1** wenn X, Y oder Z hochgehen
 - Immer **beide** Stellen gleichzeitig bumpen:
   - `service-worker.js` Zeile 1: `const CACHE_NAME = '...'`
-  - `index.html` Fußzeile: Versionsstring im letzten `<div>`
+  - `index-react.html` Footer-Versionsstring
 
 ---
 
@@ -120,11 +120,9 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - HTML-Strings in `js/models/` erzeugen
 - D&D-Rechenlogik direkt in UI-Dateien — immer Rule-Engine verwenden
 - `js/state/state-core.js` direkt importieren — immer `js/state.js`
-- `playershandbook_35e.pdf` in den Kontext laden — `search_rules.js` nutzen
+- `playershandbook_35e.txt` in den Kontext laden — `search_rules.js` nutzen
 - Zeilennummern in `AGENT.md` eintragen — veralten sofort, nur Funktionsnamen
-- Halbe Ränge bei klassenübergreifenden Fertigkeiten (cross-class skills) verbessern den Wurf nicht — Ränge bei Modifikator-Berechnungen immer mit `Math.floor` abrunden.
-- Dialogfenster für Zauberauswahl, Buffauswahl oder Vorbereitung mit weniger als `480px` bis `520px` Breite dimensionieren — dies führt zu abgeschnittenen Inhalten und Metamagic-Optionen.
-- Neue Dialoge/Overlays ohne Eintrag in der Skalierungsliste (`#roleOverlay ...`) in `css/popups.css` definieren — da sie sonst unskaliert und auf Tablets/DPI-Skalierungen viel zu klein gerendert werden.
+- Halbe Ränge bei cross-class skills verbessern den Wurf nicht — beim Modifikator immer `Math.floor`
 
 ---
 
@@ -132,17 +130,16 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 
 - Aktuelle Bug-Liste: `docs/Bugtracking.md`
 - Versionshistorie & Features: `docs/PATCHNOTES.md`
-- Entwicklerhandbuch: `docs/DEVELOPER_GUIDE.md`
+- Entwicklerhandbuch (UI-Details, Skalierung, Dialog-Maße): `docs/DEVELOPER_GUIDE.md`
 
 ---
 
-## 8. SELBSTWARTUNGSREGELN — Pflicht für jeden Agenten
+## 8. SELBSTWARTUNGSREGELN
 
-> Diese Sektion ist der Kern der Datei. Halte sie aktuell — sie hält dich effizient.
+### 8.1 Datei-Header
 
-### 8.1 Nach jeder neuen Datei → Datei-Header einfügen
-
-Jede neue `.js`-Datei bekommt als erste 8 Zeilen:
+Neue **oder inhaltlich geänderte** `.js`-Dateien bekommen einen `@module`-Header.  
+**Beim reinen Lesen ohne eigene Änderungen: kein Header erforderlich.**
 
 ```js
 /**
@@ -156,61 +153,31 @@ Jede neue `.js`-Datei bekommt als erste 8 Zeilen:
  */
 ```
 
-**Regressives Nachpflegen:** Wenn du eine bestehende Datei öffnest und sie hat noch keinen Header — füge ihn hinzu, bevor du die Datei wieder verlässt. Kein eigener Commit nötig, einfach mit den anderen Änderungen committen.
+### 8.2 Feature-Tags
 
-### 8.2 Nach jeder neuen Feature-Implementierung → Feature-Tag setzen
-
-An **jeder nicht-offensichtlichen Stelle** im Code die zu diesem Feature gehört:
+An **nicht-offensichtlichen Stellen** (Feature-Logik in generischer Datei, Cross-File-Abhängigkeit):
 
 ```js
-// @feature:<feature-name>
+// @feature:<feature-name>  (z.B. wildshape, twf, magicitem)
 ```
 
-Wann ist eine Stelle "nicht offensichtlich"?
-- Feature-Logik versteckt in einer generischen Datei (z.B. Wild-Shape-Daten in `PCOffense.js`)
-- Cross-File-Abhängigkeit (A ruft B auf, B kennt das Feature nicht aus dem Namen)
-- Spezialfall-Handling das nicht aus dem Kontext hervorgeht
+### 8.3 Konsistenz-Check nach Änderungstyp
 
-Verwende immer **denselben** `<feature-name>` für alle Tags eines Features (z.B. `wildshape`, `twf`, `magicitem`).
-
-### 8.3 Nach jedem neuen Feature → Tabelle in §3 aktualisieren
-
-Wenn ein neues Feature hinzukommt, ergänze eine Zeile in der Tabelle unter §3.  
-Format: `| Feature | Primärdatei(en) | Sekundär |`  
-Keine Zeilennummern — nur Dateiname und Funktionsname.
-
-### 8.4 Nach jeder neuen State-Aktion → §4 aktualisieren
-
-Wenn eine neue Funktion in `js/state.js` oder `js/state/PCManager.js` exportiert wird, trage sie in §4 ein — mit einem Einzeiler-Kommentar.
-
-### 8.5 Nach jedem Datei-Split → Header in allen neuen Dateien, §3 aktualisieren
-
-Wenn eine Datei aufgeteilt wird:
-1. Jede neue Datei bekommt sofort einen `@module`-Header
-2. Die Fassaden-Datei bekommt `@summary Fassade — re-exportiert <X>, <Y>, <Z>`
-3. §3 dieser Datei aktualisieren (alte Zeile ersetzen oder aufteilen)
-
-### 8.6 Konsistenz-Check vor jedem Commit
-
-Beantworte kurz diese 4 Fragen — wenn eine "Nein" ist, nachbessern:
-
-```
-[ ] Haben alle neuen/geänderten Dateien einen @module-Header?
-[ ] Sind neue @feature:-Tags gesetzt wo nötig?
-[ ] Ist §3 (Feature-Tabelle) noch korrekt?
-[ ] Ist §4 (State-API) noch vollständig?
-```
+| Änderungstyp | Erforderliche Schritte |
+|---|---|
+| Trivial (Text, Style, Datenpflege) | Nichts — direkt committen |
+| Bugfix in Logik / Regeln | `@module`-Header prüfen, gezielter Test |
+| Neues Feature / neue Datei | Header + `@feature`-Tags + §3 aktualisieren + globaler Test |
+| Datei-Split | Header aller neuen Dateien, Fassade mit `@summary Fassade — re-exportiert X, Y, Z`, §3 aktualisieren |
+| Neue State-Aktion | §4 (State-API) ergänzen |
 
 ---
 
 ## 9. Dateigrößen-Richtwerte
 
-| Größe     | Bedeutung                                                  |
-|-----------|------------------------------------------------------------|
-| < 300Z    | Ideal — lesbar ohne Scroll, agent-freundlich               |
-| 300–600Z  | Akzeptabel — Header ist Pflicht                            |
-| 600–900Z  | Split prüfen beim nächsten größeren Feature in dieser Datei|
-| > 900Z    | Split bei nächster Gelegenheit — Issue in Bugtracking.md   |
-
-Aktuell zu groß (Backlog):
-- Keine (feats-data.js wurde in feats-combat.js, feats-magic.js und feats-general.js aufgeteilt)
+| Größe    | Bedeutung                                                  |
+|----------|------------------------------------------------------------|
+| < 300Z   | Ideal — lesbar ohne Scroll, agent-freundlich               |
+| 300–600Z | Akzeptabel — Header ist Pflicht                            |
+| 600–900Z | Split prüfen beim nächsten größeren Feature                |
+| > 900Z   | Split bei nächster Gelegenheit — Issue in Bugtracking.md   |

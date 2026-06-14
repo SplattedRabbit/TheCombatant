@@ -3,8 +3,8 @@
  * @summary   Rendert den Buff-Manager Tab mit der Liste der aktiven Buffs, der Schnellauswahl, der Suche im Regelwerk und dem Custom Buff Builder.
  * @exports   PCBuffsTab
  * @reads     pc.activeBuffs, pc.quickBuffs, pc.classes, pc.learnedSpells, pc.spellSlots, pc.preparedSpells
- * @stateOps  updatePCBatch, showBuffDetailsDialog, activateBuffByKey, checkBuffConflict, showCustomConfirm, showCustomAlert
- * @depends   React, @core/state.js, @core/spells.js, @core/data/class-buffs-data.js, @core/ui/components/player/PCBuffsTab.js, @core/rules/BuffRules.js, @core/ui/components/dialogs.js
+ * @stateOps  updatePCBatch, activateBuffByKey, checkBuffConflict, showCustomConfirm, showCustomAlert
+ * @depends   React, @core/state.js, @core/spells.js, @core/data/class-buffs-data.js, @core/rules/BuffRules.js, @core/ui/components/dialogs.js
  */
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -15,13 +15,15 @@ import { CombatSpells } from '@core/spells.js';
 // @ts-ignore
 import { CLASS_BUFFS } from '@core/data/class-buffs-data.js';
 // @ts-ignore
-import { activateBuffByKey, isBuffEligible, isBuffSuppressed } from '@core/ui/components/player/PCBuffsTab.js';
+import { activateBuffByKey, isBuffEligible, isBuffSuppressed, checkBuffConflict } from '@core/rules/BuffRules.js';
 // @ts-ignore
-import { checkBuffConflict } from '@core/rules/BuffRules.js';
+import { showCustomConfirm, showCustomAlert, showCustomPrompt } from '@core/ui/components/dialogs.js';
 // @ts-ignore
-import { showCustomConfirm, showCustomAlert } from '@core/ui/components/dialogs.js';
-// @ts-ignore
-import { showBuffDetailsDialog } from '@core/ui/components/player/PCBuffsDialog.js';
+import { uiRegistry } from '@core/ui/ui-shared.js';
+
+const showBuffDetailsDialog = (...args: any[]) =>
+  (window as any).__REACT_DIALOG_BRIDGE__?.showBuffDetailsDialog?.(...args);
+
 
 interface PCBuffsTabProps {
   pc: any;
@@ -87,7 +89,18 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
         }
       });
     } else {
-      activateBuffByKey(pc, qb.key, qb.isClass);
+      activateBuffByKey(pc, qb.key, qb.isClass, {
+        showCustomConfirm,
+        showCustomAlert,
+        showCustomPrompt: (title: string, msg: string, defaultValue: string, onConfirm: (val: string) => void) => {
+          showCustomPrompt(title, msg, defaultValue, "OK", onConfirm);
+        },
+        renderPlayerScreen: () => {
+          if (uiRegistry && typeof uiRegistry.renderPlayerScreen === 'function') {
+            uiRegistry.renderPlayerScreen();
+          }
+        }
+      });
     }
   };
 

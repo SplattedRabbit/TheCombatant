@@ -733,6 +733,20 @@
   border-bottom: 1.5px solid rgba(139, 26, 26, 0.55);
 }
 
+.skills-feats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 12px;
+  align-items: stretch;
+}
+
+@media (max-width: 950px) {
+  .skills-feats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 
 

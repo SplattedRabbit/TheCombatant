@@ -15,7 +15,7 @@ import { CombatRules } from '@core/rules.js';
 // @ts-ignore
 import { broadcastToClients } from '@core/network/NetworkManager.js';
 // @ts-ignore
-import { showCustomAlert } from '@core/ui/dialogs/BaseDialogs.js';
+import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import type { Combatant } from '../../types/combat';
 
 interface ConcentrationSpell {

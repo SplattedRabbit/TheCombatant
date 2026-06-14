@@ -132,6 +132,7 @@ export class Combatant {
 
     // -- SPELLS / ACTIVE BUFFS registry --
     this.activeBuffs = Array.isArray(p.activeBuffs) ? [...p.activeBuffs] : [];
+    this.quickBuffs = Array.isArray(p.quickBuffs) ? [...p.quickBuffs] : [];
     this.learnedSpells = Array.isArray(p.learnedSpells) ? [...p.learnedSpells] : [];
     this.preparedSpells = Array.isArray(p.preparedSpells) ? p.preparedSpells.map(s => ({ ...s })) : [];
     this.customSpells = Array.isArray(p.customSpells) ? [...p.customSpells] : [];
@@ -323,6 +324,7 @@ export class Combatant {
       customSpells: this.customSpells,
       spellTemplates: this.spellTemplates,
       activeBuffs: this.activeBuffs,
+      quickBuffs: this.quickBuffs,
       isRaging: this.isRaging,
       isSneakAttacking: this.isSneakAttacking,
       isSmiteActive: this.isSmiteActive,

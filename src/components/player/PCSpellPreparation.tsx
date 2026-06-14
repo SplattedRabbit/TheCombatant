@@ -4,7 +4,7 @@
  * @exports   PCSpellPreparation
  * @reads     pc.preparedSpells, pc.spellSlots, pc.classes, pc.wizardSpecialization, pc.spellTemplates, pc.name
  * @stateOps  castPreparedSpell, unprepareSpell, applyPCSpellTemplate, savePCSpellTemplate, deletePCSpellTemplate, clearPreparedSpells
- * @depends   React, @core/state.js, @core/rules/SpellSlotCalculator.js, @core/ui/components/dialogs.js, @core/ui/components/player/PCBuffsDialog.js, src/components/player/PCSpellbookTab
+ * @depends   React, @core/state.js, @core/rules/SpellSlotCalculator.js, @core/ui/components/dialogs.js, src/components/player/PCSpellbookTab
  */
 
 import React, { useState } from 'react';
@@ -16,11 +16,12 @@ import { SpellSlotCalculator } from '@core/rules/SpellSlotCalculator.js';
 import { getSchoolLabel } from '@core/spells.js';
 // @ts-ignore
 import { showCustomConfirm, showCustomAlert, showCustomPrompt } from '@core/ui/components/dialogs.js';
-// @ts-ignore
-import { showCastSuccessDialog } from '@core/ui/components/player/PCBuffsDialog.js';
-// @ts-ignore
-import { showSpellDetailsDialog } from '@core/ui/components/player/PCSpellDialogs.js';
 import { findSpell } from './PCSpellbookTab';
+
+const showCastSuccessDialog = (...args: any[]) =>
+  (window as any).__REACT_DIALOG_BRIDGE__?.showCastSuccessDialog?.(...args);
+const showSpellDetailsDialog = (...args: any[]) =>
+  (window as any).__REACT_DIALOG_BRIDGE__?.showSpellDetailsDialog?.(...args);
 
 interface PCSpellPreparationProps {
   pc: any;

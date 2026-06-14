@@ -21,3 +21,9 @@
   width: 100%;
   min-height: 100vh;
 }
+
+/* Scale all React modals dynamically based on the app scale factor */
+.react-modal-container > div {
+  transform: scale(var(--app-scale));
+  transform-origin: center center;
+}

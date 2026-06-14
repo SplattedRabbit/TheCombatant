@@ -10,6 +10,7 @@
 import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
+import { BaseCard } from '../shared/BaseCard';
 
 interface PCMagicItemsTabProps {
   pc: any;
@@ -58,12 +59,12 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
   // Find equipped items per slot
   const equipped: Record<string, { item: any; idx: number }> = {};
   items.forEach((item: any, idx: number) => {
-    if (item.isEquipped && item.slot !== 'slotless' && SLOTS[item.slot]) {
+    if (item.isEquipped && item.slot && SLOTS[item.slot]) {
       equipped[item.slot] = { item, idx };
     }
   });
 
-  const slotless = items.filter((item: any) => item.isEquipped && item.slot === 'slotless');
+  const slotless = items.filter((item: any) => item.isEquipped && (!item.slot || item.slot === 'slotless'));
 
   const handleUnequipIdx = (idx: number) => {
     CombatState.togglePCItemEquip(idx);
@@ -75,11 +76,8 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
 
   const toggleDrawer = (id: string) => {
     const next = new Set(openDrawerIds);
-    if (next.has(id)) {
-      next.delete(id);
-    } else {
-      next.add(id);
-    }
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
     setOpenDrawerIds(next);
   };
 
@@ -109,12 +107,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '12px', height: '100%' }}>
-      {/* Left Column: Equipped Items */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', borderRight: '0.5px solid rgba(200, 169, 110, 0.2)', paddingRight: '8px' }}>
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', color: 'var(--red)', fontWeight: 'bold' }}>
-          ✨ Ausgerüstete magische Gegenstände
-        </div>
-
+      <BaseCard title="✨ Ausgerüstete magische Gegenstände">
         {/* Grid for 11 slots */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px' }}>
           {Object.keys(SLOTS).map(slotKey => {
@@ -216,14 +209,11 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
             )}
           </div>
         </div>
-      </div>
+      </BaseCard>
 
-      {/* Right Column: Backpack/Stash */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-        <div style={{ display: 'flex', justifySelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px' }}>
-          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>
-            🎒 Rucksack &amp; Inventar
-          </span>
+      <BaseCard
+        title="🎒 Rucksack &amp; Inventar"
+        headerRight={
           <button
             onClick={handleAddPCItem}
             className="btn"
@@ -231,8 +221,8 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
           >
             ➕ Gegenstand
           </button>
-        </div>
-
+        }
+      >
         {/* Scrollable list of inventory items */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '380px', overflowY: 'auto' }}>
           {items.length === 0 ? (
@@ -445,7 +435,7 @@ export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
             })
           )}
         </div>
-      </div>
+      </BaseCard>
     </div>
   );
 };

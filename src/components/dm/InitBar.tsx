@@ -129,29 +129,14 @@ export const InitBar: React.FC<InitBarProps> = ({ combatants, turn, round }) => 
   return (
     <div style={{ width: '100%' }}>
       {/* Round Header / Title */}
-      <div className="slabel" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13px', display: 'flex', alignItems: 'center', marginBottom: '6px' }}>
+      <div className="slabel">
         ⚔ Initiative — Runde <span style={{ marginLeft: '4px', color: 'var(--red)', fontWeight: 'bold' }}>{round}</span>
       </div>
 
       {/* Main timeline bar */}
-      <div 
-        className="init-bar" 
-        id="initBar"
-        style={{
-          display: 'flex',
-          gap: '6px',
-          overflowX: 'auto',
-          padding: '6px 4px',
-          background: 'rgba(200, 169, 110, 0.03)',
-          border: '0.5px solid var(--pb)',
-          borderRadius: '4px',
-          minHeight: '52px',
-          boxSizing: 'border-box',
-          alignItems: 'center'
-        }}
-      >
+      <div className="init-bar" id="initBar">
         {combatants.length === 0 ? (
-          <div className="empty-msg" style={{ width: '100%', textAlign: 'center', fontStyle: 'italic', color: 'var(--inkl)' }}>
+          <div className="empty-msg">
             Füge Kämpfer hinzu — sie erscheinen hier nach Initiativwert sortiert
           </div>
         ) : (
@@ -160,6 +145,7 @@ export const InitBar: React.FC<InitBarProps> = ({ combatants, turn, round }) => 
             const isCurrent = idx === turn;
             const isDead = c.hp <= 0;
             const isDragging = c.id === draggedId;
+            const bc = getBarColor(pct, c.hp);
 
             // Filter conditions
             const activeConds = Array.isArray(c.conditions) 
@@ -173,17 +159,7 @@ export const InitBar: React.FC<InitBarProps> = ({ combatants, turn, round }) => 
               <React.Fragment key={c.id}>
                 {/* Visual drop gap spacer */}
                 {dropIdx === idx && draggedId !== c.id && (
-                  <div
-                    className="drop-gap"
-                    style={{
-                      width: '4px',
-                      height: '40px',
-                      background: 'var(--red)',
-                      boxShadow: '0 0 6px var(--red)',
-                      borderRadius: '1px',
-                      transition: 'all 0.15s ease'
-                    }}
-                  />
+                  <div className="drop-gap" />
                 )}
 
                 {/* Combatant slot */}
@@ -199,69 +175,26 @@ export const InitBar: React.FC<InitBarProps> = ({ combatants, turn, round }) => 
                   onDrop={(e) => handleDrop(e, idx, c.id)}
                   onClick={() => handleSlotClick(idx)}
                   style={{
-                    position: 'relative',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    minWidth: '76px',
-                    maxWidth: '110px',
-                    height: '40px',
-                    border: isCurrent ? '1px solid var(--red)' : '0.5px solid var(--pb)',
-                    borderRadius: '3px',
-                    padding: '3px 6px',
-                    cursor: 'pointer',
-                    background: isCurrent ? 'rgba(139, 26, 26, 0.06)' : 'rgba(200, 169, 110, 0.04)',
-                    boxShadow: isCurrent ? '0 0 8px rgba(139, 26, 26, 0.2)' : 'none',
-                    opacity: isDragging ? 0.4 : isDead ? 0.6 : 1,
-                    transition: 'border-color 0.15s, background-color 0.15s',
-                    boxSizing: 'border-box',
-                    flexShrink: 0
+                    opacity: isDragging ? 0.25 : 1
                   }}
                 >
-                  <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', fontSize: '8px', lineHeight: 1 }}>
-                    <span style={{ fontWeight: 'bold', color: 'var(--red)' }}>{c.init}</span>
-                    <span className={`init-dot ${dotCls(c.type)}`} style={{ width: '4px', height: '4px', borderRadius: '50%', display: 'inline-block' }} />
+                  <div className="init-num">{c.init}</div>
+                  <div className="init-name">{c.name}</div>
+                  <div style={{ width: '100%', height: '4px', background: 'rgba(200,169,110,.3)', borderRadius: '1px', marginTop: '2px', overflow: 'hidden' }}>
+                    <div className="init-slot-hp-bar" style={{ width: `${pct}%`, height: '100%', background: bc, transition: 'width .2s' }} />
                   </div>
+                  <div className={`init-dot ${dotCls(c.type)}`} />
                   
-                  <div style={{
-                    fontSize: '8.5px',
-                    fontFamily: "'IM Fell English SC', serif",
-                    fontWeight: isCurrent ? 'bold' : 'normal',
-                    color: isCurrent ? 'var(--red)' : 'var(--inkm)',
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
-                    textOverflow: 'ellipsis',
-                    width: '100%',
-                    textAlign: 'center',
-                    marginTop: '2px',
-                    lineHeight: 1.1
-                  }}>
-                    {c.name}
-                  </div>
-
-                  {/* HP bar */}
-                  <div style={{ width: '100%', height: '3px', background: 'rgba(200,169,110,.2)', borderRadius: '1px', marginTop: '3px', overflow: 'hidden' }}>
-                    <div style={{ width: `${pct}%`, height: '100%', backgroundColor: getBarColor(pct, c.hp), transition: 'width .2s' }} />
-                  </div>
-
-                  {/* Condition Motes */}
                   {activeConds.length > 0 && (
-                    <div style={{ position: 'absolute', bottom: '-2px', right: '4px', display: 'flex', gap: '1px' }}>
-                      {activeConds.slice(0, 4).map((cd, cIdx) => {
+                    <div className="init-conds">
+                      {activeConds.map((cd, cIdx) => {
                         const name = typeof cd === 'string' ? cd : (cd.n || '');
                         const dur = typeof cd === 'object' && cd.dur ? ` (${cd.dur}R)` : '';
                         return (
                           <div
                             key={cIdx}
+                            className="init-cond-dot"
                             title={`${name}${dur}`}
-                            style={{
-                              width: '3.5px',
-                              height: '3.5px',
-                              borderRadius: '50%',
-                              backgroundColor: 'var(--red)',
-                              border: '0.5px solid var(--p)'
-                            }}
                           />
                         );
                       })}
@@ -275,17 +208,7 @@ export const InitBar: React.FC<InitBarProps> = ({ combatants, turn, round }) => 
 
         {/* Visual drop gap spacer at the very end */}
         {dropIdx === combatants.length && draggedId && (
-          <div
-            className="drop-gap"
-            style={{
-              width: '4px',
-              height: '40px',
-              background: 'var(--red)',
-              boxShadow: '0 0 6px var(--red)',
-              borderRadius: '1px',
-              transition: 'all 0.15s ease'
-            }}
-          />
+          <div className="drop-gap" />
         )}
       </div>
     </div>
