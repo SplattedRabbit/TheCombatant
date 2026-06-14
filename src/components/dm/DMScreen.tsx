@@ -169,49 +169,6 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
     };
   }, [isSystemOpen]);
 
-  // Positioning the dropdown dynamically to match Vanilla positioning
-  const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({
-    position: 'absolute',
-    display: 'none',
-    zIndex: 2200,
-  });
-
-  useEffect(() => {
-    if (isSystemOpen && systemBtnRef.current) {
-      const rect = systemBtnRef.current.getBoundingClientRect();
-      const scrollX = window.scrollX || window.pageXOffset;
-      const scrollY = window.scrollY || window.pageYOffset;
-      
-      const menuWidth = 170;
-      const scale = parseFloat(document.documentElement.style.getPropertyValue('--app-scale')) || 1.0;
-      const scaledWidth = menuWidth * scale;
-
-      const style: React.CSSProperties = {
-        position: 'absolute',
-        display: 'flex',
-        flexDirection: 'column',
-        zIndex: 2200,
-        top: `${rect.bottom + scrollY}px`,
-        transformOrigin: 'top left',
-      };
-
-      if (rect.left + scaledWidth > window.innerWidth) {
-        style.left = `${rect.right + scrollX - scaledWidth}px`;
-        style.transformOrigin = 'top right';
-      } else {
-        style.left = `${rect.left + scrollX}px`;
-        style.transformOrigin = 'top left';
-      }
-
-      setDropdownStyle(style);
-    } else {
-      setDropdownStyle({
-        position: 'absolute',
-        display: 'none',
-        zIndex: 2200,
-      });
-    }
-  }, [isSystemOpen]);
 
   return (
     <div className="sheet" style={{ padding: '8px 12px 24px', boxSizing: 'border-box' }}>
@@ -226,7 +183,7 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
       />
 
       {/* Control row */}
-      <div className="ctrl-row no-print">
+      <div className="ctrl-row no-print" style={{ position: 'relative', zIndex: 100 }}>
         <div className="legend">
           <div className="leg-item">
             <div className="leg-dot dot-p"></div>
@@ -248,13 +205,61 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
           <button className="btn btn-p" onClick={handleNext}>Nächster Zug ▶</button>
           <button className="btn" onClick={handleNewRound}>Neue Runde +</button>
           <button className="btn" onClick={handleReset}>⟳ Reset</button>
-          <button 
-            className="btn" 
-            ref={systemBtnRef} 
-            onClick={() => setIsSystemOpen(!isSystemOpen)}
-          >
-            ⚙️ System
-          </button>
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            <button 
+              className={`btn ${isSystemOpen ? 'active' : ''}`}
+              ref={systemBtnRef} 
+              onClick={() => setIsSystemOpen(!isSystemOpen)}
+            >
+              ⚙️ System
+            </button>
+            {isSystemOpen && (
+              <div 
+                className="system-dropdown no-print open" 
+                ref={dropdownRef}
+                style={{
+                  position: 'absolute',
+                  top: '100%',
+                  right: 0,
+                  display: 'flex',
+                  zIndex: 2200,
+                  transform: 'translateY(4px)',
+                  transformOrigin: 'top right',
+                  opacity: 1,
+                  pointerEvents: 'auto',
+                }}
+              >
+                <div style={{
+                  fontFamily: "'IM Fell English SC', serif",
+                  fontSize: '10px',
+                  color: 'var(--red)',
+                  fontWeight: 'bold',
+                  letterSpacing: '1px',
+                  marginBottom: '5px',
+                  borderBottom: '0.5px solid var(--pb)',
+                  paddingBottom: '3px',
+                  textAlign: 'center'
+                }}>
+                  📜 System-Optionen
+                </div>
+                <button className="fab-item" onClick={handleOnlineSession} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                  🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Nicht verbunden"></span>Online-Sitzung
+                </button>
+                <button className="fab-item" onClick={handleSwapRole}>🎭 Rolle wechseln</button>
+                <button className="fab-item" onClick={handlePrint}>🖨 Drucken (A4)</button>
+                <button className="fab-item" onClick={handleExport}>💾 Exportieren</button>
+                <button className="fab-item" onClick={handleImportClick}>📂 Importieren</button>
+                <button className="fab-item" onClick={handleLoadSample}>📋 Beispieldaten</button>
+                <button 
+                  className="fab-item" 
+                  onClick={handleClearStorage} 
+                  style={{ background: 'rgba(139, 26, 26, 0.12)', color: 'var(--red)', fontWeight: 'bold', borderColor: 'var(--red)' }}
+                >
+                  🗑️ App-Daten bereinigen
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -284,44 +289,6 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
         isOpen={selectedCondition !== null} 
         onClose={() => setSelectedCondition(null)} 
       />
-
-      {/* React System Dropdown Portal */}
-      {isSystemOpen && (
-        <div 
-          className="system-dropdown no-print open" 
-          ref={dropdownRef}
-          style={dropdownStyle}
-        >
-          <div style={{
-            fontFamily: "'IM Fell English SC', serif",
-            fontSize: '10px',
-            color: 'var(--red)',
-            fontWeight: 'bold',
-            letterSpacing: '1px',
-            marginBottom: '5px',
-            borderBottom: '0.5px solid var(--pb)',
-            paddingBottom: '3px',
-            textAlign: 'center'
-          }}>
-            📜 System-Optionen
-          </div>
-          <button className="fab-item" onClick={handleOnlineSession} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-            🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Nicht verbunden"></span>Online-Sitzung
-          </button>
-          <button className="fab-item" onClick={handleSwapRole}>🎭 Rolle wechseln</button>
-          <button className="fab-item" onClick={handlePrint}>🖨 Drucken (A4)</button>
-          <button className="fab-item" onClick={handleExport}>💾 Exportieren</button>
-          <button className="fab-item" onClick={handleImportClick}>📂 Importieren</button>
-          <button className="fab-item" onClick={handleLoadSample}>📋 Beispieldaten</button>
-          <button 
-            className="fab-item" 
-            onClick={handleClearStorage} 
-            style={{ background: 'rgba(139, 26, 26, 0.12)', color: 'var(--red)', fontWeight: 'bold', borderColor: 'var(--red)' }}
-          >
-            🗑️ App-Daten bereinigen
-          </button>
-        </div>
-      )}
 
       {/* Hidden file input for Import */}
       <input 

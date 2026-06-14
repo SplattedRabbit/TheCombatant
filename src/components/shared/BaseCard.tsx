@@ -26,50 +26,14 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   headerRight,
 }) => {
   return (
-    <div
-      className={`pnl ${className}`}
-      style={{
-        border: '0.5px solid var(--pb)',
-        borderRadius: '4px',
-        background: 'rgba(200, 169, 110, 0.02)',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
-        overflow: 'hidden',
-        ...style,
-      }}
-    >
+    <div className={`panel ${className}`} style={style}>
       {title && (
-        <div
-          className="phdr"
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            borderBottom: '0.5px solid var(--pb)',
-            padding: '6px 10px',
-            background: 'rgba(139, 26, 26, 0.04)',
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: "'IM Fell English SC', serif",
-              fontSize: '11px',
-              color: 'var(--red)',
-              margin: 0,
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-            }}
-          >
-            {title}
-          </h2>
+        <div className="phdr">
+          <h2>{title}</h2>
           {headerRight && <div style={{ display: 'flex', alignItems: 'center' }}>{headerRight}</div>}
         </div>
       )}
-      <div
-        className="pbody"
-        style={{
-          padding: '8px 10px',
-        }}
-      >
+      <div className="pbody">
         {children}
       </div>
     </div>

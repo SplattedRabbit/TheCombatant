@@ -48,10 +48,10 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
           background: rStyle.background,
           boxShadow: rStyle.boxShadow,
           position: 'relative',
-          marginTop: w.equipped ? '6px' : 0
+          marginTop: w.isEquipped ? '6px' : 0
         }}
       >
-        {w.equipped && (
+        {w.isEquipped && (
           <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', zIndex: 10 }}>Ausgerüstet</span>
         )}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
@@ -115,7 +115,7 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
             onClick={() => handleWeaponEquipToggle(idx, w)}
             style={{ padding: '0 6px', fontSize: '7.5px', fontWeight: 'bold', height: '16px', borderRadius: '2px' }}
           >
-            {w.equipped ? 'Ablegen' : 'Anlegen'}
+            {w.isEquipped ? 'Ablegen' : 'Anlegen'}
           </button>
           <button
             className="xbtn"

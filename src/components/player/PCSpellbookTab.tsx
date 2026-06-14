@@ -14,8 +14,9 @@ import { CombatState } from '@core/state.js';
 import { CombatSpells } from '@core/spells.js';
 // @ts-ignore
 import { showCustomConfirm, showCustomAlert, showPrepareSpellDialog, showCastSpontaneousSpellDialog, showNewDayTemplateDialog } from '@core/ui/components/dialogs.js';
-// @ts-ignore
-import { showSpellDetailsDialog } from '@core/ui/components/player/PCSpellDialogs.js';
+
+const showSpellDetailsDialog = (...args: any[]) =>
+  (window as any).__REACT_DIALOG_BRIDGE__?.showSpellDetailsDialog?.(...args);
 
 interface PCSpellbookTabProps {
   pc: any;
@@ -58,8 +59,12 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
   const isBard = hasClasses && pc.classes.some((c: any) => c.classType === 'bard');
 
   if (isWizardOrSorcerer || isBard) {
-    const equippedArmor = typeof pc.getEquippedArmor === 'function' ? pc.getEquippedArmor() : null;
-    const equippedShield = typeof pc.getEquippedShield === 'function' ? pc.getEquippedShield() : null;
+    const equippedArmor = typeof pc.getEquippedArmor === 'function' 
+      ? pc.getEquippedArmor() 
+      : (Array.isArray(pc.armors) ? pc.armors.find((a: any) => a.isEquipped && !a.isShield) : null);
+    const equippedShield = typeof pc.getEquippedShield === 'function' 
+      ? pc.getEquippedShield() 
+      : (Array.isArray(pc.armors) ? pc.armors.find((a: any) => a.isEquipped && a.isShield) : null);
 
     if (isWizardOrSorcerer) {
       if (equippedArmor) totalASF += equippedArmor.spellFailure ?? 0;

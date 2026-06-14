@@ -10,6 +10,7 @@ import App from './App';
 
 import { CombatEngineProvider } from './context/CombatEngineContext';
 import { initReactDialogBridge } from './components/dialogs/ReactDialogBridge';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 // Initialize the React modal bridge for legacy calls
 initReactDialogBridge();
@@ -21,8 +22,10 @@ if (!rootEl) {
 
 createRoot(rootEl).render(
   <StrictMode>
-    <CombatEngineProvider>
-      <App />
-    </CombatEngineProvider>
+    <ErrorBoundary>
+      <CombatEngineProvider>
+        <App />
+      </CombatEngineProvider>
+    </ErrorBoundary>
   </StrictMode>,
 );

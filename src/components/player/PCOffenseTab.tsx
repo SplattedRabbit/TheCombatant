@@ -17,11 +17,19 @@ import { AttackEngine } from '@core/rules/AttackEngine.js';
 // @ts-ignore
 import { WeaponRegistry, matchesFeatOption } from '@core/models/Weapon.js';
 // @ts-ignore
-import { showAttackChoiceDialog, showDamageChoiceDialog, showRollBreakdown, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { showAttackChoiceDialog, showDamageChoiceDialog, showRollBreakdown, showCustomConfirm, showCustomAlert } from '@core/ui/components/dialogs.js';
 
 import { ActiveEquipmentSlots } from './offense/ActiveEquipmentSlots';
 import { WeaponStashCard } from './offense/WeaponStashCard';
 import { ArmorStashCard } from './offense/ArmorStashCard';
+
+const getEquippedArmorFallback = (pc: any) => {
+  if (typeof pc.getEquippedArmor === 'function') return pc.getEquippedArmor();
+  if (Array.isArray(pc.armors)) {
+    return pc.armors.find((a: any) => a.isEquipped && !a.isShield) || null;
+  }
+  return null;
+};
 
 interface PCOffenseTabProps {
   pc: any; // snapshotted instance runtime compatibility
@@ -36,24 +44,13 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
   // Hilfsfunktionen
   const formatMod = (val: number) => (val >= 0 ? `+${val}` : `${val}`);
   
-  const getAblMod = (stat: any) => stat ? stat.mod : 0;
-  const strMod = getAblMod(pc.str);
-  const dexMod = getAblMod(pc.dex);
-  const babVal = typeof pc.bab === 'number' ? pc.bab : (pc.bab?.total ?? 0);
 
-  // CMB / CMD Berechnungen
-  const getCMBSizeModifier = () => {
-    if (pc.activeShape === 'bear') return 1; // Bär ist Large (+1 CMB/CMD)
-    const race = (pc.race || '').toLowerCase();
-    if (race === 'gnome' || race === 'halfling') return -1; // Klein (-1 CMB/CMD)
-    return 0;
-  };
-  const sizeMod = getCMBSizeModifier();
-  const cmb = babVal + strMod + sizeMod;
-  const cmd = 10 + babVal + strMod + dexMod + sizeMod;
+  const babVal = typeof pc.bab === 'number' ? pc.bab : (typeof pc.bab?.getValue === 'function' ? pc.bab.getValue() : 0);
+
+
 
   // Equipment slots filtern
-  const equippedWeapons = Array.isArray(pc.weapons) ? pc.weapons.filter((w: any) => w.equipped) : [];
+  const equippedWeapons = Array.isArray(pc.weapons) ? pc.weapons.filter((w: any) => w.isEquipped) : [];
   const mainHandWeapon = equippedWeapons.find((w: any) => w.hand === 'main') || equippedWeapons.find((w: any) => w.hand !== 'off') || null;
   let offHandWeapon = equippedWeapons.find((w: any) => w.hand === 'off' || w.grip === 'sec') || null;
   let isDoubleWielded = false;
@@ -62,8 +59,8 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
     isDoubleWielded = true;
   }
   
-  const equippedArmor = Array.isArray(pc.armor) ? pc.armor.find((a: any) => a.equipped && !(a as any).isShield) : null;
-  const equippedShield = Array.isArray(pc.armor) ? pc.armor.find((a: any) => a.equipped && (a as any).isShield) : null;
+  const equippedArmor = Array.isArray(pc.armors) ? pc.armors.find((a: any) => a.isEquipped && !(a as any).isShield) : null;
+  const equippedShield = Array.isArray(pc.armors) ? pc.armors.find((a: any) => a.isEquipped && (a as any).isShield) : null;
 
   // Rarity style helper
   const getRarityStyle = (enhancement: number) => {
@@ -80,7 +77,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
   };
 
   const handleWeaponEquipToggle = (idx: number, w: any) => {
-    if (w.equipped) {
+    if (w.isEquipped) {
       CombatState.togglePCWeaponEquip(idx);
       return;
     }
@@ -90,7 +87,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
       const hasTWF = pc.feats && (
         pc.feats.some((f: any) => f.id === 'two_weapon_fighting') ||
         (() => {
-          const armor = typeof pc.getEquippedArmor === 'function' ? pc.getEquippedArmor() : null;
+          const armor = getEquippedArmorFallback(pc);
           const speedCategory = armor ? armor.speedCategory : '';
           const isWearingMediumOrHeavy = speedCategory === 'medium' || speedCategory === 'heavy';
           if (!isWearingMediumOrHeavy) {
@@ -127,7 +124,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
   };
 
   const handleArmorEquipToggle = (idx: number, a: any) => {
-    const equipping = !a.equipped;
+    const equipping = !a.isEquipped;
     CombatState.togglePCArmorEquip(idx);
     
     if (equipping && !pc.autoAC) {
@@ -148,7 +145,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
     const oldHand = targetWeapon.hand || 'main';
     if (oldHand === val) return;
     
-    const otherWeapon = pc.weapons.find((w: any, i: number) => w.equipped && i !== idx && (w.hand === val || (val === 'main' && w.hand !== 'off')));
+    const otherWeapon = pc.weapons.find((w: any, i: number) => w.isEquipped && i !== idx && (w.hand === val || (val === 'main' && w.hand !== 'off')));
     const otherIdx = otherWeapon ? pc.weapons.indexOf(otherWeapon) : null;
     
     CombatState.updatePCBatch((freshPC: any) => {
@@ -198,15 +195,82 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
     setDoubleWeaponIdx(null);
   };
 
-  const cmbTooltip = `Kampfmanöver-Bonus (CMB):\nBasisangriffswert (BAB): ${formatMod(babVal)}\nStärke-Mod: ${formatMod(strMod)}\nGrößen-Mod: ${formatMod(sizeMod)}`;
-  const cmdTooltip = `Kampfmanöver-Abwehr (CMD):\nBasiswert: 10\nBasisangriffswert (BAB): ${formatMod(babVal)}\nStärke-Mod: ${formatMod(strMod)}\nGeschick-Mod: ${formatMod(dexMod)}\nGrößen-Mod: ${formatMod(sizeMod)}`;
+  const handleDefensiveFightingChange = (checked: boolean) => {
+    CombatState.togglePCDefensiveFighting(checked);
+  };
+
+  const handleTotalDefenseChange = (checked: boolean) => {
+    CombatState.togglePCTotalDefense(checked);
+  };
+
+  const handlePowerAttackChange = (val: number) => {
+    const limit = babVal;
+    const penalty = Math.max(0, Math.min(limit, val || 0));
+    CombatState.updatePCField('powerAttackPenalty', penalty);
+  };
+
+  const handleCombatExpertiseChange = (val: number) => {
+    const limit = Math.min(5, babVal);
+    const penalty = Math.max(0, Math.min(limit, val || 0));
+    CombatState.updatePCField('combatExpertisePenalty', penalty);
+  };
+
+  const handleSmiteChange = (checked: boolean) => {
+    CombatState.updatePCField('isSmiteActive', checked);
+  };
+
+  const handleFavoredEnemyChange = (checked: boolean) => {
+    CombatState.updatePCField('isFavoredEnemyActive', checked);
+  };
+
+  const handleSneakAttackChange = (checked: boolean) => {
+    CombatState.updatePCField('isSneakAttacking', checked);
+  };
+
+  const showCombatExpertiseRules = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    showCustomAlert(
+      "Kampfgetümmel (Combat Expertise)",
+      `<div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11px;">
+        <p><strong>Konzept:</strong> Du kannst deine offensive Genauigkeit opfern, um eine stärkere Rüstungsklasse aufzubauen.</p>
+        <p><strong>Regel (D&D 3.5 RAW):</strong> Wenn du einen Angriff oder einen vollen Angriff deklarierst, kannst du einen Malus auf deine Angriffswürfe (bis zu deinem aktuellen GAB, maximal jedoch -5) wählen. Dieser Malus wird als Ausweichbonus (Dodge) auf deine Rüstungsklasse (RK) und Berührungs-RK bis zu deiner nächsten Runde addiert.</p>
+        <p><strong>Obergrenzen:</strong> Der gewählte Malus darf deinen Grundangriffsbonus (GAB) nicht überschreiten und ist generell durch das Talent auf maximal -5 begrenzt.</p>
+      </div>`,
+      "Verstanden",
+      "🛡️"
+    );
+  };
+
+  const showDefensiveFightingRules = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    showCustomAlert(
+      "Verteidigend kämpfen (Defensive Fighting)",
+      `<div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11px;">
+        <p><strong>Konzept:</strong> Ein grundlegendes Kampfmanöver, das jeder Charakter im Nahkampf (auch ohne spezielle Talente) ausführen kann.</p>
+        <p><strong>Regel (D&D 3.5 RAW):</strong> Wenn du angreifst (als Standardaktion oder voller Angriff), kannst du dich entscheiden, verteidigend zu kämpfen. Du erleidest einen Malus von <strong>-4</strong> auf alle Angriffswürfe in dieser Runde, erhältst dafür aber einen Ausweichbonus (Dodge) von <strong>+2</strong> auf deine RK und Berührungs-RK bis zu deiner nächsten Runde.</p>
+        <p><strong>Akrobatik-Synergie (Tumble):</strong> Wenn du <strong>5 oder mehr Ränge</strong> in der Fertigkeit Akrobatik hast, erhöht sich der gewehrte RK-Ausweichbonus von +2 auf <strong>+3</strong>.</p>
+      </div>`,
+      "Verstanden",
+      "⚔️"
+    );
+  };
+
+  const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
+  const paladinLvl = (activeClasses.find((c: any) => c.classType === 'paladin') || {}).level || 0;
+  const rangerLvl = (activeClasses.find((c: any) => c.classType === 'ranger') || {}).level || 0;
+  const rogueLvl = (activeClasses.find((c: any) => c.classType === 'rogue') || {}).level || 0;
+
+  const hasPowerAttack = pc.feats && pc.feats.some((f: any) => f.id === 'power_attack' || f.id === 'heftiger_angriff');
+  const hasCombatExpertise = pc.feats && pc.feats.some((f: any) => f.id === 'combat_expertise' || f.id === 'kampfexpertise');
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', width: '100%', boxSizing: 'border-box' }}>
       
       {/* Linke Spalte: Aktive Ausrüstung & Kampfbalken */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        <BaseCard title="⚔️ Aktive Ausrüstung">
+        <BaseCard title="⚔️ Aktive Ausrüstung &amp; Kampf">
           <ActiveEquipmentSlots
             pc={pc}
             mainHandWeapon={mainHandWeapon}
@@ -220,31 +284,158 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
             handleRollAttack={handleRollAttack}
             handleRollDamage={handleRollDamage}
           />
-        </BaseCard>
 
-        {/* BAB / CMB / CMD */}
-        <BaseCard title="🛡️ Kampfwerte">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 8px', background: 'rgba(0,0,0,0.02)', border: '0.5px solid var(--pb)', borderRadius: '2px' }}>
-              <span style={{ fontSize: '8.5px', fontWeight: 'bold', color: 'var(--inkm)' }}>⚔️ Basisangriff (BAB):</span>
-              <span style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>{formatMod(babVal)}</span>
+          {/* Combat Settings */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '10px' }}>
+            {hasPowerAttack && (
+              <div style={{ background: 'rgba(139, 26, 26, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '3px', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px' }}>
+                <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>⚔️ Heftiger Angriff (Power Attack)</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span style={{ color: 'var(--inkm)', fontSize: '7.5px' }}>Malus (Max {babVal}):</span>
+                  <input
+                    type="number"
+                    min="0"
+                    max={babVal}
+                    value={pc.powerAttackPenalty ?? 0}
+                    onChange={(e) => handlePowerAttackChange(parseInt(e.target.value))}
+                    className="cinput"
+                    style={{ width: '35px', fontSize: '8px', textAlign: 'center', height: '16px', padding: 0 }}
+                  />
+                </div>
+              </div>
+            )}
+
+            {hasCombatExpertise && (
+              <div style={{ background: 'rgba(42, 106, 138, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '3px', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px' }}>
+                <span style={{ color: '#2a6a8a', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
+                  🛡️ Kampfgetümmel (Combat Expertise)
+                  <button
+                    onClick={showCombatExpertiseRules}
+                    style={{ background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', padding: '1px 4px', cursor: 'pointer', fontSize: '8px', color: 'var(--pb)', height: '14px', borderRadius: '1.5px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', lineHeight: '10px', marginLeft: '4px' }}
+                    title="Regeln anzeigen"
+                  >
+                    📖 ↗
+                  </button>
+                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span style={{ color: 'var(--inkm)', fontSize: '7.5px' }}>Malus (Max {Math.min(5, babVal)}):</span>
+                  <input
+                    type="number"
+                    min="0"
+                    max={Math.min(5, babVal)}
+                    value={pc.combatExpertisePenalty ?? 0}
+                    onChange={(e) => handleCombatExpertiseChange(parseInt(e.target.value))}
+                    className="cinput"
+                    style={{ width: '35px', fontSize: '8px', textAlign: 'center', height: '16px', padding: 0 }}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Defensive Fighting & Total Defense Toggles */}
+            <div style={{ background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '3px', padding: '4px 8px', display: 'flex', gap: '10px', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '8px', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--inkm)', margin: 0, fontWeight: 'bold' }}>
+                  <input
+                    type="checkbox"
+                    checked={!!pc.isDefensiveFighting}
+                    onChange={(e) => handleDefensiveFightingChange(e.target.checked)}
+                    style={{ margin: 0, width: '10px', height: '10px' }}
+                  />
+                  ⚔️ Verteidigend kämpfen (-4 Atk / +RK)
+                </label>
+                <button
+                  onClick={showDefensiveFightingRules}
+                  style={{ background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', padding: '1px 4px', cursor: 'pointer', fontSize: '8px', color: 'var(--pb)', height: '14px', borderRadius: '1.5px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', lineHeight: '10px', marginLeft: '4px' }}
+                  title="Regeln anzeigen"
+                >
+                  📖 ↗
+                </button>
+              </div>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--inkm)', margin: 0, fontWeight: 'bold' }}>
+                <input
+                  type="checkbox"
+                  checked={!!pc.isTotalDefense}
+                  onChange={(e) => handleTotalDefenseChange(e.target.checked)}
+                  style={{ margin: 0, width: '10px', height: '10px' }}
+                />
+                🛡️ Volle Abwehr (+RK / keine Angr.)
+              </label>
             </div>
-            
-            <div style={{ display: 'flex', gap: '6px' }}>
-              <div
-                style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '5px', border: '0.5px solid var(--pb)', borderRadius: '2px', background: 'rgba(200,169,110,0.05)', cursor: 'help' }}
-                title={cmbTooltip}
-              >
-                <span style={{ fontSize: '7px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase' }}>CMB</span>
-                <span style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", marginTop: '2px' }}>{formatMod(cmb)}</span>
+
+            {/* Class Specific Toggles */}
+            {(paladinLvl >= 1 || rangerLvl >= 1 || rogueLvl >= 1) && (
+              <div style={{ background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '3px', padding: '4px 8px', display: 'flex', gap: '10px', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '8px', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+                {paladinLvl >= 1 && (
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--red)', margin: 0, fontWeight: 'bold' }}>
+                    <input
+                      type="checkbox"
+                      checked={!!pc.isSmiteActive}
+                      onChange={(e) => handleSmiteChange(e.target.checked)}
+                      style={{ margin: 0, width: '10px', height: '10px' }}
+                    />
+                    🌟 Böses niederstrecken (Smite)
+                  </label>
+                )}
+                {rangerLvl >= 1 && (
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--inkm)', margin: 0, fontWeight: 'bold' }}>
+                    <input
+                      type="checkbox"
+                      checked={!!pc.isFavoredEnemyActive}
+                      onChange={(e) => handleFavoredEnemyChange(e.target.checked)}
+                      style={{ margin: 0, width: '10px', height: '10px' }}
+                    />
+                    🏹 Gegen Erzfeind (+X Schaden)
+                  </label>
+                )}
+                {rogueLvl >= 1 && (
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--inkm)', margin: 0, fontWeight: 'bold' }}>
+                    <input
+                      type="checkbox"
+                      checked={!!pc.isSneakAttacking}
+                      onChange={(e) => handleSneakAttackChange(e.target.checked)}
+                      style={{ margin: 0, width: '10px', height: '10px' }}
+                    />
+                    🗡️ Hinterhältiger Angriff
+                  </label>
+                )}
+              </div>
+            )}
+
+            {pc.isTotalDefense && (
+              <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '3px', padding: '4px 8px', textAlign: 'center', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold' }}>
+                🛡️ Volle Abwehr aktiv — keine Angriffe möglich!
+              </div>
+            )}
+          </div>
+
+          {/* Rules Reference */}
+          <div style={{ marginTop: '10px', borderTop: '1px double var(--pb)', paddingTop: '8px' }}>
+            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              📜 Regelwerk-Referenz (D&D 3.5 RAW)
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '7.5px', fontFamily: "'Crimson Text', serif", lineHeight: 1.25, color: 'var(--ink)' }}>
+              {/* Waffen-Werte Column */}
+              <div style={{ background: 'rgba(200, 169, 110, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.15)', borderRadius: '3px', padding: '5px' }}>
+                <div style={{ fontWeight: 'bold', color: 'var(--red)', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', marginBottom: '4px', paddingBottom: '1px', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>⚔️ Waffen-Werte</div>
+                <ul style={{ margin: 0, paddingLeft: '10px', display: 'flex', flexDirection: 'column', gap: '3px', listStyleType: 'square' }}>
+                  <li><strong>Zusatz-Atk:</strong> Manueller Bonus auf Angriffe (z.B. durch <em>Waffenfokus</em> <code>+1</code>, Magie oder Meisterarbeit).</li>
+                  <li><strong>Scharf (Keen):</strong> Verdoppelt den kritischen Bedrohungsbereich (z.B. 19-20 wird zu 17-20). Stackt <u>nicht</u> mit dem Talent <em>Verbesserter Kritischer Treffer</em>.</li>
+                  <li><strong>Grip-Abw. (Händigkeit):</strong> Überschreibt die Trageweise: Einhändig (1H), Zweihändig (2H: gewährt 1.5x Stärkebonus auf Schaden), Schildhand (Sec: Zweitwaffe), Fernkampf (Rng) oder Waffenlos (Unarmed).</li>
+                  <li><strong>Schadens-Abw.:</strong> Überschreibt den Basis-Schadenswürfel der Waffe (z.B. <code>1w8</code>, <code>2w6</code>).</li>
+                  <li><strong>Krit-Abw.:</strong> Überschreibt den kritischen Multiplikator und Bedrohungsbereich (z.B. <code>20 / x3</code>).</li>
+                </ul>
               </div>
               
-              <div
-                style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '5px', border: '0.5px solid var(--pb)', borderRadius: '2px', background: 'rgba(200,169,110,0.05)', cursor: 'help' }}
-                title={cmdTooltip}
-              >
-                <span style={{ fontSize: '7px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase' }}>CMD</span>
-                <span style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", marginTop: '2px' }}>{cmd}</span>
+              {/* Rüstungs-Werte Column */}
+              <div style={{ background: 'rgba(200, 169, 110, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.15)', borderRadius: '3px', padding: '5px' }}>
+                <div style={{ fontWeight: 'bold', color: 'var(--red)', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', marginBottom: '4px', paddingBottom: '1px', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>🛡️ Rüstungs-Werte</div>
+                <ul style={{ margin: 0, paddingLeft: '10px', display: 'flex', flexDirection: 'column', gap: '3px', listStyleType: 'square' }}>
+                  <li><strong>RK-Abw.:</strong> Überschreibt den Rüstungsbonus. Keine Rüstungsboni stacken (z.B. Magische Rüstung und Zauber <em>Mage Armor</em>).</li>
+                  <li><strong>MaxDex (Max. Geschick):</strong> Begrenzt den Geschicklichkeitsbonus auf die Rüstungsklasse (RK), da schwere Rüstung die Ausweichfähigkeit einschränkt.</li>
+                  <li><strong>Malus-Abw.:</strong> Rüstungsmalus auf Fertigkeiten für Stärke und Geschicklichkeit (Akrobatik, Klettern etc.). Doppelt beim Schwimmen.</li>
+                  <li><strong>Zauberpatzer-Abw.:</strong> Prozentuale Chance, dass ein arkaner Gestenzauber (Somatic) fehlschlägt. Gilt nicht für göttliche Magie.</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -303,7 +494,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                 </div>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '180px', overflowY: 'auto', paddingRight: '2px' }}>
-                  {Array.isArray(pc.armor) && pc.armor.map((a: any, idx: number) => (
+                  {Array.isArray(pc.armors) && pc.armors.map((a: any, idx: number) => (
                     <ArmorStashCard
                       key={a.id || idx}
                       a={a}

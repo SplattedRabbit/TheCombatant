@@ -138,6 +138,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
 
   return (
     <div
+      id="buffDetails"
       style={{
         position: 'fixed',
         inset: 0,

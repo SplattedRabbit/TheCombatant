@@ -3,7 +3,9 @@ import { CombatState } from '@core/state.js';
 import { getSpellSchoolCode, getSchoolLabel, CombatSpells } from '@core/spells.js';
 import { SpellSlotCalculator } from '@core/rules/SpellSlotCalculator.js';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
-import { showCastSuccessDialog } from '@core/ui/components/player/PCBuffsDialog.js';
+
+const showCastSuccessDialog = (...args: any[]) =>
+  (window as any).__REACT_DIALOG_BRIDGE__?.showCastSuccessDialog?.(...args);
 
 function findSpell(pc: any, key: string) {
   if (CombatSpells.REGISTRY[key]) {
@@ -94,6 +96,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
 
   return (
     <div
+      id="prepareSpellOverlay"
       style={{
         position: 'fixed',
         inset: 0,

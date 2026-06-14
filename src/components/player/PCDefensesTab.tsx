@@ -141,8 +141,8 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
   };
 
   const getEquippedArmor = () => {
-    if (Array.isArray(pc.armor)) {
-      return pc.armor.find((a: any) => a.equipped);
+    if (Array.isArray(pc.armors)) {
+      return pc.armors.find((a: any) => a.isEquipped);
     }
     return null;
   };

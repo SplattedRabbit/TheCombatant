@@ -124,7 +124,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
       if (sh) {
         return (
           <div className={`arpg-slot off-hand-slot ${rStyle.glowClass}`} style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: rStyle.border, borderRadius: '4px', padding: '5px 6px', textAlign: 'center', background: rStyle.background, boxShadow: rStyle.boxShadow }}>
-            <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armor.indexOf(sh))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
+            <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armors.indexOf(sh))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
             <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Nebenhand</div>
             <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={sh.name}>{sh.name}</div>
             <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{sh.acBonus} RK (Schild)</div>
@@ -200,7 +200,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
     const maxDexDisplay = a.maxDex !== null && a.maxDex !== undefined ? a.maxDex : '—';
     return (
       <div className={`arpg-slot armor-slot ${rStyle.glowClass}`} style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '82px', border: rStyle.border, borderRadius: '4px', padding: '5px 6px', textAlign: 'center', background: rStyle.background, boxShadow: rStyle.boxShadow }}>
-        <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armor.indexOf(a))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
+        <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armors.indexOf(a))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Ablegen">✕</button>
         <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Rüstung</div>
         <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={a.name}>{a.name}</div>
         <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{a.acBonus} RK</div>

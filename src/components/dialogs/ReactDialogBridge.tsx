@@ -21,10 +21,19 @@ import { SessionDialog } from './SessionDialog';
 import { SpellScrollDialog } from './SpellScrollDialog';
 import { FeatScrollDialog } from './FeatScrollDialog';
 import { BuffDetailsDialog, CastSuccessDialog } from './PCBuffsDialog';
+import { SpellDetailsDialog } from './SpellDetailsDialog';
+import { SpellCreatorDialog } from './SpellCreatorDialog';
+import { uiRegistry } from '@core/ui/ui-shared.js';
 
 
 export function initReactDialogBridge() {
   if (typeof window === 'undefined') return;
+
+  // Safe fallbacks to prevent legacy JS from crashing the React app when forcing UI refreshes
+  uiRegistry.renderAll = uiRegistry.renderAll || (() => {});
+  uiRegistry.renderPlayerScreen = uiRegistry.renderPlayerScreen || (() => {});
+  uiRegistry.renderInitBar = uiRegistry.renderInitBar || (() => {});
+  uiRegistry.renderConc = uiRegistry.renderConc || (() => {});
 
   const bridge: Record<string, any> = {};
 
@@ -115,9 +124,10 @@ export function initReactDialogBridge() {
     ));
   };
 
-  bridge.showSampleChoiceDialog = (_isPlayer: boolean, onConfirm: (choice: string) => void) => {
+  bridge.showSampleChoiceDialog = (isPlayer: boolean, onConfirm: (choice: string) => void) => {
     mountModal((onCloseModal) => (
       <SampleChoiceDialog
+        isPlayer={isPlayer}
         onConfirm={(choice) => {
           onConfirm(choice);
           onCloseModal();
@@ -236,6 +246,26 @@ export function initReactDialogBridge() {
           onCloseModal();
           if (onAppliedCallback) onAppliedCallback();
         }}
+      />
+    ));
+  };
+
+  bridge.showSpellDetailsDialog = (spell: any, spellKey: string, pc: any) => {
+    mountModal((onCloseModal) => (
+      <SpellDetailsDialog
+        spell={spell}
+        spellKey={spellKey}
+        pc={pc}
+        onClose={onCloseModal}
+      />
+    ));
+  };
+
+  bridge.showSpellCreatorWizard = (pc: any) => {
+    mountModal((onCloseModal) => (
+      <SpellCreatorDialog
+        pc={pc}
+        onClose={onCloseModal}
       />
     ));
   };

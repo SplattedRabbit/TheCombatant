@@ -3,8 +3,8 @@
  * @summary   Rendert den Buff-Manager Tab mit der Liste der aktiven Buffs, der Schnellauswahl, der Suche im Regelwerk und dem Custom Buff Builder.
  * @exports   PCBuffsTab
  * @reads     pc.activeBuffs, pc.quickBuffs, pc.classes, pc.learnedSpells, pc.spellSlots, pc.preparedSpells
- * @stateOps  updatePCBatch, showBuffDetailsDialog, activateBuffByKey, checkBuffConflict, showCustomConfirm, showCustomAlert
- * @depends   React, @core/state.js, @core/spells.js, @core/data/class-buffs-data.js, @core/ui/components/player/PCBuffsTab.js, @core/rules/BuffRules.js, @core/ui/components/dialogs.js
+ * @stateOps  updatePCBatch, activateBuffByKey, checkBuffConflict, showCustomConfirm, showCustomAlert
+ * @depends   React, @core/state.js, @core/spells.js, @core/data/class-buffs-data.js, @core/rules/BuffRules.js, @core/ui/components/dialogs.js
  */
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -19,9 +19,10 @@ import { activateBuffByKey, isBuffEligible, isBuffSuppressed, checkBuffConflict 
 // @ts-ignore
 import { showCustomConfirm, showCustomAlert, showCustomPrompt } from '@core/ui/components/dialogs.js';
 // @ts-ignore
-import { showBuffDetailsDialog } from '@core/ui/components/player/PCBuffsDialog.js';
-// @ts-ignore
 import { uiRegistry } from '@core/ui/ui-shared.js';
+
+const showBuffDetailsDialog = (...args: any[]) =>
+  (window as any).__REACT_DIALOG_BRIDGE__?.showBuffDetailsDialog?.(...args);
 
 
 interface PCBuffsTabProps {

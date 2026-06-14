@@ -4,7 +4,10 @@ import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { getSchoolCodeFromInput } from '@core/spells.js';
 // @ts-ignore
-import { cleanProhibitedSpells } from '@core/ui/components/player/PCSpellDialogs.js';
+import { cleanProhibitedSpells } from '@core/rules/SpellRules.js';
+
+const showCustomAlert = (...args: any[]) =>
+  (window as any).__REACT_DIALOG_BRIDGE__?.showCustomAlert?.(...args);
 
 interface WizardFeaturesCardProps {
   pc: any;
@@ -39,7 +42,13 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
     } else if (val === 'div') {
       activePC.wizardProhibited2 = '';
     }
-    cleanProhibitedSpells(activePC);
+    const removed = cleanProhibitedSpells(activePC);
+    if (removed.length > 0) {
+      setTimeout(() => showCustomAlert(
+        'Bannschulen-Bereinigung ⚠️',
+        `Die folgenden Zauber wurden aus deinem Zauberbuch entfernt:\n\n• ${removed.join('\n• ')}`
+      ), 100);
+    }
     CombatState.saveToStorage();
     CombatState.syncPCToHost();
   };
@@ -48,7 +57,13 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
     const val = e.target.value;
     const activePC = CombatState.getActivePC();
     activePC.wizardProhibited1 = val;
-    cleanProhibitedSpells(activePC);
+    const removed = cleanProhibitedSpells(activePC);
+    if (removed.length > 0) {
+      setTimeout(() => showCustomAlert(
+        'Bannschulen-Bereinigung ⚠️',
+        `Die folgenden Zauber wurden aus deinem Zauberbuch entfernt:\n\n• ${removed.join('\n• ')}`
+      ), 100);
+    }
     CombatState.saveToStorage();
     CombatState.syncPCToHost();
   };
@@ -57,7 +72,13 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
     const val = e.target.value;
     const activePC = CombatState.getActivePC();
     activePC.wizardProhibited2 = val;
-    cleanProhibitedSpells(activePC);
+    const removed = cleanProhibitedSpells(activePC);
+    if (removed.length > 0) {
+      setTimeout(() => showCustomAlert(
+        'Bannschulen-Bereinigung ⚠️',
+        `Die folgenden Zauber wurden aus deinem Zauberbuch entfernt:\n\n• ${removed.join('\n• ')}`
+      ), 100);
+    }
     CombatState.saveToStorage();
     CombatState.syncPCToHost();
   };

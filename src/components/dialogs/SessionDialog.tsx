@@ -49,6 +49,7 @@ export const SessionDialog: React.FC<SessionDialogProps> = ({ onClose }) => {
 
   return (
     <div
+      id="sessionOverlay"
       style={{
         position: 'fixed',
         inset: 0,

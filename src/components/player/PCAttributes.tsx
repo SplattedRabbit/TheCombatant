@@ -354,7 +354,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
           <label style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>⚔️ Basisangriff (BAB):</label>
           <input
             type="text"
-            value={getBabSequence(typeof pc.bab === 'number' ? pc.bab : pc.bab.total)}
+            value={getBabSequence(typeof pc.bab === 'number' ? pc.bab : (typeof pc.bab?.getValue === 'function' ? pc.bab.getValue() : 0))}
             onChange={(e) => {
               CombatState.clearPCClasses();
               CombatState.updatePCNumber('bab', e.target.value);

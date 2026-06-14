@@ -126,6 +126,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
 
   return (
     <div
+      id="featScrollOverlay"
       style={{
         position: 'fixed',
         inset: 0,
@@ -209,7 +210,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
             }}
           >
             <div><strong>Kategorie:</strong> {categoryDe}</div>
-            <div><strong>Erfüllt:</strong> {met ? '🟢 Ja' : '❌ Nein'}</div>
+            <div><strong>Erfüllt:</strong> {met ? 'Ja' : 'Nein'}</div>
             <div style={{ gridColumn: 'span 2' }}>
               <strong>App-Mechanik:</strong>{' '}
               <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>
@@ -228,7 +229,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
               ) : (
                 prereqsDetails.map((pr: any, idx: number) => {
                   const color = pr.met ? '#2a6a2a' : '#8b1a1a';
-                  const mark = pr.met ? '🟢' : '❌';
+                  const mark = pr.met ? '✓' : '✗';
                   return (
                     <div key={idx} style={{ color, fontWeight: 500, fontSize: '9px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                       <span>{mark}</span>

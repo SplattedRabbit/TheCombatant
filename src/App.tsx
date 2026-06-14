@@ -1,28 +1,110 @@
-/**
- * @module    App
- * @summary   Main router component for the D&D 3.5e Combat App.
- *            Routes to RoleSelection, DMScreen, or PlayerSheet based on selected role.
- * @exports   App
- * @reads     useCombatState
- * @stateOps  CombatState.setRole
- * @depends   React, useCombatState, RoleSelection, DMScreen, PlayerSheet
- */
-
+import { useEffect } from 'react';
 import { useCombatState } from './hooks/useCombatState';
 import { RoleSelection } from './components/RoleSelection';
 import { DMScreen } from './components/dm/DMScreen';
 import { PlayerSheet } from './components/player/PlayerSheet';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
-import styles from './App.module.css';
 
 export default function App() {
   const { state, activePC, isReady } = useCombatState() as any;
+  const role = state?.session?.role ?? 'choice';
 
-  // 1. Loading Skeleton
+  // Sync Skalierungs-Logik (Zoom) genau wie in Vanilla app.js
+  useEffect(() => {
+    if (!isReady) return;
+    let currentScale = 1.0;
+
+    const syncBodyHeight = () => {
+      const appRoot = document.getElementById('appRoot');
+      const appWrapper = document.getElementById('appWrapper');
+      if (appRoot && appWrapper) {
+        const unscaledHeight = Math.max(appRoot.offsetHeight, appRoot.scrollHeight);
+        const scaledHeight = (unscaledHeight + 20) * currentScale;
+        appWrapper.style.height = scaledHeight + 'px';
+        document.body.style.minHeight = scaledHeight + 'px';
+      }
+    };
+
+    const applyScaleFactor = () => {
+      const appRoot = document.getElementById('appRoot');
+      if (!appRoot) return;
+
+      const targetWidth = 1150;
+      let scale = window.innerWidth / targetWidth;
+      
+      if (window.innerWidth < targetWidth) {
+        appRoot.style.width = targetWidth + 'px';
+      } else {
+        appRoot.style.width = '100%';
+      }
+
+      scale = Math.max(0.6, Math.min(1.6, scale));
+      currentScale = scale;
+      document.documentElement.style.setProperty('--app-scale', scale.toString());
+      syncBodyHeight();
+    };
+
+    window.addEventListener('resize', applyScaleFactor);
+
+    const appRoot = document.getElementById('appRoot');
+    let resizeObserver: ResizeObserver | null = null;
+    if (appRoot && typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(() => {
+        requestAnimationFrame(syncBodyHeight);
+      });
+      resizeObserver.observe(appRoot);
+    }
+
+    // Scroll-Schutz
+    const handleScroll = () => {
+      if (window.scrollX !== 0 || window.pageXOffset !== 0) {
+        window.scrollTo(0, window.scrollY || window.pageYOffset);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    if (window.visualViewport) {
+      const handleViewportScroll = () => {
+        if (window.visualViewport && window.visualViewport.offsetLeft !== 0) {
+          window.scrollTo(window.scrollX, window.scrollY);
+        }
+      };
+      window.visualViewport.addEventListener('scroll', handleViewportScroll);
+    }
+
+    const handleFocusIn = () => {
+      setTimeout(() => {
+        if (window.scrollX !== 0 || window.pageXOffset !== 0) {
+          window.scrollTo(0, window.scrollY || window.pageYOffset);
+        }
+        if (window.visualViewport && window.visualViewport.offsetLeft !== 0) {
+          window.scrollTo(window.scrollX, window.scrollY);
+        }
+      }, 80);
+    };
+    document.addEventListener('focusin', handleFocusIn);
+
+    // Initialer Aufruf
+    applyScaleFactor();
+
+    // Staggered updates to handle layout/rendering latency
+    const t1 = setTimeout(applyScaleFactor, 50);
+    const t2 = setTimeout(applyScaleFactor, 250);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener('resize', applyScaleFactor);
+      if (resizeObserver) resizeObserver.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('focusin', handleFocusIn);
+    };
+  }, [isReady, role]);
+
   if (!isReady) {
     return (
-      <div className={styles.app} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#2a1a0a' }}>
         <div style={{ textAlign: 'center', fontFamily: "'IM Fell English SC', serif" }}>
           <div className="hp-emblem" style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'radial-gradient(circle, #f4e8c1 0%, #c8a96e 70%, #9a7a2e 100%)', border: '2px double var(--red)', display: 'inline-flex', justifyContent: 'center', alignItems: 'center', animation: 'spin 2s linear infinite', marginBottom: '15px' }}>
             <span style={{ fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>D&D</span>
@@ -40,84 +122,41 @@ export default function App() {
     );
   }
 
-  // 2. Role-based routing
-  const role = state.session.role;
-
   if (role === 'choice') {
     return <RoleSelection />;
   }
 
+  let content;
   if (role === 'host' || role === 'dm') {
-    return (
-      <div className={styles.app}>
-        <DMScreen state={state} />
-      </div>
-    );
-  }
-
-  // If role is 'player'
-  if (!activePC) {
-    return (
-      <div className={styles.app}>
-        <header className={styles.header}>
-          <div className={styles.logo}>
-            <span className={styles.logoIcon}>🔮</span>
-            <div className={styles.logoText}>
-              <h1>D&amp;D 3.5e Combat App</h1>
-              <span className={styles.badge}>React · Spieler-Modus</span>
-            </div>
+    content = <DMScreen state={state} />;
+  } else {
+    // Player
+    if (!activePC) {
+      content = (
+        <div className="sheet" style={{ maxWidth: '500px', margin: '40px auto', textAlign: 'center', padding: '24px' }}>
+          <h2 style={{ fontFamily: "'IM Fell English SC', serif", color: 'var(--red)', fontSize: '20px', marginBottom: '10px' }}>
+            Kein aktiver Charakter
+          </h2>
+          <hr style={{ border: 'none', borderTop: '0.5px solid var(--pb)', margin: '10px 0 20px' }} />
+          <p style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--inkm)', lineHeight: 1.5, marginBottom: '20px' }}>
+            Es ist aktuell kein aktiver Spieler-Charakter (PC) in dieser Sitzung geladen.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+            <button className="btn btn-p" onClick={() => window.location.reload()}>🔄 Seite neu laden</button>
+            <button className="btn" onClick={() => CombatState.setRole('choice')}>🎭 Rolle wechseln</button>
           </div>
-        </header>
-        <main className={styles.main} style={{ display: 'flex', justifyContent: 'center', padding: '40px 20px' }}>
-          <div
-            className="pnl"
-            style={{
-              maxWidth: '500px',
-              border: '1px solid var(--pb)',
-              borderRadius: '4px',
-              padding: '24px',
-              background: 'rgba(200, 169, 110, 0.03)',
-              textAlign: 'center',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.4)',
-            }}
-          >
-            <h2 style={{ fontFamily: "'IM Fell English SC', serif", color: 'var(--red)', fontSize: '20px', marginBottom: '10px' }}>
-              Kein aktiver Charakter
-            </h2>
-            <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.3)', margin: '10px 0 20px' }} />
-            <p style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--inkl)', lineHeight: 1.5, marginBottom: '20px' }}>
-              Es ist aktuell kein aktiver Spieler-Charakter (PC) in dieser Sitzung geladen. 
-              Dies kann daran liegen, dass du dich im Spielleiter-Modus (DM) befunden hast oder die Sitzung gerade erst erstellt hast.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-              <button
-                className="btn btn-p"
-                onClick={() => {
-                  window.location.reload();
-                }}
-                style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', padding: '6px 16px' }}
-              >
-                🔄 Seite neu laden
-              </button>
-              <button
-                className="btn"
-                onClick={() => {
-                  CombatState.setRole('choice');
-                }}
-                style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', padding: '6px 16px' }}
-              >
-                🎭 Rolle wechseln
-              </button>
-            </div>
-          </div>
-        </main>
-      </div>
-    );
+        </div>
+      );
+    } else {
+      content = <PlayerSheet pc={activePC} />;
+    }
   }
 
   return (
-    <div className={styles.app}>
-      <PlayerSheet pc={activePC} />
+    <div id="appWrapper">
+      <div id="appRoot">
+        {content}
+      </div>
     </div>
   );
 }

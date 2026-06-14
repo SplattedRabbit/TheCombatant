@@ -23,12 +23,37 @@ interface DMCombatantsTableProps {
   combatants: Combatant[];
 }
 
-const getVal = (field: any): number | string => {
-  if (!field) return 0;
+const getVal = (field: any): number => {
+  if (field === null || field === undefined) return 0;
+  if (typeof field === 'number') return field;
+  if (typeof field === 'string') {
+    const parsed = parseInt(field);
+    return isNaN(parsed) ? 0 : parsed;
+  }
   if (typeof field.getValue === 'function') {
     return field.getValue();
+  }
+  if (typeof field === 'object') {
+    const base = typeof field.base === 'number' ? field.base : (parseInt(field.base) || 0);
+    const modifiers = Array.isArray(field.modifiers) ? field.modifiers : [];
+    const grouped: Record<string, number> = {};
+    let penaltiesSum = 0;
+    
+    modifiers.forEach((m: any) => {
+      if (!m) return;
+      const val = parseInt(m.value) || 0;
+      if (val < 0) {
+        penaltiesSum += val;
+      } else if (m.type === 'dodge' || m.type === 'untyped') {
+        grouped[m.type] = (grouped[m.type] || 0) + val;
+      } else {
+        grouped[m.type] = Math.max(grouped[m.type] || 0, val);
       }
-  return field;
+    });
+    const totalMod = Object.values(grouped).reduce((sum, val) => sum + val, 0);
+    return base + totalMod + penaltiesSum;
+  }
+  return 0;
 };
 
 // Custom input component that updates on Blur/Enter to match Vanilla .onchange

@@ -86,31 +86,16 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
     onUpdate();
   };
 
-  const handleAttackRoll = (e: React.MouseEvent<HTMLButtonElement>, attName: string, bonus: number, damage: string, note: string) => {
+  const handleAttackRoll = (e: React.MouseEvent<HTMLButtonElement>, attName: string, bonus: number, _damage: string, _note: string) => {
     e.stopPropagation();
     const activePC = CombatState.getActivePC();
     const compName = activePC.companionName || 'Tierbegleiter';
 
     showRollBreakdown(`${compName} - ${attName}`, `1W20`, [
-      { label: "Angriffsbonus", value: bonus }
-    ], e.nativeEvent, (rollVal: number) => {
-      showCustomConfirm("Angriff ausgeführt! ⚔️", `
-        <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
-          <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
-            ${compName} greift an!
-          </div>
-          • <strong>Angriffs-Typ:</strong> ${attName}<br>
-          • <strong>Angriffswurf:</strong> <span style="color:var(--red); font-weight:bold; font-size:10.5px;">${rollVal + bonus}</span> <span style="font-size:7px; color:var(--inkl); font-style:italic;">(Gewürfelt: ${rollVal} + ${bonus})</span><br>
-          • <strong>Waffenschaden:</strong> <span style="color:var(--red); font-weight:bold; font-size:10.5px;">${damage}</span><br>
-          ${note ? `• <strong>Bonus-Effekt:</strong> ${note}<br>` : ''}
-          <br>
-          <div style="font-size: 7.2px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 4px; border-radius: 2px; line-height: 1.2;">
-            Tabelle prüft: Trifft Angriffswurf <span style="color:var(--red);">${rollVal + bonus}</span> gegen Rüstungsklasse (AC) des Gegners? Falls ja, würfle physischen Schaden von <span style="color:var(--red);">${damage}</span> aus!
-          </div>
-        </div>
-      `, () => {});
-    });
+      { label: "Angriffsbonus (Stärke/Größe)", value: bonus }
+    ], e.nativeEvent);
   };
+
 
   if (type === 'none') {
     return (
@@ -312,7 +297,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
                     className="btn roll-companion-attack-btn" 
                     style={{ fontSize: '7.5px', padding: '2px 6px', fontWeight: 'bold', cursor: 'pointer', borderRadius: '2px' }}
                   >
-                    Würfeln 🎲
+                    Wurf 🎲
                   </button>
                 </div>
               ))

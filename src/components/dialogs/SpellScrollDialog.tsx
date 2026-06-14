@@ -34,6 +34,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
 
   return (
     <div
+      id="spellScrollOverlay"
       style={{
         position: 'fixed',
         inset: 0,

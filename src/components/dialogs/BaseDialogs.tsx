@@ -7,9 +7,10 @@
 import React, { useState } from 'react';
 
 // Common overlay wrapper component
-const DialogOverlay: React.FC<{ children: React.ReactNode; onClose?: () => void; width?: number }> = ({ children, onClose, width = 440 }) => {
+const DialogOverlay: React.FC<{ children: React.ReactNode; onClose?: () => void; width?: number; id?: string }> = ({ children, onClose, width = 440, id }) => {
   return (
     <div 
+      id={id}
       className="no-print" 
       onClick={(e) => { if (onClose && e.target === e.currentTarget) onClose(); }}
       style={{
@@ -59,7 +60,7 @@ interface CustomAlertModalProps {
 
 export const CustomAlertModal: React.FC<CustomAlertModalProps> = ({ title, message, buttonText = "Verstanden", icon = "⚠️", onClose }) => {
   return (
-    <DialogOverlay onClose={onClose}>
+    <DialogOverlay onClose={onClose} id="customAlertOverlay">
       <div style={{ fontSize: '15px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
         {icon ? icon + ' ' : ''}{title}
       </div>
@@ -98,7 +99,7 @@ interface CustomConfirmModalProps {
 
 export const CustomConfirmModal: React.FC<CustomConfirmModalProps> = ({ title, messageHtml, onConfirm, onCancel }) => {
   return (
-    <DialogOverlay onClose={onCancel} width={460}>
+    <DialogOverlay onClose={onCancel} width={460} id="customConfirmOverlay">
       <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px', letterSpacing: '0.3px' }}>
         {title}
       </div>
@@ -114,14 +115,14 @@ export const CustomConfirmModal: React.FC<CustomConfirmModalProps> = ({ title, m
           className="btn btn-p confirm-dialog-yes" 
           style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 18px', cursor: 'pointer', borderRadius: '2px' }}
         >
-          Ja ✅
+          Ja
         </button>
         <button 
           onClick={onCancel}
           className="btn confirm-dialog-no" 
           style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 18px', cursor: 'pointer', borderRadius: '2px', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
         >
-          Nein ❌
+          Nein
         </button>
       </div>
     </DialogOverlay>
@@ -142,7 +143,7 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({ title, mes
   const [val, setVal] = useState(defaultValue);
 
   return (
-    <DialogOverlay onClose={onCancel} width={360}>
+    <DialogOverlay onClose={onCancel} width={360} id="customPromptOverlay">
       <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px' }}>
         {title}
       </div>
@@ -202,7 +203,7 @@ export const NewDayTemplateDialog: React.FC<NewDayTemplateDialogProps> = ({ temp
   const templateKeys = Object.keys(templates || {});
 
   return (
-    <DialogOverlay onClose={onCancel} width={450}>
+    <DialogOverlay onClose={onCancel} width={450} id="newDayTemplateOverlay">
       <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px' }}>
         🌅 Tageswechsel & Zauber-Vorbereitung
       </div>
@@ -285,7 +286,7 @@ export const RollBreakdownDialog: React.FC<RollBreakdownDialogProps> = ({ title,
   };
 
   return (
-    <DialogOverlay onClose={onClose} width={255}>
+    <DialogOverlay onClose={onClose} width={255} id="rollBreakdown">
       <div style={{ fontSize: '11px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px', letterSpacing: '0.3px' }}>
         {title.startsWith('🎲') ? title : `🎲 ${title}`}
       </div>
@@ -321,56 +322,91 @@ export const RollBreakdownDialog: React.FC<RollBreakdownDialogProps> = ({ title,
 
 // 6. Sample choice dialog
 interface SampleChoiceDialogProps {
+  isPlayer: boolean;
   onConfirm: (choice: string) => void;
   onCancel: () => void;
 }
 
-export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ onConfirm, onCancel }) => {
+export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer, onConfirm, onCancel }) => {
   return (
-    <DialogOverlay onClose={onCancel} width={450}>
+    <DialogOverlay onClose={onCancel} width={450} id="sampleChoiceDialogOverlay">
       <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px' }}>
-        🏰 Charakter-Beispieldaten laden
+        🏰 Beispieldaten laden
       </div>
       <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 10px' }} />
       
-      <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
-        Wähle einen Stufe 10 Beispielcharakter mit passenden Werten, Waffen und Zaubern aus, der geladen werden soll:
-      </div>
+      {isPlayer ? (
+        <>
+          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
+            Wähle einen Stufe 10 Beispielcharakter mit passenden Werten, Waffen und Zaubern aus, der geladen werden soll:
+          </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <button 
-          onClick={() => onConfirm('cleric')}
-          className="btn" 
-          style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
-        >
-          <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>☀️ Kleriker (Zwerg, Stufe 10)</strong>
-          <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif', serif", marginTop: '2px' }}>
-            Besitzt vorbereitete Heilzauber, Kleriker-Domänen (Gute & Schutz-Domäne) und Untote-vertreiben Ladungen.
-          </span>
-        </button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <button 
+              onClick={() => onConfirm('wizard_lvl10')}
+              className="btn" 
+              style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
+            >
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🔮 Magier (Elf, Stufe 10)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+                Ein spezialisierter Magier (Hervorrufung) mit einer Eule als Vertrautem und einem gefüllten Zauberbuch.
+              </span>
+            </button>
 
-        <button 
-          onClick={() => onConfirm('druid')}
-          className="btn" 
-          style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
-        >
-          <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🐾 Druide (Halb-Elf, Stufe 10)</strong>
-          <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif', serif", marginTop: '2px' }}>
-            Ausgerüstet mit einem Wolf als Tierbegleiter und Wild-Shape (Tiergestalt) Optionen inkl. Stärkeskalierung.
-          </span>
-        </button>
+            <button 
+              onClick={() => onConfirm('ranger_lvl10')}
+              className="btn" 
+              style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
+            >
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🏹 Waldläufer (Mensch, Stufe 10)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+                Ein wendiger Fernkämpfer mit Tierbegleiter (Wolf) und passenden Kampf-Feats für Zweiwaffenkampf / Bogenschießen.
+              </span>
+            </button>
 
-        <button 
-          onClick={() => onConfirm('wizard')}
-          className="btn" 
-          style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
-        >
-          <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🔮 Magier (Elf, Stufe 10)</strong>
-          <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif', serif", marginTop: '2px' }}>
-            Ein spezialisierter Magier (Hervorrufung) mit einer Eule als Vertrautem und einem gefüllten Zauberbuch.
-          </span>
-        </button>
-      </div>
+            <button 
+              onClick={() => onConfirm('paladin_lvl10')}
+              className="btn" 
+              style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
+            >
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🛡️ Paladin (Mensch, Stufe 10)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+                Ein ehrenhafter Ritter mit göttlicher Magie, Auren und mächtigen Nahkampfangriffen (Smite Evil).
+              </span>
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
+            Wähle aus, welche Begegnung und Charaktere geladen werden sollen. Für den Spielleiter werden alle drei Helden gleichzeitig angelegt:
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <button 
+              onClick={() => onConfirm('party_lvl10')}
+              className="btn" 
+              style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
+            >
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🐉 Stufe 10 Helden-Encounter</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+                Erstellt 3 Stufe 10 Helden (Magier, Waldläufer, Paladin) und positioniert sie gegen einen Drachen und Riesen.
+              </span>
+            </button>
+
+            <button 
+              onClick={() => onConfirm('aranis_only')}
+              className="btn" 
+              style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
+            >
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🛡️ Nur Aranis (Paladin Stufe 3)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+                Lädt einen einzelnen Paladin auf Stufe 3 für kleinere Test-Szenarien.
+              </span>
+            </button>
+          </div>
+        </>
+      )}
 
       <div style={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
         <button 

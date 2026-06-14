@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v4.0.0** | Release | 14.06.2026 | Migration Complete & Tablet-Deployable (Offline & PWA) |
 | **v3.6.0** | Release | 14.06.2026 | React-Zustandsaktualisierung, Prototyp-Rehydrierung & Ausrüstungs-Fixes |
 | **v3.5.0** | Release | 13.06.2026 | Beispieldaten-Auswahldialog & D&D 3.5e RAW Level-10-Charaktere |
 | **v3.4.0** | Release | 12.06.2026 | WebRTC Buff- & Auren-Propagation (Netzwerk-Auren) |
@@ -70,6 +71,26 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v4.0.0 — Migration Complete & Tablet-Deployable (Release v4.0.0)
+
+* **⚛️ Vollständige React-Migration & Bereinigung**:
+  - Sämtliche verbleibenden Vanilla-Dialoge (`PCSpellDialogs.js` etc.) wurden vollständig in React-Komponenten (`SpellDetailsDialog.tsx`, `SpellCreatorDialog.tsx`) überführt.
+  - Das React-UI importiert keine Vanilla-Dialogkomponenten mehr. Alle globalen Dialogaufrufe laufen über den `ReactDialogBridge.tsx`.
+  - Abwärtskompatible, dünne Facades für JSDOM-Tests (`dialogs.js`, `PCBuffsDialog.js`, `PrepareSpellDialog.js`, `PCSpellDialogs.js`, `BaseDialogs.js`, `AttackChoiceDialog.js`, `DamageChoiceDialog.js`, `FeatScrollDialog.js`) stellen sicher, dass alle 171 Unit-Tests weiterhin fehlerfrei laufen, während das Produktions-Bundle frei von Altlasten bleibt.
+
+* **📱 Tablet-Build-Pipeline & Offline-Betrieb (PWA)**:
+  - Die Vite-Konfiguration (`vite.config.ts`) wurde so erweitert, dass alle erforderlichen statischen Assets (`peerjs.min.js`, `spells_de.json`, `manifest.json`, Icons) automatisch nach `dist/` kopiert werden.
+  - Das Skript `update_sw.js` scannt nun den `dist/`-Ordner rekursiv, generiert die Pfade dist-relativ und schreibt den Service Worker nach `dist/service-worker.js`.
+  - Das Root-Template `service-worker.js` wurde auf `v4.0.0-cache-v1` gebumpt.
+  - Dadurch ist `dist/` ein vollständig autonomes Paket, das per `python -m http.server 8080` auf dem Tablet offline betrieben werden kann.
+
+* **⚡ One-Click-Deploy (`deploy_tablet.bat`)**:
+  - Ein praktisches Batch-Skript `deploy_tablet.bat` wurde hinzugefügt. Es führt den Build aus, kopiert alle relevanten Dateien in den Ordner `tablet_package/` und zeigt verständliche Startanweisungen für den Benutzer auf dem Tablet an.
+
+* **🎯 Domain-Driven Design (DDD) & Clean Code**:
+  - Reine Logik wie `cleanProhibitedSpells` (Bannschulen-Bereinigung) wurde aus den UI-Komponenten entfernt und sauber in den Domain-Layer unter `js/rules/SpellRules.js` ausgelagert.
+  - Dialoge und Benachrichtigungen aus dem Domain-Layer werden sauber über die API der Dialog-Bridge an das Frontend delegiert.
 
 ### v3.6.0 — React-Zustandsaktualisierung, Prototyp-Rehydrierung & Ausrüstungs-Fixes (Release v3.6.0)
 
