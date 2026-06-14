@@ -48,10 +48,10 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
 
   // Health-bar color class
   const getFillCls = (pct: number, hp: number) => {
-    if (hp <= 0) return 'hp-empty';
-    if (pct <= 25) return 'hp-crit';
-    if (pct <= 50) return 'hp-low';
-    return 'hp-normal';
+    if (hp <= 0) return 'fill-dead';
+    if (pct <= 25) return 'fill-crit';
+    if (pct <= 50) return 'fill-warn';
+    return 'fill-ok';
   };
   const fc = getFillCls(totalPct, pc.hp);
 
