@@ -6,9 +6,22 @@
     <meta name="description" content="D&D 3.5e Combat App — Offline-fähiger Kampfbogen für Spieler und Spielleiter" />
     <title>D&D 3.5e Combat App</title>
     <link rel="icon" type="image/png" href="./icon-192.png" />
-    <link rel="manifest" href="./manifest.json" />
-    <!-- PWA iOS Standalone Support -->
-    <link rel="apple-touch-icon" href="/TheCombatant/icon-192.png" />
+    <script>
+      // Dynamische Pfadauflösung für PWA-Assets (funktioniert lokal und auf GitHub Pages)
+      const baseDir = window.location.pathname.endsWith('/') 
+        ? window.location.pathname 
+        : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+      
+      const manifestLink = document.createElement('link');
+      manifestLink.rel = 'manifest';
+      manifestLink.href = baseDir + 'manifest.json';
+      document.head.appendChild(manifestLink);
+
+      const appleIconLink = document.createElement('link');
+      appleIconLink.rel = 'apple-touch-icon';
+      appleIconLink.href = baseDir + 'icon-192.png';
+      document.head.appendChild(appleIconLink);
+    </script>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Combat Sheet" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
