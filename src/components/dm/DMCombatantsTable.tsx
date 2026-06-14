@@ -4,7 +4,7 @@
  * @exports   DMCombatantsTable
  * @reads     state.combatants
  * @stateOps  CombatState.updateCombatantField, CombatState.updateCombatantNumber, CombatState.applyDamage, CombatState.applyTempHP, CombatState.removeCombatant, CombatState.addCombatant
- * @depends   React, @core/state.js, @core/rules.js, @core/ui/components/CompanionSheet.js, @core/ui/components/FamiliarSheet.js
+ * @depends   React, @core/state.js, @core/rules.js, @core/rules/CompanionRules.js, @core/rules/FamiliarRules.js
  */
 
 import React, { useState, useEffect } from 'react';
@@ -13,9 +13,9 @@ import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { CombatRules } from '@core/rules.js';
 // @ts-ignore
-import { CompanionSheet } from '@core/ui/components/CompanionSheet.js';
+import { CompanionRules } from '@core/rules/CompanionRules.js';
 // @ts-ignore
-import { FamiliarSheet } from '@core/ui/components/FamiliarSheet.js';
+import { FamiliarRules } from '@core/rules/FamiliarRules.js';
 import type { Combatant } from '../../types/combat';
 
 interface DMCombatantsTableProps {
@@ -210,7 +210,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
               companionLevel = druidClass.level;
             }
 
-            const companionStats = CompanionSheet.getCompanionBaseStats(companionType, companionLevel) || {};
+            const companionStats = CompanionRules.getCompanionBaseStats(companionType, companionLevel) || {};
             const finalAC = companionStats.ac || 15;
 
             CombatState.addCombatant({
@@ -239,7 +239,7 @@ const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList }) => {
           title="Vertrauten rufen"
           onClick={() => {
             const familiarType = (c as any).familiarType;
-            const familiarStats = FamiliarSheet.getFamiliarBaseStats(familiarType) || {};
+            const familiarStats = FamiliarRules.getFamiliarBaseStats(familiarType) || {};
             const finalAC = familiarStats.ac || 15;
             const maxHP = Math.floor(c.maxHp / 2);
             const curHP = (c as any).familiarHP !== undefined ? Math.min(maxHP, (c as any).familiarHP) : maxHP;

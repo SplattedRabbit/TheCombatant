@@ -1,0 +1,321 @@
+import React, { useState } from 'react';
+import { AttackEngine } from '@core/rules/AttackEngine.js';
+import { matchesFeatOption, getCritThreatDisplay } from '@core/models/Weapon.js';
+import { CombatState } from '@core/state.js';
+
+interface AttackChoiceDialogProps {
+  pc: any;
+  weapon: any;
+  options?: any;
+  onClose: () => void;
+}
+
+export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
+  pc,
+  weapon,
+  options = {},
+  onClose
+}) => {
+  const [currentView, setCurrentView] = useState<'grid' | 'std' | 'full'>('grid');
+  const [smiteActive, setSmiteActive] = useState<boolean>(!!pc.isSmiteActive);
+  const [favoredEnemyActive] = useState<boolean>(!!pc.isFavoredEnemyActive);
+  const [sneakActive] = useState<boolean>(!!pc.isSneakAttacking);
+
+  const hasPaladin = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'paladin');
+  const paladinClass = hasPaladin ? pc.classes.find((c: any) => c.classType === 'paladin') : null;
+
+  const isRanged = weapon.grip === 'rng';
+  const isMelee = !isRanged;
+
+  const formatMod = (n: number) => (n >= 0 ? '+' : '') + n;
+
+  // Calculate sequences based on current state
+  const stdSeq = AttackEngine.calculateAttackSequence(pc, weapon, false, {
+    smite: smiteActive,
+    favoredEnemy: favoredEnemyActive,
+    sneakAttack: sneakActive,
+    ...options
+  });
+
+  const fullSeq = AttackEngine.calculateAttackSequence(pc, weapon, true, {
+    smite: smiteActive,
+    favoredEnemy: favoredEnemyActive,
+    sneakAttack: sneakActive,
+    ...options
+  });
+
+  const handleSmiteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.checked;
+    setSmiteActive(val);
+    CombatState.updatePCField('isSmiteActive', val);
+  };
+
+  const stdAtk = stdSeq[0] || { atkTotal: 0, atkBreakdown: [] };
+  const doubleThreat = weapon.isKeen || (pc.feats && pc.feats.some((f: any) => 
+    (f.id === 'improved_critical' || f.id === 'verbesserter_kritischer_treffer') && 
+    matchesFeatOption(weapon, f.option)
+  ));
+  const doubledCritDisplay = getCritThreatDisplay(weapon.crit, doubleThreat);
+
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(18, 11, 5, 0.55)',
+        backdropFilter: 'blur(2px)',
+        zIndex: 2400,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
+      <div
+        className="custom-alert-box"
+        style={{
+          background: 'var(--p)',
+          border: '2px solid var(--pb)',
+          borderRadius: '4px',
+          padding: '16px 24px',
+          width: '310px',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
+          fontFamily: "'IM Fell English SC', serif",
+          textAlign: 'center',
+          position: 'relative',
+          transform: 'scale(1)',
+          transition: 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+        }}
+      >
+        <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
+
+        <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '2px' }}>
+          ⚔️ {weapon.name || 'Waffe'}
+        </div>
+        <div className="dialog-subtitle" style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '6px' }}>
+          {currentView === 'grid' && 'Angriffsart wählen'}
+          {currentView === 'std' && (
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <span>Standard-Angriff gewählt</span>
+              <span
+                onClick={() => setCurrentView('grid')}
+                style={{
+                  fontSize: '7.5px',
+                  cursor: 'pointer',
+                  border: '0.5px solid var(--pb)',
+                  borderRadius: '2.5px',
+                  padding: '1px 5px',
+                  color: 'var(--red)',
+                  background: 'rgba(139,26,26,0.05)',
+                  fontFamily: "'IM Fell English SC', serif",
+                  fontWeight: 'bold'
+                }}
+              >
+                ← Zurück
+              </span>
+            </div>
+          )}
+          {currentView === 'full' && (
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <span>Voller Angriff gewählt</span>
+              <span
+                onClick={() => setCurrentView('grid')}
+                style={{
+                  fontSize: '7.5px',
+                  cursor: 'pointer',
+                  border: '0.5px solid var(--pb)',
+                  borderRadius: '2.5px',
+                  padding: '1px 5px',
+                  color: 'var(--red)',
+                  background: 'rgba(139,26,26,0.05)',
+                  fontFamily: "'IM Fell English SC', serif",
+                  fontWeight: 'bold'
+                }}
+              >
+                ← Zurück
+              </span>
+            </div>
+          )}
+        </div>
+        <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 10px' }} />
+
+        {hasPaladin && isMelee && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '10px', padding: '4px 8px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '8px', fontFamily: "'Crimson Text', serif" }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: 'var(--red)' }}>
+              <input
+                type="checkbox"
+                checked={smiteActive}
+                onChange={handleSmiteChange}
+                style={{ margin: 0, width: '11px', height: '11px', cursor: 'pointer' }}
+              />
+              Böses niederstrecken (+{Math.max(0, pc.getAttributeMod('cha'))} Angr. / +{paladinClass.level} Schd.)
+            </label>
+          </div>
+        )}
+
+        <div className="dialog-content-area" style={{ display: 'flex', flexDirection: 'column', gap: '8px', minHeight: '120px' }}>
+          {currentView === 'grid' && (
+            <>
+              {/* Standard Attack Choice Card */}
+              <div
+                onClick={() => setCurrentView('std')}
+                style={{
+                  background: 'rgba(200, 169, 110, 0.1)',
+                  border: '1px solid var(--pb)',
+                  borderRadius: '3px',
+                  padding: '8px 10px',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  transition: 'background-color 0.15s, border-color 0.15s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(139, 26, 26, 0.05)';
+                  e.currentTarget.style.borderColor = 'var(--red)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(200, 169, 110, 0.1)';
+                  e.currentTarget.style.borderColor = 'var(--pb)';
+                }}
+              >
+                <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>Standard-Angriff</div>
+                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px' }}>
+                  Ein einzelner Angriff mit deinem vollen Angriffsbonus.
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '4px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '4px' }}>
+                  <span style={{ fontSize: '7px', color: 'var(--inkl)' }}>Formel:</span>
+                  <span style={{ fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                    1W20 {formatMod(stdAtk.atkTotal)}
+                    {doubledCritDisplay && (
+                      <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'normal', marginLeft: '3px' }}>
+                        (Krit: {doubledCritDisplay})
+                      </span>
+                    )}
+                  </span>
+                </div>
+              </div>
+
+              {/* Full Attack Choice Card */}
+              <div
+                onClick={() => setCurrentView('full')}
+                style={{
+                  background: 'rgba(200, 169, 110, 0.1)',
+                  border: '1px solid var(--pb)',
+                  borderRadius: '3px',
+                  padding: '8px 10px',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  transition: 'background-color 0.15s, border-color 0.15s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(139, 26, 26, 0.05)';
+                  e.currentTarget.style.borderColor = 'var(--red)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(200, 169, 110, 0.1)';
+                  e.currentTarget.style.borderColor = 'var(--pb)';
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>Voller Angriff (Full Attack)</span>
+                  <span style={{ fontSize: '7px', background: 'rgba(139,26,26,0.1)', color: 'var(--red)', padding: '0 3px', borderRadius: '1px', fontWeight: 'bold' }}>
+                    {fullSeq.length}x
+                  </span>
+                </div>
+                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px' }}>
+                  Führe alle dir zustehenden Angriffe aus.
+                </div>
+                <div style={{ marginTop: '4px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '4px', fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif" }}>
+                  {fullSeq.map((atk: any, idx: number) => (
+                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px' }}>
+                      <span>{atk.name}:</span>
+                      <span style={{ fontWeight: 'bold', color: 'var(--red)' }}>
+                        1W20 {formatMod(atk.atkTotal)}
+                        {doubledCritDisplay && (
+                          <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'normal', marginLeft: '3px' }}>
+                            (Krit: {doubledCritDisplay})
+                          </span>
+                        )}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+
+          {currentView === 'std' && (
+            <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '10px', fontFamily: "'Crimson Text', serif" }}>
+              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '5px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
+                Angriffsmodifikatoren
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '9.5px', color: 'var(--inkm)' }}>
+                {Array.isArray(stdAtk.atkBreakdown) && stdAtk.atkBreakdown.map((item: any, idx: number) => (
+                  <div key={idx} style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span>{item.label}:</span>
+                    <span style={{ fontWeight: 'bold', color: 'var(--ink)' }}>{formatMod(item.value)}</span>
+                  </div>
+                ))}
+                <hr style={{ border: 'none', borderTop: '0.5px dashed rgba(200,169,110,0.3)', margin: '4px 0' }} />
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
+                  <span>Gesamt-Modifikator:</span>
+                  <span>{formatMod(stdAtk.atkTotal)}</span>
+                </div>
+              </div>
+              <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.3)', margin: '6px 0 4px' }} />
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                <span>WURF-FORMEL:</span>
+                <span>1W20 {formatMod(stdAtk.atkTotal)}</span>
+              </div>
+            </div>
+          )}
+
+          {currentView === 'full' && (
+            <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '8px 10px', maxHeight: '200px', overflowY: 'auto' }}>
+              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '3px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
+                Angriffsmodifikatoren (Voller Angriff)
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                {fullSeq.map((atk: any, idx: number) => (
+                  <div key={idx} style={{ marginTop: '4px', borderBottom: '0.5px dotted rgba(200, 169, 110, 0.2)', paddingBottom: '3px', fontFamily: "'Crimson Text', serif" }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', color: 'var(--red)', fontSize: '9.5px', fontFamily: "'IM Fell English SC', serif" }}>
+                      <span>{atk.name}:</span>
+                      <span>1W20 {formatMod(atk.atkTotal)}</span>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5px', fontSize: '7.5px', color: 'var(--inkm)', paddingLeft: '6px', marginTop: '1px' }}>
+                      {Array.isArray(atk.atkBreakdown) && atk.atkBreakdown.map((item: any, bIdx: number) => (
+                        <div key={bIdx} style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span>{item.label}:</span>
+                          <span>{formatMod(item.value)}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <button
+          onClick={onClose}
+          className="btn btn-close-choice"
+          style={{
+            fontFamily: "'IM Fell English SC', serif",
+            fontSize: '8px',
+            padding: '2px 10px',
+            marginTop: '10px',
+            cursor: 'pointer',
+            background: 'transparent',
+            border: currentView === 'grid' ? '0.5px solid var(--pb)' : '0.5px solid var(--red)',
+            borderRadius: '1px',
+            color: currentView === 'grid' ? 'var(--inkl)' : 'var(--red)',
+            fontWeight: currentView === 'grid' ? 'normal' : 'bold',
+            outline: 'none',
+            transition: 'color 0.15s, border-color 0.15s'
+          }}
+        >
+          {currentView === 'grid' ? 'Abbrechen' : 'Fertig!'}
+        </button>
+      </div>
+    </div>
+  );
+};

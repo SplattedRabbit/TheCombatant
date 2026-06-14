@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v3.6.0** | Release | 14.06.2026 | React-Zustandsaktualisierung, Prototyp-Rehydrierung & Ausrüstungs-Fixes |
 | **v3.5.0** | Release | 13.06.2026 | Beispieldaten-Auswahldialog & D&D 3.5e RAW Level-10-Charaktere |
 | **v3.4.0** | Release | 12.06.2026 | WebRTC Buff- & Auren-Propagation (Netzwerk-Auren) |
 | **v3.3.5** | Release | 12.06.2026 | Refactoring feats-data.js (Aufteilung in Kategorie-Dateien) |
@@ -69,6 +70,27 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v3.6.0 — React-Zustandsaktualisierung, Prototyp-Rehydrierung & Ausrüstungs-Fixes (Release v3.6.0)
+
+* **⚔️ Fehlerbehebung im Ausrüstungs-Tab**:
+  - Alle FE-Referenzen von `pc.armor` wurden korrigiert zu `pc.armors`, passend zur Backend-Datenstruktur.
+  - Das Feld für den Ausrüstungszustand wurde von `.equipped` auf das Backend-Feld `.isEquipped` umgestellt.
+  - Dadurch funktionieren das Anlegen und Ablegen von Waffen, Rüstungen und Schilden im Rucksack wieder zuverlässig.
+
+* **🧬 Tiefes Klonen von `activePC` im Hook**:
+  - In `useCombatState.ts` wird das `pc`-Objekt nun mittels `JSON.parse(JSON.stringify(rawPC))` tief geklont.
+  - Dadurch ändern sich bei jeder Manipulation (z.B. gelernten/verlorenen Talenten, geänderter Ausrüstung) die Array-Referenzen verlässlich.
+  - Dies behebt das Problem, bei dem die Liste der erlernten Talente oder Ausrüstungsgegenstände wegen Referenzgleichheit in React-`useMemo`-Zuständen nicht aktualisiert wurde.
+
+* **🔄 Prototyp-Rehydrierung**:
+  - Da beim tiefen Klonen alle Instanzmethoden verloren gehen, wurde eine `rehydrateCombatant`-Funktion implementiert.
+  - Mittels `Object.setPrototypeOf` werden die Prototypen für `Combatant`, `Stat`, `Weapon`, `Armor` und `Item` nach dem Klonvorgang wiederhergestellt.
+  - Dies verhindert Fehler wie `TypeError: pc.getAttributeMod is not a function` bei der Angriffs- oder RK-Berechnung.
+
+* **🎨 Bereinigung von Dialog-Icons**:
+  - Alle colorierten Emojis (`✅` und `❌`) wurden aus den globalen Bestätigungsschaltflächen („Ja“ und „Nein“) gelöscht.
+  - Indikatoren für Talent-Voraussetzungen im Kompendium-Tooltip sowie im Talente-Detaildialog wurden durch edle monochrome Unicode-Zeichen (`✓` und `✗`) ersetzt, um das klassische D&D-Pergamentdesign nicht zu stören.
 
 ### v3.5.0 — Beispieldaten-Auswahldialog & D&D 3.5e RAW Level-10-Charaktere (Release v3.5.0)
 

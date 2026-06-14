@@ -15,13 +15,14 @@ import { CombatSpells } from '@core/spells.js';
 // @ts-ignore
 import { CLASS_BUFFS } from '@core/data/class-buffs-data.js';
 // @ts-ignore
-import { activateBuffByKey, isBuffEligible, isBuffSuppressed } from '@core/ui/components/player/PCBuffsTab.js';
+import { activateBuffByKey, isBuffEligible, isBuffSuppressed, checkBuffConflict } from '@core/rules/BuffRules.js';
 // @ts-ignore
-import { checkBuffConflict } from '@core/rules/BuffRules.js';
-// @ts-ignore
-import { showCustomConfirm, showCustomAlert } from '@core/ui/components/dialogs.js';
+import { showCustomConfirm, showCustomAlert, showCustomPrompt } from '@core/ui/components/dialogs.js';
 // @ts-ignore
 import { showBuffDetailsDialog } from '@core/ui/components/player/PCBuffsDialog.js';
+// @ts-ignore
+import { uiRegistry } from '@core/ui/ui-shared.js';
+
 
 interface PCBuffsTabProps {
   pc: any;
@@ -87,7 +88,18 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
         }
       });
     } else {
-      activateBuffByKey(pc, qb.key, qb.isClass);
+      activateBuffByKey(pc, qb.key, qb.isClass, {
+        showCustomConfirm,
+        showCustomAlert,
+        showCustomPrompt: (title: string, msg: string, defaultValue: string, onConfirm: (val: string) => void) => {
+          showCustomPrompt(title, msg, defaultValue, "OK", onConfirm);
+        },
+        renderPlayerScreen: () => {
+          if (uiRegistry && typeof uiRegistry.renderPlayerScreen === 'function') {
+            uiRegistry.renderPlayerScreen();
+          }
+        }
+      });
     }
   };
 

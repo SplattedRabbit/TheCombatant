@@ -1,8 +1,3 @@
-/**
- * @module    PCBuffsDialog
- * @summary   Interactive parchment dialog overlay for displaying spell/class buffs and configuring quick selection favorites.
- * @exports   showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex), showCastSuccessDialog(pc, spell, metamagic, onAppliedCallback)
- */
 import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { CombatSpells } from '../../../spells.js';
@@ -14,9 +9,22 @@ import {
   resolveSpellEffectValue,
   calculateDurationRounds
 } from '../../../rules/BuffRules.js';
-import { activateBuffByKey } from './PCBuffsTab.js';
+// activateBuffByKey is now in BuffRules.js
+import { activateBuffByKey } from '../../../rules/BuffRules.js';
+
+const getBridge = () => {
+  if (typeof window !== 'undefined' && window.__REACT_DIALOG_BRIDGE__) {
+    return window.__REACT_DIALOG_BRIDGE__;
+  }
+  return null;
+};
 
 export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = null) {
+  const bridge = getBridge();
+  if (bridge && bridge.showBuffDetailsDialog) {
+    return bridge.showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex);
+  }
+
   let displayName = '';
   let effectsList = [];
   let durationStr = '—';
@@ -255,7 +263,13 @@ export function showBuffDetailsDialog(pc, key, isClass, isAlreadyActiveIndex = n
 }
 
 export function showCastSuccessDialog(pc, spell, key, metamagic = [], onAppliedCallback = null) {
+  const bridge = getBridge();
+  if (bridge && bridge.showCastSuccessDialog) {
+    return bridge.showCastSuccessDialog(pc, spell, key, metamagic, onAppliedCallback);
+  }
+
   let defaultCL = 1;
+
   if (Array.isArray(pc.classes)) {
     pc.classes.forEach(c => {
       if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)) {

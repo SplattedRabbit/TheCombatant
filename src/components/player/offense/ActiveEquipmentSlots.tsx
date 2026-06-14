@@ -15,6 +15,8 @@ import { CombatState } from '@core/state.js';
 import { AttackEngine } from '@core/rules/AttackEngine.js';
 // @ts-ignore
 import { WeaponRegistry, matchesFeatOption, getCritThreatDisplay } from '@core/models/Weapon.js';
+// @ts-ignore
+import { SHAPE_ATTACKS } from '@core/models/helpers/classes/DruidHelper.js';
 
 interface ActiveEquipmentSlotsProps {
   pc: any;
@@ -43,7 +45,6 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
   handleRollAttack,
   handleRollDamage
 }) => {
-  const equippedWeapons = Array.isArray(pc.weapons) ? pc.weapons.filter((w: any) => w.equipped) : [];
 
   const renderActiveSlot = (type: 'main' | 'off' | 'armor') => {
     if (type === 'main') {
@@ -70,7 +71,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
         matchesFeatOption(w, f.option)
       );
       const isDoubleThreat = w.isNatural ? false : (w.isKeen || hasImprovedCritical);
-      const doubledCritDisplay = w.isNatural ? 'x2' : getCritThreatDisplay(w.critRange, w.critMult, isDoubleThreat);
+      const doubledCritDisplay = w.isNatural ? 'x2' : getCritThreatDisplay(w.crit, isDoubleThreat);
       const dmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : (w.damage || '1w6');
       const extraDamage = w.extraDamage ? ` + ${w.extraDamage}` : '';
 
@@ -145,7 +146,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
         matchesFeatOption(w, f.option)
       );
       const isDoubleThreat = w.isKeen || hasImprovedCritical;
-      const doubledCritDisplay = getCritThreatDisplay(w.critRange, w.critMult, isDoubleThreat);
+      const doubledCritDisplay = getCritThreatDisplay(w.crit, isDoubleThreat);
       const dmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : (w.damage || '1w6');
       const extraDamage = w.extraDamage ? ` + ${w.extraDamage}` : '';
       const offhandLabel = isDoubleWielded ? 'Nebenhand (Nebenseite)' : 'Nebenhand';
@@ -218,8 +219,24 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
           🐾 Natürliche Angriffe (Wild Shape)
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          {equippedWeapons.filter((w: any) => w.isNatural).map((w: any, idx: number) => {
-            const seq = AttackEngine.calculateAttackSequence(pc, w, false);
+          {(SHAPE_ATTACKS[pc.activeShape] || []).map((atk: any, idx: number) => {
+            const w = {
+              name:        atk.name,
+              damageDice:  atk.damageDice,
+              damage:      atk.damageDice,
+              enhancement: 0,
+              attackBonus: 0,
+              isNatural:   true,
+              isSecondary: atk.isSecondary,
+              grip:        'unarmed',
+              crit:        '20 / x2',
+              type:        'unarmed'
+            };
+            const seq = AttackEngine.calculateAttackSequence(pc, w, false, {
+              smite: pc.isSmiteActive,
+              favoredEnemy: pc.isFavoredEnemyActive,
+              sneakAttack: pc.isSneakAttacking
+            });
             const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0 };
             return (
               <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '3px 6px', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '8.5px' }}>

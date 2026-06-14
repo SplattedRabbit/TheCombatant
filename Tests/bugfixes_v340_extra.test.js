@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert';
 import { Combatant } from '../js/models/Combatant.js';
 import { applyFeatSkillBonuses } from '../js/models/helpers/skills/SkillFeatApplier.js';
-import { findSpell } from '../js/ui/components/player/PCSpellbookTab.js';
+import { findSpell } from '../js/spells.js';
 
 test('Bug 7 - Feat skill bonuses calculation and retrieval', () => {
   const pc = new Combatant({

@@ -90,3 +90,15 @@ export function getSchoolLabel(code) {
   };
   return labels[code] || code;
 }
+
+export function findSpell(pc, key) {
+  if (CombatSpells.REGISTRY[key]) {
+    return CombatSpells.REGISTRY[key];
+  }
+  if (pc && Array.isArray(pc.customSpells)) {
+    const found = pc.customSpells.find(s => s.id === key || s.nameDe === key);
+    if (found) return found;
+  }
+  return null;
+}
+

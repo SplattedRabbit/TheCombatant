@@ -9,6 +9,10 @@ import './styles/globals.css';
 import App from './App';
 
 import { CombatEngineProvider } from './context/CombatEngineContext';
+import { initReactDialogBridge } from './components/dialogs/ReactDialogBridge';
+
+// Initialize the React modal bridge for legacy calls
+initReactDialogBridge();
 
 const rootEl = document.getElementById('root');
 if (!rootEl) {

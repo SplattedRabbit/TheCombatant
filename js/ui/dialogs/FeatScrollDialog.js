@@ -11,7 +11,7 @@ import { CombatState } from '../../state.js';
 import { uiRegistry } from '../ui-shared.js';
 import { CombatFeats } from '../../data/feats-data.js';
 import { showCustomAlert } from './BaseDialogs.js';
-import { checkPrerequisites } from '../components/player/PCFeatsTab.js';
+import { checkPrerequisites } from '../../rules.js';
 import { SKILLS_REGISTRY } from '../../data/skills-data.js';
 
 /**

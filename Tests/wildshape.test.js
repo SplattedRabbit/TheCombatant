@@ -12,7 +12,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
 import { Combatant } from '../js/models/Combatant.js';
-import { renderPCOffense } from '../js/ui/components/player/PCOffense.js';
+import { SHAPE_ATTACKS } from '../js/models/helpers/classes/DruidHelper.js';
 
 // ---------------------------------------------------------------------------
 // Gruppe: Combatant - Wild Shape enterShape/exitShape
@@ -161,111 +161,48 @@ test('Wild Shape - pc.activeShape wird nach exitShape auf none zurückgesetzt', 
 });
 
 // ---------------------------------------------------------------------------
-// Gruppe: SHAPE_ATTACKS Datenstruktur (indirekt über renderPCOffense)
-// Die SHAPE_ATTACKS-Konstante ist modul-intern — wir testen sie indirekt,
-// indem wir prüfen ob renderPCOffense bei activeShape='wolf'/'leopard'/'bear'
-// unterschiedliche DOM-Inhalte erzeugt als bei 'none'.
+// Gruppe: SHAPE_ATTACKS Datenstruktur
+// Wir testen die fachliche SHAPE_ATTACKS-Datenstruktur direkt.
 // ---------------------------------------------------------------------------
 
-/**
- * Hilfsfunktion: Erstellt einen minimalen DOM-Mock, rendert PCOffense und
- * gibt das innerHTML des pcOffense-Elements zurück.
- */
-function renderShapeHTML(shapeName) {
-  const pc = new Combatant({ type: 'p' });
-  pc.bab.base = 3;
-  pc.str.base = 10;
-  pc.feats = [];
-  pc.weapons = [];
-  pc.armors = [];
-  pc.activeShape = shapeName;
-
-  const originalGetElementById = globalThis.document.getElementById;
-
-  const offenseEl = globalThis.document.createElement('div');
-  offenseEl.id = 'pcOffense';
-  offenseEl.innerHTML = '';
-
-  // natürliche Angriffsliste als child simulieren
-  let natListEl = null;
-
-  // Capture innere querySelector-Aufrufe
-  offenseEl.querySelector = (selector) => {
-    if (selector === '#pcNaturalAttacksList') {
-      if (!natListEl) {
-        natListEl = globalThis.document.createElement('div');
-        natListEl.id = 'pcNaturalAttacksList';
-        natListEl.children = [];
-        natListEl.innerHTML = '';
-        natListEl.appendChild = (child) => {
-          natListEl.children.push(child);
-          return child;
-        };
-      }
-      return natListEl;
-    }
-    return globalThis.document.createElement('div');
-  };
-
-  globalThis.document.getElementById = (id) => {
-    if (id === 'pcOffense') return offenseEl;
-    return originalGetElementById(id);
-  };
-
-  renderPCOffense(pc);
-
-  globalThis.document.getElementById = originalGetElementById;
-
-  return {
-    innerHTML: offenseEl.innerHTML,
-    natChildren: natListEl ? natListEl.children : []
-  };
-}
-
 test('SHAPE_ATTACKS - wolf enthält genau 1 Angriff (Biss, isNatural, primär, strMult 1.0)', () => {
-  // Bei activeShape='wolf' soll pcOffense Inhalt für natürliche Angriffe zeigen
-  const wolfResult = renderShapeHTML('wolf');
-  const noneResult = renderShapeHTML('none');
-
-  // Unterschiedlicher Inhalt: wolf zeigt natürliche Angriffssektion
-  assert.ok(
-    wolfResult.innerHTML.includes('Wild Shape') || wolfResult.innerHTML.includes('natürlich') ||
-    wolfResult.innerHTML.includes('Natürliche') || wolfResult.innerHTML.includes('pcNaturalAttacksList'),
-    'Bei wolf sollte die natürliche Angriffssektion gerendert werden'
-  );
-  assert.ok(
-    !noneResult.innerHTML.includes('pcNaturalAttacksList'),
-    'Bei none sollte keine Natürliche-Angriffe-Sektion erscheinen'
-  );
-
-  // Anzahl der Angriffs-Kinder überprüfen (1 für wolf)
-  assert.strictEqual(wolfResult.natChildren.length, 1, 'Wolf sollte genau 1 natürlichen Angriff haben');
+  const attacks = SHAPE_ATTACKS['wolf'];
+  assert.strictEqual(attacks.length, 1, 'Wolf sollte genau 1 natürlichen Angriff haben');
+  const atk = attacks[0];
+  assert.strictEqual(atk.name, 'Biss (Wolf)');
+  assert.strictEqual(atk.isNatural, true);
+  assert.strictEqual(atk.isSecondary, false);
+  assert.strictEqual(atk.strMult, 1.0);
 });
 
 test('SHAPE_ATTACKS - leopard enthält genau 3 Angriffe (1 primär, 2 sekundär)', () => {
-  const leopardResult = renderShapeHTML('leopard');
-  assert.strictEqual(leopardResult.natChildren.length, 3, 'Leopard sollte genau 3 natürliche Angriffe haben');
+  const attacks = SHAPE_ATTACKS['leopard'];
+  assert.strictEqual(attacks.length, 3, 'Leopard sollte genau 3 natürliche Angriffe haben');
+  
+  const primary = attacks.filter(a => !a.isSecondary);
+  const secondary = attacks.filter(a => a.isSecondary);
+  
+  assert.strictEqual(primary.length, 1, 'Leopard sollte genau 1 primären Angriff haben');
+  assert.strictEqual(secondary.length, 2, 'Leopard sollte genau 2 sekundäre Angriffe haben');
 });
 
 test('SHAPE_ATTACKS - bear enthält genau 3 Angriffe (2 primär Krallen, 1 sekundär Biss)', () => {
-  const bearResult = renderShapeHTML('bear');
-  assert.strictEqual(bearResult.natChildren.length, 3, 'Bär sollte genau 3 natürliche Angriffe haben');
+  const attacks = SHAPE_ATTACKS['bear'];
+  assert.strictEqual(attacks.length, 3, 'Bär sollte genau 3 natürliche Angriffe haben');
+  
+  const primary = attacks.filter(a => !a.isSecondary);
+  const secondary = attacks.filter(a => a.isSecondary);
+  
+  assert.strictEqual(primary.length, 2, 'Bär sollte genau 2 primäre Angriffe haben');
+  assert.strictEqual(secondary.length, 1, 'Bär sollte genau 1 sekundären Angriff haben');
 });
 
-test('SHAPE_ATTACKS - wolf/leopard/bear rendern unterschiedlichen Inhalt als none', () => {
-  // Stellt sicher dass alle drei gültigen Formen rendern und sich von none unterscheiden
-  const noneResult = renderShapeHTML('none');
-
+test('SHAPE_ATTACKS - wolf/leopard/bear existieren in der Datenstruktur', () => {
   for (const shape of ['wolf', 'leopard', 'bear']) {
-    const result = renderShapeHTML(shape);
-    assert.ok(
-      result.natChildren.length > 0,
-      `${shape} sollte mindestens 1 natürlichen Angriff rendern`
-    );
+    const attacks = SHAPE_ATTACKS[shape];
+    assert.ok(attacks && attacks.length > 0, `${shape} sollte definierte Angriffe haben`);
   }
-
-  // none hat keine natürlichen Angriffskinder
-  assert.strictEqual(noneResult.natChildren.length, 0, 'none sollte keine natürlichen Angriffseinträge rendern');
+  assert.strictEqual(SHAPE_ATTACKS['none'], undefined, 'none sollte keine natürlichen Angriffe definiert haben');
 });
 
 test('Wild Shape - enterShape(bear) und exitShape() verändern HP/MaxHP basierend auf Konstitutionsänderung', () => {

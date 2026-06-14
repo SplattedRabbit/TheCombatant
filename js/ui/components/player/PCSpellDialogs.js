@@ -11,7 +11,7 @@ import { CombatState } from '../../../state.js';
 import { uiRegistry } from '../../ui-shared.js';
 import { showCustomAlert, showCustomConfirm, showSpellScrollDialog } from '../dialogs.js';
 import { getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../../../spells.js';
-import { findSpell } from './PCSpellbookTab.js';
+import { findSpell } from '../../../spells.js';
 import { CombatRules } from '../../../rules.js';
 
 export function cleanProhibitedSpells(pc) {

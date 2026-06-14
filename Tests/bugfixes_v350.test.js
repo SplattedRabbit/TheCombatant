@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert';
 import { CombatState } from '../js/state.js';
 import { CombatRules } from '../js/rules.js';
-import { CompanionSheet } from '../js/ui/components/CompanionSheet.js';
+import { CompanionRules } from '../js/rules/CompanionRules.js';
 import { Combatant } from '../js/models/Combatant.js';
 
 test('Bug 1 - Bard Perform dynamic modifier calculation', () => {
@@ -28,7 +28,7 @@ test('Bug 1 - Bard Perform dynamic modifier calculation', () => {
 
 test('Bug 1 - Animal Companion scaling (Wolf at Level 1 and 6)', () => {
   // Level 1 Wolf (no scaling)
-  const wolfLvl1 = CompanionSheet.getCompanionBaseStats('wolf', 1);
+  const wolfLvl1 = CompanionRules.getCompanionBaseStats('wolf', 1);
   assert.ok(wolfLvl1, 'Wolf stats should be defined');
   assert.strictEqual(wolfLvl1.ac, 14, 'Wolf AC at level 1 should be 14');
   assert.strictEqual(wolfLvl1.str, 13, 'Wolf Str at level 1 should be 13');
@@ -47,7 +47,7 @@ test('Bug 1 - Animal Companion scaling (Wolf at Level 1 and 6)', () => {
   // Total attack bonus diff: +3 (BAB diff) + 1 (Str diff) = +4
   // New bite attack bonus: 3 + 4 = 7
   // New bite damage: 1w6 + Math.floor(2 * 1.5) = 1w6+3
-  const wolfLvl6 = CompanionSheet.getCompanionBaseStats('wolf', 6);
+  const wolfLvl6 = CompanionRules.getCompanionBaseStats('wolf', 6);
   assert.ok(wolfLvl6, 'Wolf stats should be defined at level 6');
   assert.strictEqual(wolfLvl6.ac, 18, `Wolf AC at level 6 should be 18, but was ${wolfLvl6.ac}`);
   assert.strictEqual(wolfLvl6.str, 15, `Wolf Str at level 6 should be 15, but was ${wolfLvl6.str}`);

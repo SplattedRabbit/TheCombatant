@@ -41,7 +41,9 @@ function createSnapshot(raw: unknown): CombatStateSnapshot {
     },
     session: {
       active: r.session?.active ?? false,
-      role: (r.session?.role ?? r.mode ?? 'choice') as 'host' | 'player' | 'choice',
+      role: (r.session?.active && r.session?.role && r.session.role !== 'choice'
+        ? r.session.role
+        : (r.mode ?? 'choice')) as 'host' | 'player' | 'choice',
       roomCode: r.session?.roomCode ?? '',
     },
     concentrations: Array.isArray(r.concentrations)

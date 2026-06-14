@@ -83,13 +83,6 @@ describe('Startup - Regelschicht (rules/)', () => {
 // ─────────────────────────────────────────────────────────────────────────────
 describe('Startup - UI-Schicht: Player-Komponenten', () => {
 
-  it('PCSpellsTab.js und PCFeaturesTab.js lassen sich importieren und exportieren renderPCSpells/renderPCFeatures', async () => {
-    const spellsMod = await import('../js/ui/components/player/PCSpellsTab.js');
-    const featuresMod = await import('../js/ui/components/player/PCFeaturesTab.js');
-    assert.equal(typeof spellsMod.renderPCSpells, 'function', 'renderPCSpells muss exportiert sein');
-    assert.equal(typeof featuresMod.renderPCFeatures, 'function', 'renderPCFeatures muss exportiert sein');
-  });
-
   it('PCSpellDialogs.js lässt sich importieren', async () => {
     const mod = await import('../js/ui/components/player/PCSpellDialogs.js');
     assert.equal(typeof mod.cleanProhibitedSpells, 'function');
@@ -97,94 +90,12 @@ describe('Startup - UI-Schicht: Player-Komponenten', () => {
     assert.equal(typeof mod.showSpellCreatorWizard, 'function');
   });
 
-  it('PCFeatsTab.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/player/PCFeatsTab.js');
-    assert.equal(typeof mod.renderPCFeats, 'function', 'renderPCFeats muss exportiert sein');
-    assert.equal(typeof mod.checkPrerequisites, 'function', 'checkPrerequisites muss exportiert sein');
-  });
-
-  it('PCAttributes.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/player/PCAttributes.js');
-    assert.equal(typeof mod.renderPCAttributes, 'function');
-  });
-
-  it('PCSkillsTab.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/player/PCSkillsTab.js');
-    assert.equal(typeof mod.renderPCSkills, 'function');
-  });
-
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TIER 5: UI-Schicht — Offense-Subkomponenten
+// TIER 6: UI-Schicht — Klassen-Feature-Komponenten (Aufgelöst durch React-Migration)
 // ─────────────────────────────────────────────────────────────────────────────
-describe('Startup - UI-Schicht: Offense-Komponenten', () => {
 
-  it('CombatSettingsRenderer.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/player/offense/CombatSettingsRenderer.js');
-    assert.equal(typeof mod.renderCombatSettingsHtml, 'function', 'renderCombatSettingsHtml muss exportiert sein');
-    assert.equal(typeof mod.bindCombatSettingsEvents, 'function', 'bindCombatSettingsEvents muss exportiert sein');
-  });
-
-  it('EquipmentSlotsRenderer.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/player/offense/EquipmentSlotsRenderer.js');
-    // Modul muss ohne Fehler laden (Exports per default oder intern)
-    assert.ok(mod !== null, 'Modul muss ladbar sein');
-  });
-
-  it('NaturalAttacksRenderer.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/player/offense/NaturalAttacksRenderer.js');
-    assert.ok(mod !== null, 'Modul muss ladbar sein');
-  });
-
-});
-
-// ─────────────────────────────────────────────────────────────────────────────
-// TIER 6: UI-Schicht — Klassen-Feature-Komponenten
-// ─────────────────────────────────────────────────────────────────────────────
-describe('Startup - UI-Schicht: Klassen-Feature-Komponenten', () => {
-
-  it('BarbarianFeatures.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/class-features/BarbarianFeatures.js');
-    assert.ok(mod.BarbarianFeatures, 'BarbarianFeatures muss exportiert sein');
-  });
-
-  it('BardFeatures.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/class-features/BardFeatures.js');
-    assert.ok(mod.BardFeatures);
-  });
-
-  it('MonkFeatures.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/class-features/MonkFeatures.js');
-    assert.ok(mod.MonkFeatures);
-  });
-
-  it('RangerFeatures.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/class-features/RangerFeatures.js');
-    assert.ok(mod.RangerFeatures);
-  });
-
-  it('RogueFeatures.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/class-features/RogueFeatures.js');
-    assert.ok(mod.RogueFeatures);
-  });
-
-  it('SorcererFeatures.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/class-features/SorcererFeatures.js');
-    assert.ok(mod.SorcererFeatures);
-  });
-
-  it('WizardFeatures.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/class-features/WizardFeatures.js');
-    assert.ok(mod.WizardFeatures);
-  });
-
-  it('DruidFeatures.js lässt sich importieren', async () => {
-    const mod = await import('../js/ui/components/class-features/DruidFeatures.js');
-    assert.ok(mod.DruidFeatures);
-  });
-
-});
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TIER 7: UI-Schicht — Dialoge

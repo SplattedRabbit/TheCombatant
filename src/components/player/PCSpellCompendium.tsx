@@ -13,14 +13,13 @@ import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '@core/spells.js';
 // @ts-ignore
-import { CombatRules } from '@core/rules.js';
+import { CombatRules, getEligibleSpellLevelsForPC, isSpellEligibleForPC, getAllCompendiumSpells } from '@core/rules.js';
 // @ts-ignore
 import { showCustomConfirm, showCustomAlert } from '@core/ui/components/dialogs.js';
 // @ts-ignore
 import { showSpellDetailsDialog, showSpellCreatorWizard } from '@core/ui/components/player/PCSpellDialogs.js';
-// @ts-ignore
-import { getEligibleSpellLevelsForPC, isSpellEligibleForPC, getAllCompendiumSpells } from '@core/ui/components/player/PCCompendiumTab.js';
 import { findSpell } from './PCSpellbookTab';
+
 
 interface PCSpellCompendiumProps {
   pc: any;

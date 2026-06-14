@@ -72,11 +72,21 @@ while ($listener.IsListening) {
 
         # Pfad dekodieren (z. B. Leerzeichen %20 wiederherstellen)
         $localPath = [System.Uri]::UnescapeDataString($request.Url.LocalPath)
-        if ($localPath -eq "/") { $localPath = "/index.html" }
         
-        # Absoluten Dateipfad auflösen
-        $relativePath = $localPath.TrimStart('/')
-        $filePath = Join-Path $PSScriptRoot $relativePath
+        # Routing-Logik für React-Migration
+        # Wenn root angefragt wird, liefere standardmäßig die React index-react.html aus dist/
+        if ($localPath -eq "/") {
+            $relativePath = "index-react.html"
+        } else {
+            $relativePath = $localPath.TrimStart('/')
+        }
+        
+        # Prüfe zuerst, ob die Datei im dist/ Verzeichnis liegt (z. B. index-react.html oder assets/)
+        $filePath = Join-Path $PSScriptRoot "dist/$relativePath"
+        if (!(Test-Path $filePath -PathType Leaf)) {
+            # Fallback auf das Root-Verzeichnis (für spells, peerjs, manifest, etc.)
+            $filePath = Join-Path $PSScriptRoot $relativePath
+        }
 
         if (Test-Path $filePath -PathType Leaf) {
             $bytes = [System.IO.File]::ReadAllBytes($filePath)

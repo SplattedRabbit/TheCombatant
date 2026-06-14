@@ -8,7 +8,7 @@
  */
 import { AttackEngine } from '../../rules/AttackEngine.js';
 import { CombatState } from '../../state.js';
-import { formatMod } from '../components/player/PCUtils.js';
+const formatMod = (val) => (val >= 0 ? '+' + val : val);
 
 export function showDamageChoiceDialog(pc, weapon, event, options = {}) {
   const existing = document.getElementById('damageChoiceOverlay');

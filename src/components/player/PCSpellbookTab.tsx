@@ -4,7 +4,7 @@
  * @exports   PCSpellbookTab
  * @reads     pc.learnedSpells, pc.spellSlots, pc.classes, pc.preparedSpells, pc.wizardSpecialization, pc.customSpells
  * @stateOps  updatePCSpellSlotsUsed, updatePCBatch
- * @depends   React, @core/state.js, @core/spells.js, @core/rules/SpellSlotCalculator.js, @core/ui/components/dialogs.js, @core/ui/components/player/ClassFeaturesRegistry.js
+ * @depends   React, @core/state.js, @core/spells.js, @core/rules/SpellSlotCalculator.js, @core/ui/components/dialogs.js
  */
 
 import React from 'react';
@@ -12,8 +12,6 @@ import React from 'react';
 import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { CombatSpells } from '@core/spells.js';
-// @ts-ignore
-import { CLASS_FEATURE_REGISTRY } from '@core/ui/components/player/ClassFeaturesRegistry.js';
 // @ts-ignore
 import { showCustomConfirm, showCustomAlert, showPrepareSpellDialog, showCastSpontaneousSpellDialog, showNewDayTemplateDialog } from '@core/ui/components/dialogs.js';
 // @ts-ignore
@@ -133,14 +131,6 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
             freshPc.spellSlots[lvl].used = 0;
           }
         }
-      });
-
-      // Run daily feature updates
-      const activeComponents = CLASS_FEATURE_REGISTRY.filter((comp: any) => comp.isEligible(pc));
-      activeComponents.forEach((comp: any) => {
-        const clsInfo = pc.classes ? pc.classes.find((c: any) => c.classType === comp.classKey) : null;
-        const level = clsInfo ? clsInfo.level : 1;
-        comp.onNewDay(pc, level);
       });
 
       CombatState.resetDailyResources();

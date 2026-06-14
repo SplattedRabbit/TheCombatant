@@ -5,9 +5,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { Combatant } from '../js/models/Combatant.js';
-import { CombatSpells } from '../js/spells.js';
+import { CombatSpells, findSpell } from '../js/spells.js';
 import { getState } from '../js/state.js';
-import { bindSpellsEvents } from '../js/ui/components/player/PCSpellsTabHandlers.js';
+import { showCastSuccessDialog } from '../js/ui/components/player/PCBuffsDialog.js';
 import { showCastSpontaneousSpellDialog } from '../js/ui/dialogs/PrepareSpellDialog.js';
 
 // Setup spell registry from spells_de.json to mimic the runtime app
@@ -173,18 +173,11 @@ test('Spell Buff Phase 3 - Prepared Cast prompts Dialog & Applies Buff locally',
 
   castSuccessOverlay = null;
 
-  // Simulate clicking the cast prepared spell button via bubbling click simulation
-  const container = document.createElement('div');
-  bindSpellsEvents(pc, container, () => {});
-
-  const btn = document.createElement('button');
-  btn.className = 'cast-prepared-btn';
-  btn.dataset.id = 'prep_bulls_strength';
-
-  container.onclick({
-    target: btn,
-    preventDefault() {},
-    stopPropagation() {}
+  // Directly trigger cast success dialog
+  const spell = findSpell(pc, 'bulls_strength');
+  showCastSuccessDialog(pc, spell, 'bulls_strength', [], () => {
+    const prep = pc.preparedSpells.find(s => s.spellKey === 'bulls_strength' && !s.isUsed);
+    if (prep) pc.castPreparedSpell(prep.id);
   });
 
   await sleep(100);
@@ -304,18 +297,11 @@ test('Spell Buff Phase 3 - Targeting Allies only excludes Caster stats', async (
 
   castSuccessOverlay = null;
 
-  // Simulate cast
-  const container = document.createElement('div');
-  bindSpellsEvents(pc, container, () => {});
-  
-  const btn = document.createElement('button');
-  btn.className = 'cast-prepared-btn';
-  btn.dataset.id = 'prep_bulls_strength_ally';
-
-  container.onclick({
-    target: btn,
-    preventDefault() {},
-    stopPropagation() {}
+  // Directly trigger cast success dialog
+  const spell = findSpell(pc, 'bulls_strength');
+  showCastSuccessDialog(pc, spell, 'bulls_strength', [], () => {
+    const prep = pc.preparedSpells.find(s => s.spellKey === 'bulls_strength' && !s.isUsed);
+    if (prep) pc.castPreparedSpell(prep.id);
   });
 
   await sleep(100);
