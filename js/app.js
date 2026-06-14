@@ -1,6 +1,7 @@
 import { CombatState } from './state.js';
 import { CombatUI } from './ui/ui-core.js';
 import { CombatSpells } from './spells.js';
+import { showSampleChoiceDialog } from './ui/components/dialogs.js';
 import './network/NetworkManager.js';
 
 
@@ -458,6 +459,35 @@ function _initEncounterControls() {
   if (btnAddConc) {
     btnAddConc.onclick = () => addConc();
   }
+
+  const btnSendDMMessage = document.getElementById('btnSendDMMessage');
+  if (btnSendDMMessage) {
+    btnSendDMMessage.onclick = () => {
+      const textEl = document.getElementById('dmMessageText');
+      const targetEl = document.getElementById('dmMessageTarget');
+      if (!textEl || !targetEl) return;
+      
+      const text = textEl.value.trim();
+      const target = targetEl.value;
+      if (!text) return;
+      
+      const packet = {
+        type: 'dm_message',
+        text: text,
+        targetPCId: target
+      };
+      
+      import('./network/NetworkManager.js').then(({ broadcastToClients }) => {
+        broadcastToClients(packet);
+      });
+      
+      textEl.value = '';
+      
+      import('./ui/dialogs/BaseDialogs.js').then(({ showCustomAlert }) => {
+        showCustomAlert('Nachricht gesendet', `Die Botschaft wurde übertragen.`, 'OK', '✉️');
+      });
+    };
+  }
 }
 
 function _initMetaInputsSync() {
@@ -493,9 +523,13 @@ function _initSystemActions() {
   const btnSample = document.getElementById('btnLoadSample');
   if (btnSample) {
     btnSample.onclick = () => {
-      CombatState.loadSampleData();
-      CombatUI.renderAll();
-      CombatUI.renderConc();
+      const s = CombatState.getState();
+      const isPlayer = s.mode === 'player' || (s.session && s.session.role === 'client');
+      showSampleChoiceDialog(isPlayer, (choice) => {
+        CombatState.loadSampleData(choice);
+        CombatUI.renderAll();
+        CombatUI.renderConc();
+      });
     };
   }
 

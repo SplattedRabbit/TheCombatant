@@ -362,6 +362,17 @@ export function applyIncomingDelta(packet, role, conn = null) {
       return;
     }
 
+    // 3d. DM Message received on Client
+    if (packet.type === 'dm_message' && role === 'client') {
+      const activePC = CombatState.getActivePC();
+      if (packet.targetPCId === 'all' || (activePC && activePC.id === packet.targetPCId)) {
+        import('../ui/dialogs/BaseDialogs.js').then(({ showParchmentMessage }) => {
+          showParchmentMessage(packet.text, 'Spielleiter');
+        });
+      }
+      return;
+    }
+
     // 4. Host Board Diff applying on Client
     if (packet.type === 'state_diff' && role === 'client') {
       const activePC = CombatState.getActivePC();

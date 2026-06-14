@@ -1,0 +1,96 @@
+/**
+ * @module    DMHeader
+ * @summary   Header-Komponente für den Spielleiter-Bildschirm.
+ *            Verwaltet und synchronisiert Begegnungs-Metadaten in Echtzeit.
+ * @exports   DMHeader
+ * @reads     meta.begegnung, meta.ort, meta.xpBudget, meta.xpVerteilt, meta.sitzung
+ * @stateOps  CombatState.updateMeta
+ * @depends   React, @core/state.js
+ */
+
+import React from 'react';
+// @ts-ignore
+import { CombatState } from '@core/state.js';
+import type { EncounterMeta } from '../../types/combat';
+
+interface DMHeaderProps {
+  meta: EncounterMeta;
+}
+
+export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
+  const handleChangeMeta = (key: string, value: string) => {
+    CombatState.updateMeta(key, value);
+  };
+
+  return (
+    <div className="hdr" style={{ textAlign: 'center', marginBottom: '10px' }}>
+      <h1>Dungeon Master Combat Sheet</h1>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', margin: '2px 0' }}>
+        <hr style={{ flex: 1, border: 'none', borderTop: '1px solid var(--pb)', maxWidth: '60px' }} />
+        <span style={{ color: 'var(--gold)', fontSize: '11px' }}>✦ ❧ ✦</span>
+        <hr style={{ flex: 1, border: 'none', borderTop: '1px solid var(--pb)', maxWidth: '60px' }} />
+      </div>
+      <div className="hdr-sub" style={{ fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '8px' }}>
+        Dungeons &amp; Dragons · 3rd Edition Revised · Core Rules
+      </div>
+      
+      <div className="hdr-meta" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px 12px', fontSize: '9px', color: 'var(--inkm)' }}>
+        <span>
+          Begegnung:{' '}
+          <input
+            type="text"
+            className="cinput"
+            value={meta.begegnung}
+            onChange={(e) => handleChangeMeta('begegnung', e.target.value)}
+            placeholder="z.B. Kobold-Hinterhalt"
+            style={{ width: '120px', fontSize: '9px', height: '15px', padding: '0 2px' }}
+          />
+        </span>
+        <span>
+          Ort:{' '}
+          <input
+            type="text"
+            className="cinput"
+            value={meta.ort}
+            onChange={(e) => handleChangeMeta('ort', e.target.value)}
+            placeholder="Dungeon, Ebene..."
+            style={{ width: '90px', fontSize: '9px', height: '15px', padding: '0 2px' }}
+          />
+        </span>
+        <span>
+          XP-Budget:{' '}
+          <input
+            type="text"
+            className="cinput"
+            value={meta.xpBudget}
+            onChange={(e) => handleChangeMeta('xpBudget', e.target.value)}
+            placeholder="0"
+            style={{ width: '45px', fontSize: '9px', height: '15px', padding: '0 2px', textAlign: 'center' }}
+          />
+        </span>
+        <span>
+          XP verteilt:{' '}
+          <input
+            type="text"
+            className="cinput"
+            value={meta.xpVerteilt}
+            onChange={(e) => handleChangeMeta('xpVerteilt', e.target.value)}
+            placeholder="0"
+            style={{ width: '45px', fontSize: '9px', height: '15px', padding: '0 2px', textAlign: 'center' }}
+          />
+        </span>
+        <span>
+          Sitzung:{' '}
+          <input
+            type="text"
+            className="cinput"
+            value={meta.sitzung}
+            onChange={(e) => handleChangeMeta('sitzung', e.target.value)}
+            placeholder="#1"
+            style={{ width: '30px', fontSize: '9px', height: '15px', padding: '0 2px', textAlign: 'center' }}
+          />
+        </span>
+      </div>
+    </div>
+  );
+};

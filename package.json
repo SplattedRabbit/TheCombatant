@@ -1,9 +1,23 @@
 {
   "type": "module",
   "scripts": {
-    "test": "node --import ./Tests/setup.js --test Tests/**/*.test.js"
+    "test": "node --import ./Tests/setup.js --test Tests/**/*.test.js",
+    "dev": "vite",
+    "build": "vite build && node scratch/update_sw.js",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "pdf-parse": "^1.1.1"
+    "pdf-parse": "^1.1.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.5.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
   }
 }

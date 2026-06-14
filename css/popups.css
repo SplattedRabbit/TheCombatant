@@ -392,7 +392,9 @@
 #prepareSpellOverlay,
 #wildShapeDialogOverlay,
 #buffDetails,
-#rollBreakdown {
+#rollBreakdown,
+#sampleChoiceDialogOverlay,
+#parchmentMessageOverlay {
   transform: scale(var(--app-scale));
   transform-origin: center center;
 }
@@ -409,3 +411,37 @@ select option {
   font-family: 'Crimson Text', serif !important;
 }
 
+/* Parchment Message Overlay */
+.parchment-box {
+  background-color: #f5edd6;
+  background-image: radial-gradient(circle, #fcfaf2 0%, #e5d2ac 100%);
+  border: 3px double #784818;
+  border-radius: 4px;
+  padding: 30px 36px;
+  width: 460px;
+  max-width: 90vw;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(120,72,24,0.15);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15), opacity 0.3s;
+}
+
+.parchment-close-btn {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 10px;
+  padding: 6px 24px;
+  cursor: pointer;
+  background: #e5cf9c;
+  border: 1px solid #784818;
+  border-radius: 3px;
+  color: #482a0e;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: background-color 0.15s, transform 0.1s;
+  outline: none;
+}
+.parchment-close-btn:hover {
+  background: #dcb87d;
+}
+.parchment-close-btn:active {
+  transform: scale(0.96);
+}

@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v3.5.0** | Release | 13.06.2026 | Beispieldaten-Auswahldialog & D&D 3.5e RAW Level-10-Charaktere |
 | **v3.4.0** | Release | 12.06.2026 | WebRTC Buff- & Auren-Propagation (Netzwerk-Auren) |
 | **v3.3.5** | Release | 12.06.2026 | Refactoring feats-data.js (Aufteilung in Kategorie-Dateien) |
 | **v3.3.4** | Release | 12.06.2026 | Modularisierung von PCDefenses in DDD-Schichten |
@@ -68,6 +69,21 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v3.5.0 — Beispieldaten-Auswahldialog & D&D 3.5e RAW Level-10-Charaktere (Release v3.5.0)
+
+* **📋 Modularer Beispieldaten-Auswahldialog:**
+  - **Spielleiter (DM/Host):** Kann wählen zwischen dem Standard-Encounter auf Stufe 3 (mit Goblins) und einem epischen Stufe-10-Helden-Encounter (3 Helden, 1 junger roter Drache, 2 Steingiganten).
+  - **Spieler (Client/Offline):** Bekommt einen Auswahldialog mit genau drei Stufe-10-Charakteren (Magier, Waldläufer, Paladin). Ein Klick überschreibt/füllt das aktive Spielerblatt vollständig mit all seinen Werten, Zaubern, Begleitern und Waffen.
+* **🛡️ D&D 3.5e RAW Stufe 10 Charaktere:**
+  - **Lysara die Erhabene (Magierin Stufe 10):** Mit vorbereiteten Zaubern (Feuerball, Stoneskin etc.), Attributen und ihrer Katze *Keks* als Vertrautem.
+  - **Gildor Windläufer (Waldläufer Stufe 10):** Mit Bogenschießen-Kampfstil, Erzfeind Orks und Wolfbegleiter *Borko*.
+  - **Sir Valerius (Paladin Stufe 10):** Mit göttlicher Gnade und täglichen Ressourcen (Hände auflegen, Böses niederstrecken, Untote vertreiben).
+* **🖥️ Dialog-Größen-Anpassung:**
+  - Alle modalen Basis-Dialoge (`showInfoDialog`, `showCustomConfirm` etc.) wurden auf 440px bis 480px Breite verbreitert, um ein Abschneiden von Inhalten zu verhindern.
+  - Das Overlay `#sampleChoiceDialogOverlay` wurde in die popups.css-Skalierungsregeln aufgenommen.
+* **🚫 Keine redundanten Buttons:** Der temporär hinzugefügte System-Button im Spieler-Header wurde entfernt; Spieler greifen über das bereits vorhandene ⚙️ System-Menü in der Tab-Leiste auf die Beispieldaten zu.
+* **Service-Worker & Cache:** Erhöhung der Cache-Version auf `v3.5.0-cache-v4` für stabile Offline-Bereitstellung.
 
 ### v3.4.0 — WebRTC Buff- & Auren-Propagation (Release v3.4.0)
 

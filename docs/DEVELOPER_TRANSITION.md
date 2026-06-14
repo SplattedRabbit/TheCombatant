@@ -1,6 +1,6 @@
-# Übergabeprotokoll / Developer Transition Briefing: D&D 3.5e Combat App — v3.2.7 (Live)
+# Übergabeprotokoll / Developer Transition Briefing: D&D 3.5e Combat App — v3.5.0 (Live)
 
-Hallo! Du übernimmst das D&D 3.5e Combat App-Projekt. Der aktuelle Stand ist **v3.2.7 (Live, Branch: main)**.
+Hallo! Du übernimmst das D&D 3.5e Combat App-Projekt. Der aktuelle Stand ist **v3.5.0 (Live, Branch: feature/dm-screen-refactoring-v3.5.0)**.
 
 Bitte lies dieses Dokument aufmerksam durch, um die Architektur, die Dateistruktur und die Verhaltensregeln der Codebasis zu verstehen.
 
@@ -20,8 +20,8 @@ Bitte lies dieses Dokument aufmerksam durch, um die Architektur, die Dateistrukt
 3. **Persistente UI-Entwicklungen:** Achte bei UI-Aktualisierungen darauf, dass der Tastaturfokus und die Cursor-Position durch den `Focus-Schutz` (`DeltaRenderer.applyWithFocusGuard`) nicht verloren gehen.
 4. **Lokales WLAN-Hosting:** Beim Starten von `Start_Server.bat` werden alle verfügbaren IPv4-Adressen deines PCs im Netzwerk ermittelt und in der Konsole ausgegeben, um das Tablet schnell zu verbinden. Run as Administrator, um auf der IP lauschen zu können.
 5. **Service Worker Cache-Versionierung:** Das Muster ist `vX.Y.Z-cache-vN`. Beim Hochgehen der Versionsnummer beginnt der Cache-Zähler wieder bei 1. Beim Bugfixing innerhalb einer Version wird nur `N` inkrementiert.
-   - Aktuelle Version: `dnd-combatsheet-v3.2.7-cache-v1`
-  - Betrifft: `service-worker.js` (Zeile 1, `CACHE_NAME`) und `index.html` (Footer-Version).
+   - Aktuelle Version: `dnd-combatsheet-v3.5.0-cache-v4`
+   - Betrifft: `service-worker.js` (Zeile 1, `CACHE_NAME`) und `index.html` (Footer-Version).
 
 ---
 
@@ -91,8 +91,13 @@ graph TD
   - [PCFeaturesTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCFeaturesTab.js): Rendert Klassen- und Rassenmerkmale (Volksmerkmale).
   - [PCSpellbookTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCSpellbookTab.js) / [PCCompendiumTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCCompendiumTab.js) / [PCFeatsTab.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/player/PCFeatsTab.js).
 * **Player Sheet Navigation (`js/ui/components/player-sheet.js`):**
-  - Enthält 5 Tabs: Übersicht, Skills & Talente, Ausrüstung, Zauberbuch, Klasse & Begleiter, System. Renders `renderPCOffense()` in Tab Ausrüstung.
-* **Pergament-Dialoge (`js/ui/dialogs/`)**: Wie in v3.1.5.
+  - Kapselt die Tab-Bar und das Tab-Routing auf Spielerseite.
+* **DM-Screen UI (`js/ui/components/dm/` & `js/ui/components/dm-screen.js`):**
+  - [dm-screen.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/dm-screen.js): Haupt-Fassade für den DM-Screen.
+  - [DMHeader.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/dm/DMHeader.js): Runden-Display und Metadaten-Synchronisation.
+  - [DMCombatantsTable.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/dm/DMCombatantsTable.js): Kämpfer-Tabellen für Spieler, Gegner und NSCs.
+  - [DMToolbox.js](file:///c:/Users/Juls/Desktop/CombatApp/js/ui/components/dm/DMToolbox.js): Konzentrations-Zauberliste, Schnellreferenz und Conditions-Ref-Karten.
+* **Pergament-Dialoge (`js/ui/dialogs/` & `js/ui/components/dialogs.js`):** Modularisierte Dialoge (z. B. `BaseDialogs.js`, `AttackChoiceDialog.js`, `PrepareSpellDialog.js`).
 
 ---
 
@@ -119,32 +124,15 @@ graph TD
 
 ---
 
-## 6. Bekannte offene Bugs (Stand: 10.06.2026)
+## 6. Bekannte offene Bugs (Stand: 13.06.2026)
 
 Vollständige Liste: [Bugtracking.md](file:///c:/Users/Juls/Desktop/CombatApp/docs/Bugtracking.md)
 
-| # | Titel | Priorität |
-|---|---|---|
-| **16** ⚠ | **Crash beim Tab „Ausrüstung" in Wild Shape** — `_renderNaturalAttacksList` ist nicht definiert in `PCOffense.js` (Zeile 85). Wahrscheinlich wurde die Funktion bei der Magic-Items-Implementierung nicht mitübertragen. | **KRITISCH** |
-| **15** | Druiden-Tiergestalt: Attributswerte/RK/Rettungswürfe werden nicht korrekt berechnet. | Hoch |
-| **14** | Endlosschleife beim Verlernen von Talenten (FeatScrollDialog.js). | Mittel |
-| **13** | Talent-Auswahl: Fehlende Obergrenze nach PHB. | Mittel |
-| **12** | Fertigkeiten: Keine 0 eintragbar. | Niedrig |
-| **11** | „Trained Only"-Skills nicht ausgegraut bei 0 Rängen. | Niedrig |
-| **10** | Level-Dropdown abgeschnitten (PCAttributes.js). | Niedrig |
-| **9** | Waffenslots: Hand-Zuweisung (Main/Off) fehlt im aktiven Slot. | Mittel |
-| **8** | Bekannte Zauber-Limit nicht geprüft (Barden/Hexenmeister). | Mittel |
-| **7** | Scrollverhalten bei langen Listen (Weapons/Armor Stash). | Niedrig |
-| **6** | Barbar: Kampfrausch-Werte nicht korrekt. | Hoch |
-| **5** | Schurke: Kein Toggle-Button für Hinterhältigen Angriff im Angriffs-Panel. | Mittel |
-| **4** | Fertigkeiten-Obergrenze wird nicht durchgesetzt. | Mittel |
-| **3** | Talente-Dropdown breiter als Suchfeld. | Niedrig |
-| **2** | Paladin: Handauflegen ignoriert CHA-Modifier. | Mittel |
-| **1** | Fehlende Regelerklärungen bei diversen Klassen. | Niedrig |
+**Aktueller Status:** Das gesamte Backlog (Bugs #1 bis #18) wurde vollständig behoben. Es gibt derzeit **keine offenen bekannten Bugs** in der Codebasis.
 
 ---
 
-## 7. Historisches Fehler-Archiv (Behoben in v2.9.0 - v3.2.5)
+## 7. Historisches Fehler-Archiv (Behoben in v2.9.0 - v3.5.0)
 
 1. **Fokusverlust bei Sucheingabe (Feats/Spells):** Teillisten-Aktualisierung statt vollständigem `innerHTML`-Ersatz.
 2. **Talent-Voraussetzungsprüfung:** `checkFeatPrerequisites()` in `feats-data.js`, blockiert `addPCFeat()` bei Verstößen.
@@ -154,6 +142,7 @@ Vollständige Liste: [Bugtracking.md](file:///c:/Users/Juls/Desktop/CombatApp/do
 6. **„You Died" Crash:** `syncPCToHost` korrekt in `state.js` exportiert.
 7. **Drawer-Persistenz-Bugfix (Waffen):** Stabile `Weapon.id`, `openDrawerIds`-Set in `PCOffense.js`.
 8. **TWF & Doppelwaffen:** Ranger-Rüstungs-Einschränkung, Hand-Dropdowns, Warn-Popups, Kampfstab-Wahl-Dialog.
+9. **Dialog-Größen (v3.5.0):** Modals auf 440px-480px verbreitert, um Abschneiden von Inhalt/Optionen zu verhindern.
 
 ---
 
@@ -161,13 +150,13 @@ Vollständige Liste: [Bugtracking.md](file:///c:/Users/Juls/Desktop/CombatApp/do
 
 ### ✅ Gelöst in v3.3.x — Buff-Stacking & Hotfixes
 * **Bug #16 behoben:** `_renderNaturalAttacksList` in `PCOffense.js` importiert und integriert.
-* **Persönliche Buffs:** Schnellwahl-Panel für eigene Effekte (z. B. *Magierrüstung* [+4 RK], *Stärke des Stiers* [+4 STR]) und Stacking-Engine nach D&D 3.5e RAW implementiert (v3.3.2).
+* **Persönliche Buffs:** Schnellwahl-Panel für eigene Effekte (z. B. *Magierrüstung* [+4 RK]) und Stacking-Engine nach D&D 3.5e RAW implementiert (v3.3.2).
 
-### 🔮 v3.4 — Netzwerk-Auren (WebRTC-Targeting)
-* **Netzwerk-Auren:** Buffs (wie *Bardenmusik* oder Paladin-Auren) über das Netzwerk an verbündete Ziele senden.
+### ✅ Gelöst in v3.4.0 — Netzwerk-Auren (WebRTC-Targeting)
+* **Netzwerk-Auren:** Buffs über das Netzwerk (WebRTC) an verbündete Ziele propagieren.
 
-### 🏰 v3.5 — DM-UI Komplett-Refactoring & Redesign
-* Modularisierung der `dm-screen.js`, Modernisierung des Initiative-Monitors, Tierbegleiter als eigenständige Kampfteilnehmer.
+### ✅ Gelöst in v3.5.0 — DM-UI Komplett-Refactoring & Beispieldaten
+* Modularisierung des DM-Screens (`js/ui/components/dm/`), Modernisierung des Initiative-Monitors und ansprechende Beispieldaten-Auswahldialoge mit RAW-Stufe-10-Charakteren.
 
 ### 🪙 v3.6 — Loot-Generator & Universeller Ressourcen-Tracker
 * Loot-Generator für DM (Gold, Edelsteine, Tränke nach EL-Tabellen), Custom Ressourcen-Tracker für Spieler.
@@ -177,3 +166,59 @@ Vollständige Liste: [Bugtracking.md](file:///c:/Users/Juls/Desktop/CombatApp/do
 
 ### v3.8 — Beispieldatengenerator
 * PC-, NPC- und Monster-Generator mit Klassen-, Völker- und Rollenauswahl aus dem SRD.
+
+---
+
+## 9. React + Vite + TypeScript Migration (ab v4.0)
+
+### Status: Milestone 1 abgeschlossen (2026-06-14)
+
+Die App wird schrittweise von Vanilla JS auf **React + Vite + TypeScript** portiert.
+Die Domain-Logik (`js/models/`, `js/rules/`, `js/state/`) bleibt dabei **vollständig unverändert** — sie ist durch 186 Unit-Tests abgedeckt.
+
+### Neue Dateien & Infrastruktur
+
+| Datei | Zweck |
+|---|---|
+| `vite.config.ts` | Vite-Bundler: `@core` → `./js/` Alias, separater HTML-Entry |
+| `tsconfig.json` | TypeScript strict, react-jsx, Bundler-Resolution |
+| `index-react.html` | Vite-Einstiegspunkt (Vanilla `index.html` bleibt unberührt) |
+| `src/main.tsx` | React StrictMode Entry |
+| `src/App.tsx` | Root-Komponente (Smoke-Test) |
+| `src/hooks/useCombatState.ts` | **State-Bridge:** abonniert `StateEvents` → liefert React-State |
+| `src/types/combat.ts` | Domain-Interfaces: `Combatant`, `CombatStateSnapshot`, etc. |
+| `src/types/global.d.ts` | CSS-Module & Side-Effect-Import-Deklarationen |
+| `src/styles/globals.css` | Importiert alle bestehenden CSS-Dateien als globale Styles |
+| `docs/transition_notes.md` | Detailliertes Übergabeprotokoll für jeden Milestone |
+
+### Dev-Befehle (React)
+
+```powershell
+cmd /c "npm run dev"        # Vite Dev-Server → localhost:5173/index-react.html
+cmd /c "npm run typecheck"  # TypeScript prüfen (tsc --noEmit)
+cmd /c "npm run build"      # Produktions-Build → dist/
+```
+
+### State-Bridge Pattern
+
+```
+StateEvents (js/state/state-core.js)
+    ┣ 'state_changed'  ← alle State-Mutationen
+    ┗ 'pc_changed'     ← PC-spezifische Mutationen
+              ↓  dynamischer Import (bootstrapEngine)
+    useCombatState()  (src/hooks/useCombatState.ts)
+              ↓  createSnapshot() → tiefe Kopie
+    React-Komponenten (src/components/...)
+```
+
+### Migrations-Meilensteine
+
+| # | Ziel | Status |
+|---|---|---|
+| 1 | Infrastruktur & State-Bridge | ✅ Abgeschlossen |
+| 2 | Spieler-Bogen Teil 1 (Header, Attribute, Kampf) | ✅ Abgeschlossen |
+| 3 | Spieler-Bogen Teil 2 (Zauberbuch, Features, Items) | ✅ Abgeschlossen |
+| 4 | DM-Screen & Initiative-Leiste | ✅ Abgeschlossen |
+| 5 | WebRTC & Build-Optimierung | ✅ Abgeschlossen |
+
+Vollständige Notizen: [transition_notes.md](file:///c:/Users/Juls/Desktop/CombatApp/docs/transition_notes.md)
