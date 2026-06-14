@@ -3,6 +3,7 @@
 
 $port = 8080
 $url = "http://localhost:$port/"
+$projectRoot = Split-Path $PSScriptRoot -Parent
 
 # Lokale Netzwerk-IPs ermitteln (ohne 127.0.0.1)
 $ips = [System.Net.Dns]::GetHostAddresses([System.Net.Dns]::GetHostName()) | 
@@ -82,10 +83,10 @@ while ($listener.IsListening) {
         }
         
         # Prüfe zuerst, ob die Datei im dist/ Verzeichnis liegt (z. B. index-react.html oder assets/)
-        $filePath = Join-Path $PSScriptRoot "dist/$relativePath"
+        $filePath = Join-Path $projectRoot "dist/$relativePath"
         if (!(Test-Path $filePath -PathType Leaf)) {
             # Fallback auf das Root-Verzeichnis (für spells, peerjs, manifest, etc.)
-            $filePath = Join-Path $PSScriptRoot $relativePath
+            $filePath = Join-Path $projectRoot $relativePath
         }
 
         if (Test-Path $filePath -PathType Leaf) {

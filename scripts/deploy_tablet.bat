@@ -1,4 +1,5 @@
 @echo off
+cd /d "%~dp0.."
 echo ================================================
 echo  D^&D 3.5e Combat App -- Tablet Deploy Builder
 echo ================================================

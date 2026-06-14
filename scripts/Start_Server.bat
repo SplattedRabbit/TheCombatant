@@ -1,4 +1,5 @@
 @echo off
+cd /d "%~dp0.."
 title D^&D 3.5e Combat App Web Server
 color 0E
 

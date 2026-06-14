@@ -1,5 +1,5 @@
 @echo off
-cd /d "%~dp0"
+cd /d "%~dp0.."
 title D^&D 3.5e Combat App Dev Launcher (Build ^& Server)
 color 0B
 
