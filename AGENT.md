@@ -7,18 +7,22 @@
 ## 1. Pflichtbefehle
 
 > [!IMPORTANT]
-> **Token-Schonung bei Unittests:** Das Ausführen aller 170+ Tests erzeugt enormen Output und verbraucht wertvolle Context-Token. Führe im Alltag immer nur den spezifischen Test aus, der zu deiner Änderung passt. Den globalen Testlauf machst du ausschließlich **einmalig direkt vor dem Turn-Ende**.
+> **Token-Schonung bei Unittests:** Das Ausführen aller 180+ Tests erzeugt enormen Output und verbraucht wertvolle Context-Token. Verwende immer den `--test-reporter=dot` Parameter, um den Output auf ein Minimum zu reduzieren. Führe im Alltag immer nur den spezifischen Test aus, der zu deiner Änderung passt. Den globalen Testlauf machst du ausschließlich **einmalig direkt vor dem Turn-Ende**.
 
 ```powershell
 # 1. GEZIELTES TESTEN (Standard-Workflow während der Entwicklung):
-# Finde den spezifischen Test in /Tests/ und führe nur diesen aus (Beispiel):
-node --import ./Tests/setup.js --test Tests/bugfixes_v350.test.js
+# Verwende --test-reporter=dot für minimalen Token-Verbrauch!
+node --import ./Tests/setup.js --test --test-reporter=dot Tests/bugfixes_v350.test.js
 
 # 2. GLOBALER TESTLAUF (NUR einmalig direkt vor dem Turn-Ende erlaubt):
-node --import ./Tests/setup.js --test Tests/**/*.test.js
+# Verwende --test-reporter=dot für minimalen Token-Verbrauch!
+node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
 
-# 3. D&D-REGELWERK DURCHSUCHEN (NIE die PDF laden):
+# 3. D&D-REGELWERK DURCHSUCHEN (NIE die PDF/TXT laden):
 node scratch/search_rules.js "<Suchabfrage>"
+
+# 4. ZAUBER-DATENBANK DURCHSUCHEN (NIE spells_de.json direkt laden):
+node scratch/search_spells.js "<Zaubername>"
 ```
 
 ---
