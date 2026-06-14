@@ -35,6 +35,38 @@ function walkDir(dir) {
   return results;
 }
 
+// Copy index-react.html to index.html in dist for GitHub Pages root resolution
+const indexReactPath = path.join(distDir, 'index-react.html');
+const indexHtmlPath = path.join(distDir, 'index.html');
+if (fs.existsSync(indexReactPath)) {
+  fs.copyFileSync(indexReactPath, indexHtmlPath);
+  console.log('SW: index-react.html -> index.html kopiert für GitHub Pages');
+}
+
+// Create a compatibility redirect file at dist/dist/index-react.html for backward compatibility
+// (for users visiting the old path /dist/index-react.html)
+const nestedDistDir = path.join(distDir, 'dist');
+if (!fs.existsSync(nestedDistDir)) {
+  fs.mkdirSync(nestedDistDir, { recursive: true });
+}
+const redirectHtmlContent = `<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0; URL='../'" />
+  <title>D&D 3.5e Combat Sheet - Weiterleitung...</title>
+  <script>
+    window.location.replace('../');
+  </script>
+</head>
+<body>
+  <p>Falls du nicht automatisch weitergeleitet wirst, <a href="../">klicke hier</a>.</p>
+</body>
+</html>`;
+fs.writeFileSync(path.join(nestedDistDir, 'index-react.html'), redirectHtmlContent, 'utf8');
+console.log('SW: dist/dist/index-react.html Weiterleitung erstellt');
+
+
 const distAssets = walkDir(distDir);
 
 // 2. Root-SW lesen um aktuelle Cache-Version zu extrahieren
