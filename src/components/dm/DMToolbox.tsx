@@ -28,10 +28,9 @@ interface ConcentrationSpell {
 interface DMToolboxProps {
   concentrations: ConcentrationSpell[];
   combatants: Combatant[];
-  onSelectCondition: (condName: string) => void;
 }
 
-export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants, onSelectCondition }) => {
+export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants }) => {
   // Concentration inputs
   const [cWho, setCWho] = useState('');
   const [cSpell, setCSpell] = useState('');
@@ -213,62 +212,6 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
             >
               Senden ✉️
             </button>
-          </div>
-        </div>
-      </div>
-
-      {/* 3. Quick Reference Conditions Panel */}
-      <div className="panel">
-        <div className="phdr"><h2>🎲 Schnellreferenz</h2></div>
-        <div className="pbody qref" style={{ padding: '4px 6px' }}>
-          {/* Static D&D Formulas */}
-          <div className="qref-h" style={{ fontWeight: 'bold', fontSize: '8.5px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Angriff</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25 }}>Nah: 1W20 + BAB + Stä ± Größe</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25 }}>Fern: 1W20 + BAB + Ges ± Größe</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25 }}>Krit. best.: 1W20 + alle Angriffsboni</div>
-          
-          <hr className="qhr" style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.15)', margin: '3px 0' }} />
-          
-          <div className="qref-h" style={{ fontWeight: 'bold', fontSize: '8.5px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Rettungswürfe</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25 }}>ZÄ (Zähigkeit): Basis + Kon-Mod</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25 }}>REF (Reflex): Basis + Ges-Mod</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25 }}>WIL (Willen): Basis + Wei-Mod</div>
-          
-          <hr className="qhr" style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.15)', margin: '3px 0' }} />
-          
-          <div className="qref-h" style={{ fontWeight: 'bold', fontSize: '8.5px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Konzentration bei Schaden</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25 }}>SG 10 + Schaden + Zauberstufe · ZÄ</div>
-          
-          <hr className="qhr" style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.15)', margin: '3px 0' }} />
-          
-          <div className="qref-h" style={{ fontWeight: 'bold', fontSize: '8.5px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Sterbend / Tod</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25 }}>0 TP = bewusstlos · −1 bis −9 = sterbend</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25 }}>Sterbend: −1 TP/Runde · W10 ≥ 10 = stabil</div>
-          <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25 }}>−10 TP = sofortiger Tod</div>
-          
-          <hr className="qhr" style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.15)', margin: '4px 0' }} />
-          
-          <div className="qref-h" style={{ fontWeight: 'bold', fontSize: '8.5px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", marginBottom: '3px' }}>Bedingungen &amp; Effekte</div>
-          <div id="condRefGrid" style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
-            {CombatRules.CONDITIONS.map((c: any) => (
-              <div
-                key={c.n}
-                className="cond-ref-chip"
-                onClick={() => onSelectCondition(c.n)}
-                style={{
-                  fontSize: '7.5px',
-                  padding: '2px 4px',
-                  border: '0.5px solid var(--pb)',
-                  borderRadius: '2px',
-                  background: 'rgba(200, 169, 110, 0.05)',
-                  cursor: 'pointer',
-                  color: 'var(--inkm)',
-                  transition: 'all 0.15s ease'
-                }}
-              >
-                {c.n}
-              </div>
-            ))}
           </div>
         </div>
       </div>

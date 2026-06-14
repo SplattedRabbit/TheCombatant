@@ -15,7 +15,6 @@ import { DMHeader } from './DMHeader';
 import { InitBar } from './InitBar';
 import { DMCombatantsTable } from './DMCombatantsTable';
 import { DMToolbox } from './DMToolbox';
-import { RefOverlay } from './RefOverlay';
 // @ts-ignore
 import { showCustomConfirm, showSampleChoiceDialog, showSessionModal } from '@core/ui/components/dialogs.js';
 
@@ -24,7 +23,6 @@ interface DMScreenProps {
 }
 
 export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
-  const [selectedCondition, setSelectedCondition] = useState<string | null>(null);
   const [isSystemOpen, setIsSystemOpen] = useState(false);
   const systemBtnRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -282,17 +280,9 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
           <DMToolbox 
             concentrations={state.concentrations || []} 
             combatants={state.combatants}
-            onSelectCondition={(condName) => setSelectedCondition(condName)}
           />
         </div>
       </div>
-
-      {/* Condition Detail Modal Overlay */}
-      <RefOverlay 
-        condName={selectedCondition} 
-        isOpen={selectedCondition !== null} 
-        onClose={() => setSelectedCondition(null)} 
-      />
 
       {/* Hidden file input for Import */}
       <input 
