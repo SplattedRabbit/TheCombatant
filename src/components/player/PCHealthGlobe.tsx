@@ -87,10 +87,10 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
 
   return (
     <BaseCard title="❤️ Vitalität & Status">
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', gap: '16px', width: '100%', flexWrap: 'wrap' }}>
         
         {/* Globe visual container */}
-        <div className="globe-wrapper">
+        <div className="globe-wrapper" style={{ margin: '0' }}>
           <div className="globe-ring"></div>
           <div className="liquid-chamber">
             {/* Glass reflection specular highlight layers */}
@@ -153,86 +153,89 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
           </div>
         </div>
         
-        {/* Control pedestal deck underneath the Globe */}
-        <div className="globe-control-deck" style={{ marginTop: '10px' }}>
-          <div className="globe-control-row">
-            <input
-              className="globe-dmg-input"
-              type="number"
-              placeholder="Wert"
-              value={dmgValue}
-              onChange={(e) => setDmgValue(e.target.value)}
-              style={{
-                width: '38px',
-                height: '20px',
-                textAlign: 'center',
-                borderRadius: '2px',
-                border: '0.5px solid var(--pb)',
-                fontFamily: "'Crimson Text', serif",
-                fontSize: '11px',
-                outline: 'none',
-                background: 'rgba(255,255,255,0.6)'
-              }}
-            />
-            <button className="globe-btn globe-btn-dmg" onClick={handleApplyDamage} title="Schaden abziehen">- Schad.</button>
-            <button className="globe-btn globe-btn-heal" onClick={handleApplyHeal} title="Heilung anwenden">+ Heil.</button>
-            <button className="globe-btn globe-btn-temp" onClick={handleApplyTempHP} title="Temporäre TP hinzufügen">+ Temp</button>
-          </div>
-          
-          <div className="globe-chk-row" style={{ display: 'flex', gap: '8px', fontSize: '7px', color: 'var(--inkl)', justifyContent: 'center', marginTop: '4px' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer' }}>
+        {/* Right column: Controls & Conditions */}
+        <div style={{ display: 'flex', flexDirection: 'column', flex: '1', minWidth: '180px', gap: '8px' }}>
+          {/* Control pedestal deck */}
+          <div className="globe-control-deck" style={{ borderTop: 'none', paddingTop: '0', marginTop: '0', width: '100%' }}>
+            <div className="globe-control-row">
               <input
-                type="checkbox"
-                checked={isHalf}
-                onChange={(e) => setIsHalf(e.target.checked)}
-                className="globe-dmg-half"
-                style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
+                className="globe-dmg-input"
+                type="number"
+                placeholder="Wert"
+                value={dmgValue}
+                onChange={(e) => setDmgValue(e.target.value)}
+                style={{
+                  width: '38px',
+                  height: '20px',
+                  textAlign: 'center',
+                  borderRadius: '2px',
+                  border: '0.5px solid var(--pb)',
+                  fontFamily: "'Crimson Text', serif",
+                  fontSize: '11px',
+                  outline: 'none',
+                  background: 'rgba(255,255,255,0.6)'
+                }}
               />
-              <span>Halbiert (Reflex)</span>
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer' }}>
-              <input
-                type="checkbox"
-                checked={isDouble}
-                onChange={(e) => setIsDouble(e.target.checked)}
-                className="globe-dmg-double"
-                style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
-              />
-              <span>Doppelt (Krit)</span>
-            </label>
+              <button className="globe-btn globe-btn-dmg" onClick={handleApplyDamage} title="Schaden abziehen">- Schad.</button>
+              <button className="globe-btn globe-btn-heal" onClick={handleApplyHeal} title="Heilung anwenden">+ Heil.</button>
+              <button className="globe-btn globe-btn-temp" onClick={handleApplyTempHP} title="Temporäre TP hinzufügen">+ Temp</button>
+            </div>
+            
+            <div className="globe-chk-row" style={{ display: 'flex', gap: '8px', fontSize: '7px', color: 'var(--inkl)', justifyContent: 'center', marginTop: '4px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={isHalf}
+                  onChange={(e) => setIsHalf(e.target.checked)}
+                  className="globe-dmg-half"
+                  style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
+                />
+                <span>Halbiert (Reflex)</span>
+              </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={isDouble}
+                  onChange={(e) => setIsDouble(e.target.checked)}
+                  className="globe-dmg-double"
+                  style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
+                />
+                <span>Doppelt (Krit)</span>
+              </label>
+            </div>
           </div>
-        </div>
 
-        {/* Conditions Badges */}
-        <div style={{ width: '100%', marginTop: '14px', borderTop: '0.5px solid rgba(200, 169, 110, 0.15)', paddingTop: '8px' }}>
-          <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px', textAlign: 'center' }}>
-            ✨ Aktive Zustände (Conditions)
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', justifyContent: 'center' }}>
-            {activeConditions.length > 0 ? (
-              activeConditions.map((cond, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    background: 'rgba(139, 26, 26, 0.08)',
-                    border: '0.5px solid var(--red)',
-                    borderRadius: '2px',
-                    padding: '2px 6px',
-                    fontSize: '8px',
-                    color: 'var(--red)',
-                    fontFamily: "'Crimson Text', serif",
-                    fontWeight: 'bold',
-                    cursor: 'help',
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-                  }}
-                  title={getConditionTooltip(cond)}
-                >
-                  ⚠️ {getConditionName(cond)}
-                </div>
-              ))
-            ) : (
-              <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Keine aktiven Zustände.</span>
-            )}
+          {/* Conditions Badges */}
+          <div style={{ width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.15)', paddingTop: '6px' }}>
+            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px', textAlign: 'center' }}>
+              ✨ Aktive Zustände (Conditions)
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', justifyContent: 'center' }}>
+              {activeConditions.length > 0 ? (
+                activeConditions.map((cond, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      background: 'rgba(139, 26, 26, 0.08)',
+                      border: '0.5px solid var(--red)',
+                      borderRadius: '2px',
+                      padding: '2px 6px',
+                      fontSize: '8px',
+                      color: 'var(--red)',
+                      fontFamily: "'Crimson Text', serif",
+                      fontWeight: 'bold',
+                      cursor: 'help',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                    }}
+                    title={getConditionTooltip(cond)}
+                  >
+                    ⚠️ {getConditionName(cond)}
+                  </div>
+                ))
+              ) : (
+                <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Keine aktiven Zustände.</span>
+              )}
+            </div>
           </div>
         </div>
         
