@@ -70,9 +70,9 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
     const isSpec = hasSpecSlot && specChecked;
 
     const performPrep = () => {
-      pc.prepareSpell(spellKey, selectedMeta, isSpec);
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
+      CombatState.updatePCBatch((freshPc: any) => {
+        freshPc.prepareSpell(spellKey, selectedMeta, isSpec);
+      });
       onConfirm();
     };
 
@@ -266,9 +266,9 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
     if (isTooHigh) return;
 
     const performCast = () => {
-      pc.castSpontaneousSpell(spellKey, finalLevel);
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
+      CombatState.updatePCBatch((freshPc: any) => {
+        freshPc.castSpontaneousSpell(spellKey, finalLevel);
+      });
 
       const selectedMetaNames = selectedMeta
         .map(id => metamagicFeats.find(f => f.id === id)?.name)

@@ -2,11 +2,20 @@ import React from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 // @ts-ignore
-import { getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '@core/spells.js';
+import { getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel, CombatSpells } from '@core/spells.js';
 // @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
-import { findSpell } from '../player/PCSpellbookTab';
+
+function findSpell(pc: any, key: string) {
+  if (CombatSpells.REGISTRY?.[key]) {
+    return CombatSpells.REGISTRY[key];
+  }
+  if (Array.isArray(pc.customSpells)) {
+    const found = pc.customSpells.find((s: any) => s.id === key || s.nameDe === key || s.nameEn === key);
+    if (found) return found;
+  }
+  return null;
+}
 
 const showCustomAlert = (...args: any[]) =>
   (window as any).__REACT_DIALOG_BRIDGE__?.showCustomAlert?.(...args);
@@ -24,11 +33,15 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
   const handleToggleLearn = () => {
     const activePC = CombatState.getActivePC();
     if (!activePC) return;
-    if (!Array.isArray(activePC.learnedSpells)) activePC.learnedSpells = [];
 
-    const idx = activePC.learnedSpells.indexOf(spellKey);
+    let shouldLearn = false;
+    let idx = -1;
+    if (Array.isArray(activePC.learnedSpells)) {
+      idx = activePC.learnedSpells.indexOf(spellKey);
+    }
+
     if (idx > -1) {
-      activePC.learnedSpells.splice(idx, 1);
+      // Unlearn
     } else {
       if (spell) {
         const isWizard = activePC.classes?.some((c: any) => c.classType === 'wizard');
@@ -52,19 +65,72 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
           return;
         }
       }
-      activePC.learnedSpells.push(spellKey);
+      shouldLearn = true;
     }
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+
+    CombatState.updatePCBatch((freshPc: any) => {
+      if (!Array.isArray(freshPc.learnedSpells)) freshPc.learnedSpells = [];
+      const freshIdx = freshPc.learnedSpells.indexOf(spellKey);
+      if (shouldLearn) {
+        if (freshIdx === -1) {
+          freshPc.learnedSpells.push(spellKey);
+        }
+      } else {
+        if (freshIdx > -1) {
+          freshPc.learnedSpells.splice(freshIdx, 1);
+        }
+      }
+    });
+
     onClose();
   };
 
   if (!spell) {
     return (
-      <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 }}>
-        <div className="custom-alert-box" style={{ padding: '16px', minWidth: '300px' }}>
-          <p>Spell not found.</p>
-          <button className="xbtn" onClick={onClose}>Close</button>
+      <div
+        style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(18, 11, 5, 0.55)',
+          backdropFilter: 'blur(2px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 9999
+        }}
+      >
+        <div
+          className="custom-alert-box"
+          style={{
+            background: 'var(--p)',
+            border: '2px solid var(--pb)',
+            borderRadius: '4px',
+            padding: '16px 24px',
+            minWidth: '300px',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
+            fontFamily: "'Crimson Text', serif",
+            position: 'relative',
+            textAlign: 'center',
+            boxSizing: 'border-box'
+          }}
+        >
+          <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
+          <p style={{ color: 'var(--ink)', fontSize: '11px', marginBottom: '12px' }}>Spell not found.</p>
+          <button
+            className="btn"
+            onClick={onClose}
+            style={{
+              fontFamily: "'IM Fell English SC', serif",
+              fontSize: '9px',
+              padding: '3px 14px',
+              cursor: 'pointer',
+              borderColor: 'var(--pb)',
+              background: 'transparent',
+              color: 'var(--ink)'
+            }}
+          >
+            Close
+          </button>
         </div>
       </div>
     );
@@ -76,22 +142,47 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
 
   return (
     <div
-      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 }}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(18, 11, 5, 0.55)',
+        backdropFilter: 'blur(2px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 9999
+      }}
       onClick={onClose}
     >
       <div
         className="custom-alert-box"
-        style={{ maxWidth: '520px', width: '90%', maxHeight: '80vh', overflowY: 'auto', padding: '18px 20px' }}
+        style={{
+          background: 'var(--p)',
+          border: '2px solid var(--pb)',
+          borderRadius: '4px',
+          padding: '18px 20px',
+          maxWidth: '520px',
+          width: '90%',
+          maxHeight: '80vh',
+          overflowY: 'auto',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
+          fontFamily: "'Crimson Text', serif",
+          position: 'relative',
+          boxSizing: 'border-box'
+        }}
         onClick={e => e.stopPropagation()}
       >
-        <h3 style={{ margin: '0 0 4px', fontFamily: "'Cinzel', serif", fontSize: '14px' }}>
+        <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
+
+        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '14px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px' }}>
           {spell.nameEn || spell.nameDe}
-        </h3>
+        </div>
         {spell.nameEn && spell.nameDe && (
           <p style={{ margin: '0 0 8px', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>{spell.nameDe}</p>
         )}
+        <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 12px', fontSize: '9px', marginBottom: '10px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 12px', fontSize: '9px', marginBottom: '10px', color: 'var(--ink)' }}>
           {spell.school && <span><strong>School:</strong> {spell.school}</span>}
           {classLevelsText && <span><strong>Level:</strong> {classLevelsText}</span>}
           {spell.castingTime && <span><strong>Casting Time:</strong> {spell.castingTime}</span>}
@@ -107,11 +198,35 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
           </p>
         )}
 
-        <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-          <button className="xbtn" onClick={handleToggleLearn} style={{ minWidth: '90px' }}>
+        <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end', position: 'relative', zIndex: 10 }}>
+          <button
+            className="btn btn-p"
+            onClick={handleToggleLearn}
+            style={{
+              fontFamily: "'IM Fell English SC', serif",
+              fontSize: '9px',
+              padding: '3px 14px',
+              cursor: 'pointer',
+              minWidth: '90px'
+            }}
+          >
             {isLearned ? '✗ Unlearn' : '✓ Learn'}
           </button>
-          <button className="xbtn" onClick={onClose}>Close</button>
+          <button
+            className="btn"
+            onClick={onClose}
+            style={{
+              fontFamily: "'IM Fell English SC', serif",
+              fontSize: '9px',
+              padding: '3px 14px',
+              cursor: 'pointer',
+              borderColor: 'var(--pb)',
+              background: 'transparent',
+              color: 'var(--ink)'
+            }}
+          >
+            Close
+          </button>
         </div>
       </div>
     </div>

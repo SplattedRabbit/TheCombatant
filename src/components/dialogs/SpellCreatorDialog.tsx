@@ -4,7 +4,18 @@ import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { CombatRules } from '@core/rules.js';
 // @ts-ignore
-import { findSpell } from '../player/PCSpellbookTab';
+import { CombatSpells } from '@core/spells.js';
+
+function findSpell(pc: any, key: string) {
+  if (CombatSpells.REGISTRY?.[key]) {
+    return CombatSpells.REGISTRY[key];
+  }
+  if (Array.isArray(pc.customSpells)) {
+    const found = pc.customSpells.find((s: any) => s.id === key || s.nameDe === key || s.nameEn === key);
+    if (found) return found;
+  }
+  return null;
+}
 
 const showCustomAlert = (...args: any[]) =>
   (window as any).__REACT_DIALOG_BRIDGE__?.showCustomAlert?.(...args);
@@ -65,16 +76,16 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
       return;
     }
 
-    if (!Array.isArray(activePC.customSpells)) activePC.customSpells = [];
-    activePC.customSpells.push(newSpell);
+    CombatState.updatePCBatch((freshPc: any) => {
+      if (!Array.isArray(freshPc.customSpells)) freshPc.customSpells = [];
+      freshPc.customSpells.push(newSpell);
 
-    if (!Array.isArray(activePC.learnedSpells)) activePC.learnedSpells = [];
-    if (!activePC.learnedSpells.includes(newSpell.id)) {
-      activePC.learnedSpells.push(newSpell.id);
-    }
+      if (!Array.isArray(freshPc.learnedSpells)) freshPc.learnedSpells = [];
+      if (!freshPc.learnedSpells.includes(newSpell.id)) {
+        freshPc.learnedSpells.push(newSpell.id);
+      }
+    });
 
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
     showCustomAlert('Success!', `"${nameEn || nameDe}" was successfully created and added to your spellbook!`);
     onClose();
   };
@@ -88,19 +99,44 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
 
   return (
     <div
-      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 }}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(18, 11, 5, 0.55)',
+        backdropFilter: 'blur(2px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 9999
+      }}
       onClick={onClose}
     >
       <div
         className="custom-alert-box"
-        style={{ maxWidth: '520px', width: '90%', maxHeight: '85vh', overflowY: 'auto', padding: '18px 20px' }}
+        style={{
+          background: 'var(--p)',
+          border: '2px solid var(--pb)',
+          borderRadius: '4px',
+          padding: '18px 20px',
+          maxWidth: '520px',
+          width: '90%',
+          maxHeight: '85vh',
+          overflowY: 'auto',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
+          fontFamily: "'Crimson Text', serif",
+          position: 'relative',
+          boxSizing: 'border-box'
+        }}
         onClick={e => e.stopPropagation()}
       >
-        <h3 style={{ margin: '0 0 12px', fontFamily: "'Cinzel', serif", fontSize: '13px', textAlign: 'center' }}>
-          ✦ Custom Spell Creator ✦
-        </h3>
+        <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '14px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
+          ✦ Custom Spell Creator ✦
+        </div>
+        <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 12px' }} />
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', position: 'relative', zIndex: 10 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
             <div>
               <label style={labelStyle}>German Name *</label>
@@ -172,9 +208,35 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end', marginTop: '14px' }}>
-          <button className="xbtn" onClick={handleSave} style={{ minWidth: '100px' }}>✓ Save</button>
-          <button className="xbtn" onClick={onClose}>Cancel</button>
+        <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end', marginTop: '14px', position: 'relative', zIndex: 10 }}>
+          <button
+            className="btn btn-p"
+            onClick={handleSave}
+            style={{
+              fontFamily: "'IM Fell English SC', serif",
+              fontSize: '9px',
+              padding: '3px 14px',
+              cursor: 'pointer',
+              minWidth: '100px'
+            }}
+          >
+            ✓ Save
+          </button>
+          <button
+            className="btn"
+            onClick={onClose}
+            style={{
+              fontFamily: "'IM Fell English SC', serif",
+              fontSize: '9px',
+              padding: '3px 14px',
+              cursor: 'pointer',
+              borderColor: 'var(--pb)',
+              background: 'transparent',
+              color: 'var(--ink)'
+            }}
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>
