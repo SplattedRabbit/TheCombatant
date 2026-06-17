@@ -168,6 +168,20 @@ const RACES: RaceDetail[] = [
   }
 ];
 
+const CLASS_KEY_ATTRIBUTES: Record<string, string[]> = {
+  fighter: ['str', 'con', 'dex'],
+  rogue: ['dex', 'int'],
+  cleric: ['wis', 'cha', 'con'],
+  wizard: ['int', 'con', 'dex'],
+  barbarian: ['str', 'con', 'dex'],
+  bard: ['cha', 'dex', 'int'],
+  druid: ['wis', 'con'],
+  monk: ['wis', 'dex', 'str', 'con'],
+  paladin: ['cha', 'str', 'wis', 'con'],
+  ranger: ['dex', 'str', 'wis'],
+  sorcerer: ['cha', 'dex', 'con']
+};
+
 const CLASSES_LIST = [
   { key: 'fighter', name: 'Fighter', hd: 10, skillBase: 2, desc: 'Melee combat specialist, gains many bonus feats.' },
   { key: 'rogue', name: 'Rogue', hd: 6, skillBase: 8, desc: 'Trap disarmer, sneak attack, extremely high number of skills.' },
@@ -188,6 +202,9 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   // Step 1 State
   const [name, setName] = useState('');
   const [selectedRace, setSelectedRace] = useState<string>('human');
+
+  // Highlight class key attributes in Point-Buy
+  const [highlightClass, setHighlightClass] = useState<string>('');
 
   // Step 2 State (Ability Scores Point-Buy 74 Points)
   const [baseStats, setBaseStats] = useState({
@@ -797,6 +814,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   const finalVal = base + racMod;
                   const finalMod = getMod(finalVal);
                   const finalModStr = finalMod >= 0 ? `+${finalMod}` : `${finalMod}`;
+                  const isKeyAttr = highlightClass ? CLASS_KEY_ATTRIBUTES[highlightClass]?.includes(k) : false;
                   
                   return (
                     <div 
@@ -806,8 +824,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                         alignItems: 'center', 
                         justifyContent: 'space-between',
                         padding: '10px 14px',
-                        background: 'rgba(244, 232, 193, 0.3)',
-                        border: '1px solid var(--pb)',
+                        background: isKeyAttr ? 'rgba(76, 175, 80, 0.15)' : 'rgba(244, 232, 193, 0.3)',
+                        border: isKeyAttr ? '1.5px solid rgba(76, 175, 80, 0.5)' : '1px solid var(--pb)',
                         borderRadius: '4px'
                       }}
                     >
@@ -822,6 +840,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                         title="Click for a brief explanation"
                       >
                         {labelMap[k]}
+                        {isKeyAttr && <span style={{ color: 'green', fontSize: '9px', marginLeft: '4px', display: 'inline-block' }}>★ Key</span>}
                       </strong>
                       
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -930,6 +949,23 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   ) : (
                     `You have distributed ${totalStatsSpent - 74} too many points!`
                   )}
+                </div>
+
+                <div style={{ width: '100%', marginTop: '16px', borderTop: '0.5px dashed rgba(200, 169, 110, 0.4)', paddingTop: '12px' }}>
+                  <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--inkm)', display: 'block', marginBottom: '4px', textAlign: 'center' }}>
+                    Bezugsattribute hervorheben (RAW 3.5e):
+                  </label>
+                  <select
+                    value={highlightClass}
+                    onChange={(e) => setHighlightClass(e.target.value)}
+                    className="cinput"
+                    style={{ width: '100%', padding: '4px', fontSize: '11px', cursor: 'pointer', fontFamily: "'IM Fell English SC', serif" }}
+                  >
+                    <option value="">-- Keine Klasse --</option>
+                    {CLASSES_LIST.map(c => (
+                      <option key={c.key} value={c.key}>{c.name}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>
@@ -1083,12 +1119,29 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       style={{ width: '100%', padding: '6px', fontSize: '12px', boxSizing: 'border-box' }}
                     >
                       <option value="" disabled>-- Select Ability --</option>
-                      <option value="str">Strength (STR)</option>
-                      <option value="dex">Dexterity (DEX)</option>
-                      <option value="con">Constitution (CON)</option>
-                      <option value="int">Intelligence (INT)</option>
-                      <option value="wis">Wisdom (WIS)</option>
-                      <option value="cha">Charisma (CHA)</option>
+                      {([
+                        { key: 'str', label: 'Strength (STR)' },
+                        { key: 'dex', label: 'Dexterity (DEX)' },
+                        { key: 'con', label: 'Constitution (CON)' },
+                        { key: 'int', label: 'Intelligence (INT)' },
+                        { key: 'wis', label: 'Wisdom (WIS)' },
+                        { key: 'cha', label: 'Charisma (CHA)' }
+                      ] as const).map(opt => {
+                        const currentClass = currentConfig.classType;
+                        const isKey = currentClass ? CLASS_KEY_ATTRIBUTES[currentClass]?.includes(opt.key) : false;
+                        return (
+                          <option 
+                            key={opt.key} 
+                            value={opt.key}
+                            style={{ 
+                              color: isKey ? 'green' : 'inherit',
+                              fontWeight: isKey ? 'bold' : 'normal'
+                            }}
+                          >
+                            {opt.label} {isKey ? '★ (Key)' : ''}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                 )}
