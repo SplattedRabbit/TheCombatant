@@ -151,6 +151,20 @@ const RACES: RaceDetail[] = [
       'Darkvision 60 ft. (can see in the dark).',
       'Particularly strong, but has lower mental stats.'
     ]
+  },
+  {
+    key: 'tiefling',
+    name: 'Tiefling',
+    modifiers: '+2 Dexterity (DEX), +2 Intelligence (INT), -2 Charisma (CHA)',
+    size: 'Medium',
+    traits: [
+      'Type: Outsider (Native) (immune to person-targeting spells like Charm Person).',
+      'Darkvision 60 ft. (can see in the dark).',
+      'Resistances: Resistance to cold 5, electricity 5, and fire 5.',
+      '+2 racial bonus on Bluff and Hide checks.',
+      'Darkness: Can use Darkness as a spell-like ability 1/day.',
+      'Level Adjustment: +1 (increases ECL by 1).'
+    ]
   }
 ];
 
@@ -565,6 +579,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       pc.name = name.trim() || 'Hero';
       pc.race = selectedRace;
       pc.isHuman = selectedRace === 'human';
+      pc.levelAdjustment = selectedRace === 'tiefling' ? 1 : 0;
+      pc.resistances = selectedRace === 'tiefling' ? 'Cold 5, Electricity 5, Fire 5' : '';
       
       // Set base stats from point-buy
       pc.str.base = baseStats.str;

@@ -141,6 +141,7 @@ export class Combatant {
     this.skills = p.skills || {};
     this.race = p.race || 'human';
     this.isHuman = p.isHuman !== undefined ? !!p.isHuman : (this.race === 'human');
+    this.levelAdjustment = parseInt(p.levelAdjustment) || 0;
 
     this.isRaging = !!p.isRaging;
     this.isSneakAttacking = !!p.isSneakAttacking;

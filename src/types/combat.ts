@@ -200,6 +200,7 @@ export interface Combatant {
   zaMisc?: any;
   refMisc?: any;
   wilMisc?: any;
+  levelAdjustment?: number;
 }
 
 // ---------------------------------------------------------------------------

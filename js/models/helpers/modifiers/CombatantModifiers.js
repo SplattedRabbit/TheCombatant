@@ -87,6 +87,12 @@ function applyRaceModifiers(pc) {
     if (!inWildShape) addRaceModifier(pc.str, 2, 'racial', 'Volk (Halbork)');
     addRaceModifier(pc.int, -2, 'racial', 'Volk (Halbork)');
     addRaceModifier(pc.cha, -2, 'racial', 'Volk (Halbork)');
+  } else if (race === 'tiefling') {
+    if (!inWildShape) {
+      addRaceModifier(pc.dex, 2, 'racial', 'Volk (Tiefling)');
+      addRaceModifier(pc.int, 2, 'racial', 'Volk (Tiefling)');
+    }
+    addRaceModifier(pc.cha, -2, 'racial', 'Volk (Tiefling)');
   }
 
   // 3. Saving Throw Modifiers

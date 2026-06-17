@@ -89,6 +89,12 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
       freshPC.isHuman = (val === 'human');
       const lowSpeedRaces = ['dwarf', 'gnome', 'halfling'];
       freshPC.baseBw = lowSpeedRaces.includes(val) ? 20 : 30;
+      freshPC.levelAdjustment = (val === 'tiefling') ? 1 : 0;
+      if (val === 'tiefling') {
+        freshPC.resistances = 'Cold 5, Electricity 5, Fire 5';
+      } else if (freshPC.resistances === 'Cold 5, Electricity 5, Fire 5') {
+        freshPC.resistances = '';
+      }
     });
   };
 
@@ -241,6 +247,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
               <option value="halfling">Halfling</option>
               <option value="half_elf">Half-Elf</option>
               <option value="half_orc">Half-Orc</option>
+              <option value="tiefling">Tiefling</option>
             </select>
           </div>
 

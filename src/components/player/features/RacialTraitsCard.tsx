@@ -13,7 +13,8 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
     gnome: 'Gnome',
     halfling: 'Halfling',
     half_elf: 'Half-Elf',
-    half_orc: 'Half-Orc'
+    half_orc: 'Half-Orc',
+    tiefling: 'Tiefling'
   };
   const raceName = raceNames[race] || 'Human';
 
@@ -81,6 +82,18 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
           <li><strong>Ability Score Adjustments:</strong> +2 Strength, -2 Intelligence, -2 Charisma (already included).</li>
           <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
           <li><strong>Orc Blood:</strong> For all effects, a half-orc is considered an orc.</li>
+        </ul>
+      );
+    } else if (race === 'tiefling') {
+      return (
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+          <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, +2 Intelligence, -2 Charisma (already included).</li>
+          <li><strong>Type:</strong> Outsider (Native) (immune to person-targeting spells like Charm Person).</li>
+          <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
+          <li><strong>Resistances:</strong> Resistance to cold 5, electricity 5, and fire 5.</li>
+          <li><strong>Keen Senses:</strong> +2 racial bonus on Bluff and Hide checks (already included).</li>
+          <li><strong>Darkness:</strong> Can use Darkness as a spell-like ability 1/day.</li>
+          <li><strong>Level Adjustment:</strong> +1 (increases ECL by 1).</li>
         </ul>
       );
     }

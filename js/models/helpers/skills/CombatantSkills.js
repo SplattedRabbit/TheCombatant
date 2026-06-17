@@ -41,6 +41,8 @@ export function calculateSkillModifier(pc, skillKey) {
   } else if (race === 'half_elf') {
     if (['listen', 'search', 'spot'].includes(skillKey)) total += 1;
     if (['diplomacy', 'gather_information'].includes(skillKey)) total += 2;
+  } else if (race === 'tiefling') {
+    if (['bluff', 'hide'].includes(skillKey)) total += 2;
   }
 
   // 4. Conditions penalties (Shaken / Sickened)

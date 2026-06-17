@@ -70,6 +70,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
       halfling: 'Halfling',
       half_elf: 'Half-Elf',
       half_orc: 'Half-Orc',
+      tiefling: 'Tiefling',
     };
     return names[race.toLowerCase()] || race;
   };
@@ -258,7 +259,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
             }}
           >
             <span style={{ background: 'rgba(200, 169, 110, 0.08)', padding: '1px 4px', borderRadius: '2px', border: '0.5px solid var(--pb)' }}>
-              🧬 {getRaceName(pc.race || 'human')}
+              🧬 {getRaceName(pc.race || 'human')}{pc.levelAdjustment ? ` (ECL ${(pc.classes || []).reduce((sum: number, c: any) => sum + (c.level || 0), 0) + pc.levelAdjustment})` : ''}
             </span>
             <span style={{ background: 'rgba(139, 26, 26, 0.05)', color: 'var(--red)', padding: '1px 4px', borderRadius: '2px', border: '0.5px solid rgba(139, 26, 26, 0.2)', fontWeight: 'bold' }}>
               🎭 {getClassesString()}
