@@ -1176,6 +1176,59 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   </div>
                 )}
 
+                {/* Feat Slots (rendered here if activeTab === 'feats') */}
+                {activeTab === 'feats' && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '10px' }}>
+                    <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
+                      Talentslots:
+                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                      {currentFeatSlots.map((slot, slotIdx) => {
+                        const selectedFeatId = currentConfig.feats?.[slotIdx];
+                        const selectedFeat = CombatFeats.REGISTRY[selectedFeatId];
+                        const isPreFilled = !!slot.defaultFeat;
+                        const isActive = featSelectSlotIndex === slotIdx;
+
+                        return (
+                          <div 
+                            key={slotIdx}
+                            onClick={() => {
+                              if (!isPreFilled) {
+                                setFeatSelectSlotIndex(slotIdx);
+                              }
+                            }}
+                            style={{
+                              padding: '6px 8px',
+                              background: isActive ? 'rgba(139, 26, 26, 0.05)' : 'rgba(244, 232, 193, 0.25)',
+                              border: isActive ? '1.5px solid var(--red)' : '1px solid var(--pb)',
+                              borderRadius: '3px',
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              cursor: isPreFilled ? 'default' : 'pointer',
+                              transition: 'background 0.2s, border 0.2s'
+                            }}
+                          >
+                            <div style={{ textAlign: 'left' }}>
+                              <span style={{ fontSize: '8.5px', textTransform: 'uppercase', color: 'var(--inkl)', display: 'block' }}>
+                                {slot.label} {isPreFilled && '(Fixed)'}
+                              </span>
+                              <strong style={{ fontSize: '11.5px', color: selectedFeat ? 'var(--ink)' : 'var(--red)' }}>
+                                {selectedFeat ? (selectedFeat.nameEn || selectedFeat.nameDe) : '— Select —'}
+                              </strong>
+                            </div>
+                            {!isPreFilled && (
+                              <span style={{ fontSize: '9.5px', color: 'var(--red)', fontWeight: isActive ? 'bold' : 'normal' }}>
+                                {isActive ? '👉 Active' : 'Select'}
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
               </div>
 
               {/* Right Column */}
@@ -1369,228 +1422,174 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                 )}
 
                 {activeTab === 'feats' && (
-                  <div style={{ display: 'flex', gap: '16px', minHeight: '420px' }}>
-                    {/* Left Sub-Column: Feat Slots (40%) */}
-                    <div style={{ width: '40%', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
-                        Talentslots:
-                      </span>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                        {currentFeatSlots.map((slot, slotIdx) => {
-                          const selectedFeatId = currentConfig.feats?.[slotIdx];
-                          const selectedFeat = CombatFeats.REGISTRY[selectedFeatId];
-                          const isPreFilled = !!slot.defaultFeat;
-                          const isActive = featSelectSlotIndex === slotIdx;
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minHeight: '420px' }}>
+                    {featSelectSlotIndex !== null && currentFeatSlots[featSelectSlotIndex] ? (
+                      <>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--inkm)' }}>
+                            Available Feats ({currentFeatSlots[featSelectSlotIndex].label}):
+                          </span>
+                        </div>
 
-                          return (
-                            <div 
-                              key={slotIdx}
-                              onClick={() => {
-                                if (!isPreFilled) {
-                                  setFeatSelectSlotIndex(slotIdx);
-                                }
-                              }}
-                              style={{
-                                padding: '8px 10px',
-                                background: isActive ? 'rgba(139, 26, 26, 0.05)' : 'rgba(244, 232, 193, 0.25)',
-                                border: isActive ? '1.5px solid var(--red)' : '1px solid var(--pb)',
-                                borderRadius: '3px',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                cursor: isPreFilled ? 'default' : 'pointer',
-                                transition: 'background 0.2s, border 0.2s'
-                              }}
-                            >
-                              <div style={{ textAlign: 'left' }}>
-                                <span style={{ fontSize: '8.5px', textTransform: 'uppercase', color: 'var(--inkl)', display: 'block' }}>
-                                  {slot.label} {isPreFilled && '(Fixed)'}
-                                </span>
-                                <strong style={{ fontSize: '11.5px', color: selectedFeat ? 'var(--ink)' : 'var(--red)' }}>
-                                  {selectedFeat ? (selectedFeat.nameEn || selectedFeat.nameDe) : '— Please select —'}
-                                </strong>
-                              </div>
-                              {!isPreFilled && (
-                                <span style={{ fontSize: '10px', color: 'var(--red)', fontWeight: isActive ? 'bold' : 'normal' }}>
-                                  {isActive ? '👉 Active' : 'Select'}
-                                </span>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Right Sub-Column: Available Feats Compendium (60%) */}
-                    <div style={{ width: '60%', display: 'flex', flexDirection: 'column', gap: '6px', borderLeft: '0.5px solid var(--pb)', paddingLeft: '12px' }}>
-                      {featSelectSlotIndex !== null && currentFeatSlots[featSelectSlotIndex] ? (
-                        <>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--inkm)' }}>
-                              Available Feats ({currentFeatSlots[featSelectSlotIndex].label}):
-                            </span>
-                          </div>
-
-                          <div style={{ display: 'flex', gap: '4px' }}>
-                            <input
-                              type="text"
-                              placeholder="Search feat..."
-                              value={featSearch}
-                              onChange={(e) => setFeatSearch(e.target.value)}
-                              className="cinput"
-                              style={{
-                                flex: 1,
-                                padding: '4px 8px',
-                                fontSize: '11px',
-                                boxSizing: 'border-box'
-                              }}
-                            />
-                            
-                            {/* Category Filter Dropdown */}
-                            <select
-                              value={featFilter}
-                              onChange={(e) => setFeatFilter(e.target.value)}
-                              className="cinput"
-                              style={{
-                                width: '90px',
-                                padding: '0 4px',
-                                fontSize: '10px',
-                                height: '22px'
-                              }}
-                            >
-                              <option value="all">All Cats</option>
-                              {activeFeatSlot && activeFeatSlot.allowedCategories.includes('combat') && (
-                                <option value="combat">Combat</option>
-                              )}
-                              {activeFeatSlot && activeFeatSlot.allowedCategories.includes('metamagic') && (
-                                <option value="metamagic">Metamagic</option>
-                              )}
-                              {activeFeatSlot && activeFeatSlot.allowedCategories.includes('item_creation') && (
-                                <option value="item_creation">Item Creation</option>
-                              )}
-                              {activeFeatSlot && activeFeatSlot.allowedCategories.includes('general') && (
-                                <option value="general">General</option>
-                              )}
-                            </select>
-                          </div>
-
-                          <div
+                        <div style={{ display: 'flex', gap: '4px' }}>
+                          <input
+                            type="text"
+                            placeholder="Search feat..."
+                            value={featSearch}
+                            onChange={(e) => setFeatSearch(e.target.value)}
+                            className="cinput"
                             style={{
                               flex: 1,
-                              maxHeight: '380px',
-                              overflowY: 'auto',
-                              border: '1px solid var(--pb)',
-                              borderRadius: '3px',
-                              background: 'white',
-                              padding: '4px'
+                              padding: '4px 8px',
+                              fontSize: '11px',
+                              boxSizing: 'border-box'
+                            }}
+                          />
+                          
+                          {/* Category Filter Dropdown */}
+                          <select
+                            value={featFilter}
+                            onChange={(e) => setFeatFilter(e.target.value)}
+                            className="cinput"
+                            style={{
+                              width: '90px',
+                              padding: '0 4px',
+                              fontSize: '10px',
+                              height: '22px'
                             }}
                           >
-                            {filteredFeats.length === 0 ? (
-                              <div style={{ padding: '20px', fontSize: '11px', fontStyle: 'italic', color: 'var(--inkl)', textAlign: 'center' }}>
-                                No matching feats found.
-                              </div>
-                            ) : (
-                              filteredFeats.map((item: any) => {
-                                const feat = item.feat;
-                                const depth = item.depth;
-                                const prereqs = currentDraft ? checkFeatPrerequisites(feat.id, currentDraft.draftPC) : { met: true, unmetDescs: [] };
-                                const isAlreadySelected = currentConfig.feats.includes(feat.id);
-                                const isAlreadyLearned = currentDraft ? currentDraft.featsList.includes(feat.id) : false;
-                                const isBlocked = !prereqs.met || isAlreadyLearned;
-                                
-                                let statusIcon = '⚪';
-                                let statusTitle = 'Selectable';
-                                if (isAlreadyLearned) {
-                                  statusIcon = '🟢';
-                                  statusTitle = 'Already learned';
-                                } else if (isAlreadySelected) {
-                                  statusIcon = '✨';
-                                  statusTitle = 'Selected at this level';
-                                } else if (isBlocked) {
-                                  statusIcon = '🔒';
-                                  statusTitle = 'Prerequisites not met';
-                                }
-
-                                const parentFeat = feat.parent ? CombatFeats.REGISTRY[feat.parent] : null;
-                                const depthPadding = featSearch ? 0 : depth * 12;
-
-                                return (
-                                  <div
-                                    key={feat.id}
-                                    onClick={() => {
-                                      if (!isBlocked && !isAlreadySelected) {
-                                        const nextFeats = [...(currentConfig.feats || [])];
-                                        nextFeats[featSelectSlotIndex] = feat.id;
-                                        updateLevelConfig(currentLevelIndex, 'feats', nextFeats);
-                                        setFeatSearch('');
-                                      }
-                                    }}
-                                    style={{
-                                      padding: '6px 8px',
-                                      borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)',
-                                      cursor: isBlocked ? 'not-allowed' : 'pointer',
-                                      background: isAlreadySelected ? 'rgba(200, 169, 110, 0.15)' : 'transparent',
-                                      textAlign: 'left',
-                                      opacity: isBlocked ? 0.6 : 1,
-                                      paddingLeft: `${8 + depthPadding}px`,
-                                      transition: 'background 0.2s, opacity 0.2s'
-                                    }}
-                                    onMouseEnter={(e) => {
-                                      if (!isAlreadySelected && !isBlocked) {
-                                        e.currentTarget.style.background = 'rgba(244, 232, 193, 0.25)';
-                                      }
-                                    }}
-                                    onMouseLeave={(e) => {
-                                      if (!isAlreadySelected && !isBlocked) {
-                                        e.currentTarget.style.background = 'transparent';
-                                      }
-                                    }}
-                                    title={statusTitle}
-                                  >
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-                                      <span style={{ fontSize: '10px' }} title={statusTitle}>{statusIcon}</span>
-                                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flex: 1 }}>
-                                        <strong style={{ fontSize: '11px', color: isBlocked ? 'var(--inkm)' : 'var(--red)' }}>{feat.nameEn || feat.nameDe}</strong>
-                                        <span style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>{feat.nameDe}</span>
-                                      </div>
-                                    </div>
-                                    
-                                    {parentFeat && !featSearch && (
-                                      <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontStyle: 'italic', marginBottom: '3px', paddingLeft: '16px' }}>
-                                        ↳ Requires: <strong>{parentFeat.nameEn || parentFeat.nameDe}</strong>
-                                      </div>
-                                    )}
-
-                                    <div style={{ fontSize: '10px', color: 'var(--ink)', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, marginBottom: '3px', paddingLeft: '16px' }}>
-                                      {feat.benefitRaw || feat.benefitDe}
-                                    </div>
-
-                                    {feat.prereqs && feat.prereqs.length > 0 && (
-                                      <div style={{ fontSize: '9px', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '2px', marginTop: '2px', paddingLeft: '16px' }}>
-                                        <span style={{ color: prereqs.met ? 'green' : 'var(--red)', fontWeight: 'bold' }}>
-                                          Prerequisites:
-                                        </span>{' '}
-                                        {prereqs.unmetDescs.length > 0 ? (
-                                          <span style={{ color: 'var(--red)', fontStyle: 'italic' }}>
-                                            Not met: {prereqs.unmetDescs.map(translatePrereq).join(', ')}
-                                          </span>
-                                        ) : (
-                                          <span style={{ color: 'green', fontStyle: 'italic' }}>Met</span>
-                                        )}
-                                      </div>
-                                    )}
-                                  </div>
-                                );
-                              })
+                            <option value="all">All Cats</option>
+                            {activeFeatSlot && activeFeatSlot.allowedCategories.includes('combat') && (
+                              <option value="combat">Combat</option>
                             )}
-                          </div>
-                        </>
-                      ) : (
-                        <div style={{ padding: '40px', fontSize: '12px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center' }}>
-                          Select a talentslot on the left to see available feats.
+                            {activeFeatSlot && activeFeatSlot.allowedCategories.includes('metamagic') && (
+                              <option value="metamagic">Metamagic</option>
+                            )}
+                            {activeFeatSlot && activeFeatSlot.allowedCategories.includes('item_creation') && (
+                              <option value="item_creation">Item Creation</option>
+                            )}
+                            {activeFeatSlot && activeFeatSlot.allowedCategories.includes('general') && (
+                              <option value="general">General</option>
+                            )}
+                          </select>
                         </div>
-                      )}
-                    </div>
+
+                        <div
+                          style={{
+                            flex: 1,
+                            maxHeight: '420px',
+                            overflowY: 'auto',
+                            border: '1px solid var(--pb)',
+                            borderRadius: '3px',
+                            background: 'white',
+                            padding: '4px'
+                          }}
+                        >
+                          {filteredFeats.length === 0 ? (
+                            <div style={{ padding: '20px', fontSize: '11px', fontStyle: 'italic', color: 'var(--inkl)', textAlign: 'center' }}>
+                              No matching feats found.
+                            </div>
+                          ) : (
+                            filteredFeats.map((item: any) => {
+                              const feat = item.feat;
+                              const depth = item.depth;
+                              const prereqs = currentDraft ? checkFeatPrerequisites(feat.id, currentDraft.draftPC) : { met: true, unmetDescs: [] };
+                              const isAlreadySelected = currentConfig.feats.includes(feat.id);
+                              const isAlreadyLearned = currentDraft ? currentDraft.featsList.includes(feat.id) : false;
+                              const isBlocked = !prereqs.met || isAlreadyLearned;
+                              
+                              let statusIcon = '⚪';
+                              let statusTitle = 'Selectable';
+                              if (isAlreadyLearned) {
+                                statusIcon = '🟢';
+                                statusTitle = 'Already learned';
+                              } else if (isAlreadySelected) {
+                                statusIcon = '✨';
+                                statusTitle = 'Selected at this level';
+                              } else if (isBlocked) {
+                                statusIcon = '🔒';
+                                statusTitle = 'Prerequisites not met';
+                              }
+
+                              const parentFeat = feat.parent ? CombatFeats.REGISTRY[feat.parent] : null;
+                              const depthPadding = featSearch ? 0 : depth * 12;
+
+                              return (
+                                <div
+                                  key={feat.id}
+                                  onClick={() => {
+                                    if (!isBlocked && !isAlreadySelected) {
+                                      const nextFeats = [...(currentConfig.feats || [])];
+                                      nextFeats[featSelectSlotIndex] = feat.id;
+                                      updateLevelConfig(currentLevelIndex, 'feats', nextFeats);
+                                      setFeatSearch('');
+                                    }
+                                  }}
+                                  style={{
+                                    padding: '6px 8px',
+                                    borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)',
+                                    cursor: isBlocked ? 'not-allowed' : 'pointer',
+                                    background: isAlreadySelected ? 'rgba(200, 169, 110, 0.15)' : 'transparent',
+                                    textAlign: 'left',
+                                    opacity: isBlocked ? 0.6 : 1,
+                                    paddingLeft: `${8 + depthPadding}px`,
+                                    transition: 'background 0.2s, opacity 0.2s'
+                                  }}
+                                  onMouseEnter={(e) => {
+                                    if (!isAlreadySelected && !isBlocked) {
+                                      e.currentTarget.style.background = 'rgba(244, 232, 193, 0.25)';
+                                    }
+                                  }}
+                                  onMouseLeave={(e) => {
+                                    if (!isAlreadySelected && !isBlocked) {
+                                      e.currentTarget.style.background = 'transparent';
+                                    }
+                                  }}
+                                  title={statusTitle}
+                                >
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
+                                    <span style={{ fontSize: '10px' }} title={statusTitle}>{statusIcon}</span>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flex: 1 }}>
+                                      <strong style={{ fontSize: '11px', color: isBlocked ? 'var(--inkm)' : 'var(--red)' }}>{feat.nameEn || feat.nameDe}</strong>
+                                      <span style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>{feat.nameDe}</span>
+                                    </div>
+                                  </div>
+                                  
+                                  {parentFeat && !featSearch && (
+                                    <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontStyle: 'italic', marginBottom: '3px', paddingLeft: '16px' }}>
+                                      ↳ Requires: <strong>{parentFeat.nameEn || parentFeat.nameDe}</strong>
+                                    </div>
+                                  )}
+
+                                  <div style={{ fontSize: '10px', color: 'var(--ink)', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, marginBottom: '3px', paddingLeft: '16px' }}>
+                                    {feat.benefitRaw || feat.benefitDe}
+                                  </div>
+
+                                  {feat.prereqs && feat.prereqs.length > 0 && (
+                                    <div style={{ fontSize: '9px', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '2px', marginTop: '2px', paddingLeft: '16px' }}>
+                                      <span style={{ color: prereqs.met ? 'green' : 'var(--red)', fontWeight: 'bold' }}>
+                                        Prerequisites:
+                                      </span>{' '}
+                                      {prereqs.unmetDescs.length > 0 ? (
+                                        <span style={{ color: 'var(--red)', fontStyle: 'italic' }}>
+                                          Not met: {prereqs.unmetDescs.map(translatePrereq).join(', ')}
+                                        </span>
+                                      ) : (
+                                        <span style={{ color: 'green', fontStyle: 'italic' }}>Met</span>
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })
+                          )}
+                        </div>
+                      </>
+                    ) : (
+                      <div style={{ padding: '40px', fontSize: '12px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center' }}>
+                        Select a talentslot on the left to see available feats.
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
