@@ -960,15 +960,15 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
 
                 <div style={{ width: '100%', marginTop: '16px', borderTop: '0.5px dashed rgba(200, 169, 110, 0.4)', paddingTop: '12px' }}>
                   <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--inkm)', display: 'block', marginBottom: '4px', textAlign: 'center' }}>
-                    Bezugsattribute hervorheben (RAW 3.5e):
+                    Highlight important attributes:
                   </label>
                   <select
                     value={highlightClass}
                     onChange={(e) => setHighlightClass(e.target.value)}
                     className="cinput"
-                    style={{ width: '100%', padding: '4px', fontSize: '11px', height: '24px', cursor: 'pointer', fontFamily: "'IM Fell English SC', serif", boxSizing: 'border-box' }}
+                    style={{ width: '100%', padding: '0 6px', fontSize: '11px', height: '24px', cursor: 'pointer', fontFamily: "'IM Fell English SC', serif", boxSizing: 'border-box' }}
                   >
-                    <option value="">-- Keine Klasse --</option>
+                    <option value="">-- None --</option>
                     {CLASSES_LIST.map(c => (
                       <option key={c.key} value={c.key}>{c.name}</option>
                     ))}
@@ -1077,7 +1077,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                     value={currentConfig.classType}
                     onChange={(e) => updateLevelConfig(currentLevelIndex, 'classType', e.target.value)}
                     className="cinput"
-                    style={{ width: '100%', padding: '6px', fontSize: '12px', height: '32px', boxSizing: 'border-box' }}
+                    style={{ width: '100%', padding: '0 8px', fontSize: '12px', height: '32px', boxSizing: 'border-box' }}
                   >
                     <option value="" disabled>-- Please select --</option>
                     {CLASSES_LIST.map(c => (
@@ -1123,7 +1123,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       value={currentConfig.abilityIncrease || ''}
                       onChange={(e) => updateLevelConfig(currentLevelIndex, 'abilityIncrease', e.target.value)}
                       className="cinput"
-                      style={{ width: '100%', padding: '6px', fontSize: '12px', height: '32px', boxSizing: 'border-box' }}
+                      style={{ width: '100%', padding: '0 8px', fontSize: '12px', height: '32px', boxSizing: 'border-box' }}
                     >
                       <option value="" disabled>-- Select Ability --</option>
                       {([
@@ -1464,18 +1464,18 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                               boxSizing: 'border-box'
                             }}
                           >
-                            <option value="all">Alle</option>
+                            <option value="all">All</option>
                             {activeFeatSlot && activeFeatSlot.allowedCategories.includes('combat') && (
-                              <option value="combat">Kampf (Combat)</option>
+                              <option value="combat">Combat</option>
                             )}
                             {activeFeatSlot && activeFeatSlot.allowedCategories.includes('metamagic') && (
-                              <option value="metamagic">Metamagie</option>
+                              <option value="metamagic">Metamagic</option>
                             )}
                             {activeFeatSlot && activeFeatSlot.allowedCategories.includes('item_creation') && (
-                              <option value="item_creation">Erschaffung</option>
+                              <option value="item_creation">Item Creation</option>
                             )}
                             {activeFeatSlot && activeFeatSlot.allowedCategories.includes('general') && (
-                              <option value="general">Allgemein</option>
+                              <option value="general">General</option>
                             )}
                           </select>
                         </div>

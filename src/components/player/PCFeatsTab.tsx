@@ -375,11 +375,11 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
               className="cinput"
               style={{ flex: 1, fontSize: '11px', height: '22px', padding: '0 2px', fontFamily: "'Crimson Text', serif", boxSizing: 'border-box' }}
             >
-              <option value="all">Alle Kategorien</option>
-              <option value="general">Allgemein</option>
-              <option value="combat">Kampftalente</option>
-              <option value="metamagic">Metamagie</option>
-              <option value="item_creation">Erschaffung</option>
+              <option value="all">All Categories</option>
+              <option value="general">General</option>
+              <option value="combat">Combat Feats</option>
+              <option value="metamagic">Metamagic</option>
+              <option value="item_creation">Item Creation</option>
             </select>
           </div>
 
