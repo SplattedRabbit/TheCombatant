@@ -11,7 +11,6 @@ interface Step3LevelConfigProps {
   setCurrentLevelIndex: (idx: number) => void;
   currentConfig: any;
   currentDraft: any;
-  selectedRace: string;
   getClassHitDie: (cls: string) => number;
   updateLevelConfig: (idx: number, key: string, val: any) => void;
   activeTab: 'skills' | 'feats';
@@ -37,7 +36,6 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   setCurrentLevelIndex,
   currentConfig,
   currentDraft,
-  selectedRace,
   getClassHitDie,
   updateLevelConfig,
   activeTab,

@@ -18,8 +18,7 @@ import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 import { 
   RACES, 
-  CLASSES_LIST, 
-  CLASS_KEY_ATTRIBUTES 
+  CLASSES_LIST 
 } from './wizard/constants';
 import { Step1RaceName } from './wizard/Step1RaceName';
 import { Step2Attributes } from './wizard/Step2Attributes';
@@ -65,8 +64,6 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
 
   // Right column active tab ('skills' or 'feats')
   const [activeTab, setActiveTab] = useState<'skills' | 'feats'>('skills');
-
-  const activeRaceInfo = RACES.find(r => r.key === selectedRace);
 
   const getRacialModifier = (race: string, stat: string): number => {
     if (race === 'elf') {
@@ -672,7 +669,6 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             setCurrentLevelIndex={setCurrentLevelIndex}
             currentConfig={currentConfig}
             currentDraft={currentDraft}
-            selectedRace={selectedRace}
             getClassHitDie={getClassHitDie}
             updateLevelConfig={updateLevelConfig}
             activeTab={activeTab}
