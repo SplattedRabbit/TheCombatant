@@ -7,16 +7,17 @@
 ## 1. Pflichtbefehle
 
 > [!IMPORTANT]
-> **Testumfang nach Änderungstyp** — `--test-reporter=dot` immer verwenden:
-> - **UI-Fix / Datenpflege / Text:** Nur gezielter Test der betroffenen Datei.
-> - **Regel-Logik / State / neue Datei:** Gezielter Test, dann **einmalig** globaler Lauf vor Turn-Ende.
+> **Testumfang nach Änderungstyp** — `run_agent_tests.js` immer verwenden:
+> - **UI-Fix / Datenpflege / Text:** Kein Testlauf erforderlich (Tier 1).
+> - **Lokaler Bugfix / Modul-Änderung:** Gezielter Test des betroffenen Testfiles (Tier 2).
+> - **Strukturelle Änderung / Rules / State:** Einmaliger globaler Testlauf vor Turn-Ende (Tier 3).
 
 ```powershell
-# GEZIELTER TEST (Standard):
-node --import ./Tests/setup.js --test --test-reporter=dot Tests/bugfixes_v350.test.js
+# GEZIELTER TEST (Token-optimiert für Einzeldatei):
+node scripts/run_agent_tests.js Tests/bugfixes_v350.test.js
 
-# GLOBALER TESTLAUF (nur bei strukturellen Änderungen, einmalig vor Turn-Ende):
-node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
+# GLOBALER TESTLAUF (Token-optimiert, einmalig vor Turn-Ende):
+node scripts/run_agent_tests.js
 
 # D&D-REGELWERK DURCHSUCHEN (NIE die TXT laden):
 node scratch/search_rules.js "<Suchabfrage>"
@@ -167,8 +168,8 @@ An **nicht-offensichtlichen Stellen** (Feature-Logik in generischer Datei, Cross
 | Änderungstyp | Erforderliche Schritte |
 |---|---|
 | Trivial (Text, Style, Datenpflege) | Nichts — direkt committen |
-| Bugfix in Logik / Regeln | `@module`-Header prüfen, gezielter Test |
-| Neues Feature / neue Datei | Header + `@feature`-Tags + §3 aktualisieren + globaler Test |
+| Bugfix in Logik / Regeln | `@module`-Header prüfen, gezielter Test (Tier 2) |
+| Neues Feature / neue Datei | Header + `@feature`-Tags + §3 aktualisieren + globaler Test (Tier 3) |
 | Datei-Split | Header aller neuen Dateien, Fassade mit `@summary Fassade — re-exportiert X, Y, Z`, §3 aktualisieren |
 | Neue State-Aktion | §4 (State-API) ergänzen |
 
@@ -182,3 +183,13 @@ An **nicht-offensichtlichen Stellen** (Feature-Logik in generischer Datei, Cross
 | 300–600Z | Akzeptabel — Header ist Pflicht                            |
 | 600–900Z | Split prüfen beim nächsten größeren Feature                |
 | > 900Z   | Split bei nächster Gelegenheit — Issue in Bugtracking.md   |
+
+---
+
+## 10. Tiered Testing Routine (Token-Drosselung)
+
+Um den Kontextfenster- und Tokenverbrauch für den AI-Agenten minimal zu halten, gilt für alle Testläufe folgende dreistufige Hierarchie (Tiered Testing):
+
+* **Tier 1 (Trivial):** Reine UI-CSS-Änderungen, Tippfehler-Fixes oder statische Datenpflege benötigen **keinen** Testlauf.
+* **Tier 2 (Lokal):** Bei logischen Änderungen an einem spezifischen Modul darf **nur das passende Testfile** ausgeführt werden (z. B. `node scripts/run_agent_tests.js Tests/skills.test.js`).
+* **Tier 3 (Global):** Die gesamte Testsuite (`node scripts/run_agent_tests.js`) wird **maximal einmal** direkt vor Turn-Ende bei tiefgreifenden architektonischen Umbauten oder Datei-Splits ausgeführt.

@@ -51,6 +51,30 @@ describe('Startup - State-Schicht', () => {
     assert.equal(typeof mod.updatePCBatch, 'function', 'updatePCBatch muss exportiert sein');
   });
 
+  it('state/pc/PCGeneral.js lässt sich importieren', async () => {
+    const mod = await import('../js/state/pc/PCGeneral.js');
+    assert.equal(typeof mod.recalculatePCStats, 'function');
+    assert.equal(typeof mod.updatePCBatch, 'function');
+  });
+
+  it('state/pc/PCClasses.js lässt sich importieren', async () => {
+    const mod = await import('../js/state/pc/PCClasses.js');
+    assert.equal(typeof mod.addPCClass, 'function');
+    assert.equal(typeof mod.updatePCClassType, 'function');
+  });
+
+  it('state/pc/PCEquipment.js lässt sich importieren', async () => {
+    const mod = await import('../js/state/pc/PCEquipment.js');
+    assert.equal(typeof mod.addPCWeapon, 'function');
+    assert.equal(typeof mod.togglePCArmorEquip, 'function');
+  });
+
+  it('state/pc/PCFeatsSpells.js lässt sich importieren', async () => {
+    const mod = await import('../js/state/pc/PCFeatsSpells.js');
+    assert.equal(typeof mod.addPCFeat, 'function');
+    assert.equal(typeof mod.resetDailyResources, 'function');
+  });
+
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -74,6 +98,36 @@ describe('Startup - Regelschicht (rules/)', () => {
     const mod = await import('../js/rules/classes/RangerRules.js');
     assert.ok(mod.RangerRules, 'RangerRules muss exportiert sein');
     assert.equal(typeof mod.RangerRules.getFavoredEnemyBonus, 'function');
+  });
+
+  it('rules/RulesData.js lässt sich importieren', async () => {
+    const mod = await import('../js/rules/RulesData.js');
+    assert.ok(mod.CONDITIONS, 'CONDITIONS must be exported');
+    assert.ok(mod.CLASSES, 'CLASSES must be exported');
+  });
+
+  it('rules/RulesMath.js lässt sich importieren', async () => {
+    const mod = await import('../js/rules/RulesMath.js');
+    assert.equal(typeof mod.calculateBab, 'function');
+    assert.equal(typeof mod.calculateSave, 'function');
+  });
+
+  it('rules/RulesSkills.js lässt sich importieren', async () => {
+    const mod = await import('../js/rules/RulesSkills.js');
+    assert.equal(typeof mod.isClassSkill, 'function');
+    assert.equal(typeof mod.calculateTotalSkillPoints, 'function');
+  });
+
+  it('rules/RulesFeats.js lässt sich importieren', async () => {
+    const mod = await import('../js/rules/RulesFeats.js');
+    assert.equal(typeof mod.calculateMaxFeats, 'function');
+    assert.equal(typeof mod.checkPrerequisites, 'function');
+  });
+
+  it('rules/RulesSpells.js lässt sich importieren', async () => {
+    const mod = await import('../js/rules/RulesSpells.js');
+    assert.equal(typeof mod.getMaxSpellLevel, 'function');
+    assert.equal(typeof mod.calculateMaxSpellSlots, 'function');
   });
 
 });
