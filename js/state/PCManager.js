@@ -27,6 +27,7 @@ import { WizardRules } from '../rules/classes/WizardRules.js';
 import { SorcererRules } from '../rules/classes/SorcererRules.js';
 import { RangerRules } from '../rules/classes/RangerRules.js';
 import { RogueRules } from '../rules/classes/RogueRules.js';
+import { WeaponRegistry } from '../models/Weapon.js';
 
 function cleanupClassBleed(pc) {
   const activeClasses = Array.isArray(pc.classes) ? pc.classes.map(c => c.classType) : [];
@@ -328,9 +329,10 @@ export function togglePCWeaponEquip(idx) {
             if (a.isShield) a.isEquipped = false;
           });
         }
-      } else {
         const grip = target.grip;
-        if (grip === '2h' || grip === 'rng') {
+        const def = WeaponRegistry[target.type] || {};
+        const isTwoHandedRanged = grip === 'rng' && (def.isBow || def.isComposite || target.type === 'light_crossbow' || target.type === 'heavy_crossbow' || target.type === 'other_ranged');
+        if (grip === '2h' || isTwoHandedRanged) {
           // Enforce hand = 'main' and isDoubleWielded = false
           target.hand = 'main';
           target.isDoubleWielded = false;
@@ -345,10 +347,12 @@ export function togglePCWeaponEquip(idx) {
             });
           }
         } else {
-          // 1-handed or light weapon
-          // Unequip any equipped two-handed weapons or double wielded weapons
+          // 1-handed or light weapon, or 1-handed ranged/thrown weapon
+          // Unequip any equipped two-handed weapons, two-handed ranged weapons, or double wielded weapons
           pc.weapons.forEach(w => {
-            if (w.grip === '2h' || w.grip === 'rng' || w.isDoubleWielded) {
+            const wDef = WeaponRegistry[w.type] || {};
+            const wIsTwoHandedRanged = w.grip === 'rng' && (wDef.isBow || wDef.isComposite || w.type === 'light_crossbow' || w.type === 'heavy_crossbow' || w.type === 'other_ranged');
+            if (w.grip === '2h' || wIsTwoHandedRanged || w.isDoubleWielded) {
               w.isEquipped = false;
             }
           });

@@ -328,15 +328,60 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
   }
 
   offhandBases.forEach((ohBaseAtk, index) => {
+    const typeDef = WeaponRegistry[offhandWeapon.type] || WeaponRegistry.longsword;
+    const isOhRanged = offhandWeapon.grip === 'rng';
+
     let atkAbilityMod = ctx.strMod;
     let atkAbilityLabel = 'STR';
-    if (ctx.hasFeat('weapon_finesse') && isOhLight && ctx.dexMod > ctx.strMod) {
+    if (isOhRanged) {
+      atkAbilityMod = ctx.dexMod;
+      atkAbilityLabel = 'DEX';
+    } else if (ctx.hasFeat('weapon_finesse') && isOhLight && ctx.dexMod > ctx.strMod) {
       atkAbilityMod = ctx.dexMod;
       atkAbilityLabel = 'DEX (Finesse)';
     }
 
     const atkTotal = ohBaseAtk + atkAbilityMod + ohAtkMod + twfPenalties.offhand;
-    const dmgAbilityMod = Math.floor(ctx.strMod * 0.5);
+
+    let dmgAbilityMod = 0;
+    let dmgAbilityLabel = 'STR';
+
+    if (isOhRanged) {
+      if (typeDef.isCrossbow) {
+        dmgAbilityMod = 0;
+        dmgAbilityLabel = 'Fernkampf Nebenhand (Armbrust: kein STR)';
+      } else if (typeDef.isBow) {
+        dmgAbilityMod = Math.min(0, ctx.strMod);
+        dmgAbilityLabel = ctx.strMod < 0 ? 'STR-Malus' : 'Fernkampf Nebenhand (Bogen: kein STR-Bonus)';
+      } else if (typeDef.isComposite) {
+        let rating = parseInt(offhandWeapon.strengthRating) || 0;
+        if (!rating && offhandWeapon.name) {
+          const match = offhandWeapon.name.match(/\+(\d+)/);
+          if (match) rating = parseInt(match[1]) || 0;
+        }
+        if (ctx.strMod < 0) {
+          dmgAbilityMod = ctx.strMod;
+          dmgAbilityLabel = `STR (Komposit-Malus: ${ctx.strMod})`;
+        } else {
+          const allowedBonus = Math.min(ctx.strMod, rating);
+          dmgAbilityMod = Math.floor(allowedBonus * 0.5);
+          dmgAbilityLabel = `STR (Komposit Nebenhand Max +${rating} * 0.5)`;
+        }
+      } else {
+        // Sling, Thrown, or other ranged (slings & thrown add STR, negative is full, positive is half)
+        if (ctx.strMod < 0) {
+          dmgAbilityMod = ctx.strMod;
+          dmgAbilityLabel = 'STR-Malus';
+        } else {
+          dmgAbilityMod = Math.floor(ctx.strMod * 0.5);
+          dmgAbilityLabel = 'STR (Nebenhand * 0.5)';
+        }
+      }
+    } else {
+      dmgAbilityMod = Math.floor(ctx.strMod * 0.5);
+      dmgAbilityLabel = 'STR (Nebenhand * 0.5)';
+    }
+
     const dmgTotal = dmgAbilityMod + ohDmgMod;
 
     const atkBreakdown = [
@@ -347,7 +392,7 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
     ];
 
     const dmgBreakdown = [
-      { label: 'STR (Off-hand 0.5x)', value: dmgAbilityMod },
+      { label: dmgAbilityLabel, value: dmgAbilityMod },
       ...ohDmgBreakdown
     ];
 

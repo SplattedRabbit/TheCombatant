@@ -96,8 +96,8 @@ export class Combatant {
     this.weapons = Array.isArray(p.weapons) 
       ? p.weapons.map(w => new Weapon(w)) 
       : [
-          new Weapon({ name: 'Langschwert +1', grip: '1h', damageDice: '1w8', crit: '19-20 / x2', enhancement: 1 }),
-          new Weapon({ name: 'Kompositbogen', grip: 'rng', damageDice: '1w6', crit: 'x3', enhancement: 0 })
+          new Weapon({ name: 'Langschwert', type: 'longsword', grip: '1h', damageDice: '1w8', crit: '19-20 / x2', enhancement: 0 }),
+          new Weapon({ name: 'Kompositbogen', type: 'comp_shortbow', grip: 'rng', damageDice: '1w6', crit: 'x3', enhancement: 0 })
         ];
 
     // -- ARMORY (D&D 3.5e) --

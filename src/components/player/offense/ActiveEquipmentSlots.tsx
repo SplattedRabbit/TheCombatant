@@ -18,6 +18,13 @@ import { WeaponRegistry, matchesFeatOption, getCritThreatDisplay } from '@core/m
 // @ts-ignore
 import { SHAPE_ATTACKS } from '@core/models/helpers/classes/DruidHelper.js';
 
+function isWeaponTwoHanded(w: any): boolean {
+  if (!w) return false;
+  const def = WeaponRegistry[w.type] || {};
+  const isTwoHandedRanged = w.grip === 'rng' && (def.isBow || def.isComposite || w.type === 'light_crossbow' || w.type === 'heavy_crossbow' || w.type === 'other_ranged');
+  return w.grip === '2h' || w.grip === '2H' || isTwoHandedRanged;
+}
+
 interface ActiveEquipmentSlotsProps {
   pc: any;
   mainHandWeapon: any;
@@ -82,7 +89,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
           <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={w.name}>{w.name}</div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', margin: '1px 0 3px' }}>
             <div style={{ fontSize: '7px', color: 'var(--inkm)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={`${dmgDice}${extraDamage} • ${doubledCritDisplay}`}>{dmgDice}{extraDamage} • {doubledCritDisplay}</div>
-            {w.type !== 'unarmed' && w.grip !== '2h' && w.grip !== '2H' && (
+            {w.type !== 'unarmed' && !isWeaponTwoHanded(w) && (
               <select
                 className="cinput weapon-hand-select"
                 value="main"
@@ -127,7 +134,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armors.indexOf(sh))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Unequip">✕</button>
             <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Off-Hand</div>
             <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={sh.name}>{sh.name}</div>
-            <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{sh.acBonus} AC (Shield)</div>
+            <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{sh.armorBonus + sh.enhancement} AC (Shield)</div>
             <div style={{ fontSize: '6.5px', color: 'var(--inkm)', lineHeight: 1 }}>ACP: -{sh.checkPenalty ?? 0}</div>
           </div>
         );
@@ -160,7 +167,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', margin: '1px 0 3px' }}>
             <div style={{ fontSize: '7px', color: 'var(--inkm)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={`${dmgDice}${extraDamage} • ${doubledCritDisplay}`}>{dmgDice}{extraDamage} • {doubledCritDisplay}</div>
-            {!isDoubleWielded && w.grip !== '2h' && w.grip !== '2H' && (
+            {!isDoubleWielded && !isWeaponTwoHanded(w) && (
               <select
                 className="cinput weapon-hand-select"
                 value="off"
@@ -203,7 +210,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
         <button className="unequip-slot-btn" onClick={() => CombatState.togglePCArmorEquip(pc.armors.indexOf(a))} style={{ position: 'absolute', top: '2px', right: '4px', border: 'none', background: 'transparent', fontSize: '7.5px', cursor: 'pointer', color: 'var(--red)', padding: 0 }} title="Unequip">✕</button>
         <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", marginBottom: '1px', opacity: 0.8 }}>Armor</div>
         <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', textShadow: '0 0 1px rgba(139,26,26,0.1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={a.name}>{a.name}</div>
-        <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{a.acBonus} AC</div>
+        <div style={{ fontSize: '7.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>+{a.armorBonus + a.enhancement} AC</div>
         <div style={{ fontSize: '6.5px', color: 'var(--inkm)', lineHeight: 1 }}>Dex Cap: {maxDexDisplay} | ACP: -{a.checkPenalty ?? 0}</div>
       </div>
     );

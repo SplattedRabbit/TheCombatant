@@ -32,7 +32,7 @@ export function calculateBaseAttacks(ctx, isFullAttack) {
 export function calculateTWFPenalties(ctx, isFullAttack) {
   const offhandWeapon = ctx.pc.weapons ? ctx.pc.weapons.find(w => w.id !== ctx.weapon.id && (w.grip === 'sec' || (w.isEquipped && w.hand === 'off'))) : null;
   const hasSecWeapon = !!offhandWeapon || !!ctx.weapon.isDoubleWielded;
-  const isTWFActive = isFullAttack && ctx.isMelee && hasSecWeapon && !ctx.isNatural;
+  const isTWFActive = isFullAttack && hasSecWeapon && !ctx.isNatural;
 
   let twfPenalties = { primary: 0, offhand: 0 };
   if (isTWFActive) {

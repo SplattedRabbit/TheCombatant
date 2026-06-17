@@ -212,3 +212,69 @@ test('Weapons - Extra Damage Dropdowns and Formula Inclusion', () => {
   assert.strictEqual(stdAtkObj.damageDice, '1w8 + 1w6 Feuer', 'Computed damage dice formula should include extra damage');
 });
 
+test('Weapons - Off-Hand Ranged Weapons (Sling, Hand Crossbow, Thrown)', () => {
+  const pc = createCombatant({
+    name: 'Slinger Hero',
+    type: 'p',
+    feats: []
+  });
+  pc.bab.base = 6;
+  pc.str = 14; // STR mod +2
+  pc.dex = 18; // DEX mod +4
+
+  // Main hand melee weapon (Rapier), off-hand ranged weapon (Sling)
+  const rapier = new Weapon({ name: 'Rapier', type: 'rapier', hand: 'main', isEquipped: true });
+  const sling = new Weapon({ name: 'Schleuder', type: 'sling', hand: 'off', isEquipped: true });
+  pc.weapons = [rapier, sling];
+
+  pc.feats = [{ id: 'two_weapon_fighting' }];
+  
+  // Let's calculate the attack sequence
+  const seq = AttackEngine.calculateAttackSequence(pc, rapier, true);
+
+  // Rapier (Main hand):
+  // Atk = BAB 6 + STR 2 - 4 (TWF) = 4
+  // Dmg = 1.0x STR = +2
+  assert.strictEqual(seq[0].atkTotal, 4, 'Main hand attack total should be 4');
+  assert.strictEqual(seq[0].dmgTotal, 2, 'Main hand damage total should be 2');
+
+  // Sling (Off hand):
+  // Atk = BAB 6 + DEX 4 - 4 (TWF) = 6
+  // Dmg = 0.5x STR = +1
+  const oh = seq.find(atk => atk.isOffhand);
+  assert.ok(oh, 'Should have off-hand attack');
+  assert.strictEqual(oh.atkTotal, 6, 'Off-hand sling attack total should be 6 (using DEX)');
+  assert.strictEqual(oh.dmgTotal, 1, 'Off-hand sling damage total should be 1 (0.5x STR)');
+
+  // Let's check a Hand Crossbow in off-hand
+  // Hand crossbow: hand_crossbow (no STR bonus/penalty)
+  const handCrossbow = new Weapon({ name: 'Handarmbrust', type: 'hand_crossbow', hand: 'off', isEquipped: true });
+  pc.weapons = [rapier, handCrossbow];
+
+  const seqCB = AttackEngine.calculateAttackSequence(pc, rapier, true);
+  const ohCB = seqCB.find(atk => atk.isOffhand);
+  assert.ok(ohCB, 'Should have off-hand crossbow attack');
+  assert.strictEqual(ohCB.atkTotal, 6, 'Off-hand crossbow attack total should be 6');
+  assert.strictEqual(ohCB.dmgTotal, 0, 'Off-hand crossbow damage total should be 0 (no STR)');
+
+  // Let's check a standard bow in off-hand with negative strength
+  pc.str = 8; // -1 STR Mod
+  const shortbow = new Weapon({ name: 'Kurzbogen', type: 'shortbow', hand: 'off', isEquipped: true });
+  pc.weapons = [rapier, shortbow];
+
+  const seqBow = AttackEngine.calculateAttackSequence(pc, rapier, true);
+  const ohBow = seqBow.find(atk => atk.isOffhand);
+  assert.ok(ohBow, 'Should have off-hand bow attack');
+  assert.strictEqual(ohBow.dmgTotal, -1, 'Off-hand bow damage total should be -1 (full STR penalty)');
+
+  // Let's check composite bow in off-hand with rating +2 and positive STR mod +4
+  pc.str = 18; // +4 STR Mod
+  const compShortbow = new Weapon({ name: 'Komposit-Kurzbogen', type: 'comp_shortbow', strengthRating: 2, hand: 'off', isEquipped: true });
+  pc.weapons = [rapier, compShortbow];
+
+  const seqComp = AttackEngine.calculateAttackSequence(pc, rapier, true);
+  const ohComp = seqComp.find(atk => atk.isOffhand);
+  assert.ok(ohComp, 'Should have off-hand composite bow attack');
+  assert.strictEqual(ohComp.dmgTotal, 1, 'Off-hand composite bow damage total should be 1');
+});
+

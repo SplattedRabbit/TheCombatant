@@ -14,6 +14,13 @@ import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { WeaponRegistry } from '@core/models/Weapon.js';
 
+function isWeaponTwoHanded(w: any): boolean {
+  if (!w) return false;
+  const def = WeaponRegistry[w.type] || {};
+  const isTwoHandedRanged = w.grip === 'rng' && (def.isBow || def.isComposite || w.type === 'light_crossbow' || w.type === 'heavy_crossbow' || w.type === 'other_ranged');
+  return w.grip === '2h' || w.grip === '2H' || isTwoHandedRanged;
+}
+
 interface WeaponStashCardProps {
   w: any;
   idx: number;
@@ -91,13 +98,9 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
               style={{ fontSize: '8px', height: '16px', width: '20px', padding: 0, textAlign: 'center' }}
             />
           </div>
-          {w.grip === '2h' || w.grip === '2H' ? (
+          {isWeaponTwoHanded(w) ? (
             <select className="cinput" disabled style={{ fontSize: '7.5px', height: '16px', flex: 1.1, opacity: 0.65, background: 'rgba(200,169,110,0.05)', textAlign: 'center' }}>
-              <option>Two-Handed</option>
-            </select>
-          ) : w.grip === 'rng' ? (
-            <select className="cinput" disabled style={{ fontSize: '7.5px', height: '16px', flex: 1.1, opacity: 0.65, background: 'rgba(200,169,110,0.05)', textAlign: 'center' }}>
-              <option>Ranged</option>
+              <option>{w.grip === 'rng' ? 'Ranged (2H)' : 'Two-Handed'}</option>
             </select>
           ) : (
             <select
