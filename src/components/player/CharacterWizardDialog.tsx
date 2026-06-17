@@ -529,6 +529,16 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     if (step === 1 && name.trim() && selectedRace) {
       setStep(2);
     } else if (step === 2 && totalStatsSpent === 74) {
+      const invalidStats = Object.entries(baseStats).filter(([_, val]) => val < 3 || val > 18);
+      if (invalidStats.length > 0) {
+        showCustomAlert(
+          "Ungültige Attribute",
+          "Alle Basis-Attributswerte müssen vor der Anwendung von Volks-Modifikatoren zwischen 3 und 18 liegen.",
+          "OK",
+          "🎲"
+        );
+        return;
+      }
       setStep(3);
     } else if (step === 3) {
       // Validate active level first
@@ -818,7 +828,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                         <button 
                           className="btn" 
                           style={{ padding: '2px 8px', fontSize: '12px' }}
-                          disabled={base <= 0}
+                          disabled={base <= 3}
                           onClick={() => setBaseStats({ ...baseStats, [k]: base - 1 })}
                         >
                           -
@@ -828,15 +838,34 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                           type="number"
                           value={base}
                           onChange={(e) => {
-                            const val = Math.max(0, parseInt(e.target.value) || 0);
+                            let val = parseInt(e.target.value);
+                            if (isNaN(val)) {
+                              setBaseStats({ ...baseStats, [k]: 0 });
+                              return;
+                            }
+                            if (val > 18) val = 18;
                             const theoreticalSum = totalStatsSpent - base + val;
                             if (theoreticalSum <= 74) {
                               setBaseStats({ ...baseStats, [k]: val });
                             } else {
                               const remaining = 74 - (totalStatsSpent - base);
-                              setBaseStats({ ...baseStats, [k]: remaining });
+                              setBaseStats({ ...baseStats, [k]: Math.min(18, remaining) });
                             }
                           }}
+                          onBlur={(e) => {
+                            let val = parseInt(e.target.value);
+                            if (isNaN(val) || val < 3) val = 3;
+                            if (val > 18) val = 18;
+                            const theoreticalSum = totalStatsSpent - base + val;
+                            if (theoreticalSum <= 74) {
+                              setBaseStats({ ...baseStats, [k]: val });
+                            } else {
+                              const remaining = 74 - (totalStatsSpent - base);
+                              setBaseStats({ ...baseStats, [k]: Math.min(18, Math.max(3, remaining)) });
+                            }
+                          }}
+                          min={3}
+                          max={18}
                           style={{
                             width: '40px',
                             textAlign: 'center',
@@ -852,7 +881,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                         <button 
                           className="btn" 
                           style={{ padding: '2px 8px', fontSize: '12px' }}
-                          disabled={totalStatsSpent >= 74}
+                          disabled={base >= 18 || totalStatsSpent >= 74}
                           onClick={() => setBaseStats({ ...baseStats, [k]: base + 1 })}
                         >
                           +
