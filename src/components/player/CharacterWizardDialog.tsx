@@ -1301,7 +1301,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
 
                         <div 
                           style={{
-                            maxHeight: '300px',
+                            maxHeight: '420px',
                             overflowY: 'auto',
                             border: '1px solid var(--pb)',
                             borderRadius: '3px',
@@ -1426,7 +1426,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                 )}
 
                 {activeTab === 'feats' && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minHeight: '300px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minHeight: '420px' }}>
                     {featSelectSlotIndex !== null && currentFeatSlots[featSelectSlotIndex] ? (
                       <>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -1483,7 +1483,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                         <div
                           style={{
                             flex: 1,
-                            maxHeight: '300px',
+                            maxHeight: '420px',
                             overflowY: 'auto',
                             border: '1px solid var(--pb)',
                             borderRadius: '3px',
