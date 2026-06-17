@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v4.1.0** | Release | 17.06.2026 | Architecture Modularization & Token-Optimized Testing |
 | **v4.0.0** | Release | 14.06.2026 | Migration Complete & Tablet-Deployable (Offline & PWA) |
 | **v3.6.0** | Release | 14.06.2026 | React-Zustandsaktualisierung, Prototyp-Rehydrierung & Ausrüstungs-Fixes |
 | **v3.5.0** | Release | 13.06.2026 | Beispieldaten-Auswahldialog & D&D 3.5e RAW Level-10-Charaktere |
@@ -71,6 +72,21 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v4.1.0 — Architecture Modularization & Token-Optimized Testing (Release v4.1.0)
+
+* **🏗️ Domain-Driven Design Modularisierung**:
+  - **Regelwerk (`rules.js`):** Der Riese wurde von 978 Zeilen auf 74 Zeilen geschrumpft und delegiert alles abwärtskompatibel an spezialisierte Unterbereiche (`RulesData`, `RulesMath`, `RulesSkills`, `RulesFeats`, `RulesSpells`).
+  - **Charakter-State (`PCManager.js`):** Der Riese wurde von 781 Zeilen auf 46 Zeilen geschrumpft und delegiert an modularisierte State-Editoren (`PCGeneral`, `PCClasses`, `PCEquipment`, `PCFeatsSpells`).
+  - **Kampfbegegnung (`EncounterManager.js`):** Der Riese wurde von 993 Zeilen auf 214 Zeilen geschrumpft und delegiert an Handler (`ConditionManager`, `ConcentrationManager`, `EncounterSamples`).
+
+* **⚡ Token-Optimierte Testumgebung**:
+  - **run_agent_tests.js:** Ein neues Dämpfungs-Skript fängt redundante Konsolenausgaben ab und drosselt den erfolgreichen Test-Output auf 2 Zeilen, was das Kontextfenster von AI-Agenten dramatisch schont.
+  - **Tiered Testing in AGENT.md:** Etablierung eines dreistufigen Test-Workflows für Agenten, um unnötige globale Suites bei trivialen Änderungen zu verhindern.
+  - **Direkte Modul-Unit-Tests:** Neue Testdateien (`RulesMath.test.js`, `RulesSkills.test.js`, `PCGeneral.test.js` und startup Smoke-Tests) decken die modularisierten Schichten isoliert ab.
+
+* **🧹 Systembereinigung**:
+  - Vollständiges Löschen aller alten JS-Backupdatesien (`_old.js`, `_old_utf8.js`) im `scratch/`-Verzeichnis.
 
 ### v4.0.0 — Migration Complete & Tablet-Deployable (Release v4.0.0)
 
