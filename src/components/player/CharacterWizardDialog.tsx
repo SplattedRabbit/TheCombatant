@@ -966,7 +966,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                     value={highlightClass}
                     onChange={(e) => setHighlightClass(e.target.value)}
                     className="cinput"
-                    style={{ width: '100%', padding: '4px', fontSize: '11px', cursor: 'pointer', fontFamily: "'IM Fell English SC', serif" }}
+                    style={{ width: '100%', padding: '4px', fontSize: '11px', height: '24px', cursor: 'pointer', fontFamily: "'IM Fell English SC', serif", boxSizing: 'border-box' }}
                   >
                     <option value="">-- Keine Klasse --</option>
                     {CLASSES_LIST.map(c => (
@@ -1077,7 +1077,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                     value={currentConfig.classType}
                     onChange={(e) => updateLevelConfig(currentLevelIndex, 'classType', e.target.value)}
                     className="cinput"
-                    style={{ width: '100%', padding: '6px', fontSize: '12px', boxSizing: 'border-box' }}
+                    style={{ width: '100%', padding: '6px', fontSize: '12px', height: '32px', boxSizing: 'border-box' }}
                   >
                     <option value="" disabled>-- Please select --</option>
                     {CLASSES_LIST.map(c => (
@@ -1123,7 +1123,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                       value={currentConfig.abilityIncrease || ''}
                       onChange={(e) => updateLevelConfig(currentLevelIndex, 'abilityIncrease', e.target.value)}
                       className="cinput"
-                      style={{ width: '100%', padding: '6px', fontSize: '12px', boxSizing: 'border-box' }}
+                      style={{ width: '100%', padding: '6px', fontSize: '12px', height: '32px', boxSizing: 'border-box' }}
                     >
                       <option value="" disabled>-- Select Ability --</option>
                       {([
