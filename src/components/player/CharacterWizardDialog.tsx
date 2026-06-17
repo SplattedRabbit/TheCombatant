@@ -1431,7 +1431,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                           </span>
                         </div>
 
-                        <div style={{ display: 'flex', gap: '4px' }}>
+                        <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
                           <input
                             type="text"
                             placeholder="Search feat..."
@@ -1442,6 +1442,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                               flex: 1,
                               padding: '4px 8px',
                               fontSize: '11px',
+                              height: '24px',
                               boxSizing: 'border-box'
                             }}
                           />
@@ -1452,24 +1453,25 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                             onChange={(e) => setFeatFilter(e.target.value)}
                             className="cinput"
                             style={{
-                              width: '90px',
+                              width: '120px',
                               padding: '0 4px',
-                              fontSize: '10px',
-                              height: '22px'
+                              fontSize: '11px',
+                              height: '24px',
+                              boxSizing: 'border-box'
                             }}
                           >
-                            <option value="all">All Cats</option>
+                            <option value="all">Alle</option>
                             {activeFeatSlot && activeFeatSlot.allowedCategories.includes('combat') && (
-                              <option value="combat">Combat</option>
+                              <option value="combat">Kampf (Combat)</option>
                             )}
                             {activeFeatSlot && activeFeatSlot.allowedCategories.includes('metamagic') && (
-                              <option value="metamagic">Metamagic</option>
+                              <option value="metamagic">Metamagie</option>
                             )}
                             {activeFeatSlot && activeFeatSlot.allowedCategories.includes('item_creation') && (
-                              <option value="item_creation">Item Creation</option>
+                              <option value="item_creation">Erschaffung</option>
                             )}
                             {activeFeatSlot && activeFeatSlot.allowedCategories.includes('general') && (
-                              <option value="general">General</option>
+                              <option value="general">Allgemein</option>
                             )}
                           </select>
                         </div>

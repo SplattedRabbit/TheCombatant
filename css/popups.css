@@ -415,10 +415,10 @@
 
 /* Make all dropdowns/selects readable and prevent native unscaled tiny display */
 select, select.cinput {
-  font-size: 11px !important;
-  height: 18px !important;
-  padding: 0 2px !important;
-  font-family: 'Crimson Text', serif !important;
+  font-size: 11px;
+  height: 18px;
+  padding: 0 2px;
+  font-family: 'Crimson Text', serif;
 }
 select option {
   font-size: 11px !important;
