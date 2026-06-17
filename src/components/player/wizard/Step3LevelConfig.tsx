@@ -1,5 +1,4 @@
 import React from 'react';
-// @ts-ignore
 import { CombatFeats } from '@core/data/feats-data.js';
 import { CLASSES_LIST, CLASS_KEY_ATTRIBUTES } from './constants';
 import { SkillsTabContent } from './SkillsTabContent';

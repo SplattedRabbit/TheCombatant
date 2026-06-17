@@ -1,4 +1,3 @@
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
 import { CLASSES_LIST } from './constants';
 

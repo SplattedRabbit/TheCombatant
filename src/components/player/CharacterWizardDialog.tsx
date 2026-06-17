@@ -6,14 +6,10 @@
  */
 
 import React, { useState, useEffect, useMemo } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { CombatFeats } from '@core/data/feats-data.js';
 import { showAttributeExplanation } from './attributeHelper';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 import { 
