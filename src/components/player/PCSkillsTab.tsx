@@ -207,27 +207,40 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
   const handleRanksChange = (key: string, val: string) => {
     let num = parseFloat(val);
     if (isNaN(num) || num < 0) num = 0;
+    num = Math.floor(num); // No half ranks allowed
 
     const ranks = patchedPC.getSkillRanks(key);
     const isClass = CombatRules.isClassSkill(key, patchedPC);
 
-    if (!isClass && num > ranks) {
+    if (num > ranks) {
       const spentSP = CombatRules.calculateSpentSkillPoints(patchedPC);
       const totalSP = CombatRules.calculateTotalSkillPoints(patchedPC);
       const freeSP = totalSP - spentSP;
-      if (freeSP === 1) {
-        showCustomAlert(
-          "Aktion nicht möglich",
-          "Es ist nicht möglich, einen einzelnen verbleibenden Skillpunkt für eine klassenfremde Fertigkeit auszugeben. Sie benötigen mindestens 2 freie Skillpunkte, da klassenfremde Fertigkeiten 2 Skillpunkte pro Rang kosten.",
-          "OK",
-          "📝"
-        );
+      const cost = (num - ranks) * (isClass ? 1 : 2);
+
+      if (freeSP < cost) {
+        if (!isClass && freeSP === 1) {
+          showCustomAlert(
+            "Aktion nicht möglich",
+            "Es ist nicht möglich, einen einzelnen verbleibenden Skillpunkt für eine klassenfremde Fertigkeit auszugeben. Sie benötigen mindestens 2 freie Skillpunkte, da klassenfremde Fertigkeiten 2 Skillpunkte pro Rang kosten.",
+            "OK",
+            "📝"
+          );
+        } else {
+          showCustomAlert(
+            "Nicht genügend Skillpunkte",
+            `Sie haben nicht genügend freie Skillpunkte (${freeSP} vorhanden, ${cost} benötigt).`,
+            "OK",
+            "📝"
+          );
+        }
         return;
       }
     }
 
     const maxRanks = CombatRules.getPCMaxRanks(key, patchedPC);
-    if (num > maxRanks) num = maxRanks;
+    const maxAllowed = Math.floor(maxRanks);
+    if (num > maxAllowed) num = maxAllowed;
 
     CombatState.updatePCBatch((freshPC: any) => {
       if (!freshPC.skills) freshPC.skills = {};
@@ -422,9 +435,9 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Ranks:</span>
                     <input
                       type="number"
-                      step="0.5"
+                      step="1"
                       min="0"
-                      max={maxRanks}
+                      max={Math.floor(maxRanks)}
                       value={ranks}
                       onChange={(e) => handleRanksChange(key, e.target.value)}
                       style={{
@@ -441,7 +454,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                         fontWeight: ranksExceeded ? 'bold' : 'normal',
                         borderColor: ranksExceeded ? 'var(--red)' : 'var(--pb)'
                       }}
-                      title={`Acquired Ranks (Max allowed: ${maxRanks})`}
+                      title={`Acquired Ranks (Max allowed: ${Math.floor(maxRanks)})`}
                     />
                   </div>
 

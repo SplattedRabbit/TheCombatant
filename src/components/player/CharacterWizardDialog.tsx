@@ -1256,8 +1256,9 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                                       disabled={currentClicks <= 0}
                                       onClick={() => {
                                         const nextSkills = { ...currentConfig.skills };
-                                        if (nextSkills[key] > 1) {
-                                          nextSkills[key] -= 1;
+                                        const decrement = isClassSkill ? 1 : 2;
+                                        if (nextSkills[key] > decrement) {
+                                          nextSkills[key] -= decrement;
                                         } else {
                                           delete nextSkills[key];
                                         }
@@ -1269,27 +1270,28 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                                     </button>
                                     
                                     <span style={{ width: '60px', textAlign: 'center', fontSize: '12px', fontWeight: 'bold' }}>
-                                      {totalRanks} <span style={{ fontSize: '10px', fontWeight: 'normal', color: 'var(--inkl)' }}>/ {maxRanks}</span>
+                                      {totalRanks} <span style={{ fontSize: '10px', fontWeight: 'normal', color: 'var(--inkl)' }}>/ {Math.floor(maxRanks)}</span>
                                     </span>
 
                                     <button
                                       className="btn"
                                       disabled={
                                         currentLevelRemainingSkillPoints <= 0 ||
-                                        totalRanks + (isClassSkill ? 1.0 : 0.5) > maxRanks
+                                        totalRanks + 1.0 > Math.floor(maxRanks)
                                       }
                                       onClick={() => {
-                                        if (currentLevelRemainingSkillPoints === 1 && !isClassSkill) {
+                                        const cost = isClassSkill ? 1 : 2;
+                                        if (currentLevelRemainingSkillPoints < cost) {
                                           showCustomAlert(
                                             "Aktion nicht möglich",
-                                            "Es ist nicht möglich, einen einzelnen verbleibenden Skillpunkt für eine klassenfremde Fertigkeit auszugeben. Sie benötigen mindestens 2 freie Skillpunkte, da klassenfremde Fertigkeiten 2 Skillpunkte pro Rang kosten.",
+                                            `Es ist nicht möglich, eine klassenfremde Fertigkeit zu steigern. Sie benötigen mindestens ${cost} freie Skillpunkte, da klassenfremde Fertigkeiten ${cost} Skillpunkte pro Rang kosten.`,
                                             "OK",
                                             "📝"
                                           );
                                           return;
                                         }
                                         const nextSkills = { ...currentConfig.skills };
-                                        nextSkills[key] = (nextSkills[key] || 0) + 1;
+                                        nextSkills[key] = (nextSkills[key] || 0) + cost;
                                         updateLevelConfig(currentLevelIndex, 'skills', nextSkills);
                                       }}
                                       style={{ padding: '0px 6px', fontSize: '10px' }}
