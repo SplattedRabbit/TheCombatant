@@ -239,6 +239,11 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       if (stat === 'int') return -2;
       if (stat === 'cha') return -2;
     }
+    if (race === 'tiefling') {
+      if (stat === 'dex') return 2;
+      if (stat === 'int') return 2;
+      if (stat === 'cha') return -2;
+    }
     return 0;
   };
 
@@ -780,6 +785,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   const base = baseStats[k];
                   const racMod = getRacialModifier(selectedRace, k);
                   const finalVal = base + racMod;
+                  const finalMod = getMod(finalVal);
+                  const finalModStr = finalMod >= 0 ? `+${finalMod}` : `${finalMod}`;
                   
                   return (
                     <div 
@@ -856,8 +863,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                         {getRacialModifierString(k) ? `${getRacialModifierString(k)} Race` : '—'}
                       </div>
 
-                      <div style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', width: '60px', textAlign: 'right' }}>
-                        = {finalVal}
+                      <div style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', width: '90px', textAlign: 'right' }}>
+                        = {finalVal} ({finalModStr})
                       </div>
                     </div>
                   );
@@ -1057,6 +1064,29 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   </div>
                 )}
 
+                {/* Current Attributes Card */}
+                {isTargetLevelSet && currentDraft && (
+                  <div style={{ padding: '10px', border: '1px solid var(--pb)', background: 'rgba(244,232,193,0.3)', borderRadius: '4px', marginTop: '6px' }}>
+                    <strong style={{ display: 'block', fontSize: '11px', color: 'var(--red)', marginBottom: '6px', borderBottom: '0.5px dashed rgba(200, 169, 110, 0.4)', paddingBottom: '2px' }}>
+                      Current Ability Scores (Lvl {currentLevelIndex + 1})
+                    </strong>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '11px' }}>
+                      {(['str', 'dex', 'con', 'int', 'wis', 'cha'] as const).map(k => {
+                        const labelMap = { str: 'STR', dex: 'DEX', con: 'CON', int: 'INT', wis: 'WIS', cha: 'CHA' };
+                        const val = currentDraft.stats[k];
+                        const mod = currentDraft.statMods[k];
+                        const modStr = mod >= 0 ? `+${mod}` : `${mod}`;
+                        return (
+                          <div key={k} style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '0.5px dashed rgba(200,169,110,0.2)', paddingBottom: '1px' }}>
+                            <span>{labelMap[k]}:</span>
+                            <strong style={{ color: 'var(--red)' }}>{val} ({modStr})</strong>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
               </div>
 
               {/* Right Column */}
@@ -1169,7 +1199,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                                     justifyContent: 'space-between',
                                     padding: '6px 8px',
                                     borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)',
-                                    fontSize: '12px'
+                                    fontSize: '12px',
+                                    background: currentClicks > 0 ? 'rgba(76, 175, 80, 0.15)' : 'transparent'
                                   }}
                                 >
                                   <div style={{ textAlign: 'left', flex: 1 }}>
@@ -1219,6 +1250,15 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                                         totalRanks + (isClassSkill ? 1.0 : 0.5) > maxRanks
                                       }
                                       onClick={() => {
+                                        if (currentLevelRemainingSkillPoints === 1 && !isClassSkill) {
+                                          showCustomAlert(
+                                            "Aktion nicht möglich",
+                                            "Es ist nicht möglich, einen einzelnen verbleibenden Skillpunkt für eine klassenfremde Fertigkeit auszugeben. Sie benötigen mindestens 2 freie Skillpunkte, da klassenfremde Fertigkeiten 2 Skillpunkte pro Rang kosten.",
+                                            "OK",
+                                            "📝"
+                                          );
+                                          return;
+                                        }
                                         const nextSkills = { ...currentConfig.skills };
                                         nextSkills[key] = (nextSkills[key] || 0) + 1;
                                         updateLevelConfig(currentLevelIndex, 'skills', nextSkills);

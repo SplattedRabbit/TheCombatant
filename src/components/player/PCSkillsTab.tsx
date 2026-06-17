@@ -19,7 +19,7 @@ import { calculateSkillModifier } from '@core/models/helpers/skills/CombatantSki
 // @ts-ignore
 import { applyFeatSkillBonuses } from '@core/models/helpers/skills/SkillFeatApplier.js';
 // @ts-ignore
-import { showRollBreakdown } from '@core/ui/components/dialogs.js';
+import { showRollBreakdown, showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface PCSkillsTabProps {
   pc: any; // Declared as any for runtime compatibility with dynamic prototype methods
@@ -207,6 +207,25 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
   const handleRanksChange = (key: string, val: string) => {
     let num = parseFloat(val);
     if (isNaN(num) || num < 0) num = 0;
+
+    const ranks = patchedPC.getSkillRanks(key);
+    const isClass = CombatRules.isClassSkill(key, patchedPC);
+
+    if (!isClass && num > ranks) {
+      const spentSP = CombatRules.calculateSpentSkillPoints(patchedPC);
+      const totalSP = CombatRules.calculateTotalSkillPoints(patchedPC);
+      const freeSP = totalSP - spentSP;
+      if (freeSP === 1) {
+        showCustomAlert(
+          "Aktion nicht möglich",
+          "Es ist nicht möglich, einen einzelnen verbleibenden Skillpunkt für eine klassenfremde Fertigkeit auszugeben. Sie benötigen mindestens 2 freie Skillpunkte, da klassenfremde Fertigkeiten 2 Skillpunkte pro Rang kosten.",
+          "OK",
+          "📝"
+        );
+        return;
+      }
+    }
+
     const maxRanks = CombatRules.getPCMaxRanks(key, patchedPC);
     if (num > maxRanks) num = maxRanks;
 
