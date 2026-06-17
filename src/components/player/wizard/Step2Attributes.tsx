@@ -1,6 +1,7 @@
 import React from 'react';
 import { CLASSES_LIST, CLASS_KEY_ATTRIBUTES } from './constants';
 import { showAttributeExplanation } from '../attributeHelper';
+import { getRacialModifier, getMod, getRacialModifierString } from './helpers';
 
 interface Step2AttributesProps {
   baseStats: {
@@ -23,9 +24,6 @@ interface Step2AttributesProps {
   highlightClass: string;
   setHighlightClass: (val: string) => void;
   totalStatsSpent: number;
-  getRacialModifier: (race: string, stat: string) => number;
-  getMod: (score: number) => number;
-  getRacialModifierString: (stat: string) => string;
 }
 
 export const Step2Attributes: React.FC<Step2AttributesProps> = ({
@@ -34,10 +32,7 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
   selectedRace,
   highlightClass,
   setHighlightClass,
-  totalStatsSpent,
-  getRacialModifier,
-  getMod,
-  getRacialModifierString
+  totalStatsSpent
 }) => {
   return (
     <div style={{ textAlign: 'left', marginTop: '10px' }}>
@@ -149,7 +144,7 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
                 </div>
                 
                 <div style={{ fontSize: '11px', color: 'var(--inkl)', fontStyle: 'italic', width: '60px', textAlign: 'center' }}>
-                  {getRacialModifierString(k) ? `${getRacialModifierString(k)} Race` : '—'}
+                  {getRacialModifierString(selectedRace, k) ? `${getRacialModifierString(selectedRace, k)} Race` : '—'}
                 </div>
 
                 <div style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', width: '90px', textAlign: 'right' }}>
