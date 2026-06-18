@@ -169,5 +169,11 @@ export const CLASSES_LIST = [
   { key: 'monk', name: 'Monk', hd: 8, skillBase: 4, desc: 'Unarmed martial artist, high AC, and fast movement.' },
   { key: 'paladin', name: 'Paladin', hd: 10, skillBase: 2, desc: 'Holy warrior, lay on hands, immunities.' },
   { key: 'ranger', name: 'Ranger', hd: 8, skillBase: 6, desc: 'Tracker, favored enemy, two-weapon fighting or archery.' },
-  { key: 'sorcerer', name: 'Sorcerer', hd: 4, skillBase: 2, desc: 'Spontaneous arcane spellcaster with innate magic.' }
+  { key: 'sorcerer', name: 'Sorcerer', hd: 4, skillBase: 2, desc: 'Spontaneous arcane spellcaster with innate magic.' },
+  { key: 'mystic_theurge', name: 'Mystic Theurge', hd: 4, skillBase: 2, desc: 'Master of both arcane and divine magic.', isPrestige: true },
+  { key: 'arcane_trickster', name: 'Arcane Trickster', hd: 4, skillBase: 4, desc: 'Combines magic with rogue abilities.', isPrestige: true },
+  { key: 'dragon_disciple', name: 'Dragon Disciple', hd: 12, skillBase: 2, desc: 'Awakens draconic blood for physical power.', isPrestige: true },
+  { key: 'assassin', name: 'Assassin', hd: 6, skillBase: 4, desc: 'Master of stealth, anatomy, and lethal strikes.', isPrestige: true }
 ];
+
+

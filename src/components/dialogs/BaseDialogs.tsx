@@ -65,9 +65,10 @@ export const CustomAlertModal: React.FC<CustomAlertModalProps> = ({ title, messa
         {icon ? icon + ' ' : ''}{title}
       </div>
       <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '6px 0 10px' }} />
-      <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '12px', color: 'var(--ink)', lineHeight: 1.4, marginBottom: '12px', fontWeight: 500, textAlign: 'center', whiteSpace: 'pre-line' }}>
-        {message}
-      </div>
+      <div 
+        style={{ fontFamily: "'Crimson Text', serif", fontSize: '12px', color: 'var(--ink)', lineHeight: 1.4, marginBottom: '12px', fontWeight: 500, textAlign: 'center', whiteSpace: 'pre-line' }}
+        dangerouslySetInnerHTML={{ __html: message }}
+      />
       <button 
         onClick={onClose}
         className="btn btn-p pc-alert-close-btn" 

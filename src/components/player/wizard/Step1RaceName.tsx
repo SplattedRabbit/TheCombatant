@@ -6,37 +6,89 @@ interface Step1RaceNameProps {
   setName: (val: string) => void;
   selectedRace: string;
   setSelectedRace: (val: string) => void;
+  alignmentEthical: string;
+  setAlignmentEthical: (val: string) => void;
+  alignmentMoral: string;
+  setAlignmentMoral: (val: string) => void;
 }
 
 export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
   name,
   setName,
   selectedRace,
-  setSelectedRace
+  setSelectedRace,
+  alignmentEthical,
+  setAlignmentEthical,
+  alignmentMoral,
+  setAlignmentMoral
 }) => {
   const activeRaceInfo = RACES.find(r => r.key === selectedRace);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', textAlign: 'left', marginTop: '10px' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-        <label style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
-          Character Name
-        </label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="cinput"
-          placeholder="Enter adventurer name..."
-          style={{
-            width: '100%',
-            maxWidth: '400px',
-            fontFamily: "'Crimson Text', serif",
-            fontSize: '14px',
-            padding: '6px 12px',
-            boxSizing: 'border-box'
-          }}
-        />
+      
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        {/* Name Input */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <label style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
+            Character Name
+          </label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="cinput"
+            placeholder="Enter adventurer name..."
+            style={{
+              width: '100%',
+              fontFamily: "'Crimson Text', serif",
+              fontSize: '14px',
+              padding: '6px 12px',
+              boxSizing: 'border-box'
+            }}
+          />
+        </div>
+
+        {/* Alignment Dropdowns */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <label style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
+            Alignment (Gesinnung)
+          </label>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <select
+              value={alignmentEthical}
+              onChange={(e) => setAlignmentEthical(e.target.value)}
+              className="cinput"
+              style={{
+                flex: 1,
+                fontSize: '13px',
+                height: '34px',
+                padding: '0 8px',
+                cursor: 'pointer'
+              }}
+            >
+              <option value="Lawful">Rechtschaffen (Lawful)</option>
+              <option value="Neutral">Neutral (Neutral)</option>
+              <option value="Chaotic">Chaotisch (Chaotic)</option>
+            </select>
+            <select
+              value={alignmentMoral}
+              onChange={(e) => setAlignmentMoral(e.target.value)}
+              className="cinput"
+              style={{
+                flex: 1,
+                fontSize: '13px',
+                height: '34px',
+                padding: '0 8px',
+                cursor: 'pointer'
+              }}
+            >
+              <option value="Good">Gut (Good)</option>
+              <option value="Neutral">Neutral (Neutral)</option>
+              <option value="Evil">Böse (Evil)</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '30px', marginTop: '10px' }}>

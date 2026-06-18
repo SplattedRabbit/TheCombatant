@@ -1,7 +1,7 @@
 /**
  * @module    RulesSpells
  * @summary   Spell slot lookups, eligibility checks, and known spell limits
- * @exports   getMaxSpellLevel, calculateMaxSpellSlots, checkSpellKnownLimit, getAllCompendiumSpells, isSpellEligibleForPC, getEligibleSpellLevelsForPC
+ * @exports   getMaxSpellLevel, calculateMaxSpellSlots, checkSpellKnownLimit, getAllCompendiumSpells, isSpellEligibleForPC, getEligibleSpellLevelsForPC, getEffectiveCasterLevel
  */
 
 import {
@@ -10,9 +10,30 @@ import {
   BARD_TABLE,
   PALADIN_RANGER_TABLE,
   SORCERER_KNOWN_TABLE,
-  BARD_KNOWN_TABLE
+  BARD_KNOWN_TABLE,
+  ASSASSIN_TABLE
 } from './RulesData.js';
 import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput } from '../spells.js';
+
+export function getEffectiveCasterLevel(pc, classType) {
+  if (!pc || !Array.isArray(pc.classes)) return 0;
+  const baseClass = pc.classes.find(cls => cls.classType === classType);
+  if (!baseClass) return 0;
+  let effectiveLevel = baseClass.level;
+  if (pc.prestigeSpellLinks) {
+    Object.entries(pc.prestigeSpellLinks).forEach(([prcKey, links]) => {
+      const prcClass = pc.classes.find(cls => cls.classType === prcKey);
+      if (prcClass) {
+        if (typeof links === 'string' && links === classType) {
+          effectiveLevel += prcClass.level;
+        } else if (typeof links === 'object' && links !== null && Object.values(links).includes(classType)) {
+          effectiveLevel += prcClass.level;
+        }
+      }
+    });
+  }
+  return effectiveLevel;
+}
 
 export function getMaxSpellLevel(classType, classLevel) {
   let table;
@@ -24,6 +45,8 @@ export function getMaxSpellLevel(classType, classLevel) {
     table = BARD_TABLE;
   } else if (['paladin', 'ranger'].includes(classType)) {
     table = PALADIN_RANGER_TABLE;
+  } else if (classType === 'assassin') {
+    table = ASSASSIN_TABLE;
   } else {
     return -1;
   }
@@ -54,12 +77,15 @@ export function calculateMaxSpellSlots(pc) {
     } else if (['paladin', 'ranger'].includes(c.classType)) {
       table = PALADIN_RANGER_TABLE;
       keyAbility = 'wis';
+    } else if (c.classType === 'assassin') {
+      table = ASSASSIN_TABLE;
+      keyAbility = 'int';
     } else {
       return; // Non-caster
     }
 
     hasCaster = true;
-    const level = c.level;
+    const level = getEffectiveCasterLevel(pc, c.classType);
 
     for (let lvl = 0; lvl <= 9; lvl++) {
       const base = table[level]?.[lvl];
@@ -109,11 +135,11 @@ export function checkSpellKnownLimit(pc, spell, findSpellFn) {
   // Check if the spell is eligible via an unlimited caster class the PC has levels in
   const isUnlimitedEligible = activeClasses.some(c => {
     if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
-    if (['paladin', 'ranger'].includes(c.classType) && c.level < 4) return false;
+    if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) return false;
     if (!Array.isArray(spell.classLevels)) return false;
     const clMatch = spell.classLevels.find(cl => cl.class === c.classType);
     if (!clMatch) return false;
-    const maxLvl = getMaxSpellLevel(c.classType, c.level);
+    const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
     return clMatch.level <= maxLvl;
   });
 
@@ -131,9 +157,9 @@ export function checkSpellKnownLimit(pc, spell, findSpellFn) {
     const sorcMatch = Array.isArray(spell.classLevels) && spell.classLevels.find(cl => cl.class === 'sorcerer');
     if (sorcMatch) {
       sorcLvl = sorcMatch.level;
-      const maxCastLvl = getMaxSpellLevel('sorcerer', sorcClass.level);
+      const maxCastLvl = getMaxSpellLevel('sorcerer', getEffectiveCasterLevel(pc, 'sorcerer'));
       if (sorcLvl <= maxCastLvl) {
-        const row = SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, sorcClass.level))];
+        const row = SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, getEffectiveCasterLevel(pc, 'sorcerer')))];
         maxSorcSpells = row ? (row[sorcLvl] || 0) : 0;
 
         // Count currently learned Sorcerer spells at this level (excluding unlimited ones)
@@ -145,11 +171,11 @@ export function checkSpellKnownLimit(pc, spell, findSpellFn) {
           // Check if unlimited
           const sUnlimited = activeClasses.some(c => {
             if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
-            if (['paladin', 'ranger'].includes(c.classType) && c.level < 4) return false;
+            if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) return false;
             if (!Array.isArray(s.classLevels)) return false;
             const clMatch = s.classLevels.find(cl => cl.class === c.classType);
             if (!clMatch) return false;
-            const maxLvl = getMaxSpellLevel(c.classType, c.level);
+            const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
             return clMatch.level <= maxLvl;
           });
           if (sUnlimited) return;
@@ -178,9 +204,9 @@ export function checkSpellKnownLimit(pc, spell, findSpellFn) {
     const bardMatch = Array.isArray(spell.classLevels) && spell.classLevels.find(cl => cl.class === 'bard');
     if (bardMatch) {
       bardLvl = bardMatch.level;
-      const maxCastLvl = getMaxSpellLevel('bard', bardClass.level);
+      const maxCastLvl = getMaxSpellLevel('bard', getEffectiveCasterLevel(pc, 'bard'));
       if (bardLvl <= maxCastLvl) {
-        const row = BARD_KNOWN_TABLE[Math.max(1, Math.min(20, bardClass.level))];
+        const row = BARD_KNOWN_TABLE[Math.max(1, Math.min(20, getEffectiveCasterLevel(pc, 'bard')))];
         maxBardSpells = row ? (row[bardLvl] || 0) : 0;
 
         // Count currently learned Bard spells at this level (excluding unlimited ones)
@@ -192,11 +218,11 @@ export function checkSpellKnownLimit(pc, spell, findSpellFn) {
           // Check if unlimited
           const sUnlimited = activeClasses.some(c => {
             if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
-            if (['paladin', 'ranger'].includes(c.classType) && c.level < 4) return false;
+            if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) return false;
             if (!Array.isArray(s.classLevels)) return false;
             const clMatch = s.classLevels.find(cl => cl.class === c.classType);
             if (!clMatch) return false;
-            const maxLvl = getMaxSpellLevel(c.classType, c.level);
+            const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
             return clMatch.level <= maxLvl;
           });
           if (sUnlimited) return;
@@ -275,7 +301,7 @@ export function isSpellEligibleForPC(spell, pc) {
   return pc.classes.some(c => {
     const classMatch = spell.classLevels.find(cl => cl.class === c.classType);
     if (!classMatch) return false;
-    const maxLvl = getMaxSpellLevel(c.classType, c.level);
+    const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
     return classMatch.level <= maxLvl;
   });
 }
@@ -296,14 +322,16 @@ export function getEligibleSpellLevelsForPC(pc) {
       table = BARD_TABLE;
     } else if (['paladin', 'ranger'].includes(c.classType)) {
       table = PALADIN_RANGER_TABLE;
+    } else if (c.classType === 'assassin') {
+      table = ASSASSIN_TABLE;
     } else {
       return;
     }
     
-    const row = table[c.level];
+    const row = table[getEffectiveCasterLevel(pc, c.classType)];
     if (Array.isArray(row)) {
       row.forEach((val, lvl) => {
-        if (['paladin', 'ranger'].includes(c.classType) && lvl === 0) {
+        if (['paladin', 'ranger', 'assassin'].includes(c.classType) && lvl === 0) {
           return;
         }
         levels.add(lvl);

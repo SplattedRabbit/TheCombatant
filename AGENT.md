@@ -67,8 +67,10 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Service Worker / Cache| `service-worker.js`, `scratch/update_sw.js`              | `index.html`                                 |
 | DM-Screen & Init-Bar  | `src/components/dm/DMScreen.tsx`, `DMCombatantsTable.tsx`, `InitBar.tsx` | `src/App.tsx`, `src/components/player/PlayerSheet.tsx` |
 | Kampf-Verwaltung      | `js/state/EncounterManager.js`, `js/state/ConditionManager.js`, `js/state/ConcentrationManager.js`, `js/state/EncounterSamples.js` | `js/state.js`, `js/network/SyncProtocol.js`, `Tests/` |
+| Prestige Classes      | `js/rules/classValidation.js`, `js/rules/RulesSpells.js`  | `Step3LevelConfig.tsx`, `Tests/prestige.test.js` |
 
 ---
+
 
 ## 4. State-API — häufige Aktionen
 

@@ -188,7 +188,7 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
               style={{ width: '100%', padding: '0 6px', fontSize: '11px', height: '24px', cursor: 'pointer', fontFamily: "'IM Fell English SC', serif", boxSizing: 'border-box' }}
             >
               <option value="">-- None --</option>
-              {CLASSES_LIST.map(c => (
+              {CLASSES_LIST.filter(c => !c.isPrestige).map(c => (
                 <option key={c.key} value={c.key}>{c.name}</option>
               ))}
             </select>

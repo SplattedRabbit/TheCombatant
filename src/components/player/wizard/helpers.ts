@@ -49,7 +49,8 @@ export const getDraftPCState = (
   lvlIdx: number,
   baseStats: { str: number; dex: number; con: number; int: number; wis: number; cha: number },
   selectedRace: string,
-  levelConfigs: any[]
+  levelConfigs: any[],
+  alignment?: string
 ) => {
   const stats = { ...baseStats };
   const statKeys = ['str', 'dex', 'con', 'int', 'wis', 'cha'] as const;
@@ -124,9 +125,20 @@ export const getDraftPCState = (
     }
   }
 
+  const prestigeSpellLinks: Record<string, any> = {};
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg && cfg.prestigeSpellLinks) {
+      Object.entries(cfg.prestigeSpellLinks).forEach(([prcKey, links]) => {
+        prestigeSpellLinks[prcKey] = links;
+      });
+    }
+  }
+
   const draftPC = {
     race: selectedRace,
     isHuman: selectedRace === 'human',
+    alignment: alignment || 'Neutral',
     level: lvlIdx + 1,
     classes: classesList,
     str: { getValue: () => stats.str },
@@ -141,7 +153,158 @@ export const getDraftPCState = (
     skills: skillsAcc,
     getSkillRanks: (skillKey: string) => skillsAcc[skillKey]?.ranks || 0,
     getSkillMisc: () => 0,
-    getArmorCheckPenalty: () => 0
+    getArmorCheckPenalty: () => 0,
+    prestigeSpellLinks,
+    getSneakAttackDiceCount: () => {
+      const rogueClass = classesList.find(c => c.classType === 'rogue');
+      let count = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
+      const atClass = classesList.find(c => c.classType === 'arcane_trickster');
+      if (atClass) {
+        count += Math.floor(atClass.level / 2);
+      }
+      const assClass = classesList.find(c => c.classType === 'assassin');
+      if (assClass) {
+        count += Math.floor((assClass.level + 1) / 2);
+      }
+      return count;
+    }
+  };
+
+
+  return {
+    stats,
+    statMods,
+    classesList,
+    babVal,
+    featsList,
+    skillsAcc,
+    draftPC
+  };
+};
+
+// Helper to compile the draft character state fully up to and including lvlIdx (with feats & skills)
+export const getCompletedDraftPCState = (
+  lvlIdx: number,
+  baseStats: { str: number; dex: number; con: number; int: number; wis: number; cha: number },
+  selectedRace: string,
+  levelConfigs: any[],
+  alignment?: string
+) => {
+  const stats = { ...baseStats };
+  const statKeys = ['str', 'dex', 'con', 'int', 'wis', 'cha'] as const;
+  statKeys.forEach(k => {
+    stats[k] += getRacialModifier(selectedRace, k);
+  });
+
+  // Add level-up ability increases up to lvlIdx
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg && cfg.abilityIncrease) {
+      const k = cfg.abilityIncrease as keyof typeof stats;
+      stats[k] += 1;
+    }
+  }
+
+  const statMods = {
+    str: getMod(stats.str),
+    dex: getMod(stats.dex),
+    con: getMod(stats.con),
+    int: getMod(stats.int),
+    wis: getMod(stats.wis),
+    cha: getMod(stats.cha),
+  };
+
+  // Calculate class levels up to lvlIdx
+  const classesMap: Record<string, number> = {};
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg && cfg.classType) {
+      classesMap[cfg.classType] = (classesMap[cfg.classType] || 0) + 1;
+    }
+  }
+  const classesList = Object.entries(classesMap).map(([classType, level]) => ({
+    classType,
+    level
+  }));
+
+  // Calculate BAB up to lvlIdx
+  let babVal = 0;
+  classesList.forEach(c => {
+    const clsDef = CombatRules.CLASSES.find((x: any) => x.key === c.classType);
+    if (clsDef && clsDef.key !== 'custom') {
+      babVal += CombatRules.calculateBab(clsDef.bab, c.level);
+    }
+  });
+
+  // Feats list up to lvlIdx (inclusive)
+  const featsList: string[] = [];
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg && Array.isArray(cfg.feats)) {
+      featsList.push(...cfg.feats);
+    }
+  }
+
+  // Skill ranks up to lvlIdx (inclusive)
+  const skillsAcc: Record<string, { ranks: number, misc: number }> = {};
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg && cfg.skills) {
+      Object.entries(cfg.skills).forEach(([sKey, clicks]) => {
+        if (!skillsAcc[sKey]) {
+          skillsAcc[sKey] = { ranks: 0, misc: 0 };
+        }
+        const wasClass = CombatRules.CLASS_SKILLS[cfg.classType]?.includes(sKey) || 
+                         (sKey.startsWith('knowledge_') && (cfg.classType === 'wizard' || cfg.classType === 'bard'));
+        const increment = wasClass ? 1.0 : 0.5;
+        skillsAcc[sKey].ranks += (clicks as number) * increment;
+      });
+    }
+  }
+
+  const prestigeSpellLinks: Record<string, any> = {};
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg && cfg.prestigeSpellLinks) {
+      Object.entries(cfg.prestigeSpellLinks).forEach(([prcKey, links]) => {
+        prestigeSpellLinks[prcKey] = links;
+      });
+    }
+  }
+
+  const draftPC = {
+    race: selectedRace,
+    isHuman: selectedRace === 'human',
+    alignment: alignment || 'Neutral',
+    level: lvlIdx + 1,
+    classes: classesList,
+    str: { getValue: () => stats.str },
+    dex: { getValue: () => stats.dex },
+    con: { getValue: () => stats.con },
+    int: { getValue: () => stats.int },
+    wis: { getValue: () => stats.wis },
+    cha: { getValue: () => stats.cha },
+    getAttributeMod: (attrName: string) => statMods[attrName as keyof typeof statMods] || 0,
+    bab: { getValue: () => babVal },
+    feats: featsList.map(fid => ({ id: fid })),
+    skills: skillsAcc,
+    getSkillRanks: (skillKey: string) => skillsAcc[skillKey]?.ranks || 0,
+    getSkillMisc: () => 0,
+    getArmorCheckPenalty: () => 0,
+    prestigeSpellLinks,
+    getSneakAttackDiceCount: () => {
+      const rogueClass = classesList.find(c => c.classType === 'rogue');
+      let count = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
+      const atClass = classesList.find(c => c.classType === 'arcane_trickster');
+      if (atClass) {
+        count += Math.floor(atClass.level / 2);
+      }
+      const assClass = classesList.find(c => c.classType === 'assassin');
+      if (assClass) {
+        count += Math.floor((assClass.level + 1) / 2);
+      }
+      return count;
+    }
   };
 
   return {
