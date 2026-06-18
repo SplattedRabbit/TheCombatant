@@ -20,6 +20,7 @@ import {
   getRacialModifier, 
   getMod, 
   getDraftPCState, 
+  getCompletedDraftPCState,
   getFeatSlotsAtLevel, 
   getSkillPointsForLevel 
 } from './wizard/helpers';
@@ -37,6 +38,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   // Step 1 State
   const [name, setName] = useState('');
   const [selectedRace, setSelectedRace] = useState<string>('human');
+  const [alignmentEthical, setAlignmentEthical] = useState<string>('Neutral');
+  const [alignmentMoral, setAlignmentMoral] = useState<string>('Neutral');
 
   // Highlight class key attributes in Point-Buy
   const [highlightClass, setHighlightClass] = useState<string>('');
@@ -90,16 +93,17 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   };
 
   const updateLevelConfig = (idx: number, key: string, val: any) => {
-    const next = [...levelConfigs];
-    next[idx] = { ...next[idx], [key]: val };
-    
-    // Automatically set default HP roll at level 1 when class changes
-    if (idx === 0 && key === 'classType') {
-      const hd = getClassHitDie(val);
-      next[0].hpRoll = hd;
-    }
-
-    setLevelConfigs(next);
+    setLevelConfigs(prev => {
+      const next = [...prev];
+      next[idx] = { ...next[idx], [key]: val };
+      
+      // Automatically set default HP roll at level 1 when class changes
+      if (idx === 0 && key === 'classType') {
+        const hd = getClassHitDie(val);
+        next[0].hpRoll = hd;
+      }
+      return next;
+    });
   };
 
   const getClassHitDie = (cls: string): number => {
@@ -109,7 +113,13 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
 
   // Compile active level data
   const currentConfig = levelConfigs[currentLevelIndex] || {};
-  const currentDraft = isTargetLevelSet ? getDraftPCState(currentLevelIndex, baseStats, selectedRace, levelConfigs) : null;
+  const alignmentStr = alignmentEthical === 'Neutral' && alignmentMoral === 'Neutral'
+    ? 'Neutral'
+    : `${alignmentEthical} ${alignmentMoral}`;
+
+  const currentDraft = isTargetLevelSet ? getDraftPCState(currentLevelIndex, baseStats, selectedRace, levelConfigs, alignmentStr) : null;
+  const prevDraft = isTargetLevelSet ? getCompletedDraftPCState(currentLevelIndex - 1, baseStats, selectedRace, levelConfigs, alignmentStr) : null;
+  const completedDraft = isTargetLevelSet ? getCompletedDraftPCState(currentLevelIndex, baseStats, selectedRace, levelConfigs, alignmentStr) : null;
 
   const currentLevelMaxSkillPoints = getSkillPointsForLevel(currentLevelIndex, currentConfig.classType, selectedRace, baseStats, currentDraft);
   const currentLevelSpentSkillPoints = Object.values(currentConfig.skills || {}).reduce((a: any, b: any) => a + b, 0) as number;
@@ -203,6 +213,23 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         return;
       }
 
+      // Validate prestige class spell links
+      if (currentConfig.classType === 'mystic_theurge') {
+        const links = currentConfig.prestigeSpellLinks?.mystic_theurge;
+        if (!links || !links.arcane || !links.divine) {
+          showCustomAlert("Spell Link Missing", "Please select both an arcane and divine spellcasting class to advance.", "OK", "🔮");
+          return;
+        }
+      }
+      if (currentConfig.classType === 'arcane_trickster') {
+        const links = currentConfig.prestigeSpellLinks?.arcane_trickster;
+        if (!links) {
+          showCustomAlert("Spell Link Missing", "Please select an arcane spellcasting class to advance.", "OK", "🔮");
+          return;
+        }
+      }
+
+
       if (currentLevelIndex < targetLevel - 1) {
         setCurrentLevelIndex(currentLevelIndex + 1);
       } else {
@@ -228,6 +255,9 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     CombatState.updatePCBatch((pc: any) => {
       pc.name = name.trim() || 'Hero';
       pc.race = selectedRace;
+      pc.alignment = alignmentEthical === 'Neutral' && alignmentMoral === 'Neutral'
+        ? 'Neutral'
+        : `${alignmentEthical} ${alignmentMoral}`;
       pc.isHuman = selectedRace === 'human';
       pc.levelAdjustment = selectedRace === 'tiefling' ? 1 : 0;
       pc.resistances = selectedRace === 'tiefling' ? 'Cold 5, Electricity 5, Fire 5' : '';
@@ -257,6 +287,15 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
           pc.classes.push({ classType: cfg.classType, level: 1 });
         }
       });
+
+      // Clear and compile prestigeSpellLinks
+      pc.prestigeSpellLinks = {};
+      levelConfigs.forEach(cfg => {
+        if (cfg.prestigeSpellLinks) {
+          Object.assign(pc.prestigeSpellLinks, cfg.prestigeSpellLinks);
+        }
+      });
+
 
       // Apply racial modifiers directly to the base stats inside combatant class to align with tests
       const statKeys = ['str', 'dex', 'con', 'int', 'wis', 'cha'] as const;
@@ -383,6 +422,10 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             setName={setName}
             selectedRace={selectedRace}
             setSelectedRace={setSelectedRace}
+            alignmentEthical={alignmentEthical}
+            setAlignmentEthical={setAlignmentEthical}
+            alignmentMoral={alignmentMoral}
+            setAlignmentMoral={setAlignmentMoral}
           />
         );
 
@@ -447,6 +490,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             setCurrentLevelIndex={setCurrentLevelIndex}
             currentConfig={currentConfig}
             currentDraft={currentDraft}
+            prevDraft={prevDraft}
+            completedDraft={completedDraft}
             getClassHitDie={getClassHitDie}
             updateLevelConfig={updateLevelConfig}
             activeTab={activeTab}
@@ -488,9 +533,22 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   <div><strong>Name:</strong> {name}</div>
                   <div><strong>Race:</strong> {RACES.find(r => r.key === selectedRace)?.name}</div>
                   <div>
+                    <strong>Alignment:</strong>{' '}
+                    {alignmentEthical === 'Neutral' && alignmentMoral === 'Neutral'
+                      ? 'Neutral'
+                      : `${alignmentEthical} ${alignmentMoral}`}
+                  </div>
+                  <div>
                     <strong>Class Combination:</strong>{' '}
                     {isTargetLevelSet && currentDraft && currentDraft.classesList
-                      .map(c => `${CLASSES_LIST.find(x => x.key === c.classType)?.name || c.classType} ${c.level}`)
+                      .map(c => {
+                        const matched = CLASSES_LIST.find(x => x.key === c.classType);
+                        const cleanName = matched ? matched.name : c.classType
+                          .split('_')
+                          .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+                          .join(' ');
+                        return `${cleanName} ${c.level}`;
+                      })
                       .join(' / ')}
                   </div>
                   <div><strong>Target Level:</strong> {targetLevel}</div>

@@ -3,6 +3,9 @@ import { CombatFeats } from '@core/data/feats-data.js';
 import { CLASSES_LIST, CLASS_KEY_ATTRIBUTES } from './constants';
 import { SkillsTabContent } from './SkillsTabContent';
 import { FeatsTabContent } from './FeatsTabContent';
+import { validatePrestigeClassPrereqs } from '@core/rules.js';
+// @ts-ignore
+import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface Step3LevelConfigProps {
   levelConfigs: any[];
@@ -10,6 +13,8 @@ interface Step3LevelConfigProps {
   setCurrentLevelIndex: (idx: number) => void;
   currentConfig: any;
   currentDraft: any;
+  prevDraft: any;
+  completedDraft: any;
   getClassHitDie: (cls: string) => number;
   updateLevelConfig: (idx: number, key: string, val: any) => void;
   activeTab: 'skills' | 'feats';
@@ -35,6 +40,8 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   setCurrentLevelIndex,
   currentConfig,
   currentDraft,
+  prevDraft,
+  completedDraft,
   getClassHitDie,
   updateLevelConfig,
   activeTab,
@@ -53,6 +60,73 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   activeFeatSlot,
   filteredFeats
 }) => {
+
+  React.useEffect(() => {
+    if (!currentConfig || !currentDraft) return;
+
+    if (currentConfig.classType === 'mystic_theurge') {
+      const arcaneOptions = currentDraft.classes.filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType));
+      const divineOptions = currentDraft.classes.filter((cl: any) => ['cleric', 'druid', 'paladin', 'ranger'].includes(cl.classType));
+      
+      const links = { ...currentConfig.prestigeSpellLinks?.mystic_theurge };
+      let changed = false;
+      
+      if (arcaneOptions.length === 1 && links.arcane !== arcaneOptions[0].classType) {
+        links.arcane = arcaneOptions[0].classType;
+        changed = true;
+      }
+      if (divineOptions.length === 1 && links.divine !== divineOptions[0].classType) {
+        links.divine = divineOptions[0].classType;
+        changed = true;
+      }
+      
+      if (changed) {
+        updateLevelConfig(currentLevelIndex, 'prestigeSpellLinks', {
+          ...currentConfig.prestigeSpellLinks,
+          mystic_theurge: links
+        });
+      }
+    } else if (currentConfig.classType === 'arcane_trickster') {
+      const arcaneOptions = currentDraft.classes.filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType));
+      
+      let currentLink = currentConfig.prestigeSpellLinks?.arcane_trickster;
+      if (arcaneOptions.length === 1 && currentLink !== arcaneOptions[0].classType) {
+        updateLevelConfig(currentLevelIndex, 'prestigeSpellLinks', {
+          ...currentConfig.prestigeSpellLinks,
+          arcane_trickster: arcaneOptions[0].classType
+        });
+      }
+    }
+  }, [currentConfig.classType, currentDraft, currentLevelIndex]);
+
+  const baseClasses = CLASSES_LIST.filter(c => !c.isPrestige);
+  const prestigeClasses = CLASSES_LIST.filter(c => c.isPrestige);
+
+  const handleClassSelect = (classKey: string) => {
+    updateLevelConfig(currentLevelIndex, 'classType', classKey);
+    if (currentLevelIndex > 0) {
+      updateLevelConfig(currentLevelIndex, 'hpRoll', 1);
+    }
+  };
+
+  const handleLockedClassClick = (c: any) => {
+    const title = `Voraussetzungen für ${c.name}`;
+    const activeDraft = completedDraft || prevDraft;
+    const detailValidation = activeDraft ? validatePrestigeClassPrereqs(activeDraft.draftPC, c.key) : { success: false, metDetails: [] };
+
+    const lines = detailValidation.metDetails.map((req: any) => {
+      const color = req.met ? '#2e7d32' : '#d32f2f';
+      return `<div style="color: ${color}; margin-bottom: 10px;"><strong>${req.label}</strong><br/>[Vorhanden: ${req.current} / Benötigt: ${req.required}]</div>`;
+    });
+    
+    showCustomAlert(
+      title,
+      `<div style="text-align: left; max-height: 300px; overflow-y: auto; padding: 4px;"><p style="margin-bottom: 12px; color: var(--ink);">Du erfüllst die Voraussetzungen für diese Prestigeklasse noch nicht:</p>${lines.join('')}</div>`,
+      "OK",
+      "🔒"
+    );
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', textAlign: 'left', marginTop: '10px' }}>
       {/* Level Timeline Bar */}
@@ -69,7 +143,11 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
         {levelConfigs.map((cfg, idx) => {
           const isCurrent = idx === currentLevelIndex;
           const isPast = idx < currentLevelIndex;
-          const clsName = CLASSES_LIST.find(c => c.key === cfg.classType)?.name || '?';
+          const matched = CLASSES_LIST.find(c => c.key === cfg.classType);
+          const clsName = matched ? matched.name : (cfg.classType ? cfg.classType
+            .split('_')
+            .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ') : '?');
           
           return (
             <div
@@ -103,22 +181,152 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
             Level {currentLevelIndex + 1}: Class & HP
           </h4>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>Select Class</label>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>Base Classes</label>
             <select
-              value={currentConfig.classType}
-              onChange={(e) => updateLevelConfig(currentLevelIndex, 'classType', e.target.value)}
+              value={baseClasses.some(b => b.key === currentConfig.classType) ? currentConfig.classType : ''}
+              onChange={(e) => handleClassSelect(e.target.value)}
               className="cinput"
-              style={{ width: '100%', padding: '0 8px', fontSize: '12px', height: '32px', boxSizing: 'border-box' }}
+              style={{ width: '100%', fontSize: '11.5px', height: '28px', padding: '0 4px', cursor: 'pointer' }}
             >
-              <option value="" disabled>-- Please select --</option>
-              {CLASSES_LIST.map(c => (
-                <option key={c.key} value={c.key}>{c.name} (d{c.hd}, {c.skillBase} Skills)</option>
+              <option value="" disabled>-- Select Base Class --</option>
+              {baseClasses.map(c => (
+                <option key={c.key} value={c.key}>
+                  {c.name} (d{c.hd})
+                </option>
               ))}
             </select>
           </div>
 
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '6px' }}>
+            <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>Prestige Classes</label>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {prestigeClasses.map(c => {
+                const isSelected = currentConfig.classType === c.key;
+                const validation = prevDraft ? validatePrestigeClassPrereqs(prevDraft.draftPC, c.key) : { success: false, metDetails: [] };
+                const isAvailable = validation.success;
+                
+                return (
+                  <button
+                    key={c.key}
+                    type="button"
+                    onClick={() => {
+                      if (isAvailable) {
+                        handleClassSelect(c.key);
+                      } else {
+                        handleLockedClassClick(c);
+                      }
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '8px 10px',
+                      borderRadius: '4px',
+                      border: isSelected ? '1.5px solid var(--red)' : (isAvailable ? '1px solid var(--pb)' : '1px dashed rgba(0,0,0,0.2)'),
+                      background: isSelected ? 'rgba(139, 26, 26, 0.08)' : (isAvailable ? 'rgba(244, 232, 193, 0.15)' : 'rgba(240,240,240,0.4)'),
+                      color: isSelected ? 'var(--red)' : (isAvailable ? 'var(--ink)' : 'rgba(0,0,0,0.4)'),
+                      fontWeight: isSelected ? 'bold' : 'normal',
+                      fontSize: '11px',
+                      cursor: isAvailable ? 'pointer' : 'help',
+                      textAlign: 'left',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    <span>{c.name} (d{c.hd})</span>
+                    <span style={{ fontSize: '9.5px', opacity: 0.8 }}>
+                      {isSelected ? '🎯 Selected' : (isAvailable ? '🔓 Available' : '🔒 Locked')}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Linked Spellcaster selection */}
+          {currentConfig.classType === 'mystic_theurge' && currentDraft && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '10px', padding: '10px', border: '1px solid var(--pb)', borderRadius: '4px', background: 'rgba(200, 169, 110, 0.05)' }}>
+              <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>✦ Mystic Theurge Spell Linking</strong>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <label style={{ fontSize: '10px', fontWeight: 'bold' }}>Arcane Class (+1 Caster Level)</label>
+                <select
+                  value={currentConfig.prestigeSpellLinks?.mystic_theurge?.arcane || ''}
+                  onChange={(e) => {
+                    const links = { ...currentConfig.prestigeSpellLinks?.mystic_theurge, arcane: e.target.value };
+                    updateLevelConfig(currentLevelIndex, 'prestigeSpellLinks', {
+                      ...currentConfig.prestigeSpellLinks,
+                      mystic_theurge: links
+                    });
+                  }}
+                  className="cinput"
+                  style={{ width: '100%', fontSize: '11.5px', height: '28px', padding: '0 4px' }}
+                >
+                  <option value="" disabled>-- Select Arcane Class --</option>
+                  {currentDraft.classes.filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType)).map((cl: any) => (
+                    <option key={cl.classType} value={cl.classType}>
+                      {CLASSES_LIST.find(x => x.key === cl.classType)?.name || cl.classType} (Lvl {cl.level})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '6px' }}>
+                <label style={{ fontSize: '10px', fontWeight: 'bold' }}>Divine Class (+1 Caster Level)</label>
+                <select
+                  value={currentConfig.prestigeSpellLinks?.mystic_theurge?.divine || ''}
+                  onChange={(e) => {
+                    const links = { ...currentConfig.prestigeSpellLinks?.mystic_theurge, divine: e.target.value };
+                    updateLevelConfig(currentLevelIndex, 'prestigeSpellLinks', {
+                      ...currentConfig.prestigeSpellLinks,
+                      mystic_theurge: links
+                    });
+                  }}
+                  className="cinput"
+                  style={{ width: '100%', fontSize: '11.5px', height: '28px', padding: '0 4px' }}
+                >
+                  <option value="" disabled>-- Select Divine Class --</option>
+                  {currentDraft.classes.filter((cl: any) => ['cleric', 'druid', 'paladin', 'ranger'].includes(cl.classType)).map((cl: any) => (
+                    <option key={cl.classType} value={cl.classType}>
+                      {CLASSES_LIST.find(x => x.key === cl.classType)?.name || cl.classType} (Lvl {cl.level})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          )}
+
+          {currentConfig.classType === 'arcane_trickster' && currentDraft && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '10px', padding: '10px', border: '1px solid var(--pb)', borderRadius: '4px', background: 'rgba(200, 169, 110, 0.05)' }}>
+              <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>✦ Arcane Trickster Spell Linking</strong>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <label style={{ fontSize: '10px', fontWeight: 'bold' }}>Arcane Class (+1 Caster Level)</label>
+                <select
+                  value={currentConfig.prestigeSpellLinks?.arcane_trickster || ''}
+                  onChange={(e) => {
+                    updateLevelConfig(currentLevelIndex, 'prestigeSpellLinks', {
+                      ...currentConfig.prestigeSpellLinks,
+                      arcane_trickster: e.target.value
+                    });
+                  }}
+                  className="cinput"
+                  style={{ width: '100%', fontSize: '11.5px', height: '28px', padding: '0 4px' }}
+                >
+                  <option value="" disabled>-- Select Arcane Class --</option>
+                  {currentDraft.classes.filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType)).map((cl: any) => (
+                    <option key={cl.classType} value={cl.classType}>
+                      {CLASSES_LIST.find(x => x.key === cl.classType)?.name || cl.classType} (Lvl {cl.level})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          )}
+
           {currentConfig.classType && (
+
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '6px' }}>
               <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>
                 Hit Points (Hit Die: d{getClassHitDie(currentConfig.classType)})

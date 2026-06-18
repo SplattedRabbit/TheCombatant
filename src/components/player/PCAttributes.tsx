@@ -104,6 +104,14 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
       showCustomAlert("Class Limit", "More than 5 classes are not supported.");
       return;
     }
+    const clsDef = availableClasses.find((x: any) => x.key === newClassKey);
+    const isAlreadyChosen = pc.classes?.some((c: any) => c.classType === newClassKey);
+    const validation = CombatRules.validatePrestigeClassPrereqs(pc, newClassKey);
+    const isAvailable = !clsDef?.isPrestige || isAlreadyChosen || validation.success;
+    if (!isAvailable) {
+      showCustomAlert("Locked Class", `You do not meet the prerequisites for ${clsDef?.nameEn || newClassKey}.`, "OK", "🔒");
+      return;
+    }
     CombatState.updatePCBatch((freshPC: any) => {
       if (!Array.isArray(freshPC.classes)) freshPC.classes = [];
       freshPC.classes.push({ classType: newClassKey, level: newClassLvl });
@@ -276,16 +284,32 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                   <select
                     className="cinput pc-class-type-select"
                     value={c.classType}
-                    onChange={(e) => CombatState.updatePCClassType(idx, e.target.value)}
+                    onChange={(e) => {
+                      const newType = e.target.value;
+                      const clsDef = availableClasses.find((x: any) => x.key === newType);
+                      const isAlreadyChosen = pc.classes?.some((x: any) => x.classType === newType);
+                      const validation = CombatRules.validatePrestigeClassPrereqs(pc, newType);
+                      const isAvailable = !clsDef?.isPrestige || isAlreadyChosen || validation.success;
+                      if (!isAvailable) {
+                        showCustomAlert("Locked Class", `You do not meet the prerequisites for ${clsDef?.nameEn || newType}.`, "OK", "🔒");
+                        return;
+                      }
+                      CombatState.updatePCClassType(idx, newType);
+                    }}
                     style={{ fontSize: '8px', height: '13px', padding: 0, flex: 1, border: 'none', background: 'transparent', fontWeight: 600, color: 'var(--inkm)', outline: 'none', cursor: 'pointer' }}
                   >
                     {availableClasses
                       .filter((x: any) => x.key !== 'custom')
-                      .map((cls: any) => (
-                        <option key={cls.key} value={cls.key}>
-                          {cls.nameEn || cls.nameDe}
-                        </option>
-                      ))}
+                      .map((cls: any) => {
+                        const isAlreadyChosen = pc.classes?.some((x: any) => x.classType === cls.key);
+                        const validation = CombatRules.validatePrestigeClassPrereqs(pc, cls.key);
+                        const isAvailable = !cls.isPrestige || isAlreadyChosen || validation.success;
+                        return (
+                          <option key={cls.key} value={cls.key} disabled={!isAvailable}>
+                            {cls.nameEn || cls.nameDe}{!isAvailable ? ' (Locked)' : ''}
+                          </option>
+                        );
+                      })}
                   </select>
                   
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -331,11 +355,16 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                 >
                   {availableClasses
                     .filter((cls: any) => cls.key !== 'custom')
-                    .map((cls: any) => (
-                      <option key={cls.key} value={cls.key}>
-                        {cls.nameEn || cls.nameDe}
-                      </option>
-                    ))}
+                    .map((cls: any) => {
+                      const isAlreadyChosen = pc.classes?.some((x: any) => x.classType === cls.key);
+                      const validation = CombatRules.validatePrestigeClassPrereqs(pc, cls.key);
+                      const isAvailable = !cls.isPrestige || isAlreadyChosen || validation.success;
+                      return (
+                        <option key={cls.key} value={cls.key} disabled={!isAvailable}>
+                          {cls.nameEn || cls.nameDe}{!isAvailable ? ' (Locked)' : ''}
+                        </option>
+                      );
+                    })}
                 </select>
                 <select
                   value={newClassLvl}

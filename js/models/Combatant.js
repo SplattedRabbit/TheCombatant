@@ -75,6 +75,10 @@ export class Combatant {
     this.classes = Array.isArray(p.classes)
       ? p.classes.map(c => ({ classType: c.classType, level: parseInt(c.level) || 1 }))
       : (p.classType && p.classType !== 'custom' ? [{ classType: p.classType, level: parseInt(p.level) || 1 }] : []);
+    this.prestigeSpellLinks = p.prestigeSpellLinks || {};
+    this.alignment = p.alignment || '';
+
+
 
     // -- BASE SAVES & ATTACK (D&D 3.5e) --
     this.baseZa = new Stat(p.baseZa !== undefined ? p.baseZa : (p.za !== undefined ? p.za : 0));
@@ -355,8 +359,10 @@ export class Combatant {
       feats: this.feats,
       skills: this.skills,
       race: this.race,
-      isHuman: this.isHuman
+      isHuman: this.isHuman,
+      prestigeSpellLinks: this.prestigeSpellLinks
     };
+
   }
 
   getSizeModifier() {

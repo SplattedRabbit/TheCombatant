@@ -27,6 +27,10 @@ import { DruidFeaturesCard } from './features/DruidFeaturesCard';
 import { RangerFeaturesCard } from './features/RangerFeaturesCard';
 import { WizardFeaturesCard } from './features/WizardFeaturesCard';
 import { SorcererFeaturesCard } from './features/SorcererFeaturesCard';
+import { MysticTheurgeFeaturesCard } from './features/MysticTheurgeFeaturesCard';
+import { ArcaneTricksterFeaturesCard } from './features/ArcaneTricksterFeaturesCard';
+import { DragonDiscipleFeaturesCard } from './features/DragonDiscipleFeaturesCard';
+import { AssassinFeaturesCard } from './features/AssassinFeaturesCard';
 
 interface PCFeaturesTabProps {
   pc: any;
@@ -112,6 +116,14 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
                 return <WizardFeaturesCard key="wizard" pc={pc} level={level} />;
               case 'sorcerer':
                 return <SorcererFeaturesCard key="sorcerer" pc={pc} level={level} />;
+              case 'mystic_theurge':
+                return <MysticTheurgeFeaturesCard key="mystic_theurge" pc={pc} level={level} />;
+              case 'arcane_trickster':
+                return <ArcaneTricksterFeaturesCard key="arcane_trickster" pc={pc} level={level} />;
+              case 'dragon_disciple':
+                return <DragonDiscipleFeaturesCard key="dragon_disciple" pc={pc} level={level} />;
+              case 'assassin':
+                return <AssassinFeaturesCard key="assassin" pc={pc} level={level} />;
               default:
                 return null;
             }

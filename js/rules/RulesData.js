@@ -1,8 +1,9 @@
 /**
  * @module    RulesData
  * @summary   Static D&D 3.5e rule registries: conditions, classes, skills, profiles, and spell progression tables.
- * @exports   CONDITIONS, CLASSES, CLASS_SKILLS, CLASS_PROFILES, CLASS_BASE_SKILLS, WIZ_CLER_DRU_TABLE, SORCERER_TABLE, BARD_TABLE, PALADIN_RANGER_TABLE, SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE
+ * @exports   CONDITIONS, CLASSES, CLASS_SKILLS, CLASS_PROFILES, CLASS_BASE_SKILLS, WIZ_CLER_DRU_TABLE, SORCERER_TABLE, BARD_TABLE, PALADIN_RANGER_TABLE, SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE, ASSASSIN_TABLE
  */
+
 
 export const CONDITIONS = [
   {
@@ -111,8 +112,67 @@ export const CLASSES = [
   { key: 'paladin', nameDe: 'Paladin', nameEn: 'Paladin', bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' } },
   { key: 'ranger', nameDe: 'Ranger', nameEn: 'Ranger', bab: 'good', saves: { fort: 'good', ref: 'good', wil: 'poor' } },
   { key: 'sorcerer', nameDe: 'Sorcerer', nameEn: 'Sorcerer', bab: 'poor', saves: { fort: 'poor', ref: 'poor', wil: 'good' } },
+  {
+    key: 'mystic_theurge',
+    nameDe: 'Mystischer Theurge',
+    nameEn: 'Mystic Theurge',
+    isPrestige: true,
+    bab: 'poor',
+    saves: { fort: 'poor', ref: 'poor', wil: 'good' },
+    spellcastingBonus: true,
+    prerequisites: {
+      skills: { knowledge_arcana: 6, knowledge_religion: 6 },
+      spells: { arcane: 2, divine: 2 }
+    }
+  },
+  {
+    key: 'arcane_trickster',
+    nameDe: 'Arkaner Trickser',
+    nameEn: 'Arcane Trickster',
+    isPrestige: true,
+    bab: 'poor',
+    saves: { fort: 'poor', ref: 'good', wil: 'good' },
+    spellcastingBonus: true,
+    prerequisites: {
+      alignment: 'nonlawful',
+      skills: { decipher_script: 7, disable_device: 7, escape_artist: 7, knowledge_arcana: 4 },
+      spells: { arcane: 3, mage_hand: true },
+      special: { sneak_attack: 2 }
+    }
+  },
+  {
+    key: 'dragon_disciple',
+    nameDe: 'Drachen-Jünger',
+    nameEn: 'Dragon Disciple',
+    isPrestige: true,
+    bab: 'avg',
+    saves: { fort: 'good', ref: 'poor', wil: 'good' },
+    spellcastingBonus: false,
+    prerequisites: {
+      race: 'nondragon',
+      skills: { knowledge_arcana: 8 },
+      languages: ['draconic'],
+      spells: { spontaneousArcane: true }
+    }
+  },
+  {
+    key: 'assassin',
+    nameDe: 'Assassine',
+    nameEn: 'Assassin',
+    isPrestige: true,
+    bab: 'avg',
+    saves: { fort: 'poor', ref: 'good', wil: 'poor' },
+    spellcastingBonus: false,
+    prerequisites: {
+      alignment: 'evil',
+      skills: { disguise: 4, hide: 8, move_silently: 8 },
+      specialText: 'Must kill someone for no other reason than to join.'
+    }
+  },
   { key: 'custom', nameDe: 'Custom', nameEn: 'Custom', bab: 'custom', saves: { fort: 'custom', ref: 'custom', wil: 'custom' } }
 ];
+
+
 
 export const CLASS_SKILLS = {
   barbarian: ['climb', 'craft', 'handle_animal', 'intimidate', 'jump', 'listen', 'ride', 'survival', 'swim'],
@@ -140,8 +200,28 @@ export const CLASS_SKILLS = {
     'concentration', 'craft', 'decipher_script', 'knowledge_arcana', 'knowledge_dungeons',
     'knowledge_history', 'knowledge_local', 'knowledge_nature', 'knowledge_planes',
     'knowledge_religion', 'knowledge_other', 'profession', 'spellcraft'
+  ],
+  mystic_theurge: [
+    'concentration', 'craft', 'decipher_script', 'knowledge_arcana', 'knowledge_religion', 'profession', 'sense_motive', 'spellcraft'
+  ],
+  arcane_trickster: [
+    'appraise', 'balance', 'bluff', 'climb', 'concentration', 'craft', 'decipher_script', 'diplomacy', 'disable_device',
+    'disguise', 'escape_artist', 'gather_information', 'hide', 'jump', 'knowledge_arcana', 'listen', 'move_silently',
+    'open_lock', 'profession', 'sense_motive', 'search', 'sleight_of_hand', 'spellcraft', 'spot', 'swim', 'tumble', 'use_rope'
+  ],
+  dragon_disciple: [
+    'concentration', 'craft', 'diplomacy', 'escape_artist', 'gather_information',
+    'knowledge_arcana', 'knowledge_dungeons', 'knowledge_history', 'knowledge_local', 'knowledge_nature', 'knowledge_planes', 'knowledge_religion', 'knowledge_other',
+    'listen', 'profession', 'search', 'spellcraft', 'spot'
+  ],
+  assassin: [
+    'balance', 'bluff', 'climb', 'craft', 'decipher_script', 'diplomacy', 'disable_device', 'disguise',
+    'escape_artist', 'forgery', 'gather_information', 'hide', 'intimidate', 'jump', 'listen',
+    'move_silently', 'open_lock', 'search', 'sense_motive', 'sleight_of_hand', 'spot', 'swim', 'tumble', 'use_magic_device', 'use_rope'
   ]
 };
+
+
 
 export const CLASS_PROFILES = {
   barbarian: {
@@ -383,3 +463,17 @@ export const BARD_KNOWN_TABLE = {
   19: [6, 5, 5, 5, 5, 5, 5],
   20: [6, 5, 5, 5, 5, 5, 5]
 };
+
+export const ASSASSIN_TABLE = {
+  1:  [0, 0],
+  2:  [0, 1],
+  3:  [0, 2, 0],
+  4:  [0, 3, 1],
+  5:  [0, 3, 2, 0],
+  6:  [0, 3, 3, 1],
+  7:  [0, 3, 3, 2, 0],
+  8:  [0, 3, 3, 3, 1],
+  9:  [0, 3, 3, 3, 2],
+  10: [0, 3, 3, 3, 3]
+};
+

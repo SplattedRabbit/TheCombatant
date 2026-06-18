@@ -92,9 +92,16 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
           rogue: 'Rogue',
           sorcerer: 'Sorcerer',
           wizard: 'Wizard',
+          mystic_theurge: 'Mystic Theurge',
+          arcane_trickster: 'Arcane Trickster',
+          dragon_disciple: 'Dragon Disciple',
+          assassin: 'Assassin',
           custom: 'Custom',
         };
-        const name = clsNames[c.classType.toLowerCase()] || c.classType;
+        const name = clsNames[c.classType.toLowerCase()] || c.classType
+          .split('_')
+          .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
         return `${name} ${c.level}`;
       })
       .join(' / ');

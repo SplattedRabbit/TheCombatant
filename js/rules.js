@@ -1,8 +1,9 @@
 /**
  * @module    rules
  * @summary   Facade for D&D 3.5e rules engine. Re-exports constants and functions from modular sub-files.
- * @exports   CombatRules, getAllCompendiumSpells, isSpellEligibleForPC, getEligibleSpellLevelsForPC, checkPrerequisites
+ * @exports   CombatRules, getAllCompendiumSpells, isSpellEligibleForPC, getEligibleSpellLevelsForPC, checkPrerequisites, validatePrestigeClassPrereqs
  */
+
 
 import {
   CONDITIONS,
@@ -15,8 +16,10 @@ import {
   BARD_TABLE,
   PALADIN_RANGER_TABLE,
   SORCERER_KNOWN_TABLE,
-  BARD_KNOWN_TABLE
+  BARD_KNOWN_TABLE,
+  ASSASSIN_TABLE
 } from './rules/RulesData.js';
+
 
 import {
   calculateBab,
@@ -41,6 +44,10 @@ import {
   validateFeatsAssignment
 } from './rules/RulesFeats.js';
 
+import {
+  validatePrestigeClassPrereqs
+} from './rules/classValidation.js';
+
 export const CombatRules = {
   CONDITIONS,
   CLASSES,
@@ -53,6 +60,7 @@ export const CombatRules = {
   PALADIN_RANGER_TABLE,
   SORCERER_KNOWN_TABLE,
   BARD_KNOWN_TABLE,
+  ASSASSIN_TABLE,
   calculateBab,
   calculateSave,
   isClassSkill,
@@ -63,7 +71,8 @@ export const CombatRules = {
   calculateMaxSpellSlots,
   checkSpellKnownLimit,
   calculateMaxFeats,
-  validateFeatsAssignment
+  validateFeatsAssignment,
+  validatePrestigeClassPrereqs
 };
 
 export {
@@ -75,3 +84,8 @@ export {
 export {
   checkPrerequisites
 } from './rules/RulesFeats.js';
+
+export {
+  validatePrestigeClassPrereqs
+} from './rules/classValidation.js';
+
