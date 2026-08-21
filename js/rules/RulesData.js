@@ -169,6 +169,41 @@ export const CLASSES = [
       specialText: 'Must kill someone for no other reason than to join.'
     }
   },
+
+  // Complete Scoundrel — small pilot of two PrCs requested by the user
+  {
+    key: 'spellwarp_sniper',
+    nameDe: 'Spellwarp Sniper',
+    nameEn: 'Spellwarp Sniper',
+    isPrestige: true,
+    bab: 'poor',
+    saves: { fort: 'poor', ref: 'good', wil: 'good' },
+    spellcastingBonus: true,
+    prerequisites: {
+      skills: { concentration: 8, spellcraft: 8 },
+      feats: ['point_blank_shot'],
+      spells: { arcane: 3 },
+      // The book says "Sneak attack or sudden strike +1d6"; we represent the mechanical requirement as sneak attack +1d6.
+      special: { sneak_attack: 1 }
+    }
+  },
+
+  {
+    key: 'battle_trickster',
+    nameDe: 'Battle Trickster',
+    nameEn: 'Battle Trickster',
+    isPrestige: true,
+    bab: 'avg',
+    saves: { fort: 'good', ref: 'good', wil: 'poor' },
+    spellcastingBonus: false,
+    prerequisites: {
+      bab: 5,
+      // Requirements are not easily machine-checkable: "Any three skills 6 ranks each" and "Skill Tricks: Any two".
+      // We surface these as a free-text specialText requirement so the UI can present a confirmation dialog.
+      specialText: 'Skills: Any three skills with 6 ranks each. Skill Tricks: Any two.'
+    }
+  },
+
   { key: 'custom', nameDe: 'Custom', nameEn: 'Custom', bab: 'custom', saves: { fort: 'custom', ref: 'custom', wil: 'custom' } }
 ];
 
@@ -296,7 +331,7 @@ export const CLASS_PROFILES = {
       else if (level >= 7) maxWildShape = 3;
       else if (level >= 6) maxWildShape = 2;
       else if (level >= 5) maxWildShape = 1;
-      
+
       const res = [];
       if (maxWildShape > 0) {
         res.push({
@@ -476,4 +511,5 @@ export const ASSASSIN_TABLE = {
   9:  [0, 3, 3, 3, 2],
   10: [0, 3, 3, 3, 3]
 };
+
 
