@@ -1,0 +1,70 @@
+154
+THE ASTRAL PLANE
+The Astral Plane is the space between the planes. When a charac-
+ter moves through an interplanar portal or projects her spirit to a
+different plane of existence, she travels through the Astral
+Plane. Even spells that allow instantaneous movement
+across a plane, such as dimension door, briefly
+touch the Astral Plane.
+The Astral Plane is a great, endless sphere of
+clear silvery sky, both above and below. Large
+tube-shaped clouds slowly coil into
+the distance, some appearing like
+thunderheads and others looking
+like immobile tornadoes of gray
+wind.  Erratic  whirlpools  of
+color flicker in midair like
+spinning coins. Occasional
+bits  of  solid  matter  can  be
+found here, but most of the Astral
+Plane is an endless, open domain.
+Both planar travelers and refugees
+from other planes call the Astral Plane
+home. The most prominent denizens of the
+Astral Plane are the githyanki, an outcast race
+that preys on travelers throughout the plane. 
+The Astral Plane has the following traits.
+•Subjective directional gravity.
+•Timeless. Age, hunger, thirst, poison,
+and natural healing don’t function in
+the  Astral  Plane,  though  they  resume
+functioning  when  the  traveler  leaves
+the Astral Plane.
+•Mildly neutral-aligned.
+•Enhanced  magic.  All  spells  and
+spell-like  abilities  used  within
+the  Astral  Plane  may  be  em-
+ployed  as  if  they  were  im-
+proved   by   the   Quicken
+Spell  feat.  Already  quick-
+ened  spells  and  spell-like
+abilities  are  unaffected,
+as  are  spells  from  magic
+items. Spells so quickened
+are  still  prepared  and  cast  at  their  unmodified  level.  As
+with the Quicken Spell feat, only one quickened spell can
+be cast per round.
+Example Astral Site: Silver Sky
+The characters are surrounded by a silver-gray haze that stretches
+endlessly in all directions. The map’s only feature is a colorful 10-foot-
+diameter pool that provides a natural portal to another plane (deter-
+mined randomly). Some 70% of color pools are one-way portals.
+Astral Plane Encounters (EL 11)
+d%EncounterAverage EL
+01–151 astral deva (angel)14
+16–251 young adult red dragon13
+26–4010th-level human cleric NPC and 12
+10th-level goblin rogue NPC
+41–501 devourer11
+51–651d4 efreet11
+66–751 cauchemar (nightmare)11
+76–901d3 mind flayers10
+91–1001d3 noble djinn (genie)8
+If characters explore this part of the Astral Plane, they’ll dis-
+cover more color pools that lead elsewhere. It takes 1d4×10 hours
+to find a color pool that leads to a particular plane.
+CHAPTER 5:
+CAMPAIGNS
+Githyanki pirates 
+lurk on the 
+Astral Plane

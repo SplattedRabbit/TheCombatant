@@ -1,0 +1,133 @@
+82
+need to record in order to have a ready-to-play adventure planned
+out. The notes in italic typerelate to the use of the dungeon map and
+cutouts in this book to play out the adventure with miniature figures.
+When you create an adventure, identify each encounter area
+with a number (and label your map accordingly). These numbers
+don’t necessarily correspond to the order in which the characters
+will visit the encounter areas, but they serve as a way for you to
+keep track of where the characters are and where they’re headed.
+Each of the encounter areas in this sample adventure can be simu-
+lated using a portion of the sample dungeon on the back of the
+battle grid that came with this book.
+Shaded Text:The following sample entries include shaded text
+meant to be paraphrased or read aloud to your players. Shaded text
+mentions those features that would be apparent to the PCs upon
+first entering that area (and is thus very helpful to the player who’s
+making a map for the characters). It does not mention hidden fea-
+tures such as traps, nor monsters and items out of the PCs’ imme-
+diate line of sight.
+CHAPTER 3:
+ADVENTURES
+Table 3–19: Random Traps CR 1–3
+d%TrapCR
+01–03Basic arrow trap1
+04–06Camouflaged pit trap1
+07–09Deeper pit trap1
+10–11Doorknob smeared with contact poison1
+12–14Fusillade of darts1
+15–16Poison dart trap1
+17–19Poison needle trap1
+20–22Portcullis trap1
+23–24Razor-wire across hallway1
+25–27Rolling rock trap1
+28–30Scything blade trap1
+31–33Spear trap1
+34–35Swinging block trap1
+36–38Wall blade trap1
+39–41Box of brown mold2
+42–44Bricks from ceiling2
+45–47Burning hands trap2
+48–50Camouflaged pit trap2
+51–53Inflict light woundstrap2
+54–56Javelin trap2
+57–58Large net trap2
+59–61Pit trap2
+62–64Poison needle trap2
+65–67Spiked pit trap2
+68–69Tripping chain2
+70–72Well-camouflaged pit trap2
+73–75Burning handstrap3
+76–78Camouflaged pit trap3
+79–80Ceiling pendulum3
+81–83Fire trap3
+84–85Extended banetrap3
+86–87Ghoul touchtrap3
+88–90Hail of needles3
+91–92Melf ’s acid arrowtrap3
+93–95Pit trap3
+96–98Spiked pit trap3
+99–100Stone blocks from ceiling3
+Table 3–20: Random Traps CR 4–6
+d%TrapCR
+01–02Bestow cursetrap4
+03–05Camouflaged pit trap4
+06–07Collapsing column4
+08–10Glyph of warding(blast)4
+11–12Lightning bolttrap4
+13–15Pit trap4
+16–18Poisoned dart trap4
+19–21Sepia snake sigiltrap4
+22–24Spiked pit trap4
+25–26Wall scythe trap4
+27–29Water-filled room trap4
+30–32Wide-mouth spiked pit trap4
+33–35Camouflaged pit trap5
+36–37Doorknob smeared with contact poison5
+38–40Falling block trap5
+d%TrapCR
+41–43Fire trap5
+44–46Fireballtrap5
+47–48Flooding room trap5
+49–51Fusillade of darts5
+52–53Moving executioner statue5
+54–55Phantasmal killertrap5
+56–58Pit trap5
+59–61Poison wall spikes5
+62–64Spiked pit trap5
+65–67Spiked pit trap (80 ft.)5
+68–69Ungol dust vapor trap5
+70–71Built-to-collapse wall6
+72–74Compacting room6
+75–77Flame striketrap6
+78–80Fusillade of spears6
+81–83Glyph of warding(blast)6
+84–85Lightning bolttrap6
+86–88Spiked blocks from ceiling6
+89–91Spiked pit trap (100 ft.)6
+92–94Whirling poison blades6
+95–97Wide-mouth pit trap6
+98–100Wyvern arrow trap6
+Table 3–21: Random Traps CR 7–10
+d%TrapCR
+01–04Acid fogtrap7
+05–07Blade barriertrap7
+08–10Burnt othur vapor trap7
+11–14Chain lightningtrap7
+15–17Evard’s black tentaclestrap7
+18–20Fusillade of greenblood oil darts7
+21–23Lock covered in dragon bile7
+24–26Summon monster VItrap7
+27–30Water-filled room7
+31–33Well-camouflaged pit trap7
+34–36Deathblade wall scythe8
+37–39Destructiontrap8
+40–42Earthquaketrap8
+43–46Insanity mist vapor trap8
+47–49Melf ’s acid arrowtrap8
+50–52Power word stuntrap8
+53–55Prismatic spraytrap8
+56–59Reverse gravitytrap8
+60–62Well-camouflaged pit trap8
+63–65Word of chaostrap8
+66–68Drawer handle smeared with contact poison9
+69–71Dropping ceiling9
+72–74Incendiary cloudtrap9
+75–77Wide-mouth pit trap9
+78–80Wide-mouth spiked pit with poisoned spikes9
+81–84Crushing room10
+85–88Crushing wall trap10
+89–91Energy draintrap10
+92–94Forcecageand summon monster VIItrap10
+95–97Poisoned spiked pit trap 10
+98–100Wail of the bansheetrap10

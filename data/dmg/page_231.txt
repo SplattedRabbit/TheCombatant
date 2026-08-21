@@ -1,0 +1,135 @@
+230
+Ring Descriptions
+Rings are some of the most coveted and generally useful magic
+items. Standard rings are described below.
+Animal Friendship:On command, this ring affects an animal
+as if the wearer had cast charm animal.
+Faint enchantment; CL 3rd; Forge Ring, charm animal; Price
+10,800 gp.
+Blinking:On command, this ring makes the wearer blink, as
+with the blinkspell.
+Moderate transmutation; CL 7th; Forge Ring,blink; Price 27,000 gp.
+Chameleon Power:As a free action, the wearer of this ring can
+gain the ability to magically blend in with the surroundings. This
+provides a +10 competence bonus on her Hide checks. As a stan-
+dard action, she can also command the ring to utilize the spell dis-
+guise self as often as she wants.
+Faint illusion; CL 3rd; Forge Ring, disguise self, invisibility; Price
+12,700 gp.
+Climbing: This ring is actually a magic leather cord that ties
+around a finger. It continually grants the wearer a +5 competence
+bonus on Climb checks.
+Faint transmutatation; CL 5th; Forge Ring, creator must have 5
+ranks in the Climb skill; Price 2,500 gp. 
+Climbing, Improved:As climbing, except it grants a +10 com-
+petence bonus on its wearer’s Climb checks. 
+Faint transmutation; CL 5th; Forge Ring, creator must have 10
+ranks in the Climb skill; Price 10,000 gp.
+Counterspells: This ring might seem to be a ring of spell stor-
+ingupon first examination. However, while it allows a single
+spell of 1st through 6th level to be cast into it, that spell cannot
+be cast out of the ring again. Instead, should that spell ever be
+cast upon the wearer, the spell is immediately countered, as a
+counterspell action, requiring no action (or even knowledge) on
+the wearer’s part. Once so used, the spell cast within the ring is
+gone. A new spell (or the same one as before) may be placed in
+it again.
+Moderate evocation; CL 11th; Forge Ring, imbue with spell abil-
+ity; Price 4,000 gp.
+Djinni Calling:One of the many rings of fable, this “genie”
+ring is most useful indeed. It serves as a special gateby means of
+which a specific djinni can be called from the Elemental Plane of
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–17: Potions and Oils
+Minor   Medium  MajorPotion or OilMarket Price
+01–10——Cure light wounds(potion)50 gp
+11–13——Endure elements(potion)50 gp
+14–15——Hide from animals(potion)50 gp
+16–17——Hide from undead(potion)50 gp
+18–19——Jump(potion)50 gp
+20–22——Mage armor(potion)50 gp
+23–25——Magic fang(potion)50 gp
+26——Magic stone(oil)50 gp
+27–29——Magic weapon(oil)50 gp
+30——Pass without trace(potion)50 gp
+31–32——Protection from (alignment)(potion)   50 gp
+33–34——Remove fear(potion)50 gp
+35——Sanctuary(potion)50 gp
+36–38——Shield of faith +2(potion)50 gp
+39——Shillelagh(oil)50 gp
+40–4101–02—Bless weapon(oil)100 gp
+42–4403–04—Enlarge person(potion)250 gp
+4505—Reduce person(potion)250 gp
+46–4706—Aid(potion)300 gp
+48–5007—Barkskin +2(potion)300 gp
+51–5308–10—Bear’s endurance(potion)300 gp
+54–5611–13    01–02Blur(potion)300 gp
+57–5914–16—Bull’s strength (potion)300 gp
+60–6217–19—Cat’s grace(potion)300 gp
+63–6720–27    03–07Cure moderate wounds(potion)300 gp
+6828—Darkness(oil)300 gp
+69–7129–30    08–09Darkvision(potion)300 gp
+72–7431—Delay poison(potion)300 gp
+75–7632–33—Eagle’s splendor(potion)300 gp
+77–7834–35—Fox’s cunning(potion)300 gp
+79–8136–37    10–11Invisibility(potion or oil)300 gp
+82–843812Lesser restoration(potion)300 gp
+85–8639—Levitate(potion or oil)300 gp
+8740—Misdirection(potion)300 gp
+88–8941–42—Owl’s wisdom(potion)300 gp
+90–9143—Protection from arrows 300 gp
+10/magic (potion)
+92–934413Remove paralysis(potion)300 gp
+94–9645–46—Resist energy (type) 10(potion)300 gp
+9747–4814Shield of faith +3(potion)300 gp
+98–9949—Spider climb(potion)300 gp
+1005015Undetectable alignment(potion)300 gp
+—5116Barkskin +3(potion)600 gp
+—5217–18Shield of faith +4 (potion)600 gp
+—53–55    19–20Resist energy (type) 20(potion)700 gp
+—56–60    21–28Cure serious wounds(potion)750 gp
+—6129Daylight(oil)750 gp
+—62–64    30–32Displacement(potion)750 gp
+—6533Flame arrow(oil)750 gp
+—66–68    34–38Fly(potion)750 gp
+—6939Gaseous form(potion)750 gp
+—70–71—Greater magic fang +1(potion)750 gp
+—72–73—Greater magic weapon +1(oil)750 gp
+—74–75    40–41Haste(potion)750 gp
+—76–78    42–44Heroism(potion)750 gp
+—79–80    45–46Keen edge(oil)750 gp
+—8147Magic circle against (alignment)750 gp
+(potion)
+—82–83—Magic vestment +1(oil)750 gp
+—84–86    48–50Neutralize poison(potion)750 gp
+—87–88    51–52Nondetection(potion)750 gp
+—89–91    53–54Protection from energy (type)750 gp
+(potion)
+—92–9355Rage(potion)750 gp
+—9456Remove blindness/deafness 750 gp
+(potion)
+—9557Remove curse(potion)750 gp
+—9658Remove disease(potion)750 gp
+—9759Tongues(potion)750 gp
+—98–9960Water breathing(potion)750 gp
+—10061Water walk(potion)750 gp
+——62–63Barkskin +4(potion)900 gp
+——64Shield of faith +5(potion)900 gp
+——65Good hope(potion)1,050 gp
+——66–68Resist energy (type) 30(potion)1,100 gp
+——69Barkskin +5(potion)1,200 gp
+——70–73Greater magic fang +2(potion)1,200 gp
+——74–77Greater magic weapon +2(oil)1,200 gp
+——78–81Magic vestment +2(oil)1,200 gp
+——82Protection from arrows 1,500 gp
+15/magic(potion)
+——83–85Greater magic fang +3(potion)1,800 gp
+——86–88Greater magic weapon +3(oil)1,800 gp
+——89–91Magic vestment +3(oil)1,800 gp
+——92–93Greater magic fang +4(potion)2,400 gp
+——94–95Greater magic weapon +4(oil)2,400 gp
+——96–97Magic vestment +4(oil)2,400 gp
+——98Greater magic fang +5(potion)3,000 gp
+——99Greater magic weapon +5(oil)3,000 gp
+——100Magic vestment +5(oil)3,000 gp

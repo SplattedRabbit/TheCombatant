@@ -1,0 +1,95 @@
+9
+Buildings:Dungeons of at least 10 rooms (8),
+temples (any 2 evil deities), poor lodging (5), poor food
+(10), average trades (5), poor trades (15), average serv-
+ices (5), poor services (20), poor residences (30).
+First Impression: The air belowground is dank,
+and the darkness is oppressive. It’s eerily quiet most of
+the time, but the silence is punctured occasionally by a
+scream or the clash of battle.
+Social Class:Lower class.
+Warehouse District
+Adventurers who have business with shipping con-
+cerns—or just larcenous intent—may find their way
+into this district.
+Buildings:Warehouses (30), poor trades (5), poor
+services (10), poor residences (55).
+First Impression: The massive warehouses that
+give this district its name dominate the landscape. The
+streets are devoid of life except for the occasional deliv-
+ery wagon and the guards who stand watch at some
+warehouse doors.
+Social Class:Lower class.
+Waterfront District
+Visitors who arrive by ship often get their first taste of a
+city in the waterfront district. Adventurers typically
+feel right at home in this rough-and-tumble place.
+Buildings:Other (5), temple (Obad-Hai or Oli-
+dammara), poor lodging (5), poor food (9), poor trades
+(25), poor services (35), poor residences (20).
+First Impression: Most of the traffic here con-
+sists of sailors in search of liquor or entertainment.
+Bars, flophouses, and small shops—many of which
+don’t bother to advertise the nature of their business—
+line the street.
+Social Class:Lower class.
+SPECIAL DISTRICTS
+Certain districts are special simply because their popula-
+tion numbers are different (generally lower) than the
+norm for their social class. For example, a necropolis may
+be an important part of a city, but it just can’t hold more
+than 100 living residents. Likewise, an immigrant enclave
+rarely houses more than 1% of the city’s total population. 
+Remnant Neighborhood
+This district is the last vestige of an older culture that has
+been largely supplanted by the city’s current residents.
+Buildings: Temple  (any  1,  especially  to  an
+unusual deity), upscale trade, upscale residences (5),
+vacant buildings (3).
+First Impression: The architecture here looks
+out of place, as do some of the residents. They eye visi-
+tors strangely, evidently regarding them as interlopers
+on their turf.
+Social Class:Middle Class
+Immigrant Enclave
+This district houses well-heeled representatives of
+another culture, such as wizards from a far-off land or
+planetouched pioneers from another dimension. 
+Buildings: Temple  (any  1,  especially  to  an
+unusual deity), magic item dealer, upscale trades (2),
+exotic trade, upscale residences (5).
+First Impression: This district doesn’t even feel
+like it’s part of the same city. The architecture of the
+buildings is dramatically different than in other dis-
+tricts, and the residents’ garb marks them as a minority
+elsewhere in the city. Here, however, they fit right in.
+Social Class:Upper class.
+Necropolis
+This massive graveyard has few or no residents other
+than the undead creatures that may lurk among the
+tombstones and crypts.
+Buildings:Mortuaries (2), mausoleums (16),
+temple (Nerull or Wee Jas), shrine.
+First Impression: This district is quiet and
+orderly. Rows of tombstones and crypts stand silent
+guard over the dead.
+Social Class:Lower class.
+Boat Town
+This district is completely afloat. The residents live in
+houseboats and do their shopping at other boats. Even
+longtime residents of a boat town must relearn their
+way around the neighborhood if they leave for a time,
+since it constantly rearranges itself.
+Buildings: Temple (Fharlanghn), average lodging
+(1), poor food (3), poor trades (10), poor services (10),
+poor residences (45).
+First Impression: Boats of every size and shape
+bob on the water, connected by a baffling web of piers,
+gangplanks, and rope bridges.
+Social Class:Lower class.
+Coliseum/Arena District
+A massive arena dominates this neighborhood. Its exis-
+tence leaves little space for actual residents.
+Buildings: Coliseum/arena/hippodrome, associ-
+ated buildings (gladiators’ barracks, stables, and the
+like) (3), temple (Heironeous, Kord, or Olidammara),

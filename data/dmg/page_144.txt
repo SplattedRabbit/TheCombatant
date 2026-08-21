@@ -1,0 +1,136 @@
+A local ruler could have a phobia about a specific effect or spell
+(such as polymorpheffects if she were afraid of being impersonated)
+and enact a law restricting that type of magic.
+RELIGION
+No force affects society more strongly than religion. You need to
+match the religions in your world with the societies you present.
+How does the priesthood interact with the populace? What do most
+people think of the religion, the deity, or the clerics? Most of the time,
+in addition to serving a deity, a religion is geared toward filling some
+niche in society: recordkeeping, officiating at ceremonies, judging
+disputes, tending the poor or sick, defending the community, educat-
+ing the young, keeping knowledge, preserving customs, and so on.
+Sometimes a religious hierarchy is not unified. You can create
+interesting political intrigues by placing different factions of cler-
+ics of the same deity in opposition based on doctrine or approach
+(or even alignment). Different orders within the priesthood might
+be distinguished by different choices of domains. A deity that of-
+fers access to the Good, Knowledge, Law, and War domains might
+have clerics of law and war (the justifiers) opposing those of good
+and knowledge (the prophets).
+The Pantheon and the Campaign Setting
+As an example, here’s how the religions of the deities presented in
+the Player ’s Handbookfit into society.
+Boccob:Boccob’s priesthood is usually a somber group that
+takes its pursuit of knowledge and arcana very seriously. The cler-
+ics of the Archmage of the Deities wear purple robes with gold
+trim. Rather than meddle in public affairs and politics, they keep
+to themselves and their own agendas.
+Corellon Larethian:Clergy members who serve the Cre-
+ator of the Elves operate as defenders and champions of their
+race. They often serve as leaders and settle disputes in elven
+communities.
+Ehlonna:The clergy of Ehlonna are hearty woodsfolk. Her
+clerics wear pale green robes and are quick to protect the wood-
+lands against all threats.
+Erythnul:The priesthood of Erythnul maintains a low profile
+in most civilized lands. In savage areas, members of the priesthood
+are  known  as  bullies  and  murderous  tyrants.  Many  evil
+humanoids worship Erythnul, but their priests do not cooperate
+with each other to advance the overall goals of the religion. Clerics
+of Erythnul favor rust-red garments or blood-stained robes.
+Fharlanghn:Fharlanghn’s clerics are wanderers who seek to
+help fellow travelers. Fharlanghn’s clerics dress in nondescript
+brown or green clothing, and they move around frequently. A trav-
+eler who comes to one of Fharlanghn’s wayside shrines, which are
+common along most well-used roads, won’t find a particular cleric
+watching over a particular shrine more than once.
+Garl Glittergold:Clerics of Garl Glittergold serve gnome com-
+munities as educators and protectors. They teach the young valu-
+able gnome lore and skills using a light-handed humor. They also
+protect their fellow gnomes, ever watchful of the forces of evil
+humanoids that might threaten their community.
+Gruumsh:Gruumsh, the evil god of the orcs, maintains a reli-
+gion based on intimidation and fear. His clerics strive to become
+chieftains of orc tribes or advisors to the chief. Many pluck out
+one of their own eyes to emulate their deity.
+Heironeous:The religious hierarchy of Heironeous is organ-
+ized like a military order. It has a clear chain of command, lines of
+supply, and well-stocked armories. Clerics of Heironeous fight
+against worshipers of Hextor whenever they can and spend the rest
+of their time protecting the civilized lands from the threats of evil.
+Hextor:Strength and power govern Hextor’s priesthood. Al-
+though evil, it is not as secretive as other dark religions. Temples of
+Hextor operate openly in many cities. Clerics of Hextor wear
+black clothing adorned with skulls or gray faces.
+Kord:Kord’s clerics value strength, but not domination. Kord’s
+temples sometimes resemble warrior feasthalls, and his clerics,
+who favor red and white garb, often seem more like fighters.
+Moradin:Moradin’s clerics preside over most formal cere-
+monies in dwarven culture, keep genealogical records, educate
+the young, and serve as part of the defense force of a community.
+Nerull:The Reaper is feared across the lands. His rust-red
+garbed clerics are murderous psychopaths who work in secret,
+plotting against all that is good. They have no overall hierarchy,
+and they even work against each other at times.
+Obad-Hai:Clerics of Obad-Hai have no hierarchy. They treat
+all those of their order as equals. They wear russet-colored cloth-
+ing and maintain hidden woodland shrines that are usually
+located far from civilization. They keep to the wilderness and to
+themselves, rarely getting involved in society.
+Olidammara:Olidammara’s religion is loosely organized at
+best, and few temples are dedicated solely to him. That said, his
+clerics are numerous. They usually work among urban folk or
+wander the countryside. Olidammara’s clerics often work at some
+other profession, in addition to operating as clerics (typically serv-
+ing as minstrels, brewers, or jacks-of-all-trades), and thus can be
+found almost anywhere doing or wearing anything.
+Pelor:The clerics of the Shining One work to aid the poor and
+the sick, and thus most common folk look upon them with great
+favor. Pelor’s temples are sanctuaries for the impoverished and dis-
+eased, and his yellow-robed clerics are usually kind, quiet folk,
+roused only in their opposition against evil.
+St. Cuthbert:The no-nonsense order of St. Cuthbert does not
+suffer fools gladly or abide evil in any way. His clerics concern
+themselves with the needs of the common people over nobles or
+the well educated. They are zealous in their desire to convert
+others to their faith and quick to destroy their opponents.
+Vecna:Vecna’s priesthood is made up of isolated cells of cultists
+who seek dark, arcane secrets to further their evil schemes. Black
+and red are the clerics’ favored colors.
+Wee Jas:Wee Jas’s priesthood has a strict hierarchy. Her clerics
+are known for their discipline and obedience to their superiors.
+They work as officiators at funerals, maintain graveyards, or oper-
+ate libraries of arcane lore. They wear black or gray robes.
+Yondalla:Yondalla’s clerics help other halflings lead safe, pros-
+perous lives by following her guidance. They often serve as com-
+munity leaders.
+Creating New Deities
+You can create your own deities and religions. You’re free to set
+them up however you please. Deities can exist as individuals or as
+a unified pantheon that interacts all the time.
+Each deity should have a portfolio, which describes a sphere or
+spheres of influence. Elements of a portfolio can be concepts such
+as peace or death, events such as war or famine, elements such as
+fire or water, activities such as travel or entertainment, types of
+people or professions such as wizards or smiths, as well as races,
+alignments, places, or outlooks. Deities with similar portfolios
+may work together or may be in conflict, depending on their
+alignments and respective power.
+The domains that a cleric of a deity can choose from should
+always be based on the deity’s portfolio. In general, it’s appropriate
+to assign no more than four domains to any deity. However, some
+deities might need more that four domains to represent the
+breadth of their dominion, while others might need just two or
+three, if they are very focused.
+Polytheism is the assumption in the baseline D
+UNGEONS&
+D
+RAGONSsetting. You could create a monotheistic world, but a
+strong, singular religion probably wields great political and socio-
+logical power (such as what occurred in Europe during the Dark
+Ages), which is a change with serious implications that might
+ripple throughout your entire campaign setting.
+143
+CHAPTER 5:
+CAMPAIGNS

@@ -1,0 +1,137 @@
+250
+Boots of Elvenkind:These soft boots enable the wearer to
+move quietly in virtually any surroundings, granting a +5 compe-
+tence bonus on Move Silently checks.
+Faint transmutation; CL 5th; Craft Wondrous Item, creator
+must be an elf; Price 2,500 gp; Weight 1 lb.
+Boots of Levitation:On command, these leather boots allow
+the wearer to levitate as if she had cast levitateon herself.
+Faint transmutation; CL 3rd; Craft Wondrous Item, levitate;
+Price 7,500 gp; Weight 1 lb.
+Boots of Speed:As a free action, the wearer can click her boot
+heels together, enabling her to act as though affected by a haste
+spell for up to 10 rounds each day. The duration of the hasteeffect
+need not be consecutive rounds.
+Moderate transmutation; CL 10th; Craft Wondrous Item, haste;
+Price 12,000 gp; Weight 1 lb.
+Boots of Striding and Springing:These boots increase the
+wearer’s base land speed by 10 feet. In addition to this striding
+ability (considered an enhancement bonus), these boots allow the
+wearer to make great leaps. She can jump with a +5 competence
+bonus on Jump checks.
+Faint transmutation; CL 3rd; Craft Wondrous Item, longstrider,
+creator must have 5 ranks in the Jump skill; Price 5,500 gp;
+Weight 1 lb.
+Boots of Teleportation:Any character wearing this footwear
+may teleportthree times per day, exactly as if he had cast the spell
+of the same name.
+Moderate conjuration; CL 9th; Craft Wondrous Item, teleport;
+Price 49,000 gp; Weight 3 lb.
+Boots of the Winterlands:This footgear bestows many
+powers upon the wearer. First, he is able to travel across snow at
+his normal speed, leaving no tracks. The boots also enable him to
+travel at normal speed across the most slippery ice (horizontal
+surfaces only, not vertical or sharply slanted ones) without falling
+or slipping. Finally, boots of the winterlandswarm the wearer, as if
+he were affected by an endure elements spell.
+Faint abjuration and transmutation; CL 5th; Craft Wondrous
+Item, cat ’s grace, endure elements, pass without trace; Price 2,500 gp;
+Weight 1 lb.
+Boots, Winged:These boots appear to be ordinary footgear.
+On command, the boots sprout wings at the heel and let the
+wearer fly, without having to maintain concentration, as if
+affected by a flyspell. He can fly three times day for up to 5 min-
+utes per flight.
+Faint transmutation; CL 5th; Craft Wondrous Item, fly; Price
+16,000 gp; Weight 1 lb.
+Bottle of Air:This item appears to be a normal glass bottle
+with a cork. When taken to any airless environment (such as
+underwater or in a vacuum), it retains air within it at all times,
+continually renewing its contents. This means that a character
+can draw air out of the bottle to breathe. The bottle can even be
+shared by multiple characters who pass it around. Breathing out
+of the bottle is a standard action, but a character so doing can then
+act for as long as she can hold her breath.
+Moderate transmutation; CL 7th; Craft Wondrous Item, water
+breathing; Price 7,250 gp; Weight 2 lb.
+Bowl of Commanding Water Elementals:This large con-
+tainer is usually fashioned from blue or green semiprecious stone
+(malachite, lapis lazuli, azurite, turquoise, peridot, or sometimes
+jade). It is about 1 foot in diameter, half that deep, and relatively
+fragile. When the bowl is filled with fresh water, and certain
+words are spoken, a Large water elemental appears. The summon-
+ing words require 1 full round to speak. In all ways the bowl func-
+tions as the summon monster VIspell. Only one elemental can be
+called at a time. A new elemental requires the bowl to be filled
+with new water, which cannot happen until after the first ele-
+mental disappears (is dispelled, dismissed, or slain).
+If salt water is used, the elemental is Huge rather than Large (as
+if summon monster VIIhad been cast). See page 98 of the Monster
+Manualfor details on water elementals.
+Strong conjuration; CL 13th; Craft Wondrous Item, summon
+monster VI, summon monster VII; Price 100,000 gp; Weight 3 lb.
+Bracelet of Friends:This silver charm bracelet has four
+charms upon it when created. The owner may designate one
+person known to him to be keyed to one charm. (This designation
+takes a standard action, but once done it lasts forever or until
+changed.) When a charm is grasped and the name of the keyed
+individual is spoken, that person is called to the spot (a standard
+action) along with his or her gear, as long as the owner and the
+called person are on the same plane. The keyed individual knows
+who is calling, and the bracelet of friends only functions on willing
+travelers. Once a charm is activated, it disappears. Charms sepa-
+rated from the bracelet are worthless. A bracelet found with fewer
+than four charms is worth 25% less for each missing charm.
+Strong conjuration; CL 15th; Craft Wondrous Item, refuge; Price
+19,000 gp.
+Bracers of Archery, Greater:These wristbands look like
+normal protective wear. The bracers empower the wearer to use
+any bow (not including crossbows) as if she were proficient in its
+use. If she already has proficiency with any type of bow, she gains
+a +2 competence bonus on attack rolls and a +1 competence bonus
+on damage rolls whenever using that type of bow. Both bracers
+must be worn for the magic to be effective.
+Moderate transmutation; CL 8th; Craft Wondrous Item, Craft
+Magic Arms and Armor; Price 25,000 gp; Weight 1 lb.
+Bracers of Archery, Lesser:These wristbands function as
+greater bracers of archery, except that they grant a +1 competence
+bonus on attack rolls and no bonus on damage rolls.
+Faint transmutation; CL 4th; Craft Wondrous Item, Craft Magic
+Arms and Armor; Price 5,000 gp; Weight 1 lb.
+Bracers of Armor:These items appear to be wrist or arm
+guards. They surround the wearer with an invisible but tangible
+field of force, granting him an armor bonus of +1 to +8, just as
+though he were wearing armor. Both bracers must be worn for the
+magic to be effective.
+Moderate conjuration; CL 7th; Craft Wondrous Item, mage
+armor, creator’s caster level must be at least two times that of the
+bonus placed in the bracers; Price 1,000 gp (+1), 4,000 gp (+2),
+9,000 gp (+3), 16,000 gp (+4), 25,000 gp (+5), 36,000 gp (+6), 49,000
+gp (+7), 64,000 gp (+8); Weight 1 lb.
+Brazier of Commanding Fire Elementals:This device
+appears to be a normal container for holding burning coals. When
+a fire is lit in the brazier and the proper summoning words are
+spoken, a Large fire elemental appears. The summoning words
+require 1 full round to speak. In all ways the brazier functions as
+the summon monster VIspell. If brimstone is added, the elemental
+is Huge instead of Large, and the brazier works as a summon mon-
+ster VII spell. Only one elemental can be summoned at a time. A
+new elemental requires a new fire, which cannot be lit until after
+the first elemental disappears (is dispelled, dismissed, or slain).
+See page 98 of the Monster Manualfor details on fire elementals.
+Strong conjuration; CL 13th; Craft Wondrous Item, summon
+monster VI, summon monster VII; Price 100,000 gp; Weight 5 lb.
+Brooch of Shielding:This appears to be a piece of silver or
+gold jewelry used to fasten a cloak or cape. In addition to this
+mundane task, it can absorb magic missilesof the sort generated by
+spell or spell-like ability. A brooch can absorb up to 101 points of
+damage from magic missilesbefore it melts and becomes useless.
+Faint abjuration; CL 1st; Craft Wondrous Item, shield; Price
+1,500 gp.
+Broom of Flying:This broom is able to fly through the air as if
+affected by an overland flightspell (average maneuverability) for up
+to 9 hours per day (split up as its owner desires). The broom can
+carry 200 pounds and fly at a speed of 40 feet, or up to 400 pounds
+at a speed at 30 feet. In addition, the broom can travel alone to any
+CHAPTER 7:
+MAGIC ITEMS

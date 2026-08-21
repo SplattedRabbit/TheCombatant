@@ -1,0 +1,100 @@
+126
+(1d6+1/18–20, masterwork rapier) or +9 ranged (1d4/19–20, mas-
+terwork hand crossbow); Full Atk +6 melee (1d6+1/18–20, master-
+work rapier) or +9 ranged (1d4/19–20, masterwork hand cross-
+bow); SA —; SQ drow traits; AL NE; SV Fort +4, Ref +7, Will +9;
+Str 10, Dex 16, Con 11, Int 19, Wis 12, Cha 10.
+Skills and Feats:Concentration +13, Craft (alchemy) +14, Knowl-
+edge (arcana) +17, Knowledge (dungeoneering) +17, Knowledge
+(history) +14, Listen +3, Search +6, Spellcraft +19, Spot +3; Brew
+Potion, Combat Casting, Craft Wondrous Item, Great Fortitude,
+Scribe Scroll, Spell Penetration, Toughness.
+Drow Traits:Immune to magic sleepspells and effects; +2 racial
+bonus on saves against enchantment spells or effects; darkvision
+120 ft.; entitled to a Search check when within 5 feet of a secret or
+concealed door as though actively looking for it; spell resistance
+26; +2 racial bonus on Will saves against spells or spell-like abili-
+ties; spell-like abilities (1/day—dancing lights, darkness,and faerie
+fireas the spells from a 10th-level caster); light blindness (blinded
+for 1 round by abrupt exposure to bright light, –1 circumstance
+penalty on all attack rolls, saves, and checks while operating in
+bright light); +2 racial bonus on Listen, Spot, and Search checks
+(already figured into the statistics given above).
+Wizard Spells Prepared(4/5/5/4/4/2; save DC 14 + spell level):
+0—daze, detect magic, ghost sound, ray of frost;1st—magic missile(3),
+shield, true strike;2nd—blur, flaming sphere, glitterdust, Melf ’s acid
+arrow, web; 3rd—dispel magic, fireball, haste, lightning bolt;4th—ener-
+vation, ice storm(2), shout;5th—cone of cold, teleport.
+Spellbook:0—daze, detect magic, detect poison, flare, ghost sound, ray of
+frost, read magic;1st—charm person, identify, mage armor, magic mis-
+sile, magic weapon, protection from good, shield, true strike; 2nd—bear ’s
+endurance, blur, bulls’s strength, cat ’s grace, glitterdust, invisibility, Melf ’s
+acid arrow, resist energy, scorching ray, web;3rd—dispel magic, fireball,
+fly, haste, hold person, invisibility sphere, lightning bolt, suggestion;4th—
+charm monster, confusion, dimension door, enervation, ice storm,
+Otiluke’s resilient sphere, scrying, shout, stoneskin;5th—cone of cold,
+dominate person, telekinesis, teleport, wall of force.
+Possessions: Bracers of armor +2, ring of protection +1,amulet of natu-
+ral armor +1, cloak of resistance +1, masterwork rapier, masterwork
+hand crossbow, 10 bolts, 3 doses drow knockout poison, spellbook.
+ADJUSTMENTS BY RACE OR KIND
+Add the adjustments below to the class-based statistics. Add and
+apply all adjustments, such as ability score adjustments. For
+example, a halfling gains a racial modifier of +2 to Dexterity (and
+thus a +1 Dex bonus) and a +1 bonus on all saves, which means
+that the finished character has a +2 Reflex save bonus. If a feat is
+duplicated, select a new one.
+See the Player ’s Handbookor Dungeon Master ’s Guide for other
+traits by race or kind. (Racial traits that always affect a skill check
+are already included in the adjustments to total skill bonuses.)
+Explanations/Definitions
+The following notes explain or define certain terms used in the
+adjustments list.
+–3 Ranks/Skill: Subtract 3 ranks from each skill modifier the
+NPC is listed as having at 1st level. (The NPC has Hit Dice as a
+monster and therefore doesn’t get 4 times its per-level skill ranks
+at 1st level.)
+Large: The NPC’s attack and AC bonuses are 1 lower, and it takes
+a –4 penalty on Hide checks. The NPC’s weapon is larger, increas-
+ing damage (see page 28). The creature has 10-foot reach.
+Slow: The NPC’s base land speed is 20 feet instead of 30 feet.
+Small: The NPC’s attack and AC bonuses are 1 higher, and it
+gains a +4 bonus on Hide checks. The NPC’s weapon is smaller,
+decreasing damage (see page 28).
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–22: NPC Wizard
+Skill Pts./Spells
+LvlhpACMeleeRangedF/R/WFeatsper DayGear
+1st512+0+2+1/+2/+316/1 + 3/2 Mundane melee, mundane ranged, 800 gp
+Scribe Scroll
+2nd812+1+4+1/+2/+420/14/3 Mundane melee, mwk ranged, 1,650 gp
+3rd1212+1+4+2/+3/+424/24/3/2 As 2nd level, except 2,150 gp
+4th1613+2+5+2/+3/+535/24/4/3 Bracers of armor +1,mundane melee, mwk
+ranged, 950 gp
+5th1913+2+5+2/+3/+540/34/4/3/2 As 4th level, except 2,000 gp
+6th2313+3+6+3/+4/+645/44/4/4/3 As 4th level, except 4,300 gp
+7th2614+3+6+3/+4/+650/44/5/4/3/1 Bracers +1, ring of protection +1, mundane melee,
+mwk ranged, 3,900 gp
+8th3014+4+7+3/+4/+755/44/5/4/4/2 As 7th level, except 6,100 gp
+9th3315+4+7+4/+5/+760/54/5/5/4/2/1 Bracers +2, ring +1, mundane melee, mwk
+ranged, 5,700 gp
+10th3715+5+8+4/+5/+865/64/5/5/4/3/2 As 9th level, except 9,700 gp
+11th4016+5+8+4/+5/+870/64/5/5/5/3/2/1 Amulet of natural armor +1, bracers +2, ring +1,
+mundane melee, mwk ranged, 12,700 gp
+12th4417+6/1+9/4+5/+6/+9105/74/6/5/5/4/4/2 Amulet +1, bracers +3, ring +1, mundane melee,
+mwk ranged, headband of intellect +2,9,700 gp
+13th4718+7/2+9/4+5/+6/+9112/74/6/5/5/5/4/2/1 Amulet +1, bracers +3, ring +2, +1 melee,mwk
+ranged, headband +2, 9,300 gp
+14th5119+8/3+11/6+5/+7/+10119/74/6/5/5/5/4/3/2 Amulet +1, bracers +3, ring +2, +1 melee, mwk
+ranged, gloves of Dexterity +2, headband +2,
+15,000 gp
+15th5420+8/3+11/6+6/+8/+10144/94/6/6/5/5/5/4/2/1 Amulet +2, bracers +3, ring +2, +1 melee,mwk
+ranged, gloves +2, headband +4, 11,000 gp
+16th5820+9/4+12/7+6/+8/+11152/94/6/6/5/5/5/4/3/2 As 15th level, except 29,000 gp
+17th6122+9/4+12/7+6/+8/+11160/94/6/6/5/5/5/5/3/2/1Amulet +2, bracers +5, ring +2, +1 melee,mwk
+ranged, gloves +2, headband +6,26,000 gp
+18th6523+10/5+13/8+7/+9/+12    189/104/6/6/4/5/5/5/4/3/2     As 17th level, except bracers +6and 45,000 gp
+19th6823+10/5+13/8+7/+9/+12    198/104/6/6/6/5/5/5/5/3/3     As 17th level, except bracers +6and 85,000 gp
+20th7223+11/6+14/9+7/+9/+13    230/114/6/6/6/6/5/5/5/5/4     As 17th level, except bracers +6and 135,000 gp

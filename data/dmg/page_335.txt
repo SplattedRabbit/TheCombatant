@@ -1,0 +1,101 @@
+Dungeon Master's Guide v.3.5 Errata 3/10/04 Version 032004 
+Hardness and Hit Points 
+Dungeon Master’s Guide, page 222 
+Problem: The first paragraph is not consistent with similar 
+information for shields on page 217. 
+Solution: Delete the first sentence after the boldface header. 
+Change the next sentence to read as follows: 
+Each +1 of enhancement bonus adds 2 to a weapon’s or 
+shield’s hardness and +10 to its hit points. 
+Vorpal Weapons 
+Dungeon Master’s Guide, page 223 
+Problem: Note 2 under Table 7–14 says that a vorpal 
+weapon must be a piercing or slashing weapon. The 
+description of vorpal on page 226 says the ability can be 
+applied only to a slashing weapon. 
+Solution: Fix the table. Change the superscript number on 
+Vorpal to 4. Add a new note 4: “Slashing weapons only. 
+Reroll if randomly generated for a piercing or bludgeoning 
+weapon.” Also, renumber current note 4 to be note 5. 
+Staff of Life 
+Dungeon Master’s Guide, page 244 
+Problem: The prerequisite spells don’t synch up with the 
+staff’s powers. 
+Solution: Change raise dead to resurrection; change CL 
+11th to CL 13th. 
+Table 7–27 
+Dungeon Master’s Guide, page 247 
+Problem: The price given for a necklace of fireballs type V is 
+in error. 
+Solution: Change 6,150 gp to 5,850 gp (to match the item 
+description). 
+Table 7–28 
+Dungeon Master’s Guide, page 249 
+Problem: The price given for a necklace of fireballs type VII 
+is in error. 
+Solution: Change 9,150 gp to 8,700 gp (to match the item 
+description). 
+Clay Golem Manual 
+Dungeon Master’s Guide, page 258 
+Problem: The Clay golem manual prerequisite spells don’t 
+match the Monster Manual info on constructing a clay golem. 
+Solution: Delete references to the prayer spell from the clay 
+golem manual description. 
+Stone Golem Manual 
+Dungeon Master’s Guide, page 258 
+Problem: Prerequisite spells for constructing a stone golem 
+or greater stone golem given on page 137 of the Monster 
+Manual don’t match those given for the stone golem manual 
+and greater stone golem manual on page 258 of the Dungeon 
+Master’s Guide. 
+Solution: The Dungeon Master’s Guide is correct. Add the 
+slow spell to the prerequisites for each of these golems in the 
+Monster Manual. 
+Table 7–33 
+Dungeon Master’s Guide, page 285 
+Problem: The “Multiple different abilities” line is in error. 
+Solution: Change “Multiply higher item cost by 2” to 
+“Multiply lower item cost by 1.5” 
+Table 8–1 
+Dungeon Master’s Guide, page 290 
+Problem: The table indicates that supernatural abilities can 
+be dispelled. This is not true in v.3.5. 
+Solution: In the Dispel row, Supernatural column, change 
+Yes to No. 
+Polymorph 
+Dungeon Master’s Guide, page 297 
+Problem: The description of the polymorph effect does not 
+account for changes to that spell. 
+Solution: Delete the paragraph beginning “Creatures that 
+polymorph themselves with an ability . . .” 
+Also, replace the last three paragraphs with the following 
+text: 
+Unless stated otherwise, creatures can polymorph into forms 
+of the same type or into an aberration, animal, dragon, fey, 
+giant, humanoid, magical beast, monstrous humanoid, ooze, 
+plant, or vermin form. Most spells and abilities that grant the 
+ability to polymorph place a cap on the Hit Dice of the form 
+taken. 
+Polymorphed creatures gain the Strength, Dexterity, and 
+Constitution of their new forms, as well as size, extraordinary 
+special attacks, movement capabilities (to a maximum of 120 
+feet for flying and 60 for nonflying movement), natural 
+armor bonus, natural weapons, racial skill bonuses, and other 
+gross physical qualities such as appearance and number of 
+limbs. They retain their original class and level, Intelligence, 
+Wisdom, Charisma, hit points, base attack bonus, base save 
+bonuses, and alignment. 
+Creatures who polymorph keep their worn or held equipment 
+if the new form is capable of wearing or holding it. 
+Otherwise, it melds with the new form and ceases to function 
+for the duration of the polymorph. 
+Slow Suffocation 
+Dungeon Master’s Guide, page 304 
+Problem: This system needs to tie back into the general rules 
+for suffocation. As it stands, no one will ever die from slow 
+suffocation (because nonlethal damage doesn’t kill). 
+Solution: Insert this sentence at the end of the paragraph that 
+starts with the Slow Suffocation header: 
+When a character falls unconscious from this nonlethal 
+damage, she drops to –1 hit points and is dying. In the next 
+round, she suffocates.

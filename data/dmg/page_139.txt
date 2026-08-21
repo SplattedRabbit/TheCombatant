@@ -1,0 +1,128 @@
+138
+a simple nearby danger) held by a monstrous being or beings
+not native to the community.
+Nonstandard:While the community may have a mayor or a
+town council, the real power lies in other hands. It may center on
+a guild—a formal organization of merchants, craftsmen, profes-
+sionals, thieves, assassins, or warriors who collectively wield great
+influence. An aristocracy, in the form of one or more rich individ-
+uals with no political office, may exert influence through wealth.
+A prestigious aristocracy, such as a group of accomplished adven-
+turers, may exert influence through their reputation and experi-
+ence. Wise elders may exert influence over those who respect
+their age, reputation, and perceived wisdom.
+Magical:This type of power center can take the form of a
+temple full of priests or a single sorcerer cloistered in a tower. A
+wizard or cleric might be the actual, official ruler of the town, or
+she may just be someone with a great deal of influence.
+Alignment of Power Centers
+The alignment of the ruler or rulers of a community need not con-
+form to the alignment of all or even the majority of the residents,
+although this is usually the case. In any case, the alignment of the
+power center strongly shapes the residents’ daily lives. Due to
+their generally organized and organizing nature, most power cen-
+ters are lawful.
+To randomly determine the alignment of a power center, roll
+d% and refer to the table below. How a power center of a given
+alignment acts, or how it is perceived by the community, is dis-
+cussed following the table.
+Power Center Alignment
+d%Alignmentd%Alignment
+01–35Lawful good64Chaotic neutral
+36–39Neutral good65–90Lawful evil
+40–41Chaotic good91–98Neutral evil
+42–61Lawful neutral99–100Chaotic evil
+62–63True neutral
+Lawful Good:A community with a lawful good power center
+usually has a codified set of laws, and most people willingly obey
+those laws.
+Neutral Good: A neutral good power center rarely influences
+the residents of the community other than to help them when
+they are in need.
+Chaotic Good:This sort of power center influences the
+community by helping the needy and opposing restrictions on
+freedom.
+Lawful Neutral:A community with a lawful neutral power
+center has a codified set of laws that are followed to the letter.
+Those in power usually insist that visitors (as well as residents)
+obey all local rules and regulations.
+True Neutral: This sort of power center rarely influences the
+community. Those in power prefer to pursue their private goals.
+Chaotic Neutral:This sort of power center is unpredictable,
+influencing the community in different ways at different times.
+Lawful Evil:A community with a lawful evil power center us-
+ually has a codified set of laws, which most people obey out of fear
+of harsh punishment.
+Neutral Evil:The residents of a community with a neutral evil
+power center are usually oppressed and subjugated, facing a dire
+future.
+Chaotic Evil:The residents of a community with a chaotic evil
+power center live in abject fear because of the unpredictable and
+horrific situations continually placed upon them.
+Conflicting Power Centers
+If a community has more than one power center, and two or more
+of the power centers have opposing alignments (either good vs.
+evil or law vs. chaos), they conflict in some way. Such conflict is
+not always open, and sometimes the conflicting power centers
+grudgingly get along.
+For example, a small city contains a powerful chaotic good wiz-
+ards’ guild but is ruled by a lawful good aristocrat. The wizards are
+sometimes exasperated by the strict laws imposed by the aristocrat
+ruler and occasionally break or circumvent them when it serves
+their (well-intentioned) purposes. Most of the time, though, a rep-
+resentative from the guild takes their concerns and disagreements
+to the aristocrat, who attempts to equitably resolve any problems.
+Another example: A large city contains a powerful lawful evil
+fighter, a lawful good temple, and a chaotic evil aristocrat. The self-
+ish aristocrat is concerned only with his own gain and his de-
+bauched desires. The fighter gathers a small legion of warriors,
+hoping to oust the aristocrat and take control of the city herself.
+Meanwhile, the clerics of the powerful temple help the citizenry
+as well as they can, never directly confronting the aristocrat but
+aiding and abetting those who suffer at his hands.
+Community Authorities
+It’s often important to know who makes up the community’s
+authority structure. The authority structure does not necessarily
+indicate  who’s  in  charge,  but  instead  who  keeps  order  and
+enforces the authority that exists.
+Constable/Captain of the Guard/Sheriff: This position gen-
+erally devolves upon the highest-level warrior in a community, or
+one of the highest-level fighters. To randomly determine the class
+and level of a community’s constable, roll d% and refer to the fol-
+lowing table.
+d%Officeholder
+01–60Highest-level warrior
+61–80Second highest-level fighter
+81–100Highest-level fighter
+Use the tables in the next section to determine the constable’s level.
+Guards/Soldiers:For every 100 people in the community
+(round down), the community has one full-time guard or soldier.
+In addition, for every 20 people in the community, an able-bodied
+member of the local militia or a conscript soldier can be brought
+into service within just a few hours.
+Other NPCs in the Community
+For detailed city play, knowing exactly who lives in the commu-
+nity becomes important. The following guidelines allow you to
+determine the levels of the most powerful locals and then extrap-
+olate from that to determine the rest of the classed characters
+living there.
+Highest-Level NPC in the Community for Each Class: Use
+the following tables to determine the highest-level character in a
+given class for a given community. Determine the appropriate
+community modifier by consulting the first table below; then
+refer to the second table, roll the dice indicated for the class, and
+apply the modifier to get a result.
+A result of 0 or lower for character level means that no charac-
+ters of that kind can be found in the community. The maximum
+level for any class is 20th.
+Total Characters of Each Class
+Use the following method for determining the levels of all the
+characters in a community of any given class.
+For PC classes, if the highest-level character indicated is 2nd
+level or higher, assume the community has twice that number of
+characters of half that level. If those characters are higher than 1st
+level, assume that for each such character, the community has two
+of half that level. Continue until the number of 1st-level charac-
+ters is generated. For example, if the highest-level fighter is 5th
+CHAPTER 5:
+CAMPAIGNS

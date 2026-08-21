@@ -1,0 +1,129 @@
+WANDERING MONSTERS
+While the adventurers are exploring the dungeon, the light of
+their lanterns attracts the attention of hungry dire weasels, who
+come to see if they can catch some soft and juicy things to eat. On
+another delve, a carrion crawler finds them and follows them, out
+of sight. When it hears a fight, it scrambles up from behind and
+tries to make off with a character who has fallen in combat. On yet
+another expedition, the party meets another party of adventurers.
+If the two groups can work together, they can exchange vital
+information,  trade  valuable  items,  and  possibly  even  work
+together. The meeting, however, could just as easily turn into a
+nasty fight. Wandering monsters such as these add unpredictabil-
+ity and action to dungeon adventures.
+Wandering Monster Rolls
+As the adventurers explore a dungeon, make rolls to see if they
+encounter wandering monsters. Use wandering monster rolls to
+add an unpredictable element to a dungeon delve, to encourage
+characters to keep moving, and to put a price on being noisy. The
+exact formula for when you roll for wandering monsters is up to
+you. Generally, the chance is 10% for a wandering monster to
+show up when certain conditions are met.
+When a Certain Amount of Time Has Passed:Making one roll per
+hour is typical. You can roll more often in heavily populated areas,
+up to as often as once every 10 minutes. If you’re not already track-
+ing time in the dungeon and you don’t want to start, roll for wan-
+dering monsters when the characters are doing anything that
+takes a long time (such as taking 20 while searching a room for
+secret doors) instead of keeping track of the clock.
+When Characters Make Noise: Breaking a door or having a typical
+fight counts as making noise. Breaking a door and then having a
+fight right away counts as one instance of noise, so it’s one roll.
+Getting into a loud argument, knocking over a statue, and running
+up and down stairs in full kit at top speed are other actions that
+might call for a wandering monster roll.
+In High-Traffic Areas: Deciding what constitutes a high-traffic
+area is up to you. You can roll every time the characters enter a
+new  corridor, provided such a corridor makes it easy for creatures
+to get to and fro and thus sees a lot of traffic. Other areas, such as
+pools of fresh water, might also attract many creatures.
+In Cleared-Out Areas: If the PCs have cleared out part of the dun-
+geon, then you can roll for wandering monsters as they travel
+through a previously cleared area to an uncleared area. After all,
+creatures spread out to fill a vacuum, claiming abandoned terri-
+tory as their own.
+When Leaving the Dungeon: While you have every right to roll
+for wandering monsters as the party is leaving the dungeon, you
+might decide not to. The characters generally make good time as
+they head for the surface, and they’re usually taking a route they
+have used on their way in, so it’s reasonable for the chance for
+wandering monsters to go down. Also, if the players know that the
+characters might face an extra encounter on the way home, they
+tend to break off their exploration when they feel they can still
+handle another encounter, causing them to act more cautiously
+than they want to or than you may want them to.
+Monsters Encountered
+In a sprawling, random dungeon, you can simply use the random
+dungeon encounter tables (pages 79–81) to determine which
+monsters wander by. Reroll if the result would be a stationary crea-
+ture or one unlikely to wander. In a smaller or special dungeon,
+make your own random encounter tables.
+The entries on a customized wandering monster table can indi-
+cate individual monsters or groups of monsters rather than kinds
+of monsters. For example, the entry “Large monstrous scorpion”
+could mean a particular scorpion that lives in this dungeon rather
+than a random scorpion from an indefinitely large population of
+similar scorpions. That way, once the characters have killed that
+scorpion, they can’t encounter it again. Creatures on a customized
+table could also have lairs keyed on the dungeon map, so that
+adventurers who kill a creature while it’s wandering would later
+find its lair empty. Similarly, those who kill it in its lair would
+never encounter it wandering.
+In the same way that you can invent the denizens of specific
+dungeon rooms rather than determining them randomly, you can
+invent specific wandering monsters. These could include mon-
+sters that escaped from the PCs before (or that the PCs escaped
+from). Indeed, you can replace the idea of the wandering monster
+with a random event instead. The characters could hear fighting in
+the distance, stumble across random clues to the dungeon’s past,
+or become subject to strange, fluctuating magical auras in place of
+encountering a wandering monster.
+Wandering Monsters’ Treasure
+Overall, wandering monsters don’t have as much treasure as mon-
+sters encountered in their lairs. When NPCs are encountered as
+wandering monsters, their gear is their treasure. Intelligent wan-
+dering monsters might (50% chance) have a treasure whose level
+is equal to the dungeon level. Unintelligent monsters don’t have
+treasure. A dire weasel’s den might be littered with the valuables of
+creatures it has killed, but it doesn’t carry that stuff around with it.
+Since wandering monsters have less treasure than monsters in
+their lairs or homes, characters typically try to minimize their
+encounters with wandering monsters.
+RANDOM DUNGEONS
+This section tells you how to generate dungeons randomly, from
+the first door to the great red dragon and its massive treasure
+hoard on the lowest, most dangerous level.
+DUNGEON LEVEL
+Some dungeons are a series of levels or floors, each beneath the
+one above, with more dangerous levels found lower down and
+safer ones nearer the surface. For such dungeons, the floor nearest
+the surface can be 1st level (EL 1) and each successively deeper
+level can be one dungeon level higher. (The second one down
+would be 2nd level, the third one 3rd level, and so forth.)
+The term “level” as it pertains to dungeons measures how dan-
+gerous the dungeon (or any other adventure area) is at a particular
+location. Generally, a party of characters should adventure in areas
+whose level matches their party level (though large groups can handle
+tougher areas and small groups might need to stay in easier areas).
+THE MAP AND THE KEY
+Once you have decided the level of your dungeon (or the part of it
+you’re creating, if it has multiple levels), draw a map on graph
+paper (or any other paper that suits you). Determine the general
+wall and floor types—masonry, hewn stone, natural caves, and so
+on, as you draw the map. The map should show rooms, corridors,
+and doors. If you plan to make a sprawling dungeon of enormous
+size, you don’t need to map it all at once.
+You also need a separate sheet of paper for the map’s key. The
+key describes the dungeon.
+77
+CHAPTER 3:
+ADVENTURES
+Wandering Monster Summary
+Wandering Monster Chance = 10%
+Make a roll on d% in the following circumstances.
+• Every hour the characters are in the dungeon.
+• When the characters make noise.
+• In high-traffic areas.
+You may decide to add or omit rolls in the following circumstances.
+• In cleared-out areas of the dungeon.
+• While the characters are leaving the dungeon.

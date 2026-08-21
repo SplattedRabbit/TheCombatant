@@ -1,0 +1,121 @@
+176
+•Change his spell list so that it consists of spells that deal strictly
+with undead or that are used for subterfuge and sneaking.
+•At 3rd level, give him the paladin’s smite evil ability, usable only
+against undead.
+Now the class is the undead stalker, a stealthy character skilled
+in tracking and slaying undead.
+This method of mixing and matching abilities from different
+classes is the best way to go should you want to create an entirely
+new class.
+PRESTIGE CLASSES
+Prestige classes offer a new form of
+multiclassing. Unlike the basic
+classes found in the Player ’s Hand-
+book,characters must meet require-
+ments before they can take their first
+level of a prestige class. The rules for level
+advancement  (see  page  58  of  the
+Player ’s Handbook)apply to this system,
+meaning the first step of advancement is
+always choosing a class. If a character does
+not meet the requirements for a prestige class
+before that first step, that character cannot take
+the first level of that prestige class.
+For example, the requirements to
+become an assassin are any evil
+alignment,  8  ranks  in  Move
+Silently, 8 ranks in Hide, 4 ranks in Dis-
+guise, and the candidate must kill some-
+one for no other reason than to join the
+assassins.  Any  rogue  can  meet  the  skill
+requirements at 5th level (see Table 3–2: Experi-
+ence and Level-Dependent Benefits, page 22 of the
+Player ’s Handbook,for class skill max ranks). When
+such a rogue gains enough experience points to
+reach 6th level, she can take her first level of assas-
+sin.
+Prestige classes are purely optional and always
+under the purview of the DM. We encourage you, as
+the DM, to tightly limit the prestige classes avail-
+able in your campaign. The example prestige classes
+are certainly not all encompassing or definitive. They
+might not even be appropriate for your campaign. The
+best prestige classes for your campaign are the ones
+you tailor make yourself.
+Definitions of Terms
+Here are definitions of some terms used in
+this section.
+Base Class: One of the eleven classes
+described in the Player ’s Handbook.
+Caster  Level:  Generally  equal  to  the
+number of class levels (see below) in a spell-
+casting class. Some prestige classes add caster
+levels to an existing class.
+Character Level: The total level of the
+character, which is the sum of all class
+levels held by that character. For instance,
+a character with three levels of fighter and
+three levels of rogue has six character
+levels.
+Class Level: The level of a character in
+a particular class. For a character with levels in
+only one class, class level and character level are the same.
+ARCANE ARCHER
+Master of the elven warbands, the arcane archer is a warrior
+skilled in using magic to supplement her combat prowess. Beyond
+the woods, arcane archers gain renown throughout entire king-
+doms for their supernatural accuracy with a bow and their ability
+to imbue their arrows with magic. In a group, they can strike fear
+into an entire enemy army.
+Fighters, rangers, paladins, and barbarians become arcane
+archers to add a little magic to their combat abilities. Conversely,
+wizards and sorcerers may take this prestige class to add
+combat capabilities to their repertoire. Monks, clerics, druids,
+rogues, and bards rarely become arcane archers.
+NPC arcane archers often lead units of normal
+archers or form small, elite
+units formed entirely of
+arcane archers. 
+These units are one of the
+prime reasons that the elves
+are so feared in battle.
+Hit Die:d8.
+Requirements
+To qualify to become an arcane archer, a charac-
+ter must fulfill all the following criteria.
+Race: Elf or half-elf.
+Base Attack Bonus: +6.
+Feats: Point Blank Shot, Precise Shot, Weap-
+on Focus (longbow or shortbow).
+Spells:Ability to cast 1st-level arcane
+spells.
+Class Skills
+The arcane archer’s class skills (and the key ability
+for each skill) are Craft (Int), Hide (Dex). Listen
+(Wis), Move Silently (Dex), Ride (Dex), Spot
+(Wis), Survival (Wis), and Use Rope (Dex). See
+Chapter 4 of the Player ’s Handbookfor skill
+descriptions.
+Skill Points at Each Level:4+Int modifier.
+Class Features
+All of the following are class features of the
+arcane archer prestige class.
+CHAPTER 6:
+CHARACTERS
+An  
+arcane archer
+Table 6–1: The Arcane Archer
+Base
+Attack        FortRefWill
+LevelBonusSaveSaveSaveSpecial
+1st+1+2+2+0Enhance arrow +1
+2nd+2+3+3+0Imbue arrow
+3rd+3+3+3+1Enhance arrow +2
+4th+4+4+4+1Seeker arrow
+5th+5+4+4+1Enhance arrow +3
+6th+6+5+5+2Phase arrow
+7th+7+5+5+2Enhance arrow +4
+8th+8+6+6+2Hail of arrows
+9th+9+6+6+3Enhance arrow +5
+10th+10+7+7+3Arrow of death

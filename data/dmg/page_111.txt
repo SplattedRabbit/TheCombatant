@@ -1,0 +1,129 @@
+110
+Table 4–6: The Warrior
+NPCBaseFortRefWill
+LevelAttack BonusSaveSaveSave
+1st+1+2+0+0
+2nd+2+3+0+0
+3rd+3+3+1+1
+4th+4+4+1+1
+5th+5+4+1+1
+6th+6/+1+5+2+2
+7th+7/+2+5+2+2
+8th+8/+3+6+2+2
+9th+9/+4+6+3+3
+10th+10/+5+7+3+3
+11th+11/+6/+1+7+3+3
+12th+12/+7/+2+8+4+4
+13th+13/+8/+3+8+4+4
+14th+14/+9/+4+9+4+4
+15th+15/+10/+5+9+5+5
+16th+16/+11/+6/+1+10+5+5
+17th+17/+12/+7/+2+10+5+5
+18th+18/+13/+8/+3+11+6+6
+19th+19/+14/+9/+4+11+6+6
+20th+20/+15/+10/+5+12+6+6
+NPC STATISTICS
+This section provides a set of baseline statistics for NPCs of every
+standard class at levels 1st through 20th, with rules for how to
+adjust those statistics for various races and kinds of monster. Start-
+ing with just an NPC’s level (or Challenge Rating, which is usually
+the same thing), you can generate an NPC randomly, or you can
+put the pieces of the character together as you see fit. The rules
+cover every kind of character from a typical dwarf fighter to a half-
+fiend minotaur sorcerer.
+These statistics give you basic characters with a minimum
+amount of work. If you want to put more effort into handcrafting
+NPCs, you can use these statistics as a place to start.
+To create an NPC, you can select options from the following
+tables, or you can put a character together from scratch.
+TABLE-BASED NPCS
+The tables in this section are intended to help you create an NPC
+when planning an adventure. They give the bare bones and sug-
+gest basic equipment, leaving the rest to your design. To create an
+NPC from these tables, follow these steps.
+1. Decide the NPC’s class and level, and what race or kind of
+monster the NPC is.
+2. Find the class and level on the NPC tables (Table 4–12 to
+Table 4–22).
+3. Modify the statistics given there by the race or kind informa-
+tion from Adjustments by Race or Kind, page 126.
+4. Equip the NPC with the basic gear given on the table and pur-
+chase additional equipment up to the total gp amount allowed for
+that character level. If you prefer, adjust the basic gear to suit your
+character concept.
+Random Class, Level, and Race or Kind 
+To randomly generate an NPC’s class, level, and race or kind of
+monster, start with the NPC’s level (or Challenge Rating, which is
+usually the same thing). Then determine the following informa-
+tion randomly.
+1. Roll the NPC’s alignment on Table 4–7: Random NPC Align-
+ment.
+2. Roll class randomly on Table 4–8: Random NPC Class.
+3. Roll the race or kind randomly on the appropriate column on
+Table 4–9: Good NPC Race or Kind, 4–10: Neutral NPC Race or
+Kind, or 4–11: Evil NPC Race or Kind.
+Table 4–7: Random NPC Alignment
+d%Alignment
+01–20Good (LG, NG, or CG)
+21–50Neutral (LN, N, or CN)
+51–100Evil (LE, NE, or CE)
+Table 4–8: Random NPC Class
+GoodNeutralEvilClass
+01–0501–0501–10Barbarian
+06–1006–1011–15Bard
+11–3011–1516–35Cleric
+31–3516–2536–40Druid
+36–4526–4541–50Fighter
+46–5046–5051–55Monk
+51–55——Paladin
+56–6551–5556–60Ranger
+66–7556–7561–80Rogue
+76–8076–8081–85Sorcerer
+81–10081–10086–100Wizard
+HANDCRAFTED NPC
+To create an NPC from scratch, simply use the information from
+the Player ’s Handbook, the Monster Manual, and the earlier parts of
+this chapter.
+The one additional piece of information you need is the value of
+an NPC’s gear. See Table 4–23: NPC Gear Value to find the total
+value of the NPC’s equipment. Select equipment whose total value
+is this amount or less and let the balance be cash on hand. You can
+use the other tables as guidelines and shortcuts.
+If the NPC’s gear includes a magic item with charges, consider
+the item’s value to be one-half its full market price, and roll ran-
+domly for the number of charges it has just as you normally do for
+a random magic item. (If the item is one of the few with value
+beyond its charges, however, halve only the part of its value that’s
+based on its charges. Use your discretion.)
+When selecting gear for a spellcaster, count magic items that
+she can make herself as 70% as expensive as normal. This rule
+effectively treats the XP cost as an extra gold piece cost. If the item
+is charged, then count it as half normal value (a net 35%) and
+determine charges left randomly.
+PREGENERATED NPCS
+If you’re in a hurry, and you don’t have the time to create an appro-
+priate NPC, you can use one of the pregenerated NPCs that
+accompany Tables 4–12 through 4–22. For each character class,
+one or two samples are presented at different levels of advance-
+ment. You might have to adjust some of these character’s statistics
+“on the fly” to account for a different kind of creature or a different
+character level.
+COMBINATION METHOD
+Of course, you can combine these methods, using the material
+here as a starting point and then making different choices for your
+NPC: different skills, different feats, different gear, even different
+classes (for a multiclass character).
+ELITE AND AVERAGE CHARACTERS
+All PCs and all the NPCs described in this section are “elite,” a cut
+above the average. Elite characters (whether they are PCs or not)
+have above-average ability scores and automatically get maximum
+hit points from their first Hit Die. Average characters, on the other
+hand, have average abilities (rolled on 3d6) and don’t get maximum
+hit points from their first Hit Die. The monsters described in the
+Monster Manualare average characters rather than elite ones
+(though elite monsters also exist). Likewise, some fighters, wizards,
+and so on are average people rather than elites; they have fewer hit
+points and lower ability scores than the NPCs described here.
+CHAPTER 4:
+NONPLAYER
+CHARACTERS

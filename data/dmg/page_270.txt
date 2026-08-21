@@ -1,0 +1,129 @@
+The tables in this section should be used to determine the prop-
+erties of an intelligent item: the number of powers, unusual prop-
+erties, alignment, and special purpose of the item (if any).
+The DM is encouraged to design unusual magic items along
+special themes and for specific campaign purposes, using the
+tables as guidelines and for inspiration. Just because a power is
+rolled does not mean it must be given out. If you feel a combina-
+tion is too bizarre or too powerful, simply change or ignore it.
+The first step in determining the properties of a random intelli-
+gent item is to determine its general capabilities. These are found
+by rolling d% and consulting Table 7–30: Item Intelligence,
+Wisdom, Charisma, and Capabilities.
+INTELLIGENT ITEM ALIGNMENT
+Any item with intelligence has an alignment. Note that intelligent
+weapons already have alignments, either stated or by implication.
+(A weapon made to kill chaotic outsiders would hardly be chaotic
+itself; it would be lawful.) If you’re generating a random intelligent
+weapon, that weapon’s alignment must fit with any alignment-ori-
+ented special abilities it has (such as the holy special ability).
+Any character whose alignment does not correspond to that of
+the item (except as noted by the asterisks on the table) gains one
+negative level if he or she so much as picks up the item. Although
+this negative level never results in actual level loss, it remains as
+long as the item is in hand and cannot be overcome in any way
+(including restorationspells). This negative level is cumulative with
+any other penalties the item might already place on inappropriate
+wielders. Items with Ego scores (see below) of 20 to 29 bestow
+two negative levels. Items with Ego scores of 30 or higher bestow
+three negative levels.
+Intelligent Item Alignment
+d%Alignment of Item
+01–05Chaotic good
+06–15Chaotic neutral*
+16–20Chaotic evil
+21–25Neutral evil*
+26–30Lawful evil
+31–55Lawful good
+56–60Lawful neutral*
+61–80Neutral good*
+81–100Neutral
+* The item can also be used by any character whose alignment
+corresponds to the nonneutral portion of the item’s alignment (in
+other words, chaotic, evil, good, or lawful). Thus, any chaotic character
+(CG, CN, CE) can use an item with chaotic neutral alignment.
+LANGUAGES SPOKEN BY ITEM
+Like a character, an intelligent item speaks Common plus one
+additional language per point of Intelligence bonus. Choose
+appropriate languages, taking into account the item’s origin
+and purposes. For instance, an intelligent drow weapon would
+probably  speak  Elven,  and  a  holy  weapon  might  speak
+Celestial.
+INTELLIGENT ITEM POWERS
+Table 7–30 above determines how many lesser and greater
+powers an intelligent item has. To find the item’s specific
+powers, choose or roll on the appropriate tables below.
+Intelligent Item Lesser Powers
+d%Lesser PowerBase Price Modifier
+01–05Item can bless its allies 3/day+1,000 gp
+06–10Item can use faerie fire 3/day+1,100 gp
+11–13Item can cast minor image1/day+2,200 gp
+14–20Item has deathwatch continually active+2,700 gp
+21–25Item can use detect magicat will+3,600 gp
+26–31Item has 10 ranks in Intimidate+5,000 gp
+32–33Item has 10 ranks in Decipher Script+5,000 gp
+34–36Item has 10 ranks in Knowledge+5,000 gp
+(choose category) 
+37–40Item has 10 ranks in Search+5,000 gp
+41–45Item has 10 ranks in Spot+5,000 gp
+46–50Item has 10 ranks in Listen+5,000 gp
+51–54Item has 10 ranks in Spellcraft+5,000 gp
+55–60Item has 10 ranks in Sense Motive+5,000 gp
+61–66Item has 10 ranks in Bluff+5,000 gp
+67–72Item has 10 ranks in Diplomacy+5,000 gp
+73–77Item can cast major image1/day+5,400 gp
+78–80Item can cast darkness3/day+6,500 gp
+81–83Item can use hold personon an enemy 3/day+6,500 gp
+84–86Item can activate zone of truth3/day+6,500 gp
+87–89Item can use daze monster3/day+6,500 gp
+90–95Item can use locate object 3/day+6,500 gp
+96–100Item can use cure moderate wounds +6,500 gp
+(2d8+3) on wielder 3/day
+All powers function at the direction of the item, although intelli-
+gent items generally follow the wishes of their owner. Activating
+a power or concentrating on an active one is a standard action
+the item takes.
+269
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–30: Item Intelligence, Wisdom, Charisma, and Capabilities
+d%Mental Ability ScoresCommunicationCapabilitiesSensesBase Price Modifier
+01–34Two at 12, one at 10Empathy
+1
+One lesser power 30 ft. vision and hearing+1,000 gp
+35–59Two at 13, one at 10Empathy
+1
+Two lesser powers60 ft. vision and hearing+2,000 gp
+60–79Two at 14, one at 10Speech
+2
+Two lesser powers 120 ft. vision and hearing+4,000 gp
+80–91Two at 15, one at 10Speech
+2
+Three lesser powers60 ft. darkvision and hearing+5,000 gp
+92–97Two at 16, one at 10Speech
+2 3
+Three lesser powers60 ft. darkvision and hearing+6,000 gp
+98Two at 17, one at 10Speech, telepathy
+3 4
+Three lesser powers120 ft. darkvision and hearing+9,000 gp
+and one greater power
+6
+99Two at 18, one at 10Speech, telepathy
+45
+Three lesser powers120 ft. darkvision, blindsense, +12,000 gp
+and two greater powers
+6
+and hearing
+100Two at 19, one at 10Speech, telepathy
+45
+Four lesser powers120 ft. darkvision, blindsense, +15,000 gp
+and three greater powers
+6
+and hearing
+1 The possessor feels urges and sometimes emotions from the item that encourage or discourage certain courses of action.
+2 Like a character, an intelligent item speaks Common plus one language per point of Intelligence bonus. It can communicate telepathically with
+the wielder.
+3 The item can also read any languages it can speak.
+4 The item can use either communication mode at will, with language use as any speaking item. It can communicate telepathically with the wielder.
+5 The item can read all languages as well as use read magic.
+6 The intelligent item can have a special purpose (and corresponding dedicated power) rather than a greater power, if appropriate.

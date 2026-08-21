@@ -1,0 +1,139 @@
+292
+Whenever damage reduction completely negates the damage
+from an attack, it also negates most special effects that accompany
+the attack, such as injury type poison, a monk’s stunning, and
+injury type disease. Damage reduction does not negate touch
+attacks, energy damage dealt along with an attack (such as fire
+damage from a fire elemental), or energy drains. Nor does it affect
+poisons or diseases delivered by inhalation, ingestion, or contact.
+Attacks that deal no damage because of the target’s damage reduc-
+tion do not disrupt spells.
+Spells, spell-like abilities, and energy attacks (even nonmagical
+fire) ignore damage reduction.
+Sometimes damage reduction is instant healing. A sword slash
+across a demon’s hide slices it open, but the open wound seals as
+fast as it’s made. Sometimes damage reduction represents the
+creature’s tough hide or body, such as with a gargoyle or iron
+golem. In either case, characters can see that conventional attacks
+don’t work.
+If a creature has damage reduction from more than one source,
+the two forms of damage reduction do not stack. Instead, the crea-
+ture gets the benefit of the best damage reduction in a given situa-
+tion. For example, a werebear with damage reduction 10/silver
+receives a righteous mightspell and gains damage reduction 5/evil.
+If the werebear is attacked with a weapon that is neither silver nor
+evil, it takes 10 fewer points of damage from each attack. Damage
+from a silver weapon that is not evil is reduced by 5 points per
+attack (since it bypasses the DR 10/silver but not the DR 5/evil),
+and damage from an evil weapon that is not silver is reduced by 10
+points per attack (since it bypasses the DR 5/evil but not the DR
+10/silver). Only a weapon that is both silver and evil (such as a sil-
+vered unholy weapon) deals full damage to the creature.
+DARKVISION
+Darkvision is the extraordinary ability to see with no light source
+at all, out to a range specified for the creature.
+Darkvision is black and white only (colors cannot be dis-
+cerned). It does not allow characters to see anything that they
+could not see otherwise—invisible objects are still invisible, and
+illusions are still visible as what they seem to be. Likewise, dark-
+vision subjects a creature to gaze attacks normally.
+The presence of light does not spoil darkvision. If a character
+has darkvision with a 60-foot range, and he stands within a 20-foot
+radius of light, the character can see normally in the light, and 40
+feet beyond the light because of his darkvision.
+DEATH ATTACKS
+Lidda, scouting ahead of her party, meets the eyes of the figure she
+discovers in the shadows. It’s one of the awful undead creatures
+known as bodaks. She feels a sudden vertigo, as her spark of life
+itself is attacked by the bodak’s supernatural power.
+The bodak’s abyssal eyes can kill with a glance. The dreaded
+power word killspell can slay without even allowing the victim a
+saving throw. A single arrow of slaying can fell a dragon. Even a
+fighter with 100 hit points can be killed by a single death attack.
+In most cases, a death attack allows the victim a Fortitude save
+to avoid the affect, but if the save fails, the character dies
+instantly.
+•Raise deaddoesn’t work on someone killed by a death attack.
+•Death attacks slay instantly. A victim cannot be made stable and
+thereby kept alive.
+•In case it matters, a dead character, no matter how she died, has
+–10 hit points.
+•The spell death wardprotects a character against these attacks.
+DISEASE
+When a character is injured by a contaminated attack (such as a
+mummy’s  slam  attack,  which  can  transmit  mummy  rot),
+touches an item smeared with diseased matter, or consumes dis-
+ease-tainted food or drink, he must make an immediate Forti-
+tude saving throw. If he succeeds, the disease has no effect—his
+immune system fought off the infection. If he fails, he takes
+damage after an incubation period. Once per day afterward, he
+must  make  a  successful  Fortitude  saving  throw  to  avoid
+repeated damage. Two successful saving throws in a row indi-
+cate that he has fought off the disease and recovers, taking no
+more damage.
+You can roll these Fortitude saving throws for the player so that
+he doesn’t know whether the disease has taken hold.
+Disease Descriptions
+Diseases have various symptoms and are spread through a number
+of vectors. The characteristics of several typical diseases are sum-
+marized on Table 8–2: Diseases and defined below.
+Disease:Diseases whose names are printed in italicin the table
+are supernatural in nature. The others are extraordinary.
+Infection:The disease’s method of delivery—ingested, inhaled,
+via injury, or contact. Keep in mind that some injury diseases may
+be transmitted by as small an injury as a flea bite and that most
+inhaled diseases can also be ingested (and vice versa).
+DC:The Difficulty Class for the Fortitude saving throws to pre-
+vent infection (if the character has been infected), to prevent each
+instance of repeated damage, and to recover from the disease.
+Incubation Period:The time before damage begins.
+Damage:The ability damage the character takes after incubation
+and each day afterward.
+Types of Diseases:Typical diseases include the following:
+Blinding Sickness: Spread in tainted water.
+Cackle Fever: Symptoms include high fever, disorientation, and
+frequent bouts of hideous laughter. Also known as “the shrieks.”
+Demon Fever: Night hags spread it. Can cause permanent ability
+drain.
+Devil Chills: Barbazu and pit fiends spread it. It takes three, not
+two, successful saves in a row to recover from devil chills.
+Filth Fever: Dire rats and otyughs spread it. Those injured while
+in filthy surroundings might also catch it.
+Mindfire: Feels like your brain is burning. Causes stupor.
+Mummy Rot: Spread by mummies. Successful saving throws do
+not allow the character to recover (though they do prevent
+damage normally).
+Red Ache: Skin turns red, bloated, and warm to the touch.
+The Shakes: Causes involuntary twitches, tremors, and fits.
+Slimy Doom: Victim turns into infectious goo from the inside
+out. Can cause permanent ability drain.
+Table 8–2: Diseases
+DiseaseInfectionDCIncubationDamage
+Blinding sicknessIngested161d3 days1d4 Str
+1
+Cackle feverInhaled161 day1d6 Wis
+Demon feverInjury181 day1d6 Con
+2
+Devil chills
+3
+Injury141d4 days1d4 Str
+Filth feverInjury121d3 days1d3 Dex,
+1d3 Con
+MindfireInhaled121 day1d4 Int
+Mummy rot
+4
+Contact201 day1d6 Con
+Red acheInjury151d3 days1d6 Str
+ShakesContact131 day1d8 Dex
+Slimy doomContact141 day1d4 Con
+2
+1 Each time the victim takes 2 or more damage from the disease, he
+must make another Fortitude save or be permanently blinded.
+2 When damaged, character must succeed on another saving throw
+or 1 point of damage is permanent drain instead.
+3 The victim must make three successful Fortitude saving throws in a
+row to recover from devil chills.
+4 Successful saves do not allow the character to recover. Only magical
+healing can save the character.
+CHAPTER 8:
+GLOSSARY

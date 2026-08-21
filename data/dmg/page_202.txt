@@ -1,0 +1,131 @@
+Fiendish Tiny Viper Snake Familiar:CR —; Tiny magical
+beast; HD 3; hp 1/2 master’s; Init +3; Spd 15 ft., climb 15 ft., swim
+15 ft.; AC 19, touch 15, flat-footed 16; Base Atk +0; Grp –11; Atk +5
+melee (poison, bite); Full Atk +5 melee (poison, bite); Space/Reach
+2-1/2 ft./0 ft.; SA poison, smite good; SQ darkvision 60 ft., deliver
+touch spells, resistance to cold 5 and fire 5, scent, spell resistance
+8, granted abilities; AL any evil; SV Fort +2, Ref +5, Will +1; Str 4,
+Dex 17, Con 11, Int 7, Wis 12, Cha 2.
+Skills and Feats:Balance +11, Climb +11, Hide +15, Listen +6,
+Spot +6 (or master’s, if better), Swim +5; Weapon Finesse.
+Poison (Ex):Injury, Fortitude DC 11, initial and secondary
+damage 1d6 Con.
+Smite Good (Su): Once per day, make a normal melee attack to
+deal +1 damage against a good foe.
+Formian Worker Familiar:CR —; Small outsider (lawful,
+extraplanar); HD 7; hp 1/2 master’s; Init +2; Spd 40 ft.; AC 21,
+touch 13, flat-footed 19; Base Atk +1; Grp –2; Atk +3 melee (1d4+1,
+bite); Full Atk +3 melee (1d4+1, bite); SQ darkvision 60 ft., deliver
+touch spells, improved evasion, immunity to poison, petrification,
+and cold, resistance to electricity 10, fire 10, and sonic 10, speak
+with master, granted abilities; AL LN; SV Fort +3, Ref +4, Will +2;
+Str 13, Dex 14, Con 13, Int 9, Wis 10, Cha 9.
+Skills and Feats:Climb +10, Craft (any one) +5; Skill Focus
+(Craft).
+Homunculus Familiar:CR —; Tiny construct; HD 7; hp 1/2
+master’s; Init +2; Spd 20 ft., fly 50 ft. (good); AC 18, touch 14, flat-
+footed 16; Base Atk +1; Grp –8; Atk +2 melee (1d4–1 plus poison,
+bite); Full Atk +2 melee (1d4–1 plus poison, bite); Space/Reach
+2-1/2 ft./0 ft.; SA poison; SQ construct type, deliver touch spells,
+improved evasion, speak with master, granted abilities; AL any; SV
+Fort +0, Ref +4, Will +1; Str 8, Dex 15, Con —, Int 10, Wis 12,
+Cha 7.
+Skills and Feats:Hide +14, Listen +4, Spot +4; Lightning Reflexes.
+Poison (Ex): Injury, Fortitude DC 11, initial damage sleep for 1
+minute, secondary damage sleep for another 5d6 minutes.
+Construct Type:Immune to mind-influencing effects, poison,
+disease, and similar effects. Not subject to critical hits, nonlethal
+damage, ability damage, energy drain, or death from massive
+damage.
+Ice Mephit Familiar:CR —; Small outsider (air, cold, extra-
+planar); HD 7; hp 1/2 master’s; Init +7; Spd 30 ft., fly 50 ft. (per-
+fect); AC 22, touch 14, flat-footed 19; Base Atk +3; Grp –1; Atk +4
+melee (1d3 plus 2 cold, claw); Full Atk +4 melee (1d3 plus 2 cold, 2
+claws); SA breath weapon, spell-like abilities, summon mephit;SQ
+cold subtype, darkvision 60 ft., deliver touch spells, damage reduc-
+tion 5/magic, fast healing 2, improved evasion, speak with master,
+granted abilities; AL any; SV Fort +3, Ref +6, Will +3; Str 10, Dex
+17, Con 10, Int 12, Wis 11, Cha 15.
+Skills and Feats:Bluff +8, Diplomacy +4, Disguise +2, Escape
+Artist +9, Hide +13, Listen +6, Move Silently +9, Spot +6, Use Rope
++3; Dodge, Improved Initiative.
+Breath Weapon (Su): Usable once every 1d4 rounds. Cone of ice
+shards, 10 feet, damage 1d4, Reflex DC 12 half or take a –4 penalty
+to AC and a –2 penalty on attack rolls for 3 rounds.
+Spell-Like Abilities: 1/hour—magic missile,3rd-level caster;
+1/day—chill metal,6th-level caster; Will DC 14 negates (object).
+Summon Mephit (Sp):Once per day, can summon another ice
+mephit as if casting a summon monster spell, but with only a 25%
+chance of success. Summoned creatures automatically return
+whence they came after 1 hour. A mephit that has just been sum-
+moned cannot use its own summon ability for 1 hour.
+Cold Subytpe:Immune to cold damage. Takes half again as much
+(+50%) damage as normal from fire, regardless of whether a saving
+throw is allowed, or if the save is a success or failure.
+Fast Healing (Ex):Regains 2 hit points per round if touching a
+piece of ice of at least Tiny size or if the ambient temperature is
+32°F. or below.
+Imp  Familiar:CR  —;  Tiny  outsider  (evil,  lawful,  extraplanar);
+HD 7; hp 1/2 master’s; Init +3; Spd 20 ft., fly 50 ft. (perfect); AC 24,
+touch  15,  flat-footed  21;  Base  Atk  +3;  Grp  –5;  Atk  +8  melee  (1d4
+plus  poison,  sting);  Full  Atk  +8  melee  (1d4  plus  poison,  sting);
+Space/Reach 2-1/2 ft./0 ft.; SA poison, spell-like abilities; SQ alter-
+nate  form,  darkvision  60  ft.,  deliver  touch  spells,  DR  5/good  or
+silver, fast healing 2, immunity to poison, improved evasion, resist-
+ance to fire 5, speak with master, granted abilities; AL LE; SV Fort
++3, Ref +6, Will +4; Str 10, Dex 17, Con 10, Int 10, Wis 12, Cha 14.
+Skills and Feats:Diplomacy +8, Hide +17, Knowledge (any one)
++6, Listen +7, Move Silently +9, Search +6, Spellcraft +6, Spot +7,
+Survival +1; Dodge, Weapon Finesse.
+Poison (Ex):Injury, Fortitude DC 13, initial damage 1d4 Dex, sec-
+ondary damage 2d4 Dex.
+Spell-Like Abilities: At will—detect good, detect magic, invisibility
+(self only); 1/day—suggestion.Caster level 6th; save DC 10 + spell
+level. Once per week an imp can use communeto ask six questions
+(otherwise as the spell cast by a 12th-level cleric).
+Alternate Form (Su):As polymorph, caster level 12th, except that
+an individual imp can assume only one or two forms no larger
+than Medium. Common forms include monstrous spider, raven,
+rat, and boar.
+Pseudodragon Familiar:CR —; Tiny dragon; HD 7; hp 1/2
+master’s; Init +0; Spd 15 ft., fly 60 ft. (good); AC 22, touch 14, flat-
+footed 20; Base Atk +2; Grp –8; Atk +4 melee (1d3–2 plus poison,
+sting); Full Atk +4 melee (1d3–2 plus poison, sting) and +0 melee
+(1, bite); Space/Reach 2-1/2 ft./0 ft. (5 ft. with tail); SA poison; SQ
+blindsense 60 ft., deliver touch spells, dragon type, improved eva-
+sion, speak with master, telepathy, granted abilities; AL NG; SV
+Fort +4, Ref +3, Will +6; Str 11, Dex 11, Con 13, Int 10, Wis 12,
+Cha 10.
+Skills and Feats:Hide +16/+24 in forest or overgrown areas, Sur-
+vival +3, Listen +5, Search +2, Spot +5; Alertness.
+Blindsense (Ex):Can locate creatures within 60 feet by nonvisual
+means.
+Dragon Type:Darkvision 60 ft., low-light vision, immunity to
+sleepand paralysis effects.
+Poison (Ex):Injury, Fortitude DC 12, initial damage sleep for 1
+minute, secondary damage sleep for 1d3 days.
+Telepathy (Su):Communicate telepathically with creatures
+within 60 feet that speak Common or Sylvan.
+Quasit Familiar:CR —; Tiny outsider (chaotic, evil, extrapla-
+nar); HD 7; hp 1/2 master’s; Init +7; Spd 20 ft., fly 50 ft. (perfect);
+AC 22, touch 15, flat-footed 19; Base Atk +3; Grp –6; Atk +8 melee
+(1d3–1 plus poison, claw), Full Atk +8 melee (1d3–1 plus poison, 2
+claws) and +3 melee (1d4–1, bite); Space/Reach 2-1/2 ft./0 ft.; SA
+poison, spell-like abilities; SQ alternate form, darkvision 60 ft.,
+deliver touch spells, damage reduction 5/cold iron or good, fast
+healing 2, immunity to poison, improved evasion, resistance to
+fire 10, speak with master, granted abilities; AL CE; SV Fort +3, Ref
++6, Will +4; Str 8, Dex 17, Con 10, Int 10, Wis 12, Cha 10.
+Skills and Feats:Bluff +6, Diplomacy +2, Disguise +0 (+2 acting),
+Hide +17, Intimidate +2, Knowledge (any one) +6, Listen +7, Move
+Silently +9, Search +6, Spellcraft +6, Spot +6 (or master’s, if better);
+Improved Initiative, Weapon Finesse.
+Poison (Ex):Injury, Fortitude DC 13, initial damage 1d4 Dex, sec-
+ondary damage 2d4 Dex.
+Spell-Like Abilities:At will—detect good, detect magic, and invisibility
+(self only); 1/day—cause fear (as the spell, but 30-foot radius; save
+DC 11). Caster level 6th. Once per week a quasit can use communeto
+ask six questions (otherwise as the spell cast by a 12th-level cleric).
+201
+CHAPTER 6:
+CHARACTERS

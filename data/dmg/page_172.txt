@@ -1,0 +1,128 @@
+paign might have Tiny gnomes or Large half-orcs. You should be
+wary of Tiny or Large characters, however, because they alter the
+game in significant ways (for example, they take up much less or
+much more space in a battle).
+Marine: A marine (or coastal or island) version of a common
+race might have gills to breathe water, a bonus on Swim checks,
+and an affinity with various forms of aquatic wildlife. You should
+also be careful not to simply make marine versions of every race
+and creature, since this rapidly becomes too predictable.
+Desert, Mountain, Forest (Terrain or Climate Types):
+Finally, terrain and climate can be the main determinant for a
+subrace specially suited for the environment in which it lives
+(desert halflings, arctic gnomes, and so on). These subraces differ
+from their standard counterparts primarily in skill bonuses or
+bonus feats.
+Common Subraces
+DwarvesElves
+Hill dwarves*High elves*
+Deep dwarvesAquatic elves (sea elves)
+Mountain dwarvesDrow (dark elves)
+Duergar (gray dwarves)Gray elves
+Wild elves (grugach)
+Wood elves (sylvan elves)
+GnomesHalflings
+Rock gnomes*Lightfeet*
+Svirfneblin (deep gnomes)Tallfellows
+Forest gnomesDeep halflings
+* The standard dwarves, elves, gnomes, and halflings described in the
+Player’s Handbook.
+Example Subrace: Gold Dwarves
+Haughty and proud, the gold dwarves have a civilization approach-
+ing the peak of its power. While some are aloof and suspicious, for
+the most part they are forthright warriors and shrewd traders.
+Racial Traits: Gold dwarves have all the dwarf racial traits
+described on page 14 of the Player ’s Handbook,with the following
+exceptions.
+•+2  Constitution,  –2  Dexterity:  Gold  dwarves  are  stout  and
+tough, but not as quick or agile as other races.
+•+1  racial  bonus  on  attack  rolls  against  aberrations:  Gold  dwarves
+are trained in special combat techniques against these bizarre crea-
+tures (this replaces the attack bonus against orcs and goblinoids).
+MODIFYING A COMMON RACE
+Sometimes you may wish to modify one of the common races
+(those described in the Player ’s Handbook). Doing this is different
+from creating a subrace, because it’s a change of larger scope—the
+entire common race takes on different characteristics. A campaign
+might not even use subraces but still have races modified from the
+rules presented in the Player ’s Handbook.
+The main reason you may want to modify the Player ’s Handbook
+races is to give your campaign a unique or a specific feel. For
+example, in some campaigns, dwarves never use arcane spells. In
+others, they may be wizened masters of the arcane arts.
+CHANGES THROUGH ADDITION
+AND SUBTRACTION
+Modifying a race by adding or subtracting aspects is essentially
+like creating a subrace. One DM may find that darkvision is inap-
+propriate for dwarves in her campaign, while another believes that
+in his campaign elves should never die of old age.
+While DMs make such changes to give a unique flavor to a cam-
+paign, these changes often end up creating problems with logic or
+balance. For example, without darkvision for their dwarves, many
+players opt to play a different race instead, and those who do play
+dwarves often eventually feel that they made a wrong decision by
+not choosing, say, a half-orc. Meanwhile, in the game where the
+DM chose to make elves immortal, no actual game balance issues
+arise, yet the players grow dissatisfied with the logical incongruity.
+If elves don’t die of old age, they ask, why isn’t the world swarming
+with them by now? These problems are not insurmountable, but
+they show that change must be well thought out. Balance taking an
+ability away from a race by replacing it with another. Think
+through logic problems, and explain them away with a reasonable
+rationale. For example, elves might have an incredibly low birth
+rate and fight in many wars against evil, keeping their numbers
+low despite their biological immunity to aging.
+Example Modified Race: Half-Human Elves
+Half-human elves are half-elves raised by elves rather than by
+human society.
+Half-human elves have all the half-elf racial traits described on
+page 18 of the Player ’s Handbook, with the following exceptions.
+•Half-human  elves  have  no  racial  bonus  on  Diplomacy  and
+Gather Information checks.
+•Half-human  elves  have  the  same  weapon  proficiency  as  elves.
+They  receive  free  Martial  Weapon  Proficiency  feats  for  the
+longsword,  rapier,  shortbow,  and  longbow.  Living  among
+people who esteem the arts of swordplay and archery, almost all
+half-human elves are familiar with these weapons.
+•Favored Class: Wizard. Half-human elves lack some of the flex-
+ibility of half-elves who are raised by humans.
+CLASS/RACE RESTRICTIONS
+The parameters of a campaign can shape the benefits and restric-
+tions for playing characters of various races. Sometimes, in order
+to reflect specific roles that you want races to play in the cam-
+paign, you can restrict which classes each race can choose from.
+Limitations might include any or all of the following.
+•Dwarves  and  halflings  cannot  be  wizards,  sorcerers,  bards,
+monks, druids, paladins, or rangers.
+•Elves cannot be druids, paladins, or monks.
+•Half-elves cannot be paladins or monks.
+•Half-orcs cannot be wizards, bards, druids, paladins, or rangers.
+The fighter class, the cleric class, and the rogue class are rarely
+restricted. Each is considered available to any race, although you
+can of course create your own exceptions.
+It is perfectly acceptable for you to say “In my world . . .” and
+then describe whatever changes or restrictions you feel necessary.
+Be prepared for players to complain if you’re denying something
+otherwise granted to them in the Player ’s Handbook for the choices
+they make. You’re the DM, and it’s your campaign. It’s important,
+however, to make sure that the players understand the explana-
+tions behind these changes so that they don’t feel restricted for no
+reason. It’s often a good idea to balance restrictions with extra
+allowances—such as greater starting money, free skills, or some
+other small consideration.
+NEW RACES
+You can give your players new race options either by using creatures
+from the Monster Manual or new creatures of your own design. In
+either case, handle this radical change to the campaign with care.
+171
+CHAPTER 6:
+CHARACTERS
+VARIANT: NO SIDEBARS FOR VARIANT RULES
+In contrast to the way the rest of the Dungeon Master’s Guideis struc-
+tured, this chapter is composed of alternative rules, concepts, and ways
+of doing things. So, in this chapter, you won’t find variant rules set off
+in sidebars—the variant rules are actually the meat of the chapter.
+Sidebars  are  used  in  this  chapter  for  “Behind  the  Curtain”  topics,
+just as in the rest of the book.
+pqqrs
+pqqrs

@@ -1,0 +1,133 @@
+powers is usable for up to 7 minutes at a time, but after a flight
+of any duration the cloak cannot bestow any flying power for a
+like period of time.
+Moderate transmutation; CL 7th; Craft Wondrous Item, fly, poly-
+morph; Price 26,000 gp; Weight 1 lb.
+Cloak of Charisma:This lightweight and fashionable cloak has
+a highly decorative silver trim. When in a character’s possession, it
+adds a +2, +4, or +6 enhancement bonus to her Charisma score.
+Moderate transmutation; CL 8th; Craft Wondrous Item, eagle’s
+splendor; Price 4,000 gp (+2), 16,000 gp (+4), 36,000 gp (+6);
+Weight 2 lb.
+Cloak of Displacement, Minor:This item appears to be a
+normal cloak, but when worn by a character its magical properties
+distort and warp light waves. This displacement works similar to
+the displacementspell except that it only grants a 20% miss chance
+on attacks against the wearer. It functions continually.
+Faint illusion; CL 3rd; Craft Wondrous Item, displacement; Price
+24,000 gp; Weight 1 lb.
+Cloak of Displacement, Major:This item appears to be a
+normal cloak, but on command its magical properties dis-
+tort and warp light waves. This displacement works
+just like the displacementspell and lasts for a total of
+15 rounds per day, which the wearer can divide up
+as she sees fit.
+Moderate illusion; CL 7th; Craft Wondrous
+Item, Extend Spell, displacement; Price 50,000
+gp; Weight 1 lb.
+Cloak of Elvenkind:This cloak of neutral
+gray cloth is indistinguishable from an ordinary
+cloak of the same color. However, when worn with
+the hood drawn up around the head, it gives the
+wearer a +5 competence bonus on Hide checks.
+Faint illusion; CL 3rd; Craft Wondrous Item,
+invisibility, creator must be an elf; Price 2,500 gp;
+Weight 1 lb.
+Cloak of Etherealness:This silvery-gray
+cloak seems to absorb light rather than be illu-
+minated by it. On command, the cloak makes
+its wearer ethereal (as the ethereal jaunt spell).
+The effect is dismissible. The cloak works
+for a total of up to 10 minutes per day. This
+duration need not be continuous.
+Strong transmutation; CL 15th; Craft
+Wondrous Item, ethereal jaunt; Price 55,000 gp; Weight 1 lb.
+Cloak of the Manta Ray:This cloak appears to be made of
+leather until the wearer enters salt water. At that time the cloak of
+the manta rayadheres to the individual, and he appears nearly
+identical to a manta ray (as the polymorph spell, except that it allows
+only manta ray form). He gains a +3 natural armor bonus, the abil-
+ity to breathe underwater, and a swim speed of 60 feet, like a real
+manta ray.
+Although the cloak does not enable the wearer to bite oppo-
+nents as a manta ray does, it does have a tail spine that can be used
+to strike at opponents behind the wearer, dealing 1d6 points of
+damage. This attack can be used in addition to any other attack the
+character has, using his highest melee attack bonus. The wearer
+can release his arms from the cloak without sacrificing under-
+water movement if so desired.
+Moderate transmutation; CL 9th; Craft Wondrous Item, poly-
+morph, water breathing; Price 7,200 gp; Weight 1 lb.
+Cloak of Resistance:These garments offer magic protection
+in the form of a +1 to +5 resistance bonus on all saving throws (For-
+titude, Reflex, and Will).
+Faint abjuration; CL 5th; Craft Wondrous Item, resistance, cre-
+ator’s caster level must be at least three times the cloak’s bonus;
+Price 1,000 gp (+1), 4,000 gp (+2), 9,000 gp (+3), 16,000 gp (+4),
+25,000 gp (+5); Weight 1 lb.
+Crystal Ball:This is the most common form of scrying device,
+a crystal sphere about 6 inches in diameter. A character can use
+the device to see over virtually any distance or into other planes
+of existence, as with the spell scrying (Will DC 16 negates).
+Certain crystal ballshave additional powers that can be used
+through the crystal ball on the target viewed.
+Crystal Ball TypeMarket Price
+Crystal ball42,000 gp
+Crystal ballwith see invisibility50,000 gp
+Crystal ballwith detect thoughts (Will DC 13 negates)51,000 gp
+Crystal ballwith telepathy*70,000 gp
+Crystal ballwith true seeing80,000 gp
+* The viewer is able to send and receive silent mental messages with
+the person appearing in the crystal ball. Once per day the character
+may attempt to implant a suggestion(as the spell, Will DC 14
+negates) as well.
+Moderate divination; CL 10th; Craft Wondrous Item, scry-
+ing (plus any additional spells put into item); Weight 7 lb.
+Cube of Force:This device is about the size of a large die
+(perhaps 3/4 inch across) and can be made of ivory, bone,
+or any hard mineral. It enables its possessor to put up a
+special wall of force10 feet on a side around her person.
+This cubic screen moves with the character and is
+impervious to the attack forms mentioned on the
+table below. The cube has 36 charges, which are
+renewed each day. The possessor presses one face of
+the cube to activate a particular type of screen or to
+deactivate the device. Each effect costs a certain
+number of charges to maintain for every minute (or
+portion of a minute) it is in operation. Also, when an
+effect is active, the possessor’s speed is limited to the max-
+imum value given on the table.
+When the cube of forceis active, attacks dealing more
+than 30 points of damage drain 1 charge for every 10
+points of damage beyond 30 that they deal (40 points
+of damage drains 1 charge, 50 points drains 2 charges,
+and so forth). Spells that affect the integrity of the
+screen, such as disintegrate and passwall, also drain
+extra  charges.  These  spells  (given  in  the  list
+below) cannot be cast into or out of the cube:
+CubeCharge CostMaximum
+Faceper MinuteSpeedEffect
+1130 ft.Keeps out gases, wind, etc.
+2220 ft.Keeps out nonliving matter
+3315 ft.Keeps out living matter
+4410 ft.Keeps out magic
+5610 ft.Keeps out all things
+60As normalDeactivates
+Attack FormExtra Charges
+Horn of blasting6
+Wall of fire2
+Passwall3
+Disintegrate6
+Phase door5
+Prismatic spray7
+Moderate evocation; CL 10th; Craft Wondrous Item, wall of force;
+Price 62,000 gp.
+Cube of Frost Resistance:This cube is activated or deacti-
+vated by pressing one side. When activated, it creates a cube-
+shaped area 10 feet on a side centered on the possessor (or on the
+cube itself, if the item is later placed on a surface).The tempera-
+ture within this area is always at least 65°F. The field absorbs all
+253
+CHAPTER 7:
+MAGIC ITEMS
+Crystal ball

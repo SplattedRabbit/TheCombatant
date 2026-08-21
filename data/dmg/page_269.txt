@@ -1,0 +1,135 @@
+268
+Faint, moderate or strong (many schools); CL 1st (blessing), 5th
+(healing), 7th (smiting), 9th (karma), 11th (wind walking), 17th (sum-
+mons); Craft Wondrous Items and one of the following spells per
+bead, as appropriate: bless(blessing); cure serious wounds, remove blind-
+ness/deafness,or remove disease (healing); righteous might(karma); gate
+(summons); chaos hammer, holy smite, order ’s wrath,or unholy blight
+(smiting), wind walk(wind walking); Price 9,600 gp (lesser), 25,800
+gp (standard), 95,800 gp (greater).
+Tome of Clear Thought: This heavy book contains instruction
+on improving memory and logic, but entwined within the words
+is a powerful magical effect. If anyone reads this book, which takes
+a total of 48 hours over a minimum of six days, she gains an inher-
+ent bonus of from +1 to +5 (depending on the type of tome) to her
+Intelligence score. Once the book is read, the magic disappears
+from the pages and it becomes a normal book. Because the tome of
+clear thoughtprovides an inherent bonus, the reader will earn extra
+skill points when she attains a new level (unlike with the benefit
+provided by a headband of intellect).
+Strong evocation (if miracleis used); CL 17th; Craft Wondrous
+Item, miracleor wish;Price 27,500 gp (+1), 55,000 gp (+2), 82,500 gp
+(+3), 110,000 gp (+4), 137,500 gp (+5); Cost 1,250 gp + 5,100 XP
+(+1), 2,500 gp + 10,200 XP (+2), 3,750 gp + 15,300 XP (+3), 5,000 gp
++ 20,400 XP (+4), 6,250 gp + 25,500 XP (+5); Weight 5 lb.
+Tome of Leadership and Influence: This ponderous book
+details suggestions for persuading and inspiring others, but
+entwined within the words is a powerful magical effect. If anyone
+reads this book, which takes a total of 48 hours over a minimum
+of six days, he gains an inherent bonus of from +1 to +5 (depend-
+ing on the type of tome) to his Charisma score. Once the book is
+read, the magic disappears from the pages and it becomes a
+normal book.
+Strong evocation (if miracleis used); CL 17th; Craft Wondrous
+Item, miracleor wish;Price 27,500 gp (+1), 55,000 gp (+2), 82,500 gp
+(+3), 110,000 gp (+4), 137,500 gp (+5); Cost 1,250 gp + 5,100 XP
+(+1), 2,500 gp + 10,200 XP (+2), 3,750 gp + 15,300 XP (+3), 5,000 gp
++ 20,400 XP (+4), 6,250 gp + 25,500 XP (+5); Weight 5 lb.
+Tome of Understanding: This thick book contains tips for
+improving instinct and perception, but entwined within the
+words is a powerful magical effect. If anyone reads this book,
+which takes a total of 48 hours over a minimum of six days, she
+gains an inherent bonus of from +1 to +5 (depending on the type
+of tome) to her Wisdom score. Once the book is read, the magic
+disappears from the pages and it becomes a normal book.
+Strong evocation (if miracleis used); CL 17th; Craft Wondrous
+Item, miracleor wish;Price 27,500 gp (+1), 55,000 gp (+2), 82,500 gp
+(+3), 110,000 gp (+4), 137,500 gp (+5); Cost 1,250 gp + 5,100 XP
+(+1), 2,500 gp + 10,200 XP (+2), 3,750 gp + 15,300 XP (+3), 5,000 gp
++ 20,400 XP (+4), 6,250 gp + 25,500 XP (+5); Weight 5 lb. 
+Unguent of Timelessness: When applied to any matter that
+was once alive (leather, leaves, paper, wood, dead flesh, and so on),
+this ointment allows that substance to resist the passage of time.
+Each year of actual time affects the substance as if only a day had
+passed. The coated object gains a +1 resistance bonus on all saving
+throws. The unguent never wears off, although it can be magically
+removed (by dispelling the effect, for instance). One flask con-
+tains enough material to coat eight Medium or smaller objects. A
+Large object counts as two Medium objects, and a Huge object
+counts as two Large objects.
+Faint transmutation; CL 3rd;Prerequisite:Craft Wondrous Item;
+Price 150 gp.
+Universal Solvent: This substance has the unique property of
+being able to dissolve sovereign glue(see page 266), tanglefoot bags
+(see page 128 of the Player ’s Handbook), and the adhesive created by
+a kuo-toa (see page 163 of the Monster Manual). Applying the sol-
+vent is a standard action.
+Strong transmutation; CL 20th; Craft Wondrous Item, disinte-
+grate; Price 50 gp.
+Vest of Escape: Hidden within secret pockets of this simple
+silk vest are lockpicks that provide a +4 competence bonus on
+Open Lock checks. The vest also grants its wearer a +6 competence
+bonus on Escape Artist checks.
+Faint conjuration and transmutation; CL 4th; Craft Wondrous
+Item, knock, grease; Price 5,200 gp.
+Vestment, Druid’s: This light garment is worn over normal
+clothing or armor. Most such vestments are green, embroidered
+with plant or animal motifs. When this item is worn by a character
+with the wild shape ability, the character can use that ability one
+additional time each day.
+Moderate transmutation; CL 10th; Craft Wondrous Item,poly-
+morph or wild shape ability; Price 10,000 gp.
+Well of Many Worlds:This strange, interdimensional device
+looks just like a portable hole.Anything placed within it is immedi-
+ately cast to another world—a parallel world, another planet, or a
+different plane, at the DM’s option or by random determination. If
+the well is moved, the random factor again comes into play. It can
+be picked up, folded, or rolled, just as a portable holecan be. Objects
+from the world the well touches can come through the opening
+just as easily as from the initiating place. (It is a two-way portal.)
+Strong conjuration; CL 17th; Craft Wondrous Item, gate; Price
+82,000 gp.
+Wind Fan:A wind fanappears to be nothing more than a wood
+and papyrus or cloth instrument with which to create a cooling
+breeze. By uttering the command word, its possessor causes the
+fan to generate air movement duplicating a gust of windspell. The
+fan can be used once per day with no risk. If it is used more fre-
+quently, there is a 20% cumulative chance per usage during that
+day that the device tears into useless, nonmagical tatters.
+Faint evocation; CL 5th; Craft Wondrous Item, gust of wind;
+Price 5,500 gp.
+Wings of Flying: A pair of these wings might appear to be
+nothing more than a plain cloak of old, black cloth, or they could
+be as elegant as a long cape of blue feathers. When the wearer
+speaks the command word, the cloak turns into a pair of bat or
+bird wings that empower her to fly with a speed of 60 feet (good
+maneuverability).
+Moderate transmutation; CL 10th; Craft Wondrous Item, fly;
+Price 54,000 gp; Weight 2 lb.
+INTELLIGENT ITEMS
+Magic items sometimes have intelligence of their own. Magically
+imbued with sentience, these items think and feel the same way
+characters do and should be treated as NPCs. They can be many
+things to characters—valued ally, wily foe, or continual thorn in
+their side. Intelligent items have extra abilities and sometimes ex-
+traordinary powers and special purposes. Only permanent magic
+items (as opposed to single-use items or those with charges) can be
+intelligent. (This means that potions, scrolls, and wands, among
+other items, are never intelligent.) In general, less than 1% of magic
+items have intelligence. Use them sparingly in your campaign,
+because they require more work on the part of both player and DM.
+Intelligent items can actually be considered creatures because
+they have Intelligence, Wisdom, and Charisma scores. Treat them
+as constructs (see page 307 of the Monster Manual). Intelligent
+items often have the ability to illuminate their surroundings at
+will (as magic weapons do); many cannot see otherwise.
+As a practical matter, it’s easiest to let a player control an intelli-
+gent item possessed by his or her character (but see Items against
+Characters, below). Unlike most magic items, intelligent items
+can activate their own powers without waiting for a command
+word from their owner. For example, an intelligent sword with the
+magic circle against evil ability can activate the circle even if the
+wielder makes a full attack in that round. Intelligent items act
+during their owner’s turn in the initiative order.
+CHAPTER 7:
+MAGIC ITEMS

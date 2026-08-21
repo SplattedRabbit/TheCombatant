@@ -1,0 +1,135 @@
+ters can move in any direction as if they were flying with perfect
+maneuverability.
+Stealth and Detection Underwater: How far you can see
+underwater depends on the water’s clarity. As a guideline, crea-
+tures can see 4d8×10 feet if the water is clear, and 1d8×10 feet if it’s
+murky. Moving water is always murky, unless it’s in a particularly
+large, slow-moving river.
+It’s hard to find cover or concealment to hide underwater
+(except along the seafloor). Listen and Move Silently checks func-
+tion normally underwater.
+Invisibility: An invisible creature displaces water and leaves a
+visible, body-shaped “bubble” where the water was displaced. The
+creature still has concealment (20% miss chance), but not total
+concealment (50% miss chance).
+Underwater Combat
+Land-based creatures can have considerable
+difficulty when fighting in water. Water
+affects a creature’s Armor Class, attack
+rolls, damage, and move-
+ment. In some cases
+a  creature’s  oppo-
+nents may get a
+bonus on attacks.
+The effects are sum-
+marized   in   the
+accompanying
+table. They apply
+whenever a charac-
+ter  is  swimming,
+walking  in  chest-
+deep water, or walk-
+ing along the bottom.
+Ranged    Attacks
+Underwater:Thrown
+weapons are ineffective
+underwater, even when
+launched  from  land.
+Attacks  with  other
+ranged weapons take a –2
+penalty on attack rolls for
+every 5 feet of water they pass
+through, in addition to the
+normal penalties for range.
+Attacks from Land: Char-
+acters swimming, floating, or
+treading water on the surface, or
+wading in water at least chest deep, have improved cover (+8 bonus
+to AC, +4 bonus on Reflex saves) from opponents on land. Land-
+bound opponents who have freedom of movementeffects ignore this
+cover when making melee attacks against targets in the water. A
+completely submerged creature has total cover against opponents
+on land unless those opponents have freedom of movement effects.
+Magical effects are unaffected except for those that require attack
+rolls (which are treated like any other effects) and fire effects.
+Fire: Nonmagical fire (including alchemist’s fire) does not
+burn underwater. Spells or spell-like effects with the fire de-
+scriptor are ineffective underwater unless the caster makes a
+Spellcraft check (DC 20 + spell level). If the check succeeds, the
+spell creates a bubble of steam instead of its usual fiery effect, but
+otherwise the spell works as described. A supernatural fire effect
+is ineffective underwater unless its description states otherwise.
+The surface of a body of water blocks line of effect for any fire
+spell. If the caster has made a Spellcraft check to make the fire
+spell usable underwater, the surface still blocks the spell’s line of
+effect. For example, a fireballcast underwater cannot be targeted at
+creatures above the surface.
+Floods
+In many wilderness areas, river floods are a common occurrence.
+In spring, an enormous snowmelt can engorge the streams and
+rivers it feeds. Other catastrophic events such as massive rain-
+storms or the destruction of a dam can create floods as well.
+During a flood, rivers become wider, deeper, and swifter. As-
+sume that a river rises by 1d10+10 feet during the spring flood,
+and its width increases by a factor of 1d4×50%. Fords may disap-
+pear for days, bridges may be swept away, and even ferries might
+not be able to manage the crossing of a flooded river.
+A river in flood makes Swim checks one category harder (calm
+water becomes rough, and rough water becomes stormy). Rivers
+also become 50% swifter.
+WEATHER
+Sometimes weather can play an
+important  role  in  an  adven-
+ture—rain  can  wash  away
+tracks, a thunderstorm can
+force the adventurers to seek
+shelter, or a gale can delay
+their ship from sailing.
+If your adventure involves
+spending a lot of time out-
+doors, create a random table
+to determine the weather
+conditions in a particular
+area.   Local   conditions
+have a dramatic effect on
+weather. High-altitude
+areas  are  often  much
+colder than lowlands,
+for  example.  The
+presence of a moun-
+tain range can cause
+an area adjacent to
+the   mountains
+where little pre-
+cipitation falls.
+Table 3–23: Ran-
+dom Weather is
+an appropriate
+weather   table
+for general use,
+and you can use it as the basis for
+your own weather tables. Terms on that table are
+defined as follows.
+Calm:Wind speeds are light (0 to 10 mph).
+Cold: Between 0° and 40° Fahrenheit during the day, 10 to 20
+degrees colder at night.
+Cold Snap:Lowers temperature by –10° F.
+Downpour:Treat as rain (see Precipitation, below), but conceals as
+fog. Can create floods (see above). A downpour lasts for 2d4 hours.
+Heat Wave:Raises temperature by +10° F.
+Hot:Between 85° and 110° Fahrenheit during the day, 10 to 20
+degrees colder at night.
+Moderate:Between 40° and 60° Fahrenheit during the day, 10
+to 20 degrees colder at night.
+Powerful Storm(Windstorm/Blizzard/Hurricane/Tornado):
+Wind speeds are over 50 mph (see Table 3–24: Wind Effects). In
+addition, blizzards are accompanied by heavy snow (1d3 feet), and
+hurricanes are accompanied by downpours (see above). Wind-
+storms last for 1d6 hours. Blizzards last for 1d3 days. Hurricanes
+can last for up to a week, but their major impact on characters will
+come in a 24-to-48-hour period when the center of the storm
+moves through their area. Tornadoes are very short-lived (1d6×10
+minutes), typically forming as part of a thunderstorm system.
+93
+CHAPTER 3:
+ADVENTURES

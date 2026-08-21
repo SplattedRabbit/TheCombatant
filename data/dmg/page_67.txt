@@ -1,0 +1,171 @@
+66
+Shifting stones and walls are generally constructed as traps (see
+page 67), with triggers and Search and Disable Device DCs. How-
+ever they don’t have Challenge Ratings because they’re inconven-
+iences, not deadly in and of themselves.
+Teleporters: Sometimes useful, sometimes devious, places in a
+dungeon rigged with a teleportation effect (such as a teleportation
+circle) transport characters to some other location in the dungeon
+or someplace far away. They can be traps, teleporting the unwary
+into dangerous situations, or they can be an easy mode of trans-
+port for those who built or live in the dungeon, good for bypassing
+barriers and traps or simply to get around
+more quickly. Devious dungeon designers
+might place a teleporter in a room that trans-
+ports characters to another seemingly identi-
+cal  room  so  that  they  don’t  even  know
+they’ve been teleported. A detect magicspell
+will provide a clue to the presence of a tele-
+porter, but direct experimentation or other
+research is the only way to discover where
+the teleporter leads.
+Altars: Temples—particularly to dark
+gods—often exist underground. Usu-
+ally taking the form of a stone block, an
+altar is the main fixture and central focus
+of such a temple. Sometimes all the other
+trappings of the temple are long gone,
+lost to theft, age, and decay, but the altar
+survives. Some altars have traps or pow-
+erful magic within them. Most take up
+one or two squares on the grid and provide cover to creatures
+behind them.
+CAVE-INS AND COLLAPSES (CR 8)
+Cave-ins and collapsing tunnels are extremely dangerous. Not only
+do dungeon explorers face the danger of being crushed by tons of
+falling rock, even if they survive they may be buried beneath a pile
+of rubble or cut off from the only known exit. A cave-in buries
+anyone in the middle of the collapsing area, and then sliding debris
+damages anyone in the periphery of the collapse. A typical corridor
+subject to a cave-in might have a bury zone with a 15-foot radius
+and a 10-foot-radius slide zone extending beyond the bury zone.
+A weakened ceiling can be spotted with a DC 20 Knowledge
+(architecture and engineering) or DC 20 Craft (stonemasonry)
+check. Remember that Craft checks can be made untrained as In-
+telligence checks. A dwarf can make such a check if he simply
+passes within 10 feet of a weakened ceiling.
+A weakened ceiling may collapse when subjected to a major
+impact or concussion. A character can cause a cave-in by destroy-
+ing half the pillars holding the ceiling up. If you want to create a
+room where a collapse is a real possibility, include a number of
+pillars that have already toppled before the PCs arrive. (The
+presence of broken pillars is an obvious clue to a weakened
+ceiling, even for characters with no particular knowledge.)
+Characters in the bury zone of a cave-in take 8d6 points of
+damage, or half that amount if they make a DC 15 Reflex
+save. They are subsequently buried. Characters in the slide
+zone take 3d6 points of damage, or no damage at all if they
+make a DC 15 Reflex save. Characters in the slide zone who
+fail their saves are buried.
+Characters take 1d6 points of nonlethal damage per
+minute while buried. If such a character falls unconscious, he
+must make a DC 15 Constitution check. If it fails, he takes 1d6
+points of lethal damage each minute thereafter until freed or dead.
+CHAPTER 3:
+ADVENTURES
+An altar
+dedicated to
+an evil deity
+Table 3–12: 
+Minor Features and Furnishings
+d%Feature/Furnishing
+01Anvil
+02Ash
+03Backpack
+04Bale (straw)
+05Bellows
+06Belt
+07Bits of fur
+08Blanket
+09Bloodstain
+10Bones (humanoid)
+11Bones (nonhumanoid)
+12Books
+13Boots
+14Bottle
+15Box
+16Branding iron
+17Broken glass
+18Bucket
+19Candle
+20Candelabra
+21Cards (playing cards)
+22Chains
+23Claw marks
+24Cleaver
+25Clothing
+26Cobwebs
+27Cold spot
+28Corpse (adventurer)
+29Corpse (monster)
+30Cracks
+31Dice
+32Discarded weapons
+33Dishes
+34Dripping water
+35Drum
+36Dust
+37Engraving
+38Equipment (broken)
+39Equipment (usable)
+40Flask
+41Flint and tinder
+42Foodstuffs (spoiled)
+43Foodstuffs (edible)
+44Fungus
+45Grinder
+46Hook
+47Horn
+48Hourglass
+49Insects
+50Jar
+51Keg
+52Key
+53Lamp
+54Lantern
+55Markings
+56Mold
+57Mud
+58Mug
+59Musical instrument
+60Mysterious stain
+61Nest (animal)
+62Odor (unidentifiable)
+63Oil (fuel)
+64Oil (scented)
+65Paint
+66Paper
+67Pillows
+68Pipe (smoking pipe)
+69Pole
+70Pot
+71Pottery shard
+72Pouch
+73Puddle (water)
+74Rags
+75Razor
+76Rivulet
+77Ropes
+78Runes
+79Sack
+80Scattered stones
+81Scorch marks
+82Scroll (nonmagical)
+83Scroll case (empty)
+84Skull
+85Slime
+86Sound (unexplained)
+87Spices
+88Spike
+89Teeth
+90Tongs
+91Tools
+92Torch (stub)
+93Tray
+94Trophy
+95Twine
+96Urn
+97Utensils
+98Whetstone
+99Wood (scraps)
+100Words (scrawled)

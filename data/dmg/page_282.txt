@@ -1,0 +1,136 @@
+•Throwing it into the volcano lair of the dragon Uthrax.
+•Crushed under the heel of a demigod.
+•Buried in the Rift of Corrosion in the Abyss.
+•Disintegrated while placed at the base of the Infinite Staircase.
+•Devoured by Talos, the triple iron golem.
+•Immersed  in  the  Fountain  of  Light  in  the  holy  Halls  of
+Heironeous himself.
+Because the means of destruction of a major artifact are so diffi-
+cult, such an item is often buried in a deep vault, thrown into the
+Astral Plane, or placed behind extremely powerful and untiring
+guardians by those without the power, knowledge, or wherewithal
+to destroy it.
+Major Artifact Descriptions
+The artifacts presented here are meant to be examples. Artifacts
+should be tailored to fit your individual campaign and its history:
+The discovery of a major artifact should be a campaign-defining
+moment. Feel free to change the powers of the example artifacts
+given here in order to customize these artifacts to your campaign.
+The Hand and Eye of Vecna:The archlich Vecna may have
+been the most powerful wizard ever to have lived. He may also
+have been the most evil. Apparently risen now to deityhood, he
+left behind relics embodying remnants of his power—the mum-
+mified remains of his hand and his eye.
+Powers of the Eye:In order to function, the Eye of Vecnamust be
+placed in the empty socket of a character’s skull. The bearer of the
+Eyeloses 2 points of Charisma, and these points may never be
+restored. The Eyemay not thereafter be removed without resulting
+in the death of its host. It grants the host continuous darkvisionand
+true seeing. Three times per day each, the host can use the spells eye-
+bite and domination. Once per day, the bearer of the Eyecan call
+forth destruction and unhallow. A nonevil character must make a DC
+17 Will save each week to avoid becoming evil. All powers are at
+caster level 20th, and all DCs to resist their effects are 20.
+Powers of the Hand:In order to function, the Hand of Vecnamust
+be placed on the end of a left arm whose original hand has been
+severed. The bearer of the Handloses 2 points of Dexterity that
+may never be regained. Removal of the hand thereafter always
+results in the death of the host. The touch of the Hand,once so
+placed, deals 1d10 points of cold damage to a target. Three times
+per day, its touch can permanently drain 1 ability score point
+(host’s choice of ability) from a victim. The host gains the points
+drained for the rest of that day. (They last until the next sunrise.)
+Once per day, the bearer of the Handcan call upon blasphemyand
+unholy aura. A nonevil character must make a DC 17 Will save
+each week to avoid becoming evil. All powers are at caster level
+20th, and all DCs to resist their effects are 20.
+Powers with Both Artifacts:If a single character bears both the
+Hand of Vecnaand the Eye of Vecna,the DC to resist all powers of
+both items increases to 25. The host gains +2 to Strength and +2 to
+Intelligence but takes a –2 penalty to Wisdom. She can call upon
+summon monster IXonce per day (to summon evil outsiders only).
+A nonevil character who possesses both items must make a DC 23
+Will save each week to avoid becoming evil.
+The Mace of Cuthbert:St. Cuthbert, tales say, once walked the
+earth as a man. When he did, he used a potent weapon to strike
+against the infidels and evil beings he encountered everywhere he
+went. Today, this relic appears to be a simple, well-used cudgel, but
+its simple appearance hides great power. The Mace of Cuthberthas a
++5 enhancement bonus and functions as a heavy mace with the
+holy, lawful, and disruption special abilities. The wielder can proj-
+ect searing lightfrom the mace at will, at caster level 20th.
+The Moaning Diamond:Said to have been ripped from the
+ground in a ritual that tortured the earth itself, the Moaning Dia-
+mondappears to be an uncut diamond the size of a human fist. At
+all times, it gives forth a baleful moaning sound, as if in pain.
+Despite the noise, the Moaning Diamondis not evil (although it
+was birthed in torture). The wielder of the stone can, three times
+per day, call upon it to reshape earth and stone as if by the spell
+stone shape, affecting 5,000 cubic feet of material. The Moaning Dia-
+mondcan summon an elder earth elemental with maximum hit
+points that serves the caster until it is slain. Only one such ele-
+mental can be summoned at a time; if it is slain, a new creature
+cannot be summoned for 24 hours. Tales from the past tell of the
+Moaning Diamondcreating stone structures, opening under-
+ground chambers where there had been none before, and collaps-
+ing entire castles.
+The Orbs of Dragonkind:These fabled Orbswere created eons
+ago in order to master dragons in the great Dragon Wars. Each
+contains the essence and personality of an ancient dragon of a dif-
+ferent variety (one for each of the major ten different chromatic
+and metallic dragons). The bearer of an Orbcan dominate dragons
+of its particular variety within 500 feet (as dominate monster), the
+dragon being forced to make a DC 25 Will save to resist. (Spell
+resistance is not useful against this effect.) EachOrb of Dragonkind
+bestows upon the wielder the AC and saving throw bonuses of the
+dragon within (see the Monster Manualfor details on each dragon
+variety). These values replace whatever values the character would
+otherwise have, whether they are better or worse. These values
+cannot be modified by any means short of ridding the character of
+the Orb.A character possessing an Orb of Dragonkindis immune to
+the breath weapon—but only the breath weapon—of the dragon
+variety keyed to the Orb.Thus, the possessor of the Red Dragon Orb
+of Dragonkindis immune to red dragon breath, but not fire of any
+other sort. Finally, a character possessing an Orbcan herself use
+the breath weapon of the dragon in the Orbthree times per day
+(see the Monster Manual).
+All Orbs of Dragonkindcan be used to communicate verbally and
+visually with the possessors of the other Orbs.The owner of an Orb
+knows whether there are dragons within 10 miles at all times. For
+dragons of the Orb’s particular variety, the range is 100 miles. If
+within 1 mile of a dragon of the Orb’s variety, the wielder can
+determine the exact location and age of the creature. The bearer of
+one of these Orbsearns the enmity forever of all dragonkind for
+profiting by the enslavement of one of their kin, even if she later
+loses the item.
+Each Orbalso has an individual power that can be invoked once
+per round at 10th caster level.
+•Black Dragon Orb: Fly(Will DC 17 negates).
+•Blue Dragon Orb: Haste(Fortitude DC 17 negates).
+•Brass Dragon Orb: Teleport(Will DC 19 negates).
+•Bronze Dragon Orb: Scrying(Will DC 18 negates).
+•Copper Dragon Orb: Suggestion(Will DC 17 negates).
+•Gold  Dragon  Orb:  The  owner  of  the  gold  Orbcan  call  upon  any
+power possessed by one of the other Orbs—including the domi-
+nateand  breath  weapon  abilities  but  not  AC,  save  bonuses,  or
+breath  weapon  immunity—but  can  only  use  an  individual
+power once per day. She can use dominateon any other posses-
+sor of an Orbwithin 1 mile (Will DC 23 negates).
+•Green Dragon Orb: Spectral hand.
+•Red Dragon Orb: Wall of fire.
+•Silver Dragon Orb: Cure critical wounds(Will DC 18 half ).
+•White Dragon Orb: Protection from energy (cold)(Fortitude DC 17
+negates).
+The Shadowstaff:This artifact was crafted centuries ago, weav-
+ing together the wispy strands of shadow itself into a twisted black
+staff. The Shadowstaff makes the wielder slightly shadowy and
+incorporeal, granting him a +4 bonus to AC and Reflex saves
+(which stacks with any other bonuses). However, in bright light
+(such as that of the sun, but not a torch) or in absolute darkness,
+the wielder takes a –2 penalty on all attack rolls, saves, and checks.
+The Shadowstaffalso has these powers.
+•Summon  Shadows:Three  times  per  day  the  staff  may  summon
+2d4 shadows (see page 221 of the Monster Manual). Immune to
+281
+CHAPTER 7:
+MAGIC ITEMS

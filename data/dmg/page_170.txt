@@ -1,0 +1,59 @@
+ontained within this chapter are a number of options for
+PCs and NPCs alike, including alternative ability score
+generation systems, new races, and new classes. Also pro-
+vided here are rules for improving characters, new famil-
+iars, and epic characters.
+ABILITY SCORES
+In addition to the standard method for generating ability scores
+presented in the Player ’s Handbook(roll 4d6, discard the lowest die,
+and arrange as desired), here are eight options you might want to
+consider using in your campaign.
+1. Standard Point Buy:All ability scores start at 8. Take 25
+points to spread out among all abilities. For ability scores of 14 or
+lower, you buy additional points on a 1-for-1 basis. For ability
+scores higher than 14, it costs a little more (see the table below).
+This method allows for maximum customization, but you should
+expect each PC to have at least one really good score.
+Ability Score Point Costs
+AbilityPointAbilityPoint
+ScoreCostScoreCost
+9114 6
+102158
+1131610
+1241713
+1351816
+2. Nonstandard Point Buy:Use the standard point buy
+method, except that the player has fewer or more points for
+buying scores, as shown on the table below.
+Type of CampaignPoints Allowed
+Low-powered campaign15 points
+Challenging campaign22 points
+Tougher campaign28 points
+High-powered campaign32 points
+3. Elite Array:Use the following scores, arranged as
+desired: 15, 14, 13, 12, 10, and 8. These numbers (assuming
+they’re assigned to abilities in an appropriate way) pro-
+duce characters with at least a decent score in every abil-
+ity that’s important to the character’s class. This method
+is faster than the standard point buy method and is good
+for creating characters quickly. In fact, it’s the method
+we used to generate ability scores for the sample NPCs
+in Chapter 4 of this book.
+4. The Floating Reroll: Roll 4d6 six times, discard-
+ing the lowest die each time. Once during this process,
+the player can reroll the lowest die instead. Arrange
+scores as desired. This method results in slightly
+better characters than the standard Player ’s Handbook
+method does, allowing players to either improve a
+particularly bad score or try to get a very good score.
+For example, if the player rolled 4d6 and got results
+of 1, 2, 6, and 6 for a score of 14, she might choose to
+reroll the 1 to see if she could improve the score
+(and possibly even get an 18 if the reroll came up 6).
+5. Organic Characters:Roll 4d6 six times, discard-
+ing the lowest die each time. Place in order (Str, Dex,
+Con, Int, Wis, Cha) as rolled. Reroll any one ability
+score of your choice, taking the new roll if it’s
+higher. Then switch any two ability scores. This
+169
+Illus. by  A. Swekel

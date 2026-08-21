@@ -1,0 +1,135 @@
+dominant planes are extremely hostile to Material Plane creatures,
+and those without resistance or immunity to fire are soon immo-
+lated. Unprotected wood, paper, cloth, and other flammable mate-
+rials catch fire almost immediately, and those wearing unprotected
+flammable clothing catch on fire (see page 303). In addition, indi-
+viduals take 3d10 points of fire damage every round they are on a
+fire-dominant plane. Creatures of the water subtype are extremely
+uncomfortable on fire-dominant planes. Those that are made of
+water, such as water elementals, take double damage each round.
+While these conditions are typical for all sites on the Elemental
+Plane of Fire, the circumstances are much worse at locations such
+as lava pools, magma rivers, and volcano springs. In the D&D cos-
+mology, parts of some evil-aligned Outer Planes are also fire-dom-
+inant, and they too have their unusually deadly locations.
+Water-Dominant:Planes with this trait are mostly liquid. Vis-
+itors who can’t breathe water or reach a pocket of air will likely
+drown (see page 304). Creatures of the fire subtype are extremely
+uncomfortable on water-dominant planes. Those made of fire,
+such as fire elementals, take 1d10 points of damage each round.
+Positive-Dominant:An abundance of life characterizes planes
+with this trait. The two kinds of positive-dominant traits are
+minor positive-dominant and major positive-dominant.
+A minor positive-dominant plane is a riotous explosion of life
+in all its forms. Colors are brighter, fires are hotter, noises are
+louder, and sensations are more intense as a result of the positive
+energy swirling through the plane. All individuals in a positive-
+dominant plane gain fast healing 2 as an extraordinary ability.
+Major positive-dominant planes go even further. A creature on
+a major positive-dominant plane must make a DC 15 Fortitude
+save to avoid being blinded for 10 rounds by the brilliance of the
+surroundings. Simply being on the plane grants fast healing 5 as
+an extraordinary ability. In addition, those at full hit points gain 5
+additional temporary hit points per round. These temporary hit
+points fade 1d20 rounds after the creature leaves the major posi-
+tive-dominant plane. However, a creature must make a DC 20 For-
+titude save each round that its temporary hit points exceed its
+normal hit point total. Failing the saving throw results in the crea-
+ture exploding in a riot of energy, killing it.
+The positive energy protection spell prevents its target from receiving
+the fast healing extraordinary ability, risking blindness, or receiving
+the temporary hit points while on a positive-dominant plane.
+Negative-Dominant:Planes with this trait are vast, empty
+reaches that suck the life out of travelers who cross them. They
+tend to be lonely, haunted planes, drained of color and filled with
+winds bearing the soft moans of those who died within them. As
+with positive-dominant planes, negative-dominant planes can be
+either minor or major. On minor negative-dominant planes,
+living creatures take 1d6 points of damage per round. At 0 hit
+points or lower, they crumble into ash.
+Major negative-dominant planes are even more severe. Each
+round, those within must make a DC 25 Fortitude save or gain a
+negative level. A creature whose negative levels equal its current
+levels or Hit Dice is slain, becoming a wraith.
+The death ward spell protects a traveler from the damage and
+energy drain of a negative-dominant plane.
+Alignment Traits
+In the D&D cosmology, each of the Outer Planes has a predisposi-
+tion to a certain alignment. Most of the inhabitants of these planes
+also have the plane’s particular alignment, even powerful creatures
+such as deities. In addition, creatures of alignments contrary to the
+plane have a tougher time dealing with its natives and situations. 
+The alignment trait of a plane affects social interactions there.
+Characters who follow other alignments than most of the inhabi-
+tants do may find life more difficult.
+Alignment traits have multiple components. First are the moral
+(good or evil) and ethical (lawful or chaotic) components; a plane
+can have either a moral component, an ethical component, or one
+of each. Second, the specific alignment trait indicates whether
+each moral or ethical component is mildly or strongly evident.
+Good-Aligned/Evil-Aligned: These planes have chosen a side
+in the battle of good versus evil. No plane can be both good-
+aligned and evil-aligned.
+Law-Aligned/Chaos-Aligned: Law versus chaos is the key
+struggle for these planes and their residents. No plane can be both
+law-aligned and chaos-aligned.
+Each part of the moral/ethical alignment trait has a descriptor,
+either “mildly” or “strongly,” to show how powerful the influence
+of alignment is on the plane. A plane could be mildly good-aligned
+and strongly chaos-aligned, for example.
+Mildly Aligned: Creatures who have an alignment opposite
+that of a mildly aligned plane take a –2 circumstance penalty on all
+Charisma-based checks. Evil characters on a mildly good-aligned
+plane, for example, have a hard time getting along with the natives. 
+Strongly Aligned:On planes that are strongly aligned, a –2 cir-
+cumstance penalty applies on all Charisma-based checks made by
+all creatures not of the plane’s alignment—in other words, neutral
+characters take the penalty too. In addition, the –2 penalty affects
+all Intelligence-based and Wisdom-based checks, too: It’s as if the
+plane itself was standing in your way.
+A strongly good-aligned, strongly law-aligned plane would
+apply the –2 penalty to all creatures with a neutral aspect in their
+alignment (as well as to evil or chaotic creatures).
+The penalties for the moral and ethical components of the
+alignment trait do stack. A neutral evil character on a mildly good-
+aligned, strongly chaos-aligned plane would take a –2 penalty on
+Charisma-based checks for being evil on a mildly good plane, and
+another –2 penalty on Intelligence-, Wisdom-, and Charisma-
+based checks for being neutral on a strongly chaos-aligned plane.
+Such a character would have a –4 circumstance penalty on
+Charisma-based checks and a –2 circumstance penalty on Intelli-
+gence- and Wisdom-based checks.
+Neutral-Aligned:A mildly neutral-aligned plane does not
+apply a circumstance penalty to anyone. Such a plane could be-
+come a gathering point where those of different alignments could
+meet, or the prize that extraplanar forces fight over. In the D&D
+cosmology, the Outer Plane known as the Outlands is an example
+of a mildly neutral-aligned plane.
+The Material Plane in the D&D cosmology is considered mildly
+neutral-aligned, though it may contain high concentrations of evil or
+good, law or chaos in places. This fact often makes the Material Plane
+a battleground for the various aligned planes and their natives, who
+may try to change the alignment trait of the Material Plane itself.
+Magic Traits
+A plane’s magic trait describes how magic works on the plane com-
+pared to how it works on the Material Plane. Particular locations
+on a plane (such as those under the direct control of deities) may
+be pockets where a different magic trait applies.
+Normal Magic:This magic trait means that all spells and
+supernatural abilities function as written. Unless otherwise noted
+in a description, every plane in the D&D cosmology has the
+normal magic trait.
+Wild Magic:On a plane with the wild magic trait, such as
+Limbo in the D&D cosmology, spells and spell-like abilities func-
+tion in radically different and sometimes dangerous ways. Any
+spell or spell-like ability used on a wild magic plane has a chance
+to go awry. The caster must make a level check (DC 15 + the level
+of the spell or effect) for the magic to function normally. For spell-
+like abilities, use the level or HD of the creature employing the
+ability for the caster level check and the level of the spell-like abil-
+ity to set the DC for the caster level check.
+Failure on this check means that something strange happens;
+roll d% and consult the following table.
+149
+CHAPTER 5:
+CAMPAIGNS

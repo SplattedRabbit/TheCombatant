@@ -1,0 +1,133 @@
+Uncontrolled:An uncontrolled item occasionally activates at
+random times. Roll d% every day. On a result of 01–05 (or what-
+ever range the DM decides is appropriate), the item activates at
+some random point during that day. Results range from the
+humorous, such as when the wearer of a cursed ring of invisibility
+suddenly disappears right in the middle of bargaining in the
+market, to the disastrous, such as when the wielder’s wand of fire-
+balldischarges in the midst of her friends—er, former friends.
+Requirement:In a sense, a command word is a requirement.
+Nevertheless, some items have much more stringent require-
+ments that must be met for them to be usable. To keep an item
+with this kind of curse functioning, one or more of the following
+conditions must be met.
+•Character must eat twice as much as normal.
+•Character must sleep twice as much as normal.
+•Character  must  undergo  a  specific  quest  (one  time  only,  and
+then item functions normally thereafter).
+•Character must sacrifice (destroy) 100 gp worth of valuables per
+day.
+•Character  must  sacrifice  (destroy)  2,000  gp  worth  of  magic
+items each week.
+•Character must swear fealty to a particular noble or his family.
+•Character must discard all other magic items.
+•Character must worship a particular deity.
+•Character must change her name to a specific name. (The item
+only works for characters of that name.)
+•Character  must  add  a  specific  class  at  the  next  opportunity  if
+not of that class already.
+•Character must have a minimum number of ranks in a particu-
+lar skill.
+•Character must sacrifice some part of her life energy (2 points
+of Constitution) one time. If the character gets the Constitution
+points  back  (such  as  from  a  restorationspell),  the  item  ceases
+functioning.  (The  item  does  not  cease  functioning  if  the  char-
+acter  receives  a  Constitution  increase  caused  by  level  gain,  a
+wish,or the use of a magic item.)
+•Item must be cleansed with holy water each day.
+•Item must be used to kill a living creature each day.
+•Item must be bathed in volcanic lava once per month.
+•Item must be used at least once a day, or it won’t function again
+for its current possessor.
+•Item must draw blood when wielded (weapons only). It can’t be
+put away or exchanged for another weapon until it has scored a
+hit.
+•Item must have a particular spell cast upon it each day (such as
+bless, atonement,or animate objects).
+Requirements are so dependent upon suitability to the item that
+they should never be determined randomly. An item with a re-
+quirement that is also intelligent often imposes its requirement
+through its personality. If the requirement is not met, the item
+ceases to function. If it is met, usually the item functions for one
+day before the requirement must be met again (although some
+requirements are one time only, others monthly, and still others
+continuous).
+Drawback:Items with drawbacks are usually still beneficial to
+the possessor (for instance, a weapon with an enhancement bonus
+continues to benefit its wielder in combat), but they also carry
+some negative aspect. You might think of them as “give and take”
+items. Although sometimes drawbacks occur only when the item
+is used (or held, in the case of some items such as weapons), usu-
+ally the drawback remains with the character for as long as she has
+the item.
+Roll on the table below to generate a drawback that (unless oth-
+erwise indicated) remains in effect as long as the item is in the
+character’s possession.
+d%Drawback
+01–04Character’s hair grows 1 inch longer. Only happens once.
+05–09Character either shrinks 1/2 inch (01–50 on d%) or grows
+that much taller (51–100). Only happens once.
+10–13Temperature around item is 10°F cooler than normal.
+14–17Temperature around item is 10°F warmer than normal.
+18–21Character’s hair color changes.
+22–25Character’s skin color changes.
+26–29Character now bears some identifying mark (tattoo, weird
+glow, or the like).
+30–32Character’s gender changes.
+33–34Character’s race or kind changes.
+35Character is afflicted with a random disease that cannot be
+cured.
+36–39Item continually emits a disturbing sound (moaning,
+weeping, screaming, cursing, insults).
+40Item looks ridiculous (garishly colored, silly shape, glows
+bright pink, . . .).
+41–45Character becomes selfishly possessive about the item.
+46–49Character becomes paranoid about losing the item and
+afraid of damage occurring to it.
+50–51Character’s alignment changes.
+52–54Character must attack nearest creature (5% chance [01–05
+on d%] each day).
+55–57Character is stunned for 1d4 rounds once item function is
+finished (or randomly, 1/day).
+58–60Character’s vision is blurry (–2 penalty on attack rolls,
+saves, and skill checks requiring vision).
+61–64Character gains one negative level.
+65Character gains two negative levels.
+66–70Character must make a Will save each day or take 1 point of
+Intelligence damage.
+71–75Character must make a Will save each day or take 1 point of
+Wisdom damage.
+76–80Character must make a Will save each day or take 1 point of
+Charisma damage.
+81–85Character must make a Fortitude save each day or take 1
+point of Constitution damage.
+86–90Character must make a Fortitude save each day or take 1
+point of Strength damage.
+91–95Character must make a Fortitude save each day or take 1
+point of Dexterity damage.
+96Character is polymorphed into a specific creature (5%
+chance [01–05 on d%] each day).
+97Character cannot cast arcane spells.
+98Character cannot cast divine spells.
+99Character cannot cast any spells.
+100DM either picks one of the above that’s appropriate or
+creates a drawback specifically for that item.
+Completely Different Effect:The DM should choose a nega-
+tive effect for the item, perhaps using the specific cursed items
+(see below) as examples. The item may seem to be the item that
+was originally determined, but at some juncture it displays differ-
+ent properties altogether.
+SPECIFIC CURSED ITEMS
+The items on Table 7–31: Specific Cursed Items are provided as
+examples of cursed items. They are given creation prerequisites,
+should someone want to intentionally create them (although that
+does not need to be the origin of the item if you choose other-
+wise). Note, however, two exceptions: The crystal hypnosis ball and
+the bag of devouring cannot be created by any known means. The
+bag of devouringis a creature, and the crystal hypnosis ballis the tool
+of powerful NPCs such as liches.
+A simple detect magicspell yields a misleading aura and strength,
+often indicating that the item is a noncursed item of similar sort.
+273
+CHAPTER 7:
+MAGIC ITEMS

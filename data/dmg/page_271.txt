@@ -1,0 +1,128 @@
+270
+Intelligent Item Greater Powers
+d%Greater PowerBase Price Modifier
+01–06Item can detect opposing alignment at will+7,200 gp
+07–10Item can detect undead at will+7,200 gp
+11–13Item can cause fear in an enemy at will+7,200 gp
+14–18Item can use dimensional anchor on                 +10,000                 gp
+a foe 1/day
+19–23Item can use dismissal on a foe 1/day+10,000 gp
+24–28Item can use lesser globe of invulnerability +10,000 gp
+1/day
+29–33Item can use arcane eye 1/day+10,000 gp
+34–37Item has continuous detect scrying effect+10,000 gp
+38–41Item creates wall of firein a ring +10,000 gp
+with the wielder at the center 1/day
+42–45Item can use quenchon fires 3/day+16,000 gp
+46–50Item has status effect, usable at will+11,000 gp
+51–54Item can use gust of wind3/day+11,000 gp
+55–59Item can use clairvoyance 3/day+16,000 gp
+60–64Item can create magic circle against                  +16,000                  gp
+opposing alignment at will
+65–68Item can use hasteon its owner 3/day+16,000 gp
+69–73Item can create daylight3/day+16,000 gp
+74–76Item can create deeper darkness 3/day+16,000 gp
+77–80Item can use invisibility purge (30 ft. range)+16,000 gp
+3/day
+81–85Item can use slow on its enemies 3/day+16,000 gp
+86–91Item can locate creature 3/day+30,000 gp
+91–97Item can use fear against foes 3/day+30,000 gp
+98–100Item can use detect thoughts at will+44,000 gp
+If the same power is rolled twice, roll again.
+SPECIAL PURPOSE ITEMS
+Items with special purposes are a challenge to run. However, they
+are worth the trouble, because they can deeply enrich a campaign. 
+Intelligent Item Purpose
+d%Purpose
+01–20Defeat/slay diametrically opposed alignment*
+21–30Defeat/slay arcane spellcasters (including spellcasting
+monsters and those that use spell-like abilities)
+31–40Defeat/slay divine spellcasters (including divine entities and
+servitors)
+41–50Defeat/slay nonspellcasters
+51–55Defeat/slay a particular creature type (see the bane special
+ability, page 224, for choices)
+56–60Defeat/slay a particular race or kind of creature
+61–70Defend a particular race or kind of creature
+71–80Defeat/slay the servants of a specific deity
+81–90Defend the servants and interests of a specific deity
+91–95Defeat/slay all (other than the item and the wielder)
+96–100DM’s or character’s choice
+* The purpose of the neutral (N) version of this item is to preserve
+the balance by defeating/slaying powerful beings of the extreme
+alignments (LG, LE, CG, CE).
+Purpose
+An item’s purpose must suit the type and alignment of the item and
+should always be treated reasonably. A purpose of “defeat/slay
+arcane spellcasters” doesn’t mean that the sword forces the wielder
+to kill every wizard she sees. Nor does it mean that the sword
+believes it is possible to kill every wizard, sorcerer, and bard in the
+world. It does mean that the item hates arcane spellcasters and
+wants to bring the local wizard’s cabal to ruin, as well as end the
+rule of a sorceress-queen in a nearby land. Likewise, a purpose of
+“defend elves” doesn’t mean that if the wielder is an elf, he only
+wants to help himself. It means that the item wants to be used in
+furthering the cause of elves, stamping out their enemies and
+aiding their leaders. A purpose of “defeat/slay all” isn’t just a matter
+of self-preservation. It means that the item won’t rest (or let its
+wielder rest) until it places itself above all others. A lofty—and
+probably unrealistic—goal, to be sure.
+DEDICATED POWER
+A dedicated power operates only when an intelligent item is in
+pursuit of its special purpose. This determination is always made
+by the item. It should always be easy and straightforward to see
+how the ends justify the means. That is to say, if the player’s rea-
+soning for how a particular action serves the item’s purpose is
+not completely believable, the item won’t allow it. Unlike its
+other powers, an intelligent item can refuse to use its dedicated
+power even if the owner is dominant (see Items against Charac-
+ters, on the following page).
+Special Purpose Item Dedicated Powers 
+d%Dedicated PowerBase Price Modifier
+01–06Item can use ice storm+50,000 gp
+07–12Item can use confusion+50,000 gp
+13–17Item can use phantasmal killer+50,000 gp
+18–24Item can use crushing despair+50,000 gp
+25–31Item can use dimension door on itself +50,000 gp
+and wielder
+32–36Item can use contagion (heightened to +56,000 gp
+4th level) as touch attack
+37–43Item can use poison (heightened to +56,000 gp
+4th level) as touch attack
+44–50Item can use rusting graspas touch attack+56,000 gp
+51–56Item can cast 10d6 lightning bolt+60,000 gp
+57–62Item can cast 10d6 fireball+60,000 gp
+63–68Wielder gets +2 luck bonus on attacks, +80,000 gp
+saves, and checks
+69–74Item can use mass inflict light wounds+81,000 gp
+75–81Item can use song of discord+81,000 gp
+82–87Item can use prying eyes+81,000 gp
+88–92Item can cast 15d6 greater shout 3/day+130,000 gp
+93–98Item can use waves of exhaustion+164,000 gp
+99–100Item can use true resurrection on wielder, +200,000 gp
+once per month
+ITEM EGO
+Ego is a measure of the total power and force of personality that an
+item possesses. Only after all aspects of an item have been gener-
+ated can its Ego score be calculated. An item’s Ego score helps
+determine whether the item or the character is dominant in their
+relationship, as detailed below.
+Item Ego
+Attribute of ItemEgo Points
+Each +1 of item’s enhancement bonus1
+Each +1 of bonus for special abilities1
+Each lesser power1
+Each greater power2
+Special purpose (and dedicated power)4
+Telepathic ability1
+Read languages ability1
+Read magicability1
+Each +1 of Intelligence bonus1
+Each +1 of Wisdom bonus1
+Each +1 of Charisma bonus1
+Thus, a +2 short sword(2 points) with an Intelligence score of 10
+(no points), Wisdom score of 12 (1 point), and Charisma score of
+12 (1 point), plus the lesser power of detect magic (1 point) has an
+Ego score of 5.
+CHAPTER 7:
+MAGIC ITEMS

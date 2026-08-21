@@ -1,0 +1,127 @@
+You don’t have to literally make shaded text for your own notes,
+but be sure to highlight material in your notes that you want to
+use to quickly describe the area in an interesting way. Be sure not
+to include information that could not be known to the characters,
+and do not describe PC actions or emotions (such as “As you cower
+in fear . . .”). Be fair about providing the players with clues, such as
+the webs in the shaded text for area 1 below, but don’t draw atten-
+tion to them. The best way to write shaded text or note what the
+characters entering a location would sense is to imagine what you
+could see, hear, smell, or feel if you were entering that area, then
+set down the pertinent information as succinctly as possible.
+THE MONASTERY CELLAR
+The abandoned monastery is a burned-out ruin, destroyed when
+the place was attacked years ago by gnolls. The interesting part lies
+belowground, in the cellars and crypts underneath the ruins. The
+characters have traveled to the monastery and, after some search-
+ing, discovered a stairway leading down into the darkness. When
+they descend, they find themselves in encounter area 1.
+1. Entry Chamber (EL 3)
+To represent this chamber, use the 4-by-4-square room on the left side of
+the dungeon map (the room that ’s adjacent to the 4-by-5-square room).
+You can use the cutouts provided at the back of this book to identify the
+locations of specific features, such as doors and treasure. To begin, place
+one of the staircase cutouts in the 2-square-wide corridor that extends
+from this room’s north wall (and ignore the wall between the room and
+the corridor). The adventure gets under way when the characters descend
+this staircase and find themselves inside the room. In addition to what
+the players learned from the shaded text, the room has other features that
+will become apparent to the PCs as they investigate the place. One of the
+first things they see is a door in the east wall—place a door cutout over
+any square along the wall between this room and the one to the east. They
+will also quickly notice a pile of rubbish in the center of the room and
+another pile of trash in the northwest corner; you can use cutouts repre-
+senting rubble to show the location of these features.
+A litter of husks, skin, bones, spider castings, and filth lies in a dis-
+gusting pile in the middle of the room. A DC 22 Spot check is
+required to notice the creatures (a spider and its young; see below)
+hiding in the webs above. The refuse pile in the middle of the
+room contains treasure.
+The Spot DC for the lurking spider is intentionally difficult, but
+not out of the reach of the intended PCs (in this case, all 1st-level
+characters).
+Ten moldy sacks of flour and grain are stacked in the northwest
+corner. The cloth tears easily, revealing the ruined contents. One
+of the sacks contains a trap.
+There is a solid oak door on the east wall. The door is not locked,
+but it is stuck (DC 16 to open). Anyone listening at the door who
+makes a DC 12 Listen check hears a moaning sound, rising and then
+fading. This is merely a strong breeze that blows in area 2. As soon as
+the door opens, the breeze rushes out the opening in a gust, extin-
+guishing torches and possibly (50% chance) blowing out lanterns as
+well. Torches can’t be relit in the area while the door is open.
+(The low DC for the Listen check is intentional—you want the
+PCs to hear the moaning and get spooked, thinking it’s a ghost or
+something similarly horrible. Also, always remember to make a
+note of the DC to open a stuck or locked door.)
+Creatures:A Small monstrous spider and six Tiny young spi-
+ders hide in the upper part of the webs in the center of the room.
+If the characters fail to spot the Small spider, it drops down on any
+character in the center of the room (a move action). A successful
+touch attack roll indicates that the spider lands on a character. The
+Tiny spiders remain in the web and eat small meals trapped by the
+web. They only move down from the web when all is still to eat a
+meal pacified by the larger spider.
+If the PCs burn the webs, the six young spiders are killed and
+the adult spider (if still in the web) takes 1d6 points of damage.
+The webs burn for 8 rounds.
+Small Monstrous Spider (1): hp 7.
+Tiny Monstrous Spiders (6): hp 2 each.
+Treasure:Scattered amid the pile in the middle of the room are
+19 sp and a goblin skull with a 50 gp garnet inside. Characters only
+notice the gem with a DC 15 Search check.
+Trap: One of the sacks in the southwest corner has yellow mold
+inside it. If disturbed, it bursts—all within 10 feet must make a
+DC 15 Fortitude save or take 1d6 points of Constitution damage.
+One minute later, everyone exposed to the initial burst must save
+again (same DC) or take 2d6 points of Constitution damage,
+whether or not they took damage in the initial exposure.
+(It’s not always necessary to write out complete rules, as has
+been done here for yellow mold. You can add this level of descrip-
+tion to your notes if you need it, or you can simply jot down the
+page number and book where it’s found.)
+2. Water Room
+A good example of what not to include in shaded text is the fact that
+the water is icy cold—there’s no way the characters could know this
+just by looking at the water from the doorway. Characters who
+simply turn around and leave after a glance inside may never dis-
+cover the sunken skeleton, much less the helpful items beside it.
+This chamber is represented by the 4-by-5-square room adjacent to the area
+where the adventure began. The pool occupies the 2-by-2-square area in
+the southeast corner of the chamber. 
+The only way out of this room, aside from the door the PCs
+entered through, is a secret door on the south wall in the south-
+west corner of the chamber. Locating it requires a DC 18 Search
+check. (Don’t put a cutout on the map to represent this door until the PCs
+discover it.)
+The monks who once lived here worked this natural cavern in
+order to enlarge it. A strong, damp breeze makes it impossible to
+keep torches lit here. Eight rotting barrels remain lined up along
+the west wall from when the room was used to gather water for the
+monastery. A few buckets also lie scattered about.
+(In a ruin, it’s always handy to know what a room or area was
+formerly used for, even if it now serves a different purpose, or no
+purpose at all. Your descriptions can often convey that former pur-
+pose, reminding the players that this place has its own history—
+it’s not just a backdrop for adventures.)
+Lying at the bottom of the pool is the limed-over skeleton of the
+abbot. Without a DC 15 Spot check, this appears to be just an
+unusual mineral formation. In its bony fingers, the skeleton holds
+a tube of the sort designed to contain a rolled-up piece of vellum
+or parchment. If the remains are disturbed, the act dislodges the
+tube from the skeleton’s grasp. The stream’s current carries away
+the tube unless a character dives into the icy water immediately to
+get it. This requires a DC 13 Swim check and an attack roll against
+the tube’s AC of 14 (modified for size and, in this special case,
+A fast-flowing stream 3 to 5 feet deep enters this chamber at
+the north end and exits to the south. Toward the south end of
+the chamber, some of the water collects in a depression, form-
+ing a pool about 4 feet deep at its edge and about 7 feet deep at
+the center. You can see a few blind, white crayfish crawling
+among the rocks on the bottom.
+This damp chamber has an arched, vaulted ceiling 20 feet high
+in the center. The walls are made of cut stone blocks, the floor
+rough flagstones. Thick webs cover the ceiling.
+83
+CHAPTER 3:
+ADVENTURES

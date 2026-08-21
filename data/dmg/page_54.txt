@@ -1,0 +1,74 @@
+BUILDING A TREASURE
+You can use any of several methods for determining what treas-
+ures to include in your encounters or adventures. All of them refer
+to Table 3–5: Treasure. Instructions for using that table appear in
+Using the Treasure Table, below.
+Random Treasures
+An easy approach is to determine treasure randomly using the
+treasure information given in the Monster Manualfor each kind of
+creature. Some creatures have more than average treasure and
+some less. If you use this system, the kind of creatures in an adven-
+ture determines how rich the treasures are. An adventure with lots
+of intelligent creatures has higher than average treasure, and one
+with mostly oozes, vermin, and dire animals has poor treasure.
+Balance the treasure by balancing the kinds of creatures or simply
+by adjusting the treasures toward the average.
+If you want to include a balanced amount of treasure, you can just
+roll on Table 3–5: Treasure for each encounter according to its
+Encounter Level. If you want the treasures to make sense, roll for
+them randomly but then assign them to the encounters based on
+your best judgment. Double or triple up for some encounters, giving
+them two or three rolled treasures, and leave some others without
+treasure. In this way, you’re sure that the treasures are balanced to the
+encounters overall, even if some encounters have lots of treasure and
+others have none. For example, if your adventure has seven encoun-
+ters of EL 5 each, just roll on the 5th-level row on Table 3–5: Treasure
+seven times and assign the seven treasures among the encounters.
+Slightly more complex, you can figure out the percent chance
+to get each kind of treasure on Table 3–5: Treasure and roll once for
+each line on the table. For instance, at 1st level, you have a 15%
+chance to get copper coins, a 23% chance to get silver coins, a 43%
+chance to get gold coins, a 5% chance to get platinum coins, a 5%
+53
+CHAPTER 3:
+ADVENTURES
+Table 3–5: Treasure (cont.)
+Leveld%–— Coins –—d%Goods d%Items 
+12th01–08—01–17—01–27—
+09–143d12×1,000 sp18–701d10 gems28–821d6 minor
+15–751d4×1,000 gp71–1001d8 art83–971 medium
+76–1001d4×100 pp98–1001 major 
+13th01–08—01–11—01–19—
+09–751d4×1,000 gp12–661d12 gems20–731d6 minor
+76–1001d10×100 pp67–1001d10 art74–951 medium
+96–1001 major
+14th01–08—01–11—01–19—
+09–751d6×1,000 gp12–662d8 gems20–581d6 minor
+76–1001d12×100 pp67–1002d6 art59–921 medium
+93–1001 major
+15th01–03—01–09—01–11—
+04–741d8×1,000 gp10–652d10 gems12–461d10 minor
+75–1003d4×100 pp66–1002d8 art47–901 medium
+91–1001 major
+16th01–03—01–07—01–40—
+04–741d12×1,000 gp08–644d6 gems41–461d10 minor
+75–1003d4×100 pp65–1002d10 art47–901d3 medium
+91–1001 major 
+17th01–03—01–04—01–33—
+04–683d4×1,000 gp05–634d8 gems34–831d3 medium
+69–1002d10×100 pp64–1003d8 art84–1001 major
+18th01–02—01–04—01–24—
+03–653d6×1,000 gp05–543d12 gems25–801d4 medium
+66–1005d4×100 pp55–1003d10 art81–1001 major
+19th01–02—01–03—01–04—
+03–653d8×1,000 gp04–506d6 gems05–701d4 medium
+66–1003d10×100 pp51–1006d6 art71–1001 major
+20th01–02—01–02—01–25—
+03–654d8×1,000 gp03–384d10 gems26–651d4 medium
+66–1004d10×100 pp39–1007d6 art66–1001d3 major
+For treasures above 20th level, use the 20th-level row and then add a number of random major items.
+LevelMagic ItemsLevelMagic ItemsLevelMagic Items
+21st+125th+928th+23
+22nd+226th+1229th+31
+23rd+427th+1730th+42
+24th+6

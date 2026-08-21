@@ -1,0 +1,128 @@
+Intelligence  modifier  (10  +  class  level  up  to  10th  +  1/2  class
+levels above 10th).
+•For  spellcasters,  caster  level  continues  to  increase  after  20th
+level.  Thus,  a  23rd-level  wizard  casts  as  a  23rd-level  character,
+while  a  24th-level  paladin’s  caster  level  is  12th  (one-half  her
+class level). However, a character’s spells per day don’t increase
+after 20th level. 
+•The powers  of  familiars,  special  mounts,  and  fiendish  servants
+continue to increase as their masters gain levels, if they’re based
+on a formula that includes the caster’s level.
+•Any  class  features  that  increase  or  accumulate  as  part  of  a
+repeated pattern (such as a rogue’s sneak attack or the number
+of times per day a barbarian can rage) also continue to increase
+or  accumulate  after  20th  level  at  the  same  rate.  A  27th-level
+rogue  adds  +14d6  damage  to  her  sneak  attacks.  A  32nd-level
+barbarian can rage nine times per day. An exception to this rule
+is  any  bonus  feat  progression  granted  as  a  class  feature.  If  a
+character gets bonus feats as part of a class feature (such as the
+feats gained by fighters and wizards), these do not increase with
+epic levels. Instead, these classes get a new bonus feat progres-
+sion (described in each class summary below).
+•In addition to the class features retained from lower levels, each
+class gains a bonus feat every two, three, four, or five levels after
+20th.  This  benefit  augments  each  class’s  progression  of  class
+features,  because  not  all  classes  otherwise  improve  class
+features after 20th level. These bonus feats are in addition to the
+feat  that  every  character  gets  every  three  levels  (as  per  Table
+3–2: Experience and Level-Dependent Benefits, page 22 of the
+Player ’s Handbook).
+•A character  doesn’t  gain  any  new  class  features  beyond  20th
+level.  Class  features  with  a  progression  that  slows  or  stops
+before  20th  level  (such  as  the  monk’s  unarmed  damage)  and
+features  that  have  a  limited  list  of  options  (such  as  the  rogue’s
+special abilities) do not improve as a character attains epic level.
+Likewise,  class  features  that  are  gained  only  at  a  single  level
+(such as a barbarian’s fast movement) do not improve.
+Adding a Second Class
+When an epic character with levels in only one class attains a new
+level, she may choose to increase the level of her current class or
+pick up a new class at 1st level. The standard rules for multiclass-
+ing in the Player ’s Handbook(page 59) still apply, but epic characters
+must keep in mind the rules for epic advancement.
+An epic character gains the class skills, weapon proficiency,
+armor proficiency, spells, and other class features of the new
+class, as well as a Hit Die of the appropriate size. In addition, the
+character gets the usual skill points from the new class. Just as
+with standard multiclassing, adding the second class does not
+confer some of the benefits for a 1st-level character, including
+maximum hit points from the first Hit Die, quadruple the per-
+level skill points, starting equipment, starting gold, or an animal
+companion.
+An epic character does not gain the base attack bonuses and base
+save bonuses normally gained when adding a second class. Instead,
+the character uses the epic attack bonus and epic save bonus pro-
+gression shown on Table 6–18: Epic Save and Epic Attack Bonus.
+EPIC BARBARIAN
+An epic barbarian is a terror to behold. The very incarnation of
+rage, this furious warrior can cut his opponents to ribbons with
+awe-inspiring ease.
+Hit Die:d12.
+Skill Points at Each Additional Level: 4 + Int modifier.
+Barbarian Rage:The epic barbarian gains one use of rage per
+day every four levels higher than 20th (7/day at 24th, 8/day at
+28th, and so on).
+Trap Sense (Ex):The epic barbarian’s bonus increases by +1
+every three levels higher than 18th (+7 at 21st, +8 at 24th, and so on).
+Damage Reduction (Ex):The epic barbarian’s damage reduc-
+tion increases by 1 point every three levels higher than 19th (6/–
+at 22nd, 7/– at 25th, and so on).
+Bonus Feats:The epic barbarian gains a bonus feat every four
+levels higher than 20th (24th, 28th, and so on).
+EPIC BARD
+An epic bard’s music can move even the cruelest, most soulless
+creature, or inspire his allies to the heights of power and bravery.
+Hit Die:d6.
+Skill Points at Each Additional Level: 6 + Int modifier.
+Spells:The bard’s caster level is equal to his class level. The
+bard’s number of spells per day does not increase after 20th level.
+The bard does not learn additional spells.
+Bardic Music:The bard gains no new bardic music effects
+from his Perform ranks.
+Bardic Knowledge:Add the bard’s class level + Intelligence
+modifier to all bardic knowledge checks, as normal.
+207
+CHAPTER 6:
+CHARACTERS
+BEHIND THE CURTAIN: 
+A LIMIT TO ATTACKS AND SAVES
+Why don’t base attack bonus and base save bonus increase after 20th
+level? Ultimately, these are game play issues. 
+If base attack bonuses continued to increase, every character would
+eventually have so many attacks per round that the game would slow to
+a  crawl.  What’s  worse,  only  the  first  few  attacks  would  be  significant,
+because  the  dropoff  in  attack  bonuses  means  that  later  attacks  have
+almost no chance to hit. For this reason, the rules establish a cap on a
+character’s  base  attack  bonus,  because  the  base  attack  bonus  deter-
+mines the number of attacks per round a character can make. After 20th
+level,  your  base  attack  bonus  never  improves.  You  gain  epic  bonuses
+and  other  bonuses  on  your  attack  roll,  but  these  don’t  ever  increase
+your base attack bonus and thus never grant you additional attacks.
+This  limit  doesn’t  apply  to  the  base  attack  bonus  derived  strictly
+from a monster’s Hit Dice. For instance, a titan with 21 HD using the
+advancement rules in the Monster Manualhas a base attack bonus of
++21. Thus, another cap exists: A high base attack bonus never grants a
+creature more than four attacks with any given weapon using the full
+attack option. Other effects (such as weapons with the speed special
+ability,  certain  feats,  and  class  abilities  such  as  the  monk’s  special
+unarmed  attack  progression)  may  grant  additional  actions  or  attacks
+that  exceed  this  limit.  But  regardless  of  how  high  a  creature’s  base
+attack bonus gets, it can never make more than four attacks with that
+weapon using a full attack action.
+The limit to the base saving throw bonuses is also a game play issue.
+Saving  throw  bonuses  up  to  20th  level  progress  at  different  rates
+(“good”  vs.  “poor”  saves;  see  Table  3–1  on  page  22  of  the  Player’s
+Handbook). If that progression were allowed to continue, the difference
+between  a  character’s  base  save  bonuses  will  eventually  grow  so  great
+that two different situations with the same save DC would present two
+threats  of  wildly  differing  magnitude.  The  difference  between  the  good
+and  poor  saving  throw  bonuses  for  a  60th-level  character,  for  example,
+would be 12 points (+32 versus +20). Add in the bonuses from high abil-
+ity  scores  and  magic  items  that  a  character  probably  has,  and  you  can
+expect the gap to widen further. This leads to situations where a charac-
+ter might succeed on a given Fortitude save with a result of 2 or higher,
+but might require a 20 to succeed on a Reflex save with the same DC. For
+this reason, base save bonuses don’t increase after 20th level, although
+the epic save bonus increases at a fixed rate for all epic characters.
+pqqqqrs
+pqqqqrs

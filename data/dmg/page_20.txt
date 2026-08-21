@@ -1,0 +1,59 @@
+his chapter covers the rules you need to play the D
+UNGEONS
+& DRAGONS
+game, from the moment the characters enter
+the dungeon to the end of the session, when they tally up
+their experience points.
+MORE MOVEMENT RULES
+The Player ’s Handbookcovers tactical and overland movement for
+Small and Medium creatures either traveling across the ground, or
+using skills such as Climb, Jump, and Swim. This section of the rules
+expands on that information to include creatures smaller than
+Small and larger than Medium and also discusses flying movement.
+MOVEMENT AND THE GRID
+While this is a game of imagination, props and visual aids can
+help everyone imagine the same thing, avoid confusion, and
+enhance the entire game play experience.
+In a round-by-round simulation, particularly when you are
+using miniatures, movement will sometimes feel choppy. If a
+character runs across a room so large that it takes him 2 rounds to
+do so, it might seem as though he runs halfway, stops, and then
+runs the rest of the way a little later. Although there’s no way to
+avoid representing movement in a start-stop-start-stop fashion,
+try to keep in mind—and emphasize to the players—that all
+movement during an encounter is actually fluid and continuous.
+Movement and Position
+Few characters in a fight are likely to stand still for long. Enemies
+appear and charge the party; the adventurers reply, advancing to
+take on new foes after they down their first opponents. Wizards
+circle the fight, looking for the best place to use their magic;
+rogues quietly skirt the fracas, seeking a straggler or an
+unwary opponent to strike with a sneak attack. With all this
+tactical maneuvering going on, some way to represent char-
+acter location within a defined scale can really aid the game.
+Handle movement and position by using miniature fig-
+ures on a grid. Miniatures show where a figure is in rela-
+tion to others, and the grid makes it clear how far the char-
+acters and monsters can move.
+Standard Scale
+1-inch square = 5 feet
+30mm figure = human-size creature
+Scale and Squares
+The standard unit for tactical maps is the 5-foot square.
+This unit is useful for miniatures and for drawing dun-
+geon maps, which are usually created on graph paper.
+In a fight, each Small or Medium character occu-
+pies a single 5-foot square. Larger creatures take up
+more squares, and several smaller creatures fit in a
+square. See Table 8–4: Creature Size and Scale, page
+149 of the Player ’s Handbook.
+Diagonal Movement
+When moving diagonally on a grid, the first square
+moved  counts  as  5  feet  of  movement,  but  the
+second diagonal move counts as 10 feet. This pattern of
+5 feet and then 10 feet continues as long as the character
+moves diagonally, even if some straight movement
+through squares separates the diagonal moves. For
+example, a character moves 1 square diagonally
+19
+Illus. by  A. Swekel

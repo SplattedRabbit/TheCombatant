@@ -1,0 +1,137 @@
+and moved by an incorporeal creature at any time. A manifesting
+ghost can wield the weapon against corporeal foes. Essentially, a
+ghost touch weapon counts as either corporeal or incorporeal at
+any given time, whichever is more beneficial to the wielder.
+Moderate conjuration; CL 9th; Craft Magic Arms and Armor,
+plane shift; Price +1 bonus.
+Holy: A holy weapon is imbued with holy power. This power
+makes the weapon good-aligned and thus bypasses the correspon-
+ding damage reduction. It deals an extra 2d6 points of damage
+against all of evil alignment. It bestows one negative level on any
+evil creature attempting to wield it. The negative level remains as
+long as the weapon is in hand and disappears when the weapon is
+no longer wielded. This negative level never results in actual level
+loss, but it cannot be overcome in any way (including restoration
+spells) while the weapon is wielded. Bows, crossbows, and slings
+so crafted bestow the holy power upon their ammunition.
+Moderate evocation [good]; CL 7th; Craft Magic Arms and
+Armor, holy smite, creator must be good; Price +2 bonus.
+Icy Burst: An icy burst weapon functions as a frost weapon that
+also explodes with frost upon striking a successful critical hit. The
+frost does not harm the wielder. In addition to the extra damage
+from the frost ability, an icy burst weapon deals an extra 1d10
+points of cold damage on a successful critical hit. If the weapon’s
+critical multiplier is ×3, add an extra 2d10 points of cold damage
+instead, and if the multiplier is ×4, add an extra 3d10 points. Bows,
+crossbows, and slings so crafted bestow the cold energy upon their
+ammunition. Even if the frost ability is not active, the weapon still
+deals its extra cold damage on a successful critical hit.
+Moderate evocation; CL 10th; Craft Magic Arms and Armor,
+chill metal or ice storm; Price +2 bonus.
+Keen: This ability doubles the threat range of a weapon. For
+instance, if it is placed on a longsword (which has a normal threat
+range of 19–20), the keen longsword scores a threat on a 17–20.
+Only piercing or slashing weapons can be keen. (If you roll this
+property randomly for an inappropriate weapon, reroll.) This ben-
+efit doesn’t stack with any other effect that expands the threat
+range of a weapon (such as the keen edge spell or the Improved
+Critical feat).
+Moderate transmutation; CL 10th; Craft Magic Arms and Armor,
+keen edge; Price +1 bonus.
+KiFocus:The magic weapon serves as a channel for the wielder’s
+ki, allowing her to use her special ki attacks through the weapon as
+if they were unarmed attacks. These attacks include the monk’s
+stunning attack, kistrike, and quivering palm, as well as the Stun-
+ning Fist feat. Only melee weapons can have the kifocus ability.
+Moderate transmutation; CL 8th; Craft Magic Arms and Armor,
+creator must be a monk; Price +1 bonus.
+Merciful: The weapon deals an extra 1d6 points of damage, and
+all damage it deals is nonlethal damage. On command, the weapon
+suppresses this ability until commanded to resume it. Bows, cross-
+bows, and slings so crafted bestow the merciful effect upon their
+ammunition.
+Faint conjuration; CL 5th; Craft Magic Arms and Armor, cure
+light wounds; Price +1 bonus.
+Mighty Cleaving: A mighty cleaving weapon allows a wielder
+with the Cleave feat to make one additional cleave attempt in a
+round.
+Moderate evocation; CL 8th; Craft Magic Arms and Armor,
+divine power;Price +1 bonus.
+Returning: This special ability can only be placed on a weapon
+that can be thrown. A returning weapon flies through the air back
+to the creature that threw it. It returns to the thrower just before the
+creature’s next turn (and is therefore ready to use again in that turn).
+Catching a returning weapon when it comes back is a free
+action. If the character can’t catch it, or if the character has moved
+since throwing it, the weapon drops to the ground in the square
+from which it was thrown.
+Moderate transmutation; CL 7th; Craft Magic Arms and Armor,
+telekinesis; Price +1 bonus. 
+Seeking:Only ranged weapons can have the seeking ability.
+The weapon veers toward its target, negating any miss chances
+that would otherwise apply, such as from concealment. (The
+wielder still has to aim the weapon at the right square. Arrows mis-
+takenly shot into an empty space, for example, do not veer and hit
+invisible enemies, even if they are nearby.) 
+Strong divination; CL 12th; Craft Magic Arms and Armor, true
+seeing; Price +1 bonus.
+Shock:Upon command, a shock weapon is sheathed in crack-
+ling electricity. The electricity does not harm the wielder. The
+effect remains until another command is given. A shock weapon
+deals an extra 1d6 points of electricity damage on a successful hit.
+Bows, crossbows, and slings so crafted bestow the electricity
+energy upon their ammunition.
+Moderate evocation; CL 8th; Craft Magic Arms and Armor, call
+lightning or lightning bolt; Price +1 bonus.
+Shocking Burst: A shocking burst weapon functions as a shock
+weapon that also explodes with electricity upon striking a success-
+ful critical hit. The electricity does not harm the wielder. In addi-
+tion to the extra electricity damage from the shock ability, a shock-
+ing burst weapon deals an extra 1d10 points of electricity damage
+on a successful critical hit. If the weapon’s critical multiplier is ×3,
+add an extra 2d10 points of electricity damage instead, and if the
+multiplier is ×4, add an extra 3d10 points. Bows, crossbows, and
+slings so crafted bestow the electricity energy upon their ammuni-
+tion. Even if the shock ability is not active, the weapon still deals
+its extra electricity damage on a successful critical hit.
+Moderate evocation; CL 10th; Craft Magic Arms and Armor, call
+lightning or lightning bolt; Price +2 bonus.
+Speed:When making a full attack action, the wielder of a speed
+weapon may make one extra attack with it. The attack uses the
+wielder’s full base attack bonus, plus any modifiers appropriate to
+the situation. (This benefit is not cumulative with similar effects,
+such as a haste spell.)
+Moderate transmutation; CL 7th; Craft Magic Arms and Armor,
+haste; Price +3 bonus.
+Spell Storing:A spell storing weapon allows a spellcaster to
+store a single targeted spell of up to 3rd level in the weapon. (The
+spell must have a casting time of 1 standard action.) Any time the
+weapon strikes a creature and the creature takes damage from it,
+the weapon can immediately cast the spell on that creature as a
+free action if the wielder desires. (This special ability is an excep-
+tion to the general rule that casting a spell from an item takes at
+least as long as casting that spell normally.)Inflict serious wounds,
+contagion, blindness, and hold person are all common choices for the
+stored spell. Once the spell has been cast from the weapon, a spell-
+caster can cast any other targeted spell of up to 3rd level into it.
+The weapon magically imparts to the wielder the name of the spell
+currently stored within it. A randomly rolled spell storing weapon
+has a 50% chance to have a spell stored in it already.
+Strong evocation (plus aura of stored spell); CL 12th; Craft
+Magic Arms and Armor, creator must be a caster of at least 12th
+level; Price +1 bonus.
+Thundering:A thundering weapon creates a cacophonous roar
+like thunder upon striking a successful critical hit. The sonic energy
+does not harm the wielder. A thundering weapon deals an extra 1d8
+points of sonic damage on a successful critical hit. If the weapon’s
+critical multiplier is ×3, add an extra 2d8 points of sonic damage
+instead, and if the multiplier is ×4, add an extra 3d8 points of sonic
+damage. Bows, crossbows, and slings so crafted bestow the sonic
+energy upon their ammunition. Subjects dealt a critical hit by a
+thundering weapon must make a DC 14 Fortitude save or be deaf-
+ened permanently.
+Faint necromancy; CL 5th; Craft Magic Arms and Armor, blind-
+ness/deafness; Price +1 bonus.
+225
+CHAPTER 7:
+MAGIC ITEMS

@@ -1,0 +1,136 @@
+5d6 lightning boltwhen thrown (Reflex DC 14 half ). It is con-
+sumed in the attack.
+Faint evocation; CL 5th; Craft Magic Arms and Armor, lightning
+bolt; Price 1,500 gp; Cost 750 gp + 30 XP.
+Life-Drinker: This +1 greataxeis favored by undead and con-
+structs, who do not suffer its drawback. A life-drinkerbestows two
+negative levels on its target whenever it deals damage, just as if its
+target had been struck by an undead creature. One day after being
+struck, subjects must make a DC 16 Fortitude save for each negative
+level or lose a character level. 
+Each time a life-drinkerdeals damage to a foe, it also bestows one
+negative level on the wielder. Any negative level gained by the
+wielder in this fashion lasts for 1 hour.
+Strong necromancy; CL 13th; Craft Magic Arms and Armor,
+enervation; Price 40,320 gp; Cost 20,320 gp + 1,600 XP.
+Luck Blade:This +2 short swordgives its possessor a +1 luck bonus
+on all saving throws. Its possessor also gains the power of good for-
+tune, usable once per day. This extraordinary ability allows its pos-
+sessor to reroll one roll that she just made. She must take the result of
+the reroll, even if it’s worse than the original roll. In addition, a luck
+blade may contain up to three wishes(when randomly rolled, a luck
+bladeholds 1d4–1 wishes,minimum 0). When the last wishis used,
+the sword remains a +2 short sword,still grants the +1 luck bonus, and
+still grants its reroll power.
+Strong evocation; CL 17th; Craft Magic Arms and Armor, wish
+or miracle;Price 22,060 gp (0 wishes), 62,360 gp (1 wish), 102,660 gp
+(2 wishes), 142,960 gp (3 wishes); Cost 11,030 gp + 882 XP (0 wishes),
+31,180 gp + 2,494 XP (1 wish); 51,330 gp + 4,106 XP (2 wishes),
+71,480 gp + 5,718 XP (3 wishes).
+Mace of Smiting:This +3 adamantine heavy macehas a +5
+enhancement bonus against constructs, and any critical hit dealt
+to a construct completely destroys it (no saving throw). A critical
+hit dealt to an outsider deals ×4 damage rather than ×2.
+Moderate transmutation; CL 11th; Craft Magic Arms and
+Armor, disintegrate; Price 75,312 gp; Cost 39,312 gp + 2,880 XP.
+Mace of Terror: On command, this +2 heavy macecauses the
+wielder’s clothes and appearance to transform into an illusion of
+darkest horror such that living creatures in a 30-foot cone become
+panicked as if by a fearspell (Will DC 16 partial). They take a –2
+morale penalty on saving throws, and they flee from the wielder.
+The wielder may use this ability up to three times per day. 
+Strong necromancy; CL 13th; Craft Magic Arms and Armor,
+fear; Price 38,552 gp; Cost 19,276 gp + 1,542 XP.
+Masterwork Cold Iron Longsword: This nonmagical long-
+sword is crafted out of cold iron. As a masterwork weapon, it has a
++1 enhancement bonus on attack rolls.
+No aura (nonmagical); Price 330 gp.
+Nine Lives Stealer:This longsword always performs as a +2
+longsword,but it also has the power to draw the life force from an
+opponent. It can do this nine times before the ability is lost. At that
+point, the sword becomes a simple +2 longsword(with a hint of evil
+about it). A critical hit must be dealt for the sword’s death-dealing
+ability to function, and this weapon has no effect on creatures not
+subject to critical hits. The victim is entitled to a DC 20 Fortitude
+save to avoid death. If the save is successful, the sword’s death-deal-
+ing ability does not function, no use of the ability is expended, and
+normal critical damage is determined. This sword is evil, and any
+good character attempting to wield it gains two negative levels.
+These negative levels remain as long as the sword is in hand and
+disappear when the sword is no longer wielded. These negative
+levels never result in actual level loss, but they cannot be overcome
+in any way (including restorationspells) while the sword is wielded.
+Strong necromancy [evil]; CL 13th; Craft Magic Arms and Armor,
+finger of death; Price 23,057 gp; Cost 11,528 gp 5 sp + 922 XP.
+Oathbow:Of elven make, this white +2 composite longbow(+2
+Str bonus) whispers “Swift defeat to my enemies” in Elven when
+nocked and pulled. Once per day, if the firer swears aloud to slay
+her target (a free action), the bow’s whisper becomes the low shout
+“Swift death to those who have wronged me.” Against such a
+sworn enemy, the bow has a +5 enhancement bonus, and arrows
+launched from it deal an additional 2d6 points of damage (and ×4
+on a critical hit instead of the normal ×3). However, the bow is
+treated as only a masterwork weapon against all foes other than
+the sworn enemy, and the wielder takes a –1 penalty on attack
+rolls with any weapon other than the oathbow.These bonuses and
+penalties last for seven days or until the sworn enemy is slain or
+destroyed by the wielder of the oathbow,whichever comes first.
+The oathbowmay only have one sworn enemy at a time. Once
+the wielder swears to slay a target, he cannot make a new oath
+until he has slain that target or seven days have passed. Even if the
+wielder slays the sworn enemy on the same day that he makes the
+oath, he cannot activate the oathbow’s special power again until 24
+hours have passed from the time he made the oath.
+Strong evocation; CL 15th; Craft Magic Arms and Armor, cre-
+ator must be an elf; Price 25,600 gp; Cost 13,100 gp + 1,000 XP.
+Rapier of Puncturing: Three times per day, this +2 wounding
+rapier allows the wielder to make a touch attack with the weapon
+that deals 1d6 points of Constitution damage by draining blood.
+Creatures immune to critical hits are immune to the Constitution
+damage dealt by this weapon.
+Strong necromancy; CL 13th; Craft Magic Arms and Armor,
+harm; Price 50,320 gp; Cost 25,320 gp + 2,000 XP.
+Screaming Bolt:One of these +2 boltsscreams when fired, forc-
+ing all enemies of the wielder within 20 feet of the path of the bolt
+to succeed on a DC 14 Will save or become shaken. This is a mind-
+affecting fear effect.
+227
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–16: Specific Weapons
+MinorMediumMajorSpecific WeaponMarket Price
+01–15——Sleep arrow132 gp
+16–25——Screaming bolt267 gp
+26–45——Silver dagger, masterwork322 gp
+46–65——Cold iron longsword, 
+masterwork330 gp
+66–7501–09—Javelin of lightning1,500 gp
+76–8010–15—Slaying arrow2,282 gp
+81–9016–24—Adamantine dagger3,002 gp
+91–10025–33—Adamantine battleaxe3,010 gp
+—34–37—Slaying arrow (greater)4,057 gp
+—38–40—Shatterspike4,315 gp
+—41–46—Dagger of venom8,302 gp
+—47–51—Trident of warning10,115 gp
+—52–5701–04Assassin’s dagger10,302 gp
+—58–6205–07Shifter’s sorrow12,780 gp
+—63–6608–09Trident of fish command18,650 gp
+—67–7410–13Flame tongue20,715 gp
+—75–7914–17Luck blade (0 wishes)22,060 gp
+—80–8618–24Sword of subtlety22,310 gp
+—87–9125–31Sword of the planes22,315 gp
+—92–9532–37Nine lives stealer23,057 gp
+—96–9838–42Sword of life stealing25,715 gp
+—99–10043–46Oathbow25,600 gp
+——47–51Mace of terror38,552 gp
+——52–57Life-drinker40,320 gp
+——58–62Sylvan scimitar47,315 gp
+——63–67Rapier of puncturing50,320 gp
+——68–73Sun blade50,335 gp
+——74–79Frost brand54,475 gp
+——80–84Dwarven thrower60,312 gp
+——85–91Luck blade (1 wish)62,360 gp
+——92–95Mace of smiting75,312 gp
+——96–97Luck blade (2 wishes)102,660 gp
+——98–99Holy avenger120,630 gp
+——100Luck blade (3 wishes)142,960 gp

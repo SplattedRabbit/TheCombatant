@@ -1,0 +1,135 @@
+228
+Faint enchantment; CL 5th; Craft Magic Arms and Armor,
+doom; Price 267gp; Cost 128 gp and 5 sp + 10 XP.
+Shatterspike:Wielders without the Improved Sunder feat use
+Shatterspikeas a +1 longswordonly; wielders with the Improved Sun-
+der feat add a +4 bonus (including the sword’s +1 enhancement
+bonus) to the opposed roll when attempting to strike a foe’s weapon.
+If successful, Shatterspikedeals 1d8+4 points of damage plus the
+wielder’s  Strength  modifier  to  the  target  weapon  (the  target
+weapon’s hardness must still be overcome with each hit). Shatterspike
+can damage weapons with an enhancement bonus of +4 or lower.
+Strong evocation; CL 13th; Str 13, Craft Arms and Armor, Power
+Attack, Improved Sunder, shatter; Price 4,315 gp; Cost 2,315 gp +
+160 XP; Weight 4 lb.
+Shifter’s Sorrow:This +1/+1 two-bladed swordhas blades of
+alchemical silver. The weapon deals an extra 2d6 points of damage
+against any creature with the shapechanger subtype.
+When a shapechanger or a creature in an alternate form (such
+as a druid using wild shape) is struck by the weapon, it must make
+a DC 15 Will save or return to its natural form.
+Strong transmutation; CL 15th; Craft Arms and Armor, baleful
+polymorph;Price 12,780 gp; Cost 6,780 gp + 480 XP; Weight 10 lb.
+Silver Dagger, Masterwork: This masterwork alchemical
+silver dagger is nonmagical. As a masterwork weapon, it has a +1
+enhancement bonus on attack rolls.
+No aura (nonmagical); Price 322 gp.
+d%Designated Type or Subtype
+01–05Aberrations
+06–09Animals
+10–16Constructs
+17–22Dragons
+23–27Elementals
+28–32Fey
+33–39Giants
+40Humanoids, aquatic
+41–42Humanoids, dwarf
+43–44Humanoids, elf
+45Humanoids, gnoll
+46Humanoids, gnome
+47–49Humanoids, goblinoid
+50Humanoids, halfling
+51–54Humanoids, human
+55–57Humanoids, reptilian
+58–60Humanoids, orc
+61–65Magical beasts
+66–70Monstrous humanoids
+71–72Oozes
+73Outsiders, air
+74–76Outsiders, chaotic
+77Outsiders, earth
+78–80Outsiders, evil
+81Outsiders, fire
+82–84Outsiders, good
+85–87Outsiders, lawful
+88Outsiders, water
+89–90Plants
+91–98Undead
+99–100Vermin
+Slaying Arrow:This +1 arrowis keyed to a particular type or sub-
+type of creature. If it strikes such a creature, the target must make a
+DC 20 Fortitude save or die (or, in the case of unliving targets, be
+destroyed) instantly. Note that even creatures normally exempt
+from Fortitude saves (undead and constructs) are subject to this
+attack. When keyed to a living creature, this is a death effect (and
+thus death ward protects a target). To determine the type or subtype
+of creature the arrow is keyed to, roll on the previous table.
+A greater slaying arrowfunctions just like a normal slaying arrow,
+but the DC to avoid the death effect is 23.
+Strong necromancy; CL 13th; Craft Magic Arms and Armor,
+finger of death (slaying arrow)orheightened finger of death (greater
+slaying arrow); Price 2,282 gp (slaying arrow) or 4,057 gp (greater slay-
+ing arrow); Cost 1,144 gp 5 sp + 91 XP (slaying arrow) or 2,032 gp +
+162 XP (greater slaying arrow).
+Sleep Arrow: This +1 arrowis painted white and has white
+fletching. If it strikes a foe so that it would normally deal damage,
+it instead bursts into magical energy that deals nonlethal damage
+(in the same amount as would be lethal damage) and forces the
+target to make a DC 11 Will save or fall asleep.
+Faint enchantment; CL 5th; Craft Magic Arms and Armor, sleep;
+Price 132 gp; Cost 69 gp 5 sp + 5 XP.
+Sun Blade:This sword is the size of a bastard sword. However, a
+sun bladeis wielded as if it were a short sword with respect to weight
+and ease of use. (In other words, the weapon appears to all viewers
+to be a bastard sword, and deals bastard sword damage, but the
+wielder feels and reacts as if the weapon were a short sword.) Any
+individual able to use either a bastard sword or a short sword with
+proficiency is proficient in the use of a sun blade.Likewise, Weapon
+Focus and Weapon Specialization in short sword and bastard sword
+apply equally, but the benefits of those feats do not stack.
+In normal combat, the glowing golden blade of the weapon is
+equal to a +2 bastard sword.Against evil creatures, its enhancement
+bonus is +4. Against Negative Energy Plane creatures or undead
+creatures, the sword deals double damage (and ×3 on a critical hit
+instead of the usual ×2).
+The blade also has a special sunlightpower. Once per day, the
+wielder can swing the blade vigorously above her head while
+speaking a command word. The sunbladethen sheds a bright yellow
+radiance that is like full daylight. The radiance begins shining in a
+10-foot radius around the sword wielder and extends outward at 5
+feet per round for 10 rounds thereafter, to create a globe of light
+with a 60-foot radius. When the wielder stops swinging, the radi-
+ance fades to a dim glow that persists for another minute before
+disappearing entirely. All sun bladesare of good alignment, and any
+evil creature attempting to wield one gains one negative level. The
+negative level remains as long as the sword is in hand and disap-
+pears when the sword is no longer wielded. This negative level
+never results in actual level loss, but it cannot be overcome in any
+way (including restorationspells) while the sword is wielded.
+Moderate evocation; CL 10th; Craft Magic Arms and Armor, day-
+light, creator must be good; Price 50,335 gp; Cost 25,335 gp + 2,000 XP.
+Sword of Life Stealing:This black iron +2 longswordbestows a
+negative level when it deals a critical hit. The sword wielder gains
+1d6 temporary hit points each time a negative level is bestowed on
+another. These temporary hit points last for 24 hours. One day
+after being struck, subjects must make a DC 16 Fortitude save for
+each negative level or lose a character level.
+Strong necromancy; CL 17th; Craft Magic Arms and Armor,
+enervation; Price 25,715 gp; Cost 12,857 gp and 5 sp + 1,029 XP.
+Sword of the Planes:This longsword has an enhancement
+bonus of +1 on the Material Plane, but on any Elemental Plane its
+enhancement bonus increases to +2. (The +2 enhancement bonus
+also applies on the Material Plane when the weapon is used
+against elementals.) It operates as a +3 longswordon the Astral
+Plane or the Ethereal Plane or when used against opponents native
+to either of those planes. On any other plane, or against any out-
+sider, it functions as a +4 longsword.
+Strong evocation; CL 15th; Craft Magic Arms and Armor, plane
+shift; Price 22,315 gp; Cost 11,157 gp and 5 sp + 893 XP.
+Sword of Subtlety: A +1 short swordwith a thin, dull gray blade,
+this weapon provides a +4 bonus on its wielder’s attack and
+damage rolls when he is making a sneak attack with it.
+Moderate illusion; CL 7th; Craft Magic Arms and Armor, blur;
+Price 22,310 gp; Cost 11,155 gp + 892 XP.
+CHAPTER 7:
+MAGIC ITEMS

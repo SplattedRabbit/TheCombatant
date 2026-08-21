@@ -28,6 +28,10 @@ export const getRacialModifier = (race: string, stat: string): number => {
     if (stat === 'int') return 2;
     if (stat === 'cha') return -2;
   }
+  if (race === 'anima_construct') {
+    if (stat === 'con') return 2;
+    if (stat === 'cha') return -2;
+  }
   return 0;
 };
 

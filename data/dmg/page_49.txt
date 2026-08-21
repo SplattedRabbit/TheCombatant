@@ -1,0 +1,130 @@
+48
+ory, she tells them where he lives.” In this example, the flowchart
+has two lines drawn away from the innkeeper. One goes to the
+livery and the other goes to Gregory’s house, since those are the
+two likely paths the PCs will take next.
+Timeline:Another way to organize an event-based adventure is
+by the passage of time. A timeline starts when the PCs get involved
+in the story (or sometimes even before then). It marks what hap-
+pens when: “One day after the PCs arrive in town, Joham comes to
+them pleading for help. The next day, Joham is found dead in his
+room at the inn. That evening, Gregory comes to the inn, poking
+around for information to see if the body has been found.”
+Combination:An event-based adventure might use both a
+flowchart and a timeline that are closely integrated: “If the PCs ask
+the innkeeper about Gregory on the day after the murder, she tells
+them where he lives. The following morning, Gregory shows up at
+the inn, heavily disguised, and convinces the innkeeper that he is
+being framed for the murder. She agrees to hide him. If the PCs
+ask the innkeeper about Gregory after this occurs, she gives them
+the location of his house—but she also tells the PCs (untruth-
+fully) that Gregory has been away from town on a trip for the last
+several days.” 
+Random Encounters:Even in an adventure driven by events,
+an encounter unrelated to the flow of events can serve to empha-
+size (or distract from) the ongoing plot. See Table 3–28: Urban
+Encounters, page 102, for an example of an event-based random
+encounter table.
+THE END (?)
+Eventually,  each  adventure  comes  to  an  end.  A  climactic
+encounter places a nice capstone on an adventure, particularly if
+it’s one that the players have seen coming. (If the ogres they have
+been fighting have been referring to a dragon, then an encounter
+with the dragon is a suitable ending.)
+Many adventures require a denouement—some wrap-up to
+deal with the aftermath of the final encounter. This can be the
+time when the PCs discover what treasure is in the dragon’s hoard,
+a dramatic scene in the king’s court in which he thanks the adven-
+turers for slaying the dragon and passes out knighthoods all
+around, or a time to mourn those comrades who did not survive
+the battle. Generally, the denouement should not take nearly as
+long as the climax itself.
+As with movies and books, adventures sometimes deserve se-
+quels. Many adventures lead directly into new adventures for the
+PCs, relating to what they have accomplished or discovered. If the
+characters just destroyed the fortress of the evil overlord, they may
+find clues within the fortress that betray the identity of a traitor on
+the town council who has been secretly aiding the warlord. Per-
+haps the overlord’s orc minions fled the site—where did they go?
+(Orcs, no matter where they go, are sure to cause trouble!) Suppose
+bandits attacked the adventurers while they were on their way to
+the overlord’s fortress—going back now and finding the bandits’
+lair is an adventure of both justice and vengeance.
+ENCOUNTERS
+As interesting as it is to talk about adventures (and the stories be-
+hind them), the game is really composed of encounters. Each indi-
+vidual encounter is like its own game—with a beginning, a middle,
+an end, and victory conditions to determine a winner and a loser.
+TAILORED OR STATUS QUO
+Just as with motivations, encounters can be tailored specifically to
+the PCs or not. A tailored encounter is one in which you take into
+consideration that the wizard PC has a wand of invisibility and the
+fighter’s AC is 23. In a tailored encounter, you design things to fit
+the PCs and the players. In fact, you can specifically design some-
+thing for each PC to do—the skeletal minotaur is a challenge for
+the barbarian, another skeleton with a crossbow is on a ledge that
+only the rogue can reach, only the monk can leap across the chasm
+to pull the lever to raise the portcullis in front of the treasure, and
+the cleric’s hide from undeadspell allows her to get to the treasure
+the skeletons are guarding while the battle rages.
+A status quo encounter forces the PCs to adapt to the encounter
+rather than the other way around. Bugbears live on Clover Hill,
+and if the PCs go there, they encounter bugbears, whether bug-
+bears are an appropriate encounter for them or not. This kind of
+encounter gives the world a certain verisimilitude, and so it’s good
+to mix a few in with the other sorts of encounters.
+If you decide to use only status quo encounters, you should
+probably let your players know about this. Some of the encounters
+you place in your adventure setting will be an appropriate chal-
+lenge for the PCs, but others might not be. For instance, you could
+decide where the dragon’s lair is long before the characters are ex-
+perienced enough to survive a fight against the dragon. If players
+know that the setting includes status quo encounters that their
+characters might not be able to handle, they will be more likely to
+make the right decision if they come upon a tough encounter.
+That decision, of course, is to run away and fight again another day
+(when the party is better equipped to meet the challenge).
+CHALLENGE RATINGS AND 
+ENCOUNTER LEVELS
+A monster’s Challenge Rating (CR) tells you the level of the party
+for which that monster is a good challenge. A monster of CR 5 is
+an appropriate challenge for a group of four 5th-level characters. If
+the characters are of higher level than the monster, they get fewer
+XP because the monster should be easier to defeat. Likewise, if the
+characters are of lower level than a monster’s Challenge Rating,
+the PCs get a greater award.
+Parties with five or more members can often take on monsters
+with higher CRs, and parties of three or fewer are challenged by
+monsters with lower CRs. The game rules account for these facts
+by dividing the XP earned by the number of characters in the
+party (see Rewards, page 36).
+Multiple Monsters and Encounter Levels
+Obviously, if one monster has a given Challenge Rating, more
+than one monster represents a greater challenge than that. You
+can  use  Table  3–1:  Encounter  Numbers  to  determine  the
+Encounter Level of a group of monsters, as well as to determine
+how many monsters equate to a given Encounter Level (useful in
+balancing an encounter with a PC party).
+To balance an encounter with a party, determine the party’s
+level (the average of all the members’ character levels). You want
+the party’s level to match the level of the encounter, so find that
+number in the “Encounter Level” column. Then look across that
+line to find the CR of the kind of creature that you want to use in
+the encounter. Once you have found it, look at the top of that
+column to find the number of creatures that makes a balanced
+encounter for the party.
+For example, suppose you want to send ogres against a 6th-level
+party. The Monster Manualentry on ogres shows that they are CR 2.
+Looking at the “6” row in the “Encounter Level” column, you read
+across to the “2” entry and then check the top of that column to
+find that four CR 2 monsters make a good 6th-level encounter. To
+determine the Encounter Level of a group of monsters, reverse
+these steps (begin with the number of creatures, read down to find
+the CR for the creature, then look left to find the appropriate EL).
+In general, if a creature’s Challenge Rating is two lower than a
+given Encounter Level, then two creatures of that kind equal an
+encounter of that Encounter Level. Thus, a pair of frost giants (CR
+9 each) is an EL 11 encounter. The progression holds of doubling
+the number of creatures for each drop of two places in their indi-
+CHAPTER 3:
+ADVENTURES

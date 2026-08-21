@@ -1,0 +1,133 @@
+Rooftops:Getting to a roof usually requires climbing a wall (see
+the Walls section, page 59), unless the character can reach a roof by
+jumping down from a higher window, balcony, or bridge. Flat roofs,
+common only in warm climates (accumulated snow can cause a flat
+roof to collapse), are easy to run across. Moving along the peak of a
+roof requires a DC 20 Balance check. Moving on an angled roof sur-
+face without changing altitude (moving parallel to the peak, in
+other words) requires a DC 15 Balance check. Moving up and down
+across the peak of a roof requires a DC 10 Balance check.
+Eventually a character runs out of roof, requiring a long jump
+across to the next roof or down to the ground. The distance to the
+next closest roof is usually 1d3×5 feet horizontally, but the roof
+across the gap is equally likely to be 5 feet higher, 5 feet lower, or the
+same height. Use the guidelines on page 77 of the Player ’s Handbook
+(a horizontal jump’s peak height is one-fourth of the horizontal dis-
+tance) to determine whether a character can make a jump.
+Sewers: In the baseline D&D game world, sewers are much
+more prevalent than they were in real-world medieval times. To
+get into the sewers, most characters open a grate (a full-round
+action) and jump down 10 feet. Sewers are built exactly like dun-
+geons, except that they’re much more likely to have floors that are
+slippery or covered with water (treat as a shallow pool, described
+on page 64). Sewers are also similar to dungeons in terms of crea-
+tures liable to be encountered therein (see the dungeon encounter
+tables earlier in this chapter). Some cities were built atop the ruins
+of older civilizations, so their sewers sometimes lead to treasures
+and dangers from a bygone age.
+City Buildings
+Most city buildings fall into three categories. The majority of
+buildings in the city are two to five stories high, built side by side
+to form long rows separated by secondary or main streets. These
+row houses usually have businesses on the ground floor, with
+offices or apartments above. 
+Inns, successful businesses, and large warehouses—as well as
+millers, tanners, and other businesses that require extra space—
+are generally large, free-standing buildings with up to five stories.
+Finally, small residences, shops, warehouses, or storage sheds
+are simple, one-story wooden buildings, especially if they’re in
+poorer neighborhoods.
+Most city buildings are made of a combination of stone or clay
+brick (on the lower one or two stories) and timbers (for the upper
+stories, interior walls, and floors). Roofs are a mixture of boards,
+thatch, and slates, sealed with pitch.
+A typical lower-story wall is 1 foot thick, with AC 3, hardness 8,
+90 hp, and a Climb DC of 25.
+Upper-story walls are 6 inches thick, with AC 3, hardness 5, 60
+hp, and a Climb DC of 21.
+Exterior doors on most buildings are good wooden doors (see
+page 61) that are usually kept locked, except on public buildings
+such as shops and taverns.
+Buying Buildings
+Characters might want to buy their own buildings or even con-
+struct their own castle. Use the prices in Table 3–27 below directly,
+or as a guide when you extrapolate costs for more exotic structures.
+City Lights
+If a city has main thoroughfares, they are lined with lanterns
+hanging at a height of 7 feet from building awnings. These
+lanterns are spaced 60 feet apart, so their illumination is all but
+continuous. Secondary streets and alleys are not lit; it is common
+for citizens to hire lantern-bearers when going out after dark.
+Alleys can be dark places even in daylight, thanks to the shad-
+ows of the tall buildings that surround them. A dark alley in day-
+light is rarely dark enough to afford true concealment, but it can
+lend a +2 circumstance bonus on Hide checks.
+URBAN ENCOUNTERS
+The random encounter table, a staple of dungeon and wilderness
+adventuring, functions differently in an urban setting where “en-
+counters” are the norm rather than the exception. Seeing people
+on the streets of a city is constant and expected, and almost every
+site in a city has dozens of potential encounters nearby. In the
+wilderness, it’s unusual to encounter another creature, such as a
+manticore flying overhead or an ankheg erupting from the earth
+to attack. In contrast, it would be strange to notsee other people
+around in an urban setting.
+Because cities are by their nature crowded, most urban en-
+counter tables are event-based, not site-based. An encounter in the
+city means something significant, something worthy of the char-
+acters’ attention. Seeing merchants hawking their wares in a market-
+place district may be interesting, but it is not an encounter.
+Each day that characters spend in a city, make an encounter
+check to determine whether an event occurs that demands their
+attention. An encounter check is a d20 roll, modified by circum-
+stances as shown on the table below. (Apply one modifier from
+each section of the table, as applicable.) A result of 20 or higher
+indicates that an encounter occurs.
+If an encounter is indicated, roll on Table 3–28. On this roll,
+apply the same modifier used to determine if an encounter occurs
+(a result greater than 20 is possible). Descriptions and definitions
+of the entries on Table 3–28 follow.
+Admirer: A friendly character (usually an NPC with class levels)
+with a CR equal to 2 less than the party level approaches the charac-
+ters with a request. She may wish to hire the characters, tell them a
+rumor she heard, or simply tag along as they explore the city.
+Animal:The characters are set upon by animals in some way.
+This challenge could be anything from thieving monkeys to a
+rampaging escaped circus bear.
+Brawl in Progress: This can be the classic barroom brawl
+(either in an actual barroom or spilled out onto the street), a battle
+between rival factions, families, or gangs in the city (think Romeo
+and Juliet), or a fight between city guards and criminals trying to
+escape. The characters could just be witnesses, they could get hit
+by stray arrow fire, they could be grabbed and used as cover or hos-
+tages by one side, or they could be mistaken for members of one
+group and attacked by the other. 
+101
+CHAPTER 3:
+ADVENTURES
+Table 3–27: Buildings
+ItemCost
+Simple house1,000 gp
+Grand house5,000 gp
+Mansion100,000 gp
+Tower50,000 gp
+Keep150,000 gp
+Castle500,000 gp
+Huge castle1,000,000 gp
+Moat with bridge50,000 gp
+Simple House: This one- to three-room house is made of wood and
+has a thatched roof.
+Grand House:This four- to ten-room house is made of wood and has
+a thatched roof.
+Mansion: This ten- to twenty-room residence has two or three stories
+and is made of wood and brick. It has a slate roof.
+Tower: This round or square, three-level tower is made of stone.
+Keep: This fortified stone building has fifteen to twenty-five rooms.
+Castle: A castle is a keep surrounded by a 15-foot stone wall with four
+towers. The wall is 10 feet thick.
+Huge Castle:A huge castle is a particularly large keep with numerous
+associated buildings (stables, forge, granaries, and so on) and an
+elaborate 20-foot-high wall that creates bailey and courtyard areas.
+The wall has six towers and is 10 feet thick.
+Moat with Bridge:The moat is 15 feet deep and 30 feet wide. The
+bridge may be a wooden drawbridge or a permanent stone structure.

@@ -1,0 +1,108 @@
+Wild Empathy (Ex): This ranger can improve the attitude of an
+animal in the same way a Diplomacy check can improve the atti-
+tude of a sentient being. He rolls 1d20+17, or 1d20+13 if attempt-
+ing to influence a magical beast with an Intelligence score of 1 or 2.
+Ranger Spells Prepared(3/2/1/1; save DC 12 + spell level): 1st—
+delay poison, entangle, resist energy;2nd—cure light wounds, snare;
+3rd—greater magic fang;4th—tree stride.
+Possessions: +3 studded leather, amulet of natural armor +1, ring of pro-
+tection +1, +2 longsword, +1 short sword, +2 composite longbow (+4 Str
+bonus),12 normal arrows, 5 +3 arrows,10 cold iron arrows, 15 sil-
+vered arrows, 10 adamantine arrows, boots of striding and springing,
+cloak of elvenkind, eyes of the eagle, gloves of Dexterity +2, lesser bracers of
+archery, periapt of Wisdom +2, quiver of Ehlonna.
+NPC ROGUE
+Starting Ability Scores:Str 12, Dex 15, Con 13, Int 14, Wis 10,
+Cha 8.
+Increased Ability Scores:4th, Dex 16; 8th, Dex 17; 12th, Dex
+18 (20); 16th, Dex 19 (21); 17th, Dex 19 (23); 19th, Dex 19 (25);
+20th, Dex 20 (26).
+Sample 5th-Level NPC Rogue:Goblin Rog 5; CR 5; Small
+humanoid (goblinoid); HD 5d6+5; hp 25; Init +8; Spd 30 ft.; AC 19,
+touch 15, flat-footed 19; Base Atk +3; Grp –1; Atk +5 melee
+(1d4/19–20, masterwork dagger) or +9 ranged (1d4/×3, masterwork
+shortbow); Full Atk +5 melee (1d4/19–20, masterwork dagger) or +9
+ranged (1d4/×3, masterwork shortbow); SA sneak attack +3d6; SQ
+evasion, trapfinding, trap sense +1, uncanny dodge; AL N; SV Fort
++3, Ref +9, Will +2; Str 10, Dex 18, Con 13, Int 14, Wis 10, Cha 6.
+Skills and Feats:Appraise +10, Balance +6, Disable Device +10,
+Hide +20, Jump +2, Listen +8, Move Silently +12, Open Lock +12,
+Ride (worg) +8, Search +10, Spot +8, Tumble +12, Use Magic
+Device +6; Improved Initiative, Shield Proficiency. 
+Evasion (Ex): If this rogue is exposed to any effect that normally
+allows her to attempt a Reflex saving throw for half damage, she
+takes no damage with a successful saving throw.
+Trap Sense (Ex):This rogue has an intuitive sense that alerts her
+to danger from traps, granting a +1 bonus on Reflex saves and a +1
+dodge bonus to AC against attacks by traps.
+Trapfinding (Ex): This rogue can use the Search skill to locate
+traps when the task has a DC higher than 20. Finding a non-
+magical trap has a DC of at least 20, higher if it is well hidden.
+Finding a magic trap has a DC of 25 + the level of the spell used
+to create it. Rogues can use the Disable Device skill to disarm
+magic traps. Disabling a magic trap generally has a DC of 25 +
+the level of the spell used to create it. A rogue who beats a trap’s
+DC by 10 or more with a Disable Device check can generally
+study a trap, figure out how it works, and bypass it (with her
+party) without disarming it.
+Uncanny Dodge (Ex):This rogue can react to danger before her
+senses would normally allow her to do so. She retains her Dexter-
+ity bonus to AC even when caught flat-footed.
+Possessions: Masterwork leather armor, masterwork buckler,
+masterwork dagger, masterwork shortbow, 10 normal arrows, 5
+cold iron arrows, 5 silvered arrows,cloak of resistance +1,6potions
+of cure light wounds, 2 potions of neutralize poison, masterwork
+thieves’ tools.
+Sample 10th-Level NPC Rogue:Goblin Rog 10; CR 10;
+Small humanoid (goblinoid); HD 10d6+10; hp 47; Init +8; Spd
+30 ft.; AC 21, touch 16, flat-footed 21; Base Atk +11; Grp +7; Atk
++13 melee (1d4/18–20, Small +1 rapier) or +13 ranged (1d4/×3,
+Small +1 shortbow); Full Atk +13/+8 melee (1d4/18–20, Small +1
+rapier) or +13/+8 ranged (1d4/×3, Small +1 shortbow); SA sneak
+attack +5d6; SQ evasion, improved evasion, improved uncanny
+dodge, trapfinding, trap sense +3, uncanny dodge; AL N; SV
+Fort +4, Ref +11, Will +3; Str 10, Dex 19, Con 13, Int 14, Wis 10,
+Cha 6.
+Skills and Feats:Appraise +10, Balance +12, Disable Device +10,
+Hide +20, Jump +2, Listen +8, Move Silently +14, Open Lock +12,
+Ride (worg) +10, Search +8, Spot +6, Tumble +12, Use Magic
+Device +4; Dodge, Improved Initiative, Point Blank Shot,
+Weapon Finesse.
+Evasion (Ex): If this rogue is exposed to any effect that normally
+allows her to attempt a Reflex saving throw for half damage, she
+takes no damage with a successful saving throw.
+Improved Evasion (Ex):This ability works like evasion, except
+that while this rogue still takes no damage on a successful Reflex
+save against spells such as fireball or a breath weapon, she now
+takes only half damage on a failed save.
+Improved Uncanny Dodge (Ex):This rogue cannot be flanked
+except by a rogue of at least 14th level.
+123
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–20: NPC Rogue
+Skill Pts./
+LevelhpACMeleeRangedF/R/WFeatsGear
+1st715+2+3+1/+4/+040/1Mwk studded leather, mwk melee, mwk ranged, 100 gp
+2nd1115+3+4+1/+5/+050/1 As 1st level, except 1,200 gp
+3rd1616+4+5+2/+5/+160/2 Mwk studded leather, mwk buckler, mwk melee, mwk ranged, 1,500 gp
+4th2017+5+7+2/+7/+170/2 As 3rd level, except 2,300 gp
+5th2517+5+7+2/+7/+180/2 As 3rd level, except 3,000 gp
+6th2917+6+8+3/+8/+290/3 As 3rd level, except 4,600 gp
+7th3419+7+9                    +3/+8/+2100/3                    +1 studded leather, +1 buckler,mwk melee, mwk ranged, 4,200 gp
+8th3819+8/3+10/5+3/+9/+2110/3 As 7th level, except 6,400 gp
+9th4319+8/3+10/5+4/+9/+3120/4 +1 studded leather, +1 buckler, +1 melee, +1 ranged, 5,000 gp
+10th4719+9/4+11/6+4/+10/+3130/4 +2 buckler, bracers of armor +2, ring of protection +1, +1 melee, +1 ranged,
+1,000 gp
+11th5219+10/5+12/7+4/+10/+3140/4 As 10th level, except 6,000 gp
+12th5622+11/6+15/10+5/+13/+4150/5 +2 buckler, amulet of natural armor +1, bracers +2, ring +1, +1 melee,
++1 ranged, gloves of Dexterity +2,6,000 gp
+13th6122+12/7+15/10+5/+13/+4160/5 As 12th level, except +2 melee and 8,000 gp
+14th6522+13/8+16/11+5/+14/+4170/5 As 12th level, except +2 melee and 18,000 gp
+15th7022+14/9/4+17/12/7+6/+14/+5180/6 Amulet +1, bracers +4, ring +2, +2 melee, +1 ranged, gloves +2,18,000 gp
+16th7422+15/10/5+18/13/8+6/+15/+5190/6 As 15th level, except 36,000 gp
+17th7924+15/10/5+20/15/10+6/+16/+5200/6 Amulet +1, bracers +5, ring +2, +2 melee, +2 ranged, gloves +4,32,000 gp
+18th8324+16/11/6+21/16/11+7/+17/+6210/7 As 17th level, except 62,000 gp
+19th8825+18/13/8+23/18/13+7/+18/+6220/7 Amulet +1, bracers +5, ring +2, +3 melee, +2 ranged, gloves +6,72,000 gp
+20th9226+19/14/9+26/21/16+7/+20/+6230/7 As 19th level, except +3 ranged and 112,000 gp

@@ -1,0 +1,136 @@
+62
+Barred Doors:When characters try to bash down a barred
+door, it’s the quality of the bar that matters, not the material the
+door is made of. It takes a DC 25 Strength check to break through
+a door with a wooden bar, and a DC 30 Strength check if the bar is
+made of iron. Characters can attack the door and destroy it
+instead, leaving the bar hanging in the now-open doorway.
+Magic Seals:In addition to magic traps (described in the traps
+section below), spells such as arcane lock can discourage passage
+through a door. A door with an arcane lockspell on it is considered
+locked even if it doesn’t have a physical lock. It takes a knock spell,
+a dispel magicspell, or a successful Strength check (DC equal to 10
++ the value given on Table 3–17: Random Door Types, page 78) to
+get through such a door.
+Hinges: Most doors have hinges. Obviously, sliding doors do
+not. (They usually have tracks or grooves instead, allowing them
+to slide easily to one side.)
+Standard Hinges: These hinges are metal, joining one edge of the
+door to the doorframe or wall. Remember that the door swings
+open toward the side with the hinges. (So, if the hinges are on the
+PCs’ side, the door opens toward them; otherwise it opens away
+from them.) Adventurers can take the hinges apart one at a time
+with successful Disable Device checks (assuming the hinges are
+on their side of the door, of course). Such a task has a DC of 20
+because most hinges are rusted or stuck. Breaking a hinge is diffi-
+cult. Most have hardness 10 and 30 hit points. The break DC for a
+hinge is the same as for breaking down the door (see Table 3–17:
+Random Door Types, page 78).
+Nested Hinges: These hinges are much more complex than ordi-
+nary hinges, and are found only in areas of excellent construction,
+such as an underground dwarven citadel. These hinges are built
+into the wall and allow the door to swing open in either direction.
+PCs can’t get at the hinges to fool with them unless they break
+through the doorframe or wall. Nested hinges are typically found
+on stone doors but sometimes on wooden or iron doors as well.
+Pivots: Pivots aren’t really hinges at all, but simple knobs jutting
+from the top and bottom of the door that fit into holes in the
+doorframe, allowing the door to spin. The advantages of pivots is
+that they can’t be dismantled like hinges and they’re simple to
+make. The disadvantage is that since the door pivots on its center
+of gravity (typically in the middle), nothing larger than half the
+door’s width can fit through. Doors with pivots are usually stone
+and are often quite wide to overcome this disadvantage. Another
+solution is to place the pivot toward one side and have the door be
+thicker at that end and thinner toward the other end so that it
+opens more like a normal door. Secret doors in walls often turn
+on pivots, since the lack of hinges makes it easier to hide the
+door’s presence. Pivots also allow objects such as bookcases to be
+used as secret doors.
+Special Doors: An interesting facet of a dungeon might be a
+sealed door too strong to break down. Such a door might be
+opened only by operating secret switches, or hidden (and distant)
+levers. Crafty builders make using the switches or levers more dif-
+ficult by requiring that they be used in a special way. For example,
+a particular door might only open if a series of four levers is moved
+into a specific configuration—two pushed up and two pushed
+down. If a lever in the series is put in the wrong position, a trap is
+sprung. Now imagine how much more difficult it would be if
+there were a dozen or more levers, with multiple settings, spread
+out through the entire dungeon. Finding the method to open a
+special door (perhaps leading into the vault, the vampire’s lair, or
+the dragon’s secret temple) can be an adventure in itself.
+Sometimes a door is special because of its construction. A lead-
+lined door, for example, provides a barrier against many detection
+spells. A heavy iron door might be built in a circular design,
+rolling to one side on a track once it is opened. A mechanical door
+linked with levers or winches might not open unless the proper
+mechanism is activated. Such doors often sink into the floor, rise
+up into the ceiling, lower like a drawbridge, or slide into the wall
+rather than merely swinging open like a normal door.
+Secret Doors: Disguised as a bare patch of wall (or floor, or ceil-
+ing), a bookcase, a fireplace, or a fountain, a secret door leads to a
+secret passage or room. Someone examining the area finds a secret
+door, if one exists, on a successful Search check (DC 20 for a typi-
+cal secret door to DC 30 for a well-hidden secret door). Remember
+that elves have a chance to detect a secret door just by casually
+looking at an area.
+Many secret doors require a special method of opening, such as
+a hidden button or pressure plate. Secret doors can open like nor-
+mal doors, or they may pivot, slide, sink, rise, or even lower like a
+drawbridge to permit access. Builders might put a secret door
+down low near the floor or high up in a wall, making it difficult to
+find or reach. Wizards and sorcerers have a spell, phase door, that
+allows them to create a magic secret door that only they can use.
+Magic Doors:Enchanted by the original builders, a door might
+speak to explorers, warning them away. It might be protected from
+harm, increasing its hardness or giving it more hit points as well as
+an improved saving throw bonus against disintegrateand other
+similar spells. A magic door might not lead into the space revealed
+beyond, but instead it might be a portal to a faraway place or even
+another plane of existence. Other magic doors might require pass-
+words or special keys (ranging from the tail feather of an evil
+eagle, to a note played upon a lute, to a certain frame of mind) to
+open them. Effectively, the range and variety of magic doors is
+limited only by your imagination.
+Door Traps:More often than just about any other facet of a
+dungeon, doors are protected by traps. The reason is pretty obvi-
+ous—an opened door means an intruder. A mechanical trap can
+be connected to a door by wires or springs so that it activates when
+the door is opened—firing an arrow, releasing a cloud of gas,
+opening a trapdoor, letting loose a monster, dropping a heavy
+block on intruders, or whatever. Magic traps such as glyphs of ward-
+ingtypically are cast directly on the door, blasting intruders with
+flame or some other magical attack.
+Portcullises: These special doors consist of iron or thick, iron-
+bound, wooden shafts that descend from a recess in the ceiling
+above an archway. Sometimes a portcullis has crossbars that create
+a grid, sometimes not. Typically raised by means of a winch or a
+capstan, a portcullis can be dropped quickly, and the shafts end in
+spikes to discourage anyone from standing underneath (or from
+attempting to dive under it as it drops). Once it is dropped, a port-
+cullis locks, unless it is so large that no normal person could lift it
+anyway. In any event, lifting a typical portcullis requires a DC 25
+Strength check.
+ROOMS
+Rooms in dungeons vary in shape and size. Although many are
+simple in construction and appearance, particularly interesting
+rooms have multiple levels joined by stairs, ramps, or ladders, as
+well as statuary, altars, pits, chasms, bridges, and more.
+Keep three things in mind when designing a dungeon room:
+decoration, ceiling support, and exits.
+Most kinds of intelligent creatures have a tendency to decorate
+their lairs. It should be fairly commonplace to find carvings or
+paintings on the walls of dungeon rooms. Exploring adventurers
+also often encounter statues and bas reliefs, as well as scrawled
+messages, marks, and maps left behind by others who have come
+this way before. Some of these marks amount to little more than
+graffiti (“Robilar was here”), while others may be useful to adven-
+turers who examine them closely.
+Underground chambers are prone to collapse, so many rooms—
+particularly large ones—have arched ceilings or pillars to support
+the weight of the rock overhead.
+Pay close attention to the exits. Creatures that can’t open doors
+can’t make a lair in a sealed room without some sort of external
+CHAPTER 3:
+ADVENTURES

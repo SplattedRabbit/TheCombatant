@@ -1,0 +1,229 @@
+Pelor 143
+phosphorescent fungus 76
+pits and chasms 68, 89
+plains terrain 91
+planar traits 147, 168
+Planar Turning (epic feat) 210
+Plane of Shadow 152
+player goals 134
+players and die rolls 18
+poison 296
+immunities 297
+politics 140
+polymorph 297
+poor visibility 86
+Positive Energy Plane 157
+potions and oils, magic 211, 229, 
+230
+activation 229
+creating 286
+identifying 229
+power center (of a community) 
+137
+power components 36
+precipitation 94
+prerequisites (for creating 
+magic items) 215
+prestige classes 176
+designing 197
+psionics 297
+pursuit 20
+quicksand (terrain feature) 88
+races 170
+modifying 170
+monsters as 171
+new 171, 173
+rain 94
+random dungeon encounters 78
+tables 79–81
+random dungeons 77
+ranger, epic 208
+NPC 121
+role in society 132
+rays (special attack) 298
+ready (action) 25
+Red Wizard 193
+regeneration 298
+religion 143
+Renaissance weapons 144
+republic (political system) 140
+researching original spells 198
+reset (trap element) 68
+resistance to energy 298
+rewards 36
+other than treasure 56
+rings, magic 211, 229–233
+activation 229
+creating 286
+rock wall (terrain feature) 90
+rods, magic 211, 233–237
+creating 286
+rogue, epic 208
+NPC 123
+role in society 132
+roleplaying awards 40
+roleplaying monsters 103
+rolling dice 18
+rooftops (urban) 101
+rooms (in dungeons) 62
+running a game session 10
+St. Cuthbert 143
+sample adventure 78
+sand dunes (terrain feature) 91
+sandstorms 91
+save or check? 33
+saving throws 33
+against magic items 214
+scale and squares 19
+scent (special ability) 298
+scree (terrain feature) 89
+scrolls, magic 211, 237–243
+activation 238
+creating 287
+mishaps 238
+sewers (urban) 101
+shadowdancer 194
+shields, magic 211, 216–221
+activation 217
+creating 285
+hardness and hit points 217
+siege engines 99
+silver, alchemical 284
+simultaneous activity 24
+size and magic items 213
+skill and ability checks 30
+skills and feats, learning 197
+slaves 142
+sleet 94
+slimes, molds, and fungi 76
+slope (terrain feature) 89
+smoke effects 304
+snow 94
+snowstorm 94
+social classes 142
+softer critical hits 28
+soldier, typical 133
+sorcerer, epic 209
+NPC 124
+role in society 132
+special abilities 289
+special cohorts 199
+special materials 283
+special purpose (of intelligent 
+item) 270
+speed, reduced 20
+spell completion items 213
+spell effects, describing 34
+Spell Knowledge (epic feat) 210
+spell-like abilities 289
+spell lists, variant 175
+spell resistance 298
+spell roll 36
+spell trigger items 213
+spellcasters (in an army) 133
+spellcasting, NPC 107
+spells, creating new 35
+damage caps 35
+researching original 198
+splash weapons 28
+squeezing through 29
+stacking bonuses 21
+staffs, magic 211, 243–245
+activation 243
+creating 287
+standard point buy 169
+standard scale 19
+standing in tight quarters 30
+starting an encounter 22
+starvation 304
+statistics blocks 85
+stealth and detection in desert 91
+in forest 87
+in hills 89
+in marsh 88
+in mountains 90
+in plains 92
+underwater 93
+Stone Age 144
+storms 94
+story awards 40
+streets, city 100
+strike team 133
+structure (of an adventure) 44
+style of play 7
+subraces 170
+success, critical 34
+success, degrees of 32
+suffocation 304
+summoning individual 
+monsters 37
+supernatural abilities 289
+supply and demand 140
+surprise round 23
+table rules 11
+taking 10  33
+tasks, delineating 30
+taxes and tithes 140
+technology 144
+technology level, advancing 144
+teleporters 66
+terrain types 87–92
+Terrifying Rage (epic feat) 210
+thaumaturgist 196
+theocracy (political system) 141
+thirst 304
+thunderstorm 94
+tornado 94
+tougher monsters 50
+towns, generating 137
+training (for PCs) 197
+transitive planes 147
+319
+LIST OF SIDEBARS
+Why a Revision?...................................................................................................4
+The Purpose of Sidebars ....................................................................................4
+Equipment for Running the Game ..............................................................14
+Behind the Curtain: Stacking Bonuses.......................................................21
+Variant: Roll Initiative Each Round.............................................................22
+Variant: Sapient Mounts ..................................................................................23
+Variant: Striking the Cover instead of a Missed Target..........................24
+Variant: Automatic Hits and Misses ............................................................25
+Variant: Defense Roll........................................................................................25
+Behind the Curtain: Critical Hits .................................................................26
+Variant: Clobbered ............................................................................................27
+Variant: Massive Damage Based on Size.....................................................27
+Variant: Weapon Equivalencies .....................................................................27
+Variant: Instant Kill ..........................................................................................28
+Variant: Softer Critical Hits ............................................................................28
+Variant: Critical Misses (Fumbles) ...............................................................28
+Variant: Skills with Different Abilities........................................................33
+Variant: Critical Success or Failure...............................................................34
+Variant: Saves with Different Abilities........................................................35
+Variant: Spell Roll ..............................................................................................36
+Variant: Power Components...........................................................................36
+Variant: Summoning Individual Monsters................................................37
+Variant: Free-Form Experience .....................................................................39
+Variant: Faster or Slower Experience ..........................................................40
+Behind the Curtain: Experience Points ......................................................41
+Behind the Curtain: When a PC Falls Behind..........................................42
+One Hundred Adventure Ideas.....................................................................44
+Adventure Writer’s Checklist ........................................................................46
+Behind the Curtain: Treasure Values ...........................................................54
+Behind the Curtain: Why Dungeons?.........................................................58
+Walls, Doors, and DetectSpells .......................................................................60
+Behind the Curtain: Traps ...............................................................................67
+Variant: What Disabling a Device Means...................................................70
+Variant: Upkeep ...............................................................................................130
+Behind the Curtain: How Real Is Your Fantasy? ...................................136
+Variant: No Sidebars for Variant Rules .....................................................171
+Behind the Curtain: Why Mess around with Character Classes? ....175
+Behind the Curtain: A Limit to Attacks and Saves ...............................207
+Behind the Curtain: Building an Epic Progression ..............................210
+Variant: New Magic Items ............................................................................214
+Behind the Curtain: Putting Cursed Items in Your Game .................274
+Behind the Curtain: Magic Item Gold Piece Vaules ............................282
+Behind the Curtain: Special Weapons Materials ...................................283
+Behind the Curtain: Body Slot Affinities.................................................288
+Variant: Separate Ability Loss ......................................................................290
+Variant: Nonmagical Psionics......................................................................297
+Variant: Less Lethal Falls...............................................................................303

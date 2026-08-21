@@ -1,0 +1,133 @@
+158
+Despite the beneficial effects of the plane, it is one of the most
+hostile of the Inner Planes. An unprotected character on this
+plane swells with power as positive energy is force-fed into her.
+Then, her mortal frame unable to contain that power, she immo-
+lates as if she were a small planet caught at the edge of a supernova.
+Visits to the Positive Energy Plane are brief, and even then travel-
+ers must be heavily protected.
+The Positive Energy Plane has the following traits.
+•Subjective directional gravity.
+•Major  positive-dominant.  Some  regions  of  the  plane  have  the
+minor positive-dominant trait instead, and those islands tend to
+be inhabited.
+•Enhanced magic. Spells and spell-like abilities that use positive
+energy, including curespells, are maximized (as if the Maximize
+Spell  metamagic  feat  had  been  used  on  them,  but  the  spells
+don’t  require  higher-level  slots).  Spells  and  spell-like  abilities
+that are already maximized are unaffected by this benefit.
+Class abilities that use positive energy, such as turning and
+destroying undead, gain a +10 bonus on the roll to determine Hit
+Dice affected. (Undead are almost impossible to find on this plane,
+however.)
+•Impeded magic. Spells and spell-like abilities that use negative
+energy (including inflictspells) are impeded.
+Random Encounters: Because the Positive Energy Plane is
+virtually devoid of creatures, random encounters on the plane are
+exceedingly rare.
+Example Positive Plane Site: Burst Cluster
+Even among the brilliant and deadly radiance of the Positive
+Energy Plane, some regions are more intense and dangerous than
+others. These regions erupt like miniature suns, suddenly grant-
+ing those within the burst radius (usually 30 feet, but occasionally
+up to 120 feet) an additional 3d10 temporary hit points. The dan-
+gers of exceeding double one’s full normal hit points (as noted for
+the positive-dominant trait) still apply.
+In addition, those within an energy burst must make a DC 24
+Fortitude save or be blinded for 1d10 rounds.
+Ravids sometimes patrol the periphery of burst clusters, confi-
+dent that their high speed will get them out of danger before a
+burst makes them explode.
+HEROIC DOMAINS OF YSGARD
+Ysgard is a plane on an epic scale, with soaring mountains, deep
+fjords, and dark caverns that hide the secret forges of the dwarves.
+A biting wind always blows at a hero’s back. From the freezing
+water channels to the sacred groves of Alfheim’s elves, Ysgard’s ter-
+rain is grand and terrible. It is a place of sharp seasons: Winter is a
+time of darkness and killing cold, and a summer day is scorching
+and clear.
+Most spectacular of all, the landscape floats atop immense rivers
+of earth flowing forever through an endless skyscape. The broadest
+earthen rivers are the size of continents, while smaller sections,
+called earthbergs, are island-sized. Fire rages under each river, but
+only a reddish glow penetrates to the continent’s top. Of more con-
+cern is the occasional collision between rivers, which produces ter-
+rible quakes and sometimes spawns new mountain ranges.
+Ysgard is the home of slain heroes who wage eternal battle on
+fields of glory. When these warriors fall, they rise again the next
+morning to continue eternal warfare.
+The plane boasts two layers beneath the top layer, also called
+Ysgard: the fiery caverns of Muspelheim and the underground
+forests of Nidavellir.
+Ysgard has the following traits.
+•Infinite size. Ysgard goes on forever, but its well-known realms
+have boundaries within the plane as a whole. 
+•Divinely  morphic.  Specific  powerful  beings  (such  as  the  deities
+Kord and Olidammara) can alter Ysgard with a thought. Ordinary
+creatures find Ysgard as easy to alter as the Material Plane is—
+they can be affected by spells and physical effort normally. But
+deities  can  change  vast  areas,  creating  great  realms  for  them-
+selves.
+•No  elemental  traits.  No  one  element  dominates  on  Ysgard;  all
+are  in  balance,  as  on  the  Material  Plane.  However,  parts  of  the
+second  layer,  Muspelheim,  are  treated  as  if  they  possessed  the
+fire-dominant trait.
+•Minor positive-dominant. Ysgard possesses a riotous explosion
+of  life  in  all  its  forms.  All  individuals  on  a  positive-dominant
+plane  gain  fast  healing  2  and  may  even  regrow  lost  limbs  in
+time. Additionally, those slain in the never-ending conflicts on
+Ysgard’s  fields  of  battle  rise  each  morning  as  if  true  resurrection
+had  been  cast  on  them,  fully  healed  and  ready  to  fight  anew.
+Only  those  who  suffer  mortal  wounds  on  Ysgard’s  battlefields
+get the true resurrectioneffect; dead characters brought to Ysgard
+don’t spontaneously revive.
+•Mildly chaos-aligned. Lawful creatures on Ysgard take a –2 pen-
+alty on all Charisma-based checks.
+Random Encounters: Use the Beatific Encounters table (page
+167) for random encounters on Ysgard.
+Example Ysgard Site: Plain of Ida
+This great field is located near the great free city of Himinborg,
+the largest population center on Ysgard’s top layer. The Plain of Ida
+hosts daily festivals where warriors can flaunt their mettle. Here,
+bravery and skill in battle is valued over all else. It’s also a battle-
+field where rival armies clash by day only to revel in Himinborg’s
+taverns by night.
+Characters who wind up on the Plain of Ida are as likely to be
+thrust into the maelstrom of a battle as they are to explore the car-
+nival atmosphere of a “festival of steel.”
+To draw a map for a mass battle, use the battlefield guidelines in
+the Plains Terrain section (see page 91). The combatants on the
+Plain are generally mercenary companies that wander the Planes.
+Because soldiers rise the next morning, the Plain of Ida is a useful
+tool for units that want to hone their mass-battle skills.
+Almost any kind of creature can be found on the battlefield. A
+phalanx of dwarves might stand resolute against an assault by half-
+celestial giants. A horde of slaadi might overrun githyanki merce-
+naries, only to be routed by dragon-mounted githyanki reinforce-
+ments. If the characters find themselves in the middle of a battle,
+they’ll have to combine diplomacy with combat prowess to avoid
+being crushed by both sides.
+Major battles happen only one day in three, on average. Festi-
+vals  are  common  on  the  other  days,  featuring  a  variety  of
+sideshows, midway booths, and merchants surrounding the main
+event, which is always a test of martial prowess. Sword duels,
+jousts on exotic steeds, wrestling matches, archery tourneys, and
+even grand tugs-of-war are common on the Plain of Ida, with
+many spectators and participants traveling from Himinborg. The
+prizes are often substantial, but the competition is fierce. The fes-
+tivals attract fairgoers from across the Great Wheel, so they always
+offer diversions and intrigues for the less athletically minded.
+With a guaranteed true resurrectionif they fall, many characters
+will find battles on the Plain of Ida too tempting to pass up. Defeat
+still has its price, however, because victorious armies often loot
+the bodies of the fallen. Some characters might lose but not tech-
+nically die (being turned to stone, banished from the plane
+entirely, or taken prisoner).
+EVER-CHANGING CHAOS OF LIMBO
+Limbo is a plane of pure chaos. Untended sections appear as a roil-
+ing soup of the four basic elements and all their combinations.
+Balls of fire, pockets of air, chunks of earth, and waves of water
+battle for ascendancy until they in turn are overcome by yet
+another chaotic surge. Landscapes similar to ones found on the
+CHAPTER 5:
+CAMPAIGNS

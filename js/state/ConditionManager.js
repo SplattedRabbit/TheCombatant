@@ -86,7 +86,7 @@ export function tickConditionTimers() {
   });
 }
 
-export function applyDamage(id, val, isHeal) {
+export function applyDamage(id, val, isHeal, isMagical = true) {
   const s = getState();
   const c = s.combatants.find(x => x.id === id);
   if (!c || val <= 0) return;
@@ -94,7 +94,11 @@ export function applyDamage(id, val, isHeal) {
   const oldHP = c.hp;
 
   if (isHeal) {
-    c.hp = Math.min(c.maxHP, c.hp + val);
+    let finalHeal = val;
+    if (isMagical && (c.race || '').toLowerCase() === 'anima_construct') {
+      finalHeal = Math.floor(val / 2);
+    }
+    c.hp = Math.min(c.maxHP, c.hp + finalHeal);
   } else {
     const tmpCond = c.conditions.find(x => x.n === 'Temp-HP');
     if (tmpCond) {

@@ -1,0 +1,136 @@
+CREATING PCS 
+ABOVE 1ST LEVEL
+Sometimes you’re going to want to create characters that aren’t 1st
+level. Perhaps you have purchased an adventure you’re dying to
+play, but no one has characters of the appropriate level. Perhaps
+you just want to jump right to 5th level and start your campaign
+there. Whatever the reason, creating new characters at any given
+level isn’t hard (and, in fact, many players find it fun).
+If you tell players to create characters of higher than 1st level,
+assign an experience point total for them to use. Doing this is
+better than just assigning a level because it balances characters
+who take multiclass penalties against those who do not. Then the
+players should follow these steps.
+1.Determine ability scores normally.
+2.Determine race and class. If the character is multiclass, deter-
+mine how many levels of each class the character has, and in what
+order they were gained. (The order is important in step 3.)
+3.Determine character statistics. This includes base attack bo-
+nus, save bonuses, spells, abilities, feats, hit points (maximum hp
+at 1st level and rolled hp for each level afterward). If the characters
+are 4th level or higher, allow each to add 1 point to an ability score
+at 4th level and every four levels beyond that (see Table 3–2: Expe-
+rience and Level-Dependent Benefits, page 22 of the Player ’s Hand-
+book). It is important to note if Intelligence gets modified, because
+a raised Intelligence score might gain the character more skill
+points, but only at that level and beyond. (That is, extra skill points
+are not retroactive.)
+4.Determine skills. The best way to do this is to buy them one
+level at a time. This allows a player to take into account increased
+skill points from Intelligence (if any) and changes due to multi-
+classing. However, if a character’s skill points per level do not
+change (such as when she puts the ability score boost into some
+ability other than Intelligence) and no multiclassing is involved,
+the player can buy all the character’s skills at once. In either case,
+keep in mind that maximum rank in a skill is level + 3 for class
+skills and (level + 3) ÷2 for cross-class skills.
+5.Equip the character. When creating a 1st-level character, this
+means buying normal equipment. At higher levels, it also means
+deciding which magic items a character has acquired so far. Refer
+to Chapter 7: Magic Items, where all magic items are listed along
+with their market prices. Table 5–1: Character Wealth by Level
+(page 135) shows the total value of a player character’s gear at a
+given level. This value includes mundane items described in
+Chapter 7 of the Player ’s Handbook,but the bulk of it, especially at
+higher levels, is composed of magic items. See Magic Items as
+Gear, below, for advice on how to govern what sort of magic items
+a PC can buy with this wealth. Note that these values apply only to
+player characters. NPCs use Table 4–23: NPC Gear Value (page
+127) to find the total value of their equipment.
+6.Work out the details. A paladin needs a warhorse, a druid or
+experienced ranger needs animal companions, a wizard might
+want a familiar, a character might belong to a guild or have a
+cohort, and so on.
+Magic Items as Gear
+You’re free to limit what magic items characters can choose when
+they create characters of higher levels, just as if you were assign-
+ing those items to treasure hoards in the game. You can exercise
+an item-by-item veto, but an easier method is to use maximum
+cost for a single item as a limit. For example, while an 8th-level
+character has 27,000 gp to spend, you can limit him to owning no
+single item worth more than one-quarter of that, or 5,500 gp. This
+is a good way to prevent imbalances such as an 8th-level fighter
+with hardly a copper piece to his name who is armed with a nine
+lives stealer.
+You could also limit characters to a certain type of magic item. For
+example, a player creating a 3rd-level character has 2,700 gp to spend,
+but you could rule that she can only equip the character with a minor
+magic item (one that could be obtained by a roll on the “Minor”
+column of one of the random generation tables in Chapter 7).
+Character- Created Magic Items: A PC spellcaster created at a
+level higher than 1st can use any of the XP and gp you have
+awarded to make magic items, provided that she has the proper
+item creation feats and prerequisites.
+Charged Magic Items: A player may select a partially used
+magic item for part of his character’s starting gear. Such an item’s
+value is proportional to the charges left compared to the charges
+in a newly created item (half price for a wand with 25 charges, 20%
+of full price for a wand with 10 charges, and so on).
+Limited Use Items:If you’re playing a one-shot random dun-
+geon, one-use items cost 5 times their normal price and charged
+items have 1/5 as many charges. In a one-shot adventure, in which
+it doesn’t matter whether you use up your items, one-use and
+charged items are a lot better than they are in a regular campaign. 
+In a one-shot dungeon, a one-use item is as good as a 1/day item
+because you’ll be able to use each item once. This “5 times” rule
+balances the one-use and charged items so they don’t dominate
+the random dungeon.
+If you’re bringing an existing character into a one-shot dun-
+geon, “trade in” your one-use items for other one-use items at 5
+times the cost. For items with charges, give them 1/5 as many
+charges as normal.
+SPECIAL COHORTS
+With the DM’s permission, a leader may seek out a special cohort
+who is not a member of the standard PC races (the common races).
+For creatures with classes, such as a lizardfolk cohort, calculate its
+level according to the rules for PCs of that kind of monster (see
+Monsters as Races, page 172). For example, a leader with a Leader-
+ship score of 8 could have a 5th-level human fighter as a cohort, or
+a lizardfolk with two fighter levels, or a bugbear with one fighter
+level. For more unusual creatures, add at least +3 to a creature’s
+Challenge Rating to determine its effective level. The more special
+abilities a creature has, the larger the number you should add. See
+the table below for some example special cohorts. Note that evil
+special cohorts may have agendas of their own.
+CreatureAlignmentLevel Equivalent
+Blink dogLawful good6th
+LammasuLawful good12th
+Werebear (lycanthrope)Lawful good10th
+Avoral (guardinal)Neutral good15th
+Bralani (eladrin)Chaotic good11th
+PegasusChaotic good6th
+Unicorn
+1
+Chaotic good8th
+GriffonNeutral10th
+Dragonne
+2
+Neutral10th
+SatyrChaotic neutral7th
+Hell houndLawful evil7th
+Displacer beastLawful evil10th
+Imp (devil)Lawful evil7th
+Young green dragon
+3
+Lawful evil16th
+Erinyes (devil)Lawful evil16th
+Quasit (demon)Chaotic evil8th
+EttinChaotic evil15th
+1 Leader must be a human, elf, or half-elf maiden.
+2 The leader is immune to the dragonne’s roar.
+3 The dragon ages but does not gain XP.
+The effective character level (ECL) of a creature determines
+how powerful it is as a character or a cohort. The Monster Manual
+199
+CHAPTER 6:
+CHARACTERS

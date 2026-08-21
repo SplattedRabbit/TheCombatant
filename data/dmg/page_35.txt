@@ -1,0 +1,121 @@
+34
+Key Concept 1: Checks are used to accomplish something,
+while saves are used to avoid something.
+Key Concept 2:Check modifiers don’t take into account
+character level or class level. Save bonuses always do. If a task
+seems like it should be easier for a high-level character, use a
+saving throw. If it seems like the task should be equally difficult
+for any two characters with the same score in the relevant
+ability, use a check. For example, opening a door is merely a
+reflection of strength, not experience. Thus, it’s a Strength
+check. The middle ground is a skill check, such as a Balance
+check to avoid falling while running over broken ground. A
+Balance check takes level into account only if the character has
+ranks in the skill.
+DIFFICULTY CLASSES
+Assigning DCs is your job, but usually the rules are straightfor-
+ward. The game has a standard rule for the DC of a saving throw
+against a spell, and creatures and magic items with abilities that
+force others to make saves always have that saving throw clearly
+detailed (or else they function just like spells, and you use the
+spell rule). The general rules are as follows.
+Spells: 10 + spell level + caster’s ability modifier.
+Monster Abilities: 10 + 1/2 monster’s Hit Dice + monster’s
+ability modifier.
+Miscellaneous:10 to 20. Use 15 as a default.
+As with checks, saving throw die rolls can be modified, or the
+DC can be modified. See The DM’s Best Friend, page 30.
+ADJUDICATING MAGIC
+At the middle range of levels (6th through 11th), most charac-
+ters cast spells, and they all use magic items, many of which pro-
+duce strange effects. Handling spells and effects well is often
+the difference between a good game and a really good one.
+DESCRIBING SPELL EFFECTS
+Magic is flashy. When characters cast spells or use magic items,
+you should describe what the spell looks, sounds, smells, or feels
+like as well as its game effects.
+A magic missilecould be a dagger-shaped burst of energy that
+flies through the air. It also could be a fistlike creation of force
+that  bashes  into  its  target  or  the  sudden  appearance  of  a
+demonic head that spits a blast of energy. When someone
+becomes invisible, he or she fades away. A summoned fiend
+appears with a flash of blood-red energy and a smell of brim-
+stone. Other spells have more obvious visual effects. A fireball
+and a lightning bolt, for example, appear pretty much the way
+they are described in the Player ’s Handbook. For dramatic flair,
+however, you could describe the lightning boltas being a thin arc
+of blue lightning and the fireballas a blast of green fire with red
+twinkling bursts within it.
+You can let players describe the spells that their characters
+cast. Don’t, however, allow a player to use an original description
+that makes a spell seem more powerful than it is. A fireballspell
+that creates an illusion of a dragon breathing flames goes too far.
+Spells without obvious visual effects can be described as well.
+Since a target who makes his saving throw against a spell knows
+that something happened to him, you could describe a charm
+spell or a compulsion spell as a cold claw threatening to enclose
+his mind that he manages to shake off. (If the spell worked, the
+target would not be aware of such an effect, for his mind would
+not be entirely his own.)
+Sound can be a powerful descriptive force. You could say that a
+lightning boltis accompanied by a clap of thunder. A cone of cold
+sounds like a rush of wind followed by a tinkling of crystalline ice.
+HANDLING DIVINATIONS
+Spells such as augury, divination,and legend lorerequire you to come
+up with information on the spot. Two problems can arise when
+dealing with divinations such as these.
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: CRITICAL SUCCESS OR FAILURE
+If a player rolls a natural (unmodified) 20 on a check, allow him or her
+to make another check. If the second check is successful, the charac-
+ter  has  achieved  a  critical  success  with  the  use  of  that  skill  or  ability,
+and something particularly good happens. Likewise, if a player rolls a
+natural 1, he rolls again. If the second check is a failure, the character
+has achieved a critical failure (made a critical blunder), and something
+really bad happens.
+It’s up to you to determine the specific result of a critical success or
+failure. Some examples follow.
+Critical Successes
+On a Climb check or Swim check, the character moves twice as far
+as she would on a normal success.
+When using Diplomacy, the character makes a good, trusted friend
+for long-term play.
+When using a Knowledge skill, the character comes to an important
+conclusion related to the task at hand.
+When  using  Search,  the  character  discovers  something  that  she
+otherwise never could have found (if anything is present to be found).
+When using Survival to track, the character determines some amaz-
+ing  minutiae  about  her  prey.  For  instance,  she  realizes  that  the  three
+subjects  she’s  tracking  aren’t  happy  with  one  another  because  they
+occasionally stop and apparently argue, based on where they stand in
+relation to each other.
+When  using  Heal  to  give  first  aid,  the  character  heals  1  point  of
+damage dealt to the subject.
+Critical Failures
+When using a Perform skill, the character displeases his audience so
+greatly that they wish to do him harm.
+On  a  Climb  check,  the  character  falls  so  badly  that  he  takes  an
+additional  1d6  points  of  damage,  or  he  falls  and  tears  away  a  few
+good handholds, making it a more difficult climb (+5 to the DC) on
+the next try.
+When using Disguise, the character not only doesn’t look like what
+he  intended,  but  actually  looks  like  something  offensive  or  hateful  to
+the viewers.
+When using Escape Artist, the character actually gets himself more
+entangled or pinned, adding +5 to the DC on the next try.
+On a Use Rope check, the character breaks the rope.
+When using Open Lock, the character breaks off his pick in the lock,
+making it impossible to open.
+When using any kind of tool, the character destroys the tool.
+Sometimes, there’s nothing more that can be achieved with a critical
+success, or there’s nothing worse than a normal failure. In such a case,
+ignore this variant rule.
+You should also ignore this variant whenever a character takes 10 or
+takes 20. It’s not possible to achieve a critical success when all you’re
+trying to do is complete a task without worrying about completing it as
+well as possible, and it’s not possible to get a critical failure if you’re
+not under pressure when you’re making the check.
+pqqqqrs
+pqqqqrs

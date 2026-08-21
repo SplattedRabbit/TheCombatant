@@ -1,0 +1,91 @@
+122
+Animal Companion (Ex):This ranger has a dire wolf as an animal
+companion. This creature is a loyal companion that accompanies
+the ranger on adventures as appropriate for its kind. Its abilities
+and characteristics are summarized below.
+Dire Wolf Animal Companion:CR —; Large magical
+beast; HD 6d8+18; hp 45; Init +2, Spd 50 ft.; AC 14, touch
+11, flat-footed 12; Base Atk +4; Grp +15; Atk +10 melee
+(1d8+10,  bite);  Full  Atk  +10  melee  (1d8+10,  bite);
+Space/Reach 10 ft./5 ft.; SA trip; SQ bonus trick, low-light
+vision, scent; AL N; SV Fort +8, Ref +7, Will +6; Str 26, Dex
+16, Con 17, Int 2, Wis 12, Cha 10.
+Skills and Feats:Hide +0, Listen +7, Move Silently +4,
+Spot +7, Survival +2; Alertness, Run, Track, Weapon Focus
+(bite).
+Trip (Ex):A wolf that hits with a bite attack can attempt
+to trip the opponent as a free action. See page 158 of the
+Player ’s Handbookfor more information.
+Bonus Trick:This animal companion is capable of learn-
+ing one trick in addition to any that the ranger might
+choose to teach it (see the Handle Animal skill, page 74 of
+the Player ’s Handbook). This bonus trick doesn’t require any
+training time or Handle Animal checks, and it doesn’t
+count against the normal limit of tricks known by the
+creature. The ranger selects this bonus trick, and once
+selected, it can’t be changed.
+Low-Light Vision (Ex):Can see twice as far as a human in
+dim light.
+Scent (Ex):Can detect approaching enemies, sniff out
+hidden foes, and track by sense of smell.
+Camouflage (Ex): This ranger can use Hide in terrain that doesn’t
+grant cover or concealment.
+Swift Tracker (Ex):This ranger can track at normal speed without
+taking the usual –5 penalty, or can track at double speed at only a
+–10 penalty.
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–19: NPC Ranger
+Skill Pts./Spells
+LevelhpACMelee
+1
+Ranged
+2
+F/R/WFeatsper DayGear
+1st915+3+4+3/+4/+124/1 + Track—Studded leather, mundane melee, mwk
+ranged, 550 gp
+2nd1515+5+5+4/+5/+130/1—Mwk studded leather, mwk melee, mwk
+ranged, 1,200 gp
+3rd2015+6+6+4/+5/+2   36/2 + Endurance   —As 2nd level, except 1,700 gp
+4th2517+7+8+5/+7/+242/21+1 studded leather,mwk melee, mwk ranged,
+1,500 gp
+5th3117+8+9+5/+7/+248/21As 4th level, except 2,500 gp
+6th3717+9/4+10/5+6/+8/+354/32+1 studded leather, +1 melee,mwk ranged,
+2,800 gp
+7th4217+10/5+11/6+6/+8/+360/32+1 studded leather, +1 melee , +1 ranged,
+1,400 gp
+8th4817+11/6+12/7+7/+9/+366/32As 7th level, except 3,600 gp
+9th5317+12/7+13/8+7/+9/+472/42As 7th level, except 6,200 gp
+10th5918+13/8+15/10+8/+11/+478/42/1+1 studded leather, +1 melee, +1 ranged,
+gloves of Dexterity +2, 6,200 gp
+11th6419+14/9/4+16/11/6+8/+11/+484/42/1+2 studded leather, +1 melee, +1 ranged,
+gloves +2, 8,200 gp
+12th7020+15/10/5+18/13/8+9/+13/+590/52/1As 11th level, except 15,000 gp
+13th7522+16/11/6+20/15/10+9/+13/+596/52/1+2 studded leather, amulet of natural armor
++1, ring of protection +1, +1 melee, +2
+ranged, gloves +2, 12,000 gp
+14th8122+18/13/8+21/16/11+10/+14/+6102/53/2/1+2 studded leather, amulet +1, ring +1,
++2 melee, +2 ranged, gloves +2, periapt of
+Wisdom +2, 12,000 gp
+15th8623+19/14/9+22/17/12+10/+14/+7108/63/2/1/1As 14th level, except +3 studded leatherand
+21,000 gp
+16th9223+22/17/12/7+23/18/13/8+11/+15/+7114/63/3/1/1+3 studded leather, amulet +1, ring +1,
++2 melee, +2 ranged, belt of giant Strength
++4, gloves +2, periapt +2, 19,000 gp
+17th9724+23/18/13/8+25/20/15/10+11/+16/+7120/63/3/2/1As 16th level, except gloves +4 and 30,000 gp
+18th10325+25/20/15/10+27/22/17/12+12/+17/+8126/74/3/2/1+4 studded leather, amulet +1, ring +1,
++3 melee, +3 ranged, belt +4, gloves +4,
+periapt +2,33,000 gp
+19th10825+26/21/16/11+28/23/18/13+12/+17/+8132/74/4/3/2As 18th level, except 73,000 gp
+20th11425+28/23/18/13+31/26/21/16+13/+19/+8138/74/4/3/3+4 studded leather, amulet +1, ring +1,
++4 melee, +4 ranged, belt +4, gloves +4,
+periapt +2, 95,000 gp
+1 If the ranger’s combat style is two-weapon fighting, as a full attack action, she can use a second light melee weapon in combat. Doing so allows
+an extra attack with that weapon at the highest attack value, but all attacks that round take a –2 penalty. From 6th–11th level, doing so allows two
+extra attacks with the second weapon, once at the highest attack value and once at a –5 penalty. (There’s still a –2 penalty on all attacks.) From
+11th level on, doing so allows three extra attacks with the second weapon: once at the highest attack value, once at a –5 penalty, and once at a
+–10 penalty. (There’s still a –2 penalty on all attacks.)
+2 If the ranger’s combat style is archery, as a full attack action, she can make an extra ranged attack at the highest attack value, but all attacks that
+round take a –2 penalty. From 6th–11th level, the ranger may shoot an additional arrow in the same attack (and can shoot an extra time per 5
+points of base attack bonus above +6). All attacks that round take a –4 penalty, worsened by –2 for each additional arrow beyond the second.

@@ -1,10 +1,10 @@
-const CACHE_NAME = 'dnd-combatsheet-v4.1.0-cache-v25';
+const CACHE_NAME = 'dnd-combatsheet-v4.2.0-cache-v2';
 const ASSETS = [
   './dist/assets/BaseDialogs-DxH0phdZ.js',
   './dist/assets/icon-192-BiJXAwPn.png',
-  './dist/assets/main-DHfR2GxX.js',
+  './dist/assets/main-CYeGfkgO.js',
   './dist/assets/main-Y-8LRH8V.css',
-  './dist/assets/state-core-f6N8lNlh.js',
+  './dist/assets/state-core-Dw3LohMN.js',
   './dist/assets/vendor-qoZPGuNy.js',
   './dist/data/spells.json',
   './dist/icon-192.png',

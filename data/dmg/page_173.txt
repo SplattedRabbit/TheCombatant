@@ -1,0 +1,139 @@
+172
+Monsters as Races
+While every monster in the Monster Manualhas the statistics that a
+player would need to play the creature as a character, most monsters
+are not suitable as PCs. The following table lists monsters that are
+easy, difficult, and very difficult to incorporate into a campaign as
+PCs. Use these lists as guidelines, but don’t allow players to play
+creatures who have an Intelligence score of 2 or lower, who have no
+way to communicate, or who are so different from other PCs that
+they disrupt the campaign. (The creatures in the Difficult and Very
+Difficult sections of the table, for example, are too problematic for
+most campaigns.) Some creatures have strange innate abilities or
+great physical power, and thus are questionable at best as characters
+(except in high-level campaigns). For example, a hill giant dishes
+out great amounts of damage, and a PC playing a beholder, with its
+array of magical powers, would be quite unbalancing. Even some
+feature as seemingly innocuous as wings should be considered care-
+fully. The ability to fly can circumvent interesting encounters at
+lower levels (particularly outdoors), and it makes skills such as
+Climb and Jump meaningless. You should not allow such creatures
+as PCs until the other characters are at a level (around 5th to 7th)
+when magical means of flight become common.
+Monsters as Races
+Easy (Few Strange Powers)
+LevelLevel
+RaceAdjustmentRaceAdjustment
+Goblin+0Tiefling+1
+Kobold+0Centaur+2
+Orc+0Githyanki+2
+Aasimar+1Githzerai+2
+Bugbear+1Elf, drow+2
+Dwarf, duergar+1Ogre+2
+Gnoll+1Minotaur+2
+Hobgoblin+1Troglodyte+2
+Lizardfolk+1Gnome, svirfneblin+3
+Difficult (Strange Powers or Limitations)
+LevelLevel
+RaceAdjustmentRaceAdjustment
+Lycanthrope, afflicted
+1
++2Lycanthrope, natural
+1, 2
++3
+Satyr+2Pixie+4
+Yuan-ti, pureblood+2Gargoyle+5
+Kuo-toa+3Troll+5
+Very Difficult 
+(Unusual Size or Powers that Circumvent Many Challenges)
+LevelLevel
+RaceAdjustmentRaceAdjustment
+Drider+4Mind flayer+7
+Hill giant+4Ogre mage+7
+Janni+5Vampire
+1
++8
+Yuan-ti, halfblood+5
+1 Choose a common race for the base creature’s race.
+2 Natural lycanthropes have an effective character level (ECL) of 2 +
+animal form HD + class levels.
+Starting Level of a Monster PC:The table above gives the
+level adjustment for several monsters. Add a monster’s level
+adjustment to its Hit Dice and class levels to get the creature’s
+effective character level, or ECL. Effectively, monsters with a level
+adjustment become multiclass characters when they take class
+levels. Characters with more than 1 Hit Die because of their race
+do not get a feat for their first class level as members of the
+common races do, and they do not multiply the skill points for
+their first class level by four. Instead, they have already received a
+feat for their first Hit Die because of race, and they have already
+multiplied their racial skill points for their first Hit Die by four.
+Use ECL instead of character level when referring to Table 3–2:
+Experience and Level-Dependent Benefits in the Player ’s Handbook
+to determine how many experience points a monster character
+needs to reach its next level. Also use ECL with Table 5–1: Charac-
+ter Wealth by Level to determine starting wealth for a monster
+character.
+Monster characters treat skills mentioned in their Monster
+Manualentry as class skills.
+As you can see, many monster characters are inappropriate for
+parties of 1st-level adventurers. You may choose to allow them
+anyway, assuming that the party’s encounters grant fewer experi-
+ence points to higher-level characters, allowing the rest of the
+party to catch up in level. Alternatively, you may ask players to
+wait until the rest of the party reaches the monster character’s ECL
+before the monster character enters play.
+If a monster has 1 Hit Die or less, or if it is a template creature
+(such as a vampire or a lycanthrope; see the Monster Manual), it
+must start the game with one or more class levels, like a regular
+character. If a monster has 2 or more Hit Dice, it can start with no
+class levels (though it can gain them later).
+Even if the creature is of a kind that normally advances by Hit
+Dice rather than class levels, such as a gargoyle, a PC (as an excep-
+tional individual) can gain class levels rather than Hit Dice.
+Ability Scores for Monster PCs: While the Monster Manual
+gives ability scores for a typical creature of a certain kind, any
+“monster” creature that becomes an adventurer is definitely not
+typical. Therefore, when creating a PC from a creature in the Mon-
+ster Manual,check to see if the creature’s entry has any ability
+scores of 10 or higher. If so, for each score, subtract 10 (if the score
+is even) or 11 (if the score is odd) to get the creature’s modifier for
+that ability based on its race or kind. For example, a typical mino-
+taur has a Strength score of 19, so its racial ability modifier to
+Strength is +8 (19 – 11 = 8). Roll the PC’s ability score (4d6, dis-
+carding the low die) and add the racial ability modifier to get the
+minotaur PC’s Strength score.
+For ability scores lower than 10, the procedure is different. First,
+roll the PC’s ability score (4d6, discarding the low die), and com-
+pare the roll to the monster’s average ability score, using either the
+table below that applies to Intelligence or the table that applies to
+the other five ability scores. For example, the minotaur has a listed
+Intelligence score of 7, so the player consults the “6–7” column on
+the table that applies to Intelligence. She then rolls 4d6, dropping
+the low result, and gets a 10. Checking the left-hand column on
+the table and reading across to the proper column, she sees that
+her minotaur PC has an Intelligence score of 6.
+The separate table for Intelligence ensures that no PC ends up
+with an Intelligence score lower than 3. This is important, because
+creatures with an Intelligence score lower than 3 are not playable
+characters. Creatures with any ability score lower than 1 are also
+not playable, and you should think twice about letting in a PC
+with any ability score lower than 3.
+Other Statistics for Monsters: Creatures with Hit Dice of 1
+or less have normal, class-based Hit Dice and features. They get a
+feat for their first class level and multiply the skill points for their
+first class level by four (even if they have a level adjustment).
+Those with 2 or more Hit Dice have statistics based on these Hit
+Dice plus Hit Dice for class levels (if any).
+For example, an ogre with no class levels has 4d8 HD, a base
+attack bonus of +3, two feats, and 7 skill points (or more if its Intel-
+ligence is higher than 9). The first Hit Die is treated as maximum,
+giving her 8 + 3d8 + (Constitution bonus ×4) hit points.
+Experience for Monsters: A monster with Hit Dice of 1 or
+less, no level adjustment, and class levels uses Table 3–2: Experi-
+ence and Level-Dependent Benefits on page 22 of the Player ’s
+Handbookjust as any other player character does.
+A monster with Hit Dice of 1 or less, a level adjustment, and
+class levels adds its class levels, Hit Die, and level adjustment
+CHAPTER 6:
+CHARACTERS

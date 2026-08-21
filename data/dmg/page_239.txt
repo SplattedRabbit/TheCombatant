@@ -1,0 +1,135 @@
+238
+spell has the same width (about 8 1/2 inches) but is an extra foot
+or so long for each extra spell. Scrolls that hold three or more
+spells are usually fitted with reinforcing rods at each end rather
+than simple strips of leather. A scroll has AC 9, 1 hit point, hard-
+ness 0, and a break DC of 8.
+To protect it from wrinkling or tearing, a scroll is rolled up from
+both ends to form a double cylinder. (This also helps the user un-
+roll the scroll quickly.) The scroll is placed in a tube of ivory, jade,
+leather, metal, or wood. Most scroll cases are inscribed with magic
+symbols (see the arcane markspell, page 201 of the Player ’s Hand-
+book), which often identify the owner or the spells stored on the
+scrolls inside. The symbols often hide magic traps such asglyph of
+wardingor fire trapspells.
+Activation:To activate a scroll, a spellcaster must read the spell
+written on it. Doing so involves several steps and conditions.
+Decipher the Writing:The writing on a scroll must be deciphered
+before a character can use it or know exactly what spell it contains.
+This requires a read magicspell or a successful Spellcraft check (DC
+20 + spell level).
+Deciphering a scroll to determine its contents does not activate its
+magic unless it is a specially prepared cursed scroll. A character can
+decipher the writing on a scroll in advance so that he or she can pro-
+ceed directly to the next step when the time comes to use the scroll.
+Activate the Spell:Activating a scroll requires reading the spell
+from the scroll. The character must be able to see and read the
+writing on the scroll.
+Activating a scroll spell requires no material components or
+focus. (The creator of the scroll provided these when scribing the
+scroll.) Note that some spells are effective only when cast on an
+item or items (for example, Drawmij’s instant summons and snare).
+In such a case, the scroll user must provide the item when acti-
+vating the spell. Activating a scroll spell is subject to disruption
+just as casting a normally prepared spell would be (see Cast a
+Spell, page 140 of the Player ’s Handbook). Using a scroll is like cast-
+ing a spell for purposes of arcane spell failure chance (such as
+from armor).
+To have any chance of activating a scroll spell, the scroll user
+must meet the following requirements.
+•The spell  must  be  of  the  correct  type  (arcane  or  divine).
+Arcane  spellcasters  (wizards,  sorcerers,  and  bards)  can  only
+use  scrolls  containing  arcane  spells,  and  divine  spellcasters
+(clerics,  druids,  paladins,  and  rangers)  can  only  use  scrolls
+containing divive spells. (The type of scroll a character creates
+is  also  determined  by  his  or  her  class.  For  example,  clerics
+create scrolls of divine spells, wizards create scrolls of arcane
+spells, and so forth.)
+•The user must have the spell on his or her class list (see the spell
+lists in Chapter 11 of the Player ’s Handbookfor which classes can
+cast which spells).
+•The user  must  have  the  requisite  ability  score  (for  example,
+Intelligence 15 for a wizard casting a 5th-level spell).
+If the user meets all the requirements noted above, and her
+caster level is at least equal to the spell’s caster level, she can auto-
+matically activate the spell without a check. If she meets all three
+requirements but her own caster level is lower than the scroll
+spell’s caster level, then she has to make a caster level check (DC
+= scroll’s caster level + 1) to cast the spell successfully. If she fails,
+she must make a DC 5 Wisdom check to avoid a mishap (see
+Scroll Mishaps, below). A natural roll of 1 always fails, whatever
+the modifiers.
+Determine Effect:A spell successfully activated from a scroll
+works exactly like a spell prepared and cast the normal way. As-
+sume the scroll spell’s caster level is always the minimum level
+required to cast the spell for the character who scribed the scroll
+(usually twice the spell’s level, minus 1), unless the caster specifi-
+cally desires otherwise. For example, a 10th-level cleric might
+want to create a cure critical woundsscroll at caster level 10th rather
+than the minimum for the spell (caster level 7th), in order to get
+more benefit from the scroll spell. (This scroll would, however, be
+more costly to scribe.)
+The writing for an activated spell disappears from the scroll.
+Scroll Mishaps:When a mishap occurs, the spell on the scroll has
+a reversed or harmful effect. The DM determines what sort of mis-
+hap occurs, either by deciding on a certain effect to fit the circum-
+stances of the encounter or adventure or by choosing from the
+possibilities given below.
+•A surge  of  uncontrolled  magical  energy  deals  1d6  points  of
+damage per spell level to the scroll user.
+•Spell  strikes  the  scroll  user  or  an  ally  instead  of  the  intended
+target,  or  a  random  target  nearby  if  the  scroll  user  was  the
+intended recipient.
+•Spell takes effect at some random location within spell range.
+•Spell’s  effect  on  the  target  is  contrary  to  the  spell’s  normal
+effect. For example, a fireballmight produce a blast of nondam-
+aging cold or release a burst of healing energy.
+•The scroll user suffers some minor but bizarre effect related to
+the  spell  in  some  way.  For  example,  a  fireballmight  cause
+smoke  to  pour  from  the  user’s  ears,  a  flyspell  might  turn  the
+user’s  arms  into  nonfunctional  wings,  or  a  clairaudience/clair-
+voyancespell might cause the user’s eyes and ears to grow to ten
+times  their  normal  size.  Most  such  effects  should  last  only  as
+long as the original spell’s duration, or 2d10 minutes for instan-
+taneous spells.
+•Some innocuous item or items appear in the spell’s area. For
+example,  a  fireballmight  cause  a  rain  of  lit  torches  to  fall  in
+the  target  area;  a  feather  fallspell  might  produce  a  cloud  of
+feathers;  a  passwallspell  might  cause  a  (nonfunctional)  door
+to appear.
+•Spell has delayed effect. Sometime within the next 1d12 hours,
+the spell activates. If the scroll user was the intended recipient,
+the spell takes effect normally. If the user was not the intended
+recipient, the spell goes off in the general direction of the orig-
+inal recipient or target, up to the spell’s maximum range, if the
+target has moved away.
+Random Generation:To generate scrolls randomly, first roll
+on Table 7–20: Scroll Types to determine whether the spells are
+arcane or divine. Then randomly determine how many spells are
+on the scroll, according to Table 7–21: Number of Spells on a
+Scroll. For each spell, roll on Table 7–22: Scroll Spell Levels to
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–20: Scroll Types
+d% rollType
+01–70Arcane
+71–100Divine
+Table 7–21: Number of Spells on a Scroll
+Scroll TypeNumber of Spells
+Minor scroll1d3 spells
+Medium scroll1d4 spells
+Major scroll1d6 spells
+Table 7–22: Scroll Spell Levels
+MinorMediumMajorSpell LevelSpell’s Caster Level
+1
+01–05——01st
+06–50——1st1st
+51–9501–05—2nd3rd
+96–10006–65—3rd5th
+—66–9501–054th7th
+—96–10006–505th9th
+——51–706th11th
+——71–857th13th
+——86–958th15th
+——95–1009th17th
+1 These numbers assume that the creator is a cleric, druid, or wizard.

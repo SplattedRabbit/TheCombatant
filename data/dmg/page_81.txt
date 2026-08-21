@@ -1,0 +1,192 @@
+80
+CHAPTER 3:
+ADVENTURES
+61–63   1 wereboar (lycanthrope) and 1d3
+boars
+64–65   1d3+1 mephits (mixed types)
+66–67   1 average salamander
+68–71   1d4+1 shadows
+72–73   1d3+2 shocker lizards
+74–75   1d3+1 locust swarms
+76–78   1d3+1 troglodytes and 1d3
+monitor lizards
+79–80   1 will-o’-wisp
+81–82   1 xill
+83–84   1d3+1 minor xorns
+85–86   1d3+1 yuan-ti purebloods
+87–88   1d4+2 giant bombardier beetles
+(vermin)
+89–90   5th-level lizardfolk druid NPC (with
+crocodile)
+91–100  Roll on 7th-level table
+7th-Level Dungeon Encounters
+d%Encounter
+01–10   Roll on 6th-level table
+11–12   1 aboleth
+13–14   1d4+1 carrion crawlers
+15–16   1 chaos beast
+17–19   1 chuul
+20–21   1 succubus (demon)
+22–23   1 hellcat (devil)
+24–25   1 dire bear
+26–28   1 young copper dragon
+29–31   1 drider
+32–33   1d3+1 violet fungi and 1d3+2
+shriekers (fungus)
+34–35   1d3+1 jann (genie)
+36–38   1 ghost, 5th-level fighter
+39–42   1 hill giant
+43–45   1 flesh golem
+46–47   1 eight-headed hydra
+48–49   1 invisible stalker
+50–51   1d3 weretigers (lycanthrope)
+52–53   1d3 manticores
+54–56   1 medusa
+57–59   1d3+1 minotaurs
+60–61   1 ogre barbarian, 4th level
+62–63   1 black pudding (ooze)
+64–65   1 phasm
+66–67   1d3+2 flamebrother salamanders
+68–69   1d3 shadow mastiffs
+70–71   1 red slaad
+72–74   1 spectre
+75–76   1d3+1 centipede swarms
+77–80   1 umber hulk
+81–82   1 vampire, 5th-level fighter
+83–84   1d4+1 wights
+85–86   1 yuan-ti abomination
+87–88   1 Gargantuan monstrous centipede
+89–90    5th-level hobgoblin fighter NPC and
+5th-level goblin rogue NPC
+91–100  Roll on 8th-level table
+8th-Level Dungeon Encounters
+d%Encounter
+01–10   Roll on 7th-level table
+11–12   1d4+2 hound archons
+13–14   1d4+2 barghests
+15–17   1 behir
+18–19   1d3 gauths (beholder)
+20–21   1 bodak
+22–23   1 destrachan
+24–25   1d3+1 bearded devils
+26–28   1 erinyes (devil)
+29–31   1d3 bralanis (eladrin)
+32–35   1 ettin and 1d3 brown bears (animal)
+36–37   1 formian taskmaster and 1
+dominated 5th-level human
+barbarian NPC
+38–39   1 noble djinni (genie)
+40–42   1 efreeti (genie)
+43–44   1d3+1 ghasts (ghoul) and 2d4+1
+ghouls
+45–46   1 stone giant
+47–48   1 gorgon
+49–51    1 seven-headed hydra (pyro- or cryo-)
+52–54   1 mind flayer
+55–56   1 mohrg
+57–58   1d3+1 mummies
+59–60   1 dark naga
+61–64   1 ogre mage
+65–66   1d4+1 phase spiders
+67–69   1 greater shadow
+70–71   1d3 advanced megaraptor
+skeletons
+72–73   1 blue slaad
+74–75   1 hellwasp swarm
+76–78   1d3+1 trolls
+79–81   1d4+1 vampire spawns
+82–83   1d3 average xorns
+84–86   1d3+1 yuan-ti halfbloods
+87–88   1d4+1 giant stag beetles (vermin)
+89–90   1d3 5th-level troglodyte cleric NPCs
+91–100  Roll on 9th-level table
+9th-Level Dungeon Encounters
+d%Encounter
+01–10   Roll on 8th-level table
+11–13   1d4+2 greater barghests
+14–16   1d4+2 basilisks
+17–19   1d4+2 cloakers
+20–21   1 delver
+22–24   1 vrock (demon)
+25–27   1 bone devil
+28–30   1d3 devils, hellcat
+31–33   1d3+1 chain devils
+34–36   1d3 dire bears
+37–38   1 young adult black dragon
+391 juvenile bronze dragon
+40–42   1 drider and 2d4+3 Medium
+monstrous spiders (vermin)
+43–44   1 formian myrmarch and 2d4+1
+formian warriors
+45–48   1 frost giant
+49–52   1 hill giant and 1d4+2 dire wolves
+53–55   1 avoral (guardinal)
+56–58   1 half-fiend 7th-level cleric
+59–61   1 ten-headed hydra
+62–63   1 zelekhut (inevitable)
+64–66   1 spirit naga
+67–69   1 night hag
+70–72   1 ogre barbarian, 4th level, and
+1d4+3 ogres
+73–75   1 green slaad
+76–77   1d3+1 will-o’-wisps
+78–81   1d4+1 wraiths
+82–84   1d3 yuan-ti abominations
+85–87   1d3+1 gray render zombies
+88–90   1d4+2 5th-level human paladin
+NPCs
+91–100  Roll on 10th-level table
+10th-Level Dungeon Encounters
+d%Encounter
+01–10   Roll on 9th-level table
+11–12   1d3+1 aboleths
+13–15   1d3 behirs
+16–17   1d4+2 gauths (beholder)
+18–20   1d4+1 chuuls
+21–23   1d4+2 babaus (demon)
+24–26   1 bebilith (demon)
+27–29   1d4+2 digesters
+30–33   1d3+1 ghosts, 5th-level fighters
+34–39   1 fire giant
+40–43   1 clay golem
+44–46   1d3+1 flesh golems
+47–49   1 nine-headed hydra (pyro- or cryo-)
+50–52   1d3+1 medusas
+53–54   1 guardian naga
+55–57   1d3 ogre mages
+58–60   1d3+2 average salamanders
+61–62   1 noble salamander
+63–64   1d3 young adult red dragon
+skeletons
+65–67   1d4+1 red slaadi
+68–70   1 gray slaad
+71–73   1d3+1 spectres
+74–76   1d3+1 umber hulks
+77–80   1d4+1 xills
+81–83   1d3 elder xorns
+84–86   Yuan-ti troupe: 1 abomination,
+1d3 halfbloods, and 1d4+1
+purebloods
+87–88   1d3+1 Huge monstrous scorpions
+(vermin)
+89–90   5th-level drow wizard NPC, 1
+hellcat (devil), and 1 mind flayer
+91–100  Roll on 11th-level table
+11th-Level Dungeon Encounters
+d%Encounter
+01–10   Roll on 10th-level table
+11–13   1d3+1 aboleths and 2d4+3 skums
+14–18   1 hezrou (demon)
+19–22   1 retriever (demon)
+23–26   1 barbed devil
+27–30   1 devourer
+31–35   1d3+1 efreet (genie)
+36–41   1d4+1 hill giants
+42–45   1 stone golem
+46–49   1d3 avorals (guardinal)
+50–52   1 half-celestial paladin
+53–56   1 twelve-headed hydra
+57–60   1 hill giant dire wereboar
+(lycanthrope)
+61–64   1d3+1 mohrgs
+65–67   1d3+1 dark nagas

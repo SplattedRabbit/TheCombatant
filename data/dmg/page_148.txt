@@ -1,0 +1,131 @@
+Laser Pistol: A laser pistol fires fifty times before a new energy
+cell (weight 1 pound) needs to be reloaded and has a rate of fire
+equal to the attacker’s number of attacks. Reloading the weapon is
+a move action.
+Antimatter Rifle: An antimatter rifle is a devastating short-range
+attack weapon that can be fired once per round. It holds an energy
+cell (weight 1 pound) that is depleted after two shots. Reloading
+the weapon is a move action.
+Laser Rifle: A laser rifle fires thirty times before a new energy
+cell (weight 1 pound) needs to be reloaded and has a rate of fire
+equal to the attacker’s number of attacks. Reloading the weapon is
+a move action.
+Flamer: A flamer can be fired once per round. Unlike other
+ranged weapons, it deals damage to every square in a 5-foot-wide
+stream extending out to the flamer’s maximum range (200 feet). It
+contains a fuel pack with enough concentrated flamer fuel for ten
+shots. Installing a new fuel pack requires a full-round action.
+ADVENTURING 
+ON OTHER PLANES
+When characters reach higher levels, their grasp extends to other
+dimensions of reality—or, as we call them, planes of existence.
+The PCs may rescue a friend from the evil depths of the Abyss, or
+sail the shining waters of the River Oceanus. They might hoist a
+tankard with the friendly giants of Ysgard, or face the chaos of
+Limbo to reach a wizened githzerai sage.
+The planes of existence in the D&D game world make up the
+D&D cosmology, which is the topic of this section. These planes
+are strange and usually dangerous environments; the strangest of
+them are as unlike the so-called “real world” as any place can be.
+While planar adventures can be dangerous, they can be wondrous
+as well. The characters might visit a plane composed entirely of
+solid fire, or test their mettle on a battlefield where the fallen are
+resurrected with each dawn.
+Because the spells required to reach other planes are all 6th
+level and higher, planar adventures are almost exclusively the
+province of high-level PCs. Not only are the other planes full of
+powerful outsiders and elementals, but the planes themselves
+have deadly environments that only well-prepared adventurers
+can withstand.
+The D&D cosmology has twenty-seven different planes of exis-
+tence, offering everything from the normality of the Material
+Plane (the real world) to the serenity of the Astral Plane to the per-
+vasive evil of the Nine Hells. This section details the traits and char-
+acteristics that certain planes have in common and features a short
+description of each plane that includes a possible adventure site.
+WHAT IS A PLANE?
+The planes of existence are different realities with interwoven con-
+nections. Except for rare linking points, each plane is effectively its
+own universe with its own natural laws. The planes are home to
+more powerful variations of familiar creatures and unique mon-
+sters, all of which have adapted to their strange environments.
+The planes break down into a number of general types: the
+Material Plane, the Transitive Planes, the Inner Planes, the Outer
+Planes, and the demiplanes. 
+Material Plane: This plane is the one most familiar to charac-
+ters and is usually the “home base” for a standard D&D campaign.
+The Material Plane tends to be the most Earthlike of all planes and
+operates under the same set of natural laws that our own real
+world does. Even though the Material Plane is a comfortable place
+for PCs, it is a strange and dangerous environment for many crea-
+tures that are native to other planes but find themselves on the
+Material Plane at least temporarily (perhaps as the result of a
+summon monsterspell or similar magic).
+Transitive Planes: These three planes have one important
+common characteristic: Each is used to get from one place to
+another. The Astral Plane is a conduit to all other planes, while the
+Ethereal Plane and the Plane of Shadow both serve as means of
+transportation within the Material Plane they’re connected to.
+These planes have the strongest regular interaction with the Mate-
+rial Plane and are often accessed by using various spells. They have
+native inhabitants as well.
+Inner Planes: These six planes are manifestations of the basic
+building blocks of the universe. Each is made up of a single type of
+energy or element that overwhelms all others. The natives of a par-
+ticular Inner Plane are made of the same energy or element as the
+plane itself.
+Outer Planes: The deities live on the Outer Planes, as do crea-
+tures such as celestials, demons, and devils. Each of the seventeen
+Outer Planes has an alignment, representing a particular moral or
+ethical outlook, and the natives of each plane tend to behave in
+agreement with that plane’s alignment. The Outer Planes are also
+the final resting place of souls from the Material Plane, whether
+that final rest takes the form of calm introspection or eternal
+damnation.
+Demiplanes: This catch-all category covers all extradimen-
+sional spaces that function like planes but have measurable size
+and limited access. Other kinds of planes are theoretically infinite
+in size, but a demiplane might be only a few hundred feet across.
+Access to demiplanes may be limited to particular locations (such
+as a fixed gateway) or particular situations (such as a time of year
+or a weather condition). Some demiplanes are created by powerful
+magic, some naturally evolve, and some appear according to the
+will of the deities.
+In the D&D cosmology, also known as the Great Wheel, the
+planes are connected in a specific fashion, as depicted in the dia-
+gram on page 153. (The diagram does not show demiplanes,
+because the location and even the existence of these extradimen-
+sional spaces is constantly changing.)
+PLANAR TRAITS
+Each plane of existence has its own properties—the natural laws
+of its universe.
+Planar traits are broken down into a number of general areas.
+All planes have the following kinds of traits.
+Physical Traits: These traits determine the laws of physics and
+nature on the plane, including how gravity and time function.
+Elemental and Energy Traits: These traits determine the
+dominance of particular elemental or energy forces.
+Alignment Traits: Just as characters may be lawful neutral or
+chaotic good, many planes are tied to a particular moral or ethical
+outlook.
+Magic Traits: Magic works differently from plane to plane, and
+magic traits set the boundaries for what it can and can’t do.
+Physical Traits
+The two most important natural laws set by physical traits are how
+gravity works and how time passes. Other physical traits pertain to
+the size and shape of a plane and how easily a plane’s nature can be
+altered.
+Gravity: The direction of gravity’s pull may be unusual, and it
+might even change directions within the plane itself.
+Normal Gravity: Most planes have gravity similar to that of the
+Material Plane. That is, if something weighs 10 pounds on the
+Material Plane, it weighs 10 pounds on the other plane as well. The
+usual rules for ability scores, carrying capacity, and encumbrance
+apply. Unless otherwise noted in a description, every plane in the
+D&D cosmology has the normal gravity trait.
+Heavy Gravity:The gravity on a plane with this trait is much more
+intense than on the Material Plane. As a result, Balance, Climb,
+Jump, Ride, Swim, and Tumble checks incur a –2 circumstance
+147
+CHAPTER 5:
+CAMPAIGNS

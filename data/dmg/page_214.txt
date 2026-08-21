@@ -1,0 +1,134 @@
+Magic Items and Detect Magic
+When detect magicidentifies a magic item’s school of magic, this
+information refers to the school of the spell placed within the po-
+tion, scroll, or wand, or the prerequisite given for the item. The
+description of each item provides its aura strength and the school
+it belongs to.
+For items you create, if more than one spell is given as a prereq-
+uisite, use the highest-level spell. If no spells are included in the
+prerequisites, use the following default guidelines.
+Item NatureSchool
+Armor and protection itemsAbjuration
+Weapons or offensive itemsEvocation
+Bonus to ability score, on skill check, etc.Transmutation
+USING ITEMS
+To use a magic item, it must be activated, although sometimes acti-
+vation simply means putting a ring on your finger. Some items,
+once donned, function constantly. In most cases, using an item
+requires a standard action that does not provoke attacks of oppor-
+tunity. By contrast, spell completion items are treated like spells in
+combat and do provoke attacks of opportunity.
+Activating a magic item is a standard action unless the item
+description indicates otherwise. However, the casting time of a
+spell is the time required to activate the same power in an item,
+whether it’s a scroll, a wand, or a pair of boots, unless the item
+description specifically states otherwise.
+The four ways to activate magic items are described below.
+Spell Completion: This is the activation method for scrolls. A
+scroll is a spell that is mostly finished. The preparation is done for
+the caster, so no preparation time is needed beforehand as with
+normal spellcasting. All that’s left to do is perform the short,
+simple, finishing parts of the spellcasting (the final gestures,
+words, and so on). To use a spell completion item safely, a charac-
+ter must be of high enough level in the right class to cast the spell
+already. If he can’t already cast the spell, there’s a chance he’ll make
+a mistake (see Scroll Mishaps, page 238, for possible conse-
+quences). Activating a spell completion item is a standard action
+and provokes attacks of opportunity exactly as casting a spell does.
+Spell Trigger: Spell trigger activation is similar to spell com-
+pletion, but it’s even simpler. No gestures or spell finishing is
+needed, just a special knowledge of spellcasting that an appropri-
+ate character would know, and a single word that must be spoken.
+This means that if a wizard picks up a spell trigger activation item
+(such as a wand or a staff ) and that item stores a wizard spell, she
+knows how to use it. Specifically, anyone with a spell on his or her
+spell list knows how to use a spell trigger item that stores that
+spell. (This is the case even for a character who can’t actually cast
+spells, such as a 3rd-level paladin.) The user must still determine
+what spell is stored in the item before she can activate it. Activat-
+ing a spell trigger item is a standard action and does not provoke
+attacks of opportunity.
+Command Word:If no activation method is suggested either
+in the magic item description or by the nature of the item, assume
+that a command word is needed to activate it. Command word
+activation means that a character speaks the word and the item
+activates. No other special knowledge is needed.
+A command word is the key to the item’s lock, as it were. It can
+be a real word such as “Vibrant,” “Square,” or “Horse,” but when
+this is the case, the holder of the item runs the risk of activating
+the item accidentally by speaking the word in normal conversa-
+tion. More often, the command word is some seemingly nonsen-
+sical word, or a word or phrase from an ancient language no longer
+in common use. Activating a command word magic item is a stan-
+dard action and does not provoke attacks of opportunity.
+Sometimes the command word to activate an item is written
+right on the item. Occasionally, it might be hidden within a pat-
+tern or design engraved on, carved into, or built into the item, or
+the item might bear a clue to the command word. For example, if
+the command word is “King,” the item might have the image of a
+crown etched in its surface. A more difficult version of the same
+clue might be the name of the local king when the item was made.
+In this case, the character has to conduct some historical research
+to identify the name.
+The Knowledge (arcana) and Knowledge (history) skills
+might be useful in helping to identify command words or deci-
+phering clues regarding them. A successful check against DC 30
+is needed to come up with the word itself. If that check is failed,
+succeeding on a second check (DC 25) might provide some
+insight into a clue.
+The spells identifyand analyze dweomerboth reveal command
+words.
+Use Activated:This type of item simply has to be used in order
+to activate it. A character has to drink a potion, swing a sword,
+interpose a shield to deflect a blow in combat, look through a lens,
+sprinkle dust, wear a ring, or don a hat. Use activation is generally
+straightforward and self-explanatory.
+Many use-activated items are objects that a character wears.
+Continually functioning items, such as a cloak of resistanceor a head-
+band of intellect, are practically always items that one wears. A few,
+such as a pearl of power, must simply be in the character’s posses-
+sion (on his person, not at home in a locked trunk). However,
+some items made for wearing, such as a ring of invisibility, must still
+be activated. Although this activation sometimes requires a com-
+mand word (see above), usually it means mentally willing the acti-
+vation to happen. The description of an item states whether a com-
+mand word is needed in such a case.
+Unless stated otherwise, activating a use-activated magic item is
+either a standard action or not an action at all and does not pro-
+voke attacks of opportunity, unless the use involves performing an
+action that provokes an attack of opportunity in itself, such as run-
+ning out of a threatened square while wearing magic boots. If the
+use of the item takes time (such as drinking a potion or putting on
+or taking off a ring or hat) before a magical effect occurs, then use
+activation is a standard action. If the item’s activation is subsumed
+in its use and takes no extra time (such as swinging a magic sword
+that has a built-in enhancement bonus), use activation is not an
+action at all.
+Use activation doesn’t mean that if you use an item, you auto-
+matically know what it can do. Putting on a ring of jumpingdoes
+not immediately activate it. You must know (or at least guess) what
+the item can do and then use the item in order to activate it, unless
+the benefit of the item comes automatically, such from drinking a
+potion or swinging a sword.
+SIZE AND MAGIC ITEMS
+When an article of magic clothing or jewelry is discovered, most
+of the time size shouldn’t be an issue. Many magic garments are
+made to be easily adjustable, or they adjust themselves magically
+to the wearer. As a rule, size should not keep overweight charac-
+ters, characters of various genders, or characters of various kinds
+from using magic items. Players shouldn’t be penalized for choos-
+ing a halfling character or deciding that their character is espe-
+cially tall.
+Only say “It doesn’t fit” if there’s a good reason. Cloaks made
+specifically by the selfish, self-absorbed drow elves might fit only
+elves. Dwarves might make items usable only by dwarf-sized and
+dwarf-shaped characters to keep their items from being used
+against them. Such items should be the exceptions, however, not
+the rule.
+Armor and Weapon Sizes:Armor and weapons that are found
+at random have a 30% chance of being Small (01–30), a 60% chance
+of being Medium (31–90), and a 10% chance of being any size of
+the DM’s choice (91–100).
+213
+CHAPTER 7:
+MAGIC ITEMS

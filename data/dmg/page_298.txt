@@ -1,0 +1,96 @@
+poisoned weapon must make a DC 15 Reflex save or accidentally
+poison himself with the weapon.
+Poison Immunities
+Wyverns, medusas, and other creatures with natural poison
+attacks are immune to their own poison. Nonliving creatures
+(constructs and undead) and creatures without metabolisms (such
+as elementals) are always immune to poison. Oozes, plants, and
+certain kinds of outsiders (such as tanar’ri) are also immune to
+poison, although conceivably special poisons could be concocted
+specifically to harm them.
+POLYMORPH
+Lidda thought that the captain of the guard was acting a little
+strangely, but she put it down to stress. When she turned away,
+however, she heard a strange squishing sound behind her. She
+spun around to see that the man had turned into a 10-foot-tall blue-
+skinned monster, complete with a greatsword—an ogre mage.
+Magic can cause creatures and characters to change their
+shapes—sometimes against their will, but usually to gain an
+advantage. Polymorphed creatures retain their own minds but
+have new physical forms.
+The polymorphspell (see page 263 of the Player ’s Handbook)
+defines the general polymorph effect.
+Creatures that polymorph themselves with an ability (not a
+spell) do not suffer disorientation (as described in polymorph).
+Since creatures do not change types, a slaying or bane weapon
+designed to kill or harm creatures of a specific type affects those
+creatures even if they are polymorphed. Likewise, a creature poly-
+morphed into the form of a creature of a different type is not sub-
+ject to slaying and bane effects directed at that type of creature.
+A ranger’s favored enemy bonus is based on knowing what the
+foe is, so if a creature that is a ranger’s favored enemy polymorphs
+into another form, the ranger is denied his bonus.
+A dwarf ’s bonus for fighting giants is based on shape and size,
+so he does not gain a bonus against a giant polymorphed into
+something else, but does gain the bonus against any creature poly-
+morphed into a giant.
+PSIONICS
+Telepathy, mental combat and psychic powers—psionics is a
+catchall word that describes special mental abilities possessed by
+various creatures. These are spell-like abilities that a creature gen-
+erates from the power of its mind alone—no other outside magi-
+cal force or ritual is needed. The most well known of the psionic
+creatures is the dreaded mind flayer, which blasts its prey’s mind
+and then devours the brain of the prey while it lies stunned. Each
+psionic creature’s description in the Monster Manualcontains
+details on its psionic abilities.
+Psionic attacks almost always allow Will saving throws to resist
+them. However, not all psionic attacks are mental attacks. Some
+psionic abilities allow the psionic creature to reshape its own body,
+297
+CHAPTER 8:
+GLOSSARY
+Table 8–3: Poisons
+PoisonTypeInitial DamageSecondary DamagePrice
+Carrion crawler brain juiceContact DC 13Paralysis0200 gp
+NitharitContact DC 1303d6 Con650 gp
+Sassone leaf residueContact DC 162d12 hp1d6 Con300 gp
+Malyss root pasteContact DC 161 Dex2d4 Dex500 gp
+Terinav rootContact DC 161d6 Dex2d6 Dex750 gp
+Black lotus extractContact DC 203d6 Con3d6 Con4,500 gp
+Dragon bileContact DC 263d6 Str01,500 gp
+Striped toadstool Ingested DC 111 Wis2d6 Wis + 1d4 Int180 gp
+ArsenicIngested DC 131 Con1d8 Con120 gp
+Id mossIngested DC 141d4 Int2d6 Int125 gp
+Oil of taggitIngested DC 150Unconsciousness90 gp
+Lich dustIngested DC 172d6 Str1d6 Str250 gp
+Dark reaver powderIngested DC 182d6 Con1d6 Con + 1d6 Str300 gp
+Ungol dustInhaled DC 151 Cha1d6 Cha + 1 Cha*1,000 gp
+Insanity mistInhaled DC 151d4 Wis2d6 Wis1,500 gp
+Burnt othur fumesInhaled DC 181 Con*3d6 Con2,100 gp
+Black adder venomInjury DC 111d6 Con1d6 Con120 gp
+Small centipede poisonInjury DC 111d2 Dex1d2 Dex90 gp
+BloodrootInjury DC 1201d4 Con + 1d3 Wis100 gp
+Drow poisonInjury DC 13UnconsciousnessUnconsciousness for 2d4 hours75gp
+Greenblood oilInjury DC 131 Con1d2 Con100 gp
+Blue whinnisInjury DC 141 ConUnconsciousness120 gp
+Medium spider venomInjury DC 141d4 Str1d4 Str150 gp
+Shadow essenceInjury DC 171 Str*2d6 Str250 gp
+Wyvern poisonInjury DC 172d6 Con2d6 Con3,000 gp
+Large scorpion venomInjury DC 181d6 Str1d6 Str200 gp
+Giant wasp poisonInjury DC 181d6 Dex1d6 Dex210 gp
+DeathbladeInjury DC 201d6 Con2d6 Con1,800 gp
+Purple worm poisonInjury DC 241d6 Str2d6 Str700 gp
+*Permanent drain, not temporary damage.
+VARIANT: NONMAGICAL PSIONICS
+Under  this  variant  rule,  psionic  powers  aren’t  magical  at  all,  but  a
+different sort of extraordinary power altogether. Antimagic fields have
+no  power  over  psionics  (and  likewise,  most  psionic  abilities  cannot
+interfere with magic). A creature’s special immunities or resistances to
+magic do not protect it from psionic abilities.
+The danger of this variant is that, without the traditional checks that
+exist  for  magic,  psionic  abilities  quickly  threaten  to  become  over-
+whelmingly powerful. Since conventional magical defenses don’t work,
+psionic defenses need to be added to the treasure tables and spells.
+pqqqqrs
+pqqqqrs

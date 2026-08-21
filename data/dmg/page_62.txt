@@ -1,0 +1,145 @@
+dungeon explorer. The doorways that doors are set in may be
+plain arches and lintels, or may be festooned with carvings—
+often gargoyles or leering faces but sometimes carved words that
+might reveal a clue to what lies beyond. Dungeon doors come in
+three basic types: wooden, stone, and iron.
+Wooden Doors: Constructed of thick planks nailed together,
+sometimes bound with iron for strength (and to reduce swelling
+from dungeon dampness), wooden doors are the most common
+type. Wooden doors come in varying strengths: simple, good, and
+strong doors. Simple doors (break DC 13) are not meant to keep
+out motivated attackers. Good doors (break DC 16), while sturdy
+and long-lasting, are still not meant to take much punishment.
+Strong doors (break DC 23) are bound in iron and are a sturdy
+barrier to those attempting to get past them.
+Iron hinges fasten the door to its frame, and typically a circu-
+lar pull-ring in the center is there to help open it. Sometimes,
+instead of a pull-ring, a door has an iron pull-bar on one or both
+sides of the door to serve as a handle. In inhabited dungeons,
+these doors are usually well maintained (not stuck) and
+unlocked, although important areas are locked up if possible.
+Stone: Carved from solid blocks of stone, these heavy,
+unwieldy doors are often built so that they pivot when
+opened, although dwarves and other skilled craftsfolk
+are able to fashion hinges strong enough to hold up a
+stone door. Secret doors concealed within a stone wall
+are usually stone doors. Otherwise, such doors stand as
+tough  barriers  protecting  something  important
+beyond. Thus, they are often locked or barred.
+Iron: Rusted but sturdy, iron doors in a dungeon are
+hinged like wooden doors. These doors are the tough-
+est form of nonmagical door. They are usually locked or
+barred.
+Locks, Bars, and Seals: Dungeon doors may be
+locked, trapped, reinforced, barred, magically sealed, or
+sometimes just stuck. All but the weakest characters
+can eventually knock down a door with a heavy tool
+such as a sledgehammer, and a number of spells and
+magic items give characters an easy way around a
+locked door.
+Attempts to literally chop a door down with a slashing
+or bludgeoning weapon use the hardness and hit points
+given in Table 3–10: Doors. Often the easiest way to overcome a
+recalcitrant door is not by demolishing it but by breaking
+its lock, bar, or hinges. When assigning a DC to
+an attempt to knock a door down, use
+the following as guidelines:
+DC 10 or Lower:a door just about
+anyone can break open.
+DC 11–15:a door that a strong
+person could break with one try and
+an average person might be able to
+break with one try.
+DC  16–20:  a  door  that  almost
+anyone could break, given time.
+DC 21–25:a door that only a strong
+or very strong person has a hope of
+breaking, probably not on the first try.
+DC 26 or Higher:a door that only an
+exceptionally  strong  person  has  a
+hope of breaking.
+For specific examples in applying
+these  guidelines,  see  Table  3–17:
+Random Door Types (page 78).
+Locks: Dungeon doors are often
+locked, and thus the Open Lock skill comes
+in very handy. Locks are usually built into the door, either on the
+edge opposite the hinges or right in the middle of the door. Built-
+in locks either control an iron bar that juts out of the door and into
+the wall of its frame, or else a sliding iron bar or heavy wooden bar
+that rests behind the entire door. By contrast, padlocks are not
+built-in but usually run through two rings, one on the door and
+the other on the wall. More complex locks, such as combination
+locks and puzzle locks, are usually built into the door itself.
+Because such keyless locks are larger and more complex,
+they are typically only found in sturdy doors (strong
+wooden, stone, or iron doors).
+The Open Lock DC to pick a lock often falls into the
+range of 20 to 30, although locks with lower or higher
+DCs can exist. A door can have more than one lock,
+each of which must be unlocked separately. Locks are
+often trapped, usually with poison needles that
+extend out to prick a rogue’s finger.
+Breaking a lock is sometimes quicker than break-
+ing the whole door. If a PC wants to whack at a lock
+with a weapon, treat the typical lock as having hard-
+ness 15 and 30 hit points. A lock can only be
+broken if it can be attacked separately from the
+door, which means that a built-in lock is immune
+to this sort of treatment.
+Keep in mind that in an occupied dungeon,
+every locked door should have a key somewhere.
+If the adventurers are unable to pick a lock or
+break down the door, finding whoever has the key and get-
+ting it away from its possessor can be an interesting part of
+the adventure.
+A special door (see below for examples) might have a lock with
+no key, instead requiring that the right combination of nearby
+levers must be manipulated or the right symbols must be pressed
+on a keypad in the correct sequence to
+open the door. You’re perfectly justi-
+fied in ruling that some puzzle doors
+must be solved by the characters
+rather than being bypassed with an
+Open Lock check—for example,
+if a door only unlocks when the
+riddle  carved  on  it  is  correctly
+answered, then it’s up to the char-
+acters to solve the riddle.
+Stuck Doors:Dungeons are
+often damp, and sometimes doors
+get  stuck,  particularly  wooden
+doors. Assume that about 10% of
+wooden  doors  and  5%  of  non-
+wooden doors are stuck. These num-
+bers can be doubled (to 20% and
+10%, respectively) for long-aban-
+doned  or  neglected  dungeons.
+Table 3–17 (page 78) gives Strength
+check DCs to open various kinds of
+stuck doors.
+61
+CHAPTER 3:
+ADVENTURES
+Table 3–10: Doors
+TypicalHitBreak DC
+Door TypeThickness   Hardness  Points    StuckLocked
+Simple wooden1 in.510 hp1315
+Good wooden1-1/2 in.515 hp1618
+Strong wooden2 in.520 hp2325
+Stone4 in.860 hp2828
+Iron2 in.1060 hp2828
+Portcullis, wooden3 in530 hp25
+1
+25
+1
+Portcullis, iron2 in.1060 hp25
+1
+25
+1
+Lock—1530 hp
+Hinge—1030 hp
+1 DC to lift. Use appropriate door figure for breaking.
+Wooden door
+Stone door
+Iron door

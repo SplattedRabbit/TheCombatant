@@ -1,0 +1,134 @@
+general, whether spell resistance applies depends on what the
+spell does:
+Targeted Spells:Spell resistance applies if the spell is targeted
+at the creature. Some individually targeted spells, such as magic
+missilewhen cast by a 3rd-level caster, can be directed at several
+creatures simultaneously. In such cases, a creature’s spell resist-
+ance applies only to the portion of the spell actually targeted at
+that creature. If several different resistant creatures are subjected
+to such a spell, each checks its spell resistance separately.
+Area Spells:Spell resistance applies if the resistant creature is
+within the spell’s area. It protects the resistant creature without
+affecting the spell itself.
+Effect Spells:Most effect spells summon or create something
+and are not subject to spell resistance. For instance, summon mon-
+ster Isummons a monster that can attack a creature with spell
+resistance normally. Sometimes, however, spell resistance applies
+to effect spells, usually to those that act upon a creature more or
+less directly, such as web.
+Spell resistance can protect a creature from a spell that’s already
+been cast. Check spell resistance when the creature is first affected
+by the spell. For example, if an ogre mage flies within 10 feet of a
+wall of fire,the caster must make a caster level check against the
+ogre mage’s spell resistance of 18. If the caster fails, the wall does
+not damage the ogre mage.
+Check spell resistance only once for any particular casting of a
+spell or use of a spell-like ability. If spell resistance fails the first
+time, it fails each time the creature encounters that same casting
+of the spell. Likewise, if the spell resistance succeeds the first time,
+it always succeeds. For example, a succubus encounters Jozan’s
+blade barrierspell. If the cleric makes a successful roll to overcome
+the spell resistance of the succubus, the creature takes damage
+from the spell. If the succubus survives and enters that particular
+blade barriera second time, the creature will be damaged again. No
+second roll is needed. If the creature has voluntarily lowered its
+spell resistance and is then subjected to a spell, the creature still
+has a single chance to resist that spell later, when its spell resist-
+ance is up.
+Spell resistance has no effect unless the energy created or
+released by the spell actually goes to work on the resistant crea-
+ture’s mind or body. If the spell acts on anything else (the air, the
+ground, the room’s light), and the creature is affected as a conse-
+quence, no roll is required. Creatures can be harmed by a spell
+without being directly affected. For example, a daylightspell
+harms a dark elf because drow have light blindness. Daylight,how-
+ever, usually is cast on the area containing the drow, making it
+bright, not on the drow itself, so the effect is indirect. Spell resist-
+ance would only apply if someone tried to cast daylighton an
+object the drow was holding.
+Spell resistance does not apply if an effect fools the creature’s
+senses or reveals something about the creature, such as minor illu-
+sionor detect thoughts does.
+Magic actually has to be working for spell resistance to apply.
+Spells that have instantaneous durations but lasting results aren’t
+subject to spell resistance unless the resistant creature is exposed
+to the spell the instant it is cast. For example, a creature with spell
+resistance can’t undo a wall of stone that has already been cast.
+When in doubt about whether a spell’s effect is direct or indi-
+rect, consider the spell’s school:
+Abjuration:The target creature must be harmed, changed, or
+restricted in some manner for spell resistance to apply. Perception
+changes, such as nondetection, aren’t subject to spell resistance.
+Abjurations that block or negate attacks are not subject to an
+attacker’s spell resistance—it is the protected creature that is
+affected by the spell (becoming immune or resistant to the attack).
+Conjuration: These spells are usually not subject to spell resist-
+ance unless the spell conjures some form of energy, such as Melf ’s acid
+arrowor power word stun.Spells that summon creatures or produce
+effects that function like creatures are not subject to spell resistance.
+Divination: These spells do not affect creatures directly and
+are not subject to spell resistance, even though what they reveal
+about a creature might be very damaging.
+Enchantment: Since enchantment spells affect creatures’
+minds, they are typically subject to spell resistance.
+Evocation:If an evocation spell deals damage to the creature, it
+has a direct effect. If the spell damages something else, it has an
+indirect effect. For example, a lightning bolt cast at a resistant crea-
+ture is subject to spell resistance (which would protect only the
+creature but would not affect the spell itself ). If the lightning bolt is
+cast at a chamber’s ceiling, bringing down a rain of debris, it is not
+subject to spell resistance.
+Illusion: These spells are almost never subject to spell resist-
+ance. Illusions that entail a direct attack, such as phantasmal killer
+or shadow evocation, are exceptions.
+Necromancy: Most of these spells alter the target creature’s life
+force and are subject to spell resistance. Unusual necromancy
+spells, such as spectral hand, don’t affect other creatures directly and
+are not subject to spell resistance.
+Transmutation: These spells are subject to spell resistance if
+they transform the target creature. Transmutation spells are not
+subject to spell resistance if they are targeted on a point in space
+instead of on a creature. Transmute rock to mud and entanglechange
+a creature’s surroundings, not the creature itself, and are not subject
+to spell resistance. Some transmutations make objects harmful (or
+more harmful), such as magic stone. Even these spells are not gener-
+ally subject to spell resistance because they affect the objects, not
+the creatures against which the objects are used. Spell resistance
+works against magic stoneonly if the creature with spell resistance is
+holding the stones when the cleric casts magic stoneon them.
+Successful Spell Resistance
+Spell resistance prevents a spell or a spell-like ability from affect-
+ing or harming the resistant creature, but it never removes a mag-
+ical effect from another creature or negates a spell’s effect on
+another creature. Spell resistance prevents a spell from disrupting
+another spell.
+Against an ongoing spell that has already been cast, a failed
+check against spell resistance allows the resistant creature to
+ignore any effect the spell might have. The magic continues to
+affect others normally.
+TREMORSENSE
+A creature with tremorsense automatically senses the location of
+anything that is in contact with the ground and within range
+(such as 60 feet for the thoqqua).
+If no straight path exists through the ground from the creature
+to those that it’s sensing, then the range defines the maximum dis-
+tance of the shortest indirect path. It must itself be in contact with
+the ground, and the creatures must be moving.
+As long as the other creatures are taking physical actions,
+including casting spells with somatic components, they’re consid-
+ered moving; they don’t have to move from place to place for a
+creature with tremorsense to detect them.
+TURN RESISTANCE
+By virtue of superior strength of will or just plain unholy power,
+some creatures (usually undead) are less easily affected by clerics
+or paladins (see Turn or Rebuke Undead, page 159 of the Player ’s
+Handbook).
+Turn resistance is an extraordinary ability.
+When resolving a turn, rebuke, command, or bolster attempt,
+added the appropriate bonus to the creature’s Hit Dice total. For
+example, a shadow has +2 turn resistance and 3 HD. Attempts to
+turn, rebuke, command, or bolster it treat the shadow as though it
+has 5 HD, though it is a 3 HD creature for any other purpose.
+299
+CHAPTER 8:
+GLOSSARY

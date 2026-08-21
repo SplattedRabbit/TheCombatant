@@ -1,0 +1,127 @@
+40
+your 10th-level party since it caused them to waste some major
+spells, so you give them half the XP an EL 3 encounter would have
+earned them, or 125 XP. Or you might judge that a large quantity
+of CR 1 monsters is indeed an appropriate challenge for a 10th-
+level party because the group had lost all their equipment before
+the fight started.
+STORY AWARDS
+The PCs have rescued the constable’s son from the troll lair. They
+leave the lair and stop their current quest so they can return the
+young boy to his home and parents. Do they get experience points
+for this?
+Some DMs want the answer to be “Of course they do.” To
+accomplish this, you need to set up a system in which you can
+award XP for accomplishing goals and for actions and encounters
+that don’t involve combat.
+Sometimes you may want to estimate experience point awards
+for actions that normally don’t result in an XP award under the
+standard system. These are called story awards, and they should
+only be used by an experienced DM.
+CRs for Noncombat Encounters
+You could award experience points for solving a puzzle, learning a
+secret, convincing an NPC to help, or escaping from a powerful
+foe. Mysteries, puzzles, and roleplaying encounters (such as nego-
+tiations) can be assigned Challenge Ratings, but these sorts of
+awards require more ad hoc ruling on the DM’s part.
+Challenge Ratings for noncombat encounters are even more of
+a variable than traps. A roleplaying encounter should only be con-
+sidered a challenge at all if there’s some risk involved and success
+or failure really matters. For example, the PCs encounter an NPC
+who knows the secret password to get into a magical prison that
+holds their companion. The PCs must get the information out of
+her—if they don’t, their friend remains trapped forever. In an-
+other instance, the characters must cross a raging river by wading,
+swimming, or climbing across a rope. If they fail, they can’t get to
+where the magic gem lies, and if they fail spectacularly, they are
+washed away down the river.
+You might see such situations as having a Challenge Rating
+equal to the level of the party. Simple puzzles and minor encoun-
+ters should have a CR lower than the party’s level, if they are worth
+an award at all. They should never have a CR higher than the
+party’s level. As a rule, you probably don’t want to hand out a lot of
+experience for these kinds of encounters unless you intentionally
+want to run a low-combat game.
+In the end, this kind of story award feels pretty much like a
+standard award. Don’t ever feel obligated to give out XP for an en-
+counter that you don’t feel was much of a challenge. Remember
+that the key word in “experience award” is award. The PCs should
+have to do something impressive to get an award.
+Mission Goals
+Often an adventure has a mission or a goal that pulls the PCs into
+the action. Should the PCs accomplish their goal, they may get a
+story award. No Challenge Ratings are involved here: The XP
+award is entirely up to you.
+Such rewards should be fairly large—large enough to seem sig-
+nificant when compared to the standard awards earned along the
+way toward achieving the mission goal. The mission award should
+be more than the XP for any single encounter on the mission, but
+not more than all standard awards for encounters for the mission
+put together (see Story Awards and Standard Awards, below).
+Potentially, you could give out only story awards and no standard
+awards. In this nonstandard game, the mission award would be the
+main contributor to the PCs’ experience point totals.
+It’s possible that in a single adventure a party can have multiple
+goals. Sometimes the goals are all known at the outset: Unchain
+the gold dragon, destroy or imprison the two black dragons, and
+find the lost staff of healing. Sometimes the next goal is discovered
+when the first one is accomplished: Now that the illithid is dead,
+find the people who were under its mental control and bring them
+back to town.
+Some players will want to set up personal goals for their char-
+acters. Perhaps the PC paladin holds a grudge against the night
+hag from when they encountered her before. Although not crit-
+ical to the adventure at hand, it becomes his personal goal to
+avenge the wrongs she committed by destroying her. Or,
+another character wants to find the magic item that will enable
+her to return to her home village and stop the plague. These are
+worthy goals, and the individual character who achieves them
+should get a special award. “I want to get more powerful” is not
+an individual goal, since that’s what just about everyone wants
+to accomplish.
+Remember: A goal that’s easy to accomplish is worth little or no
+award. Likewise, goals that merely reflect standard awards (such as
+“Kill all the monsters in this cavern complex”) should be treated as
+standard awards.
+Roleplaying Awards
+A player who enjoys playing a role well may sometimes make
+decisions that fit his or her character but don’t necessarily lead to
+the most favorable outcome for that character. Good roleplayers
+might perform some deeds that seem particularly fitting for
+their characters. Someone playing a bard might compose a short
+poem about events in the campaign. A smart-aleck sorcerer
+might crack an in-game joke that sends the other players to the
+floor laughing. Another player might have his character fall in
+love with an NPC and then devote some portion of his time to
+playing  out  that  love  affair.  Such  roleplaying  should  be
+rewarded, since it enhances the game. (If it doesn’t enhance the
+game, don’t give an award.)
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: FASTER OR SLOWER EXPERIENCE
+You control the pace of character progress, and the easiest way to do
+that  is  through  experience  point  awards.  Obviously,  if  you  want  the
+characters to progress faster, simply make every award 10%, 20%, or
+even 50% larger. If you want characters to progress more slowly, give
+awards that are some suitable fraction of the original award.
+When  modifying  awards  in  this  way,  keep  track  of  the  amount  of
+change you impose on the PCs’ progress. You need to balance this with
+the pace of treasure awarded. For example, if you increase the amount
+of experience earned by the characters by 20% across the board, trea-
+sure also needs to increase by 20%, or else the PCs end up poor and
+underequipped for their level.
+Modifying Challenge Ratings
+The other way to modify character progress is to modify the Challenge
+Ratings of monsters encountered. If you increase the CRs, you increase
+the experience awards and speed up advancement.
+Of  course,  whether  or  not  you  want  to  change  character  progress,
+you may decide to modify various Challenge Ratings. If you think that
+a  certain  monster  is  worth  more  (or  less)  than  its  Monster  Manual
+rating, feel free to change it. Keep in mind, however, that just because
+the  PCs  in  your  campaign  happen  to  all  have  bane  weapons  useful
+against  aberrations,  that  doesn’t  necessarily  make  beholders  a  lesser
+challenge  overall.  It  just  means  that  your  party  is  particularly  well
+equipped to deal with their challenge.
+pqqqqrs
+pqqqqrs

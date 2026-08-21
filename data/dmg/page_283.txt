@@ -1,0 +1,129 @@
+282
+turning, they serve the wielder as if called by a summon monster
+Vspell cast at 20th level.
+•Summon  Nightshade:  Once  per  month,  the  staff  can  summon  a
+nightcrawler  nightshade  (see  page  195  of  the  Monster  Manual)
+that serves the wielder as if called by a summon monster IX spell
+cast at 20th level.
+•Shadow  Form:Three  times  per  day  the  wielder  can  become  a
+living  shadow,  with  all  the  movement  powers  granted  by  the
+gaseous formspell.
+•Shadow  Bolt:Three  times  per  day  the  staff  can  project  a  ray
+attack  that  deals  10d6  points  of  cold  damage  to  a  single  target.
+The shadow bolt has a range of 100 feet.
+The Shield of Prator:A hero of old, the paladin Prator bore
+this relic in many a valiant battle. The Shield of Pratordisappeared
+when Prator fell in the Battle of the Three Hells, although it has
+reportedly surfaced briefly from time to time since then. This +5
+large shield,emblazoned with the symbol of the sun, allows the
+wielder to cast spells as if she were a 20th-level paladin with a
+Wisdom score of 20. The spells gained are cumulative with any
+existing spells per day that the character might have, even if she’s
+already a paladin. The Shield of Pratoralso grants spell resistance 15
+to its wielder. It absorbs the first 10 points of damage from any
+energy attack (fire, cold, acid, electricity, or sonic). In return for
+all this, once per year the shield’s owner must undertake a quest
+(no saving throw to avoid) at the behest of a lawful good deity.
+A character who is evil or chaotic (LE, NE, CE, CN, CG) gains
+four negative levels if she attempts to use this artifact. Although
+these negative levels never results in actual level loss, they remain
+as long as the shield is in hand and cannot be overcome in any way
+(including restorationspells). The negative levels disappear when
+the shield is stowed or leaves the wearer’s possession.
+The Sword of Kas:The vampire Kas was the dreaded lieu-
+tenant of Vecna. He used this mighty blade, created by his master,
+to betray and attack the archlich, cutting off his hand and eye in a
+terrible battle before Vecna destroyed him. Only his sword sur-
+vived, and it is said to forever seek vengeance against Vecna. The
+Sword of Kasis a +6 unholy keen vorpal longsword.It grants the
+wielder a +10 enhancement bonus to Strength. The sword is intel-
+ligent (Int 15, Wis 13, Cha 16, Ego 34) and chaotic evil. It can be
+used to cast the following spells, once per day each: call lightning
+(10d6 points of damage, Reflex DC 14 half ), blasphemy, and unhal-
+low. Once per week it can be used to slay living.
+CREATING MAGIC ITEMS
+To create magic items, spellcasters use special feats. They invest
+time, money, and their own personal energy (in the form of expe-
+rience points) in an item’s creation. For details on creating the dif-
+ferent types of magic items, see the appropriate section below as
+well as the information on item creation feats in Chapter 5: Feats,
+in the Player ’s Handbook.
+Note that all items have prerequisites in their descriptions.
+These prerequisites must be met for the item to be created. Most
+of the time, they take the form of spells that must be known by the
+item’s creator (although access through another magic item or
+spellcaster is allowed).
+While item creation costs are handled in detail elsewhere, note
+that normally the two primary factors are the caster level of the
+creator and the level of the spell or spells put into the item. A cre-
+ator can create an item at a lower caster level than her own, but
+never lower than the minimum level needed to cast the needed
+spell. For example, a 15th-level wizard could craft a wand of fireball
+at 10th caster level, or even as low as 5th level (the minimum
+caster level for fireball, a 3rd-level spell), but no lower. If she did
+this, the fireballwould in all ways be treated as if the caster was of
+the lower specified level (for damage, range, and so on). Using
+metamagic feats, a caster can place spells in items at a higher level
+than normal. For example, a caster could heighten a spell’s level to
+CHAPTER 7:
+MAGIC ITEMS
+BEHIND THE CURTAIN: 
+MAGIC ITEM GOLD PIECE VALUES
+Many factors must be considered when determining the price of magic
+items you invent. The easiest way to come up with a price is to match
+the  new  item  to  an  item  priced  in  this  chapter  and  use  its  price  as  a
+guide.  Otherwise,  use  the  guidelines  summarized  on  Table  7–33:
+Estimating Magic Item Gold Piece Values.
+Multiple  Similar  Abilities:  For  items  with  multiple  similar  abilities
+that don’t take up space on a character’s body (see Magic Items on the
+Body, page 214), use the following formula: Calculate the price of the
+single most costly ability, then add 75% of the value of the next most
+costly ability, plus one-half the value of any other abilities. (The many
+spell-like powers of a staff of powerare a good example of multiple simi-
+lar abilities).
+Multiple Different Abilities: Abilities such as an attack roll bonus or
+saving throw bonus and a spell-like function are not similar, and their
+values are simply added together to determine the cost. For items that
+do take up a space on a character’s body (such as a ring or a necklace),
+each additional power not only has no discount but instead has a 50%
+increase in price. A belt of Strength +4 and Dexterity +4is more valuable
+than a belt of Strengthworn with gauntlets of Dexterity, since it takes up
+only one space on a character’s body.
+0-Level Spells:When multiplying spell levels to determine value, 0-
+level spells should be treated as 1/2 level.
+Other Considerations: Once you have a final cost figure, reduce that
+number if either of the following conditions applies:
+—Item  Requires  Skill  to  Use:Some  items  require  a  specific  skill
+(such  as  Perform  for  a  musical  instrument)  to  get  them  to  function.
+This factor should reduce the cost about 10%.
+—Item  Requires  Specific  Class  or  Alignment  to  Use:Even  more
+restrictive than requiring a skill, this limitation cuts the cost by 30%.
+Prices presented in the magic item descriptions in this book (the
+gold piece value following the item’s caster level) are the market value,
+which is generally twice what it costs the creator to make the item. 
+Since  different  classes  get  access  to  certain  spells  at  different
+levels,  the  prices  for  two  characters  to  make  the  same  item  might
+actually be different. Take hold person, for example. A cleric casts it as
+a 2nd-level spell, so a cleric-created wand of hold personcosts 2 (2nd-
+level spell) ×3 (3rd-level caster) ×750 gp, divided in half, or 2,250 gp.
+However, a wizard casts hold personas a 3rd-level spell, so her wand
+costs 3 (3rd-level spell) ×5 (5th-level caster) ×750 gp, divided in half,
+or 5,625 gp. A sorcerer also casts hold personas a 3rd-level spell, but
+he doesn’t get the spell until 6th level, so his wand costs 3 (3rd-level
+spell) ×6 (6th-level caster) ×750 gp, divided in half, or 6,750 gp. The
+wand is only worth two times what the caster of lowest possible level
+(in this case, the cleric) can make it for, however, so the market price
+of a wand of hold personis 4,500 gp, no matter who makes it.
+You’ll notice, however, that not all the items presented here adhere
+to  these  formulas  directly.  The  reasons  for  this  are  several.  First  and
+foremost,  these  few  formulas  aren’t  enough  to  truly  gauge  the  exact
+differences between, say, a ring of fire resistanceand boots of speed—two
+very  dissimilar  items.  Each  of  the  magic  items  presented  here  was
+examined and modified based on its actual worth. The formulas only
+provide a starting point. The pricing of scrolls assumes that, whenever
+possible,  a  wizard  or  cleric  created  it.  Potions  and  wands  follow  the
+formulas  exactly.  Staffs  follow  the  formulas  closely,  and  other  items
+require  at  least  some  DM  judgment  calls.  Use  good  sense  when
+assigning prices, using the items in this book as examples.
+pqqqqrs
+pqqqqrs

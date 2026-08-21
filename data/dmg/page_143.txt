@@ -1,0 +1,133 @@
+142
+SOCIAL CLASSES
+Most societies are, to one degree or another, class-based. Use these
+easy definitions for the typical society.
+Upper Class:Nobles, the wealthiest of merchants, and the most
+important leaders (guildmasters, for example) make up the upper
+class. Lawmakers, administrators, and other officials are drawn
+from this class. Having noble blood or being a member of a wealthy
+merchant family allows entrance into the class by birth, while
+attaining wealth or significant position can raise one to this status.
+By virtue of their wealth, adventurers are likely to rise to the up-
+per class quickly. However, they may be rejected by other mem-
+bers of the upper class based on how society around them views
+sword-wielding, spell-slinging, self-governing mercenaries. Other
+members of the upper class might look upon adventurers as
+heroes, but they are just as likely to look upon them as dangerous
+threats to public safety (as well as their personal safety) and to the
+existing sociopolitical structure.
+Middle Class: Merchants, master artisans, educated profes-
+sionals, and most significant guild members make up the middle
+class. Lesser officials such as tax collectors and town clerks are
+sometimes drawn from the middle class. This status is normally
+based on one’s occupation and education. Its primary determinant
+for membership is not birth, but wealth.
+Lower Class:Tradesfolk, journeymen, laborers, subsistence
+farmers, impoverished freeholders, personal servants, and virtu-
+ally everyone else are members of the lower class. Members of the
+lower class tend to be poorer and less educated than middle-class
+people. While sometimes a council of elders or some similar body
+exists to watch over the interests of and argue for the lower class,
+most of the time no officials or lawmakers come from these ranks.
+Slaves:Some cultures (usually evil ones) practice slavery.
+Slaves are lower in station than even members of the lower class.
+Though they need not be uneducated or even unskilled, most
+slaves are laborers or servants.
+MAGIC IN YOUR WORLD
+Some DMs create cities in their campaigns that function just like
+medieval historical towns. They are populated by people who
+aren’t accustomed to (or who don’t believe in) magic, who don’t
+know anything about magical or mythical monsters, and who
+have never seen a magic item.
+This sort of creative work is a mistake. It will cause your players
+serious strain in their belief in the reality of your world for them
+to see that they wield spells and magic items, and the lands and
+dungeons surrounding the city are filled with magic and mon-
+sters, but yet in the middle of the city everything looks and acts
+like Europe during the Middle Ages.
+The presence of magic in your game world forces you to deviate
+from a truly historical setting. When you create anything for your
+world, the idea that magic could possibly alter it should be in the
+back of your mind. Would the king simply surround his castle
+with a wall when levitate and fly spells are common? How do the
+guards of the treasury make sure that someone doesn’t just tele-
+port in or slip through the walls while ethereal?
+Unless you are going to run a divergent game of some sort,
+magic is prevalent enough in the world that it will always be taken
+into account by smart individuals. A merchant wouldn’t be flab-
+bergasted by the idea that someone might try to steal from her
+while invisible. A swindler would be aware that someone might
+be able to detect his thoughts or his lies.
+Magic  shouldn’t  be  something  that  common  people  are
+unaware of. Spellcasters may be fairly rare in the big picture, but
+they’re common enough that people know that when Uncle Rufus
+falls off the back of the wagon, they could take him to the temple
+to have the priests heal the wound (although the average peasant
+probably couldn’t afford the price). Only the most isolated farmer
+might not see magic or the results of magic regularly.
+Here are a few points to consider when fitting magic into your
+world.
+•A tavern  frequented  by  adventurers  might  have  a  “No  detec-
+tions”  sign  above  the  bar  to  allow  the  patrons  to  relax  in  an
+atmosphere  where  they  don’t  need  to  worry  about  someone
+discerning  their  alignments,  reading  their  thoughts,  figuring
+which of their items are magical, and so on.
+•Merchants might jointly employ a small squad of wizards who
+wander  about  the  marketplace  invisibly  while  watching  for
+thieves,  casting  detect  thoughtson  suspicious  characters,  and
+using see invisibilityto look for magic-using robbers.
+•The town guard might employ a spellcaster or two (or more) to
+supplement  its  defensive  strength,  deal  with  unruly  spellcast-
+ers, and help facilitate interrogations.
+•A court might use detect thoughtsor discern liesto help make accu-
+rate judgments in important cases.
+•A town  might  use  simple  spells  to  make  life  easier,  such  as
+continual  flameto  make  a  sort  of  streetlight.  Very  sophisticated
+or wealthy cities might use magic portals to dispose of sewage
+and carpets of flyingto deliver urgent messages.
+Magic Items
+The magic items described in Chapter 7 all have prices. The as-
+sumption is that, while they are rare, magic items can be bought
+and sold as any other commodity can be. The prices given are far
+beyond the reach of almost everyone, but the very rich, including
+mid- to high-level PCs, can buy and sell these items or even have
+spellcasters make them to order. In very large cities, some shops
+might specialize in magic items if their clientele is very wealthy or
+includes a large number of adventurer (and such shops would
+have lots of magical protections to ward away thieves). Magic
+items might even be available in normal markets and shops occa-
+sionally. For example, a weaponsmith might have a few magic
+weapons for sale along with her normal wares.
+Superstitions
+Just because magic works and most people are aware of it doesn’t
+mean they know exactly how it works or when it’s in effect. Super-
+stitions (ritual activity that doesn’t produce actual results) are still
+likely to be common. To add some flavor to your world and provide
+details that convey both the quirks and underlying fears and con-
+cerns of a society, invent some superstitions (or adapt some from
+the real world). Consider the following ideas to get you started.
+•Common  folk  believe  that  particular  charms  and  trinkets  sold
+by a  vendor  are  lucky,  when  actually  they  have  no  magical
+power (such as a rabbit’s foot in the real world).
+•In some cultures, special hand signs or spoken words are oblig-
+atory in certain situations (such as saying “Gesundheit!” after a
+sneeze).
+•Someone  claims  to  be  able  to  see  omens  in  the  movements  of
+birds. Does he have a good reputation because he tells supersti-
+tious people what they want to hear, or because he actually has
+some sort of magical ability?
+Restrictions on Magic
+In some civilized areas, the use of magic might be restricted or
+prohibited. A license might be required, or perhaps official per-
+mission from the local ruler would enable a spellcaster to use his
+powers, but without such permission, magic use is forbidden. In
+such a place, magic items and in-place magical effects are rare, but
+protections against magic might not be.
+Some localities might prohibit specific spells. It could be a crime
+to cast any spells used to steal or swindle, such as those that bestow
+invisibility or produce illusions. Enchantments (particularly charm
+spells, compulsion effects, suggestionspells, and domination effects)
+tend to be readily forbidden, since they rob their subjects of free
+will. Destructive spells are likewise prohibited, for obvious reason.
+CHAPTER 5:
+CAMPAIGNS

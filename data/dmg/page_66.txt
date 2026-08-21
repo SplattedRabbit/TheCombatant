@@ -1,0 +1,169 @@
+must swim to move through a square containing a deep pool.
+Tumbling is impossible in a deep pool.
+The water in a deep pool provides cover for
+Medium or larger creatures. Smaller creatures
+gain improved cover (+8 bonus to AC, +4 bonus on
+Reflex saves). Medium or larger creatures can crouch
+as a move action to gain this improved cover. Crea-
+tures with this improved cover take a –10 penalty
+on attacks against creatures that aren’t also under-
+water.
+Deep pool squares are usually clustered together
+and surrounded by a ring of shallow pool squares.
+Both shallow pools and deep pools impose a –2 cir-
+cumstance penalty on Move Silently checks.
+Special Pools: Through accident or design, a pool can
+become magically enhanced. Rarely, a pool or a fountain
+may be found that has the ability to bestow beneficial
+magic on those who drink from it—healing, ability
+score modification, transmutation magic, or even
+something as amazing as a wishspell. However, magic
+pools are just as likely to curse the drinker, causing a
+loss of health, an unwanted polymorphing, or some
+even greater affliction. Typically, water from a magic
+pool loses its potency if removed from the pool for more than an
+hour or so.
+Some pools have fountains. Occasionally these are merely deco-
+rative, but they often serve as the focus of a trap or the source of a
+pool’s magic.
+Most pools are made of water, but anything’s possible in a
+dungeon. Pools can hold unsavory substances such as blood,
+poison, oil, or magma. And even if a pool holds water, it can be
+holy water, saltwater, or water tainted with disease (see page
+292 for some possible diseases).
+Elevator: In place of or in addition to stairs, an
+elevator (essentially an oversized dumbwaiter) can
+take inhabitants from one dungeon level to the next.
+Such an elevator may be mechanical (using gears, pul-
+leys, and winches) or magical (such as a levitatespell
+cast on a movable flat surface). A mechanical elevator
+might be as small as a platform that holds one charac-
+ter at a time, or as large as an entire room that raises
+and lowers. A clever builder might design an elevator
+room that moves up or down without the occupants’
+knowledge to catch them in a trap, or one that appears
+to have moved when it actually remained still.
+A typical elevator ascends or descends 10 feet per
+round at the beginning of the operator’s turn (or on
+initiative count 0 if it functions without regard to
+whether  creatures  are  on  it.  Elevators  can  be
+enclosed, can have railings or low walls, or may
+simply be treacherous floating platforms.
+Ladders: Whether free-standing or rungs set
+into a wall, a ladder requires a DC 0 Climb check to
+ascend or descend.
+Shifting Stone or Wall: These features can cut off access to a
+passage or room, trapping adventurers in a dead end or preventing
+escape out of the dungeon. Shifting walls can force explorers to go
+down a dangerous path or prevent them from entering a special
+area. Not all shifting walls need be traps. For example, stones con-
+trolled by pressure plates, counterweights, or a secret lever can
+shift out of a wall to become a staircase leading to a hidden upper
+room or secret ledge.
+65
+CHAPTER 3:
+ADVENTURES
+A pool with a grim fountain
+Table 3–11: 
+Major Features and Furnishings
+d%Feature/Furnishing
+01Alcove
+02Altar
+03Arch
+04Arrow slit (wall)/murder hole (ceiling)
+05Balcony
+06Barrel
+07Bed
+08Bench
+09Bookcase
+10Brazier
+11Cage
+12Caldron
+13Carpet
+14Carving
+15Casket
+16Catwalk
+17Chair
+18Chandelier
+19Charcoal bin
+20Chasm
+21Chest
+22Chest of drawers
+23Chute
+24Coat rack
+25Collapsed wall
+26Crate
+27Cupboard
+28Curtain
+29Divan
+30Dome
+31Door (broken)
+32Dung heap
+33Evil symbol
+34Fallen stones
+35Firepit
+36Fireplace
+37Font
+38Forge
+39Fountain
+40Furniture (broken)
+41Gong
+42Hay (pile)
+43Hole
+44Hole (blasted)
+45Idol
+46Iron bars
+47Iron maiden
+48Kiln
+49Ladder
+50Ledge
+51Loom
+52Loose masonry
+53Manacles
+54Manger
+55Mirror
+56Mosaic
+57Mound of rubble
+58Oven
+59Overhang
+60Painting
+61Partially collapsed ceiling
+62Pedestal
+63Peephole
+64Pillar
+65Pillory
+66Pit (shallow)
+67Platform
+68Pool
+69Portcullis
+70Rack
+71Ramp
+72Recess
+73Relief
+74Sconce
+75Screen
+76Shaft
+77Shelf
+78Shrine
+79Spinning wheel
+80Stall or pen
+81Statue
+82Statue (toppled)
+83Steps
+84Stool
+85Stuffed beast
+86Sunken area
+87Table (large)
+88Table (small)
+89Tapestry
+90Throne
+91Trash (pile)
+92Tripod
+93Trough
+94Tub
+95Wall basin
+96Wardrobe
+97Weapon rack
+98Well
+99Winch and pulley
+100Workbench

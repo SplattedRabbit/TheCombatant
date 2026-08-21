@@ -1,0 +1,139 @@
+60
+defenders to fire arrows or crossbow bolts at intruders from
+behind the safety of the wall. Archers behind arrow slits
+have improved cover that gives them a +8 bonus to
+Armor Class, a +4 bonus on Reflex saves, and the
+benefits of the improved evasion class feature.
+Floors
+As with walls, dungeon floors come in many
+types. 
+Flagstone: Like  masonry  walls,  flagstone
+floors are made of fitted stones. They are usually
+cracked and only somewhat level. Slime and mold
+grows in these cracks. Sometimes water runs in
+rivulets between the stones or sits in stagnant pud-
+dles. Flagstone is the most common dungeon floor.
+Uneven Flagstone: Over time, some floors can
+become so uneven that a DC 10 Balance check is
+required to run or charge across the surface. Failure
+means the character can’t move in this round.
+Floors as treacherous as this should be the excep-
+tion, not the rule.
+Hewn Stone Floors: Rough and uneven, hewn
+floors  are  usually  covered  with  loose  stones,
+gravel, dirt, or other debris. A DC 10 Balance check is required to
+run or charge across such a floor. Failure means the character can
+still act, but can’t run or charge in this round.
+Light Rubble: Small chunks of debris litter the ground. Light
+rubble adds 2 to the DC of Balance and Tumble checks.
+Dense Rubble: The ground is covered with debris of all sizes. It
+costs 2 squares of movement to enter a square with dense rubble.
+Dense rubble adds 5 to the DC of Balance and Tumble checks, and
+it adds 2 to the DC of Move Silently checks.
+Smooth Stone Floors: Finished and sometimes even polished,
+smooth floors are found only in dungeons with capable and care-
+ful builders. (They are a hallmark of dwarf-delved dungeons.)
+Sometimes mosaics are set in the floor, some depicting interesting
+images and others just smooth marble.
+Natural Stone Floors: The floor of a natural cave is as uneven
+as the walls. Caves rarely have flat surfaces of any great size.
+Rather, their floors have many levels. Some adjacent floor surfaces
+might vary in elevation by only a foot, so that moving from one to
+the other is no more difficult than negotiating a stair step, but in
+other places the floor might suddenly drop off or rise up several
+feet or more, requiring Climb checks to get from one surface to
+the other. Unless a path has been worn and well marked in the
+floor of a natural cave, it takes 2 squares of movement to enter a
+square with a natural stone floor, and the DC of Balance and
+Tumble checks increases by 5. Running and charging are impos-
+sible, except along paths.
+Special Floors: A number of strange floorings and floor fea-
+tures exist to make a dungeon more interesting.
+Slippery: Water, ice, slime, or blood can make any of the dun-
+geon floors described in this section more treacherous. Slippery
+floors increase the DC of Balance and Tumble checks by 5.
+Grate: A grate often covers a pit or an area lower than the main
+floor. Grates are usually made from iron, but large ones can also be
+made from iron-bound timbers. Many grates have hinges to allow
+access to what lies below (such grates can be locked like any
+door), while others are permanent and designed not to
+move. A typical 1-inch-thick iron grate has 25 hit points,
+hardness 10, and a DC of 27 for Strength checks to break
+through it or tear it loose.
+Ledge: Ledges allow creatures to walk above some lower
+area. They often circle around pits, run along under-
+ground streams, form balconies around large rooms, or
+provide a place for archers to stand while firing upon
+enemies below. Narrow ledges (12 inches wide or less)
+require  those  moving  along  them  to  make  Balance
+checks (see the skill description on page 67 of the Player ’s
+Handbook for DCs). Failure results in the moving charac-
+ter falling off the ledge.
+Ledges sometimes have railings. In such a case, char-
+acters gain a +5 circumstance bonus on Balance checks
+to move along the ledge. A character who is next to a
+railing gains a +2 circumstance bonus on his or her
+opposed Strength check to avoid being bull rushed off
+the edge.
+Ledges can also have low walls 2 to 3 feet high along
+their edges. Such walls provide cover against attackers
+within 30 feet on the other side of the wall, as long as the
+target is closer to the low wall than the attacker is.
+Transparent Floor: Transparent floors, made of reinforced glass
+or magic materials (even a wall of force), allow a dangerous setting
+to be viewed safely from above. Transparent floors are sometimes
+placed over lava pools, arenas, monster dens, and torture cham-
+bers. They can be used by defenders to watch key areas for
+intruders.
+Sliding Floors: A sliding floor is a type of trapdoor, designed to
+be moved and thus reveal something that lies beneath it. A typical
+sliding floor moves so slowly that anyone standing on one can
+avoid falling into the gap it creates, assuming there’s somewhere
+else to go. If such a floor slides quickly enough that there’s a
+chance of a character falling into whatever lies beneath—a spiked
+pit, a vat of burning oil, or a pool filled with sharks—then it’s a
+trap (see page 67).
+Trap Floors: Some floors are designed to become suddenly
+dangerous. With the application of just the right amount of
+weight, or the pull of a lever somewhere nearby, spikes protrude
+from the floor, gouts of steam or flame shoot up from hidden
+holes, or the entire floor tilts. These strange floors are sometimes
+found in an arena, designed to make combats more exciting and
+deadly. Construct these floors as you would any other trap.
+DOORS
+Doors in dungeons are much more than mere entrances and
+exits. Often they can be encounters all by themselves. After all,
+anything that can trigger a nasty trap, offer you a clue, zap you
+with a spell, or simply block your way deserves attention from the
+CHAPTER 3:
+ADVENTURES
+WALLS, DOORS, AND DETECTSPELLS
+Stone  walls,  iron  walls,  and  iron  doors  are  usually  thick  enough  to
+block  most  detectspells,  such  as  detect  thoughts.  Wooden  walls,
+wooden doors, and stone doors are usually not thick enough to do so.
+However, a secret stone door built into a wall and as thick as the wall
+itself (at least 1 foot) does block most detectspells.
+pqqrs
+pqqrs
+Reinforced wall
+Table 3–9: Walls
+TypicalBreakHitClimb
+Wall TypeThicknessDCHardnessPoints
+1
+DC
+Masonry1 ft.35890 hp15
+Superior masonry1 ft.35890 hp20
+Reinforced masonry1 ft.458180 hp15
+Hewn stone3 ft.508540 hp22
+Unworked stone5 ft.658900 hp20
+Iron3 in.301090 hp25
+PaperPaper-thin1—1 hp30
+Wood6 in.20560 hp21
+Magically treated
+2
+—+20×2×2
+3
+—
+1 Per 10-foot-by-10-foot section.
+2 These modifiers can be applied to any of the other wall types.
+3 Or an additional 50 hit points, whichever is greater.

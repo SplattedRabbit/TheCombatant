@@ -1,0 +1,83 @@
+38
+base CR to its total class levels to get its overall CR. For
+example, a centaur is CR 1, so a centaur who’s also a 7th-level
+ranger is CR 8.
+Since NPC classes (see Chapter 5: Campaigns) are weaker than
+PC classes, levels in an NPC class contribute less to a creature’s CR
+than levels in a PC class. For an NPC with an NPC class, determine
+her Challenge Rating as if she had a PC class with one less level.
+For a creature with monster levels in addition to NPC class levels,
+add the NPC levels –1 to the creature’s base CR (always adding at
+least 1).
+For example, when adding class levels to some sample charac-
+ters, the resulting CRs would be as given in the following table.
+Remember that warrior is an NPC class, and fighter is a PC class.
+—————— Class Levels ——————
+Creature1210
+Dwarf warriorCR 1/2CR 1CR 9
+Dwarf fighterCR 1CR 2CR 10
+Orc warriorCR 1/2CR 1CR 9
+Orc fighterCR 1CR 2CR 10
+Drow warriorCR 1CR 2CR 10
+Drow fighterCR 2CR 3CR 11
+Ogre warrior
+1
+CR 3CR 3CR 11
+Ogre fighter
+1
+CR 3CR 4CR 12
+1 The ogre with no class levels has a CR of 2. Ogres with class levels
+retain their original 4 HD, attack bonuses, and other aspects of their
+monster levels.
+CHAPTER 2:
+USING 
+THE RULES
+Table 2–6: Experience Point Awards (Single Monster)
+Character—–—————————————————————  Challenge Rating —–———————––—————————————— 
+LevelCR 1CR 2CR 3CR 4CR 5CR 6CR 7CR 8CR 9CR 10
+1st–3rd3006009001,3501,8002,7003,6005,4007,20010,800
+4th3006008001,2001,6002,4003,2004,8006,4009,600
+5th3005007501,0001,5002,2503,0004,5006,0009,000
+6th3004506009001,2001,8002,7003,6005,4007,200
+7th2633505257001,0501,4002,1003,1504,2006,300
+8th2003004006008001,2001,6002,4003,6004,800
+9th*2253384506759001,3501,8002,7004,050
+10th**2503755007501,0001,5002,0003,000
+11th***2754135508251,1001,6502,200
+12th****3004506009001,2001,800
+13th*****3254886509751,300
+14th***** *3505257001,050
+15th***** * *375563750
+16th***** * **400600
+17th***** * ** *425
+18th***** * ** **
+19th***** * ** **
+20th***** * ** **
+Character—–—————————————————————  Challenge Rating —–———————––—————————————— 
+LevelCR 11CR 12CR 13CR 14CR 15CR 16CR 17CR 18CR 19CR 20
+1st–3rd********************
+4th12,800******************
+5th12,00018,000****************
+6th10,80014,40021,600**************
+7th8,40012,60016,80025,200************
+8th7,2009,60014,40019,20028,800**********
+9th5,4008,10010,80016,20021,60032,400********
+10th4,5006,0009,00012,00018,00024,00036,000******
+11th3,3004,9506,6009,90013,20019,80026,40039,600****
+12th2,4003,6005,4007,20010,80014,40021,60028,80043,200**
+13th1,9502,6003,9005,8507,80011,70015,60023,40031,20046,800
+14th1,4002,1002,8004,2006,3008,40012,60016,80025,20033,600
+15th1,1251,5002,2503,0004,5006,7509,00013,50018,00027,000
+16th8001,2001,6002,4003,2004,8007,2009,60014,40019,200
+17th6388501,2751,7002,5503,4005,1007,65010,20015,300
+18th4506759001,3501,8002,7003,6005,4008,10010,800
+19th*4757139501,4251,9002,8503,8005,7008,550
+20th**5007501,0001,5002,0003,0004,0006,000
+For monsters with CRs higher than 20, double the reward for a CR two levels below the desired CR. Thus, a CR 21 reward equals double the CR 19
+reward, CR 22 is double the CR 20 reward, CR 23 is double the CR 21 reward, and so on.
+Boldnumbers indicate the amount of XP that a standard encounter for a party of that level should provide.
+* The table doesn’t support XP for monsters that individually are eight Challenge Ratings lower than the character’s level, since an encounter with
+multiple weak creatures is hard to measure. See Assigning Ad Hoc XP Awards, page 39.
+** The table doesn’t support awards for encounters eight or more Challenge Ratings higher than the character’s level. If the party is taking on
+challenges that far above their level, something strange is going on, and the DM needs to think carefully about the awards rather than just taking
+them off a table. See Assigning Ad Hoc XP Awards, page 39.

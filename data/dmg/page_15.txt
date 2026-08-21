@@ -1,0 +1,129 @@
+14
+CHANGING THE RULES
+Beyond simply adjudicating, sometimes you are going to want to
+change things. That’s okay. However, changing the rules is a chal-
+lenge for a DM with only a little experience.
+Altering the Way Things Work
+Every rule in the Player ’s Handbookwas written for a reason. That
+doesn’t mean you can’t change some rules for your own game. Per-
+haps your players don’t like the way initiative is determined, or
+you find that the rules for learning new spells are too limiting.
+Rules that you change for your own game are called house rules.
+Given the creativity of gamers, almost every campaign will, in
+time, develop its own house rules.
+The ability to use the mechanics as you wish is paramount to
+the way roleplaying games work—providing a framework for you
+and the players to create a campaign. Still, changing the way the
+game does something shouldn’t be taken lightly. If the Player ’s
+Handbookpresents the rules, then throughout the Dungeon Master ’s
+Guideyou will find explanations for why those rules are the way
+they are. Read these explanations carefully, and realize the impli-
+cations for making changes.
+Consider the following questions when you want to change
+a rule.
+•Why am I changing this rule?
+•Am  I  clear  on  how  the  rule  that  I’m  going  to  change  really
+works?
+•Have  I  considered  why  the  rule  existed  as  it  did  in  the  first
+place?
+•How will the change impact other rules or situations?
+•Will the change favor one class, race, skill, or feat more than the
+others?
+•Overall,  is  this  change  going  to  make  more  players  happy  or
+unhappy? (If the answer is “happy,” make sure the change isn’t
+unbalancing. If the answer is “unhappy,” make sure the change
+is worth it.)
+Often, players want to help redesign rules. This can be okay,
+since the game exists for the enjoyment of all its participants,
+and creative players can often find ways to fine-tune a rule. Be
+receptive to player concerns about game mechanics. At the
+same time, however, be wary of players who (whether selfishly
+or innocently) want to change the rules for their own benefit.
+The D&D game system is flexible, but it’s also meant to be a bal-
+anced set of rules. Players may express a desire to have the rules
+always work in their favor, but the reality is that if there were no
+challenges for the characters, the game would quickly grow
+dull. Resist the temptation to change the rules just to please
+your players. Make sure that a change genuinely improves your
+campaign for everybody.
+ADDITIONS TO THE GAME
+As DM, you get to make up your own spells, magic items, races,
+and monsters. Your campaign might have a real need for a spell
+that turns foes to crystal, or a monster covered in dozens of ten-
+tacles that drains heat from living creatures. Adding new races,
+spells, monsters, and magic items can be a really entertaining and
+rewarding experience.
+On the downside, an addition to the game can spoil game bal-
+ance. As stated earlier, maintaining balance is an important DM
+responsibility. Most unbalancing factors are actually hasty or ill-
+considered DM creations. Don’t let that happen to you.
+One way to judge whether a new skill, feat, spell, or other op-
+tion is balanced is to ask yourself, “If I add this to the game, is it
+so good that everyone will want to have it?” At the same time,
+ask yourself, “Is this so limited that no one will be interested in
+it?” Keep in mind that it’s easier and more tempting to create
+something that’s too good rather than not good enough. Watch
+yourself.
+Making Mistakes
+A magic item that allows the characters to move through walls
+unhindered, giving them easy access to all sorts of places you do
+not want them to go (at least without great effort), is a mistake.
+A 4th-level spell that kills multiple foes with no saving throw is
+a mistake. A race without a level adjustment that has bonuses of
++4 to Strength and Dexterity is a mistake.
+Usually, the mistakes that creep into a campaign are the ones
+that seem innocuous at first. A 1st-level spell creating a blast of
+wind that knocks a foe down appears to be fine—until a shrewd
+player uses it to knock a powerful opponent off the edge of a cliff.
+On the other hand, you’ll know right away that you should never
+have put a staff of disintegration with unlimited charges in that trea-
+sure chest, or you should never have allowed your players to per-
+suade you that the game would be more fun if critical hits multi-
+plied all damage by five.
+When things get unbalanced, you need to fix them either in-
+game or out-of-game, depending on the situation and the involved
+players’ personalities. Unbalanced character abilities or items are
+best handled in-game, but rule changes can only be handled out-
+of-game. Sometimes it’s best for you to admit to the players that
+you made a mistake, and now it needs to be fixed in order to keep
+the game fun, balanced, and running smoothly. The more reason-
+able you are, the more likely your players are to understand.
+SETTING THE STAGE
+It’s worth stating again: Once the game starts, it’s all up to you. The
+players are likely to take their cues from you on how to act and
+react. If you handle the game seriously, they’ll be more likely to
+CHAPTER 1:
+RUNNING 
+THE GAME
+EQUIPMENT FOR RUNNING THE GAME
+The  following  kinds  of  equipment  are  available  to  streamline  or
+enhance your game. They’re not for everyone, however.
+DM  Screen:This  is  a  cardstock  screen  (available  in  many  game  and
+hobby stores) that stands up on the table between you and the players. It
+has useful tables and rules reminders on it to speed play. You can also clip
+notes to it, so you can see them but the players can’t. Behind this screen,
+you can put your maps and records on the table, and roll dice where the
+players  can’t  see  what  you’re  doing.  The  only  drawback  is  that  a  screen
+creates a wall between you and the players, which can be distancing. DMs
+who wish to have the information on the screen handy but don’t want to
+set  themselves  apart  from  the  players  sometimes  lay  the  screen  flat  on
+the table in front of them, hiding adventure notes underneath.
+Counters: If you don’t have miniature figures for every character or
+creature  the  PCs  encounter,  you  can  use  any  sorts  of  counters  to
+represent characters and monsters: printed counters with pictures of
+the creatures, poker chips, checkers, coins, scraps of paper—anything
+you want. 
+Computers: With  a  computer  at  the  table  (or  at  your  side  nearby,
+but shielded from players), you can keep all your notes and maps in
+electronic  files  easily  searched  and  referenced  during  the  game.
+Special  DM  utility  programs  are  available  that  manage  NPCs,  PCs,
+monsters, treasure, and other kinds of information. Some will deter-
+mine  random  encounters,  create  characters,  and  generate  random
+numbers.  Not  all  roleplaying  groups  prefer  to  use  a  computer,
+however,  because  of  the  tendency  of  the  machine  to  draw  the  DM’s
+attention away from the players and the game. If you find yourself star-
+ing at the screen more than at your players, consider scaling back the
+computer’s in-game use and restrict it to generating or manipulating
+material between sessions.
+pqqqqrs
+pqqqqrs

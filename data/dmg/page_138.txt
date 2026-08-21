@@ -1,0 +1,131 @@
+lized areas, but also because the players have real-world experi-
+ences to measure their game experiences against when they’re
+among other people.
+People, in general, live in the most convenient places possible.
+They try to place their communities near sources of water and
+food, in comfortable climates, and close to sources of transporta-
+tion (seas, rivers, flat land to build roads on, and so on). Of course,
+exceptions exist, such as a town in the desert, an isolated commu-
+nity in the mountains, and a secret city in the middle of a forest or
+at the top of a mesa. But there is also always a reason for those ex-
+ceptions: The city at the top of the mesa is placed there for defense,
+and the isolated community in the mountains exists because the
+people there want to cut themselves off from the rest of the world.
+Table 5–2: Random Town Generation shows a breakdown of dif-
+ferent community sizes. Small communities are much more
+common than larger ones. In general, the number of people living
+in small towns and larger communities should be about 1/10 to
+1/15 the number living in villages, hamlets, thorps, or outside a
+community at all. You might create a metropolis at the civilized
+center of the world with 100,000 people, but such a community
+should be the exception, not the rule. The more closely a city’s loca-
+tion conforms to the ideal parameters (near food and water, in a
+comfortable climate, close to sources of transportation), the larger it
+can become. A secret city on top of a mesa might exist, but it’s
+unlikely to be a metropolis. People living in cities need food, so if no
+nearby sources of food (farms, plenty of wild animals, herds of live-
+stock) are present, the community needs efficient transportation
+sources to ship food in. It needs some other renewable resource as
+well, such as nearby forests to harvest for timber or minerals to
+mine, to produce something to exchange for the imported food.
+Small, agricultural-based communities are likely to surround a
+larger city and help to supply the city population with food. In
+such cases, the larger community is probably a source of defense (a
+walled town, a castle, a community fielding a large number of de-
+ployable troops) that inhabitants of surrounding communities can
+seek refuge in or rely on to defend them in times of need.
+Sometimes, a number of nearby small communities clump to-
+gether with no large community at the center. These small villages
+and hamlets form a support network, and the local lord often
+boasts a centrally located castle or fortress used as a defensible
+place to which the villagers can flee when threatened.
+On a larger scale, the borders of kingdoms and countries usu-
+ally coincide with physical, geographical barriers. Countries that
+draw boundaries through plains, farms, and undulating hills usu-
+ally fight a lot of battles over such borders and have to redraw the
+borders frequently until they coincide with natural barriers.
+Therefore, mountain ranges, rivers, or abrupt landscape changes
+should usually mark the borders between lands in your world.
+GENERATING TOWNS
+When the PCs come into a town and you need to generate facts
+about that town quickly, you can use the following material. To ran-
+domly determine the size of a community, roll on Table 5–2 below.
+Table 5–2: Random Town Generation
+d%Town SizePopulation*GP Limit
+01–10Thorp20–8040 gp
+11–30Hamlet81–400100 gp
+31–50Village401–900200 gp
+51–70Small town901–2,000800 gp
+71–85Large town2,001–5,0003,000 gp
+86–95Small city5,001–12,00015,000 gp
+96–99Large city12,001–25,00040,000 gp
+100Metropolis25,001 or more100,000 gp
+* Adult population. Depending on the dominant race of the
+community, the number of nonadults will range from 10% to 40%
+of this figure.
+Community Wealth and Population
+Every community has a gold piece limit based on its size and pop-
+ulation. The gold piece limit (see Table 5–2) is an indicator of the
+price of the most expensive item available in that community.
+Nothing that costs more than a community’s gp limit is available
+for purchase in that community. Anything having a price under
+that limit is most likely available, whether it be mundane or magi-
+cal. While exceptions are certainly possible (a boomtown near a
+newly discovered mine, a farming community impoverished after
+a prolonged drought), these exceptions are temporary; all commu-
+nities will conform to the norm over time.
+To determine the amount of ready cash in a community, or the
+total value of any given item of equipment for sale at any given
+time, multiply half the gp limit by 1/10 of the community’s popu-
+lation. For example, suppose a band of adventurers brings a bagful
+of loot (one hundred gems, each worth 50 gp) into a hamlet of 90
+people. Half the hamlet’s gp limit times 1/10 its population equals
+450 (100 ÷2 = 50; 90 ÷10 = 9; 50 ×9 = 450). Therefore, the PCs can
+only convert nine of their recently acquired gems to coins on the
+spot before exhausting the local cash reserves. The coins will not
+be all bright, shiny gold pieces. They should include a large
+number of battered and well-worn silver pieces and copper pieces
+as well, especially in a small or poor community.
+If those same adventurers hope to buy longswords (price 15 gp
+each) for their mercenary hirelings, they’ll discover that the
+hamlet can offer  only 30 such swords for sale, because the same
+450 gp limit applies whether you’re buying or selling in a given
+community.
+Power Center for the Community
+Sometimes all the DM needs to know about a community is who
+holds the real power. To determine this fact randomly, use the
+table below, modifying the d20 roll according to the size of the
+community. As indicated in the list of modifiers, any community
+the size of a small city or larger has more than one power center.
+The types of power centers—conventional, monstrous, nonstan-
+dard, and magical—are defined below.
+Power Centers
+Community SizeModifier to d20 roll
+Thorp–1
+Hamlet+0
+Village+1
+Small town+2
+Large town+3
+Small city+4 (roll twice)
+Large city+5 (roll three times)
+Metropolis+6 (roll four times)
+d20Power Center Type
+13 or lessConventional*
+14–18Nonstandard
+19 or moreMagical
+* 5% of communities with a conventional power center have a
+monstrous power center in addition to the conventional one.
+Conventional:The  community  has  a  traditional  form  of
+government—a  mayor,  a  town  council,  a  noble  ruling  over  the
+surrounding area under a greater liege, a noble ruling the commu-
+nity as a city-state. Choose whichever form of government seems
+most appropriate to the area.
+Monstrous:Consider the impact on a community of a
+dragon that occasionally makes nonnegotiable demands and
+insists on being consulted in major decisions, or a nearby ogre
+tribe that must be paid a monthly tribute, or a mind flayer
+secretly controlling the minds of many of the townsfolk. A
+monstrous power center represents any influence (beyond just
+137
+CHAPTER 5:
+CAMPAIGNS

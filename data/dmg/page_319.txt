@@ -1,0 +1,285 @@
+318
+experience for monsters 172
+experience, faster or slower 40
+experience penalties 41
+experience points 36
+death and 41
+expert (NPC class) 109
+extraordinary abilities 289
+failure, critical 34
+fallen paladin 183
+falling damage 303
+falling objects 303
+falling into water 303
+Familiar Spell (epic feat) 209
+familiars, improved 200
+Huge or bigger masters 203
+Tiny or smaller masters 203
+fast healing 293
+fear effects 294
+fences (terrain feature) 92
+feudalism (political system) 140
+Fharlanghn 143
+fiendish servant 183
+fighter, epic 208
+NPC 117
+role in society 132
+fire immunity 294
+fire, catching on 303
+fixed hit points (for PCs) 198
+fleshing out NPCs 128
+floods 93
+floors (in dungeons) 60
+flowing water (terrain feature) 92
+fog 94
+followers 105
+forest fires 87
+forest terrain 87
+friends (of PCs) 104
+fumbles 28
+futuristic weapons 146
+gaining class benefits 198
+game balance 13
+Garl Glittergold 143
+gaseous form 294
+gaze attacks 294
+Gehenna 162
+gems (treasure) 55
+geography 136
+getting lost 86
+gnomes 141
+goblins 141
+gold dwarves 171
+gold piece limit (of a community)
+137
+Great Smiting (epic feat) 209
+Great Wheel, the 153
+green slime 76
+Gruumsh 143
+guards and soldiers 99
+guilds and organizations 132
+Hades 161
+hail 94
+half-human elves 171
+halflings 141
+handling magic items 212
+handling NPC actions 16
+handling PC actions 15
+healing disease 293
+heat dangers 303
+hedgerows (terrain feature) 88
+Heironeous 143
+Hextor 143
+hierophant 188
+high altitude 90
+high-level characters 135, 141
+highest-level locals 139
+hills terrain 89
+hirelings 105
+hit points, fixed (for PCs) 198
+horizon walker 189
+hurricane 94
+ice sheet (terrain feature) 91
+identifying magic items 212
+illumination (in dungeon) 67
+Improved Elemental Wild Shape 
+(epic feat) 209
+improved evasion 293
+Improved Familiar (feat) 200
+Improved Favored Enemy (epic 
+feat) 210
+Improved Metamagic (epic feat) 
+210
+Improved Sneak Attack (epic 
+feat) 210
+Improved Spell Capacity (epic 
+feat) 210
+Improved Stunning Fist (epic 
+feat) 210
+incorporeality 294
+initiative each round 22
+Inner Planes 147
+instant kill 28
+intelligent magic items 214, 
+268–272
+against characters 271
+creating 288
+interesting combats 17
+invasion 133
+invisibility 295
+iron, cold 284
+knights 133
+Kord 143
+landslides 90
+languages and intelligent items 
+269
+Lasting Inspiration (epic feat) 210
+lava effects 304
+law enforcement 98
+Leadership (feat) 106
+and mounts 200
+learning new spells 198
+learning skills and feats 197
+legal issues 141
+level adjustment 172, 200, 209
+level loss 296
+level, dungeon 77
+levels, advancing 197
+light rubble (terrain feature) 91
+Limbo 158
+limit on magic items worn 214
+line of sight 21
+locks (on doors) 61
+loremaster 191
+lost, effects of being 86
+low-level characters 134
+low-light vision 296
+low tech 144
+lower class 142
+magic 142
+bonuses from 21
+restrictions on 142
+magic items 211–288
+activating 213
+adding new abilities 288
+appearance 212
+aura 215
+on the body 214
+caster level 215
+character-created 199
+charges in 199, 214
+cost to create 215
+creating 282–288
+creation costs 284
+cursed 214
+damaging 214
+and detect magic212, 213
+doses 214
+as gear 199
+gold piece values 215
+handling 212
+identifying 212
+intelligent 214
+limit on items worn 214
+limited use 199
+market price 215
+multiple uses 214
+names 215
+new 214
+prerequisites 215
+random generation 216
+repairing 214
+saving throws against 214
+size and 213
+as treasure 56, 212
+using 213
+weight 215
+magic traps 67
+magical compulsion 16
+magocracy (political system) 140
+making a new character 42
+maneuverability 20
+mapping 15, 46, 77
+market price (for magic 
+items) 215
+marsh terrain 88
+massive damage 27
+masterwork items 283
+Material Plane 147
+mechanical traps 67
+repairing and resetting 68
+Mechanus 163
+metagame thinking 11
+middle class 142
+miniature figures 4, 15
+mithral 284
+modern era weapons 146
+modifiers to checks 30
+modifying Challenge Rating 40
+modifying classes 174
+modifying Encounter Level 39
+modifying races 171
+monarchy (political system) 140
+moneychangers 140
+monk, epic 208
+NPC 118
+role in society 132
+monster PCs 172
+monsters with classes 51
+monsters with treasure 51
+monsters, ability scores for 172
+as army members 133
+as epic characters 209
+experience for 172
+as races 172
+roleplaying 104
+tougher 50
+wandering 77
+Moradin 143
+motivation (of PCs) 43
+mountain terrain 89
+mountain travel 90
+mounted soldier, typical 133
+mounts 204
+intelligent 205
+Leadership and 200, 205
+unusual 204
+movement and the grid 19
+aerial 20
+diagonal 19
+in squares 20
+squeezing through 29
+in three dimensions 20
+multiple charges or uses 
+(of magic items) 214
+mundane items (treasure) 55
+Negative Energy Plane 157
+negative levels 293
+Nerull 143
+new character, making 42
+new classes, creating 175
+new combatants 23
+new deities, creating 143
+new magic items 214
+new players 134
+new races 171, 173
+new spells, creating 35
+learning 198
+Nine Hells 162
+noncombat encounters, 
+Challenge Rating for 40
+nonstandard point buy 169
+NPC actions 17
+NPC adjustments by race or 
+kind 126
+NPC attitudes 128
+NPC classes 107
+NPC gear value 127
+NPC spellcasting 107
+NPCs in the community 138
+NPCs with treasure 55
+NPCs, Challenge Ratings for 37
+NPCs, fleshing out 128
+NPCs, handling 16
+NPCs, pregenerated 112–126
+Obad-Hai 143
+Olidammara 143
+one hundred adventure ideas 44
+one hundred traits 128
+orcs 141
+organizations 132
+original spells 198
+other rewards 56
+Outer Planes 147
+Outlands, the 166
+Overwhelming Critical (epic 
+feat) 210
+paladin, epic 208
+fallen 183
+mounts 200, 204
+NPC 118
+role in society 132
+Pandemonium 159
+paralysis 296
+PCs above 1st level, creating 199
+PCs as leaders 106

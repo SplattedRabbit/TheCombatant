@@ -1,0 +1,130 @@
+304
+takes 1d6 points of damage immediately. In each subsequent
+round, the burning character must make another Reflex saving
+throw. Failure means he takes another 1d6 points of damage that
+round. Success means that the fire has gone out. (That is, once he
+succeeds on his saving throw, he’s no longer on fire.)
+A character on fire may automatically extinguish the flames
+by jumping into enough water to douse himself. If no body of
+water is at hand, rolling on the ground or smothering the fire
+with cloaks or the like permits the character another save with a
++4 bonus.
+Those unlucky enough to have their clothes or equipment
+catch fire must make DC 15 Reflex saves for each item. Flammable
+items that fail take the same amount of damage as the character.
+Lava Effects
+Lava or magma deals 2d6 points of damage per round of exposure,
+except in the case of total immersion (such as when a character
+falls into the crater of an active volcano), which deals 20d6 points
+of damage per round. 
+Damage from magma continues for 1d3 rounds after exposure
+ceases, but this additional damage is only half of that dealt during
+actual contact (that is, 1d6 or 10d6 points per round).
+An immunity or resistance to fire serves as an immunity to lava
+or magma. However, a creature immune to fire might still drown
+if completely immersed in lava (see Drowning, below).
+SMOKE EFFECTS
+A character who breathes heavy smoke must make a Fortitude
+save each round (DC 15, +1 per previous check) or spend that
+round choking and coughing. A character who chokes for 2 con-
+secutive rounds takes 1d6 points of nonlethal damage.
+Smoke obscures vision, giving concealment (20% miss chance)
+to characters within it.
+STARVATION AND THIRST
+Characters might find themselves without food or water and with
+no means to obtain them. In normal climates, Medium characters
+need at least a gallon of fluids and about a pound of decent food
+per day to avoid starvation. (Small characters need half as much.)
+In very hot climates, characters need two or three times as much
+water to avoid dehydration.
+A character can go without water for 1 day plus a number of
+hours equal to his Constitution score. After this time, the charac-
+ter must make a Constitution check each hour (DC 10, +1 for each
+previous check) or take 1d6 points of nonlethal damage.
+A character can go without food for 3 days, in growing discom-
+fort. After this time, the character must make a Constitution
+check each day (DC 10, +1 for each previous check) or take 1d6
+points of nonlethal damage.
+Characters who have taken nonlethal damage from lack of food
+or water are fatigued (see page 84). Nonlethal damage from thirst
+or starvation cannot be recovered until the character gets food or
+water, as needed—not even magic that restores hit points (such as
+cure light wounds) heals this damage.
+SUFFOCATION
+A character who has no air to breathe can hold her breath for 2
+rounds per point of Constitution. After this period of time, the
+character must make a DC 10 Constitution check in order to con-
+tinue holding her breath. The save must be repeated each round,
+with the DC increasing by +1 for each previous success.
+When the character fails one of these Constitution checks, she
+begins to suffocate. In the first round, she falls unconscious (0 hit
+points). In the following round, she drops to –1 hit points and is
+dying. In the third round, she suffocates.
+Slow Suffocation: A Medium character can breathe easily for
+6 hours in a sealed chamber measuring 10 feet on a side. After that
+time, the character takes 1d6 points of nonlethal damage every 15
+minutes. Each additional Medium character or significant fire
+source (a torch, for example) proportionally reduces the time the
+air will last. 
+For example, two people can last for 3 hours, after which they
+each take 1d6 points of nonlethal damage per 15 minutes. If they
+have a torch (equivalent to another Medium character in terms of
+the air it uses), the air runs out in only 2 hours.
+Small characters consume half as much air as Medium charac-
+ters. A larger volume of air, of course, lasts for a longer time. So, for
+instance, if two humans and a gnome are in a sealed chamber
+measuring 20 feet by 20 feet by 10 feet, and they have a torch, the
+air will last almost 7 hours (6 hours/3.5 people and torches ×4 10-
+ft. cubes = 6.86 hours).
+WATER DANGERS
+Historically, waterways were one of the most important modes of
+travel and communication within and between countries. On the
+other hand, characters on foot will find that lakes, rivers, and
+streams often block their travels in the wilderness. What’s more,
+underground streams, cisterns, sewers, and moats are all part of
+the dungeon environment.
+Water presents adventurers with five general problems. First,
+it’s an obstacle that can block their movement. Second, characters
+in the water face the danger of drowning or losing gear. Third, a
+character caught in fast-moving water can be swept away from the
+rest of his party and battered or killed by rapids and waterfalls.
+Fourth, really deep water deals damage from the great pressure it
+exerts. Finally, exposure to cold water can be dangerous, afflicting
+characters with hypothermia.
+The skills most commonly used in dealing with water as an
+obstacle are Swim and Profession (sailor). Unfortunately, not
+every character who gets into the water has these skills.
+Any character can wade in relatively calm water that isn’t over
+his head, no check required (hence the importance of fords). Sim-
+ilarly, swimming in calm water only requires skill checks with a
+DC of 10. Trained swimmers can just take 10. (Remember, how-
+ever, that armor or heavy gear makes any attempt at swimming
+much more difficult. See the Swim skill description, page 84 of the
+Player ’s Handbook.)
+By contrast, fast-moving water is much more dangerous. On a
+successful DC 15 Swim check or a DC 15 Strength check, it deals
+1d3 points of nonlethal damage per round (1d6 points of lethal
+damage if flowing over rocks and cascades). On a failed check, the
+character must make another check that round to avoid going
+under.
+Very deep water is not only generally pitch black, posing a nav-
+igational hazard, but worse, it deals water pressure damage of 1d6
+points per minute for every 100 feet the character is below the sur-
+face. A successful Fortitude save (DC 15, +1 for each previous
+check) means the diver takes no damage in that minute.
+Very cold water deals 1d6 points of nonlethal damage from
+hypothermia per minute of exposure.
+Drowning
+Any character can hold her breath for a number of rounds equal
+to twice her Constitution score. After this period of time, the
+character must make a DC 10 Constitution check every round
+in order to continue holding her breath. Each round, the DC
+increases by 1.
+When the character finally fails her Constitution check, she
+begins to drown. In the first round, she falls unconscious (0 hp).
+In the following round, she drops to –1 hit points and is dying. In
+the third round, she drowns.
+It is possible to drown in substances other than water, such as
+sand, quicksand, fine dust, and silos full of grain.
+CHAPTER 8:
+GLOSSARY

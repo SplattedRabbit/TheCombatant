@@ -1,4 +1,8 @@
 import React from 'react';
+// @ts-ignore
+import { CombatState } from '@core/state.js';
+// @ts-ignore
+import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface RacialTraitsCardProps {
   pc: any;
@@ -14,9 +18,53 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
     halfling: 'Halfling',
     half_elf: 'Half-Elf',
     half_orc: 'Half-Orc',
-    tiefling: 'Tiefling'
+    tiefling: 'Tiefling',
+    anima_construct: 'Anima-Konstrukt'
   };
   const raceName = raceNames[race] || 'Human';
+
+  const craftRanks = typeof pc.getSkillRanks === 'function' ? pc.getSkillRanks('craft') : 0;
+  const intMod = typeof pc.getAttributeMod === 'function' ? pc.getAttributeMod('int') : 0;
+  const totalMod = craftRanks + intMod;
+
+  const repairAbilityIdx = Array.isArray(pc.dailyAbilities) 
+    ? pc.dailyAbilities.findIndex((ab: any) => ab.name === 'Manuelle Reparatur') 
+    : -1;
+  const repairAbility = repairAbilityIdx >= 0 ? pc.dailyAbilities[repairAbilityIdx] : null;
+  const usedSlots = repairAbility ? repairAbility.used : 0;
+  const maxSlots = repairAbility ? repairAbility.max : 4;
+
+  const handleRepair = (dc: number, healDice: '1d4' | '1d8') => {
+    if (repairAbility && usedSlots >= maxSlots) {
+      showCustomAlert('Fehler', 'Du hast deine maximale Anzahl an Reparaturen für heute bereits aufgebraucht.', 'OK', '❌');
+      return;
+    }
+
+    const d20 = Math.floor(Math.random() * 20) + 1;
+    const totalRoll = d20 + totalMod;
+    const success = totalRoll >= dc;
+
+    let resultMsg = `Wurf auf Handwerk (Craft): 1d20 (${d20}) + Mod (${totalMod}) = <strong>${totalRoll}</strong> vs DC ${dc}.<br/><br/>`;
+
+    if (success) {
+      const sides = healDice === '1d4' ? 4 : 8;
+      const healRoll = Math.floor(Math.random() * sides) + 1;
+      resultMsg += `<strong>Erfolg!</strong> Du heilst <strong>${healRoll}</strong> Trefferpunkte.`;
+      
+      CombatState.applyDamage(pc.id, healRoll, true, false);
+      
+      if (repairAbilityIdx >= 0) {
+        CombatState.updatePCDailyAbilityUsed(repairAbilityIdx, 1);
+      }
+      showCustomAlert('Reparatur Erfolgreich 🛠️', resultMsg, 'Fertig', '✅');
+    } else {
+      resultMsg += `<strong>Fehlschlag!</strong> Die Reparatur war nicht erfolgreich.`;
+      if (repairAbilityIdx >= 0) {
+        CombatState.updatePCDailyAbilityUsed(repairAbilityIdx, 1);
+      }
+      showCustomAlert('Reparatur Fehlgeschlagen 🛠️', resultMsg, 'OK', '❌');
+    }
+  };
 
   const getRacialTraitsContent = () => {
     if (race === 'human') {
@@ -95,6 +143,63 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
           <li><strong>Darkness:</strong> Can use Darkness as a spell-like ability 1/day.</li>
           <li><strong>Level Adjustment:</strong> +1 (increases ECL by 1).</li>
         </ul>
+      );
+    } else if (race === 'anima_construct') {
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+            <li><strong>Ability Score Adjustments:</strong> +2 Constitution, -2 Charisma (already included).</li>
+            <li><strong>Type:</strong> Construct (Living Construct subtype). Has Con score, susceptible to mind-affecting and critical hits.</li>
+            <li><strong>Immunities:</strong> Immune to poisons, diseases, and magic sleep effects.</li>
+            <li><strong>No Metabolism:</strong> Does not eat, drink, or breathe (immune to drowning).</li>
+            <li><strong>Halved Magical Healing:</strong> Any incoming magical healing is halved (rounded down).</li>
+            <li><strong>Natural Armor:</strong> +1 racial natural armor bonus (already included).</li>
+          </ul>
+
+          <div style={{ borderTop: '0.5px dashed rgba(200, 169, 110, 0.4)', paddingTop: '8px', marginTop: '4px' }}>
+            <strong style={{ fontSize: '10px', display: 'block', marginBottom: '6px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
+              🛠️ Manuelle Reparatur (Living Construct)
+            </strong>
+            <p style={{ margin: '0 0 8px 0', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', lineHeight: 1.25 }}>
+              Erfordert Handwerkszeug und 1 Stunde Arbeit. Führe einen Wurf auf Handwerk (Craft) durch.
+            </p>
+            
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px', fontSize: '10px' }}>
+              <span>Tägliche Reparaturen:</span>
+              <div style={{ display: 'flex', gap: '3px' }}>
+                {Array.from({ length: maxSlots }).map((_, idx) => (
+                  <span key={idx} style={{ fontSize: '12px', opacity: idx < usedSlots ? 1 : 0.25 }}>
+                    {idx < usedSlots ? '⬛' : '⬜'}
+                  </span>
+                ))}
+              </div>
+              <span style={{ fontSize: '9px', color: 'var(--inkl)' }}>
+                ({usedSlots} / {maxSlots} verwendet)
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button
+                type="button"
+                className="btn btn-p"
+                disabled={usedSlots >= maxSlots}
+                onClick={() => handleRepair(15, '1d4')}
+                style={{ fontSize: '9.5px', padding: '4px 10px', cursor: 'pointer' }}
+              >
+                Leichte Reparatur (DC 15)
+              </button>
+              <button
+                type="button"
+                className="btn btn-p"
+                disabled={usedSlots >= maxSlots}
+                onClick={() => handleRepair(20, '1d8')}
+                style={{ fontSize: '9.5px', padding: '4px 10px', cursor: 'pointer' }}
+              >
+                Komplexe Instandsetzung (DC 20)
+              </button>
+            </div>
+          </div>
+        </div>
       );
     }
     return null;

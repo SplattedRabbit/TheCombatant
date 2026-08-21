@@ -1,0 +1,130 @@
+78
+First, create the special parts of your dungeon. These could be
+rooms with your favorite monsters and treasures, devious traps,
+strange rooms with magic pools or enchanted statues, mysteries
+and enigmas, or anything unusual you want to include. When
+you invent the contents of a room, describe it in the key, give it a
+number, and then put that number on the map to indicate where
+those features are found. To determine what sort of door (or
+doors) a room will have, you can roll d% and refer to Table 3–17:
+Random Door Types or simply select a type from that list.
+Next, you can fill out the rest of the dungeon, either by deciding
+what goes in each room or determining it randomly. If you deter-
+mine it randomly, roll on Table 3–18: Random Room Contents for
+each room. The results you get will lead you to other random
+tables here and in other chapters.
+You can roll for each door ahead of time and record the
+results on your key, or just roll for each door randomly as you
+play. If you like, you can even start with a blank map and roll
+door types and room contents as the player characters explore,
+one room at a time.
+RANDOM DUNGEON ENCOUNTERS
+This section provides you with a way to generate dungeon
+encounters randomly. You can also use the tables in this section
+simply as lists from which you choose the encounters you want to
+put in your dungeon.
+The dungeon encounters tables given here offer a wide range of
+possibilities, but even so they represent only a small fraction of the
+creatures (and combinations of creatures) that would make an
+appropriate encounter at a certain level within the dungeon. By
+using the rules about Challenge Ratings and Encounter Levels
+(see page 48), you could design your own encounters to supple-
+ment or replace the ones on these tables.
+Using the Tables
+To generate a random dungeon encounter, follow these steps:
+1. Determine the dungeon level (see above) that you want to
+generate the encounter for.
+2. Roll d% and refer to the appropriate dungeon encounters
+table (1st-Level through 20th-Level) to see what creature or
+creatures make up the encounter. In some cases, this roll may
+direct you to roll again on the table for the next lower or next
+higher level.
+3. When applicable, roll the indicated die to see how many crea-
+tures are in the encounter.
+4. Refer to the Monster Manual(or in some cases Chapter 4 of
+this book if the encounter is with one or more NPCs) for sta-
+tistics and other information about the creature or creatures in
+the encounter. Use the Treasure entry in the monster’s descrip-
+tion to determine how much treasure (if any) the encounter
+promises.
+A SAMPLE ADVENTURE
+This section provides a few examples of how to compose descrip-
+tions of encounter areas. These descriptions may be more (or less)
+detailed than the notes you use, but they give you an idea of what you
+CHAPTER 3:
+ADVENTURES
+Table 3–17: Random Door Types
+d%Type (DC to break)
+01–08Wooden, simple, unlocked
+09Wooden, simple, unlocked and trapped
+10–23Wooden, simple, stuck (13)
+24Wooden, simple, stuck (13) and trapped
+25–29Wooden, simple, locked (15)
+30Wooden, simple, locked (15) and trapped
+31–35Wooden, good, unlocked
+36Wooden, good, unlocked and trapped
+37–44Wooden, good, stuck (18)
+45Wooden, good, stuck (18) and trapped
+46–49Wooden, good, locked (18)
+50Wooden, good, locked (18) and trapped
+51–55Wooden, strong, unlocked
+56Wooden, strong, unlocked and trapped
+57–64Wooden, strong, stuck (23)
+65Wooden, strong, stuck (23) and trapped
+66–69Wooden, strong, locked (25)
+70Wooden, strong, locked (25) and trapped
+71Stone, unlocked
+72Stone, unlocked and trapped
+73–75Stone, stuck (28)
+76Stone, stuck (28) and trapped
+77–79Stone, locked (28)
+80Stone, locked (28) and trapped
+81Iron, unlocked
+82Iron, unlocked and trapped
+83–85Iron, stuck (28)
+86Iron, stuck (28) and trapped
+87–89Iron, locked (28)
+90Iron, locked (28) and trapped
+91–93Door slides to one side rather than opening normally. 
+Reroll type (ignoring rolls of 91+). Add +1 to break DC.
+94–96Door slides down rather than opening normally. 
+Reroll type (ignoring rolls of 91+). Add +1 to break DC.
+97–99Door slides up rather than opening normally. 
+Reroll type (ignoring rolls of 91+). Add +2 to break DC.
+100Door magically reinforced. 
+Reroll type (ignoring rolls of 91+). Break DC is 30 for 
+wooden and 40 for stone or iron doors.
+Trapped:Roll  on  Table  3–19:  Random  Traps  CR  1–3,  or  Table  3–20:
+Random  Traps  CR  4–6,  or  Table  3–21:  Random  Traps  CR  7–10  to
+determine the nature of the trap, then refer to the trap descriptions on
+pages 70–74.
+Table 3–18: Random Room Contents
+d%Room Contents
+01–18Monster only
+19–44Monster and features
+45Monster and hidden treasure
+46Monster and trap
+47Monster, features, and hidden treasure
+48Monster, features, and trap
+49Monster, hidden treasure, and trap
+50Monster, features, hidden treasure, and trap
+51–76Features only
+77Features and hidden treasure
+78Features and trap
+79Features, hidden treasure, and trap
+80Hidden treasure only
+81Hidden treasure and trap
+82Trap only
+83–100Nothing
+Features:Roll  1d4  minor  features  on  Table  3–12:  Minor  Features  and
+Furnishings  (01–40),  1d4  major  features  on  Table  3–11:  Major
+Features and Furnishings (41–80), or both (81–100).
+Hidden  Treasure:Roll  a  random  treasure  of  the  dungeon’s  level  on
+Table 3–5: Treasure. Typically, the treasure is hidden in such a way that
+it takes a Search check (DC 20 + dungeon level) to find it.
+Monster:Roll  on  the  dungeon  encounter  table  (see  below)  for  the
+appropriate  dungeon  level.  Creatures  in  rooms  with  traps  or  hidden
+treasures may or may not know about them.
+Trap:Roll  on  Table  3–19:  Random  Traps  CR  1–3,  Table  3–20:  Random
+Traps CR 4–6, or Table 3–21: Random Traps CR 7–10, or invent a trap
+that suits the other contents of the room.

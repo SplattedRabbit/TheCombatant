@@ -1,0 +1,135 @@
+ger; repair reset; Atk +20 melee (6d6, spikes); multiple targets (all
+targets in a 10-ft.-by-10-ft. area); Search DC 24; Disable Device DC
+20. Market Price:21,600 gp.
+Spiked Pit Trap (100 Ft. Deep):CR 6; mechanical; location
+trigger, manual reset; DC 20 Reflex save avoids; 100 ft. deep (10d6,
+fall); pit spikes (Atk +10 melee, 1d4 spikes per target for 1d4+5
+each); Search DC 20; Disable Device DC 20. Market Price:6,000 gp.
+Whirling Poison Blades: CR 6; mechanical; timed trigger; auto-
+matic reset; hidden lock bypass (Search DC 25, Open Lock DC 30);
+Atk +10 melee (1d4+4/19–20 plus poison, dagger); poison (purple
+worm poison, DC 24 Fortitude save resists, 1d6 Str/2d6 Str); multi-
+ple targets (one target in each of three preselected 5-ft. squares);
+Search DC 20; Disable Device DC 20. Market Price:30,200 gp.
+Wide-Mouth Pit Trap:CR 6; mechanical; location trigger,
+manual reset; DC 25 Reflex save avoids; 40 ft. deep (4d6, fall); mul-
+tiple targets (all targets within a 10-ft.-by-10-ft. area); Search DC
+26; Disable Device DC 25. Market Price: 28,200 gp.
+Wyvern Arrow Trap: CR 6; mechanical; proximity trigger;
+manual reset; Atk +14 ranged (1d8 plus poison, arrow); poison
+(wyvern poison, DC 17 Fortitude save resists, 2d6 Con/2d6 Con);
+Search DC 20; Disable Device DC 16. Market Price: 17,400 gp.
+CR 7 Traps
+Acid FogTrap:CR 7; magic device; proximity trigger (alarm);
+automatic reset; spell effect (acid fog,11th-level wizard, 2d6/round
+acid for 11 rounds); Search DC 31; Disable Device DC 31. Cost:
+33,000 gp, 2,640 XP.
+Blade Barrier Trap: CR 7; magic device; proximity trigger
+(alarm);automatic reset; spell effect (blade barrier,11th-level cleric,
+11d6 slashing, DC 19 Reflex save half damage); Search DC 31; Dis-
+able Device DC 31. Cost:33,000 gp, 2,640 XP.
+Burnt Othur Vapor Trap: CR 7; mechanical; location trigger;
+repair reset; gas; multiple targets (all targets in a 10-ft.-by-10-ft.
+room); never miss; onset delay (3 rounds); poison (burnt othur
+fumes, DC 18 Fortitude save resists, 1 Con drain/3d6 Con); Search
+DC 21; Disable Device DC 21. Market Price:17,500 gp.
+Chain Lightning Trap: CR 7; magic device; proximity trigger
+(alarm);automatic reset; spell effect (chain lightning, 11th-level
+wizard, 11d6 electricity to target nearest center of trigger area plus
+5d6 electricity to each of up to eleven secondary targets, DC 19
+Reflex save half damage); Search DC 31; Disable Device DC 31.
+Cost:33,000 gp, 2,640 XP.
+Evard’s Black Tentacles Trap: CR 7; magic device; proximity trigger
+(alarm);no reset; spell effect (Evard’s black tentacles, 7th-level wizard,
+1d4+7 tentacles, Atk +7 melee [1d6+4, tentacle]); multiple targets
+(up to six tentacles per target in each of two adjacent 5-ft. squares);
+Search DC 29; Disable Device DC 29. Cost:1,400 gp, 112 XP.
+Fusillade of Greenblood Oil Darts:CR 7; mechanical; loca-
+tion trigger; manual reset; Atk +18 ranged (1d4+1 plus poison,
+dart); poison (greenblood oil, DC 13 Fortitude save resists, 1 Con/
+1d2 Con); multiple targets (1d8 darts per target in a 10-ft.-by-10-ft.
+area); Search DC 25; Disable Device DC 25. Market Price:33,000 gp.
+Lock Covered in Dragon Bile: CR 7; mechanical; touch trig-
+ger (attached); no reset; poison (dragon bile, DC 26 Fortitude save
+resists, 3d6 Str/0); Search DC 27; Disable Device DC 16. Market
+Price:11,300 gp.
+Summon Monster VI Trap: CR 7; magic device; proximity trigger
+(alarm);no reset; spell effect (summon monster VI, 11th-level wizard),
+Search DC 31; Disable Device DC 31. Cost:3,300 gp, 264 XP.
+Water-Filled Room: CR 7; mechanical; location trigger;
+manual reset; multiple targets (all targets in a 10-ft.-by-10-ft.
+room); never miss; onset delay (3 rounds); water; Search DC 20;
+Disable Device DC 25. Market Price:21,000 gp.
+Well- Camouflaged  Pit  Trap:  CR  7;  mechanical;  location  trig-
+ger; repair reset; DC 25 Reflex save avoids; 70 ft. deep (7d6, fall);
+multiple targets (first target in each of two adjacent 5-ft. squares);
+Search DC 27; Disable Device DC 18. Market Price: 24,500 gp.
+CR 8 Traps
+Deathblade Wall Scythe: CR 8; mechanical; touch trigger;
+manual reset; Atk +16 melee (2d4+8 plus poison, scythe); poison
+(deathblade, DC 20 Fortitude save resists, 1d6 Con/2d6 Con);
+Search DC 24; Disable Device DC 19. Market Price:31,400 gp.
+Destruction Trap: CR 8; magic device; touch trigger (alarm);
+automatic reset; spell effect (destruction, 13th-level cleric, DC 20
+Fortitude save for 10d6 damage); Search DC 32; Disable Device
+DC 32. Cost:45,500 gp, 3,640 XP. 
+Earthquake Trap: CR 8; magic device; proximity trigger (alarm);
+automatic reset; spell effect (earthquake, 13th-level cleric, 65-ft.
+radius, DC 15 or 20 Reflex save, depending on terrain); Search DC
+32; Disable Device DC 32. Cost:45,500 gp, 3,640 XP.
+Insanity Mist Vapor Trap: CR 8; mechanical; location trigger;
+repair reset; gas; never miss; onset delay (1 round); poison (insan-
+ity mist, DC 15 Fortitude save resists, 1d4 Wis/2d6 Wis); multiple
+targets (all targets in a 10-ft.-by-10-ft. room); Search DC 25; Disable
+Device DC 20. Market Price: 23,900 gp.
+Melf ’s Acid Arrow Trap: CR 8; magic device; visual trigger (true
+seeing);automatic reset; multiple traps (two simultaneous Melf ’s
+acid arrowtraps); Atk +9 ranged touch and +9 ranged touch; spell
+effect (Melf ’s acid arrow, 18th-level wizard, 2d4 acid damage for 7
+rounds); Search DC 27; Disable Device DC 27. Cost: 83,500 gp,
+4,680 XP.
+Note:This trap is really two CR 6 Melf ’s acid arrowtraps that fire
+simultaneously, using the same trigger and reset.
+Power Word Stun Trap: CR 8; magic device; touch trigger; no
+reset; spell effect (power word stun, 13th-level wizard), Search DC
+32; Disable Device DC 32. Cost:4,550 gp, 364 XP.
+Prismatic Spray Trap: CR 8; magic device; proximity trigger
+(alarm);automatic reset; spell effect (prismatic spray,13th-level
+wizard, DC 20 Reflex, Fortitude, or Will save, depending on
+effect); Search DC 32; Disable Device DC 32. Cost:45,500 gp,
+3,640 XP.
+Reverse Gravity Trap: CR 8; magic device; proximity trigger
+(alarm,10-ft. area); automatic reset; spell effect (reverse gravity,
+13th-level wizard, 6d6 fall [upon hitting the ceiling of the 60-ft.-
+high room], then 6d6 fall [upon falling 60 ft. to the floor when the
+spell ends], DC 20 Reflex save avoids damage); Search DC 32; Dis-
+able Device DC 32. Cost:45,500 gp, 3,640 XP.
+Well- Camouflaged  Pit  Trap:  CR  8;  mechanical;  location  trig-
+ger; repair reset; DC 20 Reflex save avoids; 100 ft. deep (10d6, fall);
+Search DC 27; Disable Device DC 18. Market Price: 16,000 gp.
+Word of ChaosTrap: CR 8; magic device; proximity trigger
+(detect law);automatic reset; spell effect (word of chaos, 13th-level
+cleric); Search DC 32; Disable Device DC 32. Cost:46,000 gp,
+3,680 XP.
+CR 9 Traps
+Drawer Handle Smeared with Contact Poison: CR 9;
+mechanical; touch trigger (attached); manual reset; poison (black
+lotus extract, DC 20 Fortitude save resists, 3d6 Con/3d6 Con);
+Search DC 18; Disable Device DC 26. Market Price:21,600 gp.
+Dropping Ceiling: CR 9; mechanical; location trigger; repair
+reset; ceiling moves down (12d6, crush); multiple targets (all tar-
+gets in a 10-ft.-by-10-ft. room); never miss; onset delay (1 round);
+Search DC 20; Disable Device DC 16. Market Price:12,600 gp.
+Incendiary Cloud Trap: CR 9; magic device; proximity trigger
+(alarm);automatic reset; spell effect (incendiary cloud,15th-level
+wizard, 4d6/round for 15 rounds, DC 22 Reflex save half damage);
+Search DC 33; Disable Device DC 33. Cost:60,000 gp, 4,800 XP.
+Wide-Mouth Pit Trap:CR 9; mechanical; location trigger;
+manual reset; DC 25 Reflex save avoids; 100 ft. deep (10d6, fall);
+multiple targets (all targets within a 10-ft.-by-10-ft. area); Search
+DC 25; Disable Device DC 25. Market Price:40,500 gp.
+Wide-Mouth Spiked Pit with Poisoned Spikes: CR 9;
+mechanical; location trigger; manual reset; hidden lock bypass
+73
+CHAPTER 3:
+ADVENTURES

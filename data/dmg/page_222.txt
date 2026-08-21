@@ -1,0 +1,135 @@
+Specific Shields
+The following specific shields usually are preconstructed with
+exactly the qualities described here.
+Absorbing Shield:This +1 heavy steel shieldis flat black and
+seems to absorb light. Once every two days, on command, it can
+disintegratean object that it touches, as the spell but requiring a
+melee touch attack.
+Strong transmutation; CL 17th; Craft Magic Arms and Armor,
+disintegrate; Price 50,170 gp; Cost 25,170 gp + 2,000 XP.
+Caster’s Shield: This +1 light wooden shieldhas a small leather
+strip on the back on which a spellcaster can scribe a single spell as
+on a scroll. A spell so scribed has only half the base raw material
+cost (see page 287). Experience point and component costs remain
+the same. The strip cannot accommodate spells of higher than 3rd
+level. The strip is reusable.
+A random caster ’s shieldhas a 50% chance of having a single
+medium scroll spell on it. The spell is divine (01–80 on d%) or
+arcane (81–100).
+A caster ’s shieldhas a 5% arcane spell failure chance.
+Moderate abjuration; CL 6th; Craft Magic Arms and Armor,
+Scribe Scroll, creator must be at least 6th level; Price 3,153 gp (plus
+the value of the scroll spell if one is currently scribed); Cost 1,653
+gp + 120 XP.
+Darkwood Buckler:This nonmagical light wooden shield is
+made out of darkwood and often favored by rogues and wizards. It
+has no enhancement bonus, but its construction material makes it
+lighter than a normal wooden shield. It weighs 2-1/2 pounds and
+has no armor check penalty.
+No aura (nonmagical); Price 205 gp.
+Darkwood Shield:This nonmagical heavy wooden shield is
+made out of darkwood. It has no enhancement bonus, but its con-
+struction material makes it lighter than a normal wooden shield.
+It weighs 5 pounds and has no armor check penalty.
+No aura (nonmagical); Price 257 gp.
+Lion’s Shield: This +2 heavy steel shieldis fashioned to appear to
+be a roaring lion’s head. Three times per day as a free action, the
+lion’s head can be commanded to attack (independently of the
+shield wearer), biting with the wielder’s base attack bonus (includ-
+ing multiple attacks, if the wielder has them) and dealing 2d6
+points of damage. This attack is in addition to any actions per-
+formed by the wielder.
+Moderate conjuration; CL 10th; Craft Magic Arms and Armor,
+summon nature’s ally IV; Price 9,170 gp; Cost 4,670 gp + 360 XP.
+Mithral Heavy Shield: This heavy shield is made of mithral
+and thus is much lighter than a standard steel shield. It has a 5%
+arcane spell failure chance and no armor check penalty. It weighs
+5 pounds.
+No aura (nonmagical); Price 1,020 gp.
+Spined Shield:This +1 heavy steel shieldis covered in spines. It
+acts as a normal spiked shield. On command up to three times per
+day, the shield’s wearer can fire one of the shield’s spines. A fired
+spine has a +1 enhancement bonus, a range increment of 120 feet,
+and deals 1d10 points of damage (19–20/×2). Fired spines regen-
+erate each day.
+Moderate evocation; CL 6th; Craft Magic Arms and Armor,
+magic missile; Price 5,580 gp; Cost 2,740 gp + 223 XP.
+Winged Shield:This round heavy wooden shield has a +3
+enhancement bonus. Small, feathered wings encircle the shield.
+Once per day it can be commanded to fly(as the spell), carrying
+the wielder. The shield can carry up to 133 pounds and move at 60
+feet per round, or up to 266 pounds and move at 40 feet per round.
+Faint transmutation; CL 5th; Craft Magic Arms and Armor, fly;
+Price 17,257 gp; Cost 8,628 gp and 5 sp + 690 XP.
+WEAPONS
+As magic items go, magic weapons are a staple of all campaigns.
+Magic weapons have enhancement bonuses ranging from +1 to
++5. They apply these bonuses to both attack and damage rolls
+when used in combat. All magic weapons are also masterwork
+weapons, but their masterwork bonus on attack rolls does not
+stack with their enhancement bonus on attack rolls.
+Weapons come in two basic categories: melee and ranged. Some
+of the weapons listed as melee weapons (for example, daggers) can
+also be used as ranged weapons. In this case, their enhancement
+bonus applies to either type of attack.
+In addition to an enhancement bonus, weapons may have spe-
+cial abilities, such as the ability to flame or the ability to attack on
+their own. Special abilities count as additional bonuses for de-
+termining the market value of the item, but do not modify attack
+or damage bonuses (except where specifically noted). A single
+weapon cannot have a modified bonus (enhancement bonus plus
+special ability bonus equivalents) higher than +10. A weapon with
+a special ability must have at least a +1 enhancement bonus.
+A weapon or a kind of ammunition may be made of an
+unusual material. Roll d%: 01–95 indicates that the item is of a
+standard sort, and 96–100 indicates that it is made of a special
+substance such as alchemical silver or cold iron (see Special
+Materials, page 283).
+Caster Level for Weapons: The caster level of a weapon with a
+special ability is given in the item description. For an item with
+only an enhancement bonus and no other abilities, the caster level
+is three times the enhancement bonus. If an item has both an
+enhancement bonus and a special ability, the higher of the two
+caster level requirements must be met.
+Additional Damage Dice:Some magic weapons deal addi-
+tional dice of damage. Unlike other modifiers to damage, addi-
+tional dice of damage are not multiplied when the attacker scores a
+critical hit.
+Ranged Weapons and Ammunition:The enhancement
+bonus from a ranged weapon does not stack with the enhance-
+ment bonus from ammunition. Only the higher of the two
+enhancement bonuses applies.
+Ammunition fired from a projectile weapon with an enhance-
+ment bonus of +1 or higher is treated as a magic weapon for the
+purpose of overcoming damage reduction. For example, a sling
+stone hurled from a +1 slingis treated as a magic weapon. Similarly,
+ammunition fired from a projectile weapon with an alignment
+(such as a +1 holy longbowor a masterwork crossbow under the
+effect of the align weaponspell) gains the alignment of that projec-
+tile weapon (in addition to any alignment it may already have). For
+example, a +1 unholy arrowfired from a +2 anarchic shortbowwould
+be both evil-aligned and chaos-aligned (the former from its own
+unholy special ability, the latter from the shortbow).
+Magic Ammunition and Breakage: When a magic arrow,
+crossbow bolt, or sling bullet misses its target, there is a 50%
+chance it breaks or otherwise is rendered useless. A magic arrow,
+bolt, or bullet that hits is destroyed.
+Light Generation:Fully 30% of magic weapons shed light
+equivalent to a lightspell (bright light in a 20-foot radius, shadowy
+light in a 40-foot radius). These glowing weapons are quite obvi-
+ously magical. Such a weapon can’t be concealed when drawn, nor
+can its light be shut off. Some of the specific weapons detailed
+below always or never glow, as defined in their descriptions.
+221
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–8: Specific Shields
+MinorMediumMajorSpecific ShieldMarket Price
+01–3001–20—Darkwood buckler205 gp
+31–8021–45—Darkwood shield257 gp
+81–9546–70—Mithral heavy shield1,020 gp
+96–10071–8501–20Caster’s shield3,153 gp
+—86–9021–40Spined shield5,580 gp
+—91–9541–60Lion’s shield9,170 gp
+—96–10061–90Winged shield17,257 gp
+——91–100Absorbing shield50,170 gp

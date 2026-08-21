@@ -1,0 +1,134 @@
+Material Plane drift through the miasma: bits of forest, meadow,
+ruined castles, and small islands. Despite the plane’s inhospitable
+environment, the slaadi and the githzerai call Limbo home.
+Limbo has no layers. Or, if it does, the layers continually merge
+and part, each is as chaotic as the next, and even the wisest sages
+would be hard-pressed to distinguish one from another.
+Limbo has the following traits.
+•Subjective directional gravity.
+•Highly morphic. Limbo is continually changing, and keeping a
+particular area stable is difficult. A given area, unless magically
+stabilized  somehow,  can  react  to  specific  spells  or  sentient
+thought.  Left  alone,  it  continually  changes.  For  more  informa-
+tion, see Raw Limbo under Limbo Terrain, below.
+•Sporadic  element-dominant.  No  one  element  constantly  dom-
+inates  Limbo.  Each  element  (air,  earth,  fire,  and  water)  is  dom-
+inant from time to time, so any given area is a chaotic, dangerous
+boil. The elemental dominance can change without warning.
+•Strongly  chaos-aligned.  This  trait  does  not  apply  within  the
+walls  of  githzerai  monasteries  (but  it  does  apply  in  githzerai
+cities).
+•Wild  magic.  Spells  and  spell-like  abilities  function  normally
+within  permanent  structures  or  on  permanently  stabilized
+landscapes  in  Limbo.  However,  any  spell  or  spell-like  ability
+used  in  an  untended  area  of  Limbo,  or  an  area  temporarily
+controlled, has a chance to go awry. The spellcaster must make
+a level check (1d20 + spellcaster level) against a DC of 20 + the
+level of the attempted spell. If the caster fails the check, roll on
+the table on page 150 to determine the exact effect.
+Random Encounters: Alternate between the Beatific Encoun-
+ters table and the Abyssal Encounters table (page 167) for random
+encounters in Limbo.
+Limbo Terrain
+There are two kinds of terrain in Limbo. The vast majority of the
+plane is uncontrolled, raw Limbo, but here and there are islands
+of more stable terrain—usually earth, but sometimes another
+material.
+Raw Limbo:To draw an encounter map of raw Limbo, scatter
+irregular areas of fire, water, earth, and high winds across the grid.
+As a rough guide, make each area roughly 40 feet square and put a
+15-foot gap between areas. But because this is the plane of ultimate
+chaos, you should vary widely from this guideline. 
+Roughly one-quarter of the areas are fire-dominant (dealing
+3d10 points of damage per round and setting characters on fire),
+one-quarter are water-dominant (essentially free-floating blobs of
+water), one quarter are air-dominant tornadoes (as described on
+page 94), and one-quarter are simply earth.
+Every round, at initiative count 0, the areas of raw Limbo shift.
+For each area, roll 1d8. This determines the direction that a partic-
+ular area will shift, with 1 being back toward the top of the map
+and 2 through 8 counting clockwise in 45-degree increments.
+Then, shift the entire area 1d4 squares in that direction.
+If fire-dominant and water-dominant areas overlap after the
+shift, they cancel each other out within the area of the overlap,
+changing the shape of both areas and leaving the area of the overlap
+outside both areas. The same thing happens if an air-dominant and
+earth-dominant area overlap. Other overlaps (fire and earth, for
+example) have the full effects of both elements in the overlap area.
+Stable Areas:Most of Limbo’s living inhabitants remain in
+the stable areas free of the plane’s shifting elements. Often these
+stable areas are chunks of earth and stone up to a half-mile across.
+Occasionally a lake of stable water, or a massive, roiling firestorm
+will appear.
+Example Limbo Site:  Monastery of Zerth’Ad’lun
+One of many githzerai monasteries on the plane, Zerth’Ad’lun fol-
+lows the teaching of Sensei Belthomias, a 16th-level monk.
+Belthomias teaches a specialized martial art (as do many monas-
+teries), and those students who fully embrace his teachings are
+also called Zerth cenobites. Those who practice zerthi—“Zerth’s
+teaching” in the githzerai tongue—claim to peer a moment into
+the future in order to aid their martial expertise.
+From the exterior, the monastery appears almost like a small
+glade of stone spires and towers layered around a sphere about a
+quarter-mile in diameter. Taking full advantage of the subjective
+gravity of Limbo, the interior of the monastery has winding stairs
+that connect “floors” to “walls” or “ceilings.” All the surfaces are
+really floors for those who don’t mind adjusting their own subjec-
+tive orientation.
+Vast halls provide room for mass martial arts training, while
+hundreds of tiny cells lighted by dim candles provide privacy for
+individual meditations. The schedule of a monk at Zerth’Ad’lun is
+strict and harsh, but the rewards of the spirit are considered suffi-
+cient compensation.
+Mapping  the  monastery—even  enough  of  it  for  an  en-
+counter—is difficult because the best frame of reference seems to
+change from square to square. Simply throw in as many dungeon
+elements as you can, making sure to rotate some and turn others
+upside down. If the characters fight the monks of the monastery,
+have the monks jump from ceiling to wall, using subjective grav-
+ity to right themselves when they land.
+The monastery welcomes visitors and may put them up for as
+long as a week in quarters set aside for hospitality. Nongithzerai
+who are interested in studying at the monastery are allowed to do
+so—Belthomias is impressed by any nongithzerai who can sur-
+vive Limbo long enough to find the monastery. The supplicant
+must be willing to spend a few months in the monastery learning
+the basics and abiding the schedule of a cenobite. Then Beltho-
+mias poses a series of three tests, one of which involves fighting
+slaadi, one of which involves controlling Limbo, and one of which
+involves a quest to the Material Plane (often to the subterranean
+homes of the mind flayers).
+WINDSWEPT DEPTHS OF PANDEMONIUM
+Pandemonium is a great mass of matter pierced by innumerable
+tunnels carved by the howling winds of the plane. It is windy,
+noisy, and dark, having no natural source of light. The wind quickly
+extinguishes normal fires, and lights that last longer draw the
+attention of wights driven insane by the constant howling wind.
+Every word, scream, or shout is caught by the wind and flung
+through all the layers of the plane. Conversation is accomplished
+by shouting, and even then words are spirited away by the wind
+before they travel farther than 10 feet.
+The stale wind of Pandemonium is cold, and it steals heat from
+unprotected travelers. The endless gale buffets each inhabitant,
+blowing sand and dirt into eyes, snuffing torches, and carrying
+away loose items. In some places, the wind howls so fiercely that it
+lifts creatures off their feet and carries them for miles before dash-
+ing their forms against some dark cliff face.
+In a few relatively sheltered places, the wind dies down to just a
+breeze carrying haunting echoes from distant parts of the plane,
+though these sounds are so distorted that they sound like cries
+of torment.
+Pandemonium has four layers: Pandesmos, Cocytus, Phlege-
+thon, and Agathion. Pandesmos, the highest layer, has large cav-
+erns and passageways, with Cocytus and Phlegethon having pro-
+gressively smaller and more rugged caverns. Agathion has only
+isolated caverns, with no tunnels linking them.
+Pandemonium has the following traits.
+•Objective  directional  gravity.  In  the  cavernous  tunnels  of
+Pandemonium,  gravity  is  oriented  toward  whatever  wall  a  crea-
+ture is nearest. Thus, there is no normal concept of floor, wall and
+ceiling—any  surface  is  a  floor  if  you’re  near  enough  to  it.  Rare
+narrow  tunnels  exactly  cancel  out  gravity,  allowing  a  traveler  to
+159
+CHAPTER 5:
+CAMPAIGNS

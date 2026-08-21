@@ -1,0 +1,91 @@
+Sample 10th-Level NPC Cleric:Human Clr 10; CR 10; Me-
+dium humanoid; HD 10d8+20; hp 68; Init –1; Spd 20 ft.; AC 22,
+touch 10, flat-footed 22; Base Atk +7; Grp +8; Atk +8 melee (1d8+2,
++1 morningstar) or +6 ranged (1d8+1/19–20, light crossbow with +1
+crossbow bolts); Full Atk +8/+3 melee (1d8+2, +1 morningstar) or +6
+ranged (1d8+1/19–20, light crossbow with +1 crossbow bolts); SA
+turn undead 4/day; SQ —; AL NG; SV Fort +9, Ref +4, Will +11; Str
+13, Dex 8, Con 14, Int 10, Wis 19, Cha 12.
+Skills and Feats:Concentration +15, Listen +17, Spellcraft +13;
+Brew Potion, Combat Casting, Lightning Reflexes, Scribe Scroll,
+Weapon Focus (morningstar).
+Cleric Spells Prepared(6/6/6/5/5/3; save DC 14 + spell level): 0—
+detect magic, guidance (2), light, resistance(2); 1st—bane (2),bless(2),
+sanctuary*, shield of faith;2nd—aid, bull’s strength (2),cure moderate
+wounds*, hold person, sound burst;3rd—dispel magic(2), magic circle
+against evil, protection from energy, searing light;4th—divine power,
+greater magic weapon, restoration(2), spell immunity*; 5th—flame
+strike, spell resistance*, true seeing.
+*Domain spell. Domains:Healing (cast healing spells at +1 caster
+level), Protection (protective ward grants +10 resistance bonus on
+next save, 1/day).
+Possessions: +1 full plate, +1 heavy steel shield, ring of protection +1,
+periapt of Wisdom +2, masterwork morningstar, light crossbow,
+10 bolts, 2 scrolls of cure light wounds, wooden holy symbol, 6
+torches.
+NPC DRUID
+Starting Ability Scores:Str 10, Dex 14, Con 13, Int 12, Wis 15,
+Cha 8.
+Increased Ability Scores:4th, Wis 16; 8th, Wis 17; 11th, Wis
+17 (19); 12th, Wis 18 (20); 14th, Wis 18 (22); 16th, Wis 19 (23);
+17th, Wis 19 (25); 20th, Wis 20 (26).
+Sample 5th-Level NPC Druid:Lizardfolk Drd 5; CR 6;
+Medium humanoid (reptilian); HD 7d8+14; hp 50; Init +2; Spd 30
+ft.; AC 19, touch 12, flat-footed 17; Base Atk +3; Grp +4; Atk +5
+melee (1d4+1, 2 claws) and +3 melee (1d4, bite); or +6 melee
+(1d6+2/18–20, +1 scimitar); or +7 ranged (1d6, masterwork sling);
+Full Atk +5/+5 melee (1d4+1, 2 claws) and +3 melee (1d4, bite); or
++6 melee (1d6+2/18–20, +1 scimitar); or +7 ranged (1d6, master-
+work sling); SA —; SQ animal companion, hold breath, link with
+companion, nature sense, resist nature’s lure, share spells, trackless
+step, wild empathy, wild shape (Small or Medium animal 1/day),
+woodland stride; AL N; SV Fort +6, Ref +6, Will +7; Str 12, Dex 14,
+Con 15, Int 10, Wis 16, Cha 8. 
+Skills and Feats:Balance +6, Concentration +6, Handle Animal
+115
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–14: NPC Cleric
+Skill Pts./Spells
+LevelhpACMeleeRangedF/R/WFeatsper Day*Gear
+1st1017+2–1+4/–1/+48/13/3Splint mail, heavy steel shield, mwk melee,
+mundane ranged, 300 gp
+2nd1618+3+0+5/–1/+510/14/4 Half-plate, heavy steel shield, mwk melee,
+mundane ranged, 1,000 gp
+3rd2319+4+1+5/+0/+512/24/4/3 Full plate, heavy steel shield, mwk melee,
+mundane ranged, 600 gp
+4th2919+5+2+6/+0/+714/25/5/4 As 3rd level, except 1,400 gp
+5th3619+5+2+6/+0/+716/25/5/4/3 As 3rd level, except 2,500 gp
+6th4220+6+3+7/+1/+818/35/5/5/4 +1 full plate,heavy steel shield, mwk melee,
+mundane ranged, 3,600 gp
+7th4920+7+4+7/+1/+820/36/6/5/4/2 As 6th level, except 4,200 gp
+8th5521+8/3+5/0+8/+1/+922/36/6/5/5/3 +1 full plate, +1 heavy steel shield,mwk
+melee, mundane ranged, 6,200 gp
+9th6222+8/3+5/0+8/+2/+924/46/6/6/5/3/2 +1 full plate, +1 heavy steel shield,  ring of
+protection +1,mwk melee,  mundane ranged,
+7,000 gp
+10th6822+9/4+6/1+9/+2/+1126/46/6/6/5/5/3 +1 full plate, +1 heavy steel shield, ring +1,
+mwk melee, mundane ranged,  periapt of
+Wisdom +2, 11,500 gp
+11th7522+10/5+7/2+9/+2/+1128/46/7/6/6/5/3/2 As 10th level, except 20,000 gp
+12th8123+11/6+8/3+10/+3/+1330/56/8/6/6/5/5/3 +1 full plate, +1 heavy steel shield, amulet of
+natural armor +1, ring +1, +1 melee, mundane
+ranged, periapt +2, 14,000 gp
+13th8824+11/6+9/4+10/+4/+1332/56/8/7/6/6/5/3/2 +1 full plate, +1 heavy steel shield, amulet +1,
+ring +1, +1 melee, mundane ranged, gloves of
+Dexterity +2, periapt +2,18,000 gp
+14th9424+12/7+10/5+11/+4/+1534/56/8/8/6/6/5/5/3 +1 full plate, +1 heavy steel shield, amulet +1,
+ring o+1, +1 melee, mundane ranged, gloves
++2, periapt +4,16,000 gp
+15th10124+13/8/3+11/6/1+11/+5/+1536/66/8/8/7/6/6/5/3/2 As 14th level, except 30,000 gp
+16th10726+14/9/4+12/7/2+12/+5/+1638/66/8/8/7/6/6/5/4/3 +2 full plate, +2 heavy steel shield, amulet +1,
+ring +1, +1 melee, mundane ranged, gloves
++2, periapt +4,41,000 gp
+17th11426+14/9/4+12/7/2+12/+5/+1740/66/8/8/8/7/6/6/5/3/2+2 full plate, +2 heavy steel shield, amulet +1,
+ring +1, +1 melee, mundane ranged, gloves
++2, periapt +6, 44,000 gp
+18th12026+15/10/5+13/8/3+13/+6/+1842/76/8/8/8/7/6/6/5/4/3As 17th level, except 74,000 gp
+19th12726+16/11/6+14/9/4+13/+6/+1844/76/8/8/8/7/7/6/6/4/4As 17th level, except 114,000 gp
+20th13326+17/12/7+15/10/5+14/+6/+2046/76/8/8/8/8/7/6/6/6/5As 17th level, except 164,000 gp
+*Includes domain spells. You must choose one spell per spell level from the appropriate domains.

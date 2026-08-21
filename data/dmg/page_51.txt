@@ -1,0 +1,131 @@
+50
+Easy:The PCs win handily with little threat to themselves. The
+Encounter  Level  for  the  encounter  is  lower  than  the  party  level.
+The group should be able to handle an almost limitless number of
+these encounters.
+Easy if Handled Properly:There’s a trick to this kind of encoun-
+ter—a trick the PCs must discover to have a good chance of vic-
+tory. Find and eliminate the evil cleric with greater invisibilityfirst
+so she stops bolstering the undead, and everything else about the
+encounter becomes much easier. If not handled properly, this
+kind of encounter becomes challenging or even very difficult.
+Challenging:Most encounters seriously threaten at least one
+member of the group in some way. These are challenging encoun-
+ters, about equal in Encounter Level to the party level. The average
+adventuring group should be able to handle four challenging en-
+counters before they run low on spells, hit points, and other re-
+sources. If an encounter doesn’t cost the PCs some significant por-
+tion of their resources, it’s not challenging.
+Very Difficult:One PC might very well die. The Encounter Level
+is higher than the party level. This sort of encounter may be more
+dangerous than an overpowering one, because it’s not immedi-
+ately obvious to the players that the PCs should flee.
+Overpowering:The PCs should run. If they don’t, they will
+almost certainly lose. The Encounter Level is five or more levels
+higher than the party level.
+Difficulty Factors
+You have several options for making an encounter more or less dif-
+ficult by changing the circumstances of the encounter to account
+for some feature of the PCs’ surroundings or the makeup of the
+party. For instance:
+•Tight  quarters  make  things  more  difficult  for  rogues,  since  it’s
+harder to skulk about and gain a sneak attack.
+•A spread-out force makes things more difficult for spellcasters,
+since the area affected by most spells is small.
+•Many lesser foes are harder for a character to engage in melee
+than one powerful foe.
+•Undead are much more difficult to fight without a cleric.
+•Encounters involving animals or plants are much more difficult
+without a druid or a ranger in the party.
+•Encounters  involving  evil  outsiders  are  much  more  difficult
+without a paladin or cleric (and perhaps a wizard or sorcerer) in
+the party.
+•A large force is much more difficult to fight without a wizard or
+sorcerer in the party.
+•Locked  doors  and  traps  are  much  more  difficult  to  overcome
+without a rogue in the party.
+•Multiple combat encounters are more difficult to win without a
+fighter, a barbarian, a ranger, or a paladin in the party.
+•Multiple combat encounters are more difficult to survive with-
+out a cleric in the party.
+•The bard  and  the  cleric  make  good  group  support  characters.
+Their presence makes practically every encounter easier.
+None of the above factors should necessarily be taken into
+account when assigning or modifying Challenge Ratings, but you
+should keep them in mind when designing encounters.
+TOUGHER MONSTERS
+A really big basilisk with more hit points and a higher attack
+bonus than a normal basilisk is a greater challenge. If you use the
+rules found in the Monster Manualfor increasing the Hit Dice of
+monsters, you should also increase the experience point (XP)
+award for the monster appropriately. See Advanced Monster Chal-
+lenge Rating, page 293 of the Monster Manual.
+If a monster has levels in PC or NPC classes, see Monsters and
+Class Levels, page 290 of the Monster Manual,for how to determine
+its CR.
+LOCATION
+A fight between characters perched on a bridge made of skulls
+over a pool of bubbling lava is more exciting and more dangerous
+than that same fight in a nice, safe dungeon room. Location serves
+two purposes, both equally important. It can make a humdrum en-
+counter more interesting, and it can make an encounter easier or
+much more difficult.
+Making Things Interesting
+Arguably, the dungeon itself is a fairly exotic locale, but eventually
+the same old 30-foot-by-30-foot room starts to grow stale. Like-
+wise, a trip through the dark woods can be interesting and fright-
+ening, but the tenth trip through is less so. Since this is a fantasy
+game, allow yourself the freedom to consider all sorts of strange
+locations for encounters. Imagine an encounter inside a volcano,
+along a narrow ledge on the side of a cliff, atop a flying whale, or
+deep underwater. Think of the exciting location first, and then
+worry about how and why the PCs would get there.
+Situations within a location can have as much impact as the
+location itself. If a rogue has to pick the lock on the only door out
+of the top room of a tower that’s collapsing, it’s suddenly a much
+more exciting situation than just another locked door in a dun-
+geon corridor. Create an encounter in which the PCs must be
+diplomatic while all around them a battle rages. Fill an under-
+ground cave complex with water for a different sort of dungeon
+adventure. Set a series of encounters in a large wooden fort—that
+happens to be on fire.
+See the Interesting Combats section, page 17, for a short discus-
+sion that deals with this same issue.
+Modifying Difficulty
+Orcs with crossbows, behind cover, firing down at the PCs while
+the characters cross a narrow ledge over a pit full of spikes are
+much more dangerous than the same orcs being engaged in hand-
+to-hand combat in some tunnel. Likewise, if the PCs find them-
+selves on a balcony, looking down at oblivious orcs who are carry-
+ing barrels of flammable oil, the encounter is likely to be much
+easier than if the orcs were aware of the PCs.
+Consider the sorts of factors, related to location or situation,
+that make an encounter more difficult, such as the following.
+•Enemy has cover (for example, behind a low wall).
+•Enemy is at higher elevation or is hard to get at (on a ledge or
+atop a defensible wall).
+•Enemy has guaranteed surprise (PCs are asleep).
+•Conditions  make  it  difficult  to  see  or  hear  (mist,  darkness,
+rumbling machinery all around).
+•Conditions make movement difficult (underwater, heavy grav-
+ity, very narrow passage).
+•Conditions  require  delicate  maneuvering  (climbing  down  a
+sheer cliff, hanging from the ceiling).
+•Conditions deal damage (in the icy cold, in a burning building,
+over a pit of acid).
+Conversely,  the  first  three  conditions  given  above  make
+encounters easier from the PCs’ point of view if they are the ones
+benefiting from the cover, elevation, or surprise.
+REWARDS AND BEHAVIOR
+Encounters, either individually or strung together, reward certain
+types of behavior whether you are conscious of it or not. Encoun-
+ters that can or must be won by killing the opponents reward
+aggression and fighting prowess. If you set up your encounters
+like this, expect wizards and priests to soon go into every adven-
+ture with only combat spells prepared. The PCs will learn to use
+tactics to find the best way to kill the enemy quickly. By contrast,
+encounters that can be won by diplomacy encourage the PCs to
+talk to everyone and everything they meet. Encounters that
+reward subterfuge and prowling encourage sneakiness. Encoun-
+CHAPTER 3:
+ADVENTURES

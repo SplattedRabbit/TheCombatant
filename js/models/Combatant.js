@@ -190,6 +190,69 @@ export class Combatant {
     rebuildCombatantModifiers(this);
   }
 
+  getAutomaticFeats() {
+    const list = [];
+    const activeClasses = Array.isArray(this.classes) ? this.classes : [];
+    
+    // Ranger automatic feats
+    const ranger = activeClasses.find(c => c.classType === 'ranger');
+    if (ranger) {
+      if (ranger.level >= 1) {
+        list.push({ id: 'track', source: 'Waldläufer (Klasse)' });
+      }
+      if (ranger.level >= 2) {
+        if (this.rangerCombatStyle === 'twoweapon') {
+          list.push({ id: 'two_weapon_fighting', source: 'Waldläufer (Kampfstil)' });
+        } else if (this.rangerCombatStyle === 'archery') {
+          list.push({ id: 'rapid_shot', source: 'Waldläufer (Kampfstil)' });
+        }
+      }
+      if (ranger.level >= 3) {
+        list.push({ id: 'endurance', source: 'Waldläufer (Klasse)' });
+      }
+      if (ranger.level >= 6) {
+        if (this.rangerCombatStyle === 'twoweapon') {
+          list.push({ id: 'improved_two_weapon_fighting', source: 'Waldläufer (Kampfstil)' });
+        } else if (this.rangerCombatStyle === 'archery') {
+          list.push({ id: 'manyshot', source: 'Waldläufer (Kampfstil)' });
+        }
+      }
+      if (ranger.level >= 11) {
+        if (this.rangerCombatStyle === 'twoweapon') {
+          list.push({ id: 'greater_two_weapon_fighting', source: 'Waldläufer (Kampfstil)' });
+        } else if (this.rangerCombatStyle === 'archery') {
+          list.push({ id: 'improved_precise_shot', source: 'Waldläufer (Kampfstil)' });
+        }
+      }
+    }
+    
+    // Wizard automatic feats
+    const wizard = activeClasses.find(c => c.classType === 'wizard');
+    if (wizard) {
+      if (wizard.level >= 1) {
+        list.push({ id: 'scribe_scroll', source: 'Magier (Klasse)' });
+      }
+    }
+    
+    // Monk automatic feats
+    const monk = activeClasses.find(c => c.classType === 'monk');
+    if (monk) {
+      if (monk.level >= 1) {
+        list.push({ id: 'improved_unarmed_strike', source: 'Mönch (Klasse)' });
+      }
+    }
+    
+    return list;
+  }
+
+  hasFeat(featId) {
+    const hasSelected = Array.isArray(this.feats) && this.feats.some(f => f.id === featId);
+    if (hasSelected) return true;
+    
+    const autoFeats = this.getAutomaticFeats();
+    return autoFeats.some(f => f.id === featId);
+  }
+
   enterRage() {
     enterRage(this);
   }

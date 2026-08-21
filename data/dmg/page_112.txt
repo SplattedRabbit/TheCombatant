@@ -1,0 +1,98 @@
+READING THE NPC DESCRIPTIONS
+The NPC descriptions that follow summarize a lot of information
+about the NPCs they describe. Below are details about each cate-
+gory of information.
+Starting Ability Scores:All these NPCs have starting ability
+scores that were determined by using the elite array (15, 14, 13, 12,
+10, 8) and arranging the numbers to the character’s best advantage.
+(See page 169 for more about the elite array and other alternative
+methods of determining ability scores.)
+Increased Ability Scores:Some of the NPC’s ability scores
+increase at higher levels, either because the character attains a
+level where an ability score increase is gained or because the char-
+acter gains possession of a magic item that improves a score. Mag-
+ically enhanced ability scores are in parentheses.
+Melee andRanged:Each NPC is equipped with a melee
+weapon and a ranged weapon (the monk has an unarmed attack
+listing as well). These columns on the table provide the NPC’s total
+attack bonuses due to class and level. The Ranged figure does not
+include any bonus from ammunition that might also apply.
+F/R/W:The class’s level-based bonuses on Fortitude, Reflex,
+and Will saves.
+Skill Pts./Feats:The numbers of skill points and feats an NPC
+has are calculated assuming a nonhuman character; for a human,
+add skill points and bonus feats as appropriate. The number of
+total feats includes any bonus feats granted by the class.
+Spells:The number of spells of each level a spellcaster has is
+given in order of level, from lowest to highest. Thus, “6/7/4” for a
+4th-level sorcerer means six 0-level spells, seven 1st-level spells,
+and four 2nd-level spells.
+Gear:This column lists the basic armor, generic melee and
+ranged  weapons  (mundane,  masterwork,  or  magical),  and
+common types of magic equipment each NPC has. You can pick
+any simple or martial weapon of an appropriate kind (but not an
+exotic weapon). If the ranged weapon you choose is a composite
+111
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–10: Neutral NPC Race or Kind
+BbnBrdClrDrdFtrMnkRgrRogSorWizRace/KindLevel
+2
+010101–15—01–10——01——Dwarf, deepNormal
+0202–0316–25—11–29—0102–0401—Dwarf, hillNormal
+——26—30–34—————Dwarf, mountainNormal
+—04–05—01—————01Elf, grayNormal
+—06–152702–063501–0202–0605–080202–26Elf, highNormal
+03–13162807–11——07—03–12—Elf, wildNormal
+1417–2129–3812–3136–410308–360913–1527–28Elf, woodNormal
+———32——37———Gnome, forestNormal
+—22–2339———38101629Gnome, rockNormal
+15–1624–3340–4833–3742–4604–1339–5511–2517–3130–44Half-elfNormal
+17–1834–3649–583847145626–5332–4145–47Halfling, lightfootNormal
+193759—4815—54–5842—Halfling, deepNormal
+—386039——5759–634348–49Halfling, tallfellowNormal
+20–5839–4061–624049–5816–2558–6764–7344–4850Half-orcNormal
+59–8741–9863–9041–8859–9626–10068–9674–9749–9551–97HumanNormal
+88–98—91–9789–9897—97–98—96–97—LizardfolkNormal
+——————————Gnome, svirfneblin–1
+——98—98——989898Doppelganger–3
+9999999999—99999999Wereboar (lycanthrope)
+1
+–1
+100100100100100—100100100100Weretiger (lycanthrope)
+1
+–1
+1 Reroll to determine the NPC’s base race or kind. (On the reroll, ignore rolls marked with a 1.)
+2 If the creature is exceptionally powerful, reduce its class level to balance. If its class level is 0 or lower, reroll.
+Table 4–9: Good NPC Race or Kind
+BbnBrdClrDrdFtrMnkPalRgrRogSorWizRace/KindLevel
+2
+—0101—001–0201–10——01–0201Aasimar (planetouched)Normal
+——02—01–03————03—Dwarf, deepNormal
+01–0202–0603–22—04–330311–2001–0501–0504–0502Dwarf, hillNormal
+——23–24—34–41—21—0606—Dwarf, mountainNormal
+—07–11250142————07–0803–07Elf, grayNormal
+—12–3626–3502–1143–4704–13—06–2007–1909–1108–41Elf, highNormal
+03–323736–4012–21———21—12–36—Elf, wildNormal
+33–34384122–31———22–36—3742Elf, woodNormal
+—394232–36———37–41203843Gnome, forestNormal
+—40–4443–513748—224221–2539–4044–48Gnome, rockNormal
+3545–5352–5638–4649–5014–1823–2743–5726–3541–4549–58Half-elfNormal
+365457–66475119285836–6046–5459–63Halfling, lightfootNormal
+—5567—522029—61–665564Halfling, deepNormal
+—5668–6948———5967–725665–67Halfling, tallfellowNormal
+37–6157704953–5721–253060–6473–7757–5868Half-orcNormal
+62–9858–9771–9550–9958–9726–9731–9765–9778–9659–9569–96HumanNormal
+—9896—————979697Gnome, svirfneblin–1
+999997–9810098989898989798Half-celestial
+1
+–1
+10010099—999999999998–9999Half-dragon
+1
+–2
+——100—100100100100100100100Werebear (lycanthrope)
+1
+–2
+1 Reroll to determine the NPC’s base race or kind. (On the reroll, ignore rolls marked with a 1.)
+2 If the creature is exceptionally powerful, reduce its class level to balance. If its class level is 0 or lower, reroll.

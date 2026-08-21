@@ -1,0 +1,142 @@
+The expressions in the left-hand column of the table refer to
+the current level of the paladin in relation to the level at which a
+particular kind of mount becomes available. For instance, the dire
+boar becomes available as a mount when a paladin reaches 7th
+level, so the information on the “Level to Level + 2” line applies to
+such a mount when the paladin is 7th, 8th, or 9th level. When he
+reaches 10th level, the information on the next line down applies.
+Paladin LevelBonusNaturalStr
+by Mount AvailabilityHDArmor Adj.Adj.Int
+Level to Level + 2+2+4+16
+Level + 3 to Level +5+4+6+27
+Level + 6 to Level + 9+6+8+38
+Level + 10 or higher+8+10+49
+Another example: A 15th-level halfling paladin has a giant
+lizard mount. On the table of mounts for Small riders, you find
+that the giant lizard becomes available at 6th level, so, for the pur-
+pose of the table above, the paladin is at level + 9. Checking that
+line on the table, you find that a 15th-level paladin’s giant lizard
+mount has the following attributes: +6 HD, +8 natural armor, +2
+Strength adjustment, and Int 8.
+A paladin’s mount has other special abilities and attributes
+beyond those mentioned on the table above; see The Paladin’s
+Mount, page 45 of the Player ’s Handbook,for details.
+Training an Unusual Mount
+The Player ’s Handbookcovers training animals under the Handle
+Animal skill description (page 74 of the Player’s Handbook). It
+mentions that magical beasts of Intelligence 1 or 2 may also be
+trained using this skill. You can decide if the skill also applies to
+other creatures of such intelligence.
+In other cases, such as vermin, you need to make special provi-
+sions if you allow the creatures to be used as mounts at all. You
+may decide that goblins breed and train a special kind of mon-
+strous spider capable of acting as a mount. You may create a magic
+item that allows vermin to act as mounts while wearing it. Or you
+may require that all vermin mounts be fiendish (your players may
+shudder at the idea of celestial vermin).
+INTELLIGENT MOUNTS
+Mounts with Intelligence scores of 5 or higher are more like
+NPCs than they are like traditional mounts. As a result, charac-
+ters must use Diplomacy checks to negotiate what the mount
+will and will not do (see Influencing NPC Attitudes, page 72 of
+the Player ’s Handbook). Once the character and mount reach an
+agreement, they still must train together. Training time is as
+given under the Handle Animal skill (page 74 of the Player ’s
+Handbook). Intelligent mounts may insist on special care, such as
+a hireling devoted to that specific mount, special food, or even a
+share of the party treasure.
+LEADERSHIP AND MOUNTS
+Canny characters may try using the Leadership feat to attract a
+cohort that can serve as a mount. This feat cannot attract a mount
+with an Intelligence of less than 4. If the character already has a
+special mount, familiar, or animal companion, the character takes a
+–2 penalty to his Leadership score. The table in the Special Cohorts
+section (page 199) includes some cohorts that can also serve as
+mounts; use these as a guideline if you want to add more examples.
+ANIMAL COMPANIONS
+Druids can begin play with animal companions, which are some-
+thing like cohorts, and rangers can gain them during their careers.
+Use the following rules of thumb to adjudicate situations that may
+arise when characters have animal companions.
+While the class descriptions in the Player ’s Handbook list the ani-
+mals available as companions, those lists assume the character
+spends most of her time in the animals’ home territory and treats
+them well. If she spends most of her time at sea, in cities, or other-
+wise in places that the animals don’t like, her animals are likely to
+desert. Remember, these creatures are loyal friends but not pets or
+servants. They won’t remain loyal if being the character’s friend be-
+comes too onerous.
+The animal is still an animal. It’s not a magical beast, as a famil-
+iar or a paladin’s mount is. While it may have learned some tricks,
+it’s still no more intelligent than any other animal of its kind, and
+it retains all its bestial instincts. Unlike intelligent followers or
+205
+CHAPTER 6:
+CHARACTERS
+Mount (Medium Rider)StrFly?Carry
+Camel18No900 lb.
+Warhorse, heavy18No900 lb.
+Warhorse, light16No690 lb.
+Celestial warhorse, heavy18No900 lb.
+Fiendish warhorse, light16No690 lb.
+Dire wolf25No2,400 lb.
+Hippogriff
+1
+18100 ft.300 lb.
+(average)
+18No900 lb.
+Monstrous spider, Large15No600 lb.
+Shark, Large
+2
+17No520 lb.
+Unicorn
+3
+20No1,200 lb.
+Dire boar27No3,120 lb.
+Dire wolverine22No1,560 lb.
+Giant eagle1880 ft.200 lb.
+(average)
+Giant owl1870 ft.200 lb.
+(average)
+Pegasus
+1
+18120 ft.300 lb.
+(average)
+18No900 lb.
+Rhinoceros26No2,760 lb.
+Sea cat
+2
+19No700 lb.
+Dire lion25No2,400 lb.
+Griffon1880 ft.200 lb.
+(average)
+Mount (Small Rider)StrFly?Carry
+Monstrous spider, Medium11—115 lb.
+Porpoise
+2
+11—115 lb.
+Riding dog15—300 lb.
+Shark, Medium
+2
+13—150 lb.
+Warpony15—300 lb.
+Fiendish riding dog15—300 lb.
+Celestial warpony15—300 lb.
+Dire bat1740 ft.172 lb.
+(good)
+Dire badger14—262 lb.
+Dire weasel14—262 lb.
+Lizard, monitor17—390 lb.
+1 A creature capable of flying as well as ground-based movement
+uses the carrying capacity on the first line of its entry if it is flying.
+If it is not flying, the carrying capacity on the second line of its
+entry applies.
+2 Aquatic characters only.
+3 Traditionally, unicorns only allow female human or female elf riders.
+Str: The mount’s typical (minimum) Strength score, from the Monster
+Manual.Creatures of greater size (Large, Huge, or Gargantuan)
+have a higher Strength score and thus a greater carrying capacity.
+Fly?:The mount’s fly speed, if it can fly.
+Carry:The weight of the heaviest load the mount can carry—the light
+load limit for a flying mount, or the maximum load (heavy load
+limit) for a nonflyer.

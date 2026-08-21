@@ -1,0 +1,135 @@
+234
+Random Generation:To generate rods randomly, roll on Table
+7–19: Rods.
+Special Qualities:Roll d%. A 01 result indicates the rod is
+intelligent, 02–31 indicates that something (a design, inscrip-
+tion, or the like) provides a clue to its function, and 32–100
+indicates no special qualities. Intelligent items have extra abili-
+ties and sometimes extraordinary powers and special purposes.
+Use Table 7–30: Item Intelligence, Wisdom, Charisma, and
+Capabilities as indicated if a rod is intelligent. Rods with
+charges can never be intelligent.
+Table 7–19: Rods
+MediumMajorRodMarket Price
+01–07—Metamagic, Enlarge, lesser3,000 gp
+08–14—Metamagic, Extend, lesser3,000 gp
+15–21—Metamagic, Silent, lesser3,000 gp
+22–28—Immovable5,000 gp
+29–35—Metamagic, Empower, lesser9,000 gp
+36–42—Metal and mineral detection10,500 gp
+43–5301–04Cancellation11,000 gp
+54–5705–06Metamagic, Enlarge11,000 gp
+58–6107–08Metamagic, Extend11,000 gp
+62–6509–10Metamagic, Silent11,000 gp
+66–7111–14Wonder12,000 gp
+72–7915–18Python13,000 gp
+80–83—Metamagic, Maximize, lesser14,000 gp
+84–8919–21Flame extinguishing15,000 gp
+90–9722–25Viper19,000 gp
+—26–30Enemy detection23,500 gp
+—31–36Metamagic, Enlarge, greater24,500 gp
+—37–42Metamagic, Extend, greater24,500 gp
+—43–48Metamagic, Silent, greater24,500 gp
+—49–53Splendor25,000 gp
+—54–58Withering25,000 gp
+98–9959–64Metamagic, Empower32,500 gp
+—65–69Thunder and lightning33,000 gp
+10070–73Metamagic, Quicken, lesser35,000 gp
+—74–77Negation37,000 gp
+—78–80Absorption50,000 gp
+—81–84Flailing50,000 gp
+—85–86Metamagic, Maximize54,000 gp
+—87–88Rulership60,000 gp
+—89–90Security61,000 gp
+—91–92Lordly might70,000 gp
+—93–94Metamagic, Empower, greater73,000 gp
+—95–96Metamagic, Quicken75,500 gp
+—97–98Alertness85,000 gp
+—99Metamagic, Maximize, greater121,500 gp
+—100Metamagic, Quicken, greater170,000 gp
+Rod Descriptions
+Although all rods are generally scepterlike, their configurations and
+abilities run the magical gamut. Standard rods are described below.
+Absorption:This rod acts as a magnet, drawing spells or spell-
+like abilities into itself. The magic absorbed must be a single-target
+spell or a ray directed at either the character possessing the rod or
+her gear. The rod then nullifies the spell’s effect and stores its po-
+tential until the wielder releases this energy in the form of spells
+of her own. She can instantly detect a spell’s level as the rod
+absorbs that spell’s energy. Absorption requires no action on the
+part of the user if the rod is in hand at the time.
+A running total of absorbed (and used) spell levels should be
+kept. For example, a rod that absorbs a 6th-level spell and a 3rd-
+level spell has a total of nine absorbed spell levels. The wielder of
+the rod can use captured spell energy to cast any spell she has
+prepared, without expending the preparation itself. The only
+restrictions are that the levels of spell energy stored in the rod
+must be equal to or greater than the level of the spell the wielder
+wants to cast, that any material components required for the
+spell be present, and that the rod be in hand when casting. Con-
+tinuing the example above, the rod wielder could use the nine
+absorbed spell levels to cast one 9th-level spell, or one 5th-level
+and one 4th-level spell, or nine 1st-level spells, and so on. For
+casters such as bards or sorcerers who do not prepare spells, the
+rod’s energy can be used to cast any spell of the appropriate level
+or levels that they know.
+A rod of absorptionabsorbs a maximum of fifty spell levels and can
+thereafter only discharge any remaining potential it might have.
+The rod cannot be recharged. The wielder knows the rod’s remain-
+ing absorbing potential and current amount of stored energy.
+A more specific example: Jozan the cleric uses a brand-new rod of
+absorptionto nullify the effect of a suggestionspell cast at him by a
+sorcerer. The rod has now absorbed three spell levels and can
+absorb forty-seven more. Jozan can cast any 1st-, 2nd-, or 3rd-level
+spell he has prepared, without loss of that preparation, by using the
+stored potential of the rod. Let’s assume he casts hold personback at
+the sorcerer who just attacked him. This spell is 2nd level for him,
+so the rod still holds one spell level of potential, can absorb forty-
+seven more, and has disposed of two spell levels permanently.
+To determine the absorption potential remaining in a newly
+found rod, roll d% and divide the result by 2. Then roll d% again:
+On a result of 71–100, half the levels already absorbed by the rod
+are still stored within. For example, if the first roll determines that
+the rod has thirty-four levels of absorption potential remaining,
+that means the rod has absorbed sixteen levels’ worth of spells.
+Half of sixteen is eight, so there’s a 30% chance that it still holds
+eight absorbed spell levels ready for use.
+Strong abjuration; CL 15th; Craft Rod,spell turning; Price 50,000 gp.
+Alertness:This rod is indistinguishable from a +1 light mace.It
+has eight flanges on its macelike head. The rod bestows a +1
+insight bonus on initiative checks. If grasped firmly, the rod
+enables the holder to use detect evil, detect good, detect chaos, detect law,
+detect magic, discern lies, light,or see invisibility.Each different use is a
+standard action.
+If  the  head of a rod of alertnessis planted in the ground, and the
+possessor wills it to alertness (a standard action), the rod senses any
+creature within 120 feet who intends to harm the possessor. At the
+same time, the rod creates the effect of a prayerspell upon all crea-
+tures friendly to the possessor in a 20-foot radius. Immediately
+thereafter, the rod sends forth a mental alert to these friendly crea-
+tures, warning them of possible danger from the unfriendly crea-
+ture or creatures within the 120-foot radius. These effects last for 10
+minutes, and the rod can perform this function once per day.
+Last, the rod can be used to simulate the casting of an animate
+objects spell, utilizing any eleven (or fewer) Small objects located
+roughly around the perimeter of a 5-foot-radius circle centered on
+the rod when planted in the ground. Objects remain animated for
+11 rounds. The rod can perform this function once per day.
+Moderate abjuration, divination, enchantment, and evocation;
+CL 11th; Craft Rod, alarm, detect chaos, detect evil, detect good, detect
+law, detect magic, discern lies, light, see invisibility, prayer, animate
+objects; Price 85,000 gp.
+Cancellation: This dreaded rod is a bane to magic items, for its
+touch drains an item of all magical properties. The item touched
+must make a DC 23 Will save to prevent the rod from draining it.
+If a creature is holding it at the time, then the item can use the
+holder’s Will save bonus in place of its own if the holder’s is better.
+In such cases, contact is made by making a melee touch attack roll.
+Upon draining an item, the rod itself becomes brittle and cannot
+be used again. Drained items are only restorable by wish or miracle.
+(If a sphere of annihilationand a rod of cancellationnegate each other,
+nothing can restore either of them.)
+Strong abjuration; CL 17th; Craft Rod, Mordenkainen’s disjunc-
+tion; Price 11,000 gp.
+CHAPTER 7:
+MAGIC ITEMS

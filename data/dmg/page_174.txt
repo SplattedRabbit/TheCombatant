@@ -1,0 +1,132 @@
+together when referring to Table 3–2. For instance, suppose a
+monster with 1 Hit Die and a +1 level adjustment has two levels of
+rogue. Its ECL is 4 (2 class levels + 1 Hit Die + 1 level adjustment).
+In order to gain another class level, it needs a total of 10,000 XP. 
+A monster with more than one Hit Die, a level adjustment, and
+class levels adds its Hit Dice, class levels, and level adjustment
+together when referring to Table 3–2. For example, a bugbear has
+three Hit Dice and a +1 level adjustment. After taking one level of
+rogue, it has an ECL of 5. To gain its second level of rogue, it needs
+a total of 15,000 XP. 
+Roleplaying Monster PCs:Many of the creatures in the Mon-
+ster Manualare evil. Not only are these creatures going to have a
+difficult time in standard settings, such as human cities, but evil
+PCs might not be what you want for your campaign. However, it’s
+fairly easy to justify how a monster whose kin are evil might be
+neutral or even good in alignment. See if any of the following
+background options appeal to your player and fit in with his char-
+acter concept.
+•Reared by humans, elves, dwarves, or another nonevil race.
+•Saved from a horrible fate by good-aligned creatures.
+•Individually repentant.
+•Disillusioned by evil.
+•On the run from evil creatures.
+•Magically altered or geased.
+Most NPCs assume that monsters are evil, regardless of the
+character’s actual alignment. Within a human city or an elven
+town, a goblin or a troll is going to be feared, loathed, or—at
+best—distrusted. Decide for yourself how much you want to
+stress the difficulty of playing a monster in civilized areas. The
+player must decide just how bestial or sophisticated he wants to
+play the monster character, and how true to the monster arche-
+type the player wants to cling. He may look to you for guidance, so
+be prepared ahead of time regarding these issues as well. Do you
+want the minotaur PC to be gleefully terrorizing the little folk or
+to be struggling to fit in with humans?
+Remember that what’s good for PCs is good for NPCs. NPC
+monsters can have classes, exceptional ability scores, and maxi-
+mum hit points from their first Hit Die as well.
+Creating New Races
+While the creatures in the Monster Manualmake for interesting
+PC racial choices, that’s not really what they were made for. Most
+were made to be opponents for the PCs (which is why they’re
+monsters). Thus, some DMs may want to create new races made
+primarily for giving players new options.
+Creating new races is difficult. In general, use the races in the
+Player ’s Handbookas examples and guides. When in doubt, make the
+new race similar to one found there. Monsters in the Monster Man-
+ualweren’t created to be PC races and shouldn’t be used as models
+for anything other than monsters and NPCs. If you want to create
+a catlike race with a high Dexterity, look to the elves as an example.
+They gain a +2 bonus to Dexterity but take a –2 penalty to Consti-
+tution. For having such a great benefit as heightened Dexterity, the
+cat people should have a commensurate penalty as well.
+Here’s an important point: Not all the ability scores are equal.
+For example, the half-orc has a penalty to both Intelligence and
+Charisma but a bonus only to Strength. That’s because neither a
+penalty to Intelligence nor a penalty to Charisma by itself is equiv-
+alent in significance to a bonus to Strength. To return to the cat
+people example: Dexterity is also a very important ability, and thus
+a Dexterity bonus could not be balanced by a Charisma penalty
+alone—some other drawback needs to be added.
+In general, the following table demonstrates appropriate penal-
+ties to match equal bonuses. Sometimes the bonus/penalty trade-
+off doesn’t work both ways. For example, a bonus to Strength is
+roughly equivalent to a penalty to Constitution, but a bonus to
+Constitution is not equivalent to a penalty to Strength.
+Ability Score Equivalencies
+Ability Score BonusAbility Score or Scores Penalized
+StrengthDexterity OR Constitution OR Intelligence and
+Charisma OR Intelligence and Wisdom OR
+Wisdom and Charisma
+DexterityStrength OR Constitution OR Intelligence and
+Charisma OR Intelligence and Wisdom OR
+Wisdom and Charisma
+ConstitutionDexterity OR Intelligence OR Wisdom OR
+Charisma
+IntelligenceWisdom OR Charisma
+WisdomIntelligence OR Charisma
+CharismaIntelligence OR Wisdom
+Of course, there’s nothing really wrong with penalizing a more
+important score than the one getting the bonus. You could create
+a frail race of kindly, beautiful creatures with a +2 bonus to
+Charisma and a –2 penalty to Strength, but be aware that some
+players will not like playing such a race. Some might, however,
+and that’s for you to judge. Refer to Handling Unbalanced PCs
+(page 13) for tips on what to do if you think you have introduced
+something into your game (in this case, a new race) that was a mis-
+take because it was either overpowered or not powerful enough.
+Basically, the same guidelines that you must consider when cre-
+ating subraces or using monsters as races apply to creating new
+races. Beware of special abilities, particularly movement- or combat-
+173
+CHAPTER 6:
+CHARACTERS
+Monster PCs’ Intelligence Scores
+Dice––——— Monster Intelligence Score ————
+Roll34–56–78–9
+1810121416
+179111315
+168101214
+15791113
+14681012
+1357911
+1246810
+113579
+103579
+93568
+83468
+73457
+63456
+53355
+43344
+33333
+Monster PCs’ Ability Scores
+Dice—Monster Ability Score (Str, Dex, Con, Wis, Cha)—
+Roll12–34–56–78–9
+18810121416
+1779111315
+1668101214
+155791113
+144681012
+13357911
+12246810
+1113579
+1012468
+912467
+812456
+711355
+611244
+511133
+411122
+311111

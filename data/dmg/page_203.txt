@@ -1,0 +1,131 @@
+202
+Alternate Form (Su):As polymorph, caster level 12th, except that
+an individual imp can assume only one or two forms no larger
+than Medium. Common forms include bat, monstrous centipede,
+toad, and wolf.
+Shocker Lizard Familiar:CR —; Small magical beast; HD 5;
+hp 1/2 master’s; Init +6; Spd 40 ft., climb 20 ft., swim 20 ft.; AC 19,
+touch 13, flat-footed 17; Base Atk +2; Grp –2; Atk +3 melee (1d4,
+bite); Full Atk +3 melee (1d4, bite); Space/Reach 5 ft./5 ft.; SA stun-
+ning shock, lethal shock; SQ darkvision 60 ft., deliver touch spells,
+electricity sense, immunity to electricity, improved evasion, low-
+light vision, speak with master, granted abilities; AL any; SV Fort
++3, Ref +5, Will +1; Str 10, Dex 15, Con 13, Int 8, Wis 12, Cha 6.
+Skills and Feats:Climb +11, Hide +11, Jump +3, Listen +4, Spot +4
+(or master’s, if better), Swim +10; Improved Initiative.
+Stunning Shock (Su):Once per round, deals 2d8 points of non-
+lethal damage to a living opponent in an adjacent square (Reflex
+DC 12 half ).
+Lethal Shock (Su):Two or more shocker lizards within 25 feet of
+each other can work together to create a lethal shock; 25-foot radius,
+centered on any one contributing lizard; damage 2d8 per contribut-
+ing lizard (max 12d8). Creatures in the area can take half damage by
+making a Reflex save (DC 10 + number of lizards contributing).
+Electricity Sense (Ex):Automatically detect any electrical dis-
+charges within 100 feet.
+Small Air Elemental Familiar:CR —; Small elemental (air,
+extraplanar); HD 5; hp 1/2 master’s; Init +7; Spd fly 100 ft. (per-
+fect); AC 20, touch 14, flat-footed 17; Base Atk +1; Grp –3; Atk +5
+melee (1d4, slam); Full Atk +5 melee (1d4, slam); Space/Reach
+5ft./5 ft.; SA air mastery, whirlwind; SQ deliver touch spells, ele-
+mental type, improved evasion, speak with master, granted abili-
+ties; AL any; SV Fort +0, Ref +6, Will +0; Str 10, Dex 17, Con 10,
+Int8, Wis 11, Cha 11.
+Skills and Feats:Listen +2, Spot +3 (or master’s, if better); Flyby
+Attack, Improved Initiative, Weapon Finesse.
+Air Mastery (Ex):Airborne creatures take a –1 penalty on attack
+rolls and damage rolls against an air elemental.
+Whirlwind (Su):Once every 10 minutes, transform into whirl-
+wind for 1 round; 5-foot base, up to 30-foot top, 10–20 feet tall.
+Move at fly speed.
+Tiny or smaller creatures must succeed on a DC 11 Reflex save
+or take 1d4 points of damage, and on a second DC 11 Reflex save
+to avoid being picked up and held. A flying creature can attempt a
+Reflex save to escape (but still takes damage). The elemental can
+eject carried creatures at any time.
+If the base touches the ground, it creates a swirling cloud of debris
+centered on the elemental, diameter half the whirlwind’s height,
+obscures all vision (including darkvision) beyond 5 feet. Creatures 5
+feet away have concealment, while those farther away have total con-
+cealment (see page 152 of the Player ’s Handbook). Those caught in the
+cloud must succeed on a DC 11 Concentration check to cast a spell.
+Elemental Type:Immune to poison, sleep, paralysis, and stunning;
+not subject to critical hits or flanking.
+Small Earth Elemental Familiar:CR —; Small elemental
+(earth, extraplanar); HD 5; hp 1/2 master’s; Init –1; Spd 20 ft.; AC
+20, touch 10, flat-footed 20; Base Atk +1; Grp +0; Atk +5 melee
+(1d6+4, slam); Full Atk +5 melee (1d6+4, slam); Space/Reach 5 ft./5
+ft.; SA earth mastery, push; SQ deliver touch spells, elemental type,
+improved evasion, speak with master, granted abilities; AL any; SV
+Fort +4, Ref –1, Will +0; Str 17, Dex 8, Con 13, Int 8, Wis 11, Cha 11.
+Skills and Feats:Listen +3, Spot +2 (or master’s, if better); Power
+Attack.
+Earth Mastery (Ex):+1 bonus on attack rolls and damage rolls if
+both it and its foe touch the ground, –4 penalty on attack rolls and
+damage rolls against airborne or waterborne opponents.
+Push (Ex):Can start a bull rush without provoking an attack of
+opportunity. The combat modifiers given for earth mastery, above,
+also apply to the elemental’s opposed Strength checks.
+Elemental Type:Immune to poison, sleep, paralysis, and stunning;
+not subject to critical hits or flanking.
+Small Fire Elemental Familiar:CR —; Small elemental (fire,
+extraplanar); HD 5; hp 1/2 master’s; Init +5; Spd 50 ft.; AC 18,
+touch 12, flat-footed 17; Base Atk +1; Grp –3; Atk +3 melee (1d4
+plus 1d4 fire, slam); Full Atk +3 melee (1d4 plus 1d4 fire, slam);
+Space/Reach 5 ft./5 ft.; SA burn; SQ deliver touch spells, elemen-
+tal type, fire subtype, improved evasion, speak with master,
+granted abilities; AL any; SV Fort +0, Ref +4, Will +0; Str 10,
+Dex13, Con 10, Int 8, Wis 11, Cha 11.
+Skills and Feats:Listen +2, Spot +3 (or master’s, if better); Dodge,
+Improved Initiative, Weapon Finesse.
+Burn (Ex):Those hit by the fire elemental’s slam attack, or hit-
+ting it with natural weapons or unarmed attacks, must succeed on
+a DC 11 Reflex save or catch on fire. The flame burns for 1d4
+rounds (see Catching on Fire, page 303). A burning creature can
+take a move action to put out the flame.
+Elemental Type:Immune to poison, sleep,paralysis, and stunning;
+not subject to critical hits or flanking.
+Fire Subytpe:Immune to fire damage. Takes half again as much
+(+50%) damage as normal from cold, regardless of whether a
+saving throw is allowed, or if the save is a success or failure.
+Small Water Elemental Familiar:CR —; Small elemental
+(water, extraplanar); HD 5; hp 1/2 master’s; Init +0; Spd 20 ft.,
+swim 90 ft.; AC 20, touch 11, flat-footed 20; Base Atk +1; Grp –3;
+Atk +4 melee (1d6+3, slam); Full Atk +4 melee (1d6+3, slam);
+Space/Reach 5 ft./5 ft.; SA water mastery, drench, vortex; SQ
+deliver touch spells, elemental type, improved evasion, speak with
+master, granted abilities; AL any; SV Fort +4, Ref +1, Will +4,
+Str14, Dex 10, Con 13, Int 8, Wis 11, Cha 11.
+Skills and Feats:Listen +5, Spot +5 (or master’s, if better); Power
+Attack.
+Water Mastery (Ex):+1 bonus on attack rolls and damage rolls if
+both it and its foe touch water, –4 penalty on attack rolls and dam-
+age rolls against landbound opponents.
+Drench (Ex):The elemental’s touch puts out torches, campfires,
+exposed lanterns, and other open flames of nonmagical origin of
+Large size or smaller. Can dispel magical fire it touches as dispel
+magic,caster level 5th.
+Vortex (Su): Once every 10 minutes, transform into whirlpool
+for 1 round if underwater; 5-foot base, up to 30-foot top, 10–20 feet
+tall. Move at swim speed.
+Tiny or smaller creatures must succeed on a DC 11 Reflex save
+or take 1d4 points of damage, and on a second DC 11 Reflex save
+to avoid being picked up and held. A swimming creature can
+attempt a Reflex save to escape (but still takes damage). The ele-
+mental can eject carried creatures at any time.
+If the base touches the ground, it creates a swirling cloud of
+debris centered on the elemental, diameter half the whirlwind’s
+height, obscures all vision (including darkvision) beyond 5 feet.
+Creatures 5 feet away have concealment, while those farther away
+have total concealment (see page 152 of the Player ’s Handbook).
+Those caught in the cloud must succeed on a DC 11 Concentra-
+tion check to cast a spell.
+Elemental Type:Immune to poison,sleep, paralysis, and stunning;
+not subject to critical hits or flanking.
+Stirge Familiar:CR —; Tiny magical beast; HD 5; hp 1/2
+master’s; Init +4; Spd 10 ft., fly 40 ft. (average); AC 19, touch 16,
+flat-footed 15; Base Atk +1; Grp –11 (+1 when attached); Atk +7
+melee (1d3–4, touch); Full Atk +7 melee (1d3–4, touch); Space/
+Reach 2-1/2 ft./0 ft.; SA attach, blood drain; SQ darkvision 60 ft.,
+CHAPTER 6:
+CHARACTERS

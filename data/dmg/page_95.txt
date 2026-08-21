@@ -1,0 +1,131 @@
+94
+Precipitation:Roll d% to determine whether the precipita-
+tion is fog (01–30), rain/snow (31–90), or sleet/hail (91–00).
+Snow and sleet occur only when the temperature is 30° Fahren-
+heit or below. Most precipitation lasts for 2d4 hours. By contrast,
+hail lasts for only 1d20 minutes but usually accompanies 1d4
+hours of rain.
+Storm(Duststorm/Snowstorm/Thunderstorm):Wind speeds are
+severe (30 to 50 mph) and visibility is cut by three-quarters.
+Storms last for 2d4–1 hours. See Storms, below, for more details.
+Warm:Between 60° and 85° Fahrenheit during the day, 10 to 20
+degrees colder at night.
+Windy: Wind speeds are moderate to strong (10 to 30 mph); see
+Table 3–24 on the following page.
+Rain, Snow, Sleet, and Hail
+Bad weather frequently slows or halts travel and makes it virtu-
+ally impossible to navigate from one spot to another. Torrential
+downpours and blizzards obscure vision as effectively as a
+dense fog.
+Most precipitation is rain, but in cold conditions it can manifest
+as snow, sleet, or hail. Precipitation of any kind followed by a cold
+snap in which the temperature dips from above freezing to 30° F
+or below may produce ice (see Cold Dangers, page 302).
+Rain:Rain reduces visibility ranges by half, resulting in a –4
+penalty on Spot and Search checks. It has the same effect on
+flames, ranged weapon attacks, and Listen checks as severe wind
+(see the following page).
+Snow:Falling snow has the same effects on visibility, ranged
+weapon attacks, and skill checks as rain, and it costs 2 squares of
+movement to enter a snow-covered square. A day of snowfall
+leaves 1d6 inches of snow on the ground.
+Heavy Snow: Heavy snow has the same effects as normal snow-
+fall, but also restricts visibility as fog does (see Fog, below). A day
+of heavy snow leaves 1d4 feet of snow on the ground, and it costs
+4 squares of movement to enter a square covered with heavy snow.
+Heavy snow accompanied by strong or severe winds may result in
+snowdrifts 1d4×5 feet deep, especially in and around objects big
+enough to deflect the wind—a cabin or a large tent, for instance.
+There is a 10% chance that a heavy snowfall is accompanied by
+lightning (see Thunderstorm, below).
+Snow has the same effect on flames as moderate wind (see the fol-
+lowing page).
+Sleet:Essentially frozen rain, sleet has the same effect as rain
+while falling (except that its chance to extinguish protected
+flames is 75%) and the same effect as snow once on the ground.
+Hail:Hail does not reduce visibility, but the sound of falling hail
+makes Listen checks more difficult (–4 penalty). Sometimes (5%
+chance) hail can become large enough to deal 1 point of lethal
+damage (per storm) to anything in the open. Once on the ground,
+hail has the same effect on movement as snow.
+Storms
+The combined effects of precipitation (or dust) and wind that ac-
+company all storms reduce visibility ranges by three quarters,
+imposing a –8 penalty on Spot, Search, and Listen checks. Storms
+make ranged weapon attacks impossible, except for those using
+siege weapons, which have a –4 penalty on attack rolls. They auto-
+matically extinguish candles, torches, and similar unprotected
+flames. They cause protected flames, such as those of lanterns, to
+dance wildly and have a 50% chance to extinguish these lights. See
+Table 3–24: Wind Effects for possible consequences to creatures
+caught outside without shelter during such a storm. Storms are
+divided into the following three types.
+Duststorm (CR 3):These desert storms differ from other storms
+in that they have no precipitation. Instead, a duststorm blows fine
+grains of sand that obscure vision, smother unprotected flames,
+and can even choke protected flames (50% chance). Most dust-
+storms are accompanied by severe winds (see the following page)
+and leave behind a deposit of 1d6 inches of sand. However, there
+is a 10% chance for a greater duststorm to be accompanied by
+windstorm-magnitude winds (see Table 3–24: Wind Effects).
+These greater duststorms deal 1d3 points of nonlethal damage
+each round to anyone caught out in the open without shelter and
+also pose a choking hazard (see Drowning, page 304—except that
+a character with a scarf or similar protection across her mouth and
+nose does not begin to choke until after a number of rounds equal
+to 10 ×her Constitution score). Greater duststorms leave 2d3–1
+feet of fine sand in their wake.
+Snowstorm:In addition to the wind and precipitation common
+to other storms, snowstorms leave 1d6 inches of snow on the
+ground afterward.
+Thunderstorm:In addition to wind and precipitation (usually
+rain, but sometimes also hail), thunderstorms are accompanied
+by lightning that can pose a hazard to characters without proper
+shelter (especially those in metal armor). As a rule of thumb,
+assume one bolt per minute for a 1-hour period at the center of
+the storm. Each bolt causes electricity damage equal to 1d10
+eight-sided dice. One in ten thunderstorms is accompanied by a
+tornado (see below).
+Powerful Storms:Very high winds and torrential precipita-
+tion reduce visibility to zero, making Spot, Search, and Listen
+checks and all ranged weapon attacks impossible. Unprotected
+flames are automatically extinguished, and protected flames have
+a 75% chance of being doused. Creatures caught in the area must
+make a DC 20 Fortitude save or face the effects based on the size of
+the creature (see Table 3–24). Powerful storms are divided into the
+following four types.
+Windstorm:While accompanied by little or no precipitation,
+windstorms can cause considerable damage simply through the
+force of their wind.
+Blizzard:The combination of high winds, heavy snow (typically
+1d3 feet), and bitter cold (see Cold Dangers, page 302) make bliz-
+zards deadly for all who are unprepared for them.
+Hurricane:In addition to very high winds and heavy rain, hurri-
+canes are accompanied by floods (see page 93). Most adventuring
+activity is impossible under such conditions.
+Tornado:One in ten thunderstorms is accompanied by a
+tornado.
+Fog
+Whether in the form of a low-lying cloud or a mist rising from the
+ground, fog obscures all sight, including darkvision, beyond 5
+feet. Creatures 5 feet away have concealment (attacks by or against
+them have a 20% miss chance).
+CHAPTER 3:
+ADVENTURES
+Table 3–23: Random Weather 
+d%WeatherCold ClimateTemperate Climate
+1
+Desert
+01–70Normal weatherCold, calmNormal for season
+2
+Hot, calm
+71–80Abnormal weatherHeat wave (01–30) or cold snap (31–100)Heat wave (01–50) or cold snap (51–100)Hot, windy
+81–90 Inclement weatherPrecipitation (snow)Precipitation (normal for season)Hot, windy
+91–99          StormSnowstormThunderstorm,          snowstorm
+3
+Duststorm
+100Powerful stormBlizzardWindstorm, blizzard
+4
+, hurricane, tornadoDownpour
+1 Temperate includes forest, hills, marsh, mountains, plains, and warm aquatic.
+2 Winter is cold, summer is warm, spring and autumn are temperate. Marsh regions are slightly warmer in winter.

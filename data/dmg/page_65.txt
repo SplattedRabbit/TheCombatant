@@ -1,0 +1,141 @@
+64
+Bridge: A bridge connects two higher areas separated by a lower
+area, stretching across a chasm, over a river, or above a pit. A simple
+bridge might be a single wooden plank, while an elaborate one
+could be made of mortared stone with iron supports and side rails.
+Narrow Bridge: If a bridge is particularly narrow, such as a series
+of planks laid over lava fissures, treat it as a ledge (see Special
+Floors, page 60). It requires a Balance check (DC dependent on
+width) to cross such a bridge.
+Rope Bridge: Constructed of wooden planks suspended from
+ropes, a rope bridge is convenient because it’s portable and can be
+easily removed. It takes two full-round actions to untie one end of
+a rope bridge, but a DC 15 Use Rope check reduces the time to a
+move action. If only one of the two supporting ropes is attached,
+everyone on the bridge must succeed on a DC 15 Reflex save to
+avoid falling off, and thereafter must make DC 15 Climb checks to
+move along the remnants of the bridge.
+Rope bridges are usually 5 feet wide. The two ropes that support
+them have 8 hit points each.
+Drawbridge: Some bridges have mechanisms that allow them to
+be extended or retracted from the gap they cross. Typically, the
+winch mechanism exists on only one side of the bridge. It takes a
+move action to lower a drawbridge, but the bridge doesn’t come
+down until the beginning of the lowering character’s next turn. It
+takes a full-round action to raise a drawbridge; the drawbridge is
+up at the end of the action.
+Particularly long or wide drawbridges may take more time to
+raise and lower, and some may require Strength checks to rotate
+the winch.
+Railings and Low Walls: Some bridges have railings or low walls
+along the sides. If a bridge does, the railing or low walls affect Bal-
+ance checks and bull rush attempts as described for ledges (see
+Special Floors, page 60). Low walls likewise provide cover to
+bridge occupants.
+Chutes and Chimneys: Stairs aren’t the only way to move up
+and down in a dungeon. Sometimes a vertical shaft connects
+levels of a dungeon or links a dungeon with the surface. Chutes
+are usually traps that dump characters into a lower area—often a
+place featuring some dangerous situation with which they must
+contend.
+Pillar: A common sight in any dungeon, pillars and columns
+give support to ceilings. The larger the room, the more likely it has
+pillars. As a rule of thumb, the deeper in the dungeon a room is,
+the thicker the pillars need to be to support the overhead weight.
+Pillars tend to be polished and often have carvings,
+paintings, or inscriptions upon them. 
+Slender Pillar: These pillars are only a foot or two
+across, so they don’t occupy a whole square. Place a
+dot in the center of each square that has a slender
+pillar in it, and don’t worry about exactly how much
+space it takes up. A creature standing in the same
+square as a slender pillar gains a +2 cover bonus to
+Armor Class and a +1 cover bonus on Reflex saves
+(these bonuses don’t stack with cover bonuses from
+other sources). The presence of a slender pillar does
+not otherwise affect a creature’s fighting space,
+because it’s assumed that the creature is using the
+pillar to its advantage when it can. A typical slender
+pillar has AC 4, hardness 8, and 250 hit points.
+Wide Pillar: These pillars take up an entire square
+and provide cover to anyone behind them. They
+have AC 3, hardness 8, and 900 hit points.
+A DC 20 Climb check is sufficient to climb
+most pillars; the DC increases to 25 for polished
+or unusually slick ones.
+Stalagmite/Stalactite: These tapering
+natural rock columns extend from the floor
+(stalagmite) or the ceiling (stalactite). Stalagmites
+and stalactites function as slender pillars,
+although  it  is  rumored  that  deep  in  the
+Underdark, some wide stalagmites and stalac-
+tites exist.
+Statue: Reflections of bygone days, stat-
+ues found in dungeons can be realistic depic-
+tions of persons, creatures, or scenes, or they
+can be less lifelike in their imagery. Statues
+often serve as commemorative representations
+of people from the past as well as idols of gods.
+Statues may be either painted or left bare. Some
+have inscriptions. Adventurers wisely distrust
+statues in dungeons for fear that they may ani-
+mate and attack, as a stone golem can do. Statues
+in a dungeon could also be a sign indicating the
+presence of a monster with a petrifying power
+(such as a medusa or a cockatrice). Feel free to uti-
+lize both of these ideas, but don’t forget that some-
+times a statue is just a statue.
+Most statues function as wide pillars, taking
+up a square and providing cover. Some statues
+are smaller and act as slender pillars. A DC 15
+Climb check allows a character to climb a statue.
+Tapestry: Elaborately embroidered patterns or scenes on cloth,
+tapestries hang from the walls of well-appointed dungeon rooms or
+corridors. They not only make chambers more comfortable as a resi-
+dence but can add a ceremonial touch to shrines and throne rooms.
+Crafty builders take advantage of tapestries to place alcoves, con-
+cealed doors, or secret switches behind them. Sometimes the images
+in a tapestry contain clues to the nature of the builders, the inhabi-
+tants, or the dungeon itself.
+Tapestries provide total concealment (50% miss chance) to char-
+acters behind them if they’re hanging from the ceiling, or con-
+cealment (20% miss chance) if they’re flush with the wall.
+Climbing a big tapestry isn’t particularly difficult, requiring a
+DC 15 Climb check (or DC 10 if a wall is within reach).
+Pedestal: Anything important on display in a dungeon, from a
+fabulous treasure to a coffin, tends to rest atop a pedestal or a dais.
+Raising the object off the floor focuses attention on it (and, in
+practical terms, keeps it safe from any water or other substance
+that might seep onto the floor). A pedestal is often trapped to pro-
+tect whatever sits atop it. It can conceal a secret trapdoor beneath
+itself or provide a way to reach a door in the ceiling above itself.
+Only the largest pedestals take up an entire square; most provide
+no cover.
+Pool: Pools of water collect naturally in low spots in dungeons (a
+dry dungeon is rare). Pools can also be wells or natural under-
+ground springs, or they can be intentionally created
+basins, cisterns, and fountains. In any event,
+water is fairly common in dungeons, harbor-
+ing sightless fish and sometimes aquatic
+monsters. Pools provide water for dun-
+geon denizens, and thus are as important
+an area for a predator to control as a water-
+ing hole aboveground in the wild.
+Shallow Pool: If a square contains a shallow
+pool, it has roughly 1 foot of standing water.
+It costs 2 squares of movement to move
+into a square with a shallow pool, and the
+DC of Tumble checks in such squares
+increases by 2.
+Deep Pool:These squares have at
+least 4 feet of standing water. It costs
+Medium or larger creatures 4 squares of
+movement to move into a square with
+a deep pool, or characters can swim if
+they wish. Small or smaller creatures
+CHAPTER 3:
+ADVENTURES
+Pillar
+Statue of a warrior
+A pedestal 
+displaying a grand gem

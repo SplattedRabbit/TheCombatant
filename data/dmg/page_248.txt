@@ -1,0 +1,133 @@
+to +5, depending on the kind of amulet.
+Faint transmutation; CL 5th; Craft Wondrous Item, barkskin,
+creator’s caster level must be at least three times the amulet’s
+bonus; Price 2,000 gp (+1), 8,000 gp (+2), 18,000 gp (+3), 32,000 gp
+(+4), or 50,000 gp (+5).
+Amulet of the Planes: This device usually appears to be a
+black circular amulet, although any character looking closely at it
+sees a dark, moving swirl of color. The amulet allows its wearer to
+utilize plane shift. However, this is a difficult item to master. The
+user must make a DC 15 Intelligence check in order to get the
+amulet to take her to the plane (and the specific location on that
+plane) that she wants. If she fails, the amulet transports her and all
+those traveling with her to a random location on that plane (01–60
+on d%) or to a random plane (61–100).
+Strong conjuration; CL 15th; Craft Wondrous Item, plane shift;
+Price 120,000 gp.
+Amulet of Proof against Detection and Location:This silver
+amulet protects the wearer from scrying and magical location just
+as a nondetectionspell does. If a divination spell is attempted
+against the wearer, the caster of the divination must succeed on a
+caster level check (1d20 + caster level) against a DC of 19 (as if the
+caster had cast nondetectionon herself ).
+Moderate abjuration; CL 8th; Craft Wondrous Item, nondetec-
+tion; Price 35,000 gp.
+Apparatus of Kwalish:This item appears to be a large, sealed
+iron barrel, but it has a secret catch (Search DC 20 to locate) that
+opens  a  hatch  in  one  end.  Anyone  who  crawls  inside  finds  ten
+(unlabeled) levers:
+247
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–27: Minor Wondrous Items
+d%ItemMarket Price
+01Quaal’s feather token, anchor50 gp
+02Universal solvent50 gp
+03Elixir of love150 gp
+04Unguent of timelessness150 gp
+05Quaal’s feather token, fan200 gp
+06Dust of tracelessness250 gp
+07Elixir of hiding250 gp
+08Elixir of sneaking250 gp
+09Elixir of swimming250 gp
+10Elixir of vision250 gp
+11Silversheen250 gp
+12Quaal’s feather token, bird300 gp
+13Quaal’s feather token, tree400 gp
+14Quaal’s feather token, swan boat450 gp
+15Elixir of truth500 gp
+16Quaal’s feather token, whip500 gp
+17Dust of dryness850 gp
+18Bag of tricks, gray900 gp
+19Hand of the mage900 gp
+20Bracers of armor +11,000 gp
+21Cloak of resistance +11,000 gp
+22Pearl of power, 1st-level spell1,000 gp
+23Phylactery of faithfulness1,000 gp
+24Salve of slipperiness1,000 gp
+25Elixir of fire breath1,100 gp
+26Pipes of the sewers1,150 gp
+27Dust of illusion1,200 gp
+28Goggles of minute seeing1,250 gp
+29Brooch of shielding1,500 gp
+30Necklace of fireballs type I1,650 gp
+31Dust of appearance1,800 gp
+32Hat of disguise1,800 gp
+33Pipes of sounding1,800 gp
+34Quiver of Ehlonna1,800 gp
+35Amulet of natural armor +12,000 gp
+36Heward’s handy haversack2,000 gp
+37Horn of fog2,000 gp
+38Elemental gem2,250 gp
+39Robe of bones2,400 gp
+40Sovereign glue2,400 gp
+41Bag of holding type I2,500 gp
+42Boots of elvenkind2,500 gp
+43Boots of the winterlands2,500 gp
+44Candle of truth2,500 gp
+45Cloak of elvenkind2,500 gp
+46Eyes of the eagle2,500 gp
+47Scarab, golembane2,500 gp
+48Necklace of fireballs type II2,700 gp
+49Stone of alarm2,700 gp
+50Bag of tricks, rust3,000 gp
+51Bead of force3,000 gp
+52Chime of opening3,000 gp
+53Horseshoes of speed3,000 gp
+54Rope of climbing3,000 gp
+55Dust of disappearance3,500 gp
+56Lens of detection3,500 gp
+57Vestment, druid’s3,750 gp
+58Figurine of wondrous power, silver raven3,800 gp
+59Amulet of health +24,000 gp
+60Bracers of armor +24,000 gp
+61Cloak of Charisma +24,000 gp
+62Cloak of resistance +24,000 gp
+63Gauntlets of ogre power4,000 gp
+64Gloves of arrow snaring4,000 gp
+65Gloves of Dexterity +24,000 gp
+66Headband of intellect +24,000 gp
+67Ioun stone, clear spindle4,000 gp
+68Keoghtom’s ointment4,000 gp
+69Nolzur’s marvelous pigments4,000 gp
+70Pearl of power, 2nd-level spell4,000 gp
+71Periapt of Wisdom +24,000 gp
+72Stone salve4,000 gp
+73Necklace of fireballs type III4,350 gp
+74Circlet of persuasion4,500 gp
+75Slippers of spider climbing4,800 gp
+76Incense of meditation4,900 gp
+77Bag of holding type II5,000 gp
+78Bracers of archery, lesser5,000 gp
+79Ioun stone, dusty rose prism5,000 gp
+80Helm of comprehend languages and read magic5,200 gp
+81Vest of escape5,200 gp
+82Eversmoking bottle5,400 gp
+83Murlynd’s spoon5,400 gp
+84Necklace of fireballs type IV5,400 gp
+85Boots of striding and springing5,500 gp
+86Wind fan5,500 gp
+87Amulet of mighty fists +16,000 gp
+88Horseshoes of a zephyr6,000 gp
+89Pipes of haunting6,000 gp
+90Necklace of fireballs type V6,150 gp
+91Gloves of swimming and climbing6,250 gp
+92Bag of tricks, tan6,300 gp
+93Circlet of blasting, minor6,480 gp
+94Horn of goodness/evil6,500 gp
+95Robe of useful items7,000 gp
+96Boat, folding7,200 gp
+97Cloak of the manta ray7,200 gp
+98Bottle of air7,250 gp
+99Bag of holding type III7,400 gp
+100Periapt of health7,400 gp

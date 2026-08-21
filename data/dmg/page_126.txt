@@ -1,0 +1,93 @@
+ster, teleport; 6th—acid fog, disintegrate, greater dispel magic;7th—
+ethereal jaunt, prismatic spray.
+Possessions: Amulet of natural armor +1, bracers of armor +3, ring of
+protection +2,+1 halfspear, masterwork light crossbow, 10 bolts, cloak
+of Charisma +4, potion of blur, potion of haste,2 scrolls of dominate
+person, wand of magic missile(9th-level caster, maximized), dagger.
+NPC WIZARD
+Starting Ability Scores:Str 10, Dex 14, Con 13, Int 15, Wis 12,
+Cha 8.
+Increased Ability Scores:4th, Int 16; 8th, Int 17; 12th, Int 18
+(20); 14th, Dex 14 (16); 15th, Int 18 (22); 16th, Int 19 (23); 18th, Int
+19 (25); 20th, Int 20 (26).
+Sample 5th-Level NPC Wizard:Drow Wiz 5; CR 6; Medium
+humanoid (elf ); HD 5d4+3; hp 17; Init +3; Spd 30 ft.; AC 14,
+touch 13, flat-footed 11; Base Atk +2; Grp +2; Atk +2 melee
+(1d6/18–20, rapier) or +6 ranged (1d4/19–20, masterwork hand
+crossbow); Full Atk +2 melee (1d6/18–20, rapier) or +6 ranged
+(1d4/19–20, masterwork hand crossbow); SA —; SQ drow traits;
+AL NE; SV Fort +2, Ref +5, Will +6; Str 10, Dex 16, Con 11, Int 18,
+Wis 12, Cha 10.
+Skills and Feats:Concentration +8, Craft (alchemy) +9, Knowl-
+edge (arcana) +12, Knowledge (dungeoneering) +12, Knowledge
+(history) +9, Listen +3, Search +6, Spellcraft +14, Spot +3; Brew
+Potion, Combat Casting, Scribe Scroll, Toughness. 
+Drow Traits: Immune to magic sleepspells and effects; +2 racial
+bonus on saves against enchantment spells or effects; darkvision
+120 ft.; entitled to a Search check when within 5 feet of a secret or
+concealed door as though actively looking for it; spell resistance
+16; +2 racial bonus on Will saves against spells or spell-like abili-
+ties; spell-like abilities (1/day—dancing lights, darkness,and faerie
+fireas the spells from a 5th-level caster); light blindness (blinded
+for 1 round by abrupt exposure to bright light, –1 circumstance
+penalty on all attack rolls, saves, and checks while operating in
+bright light); +2 racial bonus on Listen, Spot, and Search checks
+(already figured into the statistics given above).
+Wizard Spells Prepared(4/4/3/2; save DC 14 + spell level): 0—
+daze, detect magic, ghost sound, ray of frost;1st—mage armor, magic mis-
+sile(2), magic weapon;2nd—blur, glitterdust, Melf ’s acid arrow;3rd—
+fireball, haste.
+Spellbook:0—daze, detect magic, detect poison, flare, ghost sound, ray of
+frost, read magic;1st—color spray, identify, mage armor, magic missile,
+magic weapon;2nd—blur, bear ’s endurance, glitterdust, knock, Melf ’s
+acid arrow, resist energy;3rd—dispel magic, fireball, haste, magic circle
+against good.
+Possessions: Bracers of armor +1,rapier, masterwork hand cross-
+bow, 10 bolts, cloak of resistance +1, potion of blur, potion of cure moder-
+ate wounds, potion of cure serious wounds, potion of haste,scroll of con-
+fusion,2 scrolls of fireball,scroll of web, dagger.
+Sample 10th-Level NPC Wizard:Drow Wiz 10; CR 11;
+Medium humanoid (elf ); HD 10d4+3; hp 29; Init +3; Spd 30 ft.; AC
+17, touch 14, flat-footed 14; Base Atk +5; Grp +5; Atk +6 melee
+125
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–21: NPC Sorcerer
+Skill Pts./Spells
+LevelhpACMeleeRangedF/R/WFeatsper DayGear
+1st512–1+3+1/+2/+38/15/4Mundane melee, mwk ranged, 550 gp
+2nd812+0+4+1/+2/+410/16/5 As 1st level, except 1,650 gp
+3rd1212+0+4+2/+3/+412/26/6 As 1st level, except 2,150 gp
+4th1513+1+5+2/+3/+514/26/7/4 Bracers of armor +1, mundane melee, mwk
+ranged, 950 gp
+5th1913+1+5+2/+3/+516/26/7/5 As 4th level, except 2,000 gp
+6th2313+2+6+3/+4/+618/36/7/6/4 As 4th level, except 4,300 gp
+7th2614+2+6+3/+4/+620/36/7/7/5 Bracers +1, ring of protection +1, mundane melee,
+mwk ranged, 3,900 gp
+8th3014+3+7+3/+4/+722/36/7/7/6/3 As 7th level, except 6,100 gp
+9th3315+3+7+4/+5/+724/46/7/7/7/4 Bracers +2, ring +1, mundane melee, mwk
+ranged, 5,700 gp
+10th3715+4+8+4/+5/+826/46/7/7/7/5/3 As 9th level, except 9,700 gp
+11th4016+4+8+4/+5/+828/46/7/7/7/6/4 Amulet of natural armor +1, bracers +2, ring +1,
+mundane melee, mwk ranged, 12,700 gp
+12th4417+5/0+9/4+5/+6/+930/56/8/7/7/7/6/3 Amulet +1, bracers +2, ring +2, mundane melee,
+mwk ranged, cloak of Charisma +2, 9,700 gp
+13th4718+6 /1+9/4+5/+6/+932/56/8/7/7/7/7/4 Amulet +1, bracers +3, ring +2, +1 melee, mwk
+ranged, cloak +2, 9,300 gp
+14th5119+7/2+11/6+5/+7/+1034/56/8/7/7/7/7/5/3 As 13th level, except 19,000 gp
+15th5419+7/2+11/6+6/+8/+1036/66/8/8/7/7/7/7/4 As 13th level, except cloak +4and 21,000 gp
+16th5819+8/3+12/7+6/+8/+1138/66/8/8/7/7/7/7/5/3 As 13th level, except cloak +4and 39,000 gp
+17th6121+8/3+12/7+6/+8/+1140/66/8/8/7/7/7/7/6/4 Amulet +2, bracers +4, ring +2, +1 melee,mwk
+ranged, cloak +4, 49,000 gp
+18th6522+9/4+13/8+7/+9/+1242/76/8/8/8/7/7/7/7/5/3 Amulet +2, bracers +5, ring +2, +1 melee,mwk
+ranged, cloak +6, 50,000 gp
+19th6822+9/4+13/8+7/+9/+1244/76/8/8/8/7/7/7/7/6/4     As 18th level, except 90,000 gp
+20th7222+10/5+14/9+7/+9/+1346/76/8/8/8/8/7/7/7/7/6     As 18th level, except 140,000 gp
+Spells Known per Level
+LevelSpellsLevelSpellsLevelSpellsLevelSpells
+1st4/22nd5/23rd5/34th6/3/1
+5th6/4/26th7/4/2/17th7/5/3/28th8/5/3/2/1
+9th8/5/4/3/210th9/5/4/3/2/111th9/5/5/4/3/212th9/5/5/4/3/2/1
+13th9/5/5/4/4/3/214th9/5/5/4/4/3/2/115th9/5/5/4/4/4/3/216th9/5/5/4/4/4/3/2/1
+17th9/5/5/4/4/4/3/3/218th9/5/5/4/4/4/3/3/2/119th9/5/5/4/4/4/3/3/3/220th9/5/5/4/4/4/3/3/3/3

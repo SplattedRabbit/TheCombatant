@@ -1,0 +1,193 @@
+79
+CHAPTER 3:
+ADVENTURES
+1st-Level Dungeon Encounters
+d%Encounter
+01–03   1d3 Medium monstrous
+centipedes (vermin)
+04–08   1d4 dire rats
+09–10   1d4 giant fire beetles (vermin)
+11–13   1d3 Small monstrous scorpions
+(vermin)
+14–16    1d3 Small monstrous spiders (vermin)
+17–20   1d3 dwarf warriors
+21–22   1d3 elf warriors
+23–25   1 darkmantle
+26–28   1 krenshar
+29–30   1 lemure (devil)
+31–40   1d3+1 goblin warriors
+41–50   1d4+2 kobold warriors
+51–56   1d4 human warrior skeletons
+57–62   1d3 human commoner zombies
+63–71   1d4+1 Tiny viper snakes (animal)
+72–80   1d3 orc warriors
+81–85   1d3 stirges
+86–90   1 spider swarm
+91–100  Roll on 2nd-level table
+2nd-Level Dungeon Encounters
+d%Encounter
+01–10   Roll on 1st-level table
+11–12   1 lantern archon
+13–19   1 hobgoblin warrior and 1d4 goblin
+warriors
+20–23   1 bugbear
+24–26   1 choker
+27–28   1 dretch (demon)
+29–30   1 quasit (demon)
+31–32   1 imp (devil)
+33–35   1 dire bat
+36–38   1d4+1 fiendish dire rats
+39–40   1d3+1 formian workers
+41–43   1d3+1 halfling warriors
+44–50   2d4+1 kobold warriors
+51–55   1 wererat (lycanthrope)
+56–62   1d3+1 orc warriors
+63–65   1 shocker lizard
+66–68   1 owlbear skeleton
+69–70   1 bat swarm
+71–72   1 rat swarm
+73–74   1 thoqqua
+75–79   1 worg
+80–83   1 constrictor snake (animal)
+84–87   1d4+2 Small viper snakes (animal)
+88–90   1 Huge monstrous centipede
+(vermin)
+91–100  Roll on 3rd-level table
+3rd-Level Dungeon Encounters
+d%Encounter
+01–10   Roll on 2nd-level table
+11–13   1 allip
+14–16   1 cockatrice
+17–19   2d4+1 dire rats
+20–21   1 doppelganger
+22–23   1 wyrmling brass dragon
+24–27   1d3 drow elves
+28–29   1 ethereal filcher
+30–31   1 ethereal marauder
+32–33   1 ettercap
+34–35   1 violet fungus (fungus)
+36–38   1 ghast (ghoul)
+39–43   1d3 gnolls
+44–45   1 grick
+46–48   1 hell hound
+49–50   1 howler
+51–52   1d3 krenshars
+53–55   1d3 lizardfolk
+56–57   1 werewolf (lycanthrope)
+58–62   1 ogre
+63–65   1 gelatinous cube (ooze)
+66–67   1 phantom fungus
+68–69   1 rust monster
+70–72   1 shadow
+73–75   2d4 stirges
+76–77   1 locust swarm
+78–80   1 wight
+81–82   1 yuan-ti pureblood
+83–84   1d3 troglodyte zombies
+85–86   1d3 Medium viper snakes (animal)
+87–88   1 giant praying mantis (vermin)
+89–90   1d3 Medium monstrous scorpions
+(vermin)
+91–100  Roll on 4th-level table
+4th-Level Dungeon Encounters
+d%Encounter
+01–10   Roll on 3rd-level table
+11–12   1 barghest
+13–14   1d3 lantern archons
+15–16   1 hound archon
+17–20   1 carrion crawler
+21–22   1d4+1 darkmantles
+23–27   1 displacer beast
+28–30   1 young white dragon
+31–33   1d3+1 duergar dwarves
+34–38   1 gargoyle
+39–40   1 janni (genie)
+41–44   1d3+1 ghouls
+45–47   1d3+1 svirfneblin gnomes
+48–50   1d3+1 grimlocks
+51–52   1 harpy
+53–54   1 five-headed hydra
+55–56   1 wereboar (lycanthrope)
+57–59   1 mimic
+60–62   1 minotaur
+63–64   1 gray ooze (ooze)
+65–67   1 otyugh
+68–69   1 owlbear
+70–71   1 centipede swarm
+72–73   1d3+1 spider swarms
+74–76   1d4+1 troglodytes 
+77–78   1 vampire spawn
+79–80   1d3 worgs
+81–83   1 minotaur zombie
+84–85   1d3 Large viper snakes (animal)
+86–88   1d4+1 Large monstrous centipedes
+(vermin)
+89–90   1d3 Large monstrous spiders
+(vermin)
+91–100  Roll on 5th-level table
+5th-Level Dungeon Encounters
+d%Encounter
+01–10   Roll on 4th-level table
+11–12   1 basilisk
+13–14   1 greater barghest
+15–17   1d3+1 bugbears
+18–19   1d3 celestial lions
+20–21   1 cloaker
+22–23   1 bearded devil
+24–26   1d4+4 dire bats
+27–28   1d3 doppelgangers
+29–33   1d4+2 drow elves
+34–35   1 ettercap and 1d3+1 Medium
+monstrous spiders (vermin)
+36–37   1 djinni (genie)
+38–39   1 gibbering mouther
+40–41   1 green hag (hag)
+42–43   1d3 hell hounds
+44–45   1 six-headed hydra
+46–47   1 werebear (lycanthrope)
+48–49   1d3 wererats (lycanthrope) and 2d4
+dire rats
+50–51   1 manticore
+52–53   1 mummy
+54–56   1d3 ogres
+57–58   1 ochre jelly (ooze)
+59–60   1 phase spider
+61–62   1d3 rust monsters
+63–64   1 shadow mastiff
+65–66   1d4+1 skum
+67–68   1d3+1 rat swarms
+69–71   1 troll
+72–73   1d4+1 vargouilles
+74–76   1 wraith
+77–78   1 yuan-ti halfblood
+79–80   1 giant constrictor snake (animal)
+81–82   1d3 Huge viper snakes (animal)
+83–84   1d3 giant worker ants (vermin)
+85–86   1d3+1 Large monstrous scorpions
+(vermin)
+87–88   5th-level human monk NPC
+89–90   5th-level kobold sorcerer NPC
+91–100  Roll on 6th-level table
+6th-Level Dungeon Encounters
+d%Encounter
+01–10   Roll on 5th-level table
+11–12   1d4+2 lantern archons
+13–14   1 gauth (beholder)
+15–16   1d3+1 cockatrices
+17–18   1 babau (demon)
+19–21   1d3+1 derros
+22–23   1 chain devil
+24–25   1 digester
+26–30   1d3 displacer beasts
+31–32   1 bralani (eladrin)
+33–36   1 ettin
+37–38   1d3+1 formian workers
+39–42   1d3 gargoyles
+43–45   1d3+1 ghasts (ghoul)
+46–48   1d4+1 gnolls and 1d3 hyenas
+49–50   1d3+1 gricks
+51–52   1 annis (hag)
+53–54   1 half-dragon 4th-level fighter
+55–56   1d3 harpies
+57–58   1d3+1 howlers
+59–60   1 five-headed hydra (pyro- or cryo-)

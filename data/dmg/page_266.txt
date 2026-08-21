@@ -1,0 +1,138 @@
+Moderate conjuration; CL 12th; Craft Wondrous Item, major
+creation; Price 50 gp (anchor), 300 gp (bird), 200 gp (fan), 450 gp
+(swan boat), 400 gp (tree), 500 gp (whip).
+Quiver of Ehlonna:This appears to be a typical arrow con-
+tainer capable of holding about twenty arrows. It has three distinct
+portions, each with a nondimensional space allowing it to store far
+more than would normally be possible. The first and smallest one
+can contain up to sixty objects of the same general size and shape
+as an arrow. The second slightly longer compartment holds up to
+eighteen objects of the same general size and shape as a javelin.
+The third and longest portion of the case contains as many as six
+objects of the same general size and shape as a bow (spears, staffs,
+or the like). Once the owner has filled it, the quiver can produce
+any item she wishes, as if from a regular quiver or scabbard. The
+quiver of Ehlonna weighs the same no matter what’s placed
+inside it.
+Moderate conjuration; CL 9th; Craft Wondrous Item,
+Leomund’s secret chest; Price 1,800 gp; Weight 2 lb.
+Ring Gates:These always come in pairs—two iron
+rings, each about 18 inches in diameter. The rings must
+be on the same plane of existence and within 100 miles of
+each other to function. Whatever is put through one ring
+comes out the other, and up to 100 pounds of material can be
+transferred each day. (Objects only partially pushed
+through and then retracted do not count.) This
+useful device allows for instantaneous transport of
+items or messages, and even attacks. A character can
+reach through to grab things near the other ring, or
+even stab a weapon through if so desired. Alterna-
+tively, a character could stick his head through to
+look around. A spellcaster could even cast a spell
+through a ring gate.A Small character can make a
+DC 13 Escape Artist check to slip through. Crea-
+tures of Tiny, Diminutive, or Fine size can pass
+through easily. Each ring has a “entry side” and an
+“exit side,” both marked with appropriate symbols.
+Strong conjuration; CL 17th; Craft Wondrous
+Item, gate; Price 40,000 gp; Weight 1 lb. each.
+Robe of the Archmagi:This normal-appearing
+garment can be white (01–45 on d%, good align-
+ment), gray (46–75, neither good nor evil align-
+ment), or black (76–100, evil alignment). Its
+wearer, if an arcane spellcaster, gains the follow-
+ing powers.
+•+5 armor bonus to AC.
+•Spell resistance 18.
+•+4 resistance bonus on all saving throws.
+•+2  enhancement  bonus  on  caster  level
+checks made to overcome spell resistance.
+If a white robe is donned by an evil character, she immedi-
+ately gains three negative levels. The reverse is true with
+respect to a black robe donned by a good character. An evil
+or good character who puts on a gray robe, or a neutral character
+who dons either a white or black robe, gains two negative levels.
+While these negative levels never result in lost levels, they remain
+as long as the garment is worn and cannot be overcome in any way
+(including restorationspells).
+Strong varied; CL 14th; Craft Wondrous Item, antimagic field,
+mage armor or shield of faith, creator must be of same alignment as
+robe; Price 75,000 gp; Weight 1 lb.
+Robe of Blending:When this robe is put on, the wearer intu-
+itively knows that the garment has very special properties. A robe
+of blendingenables its wearer to appear to be part of his surround-
+ings. This allows him a +10 competence bonus on Hide checks.
+The wearer can adopt the appearance of another creature, as with
+the disguise selfspell, at will. All creatures acquainted with and
+friendly to the wearer see him normally.
+Moderate illusion; CL 10th; Craft Wondrous Item, disguise self;
+Price 30,000 gp; Weight 1 lb.
+Robe of Bones:This handy item functions much like a robe of
+useful itemsfor the serious necromancer. It appears to be an unre-
+markable robe, but a character who dons it notes that it is adorned
+with small embroidered figures representing undead creatures.
+Only the wearer of the robe can see the embroidery and recognize
+them for the creatures they become, and detach them. One figure
+can be detached each round. Detaching a figure causes it to be-
+come an actual undead creature(see the list below). The skeleton
+or zombie is not under the control of the wearer of the robe, but
+may be subsequently commanded, rebuked, turned, or destroyed.
+A newly created robe of bonesalways has two embroidered figures
+of each of the following undead:
+•Small goblin skeleton
+•Medium human commoner skeleton
+•Medium wolf skeleton
+•Small goblin zombie
+•Medium human commoner zombie
+•Medium wolf zombie
+Moderate necromancy [evil]; CL 6th; Craft
+Wondrous Item, animate dead; Price 2,400 gp;
+We ight 1 lb.
+Robe of Eyes:This valuable garment appears
+to be a normal robe until it is put on. Its wearer is
+able to see in all directions at the same moment
+due to scores of visible, magical eyelike patterns
+that adorn the robe. She also gains 120-foot dark-
+vision. The robe of eyessees all forms of invisible or
+ethereal things within 120 feet.
+The wearer of a robe of eyesgains a +10 compe-
+tence bonus on Search checks and Spot checks.
+She retains her Dexterity bonus to AC even when
+flat-footed, and she can’t be flanked. However, she
+is not able to avert her eyes or close her eyes when
+confronted by a creature with a gaze attack.
+A lightor continual flamespell cast directly on a robe
+of eyescauses it to be blinded for 1d3 minutes. A day-
+lightspell blinds it for 2d4 minutes.
+Moderate divination; CL 11th; Craft Wondrous
+Item, true seeing; Price 120,000 gp; Weight 1 lb.
+Robe of Scintillating Colors:The wearer of this
+robe can cause the garment to display a shifting pattern
+of incredible hues, color after color cascading from the
+upper part of the robe to the hem in sparkling rainbows
+of dazzling light. The colors daze those near the wearer,
+conceal the wearer, and illuminate the surroundings. It
+takes 1 full round after the wearer speaks the command
+word for the colors to start flowing on the robe.
+The colors create the equivalent of a gaze attack with a
+30-foot range. Those who look at the wearer are dazed for
+1d4+1 rounds (Will DC 16 negates). This is a mind-affecting pat-
+tern effect.
+Every round of continuous scintillation of the robe gives the
+wearer better concealment. The miss chance on attacks against the
+wearer starts at 10% and increases by 10% each round until it
+reaches 50% (total concealment).
+The robe illuminates a 30-foot radius continuously.
+The effect can be used no more than a total of 10 rounds per day.
+Moderate illusion; CL 11th; Craft Wondrous Item, blur, rainbow
+pattern; Price 27,000 gp; Weight 1 lb.
+Robe of Stars:This garment is typically black or dark blue and
+embroidered with small white or silver stars. The robe has three
+magical powers.
+•It  enables  its  wearer  to  travel  physically  to  the  Astral  Plane,
+along with all that she is wearing or carrying.
+•It gives its wearer a +1 luck bonus on all saving throws.
+265
+CHAPTER 7:
+MAGIC ITEMS
+Robe of eyes

@@ -141,6 +141,20 @@ export const RACES: RaceDetail[] = [
       'Darkness: Can use Darkness as a spell-like ability 1/day.',
       'Level Adjustment: +1 (increases ECL by 1).'
     ]
+  },
+  {
+    key: 'anima_construct',
+    name: 'Anima-Konstrukt (Anima Construct)',
+    modifiers: '+2 Constitution (CON), -2 Charisma (CHA)',
+    size: 'Medium',
+    traits: [
+      'Type: Construct (Living Construct subtype). Has Con score, susceptible to mind-affecting and critical hits.',
+      'Immunities: Immune to poisons, diseases, and magic sleep effects.',
+      'No metabolism: Does not eat, drink, or breathe (immune to drowning).',
+      'Halved magic healing: Any incoming magical healing is halved (rounded down).',
+      'Natural Armor: +1 racial natural armor bonus.',
+      'Standby: Rest requires 8 hours of standing inactive (no biological sleep needed).'
+    ]
   }
 ];
 

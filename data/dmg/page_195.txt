@@ -1,0 +1,138 @@
+194
+a 1st-level wizard. He can still use the prohibited spells he knew
+prior to becoming a Red Wizard, including using items that are
+activated by spell completion or spell trigger.
+For example, Ghorus Toth is specialized in the school of trans-
+mutation. His prohibited schools are abjuration and enchant-
+ment. When he becomes a Red Wizard, he must choose one other
+prohibited school. He decides to select conjuration as his addi-
+tional prohibited school.
+Specialist Defense: A Red Wizard gains a bonus on saving
+throws against spells from his specialist school. This bonus starts
+at +1 and increases at higher levels, as shown on Table 6–15.
+Spell Power: At 2nd level, a Red Wizard gains a bonus that
+increases his effective caster level for purposes of
+determining level-dependent spell variables and
+for caster level checks. The bonus starts at +1
+and increases at higher levels, as shown on
+Table 6–15. This ability stacks with other
+spell power benefits that affect spells
+from the Red Wizard’s specialist school.
+Bonus Feat:At 5th level, a Red Wizard
+gains a bonus feat, which must be either
+an item creation feat, a metamagic feat, or
+the Spell Mastery feat.
+Circle  Leader:  At 5th  level,  a  Red
+Wizard  gains  the  ability  to  become  a
+circle leader, who is the focus person for
+Red Wizard circle magic (see New Fea-
+tures of the Red Wizard, below).
+Scribe Tattoo: At 7th  level,  a  Red
+Wizard  gains  the  ability  to  place  the
+Thayan wizards’ magic tattoos upon will-
+ing and qualified novices, giving them the
+Tattoo Focus feat and inducting them into
+his circle.
+Great Circle Leader: A 10th-level
+Red Wizard can be the leader of a great
+circle, which can have up to nine other
+participants instead of just five.
+New Features of the Red Wizard
+The Red Wizard prestige class was origi-
+nally  created  for  inclusion  in  the
+F
+ORGOTTEN
+R
+EALMS®Campaign Setting,and
+uses several rules specific to that setting.
+We’ve reproduced them here so you can better see
+how the class works. Consider carefully before adding them to a
+campaign that does not use the F
+ORGOTTENREALMSsetting.
+New Feat: Tattoo Focus [Special]
+You bear the powerful magical tattoos of a Red Wizard of Thay.
+Prerequisite:Specialized in a school of magic.
+Region:Thay.
+Benefit:Add +1 to the DC for all saving throws against spells
+from your specialized school. You get a +1 bonus on caster level
+checks (1d20 + caster level) to overcome a creature’s spell resist-
+ance when casting spells from that school.
+Special:Only characters with the Tattoo Focus feat can partici-
+pate in Red Wizard circle magic (see below).
+Circle Magic
+Some of the most powerful and spectacular spells worked across
+Faerûn are cast in the form of circle magic. Circle magic is a type
+of cooperative spellcasting that allows the spellcaster leading the
+circle to increase his caster level significantly and achieve results
+otherwise unavailable to the spellcasters composing the circle.
+The Red Wizards of Thay make frequent use of circle magic. Sto-
+ries of other forms of circle magic abound in Faerûn.
+Participation:The ability to participate in circle magic requires
+the possession of the Tattoo Focus feat (see above).
+One spellcaster, usually the most powerful or experienced char-
+acter present, stands at the center of the circle. This character is
+the circle leader. A Red Wizard cannot be a circle leader unless he
+is at least a 5th-level Red Wizard.
+A circle requires a minimum of two participants plus the circle
+leader. Up to five partiicpants can aid a circle leader in a standard
+circle; a Red Wizard of 10th level can lead a great circle containing
+up to nine other participants.
+All participants in a circle must stand within 10 feet of the circle
+leader, who stands in the center.
+Circle Powers:The first use of circle magic is to empower
+the circle leader with the strength of all the participants.
+This requires 1 full hour of uninterrupted concen-
+tration on the part of all participants and the circle
+leader. Each participant casts any single prepared
+spell, which is consumed by the circle and has no
+effect other than expending the prepared spell. The
+spell levels expended by the circle participants are
+totaled as circle bonus levels. Each bonus level may
+be used to accomplish the following effects.
+•Increase the circle leader’s caster level by one for
+every  circle  bonus  level  expended  (maximum
+caster  level  40th).  This  benefit  applies  to  level-
+dependent  variables  of  a  spell  such  as  range  or
+duration, and to level checks (dispel checks, checks
+to overcome spell resistance, and so on).
+•Add Empower Spell, Maximize Spell, or Heighten
+Spell metamagic feats to spells currently prepared
+by the circle leader. Each circle bonus level counts
+as one additional spell level required by the appli-
+cation  of  a  metamagic  feat  to  a  spell.  The  circle
+leader  may  add  one  of  the  three  listed  feats  to  a
+spell  even  if  he  does  not  know  the  feat  or  if  the
+addition of the feat would raise the spell level past
+the  circle  leader’s  normal  maximum  spell  level
+(maximum spell level 20th).
+These effects last for 24 hours or until expended.
+Circle bonus levels may be divided up as the circle
+leader sees fit. For example, the Red Wizard Hauth
+Var leads a circle in which four participants each cast a
+2nd-level spell, so that Hauth Var gains eight circle
+bonus levels. Hauth Var chooses to use three circle
+bonus levels to maximize his cone of coldspell, three to increase his
+caster level from 10th to 13th for all level-based variables in his
+spells, and two to provide a +2 bonus on any level checks he needs
+to make. The maximized spell is used up whenever he casts his
+cone of cold, and the other two effects remain for the next 24 hours.
+Many high-level Red Wizards lead circles on a daily basis to exact
+magical power from their apprentices.
+SHADOWDANCER
+Operating in the border between light and darkness, shadow-
+dancers are nimble artists of deception. They are mysterious and
+unknown, never completely trusted but always inducing wonder
+when met.
+Rogues, bards, and monks make excellent shadowdancers. Fight-
+ers, barbarians, rangers, and paladins also find that shadowdancer
+abilities allow them to strike at their opponents with surprise and
+skill. Wizard, sorcerer, cleric, and druid shadowdancers employ the
+defensive capabilities inherent in the prestige class to allow them to
+cast their spells from safety and move away quickly. Despite their link
+with shadows and trickery, shadowdancers are as often good as evil.
+Shadowdancers often work in troupes, never staying in one
+place too long. Some use their abilities to entertain. Others oper-
+ate as thieves, using their abilities to infiltrate past defenses and
+CHAPTER 6:
+CHARACTERS
+A red wizard

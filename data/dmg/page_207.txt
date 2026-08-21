@@ -1,0 +1,131 @@
+206
+cohorts, animals can’t follow complex instructions, such as “Attack
+the gnoll with the wand.” A character can give a simple verbal
+command, such as “Attack” or “Come,” as a free action, provided
+such a command is among the tricks the animal has learned. A
+more complex instruction, such as telling an animal to attack and
+pointing out a specific target, is a standard action. Animals are ill-
+equipped to handle unusual situations, such as combats with
+invisible opponents, and they typically hesitate to attack weird
+and unnatural creatures, such as beholders and oozes.
+Left to its own judgment, an animal follows a character and
+attacks creatures that attack her (or that attack the animal itself ).
+To do more than that, it needs to learn tricks as described under
+the Handle Animal skill, page 74 of the Player ’s Handbook.
+EPIC CHARACTERS
+Regardless of the method used to attain 21st level, once a charac-
+ter reaches that point he or she is considered an epic character.
+Epic characters—those characters whose character level is 21st
+or higher—are handled slightly differently than nonepic charac-
+ters. While they continue to gain most of the customary benefits
+of gaining levels, some benefits are replaced by alternative gains.
+Despite the twenty-level limit indicated in the Player ’s Hand-
+book, you can advance a class level beyond 20th by using the rules
+in this book. You can also advance the class level of a ten-level
+prestige class beyond 10th level, but only if the character level of
+the advancing character is already 20th or higher. You cannot
+advance the class level of a class with fewer than ten levels beyond
+the maximum described for that class, regardless of the character
+level of the advancing character.
+Epic Save Bonus:A character’s base save bonus does not in-
+crease after his character level reaches 20th. However, he does
+receive a cumulative +1 epic bonus on all saving throws every
+even-numbered level after 20th, as shown on Table 6–18: Epic
+Save and Epic Attack Bonuses. In other words, an epic character
+has a +1 epic bonus on all saving throws at 22nd level, a +2 epic
+bonus on all saving throws at 24th level, and so on. 
+Epic Attack Bonus:Similarly, a character’s base attack bonus
+does not increase after his character level reaches 20th. However,
+he does receive a cumulative +1 epic bonus on all attack rolls every
+odd-numbered level after 20th, as shown on Table 6–18: Epic Save
+and Epic Attack Bonuses. 
+Experience Points:This column on Table 6–19: Epic Experi-
+ence and Level-Dependent Benefits shows the experience point
+total needed to achieve a given character level. For multiclass
+characters, experience points determine overall character level,
+not individual class levels.
+Though Table 6–19 only shows experience point totals through
+30th level, you can calculate the experience points needed to
+reach 31st level and higher. Simply add a character’s current level
+times 1,000 XP to the experience points required to attain the
+character’s current level. For instance, reaching 31st level would
+require 30 ×1,000 XP (or 30,000 XP), + 435,000 XP, for a total of
+465,000 XP.
+Class Skill Max Ranks:The maximum number of skill ranks a
+character can have in a class skill is equal to his or her character
+level +3. 
+Cross- Class Skill Max Ranks:For cross-class skills, the maxi-
+mum ranks are one-half the maximum for a class skill.
+Feats:Every character gains one feat at every level divisible by
+three (21st, 24th, 27th, and so on). Note that these feats are in addi-
+tion to any bonus feats granted in the class descriptions later in
+this chapter.
+Ability Increases:Upon attaining any level divisible by four
+(20th, 24th, 28th, and so on), a character increases one of his or her
+ability scores by 1 point. The player chooses which ability score to
+improve.
+For multiclass characters, feats and ability increases are gained
+according to overall character level, not class level. Thus, a 13th-
+level wizard/11th-level fighter is a 24th-level character overall and
+eligible for both a feat and an ability score increase.
+EPIC CLASS FEATURES
+Because the Player ’s Handbookcontains information on advance-
+ment only up to 20th level in any given class, this book expands
+each class’s progression of class features beyond 20th level. 
+Many, but not all, class features continue to accumulate after
+20th level. The following guidelines describe how the epic class
+progressions in this section work.
+•As  noted  earlier,  class-related  base  save  bonuses  and  base  attack
+bonus don’t increase after 20th level. Thus, these class tables have
+no columns for base save bonuses or base attack bonus. Instead,
+use Table 6–18: Epic Save and Epic Attack Bonuses to determine
+the character’s epic bonus on saving throws and attacks.
+•A character  continues  to  gain  Hit  Dice  and  skill  points  as
+normal beyond 20th level.
+•Generally  speaking,  any  class  feature  that  uses  the  character’s
+class level as part of a mathematical formula, such as a paladin’s
+lay  on  hands  ability,  the  DC  to  resist  a  monk’s  stunning  fist
+attack,  or  a  bard’s  bardic  knowledge  check,  continues  to
+increase using the character’s class level in the formula. A 22nd-
+level paladin with a Charisma of 20 can lay on hands for (22 ×
+5)  110  hit  points  per  day.  The  DC  to  resist  a  24th-level  monk’s
+stunning  attack  would  be  10  +  12  (1/2  the  monk’s  level)  +  the
+monk’s Wis modifier. A 30th-level bard would add his Int modi-
+fier + 30 to bardic knowledge checks.
+•Any  prestige  class  feature  that  calculates  a  save  DC  using  the
+class level (such as the assassin’s death attack) should add only
+half  the  character’s  class  levels  above  10th.  Thus,  a  24th-level
+assassin’s   death   attack   would   have   a   save   DC   of   27   +
+CHAPTER 6:
+CHARACTERS
+Table 6–18: Epic Save and Epic Attack Bonuses
+EpicEpic
+CharacterSaveBase Attack
+LevelBonusBonus
+21st+0+1
+22nd+1+1
+23rd+1+2
+24th+2+2
+25th+2+3
+26th+3+3
+27th+3+4
+28th+4+4
+29th+4+5
+30th+5+5
+Table 6–19: 
+Epic Experience and Level-Dependent Benefits 
+ClassCross-Class
+CharacterSkill MaxSkill MaxAbility Score
+LevelXPRanksRanksFeatsIncreases
+21st210,00024128th—
+22nd231,0002512-1/2——
+23rd253,0002613——
+24th276,0002713-1/29th6th
+25th300,0002814——
+26th325,0002914-1/2——
+27th351,000301510th—
+28th378,0003115-1/2—7th
+29th406,0003216——
+30th435,0003316-1/211th—
++1+1,000 XP+1+1/2+1 per 3+1 per 4
+×current level

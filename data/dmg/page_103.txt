@@ -1,0 +1,153 @@
+102
+Bullies: These may be ordinary street thugs, but such charac-
+ters never target those who look tougher than  they. Bullies could
+also be seasoned adventurers who look down on low-level charac-
+ters. A group of bullies always outnumbers the characters by at
+least two (+50% is a good rule of thumb), and each bully has a CR
+equal to 1 less than the party level. For example, a group of four
+player characters averaging 6th level would be targeted by a group
+of six bullies, each with a CR of 5 (5th-level adventurers or 6th-
+level warriors), for an EL 10 encounter. A single 7th-level charac-
+ter might find himself the target of three bullies of CR 6 (6th-level
+adventurers or 7th-level warriors), which is an EL 9 encounter. To
+be meaningful, bullies have to be tough; run-of-the-mill thugs are
+described in the Muggers entry below.
+Construction Accident:One or more of the characters are po-
+tentially struck by a falling object, fall through unsafe scaffolding,
+or face a similar mishap. Run this encounter by adapting a trap
+from the list that begins on page 70.
+Contest in Progress:The characters are invited to participate
+in or judge a contest of some sort. The match could be anything
+from a foot race to an intellectual test to a drinking competition.
+Corpse:The characters find a dead body. The corpse could be
+the victim of a crime, mishap, or strange circumstance.
+District-Specific Encounter:Use an encounter that fits the
+district of the city in which the characters are currently located.
+For example, a PC might be confronted with a press gang in the
+waterfront district or a young foreigner eager to test his diplo-
+matic immunity in the embassy district.
+Duel in Progress: The characters witness a duel—either a tra-
+ditional duel with swords or one involving spellcasters.
+Employment Offer: The characters meet someone who offers
+them work. The job depends on their overall circumstances and
+on the nature of the employer.
+Escaped Prisoner:Someone breaks free from the custody of
+the watch and flees past the PCs. They can help apprehend the
+prisoner or help her escape. The prisoner typically has a CR 1d6
+lower than the characters’ party level.
+Fire (building, ship, etc.): Fire is a danger that threatens the
+whole city. Treat a fire in the city as a forest fire for purposes of
+how fast it moves (see page 87).
+Found Item: The characters find an item of some value: jewelry
+or a map, for example. They can make use of it, or try to find the
+rightful owner. Or perhaps the rightful owner will try to find them.
+Guard Harassment: The PCs encounter a guard officer who
+wants to throw his weight around. The characters can use their
+social skills to defuse the situation, or they can resort to magic or
+force of arms if the situation degenerates. Guards typically have
+individual CRs of 1 to 3. Dealing with an abusive guard captain
+should be treated as an encounter with at least some of the guards
+in the gatehouse, because they’re backing the captain up. The char-
+acters successfully overcome this encounter if they end the har-
+assment, no matter how they do so.
+Guards Need Help: The characters get a request from someone
+affiliated with law enforcement in the city. The request could be as
+simple as a request for some healing or divination magic, or it
+could be as complex as a plea to solve a series of grisly murders
+that have the city’s detectives baffled.
+Lost Child: A parent or other caregiver seeks help from the
+PCs. The child might be simply lost, or perhaps is the victim of a
+more sinister fate.
+Mistaken Identity:One or more of the PCs are mistaken for
+someone else—often someone famous or infamous.
+Monster: A creature (one appropriate to the terrain surround-
+ing the city) rampages through the city, and its path crosses that of
+the characters.
+Muggers:Some thugs have bitten off more than they can chew
+when they decide to pick on the characters. There’s roughly one
+mugger for every PC, and each has a CR of 4 to 6 less than the
+party level.
+Runaway Cart: A team of horses pulling a wagon is racing pell-
+mell through the city streets. The characters must avoid the horses
+(an overrun attack). If they can stop the wagon, the owner (who is
+running behind the cart) will be grateful.
+Pickpockets: One or more rogues tries to steal from the PCs. A
+pickpocket has rogue levels equal to 2 less than the party level and
+a Sleight of Hand modifier equal to 4 more than the party level.
+Prominent Personage:The characters meet an important
+political, religious, mercantile, or military NPC. Most important
+NPCs have a retinue or guard of some sort.
+Robbery in Progress: Criminals burst out of a nearby shop,
+eager to cause as much mayhem as possible during their escape.
+Each of the 1d4+1 robbers has a CR equal to 3 less than the party
+level. The loot from the robbery is double standard for the CR of
+the robbers.
+Spectacle:The characters witness some unusual form of public
+entertainment—a talented bard, a street circus, or flashy magic,
+for example.
+Spell Gone Awry:A spellcaster has foolishly experimented
+with a spell or had a mishap with a scroll. The PCs might have to
+contend with a rampaging summoned creature, the aftermath of a
+fireballin the marketplace, or a squad of the city guard under a con-
+fusioneffect.
+CHAPTER 3:
+ADVENTURES
+Urban Encounter Check Modifiers
+CircumstanceModifier
+City Size
+Small city+1
+Large city+2
+Metropolis+3
+Characters’ Status/Activity
+Characters are unusually anonymous
+1
+–2
+Characters are unusually famous
+2
++2
+Characters are laying low–2
+Characters are looking for action+2
+Characters’ Party Level
+1–5+0
+6–10+1
+11–15+2
+16 or higher+3
+1 Use this modifier if the characters are not as famous in this city as
+other characters of their level would be. Perhaps they’re new to the
+area, or they simply keep their activities quiet. Never apply this
+modifier to characters of lower than 6th level.
+2 Use this modifier if the characters are more widely known in this city
+than other characters of their level would be. Perhaps they have
+been publicly recognized for saving the mayor, or their faces are on
+wanted posters all over town.
+Table 3–28: Urban Encounters
+d20   Encounter
+0Bullies
+1Muggers
+2Guard harassment
+3Pickpockets
+4Spectacle
+5Found item
+6Lost child
+7Corpse
+8Animal
+9Overturned/runaway cart
+10District-specific encounter
+11District-specific encounter
+12Contest in progress
+13Duel/mageduel in
+progress
+d20   Encounter
+14Brawl/street fight/gang
+war in progress
+15Robbery in progress
+16Escaped prisoner
+17Monster
+18Fire (building, ship, etc.)
+19Construction accident
+20Spell gone awry
+21Prominent personage
+22Mistaken identity
+23Guards need help
+24Employment offer
+25+  Admirer

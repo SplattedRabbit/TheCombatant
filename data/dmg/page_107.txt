@@ -1,0 +1,130 @@
+106
+Mercenary:A 1st-level warrior (see the warrior NPC class,
+page 109).
+Mercenary Cavalry:A 1st-level warrior who can ride and fight
+on horseback.
+Mercenary Leader:A 2nd-level warrior. For a mercenary
+leader of higher level than 2nd, add 3 sp per day per level more
+than is shown on Table 4–1.
+Porter:Someone who carries heavy loads.
+Sage:A researcher, a scholar, or a wise, educated person who
+provides information. You should assign a time period required to
+research the answer to a question, which may be as short as an
+hour or as long as a month or more (depending both on the diffi-
+culty of the question and the likelihood that the sage knows the
+answer or can find it quickly). More renowned sages demand
+higher fees, particularly for difficult areas of research.
+Scribe:Someone who can write. Also includes scriveners
+(manuscript copiers).
+Smith:A metalworker. Includes blacksmiths, goldsmiths, sil-
+versmiths, coppersmiths, pewterers, minters (coinmakers), laton-
+ers (bronzeworkers), braziers (brassworkers), locksmiths, weapon-
+smiths, and armorers.
+Teamster:Cart or wagon driver.
+Valet/Lackey:A general servant required to perform many and
+varied duties.
+PCS AS LEADERS
+When PCs gain levels, they also garner reputations. Those who
+show promise, great power, a path toward success, or perhaps just
+a friendly demeanor may find that NPCs want to follow them.
+These NPCs may wish for apprenticeships, employment, or a
+leader they can look up to.
+Attracting Cohorts
+A character of 6th level or higher can start attracting cohorts (see page
+104) and followers (see page 105) by taking the Leadership feat (see
+below). Unlike other feats, this one depends heavily on the social set-
+ting of the campaign, the actual location of the PC, and the group
+dynamics. You’re free to disallow this feat if it would disrupt the cam-
+paign. Be sure to consider the effect of a PC having a cohort. A cohort
+is effectively another PC in the party under that player’s control, one
+whose share of XP, treasure, and spotlight time is bound to take some-
+thing away from the other players’ characters. If your group is small,
+cohorts may be a great idea. If it’s big enough that a cohort would be a
+problem, don’t let the PCs have cohorts.
+A character can try to attract a cohort of a particular race, class,
+and alignment. The cohort’s alignment may not be opposed to the
+leader’s alignment on either the law-vs.-chaos or good-vs.-evil axis,
+and the leader takes a Leadership penalty if he recruits a cohort of
+an alignment different from his own. The DM determines the
+details of the cohort. The cohort has gear as an NPC (see Table
+4–23: NPC Gear Value, page 127).
+LEADERSHIP [GENERAL]
+A character with this feat is the sort of individual others want to
+follow, and he or she has done some work attempting to recruit
+cohorts and followers.
+Prerequisites:A character must be at least 6th level to take
+this feat.
+Benefits:Having this feat enables the character to attract loyal
+companions and devoted followers, subordinates who assist her.
+See the table below for what sort of cohort and how many follow-
+ers the character can recruit.
+Leadership Modifiers:Several factors can affect a character’s
+Leadership score, causing it to vary from the base score (character
+level + Cha modifier). A character’s reputation (from the point of
+view of the cohort or follower he is trying to attract) raises or
+lowers his Leadership score:
+Leader’s ReputationModifier
+Great renown+2
+Fairness and generosity+1
+Special power+1
+Failure–1
+Aloofness–1
+Cruelty–2
+Other modifiers may apply when the character tries to attract a
+cohort:
+The Leader . . .Modifier
+Has a familiar, special mount, or–2
+animal companion
+Recruits a cohort of a different alignment–1
+Caused the death of a cohort–2*
+* Cumulative per cohort killed.
+Followers have different priorities from cohorts. When the char-
+acter tries to attract a new follower, use any of the following mod-
+ifiers that apply.
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+LeadershipCohort—— Number of Followers by Level ——
+ScoreLevel1st2nd3rd4th5th6th
+1 or lower———————
+21st——————
+32nd——————
+43rd——————
+53rd——————
+64th——————
+75th——————
+85th——————
+96th——————
+107th5—————
+117th6—————
+128th8—————
+139th101————
+1410th151————
+1510th2021———
+1611th2521———
+1712th30311——
+1812th35311——
+1913th404211—
+2014th505321—
+2115th6063211
+2215th7574221
+2316th9095321
+2417th110116321
+25 or higher17th135137422
+Leadership Score:A character’s base Leadership score equals his level
+plus any Charisma modifier. In order to take into account negative
+Charisma modifiers, this table allows for very low Leadership scores,
+but the character must still be 6th level or higher in order to gain the
+Leadership feat. Outside factors can affect a character’s Leadership
+score, as detailed below.
+Cohort Level:The character can attract a cohort of up to this level.
+Regardless of a character’s Leadership score, he can only recruit a
+cohort who is two or more levels lower than himself. A 6th-level
+paladin with a +3 Charisma bonus, for example, can still only
+recruit a cohort of 4th level or lower. The cohort should be
+equipped with gear appropriate for its level (see Table 4–23: NPC
+Gear Value, page 127).
+Number of Followers by Level:The character can lead up to the
+indicated number of characters of each level. For example, a
+character with a Leadership score of 14 can lead up to fifteen 1st-
+level followers and one 2nd-level follower.

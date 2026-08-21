@@ -1,0 +1,130 @@
+them to a single caster. As with moving spells up or down in level,
+a theme for a brand-new spell list helps balance it (especially a
+theme with both strengths and shortcomings). The new spell list
+might be strong on offensive spells but lacking in defensive
+magic, or great with healing and divinations but lacking in move-
+ment-related and alteration spells. Casters with access to spells
+from two different classes should generally have fewer spells avail-
+able than either of the original classes. Versatility has its price.
+Classes for whom spellcasting is secondary—such as the
+ranger, the paladin, and perhaps the bard—offer an even greater
+opportunity for manipulation, since their lists are smaller and
+thus more easily shifted. Subtle changes, such as the paladin of a
+deity of healing with all curing spells, or a beastmaster ranger with
+only animal-related spells, are fairly easy to create. Greater
+changes are also possible, such as the divine bard (the cantor),
+whose spells are all taken from the cleric list.
+Example New Spell List: The Witch
+Below is a new spell list for a variant spellcasting class: the witch.
+A staple of fantasy literature and fairy tales, the witch dabbles in
+many kinds of magic—minor illusions, spells dealing with health
+or life, nature-based magic, simple divinations, and spells that
+alter the shape and appearance of things—but excels at just a few.
+Hence, her list is somewhat limited, but it contains wizard, cleric,
+and druid spells. She casts spells as a sorcerer, using the sorcerer’s
+Spells per Day table (see page 52 of the Player ’s Handbook), and her
+spells are based on Charisma. The witch’s spell list is designed with
+the following considerations in mind.
+CureSpells: Only the weakest of these, and the witch doesn’t
+have the cleric’s ability to cast curespells spontaneously. The witch
+isn’t blessed with a cleric’s (or druid’s) plethora of healing spells,
+but she can offer a little aid to those she favors.
+Illusions:Only through the middle levels. A witch can trick
+her foes, but not to the extent that a wizard can.
+Divinations:Only the straightforward divinations, such as
+clairvoyance/clairaudienceand scrying, and not even all of them.
+Charms:Many. A major feature of this class.
+Form- Changing:Another strong point for the witch. From
+alter selfto shapechange, the witch has most of the spells relating to
+changing her (or someone else’s) form.
+Nature:From speaking to animals to controlling the weather,
+the witch dabbles in this type of magic, if for no other reason than
+she usually lives a secluded life in the wilderness.
+No Flashy Spells:Anything from a lightning boltto a wall of fire
+to a Bigby ’s handspell is right out. The witch’s archetype doesn’t
+suggest overt attack spells or spells that create massive magic con-
+structs. She doesn’t summon monsters, place wards, or teleport
+from place to place. Her magic is subtle.
+Miscellaneous:Spells such as whispering wind, Leomund’s tiny
+hut, bestow curse(and a few other curselike spells), and a few com-
+munication spells round out the list.
+Witch Spell List
+0 Level: arcane mark, cure minor wounds, dancing lights, daze, detect
+magic, detect poison, flare, ghost sound, light, mending, read magic, resist-
+ance, virtue.
+1st Level: cause fear, change self, charm person, command, com-
+prehend languages, cure light wounds, doom, endure elements, hypnotism,
+identify, silent image, sleep, speak with animals, ventriloquism.
+2nd Level: alter self, blindness/deafness, calm emotions, cure moder-
+ate wounds, delay poison, detect thoughts, enthrall, invisibility, locate
+object, minor image, scare, whispering wind.
+3rd Level: bestow curse, clairvoyance/clairaudience, contagion, create
+food and water, dispel magic, Leomund’s tiny hut, magic circle against
+chaos/law/evil/good*, major image, rage, remove blindness/deafness,
+suggestion, tongues.
+4th Level: charm monster, crushing despair, discern lies, divination,
+fear, giant vermin, good hope, locate creature, minor creation, neutralize
+poison, polymorph, remove curse, scrying.
+5th Level: baleful polymorph, dream, false vision, feeblemind, greater
+command, magic jar, major creation, mirage arcana, nightmare, seeming,
+sending.
+6th Level: animate objects, control weather, eyebite, find the path,
+geas/quest, greater scrying, heroes’ feast, legend lore, mass suggestion, mis-
+lead, repulsion, shadow image, Tenser ’s transformation, true seeing.
+7th Level: creeping doom, finger of death, insanity, liveoak, repel
+wood, transport via plants.
+8th Level: antipathy, demand, discern location, horrid wilting, poly-
+morph any object, sympathy, trap the soul.
+9th Level: earthquake, foresight, refuge, shapechange, wail of the ban-
+shee, weird.
+*When she becomes able to cast 3rd-level spells, the witch
+chooses to have one of the four magic circle spells on her spell list.
+Whichever spell she chooses, she cannot cast it as a spell of an
+alignment opposed to her own.
+CREATING NEW CLASSES
+It’s possible to create entirely new classes, or rather, to alter exist-
+ing classes so drastically that they’re no longer recognizable. For
+example, you could make the following adjustments to the ranger.
+•Limit his weapon selection to resemble the rogue’s list of weap-
+on proficiencies.
+•Change  his  favored  enemy  ability  so  that  it  applies  only  to
+undead, and his bonus improves by 2 every five levels.
+•Give  him  the  rogue’s  sneak  attack  ability,  but  change  it  so  that
+it’s only usable against undead.
+175
+CHAPTER 6:
+CHARACTERS
+BEHIND THE CURTAIN: 
+WHY MESS AROUND WITH CHARACTER CLASSES?
+The  standard  character  classes  fit  into  virtually  everyone’s  campaign.
+They’re  flexible,  and  skill  and  feat  selection  allow  them  to  be  truly
+customizable.  Most  character  concepts  can  be  covered  using  the
+classes as written. Modifying classes is mostly a tool that you can use
+to  tailor  things  to  best  fit  your  campaign.  It  shouldn’t  come  up  that
+often, since it’s rarely necessary.
+DMs who create their own worlds may find that the classes need
+some focusing to make them specific to a particular campaign. If, in
+developing your world, you design a culture steeped in a long-stand-
+ing hatred of magic, you might alter the fighter to be a demonslayer
+and give the class a limited weapon selection and special feats that
+work  best  against  outsiders.  The  ranger  might  become  a  wizard-
+hunter, the cleric could be a protector with early access to dispel magic
+and  various  defensive  spells,  and  all  PC  classes  might  be  imbued
+with the ability to use detect magiconce per day.
+Sometimes,  however,  players  come  to  you  and  say  that  they  like  a
+certain class, but they want to change a single feature or two. Michele
+might  want  to  play  a  ranger  with  no  desire  to  have  more  than  one
+favored  enemy.  She  wants  to  play  a  beast-slayer,  and  her  character
+hates dire wolves. She’s also interested in the paladin’s warhorse. You
+can decide, as a DM, that it’s acceptable to trade those ranger abilities
+for  the  paladin’s  mount.  In  fact,  you  might  decide  that  it’s  not  a  fair
+trade,  and  that  Michele’s  character  can  have  the  detect  evilability  as
+well. (She is, after all, giving up an ability usable at 1st level as well as
+one that comes into play later for one that she can’t acquire until 5th
+level.)  Allowing  a  player  to  play  the  character  she  wants  to  play  is
+always  a  desirable  goal.  Sometimes  it  can’t  be  achieved—the  player
+asks for too much, or what she wants doesn’t fit with your campaign—
+but  the  effort  to  accommodate  reasonable  modifications  is  almost
+always worth it.
+pqqqqrs
+pqqqqrs

@@ -1,0 +1,61 @@
+his chapter has three parts: Special Abilities, Condition
+Summary, and The Environment. Throughout the game,
+you’ll find references to special abilities of all kinds—rays
+of energy, life-numbing touches, and the ability to become
+insubstantial, to name a few. This section identifies the most
+significant abilities and provides details on how to use them
+and what they look like.
+Following this section you can find a comprehensive sum-
+mary of character conditions, such as panicked, paralyzed, and
+helpless. If a character falls victim to any sort of debilitation or
+strange effect, refer to that condition’s listing for how to handle
+the situation.
+Finally, perils of the environment such as drowning, and the
+effects of heat and cold are covered in the closing section.
+SPECIAL ABILITIES
+A special ability is either extraordinary, spell-like, or supernatural
+in nature.
+Extraordinary Abilities (Ex):Extraordinary abilities are non-
+magical. They are, however, not something that just anyone can
+do or even learn to do without extensive training (which, in game
+terms, means to take a new character class). A monk’s ability to
+evade attacks and a barbarian’s uncanny dodge are extraordinary
+abilities. Effects or areas that negate or disrupt magic have no
+effect on extraordinary abilities.
+Spell-Like Abilities (Sp):Spell-like abilities, as the name
+implies, are spells and magical abilities that are very much like
+spells. Spell-like abilities are subject to spell resistance and dispel
+magic. They do not function in areas where magic is suppressed or
+negated (such as anantimagic field).
+Supernatural Abilities (Su):Supernatural abilities are
+magical but not spell-like. This far-reaching category
+includes the basilisk’s petrifying stare, the monk’s kistrike,
+and the ghoul’s paralytic touch. Supernatural abilities are
+not subject to spell resistance and do not function in areas
+where  magic  is  suppressed  or  negated  (such  as  an
+antimagic field). A supernatural ability’s effect cannot be
+dispelled and is not subject to counterspells.
+See Table 8–1, on the next page, for a summary of the
+types of special abilities.
+ABILITY SCORE LOSS
+An undead shadow touches Tordek, and his axe immedi-
+ately feels heavier in his hand. A giant wasp stings
+Mialee, and her normally graceful movements become
+halting and stiff.
+Various attacks cause ability score loss, either ability
+damage or ability drain. Points lost to ability damage
+return at the rate of 1 point per day (or double that if
+the character gets complete bed rest) to each dam-
+aged ability, and the spells lesser restorationand restora-
+tionoffset ability damage as well. Ability drain, how-
+ever, is permanent, though restorationcan restore
+even those lost ability score points.
+While any loss is debilitating, losing all points in
+an ability score can be devastating.
+•Strength 0 means that the character cannot move at
+all. He lies helpless on the ground.
+•Dexterity 0 means that the character cannot move
+at all. He stands motionless, rigid, and helpless.
+•Constitution 0 means that the character is dead.
+289
+Illus. by  A. Swekel

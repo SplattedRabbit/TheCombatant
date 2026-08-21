@@ -1,0 +1,54 @@
+11
+districts, while an average metropolis (eighty districts)
+has forty-two lower-class, twenty-four middle-class, and
+fourteen upper-class districts. 
+One way to distinguish your city from others of sim-
+ilar size is to adjust how many districts of each social
+class are present. A particularly wealthy city might
+have more upper- and middle-class districts and fewer
+lower-class districts than normal, while a poor city
+would have the opposite ratio. A city heavily engaged
+in trade would have a larger middle class (and more
+middle-class districts) than one that is mostly isolated
+and self-sufficient. 
+Generally, districts appear adjacent to others of the
+same social class, forming neighborhoods that share a
+single social class. In some cases, a neighborhood may
+include one or two districts whose social class is one step
+higher or lower than that of the other districts nearby. A
+neighborhood typically consists of five to eight districts,
+and its total population ranges from 1,750 to 4,400. It is
+rare, but not unknown, for upper-class and lower-class
+districts or neighborhoods to appear side by side. When
+such a situation does occur, some geographical or artifi-
+cial feature, such as a small cliff, a river, or a wall, usually
+separates them from each other.
+COMMUNITY WEALTH
+As a rule, the most expensive items are available only in
+upper-class districts of a city. Districts with lower social
+classes have lower gp limits, as shown on Table 1–2: GP
+Limit By Social Class.
+Table 1–2: GP Limit By Social Class
+———————— GP Limit in ———————
+Social ClassSmall CityLarge CityMetropolis
+Upper15,00040,000100,000
+Middle6,00016,00040,000
+Lower1,5004,00010,000
+Items priced below a city’s gp limit are usually available
+immediately, though in some cases a would-be pur-
+chaser might have to wait as much as a week to get a
+particularly unusual item. Often, some of the more
+expensive items available in a given city also require
+waiting periods.
+ABOUT THE AUTHORS
+David Noonan, a game designer at Wizards of the
+Coast, Inc. was one of the developers of the revised
+DUNGEONMASTER’s Guide. His other work includes
+Manual of the Planes, Stronghold Builder’s Guidebook, and
+the forthcoming Unearthed Arcana.
+James Wyattis also a game designer at Wizards of
+the Coast, Inc. Best known for designing Oriental
+Adventures,James recently worked on the Fiend Folio,
+the D&D Arms and Equipment Guide,and the forthcom-
+ing Book of Exalted Deeds.He worked on D&D v.3.5 as a
+designated kibitzer.

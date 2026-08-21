@@ -1,0 +1,188 @@
+Contents
+Introduction . . . . . . . . . . . . . . . . . . . . . . . . 4
+Chapter 1: Running the Game  . . . . . . . 5
+What Is a DM? . . . . . . . . . . . . . . . . . . . . . 5
+Style of Play  . . . . . . . . . . . . . . . . . . . . . . . 7
+Example of Play . . . . . . . . . . . . . . . . . . . . 8
+Running a Game Session  . . . . . . . . . . 10
+Chapter 2: Using the Rules  . . . . . . . . . 19
+More Movement Rules  . . . . . . . . . . . . 19
+Movement and the Grid . . . . . . . . 19
+Moving in Three Dimensions . . . 20
+Evasion and Pursuit . . . . . . . . . . . . 20
+Moving around in Squares . . . . . . 20
+Bonus Types . . . . . . . . . . . . . . . . . . . . . . 21
+Combat  . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+Line of Sight  . . . . . . . . . . . . . . . . . . 21
+Starting an Encounter . . . . . . . . . . 22
+New Combatants  . . . . . . . . . . . . . . 23
+Keeping Things Moving . . . . . . . . 24
+Combat Actions. . . . . . . . . . . . . . . . 25
+Attack Rolls . . . . . . . . . . . . . . . . . . . 26
+Damage . . . . . . . . . . . . . . . . . . . . . . . 26
+Effect of Weapon Size . . . . . . . . . . 28
+Splash Weapons  . . . . . . . . . . . . . . . 28
+Area Spells . . . . . . . . . . . . . . . . . . . . 28
+Big and Little Creatures 
+in Combat  . . . . . . . . . . . . . . . . . . 29
+Skill and Ability Checks . . . . . . . . . . . 30
+Saving Throws . . . . . . . . . . . . . . . . . . . . 33
+Adjudicating Magic  . . . . . . . . . . . . . . . 34
+Describing Spell Effects  . . . . . . . . 34
+Handling Divinations . . . . . . . . . . 34
+Creating New Spells. . . . . . . . . . . . 35
+Rewards . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Experience Awards . . . . . . . . . . . . . 36
+Story Awards . . . . . . . . . . . . . . . . . . 40
+Character Death  . . . . . . . . . . . . . . . . . . 41
+Making a New Character  . . . . . . . 42
+Chapter 3: Adventures  . . . . . . . . . . . . . 43
+Motivation  . . . . . . . . . . . . . . . . . . . . . . . 43
+Structure . . . . . . . . . . . . . . . . . . . . . . . . . 44
+Site-Based Adventures . . . . . . . . . . . . . 46
+Event-Based Adventures . . . . . . . . . . . 47
+The End (?) . . . . . . . . . . . . . . . . . . . . . . . 48
+Encounters . . . . . . . . . . . . . . . . . . . . . . . 48
+Tailored or Status Quo . . . . . . . . . . 48
+Challenge Ratings and
+Encounter Levels . . . . . . . . . . . . 48
+Difficulty  . . . . . . . . . . . . . . . . . . . . . 49
+Tougher Monsters  . . . . . . . . . . . . . 50
+Location  . . . . . . . . . . . . . . . . . . . . . . 50
+Rewards and Behavior . . . . . . . . . . 50
+Treasure . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+Bringing Adventures Together. . . . . . 56
+Between Adventures  . . . . . . . . . . . . . . 57
+The Dungeon . . . . . . . . . . . . . . . . . . . . . 57
+Dungeon Terrain . . . . . . . . . . . . . . . . . . 59
+Walls  . . . . . . . . . . . . . . . . . . . . . . . . . 59
+Doors . . . . . . . . . . . . . . . . . . . . . . . . . 60
+Rooms . . . . . . . . . . . . . . . . . . . . . . . . 62
+Corridors  . . . . . . . . . . . . . . . . . . . . . 63
+Miscellaneous Features . . . . . . . . . 63
+Cave-Ins and Collapses . . . . . . . . . 66
+Illumination. . . . . . . . . . . . . . . . . . . 67
+Traps . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+Elements of a Trap  . . . . . . . . . . . . . 68
+Sample Traps  . . . . . . . . . . . . . . . . . . 70
+Designing a Trap . . . . . . . . . . . . . . . 74
+Dungeon Ecology . . . . . . . . . . . . . . . . . 76
+Dungeon Animals. . . . . . . . . . . . . . 76
+Wandering Monsters . . . . . . . . . . . 77
+Random Dungeons. . . . . . . . . . . . . . . . 77
+Dungeon Level  . . . . . . . . . . . . . . . . 77
+The Map and the Key. . . . . . . . . . . 77
+Random Dungeon Encounters . . 78
+A Sample Adventure  . . . . . . . . . . . . . . 78
+Statistics Blocks . . . . . . . . . . . . . . . . . . . 85
+Wilderness Adventures . . . . . . . . . . . . 86
+Getting Lost . . . . . . . . . . . . . . . . . . . 86
+Forest Terrain . . . . . . . . . . . . . . . . . . 87
+Marsh Terrain  . . . . . . . . . . . . . . . . . 88
+Hills Terrain . . . . . . . . . . . . . . . . . . . 89
+Mountain Terrain . . . . . . . . . . . . . . 89
+Desert Terrain  . . . . . . . . . . . . . . . . . 91
+Plains Terrain . . . . . . . . . . . . . . . . . . 91
+Aquatic Terrain  . . . . . . . . . . . . . . . . 92
+Underwater Combat . . . . . . . . . 93
+Weather . . . . . . . . . . . . . . . . . . . . . . . 93
+Random Wilderness
+Encounters. . . . . . . . . . . . . . . . . . 95
+Urban Adventures. . . . . . . . . . . . . . . . . 98
+Weapon and Spell Restrictions . . 99
+Urban Features  . . . . . . . . . . . . . . . . 99
+Urban Encounters . . . . . . . . . . . . 101
+Chapter 4: Nonplayer Characters  . . 103
+Everyone in the World  . . . . . . . . . . . 103
+NPC Classes . . . . . . . . . . . . . . . . . . . . . 107
+Adept . . . . . . . . . . . . . . . . . . . . . . . . 107
+Aristocrat . . . . . . . . . . . . . . . . . . . . 108
+Commoner . . . . . . . . . . . . . . . . . . . 108
+Expert . . . . . . . . . . . . . . . . . . . . . . . 109
+Warrior . . . . . . . . . . . . . . . . . . . . . . 109
+NPC Statistics  . . . . . . . . . . . . . . . . . . . 110
+NPC Attitudes . . . . . . . . . . . . . . . . . . . 128
+Fleshing out NPCs . . . . . . . . . . . . . . . 128
+Chapter 5: Campaigns . . . . . . . . . . . . . 129
+Establishing a Campaign. . . . . . . . . . 129
+Maintaining a Campaign  . . . . . . . . . 130
+Characters and the World
+around Them . . . . . . . . . . . . . . . . . . 131
+War and Other Calamities  . . . . . . . . 133
+Other Campaign Issues . . . . . . . . . . . 134
+World-Building . . . . . . . . . . . . . . . . . . 135
+Building a Different World. . . . . . . . 144
+Adventuring on Other Planes . . . . . 147
+Plane Descriptions . . . . . . . . . . . . . . . 151
+Creating a Cosmology . . . . . . . . . . . . 167
+Chapter 6: Characters 169
+Ability Scores . . . . . . . . . . . . . . . . . . . . 169
+Races  . . . . . . . . . . . . . . . . . . . . . . . . . . . 170
+Subraces . . . . . . . . . . . . . . . . . . . . . 170
+Modifying a Common Race . . . . 171
+Changes through Addition
+and Subtraction  . . . . . . . . . . . . 171
+Class/Race Restrictions  . . . . . . . 171
+New Races . . . . . . . . . . . . . . . . . . . 171
+Monsters as Races  . . . . . . . . . . 172
+Classes . . . . . . . . . . . . . . . . . . . . . . . . . . 174
+Modifying Character Classes . . . 174
+Creating New Classes  . . . . . . . . . 175
+Prestige Classes . . . . . . . . . . . . . . . . . . 176
+Arcane Archer . . . . . . . . . . . . . . . . 176
+Arcane Trickster . . . . . . . . . . . . . . 177
+Archmage . . . . . . . . . . . . . . . . . . . . 178
+Assassin. . . . . . . . . . . . . . . . . . . . . . 180
+Blackguard . . . . . . . . . . . . . . . . . . . 181
+Dragon Disciple  . . . . . . . . . . . . . . 183
+Duelist . . . . . . . . . . . . . . . . . . . . . . . 185
+Dwarven Defender. . . . . . . . . . . . 186
+Eldritch Knight. . . . . . . . . . . . . . . 187
+Hierophant. . . . . . . . . . . . . . . . . . . 188
+Horizon Walker  . . . . . . . . . . . . . . 189
+Loremaster . . . . . . . . . . . . . . . . . . . 190
+Mystic Theurge . . . . . . . . . . . . . . . 192
+Red Wizard  . . . . . . . . . . . . . . . . . . 193
+Shadowdancer . . . . . . . . . . . . . . . . 194
+Thaumaturgist . . . . . . . . . . . . . . . . 196
+How PCs Improve  . . . . . . . . . . . . . . . 197
+Learning Skills and Feats . . . . . . 197
+Learning New Spells . . . . . . . . . . 198
+Gaining Class Benefits  . . . . . . . . 198
+General Downtime. . . . . . . . . . . . 198
+Gaining Fixed Hit Points  . . . . . . 198
+Creating PCs above 1st Level . . . . . . 199
+Special Cohorts . . . . . . . . . . . . . . . . . . 199
+Familiars . . . . . . . . . . . . . . . . . . . . . . . . 200
+Mounts  . . . . . . . . . . . . . . . . . . . . . . . . . 204
+Animal Companions  . . . . . . . . . . . . . 205
+Epic Characters . . . . . . . . . . . . . . . . . . 206
+Chapter 7: Magic Items. . . . . . . . . . . . 211
+Handling Magic Items  . . . . . . . . . . . 212
+Magic Item Descriptions  . . . . . . . . . 215
+Armor . . . . . . . . . . . . . . . . . . . . . . . 216
+Weapons . . . . . . . . . . . . . . . . . . . . . 221
+Potions and Oils . . . . . . . . . . . . . . 229
+Rings . . . . . . . . . . . . . . . . . . . . . . . . 229
+Rods . . . . . . . . . . . . . . . . . . . . . . . . . 233
+Scrolls . . . . . . . . . . . . . . . . . . . . . . . 237
+Staffs  . . . . . . . . . . . . . . . . . . . . . . . . 243
+Wands . . . . . . . . . . . . . . . . . . . . . . . 245
+Wondrous Items . . . . . . . . . . . . . . 246
+Intelligent Items . . . . . . . . . . . . . . . . . 268
+Cursed Items . . . . . . . . . . . . . . . . . . . . 272
+Artifacts. . . . . . . . . . . . . . . . . . . . . . . . . 277
+Creating Magic Items  . . . . . . . . . . . . 282
+Masterwork Items  . . . . . . . . . . . . 283
+Special Materials. . . . . . . . . . . . . . 283
+Chapter 8: Glossary  . . . . . . . . . . . . . . . 289
+Special Abilities. . . . . . . . . . . . . . . . . . 289
+Condition Summary  . . . . . . . . . . . . . 300
+The Environment . . . . . . . . . . . . . . . . 302
+Visual Aids  . . . . . . . . . . . . . . . . . . . . . . . 305
+Index   . . . . . . . . . . . . . . . . . . . . . . . . . . . . 317
+List of Sidebars  . . . . . . . . . . . . . . . . . . 319
+List of Numbered Tables . . . . . . . . . . 320
+3
+TABLE OF
+CONTENTS

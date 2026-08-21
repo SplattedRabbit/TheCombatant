@@ -1,0 +1,130 @@
+But the PCs aren’t alone in the serene haze of the Astral
+Plane. Githyanki pirates cruise the color pools, looking for
+well-heeled travelers from other planes. A typical githyanki
+pirate ship is a longship (described on page 132 of the Player ’s
+Handbook) that flies under its own power at a speed of 90 feet.
+The pirate captain (githyanki Ftr11 or Ftr6/Rog5) leads his
+crew into battle, with a war-wizard (githyanki Wiz9) or merce-
+nary cleric (tiefling Clr9) providing support to the rank-and-
+file pirates. (Githyanki are never clerics themselves, so they
+must hire mercenary clerics because natural healing doesn’t
+work on the Astral Plane.)
+The githyanki use the enhanced magic of the Astral Plane to
+good effect, taking full attacks, then using their dimension door
+spell-like ability as a free action to confound their enemies.
+ELEMENTAL PLANE OF AIR
+The Elemental Plane of Air is an empty plane, consisting of sky
+above and sky below. Clouds billow up in bank after bank,
+swelling into grand thunderheads and dissipating into wisps like
+cotton candy. The wind pulls and tugs around travelers, and rain-
+bows glimmer in the distance.
+The Elemental Plane of Air is the most comfortable and surviv-
+able of the Inner Planes, and it is the home of all manner of air-
+borne creatures. Indeed, flying creatures find themselves at a great
+advantage on this plane. While travelers without flight can sur-
+vive easily here, they are at a disadvantage.
+The Elemental Plane of Air has the following traits.
+•Subjective  directional  gravity.  Inhabitants  of  the  plane  deter-
+mine their own “down” direction. Objects not under the motive
+force of others do not move.
+•Air-dominant.
+•Enhanced  magic.  Spells  and  spell-like  abilities  that  use,  ma-
+nipulate,  or  create  air  (including  spells  of  the  Air  domain)  are
+both  empowered  and  enlarged  (as  if  the  Empower  Spell  and
+Enlarge Spell metamagic feats had been used on them, but the
+spells don’t require higher-level slots).
+•Impeded magic. Spells and spell-like abilities that use or create
+earth  (including  spells  of  the  Earth  domain  and  spells  that
+summon earth elementals or outsiders with the earth subtype)
+are impeded.
+Example Plane of Air Site: Cloud Island
+What appears to be a white cumulus cloud is actually as solid as
+earth, if somewhat difficult to move across (treat as a shallow bog;
+see page 88). Creatures with a fly speed can force themselves
+through the cloud island (effectively giving them a burrow speed
+of 10 feet). Some 2d4 pillars of fog 10 feet across drift across the
+landscape (they provide concealment as the obscuring mistspell,
+moving 10 feet in a random direction at initiative count 0). The
+cloud island is about 1/2 mile wide and 1d10×5 feet thick at any
+given point.
+Elemental Plane of Air Encounters (EL 10)
+d%EncounterAverage EL
+01–121d4+2 noble djinn (genie)12
+21–321 elder air elemental11
+33–471d3 elder arrowhawks10
+48–621d4+2 belkers 10
+63–741 greater air elemental9
+75–841d4+2 adult arrowhawks9
+85–921 invisible stalker7
+93–1001 Huge air elemental7
+Floating in serene contemplation in the center of the cloud
+island is a noble djinn (see page 115 of the Monster Manual). If char-
+acters capture her (by defeating her without killing her or driving
+her away), she will grant three wishescollectively to the party. She is
+eager to talk to visitors from the Material Plane, where she spent
+more than a century trapped by an evil wizard. If characters can
+improve her attitude to friendly (it starts out indifferent), she’ll offer
+the characters a bargain. She will grant three wishesto the party if
+the characters will first avenge her imprisonment by capturing the
+evil Material Plane conjurer and returning him to this cloud island,
+where the djinn will arrange for “long-term detention.”
+ELEMENTAL PLANE OF EARTH
+The Elemental Plane of Earth is a solid place made of rock, soil,
+and stone. An unwary and unprepared traveler may find himself
+entombed within this vast solidity of material and have his life
+crushed into nothingness, his powdered remains a warning to any
+foolish enough to follow.
+Despite its solid, unyielding nature, the Elemental Plane of
+Earth is varied in its consistency, ranging from relatively soft soil
+to veins of heavier and more valuable metal. Striations of granite,
+volcanic rock, and marble interweave with brittle crystal and soft,
+crumbling chalks and sandstones. Thin veins of gemstones, rough
+and huge, can be found within the plane, and these unpolished
+jewels often lead the greedy to this plane in the hope of picking
+them up with minimal effort. Such prospectors often meet their
+match in the natives of the Elemental Plane of Earth, who feel
+extremely attached (sometimes literally) to parts of their home.
+The Elemental Plane of Earth has the following traits.
+•Earth-dominant.
+•Enhanced  magic.  Spells  and  spell-like  abilities  that  use,  ma-
+nipulate, or create earth or stone (including those of the Earth
+domain)   are   both   empowered   and   extended   (as   if   the
+Empower  Spell  and  Extend  Spell  metamagic  feats  had  been
+used  on  them,  but  the  spells  don’t  require  higher-level  slots).
+Spells  and  spell-like  abilities  that  are  already  empowered  or
+extended are unaffected by this benefit.
+•Impeded magic. Spells and spell-like abilities that use or create
+air (including spells of the Air domain and spells that summon
+air elementals or outsiders with the air subtype) are impeded.
+Example Plane of Earth Site:  Great Dismal Delve
+Essentially a dungeon the size of a continent, the Great Dismal
+Delve is a maddening maze of passages that are intentionally be-
+wildering to the traveler. A variety of powerful genie lords and
+their slave races live here in dark splendor, eagerly mining gems
+for trade. Slaves, often the losers in bets and bargains with the
+rulers of the Great Dismal Delve, build and rebuild passages, fend
+off elemental attacks, and are otherwise slowly worked to death by
+their uncaring masters.
+Glowing crystals line the Great Dismal Delve, and great vaults
+are set with them in star patterns unlike any seen on the Material
+Plane. The Great Dismal Delve spans a number of large, natural
+caverns that are tectonically unstable. Earthquakes (with an effect
+as the spell; see page 225 of the Player ’s Handbook) are frequent
+occurrences, which keeps the slaves busy doing repair work.
+The connections and passages of the Great Dismal Delve
+link up with a complicated array of portals leading to other
+Inner Planes, the subterranean reaches of some of the Outer
+Planes, and the deepest dungeons of the Material Plane. It is
+rumored that somewhere within the Great Dismal Delve is a
+freestanding portal to almost every secret location within the
+D&D cosmology.
+Elemental Plane of Earth Encounters (EL 10)
+d%EncounterAverage EL
+01–251 elder earth elemental11
+26–501d4+2 average xorns10
+51–751d3 elder xorns10
+76–901 greater earth elemental9
+91–1001 Huge earth elemental7
+155
+CHAPTER 5:
+CAMPAIGNS

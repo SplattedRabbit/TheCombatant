@@ -1,0 +1,134 @@
+150
+Impeded Magic: Particular spells and spell-like abilities are
+more difficult to cast on planes with this trait, often because the
+nature of the plane interferes with the spell. Fireball spells may be
+cast on the Elemental Plane of Water, but the opposing natures of
+the spell and the plane makes it difficult.
+To cast an impeded spell, the caster must make a Spellcraft
+check (DC 20 + the level of the spell). If the check fails, the spell
+does not function but is still lost as a prepared spell or spell slot. If
+the check succeeds, the spell functions normally.
+Enhanced Magic: Particular spells and spell-like abilities are
+easier to use or more powerful in effect on planes with this trait
+than they are on the Material Plane.
+Natives of a plane with the enhanced magic trait are aware of
+which spells and spell-like abilities are enhanced, but planar trav-
+elers may have to discover this on their own.
+If a spell is enhanced, certain metamagic feats can be applied to
+it without changing the spell slot required or the casting time.
+Spellcasters on the plane are considered to have that feat or feats
+for the purpose of applying them to that spell. Spellcasters native
+to the plane must gain the feat or feats normally if they want to use
+them on other planes as well.
+For example, spells with the fire descriptor are maximized and
+enlarged on the Elemental Plane of Fire. Wizards on this plane
+can prepare maximized, enlarged versions of their fire spells
+even if they don’t have the Maximize Spell and Enlarge Spell
+feats, and they use the same spell slots they would to cast these
+spells normally (not maximized or enlarged) on the Material
+Plane. Sorcerers on this plane can cast maximized, enlarged fire
+spells without using higher-level slots, and it takes them no extra
+time to do so.
+Limited Magic: Planes with this trait permit only the use of
+spells and spell-like abilities that meet particular qualifications.
+Magic can be limited to effects from certain schools or subschools,
+to effects with certain descriptors, or to effects of a certain level (or
+any combination of these qualities). Spells and spell-like abilities
+that don’t meet the qualifications simply don’t work.
+HOW PLANES INTERACT
+By definition, planes are infinite or near-infinite expanses,
+whether they are flat worlds, layered vaults, or spheres hanging in
+space. How, then, can they interact with each other?
+As a metaphor, imagine the various planes of a cosmology float-
+ing near each other in a three-dimensional constellation or clus-
+ter. They are not necessarily “above” or “below” each other, though
+there is a social tendency to call good-aligned planes “upper”
+planes and evil-aligned planes “lower” planes. What is important
+to the D&D cosmology is whether two given planes are separate,
+coterminous, or coexistent.
+Separate Planes:Two planes that are separate do not overlap or
+directly connect to each other. They are like planets in different
+orbits. Any Outer Plane, for example, has no direct connection
+with the Material Plane. The two planes are separate, and the only
+way to get from one plane to the other is to go through a third
+plane, such as the Astral Plane.
+Coterminous Planes:Planes that touch at specific points are
+coterminous. Where they touch, a connection exists, and travelers
+can leave one reality behind and enter the other. It’s possible, for
+example, to sail from Hades to the Abyss on the River Styx.
+Coexistent Planes:If a link between two planes can be cre-
+ated at any point, the two planes are coexistent. These planes
+overlap each other completely. A coexistent plane can be reached
+from anywhere on the plane it overlaps. When moving on a coex-
+istent plane, it is often possible to see into or interact with the
+plane it coexists with. The Ethereal Plane is coexistent with the
+Material Plane, and inhabitants of the Ethereal Plane can see into
+the Material Plane. With the right magic, inhabitants of the
+Material Plane can likewise see and interact with those on the
+Ethereal Plane (see invisibilityand magic missile, for example, both
+affect the Ethereal Plane).
+THE D&D COSMOLOGY
+The D&D cosmology is structured as follows.
+The Material Plane is at its center.
+The Plane of Shadow and the Ethereal Plane are coexistent with
+the Material Plane. All planes, including the Plane of Shadow and
+the Ethereal Plane, are coexistent with the Astral Plane, which
+envelops the whole cosmology like a cloud.
+The six Inner Planes surround the Material Plane. They are sep-
+arate from the Material Plane and from each other (they do not
+have connections between them). They are each coexistent with
+the Astral Plane. Each of the Inner Planes has the appropriate ele-
+mental or energy trait.
+The Outer Planes are arranged in a great wheel around the
+Material Plane. Each Outer Plane is coterminous to the planes on
+CHAPTER 5:
+CAMPAIGNS
+d%Effect
+01–19Spell rebounds on caster with normal effect. If the spell
+cannot affect the caster, it simply fails.
+20–23A circular pit 15 feet wide opens under the caster’s feet; it is
+10 feet deep per level of the caster.
+24–27The spell fails, but the target or targets of the spell are
+pelted with a rain of small objects (anything from flowers to
+rotten fruit), which disappear upon striking. The barrage
+continues for 1 round. During this time the targets are
+blinded and must make Concentration checks (DC 15 +
+spell level) to cast spells.
+28–31The spell affects a random target or area. The DM should
+randomly choose a different target from among those in
+range of the spell or center the spell at a random place
+within range of the spell. To generate direction randomly,
+roll 1d8 and count clockwise around the compass, starting
+with south. To generate range randomly, roll 3d6. Multiply
+the result by 5 feet for close range spells, 20 feet for
+medium range spells, or 80 feet for long range spells.
+32–35The spell functions normally, but any material components
+are not consumed. The spell is not expended from the
+caster’s mind (a spell slot or prepared spell can be used
+again). An item does not lose charges, and the effect does
+not count against an item’s or spell-like ability’s use limit.
+36–39The spell does not function. Instead, everyone (friend or foe)
+within 30 feet of the caster receives the effect of a heal spell.
+40–43The spell does not function. Instead, a deeper darkness and a
+silence effect cover a 30-foot radius around the caster for
+2d4 rounds.
+44–47The spell does not function. Instead, a reverse gravity effect
+covers a 30-foot radius around the caster for 1 round.
+48–51The spell functions, but shimmering colors swirl around the
+caster for 1d4 rounds. Treat this a glitterdust effect with a
+save DC of 10 + the level of the spell that generated this
+result.
+52–59Nothing happens. The spell does not function. Any material
+components are used up. The spell or spell slot is used up,
+and charges or uses from an item are used up.
+60–71Nothing happens. The spell does not function. Any material
+components are not consumed. The spell is not expended
+from the caster’s mind (a spell slot or prepared spell can be
+used again). An item does not lose charges, and the effect
+does not count against an item’s or spell-like ability’s use
+limit.
+72–98The spell functions normally.
+99–100   The spell functions strongly. Saving throws against the spell
+incur a –2 penalty. The spell has the maximum possible effect,
+as if it were cast with the Maximize Spell feat. If the spell is
+already maximized with the feat, there is no further effect.

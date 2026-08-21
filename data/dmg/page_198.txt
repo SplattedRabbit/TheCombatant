@@ -1,0 +1,133 @@
+a reduced payment. If the thaumaturgist’s Diplomacy check
+adjusts the creature’s attitude to helpful (see Influencing NPC
+Attitudes, page 72 of the Player ’s Handbook), the creature will work
+for 50% of the standard fee, as long as the task is one that is not
+against its nature. For example, a 1st-level thaumaturgist negotiat-
+ing with an initially friendly planar ally that gets a Diplomacy
+check result of 15 can convince a 6 HD creature to perform a 7-
+hour task for only 1,500 gp per hour (a 6 HD creature would ordi-
+narily ask for 3,000 gp per hour).
+The thaumaturgist’s improved ally class feature only works when
+the planar ally shares at least one aspect of alignment with the thau-
+maturgist. A thaumaturgist can have only one such ally at a time,
+but he may bargain for tasks from other planar allies normally.
+Augment Summoning: At 2nd level, a thaumaturgist gains the
+Augment Summoning feat (see page 89 of the Player ’s Handbook).
+Extended Summoning: At 3rd level and higher, all spells
+from the summoning subschool that the thaumaturgist casts have
+their durations doubled, as if the Extend Spell feat had been
+applied to them. The levels of the summoning spells don’t change,
+however. This ability stacks with the effect of the Extend Spell
+feat, which does change the spell’s level.
+Contingent Conjuration: A 4th-level thaumaturgist can pre-
+pare a summoning or calling spell ahead of time to be triggered by
+some other event. This functions as described for the contingency
+spell, including having the thaumaturgist cast the summoning or
+calling spell beforehand. The spell is cast instantly when the trig-
+ger event occurs. For example, a thaumaturgist could use the con-
+tingent conjuration ability to summon a barbed devil the next
+time he is attacked, or call a ghaele eladrin to act as messenger if
+the king falls ill.
+The conditions needed to bring the spell into effect must be
+clear, although they can be general. If complicated or convoluted
+condition as are prescribed, the contingent conjuration may fail
+when triggered. The conjuration spell occurs based solely on the
+stated conditions, regardless of whether the thaumaturgist wants it
+to, although most conjurations can be dismissed normally. A thau-
+maturgist can have only one contingent conjuration active at a time.
+Planar Cohort: A 5th-level thaumaturgist can use any of the
+planar ally spells to call a creature to act as his cohort. The called
+creature serves loyally and well as long as the thaumaturgist con-
+tinues to advance a cause important to the creature. For example, a
+5th-level thaumaturgist could use planar ally to call a bralani
+eladrin to act as his cohort. As long as the thaumaturgist under-
+takes quests and missions to fight evil and uphold good, the
+eladrin will loyally serve. To call a planar cohort, the thaumaturgist
+must cast the relevant spell, paying the XP costs normally. It takes
+an offering of 1,000 gp ×the HD of the creature to convince it to
+serve as a planar cohort, and the improved ally class feature can’t
+be used to reduce or eliminate this cost. The planar cohort can’t
+have more Hit Dice than the thaumaturgist has, and must have an
+ECL no higher than the thaumaturgist’s character level –2. A
+bralani eladrin has an ECL of 11 (6 Hit Dice and +5 level adjust-
+ment), so it might serve as a planar cohort to an 8th-level cleric/
+5th-level thaumaturgist (character level 13th).
+A thaumaturgist can have only one planar cohort at a time, but
+he can continue to make agreements with other called creatures
+normally. A planar cohort replaces a thaumaturgist’s existing
+cohort, if he has one by virtue of the Leadership feat (page 106).
+DESIGNING PRESTIGE CLASSES
+Some of the best prestige classes are the ones you design yourself
+for your own campaign. Ideally, a prestige class you design your-
+self is tied to an organization or culture in the campaign world. For
+example, if the PCs are involved in a struggle with a citadel of evil
+called the Black Tower, then a “Mage of the Black Tower” prestige
+class is a good way to give the villains some unexpected abilities
+and a certain panache.
+There are other roles a prestige class can fill. A prestige class can
+play off a race’s strengths (such as the arcane archer), or even trans-
+form a character into a new race (dragon disciple). They can
+strengthen a character’s role within the party (archmage), or his
+utility in an unusual situation (loremaster). A prestige class can
+demonstrate narrowly focused expertise (such as the thaumatur-
+gist) or an unusual combination of abilities (eldritch knight). And
+some prestige classes simply define iconic roles in fantasy litera-
+ture (such as the assassin) or important groups in a particular cam-
+paign setting (the Red Wizard).
+When you design a prestige class, make sure that characters
+must be at least 5th level before they can meet the entry require-
+ments. Specific feats, skill ranks, and base attack bonuses make
+good entry requirements. You can also add in-game requirements
+such as “must survive being buried alive” or “must drink from the
+silver chalice atop the Great Glacier.” Don’t require levels in a spe-
+cific class, minimum ability scores, or minimum hit points to qual-
+ify for a prestige class.
+Make your prestige class as specific as possible, because you’re
+designing it for your campaign, not everyone’s D&D game. The
+“Dawnstrider of Pelor” prestige class will be remembered long
+after a “holy warrior” prestige class has been forgotten.
+HOW PCS IMPROVE
+The rules in the Player ’s Handbookassume that characters have access
+to everything they need to advance in level—libraries where they
+can research new spells, trainers to guide their efforts, and places to
+practice new skills and abilities. Research and training aren’t a part
+of the standard rules. They’re assumed to be going on in the back-
+ground. However, you control the background and can decide how
+you want to handle things such as this. Keep in mind, however, that
+leaving them in the background is a fine choice.
+LEARNING SKILLS AND FEATS
+According to the rules in the Player ’s Handbook, characters pick up
+new skills and feats as they go up in levels. In your campaign, how-
+ever, you can require that a character can’t learn a new skill or feat
+that he hasn’t been exposed to. For example, a character in the
+desert can’t learn swimming unless he spends time at an oasis. You
+might decide that a character can’t even improve existing skills
+without the ability and opportunity to practice.
+One step further would be to require that a character have an
+instructor to teach him new skills and feats. Under this approach,
+a character can’t learn to swim unless he has access to a body of
+water and someone who can swim willing to train him. Likewise,
+a character can’t learn the Cleave feat unless he’s got a trainer who
+knows how to do it and the time and a place to practice by sparring
+with that trainer. A trainer can be another PC (which encourages
+interaction and cooperation among the players) or an NPC. Non-
+player character trainers who are friends of the PCs might train
+them for nothing; otherwise, professional trainers, who are usu-
+ally found only in large cities, charge money.
+Training Cost: 50 gp per week for a professional trainer (plus
+related expenses).
+Training Time:One week per rank gained in a skill, or two
+weeks for a feat. A character may work on two skills or feats at
+once, paying separately for each.
+If a single trainer is providing instruction in more than one
+discipline, then the skills or feats in question should have some
+sort of connection. For example, a certain trainer might be capa-
+ble of teaching both Mounted Archery and Ride-By Attack, since
+the feats are closely related (they even have the same prerequi-
+sites). Likewise, a single trainer might be found for Diplomacy
+and Intimidate, since those skills are both tied to Charisma and
+involve the same type of activity (getting someone else to do what
+you want). It would be less likely to find one trainer for both
+197
+CHAPTER 6:
+CHARACTERS

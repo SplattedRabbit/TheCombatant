@@ -1,0 +1,129 @@
+times, it can be trickier. Suppose the PCs sneak past the sleeping
+minotaur to get into the magical vault—did they overcome the
+minotaur encounter? If their goal was to get into the vault and the
+minotaur was just a guardian, then the answer is probably yes. It’s
+up to you to make such judgments.
+Only characters who take part in an encounter should gain the
+commensurate awards. Characters who died before the encounter
+took place, or did not participate for some other reason, earn noth-
+ing, even if they are raised or healed later on.
+To determine the XP award for an encounter, follow these steps.
+1. Determine each character’s level. Don’t forget to account for
+ECL (see Monsters as Races, page 172) if any of the characters
+are of a powerful race.
+2. For each monster defeated, determine that
+single monster’s Challenge Rating.
+3.  Use  Table  2–6:  Experience  Point
+Awards (Single Monster) to cross-
+reference one character’s level
+with the Challenge Rating for
+each  defeated  monster  to
+find  the  base  XP  award.
+4. Divide the base XP award by the
+number of characters in the party. This is
+the  amount  of  XP  that  one  character
+receives for helping defeat that monster.
+5. Add up all the XP awards for all the
+monsters the character helped defeat.
+6. Repeat the process for each character.
+Do not award XP for creatures that enemies summon or other-
+wise add to their forces with magic powers. An enemy’s ability
+to summon or add these creatures is part of the enemy’s CR
+already. (You don’t give PCs more XP if a drow cleric casts unholy
+blighton them, so don’t give them more XP if she casts summon
+monster IVinstead.)
+Example:A party of five PCs defeats two CR 2 monsters and a
+CR 3 monster. The party consists of a 3rd-level character, three
+4th-level characters, and a 5th-level character. The 3rd-level char-
+acter earns 600 XP for each CR 2 monster and 900 XP for the CR 3
+monster. That’s 2,100 XP, and dividing by 5 (the number of charac-
+ters in the party) yields an experience award of 420 XP. The 4th-
+level characters each earn 400 XP [(600 + 600 + 800) ÷5] and the
+5th-level character earns 350 XP [(500 + 500 + 750) ÷5].
+Monsters Below CR 1
+Some monsters are fractions of a Challenge Rating.
+For instance, a single orc is not a good challenge
+for even a 1st-level party, although two
+might be. You could think of an orc as
+approximately CR 1/2. For these cases,
+calculate XP as if the creature were CR
+1, then divide the result by 2.
+Challenge Ratings for NPCs
+An NPC with a PC class has a Challenge
+Rating  equal  to  the  NPC’s  level.  Thus,  an
+8th-level sorcerer is an 8th-level encounter. As a
+rule of thumb, doubling the number of foes adds 2 to
+the Encounter Level. Therefore, two 8th-level fighters are an EL
+10 encounter. A party of four NPC 8th-level characters is an EL 12
+encounter.
+Some powerful creatures are more of a challenge than their
+level would suggest. A drow, for example, has spell resistance and
+other abilities, so her CR is equal to her level +1.
+Some creatures have monster levels in addition to their class
+levels, such as a centaur ranger. In this case, add the creature’s
+37
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: SUMMONING INDIVIDUAL MONSTERS
+When  a  character  casts  a  summon  monsteror summon  nature’s  ally
+spell, she gets a typical, random creature of the kind she chooses. As
+a  variant  in  your  campaign,  you  can  rule  that  each  spellcaster  gets
+specific, individual creatures rather than just some random one. This
+variant  lets  players  feel  more  ownership  over  the  creatures  that  their
+characters  summon,  but  it  entails  some  special  problems,  so  don’t
+allow it without considering it carefully.
+Specific Creatures:Whenever a spellcaster summons a single crea-
+ture of a given kind, it’s always the same creature. A player can roll the
+ability  scores  and  hit  points  for  each  creature  that  his  character  can
+summon. His specific creatures may be above or below average. Allow
+the  player  to  take  average  statistics  instead  of  rolling  if  he  wants  to
+avoid the risk of getting stuck with bad dice rolls. (There’s no “hope-
+less creature reroll” for bad ability scores in this case.) The player can
+also name each creature and define its distinguishing characteristics.
+Multiple  Creatures:Whenever  a  spellcaster  summons  more  crea-
+tures, the first one is always the same, and each successive creature is
+likewise  always  the  same.  Thus,  if  Mialee  can  summon  up  to  three
+celestial  eagles  named  Kulik,  Skitky,  and  Kliss,  then  she  always  gets
+Kulik  when  she  summons  one  celestial  eagle,  Kulik  and  Skitky  when
+she summons two, and all three when she summons three. The player
+can roll ability scores and hit points for all three.
+The summoner gets the same creatures no matter which version of
+a  spell  she  uses.  Mialee  gets  Kulik  with  summon  monster  IIand  she
+gets Kulik plus possibly Skitky and Kliss with summon monster III.
+Summoning  Limits:Getting  the  same  intelligent  summoned  crea-
+ture  over  and  over  again  gives  a  summoner  certain  advantages.  She
+can, for instance, send a creature to scout out an area for the duration
+of the spell and then summon it up again to get a report. If the crea-
+ture  is  killed  (and  thus  sent  back  to  its  home)  or  dispelled,  however,
+that individual creature is not available to be summoned for 24 hours.
+The summoner summons one fewer creature of that kind because the
+unavailable  creature  still  takes  up  its  normal  “slot.”  Thus,  if  Kulik  is
+killed and later that day Mialee summons two celestial eagles, she only
+gets Skitky (instead of Kulik and Skitky).
+If  a  creature  that  a  character  summons  is  actually,  truly  killed  (not
+just  “killed”  while  summoned),  it  is  no  longer  available,  and  the
+summoner gets one less creature of that kind than normal. On attain-
+ing a new level, however, the summoner may replace the slain creature
+(see below).
+Replacing Creatures:Each time a summoner gains a level in a spell-
+casting class, she can drop out one of her creatures and roll up a new
+one  to  fill  its  “slot.”  For  example,  at  5th  level,  Mialee  can  summon
+Kulik, Skitky, and Kliss with summon monster III.When she reaches 6th
+level, she can drop any one of her summonable creatures and replace
+it with a new one. If Kulik has low ability scores or if it has permanently
+died, she can drop it in favor of a new, randomly rolled creature, which
+then occupies her “first celestial eagle” slot.
+Improving  Creatures:Summoners  can  improve  their  creatures.
+Typically,  they  do  so  by  giving  them  magic  items  or  other  special
+objects. The trick is, a summoned creature can’t take things back home
+with it. When a summoned creature disappears, it leaves all the things
+that it gained while on the Material Plane. Mialee can’t just summon up
+Kulik and give it a cloak of resistance.She has to go to its plane or bring
+it actually onto the Material Plane before she can give it anything it can
+keep. The way to get a creature to actually come to the Material Plane is
+to use a lesser planar ally, planar ally, greater planar ally, lesser planar bind-
+ing, planar binding, greater planar binding,or gatespell, since these are
+all calling spells and actually bring the creature to the caster.
+pqqqqrs
+pqqqqrs

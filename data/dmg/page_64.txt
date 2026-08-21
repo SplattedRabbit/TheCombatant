@@ -1,0 +1,138 @@
+assistance. Strong creatures without the ability to open doors
+smash them down if necessary. Burrowing creatures might dig
+their own exits.
+In general, both the PCs and the monsters should be able to
+move around a room without too much difficulty. Fighting a battle
+in particularly tight quarters can make for an interesting change
+of pace, however.
+Common dungeon rooms fall into the following broad cate-
+gories. Use them as a springboard for your own creations, not as a
+limited list.
+Guard Post: Intelligent, social denizens of the dungeon will
+generally have a series of adjacent rooms they consider “theirs,”
+and they’ll guard the entrances to that common area. A guard post
+may just be a room with a table where bored gnolls play a dice
+game. Or it might be a pair of iron golems backed up by two fire-
+ball-casting drow wizards hiding in balconies overhead. When you
+design a guard post, decide how many guards are on duty, note
+their Listen and Spot modifiers, and decide what they do when
+they notice intruders. Some will rush headlong into a fight, while
+others will negotiate, sound an alarm, or retreat to get help.
+Living Quarters: All but the most nomadic creatures have a
+lair where they can rest, eat, and store their treasure. Living quar-
+ters commonly include beds (if the creature sleeps), possessions
+(both valuable and mundane), and some sort of food preparation
+area (anything from a well-stocked kitchen to a fire pit to a hunk
+of rotting venison). Noncombatant creatures such as juveniles and
+the elderly are often found here.
+Work Area: The bugbear fletcher has an alcove where she
+makes new arrows for the tribe. The mind flayers have a grisly tor-
+ture chamber where they bring their stunned victims for brain
+extraction. Most intelligent creatures do more than just guard, eat,
+and sleep, and many devote rooms to magic laboratories, work-
+shops for weapons and armor, or studios for more esoteric tasks.
+Shrine: The ogre in the cave keeps a candle lit next to the skull
+of her child, which was killed by human hunters. The kuo-toas
+have a series of underwater altars dedicated to their dread god
+Blibdoolpoolp. Any creature that is particularly religious may have
+some place dedicated to worship, and others may venerate some-
+thing of great historical or personal value. Depending on the crea-
+ture’s resources and piety, a shrine can be humble or extensive. A
+shrine is where PCs will likely encounter NPC clerics, and it’s
+common for wounded monsters to flee to a shrine friendly to
+them when they seek healing.
+Vault: Well protected, often by a locked iron
+door, a vault is a special room that contains trea-
+sure. There’s usually only one entrance—an
+appropriate place for a trap.
+Crypt: Although   sometimes   con-
+structed like a vault, a crypt can also be a
+series of individual rooms, each with its
+own  sarcophagus,  or  a  long  hall  with
+recesses on either side—shelves to hold
+coffins or bodies. Wise adventurers expect
+to encounter undead in a crypt, but are
+often willing to risk it to look for the treasure
+that’s often buried with the dead. Crypts of most
+cultures are well appointed and highly decorated,
+since the fact that the crypt was created at
+all  shows  great  reverence  for  the  dead
+entombed within.
+Those  who  are  worried  about  undead
+rising from the grave take the precaution of
+locking and trapping a crypt from the outside—
+making the crypt easy to get into but difficult
+to leave. Those worried about tomb robbers
+make their crypts difficult to get into. Some
+builders do both, just to be on the safe side.
+CORRIDORS
+Stretching into the darkness, a mysterious, cobweb-filled passage
+deeper into the dungeon can be intriguing and a little frightening.
+All dungeons have rooms, and most have corridors. While most
+corridors  simply  connect  rooms,  sometimes  they  can  be
+encounter areas in their own right because of traps, guard patrols,
+and wandering monsters out on the hunt.
+When designing a dungeon, make sure the corridors are large
+enough for the dungeon residents to use. (For example, a dragon
+needs a pretty big tunnel to get in and out of its lair.) Wealthy,
+powerful, or talented dungeon builders may favor wide corridors
+to give a grand appearance to their residences. Otherwise, pas-
+sages are no larger than they need to be. (Tunneling is expensive,
+back-breaking, and time-consuming work.) Corridors narrower
+than 10 feet can make it difficult for all the members of the PC
+party to get involved in any fights that occur, so make them the
+exception rather than the rule.
+Corridor Traps: Because passageways in dungeons tend to be
+narrow, offering few movement options, dungeon builders like to
+place traps in them. In a cramped passageway, there’s no way for
+intruders to move around concealed pits, falling stones, arrow
+traps, tilting floors, and sliding or rolling rocks that fill the entire
+passage. For the same reason, magic traps such as glyphs of warding
+are effective in hallways as well.
+Mazes: Usually, passages connect chambers in the simplest and
+straightest manner possible. Some dungeon builders, however,
+design a maze or a labyrinth within the dungeon. This sort of con-
+struction is difficult to navigate (or at least to navigate quickly)
+and, when filled with monsters or traps, can be an effective bar-
+rier. A maze can be used to cut off one area of the dungeon, deflect-
+ing intruders away from a protected spot. Generally, though, the
+far side of a maze holds an important crypt or vault—someplace
+that the dungeon’s regular inhabitants rarely need to get to.
+MISCELLANEOUS FEATURES
+Any dungeon is made more interesting by the inclusion of some
+or all of the following features.
+Stairs: The usual way to connect different levels of a dungeon
+is with stairs. Straight stairways, spiral staircases, or stairwells
+with multiple landings between flights of stairs are all common
+in dungeons, as are ramps (sometimes with an incline so slight
+that it can be difficult to notice; Spot DC 15). Stairs are important
+accessways, and are sometimes guarded or trapped. Traps on
+stairs often cause intruders to slide or fall down to the
+bottom, where a pit, spikes, a pool of acid, or some other
+danger awaits.
+Gradual Stairs: Stairs that rise less than 5 feet for every 5
+feet of horizontal distance they cover don’t affect move-
+ment, but characters who attack a foe below them gain a +1
+bonus on attack rolls from being on higher ground. Most stairs in
+dungeons are gradual, except for spiral stairs (see below).
+Steep Stairs: Characters moving up steep stairs (which rise at a 45-
+degree angle or steeper) must spend 2 squares of movement to enter
+each square of stairs. Characters running or charging
+down steep stairs must succeed on a DC 10 Balance check
+upon entering the first steep stairs square. Characters who
+fail stumble and must end their movement 1d2×5 feet later.
+Characters who fail by 5 or more take 1d6 points of damage
+and fall prone in the square where they end their movement.
+Steep stairs increase the DC of Tumble checks by 5.
+Spiral Stairs: This form of steep stairs is designed to make
+defending a fortress easier. Characters gain cover against foes
+below them on spiral stairs because they can easily duck
+around the staircase’s central support.
+Railings and Low Walls: Stairs that are open to large rooms
+often have railings or low walls. They function as described
+for ledges (see Special Floors, page 60).
+63
+CHAPTER 3:
+ADVENTURES
+Illus. by  W. Reynolds
+Spiral staircase made of iron

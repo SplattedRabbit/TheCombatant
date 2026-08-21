@@ -1,0 +1,126 @@
+The  Player  Could  Learn  Too  Much:  The strategic use of a
+divination spell could put too much information into the
+hands of the players, ruining a mystery or revealing a surprise
+too soon. The way to avoid this problem is to keep in mind the
+capabilities of the PCs when you create adventures. Don’t forget
+that the cleric might be able to use her communespell to learn
+the identity of the king’s murderer. While you shouldn’t allow a
+divination to give a player more information than you want her
+to have, you shouldn’t cheat a player out of the effects of her
+spells just for the sake of the plot. Remember also that certain
+spells can protect someone from divinations such as detect evil
+and discern lies—but that’s not really the point. Don’t design sit-
+uations that make the PCs’ divinations worthless—design situ-
+ations to take divinations into account. Assume that the cleric
+learns the identity of the king’s murderer. That’s fine, but the
+adventure is about apprehending him, not just identifying him,
+and it’s especially important to stop him before he kills the
+queen as well.
+In short, you should control information, but don’t deny it to
+the character who has earned it.
+Needing Answers on the Fly:Most likely you won’t know
+that a character is going to use a divination spell until the spell is
+cast, and so you often need to come up with an answer on the fly.
+One of the ways to get around this problem is obvious. To an-
+swer a question about what lies at the bottom of the dark staircase,
+you have to know what’s there. Chances are you already do know
+what’s there, or the character using the divination wouldn’t con-
+sider the question worth asking. If you don’t know, then you need
+to make something up in a hurry.
+More difficult is coming up with a way to convey the infor-
+mation. For example, the description of the divinationspell
+notes that “ The advice can be as simple as a short phrase, or it
+might take the form of a cryptic rhyme or omen.” Cryptic
+rhymes are often difficult to come up with in the middle of a
+game. One trick is to create a rhyme ahead of time that can fit
+just about any question, such as “If X is the seed you sow, reap
+you will Y and know,” where X is an action and Y is the result. Or
+“If into X fate doth thee send, thou wilt find Y in the end,”
+where X is a place and Y is a result or consequence, such as
+“danger” or “treasure.”
+CREATING NEW SPELLS
+Introducing an unbalanced spell does more damage to your
+game than handing out an unbalanced magic item. A magic
+item can get stolen, destroyed, sold, or otherwise taken away—
+but once a character knows a spell, she’s going to want to keep
+using it.
+When creating a new spell, use the existing spells as bench-
+marks, and use common sense. Creating a spell is actually fairly
+easy—it’s assigning a level to the new spell that’s hard. If the
+“best” 2nd-level spell is invisibility,and the “best” 1st-level spell is
+charm personor sleep,and the new spell seems to fall between
+those spells in power, it’s probably a 2nd-level spell. (Sleep, how-
+ever, is a strange example, because it’s a spell that gets less useful
+as the caster gains levels—compared to a spell such as magic mis-
+sileor fireball,which gets better, up to a point, for higher-level
+casters. Make sure spells that only affect low-level creatures are
+low-level spells.)
+Here are some pieces of advice to consider.
+•If a spell is so good that you can’t imagine a caster not wanting
+it all the time, it’s either too powerful or too low in level.
+•An  experience  point  (XP)  cost  is  a  good  balancing  force.  An
+expensive  material  component  is  only  a  moderately  good
+balancing  force.  (Money  can  be  easy  to  come  by;  an  XP  loss
+almost always hurts.)
+•When determining level, compare range, duration, and target
+(or  area)  to  other  spells  to  balance.  A  long  duration  or  a  large
+area can make up for a lesser effect, depending on the spell.
+•A spell with a very limited use (only works against red dragons)
+could conceivably be one level lower than it would be if it had
+a more general application. Even at a low level, this is the sort of
+spell  a  sorcerer  or  bard  never  takes,  and  other  casters  would
+prepare it only if they knew in advance it would be worthwhile.
+•Wizards and sorcerers should not cast healing spells, but they
+should  have  the  best  offensive  spells.  If  the  spell  is  flashy  or
+dramatic, it should probably be a wizard/sorcerer spell.
+•Clerics are best at spells that deal with alignment and have the
+best selection of curative and repair spells. They also have the
+best   selection   of   information-gathering   spells,   such   as
+communeand divination.
+•Druids are best at spells that deal with plants and animals.
+•Rangers  and  paladins  should  not  have  flashy  attack  spells  in
+the manner of magic missileand fireball.
+•Bard  spells  include  enchantments,  information-gathering
+spells, and a mixture of other kinds of spells, but do not include
+powerful offensive spells such as cone of cold.
+Damage Caps for Spells
+For spells that deal damage, use the tables below (one for arcane
+spells, one for divine spells) to determine approximately how
+much damage a spell should deal. Remember that some spells
+(such as burning hands) use a d4 for damage, but fireballuses a d6.
+For clerics, a d8 damage die counts as 2d6 for determining the
+maximum damage a divine spell can deal. 
+35
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: SAVES WITH DIFFERENT ABILITIES
+To model  unusual  situations,  you  can  change  the  ability  score  that
+modifies a save, just as you can do with a skill (see the sidebar on page
+33).  This  is  purely  a  variant,  however,  since  not  all  DMs  want  this
+degree of complication.
+Fortitude  saves  against  mental  attacks  (such  as  phantasmal  killer)
+could be based on Wisdom, making it a cross between a Fortitude and
+a Will save. (Apply the character’s Fortitude save bonus from class and
+level, then add his Will modifier instead of his Constitution modifier.)
+The  DM  may  allow  a  character  to  cast  a  quickened  dimension  door
+spell  in  response  to  falling  into  a  pit  trap.  Reacting  quickly  to  a  trap
+requires a Reflex save, but in this case the DM might make this a Reflex
+save based on Wisdom rather than Dexterity, since casting the spell is
+mainly a mental action.
+Will  saves  against  enchantments  could  use  Charisma  instead  of
+Will, since Charisma reflects force of personality.
+Will saves against illusions could be keyed to Intelligence, the abil-
+ity that best represents discernment.
+As  with  skills,  changes  to  a  saving  throw’s  key  ability  are  always
+handled  on  a  case-by-case  basis.  Unless  you  institute  changes  to
+saving throws as a house rule, these changes are very rare.
+Remember that when you change the way a saving throw works
+in  this  fashion,  you  should  dictate  when  the  change  comes  into
+play—it’s not up to a player to make this sort of decision. Players
+may  try  to  rationalize  why  they  should  get  to  use  their  best  ability
+modifier  on  a  saving  throw  that  doesn’t  normally  use  that  ability,
+but you shouldn’t allow this sort of rule change unles you happen
+to agree with it.
+pqqqqrs
+pqqqqrs

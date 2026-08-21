@@ -1,0 +1,127 @@
+290
+•Intelligence  0  means  that  the  character  cannot  think  and  is
+unconscious in a comalike stupor, helpless.
+•Wisdom  0  means  that  the  character  is  withdrawn  into  a  deep
+sleep filled with nightmares, helpless.
+•Charisma  0  means  that  the  character  is  withdrawn  into  a  cata-
+tonic, comalike stupor, helpless.
+Keeping track of negative ability score points is never neces-
+sary. A character’s ability score can’t drop below 0.
+Having a score of 0 in an ability is different from having no abil-
+ity score whatsoever. A wraith has no Strength score, not a
+Strength score of 0. A clay golem has no Intelligence, not an Intel-
+ligence score of 0. The wraith can move, it just can’t act physically
+on other objects. The golem is not in a stupor or helpless, but it has
+no thoughts or memory.
+Some spells or abilities impose an effective ability score reduc-
+tion, which is different from ability score loss. Any such reduction
+disappears at the end of the spell’s or ability’s duration, and the
+ability score immediately returns to its former value.
+If a character’s Constitution score drops, then he loses 1 hit
+point per Hit Die for every point by which his Constitution mod-
+ifier drops. For example, at 7th level, Tordek is hit by poison that
+causes his Constitution to drop from 16 to 13. His Constitution
+modifier falls from +3 to +1, so he loses 14 hit points (2 per level).
+A minute later, the poison deals another 8 points of Constitution
+damage, dropping his score to 5 and his modifier to –3. He loses
+another 28 hit points—for a total of 42 hit points lost because of
+an overall 6-point drop in his Constitution modifier.
+A hit point score can’t be reduced by Constitution damage or
+drain to less than 1 hit point per Hit Die. At 7th level, Mialee has
+22 hit points when fully healed. Even if her Constitution score
+drops to 5 or lower, she will still have at least 7 hit points (less any
+damage she may take).
+The ability that some creatures have to drain ability scores (such
+as shadows draining Strength or lamias draining Wisdom) is a
+supernatural one, requiring some sort of attack. Such creatures do
+not drain abilities from enemies when the enemies strike them,
+even with unarmed attacks or natural weapons.
+ANTIMAGIC
+The beholder opens its large central eye, and suddenly Lidda (who
+had been invisible) becomes visible, and Tordek (who had been
+flying) drops unceremoniously to the floor. The adventurers’
+magic weapons are now no better than masterwork versions, and
+their layers of magical protections are gone. The fire giant working
+with the beholder hefts his axe, grins, and charges.
+An antimagic fieldspell or the main eye ray of a beholder cancels
+magic altogether. This spell-like effect is extremely powerful—the
+ultimate defense against magic. An antimagic effect has the fol-
+lowing powers and characteristics.
+•No  supernatural  ability,  spell-like  ability,  or  spell  works  in  an
+area of antimagic (but extraordinary abilities still work).
+•Antimagic does not dispel magic; it suppresses it. Once a magi-
+cal effect is no longer affected by the antimagic (the antimagic
+fades, the center of the effect moves away, and so on), the magic
+returns.  Spells  that  still  have  part  of  their  duration  left  begin
+functioning  again,  magic  items  are  once  again  useful,  and  so
+forth.
+•Spell  areas  that  include  both  an  antimagic  area  and  a  normal
+area, but are not centered in the antimagic area, still function in
+the  normal  area.  If  the  spell’s  center  is  in  the  antimagic  area,
+then the spell is suppressed.
+•Golems and other constructs, elementals, outsiders, and corpo-
+real  undead,  still  function  in  an  antimagic  area  (though  the
+antimagic area suppresses their spellcasting and their supernat-
+ural  and  spell-like  abilities  normally).  If  such  creatures  are
+summoned or conjured, however, see below.
+•Summoned or conjured creatures of any type, as well as incor-
+poreal  undead,  wink  out  if  they  enter  the  area  of  an antimagic
+effect. They reappear in the same spot once the field goes away.
+•Magic items with continuous effects, such as a bag of holding,do
+not function in the area of an antimagic effect, but their effects
+are not canceled (so the contents of the bag are unavailable, but
+neither spill out nor disappear forever).
+•Two antimagic areas in the same place do not cancel each other
+out, nor do they stack.
+•Wall of force, prismatic wall, and prismatic sphereare not affected by
+antimagic. Break  enchantment,  dispel  magic,and greater  dispel
+magicspells  do  not  dispel  antimagic.  Mordenkainen’s  disjunction
+has a 1% chance per caster level of destroying an antimagic field.
+If the antimagic fieldsurvives the disjunction,no items within it
+are disjoined.
+BLINDSIGHT AND BLINDSENSE
+Some creatures have blindsight, the extraordinary ability to use a
+nonvisual sense (or a combination of such senses) to operate effec-
+tively without vision. Such sense may include sensitivity to vibra-
+tions, acute scent, keen hearing, or echolocation. This ability makes
+invisibility and concealment (even magical darkness) irrelevant to
+the creature (though it still can’t see ethereal creatures). This ability
+operates out to a range specified in the creature description.
+•Blindsight never allows a creature to distinguish color or visual
+contrast. A creature cannot read with blindsight.
+•Blindsight  does  not  subject  a  creature  to  gaze  attacks  (even
+though darkvision does).
+•Blinding attacks do not penalize creatures using blindsight.
+•Deafening attacks thwart blindsight if it relies on hearing (as a
+bat’s echolocation ability does).
+•Blindsight works underwater but not in a vacuum.
+•Blindsight negates displacement and blur effects.
+CHAPTER 8:
+GLOSSARY
+Table 8–1: Special Ability Types
+ExtraordinarySpell-LikeSupernatural
+DispelNoYesYes
+Spell resistanceNoYesNo
+Antimagic fieldNoYesYes
+Attack of opportunityNoYesNo
+Dispel:Can dispel magicand similar spells dispel the effects of abilities
+of that type?
+Spell  Resistance:Does  spell  resistance  protect  a  creature  from  these
+abilities?
+Antimagic Field:Does an antimagic fieldor similar magic suppress the
+ability?
+Attack  of  Opportunity:Does  using  the  ability  provoke  attacks  of
+opportunity the way that casting a spell does?
+VARIANT: SEPARATE ABILITY LOSS
+Some  players  don’t  like  keeping  track  of  ability  scores  that  go  down
+because  they  find  it  hard  to  recalculate  their  statistics  based  on  their
+new  ability  modifiers.  These  players  may  find  it  easier  to  track  ability
+loss separately, sort of the way nonlethal damage works. In this variant,
+for each 2 points of ability damage, the character takes a –1 penalty on
+checks  related  to  that  ability.  If  the  ability  loss  equals  or  exceeds  the
+ability score, then the character suffers the effect of having a 0 score in
+that ability. Ability damage goes away at the rate of 1 point per day.
+This variant leads to very nearly the same results as standard ability
+loss does.
+pqqqqrs
+pqqqqrs

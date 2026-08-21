@@ -1,0 +1,129 @@
+136
+and secrets for later development. Finally, once you get down to the
+small scale—a single community, a particular patch of forest or
+valley, or wherever you choose to start the campaign—develop the
+area in great detail. The specifics of the small area should reflect and
+tie back to the basics you have set up for the larger areas.
+This method ensures that once you have started the campaign,
+you’re already well on your way to having a complete setting.
+When things are moving along quickly in the campaign, you can
+focus on the characters and individual adventures, because the
+world is mostly done. This method also allows you to use fore-
+shadowing of larger events, faraway places, and grander adven-
+tures early on in the campaign.
+GEOGRAPHY
+Campaigns need worlds. Worlds have geography. This means that
+when creating your world, you need to place the mountains, the
+oceans, the rivers, the towns, the secret fortresses, the haunted
+forests, the enchanted places, and all the other locales and features.
+If you want a realistic world, use encyclopedias and atlases to
+learn more about topography, climate, and geography (natural
+and political). You only need the basics to create a fantasy world,
+unless you or your players are sticklers for accuracy. Research and
+learn as much as you need to create a world that will please your
+players. In general, however, if you know a little about how ter-
+rain affects climate, how different types of terrain interact
+(mountains usually follow coastlines, for example), and how both
+climate and terrain determine where people usually live, that
+should be enough.
+When you’re done, you can create the map or maps you need for
+your campaign.
+Climate/Terrain Types
+There are three different climate types and eight different terrain
+types that you need to be concerned with in the D&D game, al-
+though you could create additional types for your own world.
+These climate and terrain types are those referenced in monster
+descriptions in the Monster Manualand in the wilderness en-
+counter lists found in Chapter 3: Adventures.
+You should assign each region of your world a climate/ter-
+rain type to designate what sort of landscape it has, what sea-
+sons and weather conditions prevail there, and what creatures
+inhabit the area.
+Some of these types are incompatible. For example, without
+some sort of magical event, you won’t find a tropical rain forest (a
+warm climate zone) next to an arctic plain (a cold climate zone).
+Some terrain types are much more habitable to the common races
+from which PCs are derived than others, although all have mon-
+sters, animals, and intelligent creatures native to them.
+Cold:This climate type describes arctic and subarctic areas.
+Any area that has winter conditions for a larger portion of the year
+than any other seasonal variation is cold.
+Temperate:This climate type describes areas that have alter-
+nating warm and cold seasons of approximately equal length.
+Warm:This climate type describes tropical and subtropical
+areas. Any area that has summer conditions for a larger portion of
+the year than any other seasonal variation is warm.
+Aquatic:This terrain type is composed of fresh or salt water. 
+Desert:This terrain type describes any dry area with sparse
+vegetation. 
+Plains:Any fairly flat area that is not a desert, marsh, or forest is
+considered plains.
+Forest: Any area covered with trees is forest terrain.
+Hills: Any area with rugged but not mountainous terrain is
+hills terrain.
+Mountains:Rugged terrain that is higher in elevation than
+hills is considered mountains.
+Marsh:Low, flat, waterlogged areas are marsh terrain.
+Underground:Subterranean areas are designated as under-
+ground terrain.
+Ecology
+Once you have determined the lay of the land, you can develop
+what lives where.
+The Monster Manualgives a climate/terrain type for each kind
+of creature. With that information to work with, decide which
+creatures live where within each region of your world. If you have
+room on your map to mark such information, do so. It will help
+you keep track of things later on, both when determining random
+encounters and when developing adventure plots. For example, if
+you know that the PCs are on their way to the village of Thorris,
+you can see that living in the marsh nearby are hags, harpies, and
+a black dragon that the travelers might encounter. You can also use
+this information to create an adventure involving Thorris and the
+black dragon in which the dragon coerces the trolls to attack the
+people living there.
+Considering the ecology issues of the marsh helps you explain
+the creatures’ existences. What do the hags eat? What about the
+harpies? They must compete for resources, so do they avoid each
+other, or do they fight? The world is a predator-heavy one, based on
+the creatures described in the Monster Manual.Designing your
+world’s ecology means coming up with a way to make sense of how
+it all works together. Perhaps there’s bountiful prey in most areas
+that an overall abundance of vibrant, energy-rich plant life might
+help explain. Perhaps the predators prey upon each other. You don’t
+have to design a complete food chain, but giving thought to some
+ecology issues will help you answer player questions later—and
+that will help make your world seem real to them.
+DEMOGRAPHICS
+Once the geography is determined, you can populate your world.
+This step is more important than monster placement and general
+ecology, not only because the PCs will spend more time in civi-
+CHAPTER 5:
+CAMPAIGNS
+BEHIND THE CURTAIN: 
+HOW REAL IS YOUR FANTASY?
+This section on world-building assumes that your campaign is set in a
+fairly realistic world. That is to say that while wizards cast spells, deities
+channel power to clerics, and dragons raze villages, the world is round,
+the laws of physics are applicable, and most people act like real people.
+The reason for this assumption is that unless they are told otherwise,
+this situation is what your players expect.
+That  said,  you  could  create  a  world  that  is  very  different  from  even
+these basic premises. Your campaign could be set within a hollow world,
+on a flat world, or on the inside of a tube that spins around the sun.
+You  could  change  the  laws  of  physics  to  produce  a  world  with
+objects or materials so light that they float, areas where time flows at a
+different rate, or the very real threat that the ocean might wash seafar-
+ers off the side of the world so that they fall forever in an eternal water-
+fall. One point to keep in mind if you’re going to change premises that
+we  all  take  for  granted,  however,  is  that  you  should  try  to  maintain
+some consistency. If time passes more slowly as you move away from
+the central Mountain of the Earth’s Heart, then this fact should always
+be  true.  The  people  of  the  world  should  understand  and  accept  this
+reality. If that’s the way the world works, it wouldn’t seem odd to them.
+You  could  establish  a  land  where  people  are  so  truly  good  that  no
+government or organization is needed to maintain order or peace. Or
+you  could  create  a  land  where  everyone  is  born  evil,  the  scions  of  an
+evil progenitor god, and they all work together for the downfall of good-
+ness. Such people are not realistic, but they’re certainly interesting.
+pqqqqrs
+pqqqqrs

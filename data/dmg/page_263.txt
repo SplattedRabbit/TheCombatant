@@ -1,0 +1,137 @@
+262
+Manual of Gainful Exercise: This thick tome contains exer-
+cise descriptions and diet suggestions, but entwined within the
+words is a powerful magical effect. If anyone reads this book,
+which takes a total of 48 hours over a minimum of six days, she
+gains an inherent bonus of from +1 to +5 (depending on the type
+of manual) to her Strength score. Once the book is read, the magic
+disappears from the pages and it becomes a normal book.
+Strong evocation (if miracleis used); CL 17th; Craft Wondrous
+Item, wishor miracle;Price 27,500 gp (+1), 55,000 gp (+2), 82,500 gp
+(+3), 110,000 gp (+4), 137,500 gp (+5); Cost 1,250 gp + 5,100 XP
+(+1), 2,500 gp + 10,200 XP (+2), 3,750 gp + 15,300 XP (+3), 5,000 gp
++ 20,400 XP (+4), 6,250 gp + 25,500 XP (+5); Weight 5 lb.
+Manual of Quickness of Action: This thick tome contains
+tips on coordination exercises and balance, but entwined within
+the words is a powerful magical effect. If anyone reads this book,
+which takes a total of 48 hours over a minimum of six days, he
+gains an inherent bonus of from +1 to +5 (depending on the type
+of manual) to his Dexterity score. Once the book is read, the magic
+disappears from the pages and it becomes a normal book.
+Strong evocation (if miracleis used); CL 17th; Craft Wondrous
+Item, wishor miracle;Price 27,500 gp (+1), 55,000 gp (+2), 82,500 gp
+(+3), 110,000 gp (+4), 137,500 gp (+5); Cost 1,250 gp + 5,100 XP
+(+1), 2,500 gp + 10,200 XP (+2), 3,750 gp + 15,300 XP (+3), 5,000 gp
++ 20,400 XP (+4), 6,250 gp + 25,500 XP (+5); Weight 5 lb.
+Mask of the Skull: This ivory mask has been fashioned into
+the likeness of a human skull. Once per day, after it has been worn
+for at least 1 hour, the mask can be loosed to fly from the wearer’s
+face. It travels up to 50 feet away from the wearer and attacks a
+target assigned to it. The grinning skull mask makes a touch attack
+against the target based on the wearer’s base attack bonus. If the
+attack succeeds, the target must make a DC 20 Fortitude save or be
+struck dead, as if affected by afinger of deathspell. If the target suc-
+ceeds on his saving throw, he nevertheless takes 3d6+13 points of
+damage. After attacking (whether successful or not), the mask
+flies back to its user. The mask has AC 16, 10 hit points, and hard-
+ness 6.
+Strong necromancy and transmutation; CL 13th; Craft Won-
+drous Item, animate objects, finger of death, fly; Price 22,000 gp;
+Weight 3 lb.
+Mattock of the Titans:This digging tool is 10 feet long. Any
+creature of at least Huge size can use it to loosen or tumble earth
+or earthen ramparts (a 10-foot cube every 10 minutes). It also
+smashes rock (a 10-foot cube per hour). If used as a weapon, it is
+the equivalent of a Gargantuan+3 adamantine warhammer,dealing
+4d6 points of base damage.
+Strong transmutation; CL 16th; Craft Wondrous Item, Craft
+Magic Arms and Armor, move earth; Price 23,348 gp; Cost 13,348
+gp + 800 XP; Weight 120 lb.
+Maul of the Titans:This mallet is 8 feet long. If used as a
+weapon, it is the equivalent of a +3 greatcluband deals triple
+damage against inanimate objects. However, the wielder must
+have a Strength of at least 18 to wield it properly. Otherwise, she
+takes a –4 penalty on attack rolls.
+Strong evocation; CL 15th; Craft Wondrous Item, Craft Magic
+Arms and Armor, Bigby ’s clenched fist; Price 25,305 gp; Cost 12,305
+gp + 480 XP; Weight 160 lb.
+Medallion of Thoughts:This appears to be a normal pendant
+disk hung from a neck chain. Usually fashioned from bronze, cop-
+per, or nickel-silver, the medallion allows the wearer to read the
+thoughts of others, as with the spell detect thoughts.
+Faint divination; CL 5th; Craft Wondrous Item, detect thoughts;
+Price 12,000 gp.
+Mirror of Life Trapping:This crystal device is usually about 4
+feet square and framed in metal or wood. It can be hung or placed
+on a surface and then activated by giving a command word. The
+same command word deactivates the mirror. A mirror of life trap-
+pinghas fifteen nonspatial extradimensional compartments
+within it. Any creature coming within 30 feet of the device and
+looking at its own reflection must make a DC 23 Will save or be
+trapped within the mirror in one of the cells. A creature not aware
+of the nature of the device always sees its own reflection. The
+probability of a creature seeing its reflection, and thus needing to
+make the saving throw, drops to 50% if the creature is aware that
+the mirror traps life and seeks to avoid looking at it (treat as a gaze
+attack; see page 294).
+When a creature is trapped, it is taken bodily into the mirror.
+Size is not a factor, but constructs and undead are not trapped, nor
+are inanimate objects and other nonliving matter. A victim’s equip-
+ment (including clothing and anything being carried) remains
+behind. If the mirror’s owner knows the right command word, he
+can call the reflection of any creature trapped within to its surface
+and engage his powerless prisoner in conversation. Another com-
+mand word frees the trapped creature. Each pair of command
+words is specific to each prisoner.
+If the mirror’s capacity is exceeded, one victim (determined
+randomly) is set free in order to accommodate the latest one. If the
+mirror is broken, all victims currently trapped in it are freed and
+usually promptly attack the possessor of the device in revenge for
+their imprisonment.
+Strong abjuration; CL 17th; Craft Wondrous Item, imprisonment;
+Price 200,000 gp; Weight 50 lb.
+Mirror of Mental Prowess:This mirror resembles an ordinary
+looking glass 5 feet tall by 2 feet wide. The possessor who knows
+the proper commands can cause it to perform as follows.
+•Read  the  thoughts  of  any  creature  reflected  therein,  as  long  as
+the owner is within 25 feet of the mirror, even if those thoughts
+are in an unknown language.
+•View other places as if with clairvoyance,but vision extends even
+onto  other  planes  if  the  viewer  is  sufficiently  familiar  with
+them.
+•Use  it  as  a  portal  to  visit  other  places.  The  user  first  views  the
+place  with  the  clairvoyancefunction,  then  steps  through  the
+mirror to the place pictured. Others can follow her through the
+mirror if they like. An invisible portal remains on the other side
+where she arrives, and she can return through that portal. Once
+she returns, the portal closes. The portal closes on its own after
+24 hours (trapping the user if she’s still in the other place), and
+the user can also close it with a command word. Creatures with
+Intelligence of 12 or higher might notice the portal just as they
+might notice a magical sensor from a scryingspell. Any creature
+who steps through the portal appears in front of the mirror.
+•Once  per  week  the  mirror  accurately  answers  one  short  ques-
+tion  regarding  a  creature  whose  image  is  shown  on  its  surface
+(giving answers similar to those from the legend lorespell).
+Strong conjuration and divination; CL 17th; Craft Wondrous
+Item, detect thoughts, clairaudience/clairvoyance, gate, legend lore; Price
+175,000 gp; Weight 40 lb.
+Mirror of Opposition:This item resembles a normal mirror
+about 4 feet long and 3 feet wide. It can be hung or placed on a sur-
+face and then activated by speaking a command word. The same
+command word deactivates the mirror. If a creature sees its reflec-
+tion in the mirror’s surface, an exact duplicate of that creature
+comes into being. This opposite immediately attacks the original.
+The duplicate has all the possessions and powers of its original
+(including magic). Upon the defeat or destruction of either the
+duplicate or the original, the duplicate and her items disappear
+completely. The mirror functions up to four times per day.
+Strong necromancy; CL 15th; Craft Wondrous Item, clone; Price
+92,000 gp; Weight 45 lb.
+Murlynd’s Spoon:This unremarkable eating utensil is typi-
+cally fashioned from horn. If the spoon is placed in an empty con-
+tainer—a bowl, a cup, or a dish, for example—the vessel fills with
+a thick, pasty gruel. Although this substance has a flavor similar to
+that of warm, wet cardboard, it is highly nourishing and contains
+CHAPTER 7:
+MAGIC ITEMS

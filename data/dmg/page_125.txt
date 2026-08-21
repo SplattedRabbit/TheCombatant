@@ -1,0 +1,135 @@
+124
+Trap Sense (Ex):This rogue has an intuitive sense that alerts her
+to danger from traps, granting a +3 bonus on Reflex saves and a +3
+dodge bonus to AC against attacks by traps.
+Trapfinding (Ex): This rogue can use the Search skill to locate
+traps when the task has a DC higher than 20. Finding a nonmag-
+ical trap has a DC of at least 20, higher if it is well hidden. Find-
+ing a magic trap has a DC of 25 + the level of the spell used to
+create it. Rogues can use the Disable Device skill to disarm magic
+traps. Disabling a magic trap generally has a DC of 25 + the level
+of the spell used to create it. A rogue who beats a trap’s DC by 10
+or more with a Disable Device check can generally study a trap,
+figure out how it works, and bypass it (with her party) without
+disarming it.
+Uncanny Dodge (Ex):This rogue can react to danger before her
+senses would normally allow her to do so. She retains her Dexter-
+ity bonus to AC even when caught flat-footed.
+Possessions: +2 buckler, bracers of armor +2, ring of protection +1, Small
++1 rapier, Small+1 shortbow,20 arrows, 5 silvered arrows,potion of
+cure serious wounds, masterwork thieves’ tools.
+NPC SORCERER
+Starting Ability Scores:Str 8, Dex 14, Con 13, Int 10, Wis 12,
+Cha 15.
+Increased Ability Scores:4th, Cha 16; 8th, Cha 17; 12th, Cha
+18 (20); 14th, Dex 14 (16); 15th, Cha 18 (22); 16th, Cha 19 (23);
+18th, Cha 19 (25); 20th, Cha 20 (26).
+Sample 5th-Level NPC Sorcerer:Kobold Sor 5; CR 5; Small
+humanoid (reptilian); HD 5d4+3; hp 17; Init +6; Spd 30 ft.; AC 15,
+touch 13, flat-footed 13; Base Atk +2; Grp –2; Atk +3 melee (1d4/×3,
+halfspear) or +6 ranged (1d6/19–20, masterwork light crossbow);
+Full Atk +3 melee (1d4/×3, halfspear) or +6 ranged (1d6/19–20,
+masterwork light crossbow); SA —; SQ empathic link, light sensi-
+tivity, share spells, Tiny viper snake familiar; AL CE; SV Fort +1,
+Ref +3, Will +5; Str 10, Dex 14, Con 11, Int 8, Wis 12, Cha 16.
+Skills and Feats: Bluff +6, Concentration +4, Craft (trapmaking)
++1, Hide +6, Listen +3, Profession (miner) +3, Search +1, Spellcraft
++3, Spot +3; Alertness, Improved Initiative, Toughness.
+Empathic Link (Su): This sorcerer can communicate telepathi-
+cally with its familiar at a distance of up to 1 mile. The master has
+the same connection to an item or a place that the familiar does.
+Light Sensitivity (Ex): Kobolds are sensitive to light and take a –1
+circumstance penalty on attack rolls in bright sunlight or within
+the radius of a daylightspell.
+Share Spells (Su): This sorcerer may have any spell he casts on
+himself also affect his familiar if the latter is within 5 feet at the
+time. The master may also cast a spell with a target of “You” on his
+familiar. 
+Tiny Viper Snake Familiar:This creature grants its master a +3
+bonus on Bluff checks. It also grants Alertness as long as it is
+within 5 feet. The familiar uses the better of its own and its
+master’s base save bonuses. The creature’s abilities and characteris-
+tics are summarized below.
+Tiny Viper Snake Familiar:CR —; Tiny magical
+beast; HD 1; hp 8; Init +3, Spd 15 ft., climb 15 ft., swim 15
+ft.; AC 20, touch 15, flat-footed 17; Base Atk +0; Grp –11;
+Atk +5 melee (poison, bite); Full Atk +5 melee (poison,
+bite); Space/Reach 2-1/2 ft./0 ft.; SA poison; SQ deliver
+touch spells, improved evasion, scent, speak with master;
+AL CE; SV Fort +2, Ref +5, Will +1; Str 4, Dex 17, Con 11,
+Int 8, Wis 12, Cha 2.
+Skills and Feats:Balance +11, Climb +11, Hide +15, Listen
++6, Spot +6, Swim +5; Weapon Finesse.
+Poison (Ex):Injury, Fortitude DC 11, initial and second-
+ary damage 1d6 Con.
+Improved Evasion (Ex):When subjected to an attack that
+normally allows a Reflex saving throw for half damage,
+this creature takes no damage if it makes a successful
+saving throw and half damage if the saving throw fails.
+Scent (Ex):Can detect approaching enemies, sniff out
+hidden foes, and track by sense of smell.
+Sorcerer Spells Known(6/7/5; save DC 13 + spell level): 0—daze,
+ghost sound, mage hand, ray of frost, read magic, touch of fatigue;1st—
+cause fear, mage armor, magic missile, sleep;2nd—blur, flaming sphere.
+Possessions: Bracers of armor +1,masterwork halfspear, master-
+work light crossbow, 10 bolts, potion of blur, potion of cure moderate
+wounds, potion of haste,2 scrolls of invisibility,2 scrolls of Melf ’s acid
+arrow,2 scrolls of web, dagger.
+Sample 15th-Level NPC Sorcerer: Kobold Sor 15; CR 15;
+Small humanoid (reptilian); HD 15d4+3; hp 42; Init +6; Spd 30 ft.;
+AC 19, touch 15, flat-footed 17; Base Atk +7; Grp +3; Atk +9 melee
+(1d4+1/×3, +1 halfspear) or +11 ranged (1d6/19–20, masterwork
+light crossbow); Full Atk +9/+4 melee (1d4+1/×3, +1 halfspear) or
++11 ranged (1d6/19–20, masterwork light crossbow); SA —; SQ
+empathic link, light sensitivity, scryon familiar, share spells, Tiny
+viper snake familiar; AL CE; SV Fort +5, Ref +7, Will +10; Str 10,
+Dex 14, Con 11, Int 8, Wis 12, Cha 22.
+Skills and Feats:Bluff +9, Concentration +9, Craft (trapmaking)
++1, Hide +6, Listen +3, Profession (miner) +3, Search +1, Spellcraft
++8, Spot +3; Alertness, Combat Casting, Craft Wand, Dodge,
+Improved Initiative, Spell Penetration, Toughness.
+Empathic Link (Su): This sorcerer can communicate telepathi-
+cally with its familiar at a distance of up to 1 mile. The master has
+the same connection to an item or a place that the familiar does.
+Light Sensitivity (Ex): Kobolds are sensitive to light and take a –1
+circumstance penalty on attack rolls in bright sunlight or within
+the radius of a daylightspell.
+Scry on Familiar (Sp): This sorcerer may scry on its familiar as if
+casting the spell scryingonce per day.
+Share Spells (Su): This sorcerer may have any spell he casts on
+himself also affect his familiar if the latter is within 5 feet at the
+time. The master may also cast a spell with a target of “You” on his
+familiar. 
+Tiny Viper Snake Familiar:This creature grants its master a +3
+bonus on Bluff checks. It also grants Alertness as long as it is
+within 5 feet. The familiar uses the better of its own and its
+master’s base save bonuses. The creature’s abilities and characteris-
+tics are summarized below.
+Tiny Viper Snake Familiar:CR —; Tiny magical beast;
+HD 15; hp 21; Init +3, Spd 15 ft., climb 15 ft., swim 15 ft.;
+AC 25, touch 15, flat-footed 22; Base Atk +0; Grp –11; Atk
++5 melee (poison, bite); Full Atk +5 melee (poison, bite);
+Space/Reach 2-1/2 ft./0 ft.; SA poison; SQ deliver touch
+spells, improved evasion, scent, speak with master, speak
+with other reptiles, spell resistance 20; AL CE; SV Fort +2,
+Ref +5, Will +1; Str 4, Dex 17, Con 11, Int 8, Wis 12, Cha 2.
+Skills and Feats:Balance +11, Climb +11, Hide +15, Listen
++6, Spot +6, Swim +5; Weapon Finesse.
+Poison (Ex):Injury, Fortitude DC 11, initial and second-
+ary damage 1d6 Con.
+Improved Evasion (Ex):When subjected to an attack that
+normally allows a Reflex saving throw for half damage,
+this creature takes no damage if it makes a successful
+saving throw and half damage if the saving throw fails.
+Scent (Ex):Can detect approaching enemies, sniff out
+hidden foes, and track by sense of smell.
+Sorcerer Spells Known(6/8/8/7/7/7/7/4; save DC 16 + spell
+level): 0—dancing lights, daze, detect magic, ghost sound, mage hand,
+ray of frost, read magic, resistance, touch of fatigue;1st—cause fear, mage
+armor, magic missile, obscuring mist, sleep;2nd—blur, flaming sphere,
+invisibility, Melf ’s acid arrow, spectral hand;3rd—dispel magic, hold
+person, lightning bolt, vampiric touch;4th—ice storm, lesser globe of
+invulnerability, shout, stoneskin;5th—cloudkill, cone of cold, hold mon-
+CHAPTER 4:
+NONPLAYER
+CHARACTERS

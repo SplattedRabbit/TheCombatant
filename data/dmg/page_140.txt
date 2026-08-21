@@ -1,0 +1,138 @@
+level, then the community also has two 3rd-level fighters and four
+1st-level fighters.
+Do the same for NPC classes, but leave out the final stage that
+would generate the number of 1st-level individuals. Instead, take
+the remaining population after all other characters are generated
+and divide it up so that 91% are commoners, 5% are warriors, 3%
+are experts, and the remaining 1% is equally divided between aris-
+tocrats and adepts (0.5% each). All these characters are 1st level.
+Using these guidelines and the tables in the previous section,
+the breakdown by class and level for the population of a typical
+hamlet of two hundred people looks like this:
+•One 1st-level aristocrat (mayor)
+•One 3rd-level warrior (constable)
+•Nine 1st-level warriors (two guards, seven militia members)
+•One 3rd-level expert smith (militia member)
+•Seven 1st-level expert crafters and professionals of various sorts
+•One 1st-level adept
+•One 3rd-level commoner barkeep (militia member)
+•One  hundred  sixty-six  1st-level  commoners  (one  is  a  militia
+member)
+•One 3rd-level fighter
+•Two 1st-level fighters
+•One 1st-level wizard
+•One 3rd-level cleric
+•Two 1st-level clerics
+•One 1st-level druid
+•One 3rd-level rogue
+•Two 1st-level rogues
+•One 1st-level bard
+•One 1st-level monk
+In addition to the residents you generate using the system
+described above, you might decide that a community has some
+sort of special resident, such as the single, out-of-place 15th-level
+sorcerer who lives just outside a thorp of fifty people, or the secret
+assassins’ guild brimming with high-level characters hidden in a
+small town. Residents such as these that you create “on the fly” do
+not count against the highest-level characters who are actually
+part of the community.
+Racial Demographics
+The racial mix of a community depends on whether the community
+is isolated (little traffic and interaction with other races and places),
+mixed (moderate traffic and interaction with other races and places),
+or integrated (lots of interaction with other races and places).
+Racial Mix of Communities
+IsolatedMixedIntegrated
+96% human79% human 37% human
+2% halfling9% halfling20% halfling
+1% elf5% elf18% elf
+1% other races3% dwarf10% dwarf
+2% gnome7% gnome
+1% half-elf5% half-elf
+1% half-orc3% half-orc
+If the area’s dominant race is other than human, place that race
+in  the  top  spot,  put  humans  in  the  #2  rank,  and  push  each  other
+race down one rank. For example, in a dwarven town, the popula-
+tion is 96% dwarf, 2% human, 1% halfling, and 1% other races. (All
+dwarven  communities  are  isolated.)  You  may  also  change  the
+figures slightly to reflect various racial preferences. For example, a
+mixed  elven  village  is  79%  elf,  9%  human,  5%  halfling,  3%  dwarf,
+2% gnome and 2% half-elf (with no half-orcs). You might decide to
+switch  the  percentages  of  gnomes  and  dwarves  for  an  elven
+community.
+ECONOMICS
+Although treasure is what’s important to PCs, you should have a
+fair grasp of the economic system that surrounds the treasure they
+earn, as well as the prices charged for services, equipment, and
+magic items. Economics in your campaign doesn’t have to be con-
+voluted or tedious, but it should at least be internally consistent. If
+the price of a broadsword in Thorris is 20 gp, it shouldn’t suddenly
+shoot up to 200 gp without some explanation, such as the flow of
+metal or ore being cut off, the only smiths in 100 miles all being
+killed in a terrible accident, or something equally bizarre.
+Coinage
+The economic system in the D&D game is based on the silver
+piece (sp). A common laborer earns 1 sp a day. That’s just enough
+to allow his family to survive, assuming that this income is sup-
+plemented with food his family grows to eat, homemade clothing,
+and a reliance on self-sufficiency for most tasks (personal groom-
+ing, health, animal tending, and so on).
+In your campaign, however, the PCs will deal primarily with
+gold pieces. The gold piece (gp) is a larger, more substantial unit of
+currency. The main reason why PCs typically receive and spend
+gold pieces is that, as adventurers, they take much larger risks
+than common folk and earn much larger rewards if they survive.
+Many of the people with whom adventurers interact also deal
+primarily in gold. Weaponsmiths, armorsmiths, and spellcasters all
+make more money (sometimes far more money) than common
+people. Spellcasters willing to make magic items or cast spells for
+hire can make a lot of money, although expenditures of personal
+power (experience points) are often involved, and the demand for
+such expensive items is unsteady at best and can be depended on
+only in large cities. Nobles with whom the PCs might interact also
+139
+CHAPTER 5:
+CAMPAIGNS
+Community Modifiers
+Community SizeCommunity Modifier
+Thorp–3
+1
+Hamlet–2
+1
+Village–1
+Small town+0
+Large town+3
+Small city+6 (roll twice)
+2
+Large city+9 (roll three times)
+2
+Metropolis+12 (roll four times)
+2
+1 On a d% roll of 96–100, a thorp or a hamlet adds +10 to the
+modifier when determining the level of a ranger or druid.
+2 Cities this large can have more than one high-level NPC per class,
+each of whom generates lower-level characters of the same class, as
+described below.
+Highest-Level Locals
+ClassCharacter Level
+Adept1d6 + community modifier
+Aristocrat1d4 + community modifier
+Barbarian
+1
+1d4 + community modifier
+Bard1d6 + community modifier
+Cleric1d6 + community modifier
+Commoner4d4 + community modifier
+Druid1d6 + community modifier
+Expert3d4 + community modifier
+Fighter1d8 + community modifier
+Monk
+1
+1d4 + community modifier
+Paladin1d3 + community modifier
+Ranger1d3 + community modifier
+Rogue1d8 + community modifier
+Sorcerer1d4 + community modifier
+Warrior2d4 + community modifier
+Wizard1d4 + community modifier
+1 Where these classes are more common, level is 1d8 + modifier.

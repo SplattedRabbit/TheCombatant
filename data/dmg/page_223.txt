@@ -1,0 +1,162 @@
+222
+Hardness and Hit Points: An attacker cannot damage a magic
+weapon that has an enhancement bonus unless his own weapon
+has at least as high an enhancement bonus as the weapon or shield
+struck. Each +1 of enhancement bonus also adds 1 to the weapon’s
+or shield’s hardness and hit points. (See Table 8–8, page 158 of the
+Player ’s Handbook,for common weapon hardnesses and hit points.)
+Activation:Usually a character benefits from a magic weapon
+in the same way a character benefits from a mundane weapon—by
+attacking with it. If a weapon has a special ability that the user
+needs to activate (such as the sunlightpower of a sun blade), then the
+user usually needs to utter a command word (a standard action).
+Magic Weapons and Critical Hits: Some weapon qualities
+and some specific weapons have an extra effect on a critical hit. A
+flaming burst weapon, for example, does extra fire damage on a
+critical hit. This special effect functions against creatures not sub-
+ject to critical hits, such as undead, elementals, and constructs.
+When fighting against such creatures, roll for critical hits as you
+would against humanoids or any other creature subject to critical
+hits. On a successful critical roll, apply the special effect, but do
+not multiply the weapon’s regular damage. For example, if Jozan
+rolls a natural 20 on his attack roll against an iron golem when
+using a mace of smiting, he rolls again. If he rolls high enough to hit
+the iron golem’s AC, then he does not apply double damage.
+Instead, he destroys the construct outright. 
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–9: Weapons
+MinorMediumMajorWeapon BonusBase Price
+1
+01–7001–10—+12,000 gp
+71–8511–29—+28,000 gp
+—30–5801–20+318,000 gp
+—59–6221–38+432,000 gp
+——39–49+550,000 gp
+———+6
+2
+72,000 gp
+———+7
+2
+98,000 gp
+———+8
+2
+128,000 gp
+———+9
+2
+162,000 gp
+———+10
+2
+200,000 gp
+86–9063–6850–63Specific weapon
+3
+—
+91–10069–10064–100   Special ability and roll again
+4
+—
+1 This price is for 50 arrows, crossbow bolts, or sling bullets.
+2 A weapon can’t actually have a bonus higher than +5. Use these
+lines to determine price when special abilities are added in. Example:
+A +3 daggerthat also has the speed special ability (+4 modifier; see
+Table 7–14: Melee Weapon Special Abilities) is treated as a +7 dagger
+for pricing purposes and is priced at 98,000 gp.
+3 See Table 7–16: Specific Weapons.
+4 See Table 7–14: Melee Weapon Special Abilities for melee weapons
+or Table 7–15: Ranged Weapon Special Abilities for ranged weapons.
+Table 7–10: Weapon Type Determination
+d%Weapon Type
+01–70Common melee weapon (see Table 7–11)
+71–80Uncommon weapon (see Table 7–12)
+81–100Common ranged weapon (see Table 7–13)
+Table 7–11: Common Melee Weapons
+d%WeaponWeapon Cost
+1
+01–04Dagger+302 gp
+05–14Greataxe+320 gp
+15–24Greatsword+350 gp
+25–28Kama+302 gp
+29–41Longsword+315 gp
+42–45Mace, light+305 gp
+46–50Mace, heavy+312 gp
+51–54Nunchaku+302 gp
+55–57Quarterstaff
+2
++600 gp
+58–61Rapier+320 gp
+62–66Scimitar+315 gp
+67–70Shortspear+302 gp
+71–74Siangham+303 gp
+75–84Sword, bastard+335 gp
+85–89Sword, short+310 gp
+90–100Waraxe, dwarven+330 gp
+1 Add to enhancement bonus on Table 7–9: Weapons to determine
+total market price.
+2 Masterwork double weapons incur double the masterwork cost to
+account for each head (+300 gp masterwork cost per head for a total
+of +600 gp). Double weapons have separate magical bonuses for
+their different heads. If randomly determined, the second head of a
+double weapon has the same enhancement bonus as the main head
+(01–50 on d%), doubling the cost of the bonus, or its enhancement
+bonus is one less (51–100 on d%) and it has no special abilities.
+All magic weapons are masterwork weapons.
+Table 7–12: Uncommon Weapons
+d%WeaponWeapon Cost
+1
+01–03Axe, orc double
+2
++660 gp
+04–07Battleaxe+310 gp
+08–10Chain, spiked+325 gp
+11–12Club+300 gp
+13–16Crossbow, hand+400 gp
+17–19Crossbow, repeating+550 gp
+20–21Dagger, punching+302 gp
+22–23Falchion+375 gp
+24–26Flail, dire
+2
++690 gp
+27–31Flail, heavy+315 gp
+32–35Flail, light+308 gp
+36–37Gauntlet+302 gp
+38–39Gauntlet, spiked+305 gp
+40–41Glaive+308 gp
+42–43Greatclub+305 gp
+44–45Guisarme+309 gp
+46–48Halberd+310 gp
+49–51Halfspear+301 gp
+52–54Hammer, gnome hooked
+2
++620 gp
+55–56Hammer, light+301 gp
+57–58Handaxe+306 gp
+59–61Kukri+308 gp
+62–64Lance+310 gp
+65–67Longspear+305 gp
+68–70Morningstar+308 gp
+71–72Net+320 gp
+73–74Pick, heavy+308 gp
+75–76Pick, light+304 gp
+77–78Ranseur+310 gp
+79–80Sap+301 gp
+81–82Scythe+318 gp
+83–84Shuriken+301 gp
+85–86Sickle+306 gp
+87–89Sword, two-bladed
+2
++700 gp
+90–91Trident+315 gp
+92–94Urgrosh, dwarven
+2
++650 gp
+95–97Warhammer+312 gp
+98–100Whip+301 gp
+1 Add to enhancement bonus on Table 7–9: Weapons to determine
+total market price.
+2 Masterwork double weapons incur double the masterwork cost to
+account for each head (+300 gp masterwork cost per head for a total
+of +600 gp). Double weapons have separate magical bonuses for
+their different heads. If randomly determined, the second head of a
+double weapon has the same enhancement bonus as the main head
+(01–50 on d%), doubling the cost of the bonus, or its enhancement
+bonus is one less (51–100) and it has no special abilities.
+All magic weapons are masterwork weapons.

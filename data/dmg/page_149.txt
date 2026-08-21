@@ -1,0 +1,136 @@
+148
+penalty, as do all attack rolls. All item weights are effectively
+doubled, which might affect a character’s speed. Weapon ranges are
+halved. A character’s Strength and Dexterity scores are not affected.
+Characters who fall on a heavy gravity plane take 1d10 points of
+damage for each 10 feet fallen, to a maximum of 20d10 points of
+damage.
+No Gravity:Individuals on a plane with this trait merely float in
+space, unless other resources (such as magic or force of will) are
+available to provide a direction for gravity’s pull.
+Objective Directional Gravity:The strength of gravity on a plane
+with this trait is the same as on the Material Plane, but the direc-
+tion is not the traditional “down” toward the ground. It may be
+down toward any solid object, at an angle to the surface of the
+plane itself, or even upward, creating a chandelierlike world
+where everyone has to hang on or be thrown out into the void.
+In addition, objective directional gravity may change from
+place to place. The direction of “down” may vary, so individuals
+may suddenly find themselves falling upward (similar to the
+reverse gravityspell) or walking up walls.
+Travelers on planes with objective directional gravity tend to be
+cautious. No one wants to discover the hard way that the 100-foot
+corridor ahead has become a 100-foot-deep pit.
+Subjective Directional Gravity:The strength of gravity on a plane
+with this trait is the same as on the Material Plane, but each indi-
+vidual chooses the direction of gravity’s pull. Such a plane has no
+gravity for unattended objects and nonsentient creatures. This
+sort of environment can be very disorienting to the newcomer,
+but is common on “weightless” planes such as the Plane of Air.
+Characters on a plane with subjective directional gravity can
+move normally along a solid surface by imagining “down” near
+their feet. If suspended in midair, a character “flies” by merely
+choosing a “down” direction and “falling” that way. Under such a
+procedure, an individual “falls” 150 feet in the first round and 300
+feet in each succeeding round. Movement is straight-line only. In
+order to stop, one has to slow one’s movement by changing the
+designated “down” direction (again, moving 150 feet in the new
+direction in the first round and 300 feet per round thereafter).
+It takes a DC 16 Wisdom check to set a new direction of gravity
+as a free action; this check can be made once per round. Any char-
+acter who fails this Wisdom check in successive rounds receives a
++6 bonus on subsequent checks until he or she succeeds.
+Time: The rate of time’s passage can vary on different planes,
+though it remains constant within any particular plane. Time
+becomes interesting when one moves from plane to plane, but it
+still moves at the same apparent rate for the traveler.
+In other words, time is always subjective for the viewer. If
+someone is magically frozen in place for a year, at the end of that
+time he or she thinks mere seconds have passed. But to everyone
+else, a year has elapsed.
+The same subjectivity applies to various planes. Travelers may
+discover that they’ll pick up or lose time while moving among the
+planes, but from their point of view, time always passes naturally.
+Normal Time: This trait describes the way time passes on the
+Material Plane. One hour on a plane with normal time equals one
+hour on the Material Plane. Unless otherwise noted in a descrip-
+tion, every plane in the D&D cosmology has the normal time trait.
+Timeless: On planes with this trait, time still passes, but the
+effects of time are diminished. See the description of the Astral
+Plane, page 154, for an example of how the timeless trait can affect
+certain activities or conditions such as hunger, thirst, aging, the
+effects of poison, and healing.
+The danger of a timeless plane is that once one leaves such a
+plane for one where time flows normally, conditions such as
+hunger and aging do occur retroactively. A character who hasn’t
+eaten for ten years on a timeless plane might be ravenous (though
+not dead), and one who has been “stuck” at age twenty for fifty
+years might now reach age seventy in a heartbeat. Traditional tales
+of folklore tell of places where heroes live hundreds of years, only
+to crumble to dust as soon as they leave.
+Shape and Size:Planes come in a variety of sizes and shapes.
+Most planes (including all of those in the D&D cosmology) are
+infinite, or at least so large that they may as well be infinite.
+Infinite: Planes with this trait go on forever, though they may
+have finite components within them (such as spherical worlds).
+Or they may consist of ongoing expanses in two directions, like a
+map that stretches out infinitely.
+Morphic Traits: This trait measures how easily the basic
+nature of a plane can be changed. Some planes are responsive to
+sentient thought, while others can be manipulated only by
+extremely powerful creatures. And some planes respond to phys-
+ical or magical efforts.
+Alterable Morphic:On a plane with this trait, objects remain
+where they are (and what they are) unless affected by physical
+force or magic. You can build a castle, animate a statue, or grow
+crops in an alterable plane, changing your immediate environ-
+ment as a result of tangible effort. Unless otherwise noted in a
+description, every plane in the D&D cosmology other than the
+Outer Planes has the alterable morphic trait.
+Highly Morphic: On a plane with this trait, features of the plane
+change so frequently that it’s difficult to keep a particular area
+stable. Such planes may react dramatically to specific spells, sen-
+tient thought, or the force of will. Others change for no reason. In
+the D&D cosmology, Limbo is a highly morphic plane.
+Magically Morphic: Specific spells can alter the basic material of a
+plane with this trait. The Plane of Shadow, which can be drawn
+elsewhere and used to duplicate other spells, is a good example of
+a magically morphic plane.
+Divinely Morphic: Specific unique beings (deities or similar great
+powers) have the ability to alter objects, creatures, and the land-
+scape on planes with this trait. Ordinary characters find these
+planes similar to alterable planes in that they may be affected by
+spells and physical effort. But the deities may cause these areas to
+change instantly and dramatically, creating great kingdoms for
+themselves. All of the Outer Planes except for Limbo are divinely
+morphic, which is one reason deities live there.
+Elemental and Energy Traits
+Within the D&D cosmology, four basic elements and two types of
+energy together make up everything. The elements are earth, air,
+fire, and water. The types of energy are positive and negative.
+The Material Plane reflects a balancing of those elements and
+energies; all are found there. Each of the Inner Planes is domi-
+nated by one element or type of energy. Other planes may show
+off various aspects of these elemental traits. Many planes in the
+D&D cosmology have no elemental or energy traits; these traits
+are noted in a plane’s description only when they are present.
+Air-Dominant: Mostly open space, planes with this trait have
+just a few bits of floating stone or other elements. They usually
+have a breathable atmosphere, though such a plane may include
+clouds of acidic or toxic gas. Creatures of the earth subtype, such
+as earth elementals, are uncomfortable on air-dominant planes
+because they have little or no natural earth to connect with. They
+take no actual damage, however.
+Earth-Dominant: Planes with this trait are mostly solid. Trav-
+elers who arrive run the risk of suffocation (see page 304) if they
+don’t reach a cavern or other pocket within the earth. Worse yet,
+individuals without the ability to burrow are entombed in the
+earth and must dig their way out (5 feet per turn). Creatures of the
+air subtype, such as air elementals, are uncomfortable on earth-
+dominant planes because these planes are tight and claustropho-
+bic to them. But they suffer no inconvenience beyond having dif-
+ficulty moving.
+Fire-Dominant:Planes with this trait are composed of flames
+that continually burn without consuming their fuel source. Fire-
+CHAPTER 5:
+CAMPAIGNS

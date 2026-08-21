@@ -297,15 +297,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       });
 
 
-      // Apply racial modifiers directly to the base stats inside combatant class to align with tests
-      const statKeys = ['str', 'dex', 'con', 'int', 'wis', 'cha'] as const;
-      statKeys.forEach(k => {
-        const mod = getRacialModifier(selectedRace, k);
-        pc[k].base += mod;
-      });
-
-      // Build classesList to find final CON mod
-      const finalConMod = getMod(pc.con.base);
+      // Build classesList to find final CON mod including racial modifier
+      const finalConMod = getMod(baseStats.con + getRacialModifier(selectedRace, 'con'));
       const totalHP = levelConfigs.reduce((sum, cfg) => sum + Math.max(1, cfg.hpRoll + finalConMod), 0);
       pc.maxHP = totalHP;
       pc.hp = totalHP;
@@ -346,6 +339,19 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
           });
         }
       });
+
+      // Add daily abilities if applicable
+      pc.dailyAbilities = pc.dailyAbilities || [];
+      if (selectedRace === 'anima_construct') {
+        const hasRepair = pc.dailyAbilities.some((ab: any) => ab.name === 'Manuelle Reparatur');
+        if (!hasRepair) {
+          pc.dailyAbilities.push({
+            name: 'Manuelle Reparatur',
+            max: 4,
+            used: 0
+          });
+        }
+      }
     });
 
     // Redirect to player sheet

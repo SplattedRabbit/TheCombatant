@@ -30,6 +30,9 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
   // Evaluate prerequisites
   const { met, details: prereqsDetails } = checkPrerequisites(feat, pc);
 
+  const autoFeats = typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats() : [];
+  const isAutomatic = autoFeats.some((af: any) => af.id === feat.id);
+
   // Stackability & Options info
   const isStackable = feat.specialRaw && feat.specialRaw.toLowerCase().includes('multiple times');
   const learnedInstances = (pc.feats || []).filter((f: any) => f.id === feat.id);
@@ -357,6 +360,33 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                   Close
                 </button>
               </div>
+            </div>
+          ) : isAutomatic ? (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '100%', textAlign: 'center' }}>
+              <div style={{ fontSize: '11px', color: '#1976d2', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>
+                Klassentalent
+              </div>
+              <p style={{ fontSize: '10px', color: 'var(--inkm)', margin: '0 0 4px 0', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, maxWidth: '280px' }}>
+                Dieses Talent wird dir automatisch als Klassen- oder Rassenmerkmal gewährt und kann nicht verlernt werden.
+              </p>
+              <button
+                onClick={onClose}
+                className="btn btn-close-feat"
+                style={{
+                  fontFamily: "'IM Fell English SC', serif",
+                  fontSize: '9px',
+                  padding: '4px 22px',
+                  cursor: 'pointer',
+                  background: 'transparent',
+                  border: '1px solid var(--pb)',
+                  borderRadius: '2px',
+                  color: 'var(--inkl)',
+                  transition: 'background-color 0.15s, color 0.15s',
+                  outline: 'none'
+                }}
+              >
+                Schließen
+              </button>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>

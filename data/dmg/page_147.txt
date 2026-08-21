@@ -1,0 +1,118 @@
+146
+The d20 M
+ODERN® Roleplaying Game,a D&D-compatible role-
+playing game for present-day adventures, contains a much more
+extensive treatment of firearms and other high-tech gear.
+Modern Era Firearms:Firearms should be treated like other
+ranged projectile weapons. The Exotic Weapon Proficiency
+(firearms) feat gives a creature proficiency with all firearms; other-
+wise, a –4 penalty is assessed on all attack rolls.
+Ammunition:Modern era firearms use bullets essentially similar
+to those used in Remaissance firearms. Ten bullets weigh 1 pound,
+and a magazine that holds bullets for an automatic weapon weighs
+1/2 pound.
+The new weapons on Table 5–5: Modern Era Weapons are
+detailed below.
+Pistol, Automatic: An automatic pistol can fire fifteen times
+before reloading and can be used to attack more than once per
+round if the user has the ability to make multiple attacks. Releas-
+ing an empty magazine and inserting a new one is a move action.
+Pistol, Revolver: A revolver can fire six times before it needs
+reloading (which requires a full-round action).
+Rifle, Hunting: A hunting rifle can fire five times before it needs
+reloading (which requires a full-round action).
+Rifle, Automatic:An automatic rifle can fire thirty times before it
+needs reloading. Releasing an empty magazine and inserting a
+new one is a move action. As an attack, an automatic rifle can
+instead spray a space 10 feet across with ten bullets. If the attacker
+succeeds on an attack roll against AC 10, everyone in that space
+must make a DC 15 Reflex save or take the weapon’s damage.
+Shotgun:A shotgun is most effective at close range; on any suc-
+cessful attack, a –1 penalty is applied to the damage roll for each
+range increment of the attack. It can fire six times before it needs
+reloading (which requires a full-round action). The weapon uses
+shotgun shells, cylindrical cartridges that have a built-in firing cap
+at their base. They are packed with a mixture of gunpowder and
+small lead pellets.
+Grenade Launcher: A grenade launcher can fire fragmentation or
+smoke grenades using its range increment, but must be reloaded
+each time it fires, requiring a standard action. A grenade launcher
+is a tube set on a metal tripod and equipped with a sighting mech-
+anism. A single smoke grenade or fragmentation grenade easily
+slips into the tube.
+Modern Era Explosive Weapons: These explosive grenade-
+like weapons work just like Renaissance grenadelike weapons (see
+above). for determining how attacks are made and what happens if
+the weapon misses its target.
+Dynamite: This short, thin cylinder of explosive material has a
+fuse that must be lit before it is thrown or set. Lighting a stick of
+dynamite is a move action, and the dynamite goes off in the same
+round or up to several minutes later (depending on how long the
+fuse is). The explosive has a blast radius of 5 feet and deals 2d6
+points of bludgeoning damage. Anyone caught within the blast
+radius can make a DC 15 Reflex save to take half damage.
+It’s possible to bind together several sticks of dynamite so they
+ignite and explode at the same time. Each additional stick in-
+creases the damage by 1d6 (maximum damage 10d6) and the burst
+radius by 5 feet (maximum burst radius 20 feet).
+Grenade, Fragmentation:A fragmentation grenade looks like a
+large egg, sometimes mounted on a 1-foot-long stick with small
+fins. If thrown, it uses its range increment, but if launched from a
+grenade launcher, it uses that weapon’s range increment. Frag-
+mentation grenades are advanced antipersonnel explosives that
+deal slashing damage in a 20-foot radius. Anyone caught within
+the blast radius can make a DC 15 Reflex save to take half damage.
+Grenade, Smoke: A smoke grenade looks like a squat cylinder,
+sometimes mounted on a 1-foot-long stick with small fins. If
+thrown, it uses its range increment, but if launched from a
+grenade launcher, it uses that weapon’s range increment. One
+round after it lands or hits its target, this nondamaging explosive
+emits a cloud of smoke (as the fog cloudspell) in a 20-foot radius.  A
+moderate wind (11+ mph) disperses the smoke in 4 rounds; a
+strong wind (21+ mph) disperses the fog in 1 round.
+Futuristic Weapons: Futuristic weapons are like other ranged
+projectile weapons, though the type of damage they deal is special.
+The Exotic Weapon Proficiency (futuristic) feat gives a creature
+proficiency with all futuristic weapons; otherwise, a –4 penalty is
+assessed on all attack rolls.
+The new weapons on Table 5–6: are detailed below.
+CHAPTER 5:
+CAMPAIGNS
+Table 5–5: Modern Era Weapons
+Exotic Weapons (Firearms)Dmg (S)Dmg (M)CriticalRange IncrementWeightDamage Type
+One-Handed Ranged Weapons
+Pistol, automatic2d42d6×240 ft.3 lb.Piercing
+Revolver2d62d8×230 ft.3 lb.Piercing
+Two-Handed Ranged Weapons
+Rifle, hunting2d82d10×280 ft.8 lb.Piercing
+Rifle, automatic2d62d8×280 ft.8 lb.Piercing
+Shotgun2d62d8×230 ft.7 lb.Piercing
+Grenade launcher
+11
+—70 ft.7 lb.—
+1 Fires fragmentation grenades or smoke grenades; see the Explosive Weapons table, below.
+Explosive Weapons
+1
+DamageBlast RadiusRange IncrementWeightDamage Type
+Dynamite3d6
+2
+5 ft.
+2
+10 ft.1 lb.Bludgeoning
+Grenade, fragmentation4d620 ft.10 ft.1 lb.Slashing
+Grenade, smokeSmoke20 ft.10 ft.2 lb.—
+1 Dynamite and grenades require no proficiency to use.
+2 See description.
+Table 5–6: Futuristic Weapons
+Exotic Weapons (Firearms)Dmg (S)Dmg (M)CriticalRange IncrementWeightDamage Type
+One-Handed Ranged Weapons
+Laser pistol3d43d6×240 ft.2 lb.—
+Two-Handed Ranged Weapons
+Antimatter rifle6d66d8×2120 ft.10 lb.—
+Flamer3d4
+1
+3d6
+1
+—20 ft.8 lb.Fire
+Laser rifle3d63d8×2100 ft.7 lb.—
+1 See description.

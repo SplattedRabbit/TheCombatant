@@ -1,0 +1,126 @@
+46
+PCs as Spectators:In this kind of bad adventure, NPCs
+accomplish all the important tasks. There might be an interesting
+story going on, but it’s going on around the PCs, and they have
+very little to do with it. As much as you might like one of your
+NPCs, resist the urge to have him or her accomplish everything
+instead of letting the PCs do the work. As great as it might be to
+have your big NPC hero fight the evil wizard (also an NPC)
+threatening the land, it’s not much fun for the players if all they
+get to do is watch.
+Deus ex Machina: Similar to the “PCs as spectators” problem is
+the potential pitfall of the deus ex machina, a term used to describe
+the ending to a story in which the action is resolved by the inter-
+vention of some outside agency rather than by the characters’ own
+actions. Don’t put the PCs in situations in which they can only sur-
+vive through the intervention of others. Sometimes it’s interesting
+to be rescued, but using this sort of “escape hatch” gets frustrating
+for the players quickly. Players would rather defeat a young dragon
+on their own than face an ancient wyrm and only defeat it because
+a high-level NPC teleports in to help them.
+Preempting the Characters’ Abilities: It’s good to know the
+PCs’ capabilities, but you shouldn’t design adventures that contin-
+ually countermand or foil what they can do. If the wizard just
+learned fireball, don’t continually throw fire-resistant foes at him.
+Don’t create dungeons where flyand teleportspells don’t work, just
+because it’s more difficult to design challenging encounters for
+characters with those capabilities. Use the PCs’ abilities to allow
+them to have more interesting encounters—don’t arbitrarily rule
+that their powers suddenly don’t work.
+THE FLOW OF INFORMATION
+Much of the structure of an adventure depends on what the PCs
+know and when they learn it. If they know that there’s a dragon at
+the bottom of the dungeon, they will conserve their strength for
+that encounter and have proper spells and strategies prepared.
+When they learn the identity of a traitor, they will probably act on
+this information immediately. If they learn too late that their ac-
+tions will cause a cavern complex to collapse, they won’t be able to
+keep it from happening.
+Don’t give away the whole plot in one go, but do give the play-
+ers some new bit of knowledge every so often. For example, if the
+drow elves are the secret masters behind an uprising of giants,
+slowly reveal clues to that fact. Information gained while fighting
+the hill giants leads the PCs to the frost giants, which in turn gar-
+ners them clues that take them to the fire giants. Only among the
+fire giants do the PCs encounter information that leads them to
+understand that the drow are involved. And thus the final en-
+counter with those drow masters is made all the more dramatic.
+In some situations, the PCs know everything they need to
+know before the adventure begins. That’s okay. Occasionally, there
+is no mystery. For example, the adventurers learn that a haunted
+tower in the woods is inhabited by a vampire and her minions.
+They go in with stakes and holy water, slay a bunch of undead, and
+finally meet up with the vampire and take her out. That’s a fine
+adventure. Sometimes, however, a surprise that the PCs never
+could have seen coming makes it all the more interesting—the
+vampire turns out to be a good-aligned undead resisting her blood-
+lust but slowly succumbing to the temptation of an erinyes devil
+who lives under the church back in town. Both the “no surprises”
+and the “unexpected twist” structures work well, so long as you
+avoid overusing either.
+Divination Magic
+Keep divination magic in mind when predetermining how
+you’re going to control the flow of information. Don’t deny the
+spells their potency. Instead, learn what they can and cannot do,
+and plan for the PCs to use them. (See Handling Divinations,
+page 34). After all, if you have assumed that they would cast the
+proper spells and they don’t use what’s available to them, they
+deserve to fail.
+SITE-BASED ADVENTURES
+The Tomb of Horrors, the Temple of Elemental Evil, the Ghost
+Tower of Inverness—these are places of legend, mystery, and ad-
+venture. If you create an adventure based around some place—a
+dungeon, a ruin, a mountain, a valley, a cave complex, a wilderness,
+a town—then you have created a site-based adventure. Site-based
+adventures revolve around a map with a key, detailing important
+spots on that map. Encounters in the adventure are triggered
+when the PCs enter a new location at the site. The implication is
+that each encounter describes what occurs at that site when the
+PCs arrive (or arrive for the first time).
+Creating a site-based adventure involves two steps: drawing a
+map and keying the encounters.
+Draw a Map:Graph paper is useful for mapping out dungeons,
+because you can assign a scale for the squares, such as 5 feet or 10
+feet per square. The printed gridlines also aid in drawing straight
+lines (particularly useful when you’re mapping the interior of a
+CHAPTER 3:
+ADVENTURES
+ADVENTURE WRITER’S CHECKLIST
+If  you  want  to  write  an  adventure  but  aren’t  sure  where  to  start,  just
+work your way down the checklist below. Each entry corresponds to a
+section found later in this chapter.
+•Brainstorm  one  or  more  motivations  for  the  adventure,  keeping  in
+mind the style of play you prefer. Why will the PCs put their lives at risk?
+•Decide  whether  you  want  a  site-based  adventure,  an  event-based
+adventure, or an adventure that incorporates both.
+•If it’s a site-based adventure, imagine where the adventure will take
+place. You don’t need to know every detail yet, just a broad sense of
+what the place is like.
+•If it’s an event-based adventure, imagine the starting scene, a likely
+climax  scene,  and  a  few  “set  piece”  intermediate  scenes  you  think
+would be fun.
+•Choose  the  most  important  antagonists  for  the  PCs.  If  allies,
+patrons, or other NPCs are important, think about them too.
+•Begin  assembling  your  adventure.  If  it’s  a  site-based  adventure,
+sketch  out  the  site  and  decide  where  your  important  NPCs  spend
+most of their time. If it’s an event-based adventure, identify the most
+likely  sequences  of  events  that  take  the  PCs  from  the  beginning
+scene to the climax, hitting one or more of the important intermedi-
+ate scenes along the way.
+•Fill in the details. Create the areas and scenes that aren’t integral to
+the adventure but may be fun or challenging nonetheless. Draw the
+maps you’ll need, build the NPCs, and create any random encoun-
+ters you want for the adventure.
+•Check your work. Examine what you’ve done, but think like your play-
+ers.  Is  there  a  clever  way  to  bypass  many  of  the  adventure’s  chal-
+lenges?  Think  of  ways  to  reward  cleverness  without  rendering  the
+adventure obsolete.
+Now that you’ve worked your way down the checklist, here’s a secret:
+You don’t have to do the items in order. You can just as easily start by
+saying, “I want to write an adventure with mind flayer assassins as the
+main  villains,”  starting  with  the  antagonists  and  making  the  other
+choices later. You might design a site first, then figure out how to entice
+the characters inside. But it’s always a good idea to start with motiva-
+tion, because it’s the energy that gets your adventure off the ground.
+pqqqqrs
+pqqqqrs

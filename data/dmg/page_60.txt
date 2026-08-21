@@ -1,0 +1,140 @@
+and populate it. Rumors in some places speak of the Underdark, a
+subterranean world that is one enormous natural cavern complex
+running under the surface of entire continents.
+Natural cavern complexes can be quite beautiful, with stalac-
+tites, stalagmites, flowstone, columns, and other limestone forma-
+tions. However, from an adventuring point of view they have a seri-
+ous shortcoming: less treasure. Since the dungeon was not created
+for a specific purpose, there’s little chance of happening upon a se-
+cret room filled with gold left behind by the previous occupants.
+DUNGEON TERRAIN
+Practically all dungeons have walls, floors, doors, and other kinds
+of common features. Adventurers quickly learn what the common
+features of a dungeon are—and you can use this fact to your ad-
+vantage. Common features create consistency (which helps sus-
+pend disbelief ) and allow you to create interesting surprises by
+changing the features—sometimes only slightly. When the PCs
+enter a dungeon, it’s often useful to establish some conventions so
+that misunderstandings don’t crop up later.
+Convention #1—Default Ele-
+ments: Tell your players what the
+floor  is  like,  what  the  walls  are
+made of, and how high the ceilings
+are. Say that you’ll let them know if
+any  of  these  default  elements
+change. That helps them imagine
+the dungeon, and it keeps you from
+having to repeat yourself. If most of
+the doors or tombs in your dungeon
+are identical, you can describe the first
+one in detail and add, “Unless I say oth-
+erwise, they’re all like this one.”
+Convention #2— On the Grid, Each
+Square Has One Feature: When you
+draw something such as a pool of shallow
+water on your map grid, any square that’s
+more than half covered by the pool is con-
+sidered to have water in it, but squares that
+just have water in a small fraction of their
+area are considered dry. Using this con-
+vention means you don’t have to create
+straight-edged, unnatural-looking terrain fea-
+tures by forcing them to conform to a square grid that doesn’t exist
+in the game world.
+Convention #3—Establish Standard Procedures:
+Once the characters fall into a predictable pattern when
+confronted with some recurring kind of challenge such
+as a closed door, it’s okay to assume that the characters
+do that every time. For example, if the rogue always
+searches a door for traps, then makes a Listen check to
+hear what’s on the other side, then tries to pick the lock,
+you can establish that as the standard procedure. This
+convention saves time because you don’t have to wait for
+players to declare their characters’ actions before calling
+for the checks, and it helps the players because they won’t
+accidentally overlook a step in their standard procedure.
+WALLS
+Sometimes, masonry walls—stones piled on top of
+each other (usually but not always held in place with
+mortar)—divide dungeons into corridors and chambers.
+Dungeon walls can also be hewn from solid rock, leaving
+them with a rough, chiseled look. Or, dungeon walls can
+be the smooth, unblemished stone of a naturally occur-
+ring cave. Dungeon walls are difficult to break down or
+through, but they’re generally easy to climb.
+Masonry Walls: The most common kind of dungeon wall,
+masonry walls are usually at least 1 foot thick. Often these ancient
+walls sport cracks and crevices, and sometimes dangerous slimes
+or small monsters live in these areas and wait for prey. Masonry
+walls stop all but the loudest noises. It takes a DC 20 Climb check
+to travel along a masonry wall.
+Superior Masonry Walls: Sometimes masonry walls are
+better built (smoother, with tighter-fitting stones and less crack-
+ing), and occasionally these superior
+walls are covered with plaster or
+stucco. Covered walls often bear
+paintings, carved reliefs, or other
+decoration. Superior masonry walls
+are no more difficult to destroy than
+regular masonry walls but are more dif-
+ficult to climb (DC 25).
+Hewn Stone Walls: Such walls usu-
+ally result when a chamber or passage is
+tunneled out from solid rock. The rough
+surface of a hewn wall frequently pro-
+vides minuscule ledges where fungus
+grows and fissures where vermin, bats,
+and subterranean snakes live. When such
+a wall has an “other side” (it separates two
+chambers in the dungeon), the wall is usu-
+ally at least 3 feet thick; anything thinner
+risks collapsing from the weight of all the
+stone overhead. It takes a DC 25 Climb
+check to climb a hewn stone wall.
+Unworked Stone Walls: These
+surfaces are uneven and rarely flat.
+They are smooth to the touch but
+filled with tiny holes, hidden alcoves, and ledges
+at various heights. They’re also usually wet or at least damp, since
+it’s water that most frequently creates natural caves. When such a
+wall has an “other side,” the wall is usually at least 5 feet thick. It
+takes a DC 15 Climb check to move along an unworked stone wall.
+Special Walls: Sometimes you can place special walls in a dun-
+geon. Expect players to react with curiosity and suspicion when
+their characters encounter these unusual walls.
+Reinforced Walls: These are masonry walls with iron bars on one
+or both sides of the wall, or placed within the wall to strengthen it.
+The hardness of a reinforced wall remains the same, but its hit
+points are doubled and the Strength check DC to break through it
+is increased by 10.
+Iron Walls: These walls are placed within dun-
+geons around important places such as vaults.
+Paper Walls: Paper walls are the opposite of iron
+walls, placed as screens to block line of sight but
+nothing more.
+Wooden Walls: Wooden walls often exist as recent
+additions to older dungeons, used to create animal
+pens, storage bins, or just to make a number of smaller
+rooms out of a larger one.
+Magically Treated Walls: These walls are stronger than
+average, with a greater hardness, more hit points, and
+a higher break DC. Magic can usually double the
+hardness and hit points and can add up to 20 to the
+break DC. A magically treated wall also gains a saving
+throw against spells that could affect it, with the save
+bonus equaling 2 + one-half the caster level of the magic
+reinforcing the wall. Creating a magic wall requires the
+Craft Wondrous Item feat and the expenditure of 1,500
+gp for each 10 foot-by-10-foot wall section.
+Walls with Arrow Slits: Walls with arrow slits can be
+made of any durable material but are most commonly
+masonry, hewn stone, or wood. Such a wall allows
+59
+CHAPTER 3:
+ADVENTURES
+Illus. by W. Reynolds
+Unworked
+stone 
+wall
+Masonry wall
+Hewn stone wall

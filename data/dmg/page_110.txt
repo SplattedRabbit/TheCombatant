@@ -1,0 +1,126 @@
+adventurer and none of the skills needed to undertake the chal-
+lenges adventurers must face. Commoners are skilled in their own
+vocations and make up the majority of the population.
+Commoners make poor adventurers. This class should be
+reserved for everyone who does not qualify for any other class.
+Hit Die:d4.
+Table 4–4: The Commoner
+NPCBaseFortRefWill
+LevelAttack BonusSaveSaveSave
+1st+0+0+0+0
+2nd+1+0+0+0
+3rd+1+1+1+1
+4th+2+1+1+1
+5th+2+1+1+1
+6th+3+2+2+2
+7th+3+2+2+2
+8th+4+2+2+2
+9th+4+3+3+3
+10th+5+3+3+3
+11th+5+3+3+3
+12th+6/+1+4+4+4
+13th+6/+1+4+4+4
+14th+7/+2+4+4+4
+15th+7/+2+5+5+5
+16th+8/+3+5+5+5
+17th+8/+3+5+5+5
+18th+9/+4+6+6+6
+19th+9/+4+6+6+6
+20th+10/+5+6+6+6
+Class Skills
+The commoner’s class skills (and the key ability for each skill) are
+Climb (Str), Craft (Int), Handle Animal (Cha), Jump (Str), Listen
+(Wis), Profession (Wis), Ride (Dex), Spot (Wis), Swim (Str), and
+Use Rope (Dex). See Chapter 4: Skills in the Player ’s Handbookfor
+skill descriptions.
+Skill Points at 1st Level:(2 + Int modifier) 
+×4.
+Skill Points at Each Additional Level:2 + Int modifier.
+Class Features
+The following is a class feature of the commoner NPC class.
+Weapon and Armor Proficiency:The commoner is proficient
+with one simple weapon. He is not proficient with any other
+weapons, nor is he proficient with any type of armor or shields.
+Starting Gear
+5d4 gp worth of equipment.
+EXPERT
+Experts operate as craftsfolk and professionals in the world. They
+normally do not have the inclination or training to be adventurers,
+but they are capable in their own field. The skilled blacksmith, the
+astute barrister, the canny merchant, the educated sage, and the
+master shipwright are all experts.
+The expert could make a PC-worthy class choice, but only for
+those players willing to create a character focused on something
+other than a traditional adventuring career. Experts have a vast
+range of skills. Most towns and communities have at least a few
+experts in various fields. DMs should use the expert class for
+NPCs such as elite craftsfolk, experienced merchants, seasoned
+guides, and other highly skilled professionals.
+Hit Die:d6.
+Class Skills
+The expert can choose any ten skills to be class skills. See Chapter
+4: Skills in the Player ’s Handbookfor skill descriptions.
+Skill Points at 1st Level:(6 + Int modifier) ×4.
+Skill Points at Each Additional Level:6 + Int modifier.
+Table 4–5: The Expert
+NPCBaseFortRefWill
+LevelAttack BonusSaveSaveSave
+1st+0+0+0+2
+2nd+1+0+0+3
+3rd+2+1+1+3
+4th+3+1+1+4
+5th+3+1+1+4
+6th+4+2+2+5
+7th+5+2+2+5
+8th+6/+1+2+2+6
+9th+6/+1+3+3+6
+10th+7/+2+3+3+7
+11th+8/+3+3+3+7
+12th+9/+4+4+4+8
+13th+9/+4+4+4+8
+14th+10/+5+4+4+9
+15th+11/+6/+1+5+5+9
+16th+12/+7/+2+5+5+10
+17th+12/+7/+2+5+5+10
+18th+13/+8/+3+6+6+11
+19th+14/+9/+4+6+6+11
+20th+15/+10/+5+6+6+12
+Class Features
+The following is a class feature of the expert NPC class.
+Weapon and Armor Proficiency: The expert is proficient in
+the use of all simple weapons and with light armor but not shields.
+Starting Gear
+3d4 ×10 gp worth of equipment.
+WARRIOR
+The warrior is a strong, stout combatant without the specialized
+training and finesse of a fighter, the survival and outdoor skills of
+the barbarian or ranger, or the sophistication and religious focus
+of a paladin. The warrior is a straightforward and unsubtle oppo-
+nent in a fight, but a respectable one.
+Warriors are not as good as fighters, and thus PCs should be en-
+couraged to avoid this class in favor of the standard combat-ori-
+ented ones given in the Player ’s Handbook. Representing experi-
+ence in fighting and related areas but not sophisticated training,
+warriors are common among the humanoids and giants (orcs,
+ogres, and so forth). You can also use the warrior class for soldiers
+(although perhaps not for commanders or career soldiers), guards,
+local thugs, toughs, bullies, and even regular people who have
+learned to defend their homes with some ability.
+Hit Die:d8.
+Class Skills
+The warrior’s class skills (and the key ability for each skill) are
+Climb (Str), Handle Animal (Cha), Intimidate (Cha), Jump (Str),
+Ride (Dex), and Swim (Str). See Chapter 4: Skills in the Player ’s
+Handbookfor skill descriptions.
+Skill Points at 1st Level:(2 + Int modifier) ×4.
+Skill Points at Each Additional Level:2 + Int modifier.
+Class Features
+The following is a class feature of the warrior NPC class.
+Weapon and Armor Proficiency: The warrior is proficient in
+the use of all simple and martial weapons and all armor and shields.
+Starting Gear
+3d4 ×10 gp worth of equipment.
+109
+CHAPTER 4:
+NONPLAYER
+CHARACTERS

@@ -1,0 +1,134 @@
+170
+method allows some choice but doesn’t let a player have all her
+ability scores exactly where she wants them. A character might
+have to learn to cope with unwanted clumsiness (just as in real
+life), or she may have a personal talent that isn’t usual for a mem-
+ber of her class (such as a high Strength score for a sorcerer).
+6. Customized Average Characters: Roll 3d6 six times and ar-
+range scores as desired. This method produces characters more
+like average people but still allows customization. The player may
+reroll all scores if his ability modifiers total –3 or lower, or if he
+doesn’t have any score of 12 or higher.
+7. Random Average Characters:Roll 3d6 six times and place
+in order (Str, Dex, Con, Int, Wis, Cha). This is the strictest method.
+It frequently generates virtually unplayable characters, but it
+makes high scores very special. The player may reroll all scores if
+her ability modifiers total –3 or lower, or if she doesn’t have any
+score of 12 or higher.
+8. High-Powered Characters:Roll 5d6 six times, discarding
+the two lowest dice each time. Arrange as desired. This is just right
+for a high-powered game where the characters need to be really
+good just to survive. The player may reroll all scores if his ability
+modifiers don’t total at least +2 or if he doesn’t have at least one
+score of 15 or higher.
+RPGA CHARACTERS AND ABILITY SCORES
+In the new D&D Campaigns program administered by the RPGA
+®
+Network, the ability scores of player characters are generated
+using the standard point buy method. In some older RPGA cam-
+paigns, nonstandard point buy methods are used. For instance,
+characters in the Living Greyhawk campaign are built using the
+28-point nonstandard point buy method, because it’s a tougher
+campaign that requires more powerful characters.
+Why does the RPGA use the point buy method instead of
+rolling dice to generate ability scores? Unlike most home games
+with one Dungeon Master and a small group of players, RPGA
+D&D games are played by thousands of players, and are adjudi-
+cated by hundreds of Dungeon Masters. At large gaming events,
+an RPGA DM doesn’t always play with a familiar group of players
+or characters. In these environments, the point buy system pro-
+vides a way for players to customize their characters, while at the
+same time enabling the DM to reasonably gauge the power of all
+the characters in the game. 
+For more information about the D&D Campaigns program, and
+how to participate in RPGA events, go to www.wizards.com/rpga.
+RACES
+An easy way to customize a campaign is to change the races that
+players can choose from when creating characters.
+SUBRACES
+Tall, slim halflings are called tallfellows. Sylvan elves are reclusive,
+tough elves who live in the woods. Mountain dwarves are even
+sturdier than their more common counterparts. These offshoots of
+the standard races are called subraces.
+Some of the common races of the D&D game—dwarves, elves,
+gnomes, and halflings—are divided into subraces to showcase
+slight differences in appearance, outlook, and adaptation. Aside
+from a few minor differences, members of a subrace resemble
+members of the race as described in the Player ’s Handbook.Subraces
+make player choices varied and interesting, but you might also
+want to use subraces that are limited to NPCs. A good way to intro-
+duce a subrace into the campaign is to create an NPC encounter
+with the existing characters. By introducing a subrace as an NPC,
+you demonstrate to the players how you see members of that sub-
+race. Sometimes, players are not interested in playing a new sub-
+race but still appreciate its appearance as a new and interesting
+aspect of your campaign. The major subraces of the common races
+are described in the appropriate entries in the Monster Manual.
+You might choose not to allow PCs to be members of subraces.
+After all, subraces tend to stray from the archetypal races in the
+Player ’s Handbook, and they complicate the otherwise simple (but
+important) racial choices. Some of those presented in the Monster
+Manual, such as the drow, duergar, and other evil kinds of crea-
+tures, might be inappropriate to your game. The drow, duergar,
+and svirfneblin might also be too powerful in relation to the other
+PC race choices. See the Monsters as Races section, page 172, for
+an explanation of level adjustment and effective character level
+(ECL). If you know the ECL of a new character, you can tell
+whether that PC is right for your campaign.
+To create a new subrace, think of a specific aspect of devia-
+tion—culture, climate, or physical stature. Then, as you look at the
+Player ’s Handbookdescription of the standard race, determine what
+changes that deviation would cause to this description. A subrace
+might have different ability score modifications, different skill
+bonuses (such as a +1 or +2 racial bonus on certain skill checks), a
+different favored class, different languages, or even different spe-
+cial abilities, such as the dwarf ’s poison resistance or the elf ’s
+prowess with a bow.
+Keep in mind that the common races have disadvantages to bal-
+ance their advantages. A subrace should not have a bonus to
+Strength and a negative adjustment to Charisma without some
+additional considerations, since Strength is so much more impor-
+tant (in general) than Charisma. Instead, that dwarf subrace you
+create might have +2 to Strength and –2 to Charisma if it also lacks
+the standard dwarf ’s darkvision and stonecunning abilities. Alter-
+natively, your dwarf subrace could have +2 to Strength, +2 to Con-
+stitution, –2 to Dexterity, –2 to Charisma, low-light vision rather
+than darkvision, and +2 on Climb checks rather than the stone-
+cunning ability.
+In general, strive for balance. Balance an ability score bonus
+with an equivalent ability score penalty. Replace a skill bonus with
+a bonus to a different skill or a special ability (such as saving throw
+bonuses or darkvision) with another relatively equal ability. The
+range of different abilities and skill modifications is great, so
+you’re on your own in finding the perfect mix for your campaign.
+Look to the subraces in the Monster Manualfor good examples, and
+consider the following variations as well.
+Subterranean:Underground-dwelling  versions  of  the
+common races might have darkvision, stonecunning, and a dif-
+ferent set of racial enemies. An elf ’s familiarity with the bow—a
+weapon more suited to outdoor use—might change to familiar-
+ity with a weapon better suited to subterranean use, such as the
+hand crossbow.
+Aligned:A subrace might lean toward one particular align-
+ment, affecting its culture and outlook rather than its game statis-
+tics. This subrace might have a different favored class or different
+language options.
+Magical: Deviations that have greater or less affinity for magic
+would change favored classes, ability score modifications (particu-
+larly to Intelligence, Wisdom, or Charisma), and traits such as the
+gnome’s spell-like abilities.
+Focused:A subrace might have a special attraction to build-
+ing things, destroying things, theft, battle, particular animals,
+sailing, nomadic wandering, piety, or virtually anything else that
+you can conceive. Such a focus probably changes the race’s
+favored class and skill bonuses and might affect ability score
+modifications as well.
+Wild: A less civilized version of a common race would prefer
+classes such as barbarian and sorcerer and gain bonuses on Sur-
+vival or Handle Animal checks.
+Larger or Smaller:Subraces that are larger or smaller than
+their common counterparts offer intriguing options. Medium
+halflings or Small elves would use rules and equipment similar to
+that used by other characters of their new size. Conceivably, a cam-
+CHAPTER 6:
+CHARACTERS

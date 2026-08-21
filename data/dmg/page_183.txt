@@ -1,0 +1,121 @@
+182
+Class Features
+All of the following are class features of the blackguard prestige
+class.
+Weapon and Armor Proficiency:Blackguards are proficient
+with all simple and martial weapons, with all types of armor, and
+with shields.
+Aura of Evil (Ex):The power of a black-
+guard’s aura of evil (see the detect evil
+spell) is equal to his class
+level   plus   his   cleric
+level, if any.
+Detect Good(Sp):At will, a
+blackguard  can  use  detect  goodas  a
+spell-like ability, duplicating the effect
+of the detect good spell.
+Poison  Use:Blackguards  are
+skilled in the use of poison and never
+risk accidentally poisoning themselves
+when applying poison to a blade.
+Dark Blessing (Su):A blackguard
+applies his Charisma modifier (if posi-
+tive) as a bonus on all saving throws.
+Spells:A  blackguard  has  the
+ability to cast a small number of
+divine  spells.  To  cast  a  black-
+guard spell, a blackguard must
+have a Wisdom score of at least
+10 + the spell’s level, so a black-
+guard with a Wisdom of 10 or
+lower cannot cast these spells.
+Blackguard bonus spells are
+based on Wisdom, and saving
+throws against these spells
+have  a  DC  of  10  +
+spell  level  +  the
+blackguard’s Wis-
+dom modifier. When
+the blackguard gets
+0 spells per day of a
+given spell level (for
+instance, 1st-level spells
+for a 1st-level black-
+guard), he gains only the
+bonus spells he would be en-
+titled to based on his Wisdom score for
+that spell level. The blackguard’s spell
+list appears below. A blackguard has
+access to any spell on the list and can freely choose which to pre-
+pare, just as a cleric. A blackguard prepares and casts spells just as
+a cleric does (though a blackguard cannot spontaneously cast cure
+or inflictspells).
+Smite Good (Su):Once a day, a blackguard of 2nd level or
+higher may attempt to smite good with one normal melee attack.
+He adds his Charisma modifier (if positive) to his attack roll and
+deals 1 extra point of damage per class level. For example, a
+9th-level blackguard armed with a longsword would deal 1d8+9
+points of damage, plus any additional
+bonuses from high Strength or magical
+effects that normally apply. If a blackguard acci-
+dentally smites a creature that is not good, the smite has
+no effect but it is still used up for that day.
+At 5th level, and again at 10th level, a blackguard may smite
+good one additional time per day.
+Aura of Despair (Su):Beginning at 3rd level, the
+blackguard radiates a malign aura that causes ene-
+mies within 10 feet of him to take a –2 penalty
+on all saving throws.
+Command Undead (Su): When a black-
+guard reaches 3rd level, he gains the super-
+natural ability to command and rebuke
+undead (see the Player ’s Handbook,page
+159). He commands undead as would
+a cleric of two levels lower.
+Sneak  Attack:This  ability,
+gained at 4th level, is like the rogue
+ability of the same name. The extra
+damage increases by +1d6 every third
+level beyond 4th (7th and 10th). If a
+blackguard gets a sneak attack bonus
+from another source (such as rogue
+levels), the bonuses on damage stack.
+Blackguard Spell List
+Blackguards choose their spells
+from the following list:
+1st Level: cause fear, corrupt
+weapon,  cure  light  wounds,
+doom,  inflict  light  wounds,
+magic weapon, summon mon-
+ster I*.
+2nd Level: bull’s strength, cure
+moderate  wounds,  darkness,  death
+knell, eagle’s splendor, inflict moderate
+wounds, shatter, summon monster
+II*.
+3rd Level: contagion, cure serious
+wounds, deeper darkness, inflict serious
+wounds,  protection  from  elements,
+summon monster III*.
+4th Level: cure critical wounds, freedom of
+movement, inflict critical wounds, poison, summon monster IV*.
+* Evil creatures only.
+Corrupt Weapon
+Blackguards have access to a special spell, corrupt weapon,which is
+the opposing counterpart of the paladin spell bless weapon(see
+CHAPTER 6:
+CHARACTERS
+Table 6–6: The Blackguard
+BaseFortRefWill—— Spells per Day ——
+LevelAttack BonusSaveSaveSaveSpecial1st2nd3rd4th
+1st+1+200Aura of evil, detect good, poison use0———
+2nd+2+300Dark blessing, smite good 1/day1———
+3rd+3+3+1+1Command undead, aura of despair10——
+4th+4+4+1+1Sneak attack +1d611——
+5th+5+4+1+1Fiendish servant, smite good 2/day110—
+6th+6+5+2+2111—
+7th+7+5+2+2Sneak attack +2d62110
+8th+8+6+2+22111
+9th+9+6+3+32211
+10th+10+7+3+3Sneak attack +3d6, smite good 3/day2221
+A blackguard

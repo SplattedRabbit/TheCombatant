@@ -1,0 +1,138 @@
+Reflex save. Creatures not struck but within the spread ignore the
+impact damage and take only half damage from the fire spread on a
+successful DC 13 Reflex save. Range is 70 feet, at the end of which
+the shooting starexplodes, unless it strikes a creature or object before
+that. A shooting staralways follows a straight line, and any creature in
+its path must make a save or be hit by the projectile.
+Indoors at night, or underground, the ring of shooting starshas
+the following properties.
+•Faerie fire(twice per day)
+•Spark shower(special, once per day)
+The spark showeris a flying cloud of sizzling purple sparks that
+fan out from the ring for a distance of 20 feet in an arc 10 feet wide.
+Creatures within this area take 2d8 points of damage each if not
+wearing metal armor or carrying a metal weapon. Those wearing
+metal armor and/or carrying a metal weapon take 4d8 points of
+damage.
+Strong evocation; CL 12th; Forge Ring, light, faerie fire, fireball,
+lightning bolt; Price 50,000 gp.
+Spell Storing, Minor:A minor ring of spell storing contains up to
+three levels of spells that the wearer can cast. Each spell has a caster
+level equal to the minimum level needed to cast that spell. The
+user need not provide any material components or focus, or
+pay an XP cost to cast the spell, and there is no arcane spell
+failure chance for wearing armor (because the ring
+wearer need not gesture). The activation time for the
+ring is same as the casting time for the relevant spell,
+with a minimum of 1 standard action.
+For a randomly generated ring, treat it as a
+scroll to determine what spells are stored in it
+(see the Scrolls section later in this chapter). If
+you roll a spell that would put the ring over the
+three-level limit, ignore that roll; the ring has no
+more spells in it. (Not every newly discovered ring
+need be fully charged.)
+A spellcaster can cast any spells into the ring, so long as
+the total spell levels do not add up to more than three. Meta-
+magic versions of spells take up storage space equal to their spell
+level modified by the metamagic feat. A spellcaster
+can use a scroll to put a spell into the minor ring of
+spell storing.
+A wizard could cast two magic missile spells and a mage armor
+spell into the ring (1 + 1 + 1 = 3). She could then give the ring to a
+druid, who casts the mage armor spell from the ring and then puts
+a calm animal spell into the ring. The druid could give the ring to a
+barbarian, who could use all the spells but could not replace any.
+The ring magically imparts to the wearer the names of all spells
+currently stored within it.
+Faint evocation; CL 5th; Forge Ring, imbue with spell ability;
+Price 18,000 gp.
+Spell Storing:As the minor ring of spell storing, except it holds
+up to five levels of spells.
+Moderate evocation; CL 9th; Forge Ring, imbue with spell ability;
+Price 50,000 gp.
+Spell Storing, Major:As the minor ring of spell storing, except it
+holds up to ten levels of spells.
+Strong evocation; CL 17th; Forge Ring, imbue with spell ability;
+Price 200,000 gp.
+Spell Turning: Up to three times per day on command, this
+simple platinum band automatically reflects the next nine levels
+of spells cast at the wearer, exactly as if spell turning had been cast
+upon the wearer.
+Strong abjuration; CL 13th; Forge Ring, spell turning; Price
+98,280 gp.
+Sustenance: This ring continually provides its wearer with
+life-sustaining nourishment. The ring also refreshes the body and
+mind, so that its wearer needs only sleep 2 hours per day to gain
+the benefit of 8 hours of sleep. The ring must be worn for a full
+week before it begins to work. If it is removed, the owner must
+wear it for another week to reattune it to himself.
+Faint conjuration; CL 5th; Forge Ring, create food and water; Price
+2,500 gp.
+Swimming: This silver ring has a wave pattern etched into the
+band. It continually grants the wearer a +5 competence bonus on
+Swim checks.
+Faint transmutation; CL 2nd; Forge Ring, creator must have 5
+ranks in the Swim skill; Price 2,500 gp. 
+Swimming, Improved:As swimming, except it grants a +10
+competence bonus on its wearer’s Swim checks. 
+Moderate transmutation; CL 7th; Forge Ring, creator must have
+10 ranks in the Swim skill; Price 10,000 gp.
+Telekinesis: This ring allows the caster to use the spell telekine-
+sison command.
+Moderate transmutation; CL 9th; Forge Ring, telekinesis; Price
+75,000 gp.
+Three Wishes: This ring is set with three rubies. Each ruby
+stores a wishspell, activated by the ring. When a wish
+is used, that ruby disappears. For a randomly gen-
+erated ring, roll 1d3 to determine the remaining
+number of rubies. When all the wishesare used,
+the ring becomes a nonmagical item.
+Strong evocation (if miracleis used); CL 20th;
+Forge Ring, wish ormiracle; Price 97,950 gp; Cost
+11,475 gp + 15,918 XP.
+Water Walking: This ring, set with an opal,
+allows the wearer to continually utilize the effects of
+the spell water walk.
+Moderate transmutation; CL 9th; Forge Ring,
+water walk; Price 15,000 gp.
+Wizardry: This special ring comes in four kinds (ring
+of wizardry I, ring of wizardry II, ring of wizardry III,and ring of wiz-
+ardry IV), all of them useful only to arcane spellcasters. The
+wearer’s arcane spells per day are doubled for one specific spell
+level. A ring of wizardry Idoubles 1st-level spells, a ring of wizardry
+IIdoubles 2nd-level spells, a ring of wizardry IIIdoubles 3rd-level
+spells, and a ring of wizardry IVdoubles 4th-level spells. Bonus spells
+from high ability scores or school specialization are not doubled.
+Moderate (wizardry I) or strong (wizardry II–IV) (no school); CL
+11th (I), 14th (II), 17th (III), 20th (IV); Forge Ring, limited wish;
+Price 20,000 gp (I), 40,000 gp (II), 70,000 gp (III), 100,000 gp (IV).
+X-Ray Vision:On command, this ring gives its possessor the
+ability to see into and through solid matter. Vision range is 20 feet,
+with the viewer seeing as if he were looking at something in
+normal light even if there is no illumination. (For example, if the
+wearer looks into a locked chest, he can see inside even if there’s
+no light within.) X-ray vision can penetrate 1 foot of stone, 1 inch
+of common metal, or up to 3 feet of wood or dirt. Thicker sub-
+stances or a thin sheet of lead blocks the vision.
+Using the ring is physically exhausting, causing the wearer 1
+point of Constitution damage per minute after the first 10 min-
+utes of use in a single day.
+Moderate divination; CL 6th; Forge Ring, true seeing;Price
+25,000 gp.
+RODS
+Rods are scepterlike devices that have unique magical powers and
+do not usually have charges. Anyone can use a rod.
+Physical Description:Rods weigh approximately 5 pounds.
+They range from 2 feet to 3 feet long and are usually made of iron
+or some other metal. (Many, as noted in their descriptions, can
+function as light maces or clubs due to their sturdy construction.)
+These sturdy items have AC 9, 10 hit points, hardness 10, and a
+break DC of 27.
+Activation:Details relating to rod use vary from item to item.
+See the individual descriptions for specifics.
+233
+CHAPTER 7:
+MAGIC ITEMS
+Ring of 
+three wishes

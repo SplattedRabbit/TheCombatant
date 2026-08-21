@@ -1,0 +1,156 @@
+If a divine spell is cast at different levels by clerics and druids, it
+appears on Table 7–24 at the level appropriate to a cleric (consid-
+ered the default choice between clerics and druids). Examples:
+cure serious wounds, neutralize poison, flame strike.
+Many spells are either arcane or divine, depending on the class
+of the caster. Such spells appear on both lists at the level appropri-
+ate to the class of the arcane or divine caster.
+STAFFS
+A staff is a long shaft of wood that stores several spells. Unlike
+wands (see page 245), which can contain a wide variety of spells,
+each staff is of a certain kind and holds specific spells. A staff has
+50 charges when created.
+Physical Description:A typical staff is 4 feet to 7 feet long and 2
+inches to 3 inches thick, weighing about 5 pounds. Most staffs are
+wood, but a rare few are bone, metal, or even glass. (These are
+extremely exotic.) Staffs often have a gem or some device at their tip or
+are shod in metal at one or both ends. Staffs are often decorated with
+carvings or runes. A typical staff is like a walking stick, quarterstaff, or
+cudgel. It has AC 7, 10 hit points, hardness 5, and a break DC of 24.
+Activation:Staffs use the spell trigger activation method, so
+casting a spell from a staff is usually a standard action that doesn’t
+provoke attacks of opportunity. (If the spell being cast, however,
+has a longer casting time than 1 standard action, it takes that long
+to cast the spell from a staff.) To activate a staff, a character must
+hold it forth in at least one hand (or whatever passes for a hand, for
+nonhumanoid creatures).
+Random Generation:To generate staffs randomly, roll on
+Table 7–25: Staffs.
+Special Qualities:Roll d%. A 01–30 result indicates that some-
+thing (a design, inscription, or the like) provides some clue to the
+staff ’s function, and 31–100 indicates no special qualities.
+Staff Descriptions
+Staffs have immense utility because they pack so many capabili-
+ties into one item and they use the wielder’s ability score and rele-
+vant feats to set the DC for saves against their spells. Unlike with
+other sorts of magic items, the wielder can use his caster level
+when activating the power of a staff if it’s higher than the caster
+level of the staff.
+This means that staffs are far more potent in the hands of a pow-
+erful spellcaster. Because they use the wielder’s ability score to set
+the save DC for the spell, spells from a staff are often harder to
+resist than ones from other magic items, which use the minimum
+ability score required to cast the spell. Not only are aspects of the
+spell dependent on caster level (range, duration, and so on) poten-
+tially higher, but spells from a staff are harder to dispel and have a
+better chance of overcoming a target’s spell resistance (especially
+if the wielder has the Spell Penetration feat).
+Furthermore, a staff can hold a spell of any level, unlike a wand,
+which is limited to spells of 4th level or lower. The minimum
+caster level of a staff is 8th. Standard staffs are described below. 
+Abjuration:Usually carved from the heartwood of an ancient
+oak or other large tree, this staff allows use of the following spells:
+•Shield(1 charge)
+•Resist energy(1 charge)
+•Dispel magic(1 charge)
+•Lesser globe of invulnerability(2 charges)
+•Dismissal(2 charges)
+•Repulsion(3 charges)
+243
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–25: Staffs
+MediumMajorStaffMarket Price
+01–1501–03Charming16,500 gp
+16–3004–09Fire17,750 gp
+31–4010–11Swarming insects24,750 gp
+41–6012–17Healing27,750 gp
+61–7518–19Size alteration29,000 gp
+76–9020–24Illumination48,250 gp
+91–9525–31Frost56,250 gp
+96–10032–38Defense58,250 gp
+—39–43Abjuration65,000 gp
+—44–48Conjuration65,000 gp
+—49–53Enchantment65,000 gp
+—54–58Evocation65,000 gp
+—59–63Illusion65,000 gp
+—64–68Necromancy65,000 gp
+—69–73Transmutation65,000 gp
+—74–77Divination73,500 gp
+—78–82Earth and stone80,500 gp
+—83–87Woodlands101,250 gp
+—88–92Life155,750 gp
+—93–97Passage170,500 gp
+—98–100Power211,000 gp
+33–36dictum2,275 gp
+37–41ethereal jaunt2,275 gp
+42–45holy word2,275 gp
+46–50inflict serious wounds,2,275 gp
+mass
+51–55refuge3,775 gp
+56–60regenerate2,275 gp
+61–65repulsion2,275 gp
+66–69restoration, greater4,775 gp
+70–71resurrection12,275 gp
+72–76scrying, greater2,275 gp
+77–81summon monster VII2,275 gp
+82–85summon nature’s ally VII2,275 gp
+86–90sunbeam2,275 gp
+91symbol of stunning7,275 gp
+92symbol of weakness7,275 gp
+93–97transmute metal to wood2,275 gp
+98–100word of chaos2,275 gp
+8th-Level Divine Spells
+d%SpellMarket Price
+01–04animal shapes3,000 gp
+05–10antimagic field3,000 gp
+11–13cloak of chaos3,000 gp
+14–17control plants3,000 gp
+18–20create greater undead3,600 gp
+21–27cure critical wounds, 
+mass3,000 gp
+28–32dimensional lock3,000 gp
+33–36discern location3,000 gp
+37–41earthquake3,000 gp
+42–45finger of death3,000 gp
+46–49fire storm3,000 gp
+50–52holy aura3,000 gp
+53–56inflict critical wounds,3,000 gp
+mass
+57–60planar ally, greater5,500 gp
+61–65repel metal or stone3,000 gp
+66–69reverse gravity3,000 gp
+70–72shield of law3,000 gp
+73–76spell immunity, greater3,000 gp
+77–80summon monster VIII3,000 gp
+81–84summon nature’s ally VIII3,000 gp
+85–89sunburst3,000 gp
+90–91symbol of death8,000 gp
+92–93symbol of insanity8,000 gp
+94–96unholy aura3,000 gp
+97–100whirlwind3,000 gp
+9th-Level Divine Spells
+d%SpellMarket Price
+01–04antipathy3,825 gp
+05–07astral projection4,870 gp
+08–13elemental swarm3,825 gp
+14–19energy drain3,825 gp
+20–25etherealness3,825 gp
+26–31foresight3,825 gp
+32–37gate8,825 gp
+38–46heal, mass3,825 gp
+47–53implosion3,825 gp
+54–55miracle28,825 gp
+1
+56–61regenerate3,825 gp
+62–66shambler3,825 gp
+67–72shapechange3,825 gp
+73–77soul bind3,825 gp
+78–83storm of vengeance3,825 gp
+84–89summon monster IX3,825 gp
+90–95summon nature’s ally IX3,825 gp
+96–99sympathy5,325 gp
+100true resurrection28,825 gp
+1 Assumes powerful request but no
+expensive material components in excess
+of 100 gp and no additional XP cost.

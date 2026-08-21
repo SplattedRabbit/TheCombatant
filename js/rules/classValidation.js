@@ -61,7 +61,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
   // 3. Feats Check
   if (prereqs.feats) {
     prereqs.feats.forEach(featId => {
-      const hasFeat = pc.feats && pc.feats.some(f => f.id === featId);
+      const hasFeat = typeof pc.hasFeat === 'function' ? pc.hasFeat(featId) : (pc.feats && pc.feats.some(f => f.id === featId));
       const featName = featId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
       metDetails.push({
         label: `Feat: ${featName}`,

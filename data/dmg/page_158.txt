@@ -1,0 +1,131 @@
+ELEMENTAL PLANE OF WATER
+The Elemental Plane of Water is a sea without a floor or a surface,
+an entirely fluid environment lit by a diffuse glow. It is one of the
+more hospitable of the Inner Planes once a traveler gets past the
+problem of breathing the local medium.
+The eternal oceans of this plane vary between ice cold and boil-
+ing hot, between saline and fresh. They are perpetually in motion,
+wracked by currents and tides. The plane’s permanent settlements
+form around bits of flotsam and jetsam suspended within this end-
+less liquid. These settlements drift on the tides of the Elemental
+Plane of Water.
+The Elemental Plane of Water has the following traits.
+•Subjective directional gravity. The gravity here works similar to
+that of the Elemental Plane of Air. But sinking or rising on the
+Elemental Plane of Water is slower (and less dangerous) than on
+the Elemental Plane of Air.
+•Water-dominant.
+•Enhanced magic. Spells and spell-like abilities that use or create
+water  are  both  extended  and  enlarged  (as  if  the  Extend  Spell
+and Enlarge Spell metamagic feats had been used on them, but
+the spells don’t require higher-level slots). Spells and spell-like
+abilities that are already extended or enlarged are unaffected by
+this benefit.
+•Impeded  magic.  Spells  and  spell-like  abilities  with  the  fire
+descriptor (including spells of the Fire domain) are impeded.
+Example Water Site: Sargasso Doldrum
+A spherical tangle of kelp and seaweed a mile across, the sargasso
+doldrum is home to many dangerous predators that feed on the
+herbivorous fish that eat the seaweed.
+Characters who explore the sargasso doldrum find it tough
+going. Even if they have a swim speed, it takes 2 squares of move-
+ment to struggle through each square in the web of kelp. Only
+those with a freedom of movementor pass without trace spell can move
+normally through the area. Line of sight is limited to 30 feet, and
+creatures more than 20 feet away have concealment.
+The sargasso doldrum is infested with dire sharks, who attack in
+great hunting schools without regard to their own safety. More
+sinister foes such as aboleths and black dragons study interlopers
+as they fight the sharks, deciding how best to hunt them if they
+stay among the seaweed.
+Elemental Plane of Water Encounters (EL 10)
+d%EncounterAverage EL
+01–201 elder water elemental11
+21–451d3 elder tojanidas11
+46–651d4+2 adult tojanidas9
+66–851 greater water elemental9
+86–1001 Huge water elemental7
+A ruined war galley sits in the center of the sargasso doldrum.
+The ship, protected by a neutral alignment, maximized forbiddance
+spell, holds the treasure trove of a powerful water naga wizard. The
+aboleths and black dragons don’t know what’s in the ship’s hold;
+they would just hire neutral creatures to extract the riches if they
+found out what they could gain.
+To draw an encounter map for the doldrums, include some ir-
+regular clusters of adjacent squares roughly 15 feet across. These
+squares, representing particularly dense clots of sargasso, function
+as heavy undergrowth (see page 87).
+NEGATIVE ENERGY PLANE
+The Negative Energy Plane is a barren, empty place, a void with-
+out end, and a place of empty, endless night. Worse, it is a needy,
+greedy plane, sucking the life out of anything that is vulnerable.
+Heat, fire, and life itself are all drawn into the maw of this plane,
+which always hungers for more.
+To an observer, there’s little to see on the Negative Energy
+Plane. It is a dark, empty place, an eternal pit where a traveler can
+fall until the plane itself steals away all light and life.
+The Negative Energy Plane is the most hostile of the Inner
+Planes, and the most uncaring and intolerant of life. Only crea-
+tures immune to its life-draining energies can survive there.
+The Negative Energy Plane has the following traits.
+•Subjective directional gravity.
+•Major  negative-dominant.  Some  areas  within  the  plane  have
+only the minor negative-dominant trait, and these islands tend
+to be inhabited.
+•Enhanced magic. Spells and spell-like abilities that use negative
+energy are maximized (as if the Maximize Spell metamagic feat
+had been used on them, but the spells don’t require higher-level
+slots). Spells and spell-like abilities that are already maximized
+are  unaffected  by  this  benefit.  Class  abilities  that  use  negative
+energy,  such  as  rebuking  and  controlling  undead,  gain  a  +10
+bonus on the roll to determine Hit Dice affected.
+•Impeded  magic.  Spells  and  spell-like  abilities  that  use  positive
+energy,  including  curespells,  are  impeded.  Characters  on  this
+plane  take  a  –10  penalty  on  Fortitude  saving  throws  made  to
+remove negative levels bestowed by an energy drain attack.
+Random Encounters: Because the Negative Energy Plane is
+virtually devoid of creatures, random encounters on the plane are
+exceedingly rare.
+Example Negative Plane Site: Voidstone Field
+In some locations on the Negative Energy Plane, the collapsing
+intensity of the plane is so great that the negative energy folds in
+on itself, stabilizing into solid chunks of utterly black matter.
+These chunks of voidstone might be the building blocks of such
+items as the sphere of annihilation(page 279). Indeed, anything that
+comes into contact with a voidstone is destroyed in seconds.
+Unlike with a sphere of annihilation,a character touching a piece
+of voidstone gets a DC 25 Fortitude save each round he or she
+stays in contact with it. Natives of the Negative Energy Plane are
+vulnerable to voidstones.
+A chunk of voidstone cannot be controlled through mental
+energy as a spheres of annihilation can be.
+Voidstones may be of any size, ranging from inches across to
+dozens of feet. To draw them on an encounter map, put small dots
+(representing very small voidstones roughly 1 foot in diameter) in
+about 5% of the squares. Draw 3d6 voidstones that take up a whole
+square each, and add 1d4 very large voidstones that are 10 feet or
+more in diameter.
+The very small and very large voidstones are stationary, but the
+square-sized voidstones move. Each round at initiative count 0,
+each square-sized voidstone moves 1d3 squares toward the nearest
+living creature.
+Nightwalkers lurk among the voidstones, which act as an alarm
+system for them (the voidstones stay stationary because the night-
+walkers are undead). PCs who fight the nightwalkers will also have
+to contend with the inexorable approach of the voidstones. The
+nightwalkers have learned to use the unusual terrain in other ways;
+they’ll use their heft to bull-rush foes into oblivion, for example.
+POSITIVE ENERGY PLANE
+The Positive Energy Plane is best compared to the heart of a star. It
+is a continual furnace of creation, a domain of brilliance beyond
+the ability of mortal eyes to comprehend. Its very being wavers
+and ripples as new matter and energy is born and swells to full
+power like a bursting fruit. It is a vibrant plane, so alive with itself
+that travelers themselves are empowered by visiting it.
+The Positive Energy Plane has no surface and is akin to the Ele-
+mental Plane of Air with its wide-open nature. However, every bit
+of this plane glows brightly with innate power. This power is dan-
+gerous to mortal forms, which are not made to handle it.
+157
+CHAPTER 5:
+CAMPAIGNS

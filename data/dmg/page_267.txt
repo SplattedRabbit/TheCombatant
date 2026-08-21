@@ -1,0 +1,135 @@
+266
+•Its  wearer  can  use  up  to  six  of  the  embroidered  stars  on  the
+chest  portion  of  the  robe  as  +5  shuriken.The  robe  grants  its
+wearer  proficiency  with  such  weapons.  Each  shuriken  disap-
+pears after it is used.
+Strong varied; CL 15th; Craft Wondrous Item, magic missile,
+astral projectionor plane shift;Price 58,000 gp; Weight 1 lb.
+Robe of Useful Items:This appears to be an unremarkable
+robe, but a character who dons it notes that it is adorned with
+small cloth patches of various shapes. Only the wearer of the robe
+can see these patches, recognize them for what items they
+become, and detach them. One patch can be detached each round.
+Detaching a patch causes it to become an actual item, as indicated
+below. A newly created robe of useful itemsalways has two each of
+the following patches:
+•Dagger
+•Bullseye lantern (filled and lit)
+•Mirror (a highly polished 2-foot-by-4-foot steel mirror)
+•Pole (10-foot length)
+•Hempen rope (50-foot coil)
+•Sack
+In addition, the robe has several other patches. Roll 4d4 for the
+number of other patches and then roll for each patch on the table
+below to determine its nature.
+d%Result
+01–08Bag of 100 gold pieces
+09–15Coffer, silver (6 in. by 6 in. by 1 ft.), 500 gp value
+16–22Door, iron (up to 10 ft. wide and 10 ft. high and barred on
+one side—must be placed upright, attaches and hinges
+itself )
+23–30Gems, 10 (100 gp value each)
+31–44Ladder, wooden (24 ft. long)
+45–51Mule (with saddle bags)
+52–59Pit, open (10 ft. by 10 ft. by 10 ft.)
+60–68Potion of cure serious wounds
+69–75Rowboat (12 ft. long)
+76–83Minor scroll of one randomly determined spell
+84–90War dogs, pair (treat as riding dogs)
+91–96Window (2 ft. by 4 ft., up to 2 ft. deep)
+97–100Portable ram
+Multiple items of the same kind are permissible. Once removed, a
+patch cannot be replaced.
+Moderate transmutation; CL 9th; Craft Wondrous Item, fabri-
+cate; Price 7,000 gp; Weight 1 lb.
+Rope of Climbing:A 60-foot-long rope of climbingis no thicker
+than a wand, but it is strong enough to support 3,000 pounds.
+Upon command, the rope snakes forward, upward, downward, or
+in any other direction at 10 feet per round, attaching itself
+securely wherever its owner desires. It can unfasten itself and
+return in the same manner.
+A rope of climbingcan be commanded to knot or unknot itself.
+This causes large knots to appear at 1-foot intervals along the rope.
+Knotting shortens the rope to a 50-foot length until the knots are
+untied but lowers the DC of Climb checks while using it by 10. A
+creature must hold one end of the rope when its magic is invoked.
+Faint transmutation; CL 3rd; Craft Wondrous Item, animate
+rope; Price 3,000 gp; Weight 3 lb.
+Rope of Entanglement:A rope of entanglementlooks just like
+any other hempen rope about 30 feet long. Upon command, the
+rope lashes forward 20 feet or upward 10 feet to entangle a victim.
+An entangled creature can break free with a DC 20 Strength check
+or a DC 20 Escape Artist check.
+The rope has AC 22, 12 hit points, and hardness 10, and it has
+damage reduction 5/slashing as well. The rope repairs damage to
+itself at a rate of 1 point per 5 minutes, but if a rope of entanglement
+is severed (all 12 hit points lost to damage), it is destroyed.
+Moderate transmutation; CL 12th; Craft Wondrous Item, ani-
+mate objects, animate rope, entangle; Price 21,000 gp; Weight 5 lb.
+Salve of Slipperiness: This substance provides a +20 compe-
+tence bonus on all Escape Artist checks, meaning that it is almost
+impossible to grapple such a character or to tie or chain him up. In
+addition, such obstructions as webs (magical or otherwise) do not
+affect an anointed individual. Magic ropes and the like do not avail
+against this salve. If it is smeared on a floor or on steps, the area
+should be treated as a long-lasting grease spell. The salve requires 8
+hours to wear off normally, or it can be wiped off with an alcohol
+solution (even wine).
+Salve of slipperinessis needed to coat the inside of a container that
+is meant to hold sovereign glue(see below).
+Faint conjuration; CL 6th; Craft Wondrous Item, grease; Price
+1,000 gp.
+Scabbard of Keen Edges:This scabbard is fashioned from
+cured leather and fine silver. It can shrink or enlarge to accommo-
+date any knife, dagger, sword, or similar weapon up to and includ-
+ing a greatsword. Up to three times per day on command, the scab-
+bard casts keen edgeon any blade placed within it.
+Faint transmutation; CL 5th; Craft Wondrous Item, keen edge;
+Price 16,000 gp; Weight 1 lb.
+Scarab of Protection:This device appears to be a silver medal-
+lion in the shape of a beetle. If it is held for 1 round, an inscription
+appears on its surface letting the holder know that it is a protective
+device.
+The scarab’s possessor gains spell resistance 20. The scarab can
+also absorb energy-draining attacks (such as the slam attack of a
+vampire spawn), death effects (such as finger of death), and negative
+energy effects (such as from an inflict critical wounds spell).Upon
+absorbing twelve such attacks, the scarab turns to powder and is
+destroyed.
+Strong abjuration and necromancy; CL 18th; Craft Wondrous
+Item, death ward, spell resistance; Price 38,000 gp.
+Scarab, Golembane:This beetle-shaped pin enables its wearer
+to detect any golem within 60 feet, although he must concentrate
+(a standard action) in order for the detection to take place. A
+scarab enables its possessor to combat golems with weapons,
+unarmed attacks, or natural weapons as if those golems had no
+damage reduction.
+Moderate divination; CL 8th; Craft Wondrous Item, detect magic,
+creator must be at least 10th level; Price 2,500 gp.
+Shrouds of Disintegration:These burial wrappings look to be
+made of fine, embroidered materials. When a body is placed
+inside, a command word will turn it to dust. The magic of the
+shrouds is usable only once, after which the wrappings become
+ordinary, fine cloth.
+Strong transmutation; CL 15th; Craft Wondrous Item,disinte-
+grate; Price 6,600 gp; Weight 10 lb.
+Silversheen:This substance can be applied to a weapon as a
+standard action. It will give the weapon the properties of alchemi-
+cal silver (see page 284) for 1 hour, replacing the properties of any
+other special material it might have. For example, a +1 holy
+adamantine longswordbecomes a +1 holy silver longswordfor the
+duration of the effect. One vial will coat a single melee weapon or
+20 units of ammunition.
+Faint transmutation; CL 5th; Craft Wondrous Item; Price
+250 gp.
+Slippers of Spider Climbing:When worn, a pair of these slip-
+pers enable movement on vertical surfaces or even upside down
+along ceilings, leaving the wearer’s hands free. Her speed is 20
+feet. Severely slippery surfaces—icy, oiled, or greased surfaces—
+make these slippers useless. The slippers can be used for 10 min-
+utes per day, split up as the wearer chooses.
+Faint transmutation; CL 4th; Craft Wondrous Item, spider climb;
+Price 4,800 gp; Weight 1/2 lb.
+Sovereign Glue:This pale amber substance is thick and vis-
+CHAPTER 7:
+MAGIC ITEMS

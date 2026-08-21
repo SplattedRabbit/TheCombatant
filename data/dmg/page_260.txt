@@ -1,0 +1,139 @@
+already  is  a  flaming  weapon).  The  command  takes  1  round  to
+take effect.
+•The helm  provides  resistance  to  fire  30.  This  protection  does
+not  stack  with  similar  protection  from  other  sources,  such  as
+resist energy.
+Once all its jewels have lost their magic, the helm loses its
+powers and the gems turn to worthless powder. Removing a jewel
+destroys it.
+If a creature wearing the helm is damaged by magical fire (after
+the fire protection is taken into account) and fails an additional
+DC 15 Will save, the remaining gems on the helm overload and
+detonate. Remaining diamonds become prismatic spraysthat each
+randomly target a creature within range (possibly the wearer),
+rubies become straight-line walls of fire extending outward in a
+random  direction  from  the  helm  wearer,  and  fire  opals
+become fireballscentered on the helm wearer. The opals and
+the helm itself are destroyed.
+Strong varied; CL 13th; Craft Wondrous Item, detect
+undead, fireball, flame blade, light, prismatic spray, protection
+from energy, wall of fire; Price 125,000 gp; Weight 3 lb.
+Helm of Comprehend Languages and Read
+Magic:Appearing as a normal helmet, a helm of com-
+prehend languages and read magicgrants its wearer the
+ability to understand the spoken words of any crea-
+ture and to read text in any language and any magical
+writing. The wearer gains a +5 competence bonus on
+Decipher Script checks to understand messages
+written in incomplete, archaic, or exotic forms.
+Note that understanding a magical text does not
+necessarily imply spell use.
+Faint divination; CL 4th; Craft Wondrous Item,
+comprehend languages, read magic; Price 5,200 gp;
+Weight 3 lb.
+Helm of Telepathy:The wearer can use detect
+thoughts at will. Furthermore, he can send a tele-
+pathic message to anyone whose surface thoughts
+he is reading (allowing two-way communication).
+Once per day, the wearer of the helm can implant a
+suggestion(as the spell, Will DC 14 negates) along
+with his telepathic message.
+Faint divination and enchantment; CL 5th; Craft
+Wondrous Item, detect thoughts, suggestion; Price
+27,000 gp; Weight 3 lb.
+Helm of Teleportation:A character wear-
+ing this device may teleportthree times per
+day, exactly as if he had cast the spell of the
+same name.
+Moderate conjuration; CL 9th; Craft Wondrous Item, teleport;
+Price 73,500 gp; Weight 3 lb.
+Helm of Underwater Action:The wearer of this helmet can
+see underwater. Drawing the small lenses in compartments on
+either side into position before the wearer’s eyes activates the
+visual properties of the helm, allowing her to see five times farther
+than water and light conditions would allow for normal human
+vision. (Weeds, obstructions, and the like block vision in the usual
+manner.) If the command word is spoken, the helm of underwater
+actioncreates a globe of air around the wearer’s head and maintains
+it until the command word is spoken again, enabling her to
+breathe freely.
+Faint transmutation; CL 5th; Craft Wondrous Item, water breath-
+ing; Price 57,000 gp; Weight 3 lb.
+Heward’s Handy Haversack:A backpack of this sort appears
+to be well made, well used, and quite ordinary. It is constructed of
+finely tanned leather, and the straps have brass hardware and
+buckles. It has two side pouches, each of which appears large
+enough to hold about a quart of material. In fact, each is like a bag
+of holdingand can actually hold material of as much as 2 cubic feet
+in volume or 20 pounds in weight. The large central portion of the
+pack can contain up to 8 cubic feet or 80 pounds of material. Even
+when so filled, the backpack always weighs only 5 pounds.
+While such storage is useful enough, the pack has an even great-
+er power in addition. When the wearer reaches into it for a specific
+item, that item is always on top. Thus, no digging around and fum-
+bling is ever necessary to find what a haversack contains. Retriev-
+ing any specific item from a haversack is a move action, but it does
+not provoke the attacks of opportunity that retrieving a stored
+item usually does.
+Moderate conjuration; CL 9th; Craft Won-
+drous Item, Leomund’s secret chest; Price
+2,000 gp; Weight 5 lb.
+Horn of Blasting:This horn appears
+to  be  a  normal  trumpet.  It  can  be
+sounded as a normal horn, but if the
+command word is spoken and the
+instrument is then played, it deals
+5d6 points of sonic damage to crea-
+tures  within  a  40-foot  cone  and
+causes them to be deafened for 2d6
+rounds  (a  DC  16  Fortitude  save
+reduces the damage by half and negates
+the deafening). Crystalline objects and
+creatures take 7d6 points of sonic damage,
+with no save unless they’re held, worn, or
+carried   by   creatures   (Will   DC   16
+negates).
+If a horn of blastingis used magically
+more than once in a given day, there is
+a 20% cumulative chance with each
+extra use that it explodes and deals
+10d6 points of damage to the person
+sounding it.
+Moderate evocation; CL 7th; Craft
+Wondrous Item, shout; Price 20,000 gp;
+Weight 1 lb.
+Horn of Blasting, Greater:This horn
+functions as a horn of blasting, except that it deals
+10d6 points of sonic damage, stuns creatures for 1 round,
+and deafens them for 4d6 rounds (a DC 19 Fortitude reduces the
+damage by half and negates the stunning and deafening). Crys-
+talline objects take 16d6 points of sonic damage as described for
+the horn of blasting. A greater horn of blastingalso has a 20% cumula-
+tive chance of exploding.
+Strong evocation; CL 16th; Craft Wondrous Item, greater shout;
+Price 70,000 gp; Weight 1 lb.
+Horn of Fog:This small bugle allows its possessor to blow
+forth a thick cloud of heavy fog similar to that of an obscuring mist
+spell. The fog covers a 10-foot square next to the horn blower each
+round that the user continues to blow the horn; fog clouds travel
+10 feet each round in a straight line from the emanation point
+unless blocked by something substantial such as a wall. The device
+makes a deep, foghornlike noise, with the note dropping abruptly
+to a lower register at the end of each blast. The fog dissipates after
+3 minutes. A moderate wind (11+ mph) disperses the fog in 4
+rounds; a strong wind (21+ mph) disperses the fog in 1 round.
+Faint conjuration; CL 3rd; Craft Wondrous Item, obscuring mist;
+Price 2,000 gp; Weight 1 lb.
+Horn of Goodness/Evil:This trumpet adapts itself to its
+owner, so it produces either a good or an evil effect depending on
+the owner’s alignment. If the owner is neither good nor evil, the
+horn has no power whatsoever. If he is good, then blowing the
+horn has the effect of a magic circle against evil. If he is evil, then
+blowing the horn has the effect of a magic circle against good. In
+either case, this ward lasts for 1 hour. The horn can be blown once
+per day.
+259
+CHAPTER 7:
+MAGIC ITEMS
+Helm of
+brilliance

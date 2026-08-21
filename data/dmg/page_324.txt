@@ -1,0 +1,61 @@
+2
+Table 1–1: District Types
+Low Population
+Total
+District TypePop.Bbn    BrdClr    DrdFtr    Mnk    PalRgr    RogSor    WizAdpAri    ComExpWar
+Civic district350—33—8—1—8232102323048
+Civic district, ruined350—24—8———824442492540
+Elf neighborhood350—2228——2714242413045
+Embassy district350—34—91119242502301420
+Finance district350—23—5—1—1023—102495015
+Fine shops350———6———1246362435020
+Lord’s keep350—35—20——————201973075
+Lord’s keep, vacant350—33—10———8———42572540
+Magic district350—4526———768862083555
+Noble estates350—3——17—3—5———402073045
+Park district350—2326112713452582530
+University350—561621—6365102393030
+Wealthy residential350—23—8—1—7242152263050
+Average Population
+Total
+District TypePop.Bbn    BrdClr    DrdFtr    Mnk    PalRgr    RogSor    WizAdpAri    ComExpWar
+Average residential45013419111924443412540
+Dwarf neighborhood450314—18—1—711243183060
+Garrison450124—141216231823025150
+Gnome neighborhood450—23110——11026423442540
+Guildhall district450—3——6———1223—53295040
+Guildhall district, former450—5——12———1223—23245040
+Halfling encampment450—24112——11621423402540
+Marketplace450143—911112136—3383040
+Professionals450—2318—1—1137563235030
+Shops450—35191——11245—3593515
+Temple district450—316594325351052903555
+High Population
+Total
+District TypePop.Bbn    BrdClr    DrdFtr    Mnk    PalRgr    RogSor    WizAdpAri    ComExpWar
+Adventurer’s quarter550591252522325481023384060
+Anglers’ wharf550——2—8———8——6—4901620
+Apartment homes55023411111113255—4462035
+Caravan district5504531122—21535444052560
+Goblinoid ghetto5505—3—10———8——4—4251580
+Inn district550283191121626554393020
+Red light district550482—9———16235—4262550
+Shantytown550————————4——2—542—2
+Slave quarter5502———12———8————4832520
+Slum550211—8———121—8—480532
+Tannery district550221110———15216—4552530
+Tavern district550283—9——116234—4372540
+Tenement district550334111——116235—4711020
+Theater district550—7——12———15——4—4423040
+Undercity550425—161—12436824032550
+Warehouse district550—2——12———24——5—4372050
+Waterfront district55025311211—16125—4362540
+Special
+Total
+District TypePop.Bbn    BrdClr    DrdFtr    Mnk    PalRgr    RogSor    WizAdpAri    ComExpWar
+Remnant neighborhood45——2—4———4—1——15415
+Immigrant enclave70——7—6——12—20——15415
+Necropolis100——5—51——5122—6685
+Boat town350——118———8——4—31486
+Coliseum/Arena350432—242—28214—2081080
+Prison district350311—18———12——4—2161580

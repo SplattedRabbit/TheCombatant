@@ -1,0 +1,103 @@
+damage reduction 2/–, improved uncanny dodge, rage 3/day, trap
+sense +3, uncanny dodge; AL CE; SV Fort +9, Ref +5, Will +4; Str
+18, Dex 14, Con 14, Int 8, Wis 12, Cha 6.
+Skills and Feats:Climb +11, Jump +10, Listen +7, Survival +8;
+Dodge, Improved Critical (greataxe), Power Attack, Weapon Focus
+(greataxe).
+Improved Uncanny Dodge (Ex):This barbarian cannot be flanked
+except by a rogue of at least four levels higher than the barbarian.
+Rage (Ex): +4 to Str, +4 to Con, +2 on Will saves, –2 to AC for up
+to 7 rounds.
+Trap Sense (Ex): This barbarian has an intuitive sense that alerts
+him to danger from traps, granting a +3 bonus on Reflex saves and
+a +3 dodge bonus to AC against attacks by traps.
+Uncanny Dodge (Ex):This barbarian can react to danger before
+his senses would normally allow him to do so. He retains his Dex-
+terity bonus to AC even when caught flat-footed.
+Possessions: +2 breastplate, amulet of natural armor +1, +1 greataxe, +1
+composite longbow (+4 Str bonus), 20 arrows, 5 silvered arrows, 2
+potions of cure moderate wounds, climber’s kit, dagger.
+NPC BARD
+Starting Ability Scores:Str 10, Dex 13, Con 12, Int 14, Wis 8,
+Cha 15.
+Increased Ability Scores:4th, Cha 16; 8th, Cha 17 (19); 12th,
+Cha 18 (20); 16th, Cha 19 (21); 17th, Cha 19 (23); 18th, Cha 19 (25);
+20th, Cha 20 (26).
+Sample 15th-Level NPC Bard:Human Brd 15; CR 15; Medium
+humanoid; HD 15d6+15; hp 70; Init +5; Spd 30 ft.; AC 19, touch 14,
+flat-footed 18; Base Atk +11; Grp +11; Atk +14 melee (1d8+2/19–20,
++2 longsword) or +13 ranged (1d8/19–20, masterwork light cross-
+bow); Full Atk +14/+9/+4 melee (1d8+2/19–20, +2 longsword) or +13
+ranged (1d8/19–20, masterwork light crossbow); SA —; SQ bardic
+knowledge 17, countersong 15/day, fascinate 15/day,inspire com-
+petence 15/day, inspire courage 15/day, inspire greatness 15/day,
+song of freedom 15/day,suggestion;AL NE; SV Fort +6, Ref +10, Will
++8; Str 10, Dex 13, Con 12, Int 14, Wis 8, Cha 20. 
+Skills and Feats:Balance +3, Bluff +23, Decipher Script +20,
+Diplomacy +30, Gather Information +23, Intimidate +7, Jump +2,
+Perform +26, Sense Motive +17, Spellcraft +23, Tumble +19, Use
+Magic Device +5; Dodge, Improved Initiative, Mobility, Skill
+Focus (Diplomacy), Skill Focus (Perform), Skill Focus (Spellcraft),
+Weapon Focus (longsword).
+Countersong (Su):This bard can counter magical effects that
+depend on sound by making a Perform check for each round of
+countersong. Any creature within 30 feet of the bard who is
+affected by a sonic or language-dependent magical attack may use
+the bard’s Perform check result in place of his or her saving throw
+if desired. Countersong lasts for 10 rounds. 
+Fascinate (Sp):This bard can cause up to five creatures within 90
+feet that can see and hear him to become fascinatedwith him (sit
+quietly, –4 penalty on skill checks made as reactions, such as
+Listen and Spot checks). The bard’s Perform check result is the DC
+for the opponent’s Will save. Any obvious threat breaks the effect.
+Fascination lasts 15 rounds. 
+Inspire Competence (Su):An ally within 30 feet who can see and
+hear this bard gets a +2 competence bonus on skill checks with a
+particular skill for as long as he can hear the music. Inspire confi-
+dence lasts for up to 20 rounds.
+Inspire Courage (Su): Allies (including the bard) who can hear
+this bard receive a +3 morale bonus on saves against charm and
+fear effects and a +3 morale bonus on attack and weapon damage
+rolls. The effect lasts for 5 rounds after the ally can no longer hear
+the bard.
+Inspire Greatness (Su): After hearing this bard sing for a full
+round, up to three creatures within 30 feet (including the bard, if
+desired) gain +2 Hit Dice (d10s that grant temporary hit points), a
++2 competence bonus on attacks, and a +1 competence bonus on
+Fortitude saves. The effect lasts until 5 rounds after the creature
+can no longer hear the bard.
+113
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–12: NPC Barbarian
+Skill Pts./
+LevelhpACMeleeRangedF/R/WFeatsGear
+1st1316+4+3+3/+2/+116/1Mwk scale, mwk melee, mundane ranged, 200 gp
+2nd2017+5+5+4/+2/+120/1Mwk breastplate, mwk melee, mundane ranged, 1,200 gp
+3rd2817+6+6+4/+3/+224/2As 2nd level, except 1,700 gp
+4th3517+8+7+5/+3/+228/2As 2nd level, except 2,500 gp
+5th4318+9+8+5/+3/+232/2+1 breastplate,mwk melee, mundane ranged, 2,500 gp 
+6th5018+10/5+9/4+6/+4/+336/3As 5th level, except 3,800 gp
+7th5818+11/6+10/5+6/+4/+340/3+1 breastplate, +1 melee,mundane ranged, 3,500 gp
+8th7319+12/7+11/6+8/+4/+344/3+1 breastplate, amulet of natural armor +1, +1 melee, mundane
+ranged, 3,500 gp
+9th8120+13/8+12/7+8/+5/+448/4+2 breastplate, amulet +1, +1 melee,mundane ranged,
+6,000 gp
+10th9020+14/9+14/9+9/+5/+452/4+2 breastplate, amulet +1, +1 melee, +1 ranged, 1,000 gp
+11th9821+15/10/5+15/10/5+9/+5/+456/4+3 breastplate, amulet +1, +1 melee, +1 ranged,1,000 gp
+12th10722+16/11/6+16/11/6+10/+6/+560/5+3 breastplate, amulet +2, +1 melee, +1 ranged, 1,000 gp 
+13th11524+17/12/7+17/12/7+10/+6/+564/5As 12th level, except 9,000 gp
+14th12424+19/14/9+18/13/8+11/+6/+568/5+3 breastplate, amulet +2, ring of protection +2, +2 melee,  +1
+ranged, 11,000 gp 
+15th13224+21/16/11+19/14/9+11/+7/+672/6+3 breastplate, amulet +2, ring +2, +3 melee, +1 ranged,
+14,000 gp 
+16th14124+24/19/14/9+21/16/11/6+12/+7/+676/6+3 breastplate, amulet +2, ring +2, +4 melee, +2 ranged,
+25,000 gp 
+17th14926+26/21/16/11+22/17/12/7+12/+7/+680/6+4 breastplate, amulet +3, ring +2, +4 melee, +2 ranged,
+gauntlets of ogre power +2,3,000 gp
+18th15828+27/22/17/12+24/19/14/9+13/+7/+684/7+5 breastplate, amulet +3, ring +3, +4 melee, +3 ranged,
+gauntlets +2, 17,000 gp
+19th16629+30/25/20/15+26/21/16/11+13/+8/+688/7+5 breastplate, amulet +3, ring +3, +4 melee, +3 ranged, belt of
+giant Strength +6, gloves of Dexterity +2,16,000 gp
+20th17529+31/26/21/16+27/22/17/12+14/+9/+792/7As 19th level, except 66,000 gp

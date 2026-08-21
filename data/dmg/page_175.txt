@@ -1,0 +1,132 @@
+174
+related ones. Remember that size changes many aspects of a charac-
+ter. Benefits should be balanced with drawbacks. Pay strict attention
+to culture and environment for ideas on how to shape the race.
+An interesting avenue you may wish to examine regarding new
+race creation is the idea of half-breed races. The Player ’s Handbook
+already presents the half-elf and the half-orc. The Monster Manual
+gives rules on half-celestials, half-dragons, half-fiends, and more
+mixed races such as the planetouched (aasimars and tieflings).
+Half-ogres, half-trolls, or elf–orc, orc–ogre (orog), gnome–half-
+ling, or orc–goblin crossbreeds are all interesting possibilities for
+PC races. You may decide that some crossbreeds are impossible or
+unfeasible, such as dwarf–elf, halfling–human, or gnome–ogre.
+CLASSES
+A DM should consider carefully the classes in her world, for they
+define the people who live there. Presented first in this section are
+ideas for modifying Player ’s Handbookcharacter classes.
+MODIFYING CHARACTER CLASSES
+Imagine the desert knife fighter, a fighter with a limited weapon
+selection but early specialization with a knife. Or a fire mage, a
+wizard with particularly potent fire spells but no access to any
+spell involving water, air, or earth. Or a warrior-priest who func-
+tions like a cleric, but with a fighter’s weapon selection and attack
+bonus, fewer spells per day, and no access to healing spells.
+If you’re like most DMs, the character classes in thePlayer ’s
+Handbookare flexible and varied enough to fit most any niche or
+need, particularly with the possibilities of multiclassing, the vari-
+ety of feats and skills, and facets such as school specialization for
+wizards and domain selection for clerics. If you want to create a
+campaign rich with religion and divine influence, where just
+about everyone has deity-granted powers, you don’t have to over-
+haul all the existing classes. Instead, you can just say everyone (or
+most everyone) in that society multiclasses so that each individual
+has at least one level of cleric. You can rule that in such a world,
+the cleric class has no XP penalties for multiclassing.
+This means, of course, that you have modified the class system
+slightly. Further modifications occasionally allow a DM to create
+slightly different classes either for variety or to fill a niche created
+in her own campaign. Various aspects of a class—such as Hit Dice,
+base attack bonus, or spells per level—are easy to change. How-
+ever, even though the numbers are easy to change, you should be
+aware of the implications. A rogue with a fighter’s attack bonus is
+better than a regular rogue unless her gain in this respect is offset
+by some loss elsewhere. Likewise, a wizard with more spells per
+day is also unbalanced in regard to other classes without some sig-
+nificant drawback.
+Special abilities are somewhat more difficult to alter. Always
+have a concept with strengths and weaknesses in mind—don’t
+just try to create the class that can do everything. Remember that
+while the paladin has a lot of special offensive, defensive, and heal-
+ing abilities, she has neither access to attack spells nor any way to
+sneak around. The wizard is a great spellcaster but has poor
+combat abilities. Consider making a swashbuckler rogue with no
+ability to sneak attack but more combat- and movement-oriented
+feats, or a druid with fewer spells per day but the capability to use
+wild shape more often.
+If you have created a variant class with sneaking and subterfuge
+capabilities better than the rogue, or a combat-oriented class more
+adept at combat than the fighter, you have gone astray. Variants
+should exist for variety and flavor, not to outshine the standard
+classes. The other point to remember is that making a class worse
+at something it’s already bad at is not necessarily a balancing
+factor. A wizard with a worse attack bonus or a restriction against
+taking combat-oriented feats really isn’t that much worse off than
+the standard wizard. (She wasn’t likely to get involved in melee if
+she could help it anyway.) Dungeon Masters who are real sticklers
+for class balance might want to avoid modifying character classes
+altogether. It’s difficult, and the problems it creates don’t usually
+make themselves evident until the changes are already in play.
+Avoiding the Pitfalls
+The barbarian and fighter classes show the difficulty in balancing
+character classes. Both kinds of characters excel at combat but do
+so in different ways. The fighter gains more and more combat feats
+and specialization, while the barbarian realizes his prowess
+through temporary bursts of rage. Take a look at the bonuses and
+modifications that each class gets. Even though their attack bonus
+progression is the same, a fighter with well-chosen feats outshines
+the barbarian, even one who is in a rage. (Once no longer raging,
+the barbarian’s not even close.) This situation is balanced by the
+other special advantages the barbarian has: an increased move-
+ment rate, more skill points, a greater selection of class skills,
+uncanny dodge, and a larger Hit Die. All these aspects need to be
+considered when measuring the balance of a character class.
+When modifying a class, always take the following steps:
+1. Look to see which standard class seems to be most like the
+end result that you want to create.
+2. Look to see if another class has special abilities that can be
+swapped in exchange for something that this class has in order to
+create what you want.
+3. Look to all the other classes and match the newly modified
+class against each one, taking into account the following factors.
+•Hit Dice
+•Base attack bonus progression
+•Base save bonus progressions
+•Skill points
+•Class skill list
+•Weapon and armor proficiency
+•Spells per day
+•Spell list selection
+•Special class features
+No class should excel beyond another one overall. Pay particu-
+lar attention to special class features and spells.
+Variant Spell Lists
+One fairly easy way to modify an existing character class or, in
+effect, invent an entirely new one is to modify the spell list of a
+spellcasting class.
+Changing the levels of various spells (so that the modified class
+has, for example, faster access to illusion spells but doesn’t get key
+evocation attack spells until later) can create an interesting vari-
+ant. Be wary of this method, though. The spell lists and the levels
+assigned to the spells on them were designed with a careful bal-
+ance in mind. Moving a spell up or down more than a single level
+is probably a bad idea. Don’t assume that all spells carry equal
+weight, either. Making fireball and fly 2nd-level spells on a spell list
+and then pushing see invisibility and magic mouthup to 3rd level to
+compensate is unbalancing. While see invisibility and magic mouth
+are both useful spells, they don’t present balance issues as obvious
+as fireball(the lowest-level significant multiple-target damage
+spell) and fly(often the difference between avoiding an encounter
+or not). When moving spells up or down in level, do so with a
+theme in mind. A caster might be great at divinations and
+enchantments but poor at any spells with obvious, dramatic
+effects. Or he may be particularly adept at healing but not as good
+with spells that affect emotions or minds.
+The most obvious way to create new spell lists is to take spells
+from the different classes and mix and match. If you combine
+spells from two classes, you create an interesting but potentially
+unbalanced new variant class. Beware the all-powerful hybrid: a
+class with the firepower of a wizard and the healing capacity of a
+cleric. Don’t simply pick the best spells from all the lists and give
+CHAPTER 6:
+CHARACTERS

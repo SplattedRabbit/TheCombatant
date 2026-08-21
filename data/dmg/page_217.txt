@@ -1,0 +1,150 @@
+216
+Table 7–1: Random Magic Item Generation
+MinorMediumMajorItem
+01–0401–1001–10Armor and shields (Table 7–2)
+05–0911–2011–20Weapons (Table 7–9)
+10–4421–3021–25Potions (Table 7–17)
+45–4631–4026–35Rings (Table 7–18)
+—41–5036–45Rods (Table 7–19)
+47–8151–6546–55Scrolls (Table 7–20)
+—66–6856–75Staffs (Table 7–25)
+82–9169–8376–80Wands (Table 7–26)
+92–10084–10081–100Wondrous items (Tables 7–27,
+7–28, and 7–29)
+RANDOM MAGIC ITEMS
+The adventurers have slain the evil lich and are plundering her
+ancient tomb. What wonders does it hold? Well, the DM has
+already used Table 3–5: Treasure (page 52), some of the results of
+which then referred to Table 7–1: Random Magic Item Genera-
+tion, above (a good reason to always prepare treasure hoards ahead
+of time). Chapter 3 also contains references to minor, medium,
+and major magic treasures. Minor magic treasures are fairly
+meager, medium magic treasures are the most standard (worth
+about ten to twelve times that of a minor), and major treasures are
+the greatest of hauls (worth about four times as much as a medium
+treasure, on average).
+Follow this procedure to generate a magic item as part of a trea-
+sure hoard.
+1.When Table 3–5 indicates a minor, medium, or major magic
+treasure, you can use Table 7–1: Random Magic Item Generation
+to determine the specific type of magic item—such as a scroll,
+wand, or weapon. Optionally, you can roll d%: On a result of
+01–05, refer to Table 7–31: Specific Cursed Items rather than
+rolling on the standard tables.
+2.Refer to the table that corresponds to the type of item indi-
+cated in step 1. These tables produce an appropriate item for each
+type (scroll, wand, wondrous item, and so on) and rating (minor,
+medium, or major).
+3.Once the type of item has been determined, roll d% for spe-
+cial qualities:
+Wand or Staff:If the item is a wand or staff, a 01–30 result indi-
+cates that something (a design, inscription, or the like) provides a
+clue to its function, and 31–100 indicates no special qualities.
+Armor, Shield, Ring, Rod, or Wondrous Item:If the item is one
+of these types, a 01 result indicates the item is intelligent,
+02–31 indicates that something (a design, inscription, or the
+like) provides a clue to its function, and 32–100 indicates no
+special qualities.
+Ranged Weapons:If the item is a ranged weapon, a 01–05 result
+indicates the item is intelligent, 06–25 indicates that something (a
+design, inscription, or the like) provides a clue to its function, and
+26–100 indicates no special qualities.
+Melee Weapons: If the item is a melee weapon, a 01–20 result
+indicates that the item sheds light, 21–25 indicates that the item is
+intelligent, 26–35 indicates that the item is both intelligent and
+sheds light, 36–50 indicates that something (a design, inscription,
+or the like) provides a clue to its function, and 51–100 indicates no
+special qualities.
+4.If the item has charges or uses, roll randomly to determine
+how many charges or uses it has (as described in Charges, Doses,
+and Multiple Uses, above).
+Sometimes you want to pick an item rather than generating it
+randomly. In this case, simply skim through the listings until you
+find one to your liking. Note that no artifacts (minor or major)
+appear anywhere on the random tables. This is deliberate: You
+must place artifacts intentionally at appropriate places within
+your campaign.
+ARMOR
+Magic armor is a common but vital item. In general, it protects the
+wearer to a greater extent than nonmagical armor. Magic armor
+bonuses are enhancement bonuses, never rise above +5, and stack
+with regular armor bonuses (and with shield and magic shield
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–2: Armor and Shields
+MinorMediumMajorItemBase Price
+01–6001–05—+1 shield1,000 gp
+61–8006–10-+1 armor1,000 gp
+81–8511–20—+2 shield4,000 gp
+86–8721–30—+2 armor4,000 gp
+—31–4001–08+3 shield9,000 gp
+—41–5009–16+3 armor9,000 gp
+—51–5517–27+4 shield16,000 gp
+—56–5728–38+4 armor16,000 gp
+——39–49+5 shield25,000 gp
+——50–57+5 armor25,000 gp
+———+6 armor/shield
+1
+36,000 gp
+———+7 armor/shield
+1
+49,000 gp
+———+8 armor/shield
+1
+64,000 gp
+———+9 armor/shield
+1
+81,000 gp
+———+10 armor/shield
+1
+100,000 gp
+88–8958–6058–60Specific armor
+2
+—
+90–9161–6361–63Specific shield
+3
+—
+92–10064–10064–100Special ability and roll again
+4
+—
+1 Armor and shields can’t actually have bonuses this high. Use these
+lines to determine price when special abilities are added in.
+Example:A suit of +5 armorthat also has the light fortification
+special ability (+1 modifier) is treated as +6 armorfor pricing
+purposes and is priced at 36,000 gp.
+2 Roll on Table 7–7: Specific Armors.
+3 Roll on Table 7–8: Specific Shields.
+4 Roll on Table 7–5: Armor Special Abilities or Table 7–6: Shield
+Special Abilities.
+Table 7–3: Random Armor Type
+d%ArmorArmor Cost
+1
+01Padded+155 gp
+02Leather+160 gp
+03–17Studded leather+175 gp
+18–32Chain shirt+250 gp
+33–42Hide+165 gp
+43Scale mail+200 gp
+44Chainmail+300 gp
+45–57Breastplate+350 gp
+58Splint mail+350 gp
+59Banded mail+400 gp
+60Half-plate+750 gp
+61–100Full plate+1,650 gp
+1 Add to enhancement bonus on Table 7–2: Armor and Shields to
+determine total market price.
+All magic armor is masterwork armor (with an armor check penalty 1
+less than normal).
+Table 7–4: Random Shield Type
+d%ShieldShield Cost
+1
+01–10Buckler+165 gp
+11–15Shield, light, wooden+153 gp
+16–20Shield, light, steel+159 gp
+21–30Shield, heavy, wooden+157 gp
+31–95Shield, heavy, steel+170 gp
+96–100Shield, tower+180 gp
+1 Add to enhancement bonus on Table 7–2: Armor and Shields to
+determine total market price.
+All magic shields are masterwork shields (with an armor check penalty
+1 less than normal).

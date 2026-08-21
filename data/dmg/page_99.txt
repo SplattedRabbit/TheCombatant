@@ -1,0 +1,155 @@
+98
+To create a wilderness encounter table, first decide what you
+want the average Encounter Level to be. Then look at the relevant
+list, choosing monsters with Challenge Ratings that fall in a range
+from (EL – 6) to (EL + 2). Supplement these choices with selec-
+tions from other sources, such as these:
+•The Any  Wilderness  Environment  list,  which  includes  wide-
+ranging creatures.
+•The lists for other climates (adding a few warm forest creatures
+to your temperate forest, for example).
+•Some NPCs relevant to the area (dwarf barbarians in the moun-
+tains, perhaps, or elven druids in the forest).
+Now build your encounter table line by line. Strive for some EL
+variety on the table. Just as you wouldn’t design a dungeon where
+every single room is exactly EL 7, you shouldn’t create a wilder-
+ness table where every entry is EL 7.
+If a monster’s Challenge Rating is higher than your target EL,
+the same number, or 1 lower than your target EL, it can go onto
+the table as a solitary monster. If your target EL is 8, you can build
+an entry that simply reads “ Treant,” because treants are CR 8.
+For monsters that have a CR significantly lower than your target
+EL, you’ll want the encounter to feature more than one of those crea-
+tures. Table 3–1 (page 49) tells you how many monsters you need for
+an encounter of a given EL. Convert that number to an appropriate
+die range for the encounter table. For example, if you know you want
+an encounter with five gargoyles (individually CR 4) to make an EL
+8 encounter, you’ll add a “2d4 gargoyles” entry to the encounter table,
+because rolling 2d4 yields an average result of 5.
+The organization entries for the creatures in the Monster Manual
+can be a big help. They tell you how likely a monster is to congregate
+with others of its kind; allips are almost always solitary, for example,
+so you don’t want a “2d6 allips” entry on the encounter table. The
+organization entries also indicate combinations of monsters that
+make an effective encounter. Ettins often keep brown bears as pets,
+so an entry of “Ettin and 1d2 brown bears” would be appropriate.
+Once you have every entry for your encounter table ready, you
+need only assign percentages to the table. You can rigorously adjust
+the percentages to ensure that the encounter table yields an average
+EL exactly equal to your target EL, but frankly it isn’t necessary.
+Simply assign larger chances to the lines you know generate en-
+counters close to your target EL, and assign smaller chances to the
+lines that have EL significantly higher or lower than your target.
+URBAN ADVENTURES
+Cities are often the places where characters spend time between
+adventures. But urban areas are themselves rich in many of the
+elements that make for an exciting adventure: chases through
+winding streets, duels in the courtyard, and intrigue during the
+king’s banquet. The “cobblestone jungle” of a metropolis can be as
+dangerous as any dungeon.
+At first glance, a city is much like a dungeon, made up of walls,
+doors, rooms, and corridors. Adventures that take place in cities
+have two salient differences from their dungeon counterparts,
+however. Characters have greater access to resources, and they
+must contend with law enforcement.
+Access to Resources: A friendly temple of healers might be
+just down the street, and a locate objectscroll can be had on a quick
+shopping trip. Unlike in dungeons and the wilderness, characters
+can buy and sell gear quickly in a city. A large city or metropolis
+probably has high-level NPCs and experts in obscure fields of
+knowledge who can provide assistance and decipher clues. And
+when the PCs are battered and bruised, they can retreat to the
+comfort of a room at the inn.
+The freedom to retreat and ready access to the marketplace
+means that the players have a greater degree of control over the
+pacing of an urban adventure. They can obtain healing and replen-
+ish their resources after every encounter, if they wish. For this
+reason, you have the freedom to use higher-level encounters
+against them than you would in a different setting. In a city, you
+can provide challenges one or two Encounter Levels higher than
+the PCs would face in a dungeon. And conveniently, cities are full
+of high-level NPCs that provide those greater challenges.
+Law Enforcement: The other key distinctions between adven-
+turing in a city and delving into a dungeon is that a dungeon is,
+almost by definition, a lawless place where the only law is that of
+the jungle: Kill or be killed. A city, on the other hand, is held to-
+gether by a code of laws, many of which are explicitly designed to
+prevent the sort of behavior that adventurers engage in all the
+time: killing and looting. 
+Even so, most cities’ laws recognize monsters as a threat to the
+stability the city relies on, and prohibitions about murder rarely
+apply to monsters such as aberrations or evil outsiders. Most evil
+humanoids, however, are typically protected by the same laws
+CHAPTER 3:
+ADVENTURES
+CR  Warm Marshes
+1/2  Stirge
+2Crocodile (animal)
+2Shocker lizard
+3Wyrmling black dragon
+4Giant crocodile (animal)
+4Very young black dragon
+5Young black dragon
+5Manticore
+6Five-headed pyrohydra
+7Juvenile black dragon
+7Six-headed pyrohydra
+8Seven-headed pyrohydra
+9Young adult black dragon
+9Eight-headed pyrohydra
+10   Nine-headed pyrohydra
+10   Rakshasa
+11   Adult black dragon
+11   Ten-headed pyrohydra
+12   Eleven-headed pyrohydra
+13   Twelve-headed pyrohydra
+14   Mature adult black dragon
+16   Old black dragon
+18   Very old black dragon
+19   Ancient black dragon
+20   Wyrm black dragon
+22   Great wyrm black dragon
+CR  Warm Mountains
+4Wyrmling red dragon
+5Very young red dragon
+7Young red dragon
+8Young adult red dragon skeleton
+9Roc
+10   Juvenile red dragon
+10   Fire giant
+13   Young adult red dragon
+13   Storm giant
+15   Adult red dragon
+18   Mature adult red dragon
+20   Old red dragon
+21   Very old red dragon
+23   Ancient red dragon
+24   Wyrm red dragon
+26   Great wyrm red dragon
+CR  Warm Plains
+1/3  Giant fire beetle (vermin)
+1/2  Baboon (animal)
+1/2  Halfling
+1Gnoll
+1Mule (animal)
+2Cheetah (animal)
+3Ankheg
+3Lion (animal)
+4Rhinoceros (animal)
+5Dire lion
+5Wyrmling gold dragon
+7Very young gold dragon
+7Elephant (animal)
+8Tyrannosaurus (dinosaur)
+9Young gold dragon
+11   Juvenile gold dragon
+14   Young adult gold dragon
+16   Adult gold dragon
+19   Mature adult gold dragon
+21   Old gold dragon
+22   Very old gold dragon
+24   Ancient gold dragon
+25   Wyrm gold dragon
+27   Great wyrm gold dragon
+25   Wyrm gold dragon
+27   Great wyrm gold dragon

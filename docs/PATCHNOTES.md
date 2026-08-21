@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v4.2.0** | Release | 25.06.2026 | Anima Construct playable race & Locked Class Feats integration |
 | **v4.1.0** | Release | 17.06.2026 | Architecture Modularization & Token-Optimized Testing |
 | **v4.0.0** | Release | 14.06.2026 | Migration Complete & Tablet-Deployable (Offline & PWA) |
 | **v3.6.0** | Release | 14.06.2026 | React-Zustandsaktualisierung, Prototyp-Rehydrierung & Ausrüstungs-Fixes |
@@ -72,6 +73,21 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v4.2.0 — Anima Construct playable race & Locked Class Feats integration (Release v4.2.0)
+
+* **🧬 Rassen-Integration: Anima-Konstrukt (Anima Construct)**:
+  - **Wizard & Konstanten:** Registrierung der Rasse `anima_construct` in `constants.ts` und `helpers.ts` (+2 CON, -2 CHA, mittlere Größe, Standby-Modus).
+  - **Dynamische Boni:** Zuweisung der Rassenmodifikatoren und des **+1 natürlichen Rüstungsbonus** (wirkt auf AC und Flat-Footed AC, nicht auf Touch AC) in `applyRaceModifiers`.
+  - **Magische Heilungs-Halbierung:** Eingehende magische Heilung wird für das Anima-Konstrukt automatisch halbiert (`applyDamage` in `ConditionManager.js`).
+  - **Interaktive Reparatur:** Integration einer Craft-basierten Reparatur-Aktion (DC 15 heilt 1d4 / DC 20 heilt 1d8) mit täglichem Limit (4/Tag) im `RacialTraitsCard` des Charakterbogens.
+  - **Doppelte Modifikatoren behoben:** Korrektur eines Bugs im Wizard-Speicherflow, bei dem Rassenmodifikatoren sowohl auf die Basis-Werte aufaddiert als auch dynamisch hinzugerechnet wurden.
+
+* **🛡️ Klassentalente in der Talente-Übersicht (Class Feats Integration)**:
+  - **Automatische Klassentalente:** Automatisch vergebene Talente (Ranger *Track*/*Endurance*/*TWF*, Monk *Improved Unarmed Strike*, Wizard *Scribe Scroll*) werden nun in der linken Spalte der gelernten Talente mitgelistet.
+  - **Visuelle Kennzeichnung:** Klassentalente besitzen einen blauen Rahmen/Akzent (`#1976d2`) und ein passendes Badge (`Klassentalent`).
+  - **Verlernsperre:** Klickt der Spieler auf ein Klassentalent, wird der „Verlernen"-Button im `FeatScrollDialog` gesperrt und mit einem informativen Hinweis-Badge ersetzt.
+  - **Voraussetzungsprüfung:** Automatisch erhaltene Klassentalente werden nun korrekt als erfüllt für Voraussetzungen von Folgetalenten und Prestige-Klassen gewertet.
 
 ### v4.1.0 — Architecture Modularization & Token-Optimized Testing (Release v4.1.0)
 

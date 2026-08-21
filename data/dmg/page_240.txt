@@ -1,0 +1,200 @@
+239
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–23: Arcane Spell Scrolls
+0-Level Arcane Spells
+d%SpellMarket Price
+01–04acid splash12 gp 5 sp
+05–08arcane mark12 gp 5 sp
+09–13dancing lights12 gp 5 sp
+14–17daze12 gp 5 sp
+18–24detect magic12 gp 5 sp
+25–28detect poison12 gp 5 sp
+29–32disrupt undead12 gp 5 sp
+33–37flare12 gp 5 sp
+38–42ghost sound12 gp 5 sp
+43–44know direction12 gp 5 sp
+45–50light12 gp 5 sp
+51–52lullaby12 gp 5 sp
+53–57mage hand12 gp 5 sp
+58–62mending12 gp 5 sp
+63–67message12 gp 5 sp
+68–72open/close12 gp 5 sp
+73–77prestidigitation12 gp 5 sp
+78–81ray of frost12 gp 5 sp
+82–87read magic12 gp 5 sp
+88–94resistance12 gp 5 sp
+95–96summon instrument12 gp 5 sp
+97–100touch of fatigue12 gp 5 sp
+1st-Level Arcane Spells
+d%SpellMarket Price
+01–03alarm25 gp
+04–05animate rope25 gp
+06–07burning hands25 gp
+08–09cause fear25 gp
+10–12charm person25 gp
+13–14chill touch25 gp
+15–16color spray25 gp
+17–19comprehend languages25 gp
+20confusion, lesser50 gp
+21cure light wounds50 gp
+22–24detect secret doors25 gp
+25–26detect undead25 gp
+27–29disguise self25 gp
+30–32endure elements25 gp
+33–35enlarge person25 gp
+36–37erase25 gp
+38–40expeditious retreat25 gp
+41feather fall25 gp
+42–43grease25 gp
+44–45hold portal25 gp
+46–47hypnotism25 gp
+48–49identify125 gp
+50–51jump25 gp
+52–54mage armor25 gp
+55–56magic missile25 gp
+57–59magic weapon25 gp
+60–62mount25 gp
+63–64Nystul’s magic aura25 gp
+65–66obscuring mist25 gp
+67–74protection from chaos/25 gp
+evil/good/law
+75–76ray of enfeeblement25 gp
+77–78reduce person25 gp
+79–80remove fear50 gp
+81–82shield25 gp
+83–84shocking grasp25 gp
+85–86silent image25 gp
+87–88sleep25 gp
+89–90summon monster I25 gp
+91–93Tenser’s floating disk25 gp
+94–95true strike25 gp
+96undetectable alignment50 gp
+97–98unseen servant25 gp
+99–100ventriloquism25 gp
+2nd-Level Arcane Spells
+d%SpellMarket Price
+01animal messenger200 gp
+02animal trance200 gp
+03arcane lock175 gp
+04–06bear’s endurance150 gp
+07–08blindness/deafness150 gp
+09–10blur150 gp
+11–13bull’s strength150 gp
+14calm emotions200 gp
+15–17cat’s grace150 gp
+18–19command undead150 gp
+20continual flame200 gp
+21cure moderate wounds200 gp
+22darkness150 gp
+23–25darkvision150 gp
+26daze monster150 gp
+27delay poison200 gp
+28–29detect thoughts150 gp
+30–31disguise self150 gp
+32–34eagle’s splendor150 gp
+35enthrall200 gp
+36–37false life150 gp
+38–39flaming sphere150 gp
+40fog cloud150 gp
+41–43fox’s cunning150 gp
+44ghoul touch150 gp
+45–46glitterdust150 gp
+47gust of wind150 gp
+48–49hypnotic pattern150 gp
+50–52invisibility150 gp
+53–55knock150 gp
+56Leomund’s trap200 gp
+57–58levitate150 gp
+59locate object150 gp
+60magic mouth160 gp
+61–62Melf ’s acid arrow150 gp
+63minor image150 gp
+64–65mirror image150 gp
+66misdirection150 gp
+67obscure object150 gp
+68–70owl’s wisdom150 gp
+71–73protection from arrows150 gp
+74–75pyrotechnics150 gp
+76–78resist energy150 gp
+79rope trick150 gp
+80scare150 gp
+81–82scorching ray150 gp
+83–85see invisibility150 gp
+86shatter150 gp
+87silence200 gp
+88sound burst200 gp
+89spectral hand150 gp
+90–91spider climb150 gp
+92–93summon monster II150 gp
+94–95summon swarm150 gp
+96Tasha’s hideous laughter150 gp
+97touch of idiocy150 gp
+98–99web150 gp
+100whispering wind150 gp
+3rd-Level Arcane Spells
+d%SpellMarket Price
+01–02arcane sight375 gp
+03–04blink375 gp
+05–06clairaudience/
+clairvoyance375 gp
+07cure serious wounds525 gp
+08–10daylight525 gp
+11–12deep slumber375 gp
+13–15dispel magic375 gp
+16–17displacement375 gp
+18explosive runes375 gp
+19–20fireball375 gp
+21–22flame arrow375 gp
+23–25fly375 gp
+26–27gaseous form375 gp
+28–29gentle repose375 gp
+30glibness525 gp
+31good hope525 gp
+32–33halt undead375 gp
+34–36haste375 gp
+37–38heroism375 gp
+39–40hold person375 gp
+41illusory script425 gp
+42–44invisibility sphere375 gp
+45–47keen edge375 gp
+48–49Leomund’s tiny hut375 gp
+50–51lightning bolt375 gp
+52–59magic circle against chaos/375 gp
+evil/good/law
+60–62magic weapon, greater375 gp
+63–64major image375 gp
+65–66nondetection425 gp
+67–68phantom steed375 gp
+69–71protection from energy375 gp
+72–73rage375 gp
+74–75ray of exhaustion375 gp
+76sculpt sound525 gp
+77secret page375 gp
+78sepia snake sigil875 gp
+79shrink item375 gp
+80–81sleet storm375 gp
+82–83slow375 gp
+84speak with animals525 gp
+85–86stinking cloud375 gp
+87–88suggestion375 gp
+89–90summon monster III375 gp
+91–93tongues375 gp
+94–95vampiric touch375 gp
+96–98water breathing375 gp
+99–100wind wall375 gp
+4th-Level Arcane Spells
+d%SpellMarket Price
+01–02animate dead1,050 gp
+03–05arcane eye700 gp
+06–07bestow curse700 gp
+08–10charm monster700 gp
+11–13confusion700 gp
+14–15contagion700 gp
+16–17crushing despair700 gp
+18cure critical wounds1,000 gp
+19detect scrying700 gp
+20–23dimension door700 gp
+24–26dimensional anchor700 gp
+27–28enervation700 gp
+29–30enlarge person, mass700 gp

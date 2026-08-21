@@ -1,0 +1,129 @@
+188
+Requirements
+To qualify to become an eldritch knight, a character must fulfill all
+the following criteria. 
+Weapon Proficiency: Must be proficient with all martial
+weapons.
+Spells:Able to cast 3rd-level arcane spells.
+Class Skills
+The eldritch knight’s class skills (and the key ability for each skill)
+are Concentration (Con), Craft (Int), Decipher Script (Int), Jump
+(Str), Knowledge (arcana) (Int), Knowledge (nobility and royalty)
+(Int), Ride (Dex), Sense Motive (Wis), Spellcraft (Int), and Swim
+(Str). See Chapter 4 of the Player ’s Handbook for skill descriptions.
+Skill Points at Each Level:2 + Int modifier.
+Class Features
+All of the following are features of the eldritch knight prestige
+class.
+Weapon and Armor Proficiency: Eldritch knights gain no
+proficiency with any weapon or armor.
+Bonus Feat: At 1st level, an eldritch knight may choose a
+bonus feat from the list of feats available to fighters. This is in addi-
+tion to the feats that a character of any class normally gets every
+three levels. The character must still meet any prerequisites for
+these bonus feats, including four levels of fighter for the Weapon
+Specialization feat.
+Spells per Day:From 2nd level on, when a new eldritch knight
+level is gained, the character gains new spells per day as if she had
+also gained a level in whatever arcane spellcasting class she be-
+longed to before she added the prestige class. She does not, how-
+ever, gain any other benefit a character of that class would have
+gained (bonus metamagic or item creation feats, bard or assassin
+abilities, and so on). This essentially means that she adds the level
+of eldritch knight to the level of whatever other arcane spellcast-
+ing class the character has, then determines spells per day and
+caster level accordingly.
+If a character had more than one arcane spellcasting class
+before she became an eldritch knight, she must decide to which
+class she adds each level of eldritch knight for the purpose of
+determining spells per day.
+HIEROPHANT
+A divine spellcaster who rises high in the service of his deity gains
+access to spells and abilities of which lesser faithful can only
+dream. The hierophant prestige class is open to powerful divine
+spellcasters who are approaching access to the strongest and most
+difficult divine spells. They delay the acquisition of these greatest
+gifts in exchange for a deeper understanding of and ability to con-
+trol the power they channel.
+Most hierophants were clerics or druids. Some may have pur-
+sued another divine spellcasting-focused prestige class. Hiero-
+phants rarely multiclass into non-spellcasting classes.
+Hierophants are usually high-ranking members of a church or
+druidic circle. Most are exemplary representatives of their faith.
+Hit Die:d8.
+Requirements
+To qualify to become a hierophant, a character must fulfill all the
+following criteria.
+Skills: Knowledge (religion) 15 ranks.
+Feats:Any metamagic feat.
+Spells:Able to cast 7th-level divine spells.
+Class Skills
+The hierophant’s class skills (and the key ability for each skill) are
+Concentration (Con), Craft (Int), Diplomacy (Cha), Heal (Wis),
+Knowledge (arcana) (Int), Knowledge (religion) (Int), Profession
+(Wis), and Spellcraft (Int). See Chapter 4 of the Player ’s Handbook
+for skill descriptions.
+Skill Points at Each Level: 2 + Int modifier.
+Class Features
+All the following are class features of the hierophant prestige class.
+Weapon and Armor Proficiency:Hierophants gain no profi-
+ciency with any weapon or armor.
+Spells and Caster Level:Levels in the hierophant prestige
+class, even though they do not advance spell progression in the
+character’s base class, still stack with the character’s base spellcast-
+ing levels to determine caster level.
+Special Ability:Every level, a hierophant gains a special ability
+of his choice from among the following.
+Blast Infidel (Su):A hierophant can use negative energy spells to
+their maximum effect on creatures with an alignment opposed to
+the hierophant. (See the table below for a list of which alignments
+are opposed to each alignment.) Any spell with a description that
+involves inflicting or channeling negative energy (inflictspells,
+mass inflict light wounds, harm) cast on a creature of the opposed
+alignment works as if under the effect of a Maximize Spell feat
+(without using a higher-level spell slot). Undead affected by this
+ability heal the maximized amount of damage.
+HierophantOpposed
+AlignmentAlignment
+Lawful goodChaotic evil
+Neutral goodNeutral evil
+Chaotic goodLawful evil
+Lawful neutralChaotic neutral
+NeutralLawful good, chaotic good, lawful evil, chaotic evil*
+Chaotic neutral   Lawful neutral
+Lawful evilChaotic good
+Neutral evilNeutral good
+Chaotic evilLawful good
+* A neutral hierophant chooses one of these alignments to be the one
+that he opposes, for the purposes of this special ability.
+Divine Reach (Su):A hierophant with this ability can use touch
+spells on targets up to 30 feet away. If the spell requires a melee
+touch attack, the hierophant must make a ranged touch attack
+instead. Divine reach can be selected a second time as a special
+ability, in which case the range increases to 60 feet.
+Faith Healing (Su):A hierophant can use healing spells to their
+maximum effect on creatures of the same alignment as the hiero-
+phant (including the hierophant himself ). Any spell with the heal-
+ing descriptor cast on such creatures works as if under the effects
+of a Maximize Spell feat (without using a higher-level spell slot).
+Gift of the Divine (Su):Available only to hierophants with cleric
+levels, this ability allows a hierophant to transfer one or more
+uses of his turn undead ability to a willing creature. (Hiero-
+phants who rebuke undead transfer uses of rebuke undead
+instead.) The transfer lasts anywhere from 24 hours to one week
+(chosen at the time of transfer), and while the transfer is in
+effect, the number of turning attempts per day allowed to the
+hierophant is reduced by the number transferred. The recipient
+turns undead as a cleric of the hierophant’s cleric level but uses
+her own Charisma modifier.
+Mastery of Energy (Su):Available only to hierophants with cleric
+levels, this ability allows a hierophant to channel positive or nega-
+tive energy much more effectively, increasing his ability to affect
+undead. Add a +4 bonus to the hierophant’s turning checks and
+turning damage rolls. This ability only affects undead, even if the
+hierophant can turn other creatures, such as with a granted power
+of a domain.
+Metamagic Feat:A hierophant can choose a metamagic feat in
+place of one of the special abilities described here if desired.
+CHAPTER 6:
+CHARACTERS

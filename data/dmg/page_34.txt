@@ -1,0 +1,123 @@
+SkillRisk
+BalanceFalling
+ClimbFalling
+CraftRuin raw materials
+Disable DeviceDevice triggers, or is not disabled
+Spot (reading lips)Receive false information
+SwimSink below surface of water
+Use RopeGrappling hook fails in 1d4 rounds
+TAKING 10
+Encourage players to use the take 10 rule. When a character is
+swimming or climbing a long distance, for example, this rule can
+really speed up play. Normally, you make a check each round with
+these movement-related skills, but if there’s no pressure, taking 10
+allows them to avoid making a lot of rolls just to get from point A
+to point B.
+ABILITY CHECKS
+The game has no rules for trying to stay awake through the
+night, writing down every word someone says without a mis-
+take, or opening the stuck lid of a container without spilling a
+single drop of its contents. However, in the course of an adven-
+ture any of these situations could potentially make or break an
+encounter. You have to be ready to make up checks for such non-
+standard activities.
+Using the example situations above, staying awake might be a
+Constitution check (DC 12, +4 for every previous night without
+sleep), with an elf character gaining a +2 bonus on her check
+because an elf is only giving up 4 hours of trance instead of 8
+hours of sleep. Writing down every word that someone says would
+require a DC 15 Intelligence check, and a DC 10 Dexterity check
+prior to the Intelligence check would provide a +2 bonus on the
+roll. Opening the container would normally be a Strength check
+(DC about 17), and once that’s accomplished, a DC 13 Dexterity
+check is required to keep from spilling the contents.
+The three kinds of ability checks you could call for to handle a
+nonstandard situation include the following.
+•A single check using an relevant ability (as in staying awake).
+•One ability check that, depending on the result, might provide
+a modifier on another check involving a different ability (as in
+writing down every word).
+•Two or more separate ability checks, usually involving different
+abilities,  to  accomplish  a  multipart  task  (such  as  opening  the
+jug without spilling).
+You can also use a combination of an ability check and a skill
+check in an appropriate situation. For example, when swimming
+in frigid water, Lidda might have to make a Constitution check to
+avoid taking a penalty on her Swim check.
+Decisions on how to handle nonstandard situations are left to
+your best judgment.
+SAVING THROWS
+Adjudicating and varying saving throws works a lot like adjudicat-
+ing and varying skill and ability checks.
+WHICH KIND OF SAVE?
+Fortitude, Reflex or Will? When assigning something a saving
+throw, use these guidelines.
+Fortitude:Fortitude saves reflect physical toughness. They
+incorporate stamina, ruggedness, physique, bulk, metabolism,
+resistance, immunity, and other similar physical qualities. If it
+seems like something that a “tough guy” would be good at, it’s a
+Fortitude save.
+Reflex:Reflex saves reflect physical (and sometimes mental)
+agility. They incorporate quickness, nimbleness, hand-eye coor-
+dination, overall coordination, speed, and reaction time. If it
+seems like something that an agile person would be good at, it’s
+a Reflex save.
+Will: Will saves reflect inner strength. They incorporate will-
+power, mental stability, the power of the mind, levelheadedness,
+determination, self-confidence, self-awareness, the superego, and
+resistance to temptation. If it seems like something that a confi-
+dent or determined person would be good at, it’s a Will save.
+SAVE OR CHECK?
+A character slips and falls. He tries to catch himself on a ledge,
+while another character reaching forward attempts to catch him.
+Are these Reflex saves or Dexterity checks?
+The answer to the above question is “Both.” The character at-
+tempting to save himself makes a Reflex save. The character trying
+to grab him makes a Dexterity check.
+33
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: SKILLS WITH DIFFERENT ABILITIES
+Sometimes a check involves a character’s training (skill ranks) plus an
+innate talent (ability) not usually associated with that training. A skill
+check always includes skill ranks plus an ability modifier, but you can
+use a different ability modifier from normal if the character is in a situ-
+ation where the normal key ability does not apply.
+For example:
+•A character is underwater and tries to maneuver by pulling himself
+along some improvised handholds. Since his body has natural buoy-
+ancy (meaning he doesn’t need to pull as hard to lift himself ), the
+DM  rules  that  the  player  should  make  a  Climb  check  keyed  to
+Dexterity rather than to Strength.
+•A character  is  trying  to  pick  the  best  horse  from  several  that  a
+merchant is selling. Normally this would be an Appraise check, but
+familiarity  with  horses  ought  to  count  for  something.  The  DM  lets
+the  player  use  the  character’s  ranks  in  Ride  instead  of  ranks  in
+Appraise  and  applies  the  character’s  Wisdom  modifier  (as  normal
+for an Appraise check).
+•A character  needs  to  use  main  force  to  restrain  a  panicked  horse.
+Normally this would call for a Strength check, but a character skilled
+at  handling  animals  ought  to  be  able  to  use  his  knowledge  to
+restrain the horse more easily. The DM lets the player add the char-
+acter’s ranks in Handle Animal (but not his Charisma modifier) to
+the Strength check.
+•A character has created a masterwork dagger as a gift for a visiting
+noble.  He  attempts  to  inscribe  it  with  intricate  designs.  The  DM
+rules that this is a Dexterity check to which the character’s ranks in
+Craft (weaponsmithing) apply.
+•A character is trying to climb a ladder to the bottom of a very deep
+chute. Normally, the DM would call for a Constitution check to see
+if the character can keep going, but he can also allow the player to
+add the character’s ranks in Climb to the roll.
+These sorts of unusual situations are always handled on a case-by-case
+basis,  and  only  as  exceptions.  The  vast  majority  of  the  time,  use  the
+normal key ability.
+Remember that when you change the way a skill works in this fash-
+ion, you should dictate when the change comes into play—it’s not up
+to a player to make this sort of decision. Players may try to rationalize
+why they should get to use their best ability score modifier with a skill
+that doesn’t normally use that ability, but you shouldn’t allow this sort
+of rule change unless you happen to agree with it.
+pqqqqrs
+pqqqqrs

@@ -1,0 +1,103 @@
+Dungeon Master's Guide v.3.5 Errata 3/10/04 Version 032004 
+Dungeon Master's Guide v.3.5 Errata 
+ 
+Errata Rule: Primary Sources 
+When you find a disagreement between two D&D rules 
+sources, unless an official errata file says otherwise, the 
+primary source is correct. One example of a 
+primary/secondary source is text taking precedence over a 
+table entry. An individual spell description takes precedence 
+when the short description in the beginning of the spells 
+chapter disagrees. 
+Another example of primary vs. secondary sources involves 
+book and topic precedence. The Player’s Handbook, for 
+example, gives all the rules for playing the game, for PC 
+races, and the base class descriptions. If you find something 
+on one of those topics from the Dungeon Master’s Guide or 
+the Monster Manual that disagrees with the Player’s 
+Handbook, you should assume the Player’s Handbook is the 
+primary source. The Dungeon Master’s Guide is the primary 
+source for topics such as magic item descriptions, special 
+material construction rules, and so on. The Monster Manual 
+is the primary source for monster descriptions, templates, and 
+supernatural, extraordinary, and spell-like abilities. 
+Ogre CR 
+Dungeon Master’s Guide, page 38 
+Problem: Table at bottom right says ogres are CR 2 (without 
+class levels). Monster Manual says (correctly) that ogres are 
+CR 3. 
+Solution: CR numbers in the two ogre lines of the table need 
+changing—increment all of them by 1. Also, change “2” to 
+“3” in the note beneath the table. 
+Climb DCs 
+Dungeon Master’s Guide, page 60 
+Problem: Climb DCs on Table 3–9 differ from what’s given 
+in the text on page 59. 
+Solution: On Table 3–9, change the following Climb DCs: 
+Masonry 20 
+Superior masonry 25 
+Hewn stone 25 
+Unworked stone 15 
+Ram Damage 
+Dungeon Master’s Guide, page 100 
+Problem: Damage value for the ram given in the text 
+disagrees with Table 3–26. 
+Solution: Change table entry to 3d8. 
+NPC Fighter 
+Dungeon Master’s G uide, page 117 
+Problem: The 17th-level fighter has his Str enhanced by +2 
+(see top right of page), but the enhancement isn’t accounted 
+for in his gear. 
+Solution: Add “gauntlets of ogre power +2” to the 17th-
+level Gear entry on Table 4–16. Add “gauntlets +2” to the 
+18th-level Gear entry on the table. 
+NPC Monk 
+Dungeon Master’s Guide, page 118 
+Problem: References to ki strike need fixing in three places. 
+Solution: In the sample 5th-level monk, change “ki strike 
++1” to “ki strike (magic).” In the Ki Strike paragraph for the 
+5th-level monk, delete “lawful.” In the sample 15th-level 
+monk, change “ki strike +4” to “ki strike (lawful, magic).” 
+NPC Sorcerer 
+Dungeon Master’s Guide, page 125 
+Problem: The 14th-level sorcerer has his Dex enhanced by 
++2 (see page 124), but the enhancement isn’t accounted for in 
+his gear. 
+Solution: Add “gloves of Dexterity +2” to the 14th-level 
+Gear entry on Table 4–21, and “gloves +2” to the Gear entry 
+at every higher level. 
+Epic Druid 
+Dungeon Master’s Guide, page 208 
+Problem: Druids no longer get multiple animal companions. 
+Solution: Replace the Animal Companion paragraph with the 
+following text: 
+Animal Companion: The epic druid’s animal companion 
+continues to increase in power. At every three levels higher 
+than 18th (21st, 24th, 27th, and so on), the companion gains 
++2 bonus Hit Dice, its natural armor increases by 2, its 
+Strength and Dexterity modifiers increase by 1, and it learns 
+one additional bonus trick. 
+Epic Ranger 
+Dungeon Master’s Guide, page 208 
+Problem: Mention of the epic ranger’s animal companion is 
+missing. 
+Solution: After the Spells paragraph, insert the following 
+paragraph: 
+Animal Companion: The epic ranger’s animal companion 
+continues to increase in power as normal. For rangers above 
+41st level, consult the epic druid for details on how an animal 
+companion’s power level increases. 
+Caster Level 
+Dungeon Master’s Guide, page 215 
+Problem: The last two sentences in the section on Caster 
+Level are ambiguous and potentially misleading. 
+Solution: Replace with this text: For other magic items, the 
+caster level is determined by the creator. The minimum caster 
+level is that which is needed to meet the prerequisites given. 
+Arrow Deflection 
+Dungeon Master’s Guide, page 218 
+Problem: The first sentence is no longer accurate (Deflect 
+Arrows feat works differently in v.3.5). 
+Solution: Change first sentence to read: 
+A shield with this ability protects the wielder from ranged 
+attacks.

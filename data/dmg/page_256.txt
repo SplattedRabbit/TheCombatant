@@ -1,0 +1,137 @@
+Faint illusion; CL 6th; Craft Wondrous Item, major image; Price
+8,100 gp; Weight 1/2 lb.
+Dimensional Shackles:These shackles have golden runes
+traced across their cold iron surface. Any creature bound within
+them is affected as if a dimensional anchorspell were cast upon her
+(no save). They fit any Small to Large creature. The DC to break or
+slip out of the shackles is 30.
+Moderate abjuration; CL 11th; Craft Wondrous Item, dimen-
+sional anchor; Price 28,000 gp; Weight 5 lb.
+Drums of Panic:These drums are kettle drums (hemispheres
+about 1-1/2 feet in diameter on stands). They come in pairs and
+are unremarkable in appearance. If both of the pair are sounded,
+all creatures within 120 feet (with the exception of those within
+a 20-foot-radius safe zone around the drums) are affected as by a
+fearspell (Will DC 16 partial). Drums of panic can be used once
+per day.
+Moderate necromancy; CL 7th; Craft Wondrous Item, fear; Price
+30,000 gp; Weight 10 lb. for the pair.
+Dust of Appearance:This fine powder appears to be a very fine,
+very light metallic dust. A single handful of this substance flung
+into the air coats objects within a 10-foot radius, making them visi-
+ble even if they are invisible. It likewise negates the effects of blur
+and displacement.(In this, it works just like the faerie fire spell). The
+dust also reveals figments, mirror images, and projected imagesfor
+what they are. A creature coated with the dust takes a –30 penalty
+on its Hide checks. The dust’s effect lasts for 5 minutes.
+Dust of appearanceis typically stored in small silk packets or
+hollow bone tubes.
+Faint conjuration; CL 5th; Craft Wondrous Item, glitterdust;
+Price 1,800 gp.
+Dust of Disappearance:This dust looks just like dust of appear-
+anceand is typically stored in the same manner. A creature or
+object touched by it becomes invisible (as greater invisibility).
+Normal vision can’t see dusted creatures or objects, nor can they
+be detected by magical means, including see invisibilityor invisibil-
+ity purge. Dust of appearance,however, does reveal people and
+objects made invisible by dust of disappearance.Other factors, such
+as sound and smell, also allow possible detection.
+The greater invisibilitybestowed by the dust lasts for 2d6 rounds.
+The invisible creature doesn’t know when the duration will end.
+Moderate illusion; CL 7th; Craft Wondrous Item, greater invisi-
+bility; Price 3,500 gp.
+Dust of Dryness:This special dust has many uses. If it is
+thrown  into  water,  a  volume  of  as  much  as  100  gallons  is
+instantly transformed to nothingness, and the dust becomes a
+marble-sized pellet, floating or resting where it was thrown. If
+this pellet is hurled down, it breaks and releases the same
+volume of water. The dust affects only water (fresh, salt, alka-
+line), not other liquids.
+If the dust is employed against an elemental with the water sub-
+type, the creature must make a DC 18 Fortitude save or be
+destroyed. The dust deals 5d6 points of damage to the creature
+even if its saving throw succeeds.
+Moderate transmutation; CL 11th; Craft Wondrous Item, control
+water; Price 850 gp.
+Dust of Illusion:This unremarkable powder resembles chalk
+dust or powdered graphite. Stare at it, however, and the dust
+changes color and form. Put dust of illusionon a creature, and that
+creature is affected as if by adisguise selfglamer, with the individual
+who sprinkles the dust envisioning the illusion desired. An
+unwilling target is allowed a DC 11 Reflex save to avoid the dust.
+The glamer lasts for 2 hours.
+Faint illusion; CL 6th; Craft Wondrous Item, disguise self; Price
+1,200 gp.
+Dust of Tracelessness:This normal-seeming dust is actually a
+magic powder that can conceal the passage of its possessor and his
+companions. Tossing a handful of this dust into the air causes a
+chamber of up to 100 square feet of floor space to become as dusty,
+dirty, and cobweb-laden as if it had been abandoned and disused
+for a decade.
+A handful of dust sprinkled along a trail causes evidence of the
+passage of as many as a dozen men and horses to be obliterated for
+250 feet back into the distance. The results of the dust are instan-
+taneous, and no magical aura lingers afterward from this use of the
+dust. Survival checks made to track a quarry across an area affected
+by this dust have a DC 20 higher than normal.
+Faint transmutation; CL 3rd; Craft Wondrous Item, pass without
+trace; Price 250 gp.
+Efreeti Bottle:This item is typically fashioned of brass or
+bronze, with a lead stopper bearing special seals. A thin stream of
+smoke is often seen issuing from it. The bottle can be opened once
+per day. When opened, the efreeti imprisoned within issues from
+the bottle instantly. There is a 10% chance (01–10 on d%) that the
+efreeti is insane and attacks immediately upon being released.
+There is also a 10% chance (91–100) that the efreeti of the bottle
+grants three wishes. In either case, the efreeti afterward disappears
+forever. The other 80% of the time (11–90), the inhabitant of the
+bottle loyally serves the character for up to 10 minutes per day (or
+until the efreeti’s death), doing as she commands. (See page 115 of
+the Monster Manual for efreeti statistics.) Roll each day the bottle is
+opened for that day’s effect.
+Strong conjuration; CL 14th; Craft Wondrous Item, summon
+monster VII; Price 145,000 gp; Weight 1 lb.
+Elemental Gem:This gem contains a conjuration spell
+attuned to a specific Elemental Plane (Air, Earth, Fire, or Water).
+When the gem is crushed, smashed, or broken (a standard
+action), a Large elemental appears as if summoned by a summon
+nature’s allyspell. The elemental is under the control of the crea-
+ture that broke the gem.
+The coloration of the gem varies with the type of elemental it
+summons. Air elemental gemsare transparent, earth elemental gems
+are light brown, fire elemental gemsare reddish orange, and water
+elemental gemsare blue-green.
+Moderate conjuration; CL 11th; Craft Wondrous Item, summon
+nature’s ally V;Price 2,250 gp.
+Elixir of Fire Breath: This strange elixir bestows upon the
+drinker the ability to spit gouts of flame. He can breathe fire up to
+three times, each time dealing 4d6 points of fire damage to a single
+target up to 25 feet away. The victim can attempt a DC 13 Reflex
+save for half damage. Unused blasts dissipate 1 hour after the
+liquid is consumed.
+Moderate evocation; CL 11th; Craft Wondrous Item, scorching
+ray;Price 1,100 gp.
+Elixir of Hiding: A character drinking this liquid gains an
+intuitive ability to hide (+10 competence bonus on Hide checks
+for 1 hour).
+Faint illusion; CL 5th; Craft Wondrous Item, invisibility; Price
+250 gp.
+Elixir of Love:This sweet-tasting liquid causes the character
+drinking it to become charmedwith the first creature she sees after
+consuming the draft (as charm person—the drinker must be a hu-
+manoid of Medium or smaller size, Will DC 14 negates). The
+charmeffects wear off in 1d3 hours.
+Faint transmutation; CL 4th; Craft Wondrous Item, charm
+person; Price 150 gp.
+Elixir of Sneaking: This draught of liquid grants the drinker the
+ability to walk softly and dampens sound around her slightly, grant-
+ing a +10 competence bonus on Move Silently checks for 1 hour.
+Faint illusion; CL 5th; Craft Wondrous Item, silence; Price
+250 gp.
+Elixir of Swimming: This elixir bestows swimming ability. An
+almost imperceptible magic sheath surrounds the drinker, allow-
+ing him to glide through the water easily (+10 competence bonus
+on Swim checks for 1 hour).
+255
+CHAPTER 7:
+MAGIC ITEMS

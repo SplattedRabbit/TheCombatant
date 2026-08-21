@@ -1,0 +1,99 @@
+Resist Nature’s Lure (Ex):This druid gains a +4 bonus on saving
+throws against the spell-like abilities of fey.
+Share Spells (Ex): This druid may have any spell it casts on itself
+also affect its animal companion if the latter is within 5 feet at the
+time. The druid may also cast a spell with a target of “You” on its
+animal companion.
+Trackless Step (Ex): This druid leaves no trail in natural surround-
+ings and cannot be tracked.
+Wild Empathy (Ex): This druid can improve the attitude of an
+animal in the same way as a Diplomacy check for sentient beings.
+The druid rolls 1d20+10, or 1d20+6 if attempting to influence
+magical beasts with an Intelligence score of 1 or 2.
+Wild Shape (Su):This druid can change into a Small or Medium
+animal and back again once per day, as per the polymorphspell.
+Woodland Stride (Ex):This druid may move through natural
+thorns, briars, overgrown areas, and similar terrain at its normal
+speed and without damage or other impairment. However, thorns,
+briars, and overgrown areas that are magically manipulated to
+impede motion still affect the druid.
+Druid Spells Prepared(5/4/3/2; save DC 13 + spell level): 0—detect
+magic, detect poison, guidance, light, purify food and drink;1st—
+entangle, magic fang (2),obscuring mist;2nd—barkskin, flame blade,
+resist energy; 3rd—call lightning, protection from energy.
+Possessions:Heavy wooden shield, masterwork scimitar, master-
+work sling, 10 bullets, 2 scrolls of cure moderate wounds, 2 scrolls of
+neutralize poison,2 scrolls of speak with plants, phylactery of faithful-
+ness,2 Quaal’s feather tokens (tree), wand of cure light wounds.
+NPC FIGHTER
+Starting Ability Scores:Str 15, Dex 13, Con 14, Int 10, Wis 12,
+Cha 8.
+Increased Ability Scores:4th, Str 16; 8th, Str 17; 12th, Str 18;
+16th, Str 19; 17th, Str 19 (21); 19th, Str 19 (25), Con 14 (16); 20th,
+Str 20 (26).
+Sample 5th-Level NPC Fighter:Hobgoblin Ftr 5; CR 5;
+Medium humanoid (goblinoid); HD 5d10+15; hp 47; Init +6; Spd
+20 ft.; AC 21, touch 11, flat-footed 20; Base Atk +5; Grp +8; Atk +10
+melee (1d10+5/19–20, masterwork bastard sword) or +8 ranged
+(1d8+3/×3, masterwork composite longbow [+3 Str bonus]); Full
+Atk +10 melee (1d10+5/19–20, masterwork bastard sword) or +8
+ranged (1d8+3/×3, masterwork composite longbow [+3 Str
+bonus]); SA —; SQ darkvision 60 ft.; AL LE; SV Fort +8, Ref +4,
+Will +3; Str 16, Dex 15, Con 16, Int 10, Wis 12, Cha 8. 
+Skills and Feats:Climb +1, Jump +3, Move Silently –1; Exotic
+Weapon Proficiency (bastard sword), Improved Initiative, Power
+Attack, Weapon Focus (bastard sword), Weapon Specialization
+(bastard sword).
+Possessions:Full plate, heavy steel shield, masterwork bastard
+sword, masterwork composite longbow (+3 Str bonus), 10 normal
+arrows, 10 cold iron arrows, 10 silvered arrows, cloak of resistance +1,
+potion of bear ’s endurance, potion of cure moderate wounds.
+Sample 15th-Level NPC Fighter:Hobgoblin Ftr 15; CR 15;
+Medium humanoid (goblinoid); HD 15d10+45; hp 132; Init +6;
+Spd 20 ft.; AC 28, touch 12, flat-footed 27; Base Atk +15; Grp +19;
+Atk +23 melee (1d10+9/17–20, +3 bastard sword) or +19 ranged
+(1d8+7/19–20/×3, +1 composite longbow[+4 Str bonus]); Full Atk
++23/+18/+13   melee   (1d10+9/17–20,   +3   bastard   sword)   or
++19/+14/+9 ranged (1d8+7/19–20/×3, +1 composite longbow[+4 Str
+bonus]); SA —; SQ darkvision 60 ft.; AL LE; SV Fort +14, Ref +9,
+Will +8; Str 18, Dex 15, Con 16, Int 10, Wis 12, Cha 8. 
+Skills and Feats:Climb +10, Intimidate +5, Jump +8, Move Silently
++1; Cleave, Dodge, Exotic Weapon Proficiency (bastard sword),
+117
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–16: NPC Fighter
+Skill Pts./
+LevelhpACMeleeRangedF/R/WFeatsGear
+1st1218+4+2+4/+1/+18/2Splint mail, heavy steel shield, mwk melee, mundane ranged,
+350 gp
+2nd1919+5+4+5/+1/+110/3Half-plate, heavy steel shield, mwk melee, mwk ranged, 750 gp
+3rd2721+6+5+5/+2/+212/4Full plate, heavy steel shield, mwk melee, mwk ranged, 350 gp
+4th3421+8+6+6/+2/+214/5As 3rd level, except 1,150 gp
+5th4221+9+7+6/+2/+216/5As 3rd level, except 2,150 gp
+6th4922+10/5+8/3+7/+3/+318/7+1 full plate, heavy steel shield, mwk melee, mwk ranged,
+2,300 gp
+7th5722+11/6+9/4+7/+3/+320/7+1 full plate, heavy steel shield, +1 melee, mwk ranged, 2,900 gp
+8th6423+12/7+10/5+8/+3/+322/8+1 full plate, +1 heavy steel shield,+1 melee, mwk ranged, 4,900 gp
+9th7223+13/8+11/6+8/+4/+424/9+1 full plate, +1 heavy steel shield, +1 melee, +1 ranged, 4,500 gp
+10th7924+14/11+12/7+9/+4/+426/10+2 full plate, +1 heavy steel shield, +1 melee, +1 ranged,5,500 gp
+11th8725+15/10/5+13/8/3+9/+4/+428/10+2 full plate, +1 heavy steel shield, ring of protection +1, +1 melee,
++1 ranged, 8,500 gp
+12th9425+18/13/8+14/10/4+10/+5/+530/12+2 full plate, +1 heavy steel shield, ring of protection +1,  +2 melee,
++1 ranged, 9,500 gp
+13th10225+19/14/9+15/10/5+10/+5/+532/12As 12th level, except 18,500 gp
+14th10927+20/15/10+16/11/6+11/+5/+534/13+2 full plate, +1 heavy steel shield, amulet of natural armor +2, ring
++1, +2 melee, +1 ranged, 20,500 gp
+15th11728+22/17/12+17/12/7+11/+6/+636/14+2 full plate, +2 heavy steel shield, amulet +2, ring +1, +3 melee,
++1 ranged,21,500 gp
+16th12430+23/18/13/8+19/14/9/4+12/+6/+638/15+2 full plate, +3 heavy steel shield, amulet +2, ring +2, +3 melee,
++2 ranged,27,500 gp
+17th13231+25/20/15/10+20/15/10/5    +12/+6/+640/15+3 full plate, +3 heavy steel shield, amulet +2, ring +2, +3 melee,
++2 ranged, 47,500 gp
+18th13932+27/22/17/12+21/16/11/6    +13/+7/+742/17+4 full plate, +3 heavy steel shield, amulet +2, ring +2, +4 melee,
++2 ranged, 56,500 gp
+19th16632+30/25/20/15+22/17/12/7    +14/+7/+744/17+4 full plate, +3 heavy steel shield, amulet +2, ring +2, +4 melee,
++2 ranged, belt of giant Strength +6, pink Ioun stone,52,500 gp
+20th17534+32/27/22/17+23/18/13/8    +15/+7/+746/18+4 full plate, +3 heavy steel shield, amulet +2, ring +4, +4 melee,
++2 ranged, belt +6, pink Ioun stone, 78,500 gp

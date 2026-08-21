@@ -1,0 +1,283 @@
+Index
+ability checks 33
+ability score equivalencies 173
+ability score generation 169
+ability score loss 289
+ability scores for monsters 172
+Abyss, the 160
+Acheron 163
+acid effects 302
+adamantine 283
+adept (NPC class) 107
+adjudicating (general) 6
+adjudicating magic 34
+advancing levels 197
+adventure ideas 44
+adventure structure 44
+adventure writer’s checklist 46
+adventure, sample 78
+adventures, episodic or 
+continuing 56
+event-based 47
+site-based 46
+urban 98
+adventuring on other planes 147
+aerial movement 20
+alchemical silver 284
+alignment, changing 134
+of community power centers 
+138
+of intelligent items 269
+allies (of PCs) 104
+altitude sickness 90
+ammunition, magic 221
+animal companions 205
+animals (in dungeon) 76
+(as enemies) 104
+antimagic 290
+appearance of magic items 212
+aquatic terrain 92
+Arborea 166
+Arcadia 164
+arcane archer 176
+arcane trickster 177
+archmage 178
+area spells 28
+aristocrat (NPC class) 108
+armor, magic 211, 216–220
+creating 285
+sizes 213
+art (treasure) 55
+artifacts (magic items) 277–282
+Asian culture 144
+Asian weapons 144
+assassin 180
+Astral Plane 154
+attack rolls 26
+attitudes, NPC 128
+aura (of magic item) 215
+automatic hits and misses 25
+avalanches 90
+Baator 162
+barbarian, epic 207
+NPC 112
+role in society 131
+bard, epic 207
+NPC 113
+role in society 132
+battle grid 4
+Beastlands, the 165
+berm (terrain feature) 91
+between adventures 57
+big and little creatures in combat
+29
+blackguard 181
+blindsense 291
+blindsight 290
+blizzard 94
+Boccob 143
+body slot affinities 288
+bogs (terrain feature) 88
+bonus types 21
+breath weapon 291
+Bronze Age 144
+brown mold 76
+buildings 101
+bypass (trap element) 68
+Bytopia 164
+campaign, establishing 129
+maintaining 130
+Carceri 161
+caster level (of magic item) 215
+catching on fire 303
+cave entrance (terrain feature) 90
+cave-ins and collapses 66
+Celestia 164
+Challenge Rating 36, 48
+modifying 40
+for noncombat encounters 40
+for NPCs 37
+of special cohorts 199
+of traps 39, 75
+chance to get lost 86
+changing the rules 14
+character death 41
+character power levels 135
+character wealth 135
+characters, average 110
+elite 110
+high-level 135, 141
+low-level 134
+charges (of magic items) 214
+charm and compulsion 291
+chasm (terrain feature) 89
+city buildings 101
+city lights 101
+city streets 100
+clan (political system) 140
+class benefits, gaining 198
+class roles in society 131
+classes, creating 175
+modifying 174
+prestige 176
+cleric, epic 208
+NPC 114
+role in society 132
+cliff (terrain feature) 89
+climate/terrain types 136
+clobbered 27
+cohorts 104
+attracting 106
+special 199
+coinage 139
+coins (treasure) 55
+cold dangers 302
+cold immunity 291
+cold iron 284
+combat 21
+underwater 92, 93
+combat actions 25
+command word items 213
+commoner (NPC class) 108
+community authorities 138
+community NPCs 138
+community power center 137
+community racial 
+demographics 139
+community wealth and 
+population 137
+compulsion 291
+condition summary 300–301
+conscript, typical 133
+Corellon Larethian 143
+corridors (in dungeons) 63
+corrupt weapon(blackguard 
+spell) 182
+cosmology, creating 167
+cost to create (for magic 
+items) 215
+creating characters above 20th 
+level 209
+creating magic items 282–288
+creating PCs above 1st level 199
+creature sizes 29
+critical hits 26
+critical misses 28
+critical success or failure 34
+crowds 100
+cultural tendencies (by race) 141
+cursed magic items 214, 272–277
+D&D cosmology 150
+damage 26
+from falling 303
+from falling objects 303
+to magic items 214
+massive 27
+nonlethal 26
+damage caps for spells 35
+damage reduction 291
+darkness 302
+darkvision 292
+darkwood 283
+death (of a character) 41
+death attacks 292
+death and experience points 41
+defense roll 25
+degrees of failure 32
+degrees of success 32
+deities, creating new 143
+delineating tasks 30
+demiplanes 147
+demographics 136
+dense rubble (terrain feature) 90, 
+91
+describing spell effects 34
+desert terrain 91
+detect magicand magic items 213
+detectspells 60
+detecting invisible creatures 295
+difficult terrain 86
+Difficulty Class 30, 34
+Difficulty Class examples 31
+Difficulty Class, modifying 30
+disease 292
+divinations, handling 34, 46
+DM’s best friend 30
+doors (in dungeons) 60
+and detectspells 60
+doses (of magic items) 214
+downtime (for PCs) 198
+dragon disciple 183
+dragonhide 283
+drowning 304
+druid, epic 208
+NPC 115
+role in society 132
+duelist 185
+dungeon as adventure setting 57
+dungeon animals 76
+dungeon ecology 76
+dungeon encounter tables 79–81
+dungeon features 65
+dungeon level 77
+dungeon terrain 58
+dungeons, miscellaneous 
+features of 63
+random 77
+types of 57
+duststorm 94
+dwarven defender 186
+dwarves 141, 171
+ecology (of a dungeon) 76
+ecology (of a world) 136
+economics 139
+effective character level 199, 209
+Ego (of intelligent item) 270
+Ehlonna 143
+eldritch knight 187
+Elemental Plane of Air 155
+Elemental Plane of Earth 155
+Elemental Plane of Fire 156
+Elemental Plane of Water 157
+elite array 169
+elite characters 110
+elves 141
+Elysium 165
+encounter difficulty 49
+Encounter Level 36, 48
+modifying 39
+multiple monsters and 48
+encounter location 50
+encounter rewards 50
+encounter, starting 22
+treasure per 51
+encounters, design of 48
+modifying difficulty 50
+noncombat, Challenge 
+Rating for 40
+random 78, 95, 101
+single monster 49
+urban 101
+wilderness 95
+encumbrance and armor 20
+ending a session 18
+enemies (of PCs) 103
+energy drain 293
+energy, resistance to 298
+environment, the 302–304
+epic characters 206
+multiclass 207
+epic feats 209
+Erythnul 143
+Ethereal Plane 151
+etherealness 293
+evasion and improved evasion 
+293
+evasion and pursuit 20
+example of play 8
+experience awards (for PCs) 36
+ad hoc 39
+for cohorts 104
+modifying 39
+roleplaying 40
+317

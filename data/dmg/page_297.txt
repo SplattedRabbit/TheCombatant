@@ -1,0 +1,132 @@
+296
+if both rolls indicate a miss. (Alternatively, make one 25% miss
+chance roll rather than two 50% miss chance rolls.)
+A creature with blindsight can attack (and otherwise interact
+with) creatures regardless of invisibility.
+An invisible burning torch still gives off light, as does an invis-
+ible object with a light spell (or similar spell) cast upon it.
+Ethereal creatures are invisible. Since ethereal creatures are not
+materially present, Spot checks, Listen checks, Scent, Blind-Fight,
+and blindsight don’t help locate them. Incorporeal creatures are
+often invisible. Scent, Blind-Fight, and blindsight don’t help crea-
+tures find or attack invisible, incorporeal creatures, but Spot
+checks and possibly Listen checks can help.
+Invisible creatures cannot use gaze attacks.
+Invisibility does not thwart detectspells.
+Since some creatures can detect or even see invisible creatures,
+it is helpful to be able to hide even when invisible.
+LEVEL LOSS
+A character who loses a level instantly loses one Hit Die. The char-
+acter’s base attack bonus, base saving throw bonuses, and special
+class abilities are now reduced to the new, lower level. A 2nd-level
+rogue, for example, normally has the evasion ability, but when she
+is drained to 1st level, she loses that ability. Likewise, the character
+loses any ability score gain, skill ranks, and any feat associated
+with the level (if applicable). If the exact ability score or skill ranks
+increased from a level now lost is unknown (or the player has for-
+gotten), lose 1 point from the highest ability score or ranks from
+the highest-ranked skills. If a familiar or companion creature
+(such as a paladin’s mount) has abilities tied to a character who has
+lost a level, the creature’s abilities are adjusted to fit the character’s
+new level.
+The victim’s experience point total is immediately set to the
+midpoint of the previous level. For example, a character drained
+from 2nd to 1st level would drop to 500 experience points.
+LOW-LIGHT VISION
+Characters with low-light vision have eyes that are so sensitive to
+light that they can see twice as far as normal in dim light. Thus, if
+a group of adventurers passes down a dark passage with a torch
+illuminating a 20-foot radius, an elf with low-light vision can see
+everything within 40 feet of the torch. Low-light vision is color
+vision. A spellcaster with low-light vision can read a scroll as long
+as even the tiniest candle flame is next to her as a source of light.
+Characters with low-light vision can see outdoors on a moonlit
+night as well as they can during the day.
+PARALYSIS
+A cleric of Hextor brandishes his unholy symbol at Tordek, ges-
+tures with it, and speaks unintelligible words. Suddenly Tordek
+feels his body freeze up, and he can’t will his limbs to obey. He
+stands rigid and helpless. He hears a fight raging around him and
+sees whatever passes in front of his eyes, but he can’t turn to see
+how his friends are faring. The sound of his own breath and the
+beating of his heart fill his ears. Then he hears someone behind
+him, and all he can do is hope it’s a friend.
+Some monsters and spells have the supernatural or spell-like
+ability to paralyze their victims, immobilizing them through mag-
+ical means. (Paralysis from toxins is discussed in the Poison sec-
+tion below.)
+A paralyzed character cannot move, speak, or take any physical
+action. He is rooted to the spot, frozen and helpless. Not even
+friends can move his limbs. He may take purely mental actions,
+such as casting a spell with no components.
+A winged creature flying in the air at the time that it becomes
+paralyzed cannot flap its wings and falls. A swimmer can’t swim
+and may drown.
+POISON
+When a character takes damage from an attack with a poisoned
+weapon, touches an item smeared with contact poison, consumes
+poisoned food or drink, or is otherwise poisoned, he must make a
+Fortitude saving throw. If he fails, he takes the poison’s initial
+damage (usually ability damage). Even if he succeeds, he typically
+faces more damage 1 minute later, which he can also avoid with a
+successful Fortitude saving throw.
+One dose of poison smeared on a weapon or some other object
+affects just a single target. A poisoned weapon or object retains its
+venom until the weapon scores a hit or the object is touched (un-
+less the poison is wiped off before a target comes in contact with
+it). Any poison smeared on an object or exposed to the elements in
+any way—if the vial containing it is left unstoppered, for in-
+stance—remains potent until it is touched or used.
+Although supernatural and spell-like poisons are possible, poi-
+sonous effects are almost always extraordinary.
+Poisons can be divided into four basic types according to the
+method by which their effect is delivered, as follows.
+Contact:Merely touching this type of poison necessitates a
+saving throw. It can be actively delivered via a weapon or a touch
+attack. Even if a creature has sufficient damage reduction to avoid
+taking any damage from the attack, the poison can still affect it. A
+chest or other object can be smeared with contact poison as part of
+a trap.
+Ingested:Ingested poisons are virtually impossible to utilize in
+a combat situation. A poisoner could administer a potion to an un-
+conscious creature or attempt to dupe someone into drinking or
+eating something poisoned. Assassins and other characters tend to
+use ingested poisons outside of combat.
+Inhaled:Inhaled poisons are usually contained in fragile vials
+or eggshells. They can be thrown as a ranged attack with a range
+increment of 10 feet. When it strikes a hard surface (or is struck
+hard), the container releases its poison. One dose spreads to fill the
+volume of a 10-foot cube. Each creature within the area must make
+a saving throw. (Holding one’s breath is ineffective against inhaled
+poisons; they affect the nasal membranes, tear ducts, and other
+parts of the body.)
+Injury:This poison must be delivered through a wound. If a
+creature has sufficient damage reduction to avoid taking any dam-
+age from the attack, the poison does not affect it. Traps that cause
+damage from weapons, needles, and the like sometimes contain
+injury poisons.
+The characteristics of poisons are summarized on Table 8–3:
+Poisons. Terms on the table are defined below.
+Type:The poison’s method of delivery (contact, ingested,
+inhaled, or via an injury) and the Fortitude save DC to avoid the
+poison’s damage.
+Initial Damage:The damage the character takes immediately
+upon failing his saving throw against this poison. Ability damage
+is temporary unless marked with an asterisk (*), in which case the
+loss is a permanent drain. Paralysis lasts for 2d6 minutes.
+Secondary Damage:The amount of damage the character takes 1
+minute after exposure as a result of the poisoning, if he fails a
+second saving throw. Unconsciousness lasts for 1d3 hours. Ability
+damage marked with an asterisk is permanent drain instead of
+temporary damage.
+Price:The cost of one dose (one vial) of the poison. It is not pos-
+sible to use or apply poison in any quantity smaller than one dose.
+The purchase and possession of poison is always illegal, and even
+in big cities it can be obtained only from specialized, less than rep-
+utable sources.
+Perils of Using Poison
+A character has a 5% chance of exposing himself to a poison when-
+ever he applies it to a weapon or otherwise readies it for use. Addi-
+tionally, a character who rolls a natural 1 on an attack roll with a
+CHAPTER 8:
+GLOSSARY

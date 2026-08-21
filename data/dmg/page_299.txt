@@ -1,0 +1,131 @@
+298
+heal its wounds, or teleport great distances. Some psionic crea-
+tures can see into the future, the past, and the present (in far-off
+locales) as well as read the minds of others.
+RAYS
+A thin, green beam leaps from one of the beholder’s eyes and
+streaks across the chamber at Mialee. She twists to avoid it (as she
+would move to avoid an arrow or a sword), but the beam flies true
+and connects. Green energy encompasses her in a flash, trying to
+disintegrate her. Her face contorts as she struggles to resist the
+spell. In an instant, the green energy is gone, and Mialee is safe.
+The beholder then projects a second eye beam at her.
+All ray attacks, whether from a ray of enfeeblementspell or a
+beholder’s eye ray, require the attacker to make a successful ranged
+touch attack against the target. Rays have varying ranges, which
+are simple maximums. A ray’s attack roll never takes a range
+penalty. Even if a ray hits, it usually allows the target to make a
+saving throw (Fortitude or Will). Rays never allow a Reflex saving
+throw, but if a character’s Dexterity bonus to AC is high, it might
+be hard to hit her with the ray in the first place.
+REGENERATION
+Creatures with this extraordinary ability recover from wounds
+quickly and can even regrow or reattach severed body parts.
+Damage dealt to the creature is treated as nonlethal damage,
+and the creature automatically cures itself of nonlethal damage at
+a fixed rate (for example, 5 points per round for a troll).
+Certain attack forms, typically fire and acid, deal damage to the
+creature normally; that sort of damage doesn’t convert to non-
+lethal damage and so doesn’t go away. The creature’s description
+includes the details.
+Creatures with regeneration can regrow lost portions of their
+bodies and can reattach severed limbs or body parts. Severed parts
+die if they are not reattached.
+Regeneration does not restore hit points lost from starvation,
+thirst, or suffocation.
+Attack forms that don’t deal hit point damage (for example,
+implosionand most poisons) ignore regeneration.
+An attack that can cause instant death, such as a coup de grace,
+massive damage, or an assassin’s death attack, only threatens the
+creature with death if it is delivered by weapons that deal it lethal
+damage.
+RESISTANCE TO ENERGY
+A creature with resistance to energy has the ability (usually extraor-
+dinary) to ignore some damage of a certain type (such as cold, elec-
+tricity, or fire) each round, but it does not have total immunity.
+Each resistance ability is defined by what energy type it resists
+and how many points of damage are resisted. For example, a janni
+has resistance to fire 10. A janni can ignore the first 10 points of
+fire damage it takes each attack. It doesn’t matter whether the
+damage has a mundane or magical source.
+When resistance completely negates the damage from an
+energy attack, the attack does not disrupt a spell.
+This resistance does not stack with the resistance that a spell,
+such as endure elements,might provide.
+SCENT
+This extraordinary ability lets a creature detect approaching ene-
+mies, sniff out hidden foes, and track by sense of smell.
+A creature with the scent ability can detect opponents by sense
+of smell, generally within 30 feet. If the opponent is upwind, the
+range is 60 feet. If it is downwind, the range is 15 feet. Strong
+scents, such as smoke or rotting garbage, can be detected at twice
+the ranges noted above. Overpowering scents, such as skunk musk
+or troglodyte stench, can be detected at three times these ranges.
+The creature detects another creature’s presence but not its spe-
+cific location. Noting the direction of the scent is a move action. If
+it moves within 5 feet of the scent’s source, the creature can pin-
+point that source.
+A creature with the Track feat and the scent ability can follow
+tracks by smell, making a Wisdom check to find or follow a track.
+The typical DC for a fresh trail is 10. The DC increases or decreases
+depending on how strong the quarry’s odor is, the number of crea-
+tures, and the age of the trail. For each hour that the trail is cold,
+the DC increases by 2. The ability otherwise follows the rules for
+the Track feat (see page 101 of the Player ’s Handbook). Creatures
+tracking by scent ignore the effects of surface conditions and poor
+visibility.
+Creatures with the scent ability can identify familiar odors just
+as humans do familiar sights.
+Water, particularly running water, ruins a trail for air-breathing
+creatures. Water-breathing creatures such as sharks, however, have
+the scent ability and can use it in the water easily.
+False, powerful odors can easily mask other scents. The pres-
+ence of such an odor completely spoils the ability to properly
+detect or identify creatures, and the base Survival DC to track
+becomes 20 rather than 10.
+SPELL RESISTANCE
+Spell resistance is the extraordinary ability to avoid being affected
+by spells. (Some spells also grant spell resistance.)
+To affect a creature that has spell resistance, a spellcaster must
+make a caster level check (1d20 + caster level) at least equal to the
+creature’s spell resistance. (The defender’s spell resistance is like an
+Armor Class against magical attacks.) If the caster fails the check,
+the spell doesn’t affect the creature. The possessor does not have to
+do anything special to use spell resistance. The creature need not
+even be aware of the threat for its spell resistance to operate.
+Only spells and spell-like abilities are subject to spell resistance.
+Extraordinary and supernatural abilities (including enhancement
+bonuses on magic weapons) are not. For example, the feareffect
+from a rod of lordly mightis subject to spell resistance because it is a
+spell-like effect. The rod’s combat bonuses (such as the +2 bonus
+from the rod’s mace form) are not. A creature can have some abili-
+ties that are subject to spell resistance and some that are not. For
+example, an androsphinx’s divine spells are subject to spell resist-
+ance, but its roar is not. (The roar is a supernatural ability.) A
+cleric’s spells are subject to spell resistance, but his use of positive
+or negative energy is not. Even some spells ignore spell resistance;
+see When Spell Resistance Applies, below.
+A creature can voluntarily lower its spell resistance. Doing so is
+a standard action that does not provoke an attack of opportunity.
+Once a creature lowers its resistance, it remains down until the
+creature’s next turn. At the beginning of the creature’s next turn,
+the creature’s spell resistance automatically returns unless the
+creature intentionally keeps it down (also a standard action that
+does not provoke an attack of opportunity).
+A creature’s spell resistance never interferes with its own spells,
+items, or abilities.
+A creature with spell resistance cannot impart this power to
+others by touching them or standing in their midst. Only the
+rarest of creatures and a few magic items have the ability to bestow
+spell resistance upon another.
+Spell resistance does not stack. It overlaps. If a cleric wearing +1
+chainmailthat grants him spell resistance 15 casts holy aura,which
+grants spell resistance 25 against evil spells and spells cast by evil
+creatures, he has spell resistance 25 against the aforementioned
+spells and spell resistance 15 against other spells and spell-like
+abilities.
+When Spell Resistance Applies
+Each spell described in the Player ’s Handbookincludes an entry
+that indicates whether spell resistance applies to the spell. In
+CHAPTER 8:
+GLOSSARY
