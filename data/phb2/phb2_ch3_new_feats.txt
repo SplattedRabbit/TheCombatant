@@ -1,0 +1,2366 @@
+CHAPTER 3
+NEW FEATS
+Table 3–1: General Feats
+Feat                                      Prerequisites                                      Benefi t
+Acrobatic Strike Tumble 12 ranks +6 on next attack against opponent you tumble past
+Arcane Flourish Perform 4 ranks, arcane caster level 1st Expend spell to gain bonus on Perform check
+   Arcane Accompaniment   Perform 4 ranks, Arcane Flourish,  Expend prepared spell or spell slot to extend duration
+ arcane caster level 1st, bardic music of bardic music
+Arcane Thesis Knowledge (arcana) 9 ranks,  +2 caster level, cheaper metamagic with one spell
+ ability to cast arcane spells
+Arcane Toughness Toughness, arcane caster level 3rd Expend prepared spell or spell slot to heal when at or 
+  below 0 hit points
+   Arcane Consumption Arcane Toughness, Toughness,  +2 save DC for one spell, Con penalty for 12 hours and
+ arcane caster level 6th fatigued
+Armor Specialization Proficiency with selected armor type,  DR 2/– with chosen armor
+ base attack bonus +12
+Battle Dancer Base attack bonus +2, bardic music +2 on attacks while moving and using bardic music
+Bonded Familiar Familiar You and familiar shift damage after deadly attack
+Bounding Assault Dex 13, Dodge, Mobility, Spring Attack,  Attack twice while using Spring Attack
+ base attack bonus +12
+   Rapid Blitz Dex 13, Bounding Assault, Dodge,  Make third attack as part of Spring Attack
+ Mobility, Spring Attack, 
+ base attack bonus +18
+Brutal Strike Str 13, Power Attack, base attack bonus +6     Daze opponent with successful bludgeoning attack
+Combat Acrobat Balance 9 ranks, Tumble 9 ranks Gain new uses for Balance skill
+Combat Familiar Arcane caster level 1st, familiar Familiar enters foe’s square without provoking attack
+   Lurking Familiar Combat Familiar, arcane caster level 6th Familiar can hide in your square
+Combat Tactician Dex 13, Dodge, base attack bonus +12 +2 on damage against foe you approach and attack
+Cometary Collision Str 13, Improved Bull Rush, Power Attack     Ready action to slam into charging foe
+Companion Spellbond Animal companion Share spells with companion at greater range
+Crossbow Sniper Proficiency with hand, heavy, or light Half Dexterity bonus on crossbow damage, 60 ft. 
+ crossbow, Weapon Focus with hand,  skirmish or sneak attack
+ heavy, or light crossbow, base attack bonus +1
+Cunning Evasion Hide 9 ranks, evasion Hide and move immediately after using evasion
+Dampen Spell Improved Counterspell Reduce your save DC against foe’s spell by expending 
+  spell or slot as immediate action
+Deadeye Shot Point Blank Shot, Precise Shot,  Ready action to fire, denying foe Dex bonus to AC
+ base attack bonus +4,  on your attack after ally hits foe
+ skirmish or sneak attack ability
+Defensive Sweep Base attack bonus +15 Foe must move or provoke attack
+Elven Spell Lore Int 17 or elf, Knowledge (arcana) 12 ranks    Bonus on dispel attempts, alter energy type of spell
+Fade into Violence Bluff 6 ranks, Hide 6 ranks Foe strikes ally, not you, if your Bluff check succeeds 
+Fiery Fist Dex 13, Wis 13, Improved Unarmed Strike,   Expend Stunning Fist use to cloak fists, feet in fiery 
+ Stunning Fist, base attack bonus +8 energy for +1d6 damage
+   Fiery Ki Defense Dex 13, Wis 13, Fiery Fist, Improved  Expend Stunning Fist use to cloak self in flame, 
+ Unarmed Strike, Stunning Fist,  damaging any who strike you
+ base attack bonus +8
+   Ki Blast Dex 13, Wis 13, Fiery Fist, Improved  Expend Stunning Fist uses to throw ball of ki energy
+ Unarmed Strike, Stunning Fist, 
+ base attack bonus +8
+Flay Str 13, Power Attack Inflict painful wounds on unarmored targets
+Grenadier — +1 on attacks and damage with splash weapons
+Hindering Opportunist Combat Reflexes, base attack bonus +3 Replace attack of opportunity with aid another
+   Stalwart Defense Combat Reflexes, Hindering Opportunist,    Foes provoke aid another action from you when they
+ base attack bonus +9 attack allies
+Indomitable Soul Endurance, Iron Will Roll twice against fear and mind-affecting attacks
+Intimidating Strike Intimidate 4 ranks Use Intimidate check with attack to shake opponent
+Keen-Eared Scout Listen 6 ranks,  Listen check reveals extra information about sound
+ Alertness or Skill Focus (Listen)
+Leap of the Heavens Jump 4 ranks Don’t double DC for standing jumps, +5 bonus on 
+                                                                                          running                                             jumps
+Lunging Strike Base attack bonus +6 Extend reach of one attack
+Mad Foam Rager Rage or frenzy ability Once per rage or frenzy, delay spell or attack effect
+Master Manipulator Cha 13, Diplomacy 9 ranks Gain two new uses of Diplomacy skill
+Melee Evasion Dex 13, Int 13, Combat Expertise, Dodge While fi ghting defensively, negate foe’s attack
+Melee Weapon Mastery Proficiency with selected weapon,  Gain Weapon Focus, Weapon Specialization benefits
+ Weapon Focus with selected weapon,  with multiple weapons
+ Weapon Specialization with selected 
+ weapon, base attack bonus +8
+620_95374_Ch3.indd   72620_95374_Ch3.indd   722/8/06   3:50:19 PM2/8/06   3:50:19 PM
+
+73
+CHAPTER 3
+NEW FEATS
+Feat                                      Prerequisites                                      Benefi t
+   Crushing Strike Proficiency with a bludgeoning weapon,  +1 on attacks per previous hit with bludgeon
+ Weapon Focus with a bludgeoning weapon, 
+ Melee Weapon Mastery (bludgeoning), Weapon 
+ Specialization with a bludgeoning weapon, 
+ base attack bonus +14
+   Driving Attack Proficiency with selected weapon,  Bull rush with piercing weapon attack
+ Weapon Focus with selected weapon, 
+ Melee Weapon Mastery (piercing), Weapon 
+ Specialization with selected weapon, 
+ base attack bonus +14
+   Slashing Flurry Proficiency with selected weapon,  Gain extra attack with slashing weapon
+ Weapon Focus with selected weapon, 
+ Melee Weapon Mastery (slashing), Weapon 
+ Specialization with selected weapon, 
+ base attack bonus +14
+   Weapon Supremacy Proficiency with selected weapon,  Gain further abilities with chosen weapon
+ Greater Weapon Focus with selected 
+ weapon, Greater Weapon Specialization 
+ with selected weapon, Weapon Focus 
+ with selected weapon, Weapon 
+ Specialization with selected weapon, 
+ Melee Weapon Mastery with weapon type 
+ of selected weapon, fi ghter level 18th
+Overwhelming Assault Base attack bonus +15 Gain bonus against adjacent foe not attacking you 
+Penetrating Shot Str 15, Point Blank Shot,  Your ranged attack targets every foe in 60-ft. line
+ base attack bonus +10
+Ranged Weapon Mastery   Proficiency with selected weapon,  Gain Weapon Focus, Weapon Specialization benefits
+ Weapon Focus with selected weapon,  with multiple weapons
+ Weapon Specialization with selected 
+ weapon, base attack bonus +8
+Robilar’s Gambit Combat Reflexes, base attack bonus +12 Grant foes bonus on attacks and damage, but their 
+  attacks provoke attacks of opportunity
+Shield Specialization Proficiency with shields Increase shield bonus by +1
+   Active Shield Defense Proficiency with shields,  Make attacks of opportunity without penalty when
+ Shield Specialization fi ghting defensively
+   Agile Shield Fighter Proficiency with shields, Improved Shield    Reduce two weapon penalties when using shield bash
+ Bash, Shield Specialization
+   Shield Sling Proficiency with shields, Improved  Use shield as ranged weapon
+ Shield Bash, Shield Specialization, 
+ base attack bonus +9
+   Shield Ward Proficiency with shields,  Gain shield bonus to touch AC and against bull rush, 
+ Shield Specialization disarm, grapple, overrun, and trip
+Short Haft Proficiency with selected weapon,  Lose reach benefits, attack adjacent foes
+ Weapon Focus with selected weapon, 
+ base attack bonus +3
+Spectral Skirmisher Base attack bonus +6 Gain bonuses while invisible
+Spell-Linked Familiar Arcane caster level 9th, familiar Familiar gains limited spellcasting ability
+Steadfast Determination    Endurance Use Constitution to modify Will saves
+Telling Blow Skirmish attack or sneak attack Gain skirmish or sneak attack damage on critical hits
+Trophy Collector Craft (taxidermy) 6 ranks Gain bonuses from trophies you create and wear
+Tumbling Feint Bluff 4 ranks, Tumble 4 ranks +5 on feint attempt after successful Tumble
+Two-Weapon Pounce Dex 15, Two-Weapon Fighting,  Attack with both weapons when charging
+ base attack bonus +6
+Two-Weapon Rend Dex 15, Two-Weapon Fighting,  Gain bonus damage if you hit with both weapons
+ base attack bonus +11
+Vatic Gaze Arcane caster level 9th Detect magic at will, use Sense Motive to determine 
+  foe’s highest-level spell
+Versatile Unarmed Strike    Improved Unarmed Strike Deal bludgeoning, piercing, or slashing damage 
+                                                                                          with                                             unarmed                                             strikes
+Vexing Flanker Combat Reflexes +4 on attacks when flanking
+   Adaptable Flanker Combat Reflexes, Vexing Flanker,  Flank chosen foe from adjacent square
+ base attack bonus +4
+Wanderer’s Diplomacy Halfling or 4 ranks in Bluff, Diplomacy,  Gain special social abilities
+ and Sense Motive
+Water Splitting Stone Dex 13, Wis 13, Improved Unarmed Strike,   +4 bonus on damage when striking foe that has DR
+ Stunning Fist, base attack bonus +9
+620_95374_Ch3.indd   73620_95374_Ch3.indd   732/8/06   3:50:25 PM2/8/06   3:50:25 PM
+
+74
+CHAPTER 3
+NEW FEATS
+Benefi  t: As a swift action, you designate a single opponent 
+as the target of this feat. When you are adjacent to the chosen 
+target, you can choose to count as occupying any other square 
+you threaten for purposes of determining fl  anking  bonuses  
+for you and your allies. You also occupy your current square 
+for fl  anking an opponent.
+Special: A fi ghter can select Adaptable Flanker as one of 
+his fi  ghter bonus feats.
+AGILE SHIELD FIGHTER
+You are skilled in combining your shield bash attack with 
+an armed strike. When you use your shield in unison with 
+a weapon, your training allows you to score telling blows 
+with both.
+Prerequisites: Profi  ciency with shields, Improved Shield 
+Bash, Shield Specialization.
+Benefi  t: When making a shield bash and armed strike 
+attack as part of a full attack action, you take a –2 penalty 
+on each attack. These penalties replace the normal ones you 
+incur for fi  ghting with two weapons.
+Special: A fi ghter can select Agile Shield Fighter as one 
+of his fi  ghter  bonus  feats.
+ARCANE ACCOMPANIMENT
+You infuse your performance with magical energy, allowing 
+its effects to continue even as you attend to other tasks.
+Prerequisites: Perform 4 ranks, Arcane Flourish, arcane 
+caster level 1st, bardic music.
+Benefi  t: As a swift action, you can expend a pre-
+pared spell or a spell slot to extend the duration of 
+your bardic music ability after you stop perform-
+ing.  You  extend  the  duration  a  number  of  
+rounds  equal  to  the  level  of  the  spell  
+used  in  this  manner.  This  
+extension is in addition to 
+the  normal  duration  of  
+the effect after you stop 
+your performance.
+     You  c a n  ex pend  
+only one spell slot 
+to  extend  the  du-
+ration  of  your  
+bardic  music.  
+The  slot  can  come  from  any  of  your  arcane  caster  classes,  
+not just bard.
+     This has no effect on bardic music or similar abilities with 
+a duration of instantaneous or permanent.
+ARCANE CONSUMPTION
+You can sacrifi  ce your physical health to strengthen a spell. 
+This process leaves you wracked with pain, but the enhanced 
+energy you draw from the spell might provide the margin 
+between victory and defeat.
+ Prerequisites: Arcane Toughness, Toughness, arcane 
+caster level 6th.
+ Benefi  t: Once per day as a swift action, you can grant the 
+next spell you cast a +4 bonus on its save DC. You must cast 
+and complete this spell on the same turn that you use a swift 
+action to activate this feat. In return, you take a –4 penalty 
+to Constitution for 12 hours and are fatigued.
+ARCANE FLOURISH
+You use your magical abilities to improve your performance 
+talents. By bleeding magical energy into your singing, oratory, 
+or other abilities, you enhance the pitch and sound, project 
+your voice with a more commanding tone, and so forth.
+Prerequisites: Perform 4 ranks, arcane caster level 1st.
+ Benefi  t: As a swift action, you can expend a prepared spell 
+or spell slot to grant your next Perform check a competence 
+bonus  equal  to  1  +  the  level  of  the  spell  or  slot.  You  must  
+make a check within 1 minute of using 
+this  feat,  or  the  energy  you  expend  
+dissipates with no effect.
+ARCANE THESIS
+You have studied a single 
+spell  in-depth.  Your  
+expertise  grants  you  
+formidable   though   
+narrowly focused 
+arcane mastery.
+          Prerequisites: 
+Knowledge (arcana) 
+9 ranks, ability to cast 
+arcane spells.
+An elf uses Acrobatic Strike to get the drop on a giant
+Illus. by E. Fiegenschuh
+620_95374_Ch3.indd   74620_95374_Ch3.indd   742/8/06   3:50:32 PM2/8/06   3:50:32 PM
+
+75
+CHAPTER 3
+NEW FEATS
+Benefi  t:  Choose one arcane spell that you can cast to be your 
+thesis spel l. When casting that spel l, you do so at +2 caster level. 
+When you apply a metamagic feat other than Heighten Spell 
+to that spell, the enhanced spell uses up a spell slot one level 
+lower than normal. For example, an empowered thesis spell 
+uses up a spell slot one level higher than the spell’s actual slot 
+(rather than the normal two levels higher).
+Special: You can gain this feat multiple times. Its effects 
+do not stack. Each time you take the feat, it applies to a 
+new spell.
+ARCANE TOUGHNESS
+You draw upon the power of your magic to sustain yourself, 
+allowing you to continue fi ghting long after your physical 
+body has failed you.
+Prerequisites: Toughness, arcane caster level 3rd.
+Benefi  t: You can expend a prepared spell or spell slot as 
+an immediate action when you are reduced to 0 or fewer hit 
+points. You heal a number of points of damage equal to the 
+level of the spell or spell slot used in this manner. You cannot 
+use  this  ability  to  negate  effects  that  disable  you  without  
+causing hit point damage, such as a medusa’s ability to turn 
+you to stone. Even if this healing does not bring you above 
+negative hit points, it still stabilizes you.
+    Using a 0-level spell with this feat grants no benefi t.
+ARMOR SPECIALIZATION
+Through long wear and hours of combat, you have trained 
+your body to believe in its armor. Where others fl  inch,  you  
+confront.  When  the  sword  falls,  your  instincts,  born  of  
+bruises and rent fl  esh, present your cuirass, cuisse, helm, or 
+gorget  to  meet  the  blade  at  the  perfect  angle,  causing  it  to  
+skitter off harmlessly. 
+Prerequisites: Profi  ciency with selected armor type, base 
+attack bonus +12.
+Benefi  t: Choose one t y pe of medium or heav y ar mor w ith 
+which you are profi  cient. When wearing masterwork armor 
+(including magic armor) of that type, you gain damage reduc-
+tion 2/–. Any time you lose your Dexterity bonus to Armor 
+Class, you lose the benefi t of this feat, because you cannot 
+properly defl  ect the blows of the enemy.
+Special: You can gain this feat multiple times. Its effects 
+do not stack. Each time you take the feat, it applies to a 
+new type of armor.
+    A    fi ghter can select Armor Specialization as one of 
+his fi  ghter bonus feats.
+BAT TLE DANCER
+You strike at your foes in time with the music you 
+sing or in cadence with an oration you deliver. The 
+magical power of your bardic performance drives you 
+forward and improves your fi ghting ability.
+ Prerequisites: Base attack bonus +2, bardic music.
+Benefi  t: During a round in which you grant any ally a 
+bonus on at tack rol ls, damage rol ls, or saves w ith one of 
+your bardic music abilities, you gain a +2 morale bonus 
+on  your  attack  rolls  if  you  move  at  least  one  square  
+before attacking. You lose this benefi t for the remaining 
+duration of your current use of bardic music if you do not 
+move or if you do not attack on your turn. If you stand still 
+and attack (or move without attacking), you do not gain this 
+feat’s benefi  t, but this ability’s duration continues.
+ Special: A fi ghter can select Battle Dancer as one of his 
+fi  ghter bonus feats.
+BONDED FAMILIAR
+You enjoy a stronger than normal magical bond with your 
+familiar, granting you access to two special abilities.
+ Prerequisite: Familiar.
+Benefi  t: As long as your familiar is within 30 feet of you, 
+the  two  of  you  can  share  the  damage  from  a  single  deadly  
+attack. Once per day, if an attack would drop your familiar 
+to 0 or fewer hit points, you can instead choose to accept that 
+damage. In addition, once per day, your familiar can choose 
+to take the damage from a single attack or effect that would 
+reduce you to 0 or fewer hit points. This ability applies only 
+to attacks or effects that deal hit point damage. You or your 
+familiar could not absorb the effect of a spell such as fl  e s h   
+to stone.
+BOUNDING ASSAULT
+You can move and attack with superior speed and power.
+    Prerequisites: Dex 13, Dodge, Mobility, Spring Attack, 
+base attack bonus +12.
+     Benefi  t: When using the Spr ing At tack feat, you designate 
+two foes rather than one. Your movement does not provoke 
+attacks of opportunity from either of these foes. While using 
+an attack action with the Spring Attack feat, you can 
+make a second attack with a –5 penalty. You can 
+use both attacks against one of the opponents 
+targeted  with  this  feat,  or  split  your  attacks  
+between them.
+Arcane Accompaniment channels magical energy into Gimble’s song
+Illus. by C. Frank
+620_95374_Ch3.indd   75620_95374_Ch3.indd   752/8/06   3:50:41 PM2/8/06   3:50:41 PM
+
+76
+CHAPTER 3
+NEW FEATS
+BRUTAL STRIKE
+You can batter foes senseless with your mace, morningstar, 
+quarterstaff, or fl  ail. Few victims are willing to stand toe-
+to-toe  with  a  warrior  known  for  knocking  his  foes  witless  
+with a single strike.
+Prerequisites: Str 13, Power Attack, base attack bonus +6.
+Benefi  t: If you use your Power Attack feat to increase your 
+damage with a bludgeoning weapon, you can attempt a brutal 
+strike. You must declare your intention before making your 
+attack.  If  the  attack  hits  and  your  opponent  takes  damage,  
+he must make a Fortitude save (DC 10 + your extra damage 
+from the Power Attack feat on the attack) or be sickened for 
+1 round.
+    You can use this feat once per round during your attack 
+action.
+Special: This feat cannot be used against a creature that 
+is not subject to extra damage from critical hits.
+    A fighter can select Brutal Strike as one of his fighter 
+bonus feats.
+COMBAT ACROBAT
+Your acrobatics and agility in combat allow you to maneuver 
+across  the  battlefi  eld  with  ease.  You  stay  on  your  feet  and  
+speed over diffi  cult terrain due to your superior athleticism 
+and acrobatic talents.
+ Prerequisites: Balance 9 ranks, Tumble 9 ranks.
+Benefi  t: You gain several benefi  ts from this feat to refl  ect  
+your overall athletic ability and training in the skills vital to 
+an acrobat.
+ Acrobatic Recovery: If an ef fect causes you to fal l prone, you 
+can make a DC 20 Balance check to remain on your feet.
+ Sure Footed Maneuver: With a DC 15 Balance check, you can 
+ignore up to 4 squares of diffi  cult terrain while moving. You 
+treat  these  squares  as  normal  terrain.  You  still  endure  any  
+effects or hazards associated with the terrain. For example, 
+a shallow pool of boiling water might deal fi  re  damage  and  
+count as diffi  cult terrain. You would still take damage from 
+the water even if your Balance check allowed you to move 
+through it at full speed.
+ Special: A fi  ghter can select Combat Acrobat as one of his 
+fi  ghter bonus feats.
+COMBAT FAMILIAR
+Your fami l iar is ski l led in del iver ing at tack spel ls against your 
+foes. It fl  its past their defenses to discharge its spell without 
+leaving itself vulnerable to attack.
+Prerequisites: Arcane caster level 1st, familiar.
+Bounding Assault enables this fi ghter to target two foes instead of one
+Illus. by J. Nelson
+620_95374_Ch3.indd   76620_95374_Ch3.indd   762/8/06   3:50:50 PM2/8/06   3:50:50 PM
+
+77
+CHAPTER 3
+NEW FEATS
+Benefi  t: If your familiar holds the charge for a touch spell, 
+it does not provoke an attack of opportunity for entering an 
+opponent’s square.
+COMBAT TACTICIAN
+You excel at approaching an opponent from an unexpected 
+direction to del iver deadly at tacks. As you approach your foe, 
+you duck and weave to confuse his defenses. Alternatively, 
+you draw a weapon and make a quick attack that surprises 
+your foe.
+    Prerequisites: Dex 13, Dodge, base attack bonus +12.
+    Benefi  t: You can designate one specifi  c foe as the target of 
+this feat as a free action. If neither you nor the target threatens 
+each other at the start of your turn, you gain a +2 bonus on 
+melee damage against that target during your turn.
+COMETARY COLLISION
+You  are  a  thunderbolt  of  destruction  on  the  battlefi  eld.  By  
+carefully timing your charge, you rush forward and slam into 
+an enemy just as he gathers the speed needed to charge you. 
+You turn your opponent’s momentum against him.
+Prerequisites: Str  13,  Improved  Bull  Rush,  Power  
+Attack.
+Benefi  t: You can ready a standard action to use this feat 
+when an opponent charges you or any other target. At any 
+point during your opponent’s charge, you can charge him. 
+In place of the normal charge benefi  ts, you gain +2 on your 
+attack roll and +4 on your damage roll. Your foe loses the 
+benefi  ts  of  charging  (but  not  the  penalties)  but  can  still  
+attack you. If the target charged someone else, he can choose 
+to instead attack you. You take the standard –2 penalty to 
+AC for charging.
+     If you cannot move at least 10 feet or cannot charge due to 
+terrain or other factors, you do not gain this feat’s benefi t. In 
+either case, you use your readied action to move but do not 
+gain an attack.
+ Special: A fi  ghter can select Cometary Collision as one of 
+his fi  ghter bonus feats.
+COMPANION SPELLBOND
+You form a special magical link with your animal com-
+panion, allowing you to share spells with it over a greater 
+distance.
+Prerequisite: Animal companion.
+ Benefi  t: You use your companion’s share spells ability out 
+to a range of 30 feet, rather than the standard 5 feet. You can 
+cast touch spells to affect your companion at a greater range 
+than normal. You can change a spell’s range from touch to 
+short (range of 25 feet + 5 feet per two caster levels) if the 
+spell targets only your companion.
+CROSSBOW SNIPER
+You are skilled in lining up accurate, deadly shots with 
+your crossbow. Perhaps you add custom-made sights to your 
+weapon, or you have learned to maximize the stability and 
+precision the weapon offers.
+ Prerequisites: Proficiency w ith hand, heav y, or l ight 
+crossbow, Weapon Focus with hand, heavy, or light crossbow, 
+base attack bonus +1.
+Benefi  t: When using a crossbow for which you have the 
+Weapon Focus feat, you gain a bonus on damage rolls equal 
+to 1/2 your Dexterity bonus.
+     If you have the skirmish or sneak attack ability, the maxi-
+mum  range  at  which  you  can  make  such  attacks  increases  
+Tordek uses Cometary Collision to close quickly with a displacer beast skeleton
+Illus. by E. Widermann
+620_95374_Ch3.indd   77620_95374_Ch3.indd   772/8/06   3:51:02 PM2/8/06   3:51:02 PM
+
+78
+CHAPTER 3
+NEW FEATS
+to 60 feet when you are using a crossbow for which you have 
+the Weapon Focus feat.
+ Special:  A  fi  ghter  can  select  Crossbow  Sniper  as  one  of  
+his fi  ghter bonus feats.
+CRUSHING STRIKE
+You wield a bludgeoning weapon with superior power, allow-
+ing you to batter aside an opponent’s defenses.
+    Prerequisites: Profi ciency with a bludgeoning weapon, 
+Weapon Focus with a bludgeoning weapon, Weapon Mastery 
+(bludgeoning), Weapon Specialization with a bludgeoning 
+weapon, base attack bonus +14.
+    Benefi  t: When you use a full attack action while fi ghting 
+with any bludgeoning weapon, each attack that connects beats 
+down your foe’s defenses, granting a cumulative +1 bonus on 
+attack rolls until the end of your current turn.
+CUNNING EVASION
+When an area attack detonates around you, you use the chaos 
+and fl  ash of energy to duck out of sight.
+ Prerequisites: Hide 9 ranks, evasion.
+ Benefi  t: If you are caught within an area attack whose 
+damage you avoid completely due to your evasion or improved 
+evasion ability, you can make a combined Hide check and 
+a  5-foot  step  as  an  immediate  action.  You  can  attempt  this  
+check  only  if  there  is  cover  suitable  for  a  Hide  check,  and  
+you can take your 5-foot step into cover before making your 
+Hide attempt.
+ Special: If you have the hide in plain sight class feature, 
+you do not need cover near you to attempt the Hide check 
+allowed by this feat.
+DAMPEN SPELL
+From the lowliest prestidigitator to the most august hiero-
+phant,  spellcasters  both  arcane  and  divine  recognize  the  
+power  of  counterspelling.  You  are  no  exception.  You  have  
+learned  to  channel  energy  into  a  foe’s  spell  to  weaken  its  
+effects. Although you fail to nullify the spell, you render it 
+much easier to resist.
+ Prerequisite: Improved Counterspell.
+ Benefi  t: You can use an immediate action to attempt to 
+dampen an enemy ’s spel l. As w ith counterspel l ing, you must 
+identify the target spell as it is being cast. If you successfully 
+identify it, you can expend any spell or spell slot to dampen 
+your opponent ’s incantation. Because of your hast y, immedi-
+ate casting, you do not fully counter the target spell. Instead, 
+you  subtract  the  level  of  the  spell  or  spell  slot  you  expend  
+from the save DC of your opponent’s spell.
+DEADEYE SHOT
+You carefully line up a ranged attack, timing it precisely 
+so  that  you  hit  your  opponent  when  his  guard  is  down.  
+When your target is busy deal ing w ith an al ly ’s melee at tack, 
+you strike.
+ Prerequisites: Point Blank Shot, Precise Shot, base attack 
+bonus +4, skirmish or sneak attack ability.
+ Benefi  t: By fi  ring just as your ally connects with a blow, 
+you take advantage of the distraction to strike the same enemy 
+when his guard is ruined. If you ready a ranged attack to 
+occur when an ally strikes a particular target, and your ally 
+succeeds, that target loses his Dexterity bonus to AC against 
+your attack. 
+ Special: A fi ghter can select Deadeye Shot as one of his 
+fi  ghter bonus feats.
+DEFENSIVE SWEEP
+You sweep your weapon through the area you threaten, 
+warding away opponents and forcing them to move away or 
+suffer a fearsome blow.
+    Prerequisite: Base attack bonus +15.
+    Benefi  t: If an opponent begins his action adjacent to you 
+and does not move, he provokes an attack of opportunity 
+from you immediately after his turn ends, provided that you 
+threaten the square that he occupies. Any sort of movement, 
+including a 5-foot step, allows the opponent to avoid provok-
+ing this special at tack of oppor t unit y. This feat does not give 
+you any ability to make additional attacks of opportunity in 
+a given round.
+ Special:  A  fi  ghter  can  select  Defensive  Sweep  as  one  of  
+his fi  ghter bonus feats.
+DRIVING AT TACK
+When you strike an opponent with a piercing weapon, the 
+brutal impact of your strike sends him sprawling.
+    Prerequisites: Profi  ciency with selected piercing weapon, 
+Weapon Focus with selected piercing weapon, Weapon Mas-
+tery (piercing), Weapon Specialization with selected piercing 
+weapon, base attack bonus +14.
+    Benefi  t:  If  you  use  a  full-round  action  to  make  a  single  
+melee attack with any piercing weapon and succeed in hit-
+ting, you can initiate a special bull rush attempt against the 
+target. This bull rush uses your total bonus on damage rolls 
+in place of your Strength modifi er. You do not provoke an 
+attack  of  opportunity  with  this  bull  rush,  and  you  cannot  
+move forward with your opponent.
+    If you succeed in pushing an opponent back 10 feet or 
+more,  you  can  reduce  the  distance  you  push  him  by  10  
+feet. In return, your foe falls prone in the square where 
+he ends his movement. Note that by reducing the distance 
+you push your opponent, you can have him fall prone in 
+his current space.
+ELVEN SPELL LORE
+You have studied the mighty arcane traditions of the elves, 
+granting  you  insight  into  the  intricate  workings  of  magic  
+and the theoretical structures behind spells.
+ Prerequisites: Int 17 or elf, Knowledge (arcana) 12 
+ranks.
+ Benefi  t: Your understanding of the elven secrets of magic 
+grants you two benefi  ts. When you cast dispel magic or greater 
+dispel magic, you gain a +2 bonus on your caster level check. 
+Your  understanding  of  magic  allows  you  to  more  easily  
+unravel the power that sustains a foe’s spell.
+    In addition, your knowledge of magic grants you rare 
+insights into forgotten spell lore. Choose a single spell in your 
+spellbook when you take this feat. When preparing that spell, 
+620_95374_Ch3.indd   78620_95374_Ch3.indd   782/8/06   3:51:11 PM2/8/06   3:51:11 PM
+
+79
+CHAPTER 3
+NEW FEATS
+you can alter the type of damage it deals to a single type of 
+your choice. You must make this choice when preparing the 
+spell (those who do not prepare spells cannot benefi  t  from  
+this aspect of the feat). You can prepare the spell multiple 
+times, selecting the same or a different energy type for it 
+with each preparation.
+     You can gain this feat multiple times. The caster level bonus 
+does not stack, and each time you take the feat, a different 
+spell must be chosen.
+FADE   IN TO   V IOL E NC E
+While the chaos of battle swirls around you, you rely on your 
+ability to slip into the background to avoid your enemy’s 
+notice. Your frightened demeanor and pitiable appearance 
+causes your opponents to seek out other targets.
+ Prerequisites: Bluff 6 ranks, Hide 6 ranks.
+ Benefi  t: When you wear no armor or light armor and carry 
+nothing in your hands, your opponents might assume that 
+you are an ineffectual fi  ghter. As an immediate action, choose 
+a single target for this feat. If that opponent threatens both 
+you and one of your allies, that foe strikes your ally rather than 
+you unless he succeeds on a Sense Motive check opposed by 
+your Bluff check. If your foe is larger than you, you gain a +4 
+bonus on your Bluff check. You lose this benefi  t if you attack 
+any opponent or target an opponent w ith a spel l. This benefi  t  
+does  not  apply  to  ranged  attacks  or  attacks  of  opportunity  
+that you provoke.
+    Once you choose a target for this feat, you cannot switch 
+to a new target for the rest of the encounter.
+FIERY FIST
+By channeling your ki energy, you sheathe your limbs in 
+magical fi  re. Your unarmed strikes deal extra fi  re  damage.
+ Prerequisites: Dex 13, Wis 13, Improved Unarmed Strike, 
+Stunning Fist, base attack bonus +8.
+     Benefi  t:  As a swift action, you can expend one of your uses 
+of the Stunning Fist feat to surround your fi sts and feet in 
+fl  ame. For the rest of your turn, you gain an extra 1d6 points 
+of fi  re damage on your unarmed strikes. 
+ When you select this feat, you gain an additional dai ly use 
+of Stunning Fist.
+     Special:     A fi  ghter can select Fiery Fist as one of his fi  ghter  
+bonus feats. A monk with the Stunning Fist feat can select 
+Fiery Fist as her bonus feat at 2nd level, even if she does not 
+meet the other prerequisites.
+FIERY KI DEFENSE
+You channel your ki energy into a cloak of fl  ame that injures 
+all who attempt to strike you.
+ Prerequisites: Dex  13,  Wis  13,  Fiery  Fist,  Improved  
+Unarmed Strike, Stunning Fist, base attack bonus +8.
+ Benefi  t:  As a swift action, you can expend one of your 
+uses of the Stunning Fist feat to cloak yourself in flame. 
+Any creature that strikes you with a melee attack takes 1d6 
+points of fire damage. This benefit lasts until the start of 
+your next turn.
+ Special: A fi  ghter can select Fiery Ki Defense as one of his 
+fi  ghter bonus feats. A monk with the Stunning Fist feat can 
+select Fiery Ki Defense as her bonus feat at 8th level, as long 
+as she also possesses the Fiery Fist feat (other prerequisites 
+can be ignored).
+FLAY
+When fi ghting unarmored opponents, you excel at twist-
+ing your weapon just before impact. This motion rips and 
+tears at your foe’s fl  esh, causing intense pain. This attack is 
+wholly ineffective against armored foes, but it tears through 
+natural defenses.
+ Prerequisites: Str 13, Power Attack.
+ Benefit: When  you  use  your  Power  Attack  feat  with  
+a slashing or piercing weapon against a foe who lacks an 
+armor bonus to AC, you inf lict horrid pain on your target. 
+If your attack hits, your opponent must make a Fortitude 
+save (DC 10 + your da mage bonus f rom Power At tack on t he 
+strike). If this save fails, he takes a –2 penalty on attacks 
+for 1 round.
+     You can use this feat once per round against a given target.
+ Special: A fighter can select Flay as one of his fighter 
+bonus feats.
+GRENADIER
+You are skilled in using grenadelike weapons. You excel at 
+tossing them to just the right spot to maximize the amount of 
+damage they cause as they burst open upon the battlefi  eld.
+ Benefi  t:  You  are  an  expert  with  splash  weapons  and  all  
+manner of incendiary mixtures. You gain a +1 bonus on attack 
+rolls  with  splash  weapons  and  a  +1  bonus  on  the  weapon’s  
+damage (including splash damage).
+ Special: A fi  ghter can select Grenadier as one of his fi  ghter  
+bonus feats.
+HINDERING OPPORTUNIST
+When you have a chance to str i ke a distracted foe, you instead 
+use that opportunity to aid or protect an ally against him.
+    Prerequisites: Combat Refl  exes, base attack bonus +3.
+    Benefi  t: Whenever an opponent provokes an attack of 
+opportunity from you, you can choose to replace that attack 
+with an aid another action targeting that opponent.
+INTIMIDATING STRIKE
+You ma ke a display of your combat prowess designed to str i ke 
+terror in your foe. Your stance, attack method, and demeanor 
+demonstrate to your foe that you are capable of defeating him 
+with little effort. Your intent is clear—if you decide to hit 
+your foe, you could easily slay him.
+ Prerequisites: Intimidate 4 ranks.
+ Benefi  t:  As a standard action, you make a single melee 
+attack against your foe. You subtract a number from this 
+attack equal to or less than your base attack bonus. If your 
+attack hits, you can make an Intimidate check against the foe 
+you struck, with a bonus equal to the number you subtracted 
+from your at tack rol l. If this check succeeds, your opponent is 
+shaken for the rest of the encounter. You cannot use this feat 
+to worsen an opponent’s fear condition beyond shaken.
+ Special: A fi  ghter can select Intimidating Strike as one of 
+his fi  ghter bonus feats.
+620_95374_Ch3.indd   79620_95374_Ch3.indd   792/8/06   3:51:18 PM2/8/06   3:51:18 PM
+
+80
+CHAPTER 3
+NEW FEATS
+INDOMITABLE SOUL
+Your  physical  toughness  translates  into  greater  mental  
+resiliency. Where others cave in to magical effects that alter 
+their minds, you stand resolute.
+ Prerequisites: Endurance, Iron Will.
+ Benefi  t: Whenever you make a Will save against a mind-
+affecting or fear ability, you can roll 2d20 and use the higher 
+of the two die rolls.
+KEEN-EARED SCOUT
+Your sharp sense of hearing allows you to determine much 
+more about your surroundings. 
+ Prerequisites:  Listen  6  ranks,  Alertness  or  Skill  Focus  
+(Listen).
+ Benefi  t: When you make a Listen check, you might learn 
+more than normal about a source of noise.
+     If you beat the Listen DC by 5 or more, you determine the 
+size, speed, and direction of the source of noise.
+     If  you  beat  the  DC  by  10  or  more,  you  determine  the  
+precise, cur rent posit ion of the creat ure or object that caused 
+the sound.
+    If you beat the DC by 15 or more, you determine the 
+type of armor the creature wears and what it carries, if 
+anything.
+     If you beat the DC by 20 or more, you learn the creature’s 
+type and subtypes.
+    The information you learn is cumulative. For example, 
+if you got a Listen check result of 35 against a DC of 23, 
+you gain the information for beating the check by 10 and 
+by 5. These benefits apply to both standard and opposed 
+Listen checks.
+     Also,  you  gain  a  +5  bonus  on  Listen  checks  to  pinpoint  
+invisible creatures.
+KI BLAST
+You focus your ki into a ball of energy that you can hurl at 
+an opponent.
+ Prerequisites: Dex 13, Wis 13, Fiery Fist, Improved 
+Unarmed Strike, Stunning Fist, base attack bonus +8.
+ Benefi  t:  You can expend two daily uses of your Stunning 
+Fist feat as a move action to create an orb of raw ki energy. 
+You can then throw the seething orb as a standard action 
+with  a  range  of  60  feet.  This  ranged  touch  attack  deals  
+damage equal to 3d6 points + your Wis modifi  er.  The  ki orb 
+is a force effect.
+    If you fail to throw the orb before the end of your turn, it 
+dissipates harmlessly.
+    When you take this feat, you gain an additional daily use 
+of Stunning Fist.
+     Special:     A fi  ghter can select Ki Blast as one of his fi  ghter  
+bonus feats. A monk with the Stunning Fist feat can select 
+Ki  Blast  as  her  bonus  feat  at  8th  level,  as  long  as  she  pos-
+sesses the Fiery Fist feat and a base attack bonus of +6 (other 
+prerequisites can be ignored).
+LEAP OF THE HEAVENS
+Your excellent athletic ability and superior conditioning 
+allow you to make near-superhuman leaps.
+ Prerequisite: Jump 4 ranks.
+ Benefit: When making a Jump check, the DC for the 
+check doesn’t double if you fail to move 20 feet in a straight 
+l ine pr ior to jumping. If you do move 20 feet in a straight l ine 
+before attempting a jump, you gain a +5 competence bonus 
+on your check.
+ Normal: All Jump checks require a 20-foot running start 
+to avoid doubling the DC of the check.
+LUNGING STRIKE
+You make a single attack against a foe who stands just beyond 
+your reach.
+ Prerequisite: Base attack bonus +6.
+ Benefi  t:  As  a  full-round  action,  you  can  make  a  single  
+str i ke w ith a 5-foot bonus to your at tack ’s reach. This benefi  t  
+applies to both armed and unarmed attacks, including touch 
+attacks made to deliver spells. 
+ Special: A fi  ghter can select Lunging Strike as one of his 
+fi  ghter bonus feats.
+LURKING FAMILIAR
+Your familiar hides within the folds of your robe or takes 
+cover  behind  you  as  your  opponents  close  in.  When  it  
+moves to attack, its sudden appearance might catch your 
+foe by surprise.
+ Prerequisites: Combat Familiar, arcane caster level 6th, 
+familiar.
+ Benefi  t: If your familiar occupies your square, it gains 
+cover against all attacks. As a consequence, it can make a 
+Hide check to avoid your foe’s notice. If your familiar then 
+leaves your space to attack an opponent, it gains the normal 
+benefi  t for attacking from a hidden position.
+MAD FOAM RAGER
+You fight with the rage that only a rabid badger or a beer-
+addled dwarf can bring to bear. In combat, you shrug off 
+attacks  and  continue  fi  ghting  even  in  the  face  of  horrifi  c  
+injuries and effects.
+ Prerequisite: Rage or frenzy ability.
+ Benefit: When fighting, you can endure tremendous 
+blows with little visible effect. As an immediate action, 
+you can choose to delay the effect of a single attack, spell, 
+or ability used against you. The damage or effect does not 
+take hold until the end of your next turn. You can only use 
+this ability while under the effect of your rage or frenzy 
+ability. You can activate it once every time you use your rage 
+or frenzy ability.
+MASTER MANIPULATOR
+Your words are your weapons. You confuse others with your 
+speech,  luring  them  into  giving  up  vital  secrets  and  leav-
+ing them dumbfounded with your carefully constructed, 
+conversational static.
+ Prerequisites: Cha 13, Diplomacy 9 ranks.
+ Benefit: This feat grants two new uses for the Diplo-
+macy  skill.  You  must  share  a  language  with  a  creature  
+to use these options against it. Neither ability functions 
+during combat.
+620_95374_Ch3.indd   80620_95374_Ch3.indd   802/8/06   3:51:25 PM2/8/06   3:51:25 PM
+
+81
+CHAPTER 3
+NEW FEATS
+Captivating  Speech:  You  can  distract  a  creature  with  your  
+compelling delivery and witticisms. With a successful Diplo-
+macy check opposed by the target’s own Diplomacy check 
+or Will save, you can impose a –4 penalty on 
+the target’s Listen, Sense Motive, and Spot 
+checks so long as you continue spea king. 
+You can affect a number of targets equal 
+to 1 + your Cha bonus (if any), 
+as long as they are all within 
+20 feet.
+ Trap  o f  Wo r ds : If a crea-
+ture  attempts  and  fails  
+to  successfully  to  use  
+Bluff to lie to you, you 
+skillfully maneuver the 
+conversation to confuse 
+the  target  or  trick  him  
+into  letting  slip  a  vital  
+clue. After succeeding on 
+your Sense Motive check, 
+you can then engage the 
+target in conversation for 
+at least 1 minute. At the 
+end  of  this  time,  make  
+a  Diplomacy  check  op-
+posed by the target’s Bluff 
+check. If you succeed, the 
+target  inadvertently  re-
+veals his lie and the reason 
+behind it. 
+MELEE 
+EVASION
+You r  speed,  ag i l it y,  
+and  talent  for  intel-
+ligent  fighting  allow  
+you to avoid your oppo-
+nent’s  blows.  You  take  
+careful stock of an oppo-
+nent and slip away from his sword blow just as he commits 
+to the attack.
+Prerequisites:  Dex  13,  Int  13,  Combat  Expertise,  
+Dodge.
+Benefi  t:  While  fi  ghting  defensively,  you  can  attempt  to  
+negate a single attack made by the target of your Dodge feat. 
+If this opponent attacks you, use an immediate action to 
+make a d20 roll modifi  ed by your highest base attack bonus. 
+The result is used as your normal AC and touch AC against 
+that single, specifi  c attack from your opponent. You cannot 
+use  this  feat  if  your  Dexterity  bonus  to  AC  does  not  apply  
+against your opponent’s attack.
+Special: A fi ghter can select Melee Evasion as one of his 
+fi  ghter bonus feats.
+MELEE WEAPON MASTERY
+You have mastered a wide range of weapons. Your training 
+with one specifi c weapon now extends to other weapons of 
+a similar sort.
+ Prerequisites: Profi  ciency with selected weapon, Weapon 
+Focus with selected weapon, Weapon Specialization with 
+selected weapon, base attack bonus +8.
+Benefi  t: When you select this feat, choose bludgeoning, 
+piercing, or slashing. You must have Weapon Focus and 
+Weapon Specialization with a melee weapon that deals this 
+type of damage. When using any melee weapon that has the 
+damage type you selected, you gain a +2 bonus on attack rolls 
+and a +2 bonus on damage rolls.
+Special: You can select this feat more than once. Each 
+time, you can select a new damage type.
+          A     fi ghter can choose Melee Weapon Mastery as one 
+of his fi  ghter bonus feats.
+OVERWHELMING ASSAULT
+If you attack a foe who does nothing to turn 
+aside  your  attack,  you  press  
+forward with an indom-
+itable  strike.  Only  a  
+fool ignores the deadly 
+threat you present.
+     Prerequisite: Base 
+attack bonus +15.
+     Benefi  t:  As  a  free  
+action, designate one 
+specific  foe  as  the  
+target of this feat. If 
+this  foe  begins  his  
+turn adjacent to you, 
+ends  his  turn  still  
+adjacent to you, and 
+does  not  attack  you,  
+target you with a spell, 
+or use a special ability 
+against  you,  you  gain  
+a  +4  bonus  on  melee  
+attack rolls against him 
+on your next turn.
+PENETR ATING SHOT
+You send a powerful shot cleaving through your enemies.
+Prerequisites:  Str  15,  Point  Blank  Shot,  base  attack  
+bonus +10.
+Benefit: When you make a ranged attack with a pro-
+jectile weapon (such as a bow, crossbow, or sling), you 
+can instead choose to unleash a single, mighty attack that 
+blasts through multiple opponents. This attack requires a 
+standard action, and your shot takes the form of a 60-foot 
+l ine. Ma ke a separate at tack rol l against each creat ure in the 
+line. If struck, creatures along this line take damage from 
+your shot, though any extra damage (such as from a sneak 
+attack or a fl  aming weapon) is applied only against the fi  rst  
+creature struck.
+Special: A  fi  ghter  can  select  Penetrating  Shot  as  one  of  
+his fi  ghter bonus feats.
+A halfl ing uses Master Manipulator 
+to catch a human in a lie
+Illus. by S. Belledin
+620_95374_Ch3.indd   81620_95374_Ch3.indd   812/8/06   3:51:31 PM2/8/06   3:51:31 PM
+
+82
+CHAPTER 3
+NEW FEATS
+RANGED WEAPON MASTERY
+You have mastered a wide range of weapons. Your training 
+with one specifi c weapon now extends to other weapons of 
+a similar sort.
+ Prerequisites: Profi  ciency with selected weapon, Weapon 
+Focus with selected weapon, Weapon Specialization with 
+selected weapon, base attack bonus +8.
+ Benefi  t: When you select this feat, choose bludgeoning, 
+piercing, or slashing. You must have Weapon Focus and 
+Weapon Specialization with a ranged weapon that deals 
+this type of damage. When using any ranged weapon that 
+has the damage type you selected, you gain a +2 bonus on 
+attacks and a +2 bonus on damage. In addition, you increase 
+its range increment by 20 feet.
+ Special: You can select this feat more than once. Each 
+time, you can select a new damage type.
+    A    fi ghter can choose Ranged Weapon Mastery as one of 
+his fi  ghter bonus feats.
+RAPID BLITZ
+You charge across the battlefi  eld, combining your speed and 
+fi  ghting ability to move and attack with unmatched skill.
+    Prerequisites: Dex 13, Bounding Assault, Dodge, Mobil-
+ity, Spring Attack, base attack bonus +18.
+    Benefi  t: You can designate a third target for your Spring 
+Attack feat. In addition to the second attack you gain from 
+your Bounding Assault feat, you can make a third attack 
+with a –10 penalty.
+ROBILAR’S GAMBIT
+By offering Robilar’s Gambit, you absorb damage to place 
+yourself in an advantageous position. This dangerous sacrifi  ce  
+is not for the unfi t or the unwise, for one failed retaliatory 
+strike can undo the advantage gained. Lord Robilar, a rash 
+and  impetuous  fi  ghter,  gained  fame  using  this  technique  
+against his enemies.
+ Prerequisites: Combat Refl  exes, base attack bonus +12.
+ Benefit:  At  the  start  of  your  action,  you  can  adopt  a  
+fi ghting stance that exposes you to harm but allows you to 
+ta ke advantage of your opponents’ ex posed defenses as they 
+reach in to attack you. Anyone who strikes at you gains a 
++4 bonus on attack rolls and damage rolls against you. In 
+return, they provoke attacks of opportunity from you each 
+time they swing. Resolve your attack of opportunity after 
+your foe’s attack.
+ Normal: Opponents do not provoke attacks of opportunity 
+by at tacking. Fur ther, when an opponent provokes an at tack 
+of opportunity, you resolve your attack before he completes 
+the action that provoked the attack of opportunity.
+ Special: A fi  ghter can select Robilar’s Gambit as one of his 
+fi  ghter bonus feats.
+SHIELD SLING
+You can hurl your shield as a deadly missile, turning it from 
+a defensive item to a crushing, thrown weapon.
+ Prerequisites: Profi  ciency with shields, Improved Shield 
+Bash, Shield Specialization, base attack bonus +9.
+ Benefi  t: You can wield your light shield or heavy shield 
+as a thrown weapon with a range increment of 20 feet. The 
+shield deals damage as normal for its size (see Table 7–5, PH 
+116), and you gain your Strength bonus on damage as normal 
+for  a  thrown  weapon.  In  addition,  you  can  make  a  ranged  
+touch attack to initiate a trip attempt. Your target resists the 
+trip attempt as normal. You lose your size bonus (though not 
+a size penalty) on your Strength check. If your foe’s check 
+succeeds, he cannot attempt to trip you.
+     You cannot throw a tower shield. You can throw a buckler, 
+but it does no damage, and you cannot use it to trip an 
+opponent.
+ Special: A fi ghter can select Shield Sling as one of his 
+fi  ghter bonus feats.
+SHIELD SPECIALIZATION
+You are skilled in using a shield, allowing you to gain greater 
+defensive benefi  ts  from  it.
+ Prerequisite: Profi  ciency  with  shields.
+ Benefi  t: Choose one t y pe of shield from the fol low ing l ist: 
+buckler, heavy, or light. When using a shield of the appropri-
+ate type, you increase its shield bonus to AC by 1.
+ Special: You can ta ke this feat more than once. Each time 
+you select it, choose a different type of shield.
+    A    fi  ghter  can  select  Shield  Specialization  as  one  of  his  
+fi  ghter bonus feats.
+SHIELD WARD
+You use your shield like a wall of steel and wood. When an 
+opponent at tempts to draw in close to you, your shield forces 
+him away or ruins his attacks.
+ Prerequisite:   Proficiency   with   shields,   Shield   
+Specialization.
+ Benefi  t: You apply your shield bonus to your touch AC, 
+and  on  checks  or  rolls  to  resist  bull  rush,  disarm,  grapple,  
+overrun, or trip attempts against you.
+ Special: A  fi  ghter  can  select  Shield  Ward  as  one  of  his  
+fi  ghter bonus feats.
+SHORT HAFT
+You  have  trained  in  polearm  fi  ghting  alongside  your  com-
+rades in arms, sometimes reaching past them while they 
+shield you, and sometimes shielding them while they attack 
+from behind you.
+ Prerequisites: Profi  ciency with a reach weapon, We a p o n  
+Focus with a reach weapon, base attack bonus +3.
+ Benefi  t: As a swift action, you can choose to lose the ben-
+efi  t of wielding any reach weapon other than a spiked chain 
+or a whip. In return, you can use that weapon to threaten 
+and attack spaces adjacent to you. With another swift action, 
+you can give up this feat’s benefi t in order to regain the use 
+of your weapon’s superior reach.
+     Special:     A fi  ghter can select Short Haft as one of his fi  ghter  
+bonus feats.
+SLASHING FLURRY
+You swing your weapon with uncanny speed, slicing apart a 
+foe in the blink of an eye.
+620_95374_Ch3.indd   82620_95374_Ch3.indd   822/8/06   3:51:40 PM2/8/06   3:51:40 PM
+
+83
+CHAPTER 3
+NEW FEATS
+    Prerequisites: Profi  ciency with selected slashing weapon, 
+Weapon Focus with selected slashing weapon, Weapon Mas-
+tery (slashing), Weapon Specialization with selected slashing 
+weapon, base attack bonus +14.
+    Benefi  t: When you use a standard action to attack with 
+any slashing weapon, you can choose to make a second attack 
+with that weapon. You take a –5 penalty on the fi  rst  attack,  
+and a –10 penalty on the second.
+     When  you  use  a  full  attack  action  with  any  slashing  
+weapon, you gain one additional attack at your highest base 
+attack bonus. That attack and all other attacks you make in 
+the current round take a –5 penalty.
+SPECTR AL SKIRMISHER
+You have trained extensively in the use of magic that renders 
+you invisible. In combat, you use this experience to vex your 
+opponents and increase your survivability.
+ Prerequisite: Base attack bonus +6.
+ Benefit: While you are invisible, you gain additional 
+benefi  ts. Creatures unable to see you due to invisibility take 
+a –5 penalty on all Listen checks to detect you. A creature 
+using a melee attack against the square you occupy provokes 
+an at tack of oppor t unit y from you. You must choose to ma ke 
+this attack before checking to see if the creature fi  nds  you.  
+If you attack and hit, the creature automatically fi  nds  you  in  
+your square. See page 152 of the Player’s Handbook and page 
+295 of the Dungeon Master’s Guide for the effects of invisibility 
+on combat.
+ Special: A fi ghter can select Spectral Skirmisher as one 
+of his fi  ghter  bonus  feats.
+SPELL-LINKED FAMILIAR
+You and your familiar can share spell energy, allowing your 
+familiar to cast a limited number of spells each day.
+ Prerequisites: Arcane caster level 9th, familiar.
+ Benefi  t: Your familiar can cast spells that you grant to it. 
+A familiar gains spells based on your arcane caster level, and 
+any spells granted to your familiar are subtracted from your 
+daily allotment.
+     The maximum number of spells of a certain level that you 
+can grant to your familiar is given on the table below. For 
+example, as a 16th-level arcane caster, you can grant your 
+familiar as many as three 0-level spells, two 1st-level spells, 
+and one 2nd-level spell.
+     ———Spell Level ———
+Caster Level 0 1st 2nd
+9th–11th                1                  —                 —
+12th–14th              2              1                  —
+15th–17th               3               2               1
+18th–20th                   4                   3                   2
+The familiar uses 1/2 your caster level as its caster level. It 
+cannot cast spells that have a gp or XP cost, or that require 
+a  focus.  A  familiar  does  not  need  somatic,  material,  or  
+verbal components to cast a spell that was granted to it by 
+this feat.
+STALWART DEFENSE
+You excel at aiding your allies in battle. When an opponent 
+attempts to strike one of them, you make a quick, distracting 
+motion to ruin the foe’s efforts.
+    Prerequisites: Combat Refl  exes, Hindering Opportunist, 
+base attack bonus +9.
+     Benefi  t: When an opponent you threaten attempts a melee 
+attack against one of your allies, you can give up one of your 
+attacks of opportunity to attempt an aid another action. You 
+target  the  attacking  opponent  with  the  aid  another.  The  
+target of your foe’s attack gains the benefi  t of your action in 
+the form of a +2 bonus to AC against the attempted attack. 
+You cannot use this feat against the same opponent more 
+than once per round.
+STEADFAST DETERMINATION
+Your physical durability allows you to shrug off attacks that 
+would cripple a lesser person. Rather than depend on agility 
+or willpower, you use your raw toughness to survive.
+ Prerequisites: Endurance.
+ Benefi  t: You can use your Constitution modifi  er in place 
+of your Wisdom modifi  er on Will saves.
+    You do not automatically fail Fortitude saves on a roll of 
+natural 1.
+TELLING BLOW
+When you strike an opponent’s vital areas, you draw on 
+your ability to land crippling blows to make the most of 
+your attack.
+ Prerequisite: Skirmish or sneak attack ability.
+ Benefi  t: When you score a critical hit against a target, you 
+deal your skirmish or sneak attack damage in addition to 
+the damage from your critical hit. Your critical multiplier 
+applies only to your normal damage, not your skirmish or 
+sneak attack damage. This benefit affects both melee and 
+ranged attacks.
+TROPHY COLLECTOR
+A belt of minotaur fur, a hood of cloaker wing-skin, and an 
+amulet fashioned from a petrifi  ed dragon’s eye—these are 
+the intimidating symbols of your trade. You are skilled in 
+preserving portions of defeated enemies and turning them 
+into trophies. The memor y of your past accompl ishments 
+drives you onward, instilling in you the confi  dence  needed  
+to face still greater foes.
+ Prerequisite: Craft (taxidermy) 6 ranks.
+ Benefi  t: When you defeat a foe in combat, you can preserve 
+a part of its body and create a trophy that you can wear or 
+brandish. In order to be wor thy of your ef for ts, the opponent 
+must have a CR greater than your current level.
+     A  trophy  has  a  value  equal  to  the  defeated  creature’s  CR  
+× 100 gp. You must spend time using the Craft (taxidermy) 
+skill to create the trophy as normal. Once you create a trophy, 
+you can sell it for its market price or wear it. When you create 
+a trophy, you must design it to occupy space on your body 
+as one of these kinds of magic items: amulet, belt, boots, or 
+cloak. You cannot gain the benefi  t of both a magic item and 
+a trophy i f both occupy the same space on your body; in such 
+620_95374_Ch3.indd   83620_95374_Ch3.indd   832/8/06   3:51:47 PM2/8/06   3:51:47 PM
+
+84
+CHAPTER 3
+NEW FEATS
+a case, the object you donned last becomes functional and 
+the other object does not work.
+     While wearing a trophy, you gain a +2 bonus on Intimidate 
+checks per trophy against creatures of the same type as the 
+trophy,  except  for  outsiders  and  humanoids.  In  these  two  
+cases, the target must share the same subtype as the creature 
+from which you crafted the trophy. You take a -–4 penalty 
+on Diplomacy checks against creatures of the 
+same t y pe or subt y pe as one or more of your 
+worn trophies.
+     For  each  trophy  you  wear,  
+you gain a +1 bonus on 
+saves  against  fear  ef-
+fects.  Once  per  day,  
+you gain a morale bo-
+nus  on  a  single  Will  
+save  equal  to  the  num-
+ber of trophies you wear. 
+In  this  case,  you  draw  
+upon  the  memories  of  past  
+victories to strengthen your re-
+solve. If you choose to take 
+this  morale  bonus  on  a  
+save against a fear ef-
+fect,  it  stacks  with  
+the usual +1 bonus 
+on  saves  per  tro-
+phy worn. 
+Special:  You  
+can  only  craft  
+trophies from cor-
+poreal  creatures  that  
+you actively helped de-
+feat.  You  cannot  craft  
+trophies from oozes. 
+TUMBLING FEINT
+When  you  move  near  an  opponent,  your  acrobatic  ma-
+neuvers leave him confused and unable to properly defend 
+himself.
+Prerequisites: Bluff 4 ranks, Tumble 4 ranks.
+Benefi  t:  As  a  swift  action  at  the  start  of  your  turn,  you  
+designate a single opponent as the target of this feat. If you 
+successfully use your Tumble skill to avoid provoking an 
+attack of opportunity from that opponent, you gain a +5 bonus 
+on your next Bluff check to feint against him. You must use 
+this benefi  t on or before your next turn.
+     For example, Lidda designates a nearby ogre as the target 
+of this feat. She tumbles into the ogre’s threatened area and 
+continues to tumble past the creature, moving to a square 
+from which she plans to make a melee attack against the ogre. 
+Lidda succeeds on her Tumble check to avoid provoking an 
+attack of opportunity from the ogre, and she moves into her 
+destination square. She can now use a standard action to feint 
+the ogre, applying the benefi  t of this feat on her Bluff check, 
+or she can take any other sort of standard action, including 
+making a normal melee attack against the ogre. If she chooses 
+not  to  feint  immediately,  she  can  wait  until  her  next  turn  
+and still gain this feat’s benefi t.
+ Special: A fi  ghter can select Tumbling Feint as one of his 
+fi  ghter bonus feats.
+TWO-WEAPON 
+POUNCE
+When  you  charge  an  
+opponent while wield-
+ing two weapons, 
+you can make two 
+quick attacks. You 
+trade the momen-
+tum and power of 
+the  charge  for  the  
+opportunity to use your sec-
+ond weapon.
+Prerequisites: Dex 15,
+Two-Weapon Fighting, base 
+attack bonus +6.
+  Benefi  t:  When you are 
+making a charge and wield-
+ing weapons in both hands, 
+you  can  attack  with  both  of  
+your  weapons.  If  you  do  so,  
+you lose the bonus on attack rolls 
+normally granted by a charge. The 
+–2 penalty to AC from charging 
+still applies.
+Normal: When  making  a  
+charge, you get a single attack at 
+the end of your movement.
+  Special:  A  fighter  can  
+select  Two-Weapon  Pounce  
+as one of his fi  ghter bonus feats. 
+A ranger who has chosen the two-
+weapon combat style can select Two-Weapon 
+Pounce as long as he has a base attack bonus of +6 and is 
+wearing light armor or no armor.
+TWO-WEAPON REND
+You  wield  two  weapons  with  an  artisan’s  precision.  Each  
+strike builds on the next, allowing you to deal more damage.
+Prerequisites: Dex 15, Two-Weapon Fighting, base attack 
+bonus +11.
+Benefi  t:  If  you  successfully  hit  an  opponent  with  both  
+of  the  weapons  you  wield,  you  deal  extra  damage  equal  to  
+1d6  +  1-1/2  times  your  Strength  bonus.  This  extra  damage  
+is treated as the same type that your off-hand weapon deals 
+normally for the purpose of overcoming damage reduction 
+and other effects related to damage type. You can gain this 
+extra damage once per round against a given opponent.
+ Special: A fi  ghter can select Two-Weapon Rend as one of 
+his fi ghter bonus feats. A ranger who has chosen the two-
+weapon combat style can select Two-Weapon Rend as long as 
+he has a base attack bonus of +11 and is wearing light armor 
+or no armor.
+Soveliss dispatches a red slaad twice 
+as fast by using Two-Weapon Rend
+Illus. by R. Spencer
+620_95374_Ch3.indd   84620_95374_Ch3.indd   842/8/06   3:51:53 PM2/8/06   3:51:53 PM
+
+85
+CHAPTER 3
+NEW FEATS
+VAT IC   G A Z E
+Your arcane studies have brought forth your nascent talent 
+to sense magical auras and the power that others are capable 
+of wielding.
+ Prerequisite: Arcane caster level 9th.
+ Benefi  t: You can use detect magic at will.
+     Also,  as  a  swift  action,  you  can  attempt  to  determine  an  
+opponent’s spellcasting ability. You make a Sense Motive 
+check (DC 5 + target’s caster level). If this check succeeds, 
+you  learn  the  highest-level  spells  the  target  is  capable  of  
+casting. This benefi  t grants you no insight into spell-like or 
+supernatural abilities.
+VERSATILE UNARMED STRIKE
+You  employ  a  variety  of  unarmed  fi  ghting  styles,  allowing  
+you to alter the type of damage your attacks deal.
+ Prerequisite: Improved Unarmed Strike.
+ Benefi  t:  As a swift action, you can opt for your unarmed 
+strikes to deal your choice of bludgeoning, piercing, or 
+slashing damage. Once you make this choice, your unarmed 
+strikes continue to deal the chosen damage type until you 
+use another swift action to change it.
+ Special: A fi  ghter can select Versatile Unarmed Strike as 
+one of his fi  ghter bonus feats.
+VEXING FLANKER
+You excel at picking apart an opponent’s defenses when your 
+allies also threaten him.
+ Prerequisite: Combat Refl  exes.
+ Benefi  t:  You  gain  a  +4  bonus  on  your  attack  rolls  when  
+fl  anking.
+ Normal: Flanking grants a +2 bonus on attack rolls.
+ Special: A fi  ghter can select Vexing Flanker as one of his 
+fi  ghter bonus feats.
+WANDERER’S DIPLOMACY
+Many halfl  ings journey far and wide across the world, spend-
+ing no more than a few months in one place. You have spent 
+time among the halfl  ings, or you are a halfl  ing yourself. Your 
+exposure  to  that  race’s  nomadic  way  of  life  has  taught  you  
+several useful methods of dealing with strangers.
+ Prerequisites: Halfl ing or 4 ranks in Bluff, Diplomacy, 
+and Sense Motive.
+ Benefi  t: You excel in using your words and wit to make 
+your way in the world. This feat grants you three separate 
+abilities. 
+ Canny Merchant: You can make a Diplomacy check to track 
+down an item that is normally too expensive to be purchased 
+in the town or settlement where you are currently located. 
+The DC of this check is 10 + (the item’s gp cost minus the 
+community’s gp limit, divided by 1,000). If this check suc-
+ceeds, you learn of a merchant who can supply the item to 
+you. You must still purchase it as normal.
+ Intuitive  Communication:  When  you  are  faced  with  a  
+creature whose language you do not understand, you can 
+at tempt to communicate w ith it by ma king a successful Sense 
+Motive check. This check requires that you spend at least 1 
+minute listening to the creature and watching its gestures 
+and demeanor. The check’s base DC is 20. If the creature is 
+not the same type as you, the DC is 30.
+     With  a  successful  check,  you  learn  the  basic  gist  of  the  
+creature’s speech. This ability gives you no special talent to 
+speak the creature’s tongue.
+ Social Agility: You can temporarily alter a creature’s attitude 
+toward you. You can use Bluff against an unfriendly or less 
+hostile creature in the same way you use Diplomacy. Using 
+Blu f f in this manner is a standard action that ta kes no special 
+penalties. The target’s attitude remains changed for 1 minute. 
+After this time, it becomes one grade more hostile than where 
+it started for 10 minutes.
+WATER SPLITTING STONE
+You channel your ki energy to splinter the defenses of crea-
+tures whose tough hides or magical natures normally allow 
+them to shrug off your blows.
+ Prerequisite: Dex 13, Wis 13, Improved Unarmed Strike, 
+Stunning Fist, base attack bonus +9.
+ Benefi  t:  You gain a +4 bonus on damage rolls when you 
+make an unarmed strike against an opponent whose damage 
+reduction is effective against your unarmed strikes. This feat’s 
+benefi  t does not apply against a target if its damage reduction 
+does not apply to your attacks. For example, a monk with ki 
+strike (adamantine) does not gain the bonus on damage rolls 
+against a foe with damage reduction that affects attacks with 
+adamantine weapons.
+ Special: A fi  ghter can select Water Splitting Stone as one 
+of his fi ghter bonus feats. A monk with the Stunning Fist 
+feat can select Water Splitting Stone as long as she has a base 
+attack bonus +9 (other prerequisites can be ignored).
+WEAPON SUPREMACY
+You are a grandmaster in the use of your chosen weapon. When 
+you hold it in your hands, no foe can stand against you.
+    Prerequisites: Profi  ciency with selected weapon, Greater 
+Weapon Focus with selected weapon, Greater Weapon Spe-
+cialization with selected weapon, Weapon Focus with selected 
+weapon,  Weapon  Specialization  with  selected  weapon,  
+Weapon Mastery with damage type of selected weapon, 
+fi  ghter level 18th.
+    Benefi  t: When fi  ghting with the weapon that you choose 
+for this feat, you gain a number of additional advantages.
+     You  gain  a  +4  bonus  on  all  checks  made  to  resist  being  
+disarmed.
+     You can wield your weapon against a foe who grapples you 
+without penalty and without fi  rst making a grapple check. In 
+this situation, you can take a standard action or a full attack 
+action as normal.
+     When  you  take  a  full  attack  action,  you  can  apply  a  +5  
+bonus to any single attack after your fi  rst  strike.
+     Once  per  round  before  making  an  attack  roll,  you  can  
+instead choose to treat your d20 result as a 10.
+    You gain a +1 bonus to AC.
+    Special: You can choose this feat only once, for a single 
+specific  kind  of  weapon.  The  dedication  and  focus  it  
+requires makes it impossible to gain this feat for more 
+than one weapon.
+620_95374_Ch3.indd   85620_95374_Ch3.indd   852/8/06   3:52:02 PM2/8/06   3:52:02 PM
+
+86
+CHAPTER 3
+NEW FEATS
+CEREMONY FEATS
+A  ceremony  feat  grants  you  the  knowledge  and  training  
+needed  to  complete  several  specifi  c  ceremonies.  Each  feat  
+uses the Knowledge (religion) skill to gauge the depth of your 
+study. As you gain more ranks in that skill, the ceremonies 
+available through the feat increase.
+    A creature can benefi t from one ceremony at a time. If 
+you attempt a second ceremony on the same creature, the 
+fi  rst ceremony’s benefi ts immediately end and the second 
+ceremony applies.
+     Each  ceremony  has  a  cost  in  time  and  resources.  The  
+ceremony consumes the materials needed for it when it ends 
+(not  when  the  benefi  t  ends).  If  the  ceremony  is  disrupted,  
+such as i f an opponent at tacks before you fi  nish, the material 
+components are not lost.
+    The two feats described below are ceremony feats. Their 
+prerequisites and benefi  ts are summarized on Table 3–2.
+RITUAL BLESSING
+You call upon the powers of goodness and light to bless your 
+allies. If your religious studies are advanced enough, the 
+rituals you learn allow you to ward against illness or poison, 
+enhance your healing abilities, and protect against evil.
+ Prerequisites: Good alignment, Knowledge (religion) 
+4 ranks.
+ Benefi  t: You gain access to rituals based on your ranks in 
+Knowledge (religion).
+ Anoint (Knowledge [religion] 4 ranks): You speak a blessing 
+over the recipient of this ritual, anoint him with holy water, 
+and say a short prayer for him. When you cast a cure spell on 
+the recipient, he heals an extra 2 points of damage.
+    Performing this ritual requires 5 minutes of incantation 
+and a vial of holy water. Its effects last for 24 hours.
+ Cleanse (Knowledge [religion] 8 ranks): You spr i n k le holy 
+water over the recipient of this ritual and speak a prayer to 
+his health and vigor. The target gains a +2 bonus on saves 
+against disease and poison.
+     Performing this ritual requires 10 minutes of incantation 
+and a vial of holy water. Its effects last for 24 hours.
+ Ward (Knowledge [religion] 13 ranks): You use a special combi-
+nation of powdered silver and holy water to create a mystical 
+ward that offers protection against demons and devils. The 
+recipient of this ritual gains a +1 bonus on saves against spells 
+and special attacks used by evil outsiders.
+     Performing this ritual requires 10 minutes of work, a vial 
+of  holy  water,  and  powdered  silver  worth  30  gp.  Its  effects  
+last for 24 hours.
+RITUAL BLOOD BONDS
+You invest your allies with the mighty power of your totem, 
+god, or similar divine entity. These rituals allow you to forge 
+bonds between warriors that stand the test of combat.
+ Prerequisites: Orc or half-orc, Knowledge (religion) 
+4 ranks.
+ Benefi  t:  You  gain  access  to  rituals  based  on  your  total  
+ranks in Knowledge (religion).
+ Blood Brothers (Knowledge [religion] 4 ranks): You gat her up 
+to six of your allies together in a circle. Each member of this 
+circle pledges allegiance to the others, cuts himself, and 
+bleeds into a bowl containing holy water or unholy water 
+(as appropriate to your alignment). You then sprinkle this 
+mixture on yourself and the members of the circle. You and 
+ever yone else who par ticipated in this r it ual gains a + 4 morale 
+bonus on Will saves against fear as long as each individual 
+can see one other ally who took part in this ritual.
+    This ritual requires 10 minutes of incantation and a vial 
+of holy water or unholy water. Its effect lasts for 24 hours.
+ Vengeful Bonds of Brotherhood (Knowledge [religion] 8 ranks): 
+You create a close, mystical bond between you and your 
+allies.  Up  to  six  individuals  can  participate  with  you  in  
+this  ritual.  Each  participant  cuts  his  hand.  Everyone  in  
+the  ritual  then  clasps  hands  in  a  circle  while  you  stand  
+in the middle. You speak a prayer while sprinkling holy 
+or unholy water on each participant. This ritual grants a 
+benefit to its participants (including you) when an ally 
+falls  in  battle.  If  an  individual  who  participated  in  this  
+ritual sees another participant drop to 0 or fewer hit points 
+due to an opponent’s actions, he gains a +2 morale bonus 
+on attack rolls against the foe who dropped his ally. The 
+benefit lasts for 1 minute every time it is triggered. You can 
+gain this bonus against multiple foes dur ing the duration 
+of the effect.
+    This ritual requires 10 minutes of incantation, a vial of 
+holy water or unholy water, and silver dust worth 10 gp. The 
+ritual’s benefi  t lasts for 24 hours.
+COMBAT FOR M F E AT S
+While most warriors draw on their strength, agility, and 
+toughness in battle, a few learn to tap into the true poten-
+tial of their minds. Somewhat like a monk, such a warrior 
+supplements  his  physical  practice  with  rigorous  mental  
+training to hone his fi  ghting abilities. His mind and body 
+become one as he fi  ghts, allowing him to achieve unparal-
+leled levels of combat mastery. Being in this state of perfect 
+mental and physical harmony is known as maintaining a 
+combat focus. (Taking the feat called Combat Focus is how 
+a  character  learns  to  achieve  this  state;  all  other  combat  
+form feats have Combat Focus as a prerequisite.) The task 
+of maintaining a combat focus is both diffi  cult and strain-
+ing. Thus, a warrior cannot remain in this state for long. 
+While he does, however, he can use any combat form feats 
+he possesses.
+     The six feats described below are combat form feats. Their 
+prerequisites and benefi  ts are summarized on Table 3–3.
+COMBAT AWARENESS
+When you maintain your combat focus, you have an uncanny 
+ability to sense the ebb and fl  ow of your opponents’ vitality. 
+As you attain greater mastery of this fi  ghting style, you learn 
+to sense a foe’s presence even with your eyes closed.
+ Prerequisites: Wis 13, Blind-Fight, Combat Focus, base 
+attack bonus +12.
+ Benefit:  While  maintaining  your  combat  focus,  you  
+learn the current hit point total of each adjacent opponent 
+and ally.
+620_95374_Ch3.indd   86620_95374_Ch3.indd   862/8/06   3:52:08 PM2/8/06   3:52:08 PM
+
+87
+CHAPTER 3
+NEW FEATS
+    If you have three or more combat form feats, you gain 
+blindsight out to 5 feet.
+ Special: A fi  ghter can select Combat Awareness as one of 
+his fi  ghter bonus feats.
+COMBAT DEFENSE
+The state of keen focus and mental discipline you attain in 
+combat allows you to shift the focus of your defense from one 
+opponent to another with careful, precise maneuvers.
+ Prerequisites: Dex 13, Wis 13, Combat Focus, Dodge, 
+base attack bonus +6.
+ Benefi  t: While you maintain your combat focus, you can 
+change the target of your Dodge feat to a new opponent as 
+an immediate action.
+    If you have three or more combat form feats, you gain an 
+additional +1 dodge bonus to AC against the target of your 
+Dodge feat.
+ Normal: Designating or chang ing the target of your Dodge 
+feat can only be done on your turn as a free action.
+ Special: A fi  ghter can select Combat Defense as one of his 
+fi  ghter bonus feats.
+COMBAT FOCUS
+The way of the warrior requires more than simple, brute 
+strength. Some warriors bring their minds to such keen 
+focus during the heat of battle that they can attain superhu-
+man levels of endurance, perception, and mental toughness. 
+Through intense mental exercise and training, you learn to 
+enter a state of perfect martial clarity.
+    Prerequisite: Wis 13.
+ Benefit: In battle, you push aside the chaos of the fight 
+and  attain  a  focused  state  that  grants  you  a  keen,  clear  
+picture of the battle. Fear and pain ebb away as you focus 
+solely on defeating your enemy. The first time you make 
+a successful attack during an encounter, you gain your 
+combat focus. In this state, your mind and body become 
+one, allowing you to overcome mundane physical limits. 
+You can maintain your combat focus for 10 rounds after 
+entering it, +1 additional round per combat form feat you 
+possess aside from this one. You can only gain your combat 
+focus once per encounter.
+    While you are maintaining your combat focus, you gain 
+a +2 bonus on Will saves. If you have three or more combat 
+form feats, this bonus increases to +4.
+ Special: A fi ghter can select Combat Focus as one of his 
+fi  ghter bonus feats.
+COMBAT STABILIT Y
+When you maintain your combat focus, you become diffi  cult  
+to dislodge. Your muscles lock into an unyielding position, 
+granting you superior ability to resist trip attacks, bull rushes, 
+disarms, and similar effects.
+ Prerequisite: Wis 13, Combat Focus, base attack bonus +3.
+ Benefi  t:  You gain a +4 bonus on checks or rolls to resist 
+bull rush, disarm, grapple, overrun, and trip attempts made 
+against you.
+    If you have three or more combat form feats, the bonus 
+granted by this feat increases to +8.
+ Special: A  fi  ghter  can  select  Combat  Stability  as  one  of  
+his fi  ghter bonus feats.
+COMBAT STRIKE
+Your intense, focused state allows you to see the one criti-
+cal moment in a battle when you hang suspended between 
+victory  and  defeat.  By  pouring  the  energy  required  to  
+maintain your focus into your assault, you bat ter through 
+your foe’s defenses.
+ Prerequisites: Wis  13, Combat  Focus,  any  two  other  
+combat form feats, base attack bonus +15.
+ Benefi  t: If you choose to end your combat focus as a sw i ft 
+action, you gain a bonus on attack rolls and damage rolls equal 
+to your total number of combat for m feats for the rest of your 
+current turn. You immediately lose all benefits of combat 
+form  feats  that  affect  you  only  while  you  are  maintaining  
+your combat focus.
+ Special: A fi ghter can select Combat Strike as one of his 
+fi  ghter bonus feats.
+Table 3–2: Ceremony Feats
+Feat                                      Prerequisites                                      Benefi t
+Ritual Blessing Good alignment,   Gain warding rituals
+ Knowledge (religion) 4 ranks
+Ritual Blood Bonds Orc or half-orc,  Gain toughening rituals
+ Knowledge (religion) 4 ranks
+Table 3–3: Combat Form Feats
+Feat                                      Prerequisites                                      Benefi t
+Combat Focus Wis 13 Enter meditative state to gain +2 bonus on Will saves
+   Combat Stability Wis 13, Combat Focus,  +4 against bull rush, disarm, grapple, overrun, and trip
+ base attack bonus +3
+   Combat Defense Dex 13, Wis 13, Combat Focus, Dodge,  Change target of Dodge feat as immediate action
+ base attack bonus +6
+   Combat Vigor Wis 13, Combat Focus,  While in focus, gain fast healing 2
+ base attack bonus +9
+   Combat Awareness Wis 13, Blind-Fight, Combat Focus,  Learn hit point totals of all adjacent creatures
+ base attack bonus +12
+   Combat Strike Wis 13, Combat Focus, Expend combat focus to gain bonus on attacks 
+ any two other combat form feats,  and damage
+ base attack bonus +15
+620_95374_Ch3.indd   87620_95374_Ch3.indd   872/8/06   3:52:15 PM2/8/06   3:52:15 PM
+
+88
+CHAPTER 3
+NEW FEATS
+COMBAT VIGOR
+When you maintain your combat focus, your clarity of purpose 
+and relentless drive allow you to overcome your body’s frailties. 
+Minor wounds heal in a matter of seconds, and you quickly 
+recover from even a grievous blow.
+Prerequisites:  Wis  13,  Combat  
+Focus, base attack bonus +9.
+Benefit: While you maintain your 
+combat focus, you gain fast healing 2. 
+You lose this benefit when your combat 
+focus ends.
+    If you have three or more combat form 
+feats, the benefi  t of this feat improves to fast 
+healing 4.
+Special: A fi ghter can select Combat 
+Vigor as one of his fi  ghter  bonus  feats.
+DIVINE FEATS 
+Divine feats are the province of 
+those  who  are  able  to  turn  or  
+rebuke  undead.  Instead  of  at-
+tempting  to  affect  an  undead  
+creature,  you  expend  a  turn  
+or rebuke undead attempt to 
+trigger the benefi  t of a divine 
+feat you have. You can activate 
+only one divine feat per round, 
+though overlapping durations 
+might allow you the benefi  ts  of  
+more than one divine feat at 
+a time. Activating a divine 
+feat is a super nat ural abi l-
+ity, requires a type of 
+action or an amount 
+of  time  depending  on  
+the feat, and does not 
+provoke  attacks  of  
+opportunity unless 
+otherwise noted in 
+the  feat  descrip-
+tion. Activating a 
+divine  feat  is  not  
+considered  an  at-
+tack  unless  doing  so  
+would  directly  cause  
+damage to a target.
+     The eight feats described 
+below are divine feats. Their 
+prerequisites and benefi  ts  are  sum-
+marized on Table 3–4.
+DIVINE ARMOR
+You  call  upon  your  deity  to  protect  you  in  your  hour  of  
+need by wreathing you in divine power that wards off your 
+enemies’ attacks.
+    Prerequisites: Divine caster level 5th, ability to turn or 
+rebuke undead.
+     Benefi  t: As a swift action, you can expend a turn or rebuke 
+undead attempt to gain damage reduction 5/– until the start 
+of your next turn.
+DIVINE FORTUNE
+With a quick prayer, you channel divine energy to help resist 
+a spell, poison, or other deadly effect.
+    Prerequisites: Divine caster level 5th, ability to turn or 
+rebuke undead.
+    Benefi  t: As an immediate action, you can expend a turn 
+or rebuke undead attempt to gain a +4 bonus on your next 
+saving throw. If this benefi  t is not used immediately, it 
+lasts until the start of your next turn.
+DIVINE JUSTICE
+You  can  channel  divine  energy  to  turn  
+your foe’s strength against him, striking 
+him with the same force that he used 
+against you.
+Prerequisite: Ability to turn or 
+rebuke undead.
+Benefi  t: As a swift action, 
+you can expend a turn or re-
+bu ke undead at tempt to mark 
+an opponent as the target of 
+this feat. The next time this op-
+ponent str i kes you w ith an ar med 
+melee  attack  or  a  natural  weapon,  
+record  the  damage  he  deals.  The  
+next time you strike him in melee, 
+you deal that damage or your weap-
+on’s  normal  damage,  whichever  
+is greater. Your weapon’s qual i-
+ties still determine if damage 
+reduction applies to the dam-
+age you deal.
+        You  can  mark  only  one  
+opponent at a ti me w ith this feat. 
+You must take damage from 
+your foe within 1 minute 
+of using this feat, or your 
+turn  or  rebuke  undead  
+attempt is wasted. After 
+taking damage, you must 
+strike  your  foe  within  1  
+minute, or you lose this feat’s 
+benefi t. Until you strike your 
+foe  and  trigger  the  feat’s  benefi  t,  
+you cannot use this feat again to mark 
+the same or a different opponent.
+DIVINE WARD
+You create a channel of divine energy between yourself and 
+a willing ally. This link allows you to cast your spells upon 
+him from greater than normal range.
+Prerequisite: Ability to turn or rebuke undead.
+ Benefi  t: Once every 24 hours, you can spend 10 minutes 
+creating a magical ward between you and one willing target. 
+Regdar practices his combat forms
+Illus. by D. Hudnut
+620_95374_Ch3.indd   88620_95374_Ch3.indd   882/8/06   3:52:21 PM2/8/06   3:52:21 PM
+
+89
+CHAPTER 3
+NEW FEATS
+For the rest of the 24-hour period, you can increase the range 
+of a touch spell to short range (25 feet + 5 feet per two caster 
+levels) if you target the warded creature, and only the warded 
+creature. When you cast a spell in this manner, you must 
+expend a turn or rebuke undead attempt.
+    You can create a ward between you and more than one 
+target, so long as you ex pend the necessar y time and t ur ning 
+attempts. You must expend a turn or rebuke undead attempt 
+to create each ward beyond the fi  rst.
+PROFANE AUR A
+You call upon the dark powers you worship to fi ll the area 
+around you with a dreadful mist that obscures sight.
+ Prerequisites: Divine caster level 9th, ability to rebuke 
+undead.
+ Benefi  t: As a standard action, you can expend one of your 
+rebuke  undead  attempts  to  fi ll the area around you with a 
+cold, clammy mist. The mist extends out in a 60-foot-radius 
+emanation centered on you and fl  ows through the air as you 
+move, keeping you at the center of its area. The mist provides 
+concealment to creatures within the cloud. While in the 
+mist, creatures (including you) 5 feet away from each other 
+have concealment, and creatures separated by more than 5 
+feet have total concealment from each other.
+    In addition, mindless undead creatures within the cloud 
+gain a +2 defl  ection bonus to AC.
+SACRED HEALING
+You can channel divine energy to aid in your efforts to tend 
+to a comrade’s injuries, sickness, or other conditions.
+ Prerequisite: Ability to turn undead.
+ Benefi  t: As a swift action, you can expend a turn undead 
+attempt to augment your ability to tend to the wounds of 
+others. You gain a +5 bonus on Heal checks and a +2 bonus 
+per die on the damage healed by any conjuration (healing) 
+spells  you  cast.  This  benefit  lasts  until  the  end  of  your  
+current turn.
+SACRED PURIFICATION
+You serve as a conduit of divine energy, fi  lling the area around 
+you with power that aids the living and saps the undead.
+ Prerequisites: Sacred Healing, ability to turn undead.
+ Benefi  t: As a swift action, you can expend a turn undead 
+attempt  to  create  a  pulse  of  divine  energy.  All  living  
+creatures within 60 feet of you heal an amount of damage 
+equal to 1d8 points + your Charisma bonus (if any). All undead 
+creatures in this area take damage equal to 1d8 points + your 
+Charisma bonus.
+SACRED R ADIANCE
+You channel divine energy to fi ll the area around you with 
+a soothing, gentle radiance.
+ Prerequisites: Divine caster level 9th, ability to turn 
+undead.
+ Benefit: As a standard action, you can expend a turn 
+undead at tempt to bathe yoursel f in l ight. This l ight prov ides 
+bright illumination in a 60-foot-radius emanation centered 
+on  you  and  an  additional  60  feet  of  shadowy  illumination  
+beyond that area. The light moves as you move, keeping you 
+at the center of its area. It temporarily negates areas of magical 
+darkness created by spells of 3rd level or lower.
+    Any non-evil creature within 60 feet of you gains a +2 
+morale bonus on saves against fear, poison, disease, and death 
+effects. Evil creatures take a –2 penalty on saves against 
+fear effects.
+    This    benefi  t lasts for 10 minutes.
+HERITAGE FEATS
+A heritage feat signifi  es a specifi  c ancestry of your character. 
+The heritage feats in this book allow your sorcerer to tap 
+into the celestial or infernal source of his magical power to 
+master new abilities (a sorcerer’s draconic heritage source of 
+power is covered in Complete Arcane). You and your DM are 
+encouraged to come up with a background stor y explaining 
+your character’s heritage, though the exact source of this 
+ancestral link isn’t crucial to the feat’s operation (and might 
+remain a mystery to the character).
+    A character can select a heritage feat at any level. Choos-
+ing a heritage feat after 1st level signifi es that the ancestral 
+power of the character is only now manifesting itself. (A 
+character’s  first  choice  among  these  heritage  feats  must  
+be either Celestial Sorcerer Heritage or Infernal Sorcerer 
+Heritage, because all other heritage feats have one of these 
+feats as a prerequisite.)
+     While different sorts of heritage feats cannot normally be 
+combined (see page 37 of the Planar Handbook supplement), a 
+single sorcerer could possess draconic, infernal, and celestial 
+Table 3–4: Divine Feats
+Feat                                      Prerequisites                                      Benefi t
+Divine Armor Divine caster level 5th,  Expend turn/rebuke attempt to gain DR 5/– 
+ ability to turn or rebuke undead
+Divine Fortune Divine caster level 5th,  Expend turn/rebuke attempt for +4 bonus on next save
+ ability to turn or rebuke undead
+Divine Justice Ability to turn or rebuke undead Expend turn/rebuke attempt, choose foe, 
+  deal your damage or his
+Divine Ward Ability to turn or rebuke undead Increase range of spells from touch to short for ally
+Profane Aura Divine caster level 9th,  Create mist that grants concealment, 
+ ability to rebuke undead +2 AC for undead
+Sacred Healing Ability to turn undead Expend turn attempt for bonus on healing attempts
+   Sacred Purification Sacred Healing, ability to turn undead Expend turn attempt to heal living and harm undead
+Sacred Radiance Divine caster level 9th,  Expend turn attempt to create radius of light that 
+ ability to turn undead soothes allies, hampers undead
+620_95374_Ch3.indd   89620_95374_Ch3.indd   892/8/06   3:52:31 PM2/8/06   3:52:31 PM
+
+90
+CHAPTER 3
+NEW FEATS
+sorcerer heritage feats. In this case, the sorcerer claims a 
+truly varied family tree that includes a variety of strange 
+beings. Sorcerers with both infernal and celestial traits are 
+exceedingly rare, however. These casters are tormented 
+souls, pulled between the polar opposites that lurk within 
+their blood.
+     The  nine  feats  described  below  are  heritage  feats.  Their  
+prerequisites and benefi  ts are summarized on Table 3–5.
+CELESTIAL SORCERER AUR A
+The power of your sorcerous heritage shines through, allowing 
+you to infuse the area around you with a menacing aura.
+Prerequisites:  Celestial  Sorcerer  Heritage,  sorcerer  
+level 1st.
+Benefit: As a standard action, you can expend a spell 
+slot  to  generate  a  righteous  aura  of  menace  that  affects  
+all hostile creatures in a 20-foot radius around you. All 
+your opponents within this area must make a Will save 
+(DC 10 + the level of the spell slot expended + your Cha 
+modifier). On a failed save, a creature takes a –2 penalty 
+on attack rolls, checks, and saves for 24 hours or until it 
+successful ly hits you. A creat ure that resists or brea ks this 
+effect cannot be affected by it again for 24 hours. This is a 
+supernatural ability.
+CELESTIAL SORCERER HERITAGE
+Your ancestry manifests in the form of several special abilities. 
+You gain access to abilities similar to those of an archon.
+Prerequisite: Sorcerer level 1st.
+ Benefit: You gain a bonus on saves against electricity 
+and petrification equal to the number of celestial sorcerer 
+feats you possess. You also add protection from evil to your 
+list of 1st-level sorcerer spells known. This spell is in 
+addition to the spells you gain normally based on your 
+sorcerer level.
+CELESTIAL SORCERER LANCE
+You can channel your arcane energy into a bolt of power that 
+is baneful to evil creatures.
+ Prerequisites:  Celestial  Sorcerer  Heritage,  sorcerer  
+level 1st.
+ Benefi  t: As a standard action, you can expend a spell slot 
+to create a 60-foot line of energy that deals damage only 
+against creatures with an evil alignment. The bolt deals 1d8 
+points of damage per level of the spell slot spent to activate 
+this ability. A Refl  ex save (DC 10 + the level of the spell slot 
+expended + your Cha modifi  er) halves this damage. This is a 
+supernatural ability.
+CELESTIAL SORCERER LORE
+The power of your ancestry grants you access to a variety of 
+new spells.
+Prerequisites: Celestial Sorcerer Heritage, any two other 
+celestial sorcerer heritage feats, sorcerer level 1st.
+Benefi  t: You add magic circle against evil, tongues, and teleport
+to your list of spells known. You gain these spells when you 
+gain access to spel ls of the appropr iate level. These spel ls are 
+Table 3–5: Heritage Feats
+Feat                                             Prerequisites                                             Benefi t
+Celestial Sorcerer Heritage Sorcerer level 1st Gain bonus spell and a bonus on saves against 
+  electricity and petrification
+   Celestial Sorcerer Aura Celestial Sorcerer Heritage, sorcerer level 1st     Expend spell slot to create righteous aura
+   Celestial Sorcerer Lance Celestial Sorcerer Heritage, sorcerer level 1st     Expend spell slot to create energy bolt that 
+  harms evil creatures
+   Celestial Sorcerer Wings Celestial Sorcerer Heritage, sorcerer level 1st     Expend spell slot to fl y for short period of time
+   Celestial Sorcerer Lore Celestial Sorcerer Heritage,  Add magic circle against evil, tongues, teleport
+ any two other celestial sorcerer heritage feats,     to list of spells known
+ sorcerer level 1st
+Infernal Sorcerer Heritage Sorcerer level 1st Gain bonus against fire and poison, 
+  +2 caster level with conjuration (summoning)
+   Infernal Sorcerer Eyes Infernal Sorcerer Heritage, sorcerer level 1st Expend spell slot to see in darkness
+   Infernal Sorcerer Howl Infernal Sorcerer Heritage, sorcerer level 1st Expend spell slot to create cone of sonic energy
+   Infernal Sorcerer Resistance   Infernal Sorcerer Heritage, sorcerer level 1st Gain acid and cold resistance
+A tiefl 
+ing sorcerer rends the air with her Infernal Sorcerer Howl
+Illus. by L.Parillo
+620_95374_Ch3.indd   90620_95374_Ch3.indd   902/8/06   3:52:37 PM2/8/06   3:52:37 PM
+
+91
+CHAPTER 3
+NEW FEATS
+in addition to the spells you gain normally based on your 
+sorcerer level.
+CELESTIAL SORCERER WINGS
+You channel your inborn magical abilities to spawn a pair of 
+spectral, magical wings that glow with majestic power.
+ Prerequisites:  Celestial  Sorcerer  Heritage,  sorcerer  
+level 1st.
+ Benefi  t: You can expend a spell slot as a standard action to 
+gain the ability to fl  y.  You  fl y at a speed equal to twice your 
+base land speed w ith good maneuverabi l it y. This benefi  t  lasts  
+for 1 round per level of the spell slot used to activate it. This 
+is a supernatural ability.
+INFERNAL SORCERER EYES
+Your eyes glow w ith in fer nal fi  re, allowing you to see through 
+magical darkness.
+ Prerequisites:  Infernal  Sorcerer  Heritage,  sorcerer  
+level 1st.
+ Benefi  t: As a swift action, you can expend a spell slot to 
+cause your eyes to emit a spectral red glow. You gain the ability 
+to see perfectly in darkness of any kind, out to the limit of 
+your line of sight. You ignore the concealment provided by 
+darkness spells and effects. This benefi  t lasts for 10 minutes 
+per level of the spell slot used to activate it.
+INFERNAL SORCERER HERITAGE
+Your innate magic derives from infernal ancestors. Your 
+blood  is  thick  with  their  power,  allowing  you  to  exhibit  a  
+variety of abilities.
+ Prerequisite: Sorcerer level 1st.
+ Benefi  t: You gain a bonus on saves against fi  re and poison 
+equal to the number of infernal sorcerer heritage feats you 
+possess. When you use a conjuration (summoning) spell 
+to summon an evil outsider, you gain a +2 bonus to your 
+caster level.
+INFERNAL SORCERER HOWL
+You channel the fury of your infernal ancestors into a thun-
+derous roar that blasts your enemies with sonic power.
+ Prerequisites:  Infernal  Sorcerer  Heritage,  sorcerer  
+level 1st.
+ Benefi  t: By expending one of your spell slots, you create a 
+30-foot cone of sonic energy. All opponents within the cone 
+take 2d6 points of damage per level of the spell slot expended. 
+Each target can attempt a Fortitude save (DC 10 + the level of 
+the spell slot expended + your Cha modifi  er) for half damage. 
+This is a supernatural ability.
+INFERNAL SORCERER RESISTANCE
+You are as tough and resilient as an infernal monstrosity, 
+allowing you to shrug off acid and cold damage.
+ Prerequisites:  Infernal  Sorcerer  Heritage,  sorcerer  
+level 1st.
+ Benefi  t: You gain resistance to acid and resistance to cold 
+equal to the total number of infernal sorcerer heritage feats 
+you have.
+METAMAGIC FEATS
+Metamagic feats allow spellcasters to modify the way a spell 
+is cast or the effect a spell has after it is successfully cast. Full 
+information about metamagic feats appears on page 88 of the 
+Player’s Handbook.
+     The     fi  ve feats described below are new metamagic feats. Their 
+prerequisites and benefi  ts are summarized on Table 3–6.
+BLISTERING SPELL
+You r  fi re spells sear the fl  esh  from  your  enemies’  bones,  
+leaving them wracked with pain.
+    Benefit: This metamagic feat can be applied only to a 
+spell that has the fire descriptor. A blistering spell deals 
+an extra 2 points of fire damage per level of the spell. In 
+addition to the spell’s normal effect, any creature that fails 
+its save against a blistering spell takes a –2 penalty on attack 
+rolls and checks until the beginning of your next turn. A 
+blistering spell uses up a spell slot one level higher than the 
+spell’s actual level.
+EARTHBOUND SPELL
+You bind a spell into the rock and soil, leaving it there until 
+an opponent stumbles across it. At that time, the spell releases 
+its energy.
+    Benefi  t: When you cast an earthbound spell, you place it 
+within a square adjacent to you. You must specify all effects, 
+options, and other relevant variables when you cast the spell. 
+The  next  creature  to  enter  the  warded  square  triggers  the  
+spell. If the spell affects an area, that square is the center of 
+the area or the point at which the area begins. For a cone, 
+line, or similar area, you must designate the direction in 
+which the cone or line extends. An earthbound spell that 
+does not affect an area targets the creature that triggered it. 
+You cannot apply the Earthbound Spell metamagic feat to a 
+spell with a range of personal.
+    An earthbound spell remains in place for 1 hour or until 
+it is triggered. A Search check (DC 25 + the spell’s level) 
+reveals its presence, as does detect magic and similar abilities. A 
+character with trapfi  nding can make a Disable Device check 
+(DC 25 + the spell’s level) to remove an earthbound spell (as 
+if it is a magic trap). A dispel magic effect can also remove an 
+earthbound spell, thus preventing it from functioning.
+     An earthbound spell uses up a spell slot two levels higher 
+than the spell’s actual level.
+FLASH FROST SPELL
+Your spells that use cold and ice to damage your foes leave 
+behind a thin layer of slippery frost.
+    Benefi  t: This metamagic feat can be appl ied only to spel ls 
+that have the cold descriptor and that affect an area. A fl  ash  
+frost spell deals an extra 2 points of cold damage per level of 
+the spell to all targets in the area. When you cast such a spell, 
+the area of the spell is covered with a slippery layer of ice for 
+1 round. Anyone attempting to move through this icy area 
+must make a DC 10 Balance check or fall prone. A creature 
+that  runs  or  charges  through  the  area  must  make  a  DC  20  
+Balance check to avoid falling. A fl ash frost spell uses up a 
+spell slot one level higher than the spell’s actual level.
+620_95374_Ch3.indd   91620_95374_Ch3.indd   912/8/06   3:52:46 PM2/8/06   3:52:46 PM
+
+92
+CHAPTER 3
+NEW FEATS
+IMBUED SUMMONING
+Your summoning spells gain an element of surprise. You can 
+summon creatures that come into existence with the benefi  t  
+of a spell such as invisibility or bull’s strength.
+ Prerequisites: Augment  Summoning,  Spell  Focus  
+(conjuration).
+ Benefi  t:  When  you  cast  a  spell  from  the  summoning  
+subschool, you can choose to grant the summoned creature 
+the benefi  t of any spell of 3rd level or lower you can cast that 
+has a range of touch. You cast the spell you wish to grant the 
+creature (using a prepared spell or a spell slot) at the same 
+time you cast your summoning spell. The creature gains the 
+benefi  t of the spell when it appears.
+     An imbued summoning spell uses up a spell slot one level 
+higher than the spell’s actual level.
+SMITING SPELL
+You can channel the energy of a touch spell into a weapon, 
+causing the spell to discharge when you strike an opponent.
+ Prerequisites: Base attack bonus +1, caster level 1st.
+ Benefit: You can alter a spell with a range of touch to 
+transfer its energy from your hand to a weapon that you 
+hold.  The  next  time  you  strike  an  opponent  with  that  
+weapon, the spell discharges. The target takes the normal 
+damage and effects of a successful attack in addition to 
+the spell’s effect. Once you place a spell into a weapon, 
+you must discharge it within 1 minute, or its energy dis-
+sipates harmlessly.
+     You can place a smiting spell on a piece of ammunition or a 
+projectile, such as a sling bullet, an arrow, or a crossbow bolt. 
+In such a case, the spell dissipates if the attack misses. The 
+spell cannot be placed on a bow, crossbow, sling, or similar 
+weapon that uses ammunition.
+    A smiting spell uses up a spell slot one level higher than 
+the spell’s actual level.
+TAC T IC A L   F E AT S
+Tactical feats allow characters to perform a number of power-
+ful maneuvers.
+     If you are playing a character who has one or more tactical 
+feats, you are responsible for keeping track of the actions 
+needed to set up the feat’s maneuver. It’s also a good idea 
+to briefl  y mention to the DM that you’re working toward a 
+tactical maneuver—a remark along the lines of “I’m using 
+my spi ked rebu ke maneuver this round. I’l l let you know i f I 
+gain my attack bonus against any opponents who attack and 
+miss me” is appropriate.
+     Some descriptions of tactical feats refer to the fi  rst  round,  
+second round, and so on. These terms are related to the timing 
+of the maneuver, not the encounter as a whole. For instance, 
+if you have the Combat Cloak Expert feat, you don’t have to 
+move adjacent to an opponent in the fi rst round of combat 
+to utilize the cloaked strike maneuver during that combat. 
+Any round when you move adjacent to an opponent for the 
+purpose  of  utilizing  this  maneuver  is  considered  the  fi  rst  
+round of the maneuver.
+    The six feats described below are tactical feats. Their pre-
+requisites and benefi  ts are summarized on Table 3–7.
+BLOOD-SPIKED CHARGER
+You  throw  yourself  into  the  fray,  using  your  spiked  armor  
+and spiked shield to tear your opponents to pieces.
+ Prerequisites: Str 13, profi  ciency with spiked armor and 
+spiked shields, Power Attack, Weapon Focus (spiked armor), 
+Weapon Focus (spiked shield), base attack bonus +6.
+ Benefi  t: The Blood-Spiked Charger feat grants you access 
+to three special tactical maneuvers.
+ Spiked Avalanche: When you are using the charge action 
+while wearing spiked armor and carrying either a spiked 
+shield or nothing in your hands, you throw yourself into the 
+air,  transforming  yourself  into  a  deadly,  spiked  projectile.  
+A successful attack with either your spiked shield or your 
+Table 3–6: Metamagic Feats
+Feat                                      Prerequisites                                      Benefi t
+Blistering Spell — Fire spells cause –2 penalty for 1 turn on failed save
+Earthbound Spell — Cast spell into ground as a trap
+Flash Frost Spell — Cold spells coat area of effect with slippery ice
+Imbued Summoning Augment Summoning,  Summoned creature arrives with beneficial spell
+ Spell Focus (conjuration)
+Smiting Spell Base attack bonus +1, caster level 1st Place touch spell in weapon
+Table 3 –7: Tac tic al Fe at s
+Feat                                      Prerequisites                                      Benefi t
+Blood-Spiked Charger Str 13, proficiency with armor spikes  Gain armor and shield spike maneuvers
+ and shield spikes, Power Attack, 
+ Weapon Focus (armor spikes), 
+ Weapon Focus (shield spikes), 
+ base attack bonus +6
+Combat Cloak Expert Dex 15, Int 13, Combat Expertise,  Gain cloak maneuvers
+ Dodge, base attack bonus +6
+Combat Panache Bluff 8 ranks, Intimidate 8 ranks,  Gain charismatic combat maneuvers
+ Perform 8 ranks
+Einhander Tumble 6 ranks, base attack bonus +6 Gain one-handed weapon combat maneuvers
+Mad Alchemist Grenadier, Craft (alchemy) 6 ranks Gain thrown item combat maneuvers
+Shadow Striker Hide 12 ranks, Move Silently 12 ranks Gain stealthy combat maneuvers
+620_95374_Ch3.indd   92620_95374_Ch3.indd   922/8/06   3:52:52 PM2/8/06   3:52:52 PM
+
+93
+CHAPTER 3
+NEW FEATS
+spiked armor deals extra damage equal to twice your Strength 
+bonus. You can attack with both your spiked armor and a 
+spiked shield on this charge, each one benefi ting from the 
+Strength bonus, but you take the normal penalties for using 
+two weapons.
+ Spiked Rebuke: When you are fighting defensively and 
+carrying a spiked shield, you lash out at your foes with your 
+shield in response to their attacks. Deter mine what your AC 
+would be without your spiked shield and the AC bonus for 
+fi  ghting defensively. If an opponent’s attack hits against this 
+lower AC but misses against your actual AC, the foe strikes 
+your shield, allowing you to defl  ect his attack in such a way as 
+to leave him vulnerable to your counter. On your next action, 
+you gain a +2 bonus on attack rolls against your chosen foe 
+with your spiked shield.
+ Spiked Slam: As a full-round action when you are wielding 
+a spiked shield, you can opt to make only a single attack at 
+your best base attack bonus. You brace yoursel f behind your 
+spiked shield, drive yourself forward, and slam into your 
+foe. You enter your foe’s space, which provokes attacks of 
+opportunity. In return, your attack deals extra damage equal 
+to twice your Strength and an additional amount based on 
+your size (see below). After making this attack, you stumble 
+back into the square you occupied just before making this 
+attack. Until the start of your next turn, you do not threaten 
+any squares.
+Size                    Additional                    Damage
+Small                              1d4
+Medium                         1d6
+Large                              1d8
+Huge                              2d6
+Gargantuan                    2d8
+Colossal                         3d6
+ Special: A fi  ghter can select Blood-Spiked Charger as one 
+of his fi  ghter  bonus  feats.
+COMBAT CLOAK EXPERT
+You are adept at turning your cloak into a vital part of your 
+combat reper toire. By t w irl ing it about you, sweeping it over 
+enemies, and using it to conceal your weapon, you can catch 
+an opponent by surprise.
+ Prerequisites: Dex 15, Int 13, Combat Expertise, Dodge, 
+base attack bonus +6.
+ Benefi  t: The Combat Cloak Expert feat grants you access 
+to three special tactical maneuvers. You must wear a cloak 
+in order to utilize them.
+ Cloak Defense: While you are fi  ghting defensively, you can 
+use your cloak to confuse your foes. You hold it before your 
+chest like a curtain, making it diffi cult for enemies to read 
+your defensive moves. Your cloak grants you a +1 shield bonus 
+to AC. If you use the total defense action, your cloak’s shield 
+bonus improves to +2. (Shield bonuses do not stack, making 
+it likely that this maneuver is a poor option if you already 
+carry a shield.)
+ Cloaked Strike: You can use your cloak to hide a light 
+weapon. To utilize this maneuver, on the first round you 
+must move adjacent to an opponent while you do not have 
+a  weapon  in  either  hand.  On  the  second  round,  you  make  
+a Bluff check opposed by your foe’s Sense Motive check as 
+you  use  a  move  action  to  draw  your  weapon.  If  this  check  
+succeeds, your opponent loses either his Dexterity bonus to 
+AC or his shield bonus to AC (your choice) until the end of 
+your current turn.
+ Whirling  Cloak:  You  can  attempt  to  use  your  cloak  to  
+confuse your opponent. As a move action after successfully 
+striking an opponent in melee, make a melee touch attack 
+against that foe. If this attack hits, you whirl your cloak 
+around him, temporarily ruining his defenses. Your opponent 
+cannot make attacks of opportunity against a particular ally 
+of your choice until the start of his next turn.
+ Special: A fi  ghter can select Combat Cloak Expert as one 
+of his fi  ghter  bonus  feats.
+COMBAT PANACHE
+Your  glowing  personality  and  sharp  performance  abilities  
+allow you to navigate the battlefi  eld on sheer chutzpah alone. 
+While others rely on swords and armor, you use your cutting 
+wit and ability to manipulate others.
+ Prerequisites: Bluff 8 ranks, Intimidate 8 ranks, Perform 
+8 ranks.
+ Benefi  t:  The  Combat  Panache  feat  grants  you  access  to  
+three special tactical maneuvers.
+ Fortuitous Tumble: For a brief moment, you appear to let your 
+guard down. As your foe swings at you, you slip out of the way, 
+causing his attack to slam into one of his allies. By positioning 
+yourself correctly and making yourself an appealing target, 
+you dupe your foe into making a critical blunder.
+    To use this maneuver, you must be successfully attacked 
+by a foe. On your next turn, you can take a move action to 
+make a Bluff check opposed by his Sense Motive check. If 
+you succeed on the check, you can take an immediate action 
+at the start of your foe’s next turn and designate a different 
+target for your opponent’s nex t melee attack (which must be 
+a creature it threatens).
+ Play  Dead:  You  crumple  to  the  ground  as  if  slain,  luring  
+your opponent into a false sense of security. As an immediate 
+action after you are hit for at least 10 points of damage by a 
+single attack, you can attempt to play dead. You drop prone 
+and make a Bluff check opposed by your attacker’s (or any 
+other  relevant  observer’s)  Sense  Motive  check.  If  you  suc-
+ceed  on  this  check,  the  observer  assumes  you  are  dead.  If  
+you subsequently rise and attack him in the same round, he 
+loses any attack of opportunity he might have been entitled 
+to against you, and he loses his Dexterity bonus to AC against 
+the fi  rst attack that you make.
+    You can use this ability once per encounter. Standing up 
+after playing dead does not provoke attacks of opportunity.
+ Sneering Glower: With just the right mix of your intimidat-
+ing presence and your martial talents, you strike such fear 
+into your target that he has di f fi  culty  fi  ghting you effectively. 
+On your next turn after you deal at least 1 point of damage 
+to your opponent, you can make an Intimidate check against 
+him as a move action. If you succeed on this check, your foe 
+takes a penalty on his attack rolls against you equal to your 
+Charisma bonus. You can gain this benefi  t against only one 
+620_95374_Ch3.indd   93620_95374_Ch3.indd   932/8/06   3:52:58 PM2/8/06   3:52:58 PM
+
+94
+CHAPTER 3
+NEW FEATS
+foe  at  a  time;  it  lasts  for  the  duration  of  the  encounter  or  
+until  you  switch  targets.  If  you  designate  a  new  target  for  
+this ability (by attempting a new Intimidate check against 
+a different creature), the previous target no longer takes the 
+penalty on his attack rolls against you. Opponents that are 
+immune to the effects of the Intimidate skill, such as mind-
+less creatures and those with immunity to fear, are immune 
+to this maneuver.
+ Special: A fi  ghter can select Combat Panache as one of his 
+fi  ghter bonus feats.
+EINHANDER
+You excel at wielding a one-handed weapon while carrying 
+nothing in your off hand.
+ Prerequisites: Tumble 6 ranks, base attack bonus +6.
+ Benefit: If you are fighting with a one-handed weapon 
+or a light weapon and carrying nothing in your off hand, 
+the Einhander feat grants you access to three special tacti-
+cal maneuvers.
+     Narrow     Profi     le: You can tuck your arm behind your back 
+and  offer  a  narrow  profile  when  you  concentrate  on  
+defense rather than of fense. You gain an additional +2 dodge 
+bonus to AC when fi ghting defensively or using the total 
+defense action.
+     Off-Hand     Balance: You use your off hand to balance yourself 
+while  performing  acrobatic  maneuvers.  After  you  success-
+fully strike an opponent, you gain a +2 bonus on Tumble 
+checks to avoid his attacks of opportunity until the start of 
+your  next  turn.  When  you  fl  ip  and  roll  out  of  harm’s  way,  
+you use one hand to keep your balance and your other hand 
+to keep your weapon trained on your foe.
+    Off-Hand    Swap: With a fl  ourish,  you  fl  ip your weapon into 
+the air, catch it in your off hand, and continue to press the 
+attack. When you use this maneuver, you must fi  rst take a 
+full attack action to strike an opponent at least twice. On 
+your next turn, you can make a special feint as a free action, 
+using Sleight of Hand rather than Blu f f. Your opponent uses 
+the standard rules for resisting a feint. Once you use this 
+maneuver against a particular opponent, whether it succeeds 
+or fails, you cannot use it against him again.
+ Special: A fi  ghter can select Einhander as one of his fi  ghter  
+bonus feats.
+MAD ALCHEMIST
+You  are  an  expert  at  using  alchemical  items.  Through  
+experimentation, research, and your careful study of the art 
+of alchemy, you have learned to make the most of items such 
+as alchemist’s fi  re.
+ Prerequisites: Craft (alchemy) 6 ranks, Grenadier.
+ Benefi  t: The Mad Alchemist feat grants you access to three 
+special tactical maneuvers.
+ Distracting Blast: If you ready an action to throw a thunder-
+stone at the square an opponent occupies, you can disrupt his 
+actions. The sudden bang from the stone’s detonation ruins 
+your foe’s concentration, possibly spoiling his attack or his 
+attempt to cast a spell. If the target of this blast was casting 
+a spell when you threw the thunderstone, he must make a 
+Concentration check opposed by your Craft (alchemy) check. 
+If you succeed on this check, his spell is ruined. If the target 
+was not casting a spell, he must make a Will save opposed by 
+your Craft (alchemy) check or take a –2 penalty on attack rolls, 
+checks, and saves until the beginning of your next turn.
+    Fiery    Blaze: To use this maneuver, you must fi rst strike a 
+creature  with  a  container  of  lantern  oil  or  alchemist’s  fi  re.  
+On your next turn, you must strike the creature with a spell 
+or weapon attack that deals fi re damage. If you do so, the 
+creature takes an extra 1d6 points of fi  re damage and catches 
+on fi  re if it is not already in fl  ames.
+ Tanglefoot Defense: By tearing open a tanglefoot bag and 
+spreading its contents across an area, you can create a vexing 
+barrier that hinders an opponent’s approach. As a standard 
+action, you can transform a single square of clear terrain into 
+diffi cult terrain through the use of a tanglefoot bag. This 
+effect persists for 10 minutes before the tanglefoot bag loses 
+its potency.
+SHADOW STRIKER
+You melt into the shadows, hiding from your enemies until 
+the time is right. Your cunning, guile, and stealth allow you 
+to pick the most opportune moment to strike.
+ Prerequisites: Hide 12 ranks, Move Silently 12 ranks.
+ Benefi  t: The Shadow Striker feat grants you access to three 
+special tactical maneuvers.
+ Evade Notice: If both you and an al ly threaten an opponent, 
+you can attempt to slip beneath your opponent’s notice. On 
+your turn, if you take no hostile actions, such as attacking, 
+casting an offensive spell, and so forth, you can make a Hide 
+check opposed by the threatened foe’s Spot check. If you 
+succeed on this check, your foe cannot attack you on his next 
+turn as long as he threatens another active opponent. If you 
+attack your foe for any reason before or during his next turn, 
+you lose this maneuver’s benefi t.
+ Fade Away: To use this maneuver, you must fi  rst  attack  an  
+opponent as a standard action, then move away and attempt 
+a Hide check as part of your move action for the turn. If your 
+attack hits, it creates a momentary diversion, granting you a 
++5 bonus on this Hide check.
+ Ghost Strike: You use an ally’s distraction and your talent to 
+move noiselessly and sl ip out of your opponent ’s fi  eld of vision 
+for a single, crucial moment. To use this maneuver, both you 
+and an ally must threaten a single foe. As a standard action, 
+you make a Move Silently check opposed by your foe’s Listen 
+check. If you succeed on this check, you gain this maneuver ’s 
+benefi t. On the next round, your target loses his Dexterity 
+bonus to AC against your fi  rst attack of the round so long as 
+your ally still threatens him.
+ Special: A fi  ghter can select Shadow Striker as one of his 
+fi  ghter bonus feats.
+620_95374_Ch3.indd   94620_95374_Ch3.indd   942/8/06   3:53:05 PM2/8/06   3:53:05 PM
+
+his chapter presents new tools and weapons for 
+spellcasters of all types. The spells range in power 
+and utility, from a handful of direct- and indirect-
+damage spel ls to spel ls that move the caster and his 
+allies or enemies across the battlefi  eld  and  those  
+that allow the caster to act on borrowed time. 
+Some spells call or summon new allies for the spellcaster. 
+Channeled spells are a new type of spell that have a greater 
+effect the longer you spend casting. Other spells, such as 
+the various crown spells, have an ongoing effect that can be 
+discharged for a more powerful result.
+     The chapter begins with the spell lists for the spellcasting 
+classes, including the new classes in Chapter 1 of this book. 
+An M or F appearing at the end of a spell’s name denotes a 
+spell with a material or focus component, respectively, that 
+is not normally included in a spell component pouch. An X 
+denotes a spell with an XP component paid by the caster.
+     After the spell lists, the new spells appear in alphabetical 
+order by spell name (with the exception of those whose 
+names begin with “greater,” “mass,” or “swift”; see Order of 
+Presentation, PH 181). For explanation of spell terminology, 
+see Chapter 10 of the Player’s Handbook.
+DUAL-SCHOOL SPELLS
+Dual-school spells, featured in this book for the fi  rst  time,  
+have effects that encompass two distinct schools of magic. In 
+all cases, treat these spells as if they belonged to both schools 
+simultaneously. Effects that prevent a spellcaster from 
+accessing one school of a dual-school spell prevent all access 
+to that spel l. For example, a special ist w izard cannot lear n 
+a dual-school spell if either of the spell’s schools is one of 
+his prohibited schools. Benefi ts that apply to a school of 
+magic do not stack with themselves even if the spellcaster 
+can apply them to both schools of magic. For example, 
+if a spellcaster has the Spell Focus feat for either school, 
+it applies to the dual-school spell normally. However, 
+spellcasters who have taken the Spell Focus feat for both 
+of a dual-school spell’s associated schools only increase 
+the DC of the dual-school spell by +1.
+THE POLYMORPH SUBSCHOOL
+Another feature new in Player’s Handbook II is the poly-
+morph subschool, defi  ned and explained below.
+     A  spell  of  the  polymorph  subschool  changes  the  
+target ’s for m from one shape to another. Unless stated 
+otherwise in the spell’s description, the target of a 
+polymorph spell takes on all the statistics and special 
+abilities of an average member of the new form in 
+place of its own except as follows: 
+•   The target retains its own alignment (and personal-
+ity, within the limits of the new form’s ability scores).
+•   The target retains its own hit points. 
+•   The target is treated has having its normal Hit Dice 
+for purpose of adjudicating effects based on HD, 
+95
+Illus. by R. HorsleyIllus. by R. Horsley
+620_95374_Ch4.indd   95620_95374_Ch4.indd   952/8/06   4:01:18 PM2/8/06   4:01:18 PM
+
+96

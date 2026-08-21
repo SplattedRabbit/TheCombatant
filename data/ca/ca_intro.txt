@@ -1,0 +1,1209 @@
+
+
+™
+
+
+3
+TABLE OF
+ 
+CONTENTS
+Contents
+Introduction
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+Everyone Has Skill . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+What
+’s Inside
+ . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+What You Need to Play
+ . . . . . . . . . . . . . . . . . .
+4
+Chapter 1: Classes
+ . . . . . . . . . . . . . . . . . . . . . . . . . .
+5
+Ninja .
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5
+Game Rule Information
+ . . . . . . . . . . . . . . . . .
+7
+Human Ninja Starting Package
+ . . . . . . . . . .
+9
+Scout .
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1
+0
+Game Rule Information
+ . . . . . . . . . . . . . . . .
+1
+1
+Half-Elf Scout Starting Package . . . . . . . . .
+1
+3
+Spellthief . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1
+3
+Game Rule Information
+ . . . . . . . . . . . . . . . .
+1
+5
+Halfling Spellthief Starting Package
+ . . . .
+2
+0
+Chapter 2: Prestige Classes
+ . . . . . . . . . . . . . . . .
+2
+1
+Picking a Prestige Class
+ . . . . . . . . . . . . . . . . . . .
+2
+1
+Animal Lord . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2
+2
+Beastmaster . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2
+6
+Bloodhound
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2
+8
+Daggerspell Mage . . . . . . . . . . . . . . . . . . . . . . . . .
+3
+1
+Daggerspell Shaper . . . . . . . . . . . . . . . . . . . . . . . .
+3
+6
+Dread Pirate
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3
+9
+Dungeon Delver
+ . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+2
+Exemplar
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+4
+4
+Fochlucan Lyrist . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+7
+Ghost-Faced Killer
+ . . . . . . . . . . . . . . . . . . . . . . . .
+5
+1
+Highland Stalker . . . . . . . . . . . . . . . . . . . . . . . . . .
+5
+4
+Maester . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5
+6
+Master of Many Forms
+ . . . . . . . . . . . . . . . . . . . .
+5
+8
+Nightsong Enforcer . . . . . . . . . . . . . . . . . . . . . . .
+6
+0
+Nightsong Infiltrator . . . . . . . . . . . . . . . . . . . . . .
+6
+2
+Ollam
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6
+6
+Shadowbane Inquisitor . . . . . . . . . . . . . . . . . . . .
+6
+8
+Shadowbane Stalker . . . . . . . . . . . . . . . . . . . . . . .
+7
+0
+Shadowmind . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7
+4
+Spymaster
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7
+6
+Streetfighter
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7
+9
+Tempest
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+8
+1
+Thief-Acrobat
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+8
+3
+Vigilante
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+8
+5
+Virtuoso . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+8
+9
+Wild Plains Outrider . . . . . . . . . . . . . . . . . . . . . .
+9
+2
+Chapter 3: Skills and Feats
+ . . . . . . . . . . . . . . . .
+9
+5
+Skills
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+9
+5
+Combining Skill Attempts . . . . . . . . . . . . . .
+9
+5
+Expanded Skill Descriptions
+ . . . . . . . . . . . . . .
+9
+7
+Appraise  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+9
+7
+Balance  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+9
+7
+Climb  . .
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+9
+7
+Craft  . . .
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+9
+7
+Decipher Script
+  . . . . . . . . . . . . . . . . . . . . . . . .
+9
+8
+Diplomacy  . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+9
+8
+Disable Device  . . . . . . . . . . . . . . . . . . . . . . . . .
+9
+9
+Escape Artist 
+ . . . . . . . . . . . . . . . . . . . . . . . . . .
+9
+9
+Forgery  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+0
+Handle Animal  . . . . . . . . . . . . . . . . . . . . . . 
+10
+0
+Heal  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+1
+Hide  . . .
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+1
+Open Lock 
+ . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+2
+Sense Motive 
+ . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+2
+Survival 
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+3
+Swim 
+. . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+3
+Tumble. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+3
+Use Rope  . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+3
+Feats . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+3
+Appraise Magic Value
+ . . . . . . . . . . . . . . . . 
+10
+3
+Ascetic Hunter . . . . . . . . . . . . . . . . . . . . . . . .
+10
+5
+Ascetic Knight
+ . . . . . . . . . . . . . . . . . . . . . . . .
+10
+5
+Ascetic Mage . . . . . . . . . . . . . . . . . . . . . . . . . .
+10
+5
+Ascetic Rogue . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+6
+Brachiation
+ . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+6
+Brutal Throw . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+6
+Combat Intuition
+ . . . . . . . . . . . . . . . . . . . . 
+10
+6
+Danger Sense
+ . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+6
+Death Blow
+ . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+6
+Deft Opportunist
+ . . . . . . . . . . . . . . . . . . . . 
+10
+6
+Deft Strike . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+6
+Devoted Inquisitor
+ . . . . . . . . . . . . . . . . . . . 
+10
+7
+Devoted Performer
+ . . . . . . . . . . . . . . . . . . . 
+10
+7
+Devoted Tracker . . . . . . . . . . . . . . . . . . . . . . 
+10
+8
+Disguise Spell . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+8
+Dive for Cover . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+8
+Dual Strike
+ . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+8
+Expert Tactician . . . . . . . . . . . . . . . . . . . . . . 
+10
+9
+Extra Music . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+9
+Extraordinary Concentration . . . . . . . . . 
+10
+9
+Extraordinary Spell Aim
+ . . . . . . . . . . . . . 
+10
+9
+Force of Personality
+ . . . . . . . . . . . . . . . . . . 
+10
+9
+Goad  . . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+9
+Green Ear . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+0
+Hear the Unseen
+ . . . . . . . . . . . . . . . . . . . . . .
+11
+0
+Improved Diversion
+ . . . . . . . . . . . . . . . . . . .
+11
+0
+Improved Flight . . . . . . . . . . . . . . . . . . . . . . .
+11
+0
+Improved Swimming . . . . . . . . . . . . . . . . . .
+11
+0
+Insightful Reflexes . . . . . . . . . . . . . . . . . . . .
+11
+0
+Jack of All Trades . . . . . . . . . . . . . . . . . . . . . .
+11
+0
+Leap Attack
+ . . . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+0
+Lingering Song . . . . . . . . . . . . . . . . . . . . . . . .
+11
+1
+Mobile Spellcasting
+ . . . . . . . . . . . . . . . . . . .
+11
+1
+Natural Bond
+ . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+1
+Obscure Lore
+ . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+1
+Open Minded . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+1
+Oversized Two-Weapon Fighting . . . . . . .
+11
+1
+Power Throw . . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+1
+Quick Reconnoiter . . . . . . . . . . . . . . . . . . . 
+11
+2
+Razing Strike
+ . . . . . . . . . . . . . . . . . . . . . . . . 
+11
+2
+Staggering Strike . . . . . . . . . . . . . . . . . . . . . 
+11
+2
+Subsonics . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+11
+2
+Tactile Trapsmith . . . . . . . . . . . . . . . . . . . . . 
+11
+2
+Versatile Performer . . . . . . . . . . . . . . . . . . . 
+11
+2
+Bardic Music Feats
+ . . . . . . . . . . . . . . . . . . . . . . 
+11
+3
+Chant of Fortitude
+  . . . . . . . . . . . . . . . . . . . 
+11
+3
+Ironskin Chant
+ 
+ . . . . . . . . . . . . . . . . . . . . . . 
+11
+3
+Lyric Spell
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+11
+3
+Wild Feats
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+11
+3
+Blindsense
+ 
+ . . . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+4
+Climb Like an Ape
+  . . . . . . . . . . . . . . . . . . . .
+11
+4
+Cougar’s Vision
+  . . . . . . . . . . . . . . . . . . . . . . .
+11
+4
+Hawk’s Vision
+ 
+ . . . . . . . . . . . . . . . . . . . . . . . .
+11
+4
+Savage Grapple
+  . . . . . . . . . . . . . . . . . . . . . . . .
+11
+4
+Scent
+ . . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+4
+Chapter 4: Tools and Equipment . . . . . . . . . 
+11
+5
+New Weapons . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+11
+5
+Equipment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+8
+Magic Items
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+12
+7
+Chapter 5: Spells . . . . . . . . . . . . . . . . . . . . . . . . . 
+13
+7
+Swift
+ Actions
+ and Immediate Actions . . . . 
+13
+7
+New Assassin Spells . . . . . . . . . . . . . . . . . . . . . 
+13
+8
+New Bard Spells
+ . . . . . . . . . . . . . . . . . . . . . . . . 
+13
+8
+New Cleric Spells
+ . . . . . . . . . . . . . . . . . . . . . . . 
+13
+9
+New Druid Spells
+ . . . . . . . . . . . . . . . . . . . . . . . 
+14
+0
+New Paladin Spells . . . . . . . . . . . . . . . . . . . . . . 
+14
+0
+New Ranger Spells . . . . . . . . . . . . . . . . . . . . . . 
+14
+0
+New Sorcerer/Wizard Spells
+ . . . . . . . . . . . . .
+14
+1
+New Spells . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+14
+2
+Chapter 6: Organizations . . . . . . . . . . . . . . . . 
+15
+9
+Organization Name
+ . . . . . . . . . . . . . . . . . . 
+15
+9
+Blacklock Loreseekers . . . . . . . . . . . . . . . . 
+16
+0
+The Bloodhounds
+ . . . . . . . . . . . . . . . . . . . . .
+16
+2
+College of Concrescent Lore
+ . . . . . . . . . . .
+16
+5
+Daggerspell Guardians
+ . . . . . . . . . . . . . . . .
+16
+7
+Dragonblade Ninja Clan
+ . . . . . . . . . . . . . . .
+16
+9
+Eyes of the Overking
+ . . . . . . . . . . . . . . . . . 
+17
+1
+Grayhaunt Investigators
+ . . . . . . . . . . . . . . 
+17
+3
+League of Boot and Trail . . . . . . . . . . . . . . .
+17
+5
+Nightsong Guild
+ . . . . . . . . . . . . . . . . . . . . . 
+17
+7
+Order of Illumination
+ . . . . . . . . . . . . . . . . 
+17
+9
+Shadowmind Guild . . . . . . . . . . . . . . . . . . . 
+18
+1
+Talespinners League . . . . . . . . . . . . . . . . . . 
+18
+2
+Building an Organization
+ . . . . . . . . . . . . . . . .
+18
+5
+Step 1: Type
+ . . . . . . . . . . . . . . . . . . . . . . . . . . .
+18
+5
+Step 2: Alignment . . . . . . . . . . . . . . . . . . . . .
+18
+5
+Step 3: Size . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+18
+6
+Step 4: Population and Resources
+ . . . . . 
+18
+6
+Step 5: Demographics
+ . . . . . . . . . . . . . . . . 
+18
+7
+Step 6: Flesh out the Details . . . . . . . . . . . 
+18
+9
+Appendix: The Epic Adventurer
+ . . . . . . . . . 
+18
+9
+Becoming an Epic-Level Adventurer
+ . .  18
+9
+Epic-Level Prestige Class Characters
+ . .  19
+0
+Sample Prestige Class Epic Progression: 
+Dungeon Delver . . . . . . . . . . . . . . . . . . . 
+19
+1
+Epic Feats . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+19
+1
+C
+R
+E
+D
+I
+T
+S
+D
+E
+S
+I
+G
+N
+J
+ESSE
+ D
+ECKER
+A   D  D  I  T   I  O  N  A   L      D  E   S  I  G   N
+R
+ICHARD
+ B
+AKER
+, M
+ICHELLE
+ L
+YONS
+, 
+D
+AVID
+ N
+OONAN
+, S
+TAN
+!
+D  E  V   E  L  O  P  M  E  N   T      T   E  A   M
+R
+ICHARD
+ B
+AKER
+, A
+NDY
+ C
+OLLINS
+, 
+A
+NDREW
+ J. F
+INCH
+E
+D
+I
+T
+O
+R
+S
+J
+OHN
+ D. R
+ATELIFF
+, G
+ARY
+ S
+ARLI
+A  D  D  I  T  I  O  N  A  L      E  D  I  T  I  N  G
+J
+ENNIFER
+ C
+LARKE
+ W
+ILKES
+, C
+HRIS
+ T
+HOMASSON
+M   A   N   A   G   I   N   G       E   D   I   T   O   R
+K
+IM
+ M
+OHAN
+D   E   S   I   G   N       M   A   N   A   G   E   R   S
+E
+D
+ S
+TARK
+, C
+HRISTOPHER
+ P
+ERKINS
+D E V  E  L  O P  M  E  N  T      M  A  N A G  E  R
+A
+NDREW
+ J. F
+INCH
+S E N I O R   A R T   D I R E C T O R   R P G
+S
+TACY
+ L
+ONGSTREET
+D  I  R  E  C  T  O  R     O  F     R  P  G     R  &  D
+B
+ILL
+ S
+LAVICSEK
+A   R   T       D   I   R   E   C   T   O   R       D   &   D
+D
+AWN
+ M
+URIN
+C
+O
+V
+E
+R
+     A
+R
+T
+I
+S
+T
+M
+ATT
+ C
+AVOTTA
+I   N   T   E   R   I   O   R       A   R   T   I   S   T   S
+S
+TEVE
+ B
+ELLEDIN
+, M
+ITCH
+ C
+OTIE
+, E
+D
+ C
+OX
+, 
+S
+TEVE
+ E
+LLIS
+, W
+AYNE
+ E
+NGLAND
+, 
+D
+AVID
+ H
+UDNUT
+, J
+EREMY
+ J
+ARVIS
+, D
+OUG
+ K
+OVACS
+, 
+C
+HUCK
+ L
+UKACS
+, J
+EFF
+ M
+IRACOLA
+, 
+M
+ONTE
+ M
+OORE
+, W
+ILLIAM
+ O’C
+ONNOR
+, 
+M
+ICHAEL
+ P
+HILLIPPI
+, R
+ON
+ S
+PENCER
+, 
+F
+RANZ
+ V
+OHWINKEL
+G   R   A   P   H   I  C       D  E   S   I  G   N   E   R   S
+D
+EE
+ B
+ARNETT
+, D
+AWN
+ M
+URIN
+C
+A
+R
+T
+O
+G
+R
+A
+P
+H
+E
+R
+T
+ODD
+ G
+AMBLE
+G R A P H I C   P R O D U C T I O N   S P E C I A L I S T
+A
+NGELIKA
+ L
+OKOTZ
+I   M   A   G   E       T   E   C   H   N   I   C   I   A   N
+C
+ANDICE
+ B
+AKER
+P  R  O  D  U  C  T  I  O  N      M  A  N  A  G  E  R  S
+J
+OSH
+ F
+ISCHER
+, R
+ANDALL
+ C
+REWS
+Resources:
+ 
+Arms and Equipment Guide
+ by Eric Cagle, Jesse Decker, Jeff Quick, and James Wyatt; 
+Defenders of the Faith
+ by Rich 
+Redman and James Wyatt; 
+Draconomicon
+ by Andy Collins, Skip Williams, and James Wyatt; 
+Epic Level Handbook
+ by Andy Collins, 
+Bruce  R.  Cordell,  and  Thomas  M.  Reid; 
+F
+ORGOTTEN
+  R
+EALMS
+®
+  Campaign  Setting
+  by  Ed  Greenwood,  Sean  K.  Reynolds,  Skip  Wil
+-
+liams, and Rob Heinsoo; 
+Magic of Faer
+û
+n
+ by Sean K Reynolds, Duane Maxwell, and Angel McCoy; 
+Masters of the Wild
+ by David 
+Eckelberry and Mike Selinker; 
+Miniatures Handbook
+ by Michael Donais, Skaff Elias, Rob Heinsoo, and Jonathan Tweet; 
+Oriental 
+Adventures
+ by James Wyatt; 
+Races of Faer
+û
+n
+ by Eric L. Boyd, Matt Forbeck, and James Jacobs; 
+Races of Stone
+ by Jesse Decker, 
+Michelle Lyons, and David Noonan; 
+Song and Silence 
+by David Noonan and John D. Rateliff; 
+Sword and Fist
+ by Jason Carl; “Class 
+Acts: The Nightsong Enforcer,” by Monte Cook (
+D
+RAGON
+®
+ Magazine
+ #293); “Class Acts: The Nightsong Infiltrator,” by Monte 
+Cook (
+D
+RAGON
+ #294); “Cloak & Dagger” by Eric Cagle and Evan Michael Jackson (
+D
+RAGON
+ #316); “Silent Warriors,” by Matthew 
+Sernett (
+D
+RAGON
+ #289); “Saying the Right Things” by Eric Cagle (
+D
+RAGON
+ #303); “Spellbook Archive,” various authors (www.
+wizards.com); “Pirates: Fact & Legend,” (www.piratesinfo.com).
+Based on the original 
+D
+UNGEONS
+ & D
+RAGONS
+®
+ rules created by Gary Gygax and Dave Arneson and the new 
+D
+UNGEONS
+ & D
+RAGONS
+ 
+game designed by Jonathan Tweet, Monte Cook, Skip Williams, Richard Baker, and Peter Adkison.
+This 
+W
+IZARDS
+ 
+OF
+ 
+THE
+  C
+OAST
+®
+  game  product  contains  no  Open  Game  Content.  No  portion  of  this  work  may  be  reproduced  in 
+any  form  without  written  permission.  To  learn  more  about  the  Open  Gaming  License  and  the  d20  System  License,  please  visit 
+ 
+www.wizards.com/d20.
+Visit our website at 
+www.wizards.com/dnd
+D
+UNGEONS
+  &  D
+RAGONS
+,  D&D, 
+D
+UNGEON
+  M
+ASTER
+,  d20,  d20  System, 
+F
+ORGOTTEN
+  R
+EALMS
+,  W
+IZARDS
+ 
+OF
+ 
+THE
+  C
+OAST
+, 
+Player
+’s  Handbook,  Dungeon  Master
+’s  Guide,  Monster  Manual, 
+Expanded Psionics Handbook, Complete Adventurer
+, all other Wizards of the Coast product names, and their respective logos are trademarks of Wizards of the Coast, Inc., in the U.S.A. 
+and other countries. All Wizards characters, character names, and the distinctive likenesses thereof are property of Wizards of the Coast, Inc. Distributed to the hobby, toy, and comic 
+trade in the United States and Canada by regional distributors. Distributed in the United States to the book trade by Holtzbrinck Publishing. Distributed in Canada to the book trade 
+by Fenn Ltd. Distributed worldwide by Wizards of the Coast, Inc., and regional distributors. This material is protected under the copyright laws of the United States of America. Any 
+reproduction or unauthorized use of the material or artwork contained herein is prohibited without the express written permission of Wizards of the Coast, Inc. This product is a work of 
+fiction. Any similarity to actual people, organizations, places, or events is purely coincidental. Printed in the U.S.A. ©2005 Wizards of the Coast, Inc.
+620-11729-001-EN
+9  8  7  6  5  4  3  2  1
+First Printing: January 2005
+U.S., CANADA, ASIA, PACIFIC, 
+ 
+& LATIN AMERICA
+Wizards of the Coast, Inc.
+P.O. Box 707
+Renton  WA  98057-0707
+Questions? 1-800-324-6496 
+EUROPEAN HEADQUARTERS
+Wizards of the Coast, Belgium
+T Ho
+f
+veld 6d
+1702 Groot-Bijgaarden
+Belgium
++322-467-3360
+Sidebars
+Sudden Strike and Sneak Attack . . . . . . . . . . . .
+8
+Spellthieves and Psionics . . . . . . . . . . . . . . . . . .
+2
+0
+The Pirate Code . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+1
+Fochlucan Bandore . . . . . . . . . . . . . . . . . . . . . . . .
+4
+8
+The Fochlucan College . . . . . . . . . . . . . . . . . . . .
+4
+9
+Trick Capacity
+ . . . . . . . . . . . . . . . . . . . . . . . . . . 
+10
+1
+Exotic Weapons from 
+ 
+Complete Warrior
+ . . . . . . . . . . . . . . . . . . . . . .
+11
+6
+Using the Hexblade with 
+ 
+Complete Adventurer
+ . . . . . . . . . . . . . . . . . . . 
+13
+9
+Emphasizing an Organization 
+ 
+within a Campaign . . . . . . . . . . . . . . . . . . . 
+16
+0
+Adventurers and the League . . . . . . . . . . . . . .
+17
+6
+Option: Create an 
+ 
+Organizational Statistics Block
+ . . . . . . . 
+18
+8
+Behind the Curtain: 
+ 
+Epic Levels and Prestige Classes
+ . . . . . . 
+19
+0
+
+
+Introduction
+Complete
+ Adventurer
+ is a rules accessory for the 
+D
+UNGEONS
+ 
+&  D
+RAGONS
+®
+  game.  It  is  primarily  a  player  resource 
+focused on skills and other game elements that charac
+-
+ters of any class can use. It looks at nearly every aspect 
+of the D&D game with skills in mind, and it allows 
+characters with the proper number of skill ranks access 
+to new combat options, new spells, new equipment, and 
+new classes. DMs can also use this book as a resource for 
+creating or optimizing single creatures or even entire 
+campaign worlds.
+EVERYONE HAS SKILL
+What does it mean to be a skilled character? Really, the 
+term is just a matter of degree. Even a character who gets 
+a measly 1 skill point for each new level he attains can 
+become better at a particular skill than other characters 
+he might encounter (or travel with). Much of this book is 
+potentially relevant to any character—from new uses for 
+skills to new equipment that can help even an unskilled 
+character make a crucial skill check, 
+Complete Adventurer
+ 
+provides exciting options even for characters with very 
+low levels or very few skill points.
+WHAT’S INSIDE
+Complete Adventurer
+ is structured similarly to its compan
+-
+ion volumes 
+Complete Warrior, Complete Divine,
+ and 
+Complete 
+Arcane.
+ It provides the same kinds of game information, 
+emphasizing certain topics in a way that best suits the 
+theme of the book.
+   For instance, a full chapter in 
+Complete Adventurer
+ is 
+devoted to skills and feats, beginning with an extensive 
+discussion of new applications for existing skills—the 
+largest single expansion of the rules in Chapter 4 of the 
+Player
+’s Handbook
+ that we’ve ever published. The chapter 
+also includes a long list of new feats, many of which are 
+suited to characters with a large number of skill points 
+per level or a large number of ranks in a single skill.
+   Three  new  standard  character  classes—the  deadly 
+ninja, the masterful scout, and the versatile spellthief—
+provide players with new ways to approach highly skilled 
+characters,  and  each  class  has  a  unique  approach  to 
+combat as well.
+   The  large  number  of  prestige  classes  in  this  book  is 
+deliberate. Every character class (and nearly every character 
+concept)  is  represented,  each  with  a  focus  on  skill  use. 
+Whether you’re a spellcaster with a few levels of rogue or 
+ninja, a fighter feeling a lack of skill points, or a highly skilled 
+character looking to further specialize, you’ll find exciting 
+options and classes throughout these descriptions.
+   Many of the spells introduced in this book interact 
+with  skills—opening  up  new  uses,  providing  special 
+bonuses, or producing powerful effects for characters 
+with  the  right  skills.  In  addition,  many  of  the  spells 
+focus on using existing abilities in unusual and inter
+-
+esting ways. These spells allow spellcasters to occupy 
+a  significant  place  in  campaigns  that  emphasize  skill 
+use and give advantages to those characters with a large 
+number of ranks in many skills. 
+   The last chapter of this book provides information on 
+several organizations open to player characters. Some are 
+related to the prestige classes introduced earlier, while 
+others stand on their own. Each organization has guide
+-
+lines for membership, benefits for joining, and realistic 
+reasons  for  adventurers  to  belong.  Any  one  of  these 
+organizations could become the focus of a campaign, 
+since each admits members from a diverse selection of 
+character classes and concepts.
+WHAT YOU NEED TO PLAY
+Complete Adventurer 
+makes use of the information in the 
+three D&D core rulebooks—
+Player
+’s Handbook, Dungeon 
+Master
+’s Guide, and Monster Manual.
+ In addition, it includes 
+references  to  material  in  the 
+Epic  Level  Handbook, 
+the
+ 
+Expanded Psionics Handbook,
+ 
+Complete Warrior,
+ and 
+Complete 
+Arcane.
+ Although possession of any or all of these supple
+-
+ments will enhance your enjoyment of this book, they 
+are not strictly necessary.
+4
+pqqqqqqqqqqqqqqqqqqqqrs
+SOURCES
+This book includes material from other previously published 
+work,  including 
+Dragon  Magazine
+  and  earlier  supplements 
+such as 
+Defenders of the Faith
+ and 
+Song and Silence.
+ This mate
+-
+rial has been picked up and revised to v.3.5 based on feedback 
+from  thousands  of  D&D  players  comparing  and  debating 
+the  strengths  and  weaknesses  of  characters  and  options  at 
+gaming conventions, on message boards, on email lists, and 
+over the counters of their friendly local gaming stores.
+   The changes we make to previously published material are 
+intended to create an improved version of that material—to help 
+out prestige classes that were formerly suboptimal choices, to 
+adjust feats or spells that were simply too good, or take whatever 
+steps the D&D v.3.5 revision made necessary for each individual 
+class, feat, spell, or item. Of course, if you’re playing with older 
+material and it’s working fine in your game, you shouldn’t feel 
+compelled to change.
+pqqqqqqqqqqqqqqqqqqqqrs
+  Each  of  these  classes  has  a  unique  set  of  abili
+-
+ties, and each presents a new approach to a wide 
+range of adventuring situations. The ninja, scout, 
+and spellthief classes are especially interesting to 
+groups who want to play in a campaign focused on 
+espionage, politics, or intrigue.
+NINJA
+Ninjas move through the shadows, striking down 
+the unwary and vanishing again with ease. Ninjas 
+walk where others cannot. They blend their train
+-
+ing in stealth and assassination with a focused 
+mind. Their rigorous preparation sharpens their 
+minds and bodies, giving them supernatural 
+abilities of stealth and making them phantoms 
+in the eyes of many. Although ninjas in battle 
+lack the staying power of martial characters 
+such as fighters or barbarians, they excel at 
+making combat occur on their terms—appear
+-
+ing and disappearing seemingly at a whim.
+  Historically, ninjas came from clans of assas
+-
+sins and guerrilla warriors in feudal Japan. In a 
+ince  its  inception,  the  latest  edition  of  the 
+D
+UNGEONS
+  &  D
+RAGONS
+  roleplaying  game  has 
+been  about  options,  not  restrictions. 
+Complete 
+Adventurer
+  continues  that  theme,  introducing 
+new uses for old skills, new feats and equipment, 
+and the new character classes presented in this chapter. 
+Although every class participates in adventures and is 
+worthy of the title “adventurer,” the classes discussed 
+here emphasize skill use and ingenuity, making them 
+particularly  appropriate  for  this  book’s  emphasis  on 
+skills and adventure.
+  The three classes described in this chapter—ninja, 
+scout, and spellthief—have access to a wide variety of 
+class skills and gain 6 or more skill points per level. 
+More important, however, is the way that these skills 
+and the abilities unique to each class change the way 
+an adventure feels. The scout and ninja both match the 
+rogue’s stealth and ability to find and bypass traps, but 
+each of these classes approaches combat in a new way. 
+The spellthief adds a modest progression of arcane spells. 
+Although these abilities are potent, the most intriguing 
+aspect of a spellthief is his ability to steal and replicate 
+the abilities of his foes.
+5
+INTRODUCTION
+Illus. by D. Kovacs
+
+
+6

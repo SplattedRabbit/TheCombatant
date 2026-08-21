@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
+// @ts-ignore
+import { getPrestigeClassFeatures } from '@core/rules/prestigeClassEngine.js';
 
 interface AssassinFeaturesCardProps {
   pc: any;
@@ -9,18 +11,10 @@ interface AssassinFeaturesCardProps {
 
 export const AssassinFeaturesCard: React.FC<AssassinFeaturesCardProps> = ({ pc, level }) => {
   const [rulesOpen, setRulesOpen] = useState(false);
-  const saDiceCount = Math.floor((level + 1) / 2);
-
-  // Get Int Mod
-  const getAblMod = (stat: any) => {
-    const score = typeof stat?.getValue === 'function' ? stat.getValue() : (stat ?? 10);
-    return Math.floor((score - 10) / 2);
-  };
-  const intMod = getAblMod(pc.int);
-  const deathAttackDC = 10 + level + intMod;
-
-  // Save Bonus vs Poison
-  const poisonSaveBonus = level >= 10 ? 5 : (level >= 8 ? 4 : (level >= 6 ? 3 : (level >= 4 ? 2 : (level >= 2 ? 1 : 0))));
+  const features = getPrestigeClassFeatures(pc, 'assassin');
+  const saDiceCount = features.sneakAttackStack;
+  const deathAttackDC = features.deathAttack;
+  const poisonSaveBonus = features.poisonSaveBonus;
 
   const handleToggleSneakAttack = (e: React.ChangeEvent<HTMLInputElement>) => {
     const activePC = CombatState.getActivePC();

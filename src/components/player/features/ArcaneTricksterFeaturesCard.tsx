@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
+// @ts-ignore
+import { getPrestigeClassFeatures } from '@core/rules/prestigeClassEngine.js';
 
 interface ArcaneTricksterFeaturesCardProps {
   pc: any;
@@ -9,8 +11,9 @@ interface ArcaneTricksterFeaturesCardProps {
 
 export const ArcaneTricksterFeaturesCard: React.FC<ArcaneTricksterFeaturesCardProps> = ({ pc, level }) => {
   const [rulesOpen, setRulesOpen] = useState(false);
-  const arcaneLink = pc.prestigeSpellLinks?.arcane_trickster || '';
-  const saDiceCount = Math.floor(level / 2);
+  const features = getPrestigeClassFeatures(pc, 'arcane_trickster');
+  const arcaneLink = features.spellLink || '';
+  const saDiceCount = features.sneakAttackStack;
 
   const formatClassName = (key: string) => {
     if (!key) return 'Not selected';
@@ -24,10 +27,8 @@ export const ArcaneTricksterFeaturesCard: React.FC<ArcaneTricksterFeaturesCardPr
     CombatState.syncPCToHost();
   };
 
-  // Ranged Legerdemain: 1/day (lvl 1-4), 2/day (lvl 5-8), 3/day (lvl 9+)
-  const rangedLegerdemainCount = level >= 9 ? 3 : (level >= 5 ? 2 : 1);
-  // Impromptu Sneak Attack: 0/day (lvl 1-2), 1/day (lvl 3-6), 2/day (lvl 7+)
-  const impromptuSneakCount = level >= 7 ? 2 : (level >= 3 ? 1 : 0);
+  const rangedLegerdemainCount = features.rangedLegerdemain;
+  const impromptuSneakCount = features.impromptuSneakAttack;
 
   return (
     <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>

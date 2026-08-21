@@ -1,0 +1,3027 @@
+CHAPTER 7
+AFFILIATIONS
+    This is not to disparage an individual’s focus. Indeed, 
+affi  liations  highlight  individuals  in  the  same  way  that  a  
+background  serves  to  defi  ne  the  fi  gure  of  a  portrait.  You  
+need not be interested in world-spanning politics to fi  nd  
+value in affi liations. Has your character ever recovered the 
+poison sack from a monstrous scorpion, or a kuo-toa’s idol 
+of Blibdoolpoolp, or yet another masterwork sword from a 
+bandit chief? Affi  liations give you a ready place to liquidate 
+such treasures. Has your character ever been drained by a 
+shadow, ridden by a night hag, or victimized by an ethereal 
+fi  lcher? Hire an affi  liation member to restore your strength, 
+exorcise your demons, or track down the planar pickpocket 
+while you concentrate on your main quest. Advancing in 
+your affi  liation can be almost as important to your character’s 
+development as attaining new levels.
+    Affi  l iations also al low your character to do things that she 
+other w ise would not be able to do. Ever wanted to open your 
+own tavern? Start your own smithy or weapon shop? Preach 
+to a congregation of thousands? Clear Stirge Ridge, raise a 
+curtain wall and a donjon, and assume the responsibility of 
+nobility? Affi  liations allow you to do this and more.
+THE TWO CATEGORIES 
+OF AFFILIATIONS
+Like-minded  individuals  might  gather  in  an  affi  liation  for  
+any number of reasons, but at the fundamental level there are 
+two basic categories of affi  liations: social and racial.
+Social Affiliations
+A social affi  liation is formed when individuals with a common 
+interest come together to promote or protect that cause. It’s 
+that common interest, rather than any physical or professional 
+similarity (such as race or class), that binds the members.
+    The most energetic or accomplished people among the 
+membership have the best chance of rising to a high rank 
+within the group. Conversely, members who fail to advance 
+the cause can see their status drop drastically—sometimes 
+so drastically that they are forced to leave the affi  liation.
+Racial Affiliations
+As  the  name  implies,  a  racial  affiliation  is  only  open  to  
+individuals of the race in question. It’s conceivable that, in 
+the context of a given campaign, a human might perform an 
+amazing deed that causes a group of dwarves to offer him a 
+place in their affi liation, but such occurrences should be 
+exceedingly rare.
+    Racial    affi  liations differ from social affi  liations in a number 
+of ways. It’s usually easier for a member of a racial affi  liation  
+to maintain his stat us even i f he fai ls in an endeavor, because 
+racial affi liations don’t typically penalize their members 
+in such cases. Also, members of racial affi liations usually 
+gain some tangible (that is, game-related) benefi  t  from  their  
+membership at a lower level of status than is the case in 
+social affi liations.
+WHY JOIN AN AFFILIATION?
+Affi liations can be viewed as another type of treasure. The 
+coffer of rubies might have fallen into the acid swamp and 
+melted, but the Brotherhood of Bahamut holds you in high 
+esteem for slaying the young black dragon. Your standing 
+in  the  Brotherhood  goes  up,  and  next  time,  instead  of  
+tithing a church to grow back your shield arm or empty-
+ing your gem pouch to book passage on a shady captain’s 
+barkentine, the Brothers will cast regenerate or wind walk 
+for you, free of charge. In this way, an a f fi  liation  serves  you,  
+the same way that your sword, your spellbook, and your 
+gold benefi  t  you.  
+     You  can  also  consider  affi liations as an additional class 
+feature. The Skill Focus (Gather Information) feat provides 
+a bonus on Gather Information checks, but so too does suf-
+fi  cient stat us in an a f fi  l iation of thieves. Join an a f fi  liation  of  
+sages to gain bonuses on Knowledge checks. As you increase 
+in  status,  you  gain  more  affiliation  benefits  and  greater  
+personal power (as well as face greater risks and enemies).
+     You r     a f fi  liation brings rich potential to role-playing. The 
+group can create many opportunities, including adding foils 
+for your PC, rivals vying for your rank, and steadfast allies 
+that can provide aid or request it of you. Affi liations also 
+help drive your character’s motivations; when considering 
+your character’s background, you should understand how 
+his affi  liations  fi  t  in.
+     From the Dungeon Master’s point of view, affi  liations  can  
+be used to spur adventures, to lend the world verisimilitude, 
+to introduce NPCs, to act as treasure and reward, and even 
+to explain the occasional deus ex machina (even the best cam-
+paigns can benefi t from such a device from time to time!). 
+You should work w ith your DM to deter mine what a f fi  liations  
+are available to your character. Perhaps your Dungeon Master 
+will allow you to create your own affi liation and join it (or 
+found it). You should also discuss possible NPC and enemy 
+affi liations in the campaign. Affi liations with goals inimi-
+cal to your own can serve as challenges that highlight your 
+character and his allies—the Sun Fane of Pelor is opposed 
+to the Reviled of Laogzed, while the King’s Navy scours the 
+seas through storm and swell to harry the Thunder Sail Argosy 
+pirate fl  eet.
+    Also, while the affairs of some affi  liations might be fi  xed  
+in the campaign world fi  rmament, unchanging outside of 
+DM fi  at, others can be more dynamic. Evolv ing a f fi liations 
+add another dimension to your game. Using the materials 
+presented later in this chapter, you and your DM can make 
+your affi  liations change as the world does, even in response 
+to your character’s actions.
+     No matter how you interact with affi  liations, keep in mind 
+that the goal is to have fun. Whether your thieves guild is 
+a static fi xture whose future is unquestionably secure, or 
+whether it is a ragtag band of merry companions constantly 
+on the run from the city watch and in danger of extermina-
+tion or gaol, you should enjoy affi  liations as you wish.
+MEMBERSHIP HAS ITS PRIVILEGES
+You have a separate affi  liation score for each affi  liation,  but  
+need only track those important to you. Your affi  liation  score  
+defi nes your status in that group. Rising in status can earn 
+benefi ts such as an offer of membership, a monthly fl  ow  of  
+gold and emeralds, or research time at a wizard college. 
+620_95374_Ch7.indd   164620_95374_Ch7.indd   1642/8/06   4:20:09 PM2/8/06   4:20:09 PM
+
+165
+CHAPTER 7
+AFFILIATIONS
+    You can’t get ahead in an affiliation without devoting 
+some of your character ’s time and ef for t to the cause. You 
+might  have  to  bring  treasure  to  dragons,  behead  rival  
+chieftains,  break  your  half ling  comrades  out  of  jail,  or  
+perform any number of other types of activities. Your affil-
+iation will be willing 
+to meet you halfway, 
+but you’ve got to help 
+the  group  out  if  you  
+want the rewards.
+ Multiple Affi  liations:  
+You can be associated with 
+multiple  affi  liations  at  one  
+time.  However,  each  sub-
+sequent affi liation is harder 
+to maintain. The fi  rst  affi  liation  
+that  you  have  (your  primary  affi  li-
+ation) imposes a –10 penalty on all 
+other  affi  liation  scores.  Subsequent  
+affi  liations oppose an additional –5 
+penalty  to  each  affi  liation  that  you  
+gain afterward. In other words, you 
+can have one affi  liation score with no 
+penalty, a second at –10, a third 
+at –15, a fourth at –20, and so 
+on. High-level characters are 
+usually able to maintain one 
+or two affi  liations of note but 
+only  minor  associations  with  
+other organizations.
+    Some    affi  liations  might  not  be  
+compatible, and the DM has fi  nal  
+say  on  such  issues.  For  ex-
+a mple, i n a ca mpaig n where 
+the human kingdom of Al-
+thar  wars  with  the  elven  
+realm of Gaelian, the DM 
+might rule that no char-
+acter with an affi  liation  
+to the Knights of Althar 
+can also have an affi  liation  
+with the Greenfold Rangers 
+of Gaelian.
+Multiple Affi  liation  Ben-
+efits:  If  you  have  multiple  
+affi  liations, you can only gain the benefi  ts of one affi liation 
+at a time. If you have a high enough affi  liation score to gain 
+benefi  ts from more than one affi  liation, choose which set of 
+affi liation benefi ts affect you at the beginning of each day. 
+You gain all the benefits for which you qualify from the 
+chosen affiliation.
+F E AT URE S OF AFFIL IAT IONS
+You r  a f fi liation has many features, some primarily of use 
+in roleplaying and background. These aspects include such 
+basic information as the affi  liation’s name and its background, 
+goals,  and  dreams.  Most  affiliations  have  a  symbol  that  
+enables members to identify one another. An affiliation’s 
+description might include information about high-ranking 
+members and how the group feels about members joining or 
+leaving its ranks, as well as facts about the group’s signifi cant 
+enemies or allies. If an affi  liation has a secret that relates to 
+the group’s basic nature or how it operates, that information 
+is provided.
+    Some of an affi  liation’s features come into play when you 
+join it or advance in it. Still others can be used to affect your 
+campaign world. The following features are 
+common to all affi  liations.
+  Ty p e : An affi  liation  can  be  of  
+one  of  the  following  ten  types:  
+business,  cabal,  college,  druid  
+circle, fi  ghting company, govern-
+ment, spy ring, temple, thieves’ 
+guild, or tribe. An affi  liation’s  
+type limits the kinds of ex-
+ecutive  powers  wielded  by  
+its  leaders,  and  whether  
+it is better at fighting, 
+spying,  or  negotiation.  In  
+the example affi  liation  de-
+scriptions  that  follow,  a  
+racial affi liation is identi-
+fi ed by the word “racial” in 
+parentheses after its type. All 
+other  example  affi liations 
+are social.
+  Scale: An affiliation’s 
+scale is a measure of its scope 
+of infl  uence. As affi  liations  grow  
+in size and power, t hey i ncrease 
+the  scale  of  their  activities.  
+The Bulette Rampant Mer-
+cenary  Company  could  
+be  as  inconsequential  as  
+a  cadre  of  men-at-arms  
+with  a  rotting  ballista  
+or as mighty as an army 
+for hire with half a doz-
+en  battalions  and  fl ying 
+dragon support. An affi  l-
+iation’s scale can be from 1 to 
+20 and is also defi  ned  by  a  de-
+scriptive  term  that  indicates  
+the  extent  of  its  infl  uence.  Scale  directly  affects  an  affi  l-
+iation’s  capital  and  its  ability  to  project  power.  Table  7–1,  
+on page 184. 
+ Affi  liation  Score  Criteria: Base requirements for mem-
+bership, if any, are given here. An affi liation might have 
+race, nationality, alignment, class, or some other baseline 
+membership criteria. The table in this portion of an affi  liation  
+description  lists  a  number  of  factors  and  how  they  impact  
+your affi  liation score in that group. 
+ Titles, Benefi ts, and Duties: A title is a designation of 
+rank within the affi  liation’s hierarchy. Characters with an 
+affi  liation  score  of  3  or  lower  are  usually  not  considered  
+members. In social affi liations, members with affi liation 
+The halfl ings of the Caravan of Shadows (see page 169) 
+stay one step ahead of the authorities
+Illus. by E. Widermann
+620_95374_Ch7.indd   165620_95374_Ch7.indd   1652/8/06   4:20:16 PM2/8/06   4:20:16 PM
+
+166
+CHAPTER 7
+AFFILIATIONS
+scores from 4 to 10 are generally looked upon as probation-
+ary members. A character with an affi  liation score of 30 or 
+higher attains the most prestigious title.
+    Lower-rank    benefi  ts car r y over to higher ranks, but nor mal 
+stacking rules apply.
+    Even  if  you  have  founded  your  own  affiliation  (as  
+opposed  to  positing  the  existence  of  one  that  you  can  
+join  as  a  recruit),  you  still  must  increase  your  affi liation 
+score normally before you can gain the benefi ts (and take 
+on the duties) of a titled member of your affi liation. This 
+represents the fact that you can’t simply say, “I am founding 
+an  affi  liation,”  and  by  virtue  of  that  declaration  become  
+entitled to send an assassin after the duke or bring a plague 
+to the eastern river tribes. Rather, you must establish your 
+affiliation as a force in the world by satisfying affiliation 
+score criteria, proving by virtue of your deeds that your 
+affi liation is a force to be reckoned with and a player on 
+the political stage.
+ Executive  Powers:  Executive  powers  are  wielded  by  
+the affiliation’s leadership, generally those members with 
+an affi  liation score of at least 30. If a PC achieves a higher 
+affi  liation score than a leader NPC, the NPC might quietly 
+step  aside  in  favor  of  the  newcomer.  Many  affiliations,  
+however, force the two contenders to duel or to match wits 
+in some fashion.
+     Unless other w ise noted, an a f fi  liation’s leadership can use 
+one executive power per month.
+     Details  about  executive  powers  are  given  starting  on  
+page 186.
+MAKING AFFILIATIONS DYNAMIC
+The noon air cooled, and a shadow drifted across the bright silver 
+coins stacked in Tabark’s scales. The moneychanger looked up 
+from his table in the bazaar and saw the clouds darkening. Large 
+black raindrops began to fall. When the fi rst blue lizard thudded 
+onto his table, upsetting the scales and sending the silver coins 
+tinkling into the air, Tabark realized this was no summer squall. 
+“The R e viled! ” he screamed. “Laog zed’s pr ies ts plag ue us! ” He ran 
+for the Sun Fane as the lizard deluge began in earnest, reptiles 
+plummeting through awnings and crashing into fruit stands, 
+each  lizard’s  body  wrapped  with  crackling  lightning  and  frigid  
+from its recent altitude.
+     When you play with affi  liations, a new avenue for confl  ict  
+resolution and storytelling opens. Plagues, the births of 
+kingdoms, wars, naval blockades, arcane research break-
+throughs, trade embargoes, and other factors become part of 
+your campaign in new ways. Your character need no longer 
+do everything from winning the Battle of Stirge Ridge to 
+lifting the curse on the southern farmlands to negotiating 
+peace with the Frost Cavern quaggoths. You and your DM 
+can rely on your a f fi  liation to accomplish some of these tasks 
+while you spend the bulk of your time focusing on your PC’s 
+main quest.
+     Have you ever wondered who will watch your character’s 
+family, castle, or subjects when he is off adventuring? If your 
+PC is part of the Bulette Rampant mercenary company, you 
+can  simply  have  a  detachment  from  your  battalion  watch  
+over your loved ones. If your DM determines that the Valx 
+Nine-Eyes criminal syndicate strikes at your family while you 
+are adventuring underground, you can resolve the attempt 
+by playing out the details (in the absence of your character) 
+or, more simply, by using opposed violence checks for your 
+mercenary company and the brute squad sent by the beholder. 
+(Violence checks are described below.) 
+    Have you ever picked up a powerful magic item, say a 
++2 thunder ing dire f lail, that no one in the party could use? 
+Campaign credulity is stretched by simply selling it to an 
+anonymous buyer who just happens to have 36,500 gp ready 
+to spend. Instead, you donate it to your a f fi  liation  and  increase  
+its capital—it is reasonable to assume that a sizable affi  liation  
+includes a member who knows (or now wants desperately to 
+learn) how to use a dire fl  ail.
+    Have  you  ever  heard  yourself  utter  the  lines  that  
+famously fill a DM’s heart with annoyance, frustration, 
+and uncertainty? Namely, “Can I buy magic items?” When 
+you use affiliations, businesses and colleges have the trade 
+executive power, which allows some wondrous items to 
+come up for sale in the campaign—if a character has the 
+right connections.
+     The  following  rules  help  guide  a  dynamic  approach  to  
+affi  liations.
+ Capital: An affi  liation starts play with capital equal to its 
+scale. Capital represents different types of assets for different 
+affi  liation types. A fi  ghting company has its capital invested 
+in soldiers, armor, weapons, and transport, while a cabal has 
+its capital invested in wondrous items, spellbooks, bound 
+demon servants, and political secrets.
+    In wartime and in months of hardship, your affi  liation’s  
+capital might go down; in peacetime when trade prospers, 
+your affi  liation’s capital might go up. An affi liation’s mini-
+mum capital is 0; its maximum capital is twice its scale. If 
+your  affi  liation  does  nothing  for  two  consecutive  months,  
+normal daily processes increase its capital by 1. A good way 
+to increase your affi liation’s capital is to donate treasure. 
+For every 1,000 gp × your affi liation’s scale that you donate 
+each month, its capital increases by 1. Thus, you must donate 
+5,000 gp during the course of a month to increase a scale 5 
+affi liation’s capital by 1. For an affi liation that has a scale 
+greater than 10, you must donate treasure in the amount of 
+10,000 gp × the scale to increase capital in this way. Such 
+organizations have increased their scope to such an extent 
+that they need not only gold, but vast tracts of real estate, 
+arcane secrets, favors of the emperor, the name of the duke’s 
+bastard son, and other nonmonetary items to increase their 
+stature and power.
+    An    affi  liation  whose  capital  falls  to  –1  is  disbanded  and  
+cannot be refounded for a period of 1d4 months.
+    An    affi liation whose capital remains at its maximum for 
+a number of consecutive months equal to twice its scale 
+improves one category in scale. For example, if a scale 4 busi-
+ness maintains a capital of 8 for eight consecutive months, 
+it becomes a scale 5 business.
+    Violence    Check:  When  an  affiliation  attempts  to  do  
+something using bullyboys, bludgeons, or battles, a violence 
+check (1d20 + violence bonus) is made. Fighting companies, 
+governments, and tribes have violence bonuses equal to 
+620_95374_Ch7.indd   166620_95374_Ch7.indd   1662/8/06   4:20:26 PM2/8/06   4:20:26 PM
+
+167
+CHAPTER 7
+AFFILIATIONS
+1/2 their scale. All other types of affi liations have violence 
+bonuses equal to 1/4 their scale. 
+    Espionage    Check:  An  affiliation’s  attempts  to  sneak  
+around, gather information, and infi  ltrate opponents are all 
+summed up using espionage checks (1d20 + espionage bonus). 
+Cabals, spy rings, and thieves guilds have espionage bonuses 
+equal to 1/2 their scale. All other types of affi  liations  have  
+espionage bonuses equal to 1/4 their scale. 
+    Negotiation    Check: Convincing arguments, delicate 
+engagements, and subtle (perhaps even magical) manipula-
+tion  are  the  province  of  an  affi  liation’s  negotiation  checks  
+(1d20 + negotiation bonus). Businesses, colleges, druid circles, 
+and temples have negotiation bonuses equal to 1/2 their scale. 
+All other types of affi  liations have negotiation bonuses equal 
+to 1/4 their scale. 
+EXAMPLE AFFILIATIONS 
+The following affi  liations are representative of the standard 
+D&D world and adaptable for most campaigns. Don’t be shy 
+about renaming or revising any of the example affi liations 
+described below. The more specifi  c to your world that you 
+ma ke them, the more l i kely they are to come to l i fe at your 
+gaming table.
+BLOODFIST TRIBE
+    Symbol: The members of the Bloodfi  st Tribe emblazon 
+their shields and tents with a red upraised fi  st, and many dye 
+their sword-arm gauntlets red as well.
+Background, Goals, and Dreams: For centuries, the 
+Bloodfist Tribe has wandered the wilderness of the north, 
+following great herds of elk and bison. Half-orc youths 
+who are outcasts from human or orc communities often 
+find their way north and join the tribe, leaving their 
+old lives behind.
+     While it’s comforting to be among other 
+half-orcs, life among the Bloodfi  sts  isn’t  
+easy. The tribe often makes war against 
+rival tribes of full-blooded orcs and 
+fends  off  reprisals  from  the  hu-
+man  communities  it  sometimes  
+raids for food and supplies. Like 
+hunter-gatherers everywhere, the 
+Bloodfi sts risk starvation when-
+ever hunting goes poorly or game 
+is scarce. In hard times, the Blood fi  st  
+Tribe shrinks from the attrition 
+of war, starvation, and younger 
+members head south to seek an 
+easier life.
+     The  Bloodfist  Tribe  leaders’  
+primary concern is where next to 
+march.  Sometimes  they  make  
+war on the orcs and giants of 
+the northern mountains, some-
+times  they  raid  the  human  
+lands  to  the  south,  and  some-
+times they are content to follow 
+the elk herds as they migrate. Leaders also spend a lot of time 
+mediating disputes within the tribe. It’s no easy task to be 
+the arbiter in a dispute when either aggrieved party can fl  y  
+into a bloodthirsty rage at a moment’s notice.
+ Ty p e : Tribe (racial).
+Scale: 6 (city).
+ Affi  liation Score Criteria: Only half-orcs are eligible 
+to join the tribe. The Bloodfists have made war against 
+orcs and humans too much to ever fully trust those not of 
+mixed blood.
+Criterion                                        Affi liation Score Modifi er 
+Character level  +1/2 PC’s level
+Barbarian or shaman +2
+Druid or ranger +1
+Track feat +1
+Assist tribe in major battle +1
+Bring word of bountiful land (wilderness with plentiful 
+game, frontier with poorly guarded villages) +1
+Bring head of enemy chief to Bloodfist chieftain +2
+ Titles, Benefi  ts, and Duties: The greatest reward of a f fi  li-
+ation with the Bloodfi st Tribe is simply becoming part of a 
+welcoming community with a shared heritage—something 
+all too rare for half-orcs. But there’s an additional benefi t: the 
+Blood Lodge, where worthy half-orcs test their resistance to 
+pain and the strength of their blood.
+     When the chieftain deems a Bloodfi  st member worthy, he 
+directs the shamans to build an earthen lodge. The shamans 
+then use fl  int knives to cause painful wounds to the half-
+orc the tribe is honoring. Then the bleeding half-orc is 
+enclosed in the Blood Lodge and suffers pain and waking 
+nightmares  for  a  day  and  a  night.  
+The Bloodfi st Tribe wanders the world, searching in vain for an ideal home
+Illus. by S. Ellis
+620_95374_Ch7.indd   167620_95374_Ch7.indd   1672/8/06   4:20:32 PM2/8/06   4:20:32 PM
+
+168
+CHAPTER 7
+AFFILIATIONS
+When the lodge door opens, however, the ritual has served 
+its purpose: The tribe member emerges tougher and more 
+cunning than before.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower Not affiliated or junior member with no 
+benefits.
+4–10                                Bloodfi st Tribe Member: +4 racial bonus on 
+Survival checks.
+11–15 Lodge of the Bear: +2 circumstance bonus 
+on attempts to influence the attitude of 
+Bloodfist half-orcs. If you are a barbarian, 
+your rage lasts for an extra round.
+16–22                            Lodge of the Dire Wolf: +2 inherent bonus 
+to your Charisma or Intelligence score, 
++2 racial bonus on Fortitude saves, and 
++4 circumstance bonus on attempts to 
+infl uence the attitude of Bloodfi st half-orcs.
+23–29 Lodge of the Thunder Eagle: +8 racial bonus 
+on Survival checks, +2 inherent bonus to 
+whichever ability score you didn’t raise 
+while at the Lodge of the Dire Wolf rank, 
+and +8 circumstance bonus on attempts to 
+influence the attitude of Bloodfist half-orcs.
+30 or higher Lodge of the White Wyrm: Cold resistance 
+10. When you emerge from the lodge, the 
+tribe offers you a +2 weapon as a gift.
+ Executive Powers: Plunder, raid, terrorize.
+BRIGHTMANTLE WEAPON FORGE 
+AND TRADING CONSORTIUM
+    Symbol: The symbol of the Brightmantle Consortium is 
+a forge over water.
+ Background, Goals, and Dreams: When the trees were 
+new, and the earth chafed while the mountains grew in 
+like baby’s teeth, legend goes that Durgan Brightmantle 
+soothed the stone with gifts of ore and the sweet taste of 
+gems. Countless eons later, a dwarf clan devoted to Durgan 
+Brightmantle  and  the  extraction  of  the  earth’s  riches  
+founded  their  business  based  on  mining  and  smithing.  
+Since  then,  the  small  weapons  shop  in  Isher  has  grown  
+into one of the most powerful trading enterprises in the 
+known world, shipping goods across kingdoms and even 
+overseas, hiring caravan guards and traveling casters and 
+buying  land  for  forges  in  a  large  number  of  new  towns.  
+Brightmantle has even created entire new towns at particu-
+larly promising sites.
+ Enemies  and  Allies:  Of  necessity,  the  Brightmantle  
+Consortium maintains good relations with all the monarchs 
+in its scope of infl  uence. Its relations with fi  ghting  companies  
+are often strained, for while the latter are paid to go to war, 
+business is diffi  cult in those times.
+ Members: Most members of the Consortium are dwarves, 
+although all the common races are represented.
+    The Brightmantle Consortium works diligently to retain 
+its members, not wishing to expend resources on training 
+new ones. If one chooses to leave, however, the Consortium 
+does not contest the decision, with one exception. If the 
+guild member joins another business, and the Consortium 
+feels that trade secrets have been compromised, then the 
+Consortium lobbies whatever local law exists in an effort to 
+have the turncoat’s new business outlawed.
+     Ty p e :      Business.
+    Scale: 14 (continental/seafaring kingdom).
+Criterion                                        Affi liation Score Modifi er 
+Character level +1/2 PC’s level
+5 or more ranks in Diplomacy or Appraise  +1 per 5 ranks
+     in each skill
+Can cast charm person                                                       +1
+Can cast sending or travel by any means more than
+100 miles in a day +2
+Makes peaceful contact with a new town or potential 
+customer base +1 per contact (max 3/year)
+Successfully guards a caravan +1 per caravan guarded
+Sells 1,000 gp of weapons 
+or other goods +1 per sale (max. 1/month)
+Discovers new iron, gem, or 
+precious metal deposit +2 per discovery
+Less than 5 ranks in Diplomacy or Appraise –2 per skill
+Fails to deliver a caravan or message on time –1/day
+Loses a shipment of goods –3/5,000 gp lost
+Does not account for at least 10,000 gp of business 
+per year (whether in direct sales, guard duty, or 
+prospecting for ore or customers) –6
+ Titles, Benefits, and Duties: As you rise through the 
+ranks of the Consortium, you learn to increase your negotiat-
+ing skills, and you gain access to great wealth.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower No affiliation.
+4–10                                Freelancer: The Consortium occasionally 
+calls on you to help on specifi c jobs.
+11– 2 0 Associate: +1 competency bonus on 
+Diplomacy checks when speaking about 
+business matters.
+21–29                            Subguild Head: Placed in charge of one of 
+the many subguilds and commanding the 
+services of fi ve 4th-level experts (allot skill 
+points as you like, for you can choose from 
+the many clerks in the Consortium). Once 
+per month, your experts must each make a 
+DC 20 Appraise check and a DC 15 Gather 
+Information check. If three or more fail the 
+Appraise check, business is bad, and you 
+lose 1 point from your affi liation score. If 
+all fi ve fail the Gather Information check, 
+you fail to anticipate and deter a kidnap and 
+ransom attempt targeting you or your family, 
+and an EL 10 band of rogues arrives to carry 
+out the deed.
+30 or higher Secretary of the Overguild: Can borrow up to 
+30,000 gp in cash from guild coffers, but this 
+debt must be repaid within one year.
+ Executive Powers: Craft, gift, trade.
+620_95374_Ch7.indd   168620_95374_Ch7.indd   1682/8/06   4:20:41 PM2/8/06   4:20:41 PM
+
+169
+CHAPTER 7
+AFFILIATIONS
+CARAVAN OF SHADOWS
+    Symbol: Once affi  liated, you receive a tattoo of a game 
+token on the back of your left hand in a solemn ceremony. 
+When other members see the tattoo, they’re more likely to 
+talk to you and believe what you say.
+ Background, Goals, and Dreams: On the surface, the 
+Caravan of Shadows is a prosperous halfl  ing clan. But as with 
+many halfl ing affairs, there’s more going on beneath the 
+surface. Halfl  ing characters with a connection to the Caravan 
+of Shadows are part of a network of thieves, spies, and con 
+artists that stretches across a wide swath of civilization.
+     The Caravan of Shadows travels from city to city in a long 
+wagon train, staying at each major settlement for a few days. 
+The caravan’s bards, acrobats, and other entertainers hold a 
+series of performances, and the clan’s merchants buy and 
+sell spices and other valuable but easily portable goods. Less 
+savory members of the caravan pick the pockets of the larger 
+folk, commit burglaries on a nightly basis, or fl  eece the naïve 
+in games of chance or shady business deals.
+ Ty p e : Business (racial).
+ Scale: 7 (city and outliers).
+ Affi  liation Score Criteria: Only halfl  ings are eligible 
+to join the caravan. Nonhalf lings are sometimes allowed 
+to  travel  with  them—especially  on  dangerous  roads—but  
+fellow travelers don’t get a glimpse of the inner workings of 
+the caravan.
+Criterion                                        Affi liation Score Modifi er
+Character level  +1/2 PC’s level 
+Rogue                                                                                 +2
+Bard                                                                                    +1
+10 or more ranks in Sleight of Hand +2
+10 or more ranks in Perform +1
+Help another caravan member elude law enforcement   +1
+Steal or cheat others out of at least 10,000 gp, 
+then donate proceeds to the caravan +1
+ 
+ Titles, Benefits, and Duties: The reward for greater 
+affi liation with the Caravan of Shadows is a keener talent 
+for the skills that have the made the caravan so prosperous. 
+And if the caravan is in town, you can sell the loot from your 
+adventures to them at an advantageous rate.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower Not affiliated or junior member with no 
+benefits.
+4–10                                Caravan Member: +2 racial bonus on Bluff, 
+Gather Information, and Sleight of Hand 
+checks. 
+11–15 Shadow Pawn: Can sell jewelry, art, and 
+magic items to the caravan masters for 60% 
+of their purchase price. +2 circumstance 
+bonus on attempts to influence the attitude 
+of caravan members.
+16–22                            Shadow Knight: Additional +2 racial bonus 
+on all saving throws. +4 racial bonus on 
+Bluff, Gather Information, and Sleight of 
+Hand checks. +4 circumstance bonus on 
+attempts to influence the attitude of caravan 
+members.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+23–29 Shadow Rook: You can sell jewelry, art, and 
+magic items to the caravan masters for 70% 
+of their purchase price.
+30 or higher Shadow Castle: +6 racial bonus on Bluff, 
+Gather Information, and Sleight of Hand 
+checks. +8 circumstance bonus on attempts 
+to influence the attitude of caravan members.
+ Executive Powers: Pariah, shadow war, trade.
+CASTLE MAIRO
+    Symbol: The symbol of Castle Mairo is the battered 
+breastplate of Herridek I. In more intricate heraldic designs, 
+the broken fl int hammers of troglodytes can be seen lying 
+below the shield.
+ Background, Goals, and Dreams: Three centuries and 
+one day after the Third Troglodytic Ruin razed the original 
+Fort Mairo to the ground, Castle Mairo was raised in its place. 
+Regdar had defeated Iathra, Pharaoh of the Reviled, and the 
+oases on the edges of the desert were once again safe. Before 
+leaving, Regdar helped his brother, Herridek II, to found a 
+small keep on the border of the dunes.
+    Life in the oasis can be harsh when the sandstorms roll 
+through, but the presence of copper, platinum, and mithral 
+in the surrounding hills and even the bubbling oasis itself 
+provides ample reason for the castle’s continued existence.
+ Members: Herridek II rules the castle wisely, and he 
+recruits all manner of citizens to his nascent barony: men-at-
+arms, certainly, but also wizards, bards, rangers, and skilled 
+rogues. The castle is especially desperate for divine casters 
+and healers.
+     Herridek II is a benefi  cent monarch and allows individu-
+als to enter and leave his domain at their leisure. In times 
+of crisis—if a new pharaoh were to rise in the lands of the 
+Reviled, for instance—all those nearby are drawn inside the 
+castle walls and expected to aid in its defense.
+     Ty p e : Government.
+    Scale:    9 (regional/barony).
+Criterion                                        Affi liation Score Modifi er 
+Character level +1/2 PC’s level
+Base attack bonus +5 or higher +1
+Base attack bonus +10 or higher* +2
+5 or more ranks in Survival +1
+Can cast cure spells 2nd level or higher +4
+Explored the shafts of  +1 for each
+the Raptor-Pharaohs  tomb shaft fully explored
+Slew Raptor-Pharaoh mummy     +1/4 Hit Dice of mummy
+Knew Regdar or Herridek I +4
+Takes part in defense of the fort against raiders +4
+Is an outlaw –2
+Retreats in battle –2
+Commits a crime within the barony –10
+Is member of a thieves guild –10
+* Overlaps (does not stack with) the modifier for a base 
+attack bonus of +5 or higher.
+ Titles, Benefits, and Duties: As you advance in the 
+hierarchy  of  the  barony,  you  gain  access  to  its  riches  and  
+620_95374_Ch7.indd   169620_95374_Ch7.indd   1692/8/06   4:20:48 PM2/8/06   4:20:48 PM
+
+170
+CHAPTER 7
+AFFILIATIONS
+begin to enjoy the benefi  ts of nobility, while accepting the 
+duties thereof.
+     Once  you  attain  the  rank  of  Knight  Baronet,  you  are  
+invested with authority in the castle. Herridek the Second 
+often makes forays into the desert for weeks or months at a 
+time, harassing the Reviled and making sure that they are 
+not a threat to the Castle and its mines.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower No affiliation.
+4–10                                Free Citizen: Are a citizen of the barony but 
+gain no special status.
+11– 2 0 Hero: +2 circumstance bonus on Diplomacy 
+checks involving other cirizens of the barony.
+21–29                            Knight: Gain the patronage of Herridek II, 
+which grants a +4 bonus on Diplomacy and 
+Gather Information checks made within the 
+barony.
+30 or higher Knight Baronet: Command the services of 
+an honor guard consisting of twelve 1st-level 
+fighters, two 5th-level fighters, one 5th-level 
+wizard, and two 7th-level halfling rangers 
+mounted on giant eagles.
+ Executive Powers: Law, raid, war.
+THE CHALICE
+    Symbol: The symbol of the Chalice is a ruby chalice with 
+crossed ivory lightning bolts on the cup.
+ Background, Goals, and Dreams: The Chalice is an armed 
+company dedicated to stamping out the infl  uence of devils, 
+demons, yugoloths and other slavering fi  ends on the Material 
+Plane. The paladin Arbinget Ivenay founded the Chalice a mil-
+lennia ago with one goal: to recover the Chalice of Heironeous 
+from Dispater’s Iron City of Dis. Aside from the members of 
+the group’s Lightning Council, no one knows if the chalice 
+was recovered or not, but regardless of the chalice’s fate, in 
+the intervening ages the affi  liation’s purpose has broadened 
+to ending the infl  uence of the Lower Planes in the world.
+ Members: Many members of the Chalice are paladins, 
+priests, and fi  ghters; many of these eventually take levels in 
+the knight of the Chalice prestige class (see Complete Warrior). 
+Mortality is high among the membership of this combative 
+affi  liation, and as such the Chalice is always looking to induct 
+new members of suffi  cient  piety.
+    The Chalice is not a vengeful organization, and freely 
+allows members to leave its ranks. If a member departs due to 
+falling from paladinhood, fi  endish possession, or alignment 
+change—or tries to covertly corrupt the Chalice from within 
+after  suffering  one  of  these  fates—the  Lightning  Council  
+dispatches an EL 14 exorcism squad (typically a 13th-level 
+paladin and a 13th-level cleric of Olidammara) that is more 
+inclined to smite fi  rst  and  ask  for  repentance  by  means  of  
+speak with dead much later.
+ Secrets: When you attain the rank of Lightning Coun-
+cilor, the other councilors lead you somberly to the Eyrie 
+of  Heironeous.  There,  among  the  lightning  rods  of  the  
+order, under a clouding sky, they inform you of the true 
+nature of the Chalice of Heironeous. What was stolen from 
+Heironeous millennia ago—not by Dis, but by Hextor, who 
+attempted to shirk responsibility for his deed (and to better 
+secure his prize) by loaning the chalice to the Iron Lord of 
+the Second—was not a powerful magic item, nor even an 
+artifact. As revealed to Arbinget Ivenay by the solar Tomal 
+on the eve of St. Vorgan’s Day 1,223 years ago, the Chalice of 
+Heironeous is in fact the daughter of Heironeous, a young 
+goddess-angel now held in durance v i le deep in Dispater ’s 
+Iron Tower. Every day, the Lightning Councilors dream of 
+rescuing her; every day, they come no closer.
+     Ty p e :      Fighting company.
+    Scale: 12 (multiregional/kingdom).
+Criterion                                        Affi liation Score Modifi er 
+Character level +1/2 PC’s level
+Base attack bonus +10 or higher  +1
+Can cast divine spells +1
+Knight of the Chalice prestige class +1 per two levels
+Wields a holy avenger +8
+Has slain a fi end with more than 9 HD +1 per fi end
+Has written a treatise on slaying fiends +2
+Successful mission on behalf 
+of the Chalice +2 per mission
+Successful mission on behalf of the 
+Lightning Council +4 per mission
+Neutral alignment –15
+Evil alignment –25
+Defeated by a fi end –4
+Friends with a half-fiend, tiefling, or other tainted –10
+ Titles, Benefi  ts, and Duties: As you advance within the 
+ranks of the Chalice, you learn demon-fi ghting techniques 
+and how to resist the temptations of fi  ends.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or less No affiliation.
+4–10                                Initiate: The Chalice recognizes you as a 
+potential ally or enemy in the struggle to 
+eliminate fi ends from the Material Plane.
+11–15                              Defender: You are inducted into 
+membership, and can requisition a potion of 
+protection from evil 1/we ek .
+16–20                            Thunderer: Chalice priests cast up to 3rd-level 
+cure spells for free (excluding component 
+costs) when you visit their temple.
+20 –24                            Scion of Heironeous: Chalice priests cast 
+up to 4th-level spells for free (excluding 
+component costs) when you visit their temple.
+25–29                            Paragon of Heironeous: By taking a –5 penalty 
+to your affi liation score, you can gain a raise 
+dead spell from a Chalice priest. Fiends can 
+make a Knowledge (the planes) check (DC 30 
+minus your character level) to recognize you, 
+and if they succeed, their frenzy grants them 
++2 on damage rolls when attacking you.
+30 or higher     Lightning Councilor: Once per year, you can 
+borrow for 1 week any magic weapon or 
+armor with a value of 18,000 gp or less from 
+the Chalice’s armory. While you do so, the 
+affiliation takes a –1 penalty to its capital.
+ Executive Powers: Crusade, inquisition, war.
+620_95374_Ch7.indd   170620_95374_Ch7.indd   1702/8/06   4:20:54 PM2/8/06   4:20:54 PM
+
+171
+CHAPTER 7
+AFFILIATIONS
+DARKSPIRE COLLEGE 
+OF THAUN
+    Symbol: The college’s symbol is three black 
+stalactites, one larger than the other two, on a 
+gold fi  eld.
+Background,  Goals,  and  Dreams:  The  
+Dark spire College’s campus is built into the 
+sides of three enormous hanging stalactites 
+tapering  down  from  the  vaulted  ceiling  of  
+a colossal underground cavern. Piercer, the 
+largest  stalactite,  extends  more  than  300  feet  
+down from the ceiling and has a base with a 
+radius of 150 feet. It houses laboratories and 
+libraries  for  each  school  of  arcane  magic,  a  
+concert hall, thirteen summoning chambers, 
+two gymnasiums, the Desmodu Dormitory, 
+and lecture halls. Each of the Fangs, the other 
+two stalactites, is roughly two-thirds the size 
+of the Piercer. They contain classrooms, stud-
+ies, artists’ cupolae, and practice rooms. The 
+northernmost Fang also features the Sunless 
+Rose tavern and a warehouse. The warehouse 
+stores goods in transit to and from the surface 
+and other underground communities, and it 
+sells surplus and goods gone unclaimed when 
+a caravan doesn’t return. The warehouse has a 
+25% chance to have any given Player’s Handbook 
+item in stock and available at 150% of the price. 
+The Piercer and the Fangs are connected by a 
+network of rope bridges.
+     Faculty  and  students  attend  Darkspire  to  
+increase their arcane knowledge, and that is 
+the stated goal of the organization. 
+Enemies  and  Allies:  The  students,  fac-
+ulty, and administration maintain friendly 
+relationships with most of the other peaceful 
+residents of Thaun (the underground cavern 
+that hosts the college’s spires on a small part 
+of its roof ). These peaceful residents include 
+svirfneblin,  deep  dwarves,  two  nomadic  
+tribes of myconids, and a small community 
+of exiled drow. 
+    The college is harassed by most drow, by an 
+aboleth that lives in Thaun Lake, and by Cher-
+ruk, a derro warlord who claims ownership of 
+the caverns immediately above Thaun.
+ Members:  The  College  holds  no  grudge  
+against those who leave its faculty. Indeed, 
+given the college’s location, it counts on los-
+ing at least one faculty member per year to 
+beasts, slavers, or an accidental fall from a 
+rope bridge.
+ Ty p e : College.
+    Scale:    5 (city).
+     Affiliation  Score  Criteria:  Joining  the  
+Darkspire College is as simple as enrolling; 
+however, to become a faculty member requires 
+long study and arcane puissance.
+The inverted towers of Thaun 
+hide many secrets
+Illus. by M. May
+620_95374_Ch7.indd   171620_95374_Ch7.indd   1712/8/06   4:21:01 PM2/8/06   4:21:01 PM
+
+172
+CHAPTER 7
+AFFILIATIONS
+Criterion                                        Affi liation Score Modifi er
+Character level +1/2 PC’s level
+Has darkvision +2
+10 or more ranks in Knowledge (arcana) +2
+Has the Arcane Thesis feat +4 per feat
+Can cast arcane spells 3rd level or higher +2
+Can cast arcane spells 5th level or higher +4
+Has a magic staff +4
+Is an archmage or has a staff of power +8
+Donates 1,000 gp (or more) magic item +2 per item,
+to the Department of Crafting max 3 items/year
+Is drow, derro, duergar, or drider –2
+No ranks in Knowledge (arcana) –10
+Can cast divine spells –2
+Does not spend at least 1 month per year on campus –20
+Titles, Benefi  ts, and Duties: As you advance in the col-
+lege, you improve your Knowledge skills and gain access to 
+magic items. You also earn a modest stipend for sharing your 
+expertise with the college.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower No affiliation.
+4–10                                Correspondent Student: You can regularly 
+correspond with the college while adventuring.
+11–20                            Adjunct Researcher: +2 competence bonus on 
+Knowledge skills while in the college’s libraries.
+21–29                            Professor: When crafting a magic item, you 
+can scavenge materials from the college—
+spend only 90% of the normal gp cost to craft 
+an item. Drow slavers and derro kidnappers 
+recognize your value—5% chance per 
+month that an EL 12 team of subterranean 
+mercenaries comes to claim your bounty.
+30 or higher     Regent: Can requisition any arcane scroll of 
+750 gp or less from the college stores, up to 
+three times per month. Must replace these 
+scrolls with scrolls of equal value within 
+one month of taking them.
+Executive Powers: Craft, research, trade.
+DR AGON ISLAND
+    Symbol: The symbol of Dragon Island is a 
+purple rampant dragon. The elder dragons chose 
+purple as a compromise; it doesn’t correspond 
+to any true dragon’s real color and thus 
+represents dragonkind as a whole.
+Background, Goals, and Dreams: 
+A few miles off a remote stretch 
+of coastland is Dragon Island, 
+where humans soar over skies on 
+draconic  steeds.  In  this  insular  
+society, dragons and humans live 
+in  concert,  with  dragons  supplying  
+ancient wisdom and humans providing 
+industry and vitality.
+     Dragon Island can appear anywhere 
+you like in your campaign world, and you 
+can give it a more evocative name if you wish. 
+The nature of the dragons it houses (metallic or chromatic) 
+is deliberately undefi  ned. Depending on the dictates of your 
+campaign, Dragon Island could be a bastion of hope or the 
+nexus of a gathering evil.
+     Members: Affi  liation members are human characters who 
+grew up on Dragon Island, learning magic under the wing 
+(literally) of draconic masters and even riding loyal dragons 
+as steeds.
+ Ty p e : Government (racial).
+Scale: 12 (multiregional/kingdom).
+ Affi  liation  Score  Criteria: Only humans qualify for this 
+affi  liation because Dragon Island is an insular place with no 
+elves, dwarves or other humanoids. Most grew up here, but 
+you could also establish an affi  liation with Dragon Island if 
+you spend years here as an adult.
+Criterion                                        Affi liation Score Modifi er
+Character level +1/2 PC’s level 
+Speak Draconic +2
+Sorcerer                                                                              +2
+10 or more ranks in Ride +1
+Donate 20,000 gp in treasure to the hoard 
+of a Dragon Island dragon +1
+Titles, Benefi  ts, and Duties:  You’l l  
+learn from your draconic teachers, but 
+the most thrilling reward of affi  liation  
+with Dragon Island is the chance to 
+take wing with a friendly dragon as 
+your  fl ying steed. Doing so isn’t easy; 
+raising your affi  liation score on Dragon 
+Island is diffi  cult.
+ There are many more humans than 
+dragons on Dragon 
+Island, and the 
+dragons  often  
+have  better  
+things  to  
+On Dragon Island, humans and dragons live together in harmony
+Illus. by D. Hudnut
+620_95374_Ch7.indd   172620_95374_Ch7.indd   1722/8/06   4:21:11 PM2/8/06   4:21:11 PM
+
+173
+CHAPTER 7
+AFFILIATIONS
+do than fl  y around with humans on their backs. Those who 
+become dragonspeakers imbibe a ritual draught contain-
+ing dragon blood; this liquid lengthens the human life span 
+and makes the dragons more likely to regard you as a suit-
+able rider. But only the best dragonspeakers are offered the 
+ritual that turns them into dragonriders, who are able to 
+command a dragon for as long as it takes a moon to wax and 
+then wane into nothingness. The greatest heroes of Dragon 
+Island mystically bond with their mounts, creating an on-
+going relationship between willing steed and rider.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower  Not affiliated or junior member with no 
+benefits.
+4–10                                Dragon Island Native: +2 circumstance 
+bonus on attempts to infl uence the attitude 
+of Dragon Island residents. Your age 
+categories (see page 109 of the Player’s 
+Handbook) become twice as long, although 
+you don’t revert to a younger age category.
+11–15                              Dragonspeaker: +4 bonus on saving throws 
+against a dragon’s frightful presence. +2 
+racial bonus on Knowledge (arcana) and 
+Knowledge (history) checks.
+15–22                            Dragonrider: +4 racial bonus on Ride checks 
+when riding a dragon.
+23–29                            Dragonknight: If you take the Leadership 
+feat, you can have a dragon cohort.
+30 or higher     Dragonmaster: +8 racial bonus on 
+Ride checks when riding a dragon. +8 
+circumstance bonus on attempts to influence 
+the attitude of Dragon Island residents. 
+Immune to the frightful presence 
+of dragons. Your age categories 
+(see page 109 of the Player’s 
+Handbook) become four times as 
+long, although you don’t revert to 
+a younger age category.
+Executive Powers: Holiday, law, mint, war.
+ELVES OF THE HIGH FOREST
+    Symbol: A cluster of acorns is the symbol of the Elves 
+of the High Forest. Their jewelry often uses this motif, and 
+they use the real thing—actual clusters of acorns—as subtle 
+trail markers within the High Forest. 
+ Background, Goals, and Dreams: The Elves of the 
+High Forest live in a typical elf community: a series of 
+treetop villages and small towns that together form 
+a network to keep their forest safe and thriving. 
+ Ty p e : Tribe (racial).
+Scale: 6 (city).
+ Affi  liation  Score  Criteria: To gain affi  liation  
+with the Elves of the High Forest, you need only be 
+an elf or half-elf. The elves have many non-elf friends 
+in the forest, but only those with elf blood can partake 
+in  the  privileged  Hunt  of  the  Full  Moon.  You  don’t  
+need to grow up among the Elves of the High Forest; 
+you  can  be  from  a  far-off  elf  community,  and  you’ll  
+still gain affi  liation with these elves normally.
+    The Elves of the High Forest have a semi communal life-
+st yle, so they favor characters w ith ski l ls or class abi l ites that 
+make a woodland lifestyle easier. The fastest way to gain status 
+within the Elves of the High Forest is to perform missions 
+on  their  behalf.  The  elves  particularly  favor  missions  that  
+protect the forest as a whole from interlopers—from human 
+woodcutters to drow raiders.
+Criterion                                        Affi liation Score Modifi er
+Character level +1/2 PC’s level
+Druid or ranger +1
+10 or more ranks in Knowledge (nature) or 
+Profession (herbalist) +2
+Each successful mission +2
+Each successful forest defense mission* +4
+* Overlaps (does not stack with) the “each successful 
+mission” bonus.
+Titles, Benefits, and Duties: The Elves of the High 
+Forest offer specialized training in woodcraft for those 
+they favor.
+    Those who reach a new level of status within the Elves 
+of the High Forest attain the new benefi ts after attending 
+the Hunt of the Full Moon—a combination night-hunt and 
+ritual. The greatest hunters among the elves take you on an 
+all-night hunt for elusive game. The target is traditionally 
+a half-fey white stag, but sometimes the elves hunt more 
+dangerous quarry by necessity or for variety. During the 
+night, they teach you specialized techniques in perception, 
+stealth, and moving through the wilderness. Some say the 
+hunters leave the Material Plane entirely and wind up hunt-
+ing mystical game among the fey of Arborea. You’ll return 
+in the morning exhausted, but with the sharper perceptions 
+and peerless camoufl  age of the greatest elf hunters.
+The Elves of the High Forest take part in the Hunt of the Full Moon
+Illus. by H. Lyon
+620_95374_Ch7.indd   173620_95374_Ch7.indd   1732/8/06   4:21:21 PM2/8/06   4:21:21 PM
+
+174
+CHAPTER 7
+AFFILIATIONS
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower  Not affiliated or junior member with no 
+benefits.
+4–10                                Friend of the High Forest: +2 circumstance 
+bonus on attempts to infl uence the attitude 
+of High Forest elves.
+11–15                              Guardian of the Branch: +4 racial bonus on 
+Listen, Search, and Spot checks.
+16–22                            Guardian of the Trunk: +4 racial bonus on 
+Hide and Move Silently checks performed 
+outdoors. +4 circumstance bonus on 
+attempts to infl uence the attitude of High 
+Forest elves.
+23–29                            Guardian of the Root: +8 racial bonus 
+on Listen, Search, and Spot checks, and 
+the woodland stride ability (PH 48). 
++8 circumstance bonus on attempts to 
+influence the attitude of High Forest elves.
+30 or higher     Guardian of the Forest’s Heart: +2 effective 
+caster level to all druid and ranger spells 
+when casting spells within the boundaries of 
+the High Forest.
+Executive Powers: Craft, harvest, plague.
+THE GOLDEN HELM GUILD
+    Symbol: A golden helm is the symbol of the guild, natu-
+rally. Working in their smithies and forges, the gnomes often 
+wear yellow skullcaps to indicate their affi  liation.
+Background,  Goals,  and  Dreams:  The  Golden  Helm  
+Guild is a network of expert master crafters that spans dozens 
+of gnome communities, making fi ne armor, weapons, and 
+other  gear  for  the  greatest  heroes  of  the  gnomes.  But  the  
+Golden Helm is no mere blacksmithing guild. It focuses on 
+creating rare items invested with potent magic, each one a 
+testament to its maker’s skill and power.
+     Missions on behal f of the G olden Hel m Gui ld of ten involve 
+securing rare ores or fi nding other special ingredients that 
+the guild can use in its most potent creations.
+     The guild often commissions its most talented members 
+to make magic weapons, armor, or other gear to sell or give 
+to a gnome-allied war effort. Each item you make on the 
+guild’s behalf worth at least 10,000 gp earns you +1 to your 
+affi liation score. You can earn this bonus multiple times, 
+but only if the Golden Helm Guild commissions the items 
+ahead of time.
+ Ty p e : Business (racial).
+Scale: 10 (regional/march).
+ Affi  liation  Score  Criteria: Guild membership is open 
+only to gnomes, but anyone who can swing a hammer is 
+welcome to sign up for an apprenticeship. Unless you have 
+some talent for cra fting either mundane or magic items, you 
+won’t derive any benefi  t from your affi  liation.
+Criterion                                        Affi liation Score Modifi er
+Character level +1/2 PC’s level 
+10 or more ranks in at least one Craft skill +2
+10 or more ranks in a second Craft skill +2
+20 or more ranks in at least one Craft skill +4
+Per item creation feat* +1
+Each successful mission +1
+Per magic item worth at least 
+10,000 gp made for guild +1
+* Does not include the item creation feat gained by 
+someone who becomes a Golden Helm Master (see 
+below).
+ Titles, Benefi  ts,  and  Duties: When you’ve ear ned enough 
+affi liation to attain new benefi ts, you need only apply for a 
+promotion at the nearest Golden Helm chapterhouse, which 
+exists in any gnome community of large town size or larger. 
+After a series of examinations, the guild will award you the 
+new rank and hold a lavish feast in your honor. 
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower  Not affiliated or junior member with no 
+benefits.
+4–10                                Golden Helm Apprentice: +2 racial bonus on 
+Appraise checks relating to stone or metal 
+objects. +4 racial bonus on any one Craft skill.
+11–15                              Golden Helm Journeyman: +6 racial bonus 
+on Appraise checks relating to stone or 
+metal objects. +6 racial bonus on the Craft 
+skill you chose when you were a journeyman, 
+and a +4 racial bonus on another Craft skill.
+15–22                            Golden Helm Master: Gain Craft Magic 
+Arms and Armor as a bonus feat. You can 
+craft magic arms and armor as if you had a 
+caster level equal to 1/2 your Hit Dice. This 
+ability does not allow you to meet any other 
+prerequisites of crafting a magic item.
+23–29                            Golden Helm Grandmaster: Craft magic 
+arms and armor as if you had a caster level 
+equal to your Hit Dice.
+The gnomes of the Golden Helm Guild make fi 
+ne we
+apons and armor—
+and they’re capable of using them
+Illus. by E. Widermann
+620_95374_Ch7.indd   174620_95374_Ch7.indd   1742/8/06   4:21:30 PM2/8/06   4:21:30 PM
+
+175
+CHAPTER 7
+AFFILIATIONS
+Affiliation 
+Score               Title:               Benefi ts and Duties
+30 or higher     Golden Helm Exalted: Spend 10% fewer 
+experience points than normal when crafting 
+a magic item.
+ Executive Powers: Craft, gift, trade.
+THE LAND OF HONOR
+    Symbol: The Land of Honor doesn’t have a nationwide 
+symbol. Each feudal lordship has its own colorful heraldry, 
+most using abstract decorations rather than real-world sym-
+bols like animals or words.
+ Background, Goals, and Dreams: Humans from this 
+land live in a society guided by feudal lords who often war 
+against one another. But the wars are largely fought by a 
+caste of noble soldiers who regard battle as an opportunity 
+to demonstrate their bravery and adherence to a rigid code 
+of honor. Rather than draw inspiration from medieval and 
+Renaissance Europe, this land hearkens back to feudal Japan 
+and the Age of Samurai.
+    In your own game, the Land of Honor might be its own 
+nation-state, or perhaps it remains a vague and exotic place 
+beyond the periphery of the campaign map. Give it whatever 
+name you like.
+     Your human character can be a traveler or an exile from 
+the Land of Honor. If you want to retain your unique cult ural 
+identity, consider an affi  liation with others from your land. 
+Perhaps colonies or communities of exiles exist beyond the 
+borders of the Land of Honor, or perhaps travel back and 
+forth is suffi  ciently easy that you can periodically return to 
+the land of your birth.
+     If you’re wielding executive powers, you’re either one of 
+the feudal lords or the power behind the lord’s throne. Your 
+concer ns var y as w idely as those of any real-world r uler; you 
+might care about the welfare of your subjects, or you might 
+care only about games of power or living a life of wealth 
+and leisure. 
+ Ty p e : Government (racial).
+ Scale: 15 (continental/empire).
+ Affi  liation  Score  Criteria:  Unless  one  is  human  and  
+born  in  the  Land  of  Honor,  a  character  is  accepted  in  this  
+affi  liation only under extraordinary circumstances. 
+Criterion                                        Affi liation Score Modifi er 
+Character level +1/2 PC’s level 
+Fighter or monk +2
+5 or more ranks in Diplomacy +1
+10 or more ranks in Diplomacy +2
+Defeat worthy foe in honorable duel +1
+Perform mission at lord’s request    +2 (and –4 if you fail)
+ Titles, Benefi  ts, and Duties: As you gain a f fi  liation  with  
+the Land of Honor, your feudal lord will reward you with a 
+ceremonial—but very functional—katana. A katana is sta-
+tistically identical to a bastard sword. Your willingless to live 
+and die by your honor code becomes increasingly apparent 
+from your bearing, and many foes will shamefacedly avoid 
+a duel with you.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower  Not affiliated or junior member with no 
+benefits.
+4–10                                Citizen of Land of Honor: +2 circumstance 
+bonus on attempts to infl uence the attitude 
+of other citizens of the Land of Honor. Your 
+lord gives you a masterwork katana.
+11–15                              Fearless One: +2 racial bonus on Intimidate 
+checks. Gain Knowledge (nobility and royalty) 
+as a class skill, regardless of your class.
+16–22                            Honorable One: +4 racial bonus on 
+Intimidate checks. +4 circumstance bonus 
+on attempts to infl uence the attitude of 
+citizens of the Land of Honor. Gain Quick 
+Draw feat when drawing your katana.
+23–29                            Selfless One: +6 racial bonus on Intimidate 
+checks. +8 circumstance bonus on attempts 
+to influence the attitude of citizens of the Land 
+of Honor. +4 bonus on attack rolls made to 
+confirm a critical hit with your katana.
+30 or higher     Perfected One: Gain damage reduction 
+1/– when you wield your katana.
+ Executive Powers: Gift, law, war.
+MER ATA KON
+     Symbol: There is no symbol for the Merata Kon as a whole. 
+Most travelers recognize a Merata clan by its krenshar-hide 
+tents and the smoke puffs that rise on the horizon when a 
+Merata scout or companion band signals.
+ Background, Goals, and Dreams: The Merata Kon is a 
+network of barbarian clans, sweeping nomadically from the 
+coastal plains to the high scrub forest, living off wandering 
+herds, seasonal vegetation, and ransomed travelers. Some 
+tribes of the Merata Kon allow themselves to be hired as 
+mercenaries, making raids on borderland baileys, but many 
+would-be patrons shy away from these tribes because both 
+its savagery and geographical uncertainty make it somewhat 
+unreliable. Nonetheless, the people of the Kon are a powerful 
+force due to their numbers and ferocity.
+    In the spring of each year, all the Merata clans gather in 
+one place for an Althing, where horses are traded, daughters 
+are  wed,  and  alliances  are  fi  xed.  Occasionally,  in  times  of  
+need, a Chief of Chiefs is selected, but most years there is no 
+higher authority than the chiefs of the individual clans.
+ Enemies and Allies: The clans are constantly in a state 
+of tension with the civilized city-states and kingdoms whose 
+frontier lands and territories they drift over seasonally, 
+ignoring political borders like rain or wind or any other 
+force of nature.
+ Members: The tribe consists mostly of half-orcs, humans, 
+and disaffected half-elves who fi  nd much i n common w it h t he 
+natural and alienated lifestyle of the tribe. There are known 
+to be Merata clerics, but there are virtually no arcane casters 
+outside of a few skald bard/barbarians. 
+     The var ied Merata clans have no pol itical arg ument against 
+former members, but most clan chiefs take desertion person-
+ally. In most cases, a Merata who leaves his clan is disowned 
+and shunned forevermore.
+     Ty p e : Tribe.
+620_95374_Ch7.indd   175620_95374_Ch7.indd   1752/8/06   4:21:38 PM2/8/06   4:21:38 PM
+
+176
+CHAPTER 7
+AFFILIATIONS
+    Scale:    13 (multiregional/kingdom and vassal states).
+Criterion                                        Affi liation Score Modifi er 
+Character level +1/2 PC’s level
+Base attack bonus +5 or higher +1
+Base attack bonus +10 or higher* +2
+5 or more ranks in Survival +1
+10 or more ranks in Survival +2
+Trophy Hunter feat +1
+Can cast control weather +3
+Defeat animal or magical beast
+of your level or higher one-on-one +1/4 creature’s HD
+Defeat a clan champion one-on-one +2 per win
+No ranks in Survival –2
+Has lived in city –2
+Does not accept a  –6, and cannot improve affiliation 
+challenge to combat score until challenge is accepted
+Member of a civilized affiliation –4 per affiliation
+* Overlaps (does not stack with) the modifier for a base 
+attack bonus of +5 or higher.
+ Titles, Benefi  ts, and Duties: As you learn the ways of the 
+Merata, you learn to make these smoke signals yourself as you 
+increase your survival skills and become closer to nature.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower No affiliation.
+4–10                                Lowborn: The Merata Kon hold less 
+contempt for you than for most.
+11–20                            Setaf Kon: +2 competence bonus on 
+Diplomacy checks involving your clanmates 
+and a +2 competency bonus on Survival 
+checks made when traveling with clanmates.
+21–29                            Trebor Kon : Become a subchief and have a 
+3rd-level adept to assist you. By a system 
+of bonfi res and smoke, you can transmit 
+signals 200 miles across the Stalking Plains 
+in 1d2 days.
+30 or higher     Clan Chief: You are accompanied by four 
+chief’s men (6th-level barbarians), and your 
+counsel is a 4th-level cleric/4th-level bard.
+ Executive Powers: Harvest, raid, terrorize.
+THE ONE AND THE FIVE
+    Symbol: The symbol of the One and the Five is six black, 
+hooded fi  gures on a violet starburst fi  eld.  
+ Background,  Goals,  and  Dreams: A secret ring of six 
+wizards and sorcerers is at the heart of this cabal. Arcane 
+casters vexed by a lack of resources fi  nd this group’s support 
+exceptionally useful for purchasing spellbooks, researching 
+new spells, and perfecting metamagic techniques.
+ Enemies and Allies: The cabal has strained relations with 
+most other organizations. Its secretive core, the six wizards 
+and sorcerers known as the titular One and the Five, frustrate 
+the attempts of spy rings and thieves guilds to penetrate and 
+gather information, while their subsidization of spell books, 
+research, and material components irks arcane colleges and 
+many business guilds.
+ Members: Most of the members are human, but the One 
+and  the  Five  welcome  all  to  their  cabal,  and  in  addition  to  
+half-orcs, dwarves, and gnomes, two centaurs and one gyno-
+sphinx are known to be associated with the affi  liation.
+     No one knows what happens if you try to leave the One 
+and the Five. For some reason, no one ever has—or at least, 
+no one is talking about it.
+ Secrets: Once  you  reach  an  affi  liation  score  of  30,  you  
+must defeat one of the current One and Five in a mortal spell 
+duel. After killing your opponent, you are inducted into the 
+heart of the cabal, where you learn that the order is devoted 
+to Vecna, and that the One represents his Eye, and the Five 
+represent the fi  ngers of his severed hand.
+     You need not worry about converting to worship of Vecna 
+at this point—when you fi  rst attained an affi  liation score of 
+25 or higher and the subtle wooings of the inner cabal did not 
+persuade you to convert to the service of the Maimed Lord, 
+EL 14 assault squads of summoned monsters and golems are 
+sent to kill you before you learn the cabal’s secret.
+     Ty p e : Cabal.
+    Scale: 10 (regional/march).
+Criterion                                        Affi liation Score Modifi er 
+Character level +1/2 PC’s level
+5 or more ranks in Knowledge (arcana) +1
+Can prepare arcane spells +1
+Can cast arcane spells of 3rd level or higher +1
+Can cast divination spells of 5th level or higher +2
+Has over 2,500 gp in magic items +1
+Donates magic item valued at 1,000 gp
+or more to the cabal +1 per item, max six/year
+Shares 5th-level or higher-level spell with other 
+wizards at cabal Grand Convocation, held twice/year    +2
+Completes mission for the leaders of the
+cabal, the One and the Five +2 per mission
+Can cast divine spells –6
+Divulges identities of members or
+other secrets of the cabal –4
+Is known to investigate  –10, and an EL 12 coterie of
+the identities or the nature sorcerer wraiths is sent
+of the One and the Five to dissuade or dispose of you
+Is a member of a spy ring –6
+ Titles, Benefi  ts, and Duties: As you advance in the cabal, your 
+knowledge of the arcane increases. You also gain access to spells 
+and discounted components, paraphernalia, and research.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower No affiliation.
+4–10                                Of the Many: The cabal is aware of your 
+presence and judging you.
+11–20                            Of the Mind: When you gain a wizard level, 
+automatically learn three spells rather than 
+two.
+21–29                            Of the Body: When you craft a magic item, 
+pay only 90% the gp cost.
+30 or higher     Of the One and the Five: Three times per 
+year, you can borrow any wondrous item in 
+the Dungeon Master’s Guide of 10,000 gp 
+value or less for up to 1 week. You may not 
+borrow a charged item in this manner.
+ Executive Powers: Craft, research, shadow war.
+620_95374_Ch7.indd   176620_95374_Ch7.indd   1762/8/06   4:21:44 PM2/8/06   4:21:44 PM
+
+177
+CHAPTER 7
+AFFILIATIONS
+RESTENFORD GUILD OF INSURERS, 
+SOLICITORS, AND BEGGARS
+    Symbol: The symbol of the guild is a hand placing a gold 
+piece into a beggar’s uplifted cup.
+Background, Goals, and Dreams: The Guild of Insur-
+ers, Solicitors, and Beggars exists for the aggrandizement 
+of  its  members.  This  legitimate  businessman’s  guild  is  
+run by Eyeless Errol, a sightless dwarf who spends much 
+of his time on a chair in the guildhouse listening to his 
+subordinates report. Eyeless Errol dresses neatly, always 
+matching the color of kerchief that winds around his eye-
+less sockets to the color of his pants, and he smiles with 
+distant awareness.
+     Enemies and Allies: This affi  liation enjoys comfortable 
+relations with the Restenford Assassins Guild and the worker 
+guilds of the city (including the Sewerworkers and the Chim-
+ney Sweeps), walking a fi  ne line between respectability and 
+ruthless underworld effi  ciency.
+     Members: Most members are rogues, fighters, or arcane 
+casters, with a few priests of Olidammara rounding out 
+the roster. 
+     The guild is highly vengeful. An EL 12 hit squad (typically 
+two 8th-level fi  ghters and two 8th-level rogues) is dispatched 
+to squelch any member who attempts to leave the guild 
+without Errol’s express permission.
+    Secrets: Behind the façade of an honest businessman and 
+a dandifi ed hands-off owner, Eyeless Errol runs his guild 
+according to best practices, using double-entry accounting 
+and double-team extortion, and he is very hands-on despite 
+being eyes-off. Some whisper that he is, in fact, not blind at 
+all, but is simply a polymorphed dragon with blindsense; 
+others claim he is a mindspy doppelganger who sees through 
+the eyes of his victims, watching himself as he attacks. No 
+one ever really expects to unseat Eyeless Errol, but many 
+aspire to become the Insurance Boss, the Chief Solicitor, or 
+the Beggarmaster. 
+     After becoming Insurance Boss, Chief Solicitor, or Beggar-
+master, you must deal with regular assassination attempts. 
+Either  an  ambitious  underling  or  Eyeless  Errol  himself,  
+wary of your own ambition, attempts to rub you out. If you 
+succeed on a DC 30 Gather Information check, you learn 
+of the plot and do not have to face an assassination attempt 
+that month. If you fail to uncover the plot, you must either 
+succeed on a DC 15 Fortitude save, with failure indicating 
+you have been assassinated, or play out the attack with your 
+DM’s help (the assassin typically has a CR of your level 
+minus 3).
+     Ty p e :      Thieves guild.
+    Scale: 6 (city).
+Affiliation  Score  Criteria: To join, you must be a 
+probationary footpad for some months, while the guild 
+surveys your work. If you are sufficiently skilled, the guild 
+invites you to run its gauntlet, a maze of mechanical and 
+magic traps (and, according to some, an otyugh assassin 
+retained by the guild to challenge overconfident would-
+be initiates).
+Criterion                                        Affi liation Score Modifi er 
+Character level +1/2 PC’s level
+10 or more ranks in Hide, Sleight of Hand,
+Forgery, Disguise, or Open Lock  +2 per skill
+Sneak attack +3d6 or higher +2
+Runs the gauntlet in initiation +4
+Spends one day per week appraising for
+the guild (requires 10 ranks in Appraise) +1
+Performs a heist or swindle for the guild 
+that nets 1,000 gp or more +1
+Spends time in the City Watch gaol +1
+Tips off the guild about incoming City Watch raid +2
+Has no ranks in Hide, Sleight of Hand,
+Forgery, Disguise, or Open Lock –2 per skill
+Participates in a nonguild job, first time    –8, and an EL 8 
+    team of thugs is 
+    dispatched to rough you up
+Participates in a nonguild job, second time –15, and an 
+    EL 12 team of rogues is 
+    dispatched to maim or kill you
+Steals from someone under the guild’s protection –6
+Titles, Benefi  ts, and Duties: As you advance through 
+the guild’s ranks, you improve your skills as a rogue and gain 
+access to equipment that will help you perform cons, heists, 
+rackets, and shakedowns for the guild. You also become the 
+benefi  ciary of the guild’s skill at procuring lucre.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower No affiliation.
+4–10                                Probationary Footpad: Your jobs are 
+sanctioned so you do not incur the affiliation 
+score penalty for an out-of-guild job.
+Eyeless Errol listens to a suggestion 
+fo  r t
+he Restenford Guild’s next job
+Illus. by S. Ellis
+620_95374_Ch7.indd   177620_95374_Ch7.indd   1772/8/06   4:21:51 PM2/8/06   4:21:51 PM
+
+178
+CHAPTER 7
+AFFILIATIONS
+Affiliation 
+Score               Title:               Benefi ts and Duties
+11–15                              Hood: You must run the gauntlet and be 
+initiated. If you survive, you gain an income of 
+200 gp/month. you must purchase equipment 
+only from the guild, which maintains supply 
+houses selling everything in the Player’s 
+Handbook and items of 1,000 gp value or 
+less from the Dungeon Master’s Guide.
+16–22                            Bravo: In the city, +4 insight bonus on 
+Hide and Move Silently checks and +2 
+circumstance bonus on Sleight of Hand 
+checks. The City Watch recognizes you if its 
+Spot check beats your opposed Disguise 
+check and attacks on sight. 
+23–29                            Made Man: You can fence up to 3,000 gp 
+of items for 90% market value each month. 
+Income of 400 gp/month to spend at guild 
+supply houses as above. Travel with impunity 
+through the Sewerworkers Union’s sewers 
+and the Chimney Sweeps’ rooftops.
+30 or higher     Insurance Boss, Chief Solicitor, or Beggar-
+master: +6 bonus on Gather Information 
+and Intimidate checks in the city. You can 
+borrow any one of the following from guild 
+coffers for 1 week at a time: a cloak of 
+elvenkind, boots of elvenkind, or any wand 
+described in the Dungeon Master’s Guide. 
+The City Watch considers you untouchable 
+and no longer attacks on sight. Must make 
+a DC 20 Diplomacy check each week or be 
+forced to pay 100 gp in bribes and kickbacks. 
+Must fight off regular assassination attempts.
+ Executive Powers: Pariah, plunder, shadow war.
+RESTENFORD 
+SEWERWORKERS GUILD
+    Symbol: The symbol of the Sewerworkers Guild is a styl-
+ized image of the guildmaster: a square with a circle in it, 
+representing Smiling Gordin and the head it contorts into a 
+grinning rictus when communicating.
+ Background, Goals, and Dreams: Rat runners, ooze 
+masters, subterranean tinkers, exterminators, conjurors and 
+abjurers of fi lth—the members of the Sewerworkers Guild 
+are  unnoticed  by  most  and  unthanked  by  all.  The  guild  is  
+responsible for the operation of the city’s vast subterranean 
+t unnel net work. Repair work and ex ter mination occupy much 
+of the guild members’ time, but these menial tasks only serve 
+to mask the guild’s true nature.
+     The guild’s leader is Smiling Gordin, a miraculously awakened 
+gelatinous cube, originally brought into the sewers because of 
+its ability to scour a passageway clean simply by oozing through 
+it. The origin of Gordin’s intelligence is unknown, but the 
+quality of that intelligence is unquestioned. Communicating 
+by gelatinous convulsions that manipulate the vocal cords of 
+various heads absorbed into his body and not yet dissolved 
+(the city is a violent place, and there is no shortage of heads 
+for Gordin), Gordin has built the Sewerworkers Guild into 
+one of the most powerful spy rings in the region. 
+ Enemies and Allies: Utilizing their near-invisible status 
+and all-city access to the fullest, Gordin and the sewer workers 
+maintain good relations with the aboveground Guild of Insur-
+ers, Solicitors, and Beggars (thieves guild) and often collaborate 
+with that guild on missions.
+ Members: Not surprisingly, most members of the Sewer-
+workers are rogues, but a fair number are arcane casters, and 
+some who appear to be ooze masters are whispered to be 
+priests of Juiblex.
+     The  Sewerworkers  cannot  allow  anyone  to  leave  their  
+ranks. The knowledge gained by the spies is valuable, and the 
+tunnel crawlers are loath to risk letting it get away for free, 
+but the real threat is one of exposure. Smiling Gordin simply 
+cannot  allow  anyone  to  learn  of  the  spy  ring’s  existence.  
+Anyone leaving the ranks soon comes face to face with an 
+EL 14 strike team lead by an otyugh assassin.
+ Secrets: By the time you become Guild Boss, you learn that 
+Smiling Gordin has become fi  xated on learning why it was chosen 
+for intelligence. While it pursues that goal (and toward that end 
+it might ask you to complete advent ures that it cannot), G ordin 
+is content to become the Guild Grandfather, retaining ultimate 
+veto power but relinquishing day-to-day control to you.
+     Ty p e :      Spy ring.
+    Scale:    6 (city).
+Criterion                                        Affi liation Score Modifi er 
+Character level +1/2 PC’s level
+Is deformed or maimed +1
+5 or more ranks in Hide or Disguise +1 per skill
+Can cast divination spells of 3rd level or higher +6
+Sneak attack +2d6 or higher +2
+Brings back sample of ooze, mold, or +1 per sample
+slime to study
+Completes a mission for the guild +4 per mission
+Lives in sewers +4
+Is double agent with another spy ring +6
+Has no ranks in Hide, Disguise, Bluff,
+Spot, Listen, or Sense Motive  –2 per skill
+Is followed by City Watch or a member
+of a rival affiliation into the tunnels –2
+Is visibly shocked by Smiling Gordin’s appearance 
+(one time only, DC 15 Bluff check on fi rst meeting) –4
+Fails a mission for the Sewerworkers –6
+ Titles, Benefits, and Duties: As you advance in the 
+Sewer    workers’  Guild,  you  improve  your  spying  and  
+information-gathering skills and learn to use the city tun-
+nels to your advantage.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower No affiliation.
+4–10                                Squatter: The Sewerworkers allow you to 
+squat at night in the tunnels.
+11–20                            Rat Runner: +2 competence bonus on 
+Gather Information checks in the city.
+21–29                            Ooze Master: +2 circumstance bonus on 
+Hide or Move Silently checks in the sewers.
+30 or higher     Guild Father: Reroll a failed Spot or Listen 
+check 3/day. +1 resistance bonus on saves 
+against disease.
+ Executive Powers: Assassinate, pariah, research.
+620_95374_Ch7.indd   178620_95374_Ch7.indd   1782/8/06   4:21:59 PM2/8/06   4:21:59 PM
+
+179
+CHAPTER 7
+AFFILIATIONS
+SHARULHENSA, 
+THE ALABASTER TOWERS
+     Symbol: Sharulhensa has no particular symbol, but many 
+of the buildings within the neighborhood have fonts and 
+fountains incorporated into their design—a architectural 
+nod to the magic pools.
+Background, Goals, and Dreams: Sharulhensa is a half-
+elf enclave built within the walls of a human metropolis. 
+Raised on the ruins of an ancient elf empire, the enclave 
+holds onto its magical heritage even as other cultures have 
+supplanted elves as the dominant humanoids across the 
+land. The half-elves of Sharulhensa remember the mighty 
+magic of their forebears, and they pass along ancient tradi-
+tions to the new generation in an effort to connect their 
+dual heritage.
+    Secrets:  Throughout  the  city  of  Sharulhensa  are  sacred  
+pools believed to hold the spirits of departed half-elves in a 
+quiescent state. When a half-elf drinks of these waters, he 
+or she gains a measure of magical power and a sense of the 
+eldritch tapestry that weaves together residents of Sharul-
+hensa, no matter how far they roam. The enclave’s elders 
+keep the locations of the sacred pools a secret even from the 
+ordinary residents of Sharulhensa, so the only way to get 
+access to the pools is by garnering favor with Sharulhensa’s 
+elders—earning affi  liation, in other words.
+     The movers and shakers within Sharulhensa have intense 
+academic rivalries with each other as they vie to recapture 
+more of their elven heritage.
+Ty p e : College (racial).
+Scale: 2 (neighborhoods).
+Affi  liation  Score  Criteria: Only hal f-elves are el igible to 
+join this affi  liation. Sharulhensa residents regard full-blooded 
+elves  as  lacking  suffi  cient  vitality  and  energy  to  guard  the  
+heritage of their ancient forebears.
+Criterion                                        Affi liation Score Modifi er
+Character level +1/2 PC’s level
+Wizard                                                                                +2
+Other spellcaster +1
+10 or more ranks in Knowledge (arcana) +2
+Each successful mission +1
+Recovers a magic item worth 30,000 gp or more +2
+Recovers a spellbook with at least 7th-level spells +1
+Titles, Benefits, and Duties: Sharulhensa sometimes 
+needs adventurers to undertake missions on its behalf. If you 
+complete such an adventure successfully, you can increase 
+your affi liation score with the half-elf enclave. But moreso 
+than the standard “Stop the orc horde marching toward the 
+city” mission, recovering the elves’ ancient heritage earns 
+favor with Sharulhensa’s elders—even if you’re recovering 
+that heritage from the elves themselves. In particular, you can 
+improve your status with Sharulhensa if you retrieve major 
+magic items crafted by the elves long ago and grimoires with 
+high-level arcane spells. Not any magic sword or spellbook 
+will do, however—Sharulhensa is interested only in items 
+steeped in elven history. 
+     The reward of Sharulhensa affi  lation—access to the magic 
+pools—is great, but earning affi  liation with Sharulhensa is 
+more diffi  cult than most other racial a f fi  liations. Those who 
+persevere find their ability to wield magic, especially the 
+subtle enchantments of the elves, vastly improved.
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower  Not affiliated or junior member with no 
+benefits.
+4–14                                Citizen of Sharulhensa: +2 circumstance 
+bonus on attempts to infl uence the attitude 
+of Sharulhensa half-elves.
+15–22                            Pool of the Inscrutable: +1 to the DC of 
+saving throws against your enchantment 
+spells and spell-like abilities.
+23–29                            Pool of Infl uence: +8 circumstance bonus 
+on attempts to infl uence the attitude of 
+Sharulhensa half-elves.
+30 or higher     Pool of the Endless: Gain detect magic as a 
+spell-like ability usable at will (caster level 
+equal to your Hit Dice).
+Executive Powers: Gift, research, trade. 
+The half-elves of Sharulhensa are dedicated 
+to preserving ancient lore
+Illus. by C. Frank
+620_95374_Ch7.indd   179620_95374_Ch7.indd   1792/8/06   4:22:06 PM2/8/06   4:22:06 PM
+
+180
+CHAPTER 7
+AFFILIATIONS
+SUN FANE
+     Symbol: The symbol of the Sun Fane is the same as that of 
+Pelor: a shining sun.
+ Background, Goals, and Dreams: The Sun Fane is a pow-
+erful Pelorite temple. A cyclopean golden dome, representing 
+the sun, rests atop colossal blue marble walls, representing 
+the sky, and both are supported by golden fl ying buttresses, 
+completing the tableau by representing the sun’s rays shining 
+down on the earth.
+     The goal of the temple is to witness for Pelor and spread the 
+glory of its merciful diety. All members of the temple turn a 
+stern eye on those who disparage Pelor as a “part-time god” 
+who only works half the day.
+    The prelates, canons, and bishops of the Sun Fane are all 
+ardent in their worship of Pelor, but this does not stop them 
+from engaging in heated internal politics. The One Sun is 
+the archcanon of the temple, and when a leader steps down 
+or passes away into the sun’s brilliant radiance, the infi ghting 
+is fi  erce.  
+ Members: Most of the Sun Fane’s members are clerics, 
+and only a cleric can rise to become the One Sun. Paladins, 
+rogue scholars, and a few druids also climb the ecclesiastical 
+ladder of the Sun Fane’s hierarchy. 
+     In keeping with its merciful teachings, the Sun Fane holds 
+no grudge against those who leave its ranks. The temple is 
+notoriously persistent, however, in trying to win back souls, 
+and those who leave the Sun Fane hierarchy can expect many 
+old friends to come calling with news of brilliant grace and 
+blessed light.
+     Ty p e : Temple.
+    Scale: 12 (kingdom).
+ Affi  liation Score Criteria: The Sun Fane is open only to 
+those of non-evil alignment.
+Criterion                                        Affi liation Score Modifi er 
+Character level +1/2 PC’s level
+5 or more ranks in Heal +1
+Can cast divine spells of 3rd level or higher +1
+Can cast divine spells of 5th level or higher* +2
+Undertakes missionary voyage +1 per voyage
+Converts creature to Pelor’s faith (convert
+must remain a believer) +1 per convert
+Raises or resurrects an innocent soul with own funds +2
+Donates 15% or more of treasure to Sun Fane +2
+Cannot cast divine spells –2
+Sells spells to neutral creature –2
+Sells spells to evil creature for nonevil purpose –6
+Acts against alignment –10 ,and cannot improve
+      affiliation   score   until
+      undergoing   atonement
+* Overlaps (does not stack with) the bonus for casting 
+divine spells of 3rd level or higher.
+ Titles, Benefits, and Duties: As you advance in the 
+ranks of the Pelorite priesthood, you learn to win converts 
+to your faith, to spread the healing light of your faith, and to 
+scourge the undead (along with, some would say, rivals for 
+the archbishopric).
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower No affiliation.
+4–10                                Lay Worshiper: The Sun Fane welcomes you 
+as a faithful member of the congregation.
+11–20                            Ordained: +2 competence bonus on 
+Knowledge (religion) checks when 
+consulting the Sun Fane’s library.
+21–29                            Canon: +1 competence bonus on Diplomacy 
+checks.
+30 or higher     Archbishop: The Sun Fane brooch, vestment 
+of your office (does not take up space on 
+the body) grants you a +2 bonus on turning 
+checks.
+ Executive Powers: Crusade, excommunicate, holiday.
+THE THUNDER SAIL ARGOSY
+    Symbol: The symbol of the Argosy is emblazoned on the 
+sails of all three brigantines: a gold lightning bolt on sable.
+ Background, Goals, and Dreams: The gentle heaving of 
+the deck underfoot slows, then stops. The gulls overhead quiet, 
+and the only sound is the rhythmic lapping of the suddenly 
+becalmed salt sea at the hull. A peal of thunder cracks over the 
+horizon, and clouds come scudding across the sky only a few 
+knots slower than the bolt-on-sable Thunder Sails.
+     Captain  Jonas  Jakes  commands  an  outlaw  fl  eet  of  three  
+brigantines: the Rain Hawk, the Red Lightning, and the fl  agship  
+Maelstrom Aria. Few of the current pirates in his fl  eet  were  
+w ith him when he star ted, and those few who have been in his 
+quarters wonder about the strange crystal sphere kept there. 
+Slightly larger than the glass buoys used by fi  sherfolk,  the  
+sphere contains a swirling turquoise mist, and it rests clutched 
+near the captain’s bedstand in a preserved and upended harpy’s 
+talon. During battle, Captain Jakes hauls the crystal sphere and 
+harpy-leg monopod onto the aft deck, where he sits on a closed 
+locker, hunches over the sphere, and strokes it possessively 
+while barking orders to his mates and crew. He appears quite 
+mad, but the Thunder Sail Argosy has survived, and the crew 
+doesn’t care whether that is due to cunning or luck as long 
+as the gold is good and the grog is thick.
+ Members: Most members of the A rgosy are fi  ghter/rogues  
+or swashbucklers, and many take levels in duelist. A few 
+important offi  cers are sorcerers or druids, and they function 
+as artillery and environmental control. Finally, like every 
+sailing ship, each Thunder Sail vessel has at least one bard, to 
+sing shanties in time with the hauling of ropes and alleviate 
+the thirsty, languorous days between plunderings.
+     The Argosy is not concerned about those who leave its 
+ranks—and  in  fact  it  frequently  asks  men  to  leave  the  
+crew (often at the end of a plank after they have crossed 
+the captain).
+ Secrets: When  you  rise  to  a  captaincy,  Captain  Jakes  
+informs you of the Thunder Sail Argosy’s hidden power and 
+purpose. Once a prominent plantation owner in a southern 
+kingdom, Jonas Jakes saw his daughter, a powerful druid 
+who helped him tend his crops, polymorphed into a green 
+mist by a chaotic, mad archmage who rode his horse through 
+town one day and casually sowed destruction in his wake. By 
+620_95374_Ch7.indd   180620_95374_Ch7.indd   1802/8/06   4:22:14 PM2/8/06   4:22:14 PM
+
+181
+CHAPTER 7
+AFFILIATIONS
+some arcane accident, Jonas’s daughter Ellyrese retained her 
+intelligence and spellcasting ability. Jonas keeps her in the 
+crystal sphere on the harpy-leg monopod in his quarters, and 
+now she uses her druid magic to cast spells for him to turn 
+the tide of a battle or to speed the Argosy on its way. Jonas 
+is desperately searching for an island with a white alabaster 
+cliff dwelling containing “no more than one eye, no less than 
+fi ve mouths,” which a seer once told him would be the key 
+to restoring his daughter.
+     Ty p e : Fighting company.
+    Scale:    5 (city).
+Criterion                                        Affi liation Score Modifi er
+Character level +1/2 PC’s level
+Base attack bonus +5 or higher +2
+5 or more ranks in Profession (sailor) +2
+5 or more ranks in Perform (sing) or another Perform 
+skill suitable for shipboard life +2
+Can cast control weather or similar effect +10
+Can summon water elementals, water natural allies 
+to careen ship without need to run it aground +4
+Is an outlaw +2 (per outlawing kingdom)
+Sails on a successful raid with the Argosy +4 per raid
+Has own ship to add to the Argosy +6
+Has no ranks in Profession (sailor), Climb, 
+or Balance –2 per skill
+Has tattoo of Imperial Naval service 
+or kills an albatross  –8
+Disobeys captain –10, and you are fl ogged
+Causes ship to be scuttled –50, and you are marooned
+Titles, Benefi  ts,  and  Duties: As you 
+advance in the Argosy, you de-
+velop  your  seamanship,  
+win plunder, and 
+perhaps even rise 
+to the captaincy. 
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower No affiliation.
+4–10                                Able-Bodied Seaman: The affi liation does 
+not recruit you, but does recognize your 
+seamanship.
+11–20                            Corsair: +2 competence bonus on Profession 
+(sailor), Balance, and Climb checks while on 
+board one of the Argosy’s ships.
+21–29                            Ship’s Offi cer: Gain an average of 200 gp per 
+month in plunder.
+30 or higher     Captain of the Rain Hawk or the Red 
+Lightning: You assume the captaincy of a 
+pirate ship; you can command a group of ten 
+pirates (eight 1st-level fighter/1st-level rogues, 
+one 3rd-level fighter/4th-level rogue, and one 
+7th-level druid) on one mission per month.
+ Executive Powers: Plunder, raid, terrorize.
+WINTERVEIN DWARVES
+     Symbol: The Winter vein sy mbol is a tr iang ular mountain 
+rent with cracks or veins.
+Background, Goals, and Dreams: A col lect ion of clans, the 
+Wintervein Dwarves are a cross between a nomadic tribe and 
+a crusading army, continually on the move against the goblin-
+oids,  aberrations,  and  other  horrors  of  the  deepest  caverns.  
+The Winterveins delve deeper into the earth than most other 
+dwarves, seeking out new caverns and transforming them into 
+The Thunder Sail Argosy approaches 
+another stepping stone on Captain Jakes’s quest
+Illus. by M. May
+620_95374_Ch7.indd   181620_95374_Ch7.indd   1812/8/06   4:22:21 PM2/8/06   4:22:21 PM
+
+182
+CHAPTER 7
+AFFILIATIONS
+habitable communities. Winterveins typically secure a cavern 
+complex deep underground, build a fortress-city there, then 
+push deeper underground until they fi nd a hospitable spot 
+for their next city. They’re the dwarves on their race’s most 
+important frontier: the one that extends below the feet of all 
+other dwarves. 
+Ty p e : Fighting company (racial).
+Scale: 11 (multiregional/duchy).
+Affiliation Score Criteria: The Winterveins function 
+like a “super-clan,” so every blood member is a dwarf. The 
+group has a number of nondwarf allies, but only dwarves 
+can earn affi liation.
+     The Winterveins often send clan members on scouting 
+or raiding missions, either in the company of their clan 
+comrades or w ith al l ies of other races (such as an advent ur ing 
+party). But the deeds that earn the most respect among the 
+Winterveins aren’t the assaults on goblin forts or mind fl  ayer  
+strongholds—they’re the successful defense of dwarven com-
+munities on the underground frontier when they are beset 
+by invading drow, vengeful duergar, or other opponents. 
+Criterion                                        Affi liation Score Modifi er
+Character level +1/2 PC’s level 
+Cleric, fi ghter, or paladin +1
+Dwarven defender prestige class +2
+Per successful mission +2
+Per defense of besieged dwarf citadel +4
+Titles, Benefi  ts, and Duties: The Wintervein dwarves 
+are masters of both alchemy and genealogy, and they can 
+create “ancestral infusions” that give the imbiber a measure 
+of the fortitude and strength of their famous forebears. Those 
+infusions  are  the  mechanism  that  
+delivers your affi  liation  benefi  ts.
+     When you reach a leadership position among the Winter-
+veins, you are the leader of a large extended family (with all 
+the politics that entails), and you’re the general of a dwarf 
+army on the march. Over the course of a single council 
+meeting, you might declare a crusade against a mind fl  ayer  
+city, hire adventurers to fi  nd the lost Hammer of Resounding 
+Rings, and placate a dwarf elder who is having a hard time 
+fi  nding wives for his sons. 
+Affiliation 
+Score               Title:               Benefi ts and Duties
+3 or lower  Not affiliated or junior member with no 
+benefits.
+4–14                                Defender of Wintervein: +2 racial bonus on 
+attack rolls against orcs and goblinoids.
+15–22                            Hero of Wintervein: As bonus feats, gain 
+Weapon Focus (dwarven waraxe) and 
+Weapon Focus (dwarven urgrosh). +6 racial 
+bonus on attack rolls against orcs and 
+goblinoids. Dodge bonus against giants 
+improves to +6.
+23–29                            Foehammer of Wintervein: +4 racial bonus 
+on attack rolls against orcs and goblinoids. 
+Dodge bonus against giants improves to +8.
+30 or higher     Lord of Wintervein: As bonus feats, gain 
+Improved Critical (dwarven waraxe) and 
+Improved Critical (dwarven urgrosh).
+ Executive Powers: Craft, crusade, raid.
+CREATING YOUR 
+OWN AFFILIATIONS
+To create your own affi  liation, follow these steps:
+         (1)  Devise  a  concept,  name,  symbol  (if  desired),  and  
+background.
+    (1a) Create information (if desired) pertaining 
+to members, enemies and allies, and secrets of 
+the affi  liation.
+        (2)  Choose  your  affiliation’s  type  and  
+category.
+       (3) Choose its scale.
+       (4) Select the affi  liation  score  criteria.
+         (5)  Create  the  titles  held  by  members  and  
+select  the  benefi ts and duties that accom-
+pany each title.
+       (6)  Choose  the  executive  powers  
+available to the leader or leaders of the 
+affiliation.
+Keep in mind that creating your own a f fi  liation  
+is a bit like creating a new magic item and 
+pricing it; tweaking is sometimes neces-
+sary. While these rules can be used like 
+a cookbook to combine ingredients and 
+make a decent product, there is always 
+room for extra fl  avor. Astute readers will 
+notice that the sample affi liations do not 
+always follow this process in lockstep. You 
+are encouraged to modify your affi  liations  as  
+The Winterveins delve deep into the darkest underground reaches
+Illus. by S. Ellis
+620_95374_Ch7.indd   182620_95374_Ch7.indd   1822/8/06   4:22:30 PM2/8/06   4:22:30 PM
+
+183
+CHAPTER 7
+AFFILIATIONS
+desired, and your DM is encouraged to allow for it, so that they 
+fi  t your game and campaign world as well as possible.
+     As discussed, affi  liations bring many new aspects to your 
+game. As you’re working through your creation ideas, don’t 
+forget that many of them can be enr iched even f ur ther i f other 
+people at the table are doing the same with affi  liations  of  their  
+own. Friendly rivalries between affi  liations can provide great 
+motivation and background for adventure.
+CONCEPT AND BACKGROUND
+It is most helpful to devise a general concept for your affi  li-
+ation at the outset. Will it openly rule in an area, or will it 
+act behind the scenes? Are its members, assets, or abilities 
+clandestine or hidden? Does it have a specifi  c creed or objec-
+tive? The answers to these questions help direct your creative 
+efforts and make the affi  liation more coherent and real.
+    Beyond a general concept, the extent of your affi  liation’s  
+background is entirely up to you. Indeed, the ex tent of what ’s 
+known about your affi  liation is as broad as your imagination. 
+The following topics can be considered when devising your 
+affi  liation. They might be set at the outset. Alternatively, you 
+can move on to the other creation steps after only jotting 
+down a few notes about your concept. Further details can 
+be left for the end of the creation process, or for description 
+and evolution during game sessions.
+    The example affi  liations described earlier in this chapter 
+make up a varied collection, yet they barely scratch the sur-
+face of what sorts of affi  liations you can create for yourself. 
+Each piece of information that can be part of an affi  liation’s  
+description is discussed below.
+ Name: The name of your a f fi  liation could be descriptive of 
+its interests or concerns, or it could be a “false front” hiding its 
+true agenda. It could be complex, legalistic, or long-winded, 
+evincing an effort to impress or awe the general populace. 
+Or it might be short or obscure, requiring a certain level of 
+inside information to understand its true meaning.
+     Symbol: Design your a f fi  liation’s symbol (if you want it to 
+have one), bring it to the table, and place it near your character 
+sheet whenever affi  liations are involved in play.
+     Motto: Perhaps everyone in your affi  liation shares a battle 
+cry, or perhaps they intone the same blessing before every 
+sunset. (The example affi liations in this chapter have no 
+mottoes, so you can come up with one you like if you want 
+to use an affi  liation “out of the box.”)
+ Background, Goals, and Dreams: Just as your character 
+is motivated by his past and driven to his future, so should 
+your affi  liation be. Did it start in the slaughterhouse of Bravik, 
+only to become a powerful mercenary company scourging the 
+hinterlands? Did it once r ise to dominate the cit y ’s arcane soci-
+ety, only to be shattered by the demons it once commanded? 
+Does your affi  liation want to merge with another affi  liation?  
+Destroy one? Draft the king’s niece into its ranks?
+     Enemies and Allies: You might choose one or two affi  li-
+ations, races, regions, or creature types that your affi  liation  
+cannot abide. Perhaps your affi  liation wants to expunge them 
+from the ear th, feels snubbed by them at cour t, or was al most 
+exterminated by them after a mass immigration from another 
+continent. In combat, members of the affi  liation attack these 
+enemies  preferentially,  and  in  parley,  they  bait  and  insult  
+them. The opposite applies to those creatures of individuals 
+you choose as allies. They should be given aid and succor 
+where possible, and you should expect similar treatment in 
+return.  Some  information  on  how  this  relationship  came  
+about, what the degree of cooperation is, and how steadfast 
+the relationship is would be useful as well.
+     Members: Name some of the other people in your affi  li-
+ation.  Identify  the  leader,  his  or  her  subordinates,  and  the  
+rivals  vying  for  position  within  the  affi  liation.  You  might  
+consider, with the DM’s permission, co-opting several pre-
+viously existing NPCs from the campaign to be members 
+of your affi  liation. Think about how your affi liation treats 
+ex-members (if it tolerates them at all).
+    Secrets: The byzantine politics of some affi  liations  afford  
+them ample opportunity to gestate a tangled mass of secrets. 
+If you like, choose one or two secrets for your affi  liation.  Share  
+them with your DM, but only give hints about them within your 
+party. Then, at an opportune time, unveil the secret. Perhaps your 
+order is more ancient than anyone guesses, and under another 
+name it founded the ruined castle you are now exploring—only 
+your order’s motto will activate the magic mouth on the nether 
+cyst below the throne room. Perhaps you’ve been hinting at 
+surprise allies, and when you reach the vampire’s manse, you 
+tap on the portcullis to summon the beast’s apothecary, who 
+is actually a spy for your guild.
+TYPE
+Choose your affi  liation’s type: business, cabal, college, druid 
+circle, fi  ghting company, government, spy ring, temple, thieves’ 
+guild,  or  tribe.  This  selection  affects  the  executive  powers  
+available to the affi  liation’s  leaders.
+     Some concepts might be diffi  cult to defi  ne neatly. A group 
+of related individuals (tribe) might be engaged in a profi  table  
+enterprise (business) selling illegal goods (thieves guild). 
+However, for the purpose of executive powers, you’ll need to 
+set one type as the affi  liation’s  primary  focus.
+CATEGORY
+Decide  whether  your  affi  liation  is  a  racial  one  or  a  social  
+one, and include “(racial)” in the Type entry of the affi  liation  
+description if appropriate. (The concept you create could 
+dictate which category the affi  liation belongs in.)
+SCALE
+Choose your affiliation’s scale in conjunction with your 
+Dungeon Master. Table 7–1, below, provides guidelines.
+     As  a  general  rule,  the  scale  of  an  affi liation is an indica-
+tion of how high up the ladder of infl uence it can rise. For 
+instance, a scale 12 affi  liation could obtain an audience with 
+the  king;  a  scale  8  affi  liation  probably  has  the  count’s  ear;  
+a scale 3 affi liation might get a hasty hearing by the local 
+burgomaster on a slow day. 
+    The exact meaning of scale could vary from affiliation 
+to affi liation, however. For example, an affi liation does not 
+necessar i ly need to be scale 19 to have in fl  uence on the Outer 
+Planes. Take a cabal of scale 6—it has infl  uence throughout a 
+roughly city-sized area or population. This city might be the 
+620_95374_Ch7.indd   183620_95374_Ch7.indd   1832/8/06   4:22:39 PM2/8/06   4:22:39 PM
+
+184
+CHAPTER 7
+AFFILIATIONS
+City of Brass on the Elemental Plane of Fire, and the cabal’s 
+scale might be explained by the fact that it is extremely 
+secretive and almost unheard by the general population on 
+its home plane.
+     You must have the Leadership feat to found an affi  liation.  
+If you do so, it nor mal ly begins at scale 1. Campaign circum-
+stances might dictate otherwise, however, so you should 
+consult with your Dungeon Master.
+Table 7–1: Affiliation Scale
+Scale  Scope of Infl uence Examples 
+  1 Neighborhood  Bakery, druid hermit
+  2 Neighborhoods Crossroads tavern
+  3 City quarter Small abbey, small 
+                      nomadic           tribe
+  4 City quarter Bank, slaughterhouse, 
+  barbarian trading post
+  5 City Arena, pirate ship, 
+                      githzerai           rrakma
+  6 City City watch, wild elf tree tribe
+  7 City and outliers Large college, tyrant wizard 
+  in tower, death slaad 
+  commanding a populous 
+                      gnoll           tribe
+  8 City/county Frontier fort, druid sect
+  9 Regional/barony Small castle, established 
+                      church
+10 Regional/march Minor nobility, powerful guild
+11       Multiregional/duchy       Nobility,       established       knightly
+  order, dread pirate fleet
+12 Multiregional/kingdom  Standing army, orc hordes 
+  led by legendary chieftain
+13 Multiregional/kingdom  Vast army raised to fight off 
+ and vassal states the tarrasque
+14 Continental/ Centuries-old large kingdom, 
+ seafaring kingdom illithid underground nation
+15 Continental/empire Emperor and his legions, 
+  circle of archmages
+16 Multicontinental/ Imperial legions with arcane 
+           empire           and           divine           support
+17 Global Ancient order of epic-level 
+                      knights
+18 Astral Plane Githyanki incursion force
+19 Multiplanar Armies in the Blood War 
+  between demons and devils
+20       Cosmos       Epic-level       affiliations,       
+                      hero-deities
+AFFILIATION SCORE CRITERIA
+Affi  liations measure a member’s value by a number of fac-
+tors. Some are baseline: If a character is not of the proper 
+religion, nationality, race, alignment, class, or other nature, 
+his affi  liation score is irrelevant (absent special dispensation 
+from the leadership). First, decide i f your a f fi  liation  enforces  
+any such prerequisites.
+     Other than baseline criteria, numerous other aspects of a 
+character are considered when awarding benefi  ts and status 
+in a group. For your affi  liation, choose up to thirteen of the 
+criteria listed on Table 7–2. 
+     A social affi  liation can (and usually does) have some nega-
+tive criteria—characteristics or accomplishments that reduce 
+a character’s affi  liation score instead of increasing it. As a 
+rule of thumb, select one negative criterion for every positive 
+criterion beyond the fi fth one you choose (six positive and 
+one negative, seven positive and two negative, eight positive 
+and three negative, or nine positive and four negative).
+     For the most part, racial affi  liations do not have negative 
+criteria; once you’re in a racial affi liation, you have to do 
+something pretty outrageous to lower your status in the 
+group—and such lowering is usually accomplished by simply 
+kicking you out of the group.
+     Because it is easier to move up in the ranks of a smaller affi  li-
+ation than a larger one, the base modifi ers given on Table 7–2 
+must be adjusted according to the affi  liation’s scale. The base 
+modifi  ers given are for affi  liations with a scale of 1 to 7. For 
+affi  liations of scale 8 to 14, divide the modifi  ers given by 2. For 
+affi  liations of scale 15 to 20, divide the modifi  ers given by 4. The 
+minimum impact of a criterion after modifi  cation  is  1/2.
+Table 7–2: Affiliation Score Criteria
+Positive Criteria Affi liation Score Modifi er
+Expertise and power +1/2 character levels
+Is a member of a favored race +1
+Charisma 13 or higher +1
+Base attack bonus of +5 or higher +1
+Base attack bonus of +10 or higher +2
+5 or more ranks in an appropriate skill +1
+10 or more ranks in an appropriate skill +2
+Has a feat that is signifi cant to the affi liation +1
+Can cast arcane or divine spells +1
+Can cast 3rd- to 4th-level spells +2
+Can cast 5th- or higher-level spells +3
+Has/does not have a familiar +2
+Member of a prestige class important to 
+the affiliation +2
+Possesses a magic item significant 
+to the affiliation +1/10,000 gp value
+Wealth +1/20,000 gp value
+Landowner                                                                         +2
+Noble title +2
+Lives in a favored region +1
+Parents or siblings in the affiliation +2
+Marries into a family whose head is an 
+affi liation member +2
+Recruits a new member into the affiliation +1
+Spends ten or more years in the affi liation +2
+In the thrall of a member of the affiliation +2
+Recommendation of a member who has an
+affi liation score of 21 or higher +2 
+Saves the life of a member who has an 
+affiliation score of 21 or higher +3
+Adventures with a member of the affiliation  +1
+Completes a mission assigned by the affi liation +2
+Makes a discovery important to the affiliation +2
+Humiliates an enemy of the affi liation +2
+Defeats a violent enemy of the affiliation in combat 
+(the foe’s CR must be equal to or or greater
+than the character’s level) +1/4 the creature’s CR
+Destroys an artifact anathema to the affi liation +4
+Razes a stronghold of one of the affiliation’s enemies    +8
+Makes a pilgrimage or journey important 
+to the affi liation +2
+Donates money or magic items to the affiliation (a
+maximum per year might be set, after which donations
+accrue no additional bonus) +1/1,000 gp donated
+620_95374_Ch7.indd   184620_95374_Ch7.indd   1842/8/06   4:22:46 PM2/8/06   4:22:46 PM
+
+185
+CHAPTER 7
+AFFILIATIONS
+Negative Criteria Affi liation Score Modifi er
+Is of unfavored race –2
+Associates with unfavored race –2
+Has been dead –4
+Has been undead –6
+Charisma 8 or lower –2
+Lacks base attack bonus of a certain level –3
+Lacks ranks in a certain skill –2
+Lacks a feat that is signifi cant to the affi liation –3
+Lacks ability to cast a spell –2
+Has/does not have a familiar –2
+Is of opposed alignment –4 to –20
+Acts in a manner befi tting opposed alignment –4
+Known to be friendly with opposing affiliation    –2 to –20
+Known to be a member of opposing affi liation –20
+Face, hair, time and place of birth, birthmark, or other
+quality marks the character as undesirable –20
+Lives in unfavorable area –2
+Loses or destroys affi liation property –1/1,000 gp value
+Fails in combat –2
+Falls in combat with affi liation’s hated foe or rival –4
+Steals from the affiliation –10
+Composes a song ridiculing the affiliation 
+or a prominent member –10
+Has been/has never been to an Outer Plane –2
+TITLES, BENEFITS, AND DUTIES
+Fill in titles as you wish for affi  liation  scores  of  4  through  
+30. In general, each ranking covers a range of six points of 
+affi  liation score, but variances are common. Often it is easier 
+to move through the lower ranks than the upper.
+    Choose three to five benefits from Table 7–3 for your 
+affiliation. If you choose more than three benefits, it’s a 
+good idea to choose one duty (so that members don’t get 
+too many benefits without having to do something to earn 
+them). If you choose four benefits, you should select one 
+duty, and if you choose five benefits, you should select 
+two duties.
+    Not all the benefi ts and duties detailed in the example 
+affi  liations appear in Table 7–3. You and your DM should 
+feel free to devise your own benefi  ts and duties, using the 
+ones given here as guidance.
+Table 7–3: Affiliation Benefits and Duties
+Benefi ts (affi liation score 11 or higher, or 4 or higher for 
+racial affi liations)
++2  circumstance  bonus  on  particular  skill  checks  within  a  
+geographical region
++2 circumstance bonus on particular skill checks when 
+working with other affi liation members or affi liation 
+resources
+100 gp/month income (or 200 gp for a business affiliation)
+Ability to share spellbooks with one spellcaster of your 
+level once per month
+Personal valet or servant (CR 1 or lower)
+Purchase spellcasting from your affi liation or an allied one 
+at 3/4 standard price
+Rent-free use of small flat in undesirable neighborhood
+Requisition one 1st-level potion or scroll per month
+Travel with impunity through an allied affiliation’s territory
+Benefi ts (affi liation score 21 or higher, or 15 or higher for 
+racial affi liations)
++1 on attack rolls against members of an enemy affiliation
+10% discount on experience or gp cost when crafting
+Bard song— +1 bonus on Diplomacy checks in a tavern whose 
+primary language matches that of the song
+Call in favor—lower your affi liation score by 5 permanently 
+to gain access to arcane or divine spell of 5th level or 
+higher for 1/4 standard price
+Claim audience with the king/emperor/theocrat within 1d6 
+days once per month
+Communications network lets you use the Gather 
+Information skill across the duchy, sea, or planes, 
+depending on the scope of your affi liation, without 
+requiring you to move from your hometown
+Dreamwalker—if sleeping in affiliation headquarters and can 
+prepare arcane spells, prepare one unknown spell per 8 hours 
+sleep if it is known to another sleeper in the headquarters
+Paper charm—when burned, word of recall (caster level 
+equal to affi liation scale, minimum 11th) takes you 
+and possibly allies back to your headquarters
+Personal honor guard of 4–6 appropriate creatures (EL 8)
+Purchase spellcasting from your affiliation or an allied one 
+at 2/3 standard price
+Benefi ts (affi liation score 30 or higher)
+Personal hagiographer (6th-level gnome bard) shadows your 
+every move with quill in hand, recording your deeds for the 
+affiliation’s records and the benefit of general posterity, 
+strumming his lute and rhyming about your life when not 
+engaged in his primary task
+Borrow one item of up to 15,000 gp value from the 
+affi liation’s stores once per month for 2d4 days 
+(30,000 gp value if the guild’s scale is above 10); while 
+the item is borrowed, the guild’s capital is decreased 
+by 1 if the item is valued at more than 10,000 gp
+Monument—your affiliation, a grateful populace, or a coterie 
+of rich, adoring sycophants erect an obelisk, a dolmen 
+garden, or a statue in your honor, granting you a +2 bonus 
+to your Leadership score and a +2 circumstance bonus 
+on Diplomacy and Intimidate checks when dealing with 
+people who have seen your monument
+Personal honor guard of 4–12 appropriate creatures (EL 12)
+Form friendship with head of allied af f iliation (of ten a creature 
+of CR 10 + 1/2 scale)
+Ancient advisors—the spirits of the former affi liation heads 
+are trapped within will-o’-wisplike glowing balls on the 
+Wisp Crown, a symbol of your offi ce; three times per 
+day you can use the Wisp Crown’s ancient advisors 
+to grant you a +6 insight bonus on any Appraise, 
+Decipher Script, Knowledge, Sense Motive, or Use 
+Magic Device check
+Claim audience with a rival (but not enemy) affiliation head 
+within 1d4 weeks once every three months
+Duties (affi liation score 11 or higher, or 4 or higher for 
+racial affi liations)
+Enemy affiliation’s members gain +1 on damage rolls against 
+you
+Enemy affi liation’s members have hostile reaction and 
+impose –10 penalty on Diplomacy checks
+Must destroy five items or creatures anathema to your affiliation 
+in one month or reduce affiliation score by 1
+Must donate 5% of treasure to affi liation
+Must make pilgrimage or endure initiation ritual or dangerous 
+journey
+620_95374_Ch7.indd   185620_95374_Ch7.indd   1852/8/06   4:22:52 PM2/8/06   4:22:52 PM
+
+186
+CHAPTER 7
+AFFILIATIONS
+Duties (affi liation score 21 or higher, or 15 or higher for 
+racial affi liations)
+Good judgment—make DC 20 Appraise check once per 
+month;  failure  indicates  loss  of  200  gp  and  affiliation  
+score reduced by 1
+Must recruit one new member per month or reduce 
+affi liation score by 1
+Must defeat a CR 9 creature in single combat
+Must donate 10% of treasure to affiliation
+Duties (affi liation score 30 or higher)
+Assassination attempts—if you fail to uncover a plot each 
+month with a DC 30 Gather Information check, then you 
+must face a CR 12 assassin (can be simplif ied: make DC 
+15 Fort save or die)
+Great judgment—make DC 20 Appraise check once per 
+month; failure indicates affi liation loses 1 capital
+Must defeat a CR 13 creature in single combat
+Mutiny—succeed on DC 15 Diplomacy check once per month 
+or face mob/challenger (EL 12)
+EXECUTIVE POWERS
+Affi liation leaders wield executive powers to accomplish 
+many tasks on a grand scale. Generally, a leader must have an 
+affi  liation score of 30 or higher in order to gain the authority 
+necessary to exercise these powers. 
+     Choose  three  executive  powers  for  your  affi  liation  from  
+among those described below. The executive power descrip-
+tions limit certain powers to certain affi  liation types. This 
+was done to balance out the value of the various types. You are 
+free to ignore those restr ictions i f your campaign or stor yl ine 
+dictates otherwise.
+     Some of the abilities encompassed by executive powers are 
+only used if you are playing with dynamic affi  liations  (using  
+the rules for capital, violence checks, espionage checks, and 
+negotiation checks).
+    Assassinate: You r a f fi  liation can retain the services of an 
+assassin (or send one of its own). The level of the assassin is 
+equal to 1/2 the affi  liation’s scale (minimum 1; maximum 10 
++ 1/2 its scale). Because it takes time to prepare a strike, an 
+assassin can be assigned one mission each three months. You 
+could resolve the results of an assassin strike using normal 
+D&D rules, or you might decide to resolve things “offstage.” 
+In the latter case, make an opposed espionage check against 
+the victim’s affi  liation (or against the victim’s Spot check, if 
+he has no affi  liation). If you succeed, the assassin penetrates 
+your  target’s  counterinfi ltration measures and strikes. The 
+victim must succeed on a Fortitude save against the normal 
+DC for the assassin’s death attack or perish.
+     Cabals, druid circles, governments, spy rings, temples, and 
+thieves’ guilds can retain assassins.
+    Beatify:    The deeds of a saint are to those of an ordinary 
+man as the clouds are to the earth. Serene, high, and aloof, 
+the saints move through our world, and yet seem not wholly 
+a part of it. Your affi  liation has the power to declare someone 
+a potential saint; someone who is beatifi ed gains the title 
+Blessed or Hallowed. A living creature who is beatifi  ed  gains  
+a +2 sacred bonus on Bluff, Diplomacy, and Intimidate checks 
+when dealing with other members of her faith. When she 
+casts a cure spell on a member of her own faith, she adds her 
+Wisdom bonus to the amount cured (maximum bonus equal 
+to the spell’s level).
+    Druid circles and temples can beatify a creature.
+     Craft: Hammers ring on anvils, saws hum through wood, 
+and kraken-ink quills scratch on half-petrifi  ed  calf  vellum  
+at  your  affi liation’s headquarters. Your affi liation is adept 
+at producing valuable items. It can craft any masterwork 
+item or magic item from the Dungeon Master’s Guide with a 
+market pr ice of up to 2,0 0 0 × the a f fi  liation’s scale. This item 
+belongs to the affi  liation, but you can borrow it according 
+to the benefits of your title in the affiliation description. 
+Mobilizing the affi liation in this way is a big job; to do so 
+requires either an expenditure of 1 capital or a successful 
+negotiation check (DC 15 + 1 per 2,000 gp value of the item) 
+to bargain with supply and labor vendors. The process of 
+crafting is not quick; you must wait 1–2 months to receive 
+the item. During this time your affi  l iation is free to engage 
+in other actions.
+     Businesses, cabals, druid circles, colleges, temples, and 
+tribes can craft items.
+     Crusade: You r a f fi  liation can declare a crusade. You des-
+ignate an enemy and attempt a Diplomacy check (DC 20 + 
+scale of target affi  liation, or DC 20 + level of target creature). 
+If  you  succeed,  your  followers  martial  their  resources  and  
+travel any distance to attack the offending blasphemer. If the 
+target is an a f fi  l iation, ma ke opposing v iolence checks. If your 
+affi  liation is successful, an opposing affi  liation loses 1 capital. 
+If the target is an individual, he must make a Fortitude save 
+(DC equal to your violence check result). If the target fails, 
+he perishes under your affi  liation’s  righteous  onslaught.
+     If you wronged an enemy affi  liation by prying out the ruby 
+eyes of its sacred idol, selling the head of its demon guardian 
+at auction, or rescuing a screaming sacrifi  ce from its altar, 
+your rival might retaliate by targeting your character with 
+an unholy crusade. Your DM might set aside the normal 
+Fortitude save and choose to play out an encounter. In that 
+case, you will be set upon by creatures appropriate to the 
+rival affiliation, with an EL equal to 10 + your opponent’s 
+violence bonus.
+    Each month that it crusades, an affi  liation loses 2 capital 
+due to the cost of the ongoing operations.
+    Fighting companies, temples, and tribes can crusade. A 
+crusade can target an individual, business, college, fi ghting 
+company, government, temple, or tribe. Spy rings, druid 
+circles, cabals, and thieves’ guilds are too elusive for such 
+punishment.
+    Excommunicate:    You might instruct your affiliation 
+to shun an individual or an entire group. No cleric of your 
+affi  l iat ion w i l l help an excommunicated creat ure or a member 
+of an excommunicated affi  liation. If the excommunicated 
+creature fails a Will save (DC 10 + the scale of your affi lia-
+tion), your edict is so strong that for a period of 1 year, the 
+subject cannot benefi t from a divine spell cast by anyone 
+w ith an al ignment descr iptor in common w ith those of your 
+church. For example, if a lawful good church of Heironeous 
+excommunicates a creature and it fails its save, the creature 
+cannot benefi  t from divine spells from a caster who is either 
+lawful or good.
+620_95374_Ch7.indd   186620_95374_Ch7.indd   1862/8/06   4:22:59 PM2/8/06   4:22:59 PM
+
+187
+CHAPTER 7
+AFFILIATIONS
+    Druid circles, temples, and tribes can excommunicate 
+individuals.
+    Gift:    Your affiliation might bestow a valuable gift when 
+it  matters  most.  After  receiving  a  gift,  the  mercenary  
+company sends extra troops, the temple sends its staff of life 
+along with the bishop, and the thieves guild doesn’t pick-
+pocket your members on the way back from the tavern. 
+When your affiliation sends a gift to someone, you or an 
+agent of your affiliation receives a +4 competence bonus 
+on  your  next  Diplomacy  check  involving  the  recipient  
+of the gift.
+    Alternatively, when your affiliation sends a gift to an 
+appropriate organization, it secures a +2 competence bonus 
+on its next violence, espionage, or negotiation check, provided 
+the attempt is undertaken within 2 months of the gift. For 
+example, a gift to a fi ghting company could secure a bonus 
+on your next violence check.
+     Businesses,  colleges,  governments,  and  temples  can  
+send gifts.
+    Harvest:    The wisdom or savvy of your affi  liation’s  leader  
+allows your members to work the land to your advantage, 
+coaxing  crops  from  grudging  soil  or  teasing  out  precious  
+metals  from  jealous  rock.  When  your  affi  liation  uses  the  
+Har vest power, make a DC 20 Appraise check. If your result 
+is between 21 and 30, each member of the affi  liation  receives  
+gold (your share is 50 gp × the affi  liation’s scale), and the affi  li-
+ation itself enjoys a +1 circumstance bonus on all violence, 
+espionage, and negotiation checks for the next 2 months. If 
+your result was over 30, you can choose the above benefi  ts,  
+or your affi  liation can gain 1 capital.
+    Businesses and tribes can harvest.
+     Holiday: You r a f fi  liation has the power to declare holidays. 
+These holidays can be perennial (Angels Day, Wyrm Waking 
+Day, Feast of the Chapeaux of St. Cuthbert) or one-day events 
+marking  grand  occasions  (the  dauphin’s  wedding  day,  the  
+triumph  over  Snurre  and  the  hill  giants,  the  arrival  of  the  
+Duke of Brass’s ambassador). Any citizen in a land celebrating 
+the holiday, and any member of an affi  liation observing the 
+holiday,  gains  a  +1  morale  bonus  on  all  attacks,  saves,  and  
+skill checks during the day. No more than one holiday per 
+month can be declared.
+    Druid circles, governments, and temples can designate 
+holidays.
+    Inquisition:    With the ringing of the steeple bells, your 
+holy organization declares a hunt for blasphemers. Designate 
+one target affi  l iation. Throughout your area of in fl  uence,  that  
+affi  liation falls under the shadow of suspicion.
+    On an individual level, members of the targeted affili-
+ation are harassed by dedicated inquisitors. For each day 
+they spend in the lands of the inquisition, they must suc-
+ceed on a Fortitude save (DC 10 + your affiliation’s scale) 
+or be fatigued.
+     On  an  affi  liation  level,  suspected  groups  are  forced  to  
+curtail some activities and conceal others. The target of an 
+inquisition must succeed on an opposed espionage check or 
+be unable to use any executive power requiring a violence or 
+negotiation check during the next month.
+     Maintaining  an  inquisition  is  expensive  and  interferes  
+with  day-to-day  activities.  Each  month  when  you  conduct  
+an inquisition, you must succeed on an opposed negotiation 
+check with the local government or lose 2 capital.
+     Druid circles and temples can press an inquisition. Individ-
+uals, businesses, colleges, fi  ghting  companies,  governments,  
+temples, and tribes can be targeted. Cabals, druid circles, spy 
+rings, and thieves’ guilds are too elusive for persecution.
+    Law: You r a f fi  liation can write and enforce law through-
+out its domain. You might outlaw arcane or divine casting, 
+concealed weapons, magic items, gnomes, or anything else 
+you  desire.  If  an  object  or  practice  is  outlawed,  anyone  
+caught using it, engaging it, or being it is fi  ned or jailed, as 
+you decide. Penalties beyond a fi  ne of 100 gp × your scale 
+are rare.
+    An individual can attempt a Disguise check (DC equal 
+to your espionage check result) to engage in an outlawed 
+practice with impunity. If you outlaw an affi  liation,  it  goes  
+underground  and  takes  a  –2  penalty  on  all  checks  until  
+it relocates or the ban is lifted. A banned affi  liation  has  a  
+maximum capital of 1.5 × its scale, and it is exterminated if 
+its capital reaches 0.
+     Particularly outrageous laws could require your affilia-
+tion to present the plan persuasively to your countr y men; 
+a Diplomacy check (DC 20 + scale) is required to accom-
+plish this.
+     You r     a f fi  liation can also make a law requiring certain tasks 
+of citizens in your area. If all citizens are required to undergo 
+martial training, each adult militia member in your lands gains 
+pqqqqqqqqqqqqqqqqqqqqrs
+pqqqqqqqqqqqqqqqqqqqqrs
+EXCEPTIONS TO THE RULES
+If your concept for a new affiliation doesn’t mesh neatly with the 
+guidelines for creating your own affiliation, don’t let the guidelines 
+keep you from doing what you want (within reason, of course). 
+    In particular, several of the affiliations presented earlier in this 
+chapter don’t rigidly follow the guidelines concerning executive 
+powers, so they can serve as examples of exceptions to the gen-
+eral rules.
+    The Caravan of Shadows is a business that has the executive 
+powers pariah and shadow war, both of which are not normally 
+available to businesses—but they work well in the context of this 
+affiliation’s concept.
+    The Chalice is a fighting company that has the inquisition 
+executive power—a justifiable exception for a group of holy 
+crusaders.
+    Dragon  Island  is  a  government  affiliation  that  has  four  
+executive powers rather than the usual three, reflecting the 
+overall  power  not  only  of  the  affiliation  but  of  its  highest-
+ranking members.
+    The leaders of the Wintervein Dwarves have access to the 
+craft executive power, which is not normally available to a fight-
+ing company—but for a fighting company of dwarves, it makes 
+perfect sense.
+620_95374_Ch7.indd   187620_95374_Ch7.indd   1872/8/06   4:23:06 PM2/8/06   4:23:06 PM
+
+188
+CHAPTER 7
+AFFILIATIONS
+a +1 competence bonus on attack rolls, and your government 
+as a whole gains a +1 competence bonus on violence checks. 
+If you require all citizens to be literate, local civil servants 
+are recruited from a more knowledgeable populace and your 
+government  gains  a  +1  competence  bonus  on  negotiation  
+checks.  If  you  require  all  citizens  to  participate  in  a  state  
+religion or a state industry, every citizen gains at least 1 rank 
+in  Knowledge  (religion)  or  Profession  (relevant  industry),  
+and a +1 competence bonus on checks made using that skill. 
+If you raise taxes to an extraordinary level, you have a 25% 
+chance of gaining 1 capital each month. Other requirements 
+and benefi  ts are possible; consult with your Dungeon Master. 
+Requirements demand a citizen’s time and energy, however, 
+and  only  one  such  requirement  can  be  in  place  at  a  time  
+(establishing a new requirement counts as the affi liation’s 
+use of executive power for that month). Requirements are 
+also  oppressive—your  affi  liation’s  leader  must  make  a  DC  
+30 Diplomacy check or reduce his affi  liation score by 1 each 
+month that the requirements are in place.
+    Normally, only governments can set laws. If there is no 
+government in a region, druid circles or temples might enforce 
+scripture as law.
+    Mint:    You r a f fi  liation stamps its leader’s face on coins and 
+issues them as currency. You gain a +2 circumstance bonus 
+on Intimidate and Diplomacy checks with money-using 
+creatures in lands where the coins circulate. The awe inspired 
+by such a powerful act might shake your foes’ resolve; anyone 
+who confronts you in battle and has used your coins spends 
+the fi  rst round of combat shaken (no save). You also receive 
+free meals and free stays in inns or roadside houses with a 
+DC 5 Diplomacy check.
+     Governments can mint coins, and if the government allows 
+it, businesses can do so as well.
+     Pariah: Through rumor, propaganda, forgeries, and lies, 
+you portray an individual as anathema to his affi  liation.  You  
+spread tales of priests slaughtering innocents, of businessmen 
+squandering  riches  on  games  of  knucklebones,  of  soldiers  
+plotting sedition. This causes the individual to be outcast 
+from his affiliation. The target’s affiliation score drops to 
+0 temporarily, during which time he has no access to any 
+affi  liation  benefi  ts, funds, items, or abilities.
+     You r     a f fi  liation  must  succeed  on  an  espionage  check  or  
+negotiation  check  opposed  by  the  individual’s  Diplomacy  
+check to make the rumors stick. If the individual exercises 
+executive power within his affi  liation, he can add his guild’s 
+negotiation bonus on his Diplomacy check as a compe-
+tence bonus.
+    Each month, the pariah can attempt to clear his name by 
+making the same opposed check. When he succeeds, the 
+record is fi  nally set straight, and the sheep-faced members 
+of his affi  liation welcome him back with his full affi  liation  
+score restored. A pariah who has cleared his name cannot 
+be again outcast from his guild with the pariah power for 1 
+year plus 1d12 months.
+     Cabals, spy rings, and thieves guilds can declare a member 
+to be a pariah.
+     Plague: Filth fever, centipede swarms, corn blight, a rain 
+of shocker lizards—all these are examples of plague. When 
+your affi  liation plagues a land or another affi liation, each 
+affected person must make a Will save (DC equal to your 
+violence check result) each day of the month. Failure imposes 
+a –1 penalty on all saving throws for that day. Any leader 
+of a plagued affi liation must make a Diplomacy check (DC 
+equal to your violence check result) with the members of 
+his affi  liation any time he wants to use an executive power; 
+failure means that he is powerless in the face of the plague 
+and his affi  liation score decreases by 1.
+    Druid circles, temples, and tribes can bring a plague. 
+Businesses, colleges, druid circles, fi  ghting companies, govern-
+ments, temples, and tribes can be targeted by a plague. Cabals, 
+spy rings, and thieves’ guild are too small and too diffuse to 
+be affected by a plague. 
+    Plunder: Treasure is the goal, and speed is the means. 
+When your affi  liation plunders an area, you are not attempt-
+ing to damage it permanently only to add to your own wealth. 
+When  your  affi  liation  launches  a  plundering  attack,  make  
+an opposed violence check. If successful, you gain gold and 
+gems; your share of the loot is 100 gp × your affi  liation  score.  
+The enemy has a 1 in 6 chance of losing 1 capital as a result of 
+your plundering; your affi  liation has a separate 1 in 6 chance 
+of gaining enough treasure to increase its capital by 1.
+     Fighting companies, governments, spy rings, thieves’ guilds, 
+and  tribes  can  plunder.  Only  businesses,  colleges,  govern-
+ments, and temples can be plundered.
+    Raid:    A raiding party seeks to deal as much damage as 
+possible and escape unscathed. Make an opposed violence 
+check with the target affi  liation. If your check is successful, 
+the opposition suffers the loss of 1 capital. If unsuccessful, 
+your raiding party has been trapped in the enemy’s territory. 
+Make  opposed  espionage  or  negotiation  checks  to  either  
+sneak or talk your way home. Failure indicates that the raid-
+ing party perishes and your affi  liation loses 1 capital.
+     Cabals,  druid  circles,  fi  ghting  companies,  governments,  
+spy rings, thieves’ guilds, and tribes can stage raids.
+    Research:    Gathering information is the raison d’etre for 
+spy rings and colleges, but it is useful for other affiliations 
+as well. When your affiliation conducts research, you can 
+make an arcane discovery or unearth information about 
+your enemies.
+     You r     a f fi  liation can research any arcane spell. The leader 
+must pay the market price of a scroll of that spell in seed 
+money for the research. In 1d4 months, your affiliation 
+produces a scroll of the researched spell.
+     Your group can also research opponents. Against any 
+NPC who has been researched, you and other members of 
+your affi  liation gain a +1 insight bonus on attack rolls in the 
+fi  rst  round  of  combat  (after  that,  the  NPC  realizes  you  are  
+anticipating his moves and switches tactics).
+     Finally, research can be conducted on an enemy affi  liation.  
+Your group gains a +2 insight bonus on its next violence, 
+espionage, or negotiation check against that affi  liation.
+    Cabals, colleges, and spy rings can conduct research.
+     Shadow     War:     You r  a f fi liation stalks the alleys, the under-
+passes, the rooftops, and the dark copses on the edges of country 
+lanes.  From  concealment  you  strike,  and  to  concealment  
+you return. When engaged in a shadow war, your affi  liation  
+620_95374_Ch7.indd   188620_95374_Ch7.indd   1882/8/06   4:23:12 PM2/8/06   4:23:12 PM
+
+189
+CHAPTER 7
+AFFILIATIONS
+makes  an  opposed  espionage  check  against  your  target.  If  
+your check fails, your target exposes your affi  liation  before  
+it can strike, and your affi  liation takes a –2 penalty on nego-
+tiation checks for the next month. If your check succeeds, 
+your  shadow  strike  is  true.  If  your  successful  check  result  
+was 10 or lower, your enemy affi liation’s internal structure 
+is disrupted, and it takes a –2 penalty on violence, espionage, 
+and negotiation checks for the next month. If your success-
+ful  check  result  was  between  11  and  20,  the  opposition’s  
+command  and  control  structure  is  paralyzed,  preventing  
+any affi  liation member from using any benefi  ts for the next 
+month. If your successful check result was higher than 20, 
+your opponent loses 1 capital.
+    Cabals, druid circles, spy rings, and thieves’ guilds can 
+start a shadow war. 
+     Ter ror ize : Skull f lags on the horizon, ominous drums 
+along the mountains, illusions cast on pillows that cackle 
+suddenly to life and screech out bloody warnings when the 
+target lies down to bed—all these are techniques used by 
+your  affi liation to strike terror in the hearts of individuals 
+and other groups. 
+     You r     a f fi  liation can speak eloquently to the victim, threat-
+ening violence, or it can swing for the kneecaps and actually 
+provide the violence. A terrorized individual must make two 
+Will saves (DC equal to your violence or negotiation check 
+result). If she succeeds on both, there is no effect. If she fails 
+one, for the next month she is shaken in the fi rst round of 
+combat when fi  ghting a member of your affi  liation. If she fails 
+both, for the next month, she is frightened of any member of 
+your affi  liation  and  fl  ees at the fi  rst  opportunity.
+     Your group can also attempt to terrorize an enemy affi  lia-
+tion. To do so, make an opposed negotiation or violence check 
+(depending on how you would like to deliver the threat). If 
+your affi  liation wins, the opposing affi  liation cannot use any 
+executive powers during the next month.
+     Even the worst atrocities become commonplace if repeated 
+too often. An individual or affi  liation cannot be targeted for 
+terrorism more than one month out of every four.
+     If your affi  liation succeeds on an opposed espionage check 
+before terrorizing another affi liation, the victim does not 
+know who terrorized it.
+     Cabals, druid circles, fi  ghting companies, governments, spy 
+rings, thieves guilds, and tribes can terrorize. Cabals, druid 
+circles, spy rings, and thieves guilds cannot be terrorized.
+     Trade:     Commerce is the life blood of business, and it can 
+provide a much-needed infusion of capital for other affi  lia-
+tions as well. When your group trades, choose one friendly 
+affi  liation. Each organization gains 1 capital. Make opposed 
+negotiation checks; whoever wins has a 1 in 6 chance of 
+gaining 1 additional capital.
+    Alternatively, your affiliation’s trade connections can 
+help an individual entrepreneur. If your affi liation’s trad-
+ing facilities are put at the disposal of an individual, he 
+gains a +4 competence bonus on Appraise checks and a +2 
+competence bonus on any Diplomacy checks that involve 
+trade for 1 month. 
+    Lastly, a trading network can provide rumors of exotic 
+items. Make a DC 20 negotiation check. If it succeeds, a seller 
+has been located who possesses a wondrous item determined 
+randomly from those described in the Dungeon Master’s Guide 
+(50% chance for a minor item, 30% chance for a medium item, 
+20% chance for a major item; roll on Table 7–27, 7–28, or 7–29 
+as  appropriate).  Because  of  your  trading  connections,  you  
+have a percentage discount equal to your affi  liation’s  scale  
+should you purchase the item. For example, if you belong 
+to an affi liation with a scale of 12, you would receive a 12% 
+discount on the purchase.
+    Only businesses and colleges can instigate trades, but 
+any other type of affiliation can be the other partner in 
+a transaction.
+     Wa r : Fires sweep the rooftops, and the plains shake under 
+the boots of marching troops. War means many different 
+things depending on your campaign, but two results are 
+constant. First, throughout your affi  liation’s sphere of infl  u-
+ence,  prices  double.  This  price  increase  affects  everything  
+from adventuring equipment such as 10-foot poles and scrolls 
+of lesser restoration to mundane items such as livestock and 
+food. It applies both to purchases and to crafting expenses, 
+including item creation costs. 
+    Second, whenever a PC attempts to contact an NPC who 
+resides in the area ravaged by war, the NPC must make a DC 
+12  Fortitude  save.  Failure  means  the  NPC  has  perished  in  
+the war. Your DM might make this check once per month 
+for  other  important  NPCs  she  deems  at  risk,  regardless  of  
+whether anyone attempts to contact them.
+    Every month that your affi  liation is at war, the war effort 
+decreases its capital and its enemy’s capital by 1. Additionally, 
+make opposed violence checks. The loser suffers an additional 
+loss of 0–2 capital (roll 1d6; 1–2 = 0, 3–4 = 1, 5–6 = 2). 
+     Your DM might have an NPC-controlled affi  liation  declare  
+war. If two governments exist in the same territory, they 
+must go to war until one perishes (even if war is not an 
+executive power possessed chosen by either government). A 
+wise affi  liation keeps its warchest well stocked with ingots; 
+poor affi  liations are ripe targets for conquest.
+    Fighting companies, governments, and tribes can start a 
+war. War can be waged against a college, fi ghting company, 
+government, temple, or tribe. Cabals, druid circles, spy rings, 
+and thieves guilds are too elusive. Businesses are mobile 
+enough to avoid war, but can be outlawed by governments. If 
+a business is outlawed, however, it simply turns to the black 
+market (see the law executive power). 
+EX AMPLE OF PL AY
+The players at the table include Leigh (Mialee the wizard), 
+Wendy (Lidda the rogue), William (Regdar the fi  ghter),  and  
+Matt (Jozan the cleric). Jody is the Dungeon Master.
+William (Regdar): A 1! I leap back out of the way.
+Wendy (Lidda): I was trying to open the—
+Jody (DM): Lidda trips the wire and stone rumbles overhead. 
+The crepuscular light fades. When you look up, you can 
+see by Regdar’s torch that a stone disk has rotated into 
+place over the exit, trapping you at the bottom of this 
+raptor-pharaoh shaft.
+620_95374_Ch7.indd   189620_95374_Ch7.indd   1892/8/06   4:23:19 PM2/8/06   4:23:19 PM
+
+190
+CHAPTER 7
+AFFILIATIONS
+Matt (Jozan): How are we going to get back out? Mialee, what 
+about Hanali’s Circle?
+Leigh (Mialee): No, don’t you remember the shadow war with 
+the Vecna cabal? They attacked in Avrillet last month and 
+paralyzed a lot of our activities. So, no new word of recall 
+charms for a while. We really do need to go after the One 
+and the Five once we get out of here.
+Wendy (Lidda): Right, Tall and Slender, your friends might 
+be fl inging acid arrows in the alleys up north, but my 
+guild mates are right here guarding the codex. I bet they 
+can let us out.
+Lidda climbs to the top of the shaft and hangs from two pitons 
+and a krenshar-hide saddle strap.
+Wendy  (Lidda):  I  shout  for  my  guild  mates  to  help  while  I  
+am trying to pick the lock.
+Jody (DM): It’s unpickable from this side. In fact, there is no 
+lock. However (makes a Listen check for Lidda), you do 
+hear the sounds of shouts, then ringing steel on steel and 
+the whoosh of fi  reballs.
+William (Regdar): Blood of the emperor! It must be the 
+Reviled vanguard. On open ground. Can your rogues 
+take them?
+Wendy (Lidda): I don’t know . . .
+Jody (DM): You specifi  cally brought them for this mission, so 
+I’m going to rule that they’re not surprised by the Reviled, 
+even though the light-adapted trogs belly-crawled through 
+the sand from the direction of the sunset. Do you have 
+individual stats for your guild force? [Lidda shakes her 
+head.] Then give me a violence check.
+Wendy (Lidda): I rolled a 14 and add my guild’s +2 violence 
+bonus. 16!
+Jody rolls d20 adds the Reviled affi  liation’s violence bonus.
+Jody (DM): 15. The Violet Ghosts win by one. A single surviv-
+ing  guild  mate  arm-drags  himself  through  the  reeking,  
+bloodied sand to the top of the shaft. He scratches at the 
+stone, and after a great deal of encouragement from you, 
+he fi  nally hits the mechanism to tilt the plug-disc. The 
+stars are out by now, and the stench of the Reviled comes 
+through the opened gap.
+Later, after the party has set up watches: 
+Leigh  (Mialee):  If  there’s  nothing  going  on  during  my  
+watch, I’m going to read the codex for any clue on which 
+shaft  is  Iathra’s  tomb,  since  our  first  guess  obviously  
+wasn’t right.
+Jody (DM): The stiff pages are filled with religious ico-
+nography  and  veiled  allusions.  Give  me  a  Knowledge  
+(religion) check.
+Leigh rolls d20 and adds her Knowledge (religion) skill 
+modifi  er plus another 1 because religious knowledge has 
+permeated her homeland, the territories around Castle 
+Mairo, ever since the baron made it the law for all citizens 
+to participate in the Pelorite religion.
+Leigh (Mialee): Let’s see, with modifi  ers, I rolled a 15.
+Jody (DM): Just made it!
+Leigh (Mialee): Heh. Jozan, I might grumble, but apparently 
+the mandatory worship of Pelor has its uses!
+Jody (DM): You learn that the shafts of the raptor-pharaohs 
+are  laid  out  according  to  dynasty,  and  Iathra’s  shaft  
+should be the one closest to where the sun sets on Wyrm 
+Wa k i ng   D ay.
+The next day, the party descends into the correct tomb.
+Jody (DM): Jozan’s boots bang down on the sandstone tomb 
+and puff up a cloud of dust. All right, everybody that has 
+been living in Castle Mairo, this is the start of the day’s 
+activities, so let’s see the Will saves. These are to avoid 
+the effects of the rain of shocker lizards that the Reviled 
+plagued you with last new moon. They rolled a 14 on their 
+violence check, so that’s the DC.
+Matt (Jozan): 17. Pelor has no respect for the Reviled.
+William (Regdar): 13. Gah! –1 to all my saves today.
+Leigh (Mialee) 21. I scoff at the darkness.
+Jody (DM): Okay, as you’re cursing the ape-frogs, Regdar, you 
+become aware of a scurrying in the dust. A small spider 
+is running out of the passage to the north, zipping past 
+Jozan’s feet.
+Matt (Jozan): I squash the nasty thing with my mace!
+Jody chuckles.
+Jody (DM): It offers no resistance. Both you and Regdar 
+hear something in the passageway behind the spider. Sud-
+denly you see what the spider was running from—three 
+troglodyte degenerates galloping on all fours straight 
+toward you.
+William  (Regdar):  Troglodytes!  I  charge  and  yell,  “For  
+Herridek!”
+Jody (DM): A bloody battle brews, it would seem. Jozan, 
+I need an espionage check for the Sun Fane. There are 
+Reviled agents within; if you fail, they have infiltrated 
+your hierarchy and knew that you were coming. In that 
+case, they will have sent at least a few more tomb denizens 
+to your little welcome party.
+Matt (Jozan): Whoa. Espionage is not the Sun Fane’s strong 
+suit.
+Wendy (Lidda): Can the Violet Ghosts assist?
+Jody (DM) : Sure, ma ke an espionage check, DC 10. If you 
+succeed, you add a +2 bonus on the Sun Fane’s check.
+Wendy rolls d20 and adds her affi  liation’s espionage bonus.
+Wendy (Lidda): 23, no problem.
+Matt rolls d20 and adds his affi  liation’s espionage bonus plus 
+2 for Wendy’s help.
+Matt (Jozan): Only an 11. Ouch!
+Jody rolls d20 and adds the Reviled’s espionage bonus.
+Jody  (DM):  16.  The  Reviled  spies  in  the  Sun  Fane  have  
+compromised your agents and learned their plans. There 
+are two additional carrion crawlers here to welcome you. 
+I could have done this a while ago, of course, but I wanted 
+you to see the rolls and have an opportunity to roll for your 
+own affi  liation.
+Jody picks up two carrion crawler miniatures.
+Matt (Jozan): Remind me to ask you about an inquisition 
+when we get back! There are spies in the fort!
+Jody (DM): The degenerates leap upon you, their familiar 
+stench closing around your lungs like a dragon’s claw. You 
+can hear the wet sucking sounds of the crawlers’ footpads 
+as they blindly feel their way down the walls and ceiling 
+of the passageway behind the troglody tes. It ’s that time, 
+everyone—roll for initiative!
+620_95374_Ch7.indd   190620_95374_Ch7.indd   1902/8/06   4:23:25 PM2/8/06   4:23:25 PM
+
+he DUNGEONS & DRAGONS game offers a great 
+deal  of  flexibility  in  character  creation  and  
+advancement. When you make a character, you 
+can choose any race or class combination, select 
+from a wide variety of feats, and buy ranks in 
+any  skills  you  wish.  Once  you’ve  made  these  
+decisions, however, they cannot be changed. Most of the 
+time those early decisions work out fine, but sometimes 
+you might regret your previous choices. Maybe you didn’t 
+fully understand the ramifications of the choice you made. 
+Or  maybe  you  constructed  a  character  around  a  great  
+concept, but in play, the particular set of circumstances 
+that  would  let  your  character  shine  never  cropped  up.  
+And even if you built your character to perfection, each 
+new  supplement  presents  new  classes,  feats,  spells,  and  
+special  abilities,  many  of  which  might  better  serve  the  
+needs of your character or the campaign than those you 
+previously selected.
+    It’s  true  that  part  of  the  D&D  game’s  challenge  is  
+making smart choices in creating or advancing your char-
+acter. But a DM who forces someone to play a character 
+he doesn’t find enjoyable isn’t making the game fun for 
+that player or the others at the table. In such a situation, 
+the player usually either throws away the character and 
+rolls up a new one, or quits the game. If your campaign 
+values character continuity (as many campaigns do), nei-
+ther of those outcomes is especially attractive. Why force 
+Mike to throw away the elf fighter he’s been playing for 
+three months just because he made a couple of bad feat 
+choices,  when  allowing  him  to  change  those  choices  
+would be so much better for the storyline? If Mialee 
+has been an integral part of the campaign since Day 
+1 but has regretted being an elf since Day 2, wouldn’t 
+it be better to let her become the half ling she would 
+prefer to be by undergoing a dramatic transformation 
+at the Necrotic Cradle (see page 203) than to abr uptly 
+replace her with Liamee the half ling wizard? The fact 
+that Liamee the half ling coincidentally has the same 
+spells, feats, skill ranks, and familiar as Mialee the 
+elf  did  but  has  no  connection  to  the  campaign  or  
+the rest of the party is stretching credulity perhaps 
+a bit too far.
+     This  chapter  presents  rules  for  revising  various  
+aspects  of  your  character  during  play.  With  this  
+system, you can modify elements of your character 
+to better fi  t your vision of who your character should 
+be—both to meet the needs of the party and to face 
+the threats presented during the course of an entire 
+campaign.  Though  character  revision  does  allow  
+you  to  “rewrite”  certain  elements  of  your  charac-
+ter,  the  rules  presented  here  ensure  that  the  changes  
+remain within reason and do not upset the story that 
+has already been created by each character’s deeds in 
+the campaign.
+191
+Illus. by R. HorsleyIllus. by R. Horsley
+620_95374_Ch8.indd   191620_95374_Ch8.indd   1912/8/06   4:23:58 PM2/8/06   4:23:58 PM
+
+192

@@ -1,0 +1,1549 @@
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+sake of determining what size of hidden space can be built 
+within it . In some cases, common sense will override this 
+determination: A dagger wielded by a Medium creature, 
+for instance, should be considered a Tiny object rather 
+than a Medium or Small one .
+  A  selection  of  typical  hidden  spaces  is  described 
+below . Of course, variations on these themes are pos-
+sible . The price given for each one is a rough estimate 
+of the cost of incorporating the hidden space into the 
+structure of an item, either before or after the item is 
+manufactured .
+  Opening a hidden space requires a full-round action 
+unless otherwise noted .
+ False Bottom: The classic hiding spot, a false bottom 
+can be added to any container with a hard base, from a 
+desk drawer to a chest to a barrel . A false bottom slightly 
+reduces the amount of storage space the object otherwise 
+would have . Gaining access to a false bottom typically 
+requires emptying the container of the rest of its contents 
+and locating and triggering a small latch that loosens the 
+false bottom and allows it to be opened .
+  The maximum size of a false bottom is two sizes smaller 
+than the container it is built into .
+ Price: 50 gp .
+ False Hold: Ships of all sizes and kinds frequently 
+contain false holds . Even vessels that conduct otherwise 
+lawful and legitimate business might contain hidden 
+spaces . 
+  The maximum size of a false hold in a ship is two sizes 
+smaller than the ship itself . Most ships are Colossal, so 
+they can have false holds of up to Huge size . A vessel 
+without a hold (such as a rowboat) can have a hidden space 
+added, but its maximum size is three sizes smaller than 
+the vessel itself .
+ Price: 400 gp .
+ False  Scabbard  Tip: A scabbard can be fitted with a 
+hollow space at its end that extends a few inches beyond 
+the tip of the blade it holds . Access to a false scabbard tip 
+typically requires depressing a button or a latch to unhook 
+the tip from the sheath .
+  A  quick-release  mechanism,  allowing  access  to  the 
+hidden space with only a move action, can be added to 
+any false scabbard tip for an extra 100 gp .
+  A scabbard is typically the same size object as the 
+weapon it holds, and a false scabbard tip has a capacity 
+two size categories smaller than that . A dagger’s scabbard, 
+for example, could have a false tip of Fine size, while a 
+greatsword’s scabbard could be large enough to hold a 
+Tiny object (such as a dagger) .
+ Price: 10 gp .
+ Hidden  Flap: Packs, sacks, bags, and satchels can 
+contain cleverly concealed inner flaps or pockets .
+  The maximum size of the space contained beneath a 
+hidden flap is two sizes smaller than the container it is 
+built into .
+ Price: 1 gp    .
+ Hollow Book: Another classic hidden space design, a 
+hollow book has the covers and spine of a normal tome and 
+blends in with other books on a shelf . Its pages, however, 
+are glued together and their middles cut out (usually leav-
+ing a half-inch border of paper) to form a space . Unlike 
+with most other hidden spaces, the maximum size of the 
+space contained inside a hollow book is one size smaller 
+than the book it is built into, since so much of the book’s 
+volume can be used .
+ Price: 5 gp    .
+ Hollow Boot Heel: A hollow boot heel unscrews from 
+a boot like a jar lid to reveal the hidden space inside . 
+  The maximum size of the space contained within a 
+hollow boot heel is four sizes smaller than the container 
+it is built into . For example, boots made for a human (size 
+Medium) can have hollow boot heels no larger than Fine 
+size   . An exception is that boots made for Small creatures 
+can also have Fine-sized hollow heels .
+ Price: 20 gp .
+ Inside  Pocket: This hidden space is simply an extra 
+pocket sewn into the inner lining of a coat, tunic, robe, 
+or pair of trousers . An inside pocket generally only holds 
+a few sheets of paper, parchment, or similar items, but 
+some are made to hold a potion or a dagger . A single piece 
+of clothing can have up to two inside pockets . 
+  A character with ranks in Sleight of Hand can substitute 
+her Sleight of Hand check result for the normal Search 
+DC  when concealing objects in an inside pocket . She gains 
+a +5 circumstance bonus on such checks .
+  The maximum size of the space contained within an 
+inside pocket is two sizes smaller than the article of 
+clothing it is built into .  For example, a robe made for 
+a human (size Medium) can have an inside pocket no 
+larger than Tiny . 
+ Price: 1 gp    .
+ Lead  Lining: In order to thwart the detection of a 
+magic item it contains, a hidden space can be lined with 
+a thin sheet of lead . Hard-sided objects can have thin lead 
+sheets built into their walls, bottoms, and lids . Soft-sided 
+objects, such as clothing, have threads of lead sewn into 
+them . Either way, lead lining must be included with a 
+hidden space when it is created, and cannot be added to 
+an item later . Lead lining adds about 10% to the weight of 
+an object in which it is incorporated .
+ Price: 10 gp .
+Table  5–1,  on  the  following  page,  describes  various 
+kinds  of  hidden  spaces  and  provides  the  DC of  the 
+Search check to determine the existence or presence 
+of such a space . This check is a full-round action, and it 
+presumes that the searching character is either holding 
+the item to be examined (in the case of a hollow boot 
+heel, for example) or has unfettered access to the object 
+into which the space has been built (for a false bottom 
+or a false hold) . By paying double the normal price, you 
+can increase the indicated DC by 5; doubling the price 
+
+10 
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+again (to four times the normal price) adds another 5, 
+to a maximum DC increase of 10 .
+  The Craft DC to manufacture a hidden space is equal to 
+the Search DC to find it, and requires an appropriate Craft 
+skill (such as woodworking for the false bottom of a chest 
+or leatherworking for a hollow boot heel) .
+  The figures in the Approximate Max Volume column 
+are just that—approximations . All of the dimensions of 
+a hidden space should be considered shapeable, so that 
+(for instance) a Medium space could measure 3 × 1 × 9 
+feet and have the same volume as one that measures 3 
+feet on a side . Of course, the size and shape of the object 
+into which the hidden space is built must also be taken 
+into consideration .
+  Normally, hidden spaces are designed only to conceal 
+objects . Spaces holding living creatures require extra care 
+to avoid suffocation . Any such hidden space costs twice as 
+much as normal and includes cleverly hidden airways .
+Table 5–1: Hidden Spaces
+	Search	   Approximate		    Sample
+Size	DC	Max	Volume	Hidden	Object
+Fine 25 2 × 2 × 2 in. 10 coins, sheet of 
+   paper (folded), shuriken
+Diminutive 20 6 × 6 × 6 in. Potion, amulet
+Tiny 15 1 × 1 × 1 ft. Book, flask of acid, 
+   light weapon
+Small 15 2 × 2 × 2 ft. One-handed weapon, 
+   backpack
+Medium 15 3 × 3 × 3 ft. Two-handed weapon, 
+   small barrel
+Large 15 5 × 5 × 5 ft. Small boat
+Huge 15 10 × 10 × 10 ft. Small wagon
+sur  PrIse WeaPons
+Scoundrels with a need for weaponry adopt the 
+tricks  and  techniques  of  hidden  spaces  to  more 
+martial pursuits . 
+baYoneTs and  
+Co  MbIna  TI  on blades
+Archers, crossbowmen, and others who rely on ranged 
+weapons are at a distinct disadvantage when an 
+enemy closes within melee range . In order to 
+maximize survivability in such situations, many 
+ranged specialists attach blades to their weapons . 
+These blades, called bayonets, give ranged weap-
+ons melee capability . 
+  A bayonet does not interfere with the normal 
+functioning of the weapon to which it is fixed, so 
+it can remain attached indefinitely . Bayonets act 
+in all ways like normal melee weapons, as noted 
+in their descriptions, and can be made masterwork 
+or magic (separately from any masterwork or magic prop-
+erty of the main weapon) . Attaching or removing a bayonet 
+requires a move action . Attacking with a bayonet imposes 
+a –2 penalty on the attack roll .
+ Bow Blade: Some archers add blades to the grips or 
+risers of their weapons . Bowyers can craft bows that allow 
+such blades to be permanently affixed . Treat a bow blade 
+as a punching dagger . 
+ Crossbow Bayonet: Bayonets easily fit onto light or 
+heavy crossbows, attaching to the stock below where the 
+bolt fires . Crossbow bayonets come in two kinds: knife and 
+sword . A knife bayonet attached to a crossbow functions as 
+a shortspear, while a sword bayonet attached to a crossbow 
+is treated as a spear . A crossbow with an attached bayonet 
+cannot be thrown as a true spear can be, though it can be 
+set against a charge .
+  A hand crossbow is too small to accept a bayonet (but 
+see hand crossbow blade, below) .
+ Hand Crossbow Blade: Adding a short blade to the 
+front of a hand crossbow allows you to defend yourself in 
+melee combat without having to draw a different weapon . 
+The blade functions as a dagger .
+Table 5–2: Surprise Weapons
+Weapon	Cost	Weight
+1
+Bow blade 4 gp 1/2 lb.
+Crossbow bayonet, knife 2 gp 1 lb.
+Crossbow bayonet, sword 4 gp 2 lb.
+Hand crossbow blade 4 gp 1/2 lb.
+Boot blade 4 gp 1/2 lb.
+Elbow blade 4 gp 1 lb.
+Knee blade 20 gp 2 lb.
+Sleeve blade 4 gp 1 lb.
+Instrument blade 10 gp 1/2 lb.
+1 Weight figures are for Medium weapons. A Small weapon 
+weighs half as much, and a Large weapon weighs twice 
+as much.
+hIdden blades
+Scoundrels generally avoid fair fights . Many hide vari-
+ous weapons about their bodies to glean whatever 
+advantage they can . 
+       A hidden blade is a spring-
+loaded blade attached to the 
+inside of armor or boots or 
+strapped to the 
+scoundrel’s 
+Bayonets
+Illus. by E. Cox
+
+110
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+body . Activating a hidden blade requires a move action . 
+Hidden blades can be made masterwork or magic just as 
+normal weapons can be . Attacking with a hidden blade 
+imposes a –2 penalty on the attack roll .
+  Discovering a hidden blade before it has been activated 
+requires a DC 15 Search check .
+ Boot Blade: The most common hidden blade, a boot 
+blade is concealed in the sole of a boot, usually under the 
+toes    . The wearer activates the blade by striking a certain 
+part of the boot (usually the toe) against the ground, which 
+flips the weapon it into position . Treat a boot blade as 
+a dagger .
+ Elbow Blade: Hidden within bracers or the forearm 
+piece of a suit of armor, elbow blades jut out backward 
+and lie flat against the back of the bearer’s upper arm . 
+Activating an elbow blade usually requires a flick or twist 
+of the wrist . Treat an elbow blade as a punching dagger .
+ Knee Blade: Held within the greaves of a suit of armor, 
+a knee blade extends with a quick upward thrust of the 
+knee . The flat of the blade rests against the bearer’s thigh, 
+allowing for full range of movement . Treat a knee blade 
+as a short sword .
+ Sleeve Blade: Strapped to the forearm of its wearer, a 
+sleeve blade lies hidden under a long-sleeved shirt or dress . 
+Making a quick downward flick with the wrist triggers 
+the mechanism, extending the blade beyond the top of 
+the wearer’s hand . Treat a sleeve blade as a dagger .
+ Instrument Blade: Most stringed or wind instruments 
+have a long, narrow section that can conceal a thin blade . 
+Releasing a hidden catch allows the blade to spring forth . 
+Such a blade functions as a dagger .
+  Any stringed instrument whose neck is designed to 
+hide a blade includes reinforcing metal bars for added 
+support .
+alCheMICal ITeMs
+Researchers continually conduct experiments in the field 
+of alchemy, ranging from wildly inventive gnome think-
+tanks to individual wizards locked away in their towers . 
+This constant work occasionally produces items useful to 
+adventurers and scoundrels alike .
+  Costs and Craft (alchemy) check DCs for creating 
+these items appear in Table 5–3 . All of these items have a 
+negligible weight .
+ Clearwater Tablets: These small black pellets smell 
+strongly of tar . Dropping a clearwater tablet into a gallon 
+of water cleans the water of disease, poison, and other 
+befouling toxins . Water so treated has a vaguely tarry 
+smell and leaves a slimy black deposit on a surface it 
+touches  but  is  safe  to  drink .  Magic  liquids  (such  as 
+potions, oils, and magic poisons) are immune to the effect 
+of clearwater tablets . Liquids based on oil or alcohol are 
+also not affected . 
+ Daystrider  Capsule:  This  bright  blue  gelatinous 
+ovoid, when swallowed, allows a humanoid creature to 
+walk for 10 hours in a day (instead of the normal 8 hours) 
+before making a Constitution check to resist damage 
+and fatigue . Walking longer than that entails making a 
+forced march as normal (PH 164)    . Consuming a second 
+daystrider capsule before 24 hours have passed has no 
+further effect .
+ Ferrous  Aqua:  A  pellet  of  ferrous  aqua  is  a  half-
+inch-diameter sphere of glass containing a rusty red 
+liquid with small black flakes floating in suspension . 
+A ferrous aqua pellet can be thrown as a ranged touch 
+attack with a range increment of 5 feet . Alternatively, 
+it can be loaded into a sling and used as a sling bullet . 
+When it strikes a firm surface, the pellet bursts and 
+sprays out the suspension within . Any creature with 
+damage reduction that is overcome by cold iron takes 
+1d6 points of damage and is sickened for 1 round if 
+struck by a ferrous aqua pellet (a successful DC 12 Forti-
+tude save negates the sickened condition, but not the 
+damage) . Other creatures take no damage from a ferrous 
+aqua pellet .
+ Forger’s Paper: This normal-looking sheet of paper is 
+infused with an alchemical substance that makes the sheet 
+nearly transparent for 1 hour when exposed to heat . The 
+now-clear sheet can be overlaid on a document to be copied, 
+granting a +2 alchemical bonus on Forgery checks made 
+while using it . Once the alchemical substance within it 
+loses potency, the page becomes indistinguishable from 
+a normal piece of paper (and can’t be activated again by 
+any means) .
+ Endurance Elixir: Imbibing this chalky-tasting green 
+liquid instantly acclimates a creature to its surroundings . 
+For the next 12 hours, the drinker gains a +4 alchemical 
+bonus on all ability checks, skill checks, and saving throws 
+made to resist natural environmental extremes, such as 
+hot or cold weather (DMG 302)    .
+ Liquid Sunlight: Shining with the light of a torch, a 
+pellet of liquid sunlight is a half-inch-diameter sphere 
+of glass that contains a gold-colored liquid . The pellet 
+can be thrown as a ranged attack with a range increment 
+of 5 feet . Alternatively, it can be loaded into a sling and 
+used as a sling bullet . When it strikes a firm surface, 
+it bursts and sprays out the liquid within . The liquid 
+continues to glow with the light of a torch for 1 round 
+after exposure to the air . Creatures with light sensitiv-
+ity are dazzled for 1 round if struck by a liquid sunlight 
+pellet . The pellet deals 1d6 points of damage to a vampire, 
+vampire spawn, or any other creature similarly harmed 
+by daylight .
+ Nerv: This is the street name for a substance also known 
+as liquid courage, a gold-colored syrup in a clear glass bottle 
+painted with interweaving blue and red swirls . Drinking 
+a dose of nerv grants the drinker a +2 alchemical bonus 
+on saves against fear effects for 1 hour .
+ Powdered Silver: This fine silvery dust sparkles when 
+held in the light and is contained in a half-inch-diameter 
+glass sphere . A powdered silver pellet can be thrown as 
+
+111
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+a ranged touch attack with a range increment of 5 feet . 
+Alternatively, it can be loaded into a sling and used as 
+a sling bullet . When it strikes a firm surface, the pellet 
+bursts and sprays out the powder within . Any creature 
+with damage reduction that is overcome by silvered 
+weapons takes 1d6 points of damage and is sickened 
+for 1 round if hit by a powdered silver pellet (a DC 12 
+Fortitude save negates the sickened condition, but not 
+the damage) . Other creatures take no damage from a 
+powdered silver pellet .
+ Rust Cube: Made of rusty iron, rust cubes are sometimes 
+disguised as dice . A rust cube can be thrown as a ranged 
+attack with a range increment of 5 feet . Alternatively, it can 
+be loaded into a sling and used as a sling stone . When it 
+strikes a hard surface, the cube shatters into a fine powder 
+of rusted iron . An object or creature made of metal that 
+is hit by the rust cube immediately takes 1d6 points of 
+damage (ignoring hardness), plus an additional 1d6 points 
+of damage each round for the next 2 rounds . A creature 
+can wipe the dust off with a move action .
+ Toxic Tooth: Since the invention of alchemical capsules 
+(Complete Adventurer 119), researchers have continued to 
+develop ever smaller delivery devices . The current peak of 
+achievement comes in the form of the toxic tooth . Made 
+to look identical to its wearer’s actual teeth (including the 
+addition of plaque, random filth, and gaping cavities if 
+necessary), a toxic tooth can hold a single dose of a contact 
+or inhaled poison .
+  To activate a toxic tooth, the wearer must bite down hard 
+enough to crack it, then spit or exhale the poison at an 
+adjacent creature . Doing so requires a standard action to 
+make a ranged touch attack, but does not provoke attacks 
+of opportunity . If the attack hits, the target is exposed 
+to the poison and must save normally . Activating a toxic 
+tooth also exposes its wearer to the poison .
+ Trail  Bar: This tough, 4-inch-long bar of vegetable 
+matter provides the equivalent of one day’s worth of 
+food    . A creature that has consumed a bar (which takes 
+about  10  minutes)  receives  all  the  nutritional  and 
+stomach-filling value of a full day’s food—if none of the 
+flavor . However, consuming a second trail bar before 
+24 hours have passed sickens the creature for 1 hour . 
+Rangers and bounty hunters carry trail bars only if going 
+into the wilds for long periods of time, and even then 
+only reluctantly .
+Table 5–3: Alchemical Items
+Substance	Craft	(alchemy)	DC	Cost
+Clearwater tablet 30 1 gp
+Daystrider capsule 15 10 gp
+Ferrous aqua 20 20 gp
+Forger’s paper 20 10 gp
+Endurance elixir 20 25 gp
+Liquid light 30 20 gp
+Nerv 25 25 gp
+Powdered silver 20 20 gp
+Rust cube 30 100 gp
+Trail bar 20 1 gp
+Toxic tooth 25 30 gp
+1
+1 Plus the cost of the poison inside.
+Po Isons
+Not every scoundrel who uses poison is an unscrupulous 
+murderer, and not every unscrupulous murderer is a 
+scoundrel . Regardless of who uses it, poison is invaluable 
+for its ability to kill, weaken, or otherwise incapacitate a 
+person surreptitiously . 
+  Each of the poisons presented below is unusual in some 
+fashion, whether it has increased versatility or a special 
+effect beyond mere ability damage . Such qualities make 
+many of these toxins attractive choices for those who 
+would never normally consider such methods, or for 
+poisoners with specific agendas .
+ Blasphemix: Said to be refined from the spilled 
+ichor  of  a  demon,  devil,  or  other  fiend,  blas-
+phemix  corrupts  not  only  the  body  but  also 
+the soul . Perpetually warm, greasy, and 
+possessed  of  a  vile  blackness  that 
+seems to writhe of its own accord, 
+blasphemix is further profaned 
+by  prayers  and  chants  to  dark, 
+ancient, and wholly evil powers . 
+This liquid foulness impedes the 
+power of faith and hinders even 
+the most devout cleric’s access to 
+his deity . Despite its origin, this 
+poison  affects  creatures  of  all 
+alignments and faiths .
+       If the subject of this poison fails 
+the  initial  saving  throw,  its  ability 
+to cast divine spells is hindered . For the 
+next 10 rounds, the subject must succeed 
+Alchemical items provide a variety of benefits
+Illus. by F. Vohwinkel
+
+112
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+on a caster level check (DC 15 + spell level) each time it 
+attempts to cast a divine spell . Failure means the spell 
+is lost and has no effect .
+  Regardless of the outcome of the initial save, failing the 
+secondary save applies a –1 penalty to the victim’s caster 
+level for all divine spells it casts for the next 12 hours . If a 
+creature is subjected to another dose of blasphemix before 
+the effect of the first dose has run its course, the 
+duration of the first dose’s effect ends .
+  In  addition  to  a  Craft  (poisonmaking) 
+check, creating a dose of blasphemix 
+requires a successful DC 15 Knowl-
+edge (religion) check .
+ Elemental   Rime:  This 
+frosty blue liquid is con-
+cocted  from  ice  found 
+in frozen regions of the 
+Elemental Plane of Air 
+or Water . No amount of 
+heat  can  totally  dispel 
+the coldness that ema-
+nates  from  elemental 
+rime,  which  partially 
+freezes those exposed 
+to  it .  If  the  subject 
+of  the  poison  fails  the 
+initial  saving  throw,  in 
+addition  to  taking  1d4 
+points of initial and second-
+ary Dexterity damage, it gains 
+vulnerability to fire for 10 rounds .
+  In addition to a Craft (poisonmaking) 
+check, creating a dose of elemental rime requires a suc-
+cessful DC 15 Knowledge (the planes) check .
+ Goodbye Kiss: A sweetly flavored tincture distilled 
+from many of the same fungi and roots used in making 
+the drow’s infamous sleeping poison, this venom is a 
+standby of poisoners who don’t want to harm their vic-
+tims    . Goodbye kiss is a favorite of lotharios, swindlers, 
+and others who want to avoid being followed . It can 
+either be added to food (ingested) or used to coat a small 
+needle (injury); the save DC is the same regardless of the 
+method of application .
+  A subject who fails either the initial or the secondary 
+save becomes exhausted for 1 hour . Failing both saves 
+renders the subject unconscious for 1 hour instead .
+ Gorgon’s Hair: This versatile contact poison is named 
+for a clever murderer who would coat her long hair in this 
+concoction before seducing her victims . Clear and a little 
+greasy, this toxin makes surfaces it is applied to look 
+slightly wet, shiny, or cosmetically accented . It is unusual 
+in that it does not affect those who already have it in 
+their system . Thus, many who use gorgon’s 
+hair ingest a dose—a mildly unpleasant 
+act—before  coating  themselves  with 
+the poison . Those who fear being 
+attacked  by  gorgon’s  hair 
+might also protect them-
+selves by consuming the 
+poison . 
+   Typically,  a  would-
+be  poisoner  mixes  a 
+dose of gorgon’s hair 
+with  a  liquid  and 
+drinks  the  concoc-
+tion   . After ingesting 
+the  toxin,  that  crea-
+ture  is  immune  to 
+its effect for 24 hours . 
+An  immune  creature 
+can  safely  apply  a  dose 
+of  gorgon’s  hair  to  a  hand 
+or  appendage  to  envenom  an 
+unarmed  strike  or  natural  attack . 
+Only  the  first  successful  attack  is 
+affected; all attacks made afterward, even in the same 
+round, do not deliver the poison .
+    Salvo: The fortuitous creation of a poisoner with little 
+skill, salvo is a weapon of the imprecise and desperate . 
+The poison is relatively cheap and easy to create, but its 
+effect fluctuates wildly from dose to dose .
+  Salvo deals 1d4 points of initial and secondary damage 
+to a random ability score . Determine the affected ability 
+by rolling 1d6 and consulting the following table; roll 
+once per dose . The poison’s type and save DC do not 
+vary    .
+Table 5–4: Poisons
+Poison	Type	Craft	(Poison-	Initial	Damage	Secondary	Damage	Price
+		making)	DC
+Blasphemix Injury DC 22 22 Special* –1 CL (divine spells) 750 gp
+Elemental rime Injury DC 16 18 1d4 Dex plus 1d4 Dex 200 gp
+   vulnerability to fire
+Goodbye kiss Ingested/Injury DC 15 15 Exhaustion* Exhaustion or unconsciousness* 350 gp
+Gorgon’s hair Contact DC 16* 18 1d6 Str 1d4 Str 300 gp
+Salvo Injury DC 15 12 1d4 ability* 1d4 ability* 100 gp
+Siren’s breath Inhaled DC 18 16 Special* Special* 300 gp
+Slow death Injury DC 14 19 1d6 hp/round* n/a 250 gp
+Zealot’s blade Injury DC 14* 19 1d4 Con 1d4 Con 350 gp
+*See text for details.
+Not every poison is lethal
+Illus. by E. Cox
+
+11 
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+d6	Ability	Damaged
+1 Strength
+2 Dexterity
+3 Constitution
+4 Intelligence
+5 Wisdom
+6 Charisma
+ Siren’s  Breath: This bitter-smelling gas causes the 
+subject to become highly susceptible to persuasion . Fail-
+ing either the initial or secondary saving throw imposes 
+a –5 penalty on Sense Motive checks and on Will saves 
+against enchantment spells and effects for 10 rounds . If 
+a creature is subjected to another dose of 
+siren’s breath before the effect of the 
+first dose has run its course, the 
+duration of the first dose’s effect 
+ends    .
+ Slow Death: An insidiously 
+persistent  toxin  distilled  in 
+part from a dwarven mining 
+acid, slow death eats away at its 
+victims from within . Unlike 
+most  poisons,  which  deal 
+damage  in  two  stages,  slow 
+death works constantly over 
+the course of several rounds .
+  A  subject  of  this  poison 
+who fails the initial Fortitude 
+save takes 1d6 points of dam-
+age   . Each round thereafter, at 
+the  beginning  of  the  poison-
+er’s  turn  (up  to  a  maximum  of 
+5 rounds), the subject must repeat 
+the saving throw . For each failure, it 
+takes another 1d6 points of damage . Once 
+a save succeeds, the subject takes no fur-
+ther damage . 
+ Zealot’s Blade: This venom incorporates the blood 
+of its intended target, making it even deadlier to such 
+creatures . A tool of hunters and assassins who stalk 
+specific targets, each dose of zealot’s blade is brewed 
+for a specific type or subtype of creatures . When creat-
+ing zealot’s blade, the poisonmaker must choose a type 
+(and subtype, if applicable) from Table 3–14: Ranger Fa-
+vored Enemies on page 47 of the Player’s Handbook. Any 
+creature not of the chosen type or subtype gains a +5 
+bonus on saves to resist the poison’s effect .
+MagIC ITeMs
+Scoundrels rely on a vast array of equipment, some of 
+it magical in nature . Because scoundrels come from a 
+widely varied backgrounds and possess myriad abilities 
+and skills, some can create magic items with useful 
+applications . Talented tricksters have even created a 
+few  magic  items  that  aren’t  exactly  useful  but  have 
+interesting effects . 
+asPeCT MIrror
+Aspect mirrors allow you to converse with others, face to 
+face, at nearly any distance .
+ Description: A typical aspect mirror looks like a plain, 
+circular, silvered mirror, usually 1-1/2 feet in diameter .
+ Activation: As a standard action, you touch an aspect 
+mirror and concentrate to activate it . Touching the mir-
+ror a second time and willing away the images it displays 
+deactivates the item . An aspect  mirror can function for 
+as long as a user wishes and regardless of the 
+wishes  of  other  bearers  of  mirrors  at-
+tuned to it .
+    Effect: Aspect  mirrors are  magi-
+cal  communication  tools  created 
+in groups . An aspect mirror allows 
+you  to  see,  hear,  and  speak  as  if 
+you were in the same place as an 
+attuned aspect mirror (one created 
+as part of the same set as the 
+one you hold) . While you use 
+a mirror, you and your location 
+are visible in turn to those near 
+the distant aspect  mirror you’re 
+communicating with . Thus, two 
+distant users can see, hear, and 
+speak as if knowingly scrying on 
+one another at the same time .
+       To  use  an aspect  mirror,  you 
+activate both your own and another 
+mirror  of  your  choice  (specified 
+when  you  activate  your  mirror) .  The 
+possessor of the other mirror does not need 
+to be present at the mirror’s location, and you 
+can scry on its location even without the knowledge of 
+the other mirror’s owner . Of course, other users of aspect 
+mirrors attuned to your mirror can activate your mirror 
+in the same manner . Thus, owners of aspect mirrors often 
+keep them covered or in extradimensional containers 
+when they are not in use .
+  You cannot cast spells through an aspect mirror, although 
+you can use a distant mirror to direct the subjects of 
+enchantment spells you have already cast .
+Aspect mirror
+Table 5–5: Magic Items
+Item	Cost
+Aspect mirror 4,000 gp
+Bands of fortune 2,000 gp
+Bladeshimmer 750 gp
+Lucky charm 7,000 gp
+Panic button 750 gp
+Rod of ropes 4,000 gp
+Shrunken shrieker 500 gp
+Trinket of trickery 1,000 gp
+Wheel of fortune 6,000 gp
+Illus. by H. Lyon
+
+11 
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+ Aspect  mirrors  function  at  any  range  on  the  same 
+plane . Two aspect mirrors are commonly created in a set, 
+although sets exist with as many as five attuned mirrors . 
+Using an aspect mirror does not grant you knowledge of 
+all the other mirrors in its set . You can attempt to contact 
+only a mirror that you know exists; you must also have 
+general knowledge of its location or owner . For example, 
+upon activating your aspect mirror, you could attempt to 
+reach out to an attuned mirror that you know is held by 
+the merchant Fraudis Smerch or the one that you know 
+is hanging in the back room of the Friendly Girallon 
+tavern .  You  could  not,  however,  attempt  to  activate  a 
+fourth mirror in the set whose location and existence 
+are unknown to you .
+  If all the mirrors attuned to a particular aspect mirror 
+are destroyed, the remaining mirror becomes an ordinary 
+item of its sort .
+ Variants: Some  versions  of aspect  mirrors  project 
+an image of the user that appears on the 
+mirror’s surface .
+ Aura/Caster Level: Moder-
+ate divination; CL 10th .
+ Construction: Craft 
+Wondrous  Item, scrying, 
+2,000 gp, 160 XP, 4 days . 
+These  construction 
+requirements  apply 
+to  a  single  mirror . 
+Making other mirrors 
+attuned to the first one 
+(up  to  a  maximum  of 
+four  additional  attuned 
+mirrors)  requires  an  addi-
+tional expenditure of gp, XP, and 
+time, as well as another casting of the 
+scrying spell, for each other mirror beyond the 
+first one .
+ Weight: 10 lb    . (single mirror) .
+ Price: 4,000 gp (single mirror) .
+bands of for  Tune
+These innocuous-looking items allow you to change your 
+luck on the battlefield .
+ Description: Bands of fortune are gold armbands elab-
+orately decorated with glass jewels . They occupy space on 
+the body as a pair of bracers .
+ Prerequisite: You must have at least one luck feat 
+(page 72) or some other source of luck rerolls, such as 
+the granted power of the Luck domain, to activate bands 
+of fortune .
+ Activation: You activate bands of fortune by expending 
+one of your luck rerolls as a swift action .
+ Effect: You can channel your luck into one of three 
+different benefits, each of which lasts for 1 round . You 
+can gain the benefit from only one effect at a time . 
+•  Attack: You gain a +2 luck bonus on attack and damage 
+rolls    .
+•  Defend: You gain a +2 luck bonus to Armor Class .
+•  Survive: You gain a +2 luck bonus on saving throws .
+ Aura/Caster Level: Moderate transmutation; CL 9th .
+ Construction: Craft Wondrous Item, any luck feat, 
+1,000 gp, 80 XP, 2 days .
+ Weight: — .
+ Price: 2,000 gp .
+bladeshIMMer
+A silvery oil, bladeshimmer causes nonliving objects on 
+which it is smeared to turn invisible .
+ Description: Most often found in small vials full 
+of what looks like quicksilver, bladeshimmer is a thin, 
+magical oil . When it is smeared over a weapon or other 
+object, the materials making up the object become wholly 
+transparent .
+ Activation:  You  can  coat  a  weapon  or 
+other  object  of  similar  size  with 
+bladeshimmer  as  a  full-round 
+action .
+ Effect: Bladeshimmer 
+renders an object invis-
+ible   . Anyone holding an 
+affected  object  appears 
+to  have  an  empty  hand, 
+though keen eyes can spot 
+something  out  of  place . 
+Use the bearer’s Sleight of 
+Hand check result (with a 
++10  competence  bonus)  as 
+the DC for the observer’s Spot 
+check .
+  If you attack with a weapon coated with 
+bladeshimmer, the target is considered flat-footed 
+unless it succeeds on a Spot check to notice something 
+unusual . A single successful attack wipes away enough 
+bladeshimmer to end the invisibility effect .
+       A single vial of this substance can coat an area up to 2 
+feet square . It can’t be divided between multiple objects, 
+though multiple vials can combine to make a larger ob-
+ject invisible . Each doubling of the area to be affected 
+requires four times as much bladeshimmer (four vials for 
+an area 4 feet square, and so forth) and takes a correspond-
+ingly longer time to apply .
+ Bladeshimmer  has  no  effect  on  creatures—even  un-
+dead and constructs cannot be rendered invisible with 
+this substance .
+ Aura/Caster Level: Faint illusion; CL 5th .
+ Construction: Craft Wondrous Item, invisibility, 375 
+gp, 30 XP, 1 day .
+ Weight: 1 lb   .
+ Price: 750 gp .
+Bands of fortune
+Illus. by R. Gallegos
+
+11 
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+luCkY CharM
+A  lucky  charm  makes  you  more  fortunate  than  you 
+already are .
+ Description: A thick gold bracelet bearing various 
+decorative  solid  gold  figurines  forms  a  set  of lucky 
+charms . Each figurine on the bracelet is made in the 
+form of a different item or creature, usually something 
+considered lucky (such as cats, horseshoes, four-leaf 
+clovers, and the like) . A new set of lucky charms has seven 
+such figurines . 
+  When you activate a lucky charm, the bracelet glows 
+briefly with a mild white radiance, and the figurine you 
+chose to activate disappears . Once all its charms are used 
+up, the gold bracelet becomes a nonmagical item worth 
+100 gp .
+ Prerequisite: You must have at least one luck feat 
+(page 72) or some other source of luck rerolls, such as 
+the granted power of the Luck domain, to activate a 
+lucky charm .
+ Activation: Whenever you would otherwise use a 
+luck reroll, you can instead activate a lucky charm . As a 
+standard action, while holding the bracelet you vigor-
+ously rub one of the charms with your thumb while 
+concentrating . 
+ Effect: When you activate this item, you use one of the 
+charms on the bracelet to gain the benefit of a successful 
+luck  reroll  without  expending  one  of  your  daily  luck 
+rerolls . You can expend only one charm per round . You 
+can use this ability only with luck effects that require 
+one luck reroll to activate . Effects that require more than 
+one luck reroll cannot be partially paid for by expending 
+a charm . 
+ Aura/Caster   Level: Moderate  transmutation;  CL 
+11th    .
+ Construction: Craft Wondrous Item, any three luck 
+feats, 3,500 gp, 280 XP, 7 days .
+ Weight: — .
+ Price: 7,000 gp .
+PanIC buTT  on
+Taking the shape of various small and innocuous adorn-
+ments, panic  buttons  produce  a  wide  range  of  effects 
+depending on the specific type . 
+ Lore: The first of these items were created by the 
+famed assassin Fratello Simm to aid his guildmates in 
+avoiding capture . Knowledge of panic buttons began to 
+spread when examples of the items were discovered on 
+captured assassins’ guild members . Fratello original-
+ly created the bolstering, escaping, and flexing panic 
+buttons . Since then, a wider assortment of buttons has 
+been developed by other sorts of spellcasters .
+ Description: As their name implies, panic  buttons 
+often look like normal buttons sewn into clothing . They 
+might also resemble round metal bells, glass beads, or 
+other small, inconspicuous adornments . 
+  Regardless of its form, when activated a panic  button 
+bursts with a small flash of light, a tiny popping noise, 
+and a faint smell of sulfur .
+ Activation: You activate a panic button by dropping or 
+throwing it onto the ground . These items are designed for 
+quick use; you can pull a panic button off your clothing (as 
+long as you aren’t wearing armor) and drop it in your square 
+as a swift action . You can pull it off your clothing and toss 
+it into another square as standard action . A thrown panic 
+button has a range increment of 5 feet . Throwing the but-
+ton into a square other than your own requires a ranged 
+touch attack, as though it were a splash weapon, and it 
+lands in a random square if you miss (see PH 158)    . 
+ Effect: A panic button affects whatever creature is in 
+the square it lands in . Unless otherwise noted, a button’s 
+effect lasts for 1 round . If you target another creature’s 
+square, that creature is allowed a DC 16 Fortitude save 
+to resist the effect created by a panic button . (Most panic 
+buttons are harmless effects that creatures would like 
+to receive .)
+   A number of different kinds of panic buttons exist . The 
+following are the most common; each one lists the spell 
+needed to create it .
+ Bolstering: You gain 10 temporary hit points for 1 round . 
+Requires false life .
+ Dodging: You gain a +2 dodge bonus to your Armor Class 
+against the first attack made against you in the next round . 
+Requires haste .
+ Escaping: You immediately gain the benefit of dimension 
+door, except that the range is limited to 30 feet and you must 
+have line of sight to the destination . Requires dimension 
+door .
+ Flexing: You gain a +5 bonus on all Dexterity-related 
+skill checks and Dexterity checks made in the next round . 
+Requires cat’s grace .
+ Meandering:  You  act  as  if  under  the  effect  of  a slow 
+spell for 1 round; this panic button is usually thrown at an 
+opponent . Requires slow .
+ Protecting: You gain a +2 bonus on the next saving throw 
+you roll within 1 round . Requires resistance .
+ Retreating: You gain an enhancement bonus of 30 feet 
+to your speed for 1 round . Requires expeditious retreat .
+ Silencing: You act as if under the effect of a silence 
+spell, centered on you, for 1 round . Requires silence .
+ Standing: You act as if under the effect of a dimensional 
+anchor spell for 1 round; this panic button is usually thrown 
+at an opponent . Requires dimensional anchor .
+ Strengthening: You gain a +5 bonus on all Strength-related 
+skill checks and Strength checks made in the next round . 
+Requires bull’s strength .
+ Aura/Caster Level: Moderate transmutation; CL 7th .
+ Construction: Craft  Wondrous  Item,  spell  varies 
+(see individual description), 375 gp, 30 XP, 1 day .
+ Weight: — .
+ Price: 750 gp .
+
+11 
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+rod of roPes
+This versatile item meets your every rope-related need .
+ Description: Crafted from the darkest teak and repeat-
+edly stained until it holds a lustrous black shine, this rod is 
+a sculpted, 18-inch-long baton . Closer inspection (Search 
+DC 15) reveals three barely perceptible concave indenta-
+tions in the middle third of the rod . 
+ Activation: The three indentations act as buttons . 
+Pressing any one of the rod’s buttons requires a 
+move action . 
+ Effect: The rod has three functions, each of 
+which can be employed an unlimited number of 
+times . However, no two functions can be used at 
+the same time
+ Rope: When you press button 1, rope begins 
+to extrude from one end of the rod at the rate 
+of 60 feet per round . The rod can extrude 300 
+feet of rope in this manner . Pressing the button 
+a second time stops the rope from extruding . 
+Pressing it a third time draws the rope back in, 
+also at a rate of 60 feet per round . Any knot in 
+the rope automatically unties when it comes 
+within 30 feet of the rod . This rope has the 
+same hardness and hit points as the rest of 
+the rod .
+ Grappling  Hook  and  Rope: When you press 
+button 2, a small leather wrist loop springs 
+from  one  end  of  the  rod  and  three  sharp 
+grappling hooks sprout from the other end . 
+Pressing the button again launches one-third 
+of the rod (the end with the three hooks) in the 
+direction you aim it . A length of rope up to 300 
+feet long trails behind the launched section 
+and connects it with the end you hold; all 300 
+feet of rope can discharge in 1 round . The rope 
+stops unreeling if the hooks strike something 
+solid (including a creature) or if you give the 
+rod a quick backward jerk . Pressing the button 
+a third time retracts the rope, drawing the held 
+end toward the hooked end if it is secured prop-
+erly   . The retracting feature can pull up to 1,000 
+pounds with it, drawing up 60 feet of rope per 
+round . The rope has the same hardness and hit 
+points as the rest of the rod .
+  This function can be used to attack and push back 
+opponents within 30 feet (beyond that distance 
+it lacks sufficient power) . On a successful 
+ranged attack (no range increment) the hooked 
+end deals 1d6 points of damage . The force of the blow is 
+considerable, and those struck by it are subject to a bull 
+rush effect (treat the hooked end as having a +5 bonus 
+on its opposed check) . The hooked end cannot pursue a 
+pushed opponent .
+ Grappling  Hooks  and  Slide: When you press button 3, 
+three  sharp  grappling  hooks  sprout  from  each  end  of 
+the rod . Pressing the button again launches the two 
+ends of the rod (each one-third of its length) in opposite 
+directions simultaneously . A length of rope up to 300 feet 
+long trails behind each launched section and connects 
+it with the middle third you hold (all 600 feet of rope 
+can discharge in 1 round) . The grappling hooks work 
+exactly as described above, including the possibility of 
+bull rushing opponents . Pressing the button a third 
+time causes part of the middle section to expand 
+slightly in diameter and slide freely along the 
+extruded rope . The slide can be released from 
+the remaining part of the middle section by 
+squeezing it to loosen it . Two hand loops allow 
+you to slide down the rope if it is at an angle . 
+Regardless of the angle of the rope or the load 
+on it (up to 1,000 pounds), if attached firmly 
+the rope does not sag .
+Pushing any button a second time returns the 
+rod to its previous (unactivated) state .
+ Aura/Caster Level: Moderate transmuta-
+tion; CL 10th .
+ Construction: Craft  Rod, animate  rope, 
+2,000 gp, 160 XP, 4 days .
+ Weight: 4 lb   .
+ Price: 4,000 gp .
+shrunken shr  Ieker
+This  shrunken  head  can  be  attached  to  any 
+weapon, shield, or piece of armor . It lets out a 
+scream if anyone but the true owner attempts 
+to use the item .
+ Lore: Ensorceled by savage adepts, the heads 
+of fallen enemies now guard the armaments of 
+those who killed them .
+ Description:  This  item  is  a  disgusting 
+severed head, shrunken to the size of a baby’s 
+fist, with its eyes and mouth loosely stitched 
+shut    . A clasp in its long, straggly black hair 
+allows  the  head  to  be  clamped  or  tied  onto 
+other objects . 
+ Activation: A shrunken shrieker can be attached 
+to any weapon, shield, or piece of armor . Once it is 
+so affixed, it considers the attacher to be the item’s 
+true owner .
+ Effect: A shrunken shrieker dangles qui-
+etly from the weapon, shield, or armor it is 
+attached to, as long as it considers the user 
+to  be  the  item’s  true  owner .  If  any  other  creature  at-
+tempts to use the item to which the head is attached, the 
+shrunken shrieker’s mouth distends around the stitches, 
+letting out a horrible, inhuman screaming . The sound 
+of a shrunken shrieker is just as loud as an audible alarm 
+created by the alarm spell, and it continues for as long as 
+a creature other than the item’s true owner uses the item . 
+Illus. by E. Cox
+Rod of ropes
+
+11 
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+The head stops screaming as soon as the item it 
+is attached to is put down or removed .
+  A shrunken shrieker can be ripped off an item 
+as a full-round action . If the head has started 
+screaming and is torn off an item, it continues 
+shrieking wherever it falls until either the 
+true owner of the item it was attached to 
+touches it or it is destroyed . A shrunken 
+shrieker has hardness 2 and 5 hit points .
+ Variants: Some shrunken  shriekers are 
+said to be crafted from the heads of fiends . 
+These  variations scream  so  terribly  that 
+they also hinder those who make use of 
+the items they guard; a creature other than 
+the item’s true owner must make a DC 13 
+Will  save  or  be  shaken  for  as  long  as 
+the head continues screaming . This is 
+a mind-affecting fear ability . Creatures 
+that fail this save are vulnerable to 
+this shrunken fiendshrieker’s scream-
+ing for the next 24 hours, they do 
+not receive a new save if they put 
+down the affected item and pick it 
+back up later . 
+ Aura/Caster  Level: Faint  abjuration;  CL 
+3rd   .
+ Construction: Craft Wondrous Item, alarm, 250 gp, 20 
+XP, 1 day .
+ Weight: 1/2 lb .
+ Price: 500 gp . A shrunken fiendshrieker variant costs an 
+extra 1,500 gp, and its XP cost and crafting time increase 
+accordingly .
+Tr  InkeT of TrIC kerY
+A trinket of trickery makes you trickier than you already are .
+ Description: Trinkets of trickery can take the form of any 
+small baubles, totems, or lucky charms . A popular shape 
+is that of a stylized cat sitting on its haunches and waving, 
+but many such items resemble chess pieces or figurines of 
+mounted knights and dragons . A trinket of trickery is never 
+larger than 1 inch in its longest dimension .
+ Prerequisite: You must know at least one skill trick to 
+use a trinket of trickery .
+ Activation: You must wear a trinket of trickery on your 
+person for at least 24 hours to attune it to you . After that 
+time, the trinket grants its power to you as long it is on 
+your person (in a pocket, held on a necklace around the 
+neck, attached to a helmet, and so on) . It does not grant its 
+power if stored within a backpack, bag of holding, or similar 
+location; it must be in close physical contact in some way 
+(though it doesn’t take up space on your body) .
+ Effect: A trinket of trickery holds the secret knowledge 
+of a single skill trick (see page 83 for a list) . You can use 
+that trick as if you had spent skill points to learn it, but 
+only if you meet the prerequisite for learning the trick .
+   You can’t gain the benefit of more than one trinket of 
+trickery simultaneously; if you wear a second trinket 
+while  one  is  already  on  your  body,  the 
+second has no effect .
+ Aura/Caster Level: Faint transmutation; 
+CL 5th .
+ Construction: Craft Wondrous 
+Item, knowledge of the trick con-
+tained, 500 gp, 40 XP, 1 day .
+ Weight: — .
+ Price: 1,000 gp .
+Wheel of for  Tune
+This  hand-held  wheel  grants  its 
+user a dose of extra fortune . 
+ Lore: Clerics  of  Olidammara 
+claim the genesis of these items 
+lies  with  their  fickle  and  fun-
+loving  god,  and  nobody  seems 
+intent on arguing the point with 
+them . Indeed, the oldest known 
+wheels of fortune bear the Laugh-
+ing Rogue’s symbol in conspicuous 
+locations .
+ Description: A wheel of fortune consists of 
+a 2-foot-wide wooden box with a brightly painted metal 
+wheel, a little larger in diameter than the width of the 
+box, partially encased at one end . The wheel is divided 
+into eight “slices,” each one corresponding to one of the 
+colors of the rainbow, plus a white slice . A brass needle 
+sticks out the end of the box at the wheel end and acts as 
+a pointer . In the center of the box’s top, lined up perfectly 
+with the edge of the wheel, is a raised brass button (which 
+sometimes bears the mark of Olidammara) .
+  Spinning the wheel causes the color slices to blur into 
+a disk of white . Regardless of how tightly a user holds it 
+and no matter how hard the wheel is spun, the item never 
+wobbles or loses its perfect balance .
+ Activation:  Pressing  the  brass  button  (a  standard 
+action) activates the wheel, causing it to spin all the way 
+around seven times . One round after activation, the wheel 
+comes to a stop sometime during its eighth rotation with 
+the brass pointer indicating one of the eight slices at 
+random . Any attempt to stop the wheel or influence its 
+outcome once its button has been pushed not only fails 
+but also results in a jolt that deals 1d6 points of electric-
+ity damage . A wheel of fortune confers its effect on the 
+character holding it .
+ Effect: When the wheel stops spinning, you gain an 
+effect that depends on the slice the brass pointer indi-
+cates . The effect lasts for 24 hours . Once used, a wheel of 
+fortune does not function again for the same character 
+for 24 hours . 
+  Roll on the following table to determine the wheel’s 
+effect .
+Shrunken shrieker
+Illus. by K. Yanner
+
+11 
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+d8	   Color	Effect
+1 Red –1 penalty on attacks and saves
+2 Orange +2 luck bonus on Str checks and Str- 
+  based skill checks
+3 Yellow +2 luck bonus on Dex checks and Dex-
+  based skill checks
+4 Green +2 luck bonus on Con checks and Con-
+  based skill checks
+5 Blue +2 luck bonus on Int checks and Int-
+  based skill checks
+6 Indigo +2 luck bonus on Wis checks and Wis-
+  based skill checks
+7 Violet +2 luck bonus on Cha checks and Cha-
+  based skill checks
+8 White 10 temporary hit points
+ Aura/Caster Level: Moderate transmutation . CL 8th .
+ Construction: Craft Wondrous Item, bear’s strength, 
+bestow curse, bull’s endurance, cat’s grace, eagle’s splendor, false 
+life, fox’s cunning, owl’s wisdom, 3,000 gp, 240 XP, 6 days .
+ Weight: 2 lb   .
+ Price: 6,000 gp . 
+lI  vIng ITeMs
+In matters of survival, adventur-
+ers can’t limit their resources 
+to  the  basic  gear  moldering 
+on shop shelves or tended by 
+inexperienced commoners . 
+The  most  resourceful  and 
+imaginative travelers make 
+use of what’s available around 
+them, wonders of the natural 
+world: exploitable creatures 
+and oddities of the planes that 
+possess fantastic and versatile 
+abilities . 
+  The following items all are or incorporate forms of life, 
+but each creature is simple or docile enough to allow use of 
+its special abilities . Some are frail and can survive for only 
+a limited amount of time or require some form of tending . 
+Otherwise,  each  of  these  living  items  is  a  nonmagical 
+form of equipment that an adventurer might use just as 
+he uses a manufactured item . Such items might be subject 
+to unusual hazards (such as a torch bug’s tube breaking or 
+a planar mote escaping and floating away) .
+Table 5–6: Living Items
+Item	Cost	Weight
+Green air bramble   80 gp -—
+Gut mites   50 gp 1 lb.
+Jabberweed   60 gp 1 lb.
+Planar mote 300 gp —
+Planar mote, greater 600 gp 1 lb.
+Rust monster wand 160 gp 2 lb.
+Torch bug paste   25 gp —
+Torch bug tube   30 gp 1 lb.
+green aIr bra  Mble
+A creeping vine cultivated by many traveling druids and 
+clerics of nature-loving deities, this fast-growing plant 
+sprouts clusters of swampy green berries even in the 
+harshest weather and most inhospitable climes . Hardier 
+than many plants, green air bramble requires very little 
+water or soil, allowing it to be uprooted and transported 
+for long stretches with ease, as long as it has a plentiful 
+supply of fresh air . However, it is particularly suscep-
+tible to poisons of all types . If exposed to such toxins, 
+its berries swiftly wrinkle, turning a bright yellow in 
+the process, and its normally healthy, small green leaves 
+and tendrils turn brown and contract . This sensitivity 
+makes the creeper a valuable first warning to travelers 
+fearing toxins, and many green-thumbed adventurers 
+carry staffs twined with green air bramble, or dangle 
+lengths of it from their belts .
+  As  long  as  you  are  carrying  a  length  of  green  air 
+bramble in a visible location, such as coiled around a 
+staff or on your person, you gain a +2 bonus on Forti-
+tude saves made to resist inhaled 
+poisons  and  airborne  sicken-
+ing  or  nauseating  effects, 
+such  as  those  created  by 
+a  troglodyte’s  stench  or  a 
+stinking  cloud spell .  Green 
+air bramble grants no ben-
+efit  against  sickening  or 
+nauseating effects that don’t 
+travel through the air, such 
+as  a  cloaker’s  nauseating 
+moan  or  the  distraction 
+caused by a swarm . A 3-foot 
+length  of  green  air  bramble  is 
+required to gain a benefit from the 
+plant . A length of the vine can be wrapped around a 
+quarterstaff, polearm, longbow, or any similarly long-
+hafted weapon without reducing its effectiveness . 
+  Long-lived as well as hardy, a green air bramble lasts 
+indefinitely if planted in moist soil for 6 hours per week . 
+Once it is exposed to poison, however, the vine dies .
+guT M IT es
+The cause of a common, painful affliction among gigantic 
+creatures, the pests called gut mites have been the salva-
+tion of more than one unlucky monster hunter . Each no 
+bigger than a human’s thumbnail, these white, flylike 
+parasites lay their eggs in the preferred food of large 
+predators . The grubs quickly hatch within a creature’s 
+stomach and feast on the liquefied food within—and, 
+when that food runs out, the tender flesh of its host’s gut . 
+One or two make their presence known within a host 
+by merely a dull aching, but a swarm of gut mites can 
+leave even the mightiest beast coiled in pain . 
+Green air bramble
+Illus. by E. Cox
+
+11 
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+  Harvested from the entrails of gigantic monsters, 
+small swarms of these creatures are bottled 
+and sold to those likely to encounter raven-
+ous beasts . A typical bottle contains some 
+adult  gut  mites  and  a  mass  of  squirming 
+grubs in a nutrient goo . It is a blessing to any 
+character who has been swallowed whole . 
+  If you open a flask of gut mites while 
+you  are  within  a  monster’s  gizzard  or 
+stomach and pour out its ravenous con-
+tents, the grubs burrow into the tissue . 
+The monster immediately vomits up the 
+contents  of  its  stomach,  including  any 
+swallowed creatures, and cannot use its 
+swallow whole ability for 1d4 minutes . 
+A successful DC 20 Fortitude save ne-
+gates this effect, and instead causes the 
+swallowing creature to be sickened for 
+1d4 minutes . Creatures immune to extra 
+damage from critical hits are not affected by 
+gut mites . 
+  A flask of gut mites can be used only once . The adults 
+die within a day or two, while the grubs can survive for a 
+week before their nutrient medium is depleted .
+JabberWeed
+One of the few plants native to the Windswept Depths of 
+Pandemonium, jabberweed is an ugly, tenacious root that 
+looks something like a pocked, many-fingered, skeletal 
+hand . The countless holes that riddle jabberweed constant-
+ly gasp and wheeze, creating a low susurrus of background 
+noise that is unnoticeable on the wind-scoured landscape 
+of the plant’s home plane .
+  Sprouts  of  jabberweed  are  sold  wrapped  in  moist 
+cloth . While wrapped, the plant creates no noise . Once 
+unwrapped  and  exposed  to  air,  it  begins  whispering, 
+creating a low hissing audible out to 100 
+feet   . Creatures that succeed on a DC 15 
+Listen  check  notice  the  sound  of  the 
+jabberweed  as  well  as  the  direction  of 
+its  source .  Regardless  of  whether  any 
+creatures notice the sound, all creatures 
+within 100 feet of the plant take a –4 
+penalty on other Listen checks, since 
+the noise disguises and muffles many 
+minor sounds . 
+  If retrieved and repacked in moist 
+cloth, jabberweed can be used multiple 
+times while it lives . Jabberweed can sur-
+vive for 1 week after being removed from 
+its home plane . You can attempt a DC 18 
+Knowledge  (nature)  check  once  per 
+week to keep a sprout of jabberweed 
+alive  for  that  week .  The  plant  dies  1 
+week after a failed check . 
+Planar MoTes
+Having some of the characteristics of plants and 
+some of animals, planar motes are native to the 
+Outer Planes . They are wispy creatures, each about 
+the size of a gold piece, resembling floating globules 
+of  plane-stuff .  Their  shape  and  coloring  vary 
+wildly and reflect their native planes . Planar 
+motes from Arcadia, for example, look like 
+large dandelion seeds, while those from Baa-
+tor take the form of floating urchins spiked 
+with  metal  barbs .  Largely  harmless  and 
+seemingly unintelligent, planar motes are 
+thought to be spontaneously generated by 
+the planes themselves, although it is unclear 
+for what purpose .
+   Despite their strange nature and lack 
+of Hit Dice, planar motes emit auras of 
+moderate strength directly tied to the 
+alignment of the plane they came from . 
+A planar mote from Bytopia, for example, has a 
+moderate aura of good, while a mote from the 
+Abyss has moderate auras of both chaos and evil (see Chap-
+ter 5 of the Dungeon Master’s Guide for the alignments of 
+the Outer Planes) . So concentrated is a planar mote’s align-
+ment aura that it can disguise your alignment while you 
+carry it . Any alignment-detecting spell detects the align-
+ment of the mote, as long as it is more powerful than your 
+own alignment aura (PH 219) . For example, a 12th-level 
+lawful good warrior carrying a planar mote from Arborea 
+(chaotic and good) would register as chaotic good, since 
+his aura is weaker than that of the mote . However, a 5th-
+level lawful evil cleric of Hextor carrying the same mote 
+would register as lawful evil, because his aura is strong, 
+overpowering the mote’s .
+   A planar mote is not a magic item; it does not take up 
+space on the body or radiate magic . A planar mote func-
+tions only for the creature it is in closest 
+contact with . Relying on its home plane 
+for  survival,  a  planar  mote  fades  away 
+and  vanishes  1  week  +  1d6  days  after 
+being  taken  from  its  native  plane .  A 
+planar  mote  is  destroyed  if  subjected 
+to the spells banishment, dismissal, dispel 
+chaos/evil/good/law (corresponding  to 
+the mote’s alignment), or protection from 
+chaos/evil/good/law (corresponding to the 
+mote’s alignment) . A planar mote can also 
+be physically attacked . It has hardness 1 
+and 5 hit points .
+   Planar motes fly at a speed of 10 feet 
+with  perfect  maneuverability .  To  gain 
+one’s effect, a user must contain it in some 
+manner or risk having it escape . A simple 
+jar or box carried in the user’s pack often 
+suffices .
+Flask of gut mites
+Planar motes
+Illus. by M. Coimbra 
+ 
+and H. Lyon
+
+120
+Cha  PT  er 5
+sC oundrel
+ 
+equ
+IPM
+en  T
+   Much more rare are greater planar motes, which shed 
+strong alignment auras . These more potent motes last for 
+1 month + 2d6 days after removal from their home plane, 
+but otherwise function in the same way as normal pla-
+nar motes .
+rus  T MonsTer Wand
+The skittering larval young of rust monsters are just as insa-
+tiable as adults when it comes to ferrous metals . Little more 
+than 1 inch long and bristling with underdeveloped armor 
+and appendages, these nuisances have 
+the same rusting ability as mature 
+rust  monsters,  their  whiplike 
+antennae ever probing for the 
+touch of metal . Some clever 
+thieves have figured out that 
+these creatures can be help-
+ful when carefully harnessed 
+in a suitable container .
+   Such  a  container,  com-
+monly  called  a  rust  monster 
+wand,  is  a  1-foot-long  piece  of 
+glass  tubing  about  4  inches  in 
+diameter that contains about a dozen 
+rust monster larvae . One end of the tube is 
+sealed shut, and the other one is fitted with a 
+two-layer wooden cap . The outer layer of this top covers the 
+wand’s end; when closed, it prevents the larvae from touch-
+ing anything outside the wand . The inside layer is a thin 
+latticework that keeps the immature aberrations inside the 
+tube but allows their antennae to extend through the holes 
+in the lattice . Uncapping the solid cover and running the 
+tip of the wand across a metal surface allows the hungry 
+young to slowly but effectively eat through metal objects 
+or barriers . The rust monster larvae in a wand can ruin a 
+Large weapon or suit of armor (or a metal object of similar 
+size) in 1 minute, a Medium weapon or suit of armor in 
+9 rounds, or a Small weapon or suit of armor in 6 rounds . 
+The wand is brittle and must be applied to a target rather 
+delicately, so it cannot be used as a weapon . 
+  The larvae within a rust monster wand can survive for 
+about 2 months if given air (by opening the outer layer of 
+the end cap) and fed the equivalent of five coins of metal 
+(or more) per day . 
+  If  removed  from  the  wand,  individual  larvae  do  not 
+have the size or ability to do appreciable harm to metal 
+equipment . One of these creatures by itself has 1 hit point 
+and can be crushed as a standard action .
+TorCh bug ITeMs
+Common to plains and savannas, the sluggish torch bug 
+looks like a bloated firefly . The insect’s bulbous abdomen, 
+nearly the size of a child’s fist, accounts for more than half 
+its body . When torch bugs are agitated, or during their 
+lengthy mating season, their abdomens glow with a warm, 
+yellow light . Inhabitants of areas thick with torch bugs 
+harvest the sluggish insects for a variety of purposes .
+Torch bug Paste
+Bladders  made  from  severed  torch  bug  abdomens  are 
+sold for the strange mixture of chemicals that grant the 
+insects their glow . Each contains one application of the 
+luminescent slime known as torch bug paste . These blad-
+ders do not shed light, and the paste within does not begin 
+glowing until exposed to air . 
+ Torch bug paste can be applied to inanimate 
+objects or living creatures . One bladder 
+contains enough paste to paint up to a 
+10-foot-square area; a full-round action 
+is required per 5-foot square covered . 
+A treated area glows for 1 hour and 
+sheds as much light as a torch (em-
+anating bright light out to 20 feet 
+and shadowy illumination for an-
+other 20 feet beyond that) . Torch 
+bug paste makes a painted object 
+highly visible, and it is often 
+used as a temporary decoration 
+or to mark targets in the dark . 
+It can be used to write short words or simple 
+symbols, but these marks must be rather large, 
+since the paste’s glow obscures details .
+       A bladder of torch bug paste can also be thrown as a 
+splash weapon (PH 158). Treat this attack as a ranged touch 
+attack with a range increment of 10 feet . A bladder of torch 
+bug paste bursts upon striking a firm surface, covering the 
+target and every adjacent creature or item with the glow-
+ing chemical . Creatures struck by the paste are affected as 
+if by a faerie fire spell for 1 hour . This effect is not magical 
+and cannot be dispelled . Torch bug paste can be washed 
+away from a creature or a 5-foot square as a full-round ac-
+tion but requires at least 1 gallon of water .
+Torch bug Tube
+A torch bug tube is a 1-foot-long, sealed glass cylinder with 
+ends capable of being unscrewed . Inside dwells a single 
+adult torch bug . When the tube is shaken (a move action for 
+any creature holding it), the insect inside becomes irritated 
+and begins glowing . This glow sheds as much light as a 
+torch (emanating bright light out to 20 feet and shadowy 
+illumination for another 20 feet beyond that) . The light 
+begins to dim as the bug calms down and goes out after 3 
+minutes unless the tube is shaken again . A torch bug tube 
+can be taken underwater without being extinguished and 
+does not emanate a magical aura . 
+  A torch bug can glow for up to 1 hour a day, after which it 
+must eat and rest; torch bugs must be fed daily (they eat mostly 
+smaller insects), or they grow too weak to shed light and 
+eventually die . In addition, the tube end must be unscrewed 
+once per day to replenish the insect’s air supply .
+Torch bug tube
+Illus. by C. Frank
+
+coundrels thrive under pressure . In the panicked, 
+harried moments that require one to act or be 
+ruined, these quick-witted folk let instinct take 
+over, trusting in their deft skills, sharp minds, 
+and, sometimes, pure dumb luck to carry them 
+through . Scoundrels buck trends and break the averages, 
+taking on tasks and aiming for goals few would dare, facing 
+danger with a do-or-die mentality that either brings glory 
+and fame or paves the way to an early grave . For scoundrels, 
+doing the impossible is the name of the game .
+  Scoundrel  adventures  are  risky  and  unpredictable 
+gambles against wildly unbalanced odds . Whether stealing 
+the hoard out from under a sleeping dragon, convincing 
+a  usurper  that  he’s  the  rightful  heir  to  the  throne,  or 
+scamming the local church of Hextor and then escap-
+ing far enough away not to care when the priests finally 
+notice—such escapades are the dreams and daily doings 
+of these daring dodgers .
+  This chapter provides what the DM needs to run adven-
+tures specially tailored to cunning and sharp-tongued 
+scoundrel characters . Sample scoundrel adventures, the 
+details specific to such exploits, and ideas for such quests 
+should provide everything you need to challenge even 
+the quickest-thinking swindler or sneak . You’ll also find 
+some maps of sample locations useful for scoundrels to 
+ply their art .
+  In  addition,  the  new  organizations  and  contacts 
+presented  here  offer  more  opportunities  to  mingle 
+with like-minded characters, whether as helpful peers, 
+cunning challengers, or sinister opponents . The legend-
+ary sites described in this chapter are locations made 
+specifically for scoundrels—places where they might 
+push their limits, tempt fate, and make use of some of 
+the new tricks and capabilities presented elsewhere 
+in this book .
+WhaT are sCoundrel 
+advenTures?
+Inside a vault hidden deep within Citadel Gashgnaw 
+rests the Hyacinth of Inestimable Beauty, the greatest 
+work of art the world has ever known . The Brother-
+hood of the Bloody Palm stole the masterpiece five 
+years ago . This army of brigands claimed Citadel 
+Gashgnaw,  an  ancient,  cursed  fortress,  to  keep 
+the Hyacinth their prisoner . To ensure this, they 
+have  stocked  the  citadel  with  countless  traps, 
+insidious magic, and monstrous creatures from 
+throughout the planes . The vault itself is warded 
+against all forms of penetration and teleportation, 
+and the sole magic key dangles around the neck 
+of the legendary bandit-gladiator-turned-warden, 
+121
+Illus. by D. Bircham
+
+122

@@ -1,7 +1,7 @@
 /**
  * @module    encounter-samples
  * @summary   Static registries of D&D 3.5e character templates for testing and sample seeding.
- * @exports   aranisSample, morgwenSample, thordakSample, lysaraSample, wizardLvl10Sample, rangerLvl10Sample, paladinLvl10Sample
+ * @exports   aranisSample, morgwenSample, thordakSample, lysaraSample, wizardLvl10Sample, rangerLvl10Sample, paladinLvl10Sample, arcaneTricksterLvl11Sample
  */
 
 export const aranisSample = {
@@ -497,4 +497,126 @@ export const paladinLvl10Sample = {
     { name: 'Böses niederstrecken', max: 3, used: 0 },
     { name: 'Untote vertreiben', max: 6, used: 0 }
   ]
+};
+
+export const arcaneTricksterLvl11Sample = {
+  name: 'Corvin Nachtschatten',
+  init: 7,
+  hp: 47,
+  maxHP: 47,
+  ac: 20,
+  acTouch: 14,
+  acFlat: 17,
+  bw: 30,
+  za: 4,
+  ref: 10,
+  wil: 8,
+  type: 'p',
+  str: 8,
+  dex: 16,
+  con: 12,
+  int: 18,
+  wis: 10,
+  cha: 8,
+  baseZa: 3,
+  baseRef: 7,
+  baseWil: 8,
+  iniMisc: 4,
+  bab: 5,
+  classType: 'multiclass',
+  level: 11,
+  classes: [
+    { classType: 'rogue', level: 3 },
+    { classType: 'wizard', level: 5 },
+    { classType: 'arcane_trickster', level: 3 }
+  ],
+  prestigeSpellLinks: {
+    arcane_trickster: 'wizard'
+  },
+  alignment: 'Chaotic Neutral',
+  autoAC: true,
+  weapons: [
+    { name: 'Meisterwerk-Rapier', attackBonus: '', damageDice: '1w6', crit: '18-20 / x2', grip: '1h', enhancement: 0 },
+    { name: 'Handarmbrust +1', attackBonus: '', damageDice: '1w4', crit: '19-20 / x2', grip: 'rng', enhancement: 1 }
+  ],
+  armors: [
+    { name: 'Mithral-Kettenhemd +1', type: 'chain_shirt', enhancement: 1, isEquipped: true, maxDexOverride: 6 }
+  ],
+  items: [
+    {
+      name: 'Schutzring +1',
+      slot: 'ring1',
+      isEquipped: true,
+      effects: [
+        { type: 'ac', target: 'deflection', value: 1 }
+      ]
+    },
+    {
+      name: 'Amulett der natürlichen Rüstung +1',
+      slot: 'neck',
+      isEquipped: true,
+      effects: [
+        { type: 'ac', target: 'natural', value: 1 }
+      ]
+    },
+    {
+      name: 'Meisterwerk-Dietriche',
+      slot: 'slotless',
+      isEquipped: false,
+      effects: []
+    },
+    {
+      name: 'Trank: Unsichtbarkeit',
+      slot: 'slotless',
+      isEquipped: false,
+      effects: []
+    }
+  ],
+  feats: [
+    { id: 'weapon_finesse', option: '' },
+    { id: 'improved_initiative', option: '' },
+    { id: 'combat_expertise', option: '' },
+    { id: 'scribe_scroll', option: '' },
+    { id: 'still_spell', option: '' },
+    { id: 'skill_focus', option: 'Disable Device' }
+  ],
+  skills: {
+    disable_device: { ranks: 14, misc: 0 },
+    escape_artist: { ranks: 11, misc: 0 },
+    decipher_script: { ranks: 8, misc: 0 },
+    knowledge_arcana: { ranks: 11, misc: 0 },
+    sleight_of_hand: { ranks: 11, misc: 0 },
+    hide: { ranks: 11, misc: 0 },
+    move_silently: { ranks: 11, misc: 0 },
+    spellcraft: { ranks: 11, misc: 0 },
+    concentration: { ranks: 11, misc: 0 },
+    search: { ranks: 8, misc: 0 },
+    open_lock: { ranks: 8, misc: 0 },
+    spot: { ranks: 6, misc: 0 },
+    bluff: { ranks: 6, misc: 0 },
+    tumble: { ranks: 6, misc: 0 }
+  },
+  spellSlots: {
+    0: { max: 4, used: 0 },
+    1: { max: 5, used: 0 },
+    2: { max: 4, used: 0 },
+    3: { max: 3, used: 0 },
+    4: { max: 2, used: 0 }
+  },
+  learnedSpells: [
+    'mage_hand', 'detect_magic', 'read_magic',
+    'mage_armor', 'shield', 'magic_missile',
+    'invisibility', 'mirror_image', 'scorching_ray',
+    'fireball', 'dispel_magic', 'stoneskin'
+  ],
+  preparedSpells: [
+    { id: 'prep-atk-1', spellKey: 'mage_hand', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-atk-2', spellKey: 'mage_armor', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-atk-3', spellKey: 'invisibility', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-atk-4', spellKey: 'mirror_image', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-atk-5', spellKey: 'scorching_ray', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-atk-6', spellKey: 'dispel_magic', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-atk-7', spellKey: 'stoneskin', metamagic: [], isUsed: false, isSpecialist: false }
+  ],
+  isSneakAttacking: true
 };

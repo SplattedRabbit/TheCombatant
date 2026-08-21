@@ -1,0 +1,3375 @@
+CHAPTER 5
+SPELLS
+139
+CHAPTER 5
+SPELLS
+  Casting a quickened spell is a swift action (instead of a 
+free action, as stated in the Quicken Spell feat description 
+in the 
+Player
+’s Handbook
+). In addition, casting any spell 
+with a casting time of 1 swift action (such as 
+critical strike
+) 
+is a swift action.
+  Casting a spell with a casting time of 1 swift action 
+does not provoke attacks of opportunity.
+ 
+Immediate  Action:
+  Much  like  a  swift  action,  an 
+immediate action consumes a very small amount of time 
+but represents a larger expenditure of effort and energy 
+than a free action. However, unlike a swift action, an 
+immediate action can be performed at any time—even 
+when it’s not your turn. Casting 
+feather fall 
+is an immedi
+-
+ate action (instead of a free action, as stated in the spell 
+description in the 
+Player
+’s Handbook
+), since the spell can 
+be cast at any time.
+  Using an immediate action on your turn is the same as 
+using a swift action, and counts as your swift action for 
+that turn. You cannot use another immediate action or 
+a swift action until after your next turn if you have used 
+an immediate action when it is not currently your turn 
+(effectively, using an immediate action before your turn 
+is equivalent to using your swift action for the coming 
+turn). You also cannot use an immediate action if you are 
+currently flat-footed.
+NEW ASSASSIN SPELLS
+1ST-LEVEL ASSASSIN SPELLS
+Critical  Strike:
+  Swift.  For  1  round  you  gain  +1d6 
+damage, doubled threat range, and +4 on attack rolls 
+to confirm critical hits.
+Distract Assailant:
+ Swift. One creature is flat-footed 
+for 1 round.
+Insightful Feint:
+ Swift. Gain +10 on your next Bluff 
+check to feint in combat.
+Instant  Locksmith:
+  Swift.  Make  Disable  Device  or 
+Open Lock check at +2 as free action. 
+Instant Search:
+ Swift. Make Search check at +2 as free 
+action.
+Sniper’s Shot:
+ Swift. No range limit on next ranged 
+sneak attack.
+2ND-LEVEL ASSASSIN SPELLS
+Invisibility, Swift:
+ Swift. You are invisible for 1 round 
+or until you attack.
+Iron Silence:
+ Armor touched has no armor check pen
+-
+alty on Hide and Move Silently for 1 hour/level.
+Wraithstrike:
+ Swift. Your melee attacks strike as touch 
+attacks for 1 round.
+3RD-LEVEL ASSASSIN SPELLS
+Absorb Weapon:
+ Hide a weapon, gain a Bluff check with 
+a +4 bonus to feint when you draw it.
+Spectral Weapon:
+ Swift. Use quasi-real weapon to make 
+touch attacks.
+4TH-LEVEL ASSASSIN SPELLS
+Shadow Form:
+ Gain +4 on Hide, Move Silently, and 
+Escape Artist checks, and concealment; you can move 
+through obstacles if you have ranks in Escape Artist.
+Sniper’s Eye:
+ Gain +10 Spot, darkvision, 60-ft. range 
+for  sneak  attacks,  and  death  attacks  with  ranged 
+weapons.
+NEW BARD SPELLS
+1ST-LEVEL BARD SPELLS
+Accelerated  Movement:
+  Swift.  Balance,  Climb,  or 
+Move  Silently  at  normal  speed  with  no  penalty  on 
+skill check.
+Distort Speech:
+ Subject’s speech is 50% unintelligible; 
+subject may miscast spells.
+Expeditious Retreat, Swift:
+ Swift. Your speed increases 
+by 30 ft. for 1 round.
+Focusing Chant:
+ Gain +1 on attack rolls, skill checks, 
+and ability checks, so long as you don’t speak or cast 
+other spells.
+Healthful  Rest:
+  Subjects  heal  at  twice  the  normal 
+rate.
+Herald’s Call:
+ Swift. Creatures of 5 HD or less within 
+20 ft. 
+slowed
+ for 1 round.
+Inspirational Boost:
+ Swift. The bonuses granted by 
+your inspire courage ability increase by 1.
+Joyful Noise:
+ You negate 
+silence
+ in a 10-ft.-radius emana
+-
+tion for as long as you concentrate. 
+Master’s Touch:
+ Swift. You gain proficiency in a weapon 
+or shield touched for 1 min./level.
+2ND-LEVEL BARD SPELLS
+Bladeweave:
+  Swift.  Your  melee  attack  dazes  your 
+opponent.
+Fly, Swift:
+ Swift. Gain fly speed of 60 ft. for 1 round.
+Insidious Rhythm:
+ Subject has –4 penalty on Intel
+-
+ligence-based skill checks and Concentration checks, 
+and must make Concentration check to cast spells.
+Invisibility, Swift:
+ Swift. You are invisible for 1 round 
+or until you attack.
+Iron Silence:
+ Armor touched has no armor check pen
+-
+alty on Hide and Move Silently for 1 hour/level.
+Mindless Rage:
+ Target compelled to attack you physi
+-
+cally for 1 round/level.
+Sonic  Weapon:
+  Weapon  touched  deals  +1d6  sonic 
+damage with each hit.
+Tactical  Precision:
+  Allies  gain  additional  +2  bonus 
+on  attack  rolls  and  +1d6  additional  damage  against 
+flanked foes.
+3RD-LEVEL BARD SPELLS
+Allegro:
+  You  and  your  allies  gain  +30  ft.  speed  for  1 
+min./level.
+Dirge of Discord:
+ All within 20 ft. take –4 on attack 
+rolls, Concentration checks, and Dexterity, and reduce 
+speed by 50%.
+Dissonant Chord:
+ Deal 1d8/2 levels sonic damage in 
+10-ft. burst.
+Harmonic Chorus:
+ Give another caster +2 caster levels 
+and +2 on save DCs as long as you concentrate.
+Hymn of Praise:
+ Add +2 caster levels to all good divine 
+casters within range.
+Infernal Threnody:
+ Add +2 caster levels to all evil divine 
+casters within range.
+Speechlink:
+ You and one other creature can talk, no 
+matter how far apart.
+4TH-LEVEL BARD SPELLS
+Listening Coin:
+ You can eavesdrop through a magic 
+coin.
+Spectral Weapon:
+ Swift. Use quasi-real weapon to make 
+touch attacks.
+War Cry:
+ Swift. Gain +2 morale bonus on attack and 
+damage rolls, or +4 if you charge, for 1 round/level. Any 
+opponent you damage must save or become panicked 
+for 1 round.
+5TH-LEVEL BARD SPELLS
+Improvisation:
+ You gain a pool of luck bonus points 
+equal to twice your caster level and can spend them to 
+improve attack rolls, skill checks, and ability checks.
+Wail of Doom:
+ Deal 1d4 damage/level in 30-ft. cone, 
+plus targets panicked or shaken.
+6TH-LEVEL BARD SPELLS
+Cacophonic  Shield:
+  Shield  10  ft.  from  you  blocks 
+sounds, deals 1d6+1/level sonic damage, and deafens 
+creatures passing through.
+Hindsight
+M
+:
+ You see into the past.
+Protégé:
+ Subject can use bardic music and bardic knowl
+-
+edge as bard of half your level.
+NEW CLERIC SPELLS
+1ST-LEVEL CLERIC SPELL
+Grave Strike:
+ Swift. You can sneak attack undead for 
+1 round.
+2ND-LEVEL CLERIC SPELLS
+Divine Insight:
+ You gain insight bonus of 5 + caster 
+level on one single skill check.
+Healing Lorecall:
+ If you have 5 or more ranks in Heal, 
+you can remove harmful conditions with conjuration 
+(healing) spells.
+Iron Silence:
+ Armor touched has no armor check penalty 
+on Hide and Move Silently checks for 1 hour/level.
+pqqqqqqqqqqqqqqqqqqqqrs
+The hexblade (a new standard class introduced in 
+Complete War
+-
+rior
+) has its own class spell list, which focuses on enchantment, 
+necromancy, and transmutation spells but also includes some 
+abjurations, illusions, and other effects. If you use this class, 
+add  the  following  new  spells  that  appear  in  this  book  to  the 
+hexblade’s class spell list.
+1st-Level Hexblade Spells
+  Distract  Assailant:
+  Swift.  One  creature  is  flat-footed  for  1 
+round.
+2nd-Level Hexblade Spells
+  Critical  Strike:
+  Swift.  For  1  round  you  gain  +1d6  damage, 
+doubled threat range, and +4 on attack rolls to confirm critical 
+hits.
+  Invisibility, Swift:
+ Swift. You are invisible for 1 round or until 
+you attack.
+3rd-Level Hexblade Spells
+  Spectral Weapon:
+ Swift. Use quasi-real weapon to make touch 
+attacks.
+4th-Level Hexblade Spells
+  Shadow Form:
+ Gain +4 on Hide, Move Silently, and Escape 
+Artist checks, and concealment; you can move through obstacles 
+if you have ranks in Escape Artist.
+pqqqqqqqqqqqqqqqqqqqqrs
+USING THE HEXBLADE WITH COMPLETE ADVENTURER
+
+
+140
+CHAPTER 5
+SPELLS
+141
+CHAPTER 5
+SPELLS
+NEW DRUID SPELLS
+1ST-LEVEL DRUID SPELLS
+Hawkeye:
+  Increase  range  increments  by  50%,  +5  on 
+Spot checks.
+Healthful  Rest:
+  Subjects  heal  at  twice  the  normal 
+rate.
+Vine Strike:
+ Swift. You can sneak attack plant creatures 
+for 1 round.
+2ND-LEVEL DRUID SPELLS
+Balancing Lorecall:
+ You gain a +4 bonus on Balance 
+checks and can balance on impossible surfaces if you 
+have 5 or more ranks in Balance.
+Branch to Branch: 
+You gain +10 competence bonus 
+on Climb checks in trees and can brachiate through 
+forest.
+Daggerspell Stance:
+ Swift. You gain +2 insight bonus 
+on attack and damage if you make a full attack, SR 5 + 
+caster level if you fi ght defensively, and DR 5/magic if 
+you use the total defense action.
+Easy Trail:
+ You make a temporary trail through any kind 
+of undergrowth.
+Embrace the Wild:
+ You gain an animal’s senses for 10 
+min./level.
+Healing Lorecall:
+ If you have 5 or more ranks in Heal, 
+you can remove harmful conditions with conjuration 
+(healing) spells.
+Listening Lorecall:
+ You gain +4 on Listen checks, plus 
+blindsense or blindsight if you have 5 or more ranks 
+in Listen.
+Nature’s Favor:
+ Animal touched gains luck bonus on 
+attack and damage rolls of +1/3 levels.
+Train Animal:
+ Affected animal gains additional tricks 
+equal to 1/2 caster level for 1 hour/level.
+Wracking Touch:
+ Deal 1d6 damage +1/level; you also 
+deal sneak attack damage if you have any.
+3RD-LEVEL DRUID SPELLS
+Entangling Staff:
+ Swift. Quarterstaff gains improved 
+grab and can constrict grappled foes.
+Fly, Swift:
+ Swift. Gain fl y speed of 60 ft. for 1 round.
+4TH-LEVEL DRUID SPELL
+Forestfold:
+ Gain +20 competence bonus on Hide and 
+Move Silently checks in one type of terrain.
+5TH-LEVEL DRUID SPELL
+Cloak of the Sea:
+ Gain 
+blur, freedom of movement,
+ and 
+water breathing
+ while in water.
+NEW PALADIN SPELLS
+1ST-LEVEL PALADIN SPELL
+Grave Strike:
+ Swift. You can sneak attack undead for 
+1 round.
+2ND-LEVEL PALADIN SPELL
+Divine Insight:
+ You gain insight bonus of 5 + caster 
+level on one single skill check.
+NEW RANGER SPELLS
+1ST-LEVEL RANGER SPELLS
+Accelerated  Movement:
+  Swift.  Balance,  Climb,  or 
+Move  Silently  at  normal  speed  with  no  penalty  on 
+skill check.
+Arrow Mind:
+ Immediate. You threaten nearby squares 
+with your bow and fi re without provoking attacks of 
+opportunity.
+Bloodhound:
+ You gain an immediate retry if you fail a 
+Survival check while tracking.
+Branch to Branch:
+ You gain +10 competence bonus 
+on Climb checks in trees and can brachiate through 
+forest.
+Easy Trail:
+ You make a temporary trail through any kind 
+of undergrowth.
+Embrace the Wild:
+ You gain an animal’s senses for 10 
+min./level.
+Exacting  Shot:
+  Your  ranged  weapon  automatically 
+confi rms critical hits against favored enemies. 
+Guided Shot:
+ Swift. You ignore distance penalties with 
+your ranged attacks for 1 round.
+Hawkeye:
+  Increase  range  increments  by  50%,  +5  on 
+Spot checks.
+Healing Lorecall:
+ If you have 5 or more ranks in Heal, 
+you can remove harmful conditions with conjuration 
+(healing) spells.
+Instant Search:
+ Swift. Make Search check at +2 as free 
+action.
+Sniper’s Shot:
+ Swift. No range limit on next ranged 
+sneak attack.
+Vine Strike:
+ Swift. You can sneak attack plant creatures 
+for 1 round.
+2ND-LEVEL RANGER 
+SPELLS
+Balancing Lorecall:
+ You gain 
+a  +4  bonus  on  Balance 
+checks  and  can  balance 
+on  impossible  surfaces  if 
+you have 5 or more ranks in 
+Balance.
+Easy  Climb:
+  You  make  a 
+vertical  surface  easy  to 
+Climb (DC 10).
+Haste,  Swift:
+  Swift.  Move 
+faster, +1 on attacks, AC, Refl ex 
+saves.
+Listening Lorecall:
+ You gain +4 on 
+Listen  checks,  plus  blindsense  or 
+blindsight if you have 5 or more 
+ranks in Listen.
+Nature’s Favor:
+ Animal touched gains luck bonus on 
+attack and damage rolls of +1/3 levels.
+Train Animal:
+ Affected animal gains additional tricks 
+equal to 1/2 caster level for 1 hour/level.
+3RD-LEVEL RANGER SPELLS
+Blade Storm:
+ Swift. You make melee attacks against 
+every foe you threaten.
+Forestfold:
+ You gain +20 competence bonus on Hide and 
+Move Silently checks in one type of terrain.
+4TH-LEVEL RANGER SPELLS
+Arrow Storm:
+ Swift. You make one ranged attack against 
+each foe within one range increment.
+Foebane:
+  Your  weapon  becomes  +5  and  deals  +2d6 
+damage against a favored enemy.
+NEW SORCERER/
+WIZARD SPELLS
+1ST-LEVEL SORCERER/
+WIZARD SPELLS
+Div 
+Arrow Mind:
+ Immediate. You threaten nearby 
+squares with your bow and fi re without provoking 
+attacks of opportunity.
+Critical Strike:
+ Swift. For 1 round you gain +1d6 
+damage, doubled threat range, and +4 on attack 
+rolls to confi rm critical hits.
+Golem Strike:
+ Swift. You can sneak attack con-
+structs for 1 round.
+ 
+Guided Shot:
+ Swift. You ignore distance penalties 
+with your ranged attacks for 1 round.
+Insightful  Feint:
+  Swift.  Gain  +10  on 
+your  next  Bluff  check  to  feint  in 
+combat.
+ 
+Instant  Locksmith:
+ 
+Swift. Make Disable Device 
+or Open Lock check at 
++2 as free action.
+ 
+Instant Search:
+ Swift. 
+Make Search check at +2 as 
+free action.
+ 
+Master’s Touch:
+ Swift. You gain 
+profi ciency in a weapon or shield touched 
+for 1 min./level.
+ 
+Sniper’s Shot:
+  Swift.  No  range  limit  on  next 
+ranged sneak attack.
+Ench 
+Distract Assailant:
+ Swift. One creature is fl at-
+footed for 1 round.
+Trans 
+Accelerated Movement:
+ Swift. Balance, Climb, 
+or Move Silently at normal speed with no penalty 
+on skill check.
+Trans
+  Expeditious Retreat, Swift:
+ Swift. Your speed 
+increases by 30 ft. for 1 round.
+2ND-LEVEL SORCERER/
+WIZARD SPELLS
+Abjur 
+Daggerspell Stance:
+ Swift. You gain +2 insight 
+bonus on attack and damage if you make a full 
+attack, SR 5 + caster level if you fi ght defensively, 
+and  DR  5/magic  if  you  use  the  total  defense 
+action.
+Div 
+Balancing Lorecall:
+  You  gain  a  +4  bonus  on 
+Balance checks and can balance on impossible 
+surfaces if you have 5 or more ranks in Balance.
+ 
+Listening Lorecall:
+ Gain +4 on Listen checks, 
+plus blindsense or blindsight if you have 5 or more 
+ranks in Listen.
+Ench 
+Mindless Rage:
+ Target compelled to attack you 
+physically for 1 round/level.
+Illus 
+Bladeweave:
+ Swift. Your melee attack dazes your 
+opponent.
+Necro 
+Wracking Touch:
+ Deal 1d6 damage +1/level; you 
+also deal sneak attack damage if you have any.
+Trans 
+Fly, Swift:
+ Swift. Gain fl y speed of 60 ft. for 1 
+round.
+Sonic Weapon:
+ Weapon touched deals +1d6 sonic 
+damage with each hit.
+ 
+Wraithstrike:
+ Swift. Your melee attacks strike 
+as touch attacks for 1 round.
+Illus. by D. Kovacs
+
+
+CHAPTER 5
+SPELLS
+142
+CHAPTER 5
+SPELLS
+143
+NEW SPELLS
+The  following  spells  supplement 
+those  found  in  Chapter  11  of  the 
+Player’s Handbook.
+ABSORB WEAPON
+Transmutation
+Level:
+ Assassin 3
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range:
+ Touch
+Effect:
+ One touched weapon not 
+in another creature’s possession
+Duration:
+ 1 hour/level (D)
+Saving Throw:
+ Will negates 
+(object); see text
+Spell Resistance:
+ Yes (object)
+You can harmlessly absorb a weapon 
+you are touching (even a poisoned 
+one) into your arm, so long as it is 
+not in another creature’s possession. 
+The weapon must be a light weapon 
+for you at the time you cast the spell. 
+The absorbed weapon cannot be felt 
+under the skin and doesn’t restrict 
+your range of motion in any way. An 
+absorbed weapon cannot be detected 
+with even a careful search, although 
+a 
+detect magic
+ spell reveals the pres
+-
+ence  of  a  magical  aura.  The  only 
+evidence  of  its  presence  is  a  faint 
+blotch on your skin shaped vaguely 
+like the weapon.
+  When  you  touch  the  spot  (an 
+action  equivalent  to  drawing  a 
+weapon), or when the spell duration 
+expires, the weapon appears in your 
+hand and the spell ends. If you attack 
+with the weapon in the same round 
+that you retrieve it from its hiding 
+place, you can attempt a Bluff check 
+to feint in combat as a free action, 
+and you gain a +4 bonus on the Bluff 
+check. An intelligent magic weapon 
+gets a saving throw against this spell, 
+but other weapons do not.
+ACCELERATED 
+MOVEMENT
+Transmutation
+Level:
+ Bard 1, ranger 1, sorcerer/
+wizard 1
+Components: 
+V, S, M
+Casting Time: 
+1 swift action
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round/level (D)
+While this spell is in effect, you can 
+move  at  your  normal  speed  when 
+using  Balance,  Climb,  or  Move 
+Silently without taking any penalty 
+on your check. This spell does not 
+affect  the  penalty  for  using  these 
+skills while running or charging.
+ 
+Material Component: 
+A dead cock
+-
+roach.
+ALLEGRO
+Transmutation
+Level: 
+Bard 3
+Components: 
+V, S, M
+Casting Time: 
+1 standard action
+Range: 
+10 ft.
+Area: 
+10-ft.-radius burst, centered 
+on you
+Duration: 
+1 minute/level (D)
+Saving Throw: 
+Fortitude negates 
+(harmless)
+Spell Resistance: 
+Yes (harmless)
+This spell makes you and your com
+-
+panions extraordinarily fleet of foot. 
+Each creature within the spell’s area 
+gains a 30-foot enhancement bonus 
+to its land speed, up to a maximum 
+of double the creature’s land speed. 
+Affected creatures retain these effects 
+for the duration of the spell, even if 
+they leave the original area.
+ 
+Material Component: 
+A tailfeather 
+from a bird of prey.
+ARROW MIND
+Divination
+Level:
+ Ranger 1, sorcerer/wizard 1
+Components: 
+V, S, M
+Casting Time: 
+1 immediate action 
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 minute/level (D)
+You sharpen your senses and focus 
+your mind on the use of a bow. While 
+this  spell  is  in  effect  and  you  are 
+wielding a longbow, shortbow, 
+greatbow*,  composite  great
+-
+bow*,  composite  shortbow,  or 
+composite longbow, you threaten 
+all  squares  within  your  normal 
+melee  reach  (5  feet  if  Small  or 
+Medium, 10 feet if Large) with your 
+bow, allowing you to make attacks 
+of  opportunity  with  arrows  shot 
+from the bow. In addition, you do 
+not provoke attacks of opportunity 
+when  you  shoot  a  bow  while  you 
+are  in  another  creature’s 
+threatened square.
+ 
+Material Component:
+ A 
+flint arrowhead.
+  *See 
+Complete Warrior.
+ARROW STORM
+Transmutation
+Level:
+ Ranger 4
+Components: 
+V
+Casting Time: 
+1 
+swift action 
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round
+You can cast this spell only at the 
+beginning  of  your  turn,  before 
+you  take  any  other  actions.  After 
+casting 
+arrow  storm
+,  you  can  use 
+a  full-round  action  to  make  one 
+ranged  attack  with  a  bow  with 
+which  you  are  proficient  against 
+every foe within a distance equal 
+to  the  weapon’s  range  increment. 
+You can attack a maximum number 
+of individual targets equal to your 
+character level. If you choose not 
+to spend a full-round action in this 
+fashion after casting the spell, the 
+spell has no effect.
+BALANCING LORECALL
+Divination
+Level:
+ Druid 2, ranger 2, sorcerer/
+wizard 2
+Components: 
+V, S, M/DF
+Casting Time: 
+1 standard action 
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 minute/level (D)
+You  intuit  the  precise  spot  and 
+stance necessary to stand on areas 
+of even the most unstable footing. 
+You gain a +4 insight bonus on Bal
+-
+ance checks. If you have sufficient 
+ranks  in  the  Balance  skill,  you 
+can even balance on an otherwise 
+impossible  surface  with  a  DC  20 
+Balance check. 
+  If  you  have  5  or  more  ranks  in 
+Balance, you can balance on vertical 
+surfaces; the normal modifier for a 
+sloped or angled surface no longer 
+applies  to  you,  though  other  DC 
+modifiers  (such  as  for  a  slippery 
+surface)  do  apply.  If  you  balance 
+on a vertical surface, you can move 
+up or down as if you were climbing. 
+However, you are not actually climb
+-
+ing, so you can make attacks 
+normally,  retain  your 
+Dexterity bonus 
+to  Armor  Class, 
+and  generally  follow 
+the rules of the Balance 
+skill rather than the 
+Climb skill.
+   If you have 
+10  or  more 
+ranks  in  Bal
+-
+ance, you can 
+balance on liq
+-
+uids,  semisolid 
+surfaces such 
+as  mud  or 
+snow, or sim
+-
+ilar surfaces that normally couldn’t 
+support  your  weight.  For  each 
+consecutive  round  that  you  begin 
+balanced on a particular surface of 
+this  sort,  the  DC  of  your  Balance 
+check  increases  by  5.  As  with  all 
+uses of the Balance skill, you move 
+at half speed unless you decide to 
+use the accelerated movement op
+-
+tion (thereby increasing the DC of 
+the Balance check by 5). For more 
+information on the Balance skill, see 
+page 67 of the 
+Player’s Handbook.
+ 
+Arcane Material Component:
+ A thin, 
+three-inch-long wooden dowel.
+3RD-LEVEL SORCERER/
+WIZARD SPELL
+Illus 
+Spectral Weapon:
+ Swift. Use quasi-real weapon 
+to make touch attacks.
+4TH-LEVEL SORCERER/
+WIZARD SPELL
+Trans
+  Entangling  Staff:
+  Swift.  Quarterstaff  gains 
+improved grab and can constrict grappled foes.
+5TH-LEVEL SORCERER/
+WIZARD SPELLS
+Trans 
+Nightstalker’s Transformation
+M
+:
+ Gain +4 Dex, 
++3 luck bonus to AC, +5 luck bonus on Ref saves, 
++3d6 sneak attack, and evasion.
+Illus  
+Shadow Form:
+ Gain +4 on Hide, Move Silently, 
+and Escape Artist checks, and concealment; you 
+can move through obstacles if you have ranks in 
+Escape Artist.
+6TH-LEVEL SORCERER/
+WIZARD SPELL
+Trans 
+Cloak of the Sea:
+ Gain 
+blur, freedom of movement,
+ 
+and 
+water breathing
+ while in water.
+7TH-LEVEL SORCERER/
+WIZARD SPELL
+Evoc  
+Cacophonic Shield:
+ Immobile shield 10 ft. from 
+you blocks sounds, deals 1d6+1/level sonic damage, 
+and deafens creatures passing through.
+9TH-LEVEL SORCERER/
+WIZARD SPELL
+Div 
+Hindsight
+M
+:
+ You see into the past.
+Arrow storm
+Illus. by S. Ellis
+
+
+CHAPTER 5
+SPELLS
+144
+CHAPTER 5
+SPELLS
+145
+BLADE STORM
+Transmutation
+Level:
+ Ranger 3
+Components: 
+V
+Casting Time: 
+1 swift action 
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round
+You can cast this spell only at the 
+beginning of your turn, before you 
+take any other actions. After casting 
+blade storm,
+ you can take a full-round 
+action to make one attack with each 
+melee  weapon  you  are  currently 
+wielding  against  every  foe  within 
+reach.  If  you  wield  two  weapons, 
+or a double weapon, you can attack 
+each  foe  once  with  each  weapon 
+or end, using the normal rules for 
+two-weapon  fighting.  So,  a  ranger 
+wielding  a  longsword  and  a  short 
+sword could attack each opponent 
+he  can  reach  with  both  weapons. 
+You can attack a maximum number 
+of individual targets equal to your 
+character  level.  If  you  choose  not 
+to spend a full-round action in this 
+fashion after casting the spell, the 
+spell has no effect.
+BLADEWEAVE
+Illusion [Pattern]
+Level:
+ Bard 2, sorcerer/wizard 2
+Components: 
+V
+Casting Time:
+ 1 swift action
+Range:
+ Personal
+Target:
+ You
+Duration: 
+1 round/level (D)
+Saving Throw: 
+See text
+Spell Resistance: 
+See text
+A 
+bladeweave
+  spell  imbues  your 
+melee attacks with a fascinating pat
+-
+tern or rhythm that entrances your 
+opponent. Any round that you attack 
+with a melee weapon, you can make 
+a single additional touch attack with 
+that weapon at your normal attack 
+bonus as a free action. This attack 
+deals  no  damage.  Instead,  anyone 
+successfully touched by the weapon 
+must succeed on a Will save or be 
+dazed for 1 round. Spell resistance 
+applies to this effect.
+BLOODHOUND
+Divination
+Level:
+ Ranger 1
+Components: 
+V, S
+Casting Time:
+ 1 standard action
+Range: 
+Personal
+Target:
+ You
+Duration: 
+24 hours (D)
+If you fail a Survival check to track 
+a  creature  while  this  spell  func
+-
+tions, you can immediately attempt 
+another roll against the same DC 
+to reestablish the trail. If the reroll 
+fails, you must search for the trail 
+for  30  minutes  (if  outdoors)  or  5 
+minutes (if indoors) before trying 
+again.
+BRANCH TO BRANCH
+Transmutation
+Level:
+ Druid 2, ranger 1
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range: 
+Personal
+Target:
+ You
+Duration: 
+10 minutes/level (D)
+You gain a +10 competence bonus 
+on Climb checks made in trees. As 
+long as you remain at least 10 feet 
+above the ground, you can brachiate 
+(swing  via  branches  and  vines)  in 
+medium or dense forest, but not in 
+sparse forest. When you brachiate, 
+you  gain  a  10-foot  enhancement 
+bonus to your land speed and ignore 
+the hampered movement penalties 
+for undergrowth and other terrain 
+features.  You  can  charge  while 
+brachiating, but you can’t run. Natu
+-
+rally, some local conditions such as 
+areas of sparse forest, clearings, wide 
+rivers, or other breaks in the forest 
+canopy might force you to return to 
+the ground.
+CACOPHONIC SHIELD
+Evocation [Sonic]
+Level:
+ Bard 6, sorcerer/wizard 7 
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range:
+ 10 ft.
+Area:
+ 10-ft.-radius emanation, cen
+-
+tered on you
+Duration:
+ 1 minute/level (D)
+Saving Throw:
+ Fortitude partial
+Spell Resistance:
+ Yes
+You create a barrier of sonic energy 
+at a distance of 10 feet from yourself. 
+Creatures on either side of the barrier 
+hear it as a loud but harmless buzz
+-
+ing. Nonmagical sound (including 
+sound produced by a thunderstone) 
+does not cross the barrier. Supernat
+-
+ural or spell-based sounds or sonic 
+effects penetrate the barrier only if 
+the caster or originator of the effect 
+succeeds on a caster level check (DC 
+11 + your caster level).
+  A creature that crosses the barrier 
+takes 1d6 points of sonic damage +1 
+point  per  caster  level  (maximum 
++20) and must make a Fortitude save 
+or  be  deafened  for  1  minute.  The 
+sonic vibrations create a 20% miss 
+chance  for  any  missiles  crossing 
+the barrier in either direction. The 
+barrier  moves  with  you,  but  you 
+cannot force another creature to pass 
+through it (for example, by moving 
+adjacent to an enemy). If you force a 
+creature to pass through, the barrier 
+has no effect on that creature.
+CLOAK OF THE SEA
+Transmutation
+Level:
+ Druid 5, sorcerer/wizard 6
+Components: 
+V, S, DF
+Casting Time:
+ 1 standard action
+Range: 
+Touch
+Target:
+ Creature touched
+Duration:
+ 1 hour/level (D)
+Saving Throw:
+ Will negates 
+(harmless)
+Spell Resistance:
+ Yes (harmless)
+The subject retains his or her form 
+but  takes  on  a  blue-green  watery 
+appearance. While underwater, the 
+subject  functions  as  if  affected  by 
+blur
+, 
+freedom of movement, 
+and 
+water 
+breathing
+ and doesn’t take nonlethal 
+damage  from  water  pressure  or 
+hypothermia  for  the  duration  of 
+the spell. When out of the water (or 
+even partially out), the subject gains 
+none  of  these  advantages  except 
+water breathing.
+ The subject can leave 
+and  reenter  water  without  ending 
+the spell.
+CRITICAL STRIKE
+Divination
+Level:
+ Assassin 1, sorcerer/wizard 
+1
+Components: 
+V
+Casting Time: 
+1 swift action
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round
+While  this  spell  is  in  effect,  your 
+melee  attacks  are  more  likely  to 
+strike a foe’s vital areas. Whenever 
+you make a melee attack against a 
+flanked foe or against a foe denied 
+its Dexterity bonus, you deal an extra 
+1d6 points of damage, your weapon’s 
+threat range is doubled (as if under 
+the effect of 
+keen edge
+), and you gain 
+a +4 insight bonus on rolls made to 
+confirm critical hits. The increased 
+threat  range  granted  by  this  spell 
+doesn’t stack with any other effect 
+that increases your weapon’s threat 
+range. Creatures immune to sneak 
+attacks  are  immune  to  the  extra 
+damage dealt by your attacks.
+DAGGERSPELL STANCE
+Abjuration
+Level:
+ Druid 2, sorcerer/wizard 2
+Components: 
+V, F
+Casting Time: 
+1 swift action
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round/level (D)
+This  spell,  favored  by  the  Dag
+-
+gerspell  Guardians  (see  page 
+167  ), 
+improves  your  ability  to  defend 
+yourself  when  wielding  a  pair  of 
+daggers. The spell, like many of the 
+daggerspell  techniques,  depends 
+on the use of daggers to bring down 
+a  foe.  The  spell’s  effect  cannot  be 
+realized  unless  you  are  wielding 
+two daggers, but the spell does not 
+end if you drop, throw, or otherwise 
+lose a hold on one or both of your 
+daggers. 
+  While this spell is in effect, if you 
+make a full attack while holding a 
+dagger in each hand, you gain a +2 
+insight  bonus  on  attack  rolls  and 
+damage rolls made with daggers in 
+that round.
+  The magical energy that perme
+-
+ates your daggers while this spell is 
+active allows you to deflect the magi
+-
+cal  energy  of  many  spells.  When 
+wielding two daggers and fighting 
+defensively, you gain spell resistance 
+equal to 5 + your caster level.
+  The spell focuses your concentra
+-
+tion so that when you devote all of 
+your attention to defense, you can 
+turn the force of most blows away 
+from your body with your daggers. 
+When  wielding  two  daggers  and 
+using the total defense action, you 
+gain both the spell resistance benefit 
+described above and damage reduc
+-
+tion 5/magic.
+ 
+Focus: 
+A pair of daggers.
+DIRGE OF DISCORD
+Enchantment (Compulsion) [Evil, 
+Mind-Affecting]
+Level:
+ Bard 3
+Components: 
+V, S, M
+Casting Time:
+ 1 standard action
+Range: 
+Close (25 ft. + 5 ft./2 levels)
+Area:
+ 20-ft.-radius spread
+Duration: 
+Concentration + 1 
+round/level
+Saving Throw:
+ Will negates
+Spell Resistance: 
+Yes
+You create an unholy, cacophonous 
+dirge that fills the subjects’ minds 
+with  the  screams  of  the  dying, 
+the  wailing  of  the  damned,  and 
+the  howling  of  the  mad.  Affected 
+creatures take a –4 penalty on attack 
+rolls  and  Concentration  checks,  a 
+–4 penalty to Dexterity, and a 50% 
+reduction in their speed (to a mini
+-
+mum of 5 feet).
+ 
+Material  Component: 
+A  pinch  of 
+ashes from a destrachan.
+DISSONANT CHORD
+Evocation [Sonic]
+Level:
+ Bard 3
+Components: 
+V, S 
+Casting Time: 
+1 standard action 
+Range:
+ 10 ft. 
+Area: 
+10-ft.-radius burst centered 
+on you 
+Duration:
+ Instantaneous
+Saving Throw:
+ Fortitude half
+Spell Resistance:
+ Yes
+You  emit  a  terrible,  piercing  note. 
+Creatures  (other  than  you)  in  the 
+affected  area  take  1d8  points  of 
+sonic damage per two caster levels 
+(maximum 5d8).
+DISTORT SPEECH
+Transmutation [Sonic]
+Level:
+ Bard 1
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range: 
+Close (25 ft. + 5 ft./2 levels)
+Target: 
+One creature
+Duration: 
+1 round/level
+Saving Throw:
+ Fortitude negates
+Spell Resistance:
+ Yes
+
+
+CHAPTER 5
+SPELLS
+146
+CHAPTER 5
+SPELLS
+147
+You distort a creature’s vocalizations. 
+The  voice  of  the  subject  becomes 
+warped  and  nearly  incomprehen-
+sible. For the duration of this spell, 
+the  subject  has  a  50%  chance 
+to  miscast  spells  that  have 
+verbal  components,  and 
+any time the subject 
+speaks  (includ-
+ing the use  
+of magic  
+items activated  
+by command 
+words), 
+there 
+is a 50% chance that the utterance 
+is completely incomprehensible and 
+therefore ineffective.
+DISTRACT ASSAILANT
+Enchantment (Compulsion) 
+[Mind-Affecting]
+Level:
+ Assassin 1, sorcerer/
+wizard 1
+Components: 
+V, S, M
+Casting Time: 
+1 swift action
+Range:
+ Close (25 ft. + 5 ft./2 levels) 
+Target: 
+One creature 
+Duration:
+ 1 round
+Saving Throw: 
+Will negates
+Spell Resistance:
+ Yes
+The subject of this spell is dis-
+tracted,  fl inching  at  blows 
+that  seem  to  come  from 
+the  shadows.  A  creature 
+affected  by  this  spell 
+is  fl at-footed  until  the 
+beginning of its next turn.
+Material Component:
+The  dried  wing  of 
+a fl y.
+DIVINE INSIGHT
+Divination
+Level:
+ Cleric 2, paladin 2
+Components: 
+V, S, DF
+Casting Time: 
+1 standard action 
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 hour/level or until 
+discharged (D)
+When you cast this spell, you invoke 
+the  power  of  your  deity  to  guide 
+your actions. Once during the spell’s 
+duration,  you  can  choose  to  use 
+its effect. This spell grants you an 
+insight bonus equal to 5 + your caster 
+level  (maximum  bonus  of  +15)  on 
+any  single  skill  check.  Activating 
+the  effect  requires  an  immediate 
+action. You must choose to use 
+divine 
+insight
+ before you make the check 
+you want to modify. Once used, the 
+spell ends.
+  You  can’t  have  more  than  one 
+divine insight
+ effect active on you at 
+the same time.
+EASY CLIMB
+Transmutation
+Level:
+ Ranger 2
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range: 
+Medium (100 ft. +10 ft./
+level)
+Area: 
+Vertical path 10 ft. wide and 
+20 ft. tall/level
+Duration: 
+10 minutes/level (D)
+Saving Throw:
+ None (object)
+Spell Resistance:
+ Yes (object)
+You create a path of handholds and 
+footholds  up  the  surface  of  a  cliff 
+face, tree trunk, wall, or other verti-
+cal obstacle. This effect changes the 
+surface to the equivalent of a very 
+rough wall (DC 10 to climb).
+EASY TRAIL
+Abjuration
+Level:
+ Druid 2, ranger 1
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range: 
+40 ft.
+Area: 
+40-ft. radius emanation
+Duration: 
+1 hour/level (D)
+Saving Throw:
+ None
+Spell Resistance:
+ Yes
+You  radiate  an  energy  that  gently 
+pushes  plants  aside,  allowing  easy 
+passage and hiding your trail after 
+you pass.
+  Anyone  in  the  area  of  the  spell 
+(including  you)  fi nds  the  under-
+growth held aside while she passes. 
+This effect essentially provides a trail 
+through any kind of undergrowth, 
+reducing  any  movement  penalties 
+from terrain caused by dense veg-
+etation (see Table 9–5: Terrain and 
+Overland Movement, page 164 of the 
+Player’s Handbook
+). Once the effect of 
+the spell passes, the plants return to 
+their normal shape. The DC to track 
+anyone  who  traveled  within  the 
+area of this spell increases by 5 (the 
+equivalent of hiding the trail).
+  This spell has no effect on plant 
+creatures (that is, they aren’t pushed 
+or held aside by its effect).
+EMBRACE THE WILD 
+Transmutation 
+Level:
+ Druid 2, ranger 1
+Components:
+ V
+Casting Time: 
+1 standard action 
+Range:
+ Personal 
+Target:
+ You 
+Duration:
+ 10 minutes/level (D)
+This spell allows you to adopt the 
+nature and some of the abilities of 
+a  particular  animal.  Upon  casting 
+the spell, you can choose any animal 
+whose Hit Dice are equal to or less 
+than  your  caster  level.  You  retain 
+your  own  form,  but  you  gain  the 
+natural and extraordinary senses of 
+the creature you choose, including 
+blindsense,  blindsight,  darkvision, 
+low-light vision, and scent, as appli-
+cable. You can also choose to replace 
+either  or  both  of  your  Listen  and 
+Spot check modifi ers with those of 
+the animal chosen. 
+  For  example,  a  3rd-level  druid 
+casting this spell might choose to 
+adopt the nature of a wolverine to 
+gain  low-light  vision,  scent,  and 
+Listen and Spot check modifi ers of 
++6.  Alternatively,  she  could  select 
+the eagle and gain low-light vision, 
+Listen +2, and Spot +14. If the druid’s 
+Listen  check  modifi er  were  better 
+than +2, she could retain her own 
+Listen check modifi er while gaining 
+the eagle’s Spot check modifi er.
+ENTANGLING STAFF
+Transmutation
+Level:
+ Druid 3, sorcerer/wizard 4
+Components: 
+V, F
+Casting Time: 
+1 swift action
+Range:
+ Touch 
+Target: 
+Quarterstaff touched 
+Duration:
+ 1 round/level (D)
+Saving Throw: 
+Yes (harmless, 
+object) 
+Spell Resistance:
+ Yes (harmless) 
+You  cause  your  quarterstaff  to 
+extrude  writhing  vines  that  allow 
+you to easily grab and entrap foes. 
+Each  time  you  successfully  strike 
+a foe with the staff (a normal melee 
+attack),  you  deal  normal  damage 
+and can attempt to start a grapple 
+as a free action without provoking 
+attacks of opportunity (see Starting 
+a  Grapple,  page  156  of  the 
+Player’s 
+Handbook
+). This grapple attempt does 
+not require a separate touch attack. 
+You  gain  a  +8  bonus  on  grapple 
+checks you cause by striking a foe 
+with  the 
+entangling  staff. 
+You  can 
+attempt to grapple creatures up to 
+one size category larger than you.
+  If  your  grapple  check  succeeds, 
+your  quarterstaff’s  vines  constrict 
+your  foe,  dealing  2d6  points  of 
+A distract assailant spell fools an ogre long 
+enough to give an assassin the upper hand
+Illus. by M. Cotie
+
+
+CHAPTER 5
+SPELLS
+148
+CHAPTER 5
+SPELLS
+149
+damage (you can choose to deal 
+nonlethal  damage  instead  of 
+normal  damage  if  you  wish). 
+You then have two choices:
+Release: 
+You release your oppo-
+nent from the grapple. 
+Some  vines  remain 
+clinging to your foe, 
+leaving it entangled 
+for the duration of 
+the  spell.  You  can 
+attack  different 
+enemies in later 
+rounds  with 
+the 
+entan-
+gling staff,
+ potentially grappling and 
+constricting or entangling them.
+Maintain: 
+You maintain your hold. 
+In  subsequent  rounds,  you  deal 
+constriction  damage  with  a  suc-
+cessful grapple check. You can then 
+choose  to  release  or  maintain  the 
+hold again.
+Focus: 
+A quarterstaff.
+EXACTING SHOT
+Transmutation
+Level:
+ Ranger 1
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range:
+ Touch
+Target: 
+Ranged weapon touched
+Duration: 
+1 minute/level
+Saving Throw: 
+Will negates 
+(harmless, object)
+Spell Resistance:
+ Yes (harmless, 
+object)
+This transmutation makes a 
+ranged weapon strike true 
+against  your  favored 
+ enemies.  All  rolls 
+made to confi rm 
+critical hits by 
+the  weapon 
+   against 
+   favored  
+   enemies 
+auto matically 
+  succeed, so every 
+threat is a critical hit. 
+The  affected  weapon 
+   also  ignores  any 
+miss  chance  due 
+to concealment 
+whenever  you 
+fi re at a favored 
+enemy  (unless 
+the  target  has 
+total  conceal-
+ment, in which 
+case the normal 
+miss  chance  ap-
+plies). If the ranged 
+weapon or the pro-
+jectile fi red has any magical effect or 
+property related to critical hits, this 
+spell has no effect on it.
+EXPEDITIOUS RETREAT, 
+SWIFT
+Transmutation
+Level: 
+Bard 1, sorcerer/wizard 1
+Components: 
+V
+Casting Time: 
+1 swift action
+Range: 
+Personal
+Target: 
+You
+Duration: 
+1 round
+This  spell  functions  like 
+expedi-
+tious  retreat 
+(see  page  228  of  the 
+Player’s Handbook
+), except as noted 
+above.
+FLY, SWIFT
+Transmutation
+Level: 
+Bard 2, druid 3, sorcerer/
+wizard 2
+Components: 
+V
+Casting Time: 
+1 swift action
+Range: 
+Personal
+Target: 
+You
+Duration: 
+1 round
+This  spell  functions 
+like 
+fl y 
+(see page 232 of 
+the 
+Player’s  Handbook
+), 
+except as noted above.
+FOCUSING CHANT
+Enchantment (Compulsion) 
+[Mind-Affecting]
+Level: 
+Bard 1
+Components: 
+V
+Casting Time: 
+1 standard action
+Range: 
+Personal
+Target: 
+You
+Duration: 
+1 minute (D)
+You can use 
+focusing chant
+ to block out 
+distractions and hone your attention. 
+You gain a +1 circumstance bonus 
+on  attack  rolls,  skill  checks,  and 
+ability checks for the duration of the 
+spell. You need not concentrate on 
+focusing chant
+, but you must continue 
+to mutter the syllables of the chant 
+to  maintain  the  spell.  Therefore, 
+you cannot speak, use bardic music 
+effects,  or  cast  spells  with  verbal 
+components  while  a 
+focusing  chant 
+spell is in effect.
+  Dismissing 
+focusing  chant 
+is  an 
+immediate action.
+FOEBANE
+Evocation
+Level:
+ Ranger 4
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range:
+ Touch
+Target:
+ Weapon touched
+Duration:
+ 1 round/level (D)
+Saving Throw:
+ Will negates 
+(harmless, object)
+Spell Resistance:
+ Yes (harmless, 
+object)
+This  spell  imbues  one  of  your 
+weapons  with  great  killing  power 
+against a single favored enemy type. 
+Against creatures of that type, the 
+weapon acts as a +5 magic weapon 
+and  deals  an  extra  2d6  points  of 
+damage.  Furthermore,  while  you 
+wield  the  weapon,  you  gain  a  +4 
+resistance bonus on saving throws 
+against effects created by creatures 
+of that type.
+  The spell is automatically canceled 
+1 round after the weapon leaves your 
+hand for any reason. You cannot have 
+more than one 
+foebane weapon
+ active 
+at a time.
+  If  this  spell  is  cast  on  a  magic 
+weapon,  the  powers  of  the  spell 
+supersede  any  that  the  weapon 
+normally has, rendering the normal 
+enhancement  bonus  and  powers 
+of  the  weapon  inoperative  for  the 
+duration of the spell. This spell is 
+not cumulative with any other spell 
+that  might  modify  the  weapon  in 
+any way. This spell does not work 
+on artifacts.
+FORESTFOLD
+Transmutation
+Level:
+ Druid 4, ranger 3
+Components: 
+V, S
+Casting Time: 
+1 standard action
+Range: 
+Personal
+Target: 
+You
+Duration: 
+10 minutes/level (D)
+You  change  your  coloring  and 
+attune your footfalls to one 
+specific  kind  of  terrain 
+(aquatic, desert, plains, 
+forest, hills, mountains, 
+marsh, or underground). 
+While  you  are  in  ter-
+rain  of  that  kind,  you 
+gain  a  +20  competence 
+bonus on Hide and Move 
+Silently  checks.  You  retain 
+these bonuses even if you leave the 
+designated terrain and return within 
+the duration of the spell.
+GOLEM STRIKE
+Divination
+Level:
+ Sorcerer/wizard 1
+Components: 
+V
+Casting Time: 
+1 swift action 
+Range:
+ Personal
+Target: 
+You 
+Duration:
+ 1 round
+Entangling 
+staff
+Illus. by D. Kovacs
+Illus. by J. Jarvis
+
+
+CHAPTER 5
+SPELLS
+150
+CHAPTER 5
+SPELLS
+151
+While this spell is in effect, you have 
+a special connection to the arcane 
+forces that animate constructs. For 1 
+round, you can deliver sneak attacks 
+against constructs as if they were not 
+immune to sneak attacks. To attack a 
+construct in this manner, you must 
+still meet the other requirements for 
+making a sneak attack.
+  This  spell  applies  only  to  sneak 
+attack damage. It gives you no ability 
+to affect constructs with critical hits, 
+nor does it confer any special ability 
+to overcome the damage reduction or 
+other defenses of constructs.
+GRAVE STRIKE
+Divination [Good]
+Level:
+ Cleric 1, paladin 1
+Components: 
+V, DF
+Casting Time: 
+1 swift 
+action 
+Range:
+ Personal
+Target: 
+You 
+Duration:
+ 1 round 
+While this spell is 
+in effect, you have 
+a  special  connec-
+tion to the forces of 
+light and positive en-
+ergy. For 1 round, you can deliver 
+sneak attacks against undead as if 
+they were not immune to sneak 
+attacks.  To  attack  an  undead 
+creature  in  this  manner,  you 
+must  still  meet  the  other 
+ requirements  for  making 
+a sneak attack.
+  This  spell  applies  only  to  sneak 
+attack damage. It gives you no ability 
+to affect undead with critical hits, 
+nor does it confer any special ability 
+to overcome the damage reduction or 
+other defenses of undead creatures.
+GUIDED SHOT
+Divination
+Level:
+ Ranger 1, sorcerer/wizard 1
+Components: 
+V
+Casting Time: 
+1 swift action 
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round
+You  use  magical  energy  to  briefl y 
+focus your mind and body on making 
+a perfect shot. While this spell is in 
+effect,  your  ranged  attacks  do  not 
+take a penalty due to distance.
+  In addition, while this spell is in 
+effect,  your  ranged  attacks  ignore 
+the AC bonus granted to targets by 
+anything less than total cover.
+  This spell does not provide any 
+ability  to  exceed  the  maximum 
+range  of  the  weapon  with  which 
+you  are  attacking,  nor  does  it 
+confer any ability to attack targets 
+protected by total cover.
+HARMONIC 
+CHORUS
+Enchantment (Compul-
+sion) [Mind-Affecting]
+Level: 
+Bard 3
+Components: 
+V, S, F
+Casting Time: 
+1 standard action
+Range: 
+Close (25 ft. + 5 ft./2 levels)
+Target: 
+One living creature
+Duration: 
+Concentration, up to 1 
+round/level (D)
+Saving Throw: 
+Will negates 
+(harmless)
+Spell Resistance: 
+Yes
+Harmonic  chorus
+  lets 
+you  improve  the 
+spellcasting ability of 
+another  spellcaster. 
+For  the  duration  of 
+the spell, the subject 
+gains  a  +2  morale 
+ bonus to caster lev-
+el and a +2 morale 
+ bonus on save DCs 
+for  all  spells  she 
+casts.
+       
+Focus: 
+A tuning 
+fork.
+HASTE, SWIFT
+Transmutation
+Level: 
+Ranger 2
+Components: 
+V
+Casting Time: 
+1 swift action
+Range: 
+Personal
+Target: 
+You
+Duration: 
+1 round
+This spell functions as 
+haste
+ (see page 
+239 of the 
+Player’s Handbook
+), except 
+as noted above.
+HAWKEYE
+Transmutation
+Level:
+ Druid 1, ranger 1
+Components: 
+V
+Casting Time:
+ 1 standard action
+Range: 
+Personal
+Target:
+ You
+Duration:
+ 10 minutes/level (D)
+This spell gives you the ability to 
+see  accurately  at  long  distances. 
+Your  range  increment  for  ranged 
+weapons increases by 50%, and you 
+gain a +5 competence bonus on Spot 
+checks.
+HEALING LORECALL
+Divination
+Level:
+ Cleric 2, druid 2, ranger 1
+Components:
+ V, S, M
+Casting Time: 
+1 standard action 
+Range:
+ Personal 
+Target:
+ You 
+Duration: 
+1 minute/level
+You tap into your healing acumen 
+to make your curative spells more 
+potent.  A  caster  with  5  or  more 
+ranks in Heal can, when casting a 
+conjuration (healing) spell, choose 
+to remove any one of the following 
+conditions  affecting  the  target  of 
+the spell, in addition to the spell’s 
+normal  effects:  dazed,  dazzled,  or 
+fatigued. A caster with 10 or more 
+ranks in Heal can choose from the 
+following conditions in addition to 
+those above: exhausted, nauseated, 
+or sickened.
+  Also,  when  determining  the 
+amount of damage healed by your 
+conjuration (healing) spells, you can 
+substitute your total ranks in Heal 
+for  your  caster  level.  The  normal 
+caster level limit for individual spells 
+still applies; thus, a 3rd-level cleric 
+with 6 ranks in Heal when under the 
+effect of 
+healing lorecall
+ cures 1d8+5 
+points  of  damage  with  a 
+cure  light 
+wounds
+ spell.
+Material Component:
+ A small mint 
+leaf.
+HEALTHFUL REST
+Conjuration (Healing)
+Level:
+ Bard 1, druid 1
+Components:
+ V, S
+Casting Time:
+ 10 minutes 
+Range:
+ Close (25 ft. + 5 ft./2 levels)
+Targets:
+ One creature/level, no 
+two of which can be more than 
+30 feet apart
+Duration:
+ 24 hours
+Saving Throw:
+ Will negates 
+(harmless)
+Spell Resistance:
+ Yes (harmless)
+Healthful  rest 
+doubles  the  subjects’ 
+natural healing rate. Each affected 
+creature regains twice the hit points 
+it  otherwise  would  have  regained 
+during  that  day,  depending  on  its 
+activity  level  (see  page  76  of  the 
+Player’s Handbook
+).
+HERALD’S CALL
+Enchantment (Compulsion) 
+[Mind-Affecting, Sonic]
+Level:
+ Bard 1 
+Components:
+ V, S
+Casting Time:
+ 1 swift action
+Range: 
+20 ft.
+Area:
+ 20-ft.-radius burst centered 
+on you
+Duration: 
+1 round
+Saving Throw:
+ Will negates
+Spell Resistance:
+ Yes
+You produce a crowd-stopping shout 
+that holds an air of authority others 
+fi nd diffi cult to ignore. Any creature 
+with 5 Hit Dice or less is 
+slowed
+ for 
+1 round.
+  Creatures beyond the radius of the 
+burst might hear the shout, but they 
+are not 
+slowed
+.
+HINDSIGHT
+Divination
+Level: 
+Bard 6, sorcerer/wizard 9
+Components:
+ V, S, M
+Casting Time:
+ 1 hour
+Range: 
+Personal
+Area: 
+60-ft. radius, centered on you
+Duration:
+ Instantaneous
+Saving Throw:
+ None
+Spell Resistance:
+ No
+You can see and hear into the past, 
+getting a look at events that happened 
+previously at your current location. 
+The level of detail you see and hear 
+by means of this spell depends on the 
+span of time you wish to observe; con-
+centrating on a span of days renders a 
+more detailed perspective than, say, a 
+span of centuries. You can view only 
+one span of time per casting, chosen 
+from the following options.
+Days:
+  You  sense  the  events  of 
+the  past,  stretching  back  one  day 
+per  caster  level.  You  gain  detailed 
+knowledge of the people, conversa-
+tions, and events that transpired.
+Weeks: 
+You gain a summary of 
+the  events  of  the  past,  stretching 
+back one week per caster level. Exact 
+wording and details are lost, but you 
+know  all  the  participants  and  the 
+highlights of the conversations and 
+events that took place.
+Years:
+ You gain a general idea of 
+the  events  of  the  past,  stretching 
+back one year per caster level. You 
+notice only noteworthy events such 
+as  deaths,  battles,  scenes  of  great 
+emotion, important discoveries, and 
+signifi cant happenings.
+Golem 
+strike
+Illus. by M. Moore
+
+
+CHAPTER 5
+SPELLS
+152
+CHAPTER 5
+SPELLS
+153
+Centuries:
+  You  gain  a  general 
+idea  of  the  events  of  the  past, 
+stretching  back  one  century  plus 
+an  additional  century  for  every 
+four  caster  levels  beyond  1st.  For 
+instance, a 16th-level caster would 
+gain  insight  into  the  events  of 
+four  centuries  in  the  past,  and  a 
+17th-level  caster  would  see  back 
+across  fi ve  centuries.  You  notice 
+only the most remarkable of events: 
+coronations,  deaths  of  important 
+personages, major battles, and other 
+truly historic happenings.
+Material  Component:
+  An  hour-
+glass-shaped diamond worth at least 
+1,000 gp.
+HYMN OF PRAISE
+Evocation [Good, Sonic]
+Level:
+ Bard 3
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range:
+ Medium (100 ft. + 10 ft./
+level)
+Area:
+ A sphere-shaped emanation 
+with a radius equal to the range, 
+centered on you
+Duration:
+ 1 round/level (D)
+Saving Throw:
+ Will negates
+Spell Resistance:
+ Yes 
+You can strike up a rousing, inspira-
+tional song that temporarily boosts 
+by 2 the effective caster level of each 
+good-aligned  divine  spellcaster 
+within range. This increase does not 
+grant access to additional spells, but 
+it does improve all spell effects that 
+are  dependent  on  caster  level.  In 
+addition, 
+hymn of praise
+ mimics the 
+effect of a 
+hallow
+ spell with respect 
+to  turning  or  rebuking  undead. 
+Within the spell’s area, each good-
+aligned divine spellcaster gains a +4 
+sacred bonus on Charisma checks to 
+turn undead, and each evil-aligned 
+divine spellcaster takes a –4 sacred 
+penalty  on  Charisma  checks  to 
+rebuke undead.
+IMPROVISATION
+Transmutation
+Level: 
+Bard 5
+Components: 
+V, S, M
+Casting Time: 
+1 standard action
+Range: 
+Personal
+Target: 
+You
+Duration: 
+1 round/level (D)
+You gain access to a fl oating “pool” 
+of luck, which manifests as bonus 
+points  you  can  use  as  desired  to 
+improve your odds of success at vari-
+ous tasks. This bonus pool consists 
+of 2 points per caster level, which 
+you can spend as you like to improve 
+attack rolls, skill checks, and ability 
+checks,  although  no  single  check 
+can  receive  a  bonus  greater  than 
+one-half your caster level. You must 
+declare any bonus point usage before 
+the appropriate roll is made. Used 
+points disappear from the pool, and 
+any  points  remaining  when  the 
+spell ends are wasted. These points 
+count as luck bonuses for purposes 
+of stacking.
+  For  example,  a  14th-level  bard 
+pauses while chasing a pickpocket 
+to  cast 
+improvisation. 
+At  any  time 
+during the next 14 rounds, he could 
+use  the  points  to  provide  him  a 
++7 luck bonus on a Spot check, a 
++7  luck  bonus  on  a  Climb  check, 
+and a +7 luck bonus on two of his 
+attacks.
+Material  Component: 
+A  pair  of 
+dice.
+INFERNAL THRENODY
+Evocation [Evil, Sonic]
+Level:
+ Bard 3
+Components:
+ V, S
+Casting Time:
+ 1 round
+Range:
+ Medium (100 ft. + 10 ft./
+level)
+Area:
+ A sphere-shaped emanation 
+with a radius equal to the range, 
+centered on you
+Duration:
+ 1 round/level (D)
+Saving Throw:
+ Will negates
+Spell Resistance:
+ Yes 
+You can strike up a pulsing, power-
+ful rhythm that temporarily boosts 
+by  2  the  effective  caster  level  of 
+each evil-aligned divine spellcaster 
+within range. This increase does not 
+grant access to addition al spells, but 
+it does improve all spell effects that 
+are  dependent  on  caster  level.  In 
+addition, 
+infernal  threnody
+  mimics 
+the effect of an 
+unhallow
+ spell with 
+respect  to  turning  or  rebuking 
+undead. Within the spell’s area, each 
+evil-aligned divine spellcaster gains 
+a  +4  profane  bonus  on  Charisma 
+checks to rebuke undead, and each 
+good-aligned divine spellcaster takes 
+a –4 profane penalty on Charisma 
+checks to turn undead.
+INSIDIOUS RHYTHM
+Enchantment (Compulsion) 
+[Mind-Affecting]
+Level:
+ Bard 2
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range:
+ Medium (100 ft. + 10 ft./
+level)
+Target:
+ One creature
+Duration:
+ 1 minute/level
+Saving Throw:
+ Will negates
+Spell Resistance:
+ Yes
+You  play  a  catchy,  silly  little  tune 
+that  gets  stuck  in  the  mind  of  the 
+subject unless she succeeds on a Will 
+save. The endlessly recycling melody 
+makes  it  diffi cult  for  the  subject 
+to cast spells or perform any other 
+action  that  requires  mental  focus. 
+The subject takes a –4 penalty on all 
+Intelligence-based skill checks and 
+Concentration checks. Whenever the 
+target attempts to cast, concentrate 
+on, or direct a spell, she must succeed 
+on a Concentration check (DC equal 
+to 
+insidious
+ 
+rhythm
+’s save DC + spell’s 
+level) or fail at the attempt.
+INSIGHTFUL FEINT
+Divination
+Level:
+ Assassin 1, sorcerer/
+wizard 1
+Components: 
+V
+Casting Time: 
+1 swift action 
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round
+You  gain  tempo-
+rary  insight 
+into  the 
+way your 
+opponent 
+moves and 
+reacts. 
+  You gain 
+a +10 insight 
+bonus on the 
+next  single 
+Bluff check (if it 
+is made before the 
+start of your next turn) 
+that you make to feint in 
+combat (see Bluff, page 68 of 
+the 
+Player’s Handbook
+).
+INSPIRATIONAL BOOST
+Enchantment (Compulsion) 
+[Mind-Affecting, Sonic]
+Level:
+ Bard 1
+Components:
+ V, S
+Casting Time:
+ 1 swift action
+Range: 
+Personal
+Targets: 
+You
+Duration: 
+1 round or special; see 
+text
+When you play your instrument, sing 
+your song, recite your epic poem, or 
+speak your words of encouragement, 
+you fi ll your allies with greater confi -
+dence than normal. While this spell 
+is in effect, the morale bonus granted 
+by your inspire courage bardic music 
+increases by 1.
+  The effect lasts until your inspire 
+courage  effect  ends.  If  you  don’t 
+begin to use your inspire courage 
+ability  before  the  beginning  of 
+your  next  turn,  the  spell’s  effect 
+ends.
+INSTANT LOCKSMITH
+Divination
+Level:
+ Assassin 1, sorcerer/
+wizard 1
+Components: 
+V, S
+Casting Time: 
+1 swift action 
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round
+You can make one Disable Device 
+check  or  one  Open  Lock  check 
+in this round as a free action. You 
+gain  a  +2  insight  bonus  on  the 
+check.
+INSTANT SEARCH
+Divination
+Level:
+ Assassin 1, ranger 1, 
+sorcerer/wizard 1
+Components: 
+V, S
+Ca sting Time: 
+1 swift 
+action 
+  Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round
+You can make one Search check 
+in this round as a free action. You 
+gain a +2 insight bonus on 
+the check.
+INVISIBILITY, 
+SWIFT
+Illusion (Glamer)
+Le vel: 
+Assassin 2, 
+bard 2
+Components: 
+V
+Ca sting Time: 
+1 
+swift action
+Range: 
+Personal
+  Target: 
+You
+Duration: 
+1 round
+This spell functions like 
+invisibility 
+(see page 245 of the 
+Player’s Hand-
+book
+), except as noted above.
+IRON SILENCE
+Transmutation
+Level:
+ Assassin 2, bard 2, cleric 2
+Components: 
+V, S, DF
+Casting Time: 
+1 standard action 
+Range:
+ Touch 
+Target: 
+One suit of armor touched 
+per three levels
+Duration:
+ 1 hour/level (D)
+Saving Throw:
+ Will negates 
+(harmless, object)
+Spell Resistance:
+ Yes (harmless, 
+object)
+While  this  spell  is  in  effect,  the 
+armor  check  penalty  from  the 
+affected suit or suits of armor does 
+not apply on Hide and Move Silently 
+Insidious rhythm
+Illus. by R. Spencer
+
+
+CHAPTER 5
+SPELLS
+154
+CHAPTER 5
+SPELLS
+155
+checks. Only wearers proficient in 
+the armor’s use get this benefit when 
+wearing  the  affected  armor.  The 
+armor check penalty still applies to 
+other skill checks as normal.
+JOYFUL NOISE
+Abjuration
+Level:
+ Bard 1
+Components:
+ S
+Casting Time:
+ 1 standard action
+Range:
+ 10 ft.
+Area:
+ 10-ft.-radius emanation, cen
+-
+tered on you
+Duration:
+ Concentration; see text
+Saving Throw:
+ None
+Spell Resistance:
+ No
+You  create  sonic  vibrations  that 
+negate any magical 
+silence
+ effect in 
+the area. This zone of negation moves 
+with you and lasts as long as you 
+continue to concentrate.
+  The 
+silence
+  is  not 
+dispelled but simply 
+held  in  abeyance; 
+it  remains  in  effect 
+outside the area of the 
+joyful noise
+ effect. Thus, this spell is 
+usually used to move a group out of 
+range of a 
+silence
+ effect.
+LISTENING COIN
+Divination (Scrying)
+Level: 
+Bard 4
+Components: 
+V, S, F
+Casting Time: 
+1 standard action
+Range: 
+Touch
+Effect: 
+Magical sensor
+Duration: 
+1 hour/level (D)
+Saving Throw: 
+None
+Spell Resistance: 
+No
+You  can  turn  two  ordinary  coins 
+into magic listening devices—one 
+a  sensor  and  the  other  a  receiver. 
+After casting the spell, you simply 
+give  the  sensor  coin  away,  either 
+surreptitiously or overtly. By hold
+-
+ing the receiver coin up to your ear, 
+you  can  hear  whatever  transpires 
+near the sensor as if you were there 
+(much like a 
+clairaudience
+ effect). If 
+the sensor coin is in a pocket, pouch, 
+or sack, the DC of the Listen check 
+increases by 5.
+  The  coins  continue  to  function 
+no  matter  how  far  apart  they  are, 
+although  they  fall  silent  if  they’re 
+on different planes. 
+ 
+Focus: 
+The pair of coins.
+LISTENING LORECALL
+Divination
+Level:
+ Druid 2, ranger 2, sorcerer/
+wizard 2
+Components: 
+V, S, DF
+Casting Time: 
+1 standard action 
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 10 minutes/level
+You gain the ability to precisely and 
+instantaneously identify and locate 
+the origins of even the most minute 
+sounds  you  detect.  You  gain  a  +4 
+insight bonus on Listen checks. 
+  In addition, if you have 5 or more 
+ranks in Listen, you gain blindsense 
+out to 30 feet. If you have 10 or more 
+ranks in Listen, you gain blindsight 
+out to 30 feet instead.
+  A 
+silence
+  spell  or  effect  negates 
+blindsense or blindsight granted by 
+a 
+listening lorecall
+ spell.
+MASTER’S TOUCH
+Divination
+Level:
+ Bard 1, sorcerer/wizard 1
+Components:
+ V, F
+Casting Time:
+ 1 swift action
+Range:
+ Personal
+Target:
+ You
+Duration: 
+1 minute/level (D)
+Master’s touch
+ is a spell often found 
+in  the  repertoire  of  adventurers 
+who specialize in casting arcane 
+spells. You gain proficiency with 
+a single weapon or shield you 
+hold in your hands when 
+the spell is cast. The lack 
+of a somatic component 
+means  the  spell  can  be 
+cast  in  the  middle  of  a 
+fight while you keep ready 
+whatever items stand between 
+you and danger.
+   Proficiency is granted for only 
+a  single,  specific  item,  although 
+multiple castings allow for multiple 
+proficiencies.  For  example,  if  you 
+hold a short sword and a rapier, with 
+a buckler strapped to your off hand, 
+you could cast the spell three times, 
+once for each weapon and once for 
+the shield.
+  This  spell  does  not  grant  profi
+-
+ciency for a kind or category of item 
+(such as short swords) but only for 
+the one specific item held in your 
+hand  at  the  time  the  spell  is  cast 
+(
+this
+  short  sword).  Should  you  set 
+that  item  down  or  otherwise  lose 
+your grip on it, the proficiency does 
+not transfer to a different item of the 
+same kind you might pick up. How
+-
+ever, if you recover the original item 
+before the spell’s effect runs out, you 
+are still proficient with that specific 
+weapon or shield for the duration.
+ 
+Focus: 
+The item in whose use you 
+wish to be proficient.
+MINDLESS RAGE
+Enchantment (Compulsion) 
+[Mind-Affecting]
+Level:
+ Bard 2, sorcerer/wizard 2
+Components: 
+V, S, F
+Casting Time:
+ 1 standard action
+Range:
+ Close (25 ft. + 5 ft./2 levels)
+Target: 
+One creature
+Duration:
+ 1 round/level
+Saving Throw:
+ Will negates
+Spell Resistance:
+ Yes
+You fill the subject with so great a 
+rage that it can do nothing but focus 
+on engaging you in personal physical 
+combat. The target must be able to 
+see you when you cast this spell. If 
+the subject later loses line of sight to 
+you, the spell immediately ends. (A 
+subject can’t voluntarily break line of 
+sight with you, such as by closing its 
+eyes, to end this spell prematurely.)
+  If  the  subject  threatens  you,  it 
+must make a full attack against you 
+using its melee weapons or natural 
+melee attacks. If the subject doesn’t 
+threaten you, it must move at up to 
+twice its speed, ending its movement 
+as close to you as possible. If it moves 
+close enough with a single move to 
+threaten you, it may stop and make a 
+melee attack against you as normal.
+  While under the effect of a 
+mind
+-
+less rage
+ spell, the subject can make 
+use  of  all  normal  melee  combat 
+skills,  abilities,  and  feats—either 
+offensive or defensive. However, the 
+subject  can’t  make  ranged  attacks, 
+cast spells, or activate magic items 
+that  require  a  command  word,  a 
+spell trigger, or spell completion to 
+function. The subject can’t make any 
+attack against a creature other than 
+you.
+  The subject of this spell, though 
+overcome with rage, is by no means 
+rendered  idiotic  or  suicidal.  For 
+example,  an  affected  creature  will 
+not charge off a cliff in an attempt 
+to reach you.
+  An interesting side effect of 
+mind
+-
+less rage
+ occurs when the spell affects 
+any character or creature with the 
+rage  ability  (such  as  a  barbarian). 
+In  these  cases,  the 
+mindless  rage
+ 
+spell  automatically  activates  the 
+character’s rage ability (and counts 
+as one of the character’s uses of rage 
+for that day).
+ 
+Focus: 
+A  scarlet  handkerchief  or 
+similar piece of cloth, waved in the 
+target’s direction while you vocalize 
+the verbal component.
+NATURE’S FAVOR
+Evocation
+Level:
+ Druid 2, ranger 2
+Components: 
+V, S, DF
+Casting Time:
+ 1 standard action
+Range: 
+Touch
+Target:
+ Animal touched
+Duration:
+ 1 minute
+Saving Throw:
+ Will negates 
+(harmless)
+Spell Resistance:
+ Yes (harmless)
+By calling on the power of nature, 
+you  grant  the  subject  animal  a  +1 
+luck  bonus  on  attack  and  damage 
+rolls for every three caster levels you 
+possess, to a maximum bonus of +5 
+at 15th level.
+NIGHTSTALKER’S 
+TRANSFORMATION
+Transmutation
+Level:
+ Sorcerer/wizard 5
+Components: 
+V, S, M
+Casting Time: 
+1 standard action
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round/level (D)
+You become a stealthy and dangerous 
+combatant. Your mind-set changes 
+so that you relish stealth, deception, 
+and  surprise  attacks  over  magical 
+assaults.
+  You gain a +4 enhancement bonus 
+to  Dexterity,  a  +3  luck  bonus  to 
+Armor  Class,  a  +5  luck  bonus  on 
+Reflex saving throws, a +5 compe
+-
+tence bonus on Spot, Listen, Hide, 
+and  Move  Silently  checks,  and 
+proficiency with all simple weapons 
+plus the hand crossbow, rapier, sap, 
+shortbow, and short sword. You also 
+gain the Weapon Finesse feat and the 
+evasion  ability  (see  page  50  of  the 
+Player’s Handbook
+). You deal an extra 
+3d6 points of damage whenever you 
+attack an opponent that you flank or 
+an  opponent  denied  its  Dexterity 
+bonus  to  Armor  Class.  This  extra 
+damage works like the rogue’s sneak 
+attack ability.
+  You  lose  your  spellcasting  abil
+-
+ity  for  the  duration  of  the  spell, 
+including your ability to use spell 
+activation or spell completion magic 
+items, just as if the spells were no 
+longer on your class list.
+ 
+Material Component:
+ A 
+potion of cat’s 
+grace
+, which you drink (and whose 
+effects  are  subsumed  by  the  spell 
+effects).
+PROTÉGÉ
+Transmutation
+Level:
+ Bard 6
+Components:
+ V, S
+Casting Time: 
+1 round
+Range:
+ Touch
+Target:
+ Creature touched
+Duration:
+ 1 minute/level (D)
+Saving Throw:
+ Will negates 
+(harmless)
+Spell Resistance:
+ Yes (harmless)
+You briefly grant bardic abilities to a 
+creature of your choice. The subject 
+of the spell can then function as a 
+bard of one-half your current bard 
+level  with  respect  to  bardic  music 
+and  bardic  knowledge.  However, 
+protégé
+ imparts no spellcasting abil
+-
+ity and does not grant access to spells 
+not normally available to the subject. 
+For Perform checks and bardic music 
+prerequisites,  the  creature  uses  its 
+Illus. by D. Kovacs
+
+
+CHAPTER 5
+SPELLS
+156
+CHAPTER 5
+SPELLS
+157
+own ranks in Perform or one-half 
+of your ranks (modifi ed by its own 
+Charisma  modifi er),  whichever  is 
+better.
+SHADOW FORM
+Illusion (Shadow)
+Level:
+ Assassin 4, sorcerer/wizard 5
+Components: 
+V, S, M
+Casting Time: 
+1 standard action
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 minute/level (D)
+You call forth the power of shadow, 
+enveloping  yourself  in  a  clinging, 
+concealing  shroud  of  darkness. 
+While this spell is in effect, you gain 
+a number of benefi ts. The shadows 
+wrapping your form grant you a +4 
+competence bonus on Escape Artist, 
+Hide, and Move Silently checks. Your 
+shadowy form also provides you with 
+concealment. This shadowy conceal-
+ment is not negated by a 
+see invisibility 
+spell,  but  a 
+true  seeing
+  spell  coun-
+teracts  the  effect. 
+Standing  within 
+the  radius  of  a 
+daylight
+ spell or 
+in bright nat-
+ural sunlight 
+temporarily 
+suppresses 
+the  conceal-
+ment effect.
+  In addition, if you have 5 ranks 
+in  Escape  Artist,  you  can  attempt 
+to  slip  through  a  solid  object  or 
+barrier  up  to  5  feet  thick  with  a 
+DC 20 Escape Artist check, though 
+doing this ends the spell as soon as 
+the attempt is completed (regardless 
+of success). If you have 10 ranks in 
+Escape  Artist,  you  can  attempt  to 
+pass through an object or barrier up 
+to 10 feet thick. If you have 15 ranks 
+in Escape Artist, you can attempt to 
+pass through a barrier composed of 
+magical  force  (or  similar  magical 
+obstacles).
+Material Component:
+ A small piece 
+of black cloth taken from a funeral 
+shroud.
+SNIPER’S EYE
+Transmutation
+Level:
+ Assassin 4
+Components:
+ V, S, F
+Casting Time:
+ 1 standard action
+Range:
+ Personal
+Target:
+ You
+Duration:
+ 1 round/level (D)
+This spell magically enhances your 
+senses,  making  you  deadly  with 
+ranged  weapons.  When  you  cast 
+sniper’s  eye,
+  you  gain  the  following 
+benefi ts.
+•  +10  competence  bonus  on  Spot 
+checks.
+•  Darkvision out to 60 feet. 
+•   The ability to make a ranged sneak 
+attack at a range of up to 60 feet, 
+rather than 30 feet.
+•   The ability to make a death attack 
+with a ranged weapon rather than 
+just  with  a  melee  weapon.  The 
+target must be within 60 feet.
+This spell doesn’t grant you the abil-
+ity to make a sneak attack or death 
+attack if you don’t already have that 
+ability.
+   Sniper’s eye
+ attunes you completely 
+to the vantage point you had when 
+you cast the spell. You understand 
+the nuances of the breeze and every 
+angle and shadow—from that spot. 
+If  you  move  even  5  feet  from  the 
+place where you cast the spell, you 
+lose the benefi ts of 
+sniper’s eye
+ until 
+you return to that spot.
+   Focus:
+ A magnifying glass lens.
+SNIPER’S SHOT
+Divination
+Level:
+ Assassin 1, ranger 1, sor-
+cerer/wizard 1
+Components: 
+V, S
+Casting Time: 
+1 swift action
+Range:
+ Personal 
+Target: 
+You
+Duration:
+ 1 round
+When you cast this spell, you extend 
+and  sharpen  your  perceptions  for 
+one devastating ranged attack. Your 
+next  single  ranged  attack  (if  it  is 
+made before the start of your next 
+turn) can be a sneak attack regard-
+less of the distance between you and 
+your target. 
+  This  spell  doesn’t  grant  you  the 
+ability to make a sneak attack if you 
+don’t already have that ability.
+SONIC WEAPON
+Transmutation [Sonic]
+Level:
+ Bard 2, sorcerer/wizard 2
+Components: 
+V
+Casting Time: 
+1 standard action 
+Range:
+ Touch
+Target: 
+Weapon touched
+Duration:
+ 1 minute/level (D)
+This  spell  temporarily  sheathes  a 
+weapon in sonic energy. While the 
+spell is in effect, the affected weapon 
+deals an extra 1d6 points of sonic 
+damage with each successful attack. 
+The sonic energy does not harm the 
+weapon’s wielder. Bows, crossbows, 
+and slings that are affected by this 
+spell bestow the sonic energy upon 
+their ammunition. 
+SPECTRAL WEAPON
+Illusion (Shadow)
+Level:
+ Assassin 3, bard 4, sorcerer/
+wizard 3
+Components:
+ V, S
+Casting Time:
+ 1 swift action
+Range:
+ Personal
+Target:
+ You
+Duration:
+ 1 round/level (D)
+Saving Throw: 
+Will partial; see 
+text
+Spell Resistance: 
+Yes; see text
+Using  material  from  the  Plane  of 
+Shadow, you can fashion a quasi-real 
+weapon of any type with which you 
+are profi cient. This 
+spectral weapon
+ 
+appears in your hand and behaves 
+as a normal weapon of its type, with 
+two  exceptions.  First,  you  resolve 
+attacks with your 
+spectral weapon 
+as 
+melee touch attacks instead of melee 
+attacks. Second, any foe you hit is 
+entitled to a Will save to recognize 
+the  weapon’s  shadowy  nature.  If 
+the  save  is  successful,  that  oppo-
+nent  takes  only  one-fi fth  normal 
+damage  from  the  weapon  on  that 
+attack  and  all  subsequent  attacks, 
+and is only 20% likely to suffer any 
+special effects of your attacks (such 
+as a death attack delivered with the 
+weapon).
+  You can maintain only one 
+spectral 
+weapon 
+at a time, and only you can 
+wield  it.  The  weapon  dissipates 
+when you let go of it or when the 
+spell’s duration expires, whichever 
+comes fi rst.
+SPEECHLINK
+Divination
+Level:
+ Bard 3
+Components:
+ V, S
+Casting Time:
+ 1 standard action
+Range: 
+Touch
+Targets: 
+You and one creature 
+touched
+Duration: 
+10 minutes/level (D)
+Saving Throw:
+ None
+Spell Resistance:
+ No
+You and a willing target can com-
+municate  verbally  no  matter  how 
+much  distance  you  put  between 
+yourselves  on  the  same  plane. 
+Either participant can end the spell 
+at any time. 
+Speechlink
+ allows each 
+to  hear  the  other’s  vocalizations, 
+whatever their volume. It does not 
+transfer other sounds from either 
+participant’s  location.  This  spell 
+works on any creatures, including 
+animals, but does not convey any 
+special  language  comprehension 
+abilities.
+TACTICAL PRECISION
+Divination [Mind-Affecting]
+Level:
+ Bard 2
+Components: 
+V, S, M
+Casting Time: 
+1 standard action 
+Range:
+ Close (25 ft. + 5 ft./2 levels) 
+Targets: 
+One creature/level, no 
+two of which can be more than 
+30 ft. apart
+Duration:
+ 1 round/level
+Saving Throw: 
+Will negates 
+(harmless)
+Spell Resistance: 
+Yes (harmless)
+When you cast this spell, you grant 
+your allies greater insight into one 
+another’s actions, allowing them to 
+better  coordinate  their  attacks.  If 
+two  affected  allies  fl ank  the  same 
+creature,  each  gains  a  +2  insight 
+bonus on attack rolls made against 
+the fl anked creature. This bonus is 
+in addition to the normal +2 bonus 
+on attack rolls granted to fl anking 
+creatures.
+  In  addition,  if  an  affected  ally 
+successfully deals damage against an 
+opponent that is fl anked by another 
+affected ally, she deals an extra 1d6 
+points of damage. Creatures immune 
+to sneak attacks are immune to this 
+extra damage.
+Material  Component: 
+A  toy  sol-
+dier.
+TRAIN ANIMAL
+Enchantment (Charm) [Mind-
+Affecting]
+Level:
+ Druid 2, ranger 2
+Components: 
+V, S, DF
+Casting Time: 
+10 minutes
+Shadow 
+Shadow 
+form
+Illus. by M. Phillippi
+
+
+CHAPTER 5
+SPELLS
+158
+Range:
+ Touch 
+Target: 
+Animal touched
+Duration:
+ 1 hour/level
+Saving Throw:
+ Will negates 
+(harmless)
+Spell Resistance: 
+Yes (harmless)
+You temporarily boost the number of 
+tricks that an animal knows. While 
+this  spell  is  in  effect,  the  affected 
+animal gains a number of additional 
+tricks equal to half your caster level 
+(maximum five). For more informa
+-
+tion on tricks and trained animals, 
+see the descriptions of the Handle 
+Animal skill, page 
+100 of this book, 
+and  pages  74–75  of  the 
+Player’s 
+Handbook
+.
+  This  spell  does  not  modify  an 
+animal’s  attitude  toward  you,  nor 
+does  it  guarantee  that  an  animal 
+will cooperate when instructed to 
+perform the newly learned tricks. 
+VINE STRIKE
+Divination 
+Level:
+ Druid 1, ranger 1
+Components: 
+V, DF
+Casting Time: 
+1 swift action 
+Range:
+ Personal
+Target: 
+You 
+Duration:
+ 1 round
+While this spell is in effect, you have 
+a  special  connection  to  the  forces 
+of nature that allows you to deliver 
+sneak attacks on plant creatures as 
+if they were not immune to sneak 
+attacks.  To  attack  a  plant  creature 
+in this manner, you must still meet 
+the other requirements for making 
+a sneak attack.
+  This  spell  applies  only  to  sneak 
+attack damage. It gives you no ability 
+to affect plant creatures with critical 
+hits, nor does it confer any special 
+ability  to  overcome  the  damage 
+reduction or other defenses of plant 
+creatures.
+WAIL OF DOOM
+Necromancy [Fear, Mind-Affect
+-
+ing, Sonic]
+Level: 
+Bard 5
+Components: 
+V
+Casting Time: 
+1 standard action
+Range: 
+30 ft.
+Area: 
+Cone-shaped burst
+Duration: 
+Instantaneous and 1 
+round/level or 1 round; see text
+Saving Throw: 
+Will partial; see 
+text
+Spell Resistance: 
+Yes
+Anyone  caught  in  the  area  of  this 
+spell suffers excruciating pain and 
+becomes demoralized. Each creature 
+takes 1d4 points of damage per caster 
+level  (up  to  a  maximum  of  15d4) 
+and becomes panicked for 1 round 
+per  caster  level.  A  successful  Will 
+save  halves  the  damage,  reduces 
+the panicked effect to shaken, and 
+reduces the duration of the shaken 
+effect to 1 round.
+WAR CRY
+Enchantment (Compulsion) 
+[Mind-Affecting, Sonic]
+Level:
+ Bard 4
+Components:
+ V, S
+Casting Time:
+ 1 swift action
+Range: 
+Personal
+Target: 
+You
+Duration: 
+1 round/level (D)
+Saving Throw:
+ See text
+Spell Resistance:
+ See text
+You attack with a cry that bolsters 
+your own courage as well as intimi
+-
+dating your enemies. As a result of 
+this spell, you gain a +2 morale bonus 
+on attack rolls and damage rolls, or 
+a  +4  morale  bonus  on  attack  rolls 
+and damage rolls made as part of a 
+charge.
+  If you deal damage with a melee 
+attack, your foe must succeed on a 
+Will save or become panicked for 1 
+round (spell resistance applies to this 
+effect). An opponent who makes a 
+successful saving throw against this 
+effect cannot be affected again by the 
+same casting of 
+war cry
+.
+WRACKING TOUCH
+Necromancy
+Level:
+ Druid 2, sorcerer/wizard 2
+Components: 
+V, S
+Casting Time: 
+1 standard action 
+Range:
+ Touch 
+Target: 
+Creature touched
+Duration:
+ Instantaneous
+Saving Throw:
+ Fortitude half
+Spell Resistance: 
+Yes
+Your touch causes horrible agony in 
+a creature’s vital area. You lay your 
+hand upon a creature and deal 1d6 
+points of damage +1 point per caster 
+level (maximum +10). In addition, if 
+you have the sneak attack ability, you 
+also deal sneak attack damage to the 
+affected creature unless the creature 
+is  immune  to  extra  damage  from 
+critical hits. The creature still takes 
+the spell damage even if it does not 
+take the sneak attack damage. Unlike 
+a normal use of sneak attack, your 
+target need not be flanked or denied 
+its  Dexterity  bonus  to  take  sneak 
+attack damage from this spell.
+WRAITHSTRIKE
+Transmutation
+Level:
+ Assassin 2, sorcerer/
+wizard 2
+Components: 
+V, S
+Casting Time: 
+1 swift action
+Range:
+ Personal 
+Target: 
+You 
+Duration:
+ 1 round
+When  you  cast  this  spell,  your 
+melee weapons or natural weapons 
+become  ghostly  and  nearly  trans
+-
+parent for a brief time. While this 
+spell is in effect, your melee attacks 
+are resolved as melee touch attacks 
+rather than normal melee attacks.
+
+
+an  organization,  players  and  DMs  should  discuss 
+the role of the group in the campaign world. The 
+discussion should cover what the character seeks 
+to gain from belonging, what responsibilities the 
+character will have, how often the organization will 
+be featured in a gaming session, and anything else 
+that either the player or DM deems relevant.
+  The organizations in this chapter are described 
+using the following format.
+ORGANIZATION NAME
+The first few paragraphs offer a general descrip
+-
+tion of the organization, its purpose, its motives, 
+and its main activities.
+  Joining the Organization: 
+How a character 
+becomes a trusted member of the group.
+  Character Benefits: 
+The benefits that an 
+individual gains from membership. Although 
+this section is geared toward players, the DM 
+is free to change the benefits or impose restric
+-
+tions on these benefits as he or she sees fit.
+ 
+Roleplaying  Suggestions: 
+Guidelines  (not 
+rules) on roleplaying a character affiliated with 
+lans,  guilds,  and  other  organizations  provide 
+many interesting opportunities for characters of 
+any class. Defining a bard’s preferred performance 
+styles by the precepts of his bardic college, choos
+-
+ing wizard spells based on the preferences of a magic 
+academy,  or  taking  jobs  based  on  the  directives  of  a 
+thieves guild: All these add flavor to a campaign world. 
+Their breadth hints at the presence of organizations 
+for  nearly  every  class.  The  organizations  described 
+here, however, focus on groups whose members use a 
+large variety of skills or who achieve unusually great 
+expertise  in  a  particular  group  of  skills.  Often,  this 
+expertise is associated with a criminal organization or 
+its law-enforcement counterpart, but it also allows for 
+many other types of organizations and the characters 
+who belong to them.
+  Being  part  of  an  organization  must  come  with 
+responsibilities and benefits, or a character won’t feel 
+connected to this important choice of allegiance. The 
+descriptions of the organizations in this chapter describe 
+the membership in general terms, allowing players and 
+DMs to shape specific details to fit their campaign world. 
+Whenever a player chooses to affiliate a character with 
+159
+Illus. by D. Kovacs
+
+
+160

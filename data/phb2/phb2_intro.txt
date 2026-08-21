@@ -1,0 +1,517 @@
+
+
+D
+UNGEONS
+ & D
+RAGONS
+®
+™
+Whether you’re creating a new character or 
+improving an existing one, the Player’s Handbook
+TM
+ II 
+supplement has something you need. This volume 
+provides new character options for players, including:
+j
+ New class features for all of your favorite classes
+j
+ A rebuilding system that allows you to update 
+ 
+existing characters
+j
+ 
+New advancement options and affi liations
+j
+ 
+New starting equipment packages 
+j
+ 
+New teamwork benefi ts
+j
+ 
+New feats and spells
+Featuring Additional Design by 
+Richard Baker, Bruce R. Cordell, Frank Brunner, Luke Johnson, 
+Christopher Lindsay, Robert J. Schwalb, and Matthew Sernett
+David Noonan
+MAKE YOUR 
+CHARACTERS THE BEST 
+THEY CAN BE
+For use with these DUNGEONS & DRAGONS
+® 
+ 
+core books
+Player’s Handbook
+TM
+, Dungeon Master’s Guide
+®
+, 
+and Monster Manual
+®
+.
+Visit our website at www.wizards.com/dnd
+Supplement
+EAN
+Sug. Retail U.S. $34.95  CAN $44.00      953747200  
+Printed in the U.S.A.   
+ISBN 13: 978-0-7869-3918-3
+D
+UNGEONS
+ & D
+RAGONS
+®
+™
+Players Handbook II.indd   1Players Handbook II.indd   12/16/07   2:20:19 PM2/16/07   2:20:19 PM
+
+CREDITS
+Visit our website at www.wizards.com/dnd
+DESIGN
+DAV I D NOONAN
+ADDITIONAL DESIGN
+FRANK BRU N N ER, LUKE JOHNSON, 
+ROBERT J. SCHWALB
+DEVELOPMENT TEAM
+ANDY COLLINS, JESSE DECKER, MIKE MEARLS, 
+STEPHEN SCHUBERT
+EDITORS
+MICHELE CARTER, JOHN D. RATELIFF, 
+M. ALEXANDER JURKAT, PENNY WILLIAMS
+EDITING MANAGER
+KIM MOHAN
+DESIGN MANAGER
+CHRISTOPHER PERKINS
+DEVELOPMENT MANAGER
+JESSE DECKER
+DIRECTOR OF RPG R&D
+BILL SLAVICSEK
+PRODUCTION MANAGERS
+JOSH FISCHER, RANDALL CREWS
+SENIOR ART DIRECTOR D&D
+STACY LONGSTREET
+ART DIRECTOR D&D
+KARIN JAQUES
+COVER ARTIST
+DAN SCOTT
+INTERIOR ARTISTS
+STEVE BELLEDIN, STEVE ELLIS, 
+EMILY FIEGENSCHUH, CARL FRANK, 
+RALPH HORSLEY, DAV I D HUDNUT, 
+MICHAEL KOMARCK, HOWARD LYON, 
+MIKE MAY, JIM NELSON, LUCIO PARILLO, 
+E
+RIC POLAK, STEVE PRESCOTT, MIKE SCHLEY, 
+RON SPENCER, FRANZ VOHWINKEL, 
+EVA WIDERMANN
+CARTOGRAPHER
+MIKE SCHLEY
+GRAPHIC DESIGNERS
+DEE BARNETT, KARIN JAQUES
+GRAPHIC PRODUCTION SPECIALIST
+ERIN DORRIES
+IMAGE TECHNICIAN
+CHRISTINA WILEY
+Some information in this book is taken from or derived from these sources: Complete Adventurer by Jesse Decker; Complete Ar-
+cane by Richard Baker; Complete Divine by David Noonan; Complete Warrior by Andy Collins, David Noonan, and Ed Stark; and 
+Defenders of the Faith by Rich Redman and James Wyatt.
+Based on the original DUNGEONS & DRAGONS
+®
+ rules created by E. Gary Gygax and Dave Arneson, and the new DUNGEONS & DRAGONS 
+game designed by Jonathan Tweet, Monte Cook, Skip Williams, Richard Baker, and Peter Adkison.
+This product uses updated material from the v.3.5 revision.
+This W
+IZARDS OF THE COAST
+®
+ game product contains no Open Game Content. No portion of this work may be reproduced in any 
+form without written permission. To learn more about the Open Gaming License and the d20 System License, please visit www.
+wizards.com/d20
+DUNGEONS & DRAGONS, D&D, DUNGEON MASTER, d20, d20 System, WIZARDS OF THE COAST, Player’s Handbook, Dungeon Master’s Guide, Monster Manual, all other Wizards of 
+the Coast product names, and their respective logos are trademarks of Wizards of the Coast, Inc., in the U.S.A. and other countries. This material is protected under the copyright 
+laws of the United States of America. Any reproduction or unauthorized use of the material or artwork contained herein is prohibited without the express written permission 
+of Wizards of the Coast, Inc. This product is a work of fiction. Any similarity to actual people, organizations, places, or events is purely coincidental. Printed in the U.S.A. 
+©2006 Wizards of the Coast, Inc.
+U.S., CANADA, ASIA, PACIFIC, 
+& LATIN AMERICA
+Wizards of the Coast, Inc.
+P.O. Box 707
+Renton,  WA  98057-0707
++1-800-324-6496 
+EUROPEAN HEADQUARTERS
+Hasbro UK Ltd
+Caswell Way
+Newport, Gwent NP9 0YH
+GREAT BRITAIN
+Please keep this address for your records
+620–95374720–001–EN
+9  8  7  6  5  4  3  2  1
+ISBN-10: 0-7869-3918-4 First Printing: May 2006 ISBN-13: 978-0-7869-3918-3
+
+3
+TABLE OF
+CONTENTS
+Contents
+Introduction  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+What You Need to Play . . . . . . . . . . . . . . . . . . . . . 4
+Chapter 1: New Classes . . . . . . . . . . . . . . . . . . . . . 5
+New Starting Packages  . . . . . . . . . . . . . . . . . . 5
+Beguiler  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+Beguiler Spell List . . . . . . . . . . . . . . . . . . . . . .11
+Dragon Shaman . . . . . . . . . . . . . . . . . . . . . . . . . . .11
+Duskblade  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .19
+Knight . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .24
+Ex-Knights . . . . . . . . . . . . . . . . . . . . . . . . . . . . .30
+Chapter 2: Expanded Classes . . . . . . . . . . . . . .31
+New Starting Packages  . . . . . . . . . . . . . . . . .31
+Barbarian . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .32
+Bard . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .34
+Cleric . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .36
+Druid . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .38
+Favored Soul . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .42
+Fighter  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  44
+Hexblade  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .46
+Marshal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .48
+Monk . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .50
+Paladin  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .52
+Ranger . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .54
+Rogue  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .56
+Scout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .58
+Sorcerer  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .60
+Swashbuckler . . . . . . . . . . . . . . . . . . . . . . . . . . . . .62
+Warlock  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .64
+Warmage  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .66
+Wizard  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .68
+Chapter 3: New Feats  . . . . . . . . . . . . . . . . . . . . . .71
+General Feats  . . . . . . . . . . . . . . . . . . . . . . . . . . . . .71
+Ceremony Feats . . . . . . . . . . . . . . . . . . . . . . . . . . .86
+Combat Form Feats . . . . . . . . . . . . . . . . . . . . . . . .86
+Divine Feats  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .88
+Heritage Feats . . . . . . . . . . . . . . . . . . . . . . . . . . . . .89
+Metamagic Feats . . . . . . . . . . . . . . . . . . . . . . . . . .91
+Tactical Feats . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .92
+Chapter 4: New Spells  . . . . . . . . . . . . . . . . . . . . .95
+Dual-School Spells  . . . . . . . . . . . . . . . . . . . . .95
+The Polymorph Subschool . . . . . . . . . . . . . .95
+Chapter 5: Building Your Identity . . . . . . .  129
+Character Background  . . . . . . . . . . . . . . . . . .  129
+Artisan  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  129
+Ascetic . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  130
+Drifter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  130
+Farm Hand . . . . . . . . . . . . . . . . . . . . . . . . . . .  131
+Gladiator . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  131
+Guttersnipe . . . . . . . . . . . . . . . . . . . . . . . . . .  132
+Mariner . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  133
+Noble Scion . . . . . . . . . . . . . . . . . . . . . . . . . .  133
+Soldier . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  134
+Tribal Origin . . . . . . . . . . . . . . . . . . . . . . . . .  135
+Personality Archetypes . . . . . . . . . . . . . . . . . .  136
+Agent . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  136
+Challenger . . . . . . . . . . . . . . . . . . . . . . . . . . .  136
+Companion  . . . . . . . . . . . . . . . . . . . . . . . . . .  136
+Crusader . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  136
+Daredevil  . . . . . . . . . . . . . . . . . . . . . . . . . . . .  136
+Explorer  . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  137
+Innocent . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  137
+Leader  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  137
+Martyr . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  137
+Mercenary . . . . . . . . . . . . . . . . . . . . . . . . . . .  137
+Orphan . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  138
+Prophet . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  138
+Rebel  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  138
+Renegade  . . . . . . . . . . . . . . . . . . . . . . . . . . . .  138
+Royalty  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  138
+Sage. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  138
+Savage  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  139
+Seeker  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  139
+Simple Soul . . . . . . . . . . . . . . . . . . . . . . . . . .  139
+Strategist  . . . . . . . . . . . . . . . . . . . . . . . . . . . .  140
+Theorist . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  140
+Trickster . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  140
+Wanderer . . . . . . . . . . . . . . . . . . . . . . . . . . . .  140
+Personality Traits  . . . . . . . . . . . . . . . . . . . . . . .  140
+Being a Good Player at the Table  . . . . . . . . . .143
+Managing the Paperwork . . . . . . . . . . . . . .143
+Rolling Conventions  . . . . . . . . . . . . . . . . .  144
+Respect the Spotlight . . . . . . . . . . . . . . . . . .145
+Other Concerns . . . . . . . . . . . . . . . . . . . . . . .145
+Talk About Your Character . . . . . . . . . . . .  146
+Chapter 6: The Adventuring Group . . . . . . .147
+Party Backgrounds . . . . . . . . . . . . . . . . . . . . . . .147
+Charter  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .147
+Childhood Friendship . . . . . . . . . . . . . . . . .148
+Chosen  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .149
+Circumstance . . . . . . . . . . . . . . . . . . . . . . . . .149
+Organization . . . . . . . . . . . . . . . . . . . . . . . . . .149
+Building the Party  . . . . . . . . . . . . . . . . . . . . . . .149
+Adventuring Party Basics . . . . . . . . . . . . .  150
+Being a Team Player  . . . . . . . . . . . . . . . . . .  155
+Tea mwork Benefi  ts . . . . . . . . . . . . . . . . . . . . . .  157
+What is a Teamwork Benefi  t? . . . . . . . . . .  157
+The Team Roster  . . . . . . . . . . . . . . . . . . . . .  158
+Tea mwork Benefi  t Descriptions . . . . . . . . . .  158
+Awareness  . . . . . . . . . . . . . . . . . . . . . . . . . . .  159
+Camp Routine  . . . . . . . . . . . . . . . . . . . . . . .  159
+Circle of Blades . . . . . . . . . . . . . . . . . . . . . . .  159
+Crowded Charge  . . . . . . . . . . . . . . . . . . . . .  159
+Cunning Ambush . . . . . . . . . . . . . . . . . . . .  159
+Cunning Ambush, Improved  . . . . . . . . .  159
+Expert Mountaineers . . . . . . . . . . . . . . . . .  160
+Foe Hunting  . . . . . . . . . . . . . . . . . . . . . . . . .  160
+Group Trance  . . . . . . . . . . . . . . . . . . . . . . . . .161
+Indirect Fire  . . . . . . . . . . . . . . . . . . . . . . . . . .161
+Like a Rock  . . . . . . . . . . . . . . . . . . . . . . . . . . .161
+Massed Charge . . . . . . . . . . . . . . . . . . . . . . . .161
+Missile Volley . . . . . . . . . . . . . . . . . . . . . . . . .161
+Steadfast Resolve . . . . . . . . . . . . . . . . . . . . . .162
+Superior Team Effort . . . . . . . . . . . . . . . . . .162
+Team Melee Tactics . . . . . . . . . . . . . . . . . . . .162
+Team Rush . . . . . . . . . . . . . . . . . . . . . . . . . . . .162
+Team Shield Maneuver  . . . . . . . . . . . . . . . .162
+Wall of Steel  . . . . . . . . . . . . . . . . . . . . . . . . . .162
+Chapter 7: Affi  liations . . . . . . . . . . . . . . . . . . .  163
+Broadening Your Game . . . . . . . . . . . . . . . . . . .163
+The Two Categories of Affi  liations  . . . .  164
+Why Join an Affi  liation? . . . . . . . . . . . . . .  164
+Membership Has Its Privileges  . . . . . . .  164
+Features of Affi  liations  . . . . . . . . . . . . . . . .165
+Making Affi  liations Dynamic . . . . . . . . .  166
+Example Affi  liations  . . . . . . . . . . . . . . . . . . . . .167
+Bloodfi  st Tribe  . . . . . . . . . . . . . . . . . . . . . . . .167
+Brightmantle Weapon Forge 
+     and Trading Consortium . . . . . . . . . . .  168
+Caravan of Shadows  . . . . . . . . . . . . . . . . . . .169
+Castle Mairo  . . . . . . . . . . . . . . . . . . . . . . . . . .169
+The Chalice . . . . . . . . . . . . . . . . . . . . . . . . . .  170
+Darkspire College of Thaun . . . . . . . . . . .  171
+Dragon Island . . . . . . . . . . . . . . . . . . . . . . . .  172
+Elves of the High Forest  . . . . . . . . . . . . . .  173
+The Golden Helm Guild . . . . . . . . . . . . . . .174
+The Land of Honor . . . . . . . . . . . . . . . . . . . .175
+Merata Kon  . . . . . . . . . . . . . . . . . . . . . . . . . . .175
+The One and the Five . . . . . . . . . . . . . . . . . .176
+Restenford Guild of Insurers, 
+     Solicitors, and Beggars . . . . . . . . . . . . .  177
+Restenford Sewerworkers Guild  . . . . . .  178
+Sharulhensa, the Alabaster Towers . . . .  179
+Sun Fane . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  180
+The Thunder Sail Argosy  . . . . . . . . . . . . .  180
+Wintervein Dwarves  . . . . . . . . . . . . . . . . .  181
+Creating Your Own Affi  liations . . . . . . . . . .  182
+Example of Play . . . . . . . . . . . . . . . . . . . . . . . . .  189
+Chapter 8: Rebuilding Your Character . . .  191
+Retraining . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  192
+Class Feature Retraining  . . . . . . . . . . . . .  192
+Feat Retraining  . . . . . . . . . . . . . . . . . . . . . .  193
+Language Retraining . . . . . . . . . . . . . . . . .  194
+Skill Retraining . . . . . . . . . . . . . . . . . . . . . .  194
+Spell or Power Retraining  . . . . . . . . . . . .  194
+Substitution Level Retraining  . . . . . . . .  194
+Rebuilding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  196
+Ability Score Rebuilding  . . . . . . . . . . . . .  196
+Class Level Rebuilding  . . . . . . . . . . . . . . .  197
+Race Rebuilding  . . . . . . . . . . . . . . . . . . . . .  198
+Template Rebuilding  . . . . . . . . . . . . . . . . .  199
+Rebuild Quests  . . . . . . . . . . . . . . . . . . . . . . . . .  199
+Rebuild Quests in the Game . . . . . . . . . .  199
+The Gates of Dawn (Levels 6–8) . . . . . . .  200
+The Necrotic Cradle (Levels 13–15)  . . .  203
+Appendix: Quick PC and NPC Creation . . .  207
+1. Choose a Class . . . . . . . . . . . . . . . . . . . . . . . .  207
+2. Determine Ability Scores  . . . . . . . . . . . . .  207
+3. Pick Your Race . . . . . . . . . . . . . . . . . . . . . . . .  207
+4. Pick Your Skills . . . . . . . . . . . . . . . . . . . . . . .  208
+Skill Priority Lists . . . . . . . . . . . . . . . . . . . .  208
+5. Pick Your Feats  . . . . . . . . . . . . . . . . . . . . . . .  208
+6. Miscellaneous Characteristics . . . . . . . . . .214
+7. Choose Equipment . . . . . . . . . . . . . . . . . . . .  215
+A la Carte Shopping . . . . . . . . . . . . . . . . . .  215
+Equipment by Level  . . . . . . . . . . . . . . . . . .  217
+8. Pick Your Spells . . . . . . . . . . . . . . . . . . . . . . .  219
+Suggested Bard Spells  . . . . . . . . . . . . . . . .  219
+Suggested Cleric Spells 
+     (Positive Energy Channelers*) . . . . . .  220
+Suggested Druid Spells . . . . . . . . . . . . . . .  220
+Suggested Duskblade Spells  . . . . . . . . . .  220
+Suggested Favored Soul Spells  . . . . . . . .  220
+Suggested Hexblade Spells  . . . . . . . . . . .  220
+Suggested Marshal Auras . . . . . . . . . . . . .  220
+Suggested Paladin Spells  . . . . . . . . . . . . .  221
+Suggested Ranger Spells . . . . . . . . . . . . . .  221
+Suggested Sorcerer Spells . . . . . . . . . . . . .  221
+Suggested Warlock Invocations . . . . . . .  221
+Suggested Wizard Spells . . . . . . . . . . . . . .  221
+Random Personalities . . . . . . . . . . . . . . . . . . .  221
+620_95374_Ch1.indd   3620_95374_Ch1.indd   32/8/06   2:52:55 PM2/8/06   2:52:55 PM
+
+Introduction
+When you play a character in a DUNGEONS & DRAGONS® 
+game, it’s all about the choices you make. Every facet of your 
+character that makes him or her unique is the product of a 
+conscious decision on your part.
+ Player’s Handbook II is all about expanding your choices—
+sometimes in ways you might expect (new classes, new feats) 
+and other times in ways you might fi  nd surprising, such as a 
+set of rules for re-engineering your character (about which 
+we have more to say below).
+ Chapter 1: New Classes expands the roster of standard 
+classes by four, with the addition of the beguiler, the dragon 
+shaman, the duskblade, and the knight. Any of these classes 
+would  be  a  fi  ne  choice  if  you  want  to  play  a  character  that  
+doesn’t fi  t any of the archetypes that are represented by the 
+other classes we have published.
+ Chapter 2: Alternate Class Options revisits eighteen of 
+those other classes—the eleven from the Player’s Handbook 
+as well as seven others (such as the scout and the favored 
+soul) that made their debuts in supplements. We look at 
+these classes with a fresh set of eyes, providing for each one 
+an alternate class feature, three new starting packages, and 
+a discussion of character themes that are appropriate for the 
+class in question. If you’re intrigued by the idea of playing a 
+cleric who spontaneously casts domain spells instead of cure 
+spells, check out page 37 for the particulars.
+ Player’s Handbook II would not be a book worthy of its title if 
+it didn’t present new feats and spells. Chapter 3: New Feats 
+contains more than 100 additions to the vast selection of feats 
+in the D&D® game, and Chapter 4: New Spells presents a 
+similar number of new choices for spellcasters of all sorts.
+     This book starts to blaze its own trail in Chapter 5: Building 
+You r  Identit y, which contains dozens of brief discussions 
+on  how  to  add  more  depth  and  realism  to  your  character’s  
+background and personality, plus some advice on how best 
+to fulfi  ll your role as a player at the gaming table.
+ Chapter 6: The Adventuring Group takes a step back 
+in perspective, focusing on the characters who collectively 
+make up a particular kind of party. How did these would-
+be heroes come together in the first place, and what part 
+does  each  one  of  them  play  in  a  well-rounded  group  of  
+adventurers? The chapter also includes a few new teamwork 
+benefi ts, expanding on a concept that was introduced in 
+Dungeon Master’s Guide II.
+    Characters are defi ned not only by who they are as indi-
+viduals and by the other PCs they travel with, but also by the 
+relationships they form with likeminded individuals whose 
+her itage or interests compel them to fol low a common cause. 
+Chapter 7: Affi  liations describes a new kind of group that 
+characters can belong to—they rise or fall in status within 
+their affi liations according to their deeds and their qualifi -
+cations, and the most motivated and successful of them all 
+can even advance to a leadership position. In addition to a 
+number of fully fl  eshed-out example affi  liations, this chapter 
+provides guidelines for players and DMs who want to create 
+affi  liations that are unique to their campaign.
+    Perhaps the most intriguing new concept in this book is 
+presented in Chapter 8: Rebuilding Your Character. While 
+many DMs and players have created house rules for handling 
+situations involving the reselection of feats, reallocation of skill 
+ranks, altering ability scores, and so forth, the D&D game has 
+never before had offi  cial r ules on the topic of rev ising your entire 
+character. So whether your dwarf fi  ghter just regrets a single 
+bad feat choice or wishes he were actually a half-orc barbarian 
+or an elf sorcerer, Chapter 8 offers rules and advice that covers 
+the subject of character rebuilding from start to fi  nish.
+    Finally, an extensive Appendix sets forth an efficient 
+method for quick generation of new player characters or 
+NPCs, which (among other things) streamlines the process of 
+selecting skills and feats. The next time you need a character 
+in a hurry—or even if you don’t—check out this system.
+WHAT YOU NEED TO PLAY
+Player’s Handbook II makes use of the information in the three 
+D&D core rulebooks: Player’s Handbook (PH), Dungeon Master’s 
+Guide (DMG), and Monster Manual (MM). It a lso i ncludes mater ia l 
+that expands upon some of the content of several supplements, 
+including Complete Warrior, Complete Divine, Complete Arcane, 
+Complete Adventurer, and Miniatures Handbook. Although pos-
+session of any or all of these supplements will enhance your 
+enjoyment of this book, they are not strictly necessary for you 
+to make use of the vast majority of this book.
+INTRODUCTION
+ 
+4
+pqqqqqqqqqqqqqqqqqqqqrs
+pqqqqqqqqqqqqqqqqqqqqrs
+SWIFT AND IMMEDIATE ACTIONS
+The Miniatures Handbook introduced the concept of a new action 
+type: the swift action. Likewise, Expanded Psionics Handbook in-
+troduced another new action type: the immediate action. Some 
+of the class features, feats, spells, and items in Player’s Handbook 
+II use these concepts. A description of how they work follows.
+    Swift    Action:    A swift action consumes a very small amount of 
+time, but represents a larger expenditure of effort and energy than 
+a free action. You can perform one swift action per turn without 
+affecting your ability to perform other actions. In that regard, a swift 
+action is like a free action. However, you can perform only a single 
+swift action per turn, regardless of what other actions you take.
+    Casting a quickened spell a swift action. In addition, casting any 
+spell with a casting time of 1 swift action (such as blade of blood; 
+see page 103) is a swift action. Casting a spell with a casting time 
+of 1 swift action does not provoke attacks of opportunity.
+    Immediate    Action:    Much  like  a  swift  action,  an  immediate  
+action consumes a very small amount of time, but represents a 
+larger expenditure of effort and energy than a free action. Unlike 
+a  swift  action,  an  immediate  action  can  be  performed  at  any  
+time—even if it’s not your turn.
+    Using an immediate action on your turn is the same as using a 
+swift action, and counts as your swift action for that turn. You cannot 
+use another immediate action or a swift action until after your next 
+turn if you have used an immediate action when it is not currently 
+your turn (effectively, using an immediate action before your turn is 
+equivalent to using your swift action for the coming turn). You also 
+cannot use an immediate action if you are currently flat-footed.
+620_95374_Ch1.indd   4620_95374_Ch1.indd   42/8/06   2:53:02 PM2/8/06   2:53:02 PM
+
+his  chapter  introduces  four  new  standard  classes,  
+each designed to fi ll a specifi c niche in the game. 
+Like any new classes, they provide players with 
+more options when it ’s time to make characters and 
+provide DMs with new potential foes to pit against 
+the PCs.
+ Beguiler: The warmage (described in Complete Arcane) is 
+an arcane spellcaster who focuses on a tightly themed group 
+of spells. The beguiler takes that idea and does for enchant-
+ment and illusion spells what the warmage did for evocation. 
+With a dash of transmutation thrown in, the beguiler is the 
+ultimate versatile spellcaster, with a trick or solution for 
+every encounter.
+ Dragon  Shaman:  Drawing  on  the  ancient  power  of  
+dragons, the dragon shaman provides powerful boosts to 
+every character in the party. The defensive and augmentation 
+abilities of this class allow a group with a dragon shaman to 
+adventure without a cleric.
+ Duskblade: This class provides melee combat abili-
+ties and arcane spellcasting in equal measure. Although 
+other ways to achieve this mix of powers exist, including 
+multiclass characters and prestige classes, the duskblade 
+offers this combination from 1st level and throughout all 
+levels of play.
+ Knight: Skilled with armor and shield, a knight controls 
+the battlefi eld in ways that no fi ghter or paladin ever could 
+and can ensure that foes center their attacks on the knight 
+rather than on more vulnerable allies. No other melee-
+oriented class has so much defensive prowess or ability 
+to infl uence what foes do in combat, aspects of the game 
+that are usually the province of spellcasters. While an able 
+melee combatant, the knight is different in play from all 
+previous melee combat classes because of his control-
+oriented abilities.
+NEW STARTING PACKAGES
+One of the features of Player’s Handbook II is a new treat-
+ment for starting packages, expanding on the concept 
+behind the starting packages previously presented in 
+the Player’s Handbook and other publications. The new 
+classes described in this chapter and the eighteen 
+other classes discussed in Chapter 2 have three start-
+ing packages for you to choose from. Each package 
+has an evocative title that describes the character’s 
+role in the party (such as “Defender” or “Controller”) 
+to give you an idea of the concept behind it. Some 
+descriptions appear more than once—for example, 
+both the fi  ghter and the ranger have a starting pack-
+age cal led “ The A rcher.” Some of these titles match 
+those in Table A–3: Feat Progressions by Party Role 
+(starting  on  page  209),  but  such  similarities  do  not  
+necessarily extend to the feats recommended. A race 
+is specifi  ed for each package, but you can adjust the 
+details to fi  t any race without too much trouble.
+5
+Illus. by R. HorsleyIllus. by R. Horsley
+620_95374_Ch1.indd   5620_95374_Ch1.indd   52/8/06   2:53:09 PM2/8/06   2:53:09 PM
+
+6

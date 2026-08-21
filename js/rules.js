@@ -1,7 +1,7 @@
 /**
  * @module    rules
  * @summary   Facade for D&D 3.5e rules engine. Re-exports constants and functions from modular sub-files.
- * @exports   CombatRules, getAllCompendiumSpells, isSpellEligibleForPC, getEligibleSpellLevelsForPC, checkPrerequisites, validatePrestigeClassPrereqs
+ * @exports   CombatRules, getAllCompendiumSpells, isSpellEligibleForPC, getEligibleSpellLevelsForPC, checkPrerequisites, validatePrestigeClassPrereqs, getPrestigeClassFeatures
  */
 
 
@@ -48,6 +48,14 @@ import {
   validatePrestigeClassPrereqs
 } from './rules/classValidation.js';
 
+import {
+  getPrestigeClassFeatures
+} from './rules/prestigeClassEngine.js';
+
+import {
+  PRESTIGE_CLASSES_REGISTRY
+} from './data/prestigeClasses-data.js';
+
 export const CombatRules = {
   CONDITIONS,
   CLASSES,
@@ -72,7 +80,9 @@ export const CombatRules = {
   checkSpellKnownLimit,
   calculateMaxFeats,
   validateFeatsAssignment,
-  validatePrestigeClassPrereqs
+  validatePrestigeClassPrereqs,
+  getPrestigeClassFeatures,
+  PRESTIGE_CLASSES_REGISTRY
 };
 
 export {
@@ -88,4 +98,13 @@ export {
 export {
   validatePrestigeClassPrereqs
 } from './rules/classValidation.js';
+
+export {
+  getPrestigeClassFeatures,
+  getAblMod as getPrestigeClassAblMod
+} from './rules/prestigeClassEngine.js';
+
+export {
+  PRESTIGE_CLASSES_REGISTRY
+} from './data/prestigeClasses-data.js';
 

@@ -1,0 +1,1733 @@
+Cha  PT  er 4
+neW sP ells
+squeezing into the available space (PH 148) if neces-
+sary    . If insufficient space exists for the new form, the 
+spell fails .
+  Any gear worn or carried by the target melds into the 
+new form and becomes nonfunctional . When the target 
+reverts to its true form, any objects previously melded into 
+the new form reappear in the same location on its body 
+they previously occupied and are once again functional . 
+Any new items worn in the assumed form fall off and land 
+at the target’s feet .
+  The spellcaster can freely designate the new form’s 
+minor physical qualities (such as hair color and skin color) 
+within the normal ranges for a creature of that kind . The 
+new form’s significant physical qualities (such as height, 
+weight,  and  gender)  are  also  under  the  spellcaster’s 
+control, but they must fall within the norms for the new 
+form’s kind . The target of a polymorph spell is effectively 
+camouflaged as a creature of its new form, and gains a +10 
+bonus on Disguise checks if it uses this ability to create 
+a disguise .
+  If the target of a polymorph spell is slain or rendered 
+unconscious, the spell ends . Any part of the body that is 
+separated from the whole remains polymorphed until the 
+effect ends .
+  Incorporeal or gaseous creatures are immune to poly-
+morph spells, as are creatures of the plant type . A creature 
+with the shapechanger subtype (such as a lycanthrope 
+or  doppelganger)  can  revert  to  its  natural  form  as  a 
+standard action .
+spells that have Come before
+For the purpose of adjudicating effects that apply to 
+polymorph spells, any spell whose effect is based on 
+either alter self or polymorph should be considered to have 
+the polymorph subschool . However, the spells’ existing 
+rules text takes priority over that of the subschool . Alter 
+self, for instance, does not change the target’s ability 
+scores  (unlike  normal  for  spells  of  the  polymorph 
+subschool) .
+sWIfT and IMMed IaTe aCTIons
+Many feats, skill tricks, and spells presented in this book 
+use two new kinds of actions: the swift and immediate 
+action, originally introduced in Miniatures Handbook and 
+Expanded Psionics Handbook, respectively .
+ Swift  Action: A swift action consumes a very small 
+amount of time, but represents a larger expenditure of 
+effort  and  energy  than  a  free  action .  You  can  perform 
+one swift action per turn without affecting your ability to 
+perform other actions . In that regard, a swift action is like 
+a free action . However, you can perform only a single swift 
+action per turn, regardless of what other actions you take . 
+You can take a swift action any time you would normally 
+be allowed to take a free action .
+  Casting a quickened spell or manifesting a quickened 
+power is a swift action . In addition, casting any spell or 
+manifesting any power with a casting time or manifesting 
+time of 1 swift action is a swift action .
+ Immediate Action: Much like a swift action, an imme-
+diate action consumes a very small amount of time, but 
+represents a larger expenditure of effort and energy than 
+a free action . Unlike a swift action, an immediate action 
+can be performed at any time—even it it’s not your turn . 
+Using an immediate action on your turn is the same as 
+using a swift action, and counts as your swift action for 
+that turn . You cannot use another immediate action or a 
+swift action until after your next turn if you have used 
+an immediate action when it is not currently your turn 
+(effectively, using an immediate action before your turn 
+is equivalent to using your swift action for the coming 
+turn) . You also cannot use an immediate action if you are 
+currently flat-footed . 
+neW assassIn sPells
+1st level
+Healer’s Vision: Gain +5 bonus on Heal checks, and +2 
+attack and damage on sneak attacks .
+Mimicry: Perfectly mimic familiar sounds, voices, or 
+accents .
+pqqqqqqqqqqqqqqqqqqqqrs
+pqqqqqqqqqqqqqqqqqqqqrs
+ThefT rePor  T
+To Lord Kikosomi, Head of the Royal Guard:
+ My lord, I have terrible news to report. Four of the five crown 
+jewels  have  been  stolen.  The  thieves  must  have  employed 
+magic  of  some  sort,  for  the  fields  of  alarm  wards  remain 
+undisturbed.  None  of  the  guards  saw  anyone  enter  or  leave. 
+Our mages have confirmed this with multiple spells of the ap-
+propriate kind.
+    As best I can ascertain, the thieves (I refer to the culprits in 
+the plural because I do not believe a single being could have 
+gotten past all our defenses) brought with them a spellcaster 
+of some kind. They must also have included someone able 
+to  contort  himself  in  such  a  way  as  to  slip  through  the  bars 
+surrounding the jewels, since the zone of antimagic that encom-
+passes  them  yet  remains.  (It  is  remotely  possible  that  the 
+thieves somehow lowered the zone of antimagic, then raised 
+another in its place.)
+    I think one of the thieves might have had a blade made of a 
+rare  material  known  as  adamantine,  which  I  understand  can 
+penetrate  most  materials  with  ease.  That  would  explain  the 
+cleanly cut hole in the outside wall of the room. I can think of 
+no other solution that does not involve magic—and, as I men-
+tioned, the zone of antimagic still holds. 
+    I pray to St. Cuthbert that we might yet find the culprits. 
+Sincerely,
+Hetlan Croft, Royal Guard Inquisitor
+
+
+Cha  PT  er 4
+neW sP ells
+2nd level
+Smoke Stairs: Walk up a column of smoke as if it were 
+solid .
+3rd level
+Create Fetch: Craft a temporary duplicate of yourself 
+that follows telepathic orders .
+4th level
+Assassin’s Darkness: Globe of pure darkness blocks all 
+sight but your own .
+neW bard sPells
+1st level
+Armor Lock: Target’s armor becomes restrictive, slow-
+ing movement to 10 ft .
+Lucky Streak: Target gains +2 luck bonus on rerolls 
+made with luck feats .
+Mage Burr: Double arcane spell failure chance for 
+target’s armor .
+Mimicry: Perfectly mimic familiar sounds, voices, or 
+accents .
+2nd level
+Animate Instrument: Your instrument animates and 
+plays by itself .
+Catapult: Magically propel an object from your hand .
+Opportune Dodge: Subject can avoid a single attack of 
+opportunity .
+Spymaster’s Coin: Hide a scrying sensor in a coin or 
+other Tiny object for later activation .
+3rd level
+Disobedience: Subject is shielded from mind control .
+Create Fetch: Craft a temporary duplicate of yourself 
+that follows telepathic orders .
+4th level
+Spell Theft: Dispel spells on target and gain their ben-
+efit for yourself .
+5th level
+Evacuation Rune: Create invisible rune that you can 
+teleport to as swift action .
+Harmonic Void: Nearby casters must succeed on Con-
+centration check to use verbal-component spells .
+Scry Location: Spy on a distant location .
+neW ClerIC sPells
+1st level
+Healer’s Vision: Gain +5 bonus on Heal checks, and +2 
+attack and damage on sneak attacks .
+2nd level
+Manifestation of the Deity: Create illusion of your 
+deity, rendering enemies shaken for 1 round .
+5th level
+Scry Location: Spy on a distant location .
+neW dru  Id sPells
+1st level
+Aquatic Escape: Take the form of a fish .
+Blockade: Fill 5-ft . square with enormous block of 
+wood .
+Spore Field: Mushrooms grow from ground, 
+slowing movement and sickening living 
+creatures .
+Winged Watcher: Take the 
+form of a bird .
+2nd level
+Smoke Stairs: Walk up a 
+column of smoke as if it were 
+solid .
+3rd level
+Wall of Vermin: Wall of biting 
+pests provides concealment, 
+attacks anyone passing through .
+7th level
+Scry Location: Spy on a distant 
+location .
+Gimble uses the catapult spell to launch  
+a dagger at an unsuspecting target
+Illus. by E. Deschamps
+
+Cha  PT  er 4
+neW sP ells
+neW hexblade sPells
+1st level
+Armor Lock: Target’s armor becomes restrictive, slow-
+ing movement to 10 ft .
+Mage Burr: Double arcane spell failure chance for 
+target’s armor .
+4th level
+Spell Theft: Dispel spells on target and gain their ben-
+efit for yourself .
+neW ranger sPells
+1st level
+Blockade: Fill 5-ft . square with enormous block of wood .
+2nd level
+Spore Field: Mushrooms grow from ground, slowing 
+movement and sickening living creatures .
+neW sor  Cerer/WIzard sPells
+1st level
+Conj Blockade: Fill 5-ft . square with enormous block 
+of wood .
+Trans Armor Lock: Target’s armor becomes restrictive, 
+slowing movement to 10 ft .
+ Mage  Burr: Double arcane spell failure chance 
+for target’s armor .
+2nd level
+Div     Spymaster’s Coin: Hide a scrying sensor in a coin 
+or other Tiny object for later activation .
+Evoc Fatal Flame: Target’s body bursts into flame upon 
+its death .
+Trans Catapult: Magically propel an object from your 
+hand . 
+ Enlarge  Weapon: Your weapon grows one size 
+category .
+ Lucky  Streak: Subject gains +2 luck bonus on 
+rerolls made with luck feats .
+3rd level
+Abjur  Disobedience: Subject is shielded from mind 
+control .
+Conj Grasping Wall: Wall sprouts hands that entangle 
+enemies, help allies climb .
+Trans Wand Modulation: Temporarily change wand to 
+cast another, weaker spell .
+ Siphon: Drain 5 or more charges from wand or 
+staff to replace one or more cast spells .
+4th level
+Conj Create  Fetch: Craft a temporary duplicate of 
+yourself that follows telepathic orders .
+5th level
+Conj Evacuation Rune: Create invisible rune that you 
+can teleport to as swift action .
+Abjur Spell Theft: Dispel spells on target and gain their 
+benefit for yourself .
+6th level
+Div Scry Location: Spy on a distant location .
+anIM aTe 
+InsTru  Men  T
+Transmutation
+Level: Bard 2
+Components: V, S
+Casting Time: 1 standard action
+Range: Touch
+Target: Instrument touched 
+Duration: 1 minute/level
+Saving Throw: None
+Spell Resistance: No
+As  you  finish  intoning  this  chant,  your 
+instrument leaves your hands and floats 
+before you, continuing your song.
+You imbue your musical instrument 
+with the ability to play at your com-
+mand .  This  instrument  can  play  a 
+tune on your behalf even while you 
+are busy with other actions . As long 
+as this spell is in effect, you can cause 
+the instrument to begin playing as a 
+swift action, effectively mimicking 
+and  continuing  your  performance . 
+The  instrument  uses  your  Perform 
+modifier  for  the  purpose  of  bardic 
+music checks . 
+  Once  the  animated  instrument 
+picks  up  the  performance,  you  do 
+not have to concentrate to maintain 
+its effect . Thus, you can continue a 
+performance or bardic music effect 
+that  relies  on  the  use  of  a  musical 
+instrument  and  also  cast  spells, 
+activate magic items by spell comple-
+tion or command words, or even use 
+another bardic music ability . 
+  You can animate any nonmagical 
+musical instrument, such as a piano, 
+fiddle,  or  harp .  If  the  instrument 
+must be carried or held while played, 
+it  floats  in  the  air  in  the  square 
+in  which  you  cast  the  spell .  The 
+animated instrument cannot move . 
+It  continues  to  play  until  the  spell 
+expires or the instrument is damaged . 
+An animated instrument’s AC is 10 
++ any relevant size modifiers; most 
+handheld instruments are Tiny .
+ Material Component: One working 
+musical instrument .
+sP ell des  CrIPTIons
+
+
+
+Cha  PT  er 4
+neW sP ells
+aquaTIC esCaPe
+Transmutation (Polymorph)
+Level: Druid 1
+Components: V, S
+Casting Time: 1 swift action
+Range: Personal
+Target: You
+Duration: 1 round/level (D)
+Your arms and legs fuse with your body 
+as bright silvery scales cover your skin.
+You take the form of a Diminutive 
+fish  . Use the statistics for the toad 
+(MM 282) except for the following 
+changes:  Add  the  aquatic  subtype, 
+replace the land speed with a swim 
+speed of 30 feet, remove the amphibi-
+ous special quality, and replace the 
+toad’s  skills  with  Listen  +4,  Spot 
++4,  and  Swim  +13 .  A  fish  adds  its 
+Dexterity modifier, not its Strength 
+modifier, to Swim checks, and gains 
+a +8 racial bonus on Swim checks 
+due to its swim speed . See the poly-
+morph  subschool  description  on 
+page 91 for more details .
+  As its name suggests, this spell’s 
+most common use is to make a quick 
+getaway  in  a  watery  environment, 
+but  it  also  allows  a  clever  druid 
+to  overcome  a  flooded  corridor  or 
+similar obstacle .
+arMor loCk
+Transmutation
+Level: Bard 1, hexblade 1, sorcerer/
+wizard 1
+Components: V, S
+Casting Time: 1 standard action
+Range: Close (25 ft . + 5 ft ./2 levels)
+Target: One creature wearing 
+armor
+Duration: 1 round/level (D)
+Saving Throw: Fortitude negates
+Spell Resistance: Yes
+The plates and joints of your opponent’s 
+armor become as rigid as stone, encum-
+bering his movement.
+You cause the target’s armor to swell 
+and  stiffen,  slowing  the  wearer’s 
+movement and trapping him within . 
+The target’s land speed is reduced to 
+10 feet . If the target has a burrow, 
+climb, or swim speed, these are also 
+reduced to 10 feet . The target also 
+loses any Dexterity bonus to AC for 
+the duration of the spell .
+  While affected by this spell, the 
+target cannot remove his armor; its 
+joints are too tight and restrictive to 
+escape from . This spell has no effect 
+on unarmored opponents, creatures 
+with only natural armor or an AC 
+bonus from items other than armor, 
+or those using only shields .
+assassIn’s darkness
+Evocation (Darkness)
+Level: Assassin 4
+Components: V, S
+Casting Time: 1 standard action
+Range: Medium (100 ft . + 10 
+ft  ./level)
+Area: 40-ft .-radius spherical 
+emanation
+Duration: 1 minute/level (D)
+Saving Throw: No
+Spell Resistance: No
+Covering  your  eyes  and  spitting  a 
+harsh  whisper,  you  conjure  a  globe  of 
+absolute  blackness  before  you.  As  you 
+step forward, your sight alone pierces the 
+darkness, showing you your disoriented 
+victims within.
+You  call  a  globe  of  absolute  dark-
+ness  into  being,  which  only  you 
+can see through . All other creatures 
+within or who enter this spell’s area 
+are  blinded  while  they  remain  in 
+the  area .  Even  creatures  that  have 
+darkvision cannot see through this 
+magical  obscurement,  although 
+creatures capable of seeing in magi-
+cal darkness (such as devils) are not 
+affected by it .
+  While you are outside the sphere, 
+you  can  see  nothing  within,  and 
+every creature within has total con-
+cealment . Upon entering the spell’s 
+area, however, you can see as if the 
+area were illuminated by bright light 
+and can interact with those within 
+as normal, even though they cannot 
+see you .
+blo Ckade
+Conjuration (Creation)
+Level: Druid 1, ranger 1, sorcerer/
+wizard 1
+Components: V, S, M
+Casting Time: 1 swift action
+Range: 0 ft    .
+Effect: 5-ft   . cube of wood
+Duration: 3 rounds
+Saving Throw: No
+Spell Resistance: None
+You drop a tiny wooden block before you. 
+It  rapidly  begins  growing  and  hits  the 
+ground with a heavy thud, now a perfect 
+5-foot cube of dense wood.
+You call a cube of solid wood, 5 feet 
+on a side, into being . The cube must 
+be created upon solid ground in an 
+empty  square .  If  no  solid  surface 
+exists  that  is  large  enough  for  the 
+cube to fit on, or if no adjacent square 
+is empty, the spell fails . 
+  The  cube  weighs  2,000  pounds . 
+It has a hardness of 5 and 600 hit 
+points,  and  it  completely  fills  one 
+5-foot square . Multiple cubes can be 
+stacked . If it is pushed into water, the 
+cube floats .
+ Material  Component:  A  block  of 
+wood, less than 3 inches on a side .
+Ca  TaPul  T
+Transmutation
+Level: Bard 2, sorcerer/wizard 2
+Components: V, S
+Casting Time: 1 standard action
+Range: Touch
+Target: One held object, weighing 
+up to 5 lb .
+Duration: Instantaneous
+Saving Throw: No
+Spell Resistance: None
+Focusing on the object in your grasp, you 
+abruptly jerk your head in the direction 
+you desire, sending the item flying. 
+You  propel  a  single  object  out  of 
+your  hand  at  fantastic  speed .  This 
+object  can  be  a  weapon  designed 
+for throwing, a weapon not meant 
+to be thrown, or another nonliving 
+object .
+
+
+Cha  PT  er 4
+neW sP ells
+  Make a normal ranged attack roll 
+with the affected object, but do not 
+add  any  ability  score  modifier  to 
+the attack or damage roll . Instead, 
+you  gain  a  competence  bonus  on 
+the damage roll equal to one-third 
+of your caster level (maximum +5) . 
+The range increment for the hurled 
+object  is  30  feet,  regard-
+less of its normal range 
+increment (if any) .
+  If  you  use catapult 
+to fling an object not 
+meant to be used as a 
+thrown  weapon,  you 
+take  the  normal  –4 
+nonproficiency pen-
+alty  on  the  attack 
+roll   .  An  item  that 
+isn’t a weapon deals 
+1d6  points  of  base 
+damage if it weighs 
+at least 1 pound .
+  The  item catapult  is 
+to affect must be in your 
+hands  when  you  cast 
+the  spell .  If  you  cast 
+the  spell  with  noth-
+ing  in  your  hands 
+to  fling,  the  magic 
+automatically  fails . 
+You  cannot  propel 
+living creatures with 
+catapult, regardless  of 
+their size .
+CreaTe   feTC  h
+Conjuration (Creation)
+Level: Assassin 3, bard 
+3, sorcerer/wizard 4
+Components: V, S, M
+Casting Time: 1 standard action
+Range: Close (25 ft . + 5 ft ./2 levels)
+Effect: A duplicate of yourself
+Duration: 10 minutes/level
+Saving Throw: None
+Spell Resistance: No
+Plucking out one of your own hairs, you 
+make a beckoning motion. A double of 
+you appears nearby.
+You create a fetch, a perfect replica 
+of your form at the time you cast this 
+spell . Little more than an animated 
+reproduction,  a  fetch  is  mindless 
+but  capable  of  performing  simple 
+tasks or imitating you . The creation 
+is the same size as you and occupies 
+space just as a living creature does . 
+You have a mental connection with 
+your fetch and can give it new orders 
+as a standard action .
+  The  fetch  duplicates  your  form 
+in every way but texture . You must 
+make  a  Disguise  check  when  you 
+cast  the  spell  to  determine  how 
+good  the  likeness  is;  this  result  is 
+opposed by observers’ Spot checks 
+as  normal .  Anyone  touching  the 
+fetch finds it rubbery and soft, and 
+in  so  doing  immediately  realizes 
+its magical nature . The fetch’s body 
+includes useless versions of all the 
+equipment  you  possess:  A  weapon 
+wielded by the fetch is too flimsy to 
+deal damage, and tools it carries are 
+fragile and imprecise . Items created 
+with a fetch are part of its form and 
+dissipate if separated from it .
+  At  your  order,  the  fetch  can 
+retrieve things for you, open unstuck 
+doors, hold chairs, and the like, as 
+well as perform menial tasks such 
+as  cleaning  and  mending .  The 
+fetch can’t perform any task that 
+requires  a  skill  check  with  a 
+DC   higher than 10 or that 
+requires  a  skill  that  can’t 
+be  used  untrained .  It  can 
+perform only one activity 
+at a time, but it repeats 
+the  same  activity  tire-
+lessly  if  ordered  to  do 
+so as long as you remain 
+within the spell’s range . 
+You  can  have  the  fetch 
+imitate  you,  such  as  by 
+sitting at a desk and pre-
+tending  to  write,  lying  in 
+bed and breathing deeply, or 
+skulking with a weapon drawn . 
+It can even imitate tasks it can’t 
+actually  perform,  though  it 
+automatically fails any attempt 
+at  such  performance—for 
+instance, even though a fetch 
+can pretend to decipher an 
+ancient text, it can’t actu-
+ally do it .
+       The  fetch  weighs 
+roughly the same as you 
+do, so it can trigger any 
+traps you would if you were 
+to pass through the same space, set-
+ting  off  tripwires,  pressure  plates, 
+some  magical  forms  of  detection, 
+and similar devices . Its land speed 
+is normal for a creature of your kind 
+(for example, 30 feet for a human or 
+20 feet for a halfling) . Even if you 
+normally have other modes of move-
+ment available (such as a fly or swim 
+speed), the fetch can’t use those .
+       The fetch automatically fails any 
+saving throw required of it . If you 
+attempt to send it beyond the spell’s 
+range (measured from your current 
+position), it ceases to exist .
+A fetch duplicates the caster’s  
+appearance in every way
+Illus. by R. Gallegos
+
+
+Cha  PT  er 4
+neW sP ells
+       The  fetch  has  an  effective 
+Strength score of 6, so it can lift 60 
+pounds or drag 300 pounds . Its Dex-
+terity is 10, so it has an AC of 10 (plus 
+size modifier) . It gains no AC benefit 
+from any equipment or effect 
+on you when the spell is cast 
+(such  as  armor  you  wear, 
+since  the  armor  creat-
+ed for it is part of its 
+form), though it can 
+then wear real armor 
+or  other  items  to  in-
+crease its Armor Class . 
+It  has  no  Constitution 
+score and 10 hit points; 
+if reduced to 0 hit points, 
+it is destroyed . It can’t be 
+healed,  nor  can  it  ben-
+efit  from  temporary  hit 
+points . The fetch has no 
+Intelligence, Wisdom, or 
+Charisma  score .  You  can 
+command it to make noise, 
+but it can’t communicate in 
+any way, nor can it under-
+stand instructions other 
+than the simple orders you 
+give it telepathically .
+  The  fetch  cannot  attack 
+in any way; it is never allowed 
+an  attack  roll .  Even  if  armed,  it 
+doesn’t  threaten  an  area  around  it 
+and thus can’t flank an enemy, nor 
+can  it  use  the  aid  another  action 
+to  improve  your  Armor  Class  or  
+attack rolls . 
+  The fetch has the same alignment 
+aura as you do . Detect thoughts does 
+not  register  its  existence  (since  it 
+has no Intelligence), but detect magic 
+reveals it as a magical effect .
+   Material Component: One of your 
+own hairs . 
+dI  sobedIen  Ce
+Abjuration
+Level: Bard 3, sorcerer/wizard 3
+Components: V, S, M
+Casting Time: 1 standard action
+Range: Close (25 ft . + 5 ft ./2 levels)
+Target: One creature
+Duration: 1 hour/level (D)
+Saving Throw: Will negates 
+(harmless); see text
+Spell Resistance: Yes
+A ghostly great helm that only you can see 
+appears around your companion’s head, 
+warding her mind against control. 
+You  shield  your  subject  against 
+mind-controlling  spells  and  abili-
+ties   . Disobedience blocks any attempt 
+to exercise mental control over the 
+subject  creature,  including  charm 
+and  compulsion  effects  that  grant 
+ongoing  control  over  the  subject, 
+such as dominate person or a vampire’s 
+dominate  ability .  The  protection 
+does not prevent such effects from 
+targeting a subject affected by disobe-
+dience, but it suppresses the effect for 
+the duration of this spell . If disobedi-
+ence ends before the effect granting 
+mental control does, the would-be 
+controller becomes able to mentally 
+command the targeted creature .
+  In addition to protecting the sub-
+ject, disobedience sends false 
+information  to  the  crea-
+ture that is attempting to 
+gain control of the subject . 
+The  would-be  controller  must 
+succeed on a Will save or believe that 
+its spell or ability has taken effect 
+and that the target is now under its 
+control . The spell’s subject becomes 
+aware of commands issued by that 
+creature  and  can  choose  to  act 
+however  she  pleases,  disregarding 
+the would-be controller’s orders or 
+going along with them in a pretense 
+of obedience . 
+   Material  Component:  A  scrap  of 
+tin  .
+enlarge WeaPon
+Transmutation
+Level: Sorcerer/wizard 2
+Components: V, S
+Casting Time: 1 standard 
+action
+Range: Touch
+Target: One touched 
+melee weapon 
+Duration: 1 round/level
+Saving Throw: Will negates 
+(harmless, object)
+Spell Resistance: Yes (harmless, 
+object)
+With  a  shriek  of  warping  wood  and 
+scraping  metal,  your  weapon  grows, 
+becoming far more intimidating.
+A melee weapon you hold enlarges 
+by one size category (Small weapons 
+become Medium, Medium weapons 
+become Large, and so on) . As its size 
+increases,  the  damage  the  weapon 
+deals  increases  as  well  (PH  114) . 
+When  your  weapon  is  affected  by 
+this spell, you do not take a penalty 
+for wielding an inappropriately sized 
+weapon .  If  you  drop  the  enlarged 
+weapon, are disarmed, or hand the 
+weapon to another creature, the spell 
+ends . This spell does not grant you 
+the ability to wield any other inap-
+propriately  sized  weapon  without 
+Disobedience shields a scoundrel  
+from an illithid’s attempt at control
+Illus. by K. Yanner
+
+
+Cha  PT  er 4
+neW sP ells
+penalty, only the one on which this 
+spell is cast .
+  This  spell  has  no  effect  on  a 
+weapon that is already increased in 
+size  by  some  other  effect  (such  as 
+being held by a creature affected by 
+enlarge person) .
+eva  Cua  TI  on rune
+Conjuration (Teleportation)
+Level: Bard 5, sorcerer/wizard 5
+Components: V, S, M
+Casting Time: 1 standard action
+Range: Touch
+Effect: One invisible rune
+Duration: 24 hours
+Saving Throw: None (harmless)
+Spell Resistance: No (harmless)
+As you finish scribing this bloody rune, 
+the mark flares for an instant and then 
+vanishes.  Even  though  the  rune  has 
+disappeared, you feel as though you can 
+step back to it simply by willing it.
+You create a magical mark that you 
+can teleport to at a moment’s notice . 
+Upon casting this spell and touching 
+a  surface  or  inanimate  object,  you 
+create  an  invisible  rune  like  that 
+created by the spell arcane mark (PH 
+201)    . At any point during the spell’s 
+duration  you  can  teleport  (as  the 
+greater teleport spell) back to the mark 
+as a swift action . This ends the spell’s 
+duration .  After  teleporting  in  this 
+way, you can’t take any other actions 
+until your next turn .
+  The mark created by this spell can 
+be detected in the same ways that an 
+invisible arcane mark can be . You are 
+not alerted if the mark is dispelled or 
+the object upon which it is inscribed 
+is destroyed . Any attempt to teleport 
+back  to  a  dispelled  or  destroyed 
+mark still requires a swift action but 
+fails    . 
+  If you created the evacuation rune 
+upon a portable object, that object 
+can be moved by another creature . 
+You have no knowledge of whether 
+your mark has been moved or where, 
+and upon teleporting to its location, 
+you are subject to any adverse condi-
+tions . If the mark has been moved 
+to  another  plane,  any  attempt  to 
+teleport to it fails . 
+  If the object inscribed with the 
+evacuation rune is moved somewhere 
+too  small  for  you  to  appear  or  is 
+otherwise covered by a solid body, 
+you take 1d6 points of damage and 
+are shunted to a random open space 
+on a suitable surface within 100 feet 
+of the intended location . If there is 
+no free space within 100 feet, you 
+take  an  additional  2d6  points  of 
+damage and are shunted to a free 
+space  within  1,000  feet .  If  there 
+is no free space within 1,000 feet, 
+you take an additional 4d6 points 
+of damage, and the teleport attempt 
+simply fails .
+ Material Component: The blood of 
+an owl, hawk, or eagle .
+This enlarged spear makes a nasty surprise for a minotaur
+Illus. by E. Widermann
+
+
+Cha  PT  er 4
+neW sP ells
+faTal fla  Me
+Evocation (Fire)
+Level: Sorcerer/wizard 2
+Components: V, S, M
+Casting Time: 1 standard action
+Range: Close (25 ft . + 5 ft ./2 levels)
+Target: One living creature with 1 
+or more HD
+Duration: 1 minute/level
+Saving Throw: Will negates, 
+Reflex half; see text
+Spell Resistance: Yes
+A single spark of flame leaps from your 
+finger  into  the  target’s  body,  waiting 
+silently for its death.
+You  place  a  tiny  quantity  of  pure 
+elemental  fire  within  a  creature, 
+which  interacts  with  the  energy 
+released by its death to create a small 
+explosion . When the target creature 
+is killed, its body explodes in a burst 
+of flame, dealing fire damage to each 
+adjacent creature equal to twice the 
+target’s  HD  or  twice  your  caster 
+level, whichever is less (maximum 
+20 points) . Treat creatures with less 
+than 1 HD as having 1/2 HD for the 
+purpose of this spell’s effect (so the 
+spell  deals  1  point  of  fire  damage 
+when triggered) . A successful Reflex 
+save halves this damage . Fatal flame 
+has no ill effect on the target’s 
+body before its death .
+  The target receives a Will save 
+to negate the spell’s effect . 
+   Material Component: A splinter of 
+charred bone .
+grasPI ng Wall
+Conjuration (Creation)
+Level: Sorcerer/wizard 3
+Components: V, S, M
+Casting Time: 1 standard 
+action
+Range: Medium (100 ft . + 
+10  ft  ./level)
+Effect: Hands sprout from a wall 
+in an area of up to four 5-ft . 
+squares (S)
+Duration: Concentration (max . 
+1 round/level) + 3 rounds
+Saving Throw: Reflex negates
+Spell Resistance: No
+Hundreds  of  disembodied  hands  burst 
+from the wall, forming a sea of clutching, 
+probing appendages. 
+You  cause  hands  to  sprout  from  a 
+wall within range . This spell simply 
+adds grasping hands to an existing 
+wall rather than creating a wall of a 
+substance . 
+  All  opponents  adjacent  to  the 
+wall are entangled unless they suc-
+ceed on Reflex saves . An opponent 
+must repeat this save each round it 
+remains adjacent to the wall .
+  Allied creatures are not entangled, 
+and in fact can use the hands to gain 
+a +10 competence bonus on Climb 
+checks to scale the wall . If the spell 
+ends  while  you  are  climbing,  you 
+immediately  fall  but  can  make  a 
+normal Climb check to catch your-
+self (PH 69)   .
+  Any  objects  on  a  wall  affected 
+by  the  spell  are  unharmed;  doors, 
+windows,  and  other  apertures  in 
+the wall can be opened or closed as 
+normal .
+ Material Component: A handful of 
+fingernails .
+har  MonIC  voId
+Abjuration
+Level: Bard 5
+Components: V, S
+Casting Time: 1 standard action
+Range: 60 ft .
+Area: 60-ft .-radius spherical ema-
+nation, centered on you
+Duration: Concentration, up to 1 
+round/level
+Saving Throw: None
+Spell Resistance: No
+Jarring,  discordant  noises  fill  the 
+area,  making  it  difficult  for  others  to 
+concentrate.
+Fatal flame turns a dying kobold into a lethal booby trap for its fellows
+Illus. by F. Vohwinkel
+
+100
+Cha  PT  er 4
+neW sP ells
+You  create  a  zone  of  disruptive 
+arcane  harmonies  that  interfere 
+with spells that have verbal compo-
+nents . Casters within the area find 
+their spells’ spoken words warped, 
+twisted,  and  blurred,  disrupting 
+their  efforts .  Any  creature  (other 
+than you) that attempts to cast a spell 
+with a verbal component in this area 
+must  succeed  on  a  Concentration 
+check (DC 20 + the spell’s level) . On 
+a failure, the spell fails to function 
+and the caster expends the spell or 
+spell slot as normal .
+ Harmonic   void  has  no  effect 
+on  supernatural  abilities,  magic 
+items,  and  other  magical  effects . 
+It  affects  only  spells  with  verbal 
+components .
+healer’s vI  sIon
+Divination
+Level: Assassin 1, cleric 1
+Components: V, S
+Casting Time: 1 standard action
+Range: Personal
+Target: You
+Duration: 1 round/level (D)
+Every thrumming vein, every strained 
+muscle,  and  every  pulsing  organ 
+of  those  nearby  becomes  vis-
+ible  to  your  eyes,  showing 
+you  exactly  where  to 
+place a healing hand 
+. . . or a deadly 
+strike.
+You gain a macabre change to your 
+vision  that  seemingly  peels  away 
+skin  and  sinew  to  reveal  the  flesh 
+beneath . You gain a +5 insight bonus 
+on Heal checks, and any cure spell 
+you cast on a living creature heals 
+1 extra point of damage per level of 
+the spell .
+  You  also  gain  a  +2  bonus  on  at-
+tack  rolls  and  damage  rolls  when 
+making  a  precision-based  attack 
+(such as a sneak attack or a sudden 
+strike)  against  a  living  creature, 
+since you are able to pick out your 
+target’s most vital points . (This ef-
+fect makes the spell popular among 
+less benevolent casters .) Healer’s vi-
+sion does not grant you the ability 
+to make a precision-based attack if 
+you don’t already have that ability, 
+nor does it allow you to make such 
+attacks against creatures normally 
+unaffected by them . 
+  This spell does not reveal the true 
+forms of creatures affected by illu-
+sions or other magical disguises, so 
+it grants no benefit to Heal checks 
+or attacks against such creatures .
+luCkY sT  reak
+Transmutation
+Level: Bard 1, sorcerer/wizard 2
+Components: V, S
+Casting Time: 1 standard action
+Range: Close (25 ft . + 5 ft ./2 levels)
+Target: One creature
+Duration: 1 minute/level (D)
+Saving Throw: Will negates 
+(harmless)
+Spell Resistance: Yes (harmless)
+A  tinkling  laugh  and  a  momentary 
+shine  surround  your  ally,  leaving  him 
+with  an  aura  of  confidence  and  a  sly 
+smile.
+You improve the luck of the subject 
+creature .  For  the  duration  of  the 
+spell, any reroll the subject makes 
+using  a  luck  feat  gains  a  +2  luck 
+bonus . 
+Mage burr
+Transmutation
+Level: Bard 1, hexblade 1, sorcerer/
+wizard 1
+Components: V, S
+Casting Time: 1 standard action
+Range: Close (25 ft . + 5 ft ./2 levels)
+Healer’s vision reveals a fiend’s vital spots
+Illus. by E. Deschamps
+
+101
+Cha  PT  er 4
+neW sP ells
+Target: One creature wearing 
+armor or using a shield
+Duration: 1 round/level (D)
+Saving Throw: Fortitude negates
+Spell Resistance: Yes
+Sharp ridges, split leather, and cracking 
+patches of rust spread over your enemy’s 
+armor like an angry, irritating disease.
+Jagged  edges  and  rough  surfaces 
+break  forth  all  over  the  target 
+creature’s armor and shield . These 
+protrusions deal no damage and are 
+little more than an uncomfortable 
+annoyance . Arcane spellcasters, how-
+ever, find the effect most distracting, 
+incurring double the normal arcane 
+spell failure chance for armor and 
+shields .  In  addition,  any  creature 
+affected  by  this  spell  takes  a  –5 
+penalty  on  Concentration  checks . 
+The check penalty does not worsen if 
+an affected creature is both wearing 
+armor and using a shield .
+  For  example,  a  wizard  wearing 
+chainmail and carrying a light steel 
+shield would normally have a 35% 
+chance of arcane spell failure . That 
+wizard,  if  targeted  by  this  spell, 
+would incur a 70% chance of arcane 
+spell failure, as well as taking a –5 
+penalty on Concentration checks .
+  This spell has no effect on unar-
+mored  opponents  or  on  creatures 
+with  only  natural  armor  or  an 
+AC  bonus  from  items  other  than 
+armor .
+ManIfesTaTI  on  
+of The deITY
+Illusion (Pattern) [Fear, 
+Mind-Affecting]
+Level: Cleric 2
+Components: V, S, DF
+Casting Time: 1 swift action
+Range: Personal
+Effect: An image of the deity you 
+worship
+Duration: 1 round/3 levels (D)
+Saving Throw: Will negates
+Spell Resistance: No
+As  you  invoke  the  name  of  your  deity, 
+a  towering,  spectral  image  of  the  god 
+appears  above  you,  turning  its  wrath 
+upon your foes.
+You summon a looming illusion of 
+the deity you worship, overlaid on 
+your  form .  The  divine  manifesta-
+tion appears ghostly and fearsome, 
+with its favored weapon drawn, and 
+makes threatening overtures (roar-
+ing,  spouting  scripture,  making 
+dreadful threats, and the like) . The 
+image is transparent enough that you 
+receive no concealment .
+  Any enemy who can see the effect 
+becomes shaken for 1 round . A suc-
+cessful Will save negates the effect, 
+and that creature can no longer be 
+affected by this casting of the spell . 
+No  creature  can  be  affected  more 
+than  once  by  the  same  casting  of 
+manifestation of the deity.
+MIMICrY
+Transmutation
+Level: Assassin 1, bard 1
+Components: V
+Casting Time: 1 standard action
+Range: Personal
+Target: You
+Duration: 1 minute/level
+You  feel  a  brief  tingle  in  your  throat. 
+When you open your mouth, your voice 
+is no longer your own.
+You  can  perfectly  mimic  familiar 
+sounds, voices, and accents . These 
+sounds can be any that you’ve heard 
+before, and must be within the range 
+of noises your voice is capable of cre-
+ating . For example, a normal human 
+voice  could  recreate  the  roar  of  a 
+lion—being roughly equivalent to a 
+scream—or approximate the sound 
+of  shattering  glass .  It  could  not 
+reproduce the rumble of a collaps-
+ing building or a high-pitched noise 
+audible only to bats . This spell does 
+not allow you to speak languages you 
+can’t normally speak . 
+  You can duplicate a specific indi-
+vidual’s  voice  by  making  a  Bluff 
+check; a listener familiar with the 
+voice being imitated must succeed 
+on an opposed Sense Motive check 
+to  discern  that  the  voice  is  not 
+genuine .
+oPPorTune dodge
+Abjuration
+Level: Bard 2 
+Components: V, S
+Casting Time: 1 swift action
+Range: Touch
+Target: Creature touched
+Duration: 1 round/level
+Saving Throw: Will negates 
+(harmless)
+Spell Resistance: Yes (harmless)
+Uttering  a  rapid  series  of  words  and 
+reaching out your hand, you surround 
+your comrade with a thin, blurry haze. 
+Any  time  the  subject  of  this  spell 
+might provoke attacks of opportu-
+nity, he can choose to activate this 
+spell’s effect (this does not require an 
+action) . Upon doing so, he contorts 
+or moves so swiftly as to deny one 
+opponent one attack of opportunity . 
+Because the opponent never makes 
+its  attack  of  opportunity,  its  total 
+number  of  attacks  of  opportunity 
+per round is not reduced . 
+  Once the subject negates an attack 
+of opportunity in this way, the spell 
+ends . It is possible for the subject to 
+provoke  an  attack  of  opportunity, 
+activate this spell’s effect to cancel it, 
+and then provoke and be susceptible 
+to another attack of opportunity in 
+the same round . 
+  The  subject  does  not  have  to 
+activate the spell’s effect to negate 
+the  first  attack  of  opportunity  he 
+provokes but can save the effect until 
+he chooses to use it or the duration 
+ends .
+
+102
+Cha  PT  er 4
+neW sP ells
+sC rY loCaTI  on
+Divination (Scrying)
+Level: Bard 5, cleric 7, druid 7, sor-
+cerer/wizard 6
+Components: V, S, M/DF, F
+Casting Time: 1 hour
+Range: See text
+Effect: Magical sensor
+Duration: 1 minute/level
+Saving Throw: No
+Spell Resistance: No
+At the culmination of this long ritual, 
+you  gaze  into  your  scrying  focus  and 
+stretch out your sight. The mists within 
+the reflective surface dissipate, and sud-
+denly  you  can  see  and  hear  a  familiar 
+place.
+You can see and hear what occurs 
+at  a  location,  which  can  be  at  any 
+distance on the same plane where 
+you  are  located .  You  must  make  a 
+successful caster level check (1d20 
++ your caster level) to scry a specific 
+location . The difficulty of this check 
+depends  on  how  familiar  you  are 
+with  that  location  and  what  sort 
+of physical connection (if any) you 
+have  to  that  place .  Furthermore, 
+the  difficulty  to  scry  the  desired 
+locale  increases  if  the  location  is 
+extremely far removed, indoors or 
+underground, or on another plane . 
+The  DC of  this  check  is  20  +  any 
+modifiers related to your knowledge 
+of  the  area,  your  connection  to  it, 
+and  the  location’s  distance,  as  set 
+out  in  the  following  table .  If  you 
+fail this check, the scrying attempt 
+simply fails . 
+  If the caster level check succeeds, 
+you  create  an  invisible  magical 
+sensor  in  any  location  you  desire . 
+Through this sensor you can both 
+see and hear, your vantage and range 
+of vision being the same as if you 
+were actually at that place, allowing 
+you to make Spot and Listen checks 
+as normal . You can rotate the sensor 
+as you wish, seeing in any direction 
+you  desire .  Once  the  spell  is  cast, 
+however,  you  cannot  change  the 
+position of the sensor .
+  As  with  all  divination  (scrying) 
+spells, the sensor has your full visual 
+acuity, including any magical effects . 
+In  addition,  the  following  spells 
+have a 5% chance per caster level of 
+operating through the sensor: detect 
+chaos, detect evil, detect good, detect law, 
+detect magic, and message . 
+  If the caster level check fails, you 
+can’t  attempt  to  scry  on  any  place 
+within 1 mile of that location until 
+24 hours have passed . 
+   Arcane  Material  Component: The 
+eye of a mole, a badger, or a xorn, 
+plus nitric acid, copper, and zinc . 
+ Wizard,  Sorcerer,  or  Bard  Focus:  A 
+mirror of finely wrought and highly 
+polished silver costing not less than 
+1,000 gp . The mirror must be at least 
+2 feet by 4 feet . 
+ Cleric  Focus:  A  holy  water  font 
+costing not less than 100 gp . 
+   Druid  Focus:  A  natural  pool  of 
+water . 
+Knowledge	Caster	Level	Check
+	DC	Modifier
+None
+1
+ +10 
+Secondhand (you have heard +5 
+of the location)
+Firsthand (you have been to +0 
+the location)
+Familiar (you have been to –5
+the location often)
+1    You must have some sort of 
+connection to a location you have 
+no knowledge of.
+Location	Caster	Level	Check
+	DC	Modifier
+Per 1,000 miles away +2
+Indoors or underground +2
+On another plane +10
+Connection	Caster	Level	Check	
+	DC	Modifier
+Likeness or picture –2
+An object that has been in –4
+the location for a week or more
+2
+A plant, mineral, or other –10
+object taken from the area
+2
+2    The object must have been in the 
+location within the past year.
+sIP  hon
+Transmutation
+Level: Sorcerer/wizard 3
+Components: V, S
+Casting Time: 1 minute
+Range: Touch
+Target: One touched wand or staff
+Duration: Instantaneous
+Saving Throw: None
+Spell Resistance: No
+You  leach  the  power  of  the  wand  you 
+hold,  causing  a  ghostly  stream  of  blue 
+mist  to  rise  from  the  item  and  enter 
+pqqqqqqqqqqqqqqqqqqqqrs
+pqqqqqqqqqqqqqqqqqqqqrs
+duPed
+“Only critters more greedy ’n misers are dragons. Fact, I think I 
+heard once that ‘miser’ is Elven for ‘dragon,’ but I don’t know. 
+    “Anyhow, the most miserly dragon as ever I seen were the 
+great  green,  Morxmordrex.  ’E  loved  his  gold  and  his  gems 
+like  any  dragon,  but  his  favorite  were  a  cup  o’  platinum  he 
+just adored. So I sets me eyes on winning that wee cup fer 
+meself. 
+    “In ’is sleepin’ time I sneaks in and starts movin’ bits o’ his 
+hoard into little tunnels. I don’t take nothin’, and in fact I leave 
+a few extra coins and gems layin’ about within. Then I waits for 
+’im to wake up and find ’is hoard much reduced. ’E gets a mite 
+upset, and goes rampagin’ through the forest. When he calms 
+down, I walks up to him and says, ‘I been hearin’ yer bellerin’ 
+and wonder what might make ye so mad.’ So ’e says, ‘Some thief 
+stole me hoard. Were it ye?’ I says no but that I’ll help ’im look 
+for it. 
+    “Now ’e don’t trust me rightly, but ’e’s desperate and wants 
+his treasures back. So I start by lookin’ fer tracks, ’cuz I tells ’im 
+I’m a ranger—me! A dwarf! But ’e believes me, so I pretends to 
+look. Near the end o’ the day ’e starts gettin’ mad, so I ‘finds’ 
+the loot down in a deep shaft. ’E can’t reach down in to grab 
+more’n  a  few  coins,  so  I  offers  to  go  in—fer  a  price.  Now, 
+Morxmordrex ain’t too happy ’bout that, but ’e says I can have 
+one piece o’ ’is hoard. I says the cup. 
+    “Fer a moment I thought ’e was gonna eat me right there, 
+but ’e just raged and bellered a bit afore ’e agreed. Two hours 
+later I ’ad me that wee cup and ’e ’ad him back ’is precious 
+hoard.”
+
+10 
+Cha  PT  er 4
+neW sP ells
+your body. Slowly, you feel your magical 
+energies being renewed.
+You drain the charges from 
+a  wand  or  staff  you  hold 
+to replace spells you have 
+already  cast .  As  long  as 
+the  wand  or  staff  has  at 
+least  5  charges  left,  you 
+can  expend  5  of  those 
+charges to replace a cast 
+spell . The spell replaced 
+must be of a level equal 
+to  or  lower  than  the 
+highest-level spell the 
+staff  or  wand  holds . 
+If you prepare arcane 
+spells, you can regain 
+any  one  spell  of  the 
+affected level that you 
+have already cast that 
+day; if you cast spells 
+spontaneously, you can 
+regain  a  spell  slot  of 
+the appropriate level . 
+For example, a wizard 
+who has cast her only 
+fly spell for the day (a 
+3rd-level  spell)  can 
+drain 5 charges from 
+her wand  of  fireball 
+(another  3rd-level 
+spell) to regain fly or 
+any lower-level spell 
+she has cast .
+  If  the  wand  or 
+staff  holds  enough 
+charges,  one  cast-
+ing of this spell can 
+replace   multiple 
+spells  at  once .  For 
+example, a sorcerer 
+who  has  expended 
+three  of  his  5th-
+level spell slots can 
+drain  15  charges 
+from his staff of frost 
+to  regain  all  three 
+spell slots .
+ Siphon  has  no  effect  on 
+wands  or  staffs  that  do  not 
+hold enough charges to replen-
+ish the desired number of spells .
+sM oke sT aIrs
+Transmutation [Air]
+Level: Assassin 2, druid 2
+Components: V, S, M
+Casting Time: 1 standard 
+action
+Range: Personal
+Target: You
+Duration: 1 minute/ 
+level
+You step into intangible smoke 
+and  ascend  as  nimbly  as  if  it 
+were a flight of steps.
+You  gain  the  ability 
+to  run  up  columns  of 
+smoke  as  if  they  were 
+normal  stairs .  Casting 
+this  spell  successfully 
+requires  smoke  from  a 
+natural fire large enough 
+to  fill  a  5-foot  square, 
+such as a normal camp-
+fire,  bonfire,  or  any 
+significant  amount  of 
+burning  debris  (torch 
+flames  or  creatures 
+made of fire or smoke 
+do not suffice) . 
+   After casting this 
+spell, you can move 
+into the column of 
+smoke produced by 
+such  fires  and  can 
+ascend  vertically 
+into  a  square  filled 
+with smoke . To your 
+eyes  the  smoke  co-
+alesces  into  ghostly 
+steps,  though  other 
+observers see nothing 
+different . When step-
+ping into the column 
+you are considered to 
+be in the smoke above 
+the flame and take no 
+damage  from  the  fire . 
+Every  5  feet  of  upward 
+movement costs 2 squares 
+of movement . For example, 
+an assassin with a speed of 
+30  feet  casts smoke  stairs  on 
+himself, then moves 10 feet across 
+the ground to a smoking fire and 
+An assassin uses smoke stairs  
+to make his escape
+Illus. by M. Coimbra
+
+10 
+Cha  PT  er 4
+neW sP ells
+ascends 10 feet vertically in a sin-
+gle move action . 
+   If  anything  dissipates  the  col-
+umn of smoke while you are moving 
+though it using this spell, you lose 
+your footing and fall . Examples in-
+clude  a gust  of  wind  spell  and  an 
+air  elemental’s  whirlwind  form . 
+If  the  fire  creating  the  smoke  is 
+extinguished,  the smoke  stairs  ef-
+fect  lingers  for  1  round  before 
+dispersing . 
+    Material Component: A handful of 
+dried leaves .
+sP ell ThefT
+Abjuration
+Level: Bard 4, hexblade 4, sor-
+cerer/wizard 5
+Components: V, S
+Casting Time: 1 standard action
+Range: Close (25 ft . + 5 ft ./2 levels)
+Target: One creature
+Duration: Instantaneous
+Saving Throw: None
+Spell Resistance: No
+Winding your magical grip around the 
+dweomers that augment your opponent, 
+you rip them away and feel their energy 
+rise around you.
+You attempt to steal an opponent’s 
+beneficial spell effects for yourself . 
+Upon  casting  this  spell,  you  in-
+stantly discern all spells currently 
+affecting the target (including their 
+effects) . For each spell so discerned, 
+you can make a dispel check (1d20 
++ your caster level, maximum +15) 
+against a DC of 11 + the spell’s cast-
+er level . If the check succeeds, you 
+gain the effect of the spell for the re-
+mainder of its duration, as if it had 
+been cast on you instead of the orig-
+inal target, and the opponent loses 
+that effect . 
+  Only spells capable of being dis-
+pelled can be affected by spell theft . 
+In  addition,  if  you  are  not  a  legal 
+target of the spell to be stolen, your 
+dispel check automatically fails . For 
+example, if you cast spell  theft on a 
+dire bear affected by bull’s  strength 
+and animal  growth, you could steal 
+only  the  effect  of  the  first  spell 
+unless you were also of the animal 
+type    .
+sP ore fI eld
+Transmutation
+Level: Druid 1, ranger 2
+Components: V, S, DF
+Casting Time: 1 standard action
+Range: Medium (100 ft . + 10 
+ft  ./level)
+Area: 10-ft    .-radius spread
+Duration: 1 minute/level
+Saving Throw: Fortitude partial; 
+see text
+Spell Resistance: No
+The  ground  at  which  you  point  erupts 
+with countless puffball mushrooms.
+You  cause  the  ground  to  become 
+thick with spore-ridden fungus . The 
+area affected by this spell becomes 
+difficult terrain . Entering a square 
+of  difficult  terrain  costs  2  squares 
+of movement, and creatures cannot 
+charge or run through such squares 
+(PH 148) . The uneven surface created 
+by this spell also increases the DCs 
+of Balance and Tumble checks by 5 
+and the DC of Move Silently checks 
+by 2    . 
+  In  addition,  any  creature  that 
+enters a square affected by this spell 
+bursts several mushrooms, causing 
+their choking spores to fill the air . 
+The spores render the creature sick-
+ened for 1 round (Fortitude negates) . 
+Treat the spore cloud as an inhaled 
+poison for the purpose of bonuses 
+on the save or immunity to poison . 
+Entering  more  than  one  affected 
+square during a turn doesn’t force 
+multiple saves .
+  You can cast spore field on any type 
+of ground or flooring, regardless of 
+the material that comprises it .
+sPYMas  Ter’s CoIn
+Divination (Scrying)
+Level: Bard 2, sorcerer/wizard 2
+Components: V, S, F
+Casting Time: 1 standard action
+Range: Touch
+Effect: Magical sensor
+Duration: 1 hour/level or until 
+triggered, then 1 round/level
+Saving Throw: None
+Spell Resistance: No
+You slide your finger over a coin, imbu-
+ing it with a tiny fraction of your own 
+senses.
+You  imbue  a  Fine  object  (such  as 
+a  coin,  stone,  or  other  innocuous 
+item) with a dormant magical scry-
+ing  sensor .  Anyone  attempting  to 
+detect its magical aura must succeed 
+on a caster level check (DC 15 + your 
+caster level) .
+  At any one time during the spell’s 
+duration,  as  a  standard  action  you 
+can  concentrate  upon  the  object, 
+enabling  you  to  hear  or  see  (your 
+choice) as if you were in the object’s 
+location .  This  effect  otherwise 
+functions as if you had cast clairau-
+dience/clairvoyance  in  the  object’s 
+area    . You have no control over the 
+object’s movement and gain no spe-
+cial senses . Spymaster’s coin functions 
+only on the plane of existence you 
+are currently occupying .
+  You must continue to concentrate 
+to see or hear through the spymaster’s 
+coin . If you stop concentrating, the 
+spell’s effect ends . Once activated, 
+the scrying effect of the spell lasts 
+for a maximum number of rounds 
+equal to your caster level .
+ Focus: One object of Fine size .
+Wall of ver  MI  n
+Conjuration (Creation)
+Level: Druid 3
+Components: V, S, DF
+Casting Time: 1 standard action
+Range: Close (25 ft . + 5 ft ./2 levels)
+Effect: Wall of pests whose area is 
+up to four 5-ft . squares (S)
+Duration: Concentration + 1 
+round/level
+Saving Throw: Fortitude partial; 
+see text
+Spell Resistance: Yes
+
+10 
+Cha  PT  er 4
+neW sP ells
+A wall of vermin is a disgusting and effective deterrent
+Illus. by E. Widermann
+Exuding  the  stench  of  festering  carrion, 
+waves  upon  waves  of  buzzing,  clamber-
+ing,  clicking  bugs  roil  up  from  beneath 
+the earth.
+You cause a thick but porous wall, alive 
+with hungry bugs, to buzz and scuttle 
+into existence . It provides concealment 
+in  both  directions,  imposing  a  20% 
+miss  chance  on  any  attacks  passing 
+through it . You cannot conjure the wall 
+so that it occupies the same space as  
+a creature .
+  Any living creature passing through 
+the wall is subjected to hundreds of 
+tiny bites . It takes 2d6 points of damage 
+and must succeed on a Fortitude save 
+or  be  nauseated  for  1  round .  Any 
+creature  becoming  nauseated  while 
+moving through the wall can complete 
+its  move  action,  but  cannot  take  a 
+standard action in that round .
+  The wall  of  vermin  is  immune  to 
+weapon  damage,  though  it  can  be 
+affected by area spells and effects (such 
+as burning hands or cone of cold) . It has 
+20 hit points and automatically fails 
+any save . Disintegrate has no effect on 
+a wall of vermin, since it is not a single 
+physical object, though any wind of 
+50 mph or greater breaks it up for 1 
+round . Despite its appearance, a wall 
+of vermin is not made up of natural 
+creatures,  and  thus  is  unaffected 
+by  spells  that  affect  animals  or 
+vermin .
+Wand ModulaTI  on
+Transmutation
+Level: Sorcerer/wizard 3
+Components: V, S
+Casting Time: 1 swift action
+Range: Touch
+Target: One touched wand 
+Duration: 1 minute/level (D)
+Saving Throw: Yes (harmless, 
+object) 
+Spell Resistance: Yes (harmless, 
+object)
+Manipulating  the  very  magic  that 
+infuses your wand, you alter that energy, 
+opening the magic item to a new power 
+of your choosing.
+By casting wand  modulation on the 
+target  wand  you  hold,  you  tem-
+porarily  alter  it  to  cast  a  different 
+spell .  After  casting  this  spell,  the 
+next spell you cast upon the target 
+wand affects the remaining charges, 
+allowing the wand to discharge that 
+spell instead of the one it was created 
+to cast . 
+  The  spell  cast  after wand  modu-
+lation  must  be  of  a  lower  level 
+than  the  spell  the  wand  normally 
+casts . Replacement spells cast from 
+the  affected  wand  are  cast  at  the 
+minimum  caster  level .  Each  use 
+of  an  affected  wand  now  expends 
+2  charges  from  the  wand  instead 
+of  the  usual  single  charge .  If  the 
+wand holds insufficient charges to 
+invoke the new spell, it cannot be 
+
+10 
+Cha  PT  er 4
+neW sP ells
+activated . You can’t use wand  modulation to 
+change a wand’s spell to one with a costly 
+material component or focus or with an XP 
+component, even if the original spell has a 
+similar component or focus .
+  For example, a 5th-level wizard facing an 
+angry fire elemental wishes to cast magic mis-
+sile (a 1st-level spell) from his wand of scorching 
+ray (a 2nd-level spell), which happens to have 
+a caster level of 5th . He casts wand modulation 
+and in the following round casts magic mis-
+sile . The wand can now cast magic missile as 
+a 1st-level caster (the minimum caster level), 
+but each use expends 2 charges . The wizard 
+can now use the wand to cast magic  missile 
+for 5 minutes, after which it reverts back to 
+a normal wand of scorching ray .
+WInged WaTC  her
+Transmutation (Polymorph)
+Level: Druid 1
+Components: V, S
+Casting Time: 1 swift action
+Range: Personal
+Target: You
+Duration: 1 round/level (D)
+Your body hunches and shrinks as dusky feathers 
+sprout from your skin. Your arms become wings 
+and your toes sharpen into talons.
+You take the form of an owl (MM 277) or raven 
+(MM 278), as chosen when you cast the spell . 
+Even though your Intelligence changes to 2, 
+you retain your normal ability to understand 
+your surroundings (unlike a normal animal) . 
+See the polymorph subschool description on 
+page 91 for more details .
+  As  its  name  suggests,  this  spell’s  most 
+common use is for unobtrusive observation, 
+but it also allows a druid to overcome obstacles 
+that hinder overland travel .
+With wand modulation, a wand’s wielder  
+can customize its stored spell energy
+Illus. by H. Lyon
+
+rom the fighter and his longsword to the wizard 
+with her array of material components, the 
+right equipment helps everyone work better . 
+Scoundrels are no different . This chapter pre-
+sents a wide selection of gear both mundane and 
+magical that scoundrels of all types can employ in their 
+varied practices . 
+  Equipment for scoundrels takes into account their 
+distinctive needs, such as blending in and keeping them-
+selves or objects in their possession hidden from the 
+authorities . Many of the items presented in this chap-
+ter can keep a scoundrel out of a fight by concealing 
+weapons, slaves, or contraband—even in the face of 
+magical detection .
+  The chapter also includes a variety of alchemical items 
+and magic items meant to give a scoundrel an edge when 
+he needs it . New and interesting poisons have a wide range 
+of specialized effects to help a scoundrel accomplish his 
+goals without a lot of bloodshed .
+  Ever adaptable, scoundrels make use of whatever items 
+are at hand . Sometimes those items aren’t objects at all . 
+Whether out of desperation or by design, scoundrels have 
+discovered the usefulness of certain living creatures . This 
+chapter concludes with descriptions of a few of the most 
+common of these living items .
+hI  dden sPaCes
+Most scoundrels make a living through smuggling at 
+some point in their careers . Those who specialize in 
+covert transportation have developed a number of tricks, 
+techniques, and items to help them in their profession . 
+Such items are also useful to anyone who has something 
+she doesn’t want someone else to see—from greedy 
+merchants attempting to avoid taxes to slavers trying 
+to get their “goods” out of a nation . Most of the time, 
+however, people hide their possessions for far less 
+nefarious purposes, or even to avoid falling prey to 
+nefarious activities . Hidden spaces are often used to 
+store valuables or commodities, keeping the goods 
+therein away from the prying eyes and nimble 
+fingers of the local criminal element . Regardless of 
+their uses or intent, these spaces exist in a variety 
+of forms . 
+  The size of a hidden space provides a rough 
+indication of its volume and defines the largest 
+object or creature that could reasonably be hidden 
+within the space .
+  As a general rule, for the purpose of this dis-
+cussion, objects held or worn by creatures are said 
+to be of the same size as the creature in question . 
+For example, a weapon or a piece of clothing sized 
+for a Medium creature is a Medium object for the 
+10 
+Illus. by D. Bircham
+
+10 

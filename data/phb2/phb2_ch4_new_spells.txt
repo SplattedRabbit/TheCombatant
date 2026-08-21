@@ -1,0 +1,4292 @@
+CHAPTER 4
+NEW SPELLS
+such as the sleep spell, though it uses the new form’s base 
+attack  bonus,  base  save  bonuses,  and  all  other  statistics  
+derived from Hit Dice.
+•   The target retains the ability to understand the languages 
+it  understands  in  its  normal  form.  If  the  new  form  is  
+normally capable of speech, the target retains the ability 
+to speak these languages as well. It can write in the lan-
+guages it understands, but only if the new form is capable 
+of writing in some manner (even a primitive manner, such 
+as drawing in the dirt with a paw).
+In  all  other  ways,  the  target’s  normal  game  statistics  are  
+effectively replaced by those of the new form. The target loses 
+all of the special abilities it has in its normal form, including 
+its class features (even if the new form would normally be 
+able to use these class features). 
+     If the new form’s size is different from the target’s normal 
+size, its new space must share as much of the original form’s 
+space as possible, squeezing into the available space (see PH 
+148) if necessary. If insuffi  cient space exists for the new form, 
+the spell fails.
+     A ny gear wor n or car r ied by the target melds into the new 
+form and becomes nonfunctional. When the target reverts 
+to its true form, any objects previously melded into the new 
+for m reappear i n the same locat ion on its body they prev iously 
+occupied and are once again functional. Any new items worn 
+in the assumed form fall off and land at the target’s feet. 
+     The spellcaster can freely designate the new form’s minor 
+physical qualities (such as hair color and skin color) within 
+the normal ranges for a creature of that kind. The new form’s 
+signifi cant physical qualities (such as height, weight, and 
+gender) are also under the spellcaster’s control, but they must 
+fall within the norms for the new form’s kind. The target of 
+a polymorph spell is effectively camoufl  aged as a creature of 
+its new form, and gains a +10 bonus on Disguise checks if it 
+uses this ability to create a disguise. 
+     If the target of a polymorph spell is slain or rendered uncon-
+scious, the spell ends. Any part of the body that is separated 
+from the whole remains polymorphed until the effect ends.
+     Incorporeal or gaseous creatures are immune to polymorph 
+spells, as are creatures of the plant type. A creature with the 
+shapechanger subtype (such as a lycanthrope or doppelganger) 
+can revert to its natural form as a standard action.
+Spells That Have Come Before
+For the purpose of adjudicating effects that apply to poly-
+morph spells, any spell whose effect is based on either alter 
+self or polymorph should be considered to have the poly mor ph 
+subschool. However, note that the spells’ existing rules text 
+takes priority over that of the subschool. Alter self, for instance, 
+does not change the target’s ability scores (unlike normal for 
+spells of the polymorph subschool). 
+ASSASSIN SPELLS
+1st-Level Assassin Spell
+Blade of Blood: Weapon deals +1d6 damage, or +3d6 if you 
+take 5 points of damage.
+2nd-Level Assassin Spell
+Increase Virulence: Poison’s DC increases by 2.
+BARD SPELLS
+1st-Level Bard Spells
+Share Talents: Subjects gain +2 bonus on skill checks.
+Stay the Hand: Change subject creature’s attitude to helpful 
+for 1 round.
+2nd-Level Bard Spells
+Blade  Brothers:  Use  higher  saving  throw  result  between  
+two creatures, but both suffer effects if the saves fail.
+Celerity,  Lesser:  Take  a  move  action  immediately,  but  be  
+dazed for a round.
+Crown  of  Veils: Gain +2 to Disguise and Hide, discharge 
+to gain +8.
+Increase Virulence: Poison’s DC increases by 2.
+Insight of Good Fortune
+M
+: Subject rolls twice, takes best 
+result.
+Master’s  Touch:  Subject  gains  immediate  +4  bonus  on  a  
+skill check.
+Ray of the Python: Creature can only attack once per round, 
+cannot make attacks of opportunity,–10 ft. penalty to speed.
+Stretch Weapon: Melee weapon gains 5 ft. of reach for one 
+attack.
+Ve r t i g o : Subject creature must succeed on a DC 10 Balance 
+check to move each round.
+3rd-Level Bard Spells
+Alter Fortune
+X
+: Cause one creature to reroll any die roll.
+Halt: Subject’s feet become stuck to ground.
+Hesitate: Force subject to lose actions.
+Phantom  Battle: Illusion of battle fl anks creatures and 
+denies attacks of opportunity.
+Sonic Shield: +4 defl  ection bonus to AC; 1d8 sonic damage 
+and push back creatures that hit you in melee.
+4th-Level Bard Spells
+Baleful Blink: Subject has 50% chance of failure on attacks 
+and spells.
+Celerity: Take a standard action immediately, but be dazed 
+for a round.
+Healing Spirit: Ball of light heals 1d8/round.
+Mirror Image, Greater: As mirror image, but gain an addi-
+tional image each round.
+Thunder Field: Creatures in area take 1d8 sonic damage/
+round, knocked prone.
+5th-Level Bard Spells
+Dance of Blades: A weapon attacks on its own.
+Friend to Foe: Make subject creature believe its allies are 
+its enemies.
+Incite Riot: Subjects attack nearest creature.
+Magic  Convalescence:  Spells cast nearby heal you 1 
+hp/spell level.
+Renewed Vigor: Remove fatigue and +2 bonus to Constitu-
+tion for 1 round/level.
+620_95374_Ch4.indd   96620_95374_Ch4.indd   962/8/06   4:01:23 PM2/8/06   4:01:23 PM
+
+97
+CHAPTER 4
+NEW SPELLS
+BEGUILER SPELLS
+1st-Level Beguiler Spells
+Rouse: Awakens creatures in area.
+Whelm: Deal 1d6 nonlethal damage +1d6/2 levels above 
+1st (max 5d6).
+2nd-Level Beguiler Spells
+Blinding  Color  Surge:  Blind  subject  for  1  round,  gain  
+invisibility.
+Stay the Hand: Change subject creature’s attitude to helpful 
+for 1 round.
+Ve r t i g o : Subject creature must succeed on a DC 10 Balance 
+check to move each round.
+Whelming Blast: 15-foot cone deals 1d6 nonlethal damage/2 
+levels (max 5d6).
+3rd-Level Beguiler Spells
+Crown of Veils: Gain +2 to Disguise and Hide, discharge 
+to gain +8.
+Halt: Subject’s feet become stuck to ground.
+Hesitate: Force subject to lose actions.
+Inevitable Defeat: Subject takes 3d6 nonlethal damage/
+round.
+Legion of Sentinels: Ghostly swordsmen threaten a 10-foot 
+radius, deal 1d8 damage +1/3 levels (max +5).
+Ve r t i g o  Fi e ld : Creatures have 20% miss chance and possibly 
+become nauseated.
+4th-Level Beguiler Spells
+Mirror Image, Greater: As mirror image, but gain an addi-
+tional image each round.
+Phantom Battle: Illusion of battle flanks creatures and 
+denies attacks of opportunity.
+Whelm, Mass: 1d6 nonlethal damage/level (max 10d6) to 
+1 creature/level.
+5th-Level Beguiler Spells
+Etherealness,   Swift:   Subject  momentarily  becomes  
+ethereal.
+Friend to Foe: Make subject creature believe its allies are 
+its enemies.
+Incite Riot: Subjects attack nearest creature.
+6th-Level Beguiler Spell
+Overwhelm: Nonlethal damage knocks out subject.
+BLACKGUARD SPELLS
+1st-Level Blackguard Spell
+Blade of Blood: Weapon deals +1d6 damage, or +3d6 if you 
+take 5 points of damage.
+2nd-Level Blackguard Spell
+Increase Virulence: Poison’s DC increases by 2.
+CLERIC SPELLS
+1st-Level Cleric Spells
+Blade of Blood: Weapon deals +1d6 damage, or +3d6 if you 
+take 5 points of damage.
+Invest Light Protection: Heal 1d4 damage + 1/2 levels, 
+grant DR 1/evil.
+2nd-Level Cleric Spells
+Animalistic  Power:  Subject  gains  +2  bonus  to  Str,  Dex,  
+and Con.
+Black  Karma  Curse:  Subject  damages  self  with  melee  
+attack.
+Blade  Brothers:  Use  higher  saving  throw  result  between  
+two creatures, but both suffer effects if the saves fail.
+Cloud  of  Knives:  Release  one  knife/round,  1d6  damage  
++1/3 levels (max +5).
+Insight of Good Fortune
+M
+: Subject rolls twice, takes best 
+result.
+Mark of Judgment: Creatures that attack subject heal 2 
+points of damage each successful hit.
+Master’s  Touch:  Subject  gains  immediate  +4  bonus  on  a  
+skill check.
+Share Talents: Subjects gain +2 bonus on skill checks.
+Stay the Hand: Change subject creature’s attitude to helpful 
+for 1 round.
+Stretch Weapon: Melee weapon gains 5 ft. of reach for one 
+attack.
+3rd-Level Cleric Spells
+Alter Fortune
+X
+: Cause one creature to reroll any die roll.
+Channeled  Divine  Shield:  Gain  DR,  amount  based  on  
+casting time.
+Crown of the Grave: Command undead, discharge to gain 
++4 on turn or rebuke.
+Crown  of  Might: Gain +2 Strength, discharge to gain +8 
+bonus for 1 round.
+Crown of Protection: +1 defl ection bonus to AC, +1 resis-
+tance bonus on saves; discharge to gain +4 for 1 round.
+Crown of Smiting
+F
+: +2 damage bonus, discharge to gain + 8 
+damage on single attack.
+Curse of Arrow Attraction: Subject takes –5 penalty to AC 
+against ranged attacks.
+Divine Retaliation: Weapon appears and strikes those 
+who attack you.
+Energy Aegis: Subject gains resistance 20 against one energy 
+type for one attack.
+Energy  Vulnerability:  Subjects  gain  vulnerability  to  the  
+specifi  ed  energy.
+Hesitate: Force subject to lose actions.
+Invest Moderate Protection: Heal 3d4 damage + 1/2 levels, 
+grant DR 3/evil.
+Mark of Doom: Subject takes 1d6 damage for each hostile 
+action.
+4th-Level Cleric Spells
+Bleakness: 1d6 damage/round to living creatures, grants 
+undead turn resistance and fast healing.
+620_95374_Ch4.indd   97620_95374_Ch4.indd   972/8/06   4:01:29 PM2/8/06   4:01:29 PM
+
+98
+CHAPTER 4
+NEW SPELLS
+Blessing of the Righteous: We a p o n s  d e a l  +1d 6  holy  d a m a ge  
+and become good-aligned.
+Channeled  Divine  Health:  Heal  a  creature,  amount  and  
+range based on casting time.
+Healing Spirit: Ball of light heals 1d8/round.
+Mystic  Aegis:  You  gain  SR  12  +  caster  level  against  one  
+spell.
+Stifl  e  Spell:  Subject must concentrate or botch spell.
+5th-Level Cleric Spells
+Condemnation:  Lowers  subject  outsider’s  SR  and  stuns  
+for 1 round.
+Etherealness,   Swift:   Subject  momentarily  becomes  
+ethereal.
+Invest  Heavy  Protection:  Heal  5d4  damage  +  1/2  levels,  
+grant DR 5/evil.
+Magic  Convalescence:  Spells cast nearby heal you 1 
+hp/spell level.
+Mana Flux: Magic in area has 20% failure chance.
+Meteoric Strike: Melee attack deals an extra 1d6 damage + 
+1d6/4 levels; adjacent creatures take half damage.
+Radiance: Creates daylight that dazzles undead.
+Renewed Vigor: Remove fatigue and +2 bonus to Constitu-
+tion for 1 round/level.
+6th-Level Cleric Spell
+Chasing Perfection
+M
+: Subject gains +4 to all abilities.
+7th-Level Cleric Spells
+Animalistic Power, Mass: As animalistic power, but multiple 
+subjects.
+Plague: One  creature/level  contracts  quickly  terminal  
+disease.
+Pulse of Hate: Nearby enemies take 2d6 damage/round.
+Righteous  Burst
+M
+: Allies  healed,  enemies  damaged  1d8  
+damage +1/level (max +35).
+8th-Level Cleric Spells
+Chain Dispel: Dispel multiple magical effects in multiple 
+creatures.
+Visions of the Future: +2 sacred bonus on saves, +2 dodge 
+bonus to AC; discharge spell to gain bonus equal to half 
+caster level.
+9th-Level Cleric Spell
+Summon Golem: Summon a clay, fl  esh, iron, or stone golem 
+from a small amount of like material.
+DRUID SPELLS
+2nd-Level Druid Spells
+Animalistic Power: Subject  gains  +2  bonus  to  Str,  Dex,  
+and Con.
+Drifts of the Shalm: Create diffi  cult terrain made of snow, 
+leaves, or ash.
+Linked Perception: Allies gain +2 bonus/ally in spell area 
+on Listen and Spot checks.
+3rd-Level Druid Spells
+Alter Fortune
+X
+: Cause one creature to reroll any die roll.
+Crown  of  Clarity:  +2  to  Listen  and  Spot,  discharge  spell  
+to gain +8.
+Evard’s Menacing Tentacles: Grow two tentacles with 10-ft. 
+reach that deal 1d8 damage each.
+4th-Level Druid Spells
+Call of Stone: Slowly turn subject to stone.
+Healing Spirit: Ball of light heals 1d8/round.
+Meteoric Strike: Melee attack deals an extra 1d6 damage + 
+1d6/4 levels; adjacent creatures take half damage.
+Renewed Vigor: Remove fatigue and +2 bonus to Constitu-
+tion for 1 round/level.
+5th-Level Druid Spells
+Blood  Creepers:  Vines  deal  1/level  damage  for  multiple  
+rounds and entangle one creature.
+Longstrider. Mass: Allies within 60 ft. gain +10 ft. bonus 
+to speed.
+Magic  Convalescence:  Spells cast nearby heal you 1 
+hp/spell level.
+Radiance: Creates daylight that dazzles undead.
+6th-Level Druid Spells
+Bones of the Earth: Create pillars of stone.
+Chasing Perfection
+M
+: Subject gains +4 to all abilities.
+Thunder  Field:  Creatures  in  area  take  1d8  sonic  damage/
+round, knocked prone.
+7th-Level Druid Spells
+Animalistic Power, Mass: As animalistic power, but multiple 
+subjects.
+As the Frost: Transform into a creature of cold.
+Plague: One  creature/level  contracts  quickly  terminal  
+disease.
+Wrack Earth: Deals 1d6 damage/level (max 15d6) to crea-
+tures in a line and creates a wall of rubble.
+DUSKBLADE SPELLS
+1st-Level Duskblade Spells
+Bigby’s Tripping Hand: Hand trips subject.
+Blade of Blood: Weapon deals +1d6 damage, or +3d6 if you 
+take 5 points of damage.
+Defl  ect,  Lesser:  Gain a defl  ection bonus of +1/3 levels (ma x 
++5) against one attack.
+Kelgore’s  Fire  Bolt: 1d6 fire damage/level (max 5d6), 
+partially ignore SR.
+Rouse: Awakens creatures in area.
+Stand: Subject stands up from prone.
+2nd-Level Duskblade Spells
+Animalistic Power: Subject  gains  +2  bonus  to  Str,  Dex,  
+and Con.
+Bigby’s Striking Fist: Hand deals 1d6 nonlethal damage/2 
+levels (max 5d6) and knocks subject back.
+Defl  ect: Gain bonus to AC for one attack.
+620_95374_Ch4.indd   98620_95374_Ch4.indd   982/8/06   4:01:36 PM2/8/06   4:01:36 PM
+
+99
+CHAPTER 4
+NEW SPELLS
+Dimension Hop: Teleport subject short distance.
+Seeking Ray: Ray deals 4d6 electricity damage, ignores 
+concealment and cover; you gain +4 on attacks with rays 
+against the subject.
+Stretch Weapon: Melee weapon gains 5 ft. of reach for one 
+attack.
+Sure Strike: Gain +1 bonus/3 levels on next attack.
+3rd-Level Duskblade Spells
+Crown  of  Might: Gain +2 Strength, discharge to gain +8 
+bonus for 1 round.
+Crown of Protection: +1 defl ection bonus to AC, +1 resis-
+tance bonus on saves; discharge to gain +4 for 1 round.
+Dispelling  Touch:  Dispel  one  magical  effect  on  touched  
+subject.
+Doom Scarabs: Scarab swarm deals 1d6/2 levels, gives you 
+temporary hit points.
+Energy Aegis: Subject gains resistance 20 against one energy 
+type for one attack.
+Energy Surge: As lesser energy surge, but 2d6 damage.
+Halt: Subject’s feet become stuck to ground.
+Regroup: Teleports nearby allies to your side.
+4th-Level Duskblade Spells
+Channeled Pyroburst: Deal fi  re damage, amount and radius 
+based on casting time.
+Toxic Weapon: Coats weapon with poison.
+5th-Level Duskblade Spells
+Slashing Dispel: As dispel magic, but creatures take damage 
+for spells dispelled.
+Sonic Shield: +4 defl  ection bonus to AC; 1d8 sonic damage 
+and push back creatures that hit you in melee.
+PA L ADIN SPEL L S
+2nd-Level Paladin Spells
+Crown of Smiting
+F
+: +2 damage bonus, discharge to gain + 8 
+damage on single attack.
+Mark of Doom: Subject takes 1d6 damage for each hostile 
+action.
+3rd-Level Paladin Spell
+Healing Spirit: Ball of light heals 1d8/round.
+4th-Level Paladin Spells
+Blessing of the Righteous: We a p o n s  d e a l  +1d 6  holy  d a m a ge  
+and become good-aligned.
+Divine Retaliation: Weapon appears and strikes those 
+who attack you.
+Meteoric Strike: Melee attack deals an extra 1d6 damage + 
+1d6/4 levels; adjacent creatures take half damage.
+RANGER SPELLS
+1st-Level Ranger Spell
+Linked Perception: Allies gain +2 bonus/ally in spell area 
+on Listen and Spot checks.
+2nd-Level Ranger Spells
+Animalistic Power: Subject  gains  +2  bonus  to  Str,  Dex,  
+and Con.
+Crown of Clarity: +2 to Listen and Spot, discharge spell 
+to gain +8.
+Curse of Arrow Attraction: Subject takes –5 penalty to AC 
+against ranged attacks.
+Hunter’s Eye: Gain +1d6 snea k at tack damage/3 caster levels 
+for 1 round.
+Share Talents: Subjects gain +2 bonus on skill checks.
+4th-Level Ranger Spell
+Longstrider. Mass: Allies within 60 ft. gain +10 ft. bonus 
+to speed.
+SORCERER/WIZARD SPELLS
+1st-Level Sorcerer/Wizard Spells
+Abjur Defl  ect,  Lesser:  Gain a defl ection bonus of +1/3 
+levels (max +5) against one attack.
+Conj Stand: Subject stands up from prone.
+ Kelgore’s Fire Bolt: 1d6 fi  re damage/level (max 5d6), 
+partially ignore SR.
+Ench Rouse: Awakens creatures in area.
+ Whelm: Deal 1d6 nonlethal damage +1d6/2 levels 
+above 1st (max 5d6).
+Evoc Bigby’s Tripping Hand: Hand trips subject.
+ Kelgore’s Fire Bolt: 1d6 fi  re damage/level (max 5d6), 
+partially ignore SR.
+Necro Blade of Blood: Weapon deals +1d6 damage, or +3d6 
+if you take 5 points of damage.
+Trans Burning  Rage:  Subject  takes  4  points  of  damage/
+round, gains attack bonus and DR.
+2nd-Level Sorcerer/Wizard Spells
+Abjur Defl  ect: Gain bonus to AC for one attack.
+               Dispelling               Touch:  Dispel  one  magical  effect  on  
+touched subject.
+Conj Cloud of Knives: Release one knife/round, 1d6 
+damage +1/3 levels (max +5).
+               Dimension               Hop:               Teleport subject short distance.
+ Kelgore’s Grave Mist: 1d6 cold damage/level, cause 
+fatigue, partially ignore SR.
+Div Insight  of  Good  Fortune
+M
+: Subject  rolls  twice,  
+takes best result.
+               Master’s               Touch:               Subject gains immediate +4 bonus 
+on a skill check.
+               Sure               Strike:               Gain +1 bonus/3 levels on next attack.
+Ench Black  Karma  Curse:  Subject  damages  self  with  
+melee attack.
+ Stay the Hand: Change subject creature’s attitude 
+to helpful for 1 round.
+               Whelming               Blast: 15-foot cone deals 1d6 nonlethal 
+damage/2 levels (max 5d6).
+Evoc Bigby’s Striking Fist: Hand deals 1d6 nonlethal 
+damage/2 levels (max 5d6) and knocks subject back.
+ Bigby’s  Warding  Hand:  Hand  of  force  slows  
+opponent.
+620_95374_Ch4.indd   99620_95374_Ch4.indd   992/8/06   4:01:43 PM2/8/06   4:01:43 PM
+
+CHAPTER 4
+NEW SPELLS
+ Electric Vengeance: 2d8 damage +1/level (max +10) 
+to opponent who damages you in melee.
+               Seeking               Ray:  Ray  deals  4d6  electricity  damage,  
+ignores  concealment  and  cover;  you  gain  +4  on  
+attacks with rays against the subject.
+Illus Blinding  Color  Surge:  Blind  subject  for  1  round,  
+gain invisibility.
+ Ve r t i g o : Subject creature must succeed on a DC 10 
+Balance check to move each round.
+Necro Kelgore’s Grave Mist: 1d6 cold damage/level, cause 
+fatigue, partially ignore SR.
+Trans Animalistic Power: Subject gains +2 bonus to Str, 
+Dex, and Con.
+               Celerity,               Lesser:               Take a move action immediately, 
+but be dazed for 1 round.
+ Energy Surge, Lesser: One attack deals an extra 1d6 
+energy damage.
+               Increase               Virulence:               Poison’s DC increases by 2.
+               Share               Talents: Subjects gain +2 bonus on skill 
+checks.
+               Stretch               Weapon:               Melee weapon gains 5 ft. of reach 
+for one attack.
+3rd-Level Sorcerer/Wizard Spells
+Abjur Energy  Aegis:  Subject  gains  resistance  20  against  
+one energy type for one attack.
+ Energy Vulnerability: Subjects gain vulnerability 
+to the specifi  ed  energy.
+Conj Dimension Step: Allies can immediately teleport 
+a distance equal to their speed.
+               Luminous               Assassin,               Lesser:               Summons an assassin 
+to attack the subject.
+  Melf ’s  Unicorn  Arrow
+F
+:  1d8+ 8  damage  and  bul l  
+rush; +1 unicorn arrow/3 levels beyond 5th.
+               Regroup:               Teleports nearby allies to your side.
+               Scattering               Trap:               Imbue one 5-ft. square/2 levels 
+with teleport trap.
+Div Alter Fortune
+X
+: Cause one creature to reroll any 
+die roll.
+ Crown of Clarity: +2 to Listen and Spot, discharge 
+spell to gain +8.
+Ench Hesitate: Force subject to lose actions.
+ Inevitable Defeat: Subject takes 3d6 nonlethal 
+damage/round.
+Evoc Bigby’s Disrupting Hand: Hand disrupts oppo-
+nent’s spellcasting.
+ Prismatic  Mist:  Multicolored  mist  has  random  
+effect.
+ Ray of the Python: Creature can only attack once 
+per round, cannot make attacks of opportunity,–10 
+ft. penalty to speed.
+Illus Legion of Sentinels: Ghostly swordsmen threaten 
+a  10-foot  radius,  deal  1d8  damage  +1/3  levels  (max  
++5).
+ Ve r t i g o  Fi e l d : Creatures have 20% miss chance and 
+possibly become nauseated.
+Necro Crown of the Grave: Command undead, discharge 
+to gain +4 on turn or rebuke.
+Trans Crown  of  Might:  Gain  +2  Strength,  discharge  to  
+gain +8 bonus for 1 round.
+ Crown of Protection: +1 defl  ection bonus to AC, 
++1 resistance bonus on saves; discharge to gain +4 
+for 1 round.
+ Curse of Arrow Attraction: Subject takes –5 penalty 
+to AC against ranged attacks.
+               Energy               Surge:               As lesser energy surge, but 2d6 damage.
+ Evard’s Menacing Tentacles: Grow two tentacles 
+with 10-ft. reach that deal 1d8 damage each.
+               Halt:               Subject’s feet become stuck to ground.
+4th-Level Sorcerer/Wizard Spells
+Abjur    Condemnation:  Lowers  subject  outsider’s  SR  and  
+stuns for 1 round.
+               Slashing               Dispel: As dispel magic, but creatures take 
+damage for spells dispelled.
+               Stif le               Spell:               Subject  must  concentrate  or  botch  
+spell.
+Conj Bright Worms: Fiery worms damage enemies within 
+20-ft. spread.
+               Doom               Scarabs: Scarab swarm deals 1d6/2 levels, 
+gives you temporary hit points.
+ Explosive Rune FieldM: A rea is covered w ith r unes 
+that explode on contact with creatures.
+Ench Whelm, Mass: 1d6 nonlethal damage/level (max 
+10d6) to 1 creature/level.
+Evoc Bleakness: 1d6 damage/round to living creatures, 
+grants undead turn resistance and fast healing.
+ Channeled Pyroburst: Deal fi  re  damage,  amount  
+and radius based on casting time.
+               Crushing               Grip: Subject takes –2 on attacks, checks, 
+saves, and AC and –20 ft. penalty to speed, might be 
+paralyzed.
+               Slashing               Dispel: As dispel magic, but creatures take 
+damage for spells dispelled.
+Illus Crown  of  Veils:  Gain  +2  to  Disguise  and  Hide,  
+discharge to gain +8.
+ Mirror Image, Greater: As mirror  image,  but  gain  
+an additional image each round.
+               Phantom               Battle: Illusion of battle fl  anks  creatures  
+and denies attacks of opportunity.
+Necro Doom  Scarabs:  Scarab  swarm  deals  1d6/2  levels,  
+gives you temporary hit points.
+Trans Baleful Blink: Subject has 50% chance of failure on 
+attacks and spells.
+ Call of Stone: Slowly turn subject to stone.
+               Celerity:               Take a standard action immediately, but be 
+dazed for a round.
+               Trollshape:               You take on the form and abilities of 
+a troll.
+Univ Mystic Surge: Ally’s spell gains +2 DC and +1 caster 
+level.
+5th-Level Sorcerer/Wizard Spells
+Abjur Field of Resistance: Zone provides SR 11 + caster 
+level.
+ Mana Flux: Magic in area has 20% failure chance.
+620_95374_Ch4.indd   100620_95374_Ch4.indd   1002/8/06   4:01:50 PM2/8/06   4:01:50 PM
+
+101
+CHAPTER 4
+NEW SPELLS
+Alter Fortune
+Divination
+Level: Bard 3, cleric 3, druid 3, sorcerer/
+wizard 3
+Components: V,   X
+Casting Time: 1 immediate action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature
+Duration: Instantaneous
+Saving Throw: None
+Spell Resistance: No
+With a single utterance, you create a momen-
+tary distortion that engulfs and confounds 
+your foe.
+You change the fl  ow of chance, causing 
+the  subject  to  immediately  reroll  any  
+die roll it just made. It must abide by 
+the second roll.
+ XP Cost: 200 XP.
+Animalistic Power
+Transmutation
+Level: Cleric  2,  druid  2,  duskblade  2,  
+ranger 2, sorcerer/wizard 2
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Touc h
+Target: Creature touched
+Duration: 1 minute/level
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+A  sparkling  nimbus  of  green  light  
+appears around the creature. As the light 
+fades, the creature seems a shade larger 
+and  assumes  a  more  animalistic,  even  
+feral countenance.
+You imbue the subject with an aspect 
+of the natural world. The subject gains 
+a +2 enhancement bonus to Strength, 
+Dexterity, and Constitution.
+ Material Component: A bit of animal 
+fur, feathers, or skin.
+Animalistic Power, Mass
+Transmutation
+Level: Cleric  7,  druid  7,  sorcerer/
+wizard 7
+Range: Close (25 ft. + 5 ft./2 levels)
+Targets: One creature/level, no two of 
+which are more than 30 ft. apart
+This spell functions like animalistic 
+power, except that it affects multiple 
+creature.
+As the Frost
+Transmutation [Cold]
+Level: Druid 7, sorcerer/wizard 7
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Personal
+Target: You
+Duration: 1 round/level
+With  a  crystalline  tinkling,  your  body  
+transforms  into  a  fi  gure  of  ice  and  cold,  
+your  equipment  melding  into  your  new  
+form.  Your  skin  becomes  brilliant  blue  
+and transparent, with glimpses of liquid 
+beneath.  Frost  forms  across  your  hands  
+and  arms,  dripping  down  to  form  knife-
+like icicles. Your breath hisses white in the 
+bitterly cold air surrounding you. Snow 
+swirls about you as your presence freezes 
+the air’s moisture. Ice crystals spread from 
+your footprints.
+Your creature type changes to out-
+sider.  Unlike  other  outsiders,  you  
+can be brought back to life if you die 
+in this form.
+     You gain the following qualities and 
+abilities:
+•   Immunity   to   cold.
+•   Damage  reduction  10/magic  and  
+piercing.
+•   At the beginning of your action, crea-
+tures within 15 feet of you take 2d6 
+points of cold damage per round. A 
+creat ure that ta kes damage from this 
+effect  must  make  a  Fortitude  save  
+(DC 17 + your key ability modifi  er)  
+Conj Dimension  Shuffl  e:  Teleport  multiple  creatures  
+short distances within line of sight.
+ Luminous Assassin: As lesser luminous assassin, but 
+the assassin is more powerful.
+               Toxic               Weapon:               Coats weapon with poison.
+Ench Incite Riot: Subjects attack nearest creature.
+Evoc Electric Vengeance, Greater: As electric vengeance, but 
+5d8 damage +1/level (max +15) and daze subject.
+ Radiance: Creates daylight that dazzles undead.
+               Sonic               Shield: +4 defl  ection bonus to AC; 1d8 sonic 
+damage and push back creatures that hit you in melee.
+Illus Friend  to  Foe:  Make  subject  creature  believe  its  
+allies are its enemies.
+Trans Dance of Blades: A weapon attacks on its own.
+ Etherealness, Swift: Subject momentarily becomes 
+ethereal.
+6th-Level Sorcerer/Wizard Spells
+Ench Overwhelm: Nonlethal damage knocks out subject.
+Evoc Thunder Field: Creatures in area take 1d8 sonic 
+damage/round, knocked prone.
+Trans Chasing Perfection
+M
+: Subject gains +4 to all abilities.
+ Energy  Surge,  Greater:  As energy  surge,  but  3d6  
+damage.
+7th-Level Sorcerer/Wizard Spells
+Conj Luminous Assassin, Greater: As luminous assassin, 
+but the assassin is more powerful.
+Necro Pulse of Hate: Nearby enemies take 2d6 damage/
+round.
+Trans    Animalistic    Power,    Mass:    As animalistic power, but 
+multiple subjects.
+               As               the               Frost:               Transform into a creature of cold.
+8th-Level Sorcerer/Wizard Spells
+Abjur Chain  Dispel:  Dispel  multiple  magical  effects  in  
+multiple creatures.
+Necro Plague: One creature/level contracts quickly termi-
+nal disease.
+Trans Celerity, Greater: Take a full-round action immedi-
+ately, but be dazed for a round.
+9th-Level Sorcerer/Wizard Spells
+Conj Summon  Golem:  Summon  a  clay,  fl  esh,  iron,  or  
+stone golem from a small amount of like material.
+Evoc Detonate: Slays subject and creates 20-ft.-radius 
+explosion that deals 1d6 damage/level (max 20d6).
+Trans Dragonshape: You take on the form and abilities of 
+a Huge red dragon.
+620_95374_Ch4.indd   101620_95374_Ch4.indd   1012/8/06   4:01:56 PM2/8/06   4:01:56 PM
+
+102
+CHAPTER 4
+NEW SPELLS
+or be slowed, as the slow 
+spell, for the remaining 
+duration  of  as  the  frost.
+Spell resistance applies 
+to this effect.
+Material Component: A chunk 
+of ice or crystal.
+Baleful Blink
+Transmutation
+Level: Bard 4, sorcerer/wizard 4
+Components: V
+Casting  Time:  1  standard  
+action
+Range: Close  (25  ft.  +  5  ft./2  
+levels)
+Target: One creature
+Duration: 1 round/level
+Saving   Throw:   Fortitude 
+negates
+Spell Resistance: No
+You cause the creature to wink in and out of 
+existence erratically, much to its chagrin.
+You curse one creature to a frustrating 
+existence on the edge of the Ethereal 
+Plane. The subject shimmers between 
+the  Ethereal  Plane  and  the  Material  
+Plane, has a 50% miss chance on any 
+melee or ranged attacks (as if the target 
+of  the  attack  had  total  concealment),  
+and there is a 50% chance that any spell 
+she casts does not have an ef fect on the 
+desired plane while she blinks between 
+the planes.
+    Because the magic of the spell only 
+causes  the  subject  to  blink  when  
+attacking or casting, attackers have 
+no miss chance against her, and spells 
+cast  against  her  affect  her  normally.  
+Because the blinking is so rapid, she 
+cannot attempt to blink through walls 
+or move in the Ethereal Plane.
+     The subject of a baleful blink spell can 
+cast spells on itself with impunity; in 
+this case, it has no miss chance because 
+the  target  of  its  spell  (itself )  travels  
+along with the spell. The subject can 
+also  target  creatures  on  the  Ethereal  
+Plane,  but  still  has  a  50%  chance  of  
+failure  on  attacks  and  spells.  Spells  
+with the force descriptor are unaffected 
+by the effect of baleful blink.
+Bigby’s Disrupting Hand
+Evocation [Force]
+Level: Sorcerer/wizard 3
+Components: V,   S ,   F
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Effect: One hand of force
+Duration: 1 minute (D)
+Saving Throw: None
+Spell Resistance: Yes
+A small, spectral human hand springs into 
+existence before your target. It hovers in the 
+air, ready to deliver a backhanded blow.
+Like Bigby’s interposing hand, this spell 
+creates a magical construct in the form 
+of  a  human  hand.  The  hand  targets  a  
+single opponent of your choice w ithin 
+range. You choose this opponent as you 
+cast the spell. You can target a different 
+opponent with this spell by taking a 
+move action to do so.
+    When the subject of Bigby’s disrupt-
+ing  hand  attempts  to  cast  a  spell,  the  
+hand punches him. This attack causes 
+no damage, but it forces the subject to 
+make  a  Concentration  check  with  a  
+DC  equal  to  this  spell’s  save  DC.  If  
+the subject fails the check, the hand’s 
+blow ruins his casting attempt.
+               The  hand  is  about  1  foot  long.  
+It has hit points equal to half your 
+full  normal  hit  points,  and  its  
+AC is 20 (+4 size, +6 natural). 
+It ma kes sav ing throws using 
+your  total  save  bonuses  and  
+takes damage from spells and 
+attacks as normal.
+  Focus: A soft glove.
+Bigby’s Helpful 
+Hand
+Evocation [Force]
+Level: Sorcerer/wizard 1
+Components: V,   S ,   F
+Casting  Time:  1  standard  
+action
+Range: 0 ft.
+Effect: One hand of force
+Duration: 1 hour/level (D)
+Saving Throw: None
+Spell Resistance: No
+A magical construct in the shape of a hand 
+appears next to you. Its fi  ngers open toward 
+you, waiting for you to hand it an item.
+This  spell  creates  a  hand  of  magical  
+force that holds items for you, helps 
+you complete long, involved tasks, and 
+otherwise aids you. The spell grants 
+you a +2 competence bonus on Craft, 
+Disable Device, and Open Lock checks 
+for  the  duration  of  the  spell.  It  can  
+hold a single object weighing up to 20 
+pounds. You can grasp the object that 
+the hand carries or place an object in 
+its  grasp  as  a  swift  action.  The  hand  
+remains in your square at all times. It 
+matches your speed, and you can bring 
+the hand and the object along with you 
+if you use dimension  door, teleport,  and  
+similar  spells.  You  cannot  order  the  
+hand to move away from you. If you 
+are separated from the hand, the spell 
+immediately ends.
+    The hand is about 1 foot long. It has 
+hit points equal to half your full normal 
+hit  points,  and  its  AC  is  20  (+4  size,  
++6  natural).  It  makes  saving  throws  
+using  your  total  save  bonuses  and  
+takes  damage  from  spells  and  attacks  
+as normal.
+Focus: A soft glove.
+As the frost turns Mialee into an outsider 
+with cold intentions
+Illus. by S. Ellis
+620_95374_Ch4.indd   102620_95374_Ch4.indd   1022/8/06   4:02:03 PM2/8/06   4:02:03 PM
+
+103
+CHAPTER 4
+NEW SPELLS
+Bigby’s Striking Fist
+Evocation [Force]
+Level: Duskblade 2, sorcerer/wizard 2
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Target: One creature
+Duration: Instantaneous
+Saving Throw: Refl  ex  partial
+Spell Resistance: Yes
+A  large  glowing  fi  st,  the  size  of  a  human  
+torso, appears in front of the creature and 
+slams into it with great force.
+The attack bonus of this striking fist 
+equals your caster level + your key abil-
+ity modifi  er + 2 for the hand’s Strength 
+score (14). The fi st deals 1d6 points of 
+nonlethal damage per two caster levels 
+(maximum  5d6)  and  attempts  a  bull  
+rush (PH 154). The fi st has a bonus of 
++4 plus +1 per two caster levels on the 
+bull rush attempt, and if successful it 
+knocks the subject back in a direction 
+of  your  choice.  This  movement  does  
+not provoke attacks of opportunity. A 
+subject that succeeds on its Refl  ex  save  
+takes half damage and is not subject to 
+the bull rush attempt.
+ Material  Components:  Three  glass  
+beads.
+Bigby’s Tripping Hand
+Evocation [Force]
+Level: Duskblade 1, sorcerer/wizard 1
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Target: One creature
+Duration: Instantaneous
+Saving Throw: Refl  ex  negates
+Spell Resistance: Yes
+A large glowing hand, the size of a human 
+torso, appears in front of the creature and 
+sweeps at its legs.
+The  large  hand  sweeps  at  the  target  
+creature’s legs in a tripping maneuver 
+(PH 158). This trip attempt does not 
+provoke  attacks  of  opportunity.  Its  
+attack  bonus  equals  your  caster  level  
++ your key ability modifi er + 2 for the 
+hand’s  Strength  score  (14).  The  hand  
+has a bonus of +1 on the trip attempt for 
+every three caster levels, to a maximum 
+of +5 at 15th level.
+ Material  Components:  Three  glass  
+beads.
+Bigby’s Warding Hand
+Evocation [Force]
+Level: Sorcerer/wizard 2
+Components: V,   S ,   F
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Effect: One hand of force
+Duration: 1 round/level (D)
+Saving Throw: None
+Spell Resistance: Yes
+A spectral human hand springs into exis-
+tence. It pushes into the target, forcing him 
+back as he attempts to move.
+This spell creates a hand of pure force 
+that  hinders  the  subject’s  ability  to  
+move.  You  designate  a  target  when  
+casting this spell. You can change the 
+spell’s target by taking a move action to 
+do so. This spell has no effect on Huge 
+or larger creatures.
+    If the target of the spell attempts to 
+move, it must make a Strength check 
+(DC  12  +  your  key  ability  modifi  er).  
+If this check fails, the creature moves 
+at half speed. The target must make a 
+new check each round to overcome the 
+hand’s hindering force.
+    The hand is about 1 foot long. It has 
+hit points equal to half your full normal 
+hit  points,  and  its  AC  is  20  (+4  size,  
++6  natural).  It  makes  saving  throws  
+using  your  total  save  bonuses  and  
+takes  damage  from  spells  and  attacks  
+as normal.
+ Focus: A soft glove.
+Black Karma Curse
+Enchantment   (Compulsion)   [Mind-
+Affecting]
+Level: Cleric 2, sorcerer/wizard 2
+Components: V,   S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature
+Duration: Instantaneous
+Saving Throw: Will negates
+Spell Resistance: Yes
+With a word and a gesture, you compel the 
+bewildered creature to attack itself.
+If the target creature’s saving throw 
+fails,  it  immediately  takes  damage  
+as if it had hit itself with its currently 
+wielded weapon (or natural weapon). If 
+the creature has more than one eligible 
+attack form, it uses the one that deals 
+the most damage.
+Blade of Blood
+Necromancy
+Level: Assassin 1, blackguard 1, cleric 1, 
+duskblade 1, sorcerer/wizard 1
+Components: V, S
+Casting Time: 1 swift action
+Range: Touc h
+Target: Weapon touched
+Duration:  1  round/level  or  until  
+discharged
+Saving Throw: None
+Spell Resistance: No
+Red blood erupts along the weapon’s blade, 
+bludgeon, or point. The blood drips to spatter 
+in thick, viscous drops upon the ground.
+This spell infuses the weapon touched 
+with baleful energy. The next time this 
+weapon strikes a living creature, blade 
+of blood discharges.  The  spell  deals  an  
+extra 1d6 points of damage against the 
+target of the attack. You can voluntarily 
+ta ke 5 hit points of damage to empower 
+the weapon to deal an extra 2d6 points 
+of damage (for a total of 3d6 points of 
+extra damage).
+     The  weapon  loses  this  property  if  
+its wielder drops it or otherwise loses 
+contact with it.
+Blade Brothers
+Abjuration
+Level: Bard 2, cleric 2
+Components: V,   S
+Casting Time: 1 standard action
+Range: Touc h
+Targets: Two willing creatures
+Duration: 1  minute/level  or  until  
+discharged
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+You  reach  out  and  touch  two  creatures,  
+and a sparkling tether of multicolored light 
+briefl y forms between them.
+One time during the duration of this 
+spell,  when  one  subject  of  the  spell  
+attempts a saving throw, both recipients 
+can roll and apply the more favorable 
+result. When rolling, each subject uses 
+620_95374_Ch4.indd   103620_95374_Ch4.indd   1032/8/06   4:02:12 PM2/8/06   4:02:12 PM
+
+104
+CHAPTER 4
+NEW SPELLS
+his own save bonus and save modifi  ers.  
+If both saving throws fail, both crea-
+tures suffer the consequences of a failed 
+save,  even  if  the  effect  that  prompted  
+the saving throw only affected one of 
+the subjects. If the affected creatures 
+move more than 120 feet away from 
+each  other  after  the  spell  is  cast,  the  
+effect ends.
+Bleakness
+Evocation [Darkness, Evil]
+Level: Cleric 4, sorcerer/wizard 4
+Components:  V,   S ,   DF
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Area: 20-ft.-radius emanation centered 
+on a point in space
+Duration: 1 round/level (D)
+Saving Throw: None
+Spell Resistance: No
+A pulsing darkness bleeds from your body.
+You conjure up a cloud of inky darkness 
+laced  with  life-sucking  energy  from  
+the  Negative  Energy  Plane.  Living  
+creatures  in  the  area  take  1d6  points  
+of damage each round, starting in the 
+round  when  they  enter  the  area  and  
+at  the  beginning  of  their  turns  each  
+round  they  remain  in  the  area.  The  
+damage can be prevented by any effect 
+that  protects  against  negative  energy,  
+such as death ward.
+    In addition, undead gain turn resis-
+tance +4 and fast healing 3 for as long as 
+they remain in the area of the spell.
+ Bleakness  counters  or  dispels  any  
+light spell of equal or lower level.
+Blessing of the Righteous
+Evocation [Good]
+Level: Cleric 4, paladin 4
+Components: V,   S ,   DF
+Casting Time: 1 standard action
+Range: 40 ft.
+Area: All allies in a 40-ft.-radius burst 
+centered on you
+Duration: 1 round/level
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+A  sudden  burst  of  warm,  radiant  light  
+engulfs you and your allies. The light fades 
+quickly but lingers on the weapons of those 
+affected.
+You  bless  yourself  and  your  allies.  
+You and your allies’ melee and ranged 
+attacks  deal  an  extra  1d6  points  of  
+holy damage and are considered good-
+aligned for the purpose of overcoming 
+damage reduction.
+Blinding Color Surge
+Illusion (Glamer)
+Level: Beguiler 2, sorcerer/wizard 2
+Components: V,   S ,   F
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Targets: You and one creature
+Duration: 1 round/level
+Saving Throw: Will negates
+Spell Resistance: Yes
+You  point  at  the  target  of  this  spell.  The  
+colors of your clothing, skin, and hair shine 
+for a brief moment before they surge away 
+from you, forming a multicolored ray that 
+strikes  your  target.  You  disappear  as  the  
+colors of your body and items leap f rom you 
+into the beam. The target clutches his eyes 
+and staggers.
+You strip the color from your body and 
+gear, turn it into a lance of energy, and 
+hurl it at a target. When you cast this 
+spell, you target a creature with the 
+colors stripped from your form. The 
+target must make a Will save or be 
+blinded for 1 round.
+     You also gain the benefi  t  of  invisibil-
+ity, for the duration of this spel l, even i f 
+the target creature succeeds on its save 
+or if its spell resistance protects it.
+ Focus: A small prism.
+Blood Creepers
+Conjuration (Creation)
+Level: Druid 5
+Components: V,   S ,   DF
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Target: One creature
+Duration: 1 round/level
+Saving Throw: Fortitude negates
+Spell Resistance: Yes
+Thorny vines burst from the creature’s body, 
+punching through bone, fl esh, and skin to 
+enwrap  its  arms  and  legs  and  tether  it  to  
+the ground.
+The  subject  takes  1  point  of  piercing  
+damage  per  caster  level  (maximum  
+15)  as  the  creepers  rip  apart  its  body.  
+In  addition,  the  creepers  entwine  
+securely around it, trapping its legs 
+and arms. The subject is immobilized 
+(unable to move from its current loca-
+tion) and entangled.
+     Each  round,  the  subject  takes  an  
+extra  1  point  of  piercing  damage  per  
+caster level (maximum 15) unless it is 
+able to escape. A trapped creature can 
+attempt  to  break  free  with  a  DC  20  
+Strength  check  or  wriggle  free  with  
+a DC 25 Escape Artist check, either 
+of  which  ends  the  spell  if  successful.  
+Other creatures can use the aid another 
+action as nor mal on these checks. They 
+can  make  attacks  against  these  vines  
+as if they were wooden objects with a 
+thickness of 3 inches (see Smashing an 
+Object, PH 185).
+     Despite  its  name,  blood  creepers  is 
+equally  effective  on  living  and  non-
+living creatures.
+Bones of the Earth
+Conjuration (Creation) [Earth]
+Level: Druid 6
+Components:  V,   S ,   DF
+Casting Time: 1 standard action
+Range: 60 ft.
+Effect:  One  5-ft.-diameter  pillar  of  
+stone per round
+Duration: 1 round/2 levels (D)
+Saving Throw: Refl  ex  negates
+Spell Resistance: No
+A pillar of rock explodes upward from the 
+ground.
+Each  round  as  a  standard  action,  you  
+conjure a pi l lar of rock that bursts from 
+a  stone  or  earthen  surface  anywhere  
+within  the  spell’s  range.  Each  pillar  
+fi  lls  a  5-foot  square  and  grows  to  a  
+height of 20 feet or until it hits a bar-
+rier such as a ceiling or wall. A Large 
+or smaller creature in a square where a 
+pillar erupts must succeed on a Refl  ex  
+save or be carried upward by the force 
+of  the  pillar.  If  a  pillar  is  created  in  a  
+room with a ceiling height of 20 feet 
+or less, the rock slams into the ceiling, 
+dealing  4d6  points  of  damage  to  any  
+creature atop it.
+     In  a  location  with  a  ceiling  height  
+of more than 20 feet, a creat ure car r ied 
+up by a pillar must succeed on a DC 20 
+Balance  check  or  fall  from  the  top  of  
+620_95374_Ch4.indd   104620_95374_Ch4.indd   1042/8/06   4:02:19 PM2/8/06   4:02:19 PM
+
+105
+CHAPTER 4
+NEW SPELLS
+the pillar when it reaches its maximum 
+height. On a failed check, the creature 
+plummets  to  the  ground,  taking  2d6  
+points of damage from the fall.
+    You can also cause a pillar to erupt 
+from a vertical surface, in which case 
+any creatures in the pillar’s path must 
+succeed on their Refl ex saves or take 
+2d6 points of damage and be knocked 
+prone.
+    The  pillar  created  is  permanent  
+and has AC 3, hardness 8, and 900 hit 
+points. A pillar can be climbed with a 
+DC 20 Climb check.
+Bright Worms
+Conjuration (Creation) [Fire]
+Level: Sorcerer/wizard 4
+Components: V, S
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Area: 20-ft.-radius spread
+Duration: 1 round/level (D)
+Saving Throw: Refl  ex  half
+Spell Resistance: No
+With a loud pop, a nest of wr ithing wor ms 
+of multicolored light appears in the air.
+You  create  a  knot  of  living  light  with  
+wormlike tendrils extending out from 
+the  mass.  The  worms  hang  in  the  
+air as if suspended. The worms drift 
+away  from  the  paths  of  your  allies,  
+but  they  attack  enemies  that  enter  
+the area, lashing out with lightning 
+speed  and  combusting  creatures  that  
+they touch.
+    When  you  cast  the  spell,  and  in  
+each  later  round  at  the  beginning  of  
+your turn, the fl  aming worms deal 2d6 
+points of fi re damage to any of your 
+enemies  in  the  area.  The  fi  re  damage  
+increases as you gain levels, to 3d6 per 
+round for an 11th-level caster and 4d6 
+per round for a 15th-level caster.
+    Any area spell that deals cold dam-
+age eliminates the bright worms from 
+its area.
+Burning Rage
+Transmutation
+Level: Sorcerer/wizard 1
+Components: V, S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature
+Duration: 1 round/level (D)
+Saving Throw: Will negates
+Spell Resistance: Yes
+As  you  imbue  an  ally  with  this  spell,  a  
+nimbus of shimmering blue fl ame sur-
+rounds him. He winces in pain as the 
+fl  ames scorch his fl  esh, but when the eldritch 
+power  fl  ows  into  him,  his  muscles  surge  
+with might.
+This spell imbues a creature with burn-
+ing magical energy that enhances the 
+subject’s strength and endurance. The 
+searing energy also burns and injures 
+the subject.
+     The  subject  of  this  spell  gains  a  +1  
+bonus  on  attack  rolls,  a  +2  bonus  on  
+damage rolls, and damage reduction 
+2/magic. This spell’s burning energy 
+deals  4  points  of  fi re damage to the 
+subject at the start of each of its turns 
+until the spell’s duration expires or you 
+dismiss the effect.
+Call of Stone
+Transmutation
+Level: Druid 4, sorcerer/wizard 4
+Component: V, S
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Target: One creature
+Duration: 1 round/2 levels
+Saving Throw: Fortitude partial
+Spell Resistance: Yes
+A  beam  of  sickly  gray  energy  strikes  the  
+target of this spell. He acquires an ashen 
+tone to his skin. With each passing moment, 
+the grayish tone becomes deeper in color as 
+the target transforms into a stone statue.
+This spell slowly transforms a creature 
+into  an  inanimate  stone  statue.  The  
+target  must  make  a  Fortitude  save  
+each round for the duration of spell at 
+the start of its turn or take a cumula-
+tive  10-foot  penalty  to  speed  and  a  
+–2 penalty to Dexterity. If the target’s 
+speed drops to 0 feet, it cannot move. 
+If the target fails four or more saves, it 
+permanently transforms into a statue 
+as i f a f fected by fl   e s h   t o   s t o n e . Any effect 
+or spell that reverses fl esh to stone also 
+cures this condition.
+Celerity
+Transmutation
+Level: Bard 4, sorcerer/wizard 4
+This  spell  works  like  lesser  celerity,  
+except that you pull even more time 
+into the present. When you cast this 
+spell,  you  can  immediately  take  a  
+standard action, as if you had readied 
+an  action.  You  can  even  interrupt  
+another creature’s turn when you cast 
+this spell. However, after you take the 
+standard action granted by this spell, 
+you  are  dazed  until  the  end  of  your  
+next turn.
+Celerity, Greater
+Transmutation
+Level: Sorcerer/wizard 8
+This spell works like celerity, except 
+upon casting this spell you can imme-
+diately  take  a  full-round  action  (or  a  
+standard action plus a move action, or 
+two  move  actions).  After  performing  
+this action, you are dazed until the end 
+of your next turn.
+Celerity, Lesser
+Transmutation
+Level: Bard 2, sorcerer/wizard 2
+Components: V
+Casting Time: 1 immediate action
+Range: Personal
+Target: You
+Duration: Instantaneous
+You borrow a slice of time from the future, 
+pulling  it  into  the  present  so  that  you  
+can act.
+Upon  casting  this  spell,  you  can  
+immediately take a move action. After 
+performing this action, you are dazed 
+until the end of your next turn.
+Chain Dispel
+Abjuration
+Level: Cleric 8, sorcerer/wizard 8
+Components: V,   S ,   M / DF
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Targets: One or more creatures, no two 
+of which are more than 30 ft. apart
+Duration: Instantaneous
+Saving Throw: None
+Spell Resistance: No
+A  coruscating  bolt  rips  through  the  air,  
+humming with power as it strikes each 
+targeted creature.
+620_95374_Ch4.indd   105620_95374_Ch4.indd   1052/8/06   4:02:25 PM2/8/06   4:02:25 PM
+
+106
+CHAPTER 4
+NEW SPELLS
+Each creature struck by this spell is 
+affected as if by a targeted dispel magic, 
+except that you can add your caster level 
+to the dispel check, up to a maximum 
+of 25.
+ Material Component: A pair of bronze 
+nails, each no less than 6 inches in 
+length.
+Channeled Divine Health
+Conjuration (Healing)
+Level: Cleric 4
+Components: V, S
+Casting Time: See text
+Range: See text
+Target: One creature
+Duration: Instantaneous
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+You  bring  forth  a  sphere  of  pure  healing  
+energy.  You  pour  divine  power  into  it,  
+slowly building the energy it holds, until it 
+is ready to mend an ally’s wounds.
+This spell allows you to heal an ally, or 
+damage an undead creature, at a range 
+greater than touch. When you cast this 
+spell, you channel energy into it. You 
+can choose how long to spend casting 
+this spell.
+     If you cast this spell as a swift action, 
+it has a range of touch, and you heal a 
+single touched creature of 1d8 points of 
+damage. A n undead creat ure you touch 
+ta kes this amount of damage instead of 
+being healed.
+     If  you  cast  this  spell  as  a  standard  
+action, it has a range of close, and you 
+heal a single creature within range 
+of  damage  equal  to  1d8  points  +  your  
+caster level (maximum +10). An undead 
+creature  you  designate  within  range  
+takes  this  amount  of  damage  instead  
+of being healed.
+    If you cast this spell as a full-round 
+casting  this  spell,  it  has  a  range  of  
+medium, and you heal a single creature 
+within  range  of  damage  equal  to  2d8  
+points + your caster level (maximum 
++15). An undead creature you designate 
+within  range  takes  this  amount  of  
+damage instead of being healed.
+    If you spend 2 full rounds casting 
+this spell, it has a range of long, and 
+you heal a single creature within range 
+of  damage  equal  to  4d8  points  +  your  
+caster level (maximum +20). An undead 
+creature  you  designate  within  range  
+takes  this  amount  of  damage  instead  
+of being healed.
+     You  do  not  need  to  declare  ahead  
+of  time  how  long  you  want  to  spend  
+casting the spell. When you begin cast-
+ing this spell, you decide that you are 
+fi  nished  casting  after  the  appropriate  
+time has passed.
+Channeled Divine Shield
+Abjuration
+Level: Cleric 3
+Components: V, S
+Casting Time: See text
+Range: Personal
+Target: You
+Duration: 1 round/level
+As you complete this spell, a shield crafted 
+from divine energy appears before you. As 
+you channel energy into the shield, it grows 
+stronger and stronger.
+This spell improves your defenses. 
+The  magnitude  of  this  improvement  
+depends  on  the  amount  of  time  you  
+spend casting the spell.
+     If you cast this spell as a swift action, 
+you  gain  damage  reduction  2/evil  for  
+the duration of this spell.
+    If you cast this spell as a standard 
+action,  you  gain  damage  reduction  
+5/evil.
+    If you cast this spell as a full-round 
+action,  you  gain  damage  reduction  
+8/evil.
+     If  you  spend  2  rounds  casting  this  
+spell,  you  gain  damage  reduction  
+10/ev il.
+     The spell’s duration does not begin 
+until you finish casting the spell. You 
+do not need to declare ahead of time 
+how long you want to spend casting 
+the  spell.  When  you  begin  casting  
+this  spell,  you  decide  that  you  are  
+finished casting after the appropriate 
+time has passed.
+Channeled Pyroburst
+Evocation [Fire]
+Level: Duskblade 4, sorcerer/wizard 4
+Components: V, S
+Casting Time: See text
+Range: Medium (100 ft. + 10 ft./level)
+Area: See text
+Duration: Instantaneous
+Saving Throw: Refl  ex  half
+Spell Resistance: Yes
+A sphere of fi ery energy comes into being 
+before you. You channel energy into it, caus-
+ing it to bubble and seethe with power. When 
+you  have  poured  enough  energy  into  the  
+sphere, you send it fl ying into your foes.
+This spell creates a bolt of fi  ery  energy  
+that  blasts  your  enemies.  The  spell’s  
+strength depends on the amount of 
+time  you  spend  channeling  energy  
+into it.
+     If you cast this spell as a swift action, 
+it  deals  1d4  points  of  fi  re  damage  per  
+two  caster  levels  (maximum  10d4)  
+against a single target of your choice.
+     If  you  cast  this  spell  as  a  standard  
+action, it deals 1d6 points of fi  re  damage  
+per caster level (maximum 10d6) to all 
+creatures in a 10-foot-radius spread.
+    If you cast this spell as a full-round 
+action, it deals 1d8 points of fi  re  damage  
+per caster level (maximum 10d8) to all 
+creatures in a 15-foot-radius spread.
+     If  you  spend  2  rounds  casting  this  
+spel l, it deals 1d10 points of fi  re  damage  
+per caster level (maximum 10d10) to all 
+creatures in a 20-foot-radius spread.
+     You  do  not  need  to  declare  ahead  
+of time how long you want to spend 
+casting the spell. When you begin cast-
+ing this spell, you decide that you are 
+fi  nished  casting  after  the  appropriate  
+time has passed.
+Chasing Perfection
+Transmutation
+Level: Cleric  6,  druid  6,  sorcerer/
+wizard 6
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Touc h
+Target: Creature touched
+Duration: 1 minute/level
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+Energy courses through the creature touched. 
+Its muscles grow and become more defi  ned, 
+it starts to move with greater alacrity and 
+grace, and its bearing increases.
+The  subject  improves  in  all  ways.  It  
+gains a +4 enhancement bonus to each 
+of its ability scores.
+ Material Component: A statuette of 
+a celestial or fi  end worth 50 gp.
+620_95374_Ch4.indd   106620_95374_Ch4.indd   1062/8/06   4:02:32 PM2/8/06   4:02:32 PM
+
+107
+CHAPTER 4
+NEW SPELLS
+Cloud of Knives
+Conjuration
+Level: Cleric 2, sorcerer/wizard 2
+Components: V,   S ,   M
+Casting  Time:  1  standard  
+action
+Range: Personal
+Target: You
+Duration: 1 
+round/level
+You   conjure   
+a cloud of sharp knives 
+around you. The knives fl  oat in 
+the air around your upper body, 
+pointing in the direction you look.
+Each  round  as  a  free  action  at  the  
+beginning  of  your  turn,  you  can  
+release  one  of  these  knives  at  any  
+target within 30 feet that you can see. 
+This is a ranged attack that uses an 
+attack bonus equal to your caster level 
++ your key ability modifi  er. Each suc-
+cessful hit deals 1d6 points of damage 
++1 per three caster levels (maximum 
++5)  and  threatens  a  critical  hit  on  a  
+roll of 19–20.
+     Damage  reduction  applies  to  knife  
+attacks from this spell. The knives are 
+treated  as  magic  for  the  purpose  of  
+overcoming damage reduction.
+Material Component: A knife.
+Optional Material Component: Using a 
+silvered dagger (22 gp) in the casting of 
+this spell allows the knives to overcome 
+damage reduction as if they were both 
+magic and silver, but the knives deal 1 
+less point of damage.
+Condemnation
+Abjuration
+Level: Cleric 5, sorcerer/wizard 4
+Components: V
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One outsider
+Duration: 1 round
+Saving Throw: Will negates
+Spell Resistance: Yes
+You speak words of power, forcing the entity 
+to shrink with horror.
+The outsider targeted by this spel l must 
+succeed on a Will save or be stunned 
+for 1 round and have its spell resistance 
+reduced by 10.
+Crown of Clarity
+Divination
+Level: Druid  3,  ranger  2,  sorcerer/
+wizard 3
+Components: V,   S ,   F
+Casting Time: 1 standard action
+Range: Touc h
+Target: Creature touched
+Duration: 1 hour/level (D) or until 
+discharged
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+A  crown  of  magical  energy  appears  upon  
+your  head.  For  a  moment,  your  vision  
+blurs  and  a  slight  buzz  fills  your  ears.  
+These  distractions  pass,  leaving  you  with  
+sharpened senses.
+You create an arcane crown that grants 
+the wearer a +2 competence bonus on 
+Listen and Spot checks.
+     As an immediate action, the creature 
+wearing a crown of clarity can discharge 
+its magic to gain a +8 bonus on a single 
+Spot or Listen check. The spell ends 
+after  the  wearer  uses  the  crown  in  
+this manner.
+     The  crown  occupies  space  on  the  
+body as a headband, hat, or helm. If the 
+crown  is  removed,  the  spell  immedi-
+ately ends.
+Focus:  A  pewter  hoop  6  inches  in  
+diameter.
+Crown of the Grave
+Necromancy
+Level: Cleric 3, sorcerer/wizard 3
+Components: V, S, M, F
+Casting Time: 1 standard action
+Range: Touc h
+Target: Creature touched
+Duration: 1 hour/level (D) or until 
+discharged
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+A  ring  of  ghostly  fog  surrounds  the  
+target’s head. With a swirl, the fog dis-
+sipates, leaving behind a crown made of 
+human bones.
+Cloud of knives makes 
+a caster into a ranged 
+weapon threat
+Illus. by C. Frank
+620_95374_Ch4.indd   107620_95374_Ch4.indd   1072/8/06   4:02:39 PM2/8/06   4:02:39 PM
+
+108
+CHAPTER 4
+NEW SPELLS
+This spell creates a magic crown that 
+grants  its  wearer  the  power  to  com-
+mand undead. Once per minute, the 
+crown’s wearer can issue a one-word 
+order  to  an  undead  creature,  as  per  
+the command spell. The undead crea-
+ture must make a Will save to resist 
+this  effect.  Even  though  command 
+is  normally  a  mind-affecting  spell,  
+the crown channels holy or unholy 
+energy (depending on your align-
+ment;  neutral  casters  choose  one  or  
+the other) to compel obedience. In 
+addition, a cleric who wears the crown 
+can expend a use of his turn or rebuke 
+undead ability to increase this ability’s 
+save DC by 4.
+     As an immediate action, the creature 
+wearing  a  crown  of  the  grave  can  dis-
+charge its magic to gain a +4 bonus on 
+a single turn or rebuke undead attempt. 
+The spell ends after the wearer uses the 
+crown in this manner.
+    The  crown  occupies  space  on  the  
+body as a headband, hat, or helm. If the 
+crown  is  removed,  the  spell  immedi-
+ately ends.
+ Material  Component:  A  pinch  of  
+grave dirt.
+ Focus:  A  wooden  hoop  6  inches  in  
+diameter.
+Crown of Might
+Transmutation
+Level: Cleric 3, duskblade 3, sorcerer/
+wizard 3
+Components: V,   S ,   F
+Casting Time: 1 standard action
+Range: Touc h
+Target: Creature touched
+Duration: 1 hour/level (D) or until 
+discharged
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+A crown of plain copper appears upon the 
+recipient’s head. The crown has a front piece 
+fashioned to resemble a bull’s head.
+This  spell  creates  a  crown  of  magical  
+energy that grants the spell’s recipient a 
++2 enhancement bonus to Strength.
+     As an immediate action, the creature 
+wearing a crown of might can discharge 
+its  magic  to  gain  a  +8  enhancement  
+bonus to Strength for 1 round. The spell 
+ends after the wearer uses the crown in 
+this manner.
+     The  crown  occupies  space  on  the  
+body as a headband, hat, or helm. If the 
+crown  is  removed,  the  spell  immedi-
+ately ends.
+ Focus:  A  copper  hoop  6  inches  in  
+diameter.
+Crown of Protection
+Transmutation
+Level: Cleric 3, duskblade 3, sorcerer/
+wizard 3
+Components: V,   S ,   F
+Casting Time: 1 standard action
+Range: Touc h
+Target: Creature touched
+Duration: 1 hour/level (D) or until 
+discharged
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+A shimmering crown of force appears upon 
+the recipient’s head. A barely visible shield 
+of  force  projects  forward  from  it,  warding  
+off attacks aimed at its wearer.
+This  spell  creates  a  crown  of  magical  
+energy that grants the spell’s recipient 
+a  +1  defl  ection  bonus  to  AC  and  a  +1  
+resistance bonus on all saves.
+     As an immediate action, the creature 
+wearing  a  crown  of  protection  can  
+discharge its magic to gain a +4 defl  ec-
+tion bonus to AC or a +4 resistance 
+bonus on saves for 1 round. The spell 
+ends after the wearer uses the crown 
+in this manner.
+     The  crown  occupies  space  on  the  
+body as a headband, hat, or helm. If the 
+crown  is  removed,  the  spell  immedi-
+ately ends.
+ Focus: An iron hoop 6 inches in 
+diameter.
+Crown of Smiting
+Evocation
+Level: Cleric 3, paladin 2
+Components: V,   S ,   F
+Casting Time: 1 standard action
+Range: Touc h
+Target: Creature touched
+Duration: 1 hour/level (D) or until 
+discharged
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+A crown of divine energy appears upon the 
+target’s brow. The holy symbol of the caster’s 
+faith is set at the front of the crown.
+You create a magic crown infused with 
+divine energy harmful to enemies of 
+your faith. Choose a single al ignment 
+(chaotic, evil, good, or lawful) when 
+you cast this spell. Once per minute, 
+the crown’s wearer gains a +2 divine 
+bonus  on  damage  rolls  on  his  next  
+melee or ranged attack if his target 
+has  the  designated  alignment.  The  
+crown’s  wearer  must  decide  to  use  
+this extra damage before making his 
+attack. If he misses, the extra damage 
+is lost.
+     As an immediate action, the creature 
+wearing a crown of smiting can discharge 
+its magic to gain a +8 divine bonus on 
+damage  on  a  single  attack.  The  spell  
+ends  after  the  wearer  uses  the  crown  
+in this manner.
+    The  crown  occupies  space  on  the  
+body as a headband, hat, or helm. If the 
+crown  is  removed,  the  spell  immedi-
+ately ends.
+    Focus:  A  silver  hoop  6  inches  in  
+diameter costing 25 gp.
+Crown of Veils
+Illusion (Figment)
+Level: Bard  2,  beguiler  3,  sorcerer/
+wizard 3
+Components: V,   S ,   F
+Casting Time: 1 standard action
+Range: Touc h
+Target: Creature touched
+Duration: 1 hour/level (D) or until 
+discharged
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+A shimmering halo of energy surrounds 
+the target’s head like a crown. It fl ashes a 
+spectrum of colors before fading away.
+This  spell  creates  a  magic  crown  
+infused with illusion magic. The spell’s 
+recipient gains a +2 competence bonus 
+on Disguise and Hide checks.
+    As an immediate action, the crea-
+ture wearing the crown of veils can 
+discharge its magic to gain a +8 com-
+petence bonus on a single Disguise 
+or Hide check. The spell ends after 
+the  wearer  uses  the  crown  in  this  
+manner.
+    The  crown  occupies  space  on  the  
+body as a headband, hat, or helm. If the 
+crown  is  removed,  the  spell  immedi-
+ately ends.
+620_95374_Ch4.indd   108620_95374_Ch4.indd   1082/8/06   4:02:49 PM2/8/06   4:02:49 PM
+
+109
+CHAPTER 4
+NEW SPELLS
+ Focus:  A  brass  hoop  6  inches  in  
+diameter.
+Crushing Grip
+Evocation
+Level: Sorcerer/wizard 4
+Components: V, S
+Casting Time: 1 round
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature
+Duration: 3 rounds
+Saving  Throw:   Fortitude   negates;   
+see text
+Spell Resistance: Yes
+You  conjure  a  band  of  energy  that  slowly  
+squeezes your opponent. As the band tightens, 
+it  restricts  his  movement  and  eventually  
+holds him in place, rigid with paralysis.
+This  spell  has  one  effect  on  an  oppo-
+nent when you begin casting it. At the 
+beginning  of  your  next  turn,  when  
+you  fi  nish  casting  the  spell,  it  has  a  
+second effect. When you start casting 
+this spel l, your target ta kes a –2 penalt y 
+on attacks, checks, saves, and AC. He 
+also  takes  a  20-foot  penalty  to  speed.  
+This  effect  does  not  allow  a  saving  
+throw,  but  spell  resistance  applies.  If  
+you fail to overcome the target’s spell 
+resistance, you immediately stop cast-
+ing the spell, and the secondary effect 
+does not take place.
+     When  you  complete  the  casting  of  
+this spell, your target must make a 
+Fortitude saving throw or be paralyzed. 
+Even if the target makes this saving 
+throw, this spell’s initial effect continues 
+to affect him for the spell’s duration.
+     This spell’s duration begins after you 
+have completed casting it.
+Curse of Arrow Attraction
+Transmutation
+Level: Cleric  3,  ranger  2,  sorcerer/
+wizard 3
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Target: One creature
+Duration: 1 round/level
+Saving Throw: Will negates
+Spell Resistance: Yes
+You  surround  a  creature  in  a  nimbus  of  
+emerald  light  that  seems  to  draw  missiles  
+toward it.
+The subject is cursed so that missile 
+weapons  veer  toward  him  and  strike  
+with extreme force. The subject takes 
+a  –5  penalty  to  Armor  Class  against  
+any ranged attack, including projectile 
+weapons, thrown weapons, and ranged 
+touch attacks. In addition, any critical 
+threats  on  such  attacks  are  automati-
+cally confi rmed.
+Dancing Blade
+Transmutation
+Level: Bard 5, sorcerer/wizard 5
+Components: V,   S ,   F
+Casting Time: 1 standard action
+Range: Touc h
+Target: We a p o n   t o u c he d
+Duration: 1 round/level
+Saving Throw: None
+Spell Resistance: No
+With a word and a gesture, the sword in your 
+hand leaps to life with a swooping salute.
+This  spell  animates  a  melee  weapon  
+currently in your possession, causing 
+it to fight your foes as you direct it. 
+Once  each  round  as  a  free  action,  
+you can direct the blade to attack an 
+adjacent foe (a weapon with reach can 
+attack a foe 10 feet away). The weapon’s 
+bonus on attack rolls is equal to your 
+caster  level  +  your  key  ability  modi-
+fi  er, plus any enhancement bonus the 
+weapon might have. It deals damage 
+equal  to  the  normal  damage  of  the  
+weapon, plus your key ability modi-
+fier and any enhancement bonus or 
+other  bonus  on  damage  inherent  in  
+the weapon. The weapon attacks once 
+per round. Despite the spell’s name, 
+it  works  on  any  melee  weapon  (not  
+just blades).
+    While your weapon is dancing, it 
+cannot make attacks of opportunity, 
+and you are not considered armed with 
+the  weapon.  It  remains  in  your  space  
+and  accompanies  you  everywhere,  
+whether  you  move  by  physical  or  
+magical means. The weapon cannot be 
+disarmed.
+ Focus: The melee weapon that serves 
+as the target of the spell.
+Deflect
+Abjuration [Force]
+Level: Duskblade 2, sorcerer/wizard 2
+This  spell  functions  like  lesser  defl  ect, 
+except  that  you  gain  a  shield  bonus  
+to AC equal to 1/2 your caster level 
+(round down) against the next attack 
+made  against  you  before  the  end  of  
+your next turn.
+Deflect, Lesser
+Abjuration [Force]
+Level: Duskblade 1, sorcerer/wizard 1
+Components: V
+Casting Time: 1 immediate action
+Range: Personal
+Target: You
+Duration: 1 round or until discharged
+With a word, you evoke a barrier of invis-
+ible force.
+You  project  a  fi  eld  of  invisible  force,  
+creating a short-lived protective barrier. 
+You  gain  a  defl  ection  bonus  to  your  
+AC against a single attack; this bonus 
+is  equal  to  +1  per  three  caster  levels  
+(ma ximum +5).
+     You can cast this spell even when it’s 
+not your turn; however, you must cast it 
+before your opponent makes his attack 
+roll to gain the benefi t.
+Detonate
+Evocation [Death, Fire]
+Level: Sorcerer/wizard 9
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Target: One creature
+Duration: Instantaneous
+Saving  Throw:  Fortitude   partial;   
+see text
+Spell Resistance: Yes
+The  creature  you  point  at  explodes  in  a  
+massive spray of fi re. 
+If the target fails its saving throw, this 
+spell slays the creature, and the explo-
+sion  extends  out  to  a  20-foot-radius  
+burst around it. Creatures in this area 
+take 1d6 points of fire damage per 
+caster level (maximum 20d6), though 
+they  can  attempt  Ref lex  saves  for  
+half  damage.  The  exploded  creature’s  
+remains  are  scattered  and  vaporized,  
+leaving nothing but dry ash.
+     If  the  target  succeeds  on  its  saving  
+throw, it is wracked by a series of small 
+explosions and takes 7d6 points of fi  re  
+620_95374_Ch4.indd   109620_95374_Ch4.indd   1092/8/06   4:02:56 PM2/8/06   4:02:56 PM
+
+110
+CHAPTER 4
+NEW SPELLS
+damage. If this damage kills the crea-
+ture, it explodes as described above.
+    Detonate    has  no  effect  on  creatures  
+that have immunity to fi  re.
+ Material  Component:  A  tindertwig  
+and a piece of string.
+Dimension Hop
+Conjuration (Teleportation)
+Level: Duskblade 2, sorcerer/wizard 2
+Components: V
+Casting Time: 1 standard action
+Range: Touc h
+Target: Creature touched
+Duration: Instantaneous
+Saving Throw: Will negates
+Spell Resistance: Yes
+Pale motes of light dance and swirl about 
+your fi ngertips. When you touch the crea-
+ture, it disappears, leaves a cloud of motes 
+in  its  wake,  and  reappears  somewhere  
+nearby.
+You  instantly  teleport  the  subject  
+creature a distance of 5 feet per two 
+caster  levels.  The  destination  must  
+be an unoccupied space within line 
+of sight.
+Dimension Shuff le
+Conjuration (Teleportation)
+Level: Sorcerer/wizard 5
+Components: V
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Targets: One creature/level, no two of 
+which are more than 30 ft. apart
+Duration: Instantaneous
+Saving Throw: Will negates; see text
+Spell Resistance: Yes
+With a slight blue shimmer of energy and 
+an  audible  pop,  a  number  of  creatures  
+around  you  disappear  and  reappear  in  
+new positions.
+You  instantly  transfer  any  subject  
+creature from its current location to 
+any other spot within 30 feet. You must 
+have  line  of  sight  to  its  new  location.  
+An unwilling creature can make a Will 
+saving throw to negate this effect. The 
+creature must be placed on solid ground 
+capable of supporting its weight. If you 
+attempt to place a creature within a solid 
+object or into a space where it cannot 
+fi  t, the spell fails.
+Dimension Step
+Conjuration (Teleportation)
+Level: Sorcerer/wizard 3
+Component: V, S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Targets: One willing creature/3 levels, 
+no two of which are more than 30 
+ft. apart
+Duration: Instantaneous
+Saving  Throw:  Fortitude  negates  
+(harmless)
+Spell Resistance: Yes (harmless)
+All the creatures you target with this spell 
+gain a dark, shimmering pattern of runes 
+on  their  shoes  and  feet.  The  runes  blaze  
+with arcane light for a moment. Less than a 
+second later, the targets have shifted position 
+on the battlefi eld.
+This spell allows your allies to make a 
+short teleport. All creatures targeted by 
+this spell can teleport a distance equal 
+to  their  base  land  speed.  A  target  can  
+telepor t to any square w ithin its l ine of 
+sight. This movement does not provoke 
+attacks of opportunity. A creature can 
+telepor t up to a ledge, down to the base 
+of a fl  ight of stairs, and so forth as long 
+as it observes the restrictions and limits 
+given above.
+Dispelling Touch
+Abjuration
+Level: Duskblade 3, sorcerer/wizard 2
+Components: V,   S
+Casting Time: 1 standard action
+Range: Touc h
+Target: One touched creature, object, 
+or spell effect
+Duration: Instantaneous
+Saving Throw: None
+Spell Resistance: No
+Your touch causes one spell to rip free of its 
+source and dissipate into nothingness.
+You can use dispelling touch to end an 
+ongoing spell that has been cast on a 
+creature or object, or a spell that has a 
+noticeable ongoing effect. You make 
+a  dispel  check  (1d20  +  your  caster  
+level,   maximum   +10)   against   the   
+spell  effect  with  the  highest  caster  
+level. If that check fails, you make 
+dispel  checks  against  progressively  
+weaker  spells  until  you  dispel  one  
+spell or until you fail all your checks. 
+Magic items carried by a creature are 
+not affected.
+Divine Retaliation
+Evocation [Force]
+Level: Cleric 3, paladin 4
+Component:  V,   S ,   DF
+Casting Time: 1 swift action
+Range: 0 ft.
+Effect: Magic weapon of force
+Duration: 1 round
+Saving Throw: None
+Spell Resistance: No
+A  spectral  weapon  composed  of  pure  force  
+energy springs into existence next to you. 
+Each time a foe strikes you, the weapon 
+springs into action, chopping into your foe 
+and dealing a grievous wound.
+This spell creates a divine weapon that 
+mimics  your  deity’s  favored  weapon.  
+Any  time  you  are  struck  for  damage  
+by a melee attack, this weapon strikes 
+at your foe. It has a base attack bonus 
+equal  to  your  caster  level  +  your  Str  
+modifi  er or Wis modifi  er  (your  choice).  
+It deals damage as per your deity’s 
+favored weapon, and is of a size equal 
+to your current size. The weapon gains 
+a bonus on damage rolls equal to 1-1/2 
+times your Str modifi  er  or  Wis  modifi  er  
+(your choice).
+     There is no limit to the number of 
+attacks  that  this  weapon  can  make.  
+If  a  hydra  bites  at  and  hits  you  six  
+times,  this  weapon  in  turn  strikes  
+at  the  hydra  six  times.  The  weapon  
+has reach or range appropriate to its 
+type.  It  shares  a  space  with  you.  If  
+you are Large or larger, it counts as 
+occupying each square of the space 
+you fill.
+Doom Scarabs
+Conjuration/Necromancy
+Level: Duskblade 3, sorcerer/wizard 4
+Components: V, S
+Casting Time: 1 standard action
+Range: 60 ft.
+Area: Cone-shaped burst
+Duration: Instantaneous
+Saving Throw: Will half
+Spell Resistance: See text
+A  swarm  of  scarabs  surges  from  your  
+outstretched  hand.  These  insects  rip  and  
+620_95374_Ch4.indd   110620_95374_Ch4.indd   1102/8/06   4:03:02 PM2/8/06   4:03:02 PM
+
+111
+CHAPTER 4
+NEW SPELLS
+bite at all living creatures in the area, then 
+return to you with life essence stolen from 
+their victims.
+This spell has two effects. It deals 1d6 
+points of damage per t wo caster levels 
+(maximum 10d6) to all creatures in 
+the  area.  Spell  resistance  does  not  
+apply to this damage. However, spell 
+resistance  does  apply  to  the  spell’s  
+secondary effect. If you overcome a 
+creature’s spell resistance, you gain 
+1d4 temporary hit points as the scarabs 
+feast on the creature’s arcane energy 
+and bleed it back into you. You gain 
+these  temporary  hit  points  for  each  
+creature  whose  spell  resistance  you  
+overcome. You never gain temporary 
+hit points from creatures that do not 
+have spell resistance.
+     The  temporary  hit  points  gained  
+from this spell last for up to 1 hour.
+Dragonshape
+Transmutation (Polymorph)
+Level: Sorcerer/wizard 9
+Components: V, S
+Casting Time: 1 swift action
+Range: Personal
+Target: You
+Duration: 1 round/level (D)
+You feel a fi re burning deep within you. 
+Crimson  scales  quickly  grow  over  your  
+body, a pair of great wings sprouts from your 
+shoulders, and your body expands in size 
+until you stand as tall as a house!
+You  take  on  the  form  and  abilities  of  
+a  mature  adult  red  dragon  (see  below  
+for  your  new  statistics).  You  gain  150  
+temporary hit points, which disappear 
+at the end of the spell’s duration. You do 
+not gain the normal spellcasting ability 
+of your new form. See the description 
+of  the  new  polymorph  subschool  on  
+page 95 for more details.
+Mature Adult Red Dragon
+Init +0; Senses blindsense 60 ft., 
+darkvision 120 ft., quadruple-
+strength low-light vision; Listen 
++32, Spot +32
+Languages as normal form
+AC 32, touch 8, flat-footed 32
+hp as normal form (+150 temporary 
+hp); DR 10/magic
+Resist SR 23
+Immune fire
+Fort +20, Ref +14, Will +18
+Weakness vulnerability to cold
+Speed 40 ft., fly 150 ft. (poor); Flyby 
+Attack
+Melee bite +34 (2d8+11/19–20) and
+ 2 claws +32 (2d6+5/19–20) and
+ 2 wings +32 (1d8+5/19–20) and 
+ tail slap +32 (2d6+16/19–20)
+Space 15 ft.
+Reach 10 ft. (15 ft. with bite)
+Base Atk +25; Grp +44
+Atk Options Cleave, Power Attack
+Special Actions breath weapon, crush
+Spell-Like Abilities (CL 9th): 7/day—
+locate object
+Abilities Str 33, Dex 10, Con 23, Int 18, 
+Wis 19, Cha 18
+Feats Cleave, Combat Reflexes, Flyby 
+Attack, Improved Critical (bite, 
+claw, tail slap, wing), Multiattack, 
+Power Attack
+Skills Appraise +32, Bluff +32, 
+Concentration +34, Diplomacy 
++34, Intimidate +34, Jump +39, 
+Knowledge (arcana) +32, Listen 
++32, Search +32, Spot +32
+Breath Weapon (Su) 50-ft. cone, 14d10 
+fire, Reflex DC 30 half.
+Crush (Ex) Area 15 ft. by 15 ft.; Small 
+or smaller opponents take 2d8+16 
+points of bludgeoning damage, and 
+must succeed on a DC 28 Reflex 
+save or be pinned.
+Drifts of the Shalm
+Evocation
+Level: Druid 2
+Components: V,   S
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Area: One 5-ft. square/level (S)
+Duration: 1 round/level
+Saving Throw: None
+Spell Resistance: No
+You call upon the power of Obad-Hai and 
+conjure forth a great drift of snow, leaves, 
+or smoldering ash.
+Druids  of  Obad-Hai  routinely  evoke  
+the  drifts  of  their  lord  to  delay  their  
+enemies, to buy themselves time in the 
+face of a sudden threat, and simply to 
+decorate their groves.
+     You  create  drifts  of  snow,  leaves,  
+or ash 3 feet thick. It costs 2 squares 
+of movement to enter a drift-covered 
+square. Additional effects apply based 
+on the type of drift.
+    A snow drift ripples with freezing 
+energy.  Anyone  moving  through  or  
+located  in  a  snow  drift  takes  3  points  
+of cold damage each round.
+    If any part of a leaf drift comes in 
+contact  with  fi  re  (anything  from  a  
+torch  to  a  fi reball will do), the whole 
+drift instantly ignites. The heat from 
+the burning leaves deals 2d6 points of 
+fi  re damage to anyone in the inferno.
+    An ash drift smolders with dying 
+embers. Anyone moving through or 
+located in an ash drift takes 3 points 
+of fi  re damage each round.
+Electric Vengeance
+Evocation [Electricity]
+Level: Sorcerer/wizard 2
+Components: V,   S
+Casting Time: 1 immediate action
+Range: 5 ft.
+Target: One creature
+Duration: Instantaneous
+Saving Throw: None
+Spell Resistance: Yes
+As the creature strikes you, an arc of light-
+ning springs from your body and blasts the 
+creature in return.
+You  can  cast  this  spell  only  when  
+another creature has just dealt hit point 
+damage to you with a melee attack. 
+When you cast electric vengeance, a blast 
+of lightning arcs from your body into 
+the subject’s; the arc deals 2d8 points of 
+electricity damage +1 point per caster 
+level (maximum +10).
+Electric Vengeance, Greater
+Evocation [Electricity]
+Level: Sorcerer/wizard 5
+Saving Throw: Fortitude partial
+This spell functions like electric ven-
+geance, except as noted here.
+     This spell deals 5d8 points of damage 
++1 per caster level (maximum +15), and 
+the target of the spell must succeed on 
+a Fortitude save or be dazed until the 
+end of your next turn.
+Energy Aegis
+Abjuration
+Level: Cleric 3, duskblade 3, sorcerer/
+wizard 3
+Components: V,   DF
+Casting Time: 1 immediate action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature
+620_95374_Ch4.indd   111620_95374_Ch4.indd   1112/8/06   4:03:09 PM2/8/06   4:03:09 PM
+
+112
+CHAPTER 4
+NEW SPELLS
+Duration: 1 round
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+A  nigh-invisible  ripple  of  magical  energy  
+courses  through  the  creature  touched,  
+granting  it  resistance  against  one  type  of  
+energy specifi ed by you during the casting 
+the spell.
+When  you  cast  energy  aegis,  specify 
+an energy type (acid, cold, electricity, 
+fi re, or sonic). Against the next attack 
+using this energy type that targets the 
+subject, it gains resistance 20.
+Energy Surge
+Transmutation [see text for lesser energy 
+surge]
+Level: Duskblade 3, sorcerer/wizard 3
+This  spell  functions  like  lesser  energy 
+surge, except  that  the  attack  deals  an  
+extra 2d6 points of energy damage.
+Energy Surge, Greater
+Transmutation [see text for lesser energy 
+surge]
+Level: Sorcerer/wizard 6
+This spell functions like lesser energy 
+surge, except that the attack deals an 
+extra 3d6 points of energy damage.
+Energy Surge, Lesser
+Transmutation [see text]
+Level: Sorcerer/wizard 2
+Components: V
+Casting Time: 1 swift action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One weapon
+Duration: 1 round
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+With a single utterance, you sheath the 
+weapon in elemental energy—dripping 
+acid, vaporous ice, crackling electricity, 
+smoking fl ame, or thunderous air.
+You temporarily imbue a weapon with 
+elemental energy. When you cast this 
+spell, specify an energy type (acid, cold, 
+electricity,  fi  re,  or  sonic).  This  spell  
+is a spell of that type, and the target 
+weapon is sheathed in that energy. If 
+the attack is successful, it deals an extra 
+1d6 points of damage of the specifi  ed  
+energy type.
+Energy Vulnerability
+Abjuration
+Level: Cleric 3, sorcerer/wizard 3
+Components: V,   S ,   M / DF
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Targets: One or more creatures within 
+a 10-ft.-radius burst
+Duration: 1 round/level
+Saving Throw: Will negates
+Spell Resistance: Yes
+Silvery  tendrils  erupt  from  your  out-
+stretched arms and strike the creatures you 
+choose.  A  lingering  silvery  aura  engulfs  
+them thereafter.
+Energy  vulnerability  can  affect  a  
+number  of  creatures  with  total  Hit  
+Dice equal to twice your caster level 
+or lower. You select which creatures 
+are affected.
+     When you cast this spell, specify an 
+energy type (acid, cold, electricity, fi  re,  
+Illus. by F. Vohwinkel
+Hennet strikes down a gnoll with the electric vengeance spell
+620_95374_Ch4.indd   112620_95374_Ch4.indd   1122/8/06   4:03:16 PM2/8/06   4:03:16 PM
+
+113
+CHAPTER 4
+NEW SPELLS
+or  sonic).  The  affected  creatures  gain  
+vulnerability to that energy type (they 
+take +50% damage from that energy, 
+even on a successful save).
+Arcane  Material  Component:  A  tiny  
+wooden shield, which the caster snaps 
+in half.
+Etherealness, Swift
+Transmutation
+Level: Beguiler 5, cleric 5, sorcerer/
+wizard 5
+Components: V,   S
+Casting Time: 1 swift action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One willing creature
+Duration: 1 round
+Saving Throw: Will negates
+Spell Resistance: Yes
+With  a  single  word  and  a  quick  wave  of  
+your hand, the creature disappears.
+The  subject  becomes  ethereal  until  
+the end of its next turn. If, at the end 
+of  the  spell’s  duration,  the  subject  
+creature  rematerializes  within  a  solid  
+object or in an occupied space, it is 
+shunted off to the nearest open space 
+and  takes  1d6  points  of  damage  per  5  
+feet so traveled.
+Evard’s Menacing Tentacles
+Transmutation
+Level: Druid 3, sorcerer/wizard 3
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Personal
+Target: You
+Duration: 1 round/level
+Two black tentacles sprout from your shoul-
+der blades and arch over your shoulders.
+The tentacles have 10-foot reach and are 
+animate. Each round as a free action, 
+starting  on  the  turn  when  you  cast  
+the spell, you can direct each tentacle 
+to attack one opponent within reach. 
+The  tentacles  use  your  base  attack  
+bonus and Strength score, and each 
+deals  bludgeoning  damage  equal  to  
+1d8 points + your Str modifier. The 
+tentacles threaten the area within their 
+reach, and each can make one attack of 
+opportunity per round.
+     The  tentacles  also  grant  you  a  +4  
+bonus on Climb checks.
+Material   Component:   A  piece  of  
+octopus,  squid,  or  carrion  crawler  
+tentacle.
+Explosive Rune Field
+Conjuration (Fire)
+Level: Sorcerer/wizard 4
+Components: V, S, M
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Area: 20-ft.-radius burst
+Duration: 1 round/level
+Saving Throw: Refl  ex  negates
+Spell Resistance: No
+You inf use an area with arcane pat ter ns 
+that  shift  and  slide  along  the  ground.  
+They  seethe  with  arcane  energy,  and  an  
+occasional bolt of energy surges from them 
+with a bright fl ash.
+This spell creates a hazardous fi  eld  of  
+energy  similar  to  that  created  by  an  
+explosive runes. spell. Unlike that spell, 
+the runes created by this spell detonate 
+when they come into contact with a 
+living creature other than the caster. 
+Any creature that begins its turn in the 
+spell’s area must attempt a Refl  ex  save.  
+On a failed save, the creature takes 4d6 
+points of fi  re  damage.
+     Moving  through  the  spell’s  area  is  
+hazardous at best. Creatures that move 
+at their normal speed must succeed 
+on  Ref lex  saves  to  avoid  the  spell’s  
+explosive effects. Creatures that move 
+at  half  speed  through  the  spell’s  area  
+can avoid the damage just as if they had 
+succeeded on their saves.
+Material Component: A piece of parch-
+ment scribed with runes. The runes 
+must be drawn with silver-fl  ecked  ink  
+(25 g p).
+Field of Resistance
+Abjuration
+Level: Sorcerer/wizard 5
+Component: V, S
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Area: 20-ft.-radius emanation centered 
+on a point in space
+Duration: 1 round/level (D)
+Saving Throw: None
+Spell Resistance: No
+The air in this spell’s effect shimmers with 
+arcane energy. A buzzing sound echoes in 
+your  mind  as  the  fl  ow  of  magic  into  the  
+affected area chokes off and ends.
+A dwarf wizard uses explosive rune fi eld to ward an area against intrusion
+Illus. by M. Schley
+620_95374_Ch4.indd   113620_95374_Ch4.indd   1132/8/06   4:03:26 PM2/8/06   4:03:26 PM
+
+114
+CHAPTER 4
+NEW SPELLS
+This spell creates a zone that impedes 
+the  fl ow of magic. The energy of this 
+zone  clings  to  creatures  and  objects,  
+granting them a shield against spells. 
+All creatures in the spell’s area gain spell 
+resistance of 11 + caster level for as long 
+as they remain in the area. If a creature 
+already has spell resistance higher than 
+this amount, this spell does not affect it. 
+Unlike personal spell resistance, this 
+spell resistance cannot be voluntarily 
+lowered.  A  creature  loses  this  spell  
+resistance when it leaves the spell’s area, 
+and gains it again if it returns.
+Friend to Foe
+Illusion (Phantasm) [Mind-Affecting]
+Level:  Bard  5,  beguiler  5,  sorcerer/
+wizard 5
+Components: V, S, M
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Targets:  One  living  creature/level,  
+none of which are more than 30 ft. 
+apart
+Duration: 1 round/level (D); see text
+Saving Throw: Will negates
+Spell Resistance: Yes
+Your  enemies  transform  into  what  they  
+each  hate  the  most,  suddenly  turning  
+against each other.
+You  overlay  phantasmal  images  over  
+your enemies, making them appear to 
+each other as loathsome and despicable, 
+implanting an urge to kill and destroy 
+the  object  of  their  ire.  Orcs  might  
+see  each  other  as  elves  or  dwarves,  
+demons might see angels, and so on. 
+All subjects receive a Will save to see 
+through the phantasm. Each individual 
+failing its save turns on the closest ally 
+and attacks until the fi  rst time it deals 
+damage, which causes the spell to end 
+for that attacker.
+    Material    Component:  A  swatch  of  
+white silk.
+Halt
+Transmutation
+Level: Bard 3, beguiler 3, duskblade 3, 
+sorcerer/wizard 3
+Components: V
+Casting Time: 1 immediate action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature
+Duration: 1 round
+Saving Throw: Will negates
+Spell Resistance: Yes
+You  utter  the  word  “Halt!”  and,  in  that  
+instant, the creature’s feet stick to the fl oor.
+The subject creature’s feet (or whatever 
+pass for its feet) become momentarily 
+stuck  to  the  fl  oor.  The  creature  must  
+stop moving, and cannot move farther 
+in  its  current  turn.  This  spell  has  
+no  effect  on  creatures  that  are  not  
+touching  the  ground  (such  as  fl ying 
+creatures), and the subject can still use 
+a standard action (if it has one available 
+in this round) to move by means of 
+teleportation magic.
+     You can cast this spell even when it’s 
+not your turn; however, you must cast 
+it before your opponent fi  nishes   its  
+movement on its current turn to gain 
+the benefi t.
+Healing Spirit
+Conjuration (Healing)
+Level: Bard   4,   cleric   4,   druid   4,   
+paladin 3
+Components: V,   S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Effect: One conjured healing spirit
+Duration: 1 round/2 levels
+Saving Throw: Will half (harmless); 
+see text
+Spell  Resistance:  Yes  (harmless);  
+see text
+A 1-foot-diamater ball of light appears and 
+moves by your command, healing those it 
+touches.
+You  conjure  an  incorporeal  object  of  
+magical  energy  that  appears  in  any  
+square within range. This healing spirit 
+resembles a 1-foot-diameter ball of light. 
+It sheds bright illumination in a 10-foot 
+radius  and  shadowy  illumination  for  
+another 20 feet. A healing spirit cannot 
+be affected by attacks or spells.
+    A    healing spirit fl ies at a speed of 30 
+feet  with  perfect  maneuverability.  In  
+the  round  you  cast  the  spell  and  at  
+the start of your turn once per round 
+thereafter, you can direct the healing 
+spirit to move and touch a creature by 
+entering its space. The spirit’s touch 
+carries positive energy, healing a living 
+creature of 1d8 points of damage.
+    Since undead are powered by nega-
+tive energy, a healing spirit damages 
+them  instead  of  healing  them.  The  
+spirit can affect an unwilling target 
+(such  as  an  undead)  by  succeeding  
+on an incorporeal touch attack, using 
+your base attack bonus and a Strength 
+bonus of +0. An undead creature hit by 
+such an attack can use spell resistance 
+against the effect and is allowed a Will 
+save for half damage.
+    If    a    healing spirit travels farther from 
+you than the spell’s range, it winks out 
+of existence and the spell ends.
+Hesitate
+Enchantment  (Compulsion)  [Mind-
+Affecting]
+Level: Bard 3, beguiler 3, cleric 3, 
+sorcerer/wizard 3
+Components: V, S
+Casting Time: 1 immediate action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One living creature
+Duration: 1 round/level (D); see text
+Saving Throw: Will negates; see text
+Spell Resistance: Yes
+In the eyes of your enemy, you seem large, 
+powerful, and indomitable.
+You fi  ll a subject with doubts and mis-
+givings, making it believe it is inferior 
+to you. On a failed save, the subject can 
+take no action other than a move action 
+on its current turn. Hesitate confers no 
+special bonuses for attackers attempt-
+ing to hit the subject; the subject still 
+defends itself. If you attack the affected 
+creature, the spell ends immediately.
+    Each round, as a swift action at the 
+start of its turn, the subject can attempt 
+a new saving throw to end the effect. If 
+the save succeeds, the subject can then 
+act normally.
+     You can cast this spell even when it’s 
+not your turn; however, you must cast 
+it at the start of your opponent’s turn 
+to gain the benefi t.
+Hunter’s Eye
+Divination
+Level: Ranger 2
+Components: V, S
+Casting Time: 1 swift action
+Range: Personal
+Target: You
+Duration: 1 round
+620_95374_Ch4.indd   114620_95374_Ch4.indd   1142/8/06   4:03:36 PM2/8/06   4:03:36 PM
+
+115
+CHAPTER 4
+NEW SPELLS
+Your vision blurs for a moment. When it 
+clears,  you  can  see  through  your  enemies’  
+skin to spot their arteries, organs, and other 
+vulnerable points.
+Your  slice  into  a  foe  with  uncanny  
+precision, allowing you to strike a 
+foe’s vulnerable points and deal extra 
+damage. This spell grants you the sneak 
+attack  ability.  You  deal  an  extra  1d6  
+points of damage per three caster levels. 
+If  you  already  have  the  sneak  attack  
+ability, this damage stacks with it.
+Incite Riot
+Enchantment [Mind-Affecting]
+Level: Bard  5,  beguiler  5,  sorcerer/
+wizard 5
+Components: V
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Targets: One creature/level, no two of 
+which are more than 30 ft. apart
+Duration: 1 round
+Saving Throw: Will negates
+Spell Resistance: Yes
+You sow discord among your enemies, spur-
+ring them to physical violence.
+Each  creature  that  fails  its  saving  
+throw  attacks  the  nearest  creature  
+on  its  next  turn,  whether  friend  or  
+foe. An affected creature attacks with 
+whatever weapon is in hand, or with 
+natural weapons. An unarmed creature 
+attacks  with  an  unarmed  strike.  An  
+affected creature not already adjacent 
+to another creature will move or (if 
+possible) charge the nearest creature; 
+if the nearest creature is not within 
+range of a charge, the subject moves 
+toward the nearest creature along the 
+most effi  cient  route.
+Increase Virulence
+Transmutation
+Level: Assassin  2,  bard  2,  blackguard  
+2, sorcerer/wizard 2
+Components: V,   S ,   M
+Casting Time: 1 minute
+Range: Touc h
+Target: Vial of poison or creature 
+touched
+Duration: 1 minute/level
+Saving Throw: None
+Spell Resistance: No
+Ribbons of green and black energy engulf 
+your hand and pass into the vial or creature 
+you touch. 
+You  make  the  poison  in  a  vial  or  a  
+creature  more  lethal.  The  DCs  for  
+all saving throws against the poison 
+increase by 2.
+     Material     Component:     Licorice root.
+Inevitable Defeat
+Enchantment   (Compulsion)   [Mind-
+Affecting]
+Level: Beguiler 3, sorcerer/wizard 3
+Components: V,   S
+Casting Time: 1 standard action
+Range: Touc h
+Target: One creature
+Duration: 1 round/level
+Saving Throw: None and Will negates; 
+see text
+Spell Resistance: Yes
+You touch the creature with your hand, and 
+it teeters on the edge of unconsciousness.
+You  draw  a  cloud  over  the  subject’s  
+mind, dealing 3d6 points of nonlethal 
+damage.  No  saving  throw  is  allowed  
+against  this  effect.  Each  round  on  its  
+turn,  the  subject  must  succeed  on  a  
+Wi l l save or ta ke another 3d6 points of 
+nonlethal damage. If the saving throw 
+is successful, the damage for that round 
+is negated and the spell ends.
+Insight of Good Fortune
+Divination
+Level: Bard  2,  cleric  2,  sorcerer/
+wizard 2
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature
+Duration: 1  minute/level  or  until  
+discharged
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+You toss a small golden die. It rolls toward 
+the creature you choose, then disappears in 
+a tiny golden fl ash of light.
+The  subject  of  the  spell  becomes  
+unusually  lucky.  Once  during  the  
+spell’s  duration,  when  he  makes  an  
+attack  roll,  skill  check,  saving  throw,  
+or  ability  check,  he  rolls  twice  and  
+takes the better result. He must choose 
+to  use  this  ability  before  the  check  is  
+attempted, and the spell expires once 
+the second die is rolled.
+ Material   Component:   A  gold  die  
+(wor t h 20 g p) .
+Invest Heavy Protection
+Conjuration (Healing)
+Level: Cleric 5
+This spell functions like invest light pro-
+tection, except that it cures 5d4 points of 
+damage +1 per two caster levels (maxi-
+mum +12) and grants damage reduction 
+5/evil. Undead creatures take an extra 
+5 points of damage from any weapon or 
+physical attack capable of overcoming 
+good damage reduction.
+Invest Light Protection
+Conjuration (Healing)
+Level: Cleric 1
+Components: V, S
+Casting Time: 1 standard action
+Range: Touc h
+Target: Creature touched
+Duration: Instantaneous; see text
+Saving Throw: Will half (harmless); 
+see text
+Spell  Resistance:  Yes  (harmless);  
+see text
+You  invest  the  target  with  an  infusion  of  
+divine energy. His wounds knit shut, while 
+the power you grant to him helps ward off 
+future injuries.
+You heal a living creature you touch of 
+1d4 points of damage +1 per two caster 
+levels (maximum +3). In addition, the 
+creature touched gains damage reduc-
+tion 1/evil for 1 minute.
+    Like    cure light wounds, this spell deals 
+damage to undead creatures instead of 
+curing  them.  In  addition,  on  a  failed  
+save undead creatures take an extra 1 
+point  of  damage  from  any  weapon  or  
+physical attack capable of overcoming 
+good damage reduction for 1 minute.
+Invest Moderate Protection
+Conjuration (Healing)
+Level: Cleric 3
+This spell functions like invest light pro-
+tection, except that it cures 3d4 points 
+of  damage  +1  per  two  caster  levels  
+620_95374_Ch4.indd   115620_95374_Ch4.indd   1152/8/06   4:03:42 PM2/8/06   4:03:42 PM
+
+116
+CHAPTER 4
+NEW SPELLS
+(maximum  +6)  and  grants  damage  
+reduction 3/evil. Undead creatures take 
+an extra 3 points of damage from any 
+weapon or physical attack capable of 
+overcoming good damage reduction.
+Kelgore’s Fire Bolt
+Conjuration/Evocation [Fire]
+Level: Duskblade 1, sorcerer/wizard 1
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Target: One creature
+Duration: Instantaneous
+Saving Throw: Refl  ex  half
+Spell Resistance: See text
+You  conjure  a  shard  of  red-hot  rock  and  
+hurl it toward an opponent. As it streaks 
+through the air, a nimbus of arcane energy 
+crackles around it.
+This spell conjures a small orb of rock 
+and sheathes it in arcane energy. This 
+spell  deals  1d6  points  of  fi  re  damage  
+per caster level (maximum 5d6). If you 
+fai l to overcome the target ’s spel l resis-
+tance, the spell still deals 1d6 points 
+of  fire  damage  from  the  heat  
+and force of the conjured 
+orb’s impact.
+Material  Component:  A  handful  of  
+ashes.
+Kelgore’s Grave Mist
+Conjuration/Necromancy [Cold]
+Level: Sorcerer/wizard 2
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Area: 20-ft. radius spread, 20 ft. high
+Duration: 1 round/level
+Saving Throw: None
+Spell Resistance: See text
+With  a  gesture,  you  create  a  cloud  of  
+clammy, thin mist. The light in the area 
+seems  to  dim  as  the  mist  appears,  and  a  
+slight wind washes over the area, sending 
+a chill down your spine.
+This spell creates a thin mist within the 
+spell’s area. The mist is too thin to have 
+any effect on vision, but the necroman-
+tic  energy  infused  within  it  hampers  
+the living. All living creatures within 
+the mist become fatigued and take 1d6 
+points of cold damage per round. If the 
+spell fails to overcome a creature’s spell 
+resistance,  the  subject  takes  the  cold  
+damage but ignores the fatigue.
+Material Component: A handful of dirt 
+taken from a graveyard or tomb.
+Legion of Sentinels
+Illusion (Shadow)
+Level: Beguiler 3, sorcerer/wizard 3
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Area: 10 -ft.-radius emanation centered 
+on a point in space
+Duration: 1 round/level
+Saving Throw: None
+Spell Resistance: No
+A phalanx of spectral swordfi  ghters appears. 
+Their  blades  are  drawn,  and  they  stand  
+ready to strike.
+A  ghostly,  incorporeal  swordfi  ghter  
+appears in each square covered by this 
+spell’s area. A swordfi ghter can share a 
+space with another creature or object. 
+Each  swordfighter  
+A group of hobgoblins succumbs to Kelgore’s grave mist
+Illus. by C. Frank
+620_95374_Ch4.indd   116620_95374_Ch4.indd   1162/8/06   4:03:49 PM2/8/06   4:03:49 PM
+
+117
+CHAPTER 4
+NEW SPELLS
+threatens the squares adjacent to it and 
+can make one attack of opportunity per 
+round. The swordfi  ghters do not hinder 
+movement, block terrain, or block line 
+of effect. They can fl ank an opponent 
+with each other and with your allies.
+     Each  swordfighter  has  hit  points  
+equal  to  twice  your  caster  level  and  
+an Armor Class of 25. It makes saving 
+throws or checks with a bonus equal to 
+your caster level.
+ Material Component: A pewter sword-
+fi  ghter miniature fi gure.
+Linked Perception
+Divination
+Level: Druid 2, ranger 1
+Components:  V,   DF
+Casting Time: 1 standard action
+Range: 20 ft.
+Area: 20-ft.-radius emanation centered 
+on you
+Duration: 1 minute/level (D)
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+Your senses are muddied for a moment, but 
+when  they  clear,  your  sight  and  hearing  
+are improved.
+This spell imparts to all allies in its area 
+a shared awareness of their surround-
+ings. Each ally in the area (including 
+yourself )  gains  a  +2  bonus  on  Spot  
+and Listen checks per each ally in the 
+area.  For  example,  if  you  and  three  
+allies are in the area, each of you gains 
+a +6 bonus.
+Longstrider, Mass
+Transmutation
+Level: Druid 5, ranger 4
+Components: V
+Casting Time: 1 swift action
+Range: 60 ft.
+Area: 60-ft.-radius emanation centered 
+on you
+Duration: 1 hour/level (D)
+Saving  Throw:  Fortitude  negates  
+(harmless)
+Spell Resistance: Yes (harmless)
+Reality  bends  at  your  behest,  speeding  up  
+your allies.
+All allies in the area gain a +10-foot 
+enhancement  bonus  to  their  speed  
+scores.
+Luminous Assassin
+Conjuration (Summoning)
+Level: Sorcerer/wizard 5
+This spell functions like lesser luminous 
+assassin, except that the assassin has the 
+statistics provided below.
+Luminous Assassin CR 3
+Male human rogue 3
+N Medium humanoid (human, 
+extraplanar)
+Init +6; Senses Listen +6, Spot +6
+Languages Common, Dwarven, Elven
+AC 16, touch 12, flat-footed 14; Dodge, 
+Mobility
+ (+2 Dex, +3 armor, +1 shield)
+hp 16 (3 HD)
+Resist evasion
+Fort +3, Ref +6, Will +2
+Speed 30 ft. (6 squares)
+Melee mwk rapier +4 (1d6+1/18–20)
+Ranged mwk shortbow +5 (1d6+1/×3)
+Base Atk +2; Grp +3
+Atk Options sneak attack +2d6
+Combat Gear potion of cure moderate 
+wounds, potion of darkvision
+Abilities Str 12, Dex 15, Con 13, Int 14, 
+Wis 10, Cha 8
+Feats Dodge, Improved Initiative, 
+Mobility
+Skills Appraise +8, Balance +8, Disable 
+Device +8, Escape Artist +8, Hide 
++8, Listen +6, Move Silently +8, 
+Open Lock +8, Search +8, Spot +6, 
+Tumble +8
+Possessions combat gear plus 
+masterwork studded leather armor, 
+masterwork rapier, masterwork 
+buckler, cloak of resistance +1, 
+masterwork shortbow, 200 gp
+Luminous Assassin, Greater
+Conjuration (Summoning)
+Level: Sorcerer/wizard 7
+This  spell  functions  like  luminous 
+assassin, except that the assassin has the 
+statistics provided below.
+Luminous Assassin CR 5
+Male human rogue 5
+N Medium humanoid (human, 
+extraplanar)
+Init +7; Senses Listen +8, Spot +8
+Languages Common, Dwarven, Elven
+AC 17, touch 13, flat-footed 14; Dodge, 
+Mobility, uncanny dodge
+ (+3 Dex, +3 armor, +1 shield)
+hp 25 (5 HD)
+Resist evasion
+Fort +3, Ref +8, Will +2
+Speed 30 ft. (6 squares)
+Melee mwk rapier +5 (1d6+1/18–20)
+Ranged +1 shor tbow +7 (1d6+1/×3)
+Base Atk +3; Grp +4
+Atk Options sneak attack +3d6
+Combat Gear potion of cure serious 
+wounds, potion of darkvision
+Abilities Str 12, Dex 16, Con 13, Int 14, 
+Wis 10, Cha 8
+SQ trap sense +1
+Feats Dodge, Improved Initiative, 
+Mobility
+Skills Appraise +10, Balance +11, 
+Disable Device +10, Escape Artist 
++11, Hide +11, Listen +8, Move 
+Silently +11, Open Lock +11, Search 
++10, Spot +8, Tumble +11
+Possessions combat gear plus 
+masterwork studded leather armor, 
+masterwork rapier, masterwork 
+buckler, cloak of resistance +1, +1 
+shortbow, 200 gp
+Luminous Assassin, Lesser
+Conjuration (Summoning)
+Level: Sorcerer/wizard 3
+Components: V, S, F
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Effect: One summoned assassin
+Duration: 1 round/level
+Saving Throw: None
+Spell Resistance: No
+You  conjure  a  vaguely  humanoid  being  
+composed of yellow light. It wields a radiant 
+blade and moves with unearthly grace.
+A lesser luminous assassin appears above 
+one creature within range and drops 
+onto  it,  slashing  and  stabbing.  The  
+assassin attacks as it falls, and the target 
+creature is considered fl  at-footed  against  
+this initial attack. Place the assassin in 
+any square adjacent to the creature that 
+can hold the assassin. The assassin’s 
+statistics are provided below.
+    After  its  initial  attack,  a  luminous 
+assassin  attacks  its  target  every  round,  
+taking its turn after your turn is com-
+pleted. It fi ghts intelligently and does 
+not need to be directed by you. If the 
+creature  fl  ees,  the  assassin  pursues  it  
+to the best of its ability. If the creature 
+dies or escapes, the assassin waits for 
+you to direct it to another creature (a 
+free  action).  You  cannot  command  
+the assassin to do anything except 
+attack creatures or wait (do nothing 
+but defend itself ), nor can you direct 
+620_95374_Ch4.indd   117620_95374_Ch4.indd   1172/8/06   4:03:59 PM2/8/06   4:03:59 PM
+
+118
+CHAPTER 4
+NEW SPELLS
+it  to  attack  another  creature  if  the  
+originally  targeted  creature  still  lives  
+and is within the spell’s range.
+    The  assassin  and  all  its  posses-
+sions vanish when the spell’s duration 
+expires.
+Focus: A serrated dagger.
+Luminous Assassin CR 1
+Male human rogue 1
+N Medium humanoid (human, 
+extraplanar)
+Init +6; Senses Listen +4, Spot +4
+Languages Common, Dwarven, Elven
+AC 15, touch 12, flat-footed 13; Dodge
+ (+2 Dex, +3 armor)
+hp 7 (1 HD)
+Fort +1, Ref +4, Will +0
+Speed 30 ft. (6 squares)
+Melee mwk rapier +2 (1d6+1/18–20)
+Ranged mwk shortbow +4 (1d6/×3)
+Base Atk +0; Grp +1
+Atk Options sneak attack +1d6
+Combat Gear potion of cure light 
+wounds
+Abilities Str 12, Dex 15, Con 13, Int 14, 
+Wis 10, Cha 8
+Feats Dodge, Improved Initiative
+Skills Appraise +6, Balance +6, Disable 
+Device +6, Escape Artist +6, Hide 
++6, Listen +4, Move Silently +6, 
+Open Lock +6, Search +6, Spot +4, 
+Tumble +6
+Possessions combat gear plus 
+masterwork studded leather armor, 
+masterwork rapier, masterwork 
+shortbow, 50 gp
+Magic Convalescence
+Conjuration (Healing)
+Level: Bard 5, cleric 5, druid 5
+Components: V,   S ,   M
+Casting Time: 1 standard action
+Range: 20 ft.
+Area: 20-ft.-radius emanation centered 
+on you
+Duration: 1 round/level
+Saving Throw: None
+Spell Resistance: No
+You alter the fl  ow of magic about your body 
+so that spells heal you.
+Whenever a creature, including you, 
+casts  a  spell  within  the  area  of  this  
+spell, you heal 1 hit point per level of 
+the spell cast. The effect of each spell 
+cast is resolved prior to your receiving 
+the healing.
+Material  Component:  A  specially  
+prepared, scented ointment.
+A luminous assassin prepares to dispatch its target
+Illus. by C. Frank
+620_95374_Ch4.indd   118620_95374_Ch4.indd   1182/8/06   4:04:06 PM2/8/06   4:04:06 PM
+
+119
+CHAPTER 4
+NEW SPELLS
+Mana Flux
+Abjuration
+Level: Cleric 5, sorcerer/wizard 5
+Components: V, S
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Area: 20-ft.-radius emanation centered 
+on a point in space
+Duration: 1 round/level
+Saving Throw: None
+Spell Resistance: No
+The air crackles and warps as you fl  ood the 
+area  with  unstable,  disrupting  magical  
+energy. The light shed by a continual fl  ame 
+torch fl  utters wildly, while your magic items 
+hum and vibrate.
+This spell creates a field of unstable 
+magical energy. Any creature trying 
+to cast a spell, use a spell-like ability, 
+activate   a   supernatural   ability,   or   
+manifest a psionic power in the spell’s 
+area has a 20% chance of failure. Spell 
+completion items, such as scrolls, also 
+have this failure chance. If a creature 
+within the spell’s area has a spell failure 
+chance due to some other source, such 
+as wearing armor, check each source of 
+spell  failure  chance  separately.  Feats  
+and abilities that reduce the chance of 
+spell failure due to armor have no effect 
+on this fi  eld.
+    A failed spell uses up a spell slot or 
+other resources as appropriate. Magic 
+items do not have a chance of failure, 
+since  the  power  invested  in  them  
+is  too  ingrained  to  be  disrupted  by  
+this spell.
+Mark of Doom
+Necromancy
+Level: Cleric 3, paladin 2
+Component:  V,   S ,   DF
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Target: One creature
+Duration: 1 round/level
+Saving Throw: None
+Spell Resistance: No
+With a mighty invocation to your deity, 
+you mark a creature as a target of your holy 
+judgment. The ground shakes, the air grows 
+still, and all wild animals in the air become 
+suddenly  quiet  and  fearful  as  your  deity  
+passes judgment upon the target.
+This  spell  marks  an  opponent  as  an  
+enemy of your faith, one who must pay 
+for  his  transgressions.  As  long  as  the  
+subject  insists  on  fi  ghting,  it  suffers  
+divine punishment from your deity. 
+The  subject  of  this  spell  takes  1d6  
+points of damage each time it casts a 
+spell that causes damage or disables 
+a  creature,  makes  a  melee  or  ranged  
+attack, or uses spell-like or supernatural 
+abilities to harm other creatures.
+    The subject of this spell must have 
+an  alignment  that  opposes  yours  
+on at least one axis—evil if you are 
+good, lawful if you are chaotic, and 
+so  on.  For  example,  a  chaotic  good  
+cleric can place a mark of doom upon a 
+lawful good, lawful evil, or neutral evil 
+opponent. A neutral caster can use this 
+spell against any good, evil, lawful, or 
+chaotic foe.
+Mark of Judgment
+Necromancy
+Level: Cleric 2
+Component:  V,   S ,   DF
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Targets: One creature/3 levels, no two 
+of which are more than 30 ft. apart
+Duration: 1 round/level
+Saving Throw: Will negates
+Spell Resistance: Yes
+You call upon your deity to mark your foes 
+as enemies of the faith. Divine energy surges 
+through the area, and for a brief moment 
+a holy symbol of your deity shines from the 
+forehead of each targeted creature.
+You and your allies see the mark of judg-
+ment on a creature and know to strike 
+it  in  preference  over  other  unmarked  
+targets. Whenever a creature succeeds 
+on a melee or ranged attack against any 
+subject of a mark of judgment spell, that 
+attacker heals 2 points of damage.
+    The targets of this spell must have 
+an alignment that opposes yours on 
+at least one axis—evil if you are good, 
+lawful if you are chaotic, and so on. For 
+example, a lawful good cleric can place 
+a mark of judgment upon a chaotic good, 
+chaotic  neutral,  lawful  evil,  neutral  
+evil, or chaotic evil opponent. A neutral 
+caster  can  use  this  spell  against  any  
+good, evil, lawful, or chaotic foe.
+Master’s Touch
+Divination
+Level: Bard  2,  cleric  2,  sorcerer/
+wizard 2
+Components: V
+Casting Time: 1 immediate action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature
+Duration: Instantaneous
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+With  a  mere  utterance,  you  grant  the  
+creature  special  insight  into  how  best  to  
+complete a task at hand.
+You cast this spell immediately before 
+the  target  makes  a  skill  check.  The  
+subject envisions how a master might 
+accomplish the same task, gaining a +4 
+insight bonus on its skill check. Master’s 
+touch has no effect on skill checks that 
+represent effort over more than 1 round 
+of time (Craft checks, for example).
+Melf ’s Unicorn Arrow
+Conjuration
+Level: Sorcerer/wizard 3
+Components: V,   S ,   F
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Target or Targets: One creature or up 
+to fi  ve creat ures, no t wo of which are 
+more than 15 ft. apart
+Duration: Instantaneous
+Saving Throw: None
+Spell Resistance: No
+The  shimmering,  transparent  form  of  a  
+unicorn  fl  ies  forward,  its  corporeal  horn  
+lowered in a charge at its enemy.
+A translucent unicorn shape appears in 
+midair and speeds toward the target of 
+this spell. If you succeed on a ranged 
+touch  attack,  the  horn  slams  into  the  
+target and deals 1d8+8 points of damage. 
+In addition, the target is subject to a bull 
+rush, and must make a Strength check 
+(with  appropriate  modifi  ers  for  a  bull  
+rush) against a DC of 21. If the check is 
+failed, the subject is pushed back 5 feet, 
+plus 5 feet for every 5 points by which 
+it failed the check.
+     You  can  conjure  an  additional  uni-
+corn arrow for every three caster levels 
+beyond 5th, up to fi  ve at 17th level. You 
+can have them strike a single creature 
+620_95374_Ch4.indd   119620_95374_Ch4.indd   1192/8/06   4:04:18 PM2/8/06   4:04:18 PM
+
+120
+CHAPTER 4
+NEW SPELLS
+or several creatures, but each horn can 
+strike  only  one  creature.  You  must  
+designate targets before you make your 
+attack rolls. A creature struck by more 
+than one hor n is only required to ma ke 
+one  Strength  check  to  avoid  the  bull  
+rush, but the DC of the check increases 
+by 2 for each horn beyond the fi  rst  that  
+strikes it.
+ Focus: An ivory replica of a unicorn 
+(25 g p).
+Meteoric Strike
+Transmutation [Fire]
+Level: Cleric 5, druid 4, paladin 4
+Components: V,   S
+Casting Time: 1 swift action
+Range: 0 ft.
+Target: Your melee weapon
+Duration: 1 round or until discharged
+Saving  Throw:  None  or  Refl  ex  half;  
+see text
+Spell Resistance: See text
+Your melee weapon bursts into orange, red, 
+and  gold  fl  ames,  and  shining  sparks  trail  
+in its wake.
+Your nex t successful melee at tack deals 
+extra fi  re damage equal to 1d6 points + 
+1d6  points  per  four  caster  levels.  In  
+addition,  the  flames  splash  into  all  
+squares  adjacent  to  the  target.  Any  
+creatures  standing  in  these  squares  
+take half damage from the explosion, 
+with a Refl  ex save allowed to halve this 
+again. If a creature has spell resistance, 
+it applies to this splash effect.
+     You  are  not  harmed  by  your  own  
+meteoric strike.
+    You can cast meteoric strike before 
+you make an unarmed attack. If you 
+do,  your  unarmed  attack  is  consid-
+ered armed.
+Mirror Image, Greater
+Illusion (Figment)
+Level: Bard  4,  beguiler  4,  sorcerer/
+wizard 4
+Components: V,   S
+Casting Time: 1 immediate action
+Range: Personal; see text for mirror 
+image (PH 254)
+Target: You
+Duration: 1 minute/level (D)
+Several illusory duplicates of you pop into 
+being.
+This spell functions like mirror image, 
+except that an additional image is 
+created  in  each  round  after  the  fi  rst,  
+up to a maximum of eight concurrent 
+images. If all images are destroyed, the 
+spell ends.
+    This spell also differs from mirror 
+image in that you can cast this spell 
+even when it’s not your turn.
+Mystic Aegis
+Abjuration
+Level: Cleric 4
+Components: V,   DF
+Casting Time: 1 immediate action
+Range: Personal
+Target: You
+Duration: Instantaneous
+A mantle of scintillating, multicolored light 
+appears around you to block the spell, then 
+fades away.
+You c ast mystic aegis immediately when 
+you are targeted by a hostile spell. You 
+gain spell resistance equal to 12 + your 
+caster level against that spell.
+Mystic Surge
+Universal
+Level: Sorcerer/wizard 4
+Components: V
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature
+Duration: 1 round
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+You  utter  a  phrase,  and  magical  power  
+begins to swell within you.
+The  subject  of  mystic  surge is able to 
+channel  a  greater  amount  of  magical  
+energy into the next spell it casts before 
+this spell’s duration expires. That spell’s 
+save DC increases by 2, and its effective 
+caster level increases by 1.
+Overwhelm
+Enchantment  (Compulsion)  [Mind-
+Affecting]
+Level: Beguiler 6, sorcerer/wizard 6
+Components: V,   S
+Casting Time: 1 standard action
+Range: Touc h
+Target: One creature
+Duration: Instantaneous
+Saving Throw: Will negates
+Spell Resistance: Yes
+You grip the creature’s head, and a surge of 
+magical energy overwhelms its senses.
+With  a  touch,  you  deal  nonlethal  
+damage  to  the  subject  equal  to  the  
+creature’s current hit point total.
+Phantom Battle
+Illusion (Figment)
+Level:  Bard  3,  beguiler  4,  sorcerer/
+wizard 4
+Components: V, S
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Area: 20-ft.-radius spread
+Duration: 1 round/level
+Saving Throw: Will negates
+Spell Resistance: Yes
+You  create  an  illusory  horde  of  snarling  
+ogres,  fi  erce  orcs,  and  proud  knights  in  
+ar mor, all locked in bat tle. Creatures in the 
+area move cautiously as they are caught up 
+in the phantom melee.
+This spell creates the illusion of a fi  erce  
+battle.  Your  enemies  move  cautiously  
+and pass up the opportunity to strike 
+their foes, since the roar and confusion 
+of the battle distracts them.
+    All  creatures  within  the  area  of  
+the spell that fail their saving throws 
+cannot make attacks of opportunity. 
+In  addition,  all  creatures  within  the  
+area are considered fl  anked.  A  creature  
+ignores these effects when it leaves the 
+spell’s  area.  If  a  creature  reenters  the  
+spell’s area after leaving it, the creature 
+can attempt another save to resist the 
+spell if its initial save failed. A creature 
+that  enters  the  area  for  the  fi  rst  time  
+after the spell is cast must also make a 
+saving throw to resist the effect.
+    A    phantom  battle  spell  produces  
+noise appropriate to a mob of creatures 
+locked in battle. Anyone in the battle 
+can  plainly  see  that  the  conjured  
+fi  ghters are no threat, since they strike 
+solely at other phantom warriors, but 
+the din, tumult, and confusion make 
+it diffi cult to focus on the true foes at 
+hand. A creature that succeeds on its 
+save can still see the spectral outline of 
+the illusion, but is able to block out the 
+distraction and fi  ght as normal.
+620_95374_Ch4.indd   120620_95374_Ch4.indd   1202/8/06   4:04:25 PM2/8/06   4:04:25 PM
+
+CHAPTER 4
+NEW SPELLS
+     When you cast this spell, you can choose for it not to affect 
+a number of allies you designate less than or equal to your 
+caster level.
+Plague
+Necromancy [Evil]
+Level: Cleric 7, druid 7, sorcerer/wizard 8
+Components: V,   S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Targets: One living creature/level, no two of which are more 
+than 30 ft. apart
+Duration: 1 round/level
+Saving Throw: Fortitude negates
+Spell Resistance: Yes
+Your skin crawls as you utter the words and complete the gestures 
+of this spell. Suddenly, one or more of the target creatures seem 
+overcome by a dreadful malady.
+The subjects contract a disease selected from the table below, 
+which strikes immediately (no incubation period). The dis-
+ease progresses rapidly; the subjects must at tempt additional 
+saves each round, instead of each day. Use plague’s DC for all 
+saves. See page 292 of the Dungeon Master’s Guide for more 
+information on these diseases.
+Disease                       Damage
+Blinding sickness 1d4 Str*
+Cackle fever 1d6 Wis
+Filth fever 1d3 Dex, 1d3 Con
+Mindfi re 1d4 Int
+Red ache 1d6 Str
+Shakes                        1d8                        Dex
+Slimy doom 1d4 Con
+*Each time a victim takes 2 or more points of Strength 
+damage from blinding sickness, he or she must make 
+another Fortitude save (using the plague spell’s save DC) 
+or be permanently blinded.
+Prismatic Mist
+Evocation
+Level: Sorcerer/wizard 3
+Components: V
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Area: 30-ft.-radius spread
+Duration: 1 minute/level
+Saving Throw: See text
+Spell Resistance: No
+You call forth a thin, multihued mist that fi lls the area. Small 
+incandescent lights, no brighter than candles, drift lazily throughout 
+the mist.
+The mist is too thin to obscure vision or provide concealmen, 
+but walking through it is hazardous. Each round, a creature that 
+begins its turn in the area of the spell, or that enters the mist 
+during its turn, is subject to one or more of the following effects 
+121
+Gimble and Lidda sneak through a phantom battle
+Illus. by E. Widermann
+620_95374_Ch4.indd   121620_95374_Ch4.indd   1212/8/06   4:04:31 PM2/8/06   4:04:31 PM
+
+122
+CHAPTER 4
+NEW SPELLS
+based on the (randomly determined) 
+color  of  the  mist  in  the  area  around  
+the creature.
+     Consult the table below to determine 
+the color of the mist and its effect.
+d8  Color  Effect
+1     Red 1d4 points fire damage
+2     Orange     1d6 points acid 
+              damage
+3     Yellow 1d8 points electricity 
+              damage
+4     Green Poison; 1d4 points Str
+  damage (Fort negates)
+5     Blue     Slowed for 1 round 
+            (Will      negates)
+6     Indigo     Lesser confusion for 1 
+  round (Will negates, 
+              mind-affecting)
+7     Violet Dazed for 1 round 
+            (Will      negates)
+8     At the junction of two colors; roll 
+ twice more, ignoring any “8” 
+       results
+Pulse of Hate
+Necromancy [Evil]
+Level: Cleric 7, sorcerer/wizard 7
+Components: V,   S ,   M / DF
+Casting Time: 1 standard action
+Range: 20 ft.
+Area: 20-ft.-radius emanation centered 
+on you
+Duration: 1 round/level
+Saving Throw: Will half
+Spell Resistance: Yes
+A  red  light  pulses  at  your  feet,  sending  
+malign waves of energy through the area 
+that damage your enemies.
+Starting in the round you cast it, pulse of 
+hate deals 2d6 points of unholy damage 
+per round, on your turn, to all enemies 
+in the area.
+Arcane Material Component: A heart-
+shaped locket and a pin.
+Radiance
+Evocation [Good, Light]
+Level:  Cleric  5,  druid  5,  sorcerer/
+wizard 5
+Components:  V,   S ,   DF
+Casting Time: 1 standard action
+Range: 60 ft.
+Area: 60-ft.-radius emanation centered 
+on you
+Duration: 1 round/level (D); see text
+Saving Throw: None
+Spell Resistance: No
+A  bright,  scintillating  light  shines  from  
+your body.
+For  the  duration  of  this  spell, you 
+emanate a bright light that undead fi  nd  
+uncomfortable. The illumination within 
+the  area  is  bright,  the  equivalent  of  a  
+daylight spell. Undead  in  the  area  are  
+dazzled for as long as they remain in the 
+radius and for 1d6 rounds thereafter.
+Radiance  counters  or  dispels  any  
+darkness spell of equal or lower level.
+Ray of the Python
+Evocation
+Level: Bard 2, sorcerer/wizard 3
+Components: V, S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature
+Duration: 1 minute
+Saving  Throw:  Refl  ex  negates;  see  
+below
+Spell Resistance: Yes
+A ray of pulsing yellow light springs from 
+your hand. It strikes your target and wraps 
+around  him  like  a  snake,  hampering  his  
+ability to move and attack.
+This  spell  creates  a  ropey  strand  of  
+arcane energy that restricts a creature’s 
+movements. A creature struck by this 
+ray can only make one attack per round 
+and  cannot  make  attacks  of  opportu-
+nity.  In  addition,  the  creature’s  speed  
+is reduced by 10 feet.
+     After the spell has been in effect for 1 
+round, at the start of its turn in each round 
+thereafter, the subject is allowed a Refl  ex  
+save to resist the spell’s effects. If the save 
+succeeds, the creature ignores the spell’s 
+effects for that round. It must make a new 
+save each round, regardless of the result 
+of a previous save.
+Regroup
+Conjuration (Teleportation)
+Level: Duskblade 3, sorcerer/wizard 3
+Components: V,   S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Targets: One willing creature/level
+Duration: Instantaneous
+Saving Throw: None
+Spell Resistance: No
+You teleport your companions to your side.
+A bugbear stares warily at an area fi lled with prismatic mist
+Illus. by E. Widermann
+620_95374_Ch4.indd   122620_95374_Ch4.indd   1222/8/06   4:04:41 PM2/8/06   4:04:41 PM
+
+123
+CHAPTER 4
+NEW SPELLS
+Each subject of this spell teleports to a 
+square adjacent to you. If those squares are 
+occupied or cannot support the teleported 
+creatures, the creatures appear as close to 
+you as posible, on a surface that can sup-
+port them, in an unoccupied square.
+Renewed Vigor
+Transmutation
+Level: Bard 5, cleric 4, druid 4
+Components: V, S
+Casting Time: 1 standard action
+Range: 30 ft.
+Effect:  30-ft.-radius  burst  centered  
+on you
+Duration: Instantaneous; see text
+Saving  Throw:   Fortitude   negates   
+(harmless)
+Spell Resistance: Yes (harmless)
+With a word and a gesture, you suffuse an area 
+with a soft golden 
+light,  bestowing  
+a  second  wind  to  
+creatures within.
+When   you   cast   this   
+spell,  you  remove  the  
+fatigued condition from 
+any creature in the area 
+and  cause  exhausted  
+creatures  to  become  
+fatigued. In addition, affected creatures 
+gain  a  +2  bonus  to  Constitution  for  1  
+round per caster level.
+Righteous Burst
+Evocation [Good]
+Level: Cleric 7
+Components: V,   S ,   M ,   DF
+Casting Time: 1 standard action
+Range: 30 ft.
+Area: 30-ft.-radius burst centered on you
+Duration: Instantaneous
+Saving  Throw: None or Will half; 
+see text
+Spell Resistance: Yes
+Holy light blasts from your upraised fi st.
+This  spell  heals  every  ally  in  the  area  
+of 1d8 points of damage +1 per caster 
+level (maximum +35). Every enemy in 
+the  area  takes  1d8  points  of  damage  
++1  per  caster  level  (maximum  +35).  
+Enemies are allowed Will saves to halve 
+the damage.
+Material  Component:  A  handful  of  
+silver dust (worth 15 gp).
+Rouse
+Enchantment   (Compulsion)   [Mind-
+Affecting]
+Level: Beguiler 1, duskblade 1, sorcerer/
+wizard 1
+Components: V,   S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Area: 10-ft.-radius burst
+Duration: Instantaneous
+Saving Throw: None
+Spell Resistance: No
+With a loud snap of your fi  ngers, you cause 
+any sleeping creatures in the spell’s area 
+to awaken.
+This spell has no effect on creatures that 
+are unconscious due to being reduced to 
+negative  hit  points,  or  that  have  taken  
+nonlethal damage in excess of their 
+current hit points.
+Scattering Trap
+Conjuration (Teleportation)
+Level: Sorcerer/wizard 3
+Components: V, S, M
+Mialee uses a regroup spell to gather her friends
+Illus. by D. Hudnut
+620_95374_Ch4.indd   123620_95374_Ch4.indd   1232/8/06   4:04:50 PM2/8/06   4:04:50 PM
+
+124
+CHAPTER 4
+NEW SPELLS
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Area: One 5-ft. square/2 levels
+Duration: 1 round/level
+Saving Throw: Refl  ex  negates
+Spell Resistance: Yes
+Areas you designate on the fl oor fl are dimly.
+This  spell  imbues  a  number  of  5-foot  
+squares you designate with a teleporta-
+tion trap. A creatures moving through 
+one  of  these  squares  and  failing  its  
+saving throw is teleported 1d6 squares 
+in a random direction (use the Missing 
+with a Thrown Weapon diagram, PH
+158). If reaching the destination involves 
+teleporting the subject into a solid space 
+such as within a wall, the subject is forc-
+ibly shunted into the nearest open space 
+and takes 1d6 points of damage.
+    When you cast this spell, the 5-foot 
+squares you designate do not have to be 
+adjacent but must all be within 30 feet 
+of one another.
+    Material    Component: A 
+pinch  of  dande-
+lion seeds.
+Seeking Ray
+Evocation
+Level: Duskblade 2, sorcerer/wizard 2
+Components: V, S
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Effect: Ray
+Duration: Instantaneous; see text
+Saving Throw: None
+Spell Resistance: Yes
+A  ray  of  electricity  springs  from  your  
+hand. It snakes around obstacles, cover, 
+and other impediments on its way toward 
+your target.
+You  create  a  ray  that  deals  4d6  points  
+of electricity damage if it strikes your 
+target. While this ray requires a ranged 
+touch  attack  to  strike  an  opponent,  it  
+ignores concealment and cover (but not 
+total concealment or total cover), and it 
+does not take the standard penalty for 
+fi ring into melee.
+    In addition to the damage it deals, 
+the ray creates a link of energy between 
+you and the subject. If this ray struck 
+the target and dealt damage, you gain a 
++4 bonus on attacks you make with ray 
+spells (including another casting of this 
+one, if desired) against the subject for 1 
+round per caster level. If you cast seeking 
+ray a second time on a creat ure that is sti l l 
+linked to you from a previous casting, 
+the duration of the new link overlaps 
+(does  not  stack  with)  the  remaining  
+duration of the previous one.
+Share Talents
+Transmutation
+Level: Bard 1, cleric 2, ranger 2, sorcerer/
+wizard 2
+Components: V, S, M
+Casting Time: 1 round
+Range: Touc h
+Targets: Two willing creatures touched
+Duration: 10 minutes/level
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes (harmless)
+Mialee uses a scattering trap spell . . .
+Illus. by J. Nelson
+620_95374_Ch4.indd   124620_95374_Ch4.indd   1242/8/06   4:05:00 PM2/8/06   4:05:00 PM
+
+125
+CHAPTER 4
+NEW SPELLS
+You touch two allies, and for a moment their 
+features change so that they seem to blend 
+their appearances into one new creature.
+When you cast this spell on two subjects, 
+you  create  a  mystical  link  between  
+them. For the duration of the spell, the 
+subjects  gain  a  +2  bonus  on  any  skill  
+checks they make, as long as at least one 
+of the characters has 1 rank or more in 
+the skill. In addition, if either character 
+has ranks in a skill that is not normally 
+usable by untrained characters (such as 
+Tumble), the other character can make 
+untrained checks using that skill.
+     Material     Component: A knotted rope.
+Slashing Dispel
+Abjuration/Evocation
+Level: Duskblade 5, sorcerer/wizard 4
+Components: V, S
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Target or Area: One creature or 20-ft.-
+radius burst
+Duration: Instantaneous
+Saving Throw: None
+Spell Resistance: No
+You  rip  away  the  spell  energy  infused  
+within a creature, turning it into a harmful 
+burst of energy that burns into the creature 
+before dissipating.
+This spell functions like dispel magic
+(PH  223),  except  as  noted  here.  Any  
+creature that has a spell effect removed 
+from  it  takes  2  points  of  damage  per  
+level of the dispelled effect. If a creature 
+loses  the  effects  of  multiple  spells,  it  
+takes damage for each one.
+Sonic Shield
+Evocation
+Level: Bard 3, duskblade 5, sorcerer/
+wizard 5
+Components: V, S
+Casting Time: 1 standard action
+Range: Personal
+Target: You
+Duration: 1 round/level
+The air around you shifts and shimmers 
+as a fi  eld of pure sonic energy forms before 
+you. This shield repels all attacks with a 
+blast  of  energy  that  sends  the  attacker  
+stumbling backward.
+This spell grants you a +4 def lection 
+bonus  to  AC.  In  addition,  anyone  
+who  successfully  hits  you  with  a  
+melee attack takes 1d8 points of sonic 
+damage  and  must  make  a  Fortitude  
+saving  throw  or  be  knocked  5  feet  
+away from you into an unoccupied 
+space of your choice. If no space of su f-
+fi cient size is available for it to enter, 
+it instead takes an extra 1d8 points of 
+sonic damage.
+Stand
+Conjuration (Teleportation)
+Level: Duskblade 1, sorcerer/wizard 1
+Components: V,   S
+Casting Time: 1 immediate action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One willing prone creature
+Duration: Instantaneous
+Saving Throw: Will negates (harmless)
+Spell Resistance: Yes ( ha r m les s)
+With a swift upward gesture of your arms 
+and a single clarion command (“Stand!”), 
+you enable the prone creature to safely rise 
+to its feet.
+. . . to get rid of an unwelcome guest
+Illus. by J. Nelson
+620_95374_Ch4.indd   125620_95374_Ch4.indd   1252/8/06   4:05:14 PM2/8/06   4:05:14 PM
+
+126
+CHAPTER 4
+NEW SPELLS
+The  subject  creature  immediately  
+stands,  without  provoking  attacks  of  
+opportunity.
+Stay the Hand
+Enchantment   (Charm)   [Mind-
+Affecting]
+Level:  Bard  1,  beguiler  2,  cleric  2,  
+sorcerer/wizard 2
+Components: V
+Casting Time: 1 immediate action
+Range: Medium (100 ft. + 10 ft./level)
+Target: One humanoid
+Duration: Instantaneous
+Saving Throw: Will negates
+Spell Resistance: Yes
+Your words invoke compassion and mercy 
+in the merciless.
+If the target creature fails its save against 
+stay the hand, it refrains from attacking 
+you or targeting you with spells for the 
+remainder of the current round.
+    You  can  cast  this  spell  during  an  
+opponent’s  turn  after  the  opponent  
+announces its intention to attack you or 
+target you with a spell. If the opponent 
+becomes  subject  to  this  spell,  it  can  
+choose  a  new  target  to  attack,  but  it  
+takes a –4 circumstance penalty on its 
+at tack rol l due to the sudden change of 
+intentions at the last second. Likewise, 
+the subject of this spell can redirect a 
+spell  that  had  been  targeted  on  you,  
+but it must succeed on a Concentration 
+check (DC 15 + the spell’s level) or the 
+spell is wasted.
+Stif le Spell
+Abjuration
+Level: Cleric 4, sorcerer/wizard 4
+Components: V
+Casting Time: 1 immediate action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One creature casting a spell
+Duration: Instantaneous
+Saving Throw: See text
+Spell Resistance: Yes
+As  the  creature  casts  a  spell,  you  utter  a  
+simple  magical  phrase  that  momentarily  
+confounds it.
+You cast this spell to distract another 
+creature  as  it  attempts  to  cast  a  spell.  
+The target must succeed on a Concen-
+tration check (DC equal to 14 + your key 
+ability modifi  er + the level of the spell 
+being cast) to ignore the distraction, or 
+else it loses the spell.
+Stretch Weapon
+Transmutation
+Level: Bard  2,  cleric  2,  duskblade  2,  
+sorcerer/wizard 2
+Components: V
+Casting Time: 1 swift action
+Range: 0 ft.
+Target: Melee weapon wielded
+Duration: One attack
+Saving  Throw:  Will  negates  (harm-
+less, object)
+Spell  Resistance:   Yes   ( ha r m les s,   
+object)
+With a single utterance, the weapon in your 
+hand elongates without becoming awkward 
+or weighty.
+The a f fected weapon stretches, ex tend-
+ing toward its target, though it can be 
+wielded  normally.  The  spell  adds  an  
+additional  5  feet  of  reach  to  a  melee  
+weapon for a single attack.
+Summon Golem
+Conjuration (Summoning)
+Level: Cleric 9, sorcerer/wizard 9
+Components: V,   S ,   F
+Casting Time: 1 round
+Range: Close (25 ft. + 5 ft./2 levels)
+Effect: One summoned golem
+Duration: 1 minute/level
+Saving Throw: None
+Spell Resistance: No
+You wave your hand over a lump of fl esh, 
+clay, stone, or iron while chanting a lengthy 
+incantation.  Moments  later,  a  golem  of  
+similar substance appears in a fl  ash of light 
+to serve you.
+You summon a fl  esh, clay, stone, or iron 
+golem. The golem begins acting at the 
+start of your next turn and follows your 
+simple commands.
+     The  golem  disappears  when  it  is  
+destroyed  or  when  the  spell’s  dura-
+tion expires.
+ Focus: A small lump of preserved fl  esh,  
+dried clay, unworked stone, or iron ore.
+Sure Strike
+Divination
+Level: Duskblade 2, sorcerer/wizard 2
+Components: V
+Casting Time: 1 swift action
+Range: Personal
+Target: You
+Duration: 1 round or until discharged
+You gain a fl  eeting glimpse into the future, 
+enough to guide your impending attack.
+You cast this spell immediately before 
+you  make  an  attack  roll.  You  can  see  
+into the future for that attack, granting 
+you a +1 insight bonus per three caster 
+levels on your next attack roll.
+Thunder Field
+Evocation
+Level: Bard 4, druid 6, sorcerer/
+wizard 6
+Components: V, S
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Area: 20-ft.-radius spread
+Duration: 1 round/level
+Saving Throw: See text
+Spell Resistance: Yes
+The air around you crackles with the distant 
+boom of thunder. A dome of translucent 
+golden energy surrounds the spell’s area. 
+The  dome  shakes  and  rattles,  while  the  
+muffl ed sounds of explosive blasts echoes 
+from  it.  Any  creature  within  the  dome  
+is knocked into the air by the powerful, 
+ear-splitting blasts.
+This spell creates an area of turbulent, 
+sonic  energy.  For  the  duration  of  the  
+spell, any creature that starts its turn 
+in  the  spell’s  area  must  make  a  Forti-
+tude save or take 1d8 points of sonic 
+damage. In addition, affected creatures 
+must make a Refl  ex save or be knocked 
+prone.  If  a  creature  is  already  prone,  
+failing this save has no effect on it.
+To x ic Weap o n
+Conjuration (Creation)
+Level: Duskblade 4, sorcerer/wizard 5
+Components: V,   S
+Casting Time: 1 standard action
+Range: Touc h
+Target: Piercing  or  slashing  weapon  
+touched
+Duration: 1 hour or until discharged
+Saving  Throw:  Fortitude   negates;   
+see text
+Spell Resistance: No
+620_95374_Ch4.indd   126620_95374_Ch4.indd   1262/8/06   4:05:28 PM2/8/06   4:05:28 PM
+
+127
+CHAPTER 4
+NEW SPELLS
+You touch the weapon, and an oily liquid 
+appears on its surface.
+When  you  cast  this  spell,  you  coat  
+the  target  weapon  with  poison.  The  
+next  successful  melee  attack  with  
+that  weapon  delivers  the  poison.  The  
+poison deals 1d10 points of Constitu-
+tion damage immediately and another 
+1d10 points of Constitution damage 1 
+minute later. Each instance of damage 
+can be negated by a Fortitude save (DC 
+equal to this spell’s save DC).
+    If the weapon has not scored a suc-
+cessful  hit  after  1  hour,  the  poison  
+becomes inert and evaporates.
+Trollshape
+Transmutation (Polymorph)
+Level: Sorcerer/wizard 4
+Components: V,   S
+Casting Time: 1 swift action
+Range: Personal
+Target: You
+Duration: 1 round/level (D)
+Your  muscles  ripple,  and  you  hear  bones  
+crackling  underneath  your  now  mottled  
+green skin as your form reshapes to that of 
+a horrid troll.
+You take on the form and abilities of a 
+troll (MM 247). You gain 30 temporary 
+hit points, which disappear at the end 
+of the spell’s duration. See the descrip-
+tion of the new polymorph subschool 
+on page 95 for more details.
+Ver tigo
+Illusion   (Phantasm)   [Fear,   Mind-
+Affecting]
+Level:  Bard  2,  beguiler  2,  sorcerer/
+wizard 2
+Components: V, S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One living creature
+Duration: 1 round/level (D)
+Saving Throw: Will disbelief
+Spell Resistance: No
+You cripple a target with sensations of falling.
+The subject of this spell becomes dizzy 
+as  the  ground  seems  to  drop  away  
+beneath its feet. The subject must suc-
+ceed on a DC 10 Balance check at the 
+star t of each t ur n to ta ke a move action. 
+Jozan summons an iron golem
+Illus. by R. Spencer
+620_95374_Ch4.indd   127620_95374_Ch4.indd   1272/8/06   4:05:35 PM2/8/06   4:05:35 PM
+
+128
+CHAPTER 4
+NEW SPELLS
+If it fails, it cannot move. If it fails the 
+check by 5 or more, it falls prone. While 
+affected, the subject also takes a –2 pen-
+alty on attack rolls and saving throws. 
+Airborne creatures receive a +4 bonus 
+on saves against this spell and do not 
+need to make the Balance checks.
+Vertigo Field
+Illusion (Pattern)
+Level: Beguiler 3, sorcerer/wizard 3
+Components: V, S
+Casting Time: 1 standard action
+Range: Medium (100 ft. + 10 ft./level)
+Area: 20-ft.-radius spread
+Duration: 1 round/level
+Saving  Throw:  Fortitude  partial;  
+see text
+Spell Resistance: Yes
+You create a field of swirling patterns of 
+color, light, and motion. Creatures in the 
+area stagger as the barrage of sensations 
+overloads  their  senses  and  leaves  them  
+overcome with vertigo.
+This  spell  creates  a  field  of  illusory  
+magic  that  hampers  the  movement  
+and senses of any creature that enters 
+it. The area within the fi eld counts as 
+diffi  cult terrain. Attacks made through 
+or from inside the fi  eld have a 20% miss 
+chance. A creature that begins its turn 
+inside the fi  eld must make a Fortitude 
+save or become nauseated for 1 round. 
+Once a creature fails this save, it does 
+not need to make another save against 
+this effect.
+     When  you  cast  this  spell,  you  can  
+choose  for  this  nauseating  effect  not  
+to apply to a number of allies you des-
+ignate less than or equal to your caster 
+level. Those allies still treat the vertigo 
+fi  e l d  as  diffi  cult  terrain  and  have  the  
+20% miss chance on attacks.
+Visions of the Future
+Divination
+Level: Cleric 8
+Components: V, S
+Casting Time: 10 minutes
+Range: Personal
+Target: You
+Duration:  1  hour/level  or  until  
+discharged
+You view events slightly before they hap pen, 
+gaining time to react to them.
+You gain a +2 sacred bonus on all saving 
+throws and +2 dodge bonus to Armor 
+Class.  Once  during  the  spell’s  dura-
+tion, as an immediate action, you can 
+choose to discharge the spell to gain a 
+greater bonus. When you discharge the 
+spell in this manner, you gain a sacred 
+bonus on all saving throws and a dodge 
+bonus to your Armor Class equal to 1/2 
+your caster level (maximum +25). This 
+bonus lasts until the beginning of your 
+next turn.
+Whelm
+Enchantment (Compulsion) [Mind-
+Affecting]
+Level: Beguiler 1, sorcerer/wizard 1
+Components: V,   S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Target: One living creature
+Duration: Instantaneous
+Saving Throw: Will negates
+Spell Resistance: Yes
+You thrust one arm forward toward your 
+foe, palm open and fingers splayed. The 
+creature reels as an invisible surge of power 
+invades its mind. 
+You launch a magical assault that wears 
+at the target’s mind, dealing 1d6 points 
+of  nonlethal  damage  if  it  fails  its  
+saving throw.
+     For  every  two  caster  levels  beyond  
+1st,  you  deal  an  extra  1d6  points  of  
+nonlethal  damage  to  the  subject,  to  a  
+maximum of 5d6 at 9th level.
+Whelm, Mass
+Enchantment (Compulsion) [Mind-
+Affecting]
+Level: Beguiler 4, sorcerer/wizard 4
+Components: V,   S
+Casting Time: 1 standard action
+Range: Close (25 ft. + 5 ft./2 levels)
+Targets: One living creature/level
+Duration: Instantaneous
+Saving Throw: Will negates
+Spell Resistance: Yes
+With a sweep of your ar m, creatures reel as 
+an invisible surge of magical power invades 
+their minds.
+This spell functions like whelm, except 
+that  it  affects  multiple  targets  and  it  
+deals 1d6 points of nonlethal damage 
+per  caster  level  to  each  subject,  to  a  
+ma x imum of 10d6 at 10th level.
+Whelming Blast
+Enchantment   (Compulsion)   [Mind-
+Affecting]
+Level: Beguiler 2, sorcerer/wizard 2
+Components: V,   S
+Casting Time: 1 standard action
+Range: 30 ft.
+Area: Cone-shaped burst
+Duration: Instantaneous
+Saving Throw: Will negates
+Spell Resistance: Yes
+You  stretch  your  arms  before  you,  spread  
+your hands wide, and unleash an invisible 
+cone of magical power that assails the minds 
+of the creatures within it.
+You assail the mental faculties of crea-
+tures in the area, dealing 1d6 points of 
+nonlethal damage per two caster levels 
+(maximum  5d6  at  10th  level)  to  each  
+creature that fails its save.
+Wrack Ear th
+Evocation [Earth]
+Level: Druid 7
+Components: V,   S ,   DF
+Casting Time: 1 standard action
+Range: 30 ft.
+Area: 30-ft. line
+Duration: Instantaneous
+Saving Throw: Refl  ex half; see text
+Spell Resistance: No
+You stomp your foot, causing a shockwave 
+to shoot out from you.
+When you cast this spell, earth and 
+stone blast upward along a 30-foot line, 
+smashing  creatures  and  knocking  
+them out of the way. This spell deals 
+1d6  points  of  bludgeoning  damage  
+per caster level (maximum 15d6) to 
+every creature it contacts and creates a 
+5-foot-wide mound of stone and rubble 
+along the path of the line. Creatures 
+within the area that fail their Reflex 
+saves are moved to a random side of 
+the rubble. The rubble created is dif-
+ficult terrain that requires 2 squares 
+of movement to enter. Creatures that 
+succeed  on  their  saving  throws  take  
+half damage and are not moved by the 
+mound of rubble.
+620_95374_Ch4.indd   128620_95374_Ch4.indd   1282/8/06   4:05:45 PM2/8/06   4:05:45 PM
+
+our  character  is  more  than  just  a  race,  class,  
+and level stapled together. At their best, D&D® 
+characters are on par with characters in the best 
+movies and novels, almost as complex as real people. 
+You have many options at your disposal when cra ft-
+ing your character’s personality. You could invent 
+an intriguing history for your character and allow his or her 
+personality  to  follow  naturally  from  that.  You  could  imitate  
+characters (or aspects of characters) from books you have read, 
+movies you have seen, or real people you know. With some 
+attention  on  your  part  to  his  or  her  background,  personal-
+ity  type,  and  signifi  cant  traits,  your  character  can  possess  
+realistic depth and motivation. This chapter offers tools to 
+create well-rounded characters with memorable personalities, 
+as well as advice on being a good player at the table.
+CHARACTER 
+BACKGROUND
+Your character has a place in the fi  ctional world of the D&D 
+game. Whether you grew up on a farm, struggled for scraps 
+of bread in an alleyway, or were raised by a pack of magical 
+wolves, you had a life before you started walking the road to 
+adventure. The following backgrounds can serve as inspiration 
+for what your character’s childhood and youth were like.
+     Each background includes several headers that describe how 
+you can apply it to different parts of your character’s life.
+ Youth: This section describes the typical experiences of 
+a character who grew up in this background. It describes 
+how that background shaped your early life.
+ Transition: Your background represents your past. This 
+section offers two or three ideas on how you left your old 
+life behind and became an adventurer.
+ At the Table: Your background shapes your outlook and 
+your actions. This section discusses how your background 
+might manifest when you roleplay your character.
+ARTISAN
+Apprenticed to a promising artisan, you worked hard 
+throughout your childhood to develop the skills neces-
+sary to master your craft and make a good living in the 
+world. Hours spent working in the shop alongside your 
+master watching, assisting, practicing, and slowly gain-
+ing expertise in all aspects of your chosen craft allow 
+you to truly appreciate the artistry that goes into every 
+facet of the job. From conceptualization to gathering 
+supplies to working the materials into the desired form 
+and fi  nally to the cleanup at the end of each project, 
+you are proud to have the skills of a true artisan.
+ Youth: Working in your master ’s shop was no day 
+at  the  carnival.  Early  on,  you  spent  most  of  your  time  
+sweeping and scrubbing fl  oors, cleaning tools, carrying 
+supplies, and preparing simple meals so your master 
+could spend his time working on his current project. 
+129
+Illus. by R. HorsleyIllus. by R. Horsley
+620_95374_Ch5.indd   129620_95374_Ch5.indd   1292/8/06   4:06:58 PM2/8/06   4:06:58 PM
+
+130

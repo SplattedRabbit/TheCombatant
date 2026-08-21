@@ -1,0 +1,2876 @@
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+116
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+117
+as either a reach weapon or a normal weapon until the 
+beginning of your next turn once you make the decision. 
+You cannot wield it as both a reach weapon and a normal 
+weapon in the same turn.
+  Characters profi cient with the longaxe can treat it as 
+a greataxe for the purpose of any of the following feats: 
+Greater Weapon Focus, Greater Weapon Specialization, 
+Improved Critical, Weapon Focus, 
+and Weapon Specialization.
+Longstaff:
+  As  its  name 
+implies, the longstaff is a longer 
+version  of  the  quarterstaff.  The 
+extra  length  makes  the  weapon 
+much  more  diffi cult  to  use, 
+but those skilled in its use are 
+better  able  to  protect  them-
+selves  from  multiple  attackers 
+when fi ghting cautiously.
+  If  you  are  profi cient  with  the  longstaff 
+and  you  fi ght  defensively  or  employ  the 
+total defense combat maneuver, you cannot 
+be fl anked for the rest of the round. This benefi t also 
+applies  if  you  are  profi cient  in  the  weapon,  have  the 
+Combat Expertise feat, and shift at least 2 points of your 
+attack bonus to AC for the round.
+  A longstaff is a double weapon. You can fi ght with 
+it as if fi ghting with two weapons, but if you do, you 
+incur all the normal attack penalties associated with 
+fi ghting with two weapons, just as if you were fi ghting 
+with a one-handed weapon and a light weapon (see Two-
+Weapon Fighting, page 160 of the 
+Player’s Handbook
+). 
+You can also strike with either end singly. A creature 
+wielding a longstaff in one hand can’t use it as a double 
+weapon—only one end of the weapon can be used in 
+any given round.
+   The longstaff is a special monk weapon. This designa-
+tion gives a monk wielding a longstaff special options 
+(see the fl urry of blows description, page 40 of the 
+Player’s 
+Handbook
+).
+    Characters  profi cient  with  the  long-
+staff  can  treat  it  as  a  quarterstaff  for 
+the purpose of any of the following 
+feats: Greater Weapon Focus, Great-
+er Weapon Specialization, Improved 
+Critical, Weapon Focus, and Weap-
+on  Specialization.
+  Rapier, Quickblade:
+ Quick-
+blade  rapiers  are  longer  and 
+thinner  than  normal  rapiers, 
+with specially tapered blades 
+and carefully balanced pom-
+mels. The design makes the 
+weapon  more  diffi cult  to  wield 
+properly than a normal rapier, but 
+it allows those skilled in the weapon’s use to disarm 
+opponents more easily and to feint more effectively in 
+combat. Most quickblade rapiers are at least masterwork 
+in quality.
+   If you are profi cient with the quickblade rapier, 
+you gain a +2 bonus on opposed attack rolls made 
+to disarm an enemy (including the roll to avoid 
+being disarmed if such an attempt fails). You also 
+gain a +2 circumstance bonus on Bluff checks 
+made to feint in combat.
+   You  can  use  the  Weapon  Finesse  feat  (see 
+page 102 of the 
+Player’s Handbook
+) to apply your 
+Dexterity  modifi er  instead  of  your  Strength 
+modifi er to attack rolls with a quickblade rapier 
+sized for you. You can’t use a quickblade rapier 
+in two hands to apply 1-1/2 times your Strength 
+modifi er to damage.
+   Characters  profi cient  with  the  quickblade 
+rapier can treat it as a rapier for the purpose of 
+any of the following feats: Greater Weapon Focus, 
+Greater Weapon Specialization, Improved Criti-
+cal, Weapon Focus, and Weapon Specialization.
+Sword, Short, Broadblade: 
+Broadblade short 
+swords have a wider blade and crossguard than 
+normal swords. This feature makes them more 
+diffi cult to wield in combat, but the design allows 
+skilled users to defend themselves better when 
+fi ghting cautiously.
+   If you are profi cient with the broadblade short 
+sword and you fi ght defensively or employ the 
+total defense combat maneuver, you gain a +2 
+dodge bonus to AC for the rest of the round in 
+addition to the normal AC bonus from the combat 
+maneuver (+2 for fi ghting defensively or +4 for 
+total defense). This bonus also applies if you are 
+profi cient  with  the  weapon,  have  the  Combat 
+Expertise feat, and shift at least 2 points of your 
+attack bonus to AC for the round. Because of its 
+benefi t when fi ghting defensively, the broadblade 
+short sword is a popular off-hand weapon. 
+   Characters  profi cient  with  the  broadblade 
+short sword can treat it as a short sword for the 
+purpose of any of the following feats: Greater 
+Weapon Focus, Greater Weapon Specialization, 
+Improved Critical, Weapon Focus, and Weapon 
+Specialization.
+EQUIPMENT
+In addition to basic gear—a backpack, a rope, a 
+light source, and so forth—various applications 
+of alchemy, superior artisanship, or inventiveness 
+can make an adventurer’s job much easier.
+Illus. by D. Kovacs
+Table 4–1: Weapons
+Exotic Weapons 
+Cost    Dmg (S)   Dmg (M)    Critical    Range Increment   Weight
+1
+    Type
+Light Melee Weapons
+   Dagger, barbed 
+35 gp 
+1d3 
+1d4 
+19–20/
+×
+2 
+— 
+1 lb. 
+Piercing
+   Sword, short, broadblade 
+75 gp 
+1d4 
+1d6 
+19–20/
+×
+2 
+— 
+3 lb. 
+Piercing
+One-Handed Melee Weapons
+   Rapier, quickblade 
+75 gp 
+1d4 
+1d6 
+18–20/
+×
+2 
+— 
+3 lb. 
+Piercing
+Two-Handed Melee Weapons
+   Longaxe 
+35 gp 
+1d10 
+1d12 
+×
+3 
+— 
+15 lb. 
+Slashing
+   Longstaff 
+15 gp     1d4/1d4     1d6/1d6 
+×
+2 
+— 
+6 lb. 
+Bludgeoning 
+1 Weight figures are for Medium weapons. A Small weapon weighs half as much, and a Large weapon weighs twice as much.
+Barbed 
+dagger
+Q uickblade 
+rapier
+Broadblade 
+short 
+sword
+Longaxe
+Longstaff
+Illus. by W. England
+pqqqqqqqqqqqqqqqqqqqqrs
+EXOTIC WEAPONS FROM COMPLETE WARRIOR
+Complete Warrior
+ introduced several exotic weapons that could 
+benefit  from  allowing  those  specialized  in  the  use  of  similar 
+weapons to apply the benefit of certain feats (specifically, Greater 
+Weapon  Focus,  Greater  Weapon  Specialization,  Improved 
+Critical, Weapon Focus, and Weapon Specialization) to an exotic 
+weapon’s use as well. Just as the barbed dagger in this book is 
+similar enough to the dagger that it allows a character to treat it 
+as one for the purpose of several feats, consider expanding this 
+benefit to the following weapons. 
+Weapon 
+Treat as . . .
+Blowgun, greater 
+Blowgun
+Bolas, barbed 
+Bolas
+Greatbow 
+Longbow
+Greatspear 
+Longspear
+Pick, dire 
+Pick, heavy
+Poleaxe, heavy 
+Halberd
+Warmace 
+Mace, heavy
+pqqqqqqqqqqqqqqqqqqqqrs
+
+
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+118
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+119
+ALCHEMICAL ITEMS
+For those characters who can’t afford magical assistance, 
+or  even  those  looking  to  gain  the  tiniest  edge,  the 
+alchemist’s lab offers a wide range of options. Typically 
+a single dose of a cream, gel, balm, or the like is enough 
+to cover a Medium creature. Unless otherwise noted in 
+an item’s description, the number of applications needed 
+for creatures of other sizes is doubled (or halved) for each 
+size category larger (or smaller) than Medium.
+ 
+Blend Cream:
+ This pale gray cream dulls the color of 
+flesh, fur, scales, and hair. It allows those affected to better 
+blend with background and shadow, making it easier to 
+hide.
+  Applying blend cream is a standard action that pro
+-
+vokes attacks of opportunity. Blend cream provides a +1 
+alchemical bonus on Hide checks. The effects of blend 
+cream last for 1 hour. Blend cream gives no ability to hide 
+in plain sight or without sufficient cover.
+ 
+Candle,  Focusing:
+  This  large  green  taper  burns 
+quickly, lasting only 1 hour despite its size. While burn
+-
+ing, a focusing candle fills the air with a fresh, crisp odor. 
+The candle is a great boon to those engaged in strenuous 
+mental activity. Characters within 20 feet of a burning 
+candle gain a +1 circumstance bonus on Appraise, Deci
+-
+pher Script, Forgery, and Search checks. When making 
+a skill check that takes more than one action to complete 
+(such as Decipher Script), characters gain the bonus from 
+a focusing candle only if they spend the entire duration 
+of the check within 20 feet of the burning candle.
+ 
+Catstink:
+  A  dose  of  this  alchemical  compound 
+sprinkled on your trail temporarily confuses the scent 
+ability of any creature. Any creature using scent to track 
+you must succeed on a DC 15 Survival check or lose your 
+trail. If the trail is lost, the creature can attempt to relocate 
+it using the normal rules for the Track feat, but the check 
+DC increases by 2. The odor of catstink remains in effect 
+for 10 minutes after the substance is used. Sprinkling 
+catstink on one’s trail is a standard action that provokes 
+attacks of opportunity. 
+ 
+Fareye Oil:
+ When applied to the eyes, this clear oil 
+sharpens the user’s vision for a short time, providing a 
++1 alchemical bonus on Spot checks for 1 minute.
+  One dose of fareye oil is enough to affect the eyes of 
+a creature of any size, but the creature must have eyes 
+to gain any benefit from the oil. Applying fareye oil is a 
+standard action that provokes attacks of opportunity.
+ 
+Flash Pellet:
+ This tiny brittle object is often disguised 
+as a button or other decoration. You can throw a flash 
+pellet as a ranged attack with a range increment of 5 
+feet. When thrown against a hard surface, it bursts with 
+a bright flash of light. All creatures within a 5-foot-radius 
+burst  must  succeed  on  a  DC  15  Fortitude  save  or  be 
+blinded for 1 round and dazzled for 1 round after that. 
+ 
+Freeglide:
+ This greenish-gray gel can be applied to a 
+creature’s hide, hair, clothing, or armor. The gel makes 
+the affected surface slippery and hard to grab or hold, 
+providing a +1 alchemical bonus on Escape Artist checks 
+for 1 hour. 
+  One dose of freeglide is enough to coat one Medium 
+creature.  Applying  freeglide  is  a  standard  action  that 
+provokes attacks of opportunity. If freeglide is applied 
+over clothing or armor, its benefits are lost if the armor 
+or  clothing  is  removed.  Likewise,  if  it  is  applied  to  a 
+creature’s skin or hide, its benefit is lost if the creature 
+later dons clothing or armor.
+ 
+Hawk’s Ointment:
+ This thick, acidic gel temporarily 
+sharpens  the  user’s  vision.  Once  its  beneficial  effects 
+wear off, however, the gel burns and stings the eyes for 
+a few minutes. After spreading the gel over her eyes, a 
+character gains a +1 bonus on Search and Spot checks 
+for 2 minutes. After that time, she takes a –2 penalty on 
+Search and Spot checks for 10 minutes. Characters can 
+halve the remaining duration of the penalty by spending 
+a round washing out their eyes with clean water. Applying 
+hawk’s ointment or washing out one’s eyes is a full-round 
+action that provokes attacks of opportunity.
+ 
+Healer’s Balm:
+  This  smooth,  sweet-smelling  balm 
+allows a healer to better soothe the effects of wounds, dis
+-
+ease, and poison. Healer’s balm provides a +1 alchemical 
+bonus on Heal checks made to help an affected creature. 
+The effects of healer’s balm last for 1 minute.
+  One  dose  of  healer’s  balm  is  enough  to  coat  one 
+Medium creature. Applying healer’s balm is a standard 
+action that provokes attacks of opportunity. It can be 
+applied as part of a standard action made to administer 
+first aid, treat a wound, or treat poison.
+ 
+Keenear Powder:
+ This dry white powder sharpens a 
+creature’s hearing when applied to the ear. The powder 
+is effective for only a short time, so it is more often used 
+by those trying to avoid guards or sentries than by those 
+tasked with guarding an area for a longer time. Keenear 
+powder provides a +1 alchemical bonus on Listen checks 
+for 1 minute.
+  One dose of keenear powder is enough to affect the 
+hearing of a creature of any size, but the creature must 
+have ears to gain any benefit from the powder. Applying 
+keenear powder is a standard action that provokes attacks 
+of opportunity.
+ 
+Lockslip Grease:
+ Lockslip grease is a thick reddish 
+oil that loosens the mechanical workings of nonmagi
+-
+cal locks. The grease is effective for a short time and 
+provides  a  slight  edge  to  those  attempting  to  pick  a 
+lock. Lockslip grease provides a +1 alchemical bonus 
+on Open Lock checks made against the affected lock 
+for 1 minute.
+  One dose of lockslip grease is enough to affect the 
+mechanism of a lock of any size. Although lockslip grease 
+can affect any kind of mundane mechanical lock, it has no 
+effect on magic locks. Applying lockslip grease to a lock is 
+a standard action that provokes attacks of opportunity.
+ 
+Nature’s Draught:
+ This substance is a murky, pungent 
+liquid. When consumed, nature’s draught causes subtle 
+changes in the user’s scent. Animals respond well to a 
+character who has consumed nature’s draught, finding 
+her less threatening and easier to trust. Drinking a vial 
+of nature’s draught provides a +1 alchemical bonus on 
+Handle Animal and wild empathy checks made during 
+the next 12 hours.
+ 
+Softfoot:
+ Softfoot is a fine gray powder that muffles 
+sound when applied to the bottom of a foot or boot. It 
+provides a +1 alchemical bonus on Move Silently checks 
+for 1 hour.
+  One dose of softfoot is enough to affect one Medium 
+creature that has one pair of feet; each additional pair 
+of feet (or similar appendages) requires another dose. 
+Applying  softfoot  is  a  standard  action  that  provokes 
+attacks of opportunity. If softfoot is applied over a boot 
+or other foot covering, its benefit is lost if the foot cover
+-
+ing is removed. Likewise, if it is applied to a creature’s 
+skin or hide, its benefit is lost if the creature later dons 
+footwear.
+ 
+Suregrip:
+  This  thick  white  paste,  when  applied  to 
+hands and feet, strengthens and steadies the user’s grip, 
+making  it  easier  for  the  character  to  climb.  Suregrip 
+provides a +1 alchemical bonus on Climb checks for 1 
+minute. 
+  One dose of suregrip is enough to cover the hands 
+and feet of one Medium creature. Applying suregrip is a 
+standard action that provokes attacks of opportunity. 
+ALCHEMICAL CAPSULES
+The life of an adventurer demands constant readiness 
+and efficient response to threats. In the heat of combat or 
+the sudden danger of a cave-in, an adventurer rarely has 
+time to apply an alchemical item. Such substances remain 
+useful in those instances where an adventurer knows of 
+a task ahead of time or is lucky enough to spot her foes 
+before they are aware of her presence, but these situations 
+are often the exceptions rather than the rule. To answer 
+the need for a quick-use alchemical item, enterprising 
+adventurers and alchemists have long worked to perfect 
+substances that are easier to apply in the heat of combat, 
+allowing the user to gain the benefit of the item without 
+wasting time that could otherwise be spent attacking the 
+foe or casting a defensive spell.
+  Alchemy’s answer to the adventurer’s need is a simple 
+device that allows the wearer to hold a small amount of an 
+alchemical substance in her mouth. The user can quickly 
+break a capsule (as either a standard or swift action; see 
+Delivery Devices, below), allowing her to continue fight
+-
+ing while imbibing the highly concentrated alchemical 
+substance. 
+   Alchemical  capsules  affect  only  living  creatures 
+with  a  discernible  anatomy.  Constructs,  elementals, 
+oozes, undead, and other creatures that don’t meet this 
+requirement gain no benefit from the use of an alchemi
+-
+cal capsule.
+Table 4–2: Alchemical Items
+Substance 
+Benefit Applies to . . . 
+Cost 
+Weight 
+Duration 
+Craft (Alchemy) DC
+Blend cream 
+Hide 
+50 gp 
+1 lb. 
+1 hour 
+20
+Candle, focusing 
+Appraise, Decipher Script, 
+100 gp 
+1 lb. 
+1 hour 
+25
+ 
+Forgery, Search
+Catstink 
+n/a 
+50 gp 
+— 
+10 minutes 
+20
+Fareye oil 
+Spot 
+25 gp 
+— 
+1 minute 
+20
+Flash pellet 
+n/a 
+50 gp 
+— 
+1 round + 1 round 
+25
+Freeglide 
+Escape Artist 
+20 gp 
+— 
+1 hour 
+20
+Hawk’s ointment 
+Search, Spot 
+50 gp 
+— 
+2 minutes/10 minutes 
+25
+Healer’s balm 
+Heal 
+10 gp 
+— 
+1 minute 
+20
+Keenear powder 
+Listen 
+20 gp 
+— 
+1 minute 
+20
+Lockslip grease 
+Open Lock 
+50 gp 
+— 
+1 minute 
+20
+Nature’s draught 
+Handle Animal,  
+50 gp 
+— 
+12 hours 
+25
+ 
+wild empathy
+Softfoot 
+Move Silently 
+50 gp 
+1 lb. 
+1 hour 
+20
+Suregrip 
+Climb 
+20 gp 
+— 
+1 minute 
+20
+
+
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+120
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+121
+Delivery Devices
+The effi cient use of alchemical capsules depends 
+on  a  delivery  device,  which  may  be  either  a 
+capsule retainer or an alehcmical tooth. Each 
+item is described in detail below.
+   Only  one  capsule  retainer  or  alchemical 
+tooth can be worn at any one time, and only one 
+alchemical capsule at a time can be stored in each 
+type of delivery system. Using an alchemical 
+capsule requires only a swift action if it is held 
+in a properly worn capsule retainer or alchemi-
+cal tooth. In the absence of a capsule retainer or 
+alchemical tooth, using an alchemical capsule is 
+a standard action, just like drinking a potion.
+   Fitting an alchemical capsule into an empty 
+capsule  retainer  or  alchemical  tooth  is  a 
+full-round action that provokes attacks of oppor-
+tunity.
+Capsule Retainer:
+ A capsule retainer con-
+sists of a thin, rubbery strap looped inside the 
+teeth. The strap is fi tted with a small, smooth 
+metal ring that can hold one alchemical capsule. 
+The ring can be positioned on either the inside or 
+outside of the user’s gums. Some users fi nd that 
+holding the ring inside the gum and keeping the 
+capsule under the tongue is the most comfort-
+able way to wear a capsule retainer, while others 
+fi nd that holding the ring on the outside of the 
+upper gum allows them to tuck the capsule in 
+their cheek comfortably.
+Alchemical Tooth: 
+Those relying on secrecy 
+in  the  use  of  their  alchemical  capsules  turn 
+instead  to  the  alchemical  tooth.  As  its  name 
+suggests, this specially concealed item has been 
+made to look like a tooth. The tooth functions 
+in all respects like a capsule retainer (see above). 
+In  addition,  it  is  very  hard  to  fi nd  without  a 
+thorough search (Search DC 30). The false tooth 
+is most often used as a concealed version of a 
+capsule retainer, but a few extremely dedicated 
+spies and other agents carry a tooth fi lled with 
+poison  as  insurance  against  being  captured 
+alive. An alchemical tooth can hold one dose 
+of any contact poison or ingested poison, but 
+such poison can only affect the wearer of the 
+tooth—there’s  no  way  to  make  the  tooth  an 
+effective delivery mechanism when combined 
+with a bite attack. 
+Capsule Ingredients
+Six  of  the  most  popular  types  of  alchemical  capsules 
+are  described  below.  Alchemical  capsules  (including 
+the alchemical weapon capsules described in the next 
+section)  can’t  be  used  effectively  as  melee  or  ranged 
+attacks.
+Antitoxin Capsule:
+ This capsule holds a dose of weak 
+antitoxin. When imbibed, it provides a +1 alchemical 
+bonus on Fortitude saving throws made against poison. 
+This bonus lasts for 1 minute.
+Ironman Capsule:
+ This capsule holds a thick pale 
+liquid that allows the user to shake off pain and distrac-
+tion. Anyone using an ironman capsule while staggered 
+can ignore the restrictions on the number of actions taken 
+in a round because of the staggered condition (rather 
+than being limited to one standard action). This benefi t 
+applies only to the round in which the capsule is used, 
+and the effect ends immediately after the user has taken 
+his actions for the round.
+  For  example,  a  staggered  character  with  a  capsule 
+retainer can use the capsule at the beginning of his turn 
+(a swift action) and then take a move action and a standard 
+action.
+  An ironman capsule does not prevent a character from 
+losing a hit point if he is already at or below 0 hit points 
+and does not prevent the user from dying if he reaches 
+–10 hit points.
+Leap Capsule:
+ The thick gray liquid in this capsule 
+allows the user to make more powerful jumps for a short 
+time.  The  user  gains  a  +4  alchemical  bonus  on  Jump 
+checks.  The  benefi t  of  a  leap  capsule  lasts  for  only  1 
+round, ending immediately upon the conclusion of the 
+user’s actions for the round.
+Stability  Capsule:
+  The  thick  blue  liquid  in  this 
+capsule heightens the user’s sense of balance for a short 
+time. While the capsule is in effect, the user gains a +4 
+alchemical bonus on Balance checks. The benefi ts of a 
+stability capsule last for only 1 round, ending immediately 
+upon the conclusion of the user’s actions for the round.
+Strongarm Capsule:
+ This small capsule holds a dose 
+of a thin red liquid. When swallowed, the liquid provides 
+a temporary boost of physical power at the cost of leav-
+ing the user fatigued. When used, a strongarm capsule 
+provides the user with a +1 alchemical bonus on Strength 
+checks and melee weapon damage. This benefi t lasts for 
+2 rounds, at the end of which time the user becomes 
+fatigued. If a character who uses a strongarm capsule is 
+already fatigued when the benefi t of the capsule ends, 
+she becomes exhausted.
+ 
+Swiftstride Capsule:
+ This small capsule holds a dose 
+of a thin blue liquid. When swallowed, the liquid quickens 
+the imbiber’s stride for a short time, providing a temporary 
+boost of speed at the cost of leaving the user fatigued. A 
+swiftstride capsule increases the user’s base land speed by 
+5 feet. This benefi t lasts for 2 rounds, at the end of which 
+time the user becomes fatigued. If a character who uses 
+a swiftstride capsule is already fatigued when the benefi t 
+of the capsule ends, he becomes exhausted.
+Table 4–3: Alchemical Capsules
+ 
+ 
+ 
+Craft
+Item 
+Cost   Duration  (Alchemy) DC
+Capsule retainer 
+100 gp 
+n/a 
+n/a
+Alchemical tooth 
+300 gp 
+n/a 
+n/a
+Antitoxin capsule 
+15 gp    1 minute 
+20
+Ironman capsule 
+15 gp     1 round 
+20
+Leap capsule 
+15 gp     1 round 
+25
+Stability capsule 
+15 gp     1 round 
+20
+Strongarm capsule    125 gp    2 rounds 
+35
+Swiftstride capsule 
+15 gp    2 rounds 
+35
+ALCHEMICAL WEAPON CAPSULES
+Just as a capsule retainer provides adventurers with an 
+effi cient  way  to  ingest  certain  alchemical  substances 
+without detracting from their other efforts in combat, 
+an alchemical weapon capsule allows the application of 
+a specially prepared substance that affects the properties 
+of a treated weapon.
+  Using an alchemical weapon capsule requires only a 
+swift action (and does not provoke attacks of opportu-
+nity) if it is held in a properly attached weapon capsule 
+retainer (see below). Otherwise, applying an alchemical 
+weapon capsule is the equivalent of applying a magic 
+oil  (a  standard  action  that  does  provoke  attacks  of 
+opportunity).
+Weapon  Capsule  Retainer:
+  The  most  common 
+method of delivering the effect of an alchemical weapon 
+capsule is the weapon capsule retainer. This long leather 
+thong,  wrapped  around  a  melee  weapon  or  a  thrown 
+weapon (but not a projectile weapon) just at the base of 
+the blade or striking surface, holds a thin, fi tted ring 
+sized for a single alchemical capsule. A more expensive 
+option is the triple weapon capsule retainer, which stores 
+three capsules rather than one. A character wielding a 
+weapon with a triple retainer can use one, two, or all 
+three capsules it holds as part of the same action.
+  Only one weapon capsule retainer (or triple retainer) 
+can  be  attached  to  any  weapon.  Attaching  a  weapon 
+capsule retainer to a weapon or putting a capsule into an 
+empty weapon capsule retainer is a full-round action that 
+Capsule 
+retainer
+Triple 
+weapon 
+capsule
+Weapon 
+capsule
+Alchemical 
+tooth
+Illus. by W. England
+
+
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+122
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+123
+provokes attacks of opportunity. Thus, filling an empty 
+triple weapon capsule retainer requires three full-round 
+actions.
+  An alchemical weapon capsule retainer can be filled 
+with a single dose of an injury poison. Activating the 
+capsule  coats  the  weapon  with  the  poison,  allowing 
+the wielder to deliver toxic strikes with the weapon. A 
+character using poison in this way faces all the normal 
+perils of using poison (including accidental exposure 
+when activating the capsule or with a natural 1 on the 
+attack roll).
+ 
+Ghostblight:
+ A ghostblight alchemical capsule coats 
+a melee weapon or a thrown weapon with a thick gray 
+liquid. This substance allows the weapon to ignore the 
+miss chance that ordinarily applies when the wielder is 
+in combat with incorporeal creatures (as if the weapon 
+had  the  ghost  touch  magical  property).  The  capsule’s 
+effects last for 3 rounds.
+ 
+Quickflame:
+ A quickflame alchemical capsule coats 
+a melee weapon or a thrown weapon with a thin sheet of 
+oil that instantly bursts into flame. This substance allows 
+the weapon to deal extra fire damage for a short amount 
+of time without damaging the weapon or its wielder. A 
+weapon treated with quickflame deals 1d6 points of fire 
+damage with each successful strike. The capsule’s effects 
+last for 1 round, ending at the beginning of the wielder’s 
+next turn. This fire damage doesn’t stack with any other 
+fire damage the weapon deals. 
+ 
+Quickfrost:
+ A quickfrost alchemical capsule coats a 
+melee weapon or a thrown weapon with a thin sheet of oil 
+that instantly cools to a dangerously low temperature. This 
+substance allows the weapon to deal extra cold damage 
+for a short amount of time without damaging the weapon 
+or its wielder. A weapon treated with quickfrost deals 1d6 
+points of cold damage with each successful strike. The 
+capsule’s effects last for 1 round, ending at the beginning 
+of the wielder’s next turn. This cold damage doesn’t stack 
+with any other cold damage the weapon deals.
+ 
+Quickspark:
+ A quickspark alchemical capsule coats a 
+melee weapon or a thrown weapon with a thin sheet of 
+liquid that crackles and sparks with dangerous electrical 
+energy. This substance allows the weapon to deal extra 
+electricity damage for a short amount of time without 
+damaging the weapon or its wielder. A weapon treated 
+with quickspark deals 1d6 points of electricity damage 
+with each successful strike. The capsule’s effects last for 
+1 round, ending at the beginning of the wielder’s next 
+turn. This electricity damage doesn’t stack with any other 
+electricity damage the weapon deals.
+ 
+Quicksilver:
+ A quicksilver alchemical capsule coats a 
+melee weapon or a thrown weapon with a thick silvery 
+liquid. This substance allows the weapon to deal damage 
+as if it were coated with silver (including the normal 
+–1 penalty on damage rolls for silvered weapons). The 
+capsule’s effects last for 3 rounds and override any other 
+special material effects of the weapon.
+Table 4–4: Alchemical Weapon Capsules
+ 
+ 
+ 
+Craft
+Item 
+Cost  Duration (Alchemy) DC
+Weapon capsule retainer  100 gp 
+n/a 
+n/a
+Triple weapon  
+450 gp 
+n/a 
+n/a
+  capsule retainer
+Ghostblight 
+100 gp   3 rounds 
+35
+Quickflame 
+25 gp   1 round 
+25
+Quickfrost 
+25 gp   1 round 
+25
+Quickspark 
+25 gp   1 round 
+25
+Quicksilver 
+50 gp   3 rounds 
+30
+TOOLS AND SKILL KITS
+Some equipment is particularly useful if you have certain 
+skills. In most cases, the items described in this section 
+items  expand  and  specify  the  masterwork  tools  that 
+are described in the 
+Player’s Handbook
+ (pages 129–131). 
+Unless otherwise noted, the items described here are not 
+available in masterwork versions.
+ 
+Animal  Training  Kit:
+  This  kit  includes  signal 
+whistles, a short hollow pole with a loop of rope threaded 
+through  it,  savory  treats,  and  other  well-made  items 
+suited for the training of animals. This kit grants a +2 
+circumstance bonus on Handle Animal checks made for 
+teaching animals tricks, training animals for a purpose, 
+or rearing a wild animal. It does not grant a bonus for 
+other uses of the Handle Animal skill.
+ 
+Balance Pole:
+ This long, flexible pole is the perfect 
+tool for balancing. The pole is 10 feet long, so it cannot be 
+used in any space that allows less than 5 feet of clearance 
+on either side. Provided the user has space to employ 
+the pole properly, it grants a +2 circumstance bonus on 
+Balance checks.
+ 
+Camouflage Kit:
+ This bag contains face paints, dye, 
+colored cloth, and other accessories appropriate for creat
+-
+ing a camouflaged appearance. The kit is the perfect tool 
+for hiding and provides a +2 circumstance bonus on Hide 
+checks. Gaining this bonus requires 1 minute of work. 
+A camouflage kit is exhausted after ten uses.
+ 
+Forgery Kit:
+ This small case holds a broad selection 
+of paper types, pens, and several colors of ink. In addi
+-
+tion, the kit contains samples of prominent family and 
+national crests and the like. This kit is the perfect tool 
+for attempting a forgery and grants a +2 circumstance 
+bonus on Forgery checks. A forgery kit is exhausted after 
+ten uses.
+ 
+Listening Cone:
+ This device is made for listening 
+through doors and other solid surfaces. It provides a +2 
+circumstance bonus on Listen checks made through a 
+door or some other relatively thin, solid obstacle.
+  Thieves’ Tools, Longspoon: 
+These specially modified 
+thieves’ tools are mounted on long, thin handles, enabling 
+the user to manipulate latches, tinker with locks, and 
+probe traps from a position up to 5 feet away and well 
+off to the side of the target device. A 1-inch-diameter 
+mirror mounted on a long handle gives the user a good 
+view of the object being manipulated. Though some traps 
+can inflict harm even at a distance, these tools make it 
+possible for a wary rogue to avoid many common hazards, 
+such as poison needles, spurting acid, and the like.
+  Using these tools is more time-consuming and less 
+accurate than taking a direct approach; longspoon tools 
+add 2 rounds to the time required to make a Disable 
+Device or Open Lock check and impose a –2 penalty on 
+any Disable Device or Open Lock check for which they 
+are used. 
+ 
+Longspoon thieves’ tools are available in normal or mas
+-
+terwork versions. The masterwork version provides a +2 
+bonus on Disable Device and Open Lock checks, but the 
+time required to make a check is not reduced. 
+ 
+Saddle,  Masterwork:
+  This  well-made  piece  of 
+gear, which can be either a riding saddle or a military 
+saddle,  is more comfortable and more responsive than 
+a normal saddle. Because of its excellent craftsmanship, 
+a masterwork saddle grants a +1 circumstance bonus on 
+Ride checks. If a masterwork saddle is also a military 
+saddle,  this  bonus  stacks  with  the  +2  circumstance 
+bonus that a military saddle provides to Ride checks 
+Table 4–5: Tools and Skill Kits
+Item 
+Cost 
+Weight
+Animal training kit 
+75 gp 
+15 lb.
+Balance pole 
+5 gp 
+5 lb.
+Camouflage kit 
+40 gp 
+5 lb.
+Forgery kit 
+40 gp 
+5 lb.
+Listening cone 
+20 gp 
+1 lb.
+Thieves’ tools, longspoon 
+80 gp 
+3 lb.
+Thieves’ tools, longspoon,
+   masterwork 
+150 gp 
+3 lb.
+Saddle, masterwork
+   Military 
+210 gp 
+40 lb.
+   Riding 
+180 gp 
+30 lb.
+Animal 
+training kit
+Forgery kit
+Longspoon 
+thieves’ 
+tools
+Illus. by W. England
+
+
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+124
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+125
+relating to staying in the saddle (see 
+Player’s Handbook
+, 
+page 132).
+  Each masterwork saddle is tailored for a specific kind of 
+creature. As such, it fits best on that kind of creature and 
+thus provides its bonus only when used with that kind 
+of creature. For example, a masterwork saddle made for 
+heavy warhorses would provide its bonus if used on any 
+heavy warhorse, but would not provide a bonus if used 
+on a dragon (assuming the saddle was of an appropriate 
+size for the dragon).
+MASTERWORK INSTRUMENTS
+This section presents a variety of musical instruments 
+particularly appropriate for adventuring bards. Each entry 
+offers a brief description of an instrument and notes on 
+what races or creatures favor it. This information is not 
+meant as an exhaustive treatment of all such instruments, 
+or even of the wide variations possible within these few. 
+Because  each  instrument  is  handcrafted,  no  two  are 
+exactly  alike—thus,  the  size,  the  number  of  holes  or 
+strings, and other features can vary even between two 
+examples of the same instrument.
+  Each of these instruments provides a special adjust
+-
+ment to bardic music when a masterwork instrument of 
+that kind is played by a character with a certain bardic 
+music ability. A musician who does not have the bardic 
+music ability, or a bard who plays a nonmasterwork ver
+-
+sion of one of these instruments, cannot benefit from 
+these bonuses.
+Table 4–6: Instruments by Perform Skill
+Instrument 
+Perform Skill
+Drum 
+Percussion instruments
+Fiddle 
+String instruments
+Flute 
+Wind instruments
+Harp 
+String instruments
+Horn 
+Wind instruments
+Lute 
+String instruments
+Lyre 
+String instruments
+Mandolin 
+String instruments
+Pan pipes 
+Wind instruments
+ 
+Drum: 
+A typical drum consists of skin, parchment, or 
+some similar material stretched tightly over the opening 
+of a hollow wooden cylinder or pot. This covered opening 
+is called the drumhead. Striking the drumhead with 
+sticks, mallets, or even hands produces the sound. Some 
+drums have only one drumhead; others have two or more. 
+Drums exist in large varieties (such as kettle drums) as 
+well as smaller varieties (such as bongo drums or the 
+double-ended tabor).
+  Drums are popular with almost every race and culture 
+for their ability to stir the emotions, establish a back
+-
+ground beat for dancing, and provide counterpoint for 
+a melody produced by some other instrument. Dwarves, 
+orcs,  and  other  races  that  favor  underground  living 
+particularly enjoy the echoing power of drums. Smaller 
+races, such as goblins and halflings, like bongo drums for 
+their portability. The rare creatures that do not appreci
+-
+ate drum-playing include celestials, who consider drum 
+rhythms primitive, and elves, who find them vaguely 
+disturbing and annoying (a prejudice reinforced, perhaps, 
+by the enthusiasm with which many of their enemies 
+embrace them). 
+ 
+Bardic Music:
+ When a bard uses a drum to inspire cour
+-
+age, the morale bonus on weapon damage rolls increases 
+by 1, but the morale bonus on saves against charm and 
+fear is reduced by 1.
+ 
+Fiddle:
+ An ancestor of the modern violin, the fiddle is 
+a small, portable stringed instrument with a body shaped 
+rather like an hourglass. Four or five strings made of gut 
+or sinew stretch across the body, anchored by pegs at 
+the end of a long, thin neck. The strings are played with 
+a separate piece called the bow—a long, thin piece of 
+wood strung with fine strands of animal hair. Fiddles 
+vary in length between 2 feet (for Medium fiddlers) and 
+18 inches (for halfling and kobold fiddlers). To play a 
+fiddle, the musician holds it horizontally, typically with 
+the base tucked under his chin, and draws the bow back 
+and forth across the strings.
+  The fiddle is popular among bards who prefer lively 
+dance  music  (reels  or  jigs)  over  serene  but  detached 
+“pure” music. Though welcome almost anywhere, the 
+fiddle is the favorite instrument of kobolds, whose clever 
+hands mastered its fingerings ages ago. (They insist that 
+they invented the fiddle, but other races find that claim 
+dubious.) Kobold minstrels and halfling bards typically 
+caper about while playing, setting their audience an 
+example of the lively dancing their music encourages. 
+Musicians of other races usually sit or stand to play the 
+instrument.
+ 
+Bardic Music:
+ When used by a bard to inspire courage, 
+a fiddle increases the morale bonus on saves against 
+charm and fear by 1. In the hands of a bard with 5 
+or more ranks in Perform (dance), the morale bonus 
+instead increases by 2.
+  A bard who uses a fiddle for bardic music can cast 
+spells while performing, but only if those spells have no 
+somatic, material, or focus components.
+ 
+Flute:
+ 
+The flute is the highest-pitched of all the wood
+-
+winds. This broad category includes instruments ranging 
+from the primitive recorder-flute—a simple, hollow tube 
+that produces music when air is blown straight through 
+it—to the traditional flute, which is held at a right angle 
+to the musician’s mouth.
+  Flutes range in length from 8 inches to about 2 feet. 
+The instrument has six holes (typically), plus a thumbhole 
+that, when covered, lowers each of the other notes by an 
+octave.
+  Flutes have a reputation for producing gentle, idyllic 
+music, but they can also create more martial effects or 
+distorted wailing sounds. Abyssal flutes always have an 
+odd number of finger holes, and they conform to no scale 
+or key used by humanoid bards. Particularly in the hands 
+of demon pipers, they produce “music” that sounds to 
+mortal ears like a disharmonious combination of sharps, 
+flats, and bizarre, minor-key effects.
+ 
+Bardic Music: 
+A bard playing a flute gains a +2 bonus on 
+Perform checks made to use the countersong ability.
+ 
+Harp: 
+A harp typically has seventeen strings but can 
+come with as few as twelve on a smaller instrument or 
+as many as forty-seven on a larger one. Silver wires are 
+the most common choice for strings, but other materi
+-
+als are occasionally used. Harps are usually made of 
+wood, though some artisans carve them from bone or 
+ivory. Whatever their material, most harps are highly 
+polished and elaborately decorated with carvings. The 
+finest rank as works of art in their own right, quite apart 
+from  their  status  as  instruments.  Though  harps  can 
+stand up to 6 feet tall, smaller versions (sometimes called 
+lap-harps) are much smaller—about 2 feet high—and 
+more portable. 
+  The harp is especially favored by elf bards for its light, 
+soothing sound and gentle, rippling notes. Harps are 
+often handed down from generation to generation among 
+the elves, and many eventually acquire names and legends 
+of their own. Any character with the bardic knowledge 
+ability who examines an elven harp automatically gains a 
++5 bonus on his or her bardic knowledge check to identify 
+the instrument and its bearer.
+ 
+Bardic Music: 
+A bard playing a harp can target one more 
+creature than normal with her 
+fascinate
+ and inspire great
+-
+ness abilities.
+Lute
+Drum
+Fiddle
+Flute
+Harp
+Lyre
+Pan pipes
+Horn
+Mandolin
+Illus. by W. England
+
+
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+126
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+127
+  A  bard  who  uses  a  harp  for  bardic  music  can  cast 
+spells while performing, but only if those spells have no 
+somatic, material, or focus components.
+ 
+Horn: 
+Originally horns were, as their name indicates, 
+actual horns taken from bulls or more exotic beasts. At 
+its simplest, a horn consists of a narrow tip connected 
+to a wider, circular orifice by a hollow, often curved 
+shaft. A musician plays a horn by simply blowing into 
+the small end. Other forms of horns exist, from the 
+conch shell horn employed by merfolk to the herald’s 
+trumpet, but all these instruments function more or 
+less identically.
+  Horns are popular in primitive societies of all kinds. 
+They come in all sizes; those used by Medium creatures 
+are typically 1 to 2 feet in length. Hobgoblins and orcs 
+in particular enjoy these instruments for their loud, 
+stirring,  martial  sound.  Larger  human
+-
+oids and giants favor horns made from 
+dire  creatures.  Legend  holds  that 
+minotaurs  use  instruments 
+made from the severed horns 
+of other minotaurs that suf
+-
+fered  defeat  in  one-on-one 
+contests of honor.
+  A  horn  makes  an 
+excellent signal device—
+particularly  when  used 
+underwater, since sound trav
+-
+els much farther in water than in air. 
+Some aquatic races such as merfolk and kuo-toa collect 
+a variety of horn-shaped shells in different sizes and play 
+them in harmony, in sequence, or both. The music of 
+these seashell orchestras can achieve a deep, haunting 
+grandeur.
+ 
+Bardic Music: 
+When a bard plays a horn to inspire cour
+-
+age, it raises the morale bonus on weapon damage rolls 
+and saves against fear by 1, but the effect lasts for only 1 
+round after the ally stops hearing the bard perform.
+ 
+Lute:
+ This ancestor of the guitar has a pear-shaped 
+bowl and a distinctive bent neck with frets for fingering. 
+Between four and eight strings stretch between the base 
+of the bowl and the top of the neck. Lutes vary between 
+30 and 36 inches in length, with the bowl taking up some 
+two-thirds of that total. The musician either strums or 
+plucks the strings to produce music.
+  A  highly  versatile  instrument  because  of  its  wide 
+range of notes and inflection, the lute is accessible to the 
+beginner but capable of great subtlety in the hands of a 
+master. The deep bowl gives it a rich, full sound unlike 
+that of any other stringed instrument. It is by far the 
+most popular instrument with bards, especially half-elf 
+and human ones.
+ 
+Bardic Music: 
+A bard playing a lute is treated as one level 
+higher for the purpose of adjudicating the power of his 
+bardic music effects. For example, a 3rd-level bard using a 
+lute could 
+fascinate
+ two creatures instead of one, a 6th-level 
+bard using a lute to make a 
+suggestion
+ would calculate the 
+save DC as if he were 7th level, and a 7th-level bard using 
+a lute to inspire courage would grant a +2 morale bonus 
+on the appropriate rolls.
+  A bard who uses a lute for bardic music can cast spells 
+while  performing,  but  only  if  those  spells  have  no 
+somatic, material, or focus components. 
+ 
+Lyre: 
+A simpler ancestor of the lap-harp, a lyre typically 
+has a body made out of a turtle shell, plus two curved 
+arms and a crossbar to hold its four to six 
+(or,  more  rarely,  eight)  gut  or 
+sinew  strings  taut.  To 
+play a lyre, the musi
+-
+cian holds it in one 
+hand while strum
+-
+ming  or  plucking 
+the strings with the 
+other.
+ 
+The very simplicity of a lyre 
+is its charm, since even a novice can 
+strum one to credible effect. Because of this 
+accessibility and the fact that they’re easy to make, lyres 
+are popular among the sylvan fey (especially satyrs) and 
+country folk in general. On occasion, however, a true 
+master adopts it as a signature instrument, producing 
+astonishing effects.
+ 
+Bardic Music:
+ A bard playing a lyre can target one more 
+creature than normal with her 
+fascinate
+ ability and inspire 
+heroics abilities.
+  A bard who uses a lyre for bardic music can cast spells 
+while  performing,  but  only  if  those  spells  have  no 
+somatic, material, or focus components. 
+ 
+Mandolin: 
+Essentially a smaller version of the lute, a 
+mandolin is usually between 20 inches and 2 feet long. 
+It has a straighter neck than the lute—the end at which 
+the pegs secure the strings tilts back only slightly, if at 
+all. The mandolin is unusual for the number of strings 
+it holds—from four to six pairs (eight to twelve strings 
+total) or even more. A mandolin is typically played with 
+a pick, both to protect the musician’s fingers and because 
+the strings are too close together to pluck accurately by 
+hand.
+  The mandolin has a sweeter sound than the lute and, 
+because of its shorter strings, a higher pitch as well. Its 
+great range of tone and expression have made it a favorite 
+of gnomes and halflings, who champion it as superior 
+even to the lute.
+ 
+Bardic Music: 
+When a bard uses a mandolin to inspire 
+courage, the morale bonus on attack rolls increases by 
+1, but the morale bonus on weapon damage rolls and on 
+saves against charm and fear is reduced by 1.
+  A bard who uses a mandolin for bardic music can cast 
+spells while performing, but only if those spells have no 
+somatic, material, or focus components. 
+ 
+Pan Pipes: 
+In essence, a set of pan pipes is a series of 
+hollow reeds or wooden tubes of varying lengths bound 
+together in a row, from smallest to largest. To play them, 
+the musician blows across the tops of the tubes, produc
+-
+ing a sound much like that of several tiny wooden flutes. 
+By moving the pipes from side to side, the piper can play 
+different notes. Switching rapidly among notes creates 
+the sweet, rippling effect for which the instrument is 
+known.
+  Simple yet evocative, pan pipes are favorites of satyrs 
+and other sylvan fey. Humans and some elves also find 
+their music pleasing.
+ 
+Bardic Music: 
+A bard using pan pipes gains a +1 bonus 
+on Perform checks made to 
+fascinate
+ creatures, and also 
+adds 1 to the save DC against the bard’s 
+suggestion
+ bardic 
+music ability.
+MAGIC ITEMS
+The magic items described in this section expand the 
+options available to adventurers of all sorts. They range 
+from  objects  and  devices  suited  primarily  for  certain 
+characters  (such  as  bards)  to  items  that  have  much 
+broader utility.
+MAGIC ARMOR AND SHIELDS 
+SPECIAL ABILITY DESCRIPTIONS
+The following special abilities are designed to let mobile 
+wearers, particularly rogues and scouts, take full advan
+-
+tage of their abilities.
+ 
+Beastskin:
+ First created by powerful druids, armor 
+with this special ability is particularly useful to characters 
+of that sort. Whenever you use the wild shape class feature 
+while wearing a suit of armor with the beastskin property, 
+you can expend an additional daily use of your wild shape 
+ability to cause the armor to be transformed with you. 
+When used in this manner, the beastskin armor becomes 
+a suit of armor fitted for your new form rather than simply 
+merging with your body. The armor continues to grant 
+its armor bonus, applying the appropriate armor check 
+penalty,  slowing  your  movement  rate,  and  otherwise 
+functioning as a suit of armor fitted to the new form. The 
+armor’s weight increases or decreases to match your new 
+size (and shape, if you assume a quadrupedal form) and 
+therefore might affect your carrying capacity differently 
+than it does in your natural form.
+  If in your natural form you are proficient with the type 
+of armor to which the beastskin quality has been spplied, 
+then you are proficient with the beastskin armor when 
+you are transformed, regardless of what shape you take.
+  This special ability can be applied only to armor, not 
+to shields.
+  Strong transmutation; CL 13th; Craft Magic Arms and 
+Armor, 
+ironwood;
+ Price +2 bonus.
+ 
+Focused:
+ A focused shield helps you anticipate your 
+enemy’s moves in battle, helps you see through feints and 
+similar moves, and provides enhanced benefits when you 
+are facing only one creature.
+  A focused shield grants a +10 circumstance bonus on 
+your Sense Motive check that opposes a Bluff check made 
+to feint. In addition, any time when you are threatened by 
+only one creature, the shield bonus to your AC provided 
+by a focused shield improves by 1.
+  This special ability can be applied only to shields, not 
+to armor.
+  Moderate abjuration; CL 11th; Craft Magic Arms and 
+Armor, 
+shield;
+ Price +1 bonus.
+MAGIC WEAPON SPECIAL ABILITY 
+DESCRIPTIONS
+The following weapon special abilities are particularly 
+useful for Small adventurers and for rogues of all sizes.
+  Sizing:
+ The wielder of a sizing weapon can change 
+the weapon’s size category to any other size category as a 
+standard action. Spellcasters who frequently polymorph 
+themselves appreciate weapons with the sizing special 
+ability.
+ 
+Moderate transmutation; CL 9th; Craft Magic Arms 
+and Armor, 
+enlarge person, reduce person;
+ Price +1 bonus.
+ 
+Deadly Precision:
+ A deadly precision weapon deals 
+an extra 2d6 points of damage when its wielder makes 
+a successful sneak attack. This ability does not bestow 
+the ability to make sneak attacks upon a user who does 
+not already have it.
+  Moderate transmutation; CL 12th; Craft Magic Arms 
+and Armor, 
+keen edge;
+ Price +2 bonus.
+Illus. by D. Kovacs
+
+
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+128
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+129
+SPECIFIC WEAPONS
+The  following  weapons  all  have  special  abilities  that 
+make them more versatile (and often more deadly) than 
+a normal weapon of that kind in the right hands.
+  Blade of Deception:
+ The fl at steel blade of this 
++3 rapier
+ 
+is hard to follow in combat. Any time a character uses 
+the Bluff skill to feint in combat while wielding a 
+blade 
+of deception, 
+the blade provides a +2 enhancement bonus 
+on the Bluff check. A 
+blade of deception 
+provides no bonus 
+on other Bluff checks. In addition, any opponent against 
+whom the wielder successfully feints cannot make attacks 
+of opportunity against the wielder until the beginning of 
+the opponent’s next turn. Anyone who was not the target 
+of the feint can make attacks of opportunity against the 
+wielder normally.
+Moderate  illusion;  CL  9th;  Craft  Magic  Arms  and 
+Armor, 
+blur; 
+Price 19,820 gp; Cost
+ 
+10,070 gp + 780 XP.
+  Bow of Songs:
+ Made from fi ne wood by elf hands, 
+this 
++2 shortbow
+ blends music with every shot to deadly 
+effect. As a move action that does not provoke attacks 
+of opportunity, the wielder can expend one daily use 
+of bardic music to gain a bonus equal to his Charisma 
+bonus on attack rolls and damage rolls with the next 
+single attack made using a 
+bow of songs
+.
+Moderate transmutation; CL 8th; Craft Magic Arms and 
+Armor, 
+sculpt sound
+, creator must be an elf, creator must 
+have bardic music ability
+; 
+Price 32,330 gp; Cost
+16,330 gp 
++ 1,280 XP.
+  Bowstaff:
+ As a move action, the wielder can change 
+this thin, fl exible 
++2 quarterstaff 
+into a 
++2 longbow
+ or back 
+again. Both forms perform exactly like a regular magic 
+weapon of their kind.
+ 
+Strong transmutation; 
+CL  15th;  Craft  Magic 
+Arms  and  Armor, 
+poly-
+morph  any  object; 
+Price 
+10,975 gp; Cost
+ 
+5,975 gp + 
+400 XP.
+  Claws of the Leopard:
+This pair of 
++2 spiked gauntlets
+ 
+has been shaped to look like 
+the  paws  of  an  oversized  cat. 
+In addition to their enhance-
+ment  bonus,  the  claws 
+provide  several  feline-
+like  advantages.  While 
+wearing 
+claws of the leopard, 
+the wielder gains low-light 
+vision  and  a  +10  enhance-
+ment bonus on Climb checks. 
+If the wielder charges a foe, 
+she can make a full attack 
+with 
+claws
+ 
+of the leopard
+. This 
+ability  functions  like  the 
+pounce special attack (see 
+page  313  of  the 
+Monster 
+Manual
+).
+ 
+Moderate  transmuta-
+tion; CL 6th; Craft Magic 
+Arms  and  Armor, 
+cat’s 
+grace,
+ creator must have 
+5 ranks in Climb
+; 
+Price 
+38,305 gp; Cost
+19,305 gp 
++ 1,520 XP.
+  Dagger of Defense:
+  
+This 
++4
+ 
+defending
+ 
+dagger
+ has a long, thin blade and a 
+broad guard, making it an excellent defen-
+sive weapon for fending off attacks. In addition, 
+as long as a character holds a 
+dagger of defense
+ in his off 
+hand, he cannot be fl anked.
+Moderate  abjuration;  CL  12th; 
+Craft  Magic  Arms  and  Armor, 
+shield; 
+Price 
+58,302 gp; Cost
+ 
+29,302 gp + 2,320 XP. 
+  Guerrilla Spear:
+ This 
++2 shortspear
+ is extremely 
+effective when used in ambush. Whenever the wielder 
+makes a successful attack against an opponent who is 
+denied his Dexterity bonus to Armor Class, a 
+guerrilla 
+spear 
+deals an extra 2d6 points of damage.
+Moderate  illusion;  CL  7th;  Craft  Magic  Arms  and 
+Armor, 
+invisibility; 
+Price  32,301  gp;  Cost
+ 
+16,302  gp  + 
+1,280 XP.
+Claws of 
+the leopard
+Dagger of 
+defense
+Beastskin armor stays with this druid when 
+he changes into a bear
+Illus. by E. Cox and R. Spencer
+
+
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+130
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+131
+  Songblade:
+ Every move made with this 
++1 rapier
+ fi lls 
+the air with sweet sounds. While holding a
+ songblade
+ 
+unsheathed, the sword’s wielder gains a +2 enhancement 
+bonus on Perform checks. A bard wielding a 
+songblade
+ 
+can use her bardic music abilities one additional time 
+per  day.  The  blade  is  scored  in  a  beautiful,  intricate 
+pattern,  and  air  moving  across  this  magical  etching 
+generates the music of a 
+songblade.
+ The blade’s musical 
+qualities do not function underwater, in a vacuum, or 
+in other environments where air cannot freely pass over 
+the blade.
+Moderate transmutation; CL 8th; Craft Magic Arms 
+and Armor, 
+sculpt sound,
+ creator must have 
+bardic music class feature
+; 
+Price 6,400 
+gp; Cost
+3,360 gp + 243 XP.
+POTIONS
+The following table includes spells introduced in this 
+book that are appropriate for making into potions. See 
+page 229 of the 
+Dungeon Master’s Guide
+ for more informa-
+tion on potions.
+Table 4–7: Potions and Oils
+Potion or Oil 
+Market Price
+Healthful rest
+ (potion) 
+50 gp
+Exacting shot
+ (oil) 
+100 gp
+Iron silence 
+(oil) 
+300 gp
+Nature
+’s favor 
+(potion) 
+300 gp
+Sonic weapon 
+(oil) 
+300 gp
+Train animal 
+(potion) 
+300 gp
+Absorb weapon 
+(oil) 
+750 gp
+Entangling staff 
+(oil) 
+750 gp
+RINGS
+A character can effectively wear only two magic rings. 
+A third magic ring doesn’t work if the owner already 
+wears two.
+Ring 
+Market Price
+Filcher
+’s friend
+ 
+2,500 gp
+Lockpicking
+ 
+4,500 gp
+ 
+Filcher’s Friend:
+ When activated, this plain steel ring 
+draws toward it any loose metal object within 1 foot and 
+weighing no more than 1 ounce (usually coins, jewelry, 
+or small keys). The objects do not have to be ferrous, 
+simply metal in some way. A 
+fi lcher’s friend
+ also grants a 
++5 bonus on Sleight of 
+Hand  checks  involv-
+ing metal objects.
+   Faint  transmutation;  CL 
+12th; Forge Ring, 
+mage hand;
+Price 2,500 gp.
+    Lockpicking:
+ This ring is 
+made up of tiny prongs, wires, and other 
+small devices that spring to life on command. 
+A 
+lockpicking ring
+ grants the wearer a +5 compe-
+tence bonus on Open Lock checks and the ability 
+to use 
+knock
+ once per day if the wearer touches a portal 
+she wishes to open.
+  Faint transmutation; CL 3rd; Forge Ring, 
+knock;
+ Price 
+4,500 gp.
+SCROLLS
+The following tables include scrolls of all spells intro-
+duced in this book. See page 237 of the 
+Dungeon Master’s 
+Guide
+ for more information on scrolls.
+Table 4–8: Arcane Spell Scrolls
+1st-Level Arcane Spells 
+Market Price
+Accelerated movement
+ 
+25 gp
+Arrow mind
+ 
+25 gp
+Critical strike
+ 
+25 gp
+Distort speech
+ 
+50 gp
+Distract assailant
+ 
+25 gp
+Expeditious retreat, swift
+ 
+25 gp
+Focusing chant
+ 
+50 gp
+Golem strike
+ 
+25 gp
+Guided shot
+ 
+25 gp
+Healthful rest
+ 
+50 gp
+Herald
+’s call
+ 
+50 gp
+Insightful feint
+ 
+25 gp
+Inspirational boost
+ 
+50 gp
+Instant locksmith
+ 
+25 gp
+Instant search
+ 
+25 gp
+Joyful noise
+ 
+50 gp
+Master
+’s touch
+ 
+25 gp
+Sniper
+’s shot
+ 
+25 gp
+2nd-Level Arcane Spells 
+Market Price
+Balancing lorecall
+ 
+150 gp
+Bladeweave
+ 
+150 gp
+Daggerspell stance
+ 
+150 gp
+Fly, swift
+ 
+150 gp
+Insidious rhythm
+ 
+200 gp
+Invisibility, swift
+ 
+150 gp
+Iron silence
+ 
+200 gp
+Listening lorecall
+ 
+150 gp
+Mindless rage
+ 
+150 gp
+Sonic weapon
+ 
+150 gp
+Tactical precision
+ 
+200 gp
+Wracking touch
+ 
+150 gp
+Wraithstrike
+ 
+150 gp
+3rd-Level Arcane Spells 
+Market Price
+Absorb weapon
+ 
+375 gp
+Allegro
+ 
+525 gp
+Dirge of discord
+ 
+525 gp
+Dissonant chord
+ 
+525 gp
+Harmonic chorus
+ 
+525 gp
+Hymn of praise
+ 
+525 gp
+Infernal threnody
+ 
+525 gp
+Spectral weapon
+ 
+375 gp
+Speechlink
+ 
+525 gp
+4th-Level Arcane Spells 
+Market Price
+Entangling staff
+ 
+700 gp
+Listening coin
+ 
+1,000 gp
+Sniper
+’s eye
+ 
+700 gp
+War cry
+ 
+1,000 gp
+5th-Level Arcane Spells 
+Market Price
+Improvisation
+ 
+1,625 gp
+Nightstalker
+’s transformation
+ 
+1,125 gp
+Shadow form
+ 
+1,125 gp
+Wail of doom
+ 
+1,625 gp
+6th-Level Arcane Spells 
+Market Price
+Cloak of the sea
+ 
+1,650 gp
+Prot
+é
+g
+é
+ 
+2,400 gp 
+7th-Level Arcane Spell 
+Market Price
+Cacophonic shield
+ 
+2,275 gp
+9th-Level Arcane Spell 
+Market Price
+Hindsight
+ 
+3,825 gp
+Table 4–9: Divine Spell Scrolls
+1st-Level Divine Spells 
+Market Price
+Accelerated movement
+ 
+50 gp
+Arrow mind
+ 
+50 gp
+Bloodhound
+ 
+50 gp
+Exacting shot
+ 
+50 gp
+Grave strike
+ 
+25 gp
+Guided shot
+ 
+50 gp
+Hawkeye
+ 
+25 gp
+Healthful rest
+ 
+25 gp
+Instant search
+ 
+50 gp
+Sniper
+’s shot
+ 
+50 gp
+Vine strike
+ 
+25 gp
+2nd  -Level Divine Spells 
+Market Price
+Balancing lorecall
+ 
+150 gp
+Branch to branch
+ 
+150 gp
+Daggerspell stance
+ 
+150 gp
+Divine insight
+ 
+150 gp
+Easy climb
+ 
+200 gp
+Easy trail
+ 
+150 gp
+Embrace the wild
+ 
+150 gp
+Haste, swift
+ 
+200 gp
+Healing lorecall
+ 
+150 gp
+Iron silence
+ 
+150 gp
+Listening lorecall
+ 
+150 gp
+Nature
+’s favor
+ 
+150 gp
+Train animal
+ 
+150 gp
+Wracking touch
+ 
+150 gp
+3rd-Level Divine Spells 
+Market Price
+Blade storm
+ 
+375 gp
+Entangling staff
+ 
+375 gp
+Fly, swift
+ 
+375 gp 
+4th-Level Divine Spells 
+Market Price
+Arrow storm
+ 
+700 gp
+Foebane
+ 
+700 gp
+Forestfold
+ 
+700 gp
+5th-Level Divine Spell 
+Market Price
+Cloak of the sea
+ 
+1,125 gp
+WANDS
+The following table includes a selection of new spells 
+introduced in this book. See page 245 of the 
+Dungeon 
+Master’s Guide
+ for more information on wands.
+Lockpicking 
+ring
+Songblade
+Illus. by R. Spencer
+Illus. by W. Reynolds
+
+
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+132
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+133
+Table 4–10: Wands
+Wand 
+Market Price
+Golem strike
+ 
+750 gp
+Grave strike
+ 
+750 gp
+Hawkeye
+ 
+750 gp
+Healthful rest
+ 
+750 gp
+Vine strike
+ 
+750 gp
+Divine insight
+ 
+4,500 gp
+Iron silence
+ 
+4,500 gp
+Mindless rage
+ 
+4,500 gp
+Nature
+’s favor
+ 
+4,500 gp
+Sonic weapon
+ 
+4,500 gp
+Train animal
+ 
+4,500 gp
+Wracking touch
+ 
+4,500 gp
+Wraithstrike
+ 
+4,500 gp
+WONDROUS ITEMS
+The following items were all created to allow adventurers 
+to take more advantage of skills they already possess. 
+Although  some  of  the  items  described  below  involve 
+the use of skills, the user need not have any ranks in a 
+specified skill to use the item unless otherwise noted in 
+an item’s description.
+  Spells referred to in this section and marked with a dagger 
+(†) are new spells detailed in Chapter 5 of this book.
+ 
+Amulet of Aberrant Empathy:
+ This strange, twisted 
+amulet allows the wearer to use the Handle Animal skill 
+in place of the Diplomacy skill when dealing with some 
+aberrations.
+  While wearing an 
+amulet of aberrant empathy,
+ a character 
+can make Handle Animal checks rather than Diplomacy 
+checks to influence the attitude of aberrations with an 
+Intelligence of 9 or lower.
+  Moderate enchantment; CL 11th; Craft Wondrous Item, 
+charm monster;
+ Price 1,400 gp.
+ 
+Armbands of Might:
+ These bronze armbands grant 
+their wearer a +2 bonus on Strength checks and Strength-
+based skill checks. If the wearer has the Power Attack 
+feat, he gains a +2 bonus on melee damage rolls on any 
+attack on which he uses the Power Attack feat and takes 
+a penalty of at least –2 on his attack roll.
+  Armbands occupy the same space on the body as a pair 
+of bracers or bracelets.
+  Faint transmutation; CL 3rd; Craft Wondrous Item, 
+bull’s strength
+; Price 4,100 gp.
+ 
+Badge of Valor:
+ This golden brooch provides its wearer 
+with a +2 morale bonus on saves against fear effects. This 
+bonus improves to +4 on level checks made to avoid being 
+intimidated.
+  The morale bonus of this badge stacks with the morale 
+bonus granted by the paladin’s aura of courage ability and 
+the bard’s inspire courage ability.
+  Faint  enchantment;  CL  4th;  Craft  Wondrous  Item; 
+heroism
+; Price 1,000 gp.
+ 
+Choker of Eloquence: 
+Coveted by bards, singers, and 
+public speakers, this beautiful necklace is carved from 
+ivory and jade. There are two versions of these chokers. 
+A 
+lesser choker of eloquence
+ grants a +5 competence bonus 
+on Diplomacy, Bluff, and Perform (sing) checks. A 
+greater 
+choker of eloquence
+ increases the bonus to +10.
+  Moderate transmutaion; CL 6th; Craft Wondrous Item, 
+creator must be a spellcaster of at least 6th level; 
+ 
+Price 
+6,000 gp (
+lesser
+), 24,000 gp (
+greater
+).
+ 
+Collar of Obedience:
+ Any animal or magical beast 
+wearing this collar becomes easier to handle.  The DC of 
+any Handle Animal check to handle, push, teach, train, 
+or rear the wearer is decreased by 5.
+  A collar occupies the same space on the body as an 
+amulet, brooch, or other item meant to be worn around 
+the neck..
+  Faint  enchantment;  CL  3rd;  Craft  Wondrous  Item, 
+charm animal
+; Price 1,500 gp.
+ 
+Crown  of  Steady  Rulership:
+  This  ornate  golden 
+crown is a useful tool for princes and potentates, for it 
+allows them to see through the falsehoods that parade 
+before them. The wearer gains a +5 competence bonus 
+on Sense Motive checks and on Spot checks made to see 
+through disguises.
+  Faint  divination;  CL  3rd;  Craft  Wondrous  Item, 
+see 
+invisibility
+; Price 4,500 gp.
+  Flute of the Snake: 
+The
+ 
+music of this flute has the 
+power to charm snakes of all kinds. By playing this flute 
+and making a DC 15 Perform (wind instruments) check, 
+the musician can produce a 
+charm animal 
+effect that affects 
+only snakes. This power can be used three times per day.
+  Once per day, by playing a droning sequence of notes 
+for 1 full round and succeeding on a DC 20 Perform 
+(wind instruments) check, a musician can summon 1d4+1 
+Medium vipers. These snakes appear wherever the flutist 
+designates within 30 feet of her location. They fight on 
+the musician’s behalf, attacking on her turn, and remain 
+for 7 rounds or until killed.
+  Moderate conjuration and enchantment; CL 7th; Craft 
+Wondrous Item, 
+charm animal
+, 
+summon nature’s ally IV
+; 
+Price 15,400 gp.
+  Harp of the Immortal Maestro: 
+This pinnacle of 
+instrument design functions as a masterwork harp with 
+minor magical effects in the hands of someone with 1 or 
+more ranks in Perform (string instruments). By speaking 
+the correct command words, such a musician can use 
+levitate 
+and 
+magic circle against evil 
+once per day each.
+  A 
+harp of the immortal maestro
+ functions best in the 
+hands of a musician with at least 15 ranks in Perform 
+(string instruments). Such a user can, simply by strum
+-
+ming the harp, generate the following effects once per 
+day each: 
+cure critical wounds, displacement, 
+and 
+summon 
+monster V
+. 
+  Moderate  abjuration,  conjuration,  illusion,  and 
+transmutation; CL 9th; Craft Wondrous Item, 
+cure criti
+-
+cal wounds, displacement, levitate, magic circle against evil, 
+summon monster V
+, creator must have 15 ranks in Perform 
+(string instruments); Price 51,000 gp; Weight 3 lb.
+ 
+Headband of Conscious Effort:
+  Anyone  wearing 
+a 
+headband of conscious effort 
+can make a Concentration 
+check  in  place  of  a  required  Fortitude  saving  throw. 
+This ability can be activated once per day. Activating the 
+headband is an immediate action that does not provoke 
+attacks of opportunity.
+  Moderate transmutation; CL 6th; Craft Wondrous Item, 
+Combat Casting, 
+bear’s endurance;
+ Price 4,000 gp.
+ 
+Jumping Caltrops: 
+These  unusual  items  are  actu
+-
+ally Diminutive animated objects.
+ 
+When released from 
+their bag, they begin hopping around the 5-foot square 
+in which they land. When someone tries to move into, 
+through, or within that square on foot, the 
+jumping caltrops
+ 
+immediately try to scurry under the interloper’s feet. 
+Jumping caltrops
+ can’t move from the square in which 
+they land.
+  The number of caltrop attacks a creature is subject to 
+while within the affected area depends on its current 
+speed: four if it moved into the square at normal speed, 
+two if it moved into the square at half speed, and none 
+if it moved into the square at one-quarter speed or less. 
+(One-quarter speed assumes that the creature is shuffling 
+forward without picking up its feet.) The target’s shield, 
+armor, and deflection bonuses don’t count against these 
+attacks. A target that is wearing shoes or other footwear, 
+however, gets a +2 bonus to AC. The speed of any target 
+that takes damage from the caltrop attack is reduced to 
+one-half normal because of the foot injury.
+  Once they are released, 
+jumping caltrops 
+continue to 
+move for 11 rounds, though the owner can order them 
+back into the bag before the duration expires if desired. 
+However, they can move (and thus attack on their own) 
+only upon their first use; thereafter, they become normal 
+caltrops.
+ 
+Jumping Caltrop:
+ CR 1/4; Diminutive construct; HD 1/4 
+d10; hp 1; Init +3; Spd n/a; AC 17, touch 17, flat-footed 14; 
+Base Atk +0; Grp –14; Atk or Full Atk +7 melee (1, impale); 
+Space/Reach 1/2 ft. by 1/2 ft./0 ft.; SQ construct traits, 
+use Dexterity instead of Strength for melee attacks; AL N; 
+SV Fort +0, Ref +3, Will –5; Str 6, Dex 16, Con —, Int —, 
+Wis 1, Cha 1.
+  Moderate  transmutation;  CL  11th;  Craft  Wondrous 
+Item, 
+animate objects
+; Price 150 gp; Weight 2 lb.
+  Lute of the Wandering Minstrel: 
+This finely wrought 
+instrument functions as a masterwork lute with minor 
+magical effects in the hands of someone with 1 or more 
+ranks in Perform (string instruments). By speaking the 
+correct command words, such a musician can use 
+levitate 
+and 
+magic circle against evil 
+once per day each.
+ 
+A musician with 5 or more ranks in Perform (string 
+instruments) can coax additional magical effects from 
+this instrument. By playing a single chord on the lute, 
+such a performer can generate an 
+expeditious retreat, haste,
+ 
+or 
+phantom steed
+ effect. Each of these abilities is usable 
+once per day. 
+  Faint  abjuration,  conjuration,  and  transmutation; 
+CL 5th; Craft Wondrous Item, 
+expeditious retreat, haste, 
+levitate, magic circle against evil, phantom steed
+, creator must 
+Table 4–11: Wondrous Items
+Minor Wondrous Items 
+Market Price
+Jumping caltrops
+ 
+150 gp
+Scarf of warmth
+ 
+250 gp
+Badge of valor
+ 
+1,000 gp
+Medal of gallantry
+ 
+1,100 gp
+Amulet of aberrant empathy
+ 
+1,400 gp
+Collar of obedience
+ 
+1,500 gp
+Possum pouch
+ 
+1,800 gp
+Papyrus of deception
+ 
+2,000 gp
+Spool of endless rope
+ 
+2,000 gp
+Vial of the last gasp
+ 
+2,200 gp
+Spellsight spectacles
+ 
+2,500 gp
+Tunic of steady spellcasting
+ 
+2,500 gp
+Rope of stone
+ 
+2,800 gp
+Stylus of the masterful hand
+ 
+3,000 gp
+Pendant of draconic empathy
+ 
+3,300 gp
+Shawl of bewitching
+ 
+3,500 gp
+Headband of conscious effort
+ 
+4,000 gp
+Armbands of might
+ 
+4,100 gp
+Crown of steady rulership
+ 
+4,500 gp
+Choker of eloquence, lesser
+ 
+6,000 gp
+Monocle of perusal
+ 
+6,500 gp
+Medium Wondrous Items 
+Market Price
+Trumpeter
+’s gift
+ 
+12,700 gp
+Sandals of harmonious balance
+ 
+14,000 gp
+Flute of the snake
+ 
+15,400 gp
+Mask of lies
+ 
+17,000 gp
+Choker of eloquence, greater
+ 
+24,000 gp
+Major Wondrous Items 
+Market Price
+Lute of the wandering minstrel
+  
+29,500 gp
+Mandolin of the inspiring muse
+ 
+42,000 gp
+Strings of spell storing
+ 
+45,000 gp
+Harp of the immortal maestro
+ 
+51,000 gp
+
+
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+134
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+135
+have 5 ranks in Perform (string instruments); Price 29,500 
+gp; Weight 3 lb.
+  Mandolin of the Inspiring Muse: 
+Bards and other 
+musicians prize this carefully crafted mandolin, which 
+functions as a masterwork mandolin with minor magical 
+effects in the hands of someone with 1 or more 
+ranks in Perform (string instruments). By 
+speaking  the  correct  command  words, 
+such a musician can utilize 
+levitate 
+and 
+magic  circle  against  evil 
+once  per  day 
+each.
+  In  addition,  an  owner  with  at 
+least  15  ranks  in  Perform  (string 
+instruments) can use the mandolin 
+to generate the effects of 
+crushing 
+despair
+, 
+dominate  person
+,  and 
+good 
+hope
+  each  once  per  day  each  by 
+playing the correct notes.
+  Moderate  abjuration,  
+enchantment,  and  trans-
+mutation;  CL  9th;  Craft 
+Wondrous  Item, 
+crushing  despair,
+dominate  person, 
+good  hope,  levi-
+tate,  magic  circle 
+against  evil
+,  creator 
+must have 10 ranks in 
+Perform (string instru-
+ments); Price 42,000 gp; 
+Weight 3 lb.
+  Mask of Lies:
+ This black, featureless mask has only 
+slits for eyes and mouth. The wearer can use 
+disguise self
+ 
+on herself at will and is continually under the effect of 
+undetectable alignment
+. In addition, she gains a +5 com-
+petence bonus on Bluff checks. 
+  A mask occupies the same space on the body as eye 
+lenses or goggles.
+  Faint abjuration and illusion; CL 5th; Craft Won-
+drous Item, 
+disguise self, undetectable alignment;
+ Price 
+17,000 gp.
+Medal of Gallantry:
+ This silver sun-shaped brooch 
+grants its wearer a +2 bonus on Diplomacy checks but 
+imposes  a  –2  penalty  on  Bluff  checks.  This  penalty 
+remains for 24 hours after the medal is removed.
+  Three times per day the wearer can use 
+sanctuary
+ on 
+himself as a swift action. If the wearer attacks while pro-
+tected by this effect, he takes a –1 morale penalty on that 
+attack and all subsequent attacks for 1 hour afterward.
+  Faint abjuration; CL 3rd; Craft Wondrous Item, 
+sanctu-
+ary
+; Price 1,100 gp.
+Monocle of Perusal:
+ This crystal lens provides the 
+user with a +5 competence bonus on Appraise checks. 
+Once per day the user can use 
+identify
+.
+   A monocle occupies the same space on the 
+body as a pair of eye lenses or goggles.
+ 
+Faint  divination;  CL  3rd; 
+Craft Wondrous Item, 
+iden-
+tify
+; Price 6,500 gp.
+Papyrus of Deception:
+This  enchanted  sheet 
+of  paper  usually  looks 
+thick and yellowed with 
+age.  However,  when  used 
+as the basis for a forged docu-
+ment, the papyrus is extremely 
+useful, since it changes its size, 
+consistency,  and  appearance 
+to match the mental descrip-
+tion of the forger. When 
+used  as  part  of  a 
+forgery, 
+papyrus 
+of  deception
+  adds 
+a +5 enhancement 
+bonus  to  the 
+Forgery  check. 
+The  papyrus  can 
+never  duplicate  a 
+sheet of paper larger than 
+12  inches  on  a  side  or  smaller  than  3 
+inches on a side. 
+Papyrus of deception
+ can be reused.
+  Faint divination; CL 5th; Craft Wondrous Item, 
+read 
+magic;
+ Price 2,000 gp.
+Pendant  of  Draconic  Empathy:
+  This  enchanted 
+amulet  allows  the  wearer  to  use  the  Handle  Animal 
+skill in place of the Diplomacy skill when dealing with 
+dragons whose Intelligence is 11 or lower.
+  Moderate enchantment; CL 11th; Craft Wondrous Item, 
+charm monster;
+ Price 3,300 gp.
+ 
+Possum Pouch: 
+Also  known  as  a  false  stomach,  a 
+possum  pouch
+  is  a  small,  fl at,  circular  bag  about  10  to 
+12 inches in diameter and up to 2 inches thick. When 
+placed against a humanoid’s abdomen and sealed there 
+with a command word, it blends in unobtrusively with 
+the surrounding skin, requiring a DC 30 Search check 
+to detect. Spies and couriers fi nd these items useful as 
+diplomatic pouches, while nobles and wealthy merchants 
+sometimes use them as money belts. Assassins, ninjas, 
+and sneak-thieves love 
+possum pouches
+ because they make 
+it easy to smuggle poison, daggers, and small valuables 
+into or out of well-guarded houses.
+  Faint illusion; CL 3rd; Craft Wondrous Item, 
+disguise 
+self
+; Price 1,800 gp; Weight 1 lb.
+  Rope of Stone:
+ This normal-looking, 50-foot coil of 
+silk rope becomes as hard as stone (hardness 8, 15 hp) 
+when a command word is spoken. A second command 
+word returns the rope to its normal composition. The 
+rope  retains  its  exact  shape  when  hardened  (which 
+adds 5 to the DC of Escape Artist checks made to slip 
+free of it). If it is ever broken in either form, the rope is 
+destroyed.
+  Faint transmutation; CL 5th; Craft Wondrous Item,
+ 
+stone shape;
+ Price 2,800 gp; Weight 5 lb.
+Sandals  of  Harmonious  Balance:
+  These  plain-
+looking wood and leather sandals make it possible to 
+undertake incredible feats of balance. While wearing 
+sandals of harmonious balance,
+ a character gains a +10 
+insight  bonus  on  Balance  checks  and  can 
+balance on vertical surfaces. The normal DC 
+modifi ers  (such  as  for  a  slippery 
+surface)  apply,  except  for 
+the  modifi er  for  a  sloped 
+or  angled  surface.  If  balanced 
+on a vertical surface, the wearer 
+can  move  up  or  down  as  if  she 
+were  climbing.  However,  she  is 
+not actually climbing, so she can 
+make attacks normally, retains 
+her Dexterity bonus to Armor 
+Class,  and  generally  follows 
+the rules of the Balance skill 
+rather than the Climb skill.
+  If the wearer has 10 or more 
+ranks in Balance, she can balance 
+on  liquids,  semisolid  surfaces  such 
+as  mud  or  snow,  or  similar  surfaces  that 
+normally couldn’t support her weight. For 
+each consecutive round that she begins balanced on a 
+particular surface of this sort, the DC of her Balance 
+check increases by 5. As with all uses of the Balance 
+skill, the wearer moves at half speed unless she decides 
+to  use  the  accelerated  movement  option  (thereby 
+increasing the DC of the Balance check by 5). For more 
+information on the Balance skill, see page 67 of the 
+Player’s Handbook.
+  Moderate transmutation; CL 8th; Craft Wondrous Item, 
+balancing lorecall
+†
+;
+ Price 14,000 gp.
+ 
+Scarf of Warmth:
+  This  woolen  scarf  provides  the 
+wearer with a +4 bonus on Fortitude saves made to resist 
+the effects of cold weather (see Cold Dangers, page 302 
+of the 
+Dungeon Master’s Guide
+).
+  A scarf occupies the same space on the body as an 
+amulet, necklace, or other item worn around the neck.
+  Faint abjuration; CL 3rd; Craft Wondrous Item, 
+endure 
+elements
+; Price 250 gp.
+ 
+Shawl  of  Bewitching:
+  A  character  wearing  this 
+simple-looking shawl gains a +5 competence bonus on 
+Bluff checks made to conceal the truth (but not on any 
+other use of the Bluff skill, including feinting in combat, 
+creating a diversion to hide, or delivering a secret mes-
+sage). It also adds 1 to the wearer’s caster level when he 
+casts any enchantment (charm) spell.
+  A shawl occupies the same space on the body as a cloak, 
+cape, or mantle.
+  Faint  enchantment;  CL  3rd;  Craft  Wondrous  Item, 
+charm person
+; Price 3,500 gp.
+ 
+Spellsight  Spectacles:
+  These  spectacles  grant  the 
+wearer a +5 competence bonus on Spellcraft checks 
+made to decipher scrolls, and a +5 competence 
+bonus on Use Magic Device checks made to 
+use scrolls.
+   Spectacles  occupy  the  same  space 
+on the body as a pair of eye lenses or 
+goggles.
+   Faint  divination;  CL  3rd;  Craft 
+Wondrous Item, 
+read magic;
+ Price 
+2,500 gp.
+  Spool  of  Endless  Rope:
+Some  adventurers  never  seem 
+to  have  enough  rope.  A 
+spool  of 
+endless rope
+ contains an unlimited 
+amount of the fi nest silk rope, yet 
+the whole spool weighs only a single 
+pound.  The  spool  comes  with  a  belt 
+loop so that it can be hung conveniently at 
+an adventurer’s side.
+   To use a 
+spool of endless rope,
+ the owner feeds out as little 
+or as much rope as desired, up to a maximum of 500 feet 
+at any one time. When fi nished with the rope, the owner 
+can simply wind it back onto the spool. (Feeding out or 
+rewinding requires 1 round per 50 feet of rope.) 
+  The rope can’t be entirely separated from the spool, 
+though it can be cut or broken as a normal silk rope can 
+be. Any portion of rope cut away from the spool disap-
+pears instantly, but the spool immediately replenishes 
+the missing rope.
+Medal of gallantry
+Mask of lies
+Illus. by R. Spencer
+Illus. by R. Spencer
+
+
+CHAPTER 4
+TOOLS AND 
+EQUIPMENT
+136
+  The rope from a 
+spool of endless rope
+ can be spliced or 
+knotted together with another rope (including a rope 
+from a second 
+spool of endless rope
+), but the rope can’t be 
+wound back into the spool while so attached.
+  Moderate conjuration; CL 9th; Craft Wondrous Item, 
+Leomund’s secret chest
+; Price 2,000 gp; Weight 1 lb.
+  Strings of Spell Storing: 
+This set of catgut strings 
+for a lute, mandolin, or other string instrument can store 
+up to five levels of spells. By making a DC 15 Perform 
+(string instruments) check while employing 
+a masterwork instrument equipped with 
+these strings, a musician can unleash the 
+desired spell. Each spell has a caster 
+level  equal  to  the  minimum  level 
+needed to cast the spell. The user need 
+not provide any material components 
+or focus, or pay an XP cost to cast 
+the  spell,  and  there  is  no  arcane 
+spell failure chance for any armor 
+the user is wearing. The activation 
+time for the strings is the same as the 
+casting time for the relevant spell, with 
+a minimum of 1 standard action.
+  Treat a randomly generated set of 
+strings of spell storing
+ as a scroll for 
+determining what spells are stored 
+within it (see pages 238–243 of the 
+Dungeon Master’s Guide
+). If you roll 
+a spell that would put the set over 
+its five-level limit, ignore that roll; those 
+strings have no more spells in them. (Not every 
+newly discovered set of strings is fully charged.) The 
+strings magically impart to the user the names of all 
+spells currently stored within them.
+  Casting spells into the strings functions identically to 
+casting spells into a 
+ring of spell storing 
+(see page 233 of the 
+Dungeon Master’s Guide
+), except that the caster must have 
+at least 1 rank of Perform (string instruments) and must 
+make a successful Perform (string instruments) check 
+(DC 10 + spell level). Failure causes the spell to be lost 
+to no effect. 
+  Moderate evocation; CL 9th; Craft Wondrous Item, 
+imbue  with  spell  ability
+,  creator  must  have  5  ranks  in 
+Perform (string instruments); Price
+ 
+45,000 gp.
+ 
+Stylus  of  the  Masterful  Hand:
+  This  elegant  but 
+sturdy metal stylus grants a +5 competence bonus on 
+Forgery checks. On command, a 
+stylus of the masterful 
+hand
+ can also remember up to three different types of 
+handwriting, which allows a later attempt to create a 
+forgery of a document without requiring the forger to 
+have a sample of the handwriting (see Forgery, page 74 of 
+the 
+Player’s Hand
+book). The DC to reproduce that hand
+-
+writing is fixed at whatever check result was achieved 
+during the attempt in which the sample was collected. A 
+second command word allows the user to erase a sample 
+of handwriting stored in a stylus.
+  Faint divination; CL 3rd; Craft Wondrous Item, 
+read 
+magic;
+ Price 3,000 gp.
+  Trumpeter’s  Gift:
+  This  shiny 
+mouthpiece  fits  any  wind  instru
+-
+ment, such as a trumpet or other 
+horn.  It  grants  a  +5  competence 
+bonus  on  Perform  (wind  instru
+-
+ments) checks using the instrument. 
+Once per day, the trumpeter can use 
+the horn to produce a 
+shout
+ effect. If 
+the horn is not of masterwork quality, 
+however, it is destroyed once this effect 
+is produced.
+   Moderate  evocation;  CL  7th;  Craft 
+Wondrous Item, 
+shout;
+ Price 12,700 gp.
+ 
+Tunic of Steady Spellcasting:
+  The 
+wearer  of  this  tunic  gains  a  +5  com
+-
+petence  bonus  on  Concentration 
+checks. Despite the item’s name, its 
+bonus applies on all Concentration 
+checks, not just those made to cast 
+spells.
+   Faint transmutation; CL 3rd; Craft Won
+-
+drous Item, 
+bear’s endurance
+; Price 2,500 gp.
+ 
+Vial of the Last Gasp:
+ 
+This is actually the necro
+-
+mantically preserved last breath of some famous figure, 
+trapped in a vial. A 
+vial of the
+ 
+last gasp 
+allow the user to 
+draw strength and knowledge from the dead creature. 
+Anyone who unstoppers the vial and inhales its vapors 
+(the equivalent of drinking a potion) gains 1d8 temporary 
+hit points, a +2 enhancement bonus to Strength, and a +4 
+insight bonus on checks using one Craft, Knowledge, or 
+Profession skill possessed by the deceased. (However, the 
+vapors in a 
+vial of the last gasp
+ do not allow an untrained 
+user to make use of a trained-only skill.)  The creator 
+specifies the skill to which the bonus applies upon creat
+-
+ing the item; it is usually the skill in which the deceased 
+has the greatest number of ranks. In addition, the fumes 
+increase the user’s effective caster level by 1. These effects 
+last for 10 minutes.
+ 
+Faint necromancy; CL 4th; Craft Wondrous Item, 
+death 
+knell; 
+Price 2,200 gp.
+Illus. by D. Kovacs
+
+
+SWIFT
+ 
+ACTIONS
+ 
+AND 
+IMMEDIATE ACTIONS
+Some of the spells in this chapter refer to swift or 
+immediate actions. These are types of actions, like 
+a move action or standard action.
+ 
+Swift Action: 
+A swift action consumes a very 
+small amount of time but represents a larger expen
+-
+diture of effort and energy than a free action. You 
+can perform one swift action per turn, without 
+affecting your ability to perform other actions. 
+In that regard, a swift action is like a free action. 
+However, you can perform only a single swift 
+action per turn, regardless of what other actions 
+you take. You can take a swift action at any time 
+you would normally be allowed to take a free 
+action. Swift actions usually involve spellcast
+-
+ing  or  the  activation  of  magic  items;  many 
+characters  (especially  those  who  don’t  cast 
+spells) never have an opportunity to take a 
+swift action.
+rom  the  assassin  lurking  in  the  corner,  his 
+dagger  dripping  with  magically  enhanced 
+poison, to the ranger who fills the forest with a 
+hail of magically propelled arrows, skilled adventur
+-
+ers of all kinds rely on spells to enhance their skills, 
+avoid an enemy’s blows, and strike with deadly accu
+-
+racy. In keeping with the theme of  
+Complete Adventurer
+, 
+the spells described in this chapter emphasize skill 
+use—providing bonuses on skill checks, offering new 
+uses for skills, and making skill use in combat more 
+rewarding. These spells also often feature enhanced 
+benefits or effects for characters who have mastered 
+unusual  combinations  of  skills  and  abilities.  These 
+spells  emphasize  the  versatility  of  the  successful 
+adventurer  and  should  be  of  particular  interest  to 
+multiclass characters.
+  An 
+M
+ appearing at the end of a spell’s name in the 
+spell lists denotes a spell with a material component 
+that is not normally included in a spell component 
+pouch.
+137
+Illus. by D. Kovacs
+
+
+138

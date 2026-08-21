@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// @ts-ignore
+import { getPrestigeClassFeatures } from '@core/rules/prestigeClassEngine.js';
 
 interface MysticTheurgeFeaturesCardProps {
   pc: any;
@@ -7,7 +9,8 @@ interface MysticTheurgeFeaturesCardProps {
 
 export const MysticTheurgeFeaturesCard: React.FC<MysticTheurgeFeaturesCardProps> = ({ pc, level }) => {
   const [rulesOpen, setRulesOpen] = useState(false);
-  const links = pc.prestigeSpellLinks?.mystic_theurge || {};
+  const features = getPrestigeClassFeatures(pc, 'mystic_theurge');
+  const links = features.spellLinks || {};
 
   const formatClassName = (key: string) => {
     if (!key) return 'Not selected';

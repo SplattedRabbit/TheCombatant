@@ -1,44 +1,24 @@
 import React, { useState } from 'react';
+// @ts-ignore
+import { getPrestigeClassFeatures } from '@core/rules/prestigeClassEngine.js';
 
 interface DragonDiscipleFeaturesCardProps {
   pc: any;
   level: number;
 }
 
-export const DragonDiscipleFeaturesCard: React.FC<DragonDiscipleFeaturesCardProps> = ({ level }) => {
+export const DragonDiscipleFeaturesCard: React.FC<DragonDiscipleFeaturesCardProps> = ({ pc, level }) => {
   const [rulesOpen, setRulesOpen] = useState(false);
+  const features = getPrestigeClassFeatures(pc, 'dragon_disciple');
 
-  // Natural Armor Boost
-  const natArmor = level >= 10 ? 4 : (level >= 7 ? 3 : (level >= 4 ? 2 : 1));
+  const natArmor = features.naturalArmor;
 
-  // Ability Boosts description
-  let strengthBoost = 0;
-  let conBoost = 0;
-  let intBoost = 0;
-  let chaBoost = 0;
-  if (level >= 10) {
-    strengthBoost = 8;
-    conBoost = 2;
-    intBoost = 2;
-    chaBoost = 2;
-  } else if (level >= 8) {
-    strengthBoost = 4;
-    conBoost = 2;
-    intBoost = 2;
-  } else if (level >= 6) {
-    strengthBoost = 4;
-    conBoost = 2;
-  } else if (level >= 4) {
-    strengthBoost = 4;
-  } else if (level >= 2) {
-    strengthBoost = 2;
-  }
+  const strengthBoost = features.strengthBoost;
+  const conBoost = features.constitutionBoost;
+  const intBoost = features.intelligenceBoost;
+  const chaBoost = features.charismaBoost;
 
-  // Breath Weapon (1/day)
-  let breathDmg = '';
-  if (level >= 10) breathDmg = '6d8';
-  else if (level >= 7) breathDmg = '4d8';
-  else if (level >= 3) breathDmg = '2d8';
+  const breathDmg = features.breathWeapon;
 
   return (
     <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
@@ -96,11 +76,11 @@ export const DragonDiscipleFeaturesCard: React.FC<DragonDiscipleFeaturesCardProp
             )}
             <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '0.5px dashed rgba(200,169,110,0.15)', paddingBottom: '2px' }}>
               <span>Flight / Wings:</span>
-              <strong>{level >= 9 ? 'Yes (60 ft Fly)' : 'No'}</strong>
+              <strong>{features.wings ? 'Yes (60 ft Fly)' : 'No'}</strong>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '0.5px dashed rgba(200,169,110,0.15)', paddingBottom: '2px' }}>
               <span>Dragon Apotheosis:</span>
-              <strong>{level >= 10 ? 'Active (Half-Dragon)' : 'No'}</strong>
+              <strong>{features.dragonApotheosis ? 'Active (Half-Dragon)' : 'No'}</strong>
             </div>
           </div>
 

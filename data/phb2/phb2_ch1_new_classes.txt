@@ -1,0 +1,2638 @@
+CHAPTER 1
+NEW CLASSES
+     Each package specifi  es a race, ability scores (which include 
+racial modifi  ers), skills, feats, gear, and if appropriate, spells 
+and  class  features.  The  skills  all  have  maximum  ranks—4  
+ranks in each class skill and 2 ranks in each cross-class skill. 
+(Cross-class skills are designated by the letters “cc.”) Spells in 
+parentheses are available only if your character’s key ability 
+score for spellcasting is high enough to grant a bonus 1st-level 
+spell (or, if the character is a wizard, her Intelligence bonus 
+is high enough to grant bonus spells in her spellbook). The 
+class features section appears only for characters who have 
+optional  class  features  available  at  1st  level,  such  as  clerics  
+(domains),  druids  (animal  companions),  and  sorcerers  and  
+wizards (familiars).
+     You can use these starting packages in any way you like. You 
+are welcome to swap one skill for another, one feat for another 
+(provided that your character meets the prerequisites), one 
+spell for another, or one piece of gear for another of roughly 
+equivalent value (within 5 gp). With a couple of exceptions, 
+the starting packages in this book use only information 
+available in the Player’s Handbook. Thus, if you have access 
+to other rulebooks, you might want to swap out a few feats 
+or weapons for options provided in those publications. The 
+class features are likewise customizable.
+     Most  packages  include  the  standard  adventurer’s  kit—
+backpack, belt pouch, bedroll, fl int and steel, two sunrods, 
+ten days worth of trail rations, 50 feet of hempen rope, and 
+waterskin. (Monks don’t get the sunrods because they have 
+too few gp at 1st level.)
+BEGUILER
+“You know me. I’m as good as my word, and my life is an open book.”
+—said with a straight face by Anastria Nailo, 
+half-elf beguiler
+Some hold truth to be the greatest virtue, but it can do 
+more damage than fiction. Everyone lives in a constant 
+state  of  deception.  White  lies,  false  smiles,  and  secret  
+thoughts keep society running smoothly. Honesty is a virtue 
+only up to a certain point. Beguilers understand these ideas 
+better than anyone, and they use deception, misunderstand-
+ing, and secrets as skillfully as a soldier employs weapons 
+of war.
+    Beguilers see lying and manipulation as tools. Just as a 
+hammer can be used to build a house or crack a skull, deceit 
+and the ability to control others can be used for good or ill. 
+A lie whispered in the right ear can ruin lives, but a dishon-
+est smile and honeyed words can open doors, turn foes into 
+friends, and even end wars. Beguilers have reputations as 
+rakes, thieves, spies, and puppet masters, but they can also 
+be diplomats, peacemakers, or heroic leaders who give hope 
+in desperate situations.
+     If  you  delight  in  manipulating  others,  either  to  their  
+disadvantage or for their own good, then the beguiler is the 
+class for you. More than any other kind of character, you rely 
+on Charisma-based skills to change the reactions of others, 
+while your other class abilities enable you to catch others off 
+guard with devastating spell-based attacks.
+MAKING A BEGUILER
+As a beguiler, you possess many useful skills and spells. 
+If your adventuring group lacks a rogue, you make a great 
+substitute for all but the rogue’s melee combat strengths. If 
+the group lacks a wizard or other arcane caster, you can also 
+fi ll that role with your command of illusions and enchant-
+ments, although you lack a wizard’s array of spells that deal 
+damage and you possess less spellcasting versatility. Your 
+main strategy should be to control enemies, bolster your 
+allies, and take command of the battlefi  eld.
+ Abilities:  Beguilers  have  quick  wits,  deft  hands,  and  
+compelling  personalities.  You  need  a  high  Intelligence  to  
+get the most from your spells and skills. A high Charisma 
+helps you be more convincing in your deceptions, while a 
+high Dexterity helps you with the sneaky tasks you are likely 
+to pursue. Don’t neglect Constitution; although you have the 
+same Hit Die as a rogue, your Constitution score infl  uences  
+your  ability  to  cast  defensively  and  thus  how  well  you  can  
+use your surprise casting class feature.
+ Races: Beguilers can be found among any race, but gnomes 
+and hal f-elves seem to most appreciate the beg ui lers’ fl  exible  
+philosophy about truth. Being tricksters and inquisitive by 
+nature, gnomes gravitate to the beguiler class due to the 
+interesting deeds it allows them to accomplish. Half-elves, 
+trapped as they are between the worlds of elves and humans, 
+fi  nd that a beguiler’s abilities help them better exist in both. 
+Humans,  elves,  and  halfl  ings  also  foster  beguilers  in  their  
+midst, but dwarves and half-orcs rarely become members of 
+the class. Dwarves tend to dislike dissembling, and half-orcs 
+typically lack the mental discipline and likable personality 
+required to make a good beguiler.
+ Alignment: The beguilers’ outlook about truth is neither 
+good nor evil, and beguilers of all alignments walk the world. 
+Nevertheless, those well practiced in the arts of deception and 
+manipulation rarely put much stock in others’ laws, and they 
+often display a self-centered attitude. Lawful good beguilers 
+are like lawful good necromancers—rare and foreign even 
+to their fellows.
+ Starting Gold: 6d4×10 gp (150 gp).
+     Starting     Age:     As wizard (PH 109).
+CLASS FEATURES
+Your spells and skills make you well suited to espionage and 
+dungeon delving. In addition to being able to fi  nd and disarm 
+traps your group might encounter, you can charm and con-
+found guards, turning what could be dangerous encounters 
+into simple steps toward your goal. In combat, you can use 
+your spells to trick and outmaneuver foes.
+     Weapon and Armor Profi  ciency:  Beguilers are profi  cient  
+with  all  simple  weapons  plus  the  hand  crossbow,  rapier,  
+shortbow, and short sword. Beguilers are profi  cient  with  light  
+armor, but not with shields.
+ Spells: A beguiler casts arcane spells, which are drawn 
+from the beguiler spell list on page 11. When you gain 
+access to a new level of spells, you automatically know all 
+the spells for that level on the beguiler’s spell list. You can 
+cast any spell you know without preparing it ahead of time. 
+Essentially, your spell list is the same as your spells known 
+620_95374_Ch1.indd   6620_95374_Ch1.indd   62/8/06   2:53:16 PM2/8/06   2:53:16 PM
+
+7
+CHAPTER 1
+NEW CLASSES
+l ist. You also have the option of adding to your ex isting spel l 
+list through your advanced learning class feature (see below) 
+as you increase in level.
+    To cast a beguiler spell, you must have an Intelligence 
+score of 10 + the spell’s level (Int 10 for 0-level spells, Int 11 
+for 1st-level spells, and so forth). The Diffi  culty Class for a 
+saving throw against a beguiler’s spell is 10 + the spell’s level + 
+the beguiler’s Int modifi  er. Like other spellcasters, a beguiler 
+can cast only a certain number of spells of each spell level 
+per day. The base daily spell allotment is given on Table 1–1. 
+In addition, you receive bonus spells for a high Intelligence 
+score (PH 8).
+    A beguiler need not prepare spells in advance. You can 
+cast any spell you know at any time, assuming you have not 
+yet used up your spells per day for that spell level.
+ Armored  Mage  (Ex):  Normally,  armor  of  any  type  
+interferes  with  an  arcane  spellcaster’s  gestures,  which  
+can cause your spells to fail if those spells have a somatic 
+component.  A  beguiler’s  limited  focus  and  specialized  
+training, however, allow you to avoid any chance of arcane 
+spell failure as long as you restrict yourself to light armor. 
+This training does not extend to any other form of armor, 
+nor does this ability apply to spells gained from other spell-
+casting classes.
+ Trapfi  nding: Beguilers can use the Search skill to locate 
+traps when the task has a Diffi  culty Class higher than 20. 
+Finding a nonmagical trap has a DC of at least 20, or higher 
+if it is well hidden. Finding a magic trap has a DC of 25 + the 
+level of the spell used to create it.
+     Beguilers can use the Disable Device skill to disarm magic 
+traps. A magic trap typically has a DC of 25 + the level of the 
+spell used to create it.
+     A beguiler who beats a trap’s DC by 10 or more with a Dis-
+able Device check can study a trap, fi  gure out how it works, 
+and bypass it (with his allies) without disarming it.
+ Cloaked Casting (Ex): Starting at 2nd level, a beguiler’s 
+spells become more effective when cast against an unwary 
+foe. You gain a +1 bonus to the spell’s save DC when you cast 
+a spell that targets any foe who would be denied a Dexterity 
+bonus  to  AC  (whether  the  target  actually  has  a  Dexterity  
+bonus or not).
+     At 8th level, you gain a +2 bonus on rolls made to overcome 
+the spell resistance of any affected target.
+    At 14th level, the bonus to your spell’s save DC increases 
+to +2.
+     At 20th level, you become able to automatically overcome 
+the spell resistance of any affected target.
+ Surprise Casting (Ex): Starting at 2nd level, when you 
+successfully use the Bluff skill to feint in combat, your 
+target is denied its Dexterity bonus (if it has one) to AC for 
+the next melee attack you make against it or the next spell 
+you cast. You must remain in melee with the target, and the 
+attack must be made or the spel l cast on or before your nex t 
+turn. The target is not considered fl  at-footed and therefore 
+can make attacks of opportunity against you if you do not 
+cast defensively.
+     At 6th level, you gain the ability to feint in combat as a move 
+action instead of a standard action. If you have the Improved 
+Feint feat, you can now feint in combat as a swift action.
+ Advanced Learning (Ex): At 3rd level, you can add a 
+new spell to your list, representing the result of personal 
+study and experimentation. The spell must be a sorcerer/
+wizard spell of the enchantment or illusion school and of 
+a level no higher than that of the highest-level spell you 
+Table 1–1: The Beguiler Hit Die: d6
+             Base
+ Attack     Fort     Ref     Will      — Spells per Day —
+Level     Bonus    Save   Save   Save    Special   0     1st   2nd   3rd   4th   5th   6th   7th   8th   9th
+        1st      +0    +0      +0      +2      Armored    mage,    trapfinding    5      3     —    —    —    —    —    —    —    —
+        2nd     +1    +0      +0      +3      Cloaked    casting    (+1    DC),    surprise    casting    6      4     —    —    —    —    —    —    —    —
+        3rd      +1    +1       +1       +3      Advanced    learning    6      5     —    —    —    —    —    —    —    —
+        4th      +2    +1       +1      +4      —    6      6      3     —    —    —    —    —    —    —
+        5th      +2    +1       +1      +4      Silent    Spell    6      6      4     —    —    —    —    —    —    —
+  6th +3 +2 +2 +5 Surprise casting (move action) 6 6 5 3     —    —    —    —    —    —
+        7th      +3    +2      +2      +5      Advanced    learning    6      6      6      4     —    —    —    —    —    —
+  8th +4 +2 +2 +6 Cloaked casting (+2 to overcome SR) 6 6 6 5 3     —    —    —    —    —
+            9th      +4      +3       +3       +6      —      6      6      6      6      4      —      —      —      —      —
+10th      +5      +3       +3       +7      Still      Spell      6      6      6      6      5      3      —      —      —      —
+11th       +5      +3       +3       +7      Advanced      learning      6      6      6      6      6      4      —      —      —      —
+12th      +6/+1       +4       +4       +8      —      6      6      6      6      6      5      3      —      —      —
+13th      +6/+1       +4       +4       +8      —      6      6      6      6      6      6      4      —      —      —
+14th      +7/+2       +4       +4       +9      Cloaked      casting      (+2      DC)      6      6      6      6      6      6      5      3      —      —
+15th      +7/+2       +5       +5       +9      Advanced      learning      6      6      6      6      6      6      6      4      —      —
+16th      +8/+3       +5       +5      +10      —      6      6      6      6      6      6      6      5      3      —
+17th      +8/+3       +5       +5      +10      —      6      6      6      6      6      6      6      6      4      —
+18th      +9/+4       +6      +6      +11      —      6      6      6      6      6      6      6      6      5      3
+19th      +9/+4       +6      +6      +11      Advanced      learning      6      6      6      6      6      6      6      6      6      4
+20th      +10/+5      +6      +6      +12      Cloaked      casting      (overcomes      SR)      6      6      6      6      6      6      6      6      6      5
+Class Skills (6 + Int modifier per level, ×4 at 1st level): Appraise, Balance, Bluff, Climb, Concentration, Decipher Script, 
+Diplomacy, Disable Device, Disguise, Escape Artist, Forgery, Gather Information, Hide, Jump, Knowledge (arcana), 
+Knowledge (local), Listen, Move Silently, Open Lock, Profession, Search, Sense Motive, Sleight of Hand, Speak Language, 
+Spellcraft, Spot, Swim, Tumble, Use Magic Device.
+620_95374_Ch1.indd   7620_95374_Ch1.indd   72/8/06   2:53:23 PM2/8/06   2:53:23 PM
+
+8
+CHAPTER 1
+NEW CLASSES
+already know. Once a new spell is selected, it is forever added 
+to your spell list and can be cast just like any other spell on 
+your list.
+     You  gain  another  new  spell  at  7th,  11th,  15th,  and  19th  
+level.
+Silent  Spell:  At  5th  level,  you  gain  Silent  Spell  as  a  
+bonus feat.
+Still Spell: At 10th level, you gain Still Spell as a bonus 
+feat.
+PLAYING A BEGUILER
+Truth  lies  in  the  eye  of  the  beholder.  Manipulation  of  
+truth—and others’ visions of it—is a part of life. Everyone 
+does it; you just do it bet ter than ever yone else. If you nudge 
+someone into doing something he otherwise wouldn’t have 
+done, that person still did the actual deed, and some part 
+of  him  must  have  wanted  it  done.  You  trick  fools,  charm  
+egocentrics, inf luence schemers, and control the weak-
+willed. In a way, you’re doing them a favor. If they’re clever 
+enough  to  figure  out  they’ve  been  manipulated,  they’ll  
+be better prepared to defend themselves against the later 
+manipulations of those who mean them harm. If they don’t 
+fi  gure it out, they’ll get tricked again, but that’s no concern 
+of yours. Life is a game that you win by coming out on 
+top, and the best way to do that is to convince others to 
+give you a boost.
+     You might adventure because you desire excitement. 
+Someone with your smarts gets bored with mundane 
+pursuits. Alternatively, you might have set off on 
+a life of adventure after some trick or manipula-
+tion gone wrong. You have to keep moving, and 
+adventuring offers you a regular change of scen-
+ery. In any case, a life of adventure allows you 
+to see new things, meet interesting people, 
+and garner a name for yourself. Of course, 
+it might not be your real name, but fame 
+is fame.
+     You always look to expand your knowl-
+edge  and  increase  your  power.  You  are  
+clever enough to know there’s always more 
+to learn. Although you tend to be self-
+reliant, you understand the value of 
+friendship and allies in your 
+pursuits. Truth might be 
+mutable,  but  friends  
+value  honesty  and  
+trust, so you make 
+sure not to entan-
+gle your allies in 
+your webs of lies 
+and trickery.
+Religion
+Beguilers  favor  deities  
+who  share  their  unfet-
+tered  outlook  and  who  
+would   seem   to   appreciate   
+their schemes and strategies. Most 
+beguilers look to Olidammara for obvious reasons, but others 
+prefer Fharlanghn since he shares their love of new begin-
+nings and travel. Gnome beguilers largely put their faith 
+in Garl Glittergold, and some nongnome beguilers follow 
+suit. Many also follow Boccob; the Lord of All Magics cares 
+little  to  what  use  beguilers  put  their  spells,  and  beguilers  
+prefer it that way. Ev i l beg ui lers often join Vecna’s fold—the 
+Master of A l l that Is Secret and Hidden welcomes beg ui lers, 
+manipulating them toward ever greater acts of villainy even 
+as they take advantage of their victims.
+Other Classes
+Few know of characters such as yourself because many 
+beguilers pretend to be something other than what they are, 
+and you can easily pass as a rogue, bard, wizard, or sorcerer. 
+Those who learn of the class often have a poor impression 
+of beguilers unless they call one a friend. Wizards consider 
+characters such as you to be undisciplined and limited in their 
+Anastria and Korrik, beguilers
+Illus. by S. Prescott
+620_95374_Ch1.indd   8620_95374_Ch1.indd   82/8/06   2:53:30 PM2/8/06   2:53:30 PM
+
+9
+CHAPTER 1
+NEW CLASSES
+magic. Knights, paladins, and monks rightly think of you as 
+untrustworthy. Rangers, dragon shamans, barbarians, and 
+druids rarely have patience for your prevarications and your 
+enjoyment of civilized society. Rogues, duskblades, sorcer-
+ers, and fi  ghters tend to be more practical: If your abilities 
+make their jobs easier, then you fi  nd a welcome reception. 
+Bards often fi  nd the life led by beguilers fascinating and are 
+intrigued by a beguiler’s exploits.
+Combat
+You’re at your best when you can catch foes unaware. Use 
+your spells to hide and disguise yourself and your allies 
+so  that  you  can  employ  surprise  tactics.  If  you  get  into  
+melee, use the Bluff skill to feint in combat and thus get 
+the drop on your enemy with cloaked casting or surprise 
+casting. Control the terrain with spells such as grease and 
+fog  cloud.  Control  foes  with  charm  person  and  dominate 
+monster spells.
+Advancement
+Remaining a beguiler typically presents the best course of 
+advancement. The rogue class might seem like a natural 
+choice for multiclassing, but you don’t gain much from taking 
+levels in it. Although it gives you the sneak attack ability, it 
+detracts from your spellcasting prowess.
+     You should assign skill points according to your role in your 
+adventuring group. If the group already has a rogue who is 
+good at fi  nding traps and sneaking about, boost your ranks 
+in social skills such as Diplomacy and Gather Information. 
+Remember that you can use spells such as invisibility and 
+silence for stealth, and spells such as knock and spider climb to 
+do things for which rogues must use skills. High bonuses in 
+Bluff and Concentration are a must if you’re going to use the 
+surprise casting ability.
+    You have many good options for feats, but be sure to take 
+Combat Casting, Combat Expertise, and Improved Feint 
+to get the most from surprise casting and cloaked casting. 
+Complete Adventurer of fers Mobi le Spel lcasting, a feat that 
+allows you to cast a spell and move as a single standard 
+action. Combining this with the benefi  ts prov ided to you by 
+Improved Feint and the Tumble skill, you could move into 
+melee, feint, and cast a spell that gets the benefi  t  of  cloaked  
+casting or surprise casting. You should also consider taking 
+the Battle Caster feat from Complete Arcane, which allows a 
+beguiler to wear medium armor without spell failure. Com-
+bining it with the Armor Profi ciency (medium) feat gives 
+you much greater protection. If you’re interested in having 
+a lot of feats, it might be worthwhile to take a level of fi  ghter,  
+since the 1st level of the fi ghter class gives you profi  ciency  
+with  all  types  of  armor  and  a  bonus  feat  you  could  use  for  
+Combat Expertise or Improved Feint.
+STARTING PACKAGES
+Package 1: The Controller
+Human Beguiler
+     Ability     Scores:     Str 8, Dex 14, Con 12, Int 15, Wis 10, Cha 13.
+    Skills:    Bluff,  Concentration,  Disable  Device,  Hide,  Move  
+Silently, Open Lock, Search, Sense Motive, Spot.
+ Languages: Common, Goblin, Orc.
+     Feat: Improved Initiative, Spell Focus (enchantment).
+     Weap o ns :     Short sword (1d6/19–20),
+    Armor:    Chain shirt (+4 AC).
+    Other    Gear:    Standard adventurer’s kit, spell component 
+pouch, thieves’ tools, 20 gp.
+Package 2: The Investigator
+Half-Elf Beguiler
+     Ability     Scores:     Str 8, Dex 14, Con 10, Int 15, Wis 12, Cha 13.
+     Skills:     Bluff, Gather Information, Hide, Move Silently, Open 
+Lock, Search, Sense Motive, Spot.
+ Languages: Common, Dwarven, Elven, Goblin.
+     Feat: Spell Focus (enchantment)
+     Weap o ns :     Rapier (1d6/18–20), shortbow with 20 arrows 
+(1d6/×3, 60 ft.).
+    Armor:    Studded leather (+3 AC).
+    Other    Gear:    Standard adventurer’s kit, spell component 
+pouch, thieves’ tools, 23 gp.
+Package 3: The Trickster
+Gnome Beguiler
+     Ability     Scores:     Str 10, Dex 14, Con 12, Int 15, Wis 8, Cha 13.
+    Skills:    Bluff, Disguise, Escape Artist, Hide, Move Silently, 
+Search, Spot, Use Magic Device.
+Languages: Common, Giant, Gnome, Goblin.
+     Feat:     Spell Focus (illusion).
+     Weap o ns :     Morningstar (1d6), light crossbow with 20 bolts 
+(1d6/×3, 60 ft.).
+    Armor:    Scale mail (+4 AC), heavy steel shield (+2 AC).
+    Other    Gear:    Standard adventurer’s kit, spell component 
+pouch, thieves’ tools, 40 gp.
+BEGUILERS IN THE WORLD
+“Just wait ’till I get my hands on her. No one makes a fool of 
+Obramus Tumbor!”
+—Obramus Tumbor, being made a fool of by a beguiler
+The beguiler class gives players a chance to play the arche-
+typal trickster. The class provides the skill set of a rogue 
+and a selection of arcane spells without the complications of 
+balancing multiple classes. Beguilers also make great villains. 
+By manipulating NPCs and situations the PCs encounter, 
+an evil beguiler can operate behind the scenes and trick the 
+adventurers to his own ends.
+Daily Life
+The way a beguiler behaves depends on his or her individual 
+sense of morality. Some think nothing of adopting false 
+identities or impersonating others as a matter of course. 
+They rely on their spells and their charm to get others to 
+give them what they want. Other beguilers fi  nd  themselves  
+driven to use their powers of persuasion to help people. 
+They see the daily troubles of others and can’t help getting 
+involved in solving arguments, matchmaking, and ending 
+feuds. Regardless of outlook, a beguiler in a civilized area 
+rarely gets bored. There’s always something to meddle in or 
+some grand scheme to enact.
+620_95374_Ch1.indd   9620_95374_Ch1.indd   92/8/06   2:53:42 PM2/8/06   2:53:42 PM
+
+10
+CHAPTER 1
+NEW CLASSES
+    Beguilers can become great leaders. With their sharp 
+minds and great charisma, beguilers would be natural leaders 
+were it not for their inconstancy. Beguilers regularly devise 
+brilliant plans for espionage or trickery—plans that usually 
+require them to play a major role—but their natural penchant 
+for improvisation and secrecy often means that such plans 
+possess unpredictable elements or key parts hidden from all 
+other participants. If a beguiler earns the trust of companions, 
+they value her leadership. Lacking that trust, a beguiler rarely 
+leads for long.
+Notables
+Beguilers often gain notoriety for their deeds, although 
+usually under a false identity. They earn fame, rather than 
+infamy, when they use their abilities to serve a greater good. 
+Anastria Nailo did so when she tricked an entire orc army 
+into a box canyon where it could be ambushed, and again 
+when she charmed a leader of a city and learned that he 
+had already been charmed by a mind fl  ayer. Since she was 
+pretending to be a famous elf bard at the time, Anastira can 
+still maintain a low profi  le despite her famous deeds, which 
+is just the way she likes it.
+Organizations
+Beguilers don’t organize together, but they often join other 
+organizations, especially thieves guilds and secret political 
+groups. A beguiler joining an organization probably has a 
+specifi  c goal in mind and takes a position that best allows her 
+to attain it. A long-term commitment to such a group rarely 
+appeals to a beguiler, but if the organization champions a 
+cause close to the beguiler’s heart, it can count on her very 
+best efforts.
+NPC Reactions
+Few common folk understand beguilers to be different 
+from sorcerers or wizards who have some rogue training, 
+and many more mistake them for bards. Beguilers further 
+confuse the issue by regularly adopting false identities 
+and  hiding  their  varied  abilities.  Thus,  the  reaction  a  
+beguiler gets from those she meets depends on what she is 
+pretending to be at the time. Individuals who know about 
+the beguiler class and the outlook common to its members 
+greet beguilers with an attitude one step more hostile than 
+normal. Paladins and knights in particular look poorly 
+upon beguilers, as does anyone who puts great impor tance 
+in forthrightness.
+BEGUILER LORE
+Characters with ranks in Knowledge (arcana) can research 
+beguilers to learn more about them. When a character makes 
+a skill check, read or paraphrase the following, including the 
+information from lower DCs.
+ DC 15: Beguilers are arcane spellcasters who focus on 
+illusions and enchantments. They employ deception and 
+compulsory magic to get what they want.
+ DC 20: Beguilers can cast spells in light armor, and they 
+have many of the skills of rogues.
+BEGUILERS IN THE GAME
+Beguilers fi  t smoothly into any ongoing game, since they are 
+little known and don’t require the insertion of an organiza-
+tion into the world or the addition of lots of new mechanics 
+to the game. You can have a beguiler fi  rst appear as a villain 
+when players discover a secret manipulator behind foul deeds 
+they have been investigating. A beguiler might fi  rst  appear  
+as a foe and end up an ally, or the reverse could happen. A 
+PC beg ui ler can be introduced to the par t y just as any rog ue, 
+bard, or wizard would be.
+    Think of a beguiler as similar to Loki of Norse myth or 
+the Coyote in Native A mer ican tales. The player of a beg ui ler 
+wants her to be smooth, sly, smart, likable, and light on her 
+feet. Keeping this player happy is a matter of helping the 
+player to feel that way. You might be tempted to make the 
+player’s schemes go awry because that seems more interest-
+ing to you, but instead you should allow good schemes to 
+work most of the time. Let a player with a beguiler character 
+feel empowered to try crazy ideas and dangerous plans. If 
+it becomes too much of a good thing, then that’s when the 
+guards see through her disguise or the villain allows the 
+unwitting PCs to infi  ltrate their way into his clutches.
+Adaptation
+When adapting the beguiler to your campaign, look at how 
+rogues and bards fit into your game. The beguiler fills a 
+similar niche, and any organizations that cater to such classes 
+likely prove helpful for beguilers. A thieves’ guild might have 
+a small cabal of beguilers associated with it. The beguilers aid 
+the guild on any missions that require their magical talents. 
+In return, the beguilers receive protection, a share of the 
+loot, and a headquarters. Young thieves who show a knack 
+for magic might be shepherded into the beguiler class.
+     In a kingdom or land where magic is common, beguilers 
+might replace the typical rogue, diplomat, or spy. A bandit 
+gang might consist of several beguilers and a number of 
+fighters. In such lands, magic supersedes a rogue’s talent 
+with skills.
+     With their talent for deception, a beguiler might have a 
+reputation similar to the ninja. The common folk fear the 
+beguilers  for  their  ability  to  bend  minds  and  to  use  magic  
+to slip away from the authorities. Every royal court employs 
+a few mages charged with using their spells to ferret out 
+beguilers. In this case, the beguilers are secretive, clannish, 
+and diffi  cult  to  fi  nd. They gather in secret societies and never 
+reveal their lore to those whom they do not trust. Becoming 
+a beguiler is a process of winning the trust of one’s master, 
+not simply mastering a few simple spells.
+Sample Encounter
+An encounter with a beguiler should highlight her use of 
+sur pr ise tactics and manipulation of others to do her bidding. 
+In  addition  to  charmed  or  dominated  minions,  a  beguiler  
+often gathers allies under false pretenses. Fighting a villain-
+ous beguiler should be tricky for the PCs, because they will be 
+forced to fi  gure out who their real enemies are while trying 
+to avoid hurting innocents whom the beguiler has dragged 
+into the fi ght. The PCs might even have to fi gure out who 
+620_95374_Ch1.indd   10620_95374_Ch1.indd   102/8/06   2:53:50 PM2/8/06   2:53:50 PM
+
+11
+CHAPTER 1
+NEW CLASSES
+the beguiler is, since disguises and hidden spellcasting come 
+easily to such a character.
+ EL 9: Unl i ke many hal f-elves, A nastr ia Nai lo always found 
+it easy to live in either human or elf communities. Quick-
+witted, perceptive, and naturally empathetic, she could slip 
+from an elf ’s detached interest to a human’s focused drive as 
+easily as she could switch speaking their languages. Always a 
+mischievous charmer, Anastria found the beguiler’s abilities 
+came easily to her and allowed her to do more than play at 
+being a human or elf. With the spells she learned, she could 
+pretend to be anyone and anything from a dwarf miner to a 
+goblin shaman. For a time she lived as a gadabout, adopting 
+the lives of the wealthy while they were away or impersonat-
+ing loyal retainers to gain the patronage of important people. 
+After foiling the plans of an orc warlord and the plot of a 
+mind fl  ayer accidentally while in the guise of a famous bard, 
+Anastria has gained a taste for heroics, and now she’s looking 
+to make a name for herself by helping people—even if she’s 
+the one who put those people in trouble in the fi  rst  place.
+Anastria Nailo CR 9
+Female half-elf beguiler 9
+CN Medium humanoid (elf )
+Init +2
+Senses low-light vision; Listen +6, Spot +7
+Languages Common, Dwarven, Elven, Gnome, Halfling, Orc
+AC 18, touch 12, flat-footed 16
+ (+2 Dex, +6 armor)
+hp 43 (9 HD)
+Immune sleep
+Fort +5, Ref +6, Will +7 (+9 against enchantments)
+Speed 30 ft. (6 squares)
+Melee +1 rapier +7 (1d6/18–20) or
+Melee touch +6 (spell)
+Ranged mwk light crossbow +7 (1d8/19–20)
+Base Atk +4; Grp +3
+Atk Options Combat Expertise, Improved Feint, Still Spell, 
+surprise casting*
+Combat Gear potion of bless weapon, potion of shield of 
+faith +3
+Beguiler Spells Known (CL 9th):
+ 4th (5/day)—Chosen from beguiler spell list
+3rd (7/day)—Tasha’s hideous laughter, plus others chosen 
+from beguiler spell list
+ 2nd (7/day)—Chosen from beguiler spell list
+1st (7/day) —Nystul’s magic aura, plus others chosen 
+from beguiler spell list
+ 0 (6/day)— Chosen from beguiler spell list
+Abilities Str 8, Dex 14, Con 12, Int 18, Wis 10, Cha 14
+SQ advanced learning* (Nystul’s magic aura, Tasha’s hideous 
+laughter), armored mage*, cloaked casting*, trapfinding*
+Feats Combat Expertise, Improved Feint, Silent Spell
+B
+, Spell 
+Focus (enchantment), Weapon Finesse
+Skills Balance +3, Bluff +14, Concentration +13, Diplomacy 
++20, Disguise +13 (+15 acting), Gather Information +11, 
+Handle Animal +3, Intimidate +4, Jump +5, Listen +6, 
+Search +9, Sense Motive +10, Sleight of Hand +9, Spot 
++7, Tumble +15
+Possessions combat gear plus +2 chain shirt, +1 rapier, 
+masterwork light crossbow with 20 bolts, cloak of 
+resistance +1, headband of intellect +2, disguise kit
+*Class features described on page 7
+BEGUILER SPELL LIST
+The beguiler’s spell list appears below. Spells printed in this 
+book are marked with an asterisk.
+ 0 Level: dancing lights, daze, detect magic, ghost sound, message, 
+open/close, read magic.
+ 1st Level: charm person, color spray, comprehend languages, 
+detect secret doors, disguise self, expeditious retreat, hypnotism, mage 
+armor,  obscuring  mist,  rouse*,  silent  image,  sleep,  undetectable  
+alignment, whelm*.
+ 2nd Level: blinding color surge*, blur, daze monster, detect 
+thoughts, fog cloud, glitterdust, hypnotic pattern, invisibility, 
+knock, minor image, mirror image, misdirection, see invisibility, 
+silence, spider climb, stay the hand*, touch of idiocy, vertigo*, 
+whelming burst*.
+ 3rd  Level: arcane sight, clairaudience/clairvoyance, crown of 
+veils*,  deep  slumber,  dispel  magic,  displacement,  glibness,  halt*,  
+haste, hesitate*, hold person, inevitable defeat*, invisibility sphere, 
+legion of sentinels*, major image, nondetection, slow, suggestion, 
+vertigo fi eld*, zone of silence.
+    4th    Level:    charm  monster,  confusion,  crushing  despair,  
+freedom of movement, greater invisibility, greater mirror image*, 
+locate creature, mass whelm*, phantom battle*, rainbow pattern, 
+solid fog.
+    5th    Level:    break enchantment, dominate person, feeblemind, 
+friend to foe*, hold monster, incite riot*, mind fog, Rary’s telepathic 
+bond, seeming, sending, swift etherealness*.
+     6th     Level:     greater dispel magic, mass suggestion, mislead, 
+overwhelm*, repulsion, shadow walk, true seeing, veil.
+     7th     Level:     ethereal jaunt, greater arcane sight, mass hold person, 
+mass invisibility, phase door, power word blind, project image, 
+spell turning.
+    8th    Level:    demand, discern location, mind blank, moment of 
+prescience, power word stun, scintillating pattern, screen.
+     9th     Level:     dominate monster, etherealness, foresight, mass hold 
+monster, power word kill, time stop.
+DR AGON SHAMAN
+“I possess a dragon’s power. Beware lest you awaken that 
+dragon’s wrath.”
+—Kalia, last and greatest dragon shaman 
+of the Blackspear tribe
+Empires  crumble,  eons  pass,  and  even  gods  wither  and  
+die, but dragons remain. Mortal but eternal, the races of 
+true  dragons  weather  the  roll  of  the  ages  because  of  their  
+unsurpassed  might.  Few  creatures  can  match  a  dragon  in  
+its full fury, whether in a combat of arms or battle of wits. 
+Dragon shamans recognize this fact and see true dragons as 
+more than powerful beings. To a dragon shaman, the passing 
+shadow of a dragon fl  ying overhead isn’t a sign that invokes 
+fear; it’s a blessing that reveals you to be in the presence 
+of greatness.
+     Dragon shamans respect true dragons as power incarnate. 
+Some worship dragons, but most simply aspire to gain dragon 
+powers for themselves. In assuming the abilities and the 
+likeness of a dragon, a dragon shaman seeks to emulate that 
+might and embody that power within himself.
+620_95374_Ch1.indd   11620_95374_Ch1.indd   112/8/06   2:53:56 PM2/8/06   2:53:56 PM
+
+12
+CHAPTER 1
+NEW CLASSES
+     If you gaze at dragons with awe and aspire to share their 
+power and majesty, then the dragon shaman is the class 
+for you. By choosing a totem dragon, you partake of a true 
+dragon’s power and take on aspects of a particular kind 
+of dragon.
+MAKING A DRAGON SHAMAN
+As a dragon shaman, you primarily act as a melee combatant, 
+but your class features also allow you to grant benefi  ts to those 
+fi  ghting around you. In a standard group of adventurers, you 
+can stand in for the fi  ghter or the cleric. Your combat prowess 
+isn’t quite as great as a fi ghter’s, but you can employ special 
+attacks and special defenses a fi ghter can’t access. Although 
+you lack many of the cleric’s specialized spells, you do possess 
+the ability to heal and remove negative conditions. As a dragon 
+shaman, you can grow tough scales, breathe fi  re or another 
+type of energy, and soar on dragon wings—and that barely 
+scratches the surface of the powers at your command.
+ Abilities: As with any melee-oriented class, Strength is a 
+key ability for dragon shamans. Constitution provides you 
+with increased hit points as usual, and it also increases the 
+save DC of your breath weapon. If you want to ma ke good use 
+of the dragon shaman’s ability to heal and remove negative 
+conditions, you’ll need a high Charisma.
+ Races: Although humans make up the majority of dragon 
+shamans, any community of people with a close connection 
+to true dragons can produce dragon shamans. Typically, 
+dragon shamans come from savage societies that live near 
+the lairs of dragons, but even highly civilized populations 
+can produce dragon shamans. In any race or society, dragon 
+shamans tend to dedicate themselves to the dragons native to 
+the area. Thus, elf dragon shamans from a forest nation often 
+aspire to the qualities of a green dragon, whereas the dwarf 
+dragon  shamans  of  a  high  mountain  citadel  would  seek  to  
+gain the qualities of a silver dragon.
+ Alignment: Attaining the abilities of a true dragon requires 
+a deep understanding of the chosen kind of dragon. An aspir-
+ing dragon shaman must ma ke a st udy of the dragon’s t y pical 
+mindset and emotions; adopting these for himself opens the 
+door to the dragon’s power. Thus, dragon shamans align their 
+morals to suit the outlook of the color of true dragon to which 
+they dedicate themselves. Each kind of metal l ic or chromatic 
+dragon has a particular alignment with which it is associated. 
+A dragon shaman who turns away from the alignment of his 
+chosen dragon type loses many of his powers unless he can 
+successful ly adopt another dragon t y pe as his chosen dragon 
+(see Ex-Dragon Shamans, below). Neutral individuals with no 
+preference for law, chaos, good, or evil cannot properly attain 
+the outlook of a true dragon and therefore cannot become 
+dragon shamans.
+ Starting Gold: 4d4×10 gp (100 gp).
+     Starting     Age:     As druid (PH 109).
+CLASS FEATURES
+As a dragon shaman, you function most effectively on the front 
+lines of any combat. Your class abilities allow you to boost your 
+combat effectiveness and that of your party, and the touch of 
+vitality ability provides you with the power to heal others and 
+remove negative conditions that a f fect them, giv ing you more 
+reason to take the fi ght to your foes and stay close to those 
+melee-oriented allies most likely to need your aid.
+ Weapon and Armor Profi  ciency:  Dragon shamans are 
+proficient with simple weapons, with light and medium 
+armor, and with shields (except tower shields).
+ Bonus Languages: A dragon shaman’s bonus language 
+options include Draconic.
+Table 1–2: The Dragon Shaman Hit Die: d10
+             Base
+             Attack               Fort             Ref             Will                          Draconic
+Level     Bonus    Save    Save    Save       Special    Auras    Known
+  1st +0 +2 +0 +2 Draconic aura +1, totem dragon 3
+  2nd     +1 +3 +0 +3 Skill Focus 3
+  3rd +2 +3 +1 +3 Draconic adaptation 4
+  4th +3 +4 +1 +4 Breath weapon (2d6; 15-ft. cone or 30-ft. line), draconic resolve 4
+  5th +3 +4 +1 +4 Draconic aura +2 5
+  6th +4 +5 +2 +5 Breath weapon (3d6), touch of vitality (heal wounds) 5
+  7th +5 +5 +2 +5 Natural armor +1 6
+  8th +6/+1 +6 +2 +6 Breath weapon (4d6), Skill Focus 6
+  9th +6/+1 +6 +3 +6 Energy immunity 7
+10th +7/+2 +7 +3 +7 Breath weapon (5d6), draconic aura +3 7
+11th +8/+3 +7 +3 +7 Touch of vitality (remove conditions) 7
+12th +9/+4 +8 +4 +8 Breath weapon (6d6; 30-ft. cone or 60-ft. line), natural armor +2 7
+13th +9/+4 +8 +4 +8 Draconic adaptation (share with allies) 7
+14th +10/+5 +9 +4 +9 Breath weapon (7d6), commune with dragon spirit 7
+15th        +11/+6/+1          +9        +5        +9         Draconic        aura        +4        7
+16th +12/+7/+2 +10 +5 +10 Breath weapon (8d6), Skill Focus 7
+17th       +12/+7/+2         +10       +5       +10        Natural       armor       +3       7
+18th       +13/+8/+3         +11       +6       +11        Breath       weapon       (9d6)       7
+19th       +14/+9/+4         +11       +6       +11        Draconic       wings       7
+20th +15/+10/+5 +12 +6 +12 Breath weapon (10d6; 60-ft. cone or 120-ft. line), draconic aura +5 7
+Class Skills (2 + Int modifier per level, ×4 at 1st level): Climb, Craft, Intimidate, Knowledge (nature), Search (plus others 
+depending on the chosen totem dragon).
+620_95374_Ch1.indd   12620_95374_Ch1.indd   122/8/06   2:54:03 PM2/8/06   2:54:03 PM
+
+13
+CHAPTER 1
+NEW CLASSES
+ Draconic Aura (Su): You can channel the mighty powers 
+of dragonkind to project an aura that grants you and nearby 
+allies a special benefi t.
+     Projecting an aura is a swift action (see page 4), and you can 
+only project one draconic aura at a time. An aura remains in 
+effect until you use a free action to dismiss it or you activate 
+another aura in its place. You can have a draconic aura active 
+continually; thus, an aura can be in effect at the start of an 
+encounter even before you take your fi  rst  turn.
+    Unless otherwise noted, your draconic aura affects all 
+allies within 30 feet (including yourself ) with line of effect 
+to you. Your aura is dismissed i f you become unconscious or 
+are slain, but otherwise it remains in effect even if you are 
+incapable of acting.
+     The bonus granted by your aura begins at +1 and increases 
+to +2 at 5th level, +3 at 10th level, +4 at 15th level, and +5 at 
+20th level. As a 1st-level dragon shaman, you know how to 
+project three auras chosen from the list below. At every odd-
+numbered level after that, you learn one additional draconic 
+aura of your choice, until all seven auras are known at 9th 
+level. Each time you activate a draconic aura, you can choose 
+from any of the auras that you know.
+ Energy Shield: Any creature striking you or your ally with 
+a natural attack or a nonreach melee weapon is dealt 2 points 
+of energy damage for each point of your aura bonus. The 
+energy type is that of your totem dragon’s damage-dealing 
+breath weapon (see below).
+     Power: Bonus on melee damage rolls equal to your aura bonus.
+ Presence: Bonus on Bluff, Diplomacy, and Intimidate checks 
+equal to your aura bonus.
+ Resistance: Resistance to your totem dragon’s energy type 
+equal to 5 × your aura bonus.
+    Senses: Bonus on Listen and Spot checks, as well as on 
+initiative checks, equal to your aura bonus.
+ Toughness: DR 1/magic for each point of your aura bonus 
+(up to 5/magic at 20th level).
+    Vigor: Fast healing 1 for each point of your aura bonus, but 
+only affects characters at or below one-half their full normal 
+hit points.
+ Totem  Dragon:  You  must  choose  a  totem  dragon  from  
+among the true dragons appearing in the Monster Manual (black, 
+blue, brass, bronze, copper, gold, green, red, silver, or white).
+     You must choose a dragon whose alignment is within one 
+step of yours, as described in the following table. You gain 
+additional class skills and a particular sort of breath weapon 
+based on the dragon you select as your totem.
+ Skill Focus: At 2nd level, you gain Skill Focus as a bonus 
+feat. You must apply the feat to one of the three class skills 
+granted by your chosen totem dragon. For example, a blue 
+dragon shaman can select Skill Focus (Bluff ), Skill Focus 
+(Hide), or Skill Focus (Spellcraft).
+    At 8th level, and again at 16th level, you gain Skill Focus 
+in another of the class skills granted by your chosen totem 
+dragon. If you already have Skill Focus in all three of the skills 
+associated with your totem dragon, you gain Skill Focus in 
+any other dragon shaman class skill.
+ Draconic Adaptation (Ex or Sp): At 3rd level, you take 
+on an aspect of your totem dragon. Some adaptations are 
+extraordinary abilities that are always active; others are spell-
+like abilities that you can activate at will. Spell-like abilities 
+have  a  caster  level  equal  to  your  class  level  and  a  save  DC  
+equal to 10 + spell level + Cha modifi  er.
+     Black—Water Breathing (Ex): You can breathe underwater 
+indefinitely and can freely use spells and other abilities 
+underwater (always active).
+ Blue—Ventr il oquism (Sp): As the spell (at will).
+ Brass—Endure Elements (Sp): As the spell, except you can 
+only target yourself (at will).
+ Bronze—Wa t er  B re a t h i ng  (E x) : You can breathe underwater 
+indefinitely and can freely use spells and other abilities 
+underwater (always active).
+    Copper—Spider Climb (Sp): As the spell, except you can 
+only target yourself (at will).
+ Gold—Water Breathing (Ex): You can breathe underwater 
+indefinitely and can freely use spells and other abilities 
+underwater (always active).
+ Green—Water Breathing (Ex): You can breathe underwater 
+indefinitely and can freely use spells and other abilities 
+underwater (always active).
+ Red—Treasure Seeker (Ex): You gain a +5 competence bonus 
+on Appraise and Search checks (always active).
+     Silver—Feather Fall (Sp): As the spell, except you can only 
+target yourself (at will).
+ White—Icewalker (Ex): You can walk across icy surfaces 
+without reducing your speed or making Balance checks 
+(always active).
+     At 13th level, you can choose as a swift action (see page 4) 
+to share the effect of your draconic adaptation with any or 
+al l al l ies w ithin 30 feet. In the case of spel l-l i ke abi l ities, you 
+must make this decision when you activate the ability. The 
+benefi t lasts until you spend a free action to rescind it or (if 
+the effect has a limited duration) the effect ends, whichever 
+comes fi  rst.
+ Breath Weapon (Su): At 4th level, you gain a breath 
+weapon corresponding to your totem dragon. Regardless of 
+the area one affects or the type of energy damage it deals, all 
+Totem      Acceptable            Breath      Weapon
+Dragon    Alignment Class Skills Energy Type
+Black NE, CE, CN     Hide, Move  Line of acid
+                                Silently,                Swim
+Blue NE, LE, LN Bluff, Hide,  Line of electricity
+                                Spellcraft
+Brass NG, CG, CN   Bluff, Gather Line of fire
+                                Information,                Survival
+Bronze NG, LG, LN    Disguise, Line of electricity
+                                Survival,                Swim
+Copper NG, CG, CN   Bluff, Hide,  Line of acid
+                                Jump
+Gold NG, LG, LN    Disguise, Heal,    Cone of fire
+                                Swim
+Green NE, LE, LN Bluff, Hide,  Cone of acid
+                                Move                Silently
+Red NE, CE, CN     Appraise, Bluff,    Cone of fire
+                                Jump
+Silver NG, LG, LN     Bluff, Disguise,    Cone of cold
+                                Jump
+White NE, CE, CN     Hide, Move  Cone of cold
+                                Silently,                Swim
+620_95374_Ch1.indd   13620_95374_Ch1.indd   132/8/06   2:54:10 PM2/8/06   2:54:10 PM
+
+14
+CHAPTER 1
+NEW CLASSES
+breath weapons deal 2d6 points of damage, plus an extra 1d6 
+points of damage for every two additional class levels (3d6 at 
+6th level, 4d6 at 8th level, and so forth). A successful Refl  ex  
+save halves the damage dealt; the save DC is equal to 10 + 
+1/2 your dragon shaman level + your Con modifi  er. Just like 
+a true dragon, once you breathe you must wait 1d4 rounds 
+before you can use your breath weapon again.
+     Cone-shaped breath weapons extend out to 15 feet at 4th 
+level, increasing to 30 feet at 12th level and to 60 feet at 
+20th level. Line-shaped breath weapons are 30 feet long at 
+4th level, increasing to 60 feet at 12th level and to 120 feet 
+at 20th level.
+Draconic Resolve (Ex): At 4th level, you gain immunity 
+to paralysis and sleep effects. You also become immune to 
+the frightful presence of dragons.
+Touch of Vitality (Su): At 6th level, you can heal the 
+wounds of living creatures (your own or those of others) by 
+touch. Each day you can heal a number of points of damage 
+equal to twice your class level × your Charisma bonus. For 
+example, a 7th-level dragon shaman with a Charisma score of 
+14 (+2 bonus) can heal 28 points of damage. You can choose 
+to divide your healing among multiple recipients, and you 
+don’t have to use it all at once. Using your touch of vitality 
+is a standard action. It has no effect on undead.
+    Beginning at 11th level, you can choose to spend some 
+of the healing bestowed by your touch of vitality to remove 
+other harmful conditions affecting the target.
+    For every 5 points of your healing ability you expend, 
+you can cure 1 point of ability damage or remove the dazed, 
+fatigued, or sickened condition from one individual.
+     For every 10 points of your healing ability you expend, you 
+can remove the exhausted, nauseated, poisoned, or stunned 
+condition from one individual.
+     For every 20 points of your healing ability you expend, 
+you can remove a negative level or the blinded, deafened, or 
+diseased condition from one individual.
+    You can remove a condition (or more than one condi-
+tion) and heal damage with the same touch, so long as you 
+expend the required number of points. For example, if you 
+wanted to heal 12 points of damage and remove the bl inded 
+and exhausted conditions from a target, you would have to 
+expend 42 points (12 hit points restored plus 20 points for 
+blinded plus 10 points for exhausted).
+Natural Armor (Ex): At 7th level, your skin thickens, 
+developing faint scales. Your natural armor bonus improves 
+by 1. At 12th level, this improvement increases to +2, and at 
+17th level to +3.
+Energy Immunity (Ex): At 9th level, you gain immu-
+nity to the energy type of the breath weapon you gained 
+at 4th level.
+Commune with Dragon Spirit (Sp): At 14th level, you 
+gain the ability to contact your dragon totem directly to ask 
+questions of it. This is the equivalent of casting a commune
+spell, except that it has no material component, focus, or XP 
+cost and allows only one question per three class levels. After 
+using this ability, you cannot use it again for seven days.
+Draconic Wings (Ex): At 19th level, you grow a pair of 
+wings that resemble those of your totem dragon. They allow 
+fl ight at a speed of 60 feet (good maneuverability). You can 
+even fl  y while carrying a medium load, though your fl  y  speed  
+drops to 40 feet in this case.
+    If you already have wings, you can choose whether these 
+draconic wings replace your own.
+PLAYING A DRAGON SHAMAN
+As a dragon shaman, you believe the acquisition of power is 
+a worthy end in itself. By having power, you can effect your 
+will in the world, be it benefi  cent or malign. Those who have 
+or  seek  power  deserve  your  respect,  while  those  who  have  
+power but fail to use it earn your derision.
+    Your strength comes from devoting yourself to dragons, 
+the primal embodiment of the principle of power, but you 
+worship dragons in the abstract, honoring them much as a 
+cleric might honor light as a symbol of purity and goodness. 
+Dragons gather power to themselves simply by living and 
+aging,  but  you  must  actively  seek  the  infl  uence  and  might  
+you desire. As a dragon hungers for fl  esh to feed itself or for 
+treasure to enlarge its hoard, so you hunger for power.
+     You  adventure  out  of  a  desire  to  test  yourself  and  prove  
+your worth; whatever the specifi c inducement, the urge to 
+gain more power underlies every quest. Drawn by your power, 
+others follow your lead, and you are happy to command them. 
+Being  a  great  leader  is  just  one  of  the  many  ways  you  can  
+manifest your power.
+Religion
+Dragon  shamans  can  worship  any  deity,  but  most  worship  
+divine powers that encourage their worshipers to be proac-
+tive in pursuit of the deity’s goals. Dragon shamans often 
+worship Erythnul, Gruumsh, Heironeous, Hextor, Kord, or 
+St. Cuthbert, as well as dragon deities such as Bahamut and 
+Tiamat. They rarely fi nd much to admire in more passive 
+or protective deities such as Boccob, Ehlonna, Fharlanghn, 
+and Yondalla.
+     Dragon shamans from more primitive societies sometimes 
+worship true dragons. These savage dragon shamans might 
+worship all true dragons, assigning each color or metallic 
+hue its own place in a crude pantheon of totemic spirits. Or 
+they might worship a single color or metal as the best among 
+all  the  true  dragons,  fi  nding  it  the  most  representative  of  
+pure power. In rare cases, a dragon shaman worships and 
+serves a particular true dragon. How the dragon reacts to 
+such worship depends on that individual dragon; even good 
+dragons might take advantage of a dragon shaman’s worship 
+to achieve their own aims.
+Other Classes
+You work well with melee-oriented allies such as fi ghters, 
+duskblades, barbarians, rogues, and even druids. Those 
+characters value the benefi  ts a dragon shaman can grant them 
+and rarely make an issue of their source. Clerics, paladins, 
+knights, and monks are often suspicious of your moral out-
+look unless you have dedicated yourself to a kind of dragon 
+that associates itself with a code of ethics similar to their own. 
+Wizards, bards, and beguilers view you indifferently, whereas 
+sorcerers might seek you out to learn more of the source of 
+
+15
+CHAPTER 1
+NEW CLASSES
+your power and your connection to dragons. Rangers might 
+or might not take issue with your abilities; a ranger whose 
+favored enemy is dragons might attack you on sight.
+Combat
+Dragon shamans lead from the front, rather than directing 
+battles  from  a  safe  position  behind  others.  Keep  as  many  
+allies as possible within the range of your draconic aura, but 
+focus on those in melee with your foes. Pick a draconic aura 
+that grants your allies the best benefi  t for the situation, and 
+don’t hesitate to sw itch it dur ing the fi  ght  should  conditions  
+change and another aura prove more useful. Outside combat, 
+employ the senses or presence aspects of your draconic aura. 
+If you have a cleric or other healer in your group, save your 
+touch of vitality for removing conditions or for emergency 
+healing. If no other healer is present, use it to heal yourself 
+and your allies after combat.
+Advancement
+You  profi  t  most  from  remaining  a  dragon  shaman  
+throughout your advancement, so that your 
+breath weapon and draconic aura continue 
+to improve as you gain levels. If you do 
+multiclass, a level of barbarian is an ex-
+cellent choice; the benefi  ts  it  grants  
+help  you  in  combat  regardless  of  
+when you take that 1st level. Al-
+ternatively,  you  might  consider  
+beginning your career as a 1st-
+level  barbarian  for  the  greater  
+hit points and skill points that 
+option offers, then multiclass-
+ing  into  the  dragon  shaman  
+class at 2nd level. The fi  ghter  
+class might seem like a strong 
+second choice, but unless you 
+need a fi ghter bonus feat for a 
+particular kind of character, 
+you’ll  see  better  long-term  ad-
+vantages from the barbarian 
+class. The bard class can be an 
+interesting multiclass option, 
+since  the  benefits  provided  
+by  bardic  music  stack  with  
+those provided by your dra-
+conic aura.
+STARTING 
+PACK AGE S
+Package 1: The Defender
+Dwarf Dragon Shaman (Gold)
+    Ability    Scores:    Str 14, Dex 12, 
+Con 15, Int 8, Wis 10, Cha 13.
+    Skills:    Heal.
+    Feat:  Shield  Specialization  
+(heavy)*.
+     Weap o ns :     Morningstar (1d8), five 
+javelins (1d6, 30 ft.).
+    Armor:    Scale  mail  (+4  AC),  heavy  wooden  shield  (+3  AC  
+[includes Shield Specialization]).
+    Other    Gear:    Standard adventurer’s kit, 15 gp.
+Package 2: The Destroyer
+Half-Orc Dragon Shaman (Red)
+     Ability     Scores:     Str 16, Dex 12, Con 13, Int 6, Wis 10, Cha 13.
+    Skills:    Intimidate.
+     Feat: Power Attack.
+     Weap o ns :     Morningstar (1d8), fi  ve javelins (1d6, 30 ft.).
+    Armor:    Scale mail (+4 AC), heavy wooden shield (+2 AC).
+    Other    Gear:    Standard adventurer’s kit, 10 gp.
+Package 3: The Second-Rank Warrior
+Human Dragon Shaman (Copper)
+     Ability     Scores:     Str 15, Dex 14, Con 12, Int 8, Wis 10, Cha 13.
+    Skills:    Hide, Jump.
+     Feat:     Combat Refl  exes, Power Attack.
+     Weap o ns :     Longspear (1d8/×3), light crossbow with 20 bolts 
+(1d6/×3, 60 f t.).
+Thane and Iskara, dragon shamans
+Illus. by L. Parillo
+620_95374_Ch1.indd   15620_95374_Ch1.indd   152/8/06   2:54:24 PM2/8/06   2:54:24 PM
+
+16
+CHAPTER 1
+NEW CLASSES
+    Armor:    Studded leather (+3 AC).
+    Other    Gear:    Standard adventurer’s kit, 8 gp.
+DRAGON SHAMANS IN THE WORLD
+“There are differences from one to another, based on the dragon each 
+shaman honors, but the main thing to remember is this: The whole 
+lot of them are mad for power.”
+—Durven Ironscale, a dwarf sorcerer 
+instructing the young of the Ironscale clan
+Dragon shamans put the power and appeal of dragons in 
+players’ hands while providing DMs with a new way to put 
+dragons in the D&D game. The class provides an uncom-
+plicated way to have a new play experience, and each NPC 
+dragon shaman could provide the nucleus for an interesting 
+cult or villainous organization the PCs must face.
+Daily Life
+A dragon shaman remains ever ready to face the challenges 
+of a new day. Without the need to rest, study, or pray for 
+their powers, dragon shamans can leap up in pursuit of 
+power whenever they desire. This capability causes most 
+dragon shamans to be decisive and swift to act. Chaotic 
+dragon shamans are often impetuous and energetic, while 
+lawful dragon shamans tend to be more ready to improvise 
+and less rigid in their thinking than some might expect. 
+Dragon shamans desire power and constantly seek the 
+means to gain it. To dragon shamans, life and adventure 
+are one and the same.
+    Dragon shamans often possess the charisma and take-
+charge attitude required of great leaders, but many suffer 
+from an inability to empathize with those they lead. Dragon 
+shamans respect the pursuit of might and its use, and they 
+often minimize the value of those who adhere to other 
+philosophies. Even among themselves, dragon shamans tend 
+to be contentious, and a single dragon shaman rarely takes 
+a leadership role over a group of his fellows for any length 
+of time. Although dragon shamans give great respect to one 
+another, each is always trying to outdo the others in all pur-
+suits. The most power ful dragon shaman leaders ar ise among 
+savage tribes that worship dragons, where a single dragon 
+shaman relies on his forceful personality and impressive 
+powers to win the hearts of comrades.
+Notables
+The pursuit of power garners notoriety for a dragon shaman, 
+but it also can bring about his death or force him into exile. 
+A powerful dragon shaman warlord might suddenly arise 
+and terrorize an area for a time, only to fall from power as 
+swiftly as he appeared. A case in point would be the history 
+of a barbaric human named Kalia. Under her leadership, her 
+tribe of red dragon worshipers raided and razed hundreds 
+of elf and human towns on the border between two nations. 
+Then she vanished, and soon afterward her leaderless tribe 
+was caught in an ambush and exterminated. Some say she 
+died in a squabble with a fellow dragon shaman, but other 
+believe she left her tribe to directly serve a red dragon wyrm 
+that laired in distant mountains.
+Organizations
+Dragon shamans rarely work together for long unless they 
+are led by a dragon of the type to which all the shamans 
+present have dedicated themselves. In such cases, the dragon 
+is either worshiped or leads because the dragon shamans 
+see it as the embodiment of all they seek; thus, obeying the 
+dragon’s edicts presents the swiftest path to that desired 
+goal. Rank and privilege rarely have much meaning in such 
+groups. Instead, the dragon decides each shaman’s duties 
+according to his or her merit, changing such assignments as 
+necessary. Such a group exists among the Ironscale clan. Tied 
+to a long-dead silver dragon by blood, the dwarf clan fosters 
+sorcerers and is led by a half-dragon. Despite these fi  rm ties to 
+dragonkind, the clan views its dragon shaman members with 
+some suspicion, since they follow the orders of an unrelated 
+silver dragon that lairs near the clan home.
+NPC Reactions
+Dragon shamans who don’t show aspects of their affi  liation  
+with dragons rarely elicit an unusual reaction from others. 
+To most they seem like simple warriors or perhaps barbar-
+ians. Those who know of their pursuit of draconic power or 
+who see evidence of it, such as scales or a dragon shaman’s 
+breath weapon, react depending on their attitude toward the 
+dragon shaman’s totem dragon. This reaction is one step closer 
+to hostile if the dragon is of a kind feared or hated by that 
+individual. The reaction is one step closer to friendly if that 
+individual is directly associated with a dragon of that kind. 
+Clerics, paladins, and others who are deeply entrenched in a 
+particular moral outlook view the dragon shaman’s devotion 
+with suspicion, and their reaction is one step closer to hostile 
+regardless of the dragon shaman’s totem dragon.
+DR AGON SHAMAN LORE
+Characters with ranks in Knowledge (arcana) can research 
+dragon shamans to learn more about them. When a character 
+makes a skill check, read or paraphrase the following, includ-
+ing the information from lower DCs.
+ DC 10: Dragon shamans devote themselves to dragons and 
+aspire to their power.
+ DC 15: A dragon shaman devotes himself to a particular 
+kind of true dragon and gains powers based on the dragon 
+chosen. He can use the dragon’s breath weapon and grow 
+dragonlike scales. Very powerful dragon shamans can grow 
+dragon wings and fl  y.
+ DC 20: In addition to the detai ls above, this result al lows 
+the PC to know that a dragon shaman projects an aura that 
+can bolster himself and his allies in a number of ways and 
+can heal damage or remove negative conditions somewhat 
+like a paladin.
+DRAGON SHAMANS IN THE GAME
+Dragon shamans fi  t easily into any ongoing campaign because 
+true dragons are a cornerstone of nearly every DUNGEON & 
+DRAGONS game. The PCs might first learn of dragon shamans 
+by encountering a cult of dragon worshipers near a dragon’s 
+lair. Alternatively, a more civilized group of dragon shamans 
+might serve a dragon who rules a city. A lone dragon shaman 
+Illus. by L. Parillo
+620_95374_Ch1.indd   16620_95374_Ch1.indd   162/8/06   2:54:35 PM2/8/06   2:54:35 PM
+
+Adventurers face off 
+against a black dragon
+620_95374_Ch1.indd   17620_95374_Ch1.indd   172/8/06   2:54:44 PM2/8/06   2:54:44 PM
+
+18
+CHAPTER 1
+NEW CLASSES
+makes an excellent new villain, a powerful temporary ally, or 
+an eager participant in an ongoing plot because his focused 
+pursuit of power can get him involved in anyone’s scheme 
+to gain it.
+    Dragon shaman PCs should present no more diffi culty 
+than introducing a monk or cleric of a lesser-known deity. 
+Although the character’s abilities might be somewhat foreign, 
+the idea that an individual is so dedicated to one philosophy 
+that it grants him powers should be easily understood. The 
+player of a dragon shaman usually finds the character’s 
+association with dragons to be the most entertaining part of 
+the class. Before featuring adventures that deal with dragons, 
+ask that player about her character’s philosophy concerning 
+dragons. Does the character admire dragons in the abstract, 
+worship them as living gods, or hold to a philosophy between 
+these extremes? The answer should inform your adventure 
+planning  and  inspire  new  adventure  ideas.  Be  careful  
+about using the PC’s dedication to dragons to manipulate 
+the character’s actions: Occasional use of this idea might 
+provoke some interesting roleplaying, but the player won’t 
+enjoy your game if a dragon shows up every session to boss 
+her PC around.
+Adaptation
+You can alter the dragon shaman to suit your game in a number 
+of ways. You could decide that all dragon shamans are barbaric, 
+or that all them are civilized and sophisticated disciples of 
+dragons who prefer to work behind the scenes through such 
+agents. You might decide that only good dragons are available 
+to your players for their totem dragons, or that a particular 
+organization fosters dragon shamans devoted to a single kind 
+of dragon. If you feature other dragons prominently in your 
+game, such as the gem dragons from Monster Manual II or the 
+deep dragon and the shadow dragon from Monsters of Faerûn, 
+you might consider changing the class’s features to allow a 
+dragon shaman to follow other kinds of dragons as well.
+Sample Encounter
+Dragon shamans make excellent villains and tricky allies. As 
+a villain, a dragon shaman dedicated to an evil dragon can 
+be paired with a cult of followers, half-dragons, and dragons 
+of all ages to make for exciting themed encounters. As an 
+ally, a dragon shaman’s blind pursuit of power could create 
+interesting friction with the PCs and turn an ally into an 
+enemy. A dragon shaman might become embroiled in the 
+PCs’ pursuits i f they come into possession of an item of great 
+power, if both the PCs and dragon shaman seek the same 
+source of power, or i f the dragon shaman’s at tempts to gather 
+power endanger the PCs or those they care about.
+ EL 7: Thane has admired blue dragons ever since he wit-
+nessed a blue dragon’s at tack on his cit y when he was a chi ld. 
+The  power  of  the  dragon  and  the  futility  of  the  defenders’  
+efforts against it frightened him, but he also found the spec-
+tacle strangely thrilling. When he was older, Thane learned all 
+he could about blue dragons. With each new bit of knowledge, 
+his respect for them grew. In his search for information he 
+met a dragon shaman, and that encounter changed his life. 
+Now a dragon shaman himself, Thane seeks ever greater 
+power and hopes one day to have enough to challenge the 
+dragon that laid waste to his childhood home and prove 
+himself the stronger of the two. Thane seems single-minded 
+and focused. He always has a mental list of goals he wants 
+to  achieve  in  any  situation  and  doggedly  pursues  them.  
+Although outwardly calm and cold, he explodes into action 
+in an instant when thwarted.
+Thane                                                             CR                                                             7
+Male human blue dragon shaman 7
+LN Medium humanoid
+Init +1
+Senses Listen +2, Spot +2
+Aura draconic aura* +2
+ *Class feature described on page 13
+Languages Common, Draconic
+AC 21, touch 11, flat-footed 20
+ (+1 Dex, +6 armor, +3 shield)
+hp 57 (7 HD)
+Immune paralysis, sleep, frightful presence (dragons)
+Fort +8, Ref +6, Will +6
+Speed 20 ft. (4 squares)
+Melee +1 mornings tar +9 (1d8+3)
+Ranged +1 light crossbow +7 (1d8+1/19–20)
+Base Atk +5; Grp +7
+pqqqqqqqqqqqqqqqqqqqqrs
+pqqqqqqqqqqqqqqqqqqqqrs
+EX-DRAGON SHAMANS
+Dragon shamans who change alignment could lose their powers. 
+If a dragon shaman changes to an alignment still appropriate 
+to the dragon to which he is already dedicated, nothing hap-
+pens. However, if the dragon shaman changes to an alignment 
+inappropriate for his chosen dragon, he immediately loses all 
+abilities granted by the dragon shaman class and becomes an 
+ex-dragon shaman.
+    An ex-dragon shaman can choose a new color or metallic hue 
+of true dragon to emulate and thus regain the powers granted 
+by the class. To switch to a new totem dragon, he must find a 
+dragon shaman of higher level who is dedicated to that dragon 
+type. The higher-level dragon shaman must willingly expend 
+all her touch of vitality on the ex-dragon shaman each day for 
+a week. At the end of the week, the ex-dragon shaman gains 
+the class features of a dragon shaman dedicated to the newly 
+chosen totem dragon, including exchanging the focus of any 
+class-granted Skill Focus feats. Most dragon shamans who are 
+asked to perform this service demand payment in the form 
+of some great deed. This deed might be a demand that the 
+ex-dragon  shaman  retrieve  magic  items  that  will  add  to  his  
+sponsor’s power or simply a short quest to prove the ex-dragon 
+shaman’s worth.
+    Dragon shamans can go through the same process to switch 
+chosen totem dragons even if they don’t change alignment. If 
+a dragon shaman has an alignment appropriate for a different 
+true dragon color or hue, the shaman can switch to that kind of 
+dragon through a process identical to the one described above 
+for ex-dragon shamans.
+620_95374_Ch1.indd   18620_95374_Ch1.indd   182/8/06   2:54:54 PM2/8/06   2:54:54 PM
+
+19
+CHAPTER 1
+NEW CLASSES
+Special Actions breath weapon
+Abilities Str 15, Dex 12, Con 14, Int 8, Wis 10, Cha 14
+SQ touch of vitality (28 points)
+Draconic Auras Known Energy Shield, Power, Presence, 
+Resistance, Senses, Vigor
+Spell-Like Abilities (CL 7th):
+     At     will—ventriloquism (DC 13).
+Feats Ability Focus (breath weapon), Alertness, Lightning 
+Reflexes, Skill Focus (Bluff )
+B
+, Weapon Focus 
+(morningstar)
+Skills Bluff +10, Climb +1, Diplomacy +4, Disguise +2 (+4 
+acting), Intimidate +9, Knowledge (nature) +4, Listen 
++2, Speak Language +0, Spot +2, Survival +0 (+2 in 
+aboveground natural environments)
+Possessions +1 breastplate, +1 heavy wooden shield, +1 
+morningstar, +1 light crossbow, cloak of resistance +1, 37 gp
+Breath Weapon (Su) 30-ft. line, once every 1d4 rounds, 3d6 
+electricity, Reflex DC 17 half
+DUSKBLADE
+ “My blade and my magic are one and the same.”
+—Yele, elf duskblade
+The  duskblade  blurs  the  line  between  spellcaster  and  
+warrior, marrying the power of magic with hand-to-hand 
+combat prowess.
+    A student of ancient elven spellcasting techniques, the 
+duskblade combines arcane spellcasting with the combat 
+skills of a fi  ghter. While the ability to cast arcane spells in 
+armor originated with the elves, over the millennia the secrets 
+of the duskblade have been disseminated to the other races, 
+and today members of any race can become a duskblade.
+    If you find you can’t choose between being an arcane 
+spellcaster who zaps your enemies with powerful spells and 
+a nimble, powerful front-line melee character who lays them 
+low with a sword, the duskblade is the perfect class for you. 
+Combining arcane magic with melee prowess, you’re prepared 
+in any situation. Enemies who underestimate you never get 
+a second chance, since you don’t even have to switch back 
+and  forth  between  hands-on  combat  and  spellcasting;  you  
+can do both simultaneously.
+MAKING A DUSKBLADE
+The duskblade is a quintessential hybrid character, simultane-
+ously a potent spellcaster and an effective melee combatant.
+     The original duskblades were elite guardians in an ancient 
+elf empire, duelmasters and arcane spellcasters beyond 
+compare. Historical accounts vary on why they were called 
+duskblades; some say the name is symbolic of how they 
+combined swordplay and arcane magic—a night-and-day 
+combination. Others contend that the duskblades earned 
+their name when they were charged with preserving the elf 
+race in the face of a tide of darkness and evil.
+     The most powerful duskblades can duel a fi  ghter to a stand-
+still and match a wizard spell for spell—for a while, at least. 
+But the class really comes into its own when you embrace your 
+hybrid nature, using a quick-cast spell to supplement your 
+melee attacks or combining a touch spell with a devastating 
+sword strike.
+     The duskblade is a good choice for players who know they 
+want  a  sword-wielding  arcane  spellcaster  from  the  begin-
+ning.  By  contrast,  multiclass  fi  ghter/wizard  combinations  
+and  prestige  classes  such  as  the  eldritch  knight  are  better  
+suited for characters who begin their careers as fi  ghters  or  
+arcane  spellcasters  and  only  later  contemplate  embracing  
+their opposite.
+     Abilities:     Your Intelligence and Strength scores should be 
+as high as possible, since your spellcasting and melee combat 
+depend  upon  them.  Your  Constitution  is  also  important,  
+because you need all the hit points you can get.
+ Races: The duskblade class originated among the ancient 
+elves, and to this day most duskblades are elves. However, 
+some humans and half-elves also have proved adept at 
+mastering the class’s dual focus on combat and spellcast-
+ing. Halfl  ings, gnomes, dwarves, and half-orcs rarely enter 
+this class.
+ Alignment: Since the duskblade class originated among 
+the elves, those who undergo the intense training required to 
+master the class abilities at the hands of an elf mentor often 
+end their apprenticeship sharing the chaotic good alignment 
+of most elves. However, duskblades are highly individualist 
+and can be of any alignment.
+ Starting Gold: 6d4×10 gp (150 gp).
+     Starting     Age:     As wizard (PH 109).
+CLASS FEATURES
+Your  class  features  are  simple  to  characterize:  constant  
+improvement  in  your  spellcasting,  a  fi  ghter’s  base  attack  
+bonus  progression,  and  ever-increasing  mastery  of  arcane  
+magic in melee combat.
+     Weapon  and  Armor  Profi  ciency: Duskblades are pro-
+fi cient with all martial weapons, as well as all armors and 
+shields (except tower shields).
+     Spells: You cast arcane spells, which are drawn from the 
+duskblade spell list on page 98. You can cast any spell you 
+know without preparing it ahead of time.
+     To lear n or cast a spel l, you must have an Intel l igence score 
+equal to at least 10 + the spell level (Int 10 for 0-level spells, 
+Int 11 for 1st-level spells, and so forth). The Diffi  culty  Class  
+for a saving throw against your spell is 10 + the spell level + 
+your Int modifi  er.
+    You can cast only a certain number of spells of each spell 
+level per day. Your base daily spell allotment is given on Table 
+1–3. In addition, you receive bonus spells per day if you have 
+a  high  Intelligence  score  (see  Table  1–1:  Ability  Modifi  ers  
+and Bonus Spells, page 8 of the Player’s Handbook.)
+     Spells     Known: You begin play knowing two 0-level spells 
+and two 1st-level spells, chosen from the duskblade spell list. 
+You also know one additional 0-level spell for each point of 
+Intelligence bonus.
+     Each  time  you  gain  a  new  class  level,  you  learn  one  
+additional  spell  of  any  level  you  can  cast,  chosen  from  the  
+duskblade spell list.
+     Upon  reaching  5th  level,  and  at  every  subsequent  odd-
+numbered level, you can choose to learn a new spell in place 
+of one you already know. In effect, you lose access to the old 
+spell in exchange for gaining the new one. The new spell’s 
+620_95374_Ch1.indd   19620_95374_Ch1.indd   192/8/06   2:55:01 PM2/8/06   2:55:01 PM
+
+20
+CHAPTER 1
+NEW CLASSES
+level must be the same as that of the spell being exchanged, 
+and it must be at least two levels lower than the highest-level 
+spell you can cast. For instance, upon reaching 9th level, you 
+could  trade  in  a  single  1st-level  spell  (two  levels  below  the  
+highest-level spell you can cast, which is 3rd) for a different 
+1st-level spell. You can swap only a single spell at any given 
+level and must choose whether or not to swap the spell at the 
+same time that you gain new spells known for the level.
+    You need not prepare spells in advance. You can cast any 
+spell you know at any time, assuming you have not yet used 
+up your spells per day for that spell level.
+    Arcane Attunement (Sp): You can use the spell-like 
+powers dancing lights, detect magic, fl are, ghost sound, and read 
+magic a combined total of times per day equal to 3 + your Int 
+modifi  er. These spell-like powers do not count against your 
+total of spells known or spells per day.
+     Armored Mage (Ex): Normally, armor of any type inter-
+feres with an arcane spellcaster’s gestures, which can cause 
+spells to fail if those spells have a somatic component. A 
+duskblade’s limited focus and specialized training, however, 
+allows you to avoid arcane spell failure so long as you stick 
+to light armor and light shields. This training does not 
+extend to medium or heavy armors, nor to heavy shields. 
+This ability does not apply to spells gained from a different 
+spellcasting class.
+     At 4th level, you learn to use medium armor with no chance 
+of arcane spell failure.
+     At 7th level, you learn to use a heavy shield with no chance 
+of arcane spell failure.
+    Combat    Casting:    At 2nd level, you gain Combat Casting 
+as a bonus feat.
+Arcane  Channeling  (Su):
+Beginning at 3rd level, you can 
+use a standard 
+action to cast 
+any touch spell you know and deliver the spell through your 
+weapon with a melee attack. Casting a spell in this manner 
+does  not  provoke  attacks  of  opportunity.  The  spell  must  
+have a casting time of 1 standard action or less. If the melee 
+attack is successful, the attack deals damage normally; then 
+the effect of the spell is resolved.
+     At  13th  level,  you  can  cast  any  touch  spell  you  know  as  
+part of a full attack action, and the spell affects each target 
+you hit in melee combat that round. Doing so discharges the 
+spell at the end of the round, in the case of a touch spell that 
+would otherwise last longer than 1 round.
+    Quick    Cast: Beginning at 5th level, you can cast one spell 
+each day as a swift action, so long as the casting time of the 
+spell is 1 standard action or less.
+     You can use this ability twice per day at 10th level, three 
+times per day at 15th level, and four times per day at 20th 
+level.
+     Spell  Power  (Ex):  Starting  at  6th  level,  you  can  more  
+easily overcome the spell resistance of any opponent you 
+successfully  injure  
+with  a  melee  attack.  
+If  you  have  injured  
+an opponent with a 
+melee attack, you gain 
+a  +2  bonus  on  your  
+caster  level  check  to  
+overcome  spell  resis-
+tance for the remainder 
+of  the  encounter.  This  
+bonus increases to +3 at 
+11th level, to +4 at 16th 
+level, and to +5 
+at 18th level.
+Yele and Hallia, duskblades
+Illus. by D. Hudnut
+620_95374_Ch1.indd   20620_95374_Ch1.indd   202/8/06   2:55:08 PM2/8/06   2:55:08 PM
+
+21
+CHAPTER 1
+NEW CLASSES
+PLAYING A DUSKBLADE
+A duskblade can take the fi ghter’s place in the front ranks 
+of a party or ensorcel his foes from a distance like a wizard. 
+While you aren’t quite as good as either a dedicated fi  ghter  or  
+a dedicated wizard or sorcerer in those roles, you’re reasonably 
+effective in either, and you can change roles on a round-by-
+round basis as needed.
+     Choosing the path of the duskblade means you don’t have to 
+choose between being a combat specialist and a spellcaster. You 
+enjoy the best of both worlds, and you’ll undertake any quest 
+that promises to improve either your spel lcasting or your melee 
+prowess. Driven to simultaneously master both swordplay 
+and spellcasting, you might devote yourself to delving into 
+ancient ruins to learn more about the original duskblades or 
+wander far and wide looking for other duskblades interested 
+in restoring the class to its previous glory. 
+Religion
+The  demands  of  martial  and  arcane  discipline  don’t  leave  
+much room for religion in the typical duskblade. Good-
+aligned  duskblades  typically  venerate  Corellon  Larethian,  
+even if they aren’t elves, because he supposedly taught the 
+fi  rst duskblades the secret of combining melee combat with 
+arcane casting. A few worship Boccob as the personifi cation 
+of their own mastery of magic, while more honor Wee Jas, 
+who  exemplifi es both the magic they wield and also the 
+death that they deal.
+Other Classes
+You get along well with members of other classes who share a 
+rigorous devotion to a chosen path, such as paladins, dragon 
+shamans, and monks. You are the object of envy to sorcerers 
+and of admiration to bards, who sometimes try to emulate 
+your abilities (often with disastrous results). Among members 
+of the two classes whose portfolios you draw from, fi  ghters  
+and wizards, some view you with disdain while others are 
+fascinated by your unique meld of melee combat and arcane 
+spellcasting. Barbarians, clerics, and knights tend to distrust 
+you, while rogues, rangers, druids, and beguilers view you 
+and other duskblades with indifference.
+Combat
+You might sometimes feel you have too many options, too 
+many things you can do in a single round. Use that fl  exibility  
+to con fou nd your enemies, out fi  ghting what you can’t outspell 
+and  outspelling  what  you  can’t  outfi  ght.  The  monster  that  
+engages you in melee, hoping to get an at tack of oppor t unit y 
+that spoils your next spell, is in for a surprise—a surprise 
+consisting of three feet of razor-sharp steel.
+     Most of a duskblade’s spel ls target a single creat ure or have 
+a range of touch, so you are most effective when you single 
+Table 1–3: The Duskblade   Hit Die: d8
+             Base
+ Attack  Fort     Ref     Will      ————Spells per Day———— 
+Level     Bonus   Save   Save   Save    Special   0   1st     2nd     3rd     4th     5th
+  1st +1 +2 +0 +2 Arcane attunement,       3         2        —       —       —       —
+                                                          armored           mage           (light)
+  2nd     +2 +3 +0 +3 Combat Casting 4 3 — — — —
+  3rd +3 +3 +1 +3 Arcane channeling 5 4 — — — —
+  4th +4 +4 +1 +4 Armored mage (medium) 6 5 — — — —
+  5th +5 +4 +1 +4 Quick cast 1/day 6 5 2 — — —
+  6th +6/+1 +5 +2 +5 Spell power +2 6 6 3 — — —
+  7th +7/+2 +5 +2 +5 Armored mage (heavy shield) 6 6 5 — — —
+  8th +8/+3 +6 +2 +6  6 7 6 — — —
+                  9th         +9/+4         +6         +3         +6                  6         7         6         2         —         —
+10th         +10/+5         +7         +3         +7         Quick         cast         2/day         6         8         7         3         —         —
+11th         +11/+6/+1         +7         +3         +7         Spell         power         +3         6         8         7         5         —         —
+12th         +12/+7/+2         +8         +4         +8                  6         8         8         6         —         —
+13th         +13/+8/+3         +8         +4         +8         Arcane         channeling         (full         attack)         6         9         8         6         2         —
+14th         +14/+9/+4         +9         +4         +9                  6         9         8         7         3         —
+15th         +15/+10/+5         +9         +5         +9         Quick         cast         3/day         6         9         8         7         5         —
+16th         +16/+11/+6/+1         +10         +5         +10         Spell         power         +4         6         9         9         8         6         —
+17th         +17/+12/+7/+2         +10         +5         +10                  6         10         9         8         6         2
+18th         +18/+13/+8/+3         +11         +6         +11         Spell         power         +5         6         10         9         8         7         3
+19th       +19/+14/+9/+4       +11      +6      +11            6        10       10        9         7         5
+20th      +20/+15/+10/+5      +12      +6      +12      Quick      cast      4/day      6        10       10       10        8         6
+Class Skills (2 + Int modifier per level, ×4 at 1st level): Climb, Concentration, Craft, Decipher Script, Jump, Knowledge (all 
+skills taken individually), Ride, Sense Motive, Spellcraft, Swim.
+pqs
+NEW ARMOR SPECIAL ABILITY: 
+TWILIGHT
+This armor special ability, which first appeared in the Book of 
+Exalted Deeds supplement, is of particular use to duskblades. 
+Such armor becomes translucent when donned and possesses 
+a faint sunset-colored sheen. Twilight armor reduces the chance 
+of arcane spell failure by 10%.
+    Faint abjuration; CL 5th; Craft Magic Arms and Armor; Price 
++1 bonus.
+pqs
+620_95374_Ch1.indd   21620_95374_Ch1.indd   212/8/06   2:55:18 PM2/8/06   2:55:18 PM
+
+22
+CHAPTER 1
+NEW CLASSES
+out and focus upon defeating a single opponent. Your spells 
+that affect areas are limited mostly to cones, which means 
+you need to be on or near the front lines to get the greatest 
+effect from them. Even if you come close to being as effective 
+as a fi  ghter or a sorcerer in his chosen fi  eld,  you’re  certainly  
+not as effective as a fi  ghter  and a sorcerer. You’ll occasionally 
+cast a spell and strike with your blade in the same round, but 
+pure spel lcasters such as the sorcerer are more able to a f fect a 
+crowd of foes or blast a group of opponents. That said, actions 
+are the D&D game’s most fundamental currency, and you’ll 
+be able to take advantage of additional actions in the round, as 
+you combine spellcasting with melee attacks and eventually 
+gain the ability to cast any spell you know as a swift action 
+a number of times per day.
+Advancement
+Like the sorcerer, you face a crucial decision: which spells to 
+put on your spells known list. The offensive spells on your 
+spell  list  fall  into  three  primary  categories:  touch  spells,  
+single-target ranged spells, and short-range cones. Choose at 
+least one touch spell, such as shocking grasp, to take advantage 
+of your arcane channeling ability. You should also take a 
+movement spel l, such as swift expeditious retreat, and an attack-
+enhancing spell such as true strike or magic weapon. Future 
+spell selections can tailor your repertoire to the role you fi  nd  
+yourself  most  commonly  fi lling, whether it be a front-line 
+fi  ghter or a fi  nesse  caster.
+    Assign as many skill points as possible to Concentration, 
+Knowledge (arcana), and Sense Motive. For feats, take the 
+Weapon Focus (longsword) feat and also consider sudden 
+metamagic feats, such as Sudden Silent and Sudden Empower, 
+both from the Complete Arcane supplement.
+     Do not neglect to put some thought into your gear as well. 
+Spend 30% of your wealth on the heaviest armor you can 
+manage without risking arcane spell failure chance (often 
+mithral and/or having the twilight special ability). Spend 
+20% on your primary weapon and 20% on items that improve 
+your Intelligence, Strength, and saving throws. Spend 20% on 
+wands and scrolls and the remaining 10% on miscellaneous 
+items and a basic adventuring package.
+     Your spellcasting and fi  ghting prowess also allow you the 
+opportunity to enter into prestige classes that are suited to 
+either melee or spellcasting.
+STARTING PACKAGES
+Package 1: The Blaster
+Human Duskblade
+     Ability     Scores:     Str 15, Dex 13, Con 12, Int 14, Wis 10, Cha 8.
+    Skills:    Climb,    Concentration,  Jump,  Knowledge  (arcana),  
+Spellcraft.
+ Languages: Common, Draconic, Elven.
+     Feat: Point Blank Shot, Weapon Focus (ranged spell).
+     Weap o n:     Greataxe (1d12/×3), 3 javelins (1d6, 30 ft.).
+    Armor:    Chain shirt (+4 AC).
+    Other    Gear:    Spell component pouch, standard adventurer’s 
+kit, 10 gp.
+ Spells Known: 1st—Kelgore’s fire bolt, ray of enfeeblement; 
+0—acid splash, disrupt undead, ray of frost, touch of fatigue.
+Package 2: The Defender
+Dwarf Duskblade
+     Ability     Scores:     Str 15, Dex 13, Con 14, Int 14, Wis 10, Cha 6.
+     Skills:     Concentration, Decipher Script, Knowledge (arcana), 
+Spellcraft.
+ Languages: Common, Dwarven, Goblin, Orc.
+     Feat: Toug h nes s .
+     Weap o n:     Dwarven waraxe (1d10/×3).
+    Armor:    Scale mail (+4 AC), light wooden shield (+1 AC).
+     Other     Gear:     Spell component pouch, standard adventurer’s 
+kit, 22 gp.
+ Spells Known: 1st—lesser defl  ect, resist energy; 0—acid splash, 
+disrupt undead, ray of frost, touch of fatigue.
+Package 3: The Skirmisher
+Elf Duskblade
+     Ability     Scores:     Str 15, Dex 15, Con 10, Int 14, Wis 10, Cha 8.
+    Skills:    Climb, Concentration, Jump, Spellcraft, Spot (cc).
+ Languages: Common, Draconic, Elven, Sylvan.
+     Feat:     Dodge.
+     Weap o ns :     Glaive (1d10/×3), fi  ve javelins (1d6, 30 ft.).
+    Armor:    Studded leather (+3 AC).
+     Other     Gear:     Spell component pouch, standard adventurer’s 
+kit, 42 gp.
+ Spells Known: 1st—swift expeditious retreat, true strike; 0—acid 
+splash, disrupt undead, ray of frost, touch of fatigue.
+DUSKBLADES IN THE WORLD
+“Your spells cannot penetrate my magical defenses. You are help-
+less, wizard!”
+—Last words of Zufi  r Halaq, rakshasa lord
+The duskblade combines the best features of the fi  ghter  and  
+wizard. Duskblades make dangerous foes because they have 
+so many options, magical and martial, available to them every 
+round; their ability to deliver touch spells through a melee 
+attack is particularly potent.
+Daily Life
+The life of a duskblade is one of constant training. Each 
+duskblade must simultaneously be a swordmaster, a deft 
+spellcaster,  and  an  expert  in  the  esoteric  techniques  of  
+arcane channeling. Each of those elements requires years 
+to master; put them together, and you have a training regi-
+men that only the most driven characters can maintain. 
+The typical duskblade is doing calisthenics in the castle 
+courtyard before the other characters wake up in the morn-
+ing and practicing somatic gestures long after everyone 
+else  has  gone  to  sleep  in  the  evening.  Exceptions  exist,  
+of course, but in general duskblades have a reputation as 
+driven, focused individuals.
+Notables
+Since duskblades are few and far between, they are natural 
+loners, wandering far and wide in search of adventures that 
+will prove a suitable challenge for their unique combination 
+of abilities. Such is the case with Gwilor the Swift, a wild elf 
+who adventured in the woodlands of his people for a century 
+620_95374_Ch1.indd   22620_95374_Ch1.indd   222/8/06   2:55:25 PM2/8/06   2:55:25 PM
+
+23
+CHAPTER 1
+NEW CLASSES
+or so before he committed himself entirely to a crusade 
+against the duergar and spent the rest of his long career on 
+extended forays into the underground.
+    Other duskblades join like-minded adventuring groups. 
+Given  their  own  mix  of  melee  and  spellcasting  abilities,  
+duskblades are willing to try unusual combinations, such 
+as in the case of Taiglin the Fair, a gray elf duskblade who 
+formed a highly successful party with a human hexblade and 
+a halfl  ing  warmage.
+    Still others are restless, moving from group to group and 
+area to area in search of new chal lenges. For example, Hal lia 
+Yelebane, a self-taught half-elf duskblade, rarely stays in the 
+same country more than a month or two. She arrives, seeks 
+out a suitable challenge for her talents, throws herself into 
+that adventure, and then moves on. In the course of her 
+career (brief by elven standards), she has rescued a halfl  ing  
+metropolis from a cabal of mind fl  ayers who were “farming” 
+the small humanoids for their brains, teamed with a githzerai 
+monk to defeat a famed githyanki knight (and claimed his 
+silver sword as her own), and exposed malenti infi  ltrators  in  
+an aquatic elf community and thus turned back a sahuagin 
+invasion, along with other exploits. Hallia’s nickname derives 
+from her unexpected victory, early in her career, over one of 
+her fellow duskblades, the elf Yele, who until then had boasted 
+that he had never been defeated in a one-on-one duel. The 
+two became fast friends and now make a point to duel at least 
+once every year.
+Organizations
+Because of the elven heritage of the class, many duskblades 
+gravitate  toward  the  elf  lands  even  if  they  aren’t  elves  
+themselves. Knowledge of duskblade fighting techniques 
+is sufficiently rare that no large company of duskblades 
+exists—or, if one does, it’s a well-kept secret. For centuries, 
+the class has been sustained by nothing more than solitary 
+masters who teach duskblade skills and spells to worthy 
+apprentices, and by those who have taught themselves the 
+techniques from long-neglected tomes and training manuals. 
+More recently, some self-taught duskblades have appeared 
+who master the diffi  cult techniques required by the class 
+through some innate instinct. No matter what their origin, 
+all are equals in the eyes of their fellow duskblades.
+     Duskblades love to test themselves against each other; on 
+the rare occasions when the paths of two duskblade adventur-
+ers happen to cross, they w i l l always ma ke time for a fr iendly 
+duel before they part. Given elf life spans, some duskblades 
+maintain friendly rivalries that can last for centuries.
+NPC Reactions
+Few common folk understand who or what duskblades truly 
+are, and most assume those duskblades they happen to meet 
+are simply fi  ghters with a bit of sorcerer ability (or vice versa). 
+Legends speak of elf heroes skilled with both blade and spell, 
+but these tales do little to inform anyone of the specifi  c  abili-
+ties of the duskblades. Most adventurers react to duskblades 
+with  some  wariness  because  a  duskblade’s  combination  of  
+abilities makes it very hard to judge how powerful or capable 
+such a character is in any situation.
+DUSKBLADE LORE
+Characters with ranks in Knowledge (arcana) can research 
+duskblades to learn more about them. When a character 
+makes a skill check, read or paraphrase the following, includ-
+ing the information from lower DCs.
+    DC    10: Some elves have the ability to cast arcane spells 
+while engaged in melee combat; such elves are known as 
+duskblades.
+     DC     15: Not all duskblades are elves; sometimes members of 
+other races master the class’s special techniques of spellcast-
+ing in melee.
+     DC     20: Duskblades preserve an ancient tradition that enables 
+them to deliver spell damage through weapon strikes.
+DUSKBLADES IN THE GAME
+Duskblades fi  t easily into an ongoing game because of their 
+small numbers and enigmatic mix of abilities. The presence 
+of the class is easily explained as your players explore more of 
+the world—they simply hadn’t encountered any duskblades 
+until now, or had mistaken those they did encounter for 
+multiclass fi  ghter/wizards. Now that they’ve discovered this 
+aspect of the setting, however, they’re free to multiclass into 
+the duskblade class or to begin a new character with levels 
+only in the new class.
+Adaptations
+One of the more interesting ways to adapt this class to your 
+campaign is to keep the class abilities more or less the same 
+but to change the race involved. For example, the githyanki 
+have  a  tradition  of  multiclass  fighter/wizards  known  as  
+gish; these individuals could easily be reconceived as a gith 
+duskblade class. Unexpected combinations would be the most 
+striking, such as a previously unrevealed halfl  ing  duskblade  
+class. After all, few expect halfl  ings to engage in melee except 
+when making sneak attacks, but when magically boosted 
+by bull’s strength and the like and fighting with oversized 
+weapons, they could prove unexpectedly deadly against those 
+who underestimate them—which, after all, is the essence of 
+the duskblade class.
+Sample Encounter
+An encounter with a duskblade should highlight his com-
+bined use of spells and melee abilities. The duskblade should 
+use his spells to force the PCs to close into melee with him, 
+and then he should batter them with a barrage of touch spells 
+delivered through his melee attacks. Fighting a villainous 
+duskblade should be tricky, because he’ll use the tools that 
+are most effective against each character (for example, spells 
+requiring Refl  ex saves against the fi  ghter and powerful melee 
+attacks against the wizard).
+ EL 7: Yele has always been drawn to both physical combat 
+and the study of magic. As a duskblade, he combines the two 
+into one seamless fi  ghting st yle. A n advent urer by trade, Yele 
+could encounter the characters as a friend or a foe. If as a foe, 
+it is because some enemy of the adventurers has encouraged 
+Yele to go after them for some reason, perhaps to gain some 
+magical treasure currently in their possession that would 
+signifi cantly boost either his swordplay or his spellcasting. 
+620_95374_Ch1.indd   23620_95374_Ch1.indd   232/8/06   2:55:32 PM2/8/06   2:55:32 PM
+
+24
+CHAPTER 1
+NEW CLASSES
+If as a friend, Yele could join with the adventurers to search 
+for some lost piece of arcane lore or because their quest 
+strikes him as likely to prove an interesting challenge for 
+his talents.
+Yele                                                                 CR                                                                 7
+Male elf duskblade 7
+NG Medium humanoid
+Init +6
+Senses low-light vision; Listen +2, Spot +2
+Languages Common, Elven, Gnoll, Sylvan
+AC 21, touch 13, flat-footed 19
+hp 35 (7 HD)
+Immune sleep
+Fort +6, Ref +7, Will +6 (+8 against enchantments)
+Speed 20 ft. (4 squares)
+Melee +1 longsword +11/+6 (1d8+4/19–20)
+Base Atk +7; Grp +10
+Atk Options arcane channeling*, quick cast*
+Abilities Str 16, Dex 14, Con 11, Int 14, Wis 10, Cha 8
+SQ able to notice secret or concealed doors, armored 
+mage*, spell power*
+Spell-Like Abilities (CL 7th):
+5/day—dancing lights, detect magic, f lare, ghost sound, 
+read magic
+Duskblade Spells Known (CL 7th):
+2nd (6/day)—ghoul touch (+10 melee touch, DC 14), 
+scorching ray (+9 ranged touch), swift f ly
+1st (7/day) —ray of enfeeblement (+9 ranged touch), 
+resist energy, shocking grasp (+10 melee touch), swift 
+expeditious retreat, true strike
+0 (6/day)—acid splash, disrupt undead, ray of frost (+9 
+ranged touch), touch of fatigue (+10 melee touch, 
+DC 12)
+Feats Combat Casting
+B
+, Combat Expertise, Improved 
+Initiative, Lightning Reflexes
+Skills Concentration +10 (+14 casting defensively), 
+Knowledge (arcana) +12, Knowledge (the planes) +12, 
+Listen +2, Sense Motive +10, Spot +2
+Possessions +1 breastplate, +1 light shield, +1 longsword, 
+cloak of resistance +1, ring of protection +1
+*Class features described on page 20
+Duskblade Spell List
+The  duskblade’s  spell  list  appears  below.  Spells  printed  in  
+this book are marked with an asterisk.
+    0    Level:  acid  splash,  disrupt  undead,  ray  of  frost,  touch  of  
+fatigue.
+     1st     Level: Bigby’s  tripping  hand*,  blade  of  blood*,  burning  
+hands, cause fear, chill touch, color spray, jump, Kelgore’s fi re bolt*, 
+lesser defl ect*, magic weapon, obscuring mist, ray of enfeeblement, 
+resist energy, rouse*, shocking grasp, stand*, swift expeditious retreat, 
+true strike.
+     2nd     Level: animalistic power*, bear’s endurance, Bigby’s strik-
+ing fi st*, bull’s strength, cat’s grace, darkvision, defl  ect*, dimension 
+hop*, ghoul touch, Melf ’s acid arrow, scorching ray, see invisibility, 
+seeking ray*, spider climb, stretch weapon*, sure strike*, swift fl y, 
+swift invisibility, touch of idiocy.
+     3rd     Level: crown of might*, crown of protection*, dispelling 
+touch*, doom scarabs*, energy aegis*, energy surge*, greater magic 
+weapon, halt*, keen edge, protection from energy, ray of exhaustion, 
+regroup*, vampiric touch.
+     4th     Level: Bigby’s interposing hand, channeled pyroburst*, 
+dimension door, dispel magic, enervate, fi re shield, phantasmal 
+killer, shout, toxic weapon*.
+     5th     Level: Bigby’s clenched fist, chain lightning, disintegrate, 
+hold monster, polar ray, slashing dispel*, sonic shield*, waves 
+of fatigue.
+KNIGHT
+ “I offer you surrender or an honorable death in battle. The choice 
+is yours.”
+—Archibold the Impetuous
+A knight is a proud, skilled melee combatant who fi  ghts  in  
+the name of honor and chivalry. A knight relies on more 
+than  a  sharp  sword  and  a  stout  suit  of  armor  to  defeat  her  
+foes. Her drive, determination, and fi  ghting spirit allow her 
+to control the battlefi eld in ways that others cannot match. 
+A knight can challenge an opponent to a duel, calling upon 
+the foe’s pride and ego to force his hand. The knight’s talent 
+with  heavy  armor,  shields,  and  defensive  tactics  grant  her  
+the ability to disrupt her foe’s plans. Only the most talented 
+rog ues and monks can sl ip past a knight ’s defenses to str i ke at 
+her allies. An adventuring group with wizards, sorcerers, and 
+other lightly armored members thrives with the assistance 
+of a knight. While the knight keeps enemies occupied, her 
+allies can use their talents and abilities without fear of attack 
+or harassment.
+     The knight class is a great choice if you want to play a tough, 
+durable melee combatant whose strong personality allows you 
+to manipulate your foes. Wea ker foes cower in fear before you, 
+whi le stronger foes move to str i ke you rather than your al l ies 
+when you play on their egos and challenge them to duels. 
+Your expertise in using armor and carrying a shield allows 
+you to form an impregnable defensive line. Once you engage 
+a foe, he has diffi  culty moving away to threaten your allies. 
+If you want to be a front-line melee combatant who defends 
+the rest of the party and manipulates opponents, the knight 
+is a good choice.
+MAKING A KNIGHT
+A low-level knight is similar to a cross between a fi  ghter  and  
+a bard. You have many hit points, a high Armor Class, and 
+an ability similar to bardic music (the knight’s challenge 
+class feature). You can pick a single foe, usually the one who 
+poses the most dangerous physical threat, and gain a bonus 
+on attack rolls and damage rolls against that opponent. You 
+pqs
+SWIFT EXPEDITIOUS RETREAT, SWIFT FLY, 
+AND SWIFT INVISIBILITY
+Three  spells  on  the  duskblade’s  spell  list—swift  expeditious  re-
+treat, swift fly, and swift invisibility—appear in Spell Compendium. 
+If you do not have that book, treat these spells as their nonswift 
+versions, except that their casting time is 1 swift action and the 
+duration of each spell is 1 round.
+pqs
+620_95374_Ch1.indd   24620_95374_Ch1.indd   242/8/06   2:55:39 PM2/8/06   2:55:39 PM
+
+25
+CHAPTER 1
+NEW CLASSES
+must pay close attention to the knight’s code of conduct, 
+since it forbids you from taking advantage of several tactically 
+useful situations.
+     You excel in combat in a manner similar to a fi  ghter—but  
+while a fighter can slay a monster, your primary talent is 
+your ability to keep that monster away from your allies 
+while you battle it. It might take you longer to win the 
+day, but your many hit points and strong defensive abilities 
+help preserve you. Best of all, your defense enables your 
+allies to function at full capacity without being subject to 
+the monster’s attacks. Any sorcerer or wizard in the party 
+thrives when you are there to absorb attacks and hold back 
+your mutual foes.
+    As you advance in level, you gain the ability to dictate 
+a foe’s actions, forcing him to attack you instead of other 
+targets. Wea ker opponents, which t y pica l ly appear i n num-
+bers too large for you to hold them all back, quail in terror 
+when you menace them. Even if they slip past you, they 
+ta ke penalties when they at tack your al l ies. Your knight ’s 
+challenge and shield block class features combine to let 
+you excel in one-on-one melee, granting you a bonus on 
+attack rolls, damage rolls, and Armor Class against a single 
+foe of your choice. If the group faces a mighty villain or a 
+single, overwhelming physical threat, it’s up to you to keep 
+the monster occupied while your allies cast their spells or 
+maneuver for position.
+ Abilities: You benefi  t from a high Charisma score, since 
+it determines how often you can use some of your abilities 
+and the save DC of those abilities. A high Constitution allows 
+you to increase your already impressive hit point total, thus 
+bolstering your capacity to defend your allies. Strength 
+improves your combat abilities, making you more effective 
+as a front-line character.
+ Races: The majority of knights are dwarves, humans, and 
+half-elves. The dwarf ’s tendency toward order, combined 
+with that race’s militaristic bent, gives rise to fi ghting orders 
+dedicated to upholding justice and obeying an honorable code. 
+Dwarf knights also serve as wandering dispensers of justice 
+between  isolated  settlements  who  enforce  the  rule  of  law  
+and protect small clanholds. Humanity, with its sprawling 
+kingdoms  and  empires,  produces  many  knights  who  fi  ght  
+as  much  for  king  and  country  as  for  personal  honor  and  
+monetar y rewards. Some hal f-elves enter into such ser v ice as 
+well and can rise to high ranks within such orders. Gnomes 
+and  half lings  rarely  become  knights,  since  the  knight’s  
+straightforward code of conduct runs counter to the small 
+races’ reliance on trickery and clever planning. Few half-orcs 
+have the opportunity to become knights, but when they do 
+their natural strength serves them well. Elf knights are rare, 
+since elves prefer freedom and fl  exibility over the rigid code 
+of honor all knights must follow.
+ Alignment: Knights are always lawful. Their dedication 
+to a code of conduct is but one expression of their devotion 
+to order. Most knightly orders arise as institutions forged to 
+protect a kingdom from invaders or to enforce the law against 
+chaos from within.
+ While knights value order, they tend in equal numbers 
+toward good, evil, and neutrality. Lawful good knights see 
+order as a tool to protect the innocent and weak from evil. 
+Lawful  evil  knights  believe  that  the  social  order  serves  to  
+reward the strong. Lawful neutral knights abhor the destruc-
+tion and suffering that chaos can bring and so uphold order 
+for its own sake.
+ Starting Gold: 6d4×10 gp (150 gp).
+ Starting Age: As paladin (PH 109).
+CLASS FEATURES
+Your class features involve mastering the use of armor and 
+shields  and  learning  how  to  manipulate  your  foes  so  that  
+melee combat takes place on your terms, not theirs.
+ Weapon and Armor Proficiency: Knights are profi-
+cient with all simple and martial weapons and with all 
+armor (heavy, medium, and light) and all shields (except 
+tower shields).
+    Knight’s    Challenge: You r dau nt less fi  ghting spirit plays a 
+major role in your fi  ghting style, as important as the strength 
+of  your  arm  or  the  sharpness  of  your  blade.  In  battle,  you  
+use the force of your personality to challenge your enemies. 
+You can call out a foe, shouting a challenge that boosts his 
+confi  dence, or issue a general challenge that strikes fear into 
+weak opponents and compels strong opponents to seek you 
+out  for  personal  combat.  By  playing  on  your  enemies’  ego,  
+you can manipulate your foes.
+     You can use this ability a number of times per day equal to 
+1/2 your class level + your Charisma bonus (minimum once 
+per  day).  As  you  gain  levels,  you  gain  a  number  of  options  
+that you can use in conjunction with this ability.
+     Even if you and your foes lack a shared language, you can 
+still effectively communicate through body language, tone, 
+and certain oaths and challenges you learn from a variety of 
+different tongues.
+    Fighting Challenge (Ex): As a swift action, you can issue a 
+challenge against a single opponent. The target of this ability 
+must have an Intelligence of 5 or higher, have a language of 
+some sort, and have a CR greater than or equal to your char-
+acter level minus 2. If it does not meet these requirements, 
+a use of this ability is expended without effect.
+     If  the  target  does  meet  the  conditions  given  above,  you  
+gain a +1 morale bonus on Will saves and a +1 morale bonus 
+on  attack  rolls  and  damage  rolls  against  the  target  of  this  
+ability. You fi  ght with renewed vigor and energy by placing 
+your  honor  and  reputation  on  the  line.  If  your  chosen  foe  
+reduces you to 0 or fewer hit points, you lose two uses of your 
+knight’s challenge ability for the day because of the blow to 
+your ego and confi  dence from this defeat.
+    The effect of a fi ghting challenge lasts for a number of 
+rounds equal to 5 + your Charisma bonus (if any).
+     If you are capable of issuing a knight’s challenge more 
+than once per day, you can use this ability more than once 
+in a single encounter. If your first chosen foe is defeated 
+or f lees the area, you can issue a new challenge to a dif-
+ferent foe. You cannot switch foes if your original target is 
+still active.
+     At 7th level, the bonus you gain from this ability increases 
+to +2. At 13th level, it rises to +3. At 19th level, it increases 
+to +4.
+620_95374_Ch1.indd   25620_95374_Ch1.indd   252/8/06   2:55:46 PM2/8/06   2:55:46 PM
+
+26
+CHAPTER 1
+NEW CLASSES
+    Test of Mettle (Ex): Starting at 4th level, you can shout a 
+challenge to all enemies, calling out for the mightiest among 
+them to face you in combat. Any target of this ability must 
+have a language of some sort and an Intelligence score of 5 
+or higher. Creatures that do not meet these requirements are 
+immune to the test of mettle. You must have line of sight and 
+line of effect to the targets of this ability.
+     As a swift action, you can expend one use of your knight’s 
+challenge ability to cause all your enemies within 100 feet 
+with a CR greater than or equal to your character level minus 
+2 to make Will saves (DC 10 + 1/2 your class level + your Cha 
+modifi  er). Creatures that fail this save are forced to attack you 
+with their ranged or melee attacks in preference over other 
+available targets. If a foe attacks by casting a spell or using 
+a supernatural ability, he must target you with the attack or 
+include you in the effect’s area.
+     A n opponent compel led to act in this manner is not thrown 
+into a mindless rage and does not have to move to attack you 
+in melee if doing so would provoke attacks of opportunity 
+against him. In such a case, he can use ranged attacks against 
+you or attack any opponents he threatens as normal. If anyone 
+other  than  you  attacks  the  target,  the  effect  of  the  test  of  
+mettle ends for that specifi  c  target.
+    If you are reduced to 0 or fewer hit points by an oppo-
+nent forced to attack you due to this ability, you gain one 
+additional use of your knight’s challenge ability for that 
+day. This additional use comes from increased confi  dence  
+and the knowledge that you have proved your mettle as a 
+knight against your enemies by calling out foes even against 
+overwhelming odds. This additional use disappears if you 
+have not used it by the start of the next day. You can only 
+gain one additional use of your knight’s challenge ability in 
+this manner per day.
+    The effect of a test of mettle lasts for a number of rounds 
+equal to 5 + your Charisma bonus (if any). Whether a creature 
+fails or succeeds on its save against your test of mettle, it can 
+only be targeted by this effect once per day.
+    Call to Battle (Ex): Starting at 8th level, you become an 
+inspiring figure on the battlefield. When all seems lost, 
+you are a beacon of hope who continues to fight on despite 
+the odds. No cause is yet lost when a knight still battles 
+on its name.
+     As a swift action, you can expend one use of your knight’s 
+challenge ability to grant an ally another save against a fear 
+effect.  The  target  gains  a  bonus  on  this  save  equal  to  your  
+Charisma bonus (if any). If the target succeeds on this save, 
+he gains the benefi t for a successful save against the attack 
+or spel l. This abi l it y refl  ects your talent to inspire your al l ies 
+in the face of a daunting foe.
+     For example, Lidda fails her save against a lich’s fear spell. 
+On his next action, Sir Agrivail uses his call to battle ability 
+to grant Lidda another save. If she succeeds, she immediately 
+shrugs off the effect of the fear spell.
+     Daunting Challenge (Ex): Starting at 12th level, you can call 
+out opponents, striking fear into the hearts of your enemies. 
+In  this  manner  you  separate  the  strong-minded  from  the  
+weak-willed,  allowing  you  to  focus  on  opponents  that  are  
+worthy foes.
+ As a swift action, you can expend one use of your knight’s 
+challenge ability to issue a daunting challenge. This ability 
+affects all creatures within 100 feet of you that have a CR less 
+than your character level minus 2. Targets must be able to 
+hear you, speak or understand a language of some sort, and 
+have an Intelligence score of 5 or more. All targets who meet 
+these  conditions  must  make  Will  saves  (DC  10  +  1/2  your  
+class level + your Cha modifi  er) or become shaken.
+Table 1–4: The Knight Hit Die: d12
+                   Base
+                   Attack                   Fort                   Ref                   Will
+Level      Bonus      Save      Save      Save          Special
+  1st +1 +0 +0 +2 Fighting challenge +1, knight’s challenge, knight’s code
+  2nd +2 +0 +0 +3 Mounted Combat, shield block +1
+  3rd +3 +1 +1 +3 Bulwark of defense
+  4th +4 +1 +1 +4 Armor mastery (medium), test of mettle
+  5th +5 +1 +1 +4 Bonus feat, vigilant defender
+  6th +6/+1 +2 +2 +5 Shield ally
+  7th +7/+2 +2 +2 +5 Fighting challenge +2
+  8th +8/+3 +2 +2 +6 Call to battle 
+  9th +9/+4 +3 +3 +6 Armor mastery (heavy)
+10th           +10/+5           +3           +3           +7           Bonus           feat
+11th +11/+6/+1 +3 +3 +7 Shield block +2
+12th           +12/+7/+2           +4           +4           +8           Daunting           challenge
+13th +13/+8/+3 +4 +4 +8 Fighting challenge +3
+14th +14/+9/+4 +4 +4 +9 Improved shield ally
+15th           +15/+10/+5         +5         +5         +9           Bonus         feat
+16th +16/+11/+6/+1 +5 +5 +10 Bond of loyalty
+17th            +17/+12/+7/+2            +5            +5            +10            Impetuous            endurance
+18th           +18/+13/+8/+3           +6           +6           +11           —
+19th +19/+14/+9/+4 +6 +6 +11 Fighting challenge +4
+20th +20/+15/+10/+5 +6 +6 +12 Loyal beyond death, shield block +3
+Class Skills (2 + Int modifier per level, ×4 at 1st level): Climb, Handle Animal, Intimidate, Jump, Knowledge (nobility and 
+royalty), Ride, Swim.
+620_95374_Ch1.indd   26620_95374_Ch1.indd   262/8/06   2:55:53 PM2/8/06   2:55:53 PM
+
+27
+CHAPTER 1
+NEW CLASSES
+     Whether  a  creature  fails  or  succeeds  on  its  save  against  
+your daunting chal lenge, it can only be targeted by this ef fect 
+once per day.
+Bond of Loyalty (Ex): Starting at 16th level, your loyalty 
+to your comrades endures even in the face of powerful 
+magic. You can expend one use of your knight’s challenge 
+ability to make an additional saving throw against a mind-
+affecting spell or ability. You can use this ability once per 
+round as a free action and can continue to use it even if an 
+opponent is controlling your actions with a mind-affecting 
+spell or ability.
+     Loyal Beyond Death (Ex): At 20th level, if you are reduced 
+to 0 or fewer hit points by an effect that otherwise leaves 
+your body intact, you can expend one use of your knight’s 
+challenge ability to remain conscious and continue to act for 
+1 more round before dying. You can use this ability even if 
+your hit point total is –10 or lower. If your body is somehow 
+destroyed before your next action (such as by disintegrate), 
+then you cannot act. You can continue to expend uses of your 
+knight’s challenge ability to survive from round to round 
+until you run out of uses. If you receive healing that leaves 
+you with more than –10 hit points, you survive (or 
+fall unconscious, as appropriate to your new hit 
+point  total)  when  you  stop  using  this  
+ability. Otherwise, death overtakes 
+you when you run out of uses of your 
+knight’s challenge ability.
+     The Knight’s Code: You fi  ght not only to defeat your foes 
+but to prove your honor, demonstrate your fi ghting ability, 
+and win renown across the land. The stories that arise from 
+your deeds are just as important to you as the deeds them-
+selves. A good knight hopes that her example encourages 
+others to lead righteous lives. A neutral knight wishes to 
+uphold the cause of his liege (if he has one) and win glory. An 
+evil knight seeks to win acclaim across the land and increase 
+her own personal power.
+     The knight’s code focuses on fair play: A victory achieved 
+through pure skill is more diffi  cult, and hence wins more 
+glory, than one achieved through trickery or guile.
+•   A knight does not gain a bonus on attack rolls when fl  ank-
+ing. You still confer the benefi  t of a fl  anking position to 
+your ally, but you forgo your own +2 bonus on attack rolls. 
+You can choose to keep the +2 bonus, but doing so violates 
+your code of honor (see below).
+•   A knight never strikes a fl  at-footed opponent. Instead, you 
+allow your foe to ready himself before attacking.
+•   A knight never deals lethal damage against a helpless foe. 
+You can strike such a foe, but only with attacks that deal 
+nonlethal damage.
+If you violate any part of this code, you lose one use of 
+your knight’s challenge ability for the day. If your 
+knight’s challenge ability is not available when 
+you violate the code (for example, if you have 
+exhausted your uses for the day), you take a –2 
+penalty on attack rolls and saves for the rest of 
+that day. Your betrayal of your code of conduct 
+undermines the foundation of confi  dence  and  
+honor that drives you forward.
+    Whi le you cleave to your v iew of hon-
+or,  chivalry,  and  pursuit  of  glory,  you  
+do  not  force  your  views  on  others.  You  
+might chide a rogue for sneaking around 
+a  battlefield,  but  you  recognize  (and  
+perhaps even feel a bit smug about) the 
+reality that not everyone is fi t to follow 
+the knight’s path.
+          Mounted     Combat:  At  2nd  level,  
+you  gain  Mounted  Combat  as  a  
+bonus feat.
+       Shield Block (Ex): Starting 
+at 2nd level, you excel in using 
+your ar mor and shield to fr us-
+trate  your  enemy’s  attacks.  
+During  your  action,  des-
+ignate a single opponent 
+as the target of this abil-
+ity.  Your  shield  bonus  
+to  AC  against  that  foe  
+increases by 1, as you move 
+your shield to defl  ect an incoming blow, 
+possibly providing just enough pro-
+tection to turn a telling swing into a 
+near miss.
+Sir Agrivail and Lady Sorra, knights
+Illus. by E. Polak
+620_95374_Ch1.indd   27620_95374_Ch1.indd   272/8/06   2:56:00 PM2/8/06   2:56:00 PM
+
+28
+CHAPTER 1
+NEW CLASSES
+       This shield bonus increases to +2 at 11th level and +3 at 
+20th level.
+    Bulwark of Defense (Ex): When you reach 3rd level, an 
+opponent that begins its turn in your threatened area treats 
+all  the  squares  that  you  threaten  as  diffi  cult  terrain.  Your  
+strict  vigilance  and  active  defensive  maneuvers  force  your  
+opponents to move with care.
+     Armor Mastery (Ex): Starting at 4th level, you are able to wear 
+your armor like a second skin and ignore the standard speed 
+reduction for wearing medium armor. Starting at 9th level, you 
+ignore the speed reduction imposed by heavy armor as well.
+     Bonus     Feat: At 5th level, you gain a bonus feat chosen from 
+the following list: Animal Affi  nity, Diehard, Endurance, Great 
+Fortitude, Iron Will, Quick Draw, Ride-By Attack, Spirited 
+Charge, Trample, or Weapon Focus (lance). You must still meet 
+any prerequisites for the feat. You gain an additional bonus 
+feat from this list at 10th level and again at 15th level.
+    Vigilant Defender (Ex): Starting at 5th level, you stand 
+your  ground  against  all  enemies,  warding  the  spot  where  
+you make your stand to prevent foes from slipping past and 
+attacking those you protect. If an opponent attempts to use 
+the Tumble ski l l to move through your threatened area or your 
+space without provoking attacks of opportunity, the Tumble 
+check DC to avoid your attacks of opportunity increases by 
+an amount equal to your class level.
+     Shield  Ally  (Ex):  Starting  at  6th  level,  as  an  immediate  
+action you can opt to absorb part of the damage dealt to an 
+adjacent ally. Each time this ally takes damage from a physical 
+attack before your next turn, you can take half this damage 
+on yourself. The target takes the other half as normal. You can 
+only absorb damage from physical melee attacks and ranged 
+attacks, such as an incoming arrow or a blow from a sword, 
+not from spells and other effects.
+ Improved Shield Ally (Ex): At 14th level, your abilit y 
+to absorb damage increases. Once per round you can absorb 
+all  the  damage  from  a  single  attack  directed  against  an  
+adjacent ally. In addition, you continue to absorb half the 
+damage from other physical attacks on an adjacent ally, i f 
+you so choose. You must decide whether to use this ability 
+after the attacker determines that an attack has succeeded 
+but before he rolls damage.
+ Impetuous Endurance (Ex): Star ting at 17th level, your 
+fi ghting spirit enables you to push your body beyond the 
+nor mal l imits of endurance. You no longer automatical ly fai l 
+a saving throw on a roll of 1. You might still fail the save if 
+your result fails to equal or beat the DC.
+PLAYING A KNIGHT
+As a knight, you are driven to prove your abilities, showcase 
+the code of chivalry as a proper way to live, and defend your 
+allies. You are impetuous and brave, never backing down from 
+a challenge. When you face a mighty foe, you take a moment 
+to call out a challenge to him, salute his fi ghting ability, or 
+list his crimes that you seek to avenge.
+Religion
+Knights value order and honor in all things. They worship 
+lawful gods, though whether their patrons are good, neutral, 
+or evil depends solely on the knight’s preferences. Good 
+knights  favor  Heironeous,  while  neutral  ones  follow  St.  
+Cuthbert. Evil knights, if they venerate a god, offer prayers 
+to Hextor. Knights of Heironeous and Hextor are renowned 
+for  the  epic  duels  they  have  fought  against  each  other.  
+Opposing  armies  sometimes  halt  their  advance  to  allow  
+these sworn enemies to duel to the death before the rest of 
+the battle is joined.
+Other Classes
+You respect paladins for their skill in combat and devotion to 
+a code of conduct, although their path is somewhat different 
+from your own. You see wizards, sorcerers, clerics, and bards 
+as useful allies who should stay back away from combat; indi-
+vidual knights sometimes travel partnered with a member of 
+one of these classes. Most knights consider barbarians to be 
+crazed lunatics who lack the honor, self-control, and training 
+to fi  ght in a proper civilized manner, yet a skilled barbarian 
+can earn a knight’s grudging respect through deeds in battle. 
+You have l it tle regard for rog ues, beg ui lers, or others who rely 
+on stealth or deceit. In general, you have no feeling one way 
+or the other toward druids, monks, and rangers. You distrust 
+the duskblade’s mix of melee combat and spellcasting but can 
+empathize with the dragon shaman’s devotion to his totem 
+dragon,  though  you  might  be  wary  of  particular  shamans  
+(those devoted to chaotic dragons). In general, you feel protec-
+tive (but with a touch of condescension) toward adventurers 
+who cannot handle heavy armor and weapons.
+Combat
+You serve two basic roles in battle. You excel at dominating 
+the fi eld of battle, since your defensive abilities make it dif-
+fi  cult for opponents to move past you and strike vulnerable 
+members of your party. You believe that the best way to face 
+an enemy is to challenge him to an honorable duel and kill 
+him fair and square, claiming all the glory for yourself. When 
+faced with multiple foes, you can strike fear into some and 
+goad others into attacking you rather than your allies. You are 
+the sorcerer’s, wizard’s, or bard’s best friend. Your command-
+ing presence draws attacks to you, while your hit points and 
+heavy armor make you ideally suited to absorb blows. While 
+you  are  engaging  foes  in  combat,  your  allies  can  use  their  
+spells and special abilities without interference.
+Advancement
+When looking at feats to select as you gain levels, you have 
+two  basic  paths.  You  can  focus  on  your  fi ghting skill, or 
+you can attempt to expand your capabilities to serve as the 
+party’s spokesman. The former option is best when you are 
+the group’s primary combat specialist. If the party includes 
+a  barbarian,  paladin,  fi  ghter,  ranger,  or  duskblade,  you  can  
+afford to dabble in feats that improve your Charisma-based 
+skills.  Although  Diplomacy  is  not  a  class  skill  for  you,  the  
+Skill Focus feat combined with your superior Charisma and 
+a few cross-class ranks makes you a serviceable emissary.
+     When it comes to combat feats, look to ones that improve 
+your  ability  to  deal  damage.  Your  class  features  already  
+enhance your defense, making feats such as Power Attack, 
+620_95374_Ch1.indd   28620_95374_Ch1.indd   282/8/06   2:56:10 PM2/8/06   2:56:10 PM
+
+29
+CHAPTER 1
+NEW CLASSES
+Weapon Focus, and so forth excellent options to boost your 
+offense.  Alternatively,  you  could  focus  on  crippling  your  
+foe’s  ability  to  deal  damage.  Combat  Expertise  combined  
+with Improved Disarm and Improved Trip form a potent 
+combo. When you lure a foe into attacking you, you can pluck 
+his weapon from his hand or knock him to the ground. In 
+either case, your opponent is neutralized as a threat to you 
+or your allies.
+    Improved Initiative is a critically important feat, since it 
+allows you to act fi  rst, move forward, and defend your allies. 
+The sooner you fi  nd a place at the front line, the longer you 
+can hold back the monsters.
+STARTING PACKAGES
+Package 1: The Cavalier
+Human Knight
+     Ability     Scores:     Str 15, Dex 12, Con 13, Int 10, Wis 8, Cha 14.
+     Skills:     Diplomacy, Knowledge (nobility and royalty), Ride.
+     Feats:     Mounted Combat, Skill Focus (Ride).
+     Weap o ns :     Lance (1d8/×3), longsword (1d8/19–20), three 
+javelins (1d6, 30 ft.).
+     Armor:     Chain shirt (+4 AC), heavy wooden shield (+2 AC).
+    Other    Gear:    Standard adventurer’s kit, 11 gp.
+Package 2: The Defender
+Dwarf Knight
+     Ability     Scores:     Str 15, Dex 12, Con 15, Int 10, Wis 8, Cha 12.
+    Skills:    Diplomacy, Ride.
+     Feat: Shield Specialization (heavy).
+     Weap o ns :     Dwarven waraxe (1d10/×3), warhammer (1d8/×3), 
+5 javelins (1d6, 30 ft.)
+    Armor:    Scale mail (+4 AC), heavy steel shield (+2 AC).
+    Other    Gear:    Standard adventurer’s kit, 18 gp.
+Package 3: The Destroyer
+Half-Orc Knight
+    Ability    Scores:    Str 16, Dex 12, Con 13, Int 8, Wis 8, Cha 13.
+    Skill:    Intimidate.
+     Feat: Power Attack.
+     Weap o ns :     Battleaxe (1d8/×3), fi  ve javelins (1d6, 30 ft.).
+    Armor:    Scale mail (+4 AC), heavy steel shield (+2 AC).
+    Other    Gear:    Standard adventurer’s kit, 50 gp.
+KNIGHTS IN THE WORLD
+“I like having a knight in front of me in a fi  ght. He holds the line 
+and allows me to work my spells in peace. Best of all, so long as 
+he has his back to me I can’t hear him prattling on about honor, 
+strength, and chivalry.”
+—Vaarlis Runespeaker, mage-initiate of Wee Jas
+The concept of the knight, or cavalier, or chevalier has arisen 
+in many cult ures that used mounted war r iors in their ar mies. 
+Typically,  knights  were  members  of  the  rich,  land-owning  
+upper class who could afford to buy and maintain heavy 
+armor and a horse. Such individuals served an elite role in 
+the military not only for their fi  ghting talents and ability to 
+ride over and smash through infantry who lacked polearms 
+but also for their social standing. For the historical knight, 
+his status as a rich landowner was the basis of his superiority 
+to others. Legend transformed the concept of the knight to 
+focus on one who sets forth searching for deeds that will win 
+him glory, drawing on his code of conduct and charismatic 
+personality to defeat his enemies. Since a character who 
+owns land and sits on a fortune in gold makes for a poor 
+adventurer in a traditional D&D game, the knight character 
+class  focuses  on  the  concept  of  a  heavily  armored  melee  
+combatant who fi  ghts according to a strict code of conduct. 
+Fidelity to that code grants the knight the confi  dence  and  
+fi  ghting spir it to excel on the bat tlefi  eld and hence the glory 
+he or she seeks.
+Daily Life
+A knight adventures to prove her skill at arms, to advance 
+the cause of whatever lord she might serve, and to further 
+her own aims. She rides forth from her lord’s castle to right 
+wrongs, quest in her lord’s name, and prove herself worthy 
+of knighthood. By actively seeking fame, glory, and acclaim, 
+the  knight  brings  praise  and  respect  to  the  code  of  honor  
+that she fi  ghts  under.
+ Some knights are lone wanderers with neither castle nor 
+king. A bloody war might leave a knight without a master. 
+Homeless and with little more than her armor and weapons, 
+this  knight  adventures  to  further  the  cause  she  still  holds  
+dear. She could work to bring down the enemies who defeated 
+her lord or attempt to do as much good across the land as 
+possible, winning glory all the while. She might seek for a 
+new cause worthy of her devotion. The knight’s order might 
+fall, but the concepts of honor and chivalry endure so long 
+as one knight holds them dear.
+    Other knights are similar to paladins in that they place 
+their faith in a cause, though for a knight this cause is 
+rooted in the world rather than a divine power. A knight 
+might fi  ght against oppression and brutality in all its forms, 
+such as when a dwar f k night vent ures i nto t he u nderg rou nd 
+with his companions on a crusade to defeat drow, duergar, 
+and  other  horrors  before  they  can  threaten  the  surface.  
+Such a knight doesn’t need a lord or an order. A l l he needs 
+is a sharp sword, a stout shield, and an indomitable belief 
+in his cause.
+    The knight of the D&D game is a wanderer who hunts 
+down the red dragon that has despoiled the countryside, or 
+the hero who mans the walls and rallies the town guard when 
+a horde of orcs appears on the horizon. The knight fi  ghts  for  
+a cause, and it matters not whether that cause is upholding 
+the crown or a ceaseless desire to bring justice and hope to 
+the land.
+Notables
+Knights gain notoriety for their deeds, whether triumphs in 
+combat or selfl ess acts of great honor. Many an adventurer 
+grew up on stories such as that of Archibold the Impetuous, 
+who after the defeat of his liege’s army stood alone to block 
+pursuit on a narrow bridge while his allies withdrew to safety. 
+The bards claim that Sir Archibold slew more than a hundred 
+hobgoblins before he fi  nally fell, by which time his allies had 
+reached the safety of a nearby fortress.
+620_95374_Ch1.indd   29620_95374_Ch1.indd   292/8/06   2:56:17 PM2/8/06   2:56:17 PM
+
+30
+CHAPTER 1
+NEW CLASSES
+     Another  legend  tells  of  Lady  Attis,  an  evil  but  brave  
+knight  who  drove  off  a  rampaging  red  dragon  that  had  
+terrorized the region, not from any benefi cence toward the 
+inhabitants  but  to  win  the  fame  of  defeating  a  foe  no  one  
+else dared face.
+Organizations
+Knights often band together into orders of knighthood, and 
+many of these organizations have storied histories. Knightly 
+orders typically allow their members to spend much of their 
+time on individual quests, requiring only that the knight 
+live by the code of the order and be willing to return to the 
+order’s  headquarters  when  called  upon.  Knightly  orders  
+have a proud tradition of using heraldic symbols to identify 
+themselves,  and  knights  who  belong  to  the  order  often  
+carry these symbols on their shields and armor to identify 
+their affi liation.
+NPC Reactions
+Individuals react to knights based on their previous interac-
+tions with other members of the class. A heroic knight meets 
+stony silence and suspicion in a land where evil knights 
+oppress the poor. By the same token, a villainous knight 
+finds that folk who assume knights are chivalrous, fair, 
+and honorable are quick to trust her and willing to believe 
+the best about her. Such trust might indeed bring out the 
+best in her, or it might lead swiftly to disaster, depending 
+on the knight.
+     A  knight  who  has  retired  from  adventuring  typically  
+acquires some position of authority, with commensurate 
+political power, whether as general, king’s champion, or ruler 
+of some cit y or out post. People’s opinions of knights are thus 
+often the same as their views of authority in general.
+KNIGHT LORE
+Characters with ranks in Knowledge (nobility and royalty) 
+can research knights to learn more about them. When a char-
+acter makes a skill check, read or paraphrase the following, 
+including the information from lower DCs.
+    DC    10: Knights are skilled mounted fi  ghters who special-
+ize in defensive combat.
+ DC 15:  Knights  are  combat-oriented  characters  adept  at  
+protecting their companions and stopping foes from getting 
+past them. They follow a strict code of honor.
+ DC 20: Knights are masters of armor and shield use. They 
+can lure foes into one-on-one combat through sheer force 
+of will.
+KNIGHTS IN THE GAME
+Because of their obvious place in real-world history, knights 
+fi  t well into any campaign with a medieval setting. The class 
+can be available to characters of almost any race or origin, 
+or you can tie the class to a specific kingdom or group of 
+cultures in your campaign world. Either way, the knight 
+provides an exciting option for players interested in a melee-
+oriented character capable of holding a line of combat and 
+really protecting her allies, as well as challenging monsters 
+in single combat.
+Adaptation
+This class can fi  t in a campaign in many ways—to serve a 
+specifi  c plot need, you can tie its history to a race or add a con-
+nection to a mysterious organization. The class description 
+assumes that many races and cultures produce knights, but in 
+your world perhaps only lawful societies might fi  eld  knights  
+as part of their armed forces, creating an instant and fl  avorful  
+difference between lawful and chaotic culture groups. If you 
+take this route, create a chaotic-oriented group of hexblades, 
+rangers, or scouts who oppose the order of knights.
+Sample Encounter
+A knight can be encountered anywhere her quest for glory 
+might take her: at the head of an enemy army, on a lone 
+mission into the underground, or simply wandering the 
+countryside looking for suitable challenges. A knight often 
+appears partnered with an arcane or divine spellcaster, since 
+the knight’s class features work best in conjunction with an 
+unarmored or lightly armored partner.
+ EL 7: Lady Sorra adheres to the code of knighthood for one 
+reason: it seems the fastest way to gain power in a world where 
+those of common birth lack opportunity. She could make a 
+temporary ally or suitable antagonist for any adventuring 
+group, perhaps fi  rst appearing as an ally in one adventure and 
+then again later in another as an antagonist. In the latter case, 
+she is likely to be found serving as the personal bodyguard 
+of a powerful evil spellcaster.
+Lady Sorra CR 7
+Female human knight 7
+LE Medium humanoid
+Init +5; Senses Listen +0, Spot +0
+Languages Common
+AC 21, touch 12, flat-footed 20; shield block* +1
+hp 65 (7 HD)
+Fort +7, Ref +4, Will +8
+Speed 30 ft. (6 squares)
+Melee +1 longsword +11/+6 (1d8+4/19 –20)
+Base Atk +7; Grp +10
+Atk Options Cleave, Power Attack, fighting challenge* +2, 
+test of mettle
+Abilities Str 16, Dex 13, Con 14, Int 8, Wis 10, Cha 12
+SQ armor mastery*, knight’s challenge* 4/day, knight’s 
+code*, shield ally*, vigilant defender*, wall of steel*
+Feats Cleave, Great Fortitude
+B
+, Improved Initiative, Iron Will, 
+Mounted Combat
+B
+, Power Attack
+Skills Handle Animal +11, Intimidate +11
+Possessions +1 breastplate, +1 heavy shield, +1 longsword, 
+cloak of resistance +1, ring of protection +1
+*Class features described on pages 25–28
+EX-KNIGHTS
+A knight who is no longer lawful loses the benefi  ts of her 
+knight’s challenge ability. As a result, she cannot use class 
+features  that  require  her  to  expend  uses  of  the  knight’s  
+challenge ability, such as fi ghting challenge, test of mettle, 
+and call to battle. She no longer takes penalties for violating 
+her code of conduct.
+    A knight can regain her status by returning to a lawful 
+alignment.
+620_95374_Ch1.indd   30620_95374_Ch1.indd   302/8/06   2:56:24 PM2/8/06   2:56:24 PM
+
+he choice of a class delineates some of the most 
+important aspects of a D&D character. With a class 
+comes a specifi  c role in the party, baseline mechani-
+cal attributes such as base attack and base save 
+bonuses, and a host of special abilities that defi  ne  
+the character. To complement the eleven standard 
+classes presented in the Player’s Handbook, supplements such 
+as the Complete series have introduced additional classes. This 
+chapter provides advice and insight on eighteen classes that 
+fi  t well within most D&D games and presents a set of options 
+to enhance characters of that class.
+    Each class presentation in this chapter includes sample 
+character themes that help define a character’s role and 
+personality. These are not intended as an exhaustive catalog, 
+and you are not required to adopt any of them. Each class 
+entry also includes suggested backgrounds and suggested 
+personality archetypes; see Chapter 5 for more information 
+on these elements.
+    In addition to this roleplaying advice, each presentation 
+offers one or more alternative class features and a set of alterna-
+tive starting packages.
+     Alternative class features replace class features found in 
+the original class description. If you have already reached 
+or  passed  the  level  at  which  you  can  take  the  feature,  you  
+can use the retraining option described on page 192 to gain 
+an alternative class feature in place of the normal feature 
+gained at that level.
+     The  format  for  alternative  class  features  is  summa-
+rized below.
+ALTERNATIVE CLASS 
+FEATURE NAME
+A general description of the ability and why you might 
+want to consider it.
+ Level: You can select the alternative class feature only 
+at this level (unless you are using the retraining option 
+described in Chapter 8).
+ Replaces: This line identifi es the ability that you 
+must sacrifi  ce to gain the alternative class feature.
+ Benefit: This section describes the mechanical 
+effects of the new ability.
+NEW STARTING PACKAGES
+The final section of each of the presentations in 
+this chapter is a set of three new starting packages 
+for each class, each one designed for a character 
+that  fills  a  particular  role  in  the  adventuring  
+party. For details about how to use these starting 
+packages (and to modify them, if you desire), see 
+page 5.
+31
+Illus. by R. HorsleyIllus. by R. Horsley
+620_95374_Ch2.indd   31620_95374_Ch2.indd   312/8/06   3:09:40 PM2/8/06   3:09:40 PM
+
+32

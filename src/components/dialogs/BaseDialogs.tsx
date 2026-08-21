@@ -338,7 +338,7 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
       {isPlayer ? (
         <>
           <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
-            Select a level 10 sample character with appropriate stats, weapons, and spells to load:
+            Select a sample character with appropriate stats, weapons, and spells to load:
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -372,6 +372,17 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
               <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🛡️ Paladin (Human, Level 10)</strong>
               <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
                 An honorable knight with divine magic, auras, and powerful melee attacks (Smite Evil).
+              </span>
+            </button>
+
+            <button
+              onClick={() => onConfirm('trickster_lvl11')}
+              className="btn"
+              style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
+            >
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🗡️ Arcane Trickster (Human, Level 11)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+                A Rogue 3 / Wizard 5 / Arcane Trickster 3 with sneak attack, spellcasting, and Ranged Legerdemain ready to go.
               </span>
             </button>
           </div>

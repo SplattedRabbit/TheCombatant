@@ -4,3 +4,8 @@ Thumbs.db
 *.log
 dist/
 tablet_package/
+
+# Urheberrechtlich geschützte Regelbuch-PDFs und rohe pdf-parse-Dumps.
+# Nur die daraus abgeleiteten, aufbereiteten Kapitel-Textdateien (data/<buch>/*.txt) werden getrackt.
+data/*.pdf
+data/_raw/

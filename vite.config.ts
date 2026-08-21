@@ -76,5 +76,11 @@ export default defineConfig({
   server: {
     port: 5173,
     open: '/index.html',
+    watch: {
+      // WSL2 + Windows-Mount (/mnt/c/...): inotify erkennt Dateiänderungen nicht zuverlässig,
+      // daher HMR-Updates per Polling statt Filesystem-Events.
+      usePolling: true,
+      interval: 300,
+    },
   },
 });

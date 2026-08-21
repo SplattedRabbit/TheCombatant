@@ -18,7 +18,8 @@ import {
   lysaraSample,
   wizardLvl10Sample,
   rangerLvl10Sample,
-  paladinLvl10Sample
+  paladinLvl10Sample,
+  arcaneTricksterLvl11Sample
 } from '../data/encounter-samples.js';
 
 export function loadSampleData(choice) {
@@ -39,6 +40,7 @@ export function loadSampleData(choice) {
       if (choice === 'wizard_lvl10') template = wizardLvl10Sample;
       else if (choice === 'ranger_lvl10') template = rangerLvl10Sample;
       else if (choice === 'paladin_lvl10') template = paladinLvl10Sample;
+      else if (choice === 'trickster_lvl11') template = arcaneTricksterLvl11Sample;
       else if (choice === 'paladin_lvl3') template = aranisSample;
       
       const newPC = createCombatant(template);

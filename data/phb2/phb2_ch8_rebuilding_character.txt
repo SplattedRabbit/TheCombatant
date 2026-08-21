@@ -1,0 +1,3197 @@
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+     The  two  methods  of  character  revision  described  below  
+are retraining and rebuilding. Each description defi  nes  the  
+scope of the allowed revisions and includes clear guidelines 
+on how to adjudicate the changes.
+     Retraining involves small-scale changes to your charac-
+ter, such as reallocation of feat slots and skill ranks. Such 
+changes are relatively simple to apply, and they don’t usually 
+lead to dramatic changes in the character’s capabilities or 
+party role.
+     Rebuilding, on the other hand, encompasses much broader 
+alterations to your character’s identity—up to and including 
+such cornerstones of identity as class and race. For that reason, 
+rebuilding  can  be  achieved  only  by  completing  specifi  c  
+DM-chosen quests. Since such missions typically center on 
+visiting some legendary location or overcoming a tremendous 
+challenge, they should always be completed in cooperation 
+with your DM so that they can be woven into the storyline 
+of the campaign.
+     For  players  and  DMs  who  are  accustomed  to  treating  
+character  creation  and  advancement  decisions  as  perma-
+nent,  the  idea  of  character  revision  can  seem  strange  or  
+daunting—and  some  might  even  think  of  it  as  a  form  
+of cheating. Such reactions are natural, but if you think 
+about it, normal people “revise” their abilities all the time. 
+Skills you learn early in life are forgotten as new talents 
+supplant them. For example, a foreign language mastered 
+in  high  school  might  be  virtually  forgotten  only  a  few  
+years later from disuse. Likewise, a college student might 
+change her major halfway through her junior year, or an 
+unexpected job transfer or layoff could result in a new posi-
+tion in a totally different fi  eld, requiring quick mastery of 
+new skills. Viewed from that perspective, allowing D&D 
+characters  similar  opportunities  to  reinvent  themselves  
+seems perfectly reasonable.
+     Maybe your group already uses some form of character 
+revision,  such  as  a  house  rule,  or  even  a  reliance  on  ad  
+hoc decision-making by the DM. If your method works 
+for your group, don’t let this chapter stop you from play-
+ing the game your way. However, if you’re looking for a 
+coherent system that balances fun and playability with 
+story and believability, this chapter might be just what 
+the healer ordered.
+     After your character goes through the retraining or rebuild-
+ing  process,  you  might  notice  that  he  doesn’t  quite  match  
+the  specs  of  a  similar  character  built  up  to  the  same  level  
+by the normal method. Maybe his skill points don’t add up 
+quite right, or his hit points are off a bit from the expected 
+value. But the small variations that crop up in this process 
+don’t signifi  cantly impact play balance, and writing rules to 
+eliminate them would complicate the process without really 
+improving the quality of your game.
+    So if you’d like to change some aspect of your character, 
+give the character revision rules a try. You’ll be happier with 
+your character in the long run and, more important, you’ll 
+have more fun playing the game.
+RETRAINING
+The most basic level of character revision is retraining—that 
+is, adjusting a decision you made earlier in your character’s 
+career by selecting a different legal option. This technique 
+represents  the  character’s  practicing  new  talents  in  lieu  of  
+honing older ones. In a way, the process is similar to attain-
+ing a new level. In keeping with that concept, the retraining 
+option can be chosen only during level advancement.
+    Six  different  character  aspects  (see  Table  8–1)  can  be  
+changed through retraining. Each time your character attains 
+a new level, you can select one (and only one) of these options. 
+For instance, you can’t change a feat selection and your spells 
+known at the same level. Since these options represent two 
+different sessions of retraining, they must occur at different 
+levels.
+    The decision to retrain must be implemented before any 
+benefi  ts of the newly attained level are applied. For example, 
+if  a  10th-level  rogue  wants  to  trade  her  improved  evasion  
+class feature for the opportunist class feature, she can do so 
+immediately upon attaining 11th level, before she gains any 
+of  the  benefi  ts  for  that  level  (such  as  additional  hit  points,  
+skill points, and so on).
+Table 8–1: Retraining Options
+Character Aspect   Effect
+Class feature Exchange one class feature option for 
+                                another
+Feat Exchange one feat for another for which 
+                                you                                qualify
+Language Exchange one language for another
+Skill Trade ranks between two skills
+Spell Exchange one spell known for another
+Substitution level    Trade a class level for a substitution 
+level
+CLASS FEATURE RETRAINING
+Some class features offer two or more different options, such 
+as the choice of combat st yle a ranger must ma ke at 2nd level. 
+Class  feature  retraining  allows  you  to  swap  out  one  such  
+option for another. Maybe your ranger would prefer to be an 
+archer instead of a melee fi  ghter, or your cler ic of Heironeous 
+feels that the War domain would be a better option than the 
+Law domain. The character remains basically the same, since 
+his class levels haven’t changed, but he’s now highlighting a 
+different aspect of his class.
+The Process
+Change one class feature option to another legal one. The new 
+option must represent a choice that you could have made at 
+the same level as you made the original choice. Also, the new 
+choice can’t make any of your later choices illegal—though 
+it might automatically change class features acquired later if 
+they are based on the initial choice.
+    Class features from the Player’s Handbook that are subject 
+to change in this manner are given on Table 8–2. Chapter 2 
+of  this  book  provides  class  feature  options  for  a  variety  of  
+additional classes.
+620_95374_Ch8.indd   192620_95374_Ch8.indd   1922/8/06   4:24:03 PM2/8/06   4:24:03 PM
+
+193
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+Table 8–2: Class Feature Retraining Options
+Class                        Option
+Cleric* Choice of domains (each domain 
+ counts as a separate choice)
+Neutral cleric Choice to turn or to rebuke undead 
+ (can be changed only if deity allows it)
+Druid or ranger Choice of animal companion
+Fighter, monk,  Choice of bonus feat
+or wizard
+Ranger Choice of combat style
+Rogue Choice of special ability
+Sorcerer or wizard   Choice of familiar
+Wizard** Choice of school specialization and 
+                                 prohibited                                 schools
+*A cleric’s choice of deity can’t be changed by class feature 
+retraining. See the Divine Conversion sidebar for details on 
+how to accomplish this change.
+**School specialization and prohibited schools are treated 
+as a single class feature. Thus, a character could change 
+one, two, or even all three choices at the same time.
+ Example:  Upon  gaining  a  new  level,  a  ranger  could  
+change the combat style class feature he gained at 2nd level 
+from two-weapon fi ghting to archery. Thereafter, he would 
+be treated as if he had the Rapid Shot feat instead of the 
+Two-Weapon Fighting feat. If he had at least six levels of 
+ranger before making this change, he would exchange both 
+the Two-Weapon Fighting feat (gained at 2nd level) and the 
+Improved  Two-Weapon  Fighting  feat  (gained  at  6th  level)  
+for the appropriate archery feats, since both of these features 
+are derived from the choice made at 2nd level. However, the 
+ranger couldn’t make this change if he had selected the Two-
+Weapon Defense feat in the interim, since losing Two-Weapon 
+Fighting means he would no longer meet the prerequisites 
+for that feat.
+ Example:  Upon  gaining  a  new  level,  a  necromancer  
+could change her school specialization to evocation, thus 
+becoming an evoker. At the same time, she could also choose 
+to change her prohibited schools from conjuration and illu-
+sion to abjuration and transmutation. Doing so would cause 
+her to lose access to all spells from the newly designated 
+prohibited schools. Even if her spellbook contains one or 
+more such spells, she would lose the ability to prepare and 
+cast them.
+ Example: Upon gaining a new level, a wizard could choose 
+to specialize in the enchantment school, thereby becoming 
+an enchanter. At the same time, she would have to select two 
+prohibited schools, as normal for a specialist wizard.
+ Example: Upon gaining a new level, a conjurer could 
+choose to become a wizard. By doing so, she would lose the 
+benefi ts of specialization. But since she would also lose her 
+prohibited schools, she could then learn spells from those 
+schools as normal.
+FEAT RETRAINING
+Sometimes a feat choice looks great on paper, but it just 
+doesn’t work for your character in practice. Maybe an early 
+feat choice ref lected the character’s personality and style, 
+but a little experience changed his outlook. For instance, 
+you might have selected Improved Initiative for your 1st-
+level character because you pictured him as ambitious and 
+a little reckless. But after falling victim to a wight’s touch 
+because he just couldn’t wait until the cleric turned the 
+undead, he decides it’s better to use a little more care in 
+combat, causing you to regret your early feat choice. New 
+supplements, with their wealth of exciting feat options, 
+also provide plenty of reasons to reconsider your earlier 
+feat selections.
+The Process
+You can exchange one of the feats you previously selected 
+for another feat. If the new feat has prerequisites, not only 
+must your character meet them in his current state, but you 
+must also be able to show that he met them at the time you 
+chose the previous feat.
+ Example: A 4th-level fi  ghter/1st-level rogue couldn’t trade 
+the Mobility feat he chose at 3rd level for Improved Critical 
+because he doesn’t currently meet a prerequisite for the latter 
+feat (base attack bonus +6). He also couldn’t trade that Mobil-
+ity feat for Weapon Specialization, even though he currently 
+meets the prerequisite (fi ghter level 4th), because he could 
+not have done so as a 3rd-level character.
+pqqqqqqqqqqqqqqqqqqqqrs
+pqqqqqqqqqqqqqqqqqqqqrs
+DIVINE CONVERSION
+As noted in the Player’s Handbook, a cleric who grossly violates 
+the  code  of  conduct  imposed  by  his  deity  loses  all  spells  and  
+class  features  and  cannot  attain  any  more  levels  as  a  cleric  of  
+that  deity.  All  these  penalties  remain  in  effect  until  he  atones.  
+But what if he doesn’t want to atone? What if a cleric of Hextor 
+finds  new  meaning  and  purpose  in  serving  Heironeous  after  
+a  dramatic  conversion  experience?  Such  a  character  need  not  
+become  a  multiclass  ex-cleric  of  Hextor/cleric  of  Heironeous.  
+Instead, Heironeous can simply reinstate the character’s cleric 
+powers once he has proven his loyalty, talent, and ability.
+    A cleric who changes his patron deity must complete a quest 
+to prove his devotion to his new patron. The nature of the quest 
+depends  on  the  deity,  and  it  always  clearly  reflects  the  deity’s  
+alignment  as  well  as  his  or  her  goals  and  beliefs.  To  start  the  
+process, the cleric must voluntarily accept a geas/quest spell cast 
+by  a  higher-level  cleric  of  his  new  deity.  During  the  quest,  the  
+cleric has no access to spells or cleric class features—except his 
+weapon and armor proficiencies, which he does not forfeit.
+    Upon completing the quest, the cleric receives the benefit of 
+an atonement spell from a cleric of the new deity. The character 
+then becomes a cleric of the new deity and is inducted into the 
+clergy  during  an  appropriate  ceremony  of  the  DM’s  choosing.  
+After selecting two of the new deity’s domains in lieu of his old 
+ones, the character has all the powers and abilities of his previ-
+ous cleric level, plus the granted powers of his new domains.
+    This  method  is  the  only  one  by  which  a  cleric  can  change  
+his deity. The retraining rules can’t be used to accomplish this 
+task—it  is  simply  too  substantial  a  change  in  the  character’s  
+identity (not to mention his source of power) to chalk up to a 
+bit of practice in his off hours.
+620_95374_Ch8.indd   193620_95374_Ch8.indd   1932/8/06   4:24:10 PM2/8/06   4:24:10 PM
+
+194
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+LANGUAGE RETR AINING
+It made a lot of sense to speak Goblin, Kobold, and Orc at 1st 
+level, but now that you’re mostly fi  ghting giants, demons, and 
+dragons, it would be nice to understand your new enemies. 
+The Process
+Subtract one language from your list of known languages 
+and add a new one to the list. It doesn’t matter how your 
+character earned the original language—it could have been 
+an automatic language for her race, a bonus language gained 
+from a high Intel l igence score, or a lang uage purchased w ith 
+skill points.
+SKILL RETR AINING
+Some skills that are particularly valuable at lower levels 
+become less useful later on, and v ice versa. For example, when 
+everyone in the party is carrying a bag full of antitoxins and 
+potions of cure light wounds, the need for successful Heal checks 
+drops dramatically. Whether your character has skill ranks 
+that aren’t as necessary as they once were, or you just want 
+to adapt her to new challenges, skill retraining provides a 
+simple method of adjusting your character’s capabilities in 
+a small but measurable way.
+The Process
+Subtract up to 4 skill ranks from one skill and add an equal 
+number of ranks to any one other skill (not including Speak 
+Language). The skill to which you add the ranks must be a 
+class skill for one of your character’s classes, including a class 
+he is about to gain with his current level increase. It doesn’t 
+matter whether the lost ranks were purchased as class skills 
+or as cross-class skills.
+ Example: You decide to give your 2nd-level ranger a level 
+of the rogue class as his third character level. At this point, he 
+could use the skill retraining option to lose 4 ranks in Handle 
+Animal that he purchased with his ranger skill points and 
+gain 4 ranks in any other ranger or rogue class skill (such as 
+Survival or Disable Device). He couldn’t gain ranks in any 
+skill that isn’t on either the ranger or the rogue class skill list 
+(such as Spellcraft).
+SPELL OR POWER RETRAINING
+Much like feats, magic spells and psionic powers sometimes 
+look bet ter when you select them than they do a fter you’ve 
+used them for a while. And when you’re playing a character 
+with a limited number of options (such as a sorcerer or a 
+psychic warrior), every spell or power you choose repre-
+sents a significant percentage of your character’s overall 
+options. You can’t afford to have dead weight taking up 
+valuable spell slots, so ditch that sleep spell now that the 
+party  isn’t  facing  foes  with  low  Hit  Dice  anymore  and  
+replace it with the niftier 1st-level spell you just found in 
+a recent supplement.
+The Process
+Exchange up to two currently known spells or psionic powers 
+for other spells or powers. Each new spell or power must be 
+usable by the same class and of the same spell level or power 
+level as the spell or power it replaces.
+    Special: Bards and sorcerers already have a limited abil-
+ity to learn new spells in the place of older ones (see page 
+28 and page 54 of the Player’s Handbook). This method of 
+retraining allows exchanges over and above what their classes 
+already permit.
+ Example: A sorcerer could change lightning bolt to fl  y or 
+dispel magic, since all three are 3rd-level sorcerer/wizard spells, 
+but he couldn’t change it to wall of ice (a 4th-level spell) or to 
+cure serious wounds (a cleric spell).
+ Example: A 5th-level sorcerer advancing to 6th level could 
+use spell retraining to exchange up to two of his known spells 
+(of any level he knows) for others of the same levels. Then he 
+could exchange one 0-level or 1st-level spell for another just 
+as any sorcerer could upon attaining 6th level.
+SUBSTITUTION LEVEL RETRAINING
+Substitution levels, as presented in Planar Handbook and 
+the Races series of supplements, offer characters interesting 
+ways to adjust the benefi  ts granted by their classes. A wizard 
+with elf wizard substitution levels, for example, seems a 
+bit different from a traditional wizard, and that difference 
+reinforces her racial identity. Since most substitution level 
+options are offered for relatively low class levels (many at 1st 
+level), you might already have missed one or more chances 
+to add such fl  avor to your character. Revising a character to 
+incorporate this feature amounts to a combination of retroac-
+tive continuity (“Of course I’ve always been a dwarf fi  ghter!”)  
+and getting back to one’s roots (“I can’t believe I forgot/never 
+learned that trick!”).
+pqqqqqqqqqqqqqqqqqqqqrs
+RETRAINING COSTS
+In general, retraining is assumed to be a background activity, just 
+like normal level increases are. However, if your DM’s campaign 
+requires the PCs to spend time and/or money to improve their 
+skills, gain feats, learn spells, or acquire class benefits (DMG 197), 
+the DM can apply similar requirements when characters use the 
+retraining rules presented in this chapter. The table below shows 
+some suggested time and gp costs for the various retraining op-
+tions. These costs are purely optional; the game works perfectly 
+well without them, just as it works without requiring downtime 
+in order to attain higher levels.
+Retraining Option     Time GP Cost
+Class feature 1 week/2 levels
+1
+        500        gp/week
+Feat 2 weeks 50 gp
+Skill                            1                            week
+2
+                      25                      gp
+2
+Spell 1 day 5 gp/spell level
+Substitution level 1 week/2 levels
+1
+        500        gp/week
+1 Based on the original level at which the class feature or sub-
+stitution level is gained.
+2 Per skill rank changed.
+pqqqqqqqqqqqqqqqqqqqqrs
+620_95374_Ch8.indd   194620_95374_Ch8.indd   1942/8/06   4:24:17 PM2/8/06   4:24:17 PM
+
+195
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+The Process
+You can trade one of your character’s current class levels for 
+a substitution level, or exchange a substitution level she cur-
+rently has for a normal class level. If the level to be gained has 
+prerequisites, not only must the character meet them in her 
+current state, but you must also be able to show that she met 
+them when you could have chosen the level originally.
+     Since a substitution level is actually a collection of different 
+mechanical elements, use the following guidelines to make 
+the necessar y changes to your character. In al l cases, “cur rent 
+level” refers to the class level currently occupying that level 
+slot (probably a normal class level), and “new level” refers to 
+the class level the character is gaining through the retraining 
+system (probably a substitution level).
+Hit  Points:  If  the  new  level  does  not  use  the  same  Hit  
+Die  as  the  current  level,  don’t  reroll  your  character’s  hit  
+points. Just add or subtract 1 hit point from your character’s 
+current total per step of difference between the two die sizes 
+(or 2 hit points per step if the new level is her fi  rst level in a 
+class). For instance, if the current level has a d8 Hit Die, and 
+the new level has a d10 Hit Die, your character would gain 1 
+hit point (or 2 hit points if the new level is her fi  rst  level  in  
+a class). Alternatively, if the new level has a d4 Hit Die, she 
+would lose 2 hit points (or 4 hit points if the new level is her 
+fi  rst level in a class).
+Skill  List:  If  the  new  level  doesn’t  offer  any  additional  
+class skills over and above those on the current level’s class 
+skill  list,  make  no  changes  to  your  character’s  existing  
+skill ranks. If the new level offers any class skills that 
+aren’t on the class skill list of the current level, you 
+can  subtract  up  to  4  skill  ranks  from  any  skill  in  
+order to add the same number of ranks to any of 
+the new level’s class skills.
+Example:  The  dwarf  fi  ghter   racial   substitu-
+tion  levels  in  Races  of  Stone  offer  Knowledge  
+(dungeoneering) as an additional class skill. 
+So  if  you  choose  to  retrain  your  character’s  
+1st level as a fi  ghter and change it to 1st level 
+as  a  dwarf  fi  ghter,  you  could  subtract  up  to  
+4 ranks from any skill and add an equal 
+number of ranks to Knowledge 
+(dungeoneering),  in  addition  to  
+the  other  changes  that  substitu-
+tion level retraining allows.
+ Skill  Points:  If  the  new  
+level does not grant the same 
+number of skill points as 
+the   current   level,   you   
+must adjust your char-
+acter’s  skill  ranks  
+appropri-
+ately.   If   
+the new 
+level 
+grants 
+fewer 
+skill 
+points than the current level, remove 1 rank from any skill 
+per  point  of  difference  between  the  two  levels.  If  the  new  
+level  grants  more  skill  points  than  the  current  level,  you  
+must  immediately  spend  those  skill  points  using  the  new  
+level’s class skill list. For example, if your character gained 2 
+skill points, you could buy 2 ranks in your new level’s class 
+skills or 1 rank in a cross-class skill. You must still abide by 
+the skill rank limit for your character level in this process.
+ Spellcasting: If the new level changes some aspect of your 
+character’s spellcasting ability (for example, if she gains or 
+loses spells known or spells per day), apply these changes as 
+appropriate. If she must lose one or more spells known, you 
+can select the spells lost from all the legal options.
+Class  Features:  If  the  new  level  offers  a  different  class  
+feature in place of one from the current level, treat the situ-
+ation as if you had used the class feature retraining option 
+detailed  above.  If  the  new  level  simply  alters  one  of  your  
+character’s existing class features, just apply the alteration.
+Regdar undergoes retraining so he can learn how to wield a spiked chain
+Illus. by D. Hudnut
+620_95374_Ch8.indd   195620_95374_Ch8.indd   1952/8/06   4:24:25 PM2/8/06   4:24:25 PM
+
+196
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+REBUILDING
+Retraining allows you to change a small aspect of your char-
+acter, but rebuilding is a much more drastic step. This method 
+of character revision allows you to change your character’s 
+ability scores, class levels, background, templates, or even 
+race. You can change as many of these aspects at once as you 
+wish, though such alterations require great effort—and often 
+great sacrifi  ce as well.
+     Since rebuilding constitutes such a major change in your 
+character’s identity, accomplishing it isn’t simply a matter 
+of erasing an entry on your character sheet and replacing it 
+with new information. In essence, you are altering reality in 
+order to rewrite your character’s personal history. Therefore, 
+to accomplish a character rebuild, your PC must complete 
+a significant and challenging quest. Two such quests are 
+detailed in this chapter, each one appropriate for a range of 
+character levels. For instance, the Gates of Dawn quest is 
+designed for characters of 6th to 8th level. Characters who 
+are lower or higher in level gain no benefi  t from completing 
+the quest and in fact should be actively discouraged from 
+undertaking it.
+     The DM can design new character rebuild quests for your 
+campaign by using the ones presented here as examples. 
+Each should be appropriate for a small range of character 
+levels (typically about three) and include guidelines on how 
+to adjust the challenge for characters within that range.
+    Ideally, a character rebuild should be a relatively rare 
+event. Unless your world is par ticularly unusual, constant 
+character rebuilding tends to undermine 
+the believability of both the campaign and 
+its story line. Therefore, the quest should 
+represent a signifi  cant challenge for the characters involved. 
+After all, if players consider a rebuild quest to be a cakewalk, 
+they’re likely to underestimate the value of the reward.
+ABILITY SCORE REBUILDING
+Sometimes the ability scores you roll aren’t exactly the ones 
+you’d l i ke. A nd even i f that 15 Intel l igence seemed l i ke a good 
+idea at the time, perhaps it didn’t pay off quite the way you’d 
+hoped in actual play. In such cases, you might eventually 
+come to the conclusion that your character would be better 
+off with different ability scores.
+    When you rebuild ability scores, you can reduce one or 
+more scores in order to increase others, though the exchange 
+is not necessarily one-for-one. In effect, the process is similar 
+to creating a character using the point-buy system detailed 
+on page 169 of the Dungeon Master’s Guide.
+    The system is intentionally designed to make improving 
+high scores more costly than improving low ones, since 
+improving an already high ability score usually gives a greater 
+benefi  t than improving a low score. Also, reducing an ability 
+score from an odd number to an even number isn’t ver y costly 
+to a character, since the reduction probably doesn’t result in 
+a signifi  cant change to his power.
+The Process
+Each time your character completes a rebuild quest, you can 
+reduce one or more of his ability scores and then improve 
+one or more different ability scores.
+Rebuilding a character opens up 
+countless possibilities for change
+Illus. by S. Prescott
+620_95374_Ch8.indd   196620_95374_Ch8.indd   1962/8/06   4:24:35 PM2/8/06   4:24:35 PM
+
+197
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+     No ability score can be reduced below 8 in this fashion, and 
+you can’t reduce a score that is already below 8. Furthermore, 
+you can’t reduce any ability score so much that it makes one of 
+your other choices (such as a feat) illegal. For example, if your 
+character has Power Attack, you can’t reduce his Strength to 
+less than 13.
+     Determine  the  points  for  each  reduction  by  consulting  
+Table 8–3. For ability scores higher than 30, simply extend 
+the table by continuing the progression. Add up the points 
+gained in this process.
+     Next,  spend  the  total  points  you  gained  through  ability  
+score reduction to improve one or more of your character’s 
+other ability scores. Consult Table 8–4 to determine the cost 
+of each desired improvement. Again, for ability scores higher 
+than 30, extend the table by continuing the progression.
+     Be sure to adjust al l other aspects of your character that 
+depend on ability scores—including saving throws, skill 
+modifi  ers, and the like—after you’ve rebuilt his ability scores. 
+The one exception is skill ranks. A permanent Intelligence 
+change doesn’t retroactively increase or reduce the skill ranks 
+your character has already gained from previous levels.
+CLASS LEVEL REBUILDING
+From the multiclass sorcerer who’s tired of lagging behind 
+in spell acquisition to the fi ghter who wishes he had taken 
+a level of rogue so that he could more easily qualify for a 
+desired prestige class, characters often come up short of their 
+players’ expectations. Even if you haven’t made a “mistake” 
+in choosing classes, it’s entirely possible that a new class or 
+prestige class might offer abilities that are more appropriate 
+for your character. For instance, a player whose stealthy rogue 
+considers herself a spy and assassin might decide that the 
+ninja class (from Complete Adventurer) better describes that 
+character. If ninja wasn’t an available option when the player 
+fi  rst created the character, it’s not fair to say that she made a 
+mistake in taking rogue levels. A more accurate assessment 
+would be that the new class better describes what the char-
+acter was always meant to be.
+     Your  character’s  class  levels  are  the  most  powerful  tools  
+for defi  ning his role in the party, not to mention his place in 
+the world. So, consider carefully any class level rebuilds that 
+would  dramatically  alter  the  way  your  character  functions  
+in the game—if he’s the only front-line fi  ghter in the party, 
+trading  away  a  couple  of  paladin  levels  for  sorcerer  levels  
+might not be the best decision.
+     You can also use this method to trade out (or add in) prestige 
+class levels, though i f you want to ta ke levels in a prestige class 
+that’s new to your character, you must be able to demonstrate 
+that he can still qualify for it using what he has gained from his 
+remaining class levels. For example, a 7th-level dwarf fi  ghter  
+couldn’t trade a fi  ghter level for a dwarven defender level, since 
+his remaining fi  ghter levels wouldn’t allow him to meet the 
++7 base attack bonus requirement for that prestige class.
+     If reallocating your character’s class levels disqualifi  es  him  
+for a prestige class in which he already has one or more levels, 
+he loses the benefi  t of any class features or other special abilities 
+granted by that prestige class. He retains the hit points gained 
+from advancing in that class, as wel l as any improvements to base 
+attack bonus and base save bonuses that those levels provided. 
+However, you can always use the class level rebuilding option 
+to replace the now-useless prestige class levels as well—and 
+you probably should, unless you’re sure that the character w i l l 
+be able to meet the requirements again soon.
+     Some players might fi  nd it tempting to use this method of 
+character rebuilding to create a bizarre but powerful amalgam 
+of classes, or to drastically rewrite a character’s history. As 
+with any important character decisions, the DM and the 
+player should work together to ensure that the player’s new 
+vision of his character still works in the game and fi  ts  in  with  
+the other characters in the party. As long as the changes don’t 
+signifi cantly disrupt the game, though, players should play 
+Table 8–3: Reducing Ability Scores
+  Old Score New Score   Points Gained
+         30         29         9
+         29         28         7
+         28         27         8
+         27         26         6
+         26         25         7
+         25         24         5
+         24         23         6
+         23         22         4
+         22         21         5
+         21         20         3
+         20         19         4
+         19         18         2
+         18         17         3
+         17         16         1
+         16         15         2
+         15         14         1
+         14         13         1
+         13         12         1
+         12         11         1
+         11         10         1
+         10         9         1
+          9          8          1
+Table 8–4: Improving Ability Scores
+  Old Score New Score Point Cost
+         30         31         10
+         29         30         9
+         28         29         9
+         27         28         8
+         26         27         8
+         25         26         7
+         24         25         7
+         23         24         6
+         22         23         6
+         21         22         5
+         20         21         5
+         19         20         4
+         18         19         4
+         17         18         3
+         16         17         3
+         15         16         2
+         14         15         2
+         13         14         1
+         12         13         1
+         11         12         1
+         10         11         1
+Improving an ability score of less than 10 costs 1 point.
+620_95374_Ch8.indd   197620_95374_Ch8.indd   1972/8/06   4:24:47 PM2/8/06   4:24:47 PM
+
+198
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+characters  that  they  fi  nd  enjoyable,  and  if  swapping  out  a  
+couple of class levels accomplishes that goal, then doing so 
+is well worth the effort.
+The Process
+Each time your character completes a rebuild quest, you can 
+change  a  number  of  levels  equal  to  1/5  his  character  level  
+(rounded up) from one class to any other class (or classes). For 
+example, a 5th-level sorcerer could trade a sorcerer level for a 
+single level of any other class, while a 12th-level barbarian/4th-
+level  fi  ghter  could  trade  up  to  four  of  his  class  levels  (any  
+combination of fi ghter and barbarian) for other class levels 
+of his choice.
+    Since every class level is a composite of several different 
+elements,  use  the  following  step-by-step  process  to  adjust  
+your character.
+ Base Attack and Base Save Bonuses: Adjust these bonuses 
+to match your new array of class levels, just as if you had 
+created a brand-new character with those classes.
+ Hit Points: If the new class level does not use the same 
+Hit Die as the current level, don’t reroll your character’s hit 
+points. Just add or subtract 1 hit point from your character’s 
+current total per step of difference between the two die sizes 
+(or 2 hit points per step if the new level is his fi  rst level in a 
+class). For instance, if you trade a fi  ghter level (d10 Hit Die) 
+to gain a barbarian level (d12 Hit Die), your character would 
+gain 1 hit point (or 2 hit points if the new level is his fi  rst  level  
+of barbarian). If you traded that fi  ghter  level  for  a  sorcerer  
+level (d4 Hit Die), your character would lose 3 hit points (or 
+6 hit points if the new level is his fi  rst level of sorcerer).
+ Skill Points: If the new class level grants the same number 
+of skill points as the current level does, you don’t have to make 
+any changes to your character’s skill ranks. Even if the class 
+skill lists are widely different, it’s generally more work than 
+it’s worth to fi ddle around with skill ranks in this manner. 
+If you wish, you can also use the skill retraining option (see 
+page 194) to adjust some of your skill ranks.
+    If the new level does not grant the same number of skill 
+points as the current level, you must adjust your character’s 
+skill ranks appropriately. If the new level grants fewer skill 
+points than the current level, remove 1 rank from any skill 
+per  point  of  difference  between  the  two  levels.  If  the  new  
+level  grants  more  skill  points  than  the  current  level,  you  
+must  immediately  spend  those  skill  points  using  the  new  
+level’s class skill list. For example, trading a fi ghter level to 
+gain a barbarian level would grant 2 skill points to a character 
+with  Intelligence  10.  With  those  extra  points,  you  could  
+buy 2 ranks of barbarian class skills or 1 rank of a barbarian 
+cross-class skill. You must still abide by the skill rank limit 
+for your character’s level in this process.
+ Spells: If you added or subtracted any levels from a spell-
+casting class, adjust your character’s spells per day and spells 
+known appropriately. You can choose any spells the character 
+must lose from his entire repertoire of the appropriate spell 
+level. For example, a 5th-level sorcerer who becomes a 4th-level 
+sorcerer/1st-level rogue must lose one 1st-level and one 2nd-
+level sorcerer spell, but you can choose these freely—they need 
+not be the ones the character actually learned at 5th level.
+ Class Features: Eliminate any class features the char-
+acter no longer possesses and add those he gains from his 
+new levels.
+RACE REBUILDING
+Changing your character’s race is a major decision, since it has 
+probably affected many of the decisions he has made during 
+his adventuring career. Still, the concept of major physical 
+transformation isn’t unknown in fantasy, so a character might 
+well seek to recreate himself as an entirely different person. 
+Perhaps you really want to try out a race featured in a new 
+book, or you’ve fi  nally reached a high enough level to play 
+the monstrous character you’ve always wanted. Whatever 
+your reason, the race rebuilding rules show you how to keep 
+playing the same person in a new body.
+    This method of rebuilding can also be used to recreate 
+characters brought back by reincarnate and similar effects that 
+restore characters to life as members of different races.
+The Process
+Each time your character completes a rebuild quest, you 
+can change his race. First, remove all racial traits (including 
+ability score modifi  ers) granted by your character’s original 
+race. Then add all the racial traits and ability score modifi  ers  
+from the new race. The character’s known languages don’t 
+change unless you also choose the lang uage retraining option 
+(see page 194).
+     So far the process sounds simple, right? Unfortunately, it isn’t 
+always easy. Many potential complications can arise from this 
+aspect of character rebuilding. The sections below demonstrate 
+how to handle the various issues that might arise.
+ Feat: If a change of race means that your character no 
+longer qualifi  es for a feat she already has, she loses access to 
+the feat, as well as to any others for which it is a prerequisite. 
+However, the feat still occupies a feat slot unless you also use 
+the feat retraining option (see page 193).
+ Prestige  Class:  If  a  change  of  race  disqualifies  the  
+character for a prestige class in which she already has one 
+or more levels, she loses the benefi t of any class features or 
+other special abilities granted by that prestige class. She 
+retains the hit points gained from advancing in that class, as 
+wel l as any improvements to base at tack bonus and base save 
+bonuses that those levels provided. However, you can use 
+the class level rebuilding option to replace the now-useless 
+prestige class levels—and you probably should, unless you’re 
+sure that the character will be able to meet the requirements 
+again soon.
+ Racial Substitution Level: Changing your character ’s race 
+might wel l mean that any racial substit ution levels (detai led in 
+the Races series of supplements) she has are no longer appropri-
+ate. Treat this situation as if you were replacing one class level 
+with another (see Class Level Rebuilding, page 197).
+ Level Adjustment: If your character’s original race had 
+a higher level adjustment than her new race does, you can 
+replace any lost level adjustment “points” with the same 
+number of new class levels of your choice.
+    If the new race has a higher level adjustment than the 
+original race did, you must remove class levels until the 
+620_95374_Ch8.indd   198620_95374_Ch8.indd   1982/8/06   4:24:54 PM2/8/06   4:24:54 PM
+
+199
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+character’s effective character level is the same as it was before 
+the rebuilding occurred. You can choose the levels lost from 
+all  those  that  the  character  has,  regardless  of  the  order  in  
+which they were gained.
+ Racial Hit Dice: Adding or subtracting racial Hit Dice is 
+perhaps the most complicated part of character rebuilding. 
+Work w ith your DM to ensure that he approves of this degree 
+of change and that you’re doing it correctly.
+    If your character’s original race had any racial Hit Dice, 
+you must remove all the benefi  ts they granted. This process is 
+similar to removing class levels (see Class Level Rebuilding, 
+page 197). Next, replace these racial Hit Dice with class levels 
+of your choice until the character’s effective character level 
+is the same as it was before the rebuilding occurred.
+    If your character’s new race has any racial Hit Dice, you 
+must subtract class levels until his effective character level 
+is  the  same  as  it  was  before  the  rebuilding  occurred.  You  
+can choose the lost levels from all those the character has, 
+regardless of the order in which they were gained.
+TEMPLATE REBUILDING
+Admit it—when fi  ghting lycanthropes, you’ve been tempted 
+at least once to let your character get bitten, in hopes that the 
+wound infects him. Such a desire is perfectly normal—it’s 
+hard to look at the hybrid form ability modifi ers for, say, a 
+werebear  and  not  imagine  the  sheer  devastation  that  your  
+character could wreak if he had that template.
+     Lycanthropy isn’t the easiest template to pick up during an 
+adventuring career, but it’s certainly not the only interesting 
+option. Whether you’ve dreamed of playing a celestial dwarf, 
+a half-dragon elf, or a vampire halfl  ing (don’t worry, we won’t 
+tell), templates offer the promise of a tantalizingly different 
+character that can’t be created from mere class levels.
+     Adding  a  template  can  represent  a  pretty  big  change  for  
+your character, so make sure your choice is acceptable to your 
+DM before proceeding. After all, transforming your chaotic 
+good elf wizard into a vampire might not be appropriate for 
+the  style  of  play  the  DM  has  in  mind.  On  the  other  hand,  
+“realizing” your character’s celestial heritage by adding that 
+template represents a much smaller overall shift in identity 
+and would probably cause no problem at all.
+     To uti l ize this rebui ld, your character must be able to adopt 
+the template you want to gain. For example, a warforged fi  ghter  
+(a living construct from the EBERRON campaign setting) can’t 
+become a vampire, since that template can be applied only 
+to humanoids and monstrous humanoids.
+    This rebuilding option also works reasonably well for 
+a character who picks up a template during play (from a 
+weretiger’s bite, for example), if the DM wants the character’s 
+effective character level to remain consistent with the rest of 
+the party. If a difference in effective character level isn’t an 
+issue, don’t worry about these rules—just add the template 
+and move on with your game.
+The Process
+Each time your character completes a rebuild quest, you can 
+add, subtract, or replace one template. For example, a dwarf 
+paladin  could  gain  the  celestial  template,  a  half-dragon  elf  
+fi ghter could lose the half-dragon template, or a celestial 
+human rogue could replace his celestial template with the 
+fi  endish  template.
+     Adding a template is a lot like changing your character’s 
+race, except that he usually doesn’t lose many (if any) existing 
+racial abilities. Follow the guidelines presented in the Race 
+Rebuilding section above, paying special attention to the 
+information on gaining or losing Hit Dice and level adjust-
+ment. If the character’s Hit Die size changes (for instance, 
+from transformation into a vampire), use the Hit Points entry 
+in the Class Rebuilding section above to determine the new 
+hit point total.
+     Removing an existing template, on the other hand, requires 
+you to eliminate any of the template’s effects and benefi  ts,  which  
+might include special attacks, special qualities, skill modifi  ers,  
+ability modifi  ers, bonus feats, and a variety of other bits and 
+pieces. Use the guidelines in the Race Rebuilding and Class 
+Rebuilding sections to rework your character’s statistics.
+REBUILD QUESTS
+Note: This section addresses the DM and is intended primarily 
+for his or her eyes.
+    A quest to rebuild a character should excite and frighten 
+players.  It’s  an  adventure  few  characters  would  willingly  
+embark upon and fewer still could survive. To make rebuild-
+ing an option at all levels of play, however, the degree of 
+challenge must change according to the PCs’ level.
+    The two example locations below outline ideas for rebuild 
+quest objectives, each of which is suitable for a range of character 
+levels. You can use them as described, modify them to suit 
+your needs, or devise your own rebuild quest objectives.
+     Each  objective  represents  the  fi  nal  encounter  before  a  
+character can undergo rebuilding. The PCs might need to 
+embark on a perilous overland journey or a long dungeon 
+crawl to get to this encounter, or they might take a short break 
+from an ongoing adventure to teleport there and have one or 
+more encounters before returning. Set up the preliminary 
+adventures  in  whatever  way  best  fi  ts  your  game  and  your  
+players’ desires.
+REBUILD QUESTS IN THE GAME
+The rebuild quest objectives described here are designed to 
+allow any type of character rebuild, but in your game, each 
+might allow only particular kinds of rebuilds. Creating dif-
+ferent quests for different rebuilds not only makes each one 
+seem more signifi  cant, but it also helps to curtail unplanned 
+rebuilding  by  players  who  are  largely  satisfi ed with their 
+characters. (“Well, as long as he’s here, Gravar Orc-Killer is 
+going  to  turn  into  a  half-celestial  umber  hulk.”)  Below  are  
+some suggestions for making these locations serve particular 
+needs that suit their ambiance.
+ The Gates of Dawn: Character rebuilds relating to divine 
+magic and fey would be particularly appropriate for this 
+location, as would any kind of rebuild that could be viewed 
+as redemption (for example, exchanging rogue or ninja levels 
+for fi  ghter levels, changing fi  ghter levels into paladin levels, 
+or increasing Wisdom).
+620_95374_Ch8.indd   199620_95374_Ch8.indd   1992/8/06   4:25:01 PM2/8/06   4:25:01 PM
+
+200
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+ The Necrotic Cradle: Character rebuilds that relate to 
+necromancy (both undeath and aspects of the physical body) 
+seem particularly appropriate for the Necrotic Cradle. This 
+location might allow any or all of the following rebuilds: 
+return an undead character to life, exchange life for undeath 
+at the cost of an appropriate number of character levels, 
+change ability scores, or exchange class levels or prestige 
+class levels for necromancy-themed class levels or prestige 
+class levels.
+THE GATES OF DAWN (LEVELS 6–8)
+“Travel to the Lost Isle to become lost. Leave it to fi nd yourself anew.”
+—The wizard Faldor Stardust, formerly a druid
+Knowing oneself generally leads to a sense of belonging, 
+but wishing to change one’s essential being can bring about 
+a sense of loss. At the Gates of Dawn, characters can lose 
+and find themselves, and in that finding rediscover their 
+true selves.
+     The Lost Isle fl  oats in a hundred lonely lakes and in none 
+of them. A place of mysterious magic, it appears out of the 
+dawn mist on foggy days and then vanishes again when the 
+sun burns the mist away. Tales told at fi  reside discourage the 
+curious  from  visiting  this  fey  place,  warning  that  most  of  
+those who go there never return, and those who do always 
+come back profoundly changed.
+    The Lost Isle might appear in a distant forest lake, or a 
+crystal-clear pool high in the mountains, or a body of water 
+within an area that some race considers sacrosanct. The jour-
+ney to the island could be part of the adventure. Perhaps the 
+PCs must give a great gift to the creatures that guard the lands 
+around the lake, or sneak past them to avoid being slain on 
+sight. Alternatively, the PCs might have to go to a lake where 
+the island has appeared before and wait until conditions are 
+right for it to come again, weathering assaults by the native 
+creatures in the meantime.
+Lore of the Lost Isle and the Gates of Dawn
+Characters with ranks in Knowledge (arcana), Knowledge 
+(local), Knowledge (nature), or Knowledge (religion) can 
+research the Lost Isle and the Gates of Dawn to learn more 
+about these places. When a character makes a skill check, 
+read or paraphrase the appropriate information from one 
+of the following tables, including the information from 
+lower DCs.
+    If the PCs are just looking for a place to rebuild and want 
+to know if they have heard about such a site, use the entire 
+table. If they have heard of the Lost Isle speci fi  cally and want 
+to see whether they know more about it, reveal information 
+only for check results of 20 or higher.
+    After getting information from a Knowledge check, the 
+characters should be able to learn more about the Lost Isle 
+by consulting village elders who know the old tales, using 
+divination magic, or trying to fi  nd individuals who were ref-
+erenced in the information they have gained. Such resources 
+can reveal the information for Knowledge DCs higher than 
+the PCs’ check results, or other any information about the 
+Lost Isle that you’d like the characters to have.
+Knowledge (arcana)
+DC     Result
+20  Certain places of power allow those with mettle to 
+change themselves in strange and wondrous ways. 
+In some such places, a person can change nearly any 
+aspect of her being that she does not like, including 
+race, weaknesses, abilities, and even personal history.
+Knowledge (local) 
+DC     Result
+15 Old stories tell of a place called the Lost Isle. These 
+legends hold that people who return from this place 
+are always profoundly changed.
+20  The Lost Isle is a mist-shrouded island that sometimes 
+appears in lakes and large ponds in various parts of 
+the world. Most who visit it don’t come back, and 
+those who do are never the same again.
+25 A fisherman disappeared while fishing one day, 
+and everyone thought he had drowned. Two years 
+later, a ranger came to his village claiming to be the 
+fisherman, though he didn’t resemble the lost man 
+in the slightest. He said he had been to the Lost 
+Isle and passed through the Gates of Dawn. The 
+fisherman’s wife had remarried and wanted nothing 
+to do with the stranger, so he left.
+30  The lost fi sherman was named Brent Vostig, and his 
+village was Milford. He disappeared while fi shing in 
+the nearby Misty Lake.
+35 Beautiful music is often heard on the shores of the 
+body of water in which the Lost Isle appears. Those 
+who hear it should stop up their ears, because the 
+melody calls them to death.
+Knowledge (nature) 
+DC     Result
+15  Those who visit a certain fey place called the Lost 
+Isle either return profoundly changed or never return 
+at all.
+20  The Lost Isle appears in a lake or other body of water 
+somewhere in the world at dawn each day. As soon 
+as the sun and wind disperse the fog surrounding 
+the misty island, it vanishes.
+25  Rumor holds that a fey creature lives on the Lost Isle 
+as its caretaker.
+Knowledge (religion) 
+DC     Result
+20 Certain places of power allow those with mettle to 
+change themselves in strange and wondrous ways. 
+Rumor holds that in some such places, a person 
+can ignore the plans of the gods and even change 
+his race.
+25  The god Pelor created the Gates of Dawn as a 
+place where the worthy might fi nd a” new dawn” 
+by changing themselves in some fundamental way. 
+Eventually, however, he had to take the privilege 
+away from mortals due to their misuse of it.
+30 The Gates of Dawn exist on the Lost Isle, a place that 
+appears only at sunrise in certain lakes. Only the most 
+worthy of Pelor’s followers have seen it, and the last 
+reported sighting was at least a hundred years ago.
+35 When Pelor hid the Gates of Dawn, he cursed some 
+creature to remain on the island as its guardian. No 
+church records of this ancient event remain, but 
+legend has it that the curse was punishment for foul 
+acts committed against Pelor’s faithful.
+620_95374_Ch8.indd   200620_95374_Ch8.indd   2002/8/06   4:25:08 PM2/8/06   4:25:08 PM
+
+201
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+Random Encounters
+Characters traveling to the Lost Isle might encounter several 
+dangerous threats before reaching it. You can either roll 1d4 
+times on the table below for encounters, or select a few that 
+you prefer. Even if the journey to the Lost Isle is supposed to be 
+only a brief detour from the current adventure, consider giving 
+the PCs a few warmup encounters with the creatures that lair 
+near the island before they reach the Gates of Dawn.
+Lost Isle Encounters
+  d%  Encounter  EL
+1–20 2 sea hags (MM 144) 6
+21–40    Will-o’-wisp    (MM 255) 6
+41–60    2 trolls or scrags (MM 58) 7
+61–80    Huge water elemental (MM 110 ) 7
+81–90     Athach     (MM 21) 8
+91–100   Treant   (MM 244) 8
+The Isle
+The Lost Isle appears in a mist-covered lake at dawn every 
+morning. It remains for 1 hour, or until the sun and wind 
+disperse the fog from the lake. At that point, the island and 
+all its occupants are transferred to another lake elsewhere in 
+the world—often hundreds of miles distant—where a foggy 
+dawn is occurring. If no such lake is available, the island 
+instead appears somewhere on Belierin, the third layer of 
+Elysium (DMG 165), until a lake on the Material Plane has 
+the proper conditions to host it.
+    Read or paraphrase the following text when the Lost Isle 
+appears.
+The fog coils thickly over the dark waters of the lake as the sky gradu-
+ally brightens from night-blue to predawn gray. A faint pinkness 
+on the horizon grows slowly into a blurry sliver of crimson as the 
+sun rises, casting its warm glow through the mist. As the fi rst light 
+of dawn falls on the lake, a curling billow of fog rolls aside like a 
+parted curtain, revealing the outline of a forested island fl  oating in 
+the mist-covered water. Moments later, the sweet notes of a distant 
+pipe drift out over the lake. Sometimes lilting and happy, sometimes 
+slow and sad, the distant melody seems to call to its listeners, cajol-
+ing them closer.
+A satyr named Fauldwick who long ago committed a ter-
+rible transgression against Pelor’s worshipers was cursed 
+by the god to remain on the island forever as caretaker 
+and guardian of the Gates of Dawn. The satyr is effectively 
+immortal—he does not age, and if slain, he reappears alive 
+and wel l on the Lost Isle the nex t time it appears. Fauldw ick 
+can leave the island, but when it reappears in another place, 
+he goes w ith it, no mat ter how far he was from the la ke when 
+it vanished.
+    Fauldwick has lost track of how long he has lived on the 
+Lost Isle. Over the centuries, loneliness has driven him quite 
+Fauldwick the satyr, trapped on the Lost Isle until the end of time
+Illus. by M. May
+620_95374_Ch8.indd   201620_95374_Ch8.indd   2012/8/06   4:25:16 PM2/8/06   4:25:16 PM
+
+202
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+mad, despite the company of the blink dogs and the invisible 
+stalkers that Pelor has placed there to serve him. Fauldwick’s 
+piping is the source of the music that the PCs hear.
+The Clearing
+When the characters arrive, an invisible stalker that was fl ying 
+above the island to watch for visitors reports their whereabouts 
+to Fauldw ick, who then tr ies to lead them to the Gates of Dawn 
+with his music. He stays in the woods where the PCs can’t see 
+him and moves slowly toward the gates while he plays. The 
+invisible stalker (or stalkers; see Creatures, below) provides 
+reconnaissance but fl  ees from combat until Fauldwick com-
+mands it to fi  ght.
+     If the PCs ignore Fauldwick’s music, allow them to explore 
+the Lost Isle as they wish, but they still have only an hour at 
+most before the island vanishes. Describe the gradual clear-
+ing of the mist and the brightening of the sunlight through 
+the trees at every opportunity. If they grow bored with their 
+exploration, a random encounter with a will-o’-wisp or two 
+might be appropriate.
+Approaching the Gates: When the PCs near the Gates 
+of Dawn, read or paraphrase the following text.
+The sweet music seems to swell and grow louder. A quick glance 
+through the trees reveals an immense, grassy field studded by 
+shrubs. Dozens of man-sized, oblong hummocks dot the field, and 
+objects jut up from the ground near many of them—a rusted 
+sword  here,  a  graying  wooden  oar  there,  a  necklace  of  shells  
+dangling  from  a  stick  over  there.  A  well-trodden  path  wends  
+through these grassy hills, ending at pair of rusted iron gates 
+in  the  side  of  a  huge,  open-topped,  circular  structure  made  of  
+a stone so light in color that it almost blends with the fog. The 
+gates, which are at least 20 feet wide and nearly twice that tall, 
+appear to be slightly ajar, and the music seems to be coming from 
+somewhere beyond them.
+Over the years, Fauldwick has trapped many individuals on 
+the Lost Isle. Some died here of old age and others were mur-
+dered by Fauldwick when they attempted to leave. Fauldwick 
+buries each such unfortunate aboveground in a makeshift 
+graveyard outside the entrance to the building that holds 
+the Gates of Dawn, placing an item the individual wore or 
+carried  at  the  head  of  the  resulting  hummock  as  a  sort  of  
+grave marker.
+    When the PCs come close enough to enter the map, they 
+can see into the building. Read or paraphrase the following 
+text at that point.
+Inside the structure stands a second set of gates the same size as the 
+rusted iron ones. These inner gates are attached to a pair of thick 
+pillars and seem to be made of brilliant gold. Other smaller pillars 
+stand around this huge structure in a symmetrical arrangement.
+     In a moment, a humanlike creature with a ram’s horns and legs 
+dances into view, playing a set of pipes. A few dogs scamper up to 
+him and excitedly jump and gambol about his legs. The creature 
+stops playing and dancing for a moment and shouts, “Come and 
+dance! Come and dance! Dance before the Gates of Dawn!” Then 
+he goes back to playing and prancing with his dogs.
+Fauldwick doesn’t reply to any questions the PCs ask; he merely 
+continues to play his pipes and wave the visitors closer. When 
+at least one character has come through the rusted gates, he 
+stops playing to greet that person.
+ Rusted Gates: The iron gates are rusted fi rmly in place. 
+Medium and Small creatures must squeeze through the 
+opening to get in.
+Gates: 1 in. thick, hardness 10, hp 30, break DC 24, DC 30 
+Strength check to move.
+Creatures: Creatures for three separate encounters are 
+provided below. Choose a set that has an EL 3 higher than 
+the average PC level of the party.
+ EL 9: One invisible stalker (MM 160), one satyr with pipes 
+(MM 219), and four blink dogs (MM 28).
+ EL 10 : Two invisible stalkers (MM 160), one satyr with pipes 
+(MM 219), and four blink dogs (MM 28).
+ EL 11: Three invisible stalkers (MM 160), one satyr with 
+pipes (MM 219), and four blink dogs (MM 28).
+ Tactics:  After  greeting  the  PCs,  Fauldwick  attempts  to  
+convince them to stay with him on the island using the 
+charm person effect of his music. If any PC refuses or resists, 
+Fauldwick orders his blink dogs and invisible stalkers to 
+attack. The invisible stalkers concentrate on any airborne 
+foes, while the blink dogs harry those on foot. Fauldwick 
+remains in the rear, readying an action to attack with his 
+shortbow whenever someone tries to cast a spell. If it seems 
+useful, Fauldwick commands a blink dog to go through the 
+Gates of Dawn, then shuts his eyes and hopes the PCs will 
+be blinded (see below).
+620_95374_Ch8.indd   202620_95374_Ch8.indd   2022/8/06   4:25:26 PM2/8/06   4:25:26 PM
+
+203
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+The Gates of Dawn
+The Gates of Dawn are made of solid gold, and they swing 
+open easily. Whenever any creature moves through them in 
+either direction, the gates emit a blinding fl  ash of light. At 
+that point, every creature within the Gates of Dawn structure 
+must make a DC 15 Fortitude save or be blinded for 1d4 
+rounds. Creatures that succeed on the save are dazzled for 
+1d4 rounds.
+     Any creature that passes through the Gates of Dawn imme-
+diately changes in the manner desired (that is, the planned 
+rebuild instantly takes effect), but it also falls unconscious 
+for 1 hour, even if it is a construct, undead, or other creature 
+that does not need to sleep or is immune to sleep ef fects. A ny 
+attempt to damage the Gates of Dawn causes the perpetrator 
+to fall unconscious in the same manner.
+ Development: If the PCs want to help Fauldwick break 
+his curse, a remove curse spell isn’t enough. Fauldwick must 
+honestly repent his misdeeds, both those he committed in 
+the  distant  past  and  those  he  has  committed  since  he  has  
+been on the island. Thereafter, he must receive an atonement 
+spell from a cleric of Pelor. After being trapped on the island 
+for so long, however, Fauldwick no longer has any interest in 
+apologizing for his actions.
+Returning to the Lost Isle
+If the PCs want to return to the Lost Isle for another rebuild, 
+you have many options. Fauldwick is still there, and he might 
+have new charmed or willing allies. Alternatively, some new 
+creatures, such as fey or powerful out siders, might also have 
+moved in to help guard the Gates of Dawn.
+     If you don’t want the PCs to use the same rebuild location a 
+second time, the Lost Isle might never appear to them again. 
+Or perhaps it does appear, but the Gates of Dawn have been 
+destroyed by Fauldwick. For this greater transgression, Pelor 
+has  further  punished  the  satyr  by  turning  him  into  some  
+much more more terrible creature.
+THE NECROTIC CRADLE 
+(LEVELS 13–15)
+“You must journey through the lands of the dead to be reborn.”
+—The dwarf Taklinn Ungart, previously a human
+Encountering  death  and  the  undead  can  spark  a  deep  and  
+full reevaluation of life. In the Necrotic Cradle, characters 
+can face their own mortality and remake the threads of life 
+that brought them to their current existence.
+     The Necrotic Cradle lies hidden in a place notorious for its 
+connection to undead, but its exact location and the nature of 
+the dangers it holds were lost with the lives of the creatures 
+that now haunt the area as undead. Few living beings know 
+about the Necrotic Cradle, and fewer still believe it actually 
+exists.  A  few  nearly  lost  legends,  however,  say  that  it  is  a  
+place where birth, death, life, and undeath meet and become 
+indistinguishable from one another.
+     The  Necrotic  Cradle  might  lie  hidden  beneath  a  city  of  
+the dead, or within an ancient burial ground that has served 
+many races, or at the heart of a dark land haunted by undead 
+creatures.  The  journey  to  this  place  could  be  part  of  the  
+adventure. Perhaps the PCs need to talk to undead creatures 
+they might ordinarily attack on sight, or maybe they have to 
+help one undead creature in its struggle against another to 
+learn the location of the Necrotic Cradle.
+Lore of the Necrotic Cradle
+Characters with ranks in Knowledge (arcana), Knowledge 
+(local), or Knowledge (religion) can research the Nectoric 
+Cradle to learn more about it. When a character makes a 
+skill check, read or paraphrase the appropriate information 
+from one of the following tables, including the information 
+from lower DCs.
+    If the PCs are just looking for a place to rebuild and want 
+to know if they have heard about such a site, use the entire 
+table. If they have heard of the Nectoric Cradle specifi cally 
+and  want  to  see  whether  they  know  more  about  it,  reveal  
+information only for check results of 25 or higher.
+Knowledge (arcana)
+DC     Result
+20  Certain places of power allow those with mettle to 
+change themselves in strange and wondrous ways. 
+In some such places, an individual can change 
+nearly any aspect of his being that he does not 
+like, including race, weaknesses, abilities, and even 
+personal history.
+25  The Necrotic Cradle is a place where an imbalance 
+exists in the world’s magic. Powerful individuals can 
+use that imbalance to alter themselves.
+30  The Necrotic Cradle is suffused with strange 
+necromantic and transmutative energies that can 
+break the boundaries of life and death. Such forces 
+are likely to attract undead, but they might also 
+attract outsiders and other strange beings.
+      The Necrotic Cradle is located beneath the 
+dead city of Drathmere (or under Tomb Tor in the 
+Deathlands, or any other place you care to put it).
+35              The Necrotic Cradle probably has a guardian, and 
+that guardian might be an inevitable—a thinking 
+construct that concerns itself with the laws of the 
+universe. A place such as the Necrotic Cradle, which 
+breaks universal laws, could certainly be perceived 
+as a threat by such creatures.
+Knowledge (local) 
+DC     Result
+20 About 10 years ago, a fallen paladin sought a 
+legendary place where he could redeem himself. 
+Legend has it that he emerged from that place not 
+only redeemed, but also reborn.
+25  The paladin was a human who had been transformed 
+into a vampire by the bite of one of those unholy 
+creatures. The place in which he sought redemption 
+was called the Necrotic Cradle.
+30 A vampire paladin went to the Necrotic Cradle with 
+several companions, but only he returned. Rumors 
+say after he was restored to full-fledged life, he 
+sought absolution for some crime at the church 
+where he had received his training.
+35 The paladin, whose name was Tanneth Silverwright, 
+was refused atonement for his evil deeds as a 
+vampire. Thereafter, he dropped into anonymity and 
+became a drunkard.
+620_95374_Ch8.indd   203620_95374_Ch8.indd   2032/8/06   4:25:35 PM2/8/06   4:25:35 PM
+
+204
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+    After getting information from a Knowledge check, the 
+characters should be able to learn more about the Necrotic 
+Cradle by consulting sages, searching through a great library, 
+using divination magic, or trying to fi  nd  individuals  who  
+were referenced in the information they have gained. Such 
+resources can reveal the information for Knowledge DCs 
+higher than the PCs’ check results, or other any information 
+about the Necrotic Cradle that you’d like the characters 
+to have.
+Random Encounters
+Characters traveling to the Necrotic Cradle might encounter 
+several dangerous threats before reaching it. You can either 
+roll 1d4 times on the table below for encounters, or select 
+a few that you prefer. Even if the journey to the Necrotic 
+Cradle is supposed to be only a brief detour from the cur-
+rent  adventure,  consider  giving  the  PCs  a  few  warmup  
+encounters with the creatures drawn to the location by the 
+necromantic energy of the place and its connection to both 
+life and death.
+Necrotic Cradle Encounters
+  d%  Encounter  EL
+01–10     Ice devil (MM 56) 13
+11–30     2 kolyaruts (MM 159) 14
+31–40    Nalfeshnee    (MM 45) 14
+41–60    4 devourers (MM 58) 15
+61–80    4 dread wraiths (MM 258) 15
+81–90     2 nightwings (MM 197) 16
+91–100   Glabrezu   (MM 166) and  16
+ 10 Nessian warhounds (MM 151)
+The Cradle Entrance Cavern
+The transmutation magic that fl  ows through the Necrotic 
+Cradle redirects any attempts to teleport into or out of it. Thus, 
+whether the PCs arrive by magic or on foot after traversing 
+catacombs filled with undead, they first see the Necrotic 
+Cradle from the cavern directly outside it.
+     Read or paraphrase the following text when the PCs arrive 
+outside the cavern.
+A sense of foreboding hangs almost palpably in the air within this 
+cavern. Ahead, an opening in the rock wall admits a beam of bril-
+liant light that silhouettes a titanic armored fi gure standing just 
+before the aperture. Beyond it lies a yawning abyss of utter blackness, 
+and beyond that is the source of the light—a bulbous hemisphere 
+of stone projecting from the cavern wall on the other side of the 
+abyss. This enormous rock formation looks anything but natural. 
+Black cracks in the stone, like the veins in an eye, reach up from 
+the abyss to surround a gaping hole in the center of the projecting 
+rock. Through that aperture shines the light.
+The silhouetted fi  gure is a marut—an inevitable charged with 
+guarding the Necrotic Cradle. Concerned with the unnatural 
+blending of l i fe and death in this place, it war ns v isitors away 
+from the Necrotic Cradle and attempts to destroy any who 
+persist in trying to bypass it.
+    The cavern is roughly 40 feet high, and the light beam-
+ing from the Necrotic Cradle provides bright illumination 
+equivalent to that of daylight. Some areas of the cavern count 
+as diffi  cult terrain because of the rubble that has fallen from 
+the ceiling.
+Dark Abyss
+The Dark Abyss on the map is actually a planar rupture that 
+leads to the Plane of Negative Energy. Any creature that falls 
+into it drops for 400 feet before crossing over into the Plane 
+of Negative Energy. Once there, it has no means of return.
+     Necromancy spel ls cast w ithin or over the Dark Abyss are 
+function as i f a f fected by the Heighten Spel l (t wo levels) and 
+Empower Spell feats, but cure spells and other spells that use 
+positive energy automatically fail.
+ Creatures: Creatures for three separate encounters are 
+provided below. Choose a set that corresponds to the average 
+level of the party.
+ Party Level 13th: One marut (MM 159), two dread wraiths 
+(MM  258),  and  four  human  vampire  5th-level  fighters  
+(MM 250).
+ Party Level 14th: As the Party Level 13th version, plus a 
+half-elf vampire monk 9/shadowdancer 4 (MM 251). If you 
+wish, this vampire could be Sashess, once the companion of 
+Tanneth Silverwright.
+ Party Level 15th: Tw o  m a r u t s  (MM 159) plus the vampire 
+described in the Party Level 14th version.
+ Tactics: Regardless of which Encounter Level applies, the 
+tactics for the marut (or maruts) remain the same. The marut 
+periodically activates its air walk and true seeing abilities, and 
+it has already done so when the PCs arrive. With true seeing, it 
+should be able to spot the PCs, and with air walk, it can fi  ght  
+opponents who take to the air.
+Knowledge (religion) 
+DC     Result
+20 Certain places of power allow those with mettle to 
+change themselves in strange and wondrous ways. 
+Rumor holds that in some such places, a person 
+can ignore the plans of the gods and even change 
+his race.
+25  Because the Necrotic Cradle is a place where life 
+and death meet and mix, great changes can be 
+wrought there. A fallen paladin of Heironeous who 
+became a vampire once went to the Necrotic Cradle 
+with several companions seeking to restore himself 
+to life.
+30 The paladin succeeded in his quest, but afterward, 
+he appeared at the Sliver House of Justice—the 
+temple where he had been trained—and sought 
+absolution for some crime.
+     The Necrotic Cradle is located beneath the 
+dead city of Drathmere (or under Tomb Tor in the 
+Deathlands, or any other place you care to put it).
+35 The former vampire was refused atonement because 
+he would not return to the Necrotic Cradle and 
+fight his old companions, who had refused rebirth 
+after he had turned them into vampires. One of 
+these vampires, a half-elf monk named Sashess, is 
+rumored to haunt the lands around the Necrotic 
+Cradle still.
+620_95374_Ch8.indd   204620_95374_Ch8.indd   2042/8/06   4:25:42 PM2/8/06   4:25:42 PM
+
+205
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+    When the marut spots the PCs, it sets up 
+a wall of force along the edge of the abyss to 
+block  access  to  the  Necrotic  Cradle,  then  
+delivers its only warning: “This place is for-
+bidden. Leave now or be destroyed.” If the 
+PCs don’t immediately leave, the marut uses 
+greater  command  and orders them to fl  ee.  
+Those who remain or in any way persist in 
+their efforts to reach the Necrotic Cradle 
+must face the marut’s greater dispel magic, 
+chain lightning, and circle of death abilities, as 
+well as its potent melee attacks. The marut 
+also takes advantage of any opportunities 
+to bull rush PCs into either the Dark Abyss 
+behind it or the Brilliant Abyss within the 
+Necrotic Cradle. If the marut believes it is 
+losing the battle, it uses its earthquake abil-
+ity in hopes of bringing the ceiling down 
+on the PCs (and itself ).
+    The vampires and dread wraiths are all 
+that remain of Tanneth Silverwright’s com-
+panions.  They  wish  to  enter  the  Necrotic  
+Cradle to transform themselves into liches 
+so that they need not fear sunlight, but 
+they haven’t yet been able to get past the 
+guardian. They arrive 1d4 rounds into the 
+PCs’ combat with the marut (or maruts). 
+Hoping that the PCs can distract the marut 
+long enough to allow them entrance, they 
+fl  y across the Dark Abyss during the battle. 
+If the PCs appear to have the upper hand, 
+the vampires and dread wraiths stop long 
+enough to attack them until it looks like 
+the marut has a fighting chance before 
+proceeding on to the Necrotic Cradle.
+The Necrotic Cradle
+Read  or  paraphrase  the  following  when  a  PC  enters  the  
+Necrotic Cradle.
+The interior of the bulbous protrusion is a largely spherical space 
+with  a  huge  rent  in  the  fl  oor  that  echoes  the  black  abyss  outside.  
+This hole, however, is so fi lled with radiant light that it’s diffi cult 
+to look at. Shining white cracks in the stone extend away from the 
+hole, just as night-dark cracks extend from the entrance. Where 
+these cracks meet, they fragment into smaller crevices of light and 
+darkness that swirl around one another in ever-tightening spirals 
+but never actually meet. The largest of these formations lies in the 
+center of the bowllike fl  oor. Fully 15 feet across, this spiral pulsat es 
+with crackling white and black energy. In its center, the two types 
+of cracks actually meet, and the two forces win and lose a thousand 
+battles with each second that passes.
+The light in the Necrotic Cradle causes all creatures inside 
+to become dazzled (no save). Because of all the cracks in the 
+interior, the entire f loor is considered diffi  cult terrain, and 
+the Climb DC for the walls is 12. In addition, any living 
+or undead creature touching the walls or fl oor inside the 
+cradle must make a DC 20 Will save. Success indicates that the 
+creat ure is str uck by energ y (positive energ y i f t he c reat u re  
+is living, or negative energy if it is undead) that heals it of 
+2d8 points of damage. Failure indicates that the creature is 
+struck by the opposite energy type and takes 2d8 points of 
+damage.  The  only  area  that  is  safe  from  this  effect  is  the  
+central spiral of cracks.
+Brilliant Abyss
+The Brilliant Abyss is a planar rupture that leads to the Plane 
+of Positive Energy. Any creature that falls into it drops for 200 
+feet before crossing over into the Plane of Positive Energy. 
+Once there, it has no means of return.
+     Transmutation spells cast within or over the Brilliant Abyss 
+function as i f a f fected by the Heighten Spel l (t wo levels) and 
+Empower Spell feats, and cure spells and other spells that use 
+positive energy are maximized.
+Central Spiral
+Any creature standing in the largest spiral of cracks can 
+rebuild itself. Each round that it remains in contact with 
+The dark energies of the Necrotic Cradle can reshape life itself
+Illus. by M. Komarck
+620_95374_Ch8.indd   205620_95374_Ch8.indd   2052/8/06   4:25:49 PM2/8/06   4:25:49 PM
+
+206
+CHAPTER 8
+REBUILDING YOUR 
+CHARACTER
+the spiral, the creature takes 10 points of damage from 
+whichever type of energy (positive or negative) damages 
+it. Any creature killed by this damage is torn apart by the 
+warring energies and sucked—equipment and all—into 
+the cracks of the spiral. Then the rebuilt creature comes 
+into existence in the same place, with full hit points and 
+all the equipment the previous creature possessed when it 
+was destroyed. If the creature is killed by some means other 
+than positive or negative energ y whi le in contact w ith the 
+central spiral, it dies and does not get the opportunity to 
+rebuild. A creature that is not damaged by either negative 
+energy or positive energy cannot use the Necrotic Cradle 
+to rebuild.
+Returning to the Necrotic Cradle
+If the PCs want to return to the Necrotic Cradle for another 
+rebuild, you have many options. More maruts or other inevi-
+tables might be g uarding it. A lter natively, some new creat ures, 
+such as power ful undead or outsiders, might also have moved 
+in to possess the site.
+     If you don’t want the PCs to use the same rebuild location 
+a second time, you could rule that the Necrotic Cradle works 
+only once for any given creature. Or perhaps some creatures 
+tried to repair the rifts in the plane and nullifi  ed the reforming 
+proper ties of the Necrotic Cradle in the process. A lter natively, 
+one of the two abysses might have won the energy battle, clos-
+ing one side and opening a two-way gate to an energy plane.
+pqqqqqqqqqqqqqqqqqqqqrs
+pqqqqqqqqqqqqqqqqqqqqrs
+OTHER REBUILD QUEST 
+OBJECTIVES
+Here are some other ideas for places the PCs might go to rebuild 
+and the kinds of creatures they might encounter there.
+Bastion of Unborn Souls: Somewhere on the Plane of Positive 
+Energy floats this place of powerful magic from which all souls 
+come and to which gods fear to go. Strange beings made of 
+energy and soulstuff guard it from those who would abuse its 
+power. This location is fully described in the Bastion of Broken 
+Souls adventure.
+    Forge of Remaking: In this strange place, a character must 
+confront himself and defeat his fears or die trying. By doing so, 
+he can change his truename and thus change his being. This 
+location is fully detailed in Tome of Magic.
+Morpheus the Changer: The titan Morpheus has strange 
+powers to reshape others through their dreams. Those who wish 
+his aid must defeat the titan in single combat, because he uses 
+this ability only on those who can best him.
+Seldarine Pool: The magic waters of the Seldarine Pool are in 
+a hidden shrine to the elf gods. Legend holds that washing in 
+the waters of the Seldarine Pool can heal wounds and cure ills, 
+but that drinking from it grants the imbiber the power to alter 
+his being. A tribe of wild elves fiercely guards the pool, killing all 
+who come to it—even other elves.
+Shattershear Cliffs: The winds that rip at someone falling from 
+the Shattershear Cliffs can actually tear a body to pieces and 
+put it back together. Anyone who can make it there, win her way 
+past the guardian beast, leap from the roc’s nest, and somehow 
+survive the fall, can remake herself.
+620_95374_Ch8.indd   206620_95374_Ch8.indd   2062/8/06   4:25:57 PM2/8/06   4:25:57 PM
+
+APPENDIX
+Appendix: Quick PC 
+and NPC Creation
+This section presents quick and easy ways to create characters 
+for both players and DMs. If you’re a fast study and need a 
+relatively low-level character, you can create one in 5 minutes 
+with the system presented here.
+     For ready-to-play 1st-level characters, consult the starting 
+packages presented in Chapters 1 and 2.
+     Creating a character always involves making certain deci-
+sions. Below are the ordered steps to create a character in an 
+effi  cient  manner.
+1. CHOOSE A CLASS
+Character class determines the types of feats you need to 
+select, the magic items your character needs, and many other 
+factors. So the fi  rst decision you need to make is what kind 
+of character you want to create.
+2. DETERMINE 
+ABILIT Y SCORES
+To speed up the process, use the elite ability score array from 
+the Dungeon Master’s Guide. You can either use the suggested 
+ability arrangement for your chosen class or assign the scores 
+as you wish. The elite array gives you scores of 15, 14, 13, 12, 
+10, and 8 to distribute as you wish.
+    Barbarian:    Strength 15, Dexterity 13, Constitution 14, 
+Intelligence 10, Wisdom 12, Charisma 8.
+    Bard:    Strength  10,  Dexterity  14,  Constitution  13,  Intel-
+ligence 12, Wisdom 8, Charisma 15.
+ Beguiler: Strength 8, Dexterity 14, Constitution 12, Intel-
+ligence 15, Wisdom 10, Charisma 13.
+     Cleric:     Strength  12,  Dexterity  8,  Constitution  13,  Intel-
+ligence 10, Wisdom 15, Charisma 14.
+ Dragon Shaman: Strength 15, Dexterity 12, Constitution 
+14, Intelligence 8, Wisdom 10, Charisma 13.
+    Druid:    Strength 10, Dexterity 12, Constitution 14, Intel-
+ligence 8, Wisdom 15, Charisma 13.
+ Duskblade: Strength 15, Dexterity 13, Constitution 12, 
+Intelligence 14, Wisdom 10, Charisma 8.
+ Favored Soul: Strength 14, Dexterity 10, Constitution 12, 
+Intelligence 8, Wisdom 15, Charisma 13.
+     Fighter:     Strength 15, Dexterity 13, Constitution 14, Intel-
+ligence 10, Wisdom 12, Charisma 8.
+ Hexblade: Strength 15, Dexterity 13, Constitution 12, 
+Intelligence 10, Wisdom 8, Charisma 14.
+ Knight: Strength 15, Dexterity 12, Constitution 13, Intel-
+ligence 10, Wisdom 8, Charisma 14.
+ Marshal:  Strength  14,  Dexterity  13,  Constitution  12,  
+Intelligence 10, Wisdom 8, Charisma 15.
+     Monk:     Strength 13, Dexterity 15, Constitution 12, Intel-
+ligence 10, Wisdom 14, Charisma 8.
+     Paladin:     Strength 13, Dexterity 8, Constitution 14, Intel-
+ligence 10, Wisdom 12, Charisma 15.
+    Ranger:    Strength 12, Dexterity 15, Constitution 14, Intel-
+ligence 10, Wisdom 12, Charisma 8.
+    Rogue:    Strength 13, Dexterity 15, Constitution 12, Intel-
+ligence 14, Wisdom 10, Charisma 8.
+ Scout: Strength 14, Dexterity 15, Constitution 12, Intel-
+ligence 10, Wisdom 13, Charisma 8.
+    Sorcerer:    Streng th 8, Dex ter it y 13, Constit ution 14, Intel-
+ligence 12, Wisdom 10, Charisma 15.
+ Swashbuckler: Strength 13, Dexterity 15, Constitution 
+10, Intelligence 14, Wisdom 8, Charisma 12.
+ Wa rl o c k : Strength 8, Dexterity 14, Constitution 13, Intel-
+ligence 12, Wisdom 10, Charisma 15.
+ Wa r m a ge :  Strength 8, Dexterity 13, Constitution 12, 
+Intelligence 14, Wisdom 10, Charisma 15.
+    Wizard: Strength 8, Dexterity 13, Constitution 14, Intel-
+ligence 15, Wisdom 12, Charisma 10.
+    If you are creating a character above 1st level, you might 
+also have attribute bonuses to spend. Your character gains a 
+1-point bonus at 4th, 8th, 12th, 16th, and 20th level. Be sure 
+to spend these points before moving on to the next step, 
+if applicable.
+3. PICK YOUR RACE
+Li ke class, race is pr imar i ly a mat ter of taste or need. If you 
+lack any real preference, choose the race that best matches 
+your chosen character class from Table A–1: Preferred Races 
+by Class. Some entries also mention a second race taken 
+from another supplement; those races in italics have a level 
+adjustment of +1 or higher and thus can’t be used as 1st-
+level characters.
+Table A–1: Preferred Races by Class
+Class                                  Race
+Barbarian                          Half-orc                          (or                          goliath
+1
+)
+Bard                                   Gnome
+Beguiler Half-elf (or changeling
+2
+)
+Cleric                                 Human
+Dragon shaman Human (or dragonborn human
+3
+)
+Druid                                 Elf                                 (or                                 killoren
+4
+)
+Duskblade                         Elf
+Favored soul Human
+Fighter                               Dwarf                               (or                               warforged
+2
+)
+Hexblade                           Human
+Knight                                Human
+Marshal                             Human
+Monk                                 Human                                 (or                                 buomman
+5
+)
+Paladin                              Human                              (or                              aasimar)
+Ranger                               Elf                               (or                               shifter
+2
+)
+Rogue                                Halfl ing (or whisper gnome
+1
+)
+Scout                                 Elf                                 (or                                 raptoran
+4
+)
+Sorcerer                             Human                             (or                             spellscale
+3
+)
+Swashbuckler                    Human                    (or tiefling)
+Warlock                             Human
+Warmage                           Human
+Wizard                               Elf                               (or                               illumian
+6
+)
+1 Races of Stone
+2 Races of Eberron
+3 Races of the Dragon
+4 Races of the Wild
+5 Planar Handbook
+6 Races of Destiny
+207
+620_95374_Ch8.indd   207620_95374_Ch8.indd   2072/8/06   4:26:07 PM2/8/06   4:26:07 PM
+
+208
+APPENDIX
+4. PICK YOUR SKILLS
+Find your character class on Table A–2: Number of Skills by 
+Class to determine how many skills your character can have.
+Table A–2: Number of Skills by Class
+Class Base Number of Skills
+Barbarian 4 + Int mod
+Bard 6 + Int mod
+Beguiler 6 + Int mod
+Cleric 2 + Int mod
+Dragon shaman 2 + Int mod
+Druid 4 + Int mod
+Duskblade 2 + Int mod
+Favored soul 2 + Int mod
+Fighter 2 + Int mod
+Hexblade 2 + Int mod
+Knight 2 + Int mod
+Marshal 4 + Int mod
+Monk 4 + Int mod
+Paladin 2 + Int mod
+Ranger 6 + Int mod
+Rogue 8 + Int mod
+Scout 8 + Int mod
+Sorcerer 2 + Int mod
+Swashbuckler 4 + Int mod
+Warlock 2 + Int mod
+Warmage 2 + Int mod
+Wizard 2 + Int mod
+SKILL PRIORITY LISTS
+Each of the entries below is a list of skills, rated in order from 
+most important to least important for a typical member of 
+the class. Start at the beginning of your class’s skill list and 
+count off the number of skills your character is entitled 
+to based on the information in Table A–2. The character 
+gains each of those skills at the maximum ranks allowed 
+for his level. A human character gains one bonus skill at 
+maximum ranks.
+     For  example,  if  you’re  playing  a  half-orc  barbarian  with  
+an Intelligence score of 8, you are entitled to 4 – 1 = 3 skills. 
+Take the fi rst three skills from the barbarian list (Survival, 
+Listen, and Jump), and spend the maximum ranks allowed 
+for each (character level + 3).
+     Barbarian: Survival (Wis), Listen (Wis), Jump (Str), Climb 
+(Str), Swim (Str), Handle Animal (Cha), Ride (Dex).
+    Bard:    Perform (Cha), Concentration (Con), Use Magic 
+Device (Cha), Bluff (Cha), Diplomacy (Cha), Gather Infor-
+mation (Cha), Intimidate (Cha), Spellcraft (Int), Knowledge 
+(local) (Int), Decipher Script (Int).
+ Beguiler: Hide (Dex), Move Silently (Dex), Spot (Wis), 
+Search (Int), Disable Device (Int), Open Lock (Int), Concen-
+tration (Con), Bluff (Cha), Listen (Wis), Tumble (Dex).
+    Cleric:    Concentration (Con), Heal (Wis), Knowledge 
+(religion) (Int), Diplomacy (Cha), Spellcraft (Int), Knowledge 
+(the planes) (Int).
+ Dragon Shaman: Three ski l ls from totem dragon choice 
+(see  class),  Climb  (Str),  Intimidate  (Cha),  Knowledge  
+(nature) (Int).
+    Druid:    Survival (Wis), Handle Animal (Cha), Spot (Wis), 
+Listen (Wis), Knowledge (nature) (Int), Spellcraft (Int), Ride 
+(Dex), Swim (Str).
+ Duskblade: Concentration (Con), Jump (Str), Spellcraft 
+(Int),  Climb  (Str),  Knowledge  (arcana)  (Int),  Decipher  
+Script (Int).
+ Favored Soul: Concentration (Con), Heal (Wis), Diplo-
+macy (Cha), Sense Motive (Wis), Spellcraft (Int), Knowledge 
+(arcana) (Int).
+     Fighter:     Climb (Str), Jump (Str), Intimidate (Cha), Swim 
+(Str), Ride (Dex), Handle Animal (Cha).
+ Hexblade: Concentration  (Con),  Intimidate  (Cha),  
+Bluff  (Cha),  Spellcraft  (Int),  Knowledge  (arcana)  (Int),  
+Ride (Dex).
+ Knight: Intimidate (Cha), Ride (Dex), Handle Animal 
+(Cha), Knowledge (nobility and royalty (Int), Jump (Str), 
+Climb (Str).
+ Marshal: Diplomacy (Cha), Spot (Wis), Listen (Wis), 
+Intimidate (Cha), Sense Motive (Wis), Knowledge (history) 
+(Int), Swim (Str), Ride (Dex).
+    Monk:    Tumble (Dex), Spot (Wis), Move Silently (Dex), 
+Hide (Dex), Escape Artist (Dex), Climb (Str), Jump (Str), 
+Balance (Dex).
+    Paladin:    Diplomacy (Cha), Ride (Dex), Sense Motive 
+(Wis), Heal (Wis), Concentration (Con), Knowledge (reli-
+gion) (Int).
+    Ranger:    Survival  (Wis),  Hide  (Dex),  Listen  (Wis),  
+Spot (Wis), Handle Animal (Cha), Move Silently (Dex), 
+Knowledge  (geography)  (Int),  Search  (Int),  Jump  (Str),  
+Swim (Str).
+     Rogue:     Hide (Dex), Move Si lently (Dex), Search (Int), Dis-
+able Device (Int), Open Locks (Dex), Sleight of Hand (Dex), 
+Tumble (Dex), Spot (Wis), Listen (Wis), Bluff (Cha), Climb 
+(Str), Escape Artist (Dex).
+ Scout: Hide (Dex), Move Si lently (Dex), Spot (Wis), Search 
+(Int), Disable Device (Int), Listen (Wis), Tumble (Dex), Survival 
+(Wis), Climb (Str), Jump (Str), Knowledge (dungeoneering) 
+(Int), Balance (Dex).
+    Sorcerer:    Concentration (Con), Bluff (Cha), Knowledge 
+(arcana) (Int), Spellcraft (Int), Craft (Int), Profession (Wis).
+ Swashbuckler: Tumble (Dex), Bluff (Cha), Jump (Str), 
+Diplomacy (Cha), Balance (Dex), Escape Artist (Dex), Swim 
+(Str), Sense Motive (Wis).
+ Wa rl o c k : Concentration (Con), Use Magic Device (Cha), 
+Bluff (Cha), Spellcraft (Int), Intimidate (Cha), Knowledge 
+(arcana) (Int).
+ Wa r m a ge : Concentration (Con), Spellcraft (Int), Intimi-
+date (Cha), Knowledge (arcana) (Int), Knowledge (history) 
+(Int), Craft (Int).
+    Wizard:    Concentration (Con), Spellcraft (Int), Decipher 
+Script (Int), Knowledge (arcana) (Int), Knowledge (the planes) 
+(Int), Knowledge (dungeoneering) (Int).
+5. PICK YOUR FEATS
+In many ways, your character’s feats defi  ne his basic abilities 
+and talents. The following feat progressions map out appro-
+priate selections from 1st to 20th level. The “H” entry in the 
+tables represents a human’s bonus feat, and the numbers 
+represent the levels at which a character of that type would 
+gain a feat in question. 
+620_95374_Ch8.indd   208620_95374_Ch8.indd   2082/8/06   4:26:14 PM2/8/06   4:26:14 PM
+
+209
+APPENDIX
+     To use this table, fi  nd the number of feats your character is 
+entitled to, then start at the beginning of the chosen progres-
+sion and take that number of feats. If your character is not 
+human, you can still start with the feat labeled “H,” but this 
+often isn’t necessary.
+     For example, a 7th-level half-orc barbarian has three feats. 
+If you’re using the destroyer progression, you would need to 
+take the “H” feat, Power Attack, since that feat is a prerequisite 
+for Cleave.
+    Some of the progressions require certain ability scores 
+to  meet  their  prerequisites.  After  you  choose  the  feat  
+progression you want, check the prerequisites and be sure 
+to fulfi  l l them, even i f you have to go back and change your 
+character’s attributes to match the requirements. In some 
+cases, you must also buy ranks in certain skills to qualify 
+for a particular feat progression. In this case, make sure 
+you  purchased  the  relevant  skills  when  you  spent  your  
+character’s skill ranks in step 4 (or go back and change your 
+skill choices).
+    Most of the feats in these progressions are found in the 
+Player’s Handbook or in this book (those marked with an 
+asterisk). Any class appearing in a book other than the Player’s 
+Handbook might mention some feats from another book 
+(usually the supplement in which the class appeared).
+Table A–3: Feat Progressions by Party Role
+Barbarian
+                Destroyer                Hunter                Whirlwind
+H Power Attack Track Two-Weapon Fighting
+1st Cleave Weapon Focus (any two-handed) Weapon Focus (kukri)
+3rd Mad Foam Rager* Trophy Collector* Skill Focus (Tumble)
+6th Weapon Focus (greataxe) Combat Focus* Two-Weapon Pounce*
+9th Improved Critical (greataxe) Blind-Fight Improved Critical (kukri)
+12th Improved Sunder Combat Vigor* Improved Two-Weapon Fighting
+15th Defensive Sweep* Combat Awareness* Two-Weapon Rend*
+18th Overwhelming Assault* Flay* Greater Two-Weapon Fighting
+Bard
+ Controller                                                     Problem                                                     Solver                                                     Vanguard
+H Skill Focus (Perform) Skill Focus (Use Magic Device) Still Spell
+1st Negotiator Arcane Flourish* Combat Expertise
+3rd Wanderer’s Diplomacy* Magical Aptitude Exotic Weapon Proficiency
+       (spiked chain)
+6th Combat Panache* Battle Dancer* Improved Trip
+9th Master Manipulator* Arcane Accompaniment* Improved Disarm
+12th Spell Focus (enchantment) Improved Initiative Combat Refl exes
+15th Improved Feint Combat Reflexes Weapon Focus (spiked chain)
+18th Fade into Violence* Vexing Flanker* Power Attack
+Beguiler
+                Controller                Investigator                Trickster
+H Spell Focus (enchantment) Spell Focus (enchantment) Spell Focus (illusion)
+1st Improved Initiative Stealthy Combat Expertise
+3rd Greater Spell Focus (enchantment) Wanderer’s Diplomacy* Improved Feint
+5th† Silent Spell Silent Spell Silent Spell
+6th Arcane Thesis* Quick Draw Fade into Violence*
+9th Spell Penetration Eschew Materials Acrobatic Strike*
+10th† Still Spell Still Spell Still Spell
+12th Heighten Spell Weapon Finesse Shadow Striker*
+15th Scribe Scroll Spell Penetration Spell Penetration
+18th Greater Spell Penetration Greater Spell Focus (enchantment) Greater Spell Focus (illusion)
+Cleric
+                Defender                Destroyer                Healer
+H Extra Turning Extra Turning Combat Casting
+1st Improved Turning Divine Justice* Sacred Healing*
+3rd Iron Will Weapon Focus (any) Divine Ward*
+6th Spell Focus (evocation) Divine Armor* Extra Turning
+9th Sacred Radiance* Smiting Spell* Brew Potion
+12th Combat Casting Power Attack Sacred Purifi cation*
+15th Tower Shield Proficiency Combat Casting Quicken Spell
+18th Lunging Strike* Armor Specialization* (heavy) Extra Turning
+620_95374_Ch8.indd   209620_95374_Ch8.indd   2092/8/06   4:26:21 PM2/8/06   4:26:21 PM
+
+210
+APPENDIX
+Table A–3: Feat Progressions by Party Role (cont.)
+Dragon Shaman
+                Defender                Destroyer                Second-Rank                Warrior
+H Armor Proficiency (heavy) Power Attack Combat Reflexes
+1st Shield Specialization* (heavy) Cleave Power Attack
+2nd† Skill Focus Skill Focus Skill Focus
+3rd Shield Ward* Weapon Focus (morningstar) Weapon Focus (longspear)
+6th Active Shield Defense* Ability Focus
+1
+ (breath weapon) Hindering Opportunist*
+8th† Skill Focus Skill Focus Skill Focus
+9th Improved Natural Armor
+1
+ Brutal Strike* Short Haft*
+12th Weapon Focus (morningstar) Improved Critical (morningstar) Lunging Strike*
+15th Blind-Fight Improved Sunder Stalwart Defense*
+16th† Skill Focus Skill Focus Skill Focus
+18th Armor Specialization* (heavy) Shield Specialization* (heavy) Improved Critical (longspear)
+† Bonus feat; see page 13 for options.
+1 See Monster Manual, page 303.
+Druid
+                Beastmaster                Feral                Beast                Warden
+H Animal Affinity Combat Casting Spell Focus (conjuration)
+1st Companion Spellbond* Alertness Augment Summoning
+3rd Combat Casting Keen-Eared Scout* Shield Specialization* (heavy)
+6th           Combat           Refl exes Natural Spell Extend Spell
+9th Empower Spell Improved Natural Attack (any)
+1
+            Imbued            Summoning*
+12th Quicken Spell Power Attack Shield Ward*
+15th         Vexing         Flanker*         Flay*         Spell         Penetration
+18th Extend Spell Improved Bull Rush Armor Specialization* (medium)
+1 See Monster Manual, page 304.
+Duskblade
+                Blaster                Defender                Skirmisher
+H Weapon Focus (ranged spell) Toughness Weapon Focus (any one-handed)
+1st Point Blank Shot Combat Expertise Dodge
+2nd† Combat Casting Combat Casting Combat Casting
+3rd Precise Shot Arcane Toughness* Mobility
+6th Empower Spell Shield Specialization* (heavy) Spring Attack
+9th Improved Critical (ranged spell) Shield Ward* Improved Critical (any one-handed)
+12th Improved Precise Shot Armor Specialization* (medium) Combat Tactician*
+15th Spell Penetration Craft Magic Arms and Armor Combat Expertise
+18th Greater Spell Penetration Weapon Focus (longsword) Whirlwind Attack
+† Bonus feat.
+Favored Soul
+                Defender                Healer                Vanguard
+H Armor Proficiency (heavy) Spontaneous Healer
+1
+                             Combat                             Focus*
+1st Shield Specialization* (heavy) Augment Healing
+1
+                                  Combat                                  Casting
+3rd Weapon Focus† Weapon Focus† Weapon Focus†
+3rd Shield Ward* Combat Casting Power Attack
+6th Combat Focus* Brew Potion Cleave
+9th Active Shield Defense* Craft Wand Craft Magic Arms and Armor
+12th Weapon Specialization† Weapon Specialization† Weapon Specialization†
+12th Combat Vigor* Scribe Scroll Combat Vigor*
+15th         Blind-Fight         Reach         Spell
+1
+ Improved Critical (deity’s
+       favored weapon)
+18th Combat Awareness* Flyby Attack Armor Specialization*
+† Bonus feat; applies to deity’s favored weapon.
+1 See Complete Divine.
+620_95374_Ch8.indd   210620_95374_Ch8.indd   2102/8/06   4:26:27 PM2/8/06   4:26:27 PM
+
+211
+APPENDIX
+Table A–3: Feat Progressions by Party Role (cont.)
+Fighter
+                Archer                Defender                Destroyer
+H Point Blank Shot Blind-Fight Power Attack
+1st Precise Shot Iron Will Cleave
+1st† Weapon Focus (longbow) Weapon Focus (longsword) Weapon Focus (greatsword)
+2nd† Rapid Shot Shield Specialization* (heavy) Flay*
+3rd Dodge Combat Reflexes Improved Sunder
+4th† Weapon Specialization (longbow) Weapon Specialization (longsword)    Weapon Specialization
+       (greatsword)
+6th           Mobility           Shield           Ward*           Iron           Will
+6th† Shot on the Run Combat Expertise Improved Bull Rush
+8th† Greater Weapon Focus (longbow) Greater Weapon Focus (longsword)    Greater Weapon Focus 
+       (greatsword)
+9th Ranged Weapon Mastery* (piercing) Melee Weapon Mastery* (slashing)     Melee Weapon Mastery* (slashing)
+10th† Manyshot Improved Disarm Improved Critical (greatsword)
+12th Armor Specialization* (medium) Armor Specialization* (heavy) Armor Specialization* (heavy)
+12th† Greater Weapon Specialization Greater Weapon Specialization Greater Weapon Specialization
+     (longbow)     (longsword)     (greatsword)
+14th† Improved Precise Shot Vexing Flanker* Slashing Flurry*
+15th Improved Critical (longbow) Defensive Sweep* Overwhelming Assault*
+16th† Improved Initiative Power Attack Intimidating Strike
+18th† Quick Draw Improved Initiative Improved Initiative
+18th Weapon Supremacy* (longbow) Weapon Supremacy* (longsword) Weapon Supremacy* (greatsword)
+20th† Penetrating Shot* Robilar’s Gambit* Cometary Collision*
+† Bonus feat.
+Hexblade
+                Defender                Destroyer                Skirmisher
+H             Ability             Focus
+1
+ (hexblade’s curse) Power Attack Ability Focus
+1
+ (hexblade’s curse)
+1st           Armor           Profi           ciency           (medium)           Cleave           Dodge
+3rd           Battle           Caster
+2
+ Weapon Focus (any two-handed) Mobility
+5th† Spell Focus (necromancy) Combat Casting Spell Focus (enchantment)
+6th Combat Casting Power Critical Spring Attack
+9th          Practiced          Spellcaster
+2
+ Improved Critical (any two-handed Dash
+3
+      weapon)
+10th† Greater Spell Focus (necromancy) Spell Focus (necromancy) Greater Spell Focus (enchantment)
+12th Armor Specialization (medium) Power Critical
+3
+                                        Bounding                                        Assault*
+15th         Ex tra         Slot
+2
+ (3rd) Improved Toughness
+3
+                            Elusive                            Target
+3
+15th† Spell Penetration Greater Spell Focus (necromancy) Spell Penetration
+18th         Extra         Spell
+2
+ (3rd) Defensive Sweep* Rapid Blitz*
+20th† Greater Spell Penetration Spell Penetration Greater Spell Penetration
+†Bonus feat.
+1 See Monster Manual, page 303.
+2 See Complete Arcane.
+3 See Complete Warrior.
+Knight
+                Cavalier                Defender                Destroyer
+H Skill Focus (Ride) Shield Specialization* (heavy) Power Attack
+1st Mounted Combat Weapon Focus (any one-handed) Cleave
+2nd† Weapon Focus (lance) Mounted Combat Mounted Combat
+3rd Shield Specialization* (heavy) Shield Ward* Improved Bull Rush
+5th†        Ride-By        Attack        Endurance        Endurance
+6th Short Haft* Ability Focus
+1
+ (test of mettle) Weapon Focus (any one-handed)
+9th Improved Critical (lance) Improved Critical (any one-handed Cometary Collision*
+      weapon)
+10th†      Spirited      Charge      Diehard      Diehard
+12th Armor Specialization* (heavy) Armor Specialization* (heavy) Ability Focus
+1
+ (daunting challenge)
+15th† Trample Iron Will Great Fortitude
+15th Power Attack Indomitable Soul* Steadfast Determination* 
+18th Lunging Strike* Defensive Sweep* Armor Specialization* (heavy)
+† Bonus feat.
+1 See Monster Manual, page 303.
+620_95374_Ch8.indd   211620_95374_Ch8.indd   2112/8/06   4:26:34 PM2/8/06   4:26:34 PM
+
+212
+APPENDIX
+Table A–3: Feat Progressions by Party Role (cont.)
+Marshal
+                Defender                Second-Rank                Warrior                Vanguard
+H Shield Specialization* (heavy) Combat Reflexes Improved Initiative
+1st Shield Ward* Deft Opportunist
+1
+                                  Battlefi                                  eld                                  Inspiration
+1
+1st
+2
+ Skill Focus (Diplomacy) Skill Focus (Diplomacy) Skill Focus (Diplomacy)
+3rd Armor Profi ciency (heavy) Weapon Focus (reach weapon) Weapon Focus (any)
+6th          Goad
+1
+                                                           Hindering                                                           Opportunist*                                                           Intimidating                                                           Strike*
+9th          Shieldmate
+1
+                                                  Short                                                  Haft*                                                  Endurance
+12th         Blind-Fight         Distracting         Attack
+1
+                                 Diehard
+15th Combat Expertise Stalwart Defense* Daunting Presence
+1
+18th Armor Specialization* (heavy) Lunging Strike* Overwhelming Assault*
+1 From Miniatures Handbook.
+2 Bonus feat.
+Monk
+                Defender                Destroyer                Skirmisher
+H Combat Focus* Improved Natural Attack Improved Initiative
+1st† Stunning Fist Improved Grapple Stunning Fist
+1st Dodge Weapon Focus (unarmed strike) Ability Focus
+1
+ (stunning fist)
+2nd†       Defl ect Arrows Combat Refl exes Defl ect Arrows
+3rd Versatile Unarmed Strike* Power Attack Dodge
+6th† Improved Trip Improved Trip Improved Disarm
+6th Leap of the Heavens* Improved Bull Rush Mobility
+9th Combat Defense* Improved Overrun Spring Attack
+12th Combat Vigor* Cleave Weapon Focus (unarmed strike)
+15th Fiery Fist* Improved Sunder Blind-Fight
+18th Fiery Ki Defense* Great Cleave Improved Critical (unarmed strike)
+1 See Monster Manual, page 303.
+† Bonus feat.
+Paladin
+                Cavalier                Destroyer                Vanguard
+H Mounted Combat Power Attack Improved Initiative
+1st Ride-By Attack Weapon Focus (any two-handed) Shield Specialization* (heavy)
+3rd Mounted Archery Extra Turning Combat Focus*
+6th Spirited Charge Divine Justice* Ritual Blessing*
+9th Trample Improved Critical (any two-handed Combat Vigor*
+      weapon)
+12th Power Attack Divine Armor* Sacred Purifi cation*
+15th Improved Critical (lance) Improved Sunder Sacred Radiance*
+18th Shield Specialization* (heavy) Divine Fortune* Shield Ward*
+Ranger
+                Archer                Hunter                Skirmisher
+H Point Blank Shot Blind-Fight Dodge
+1st           Precise           Shot           Alertness           Mobility
+1st †         Track         Track         Track
+2nd† Rapid Shot Rapid Shot or Two-Weapon Fighting    Two-Weapon Fighting
+3rd Weapon Focus (longbow) Keen-Eared Scout* Combat Reflexes
+6th Dodge Combat Focus* Spring Attack
+9th Mobility Combat Vigor* Shadow Striker*
+12th Improved Initiative Combat Awareness* Two-Weapon Pounce*
+15th Shot on the Run Weapon Focus (longbow) Two-Weapon Rend*
+18th Far Shot Combat Strike* Improved Critical (short sword)
+† Bonus feat.
+620_95374_Ch8.indd   212620_95374_Ch8.indd   2122/8/06   4:26:40 PM2/8/06   4:26:40 PM
+
+213
+APPENDIX
+Table A–3: Feat Progressions by Party Role (cont.)
+Rogue
+                Archer                Duelist                Explorer
+H Point Blank Shot Combat Expertise Alertness
+1st Precise Shot Improved Feint Combat Refl exes
+3rd           Rapid           Reload           Weapon           Finesse           Vexing           Flanker*
+6th           Deadeye           Shot*           Tumbling           Feint*           Adaptable           Flanker*
+9th Rapid Shot Improved Initiative Acrobatic Strike*
+12th Crossbow Sniper* Einhander* Shadow Striker*
+15th Weapon Focus (light crossbow) Dodge Keen-Eared Scout*
+18th Improved Precise Shot Combat Cloak Expert* Spectral Skirmisher*
+Scout
+                Archer                Hunter                Skirmisher
+H Point Blank Shot Track Dodge
+1st Precise Shot Alertness Two-Weapon Fighting
+3rd Weapon Focus (shortbow) Keen-Eared Scout* Weapon Focus (short sword)
+4th† Dodge Skill Focus (Survival) Mobility
+6th Mobility Point Blank Shot Two-Weapon Defense
+8th† Shot on the Run Brachiation
+1
+                                            Spring                                            Attack
+9th Improved Initiative Precise Shot Two-Weapon Pounce*
+12th† Quick Draw Improved Initiative Quick Draw
+12th Improved Critical (shortbow) Weapon Focus (shortbow) Improved Two-Weapon Fighting
+15th Telling Blow* Deadeye Shot* Dual Strike
+1
+16th†      Danger      Sense
+1
+                                             Blind-Fight                                              Blind-Fight
+18th Improved Precise Shot Improved Critical (shortbow) Telling Blow*
+20th†      Quick      Reconnoiter
+1
+ Danger Sense Improved Initiative 
+† Bonus feat.
+1 See Complete Adventurer.
+Sorcerer
+ Battle Mage Blaster Infernal Summoner
+H Toughness Lightning Reflexes Infernal Sorcerer Heritage*
+1st Bonded Familiar* Spell Focus (evocation) Infernal Sorcerer Howl*
+3rd Improved Counterspell Greater Spell Focus (evocation) Spell Focus (conjuration)
+6th Arcane Toughness* Spell Penetration Augment Summoning
+9th Spell-Linked Familiar* Blistering Spell* Imbued Summoning*
+12th Dampen Spell* Greater Spell Penetration Infernal Sorcerer Eyes*
+15th Combat Familiar* Empower Spell Infernal Sorcerer Resistance*
+18th Lurking Familiar* Widen Spell Extend Spell
+Swashbuckler
+                Destroyer                Duelist                Skirmisher
+H Weapon Focus (short sword) Weapon Focus (rapier) Dodge
+1st† Weapon Finesse Weapon Finesse Weapon Finesse
+1st Two-Weapon Fighting Combat Expertise Mobility
+3rd Two-Weapon Defense Improved Feint Dash
+1
+6th Improved Two-Weapon Fighting Dodge Spring Attack
+9th Two-Weapon Pounce* Melee Evasion* Combat Acrobat*
+12th Improved Two-Weapon Defense
+1
+               Improved               Disarm               Bounding               Assault*
+15th Greater Two-Weapon Fighting Tumbling Feint* Combat Tactician*
+18th Two-Weapon Rend* Combat Cloak Expert* Rapid Blitz*
+† Bonus feat.
+1 See Complete Warrior.
+620_95374_Ch8.indd   213620_95374_Ch8.indd   2132/8/06   4:26:46 PM2/8/06   4:26:46 PM
+
+214
+APPENDIX
+6. MISCELLANEOUS 
+CHARACTERISTICS
+Select your character’s name, gender, age, height, weight, 
+alignment, and personality. You can roll randomly for age, 
+height, and weight, or just select the averages, as described 
+in the Player’s Handbook (see Vital Statistics, page 109). If 
+you don’t want to worry about which alignment to pick, 
+make your character neutral good and she’ll get along with 
+most people.
+    If you have some ideas for your character’s personality, 
+this is the time to solidify them and perhaps jot down a few 
+notes.  You  might  determine  her  random  personality  traits  
+by rolling on the tables on page 221.
+     If you have trouble choosing a name, the Player’s Handbook 
+offers  examples  for  each  race,  and  many  random  name  
+generators exist online. You could also take the name of a 
+character from a book or a movie and change a couple of 
+letters or a syllable.
+Table A–3: Feat Progressions by Party Role (cont.)
+Warlock
+ Blaster                                                          Controller                                                          Problem                                                          Solver
+H Point Blank Shot Necropolis Born
+1
+ Skill Focus (Use Magic Device)
+1st Precise Shot Intimidating Strike* Communicator
+1
+3rd Weapon Focus (ranged spell) Ability Focus
+2
+ (eldritch blast) Spell Hand
+1
+6th Point Blank Shot Sudden Extend
+1
+                                      Ranged                                      Spell                                      Specialization
+1
+9th Spell Penetration Precise Shot Extra Invocation
+1
+ (least)
+12th Maximize Spell-Like Ability
+1
+                       Extra                       Invocation
+1
+ (lesser) Extra Invocation
+1
+ (lesser)
+     (eldritch blast)
+15th Quicken Spell-Like Ability
+2
+ Quicken Spell-Like Ability
+2
+                    Spell                    Penetration
+     (eldritch blast)     (eldritch blast)
+18th         Ability         Focus
+2
+ (eldritch blast) Extra Invocation
+1
+ (greater) Extra Invocation
+1
+ (greater)
+1 See Complete Arcane.
+2 See Monster Manual, page 303.
+Warmage
+                Battle                Mage                Blaster                Sharpshooter
+H             Battle             Caster
+1
+ Lightning Reflexes Point Blank Shot
+1st Toughness Spell Focus (evocation) Precise Shot
+3rd Weapon Finesse Greater Spell Focus (evocation) Weapon Focus (ranged spell)
+6th Arcane Toughness* Extra Edge
+1
+                                             Ranged                                             Spell                                             Specialization
+1
+7th†        Sudden        Empower
+1
+                                       Sudden                                       Empower
+1
+                                 Sudden                                 Empower
+1
+9th Armor Profi ciency (heavy) Spell Penetration Spell Penetration
+10th†      Sudden      Enlarge
+1
+                                          Sudden                                          Enlarge
+1
+                                     Sudden                                     Enlarge
+1
+12th         E x tra         Edge
+1
+ Greater Spell Penetration Split Ray
+1
+15th†      Sudden      Widen
+1
+                                            Sudden                                            Widen
+1
+                                      Sudden                                      Widen
+1
+15th Lunging Strike* Arcane Mastery
+1
+                                     Extra                                     Slot
+1
+ (6th)
+18th         Twin         Spell
+1
+                                                   Repeat                                                   Spell
+1
+ Improved Critical (ranged spell)
+20th†      Sudden      Maximize
+1
+                                      Sudden                                      Maximize
+1
+                                 Sudden                                 Maximize
+1
+1 See Complete Arcane.
+Wizard
+                Blaster                Controller                Problem                Solver
+H Combat Casting Spell Focus (enchantment) Combat Familiar*
+1st† Scribe Scroll Scribe Scroll Scribe Scroll
+1st Spell Focus (evocation) Greater Spell Focus (enchantment) Grenadier*
+3rd Spell Penetration Spell Penetration Mad Alchemist*
+5th† Craft Wand Heighten Spell Brew Potion
+6th Arcane Toughness* Improved Counterspell Craft Wondrous Item
+9th Precise Shot Dampen Spell* Spell-Linked Familiar*
+10th† Empower Spell Silent Spell Craft Wand
+12th Craft Staff Spell Penetration Eschew Materials
+15th† Maximize Spell Craft Staff Extend Spell
+15th Greater Spell Penetration Improved Initiative Elven Spell Lore*
+18th Arcane Thesis* Greater Spell Penetration Spell Penetration
+20th† Quicken Spell Quicken Spell Quicken Spell
+† Bonus feat.
+620_95374_Ch8.indd   214620_95374_Ch8.indd   2142/8/06   4:26:53 PM2/8/06   4:26:53 PM
+
+215
+APPENDIX
+7. CHOOSE EQUIPMENT
+Purchasing equipment can prove to be a long, involved 
+task. To help you get started, this section presents sample 
+equipment  sets  for  NPCs  from  1st  to  20th  level.  Each  set  
+includes a basic weapon, armor, and other items appropri-
+ate for a particular character class, complete with their gold 
+piece values. If you need to create an NPC, you can simply 
+take the indicated gear and spend the excess gold on scrolls, 
+wands, potions, and other consumable items. If you want 
+to tinker with the equipment on the list, you can easily 
+swap out individual items for others based on their gold 
+piece values.
+    At most levels, PCs have much higher budgets for equip-
+ment than NPCs do. So when you make a player character, 
+use  the  NPC  equipment  lists  as  a  starting  point.  The  NPC  
+package provides the basic necessities your character needs to 
+function. From there, you can expand your character’s equip-
+ment to fi  t his specifi  c needs, investing the excess money in 
+better weapons or armor, or a variety of powerful, wondrous 
+items. See Table A–5: PC Remaining Budget by Level to see 
+how your PC’s wealth compares to the gear available to an 
+NPC of your level.
+     If  you  are  in  a  rush,  just  purchase  a  few  expensive  
+items to supplement the NPC gear. For a fighter or simi-
+lar character, buy a second weapon with the maximum 
+enhancement bonus you can afford. Use it as your primary 
+weapon if it is better than the one in the NPC package 
+(perhaps  trading  in  the  weapon  from  the  NPC  package  
+for another useful item).
+    Potions are useful to any character, and if you’re playing 
+a  spellcaster,  wands  and  scrolls  can  fi ll any gaps in your 
+character’s spell lists. Knock, see invisibility, and similar spells 
+are useful in certain situations, but they lack the overall 
+utility to make them worth preparing.
+ 1st-Level Cha racters: Beginning characters are a special 
+case because they don’t have wealth comparable to 1st-level 
+NPCs. To equip a 1st-level PC quickly, consult the starting 
+packages for your class in Chapter 1 or 2.
+Table A–4: PC and NPC Wealth by Level
+ Character Level NPC Wealth PC Wealth
+           1st           900           gp           Varies           by           class
+ 2nd 2,000 gp 900 gp
+ 3rd 2,500 gp 2,700 gp
+ 4th 3,300 gp 5,400 gp
+ 5th 4,300 gp 9,000 gp
+ 6th 5,600 gp 13,000 gp
+ 7th 7,200 gp 19,000 gp
+ 8th 9,400 gp 27,000 gp
+ 9th 12,000 gp 36,000 gp
+ 10th 16,000 gp 49,000 gp
+ 11th 21,000 gp 66,000 gp
+ 12th 27,000 gp 88,000 gp
+ 13th 35,000 gp 110,000 gp
+ 14th 45,000 gp 150,000 gp
+ 15th 59,000 gp 200,000 gp
+ 16th 77,000 gp 260,000 gp
+ 17th 100,000 gp 340,000 gp
+ 18th 130,000 gp 440,000 gp
+ 19th 170,000 gp 580,000 gp
+ 20th 220,000 gp 760,000 gp
+Table A–5: PC Remaining Budget by Level
+Character Level Budget
+  1st —
+  2nd Use 1st-level NPC*
+  3rd 200 gp
+  4th 2,100 gp
+  5th 4,700 gp
+  6th 7,400 gp
+  7th 11,800 gp
+  8th 17,600 gp
+  9th 24,000 gp
+10th                               33,000                               gp
+11th                                45,000                                gp
+12th                               61,000                               gp
+13th                               75,000                               gp
+14th                               105,000                               gp
+15th                               141,000                               gp
+16th                               183,000                               gp
+17th                               240,000                               gp
+18th                               310,000                               gp
+19th                               410,000                               gp
+20th                               540,000                               gp
+*1st-level NPCs and 2nd-level PCs have identical 900-gp 
+budgets for gear.
+A LA CARTE SHOPPING
+If you prefer to star t from scratch, or i f you need g uidance on 
+how to spend your excess cash after acquiring an NPC gear 
+package, the following steps can help you focus your search 
+for cool items that will help your character survive. (The 
+rapid character creation process described in this appendix 
+uses this method.)
+    1. Buy standard adventuring necessities.
+    2. Buy the weapon you want (or two, if that fits your 
+character).
+     3. Buy the best armor you can afford with your remain-
+ing gold.
+     4. Buy ability enhancers (low-level characters can skip 
+this step).
+     5. Buy miscellaneous equipment (low-level characters can 
+skip this step).
+    6. Save any money left over.
+     1.  Every  character  should  own  the  necessities  of  
+dungeon delving. The standard adventurer’s kit costs 15 
+gp and includes a backpack, a belt pouch, a bedroll, fl  int  and  
+steel, two sunrods, ten days worth of trail rations, 50 feet 
+of hempen rope, and a waterskin (the bedroll is free as part 
+of the package deal). The individual prices of these items, 
+along with a few others of use to certain character classes, 
+are given in the table below. If you can’t afford the whole 
+adventurer’s kit, you can simply drop items from it until it 
+fi  ts your budget. If you want any of the optional items, you 
+must pay for those separately.
+     You need an additional piece of equipment i f you’re a cler ic 
+(a holy symbol for 1 gp); a beguiler, rogue, or scout (thieves’ 
+tools for 30 g p); or a wizard (spellbook for 15 g p, assuming it 
+contains the minimum number of spells known). If you’re a 
+spellcaster of any kind, you probably want a spell component 
+pouch (for 5 gp) as well.
+620_95374_Ch8.indd   215620_95374_Ch8.indd   2152/8/06   4:26:59 PM2/8/06   4:26:59 PM
+
+216
+APPENDIX
+Table A–6: Necessities
+Standard Adventurer’s Kit (15 gp)
+   Backpack   2   gp
+   Belt pouch 1 gp
+   Bedroll   1   sp
+   Flint and steel 1 gp
+   Hempen rope (50 ft.) 1 gp
+   Sunrods   (2)   4   gp
+   Trail rations (10 days) 5 gp
+   Waterskin   1   gp
+Optional Items
+   Holy symbol 1 gp
+   Spell component pouch 5 gp
+   Spellbook   15   gp
+   Thieves’ tools 30 gp
+     2. Buy Weapon: Unless you’re playing a sorcerer or wizard, 
+spend about half of your wealth on the most expensive melee 
+or ranged weapon available, depending on whether you prefer 
+melee or ranged combat. First, choose which weapon you 
+want to use—morningstar, bastard sword, longbow, or the 
+like. (Use the suggestions above for equipment and starting 
+packages if you wish.) Make it masterwork (+300 gp, or +300 
+gp per side if it’s a double weapon). If the weapon is a longbow 
+or shortbow, make it composite, adding a strength rating equal 
+to your character’s Strength bonus (+100 gp per plus). Next, 
+make the weapon magic, giving it an enhancement bonus on 
+attack and damage rolls. The applicable costs are summarized 
+on Table A–7: Weapon Enhancement Bonuses.
+Table A–7: Weapon Enhancement Bonuses
+Enhancement Bonus Cost
++1                                        2,000                                        gp
++2                                        8,000                                        gp
++3                                      18,000                                      gp
++4                                      32,000                                      gp
++5                                      50,000                                      gp
++6*                                   72,000                                   gp
++7*                                    98,000                                    gp
++8*                                  128,000                                  gp
++9*                                  162,000                                  gp
++10*                               200,000                               gp
+*A weapon cannot have an enhancement bonus above 
++5 unless it is epic; instead, the weapon has one or more 
+special properties. See DMG 223.
+If you’re playing a sorcerer or wizard, you’ll want to spend a 
+good chunk of money on a wand, staff, and/or ability-enhanc-
+ing item (a headband of intellect or cloak of Charisma) instead of 
+buying an expensive weapon. (See Buy Ability Enhancers, 
+below, for more information.)
+     3.     Buy     Armor:     If your character wears armor, spend a hefty 
+portion (maybe three-quarters) of your remaining funds on 
+armor. Include a shield if you use one.
+    You want the best armor with which the character is 
+proficient—namely full plate armor if he can wear heavy 
+armor (go with banded mail if you can’t afford full plate 
+armor), a breastplate if medium armor is the heaviest he can 
+wear, or a chain shirt if he can wear only light armor. Buy 
+the armor, then make it masterwork (+150 gp). Next, make 
+the armor magic, giving it an enhancement bonus to AC. 
+The applicable costs are summarized on Table A–8: Armor 
+Enhancement Bonuses.
+Table A–8: Armor Enhancement Bonuses
+Enhancement Bonus Cost
++1                                        1,000                                        gp
++2                                        4,000                                        gp
++3                                        9,000                                        gp
++4                                      16,000                                      gp
++5                                      25,000                                      gp
++6*                                   36,000                                   gp
++7*                                    49,000                                    gp
++8*                                   64,000                                   gp
++9*                                    81,000                                    gp
++10*                                100,000                                gp
+*A suit of armor or shield cannot have an enhancement 
+bonus above +5 unless it is epic; instead, the armor has 
+one or more special properties. See DMG 217.
+    If your character is a sorcerer, monk, wizard, or other 
+character who doesn’t wear armor, spend some gold on other 
+defensive items instead. Bracers of armor are a good choice, and 
+you might supplement these with a ring of protection and/or an 
+amulet of natural armor. A cloak of displacement is an excellent 
+choice if you can afford it, and a ring of invisibility is one of 
+the best protection items around.
+     4. Buy Ability Enhancers: You should have about 25–30% 
+of your starting gold left now. You have many options avail-
+able for spending that cash—the Dungeon Master’s Guide has 
+a truly prodigious selection of magic items, and other books 
+add even more to this list. For simplicity and speed, however, 
+it ’s best to spend this gold on abi l it y enhancers. Your options 
+are gauntlets of ogre power, belt of giant strength (Strength), gloves 
+of Dex ter ity, amulet of health (Constitution), headband of intellect 
+(Intelligence), periapt of Wisdom, and cloak of Charisma.
+ Decide  which  ability  scores  are  most  important  to  you  
+and buy items that provide enhancement bonuses to these 
+abi l ities. Each item adds a +2 (for 4,0 0 0 g p), + 4 (for 16,0 0 0 g p), 
+or +6 (for 36,000 gp) enhancement bonus to the appropriate 
+ability score. The only exceptions are gauntlets of ogre power, 
+which offer only a +2 enhancement bonus to Strength, and 
+the belt of giant strength, which gives a +4 or +6 enhancement 
+bonus to Strength.
+     If you are creating an extremely high-level character, spend 
+some  cash  on  inherent  ability  bonuses  (which  you  can  get  
+from manuals of bodily health and the like). Inherent bonuses 
+cost 27,500 gp for each +1, and your character can have up to 
+a +5 inherent bonus on any ability score.
+     5. Buy Miscellaneous Equipment: Spend the rest of 
+your gold on some minor magic trinkets. A cloak of resistance 
+provides a +1 resistance bonus on saving throws for 1,000 
+gp, +2 for 4,000 gp, +3 for 9,000 gp, +4 for 16,000 gp, or +5 
+for 25,000 gp. A few potions of cure wounds are also in order, 
+since restoration of lost hit points is good for everyone. You 
+can buy a potion of cure light wounds (restores 1d8+1 hit points) 
+for 50 gp, a potion of cure moderate wounds (restores 2d8+3 
+hp) for 300 gp, and a potion of cure serious wounds (restores 
+3d8+5 hp) for 750 gp. If you’re playing a spellcaster, pick 
+620_95374_Ch8.indd   216620_95374_Ch8.indd   2162/8/06   4:27:06 PM2/8/06   4:27:06 PM
+
+217
+APPENDIX
+up a few wands or scrolls of utilitarian spells, such as knock 
+and water breathing. 
+EQUIPMENT BY LEVEL
+The following tables detail appropriate NPC equipment for 
+each level of the various classes. Each set of equipment also 
+includes  an  adventurer’s  kit  (see  page  215)  and  any  other  
+items necessary for the character (such as a spellbook, spell 
+component pouch, thieves’ tools, or holy symbol).
+Barbarian, Dragon Shaman, Druid
+1
+, Duskblade
+2
+, 
+or Favored Soul
+ 1st Level: Masterwork weapon, masterwork breastplate 
+(or  masterwork  hide  armor,  185  gp),  heavy  steel  shield,  
+200 gp
+ 2nd Level: Masterwork weapon, +1 breastplate (or master-
+work  dragonhide  breastplate,  650  gp),  heavy  steel  shield,  
+350 gp
+ 3rd Level: Masterwork weapon, +1 breastplate (or master-
+work dragonhide breastplate, 650 gp), heavy steel shield, 
+850 gp
+ 4th Level: Masterwork weapon, +1 breastplate (or master-
+work dragonhide breastplate, 650 gp), heavy steel shield, cloak 
+of resistance +1, 650 g p
+ 5th Level: +1 weapon, +1 breastplate (or master work dragon-
+hide breastplate, 650 gp), heavy steel shield, 650 gp
+ 6th Level: +1 weapon, +1 breastplate (or master work dragon-
+hide breastplate, 650 gp), +1 heavy steel shield, 800 gp
+ 7th Level: +1 weapon, +1 breastplate (or master work dragon-
+hide breastplate, 650 gp), +1 heavy steel shield (or potion of barkskin 
++3, potion of shield of faith +4), cloak of resistance +1, 50 gp
+ 8th Level: +1 weapon, +2 breastplate (or +1 dragonhide breast-
+plate, r ing of protection +1, 650 gp), +1 heavy steel shield (or potion 
+of barkskin +3, potion of shield of faith +4), 250 gp
+ 9th Level: +1 weapon, +2 breastplate (or +2 dragonhide breast-
+plate, -350 gp), +1 heavy steel shield (or amulet of natural armor 
++1, potion of barkskin +3, potion of shield of faith +4), 850 gp
+ 10t h L e ve l : +2 weapon, +2 breastplate (or +1 dragonhide breast-
+plate, r ing of protection +1, 650 gp), +1 heavy steel shield (or potion 
+of barkskin +3, potion of shield of faith +4), 850 gp
+ 11t h L e vel : +2 weapon, +2 breastplate (or +2 dragonhide breast-
+plate, -350  gp),  +1  heavy  steel  shield  (or potion  of  barkskin  +3,  
+potion of shield of faith +4), gauntlets of ogre power (or periapt of 
+Wisdom +2), cloak of resistance +1, 850 gp
+ 12th  Level: +2 weapon, +3 breastplate (or +3 dragonhide breast-
+plate, -350  gp),  +1  heavy  steel  shield  (or potion  of  barkskin  +3,  
+potion of shield of faith +4), gauntlets of ogre power (or periapt of 
+Wisdom +2), cloak of resistance +1, brooch of shielding, 350 gp
+ 13th  Level: +3 weapon, +3 breastplate (or +3 dragonhide 
+breastplate, -350 gp), +1 heavy steel shield (or potion of barkskin 
++3, potion of shield of faith +4), gauntlets of ogre power (or periapt 
+of Wisdom +2), 850 gp
+ 14t h   L e v e l : +3 weapon, +4 breastplate (or +4 dragonhide 
+breastplate, -350 gp), +2 heavy steel shield (or amulet of natural 
+armor +1, ring of protection +1, 200 gp), gauntlets of ogre power 
+(or periapt of Wisdom +2), cloak of resistance +1, 850 gp
+ 15th Level: +4 weapon, +4 breastplate (or +4 dragonhide 
+breastplate, -350 gp), +2 heavy steel shield (or amulet of natural 
+armor +1, ring of protection +1, 200 gp), gauntlets of ogre power 
+(or periapt of Wisdom +2), cloak of resistance +1, 850 gp
+ 16t h   L e ve l : +4 weapon, +4 breastplate  (or  +4 dragonhide 
+breastplate, -350 gp), +2 heavy steel shield (or amulet of natural 
+ar mor +1, r ing of protection +1, 200 gp), belt of g iant s treng th +4 
+(or periapt of Wisdom +4), cloak of resistance +2, dust of disap-
+pearance, 350 gp
+ 17th  Level:  +5  weapon,  +4  breastplate  (or  +4  dragonhide  
+breastplate, -350 gp), +2 heavy steel shield (or amulet of natural 
+ar mor +1, r ing of protection +1, 200 gp), belt of g iant s treng th +4 
+(or periapt of Wisdom +4), cloak of resistance +3, dust of disap-
+pearance, 350 gp
+ 18t h  L e vel :  +5  weapon,  +5  breastplate  (or  +5  dragonhide  
+breastplate, -350 gp), +3 heavy steel shield (or amulet of natural 
+armor +1, gloves of Dexterity +2, ring of protection +1, 1,200 gp), belt 
+of giant strength +4 (or periapt of Wisdom +4), cloak of resistance 
++3, dust of disappearance, winged boots, 350 gp
+ 19th  Level:  +6  weapon,  +6  breastplate  (or  +6  dragonhide  
+breastplate, -350 gp), +4 heavy steel shield (or amulet of natural 
+armor  +2,  gloves  of  Dexterity  +2,  ring  of  protection  +1,  2,200 
+gp), belt of giant strength +4 (or periapt of Wisdom +4), cloak of 
+resistance +3, dust of disappearance, winged boots, 350 gp
+ 20th  Level:  +7  weapon,  +6 breastplate (or  +6  dragonhide  
+breastplate, -350 gp), +6 heavy steel shield (or amulet of natural 
+armor +3, gloves of Dexterity +2, ioun stone (dusty rose), ring of 
+protection +2, 1,200 gp), belt of giant strength +4 (or periapt of 
+Wisdom +4), cloak of resistance +3, dust of disappearance, winged 
+boots, 4,350 gp
+     1 Druid characters should replace heavy steel shield with 
+heavy wooden shield, 13 gp. 
+    2 Duskblade characters below 4th level should replace 
+breastplate with chain shirt, 100 gp; duskblades below 7th 
+level should replace heavy steel shield with light steel shield, 
+11 gp.
+Bard, Hexblade, Ranger, Rogue, Scout, 
+or Swashbuckler
+ 1st  Level:  Masterwork  weapon,  masterwork  studded  
+leather, elixir of hiding, 50 gp
+ 2nd Level: Masterwork weapon, mithral shirt, masterwork 
+secondary weapon, elixir of hiding, 50 gp
+ 3rd Level: Masterwork weapon, mithral shirt, masterwork 
+secondary weapon, elixir of hiding, elixir of sneaking, 300 gp
+ 4th Level: Masterwork weapon, mithral shirt, masterwork 
+secondary weapon, goggles of minute seeing, 350 gp
+ 5th Level: +1 weapon, mithral shirt, masterwork secondary 
+weapon, elixir of hiding, 350 gp
+ 6th Level: +1 weapon, +1 mithral shir t, masterwork second-
+ary weapon, elixir of hiding, 650 g p
+ 7th  Level:  +1  weapon,  +1  mithral  shir t,  +1  secondary  
+weapon, elixir of hiding, 250 gp
+ 8th  Level:  +1  weapon,  +1  mithral  shir t,  +1  secondary  
+weapon, cloak of elvenkind, 200 gp
+ 9th  Level:  +1  weapon,  +1  mithral  shir t,  +1  secondary  
+weapon, boots of elvenkind, cloak of elvenkind, 300 gp
+ 10t h  L e ve l :  +1  weapon,  +1  mithral  shir t, +1 secondary 
+weapon, boots of elvenkind, cloak of elvenkind, gloves of Dexterity 
++2, 400 gp
+620_95374_Ch8.indd   217620_95374_Ch8.indd   2172/8/06   4:27:13 PM2/8/06   4:27:13 PM
+
+218
+APPENDIX
+ 11t h  L e vel : +2 weapon, +1  mithral  shir t, masterwork sec-
+ondary weapon, boots of elvenkind, cloak of elvenkind, gloves of 
+Dexterity +2, 1,300 gp
+ 12th  Level:  +2  weapon,  +2  mithral  shirt, +1 secondary 
+weapon, boots of elvenkind, cloak of elvenkind, gloves of Dexterity 
++2, ring of protection +1, 300 gp
+13th Level: +2 weapon, +2 mithral shirt, +1 secondary weapon, 
+boots of elvenkind, cape of the mountebank, gloves of Dexterity +2, 
+ring of protection +1, 200 gp
+ 14t h   L e v e l :  +3  weapon,  +2  mithral  shirt,  +1  secondary  
+weapon,  boots  of  elvenkind,  cape  of  the  mountebank,  gloves  of  
+Dexterity +2, ring of protection +1, 800 gp
+ 15th  Level:  +3  weapon,  +3  mithral  shirt, +2 secondary 
+weapon, boots of elvenkind, cape of the mountebank, gloves of 
+Dexterity +2, chime of opening, ring of protection +1, 800 gp
+ 16t h   L e ve l : +4 weapon, +4 mithral shirt, +2 secondary 
+weapon,  boots  of  elvenkind,  cape  of  the  mountebank,  gloves  of  
+Dexterity +2, ring of protection +1, 800 gp
+ 17th  Level: +4 weapon, +5  mithral  shirt, +2 secondary 
+weapon, cape of the mountebank, gloves of Dexterity +2, ring of 
+protection +1, winged boots, 1,300 gp
+ 18t h  L e vel :  +5  weapon,  +5  mithral  shirt, +3 secondary 
+weapon, cape of the mountebank, gloves of Dexterity +2, ring of 
+protection +1, winged boots, 3,300 gp
+ 19th  Level: +6 weapon, +5  mithral  shirt, +4 secondary 
+weapon, gloves of Dexterity +4, ring of protection +1, winged boots, 
+ioun stone (dusty rose), 300 gp
+ 20th  Level: +6 weapon, +6 mithral shirt, +3 secondary 
+weapon, amulet of natural armor +1, cape of the mountebank, 
+gloves of Dexterity +4, ring of protection +2, winged boots, ioun 
+stone (dusty rose), 3,300 gp
+Beguiler, Sorcerer, Warmage, or Wizard
+ 1st  Level: Masterwork weapon, masterwork chain shirt 
+(or 250 gp), 350 gp
+ 2nd Level: Masterwork weapon, +1 chain shirt (or bracers 
+of armor +1, 250 gp), 450 gp.
+ 3rd Level: Masterwork weapon, +1 chain shir t (or bracers of 
+armor +1, 250 gp), 950 gp
+ 4th Level: Masterwork weapon, +1 chain shir t (or bracers of 
+armor +1, 250 gp), cloak of resistance +1, 750 gp
+ 5th Level: Masterwork weapon, +1 chain shirt (or bracers of 
+armor +1, 250 gp), ring of protection +1, 750 gp
+ 6th Level: Masterwork weapon, +2 chain shirt (or bracers of 
+armor +2, 250 gp), cloak of resistance +1, 50 gp
+ 7th Level: Masterwork weapon, +2 chain shirt (or bracers of 
+armor +2, 250 gp), cloak of resistance +1, 1,650 gp
+ 8th Level: Masterwork weapon, +2 chain shirt (or bracers of 
+armor +2, 250 gp), cloak of Charisma +2 (or headband of intellect 
++2), 850 gp
+ 9th Level: Masterwork weapon, +2 chain shirt (or bracers of 
+armor +2, 250 gp), cloak of Charisma +2 (or headband of intellect 
++2), amulet of natural armor +1, 1,450 gp
+ 10t h L e ve l : Masterwork weapon, +3 chain shirt (or bracers of 
+armor +3, 250 gp), cloak of Charisma +2 (or headband of intellect 
++2), ring of protection +2, 450 gp
+ 11t h L e vel : Masterwork weapon, +3 mithral shirt (or brac-
+ers of armor +3, 1,250 gp), cloak of Charisma +2 (or headband 
+of intellect +2), ring of protection +1, gloves of arrow snaring, 
+450 gp
+ 12th Level: Masterwork weapon, +4 mithral shirt (or brac-
+ers  of  armor  +4,  1,250  gp),  cloak  of  Charisma  +2  (or  headband  
+of intellect +2), amulet of natural armor +1, ring of protection +1, 
+1,450 gp
+ 13th Level: Masterwork weapon, +4 mithral shirt (or brac-
+ers  of  armor  +4,  1,250  gp),  cloak  of  Charisma  +2  (or  headband  
+of intellect +2), amulet of natural armor +1, ring of protection +2, 
+3,450 gp
+ 14t h   L e v e l : Masterwork weapon, +4 mithral shirt (or brac-
+ers of armor +4,  1,250  gp),  cloak  of  Charisma  +4  (or headband 
+of intellect +4), amulet of natural armor +1, ring of protection +2, 
+1,450 gp
+ 15th Level: Masterwork weapon, +5 mithral shirt (or brac-
+ers  of  armor  +5,  1,250  gp),  cloak  of  Charisma  +4  (or  headband  
+of intellect +4), amulet of natural armor +1, ring of protection +2, 
+gauntlets of Dexterity +2 (or cloak of resistance +2), 3,700 gp
+ 16t h  L e ve l : Masterwork weapon, +5 mithral shirt (or brac-
+ers of armor +5, 1,250 gp), cloak of Charisma +6 (or headband of 
+intellect  +6),  amulet  of  natural  armor  +1,  ring  of  protection  +2, 
+gauntlets of Dexterity +2 (or cloak of resistance +2), 450 gp
+ 17th Level: Masterwork weapon, +5 mithral shirt (or bracers of 
+armor +5, 1,250 gp), cloak of Charisma +6 (or headband of intellect 
++6), robe of scintillating colors, ring of protection +2, 3,700 gp
+ 18t h  L e vel : Rod  of  absorption, bracers  of  armor  +5, cloak  of  
+Charisma +6 (or headband of intellect +6), ring of protection +2, 
+gauntlets of Dexterity +2 (or cloak of resistance +2), 5,450 gp
+ 19th  Level: Staff  of  evocation  (or  staff  of  enchantment), +7 
+mithral shirt (or bracers of armor +7, 1,250 gp), cloak of Charisma 
++6 (or headband of intellect +6), ring of protection +2, gauntlets of 
+Dexterity +2 (or cloak of resistance +2), 6,450 gp
+ 20th  Level: Staff  of  evocation  (or  staff  of  enchantment), +7 
+mithral shirt (or bracers of armor +7, 1,250 gp), cloak of Charisma 
++6 (or headband of intellect +6), ring of protection +2, boots  of  
+teleportation, 3,450 gp
+Cleric, Fighter, Knight, Marshal, or Paladin
+ 1st Level: Masterwork weapon, masterwork banded mail, 
+heavy steel shield, 200 gp
+ 2nd Level: Masterwork weapon, full plate armor, heavy 
+steel shield, 200 gp
+ 3rd  Level:  Masterwork  weapon,  full  plate  armor,  heavy  
+steel shield, 700 gp
+ 4th Level: Masterwork weapon, full plate armor, heavy steel 
+shield, cloak of resistance +1 (or pearl of power [1st level]), 500 gp
+ 5th Level: +1 weapon, full plate armor, heavy steel shield, 
+500 gp
+ 6th Level: +1 weapon, +1 full plate ar mor, heavy steel shield, 
+650 g p
+ 7th Level: +1 weapon, +1 full plate ar mor, +1 heavy steel 
+shield (or potion of barkskin +3, potion of shield of faith +4), cloak 
+of resistance +1 (or pearl of power [1st level]), 50 gp
+ 8th Level: +1 weapon, +2 full plate armor, +1 heavy steel shield 
+(or potion of barkskin +3, potion of shield of faith +4), 250 gp
+ 9th Level: +1 weapon, +2 full plate armor, +1 heavy steel shield 
+(or  amulet  of  natural  armor  +1,  potion  of  barkskin  +3,  potion  of  
+shield of faith +4), 850 gp
+620_95374_Ch8.indd   218620_95374_Ch8.indd   2182/8/06   4:27:20 PM2/8/06   4:27:20 PM
+
+219
+APPENDIX
+ 10t h  L e ve l :  +1  weapon,  +2  full  plate  armor, +1 heavy steel 
+shield (or potion of barkskin +3, potion of shield of faith +4), gauntlets 
+of ogre power (or periapt of Wisdom +2), 850 gp
+ 11t h  L e vel : +2 weapon, +2 full plate armor, +1 heavy steel 
+shield (or potion of barkskin +3, potion of shield of faith +4), gaunt-
+lets of ogre power (or periapt of Wisdom +2), cloak of resistance 
++1, 850 gp
+ 12th Level: +2 weapon, +3 full plate armor, +1 heavy steel shield 
+(or potion of barkskin +3, potion of shield of faith +4), gauntlets of 
+ogre power (or per iapt of Wisdom +2), cloak of resistance +1, brooch 
+of shielding, 350 gp
+ 13th Level: +3 weapon, +3 full plate armor, +1 heavy steel shield 
+(or potion of barkskin +3, potion of shield of faith +4), gauntlets of 
+ogre power (or periapt of Wisdom +2), 850 gp
+ 14t h   L e v e l :  +3  weapon,  +4  full  plate  armor, +2  heavy  steel  
+shield (or amulet of natural armor +1, ring of protection +1, 200 
+gp), gauntlets  of  ogre  power  (or  periapt  of  Wisdom  +2), cloak  of  
+resistance +1, 850 gp
+ 15th  Level: +4 weapon, +4  full  plate  armor, +2  heavy  steel  
+shield (or amulet of natural armor +1, ring of protection +1, 200 
+gp), gauntlets  of  ogre  power  (or  periapt  of  Wisdom  +2),  cloak  of  
+resistance +1, 850 gp
+ 16t h   L e ve l : +4 weapon, +4  full  plate  armor, +2  heavy  steel  
+shield (or amulet of natural armor +1, ring of protection +1, 200 
+gp), belt of giant strength +4 (or periapt of Wisdom +4), cloak of 
+resistance +2, dust of disappearance, 350 gp
+ 17th  Level:  +5  weapon,  +4  full  plate  armor, +2  heavy  steel  
+shield (or amulet of natural armor +1, ring of protection +1, 200 
+gp), belt of giant strength +4 (or periapt of Wisdom +4), cloak of 
+resistance +3, dust of disappearance, 350 gp
+ 18t h  L e vel :  +5  weapon,  +5  full  plate  armor, +3  heavy  steel  
+shield (or amulet of natural armor +1, gloves of Dexterity +2, ring 
+of protection +1, 1,200 gp), belt of giant strength +4 (or periapt of 
+Wisdom +4), cloak of resistance +3, dust of disappearance, winged 
+boots, 350 gp
+ 19th  Level: +6 weapon, +6 full plate armor, +4  heavy  steel  
+shield (or amulet of natural armor +2, gloves of Dexterity +2, ring 
+of protection +1, 2,200 gp), belt of giant strength +4 (or periapt of 
+Wisdom +4), cloak of resistance +3, dust of disappearance, winged 
+boots, 350 gp
+ 20th  Level:  +7  weapon,  +6 full plate armor, +6  heavy  steel  
+shield (or amulet of natural armor +3, gloves of Dexterity +2, ioun 
+stone  (dusty  rose),  ring of protection +2, 1,200 gp), belt of giant 
+strength +4 (or periapt of Wisdom +4), cloak of resistance +3, dust 
+of disappearance, winged boots, 4,350 gp
+Monk
+ 1st Level: Masterwork weapon, 600 gp
+ 2nd Level: Masterwork weapon, bracers of armor +1, 700 gp
+ 3rd  Level: Masterwork weapon, bracers of armor +1, cloak 
+of resistance +1, 200 gp
+ 4th  Level: Masterwork weapon, bracers of armor +1, cloak 
+of resistance +1, elixir of sneaking, 750 g p
+ 5th Level: Masterwork weapon, bracers of armor +1, amulet 
+of natural armor +1, cloak of resistance +1, 0 gp
+ 6th Level: Masterwork weapon, bracers of armor +1, amulet 
+of natural armor +1, cloak of resistance +1, salve of slipperiness, 
+300 gp
+ 7th Level: Masterwork weapon, bracers of armor +1, amulet 
+of natural armor +1, brooch of shielding, cloak of resistance +1, 
+400 gp
+ 8th Level: Masterwork weapon, bracers of armor +2, amulet 
+of natural armor +1, brooch of shielding, cloak of resistance +1, 
+600 gp
+ 9th Level: Masterwork weapon, bracers of armor +2, amulet 
+of natural armor +1, brooch of shielding, cloak of resistance +2, 
+200 gp
+ 10t h  L e ve l : Amulet of mighty fi sts +1, bracers  of  armor  +2,  
+gauntlets of ogre power, cloak of resistance +1, 1,000 gp
+ 11t h  L e vel : Amulet  of  mighty  fi  sts  +1, bracers  of  armor  +3,  
+gauntlets of ogre power, cloak of resistance +1, 1,000 gp
+ 12th  Level: Amulet of mighty fi sts +1, bracers  of  armor  +3,  
+gauntlets of ogre power, cloak of resistance +2, dust of disappearance, 
+500 gp
+ 13th  Level: Amulet  of  mighty  fi  sts  +1, bracers  of  armor  +4,  
+gauntlets of ogre power, cloak of resistance +3, 0 gp
+ 14t h   L e v e l : Amulet  of  mighty  fi  sts  +1, bracers  of  armor  +5,  
+gauntlets of ogre power, cloak of resistance +3, 1,000 gp
+ 15th  Level: Amulet  of  mighty  fists  +1, bracers  of  armor  
++5, gauntlets of ogre power, cloak of resistance +3, monk’s belt, 
+2,000 gp
+ 16t h   L e ve l : Amulet  of  mighty  fists  +2, bracers  of  armor  
++5, gauntlets of ogre power, cloak of resistance +3, monk’s belt, 
+2,000 gp
+ 17th Level: +4 weapon, bracers of armor +5, gauntlets of ogre 
+power,  cloak  of  resistance  +3,  monk’s  belt, periapt  of  Wisdom  +4,  
+700 gp
+ 18t h L e vel : +4 weapon, bracers of armor +7, gauntlets of ogre 
+power,  cloak  of  resistance  +3,  monk’s  belt, periapt  of  Wisdom  +4,  
+ring of jumping, ring of protection +1, 2,200 gp
+ 19th Level: +4 weapon, bracers of armor +8, gauntlets of ogre 
+power,  cloak  of  resistance  +4,  monk’s  belt, periapt  of  Wisdom  +4,  
+ring of protection +2, winged boots, 1,000 gp
+ 20th Level: +5 weapon, bracers of armor +8, gauntlets of ogre 
+power,  cloak  of  resistance  +5,  monk’s  belt, periapt  of  Wisdom  +4,  
+ring of protection +4, winged boots, 0 gp
+8. PICK YOUR SPELLS
+    Choosing spells can be a time-consuming process. This 
+section offers a list of standard, high-utility spells at each spell 
+level, arranged from most to least useful, for each spellcasting 
+class. If you are at a loss for which spells to take at a given 
+level, these lists can help narrow your search.
+    Limiting the spells you choose to those on the following 
+lists saves both time and effort. If desired, however, you can 
+supplement these lists with specifi  c spells that you prefer.
+SUGGESTED BARD SPELLS
+ 0: Detect magic, read magic, prestidigitation, lullaby, summon 
+instrument, mage hand.
+ 1st: Cure light wounds, charm person, identify, disguise self, alarm.
+    2nd: Cure moderate wounds, suggestion, invisibility, eagle’s 
+splendor, heroism.
+ 3rd: Cure serious wounds, haste, dispel magic, charm monster, 
+displacement.
+620_95374_Ch8.indd   219620_95374_Ch8.indd   2192/8/06   4:27:27 PM2/8/06   4:27:27 PM
+
+220
+APPENDIX
+ 4th: Cure critical wounds, greater invisibility, dominate person, 
+hold monster, dimension door.
+ 5th: Mass cure light wounds, greater dispel magic, mass sugges-
+tion, persistent image, greater heroism.
+ 6th: Mass cure moderate wounds, Ot to’s ir resis tible dance, g reater 
+shout, project image.
+SUGGESTED CLERIC SPELLS 
+(POSITIVE ENERGY CHANNELERS*)
+    0: Detect magic, light, resistance, read magic, detect poison, 
+guidance.
+ 1st: Shield of faith, bless, protection from evil, magic weapon, 
+sanctuary, divine favor, command, comprehend languages.
+ 2nd: Hold person, bull’s strength, spiritual weapon, lesser 
+restoration, infl ict moderate wounds, resist energy, align weapon, 
+augury.
+ 3rd: Dispel magic, prayer, blindness/deafness, protection from 
+energy, magic circle against evil, invisibility purge, searing light, 
+glyph of warding.
+ 4th: Divine power, infl  ict critical wounds, restoration, dismissal, 
+freedom of movement, greater magic weapon, spell immunity, death 
+ward.
+ 5th: Flame strike, true seeing, spell resistance, righteous might, mass 
+infl ict light wounds, scrying, plane shift, disrupting weapon.
+ 6th: Heal, greater dispel magic, harm, blade barrier, banishment, 
+mass bull’s strength, fi nd the path.
+ 7th: Greater restoration, holy word, greater scrying, destruction, 
+ethereal jaunt, repulsion.
+ 8th: Fire storm, holy aura, antimagic fi eld, mass infl ict critical 
+wounds, greater spell immunity.
+ 9th: Mass heal, implosion, miracle, true resurrection, ethereal-
+ness, storm of vengeance.
+    *Negative energy channelers should select a cure spell as 
+their second spell of each level (for spell levels 1–4) and as 
+their third spell of each level (for levels 5–8).
+SUGGESTED 
+DRAGON SHAMAN AURAS
+Vigor, Senses, Power, Energy Shield, Toughness, Presence, 
+Resistance
+SUGGESTED DRUID SPELLS
+ 0: Detect magic, light, resistance, cure minor wounds, guidance, 
+know direction.
+ 1st:  Cure  light  wounds,  shillelagh,  produce  fl  ame,  faerie  fi  re,  
+entangle, charm animal, speak with animals.
+ 2nd: Flame blade, heat metal, resist energy, lesser restoration, 
+bull’s strength, animal trance, barkskin.
+ 3rd: Cure moderate wounds, protection from energy, call lightning, 
+meld into stone, dominate animal, stone shape, spike growth.
+ 4th: Cure serious wounds, fl  ame strike, dispel magic, command 
+plants, scrying, freedom of movement.
+ 5th: Cure critical wounds, stoneskin, baleful polymorph, wall 
+of fi re, call lightning storm, commune with nature, death ward.
+ 6th: Mass cure light wounds, fi  re seeds, greater dispel magic, mass 
+bull’s strength, transport via plants, wall of stone.
+ 7th: Mass cure moderate wounds, heal, fi re storm, true seeing, 
+changestaff, greater scrying.
+ 8th: Mass cure serious wounds, fi nger of death, animal shapes, 
+sunburst, word of recall, whirlwind.
+ 9th: Mass cure critical wounds, shapechange, elemental swarm, 
+foresight, storm of vengeance, shambler.
+SUGGESTED DUSKBLADE SPELLS
+ 0: Ray of frost, touch of fatigue, acid splash, disrupt undead
+ 1st:  Ray  of  enfeeblement,  shocking  grasp,  resist  energy,  swift  
+expeditious retreat, true strike.
+ 2nd: Scorching ray, see invisibility, swift invisibility, swift fl y, 
+cat’s grace.
+ 3rd: Ray of exhaustion, crown of protection*, keen edge, protec-
+tion from energy, vampiric touch.
+ 4th:  Channeled  pyroburst*,  dimension  door,  enervation,  fi  re  
+shield, shout.
+ 5th: Chain lightning, waves of fatigue, disintegrate, polar ray, 
+hold monster.
+    *New spell (see pages 106 and 108).
+SUGGESTED FAVORED SOUL SPELLS
+ 0: Cure minor wounds, detect magic, light, resistance, read magic, 
+detect poison.
+ 1st: Cure light wounds, bless, shield of faith, divine favor, entropic 
+shield, remove fear, comprehend languages.
+ 2nd: Cure moderate wounds, spiritual weapon, lesser restoration, 
+align weapon, delay poison, bull’s strength.
+ 3rd: Dispel magic, searing light, prayer, invisibility purge, 
+daylight, magic circle against evil.
+ 4th: Cure critical wounds, divine power, neutralize poison, 
+freedom of movement, tongues, dimensional anchor.
+ 5th: Flame strike, true seeing, righteous might, spell resistance, 
+disrupting weapon, wall of stone.
+ 6th: Heal, blade barrier, mass cure moderate wounds, greater 
+dispel magic, heroes’ feast, harm.
+ 7th: Holy word, destruction, greater scrying, summon monster 
+VII, ethereal jaunt, greater restoration.
+ 8th: Mass cure critical wounds, holy aura, fi re storm, summon 
+monster VIII, antimagic fi eld.
+ 9th: Mass heal, implosion, summon monster IX, true resurrection.
+SUGGESTED HEXBLADE SPELLS
+ 1st: phantom threat
+1
+, expeditious retreat, Tasha’s hideous laugh-
+ter, protection from evil, entropic shield.
+ 2nd: invisibility, false life, see invisibility, eagle’s splendor, spider 
+climb.
+ 3rd: vampiric touch, confusion, protection from energy, hound 
+of doom
+1
+, wind wall.
+ 4th: greater invisibility, dimension door, enervation, cursed 
+blade
+1
+, solid fog.
+    1    See Complete Warrior.
+SUGGESTED MARSHAL AURAS
+1
+ Minor: Master of Tactics, Force of Wi l l, Motivate Dex ter-
+ity, Motivate Strength, Watchful Eye, Master of Opportunity, 
+Determined Caster.
+ Major: Motivate  Care,  Motivate  Attack,  Hardy  Soldiers,  
+Motivate Urgency, Resilient Troops.
+    1    See    Miniatures Handbook.
+620_95374_Ch8.indd   220620_95374_Ch8.indd   2202/8/06   4:27:34 PM2/8/06   4:27:34 PM
+
+221
+APPENDIX
+SUGGESTED PALADIN SPELLS
+ 1st:  Bless  weapon,  divine  favor,  cure  light  wounds,  protection  
+from evil, lesser restoration.
+ 2nd: Bull’s strength, eagle’s splendor, shield other, resist energy, 
+remove paralysis.
+ 3rd: Dispel magic, greater magic weapon, magic circle against 
+evil, discern lies, daylight.
+ 4th:  Holy  sword,  dispel  evil,  restoration,  break  enchantment,  
+death ward.
+SUGGESTED RANGER SPELLS
+ 1st:  Resist  energy,  entangle,  pass  without  trace,  speak  with  
+animals, longstrider.
+ 2nd:  Snare,  protection  from  energy,  speak  with  plants,  bear’s  
+endurance, cure light wounds.
+ 3rd: Darkvision, tree shape, cure moderate wounds, water walk, 
+command plants.
+     4th: Freedom of movement, tree stride, commune with nature, 
+animal growth, cure serious wounds.
+SUGGESTED SORCERER SPELLS
+ 0: Detect magic, read magic, ghost sound, disrupt undead, presti-
+digitation, acid splash, mage hand, arcane mark, dancing lights.
+ 1st: Magic missile, mage armor, enlarge person, shield, expedi-
+tious retreat.
+ 2nd:  Scorching  ray,  invisibility,  mirror  image,  alter  self,  
+levitate.
+ 3rd: Fireball, dispel magic, haste, displacement.
+ 4th:  Stoneskin,  polymorph,  greater  invisibility,  phantasmal  
+killer.
+ 5th: Cone of cold, teleport, Bigby’s interposing hand, dominate 
+person.
+ 6th: Acid fog, greater dispel magic, Bigby’s forceful hand.
+ 7th: Prismatic spray, limited wish, ethereal jaunt.
+ 8th: Horrid wilting, iron body, prismatic wall.
+ 9th: Meteor swarm, wish, time stop.
+SUGGESTED WARLOCK 
+INVOCATIONS
+1
+ Least: See the unseen, sickening blast, eldritch spear.
+ Lesser: Eldritch chain, fell fl ight, beshadowed blast.
+ Greater: Vitriolic blast, devour magic, eldritch cone.
+ Dark: Retributive invisibility, eldritch doom, utterdark blast.
+    1    See Complete Arcane.
+SUGGESTED WIZARD SPELLS
+ 0: Detect magic, read magic, disrupt undead, mage hand.
+ 1st: Magic missile, mage armor, charm person, color spray, silent 
+image, disguise self, enlarge person, alarm.
+     2nd: Scorching ray, invisibility, mirror image, alter self, levitate, 
+spider climb, see invisibility, knock, darkvision.
+ 3rd: Fireball, dispel magic, displacement, haste, fl y, suggestion, 
+tongues, water breathing.
+ 4th: Stoneskin, polymorph, greater invisibility, charm monster, 
+lesser globe of invulnerability, scrying, wall of fi re, confusion.
+ 5th: Cone of cold, teleport, Bigby’s interposing hand, dominate 
+person, hold monster, permanency, persistent image, passwall.
+ 6th: Chain lightning, g reater dispel mag ic, Tenser ’s trans for-
+mation, Mordenkainen’s lucubration, contingency, true seeing, 
+control water.
+ 7th: Prismatic spray, limited wish, ethereal jaunt, greater teleport, 
+greater scrying, plane shift, mass invisibility, mass hold person.
+ 8th: Horrid wilting, iron body, prismatic wall, polymorph any 
+object, protection from spells, Bigby’s clenched fi st, mind blank, 
+dimensional lock.
+ 9th: Meteor swarm, wish, time stop, gate, etherealness, shape-
+change, dominate monster, Bigby’s crushing hand.
+RANDOM PERSONALITIES
+If you want to create a character with a random personality, use 
+the tables below. Roll once on the Random Personality Arche-
+types  table,  then  roll  1d4  times  on  the  Random  Personality  
+Traits table. You can fi  nd more information on the personality 
+archetypes and personality traits in Chapter 5 of this book.
+Random Personality Archetypes
+Random Personality Traits
+  d%  Archetype
+01–04      Agent
+05–09     Challenger
+10 –13      Companion
+14 –18      Crusader
+19–22      Daredevil
+23–27      Explorer
+28–31      Innocent
+32–36      Leader
+37– 40      Mar t yr
+41–44      Mercenary
+45–48     Orphan
+49–52      Prophet
+  d%  Archetype
+53–56      Rebel
+57– 61      Renegade
+62–65      Royalty
+66–69     Sage
+70 –73      Savage
+74 –78      Seeker
+79–82      Simple      Soul
+83–86      Strategist
+87–90      Theorist
+91–95      Trickster
+96–100    Wanderer
+  d%  Trait
+01– 02      Ambitious
+03–04     Angry
+05–06     Bold
+07– 08      Boastful
+09–10      Brutal
+11–12       C ar e f r e e
+13 –14      Calm
+15 –16      Charming
+17–18      Connected
+19 –20      Conser vative
+   21   Cowardly
+   22   Cruel
+23–24      Dark
+25–26      Disciplined
+27–28      Driven
+29–30      Energetic
+31–32      Erudite
+33–34      Exotic
+35–36      Famous
+37–38      Fatalistic
+39 – 40      Flamboyant
+41– 42      Friendly
+43– 44      Foul-mouthed
+45–46      Funny
+   47   Greedy
+48–49     Hooked
+50–51      Interested
+  d%  Trait
+52–53      Kind
+54–55      Loyal
+   56   Merciful
+57–58      Militant
+59 – 60      Mysterious
+   61   Naïve
+62–63      Quiet
+64–65     Patriotic
+66–67     Peaceful
+68–69     Philosophical
+   70   Phobic
+71–72      Proper
+73–74      Reformed
+75–76      Religious
+77–78      Reluctant
+79–80     Rude
+81–82      Secretive
+83–84      Self-absorbed
+85–86      Self-righteous
+   87   Selfi   sh
+88–89      Serious
+90 –91      Skilled
+92–93      Threatening
+94–95     Tragic
+96–97      Unpredictable
+98–99     Vengeful
+  100  Violent
+620_95374_Ch8.indd   221620_95374_Ch8.indd   2212/8/06   4:27:41 PM2/8/06   4:27:41 PM
+
+D
+UNGEONS
+ & D
+RAGONS
+®
+™
+Whether you’re creating a new character or 
+improving an existing one, the Player’s Handbook
+TM
+ II 
+supplement has something you need. This volume 
+provides new character options for players, including:
+j
+ New class features for all of your favorite classes
+j
+ A rebuilding system that allows you to update 
+ 
+existing characters
+j
+ 
+New advancement options and affi liations
+j
+ 
+New starting equipment packages 
+j
+ 
+New teamwork benefi ts
+j
+ 
+New feats and spells
+Featuring Additional Design by 
+Richard Baker, Bruce R. Cordell, Frank Brunner, Luke Johnson, 
+Christopher Lindsay, Robert J. Schwalb, and Matthew Sernett
+David Noonan
+MAKE YOUR 
+CHARACTERS THE BEST 
+THEY CAN BE
+For use with these DUNGEONS & DRAGONS
+® 
+ 
+core books
+Player’s Handbook
+TM
+, Dungeon Master’s Guide
+®
+, 
+and Monster Manual
+®
+.
+Visit our website at www.wizards.com/dnd
+Supplement
+EAN
+Sug. Retail U.S. $34.95  CAN $44.00      953747200  
+Printed in the U.S.A.   
+ISBN 13: 978-0-7869-3918-3
+D
+UNGEONS
+ & D
+RAGONS
+®
+™
+Players Handbook II.indd   1Players Handbook II.indd   12/16/07   2:20:19 PM2/16/07   2:20:19 PM

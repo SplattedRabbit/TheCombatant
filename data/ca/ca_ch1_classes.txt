@@ -1,0 +1,2321 @@
+CHAPTER 1
+CLASSES
+7
+CHAPTER 1
+CLASSES
+fantasy setting, they blend a gift for stealth and infi ltra-
+tion with devastating surprise attacks and supernatural 
+means of avoiding blows. Although the specifi c abilities 
+of the class differ from those attributed to the historical 
+ninja, they mirror the ninja’s fearsome reputation as a 
+spy, assassin, and martial artist.
+Adventures: 
+Ninjas adventure for a variety of reasons. 
+A loyal ninja might adventure at her lord’s command, 
+using her abilities of stealth and subterfuge to ferret out 
+his enemies or recover powerful treasures to be used in 
+his service. A mercenary ninja might seek only treasure 
+and fame, while a more idealistic ninja might seek to 
+thwart  a  growing  evil.  Most  ninjas  prefer  anonymity 
+to fame, and they go out of their way to disguise their 
+profession and abilities. A rare few, however, revel in the 
+mysterious reputation that surrounds ninjas and their 
+training, making known their abilities and their role in 
+a famous adventuring group. As ninjas grow in wealth 
+and power, their goals often change, and their ability to 
+uncover secrets and kill stealthily can shape the plans of 
+entire nations. Rulers both fear and covet the skills of the 
+ninja, and high-level ninjas whose identities are known 
+often fi nd adventures coming to them rather than the 
+converse.
+Characteristics:
+ Highly skilled spies and assassins, 
+ninjas can master a broad range of skills and combat 
+techniques. Nearly every ninja perfects the arts of moving 
+quietly and remaining hidden, and her secondary skills 
+defi ne her role in an adventuring party or a community. 
+Many ninjas hone skills that help them become better 
+spies, mastering the arts of social interaction and disguise. 
+Others take on the role of cat burglars, practicing skills 
+that help them fi nd and bypass traps and locks.
+  In combat, a ninja can deal out devastating blows if 
+her  opponent  doesn’t  know  she’s  there,  but  she’s  not 
+quite as adept as a rogue is at delivering such attacks in 
+a prolonged battle.
+  Ninjas jump and climb farther and faster than members 
+of most other classes, and they are skilled acrobats as 
+well. Ninjas also receive special training in the use of 
+poisons, and many ninjas employ poisonous weapons in 
+combat.
+  Even with these impressive skills, a ninja’s most dan-
+gerous and remarkable powers involve the ability to step 
+briefl y into the Ethereal Plane. By focusing her 
+ki
+, a ninja 
+can vanish from sight, walk through solid walls, and deal 
+devastating attacks even when not physically present at 
+the scene. As a ninja advances in level, she can turn this 
+ability to defense, causing blows that would otherwise 
+hit to pass harmlessly through her body.
+ 
+Alignment:
+  Although  ninjas  have  a  reputation  as 
+dangerous  assassins  and  deceptive  spies,  they  follow 
+many different philosophies and ideals and can be of any 
+alignment. For every dangerous mercenary who uses her 
+ninja training to kill for money, an honest and loyal ninja 
+stands guard over a just lord. Most ninjas follow their own 
+beliefs rather than the dictates of a noble or magistrate, 
+and therefore more ninjas are chaotic than lawful.
+ 
+Religion:
+ A ninja’s religious beliefs follow those of 
+her clan. In a fantasy game, ninjas can follow any god, 
+although  most  clans  devote  themselves  to  deities  of 
+stealth or trickery. Neutral or mercenary ninjas might 
+devote themselves to Olidammara (the god of thieves). 
+Evil ninjas might revere Nerull (the god of death) or 
+Erythnul (the god of slaughter).
+  Ninjas who have left or lost their clan follow any deity 
+and often choose not to worship a deity.
+ 
+Background:
+ Many ninjas come from isolated clans 
+that train in secret. They spend years perfecting the arts 
+of stealth and subterfuge in distant villages and hidden 
+training camps. These warriors, whether deployed in the 
+service of an honorable lord or sent to serve as mercenary 
+assassins, carefully conceal their identities and origins. 
+These ninjas weave complicated webs of disguises, strike 
+only from hiding, and deal through intermediaries when-
+ever possible. Because of their strong ties to their clan, 
+these ninjas must often put aside personal preferences or 
+goals to serve their lord or clan, but in return they gain 
+the support of a powerful political force and access to the 
+clan’s many safe houses and hideouts.
+  Although most ninjas come from such isolated clans, 
+exceptions  exist  at  every  turn.  Some  ninjas  receive 
+specialized training from a single mentor, perhaps even 
+a retired adventurer who wishes to pass along his skills. 
+Others train alongside monks and other ascetics in a 
+peaceful monastery. In some places, far-thinking nobles 
+set up their own ninja training centers. One of these 
+centers might consist merely of a single teacher with a 
+handful of students; another might be a full-blown ninja 
+school that progresses students through a rigid series of 
+tests, ranks, and trials. 
+ 
+Races: 
+Humans,  halfl ings,  half-elves,  and  half-orcs 
+often have the combination of adaptability and ambition 
+necessary to master the techniques of the ninja. Elves, 
+both graceful and deadly, rarely become ninjas, but those 
+who do often achieve great fame or notoriety. Such elf 
+ninjas often attain the heights of ninja prowess, shaping 
+the history of many human generations through their 
+daring exploits. Dwarves and gnomes seldom train as 
+ninjas.  Not  only  is  their  social  structure  too  open  to 
+shelter hidden clans of ninjas, but their martial instincts 
+run to more straightforward forms of combat.
+Other Classes: 
+Ninjas work best with rogues, scouts, 
+or rangers. Although they appreciate the healing power of 
+clerics and the sheer offensive might of fi ghters and barbar-
+ians, ninjas rely too much on stealth to completely embrace 
+the idea of adventuring with other classes. Conversely, when 
+traveling or not actively adventuring, ninjas who wish to 
+go unnoticed benefi t greatly from the presence of other 
+classes. The less subtle and more visible her adventuring 
+companions are, the easier it is for a ninja to remain in the 
+background and disguise her own abilities.
+Role: 
+Depending on a ninja’s skill selection and the 
+mission that her party undertakes, the character’s role 
+in the group can vary dramatically. A ninja practiced in 
+disguise and diplomacy might assume a false identity and 
+act as the group’s leader and front person. A stealthy ninja 
+who has perfected the arts of infi ltration might act as a 
+scout or point, while a more cautious ninja might hang 
+back, covering the group’s rear. Whatever a ninja’s role 
+during routine dungeon exploration or other adventures, 
+she is a dangerous and unpredictable combatant who 
+can  disable  foes  with  poison,  seemingly  strike  from 
+nowhere, and escape almost any situation by using her 
+supernatural abilities.
+GAME RULE INFORMATION
+Ninjas have the following game statistics.
+ 
+Abilities:
+ Ninjas benefi t from a high Dexterity score, 
+since it affects their most important skills, and many of 
+their abilities require that they wear no armor. A high 
+Dexterity also helps a ninja to act fi rst in initiative and 
+take advantage of her sudden strike ability. A ninja also 
+appreciates a high Wisdom score, which improves her 
+Armor Class, grants additional uses of her 
+ki
+ powers, 
+and helps her locate foes with skills such as Listen and 
+Spot.
+ 
+Alignment:
+ Any.
+ 
+Hit Die: 
+d6.
+Starting Gold:
+ 4d4
+×
+10 gp.
+Class Skills
+A ninja’s class skills (and the key ability for each skill) 
+are Balance (Dex), Bluff (Cha), Climb (Str), Concentra-
+tion (Con), Craft (Int), Disable Device (Int), Disguise 
+(Cha), Escape Artist (Dex), Gather Information (Cha), 
+Hide  (Dex),  Jump  (Str),  Listen  (Wis),  Move  Silently 
+(Dex),  Open  Lock  (Dex),  Search  (Int),  Sense  Motive 
+(Wis), Sleight of Hand (Dex), Spot (Wis), Swim (Str), 
+and Tumble (Dex).
+ 
+Skill Points at 1st Level: 
+(6 + Int modifi er) 
+×
+ 4.
+A ninja
+Illus. by E. Cox
+
+
+8
+CHAPTER 1
+CLASSES
+9
+CHAPTER 1
+CLASSES
+ 
+Skill Points at Each Additional Level: 
+6 + Int modi
+-
+fier.
+Class Features
+All of the following are class features of the ninja.
+ 
+Weapon and Armor Proficiency: 
+Ninjas are profi
+-
+cient with all simple weapons, plus the hand crossbow, 
+kama,  kukri,  nunchaku,  sai,  shortbow,  short  sword, 
+shuriken, and siangham. Ninjas are not proficient with 
+any type of armor or shield.
+ 
+AC Bonus (Ex):
+ A ninja is highly trained at dodging 
+blows, and she has a sixth sense that lets her avoid even 
+unanticipated attacks. When unarmored and unencum
+-
+bered, a ninja adds her Wisdom bonus (if any) to her 
+Armor Class. This ability does not stack with the monk’s 
+AC bonus ability (a ninja with levels of monk does not add 
+the bonus twice). In addition, a ninja gains a +1 bonus to 
+AC at 5th level. This bonus increases by 1 for every five 
+ninja levels thereafter (+2 at 10th, +3 at 15th, and +4 at 
+20th level).
+  These bonuses to AC apply even against touch attacks 
+or when a ninja is flat-footed. The character loses these 
+bonuses when she is immobilized or helpless, when she 
+wears any armor, when she carries a shield, or when she 
+carries a medium or heavy load.
+ 
+Ki  Power (Su):
+ A ninja can channel her 
+ki
+ to manifest 
+special powers of stealth and mobility. She can use her 
+ki
+ powers a number of times per day equal to one-half 
+her class level (minimum 1) plus her Wisdom bonus (if 
+any). 
+Ki
+ powers can be used only if a ninja is wearing no 
+armor and is unencumbered.
+  As long as a ninja’s 
+ki
+ pool isn’t empty (that is, as long 
+as she has at least one daily use remaining), she gains a 
++2 bonus on her Will saves.
+  A ninja’s 
+ki
+ powers are ghost step, 
+ki
+ dodge, ghost strike, 
+greater 
+ki
+ dodge, and ghost walk. Each power is described 
+under a separate entry below.
+ 
+Sudden Strike (Ex):
+ If a ninja can catch an opponent 
+when he is unable to defend himself effectively from 
+her attack, she can strike a vital spot for extra damage. 
+Whenever a ninja’s target is denied a Dexterity bonus to 
+Armor Class (whether the target actually has a Dexter
+-
+ity bonus or not), the ninja deals an extra 1d6 points of 
+damage with her attack. This extra damage increases by 
+1d6 points for every two ninja levels thereafter. A ninja 
+can’t use sudden strike when flanking an opponent unless 
+that opponent is denied its Dexterity bonus to AC.
+  This  damage  also  applies  to  ranged  attacks  against 
+targets up to 30 feet away. Creatures with concealment, 
+creatures without discernible anatomies, and creatures 
+immune to extra damage from critical hits are all immune 
+to sudden strikes. A ninja can’t make a sudden strike 
+while striking the limbs of a creature whose vitals are 
+out of reach.
+  A ninja can’t use sudden strike to deliver nonlethal 
+damage.  Weapons  capable  of  dealing  only  nonlethal 
+damage don’t deal extra damage when used as part of a 
+sudden strike.
+  The extra damage from the sudden strike ability stacks 
+with the extra damage from sneak attack whenever both 
+would apply to the same target.
+  Trapfinding (Ex):
+ A ninja can use the Search skill to 
+locate traps with a DC higher than 20, and she can use 
+Disable Device to bypass a trap or disarm magic traps. See 
+the rogue class feature, page 50 of the 
+Player’s Handbook
+.
+ 
+Ghost Step (Su):
+ Starting at 2nd level, a ninja can 
+spend one daily use of her 
+ki
+ power to become invisible 
+for 1 round. Using this ability is a swift action (see Swift 
+Actions and Immediate Actions, page 
+137  ) that does not 
+provoke attacks of opportunity.
+  At 10th level, a ninja can become ethereal when using 
+ghost step instead of becoming invisible.
+ 
+Poison Use (Ex):
+ At 3rd level and higher, a ninja never 
+risks  accidentally  poisoning  herself  when  applying 
+poison to a weapon.
+ 
+Great Leap (Su): 
+At 4th level and higher, a ninja always 
+makes Jump checks as if she were running and had the 
+Run feat, enabling her to make long jumps without a 
+running start and granting a +4 bonus on the jump (see 
+the skill description, page 77 of the 
+Player’s Handbook
+). 
+This ability can be used only if she is wearing no armor 
+and is carrying no more than a light load.
+ 
+Acrobatics (Ex):
+ Starting at 6th level, a ninja gains a +2 
+bonus on Climb, Jump, and Tumble checks. This bonus 
+increases to +4 at 12th level and +6 at 18th level.
+ 
+Ki Dodge (Su):
+ At 6th level and higher, a ninja can 
+spend one daily use of her 
+ki
+ power to cause an attack 
+against her to miss when it might otherwise hit. When a 
+ninja activates this ability, her outline shifts and wavers, 
+granting her concealment (20% miss chance) against all 
+attacks for 1 round. Using this ability is a swift action 
+that does not provoke attacks of opportunity.
+ 
+See invisibility
+ has no effect on concealment granted 
+by the 
+ki
+ dodge ability, but 
+true seeing
+ negates the miss 
+chance. This concealment does not stack with that caused 
+by other effects that grant concealment or by spells such 
+as 
+blink
+ or 
+displacement
+.
+ 
+Speed Climb (Ex):
+ A ninja of 7th level or higher can 
+scramble up or down walls and slopes with great speed. 
+She can climb at her speed as a move action with no 
+penalty; however, she must begin and end the round on 
+a horizontal surface (such as the ground or a rooftop). If 
+she does not end her movement on a horizontal surface, 
+she falls, taking falling damage as appropriate for her 
+distance above the ground.
+  A ninja needs only one free hand to use this ability. This 
+ability can be used only if a ninja is wearing no armor 
+and is carrying no more than a light load.
+ 
+Ghost Strike (Su):
+ At 8th level and higher, a ninja can 
+spend one daily use of her 
+ki
+ power to strike incorporeal 
+and ethereal creatures as if they were corporeal. She also 
+can use this ability to strike foes on the Material Plane 
+normally while ethereal (for example, while using her 
+ghost step ability).
+  Activating the ghost strike ability is a move action 
+that does not provoke attacks of opportunity. It affects 
+the next attack made by the ninja, as long as that attack 
+is made before the end of her next turn.
+ 
+Improved Poison Use (Ex):
+ Starting at 9th level, a 
+ninja can apply poison to a weapon as a move action. 
+(Normally, applying a poison is a standard action, like 
+applying an oil.)
+ 
+Evasion (Ex):
+ Beginning at 12th level, a ninja can avoid 
+damage from certain attacks with a successful Reflex save. 
+(See the monk class feature, page 41 of the 
+Player’s Handbook.
+) 
+A ninja’s use of evasion differs slightly from a monk’s use in 
+that a ninja can use evasion only if she is wearing no armor 
+and is carrying no more than a light load.
+ 
+Ghost Mind (Su): 
+At 14th level, a ninja gains a special 
+resistance to spells of the scrying subschool. To detect 
+or see a ninja with such a spell, the caster must make a 
+caster level check (DC 20 + the ninja’s class level). In the 
+case of scrying spells (such as 
+arcane eye
+) that scan the 
+ninja’s area, a failed check indicates that the spell works 
+but  the  ninja  simply  isn’t  detected.  Scrying  attempts 
+targeted specifically at the ninja do not work at all if the 
+check fails.
+ 
+Ghost Sight (Su):
+ At 16th level and higher, a ninja can 
+see invisible and ethereal creatures as easily as she sees 
+material creatures and objects.
+ 
+Greater Ki Dodge (Su):
+ Starting at 18th level, a ninja’s 
+ki
+  dodge  ability  grants  total  concealment  (50%  miss 
+chance).
+ 
+Ghost Walk (Su):
+ A 20th-level ninja can spend two 
+daily uses of her 
+ki
+ power to enter the Ethereal Plane for 
+an extended period of time. This ability functions as the 
+ethereal jaunt
+ spell with a caster level equal to the ninja’s 
+class level.
+HUMAN NINJA STARTING PACKAGE
+ 
+Armor:
+ None (speed 30 feet).
+ 
+Weapons:
+ Kama (1d4, light, 2 lb., slashing).
+Table 1–1: The Ninja
+ 
+Base
+ 
+Attack 
+Fort 
+Ref 
+Will 
+AC 
+Level 
+Bonus 
+Save 
+Save 
+Save 
+Bonus 
+Special
+  1st 
++0 
++0 
++2 
++0 
++0 
+Ki
+ power, sudden strike +1d6, trapfinding
+  2nd 
++1 
++0 
++3 
++0 
++0 
+Ghost step (invisible)
+  3rd 
++2 
++1 
++3 
++1 
++0 
+Sudden strike +2d6, poison use
+  4th 
++3 
++1 
++4 
++1 
++0 
+Great leap
+  5th 
++3 
++1 
++4 
++1 
++1 
+Sudden strike +3d6
+  6th 
++4 
++2 
++5 
++2 
++1 
+Acrobatics +2, 
+ki
+ dodge
+  7th 
++5 
++2 
++5 
++2 
++1 
+Sudden strike +4d6, speed climb
+  8th 
++6/+1 
++2 
++6 
++2 
++1 
+Ghost strike
+  9th 
++6/+1 
++3 
++6 
++3 
++1 
+Sudden strike +5d6, improved poison use
+10th 
++7/+2 
++3 
++7 
++3 
++2 
+Ghost step (ethereal)
+11th 
++8/+3 
++3 
++7 
++3 
++2 
+Sudden strike +6d6
+12th 
++9/+4 
++4 
++8 
++4 
++2 
+Acrobatics +4, evasion
+13th 
++9/+4 
++4 
++8 
++4 
++2 
+Sudden strike +7d6
+14th 
++10/+5 
++4 
++9 
++4 
++2 
+Ghost mind
+15th 
++11/+6/+1 
++5 
++9 
++5 
++3 
+Sudden strike +8d6
+16th 
++12/+7/+2 
++5 
++10 
++5 
++3 
+Ghost sight
+17th 
++12/+7/+2 
++5 
++10 
++5 
++3 
+Sudden strike +9d6
+18th 
++13/+8/+3 
++6 
++11 
++6 
++3 
+Acrobatics +6, greater 
+ki
+ dodge
+19th 
++14/+9/+4 
++6 
++11 
++6 
++3 
+Sudden strike +10d6
+20th 
++15/+10/+5 
++6 
++12 
++6 
++4 
+Ghost walk
+pqqqqqqqqqrs
+SUDDEN STRIKE AND SNEAK ATTACK
+For the purpose of qualifying for feats, prestige classes, and 
+similar  options  that  require  a  minimum  number  of  sneak 
+attack extra damage dice, treat the ninja’s sudden strike ability 
+as the equivalent of sneak attack.
+pqqqqqqqqqrs
+
+
+10
+CHAPTER 1
+CLASSES
+11
+CHAPTER 1
+CLASSES
+  Shortbow (1d6, crit 
+×
+3, range inc. 60 ft., 2 lb., pierc
+-
+ing).
+  20 shuriken (1d2, range inc. 10 ft., 2 lb., piercing).
+ 
+Skill Selection:
+ Pick a number of skills equal to 7 + 
+Int modifier.
+ 
+ 
+ 
+Armor Check 
+Skill 
+Ranks 
+Ability 
+Penalty
+Balance 
+4 
+Dex 
++0
+Disable Device 
+4 
+Int 
++0
+Hide 
+4 
+Dex 
++0
+Listen 
+4 
+Wis 
+—
+Move Silently 
+4 
+Dex 
++0
+Open Lock 
+4 
+Dex 
+—
+Search 
+4 
+Int 
+—
+Spot 
+4 
+Wis 
+—
+Tumble 
+4 
+Dex 
++0
+ 
+Feat:
+ Point Blank Shot.
+ 
+Bonus Feat:
+ Precise Shot.
+ 
+Gear:
+ Backpack with waterskin, one day’s trail rations, 
+bedroll, sack, flint and steel. Hooded lantern, 3 pints of 
+oil. Quiver with 20 arrows.
+ 
+Gold:
+ 4d4 gp.
+SCOUT
+Any force on the move, whether it’s an army or an adven
+-
+turing group, needs information about what’s ahead and 
+what’s behind and, more important, time to prepare for 
+battle. A scout can navigate difficult terrain at good speed, 
+and she specializes in seeing her foe before the opponent 
+ever detects her presence. In a dungeon or in the wild, a 
+scout is seen only when she wants to be.
+ 
+Adventures: 
+Scouts adventure for numerous reasons. 
+Many have a role in a military organization. Whether 
+serving as outriders for a large army or as foresters for a 
+small border fort, these scouts venture into the wilder
+-
+ness under orders. Although more common than other 
+scouts, those attached to the military are unlikely to have 
+the time or permission necessary to undertake regular 
+adventures.  Instead,  adventuring  scouts  come  from 
+rural villages, having honed their skills over a lifetime 
+of wandering the woods. Others have left their military 
+service  behind  and  find  themselves  attracted  to  the 
+adventuring lifestyle. Many adventuring scouts begin 
+their careers as guides hired to lead other adventurers 
+through the wilderness. Those who find the excitement 
+and challenge of adventuring to their taste then seek out 
+a group of their own.
+ 
+Characteristics:
+ A scout has some training in weapons 
+and a unique combat style that favors fast movement and 
+devastating  attacks.  She  excels  in  performing  during 
+running battles, which allow her to maximize her special 
+fighting techniques and high movement rate. Although 
+a  scout  can  hold  her  own  in  a  fight,  she’s  at  her  best 
+before combat begins, when she can use her powers of 
+stealth and observation to find an enemy and give her 
+companions accurate information about what they face. 
+The scout is a backcountry expert, exceeding even the 
+ranger’s ability to navigate rough terrain and lead a group 
+of companions through the wilderness.
+  The scout also excels in a dungeon environment, and 
+she can find and disable traps as well as any rogue. As a 
+scout advances in level, her senses become amazingly 
+acute, and she can eventually operate normally even in 
+total darkness.
+ 
+Alignment:
+ Scouts can be of any alignment, and a 
+scout’s alignment is often shaped more by her personal 
+background than from any training. The notable excep
+-
+tions  to  this  are  the  many  scouts  who  receive  their 
+training  in  a  military  organization—such  scouts  are 
+carefully and rigorously taught, and are almost always 
+lawful in alignment. Outside of military organizations, 
+more scouts are neutral than any other alignment, but 
+every alignment and philosophy is represented within 
+the class.
+ 
+Religion:
+ Scouts have varied and individual takes on 
+religion, and no single religion stands out as typical of 
+the class. Scouts occasionally pay homage to deities of 
+nature, but these devotions are more a personal choice 
+on the part of an individual than any outgrowth of their 
+training. Scouts don’t see nature as a force in its own 
+right, and this belief is one of the most profound differ
+-
+ences between the scout and the ranger classes. Where 
+the ranger sees nature as something to be revered and 
+protected, the scout sees it as the terrain over which she 
+must do her job. Although a scout might love nature for 
+its beauty or for the solitude she can find within it, she’ll 
+never draw power from nature the way a ranger does.
+ 
+Background:
+ Many scouts receive military training 
+and serve for a time as outriders for an army. They perfect 
+their techniques while trying to spot and hide from large 
+groups of foes. The crucible of military service turns out 
+tough, independent scouts accustomed to working on 
+their own or in small groups. Such steady individuals 
+make great additions to adventuring parties, and their 
+expertise is often sought by members of other classes.
+  Other scouts come from a wide variety of backgrounds. 
+Some train with foresters and rangers serving a rural 
+lord, and others simply grow up among the common 
+folk of the countryside, spending month after month 
+exploring the wild in their leisure time. Scouts from such 
+diverse backgrounds often take up adventuring to leave 
+their home communities behind. Having exhausted the 
+potential for exploration in their home region, they seek 
+a wider variety of experience and wish to see a broader 
+portion of the world.
+ 
+Races: 
+Humans make excellent scouts. Their adaptable 
+nature allows them to perfect a wider variety of skills 
+than most other races, and they make good use of the 
+scout’s many abilities. Elves and halflings are the most 
+naturally gifted scouts; both races have produced nimble 
+scouts with amazing abilities of stealth and observation. 
+While halflings have more innate talent for sneaking 
+than elves do, the greater speed of elf scouts gives 
+them advantages of their own.
+  Dwarves and gnomes make respectable under
+-
+ground scouts, and the scout’s bonuses to speed 
+offset one of these races’ greatest weaknesses. 
+Combined with the dwarf’s knack for operating 
+in areas of earth and stone, scout training can 
+turn dwarves into impressive underground 
+explorers—although  most  dwarves  pre
+-
+fer a more 
+straight
+-
+forward 
+approach to 
+combat  and  dis
+-
+like the skirmish fighting 
+style of the scout.
+ 
+Other Classes: 
+Scouts work 
+well with members of almost any 
+other  class.  Skilled  and  adaptable, 
+they  thrive  when  they  can  complement  a 
+slower and louder group of adventurers or 
+soldiers. Scouts move ahead of such a group 
+for  brief  periods,  stealthily  checking  the 
+next room or forest clearing for foes, and then 
+circling back again to ensure that enemies are 
+not sneaking up on the group from behind. When 
+combat is joined, however, the group remains as 
+a stable base to which a scout can fall back when 
+pressed. Clerics, wizards, and others willing 
+to cast spells that enhance a scout’s mobil
+-
+ity or stealth make her job easier, and 
+are welcome companions in combat 
+as well.
+  Conversely,  a  scout  also 
+welcomes a group made up 
+entirely of stealthy char
+-
+acters  such  as  rogues, 
+rangers, ninjas, and fellow scouts. This group moves much 
+more quietly than a normal adventuring party, and it is 
+seldom surprised.
+ 
+Role: 
+A scout plays several roles in most adventuring 
+groups. First and foremost, a scout excels at detecting an 
+enemy or creature before being detected herself. Whether 
+moving well ahead of the group or guarding the rear, a 
+scout is the character most likely to discover a potential 
+threat and be ready to act in combat. Serving as a backup 
+melee combatant or ranged expert in battle, she provides 
+support for the more straightforward fighters in the group 
+and confuses and distracts the enemy. A scout’s stealth 
+and trapfinding ability make her the natural choice 
+for entering and searching dangerous areas.
+GAME RULE INFORMATION
+Scouts have the following game statistics.
+ 
+Abilities:
+ Dexterity helps scouts become 
+stealthy and overcome their lack of access to 
+heavy armor. Wisdom also is important be
+-
+cause it affects many skills, especially Spot 
+and Listen, that most scouts consider vital to 
+their  ability 
+to survive 
+in  the 
+wild and to 
+detect  enemies 
+efficiently.
+       
+Alignment:
+ 
+Any.  Scouts  in 
+military  service 
+are usually lawful.
+ 
+Hit Die: 
+d8.
+ 
+Starting Gold:
+ 5d4
+×
+10 gp.
+Class Skills
+A scout’s class skills (and the key ability for each 
+skill) are Balance (Dex), Climb (Str), Craft (Int), 
+Escape Artist (Dex), Hide (Dex), Jump (Str), 
+Knowledge (dungeoneering) (Int), Knowl
+-
+edge  (geography)  (Int),  Knowledge 
+(nature)  (Int),  Listen  (Wis), 
+Move  Silently  (Dex),  Ride 
+(Dex),  Search  (Int),  Sense 
+Motive  (Wis),  Speak  Lan
+-
+guage  (n/a),  Spot  (Wis), 
+Survival  (Wis),  Swim 
+(Str), Tumble (Dex), and 
+Use Rope (Dex).
+A scout
+Illus. by J. Jarvis
+
+
+12
+CHAPTER 1
+CLASSES
+13
+CHAPTER 1
+CLASSES
+ 
+Skill Points at 1st Level: 
+(8 + Int modifier) 
+×
+ 4.
+ 
+Skill Points at Each Additional Level: 
+8 + Int modi
+-
+fier.
+Class Features
+All of the following are class features of the scout.
+ 
+Weapon and Armor Proficiency: 
+Scouts are profi
+-
+cient with all simple weapons, plus the handaxe, throwing 
+axe, short sword, and shortbow. Scouts are proficient with 
+light armor, but not with shields.
+ 
+Skirmish (Ex):
+ A scout relies on mobility to deal extra 
+damage  and  improve  her  defense.  She  deals  an  extra 
+1d6 points of damage on all attacks she makes during 
+any round in which she moves at least 10 feet. The extra 
+damage applies only to attacks taken during the scout’s 
+turn. This extra damage increases by 1d6 for every four 
+levels gained above 1st (2d6 at 5th, 3d6 at 9th, 4d6 at 13th, 
+and 5d6 at 17th level).
+  The extra damage only applies against living creatures 
+that  have  a  discernible  anatomy.  Undead,  constructs, 
+oozes,  plants,  incorporeal  creatures,  and  creatures 
+immune to extra damage from critical hits are not vulner
+-
+able to this additional damage. The scout must be able to 
+see the target well eough to pick out a vital spot and must 
+be able to reach such a spot. Scouts can apply this extra 
+damage to ranged attacks made while skirmishing, but 
+only if the target is within 30 feet.
+  At 3rd level, a scout gains a +1 competence bonus to 
+Armor Class during any round in which she moves at 
+least 10 feet. The bonus applies as soon as the scout has 
+moved 10 feet, and lasts until the start of her next turn. 
+This bonus improves by 1 for every four levels gained 
+above 3rd (+2 at 7th, +3 at 11th, +4 at 15th, and +5 at 19th 
+level).
+  A scout loses this ability when wearing medium or 
+heavy armor or when carrying a medium or heavy load. 
+If she gains the skirmish ability from another class, the 
+bonuses stack.
+ 
+Trapfinding
+ 
+(Ex):
+ A scout can use the Search skill 
+to locate traps with a DC higher than 20, and she can 
+use Disable Device to bypass a trap or disarm magic 
+traps. See the rogue class feature, page 50 of the 
+Player’s 
+Handbook
+.
+  Battle Fortitude (Ex): 
+At 2nd level, a scout gains a 
++1 competence bonus on Fortitude saves and initiative 
+checks. This bonus increases to +2 at 11th level and +3 
+at 20th level. A scout loses this bonus when wearing 
+medium or heavy armor or when carrying a medium or 
+heavy load.
+ 
+Uncanny Dodge (Ex):
+ Starting at 2nd level, a scout 
+cannot be caught flat-footed and reacts to danger before 
+her senses would normally allow her to do so. See the bar
+-
+barian class feature, page 26 of the 
+Player’s Handbook.
+ 
+Fast Movement (Ex):
+ Starting at 3rd level, a scout’s 
+gains a +10 foot enhancement bonus to her base land 
+speed. At 11th level, this bonus increases to +20 feet. 
+See  the  monk  class  feature,  page  41  of  the 
+Player’s 
+Handbook.
+  A  scout  loses  this  benefit  when  wearing  medium 
+or heavy armor or when carrying a medium or heavy 
+load.
+ 
+Trackless Step (Ex):
+ Beginning at 3rd level, a scout 
+cannot be tracked in natural surroundings. See the druid 
+class feature, page 36 of the 
+Player’s Handbook.
+ 
+Bonus  Feats:
+  At  4th  level  and  every  four  levels 
+thereafter  (8th,  12th,  16th,  and  20th  level),  a  scout 
+gains a bonus feat, which must be selected from the 
+following  list:  Acrobatic,  Agile,  Alertness,  Athletic, 
+Blind-Fight, Brachiation†, Combat Expertise, Danger 
+Sense†, Dodge, Endurance, Far Shot, Great Fortitude, 
+Hear  the  Unseen†,  Improved  Initiative,  Improved 
+Swimming†, Iron Will, Lightning Reflexes, Mobility, 
+Point  Blank  Shot,  Precise  Shot,  Quick  Draw,  Quick 
+Reconnoiter†, Rapid Reload, Shot on the Run, Skill 
+Focus,  Spring  Attack,  Track.  She  must  meet  all  the 
+prerequisites for the feat.
+  †New feat described in Chapter 3.
+  Evasion (Ex):
+ Beginning at 5th level, a scout can avoid 
+damage from certain attacks with a successful Reflex 
+save. See the monk class feature, page 41 of the 
+Player’s 
+Handbook.
+ 
+Flawless Stride (Ex):
+ Starting at 6th level, a scout can 
+move through any sort of terrain that slows movement 
+(such as undergrowth, rubble, and similar terrain) at her 
+normal speed and without taking damage or suffering 
+any other impairment.
+  This  ability  does  not  let  her  move  more  quickly 
+through terrain that requires a Climb or Swim check to 
+navigate, nor can she move more quickly through terrain 
+or undergrowth that has been magically manipulated to 
+impede motion.
+  A  scout  loses  this  benefit  when  wearing  medium 
+or heavy armor or when carrying a medium or heavy 
+load.
+ 
+Camouflage (Ex):
+ Beginning at 8th level, a scout can 
+use the Hide skill in any sort of natural terrain. See the 
+ranger class feature, page 48 of the 
+Player’s Handbook.
+ She 
+loses this benefit when wearing medium or heavy armor 
+or when carrying a medium or heavy load. 
+  Blindsense  (Ex): 
+At  10th  level,  a  scout  gains  the 
+blindsense ability out to 30 feet. This ability functions 
+as described on page 306 of the 
+Monster Manual.
+ 
+Hide in Plain Sight (Ex):
+ Beginning at 14th level, a 
+scout can use the Hide skill in natural terrain even while 
+being observed. See the ranger class feature, page 48 of 
+the 
+Player’s Handbook.
+ A scout loses this benefit when 
+wearing medium or heavy armor or when carrying a 
+medium or heavy load.
+ 
+Free Movement (Ex):
+ At 18th level and higher, a scout 
+can slip out of bonds, grapples, and even the effects of 
+confining spells easily. This ability duplicates the effect of 
+a 
+freedom of movement
+ spell, except that it is always active. 
+A scout loses this benefit when wearing medium or heavy 
+armor or when carrying a medium or heavy load.
+ 
+Blindsight (Ex):
+ A 20th-level scout gains the blind
+-
+sight ability out to 30 feet. Her senses become so acute 
+that she can maneuver and fight flawlessly even in total 
+darkness. Invisibility, darkness, and most kinds of con
+-
+cealment are irrelevant, though the scout must have line 
+of effect to a creature or object to discern it.
+HALF-ELF SCOUT 
+STARTING PACKAGE
+ 
+Armor:
+ Studded leather (+2 AC, armor check penalty 
+–1, speed 30 feet, 20 lb.).
+ 
+Weapons:
+ Short sword (1d6, crit 19–20/
+×
+2, 1 lb., light, 
+piercing).
+  Shortbow (1d6, crit 
+×
+3, range inc. 60 ft., 2 lb., pierc
+-
+ing).
+ 
+Skill Selection:
+ Pick a number of skills equal to 8 + 
+Int modifier.
+ 
+ 
+ 
+Armor Check 
+Skill 
+Ranks 
+Ability 
+Penalty
+Balance 
+4 
+Dex 
+–1
+Climb 
+4 
+Str 
+–1
+Hide 
+4 
+Dex 
+–1
+Jump 
+4 
+Str 
+–1
+Knowledge (nature) 
+4 
+Int 
+—
+Listen 
+4 
+Wis 
+—
+Move Silently 
+4 
+Dex 
+–1
+Search 
+4 
+Int 
+—
+Spot 
+4 
+Wis 
+—
+Survival 
+4 
+Wis 
+—
+Swim 
+4 
+Str 
+–2
+ 
+Feat:
+ Track.
+ 
+Gear:
+ Backpack with waterskin, one day’s trail rations, 
+bedroll, sack, flint and steel. Hooded lantern, 3 pints of 
+oil. Quiver with 20 arrows.
+ 
+Gold:
+ 5d4 gp.
+SPELLTHIEF
+Spellthieves  use  skill  and  arcane  magic  to  drain  the 
+abilities  of  their  opponents  and  turn  their  foes’  own 
+powers against them. Spellthieves love the challenges 
+that adventure brings, and they relish finding unique 
+and inventive ways to use their abilities. Because they 
+have such a wide variety of abilities, spellthieves can 
+adapt  themselves  to  overcome  nearly  any  challenge, 
+Table 1–2: The Scout
+ 
+Base
+ 
+Attack 
+Fort 
+Ref 
+Will
+Level 
+Bonus 
+Save 
+Save 
+Save 
+Special
+  1st 
++0 
++0 
++2 
++0 
+ Skirmish (+1d6), trapfinding
+  2nd 
++1 
++0 
++3 
++0 
+ Battle fortitude +1, uncanny dodge
+  3rd 
++2 
++1 
++3 
++1 
+ Fast movement +10 ft., skirmish (+1d6, +1 AC), trackless 
+step
+  4th 
++3 
++1 
++4 
++1 
+Bonus feat
+  5th 
++3 
++1 
++4 
++1 
+ Evasion, skirmish (+2d6, +1 AC)
+  6th 
++4 
++2 
++5 
++2 
+Flawless stride
+  7th 
++5 
++2 
++5 
++2 
+ Skirmish (+2d6, +2 AC)
+  8th 
++6/+1 
++2 
++6 
++2 
+ Camouflage, bonus feat
+  9th 
++6/+1 
++3 
++6 
++3 
+ Skirmish (+3d6, +2 AC)
+10th 
++7/+2 
++3 
++7 
++3 
+Blindsense 30 ft.
+11th 
++8/+3 
++3 
++7 
++3 
+ Battle fortitude +2, fast movement +20 ft., skirmish 
+(+3d6, +3 AC)
+12th 
++9/+4 
++4 
++8 
++4 
+ Bonus feat
+13th 
++9/+4 
++4 
++8 
++4 
+ Skirmish (+4d6, +3 AC)
+14th 
++10/+5 
++4 
++9 
++4 
+Hide in plain sight
+15th 
++11/+6/+1 
++5 
++9 
++5 
+ Skirmish (+4d6, +4 AC)
+16th 
++12/+7/+2 
++5 
++10 
++5 
+Bonus feat
+17th 
++12/+7/+2 
++5 
++10 
++5 
+ Skirmish (+5d6, +4 AC)
+18th 
++13/+8/+3 
++6 
++11 
++6 
+Free movement
+19th 
++14/+9/+4 
++6 
++11 
++6 
+ Skirmish (+5d6, +5 AC)
+20th 
++15/+10/+5 
++6 
++12 
++6 
+ Battle fortitude +3, blindsight 30 ft., bonus feat
+
+
+14
+CHAPTER 1
+CLASSES
+15
+CHAPTER 1
+CLASSES
+but they have neither the overpowering arcane might 
+of wizards nor the brute force of fi ghters. Spellthieves 
+never cast two spells when one will do, and they excel at 
+using misdirection and deception to overcome seemingly 
+stronger opponents.
+  Good spellthieves use their skills and magic to enter-
+tain themselves, protect those less gifted than themselves, 
+and occasionally serve a cause or nation as a spy. Evil 
+spellthieves use their versatile skills to trick and deceive, 
+or plague large cities as daring cat burglars.
+Adventures: 
+Spellthieves adventure because they love 
+a challenge. They see each puzzle, trap, or monster as a 
+new way to test their skills. This does not mean that they 
+are all overconfi dent. Some are, but many simply have a 
+healthy dose of curiosity and a keen interest in proving 
+their  own  mastery.  Because  they  have  such  versatile 
+abilities,  they  know  they  have  a  chance  to  overcome 
+nearly any kind of challenge. When confronted with 
+a  powerful  physical  foe,  a  spellthief  often  can’t  help 
+wanting to know whether his stealth and cunning could 
+overcome the foe’s brute force. When confronted with a 
+clever trap, a spellthief can’t help wondering whether his 
+speed and skill could overcome the trapmaker’s ingenuity 
+and preparation. Like other characters, spellthieves are 
+attracted to the wealth that adventuring offers. Living 
+an open, fl amboyant (and therefore expensive) lifestyle 
+suits many, if not all, spellthieves, and adventuring offers 
+ready rewards both in gold and fame.
+  Characteristics:
+ Spellthieves use an intuitive form 
+of arcane magic to enhance their versatile talents. They 
+have a broad skill selection and are capable of developing 
+several sets of skills. Many spellthieves emphasize stealth 
+and social abilities, perfecting the ability to surprise and 
+deceive their opponents.
+  In combat, spellthieves use a combination of precise 
+attacks and spells to steal abilities from their opponents. 
+At lower levels, a spellthief concentrates on fl anking foes 
+and delivering sneak attacks. As a spellthief progresses 
+in level, his ability to cast spells grows stronger, allowing 
+him to magically augment his modest combat abilities. A 
+spellthief’s most potent ability allows him to temporarily 
+steal spells, spell effects, and even energy resistances from 
+his opponents.
+Alignment:
+ Most spellthieves are neutral. They view 
+the world as a place full of challenges and interesting 
+opportunities and rarely give much thought to morality. 
+Even spellthieves with genuinely good intentions occa-
+sionally get caught up in the challenge of an adventure 
+and fail to see (or decide to intentionally overlook) the 
+moral implications of their actions.
+  Evil  spellthieves  are  callous  and  cruel,  using  their 
+abilities to trick, blackmail, or destroy anyone who has 
+something they want or stands in the way of their per-
+sonal agenda.
+ 
+Religion:
+ Most spellthieves prefer to rely on their own 
+wits and skill rather than pay homage to a higher power. 
+Occasionally, when planning a particularly daring raid, a 
+spellthief makes a one-time offering or prayer to a deity 
+with power over the night or thievery. Others sometimes 
+seek divine protection before attempting to rob or raid a 
+temple, but even these observances are more a chance for a 
+spellthief to even the odds than a true attempt at devotion. 
+Some particularly evil spellthieves devote themselves to 
+Vecna (the god of secrets), using their abilities to wrest 
+information from their opponents and exploit them for 
+blackmail or more serious crimes.
+ 
+Background:
+ Spellthieves come from a wide vari-
+ety of backgrounds. Although few places are devoted 
+to the formal training of spellthieves, the ones that 
+exist (usually military academies that train a capable 
+corps of espionage agents) produce especially capable 
+and loyal spellthieves. These agents of the crown are 
+the  exception  rather  than  the  rule,  however;  most 
+spellthieves acquire their training from one or more 
+solitary mentors.
+  These mentors are often spellthieves of varied back-
+grounds who wish to pass along their talents to a likely 
+protégé. Others are rogues or sorcerers who only partially 
+understand their disciple’s unique mixture of skills, yet 
+they provide enough guidance and encouragement for a 
+young spellthief to develop his own skills. Spellthieves 
+from these diverse backgrounds often pride themselves 
+on  their  blend  of  skills  and  magic.  They  rarely  take 
+levels in other classes, viewing their mixture of abili-
+ties as something particularly suited to their talent and 
+personality.
+ 
+Races: 
+Humans are more likely than members of other 
+races to become spellthieves. Their fl exible nature and 
+varied interests make them well suited to the specialties 
+of the spellthief. Elves also make excellent spellthieves, 
+benefi ting  from  their  natural  grace  and  affi nity  for 
+arcane magic. Halfl ings and gnomes fi nd the spellthief’s 
+combination of spellcasting abilities and skill selection 
+a good match for their small size. Many gnomes, with 
+their  affi nity  for  illusion  magic,  enjoy  the  versatility 
+offered by the spellthief class, and they often use their 
+combination  of  stealth  and  spellcasting  to  develop  a 
+formidable repertoire of practical jokes. Halfl ings, on 
+the other hand, usually take advantage of the class’s skill 
+selection and stealth abilities, viewing their spells as a 
+way to boost their ability to slip past dangerous traps 
+and monsters.
+  Neither  dwarves  nor  half-orcs  make  particularly 
+good spellthieves, since most members of those races 
+prefer physical power over skill or subterfuge. Dwarves 
+who  do  become  spellthieves  often  emphasize  their 
+ability to find and disable traps to the exclusion of 
+other skills.
+Other Classes: 
+Spellthieves work well with members 
+of almost any other class. Their spells and class skills 
+help them play a variety of roles in an adventuring group. 
+Because they’re not suited to act as 
+front-line melee combatants, 
+they  enjoy  working  with 
+fighters  and  barbarians 
+more than other classes.
+Role: 
+Spellthieves can fi ll 
+any  number  of  diverse  roles 
+in an adventuring group, depend-
+ing  on  the  skills  and  abilities  of 
+the other members of the party. 
+They can at times function as a 
+group’s expert on arcane magic. 
+With  the  right  skill  selection,  a 
+spellthief can act as a group’s primary 
+scout and its master of stealth. Because 
+his abilities overlap with those of ar-
+cane spellcasters and rogues, a spellthief 
+might have a hard time fi nding a niche in 
+a group that already includes one character of 
+each kind. In such a case, a spellthief usually con-
+centrates on using his spells to augment his class 
+abilities and combat prowess and ends up pairing with 
+the rogue in most endeavors. The two can scout almost 
+anywhere with little chance of being detected, and their 
+ability to fl ank an opponent and both deal sneak attack 
+damage makes them a deadly duo in combat.
+GAME RULE INFORMATION
+Spellthieves have the following game statistics.
+Abilities:
+  Charisma  determines  which  spells  a 
+spellthief can cast and how hard those spells are to resist. 
+Dexterity helps him avoid blows in combat despite his 
+light armor. Spellthieves who prefer melee combat benefi t 
+from high Strength or Constitution scores.
+Alignment: 
+Any,  although  many  spellthieves  tend 
+toward neutrality.
+Hit Die:
+ d6.
+Starting Gold:
+ 4d4
+×
+10 gp.
+Class Skills
+A spellthief’s class skills (and the key ability for each skill) 
+are Appraise (Int), Bluff (Cha), Concentration (Con), Craft 
+(Int), Decipher Script (Int), Disable Device (Int), Escape 
+Artist (Dex), Gather Information (Cha), Hide (Dex), Jump 
+(Str), Knowledge (arcana) (Int), Knowledge (local) (Int), 
+Listen  (Wis),  Move  Silently  (Dex),  Open  Lock  (Dex), 
+Search (Int), Speak Language (n/a), Spellcraft 
+(Int), Spot (Wis), Swim (Str), Tumble (Dex), 
+and Use Magic Device (Cha).
+Skill Points at 1st Level: 
+(6 + Int modi-
+fi er) 
+×
+ 4.
+ 
+Skill Points at Each Additional 
+Level: 
+6 + Int modifi er.
+Class Features
+All of the following are class 
+features of the spellthief.
+Weapon  and  Armor  Pro-
+ficiency:
+  Spellthieves  are 
+proficient  with  all  simple 
+weapons and with light armor 
+but not with shields. Because 
+the somatic components re-
+quired for spellthief spells 
+are simple, a spellthief can 
+cast spellthief spells while 
+wearing  light  armor 
+without  incurring  the 
+normal  arcane  spell 
+failure  chance. 
+However,  a 
+spellthief 
+wearing 
+ medium  or  heavy  armor  or  using  a 
+shield incurs a chance of arcane spell 
+failure  (see  page  123  of  the 
+Player’s 
+Handbook
+) if the spell in question has a somatic compo-
+nent (most do). A multiclass spellthief still incurs the 
+normal arcane spell failure chance for arcane spells re-
+ceived from other classes, including those stolen from 
+arcane casters (see the steal spell ability, below).
+  Sneak Attack (Ex):
+ A spellthief deals an extra  1d6 
+points of damage when fl anking an opponent or at any 
+time when the target would be denied its Dexterity bonus. 
+This extra damage applies to ranged attacks only if the 
+A spellthief
+Illus. by S. Belledin
+
+
+16
+CHAPTER 1
+CLASSES
+target is within 30 feet. It increases to 2d6 points at 5th 
+level, 3d6 points at 9th level, 4d6 points at 13th level, and 
+5d6 points at 17th level. See the rogue class feature, page 
+50 of the 
+Player’s Handbook
+. If a spellthief gets a sneak 
+attack bonus from another source (such as rogue levels), 
+the bonuses on damage stack.
+ 
+Steal Spell (Su):
+ A spellthief can siphon spell energy 
+away  from  his  target  and  use  it  himself.  A  spellthief 
+who  hits  an  opponent  with  a  successful  sneak  attack 
+can choose to forgo dealing 1d6 points of sneak attack 
+damage and instead steal a spell, or the potential to cast 
+a specific known spell, from his target. If the target is 
+willing, a spellthief can steal a spell with a touch as a 
+standard action.
+  The target of a steal spell attack loses one 0-level or 
+1st-level spell from memory if she prepares spells ahead 
+of time, or one 0-level or 1st-level spell slot if she is a 
+spontaneous caster. A spontaneous caster also loses the 
+ability to cast the stolen spell for 1 minute. If the target 
+has no spells prepared (or has no remaining spell slots, if 
+she is a spontaneous caster), this ability has no effect. A 
+spellthief can choose which spell to steal; otherwise, the 
+DM determines the stolen spell randomly. If a spellthief 
+tries to steal a spell that isn’t available, the stolen spell (or 
+spell slot) is determined randomly from among those the 
+target has available.
+  For example, a 1st-level spellthief who uses this ability 
+against a 1st-level sorcerer could choose to steal 
+magic mis
+-
+sile
+. Assuming the sorcerer knew that spell, a successful 
+steal spell attack would eliminate one 1st-level spell slot 
+and temporarily prevent her from casting 
+magic missile
+. 
+If the same spellthief stole 
+magic missile
+ from a wizard 
+who had it prepared, the wizard would lose one prepared 
+magic  missile
+  spell  (but  wouldn’t  lose  any  other 
+magic 
+missile
+ spells she might also have prepared).
+  After stealing a spell, a spellthief can cast the spell 
+himself on a subsequent turn. Treat the spell as if it 
+were cast by the original owner of the spell for the 
+purpose of determining caster level, save DC, and so 
+forth. A spellthief can cast this spell even if he doesn’t 
+have the minimum ability score normally required to 
+cast a spell of that level. The spellthief must supply the 
+same  components  (including  verbal,  somatic,  mate
+-
+rial, XP, and any focus) required for the stolen spell. 
+Alternatively, a spellthief of 4th level or higher can use 
+the stolen spell power to cast any spellthief spell that 
+he knows of the same level or lower (effectively, this 
+gives the spellthief one free casting of a known spell). 
+A spellthief must cast a stolen spell (or use its energy 
+to cast one of his own spells) within 1 hour of stealing 
+it; otherwise, the extra spell energy fades harmlessly 
+away.
+  As  a  spellthief  gains  levels,  he  can  choose  to  steal 
+higher-level spells. At 4th level, he can steal spells of up 
+to 2nd level, and for every two levels gained after 4th, 
+the maximum spell level stolen increases by one (up to 
+a maximum of 9th-level spells at 18th level).
+  At any one time, a spellthief can possess a maximum 
+number of stolen spell levels equal to his class level (treat 
+0-level spells as 1/2 level for this purpose). For instance, a 
+4th-level spellthief can have two stolen 2nd-level spells, or 
+one 2nd-level spell and two 1st-level spells, or any other 
+combination  of  0-level,  1st-level,  and  2nd-level  spells 
+totaling four levels. If he steals a spell that would cause 
+him to exceed this limit, he must choose to lose stolen 
+spells sufficient to reduce his total number of stolen spell 
+levels to no more than his maximum.
+  A spellthief can’t apply metamagic feats or other effects 
+to the stolen spell unless the specific spell stolen was 
+prepared with such an effect. For example, a spellthief 
+of 6th level or higher could steal a wizard’s empowered 
+magic missile
+, but only if he specifically chose to steal 
+empowered 
+magic missile
+. If he chose to steal an unmodi
+-
+fied 
+magic missile
+, he couldn’t steal an empowered 
+magic 
+missile
+, a silent 
+magic missile
+, or any other metamagic form 
+of the spell. A spellthief couldn’t steal an empowered 
+magic missile
+ from a sorcerer, since the sorcerer applies 
+metamagic effects upon casting and thus has no prepared 
+empowered 
+magic missile
+ spell.
+  This ability works only against spells. It has no effect 
+on psionic powers or spell-like abilities (but see the steal 
+spell-like ability class feature, below).
+  Trapfinding (Ex):
+  A  spellthief  can  use  the  Search 
+skill to locate traps with a DC higher than 20, and he 
+can use Disable Device to bypass a trap or disarm magic 
+traps. See the rogue class feature, page 50 of the 
+Player’s 
+Handbook.
+ 
+Detect Magic (Sp):
+ A spellthief of 2nd level or higher 
+can use 
+detect magic
+ a number of times per day equal to 
+his Charisma bonus, if any (minimum 1). His caster level 
+is equal to his spellthief class level.
+ 
+Spellgrace (Su):
+ A spellthief of 2nd level or higher 
+gains a +1 competence bonus on his saves against spells. 
+This bonus improves to +2 at 11th level and to +3 at 20th 
+level.
+ 
+Steal  Spell  Effect  (Su):
+  Beginning  at  2nd  level,  a 
+spellthief can siphon an active spell effect from another 
+creature. A spellthief who hits an opponent with a sneak 
+attack can choose to forgo dealing 1d6 points of sneak 
+attack damage and instead gain the effect of a single spell 
+Three adventurers team up for a better 
+chance against their hulking foe
+Illus. by W. O’Connor
+
+
+18
+CHAPTER 1
+CLASSES
+19
+CHAPTER 1
+CLASSES
+affecting the target. If the target is willing, a spellthief can 
+steal a spell effect with a touch as a standard action.
+  The spellthief can choose which spell effect to steal; 
+otherwise, the DM determines the stolen spell effect ran
+-
+domly. If a spellthief tries to steal a spell effect that isn’t 
+present, the stolen spell effect is determined randomly 
+from among those currently in effect on the target. A 
+spellthief can’t steal a spell effect if its caster level exceeds 
+his class level + his Charisma modifier.
+  Upon  stealing  a  spell  effect,  a  spellthief  gains  the 
+stolen effect (and the original creature loses that effect) 
+for 1 minute per class level (or until the spell’s duration 
+expires, whichever comes first). If the spell effect’s dura
+-
+tion hasn’t expired by this time, the spell effect returns 
+to the creature that originally benefited from it.
+  A spellthief can steal the effect of a spell only if the 
+spell could be cast on him by the original caster. For 
+example, a spellthief couldn’t gain the effect of an 
+animal 
+growth
+ spell (unless the spellthief is of the animal type) 
+or the effect of a 
+shield
+ spell (since that spell’s range is 
+personal). If a spellthief tries to steal the effect of a spell 
+not allowed to him, the effect is still suppressed on the 
+original target of the spell for 1 minute per spellthief 
+class level.
+  This ability does not work on spell effects that are 
+immune to 
+dispel magic
+ (such as 
+bestow curse
+).
+ 
+Steal  Energy  Resistance  (Su):
+  Beginning  at  3rd 
+level, a spellthief can siphon off some or all of a target’s 
+resistance to an energy type (acid, cold, electricity, fire, 
+or  sonic).  A  spellthief  who  hits  an  opponent  with  a 
+successful sneak attack can choose to forgo dealing 1d6 
+points of sneak attack damage and instead temporar
+-
+ily gain resistance 10 to an energy type to which his 
+target is resistant (or immune). If the target is willing, 
+a spellthief can steal energy resistance with a touch as 
+a standard action.
+  Simultaneously,  the  target  creature’s  resistance  to 
+that energy type is reduced by 10 (to a minimum of 0). 
+A creature with immunity to an energy type retains 
+that immunity.
+  If his target has more than one type of resistance 
+to energy, a spellthief can choose which kind to steal; 
+otherwise,  the  DM  determines  the  stolen  resistance 
+randomly from among those possessed by the target. 
+If a spellthief chooses to steal a type of resistance that 
+the target doesn’t possess, the stolen type of resistance 
+is determined randomly from those possessed by the 
+target.
+  The resistance a spellthief gains from using this abil
+-
+ity lasts for 1 minute. If the resistance is derived from a 
+temporary effect (such as a spell), the stolen resistance  
+disappears when the effect expires.
+  A spellthief can use this ability multiple times, but its 
+effects do not stack unless they apply to different types 
+of  energy.  For  example,  throughout  a  long  combat,  a 
+spellthief might use this ability to gain resistance to fire 
+and resistance to cold, but he could not use it twice on 
+a creature that is resistant to fire to gain twice as much 
+resistance to fire (nor to reduce the creature’s resistance 
+to fire by twice as much).
+  At 11th level, a spellthief can steal resistance 20 to an 
+energy type by using this ability, and at 19th level he can 
+steal resistance 30 to an energy type.
+ 
+Spells:
+ Beginning at 4th level, a spellthief gains the 
+ability to cast a small number of arcane spells, which are 
+drawn from a subset of the sorcerer/wizard spell list (see 
+below). He can cast any spell he knows without preparing 
+it ahead of time, just as a sorcerer can (see page 54 of the 
+Player’s Handbook
+).
+  To learn or cast a spell, a spellthief must have a Cha
+-
+risma score equal to at least 10 + the spell level (Cha 11 
+for 1st-level spells, Cha 12 for 2nd-level spells, and so on). 
+The DC for a saving throw against a spellthief’s spell is 
+10 + spell level + spellthief’s Cha modifier.
+  Like  other  spellcasters,  a  spellthief  can  cast  only  a 
+certain number of spells of each spell level per day. His 
+base  daily  spell  allotment  is  given  on  Table  1–3:  The 
+Spellthief. In addition, he receives bonus spells per day 
+if he has a high Charisma score (see Table 1–1, page 8 of 
+the 
+Player’s Handbook
+). When Table 1–3 indicates that a 
+spellthief gets 0 spells per day of a given spell level (for 
+instance, 1st-level spells for a 4th-level spellthief), he gains 
+only the bonus spells he would be entitled to based on 
+his Charisma score for that spell level.
+  A spellthief’s selection of spells is extremely limited. 
+A spellthief begins play knowing no spells but gains 
+one or more new spells at certain levels, as indicated on 
+Table 1–4: Spellthief Spells Known. (Unlike spells per 
+day, his Charisma does not affect the number of spells he 
+knows; the numbers on Table 1–4 are fixed.) A spellthief 
+can learn any sorcerer/wizard spell from the following 
+schools: abjuration, divination, enchantment, illusion, 
+and transmutation. No other sorcerer/wizard spells are 
+on the spellthief’s class spell list.
+  Upon reaching 12th level, and at every third spellthief 
+level after that (15th and 18th), a spellthief can choose 
+to learn a new spell in place of one he already knows. In 
+effect, the spellthief “loses” the old spell in exchange for 
+the new one. The new spell’s level must be the same as 
+that of the spell being exchanged, and it must be at least 
+two levels lower than the highest-level spellthief spell 
+that the spellthief can cast. For instance, upon reaching 
+12th level, a spellthief could trade in a single 1st-level 
+spell for a different 1st-level spell. A spellthief can swap 
+only a single spell at any given level, and he must choose 
+whether or not to swap the spell at the same time that he 
+gains new spells known for the level.
+  At 4th level and higher, a spellthief’s caster level for 
+spells is one-half his spellthief level.
+Table 1–4: Spellthief Spells Known
+ 
+————
+— Spells Known —————
+Level 
+1st 
+2nd 
+3rd 
+4th
+  1st 
+— 
+— 
+— 
+—
+  2nd 
+— 
+— 
+— 
+—
+  3rd 
+— 
+— 
+— 
+—
+  4th 
+2
+1
+ 
+— 
+— 
+—
+  5th 
+2 
+— 
+— 
+—
+  6th 
+3 
+— 
+— 
+—
+  7th 
+3 
+— 
+— 
+—
+  8th 
+4 
+2
+1
+ 
+— 
+—
+  9th 
+4 
+2 
+— 
+—
+10th 
+4 
+3 
+— 
+—
+11th 
+4 
+3 
+2
+1
+ 
+—
+12th 
+4 
+4 
+3 
+—
+13th 
+4 
+4 
+3 
+—
+14th 
+4 
+4 
+4 
+2
+1
+15th 
+4 
+4 
+4 
+3
+16th 
+4 
+4 
+4 
+3
+17th 
+5 
+4 
+4 
+4
+18th 
+5 
+5 
+4 
+4
+19th 
+5 
+5 
+5 
+4
+20th 
+5 
+5 
+5 
+5
+1  Provided that the spellthief has sufficient Charisma to 
+have a bonus spell of this level.
+ 
+Steal Spell-Like Ability (Su):
+ At 5th level and higher, 
+a spellthief can use a sneak attack to temporarily steal 
+a creature’s spell-like ability. A spellthief who hits an 
+opponent with a sneak attack can choose to forgo dealing 
+1d6 points of sneak attack damage and instead gain one 
+use of one of the target’s spell-like abilities. If the target 
+is willing, a spellthief can steal a spell-like ability with a 
+touch as a standard action.
+  This spell-like ability can originate from the target’s 
+class, race, template, or any other source, and can be of 
+any level up to a maximum of one-third the spellthief’s 
+class level. A spellthief can select a specific spell-like 
+ability to steal; otherwise, the DM chooses the ability at 
+random. If the ability has a limited number of uses per 
+day, the target must have at least one such use left, or the 
+spellthief can’t steal the ability. If the target can’t use its 
+ability at the present time (such as a summoned demon’s 
+summon ability), the spellthief can’t steal it.
+  A spellthief can use a stolen spell-like ability once. For 
+all purposes (caster level, save DC, and so on), treat the 
+spell-like ability as if it were being used by the original 
+possessor of the ability. A spellthief must use the stolen 
+spell-like ability within 1 minute of acquiring it, or it is 
+lost harmlessly. Until the spellthief uses the ability (or 
+until the minute elapses), the target cannot use the stolen 
+ability.
+ 
+Absorb Spell (Su):
+ Beginning at 7th level, if a spellthief 
+makes a successful save against a spell that targets him, 
+he can attempt to absorb the spell energy for later use. 
+This ability affects only spells that have the spellthief as 
+Table 1–3: The Spellthief
+ 
+Base
+ 
+Attack   Fort   Ref   Will    
+    
+—
+ 
+—   Spells per Day ——
+Level    Bonus  Save  Save  Save  Special 
+1st     2nd    3rd    4th
+1st 
++0 
++0    +0    +2    Sneak attack +1d6, steal spell (0 or 1st), trapfinding 
+— 
+— 
+— 
+—
+2nd 
++1 
++0    +0    +3 
+Detect magic,
+ spellgrace +1, steal spell effect 
+— 
+— 
+— 
+—
+3rd 
++2 
++1    +1    +3    Steal energy resistance 10 
+— 
+— 
+— 
+—
+4th 
++3 
++1    +1    +4    Steal spell (2nd) 
+0 
+— 
+— 
+—
+5th 
++3 
++1    +1    +4    Sneak attack +2d6, steal spell-like ability 
+0 
+— 
+— 
+—
+6th 
++4 
++2    +2    +5    Steal spell (3rd) 
+1 
+— 
+— 
+—
+7th 
++5 
++2    +2    +5    Absorb spell 
+1 
+— 
+— 
+—
+8th 
++6/+1    +2    +2    +6    Steal spell (4th) 
+1 
+0 
+— 
+—
+9th 
++6/+1    +3    +3    +6 
+Arcane sight
+, sneak attack +3d6 
+1 
+0 
+— 
+—
+10th 
++7/+2    +3    +3    +7    Steal spell (5th) 
+1 
+1 
+— 
+—
+11th 
++8/+3    +3    +3    +7    Spellgrace +2, steal energy resistance 20 
+1 
+1 
+0 
+—
+12th 
++9/+4    +4    +4    +8    Steal spell (6th) 
+1 
+1 
+1 
+—
+13th 
++9/+4    +4    +4    +8    Discover spells, sneak attack +4d6 
+1 
+1 
+1 
+—
+14th 
++10/+5    +4    +4    +9    Steal spell (7th) 
+2 
+1 
+1 
+0
+15th    +11/+6/+1  +5    +5    +9    Steal spell resistance 
+2 
+1 
+1 
+1
+16th    +12/+7/+2  +5    +5    +10   Steal spell (8th) 
+2 
+2 
+1 
+1
+17th    +12/+7/+2  +5    +5    +10   Sneak attack +5d6 
+2 
+2 
+2 
+1
+18th    +13/+8/+3  +6    +6    +11   Steal spell (9th) 
+3 
+2 
+2 
+1
+19th    +14/+9/+4  +6    +6    +11   Steal energy resistance 30 
+3 
+3 
+3 
+2
+20th   +15/+10/+5  +6    +6    +12   Absorb spell (immediate casting), spellgrace +3 
+3 
+3 
+3 
+3
+
+
+20
+CHAPTER 1
+CLASSES
+a target, not effect or area spells. A spellthief can’t absorb 
+a spell of a higher spell level than he could steal with his 
+steal spell ability (see above).
+  To absorb a spell that targets him, a spellthief must suc
+-
+ceed on a level check (1d20 + spellthief class level) against 
+a DC of 10 + the spell’s caster level. Failure indicates that 
+the spell has its normal effect. Success means that the 
+spellthief suffers no effect from the spell and can cast 
+the spell later (or use its energy to cast one of his own 
+spells known) as if he had stolen the spell with his steal 
+spell ability. His normal limit of total spell levels stolen 
+still applies.
+  At 20th level or higher, a spellthief can choose to use 
+the stolen spell energy as an immediate action (see page 
+137  ), either to recast the original spell or to cast one of 
+his own spells known using the stolen spell energy.
+ 
+Arcane Sight (Sp):
+ Beginning at 9th level, a spellthief 
+can  use 
+arcane  sight
+  as  a  swift  action  (see  page 
+137  )  a 
+number of times per day equal to his Charisma modifier 
+(minimum 1). His caster level is equal to his spellthief 
+class level.
+ 
+Discover Spells (Ex):
+  A  spellthief  of  13th  level  or 
+higher who steals a spell from a spellcaster with his steal 
+spell ability automatically learns the names of all other 
+spells prepared or known by the spellcaster that are of 
+the same spell level as the stolen spell. This knowledge 
+allows the spellthief to better choose which spells to steal 
+on subsequent attacks.
+  For  example,  a  13th-level  spellthief  who  steals 
+dis
+-
+integrate
+  from  an  enemy  sorcerer  would  also  discover 
+the names of all other 6th-level spells known by that 
+sorcerer.
+ 
+Steal Spell Resistance (Su):
+ Beginning at 15th level, 
+a spellthief can use a sneak attack to temporarily steal 
+some or all of a creature’s spell resistance. A spellthief 
+who hits an opponent with a sneak attack can choose 
+to forgo 3d6 points of sneak attack damage and instead 
+reduce the target’s spell resistance by 5. The spellthief 
+also gains spell resistance equal to 5 + his class level (up 
+to a maximum value equal to the original spell resis
+-
+tance of the target). If the target is willing, a spellthief 
+can steal spell resistance with a touch as a standard 
+action.
+  The stolen spell resistance benefits the spellthief for 
+a number of rounds equal to the spellthief’s Charisma 
+modifier (minimum 1 round) and then returns to the 
+target creature. If the spell resistance is derived from a 
+temporary effect (such as a spell), the stolen spell resis
+-
+tance disappears when the effect elapses. A spellthief 
+can’t use this ability on the same creature again until the 
+creature’s stolen spell resistance returns.
+HALFLING SPELLTHIEF 
+STARTING PACKAGE
+ 
+Armor:
+ Studded leather (+2 AC, armor check penalty 
+–1, speed 20 feet, 10 lb.).
+ 
+Weapons:
+ Light crossbow (1d6, crit 19–20/
+×
+2, range 
+inc. 80 ft., 2 lb., piercing).
+  Spear (1d6, crit 
+×
+3, range inc. 20 ft., 3 lb., piercing).
+ 
+Skill Selection:
+ Pick a number of skills equal to 6 + 
+Int modifier.
+ 
+ 
+ 
+Armor Check 
+Skill 
+Ranks     Ability 
+Penalty
+Concentration 
+4 
+Con 
+—
+Disable Device 
+4 
+Int 
+—
+Hide 
+4 
+Dex 
+–1
+Knowledge (any one) 
+4 
+Wis 
+—
+Listen 
+4 
+Wis 
+—
+Move Silently 
+4 
+Dex 
+–1
+Open Lock 
+4 
+Dex 
+—
+Search 
+4 
+Int 
+—
+Spellcraft 
+4 
+Int 
+—
+Spot 
+4 
+Wis 
+—
+Tumble 
+4 
+Dex 
+–1
+ 
+Feat:
+ Improved Initiative.
+ 
+Gear:
+ Backpack with waterskin, one day’s trail rations, 
+bedroll, sack, flint and steel. Hooded lantern, 3 pints of 
+oil. Case with 10 bolts.
+ 
+Gold:
+ 4d4 gp.
+pqqqqqqqqqqqqqqqqqqqqrs
+SPELLTHIEVES AND PSIONICS
+A  campaign  that  includes  psionic  characters,  as  described  in 
+the 
+Expanded Psionics Handbook,
+ would logically have room for 
+psionic-themed spellthieves.
+   If psionics are common in your game, you have two op
+-
+tions. The first is to allow spellthieves to affect both spells 
+and psionic powers. The second is to create a new class, the 
+psithief, that functions identically to the spellthief except that 
+its special abilities affect psionic powers only.
+   In  either  case,  a  spellthief  who  can  affect  psionic  powers 
+treats psionic powers as if they were spells of the same level, 
+allowing him to steal, absorb, or discover known psionic powers 
+as normal for spells. A spellthief can’t augment a stolen power, 
+even if he has power points available of his own. Treat psi-like 
+abilities  as  spell-like  abilities  for  the  purpose  of  a  spellthief’s 
+stealing these abilities.
+pqqqqqqqqqqqqqqqqqqqqrs
+
+
+fi nding a suitable prestige class involves making sure 
+that your character’s new suite of abilities fulfi lls 
+a needed role in the party. If your character is the 
+primary trapfi nder or scout, you’ll want to make 
+sure that the prestige class doesn’t diminish those 
+abilities while still providing you with interesting 
+options in combat.
+Good  Guys/Bad  Guys:
+  Members  of  these 
+groups define themselves by their alignment 
+and their outlook on the world first, and their 
+other abilities second. Their strengths reflect 
+their alignment choices, and roleplaying one 
+of  these  characters  means  putting  attitude 
+first.
+Melee:
+  A  character  belonging  to  one  of 
+these prestige classes is skilled at fi ghting in 
+close  quarters.  In  keeping  with  the  skilled 
+and stealthy themes of this book, the melee 
+prestige  classes  described  here  typically 
+depend on the sneak attack ability to deal the 
+kind of damage found in high-level play. Many 
+balance a good-sized Hit Die with armor selec-
+tion or a high base attack bonus progression, 
+his  chapter  presents  a  host  of  new  prestige 
+classes that provide skilled and often stealthy 
+career  choices  for  characters  of  every  class. 
+Spellcasters  will  fi nd  prestige  classes  that  let 
+them blend their spells and skills into deadly 
+new  abilities.  Fighters  and  other  combat-oriented 
+characters will fi nd ways to use their existing skills 
+to improve their martial prowess. Rogues and other 
+skill-focused characters will fi nd ways to blend their 
+already impressive abilities with those of other classes. 
+Several  of  these  prestige  classes  favor  multiclass 
+characters, accentuating the ideas of versatility and 
+adventure that pervade this book.
+PICKING A PRESTIGE CLASS
+The easy part of looking for a prestige class involves 
+comparing each class’s requirements with the abilities 
+and feats that you already have. Reading through this 
+chapter and comparing the classes here to your current 
+character or an NPC you’re building is a good way to 
+solidify your character concept at the same time that 
+you look for new options. The more diffi cult part of 
+21
+Illus. by D. Kovacs
+

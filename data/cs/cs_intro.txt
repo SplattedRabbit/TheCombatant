@@ -1,0 +1,666 @@
+
+
+
+
+
+
+CREDITS
+Visit our website at www.wizards.com/dnd
+D E S Ig nE R S
+Mike McArtor, F. Wesley schneider
+A D D I T Io nA l   DE S Ig n
+robert J. schWAlb
+D E V El o pE R
+Andy collins
+E D I To R S
+JenniFer clArke Wilkes, beth Griese, 
+John thoMpson
+E D I T In g   MA n A g E R
+kiM MohAn
+D E S Ig n   MA n A g E R
+christopher perkins
+D E V El o pM En T   MA n A g E R
+Jesse decker
+D I R E C To R   o f   Rp g  R & D
+bill slAvicsek
+p Ro D u C T Io n   MA n A g E R S
+Josh Fischer, rAndAll creWs
+S E n I o R   AR T  DI R E C To R   D & D
+stAcy lonGstreet
+A R T  DI R E C To R
+kArin JAques
+C oV E R  AR T I S T
+WilliAM o ’connor
+I nT E R Io R   AR T I S T S
+dAvid birchAM, MiGuel coi  MbrA,  
+ed cox, eric deschAMps, cArl FrAnk,  
+rAndy GAlleGos, hoWArd lyon,  
+WArren MAhy, MichAel phillippi,  
+FrAnz vohWinkel, evA WiderMAnn, 
+kierAn yAnner
+C A R To gR Ap hE R
+Mike schley
+g R Ap hI C  DE S Ig nE R
+kArin JAques
+g R Ap hI C  p Ro D u C T Io n   S pE C I Al I S T S
+erin dorries, AnGelikA lokotz
+I M Ag E   TE Ch nI C I An
+christinA Wiley
+Some information in this book is taken from or derived from these sources: “Songsabers of Waterdeep” by Mike Mearls and the 
+Dragon staff, Dragon Magazine 335, and “The Silver hexameric folio” by greg Marks, Dragon Magazine 338.
+Based on the original Dungeons & Dragons
+®
+ rules created by E. gary gygax and Dave Arneson, and the new Dungeons & Dragons 
+game designed by Jonathan Tweet, Monte Cook, Skip Williams, Richard Baker, and peter Adkison.
+This product uses updated material from the v.3.5 revision.
+This WizarDs of the Coast
+®
+ game product contains no open game Content. no portion of this work may be reproduced in any 
+form without written permission. To learn more about the open gaming license and the d20 System license, please visit www.
+wizards.com/d20.
+Dungeons & Dragons, D&D, Dungeon Master, d20, d20 System, WizarDs of the Coast, Player’s Handbook, Dungeon Master’s Guide, Monster Manual, Complete Scoundrel, all 
+other Wizards of the Coast product names, and their respective logos are trademarks of Wizards of the Coast, Inc., in the u.S.A. and other countries.
+This material is protected under the copyright laws of the united States of America. Any reproduction or unauthorized use of the material or artwork contained herein is prohibited 
+without the express written permission of Wizards of the Coast, Inc.
+This product is a work of fiction. Any similarity to actual people, organizations, places, or events is purely coincidental. printed in the u.S.A. ©2007 Wizards of the Coast, Inc.
+ 620-95725720-001-En
+9 8 7 6 5 4 3 2 1
+first printing: January 2007 ISBn: 978-0-7869-4152-0
+u.S., CAnADA, ASIA, pACIfIC,  
+& lATIn AMERICA
+Wizards of the Coast, Inc.
+p.o. Box 707
+Renton  WA  98057-0707
++1-800-324-6496 
+EuRopEAn hEADQuARTERS
+hasbro uK ltd
+Caswell Way
+newport, gwent np9 0Yh
+gREAT BRITAIn
+please keep this address for your records
+
+
+Table of
+ 
+Con
+Ten  Ts
+Contents
+Introduction. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .4
+Chapter 1: Scoundrels of All Types . . . . . . . . .7
+What Makes a Scoundrel?  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .7
+Scoundrels of Any Alignment  .  .  .  .  .  .  .  .  .  .  .  .  . .8
+Scoundrels of Any Class  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .10
+Playing a Scoundrel  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .11
+Making a Scoundrel  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .12
+Chapter 2: Prestige Classes . . . . . . . . . . . . . . . .23
+Choosing a Prestige Class  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .23
+Avenging Executioner  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .24
+Battle Trickster  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .28
+Cloaked Dancer  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .31
+Combat Trapsmith  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .34
+Fortune’s Friend  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .38
+Gray Guard  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .40
+Magical Trickster  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .45
+Malconvoker  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .48
+Master of Masks  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .52
+Mountebank  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .57
+Psibond Agent  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .60
+Spellwarp Sniper  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .64
+Uncanny Trickster  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .67
+Chapter 3: Feats and Skill Tricks . . . . . . . . . .71
+New Feats  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .71
+Advantageous Avoidance    .  .  .  .  .  .  .  .  .  .  .  .  . .73
+Ascetic Stalker  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .73
+Better Lucky than Good   .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .74
+Chant of the Long Road   .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .74
+Chord of Distraction   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .75
+Concussion Attack   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .75
+Cool Head  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .75
+Daredevil Athlete  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .76
+Daring Outlaw  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .76
+Daring Warrior .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .76
+Deadly Defense  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .76
+Deafening Strike   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .76
+Disemboweling Strike   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .76
+Dumb Luck   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .77
+Eldritch Erosion   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .77
+Expanded Ki Pool  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .77
+Enduring Ki  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .77
+Epic of the Lost King   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .77
+Fortuitous Strike    .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .77
+Freerunner  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .77
+Good Karma   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .77
+Head Shot   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .77
+Healer’s Luck   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .78
+Impeding Attack  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .78
+Improved Familiar  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .78
+Improved Skirmish  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .78
+Lucky Break    .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .79
+Lucky Catch   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .79
+Lucky Fingers   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .79
+Lucky Start    .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .79
+Magical Fortune   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .79
+Make Your Own Luck    .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .79
+Martial Stalker  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .79
+Master Spellthief  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .79
+Merciful Strike   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .79
+Mind Drain   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .79
+Miser’s Fortune   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .80
+Persistent Attacker   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .80
+Poison Expert  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .80
+Poison Master  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .80
+Psithief  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .80
+Psychic Luck    .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .80
+Savvy Rogue  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .80
+Sly Fortune   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .81
+Sound of Silence   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .81
+Sure Hand  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .81
+Survivor’s Luck    .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .81
+Sweet Talker  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .81
+Swift Ambusher  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .81
+Swift Hunter  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .81
+Tempting Fate    .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .81
+Third Time’s the Charm   .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .81
+Throat Punch   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .82
+Unbelievable Luck   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .82
+Victor’s Luck  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .82
+Warning Shout   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .82
+Skill Tricks  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .82
+Acrobatic Backstab   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .84
+Assume Quirk   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .85
+Back on Your Feet   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .85
+Clarity of Vision   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .85
+Clever Improviser  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .85
+Collector of Stories   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .85
+Conceal Spellcasting   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .85
+Corner Perch   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .85
+Dismount Attack   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .86
+Easy Escape  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .86
+Escape Attack   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .86
+Extreme Leap   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .86
+False Theurgy  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .86
+Group Fake-Out   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .87
+Healing Hands   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .87
+Hidden Blade   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .87
+Leaping Climber   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .87
+Listen to This   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .87
+Magical Appraisal   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .87
+Mosquito’s Bite   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .87
+Never Outnumbered   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .87
+Nimble Charge   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .87
+Nimble Stand   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .88
+Opening Tap  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .88
+Point It Out   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .88
+Quick Escape   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .88
+Quick Swimmer   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .88
+Second Impression   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .88
+Shrouded Dance   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .89
+Social Recovery   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .89
+Slipping Past   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .89
+Speedy Ascent   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .89
+Spot the Weak Point   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .89
+Sudden Draw   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .89
+Swift Concentration   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .90
+Timely Misdirection   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .90
+Tumbling Crawl   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .90
+Twisted Charge   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .90
+Up the Hill   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .90
+Walk the Walls   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .90
+Wall Jumper   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .90
+Whip Climber   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .90
+Chapter 4: New Spells. . . . . . . . . . . . . . . . . . . . . .91
+Animate Instrument  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .94
+Aquatic Escape  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .95
+Armor Lock  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .95
+Assassin’s Darkness  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .95
+Blockade  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .95
+Catapult  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .95
+Create Fetch .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .96
+Disobedience  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .97
+Enlarge Weapon  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .97
+Evacuation Rune  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .98
+Fatal Flame  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .99
+Grasping Wall  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .99
+Harmonic Void  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .99
+Healer’s Vision  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .100
+Lucky Streak  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .100
+Mage Burr  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .100
+Manifestation of the Deity  .  .  .  .  .  .  .  .  .  .  .  . .101
+Mimicry  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .101
+Opportune Dodge  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .101
+Scry Location  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .102
+Siphon  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .102
+Smoke Stairs  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .103
+Spell Theft  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .104
+Spore Field  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .104
+Spymaster’s Coin  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .104
+Wall of Vermin  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .104
+Wand Modulation  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .105
+Winged Watcher  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .106
+Chapter 5: Scoundrel Equipment . . . . . . . .107
+Hidden Spaces  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .107
+Surprise Weapons  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .109
+Alchemical Items  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .110
+Poisons  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .111
+Magic Items  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .113
+Aspect Mirror  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .113
+Bands of Fortune  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .114
+Bladeshimmer .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .114
+Lucky Charm  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .115
+Panic Button  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .115
+Rod of Ropes  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .116
+Shrunken Shrieker  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .116
+Trinket of Trickery  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .117
+Wheel of Fortune  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .117
+Living Items  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .118
+Green Air Bramble  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .118
+Gut Mites  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .118
+Jabberweed  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .119
+Planar Motes  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .119
+Rust Monster Wand  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .120
+Torch Bug items  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .120
+Chapter 6: Scoundrel Adventures . . . . . . . .121
+What Are Scoundrel Adventures?  .  .  .  .  .  .  .  .121
+DMing with Scoundrels  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .125
+Themes of Scoundrel Adventures  .  .  .  .  .  .  .  .125
+Organizations  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .128
+The Free League  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .128
+The Blind Tower  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .133
+Seven Ravens Clan  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .138
+Legendary Sites  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .142
+Legendary Site Descriptions  .  .  .  .  .  .  .  .  .  . .142
+Bussengeist Haunt  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .142
+Champion’s Crown  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .143
+Court of Thieves .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 144
+The Frog God’s Fane  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .145
+Heward’s Hall  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .146
+The Highest Spire  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .147
+Iron Wyrm Vault  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .149
+Olidammara’s Shell  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .150
+Otyugh Hole  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . .151
+Contacts  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .152
+One Hundred Scoundrel Challenges  .  .  .  .  .156
+
+Another classic fantasy figure is the witty rogue who lives 
+by his luck and always comes out on top: the scoundrel . 
+Scoundrels can be wildly different characters, including 
+Bilbo Baggins, Robin Hood, Han Solo and Princess Leia, 
+Sherlock Holmes, Zorro, and Lara Croft . All of them live 
+by their wits, take chances when they must, and land on 
+their feet against all odds . Each has a distinct personality 
+and goals, from solving crimes to committing them, but 
+these characters’ methods and outlooks, not their profes-
+sions or morality, make them scoundrels .
+  As personas for characters, scoundrels represent a style 
+of play rather than a class . They’re the sneaks, the cheats, 
+the bluffers, and the opportunists . They use improvisa-
+tion and imagination to gain an advantage, exploiting a 
+weakness or a hidden benefit in even the worst situation . 
+Anyone  can  play  a  scoundrel .  Simply  adjust  how  you 
+prepare for encounters, react to situations, and interact 
+with both NPCs and your fellow PCs . Lawful or chaotic, 
+sword-swinger  or  spellcaster,  scoundrels  come  in  all 
+types . 
+  Scoundrels  are  also  fun  and  valuable  tools  for  DMs . 
+Whether a skilled but unreliable cheat the PCs can never 
+be sure about, or an entire guild of trained sneaks and 
+thrill-seekers,  the  scoundrel  archetype  might  enhance 
+a campaign in any number of ways . The versatile new 
+feats, skill tricks, spells, and equipment presented in this 
+book might be just the way to spark a party’s imagination 
+and inspire new tactics . By the same token, putting these 
+features in the hands of an opponent NPC allows you to 
+confront even the most experienced player with something 
+never seen before . 
+WhaT’s InsIde
+Like earlier entries in this series, Complete Scoundrel is a 
+resource for players and DMs who wish to add elements 
+of this book’s theme to their game .
+  Chapter  1  introduces  the  concept  of  the  scoundrel . 
+What does it mean to play a scoundrel, and how can you 
+best craft your scoundrel character? This chapter explores 
+the archetype in detail, giving players and DMs a primer 
+on incorporating the rest of the book’s elements in their 
+roleplaying .
+  The following chapters present new abilities and options 
+for scoundrels of all sorts . Chapter 2 details prestige classes, 
+while Chapter 3 offers many new feats to exploit a situation 
+to the fullest . Chapter 3 also introduces two new rules 
+subsystems: skin-of-your-teeth luck feats and an exciting 
+way to enhance your skills with special tricks . 
+  Chapter  4  presents  a  variety  of  new  spells  designed 
+with the scoundrel in mind . Chapter 5’s selection of new 
+equipment—including  alchemical,  magical,  mundane, 
+and even living items—offers an array of useful gear for 
+characters who seek the right tool for every job .
+  Chapter 6 discusses the scoundrel adventure or cam-
+paign, including how to challenge characters who live 
+In Trodu
+CTI
+on
+
+Introduction
+“It’s locked,” Lidda said, backing away from the heavily bound 
+iron door. Its hundreds of etched demonic faces leered at her.
+   “Of course it is. That’s your job. Deal with it,” prodded Regdar, 
+his armor clanking as he shifted impatiently. 
+   “I can’t. It’s not locked like that. Hennet, you want to give this 
+one a try?”
+   “Pardon me,” the sorcerer whispered as he squeezed past Regdar, 
+whose  wide  frame  filled  most  of  the  tight  hallway.  Stepping 
+in front of Lidda and gesturing his companions back, Hennet 
+flamboyantly produced a wand, a flimsy thing little more than a 
+gnarled twig. He closed his eyes and concentrated for a moment 
+to summon the power inherent in his blood, then focused on the 
+wand. A silent wave of blue sparks washed over the evil-looking 
+door, but as they struck its surface they vanished like rain upon 
+warm stone. 
+   “It’s  beyond  the  wand’s  power,”  Hennet  stated  matter-of-
+factly as the blue light faded. He turned back, skirting past the 
+fighter.
+   Regdar looked to Lidda with an exasperated shrug. “Well, how 
+do we get by?”
+   “We look for another way.” Annoyance tinged Lidda’s voice.
+   “I could try something,” chirped Gimble from the rear. Disbe-
+lieving eyes turned toward the brightly dressed bard. With his 
+hands stretched out ahead of him, the gnome forced his way past 
+his doubtful companions. He tossed Lidda a jaunty smirk and a 
+quick raise of his eyebrows as he met her level gaze.
+   “A little room, please,” Gimble said in serious tones, mocking 
+Hennet’s dramatic pose. The others stepped back as he put his 
+back between them and the door. The gnome reached into his 
+cloak for a split second, then pressed his hands against the door 
+and began whispering slowly, ominously.
+   Regdar glanced at Hennet, who arched an eyebrow dubiously. 
+Their misgivings quickly gave way to surprise, though, as a loud 
+creaking echoed through the web-strewn hall. The heavy door 
+swung inward at the gnome’s push.
+   “How’d you—?” Lidda started.
+    “Old gnome trick.” Gimble waved his arms toward the entrance 
+like the most gracious host. “After you.”
+   As  his  companions  passed  by  cautiously,  Hennet  fixed  the 
+gnome with a sidelong look. Gimble hung back a moment. Deftly, 
+he slipped the palmed stone with its sinister demon face—just 
+like the ones on the door—back into his cloak. He’d found it a 
+few rooms back and pocketed it in case it might prove useful, as 
+it had. 
+   Skipping after his allies, Gimble smiled. They didn’t need to 
+know. That was the old gnome trick.
+Your sCoundrel
+A lot of the fun of the D&D® game lies in playing iconic 
+individuals  and  fantasy  archetypes:  the  axe-wielding 
+barbarian, the wise, staff-bearing wizard, the expert sharp-
+shooter elf . All these images hold an identifiable charm . 
+
+
+by their cleverness and daring . This chapter presents 
+new  organizations  and  contacts  to  help  scoundrels 
+participate  in  the  campaign  world,  as  well  as  new 
+magical locations to test even the most daring or sneaky 
+characters .
+WhaT You need To PlaY
+Complete  Scoundrel makes use of the information in the 
+three D&D core rulebooks—Player’s Handbook, Dungeon 
+Master’s Guide, and Monster Manual . In addition, several of 
+the new classes presented in other books in this series—
+especially  the Complete  Adventurer  supplement—find 
+support here . Rules from Complete  Warrior,  Dungeon 
+Master’s Guide II, Expanded Psionics Handbook, and Player’s 
+Handbook  II are also referenced and expanded upon . 
+Although possession of any or all of these supplements 
+can enhance your enjoyment of this book, they are not 
+necessary .
+sC oundrel resourCes
+Scoundrels abound in fiction and history . If you are look-
+ing for inspiration when crafting a scoundrel character, 
+whether  as  an  adventurer  or  as  a  challenging  villain, 
+consider the following sources .
+MYT  h and legend
+Various legendary heroes use their wits as well as their 
+brawn to survive and become the founders or patrons of 
+human  cultures .  Examples  include  the  Sumerian  war-
+rior-king Gilgamesh as well as his barbarian companion 
+Enkidu, and heroes of the Trojan War, including Odys-
+seus  and  Diomedes;  trickster  figures  and  gods  such  as 
+Coyote from Native American legend, Anansi the spider 
+god of West African myth, and China’s Nv Wa and the 
+titan Prometheus, both champions of humanity; noble 
+outlaws such as Robin Hood; unlikely knights such as 
+Sir Percival of Holy Grail fame, and knights forced to deal 
+with uncourtly situations, such as Sir Gawain . Modern 
+myth and legend continue to add to this list, as books, 
+films, comics, and even games introduce new characters 
+to our shared culture . 
+faMous fIgures froM hIsTor  Y
+America’s Old West is filled with personalities who fit 
+various scoundrel archetypes, from the ruthless Doc Hol-
+liday to the gambler Wild Bill Hickok to the shrewd rebel 
+leader Cochise . The combination of a wide-open new land, 
+limited law enforcement, and displaced and persecuted 
+natives was a recipe for the rough-and-tumble climate in 
+which scoundrels thrive .
+  Legendary  military  leaders  sometimes  fit  the  defini-
+tion of scoundrels, especially those who buck tradition 
+or employ unorthodox tactics . Examples include “Pappy” 
+Boyington of the so-called Black Sheep Squadron and the 
+legendary German pilot Hans-Ulrich Rudel in World War 
+II; the “Desert Fox” Erwin Rommel, who ultimately died 
+for his attempt to assassinate Hitler; Hannibal of Carthage 
+and Fabius Cunctator, whose delaying tactics weakened 
+the Carthaginian army; Shaka, the brilliant tactician and 
+king of the Zulu; Oda Nobunaga, whose cunning, business 
+acumen, and ruthlessness brought his clan to the brink 
+of conquering all Japan; China’s first emperor, Qin, who 
+united the Three Kingdoms; and the eloquent Shawnee, 
+Tecumseh .
+  Con artists, innovators, heads of crime families, and 
+daring  criminals  are  obvious  examples  of  scoundrels: 
+Ronnie Biggs of England’s Great Train Robbery, Bonnie 
+and Clyde, Edward Teach (“Blackbeard”) and any number of 
+pirates from that period, and Wong Fei Hung, the Chinese 
+martial arts master and cultural hero portrayed in many 
+Hong Kong action films .
+books
+The following short bibliography should familiarize you 
+with some classic scoundrels of literature . 
+   Bridge of Birds by Barry Hughart . The wily sage Li Kao, 
+who has “a slight flaw in his character,” is a marvelous 
+scoundrel . 
+  The Conan novels by Robert E . Howard . The barbarian 
+thief and future king is an iconic scoundrel . In a similar 
+vein is the bloody hero of the Kane novels by Karl Edward 
+Wagner (for example, Death Angel’s Shadow) .
+   The  Hobbit by J    .R .R . Tolkein is the origin of the half-
+ling rogue archetype . The Lord of the Rings includes many 
+scoundrel characters as well, most notably Aragorn, Merry, 
+and Pippin .
+  The Icewind Dale trilogy and subsequent series by R .A . 
+Salvatore . The unlikely drow hero Drizzt do’Urden must 
+depend on his wits as well as his skill in a world that does 
+not  welcome  him .  His  nemesis,  the  troubled  assassin 
+Artemis Entreri, and the ever-scheming Jarlaxle of Men-
+zoberranzan, are also scoundrelly characters .
+  The Sherlock Holmes mysteries by Sir Arthur Conan 
+Doyle, and the Judge Dee novels by Robert van Gulik . 
+The latter’s Chinese detective character is based on a real 
+magistrate of the T’ang Dynasty, but the stories are entirely 
+fictional in the mold of Sherlock Holmes . 
+ Sunshine by Robin McKinley . The title character, who 
+draws strength from sunlight and must deal with having 
+freed a vampire, is resourceful, independent, and gifted 
+with unusual talents .
+ The Three Musketeers by Alexandre Dumas . All three of 
+the title characters, as well as d’Artagnan, are excellent 
+scoundrel archetypes .
+ Tom  Jones. Perhaps  the  most  famous  scoundrel  of  lit-
+erature, the young “foundling” travels through the world, 
+openly indulging his tastes while simultaneously demon-
+strating loyalty and virtue .
+In Trodu
+CTI
+on
+
+
+In Trodu
+CTI
+on
+fI lMs
+Scoundrels are enduring favorites of the silver screen .
+   Casablanca . Both Rick the bar owner and the corrupt 
+Captain Renault qualify as scoundrels . 
+ The Good, the Bad, and the Ugly. The three protagonists: 
+Blondie (the Man with No Name), Angel Eyes, and Tuco 
+“the Rat,” all embody different sorts of scoundrels . 
+  The Matrix trilogy . Neo, the hacker protagonist, is an 
+obvious scoundrel, but so are Morpheus, Trinity, and the 
+other human rebels .
+  The Pirates of the Caribbean movies . Besides the unfor-
+gettable  Captain  Jack  Sparrow,  Elizabeth  Swann  is 
+certainly a scoundrel, as is the cursed pirate Barbossa . 
+ Raiders of the Lost Ark and its sequels . The two-fisted 
+archeologist Indiana Jones is an homage to serial heroes 
+such  as  the  Shadow,  the  Phantom,  and  Zorro .  (Those 
+movies are also well worth watching .)
+  The Star  Wars  trilogies .  Who  isn’t  a  scoundrel  in 
+these movies? From bounty hunters such as Boba Fett 
+and Greedo, to the heroes Han Solo and Princess Leia, 
+to villains including Jabba the Hutt and Darth Maul, 
+many characters of the Star Wars universe exemplify the 
+scoundrel state of mind . 
+TelevIsIon shoWs
+Even more than in movies, scoundrels abound in broad-
+cast entertainment .
+  The Blackadder series . The main character, played by 
+Rowan Atkinson, portrays a different sort of scoundrel in 
+each of his incarnations, from plotting prince to caustic 
+courtier to disgruntled officer .
+   Dallas. J .R .—what more needs to be said?
+ Firefly. The crew of Serenity includes a variety of scoun-
+drels, from the noble yet mercenary Captain Malcolm 
+Reynolds, to Shepherd Book, the wandering priest with 
+a mysterious background, to Inara the Companion (who 
+might be the most law-abiding character on the ship) . In 
+a similar vein is the earlier Cowboy Bebop, an anime SF 
+series about a small crew of bounty hunters .
+ Have Gun—Will Travel. The mysterious and charming 
+Paladin is a gun-for-hire with his own strict moral code .
+   House. The antiheroic Dr . Gregory House is a modern 
+Sherlock Holmes in both deductive ability and social 
+withdrawal .
+    Kung Fu. The wandering hero, Caine, is caught between 
+two cultures and must survive on wit, adaptability, and 
+inner strength .
+ Mission: Impossible. Incredible situations meet outland-
+ish solutions . Every rogue should see this one .
+ Remington Steele. Both the title character, a thief who 
+was supposed to be merely a public front for the real 
+private eye, and his creator, Laura Holt, embody many 
+scoundrel qualities . 
+ Star Trek. In the original series, Captain Kirk is a classic 
+example of a leader who follows his instinct rather than 
+the rules when confronted with an unusual situation . 
+Lore from the Next Generation series is an outstanding 
+evil scoundrel .
+Co  MICs and gra  PhIC novels
+From the first caped avengers of the 1930s to the adult-
+oriented  graphic  novels  of  today,  comics  have  been  a 
+fitting medium for scoundrels .
+  DC’s Batman  comics  (as  well  as  the  many  film  and 
+television adaptations) . This dark and complex hero is 
+the epitome of brains over brawn . Marvel’s Spider-Man 
+is a different sort of scoundrel, an everyday guy with a 
+gift but without Bruce Wayne’s riches and technological 
+backup . The X-Men comics offer yet more examples of 
+scoundrels, including such diverse characters as Wolver-
+ine, Mystique, and Magneto .
+  The Hellblazer comics (various authors and artists) . John 
+Constantine is an antihero caught between the forces of 
+Heaven and Hell who uses trickery to survive in a world 
+thick with supernatural influence .
+ The League of Extraordinary Gentlemen by Alan Moore 
+and Kevin O’Neill . This tour de force takes the greatest 
+scoundrels, adventurers, and thinkers of Victorian-era 
+literature and brings them together on a secret mission 
+for the British government . 
+  The Sandman  series,  written  by  Neil  Gaiman .  The 
+enigmatic central character is the incarnation of Dream, 
+whose motives are sometimes difficult to understand and 
+whose behavior can be capricious and cruel . Some of the 
+other Immortals, especially Desire and Despair, can be 
+seen as scoundrels as well .
+ Transmetropolitan, written by Warren Ellis . Spider Jeru-
+salem is a perverse “gonzo” journalist who is the only real 
+voice of the people in a dystopic near-future megacity .
+ V  for  Vendetta by Alan Moore and David Lloyd . The 
+strangely  noble  title  character  commits  terrorist  acts, 
+and even torments his young protégée, in the name of 
+freedom and vengeance .
+gaMes
+The worlds invented for computer and console games 
+include memorable scoundrel characters . The following 
+are just a few examples: Lara Croft from Tomb  Raider, 
+Master Chief from Halo, the nameless space marine of 
+Doom, the eponymous hero of the Prince of Persia games, 
+and even Mario, the resourceful plumber from Donkey 
+Kong and the many Mario Brothers games .
+  And of course, roleplaying games have given us scoun-
+drel classics, both in novels and in published adventures: 
+Tasselhoff Burrfoot from the Dragonlance® Campaign 
+Setting  and  Elminster  the  rascal  archmage  of  Faerûn 
+are just two . Eberron’s Lord of Blades might qualify as a 
+scoundrel as well—a charismatic leader whose true goals 
+are shrouded in mystery .
+
+e’s a card player, gambler, scoundrel. You’d like him.”
+—Han Solo, The Empire Strikes Back
+He’s the silver-tongued charmer who can 
+finesse his way past even the most intimidat-
+ing guard . She’s the skilled sword-spinner whose mere 
+tap of her blade and slow shake of her head are just as 
+effective as running a man through . He’s the sorcerer who 
+crosses his fingers, casts a few spells, and barrels headlong 
+into a volcano . All of these characters are scoundrels: 
+quick-witted cads, death-defying daredevils, improvisers, 
+gamblers, and downright lucky bastards . 
+  Everyone has seen scoundrels, whether in fiction, in 
+movies, or in D&D games . They’re the characters who 
+always know just what to say, who act on a whim, and 
+who always manage to see their way through any situ-
+ation . Confident risk-takers and thrill-seekers, these 
+opportunists break all the rules and still manage to come 
+out on top .
+WhaT Makes  
+a sCoundrel?
+Who is a scoundrel? Sure, the fast-talking con artist and 
+the charming thief are probably scoundrels . Yet so might 
+be the fleet-footed monk, the veteran warrior, and the 
+cleric of Pelor . Being a scoundrel doesn’t have anything 
+to do with a character’s class . It’s a mindset, a way to play 
+your character, an archetype any PC with any goal might 
+fulfill . Being a scoundrel isn’t about thieving, lying, and 
+cheating—though sometimes those tactics come into 
+play   . It’s about thinking on your feet, taking the big risk, 
+finding opportunities, and doing whatever it takes to 
+get exactly what you want . Whether your character is 
+a skilled pickpocket, a reclusive druid, or a devoted 
+paladin, this chapter tells you how to create and play 
+exactly the scoundrel you want .
+  The  scoundrel  mentality  and  lifestyle  revolve 
+around some key elements . While your scoundrel 
+character might not adopt all these philosophies 
+and styles of play, some might aid you or give you 
+ideas on how to make your scoundrel unique .
+ Scoundrels  break  rules.  Scoundrels  aren’t 
+always what they appear to be or who they say they 
+are   . They warp the truth to obtain their goals, and 
+few are beyond lying when they must or whenever 
+convenient . Breaking rules frequently, but not 
+always, implies breaking laws . Few scoundrels go 
+out of their way to commit crimes or provoke lawful 
+individuals, but they refuse to let an intangible idea 
+prevent them from attaining their goals . Breaking 
+the rules doesn’t have to be out of selfishness or 
+
+Illus. by D. Bircham
+
+
