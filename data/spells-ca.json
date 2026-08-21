@@ -37,5 +37,44 @@
     "range": "Touch",
     "save": "Will negates",
     "sr": "Yes"
+  },
+  "aura_of_evasion": {
+    "id": "aura_of_evasion",
+    "nameDe": "Aura des Entrinnens",
+    "nameEn": "Aura of Evasion",
+    "level": 5,
+    "school": "Abjuration",
+    "classes": ["cleric", "druid", "wizard", "sorcerer"],
+    "description": "Grants the evasion class feature to all allies within 10 feet. Allies who already have evasion gain +2 bonus on Reflex saves.",
+    "duration": "1 round/level",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No"
+  },
+  "baleful_transposition": {
+    "id": "baleful_transposition",
+    "nameDe": "Heilloser Tausch",
+    "nameEn": "Baleful Transposition",
+    "level": 2,
+    "school": "Transmutation",
+    "classes": ["wizard", "sorcerer"],
+    "description": "Two target creatures swap locations. Both must fit in the destination space, otherwise the spell fails.",
+    "duration": "Instantaneous",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "Will negates",
+    "sr": "Yes"
+  },
+  "critical_strike": {
+    "id": "critical_strike",
+    "nameDe": "Kritischer Schlag",
+    "nameEn": "Critical Strike",
+    "level": 1,
+    "school": "Divination",
+    "classes": ["bard"],
+    "description": "Your next melee attack deals +1d6 sneak attack damage. If the attack hits, it also doubles the critical threat range of your weapon.",
+    "duration": "1 round",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No"
   }
 }

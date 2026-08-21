@@ -37,5 +37,44 @@
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "None",
     "sr": "No"
+  },
+  "lucky_streak": {
+    "id": "lucky_streak",
+    "nameDe": "Glückssträhne",
+    "nameEn": "Lucky Streak",
+    "level": 1,
+    "school": "Divination",
+    "classes": ["bard"],
+    "description": "Subject gains a +2 luck bonus on rerolls made with luck feats for the duration of the spell.",
+    "duration": "1 round/level",
+    "range": "Touch",
+    "save": "Will negates (harmless)",
+    "sr": "Yes (harmless)"
+  },
+  "assassins_darkness": {
+    "id": "assassins_darkness",
+    "nameDe": "Finsternis des Assassinen",
+    "nameEn": "Assassin's Darkness",
+    "level": 4,
+    "school": "Illusion",
+    "classes": ["wizard", "sorcerer"],
+    "description": "Creates a 20-ft. radius globe of magical darkness. Only the caster can see normally through this darkness.",
+    "duration": "1 round/level",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "None",
+    "sr": "No"
+  },
+  "smugglers_covet": {
+    "id": "smugglers_covet",
+    "nameDe": "Schmuggler-Versteck",
+    "nameEn": "Smuggler's Covet",
+    "level": 3,
+    "school": "Abjuration",
+    "classes": ["bard"],
+    "description": "Masks the magical aura of items carried in a pocket or pouch, making them undetectable to detect magic spells.",
+    "duration": "1 hour/level",
+    "range": "Touch",
+    "save": "None",
+    "sr": "No"
   }
 }

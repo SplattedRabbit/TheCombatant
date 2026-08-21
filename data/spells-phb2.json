@@ -37,5 +37,44 @@
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "Will partial",
     "sr": "Yes"
+  },
+  "evards_menacing_tentacles": {
+    "id": "evards_menacing_tentacles",
+    "nameDe": "Evards Bedrohliche Tentakeln",
+    "nameEn": "Evard's Menacing Tentacles",
+    "level": 3,
+    "school": "Transmutation",
+    "classes": ["wizard", "sorcerer"],
+    "description": "Grow 4 tentacles from your body. Each round as a free action, you can make grapple or attack checks against adjacent foes with these tentacles.",
+    "duration": "1 round/level",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No"
+  },
+  "ray_of_deanimation": {
+    "id": "ray_of_deanimation",
+    "nameDe": "Deaktivierungsstrahl",
+    "nameEn": "Ray of Deanimation",
+    "level": 4,
+    "school": "Abjuration",
+    "classes": ["wizard", "sorcerer"],
+    "description": "Ray deals 1d6 points of damage per caster level (max 15d6) to constructs, bypassing hardness.",
+    "duration": "Instantaneous",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "None",
+    "sr": "Yes"
+  },
+  "chimeric_curve": {
+    "id": "chimeric_curve",
+    "nameDe": "Chimärische Kurve",
+    "nameEn": "Chimeric Curve",
+    "level": 4,
+    "school": "Illusion",
+    "classes": ["wizard", "sorcerer"],
+    "description": "Creates an illusory duplicate that mirrors your movements, deflecting the next incoming attack or ray spell to target the duplicate.",
+    "duration": "1 round/level",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No"
   }
 }

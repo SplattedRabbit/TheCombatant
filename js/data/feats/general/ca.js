@@ -57,5 +57,50 @@ export const GENERAL_FEATS_REGISTRY_CA = {
     "normalRaw": "",
     "specialRaw": "",
     "appEffect": "Schurke und Haudegen stufenweises Stacking für Sneak Attack und Grace"
+  },
+  "devoted_performer": {
+    "id": "devoted_performer",
+    "nameDe": "Hingebungsvoller Musiker",
+    "nameEn": "Devoted Performer",
+    "category": "general",
+    "source": "ca",
+    "prereqs": [
+      {
+        "type": "custom",
+        "desc": "Bardic music"
+      },
+      {
+        "type": "custom",
+        "desc": "Smite evil"
+      }
+    ],
+    "benefitDe": "Deine Stufen als Paladin und Barde addieren sich zur Bestimmung deiner täglichen Anwendungen von Böses niederstrecken (Smite Evil) und Bardenmusik. Du darfst weiterhin als Barde aufsteigen, ohne deine Paladin-Klasse zu verlieren.",
+    "benefitRaw": "Your paladin and bard levels stack for the purpose of determining your daily uses of smite evil and bardic music. You can freely multiclass between Paladin and Bard.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Klassen-Stacking für Smite Evil und Bardic Music; freies Multiclassing"
+  },
+  "insightful_strike": {
+    "id": "insightful_strike",
+    "nameDe": "Scharfsinniger Treffer (Insightful Strike)",
+    "nameEn": "Insightful Strike",
+    "category": "general",
+    "source": "ca",
+    "prereqs": [
+      {
+        "type": "feat",
+        "id": "weapon_finesse"
+      },
+      {
+        "type": "stat",
+        "name": "int",
+        "value": 13
+      }
+    ],
+    "benefitDe": "Addiere deinen Intelligenz-Modifikator anstelle deines Stärke-Modifikators zum Schadenswurf aller Waffen, auf die Waffenfeinheit (Weapon Finesse) anwendbar ist.",
+    "benefitRaw": "You add your Intelligence modifier instead of your Strength modifier on damage rolls with any weapon to which Weapon Finesse applies.",
+    "normalRaw": "Strength modifier is added to damage rolls.",
+    "specialRaw": "",
+    "appEffect": "Intelligenz-Modifikator auf Schadenswürfe für feine Waffen"
   }
 };
