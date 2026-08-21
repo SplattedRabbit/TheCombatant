@@ -1,0 +1,134 @@
+Fire Resistance, Improved:As fire resistance, except it
+absorbs the first 20 points of fire damage per attack.
+Moderate abjuration; CL 7th; Craft Magic Arms and Armor,
+resist energy; Price +42,000 gp.
+Fire Resistance, Greater:As fire resistance, except it absorbs
+the first 30 points of fire damage per attack.
+Moderate abjuration; CL 11th; Craft Magic Arms and Armor,
+resist energy; Price +66,000 gp.
+Fortification: This suit of armor or shield produces a magical
+force that protects vital areas of the wearer more effectively. When
+a critical hit or sneak attack is scored on the wearer, there is a
+chance that the critical hit or sneak attack is negated and damage
+is instead rolled normally.
+Base Price
+Fortification TypeChance for Normal DamageModifier
+Light25%+1 bonus
+Moderate75%+3 bonus
+Heavy100%+5 bonus
+Strong  abjuration; CL  13th;  Craft  Magic  Arms  and  Armor,
+limited wish ormiracle; Price varies (see above).
+Ghost Touch:This armor or shield seems almost translucent.
+Both its enhancement bonus and its armor bonus count against
+the attacks of incorporeal creatures. It can be picked up, moved,
+and worn by incorporeal creatures at any time. Incorporeal crea-
+tures gain the armor or shield’s enhancement bonus against both
+corporeal and incorporeal attacks, and they can still pass freely
+through solid objects.
+Strong transmutation; CL 15th; Craft Magic Arms and Armor,
+etherealness; Price +3 bonus.
+Glamered: A suit of armor with this ability appears normal.
+Upon command, the armor changes shape and form to assume the
+appearance of a normal set of clothing. The armor retains all its
+properties (including weight) when glamered. Only a true seeing
+spell or similar magic reveals the true nature of the armor when
+disguised.
+Moderate illusion; CL 10th; Craft Magic Arms and Armor, dis-
+guise self; Price +2,700 gp.
+Invulnerability: This suit of armor grants the wearer damage
+reduction of 5/magic.
+Strong abjuration and perhaps evocation (if miracleis used); CL
+18th; Craft Magic Arms and Armor, stoneskin, wish ormiracle; Price
++3 bonus.
+Reflecting:This shield seems like a mirror. Its surface is com-
+pletely reflective. Once per day, it can be called on to reflect a spell
+back at its caster exactly like the spell turning spell.
+Strong abjuration; CL 14th; Craft Magic Arms and Armor, spell
+turning; Price +5 bonus.
+Shadow:This armor is jet black and blurs the wearer whenever
+she tries to hide, granting a +5 competence bonus on Hide checks.
+(The armor’s armor check penalty still applies normally.)
+Faint illusion; CL 5th; Craft Magic Arms and Armor, invisibility;
+Price +3,750 gp.
+Shadow, Improved:As shadow, except it grants a +10 compe-
+tence bonus on Hide checks.
+Moderate illusion; CL 10th; Craft Magic Arms and Armor, invis-
+ibility; Price +15,000 gp.
+Shadow, Greater:As shadow, except it grants a +15 compe-
+tence bonus on Hide checks.
+Moderate illusion; CL 15th; Craft Magic Arms and Armor, invis-
+ibility; Price +33,750 gp.
+Silent Moves:This armor is well oiled and magically con-
+structed so that it not only makes little sound, but it dampens
+sound around it. It provides a +5 competence bonus on its wearer’s
+Move Silently checks. (The armor’s armor check penalty still
+applies normally.)
+Faint illusion; CL 5th; Craft Magic Arms and Armor, silence;
+Price +3,750 gp. 
+Silent Moves, Improved:As silent moves, except it grants a
++10 competence bonus on Move Silently checks.
+Moderate illusion; CL 10th; Craft Magic Arms and Armor,
+silence; Price +15,000 gp.
+Silent Moves, Greater:As silent moves, except it grants a +15
+competence bonus on Move Silently checks. 
+Moderate illusion; CL 15th; Craft Magic Arms and Armor,
+silence; Price +33,750 gp.
+Slick:Slick armor seems coated at all times with a slightly
+greasy oil. It provides a +5 competence bonus on its wearer’s
+Escape Artist checks. (The armor’s armor check penalty still
+applies normally.)
+Faint conjuration; CL 4th; Craft Magic Arms and Armor,grease;
+Price +3,750 gp. 
+Slick, Improved:As slick, except it grants a +10 competence
+bonus on Escape Artist checks.
+Moderate conjuration; CL 10th; Craft Magic Arms and Armor,
+grease; Price +15,000 gp.
+Slick, Greater:As slick, except it grants a +15 competence
+bonus on Escape Artist checks.
+Moderate conjuration; CL 15th; Craft Magic Arms and Armor,
+grease; Price +33,750 gp.
+Sonic Resistance: A suit of armor or a shield with this prop-
+erty normally has a glistening appearance. The armor absorbs the
+first 10 points of sonic damage per attack that the wearer would
+normally take (similar to the resist energyspell).
+Faint abjuration; CL 3rd; Craft Magic Arms and Armor, resist
+energy; Price +18,000 gp.
+Sonic Resistance, Improved:As sonic resistance, except it ab-
+sorbs the first 20 points of sonic damage per attack. 
+Moderate abjuration; CL 7th; Craft Magic Arms and Armor,
+resist energy; Price +42,000 gp.
+Sonic Resistance, Greater:As sonic resistance, except it
+absorbs the first 30 points of sonic damage per attack.
+Moderate abjuration; CL 11th; Craft Magic Arms and Armor,
+resist energy; Price +66,000 gp.
+Spell Resistance:This property grants the armor’s wearer spell
+resistance while the armor is worn. The spell resistance can be 13,
+15, 17, or 19, depending on the armor.
+Strong abjuration; CL 15th; Craft Magic Arms and Armor, spell
+resistance; Price +2 bonus (SR 13), +3 bonus (SR 15), +4 bonus (SR
+17), or +5 bonus (SR 19).
+Undead Controlling:The wearer of a suit of armor or a shield
+with this property may control up to 26 HD of undead per day, as
+the control undeadspell. At dawn each day, the wearer loses control
+of any undead still under his sway. Armor or a shield with this abil-
+ity appears to be made of bone; this feature is entirely decorative
+and has no other effect on the armor.
+Strong necromancy; CL 13th; Craft Magic Arms and Armor,
+control undead; Price +49,000 gp.
+Wild:The wearer of a suit of armor or a shield with this ability
+preserves his armor bonus (and any enhancement bonus) while in
+a wild shape. Armor and shields with this ability usually appear to
+be made covered in leaf patterns. While the wearer is in a wild
+shape, the armor cannot be seen.
+Moderate  transmutation; CL 9th; Craft Magic Arms and
+Armor, baleful polymorph;Price +3 bonus.
+Specific Armors
+The following specific suits of armor usually are preconstructed
+with exactly the qualities described here.
+Adamantine Breastplate:This nonmagical breastplate
+is made of adamantine, giving its wearer damage reduction
+of 2/–.
+No aura (nonmagical); Price 10,200 gp.
+219
+CHAPTER 7:
+MAGIC ITEMS

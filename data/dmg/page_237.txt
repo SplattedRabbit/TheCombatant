@@ -1,0 +1,137 @@
+236
+Strong enchantment, evocation, necromancy, and transmuta-
+tion; CL 19th; Craft Rod, Craft Magic Arms and Armor,inflict
+light wounds, bull’s strength, flame blade, hold person, fear; Price
+70,000 gp.
+Metal and Mineral Detection:This rod pulses in the wielder’s
+hand and points to the largest mass of metal within 30 feet. How-
+ever, the wielder can concentrate on a specific metal or mineral
+(gold, platinum, quartz, beryl, diamond, corundum, and so on). If
+the specific mineral is within 30 feet, the rod points to any places
+it is located, and the rod wielder knows the approximate quantity
+as well. If more than one deposit of the specified metal or mineral
+is within range, the rod points to the largest cache first. Each oper-
+ation requires a full-round action.
+Moderate divination; CL 9th; Craft Rod, locate object; Price
+10,500 gp.
+Metamagic Rods:Metamagic rods hold the essence of a meta-
+magic feat but do not change the spell slot of the altered spell. All
+the rods described here are use-activated (but casting spells in a
+threatened area still draws an attack of opportunity). A caster may
+only use one metamagic rod on any given spell, but it is permissi-
+ble to combine a rod with metamagic feats possessed by the rod’s
+wielder. In this case, only the feats possessed by the wielder adjust
+the spell slot of the spell being cast.
+Possession of a metamagic rod does not confer the associated
+feat on the owner, only the ability to use the given feat a specified
+number of times per day. A sorcerer still must take a full-round
+action when using a metamagic rod, just as if using a metamagic
+feat he possesses.
+Lesser and Greater Metamagic Rods:Normal metamagic rods can
+be used with spells of 6th level or lower. Lesser rods can be used
+with spells of 3rd level or lower, while greater rods can be used
+with spells of 9th level or lower.
+Metamagic, Empower:The wielder can cast up to three
+spells per day that are empowered as though using the Empower
+Spell feat.
+Strong (no school); CL 17th; Craft Rod, Empower Spell; Price
+9,000 gp (lesser), 32,500 gp (normal), 73,000 gp (greater).
+Metamagic, Enlarge: The wielder can cast up to three spells
+per day that are enlarged as though using the Enlarge Spell feat.
+Strong (no school); CL 17th; Craft Rod, Enlarge Spell; Price
+3,000 gp (lesser), 11,000 gp (normal), 24,500 gp (greater).
+Metamagic, Extend: The wielder can cast up to three spells
+per day that are extended as though using the Extend Spell feat.
+Strong (no school); CL 17th; Craft Rod, Extend Spell; Price
+3,000 gp (lesser), 11,000 gp (normal), 24,500 gp (greater).
+Metamagic, Maximize:The wielder can cast up to three spells
+per day that are maximized as though using the Maximize Spell feat.
+Strong (no school); CL 17th; Craft Rod, Maximize Spell feat;
+Price 14,000 gp (lesser), 54,000 gp (normal), 121,500 gp (greater).
+Metamagic, Quicken:The wielder can cast up to three spells
+per day that are quickened as though using the Quicken Spell feat.
+Strong (no school); CL 17th; Craft Rod, Quicken Spell; Price
+35,000 gp (lesser), 75,500 gp (normal), 170,000 gp (greater).
+Metamagic, Silent:The wielder can cast up to three spells per
+day without verbal components as though using the Silent Spell feat.
+Strong (no school); CL 17th; Craft Rod, Silent Spell; Price 3,000
+gp (lesser), 11,000 gp (normal), 24,500 gp (greater).
+Negation: This device negates the spell or spell-like function
+or functions of magic items. The wielder points the rod at the
+magic item, and a pale gray beam shoots forth to touch the target
+device, attacking as a ray (a ranged touch attack). The ray functions
+as a greater dispel magic spell, except it only affects magic items. To
+negate instantaneous effects from an item, the rod wielder needs
+to have used a ready action. The dispel check uses the rod’s caster
+level (15th). The target item gets no saving throw, although the
+rod can’t negate artifacts (even minor artifacts). The rod can func-
+tion three times per day.
+Strong varied; CL 15th; Craft Rod, dispel magic, and limited wish
+ormiracle; Price 37,000 gp.
+Python:This rod is longer than normal rods. It is about 4 feet
+long and weighs 10 pounds. It strikes as a +1/+1 quarterstaff. If the
+user throws the rod to the ground (a standard action), it grows to
+become a giant constrictor snake (see page 280 of the Monster
+Manualfor complete statistics) by the end of the round. The
+python obeys all commands of the owner. (In animal form, it
+retains the +1 enhancement bonus on attacks and damage pos-
+sessed by the rod form.) The serpent returns to rod form (a full-
+round action) whenever the wielder desires, or whenever it moves
+farther than 100 feet from the owner. If the snake form is slain, it
+returns to rod form and cannot be activated again for three days. A
+python rodonly functions if the possessor is good.
+Moderate transmutation; CL 10th; Craft Rod, Craft Magic Arms
+and Armor, baleful polymorph, creator must be good; Price 13,000 gp.
+Rulership: This rod looks like a royal scepter worth at least
+5,000 gp in materials and workmanship alone. The wielder can
+command the obedience and fealty of creatures within 120 feet
+when she activates the device (a standard action). Creatures total-
+ing 300 Hit Dice can be ruled, but creatures with Intelligence
+scores of 12 or higher are entitled to a DC 16 Will save to negate
+the effect. Ruled creatures obey the wielder as if she were their
+absolute sovereign. Still, if the wielder gives a command that is
+contrary to the nature of the creatures commanded, the magic is
+broken. The rod can be used for 500 total minutes before crum-
+bling to dust. This duration need not be continuous.
+Strong enchantment; CL 20th; Craft Rod, mass charm monster;
+Price 60,000 gp; Cost 27,500 gp + 2,200 XP.
+Security:This item creates a nondimensional space, a pocket
+paradise. There the rod’s possessor and as many as 199 other crea-
+tures can stay in complete safety for a period of time, up to 200
+days divided by the number of creatures affected. Thus, one crea-
+ture (the rod’s possessor) can stay for 200 days, four creatures can
+stay for 50 days, or a group of sixty creatures can stay for 3 days. All
+fractions are rounded down, so that a group numbering more than
+100 can stay for one day only and a group of 201 or more cannot be
+affected by the rod.
+In this pocket paradise, creatures don’t age, and natural healing
+take place at twice the normal rate. Fresh water and food (fruits
+and vegetables only) are in abundance. The climate is comfortable
+for all creatures involved.
+Activating the rod (a standard action) causes the wielder and all
+creatures touching the rod to be transported instantaneously to
+the paradise. Members of large groups can hold hands or other-
+wise maintain physical contact, allowing all connected creatures
+in a circle or a chain to be affected by the rod. Unwilling creatures
+get a DC 17 Will save to negate the effect. If such a creature suc-
+ceeds on its save, other creatures beyond that point in a chain can
+still be affected by the rod.
+When the rod’s effect expires or is dispelled, all the affected crea-
+tures instantly reappear in the location they occupied when the rod
+was activated. If something else occupies the space that a traveler
+would be returning to, then his body is displaced a sufficient dis-
+tance to provide the space required for reentry. The rod’s possessor
+can dismiss the effect whenever he wishes before the maximum
+time period expires, but the rod can only be activated once per week.
+Strong conjuuration; CL 20th; Craft Rod, gate; Price 61,000 gp.
+Splendor:The possessor of this rod gains a +4 enhancement
+bonus to her Charisma score for as long as she holds or carries the
+item. Once per day, the rod creates and garbs her in clothing of the
+finest fabrics, plus adornments of furs and jewels.
+Apparel created by the magic of the rod remains in existence for
+12 hours. However, if the possessor attempts to sell or give away
+any part of it, to use it for a spell component, or the like, all the
+apparel immediately disappears. The same applies if any of it is
+forcibly taken from her.
+CHAPTER 7:
+MAGIC ITEMS

@@ -1,0 +1,135 @@
+220
+Banded Mail of Luck:Ten 100-gp gems adorn this +3 banded
+mail.Once per week, the armor allows its wearer to require that an
+attack roll made against him be rerolled. He must take whatever
+consequences come from the second roll, since not all luck is
+good. The wearer’s player must decide whether to have the attack
+roll rerolled before damage is rolled.
+Strong enchantment; CL 12th; Craft Magic Arms and Armor,
+bless; Price 18,900 gp; Cost 10,150 gp + 700 XP.
+Breastplate of Command:This finely crafted +2
+breastplateradiates a powerful aura of magic. When
+worn, the armor bestows a dignified and command-
+ing aura upon its owner. The wearer gains a +2 com-
+petence bonus on all Charisma checks, including
+turning checks and Charisma-based skill checks. The
+wearer also gains a +2 competence bonus to his Lead-
+ership score (see page 106). Friendly troops within 360
+feet  of  the  user  become  braver  than  normal  (for
+example, more willing than normal to follow a leader
+into battle against dangerous foes). Since the effect arises
+in great part from the distinctiveness of the armor, the
+wearer cannot hide or conceal herself in any way and still
+have the effect function.
+Strong enchantment; CL 15th; Craft Magic Arms and
+Armor, mass charm monster; Price 25,400 gp; Cost 10,975 gp
++ 850 XP.
+Celestial Armor: This bright silver or gold +3 chainmail
+is so fine and light that it can be worn under normal
+clothing without betraying its presence. It has a maxi-
+mum Dexterity bonus of +8, an armor check penalty of
+–2, and an arcane spell failure chance of 15%. It is con-
+sidered light armor, weighs 20 pounds, and it allows
+the wearer to use flyon command (as the spell) once
+per day.
+Faint transmutation [good]; CL 5th; Craft Magic
+Arms and Armor, creator must be good, fly; Price 22,400
+gp; Cost 12,550 gp + 1,004 XP.
+Demon Armor: This plate armor is fashioned to
+make the wearer appear to be a demon. The helmet is
+shaped to look like a horned demon head, and its
+wearer looks out of the open, tooth-filled mouth.
+This +4 full plateallows the wearer to make claw
+attacks that deal 1d10 points of damage, strike as
++1 weapons, and afflict the target as if she had
+been struck by a contagionspell (Fortitude DC 14
+negates).  Use  of  contagionrequires  a  normal
+melee attack with the claws. The “claws” are built
+into the armor’s vambraces and gauntlets.
+The armor bestows one negative level on any
+nonevil creature wearing it. This negative
+level persists as long as the armor is worn
+and disappears when the armor is removed.
+The negative level never results in actual level loss, but it cannot
+be overcome in any way (including restorationspells) while the
+armor is worn.
+Strong necromancy [evil]; CL 13th; Craft Magic Arms and
+Armor,contagion; Price 52,260 gp; Cost 26,130 gp + 2,090 XP.
+Dragonhide Plate:This suit of full plate is made of drag-
+onhide, rather than metal, so druids can wear it. It is otherwise
+identical to masterwork full plate.
+No aura (nonmagical); Price 3,300 gp.
+Dwarven Plate:This full plate is made of adamantine, giving
+its wearer damage reduction of 3/–.
+No aura (nonmagical); Price 16,500 gp.
+Elven Chain: This extremely light chainmail is made of very
+fine mithral links. Speed while wearing elven chain is 30 feet for
+Medium creatures, or 20 feet for Small. The armor has an arcane
+spell failure chance of 20%, a maximum Dexterity bonus of +4,
+and an armor check penalty of –2. It is considered light
+armor and weighs 20 pounds.
+No aura (nonmagical); Price 4,150 gp.
+Mithral Full Plate of Speed:As a free action,
+the wearer of this fine set of +1 mithral full platecan
+activate it, enabling her to act as though affected
+by a haste spell for up to 10 rounds each day. The
+duration of the hasteeffect need not be consecu-
+tive rounds.
+Speed while wearing a suit of mithral full
+plate is 20 feet for Medium creatures, or 15
+feet for Small. The armor has an arcane
+spell failure chance of 25%, a maximum
+Dexterity bonus of +3, and an armor
+check penalty of –3. It is considered
+medium armor (see Mithral, page 284)
+and weighs 25 pounds.
+Faint transmutation; CL 5th; Craft
+Magic Arms and Armor, haste; Price
+26,500 gp.
+Mithral Shirt: This extremely light
+chain shirt is made of very fine mithral
+links. Speed while wearing a mithral shirt is 30
+feet for Medium creatures, or 20 feet for Small.
+The armor has an arcane spell failure chance of
+10%, a maximum Dexterity bonus of +6, and no
+armor check penalty. It is considered light
+armor (see Mithral, page 284) and weighs 10
+pounds.
+No aura (nonmagical); Price 1,100 gp.
+Plate Armor of the Deep:This +1 full plateis
+decorated with a wave and fish motif. The
+wearer of plate armor of the deepis treated as
+unarmored for purposes of Swim checks. The
+wearer can breathe underwater and can con-
+verse with any creature with a language that
+breathes water.
+Moderate abjuration; CL 11th; Craft Magic
+Arms  and  Armor,freedom  of  movement,  water
+breathing, tongues; Price 24,650 gp; Cost 17,150 gp +
+600 XP.
+Rhino Hide: This +2 hidearmor is made from
+rhinoceros  hide.  In  addition  to  granting  a  +2
+enhancement bonus to AC, it has a –1 armor check
+penalty and deals an additional 2d6 points of damage
+on any successful charge attack made by the wearer,
+including a mounted charge.
+Moderate transmutation; CL 9th; Craft Magic
+Arms and Armor,bull’s strength; Price 5,165 gp;
+Cost 2,665 gp + 200 XP.
+CHAPTER 7:
+MAGIC ITEMS
+Elven chain
+Table 7–7: Specific Armors
+Minor   Medium   MajorSpecific ArmorMarket Price
+01–5001–25—Mithral shirt1,100 gp
+51–8026–45—Dragonhide plate3,300 gp
+81–10046–57—Elven chain4,150 gp
+—58–67—Rhino hide5,165 gp
+—68–8201–10Adamantine breastplate10,200 gp
+—83–9711–20Dwarven plate16,500 gp
+—98–10021–32Banded mail of luck18,900 gp
+——33–50Celestial armor22,400 gp
+——51–60Plate armor of the deep24,650 gp
+——61–75Breastplate of command25,400 gp
+——76–90Mithral full plate of speed26,500 gp
+——91–100Demon armor52,260 gp

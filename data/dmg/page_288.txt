@@ -1,0 +1,130 @@
+CREATING SCROLLS
+To create a scroll, a character needs a supply of choice writing
+materials, the cost of which is subsumed in the cost for scribing
+the scroll—12.5 gp ×the level of the spell ×the level of the caster.
+All writing implements and materials used to scribe a scroll must
+be fresh and unused. A character must pay the full cost for scrib-
+ing each spell scroll no matter how many times she previously has
+scribed the same spell.
+The creator must have prepared the spell to be scribed (or must
+know the spell, in the case of a sorcerer or bard) and must provide
+any material component or focus the spell requires. If casting the
+spell would reduce the caster’s XP total, she pays the cost upon
+beginning the scroll in addition to the XP cost for making the
+scroll itself. Likewise, a material component is consumed when
+she begins writing, but a focus is not. (A focus used in scribing a
+scroll can be reused.) The act of writing triggers the prepared spell,
+making it unavailable for casting until the character has rested and
+regained spells. (That is, that spell slot is expended from her cur-
+rently prepared spells, just as if it had been cast.)
+Scribing a scroll requires one day per each 1,000 gp of the base
+price.
+Item Creation Feat Required:Scribe Scroll.
+Scroll Base Prices (By Scriber’s Class)
+Spell LevelClr, Drd, WizSorBrdPal, Rgr*
+012 gp 5 sp12 gp 5 sp12 gp 5 sp—
+1st25 gp25 gp50 gp50 gp
+2nd150 gp200 gp200 gp200 gp
+3rd375 gp450 gp525 gp375 gp
+4th700 gp800 gp1,000 gp700 gp
+5th1,125 gp1,250 gp1,625 gp—
+6th1,650 gp1,800 gp2,400 gp—
+7th2,275 gp2,450 gp——
+8th3,000 gp3,200 gp——
+9th3,825 gp4,050 gp——
+* Caster level is half class level.
+Prices assume that the scroll was made at the minimum caster level.
+Base Magic Supplies and XP Cost to Scribe a Scroll
+(By Scriber’s Class)
+Spell
+LevelClr, Drd, WizSorBrdPal, Rgr*
+06 gp 2 sp 5 cp6 gp 2 sp 5 cp    6 gp 2 sp 5 cp—
++1 XP+1 XP+1 XP
+1st12 gp 5 sp12 gp 5 sp25 gp25 gp
++1 XP+1 XP+2 XP+2 XP
+2nd75 gp100 gp100 gp100 gp
++6 XP+8 XP+8 XP+8 XP
+3rd187 gp 5 sp225 gp262 gp 5 sp    187 gp 5 sp
++15 XP+18 XP+21 XP+15 XP
+4th350 gp400 gp500 gp350 gp
++28 XP+32 XP+40 XP+28 XP
+5th562 gp 5 sp625 gp812 gp 5 sp—
++45 XP+50 XP+65 XP
+6th826 gp900 gp1,200 gp—
++66 XP+72 XP+96 XP
+7th1,135 gp 5 sp1,225 gp——
++91 XP+98 XP
+8th1,500 gp1,600 gp——
++120 XP+128 XP
+9th1,912 gp 5 sp2, 025 gp——
++153 XP+162 XP
+* Caster level is half class level.
+Costs assume that the creator makes the scroll at the minimum
+caster level.
+CREATING STAFFS
+To create a magic staff, a character needs a supply of materials, the
+most obvious being a staff or the pieces of the staff to be assem-
+bled. The cost for the materials is subsumed in the cost for creat-
+ing the staff—375 gp ×the level of the highest-level spell ×the
+level of the caster, plus 75% of the value of the next most costly
+ability (281.25 gp ×the level of the spell ×the level of the caster),
+plus one-half of the value of any other abilities (187.5 gp ×the
+level of the spell ×the level of the caster). Staffs are always fully
+charged (50 charges) when created.
+If desired, a spell can be placed into the staff at only half the
+normal cost, but then activating that particular spell costs 2
+charges from the staff. The caster level of all spells in a staff must
+be the same, and no staff can have a caster level of less than 8th,
+even if all the spells in the staff are low-level spells.
+The creator must have prepared the spells to be stored (or must
+know the spell, in the case of a sorcerer or bard) and must provide
+any focus the spells require as well as material and XP component
+costs sufficient to activate the spell a maximum number of times
+(50  divided  by  the  number  of  charges  one  use  of  the  spell
+expends). This is in addition to the XP cost for making the staff
+itself. Material components are consumed when he begins work-
+ing, but focuses are not. (A focus used in creating a staff can be
+reused.) The act of working on the staff triggers the prepared
+spells, making them unavailable for casting during each day of the
+staff ’s creation. (That is, those spell slots are expended from his
+currently prepared spells, just as if they had been cast.)
+Creating a few staffs may entail other prerequisites beyond
+spellcasting. See the individual descriptions on pages 243–245 for
+details.
+Crafting a staff requires one day for each 1,000 gp of the base price.
+Item Creation Feat Required:Craft Staff.
+CREATING WANDS
+To create a magic wand, a character needs a small supply of mate-
+rials, the most obvious being a baton or the pieces of the wand to
+be assembled. The cost for the materials is subsumed in the cost
+for creating the wand—375 gp ×the level of the spell ×the level
+of the caster. Wands are always fully charged (50 charges) when
+created.
+Wand Base Prices (By Crafter’s Class)
+Spell LevelClr, Drd, WizSorBrdPal, Rgr*
+0375 gp375 gp375 gp—
+1st750 gp750 gp1,500 gp1,500 gp
+2nd4,500 gp6,000 gp6,000 gp6,000 gp
+3rd11,250 gp13,500 gp15,750 gp11,250 gp
+4th21,000 gp24,000 gp30,000 gp21,000 gp
+* Caster level is half class level.
+Prices assume that the wand was made at the minimum caster level.
+Base Magic Supplies and XP Cost to Craft a Wand
+(By Crafter’s Class)
+Spell LevelClr, Drd, WizSorBrdPal, Rgr*
+0187 gp 5 sp    187 gp 5 sp    187 gp 5 sp—
++15 XP+15 XP+15 XP
+1st375 gp375 gp750 gp750 gp
++30 XP+30 XP+60 XP+60 XP
+2nd2,250 gp3,000 gp3,000 gp3,000 gp
++180 XP+240 XP+240 XP+240 XP
+3rd5,625 gp6,750 gp7,875 gp5,625 gp
++450 XP+540 XP+630 XP+450 XP
+4th10,500 gp12,000 gp15,000 gp10,500 gp
++840 XP+960 XP+1,200 XP+840 XP
+* Caster level is half class level.
+Costs assume that the creator makes the wand at the minimum
+caster level.
+287
+CHAPTER 7:
+MAGIC ITEMS

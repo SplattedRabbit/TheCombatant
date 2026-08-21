@@ -1,0 +1,115 @@
+260
+Faint abjuration; CL 6th; Craft Wondrous Item, magic circle
+against good, magic circle against evil; Price 6,500 gp; Weight 1 lb.
+Horn of the Tritons:This device is a conch shell that can be
+blown once per day except by a triton (see page 245 of the Monster
+Manual), which can sound it three times per day. A horn of the tri-
+tonscan perform any one of the following functions when blown.
+•Calm rough waters in a 1-mile radius. This effect dispels a sum-
+moned water elemental if it fails a DC 16 Will save.
+•Attract  5d4  Large  sharks  (01–30  on  d%),  5d6  Medium  sharks
+(31–80), or 1d10 sea lions (81–100) if the character is in a body
+of  water  in  which  such  creatures  dwell.  The  creatures  are
+friendly  and  obey,  to  the  best  of  their  ability,  the  one  who
+sounded the horn.
+•Causes  aquatic  creatures  with  Intelligence  scores  of  1  or  2
+within 500 feet to become panicked as if they had been targeted
+by a fearspell (Will DC 16 partial). Those who successfully save
+are shaken for 3d6 rounds.
+Any sounding of a horn of the tritonscan be heard by all tritons
+within a 3-mile radius.
+Moderate conjuration and transmutation; CL 8th; Craft Won-
+drous Item, fear, summon monster V, control water, creator must be a
+triton or get construction aid from a triton; Price 15,100 gp;
+Weight 2 lb.
+Horn  of  Valhalla:This  magic  instrument  comes  in  four  vari-
+eties.  Each  appears  to  be  normal  until  someone  speaks  its
+command  word  and  blows  the  horn.  Then  the  horn  summons  a
+number  of  human  barbarians  to  fight  for  the  character  who
+summoned them. Each horn can be blown just once every seven
+days. Roll d% and refer to the table below to see what type of horn
+is   found.   The   horn’s   type   determines   what   barbarians   are
+summoned and what prerequisite is needed to use the horn. Any
+character  who  uses  a  horn  of  Valhallabut  doesn’t  have  the  prereq-
+uisite is attacked by the barbarians she herself summoned.
+Type ofBarbarians
+d%HornSummonedPrerequisite
+01–40Silver2d4+2, 2nd levelNone
+41–75Brass2d4+1, 3rd levelSpellcaster level 1st
+76–90Bronze2d4, 4th levelProficiency with all martial
+weapons or bardic music
+ability
+91–100Iron1d4+1, 5th levelProficiency with all martial
+weapons or bardic music
+ability
+Summoned barbarians are constructs, not actual people (though they
+seem  to  be);  they  arrive  with  the  starting  equipment  for  barbarians
+given  on  page  26  of  the  Player ’s  Handbook.  They  attack  anyone  the
+possessor  of  the  horn  commands  them  to  fight  until  they  or  their
+opponents are slain or until 1 hour has elapsed, whichever comes first.
+Strong conjuration; CL 13th; Craft Wondrous Item, summon
+monster VI; Price 50,000 gp; Weight 2 lb.
+Horseshoes of Speed:These iron shoes come in sets of four
+like ordinary horseshoes. When affixed to an animal’s hooves,
+they increase the animal’s base land speed by 30 feet; this counts
+as an enhancement bonus. As with other effects that increase
+speed, jumping distances increase proportionally. All four shoes
+must be worn by the same animal for the magic to be effective.
+Faint transmutation; CL 3rd; Craft Wondrous Item, haste; Price
+3,000 gp; Weight 12 lb. (for four).
+Horseshoes of a Zephyr: These four iron shoes are affixed like
+normal horseshoes. They allow a horse to travel without actually
+touching the ground. The horse must still run above (always around
+4 inches above) a roughly horizontal surface. This means that non-
+solid or unstable surfaces, such as water or lava, can be crossed, and
+that movement is possible without leaving tracks on any sort of
+ground. The horse moves at its normal base land speed. All four
+shoes must be worn by the same animal for the magic to be effective.
+Faint transmutation; CL 3rd; Craft Wondrous Item, levitate;
+Price 6,000 gp; Weight 4 lb. (for four).
+Incense of Meditation:This small rectangular block of sweet-
+smelling incense is visually indistinguishable from nonmagical
+incense until lit. When it is burning, the special fragrance and
+pearly-hued smoke of this special incense are recognizable by
+anyone making a DC 15 Spellcraft check.
+When a divine spellcaster lights a block of incense of meditation
+and then spends 8 hours praying and meditating nearby, the in-
+cense enables him to prepare all his spells as though affected by
+the Maximize Spell feat. However, all the spells prepared in this
+way are at their normal level, not at three levels higher (as with the
+regular metamagic feat).
+Each block of incense burns for 8 hours, and the effects persist
+for 24 hours.
+Moderate enchantment; CL 7th; Craft Wondrous Item, Maxi-
+mize Spell, bless; Price 4,900 gp; Weight 1 lb.
+Ioun Stones:These crystalline stones always float in the air
+and must be within 3 feet of their owner to be of any use. When a
+character first acquires a stone, she must hold it and then release
+it, whereupon it takes up a circling orbit 1d3 feet from her head.
+Thereafter, a stone must be grasped or netted to separate it from its
+CHAPTER 7:
+MAGIC ITEMS
+ColorShapeEffectMarket Price
+ClearSpindleSustains creature without food or water4,000 gp
+Dusty rosePrism+1 insight bonus to AC5,000 gp
+Deep redSphere+2 enhancement bonus to Dexterity8,000 gp 
+Incandescent blueSphere+2 enhancement bonus to Wisdom8,000 gp
+Pale blueRhomboid+2 enhancement bonus to Strength8,000 gp 
+PinkRhomboid+2 enhancement bonus to Constitution8,000 gp
+Pink and greenSphere+2 enhancement bonus to Charisma8,000 gp
+Scarlet and blueSphere+2 enhancement bonus to Intelligence8,000 gp
+Dark blueRhomboidAlertness (as the feat)10,000 gp
+Vibrant purplePrismStores three levels of spells, as a ring of spell storing36,000 gp
+IridescentSpindleSustains creature without air18,000 gp 
+Pale lavenderEllipsoidAbsorbs spells of 20,000 gp 
+4th level or lower
+1
+Pearly whiteSpindleRegenerate 1 point of 20,000 gp
+damage per hour
+Pale greenPrism+1 competence bonus on attack rolls, saves, skill checks, and ability checks30,000 gp
+OrangePrism+1 caster level30,000 gp
+Lavender and greenEllipsoidAbsorbs spells of 8th level or lower
+2
+40,000 gp
+1 After absorbing twenty spell levels, the stone burns out and turns to dull gray, forever useless.
+2 After absorbing fifty spell levels, the stone burns out and turns dull gray, forever useless.

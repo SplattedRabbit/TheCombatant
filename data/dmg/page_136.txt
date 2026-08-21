@@ -1,0 +1,131 @@
+Higher Levels
+As characters gain more levels, the following points become in-
+creasingly pertinent.
+•Characters are very tough. Save bonuses, AC, and hit points are
+all high. 
+•Characters can survive many encounters before resting. At very
+high levels, the need for rest is rarely an issue.
+•Characters can provide their own food, their own magic items,
+and their own healing. They can even raise each other from the
+dead.
+•Given time, characters can do almost anything. Even if the wiz-
+ard  in  the  group  doesn’t  know  the  disintegratespell,  you  can
+place  a  barrier  that  can  only  be  bypassed  by  disintegrateand
+count  on  the  party  being  able  to  get  past  it.  (They  can  obtain
+access to the spell in some way, or use their other resources to
+achieve  the  same  goal.)  At  very  high  levels,  don’t  be  afraid  to
+throw just about any challenge in the way of the characters. All
+kinds  of  character  actions—movement,  durability,  dealing
+damage,  influencing  others,  accumulating  information,  and
+adaptation to circumstances and environments—have a higher
+chance of success at higher levels.
+CHARACTER POWER LEVELS
+As the campaign progresses, the PCs get more powerful through
+level advancement, the acquisition of money and magic items, and
+the establishment of their reputations. You have to carefully
+match this advancement with increasing challenges, both in foes
+who must be overcome and in the deeds that must be performed.
+In addition, however, you need to watch the PCs closely and
+make sure that they neither get out of control because of their
+increased power nor fail to use what’s put before them. While it’s
+up to them to make decisions regarding their characters’ advance-
+ment and what they do with their newfound abilities, it’s up to you
+to keep control of the campaign, maintain balance (see Keeping
+Game Balance, page 13), and keep things running smoothly.
+Character Wealth
+One of the ways in which you can maintain measurable control on
+PC power is by strictly monitoring their wealth, including their
+magic items. Table 5–1: Character Wealth by Level is based on
+average treasures found in average encounters compared with the
+experience points earned in those encounters. Using that infor-
+mation, you can determine how much wealth a character should
+have based on her level.
+The baseline campaign for the D&D game uses this “wealth by
+level” guideline as a basis for balance in adventures. No adventure
+meant for 7th-level characters, for example, will require or assume
+that the party possesses a magic item that costs 20,000 gp.
+Table 5–1: Character Wealth by Level
+CharacterCharacter
+LevelWealthLevelWealth
+2nd900 gp12th88,000 gp
+3rd2,700 gp13th110,000 gp
+4th5,400 gp14th150,000 gp
+5th9,000 gp15th200,000 gp
+6th13,000 gp16th260,000 gp
+7th19,000 gp17th340,000 gp
+8th27,000 gp18th440,000 gp
+9th36,000 gp19th580,000 gp
+10th49,000 gp20th760,000 gp
+11th66,000 gp
+Player Characters out of Control
+Power can get out of hand. Power corrupts. PCs may do things that
+show their arrogance, or their contempt for those below them, as
+they advance in power. A 10th-level fighter may feel that he no
+longer has to treat the duke with respect since he can single-hand-
+edly defeat all the duke’s soldiers. A powerful wizard might feel so
+unstoppable that she wantonly tosses around fireballsin the
+middle of town. While it’s fine for PCs to enjoy their abilities as
+they advance in level (that’s the whole point), they shouldn’t be
+allowed to do whatever they wish. Even high-level characters
+shouldn’t run about completely unchecked.
+Players should always remember one fact: There’s always someone
+more powerful. You should set up your world with the idea that the
+PCs, while special, are not unique. Other characters, many of them
+quite powerful, have come along before the PCs. Institutions of
+influence have had to deal with individuals of great power long
+before the PCs. The duke may have some powerful warrior or fighter
+on retainer as a champion for when someone gets out of line. The
+city constabulary probably has a rod of negationor a scroll of antimagic
+fieldto deal with out-of-control wizards. The point is that NPCs with
+resources will be prepared for great danger. The sooner the PCs real-
+ize this, the less likely they will run amok in your campaign world.
+WORLD-BUILDING
+You may wish to build your own world. It’s a challenging and
+rewarding task, but it can also be a time-consuming one.
+Once you have decided to create your own world, you face a
+number of choices. Do you make it like the real world, drawing from
+history and real-world knowledge, or do you create something com-
+pletely different? Do you draw from your favorite fictional setting or
+create it all on your own? Do the laws of physics work as we know
+them, or is the world flat with a dome of stars overhead? Do you use
+the standard races, classes, and equipment in the Player ’s Handbook,or
+do you create new ones? The questions alone are daunting, but for
+those who love world-building, they are also exciting.
+So where do you start? There are two approaches to creating a
+campaign world.
+Inside Out:Start with a small area and build outward. Don’t even
+worry about what the whole world looks like, or even the kingdom.
+Concentrate first on a single village or town, preferably with a dun-
+geon or other adventure site nearby. Expand slowly and only as
+needed. When the PCs are ready to leave the initial area (which
+might not be for ten or more playing sessions, depending on your
+first adventures), expand outward in all directions so you’re ready no
+matter which way they go. Eventually, you will have an entire king-
+dom developed, with the whole derived from what follows from the
+initial starting point. Proceed to other neighboring lands, determin-
+ing the political situation in each one. Keep accurate notes as you
+play, for you may develop rumors of hostilities with a neighboring
+kingdom before you ever develop the kingdom itself!
+The advantage to this method is that you don’t need to do a lot
+of work to get started. Whip up a small area—probably with a
+small community—design an adventure, and go. This method
+also ensures that you won’t develop areas of the campaign that are
+never visited by the PCs and that you can develop things (and
+change your mind) as you go.
+Outside In:Start with the big picture—draw a map of an entire
+continent or a portion thereof. Alternatively, you could start with a
+grand design for how a number of kingdoms and nations interact
+or the outline of a vast empire. You could even start with a cosmol-
+ogy, deciding how the deities interact with the world, where the
+world is positioned in relation with other worlds, and what the
+world as a whole looks like. Only after you have this level of con-
+cept design worked out should you focus on a particular area.
+When you begin more detailed work, start with large-scale basics
+and work down to small-scale details. For example, after you have
+constructed your continent map, pick a single kingdom and create
+the ruler or rulers and the general conditions. From there, focus on
+some substate or region within the kingdom, develop who and
+what lives there (and why), and pepper the region with a few hooks
+135
+CHAPTER 5:
+CAMPAIGNS

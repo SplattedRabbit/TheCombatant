@@ -1,0 +1,91 @@
+116
++3, Jump +7, Knowledge (nature) +8, Spellcraft +4, Swim +9, Sur-
+vival +9; Multiattack (see page 304 of the Monster Manual), Scribe
+Scroll, Track.
+Animal Companion (Ex):This druid has a crocodile as an animal
+companion. This creature is a loyal companion that accompanies
+the druid on adventures as appropriate for its kind. Its abilities and
+characteristics are summarized below.
+Crocodile Animal Companion:CR —; Medium mag-
+ical beast; HD 3d8+9; hp 22; Init +1, Spd 20 ft., swim 30 ft.;
+AC 15, touch 11, flat-footed 14; Base Atk +2; Grp +6; Atk +6
+melee (1d8+6, bite), or +6 melee (tail slap, 1d12+6); Full
+Atk +6 melee (1d8+6, bite), or +6 melee (tail slap, 1d12+6);
+Space/Reach 5 ft./5 ft.; SA improved grab; SQ bonus trick,
+hold breath, low-light vision; AL N; SV Fort +6, Ref +4,
+Will +2; Str 19, Dex 13, Con 17, Int 1, Wis 12, Cha 2.
+Skills and Feats:Hide +7, Listen +4, Spot +4, Swim +12;
+Alertness, Skill Focus (Hide).
+Improved Grab (Ex): To use this ability, a crocodile must
+hit with its bite attack. If it wins the grapple check, the
+crocodile grabs the opponent with its mouth and drags it
+into deep water, attempting to pin it to the bottom.
+Bonus Trick:This animal companion is capable of learn-
+ing one trick in addition to any that the druid might
+choose to teach it (see the Handle Animal skill, page 74 of
+the Player ’s Handbook). This bonus trick doesn’t require any
+training time or Handle Animal checks, and it doesn’t
+count against the normal limit of tricks known by the
+creature. The druid selects this bonus trick, and once
+selected, it can’t be changed.
+Hold Breath (Ex):This creature can hold its breath for 68
+rounds before it risks drowning.
+Low-Light Vision (Ex):Can see twice as far as a human in
+dim light.
+Hold Breath (Ex):Lizardfolk can hold their breath for 60 rounds
+before they risk drowning.
+Link with Companion (Ex):This druid can handle its animal com-
+panion as a free action, or push it as a move action, with a +4 bonus
+on wild empathy and Handle Animal checks made while dealing
+with that animal.
+Nature Sense (Ex): This druid gains a +2 bonus on Knowledge
+(nature) and Survival checks (these bonuses are included in the
+statistics given above).
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–15: NPC Druid
+Skill Pts./Spells
+LevelhpACMeleeRangedF/R/WFeatsper DayGear
+1st917+1+3+3/+2/+420/13/2Hide armor, heavy wooden shield, mwk
+melee, mwk ranged, 250 gp
+2nd1417+2+4+4/+2/+525/14/3 As 1st level, except 1,350 gp
+3rd2017+3+5+4/+3/+530/24/3/2 As 1st level, except 1,800 gp
+4th2517+4+6+5/+3/+735/25/4/3 As 1st level, except 2,600 gp
+5th3117+4+6+5/+3/+740/25/4/3/2 As 1st level, except 3,000 gp
+6th3618+5+7+6/+4/+845/35/4/4/3 +1 hide armor,heavy wooden shield, mwk
+melee, mwk ranged, 3,400 gp
+7th4218+6+8+6/+4/+850/36/5/4/3/1 As 6th level, except 5,000 gp
+8th4719+7/2+9/4+7/+4/+955/36/5/4/4/2 +1 hide armor, +1 heavy wooden shield, ring of
+protection +1,mwk melee, mwk ranged,
+3,400 gp
+9th5320+7/2+9/4+7/+5/+960/46/5/5/4/2/1As 8th level, except 6,000 gp
+10th5821+8/3+10/5+8/+5/+1065/46/5/5/4/3/2+1 hide armor, +1 heavy wooden shield, amulet
+of natural armor +1, ring +1,mwk melee,
+mwk ranged, 8,000 gp
+11th6421+9/4+11/6+8/+5/+1170/46/6/5/5/4/2/1+1 hide armor, +1 heavy wooden shield, amulet
++1, ring +1, mwk melee, mwk ranged, periapt
+of Wisdom +2, 9,000 gp
+12th6921+10/5+12/7+9/+6/+1375/56/7/5/5/4/4/2+1 hide armor, +1 heavy wooden shield, amulet
++1, ring +1, +1 melee, mwk ranged, periapt
++2, 6,500 gp
+13th7522+10/5+12/7+9/+6/+1380/56/7/6/5/5/4/2/1+2 hide armor, +1 heavy wooden shield, amulet
++1, ring +1, +1 melee, mwk ranged, periapt
++2, 19,500 gp
+14th8022+11/6+13/8+10/+6/+1585/56/7/7/5/5/4/4/2+2 hide armor, +1 heavy wooden shield, amulet
++1, ring +1, +1 melee, mwk ranged, periapt
++4, 17,500 gp
+15th8623+12/7/2+14/9+10/+7/+1590/66/7/7/6/5/5/4/2/1+2 hide armor, +1 heavy wooden shield, amulet
++2, ring +1, +1 melee, mwk ranged, periapt
++4, 29,500 gp
+16th9124+14/9/4+15/10+11/+7/+1695/66/7/7/6/5/5/4/3/2+2 hide armor, +1 heavy wooden shield, amulet
++2, ring +2, +2 melee, mwk ranged, periapt
++4, 31,000 gp
+17th9725+14/9/4+15/10+11/+7/+17100/66/7/7/7/6/5/5/4/2/1+2 hide armor, +2 heavy wooden shield, amulet
++2, ring +2, +2 melee, mwk ranged, periapt
++6, 41,000 gp
+18th10228+15/10/5+16/11+12/+8/+18105/76/7/7/7/6/5/5/4/3/2+3 hide armor, +4 heavy wooden shield, amulet
++2, ring +2, +2 melee, mwk ranged, periapt
++6, 54,000 gp
+19th10828+16/11/6+17/12+12/+8/+18110/76/7/7/7/6/6/5/5/3/3As 18th level, except 94,000 gp
+20th11328+17/12/7+18/13+13/+8/+20115/76/7/7/7/7/6/5/5/5/4As 18th level, except 144,000 gp

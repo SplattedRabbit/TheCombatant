@@ -1,0 +1,94 @@
+31
+CHAPTER 2:
+USING 
+THE RULES
+Table 2–5: Difficulty Class Examples
+DCExampleRoll (Key Ability)Who Could Do It
+–10Hear the sounds of a pitched battleListen (Wis)A commoner on the other side of a stone wall
+0Track ten hill giants across a muddy fieldSearch (Int)The village fool hustling at full speed at night
+5Climb a knotted ropeClimb (Str)An average human carrying a 75-pound pack
+5Hear people talking on the other side of a doorListen (Wis)An absent-minded sage being distracted by allies
+10Run or charge down steep stairsBalance (Dex)A 1st-level rogue
+10Follow tracks of fifteen orcs across firm groundSearch (Int)A 1st-level commoner
+10Ransack a chest full of junk to find a mapSearch (Int)A 1st-level commoner
+10Tie a firm knotUse Rope (Dex)A 1st-level commoner
+10Find out the current gossipGather Information (Cha)A 1st-level commoner
+11
+1
+Avoid being tripped by a wolf— (Str or Dex)A 1st-level commoner
+12Assess the value of a silver necklaceAppraise (Int)A 1st-level rogue
+13
+2
+Resist the commandspellWill save (Wis)A 1st-level wizard or a low-level fighter
+13Bash open a simple wooden door— (Str)A fighter
+15Make a dying friend stableHeal (Wis)A 1st-level cleric
+15Make indifferent people friendlyDiplomacy (Cha)A 1st-level paladin
+15Jump 10 feet (with a running start)Jump (Str)A 1st-level fighter
+15Tumble past a foeTumble (Dex)A low-level monk
+15
+1
+Get a minor lie past a canny guardBluff (Cha)A 1st-level rogue
+16Identify a 1st-level spell as it is being castSpellcraft (Int)A wizard (but not anyone untrained in spells)
+17
+2
+Resist a 10th-level vampire’s dominating gazeWill save (Wis)A low-level monk or a high-level fighter
+18Bash open a strong wooden door— (Str)An enraged half-orc barbarian
+18Cast fireballwhile being shot with an arrowConcentration (Con)A low-level wizard
+20Notice a typical secret doorSearch (Int)A smart, 1st-level half-elf rogue
+20Notice a scrying sensor— (Int)A low-level wizard with Int 12 or higher
+20Notice an invisible creature moving nearbySpot (Wis)A low-level ranger
+20Pick a very simple lockOpen Lock (Dex)A dexterous, 1st-level halfling rogue (but not anyone
+untrained at picking locks)
+20Find out what sorts of crimes the baron’sGather Information (Cha)A low-level bard
+daughter has gotten away with
+20Avoid falling into a pit trapReflex save (Dex)A mid-level rogue or a high-level paladin
+20Walk a tightropeBalance (Dex)A low-level rogue
+21Raise a dire wolf cubHandle Animal (Cha)A mid-level ranger
+21
+1
+Sneak quietly past a hellcat 50 feet awayMove Silently (Dex)A low-level rogue
+22
+1
+Escape from an owlbear’s clutchesEscape Artist (Dex)A low-level rogue
+23
+1
+Grab a guard’s spear and wrest it out of his handsMelee attack (Str)A mid-level fighter
+24Resist the wail of the bansheespellFortitude save (Con)A high-level fighter
+24
+3
+Shoot an armored guard through an arrow slitRanged attack (Dex)A high-level fighter
+25Notice that something’s wrong with a friendSense Motive (Wis)A mid-level rogue
+who’s under a vampire’s control
+25Persuade the dragon that has captured you Diplomacy (Cha)A high-level bard
+that it would be a good idea to let you go
+25Find out from a city’s inhabitants who theGather Information (Cha)A high-level bard
+power behind the throne is
+26Jump over an orc’s head (with a running start)Jump (Str)A 20th-level ranger wearing light armor or a mid-level 
+barbarian wearing light armor (who really only needs
+a 22 because his speed is higher)
+28Disable a glyph of wardingDisable Device (Int)A high-level rogue (but not anyone of another class)
+30Notice a well-hidden secret doorSearch (Int)A high-level rogue
+28Bash open an iron door— (Str)A fire giant
+29Calm a hostile owlbearWild empathy (Cha)A high-level druid (and only a druid or ranger)
+30Hurriedly climb a slick brick wallClimb (Str)A high-level barbarian
+30Read a letter written in ancient DraconicDecipher Script (Int)A high-level wizard
+30Pick a good lockOpen Lock (Dex)A high-level rogue
+43Track a goblin that passed over hard rocks Survival (Wis)A 20th-level ranger who has maxed out his Survival 
+a week ago, and it snowed yesterdayskill and has been fighting goblinoids as his 
+favored enemy since 1st level
+1 This number is actually the average roll on the opponent’s opposed
+check rather than a fixed number.
+2 Actual DC may be higher or lower depending on the caster or ability
+user.
+3 This is the target’s adjusted Armor Class.
+DC: The number a character needs to roll to succeed.
+Example: An example of a task with that DC.
+Roll (Key Ability): The roll the character makes, usually a skill check,
+but sometimes a saving throw, an ability check, or even an attack
+roll. The ability that modifies the roll is in parentheses. A “—” in this
+column means that the check is an ability check and no skill ranks,
+base save bonuses, or base attack bonuses apply.
+Who Could Do It:An example of a character that would have about a
+50% chance to succeed. When this entry names a character by class,
+it assumes that the character has the skill in question. (Other
+characters might have a better or worse chance to succeed.)

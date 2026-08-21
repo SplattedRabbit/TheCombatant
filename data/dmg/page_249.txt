@@ -1,0 +1,131 @@
+248
+The  device  has  the  following  characteristics:  hp  200;  hardness
+15;  Spd  20  ft.,  swim  20  ft.;  AC  20  (–1  size,  +11  natural);  Atk  +12
+melee (2d8, 2 pincers).
+Lever
+(1d10)Lever Function
+1Extend/retract legs and tail
+2Uncover/cover forward porthole
+3Uncover/cover side portholes
+4Extend/retract pincers and feelers
+5Snap pincers
+6Move forward/backward
+7Turn left/right
+8Open “eyes” with continual flameinside/close “eyes”
+9Rise/sink in water
+10Open/close hatch
+Operating a lever is a full-round action, and no lever may be oper-
+ated more than once per round. However, since two Medium
+characters can fit inside, the apparatus can move and attack in the
+same round. The device can function in water up to 900 feet deep.
+It holds enough air for a crew of two to survive 1d4+1 hours (twice
+as long for a single occupant). When activated, the apparatus looks
+something like a giant lobster.
+Strong evocation and transmutation; CL 19th; Craft Wondrous
+Item, animate objects, continual flame, creator must have 8 ranks in
+the Knowledge (architecture and engineering) skill; Price 90,000
+gp;Weight500 lb.
+Bag of Holding:This appears to be a common cloth sack about
+2 feet by 4 feet in size. The bag of holdingopens into a nondimen-
+sional space: Its inside is larger than its outside dimensions.
+Regardless of what is put into the bag, it weighs a fixed amount.
+This weight, and the limits in weight and volume of the bag’s con-
+tents, depend on the bag’s type, as shown on the table below.
+ContentsContents
+BagWeightVolumeMarket
+BagWeightLimitLimitPrice
+Type I15 lb.250 lb.30 cu. ft.2,500 gp
+Type II25 lb.500 lb.70 cu. ft.5,000 gp
+Type III35 lb.1,000 lb.150 cu. ft.7,400 gp
+Type IV60 lb.1,500 lb.250 cu. ft.10,000 gp
+If the bag is overloaded, or if sharp objects pierce it (from inside or
+outside), the bag ruptures and is ruined. All contents are lost for-
+ever. If a bag of holdingis turned inside out, its contents spill out,
+unharmed, but the bag must be put right before it can be used
+again. If living creatures are placed within the bag, they can sur-
+vive for up to 10 minutes, after which time they suffocate. Retriev-
+ing a specific item from a bag of holdingis a move action—unless
+the bag contains more than an ordinary backpack would hold, in
+which case retrieving a specific item is a full-round action.
+If a bag of holdingis placed within a portable hole(page 264), a rift
+to the Astral Plane is torn in the space: Bag and hole alike are
+sucked into the void and forever lost. If a portable holeis placed
+within a bag of holding,it opens a gate to the Astral Plane: The hole,
+the bag, and any creatures within a 10-foot radius are drawn there,
+destroying the portable holeand bag of holdingin the process.
+Moderate conjuration; CL 9th; Craft Wondrous Item, Leomund’s
+secret chest.
+Bag  of  Tricks:This  small  sack  appears  normal  and  empty.
+However, anyone reaching into the bag feels a small, fuzzy ball. If
+the ball is removed and tossed up to 20 feet away, it turns into an
+animal. The animal serves the character who drew it from the bag
+for  10  minutes  (or  until  slain  or  ordered  back  into  the  bag),  at
+which  point  it  disappears.  It  can  follow  any  of  the  commands
+described  in  the  Handle  Animal  skill  (page  74  of  the  Player ’s
+Handbook).  Each  of  the  three  kinds  of  a  bag  of  tricks  produces  a
+different  set  of  animals.  Use  the  following  tables  to  determine
+what animals can be drawn out of each.
+The heavy warhorse appears with harness and tack and accepts
+the character who drew it from the bag as a rider.
+Animals produced are always random, and only one may exist at
+a time. Up to ten animals can be drawn from the bag each week.
+Faint or moderate conjuration; CL 3rd (gray), 5th (rust), 9th
+(tan); Craft Wondrous Item, summon nature’s ally II(gray), summon
+nature’s ally III(rust), or summon nature’s ally V(tan); Price 900 gp
+(gray); 3,000 gp (rust); 6,300 gp (tan).
+––— Gray —— –——— Rust —–—– —–— Tan ———–
+d%Animald%Animald%Animal
+01–30Bat01–30Wolverine01–30    Brown bear
+31–60Rat31–60Wolf31–60    Lion
+61–75Cat61–85Boar61–80    Heavy warhorse
+76–90Weasel86–100   Black bear81–90    Tiger
+91–100Badger91–100  Rhinoceros
+Bead of Force:This small black sphere appears to be a lusterless
+pearl. You can throw it up to 60 feet with no range penalties. Upon
+sharp impact, the bead explodes, sending forth a burst that deals
+5d6 points of force damage to all creatures within a 10-foot radius.
+It functions like an Otiluke’s resilient spherespell (Reflex DC 16
+negates) with a radius of 10 feet and a duration of 10 minutes. A
+globe of shimmering force encloses a creature, provided the latter
+is small enough to fit within the diameter of the sphere. The
+sphere contains its subject for the spell’s duration. The sphere is
+not subject to damage of any sort except from a rod of cancellation,a
+rod of negation, disintegrate,or a targeted dispel magicspell. These
+effects destroy the sphere without harm to the subject. Nothing
+can pass through the sphere, inside or out, though the subject can
+breathe normally. The subject may struggle, but the globe cannot
+be physically moved either by people outside it or by the struggles
+of those within.
+The explosion completely consumes the bead, making this a
+one-use item.
+Moderate evocation; CL 10th; Craft Wondrous Item, Otiluke’s
+resilient sphere; Price 3,000 gp.
+Belt, Monk’s:This simple rope belt, when wrapped around a
+character’s waist, confers great ability in unarmed combat. The
+wearer’s AC and unarmed damage is treated as a monk of five
+levels higher. If donned by a character with the Stunning Fist feat,
+the belt lets her make one additional stunning attack per day. If
+the character is not a monk, she gains the AC and unarmed
+damage of a 5th-level monk. This AC bonus functions just like the
+monk’s AC bonus.
+Moderate transmutation; CL 10th; Craft Wondrous Item,
+righteous might or Tenser ’s transformation; Price 13,000 gp; Weight
+1 lb.
+Belt of Dwarvenkind:This belt gives the wearer a +4 compe-
+tence bonus on Charisma checks and Charisma-based skill checks
+as they relate to dealing with dwarves, a +2 competence bonus on
+similar checks when dealing with gnomes and halflings, and a –2
+competence penalty on similar checks when dealing with anyone
+else. The wearer can understand, speak, and read Dwarven. If the
+wearer is not a dwarf, he gains 60-foot darkvision, dwarven stone-
+cunning, a +2 enhancement bonus to Constitution, and a +2 resist-
+ance bonus on saves against poison, spells, or spell-like effects.
+Moderate divination; CL 12th; Craft Wondrous Item, tongues,
+creator must be a dwarf; Price 14,900 gp; Weight 1 lb.
+Belt of Giant Strength: This wide belt is made of thick leather
+and studded with iron. The belt adds to the wearer’s Strength score
+in the form of an enhancement bonus of +4 or +6.
+Moderate transmutation; CL 10th; Craft Wondrous Item, bull’s
+strength; Price 16,000 gp (+4), 36,000 gp (+6); Weight 1 lb.
+CHAPTER 7:
+MAGIC ITEMS

@@ -1,0 +1,95 @@
+First Impression: Fancy buildings in wildly
+clashing architectural styles dominate the street, each
+trying to outdo the other in ostentatiousness. Most
+such buildings feature coats of arms and flags identify-
+ing the nations they represent.
+Social Class:Upper class.
+Finance District
+Banks and merchant-houses tend to congregate here
+because much of their business is with each other.
+Buildings:Banks (2), moneychangers (7), temple
+(Fharlanghn,  upscale  food  (10),  exotic  trades  (5),
+upscale trades (25), upscale residences (20).
+First Impression: The city watch is augmented
+by private guards, making this a particularly well-pro-
+tected district, day or night.
+Social Class:Upper class.
+Fine Shops
+Shopping districts such as this one often feature store-
+fronts of interest to adventurers. The city’s best armor-
+ers, weaponsmiths, sages, and magic-dealers offer their
+services here.
+Buildings:Upscale lodging (4), upscale food (6),
+exotic trades (10), upscale trades (30), upscale resi-
+dences (20).
+First Impression: The hubbub of commerce is
+omnipresent here, but the high prices discourage the
+crowds found in less tony shopping districts. 
+Social Class:Upper class.
+Lord’s Keep
+A fortress, usually the castle where the city’s ruler lives,
+dominates this district.
+Buildings:Manor house, servants’ quarters (2),
+garrison post, chapel (Kord, Heironeous, or St. Cuth-
+bert), average trades (15).
+First Impression: Pennants in the city’s colors
+flutter over the castle, and guards eye the street from
+their watchtowers above. Soldiers drill in the courtyard
+beyond the open drawbridge.
+Social Class:Upper class.
+Lord’s Keep, Vacant
+This district is similar to the one above, except that no
+one is living in the fortress. Perhaps the lord is on a cru-
+sade, or maybe a more mysterious fate has befallen the
+city’s ruler.
+Buildings:Manor house, servants’ quarters (2),
+garrison post, chapel (Heironeous, Kord, or St. Cuth-
+bert), average trades (15).
+First Impression: This once-proud castle is
+beginning to show signs of neglect, though it is still an
+imposing fortress.
+Social Class:Middle class.
+Magic District
+Many cities segregate users of magic into their own ward
+to protect the rest of the city from errant spellcasting. Such
+an arrangement also helps the rulers and constabulary
+keep an eye on some of the city’s most powerful residents.
+Buildings:Magic item dealers (2), spellcasters for
+hire (6), temple (Boccob), shrine, upscale food (5),
+exotic trades (10), upscale trades (15), upscale services
+(10), upscale residences (20).
+First Impression: Continual flames illuminate
+the streets, and entertaining, artistic illusions decorate
+some of the buildings. The berobed citizens frequently
+display flashy magic—typically glamers. Useful magic
+items abound.
+Social Class:Upper class.
+Noble Estates
+The wealthy, highborn residents of the city live in
+splendor in the manors of this district.
+Buildings:Estates (30).
+First Impression: This district is quieter and
+cleaner than the rest of the city. Servants scurry about
+on their errands, and nobles travel by carriage to call on
+their genteel counterparts.
+Social Class:Upper class.
+Park District
+For those who love the outdoors, this district provides a
+respite from the hustle and bustle of the city.
+Buildings:Parks (1 large or 3 small), temple
+(Corellon Larethian, Ehlonna, or Obad-Hai), druidic
+site, upscale taverns (5), exotic trades (5), upscale trades
+(8), upscale services (17), upscale residences (30).
+First Impression: Clusters of trees, landscaped
+flowerbeds, and lawns of trimmed grass dominate the
+landscape. The air smells fresher here than it does else-
+where in the city.
+Social Class:Upper class.
+University
+The colleges in this district teach everything from
+Knowledge and Profession skills to the secrets of
+divine and arcane magic. Adventurers can find esoteric
+lore and answers to obscure riddles here.
+Buildings:University  buildings,  including
+instruction and faculty offices) (4), library, temple
+4

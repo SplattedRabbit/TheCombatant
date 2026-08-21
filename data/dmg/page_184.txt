@@ -1,0 +1,132 @@
+page 205 of the Player ’s Handbook). Instead of improving a weapon’s
+effectiveness against evil foes (as the paladin spell does), corrupt
+weaponmakes a weapon more effective against good foes.
+Fallen Paladins
+Blackguards who have levels in the paladin class (that is to say, are
+now ex-paladins) gain extra abilities the more levels of paladin
+they have. Those who have tasted the light of goodness and justice
+and turned away make the foulest villains.
+A fallen paladin who becomes a blackguard gains all of the fol-
+lowing abilities that apply, according to the number of paladin
+levels the character has.
+1–2:Smite good 1/day. (This is in addition to the ability granted
+to all blackguards at 2nd level, so that a fallen paladin blackguard
+can smite good a total of twice per day.)
+3–4:Lay on hands. Once per day, the blackguard can use this
+supernatural ability to cure himself or his fiendish servant of
+damage equal to his Charisma bonus ×his level.
+5–6:Sneak attack damage increased by +1d6. Smite good 2/day.
+7–8:Fiendish summoning. Once per day, the blackguard can
+use a summon monster Ispell to call forth an evil creature. For this
+spell, the caster level is double the blackguard’s class level.
+9–10:Undead companion. In addition to the fiendish servant,
+the blackguard gains (at 5th level) a Medium-size skeleton or zom-
+bie as a companion. This companion cannot be turned or rebuked
+and gains all special bonuses as a fiendish servant when the black-
+guard gains levels. Smite good 3/day.
+11 or more:Favored of the dark deities. Evil deities like noth-
+ing more than to see a pure heart corrupted, and thus a fallen pal-
+adin of this stature immediately gains a blackguard level for each
+level of paladin he trades in. For example, a character who has
+twelve levels of paladin can immediately become a 10th-level
+blackguard with all abilities if he chooses to lose ten levels of pal-
+adin. The character level of the character does not change. This, of
+course, is in every way a profitable trade for the evil character,
+since he has already lost most of the benefits he gained from
+having those paladin levels. However, with the loss of paladin
+levels, the character no longer gains as many extra abilities for
+being a fallen paladin. Thus, a fallen 15th-level paladin could
+become a 10th-level blackguard/5th-level paladin and gain the
+first three extra abilities on this chart because of the character’s
+remaining five levels of paladin. Smite good 4/day.
+The Blackguard’s Fiendish Servant
+Upon or after reaching 5th level, a blackguard can call a fiendish
+bat, cat, dire rat, horse, pony, raven, or toad to serve him. (See the
+Monster Manualfor these creatures’ basic statistics.) This creature
+may be used as a guardian (such as a bat), a helper (such as a cat), or
+a mount (such as a horse). The blackguard’s servant further gains
+HD and special abilities based on the blackguard’s character level
+(see the table).
+A blackguard may have only one fiendish servant at a time.
+Should the blackguard’s servant die, he may call for another one
+after a year and a  day. The new fiendish servant has all the accu-
+mulated abilities due a servant of the blackguard’s current level.
+The abilities mentioned in the “Special” column of the accom-
+panying table are described below.
+Empathic Link (Su):The blackguard has an empathic link
+with his servant out to a distance of up to 1 mile. The blackguard
+cannot see through the servant’s eyes, but they can communicate
+empathically. Because of the limited nature of the link, only gen-
+eral emotional content (such as fear, hunger, happiness, curiosity)
+can be communicated. Note that the low Intelligence of a low-
+level blackguard’s fiendish servant limits what the creature is able
+to communicate or understand, and even intelligent servants see
+the world differently from humans, so misunderstandings are
+always possible.
+Because of the empathic link between the servant and the
+blackguard, the blackguard has the same connection to a place or
+an item that the servant does.
+Improved Evasion (Ex):If the servant is subjected to an attack
+that normally allows a Reflex saving throw for half damage, it takes
+no damage on a successful saving throw and only half damage on a
+failed saving throw. Improved evasion is an extraordinary ability. 
+Share Saving Throws:For each of its saving throws, the ser-
+vant uses either its own base save bonus or the blackguard’s,
+whichever is higher. The servant applies its own ability modifiers
+to saves, and it doesn’t share any other bonuses on saves that the
+blackguard might have (such as from magic items or feats).
+Share Spells:At the blackguard’s option, he may have any spell
+(but not any spell-like ability) he casts on himself also affect his
+servant. The servant must be within 5 feet at the time of casting to
+receive the benefit. If the spell has a duration other than instanta-
+neous, it stops affecting the servant if it moves farther than 5 feet
+away and will not affect the servant again even if the servant
+returns to the blackguard before the duration expires. Addition-
+ally, the blackguard may cast a spell with a target of “You” on his
+servant (as a touch range spell) instead of on himself. A blackguard
+and his servant can share spells even if the spells normally do not
+affect creatures of the servant’s type (magical beast).
+Speak with Blackguard (Ex):If the blackguard’s character
+level is 13th or higher, the blackguard and servant can communi-
+cate verbally as if they were using a common language. Other crea-
+tures do not understand the communication without magical help.
+Blood Bond (Ex):If the blackguard’s character level is 16th or
+higher, the servant gains a +2 bonus on all attack rolls, checks, and
+saves if it witnesses the blackguard being threatened or harmed.
+This bonus lasts as long as the threat is immediate and apparent.
+Spell Resistance (Ex):If the blackguard’s character level is
+19th or higher, the servant gains spell resistance equal to the
+blackguard’s level + 5. To affect the servant with a spell, another
+spellcaster must get a result on a caster level check (1d20 + caster
+level) that equals or exceeds the servant’s spell resistance.
+DRAGON DISCIPLE
+It is known that certain dragons can take humanoid form and
+even have humanoid lovers. Sometimes a child is born of this
+union, and every child of that child unto the thousandth genera-
+tion claims a bit of dragon blood, be it ever so small. Usually, little
+comes of it, though mighty sorcerers occasionally credit their
+powers to draconic heritage. For some, however, dragon blood
+beckons irresistibly. These characters become dragon disciples,
+who use their magical power as a catalyst to ignite their dragon
+blood, realizing its fullest potential.
+183
+CHAPTER 6:
+CHARACTERS
+CharacterBonusNaturalStr
+LevelHDArmor Adj.   Adj.Int  Special
+12th or+2+1+16    Empathic link, improved 
+lowerevasion, share saving 
+throws, share spells
+13th–15th+4+3+27    Speak with blackguard
+16th–18th+6+5+38    Blood bond
+19th–20th+8+7+49    Spell resistance
+Character Level:The character level of the blackguard (his
+blackguard level plus his original class level).
+Bonus HD:Extra eight-sided (d8) Hit Dice, each of which gains a
+Constitution modifier, as normal. Extra Hit Dice improve the servant’s
+base attack and base save bonuses, as normal.
+Natural Armor Adj.:This is an improvement to the servant’s
+existing natural armor bonus.
+Str Adj.: Add this figure to the servant’s Strength score.
+Int:The servant’s Intelligence score. (A fiendish servant is smarter
+than normal animals of its kind.)

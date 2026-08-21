@@ -1,0 +1,130 @@
+208
+Bonus Feats:The epic bard gains a bonus feat every three
+levels higher than 20th (23rd, 26th, and so on).
+Inspire Courage (Su):The epic bard’s bonus when this ability
+is used increases by +1 every six levels higher than 20th (26th,
+32nd, and so on).
+EPIC CLERIC
+In a typical world, the epic cleric stands as one of his deity’s most
+elite servants. In an adventuring party, he must also stand as the
+solid center of the group, providing power and assistance to his
+companions.
+Hit Die:d8.
+Skill Points at Each Additional Level: 2 + Int modifier.
+Spells:The cleric’s caster level is equal to his class level. The
+cleric’s number of spells per day does not increase after 20th level. 
+Turn or Rebuke Undead:Use the cleric’s class level to deter-
+mine the most powerful undead affected by a turn or rebuke
+check and the turning damage, just as normal.
+Bonus Feats:The epic cleric gains a bonus feat every three
+levels higher than 20th (23rd, 26th, and so on).
+EPIC DRUID
+The epic druid is a mighty symbol of the power of the natural
+world, able to focus the primal forces of the elements to do her
+bidding.
+Hit Die:d8.
+Skill Points at Each Additional Level: 4 + Int modifier.
+Spells:The druid’s caster level is equal to her class level. The
+druid’s number of spells per day does not increase after 20th level. 
+Animal  Companion:The  druid  may  have  a  maximum
+number of animal companions equal to twice her class level, as
+normal.
+Wild Shape (Su): The druid can use this ability to take the
+form of an animal one additional time per day every four levels
+higher than 18th (7/day at 22nd, 8/day at 26th, and so on). The
+druid’s ability to wild shape into an elemental does not improve.
+Bonus Feats:The epic druid gains a bonus feat every four
+levels higher than 20th.
+EPIC FIGHTER
+The epic fighter is a combat machine, a master of more battle
+maneuvers than any other character in the game. More than a
+mere sword-swinger, the epic fighter knows how to best his oppo-
+nents in any arena.
+Hit Die:d10.
+Skill Points at Each Additional Level: 2 + Int modifier.
+Bonus Feats:The epic fighter gains a bonus feat every two
+levels higher than 20th (22nd, 24th, 26th, and so on).
+EPIC MONK
+The epic monk has achieved an inner tranquility that lesser char-
+acters can’t even dream of. Her speed, power, grace, and force of
+will are unmatched by mortal beings.
+Hit Die:d8.
+Skill Points at Each Additional Level: 4 + Int modifier.
+AC Bonus (Ex):The monk’s bonus to Armor Class when unar-
+mored increases by +1 every five levels higher than 20th (+5 at
+25th, +6 at 30th, and so on).
+Unarmed Strike:The damage for a monk’s unarmed strike
+does not increase after 16th level.
+Stunning Attack:Use the monk’s class level when determin-
+ing the DC to resist this attack, as normal.
+Unarmored Speed Bonus:The epic monk’s speed when wear-
+ing no armor increases by 10 feet every three levels higher than
+18th (+70 ft. at 21st, +80 ft. at 24th, and so on). 
+KiStrike (Su):The monk’s kistrike ability does not automati-
+cally increase with class level after 16th level. 
+Wholeness of Body (Su):The epic monk can cure up to twice
+her class level in hit points each day, as normal.
+Abundant Step (Su): Use the monk’s class level when deter-
+mining the effective caster level of this ability, as normal.
+Diamond Soul (Ex):The epic monk’s spell resistance is equal
+to her class level +10, as normal.
+Quivering Palm (Su):Use the monk’s class level when deter-
+mining the DC to resist this attack, as normal.
+Empty Body (Su):Use the monk’s class level when determin-
+ing the duration of this effect, as normal.
+Bonus Feats: The epic monk gains a bonus feat every five
+levels higher than 20th (25th, 30th, and so on).
+EPIC PALADIN
+The epic paladin stands at the forefront of the battle against chaos
+and evil in the world, shining as a beacon of hope to all who fight
+the good fight.
+Hit Die:d10.
+Skill Points at Each Additional Level: 2 + Int modifier.
+Lay on Hands (Su): Each day the epic paladin can cure a total
+number of hit points equal to her Charisma bonus (if any) times
+her class level, as normal.
+Smite Evil (Su):The epic paladin adds her class level to damage
+with any smite evil attack, as normal. She can smite one additional
+time per day for every five levels higher than 20th (6/day at 25th,
+7/day at 30th,and so on)
+Turn Undead (Su):The paladin turns undead as a cleric of two
+levels lower, as normal.
+Spells:The paladin’s caster level is equal to one-half her class
+level, as normal. The paladin’s number of spells per day does not
+increase after 20th level.
+Special Mount:The epic paladin’s special mount continues to
+increase in power. Every five levels higher than 20th (25th, 30th,
+35th, and so on), the special mount gains +2 bonus Hit Dice, its
+natural armor increases by +2, its Strength adjustment increases
+by +1, and its Intelligence increases by +1. The mount’s spell resist-
+ance equals the paladin’s class level + 5.
+Remove Disease(Sp): The epic paladin can use remove diseaseone
+additional time per week for every three levels higher than 18th
+(7/week at 21st, 8/week at 24th, and so on).
+Bonus Feats:The epic paladin gains a bonus feat every three
+levels higher than 20th (23rd, 26th, 29th, and so on).
+EPIC RANGER
+Whether cunning protector of the wild or cold-blooded hunter of
+the weak, the epic ranger is one with the wilderness, moving with
+deadly grace and keen mind through the natural world.
+Hit Die:d8.
+Skill Points at Each Additional Level: 6 + Int modifier.
+Spells:The ranger’s caster level is equal to one-half his class
+level, as normal. The ranger’s number of spells per day does not
+increase after 20th level.
+Favored Enemy (Ex):The epic ranger gains one additional
+favored enemy, and his bonuses against one category of favored
+enemies go up by +2, every five levels higher than 20th (6th
+enemy at 25th, 7th enemy at 30th, and so on).
+Bonus Feats:The epic ranger gains a bonus feat every three
+levels higher than 20th (23rd, 26th, and so on).
+EPIC ROGUE
+The epic rogue is a trickster and a thief, a trap-detector and a
+tale-spinner. Her skills are legendary and her tales of derring-do
+even more so. If you listen to the stories, there’s nothing she
+can’t do.
+Hit Die:d6.
+Skill Points at Each Additional Level: 8 + Int modifier.
+Sneak Attack:The epic rogue’s sneak attack damage increases
+CHAPTER 6:
+CHARACTERS

@@ -1,0 +1,134 @@
+12 Fortitude save resists, 0/1d4 Con plus 1d3 Wis); Search DC 20;
+Disable Device DC 18. Market Price: 700 gp.
+Poison Needle Trap:CR 1; mechanical; touch trigger; manual
+reset; Atk +8 ranged (1 plus greenblood oil poison); Search DC 22;
+Disable Device DC 20. Market Price:1,300 gp.
+Portcullis Trap:CR 1; mechanical; location trigger; manual
+reset; Atk +10 melee (3d6); Search DC 20; Disable Device DC 20.
+Note:Damage applies only to those underneath the portcullis.
+Portcullis blocks passageway. Market Price:1,400 gp.
+Razor-Wire  across  Hallway:  CR 1; mechanical; location trig-
+ger; no reset; Atk +10 melee (2d6, wire); multiple targets (first
+target in each of two adjacent 5-ft. squares); Search DC 22; Disable
+Device DC 15. Market Price:400 gp.
+Rolling Rock Trap: CR 1; mechanical; location trigger; manual
+reset; Atk +10 melee (2d6, rock); Search DC 20; Disable Device DC
+22. Market Price:1,400 gp.
+Scything Blade Trap:CR 1; mechanical; location trigger; auto-
+matic reset; Atk +8 melee (1d8/×3); Search DC 21; Disable Device
+DC 20. Market Price:1,700 gp.
+Spear Trap:CR 1; mechanical; location trigger; manual reset;
+Atk +12 ranged (1d8/×3, spear); Search DC 20; Disable Device DC
+20. Note:200-ft. max range, target determined randomly from
+those in its path. Market Price: 1,200 gp.
+Swinging Block Trap: CR 1; mechanical; touch trigger;
+manual reset; Atk +5 melee (4d6, stone block); Search DC 20; Dis-
+able Device DC 20. Market Price:500 gp.
+Wall Blade Trap: CR 1; mechanical; touch trigger; automatic
+reset; hidden switch bypass (Search DC 25); Atk +10 melee
+(2d4/×4, scythe); Search DC 22; Disable Device DC 22. Market
+Price: 2,500 gp.
+CR 2 Traps
+Box of Brown Mold: CR 2; mechanical; touch trigger (open-
+ing the box); automatic reset; 5-ft. cold aura (3d6, cold nonlethal);
+Search DC 22; Disable Device DC 16. Market Price:3,000 gp.
+Bricks from Ceiling: CR 2; mechanical; touch trigger; repair
+reset; Atk +12 melee (2d6, bricks); multiple targets (all targets in
+two adjacent 5-ft. squares); Search DC 20; Disable Device DC 20.
+Market Price: 2,400 gp.
+Burning Hands Trap: CR 2; magic device; proximity trigger
+(alarm);automatic reset; spell effect (burning hands, 1st-level
+wizard, 1d4 fire, DC 11 Reflex save half damage); Search DC 26;
+Disable Device DC 26. Cost: 500 gp, 40 XP.
+Camouflaged Pit Trap: CR 2; mechanical; location trigger;
+manual reset; DC 20 Reflex save avoids; 20 ft. deep (2d6, fall); mul-
+tiple targets (first target in each of two adjacent 5-ft. squares);
+Search DC 24; Disable Device DC 19. Market Price: 3,400 gp.
+Inflict Light Wounds Trap: CR 2; magic device; touch trigger;
+automatic reset; spell effect (inflict light wounds, 1st-level cleric,
+1d8+1, DC 11 Will save half damage); Search DC 26; Disable
+Device DC 26. Cost:500 gp, 40 XP.
+Javelin Trap: CR 2; mechanical; location trigger; manual reset;
+Atk +16 ranged (1d6+4, javelin); Search DC 20; Disable Device DC
+18. Market Price: 4,800 gp.
+Large Net Trap:CR 2; mechanical; location trigger; manual
+reset; Atk +5 melee (see note); Search DC 20; Disable Device DC
+25. Note:Characters in 10-ft. square are grappled by net (Str 18) if
+they fail a DC 14 Reflex save. Market Price:3,000 gp.
+Pit Trap:CR 2; mechanical, location trigger; manual reset; DC
+20 Reflex save avoids; 40 ft. deep (4d6, fall); Search DC 20; Disable
+Device DC 20. Market Price:2,000 gp.
+Poison Needle Trap: CR 2; mechanical; touch trigger; repair
+reset; lock bypass (Open Lock DC 30); Atk +17 melee (1 plus
+poison, needle); poison (blue whinnis, DC 14 Fortitude save resists
+(poison only), 1 Con/unconsciousness); Search DC 22; Disable
+Device DC 17.Market Price: 4,720 gp.
+Spiked Pit Trap: CR 2; mechanical; location trigger; automatic
+reset; DC 20 Reflex save avoids; 20 ft. deep (2d6, fall); multiple tar-
+gets (first target in each of two adjacent 5-ft. squares); pit spikes
+(Atk +10 melee, 1d4 spikes per target for 1d4+2 each); Search DC
+18; Disable Device DC 15. Market Price: 1,600 gp.
+Tripping Chain: CR 2; mechanical; location trigger; automatic
+reset; multiple traps (tripping and melee attack); Atk +15 melee
+touch (trip), Atk +15 melee (2d4+2, spiked chain); Search DC 15;
+Disable Device DC 18. Market Price: 3,800 gp.
+Note:This trap is really one CR 1 trap that trips and a second CR
+1 trap that attacks with a spiked chain. If the tripping attack suc-
+ceeds, a +4 bonus applies to the spiked chain attack because the
+opponent is prone.
+Well- Camouflaged  Pit  Trap:  CR  2;  mechanical;  location  trig-
+ger; repair reset; DC 20 Reflex save avoids; 10 ft. deep (1d6, fall);
+Search DC 27; Disable Device DC 20. Market Price: 4,400 gp.
+CR 3 Traps
+Burning Hands Trap: CR 3; magic device; proximity trigger
+(alarm);automatic reset; spell effect (burning hands, 5th-level
+wizard, 5d4 fire, DC 11 Reflex save half damage); Search DC 26;
+Disable Device DC 26. Cost: 2,500 gp, 200 XP.
+Camouflaged Pit Trap: CR 3; mechanical; location trigger;
+manual reset; DC 20 Reflex save avoids; 30 ft. deep (3d6, fall); mul-
+tiple targets (first target in each of two adjacent squares); Search
+DC 24; Disable Device DC 18.Market Price:4,800 gp.
+Ceiling Pendulum: CR 3; mechanical; timed trigger; auto-
+matic reset; Atk +15 melee (1d12+8/×3, greataxe); Search DC 15;
+Disable Device DC 27. Market Price: 14,100 gp.
+Fire Trap:CR 3; spell; spell trigger; no reset; spell effect (fire trap,
+3rd-level druid, 1d4+3 fire, DC 13 Reflex save half damage); Search
+DC 27; Disable Device DC 27. Cost: 85 gp to hire NPC spellcaster.
+Extended Bane Trap: CR 3; magic device; proximity trigger
+(detect good);automatic reset; spell effect (extended bane,3rd-level
+cleric, DC 13 Will save negates); Search DC 27; Disable Device DC
+27. Cost:3,500 gp, 280 XP.
+Ghoul Touch Trap: CR 3; magic device; touch trigger; automatic
+reset; spell effect (ghoul touch,3rd-level wizard, DC 13 Fortitude save
+negates); Search DC 27; Disable Device DC 27. Cost:3,000 gp, 240 XP.
+Hail of Needles:CR 3; mechanical; location trigger; manual
+reset; Atk +20 ranged (2d4); Search DC 22; Disable Device DC 22.
+Market Price:5,400 gp.
+Melf ’s Acid Arrow Trap: CR 3; magic device; proximity trigger
+(alarm);automatic reset; Atk +2 ranged touch; spell effect (Melf ’s
+acid arrow,3rd-level wizard, 2d4 acid/round for 2 rounds); Search
+DC 27; Disable Device DC 27. Cost: 3,000 gp, 240 XP.
+Pit Trap:CR 3; mechanical, location trigger; manual reset; DC
+20 Reflex save avoids; 60 ft. deep (6d6, fall); Search DC 20; Disable
+Device DC 20. Market Price:3,000 gp.
+Poisoned Arrow Trap: CR 3; mechanical; touch trigger;
+manual reset; lock bypass (Open Lock DC 30); Atk +12 ranged
+(1d8 plus poison, arrow); poison (Large monstrous scorpion
+venom, DC 14 Fortitude save resists, 1d4 Con/1d4 Con); Search
+DC 19; Disable Device DC 15. Market Price: 2,900 gp.
+Spiked Pit Trap: CR 3; mechanical; location trigger; manual
+reset; DC 20 Reflex save avoids; 20 ft. deep (2d6, fall); multiple tar-
+gets (first target in each of two adjacent 5-ft. squares); pit spikes
+(Atk +10 melee, 1d4 spikes per target for 1d4+2 each); Search DC
+21; Disable Device DC 20. Market Price: 3,600 gp.
+Stone Blocks from Ceiling: CR 3; mechanical; location trig-
+ger; repair reset; Atk +10 melee (4d6, stone blocks); Search DC 25;
+Disable Device DC 20. Market Price: 5,400 gp.
+CR 4 Traps
+Bestow Curse Trap: CR 4; magic device; touch trigger (detect
+chaos);automatic reset; spell effect (bestow curse,5th-level cleric,
+DC 14 Will save negates); Search DC 28; Disable Device DC 28.
+Cost:8,000 gp, 640 XP.
+71
+CHAPTER 3:
+ADVENTURES

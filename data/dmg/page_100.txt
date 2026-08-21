@@ -1,0 +1,137 @@
+that protect all the citizens of the city. Having an evil alignment is
+not a crime (except in some severely theocratic cities, perhaps,
+with the magical power to back up the law); only evil deeds are
+against the law. Even when adventurers encounter an evildoer in
+the act of perpetrating some heinous evil upon the populace of
+the city, the law tends to frown on the sort of vigilante justice that
+leaves the evildoer dead or otherwise unable to testify at a trial.
+The important point to remember about city laws when run-
+ning a city campaign is to use them to encourage creative thinking
+and alternative ways of solving problems. If the players stop
+having fun and long for a return to the dungeon, where they can
+use their combat might to its fullest potential, it’s generally a good
+idea to cut them some slack where the city laws are concerned,
+and let them focus on the exciting aspects of adventure in the city.
+On the other hand, if your players in a city-centered campaign
+make feat, skill, and spell selections in order to optimize their
+characters’ effectiveness in working within and around the law,
+then they are approaching the problem creatively and deserve the
+chance to try out their schemes.
+WEAPON AND SPELL RESTRICTIONS
+Some cities demand that characters who enter the city bind their
+weapons into their sheaths with knotted cord to prevent easy access.
+Other cities may forbid enchantments or divinations such asdetect
+thoughtsin the bazaar. Different cities have different laws about such
+issues as carrying weapons in public and restricting spellcasters.
+When you plan an urban adventure, decide what the relevant laws are.
+The most important consideration is to enhance the game with
+such laws, not interfere with the players’ fun. While it might be
+quite logical for a city to confiscate weapons and material compo-
+nents, such restrictions can really put a damper on player enjoy-
+ment of an urban adventure. If you want to increase the challenge
+of urban life by forcing characters to make do without weapons or
+spells, that’s fine—but be sure that the challenges they face are
+appropriate to their hindered state. Unless you’ve accounted for
+the restrictions in your adventure, it’s best if the characters have
+relatively free access to all their capabilities.
+The city’s laws may not affect all characters equally. A monk isn’t
+hampered at all by a law about peace-bonding weapons, but a
+cleric is reduced to a fraction of his power if all holy symbols are
+confiscated at the city’s gates.
+At the same time, it’s a good idea to let characters who are
+resourceful or clever enough get around such restrictions—such
+as the wizard with the Eschew Materials feat who doesn’t need
+material components or the bard with a rapier concealed in the
+neck of his lute.
+URBAN FEATURES
+Walls, doors, poor lighting, and uneven footing: In many ways a city
+is much like a dungeon. Many of the dungeon terrain elements
+described earlier in this chapter work equally well in the city. Some
+new considerations for an urban setting are covered below.
+Walls and Gates
+Many cities are surrounded by walls. A typical small city wall is a
+fortified stone wall 5 feet thick and 20 feet high. Such a wall is
+fairly smooth, requiring a DC 30 Climb check to scale. The walls
+are crenellated on one side to provide a low wall for the guards
+atop it, and there is just barely room for guards to walk along the
+top of the wall.
+A typical small city wall has AC 3, hardness 8, and 450 hp per
+10-foot section.
+A typical large city wall is 10 feet thick and 30 feet high, with
+crenellations on both sides for the guards on top of the wall. It is
+likewise smooth, requiring a DC 30 Climb check to scale.
+Such a wall has AC 3, hardness 8, and 720 hp per 10-foot section.
+A typical metropolis wall is 15 feet thick and 40 feet tall. It has
+crenellations on both sides and often has a tunnel and small
+rooms running through its interior.
+Metropolis walls have AC 3, hardness 8, and 1,170 hp per 10-
+foot section.
+Unlike smaller cities, metropolises often have interior walls as well
+as surrounding walls—either old walls that the city has outgrown, or
+walls dividing individual districts from each other. Sometimes these
+walls are as large and thick as the outer walls, but more often they
+have the characteristics of a large city’s or small city’s walls.
+Watch Towers: Some city walls are adorned with watch towers
+set at irregular intervals. Few cities have enough guards to keep
+someone constantly stationed at every tower, unless the city is
+expecting attack from outside. The towers provide a superior view
+of the surrounding countryside as well as a point of defense
+against invaders.
+Watch towers are typically 10 feet higher than the wall they
+adjoin, and their diameter is 5 times the thickness of the wall.
+Arrow slits line the outer sides of the upper stories of a tower, and
+the top is crenellated like the surrounding walls are. In a small
+tower (25 feet in diameter adjoining a 5-foot-thick wall), a simple
+ladder typically connect the tower’s stories and the roof. In a larger
+tower, stairs serve that purpose.
+Heavy wooden doors, reinforced with iron and bearing good
+locks (Open Lock DC 30), block entry to a tower, unless the tower
+is in regular use.
+As a rule, the captain of the guard keeps the key to the tower
+secured on her person, and a second copy is in the city’s inner
+fortress or barracks.
+Gates:A typical city gate is a gatehouse with two portcullises
+and murder holes above the space between them.
+In towns and some small cities, the primary entry is through
+iron double doors set into the city wall.
+Gates are usually open during the day and locked or barred at
+night. Usually, one gate lets in travelers after sunset and is staffed
+by guards who will open it for someone who seems honest, pres-
+ents proper papers, or offers a large enough bribe (depending on
+the city and the guards).
+Guards and Soldiers
+A city typically has full-time military personnel equal to 1% of its
+adult population, in addition to militia or conscript soldiers equal
+to 5% of the population. The full-time soldiers are city guards re-
+sponsible for maintaining order within the city, similar to the role
+of modern police, and (to a lesser extent) for defending the city
+from outside assault. Conscript soldiers are called up to serve in
+case of an attack on the city.
+A typical city guard force works on three eight-hour shifts, with
+30% of the force on a day shift (8 
+A.
+M.to 4 P.M.), 35% on an evening
+shift (4 
+P
+.
+M.to 12 A.M.), and 35% on a night shift (12 A.M.to 8 A.M.).
+At any given time, 80% of the guards on duty are on the streets
+patrolling, while the remaining 20% are stationed at various posts
+throughout the city, where they can respond to nearby alarms. At
+least one such guard post is present within each neighborhood of
+a city (each neighborhood consisting of several districts).
+The majority of a city guard force is made up of warriors, mostly
+1st level. Officers include higher-level warriors, fighters, a fair
+number of clerics, and wizards or sorcerers, as well as multiclass
+fighter/spellcasters. 
+Siege Engines
+Siege engines are large weapons, temporary structures, or pieces
+of equipment traditionally used in besieging a castle or fortress.
+Catapult, Heavy: A heavy catapult is a massive engine capable of
+throwing rocks or heavy objects with great force. Because the cata-
+pult throws its payload in a high arc, it can hit squares out of its line
+of sight. To fire a heavy catapult, the crew chief makes a special check
+against DC 15 using only his base attack bonus, Intelligence modi-
+99
+CHAPTER 3:
+ADVENTURES

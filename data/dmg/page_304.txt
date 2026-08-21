@@ -1,0 +1,129 @@
+case the blinded character knows the location of the unseen oppo-
+nent, but has not pinpointed him) or uses a ranged attack (in
+which case, the blinded character knows the general direction of
+the foe, but not his location).
+—A creature with the scent ability automatically pinpoints
+unseen creatures within 5 feet of its location.
+FALLING
+One of the most common hazards to adventurers is a fall from
+some great height.
+Falling Damage: The basic rule is simple: 1d6 points of
+damage per 10 feet fallen, to a maximum of 20d6.
+If a character deliberately jumps instead of merely slipping or
+falling, the damage is the same but the first 1d6 is nonlethal dam-
+age. A DC 15 Jump check or DC 15 Tumble check allows the char-
+acter to avoid any damage from the first 10 feet fallen and converts
+any damage from the second 10 feet to nonlethal damage. Thus, a
+character who slips from a ledge 30 feet up takes 3d6 damage. If
+the same character deliberately jumped, he takes 1d6 points of
+nonlethal damage and 2d6 points of lethal damage. And if the
+character leaps down with a successful Jump or Tumble check, he
+takes only 1d6 points of nonlethal damage and 1d6 points of lethal
+damage from the plunge.
+Falls onto yielding surfaces (soft ground, mud) also convert the
+first 1d6 of damage to nonlethal damage. This reduction is cumu-
+lative with reduced damage due to deliberate jumps and the Jump
+skill.
+Falling into Water:Falls into water are handled somewhat
+differently. If the water is at least 10 feet deep, the first 20 feet of
+falling do no damage. The next 20 feet do nonlethal damage (1d3
+per 10-foot increment). Beyond that, falling damage is lethal
+damage (1d6 per additional 10-foot increment).
+Characters who deliberately dive into water take no damage on
+a successful DC 15 Swim check or DC 15 Tumble check, so long as
+the water is at least 10 feet deep for every 30 feet fallen. However,
+the DC of the check increases by 5 for every 50 feet of the dive.
+FALLING OBJECTS
+Just as characters take damage when they fall more than 10 feet, so
+too do they take damage when they are hit by falling objects.
+Objects that fall upon characters deal damage based on their
+weight and the distance they have fallen.
+Table 8–4: Damage from Falling Objects
+Object WeightFalling Distance
+200–101 lb.20 ft.
+100–51 lb.30 ft.
+50–31 lb.40 ft.
+30–11 lb.50 ft.
+10–6 lb.60 ft.
+5–1 lb.70 ft.
+For each 200 pounds of an object’s weight, the object deals 1d6
+points of damage, provided it falls at least 10 feet. Distance also
+comes into play, adding an additional 1d6 points of damage for
+every 10-foot increment it falls beyond the first (to a maximum of
+20d6 points of damage).
+Objects smaller than 200 pounds also deal damage when
+dropped, but they must fall farther to deal the same damage. Use
+Table 8–4: Damage from Falling Objects to see how far an object of
+a given weight must drop to deal 1d6 points of damage.
+Example:A magic flying ship tilts to one side and drops a 400-
+pound stone statue (a petrified comrade) overboard. The statue
+deals 2d6 points of damage to anything it strikes by virtue of its
+weight alone. If the ship were 100 feet in the air at the time, the
+falling statue would deal an additional 9d6 points of damage, for a
+total of 11d6.
+For  each  additional  increment  an  object  falls,  it  deals  an  addi-
+tional 1d6 points of damage. For example, since a 30-pound metal
+sphere  must  fall  50  feet  to  deal  damage  (1d6  points  of  damage),
+such a sphere that fell 150 feet would deal 3d6 points of damage.
+Objects weighing less than 1 pound do not deal damage to those
+they land upon, no matter how far they have fallen.
+HEAT DANGERS
+The hot desert sun can be as deadly an enemy as a hostile tribe of
+orcs. Prolonged exposure to hot temperatures can quickly wear
+down a character, and heatstroke can be deadly.
+Heat deals nonlethal damage that cannot be recovered until the
+character gets cooled off (reaches shade, survives until nightfall,
+gets doused in water, is targeted by endure elements, and so forth).
+Once rendered unconscious through the accumulation of non-
+lethal damage, the character begins to take lethal damage at the
+same rate.
+A character in very hot conditions (above 90° F) must make a
+Fortitude saving throw each hour (DC 15, +1 for each previous
+check) or take 1d4 points of nonlethal damage. Characters wear-
+ing heavy clothing or armor of any sort take a –4 penalty on their
+saves. A character with the Survival skill may receive a bonus on
+this saving throw and may be able to apply this bonus to other
+characters as well (see the skill description, page 83 of the Player ’s
+Handbook). Characters reduced to unconsciousness begin taking
+lethal damage (1d4 points per hour).
+In severe heat (above 110° F), a character must make a Fortitude
+save once every 10 minutes (DC 15, +1 for each previous check) or
+take 1d4 points of nonlethal damage. Characters wearing heavy
+clothing or armor of any sort take a –4 penalty on their saves. A
+character with the Survival skill may receive a bonus on this
+saving throw and may be able to apply this bonus to other charac-
+ters as well. Characters reduced to unconsciousness begin taking
+lethal damage (1d4 points per each 10-minute period).
+A character who takes any nonlethal damage from heat expo-
+sure now suffers from heatstroke and is fatigued (see page 301).
+These penalties end when the character recovers the nonlethal
+damage she took from the heat.
+Extreme heat (air temperature over 140° F, fire, boiling water,
+lava) deals lethal damage. Breathing air in these temperatures
+deals 1d6 points of damage per minute (no save). In addition, a
+character must make a Fortitude save every 5 minutes (DC 15, +1
+per previous check) or take 1d4 points of nonlethal damage.
+Those wearing heavy clothing or any sort of armor take a –4
+penalty on their saves. In addition, those wearing metal armor or
+coming into contact with very hot metal are affected as if by a
+heat metalspell.
+Boiling water deals 1d6 points of scalding damage, unless the
+character is fully immersed, in which case it deals 10d6 points of
+damage per round of exposure.
+Catching on Fire
+Characters exposed to burning oil, bonfires, and noninstanta-
+neous magic fires such as a wall of fire might find their clothes,
+hair, or equipment on fire. Spells such as fireball or flame strike don’t
+normally set a character on fire, since the heat and flame from
+these come and go in a flash.
+Characters at risk of catching fire are allowed a DC 15 Reflex
+save to avoid this fate. If a character’s clothes or hair catch fire, he
+303
+CHAPTER 8:
+GLOSSARY
+VARIANT: LESS LETHAL FALLS
+Generous DMs who feel that falling is too lethal can make the first 1d6
+of  falling  damage  always  nonlethal  damage,  no  matter  what  the
+circumstances.
+pqqrs
+pqqrs

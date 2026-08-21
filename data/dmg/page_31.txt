@@ -1,0 +1,133 @@
+30
+low, double the penalties). It can move through a space with a ceil-
+ing as low as one-quarter its height, but it must do so by going
+prone and crawling. The normal penalties and restrictions for
+being prone apply.
+Standing in Tight Quarters
+A creature may find itself standing atop a rocky pinnacle, fighting
+from the back of a wagon, or taking advantage of the cover pro-
+vided by a hole in the ground. In such cases, the creature’s space
+decreases to match the space available on the ground, but its at-
+tacks are unaffected because its upper body isn’t constrained. It
+can use its weapons and natural reach without penalties.
+SKILL AND ABILITY CHECKS
+The whole game can be boiled down to the characters trying to ac-
+complish various tasks, the DM determining how difficult those
+tasks are to accomplish, and the dice determining success or fail-
+ure. While combat and spellcasting have their own rules for how
+difficult tasks are, skill checks and ability checks handle just about
+everything else.
+MODIFYING THE ROLL OR THE DC
+Circumstances can modify a character’s die roll, and they can
+modify the Difficulty Class needed to succeed.
+•Circumstances  that  improve  performance,  such  as  having  the
+perfect  tools  for  the  job,  getting  help  from  another  character,
+and having unusually accurate information, provide a bonus on
+the die roll.
+•Circumstances that hamper performance, such as being forced
+to  use  improvised  tools  or  having  misleading  information,
+provide a penalty on the die roll.
+•Circumstances that make the task easier, such as a friendly audi-
+ence or helpful environmental conditions, decrease the DC.
+•Circumstances that make the task harder, such as a hostile audi-
+ence or doing work that must be flawless, increase the DC.
+THE DM’S BEST FRIEND
+A favorable circumstance gives a character a +2 bonus on a skill
+check (or a –2 modifier to the DC) and an unfavorable one gives a
+–2 penalty on the skill check (or a +2 modifier to the DC). Take
+special note of this rule, for it may be the only one you’ll need.
+Mialee  runs  down  a  dungeon  corridor,  running  from  a
+beholder. Around the corner ahead wait two ogres. Does Mialee
+hear the ogres getting ready to make their ambush? The DM calls
+for a Listen check and rules that her running from the beholder
+makes it less likely that she’s listening carefully: –2 penalty on the
+check. But one of the ogres is readying a portcullis trap, and the
+cranking winch of the device makes a lot of noise: –2 modifier to
+the DC. Also, Mialee has heard from another adventurer that the
+ogres in this dungeon like to ambush adventurers: +2 bonus on
+the check. Her ears are still ringing from the shoutspell that she
+cast at the beholder: –2 penalty on the check. The dungeon is
+already noisy because of the sound of the roaring dragon on the
+level below: +2 modifier to the DC.
+You can add modifiers endlessly (doing so is not really a good
+thing, since it slows down play), but the point is, other than the
+PC’s Listen check modifier, the only numbers that the DM and the
+player need to remember when calculating all the situational
+modifiers are +2 and –2. Multiple conditions add up to give the
+check a total modifier and the DC a final value.
+Going beyond the Rule: It’s certainly acceptable to modify
+this rule. For extremely favorable or unfavorable circumstances,
+you can use modifiers greater than +2 and less than –2. For
+example, you can decide that a task is practically impossible and
+modify the roll or the DC by 20. Feel free to modify these numbers
+as you see fit, using modifiers from 2 to 20.
+DELINEATING TASKS
+A task is anything that requires a die roll. Climbing half one’s
+speed is a task, as is making a pot, despite the fact that one task
+takes seconds and the other hours (or even days).
+A single task can encompass any of the following activities.
+•Moving a set distance (as covered in a skill description).
+•Making one item.
+•Influencing  one  person,  creature,  or  group  (DM  decides  if
+NPCs are acting as individuals or as a group).
+•Dealing  with  one  object  (opening  a  door,  breaking  a  board,
+tying a rope, slipping out of a manacle, picking a lock).
+•Determining or acquiring one piece of information.
+•Searching  or  tracking  over  one  area  (as  described  in  a  skill  or
+feat description).
+•Perceive one sound or sight (DM decides if NPCs are acting as
+individuals or as a group).
+Different skills handle task delineation in different ways. In
+fact, the same skill may handle tasks in different ways depending
+on what the character is doing. For example, Heal allows the
+healer to make one character stable or to assist in a group’s overall
+healing rate over a night’s rest. Both of these are single tasks,
+requiring only one roll.
+Sometimes, however, a task requires multiple rolls. You must
+decide, for example, if a character attempting to use Sense Motive
+on a group of ogres must treat them as a group (one roll) or as indi-
+viduals (a different roll for each ogre).
+If two different groups approach a character from a distance,
+he has to make two different Spot checks to see them if you have
+decided that they are indeed different groups. If a character
+searches one wall using the Search skill, he might find several
+objects of importance—but you decide that each such object
+requires a separate roll. In such a case, you should make the rolls
+beyond the first one in secret. Asking the player to make more
+than one roll at the same time gives him information that he
+shouldn’t have.
+A few examples of long-term duties (and how many tasks they
+comprise) follow.
+Character on Watch:The rest of the party sleeps while Mialee
+takes the watch. The DM asks for a Listen check about half an
+hour into her watch, and she succeeds. She hears a rustling noise
+in the nearby bushes (made by a goblin that was trying to sneak up
+on the party). She decides to investigate, and the DM calls for a
+Spot check opposed by a Hide check from the goblin. Mialee dis-
+covers nothing (the goblin successfully conceals itself ), so she
+goes back to where she was keeping watch. Later, the DM asks for
+another Listen check (as the goblin once again tries to move in),
+and she succeeds again. This time she catches the goblin and alerts
+the rest of the party to deal with the foe. Eventually they go back
+to sleep, and she goes back on watch. Later, the DM calls for
+another Listen check, even though he knows there’s nothing to
+hear this time.
+The duty of being on watch required three Listen checks, be-
+cause the watch was broken into three segments—at the first
+appearance of the goblin, upon checking for the goblin the second
+time, and after the goblin was dealt with.
+Riding: Soveliss rides his horse along rocky terrain, making no
+roll to perform this mundane task. He guides it down into a steep
+gully, and you call for a DC 10 Ride check to do so. At the bottom
+of the gully, an owlbear menaces a wounded centaur. The ranger
+spurs his mount into the fray, making no roll to do so. Once in
+battle, the owlbear slashes at the ranger with a powerful claw. You
+call for a Ride check for Soveliss to stay on the horse, and another
+one to keep the now-panicking horse from running off. The
+ranger succeeds on both checks, and then decides to leap out of
+the saddle and fight the beast, requiring a DC 20 Ride check.
+Soveliss succeeds again, meaning that he dismounts without
+falling and moves to engage the owlbear.
+CHAPTER 2:
+USING 
+THE RULES

@@ -1,0 +1,135 @@
+12
+Surprise your players by foiling metagame thinking. Suppose
+the other side of the pit has a lever, for example, but it’s rusted and
+useless. Keep your players on their toes, and don’t let them second-
+guess you. Tell them to think in terms of the game world, not in
+terms of you as the DM. In the game world, someone made the
+trap in the dungeon for a purpose. You have figured out the reason
+why the trap exists, and the PCs will need to do the same.
+In short, when possible you should encourage the players to
+employ in-game logic. Confronted with the situation given above,
+an appropriate response from a clever character is “I figure there’ll
+be a lever on the other side of the pit that deactivates the trap,
+because the gnomes who constructed the trap must have a means
+to deactivate it.” In fact, this is wonderful—it shows smart think-
+ing as well as respect for the verisimilitude of the game world.
+KNOWING THE PCS
+One advantage that you always have over a professional writer
+designing an adventure is that you know your players. You know
+what they like, what they’re likely to do, what their capabilities
+are, and what’s going on in your campaign right now. That’s why
+even when you use a published adventure, you’ll want to work to
+ensure that it gets integrated into your campaign properly.
+A good DM will always know the following facts about the
+characters in his or her game.
+The Characters’ Basic Statistics: This includes class, race, level,
+hit points, save and attack bonuses, spells, and special abilities. You
+should be able to look at a monster’s hit points, AC, and special qual-
+ities and be able to judge whether it’s a fitting challenge. Compare,
+for example, the monster’s AC with the attack bonuses of the char-
+acters in the group—particularly the fighters. When you assume
+average rolls, can the fighters hit the creature? Do they need above-
+average rolls? (If so, the challenge will be great.) Do they need a nat-
+ural 20? (If so, the challenge is almost certainly too difficult.)
+Examine the attack bonus of the monster. Look at the damage it
+can deal. When you compare these pieces of information to the
+AC and hit points of the PCs, will the monster be able to hit or
+seriously damage the characters? Will it almost certainly kill one?
+If the monster’s attack bonus added to an average d20 roll hits the
+character’s AC, and the average damage dealt is more than the PC’s
+total hit points, the monster will kill the character. When you look
+at the save DCs for the monster’s special attacks, are the characters
+likely to successfully resist the attack?
+These sorts of questions and analyses allow you to judge mon-
+sters, encounters, and adventures and determine whether they are
+appropriate for your group. Challenge Rating assignments for
+such obstacles will help, but no one knows your group of charac-
+ters as well as you do. (See Chapter 3: Adventures for details about
+Challenge Ratings.)
+Keep a record of all the characters, their abilities, spells, hit
+points, AC, and so forth. One way to do this is to require the play-
+ers to give you a new copy of their character sheet whenever the
+character attains a new level. This information is helpful to you for
+balancing encounters and monitoring hit point loss and spell
+depletion during play. It’s also very handy if a player can’t make it
+to a session, enabling you to simply hand the character sheet to
+whoever is running the character for that session.
+The Players’ Likes and Dislikes:Some groups hate political
+intrigue and avoid or ignore it in favor of going down into the
+dungeon. Other groups are more likely to run from a serious com-
+bat challenge. Some groups prefer adventures with mind flayers
+and psionics. Some don’t. You’re the best judge, if you’re aware of
+what the players like and what entices them, of whether they will
+partake in and enjoy a particular encounter or adventure.
+For example, a DM might find that the lure of gold motivates
+the PCs in her group. She knows, then, that in order to get them
+involved in the adventure she has written (or purchased), there
+has to be some treasure involved, and the PCs need to know about
+it ahead of time. Another group, however, might be interested in
+heroic deeds. They don’t care about money, but if they hear that
+the duchy’s in danger from a storm-controlling wizard, they’re off
+to stop him in a flash.
+Nothing’s more frustrating for a DM than to create an adven-
+ture and provide the PCs with the hook that will bring them into
+the action, only to have them ignore or even consciously reject it.
+No one wants to see his or her adventure go unplayed. Know what
+interests and motivates the group, and you’ll be able to avoid this
+disheartening possibility.
+What’s Going on in the Campaign: Since you’re managing
+the events in the game, you need to keep track of what’s going on
+anyway. It’s important to always know what the characters are
+doing and a little about their plans. If the PCs want to leave the
+area and head into the mountains to find one of the characters’ old
+mentors, you need to keep that in mind when preparing that ses-
+sion’s adventure and in planning ahead for future sessions.
+Keep a record of every significant event that occurs in the game.
+A timeline can help you keep track of when events happened in
+relation to each other (especially handy for monitoring the activi-
+ties of recurring villains). Above all, make sure you always have a
+good grasp of NPCs’ names (particularly ones you’re forced to
+make up in the middle of the game), so that the name of the king
+doesn’t change abruptly from session to session. And of course you
+should remember what the PCs have accomplished, where they
+have been, enemies they have made, and so forth.
+KNOWING THE ADVENTURE AND
+OTHER MATERIALS
+You’re running the game, so you have to know everything. Well,
+maybe not everything, but certainly enough to keep things mov-
+ing. If you know the PCs want to head into the mountains, it’s
+helpful if, ahead of time, you have looked into how mountain
+travel affects their movement, what it’s like to be in the mountains
+(possibly through some research in an encyclopedia or travel
+book),  and  other  considerations  (climbing  gear,  mountain
+encounters, and the like). If you have a chance to try rock climb-
+ing, or if you’ve done it before, so much the better—there’s noth-
+ing like personal experience to lend realism to your descriptions.
+More to the point, you will want to have prepared as much as
+you can for the adventure ahead of time. You will want to have fig-
+ured out what will happen when, the layout of the area (both the
+large-scale landscape and individual encounter areas), what the
+PCs will encounter if they go to a particular area, how NPCs en-
+countered in the adventure will react to the PCs, and the events
+likely to happen (such as a conversation or a fight).
+When you are running a published adventure, this preparation
+often amounts to reading the material carefully and making notes
+where you need them. Useful points to note might include any of
+the following.
+•Page numbers in the rulebook for rules you know you’ll need to
+reference in a given encounter.
+•Changes needed for the adventure to fit into your campaign.
+•Changes you want to make to please your tastes or those of your
+group.
+•Preplanned actions you want NPCs to take in a given encounter
+(ambushes, dying speeches, spell sequences).
+•Reminders to yourself about rules, adventure structure, events
+that  might  occur  (such  as  random  encounter  checks),  or  the
+consequences of certain actions.
+If you are designing an adventure on your own, your preparation
+requires (obviously) a lot more time. This preparation might in-
+clude any of the following elements.
+•Maps of the area (large scale) and of specific smaller areas where
+encounters  are  likely  to  occur.  These  can  be  as  simple  and
+sketchy or as detailed as you like.
+CHAPTER 1:
+RUNNING 
+THE GAME

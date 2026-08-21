@@ -1,0 +1,125 @@
+27
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: CLOBBERED
+Ultimately, damage doesn’t matter until a character is unconscious or
+dead. It has no effect while she’s up and fighting. It’s easy to imagine,
+however,  that  she  could  be  hit  so  hard  that  she’s  clobbered,  but  not
+knocked unconscious or dead.
+Using this variant, if a character takes half her current hit points in
+damage from a single blow, she is clobbered. On her next turn, she
+can take only a standard action, and after that turn she is no longer
+clobbered.
+This variant will often lead to slightly faster fights, since taking
+damage  would  somewhat  reduce  the  ability  to  deal  damage.  It
+would also increase randomness by increasing the significance of
+dealing  substantial  but  less  than  lethal  damage.  It  would  also
+make hit points more important; clerics would want to cure fight-
+ers long before fighters are at risk of dying, because they might be
+at  risk  of  being  clobbered.  Finally,  it  may  be  easier  for  a  superior
+combatant  to  get  unlucky.  That  fact  could  hurt  PCs  more  than
+NPCs in the long run.
+VARIANT: 
+MASSIVE DAMAGE BASED ON SIZE
+If a creature takes 50 points of damage or more from a single attack,
+she must make a Fortitude save or die. This rule exists primarily as a
+nod toward realism in the abstract system of hit point loss. As an extra
+touch of realism, you can vary the massive damage threshold by size,
+so  that  each  size  category  larger  or  smaller  than  Medium  raises  or
+lowers  the  threshold  by  10  hit  points.  This  variant  hurts  halfling  and
+gnome  PCs,  familiars,  and  some  animal  companions.  It  generally
+favors monsters.
+SizeFDTSMLHGC
+Damage102030405060708090
+VARIANT: DAMAGE TO SPECIFIC AREAS
+Sometimes,  despite  the  abstract  nature  of  combat,  you’re  going  to
+want  to  apply  damage  to  specific  parts  of  the  body,  such  as  when  a
+character’s hands are thrust into flames, when he steps on caltrops, or
+when  he  peeks  through  a  hole  in  the  wall  and  someone  shoots  an
+arrow into the hole from the other side. (This situation comes up most
+frequently with devious traps meant to chop at feet, smash fingers, or
+the like.)
+When  a  specific  body  part  takes  damage,  you  can  apply  a  –2
+penalty  to  any  action  that  the  character  undertakes  using  that
+portion of his body. For example, if a character’s fingers get slashed,
+he makes attacks rolls with a weapon in that hand at –2 and he takes
+a –2 penalty on skill checks involving the use of his hands. If a char-
+acter steps on a caltrop, he takes a –2 penalty on skill checks involv-
+ing  the  use  of  his  feet  (in  addition  to  the  effects  described  in  the
+Player’s Handbook).
+Chapter  8  of  this  book  defines  some  effects  of  damage  to  specific
+body parts, such as what happens when a character is blinded or deaf-
+ened. In addition to that information, use the table below as a guide to
+what rolls are modified by injuries to what body parts.
+This  penalty  lasts  until  the  character  heals,  either  magically  or  by
+resting.  For  a  minor  wound,  such  as  stepping  on  a  caltrop,  a  DC  15
+Heal  check,  1  point  of  magical  healing,  or  a  day  of  rest  removes  the
+penalties.
+You  can  allow  a  character  to  make  a  Fortitude  save  (DC  10  +
+damage taken) to “tough it out” and ignore the penalty. Also, these
+penalties shouldn’t stack—two hand injuries should not impose a
+–4 penalty.
+LocationDamage Affects:
+HandClimb, Craft, Disable Device, Escape Artist, Forgery, Heal,
+Open Lock, Sleight of Hand, and Use Rope checks; attack
+rolls.
+ArmClimb and Swim checks; attack rolls; Strength checks.
+HeadAll attack rolls, saves, and checks.
+One eyeAppraise, Craft, Decipher Script, Disable Device, Forgery,
+Open Lock, Search, Sense Motive, Spellcraft, and Spot
+checks; Survival checks (for tracking); initiative checks;
+Dexterity checks; ranged attack rolls; Reflex saving throws.
+Severe damage to both eyes causes a character to become
+blinded.
+One earListen checks; initiative checks. Severe damage to both ears
+causes a character to become deafened.
+Foot/Leg   Balance, Climb, Jump, Move Silently, Ride, Swim, and
+Tumble checks; Reflex saving throws; Dexterity checks.
+VARIANT: WEAPON EQUIVALENCIES
+The  party  slays  a  drider  armed  with  magic  short  swords.  The  party’s
+halfling rogue is delighted. Even the party’s human ranger wants one
+of the swords. As DM, you gently remind them that while they are short
+swords, they are Large weapons (see Weapon Categories on page 112
+of the Player’s Handbook). The human ranger can use one of them as
+a one-handed weapon at a –2 penalty, and the halfling rogue can use
+one as a two-handed weapon at a –4 penalty.
+The  rules  on  weapon  categories  are  based  on  the  idea  that  most
+weapons do not look like smaller or larger versions of other weapons,
+nor  are  they  used  in  the  same  fashion.  The  shape  of  a  longsword
+reflects  its  primary  use;  it  is  not  simply  a  big  dagger.  This  variant
+suggests weapon equivalencies for DMs who wish to offer their play-
+ers  more  utility  from  monster  weapons.  If  a  weapon  has  an  equiva-
+lent, a character proficient in the equivalent can use the weapon with
+no penalty.
+On the table below, find the Medium weapon in question in the left
+column  and  then  read  across  to  the  size  of  the  creature  in  question.
+For  instance,  a  Medium  battleaxe  is  equivalent  in  this  system  to  a
+Large handaxe. Alternatively, find the size of the wielder and read down
+the column until you find its weapon. The weapon column then shows
+what is equivalent for a Medium character. For example, a Large battle-
+axe is equivalent in this system to a Medium greataxe.
+Weapon Equivalencies
+Medium———— Size of Equivalent Weapon ————
+WeaponTinySmallLarge
+Battleaxe—GreataxeHandaxe
+Club—GreatclubSap*
+DaggerLongsword           Short           sword—
+DartSpearShortspear—
+Flail, heavy——Flail, light
+Flail, light—Flail, heavy—
+Greataxe——Battleaxe
+Greatclub——Club
+Greatsword——Longsword
+HandaxeGreataxeBattleaxe—
+Longsword—GreatswordShortsword
+Mace, heavy——Mace, light
+Mace, light—Mace, heavy—
+Pick, heavy——Pick, light
+Pick, light—Pick, heavy—
+Shortspear—SpearDart
+Short swordGreatswordLongswordDagger
+Spear——Shortspear
+* A sap deals nonlethal damage.
+pqqqqrs
+pqqqqrs

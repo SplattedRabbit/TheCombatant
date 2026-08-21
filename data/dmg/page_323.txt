@@ -1,0 +1,92 @@
+1
+BUILDING A CITY 
+A Web Enhancement for the
+DUNGEONMASTER's Guidev.3.5
+CREDITS
+Design:David Noonan, James Wyatt
+Editing:Penny Williams
+Typesetting:Nancy Walker
+Design Manager :Ed Stark
+Web Production:Julia Martin
+Web Development:Mark A. Jindra
+Graphic Design:Dawn Murin
+Based  on  the  original  DUNGEONS&  DRAGONS
+®
+game  by  E.
+Gary Gygax and Dave Arneson and on the new edition of the
+D
+UNGEONS
+&  DRAGONS
+game  designed  by  Jonathan  Tweet,
+Monte Cook, Skip Williams, Rich Baker, and Peter Adkison.
+D&D,  DUNGEONS&  DRAGONS,  and  DUNGEONMASTERare  registered  trademarks  owned
+by  Wizards  of  the  Coast,  Inc.  The  d20  logo  is  a  trademark  owned  by  Wizards  of  the
+Coast,  Inc.  All  Wizards  characters,  character  names,  and  the  distinctive  likenesses
+thereof are trademarks owned by Wizards of the Coast, Inc. 
+This material is protected under the copyright laws of the 
+United States of America. Any reproduction or unauthorized use 
+of the material or artwork contained herein is prohibited 
+without the express written permission of 
+Wizards of the Coast, Inc.
+©2003 Wizards of the Coast, Inc. All rights reserved. 
+Made in the U.S.A. 
+This product is a work of fiction. Any similarity to actual people, 
+organizations, places, or events is purely coincidental.
+This Wizards of the Coast game product contains 
+no Open Game Content. 
+No portion of this work may be reproduced in any form 
+without written permission. To learn more about the 
+Open Gaming License and the d20 System License, 
+please visit www
+.wizards.com/d20.
+Visit the D
+UNGEONS& DRAGONSwebsite at
+www
+.wizards.com/dnd.
+If you plan to run an extended adventure—or even a
+whole campaign—in an urban environment, it’s impor-
+tant to put some time and effort into describing the
+details of your city. Chapter 5 of the DUNGEONMASTER’s
+Guidefor D&D v.3.5 provides a basic framework for
+describing some key features of a city, such as its power
+centers, assets, and highest-level nonplayer characters.
+This web enhancement expands that basic system into
+one that is more complex, but well worth the extra work
+in terms of the payoff for running a city-based campaign.
+The basic unit of this city construction system is the
+district. A district is roughly equivalent to a modern city
+block or a small neighborhood. On average, a district
+represents about 500 people, though some districts (such
+as tenements) have a higher population density than
+others (such as noble estates). Because a district is so
+large, this system is unsuitable for use with smaller set-
+tlements. A district has its own population number, gp
+limit, assets, important NPCs, and character, or “feel.”
+It’s much easier for both the Dungeon Master and
+the players to think about a metropolis made up of
+eighty districts than to contemplate a teeming popula-
+tion of 39,761 individuals. The city structure becomes
+even easier to deal with if you assume that wards or
+neighborhoods are just clusters of identical districts.
+Thus, a metropolis might have a dozen wards: water-
+front, noble’s villas, shantytowns, merchant’s quarter,
+temple quarter, and so on.
+As a starting point, use twenty districts for a small
+city, forty for a large city, and eighty for a metropolis. If
+you need to, you can always add more districts, but the
+total population number you get by doing that may
+bump your city up a size category. Types of districts are
+given on Table 1–1: District Types.
+DISTRICT DESCRIPTIONS
+Each district’s description includes the following key
+information.
+Buildings:This entry details what sorts of buildings
+might be found in the district. See Example Buildings
+sidebar for businesses common to certain building types.
+First Impression:This entry consists of a sen-
+tence or two that describes the flavor or feel of the dis-
+trict—that is, what sorts of sights, sounds, and smells
+characters are likely to notice while casually passing
+through it. 
+Social Class:This entry denotes the social class of
+the residents (upper, middle, or lower).

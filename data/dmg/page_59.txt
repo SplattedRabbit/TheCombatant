@@ -1,0 +1,133 @@
+58
+creatures. An ancient throne room, adorned with the tatters of
+once-beautiful tapestries, might be empty and quiet—the ancient
+curse that struck down the queen still hanging in the air before
+the verdigris-encrusted bronze throne.
+A ruined structure dungeon is a place that cries out to be ex-
+plored. Adventurers might hear tales of treasure still lingering in
+the abandoned labyrinth, leading them to brave the dangers to un-
+cover it. This is the simplest and most straightforward of the dun-
+geon types, and it usually balances danger (the inhabitants) with
+reward (the treasure). The creatures dwelling in a ruined structure
+aren’t necessarily organized, so PCs can usually come and go as
+they please, making it easy to start and stop an adventure.
+Occupied Structure:This type of dungeon is still in use. Crea-
+tures (usually intelligent) live there, although they may not be the
+dungeon’s creators. An occupied structure might be a home, a for-
+tress, a temple, an active mine, a prison, or a headquarters. This
+type of dungeon is less likely to have traps or wandering beasts,
+and more likely to have organized guards—both on watch and on
+patrol. Traps or wandering beasts that might be encountered are
+usually under the control of the occupants. Occupied structures
+have furnishings to suit the inhabitants, as well as decorations,
+supplies, and the ability for occupants to move around (doors they
+can open, hallways large enough for them to pass through, and so
+on). The inhabitants might have a communication system, and
+they almost certainly control an access to the outside.
+Some dungeons are partially occupied and partially empty or
+in ruins. In such cases, the occupants are typically not the origi-
+nal builders but instead a group of intelligent creatures that
+have set up their base, lair, or fortification within an abandoned
+dungeon.
+Use an occupied structure dungeon for the lair of a goblin tribe,
+a secret underground fortress, or an occupied castle. This is one of
+the most challenging types of dungeons for adventurers to enter
+and explore, if the occupants are hostile. The challenge comes
+from the organized nature of the inhabitants. It’s always harder to
+fight a foe on his own terms in an area he knows well and is pre-
+pared to defend.
+Safe Storage: When people want to protect something, they
+might bury it underground. Whether the item they want to pro-
+tect is a fabulous treasure, a forbidden artifact, or the dead body of
+an important figure, these valuable objects are placed within a
+dungeon and surrounded by barriers, traps, and guardians.
+The safe storage type of dungeon is the most likely to have traps
+but the least likely to have wandering beasts. The crypt of an an-
+cient lich may be filled with all manner of magic traps and guard-
+ians, but it’s unlikely that any subterranean monsters have moved
+in and made a part of the dungeon their lair—the traps and guard-
+ians will have held them at bay. This type of dungeon normally is
+built for function rather than appearance, but sometimes it has
+ornamentation in the form of statuary or painted walls. This is par-
+ticularly true of the tombs of important people.
+Sometimes, however, a vault or a crypt is constructed in such a
+way as to house living guardians. The problem with this strategy is
+that something must be done to keep the creatures alive between
+intrusion attempts. Magic is usually the best solution to provide
+food and water for these creatures.
+Even if there’s no way anything living can survive in a safe stor-
+age dungeon, certain monsters can still serve as guardians.
+Builders of vaults or tombs often place undead creatures or con-
+structs, both of which which have no need for sustenance or rest,
+to guard their dungeons. Magic traps can attack intruders by sum-
+moning monsters into the dungeon. These guardians also need no
+sustenance, since they appear only when they’re needed and dis-
+appear when their task is done.
+Natural Cavern Complex:Underground caves provide homes
+for all sorts of subterranean monsters. Created naturally and con-
+nected by a labyrinthine tunnel system, these caverns lack any
+sort of pattern, order, or decoration. With no intelligent force
+behind its construction, this type of dungeon is the least likely to
+have traps or even doors.
+Fungi of all sorts thrive in caves, sometimes growing in huge
+forests of mushrooms and puffballs. Subterranean predators prowl
+these forests, looking for those feeding upon the fungi. Some vari-
+eties of fungus give off a phosphorescent glow, providing a natural
+cavern complex with its own limited light source. In other areas, a
+daylight spell or similar magical effect can provide enough light
+for green plants to grow.
+Often, a natural cavern complex connects with another type
+of dungeons, the caves having been discovered when the manu-
+factured dungeon was delved. A cavern complex can connect
+two  otherwise  unrelated  dungeons,  sometimes  creating  a
+strange mixed environment. A natural cavern complex joined
+with another dungeon often provides a route by which subter-
+ranean creatures find their way into a manufactured dungeon
+CHAPTER 3:
+ADVENTURES
+BEHIND THE CURTAIN: WHY DUNGEONS?
+Dungeons facilitate game play. Being underground, they set apart the
+“adventure” from the rest of the world in a clean way. The idea of walk-
+ing down a corridor, opening a door, and entering an encounter—while
+a gross oversimplification and generalization of what can happen in a
+dungeon—facilitates the flow of the game by reducing things down to
+easily grasped and digestible concepts.
+You have an easy way to control the adventure in a dungeon without
+leading the characters by the nose. In a dungeon, the parameters are
+clearly defined for the PCs—they can’t walk through walls (not at first,
+anyway)  or  go  into  rooms  that  aren’t  there.  Aside  from  those  limits,
+they can go wherever they like in whatever order they like. The limited
+environment  of  the  dungeon  grants  players  a  feeling  of  control  over
+their characters’ destiny.
+A dungeon is really nothing but an adventure flowchart. The rooms
+are  encounters,  and  the  corridors  are  connections  between  the
+encounters,  showing  which  encounters  should  (or  could)  follow
+which  other  ones.  You  could  design  a  dungeonlike  flowchart  for  an
+adventure  that  didn’t  take  place  in  a  dungeon  and  accomplish  the
+same thing. One encounter leads to two more, which in turn lead to
+others,  some  of  which  double  back  on  previous  encounters.  The
+dungeon becomes a model, in this way, for all adventures.
+Academic  analysis  aside,  dungeons  are  fun.  Deep,  dark  under-
+ground  places  are  mysterious  and  frightening.  Dungeons  have  many
+encounters  crammed  into  one  small  space.  Nothing  is  more  exciting
+than anticipating what’s on the other side of the next door. Dungeons
+offer many kinds of challenges—combat, tactics, navigation, overcom-
+ing  obstacles,  traps,  and  more.  They  encourage  players  to  pay  close
+attention  to  their  environment,  since  everything  in  a  dungeon  is  a
+potential danger.
+In the D
+UNGEONS& D
+RAGONSgame, the classes, spells, magic items,
+and  many  other  facets  of  the  game  have  been  designed  with
+dungeons  in  mind.  That’s  not  to  say  that  the  dungeon  is  the  only
+possible adventuring environment, but it is the default setting. Many
+of the tasks that characters can do well, such as a rogue’s Open Lock
+skill  or  an  elf’s  ability  to  notice  secret  doors,  are  centered  around
+dungeon adventuring.
+When  in  doubt  while  creating  the  setting  for  an  adventure,  use  a
+dungeon.  However,  despite  opportunities  for  exploration  and  the
+combat-intensive nature of dungeons, don’t neglect to include chances
+for PCs to interact with NPCs such as dwarf strike teams, other adven-
+turing parties, or weird denizens that are happier to talk than to fight.
+pqqqqrs
+pqqqqrs

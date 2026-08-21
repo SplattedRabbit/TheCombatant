@@ -1,0 +1,122 @@
+210
+Improved Favored Enemy [Epic]
+Prerequisites:Five or more favored enemies.
+Benefit:Add +1 to the bonus on Bluff, Listen, Sense Motive,
+Spot, and Survival checks and damage rolls against all your
+favored enemies.
+Special:This feat may be taken multiple times. Its effects stack.
+Improved Metamagic [Epic]
+You can cast spells using metamagic feats more easily than normal.
+Prerequisites:Four metamagic feats, Spellcraft 30 ranks.
+Benefit:The spell slot you must use to cast a metamagic spell is
+one level lower than normal (to a minimum of one level higher than
+normal). For instance, you could cast a quickened spell as a spell of
+three levels higher than normal rather than four levels higher.
+This feat has no effect on a metamagic feat that requires a spell
+slot one level higher than normal or does not require a higher-
+level slot.
+Special:You can gain this feat multiple times. The effects stack,
+though you can’t lower the level of any metamagic spell’s slot to
+less than one level higher than normal.
+Improved Sneak Attack [Epic]
+Your sneak attacks are more deadly than normal.
+Prerequisite: Sneak attack +8d6.
+Benefit: Add +1d6 to your sneak attack damage.
+Special: This feat may be taken multiple times. Its effects stack.
+Improved Spell Capacity [Epic]
+You can prepare spells that exceed the normal limits of spell-
+casting.
+Prerequisite: Ability to cast spells of the normal maximum
+spell level in at least one spellcasting class.
+Benefit: When you select this feat, you gain one spell slot per
+day of any level up to one level higher than the highest level spell
+you can already cast in a particular class. For example, if a 21st-
+level wizard selected this feat, she would gain one wizard spell slot
+of any level up to 10th. The character must have the requisite abil-
+ity score (10 + spell level) in order to cast a spell stored in such a
+slot. If the character has a high enough ability modifier to gain
+one or more bonus spells for this spell level, she also gains those
+bonus spells for this spell level.
+This feat can’t grant spellcasting ability to a class that doesn’t
+have spellcasting ability. A character must use the spell slot in a
+class of which she can already cast the maximum normal spell
+level. (For instance, a 5th-level ranger/22nd-level sorcerer
+couldn’t add a ranger spell slot, because she can’t cast the maxi-
+mum normal spell level for ranger. She must add the spell slot to
+her sorcerer spells.)
+Special: You can gain this feat multiple times.
+Improved Stunning Fist [Epic]
+Prerequisite:Dex 19, Wis 19, Improved Unarmed Strike,
+Stunning Fist.
+Benefit:Add +2 to the DC of your stunning attack.
+This feat may be taken multiple times. Its effects stack.
+Lasting Inspiration [Epic]
+Your songs continue to inspire allies long after your words have
+faded.
+Prerequisite:Perform (any one) 25 ranks, bardic music class
+feature.
+Benefit:The effects of your bardic music inspiration abilities
+last for ten times as long as normal after you stop singing. This has
+no effect on inspiration abilities that have no duration after you
+stop singing (such as inspire competence).
+Overwhelming Critical [Epic]
+Choose one type of melee weapon, such as longsword or greataxe.
+With that weapon, you do more damage on a critical hit.
+Prerequisites:Str 23, Cleave, Great Cleave, Improved Critical
+(weapon to be chosen), Power Attack, Weapon Focus (weapon to
+be chosen).
+Benefit: When using the weapon you have selected, you deal
+an extra 1d6 points of damage on a successful critical hit. If the
+weapon’s critical multiplier is ×3, add an extra 2d6 points of
+damage instead, and if the multiplier is 4, add an extra 3d6 points
+of damage instead. (Creatures immune to critical hits can’t be
+affected by this feat.)
+Special: You can gain this feat multiple times. Its effects do not
+stack. Each time you take the feat, it applies to a new type of weapon.
+Planar Turning [Epic]
+You can turn or rebuke outsiders.
+Prerequisites: Wis 25, Cha 25, ability to turn or rebuke
+undead.
+Benefit: You can turn or rebuke outsiders as if they were
+undead. An outsider has effective turn resistance equal to half its
+spell resistance (round down).
+If you can turn undead, you turn (or destroy) all evil outsiders
+and rebuke (or command) all nonevil outsiders. If you can rebuke
+undead, you rebuke (or command) all evil outsiders and rebuke
+(or command) all nonevil outsiders.
+Spell Knowledge [Epic]
+You add two additional arcane spells to your repertoire.
+Prerequisites:Ability to cast spells of the maximum normal
+spell level of an arcane spellcasting class.
+Benefit:You learn two new arcane spells of any level up to the
+maximum level you can cast. This feat does not grant any addi-
+tional spell slots.
+Special: You can gain this feat multiple times.
+Terrifying Rage [Epic]
+While in a rage, you panic your opponents.
+Prerequisites: Intimidate 25 ranks, rage 5/day.
+Benefit: While you are raging, any enemy that views you must
+make a Will save opposed by your Intimidate check or become
+panicked (if it has HD less than your character level) or shaken (if
+it has HD equal to or up to twice your character level) for 4d6
+rounds. An enemy with Hit Dice greater than twice your character
+level is not affected by this feat.
+CHAPTER 6:
+CHARACTERS
+BEHIND THE CURTAIN: 
+BUILDING AN EPIC PROGRESSION
+The classes of the D&D game are balanced at levels 1st through 20th, but
+simply  continuing  the  power  escalation  of  each  class  beyond  20th  level
+would eventually imbalance the game system. That’s because not all class
+features continue to improve or accumulate after 20th level. For example,
+many of the monk’s special abilities are gained only at a certain level and
+never improve after that point.
+That’s why every class gets a bonus feat progression in addition to
+some class features that do accumulate or improve. For some classes,
+such as the fighter, this bonus feat progression is essentially the only
+class feature available at epic levels, so it is very rapid (one feat every
+other  level).  For  other  classes,  such  as  the  monk  or  rogue,  this  feat
+progression  is  only  part  of  the  class’s  benefits,  so  it  is  much  slower
+(one feat every four levels).
+pqqqqrs
+pqqqqrs

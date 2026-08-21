@@ -1,0 +1,183 @@
+determine its level and then on the appropriate subtable of Table
+7–23: Arcane Spell Scrolls or Table 7–24: Divine Spell Scrolls to
+determine the specific spell.
+All the spells described in the Player ’s Handbook are represented
+on Table 7–23 and Table 7–24. Each scroll appears on a list accord-
+ing to the level of the spell scribed into it.
+Several arcane spells are different in level for sorcerers and
+wizards than they are for bards. Such spells appear on Table
+7–23 at the level appropriate to a sorcerer or wizard (consid-
+ered the default because bards typically don’t involve them-
+selves in scribing scrolls). Examples: Tasha’s hideous laughter,
+suggestion.
+Likewise, some divine spells are different in level for clerics and
+druids than they are for paladins and rangers. Such spells appear
+on Table 7–24 at the level appropriate to a cleric or druid (consid-
+ered the default because paladins and rangers typically don’t
+involve themselves in scribing scrolls). Examples: read magic, lesser
+restoration, reduce animal.
+241
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–24: Divine Spell Scrolls
+0-Level Divine Spells
+d%SpellMarket Price
+01–07create water12 gp 5 sp
+08–14cure minor wounds12 gp 5 sp
+15–22detect magic12 gp 5 sp
+23–29detect poison12 gp 5 sp
+30–36flare12 gp 5 sp
+37–43guidance12 gp 5 sp
+44–50inflict minor wounds12 gp 5 sp
+51–57know direction12 gp 5 sp
+58–65light12 gp 5 sp
+66–72mending12 gp 5 sp
+73–79purify food and drink12 gp 5 sp
+80–86read magic12 gp 5 sp
+87–93resistance12 gp 5 sp
+94–100virtue12 gp 5 sp
+1st-Level Divine Spells
+d%SpellMarket Price
+01alarm100 gp
+02–03bane25 gp
+04–06bless25 gp
+07–09bless water50 gp
+10bless weapon100 gp
+11–12calm animals25 gp
+13–14cause fear25 gp
+15–16charm animal25 gp
+17–19command25 gp
+20–21comprehend languages25 gp
+22–26cure light wounds25 gp
+27–28curse water50 gp
+29–30deathwatch25 gp
+31–32detect animals or plants25 gp
+33–35detect chaos/evil/good/law25 gp
+36–37detect snares and pits25 gp
+38–39detect undead25 gp
+40–41divine favor25 gp
+42–43doom25 gp
+44–48endure elements25 gp
+49–50entangle25 gp
+51–52entropic shield25 gp
+53–54faerie fire25 gp
+55–56goodberry25 gp
+57–58hide from animals25 gp
+59–60hide from undead25 gp
+61–62inflict light wounds25 gp
+63–64jump25 gp
+65–66longstrider25 gp
+67–68magic fang25 gp
+69–72magic stone25 gp
+73–74magic weapon25 gp
+75–78obscuring mist25 gp
+79–80pass without trace25 gp
+81–82produce flame25 gp
+83–86protection from chaos/25 gp
+evil/good/law
+87–88remove fear25 gp
+89–90sanctuary25 gp
+91–92shield of faith25 gp
+93–94shillelagh25 gp
+95–96speak with animals25 gp
+97–98summon monster I25 gp
+99–100summon nature’s ally I25 gp
+2nd-Level Divine Spells
+d%SpellMarket Price
+01animal messenger150 gp
+02animal trance150 gp
+03–04augury175 gp
+05–06barkskin150 gp
+07–09bear’s endurance150 gp
+10–12bull’s strength150 gp
+13–14calm emotions150 gp
+15–17cat’s grace150 gp
+18chill metal150 gp
+19–20consecrate200 gp
+21–24cure moderate wounds150 gp
+25–26darkness150 gp
+27death knell150 gp
+28–30delay poison150 gp
+31–32desecrate200 gp
+33–35eagle’s splendor150 gp
+36–37enthrall150 gp
+38–39find traps150 gp
+40fire trap175 gp
+41–42flame blade150 gp
+43–44flaming sphere150 gp
+45–46fog cloud150 gp
+47gentle repose150 gp
+48gust of wind150 gp
+49heat metal150 gp
+50–51hold animal150 gp
+52–54hold person150 gp
+55–56inflict moderate wounds150 gp
+57–58make whole150 gp
+59–61owl’s wisdom150 gp
+62reduce animal150 gp
+63–64remove paralysis150 gp
+65–67resist energy150 gp
+68–70restoration, lesser150 gp
+71–72shatter150 gp
+73–74shield other150 gp
+75–76silence150 gp
+27–29horrid wilting3,000 gp
+30–32incendiary cloud3,000 gp
+33–35iron body3,000 gp
+36–38maze3,000 gp
+39–41mind blank3,000 gp
+42–44moment of prescience3,000 gp
+45–48Otiluke’s telekinetic 3,000 gp
+sphere
+49–51Otto’s irresistible dance3,000 gp
+52–54planar binding, greater3,000 gp
+55–57polar ray3,000 gp
+58–60polymorph any object3,000 gp
+61–63power word stun3,000 gp
+64–66prismatic wall3,000 gp
+67–70protection from spells3,500 gp
+71–73prying eyes, greater3,000 gp
+74–76scintillating pattern3,000 gp
+77–78screen3,000 gp
+79–81shadow evocation, greater3,000 gp
+82–84shout, greater3,000 gp
+85–87summon monster VIII3,000 gp
+88–90sunburst3,000 gp
+91symbol of death8,000 gp
+92symbol of insanity8,000 gp
+93–94sympathy4,500 gp
+95–98temporal stasis3,500 gp
+99–100trap the soul13,000 gp
+1
+1 Assumes a creature of 10 HD or less.
+9th-Level Arcane Spells
+d%SpellMarket Price
+01–03astral projection4,870 gp
+04–07Bigby’s crushing hand3,825 gp
+08–12dominate monster3,825 gp
+13–16energy drain3,825 gp
+17–21etherealness3,825 gp
+22–25foresight3,825 gp
+26–31freedom3,825 gp
+32–36gate8,825 gp
+37–40hold monster, mass3,825 gp
+41–44imprisonment3,825 gp
+45–49meteor swarm3,825 gp
+50–53Mordenkainen’s 3,825 gp
+disjunction
+54–58power word kill3,825 gp
+59–62prismatic sphere3,825 gp
+63–66refuge3,825 gp
+67–70shades3,825 gp
+71–76shapechange3,825 gp
+77–79soul bind3,825 gp
+80–83summon monster IX3,825 gp
+84–86teleportation circle4,825 gp
+87–91time stop3,825 gp
+92–95wail of the banshee3,825 gp
+96–99weird3,825 gp
+100wish28,825 gp
+1
+1 Assumes no material component cost in
+excess of 10,000 gp and no XP cost in
+excess of 5,000 XP.

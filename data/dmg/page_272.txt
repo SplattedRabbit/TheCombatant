@@ -1,0 +1,130 @@
+By contrast, imagine a +2 dancing longsword(6 points, 2 for the +2
+enhancement bonus and 4 because dancing is the equivalent of a
++4 bonus [see Table 7–14: Melee Weapon Special Abilities]) with
+an Intelligence score of 10 (no points), Wisdom score of 18 (4
+points), and Charisma score of 18 (4 points). Add the lesser powers
+of deathwatch, 10 ranks in Intimidate, and darkness (3 points), the
+greater power of fear (2 points) and the special purpose of slaying
+spellcasters (4 points). Also include the fact that the weapon is
+telepathic (1 point) and reads languages (1 point), and the sword
+has an Ego score of 25.
+ITEMS AGAINST CHARACTERS
+When an item has an Ego of its own, it has a will of its own. The
+item is, of course, absolutely true to its alignment. If the charac-
+ter who possesses the item is not true to that alignment’s goals or
+the item’s special purpose, personality conflict—item against
+character—results. Similarly, any item with an Ego score of 20 or
+higher always considers itself superior to any character, and a
+personality conflict results if the possessor does not always agree
+with the item.
+When a personality conflict occurs, the possessor must make a
+Will saving throw (DC = item’s Ego). If the possessor succeeds,
+she is dominant. If she fails, the item is dominant. Dominance
+lasts for one day or until a critical situation occurs (such as a
+major battle, a serious threat to either the item or the character,
+and so on—DM’s discretion). Should a item gain dominance, it
+resists the character’s desires and demands concessions such as
+any of the following.
+•Removal of associates or items whose alignment or personality
+is distasteful to the item.
+•The character divesting herself of all other magic items or items
+of a certain type.
+•Obedience from the character so the item can direct where they
+go for its own purposes.
+•Immediate  seeking  out  and  slaying  of  creatures  hateful  to  the
+item.
+•Magical  protections  and  devices  to  protect  the  item  from
+molestation when it is not in use.
+•That the character carry the item with her on all occasions.
+•That  the  character  relinquish  the  item  in  favor  of  a  more  suit-
+able possessor due to alignment differences or conduct.
+In extreme circumstances, the item can resort to even harsher
+measures, such as the following acts:
+•Force its possessor into combat.
+•Refuse to strike opponents.
+•Strike at its wielder or her associates.
+•Force its possessor to surrender to an opponent.
+•Cause itself to drop from the character’s grasp.
+Naturally,  such  actions  are  unlikely  when  harmony  reigns
+between the character’s and item’s alignments or when their pur-
+poses and personalities are well matched. Even so, an item might
+wish to have a lesser character possess it in order to easily establish
+and maintain dominance over him, or a higher-level possessor so
+as to better accomplish its goals.
+All magic items with personalities desire to play an important
+role in whatever activity is under way, particularly combat. Such
+items are rivals of each other, even if they are of the same align-
+ment. No intelligent item wants to share its wielder with others.
+An intelligent item is aware of the presence of any other intelli-
+gent item within 60 feet, and most intelligent items try their best
+to mislead or distract their host so that she ignores or destroys the
+rival. Of course, alignment might change this sort of behavior. A
+holy avenger,for example, would certainly not allow destruction of
+any other lawful good item and might encourage their discovery,
+even at the risk of having to face grim odds to do so.
+Items with personalities are never totally controlled or silenced
+by the characters who possess them, even though they may never
+successfully control their possessors. They may be powerless to
+force their demands but remain undaunted and continue to air
+their wishes and demands. Even a humble +1 weapon of unusual
+nature can be a vocal martyr, denigrating its own abilities and
+asking only that the character give it the chance to shatter itself
+against some hated enemy.
+Note:You should roleplay the item as you would any NPC.
+Refer to Table 4–24: One Hundred Traits (page 128) for ideas on
+personality quirks to make an intelligent item’s persona more
+memorable.
+INTELLIGENT ITEM EXAMPLES
+The items presented below can fit directly into most campaigns,
+but you should adjust them, changing their alignment, personal-
+ity, or even their abilties where needed to fit the particulars of
+your campaign, its history, and its characters.
+Acrola, Watchful Tooth of Ashardalon:+5 keen dagger;AL
+CG; Int 10, Wis 18, Cha 18; Speech, telepathy, 120 ft. darkvision,
+blindsense, and hearing; Ego score 22.
+Lesser Powers: Zone of truth3/day, Item has 10 ranks in Listen
+(total modifier +14) and Spot (total modifier +14).
+Greater Powers: Clairvoyance3/day, slow3/day.
+Personality:Bards tell that a tooth pried from the living body of
+the terrible dragon Ashardalon arose with its own mind and will.
+The tale would seem odd, for the goals of the long knife are noth-
+ing like those of the dread dragon. The well-intentioned but tire-
+less dagger has taken as its personal cause that of protecting the
+weak and the helpless. Acrola frequently uses its clairvoyance
+power to scout out areas of trouble or evil, and then Acrola drags
+its wielder into the fray.
+Strong transmutation; CL 15th; Craft Magic Arms and Armor,
+keen edge;Price 132,802 gp.
+Jomnoth, Giantblight:+3 giantbane dwarven waraxe;AL LG; Int
+10, Wis 14, Cha 14; Speech, 120 ft. vision and hearing; Ego score 14.
+Lesser Powers: Cure moderate wounds3/day, detect magicat will.
+Special Purpose:Defeat/slay giants.
+Dedicated Power: Song of discord.
+Personality:Forged by a long-dead dwarf smith, Jomnoth, also
+known as Giantblight, dates from an age of giant invasions. The
+success of the waraxe cannot be questioned, since upon occasion a
+single dwarf hero has struck down a number of bewildered and
+overwhelmed giants. A stoic but forceful will has been incarnated
+into the waraxe blade. Jomnoth speaks little, and is reluctant to
+give advice or gainsay its wielder except under the most extreme
+circumstances. As long its owner is willing to strike deep into the
+keeps and lairs of giantkind, the waraxe never objects.
+Strong conjuration; CL 15th; Craft Magic Arms and Armor,
+summon monster I;Price 176,430 gp.
+Iquel:+2 holy composite longbow;AL NG; Int 17, Wis 10, Cha 17;
+Speech, telepathy, 120 ft. darkvision and hearing; Ego score 16.
+Lesser Powers: Daze monster 3/day, faerie fire 3/day, locate object
+3/day.
+Greater Powers: Lesser globe of invulnerability1/day.
+Personality:A loyal and trusted companion to the hero Iquel,
+this once nameless bow took its first wielder’s name after his
+heroic stand against a balor. Since then, Iquel has searched for a
+wielder who can live up to its high standard: a grandmaster
+archer with a zeal for good. Despite its commitment to the forces
+of good in the world, Iquel enjoys casual conversation, relaxation,
+and delicate care.
+Strong evocation (if miracleis used) [good]; CL 17th; Craft
+Magic Arms and Armor, wishor miracle;Price 66,600 gp.
+271
+CHAPTER 7:
+MAGIC ITEMS

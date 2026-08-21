@@ -1,0 +1,132 @@
+of travel as described in Chance to Get Lost, above, to see if the
+party maintains its new course or begins to move at random again.
+Conflicting Directions:It’s possible that several characters may
+attempt to determine the right direction to proceed after becom-
+ing lost. That’s just fine. You make a Survival check for each char-
+acter in secret, then tell the players whose characters succeeded
+the correct direction in which to travel, and tell the players whose
+characters failed a random direction they think is right. (Tip:A few
+extraneous die rolls behind your screen might make it less appar-
+ent which characters are right and which characters are wrong.)
+Regaining Your Bearings: There are several ways to become
+un-lost. First, if the characters successfully set a new course and
+follow it to the destination they’re trying to reach, they’re not lost
+anymore. Second, the characters through random movement
+might run into an unmistakable landmark. Third, if conditions
+suddenly improve—the fog lifts or the sun comes up—lost char-
+acters may attempt to set a new course, as described above, with a
++4 bonus on the Survival check. Finally, magic such as find the path
+may make their course clear.
+FOREST TERRAIN
+Forest  terrain  can  be  divided  into  three  categories:  sparse,
+medium, and dense. An immense forest could have all three cate-
+gories within its borders, with more sparse terrain at the outer
+edge of the forest and dense forest at its heart.
+The table below describes in general terms how likely it is that
+a given square has a terrain element in it. You shouldn’t roll for
+each square. Instead, use the percentages in the table below to
+guide the maps you create.
+Forest Terrain Features
+———— Category of Forest ————
+SparseMediumDense
+Typical trees50%70%80%
+Massive trees—10%20%
+Light undergrowth50%70%50%
+Heavy undergrowth—20%50%
+Trees: The most important terrain element in a forest is the trees,
+obviously. Place a dot in the center of each square that you decide
+has a tree in it, and don’t worry about the tree’s exact location within
+the square. A creature standing in the same square as a tree gains a
++2 bonus to Armor Class and a +1 bonus on Reflex saves (these
+bonuses don’t stack with cover bonuses from other sources). The
+presence of a tree doesn’t otherwise affect a creature’s fighting space,
+because it’s assumed that the creature is using the tree to its advan-
+tage when it can. The trunk of a typical tree has AC 4, hardness 5,
+and 150 hp. A DC 15 Climb check is sufficient to climb a tree.
+Medium and dense forests have massive trees as well. These
+trees take up an entire square and provide cover to anyone behind
+them. They have AC 3, hardness 5, and 600 hp. Like their smaller
+counterparts, it takes a DC 15 Climb check to climb them.
+Undergrowth: Vines, roots, and short bushes cover much of the
+ground in a forest. A space covered with light undergrowth costs 2
+squares of movement to move into, and it provides concealment.
+Undergrowth increases the DC of Tumble and Move Silently
+checks by 2 because the leaves and branches get in the way.
+Heavy undergrowth costs 4 squares of movement to move into,
+and it provides concealment with a 30% miss chance (instead of the
+usual 20%). It increases the DC of Tumble and Move Silently checks
+by 5. Heavy undergrowth is easy to hide in, granting a +5 circum-
+stance bonus on Hide checks. Running and charging are impossible.
+Squares with undergrowth are often clustered together. Under-
+growth and trees aren’t mutually exclusive; it’s common for a
+5-foot square to have both a tree and undergrowth.
+Forest Canopy: It’s common  for  elves  and  other  forest
+dwellers to live on raised platforms far above the surface floor.
+These wooden platforms generally have rope bridges (described
+on page 64) between them. To get to the treehouses, characters
+generally ascend the trees’ branches (Climb DC 15), use rope lad-
+ders (Climb DC 0), or take pulley elevators (which can be made to
+rise a number of feet equal to a Strength check, made each round
+as a full-round action). Creatures on platforms or branches in a
+forest canopy are considered to have cover when fighting crea-
+tures on the ground, and in medium or dense forests they have
+concealment as well.
+Other Forest Terrain Elements: Fallen logs generally stand
+about 3 feet high and provide cover just as low walls do. They
+cost 5 feet of movement to cross. Forest streams are generally 5
+to 10 feet wide and no more than 5 feet deep. Pathways wind
+through most forests, allowing normal movement and providing
+neither cover nor concealment. These paths are less common in
+dense forests, but even unexplored forests will have occasional
+game trails.
+Stealth and Detection in a Forest: In a sparse forest, the max-
+imum distance at which a Spot check for detecting the nearby
+presence of others can succeed is 3d6×10 feet. In a medium
+forest, this distance is 2d8×10 feet, and in a dense forest it is
+2d6×10 feet.
+Because any square with undergrowth provides concealment,
+it’s usually easy for a creature to use the Hide skill in the forest.
+Logs and massive trees provide cover, which also makes hiding
+possible.
+The background noise in the forest makes Listen checks more
+difficult, increasing the DC of the check by 2 per 10 feet, not 1 (but
+note that Move Silently is also more difficult in undergrowth).
+Forest Fires (CR 6)
+Most campfire sparks ignite nothing, but if conditions are dry,
+winds are strong, or the forest floor is dried out and flammable, a
+forest fire can result. Lightning strikes often set trees afire and
+start forest fires in this way. Whatever the cause of the fire, travel-
+ers can get caught in the conflagration.
+A forest fire can be spotted from as far away as 2d6×100 feet by
+a character who makes a Spot check, treating the fire as a Colossal
+creature (reducing the DC by 16). If all characters fail their Spot
+checks, the fire moves closer to them. They automatically see it
+when it closes to half the original distance.
+Characters who are blinded or otherwise unable to make Spot
+checks can feel the heat of the fire (and thus automatically “spot”
+it) when it is 100 feet away.
+87
+CHAPTER 3:
+ADVENTURES
+Sample Temperate Forest Encounter Table (EL 6)
+d%EncounterAverage EL
+01–041d4+3 dryads8
+05–101 treant8
+11–165th-level lizardfolk druid NPC 7
+and 2 centaurs
+17–191 nymph7
+20–251d4 unicorns7
+26–331d6+1 wolves7
+34–431d4 centaurs6
+44–511d4 dire wolves6
+52–611d3 owlbears6
+62–691d3 pixies6
+70–731 ghast (ghoul) and 2 ghouls5
+74–795th-level gnoll ranger NPC5
+80–851d4+1 satyrs5
+86–881d4+1 owlbear skeletons5
+89–931 wraith5
+94–972 black bears (animal)4
+98–1001 wereboar (lycanthrope)4
+For information on how to build your own wilderness encounter
+tables, see page 95.

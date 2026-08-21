@@ -1,0 +1,135 @@
+Sylvan Scimitar: This +3 scimitar,when used outdoors in a tem-
+perate climate, grants its wielder the use of the Cleave feat and
+deals an extra 1d6 points of damage.
+Moderate evocation; CL 11th; Craft Magic Arms and Armor,
+divine poweror creator must be a 7th-level druid; Price 47,315gp;
+Cost 23,657 gp and 5 sp + 1,893 XP.
+Trident of Fish Command:The magical properties of this+1
+trident with a 6-foot-long haft enable its wielder to charm up to 14
+HD of aquatic animals (Will DC 16 negates, animals get a +5 bonus
+if currently under attack by the wielder or his
+allies), no two of which can be more than 30 feet
+apart. The wielder can use this effect up to
+three times per day. The wielder can commu-
+nicate with the animals as if using a speak
+with animalsspell. Animals making their
+saving throw are free of control, but they
+will not approach within 10 feet of the tri-
+dent. The trident can be used up to three
+times per day.
+Moderate enchantment; CL 7th; Craft
+Magic Arms and Armor, speak with ani-
+mals; Price 18,650 gp; Cost 9,325 gp +
+746 XP.
+Trident of Warning:A weapon of
+this type enables its wielder to deter-
+mine  the  location,  depth,  kind,  and
+number of aquatic predators within 680
+feet. A trident of warningmust be grasped
+and pointed in order for the character
+using it to gain such information, and it
+requires 1 round to scan a hemisphere with
+a radius of 680 feet. The weapon is other-
+wise a +2 trident.
+Moderate  divination; CL  7th;  Craft
+Magic Arms and Armor, locate creature;
+Price 10,115 gp; Cost 5,057 gp and 5 sp +
+405 XP.
+POTIONS AND OILS
+A potion is a magic liquid that produces its
+effect when imbibed. Magic oils are similar to
+potions, except that oils are applied externally
+rather than imbibed. A potion or oil can be used only once. It can
+duplicate the effect of a spell of up to 3rd level that has a casting
+time of less than 1 minute.
+Potions are like spells cast upon the imbiber. The character
+taking the potion doesn’t get to make any decisions about the ef-
+fect—the caster who brewed the potion has already done so. For
+example, a potion of protection from energyis always designed to pro-
+tect against a specific energy type chosen by the creator, not the
+drinker. The drinker of a potion is both the effective target and the
+caster of the effect (though the potion indicates the caster level,
+the drinker still controls the effect, such as with levitate).
+The person applying an oil is the effective caster, but the object
+is the target. When a character applies oil of speak with dead, the
+character is the one asking the questions.
+Physical Description: A typical potion or oil consists of 1
+ounce of liquid held in a ceramic or glass vial fitted with a tight
+stopper. The stoppered container is usually no more than 1 inch
+wide and 2 inches high. The vial has AC 13, 1 hit point, hardness 1,
+and a break DC of 12. Vials hold 1 ounce of liquid.
+Identifying Potions:In addition to the standard methods of
+identification, PCs can sample from each container they find to
+attempt to determine the nature of the liquid inside. An experi-
+enced  character  learns  to  identify  potions  by  memory—for
+example, the last time she tasted a liquid that reminded her of
+almonds, it turned out to be a potion of cure moderate wounds. (You can
+reward players who keep records of potion sampling by always
+having the same type of potion taste the same—or you can cross
+them up by occasionally having the almond-flavored potion be
+something other than a potion of cure moderate wounds.)
+Activation:Drinking a potion or applying an oil requires no spe-
+cial skill. The user merely removes the stopper and swallows the
+potion or smears on the oil. The following rules govern potion and
+oil use.
+Drinking a potion or using an oil on an item of gear is a standard
+action. The potion or oil takes effect immediately.
+Using a potion or oil provokes attacks of opportu-
+nity. A successful attack (including grappling
+attacks) against the character forces a Concen-
+tration check (as for casting a spell). If the char-
+acter fails this check, she cannot drink the
+potion. An enemy may direct an attack of op-
+portunity against the potion or oil container
+rather than against the character. A successful
+attack of this sort can destroy the container (see
+page 165 of the Player ’s Handbook).
+A creature must be able to swallow a potion or
+smear on an oil. Because of this, incorporeal crea-
+tures cannot use potions or oils.
+Any corporeal creature can imbibe a potion.
+The potion must be swallowed. Any corporeal
+creature can use an oil.
+A character can carefully administer a potion to
+an unconscious creature as a full-round action,
+trickling the liquid down the creature’s throat.
+Likewise, it takes a full-round action to apply an
+oil to an unconscious creature.
+Random Generation:To generate potions
+and oils randomly, roll on Table 7–17: Potions
+and Oils (see the following page).
+Potion Descriptions
+Because standard potions are simply spells in
+liquid form, refer to the spell description in
+the Player ’s Handbookfor all pertinent details.
+The caster level for a standard potion is the
+minimum caster level needed to cast the spell
+(unless otherwise specified).
+RINGS
+Rings bestow magical powers upon their wearers. Only a rare few
+have charges. Anyone can use a ring.
+A character can only effectively wear two magic rings. A third
+magic ring doesn’t work if the wearer is already wearing two
+magic rings.
+Physical Description:Rings have no appreciable weight. Al-
+though exceptions exist that are crafted from glass or bone, the
+vast majority of rings are forged from metal—usually precious
+metals such as gold, silver, and platinum. A ring has AC 13, 2 hit
+points, hardness 10, and a break DC of 25.
+Activation:Usually, a ring’s ability is activated by a command
+word (a standard action that does not provoke attacks of opportu-
+nity) or it works continually. Some rings have exceptional activa-
+tion methods, according to their descriptions.
+Random Generation:To generate rings randomly, roll on
+Table 7–18: Rings (see page 231).
+Special Qualities:Roll d%. A result of 01 indicates the ring is
+intelligent, 02–31 indicates that something (a design, inscription, or
+the like) provides a clue to its function, and 32–100 indicates no spe-
+cial qualities. Intelligent items have extra abilities and sometimes
+extraordinary powers and special purposes. Use Table 7–30: Item
+Intelligence, Wisdom, Charisma, and Capabilities as indicated if a
+ring is intelligent. Rings with charges can never be intelligent.
+229
+CHAPTER 7:
+MAGIC ITEMS
+Potions

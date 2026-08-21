@@ -1,0 +1,96 @@
+6
+Guildhall District, Former
+For some reason, the guilds have moved out of this dis-
+trict, but commercial interests still dominate its streets.
+Buildings:Vacant guild halls (3), average lodging
+(5), average food (10), upscale trades (5), average trades
+(15), poor trades (4), upscale services (5), average serv-
+ices (10), poor services (3), average residences (30).
+First Impression: The guildhalls are boarded
+up or in disrepair, but the shops and businesses that
+surround them still thrive in the hustle and bustle of
+commerce.
+Social Class:Middle class.
+Halfling Encampment
+Halflings tend to be more nomadic than most other
+races. Even when a group of them settles in a city, their
+neighborhood looks more like a camp than a proper
+district.
+Buildings:Council  hall,  temple  (Yondalla),
+shrine, average lodging (4), average food (8), average
+trades (15), average services (10), average residences
+(50).
+First Impression: This neighborhood looks like
+it could vanish tomorrow, leaving behind nothing but
+half-constructed buildings, smoldering campfires, and
+vacant building foundations.
+Social Class:Middle class.
+Marketplace
+Most of the residents from surrounding districts come
+to this bazaar to buy everything from necessities (such
+as clothing) to small luxuries (such as spices).
+Buildings:Open-air  market,  temple  (Fhar-
+langhn), average lodging (2), average food (12), exotic
+trades (3), upscale trades (12), average trades (35), poor
+trades (10), upscale services (5), average services (15),
+poor services (5).
+First Impression: This district is awash in col-
+orful signs and tents. The shouts of barkers rise above
+the noise of shoppers, and a dozen scents—everything
+from sweet perfumes to sizzling meats—fill the air.
+Social Class:Middle class.
+Professionals
+This district is home to a variety of specialists the PCs
+might want to hire or consult.
+Buildings:Temple (any), shrine, average lodging
+(3), upscale food (3), average food (7), exotic trades (2),
+upscale trades (3), average trades (10), upscale services
+(10), average services (20), upscale residences (10), aver-
+age residences (20).
+First Impression: This district features row
+upon row of quiet shops and offices. Their signs adver-
+tise everything from translation services to wilderness
+guides to architectural design.
+Social Class:Middle class.
+Shops
+A few businesses in this district cater to the well-to-do,
+but most serve the city’s middle and lower classes. Such
+a district is more common in a smaller city that doesn’t
+have multiple shopping districts.
+Buildings:Temple (any), shrine, average lodging
+(3), average food (10), exotic trades (3), upscale trades
+(12), average trades (35), poor trades (10), upscale serv-
+ices (3), average services (10), poor services (2).
+First Impression: Well-guarded nobles saunter
+from shop to shop, seemingly oblivious to the more
+ordinary citizens who rush by with their arms full of
+packages.
+Social Class:Middle class.
+Temple District
+The center of the city’s religious life, the temple district
+is where established faiths vie for worshipers. PCs can
+often find healing and other clerical magic here.
+Buildings:Temples/shrines (any 6), upscale
+lodging (1), average lodging (3), upscale food (3),
+average food (7), exotic trades (5), upscale trades (5),
+average trades (10), upscale services (10), average
+services (25), upscale residences (5), average resi-
+dences (20).
+First Impression: Each temple’s architecture
+reflects the faith of its builders. Periodically, the doors
+of a temple open, and a throng of worshipers spills out
+into the street.
+Social Class:Middle class.
+HIGH POPULATION DISTRICTS
+These districts cater to the lower classes and to tran-
+sients, such as adventurers. Prices are generally lower
+in these areas.
+Adventurer’s Quarter
+This district has a little bit of everything, but it’s gener-
+ally a pretty seedy place. No “respectable” resident
+would think of coming here.
+Buildings:Temples  (Olidammara  and  any  3
+others), average lodging (5), poor lodging (10), average
+food (5), poor food (15), average trades (6), poor trades
+(15), average services (5), poor services (15), average res-
+idences (5), poor residences (20).

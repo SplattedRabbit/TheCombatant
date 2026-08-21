@@ -1,0 +1,130 @@
+108
+Knowledge (all skills taken individually) (Int), Profession (Wis),
+Spellcraft (Int), and Survival (Wis). See Chapter 4: Skills in the
+Player ’s Handbookfor skill descriptions.
+Skill Points at 1st Level:(2 + Int modifier) ×4.
+Skill Points at Each Additional Level:2 + Int modifier.
+Class Features
+All of the following are class features of the adept NPC class.
+Weapon and Armor Proficiency:Adepts are skilled with all
+simple weapons. Adepts are not proficient with any type of armor
+nor with shields.
+Spells:An adept casts divine spells (the same type of spells
+available to the cleric, druid, paladin, and ranger), which are
+drawn from the adept spell list (see below). Like a cleric, an adept
+must choose and prepare her spells in advance. Unlike a cleric, an
+adept cannot spontaneously cast cureor inflictspells.
+To prepare or cast a spell, an adept must have a Wisdom score
+equal to at least 10 + the spell level (Wis 10 for 0-level spells, Wis
+11 for 1st-level spells, and so forth). The Difficulty Class for a
+saving throw against an adept’s spell is 10 + the spell level + the
+adept’s Wisdom modifier.
+Adepts, unlike wizards, do not acquire their spells from books
+or scrolls, nor do they prepare them through study. Instead, they
+meditate or pray for their spells, receiving them as divine inspira-
+tion or through their own strength of faith. Each adept must
+choose a time each day at which she must spend an hour in quiet
+contemplation or supplication to regain her daily allotment of
+spells. Time spent resting has no effect on whether an adept can
+prepare spells.
+Like other spellcasters, an adept can cast only a certain number
+of spells of each spell level per day. Her base daily spell allotment
+is given on Table 4–2: The Adept. In addition, she receives bonus
+spells per day if she has a high Wisdom score (see Table 1–1: Abil-
+ity Modifiers and Bonus Spells, page 8 of the Player ’s Handbook).
+When Table 4–2 indicates that the adept gets 0 spells per day of a
+given spell level (for instance, 0 2nd-level spells for a 4th-level
+adept), she gains only the bonus spells she would be entitled to
+based on her Wisdom score for that spell level.
+Each adept has a particular holy symbol (as a divine focus)
+depending on the adept’s magical tradition.
+Summon Familiar: At 2nd level, an adept can call a familiar,
+just as a sorcerer or wizard can. See the sidebar on page 52 of the
+Player ’s Handbook for more information.
+Starting Gear
+2d4 ×10 gp worth of equipment.
+Adept Spell List
+Adepts choose their spells from the following list.
+0 Level:create water, cure minor wounds, detect magic, ghost sound,
+guidance, light, mending, purify food and drink, read magic, touch of
+fatigue.
+1st Level:bless, burning hands, cause fear, command, comprehend
+languages, cure light wounds, detect chaos, detect evil, detect good, detect
+law, endure elements, obscuring mist, protection from chaos, protection
+from evil, protection from good, protection from law, sleep.
+2nd Level:aid, animal trance, bear ’s endurance, bull’s strength, cat ’s
+grace, cure moderate wounds, darkness, delay poison, invisibility, mirror
+image, resist energy, scorching ray, see invisibility, web.
+3rd Level:animate dead, bestow curse, contagion, continual flame,
+cure serious wounds, daylight, deeper darkness, lightning bolt, neutralize
+poison, remove curse, remove disease, tongues.
+4th Level: cure critical wounds, minor creation, polymorph, restora-
+tion, stoneskin, wall of fire.
+5th Level: baleful polymorph, break enchantment, commune, heal,
+major creation, raise dead, true seeing, wall of stone.
+ARISTOCRAT
+Aristocrats are usually educated, wealthy individuals who were
+born into high position. Aristocrats are the wealthy or politi-
+cally influential people in the world. They are given the free-
+dom to train in the fields of their choice, for the most part, and
+often travel widely. With access to all the best goods and oppor-
+tunities, many aristocrats become formidable individuals. Some
+even go on adventures with fighters, wizards, and members of
+other classes, although usually such activities are nothing more
+than a lark.
+The aristocrat might work as a PC class, since it has an
+impressive selection of skills and respectable combat training.
+Being an aristocrat, however, isn’t so much a choice as a position
+you’re born into. An aristocrat cannot be a multiclass character
+unless his or her first level is in the aristocrat class. Mostly, you
+should reserve the aristocrat class for rulers, their families, and
+their courtiers.
+Hit Die:d8.
+Table 4–3: The Aristocrat
+NPCBaseFortRefWill
+LevelAttack BonusSaveSaveSave
+1st+0+0+0+2
+2nd+1+0+0+3
+3rd+2+1+1+3
+4th+3+1+1+4
+5th+3+1+1+4
+6th+4+2+2+5
+7th+5+2+2+5
+8th+6/+1+2+2+6
+9th+6/+1+3+3+6
+10th+7/+2+3+3+7
+11th+8/+3+3+3+7
+12th+9/+4+4+4+8
+13th+9/+4+4+4+8
+14th+10/+5+4+4+9
+15th+11/+6/+1+5+5+9
+16th+12/+7/+2+5+5+10
+17th+12/+7/+2+5+5+10
+18th+13/+8/+3+6+6+11
+19th+14/+9/+4+6+6+11
+20th+15/+10/+5+6+6+12
+Class Skills
+The aristocrat’s class skills (and the key ability for each skill) are
+Appraise (Int), Bluff (Cha), Diplomacy (Cha), Disguise (Cha),
+Forgery (Int), Gather Information (Cha), Handle Animal (Cha),
+Intimidate (Cha), Knowledge (all skills taken individually) (Int),
+Listen (Wis), Perform (Cha), Ride (Dex), Sense Motive (Wis),
+Speak Language, Spot (Wis), Swim (Str), and Survival (Wis). See
+Chapter 4: Skills in the Player ’s Handbookfor skill descriptions.
+Skill Points at 1st Level:(4 + Int modifier) 
+×4.
+Skill Points at Each Additional Level:4 + Int modifier.
+Class Features
+The following is a class feature of the aristocrat NPC class.
+Weapon and Armor Proficiency: The aristocrat is proficient
+in the use of all simple and martial weapons and with all types of
+armor and shields.
+Starting Gear
+6d8 ×10 gp worth of equipment.
+COMMONER
+The common folk farm the fields, staff the shops, build the homes,
+and produce the goods in the world around the adventurers. Com-
+moners usually have no desire to live the dangerous life of an
+CHAPTER 4:
+NONPLAYER
+CHARACTERS

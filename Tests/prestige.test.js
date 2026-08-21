@@ -308,3 +308,50 @@ test('Prestige Classes - Assassin spell slots and sneak attack scaling', () => {
   assert.strictEqual(slots[2], 0, 'Should have 0 level 2 slots');
 });
 
+import { applyDamage } from '../js/state/ConditionManager.js';
+import { getState } from '../js/state.js';
+
+test('Race - Anima-Construct traits, modifiers and healing logic', () => {
+  // Create an Anima-Construct combatant
+  const pc = new Combatant({
+    id: 'test_anima',
+    name: 'Construct Hero',
+    race: 'anima_construct',
+    str: new Stat(10),
+    dex: new Stat(10),
+    con: new Stat(14), // Base 14, should get +2 racial -> 16
+    int: new Stat(10),
+    wis: new Stat(10),
+    cha: new Stat(12), // Base 12, should get -2 racial -> 10
+    maxHP: 20,
+    hp: 10
+  });
+
+  // 1. Ability Scores (recalculated automatically on creation)
+  assert.strictEqual(pc.con.getValue(), 16, 'Con should be 14 + 2 = 16');
+  assert.strictEqual(pc.cha.getValue(), 10, 'Cha should be 12 - 2 = 10');
+
+  // 2. Natural Armor (+1 AC and acFlat, but not acTouch)
+  // Base AC = 10. Dex mod = 0. Natural Armor = +1.
+  assert.strictEqual(pc.ac.getValue(), 11, 'AC should be 11 (10 base + 0 dex + 1 natural)');
+  assert.strictEqual(pc.acFlat.getValue(), 11, 'Flat AC should be 11 (10 base + 1 natural)');
+  assert.strictEqual(pc.acTouch.getValue(), 10, 'Touch AC should be 10 (no natural armor)');
+
+  // Put it in the global state so applyDamage can find it
+  const state = getState();
+  state.combatants.push(pc);
+
+  // 3. Halved Magical Healing: Healing 6 HP should be halved to 3 HP.
+  // Current HP is 10. Max HP is 20.
+  applyDamage('test_anima', 6, true, true); // heal 6 magically
+  assert.strictEqual(pc.hp, 13, 'HP should increase from 10 to 13 (6 halved to 3)');
+
+  // 4. Non-Magical Healing (e.g. Repair): Healing 6 HP should apply fully (6 HP).
+  // Current HP is 13.
+  applyDamage('test_anima', 6, true, false); // heal 6 non-magically
+  assert.strictEqual(pc.hp, 19, 'HP should increase from 13 to 19 (6 applied fully)');
+
+  // Clean up state
+  state.combatants = state.combatants.filter(x => x.id !== 'test_anima');
+});
+

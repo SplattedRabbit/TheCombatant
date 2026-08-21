@@ -1,0 +1,128 @@
+ters that reward boldness speed up the game, while those that
+reward caution slow it down.
+Always be aware of the sorts of actions you’re rewarding your
+players for taking. Reward, in this case, doesn’t just mean expe-
+rience points and treasure. More generally, it means anything
+that consistently leads to success. An adventure should contain
+encounters that reward different types of behavior. Not every-
+one prefers the same kind of encounter, and even those with a
+favorite enjoy a change of pace. Remember, then, that you can
+offer many different kinds of encounters, including all of the
+following.
+Combat:Combat encounters can be divided into two groups:
+attack and defense. Typically, the PCs are on the attack, invading
+monsters’ lairs and exploring dungeons. A defense encounter, in
+which the PCs must keep an area, an object, or a person safe from
+the enemy, can be a nice change of pace.
+Negotiation: Although threats can often be involved, a negoti-
+ation encounter involves less swordplay and more wordplay. Con-
+vincing NPCs to do what the PCs want them to is challenging for
+both players and DM—quick thinking and good roleplaying are
+the keys here. Don’t be afraid to play an NPC appropriately (stupid
+or intelligent, generous or selfish), as long as it fits. But don’t make
+an NPC so predictable that the PCs can always tell exactly what he
+or she will do in any given circumstance. Consistent, yes; one-
+dimensional, no.
+Environmental:Weather,  earthquakes,  landslides,  fast-
+moving rivers, and fires are just some of the environmental condi-
+tions that can challenge even mid- to high-level PCs.
+Problem-Solving: Mysteries, puzzles, riddles, or anything that
+requires the players to use logic and reason to try to overcome the
+challenge counts as a problem-solving encounter.
+Judgment Calls:“Do we help the prisoner here in the dun-
+geon, even though it might be a trap?” Rather than depending
+on logic, these encounters usually involve inclination and gut
+instinct.
+Investigation:This is a long-term sort of encounter involving
+some negotiation and some problem-solving. An investigation
+may be called for to solve a mystery or to learn something new.
+TREASURE
+What adventure would be complete without treasure?
+A close second in importance to experience points, treasure
+provides an important motivator for PCs to go on adventures. As
+with experience points, treasure empowers the PCs. The more
+they get, the more powerful they become.
+MONSTERS WITH TREASURE
+The standard way to acquire treasure is to defeat enemies that pos-
+sess it, guard it, or happen to be near it. In the Monster Manual, ev-
+ery monster has a treasure rating (indicating how much treasure it
+has, although for some creatures the rating is “None”). The tables
+found in this section enable you to determine the specifics. After
+referencing the level and kind of treasure (coins, goods, items)
+found in the creature’s description, roll on the appropriate row and
+columns of the proper table.
+When generating an encounter dealing with monsters away
+from their lair (a patrol, a wandering creature, and so on), remem-
+ber that a creature only takes what it can easily carry with it. In the
+case of a creature such as a displacer beast, that generally means
+nothing. The monster safeguards or hides its treasure as well as it
+can, but it leaves it behind when outside the lair.
+Example:Gnolls that live in a dungeon often leave their lair to
+wage war on nearby orc brigands to steal treasure and food. The
+PCs  encounter  and  defeat  the  gnolls  while  the  bestial
+humanoids are on their way to raid the orcs. Each gnoll has a
+smattering of coins or gems on its person. The leader has the
+masterwork greatsword from the group’s hoard and uses it in the
+battle. The majority of the gnolls’ treasure, however, remains in
+their lair, guarded by a few gnolls left behind and two well-con-
+cealed pit traps.
+Monsters with Classes
+Many monsters advance by adding class levels (see the Monster
+Manual). To determine treasure for monsters with class levels, first
+give them equipment. Use Table 4–23: NPC Gear Value (page 127)
+and use just their class levels to determine the value of their equip-
+ment. Then generate their treasure according to their monster
+entry and the rules under Building a Treasure, below. This may
+generate more items that the monster can use, and that’s fine (see
+Custom Treasures, below).
+Treasure per Encounter
+Table 3–5: Treasure has been created so that if PCs face enough
+encounters of their own level to gain a level, they will have also
+gained enough treasure to keep them apace with the wealth-by-
+level information found in Table 5–1: Character Wealth by Level
+(page 135). Just as gaining a level requires between thirteen and
+fourteen encounters of a party’s level, so too fourteen average rolls
+on the table at the party’s level will get them the treasure they
+need to gain the appropriate amount for the next highest level,
+assuming that the PCs expend some resources such as potions and
+scrolls during those encounters.
+Table 3–3: Treasure Values per Encounter
+EncounterTreasureEncounterTreasure
+Levelper EncounterLevelper Encounter
+1300 gp117,500 gp
+2600 gp129,800 gp
+3900 gp1313,000 gp
+41,200 gp1417,000 gp
+51,600 gp1522,000 gp
+62,000 gp1628,000 gp
+72,600 gp1736,000 gp
+83,400 gp1847,000 gp
+94,500 gp1961,000 gp
+105,800 gp2080,000 gp
+On average, the PCs should earn one treasure suitable to their
+level for each encounter they overcome. The key, of course, is
+“average.” Some monsters might have less treasure than average,
+some might have more, and some might have none at all. As you
+write an adventure, it’s okay to combine the individual treasures
+listed for each monster into one larger hoard. If a dungeon is
+home to a beholder and numerous bugbears, for example, you can
+take  some  or  all  of  the  bugbear  treasure  and  add  it  to  the
+beholder’s hoard.
+Monitor the progress of treasure into the hands of the PCs. For
+instance, you may want to use lots of high-treasure or low-treasure
+monsters, yet still hand out a normal amount of treasure overall.
+The PCs needn’t have average treasure at every stage in their
+careers, but if an imbalance (either high or low) persists for more
+than a few levels, you should take gradual action to correct it by
+awarding slightly more or slightly less treasure.
+Table 3–4: Average Treasure Results
+TypeAverage Result
+Gem275 gp
+Art object1,100 gp
+Mundane item350 gp
+Minor magic item1,000 gp
+Medium magic item10,000 gp
+Major magic item40,000 gp
+51
+CHAPTER 3:
+ADVENTURES

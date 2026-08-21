@@ -1,0 +1,136 @@
+Weapon Proficiency: Regardless of class, the NPC is proficient at
+least with simple weapons and weapons listed for its kind in the
+Monster Manual.
+NPC Adjustments
+The statistics given here represent adjustments to a creature’s abil-
+ities and skills. If a creature has racial Hit Dice, this material
+includes relative adjustments to base attack bonus and skill modi-
+fiers. In addition to the adjustments noted below, add feats based
+on total Hit Dice and add the base creature’s special attacks and
+special qualities.
+Aasimar (Planetouched): +2 Wis, +2 Cha. +2 Listen, +2 Spot.
+Bugbear:+2 CR. +4 Str, +2 Dex, +2 Con, –2 Cha. +3d8 HD. +2
+base  attack.  +1  Fort,  +3  Ref,  +1  Will.  +3  natural  armor.  –3
+ranks/skill, +2 Climb, +4 Hide, +2 Listen, +6 Move Silently, +2
+Spot.
+Derro:+3 CR. +4 Dex, +2 Con, –6 Wis, +6 Cha. +3d8 HD. +3
+base  attack.  +1  Fort,  +3  Ref,  +3  Will.  +2  natural  armor.  –3
+ranks/skill, +2 Bluff, +7 Hide, +4 Listen, +7 Move Silently. Small.
+Speed 20 ft. 
+Doppelganger:+3 CR. +2 Str, +2 Dex, +2 Con, +2 Int, +4 Wis,
++2 Cha. +4d8 HD. +4 base attack. +1 Fort, +4 Ref, +4 Will. +4 natu-
+ral armor. –3 ranks/skill, +9 Bluff, +8 Disguise, +4 Listen, +4 Sense
+Motive, +4 Spot.
+Drow (Elf ):+1 CR. +2 Dex, –2 Con, +2 Int, +2 Cha. +2 Listen, +2
+Search, +2 Spot.
+Dwarf, Duergar:+1 CR. +2 Con, –4 Cha. +1 Listen, +4 Move
+Silently, +1 Spot. Speed 20 ft.
+Dwarf, Deep:+2 Con, –2 Cha. Speed 20 ft.
+Dwarf, Hill [Common]:+2 Con, –2 Cha. Speed 20 ft.
+Dwarf, Mountain:+2 Con, –2 Cha. Speed 20 ft.
+Elf, Gray:–2 Str, +2 Dex, –2 Con, +2 Int. +2 Listen, +2 Search,
++2 Spot.
+Elf, High [Common]:+2 Dex, –2 Con. +2 Listen, +2 Search,
++2 Spot.
+Elf, Wild:+2 Dex, –2 Int. +2 Listen, +2 Search, +2 Spot.
+Elf, Wood:+2 Str, +2 Dex, –2 Con, –2 Int. +2 Listen, +2 Search,
++2 Spot.
+Gnoll:+1 CR. +4 Str, +2 Con, –2 Int, –2 Cha. +2d8 HD. +1 base
+attack. +3 Fort. +1 natural armor. –3 ranks/skill, +2 Listen, +3 Spot.
+Gnome, Forest:–2 Str, +2 Con, +2 Cha. +2 Craft (alchemy), +4
+Hide, +2 Listen. Small. Speed 20 ft.
+Gnome, Rock [Common]:–2 Str, +2 Con. +2 Craft (alchemy),
++2 Listen. Small. Speed 20 ft.
+Gnome, Svirfneblin:+1 CR. –2 Str, +2 Dex, +2 Wis, –4
+Cha. +2 Fort, +2 Ref, +2 Will. +4 dodge bonus to AC. Small.
+Speed 20 ft.
+Goblin:–2 Str, +2 Dex, –2 Cha. +4 Move Silently, +4 Ride.
+Small.
+Half- Celestial:+1 CR (up to 5 HD), +2 CR (6–10 HD), +3 CR
+(11 or more HD). +4 Str, +2 Dex, +4 Con, +2 Int, +4 Wis, +4 Cha. +1
+natural armor. Wings (fly at double land speed). Add these modi-
+fiers to the base creature’s adjustments.
+Half-Dragon:+2 CR. +8 Str, +2 Con, +2 Int, +2 Cha. +4 natu-
+ral armor. Base creature’s Hit Die increases one size to max of
+d12 (no effect on class Hit Dice). If Large, it has wings (fly at
+double land speed). Add these modifiers to the base creature’s
+adjustments.
+Half-Elf:+2 Diplomacy, +2 Gather Information, +1 Listen, +1
+Search, +1 Spot.
+Half-Fiend:+1 CR (up to 4 HD), +2 CR (5–10 HD), +3 (11 or
+more HD). +4 Str, +4 Dex, +2 Con, +4 Int, +2 Cha. +1 natural armor.
+Wings (fly at land speed). Add these modifiers to the base crea-
+ture’s adjustments.
+Half- Orc:+2 Str, –2 Int, –2 Cha.
+Halfling, Deep:–2 Str, +2 Dex. +1 Fort, +1 Ref, +1 Will. +1
+attack with thrown weapon (if any). +2 Listen. Small. Speed 20 ft.
+Halfling, Lightfoot [Common]:–2 Str, +2 Dex. +1 Fort, +1
+Ref, +1 Will. +1 attack with thrown weapon (if any). +2 Climb, +2
+Jump, +2 Listen, +2 Move Silently. Small. Speed 20 ft.
+Halfling, Tallfellow:–2 Str, +2 Dex. +1 Fort, +1 Ref, +1 Will. +1
+attack with thrown weapon (if any). +2 Listen, +2 Search, +2 Spot.
+Small. Speed 20 ft.
+Hobgoblin:+2 Dex, +2 Con. +4 Move Silently.
+Human:1 extra feat. +1 skill (ranks = level +3).
+Kobold:–4 Str, +2 Dex, –2 Con. +1 natural armor. +2 Craft (trap-
+making), +2 Profession (miner), +2 Search. Small.
+Lizardfolk:+1 CR. +2 Str, +2 Con, –2 Int. +2d8 HD. +1 base
+attack. +3 Ref. +5 natural armor. –3 ranks/skill, +5 Balance, +6
+Jump, +6 Swim.
+Mind Flayer:+8 CR. +2 Str, +4 Dex, +2 Con, +8 Int, +6 Wis, +6
+Cha. +8d8 HD. +6 base attack. +2 Fort, +2 Ref, +6 Will. +3 natural
+armor. –3 ranks/skill, +8 Bluff, +6 Concentration, +8 Hide, +4
+Intimidate, +8 Knowledge (any one), +8 Listen, +8 Move Silently,
++4 Sense Motive, +8 Spot.
+Minotaur:+4 CR. +8 Str, +4 Con, –4 Int, –2 Cha. +6d8 HD. +6
+base attack. +2 Fort, +5 Ref, +5 Will. +5 natural armor. –3 ranks/skill,
++3 Intimidate, +7 Listen, +4 Search, +7 Spot. Large.
+Ogre:+2 CR. +10 Str, –2 Dex, +4 Con, –4 Int, –4 Cha. +4d8 HD.
++3 base attack. +4 Fort, +1 Ref, +1 Will. +5 natural armor. –3
+ranks/skill, +3 Climb, +2 Listen, +2 Spot.Large. Speed 40 ft.
+Ogre Mage:+8 CR. +10 Str, +6 Con, +4 Int, +4 Wis, +6 Cha.
++5d8 HD. +3 base attack. +4 Fort, +1 Ref, +1 Will. +5 natural armor.
+–3 ranks/skill, +8 Concentration, +8 Listen, +8 Spellcraft, +8 Spot.
+Large. Speed 50 ft.
+Orc:+4 Str, –2 Int, –2 Wis, –2 Cha.
+Tiefling (Planetouched):+2 Dex, +2 Int, –2 Cha. +2 Bluff, +2
+Hide.
+Troglodyte:+1 CR. –2 Dex, +4 Con, –2 Int. +2d8 HD. +1 base
+attack. +3 Fort. +6 natural armor. –3 ranks/skill, +6 Hide, +3 Listen.
+Multiattack (see the Monster Manual).
+Werebear (Lycanthrope):+5 CR. +2 Str, +2 Con, –2 Cha. +4
+base attack. +5 Fort, +5 Ref, +2 Will. +2 natural armor. +2 Listen, +2
+Spot, +4 Swim. Iron Will, Track. See the Monster Manualfor bear
+and hybrid form. NPC loses gear in animal form.
+Wereboar (Lycanthrope): +1 CR. +2 Str, +2 Con, –2 Cha. +2
+natural armor. +2 base attack. +3 Fort, +3 Ref, +1 Will. +3 Listen, +3
+Spot. See the Monster Manualfor boar and hybrid form. NPC loses
+gear in animal form.
+Wererat (Lycanthrope):+1 CR. +2 Dex, +2 Con, –2 Cha. +2
+natural armor. +2 Fort, +2 Ref, +2 Will. +1 Hide, +1 Move Silently.
+Alertness, Iron Will. See the Monster Manualfor rat or hybrid
+form. NPC loses gear in animal form.
+Weretiger (Lycanthrope):+1 CR. +2 Str, +2 Con, –2 Int. +2 nat-
+ural armor. +4 base attack. +5 Fort, +5 Ref, +2 Will. +3 Listen, +3
+Spot. Alertness, Iron Will. See the Monster Manualfor tiger or
+hybrid form. NPC loses gear in animal form.
+Werewolf (Lycanthrope):+1 CR. +2 Str, –2 Int, +4 Wis, –2
+Cha. +2 natural armor. +1 base attack. +3 Fort, +3 Ref, +0 Will. +1
+Listen, +1 Spot. Iron Will, Track. See the Monster Manualfor wolf
+or hybrid form. NPC loses gear in animal form.
+Table 4–23: NPC Gear Value
+NPC LevelValue of GearNPC LevelValue of Gear
+1st900 gp11th21,000 gp
+2nd2,000 gp12th27,000 gp
+3rd2,500 gp13th35,000 gp
+4th3,300 gp14th45,000 gp
+5th4,300 gp15th59,000 gp
+6th5,600 gp16th77,000 gp
+7th7,200 gp17th100,000 gp
+8th9,400 gp18th130,000 gp
+9th12,000 gp19th170,000 gp
+10th16,000 gp20th220,000 gp
+127
+CHAPTER 4:
+NONPLAYER
+CHARACTERS

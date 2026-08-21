@@ -1,0 +1,120 @@
+Other  (Planar):  If your  campaign  uses  planes  you  have
+invented yourself (see Creating a Cosmology, page 167), you
+should design additional planar terrains. A plane composed
+entirely of an immense black spiderweb suspended over a roiling
+ocean of insectoid vermin, for example, might have a +4 compe-
+tence bonus on Balance checks and a +4 bonus on Fortitude saves
+against poison as the benefit for planar terrain mastery.
+LOREMASTER
+Loremasters are spellcasters who concentrate on
+knowledge, valuing lore and secrets over gold. They
+uncover secrets that they then use to better them-
+selves mentally, physically, and spiritually.
+Characters  without  at  least  one  level  of
+wizard, sorcerer, cleric, or druid gain little ben-
+efit for becoming a loremaster. Paladins,
+rangers, and bards might gain some bene-
+fit, but overall, it would be minor.
+Loremasters   sometimes   gather   in
+secluded cabals but are more often found as
+members of an order attached to a university,
+a library, or some other source of information.
+They’re likely to earn extra money as sages and
+information brokers, pouring their wages into
+their own research. A loremaster might also
+adopt a position as a wise one in a community, or
+even as its leader, drawing upon her knowledge
+to help others.
+Hit Die:d4.
+Requirements
+To qualify to become a loremaster, a character
+must fulfill all the following criteria.
+Skills: Knowledge (any two) 10 ranks in
+each.
+Feats: Any three metamagic or item creation
+feats, plus Skill Focus (Knowledge [any individual
+Knowledge skill]).
+Spells:Able to cast seven different divination
+spells, one of which must be 3rd level or higher.
+Class Skills
+The loremaster’s class skills (and the key ability for
+each skill) are Appraise (Int), Concentration (Con),
+Craft (alchemy) (Int), Decipher Script (Int), Gather
+Information (Cha), Handle Animals (Cha), Heal
+(Wis), Knowledge (all skills taken individually)
+(Int), Perform (Cha), Profession (Wis), Speak Lan-
+guage, Spellcraft (Int), and Use Magic Device
+(Cha). See Chapter 4 of the Player ’s Handbook
+for skill descriptions.
+Skill Points at Each
+Level: 4 + Int modifier.
+Class Features
+All of the following are class features of the loremaster prestige
+class.
+Weapon and Armor Proficiency:Loremasters gain no profi-
+ciency with any weapon or armor.
+Spells per Day/Spells Known:A loremaster continues train-
+ing in magic as well as her field of research. Thus, when a new
+loremaster level is gained, the character gains new spells per day
+(and spells known, if applicable) as if she had also gained a
+level in a spellcasting class she belonged to before she
+added the prestige class. She does
+not,   however,   gain   any
+other benefit a character of
+that class would have gained
+(improved chance of control-
+ling or rebuking undead, meta-
+magic or item creation feats,
+and so on). This essentially means
+that she adds the level of loremaster
+to the level of some other spell-
+casting class the character has,
+then determines spells per day,
+spells known, and caster level
+accordingly.
+Secret:In their studies, lore-
+masters stumble upon all sorts of
+applicable knowledge and secrets.
+At 1st level and every two levels
+higher than 1st (3rd, 5th, 7th, and
+9th),  the  loremaster  chooses  one
+secret from the table on the next page.
+Her level plus Intelligence modifier
+determines the total number of secrets
+she can choose. She can’t choose the same
+secret twice.
+Lore:Loremasters gather knowledge.
+At 2nd level, a loremaster gains the abil-
+ity to know legends or information
+regarding various topics, just as a bard
+can with bardic knowledge. The lore-
+master adds her level and her Intelli-
+gence modifier to the lore check.
+See page 28 of the Player ’s Handbook
+for more information on bardic
+knowledge.
+Bonus Languages:Loremas-
+ters, in their laborious studies,
+learn new languages in order to
+access  more  knowledge.  A
+loremaster      can
+choose  any  new
+language   at   4th
+and 8th level.
+191
+CHAPTER 6:
+CHARACTERS
+A loremaster
+Table 6–13: The Loremaster
+BaseFortRefWill
+LevelAttack BonusSaveSaveSaveSpecialSpells per Day
+1st+0+0+0+2Secret+1 level of existing class
+2nd+1+0+0+3Lore+1 level of existing class
+3rd+1+1+1+3Secret+1 level of existing class
+4th+2+1+1+4Bonus language+1 level of existing class
+5th+2+1+1+4Secret+1 level of existing class
+6th+3+2+2+5Greater lore+1 level of existing class
+7th+3+2+2+5Secret+1 level of existing class
+8th+4+2+2+6Bonus language+1 level of existing class
+9th+4+3+3+6Secret+1 level of existing class
+10th+5+3+3+7True lore+1 level of existing class

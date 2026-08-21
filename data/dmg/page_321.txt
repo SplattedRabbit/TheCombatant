@@ -1,0 +1,224 @@
+320
+traps 67–76, 82
+Challenge Rating of 75
+cost 75
+designing 74
+elements of 68
+magic 67
+mechanical 67
+sample 70–74
+treasure 51
+building 53
+for cohorts 105
+custom 54
+per encounter 51
+magic items as 56, 212
+monsters with 51
+NPCs with 55
+other 55
+random 53
+types of 55
+wizards and 54
+trees (terrain feature) 87
+tremorsense 299
+trench (terrain feature) 91
+tribe (political system) 140
+trigger (trap element) 68
+turn resistance 299
+undergrowth (terrain feature) 87
+underwater combat 92, 93
+upkeep 130
+upper class 142
+urban encounters 101
+use activated items 213
+Vecna 143
+villains 104
+walls (in dungeons) 59
+and detectspells 60
+walls and gates (urban) 99
+wandering monsters 77
+wands, magic 211, 245–246
+activation 245
+creating 287
+war 133
+warrior (NPC class) 109
+water dangers 304
+wealth by level 135
+weapon size and damage 28
+weapons, magic 211, 221–229
+creating 285
+and critical hits 222
+hardness and hit points 222
+light generation 221
+for unusually sized creatures 
+223
+weather 93
+Wee Jas 143
+weight (of magic items) 215
+wilderness adventures 86
+wilderness encounters, random
+95–98
+wind effects 95
+windstorm 94
+witch (variant spell list) 175
+wizard, epic 209
+NPC 124
+role in society 132
+wizards and treasure 54
+wondrous items 211, 246–268
+creating 288
+world-building 135
+yellow mold 76
+Yondalla 143
+Ysgard 148
+List of Numbered Tables 
+Table 2–1: Maneuverability ..........................20
+Table 2–2: Increasing Weapon
+Damage by Size ......................28
+Table 2–3: Decreasing Weapon
+Damage by Size ......................28
+Table 2–4: Creature Sizes ..............................29
+Table 2–5: Difficulty Class Examples ........31
+Table 2–6: Experience Point Awards
+(Single Monster) ....................38
+Table 3–1: Encounter Numbers ..................49
+Table 3–2: Encounter Difficulty  ................49
+Table 3–3: Treasure Values
+per Encounter  ........................51
+Table 3–4: Average Treasure Results ..........51
+Table 3–5: Treasure..........................................52
+Table 3–6: Gems ..............................................55
+Table 3–7: Art Objects....................................55
+Table 3–8: Mundane Items ..........................56
+Table 3–9: Walls  ..............................................60
+Table 3–10: Doors ............................................61
+Table 3–11: Major Features and
+Furnishings............................65
+Table 3–12: Minor Features and
+Furnishings............................66
+Table 3–13: CR Modifiers for
+Mechanical Traps  ................74
+Table 3–14: CR Modifiers for 
+Magic Traps............................75
+Table 3–15: Cost Modifiers for
+Mechanical Traps  ................75
+Table 3–16: Cost Modifiers for
+Magic Device Traps  ............75
+Table 3–17: Random Door Types ................78
+Table 3–18: Random Room Contents  ......78
+Table 3–19: Random Traps CR 1–3 ............82
+Table 3–20: Random Traps CR 4–6 ............82
+Table 3–21: Random Traps CR 7–10 ..........82
+Table 3–22: Combat Adjustments
+Underwater  ..........................92
+Table 3–23: Random Weather......................94
+Table 3–24: Wind Effects ..............................95
+Table 3–25: Wilderness Encounter Lists..96
+Table 3–26: Siege Engines ..........................100
+Table 3–27: Buildings ..................................101
+Table 3–28: Urban Encounters  ................102
+Table 4–1: Prices for Hireling
+Services  ..................................105
+Table 4–2: The Adept....................................107
+Table 4–3: The Aristocrat ............................108
+Table 4–4: The Commoner ........................109
+Table 4–5: The Expert ..................................109
+Table 4–6: The Warrior ................................110
+Table 4–7: Random NPC Alignment ......110
+Table 4–8: Random NPC Class  ................110
+Table 4–9: Good NPC Race or Kind........111
+Table 4–10: Neutral NPC Race 
+or Kind..................................111
+Table 4–11: Evil NPC Race or Kind ........112
+Table 4–12: NPC Barbarian ........................113
+Table 4–13: NPC Bard..................................114
+Table 4–14: NPC Cleric ..............................115
+Table 4–15: NPC Druid  ..............................116
+Table 4–16: NPC Fighter ............................117
+Table 4–17: NPC Monk ..............................119
+Table 4–18: NPC Paladin ............................120
+Table 4–19: NPC Ranger ............................122
+Table 4–20: NPC Rogue ..............................123
+Table 4–21: NPC Sorcerer ..........................125
+Table 4–22: NPC Wizard ............................126
+Table 4–23: NPC Gear Value......................127
+Table 4–24: One Hundred Traits ..............128
+Table 5–1: Character Wealth by Level ....135
+Table 5–2: Random Town Generation ....137
+Table 5–3: Asian Weapons ..........................145
+Table 5–4: Renaissance Weapons  ............145
+Table 5–5: Modern Era Weapons  ............146
+Table 5–6: Futuristic Weapons ..................146
+Table 5–7: Random Planar 
+Destinations ..........................151
+Table 6–1: The Arcane Archer ..................176
+Table 6–2: The Arcane Trickster  ..............178
+Table 6–3: The Archmage  ..........................179
+Table 6–4: The Assassin  ..............................180
+Table 6–5: Assassin Spells Known  ..........181
+Table 6–6: The Blackguard  ........................182
+Table 6–7: The Dragon Disciple................184
+Table 6–8: The Duelist  ................................185
+Table 6–9: The Dwarven Defender ..........187
+Table 6–10: The Eldritch Knight ..............187
+Table 6–11: The Hierophant ......................189
+Table 6–12: The Horizon Walker..............190
+Table 6–13: The Loremaster ......................191
+Table 6–14: The Mystic Theurge ..............193
+Table 6–15: The Red Wizard ......................193
+Table 6–16: The Shadowdancer ................195
+Table 6–17: The Thaumaturgist ................198
+Table 6–18: Epic Save and 
+Epic Attack Bonuses ........206
+Table 6–19: Epic Experience and
+Level-Dependent
+Benefits ................................206
+Table 7–1: Random Magic Item
+Generation  ............................216
+Table 7–2: Armor and Shields  ..................216
+Table 7–3: Random Armor Type ..............216
+Table 7–4: Random Shield Type  ..............216
+Table 7–5: Armor Special Abilities ..........217
+Table 7–6: Shield Special Abilities ..........218
+Table 7–7: Specific Armors ........................220
+Table 7–8: Specific Shields ........................221
+Table 7–9: Weapons ......................................222
+Table 7–10: Weapon Type
+Determination ....................222
+Table 7–11: Common Melee 
+Weapons ..............................222
+Table 7–12: Uncommon Weapons ..........222
+Table 7–13: Common Ranged 
+Weapons ..............................223
+Table 7–14: Melee Weapon
+Special Abilities  ................223
+Table 7–15: Ranged Weapon
+Special Abilities  ................223
+Table 7–16: Specific  Weapons ..................227
+Table 7–17: Potions and Oils  ....................230
+Table 7–18: Rings ..........................................231
+Table 7–19: Rods............................................234
+Table 7–20: Scroll Types ..............................238
+Table 7–21: Number of Spells
+on a Scroll ............................238
+Table 7–22: Scroll Spell Levels..................238
+Table 7–23: Arcane Spell Scrolls ..............239
+Table 7–24: Divine Spell Scrolls  ..............241
+Table 7–25: Staffs ..........................................243
+Table 7–26: Wands ........................................246
+Table 7–27: Minor Wondrous Items  ......247
+Table 7–28: Medium Wondrous Items ..249
+Table 7–29: Major Wondrous Items ........251
+Table 7–30: Item Intelligence,
+Wisdom, Charisma,
+and Capabilities..................269
+Table 7–31: Specific Cursed Items ..........274
+Table 7–32: Summary of Magic Item
+Creation Costs ....................284
+Table 7–33: Estimating Magic Item
+Gold Piece Values ..............285
+Table 8–1: Special Ability Types  ..............290
+Table 8–2: Diseases  ......................................292
+Table 8–3: Poisons ........................................297
+Table 8–4: Damage from Falling
+Objects ....................................303

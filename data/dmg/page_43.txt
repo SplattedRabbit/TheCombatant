@@ -1,0 +1,131 @@
+42
+Casting time is a full 10 minutes. It heals the character completely
+when cast, but the character suffers the same level loss or Constitu-
+tion loss as with raise dead.Paying someone to cast resurrectioncosts
+910 gp (assuming a 13th-level caster) plus 10,000 gp for expensive
+material components. 
+True resurrection,like resurrection,can be cast on a character who
+has been dead for up to 10 years per caster level. No part of the
+deceased is required for the spell. Casting time is a full 10 minutes.
+True resurrectionrestores a character completely, with no loss of
+level or Constitution. This is the most expensive of these spells to
+have cast. Paying someone to cast true resurrectioncosts 1,530 gp
+(assuming a 17th-level caster) plus 25,000 gp for expensive mate-
+rial components.
+MAKING A NEW CHARACTER
+A player may decide that she wants to make a new character rather
+than continue adventuring with her existing one. Or maybe
+you’ve recruited a new player for your campaign. When a player
+makes a new character for your game, you have an important
+choice to make: What level will the new character be?
+In general, D&D encourages continuity of characters in the
+adventuring group. Players get a greater sense of accomplish-
+ment if they develop their characters over time. The group is
+more effective—and has more fun—if they learn the strengths,
+weaknesses, and quirks of the PCs they’re adventuring with. A
+sense of teamwork is hard to develop if the roster of PCs is
+always shifting.
+But there are times when making a new character is the best
+option. Under the following circumstances, a new character may
+be warranted.
+•A new player joins the campaign.
+•An existing PC dies, and the party doesn’t have access to magic
+that brings her back to life.
+•An existing PC is unable to adventure for an extended period of
+time.  Perhaps  he  was  turned  to  stone  by  a  medusa  cult,  which
+then absconded with the statue. The rest of the party intends to
+rescue  him,  but  until  that  happens,  he  should  have  another
+character to play so he’s not left out.
+•The players find they don’t have a character to cover a key party
+role.  If  the  player  of  the  sole  PC  cleric  moves  away,  another
+player might make up a new cleric so the party still has access
+to healing magic.
+•An  existing  PC  has  become  difficult  to  play,  and  the  player  is
+amenable  to  a  new  character.  Perhaps  you  allowed  an  ogre
+barbarian  PC  into  your  game,  but  the  players  find  they  prefer
+political intrigues and urban adventures. 
+•A player is eager to try a new race or class.
+How you handle each of these situations is up to you. Choosing
+a level for the new character is matter of finding the balance point
+where a new character is viable and fun to play without outshin-
+ing the other PCs.
+Under most circumstances, a new character should begin play
+at the beginning of the level lower than the player’s previous PC.
+For example, if a player wants his 9th-level paladin to ride off
+into the sunset, his new character starts with 28,000 XP, the
+beginning of 8th level. A new player should create his first char-
+acter at the beginning of the level where the lowest-level exist-
+ing PC is.
+In some circumstances, you might want to be more lenient. If
+the lowest-level PC is magically imprisoned, you can let that
+player create a new, temporary character at the same level until the
+original PC is rescued. But avoid situations where a player would
+be punished for sticking with an existing PC rather than creating
+a new one. It’s bad for continuity if a player picks a brand-new
+10th-level character over a longtime PC who will come back from
+the dead at 9th level.
+You also need to tell the player creating the new character how
+much gear to have. The new PC should have the proper equip-
+ment to be an effective character, but his weapons, armor, and
+magic items shouldn’t be so good that they inspire jealousy among
+the other players. Two factors determine how much gear to allow:
+the average amount of gear among the other PCs and whether the
+new PC will have access to an old PC’s gear.
+As long as your campaign is reasonably close to the PC gear
+guidelines outlined in Creating PCs above 1st Level (page 199),
+you can use Table 5–1: Character Wealth by Level to set the gear.
+For example, a new 13th-level character should have 110,000 gp
+in gear. If your characters are more than 20% higher or lower
+than the values on the table, adjust the gear value for the new
+character by the same percentage. If the three 12th-level charac-
+ters each have 132,000 gp in equipment (50% above the norm of
+88,000), give a new 11th-level character 99,000 gp (50% above the
+norm of 66,000).
+If the new character is replacing an old PC, reduce the trea-
+sure amount by whatever the old PC leaves behind. For example,
+if a player creates a new 3rd-level druid because her 4th-level
+druid died, she can just pick up the old PC’s gear and use it,
+rather than getting a gear allowance from you. But if the player
+makes a 3rd-level rogue instead, the gear of a 4th-level druid
+won’t be as useful. If the party sells the druid’s gear for 1,000 gp,
+give the new 3rd-level rogue a gear allowance of 1,700 gp so the
+character will have a total of 2,700 gp in equipment. If the party
+instead buries the druid with her equipment, give the rogue
+2,700 gp worth of equipment.
+As a general rule, a new character can spend no more than half
+her total wealth on a single item, and no more than one quarter
+the total wealth on consumables such as ammunition, scrolls,
+potions, wands, or alchemical items. 
+CHAPTER 2:
+USING 
+THE RULES
+BEHIND THE CURTAIN: 
+WHEN A PC FALLS BEHIND
+D&D works best when all the PCs are within a level or two of each
+other. The classes are carefully balanced against each other at each
+level, and the Challenge Rating system gives you great freedom to
+design appropriate challenges that are fun for everyone at the table.
+But often an unlucky PC—or the PC of a sometimes-absent player—
+will fall behind the rest of the party. If the difference is one or two levels,
+you  don’t  need  to  do  anything  special.  The  experience  point  system
+gives bigger awards to lower-level PCs, so a character who’s behind by
+a level or two will naturally catch up over time. For example, if a party of
+three  9th-level  PCs  and  one  7th-level  PC  defeat  a  CR  9  vrock,  the  9th-
+level PCs each get 675 XP (2,700 ÷4), but the 7th-level PC gets (4,200
+÷4) 1,050 XP.
+The experience point system will diminish a three-level gap over
+time, but it might not erase it. And a PC four or more levels behind
+the rest of the party is a recipe for trouble. An encounter challeng-
+ing to the rest of the party is overwhelming to the lowest-level char-
+acter,  increasing  the  likelihood  that  character  will  die—and  thus
+fall  further  behind.  The  player  of  the  lowest-level  character  might
+feel like his character can’t do anything useful, and the other play-
+ers  might  resent  having  to  keep  the  lowest-level  character  out  of
+harm’s way.
+If a PC falls that far behind the rest of the party, take action to restore
+a  semblance  of  balance.  You  can  discuss  a  new  character  with  the
+player, write a solo adventure for that character to earn the XP needed
+to  catch  up,  or  design  encounters  that  simultaneously  provide  chal-
+lenges appropriate for the low-level player and the rest of the PCs.
+pqqqqrs
+pqqqqrs

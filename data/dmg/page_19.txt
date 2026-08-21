@@ -1,0 +1,133 @@
+18
+DETERMINING OUTCOMES
+You’re the arbiter of everything that happens in the game.
+Period.
+Rolling Dice
+Some die rolls, when seen by a player, reveal too
+much. A player who rolls to see if her character
+finds a trap and sees that she has rolled very
+poorly knows that the information you give her as
+a result of the roll is probably unreliable. (“Nope. No
+traps down that way, as far as you can tell.”) The game is
+much more interesting when the player of a character trying to
+hide or move silently does not know whether the character has
+succeeded.
+In cases where the player shouldn’t know the die result,
+you can make the roll, keeping dice behind a screen or oth-
+erwise out of sight. While this takes some of the fun of
+rolling dice away from the players (and let’s face it, that really
+is a part of the fun of the game), it helps you to maintain con-
+trol over what the player knows and doesn’t know.
+Consider making checks involving the following
+skills for the player where he or she can’t see the
+result:  Bluff,  Diplomacy,  Hide,  Listen,  Move
+Silently, Use Rope, Search, and Spot.
+Do this on a case-by-case basis. When possible,
+always let players make the rolls themselves.
+When it would increase suspense to keep them in
+the dark, roll the dice yourself.
+DCs, ACs, and Saving Throws
+Don’t tell players what they need to roll to succeed. Don’t tell
+them what all the modifiers are to the roll. Instead, tell the players
+that keeping track of all those things is your job. Then, when they
+roll the dice, tell them whether they succeed or fail.
+This is important so that players focus on what their characters
+are doing, not on the numbers. It’s also a way to hide sneaky mon-
+ster tactics or the occasional DM cheat (see below).
+DM CHEATING AND
+PLAYER PERCEPTIONS
+Terrible things can happen in the game because the dice just go
+awry. Everything might be going fine, when suddenly the
+players have a run of bad luck. A round later, half the party’s
+down for the count and the other half almost certainly can’t
+take on the foes that remain. If everyone dies, the campaign
+might very well end then and there, and that’s bad for every-
+one. Do you stand by and watch them get slaughtered, or do
+you “cheat” and have the foes run off, or fudge the die rolls so
+that the PCs still miraculously win in the end? There are
+really two issues at hand.
+Do you cheat? The answer: The DM really can’tcheat. You’re
+the umpire, and what you say goes. As such, it’s certainly within
+your rights to sway things one way or another to keep people
+happy or keep things running smoothly. It’s no fun losing a long-
+term character who gets run over by a cart. A good rule of thumb
+is that a character shouldn’t die in a trivial way because of some
+fluke of the dice unless he or she was doing something really
+stupid at the time.
+However, you might not think it’s right or even fun unless you
+obey the same rules the players do. Sometimes the PCs get lucky
+and kill an NPC you had planned to have around for a long time.
+By the same token, sometimes things go against the PCs, and dis-
+aster may befall them. Both the DM and the players take the bad
+with the good. That’s a perfectly acceptable way to play, and if
+there’s a default method of DMing, that’s it.
+Just as important an issue, however, is whether the players real-
+ize that you bend the rules. Even if you decide that sometimes it’s
+okay to fudge a little to let the characters survive so the game can
+continue, don’t let the players in on this decision.It’s important to the
+game that they believe their characters are always in danger. If the
+players believe, consciously or subconsciously, that you’ll never let
+bad things happen to their characters, they’ll change the way they
+act. With no element of risk, victory will seem less sweet. And if
+thereafter something bad does happen to a character, that player
+may believe you’re out to get him if he feels you saved other play-
+ers when their characters were in trouble.
+When Bad Things Happen to Good Characters
+Characters suffer setbacks, lose magic items, take ability score
+penalties, lose levels, and die (sometimes repeatedly). Unfor-
+tunate events are part of the game, almost as much as suc-
+cess, gaining levels, earning treasure, and attaining
+greatness. But players don’t always take it well when
+something bad happens to their characters.
+Remind players that sometimes bad things happen.
+Challenges are what the game’s all about. Point out that
+a setback can be turned into an opportunity to succeed
+later. If a character dies, encourage the other players (per-
+haps subtly) to have their characters get the dead character raised
+or resurrected. If doing this is not an option, reassure the player of
+the dead character that there are lots of opportunities in new char-
+acter types she hasn’t yet tried. A bard somewhere will pen a ballad
+about the fallen character’s heroic demise even as the group wel-
+comes her new PC. The game goes on.
+It’s rare but possible that an entire party can be wiped out.
+In such a case, don’t let this catastrophe end the whole
+game. NPC adventurers might find the PCs and have
+them raised or resurrected, putting the PCs deeply in
+their debt (an adventure hook if ever there was
+one). The players can create a temporary party for
+the purpose of retrieving the bodies of the fallen
+adventurers for raising or at least honorable burial.
+Or, everyone can roll up new characters and start
+anew. Even that’s not really so bad—in fact, it’s an opportunity for
+a dramatic change of pace.
+ENDING A SESSION
+Try not to end a game session in the middle of an encounter. Leav-
+ing everything hanging in this way is a terrible note to end on. It’s
+difficult to keep track of information such as initiative order,
+spell  durations,  and  other  round-by-round  details
+between sessions. The only exception to this guideline is
+when you purposely end a session with a cliffhanger. A
+cliffhanger ending is one in which the story pauses just as
+something monumental happens or some surprising turn of
+events occurs. The purpose is to keep players intrigued and
+excited until the next session. 
+If someone was missing from a session and you had her charac-
+ter leave the party for a while, make sure that there’s a way to work
+her character back in when she returns. Sometimes a cliffhanger
+can serve this purpose—the PC comes racing into the thick of
+things like the cavalry to help her beleaguered friends.
+Allow some time (a few minutes will do) at the end of play to
+have everyone discuss the events of the session. Listen to their
+reactions so you can learn more of what they like and don’t like.
+Reinforce what you thought were good decisions and smart ac-
+tions on their parts (unless such information gives too much away
+for the adventure). Always end the session on a positive note.
+You may want to award experience points at the end of each ses-
+sion, or you might wait until the end of each adventure. That’s up
+to you. However, the standard procedure is to give them out at the
+end of each session, so players whose characters go up a level have
+time to choose new spells, buy skills, and take care of other details
+related to level advancement.
+CHAPTER 1:
+RUNNING 
+THE GAME

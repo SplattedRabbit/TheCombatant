@@ -1,0 +1,135 @@
+Power of Nature (Su): Available only to hierophants with druid
+levels, this ability allows a hierophant to temporarily transfer one
+or more of his druid class features to a willing creature. The trans-
+fer lasts anywhere from 24 hours to one week (chosen at the time
+of transfer), and while the transfer is in effect,
+the hierophant cannot use the trans-
+ferred power. He can transfer any
+of  his  druid  powers  except
+spellcasting and the ability to
+have an animal companion.
+The druid’s wild shape
+ability can be partially or
+completely transferred.
+For  example,  a  hiero-
+phant may transfer the
+ability   to   use   wild
+shape once per day to
+the recipient and retain
+the  rest  of  his  uses  for
+himself.  If  the  hiero-
+phant   can   assume
+the  form  of  Tiny  or
+Huge animals, the recipi-
+ent can as well.
+As with the imbue with spell
+abilityspell,   the   hierophant
+remains responsible to his deity
+for any use to which the recipient
+puts the transferred abilities.
+Spell Power: This special ability increases a
+hierophant’s effective caster level by 1 for
+purposes of determining level-dependent
+spell variables (such as damage or range) and for
+caster level checks. This ability can be selected
+more than once, and changes to effective caster level
+are cumulative.
+Spell-Like Ability: A hierophant who selects this
+special ability can use one of his divine spell slots to
+permanently prepare one of his divine spells as a spell-like
+ability that can be used twice per day. The hierophant does not
+use any components when casting the spell, although a spell that
+costs XP to cast still does so, and a spell with a costly material com-
+ponent instead costs him 10 times that amount in XP.
+The spell normally uses a spell slot of the spell’s level (or
+higher, if the hierophant chooses to permanently
+attach a metamagic feat to the spell chosen). The
+hierophant can use an available higher-level spell
+slot to use the spell-like ability more than once per
+day. Allocating a slot three levels higher allows him to
+cast the spell four times per day, and a slot six levels higher lets
+him cast it six times per day. For example, Lonafin the hierophant
+wants to be able to create undead whenever he has the opportu-
+nity, so he permanently uses a 9th-level spell slot to get animate
+deadas a spell-like ability usable six times per day.
+If selected more than one time as a special ability, this ability
+can apply to the same spell (increasing the number of times per
+day it can be used) or to a different spell.
+HORIZON WALKER
+The horizon walker is an unceasing traveler to the universe’s most
+dangerous places. As her journeys take her from place to place, she
+adapts to become one with her environment. In time, she devel-
+ops a mystic connection with the ground beneath her. But she is
+by no means tied to a particular place; her restless feet are ever
+leading her toward the horizon, where new adventures await.
+Horizon walkers tend to be hard to surprise or impress, because
+they’ve seen so many wonders during their travels. It’s common
+for a horizon walker to have an outward attitude of “been there,
+done that.” But horizon walkers are gripped by an unquench-
+able wanderlust, so they’re always in the midst of a jour-
+ney or planning their next one. As
+they  travel,  horizon  walkers
+develop a magical resonance
+with  the  terrain  that  sur-
+rounds them, making them
+unparalleled    guides    and
+scouts. And they’re formida-
+ble  foes  when  their  travels
+take them into danger, able to
+use the terrain they know so
+well to good advantage.
+Rangers and bards take up
+the  path  of  the  horizon
+walker   more   often   than
+other  characters,  but  that’s
+more because they appreciate
+the wanderer’s life, not because
+the path of the horizon walker
+is particularly specialized. A fair
+number of horizon walkers were
+barbarians who strayed from their
+native lands or rogues who found
+their skills useful on the road.
+Occasionally a druid will adopt
+the prestige class, though most
+are loath to do so because they sacri-
+fice their spellcasting advancement.
+You’ll find horizon walkers on the
+road, or in places so forbidding that
+roads don’t exist. They rarely stay in
+one place for long, and they’re eager to
+launch a new expedition—the more exotic
+and remote the destination, the better.
+Hit Die:d8.
+Requirements
+To qualify to become a horizon walker, a character must fulfill all
+the following criteria.
+Skills: Knowledge (geography) 8 ranks.
+Feats: Endurance.
+Class Skills
+The horizon walker’s class skills (and the key ability for each skill)
+are Balance (Dex), Climb (Str), Diplomacy (Cha), Handle Animal
+(Cha), Hide (Dex), Knowledge (geography) (Int), Listen (Wis),
+Move Silently (Dex), Profession (Wis), Ride (Dex), Speak Lan-
+guage (none), Spot (Wis), and Survival (Wis). See Chapter 4 of the
+Player ’s Handbook for skill descriptions.
+Skill Points at Each Level:4 + Int modifier.
+Class Features
+All of the following are features of the horizon walker prestige
+class.
+Weapon and Armor Proficiency: Horizon walkers gain no
+proficiency with any weapon or armor.
+189
+CHAPTER 6:
+CHARACTERS
+Illus. by B. Snoddy
+A hierophant
+Table 6–11: The Hierophant
+Base
+Attack          FortRefWill
+LevelBonusSaveSaveSaveSpecial
+1st+0+2+0+2Special ability
+2nd+1+3+0+3Special ability
+3rd+1+3+1+3Special ability
+4th+2+4+1+4Special ability
+5th+2+4+1+4Special ability

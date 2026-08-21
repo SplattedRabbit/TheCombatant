@@ -1,0 +1,135 @@
+Ghouls (3):CR 1; Medium undead; HD 2d12; hp 13, 13, 18;
+Init +2; Spd 30 ft.; AC 14, touch 12, flat-footed 12; Base Atk +1; Grp
++2; Atk +2 melee (1d6+1 plus paralysis, bite); Full Atk +2 melee
+(1d6+1 plus paralysis, bite) and +0/+0 melee (1d3 plus paralysis, 2
+claws); Space/Reach 5 ft./5 ft.; SA ghoul fever, paralysis; SQ +2
+turn resistance, undead traits; AL CE; SV Fort +0, Ref +2, Will +5;
+Str 13, Dex 15, Con —, Int 13, Wis 14, Cha 12.
+Skills and Feats:Balance +6,
+Climb +5, Hide +6, Jump +5,
+Move Silently  +6,  Spot  +7;
+Multiattack (see page 304 of
+the Monster Manual).
+Ghoul Fever (Su):Those hit
+by a ghoul’s bite must succeed
+on a DC 12 Fortitude save or
+succumb to ghoul fever (incu-
+bation period 1 day, damage
+1d3  Con  and  1d3  Dex).  A
+humanoid who dies of ghoul
+fever rises as a ghoul at mid-
+night of the next day (see page
+118 of the Monster Manualfor
+more information).
+Paralysis (Ex):Those hit by a
+ghoul’s  bite  or  claw  attack
+must succeed on a DC 12 For-
+titude save or be paralyzed for
+1d4+1   minutes.   Elves   are
+immune to this paralysis.
+Undead Traits:Darkvision
+out to 60 feet. Immunity to
+poison,  magic  sleepeffects,
+paralysis, stunning, disease,
+and death effects. Not subject
+to   critical   hits,   nonlethal
+damage,   ability   drain,   or
+energy  drain.  Immunity  to
+any effect that requires a Forti-
+tude save (unless the effect
+also  works  on  objects  or  is
+harmless).  Not  at  risk  of  death  from  massive  damage,  but
+destroyed when reduced to 0 hit points or lower. Not affected by
+raise deador reincarnatespells or abilities.
+STATISTICS BLOCKS
+Every character and creature in the D&D game has a number of
+different abilities and characteristics. A creature’s statistics block
+(“stat block” for short)  summarizes those attributes.
+At the end of the sample adventure above, statistics blocks are
+provided for the spiders and the ghouls that the PCs encounter.
+This information is taken from the Monster Manualentries for
+those creatures and presented here in an abbreviated form. Many
+published adventures contain stat blocks for the creatures therein
+as a convenience, preventing you from needing to look up infor-
+mation from one of the core rulebooks (usually the Monster
+Manual) in order to run the adventure.
+Some stat blocks are less detailed than others, sometimes
+because those characters or creatures are only “bit players” (com-
+moners or other unimportant NPCs) and sometimes because only
+certain aspects of a creature’s abilities are relevant to the adventure. 
+For instance, the stat block for a gold dragon would only need
+to mention that the dragon can breathe underwater if the place
+where it’s encountered includes a body of water large enough for
+this ability to be potentially useful.
+Following is a summary of the main elements of a statistics
+block. All the terms used in this summary are discussed in more
+detail elsewhere in the rules. For examples of various types of
+character stat blocks, see the sample NPCs in Chapter 4. For exam-
+ples of stat blocks describing various kinds of creatures, see Famil-
+iars on pages 200–204.
+Name: The word or phrase that identifies the creature.
+Race and Class: Provided only for characters with levels.
+CR: The Challenge Rating of an individual creature of this kind.
+Size and Type: The creature’s
+size category and its type (and
+subtype or subtypes, if appli-
+cable).
+HD: The creature’s Hit Dice
+(and any hit points it gains or
+loses because of its Constitu-
+tion modifier).
+hp:   The   creature’s   full
+normal hit point total (usually
+average rolls on each Hit Die).
+Init: The creature’s modifier
+on initiative checks.
+Spd: The creature’s base land
+speed, followed by speeds for
+other modes of movement if
+applicable.
+AC: The creature’s Armor
+Class  against  most  regular
+attacks,  followed  by  its  AC
+against touch attacks (which
+disregard armor) and its AC
+when  flat-footed  (or  at  any
+other time when denied its
+Dexterity bonus to AC).
+Base Atk: The creature’s base
+attack bonus without any modi-
+fiers.
+Grp: The creature’s grapple
+bonus (base attack + size modi-
+fier + Str bonus).
+Atk: The single attack the
+creature makes when taking
+an attack action (modified attack bonus, whether the attack is
+melee or ranged, how much damage the attack deals, and the
+weapon used for the attack).
+Full Atk: All the physical attacks the creature can make when
+taking a full attack action (often the same as the Atk entry).
+Space/Reach: How large a square the creature takes up on the
+battle grid and how far its natural reach extends. The vast majority
+of creatures have a space/reach of 5 ft./5 ft.; as such, a stat block
+might omit this entry unless it’s different from the “default.”
+SA: The creature’s special attacks (some of which may be de-
+scribed in more detail beneath the Skills and Feats paragraph).
+SQ: The creature’s special qualities (some of which may be de-
+scribed in more detail beneath the Skills and Feats paragraph).
+AL: The one- or two-letter abbreviation denoting the creature’s
+alignment.
+SV: The creature’s saving throw bonuses.
+Ability Scores: The creature’s ability scores in the customary
+order (Str, Dex, Con, Int, Wis, Cha).
+Skills and Feats:In a new paragraph, a list of all the creature’s skill
+modifiers and feats.
+Details:Special attacks and special qualities that need further
+explanation are covered next.
+Spells Known:For sorcerers and members of other classes that do
+not prepare spells.
+Spells Prepared:For wizards, clerics, and members of other classes
+that prepare spells. A cleric’s stat block also includes the domains
+he has access to (with domain spells asterisked in the list of pre-
+85
+CHAPTER 3:
+ADVENTURES

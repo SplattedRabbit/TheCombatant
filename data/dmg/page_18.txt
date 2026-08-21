@@ -1,0 +1,133 @@
+If the players do not seem to have understood something you
+said, say it again. Sometimes important points are lost among lots
+of new description. Don’t be afraid to repeat that a great deal of
+heat comes up from the grate, or each time the dragonne moves,
+the ceiling rumbles and dust shakes down onto the floor. The
+worst that can happen is that players are reminded how important
+the statement is, and they will act accordingly.
+When a character moves, add background. Say “ The manticore
+moves away from the opening in the far wall, where the foul smell
+seems to originate,” or “ The barbarian steps even closer to the pit,”
+or “ The roper slides slowly across the uneven floor.” When a char-
+acter uses an object, describe the object. “ The warrior slashes you
+with his wavy-bladed dagger” is much better than “He hits you for
+3 points of damage.”
+The tone of your descriptions controls the flow of an encounter
+and the mood that the encounter projects over the entire group. If
+you speak quickly and intently, this lends intensity to the action. If
+your words are frantic, they will make the mood of the scene seem
+urgent and desperate.
+Sometimes it’s effective to add a little pantomime to your de-
+scriptions. If a PC’s opponent raises his huge two-handed sword
+above his head to attack the character, raise your hands as if you
+are grasping the sword’s hilt. When someone takes a terrible hit in
+battle, flinch or recoil with a momentary look of mock pain. If the
+PCs are fighting a giant, stand up when the giant takes his actions,
+looking down at the seated players.
+Sometimes it’s hard to avoid saying “You miss. He hits. You
+take 12 points of damage.” And sometimes, that’s okay. Long
+verbal descriptions can get tedious to give and to hear, and the
+game effects are the important things. However, that’s the
+exception, not the rule. Most of the time, at the very least, make
+that “He ducks, and slashes with his longsword for 12 points of
+damage.” It is usually better in a descriptive way to talk about
+dealing damage rather than taking damage. “Its claws rake for 8
+points” is at least somewhat interesting, but “You take 8 points”
+describes nothing.
+Remember, too, that an attack that does not deal damage is not
+always a miss in the ordinary sense of the word. Heavily armored
+characters may be frequently hit, but their armor protects them. If
+you say “His short sword glances off your plate armor,” this not
+only describes the action, but makes the player feel good about his
+choice to spend extra gold on the good armor.
+NPC Actions
+When an NPC takes a combat action, the players sometimes need
+to have a clue about what’s going on—both in the fictional reality
+of the game and in terms of the game’s mechanics. This means that
+when a lizardfolk with a crossbow is taking a ready action to cover
+the area in front of a door, the players should have a pretty good
+idea that if they move in front of that door, the lizardfolk is going
+to shoot them.
+You need to think about what various actions look like while
+they’re happening. If you were all watching the combat in a movie,
+what would you see when a character casts a spell or does some-
+thing else that none of you have ever seen a real person do? Be dra-
+matic, and describe the action fully, but avoid overexplaining,
+because that will slow down the flow of the action. Be consistent
+as well, because your words are not just description, they’re cues
+by which the players make game decisions. If the last time some-
+one used the aid another action, you described it as “distracting”
+and “harrying,” use those words again. If that means that pretty
+soon your players listen to your description and then say, “Ooh,
+the wizard must be casting a spell,” you have accomplished some-
+thing good—the players have learned your verbal cues to spell-
+casting. Not only does that allow them to make good decisions
+based on your descriptions, but it lends believability to the fic-
+tional world you are creating.
+Here are some vivid descriptions you can use to tell players
+what’s going on when a character takes a certain action.
+ActionDescription
+Charge“He lunges forward at full speed, eyes full of
+violence.”
+Full defense“She raises her weapon and watches your
+attacks, attempting to parry each one.”
+Aid another“While his ally attacks, he darts in and out of
+the fight, distracting his foe.”
+Ready a “He’s got his weapon trained on that 
+ranged weaponarea, obviously waiting for something.”
+Cast a spell“He moves his hands in a deliberate manner
+and utters words that sound more like an
+invocation than a sentence.”
+Cast a stilled spell“She speaks a few short words, staring
+intently.”
+Cast a quickened “With a word and a flick of his hand, . . .”
+spell
+Cast a silenced “She does nothing but make a powerful 
+spellgesture.”
+Use a special ability“Without using words or gestures, she calls
+upon some power within herself, using her
+great will and inner strength.”
+Activate a “He focuses intently on his item, 
+magic itemdrawing power from it.”
+Delay“She’s looking around, sizing up the
+situation, and waiting to react.”
+Interesting Combats
+The spiral pathway rose up to the circular platform where the sev-
+enteen magical gems were held in stasis. Below the path, a
+seething pit of raw, explosive magical energy waited like an open
+maw. The four adventurers climbed up the path, eager to reach
+their goal, but suddenly a quasit swooped down from some hidden
+recess. Tordek drew his axe, knowing that fighting on this narrow
+path would be difficult and dangerous. He wasn’t sure what would
+happen if one of them fell into that magical energy, but he didn’t
+want to find out.
+While  any  combat  can  be  exciting,  you  should  occasionally
+have  the  PCs  face  opponents  in  a  nontraditional  setting.  Some-
+times mounted combat, or aerial combat, can provide a change of
+pace,  and  underwater  settings  can  be  interesting  as  well.  A  short
+list of other suggestions appears below.
+FactorGame Effect
+Pits, chasms, bridges,Characters can attempt to push
+and  ledgesopponents  with  a  bull  rush  (see  page  154  of
+the Player’s Handbook).
+FogConcealment (20% miss chance) for everyone
+involved.
+Whirling blades or Characters must make DC 13 Reflex saves
+giant,  spinning  gearseach  round  or  take  6d6  points  of  slashing  or
+bludgeoning damage.
+Steam  ventsOne  random  character  must  make  a  DC  15
+Reflex  save  each  round  or  take  3d6  points  of
+damage from the heat.
+Rising or lowering Characters can only melee opponents at the
+platformssame elevation;  platforms  change  elevation
+every other round.
+Ice or other slipperyCharacters must make DC 10 Balance checks 
+surfaceseach  round  or  fall  prone,  and  then  spend  a
+move action to stand.
+For more ideas, see The Environment in Chapter 8: Glossary,
+Chapter 3: Adventures, or take inspiration from an exciting
+action movie or book.
+17
+CHAPTER 1:
+RUNNING 
+THE GAME

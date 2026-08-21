@@ -1,0 +1,133 @@
+166
+good can hunt a white stag, for the stag knows the consequences
+and is willing to be prey. But white stags don’t give themselves up.
+They take great glee in using their wiles and unparalleled knowl-
+edge of the forest to confound hunters from other planes. No crea-
+tures native to the Beastlands will attack a white stag. Instead, they
+turn on the hunters with unbridled ferocity.
+The antlers of a white stag stretch wide enough that it’s possible
+to fashion a composite longbow out of them using the Craft (bow-
+making) skill (making checks against DC 30). Such a bow is consid-
+ered of masterwork quality, and magical enhancements placed on
+the bow cost 10% less because the antlers have an affinity for magic.
+To draw an encounter map for a Karasuthra hunter’s glen, use
+the medium forest guidelines (see page 87). Simple three- and
+four-room lodges scattered throughout the forest offer visitors a
+measure of protection from the creatures outside.
+OLYMPIAN GLADES OF ARBOREA
+Arborea is a crazy quilt of climates and environments, all of which
+thrive. The plane contains great woods of towering maples, birch,
+and oak. These great deciduous trees strain skyward, leaving a forest
+floor relatively free of undergrowth and brush. The ground beneath
+the canopy itself is a rolling landscape of velvet moss and ferns. The
+forestscape sometimes retreats before open glades of wildflowers,
+fields of swaying wheat and barley, and neat rows of fruit trees
+untended by any hand. Here are trees that have never seen the
+woodsman’s axe, fields rich with grain, and orchards heavy with fruit.
+The very air of Arborea seems charged with anticipation and
+excitement. Sudden squalls brew up out of nowhere, beating the
+tree-lined paths with heavy winds. They pass within minutes and
+leave behind warm, sunny arcs of light filtering through the forest
+canopy. In the distance there always seems to be music; sometimes
+the elves and the fey are playing, but just as often the faint tune is
+merely the wind curling through the boles of the great trees.
+Arborea is a place with flowers in bloom and trees bearing fruit
+simultaneously. The uplands are covered with snow, shining beneath
+a crystal-blue sky. Arborea is almost overwhelming in its beauty, and
+the land embodies both wilderness and loveliness in one package.
+Only the top layer of Arborea, Arvandor, has the great forest
+implied in the name of the plane. Aquallor, Arborea’s second layer,
+is an endless ocean, and its third layer, Mithardir, is a borderless
+desert of white dust. 
+Arborea has the following traits.
+•Divinely morphic. Deities can change the traits of the plane and
+remake  the  landscape;  mortals  must  use  spells  and  physical
+effort to change their environment. 
+•Mildly good-aligned and mildly chaos-aligned.
+Random Encounters: Use the Beatific Encounters table (page
+167) for random encounters in Arborea.
+Example Arborea Site: Canopy City
+The celestial elves of Arvandor live in great treehouse cities
+among massive redwoods. There they hunt, celebrate, and live the
+idealized elven life. But they treasure their society with such
+intensity that they’re quick to turn on intruders. A single careless
+word can turn the speaker into a pincushion of elven arrows.
+The canopy cities are not home to elves alone. Many elves ride
+celestial giant owls from place to place, and many fey are welcome
+in the treetop city. While the trees support the city, some treants live
+in the canopy city as well—a surprise to visitors who try to take a
+shortcut. A canopy city is considered a large city (see page 137).
+To draw an encounter map for a canopy city, use the buildings
+from the Urban Features section (see page 99), but construct them
+of wood and attach them to tree trunks from 30 feet to 60 feet in
+diameter. Rather than use roads and alleys to connect them, string
+together rope bridges, wooden bridges, ladders, and stairs. Make
+the bridge-and-stairs network complicated—the elves like it that
+way, and it’ll make for more interesting encounters.
+CONCORDANT DOMAIN  OF THE OUTLANDS
+The Outlands is unique among the Outer Planes because it bor-
+ders all other Outer Planes. As a result, it is the common ground
+for extraplanar creatures. Beings from infernal and celestial
+planes, as well as those of law and chaos, can be found here. In
+addition, deities of true neutrality and those associated with ideals
+such as scholarship or nature have their realms here.
+The Outlands is an infinitely large wheel with a great spire
+rising from its center. Outlanders consider this towering cylindri-
+cal plinth as the heart of the Outer Planes and the axle around
+which the Great Wheel is centered. This great plinth is clearly vis-
+ible from anywhere in the plane; it rises above the clouds them-
+selves and ascends into unreachable heavens. Sigil, the City of
+Doors, floats at the top of the spire.
+The plane is a broad region of varied terrain, with open prairies,
+towering mountains, and twisting, shallow rivers. Settlements
+throughout the area are inhabited by a variety of refugees and
+natives of the plane. But they are small flecks against the greater
+wildness of the Outlands.
+The Outlands has the following traits.
+•Divinely  morphic.  This  trait  disappears  close  to  the  center  of
+the plane, and in that area even deities are affected by the nature
+of the plane.
+•Mildly  neutral-aligned.  Unlike  on  the  other  Outer  Planes,  all
+alignments are equally welcome on the Outlands.
+•Normal   magic,   impeded   magic,   and   limited   magic.   The
+Outlands  has  the  normal  magic  trait  far  from  its  central  spire,
+but  as  one  approaches  the  hub  of  the  plane,  spells,  spell-like
+abilities, and even supernatural powers are further and further
+restricted.  Where  the  surface  of  the  plinth  is  near  vertical,
+almost no abilities (and few deity-level powers) function.
+Far from the spire, magic functions normally. At about 1,100
+miles from the base of the spire, the impeded magic trait begins,
+impeding 9th-level spells unless the caster succeeds on a DC 35
+Spellcraft check. Closer to the base of the spire, spells of lower levels
+are also impeded in this manner, according to the table below.
+Distance          ImpededLimited
+from SpireSpellsSpellsOther Effects
+More than NoneNoneNone
+1,100 mi.
+1,100 mi.9thNoneNone
+1,000 mi.8th–9thNoneNone
+900 mi.7th–9th9thAll creatures gain immunity
+to poison
+800 mi.6th–9th8th–9thPsionic spell-like abilities
+don’t function
+700 mi.5th–9th7th–9thPositive and negative energy
+can’t be channeled
+600 mi.4th–9th6th–9thSupernatural abilities don’t
+function
+500 mi.3rd–9th5th–9thAccess to the Astral Plane
+prohibited
+400 mi.2nd–9th4th–9thDivine powers of demigod
+rank and lower annulled
+300 mi.All3rd–9thDivine powers of lesser deity
+rank and lower annulled
+200 mi.All2nd–9thDivine powers of
+intermediate deity rank and
+lower annulled
+100 mi.AllAllAll divine powers annulled
+The limited magic trait starts to emerge at 900 miles away from
+the center of the plane, making 9th-level spells and spell-like
+effects unavailable. Closer to the center, more and more abilities
+cannot be used, and finally even deity-level powers are affected.
+Extraordinary abilities are never affected by this trait.
+CHAPTER 5:
+CAMPAIGNS

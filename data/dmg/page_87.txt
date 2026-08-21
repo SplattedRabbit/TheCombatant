@@ -1,0 +1,130 @@
+86
+pared spells), his deity (if applicable), and the granted powers of
+his domains.
+Spellbook:Optionally (in addition to Spells Prepared), you may
+wish to provide the contents of a caster’s spellbook in her stat
+block. (See the sample NPC wizards on page 125 for what this
+looks like.) This information can be important for an NPC whom
+the characters might encounter repeatedly over the course of sev-
+eral days (so that she could choose to prepare different spells on
+different days).
+Possessions:A list of items the creature or character is wearing or
+carrying.
+Obviously, any stat block you create for your own use can be as
+sparse or as detailed as you need it to be. If all that really matters
+for an encounter is a creature’s hit points, AC, and attack bonus,
+then those are the only characteristics you need to make note of.
+Use your own stat blocks to streamline the action during play by
+enabling you to have what you need at your fingertips—but don’t
+feel that your stat blocks have to provide every conceivable statistic
+for every creature (unless that’s what you want them to do, of course).
+WILDERNESS ADVENTURES
+In the great outdoors, dragons cross the sky, looking for prey on
+the ground, while tribes of hobgoblins stalk their own victims. An
+ankheg bursts forth from the earth, and monstrous spiders drop
+from the trees.
+Adventures and encounters outdoors can be as interesting as
+those underground, but they’re different in many ways. Charac-
+ters have greater freedom to roam. In a dungeon, characters are
+constrained by the doors and hallways available to them, but in a
+forest, they can travel in any direction they please.
+The open wilderness can be liberating for the players, and it
+demands that the DM be flexible. You don’t have to have every
+5-foot square of the Abbor-Alz Mountains mapped before the
+adventure begins, but you should be able to draw the terrain in
+the immediate area when the red dragon roars out of the sky.
+Furthermore, you should know—in general terms, at least—what
+the characters will find if they cross that ridge or ford that stream.
+A second difference between wilderness adventures and dun-
+geon adventures is the possibility of retreat. In a dungeon, the PCs
+can generally retreat and recuperate without too much difficulty.
+But the wilderness is by definition far from the comforts of civi-
+lization,  so  the  characters  have  to  rely  more  on  their  own
+resources. There probably isn’t a friendly temple full of healers in
+the middle of the trackless swamp the characters are fighting their
+way through, so the PC cleric will have to handle all the party’s
+healing. There’s no inn, so some characters will have to stay awake
+and keep watch while the other characters sleep. And if the char-
+acters are beset by foes, they have no safe place to run to—or at
+least no safe place nearby.
+Finally, wilderness adventures differ from dungeon ones be-
+cause the wilderness is often ancillary to the characters’ larger pur-
+pose. Wilderness adventures usually involve travel through the
+wild to a specific destination, not exploration of the wilderness for
+its own sake. A dungeon is a place you travel to, but the wilderness
+is a place you travel through. Characters are less inclined to linger
+without a good reason, because they’re usually on their way to
+someplace else.
+For obvious reasons, doors, floors, and walls are few and far be-
+tween in the wilderness. Instead the characters will have to con-
+tend with everything from towering trees to quicksand as they
+make their way through the wilderness. The kinds of dangers
+they’ll face depend on the terrain (forest, mountain, and so on)
+and climate (hot, temperate, or cold).
+GETTING LOST
+There are many ways to get lost in the wilderness. Following an
+obvious road, trail, or feature such as a stream or shoreline pre-
+vents any possibility of becoming lost, but travelers striking off
+cross-country may become disoriented—especially in conditions
+of poor visibility or in difficult terrain.
+Poor Visibility: Any time characters cannot see at least 60
+feet in the prevailing conditions of visibility, they may become
+lost. Characters traveling through fog, snow, or a downpour
+might easily lose the ability to see any landmarks not in their
+immediate vicinity. Similarly, characters traveling at night may
+be at risk, too, depending on the quality of their light sources, the
+amount of moonlight, and whether they have darkvision or low-
+light vision.
+Difficult Terrain: Any character in forest, moor, hill, or moun-
+tain terrain may become lost if he or she moves away from a trail,
+road, stream, or other obvious path or track. Forests are especially
+dangerous because they obscure far-off landmarks and make it
+hard to see the sun or stars.
+Chance to Get Lost: If conditions exist that make getting lost
+a possibility, the character leading the way must succeed on a Sur-
+vival check or become lost. The difficulty of this check varies
+based on the terrain, the visibility conditions, and whether or not
+the character has a map of the area being traveled through. Refer
+to the table below and use the highest DC that applies.
+Survival DCSurvival DC
+Moor or hill, map6Poor visibility12
+Mountain, map8Mountain, no map12
+Moor or hill, no map10Forest15
+A character with at least 5 ranks in Knowledge (geography) or
+Knowledge (local) pertaining to the area being traveled through
+gains a +2 bonus on this check.
+Check once per hour (or portion of an hour) spent in local or
+overland movement to see if travelers have become lost. In the
+case of a party moving together, only the character leading the
+way makes the check. (Tip:Make this check in secret, since the
+characters may not realize that they’re lost right away.)
+Effects of Being Lost: If a party becomes lost, it is no longer
+certain of moving in the direction it intended to travel. Randomly
+determine the direction in which the party actually travels during
+each hour of local or overland movement. The characters’ move-
+ment continues to be random until they blunder into a landmark
+they can’t miss, or until they recognize that they are lost and make
+an effort to regain their bearings.
+Recognizing that You’re Lost:Once per hour of random travel, each
+character in the party may attempt a Survival check (DC 20, –1 per
+hour of random travel) to recognize that they are no longer certain
+of their direction of travel. Some circumstances may make it obvi-
+ous that the characters are lost; if they expected to reach a certain
+spot within an hour but three or four hours pass by with no sign of
+their destination, that’s a bad sign.
+Setting a New Course: A lost party is also uncertain of determin-
+ing in which direction it should travel in order to reach a desired
+objective—even an objective such as “the point where we left the
+road and went off into these dratted woods.” Determining the cor-
+rect direction of travel once a party has become lost requires a Sur-
+vival check (DC 15, +2 per hour of random travel). If a character
+fails this check, he chooses a random direction as the “correct”
+direction for resuming travel. (Tip:Again, this is a check you
+should make in secret. The lost characters may think they know
+the way to travel after regaining their bearings, but could be
+entirely wrong again.)
+Once the characters are traveling along their new course, cor-
+rect or incorrect, they may get lost again. If the conditions still
+make it possible for travelers to become lost, check once per hour
+CHAPTER 3:
+ADVENTURES

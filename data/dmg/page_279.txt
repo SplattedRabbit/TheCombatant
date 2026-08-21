@@ -1,0 +1,113 @@
+278
+causes them to become evil (Will DC 13 negates). Such converts
+immediately seek out an evil cleric to confirm their new align-
+ment (with an atonementspell).
+Divine spellcasters neither good nor evil (LN, N, CN) who read
+the book either lose 2d6×1,000 XP (01–50 on d%) or become evil
+without benefit from the book (51–100). Good divine spell-
+casters (LG, NG, CG) perusing the pages of the book of vile
+darknesshave to make a DC 16 Fortitude save or die. If
+they do not die, they must succeed on a DC 15 Will
+save or suffer from a continuous confusioneffect
+(per the insanityspell). In the latter event, even if
+the save is successful, the character loses 20,000
+XP, minus 1,000 for each point of Wisdom he
+has. (This calculation cannot result in an XP
+gain.)
+Other characters of good alignment take
+5d6 points of damage from just handling the
+tome. If such a character looks inside, there is
+an 80% chance that an evil outsider attacks the
+character that night.
+Strong evocation [evil]; CL 19th; Weight
+3 lb.
+Deck of Many Things:A deck of many things
+(both beneficial and baneful) is usually found
+in a box or leather pouch. Each deck contains a
+number of cards or plaques made of ivory or
+vellum. Each is engraved with glyphs, charac-
+ters, and sigils. As soon as one of these cards is
+drawn from the pack, its magic is bestowed
+upon the person who drew it, for better or
+worse.
+The character with a deck of many thingswho
+wishes to draw a card must announce how
+many cards she will draw before she begins.
+Cards must be drawn within 1 hour of each other,
+and a character can never again draw from this deck
+any more cards than she has announced. If the char-
+acter does not willingly draw her allotted number (or
+if she is somehow prevented from doing so), the cards
+flip out of the deck on their own. Exception:If the jester is
+drawn, the possessor of the deck may elect to draw two addi-
+tional cards.
+Each time a card is taken from the deck, it is replaced (making
+it possible to draw the same card twice) unless the draw is the
+jester or the fool, in which case the card is discarded from the
+pack. A deck of many thingscontains 22 cards. To simulate the magic
+cards, you may want to use tarot cards, as indicated in
+the second column of the accompanying
+table. If no tarot deck is available, substitute
+ordinary playing cards instead, as indicated
+in the third column. The effects of each card,
+summarized on the table, are fully described
+below.
+Balance:As in “weighed in the balance and
+found wanting,” the character must change to a
+radically different alignment. If the character
+fails to act according to the new alignment, she
+gains a negative level.
+Comet:The character must single-handedly
+defeat the next hostile monster or monsters
+encountered, or the benefit is lost. If successful,
+the character gains enough XP to attain the
+next experience level.
+Donjon:This card signifies imprisonment—
+either by the imprisonmentspell or by some
+powerful being, at the DM’s option. All gear
+and spells are stripped from the victim in
+any case. Whether these items are recover-
+able is, likewise, up to the DM. Draw no
+more cards.
+Euryale:The medusalike visage of this card
+brings a curse that only the fates card or a
+deity can remove. The –1 penalty on all saving
+throws is otherwise permanent.
+Fates:This card enables the character to avoid
+even an instantaneous occurrence if so desired,
+for  the  fabric  of  reality  is  unraveled  and
+respun. Note that it does not enable something
+to happen. It can only stop something from
+happening or reverse a past occurrence. The
+reversal is only for the character who drew the card;
+other party members may have to endure the situation.
+Flames:Hot anger, jealousy, and envy are but a few of
+the possible motivational forces for the enmity. The
+CHAPTER 7:
+MAGIC ITEMS
+Deck of 
+many things
+Deck of Many Things
+PlaqueTarot CardPlaying CardSummary of Effect
+BalanceXI. JusticeTwo of spadesChange alignment instantly.
+CometTwo of swordsTwo of diamondsDefeat the next monster you meet to gain one level.
+DonjonFour of swordsAce of spadesYou are imprisoned.
+EuryaleTen of swordsQueen of spades–1 penalty on all saving throws henceforth.
+The FatesThree of cupsAce of heartsAvoid any situation you choose . . . once.
+FlamesXV. The DevilQueen of clubsEnmity between you and an outsider.
+Fool0. The FoolJoker (with trademark)Lose 10,000 experience points and you must draw again.
+GemSeven of cupsTwo of heartsGain your choice of twenty-five pieces of jewelry or fifty gems.
+IdiotTwo of pentaclesTwo of clubsLose Intelligence (permanent drain). You may draw again.
+JesterXII. The Hanged ManJoker (without trademark)Gain 10,000 XP or two more draws from the deck.
+KeyV. The HierophantQueen of heartsGain a major magic weapon.
+KnightPage of swordsJack of heartsGain the service of a 4th-level fighter.
+MoonXVIII. The MoonQueen of diamondsYou are granted 1d4 wishes.
+RogueFive of swordsJack of spadesOne of your friends turns against you.
+RuinXVI. The TowerKing of spadesImmediately lose all wealth and real property.
+SkullXIII. DeathJack of clubsDefeat dread wraith or be forever destroyed.
+StarXVII. The StarJack of diamondsImmediately gain a +2 inherent bonus to one ability score.
+SunXIX. The SunKing of diamondsGain beneficial medium wondrous item and 50,000 XP.
+TalonsQueen of pentaclesAce of clubsAll magic items you possess disappear permanently.
+ThroneFour of stavesKing of heartsGain a +6 bonus on Diplomacy checks plus a small keep.
+VizierIX. The HermitAce of diamondsKnow the answer to your next dilemma.
+The VoidEight of swordsKing of clubsBody functions, but soul is trapped elsewhere.

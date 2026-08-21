@@ -1,0 +1,132 @@
+302
+THE ENVIRONMENT
+Characters crossing the burning desert face heatstroke and dehy-
+dration. Plunging into the murky depths raises the risk of drown-
+ing and even decompression. Adventurers spend a lot of time in
+the most dismal, dangerous, and generally unpleasant places imag-
+inable. If the monsters and the villains don’t kill them, the envi-
+ronment itself might. This section details hazards the player char-
+acters face from the physical world around them. Some of these
+hazards are specific to certain environments (the perils of severe
+heat  almost  never  apply  in  an  area  of  cold  mountains,  for
+instance), while others are threats that could come into play in any
+environment (such as acid effects or starvation and thirst).
+Environmental hazards specific to one kind of terrain (such as
+an avalanche, which occurs in the mountains) are described in
+Chapter 3: Adventures. Environmental hazards common to more
+than one setting are detailed below.
+ACID EFFECTS
+Corrosive acids deals 1d6 points of damage per round of exposure
+except in the case of total immersion (such as into a vat of acid),
+which deals 10d6 points of damage per round. An attack with acid,
+such as from a hurled vial or a monster’s spittle, counts as a round
+of exposure.
+The fumes from most acids are inhaled poisons. Those who
+come close enough to a large body of acid to dunk a creature in it
+must make a DC 13 Fortitude save or take 1 point of Constitution
+damage. All such characters must make a second save 1 minute
+later or take another 1d4 points of Constitution damage.
+Creatures immune to acid’s caustic properties might still drown
+in it if they are totally immersed (see Drowning, page 304).
+COLD DANGERS
+The prickly fingers of icy death have robbed many an adventurer
+of her life. Prolonged exposure to cold temperatures and harsh
+weather can wear down a character who isn’t protected against the
+climate. Hypothermia, frostbite, and exhaustion can quickly kill
+in bad weather. The best defense against cold and exposure is to
+get under cover and keep warm.
+Cold and exposure deal nonlethal damage to the victim. This
+nonlethal damage cannot be recovered until the character gets out
+of the cold and warms up again. Once a character is rendered
+unconscious through the accumulation of nonlethal damage, the
+cold and exposure begins to deal lethal damage at the same rate.
+An unprotected character in cold weather (below 40° F) must
+make a Fortitude save each hour (DC 15, + 1 per previous check)
+or take 1d6 points of nonlethal damage. A character who has the
+Survival skill may receive a bonus on this saving throw and may
+be able to apply this bonus to other characters as well (see the skill
+description, page 83 of the Player ’s Handbook).
+In conditions of severe cold or exposure (below 0° F), an unpro-
+tected character must make a Fortitude save once every 10 minutes
+(DC 15, +1 per previous check), taking 1d6 points of nonlethal dam-
+age on each failed save. A character who has the Survival skill may
+receive a bonus on this saving throw and may be able to apply this
+bonus to other characters as well (see the skill description, page 83
+of the Player ’s Handbook). Characters wearing winter clothing only
+need check once per hour for cold and exposure damage.
+A character who takes any nonlethal damage from cold or expo-
+sure is beset by frostbite or hypothermia (treat her as fatigued; see
+page 301). These penalties end when the character recovers the
+nonlethal damage she took from the cold and exposure.
+Extreme cold (below –20° F) deals 1d6 points of lethal damage
+per minute (no save). In addition, a character must make a Forti-
+tude save (DC 15, +1 per previous check) or take 1d4 points of
+nonlethal damage. Those wearing metal armor or coming into
+contact with very cold metal are affected as if by a chill metalspell.
+Ice Effects
+Characters walking on ice must spend 2 squares of movement to
+enter a square covered by ice, and the DC for Balance and Tumble
+checks increases by +5. Characters in prolonged contact with ice
+may run the risk of taking damage from severe cold (see above).
+DARKNESS
+The adventurers are exploring a cavern passageway when a whis-
+pered spell in the shadows extinguishes Jozan’s daylightspell,
+plunging the chamber into complete darkness. The soft jingle of
+mail and rasp of swords drawn from scabbards announces a drow
+attack.
+Darkvision allows many characters and monsters to see per-
+fectly well without any light at all, but characters with normal
+vision (or low-light vision, for that matter) can be rendered com-
+pletely blind by putting out the lights. Torches or lanterns can be
+blown out by sudden gusts of subterranean wind, magical light
+sources can be dispelled or countered, or magical traps might
+create fields of impenetrable darkness.
+In many cases, some characters or monsters might be able to
+see, while others are blinded. For purposes of the following points,
+a blinded creature is one who simply can’t see through the sur-
+rounding darkness.
+—Creatures blinded by darkness lose the ability to deal extra
+damage due to precision (for example, a ranger’s favored enemy or
+a sneak attack).
+—Blinded creatures are hampered in their movement, and pay
+2 squares of movement per square moved into (double normal
+cost). Blinded creatures can’t run or charge.
+—All opponents have total concealment from a blinded crea-
+ture, so the blinded creature has a 50% miss chance in combat. A
+blinded creature must first pinpoint the location of an opponent
+in order to attack the right square; if the blinded creature launches
+an attack without pinpointing its foe, it attacks a random square
+within its reach. For ranged attacks or spells against a foe whose
+location is not pinpointed, roll to determine which adjacent
+square the blinded creature is facing; its attack is directed at the
+closest target that lies in that direction.
+—A blinded creature loses its Dexterity adjustment to AC and
+takes a –2 penalty to AC.
+—A  blinded  creature  takes  a  –4  penalty  on  Search  checks  and
+most Strength- and Dexterity-based skill checks, including any
+with an armor check penalty. A creature blinded by darkness auto-
+matically fails any skill check relying on vision.
+—Creatures blinded by darkness cannot use gaze attacks and
+are immune to gaze attacks.
+A creature blinded by darkness can make a Listen check as a free
+action each round in order to locate foes (DC equal to opponents’
+Move Silently checks). A successful check lets a blinded character
+hear an unseen creature “over there somewhere.” It’s almost
+impossible to pinpoint the location of an unseen creature. A
+Listen check that beats the DC by 20 reveals the unseen creature’s
+square (but the unseen creature still has total concealment from
+the blinded creature).
+—A blinded creature can grope about to find unseen creatures.
+A character can make a touch attack with his hands or a weapon
+into two adjacent squares using a standard action. If an unseen
+target is in the designated square, there is a 50% miss chance on
+the touch attack. If successful, the groping character deals no
+damage but has pinpointed the unseen creature’s current location.
+(If  the  unseen  creature  moves,  its  location  is  once  again
+unknown.)
+—If a blinded creature is struck by an unseen foe, the blinded
+character pinpoints the location of the creature that struck him
+(until the unseen creature moves, of course). The only exception is
+if the unseen creature has a reach greater than 5 feet (in which
+CHAPTER 8:
+GLOSSARY

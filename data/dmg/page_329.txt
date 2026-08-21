@@ -1,0 +1,96 @@
+7
+First Impression: This district is noticeably
+more diverse than the surrounding neighborhoods.
+Various humanoids wearing a wide variety of garb rub
+shoulders and chat in the streets. The buildings look
+somewhat rundown, but most are quite serviceable.
+Social Class:Lower class.
+Anglers’ Wharf
+Those who fish for a living have a district of their own,
+if for no other reason than to keep the stench away
+from the rest of the city.
+Buildings:Shrine (Obad-Hai or Pelor), poor lodg-
+ing (5), poor food (10), average trades (2), poor trades
+(12), average services (3), poor services (7), poor resi-
+dences (60).
+First Impression: The smell of fish hangs heav-
+ily in the air here, mingled with the tang of saltwater
+and sea air. Rough-looking sailors lurch from ship to
+pier to tavern.
+Social Class:Lower class.
+Apartment Homes
+This unremarkable district consists of nothing but
+unremarkable  residences.  Thus,  it  is  an  excellent
+hiding place for those who are skilled at blending in.
+Buildings:Average residences (10), poor resi-
+dences (55).
+First Impression: Rows of apartment buildings
+rise like the walls of a canyon on both sides of the
+street. Day laborers and craftspeople scurry to and from
+work, while the district’s more indolent residents relax
+on the building steps.
+Social Class:Lower class.
+Caravan District
+Districts such as this one are common in cities that rely
+on overland caravans rather than sea transport for their
+imports and exports. Merchants and other foreigners
+are  welcomed  here  but  usually  discouraged  from
+spending time in the rest of the city.
+Buildings:Temple (Fharlanghn), average lodging
+(5), poor lodging (15), average food (10), poor food (30),
+average trades (9), poor trades (15), average services (9),
+poor services (15).
+First Impression: This district has fewer build-
+ings than most, but animal pens, stables, and circles of
+trade wagons squat on many vacant lots. The air is thick
+with campfire smoke, and a dozen different languages
+can be heard.
+Social Class:Lower class.
+Goblinoid Ghetto
+If a city allows goblinoid residents at all, its other
+inhabitants usually prefer to keep them at arm’s length.
+The goblinoids who live here eke out a squalid exis-
+tence, taking on jobs that no other city resident will
+accept.
+Buildings:Temple (Gruumsh or Maglubiyet),
+poor lodging (1), poor food (8), poor trades (20), poor
+services (10), poor residences (60).
+First Impression: Goblins, hobgoblins, and
+orcs move among the ramshackle buildings that line
+the streets. The ghetto bustles with business—both
+legal and illegal—despite the obvious poverty of its res-
+idents.
+Social Class:Lower class.
+Inn District
+Inns are scattered across most cities, but sometimes a
+cluster of them dominates a neighborhood. Such a dis-
+trict tends to be rundown simply because it has few
+permanent residents to care about its upkeep, and the
+transients who stay there spend most of their time in
+other districts.
+Buildings:Temples (any 2), average lodging (8),
+poor lodging (25), average food (5), poor food (20), aver-
+age trades (5), poor trades (15), average services (5),
+poor services (15).
+First Impression: Music and laughter wafts
+from the open doors of half a dozen inns and common-
+houses. Each offers the promise of food, drink, danc-
+ing, or perhaps even more exotic diversions.
+Social Class:Lower class.
+Red-Light District
+Notorious for the prostitution, narcotics, and other
+black-market businesses that thrive here, a red-light
+district tends to attract adventurers like flies.
+Buildings:Temple (Olidammara), average lodg-
+ing (2), poor lodging (17), average food (5), poor food
+(20), poor trades (20), poor services (gambling halls,
+houses of ill repute, pawnshops, and the like) (35).
+First Impression: A visitor can hardly walk 30
+feet in this rundown district without being proposi-
+tioned for something illegal. Some passersby scurry
+furtively past, while others beckon visitors toward
+some illicit pleasure.
+Social Class:Lower class.
+Shantytown
+Many of the structures in this district seem to be in
+imminent danger of collapsing on their residents. The

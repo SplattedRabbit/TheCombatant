@@ -1,0 +1,134 @@
+74
+(Search DC 25, Open Lock DC 30); DC 20 Reflex save avoids; 70 ft.
+deep (7d6, fall); multiple targets (all targets within a 10-ft.-by-10-ft.
+area); pit spikes (Atk +10 melee, 1d4 spikes per target for 1d4+5
+plus poison each); poison (giant wasp poison, DC 14 Fortitude save
+resists, 1d6 Dex/1d6 Dex); Search DC 20; Disable Device DC 20.
+Market Price:11,910 gp.
+CR 10 Traps
+Crushing Room: CR 10; mechanical; location trigger; auto-
+matic reset; walls move together (16d6, crush); multiple targets
+(all targets in a 10-ft.-by-10-ft. room); never miss; onset delay (2
+rounds); Search DC 22; Disable Device DC 20. Market Price:
+29,000 gp.
+Crushing Wall Trap:CR 10; mechanical; location trigger; auto-
+matic reset; no attack roll required (18d6, crush); Search DC 20;
+Disable Device DC 25. Market Price: 25,000 gp.
+Energy Drain Trap: CR 10; magic device; visual trigger (true
+seeing); automatic reset; Atk +8 ranged touch; spell effect (energy
+drain,17th-level wizard, 2d4 negative levels for 24 hours, DC 23
+Fortitude save negates); Search DC 34; Disable Device DC 34. Cost:
+124,000 gp, 7,920 XP.
+Forcecage and Summon Monster VII trap: CR 10; magic device;
+proximity trigger (alarm);automatic reset; multiple traps (one
+forcecagetrap and one summon monster VII trap that summons a
+hamatula); spell effect (forcecage, 13th-level wizard), spell effect
+(summon monster VII,13th-level wizard, hamatula); Search DC 32;
+Disable Device DC 32. Cost:241,000 gp, 7,280 XP.
+Note:This trap is really one CR 8 trap that creates a forcecageand
+a second CR 8 trap that summons a hamatula in the same area. If
+both succeed, the hamatula appears inside the forcecage.These
+effects are independent of each other.
+Poisoned Spiked Pit Trap: CR 10; mechanical; location trig-
+ger; manual reset; hidden lock bypass (Search DC 25, Open Lock
+DC 30); DC 20 Reflex save avoids; 50 ft. deep (5d6, fall); multiple
+targets (first target in each of two adjacent 5-ft. squares); pit spikes
+(Atk +10 melee, 1d4 spikes per target for 1d4+5 plus poison each);
+poison (purple worm poison, DC 24 Fortitude save resists, 1d6
+Str/2d6 Str); Search DC 16; Disable Device DC 25. Market Price:
+19,700 gp.
+Wail of the Banshee Trap: CR 10; magic device; proximity trigger
+(alarm);automatic reset; spell effect (wail of the banshee, 17th-level
+wizard, DC 23 Fortitude save negates); multiple targets (up to 17
+creatures); Search DC 34; Disable Device DC 34. Cost:76,500 gp,
+6,120 XP.
+DESIGNING A TRAP
+Traps have long been part of the DM’s arsenal, but by using the
+Craft (trapmaking) skill, player characters can design unique traps
+to improve the defenses of their hideouts and fortresses. If one of
+your players wants to have his character design and build a partic-
+ular trap (and you want to go along with the idea), you can take the
+player through the process described in this section.
+You can also make use of these trapmaking rules to develop
+your own special traps to spring on unwary PCs.
+Mechanical Traps:Designing a mechanical trap is somewhat
+simpler for a DM than it is for a player character, because you don’t
+have to worry about constraints such as making Craft (trapmak-
+ing) checks and having the necessary amount of cash on hand.
+Simply select the elements you want the trap to have and add up
+the adjustments to the trap’s Challenge Rating that those elements
+require (see Table 3–13) to arrive at the trap’s final CR.
+PC-Designed Mechanical Traps:If a player character wants to
+design and build a mechanical trap (and if you go along with the
+idea), the first step is for the player to describe his idea. Assign the
+appropriate characteristics, making whatever adjustments to the
+cost of the trap those elements require, and tell the player how
+much it will cost to craft the trap. (He may subsequently decide to
+remove or change some elements to raise or lower the cost.) When
+you and the player have agreed on what elements the trap con-
+tains, you can determine the CR of the trap, and from that number
+you can derive the DC of the Craft (trapmaking) checks the char-
+acter must make to construct the trap.
+Magic Traps:As with mechanical traps, you don’t have to do
+anything other than decide what elements you want and then
+determine the CR of the resulting trap (see Table 3–14).
+PC-Designed Magic Traps:If a player character wants to design
+and construct a magic trap, he must have the Craft Wondrous Item
+feat. In addition, he must be able to cast the spell or spells that the
+trap requires—or, failing that, he must be able to hire an NPC to
+cast the spells for him (see NPC Spellcasting, page 107). When
+you and the player have agreed on what spells and other elements
+the trap contains, you can determine the cost of the raw materials
+for the trap and the CR of the trap.
+CHAPTER 3:
+ADVENTURES
+Table 3–13: CR Modifiers for Mechanical Traps
+FeatureCR Modifier
+Search DC
+15 or lower–1
+25–29+1
+30 or higher+2
+Disable Device DC
+15 or lower–1
+25–29+1
+30 or higher+2
+Reflex Save DC (Pit or Other Save-Dependent Trap)
+15 or lower–1
+16–24—
+25–29+1
+30 or higher+2
+Attack Bonus (Melee or Ranged Attack Trap)
++0 or lower–2
++1 to +5–1
++6 to +14—
++15 to +19+1
++20 to +24+2
+Damage/Effect
+Average damage+1/7 points*
+Miscellaneous Features
+Alchemical deviceLevel of spell mimicked
+Liquid+5
+Multiple target+1 (or 0 if never miss)
+Onset delay 1 round+3
+Onset delay 2 rounds+2
+Onset delay 3 rounds+1
+Onset delay 4+ rounds–1
+PoisonCR of poison (see below)
+Black adder venom+1Large scorpion venom+3
+Black lotus extract+8Malyss root paste+3
+Bloodroot+1Medium spider venom+2
+Blue whinnis+1Nitharit+4
+Burnt othur fumes+6Purple worm poison+4
+Carrion crawler brain juice +1Sassone leaf residue+3
+Deathblade+5Shadow essence+3
+Dragon bile+6Small centipede poison+1
+Giant wasp poison+3Terinav root+5
+Greenblood oil+1Ungol dust+3
+Insanity mist+4Wyvern poison+5
+Pit spikes+1
+Touch attack+1
+* Rounded to the nearest multiple of 7 (round up for an average that
+lies exactly between two numbers). For example, a trap that deals
+2d8 points of damage (an average of 9 points) rounds down to 7,
+while one that does 3d6 points of damage (an average of 10.5)
+rounds up to 14.

@@ -1,0 +1,133 @@
+118
+Great Cleave, Improved Critical (bastard sword), Improved Critical
+(composite longbow), Improved Initiative, Point Blank Shot,
+Power Attack, Precise Shot, Weapon Focus (bastard sword),
+Weapon Focus (composite longbow), Weapon Specialization (bas-
+tard sword), Weapon Specialization (composite longbow).
+Possessions: +2 full plate, +2 heavy steel shield, amulet of natural armor
++2, ring of protection +1, +3 bastard sword, +1 composite longbow (+4 Str
+bonus), 15 normal arrows, 5 adamantine arrows, 5 cold iron
+arrows, 10 silvered arrows, 15+2 arrows, quiver of Ehlonna, boots of
+speed, cloak of resistance +2, potion of bear ’s endurance, potion of cure mod-
+erate wounds, potion of heroism.
+NPC MONK
+Starting Ability Scores:Str 14, Dex 13, Con 12, Int 10, Wis 15,
+Cha 8.
+Increased Ability Scores:4th, Dex 14; 8th, Wis 16; 12th, Dex 15;
+15th, Dex 15 (17), Wis 16 (18); 16th, Dex 16 (18); 19th, Str 14 (16),
+Con 12 (14), Dex 16 (20), Wis 16 (20); 20th, Dex 16 (22), Wis 17 (23).
+Sample 5th-Level NPC Monk:Human Mnk 5; CR 5; Medium
+humanoid; HD 5d8+5; hp 31; Init +2; Spd 40 ft.; AC 16, touch 15,
+flat-footed 14; Base Atk +3; Grp +5; Atk +5 or +7 melee (1d8+2,
+unarmed strike or 1d6+3, +1 kama); or +6 ranged (1d6, masterwork
+sling); Full Atk +5 or +7 melee (1d8+2, unarmed strike or 1d6+3, +1
+kama); or +4/+4 or +6/+6 melee (1d8+2, unarmed strike or 1d6+3,
++1 kama); or +6 ranged (1d6, masterwork sling); SA flurry of blows,
+kistrike +1; SQ evasion, purity of body, slow fall 20 ft., still mind;
+AL LN; SV Fort +6, Ref +7, Will +7; Str 14, Dex 14, Con 12, Int 10,
+Wis 15, Cha 8. 
+Skills and Feats:Balance +12, Climb +10, Hide +10, Jump +12,
+Tumble +12; Deflect Arrows, Dodge, Mobility, Stunning Fist,
+Weapon Focus (kama).
+Flurry of Blows (Ex):This monk may use a full attack action to make
+one extra attack per round with an unarmed strike or a special monk
+weapon at her highest base attack, but this attack and each other
+attack made that round take a –1 penalty apiece. This penalty applies
+for 1 round, so it affects attacks of opportunity the monk might make
+before her next action. If armed with a kama, nunchaku, or siangham,
+the  monk  makes  the  extra  attack  either  with  that  weapon  or
+unarmed. If armed with two such weapons, she uses one for her reg-
+ular attack(s) and the other for the extra attack. In any case, her
+damage bonus on the attack with her off hand is not reduced. 
+Ki Strike (Su): This monk’s unarmed strike can deal damage to a
+creature with damage reduction as if the blow were made with a
+lawful weapon having a +1 enhancement bonus.
+Evasion (Ex):If this monk makes a successful Reflex saving
+throw against an attack that normally deals half damage on a suc-
+cessful save, she instead takes no damage.
+Purity of Body (Ex): This monk has immunity to all diseases ex-
+cept for magical diseases such as mummy rot and lycanthropy.
+Slow Fall (Ex): A monk within arm’s reach of a wall can use it to
+slow her descent while falling. This monk takes damage as if the
+fall were 20 feet shorter than it actually is.
+Still Mind (Ex):This monk gains a +2 bonus on saving throws
+against spells and effects from the enchantment school.
+Possessions: +1 kama,masterwork sling, cloak of resistance +1, potion
+of cat ’s grace, potion of cure moderate wounds.
+Sample  15th-Level  NPC  Monk:Human  Mnk  15;  CR  15;
+Medium humanoid; HD 15d8+15; hp 86; Init +7; Spd 80 ft.; AC 25,
+touch  21,  flat-footed  22;  Base  Atk  +11;  Grp  +13;  Atk  +13  or  +17
+melee (2d6+2/19–20, unarmed strike or 1d6+5/19–20, +3 kama); or
++16 ranged (1d6+2/0, +2 sling); Full Atk +13/+8/+3 or +17/+12/+7
+melee  (2d6+2/19–20,  unarmed  strike  or  1d6+5/19–20,  +3  kama);
+or  +13/+13/+13/+8/+3  or  +17/+17/+17/+12/+7  melee  (2d6+2/
+19–20,  unarmed  strike  or  1d6+5/19–20,  +3  kama);  or  +16  ranged
+(1d6+2/0, +2 sling); SA flurry of blows, kistrike +4, quivering palm;
+SQ abundant step, diamond body, diamond soul, improved evasion,
+purity  of  body,  slow  fall  70  ft.,  still  mind,  wholeness  of  body;  AL
+LN; SV Fort +10, Ref +12, Will +13; Str 14, Dex 17, Con 12, Int 10,
+Wis 18, Cha 8.
+Skills and Feats:Balance +23, Climb +20, Hide +21, Jump +22,
+Tumble +23; Combat Reflexes, Dodge, Improved Critical (un-
+armed strike), Improved Critical (kama), Improved Disarm, Im-
+proved Grapple, Improved Initiative, Iron Will, Mobility, Spring
+Attack, Weapon Focus (kama).
+Flurry of Blows (Ex):This monk may use a full attack action to
+make two extra attacks per round with an unarmed strike or a spe-
+cial monk weapon at her highest base attack.
+Ki Strike (Su): This monk’s unarmed strike can deal damage to a
+creature with damage reduction as if the blow were made with a
+lawful weapon with a +1 enhancement bonus.
+Quivering Palm (Su): Once per week, this monk can use an un-
+armed strike to set up potentially fatal vibrations within the body of
+another creature. The monk must have more levels than the target
+has Hit Dice. If the target takes damage from the monk’s blow, the
+quivering palm attack succeeds. At any later time within 15 days,
+the monk can will the target to die (a free action) unless the target
+makes a DC 21 Fortitude save. If the save is successful, the target is
+no longer in danger from that particular quivering palm attack.
+Abundant Step (Sp): This monk can slip magically between spaces,
+as per the spell dimension door, once per day as a 7th-level caster.
+Diamond Body (Su): This monk has immunity to poison of all
+kinds.
+Diamond Soul (Ex): This monk has spell resistance 25.
+Improved Evasion (Ex): If this monk makes a successful Reflex
+saving throw against an attack that normally deals half damage on
+a successful save, she instead takes no damage. In addition, she
+takes only half damage on a failed save.
+Slow Fall (Ex): A monk within arm’s reach of a wall can use it to
+slow her descent while falling. This monk takes damage as if the
+fall were 70 feet shorter than it actually is.
+Wholeness of Body (Su): This monk can cure up to 30 hit points of
+her own wounds each day, and she can spread this healing out over
+several uses.
+Possessions: Amulet of natural armor +1, bracers of armor +3, ring of
+protection +1, +3 kama, +2 sling, gloves of Dexterity +2, monk’s belt, peri-
+apt of Wisdom +2, potion of heroism.
+NPC PALADIN
+Starting Ability Scores:Str 14, Dex 8, Con 12, Int 10, Wis 13,
+Cha 15.
+Increased Ability Scores:4th, Wis 14; 8th, Cha 16; 12th, Cha
+17 (19); 16th, Cha 18 (20); 19th, Cha 18 (24); 20th, Cha 19 (25).
+Sample 5th-Level NPC Paladin:Human Pal 5; CR 5; Medium
+humanoid; HD 5d10+5; hp 37; Init –1; Spd 20 ft.; AC 19, touch 9,
+flat-footed  19;  Base  Atk  +5;  Grp  +7;  Atk  +9  melee  (1d8+2/19–20,
+masterwork  longsword)  or  +5  ranged  (1d8+2/×3,  masterwork
+composite  longbow  [+2  Str  bonus]);  Full  Atk  +9  melee  (1d8+2/
+19–20,  masterwork  longsword)  or  +5  ranged  (1d8+2/×3,  master-
+work  composite  longbow  [+2  Str  bonus]);  SA  smite  evil  2/day,
+turn  undead  5/day;  SQ  aura  of  courage,  detect  evil,divine  grace,
+divine health, empathic link with mount, heavy warhorse mount,
+lay on hands, share spells with mount; AL LG; SV Fort +7, Ref +2,
+Will +5; Str 14, Dex 8, Con 12, Int 10, Wis 14, Cha 15.
+Skills and Feats:Concentration +9, Heal +10, Ride +7; Mounted
+Combat, Ride-By Attack, Weapon Focus (longsword).
+Smite Evil (Su): Twice per day this paladin may attempt to smite
+evil with one normal melee attack. She adds +2 to her attack roll
+and deals 5 extra points of damage. Smiting a creature that is not
+evil has no effect but uses the ability for that day.
+Turn Undead (Su):As a 2nd-level cleric.
+Aura of Courage (Su): This paladin is immune to fear, magical or
+CHAPTER 4:
+NONPLAYER
+CHARACTERS

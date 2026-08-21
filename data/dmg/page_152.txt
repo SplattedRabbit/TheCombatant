@@ -1,0 +1,131 @@
+either side of it but separate from the other Outer Planes. The
+exception is the Concordant Domain of the Outlands, which is
+coterminous to every other Outer Plane and thus serves as a cen-
+tral hub for dealings between outsiders.
+The Outer Planes are coexistent with the Astral Plane. They are
+separate from the Ethereal Plane and the Plane of Shadow, so cer-
+tain spells (ethereal jaunt,for example) aren’t available to a caster on
+the Outer Planes. Each Outer Planes is made up of related layers
+(see Layered Planes, below), and the most common access to an
+Outer Plane is through the top layer of each plane. The good-
+aligned planes, also called the celestial planes or the upper planes,
+are linked by the path of the River Oceanus. The evil-aligned
+planes, also called the infernal planes or the lower planes, are
+linked by the path of the River Styx.
+A large number of finite demiplanes connect all over the place.
+Individual conduits, freestanding portals, and vortices are also
+common.
+Layered Planes
+Infinities may be broken into smaller infinities, and planes into
+smaller, related planes. These layers are effectively separate planes
+of existence, and each layer can have its own planar traits. Layers
+are connected to each other through a variety of planar gates, nat-
+ural vortices, paths, and shifting borders.
+Access to a layered plane from elsewhere usually happens on a
+specific layer: the first layer of the plane, which can be either the
+top layer or the bottom layer, depending on the specific plane.
+Most fixed access points (such as portals and natural vortices)
+reach this layer, which makes it the gateway for other layers of the
+plane. The plane shiftspell also deposits the spellcaster on the first
+layer of the plane.
+All layers of a plane are connected to the Astral Plane, so travel-
+ers can reach specific layers directly through spells such as astral
+projection. Often the first layer is the one most hospitable to planar
+travelers.
+Random Planar Destinations
+Spells such as prismatic sprayand banishment may send an individ-
+ual to a random plane. To determine where a character winds up,
+roll on Table 5–7: Random Planar Destinations.
+Table 5–7: Random Planar Destinations
+d%Plane
+01–05Heroic Domains of Ysgard
+06–10Ever-Changing Chaos of Limbo
+11–15Windswept Depths of Pandemonium
+16–20Infinite Layers of the Abyss
+21–25Tarterian Depths of Carceri
+26–30Gray Waste of Hades
+31–35Bleak Eternity of Gehenna
+36–40Nine Hells of Baator
+41–45Infernal Battlefield of Acheron
+46–50Clockwork Nirvana of Mechanus
+51–55Peaceable Kingdoms of Arcadia
+56–60Seven Mounting Heavens of Celestia
+61–65Twin Paradises of Bytopia
+66–70Blessed Fields of Elysium
+71–75Wilderness of the Beastlands
+76–80Olympian Glades of Arborea
+81–89Concordant Domain of the Outlands
+90–91Elemental Plane of Fire
+92–93Elemental Plane of Earth
+94–95Elemental Plane of Air
+96–97Elemental Plane of Water
+98Positive Energy Plane
+99Negative Energy Plane
+100Demiplane of your choice
+The table assumes that the character’s plane of origin is either
+the Material Plane, the Astral Plane, the Ethereal Plane, or the
+Plane of Shadow. If the character’s plane of origin is instead one of
+the planes mentioned on Table 5–7, then substitute the Material
+Plane for the plane of origin’s line on the table. For example, break-
+ing a staff of power(page 245) on the Elemental Plane of Fire sends
+the wielder to the Material Plane if a 91 is rolled.
+The layer and exact location of an individual’s arrival on the par-
+ticular plane is up to you. Transportation to a random plane does
+not guarantee survival there, and individuals who risk such effects
+should be aware of the dangers.
+PLANE DESCRIPTIONS
+The planes that make up the Great Wheel are briefly described
+below.
+Each of the Transitive Planes and Inner Planes has its own
+random encounter table. The Outer Planes share four random
+encounter tables; use the appropriate one as directed in the plane’s
+description. All the encounter tables in this section are intention-
+ally general; if you’re designing a site-based adventure on another
+plane, use the appropriate table as a starting point for your own
+encounters.
+THE ETHEREAL PLANE
+The Ethereal Plane is a misty, fog-bound dimension that is coexis-
+tent with the Material Plane and often other planes as well. Travel-
+ers within the Ethereal Plane describe the plane as a collection of
+swirling mists and colorful fogs. The Material Plane itself is visible
+from the Ethereal Plane, but it appears muted and indistinct, its
+colors blurring into each other and its edges turning fuzzy. Ethe-
+real denizens watch the Material Plane as though viewing it
+through distorted and frosted glass.
+While it is possible to see into the Material Plane from the
+Ethereal Plane, the Ethereal Plane is usually invisible to those on
+the Material Plane. Normally, creatures on the Ethereal Plane
+cannot attack creatures on the Material Plane, and vice versa. A
+traveler on the Ethereal Plane is invisible, incorporeal, and
+utterly silent to someone on the Material Plane. This makes the
+Ethereal Plane very useful for reconnaissance, spying on oppo-
+nents, and other occasions when it’s handy to move around with-
+out being detected.
+The Ethereal Plane is mostly empty of structures and impedi-
+ments. However, the plane has its own inhabitants. Some of these
+are other ethereal travelers, but the ghosts found here pose a par-
+ticular peril to those who walk the fog.
+It has the following traits.
+•No gravity.
+•Alterable morphic. The plane contains little to alter, however.
+•Mildly neutral-aligned.
+•Normal magic. Spells function normally on the Ethereal Plane,
+though they do not cross into the Material Plane. It is possible
+for a caster on the Ethereal Plane to use a fireballspell against an
+enemy  on  the  Ethereal  Plane,  but  the  same  fireballwouldn’t
+affect anyone on the corresponding part of the Material Plane.
+A bystander on the Material Plane can walk through an ethereal
+battlefield without feeling more than the hair on the back of his
+neck standing up.
+The only exceptions are spells and spell-like abilities that have the
+force descriptor, such as magic missileand wall of force, and abjura-
+tion spells that affect ethereal beings. Spellcasters on the Material
+Plane must have some way to detect foes on the Ethereal Plane
+before targeting them with force-based spells, of course. While it’s
+possible to hit ethereal enemies with a magic missilespell cast on
+the Material Plane, the reverse isn’t possible. No magical attacks
+cross from the Ethereal Plane to the Material Plane, including
+force attacks.
+151
+CHAPTER 5:
+CAMPAIGNS

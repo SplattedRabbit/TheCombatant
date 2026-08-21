@@ -1,0 +1,109 @@
+284
+produces enough hide for a single suit of masterwork hide armor
+for a creature one size category smaller than the dragon. By select-
+ing only choice scales and bits of hide, an armorsmith can produce
+one suit of masterwork banded mail for a creature two sizes
+smaller, one suit of masterwork half-plate for a creature three sizes
+smaller, or one masterwork breastplate or suit of full plate for a
+creature four sizes smaller. In each case, enough hide is available
+to produce a small or large masterwork shield in addition to the
+armor, provided that the dragon is Large or larger.
+Because dragonhide armor isn’t made of metal, druids can wear
+it without penalty.
+Dragonhide armor costs double what masterwork armor of that
+type ordinarily costs, but it takes no longer to make than ordinary
+armor of that type.
+Dragonhide has 10 hit points per inch of thickness and hard-
+ness 10.
+Iron, Cold:This iron mined deep underground, known for its
+effectiveness against fey creatures, is forged at a lower tempera-
+ture to preserve its delicate properties. Weapons made of cold iron
+cost twice as much to make as their normal counterparts. Also, any
+magical enhancements cost an additional 2,000 gp. For example, a
++2 longswordmade of cold iron would cost 10,330 gp, because the
+price doubles for the longsword itself (15 gp to 30 gp), the +2
+enhancement bonus costs 8,000 gp, and enhancing cold iron costs
+an additional 2,000 gp. (The price includes 300 gp for the master-
+work component.)
+Items without metal parts cannot be made from cold iron. An
+arrow could be made of cold iron, but a quarterstaff could not.
+A double weapon that has only half of it made of cold iron
+increases its cost by 50%. A two-bladed sword with one end of cold
+iron and the other end steel would cost 150 gp.
+Cold iron has 30 hit points per inch of thickness and hardness 10.
+Mithral: Mithral is a very rare silvery, glistening metal that is
+lighter than iron but just as hard. When worked like steel, it be-
+comes a wonderful material from which to create armor and is
+occasionally used for other items as well. Most mithral armors are
+one category lighter than normal for purposes of movement and
+other limitations (for example, whether a barbarian can use her
+fast movement ability while wearing the armor or not). Heavy
+armors are treated as medium, and medium armors are treated as
+light, but light armors are still treated as light. Spell failure
+chances for armors and shields made from mithral are decreased
+by 10%, maximum Dexterity bonus is increased by 2, and armor
+check penalties are lessened by 3 (to a minimum of 0). 
+An item made from mithral weighs half as much as the same
+item made from other metals. In the case of weapons, this lighter
+weight does not change a weapon’s size category or the ease with
+which it can be wielded (whether it is light, one-handed, or two-
+handed). Items not primarily of metal are not meaningfully af-
+fected by being partially made of mithral. (A longsword can be a
+mithral weapon, while a scythe cannot be.)
+Weapons or armors fashioned from mithral are always master-
+work items as well; the masterwork cost is included in the prices
+given below.
+Mithral has 30 hit points per inch of thickness and hardness 15.
+Type of Mithral ItemItem Cost Modifier
+Light armor+1,000 gp
+Medium armor+4,000 gp
+Heavy armor+9,000 gp
+Shield+1,000 gp
+Other items+500 gp/lb.
+Silver, Alchemical:A complex process involving metallurgy
+and alchemy can bond silver to a weapon made of steel so that it
+bypasses the damage reduction of creatures such as lycanthropes.
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–32: Summary of Magic Item Creation Costs
+——— Spell Component Costs ———Magic
+Magic ItemFeatItem CostMaterial
+2
+XP
+3
+Supplies CostBase Price
+4
+ArmorCraft MagicMasterwork armorCost × 50 × 50 (usually none) 1/2 the value Value on 
+Arms and Armor(usually none)×5 gpon Table 7–2Table 7–2
+ShieldCraft MagicMasterwork shield× 50 (usually none)× 50 (usually none) 1/2 the value Value on 
+Arms and Armor×5 gpon Table 7–2Table 7–2
+WeaponCraft MagicMasterwork weapon× 50 (usually none)× 50 (usually none) 1/2 the value Value on 
+Arms and Armor×5 gpon Table 7–9Table 7–9
+PotionBrew Potion—Cost (usually none)Cost (usually none)1/2 the valueValue on
+on Table 7–2Table 7–2
+RingForge Ring—-× 50× 50 ×5 gpSpecial, see Special, see
+Table 7–33Table 7–33
+RodCraft Rod
+1
+× 50 (often none)× 50 (often none)Special, see Special, see 
+Table 7–33Table 7–33
+ScrollScribe Scroll—Cost (usually none)Cost (usually none)1/2 the valueValue on
+on Table 7–2Table 7–2
+StaffCraft StaffMasterwork × 50/(# of charges × 50 ×5 gp/(# of See page 287See page 287
+quarterstaff (300 gp)used to activate spell)charges used to activate spell)
+WandCraft Wand—× 50× 50 ×5 gp1/2 ×375 ×375 ×
+level of spell ×level of spell ×
+level of casterlevel of caster
+Wondrous ItemCraft Wondrous 
+5
+× 50 (usually none)× 50 (usually none) Special, see Special, see 
+Item×5 gpTable 7–33Table 7–33
+1 Rods usable as weapons, such as a rod of flailing,must include the masterwork weapon cost.
+2 This cost is only for spells activated by the item that have material or XP components. Having a spell with a costly component as a prerequisite
+does not automatically incur this cost. For instance, goggles of minute seeinguses true seeingas a prerequisite, but the goggles don’t actually
+activate a use of the spell.
+3 If purchasing a staff, the buyer pays 5 ×the XP value in gold pieces.
+4 A character creating an item pays 1/25 the base price in experience points.
+5 Some items have additional value, such as the mattock of the titans.This additional value comes from an item cost such as that for the mattock’s
+masterwork warhammer.
+An item’s market price is the sum of the item cost, spell component costs, and the base price.

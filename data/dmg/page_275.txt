@@ -1,0 +1,130 @@
+274
+An identify spell only has a 1% chance per caster level to reveal a
+cursed item’s true properties, including the cursed aspect. Analyze
+dweomerreveals the true nature of a cursed item.
+Amulet of Inescapable Location: This device is typically
+worn on a chain or as a brooch. It appears, to magical analysis, to
+prevent location, scrying (crystal ballviewing and the like), or
+detection or influence by detect thoughtsor telepathy. It seems to be
+an amulet of proof against detection and location. Actually, the amulet
+gives the wearer a –10 penalty on all saves against divination
+spells.
+Moderate abjuration; CL 10th; Create Wondrous Item,bestow
+curse; Price 1,000 gp.
+Armor of Arrow Attraction:Magical analysis indicates that
+this armor is a normal suit of +3 full plate.However, the armor is
+cursed. It works normally with regard to melee attacks but actu-
+ally serves to attract ranged weapons. The wearer takes a –15
+penalty to AC against any attack by a ranged weapon. The true
+nature of the armor does not reveal itself until the character is
+fired upon in earnest—simple experiments (throwing rocks, for
+example) do not suffice.
+Strong abjuration; CL 16th; Craft Magic Arms and Armor,
+bestow curse; Price 9,000 gp.
+Armor of Rage:This armor is similar in appearance to armor of
+commandand functions as a suit of +1 full plate. However, when it is
+worn, the armor causes the character to take a –4 penalty to Charisma.
+All unfriendly characters within 300 feet have a +1 morale bonus on
+attack rolls against her. The effect is not noticeable to the wearer or
+those affected. (In other words, the wearer does not immediately
+notice that donning the armor is the cause of her problems, nor do
+foes understand the reason for the depth of their enmity.)
+Strong necromancy; CL 16th; Craft Magic Arms and Armor,
+bestow curse; Price 1,600 gp.
+Bag of Devouring:This bag appears to be an ordinary sack. De-
+tection for magical properties makes it seem as if it were a bag of
+holding. The sack is, however, a lure used by an extradimensional
+creature—in fact, one of its feeding orifices.
+Any substance of animal or vegetable nature is subject to “swal-
+lowing’’ if thrust within the bag. The bag of devouringis 90% likely
+to ignore any initial intrusion, but any time thereafter that it
+senses living flesh within (such as if someone reaches into the bag
+to pull something out), it is 60% likely to close around the offend-
+ing member and attempt to draw the whole victim in. The bag has
+a +8 bonus on grapple checks made to pull someone in.
+The bag can hold up to 30 cubic feet of matter. It acts as a bag of
+holding type I,but each hour it has a 5% cumulative chance of swal-
+lowing the contents and then spitting the stuff out in some non-
+space or on some other plane. Creatures drawn within are con-
+sumed in 1 round. The bag destroye the victim’s body and prevents
+any form of raising or resurrection that requires part of the corpse.
+There is a 50% chance that a wish, miracle,or true resurrectionspell
+can  restore  a  devoured  victim  to  life.  Check  once  for  each
+destroyed creature. If the check fails, the creature cannot be
+brought back to life by mortal magic.
+Moderate conjuration; CL 17th; In effect, this is a creature and
+cannot be created; Price n/a.
+Boots of Dancing:These boots initially appear and function as
+one of the other kinds of magic boots (DM’s choice). But when the
+wearer is in (or fleeing from) melee combat, boots of dancing
+impede movement, making him behave as if Otto’s irresistible dance
+had been cast upon him. Only a remove cursespell enables the
+wearer to be rid of the boots once their true nature is revealed.
+Strong enchantment; CL 16th; Create Wondrous Item,Otto’s
+irresistible dance; Price 30,000 gp.
+Bracers of Defenselessness:These appear to be bracers of
+armor +5and actually serve as such until the wearer is attacked in
+anger by an enemy with a Challenge Rating equal to or greater
+CHAPTER 7:
+MAGIC ITEMS
+BEHIND THE CURTAIN: 
+PUTTING CURSED ITEMS IN YOUR GAME
+Some  DMs  decide  not  to  use  cursed  items  because  they  complicate
+the  discovery  process,  since  all  the  players  are  nervous  about  having
+their characters try to use newly found items. Other DMs include them
+for  a  variation  of  the  same  reason:  Discovering  new  items  becomes
+more exciting, because there’s always a minor hint of danger.
+Items  with  requirements  and  drawbacks  force  players  to  make  diffi-
+cult  decisions,  which  makes  for  interesting  roleplaying  opportunities:
+“Do I want the backbiter spear, even though it occasionally attacks me?”
+Don’t give out a lot of cursed items that characters can’t get rid of
+in  any  way—that  only  becomes  annoying  to  players.  While  some
+cursed items are meant to hassle the players a little, too much annoy-
+ance detracts from fun game play. Once a player has figured out that
+her character has a cursed item, most of the time she should just be
+able to rid herself of it.
+And  of  course,  some  cursed  items  aren’t  really  that  bad.  Dust  of
+sneezing  and  choking,once  it’s  identified,  can  be  a  potent  weapon.
+Some players who identify cursed items for what they really are will still
+try to think of some use for them. Some DMs assume that players will
+discard cursed items when they can, which is not necessarily the case.
+Expect  most  to  do  so,  but  don’t  step  on  the  creativity  of  those  who
+think of some ingenious use for a cursed item.
+Some of the items on the regular magic item tables have drawbacks
+or  limitations  but  aren’t  mentioned  in  this  section.  That’s  because
+either the item is still so good to have that no one would think twice
+about using it, or the item is too interesting to automatically exclude it
+from a campaign, even if cursed items aren’t used.
+pqqqqrs
+pqqqqrs
+Table 7–31: Specific Cursed Items
+d%ItemMarket Price
+01–05Incense of obsession200 gp
+06–15Ring of clumsiness500 gp
+16–20Amulet of inescapable location1,000 gp
+21–25Stone of weight1,000 gp
+26–30Bracers of defenselessness1,200 gp
+31–35Gauntlets of fumbling1,300 gp
+36–40–2 sword, cursed1,500 gp
+41–43Armor of rage1,600 gp
+44–46Medallion of thought projection1,800 gp
+47–52Flask of curses2,100 gp
+53–54Dust of sneezing and choking2,400 gp
+55Helm of opposite alignment4,000 gp
+56–60Potion of poison5,000 gp
+61Broom of animated attack5,200 gp
+62–63Robe of powerlessness5,500 gp
+64Vacuous grimoire6,000 gp
+65–68Spear, cursed backbiter7,500 gp
+69–70Armor of arrow attraction9,000 gp
+71–72Net of snaring10,000 gp
+73–75Bag of devouring—
+76–80Mace of blood16,000 gp
+81–85Robe of vermin16,500 gp
+86–88Periapt of foul rotting17,000 gp
+89–92Sword, berserking17,500 gp
+93–96Boots of dancing30,000 gp
+97Crystal hypnosis ball—
+98Necklace of strangulation60,000 gp
+99Cloak of poisonousness62,000 gp
+100Scarab of death80,000 gp

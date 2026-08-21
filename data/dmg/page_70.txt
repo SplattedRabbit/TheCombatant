@@ -1,0 +1,136 @@
+Uncovered pits serve mainly to discourage intruders from
+going a certain way, although they cause much grief to characters
+who stumble into them in the dark, and they can greatly compli-
+cate a melee taking place nearby.
+Covered pits are much more dangerous. They can be detected
+with a DC 20 Search check, but only if the character is
+taking the time to carefully examine the area before
+walking across it. A character who fails to detect
+a covered pit is still entitled to a DC 20
+Reflex save to avoid falling into it.
+However, if she was running or
+moving recklessly at the time,
+she gets no saving throw and
+falls automatically.
+Trap coverings can be
+as simple as piled refuse
+(straw, leaves, sticks,
+garbage), a large rug,
+or an actual trapdoor
+concealed to appear
+as a normal part of the
+floor.  Such  a  trap-
+door usually swings
+open when enough
+weight  (usually
+about  50  to  80
+pounds)  is  placed
+upon it. Devious trap
+builders sometimes
+design trapdoors so
+that they spring back
+shut after they open,
+ready   for   the   next
+victim. The trapdoor
+might lock once it’s
+back in place, leaving
+the stranded charac-
+ter  well  and  truly
+trapped.  Opening
+such a trapdoor is
+just as difficult as
+opening a regular door
+(assuming the trapped
+character can reach it),
+and a DC 13 Strength
+check  is  needed  to
+keep a spring-loaded
+door open.
+Pit  traps  often  have
+something nastier than
+just a hard floor at the
+bottom. A trap designer
+may  put  spikes,  mon-
+sters, or a pool of acid, lava,
+or  even  water  at  the
+bottom  (since  even  a
+victim   proficient   in
+swimming will tire and
+drown   if   trapped   long
+enough).
+Spikes at the bottom
+of a pit may impale un-
+lucky   characters.   The
+spikes deal damage as daggers
+with a +10 attack bonus and a
++1 bonus on damage for every 10 feet of the fall (to a maximum
+bonus on damage of +5). If the pit has multiple spikes, a falling
+victim is attacked by 1d4 of them. This damage is in addition to
+any damage from the fall itself.
+Monsters sometimes live in pits—oozes and jellies find that
+plenty of food comes to them if the trapped area is well traveled.
+Any monster that can fit into the pit might have
+been placed there by the dungeon’s designer, or
+might simply have fallen in and not been able to
+climb back out. In the latter case, either it
+hasn’t been there long, or something has
+been feeding it. If the pit has water,
+the builder may have stocked it
+with  small  carnivorous  fish.
+Monsters that need no suste-
+nance, such as undead and
+constructs, make the best
+choices for creatures to
+inhabit a pit.
+A secondary trap,
+mechanical or magi-
+cal, at the bottom of a
+pit  can  be  particularly
+deadly.  Activated  by  a
+falling victim, the sec-
+ondary trap attacks the
+already injured character
+when she’s least ready for
+it.  Arrow  traps,  blasts  of
+flame, sprays of acid, symbol
+spells or glyphs of warding,
+or  even  magic  monster
+summoningdevices can all
+be found at the bottoms
+of pits.
+Ranged Attack Traps:
+These  traps  fling  darts,
+arrows,  spears,  or  the  like  at
+whoever activated the trap. The
+builder sets the attack bonus. A
+ranged attack trap can be con-
+figured to simulate the effect
+of a composite bow with a high
+strength rating (see page 119 of
+the Player ’s Handbook), which
+provides the trap with a
+bonus on damage equal to
+its strength rating.
+Melee  Attack  Traps:
+These traps feature such ob-
+stacles   as   sharp   blades   that
+emerge from walls and stone
+blocks that fall from ceilings.
+Once again, the builder sets
+the attack bonus.
+Damage/Effect
+The effect of a trap is what
+happens to those who spring
+it. Usually this takes the form
+of either damage or a spell
+effect, but some traps have spe-
+cial effects.
+Pits:Falling into a pit deals 1d6
+points of damage per 10 feet of depth.
+Ranged Attack Traps:These traps deal whatever dam-
+age their ammunition normally would. A trap that fires long-
+bow arrows, for example, deals 1d8 points of damage per hit. If a
+trap is constructed with a high strength rating, it has a correspon-
+69
+CHAPTER 3:
+ADVENTURES

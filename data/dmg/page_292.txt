@@ -1,0 +1,133 @@
+Blindsense: Other creatures have blindsense, a lesser ability
+that lets the creature notice things it cannot see, but without the
+precision of blindsight. The creature with blindsense usually does
+not need to make Spot or Listen checks to notice and locate crea-
+tures within range of its blindsense ability, provided that it has
+line of effect to that creature. Any opponent the creature cannot
+see has  total concealment (50% miss chance) against the creature
+with blindsense, and the blindsensing creature still has the
+normal miss chance when attacking foes that have concealment.
+Visibility still affects the movement of a creature with blindsense.
+A creature with blindsense is still denied its Dexterity bonus to
+Armor Class against attacks from creatures it cannot see.
+BREATH WEAPON
+While dragon fire is the classic example, a breath weapon may also
+be a cloud of poisonous gas, a bolt of lightning, or a stream of acid.
+The creature is actually expelling something from its mouth
+(rather than conjuring it by means of a spell or some other magical
+effect). Most creatures with breath weapons are limited to a
+number of uses per day or by a minimum length of time that must
+pass between uses. Such creatures are usually smart enough to
+save their breath weapon until they really need it.
+•Using a breath weapon is typically a standard action.
+•No attack roll is necessary. The breath simply fills its stated area.
+•Any  character  caught  in  the  area  must  make  the  appropriate
+saving throw or suffer the breath weapon’s full effect. In many
+cases,  a  character  who  succeeds  on  his  saving  throw  still  takes
+half damage or some other reduced effect.
+•Breath weapons are supernatural abilities except where noted.
+•Creatures are immune to their own breath weapons.
+•Creatures unable to breathe can still use breath weapons. (The
+term is something of a misnomer.)
+CHARM AND COMPULSION
+As the strange, wolflike creature loped toward Tordek, he realized
+that it was a good friend that meant him no harm. But why was
+Mialee casting a fireballat it? He needed to stop her from doing
+that again. Later, things got even worse when Lidda didn’t know
+that the noble she was chatting up was actually a vampire. After
+one look into his eyes, she heard his voice in her mind, giving her
+orders that she obeyed without hesitation. She felt like a mere
+observer, trapped behind her own eyes, watching as “she” sought
+out her companions and invited them to a private party at the
+noble’s estate.
+Many abilities and spells can cloud the minds of characters and
+monsters, leaving them unable to tell friend from foe—or worse
+yet, deceiving them into thinking that their former friends are
+now their worst enemies. Two general types of enchantments af-
+fect characters and creatures: charms and compulsions.
+Charming another creature gives the charming character the
+ability to befriend and suggest courses of actions to his minion,
+but the servitude is not absolute or mindless. Charms of this type
+include the various charmspells. Essentially, a charmedcharacter
+retains free will but makes choices according to a skewed view of
+the world.
+•A charmedcreature  doesn’t  gain  any  magical  ability  to  under-
+stand his new friend’s language.
+•A charmedcharacter  retains  his  original  alignment  and  alle-
+giances,  generally  with  the  exception  that  he  now  regards  the
+charmingcreature as a dear friend and will give great weight to
+his suggestions and directions.
+•A charmedcharacter fights his former allies only if they threaten
+his new friend, and even then he uses the least lethal means at
+his  disposal  as  long  as  these  tactics  show  any  possibility  of
+success (just as he would in a fight between two actual friends).
+•A charmedcharacter  is  entitled  to  an  opposed  Charisma  check
+against his master in order to resist instructions or commands
+that  would  make  him  do  something  he  wouldn’t  normally  do
+even  for  a  close  friend.  If  he  succeeds,  he  decides  not  to  go
+along with that order but remains charmed.
+•A charmedcharacter  never  obeys  a  command  that  is  obviously
+suicidal or grievously harmful to her.
+•If  the  charming  creature  commands  his  minion  to  do  some-
+thing that the influenced character would be violently opposed
+to, the subject may attempt a new saving throw to break free of
+the influence altogether.
+•A charmedcharacter who is openly attacked by the creature who
+charmedhim or by that creature’s apparent allies is automatically
+freed of the spell or effect.
+Compulsion is a different matter altogether. A compulsion
+overrides  the  subject’s  free  will  in  some  way  or  simply
+changes the way the subject’s mind works. A charm makes the
+subject a friend of the caster; a compulsion makes the subject
+obey the caster.
+Regardless of whether a character is charmed or compelled, he
+won’t volunteer information or tactics that his master doesn’t ask
+for. If a 1st-level wizard happens to have a staff of fire, the vampire
+that is compelling him doesn’t know that the wand is there and
+can’t tell the wizard to give him the staff or use the staff on his
+former friends. The vampire, however, can say, “Hand over your
+most powerful magic item.”
+COLD IMMUNITY
+A creature with cold immunity, such as a frost giant, never takes cold
+damage. It has vulnerability to fire, which means it takes half again as
+much (+50%) damage as normal from fire, regardless of whether a
+saving throw is allowed, or if the save is a success or failure.
+DAMAGE REDUCTION
+The arrow sticks into the vampire, but she just pulls it out and
+laughs as the wound instantly heals. “You’ll need to do better than
+that,” she hisses.
+Some magic creatures have the supernatural ability to instantly
+heal damage from weapons or to ignore blows altogether as
+though they were invulnerable.
+The numerical part of a creature’s damage reduction is the
+amount of hit points the creature ignores from normal attacks.
+Thus, a creature with a damage reduction number of 5 struck for 8
+points of damage ignores 5 points and takes only 3.
+Usually, a certain type of weapon can overcome this reduction.
+This information is separated from the damage reduction number
+by a  slash.  For  example,  a  werewolf ’s  damage  reduction  is
+10/silver, meaning the werewolf ignores the first 10 points of
+damage from every normal attack unless the weapon is made with
+alchemical silver. Other kinds of damage reduction are overcome
+by magic weapons (any weapon with a +1 or higher enhancement
+bonus, not counting the enhancement from masterwork quality),
+certain types of weapons (such as slashing or bludgeoning), and
+weapons imbued with an alignment (such as that granted by the
+holy special ability or the align weaponspell). If a dash follows the
+slash (as with the damage reduction that is a class feature of the
+barbarian), then the damage reduction is effective against any
+attack that does not ignore damage reduction.
+Ammunition fired from a projectile weapon with an enhance-
+ment bonus of +1 or higher is treated as a magic weapon for the
+purpose of overcoming damage reduction. For example, a sling
+stone hurled from a +1 slingis treated as a magic weapon. Similarly,
+ammunition fired from a projectile weapon with an alignment
+(such as a +1 holy longbowor a crossbow under the effect of the
+align weaponspell) gains the alignment of that projectile weapon
+(in addition to any alignment it may already have). For example, a
++1 unholy arrowfired from a +2 anarchic shortbowwould be both
+evil-aligned and chaos-aligned (the former from its own unholy
+special ability, the latter from the shortbow).
+291
+CHAPTER 8:
+GLOSSARY

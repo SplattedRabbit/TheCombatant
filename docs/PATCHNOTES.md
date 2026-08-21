@@ -6,7 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
-| **v4.2.0** | Release | 21.08.2026 | Generische Prestige-Klassen-Engine (Phase 1–3) & Alignment-/specialText-Bugfixes |
+| **v4.2.0** | Release | 21.08.2026 | Prestige Classes Refactoring & Anima Construct Race Integration |
 | **v4.1.0** | Release | 17.06.2026 | Architecture Modularization & Token-Optimized Testing |
 | **v4.0.0** | Release | 14.06.2026 | Migration Complete & Tablet-Deployable (Offline & PWA) |
 | **v3.6.0** | Release | 14.06.2026 | React-Zustandsaktualisierung, Prototyp-Rehydrierung & Ausrüstungs-Fixes |
@@ -74,7 +74,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
 
-### v4.2.0 — Generische Prestige-Klassen-Engine (Phase 1–3) & Alignment-/specialText-Bugfixes (Release v4.2.0)
+### v4.2.0 — Prestige Classes Refactoring & Anima Construct Race Integration (Release v4.2.0)
 
 * **🏛️ Generische Prestige-Klassen-Engine (Phase 1)**:
   - Neue Registry-getriebene Engine `js/rules/prestigeClassEngine.js`: Stufen-Features (Boni, Ability-Boosts, Dice-Stacks) werden nicht mehr pro Klasse hartkodiert, sondern aus `js/data/prestigeClasses-dmg.js` berechnet.
@@ -84,6 +84,19 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
   - `RogueHelper.js`: Die zwei hartkodierten `if`-Blöcke für Arcane-Trickster-/Assassinen-Sneak-Attack-Stacking wurden durch den generischen Aufruf `getSneakAttackDiceFromPrestigeClasses(pc)` ersetzt — Stacking funktioniert jetzt automatisch für jede Registry-Klasse mit `diceStack`/`pool: 'sneakAttack'`-Feature.
   - `classValidation.js`: Freitext-Voraussetzungen (`specialText`, z.B. die Assassinen-Mordbedingung) werden jetzt tatsächlich gegen ein SL-Bestätigungsflag (`pc.prestigeSpecialTextConfirmed`) geprüft, statt immer als automatisch erfüllt zu gelten. Neuer Export `isOnlySpecialTextUnmet(validation)` unterscheidet "nur noch SL-Bestätigung nötig" von "harte Voraussetzung fehlt".
   - Quellenkorrektur: Die vier Prestigeklassen (Assassine, Mystic Theurge, Arcane Trickster, Dragon Disciple) waren fälschlich als `source: 'phb'` markiert, obwohl das Player's Handbook keine Prestigeklassen enthält — korrigiert auf `source: 'dmg'` (Dungeon Master's Guide), Datei `prestigeClasses-phb.js` → `prestigeClasses-dmg.js` umbenannt.
+
+* **🧬 Rassen-Integration: Anima-Konstrukt (Anima Construct)**:
+  - **Wizard & Konstanten:** Registrierung der Rasse `anima_construct` in `constants.ts` und `helpers.ts` (+2 CON, -2 CHA, mittlere Größe, Standby-Modus).
+  - **Dynamische Boni:** Zuweisung der Rassenmodifikatoren und des **+1 natürlichen Rüstungsbonus** (wirkt auf AC und Flat-Footed AC, nicht auf Touch AC) in `applyRaceModifiers`.
+  - **Magische Heilungs-Halbierung:** Eingehende magische Heilung wird für das Anima-Konstrukt automatisch halbiert (`applyDamage` in `ConditionManager.js`).
+  - **Interaktive Reparatur:** Integration einer Craft-basierten Reparatur-Aktion (DC 15 heilt 1d4 / DC 20 heilt 1d8) mit täglichem Limit (4/Tag) im `RacialTraitsCard` des Charakterbogens.
+  - **Doppelte Modifikatoren behoben:** Korrektur eines Bugs im Wizard-Speicherflow, bei dem Rassenmodifikatoren sowohl auf die Basis-Werte aufaddiert als auch dynamisch hinzugerechnet wurden.
+
+* **🛡️ Klassentalente in der Talente-Übersicht (Class Feats Integration)**:
+  - **Automatische Klassentalente:** Automatisch vergebene Talente (Ranger *Track*/*Endurance*/*TWF*, Monk *Improved Unarmed Strike*, Wizard *Scribe Scroll*) werden nun in der linken Spalte der gelernten Talente mitgelistet.
+  - **Visuelle Kennzeichnung:** Klassentalente besitzen einen blauen Rahmen/Akzent (`#1976d2`) und ein passendes Badge (`Klassentalent`).
+  - **Verlernsperre:** Klickt der Spieler auf ein Klassentalent, wird der „Verlernen"-Button im `FeatScrollDialog` gesperrt und mit einem informativen Hinweis-Badge ersetzt.
+  - **Voraussetzungsprüfung:** Automatisch erhaltene Klassentalente werden nun korrekt als erfüllt für Voraussetzungen von Folgetalenten und Prestige-Klassen gewertet.
 
 * **🐛 Zusätzliche Bugfixes (im Rahmen der manuellen QA dieser Phase gefunden)**:
   - **`Combatant.js` `toJSON()`**: Das Feld `alignment` fehlte in der Serialisierungs-Whitelist und ging bei jedem State-Sync (`JSON.parse(JSON.stringify(pc))`) stillschweigend verloren — Prestige-Klassen mit Alignment-Voraussetzung (z.B. Assassine: "Lawful Evil, Neutral Evil oder Chaotic Evil") konnten dadurch nie validiert werden, obwohl der Wert im UI sichtbar gesetzt war.

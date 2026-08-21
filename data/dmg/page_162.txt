@@ -1,0 +1,132 @@
+Random Abyssal Layers
+What if your characters wind up being sent to the Abyss as a
+result of an adventure gone wrong? Or what if they flee powerful
+demons by jumping through the nearest portal?
+Use the following table to randomly determine the general
+characteristics of an unknown layer. If desired, roll twice (or
+more) and combine the results.
+d%Type of Layer
+01–05Air-dominant
+06–10Blood War battleground (demons against devils)
+11–15Burning hellscape (mix of magma and stone)
+16–20Demonic city
+21–25Desert of sand, ice, salt, or ash
+26–30Earth-dominant
+31–35Fire-dominant
+36–40Fetid swamp (filled with predators)
+41–45Mixed element-dominant (as Limbo)
+46–50Mountainous
+51–55Negative-dominant (minor or major)
+56–60Normal (as the Material Plane)
+61–65Ocean of water
+66–70Realm of powerful Abyssal entity
+71–75Sea of acid
+76–80Sea of insects
+81–85Sea of blood
+86–90Subterranean
+91–95Undead realm
+96–100Water-dominant
+Example Abyss Site: Demonweb Pits
+The 66th layer of the Abyss is home to Lolth, the Spider Queen.
+The plane folds in upon itself so that it resembles a great web. A
+dizzying array of web pathways interconnect with fractal com-
+plexity. Each strand is strung with portals onto the planes where
+Lolth is worshiped. Lolth’s palace is said to be a mobile iron
+stronghold shaped like a spider, perpetually crawling across her
+planar web.
+To draw an encounter map for the Demonweb Pits, design a
+crisscrossing network of 20-foot-wide walkways suspended magi-
+cally in vast cloud of solid fog(as the spell). The fog stays 1d4×10
+feet away from the pathways, so characters can sometimes glimpse
+other parts of the web that are above, below, or to the side of the
+path they’re walking on.
+The web twists and turns in on itself, but it always appears per-
+fectly level, even when it corkscrews upward or downward. It’s
+possible to make four right turns and wind up underneath the
+point where you started, without encountering a slope or stairs.
+Characters who fall—or are bull rushed—off a walkway fall at
+only 60 feet per round (as the feather fallspell), and they take no
+damage when they land on another walkway (which might be
+miles below where they started).
+TARTERIAN DEPTHS OF CARCERI
+The prison plane of Carceri seems the least overtly dangerous of
+the lower planes, but that first impression quickly disappears. Acid
+seas and sulfurous atmospheres may be rare on this plane, and no
+areas of biting cold or infernos of raging heat exist. The danger of
+Carceri is a subtler thing.
+The plane is a place of darkness and despair, of passions and
+poisons, and of kingdom-shattering betrayals. On Carceri,
+hatreds run like a deep, slow-moving river. And there’s no telling
+what the flood of treachery is going to consume next. It is said
+that a prisoner on Carceri may only escape when she has become
+stronger than whatever imprisoned her there. That’s a difficult
+task on a plane whose very nature breeds despair, betrayal, and
+self-hatred.
+Carceri consists of six layers: Orthrys, Cathrys, Minethys,
+Colothys, Porphratys, and Agathys. Each layer consists of a series
+of orbs like tiny planets. A gulf of air separates each orb from the
+next. On a particular layer, little distinguishes one orb from the
+next, and it’s possible that the number of orblike planets on each
+layer is infinite.
+Carceri has the following traits.
+•Normal  gravity.  On  the  orbs,  gravity  is  normal.  Between  orbs,
+there  is  no  gravity,  which  eases  travel  for  those  who  can  fly
+beyond the clutches of each orb’s gravity.
+•Divinely  morphic.  Nerull  and  any  other  entity  of  lesser  deity
+status or greater can alter Carceri. More ordinary creatures find
+Carceri  indistinguishable  from  the  Material  Plane;  it  responds
+to spells and physical effort normally.
+•Mildly evil-aligned.
+Random Encounters: Use the Abyssal Encounters table (page
+167) for random encounters on Carceri.
+Example Carceri Site: Sand Tombs of Payratheon
+Payratheon is the name of a vanished city built on an orb of
+Minethys eons ago. That city is long buried under sand dunes,
+but its sand-drowned avenues, crumbled towers, and silted porti-
+cos still remain far below the shifting surface of the layer. Some-
+times the shifting sands reveal Payratheon for an hour or a
+longer, but it is always engulfed again by the sands, smothering
+most creatures that were tempted by its appearance and entered
+the sand-blasted city.
+Resourceful adventurers have burrowed down to find outlying
+suburbs of the city during its phases of submersion. Tales of terror
+walk hand in hand with these accounts, which tell of dragonlike
+“sand gorgons” that swim through the sand as if it were water. Also
+mentioned are the remnants of former inhabitants that force their
+way through the streets as petrified undead, so weathered and
+eroded that little can be discerned of their original race or size.
+To create an encounter map for the sand tombs, start with a city,
+then reduce half the buildings to heavy rubble and damage the
+others in some significant way. The riches of Payratheon are there
+for the taking, for the city was buried suddenly. But the characters
+will have to contend with the sand gorgons (24 HD gorgons with
+a burrow speed of 30 feet), mummy lords (see the Monster Manual),
+and other undead eager to slay and consume the living. And
+they’re also racing against time—a titanic sandstorm (see page 91)
+is only 1d4 hours away.
+GRAY WASTE OF HADES
+Hades sits at the nadir of the lower planes, halfway between two
+races of fiends each bent on the other’s annihilation. Thus, it often
+sees its gray plains darkened by vast armies of demons battling
+equally vast armies of devils who neither ask nor give quarter. If
+any plane defines the nature of true evil, it is the Gray Waste.
+In the Gray Waste of Hades, pure undiluted evil acts as a power-
+ful spiritual force that drags all creatures down. Here, even the
+consuming rage of the Abyss and the devious plotting of the Nine
+Hells are subjugated to hopelessness. Apathy and despair seep into
+everything at the pole of evil. Hades slowly kills a visitor’s dreams
+and desires, leaving the withered husk of what used to be a fiery
+sprit. Spend enough time in Hades, and a visitor gives up on
+things that used to matter, eventually succumbing to total apathy.
+Hades has three layers, called “glooms”: Oinos, Niflheim, and
+Pluton. Uncaring malevolence that slowly crushes the spirit per-
+meates each gloom. 
+Hades has the following traits.
+•Divinely morphic. Entities of at least lesser deity status can alter
+Hades,  though  few  deities  care  to  reign  in  Hades.  The  Gray
+Waste  has  the  alterable  morphic  trait  for  less  powerful  crea-
+tures; Hades responds normally to spells and physical effort.
+•Strongly evil-aligned.
+161
+CHAPTER 5:
+CAMPAIGNS

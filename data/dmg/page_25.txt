@@ -1,0 +1,128 @@
+24
+controls this part of the dungeon. Suddenly, in the middle of the
+fight, a strike team of dwarves wanders into the room where the
+battle rages. If, in the course of a battle between two sides, some
+third group enters the battle, they should come into the action in
+between rounds. The following rules apply to this situation,
+whether or not the new group is allied with one or more existing
+side involved in the encounter.
+Newcomers Are Aware:If any (or all) of the newcomers are
+aware of one or both of the sides in a battle, they take their actions
+before anyone else. In effect, they go first in the initiative se-
+quence. Their initiative check result is considered to be 1 higher
+than the highest initiative check result among the other partici-
+pants in the encounter. If differentiation is needed for the actions
+of the newcomers, they act in order of their Dexterity scores, high-
+est to lowest. The reason for this rule is twofold.
+•Since they’re aware, but there’s no way to get an action ahead of
+everyone else (because the encounter has already started), they
+go  first  to  simulate  their  advantage.  This  happens  whether  the
+other sides are aware of the new side or not.
+•Placing  the  newcomers  at  the  beginning  of  the  round  means
+that those who had the highest initiative check results prior to
+their  arrival  are  the  first  characters  to  have  an  opportunity  to
+react  to  them.  This  is  an  important  advantage  for  characters
+with high places in the initiative order.
+Newcomers Not Aware: If any or all of the newcomers are not
+aware of the other sides when they enter the encounter (for
+example, the PCs stumble unaware into a fight between two mon-
+sters in a dungeon), the newcomers still come into play at the
+beginning of the round, but they roll initiative normally. If one of
+the other characters involved in the encounter has a higher initia-
+tive check result than one or more of the newcomers, that charac-
+ter can react to those newcomers before they get a chance to act
+(the newcomers are caught flat-footed).
+If more than one new group enters an existing encounter at the
+same  time,  you  must  first  decide  if  they  are  aware  of  the
+encounter. Those that are unaware, “stumbling in,” roll initiative.
+Those that are aware act first in the round, in the order of their
+Dexterity scores, even if they are not in the same group.
+Example: A group of powerful adventurers fights a naga in a
+dungeon room. The naga rolled badly for initiative, and all the ad-
+venturers act before it. Between rounds three and four of that bat-
+tle, three orcs on a random patrol stumble in. At the same time,
+two more nagas arrive, having been alerted by the sounds of the
+battle. At the beginning of round four, the two new nagas act in
+the order of their Dexterity scores. Then the orcs roll for initiative,
+and the results of their rolls are placed within the normal initiative
+order for the battle. In this case, poor check results place them
+dead last, even after the original naga.
+Then the adventurers act, able to react either to the flat-footed
+orcs or to the new naga reinforcements. Then the original naga
+acts, followed by the orcs (who probably flee from this battle,
+which is clearly out of their league). This same sequence is used
+for subsequent rounds of the battle.
+KEEPING THINGS MOVING
+Initiative dictates the flow of who goes when. It is the tool that the
+game uses to keep things moving, but ultimately it’s you who
+needs to make sure that happens. Encourage the players to be
+ready with their actions when each one’s turn comes up. Players
+have less fun if they spend a lot of time sitting at the table waiting
+for someone else to decide what to do.
+Some resourceful players will learn tricks to help you move
+things along. When attacking, they roll attack and damage dice at
+once, so that if successful, they can tell you the damage that they
+deal immediately. If they know that their next action will require
+a die roll, they’ll roll it ahead of time, so that when you ask them
+what they’re going to do, they can tell you immediately. (“I attack
+with my battleaxe and hit AC 14. If that’s good enough, I deal 9
+points of damage.”) Some DMs like to have players make each roll
+separately, so you’ll have to decide for yourself whether you allow
+prerolling.
+One useful thing you can do is to write down the initiative se-
+quence once it’s determined for a given encounter. If you place
+this information where all the players can see it, each will know
+when his character’s turn is coming and hopefully will be ready to
+tell you his action when it comes time for him to act. Don’t write
+down the NPCs’ places in the initiative sequence, at least not until
+they have acted once—the players shouldn’t know who’s going to
+act before the enemies and who will act after. It’s too easy to plan
+actions around when their opponents act.
+Simultaneous Activity
+When you play out a combat scene or some other activity for
+which time is measured in rounds, it can be important to remem-
+ber that all the PCs’ and NPCs’ actions are occurring simultane-
+ously. For instance, in one 6-second round, Mialee might be trying
+to cast a spell at the same time that Lidda is moving in to make a
+sneak attack.
+However, when everyone at the table plays out a combat round,
+each individual acts in turn according to the initiative count for
+his character. Obviously, this is necessary, because if every indi-
+vidual took his turn at the same time, mass confusion would
+result. However, this sequential order of play can occasionally lead
+to situations when something significant happens to a character at
+the end of his turn but before other characters have acted in the
+same round.
+For instance, suppose Tordek hustles 15 feet ahead of his
+friends down a corridor, turns a corner, and hustles another 10
+feet down a branching corridor, only to trigger a trap at the end of
+his turn. In order to maintain the appearance of simultaneous
+activity, you’re within your rights to rule that Tordek doesn’t trig-
+ger the trap until the end of the round. After all, it takes him some
+time to get down the corridor, and in an actual real-time situation
+the other characters who have yet to act in the round would be
+taking their actions during this same time.
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: STRIKING THE COVER 
+INSTEAD OF A MISSED TARGET
+In ranged combat against a target that has cover, it may be impor-
+tant to know whether the cover was actually struck by an incoming
+attack that misses the intended target. First, determine if the attack
+roll  would  have  hit  the  protected  target  without  the  cover.  If  the
+attack  roll  falls  within  a  range  low  enough  to  miss  the  target  with
+cover  but  high  enough  to  strike  the  target  if  there  had  been  no
+cover, the object used for cover was struck. If a creature is provid-
+ing cover for another character and the attack roll exceeds the AC of
+the  covering  creature,  the  covering  creature  takes  the  damage
+intended for the target.
+If  the  covering  creature  has  a  Dexterity  bonus  to  AC  or  a  dodge
+bonus, and this bonus keeps the covering creature from being hit, then
+the original target is hit instead. The covering creature has dodged out
+of  the  way  and  didn’t  provide  cover  after  all.  A  covering  creature  can
+choose not to apply his Dexterity bonus to AC and/or his dodge bonus,
+if his intent is to try to take the damage in order to keep the covered
+character from being hit.
+pqqqqrs
+pqqqqrs

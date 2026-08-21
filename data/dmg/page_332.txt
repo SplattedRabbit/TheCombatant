@@ -1,0 +1,97 @@
+10
+average lodging (5), average food (15), exotic trades (2),
+average trades (13), poor trades (5), average services
+(10), average residences (15).
+First Impression: A crowd waits to be let into
+the coliseum for the day’s events. Buskers hawk their
+wares, and periodically a chant or cheer emerges from
+particularly devoted fans in the crowd.
+Social Class:Middle class.
+Prison District
+An immense, forbidding-looking fortress dominates
+this district. Because inmates are typically kept in small
+cells, a prison district often has a very high population.
+Buildings:Prison building, guards’ barracks.
+First Impression: Guards are everywhere in
+this district. Most are standing watch, but occasionally
+a small group of them escort a chained inmate to or
+from the massive prison walls.
+Social Class:Lower class.
+SOCIAL CLASS AND
+NEIGHBORHOODS
+Most cities are made up primarily of lower-class districts,
+simply because they have more lower-class residents
+than any other sort. An average small city (twenty dis-
+tricts) has two upper-class districts, six middle-class dis-
+tricts, and twelve lower-class districts. In larger cities, the
+upper class grows while the lower class shrinks in pro-
+portion. A typical large city (forty districts) has six upper-
+class, twelve middle-class, and twenty-two lower-class
+pqqqqrs
+EXAMPLE BUILDINGS
+The following businesspeople and organizations
+occupy the various building types noted in the
+descriptions above.
+Trades, Exotic:Alchemist, art dealer, calligrapher,
+costumer, imported goods dealer, magic armor
+dealer, magic item dealer (general), magic weapon
+dealer, pet merchant, potion dealer, rare wood mer-
+chant, scroll merchant, soap maker, spice merchant,
+trapmaker, wand merchant.
+Trades, Upscale:Antique dealer, bookbinder,
+bookseller, candy maker, clockmaker, cosmetics
+dealer, curio dealer, dice maker, distiller, fine
+clothier, gemcutter, glassblower, glazier, gold-
+smith, inkmaker, jeweler, mapseller, papermaker,
+perfumer, pewterer, sculptor, sealmaker, silver-
+smith, slave trader, toymaker, trinkets purveyor,
+vintner, wiresmith. Also found here are average
+trades performed at fine quality and increased
+cost (masterwork).
+Trades, Average:Armorer, baker, bazaar mer-
+chant, blacksmith, bonecarver, bowyer, brewer,
+butcher, carpenter, carpet maker, cartwright, chan-
+dler, cheesemaker, cobbler, cooper, coppersmith,
+dairy merchant, fletcher, florist, furniture maker,
+furrier,  grocer,  haberdasher,  hardware  seller,
+herbalist, joiner, lampmaker, locksmith, mason,
+merchant, music dealer, outfitter, potter, provi-
+sioner, religious items dealer, roofer, ropemaker,
+saddler, sailmaker, seamstress, shipwright, stone-
+cutter, tailor, tapestry maker, taxidermist, thatcher,
+tilemaker, tinker, weaponsmith, weaver, wheel-
+wright, whipmaker, wigmaker, woodworker. Also
+found here are poor trades performed at fine qual-
+ity and increased cost (masterwork), and upscale
+trades at lower quality and lower cost (80% of
+normal).
+Trades, Poor:Bait & tackle dealer, basketweaver,
+brickmaker, broom maker, candlemaker, charcoal
+burner, dyer, firewood seller, fishmonger, fuller,
+leatherworker, livestock handler, lumberer, miller,
+netmaker,  tanner. Also  found  here  are  average
+trades performed at lower quality and lower cost
+(80% of normal).
+Services, Upscale:Animal trainer, apothecary,
+architect, assassin, banker, barrister, bounty hunter,
+cartographer, dentist, engraver, illuminator, kennel
+master, masseur, mewskeeper, moneychanger, sage,
+scribe, spellcaster for hire, tutor.
+Services, Average:Auctioneer, barber, bookkeeper,
+brothel owner, clerk, engineer, fortuneteller, freight
+shipper, guide, healer, horse trainer, interpreter,
+laundress, messenger, minstrel, navigator, painter,
+physician, public bath owner, sharpener, stable
+owner, tattooer, undertaker, veterinarian.
+Services, Poor:Acrobat, actor, boater, buffoon,
+building painter, burglar, carter, fence, gambling hall
+owner, juggler, laborer, limner, linkboy, moneylender,
+nursemaid, pawnshop, porter, ship painter, team-
+ster, warehouse owner.
+Lodging:Almshouse, boarding house, hostel, inn.
+Food:Club, eatery, restaurant, tavern.
+Temples and Shrines:Any deity, or sometimes a
+group of allied or related deities. Most cities in civi-
+lized lands have few obvious temples to evil deities,
+but exceptions do exist.
+pqqqqrs

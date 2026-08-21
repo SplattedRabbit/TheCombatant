@@ -1,0 +1,132 @@
+294
+A creature that has taken both nonlethal and lethal damage
+heals the nonlethal damage first.
+Fast healing does not restore hit points lost from starvation,
+thirst, or suffocation.
+Fast  healing  does  not  increase  the  number  of  hit  points
+regained when a creature polymorphs.
+FEAR
+A young adult green dragon charges the adventurers. Tordek feels
+a twinge of fear but grits his teeth and ignores it. Lidda doesn’t
+stand up as well to the charge. She holds her ground, but fear takes
+the edge off her skill. The cohort who had recently joined them,
+however, drops her sword and flees recklessly, her screams fading
+in the distance.
+Spells, magic items, and certain monsters can affect characters
+with fear. In most cases, the character makes a Will saving throw
+to resist this effect, and a failed roll means that the character is
+shaken, frightened, or panicked.
+Shaken:Characters who are shaken take a –2 penalty on attack
+rolls, saving throws, skill checks, and ability checks.
+Frightened:Characters who are frightened are shaken, and in
+addition they flee from the source of their fear as quickly as they
+can. They can choose the path of their flight. Other than that stip-
+ulation, once they are out of sight (or hearing) of the source of
+their fear, they can act as they want. However, if the duration of
+their fear continues, characters can be forced to flee once more if
+the source of their fear presents itself again. Characters unable to
+flee can fight (though they are still shaken).
+Panicked:Characters who are panicked are shaken, and they
+run away from the source of their fear as quickly as they can.
+Other than running away from the source, their path is random.
+They flee from all other dangers that confront them rather than
+facing those dangers. Panicked characters cower if they are pre-
+vented from fleeing.
+Becoming Even More Fearful:Fear effects are cumulative. A
+shaken character who is made shaken again becomes frightened,
+and a shaken character who is made frightened becomes panicked
+instead. A frightened character who is made shaken or frightened
+becomes panicked instead.
+FIRE IMMUNITY
+A creature with fire immunity, such as a fire giant, never takes fire
+damage. It has vulnerability to cold, which means it takes half
+again as much (+50%) damage as normal from cold, regardless of
+whether a saving throw is allowed, or if the save is a success or
+failure.
+GASEOUS FORM
+Some creatures have the supernatural or spell-like ability to take
+the form of a cloud of vapor or gas.
+Creatures in gaseous form can’t run but can fly. A gaseous crea-
+ture can move about and do the things that a cloud of gas can con-
+ceivably do, such as flow through the crack under a door. It can’t,
+however, pass through solid matter.
+Gaseous creatures can’t attack physically or cast spells with
+verbal, somatic, material, or focus components. They lose their
+supernatural abilities (except for the supernatural ability to
+assume gaseous form, of course).
+Creatures in gaseous form have damage reduction 10/magic.
+Spells, spell-like abilities, and supernatural abilities affect them
+normally. Creatures in gaseous form lose all benefit of material
+armor (including natural armor), though size, Dexterity, deflec-
+tion bonuses, and armor bonuses from force armor (for example,
+from the mage armorspell) still apply.
+Gaseous creatures do not need to breathe and are immune to
+attacks involving breathing (troglodyte stench, poison gas, and
+the like).
+Gaseous creatures can’t enter water or other liquid. They are not
+ethereal or incorporeal. They are affected by winds or other forms
+of moving air to the extent that the wind pushes them in the direc-
+tion the wind is moving. However, even the strongest wind can’t
+disperse or damage a creature in gaseous form.
+Discerning a creature in gaseous form from natural mist requires
+a DC 15 Spot check. Creatures in gaseous form attempting to hide
+in an area with mist, smoke, or other gas gain a +20 bonus.
+GAZE ATTACKS
+The medusa looks around, throwing dangerous glances every-
+where, and focusing its eyes on specific victims. Lidda closes her
+eyes and tries to aim her arrows by ear. Jozan averts his eyes but
+tries to watch the creature with peripheral vision so he knows
+where to project his searing lightspell. Tordek trusts fate and looks
+the thing in the eye as he swings his mighty axe. Magic washes
+through him, and he shrugs it off. Jozan, however, accidentally
+catches the thing’s eye, and he’s not strong enough to resist. His
+body hardens and turns to stone.
+While the medusa’s gaze is well known, gaze attacks can also
+charm, curse, or even kill. Gaze attacks not produced by a spell are
+supernatural.
+Each character within range of a gaze attack must attempt a
+saving throw (which can be a Fortitude or Will save) each round at
+the beginning of his turn.
+An opponent can avert his eyes from the creature’s face, looking
+at the creature’s body, watching its shadow, or tracking the crea-
+ture in a reflective surface. Each round, the opponent has a 50%
+chance of not having to make a saving throw. The creature with
+the gaze attack gains concealment relative to the opponent.
+An opponent can shut his eyes, turn his back on the creature, or
+wear a blindfold. In these cases, the opponent does not need to
+make a saving throw. The creature with the gaze attack gains total
+concealment relative to the opponent.
+A creature with a gaze attack can actively attempt to use its gaze
+as an attack action. The creature simply chooses a target within
+range, and that opponent must attempt a saving throw. If the
+target has chosen to defend against the gaze as discussed above,
+the opponent gets a chance to avoid the saving throw (either 50%
+chance for averting eyes or 100% chance for shutting eyes). It is
+possible for an opponent to save against a creature’s gaze twice
+during the same round, once before its own action and once
+during the creature’s action.
+Looking at the creature’s image (such as in a mirror or as part of
+an illusion) does not subject the viewer to a gaze attack.
+A creature is immune to its own gaze attack.
+If visibility is limited (by dim lighting, a fog, or the like) so that
+it results in concealment, there is a percentage chance equal to the
+normal miss chance for that degree of concealment that a charac-
+ter won’t need to make a saving throw in a given round. This
+chance is not cumulative with the chance for averting your eyes,
+but is rolled separately.
+Invisible creatures cannot use gaze attacks.
+Characters using darkvision in complete darkness are affected
+by a gaze attack normally.
+Unless specified otherwise, a creature with a gaze attack can
+control its gaze attack and “turn it off ” when so desired.
+INCORPOREALITY
+Lidda spots a translucent face poking forth from a wall, but it’s
+gone by the time she alerts her companions. The party starts to
+back out of the ruined throne room they’re exploring, when
+suddenly several ghostly figures fly out of the walls toward
+them. Tordek raises his magic shield to fend off a spectre’s
+attack, but the incorporeal hand passes through the shield and
+through his magic plate armor. It touches his heart, which sud-
+denly grows cold.
+CHAPTER 8:
+GLOSSARY

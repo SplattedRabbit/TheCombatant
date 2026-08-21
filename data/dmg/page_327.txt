@@ -1,0 +1,94 @@
+5
+(Boccob or Pelor), shrine, upscale lodging (5), upscale
+food (8), upscale literary trades (booksellers, stationers,
+mapsellers, sealmakers, and the like) (10), upscale liter-
+ary services (scribe, sage, translator, cartographer, and
+the like) (10), dormitories (5), upscale residences (25).
+First Impression: Young, well-dressed students
+carrying armfuls of scrolls and books hustle to their
+classes. Others sit or stand in circles, discussing the
+day’s lessons.
+Social Class:Upper class.
+Wealthy Residential
+These residences belong to successful merchants
+and high-level bureaucrats in political or religious
+organizations. 
+Buildings:Upscale residences (60), average resi-
+dences (10).
+First Impression: Well-appointed buildings
+line the quiet streets of this district. Servants or guards
+are posted at many of the front doors.
+Social Class:Upper class.
+AVERAGE POPULATION DISTRICTS
+These districts are where the middle class and mer-
+chants live and work.
+Average Residential
+Shopkeepers, artisans, and other skilled workers dwell
+in these modest homes.
+Buildings:Upscale residences (10), average resi-
+dences (70), poor residences (10).
+First Impression: Children play in the streets
+of this district, and the younger ones are often chased
+by older siblings. Neat rows of houses line the thor-
+oughfares.
+Social Class:Middle class.
+Dwarf Neighborhood
+Because clan and family are important to dwarven cul-
+ture, many dwarves who live in cities dominated by other
+races tend to congregate in their own neighborhoods.
+Buildings:Temple (Moradin), average lodging
+(2), upscale food, average food (9), poor food (2), exotic
+trades (2), upscale trades (7), average trades (15), poor
+trades (6), upscale services (5), average services (10),
+poor services (5), upscale residences (5), average resi-
+dences (45).
+First Impression: All the structures in this
+neighborhood are slightly smaller than normal because
+they’re sized for dwarves. Stonework, much of it finely
+carved, dominates the architecture.
+Social Class:Middle class.
+Garrison
+This district is essentially a military encampment. The
+soldiers who dwell here are charged with guarding the
+city and the surrounding countryside.
+Buildings:Garrison building, temple (Heiro-
+neous, Kord, or St. Cuthbert), average lodging (4), poor
+lodging, upscale food (2), average food (4), poor food
+(3), upscale trades (4), average trades (8), poor trades (2),
+average services (10), average residences (40), poor resi-
+dences (10).
+First Impression: Some soldiers march to and
+fro in groups, while others stand at attention, and still
+others drill for combat. Shouted commands and march-
+ing songs fill the air.
+Social Class:Middle class.
+Gnome Neighborhood
+Gnomes find comfort in buildings sized for them, so
+this district features architecture that humans and
+other Medium races would find cramped.
+Buildings:Temple (Garl Glittergold), upscale
+lodging (1), average lodging (4), upscale food (3), aver-
+age food (5), exotic trades (2), upscale trades (4), average
+trades (6), poor trades (3), upscale services (4), average
+services (6), average residences (50).
+First Impression: This neighborhood looks like
+any average residential area, but on a smaller scale. 
+Social Class:Middle class.
+Guildhall District
+This district is home to organizations of skilled work-
+ers, such as the mason’s guild, the cobbler’s guild, and
+the jeweler’s guild. Depending on the city, more exotic
+guilds devoted to sages, wizards, or mercenaries may
+also have facilities here. Illicit guilds may exist for
+thieves and assassins, but these rarely have publicly
+known guildhalls.
+Buildings:Guild halls (3), average lodging (5),
+average food (10), upscale trades (5), average trades (15),
+poor trades (4), upscale services (5), average services
+(10), poor services (3), average residences (30).
+First Impression: Each of the massive guild-
+halls in this district is emblazoned with a symbol repre-
+sentative of its craft, such as a massive hammer and
+anvil for the blacksmith’s guild, and a welcoming sign
+in every known tongue for the Scribe’s Union.
+Social Class:Middle class.

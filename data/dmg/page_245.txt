@@ -1,0 +1,141 @@
+244
+Strong abjuration; CL 13th; Craft Staff, dismissal, dispel magic,
+lesser globe of invulnerability, resist energy, repulsion, shield; Price
+65,000 gp.
+Charming: Made of twisting wood ornately shaped and
+carved, this staff allows use of the following spells:
+•Charm person(1 charge)
+•Charm monster(2 charges)
+Moderate enchantment; CL 8th; Craft Staff, charm person, charm
+monster; Price 16,500 gp. 
+Conjuration: This staff is usually made of ash or walnut and
+bears ornate carvings of many different kinds of creatures. It
+allows use of the following spells:
+•Unseen servant(1 charge)
+•Summon swarm(1 charge)
+•Stinking cloud(1 charge)
+•Minor creation(2 charges)
+•Cloudkill(2 charges)
+•Summon monster VI(3 charges)
+Strong conjuration; CL 13th; Craft Staff, cloudkill, stinking
+cloud, summon monster VI, summon swarm, unseen servant; Price
+65,000 gp.
+Defense:The staff of defenseis a simple-looking staff that throbs
+with power when held defensively. It allows use of the following
+spells:
+•Shield(1 charge)
+•Shield of faith(1 charge)
+•Shield other(1 charge)
+•Shield of law(3 charges)
+Strong abjuration; CL 15th; Craft Staff, shield, shield of faith, shield
+of law, shield other, creator must be lawful; Price 58,250 gp.
+Divination: Made from a supple length of willow, often with a
+forked tip, this staff allows use of the following spells:
+•Detect secret doors(1 charge)
+•Locate object(1 charge)
+•Tongues(1 charge)
+•Locate creature(2 charges)
+•Prying eyes(2 charges)
+•True seeing(3 charges)
+Strong divination; CL 13th; Craft
+Staff, detect secret doors, locate creature,
+locate object, prying eyes, tongues, true
+seeing; Price 73,500 gp.
+Earth  and  Stone:  This  staff  is
+topped with a fist-sized emerald that
+gleams  with  smoldering  power.  It
+allows the use of the following spells:
+•Passwall(1 charge)
+•Move earth(1 charge)
+Moderate transmutation; CL 11th;
+Craft Staff, move earth, passwall; Price
+80,500 gp.
+Enchantment:Often made from
+applewood and topped with a clear crystal, this
+staff allows use of the following spells:
+•Sleep(1 charge)
+•Tasha’s hideous laughter(1 charge)
+•Suggestion(1 charge)
+•Crushing despair(2 charges)
+•Mind fog(2 charges)
+•Suggestion, mass(3 charges)
+Strong enchantment; CL 13th; Craft Staff,
+crushing despair, mass suggestion, mind fog,
+sleep, suggestion, Tasha’s hideous laughter; Price
+65,000 gp.
+Evocation:Usually very smooth and
+carved from hickory, willow, or yew, this
+staff allows use of the following spells:
+•Magic missile(1 charge)
+•Shatter (1 charge)
+•Fireball (1 charge)
+•Ice storm(2 charges)
+•Wall of force(2 charges)
+•Chain lightning(3 charges)
+Strong evocation; CL 13th;
+Craft Staff, chain lightning, fire-
+ball,  ice  storm,  magic  missile,
+shatter,  wall  of  force;  Price
+65,000 gp.
+Fire:Crafted from bronze-
+wood with brass bindings, this
+staff allows use of the following
+spells:
+•Burning hands(1 charge)
+•Fireball(1 charge)
+•Wall of fire(2 charges)
+Moderate evocation; CL 8th; Craft
+Staff, burning hands, fireball, wall of fire;
+Price 17,750 gp.
+Frost: Tipped on either end with a glis-
+tening diamond, this rune-covered staff allows use of the
+following spells:
+•Ice storm(1 charge)
+•Wall of ice(1 charge)
+•Cone of cold(2 charge)
+Moderate evocation; CL 10th; Craft Staff, cone of cold, ice storm,
+wall of ice; Price 56,250 gp. 
+Healing: This white ash staff, with inlaid silver runes, allows
+use of the following spells:
+•Lesser restoration(1 charge)
+•Cure serious wounds (1 charge)
+•Remove blindness/deafness(2 charges)
+•Remove disease(3 charges)
+Moderate conjuration; CL 8th; Craft Staff, cure serious wounds,
+lesser restoration, remove blindness/deafness, remove disease; Price
+27,750 gp.
+Illusion:This staff is made from ebony or other dark wood and
+carved into an intricately twisted, fluted, or spiral shape. It allows
+use of the following spells:
+•Disguise self(1 charge)
+•Mirror image(1 charge)
+•Major image(1 charge)
+•Rainbow pattern(2 charges)
+•Persistent image (2 charges)
+•Mislead(3 charges)
+Strong illusion; CL 13th; Craft Staff, disguise self, major image,
+mirror image, persistent image, project image, rainbow pattern; Price
+65,000 gp.
+Illumination: This staff is usually sheathed in silver and deco-
+rated with sunbursts. It allows use of the following spells:
+•Dancing lights(1 charge)
+•Flare(1 charge)
+•Daylight(2 charges)
+•Sunburst(3 charges) 
+Strong evocation; CL 15th; Craft Staff, dancing lights, daylight,
+flare, sunburst; Price 48,250 gp.
+Life: Made of thick oak shod in gold, this staff allows use of the
+following spells:
+•Heal(1 charge)
+•Raise dead(5 charges)
+Moderate conjuration; CL 11th; Craft Staff, heal, resurrection;
+Price 155,750 gp. 
+Necromancy:This staff is made from ebony or other dark
+wood and carved with the images of bones and skulls. It allows use
+of the following spells:
+CHAPTER 7:
+MAGIC ITEMS
+Staff of 
+earth and stone
+St aff 
+of frost

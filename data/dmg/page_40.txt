@@ -1,0 +1,128 @@
+Challenge Ratings for Traps
+Traps vary considerably. Those presented in this book
+(see pages 70–74) have Challenge Ratings as-
+signed to them. For traps you and your players
+create, as a rule of thumb, assign +1 CR for
+every 2d6 points of damage the trap deals.
+For magic traps, start at CR 1 and then assign
++1 CR for every 2d6 points of damage the trap
+deals or +1 for every level of the spell the trap
+simulates. Traps generally shouldn’t have a
+Challenge Rating greater than 10.
+Overcoming  the  challenge  of  a  trap
+involves encountering the trap, either by
+disarming it, avoiding it, or simply sur-
+viving the damage it deals. A trap
+never     discovered     or     never
+bypassed was not encountered
+(and  hence  provides  no  XP
+award).
+Modifying XP Awards
+and Encounter Levels
+An orc  warband  that  attacks
+the  PCs  by  flying  over  them
+on  primitive  hang  gliders  and
+dropping  large  rocks  is  not  the
+same encounter as one in which
+the orcs just charge in with spears.
+Sometimes, the circumstances give the
+characters’  opponents  a  distinct  advan-
+tage.  Other  times,  the  PCs  have  an
+advantage.  Adjust  the  XP  award  and  the
+EL  depending  on  how  greatly  circum-
+stances change the encounter’s difficulty.
+Encounters  of  EL  2  or  lower  are  the
+exception.  They  increase  and  decrease  in
+proportion  to  the  change  in  XP.  For  example,
+an  EL  1  encounter  that’s  twice  as  difficult  as
+normal is EL 2, not EL 3.
+You can, of course, increase or decrease XP
+by smaller amounts, such as +10% or –10%,
+and just eyeball the EL.
+Modify all ELs and experience rewards
+as you see fit, but keep these points in
+mind.
+•Experience  points  drive  the  game.
+Don’t be too stingy or too generous.
+•Most encounters do not need modi-
+fying.  Don’t  waste  a  lot  of  time
+worrying   about   the   minutiae.
+Don’t worry about modifying encounters until after you have
+played the game a while.
+•Bad  rolls  or  poor  choices  on  the  PCs’
+part  should  not  modify  ELs  or  XP
+awards. If the encounter is difficult
+because the players were unlucky
+or  careless,  they  don’t  get  more
+experience.
+•Just   because   the   PCs   are
+worn  down  from  prior  encoun-
+ters does not mean that later (more
+difficult)   encounters   should   gain
+higher  awards.  Judge  the  difficulty  of  an
+encounter on its own merits.
+Assigning Ad Hoc XP Awards
+Sometimes the XP table doesn’t quite
+cover a given situation. If two orcs
+are an EL 1 encounter, four orcs EL
+3, eight orcs EL 5, and sixteen orcs
+EL 7 (maybe), are thirty-two orcs
+an EL 9 encounter? A party of 9th
+level characters almost certainly
+can wipe them out with ease. By 9th
+level, a character’s defenses are so
+good that a standard orc cannot hit
+him or her, and one or two spells
+cast by a character of that level
+could destroy all thirty-two
+orcs. At such a point, your
+judgment overrules what-
+ever the XP table would
+say.
+An encoun-
+ter so easy that it
+uses up none or
+almost none of
+the  PCs’  resources
+shouldn’t result in any
+XP award at all, while a
+dangerous encounter that
+the PCs overcome handily
+through  luck  or  excellent
+strategy is worth full XP. How-
+ever, an encounter in which
+the PCs defeat something far
+above their own level (CRs higher
+than their level by eight or more) was
+probably the result of fantastic luck or a
+unique set of circumstances, and thus a full
+XP award may not be appropriate. You’re going
+to have to make these decisions. As a guideline, the min-
+imum and maximum awards given on Table 2–6: Experi-
+ence Point Awards (Single Monster) for a group of a given
+level are the least and most XP you should award a group.
+Circumstances in your campaign may alter this, however.
+You might decide that an EL 2 encounter is worth at least a little to
+39
+CHAPTER 2:
+USING 
+THE RULES
+CircumstanceXP Award AdjustmentEL Adjustment
+Half as difficultXP × 1/2EL –2
+Significantly less difficultXP × 2/3EL –1
+Significantly more difficult    XP × 1-1/2EL +1
+Twice as difficultXP × 2EL +2
+VARIANT: FREE-FORM EXPERIENCE
+Instead  of  calculating  experience  points,  just  hand  out  about  75  XP
+times  the  average  party  level  for  each  character  in  the  party  per
+balanced encounter. Hand out more for tough encounters: 100 XP per
+level per character, or even 150 XP. Award less for easy ones: 25 to 50
+XP.  Alternatively,  you  could  give  out  300  XP  times  the  average  party
+level for each character per session, modified slightly for tough or easy
+sessions.
+It’s very simple to track how quickly characters gain levels using this
+system.  The  drawback  is  that  it  generalizes  PC  rewards,  rather  than
+granting  them  based  on  specific  accomplishments.  You  risk  players
+becoming dissatisfied by gaining the same reward every session.
+pqqqqrs
+pqqqqrs

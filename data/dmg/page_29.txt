@@ -1,0 +1,120 @@
+28
+You can rule that certain damaging effects deal nonlethal
+damage when it seems appropriate. For example, a variant rule
+given in Chapter 8 (page 303) states that you can make the first
+1d6 of falling damage nonlethal damage. You can do so on a case-
+by-case basis if you wish. If a villager throws a rock at a knight,
+that also might be nonlethal damage. Certain types of damage,
+however,  should  never  be  nonlethal  damage—puncturing
+wounds and most damage from energy attacks, such as fire.
+EFFECT OF WEAPON SIZE
+When weapons change size, many other factors change at the
+same time. The Player ’s Handbookdiscusses the effect of size on
+weight and cost. According to Weapon Qualities on page 114 of
+that book, costs given are for Small and Medium versions of the
+weapons. Large versions cost twice as much. The same section says
+to halve the given weight for Small versions, and double it for
+Large versions.
+To calculate the damage a larger- or smaller-than-normal
+weapon deals, first determine how many size categories it changes
+from Medium. A longsword (normally Medium, commonly used
+by Medium beings) in the hand of a Huge cloud giant increases
+two size categories. For each category change, consult the accom-
+panying tables, finding the weapon’s original damage in the left
+column and reading across to the right to find its new damage.
+Table 2–2: Increasing Weapon Damage by Size
+MediumNumber of Size Categories Increased
+DamageOneTwoThreeFour
+1d21d31d41d61d8
+1d31d41d61d82d6
+1d41d61d82d63d6
+1d61d82d63d64d6
+1d82d63d64d66d6
+1d102d83d84d86d8
+1d123d64d66d68d6
+2d42d63d64d66d6
+2d63d64d66d68d6
+2d83d84d86d88d8
+2d104d86d88d812d8
+Table 2–3: Decreasing Weapon Damage by Size
+MediumNumber of Size Categories Decreased
+DamageOneTwoThreeFour
+1d21———
+1d31d21——
+1d41d31d21—
+1d61d41d31d21
+1d81d61d41d31d2
+1d101d81d61d41d3
+1d121d101d81d61d4
+2d41d61d41d31d2
+2d61d101d81d61d4
+2d82d61d101d81d6
+2d102d82d61d101d8
+A weapon can only decrease in size so far. Weapons that deal less
+than 1 point of damage have no effect. Once a weapon only deals 1
+point of damage, it’s not a weapon if it shrinks further. 
+SPLASH WEAPONS
+A splash weapon is a ranged weapon that breaks apart on impact,
+splashing or scattering its contents over its target and nearby crea-
+tures or objects. Most splash weapons consist of liquids, such as
+acid or holy water, in breakable vials such as glass flasks. Attacks
+with splash weapons are ranged touch attacks. Attacking with
+splash weapons is covered on page 158 of the Player ’s Handbook.
+Refer to pages 128 and 129 of the Player ’s Handbookfor specifics
+of certain splash weapons.
+AREA SPELLS
+Spells that affect an area are not targeted on a single creature,
+but on a volume of space, and thus must fit into the grid in order
+for you to adjudicate who is affected and who is not. Realize
+ahead of time that you will have to make ad hoc rulings when
+applying areas to the grid. Use the visual aids on pages 305-307
+and the following information as guidelines.
+Bursts and Emanations:To employ the spell using a grid, the
+caster needs to designate an intersection of two lines on the grid as
+the center of the effect. From that intersection, it’s easy to measure
+a radius using the scale on the grid. If you were to draw a circle
+using the measurements on the grid, with the chosen intersection
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: INSTANT KILL
+When you or a player rolls a natural 20 on an attack roll, a critical roll
+is made to see if a critical hit is scored. If that critical roll is also a 20,
+that’s considered a threat for an instant kill. Now a third roll, an instant
+kill roll, is made. If that roll scores a hit on the target in question (just
+like  a  normal  critical  roll  after  a  threat),  the  target  is  instantly  slain.
+Creatures immune to critical hits are also immune to instant kills.
+The instant kill variant only applies to natural 20s, regardless of the
+threat  range  for  a  combatant  or  weapon.  (Otherwise  weapons,  feats,
+and magical powers that improve threat ranges would be much more
+powerful than they are intended to be.)
+The instant kill variant makes a game more lethal and combat more
+random. In any contest, an increase in randomness improves the odds
+for  the  underdog.  Since  the  PCs  win  most  fights,  a  rule  that  makes
+combat more random hurts the PCs more than it hurts their enemies.
+VARIANT: SOFTER CRITICAL HITS
+Instead  of  making  critical  hits  more  lethal,  you  can  make  them  less
+lethal.  Do  so  by  reducing  each  weapon’s  threat  range  one  step.
+Weapons with a threat range of 20 and a ×2 multiplier deal no critical
+hits at all.
+StandardSofterStandardSofter
+Threat RangeThreat RangeMultiplierMultiplier
+20—×2—
+19–2020×3×2
+18–2019–20×4×3
+This  variant  makes  feats  and  magical  powers  that  improve  threat
+ranges  less  valuable,  it  slightly  decreases  the  value  of  a  monster’s
+immunity to critical hits, and it reduces randomness in combat.
+VARIANT: CRITICAL MISSES (FUMBLES)
+If  you  want  to  model  the  chance  that  in  combat  a  character  could
+fumble his weapon, then when a player rolls a 1 on his attack roll, have
+him make a DC 10 Dexterity check. If he fails, his character fumbles. You
+need to decide what it means to fumble, but in general, that character
+should probably lose a turn of activity as he regains his balance, picks
+up a dropped weapon, clears his head, steadies himself, or whatever.
+Fumbles are not appropriate to all games. They can add excitement
+or  interest  to  combat,  but  they  can  also  detract  from  the  fun.  They
+certainly add more randomness to combat. Add this variant rule only
+after careful consideration.
+pqqqqrs
+pqqqqrs

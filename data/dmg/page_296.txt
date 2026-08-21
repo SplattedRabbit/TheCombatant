@@ -1,0 +1,134 @@
+Spectres, wraiths, and a few other creatures lack physical
+bodies. Such creatures are insubstantial and can’t be touched by
+nonmagical matter or energy. Likewise, they cannot manipulate
+objects or exert physical force on objects. However, incorporeal
+beings have a tangible presence that sometimes seems like a phys-
+ical attack (such as the touch of a spectre) against a corporeal crea-
+ture. Incorporeal creatures are present on the same plane as the
+characters, and characters have some chance to affect them.
+Incorporeal creatures can be harmed only by other incorporeal
+creatures, by magic weapons, or by spells, spell-like effects, or
+supernatural effects. They are immune to all nonmagical attack
+forms. They are not burned by normal fires, affected by natural
+cold, or harmed by mundane acids.
+Even when struck by magic or magic weapons, an incorporeal
+creature has a 50% chance to ignore any damage from a corporeal
+source—except for a force effect, such as magic missile,or damage
+dealt by a ghost touch weapon.
+Incorporeal creatures are immune to critical hits, extra damage
+from being favored enemies, and from sneak attacks. They move
+in any direction (including up or down) at will. They do not need
+to walk on the ground. They can pass through solid objects at will,
+although they cannot see when their eyes are within solid matter.
+Incorporeal creatures hiding inside solid objects get a +2 cir-
+cumstance bonus on Listen checks, because solid objects carry
+sound well. Pinpointing an opponent from inside a solid object
+uses the same rules as pinpointing invisible opponents (see Invis-
+ibility, below).
+Incorporeal creatures are inaudible unless they decide to make
+noise.
+The physical attacks of incorporeal creatures ignore material
+armor, even magic armor, unless it is made of force (such as mage
+armor or bracers of armor) or has the ghost touch ability.
+Incorporeal creatures pass through and operate in water as
+easily as they do in air.
+Incorporeal creatures cannot fall or take falling damage.
+Corporeal creatures cannot trip or grapple incorporeal crea-
+tures.
+Incorporeal creatures have no weight and do not set off traps
+that are triggered by weight.
+Incorporeal creatures do not leave footprints, have no scent,
+and make no noise unless they manifest, and even then they only
+make noise intentionally.
+INVISIBILITY
+An invisible quasit is spying on the adventurers when Lidda gets a
+strange feeling. “ There’s something here,” she whispers, and sig-
+nals for silence as she tries to locate it by ear.
+The ability to move about unseen is wonderful, but it’s not fool-
+proof. While they can’t be seen, invisible creatures can be heard,
+smelled, or felt.
+Invisibility makes a creature undetectable by vision, including
+darkvision.
+Invisibility does not, by itself, make a creature immune to criti-
+cal hits, but it does make the creature immune to extra damage
+from being a ranger’s favored enemy and from sneak attacks.
+A creature can generally notice the presence of an active invis-
+ible creature within 30 feet with a DC 20 Spot check. The observer
+gains a hunch that “something’s there” but can’t see it or target it
+accurately with an attack. A creature who is holding still is very
+hard to notice (DC 30). An inanimate object, an unliving creature
+holding still, or a completely immobile creature is even harder to
+spot (DC 40). It’s practically impossible (+20 DC) to pinpoint an
+invisible creature’s location with a Spot check, and even if a char-
+acter succeeds on such a check, the invisible creature still benefits
+from total concealment (50% miss chance).
+A creature can use hearing to find an invisible creature. A
+character can make a Listen check for this purpose as a free
+action each round. A Listen check result at least equal to the
+invisible creature’s Move Silently check result reveals its pres-
+ence. (A creature with no ranks in Move Silently makes a Move
+Silently check as a Dexterity check to which an armor check
+penalty applies.) A successful check lets a character hear an
+invisible creature “over there somewhere.” It’s practically impos-
+sible to pinpoint the location of an invisible creature. A Listen
+check that beats the DC by 20 pinpoints the invisible creature’s
+location.
+Listen Check DCs to Detect Invisible Creatures
+Invisible Creature Is . . .DC
+In combat or speaking0
+Moving at half speedMove Silently check result
+Moving at full speedMove Silently check result –4
+Running or chargingMove Silently check result –20
+Some distance away+1 per 10 feet
+Behind an obstacle (door)+5
+Behind an obstacle (stone wall)+15
+A creature can grope about to find an invisible creature. A charac-
+ter can make a touch attack with his hands or a weapon into two
+adjacent 5-foot squares using a standard action. If an invisible
+target is in the designated area, there is a 50% miss chance on the
+touch attack. If successful, the groping character deals no damage
+but has successfully pinpointed the invisible creature’s current
+location. (If the invisible creature moves, its location, obviously, is
+once again unknown.)
+If an invisible creature strikes a character, the character struck
+still knows the location of the creature that struck him (until, of
+course, the invisible creature moves). The only exception is if the
+invisible creature has a reach greater than 5 feet. In this case, the
+struck character knows the general location of the creature but
+has not pinpointed the exact location.
+If a character tries to attack an invisible creature whose loca-
+tion he has pinpointed, he attacks normally, but the invisible
+creature still benefits from full concealment (and thus a 50%
+miss chance). At your option, a particularly large and slow crea-
+ture might get a smaller miss chance. If a wizard projects a disin-
+tegrateray into the center of an invisible Huge black pudding,
+you could reduce or ignore the miss chance; it’s pretty hard to
+miss something that big.
+If a character tries to attack an invisible creature whose loca-
+tion he has not pinpointed, have the player choose the space
+where the character will direct the attack. If the invisible crea-
+ture is there, conduct the attack normally. If the enemy’s not
+there, roll the miss chance as if it were there, don’t let the player
+see the result, and tell him that the character has missed. That
+way the player doesn’t know whether the attack missed because
+the enemy’s not there or because you successfully rolled the miss
+chance.
+If an invisible character picks up a visible object, the object
+remains visible. One could coat an invisible object with flour to at
+least keep track of its position (until the flour fell off or blew
+away). An invisible creature can pick up a small visible item and
+hide it on his person (tucked in a pocket or behind a cloak) and
+render it effectively invisible.
+Invisible creatures leave tracks. They can be tracked normally.
+Footprints in sand, mud, or other soft surfaces can give enemies
+clues to an invisible creature’s location.
+An invisible creature in the water displaces water, revealing its
+location. The invisible creature, however, is still hard to see and
+benefits from concealment.
+A creature with the scent ability (page 298) can detect an invis-
+ible creature as it would a visible one.
+A creature with the Blind-Fight feat has a better chance to hit an
+invisible creature. Roll the miss chance twice, and he misses only
+295
+CHAPTER 8:
+GLOSSARY

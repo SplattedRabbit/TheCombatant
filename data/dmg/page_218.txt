@@ -1,0 +1,147 @@
+enhancement bonuses). All magic armor is also masterwork
+armor, reducing armor check penalties by 1.
+In addition to an enhancement bonus, armor may have special
+abilities, such as the ability to resist critical hits or to help the
+wearer hide. Special abilities count as additional bonuses for
+determining the market value of an item, but do not improve
+AC. A suit of armor cannot have an effective bonus (enhance-
+ment plus special ability bonus equivalents) higher than +10. A
+suit of armor with a special ability must have at least a +1
+enhancement bonus.
+A suit of armor or a shield may be made of an unusual material.
+Roll d%: 01–95 indicates that the item is of a standard sort, and
+96–100 indicates that it is made of a special substance such as
+adamantine or mithral (see Special Materials, page 283).
+Armor is always created so that even if the type of armor comes
+with boots or gauntlets, these pieces can be switched for other
+magic boots or gauntlets.
+Caster Level for Armor and Shields: The caster level of a
+magic shield or magic armor with a special ability is given in the
+item description. For an item with only an enhancement bonus,
+the caster level is three times the enhancement bonus. If an item
+has both an enhancement bonus and a special ability, the higher of
+the two caster level requirements must be met.
+Shields:Shield enhancement bonuses stack with armor en-
+hancement bonuses, so that a +1 heavy steel shieldand +1 chainmail
+grant a total bonus of +9 to AC. Shield enhancement bonuses do
+not act as attack or damage bonuses when the shield is used in a
+bash. The bashing special ability, however, does grant a +1 bonus
+on attack and damage rolls (see the special ability description).
+You could, in fact, build a shield that also acted as a magic
+weapon, but the cost of the enhancement bonus on attack rolls
+would need to be added into the cost of the shield and its
+enhancement bonus to AC. For example, a +1 bucklerwith +1
+shield spikeswould cost 3,475 gp (15 gp for the basic buckler, 150
+to make it masterwork, 1,000 for the +1 bonus to AC, 10 gp for the
+spikes, 300 to make them masterwork, and 2,000 to make the
+spikes a +1 weapon).
+As with armor, special abilities built into the shield add to the
+market value in the form of additions to the bonus of the shield,
+although they do not improve AC. A shield cannot have an effec-
+tive bonus (enhancement plus special ability bonus equivalents)
+higher than +10. A shield with a special ability must have at least a
++1 enhancement bonus.
+Shield Hardness and Hit Points: Each +1 of enhancement
+bonus adds 2 to a shield’s hardness and +10 to its hit points. For
+example, a +3 heavy steel shieldhas hardness 16 and 50 hp. (See
+Table 8–8, page 158 of the Player ’s Handbook,for common shield
+hardness and hit points.)
+Activation:Usually a character benefits from magic armor and
+shields in exactly the way a character benefits from nonmagical
+armor and shields—by wearing them. If armor or a shield has a
+special ability that the user needs to activate (such as with an
+animated shield), then the user usually needs to utter the com-
+mand word (a standard action).
+Random Generation:To generate magic armor and shields
+randomly, first roll on Table 7–2: Armor and Shields, and then
+roll on Table 7–3: Random Armor Type or Table 7–4: Random
+Shield Type as indicated. Use Table 7–5: Armor Special Abilities,
+Table 7–6: Shield Special Abilities, Table 7–7: Specific Armors,
+or Table 7–8: Specific Shields as further indicated. For example,
+on Table 7–2, rolling a 94 on the Medium column indicates a
+special ability and another roll. The second roll is a 29, indicat-
+ing +2 armor. A roll of 64 on Table 7–5: Armor Special Abilities
+indicates electricity resistance. Finally, a roll of 44 on Table 7–3:
+Random Armor Type indicates chainmail, so the result is +2
+chainmail of electricity resistance.
+Armor for Unusual Creatures:The cost of armor for nonhu-
+manoid creatures, as well as for creatures who are neither Small
+nor Medium, varies from the values given on Tables 7–3 and 7–4,
+as described in the Armor for Unusual Creatures sidebar on page
+123 of the Player ’s Handbook.The cost of the masterwork quality
+and any magical enhancement remains the same.
+Magic Armor and Shield Special Ability Descriptions
+Most magic armor and shields only have enhancement bonuses.
+Such items can also have one or more of the special abilities
+detailed below. Armor or a shield with a special ability must have
+at least a +1 enhancement bonus.
+Acid Resistance: A suit of armor or a shield with this property
+normally has a dull gray appearance. The armor absorbs the first
+10 points of acid damage per attack that the wearer would nor-
+mally take (similar to the resist energyspell).
+Faint abjuration; CL 3rd; Craft Magic Arms and Armor, resist
+energy; Price +18,000 gp.
+Acid Resistance, Improved:As acid resistance, except it
+absorbs the first 20 points of acid damage per attack. 
+Moderate abjuration; CL 7th; Craft Magic Arms and Armor,
+resist energy;Price +42,000 gp.
+217
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–5: Armor Special Abilities
+Base Price
+Minor   Medium  MajorSpecial AbilityModifier
+01–2501–05    01–03Glamered+2,700 gp
+26–3206–0804Fortification, light+1 bonus
+1
+33–5209–11—Slick+3,750 gp
+53–7212–14—Shadow+3,750 gp
+73–9215–17—Silent moves+3,750 gp
+93–9618–19—Spell resistance (13)+2 bonus
+1
+9720–29    05–07Slick, improved+15,000 gp
+9830–39    08–10Shadow, improved+15,000 gp
+9940–49    11–13Silent moves, improved+15,000 gp
+—50–54    14–16Acid resistance+18,000 gp
+—55–59    17–19Cold resistance+18,000 gp
+—60–64    20–22Electricity resistance+18,000 gp
+—65–69    23–25Fire resistance+18,000 gp
+—70–74    26–28Sonic resistance+18,000 gp
+—75–79    29–33Ghost touch+3 bonus
+1
+—80–84    34–35Invulnerability+3 bonus
+1
+—85–89    36–40Fortification, moderate+3 bonus
+1
+—90–94    41–42Spell resistance (15)+3 bonus
+1
+—95–9943Wild+3 bonus
+1
+——44–48Slick, greater+33,750 gp
+——49–53Shadow, greater+33,750 gp
+——54–58Silent moves, greater+33,750 gp
+——59–63Acid resistance, improved+42,000 gp
+——64–68Cold resistance, improved+42,000 gp
+——69–73Electricity resistance, improved  +42,000 gp
+——74–78Fire resistance, improved+42,000 gp
+——79–83Sonic resistance, improved+42,000 gp
+——84–88Spell resistance (17)+4 bonus
+1
+——89Etherealness+49,000 gp
+——90Undead controlling+49,000 gp
+——91–92Fortification, heavy+5 bonus
+1
+——93–94Spell resistance (19)+5 bonus
+1
+——95Acid resistance, greater+66,000 gp
+——96Cold resistance, greater+66,000 gp
+——97Electricity resistance, greater+66,000 gp
+——98Fire resistance, greater+66,000 gp
+——99Sonic resistance, greater+66,000 gp
+100100100Roll twice again
+2
+—
+1 Add to enhancement bonus on Table 7–2: Armor and Shields to
+determine total market price.
+2 If you roll a special ability twice, only one counts. If you roll two
+versions of the same special ability, use the better.

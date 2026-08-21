@@ -1,0 +1,135 @@
+destination named by the owner as long as she has a good idea of
+the location and layout of that destination. It comes to its owner
+from as far away as 300 yards when she speaks the command word.
+The broom of flying has a speed of 40 feet when it has no rider.
+Moderate transmutation; CL 9th; Craft Wondrous Item, over-
+land flight, permanency; Price 17,000 gp; Weight 3 lb.
+Candle of Invocation:Each of these special tapers is dedicated
+to one of the nine alignments. Simply burning the candle gener-
+ates a favorable aura for the individual so doing if the candle’s align-
+ment matches that of the character. Characters of the same align-
+ment as the burning candle add a +2 morale bonus on attack rolls,
+saving throws, and skill checks while within 30 feet of the flame.
+A cleric whose alignment matches the candle’s operates as if
+two levels higher for purposes of determining spells per day if he
+burns the candle during or just prior to his spell preparation
+time. He can even cast spells normally unavailable to him, as if
+he were of that higher level, but only so long as the candle con-
+tinues to burn. Except in special cases (see below), a candle
+burns for 4 hours.
+In addition, burning a candle also allows the owner to cast a gate
+spell, the respondent being of the same alignment as the candle,
+but the taper is immediately consumed in the process. It is pos-
+sible to extinguish the candle simply by blowing it out, so users
+often place it in a lantern to protect it from drafts and the like.
+Doing this doesn’t interfere with its magical properties.
+Strong conjuration; CL 17th; Craft Wondrous Item, gate, creator
+must be same alignment as candle created; Price 8,400 gp; Weight
+1/2 lb.
+Candle of Truth:This white tallow candle, when burned, calls
+into place a zone of truth spell (Will DC 13 negates) in a 5-foot radius
+251
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–29: Major Wondrous Items
+d%ItemMarket Price
+01Dimensional shackles28,000 gp
+02Figurine of wondrous power, obsidian steed28,500 gp
+03Drums of panic30,000 gp
+04Ioun stone, orange30,000 gp
+05Ioun stone, pale green prism30,000 gp
+06Lantern of revealing30,000 gp
+07Robe of blending30,000 gp
+08Amulet of natural armor +432,000 gp
+09Amulet of proof against detection and location35,000 gp
+10Carpet of flying,5 ft. by 10 ft.35,000 gp
+11Golem manual, iron35,000 gp
+12Amulet of health +636,000 gp
+13Belt of giant Strength +636,000 gp
+14Bracers of armor +636,000 gp
+15Cloak of Charisma +636,000 gp
+16Gloves of Dexterity +636,000 gp
+17Headband of intellect +636,000 gp
+18Ioun stone, vibrant purple prism36,000 gp
+19Pearl of power, 6th-level spell36,000 gp
+20Periapt of Wisdom +636,000 gp
+21Scarab of protection38,000 gp
+22Ioun stone, lavender and green ellipsoid40,000 gp
+23Ring gates40,000 gp
+24Crystal ball42,000 gp
+25Golem manual, greater stone44,000 gp
+26Orb of storms48,000 gp
+27Boots of teleportation49,000 gp
+28Bracers of armor +749,000 gp
+29Pearl of power, 7th-level spell49,000 gp
+30Amulet of natural armor +550,000 gp
+31Cloak of displacement, major50,000 gp
+32Crystal ball with see invisibility50,000 gp
+33Horn of Valhalla50,000 gp
+34Crystal ball with detect thoughts51,000 gp
+35Carpet of flying,6 ft. by 9 ft.53,000 gp
+36Amulet of mighty fists +354,000 gp
+37Wings of flying54,000 gp
+38Cloak of etherealness55,000 gp
+39Daern’s instant fortress55,000 gp
+40Manual of bodily health +255,000 gp
+41Manual of gainful exercise +255,000 gp
+42Manual of quickness in action +255,000 gp
+43Tome of clear thought +255,000 gp
+44Tome of leadership and influence +255,000 gp
+45Tome of understanding +255,000 gp
+46Eyes of charming56,000 gp
+47Robe of stars58,000 gp
+48Carpet of flying,10 ft. by 10 ft.60,000 gp
+49Darkskull60,000 gp
+50Cube of force62,000 gp
+51Bracers of armor +864,000 gp
+52Pearl of power, 8th-level spell64,000 gp
+53Crystal ball with telepathy70,000 gp
+54Horn of blasting, greater70,000 gp
+55Pearl of power, two spells70,000 gp
+56Helm of teleportation73,500 gp
+57Gem of seeing75,000 gp
+58Robe of the archmagi75,000 gp
+59Mantle of faith76,000 gp
+60Crystal ball with true seeing80,000 gp
+61Pearl of power, 9th-level spell81,000 gp
+62Well of many worlds82,000 gp
+63Manual of bodily health +382,500 gp
+64Manual of gainful exercise +382,500 gp
+65Manual of quickness in action +382,500 gp
+66Tome of clear thought +382,500 gp
+67Tome of leadership and influence +382,500 gp
+68Tome of understanding +382,500 gp
+69Apparatus of Kwalish90,000 gp
+70Mantle of spell resistance90,000 gp
+71Mirror of opposition92,000 gp
+72Strand of prayer beads, greater95,800 gp
+73Amulet of mighty fists +496,000 gp
+74Eyes of petrification98,000 gp
+75Bowl of commanding water elementals100,000 gp
+76Brazier of commanding fire elementals100,000 gp
+77Censer of controlling air elementals100,000 gp
+78Stone of controlling earth elementals100,000 gp
+79Manual of bodily health +4110,000 gp
+80Manual of gainful exercise +4110,000 gp
+81Manual of quickness in action +4110,000 gp
+82Tome of clear thought +4110,000 gp
+83Tome of leadership and influence +4110,000 gp
+84Tome of understanding +4110,000 gp
+85Amulet of the planes120,000 gp
+86Robe of eyes120,000 gp
+87Helm of brilliance125,000 gp
+88Manual of bodily health +5137,500 gp
+89Manual of gainful exercise +5137,500 gp
+90Manual of quickness in action +5137,500 gp
+91Tome of clear thought +5137,500 gp
+92Tome of leadership and influence +5137,500 gp
+93Tome of understanding +5137,500 gp
+94Efreeti bottle145,000 gp
+95Amulet of mighty fists +5150,000 gp
+96Chaos diamond160,000 gp
+97Cubic gate164,000 gp
+98Iron flask170,000 gp
+99Mirror of mental prowess175,000 gp
+100Mirror of life trapping200,000 gp

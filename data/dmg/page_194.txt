@@ -1,0 +1,105 @@
+efit a character of that class would have gained (bonus metamagic
+or item creation feats, bard or assassin abilities, and so on). This
+essentially means that he adds the level of mystic theurge to the
+level of whatever other arcane spellcasting class and divine spell-
+casting class the character has, then determines spells per day and
+caster level accordingly.
+For example, a 3rd-level cleric/3rd-level wizard who takes a level
+in mystic theurge has the same access to spells as a 4th-level cleric
+and a 4th-level wizard. But he continues to turn undead as a 3rd-
+level cleric, and his wizard familiar won’t gain any new abilities.
+If a character had more than one arcane spellcasting class or
+more than one divine spellcasting class before he became a mystic
+theurge, he must decide to which class he adds each level of
+mystic theurge for the purpose of determining spells per day.
+RED WIZARD
+The Red Wizards are the masters of Thay, the would-be magical
+overlords of the land of Faerûn (in the F
+ORGOTTENR
+EALMS®cam-
+paign setting). They focus on a school of magic more intently than
+any specialist, achieving incredible mastery of magic within a very
+narrow focus. Seen as cruel and evil tyrants by people across the
+world of Toril, a few choose to leave their region, assume secret
+identities, and practice magic without having to worry about polit-
+ical alliances and possible slave uprisings.
+Early in their careers, would-be Red Wizards specialize in a
+school of magic and acquire the Tattoo Focus feat that prepares
+them for entry into the Red Wizard prestige class. All Red Wizards
+have some skill as a specialist wizard, and most follow that path
+exclusively, but a few dabble in other sorts of learning (such as
+combat or divine magic). While it is possible for a sorcerer or bard
+to become a Red Wizard, such misfits are ridiculed in their home-
+land and are incredibly rare.
+Hit Die:d4.
+Requirements
+To qualify to become a Red Wizard, a character must fulfill all the
+following criteria. 
+Race:Human from Thay.
+Alignment:Any nongood.
+Skills:Spellcraft 8 ranks.
+Feats:Tattoo Focus  (see New Features of the Red Wizard,
+below) plus a total of three metamagic feats or item creation feats.
+Spells:Able to cast 3rd-level arcane spells.
+Class Skills
+The Red Wizard’s class skills (and the key ability for each skill) are
+Bluff (Cha), Concentration (Con), Craft (Int), Intimidate (Cha),
+Knowledge (all skills taken individually) (Int), Profession (Wis),
+Spellcraft (Int). See Chapter 4 of the Player ’s Handbook for skill
+descriptions.
+Skill Points at Each Level:2 + Int modifier.
+Class Features
+All the following are class features of the Red Wizard prestige
+class.
+Weapon and Armor Proficiency:Red Wizards gain no profi-
+ciency with any weapon or armor.
+Spells per Day:A Red Wizard’s training focuses on arcane
+spells. Thus, when a new Red Wizard level is gained, the character
+gains new spells per day as if he had also gained a level in whatever
+arcane spellcasting class he belonged to before he added the pres-
+tige class. He does not, however, gain any other benefit a character
+of that class would have gained (bonus metamagic or item cre-
+ation feats, bard or assassin abilities, and so on). This essentially
+means that he adds the level of Red Wizard to the level of what-
+ever other arcane spellcasting class the character has, then deter-
+mines spells per day and caster level accordingly.
+If a character had more than one arcane spellcasting class
+before he became a Red Wizard, he must decide to which class he
+adds each level of Red Wizard for the purpose of determining
+spells per day.
+Enhanced Specialization:Upon becoming a Red Wizard, a
+character increases his devotion to his wizard school of specializa-
+tion. In exchange for this, the Red Wizard must sacrifice study in
+one or more schools. The Red Wizard must choose an additional
+prohibited school or schools using the rules in the Player ’s Hand-
+book.He can never again learn spells from those prohibited
+schools. He cannot choose the same prohibited schools he chose as
+193
+CHAPTER 6:
+CHARACTERS
+Table 6–15: The Red Wizard
+BaseFortRefWill
+LevelAttack Bonus   SaveSaveSaveSpecialSpells per Day
+1st+0+0+0+2Enhanced specialization,  specialist defense +1+1 level of existing arcane spellcasting class
+2nd+1+0+0+3Spell power +1+1 level of existing arcane spellcasting class
+3rd+1+1+1+3Specialist defense +2+1 level of existing arcane spellcasting class
+4th+2+1+1+4Spell power +2+1 level of existing arcane spellcasting class
+5th+2+1+1+4Bonus feat, circle leader+1 level of existing arcane spellcasting class
+6th+3+2+2+5Spell power +3+1 level of existing arcane spellcasting class
+7th+3+2+2+5Specialist defense +3, scribe tattoo+1 level of existing arcane spellcasting class
+8th+4+2+2+6Spell power +4+1 level of existing arcane spellcasting class
+9th+4+3+3+6Specialist defense +4+1 level of existing arcane spellcasting class
+10th+5+3+3+7Great circle leader, spell power +5+1 level of existing arcane spellcasting class
+Table 6–14: The Mystic Theurge
+BaseFortRefWill
+LevelAttack Bonus   SaveSaveSaveSpells per Day
+1st+0+0+0+2+1 level of existing arcane spellcasting class/+1 level of existing divine spellcasting class
+2nd+1+0+0+3+1 level of existing arcane spellcasting class/+1 level of existing divine spellcasting class
+3rd+1+1+1+3+1 level of existing arcane spellcasting class/+1 level of existing divine spellcasting class
+4th+2+1+1+4+1 level of existing arcane spellcasting class/+1 level of existing divine spellcasting class
+5th+2+1+1+4+1 level of existing arcane spellcasting class/+1 level of existing divine spellcasting class
+6th+3+2+2+5+1 level of existing arcane spellcasting class/+1 level of existing divine spellcasting class
+7th+3+2+2+5+1 level of existing arcane spellcasting class/+1 level of existing divine spellcasting class
+8th+4+2+2+6+1 level of existing arcane spellcasting class/+1 level of existing divine spellcasting class
+9th+4+3+3+6+1 level of existing arcane spellcasting class/+1 level of existing divine spellcasting class
+10th+5+3+3+7+1 level of existing arcane spellcasting class/+1 level of existing divine spellcasting class

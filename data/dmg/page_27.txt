@@ -1,0 +1,128 @@
+26
+make it a little harder on the character who readies an action and
+doesn’t take that action when the opportunity presents itself. You
+have two options.
+•Allow the character to forgo the action at the expense of losing
+the readied action.
+•Allow the character to attempt a DC 15 Wisdom check to avoid
+taking the readied action. Thus, if a character covers a door with
+a  crossbow,  he  can  make  a  Wisdom  check  to  keep  from  firing
+the  crossbow  when  his  friend  comes  through  the  door.  A
+successful check means that he doesn’t fire at his friend, and is
+still  ready  to  shoot  the  ghoul  chasing  the  friend.  A  failure
+means  he  completes  the  action  he  readied  and  shoots  the  first
+creature through the door—his friend.
+Smart players are going to learn that being specific is often bet-
+ter than making a general statement. If a character is covering a
+door with a crossbow, he might say, “I shoot the first enemy that
+comes through the door.” Although players can benefit from
+being specific, you should decide if a certain set of conditions is
+too specific. “I cover the door with my crossbow so that I shoot the
+first unwounded ghoul that comes through” might be too specific,
+because it’s not necessarily easy to tell an unwounded ghoul from
+a wounded one, especially when the judgment must be made in an
+instant. Ultimately, it’s your call.
+Don’t allow players to use the ready action outside combat.
+While the above examples are all acceptable in the middle of an
+encounter, a player cannot use the ready action to cover a door
+with his crossbow outside combat. It’s okay for a player to state
+that he’s covering the door, but what that means is that if some-
+thing comes through the door he’s unlikely to be caught unaware.
+If the character coming through the door wasn’t aware of him, he
+gets an extra standard action because he surprised the other char-
+acter, and so he can shoot the weapon. Otherwise, he still needs to
+roll initiative for his character normally.
+ATTACK ROLLS
+Rolling a d20 to see if an attack hits is the bread and butter of com-
+bat encounters. It’s almost certainly the most common die roll in
+any campaign. Because of that, these rolls run the risk of becom-
+ing boring. When a roll as exciting and important as one that
+determines success or failure in combat becomes dull, you’ve got
+to do something about it.
+Attack rolls can be boring if a player thinks that hitting is a fore-
+gone conclusion or that his character has no chance to hit. One
+way that the rules address this potential problem is by providing
+decreasing attack bonuses for multiple attacks. Even if a charac-
+ter’s primary attack always hits whatever he fights, that’s not true
+of his secondary or tertiary attacks.
+One thing that can keep attack rolls from becoming humdrum
+is good visual description. It’s not just “a hit,” it’s a slice across the
+dragon’s neck, bringing forth a gout of foul, draconic ichor. See
+below for more advice on description.
+Critical Hits
+When someone gets a 20 on an attack roll, you should be sure to
+point out that this is a threat, not a critical hit. Calling it a critical
+hit raises expectations that might be dashed by the actual critical
+roll. When a critical hit is achieved, a vital spot on the creature was
+hit. This is an opportunity for you to give the players some vivid
+description to keep the excitement high: “ The mace blow hits the
+orc squarely on the side of the head. He lets out a groan, and his
+knees buckle from the impact.”
+Certain creatures are immune to critical hits because they do
+not have vital organs, points of weakness, or differentiation from
+one portion of the body to another. A stone golem is a solid,
+human-shaped mass of rock. A ghost is all insubstantial vapor. A
+gray ooze has no front, no back, and no middle.
+DAMAGE
+Since combat is a big part of the game, handling damage is a big
+part of being the DM.
+Nonlethal Damage
+When running a combat, make sure that you describe non-
+lethal and lethal damage differently. The distinction should
+be clear—both in the players’ imaginations and on their char-
+acter sheets.
+Use nonlethal damage to your advantage. It is an invaluable tool
+if your adventure plans involve the PCs’ capture or defeat, but you
+don’t want to risk killing them. However, if the PCs’ opponents are
+dealing nonlethal damage more often than not, the players begin
+to lose any feeling of their characters being threatened. Use non-
+lethal damage sparingly, but to good effect.
+Players, in general, hate for their characters to be captured.
+When your NPCs start dealing nonlethal damage to the charac-
+ters, the players may actually get more worried than if they were
+taking lethal damage!
+CHAPTER 2:
+USING 
+THE RULES
+BEHIND THE CURTAIN: CRITICAL HITS
+Critical hits are in the game to add moments of particular excitement.
+Critical hits, however, are deadly. The PCs, over the course of a single
+game session, let alone a campaign, are subject to many more attack
+rolls than any given NPC. That makes sense, since the PCs are in every
+battle, and most NPCs are in just one (the one in which the PCs defeat
+them, usually). Thus, more critical hits are going to be dealt upon any
+single PC than any single NPC (and the NPC was probably not going
+to survive the encounter anyway). Any given PC is more likely to survive
+an  encounter—but  a  critical  hit  against  the  character  can  change  all
+that. Be aware of this potential, and decide how you want to deal with
+it ahead of time.
+The reason that critical hits multiply all damage, rather than just the
+die roll, is so that they remain significant at high levels. When a high-
+level fighter adds +5 to his damage roll from magic and +10 from his
+magically  enhanced  strength,  the  result  of  the  1d8  damage  roll  from
+his  longsword  becomes  trivial,  even  if  doubled  by  a  critical  hit.
+Multiplying  all  damage,  the  roll  and  the  bonuses,  makes  critical  hits
+particularly  dangerous.  In  fact,  they  can  completely  determine  the
+course  of  a  battle  if  one  or  two  are  dealt.  That’s  why  they  make  the
+game both more interesting and more uncontrollable.
+Remember, a critical hit feels like a lot of damage, but the difference
+between  a  double-damage  critical  hit  and  a  normal  hit  is  no  greater
+than  the  difference  between  a  miss  and  a  hit.  Taking  a  triple-damage
+critical hit, however, is like getting hit an extra two times, and taking a
+quadruple-damage critical hit is like getting hit an extra three times.
+The weapons in the Player’s Handbookare balanced with the follow-
+ing idea in mind: Good weapons that deal triple-damage critical hits do
+so only on a 20. Good weapons that deal double-damage critical hits
+do so on a 19–20. Axes are big and heavy. They’re somewhat difficult
+to  use  efficiently,  but  when  one  does,  the  effect  is  devastating.  An
+executioner uses an axe for this reason. Swords, on the other hand, are
+more  precise—sword  wielders  get  in  decisive  strikes  more  often,  but
+they’re not as crushing as those dealt by axes. A few other factors are
+considered  as  well  (reach,  the  ability  to  use  a  weapon  as  a  ranged
+weapon,  and  more),  but  for  the  most  part,  this  is  the  basic  rule  of
+thumb.  Thus,  it  would  be  a  mistake  to  add  to  the  weapon  list  some
+new weapon that dealt triple-damage critical hits on a 19–20. (Results
+such as this might be possible through magic or feats, but should not
+be a basic quality of any weapon.)
+pqqqqrs
+pqqqqrs

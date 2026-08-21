@@ -1,0 +1,164 @@
+128
+NPC ATTITUDES
+In general, you run an NPC just as a player would run a PC: You
+take whatever actions the character would take, assuming the
+action is possible. That’s why it’s important to determine an NPC’s
+general outlook and characteristics ahead of time if possible, so
+you know how to play the character properly.
+When a PC is dealing with NPCs, you determine the NPCs’ atti-
+tude, and a character may try to use Diplomacy to influence this
+attitude as described on page 72 of the Player ’s Handbook. A charac-
+ter without ranks in Diplomacy makes a Charisma check instead.
+Choose the attitude of an NPC or NPCs based on circum-
+stances. Most people met in a neutral city are indifferent. Most
+guards are indifferent but suspicious, because that’s what’s
+expected of them.
+NPC Charisma Checks to Alter Other NPCs’ Attitudes:
+Should it come up, an NPC can use a Diplomacy or Charisma
+check to influence another NPC. However, NPCs can never
+influence PC attitudes. The players always make their characters’
+decisions.
+FLESHING OUT NPCS
+An NPC with a hacking cough and strong opinions about the king
+is always more interesting than one you portray only as Kiale, the
+2nd-level commoner. Remember that NPCs aren’t just game sta-
+tistics, they are individuals with personalities, quirks, and opin-
+ions. You should strive to make many of the NPCs you use in your
+game memorable characters whom the PCs will either like or dis-
+like depending on how you play them. (Sometimes an NPC is not
+memorable or just leaves the characters flat. That’s okay; not every-
+one is memorable in real life, either.)
+This doesn’t mean that you need to write every NPC’s life story
+beforehand. As a rule of thumb, give an NPC one or two distinc-
+tive traits. Think of these traits as what the characters will remem-
+ber the NPC by. (“Let’s go back and see that guy with the bad
+breath. He seemed to know what he was talking about, even if
+talking to him was unpleasant.”)
+Table 4–24: One Hundred Traits gives suggestions you can
+choose from when creating NPCs (or you can roll them randomly
+from the list if you desire). This table is only the beginning. Many
+more traits could be added to the list. None of the ones listed here
+have any effect on ability scores, skills, or game mechanics. Some
+may seem to interact with game statistics (such as strong body
+odor and Charisma). In such a case, don’t modify the Charisma
+score, but play the NPC so that the trait fits. For example, a char-
+acter with body odor and a medium or high Charisma score is par-
+ticularly personable to overcome the trait. A lawful good character
+with the cruel trait has no patience with or compassion for evil. A
+character with a high Dexterity score who has the trait of walking
+with a limp has sharp reflexes despite the drawback.
+You can also use game statistics to decide traits. If a character
+has a low Constitution score, he tires easily, so he might be over-
+weight. If a character is highly intelligent, he might be quick with
+a joke or a snappy comeback. If a character has a lot of physical
+skills and feats, she’s probably athletic and muscular. Alignments
+also lend themselves to distinctive traits, such as altruism, sadism,
+or a love for freedom.
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–24: One Hundred Traits
+d%Trait
+01Distinctive scar
+02Missing tooth
+03Missing finger
+04Bad breath
+05Strong body odor
+06Pleasant smelling (perfumed)
+07Sweaty
+08Hands shake
+09Unusual eye color
+10Hacking cough
+11Sneezes and sniffles
+12Particularly low voice
+13Particularly high voice
+14Slurs words
+15Lisps
+16Stutters
+17Enunciates very clearly
+18Speaks loudly
+19Whispers
+20Hard of hearing
+21Tattoo
+22Birthmark
+23Unusual skin color
+24Bald
+25Particularly long hair
+27Unusual hair color
+28Walks with a limp
+29Distinctive jewelry
+30Wears flamboyant or outlandish
+clothes
+31Underdressed
+32Overdressed
+33Nervous eye twitch
+34Fiddles and fidgets nervously
+35Whistles a lot
+36Sings a lot
+37Flips a coin
+38Good posture
+39Stooped back
+40Tall
+41Short
+42Thin
+43Fat
+44Visible wounds or sores
+45Squints
+46Stares off into distance
+47Frequently chewing something
+48Dirty and unkempt
+49Clean
+50Distinctive nose
+51Selfish
+52Obsequious
+53Drowsy
+54Bookish
+55Observant
+56Not very observant
+57Overly critical
+58Passionate artist or art lover
+59Passionate hobbyist (fishing, hunting,
+gaming, animals, etc.)
+60Collector (books, trophies, coins,
+weapons, etc.)
+61Skinflint
+62Spendthrift
+63Pessimist
+64Optimist
+65Drunkard
+66Teetotaler
+67Well mannered
+68Rude
+69Jumpy
+70Foppish
+71Overbearing
+72Aloof
+73Proud
+74Individualist
+75Conformist
+76Hot tempered
+77Even tempered
+78Neurotic
+79Jealous
+80Brave
+81Cowardly
+82Careless
+83Curious
+84Truthful
+85Liar
+86Lazy
+87Energetic
+88Reverent or pious
+89Irreverent or irreligious
+90Strong opinions on politics or morals
+91Moody
+92Cruel
+93Uses flowery speech or long words
+94Uses the same phrases over and over
+95Sexist, racist, or otherwise prejudiced
+96Fascinated by magic
+97Distrustful of magic
+98Prefers members of one class over all
+others
+99Jokester
+100No sense of humor (See #26)

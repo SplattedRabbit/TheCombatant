@@ -1,0 +1,137 @@
+owner. The owner may voluntarily seize and stow a stone (to keep
+it safe while she is sleeping, for example), but she loses the bene-
+fits of the stone during that time. Ioun stoneshave AC 24, 10 hit
+points, and hardness 5.
+Regeneration from the pearly white ioun stoneworks like a ring
+of regeneration.(It only cures damage taken while the character is
+using the stone.) The pale lavender and lavender and green stones
+work like a rod of absorption,but absorbing a spell requires a readied
+action, and these stones cannot be used to empower spells. Stored
+spells in the vibrant purple stone must be placed by a spellcaster
+but can be used by anyone (see ring of minor spell storing,page 233).
+Moderate varied; CL 12th; Craft Wondrous Item, creator must
+be 12th level.
+Iron Bands of Bilarro:When initially discovered, this very
+potent item appears to be a 3-inch-diameter rusty iron sphere with
+bandings  on  the  globe.
+When the proper com-
+mand word is spoken and
+the spherical iron device
+is hurled at an opponent,
+the bands expand and then
+contract to bind the target
+creature on a successful
+ranged  touch  attack.  A
+single Large or smaller crea-
+ture can be captured thus
+and  held  immobile  until
+the   command   word   is
+spoken to bring the bands
+into spherical form again.
+The  creature  can  break
+(and ruin) the bands with a DC 30 Strength check or escape them
+with a DC 30 Escape Artist check. Iron bands of Bilarro are usable
+once per day.
+Strong evocation; CL 13th; Craft Wondrous Item, Bigby ’s grasp-
+ing hand; Price 26,000 gp; Weight 1 lb.
+Iron Flask:These special containers are typically inlaid with
+runes of silver and stoppered by a brass plug bearing a seal engraved
+with sigils, glyphs, and special symbols. When the user speaks the
+command word, he can force any creature from another plane into
+the container, provided that creature fails a DC 19 Will save. The
+range of this effect is 60 feet. Only one creature at a time can be so
+contained. Loosing the stopper frees the captured creature.
+The command word can be given only once per day.
+If the individual freeing the captured creature speaks the command
+word, the creature can be forced to serve for 1 hour. If freed without
+the command word, the creature acts according to its natural inclina-
+tions. (It usually attacks the user, unless it perceives a good reason not
+to.) Any attempt to force the same creature into the flask a second time
+provides it a +2 bonus on its saving throw and makes it hostile. A
+newly discovered bottle might contain any of the following:
+d%Contentsd%Contents
+01–50Empty89Demon (glabrezu)
+51–54Large air elemental90Demon (succubus)
+55–58Arrowhawk91Devil (osyluth)
+59–62Large earth elemental92Devil (barbazu)
+63–66Xorn93Devil (erinyes)
+67–70Large fire elemental94Devil (cornugon)
+71–74Salamander95Celestial (avoral)
+75–78Large water elemental96Celestial (ghaele)
+79–82Adult tojanida97Formian myrmarch
+83–84Red slaad98Blue slaad
+85–86Formian taskmaster99Rakshasa
+87Demon (vrock)100Demon (balor) or devil 
+88Demon (hezrou)(pit fiend)—equal chance
+for either
+Strong conjuration; CL 20th; Craft Wondrous Item, trap the soul;
+Price 170,000 gp (empty); Weight 1 lb.
+Keoghtom’s Ointment:A jar of this unguent is 3 inches in di-
+ameter and 1 inch deep and contains five applications. Placed
+upon a poisoned wound or swallowed, the ointment detoxifies any
+poison (as neutralize poison). Applied to a diseased area, it removes
+disease (as remove disease). Rubbed on a wound, the ointment cures
+1d8+5 points of damage (as cure light wounds).
+Faint conjuration; CL 5th; Craft Wondrous Item, cure light wounds,
+neutralize poison, remove disease; Price 4,000 gp; Weight 1/2 lb.
+Lantern of Revealing:This lantern operates as a normal
+hooded lantern. While it is lit, it also reveals all invisible creatures
+and objects within 25 feet of it, just like the spell invisibility purge.
+Faint evocation; CL 5th; Craft Wondrous Item, invisibility purge;
+Price 30,000 gp; Weight 2 lb.
+Lens of Detection:
+This circular prism en-
+ables its user to detect mi-
+nute details, granting a +5
+bonus on Search checks.
+It also aids in following
+tracks, adding a +5 bo-
+nus on Survival checks
+when tracking. The lens
+is about 6 inches in diam-
+eter and set in a frame
+with a handle.
+Moderate divination;
+CL 9th; Craft Wondrous
+Item, true  seeing;  Price
+3,500  gp;  Weight  1  lb.
+Lyre of Building:If the proper chords are struck, a single use of
+this lyre negates any attacks made against all inanimate construc-
+tion (walls, roof, floor, and so on) within 300 feet. This includes the
+effects of a horn of blasting,a disintegratespell, or an attack from a
+ram or similar siege weapon. The lyre can be used in this way once
+per day, with the protection lasting for 30 minutes.
+The lyre is also useful with respect to building. Once a week its
+strings can be strummed so as to produce chords that magically
+construct buildings, mines, tunnels, ditches, or whatever. The ef-
+fect produced in but 30 minutes of playing is equal to the work of
+100 humans laboring for three days. Each hour after the first, a
+character playing the lyre must make a DC 18 Perform (string
+instruments) check. If it fails, she must stop and cannot play the
+lyre again for this purpose until a week has passed.
+Faint transmutation; CL 6th; Craft Wondrous Item, fabricate;
+Price 13,000 gp; Weight 5 lb.
+Mantle of Faith: This holy garment, worn over normal cloth-
+ing, grants damage reduction 5/evil to the character wearing it.
+Strong abjuration [good]; CL 20th; Craft Wondrous Item, stone-
+skin; Price 76,000 gp.
+Mantle of Spell Resistance:This garment, worn over normal
+clothing or armor, grants the wearer spell resistance 21.
+Moderate abjuration; CL 9th; Craft Wondrous Item, spell resist-
+ance; Price 90,000 gp.
+Manual of Bodily Health: This thick tome contains tips on
+health and fitness, but entwined within the words is a powerful
+magical effect. If anyone reads this book, which takes a total of 48
+hours over a minimum of six days, he gains an inherent bonus of
+from +1 to +5 (depending on the type of manual) to his Constitu-
+tion score. Once the book is read, the magic disappears from the
+pages and it becomes a normal book.
+Strong evocation (if miracleis used); CL 17th; Craft Wondrous
+Item, wishor miracle;Price 27,500 gp (+1), 55,000 gp (+2), 82,500 gp
+(+3), 110,000 gp (+4), 137,500 gp (+5); Cost 1,250 gp + 5,100 XP
+(+1), 2,500 gp + 10,200 XP (+2), 3,750 gp + 15,300 XP (+3), 5,000 gp
++ 20,400 XP (+4), 6,250 gp + 25,500 XP (+5); Weight 5 lb.
+261
+CHAPTER 7:
+MAGIC ITEMS
+Ioun stones

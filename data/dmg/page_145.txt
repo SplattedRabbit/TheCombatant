@@ -1,0 +1,130 @@
+144
+BUILDING A 
+DIFFERENT WORLD
+The rules in the previous section leave a lot of room for flexibility
+when it comes to creating your world. However, they assume a few
+basic  aspects:  a  medieval  level  of  technology,  a  Western  European
+flavor, and a moderately historical basis. You might want to reach
+beyond these boundaries and create a very different sort of world.
+SOCIETY/CULTURE
+You can deviate from the typical campaign simply by changing the
+cultural basis of the real-world history upon which it is modeled.
+Establishing an African, Mesoamerican, or Arabian campaign can
+be rewarding and entertaining. Don’t, however, feel limited by the
+culture you have chosen. If you don’t like the fact that most his-
+torical African warriors didn’t wear metal armor, ignore it. Though
+the default cultural assumption for most D&D game worlds is
+medieval Europe, most of those worlds deviate widely from his-
+tory, too. Don’t forget all the other basic factors of setting design
+mentioned earlier, either. Lots of magic that actually works will
+change an Arabian campaign as much as a European one.
+Asian Culture
+As an extended example, assume a DM decides that she wants to
+create a campaign setting based not on Western culture, but Asian.
+Specifically, she wants to tailor her creation (in tone and look) to
+feudal Japan and ancient China. She decides not to change the PC
+race selections but disallows anyone from taking bard as a class,
+ruling that it’s strictly Western. She changes the name of the paladin
+class to samurai, and she adjusts the powers of the class to have a non-
+religious basis by basing the class’s special abilities instead on inner
+kipower. She designs new classes for ninjas, wu jen, and kensai.
+Taking a look at the weapon, armor, and equipment lists in
+Chapter 7 of the Player ’s Handbook,she sees that most of that mate-
+rial fits her needs, but she adds a number of weapons that she finds
+in her research (detailed on Table 5–3: Asian Weapons).
+Asian Weapons: All the weapons on Table 7–5: Weapons in the
+Player ’s Handbook(page 116) work with an Asian campaign. In
+particular, the dagger, trident, shuriken, kama, nunchaku, siang-
+ham, kukri, halfspear, shortspear, longspear, handaxe, shortbow,
+composite shortbow, composite longbow, quarterstaff, light flail,
+light crossbow, sickle, scythe, club, and battleaxe are appropriate.
+The new weapons on Table 5–3: Asian Weapons are detailed below.
+Blowgun: This weapon is used to propel small needles a long dis-
+tance. It is silent, and its needles most often are used to poison foes.
+Needles, Blowgun: These 2-inch-long iron needles are sold in
+small wooden cases of 20. A full case is so light that its weight is
+negligible. The tips of the needles are often coated with poison
+such as greenblood oil, bloodroot, blue whinnis, shadow essence,
+or deathblade.
+Wakizashi: This small, slightly curved short sword is made with
+a skill only masterful weaponsmiths possess. It counts as a master-
+work weapon and grants its wielder a +1 bonus on attack rolls. A
+masterwork weapon’s bonus on attack rolls does not stack with an
+enhancement bonus on attack rolls.
+Kusari-Gama: This small sickle is attached to a length of chain.
+A kusari-gama is an exotic weapon that has reach. It can strike
+opponents 10 feet away. In addition, unlike other weapons with
+reach, it can be used against an adjacent foe. It can be used in all
+respects like a spiked chain (see page 115 of the Player ’s Handbook)
+for trip attacks, disarming other foes, and using its wielder’s Dex-
+terity modifier instead of her Strength modifier in attack rolls.
+Katana: While functionally a bastard sword, this sword is the
+most masterfully made nonmagical weapon in existence. It counts
+as a masterwork weapon and grants its wielder a +1 bonus on
+attack rolls. A katana is too large to use in one hand without spe-
+cial training; thus, it is an exotic weapon. A Medium creature can
+use a katana two-handed as a martial weapon, or a Large creature
+can use it one-handed in the same way. With Exotic Weapon Pro-
+ficiency (katana), a Medium creature can use it in one hand. A
+masterwork weapon’s bonus on attack rolls does not stack with an
+enhancement bonus on attack rolls.
+Other Asian Elements:The DM designs her world, filling it with
+feudal lords who each serve a more powerful lord above them and
+rule over the people below them in station. Monasteries are common,
+with monks serving alongside clerics as representatives of spiritual
+enlightenment. Certain arts, such as poetry, theater, and fine art, take
+on a greater importance in society (which is ironic, since she has done
+away with the bard), and so entertainment becomes a skill that almost
+every character needs to succeed in this campaign.
+TECHNOLOGY
+Technology defines a setting as much as culture does. If gunpow-
+der is available, the world changes. Suddenly, a commoner with a
+rifle is a serious threat to an armored soldier, and high castle walls
+are no longer proof against invasion, which makes people, in turn,
+less elitist and isolationist.
+Extremely Low Tech
+A campaign set in a Bronze Age world where weapons are more
+crude and armor is less advanced, or even an Ice Age/Stone Age
+world where metal is barely available (if at all), can be very inter-
+esting. In such a campaign, survival often becomes a central focus,
+since finding food and keeping warm are suddenly much more
+difficult. There might not be shops from which to obtain goods
+(particularly in an Ice Age/Stone Age campaign) or even safe
+places to spend the night. Killing a huge beast means not only vic-
+tory, it also means meat to eat, fur or skin to wear, and bones to
+fashion into weapons and tools.
+Stone Age:Attacks with weapons made of bone or stone have a
+–2 penalty on attack and damage rolls (with a minimum damage
+of 1). Stone-age cultures don’t make bone or stone chainmail—
+they use leather, padded, wood, or bone armor. Historically, only a
+few exceptions to this rule exist, and those forms of armor are all
+made of bronze.
+Bone has hardness 6 and 10 hit points per inch of thickness.
+Stone has hardness 8 and 15 hit points per inch of thickness.
+Bronze Age: Weapons of bronze, while clearly inferior to steel
+items, are not nearly as bad as stone or bone weapons. Attacks with
+weapons made of bronze have a –1 penalty on attack and damage rolls
+(with a minimum damage of 1). Bronze shields have the same protec-
+tive value as steel shields, and their cost and weight are the same. A
+bronze shield has hardness 9 (compared to iron’s 10), however. A
+small bronze shield has 7 hit points, and a large bronze shield has 14
+hit points. While the relative softness of bronze diminishes its useful-
+ness in weapons, it allows elaborately sculpted bronze breastplates. A
+bronze breastplate’s armor bonus is 1 lower than a steel breastplate’s
+(+4), but its maximum Dexterity bonus is 1 higher (also +4).
+Bronze has hardness 9 and 20 hit points per inch of thickness.
+Advancing the Technology Level
+Conversely, a DM could advance the pseudohistorical basis for the
+game a few hundred years and set his campaign in a Renaissance-
+style setting. Doing this would allow him to incorporate weapons
+and maybe a few more bits of equipment from a little later in his-
+tory. Clocks, hot air balloons, printing presses, and even crude
+steam engines might be available. Most important to PCs, how-
+ever, would be the new weapons (see Table 5–4: Renaissance
+Weapons), which are detailed below
+Renaissance Firearms: Firearms should be treated like other
+ranged projectile weapons. Exotic Weapon Proficiency (firearms)
+gains a creature proficiency with all firearms; otherwise, a –4
+penalty is assessed on all attack rolls.
+CHAPTER 5:
+CAMPAIGNS

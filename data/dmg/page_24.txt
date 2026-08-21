@@ -1,0 +1,102 @@
+saving throws. Once the damage from the spell is assessed, both
+sides roll initiative.
+Example (Time to Prepare):Jozan the cleric hears the sounds of
+creatures moving beyond a door in a dungeon. He also hears some
+voices, and determines
+that the creatures are
+speaking Orc. He fig-
+ures  that  they  don’t
+know   he’s   there.   He
+takes the time to cast blessand
+shield  of  faithon  himself
+before  opening  the  door
+and using a standard action
+to cast hold personon the
+first foe he sees. He can cast
+the hold  person  spell  before
+anyone makes an initiative check,
+unless the orcs heard him casting
+blessor shield of faithin the previous 2
+rounds, in which case they become
+aware, Jozan doesn’t get the action that
+enabled him to cast hold person,and he’d
+better hope he gets the higher result on his
+initiative check.
+Both Sides Aware at the Same
+Time: If both sides are aware at
+the same time and can interact,
+both should roll initiative and
+resolve actions normally.
+If each   side   becomes
+aware of the other but cannot
+interact immediately, track time in rounds,
+giving both sides the same amount of time
+in full rounds, until the two sides can
+begin to interact.
+Example (Both Aware and Can Interact
+Immediately):A party of adventurers burst
+into a dungeon room full of orcs, and neither
+knew of the other ahead of time. All are equally surprised and
+equally flat-footed. Initiative is rolled, reflecting that those charac-
+ters with better reflexes act quicker in such situations.
+Example (Both Aware but Cannot Interact Immediately):A party of
+adventurers comes along a dungeon corridor and hears the
+laughter of orcs beyond the door ahead. Meanwhile, the orc
+lookout sees the adventures through a peephole in the door and
+warns his comrades. The door is closed, so no direct interaction
+is possible yet. Jozan casts bless. Lidda drinks a potion. Tordek and
+Mialee move up to the door. At the same time, the orcs move into
+position, and one uses aring of invisibilityto hide. The DM
+records the passage of 1 round. The adventurers arrange them-
+selves around the door and make a quick plan. The orcs turn over
+tables and nock arrows in their shortbows. The DM tracks
+another round. The fighter opens the door, and the DM calls for
+an initiative check from all. The third round begins, this time
+with the order of actions being important (and dictated by the
+initiative check results).
+Some Creatures on One or Both Sides Aware: In this case,
+only the creatures that are aware can act. These creatures can take
+standard actions before the main action starts.
+Example: Lidda is scouting ahead. She and a gargoyle spot each
+other simultaneously, but the rest of Lidda’s party doesn’t see the
+monster (though they are close enough to hear any fighting that
+erupts). Lidda and the gargoyle each get standard actions, and then
+normal combat starts. Lidda and the gargoyle roll initiative
+before taking their actions, and everyone else rolls ini-
+tiative after those actions are concluded.
+The Surprise Round
+When only one side is aware of the other, the DM runs the first
+round of combat as a surprise round. In this round, each charac-
+ter gets only a standard action. Only those aware of the other side
+can take any action at all. This rule reflects the fact that even
+when a combatant is prepared, some amount of time is spent
+assessing the situation, and thus only standard actions are
+allowed to begin with.
+This rule makes initiative have less of an impact, since it is in
+the first round when initiative matters most. Even if a warrior gets
+the jump on an opponent, at best he can make a single attack
+against a foe before that foe can react.
+NEW COMBATANTS
+The adventurers are fighting for their lives against a group of trolls
+intent on throwing them into a dank pit to feed to the dragon that
+23
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: SAPIENT MOUNTS
+A paladin’s mount is as smart as some characters. Giant eagles, giant
+owls, and pegasi are all highly intelligent. When such creatures are part
+of the action, you have two choices.
+•You  can  force  the  mount  to  act  on  its  rider’s  initiative,  just  like
+mounts of animal intelligence. This means that mount and rider act,
+essentially, simultaneously.
+•You  can  ask  the  player  to  make  a  separate  initiative  check  for  the
+mount. This means the mount moves and attacks at its own place in
+the  initiative  order,  reinforcing  its  nature  as  a  separate  character.
+However,  that  may  be  extremely  inconvenient  for  a  rider  who  is
+carried away from her opponent! In such cases, of course, the rider
+can  always  delay  to  synchronize  her  initiative  check  result  with  her
+mount’s.  Likewise,  the  mount  may  choose  to  delay  to  coincide  its
+movement with its rider’s.
+pqqqqrs
+pqqqqrs

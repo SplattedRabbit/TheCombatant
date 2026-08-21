@@ -1,0 +1,126 @@
+36
+Maximum Damage for Arcane Spells
+ArcaneMax DamageMax Damage
+Spell Level(Single Target)(Multiple Targets)
+1st5 dice—
+2nd10 dice5 dice
+3rd10 dice10 dice
+4th15 dice10 dice
+5th15 dice15 dice
+6th20 dice15 dice
+7th20 dice20 dice
+8th25 dice20 dice
+9th25 dice25 dice
+Maximum Damage for Divine Spells
+DivineMax DamageMax Damage
+Spell Level(Single Target)(Multiple Targets)
+1st1 die—
+2nd5 dice1 die
+3rd10 dice5 dice
+4th10 dice10 dice
+5th15 dice10 dice
+6th15 dice15 dice
+7th20 dice15 dice
+8th20 dice20 dice
+9th25 dice20 dice
+The damage cap depends on whether a spell affects a single
+target or multiple targets. A single-target spell affects only one
+creature or has its total damage divided among several creatures.
+For example, a magic missile spell can deliver 5 dice of damage to
+one target. If it strikes more than one target, its damage dice must
+be divided among them. A multiple-target spell deals full damage
+to two or more creatures simultaneously. For example, a fireball
+damages everything within its 20-foot spread.
+REWARDS
+Mialee and Tordek stand within the treasure chamber, surveying
+the riches before them. To get there, they slew three trolls, by-
+passed several devious traps, and solved the riddle of the golden
+golem to stop it from crushing them. Now they are not only
+richer, but from their experiences they have grown in knowledge
+and power.
+Experience points are a measure of accomplishment. They rep-
+resent training and learning by doing, and they illustrate the fact
+that, in fantasy, the more experienced a character is, the more pow-
+er he or she possesses. Experience points allow a character to gain
+levels. Gaining levels heightens the fun and excitement.
+Experience points can be spent by spellcasters to power some of
+their most potent spells. Experience points also represent the per-
+sonal puissance that a character must imbue an object with in
+order to create a magic item.
+In addition to experience, characters also earn treasure on their
+adventures. They find gold and other valuables that allow them to
+buy bigger and better equipment, and they find magic items that
+give them new and better abilities.
+EXPERIENCE AWARDS
+When the party defeats monsters, you award the characters expe-
+rience points (XP). The more dangerous the monsters, compared
+to the party’s level, the more XP the characters earn. The PCs split
+the XP between themselves, and each character increases in level
+as his or her personal XP total increases.
+You need to calculate XP awards during the course of an adven-
+ture, whether it’s one you wrote or one you purchased. You may
+wish to award experience points at the end of a session to enable
+players to advance their characters in level if they have enough
+experience points. Alternatively, you may wish to give out XP
+awards at the beginning of the game session following the one in
+which the characters earned it. This gives you time between ses-
+sions to use these rules and determine the experience award.
+As part of determining experience point awards, you need to
+break the game down into encounters and then break the encoun-
+ters down into parts. If you’re using monsters from the Monster
+Manual, some of the work has already been done for you. Each
+monster in that book has a Challenge Rating (CR) that, when
+compared to party level, translates directly into an XP award.
+A Challenge Rating is a measure of how easy or difficult a mon-
+ster or trap is to overcome. Challenge Ratings are used in Chapter
+3: Adventures to determine Encounter Levels (EL), which in turn
+indicate how difficult an encounter (often involving multiple
+monsters) is to overcome. A monster is usually overcome by defeat-
+ing it in battle, a trap by being disarmed, and so forth.
+You must decide when a challenge has been overcome. Usually,
+this is simple to do. Did the PCs defeat the enemy in battle? Then
+they met the challenge and earned experience points. Other
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: SPELL ROLL
+Substitute this variant for the standard method of determining saving
+throw DCs for spells. Every time a character casts a spell that requires
+a target to make a saving throw, the caster rolls 1d20 and adds the spell
+level and the appropriate ability modifier. The result is the DC for the
+saving throw. Roll once even for a spell that affects many creatures.
+This variant introduces a great deal more randomness into spell-
+casting—sometimes  low-level  spells  cast  by  mediocre  casters  will
+have  high  DCs,  and  sometimes  high-level  spells  cast  by  powerful
+casters are easy to resist. It downplays the level of the spell and the
+ability  modifier.  As  with  variant  combat  rules,  any  change  that
+increases chance in a battle favors the underdog, and that’s usually
+the enemy of the PCs.
+VARIANT: POWER COMPONENTS
+The  horn  of  the  rare  red  minotaur  can  be  combined  with  a  potent
+mixture of herbs that can aid in restoring wholeness to the afflicted. So
+potent is the energy contained in the concoction that a cleric who uses
+it while casting greater restoration(and uses it up) need not devote any
+personal power (XP) in order to cast the spell.
+This  variant  allows  for  special  rare  ingredients  (“power  compo-
+nents”) to be added to material spell components in place of an XP
+component. You’re free to allow this on a case-by-case basis. Perhaps
+these components exist only for certain spells. They’re certainly rare,
+and  certainly  expensive—ten  to  twenty  times  the  XP  component  in
+gold pieces is a good baseline price. Further, characters may need to
+consult sages or cast divinations in order to find out what the proper
+ingredients are.
+Consider  not  allowing  characters  to  buy  power  components—
+instead,  make  them  the  object  of  an  adventure.  The  hunt  for  the  red
+minotaur can be a challenging and entertaining adventure by itself, but
+if the defeat of the minotaur is the first step toward the goal of bring-
+ing back a fallen comrade, the scenario takes on a larger importance.
+In the same way, special ingredients can substitute for the XP that a
+character otherwise has to spend to create magic items.
+This variant works if it makes powerful magic more colorful and if it
+fits  the  way  you  want  to  portray  magic  in  your  campaign.  It  fails  if  it
+means that the only hard control on casting powerful spells and creat-
+ing magic items (the XP component) slips away, so that such actions
+become commonplace.
+pqqqqrs
+pqqqqrs

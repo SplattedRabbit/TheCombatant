@@ -1,0 +1,133 @@
+2. Divide the cohort’s level by the level of the PC with whom he
+or she is associated (the character who attracted the cohort).
+3. Multiply this result by the total XP awarded to the PC and add
+that number of experience points to the cohort’s total.
+For example, a 4th-level cohort associated with a 6th-level PC
+gains 2/3 as much XP as the character gains.
+If a cohort gains enough XP to bring it to a level one lower
+than the associated PC’s character level, the cohort does not gain
+the new level—its new XP total is 1 less than the amount needed
+to attain the next level. This rule is especially significant when
+the PC loses one or more levels; a cohort’s level advancement
+could be stalled for quite some time until the PC regains his or
+her lost levels and gains enough additional XP to be eligible for a
+higher-level cohort (see the Leadership feat on the following
+page).
+Treasure:Although the PCs can work out other deals, their
+cohorts usually get only a half share of any treasure the party
+gains. Sometimes a cohort seeks no pay, only the opportunity to
+serve alongside the PCs. Such cohorts require only living costs.
+However, they are not common.
+The easiest way to calculate a half share is to treat the cohort as
+getting a full share, but award him or her only half, and then
+divide out the remainder to the group. For instance, if a party of
+four PCs and one cohort earns 1,000 gp, divide the gold pieces by
+5 (which is 200 apiece), but award the cohort only 100, and divide
+the leftover 100 among the four PCs (25 each).
+Followers
+Followers are similar to cohorts, except they’re generally low-level
+NPCs. Because they’re generally five or more levels behind the
+character they follow, they’re rarely effective in combat. But a
+clever player can use them as scouts, spies, messengers, errand-
+runners, or guards.
+Followers don’t earn experience and thus don’t gain levels.
+However, when a character with the Leadership feat (see page
+106) attains a new level, the player consults the table in the feat
+description to determine if she has acquired more followers, some
+of which may be higher level than the existing followers. (You
+don’t consult the table to see if your cohort gains levels, however,
+because cohorts earn experience on their own.)
+Followers don’t demand a share of treasure, although they
+depend on the PC they follow to equip them and keep them fed.
+Replacing Cohorts and Followers
+If a leader loses a cohort or followers, he can generally replace
+them, according to his current Leadership score. It takes time (1d4
+months) to recruit replacements. If the leader is to blame for the
+deaths of the cohort or followers, it takes extra time to replace
+them, up to a full year. Note that the leader also picks up a reputa-
+tion of failure, which decreases his Leadership score.
+Hirelings
+When the PCs need to hire someone to perform a task—make
+items, speak with sages, care for their horses, or help build a castle,
+hirelings are the NPCs they employ. Characters can use hirelings
+to carry torches, tote their treasure, and fight for them. Hirelings
+differ from cohorts in that they have no investment in what’s
+going on. They just do their jobs.
+Unlike cohorts, hirelings do not make decisions. They do as
+they’re told (at least in theory). Thus, even if they go on an
+adventure with the PCs, they gain no experience and do not
+affect any calculations involving the party level. Like cohorts,
+hirelings must be treated fairly well, or they will leave and
+might even turn against their former employers. Some hirelings
+might require hazard pay (perhaps as high as double normal
+pay) if placed in particularly dangerous situations. In addition
+to demanding hazard pay, hirelings placed in great danger
+might be unfriendly (see Influencing NPC Attitudes, page 72 of
+the Player ’s Handbook), but characters potentially can influence
+them to a better attitude and perhaps even talk them out of
+hazard pay.
+Hirelings are helpful to have around, particularly for specific
+tasks. If the PCs wipe out a nest of wererats but have to leave
+treasure behind, they can hire porters to come back down with
+them into the lair to help carry out the goods. An animal tender
+or two to watch the PCs’ horses while they’re down in a dungeon
+can be useful. Mercenary warriors can provide vital additional
+strength to the party’s ability to combat foes. 
+Middle and high-level PCs should be aware that taking a 1st-
+level commoner with them on an adventure so that she can carry
+equipment or fight as a mercenary probably places her at great
+risk. Hirelings who are expected to fight are best used to deal with
+foes of their level—goblin warriors, for instance, or an evil cleric’s
+skeleton army.
+Table 4–1: Prices for Hireling Services gives an idea of the daily
+wage that hirelings of various types will expect or demand. The
+prices on the table are for long-term retention of services; hiring
+someone for just a day or two might cost two or three times the
+indicated price.
+Also, the prices do not include materials, tools, or weapons the
+hireling may need to do his or her job.
+Table 4–1: Prices for Hireling Services
+HirelingPer DayHirelingPer Day
+Alchemist*1 gpMason/craftsperson*3 sp
+Animal tender/groom15 cpMercenary2 sp
+Architect/engineer5 spMercenary cavalry4 sp
+Barrister1 gpMercenary leader6 sp
+Clerk4 spPorter1 sp
+Cook1 spSage2 or more gp
+Entertainer/performer4 spScribe3 sp
+Laborer1 spSmith4 sp*
+Limner6 spTeamster3 sp
+Maid1 spValet/lackey2 sp
+* If paid to create a specific item, use item prices and working times
+instead.
+The types of hirelings characters might employ (from Table 4–1)
+are described below. 
+Alchemist:One who works with chemicals. Also includes
+apothecaries (those who deal with drugs and medicines).
+Animal Tender/Groom:Someone to care for animals. Also
+includes shepherds, shearers, and swineherds.
+Architect/Engineer:A skilled, educated planner, essential for
+large building projects. Also includes shipwrights.
+Barrister:A lawyer.
+Clerk:A scribe specializing in accounting. Also includes trans-
+lators and interpreters.
+Cook:Someone who can prepare meals, often for large groups.
+Entertainer/Performer:A minstrel, actor, singer, dancer, or
+poet.
+Laborer:Anyone performing unskilled or relatively unskilled
+labor. Includes ditchdiggers, gravediggers, bloomers (forge work-
+ers), plowers, quarriers, and many other kinds.
+Limner:A painter. Includes all types of artisans.
+Maid:A household servant who cleans.
+Mason/Craftsperson:A mason is a stoneworker, but this cat-
+egory also covers carpenters, tanners (leatherworkers), haberdash-
+ers, brewers, coopers, cordwainers (shoemakers), bookbinders,
+fletchers, fullers (feltmakers), bowyers, cobblers, drapers, joiners,
+parchmentmakers, plasterers, chandlers (candlemakers), dyers,
+skinners, soapmakers, jewelers, tinkers, vintners, weavers, gem-
+cutters, wheelwrights, cartwrights, horners, mercers, hosiers, and
+other individuals who perform a craft.
+105
+CHAPTER 4:
+NONPLAYER
+CHARACTERS

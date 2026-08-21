@@ -1,0 +1,128 @@
+BONUS TYPES
+Many racial abilities, class features, spells, and magic items offer
+bonuses on attack rolls, damage rolls, saving throws, Armor Class,
+ability scores, or skill checks. These bonuses are classified by type,
+and each type is briefly described below.
+Bonuses of different types always stack. So a cloak of resistance +1
+(adds a resistance bonus on saving throws) works with a paladin’s
+bonus on saving throws from the divine grace class feature. Iden-
+tical types of bonuses do not stack, so a +3 longsword(+3 enhance-
+ment bonus for a +3 to attack, +3 to damage) would not be affected
+by a magic weaponspell that grants a weapon a +1 enhancement
+bonus on attack and damage rolls.
+Different named bonus types all stack, but usually a named
+bonus does not stack with another bonus of the same name,
+except for dodge bonuses and some circumstance bonuses.
+Alchemical: An alchemical bonus represents the benefit from
+a chemical compound, usually one ingested prior to receiving the
+bonus. Antitoxin, for example, provides a +5 alchemical bonus on
+Fortitude saving throws against poison.
+Armor:This is the bonus that nonmagical armor gives a char-
+acter. A spell that gives an armor bonus typically creates an invis-
+ible, tangible field of force around the affected character.
+Circumstance:This is a bonus or penalty based on situational
+factors, which may apply either to a check or the DC for that
+check. Circumstance modifiers stack with each other, unless they
+arise from essentially the same circumstance.
+Competence:When a character has a competence bonus, he
+actually gets better at what he’s doing, such as with the guidance
+spell.
+Deflection:A deflection bonus increases a character’s AC by
+making attacks veer off, such as with the shield of faithspell.
+Dodge:A dodge bonus enhances a character’s ability to get out
+of the way quickly. Dodge bonuses do stack with other dodge
+bonuses. Spells and magic items occasionally grant dodge bonuses.
+Enhancement: An enhancement bonus represents an increase
+in the strength or effectiveness of a character’s armor or weapon,
+as with the magic vestmentand magic weaponspells, or a general
+bonus to an ability score, such as with the cat ’s gracespell.
+Inherent:An inherent bonus is a bonus to an ability score that
+results from powerful magic, such as a wishspell. A character is
+limited to a total inherent bonus of +5 to any ability score.
+Insight:An insight bonus makes a character better at what he’s
+doing because he has an almost precognitive knowledge of factors
+pertinent to the activity, as with the true strikespell.
+Luck:A luck bonus is a general bonus that represents good for-
+tune, such as from the divine favorspell.
+Morale:A morale bonus represents the effects of greater hope,
+courage, and determination, such as from the blessspell.
+Natural Armor:A natural armor bonus is the type of bonus
+that many monsters get because of their tough or scaly hides. An
+enhancement to natural armor bonus bestowed by a spell (such as
+barkskin) indicates that the subject’s skin has become tougher.
+Profane:A profane bonus represents the power of evil, such as
+granted by the desecratespell.
+Racial:Creatures  gain  racial  bonuses—usually  to  skill
+checks—based on the kind of creature they are. Eagles receive a
++8 racial bonus on Spot checks, for example.
+Resistance: A resistance bonus is a general bonus against
+magic or harm. Resistance bonuses almost always affect saving
+throws.
+Sacred:The opposite of a profane bonus, a sacred bonus relates
+to the power of good, such as granted by the consecratespell.
+Shield:Much like an armor bonus, a shield bonus to AC repre-
+sents the protection a nonmagical shield affords. A spell that gives
+a shield bonus usually represents an invisible, tangible shield of
+force that moves to protect the character.
+Size:When a character gets bigger (such as through the effect
+of an enlarge personspell), his Strength increases (as might his Con-
+stitution). That’s a size bonus.
+COMBAT
+The brave party of adventurers smashes through the wooden door
+and into an ambush of bloodthirsty hobgoblins with spears and
+rusted blades. The trio of knights charges through the forest on
+their gallant mounts, their lances plunging into the scaly flesh of
+the horrible hydra that waits near the river’s edge. The dragon
+takes to the air and chases the elf lord and his retinue, jaws snap-
+ping behind them as they run in terror.
+Combat is a big part of what makes the D&D game exciting.
+There are few better ways to test your mettle against your foes
+than in pitched battle. Your most important job as DM is running
+combats—making things move quickly and smoothly, and adjudi-
+cating what happens during each round of the action.
+LINE OF SIGHT
+Line of sight establishes whether a particular character can see
+something else represented on the grid. When using a grid, draw
+an imaginary line (or use a ruler or a piece of string) from the
+square the character is in to the object in question. If nothing
+blocks this line, the character has line of sight (and can thus see it
+to cast a spell on it, target it with a bow, and so forth). If the object
+in question is actually another creature, measure line of sight
+from the square the character is in to the square that the creature
+occupies. If a character can see a portion of a large creature that
+occupies more than one square, she can target that creature for a
+spell or any other attack.
+If line of sight is completely blocked, a character can’t cast spells
+or use ranged weapons against the target. If it’s partially blocked,
+such as by the corner of a building, spells work normally but the
+target’s AC increases due to the cover.
+21
+CHAPTER 2:
+USING 
+THE RULES
+BEHIND THE CURTAIN: STACKING BONUSES
+Keeping  track  of  the  different  types  of  bonuses  a  character  gets  from
+different sources may seem like a real bother. There are good reasons
+to do this, however.
+Balance:The  main  reason  to  keep  track  of  what  stacks  and  what
+doesn’t  stack  is  to  keep  total  bonuses  from  getting  out  of  hand.  If  a
+character  wears  a  belt  of  giant  Strength,it’s  unbalancing  to  allow  the
+cleric to cast bull’s strengthon her as well and allow both bonuses to
+add  up.  Likewise,  a  character  with  mage  armor,magic  plate  armor,  a
+ring of protection,and a divine favorspell would be unbalanced if all his
+bonuses were cumulative. Stacking restrictions keep the game within
+manageable  limits,  while  still  allowing  characters  to  benefit  from
+multiple magic items. For instance, note that some of the items from
+the previous example—the magic plate armor, the ring, and the divine
+favorspell,  for  example—could  work  together,  because  they  provide
+bonuses of different types.
+Consistency and Logic:The system of bonus types provides a way to
+make  sense  out  of  what  can  work  together  and  what  can’t.  At  some
+point,  when  adding  types  of  protection  together,  a  reasonable  player
+realizes that some protections are just redundant. This system logically
+portrays how it all makes sense together.
+Encouraging  Good  Play:Categorizing  bonuses  by  type  allows  play-
+ers  to  put  together  suites  of  effects  that  do  work  in  conjunction  in  a
+consistent manner—encouraging smart play rather than pile-it-on play.
+pqqqqrs
+pqqqqrs

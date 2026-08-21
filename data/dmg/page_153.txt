@@ -1,0 +1,133 @@
+152
+Example Ethereal Site: Misty Cemetery
+Misty Cemetery (so named because the coastal fog at this location
+on the Material Plane often obscures the tombstones) is home to
+the ghosts of warlords from long-forgotten crusades. The ghosts
+menace wayward travelers and tomb robbers, but they are other-
+wise content to spend their time on the Ethereal Plane, biding
+their time until they can pass on to their final reward.
+The ghosts rarely confront mourners or other cemetery visitors
+by daylight—but anyone who visits the cemetery at night, defaces
+the crypts and tombs, or enters the Ethereal Plane invites their
+wrath. Their ringleaders are Durek of the Scar (Ftr 12), Colonel
+Harakh (Ftr 5/Clr 9), and the Eyeless One (Sor 16), but the ceme-
+tery is a vast, sprawling place, and the more powerful ghosts can’t
+be everywhere.
+To draw a map of the Misty Cemetery, scatter small crypts
+across the landscape by drawing 10-foot-by-20-foot buildings with
+masonry walls and locked (Open Lock DC 30) iron doors. Place a
+tombstone in rows of adjacent squares (a tombstone functions as
+the slender pillar described on page 64, providing a +2 bonus to
+Armor Class and a +1 bonus on Reflex saves). Occasionally pick
+two adjacent squares to represent an open grave (which functions
+as a trench, described on page 91). When faced with intruders on
+the Ethereal Plane, the ghosts will lurk within the crypts, trying to
+surprise the PCs by striking through the walls of the crypts.
+Ethereal Plane Encounters (EL 9)
+d%EncounterAverage EL
+01–80Roll on relevant Material Plane table*—
+81–821 devourer11
+831 couatl10
+84–861 night hag and 1 nightmare10
+8710th-level drow wizard NPC10
+88–901d4 xills9
+91–931d3 ghosts, 5th-level human fighters9
+94–961d6+5 blink dogs8
+971d4+2 jann8
+98–991d4 phase spiders8
+1001 succubus (demon)7
+* The encounter is with a creature or creatures on the Material Plane
+that the PCs can see; generate an appropriate dungeon or
+wilderness encounter.
+PLANE OF SHADOW
+The Plane of Shadow is a dimly lit dimension that is both coter-
+minous to and coexistent with the Material Plane. It overlaps the
+Material Plane much as the Ethereal Plane does, so a planar trav-
+eler can use the Plane of Shadow to cover great distances quickly.
+The Plane of Shadow is also coterminous to other planes. With
+the right spell, a character can use the Plane of Shadow to visit
+other realities.
+The Plane of Shadow is a world of black and white; color itself
+has been bleached from the environment. It is otherwise appears
+similar to the Material Plane. 
+The sky on the Plane of Shadow is a black vault with neither sun
+nor stars. Landmarks from the Material Plane are recognizable on
+the Plane of Shadow, but they are twisted, warped things—dimin-
+ished reflections of what can be found on the Material Plane.
+Despite the lack of light sources, various plants, animals, and
+humanoids call the Plane of Shadow home.
+The Plane of Shadow is magically morphic, and parts continu-
+ally flow onto other planes. As a result, creating a precise map of
+the plane is next to impossible, despite the presence of landmarks.
+If a traveler visits a mountain range during one use of a shadow
+walkspell, the mountain range may still be there the next time,
+but the individual mountains may have moved about. Precision is
+a lost cause on the Plane of Shadow.
+The Plane of Shadow has the following traits.
+•Magically morphic. Spells such as shadow conjurationand shadow
+evocationmodify  the  base  material  of  the  Plane  of  Shadow.  The
+utility  and  power  of  these  spells  within  the  Plane  of  Shadow
+make them particularly useful for explorers and natives alike.
+•Mildly neutral-aligned.
+•Enhanced  magic.  Spells  with  the  shadow  descriptor  are  en-
+hanced on the Plane of Shadow. Such spells are cast as though
+they were prepared with the Maximize Spell feat, though they
+don’t require the higher spell slots.
+Furthermore, specific spells become more powerful on the Plane
+of Shadow. Shadow conjurationand shadow evocationspells are 30%
+as powerful as the conjurations and evocations they mimic (as
+opposed to 20%). Greater shadow conjurationand greater shadow evo-
+cationare 70% as powerful (not 60%), and a shadesspell conjures at
+90% of the power of the original (not 80%).
+•Impeded  magic.  Spells  that  use  or  generate  light  or  fire  may
+fizzle when cast on the Plane of Shadow. A spellcaster attempt-
+ing  a  spell  with  the  light  or  fire  descriptor  must  succeed  on  a
+Spellcraft  check  (DC  20  +  the  level  of  the  spell).  Spells  that
+produce  light  are  less  effective  in  general,  because  all  light
+sources have their ranges halved on the Plane of Shadow.
+Despite the dark nature of the Plane of Shadow, spells that pro-
+duce, use, or manipulate darkness are unaffected by the plane.
+Example Shadow Site: Dark City
+When the characters enter the Plane of Shadow where it coex-
+ists with a Material Plane city, they find themselves in a dark,
+largely abandoned version of that town. The parallels are not
+exact, so the PCs’ favorite inn may be on a different street, be
+built in a different style, or lie in ruins.
+Differences between a Material Plane city and its Plane of
+Shadow counterpart can be quite significant, such as a huge dark
+castle where none exists on the Material Plane, or an ancient
+battlefield where the city green should be. Most troubling of all
+are the shadowy echoes of people the traveler knows, shadow crea-
+tures with the twisted but still recognizable features of loved ones.
+These shadow duplicates do not speak and have no special abili-
+ties, but the effect is disconcerting nonetheless.
+Shadow travelers in a place particularly familiar or meaningful
+to them must succeed on a DC 15 Will save to ignore such dark
+mirages. Those who fail are haunted and rattled by the similarities,
+taking a –2 morale penalty on attack rolls and saving throws as
+long as they remain in a location familiar to them. Travelers who
+make their saves are unaffected by the dark mirages for the dura-
+tion of their trip to the Plane of Shadow.
+Not everything in a dark city is a mirage. Undead shadows glide
+through the streets looking for anyone who doesn’t belong amid
+the gloom, and bodaks that have found their way onto the Plane of
+Shadow stalk living travelers.
+To draw a map for encounters in a dark city, start by drawing a
+normal cityscape (as described in the Urban Adventures section,
+page 98). Then reduce roughly one-quarter of the buildings to
+rubble (treat as large piles of stone and heavy debris strewn about).
+Another one-quarter of the buildings have some structural dam-
+age, such as gaping holes in the walls and collapsed roof timbers.
+Finally, move a few buildings into locations that don’t correspond
+with their Material Plane counterparts, and add and subtract a few
+streets and alleys.
+Plane of Shadow Encounters (EL 11)
+d%EncounterAverage EL
+01–101 nightwing (nightshade)14
+11–201 lich, 11th-level human wizard13
+21–401d4+2 spectres11
+41–601 dread wraith11
+61–801d3 greater shadows10
+81–1001d6+3 shadow mastiffs10
+CHAPTER 5:
+CAMPAIGNS

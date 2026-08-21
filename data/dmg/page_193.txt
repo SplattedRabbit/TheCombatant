@@ -1,0 +1,73 @@
+192
+Greater Lore (Ex): At 6th level, a loremaster gains the ability to
+understand magic items, as with the identifyspell.
+True Lore (Ex):At 10th level, once per day a loremaster can use
+her knowledge to gain the effect of a legend lorespell or an analyze
+dweomerspell.
+Loremaster Secrets
+Level +
+Int 
+ModifierSecretEffect
+1Instant mastery4 ranks of a skill in which
+the character has no ranks
+2Secret health+3 hit points
+3Secrets of inner strength+2 bonus on Will saves
+4The lore of true stamina+2 bonus on Fortitude saves
+5Secret knowledge+2 bonus on Reflex saves
+of avoidance
+6Weapon trick+1 bonus on attack rolls
+7Dodge trick+1 dodge bonus to AC
+8Applicable knowledgeAny one feat
+9Newfound arcana1 bonus 1st-level spell*
+10More newfound arcana1 bonus 2nd-level spell*
+* As if gained through having a high ability score.
+MYSTIC THEURGE
+Blurring the line between divine and arcane, mystic theurges
+draw power from divine sources and musty tomes alike. While
+most spellcasters choose one path to magical power, mystic
+theurges walk two roads at once, simultaneously mastering
+spells common to clerics and wizards.
+Mystic theurges have unparalleled diversity of spells. In
+time, a mystic theurge can cast almost any spell in the Player ’s
+Handbook. While a mystic theurge doesn’t have the uninter-
+rupted spell advancement that a cleric, wizard, or sorcerer has,
+he makes up for this with versatility. Mystic theurges are often
+obsessed with magical lore, traveling to the ends of the earth to
+learn some new arcane secret or divine insight.
+Because a mystic theurge casts both arcane and divine spells, all
+members of this class are multiclass spellcasters. Cleric/sorcerers
+and cleric/wizards are the most common mystic theurges, with
+druid/sorcerers more rare and druid/wizards almost unheard of.
+Mystic theurges tend to be fascinated with magic in what-
+ever form it takes. They’re always on the hunt for powerful
+magic items and new arcane spells. Those mystic theurges who
+worship a deity use the power of their spellcasting to further their
+deity’s agenda.
+Hit Die:d4.
+Requirements
+To qualify to become a mystic theurge, a character must fulfill all
+the following criteria.
+Skills: Knowledge (arcana) 6 ranks, Knowledge (religion) 6 ranks.
+Spells: Able to cast 2nd-level divine spells and 2nd-level arcane
+spells.
+Class Skills
+The mystic theurge’s class skills (and the key ability for each skill)
+are Concentration (Con), Craft (Int), Decipher Script (Int),
+Knowledge (arcana) (Int), Knowledge (religion) (Int), Profession
+(Wis), Sense Motive (Wis), and Spellcraft (Int). See Chapter 4 of
+the Player ’s Handbook for skill descriptions.
+Skill Points at Each Level:2 + Int modifier.
+Class Features
+All of the following are features of the mystic theurge prestige
+class.
+Weapon and Armor Proficiency: Mystic theurges gain no
+proficiency with any weapon or armor.
+Spells per Day:When a new mystic theurge level is gained, the
+character gains new spells per day as if he had also gained a level
+in any one arcane spellcasting class he belonged to before he
+added the prestige class and any one divine spellcasting class he
+belonged to previously. He does not, however, gain any other ben-
+CHAPTER 6:
+CHARACTERS
+Amystic theurge
+Illus. by M. Cavotta

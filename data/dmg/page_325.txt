@@ -1,0 +1,97 @@
+3
+District Type:Some districts, such as a water-
+front or shop district, represent neighborhoods that
+have many similar types of buildings. Others, such as a
+lord’s keep or a garrison, may feature single buildings
+or complexes that occupy an entire district and house
+large numbers of residents and staff. 
+Total Pop.:This figure represents the total popula-
+tion of the district. The remaining columns (Bbn, Brd,
+Clr, and so forth) show how many single-class charac-
+ters of each character class (both PC and NPC classes)
+dwell in the district. Temple districts have many cler-
+ics, obviously, while most aristocrats are found in
+upper-class districts.
+LOW POPULATION DISTRICTS
+The districts with the lowest populations tend to be
+upper or middle class. They often feature fine landscap-
+ing and ornate buildings.
+Civic District
+The day-to-day business of governing the city is carried
+out from the offices in this district, which is usually
+dominated by one massive government building.
+Buildings:Council hall, bureaucratic offices,
+monument/memorial, guardpost, temple (Heironeous,
+Pelor, or St. Cuthbert), upscale lodging (4), upscale
+food (6), exotic trades (10), upscale trades (15), average
+trades (15), upscale services (15).
+First Impression: Robed bureaucrats scurry
+from appointment to appointment, and nobles travel
+with their retinues. The main building is a stately struc-
+ture with plenty of statuary and inscriptions.
+Social Class:Upper class.
+Civic District, Ruined
+This district is like the one above, except that the rulers
+of the city have abandoned the massive structure that
+once dominated the area.
+Buildings:Council hall (vacant), bureaucratic
+offices (possibly vacant), monument/memorial, guard-
+post, temple (Heironeous, Pelor, or St. Cuthbert), upscale
+lodging (4), upscale food (6), exotic trades (10), upscale
+trades (15), average trades (15), upscale services (15).
+First Impression: The crumbling edifice that
+dominates the streetscape once housed the power
+center in this city. The surrounding businesses have
+also fallen on hard times.
+Social Class:Middle class.
+Elf Neighborhood
+This district, found only in cities dominated by nonelf
+races, is where many elves choose to live.
+Buildings:Temple (Corellon Larethian), druidic
+site, upscale lodging, upscale food (4), exotic trades (3),
+upscale trades (15), upscale services (5), upscale resi-
+dences (30).
+First Impression: The neighborhood has more
+than its share of trees, bushes, and flowers. Even the
+more modest homes feature flowering windowboxes.
+Social Class:Upper class.
+Embassy District
+Usually found only in a capital city, an embassy district
+houses ambassadors, diplomats, and their staffs.
+Buildings:Embassies (7), diplomatic residences
+(15), upscale lodging (9), upscale food (12), exotic
+trades (5), upscale trades (10), upscale residences (10).
+pqqqqrs
+pqqqqrs
+BUILD A CITY IN 5 MINUTES 
+Many PCs use cities simply as bases of operations
+for adventuring. They may visit their home city
+briefly between adventures, or occasionally even
+during an extended mission. Accordingly, they rarely
+see more than a few locations—their favorite inn,
+the magic-item dealers on Tentacle Street, and Lord
+Rhial’s citadel, for example.
+If you’re pressed for time, it’s a good idea to pick a
+few districts you like and assume that the rest of the
+city is a mix of residential and commercial districts.
+Here are the steps for building a city in about 5
+minutes.
+•  Jot down what makes the city special in a sen-
+tence or two. For example, Sumberton is a rainy
+city where the trade guilds are at war with the
+military commander in charge of the toll roads.
+Forghul is a metropolis where rival thanes from
+surrounding provinces engage in intrigues, unit-
+ing only when giants attack from the north.
+•  Decide which places your characters are likely to
+visit.  Inns,  magic  shops,  guilds,  libraries,
+temples, and government buildings are all logical
+choices.
+•  Decide which districts feature those important
+places and sketch out an intersection or two, plac-
+ing buildings according to the guidelines below.
+•  Sketch an overall map of the city by drawing the
+walls that surround it, placing the important dis-
+tricts, and then dividing the rest of the city into a
+dozen or so wards. Give each ward a name, such
+as “Merchant’s Quarter,” or “Temple Ward.”

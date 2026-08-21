@@ -1,0 +1,128 @@
+70
+ding bonus on damage. For example, a ranged attack trap (+4 Str
+bonus) that fires shortspears could deal up to 1d8+4 points of
+damage per successful hit.
+Melee Attack Traps:These traps deal the same damage as the
+melee weapons they “wield.” In the case of a falling stone block, you
+can assign any amount of bludgeoning damage you like, but remem-
+ber that whoever resets the trap has to lift that stone back into place.
+A melee attack trap can be constructed with a built-in bonus on
+damage rolls, just as if the trap itself had a high Strength score.
+Spell Traps:Spell traps produce the spell’s effect, as described
+in the appropriate entry in the Player ’s Handbook.Like all spells, a
+spell trap that allows a saving throw has a save DC of 10 + spell
+level + caster’s relevant ability modifier.
+Magic Device Traps:These traps produce the effects of any
+spells included in their construction, as described in the appropri-
+ate entries in the Player ’s Handbook.If the spell in a magic device
+trap allows a saving throw, its save DC is 10 + spell level × 1.5.
+Some spells make attack rolls instead.
+Special:Some traps have miscellaneous features that produce
+special effects, such as drowning for a water trap or ability
+damage for poison. Saving throws and damage depend on the
+poison (see Table 8–3: Poisons, page 297) or are set by the builder,
+as appropriate.
+Miscellaneous Trap Features
+Some traps include optional features that can make them consid-
+erably more deadly. The most common such features are discussed
+below.
+Alchemical Item: Mechanical traps may incorporate alchemi-
+cal devices or other special substances or items, such as tanglefoot
+bags, alchemist’s fire, thunderstones, and the like. Some such
+items mimic spell effects. For example, the effect of a tanglefoot
+bag is similar to that of an entanglespell, and the effect of a thun-
+derstone is similar to that of a deafnessspell. If the item mimics a
+spell effect, it increases the CR as shown on Table 3–13.
+Gas: With a gas trap, the danger is in the inhaled poison it deliv-
+ers. Traps employing gas usually have the never miss and onset
+delay features (see below).
+Liquid: Any trap that involves a danger of drowning (such as a
+locked room filling with water or a patch of quicksand that char-
+acters can fall into) is in this category. Traps employing liquid usu-
+ally have the never miss and onset delay features (see below).
+Multiple Target:Traps with this feature can affect more than
+one character.
+Never Miss: When the entire dungeon wall moves to crush
+you, your quick reflexes won’t help, since the wall can’t possibly
+miss. A trap with this feature has neither an attack bonus nor a
+saving throw to avoid, but it does have an onset delay (see below).
+Most traps involving liquid or gas are of the never miss variety.
+Onset Delay: An onset delay is the amount of time between
+when the trap is sprung and when it deals damage. A never miss
+trap always has an onset delay.
+Poison:Traps that employ poison are deadlier than their non-
+poisonous counterparts, so they have correspondingly higher
+CRs. To determine the CR modifier for a given poison, consult
+Table 3–13 (page 74). Only injury, contact, and inhaled poisons are
+suitable for traps; ingested types are not.
+Some traps, such as a table covered with contact poison, simply
+deal the poison’s damage. Others, such as a poisoned arrow or
+sword blade, deal damage with ranged or melee attacks as well.
+Pit Spikes:Treat spikes at the bottom of a pit as daggers, each
+with a +10 attack bonus. The damage bonus for each spike is +1 per
+10 feet of pit depth (to a maximum of +5). Each character who falls
+into the pit is attacked by 1d4 spikes. Pit spikes do not add to the
+average damage of the trap (see Average Damage, page 75).
+Pit Bottom:If something other than spikes waits at the bottom
+of a pit, it’s best to treat that as a separate trap (see Multiple Traps,
+page 75) with a location trigger that activates on any significant
+impact, such as a falling character. Possibilities for pit bottom traps
+include acid, monsters, and water.
+Touch Attack: This feature applies to any trap that needs only a
+successful touch attack (melee or ranged) to hit.
+SAMPLE TRAPS
+The following traps are suitable for protecting a dungeon, mer-
+chant guildhouse, or military complex. The costs listed for
+mechanical traps are market prices; those for magic traps are raw
+material costs. Caster level and class for the spells used to produce
+the trap effects are provided in the entries for magic device traps
+and spell traps. For all other spells used (in triggers, for example),
+the caster level is assumed to be the minimum required.
+CR 1 Traps
+Basic Arrow Trap: CR 1; mechanical; proximity trigger;
+manual reset; Atk +10 ranged (1d6/×3, arrow); Search DC 20; Dis-
+able Device DC 20. Market Price:2,000 gp.
+Camouflaged Pit Trap: CR 1; mechanical; location trigger;
+manual reset; DC 20 Reflex save avoids; 10 ft. deep (1d6, fall);
+Search DC 24; Disable Device DC 20. Market Price: 1,800 gp.
+Deeper Pit Trap: CR 1; mechanical; location trigger; manual
+reset; hidden switch bypass (Search DC 25); DC 15 Reflex save
+avoids; 20 ft. deep (2d6, fall); multiple targets (first target in each
+of two adjacent 5-ft. squares); Search DC 20; Disable Device DC 23.
+Market Price: 1,300 gp.
+Doorknob Smeared with Contact Poison:CR 1; mechanical;
+touch trigger (attached), manual reset; poison (carrion crawler
+brain juice, DC 13 Fortitude save resists, paralysis/0); Search DC
+19; Disable Device DC 19. Market Price: 900 gp.
+Fusillade of Darts: CR 1; mechanical; location trigger; manual
+reset; Atk +10 ranged (1d4+1, dart); multiple targets (fires 1d4
+darts at each target in two adjacent 5-ft. squares); Search DC 14;
+Disable Device DC 20. Market Price: 500 gp.
+Poison Dart Trap: CR 1; mechanical; location trigger; manual
+reset; Atk +8 ranged (1d4 plus poison, dart); poison (bloodroot, DC
+CHAPTER 3:
+ADVENTURES
+VARIANT: WHAT DISABLING A DEVICE MEANS
+So a character makes her Disable Device check against a trap. What does
+that  success  do  to  the  trap?  With  this  variant  rule,  the  answer  to  that
+question  depends  on  the  amount  by  which  the  character  beat  the  DC.
+Check the paragraph below that corresponds to the margin of success.
+Check Result = DC +0–3:The next time the trigger would spring the
+trap, it doesn’t. After that, however, the trigger operates normally, and
+another Disable Device check is required to disarm it again.
+Check Result = DC +4–6:The character messed up the trap’s work-
+ings.  It  won’t  function  again  until  it’s  reset.  If  it’s  a  trap  that  resets
+automatically, use the next result below.
+Check Result = DC +7–9:The character really broke the trap. It won’t
+go off again until someone repairs it using the Craft (trapmaking) skill.
+This repair costs 1d8×10% of the trap’s total construction cost.
+Check  Result  =  DC  +10  or  more:The  character  either  broke  the
+trap  (as  above)  or  succeeded  in  adding  or  discovering  a  bypass
+element. This latter option enables characters to either get past the
+trap  without  triggering  it  or  avoid  its  effect,  but  the  trap  remains
+active. For example, a character who achieves this degree of success
+on  a  Disable  Device  check  could  manage  to  prop  open  a  spring-
+loaded trap so that it can’t fire, or could notice the niche in the wall
+that provides refuge from the rolling boulder.
+pqqqqrs
+pqqqqrs

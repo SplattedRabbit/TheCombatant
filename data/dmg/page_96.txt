@@ -1,0 +1,107 @@
+Winds
+The wind can create a stinging spray of sand or dust, fan a large
+fire, heel over a small boat, and blow gases or vapors away. If pow-
+erful enough, it can even knock characters down (see Table 3–24:
+Wind Effects), interfere with ranged attacks, or impose penalties
+on some skill checks.
+Light Wind:A gentle breeze, having little or no game effect.
+Moderate Wind:A steady wind with a 50% chance of extinguish-
+ing small, unprotected flames, such as candles.
+Strong Wind:Gusts that automatically extinguish unprotected
+flames (candles, torches, and the like). Such gusts impose a –2
+penalty on ranged attack rolls and on Listen checks.
+Severe Wind:In addition to automatically extinguishing any
+unprotected flames, winds of this magnitude cause protected
+flames (such as those of lanterns) to dance wildly and have a 50%
+chance of extinguishing these lights. Ranged weapon attacks and
+Listen checks are at a –4 penalty. This is the velocity of wind pro-
+duced by a gust of windspell.
+Windstorm:Powerful enough to bring down branches if not
+whole trees, windstorms automatically extinguish unprotected
+flames and have a 75% chance of blowing out protected flames,
+such as those of lanterns. Ranged weapon attacks are impossible,
+and even siege weapons have a –4 penalty on attack rolls. Listen
+checks are at a –8 penalty due to the howling of the wind.
+Hurricane-Force Wind:All flames are extinguished. Ranged at-
+tacks are impossible (except with siege weapons, which have a –8
+penalty on attack rolls). Listen checks are impossible: All charac-
+ters can hear is the roaring of the wind. Hurricane-force winds
+often fell trees.
+Tornado (CR 10):All flames are extinguished. All ranged attacks
+are impossible (even with siege weapons), as are Listen checks.
+Instead of being blown away (see Table 3–24: Wind Effects), char-
+acters in close proximity to a tornado who fail their Fortitude
+saves are sucked toward the tornado. Those who come in contact
+with the actual funnel cloud are picked up and whirled around for
+1d10 rounds, taking 6d6 points of damage per round, before being
+violently expelled (falling damage may apply). While a tornado’s
+rotational speed can be as great as 300 mph, the funnel itself
+moves forward at an average of 30 mph (roughly 250 feet per
+round). A tornado uproots trees, destroys buildings, and causes
+other similar forms of major destruction.
+RANDOM WILDERNESS ENCOUNTERS
+When setting out to generate random encounters for an adven-
+ture that involves travel through the wilderness, the first thing
+you need to do is determine the chance for an encounter to
+happen in a given area. Refer to the table below, determining the
+type of area in question and then rolling d% at the end of every
+hour the PCs spend in the area to see if an encounter occurs.
+Chance of Wilderness Encounter
+Type of Aread% Chance
+Desolate/wasteland5% chance per hour
+Frontier/wilderness8% chance per hour
+Verdant/civilized area10% chance per hour
+Heavily traveled12% chance per hour
+Building a Wilderness Encounter Table
+In this section are all the tools you need to build encounter tables
+suited to various regions of your campaign world. These tools in-
+clude Table 3–25: Wilderness Encounter Lists, in which creatures
+from the Monster Manualare grouped according to the environ-
+ment where they can typically be encountered. The lists include
+all creatures from the Monster Manualexcept for those that are
+found only underground (see the earlier section of this chapter,
+where dungeon encounter tables are provided), those that are
+native to a plane of existence other than the Material Plane (see
+Adventuring on Other Planes, beginning on page 147), and some
+creatures with low CRs that are usually not appropriate for
+encounters (such as the toad, the lizard, and the monkey).
+The sample encounter tables presented in the section on terrain
+features (beginning with forest terrain on page 87) were con-
+structed using the procedure described below. Refer to those
+tables when you begin building your own.
+95
+CHAPTER 3:
+ADVENTURES
+Table 3–24: Wind Effects
+WindWind Ranged AttacksWind EffectFort Save
+ForceSpeedNormal/Siege Weapons
+1
+Creature Size
+2
+on CreaturesDC
+Light                         0–10                         mph—/—AnyNone—
+Moderate               11–20               mph—/—AnyNone—
+Strong 21–30 mph–2/—Tiny or smallerKnocked down10
+Small or largerNone
+Severe31–50 mph–4/—TinyBlown away15
+SmallKnocked down
+MediumChecked
+Large or largerNone
+Windstorm51–74 mphImpossible/–4Small or smallerBlown away18
+MediumKnocked down
+Large or HugeChecked
+Gargantuan or ColossalNone
+Hurricane75–174 mphImpossible/–8Medium or smallerBlown away20
+LargeKnocked down
+HugeChecked
+Gargantuan or ColossalNone
+Tornado175–300 mphImpossible/impossibleLarge or smallerBlown away30
+HugeKnocked down
+Gargantuan or ColossalChecked
+1 The siege weapon category includes ballista and catapult attacks as well as boulders tossed by giants.
+2 Flying or airborne creatures are treated as one size category smaller than their actual size, so an airborne Gargantuan dragon is treated as Huge
+for purposes of wind effects.
+Checked:Creatures are unable to move forward against the force of the wind. Flying creatures are blown back 1d6×5 feet.
+Knocked Down:Creatures are knocked prone by the force of the wind. Flying creatures are instead blown back 1d6×10 feet.
+Blown Away:Creatures on the ground are knocked prone and rolled 1d4×10 feet, taking 1d4 points of nonlethal damage per 10 feet. Flying
+creatures are blown back 2d6×10 feet and take 2d6 points of nonlethal damage due to battering and buffeting.

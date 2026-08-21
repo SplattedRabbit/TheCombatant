@@ -1,0 +1,138 @@
+226
+Throwing: This  ability  can  only  be  placed  on  a  melee
+weapon. A melee weapon crafted with this ability gains a range
+increment of 10 feet and can be thrown by a wielder proficient
+in its normal use.
+Faint transmutation; CL 5th; Craft Magic
+Arms and Armor, magic stone; Price +1 bonus.
+Unholy: An unholy weapon is imbued
+with unholy power. This power makes the
+weapon evil-aligned and thus bypasses the
+corresponding damage reduction. It deals
+an extra 2d6 points of damage against all of
+good alignment. It bestows one negative
+level on any good creature attempting to
+wield it. The negative level remains as long
+as the weapon is in hand and disappears
+when the weapon is no longer wielded. This
+negative level never results in actual level
+loss, but it cannot be overcome in any way
+(including restorationspells)  while  the
+weapon is wielded. Bows, crossbows, and
+slings so crafted bestow the unholy power
+upon their ammunition.
+Moderate evocation [evil]; CL 7th; Craft
+Magic Arms and Armor, unholy blight, creator
+must be evil; Price +2 bonus. 
+Vicious:When a vicious weapon strikes
+an opponent, it creates a flash of disruptive
+energy that resonates between the opponent
+and the wielder. This energy deals an extra
+2d6 points of damage to the opponent and
+1d6 points of damage to the wielder. Only
+melee weapons can be vicious.
+Moderate necromancy; CL 9th; Craft Magic
+Arms and Armor, enervation; Price +1 bonus.
+Vorpal: This  potent  and  feared  ability
+allows the weapon to sever the heads of
+those it strikes. Upon a roll of natural 20 (fol-
+lowed by a successful roll to confirm the crit-
+ical hit), the weapon severs the opponent’s
+head (if it has one) from its body. Some crea-
+tures, such as many aberrations and all oozes,
+have no heads. Others, such as golems and
+undead creatures other than vampires, are
+not affected by the loss of their heads. Most
+other creatures, however, die when their
+heads are cut off. The DM may have to make
+judgment calls about this sword’s effect. A
+vorpal weapon must be a slashing weapon. (If
+you roll this property randomly for an inap-
+propriate weapon, reroll.)
+Strong necromancy and transmutation; CL 18th; Craft Magic
+Arms and Armor, circle of death, keen edge; Price +5 bonus.
+Wounding:A wounding weapon deals 1 point of Constitution
+damage from blood loss when it hits a creature. A critical hit does
+not multiply the Constitution damage. Creatures immune to criti-
+cal hits (such as plants and constructs) are immune to the Consti-
+tution damage dealt by this weapon.
+Moderate evocation; CL 10th; Craft Magic Arms and Armor,
+Mordenkainen’s sword; Price +2 bonus.
+Specific Weapons
+The following specific weapons usually are preconstructed with
+exactly the qualities described here.
+Adamantine Battleaxe: This nonmagical axe is made out of
+adamantine. As a masterwork weapon, it has a +1 enhancement
+bonus on attack rolls.
+No aura (nonmagical); Price 3,010 gp.
+Adamantine Dagger: This nonmagical dagger is made out of
+adamantine. As a masterwork weapon, it has a +1 enhancement
+bonus on attack rolls.
+No aura (nonmagical); Price 3,002 gp.
+Assassin’s Dagger:This wicked-looking, curved +2 daggerpro-
+vides a +1 bonus to the DC of a Fortitude save forced by the death
+attack of an assassin.
+Moderate necromancy; CL 9th; Craft Magic Arms and Armor,
+slay living; Price 18,302 gp; Cost 9,302 gp + 720 XP.
+Dagger  of  Venom:This black +1 daggerhas  a  serrated  edge.  It
+allows the wielder to use a poisoneffect (as the spell, save DC 14)
+upon a creature struck by the blade once per day. The wielder can
+decide to use the power after he has struck. Doing so is a free
+action, but the poisoneffect must be invoked in the same round
+that the dagger strikes.
+Faint necromancy; CL 5th; Craft Magic Arms and Armor, poison;
+Price 8,302 gp; Cost 4,302 gp + 320 XP.
+Dwarven Thrower: This weapon commonly functions as a +2
+warhammer. In the hands of a dwarf, the warhammer gains an
+additional +1 enhancement bonus (for a total enhancement bonus
+of +3) and gains the returning special ability. It can be hurled with
+a 30-foot range increment. When hurled, it deals an extra 2d8
+points of damage against giants or an extra 1d8 points of damage
+against any other target.
+Moderate evocation; CL 10th; Craft Magic Arms and Armor,
+creator must be a dwarf of at least 10th level; Price 60,312 gp; Cost
+30,312 gp + 2,400 XP.
+Flame Tongue:This is a +1 flaming burst longsword.Once per
+day, the sword can blast forth a fiery ray at any target within 30 feet
+as a ranged touch attack. The ray deals 4d6 points of fire damage
+on a successful hit.
+Moderate evocation; CL 12th; Craft Magic Arms
+and Armor, scorching ray,and flame blade, flame strike,
+or fireball;Price 20,715 gp; Cost 10,515 gp + 816 XP.
+Frost Brand:This +3 frost greatswordsheds light
+as a torch when the temperature drops below 0°F.
+At such times it cannot be concealed when drawn,
+nor can its light be shut off. Its wielder is protected
+from fire; the sword absorbs the first 10 points
+of fire damage each round that the wielder
+would otherwise take.
+A frost brandextinguishes all nonmagi-
+cal fires in its area. As a standard action, it can
+also dispel lasting fire spells such as wall of fire,
+but not instantaneous effects such as fireball,
+meteor swarm, and flame strike,though you must
+succeed on a dispel check (1d20 +14) against each
+spell to dispel it. The DC to dispel such spells is 11
++ the caster level of the fire spell.
+Strong evocation; CL 14th; Craft Magic Arms
+and Armor, ice storm, dispel magic, protection from
+energy; Price 54,475 gp; Cost 27,375 gp and 5 sp +
+2179 XP.
+Holy Avenger: This +2 cold iron longswordbe-
+comes a +5 holy cold iron longswordin the hands of
+a paladin.
+It provides spell resistance of 5 + the paladin’s
+level to the wielder and anyone adjacent to her. It
+also enables the wielder to use greater dispel magic
+(once per round as a standard action) at the class
+level of the paladin. (Only the area dispel is pos-
+sible, not the targeted dispel or counterspell ver-
+sions of greater dispel magic.)
+Strong abjuration; CL 18th; Craft Magic Arms
+and Armor, holy aura, creator must be good; Price
+120,630 gp; Cost 60,630 gp + 4,800 XP.
+Javelin of Lightning:This javelin becomes a
+CHAPTER 7:
+MAGIC ITEMS
+Holy avenger
+Flame tongue

@@ -1,0 +1,125 @@
+214
+MAGIC ITEMS ON THE BODY
+Many magic items need to be donned by a character who wants to
+employ them or benefit from their abilities. It’s possible for a crea-
+ture with a humanoid-shaped body to wear as many as twelve
+magic items at the same time. However, each of those items must
+be worn on (or over) a particular part of the body. 
+A humanoid-shaped body can be decked out in magic gear con-
+sisting of one item from each of the following groups, keyed to
+which place on the body the item is worn.
+•One headband, hat, helmet, or phylactery on the head
+•One pair of eye lenses or goggles on or over the eyes
+•One  amulet,  brooch,  medallion,  necklace,  periapt,  or  scarab
+around the neck
+•One vest, vestment, or shirt on the torso
+•One robe or suit of armor on the body (over a vest, vestment, or
+shirt)
+•One belt around the waist (over a robe or suit of armor)
+•One cloak, cape, or mantle around the shoulders (over a robe or
+suit of armor)
+•One pair of bracers or bracelets on the arms or wrists
+•One glove, pair of gloves, or pair of gauntlets on the hands
+•One ring on each hand (or two rings on one hand)
+•One pair of boots or shoes on the feet
+Of course, a character may carry or possess as many items of the
+same type as he wishes. He can have a pouch full of magic rings,
+for example. But he can only benefit from two rings at a time. If he
+puts on a third ring, it doesn’t work. This general rule applies to
+other attempts to “double up” on magic items—for instance, if a
+character puts on another magic cloak on top of one he is already
+wearing, the second cloak’s power does not work.
+Some items, such as a necklace of fireballs,can be worn or carried
+without taking up space on a character’s body. The description of
+an item indicates when an item has this property.
+SAVING THROWS AGAINST MAGIC ITEM
+POWERS
+Magic items produce spells or spell-like effects. For a saving throw
+against a spell or spell-like effect from a magic item, the DC is 10 +
+the level of the spell or effect + the ability modifier of the mini-
+mum ability score needed to cast that level of spell. For example, a
+2nd-level spell’s save DC would be 10 + 2 (for the spell being 2nd
+level) + 1 (for needing at least a 12 in the relevant ability score to
+cast a 2nd-level spell), or a total of 13.
+Staffs are an exception to the rule. Treat the saving throw as if
+the wielder cast the spell, including caster level and all modifiers
+to save DC. For example, if Devis the bard triggers charm person
+from a staff of charming, it will have a save DC of 14 because Devis
+has a Charisma of 17. If Mialee the wizard triggers charm person
+from the same staff, it has a DC of 16 because her Intelligence
+score is 18 and she has the Spell Focus (enchantment) feat.
+Most item descriptions give saving throw DCs for various
+effects, particularly when the effect has no exact spell equivalent
+(making its level otherwise difficult to determine quickly).
+DAMAGING MAGIC ITEMS
+A magic item doesn’t need to make a saving throw unless it is
+unattended, it is specifically targeted by the effect, or its wielder
+rolls a natural 1 on his save. Magic items should always get a
+saving throw against spells that might deal damage to them—
+even against attacks from which a nonmagical item would nor-
+mally get no chance to save. Magic items use the same saving
+throw bonus for all saves, no matter what the type (Fortitude,
+Reflex, or Will). A magic item’s saving throw bonus equals 2 +
+one-half its caster level (round down). For example, a lantern of
+revealing, with a caster level of 5th, has a Reflex save bonus of +4 if
+it is caught in a fireball, and a Fortitude save bonus of +4 if some-
+one attempts to disintegrateit. The only exceptions to this are
+intelligent magic items, which make Will saves based on their
+own Wisdom scores.
+Magic items, unless otherwise noted, take damage as nonmagi-
+cal items of the same sort. A damaged magic item continues to
+function, but if it is destroyed, all its magical power is lost.
+REPAIRING MAGIC ITEMS
+Some magic items (especially magic weapons and shields) take
+damage over the course of an adventure. It costs no more to repair
+a magic item with the Craft skill than it does to repair its nonmag-
+ical counterpart. The make whole spell also repairs a damaged—but
+not completely broken—magic item.
+INTELLIGENT ITEMS
+Some magic items, particularly weapons, have an intelligence all
+their own. Only permanent magic items (as opposed to those with
+a single use or those with charges) can be intelligent. (This means
+that potions, scrolls, and wands, among other items, are never
+intelligent.) 
+In general, less than 1% of magic items have intelligence. Use
+them sparingly in your campaign, because they require more work
+on the part of both player and DM.
+See Intelligent Items, page 268, for more information.
+CURSED ITEMS
+Some items are cursed—incorrectly made, or corrupted by out-
+side forces. Cursed items might be particularly dangerous to the
+user, or they might be normal items with a minor flaw, an incon-
+venient requirement, or an unpredictable nature. Randomly gen-
+erated items are cursed 5% of the time. If you wish to include
+faulty and/or dangerous magic items in your campaign, see
+Cursed Items, page 272, for more information.
+CHARGES, DOSES, AND MULTIPLE USES
+Many items, particularly wands and staffs, are limited in power by
+the number of charges they hold. Normally, charged items have 50
+charges at most. If such an item is found as a random part of a trea-
+sure, roll d% and divide by 2 to determine the number of charges
+left (round down, minimum 1). If the item has a maximum num-
+ber of charges other than 50, roll randomly to determine how
+many charges are left. For example, a random ring of three wishes
+has 1d3 wishesleft.
+Prices listed are always for fully charged items. (When an item
+is created, it is fully charged.) For an item that’s worthless when
+its charges run out (which is the case for almost all charged
+items), the value of the partially used item is proportional to the
+number of charges left. A wand with 20 charges, for example, is
+CHAPTER 7:
+MAGIC ITEMS
+VARIANT: NEW MAGIC ITEMS
+In the same way that you can invent new spells and monsters for your
+campaign, you can invent new magic items. In the same way that a PC
+spellcaster can research a new spell, a PC may be able to invent a new
+kind of magic item. And just as you have to be careful about new spells,
+you need to be careful with new magic items.
+Use  the  magic  item  descriptions  in  this  chapter  as  examples  on
+which to base new magic items. A new magic item needs all the infor-
+mation that similar, existing magic items have, possibly including acti-
+vation type, activation time, and caster level. You should also be ready
+to determine the market value of a new magic item, even one that the
+PCs simply find, in case a character wants to sell it or duplicate it.
+pqqqqrs
+pqqqqrs

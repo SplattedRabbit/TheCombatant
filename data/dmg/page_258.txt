@@ -1,0 +1,137 @@
+created from the statuette is fully obedient to the figurine’s owner,
+serving as a beast of burden, a mount, or a combatant.
+The statuette can be used four times per month for up to 24
+hours at a time.
+Moderate transmutation; CL 11th; Craft Wondrous Item, ani-
+mate objects; Price 17,000 gp.
+Obsidian Steed:This figurine appears to be a small, shapeless
+lump of black stone. Only careful inspection reveals that it
+vaguely resembles some form of quadruped. On command, the
+near-formless piece of obsidian becomes a fantastic mount. Treat it
+as a heavy warhorse (see page 273 of the Monster Manual) with the
+following additional powers usable once per round at will: overland
+flight, plane shift, and ethereal jaunt. The steed allows itself to be
+ridden, but if the rider is of good alignment, the steed is 10% likely
+per use to carry him to the lower planes and then return to its stat-
+uette form. The statuette can be used once per week for one con-
+tinuous period of up to 24 hours. Note that when an obsidian steed
+becomes ethereal or plane shifts, its rider and his gear follow suit.
+Thus, the user can travel to other planes via this means.
+Strong conjuration and transmutation; CL 15th; Craft Won-
+drous Item, animate objects, etherealness, fly, plane shift; Price
+28,500 gp.
+Onyx Dog:When commanded, this statuette changes into a crea-
+ture with the same properties as a riding dog (see page 272 of the
+Monster Manual), except that it is endowed with an Intelligence of
+8, can communicate in Common, and has exceptional olfactory
+and visual abilities. (It has the scent ability and adds +4 to its Spot
+and Search checks.) It has 60-foot darkvision, and it can see invisi-
+bility.An onyx dogcan be used once per week for up to 6 hours. It
+obeys only its owner.
+Moderate transmutation; CL 11th; Craft Wondrous Item, ani-
+mate objects; Price 15,500 gp.
+Serpentine Owl:This figurine becomes either a normal-sized
+horned owl or a giant owl (see page 277 or 205 of the Monster
+Manual,respectively), according to the command word used. The
+transformation can take place once per day, with a maximum
+duration of 8 continuous hours. However, after three transforma-
+tions into giant owl form, the statuette loses all its magical prop-
+erties. The owl communicates with its owner by telepathic
+means, informing her of all it sees and hears. (Remember the lim-
+itations of its Intelligence.)
+Moderate transmutation; CL 11th; Craft Wondrous Item, ani-
+mate objects; Price 9,100 gp.
+Silver Raven:This silver figurine turns into a raven on command
+(but it retains its metallic consistency, which gives it hardness 10).
+Another command sends it off into the air, bearing a message just
+like a creature affected by an animal messenger spell. If not com-
+manded to carry a message, the raven obeys the commands of its
+owner, although it has no special powers or telepathic abilities. It
+can maintain its nonfigurine status for only 24 hours per week,
+but the duration need not be continuous.
+Faint enchantment and transmutation; CL 6th; Craft Wondrous
+Item, animal messenger, animate objects; Price 3,800 gp.
+Gauntlets of Ogre Power:These gauntlets are made of tough
+leather with iron studs running across the back of the hands and
+fingers. They grant the wearer great strength, adding a +2 en-
+hancement bonus to his Strength score. Both gauntlets must be
+worn for the magic to be effective.
+Faint transmutation; CL 6th; Craft Wondrous Item, bull’s
+strength; Price 4,000 gp; Weight 4 lb.
+Gauntlet of Rust:This single metal gauntlet looks rusted and
+pitted but is actually quite powerful. Once per day, it can affect an
+object as with the rusting grasp spell. It also completely protects the
+wearer and her gear from rust (magical or otherwise), including
+the attack of a rust monster.
+Moderate transmutation; CL 7th; Craft Wondrous Item, rusting
+grasp; Price 11,500 gp; Weight 2 lb.
+Gem of Brightness:This crystal appears to be a long, rough
+prism. Upon utterance of a command word, the crystal emits
+bright light of one of three sorts.
+•One  command  word  causes  the  gem  to  shed  light  as  a
+hooded  lantern.  This  use  of  the  gem  does  not  expend  any
+charges.
+•Another  command  word  causes  the  gem  of  brightnessto  send
+out  a  bright  ray  1  foot  in  diameter  and  50  feet  long.  This
+strikes  as  a  ranged  touch  attack,  and  any  creature  struck  by
+this  beam  is  blinded  for  1d4  rounds  unless  it  makes  a  DC  14
+Fortitude save. This use of the gem expends 1 charge.
+•The third command word causes the gem to flare in a blinding
+flash of light that fills a 30-foot cone. Although this glare lasts
+but a moment, any creature within the cone must make a DC
+14  Fortitude  save  or  be  blinded  for  1d4  rounds.  This  use
+expends 5 charges.
+A newly created gem of brightnesshas 50 charges. When all its
+charges are expended, the gem becomes nonmagical.
+Faint evocation; CL 6th; Craft Wondrous Item, daylight; Price
+13,000 gp.
+Gem of Seeing:This finely cut and polished stone is indistin-
+guishable from an ordinary jewel in appearance. When it is gazed
+through, a gem of seeingenables the user to see as though she were
+affected by the true seeing spell. A gem of seeing can be used for as
+much as 30 minutes a day, divided up into periods of minutes or
+rounds as the user sees fit.
+Moderate divination; CL 10th; Craft Wondrous Item, true seeing;
+Price 75,000 gp.
+Gloves of Arrow Snaring:Once snugly worn, these gloves
+seem to meld with the hands, becoming almost invisible. Twice
+per day, the wearer can act as if he had the Snatch Arrows feat,
+even if he does not meet the prerequisites for it. Both gloves must
+be worn for the magic to be effective. At least one hand must be
+free to take advantage of the magic.
+Faint abjuration; CL 3rd; Craft Wondrous Item, shield; Price
+4,000 gp.
+Gloves of Dexterity:These thin leather gloves are very flexible
+and allow for delicate manipulation. They add to the wearer’s Dex-
+terity score in the form of an enhancement bonus of +2, +4, or +6.
+Both gloves must be worn for the magic to be effective.
+Moderate transmutation; CL 8th; Craft Wondrous Item, cat ’s
+grace; Price 4,000 gp (+2), 16,000 gp (+4), 36,000 gp (+6).
+Glove of Storing:This device is a simple leather glove. On
+command, one item held in the hand wearing the glove disap-
+pears. The item can weigh no more than 20 pounds and must be
+able to be held in one hand. While stored, the item has negligible
+weight. With a snap of the fingers wearing the glove, the item
+reappears. A glove can only store one item at a time. Storing or
+retrieving the item is a free action. The item is held in stasis and
+shrunk down so small within the palm of the glove that it cannot
+be seen. Many owners of a glove of storingfind it to be a useful and
+dramatic way to store weapons, wands, and—because the item is
+stored in stasis—even lit torches. Spell durations are not sup-
+pressed, but continue to expire. If an effect is suppressed or dis-
+pelled, the stored item appears instantly.
+Faint transmutation; CL 6th; Craft Wondrous Item, shrink item;
+Price 10,000 gp (one glove).
+Gloves of Swimming and Climbing:These apparently
+normal lightweight gloves grant a +5 competence bonus on Swim
+checks and Climb checks. Both gloves must be worn for the magic
+to be effective.
+Faint transmutation; CL 5th; Craft Wondrous Item, bull’s strength,
+cat ’s grace; Price 6,250 gp.
+Goggles of Minute Seeing:The lenses of this item are made of
+special crystal. When placed over the eyes of the wearer, the lenses
+enable her to see much better than normal at distances of 1 foot or
+less, granting her a +5 competence bonus on Search checks to find
+257
+CHAPTER 7:
+MAGIC ITEMS

@@ -1,0 +1,127 @@
+4
+Introduction
+This is the DUNGEONS& DRAGONS®Roleplaying Game, the game
+that defines the genre and has set the standard for fantasy role-
+playing for more than 30 years.
+Specifically, this is the Dungeon Master ’s Guide.This book con-
+tains information that every Dungeon Master (DM) needs to set
+up adventures, narrate the action, run the monsters, and referee
+the D
+UNGEONS&DRAGONSgame. This book, the Player ’s Handbook,
+and the Monster Manual comprise the core rules for the D&D®
+game.
+THE DUNGEON MASTER
+We’ve distilled our knowledge of the D&D® game into the mate-
+rial that follows. Whether you need to know how to design an
+adventure, a campaign, or an entire game world, the material in
+this book can, and will, help you.
+You’re a member of a select group. Truly, not everyone has the cre-
+ativity and the dedication to be a DM. Dungeon Mastering (DMing)
+can be challenging, but it’s not a chore. You’re the lucky one out of
+your entire circle of friends who play the game. The real fun is in
+your hands. As you flip through the Monster Manual or look at pub-
+lished adventures on a store shelf, you get to decide what the player
+characters (PCs) take on next. You get to build a whole world, as well
+as design and play all its nonplayer characters (NPCs).
+It’s good to be the DM.
+The DM defines the game. A good DM results in a good game.
+Since you control the pacing, and the types of adventures and
+encounters, the whole tenor of the game is in your hands. It’s fun,
+but it’s a big responsibility. If you’re the sort of person who likes to
+provide the fun for your friends, or to come up with new ideas,
+then you’re an ideal candidate for DM.
+Once your group has a Dungeon Master, however, that doesn’t
+mean that you can’t switch around. Some DMs like to take a turn
+at being a player, and many players eventually want to try their
+hand at DMing.
+HOW TO USE THIS BOOK
+No one expects you to read this book cover to cover. It’s not a
+novel. Instead, we arranged this book into topics that you can refer
+to when you need them. Plus, an extended glossary at the back of
+the book provides quick reference to DM-related topics. 
+Based on those portions of the game that you control, you’ll find
+chapters that deal with running the game, adjudicating play, writ-
+ing adventures, building a campaign, awarding experience, and
+finding or creating the right magic items to stock your dungeons.
+Refer to the table of contents and the index to locate the specific
+topic you need at any given time.
+PLAYING ON THE BATTLE GRID
+The D&D game assumes the use of miniature figures, and the
+rules are written from that perspective. This book contains a battle
+grid and other tools to help you visualize the action.
+The poster-sized sheet in the back of the book has a 1-inch grid
+on one side, and a collection of rooms that can be used to repre-
+sent areas in a dungeon on the other side.
+The last 12 pages of this book (just ahead of the index) present a
+variety of visual aids that you can use to set up and play out
+encounters and adventures on the grid:
+—Six pages of diagrams that show the squares contained
+within areas of different sizes and shapes, and graphic depictions
+of space and reach for creatures of varying sizes.
+—Six pages of illustrations that represent various dungeon
+features, sized to fit the 1-inch grid, that you can photocopy, cut
+out, and place on the grid—enabling players to actually see
+what lies before their characters as they make their way through
+the dungeon.
+FINAL NOTE
+The power of creating worlds, controlling deities and dragons, and
+leading entire nations is in your hands. You are the master of the
+game—the rules, the setting, the action, and ultimately, the fun.
+This is a great deal of power, and you must use it wisely. This book
+shows you how.
+INTRODUCTION
+WHY A REVISION?
+The new D
+UNGEONS
+& DRAGONS
+game debuted in 2000. In the three years
+since  the  d20  Game  System  energized  the  roleplaying  game  industry,
+we’ve  gathered  tons  of  data  on  how  the  game  is  being  played.  We
+consider  D&D  to  be  a  living  game  that  constantly  evolves  as  it  is
+played. Using the gathered feedback, we’ve retooled the game from the
+ground  up  and  incorporated  everyone’s  suggestions  to  improve  the
+game and this product.
+If this is your first experience with D&D, we welcome you to a wonder-
+ful world of adventure and imagination. If you played the prior version of
+this book, rest assured that this revision is a testament to our dedication
+to  continuous  product  improvement  and  innovation.  We’ve  updated
+errata,  clarified  rules,  polished  the  presentation,  and  made  the  game
+better than it was. This is an upgrade of the d20 System, not a new edition
+of the game. This revision is compatible with existing products, and these
+products can be used with the revision with only minor adjustments.
+What’s new in the revised Dungeon Master’s Guide? The entire book has
+been polished and refined, all in response to your feedback and to reflect
+the  way  the  game  is  actually  being  played.  We’ve  revised  the  encounter
+tables  and  magic  item  creation  rules.  We’ve  expanded  the  movement
+rules,  increased  the  number  of  prestige  classes,  added  dozens  of  new
+magic items and magic item special abilities, and provided plenty of tools
+to help promote the three-dimensional experience.
+Take a look, play the game. We think you’ll like how everything turned
+out.
+pqqrs
+pqqrs
+THE PURPOSE OF SIDEBARS
+You’ll  see  blocks  of  text  that  look  like  this  one  frequently  throughout
+this book. The information in these sidebars is not part of the rules per
+se, but you’ll find them useful and interesting in their own right. Most
+sidebars in this book serve either to introduce rules variants or to give
+you a glimpse “behind the curtain” into how some aspect of the D&D
+game was created.
+Variant:To give  you  an  idea  of  some  of  the  ways  in  which  you  can
+alter  the  D&D  rules  for  your  own  campaign,  some  sidebars  suggest
+variants that you can adopt or modify to suit your game.
+The basic rules presented in this book—that is, everything not iden-
+tified  as  a  variant—apply  to  the  baseline  D&D  campaign.  If  you  are
+playing in an RPGA
+®
+Network event, that event uses the basic rules in
+this  book.  Establishing  a  standard  set  of  rules  makes  a  worldwide
+gaming network possible.
+Behind the Curtain:Some sidebars provide a further explanation of
+why  the  rules  are  the  way  they  are—a  look  “behind  the  curtain”  into
+how the game’s designers make decisions about the rules. If you’re the
+sort of DM who likes to tinker with the rules of the D&D game, these
+sidebars offer some advice and inspiration as you customize the game
+for yourself and your players.
+pqqrs
+pqqrs

@@ -1,0 +1,120 @@
+180
+ASSASSIN
+The assassin is the master of dealing quick, lethal blows. Assassins
+also excel at infiltration and disguise. Assassins often function as
+spies, informants, killers for hire, or agents of vengeance. Their
+training in anatomy, stealth, poison, and the dark arts allows them to
+carry out missions of death with shocking, terrifying precision.
+Most rogues, monks, and bards who choose this class become
+examples of the classic assassin skulking in the shadows with a
+blade carrying certain death. Fighters, ex-paladins, rangers, druids,
+and barbarians operate as warrior assassins, with as much ability to
+kill in combat as from the shadows. Sorcerers, wizards, and clerics
+may be the most terrifying assassins of all, for with their spells
+they can infiltrate and slay with even greater impunity.
+As NPCs, assassins work in guilds or secret societies found
+hidden in cities or based in remote fortresses in the wilderness.
+Sometimes they serve more powerful evil characters
+singly or in a group. Occasionally an assassin works
+alone, but only the most capable are willing to
+operate  without  any  sort  of  support  or
+backup.
+Hit Die: d6.
+Requirements
+To qualify to become an assassin, a
+character must fulfill all the follow-
+ing criteria.
+Alignment:Any evil.
+Skills: Disguise 4 ranks,
+Hide 8 ranks, Move Silently 8
+ranks.
+Special:The character must
+kill someone for no other reason
+than to join the assassins.
+Class Skills
+The assassin’s class skills (and
+the key ability for each skill) are
+Balance   (Dex),   Bluff   (Cha),
+Climb (Str), Craft (Int), Decipher
+Script (Int), Diplomacy (Cha), Dis-
+able  Device  (Int),  Disguise  (Cha),
+Escape Artist (Dex), Forgery (Int),
+Gather  Information  (Cha),
+Hide  (Dex),  Intimidate
+(Cha), Jump (Str), Listen
+(Wis),    Move    Silently
+(Dex), Open Lock (Dex),
+Search (Int), Sense Motive
+(Wis),  Sleight  of  Hand
+(Dex), Spot (Wis), Swim
+(Str), Tumble (Dex), Use
+Magic Device (Cha), and
+Use  Rope  (Dex).  See
+Chapter 4 of the Player ’s Handbookfor skill descriptions.
+Skill Points at Each Level:4 + Int modifier.
+Class Features
+All of the following are class features of the assassin prestige class.
+Weapon and Armor Proficiency: An assassin’s weapon train-
+ing focuses on weapons suitable for stealth and sneak attacks.
+Assassins are proficient with the crossbow (hand, light, or heavy),
+dagger (any type), dart, rapier, sap, shortbow (normal and compos-
+ite), and short sword. Assassins are proficient with light armor but
+not with shields.
+Sneak Attack:This is exactly like the rogue ability of the same
+name. The extra damage dealt increases by +1d6 every other level
+(2nd, 4th, 6th, 8th, and 10th). If an assassin gets a sneak attack
+bonus from another source (such as rogue levels), the bonuses on
+damage stack.
+Death Attack:If an assassin studies his victim
+for 3 rounds and then makes a sneak attack with a
+melee weapon that successfully deals damage, the
+sneak attack has the additional effect of possi-
+bly either paralyzing or killing the target
+(assassin’s choice). While studying the
+victim, the assassin can undertake
+other actions so long as his
+attention stays focused on
+the target and the target
+does not detect the assassin
+or recognize the assassin as an
+enemy. If the victim of such an
+attack fails a Fortitude save (DC 10
++ the assassin’s class level + the
+assassin’s Int modifier) against the
+kill effect, she dies. If the saving
+throw  fails  against  the  paralysis
+effect, the victim’s mind and body become
+enervated, rendering her helpless and
+unable to act for 1d6 rounds plus 1 round
+per level of the assassin. If the victim’s
+saving throw succeeds, the attack is
+just a normal sneak attack. Once the
+assassin has completed the 3
+rounds of study, he must make
+the death attack within
+the next 3 rounds.
+If a death attack
+is attempted and
+fails   (the   victim
+makes her save) or
+if the assassin does
+not   launch   the
+attack    within    3
+rounds of complet-
+ing the study, 3 new
+CHAPTER 6:
+CHARACTERS
+Table 6–4: The Assassin
+BaseFortRefWill—— Spells per Day ——
+LevelAttack Bonus   SaveSaveSaveSpecial1st2nd3rd4th
+1st+0+0+2+0Sneak attack +1d6, death attack, poison use, spells0———
+2nd+1+0+3+0+1 save against poison, uncanny dodge1———
+3rd+2+1+3+1Sneak attack +2d620——
+4th+3+1+4+1+2 save against poison31——
+5th+3+1+4+1Improved uncanny dodge, sneak attack +3d6320—
+6th+4+2+5+2+3 save against poison331—
+7th+5+2+5+2Sneak attack +4d63320
+8th+6+2+6+2+4 save against poison, hide in plain sight3331
+9th+6+3+6+3Sneak attack +5d63332
+10th+7+3+7+3+5 save against poison3333
+An assassin

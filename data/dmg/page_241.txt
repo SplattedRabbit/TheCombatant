@@ -1,0 +1,202 @@
+240
+CHAPTER 7:
+MAGIC ITEMS
+31–32Evard’s black tentacles700 gp
+33–34fear700 gp
+35–37fire shield700 gp
+38–39fire trap725 gp
+40–42freedom of movement1,000 gp
+43geas, lesser700 gp
+44–46globe of invulnerability, 700 gp
+lesser
+47–48hallucinatory terrain700 gp
+49–50ice storm700 gp
+51–52illusory wall700 gp
+53–55invisibility, greater700 gp
+56–57Leomund’s secure shelter700 gp
+58locate creature700 gp
+59–60minor creation700 gp
+61modify memory1,000 gp
+62neutralize poison1,000 gp
+63–64Otiluke’s resilient sphere700 gp
+65–66phantasmal killer700 gp
+67–68polymorph700 gp
+69–70rainbow pattern700 gp
+71Rary’s mnemonic enhancer700 gp
+72–73reduce person, mass700 gp
+74–76remove curse700 gp
+77repel vermin1,000 gp
+78–79scrying700 gp
+80–81shadow conjuration700 gp
+82–83shout700 gp
+84–85solid fog700 gp
+86speak with plants1,000 gp
+87–88stone shape700 gp
+89–91stoneskin950 gp
+92–93summon monster IV700 gp
+94–96wall of fire700 gp
+97–99wall of ice700 gp
+100zone of silence1,000 gp
+5th-Level Arcane Spells
+d%SpellMarket Price
+01–02animal growth1,125 gp
+03–05baleful polymorph1,125 gp
+06–07Bigby’s interposing hand1,125 gp
+08–09blight1,125 gp
+10–12break enchantment1,125 gp
+13–14cloudkill1,125 gp
+15–17cone of cold1,125 gp
+18–19contact other plane1,125 gp
+20cure light wounds, mass1,625 gp
+21–23dismissal1,125 gp
+24–26dispel magic, greater1,625 gp
+27–28dominate person1,125 gp
+29dream1,125 gp
+30–31fabricate1,125 gp
+32–33false vision1,375 gp
+34–35feeblemind1,125 gp
+36–39hold monster1,125 gp
+40Leomund’s secret chest1,125 gp
+41magic jar1,125 gp
+42–43major creation1,125 gp
+44–45mind fog1,125 gp
+46–47mirage arcana1,125 gp
+48–49Mordenkainen’s faithful 1,125 gp
+hound
+50–51Mordenkainen’s private 1,125 gp
+sanctum
+52–53nightmare1,125 gp
+54–57overland flight1,125 gp
+58–60passwall1,125 gp
+61permanency10,125 gp
+1
+62–63persistent image1,125 gp
+64–65planar binding, lesser1,125 gp
+66–67prying eyes1,125 gp
+68–69Rary’s telepathic bond1,125 gp
+70–71seeming1,125 gp
+72–74sending1,125 gp
+75–76shadow evocation1,125 gp
+77song of discord1,625 gp
+78–79summon monster V1,125 gp
+80symbol of pain2,125 gp
+81symbol of sleep2,125 gp
+82–83telekinesis1,125 gp
+84–88teleport1,125 gp
+89–90transmute mud to rock1,125 gp
+91–92transmute rock to mud1,125 gp
+93–95wall of force1,125 gp
+96–98wall of stone1,125 gp
+99–100waves of fatigue1,125 gp
+1 Includes experience point cost up to 2,000
+XP.
+6th-Level Arcane Spells
+d%SpellMarket Price
+01–02acid fog1,650 gp
+03–05analyze dweomer1,650 gp
+06animate objects2,400 gp
+07–09antimagic field1,650 gp
+10–12bear’s endurance, mass1,650 gp
+13–14Bigby’s forceful hand1,650 gp
+15–17bull’s strength, mass1,650 gp
+18–20cat’s grace, mass1,650 gp
+21–23chain lightning1,650 gp
+24–25circle of death2,150 gp
+26contingency1,650 gp
+27–28control water1,650 gp
+29create undead2,350 gp
+30cure moderate wounds,2,400 gp
+mass
+31–33disintegrate1,650 gp
+34–37dispel magic, greater1,650 gp
+38–40eagle’s splendor, mass1,650 gp
+41–42eyebite1,650 gp
+43find the path2,400 gp
+44–45flesh to stone1,650 gp
+46–48fox’s cunning, mass1,650 gp
+49geas/quest1,650 gp
+50–52globe of invulnerability1,650 gp
+53guards and wards1,650 gp
+54heroes’ feast2,400 gp
+55–56heroism, greater1,650 gp
+57legend lore1,900 gp
+58–59mislead1,650 gp
+60Mordenkainen’s 1,650 gp
+lucubration
+61–62move earth1,650 gp
+63–64Otiluke’s freezing sphere1,650 gp
+65–67owl’s wisdom, mass1,650 gp
+68–69permanent image1,650 gp
+70–71planar binding1,650 gp
+72–73programmed image1,675 gp
+74–75repulsion1,650 gp
+76–78shadow walk1,650 gp
+79–81stone to flesh1,650 gp
+82–83suggestion, mass1,650 gp
+84–85summon monster VI1,650 gp
+86symbol of fear2,650 gp
+87symbol of persuasion6,650 gp
+88sympathetic vibration2,400 gp
+89–90Tenser’s transformation1,950 gp
+91–93true seeing1,900 gp
+94–95undeath to death2,150 gp
+96–97veil1,650 gp
+98–100wall of iron1,700 gp
+7th-Level Arcane Spells
+d%SpellMarket Price
+01–03arcane sight, greater2,275 gp
+04–07banishment2,275 gp
+08–10Bigby’s grasping hand2,275 gp
+11–13control undead2,275 gp
+14–16control weather2,275 gp
+17–19delayed blast fireball2,275 gp
+20–21Drawmij’s instant 3,275 gp
+summons
+22–25ethereal jaunt2,275 gp
+26–28finger of death2,275 gp
+29–31forcecage23775 gp
+32–35hold person, mass2,275 gp
+36–38insanity2,275 gp
+39–42invisibility, mass2,275 gp
+43limited wish3,775 gp
+1
+44–45Mordenkainen’s 2,275 gp
+magnificent mansion
+46–48Mordenkainen’s sword2,275 gp
+49–51phase door2,275 gp
+52–54plane shift2,275 gp
+55–57power word blind2,275 gp
+58–61prismatic spray2,275 gp
+62–64project image2,280 gp
+65–67reverse gravity2,275 gp
+68–70scrying, greater2,275 gp
+71–73sequester2,275 gp
+74–76shadow conjuration, 2,275 gp
+greater
+77simulacrum7,275 gp
+2
+78–80spell turning2,275 gp
+81–82statue2,275 gp
+83–85summon monster VII2,275 gp
+86symbol of stunning7,275 gp
+87symbol of weakness7,275 gp
+88–90teleport object2,275 gp
+91–95teleport, greater2,275 gp
+96–97vision2,775 gp
+98–100waves of exhaustion2,275 gp
+1 Assumes no material component in
+excess of 1,000 gp and no XP cost in
+excess of 300 XP.
+2 Assumes no XP cost in excess of 1,000 gp.
+8th-Level Arcane Spells
+d%SpellMarket Price
+01–02antipathy3,000 gp
+03–05Bigby’s clenched fist3,000 gp
+06–08binding8,500 gp
+1
+09–12charm monster, mass3,000 gp
+13clone4,000 gp
+14–16create greater undead3,000 gp
+17–19demand3,600 gp
+20–22dimensional lock3,000 gp
+23–26discern location3,000 gp

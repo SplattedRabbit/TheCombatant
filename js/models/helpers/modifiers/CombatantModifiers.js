@@ -93,6 +93,13 @@ function applyRaceModifiers(pc) {
       addRaceModifier(pc.int, 2, 'racial', 'Volk (Tiefling)');
     }
     addRaceModifier(pc.cha, -2, 'racial', 'Volk (Tiefling)');
+  } else if (race === 'anima_construct') {
+    if (!inWildShape) {
+      addRaceModifier(pc.con, 2, 'racial', 'Volk (Anima-Konstrukt)');
+      addRaceModifier(pc.ac, 1, 'natural', 'Volk (Anima-Konstrukt)');
+      addRaceModifier(pc.acFlat, 1, 'natural', 'Volk (Anima-Konstrukt)');
+    }
+    addRaceModifier(pc.cha, -2, 'racial', 'Volk (Anima-Konstrukt)');
   }
 
   // 3. Saving Throw Modifiers

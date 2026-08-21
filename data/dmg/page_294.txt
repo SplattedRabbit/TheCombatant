@@ -1,0 +1,132 @@
+Healing a Disease
+Use of the Heal skill can help a diseased character. Every time a
+diseased character makes a saving throw against disease effects,
+the healer makes a check. The diseased character can use the
+healer’s result in place of his saving throw if the Heal check result
+is higher. The diseased character must be in the healer’s care and
+must have spent the previous 8 hours resting.
+Characters recover points lost to ability score damage at a rate of
+1 per day per ability damaged, and this rule applies even while a dis-
+ease is in progress. That means that a character with a minor disease
+might be able to withstand it without accumulating any damage.
+ENERGY DRAIN AND NEGATIVE LEVELS
+An undead wight bashes an adventurer, and she feels cold and
+weak, while the wight moves with greater vigor than before. When
+the wight strikes her again, she grows weaker, as if her life force
+were slipping away. Her friends see her face drain of color and her
+flesh shrivel slightly. With the third strike, the adventurer falls to
+the ground, a desiccated husk. A fellow adventurer, also struck by
+the wight, survives the encounter. Over the next day his spirit ral-
+lies, and he throws off the hungry force that clawed at his very soul.
+Some horrible creatures, especially undead monsters, possess a
+fearsome supernatural ability to drain levels from those they
+strike in combat. The creature making an energy drain attack
+draws a portion of its victim’s life force from her.
+Most energy drain attacks require a successful melee attack
+roll—mere physical contact is not enough. Monks, for instance,
+can pound such creatures with their fists without risking their
+life energy.
+Each successful energy drain attack bestows one or more nega-
+tive levels on the opponent. A creature takes the following penal-
+ties for each negative level it has gained.
+–1 on all skill checks and ability checks.
+–1 on attack rolls and saving throws.
+–5 hit points.
+–1 effective level (whenever the creature’s level is used in a die
+roll or calculation, reduce it by one for each negative level).
+If the victim casts spells, she loses access to one spell as if she
+had cast her highest-level, currently available spell. (If she has
+more than one spell at her highest level, she chooses which she
+loses.) In addition, when she next prepares spells or regains spell
+slots, she gets one less spell slot at her highest spell level.
+Negative levels remain for 24 hours or until removed with a
+spell, such as restoration.After 24 hours, the afflicted creature must
+attempt a Fortitude save (DC 10 + 1/2 attacker’s HD + attacker’s
+Cha modifier). (The DC is provided in the attacker’s description.)
+If the saving throw succeeds, the negative level goes away with no
+harm to the creature. The afflicted creature makes a separate
+saving throw for each negative level it has gained. If the save fails,
+the negative level goes away, but the creature’s level is also reduced
+by one (see Level Loss, page 296).
+A character with negative levels at least equal to her current
+level, or drained below 1st level, is instantly slain. Depending on
+the creature that killed her, she may rise the next night as a mon-
+ster of that kind. If not, she rises as a wight.
+A creature gains 5 temporary hit points for each negative level
+it bestows (though not if the negative level is caused by a spell or
+similar effect).
+ETHEREALNESS
+Out of nowhere, a spider the size of a horse appears and bites
+Mialee. Lidda wheels to stab it, but it’s gone. The adventurers
+know the phase spider is somewhere nearby, lurking on the Ethe-
+real Plane, watching them and waiting.
+Phase spiders and certain other creatures can exist on the Ethe-
+real Plane (see page 151). While on the Ethereal Plane, a creature is
+called ethereal. Unlike incorporeal creatures, ethereal creatures
+are not present on the Material Plane.
+Ethereal creatures are invisible, inaudible, insubstantial, and
+scentless to creatures on the Material Plane. Even most magical at-
+tacks have no effect on them. See invisibilityand true seeingreveal
+ethereal creatures.
+An ethereal creature can see and hear into the Material Plane in
+a 60-foot radius, though material objects still block sight and
+sound. (An ethereal creature can’t see through a material wall, for
+instance.) An ethereal creature inside an object on the Material
+Plane cannot see. Things on the Material Plane, however, look
+gray, indistinct, and ghostly. An ethereal creature can’t affect the
+Material Plane, not even magically. An ethereal creature, however,
+interacts with other ethereal creatures and objects the way mate-
+rial creatures interact with material creatures and objects.
+Even if a creature on the Material Plane can see an ethereal crea-
+ture (for instance, with see invisibility), the ethereal creature is on
+another plane. Only force effects (such as magic missile) can affect
+the ethereal creatures. If, on the other hand, both creatures are
+ethereal, they can affect each other normally.
+A force effect originating on the Material Plane extends onto
+the Ethereal Plane, so that a wall of forceblocks an ethereal creature,
+and a magic missilecan strike one (provided the spellcaster can see
+the ethereal target). Gaze effects and abjurations also extend from
+the Material Plane to the Ethereal Plane. None of these effects
+extend from the Ethereal Plane to the Material Plane.
+Ethereal creatures move in any direction (including up or
+down) at will. They do not need to walk on the ground, and mate-
+rial objects don’t block them (though they can’t see while their
+eyes are within solid material).
+Ghosts have a power called manifestation that allows them to
+appear on the Material Plane as incorporeal creatures. Still, they
+are on the Ethereal Plane, and another ethereal creature can inter-
+act normally with a manifesting ghost.
+Ethereal creatures pass through and operate in water as easily
+as air.
+Ethereal creatures do not fall or take falling damage.
+EVASION AND IMPROVED EVASION
+These extraordinary abilities allow the target of an area attack to
+leap or twist out of the way. Rogues and monks have evasion and
+improved evasion as class features, but certain other creatures
+have these abilities, too.
+If subjected to an attack that allows a Reflex save for half dam-
+age, a character with evasion takes no damage on a successful save.
+As with a Reflex save for any creature, a character must have
+room to move in order to evade. A bound character or one squeez-
+ing through an area (crawling through a 2-1/2-foot-wide shaft, for
+example) cannot use evasion.
+As with a Reflex save for any creature, evasion is a reflexive abil-
+ity. The character need not know that the attack is coming to use
+evasion.
+Rogues and monks cannot use evasion in medium or heavy
+armor. Some creatures with the evasion ability as an innate quality
+do not have this limitation.
+Improved evasion is like evasion, except that even on a failed
+saving throw the character takes only half damage.
+FAST HEALING
+A creature with fast healing has the extraordinary ability to regain
+hit points at an exceptional rate. Except for what is noted here, fast
+healing is like natural healing (see page 146 of the Player ’s Hand-
+book).
+At the beginning of each of the creature’s turns, it heals a certain
+number of hit points (defined in its description).
+Unlike regeneration (page 298), fast healing does not allow a
+creature to regrow or reattach lost body parts.
+293
+CHAPTER 8:
+GLOSSARY

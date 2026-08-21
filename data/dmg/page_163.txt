@@ -1,0 +1,133 @@
+162
+•Entrapping.  This  is  a  special  trait  unique  to  Hades  (although
+Elysium has a similar entrapping trait). A nonoutsider in Hades
+experiences  increasing  apathy  and  despair  while  there.  Colors
+become  grayer  and  less  vivid,  sounds  duller,  and  even  the
+demeanor  of  companions  seems  to  be  more  hateful.  At  the
+conclusion  of  every  week  spent  in  Hades,  any  nonoutsider
+must  succeed  on  a  Will  saving  throw  (DC  10  +  the  number  of
+consecutive weeks in Hades). Failure indicates that the individ-
+ual has fallen entirely under the control of the plane, becoming
+a petitioner of Hades.
+Travelers entrapped by the inherent evil of Hades cannot leave
+the plane of their own volition and have no desire to do so. Mem-
+ories of any previous life fade into nothingness, and it takes a wish
+or miraclespell to return such characters to normal.
+Random Encounters: Alternate between the Abyssal Encoun-
+ters table and the Hellish Encounters table (page 167) for random
+encounters in Hades.
+Example Hades Site: Underworld
+On the gloom of Pluton, the Underworld is contained within
+walls of gray marble that stretch for hundreds of miles and are vis-
+ible for thousands of miles beyond that. Sometimes the souls of
+creatures who have died particularly tragic deaths come here,
+rather than traveling onward to their final reward.
+A single double gate pierces the marble walls of the realm. Con-
+structed of beaten bronze, the gates are dented and scarred by he-
+roes intent on getting past. However, the gates are also guarded by
+a terrible fiendish beast, a Gargantuan three-headed hound made
+from the squirming, decaying bodies of hundreds of dead spirits.
+Beyond the gate, the inside of the realm appears much like the out-
+side. Blackened trees, stunted bushes, and wasted ground dominate
+the landscape. To draw an encounter map for the Underworld, use the
+guidelines for sparse forest (see page 87), but replace any undergrowth
+with light rubble. Gray, wraithlike spirits wander through this realm,
+on the verge of being sucked completely dry of all emotion by the spir-
+itual decay of the plane. When they lose the last shred of emotion,
+their remaining essence becomes one with the gloom of Pluton.
+Sometimes, great heroes or desperate lovers from the Material
+Plane travel to this layer via a tributary of the River Styx or portals
+hidden in great volcanic fissures. They come to the Underworld
+because they believe that they can find the spirit of a friend or
+loved one and extricate that spirit from a hopeless eternity. The
+hound can’t be bargained with, but if the characters manage to get
+inside, they’ll have to negotiate with powerful ghosts and out-
+siders to find the soul they’re looking for. Whatever the characters
+seek here, the Underworld is sure to exact a price.
+BLEAK ETERNITY OF GEHENNA
+Gehenna’s top layer borders Hades and the Nine Hells, so it is not a
+pleasant place. Floating in an impenetrable, infinite void are volcanic
+mountains seemingly without base or peak. They are only finite in
+the strictest sense of the word, measuring hundreds of thousands of
+miles in each direction. A single volcanic mountain dominates each
+of the four layers of Gehenna, though lesser volcanic earthbergs drift
+and sometimes smash into the greater mountains.
+No naturally occurring level place exists in any of the layers; all
+the slopes are at least 45 degrees, and many are akin to sheer cliffs.
+Gehenna’s fiendish inhabitants have carved artificial ledges, some
+large enough for entire cities, and switchback paths to connect
+them. But those edifices have a tendency to break apart, sending
+their builders on a long, sliding fall down the mountain.
+Gehenna’s four layers are Khalas, Chamada, Mungoth, and
+Krangath. Each layer is differentiated from the other by its degree
+of volcanic activity.
+Gehenna has the following traits.
+•Normal gravity. Gravity is similar to that of the Material Plane,
+but naturally occurring volcanic mountains seem to float free in
+an  infinitely  larger  void.  Gravity  is  normal  on  the  steep  slopes
+of  a  mountain,  and  a  fall  causes  a  creature  to  tumble  until  a
+chance  ledge  catches  it,  or  until  continued  abrasions  from  the
+long fall completely shred the victim.
+•Divinely morphic. Lesser deities can alter Gehenna’s mountain-
+ous landscape. Ordinary creatures find that Gehenna is as alter-
+able as the Material Plane.
+•Mildly evil-aligned.
+Random Encounters: Use the Hellish Encounters table (page
+167) for random encounters in Gehenna.
+Example Gehenna Site: Valley of the Outcast
+Mungoth, the third layer of Gehenna, is a cold place. The light of
+scattered volcanic vents is equivalent to that of a full moon,
+making navigation across the icy slopes difficult. Mungoth’s fea-
+tures are further masked by heavy precipitation, in the form of
+both snow and ash. That makes it a good place for those who don’t
+want to be found.
+A deep chasm contains a well-hidden realm sheltered from the
+ever-present acidic snow. Built of equal parts basaltic rock and
+giant bones is a rough castle. The castle is scaled to the proportions
+of its master, an outcast fire giant wizard named Tastuo. Her eight
+siblings, fellow outcasts, also reside in the castle.
+The fiends who rule Mungoth have several interlocking con-
+tracts with Tastuo, which helps ensure the valley’s safety should
+her enemies ever find her. Tastuo never names those enemies,
+but her predicament makes her sympathetic to the plight of trav-
+elers seeking asylum. Thus, the Valley of the Outcast doubles as a
+way station for visitors in need, but only if they can find it. And
+the fiends of Mungoth are always looking for intruders—
+Tastuo’s protection doesn’t extend beyond her castle walls.
+To draw an encounter map for the area near the Valley of the
+Outcast, use the guidelines for forbidding mountains (see page
+89). Then cover all surfaces with snow, deep snow, or ice as you
+see fit.
+The snow-ash mixture on Mungoth deals 1d4 points of acid
+damage per minute of exposure. Only artificial structures or cav-
+erns offer any lasting protection against the snowfall, which blows
+through any given area 80% of the time.
+NINE HELLS OF BAATOR
+This plane, sometimes simply called Baator or Hell, is the ultimate
+realm of law and evil, the epitome of premeditated, crafted cruelty.
+The devils of the Nine Hells all obey a higher law than themselves,
+but all that really means is that they chafe and rebel against their
+status. Most will undertake any plot or action, no matter how foul,
+to advance themselves.
+The Nine Hells compare well with any other lower plane in
+terms of sheer diversity of vileness. Devils are more cunning,
+more subtle, and more dangerous than other fiends—or so say the
+devils. A demon revels in slavering, insane, evil power, but a devil
+always has an agenda, a plan of attack, and a carefully conceived
+plot for retribution if necessary.
+Baator consists of nine layers, each lower than the next, like
+ledges stepping down into an ever-deeper pit. From top to bottom,
+they are Avernus, Dis, Minauros, Phlegethos, Stygia, Malbolge,
+Maladomini, Cania, and Nessus.
+The Nine Hells have the following traits.
+•Infinite size. Each layer extends outward infinitely, but the cir-
+cumference of each inner ledge (which opens onto the Pit and
+the next lower layer) is finite.
+•Divinely morphic. Entities of at least lesser deity status can alter
+the Nine Hells. Ordinary creatures find that the Nine Hells is as
+alterable as the Material Plane.
+•No  elemental  or  energy  traits.  Elemental  and  energy  influ-
+ences are balanced, except on the layer of Phlegethos (which
+has the fire-dominant trait). The layer of Cania is bitterly cold
+CHAPTER 5:
+CAMPAIGNS

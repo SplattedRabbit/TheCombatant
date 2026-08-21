@@ -1,0 +1,137 @@
+cous. Because of its particular powers, it can be contained only in a
+flask whose inside has been coated with 1 ounce of salve of slipperi-
+ness(see the previous page), and each time any of the bonding
+agent is poured from the flask, a new application of the salve of slip-
+perinessmust be put in the flask within 1 round to prevent the
+remaining glue from adhering to the side of the container. A flask
+of sovereign glue,when found, holds anywhere from 1 to 7 ounces
+of the stuff (1d8–1, minimum 1), with the other ounce of the
+flask’s capacity taken up by the salve of slipperiness.
+One ounce of this adhesive covers 1 square foot
+of surface, bonding virtually any two sub-
+stances together in a permanent union.
+The glue takes 1 round to set. If the
+objects are pulled apart (a move action)
+before that time has
+elapsed, that application
+of the glue loses its sticki-
+ness and is worthless. If
+the glue is allowed to set,
+then attempting to separate
+the two bonded objects has
+no effect, except when universal
+solventis applied to the bond.
+(Sovereign glueis dissolved by
+universal solvent.)
+Strong transmutation; CL
+20th; Craft Wondrous Item,
+make whole; Price 2,400 gp
+(per ounce).
+Stone  of  Alarm:This
+stone cube, when given the command word, affixes
+itself to any object. If that object is touched thereafter by
+anyone who does not first speak that same command word, the
+stone emits a piercing screech for 1 hour that can be heard up to a
+quarter-mile away (assuming no intervening barriers).
+Faint abjuration; CL 3rd; Craft Wondrous Item, alarm; Price
+2,700 gp; Weight 2 lb.
+Stone of Controlling Earth Elementals:A stone of this
+nature is typically an oddly shaped bit of roughly polished rock.
+The possessor of such a stone need but utter a few words of sum-
+moning, and a Huge earth elemental comes to the summoner. The
+summoning words require 1 full round to speak, and in all ways
+the stone functions as the summon monster VIIspell. (If sand or
+rough, unhewn stone is the summoning medium, the elemental
+that comes is Large instead, and the stone functions as the summon
+monster VI spell.) The elemental appears in 1d4 rounds. For
+detailed information about elementals, see page 95 of the Monster
+Manual.Only one elemental can be summoned at a time. A new
+elemental requires a new patch of earth or stone, which cannot be
+accessed until after the first elemental disappears (is dispelled, dis-
+missed, or slain).
+Strong conjuration; CL 13th; Craft Wondrous Item,summon mon-
+ster VI, summon monster VII; Price 100,000 gp; Weight 5 lb.
+Stone of Good Luck (Luckstone):This stone is typically a bit
+of rough polished agate or some similar mineral. Its possessor
+gains a +1 luck bonus on saving throws, ability checks, and skill
+checks.
+Faint evocation; CL 5th; Craft Wondrous Item, divine favor; Price
+20,000 gp.
+Stone Horse:Each item of this nature appears to be a full-
+sized, roughly hewn statue of a horse, carved from some type of
+hard stone. A command word brings the steed to life, enabling it
+to carry a burden and even to attack as if it were a real horse of the
+appropriate kind.
+A stone horsecan carry 1,000 pounds tirelessly and never needs
+to rest or feed. Damage dealt to it can be repaired by first using a
+stone to fleshspell, thus causing the stone horseto become a normal
+horse that can be healed normally. When fully healed, it automat-
+ically reverts to its stone form. While in its stone form, it can be
+fed gems, healing 1 point of damage for each 50 gp worth of min-
+eral it is given.
+There are two sorts of stone horses.
+Courser:This item has the statistics of a heavy horse (see page
+273 of the Monster Manual), as well as having hardness 10.
+Destrier:This item has the statistics of a heavy warhorse (see
+page 273 of the Monster Manual), as well as having hardness 10.
+Strong transmutation; CL 14th; Craft Wondrous
+Item, flesh to stone, animate objects; Price 10,000 gp
+(courser) or 14,800 gp (destrier); Weight 6,000 lb.
+Stone Salve:This ointment has two uses. If
+an ounce of it is applied to the flesh of a petrified
+creature, it returns the creature to flesh as the
+stone to fleshspell. If an ounce of it is applied to the
+flesh of a nonpetrified creature, it protects the crea-
+ture as a stoneskin spell.
+Strong abjuration and transmutation; CL 13th;
+Craft Wondrous Item,flesh to stone, stoneskin;
+Price 4,000 gp per ounce.
+Strand  of  Prayer  Beads:This  item
+appears to be a normal string of prayer beads
+until the owner casts a divine spell. Once
+that occurs, the owner instantly knows the
+powers of the prayer beads and how to
+activate them.
+Each strand includes two or more special
+beads, each with a different magic power.
+Special Bead TypeSpecial Bead Ability
+Bead of blessingWearer can cast bless.
+Bead of healingWearer can cast his choice of cure serious
+wounds, remove blindness/deafness,or remove
+disease.
+Bead of karmaWearer casts his spells at +4 caster level.
+Effect lasts 10 minutes.
+Bead of smitingWearer can cast chaos hammer, holy smite,
+order’s wrath,or unholy blight(Will DC 17
+partial).
+Bead of summonsSummons a powerful creature of
+appropriate alignment from the Outer Planes
+(an angel, devil, etc.) to aid the wearer for
+one day. (If the wearer uses the bead of
+summonsto summon a deity’s emissary
+frivolously, the deity takes that character’s
+items and places a geasupon him as
+punishment in the very least.)
+Bead of wind walkingWearer can cast wind walk.
+A lesser strand of prayer beadshas a bead of blessingand a bead of heal-
+ing.A strand of prayer beadshas a bead of healing,a bead of karma,and
+a bead of smiting.A greater strand of prayer beadshas a bead of healing,a
+bead of karma,a bead of summons, and a bead of wind walking.
+Each special bead can be used once per day, except for the bead
+of summons,which works only once and then becomes nonmagi-
+cal. The beads of blessing, smiting,and wind walkingfunction as spell
+trigger items; the beads of karmaand summonscan be activated by
+any character capable of casting divine spells. The owner need not
+hold or wear the strand of prayer beadsin any specific location, as
+long as he carries it somewhere on his person.
+The power of a special bead is lost if it is removed from the
+strand. Reduce the price of a strand of prayer beads that is missing
+one or more beads by the following amounts: bead of blessing–600
+gp, bead of healing–9,000 gp, bead of karma–20,000 gp, bead of smit-
+ing–16,800 gp, bead of summons–20,000 gp, bead of wind walking
+–46,800 gp.
+267
+CHAPTER 7:
+MAGIC ITEMS
+Scarab of 
+protection

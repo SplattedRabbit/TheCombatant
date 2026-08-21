@@ -1,0 +1,127 @@
+22
+STARTING AN ENCOUNTER
+An encounter can begin in one of three situations.
+•One side becomes aware of the other and thus can act first.
+•Both sides become aware of each other at the same time.
+•Some, but not all, creatures on one or
+both  sides  become  aware  of  the
+other side.
+When you decide that it is
+possible for either side to
+become   aware   of   the
+other, use Spot checks,
+Listen checks, sight
+ranges, and so on
+to    determine
+which of the
+three above
+cases
+comes   into   play.
+Although it’s good
+to give characters
+some  chance  to
+detect  a  coming
+encounter, ultimately it’s you
+who  decides  when  the  first
+round begins and where each
+side is when it does.
+One Side Aware First: In
+this  case,  you  determine
+how much time the aware
+side has before the unaware side
+can  react.  Sometimes,  the
+unaware side has no time to
+do anything before the aware
+side gets a chance to interact.
+If so, the character or party
+that is aware gets to take a stan-
+dard action before initiative is rolled, while the unaware character
+or party does nothing and is caught flat-footed. During this time,
+the unaware character or party gains no Dexterity bonus to AC.
+After this action, both sides make initiative checks to determine
+the order in which the participants act.
+Other times, the aware side has a few rounds to prepare. (If its
+members see the other side off in the distance, heading their way,
+for example.) You should track time in rounds at this point to
+determine  how  much  the
+aware characters can accom-
+plish. Once the two sides come
+into contact, the aware characters
+can take a standard action while the
+unaware characters do nothing. Keep in
+mind   that   if
+the aware char-
+acters  alert  the
+unaware side before actual contact is
+made,  then  both  sides  are  treated  as
+aware.
+Example (Sudden Awareness):A kobold
+sorcerer with darkvision sees a party
+of adventurers coming down a long
+hallway. He can see the adventurers,
+since they’ve got light, but they can’t
+see him because he’s out of the
+range of their illumination. The
+sorcerer gets a standard action
+and casts lightning bolt at the
+party. Caught unaware, the
+party can do nothing but roll
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: ROLL INITIATIVE EACH ROUND
+Some  players  find  combat  more  fun  if  they  get  to  roll  initiative  every
+round  rather  than  rolling  once  at  the  beginning  of  the  encounter.
+Rather  than  determining  a  sequence  of  actions  for  each  round  at  the
+beginning  of  an  encounter,  the  players  and  DM  reroll  for  all  combat-
+ants, determining a different sequence at the start of each new round.
+The goal is to give the combat a feeling of shifting variability.
+Ultimately, this variant rule doesn’t change things much. You’ll find
+that it slows down play, because a new sequence of activity will need
+to  be  determined  each  round—more  die  rolling,  more  calculation,
+more organizing time. It doesn’t change spell durations, or how vari-
+ous  combat  actions  work.  Effects  that  last  until  the  character’s  next
+action  still  operate  that  way.  The  difference  is  that  it’s  possible  for
+someone to take an action at the end of one round (such as a charge
+attack) that puts him at a penalty until his next action, and then to roll
+well  in  the  next  round  so  that  he  goes  first  and  the  penalty  has  no
+effect. This means that sometimes it can be beneficial to roll low for
+initiative in a round.
+And consider this case: A wizard wants to cast a spell unhindered by
+the  oncoming  monk  who  rushes  toward  him.  He  knows  that  if  the
+monk reaches him, it will be difficult to cast a spell without drawing an
+attack  of  opportunity  from  her.  He  thinks  to  himself  that  his  actions
+will  depend  on  whether  he  wins  initiative  in  this  round  (you  need  to
+keep this sort of change in approach in mind if you use this variant).
+Meanwhile, the monk wants to reach the wizard and use her stunning
+attack  to  keep  him  from  casting  spells.  They  roll  initiative,  and  the
+wizard wins, casting a spell on the monk (but the monk saves and isn’t
+affected).  The  monk  runs  forward  and  stuns  the  wizard,  a  condition
+that  lasts  until  the  monk’s  next  action.  In  the  next  round,  the  monk
+wins  initiative  again,  and  attacks  but  misses.  Now  the  wizard  casts
+another  spell—but  because  he  lost  initiative  in  this  round,  and  acted
+after the monk’s action, the fact that he was stunned hardly hindered
+him at all.
+If you roll initiative each round, taking a readied action later in the
+same round or delaying an action until later in the same round gives
+you a cumulative –2 penalty on later initiative rolls. (The first time you
+do  this  causes  a  –2  penalty;  if  you  take  a  readied  action  later  in  the
+same  round  or  delay  an  action  until  later  in  the  same  round  again
+during the current combat, the penalty becomes –4, and so on.) Taking
+a  readied  action  in  the  next  round  or  delaying  until  the  next  round
+carries no penalty, but you get no other action that round.
+Even if you normally use a single set of initiative rolls for the whole
+combat, some turn of events could make it worthwhile to reroll initia-
+tive. For example, the PCs are fighting a drow wizard using greater invis-
+ibility.It’s a climactic encounter with the survival of the party hinging
+on it. The drow, on his turn, walks within 30 feet of Jozan, who has cast
+invisibility purge.Suddenly, the drow is visible. Under normal initiative
+rules, whoever happens to act next would be able to attack the newly
+visible  drow.  Aside  from  game  mechanics,  there’s  no  good  reason  to
+let that character act first. Additionally, everyone else will get one turn
+before  the  drow  gets  to  act  again.  Instead  of  following  the  previous
+order, you can call for everyone—the drow included—to roll initiative
+again to see how fast each character reacts to the new condition (the
+drow becoming visible).
+pqqqqrs
+pqqqqrs

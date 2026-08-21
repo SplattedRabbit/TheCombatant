@@ -1,0 +1,128 @@
+Characters who aren’t buried can dig out their friends. In 1
+minute, using only her hands, a character can clear rocks and
+debris equal to five times her heavy load limit (see Table 9–1: Car-
+rying Capacity, page 162 of the Player ’s Handbook). The amount of
+loose stone that fills a 5-foot-by-5-foot area weighs one ton (2,000
+pounds). Therefore, the average adventurer (Str 10, heavy load
+limit 100 lb.) takes 4 minutes to clear a 5-foot cube filled with
+stone (100 lb. ×5 = 500 lb.; 500 lb. ×4 = 2,000 lb.). A half-orc with
+20 Strength (heavy load limit 400 lb.) can accomplish the same
+feat in 1 minute (400 lb. ×5 = 2,000 lb.). Armed with an appropri-
+ate tool, such as a pick, crowbar, or shovel, a digger can clear loose
+stone twice as quickly as by hand. You may allow a buried charac-
+ter to free himself with a DC 25 Strength check.
+ILLUMINATION
+Some dungeons are well-lighted, while others are as dark as pitch.
+The illumination in a dungeon you create should depend on two
+factors: the monsters that inhabit it and your preference as a DM.
+Obviously, monsters without any way to see in the dark will
+carry light with them or keep the areas they frequent illuminated.
+On the opposite end of the spectrum, creatures with blindsight
+and tremorsense can often do without light. In general, smart
+monsters will keep the lights off if they’re worried about attacks
+from humans and other creatures that can’t see in the dark. And
+less intelligent monsters may live in the dark simply because they
+haven’t mastered the crafts of magic or making fire.
+Creatures with 60-foot darkvision fall somewhere between the
+two extremes. They have an advantage against creatures without
+darkvision if they fight in the dark. On the other hand, few intelli-
+gent creatures will willingly live their day-to-day lives in black and
+white when a simple torch or 0-level spell would let them see colors.
+Many underground civilizations keep “safe” areas lighted, but douse
+their lanterns if they’re warned of intruders from the surface world.
+Another aspect of darkvision to consider is its limited range.
+Creatures who live in a vast underground cavern might have
+torches to light the entrance, which otherwise they couldn’t see
+because it’s more than 60 feet away from much of the cavern.
+Because regular vision extends until it’s blocked, their guards can
+see without being seen—a major tactical advantage.
+You may want to have combat in the dark sparingly because it can
+be frustrating for the players, who spend much of their time guessing
+which squares their foes are in. A fight in the darkness is also harder
+for you to keep track of, because you have to know where every
+unseen foe is. It may be easier for you and the players to simply estab-
+lish the convention that in this dungeon, torches are set in sconces
+every 40 feet along the walls. But done sparingly and well, a fight in
+the darkness can turn into an exciting cat-and-mouse game, in which
+characters with good Listen scores really have a chance to shine.
+Random Features and Furnishings
+Table 3–11: Major Features and Furnishings is a list of large or pre-
+dominant features commonly found in dungeons. Use this table
+as a feature generator when creating a random dungeon or to
+round out one you are creating.
+Adventures can also come across small bits and contents of dun-
+geon rooms while exploring. Use Table 3–12: Minor Features and
+Furnishings to generate these contents randomly, or pick what
+appeals to you from the list.
+TRAPS
+In a dungeon, adventurers can fall to their deaths, be burned alive,
+or find themselves peppered with poisoned darts—all without ever
+having encountered a single monster. Dungeons tend to be filled
+with barriers or life-threatening traps of one kind or another. The
+following section describes how traps work, provides a large selec-
+tion of sample traps, and offers some basic rules for trap creation.
+Types of Traps:A trap can be either mechanical or magic in
+nature. Mechanical traps include pits, arrow traps, falling blocks,
+water-filled rooms, whirling blades, and anything else that
+depends on a mechanism to operate. A mechanical trap can be
+constructed by a PC through successful use of the Craft (trapmak-
+ing) skill (see Designing a Trap, page 74, and the skill description
+on page 70 of the Player ’s Handbook).
+Magic traps are further divided into spell  traps and magic
+device traps. Magic device traps initiate spell effects when acti-
+vated, just as wands, rods, rings, and other magic items do. Creat-
+ing a magic device trap requires the Craft Wondrous Item feat (see
+Designing  a  Trap,  page  74,  and  the  feat  description  on  page  92  of
+the Player ’s Handbook).
+Spell traps are simply spells that themselves function as traps,
+such as fire trapor glyph of warding.Creating a spell trap requires
+the services of a character who can cast the needed spell or spells,
+who is usually either the character creating the trap or an NPC
+spellcaster hired for the purpose.
+MECHANICAL TRAPS
+Dungeons are frequently equipped with deadly mechanical (non-
+magical) traps, such as hidden crossbows that fire when the target
+unwittingly steps on a trigger plate on the floor, or hallways rigged
+to collapse in a deadly cave-in. A trap typically is defined by its loca-
+tion and triggering conditions, how hard it is to spot before it goes
+off, how much damage it deals, and whether or not the heroes
+receive a saving throw to mitigate its effects. Traps that attack with
+arrows, sweeping blades, and other types of weaponry make normal
+attack rolls, with a specific attack bonus dictated by the trap’s design.
+Creatures who succeed on a DC 20 Search check detect a simple
+mechanical trap before it is triggered. (A simple trap is a snare, a
+trap triggered by a tripwire, or a large trap such as a pit.)
+A character with the trap sense class feature who succeeds on a
+DC 21 (or higher) Search check detects a well-hidden or complex
+mechanical trap before it is triggered. Complex traps are denoted
+by their triggering mechanisms and involve pressure plates,
+mechanisms linked to doors, changes in weight, disturbances in
+the air, vibrations, and other sorts of unusual triggers.
+MAGIC TRAPS
+Many spells can be used to create dangerous traps. For example,
+high-level clerics can create glyphs of wardingor symbol spells to
+prevent intruders from entering a particular area, while high-level
+wizards can create fire trapsor permanent imagesto conceal dangers
+or confuse invaders. Unless the spell or item description states
+otherwise, assume the following to be true.
+•A successful  Search  check  (DC  25  +  spell  level)  made  by  a
+rogue (and only a rogue) detects a magic trap before it goes off.
+Other  characters  have  no  chance  to  find  a  magic  trap  with  a
+Search check.
+67
+CHAPTER 3:
+ADVENTURES
+BEHIND THE CURTAIN: TRAPS
+Why  use  traps?  Traps  change  the  play  of  the  game.  If  the  adventurers
+suspect  traps  or  have  encountered  them  frequently  in  the  past,  they’re
+much more likely to be cautious on adventures and particularly in dun-
+geons. While instilling a little fear and paranoia in players can be fun, you
+should  be  aware  that  this  also  tends  to  slow  down  play,  and  searching
+every square foot of a corridor can get tedious for players and DM alike.
+The solution is to place traps only when appropriate. Characters and
+creatures  put  traps  on  tombs  and  vaults  to  keep  out  intruders,  but
+traps  can  be  annoying  and  inappropriate  in  well-traveled  areas.  An
+intelligent creature is never going to build a trap that it might fall victim
+to itself.
+pqqqqrs
+pqqqqrs

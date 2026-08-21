@@ -1,0 +1,128 @@
+204
+Dire Rat Familiar: CR —; Small magical beast; HD 1; hp 1/2
+master’s; Init +3; Spd 40 ft., climb 20 ft.; AC 16, touch 14, flat-
+footed 13; Base Atk +0; Grp –4; Atk +4 melee (1d4 plus disease,
+bite); Full Atk +4 melee (1d4 plus disease, bite); Space/Reach 5 ft./
+5 ft.; SA disease; SQ improved evasion, low-light vision, scent,
+granted abilities; AL any; SV Fort +3, Ref +5, Will +3; Str 10, Dex
+17, Con 12, Int 6, Wis 12, Cha 4.
+Skills and Feats:Climb +11, Hide +8, Listen +4, Move Silently +4,
+Spot +4; Alertness, Weapon Finesse.
+Disease (Ex): Filth fever; bite, Fortitude DC 12, incubation period
+1d3 days, damage 1d3 Dex and 1d3 Con (see Disease, page 292).
+Leopard Familiar:CR —; Medium magical beast; HD 3; hp 19
+or 1/2 master’s; Init +4; Spd 40 ft., climb 20 ft.; AC 16, touch 14,
+flat-footed 12; Base Atk +2; Grp +5; Atk +6 melee (1d6+3, bite); Full
+Atk  +6  melee  (1d6+3,  bite)  and  +1  melee  (1d3+1,  2  claws);
+Space/Reach 5 ft./5 ft.; SA improved grab, pounce, rake 1d3+1; SQ
+improved evasion, low-light vision, scent, granted abilities; AL
+any; SV Fort +5, Ref +7, Will +2; Str 16, Dex 19, Con 15, Int 6, Wis
+12, Cha 6.
+Skills and Feats:Balance +12, Climb +11, Hide +9 (+17 in tall
+grass or heavy undergrowth), Jump +7, Listen +6, Move Silently
++8, Spot +6; Alertness, Weapon Finesse.
+Improved Grab (Ex):To use this ability, the leopard must hit with
+its bite attack. If it wins the grapple check, it can rake.
+Pounce (Ex):If a leopard charges a foe, it can make a full attack,
+including two rake attacks.
+Rake (Ex):Attack bonus +6 melee, damage 1d3+1.
+Monitor Lizard Familiar:CR —; Medium magical beast; HD
+3; hp 22 or 1/2 master’s; Init +2; Spd 30 ft., swim 30 ft.; AC 16, touch
+12, flat-footed 14; Base Atk +2; Grp +5; Atk +5 melee (1d8+4, bite);
+Full Atk +5 melee (1d8+4, bite); Space/Reach 5 ft./5 ft.; SQ
+improved evasion, low-light vision, granted abilities; AL any; SV
+Fort +6, Ref +5, Will +3; Str 17, Dex 15, Con 17, Int 6, Wis 12, Cha 2.
+Skills and Feats: Climb +9, Hide +7 (+15 in forested or overgrown
+areas), Listen +4, Move Silently +6, Spot +4; Alertness, Great Fortitude.
+Medium Owl Familiar:CR —; Medium magical beast; HD 2;
+hp 13 or 1/2 master’s; Init +1; Spd 10 ft., fly 60 ft. (average); AC 14,
+touch 11, flat-footed 13; Base Atk +1; Grp +3; Atk +2 melee (1d4+2,
+talons); Full Atk +2 melee (1d4+2, talons) and +0 melee (1d6+1,
+bite); Space/Reach 5 ft./5 ft.; SA —; SQ improved evasion, low-
+light vision, granted abilities; AL any; SV Fort +4, Ref +4, Will +2;
+Str 14, Dex 13, Con 12, Int 6, Wis 14, Cha 4.
+Skills and Feats:Listen +14, Move Silently +19, Spot +14; Multi-
+attack (see page 304 of the Monster Manual).
+Small Raven Familiar: CR —; Small magical beast; HD 1, hp
+1/2 master’s; Init +1; Spd 10 ft., fly 40 ft. (average); AC 13, touch 12,
+flat-footed 12; Base Atk +0; Grp –7; Atk +2 melee (1d3–3, talons);
+Atk +2 melee (1d3–3, talons); Space/Reach 5 ft./5 ft.; SA —; SQ
+improved evasion, low-light vision, granted abilities; AL any; SV
+Fort +3, Ref +3, Will +2; Str 5, Dex 13, Con 12, Int 6, Wis 14, Cha 6.
+Skills and Feats:Listen +6, Spot +6; Weapon Finesse.
+Medium Viper Snake Familiar:CR —; Medium magical
+beast; HD 2; hp 9 or 1/2 master’s; Init +3; Spd 20 ft., climb 20 ft.,
+swim 20 ft.; AC 17, touch 13, flat-footed 14; Base Atk +1; Grp +0;
+Atk +4 melee (1d4–1 plus poison, bite); Full Atk +4 melee (1d4–1
+plus poison, bite); Space/Reach 5 ft./5 ft.; SA poison; SQ improved
+evasion, scent, granted abilities; AL any; SV Fort +3, Ref +6, Will
++1; Str 8, Dex 17, Con 11, Int 6, Wis 12, Cha 2.
+Skills and Feats:Balance +11, Climb +11, Hide +12, Listen +5,
+Spot +5, Swim +7; Weapon Finesse.
+Poison (Ex):Injury, Fortitude DC 11, initial and secondary
+damage 1d6 Con.
+Wolverine Familiar:CR —; Medium magical beast; HD 3; hp
+25 or 1/2 master’s; Init +2; Spd 30 ft., burrow 10 ft., climb 10 ft.; AC
+15, touch 12, flat-footed 13; Base Atk +2; Grp +4; Atk +4 melee
+(1d4+2, claw); Full Atk +4 melee (1d4+2, 2 claws) and –1 melee
+(1d6+1, bite); Space/Reach 5 ft./5 ft.; SA rage; SQ improved eva-
+sion, low-light vision, scent, granted abilities; AL any; SV Fort +7,
+Ref +5, Will +2; Str 14, Dex 15, Con 19, Int 6, Wis 12, Cha 10.
+Skills and Feats: Climb +10, Listen +6, Spot +6; Alertness, Tough-
+ness, Track.
+Rage (Ex):If it takes damage in combat, on the following round
+a wolverine gains +4 to Str, +4 to Con, and –2 to AC. Unlike a
+normal wolverine, this familiar can end its rage voluntarily as a
+free action.
+MOUNTS
+Care, feeding, defense, and shelter for an animal you only ride to
+and from adventures can become onerous. If a character spends
+too much time on issues that concern his mount, the rest of the
+party members may resent the time and energy spent dealing with
+a horse. One solution to this conflict is hiring a small number of
+mercenaries, perhaps only one, to act as grooms and guards for the
+mounts while the characters explore the dungeon (see Table 4–1:
+Prices for Hireling Services, page 105).
+UNUSUAL MOUNTS
+If the PCs undertake more wilderness adventures than dungeon
+treks, mounts may be integral parts of the party, and you may face
+requests for mounts other than horses. Druids and rangers may
+attract animal companions big enough to act as mounts. Paladins
+may desire something a bit tougher than their typical heavy war-
+horse or warpony.
+Suitable Mounts:You have the final decision on what is or is
+not a suitable mount. At its most basic level, a mount should have
+the following characteristics:
+•Able and willing to carry its rider in a typical fashion. (A camel
+is  able  and  willing.  A  tiger  might  be  capable  but  may  not  be
+willing. A giant might be willing but not truly able.)
+•At  least  one  size  category  larger  than  the  character.  Also,  a
+flying mount can carry no more than a light load aloft.
+•The mount’s  Challenge  Rating  should  be  no  more  than  3  less
+than  the  rider’s  character  level.  If  the  mount  can  fly,  its
+Challenge Rating should be no more than 4 less than the rider’s
+character level.
+The accompanying tables (one for Medium riders, one for
+Small riders) provide basic characteristics of creatures that can be
+used as mounts.
+If the unusual mount is for a paladin, it may gain special abilities at
+a different rate than a warhorse or warpony. Furthermore, some
+special mounts are available only to paladins of higher levels.
+A paladin of 6th level or higher can use a celestial heavy
+warhorse, dire wolf, hippogriff, Large monstrous spider, Large
+shark, unicorn, celestial warpony, dire bat, dire badger, dire
+weasel, or giant lizard as a mount.
+At 7th level, the dire boar, dire wolverine, giant eagle, giant owl,
+pegasus, rhinoceros, and sea cat become available.
+At 8th level, a paladin can use a dire lion or a griffon as a mount.
+See the table below to see when a paladin’s unusual mount
+gains special abilities. If the mount’s natural Intelligence or natu-
+ral armor is higher than the value given in the table, use the
+mount’s natural Intelligence or natural armor (and see Intelligent
+Mounts, below). If the mount normally has spell resistance, it
+does not lose its spell resistance prior to the paladin’s reaching the
+level at which all unusual mounts gain spell resistance, and the
+mount continues using its natural spell resistance from that level
+on if that value is higher.
+CHAPTER 6:
+CHARACTERS

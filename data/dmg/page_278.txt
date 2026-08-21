@@ -1,0 +1,133 @@
+Selling Cursed Items
+Suppose you have planted an amulet of inescapable locationin a trea-
+sure hoard, and the characters have snapped it up—but they
+believe it to be an amulet of proof against detection and location.
+Now, the characters are back in town and divvying up treasure.
+They decide to sell the amulet, expecting to get half of the hefty
+35,000 gp market price. What do you do?
+Alternatively, the characters know that the item is cursed and
+want to try to sell it off as its much more expensive
+noncursed version. What happens next?
+First, remember that the prospective buyer of the
+item has a chance of knowing the item is cursed. As
+a good rule of thumb, give the buyer the same 1%
+chance per level as any caster of the identify spell. In
+some cases, the buyer may have access to analyze
+dweomer,which always identifies a cursed item for
+what it is. A buyer may be willing to pay to have
+the spell cast, or may demand that the characters
+pay for such a casting, before he will go through
+with the deal.
+The characters should be aware (although it’s
+not up to you to tell them) that trying to dupe
+someone into buying a cursed item is an evil act.
+They should also consider the fact that some-
+one who bought an item from them that
+turned out to be cursed will usually seek
+reparations ranging from a full refund to
+bloody, deadly vengenance.
+ARTIFACTS
+The misty past holds many secrets. Great wizards and
+powerful clerics, not to mention the deities them-
+selves, have used spells and created items that are
+beyond the ken of present-day knowledge. These
+items survive as artifacts, but their means of cre-
+ation are long gone.
+Artifacts are extremely powerful. Rather than merely another
+form of magic equipment, they are the sorts of legendary relics
+that whole campaigns can be based on. Each could be the center of
+a whole set of adventures—a quest to recover it, a fight against a
+opponent wielding it, a mission to cause its destruction, and so on.
+No table has been included to randomly generate specific arti-
+facts, since these items should only enter a campaign through
+deliberate choice on your part.
+MINOR ARTIFACTS
+Minor artifacts are not necessarily unique items. Even so, they are
+magic items that no longer can be created, at least by common
+mortal means.
+Minor Artifact Descriptions
+Described below is a selection of the most well-known (not neces-
+sarily the most numerous) minor artifacts.
+Book of Exalted Deeds:This holy book is sacred to divine
+spellcasters of good alignment (LG, NG, CG). Study of the work re-
+quires one week, but upon completion a good spellcaster gains a
++1 inherent bonus to Wisdom and one experience level—receiv-
+ing enough XP to put the character’s XP total midway between the
+minimum needed for his new (higher) level and the minimum
+needed for the level beyond that.
+Divine spellcasters neither good nor evil (LN, N, CN) lose
+2d6×1,000 XP for perusing the work. Evil divine spellcasters (LE,
+NE, CE) lose twice that amount. In addition, they have to atone
+(see the atonementspell) in order to gain further experience.
+Nonspellcasters who handle or read the book are unaffected.
+Arcane spellcasters who read it take 1 point of permanent Intelli-
+gence drain and lose 1d6×1,000 XP unless they make a DC 15
+Will save.
+Except as indicated above, the writing in a book of exalted deeds
+can’t be distinguished from any other magic book, libram, tome,
+or so on until perused. Once read, the book vanishes, and the
+same character can never benefit from reading another book of
+exalted deeds.
+Strong evocation [good]; CL 19th; Weight 3 lb.
+Book of Infinite Spells:This work bestows upon any charac-
+ter of any class the ability to use the spells within its pages.
+However, any character not already able to use spells gains
+one negative level for as long as the book is in her posses-
+sion or while she uses its power. A book of infinite spells
+contains 1d8+22 pages. The nature of each page is
+determined by a dice roll: 01–50, arcane spell;
+51–100, divine spell.
+Determine the exact spell by using the
+tables for determining major scroll
+spells  (the  third  column  on  Table
+7–22: Scroll Spell Levels, along with
+Table 7–23: Arcane Spell Scrolls and
+Table  7–24:  Divine  Spell  Scrolls).
+Once a page is turned, it can never be
+flipped back—paging through a book of
+infinite spellsis a one-way trip. If the book is
+closed, it always opens again to the page it
+was on before the book was closed. When
+the last page is turned, the book vanishes.
+Once per day the owner of the book can
+cast the spell to which the book is opened. If
+that spell happens to be one that is on the char-
+acter’s class spell list, she can cast it up to four
+times per day. The pages cannot be ripped out
+without destroying the book. Similarly, the spells
+cannot be cast as scroll spells, nor can they be
+copied into a spellbook—their magic is bound
+up permanently within the book itself.
+The owner of the book need not have the book on her person in
+order to use its power. The book can be stored in a place of safety
+while the owner is adventuring and still allow its owner to cast
+spells by means of its power.
+Each time a spell is cast, there is a chance that the energy con-
+nected with its use causes the page to magically turn despite all
+precautions. The owner knows this and may even benefit from the
+turning by gaining access to a new spell. The chance of a page
+turning depends on the spell the page contains and what sort of
+spellcaster the owner is.
+ConditionChance of Page Turning
+Caster employing a spell usable by own class and level10%
+Caster employing a spell not usable by own class and level20%
+Nonspellcaster employing divine spell25%
+Nonspellcaster employing arcane spell30%
+Treat each spell use as if a scroll were being employed, for pur-
+poses of determining casting time, spell failure, and so on.
+Strong (all schools); CL 18th; Weight 3 lb.
+Book of Vile Darkness:This is a work of ineffable evil—meat
+and drink to divine spellcasters of that alignment (LE, NE, CE). To
+fully consume the contents requires one week of study. Once this
+has been accomplished, an evil spellcaster gains a +1 inherent
+bonus to Wisdom and one experience level—receiving enough
+XP to put the character’s XP total midway between the minimum
+needed for his new (higher) level and the minimum needed for
+the level beyond that.
+All lawful neutral, neutral, or chaotic neutral characters who
+touch the book take 5d4 points of damage, and reading its pages
+277
+CHAPTER 7:
+MAGIC ITEMS
+Book of 
+vile darkness

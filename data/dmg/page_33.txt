@@ -1,0 +1,96 @@
+32
+Riding a mount doesn’t normally require rolls. Only riding into
+difficult terrain or performing a specific task involving riding
+requires a roll.
+Tracking: Soveliss is following a giant scorpion across the
+desert. He follows the vermin for 3 miles, making a Survival
+check each mile, but tracking in the soft sand is easy. Shortly after
+the third mile, a windstorm comes up. Soveliss waits it out, and it
+passes after an hour. Now he must make a fourth check to see if
+he can pick up the trail in the wind-tossed sand. This check is of
+course more difficult than the earlier ones, as are all subsequent
+checks until the tracker gets to the place where the scorpion was
+when the storm passed.
+Normally, tracking requires a Survival check each mile, but a
+sudden change in situation can require an additional roll.
+Sneaking: Lidda is sneaking through a dungeon filled with
+hobgoblins. She must pass by an open doorway beyond which is
+a room where the brutes are drinking from a keg of ale. She
+makes a Move Silently check, and the hobgoblins make opposed
+Listen checks, but they’re not paying much attention, so the half-
+ling sneaks by easily. The hobgoblins aren’t even looking at the
+door, so no Hide check is required. To get out, however, she must
+pass right through a guard room. She must make a Hide check to
+keep to the dark shadows near the walls, and a new Move
+Silently check (new because the listeners are different individu-
+als, plus they’re more alert) to get past the guards and through
+the room.
+A new Move Silently check is needed for each different group
+that a sneaker is trying to avoid. Sometimes both a Move Silently
+check and a Hide check are needed when sneaking around. Some-
+times they’re not.
+GENERAL VERSUS SPECIFIC
+Sometimes a player will say, “I look around the room. Do I see
+anything?” and sometimes she’ll say, “I look into the room,
+knowing that I just saw a kobold dart inside. I look behind the
+chair and the table, and in all the dark corners. Do I see it?” In
+both cases, the DM replies, “Make a Spot check.” However, in
+the second example, the character has specialized knowledge of
+the situation. She’s asking specific questions. In such cases,
+always award the character a +2 bonus for favorable conditions.
+It’s good to reward a character who has knowledge that allows
+her to ask specific questions.
+If the kobold’s actually not in the room, but a cloaker waits in
+ambush on the ceiling, the character has no special knowledge
+and gains no bonus. She doesn’t get a penalty, either—don’t
+penalize specific questions. If both the kobold and the cloaker
+are in the room, two Spot checks are required (unless the mon-
+sters are working together as a group, which is highly unlikely).
+The character gets a +2 bonus on the check to spot the kobold
+and no bonus on the check to spot the cloaker.
+DEGREES OF SUCCESS
+When determining how much information a skill check or abil-
+ity check gives a character, the degree of success is important to
+the task. For example, an invisible assassin sneaks up on a cleric.
+The cleric makes a Listen check opposed by the assassin’s Move
+Silently check, and the cleric is successful. You could describe
+this success to the player of the cleric in many different ways,
+including these.
+•“You  heard  a  noise  and  you  know  something’s  out  there,  but
+you don’t see anything.”
+•“You  heard  a  noise.  It  sounded  like  a  person  moving,  and  it
+came from ‘over there.’ ”
+•“You  heard  a  noise.  You  know  there’s  an  invisible  creature
+about  15  feet  northeast  of  you,  and  you  can  target  that  crea-
+ture’s location with an attack.”
+To determine how much information to give out, compare
+the opposed check results (or for a nonopposed check, the
+check result and the DC). In the example above, you give the
+first answer if the check merely succeeds on the check. If the
+cleric beats the assassin’s check result by 10 or more, he has
+achieved a greater success, and he gets the second answer. If he
+exceeds  the  assassin’s  check  result  by  20  or  more,  he  has
+achieved a perfect success, and he gets all the information—the
+third answer.
+Degrees of success usually only apply when the amount of
+information you have to give out can be different depending on
+how well the character succeeds. Most of the time, the only out-
+come that matters is whether the character succeeds or fails.
+DEGREES OF FAILURE
+Usually failure itself is a sufficient problem and does not need to
+be compounded. However, failure can sometimes cause addi-
+tional problems, such as a setting off a trap or alerting a sentry to
+the characters’ presence. When such consequences exist, a check
+that fails by 5 or more causes them to occur. For example, if
+Lidda the rogue misses a Disable Device check by 5 or more, she
+sets off the trap she’s trying to disable.
+Skills that carry an additional risk on a failed
+check include the following. Other risks on a
+failure may apply, at your discretion.
+CHAPTER 2:
+USING 
+THE RULES
+Incorporeal wraiths
+lunge toward 
+an adventurer.
+Illus. by  S. Fischer

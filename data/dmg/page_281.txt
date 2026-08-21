@@ -1,0 +1,136 @@
+280
+Staff of the Magi: A long wooden staff, shod in iron and in-
+scribed with sigils and runes of all types, this potent artifact con-
+tains many spell powers and other functions. Some of its powers
+use charges, while others don’t. The following powers do not use
+charges:
+•Detect magic
+•Enlarge person (Fortitude DC 15 negates)
+•Hold portal
+•Light
+•Mage armor
+•Mage hand
+The following powers drain 1 charge per usage:
+•Dispel magic
+•Fireball(10d6 damage, Reflex DC 17 half )
+•Ice storm
+•Invisibility
+•Knock
+•Lightning bolt(10d6 damage, Reflex DC 17 half )
+•Passwall
+•Pyrotechnics(Will or Fortitude DC 16 negates)
+•Wall of fire
+•We b
+These powers drain 2 charges per usage:
+•Monster summoning IX
+•Plane shift(Will DC 21 negates)
+•Telekinesis(400 lb. maximum weight; Will DC 19 negates)
+A staff of the magigives the wielder spell resistance 23. If this is
+willingly lowered, however, the staff can also be used to absorb
+arcane spell energy directed at its wielder, as a rod of absorption
+(page 234) does. Unlike the rod, this staff converts spell levels into
+charges rather than retaining them as spell energy usable by a
+spellcaster. If the staff absorbs enough spell levels to exceed its
+limit of 50 charges, it explodes as if a retributive strike had been
+performed (see below). The wielder has no idea how many spell
+levels are cast at her, for the staff does not communicate this
+knowledge as a rod of absorptiondoes. (Thus, absorbing spells can
+be risky.)
+Retributive Strike:A staff of the magican be broken for a retribu-
+tive strike. Such an act must be purposeful and declared by the
+wielder. All charges in the staff are released in a 30-foot spread. All
+within 10 feet of the broken staff take hit points of damage equal
+to 8 times the number of charges in the staff, those between 11
+feet and 20 feet away take points equal to 6 times the number of
+charges, and those 21 feet to 30 feet distant take 4 times the
+number of charges. A DC 17 Reflex save reduces damage by half.
+The character breaking the staff has a 50% chance (01–50 on d%)
+of traveling to another plane of existence (see Table 5–7, page 151),
+but if she does not (51–100), the explosive release of spell energy
+destroys her. Only specific items, including the staff of the magiand
+the staff of power (page 245), are capable of a retributive strike.
+Strong (all schools); CL 20th; Weight 5 lb.
+Talisman of Pure Good:A good (LG, NG, CG) divine spell-
+caster who possesses this item can cause a flaming crack to open at
+the feet of an evil (LE, NE, CE) divine spellcaster who is up to 100
+feet away. The intended victim is swallowed up forever and sent
+hurtling to the center of the earth. The wielder of the talisman
+must be good, and if he is not exceptionally pure in thought and
+deed (DM’s discretion), the evil character gains a DC 19 Reflex
+saving throw to leap away from the crack. Obviously, the target
+must be standing on solid ground for this item to function. (In the
+air, in a high tower, or on a ship are all places of safety against this
+otherwise potent item.)
+A talisman of pure goodhas 6 charges. If a neutral (LN, N, CN)
+divine spellcaster touches one of these stones, he takes 6d6 points
+of damage. If an evil divine spellcaster touches one, he takes 8d6
+points of damage. All other characters are unaffected by the device.
+Strong evocation [good]; CL 18th.
+Talisman of the Sphere:This small adamantine loop and
+handle are useless to those unable to cast arcane spells. Characters
+who cannot cast arcane spells take 5d6 points of damage merely
+from picking up and holding a talisman of this sort. However, when
+held by an arcane spellcaster who is concentrating on control of a
+sphere of annihilation (page 279),a talisman of the spheredoubles the
+character’s modifier on his control check (doubling both his Intelli-
+gence bonus and his character level for this purpose).
+If the wielder of a talisman establishes control, he need check
+for maintaining control only every other round thereafter. If con-
+trol is not established, the sphere moves toward him. Note that
+while many spells and effects of cancellation have no effect upon
+a sphere of annihilation,the talisman’s power of control can be sup-
+pressed or canceled.
+Strong transmutation; CL 16th; Weight 1 lb.
+Talisman of Ultimate Evil:An evil (LE, NE, CE) divine spell-
+caster who possesses this item can cause a flaming crack to open at
+the feet of a good (LG, NG, CG) divine spellcaster who is up to 100
+feet away. The intended victim is swallowed up forever and sent
+hurtling to the center of the earth. The wielder of the talisman
+must be evil, and if she is not exceptionally foul and perverse in
+the sights of her evil deity (DM’s discretion), the good character
+gains a DC 19 Reflex save to leap away from the crack. Obviously,
+the target must be standing on solid ground for this item to func-
+tion. (In the air, in a high tower, or on a ship are all places of safety
+against this otherwise potent item.)
+A talisman of ultimate evilhas 6 charges. If a neutral (LN, N, CN)
+divine spellcaster touches one of these stones, she takes 6d6 points
+of damage. If a good divine spellcaster touches one, she takes 8d6
+points of damage. All other characters are unaffected by the device.
+Strong evocation [evil]; CL 18th.
+Talisman of Zagy:A talisman of this sort appears the same as a
+stone of controlling earth elementals.Its powers are quite different,
+however, and dependent on the Charisma of the individual hold-
+ing the talisman. Whenever a character touches a talisman of Zagy,
+he must make a DC 15 Charisma check.
+If he fails, the device acts as a stone of weight (page 276). Discard-
+ing or destroying it results in 5d6 points of damage to the charac-
+ter and the disappearance of the talisman.
+If he succeeds, the talisman remains with the character for 5d6
+hours, or until a wishis made with it, whichever comes first. It
+then disappears.
+If he rolls a natural 20, the character finds it impossible to be rid
+of the talisman for as many months as he has points of Charisma.
+In addition, the artifact grants him one wishfor every 6 points of
+the character’s Charisma. It also grows warm and throbs whenever
+its possessor comes within 20 feet of a mechanical or magic trap.
+(If the talisman is not held, its warning heat and pulses are of no
+avail.)
+Regardless of which reaction results, a talisman of Zagydisap-
+pears when its time period expires, leaving behind a 10,000 gp
+diamond in its stead.
+Strong conjuration; CL 20th; Weight 1 lb.
+MAJOR ARTIFACTS
+Major artifacts are unique items—only one of each such item
+exists. Each has a long history, and the tales told of them are fan-
+tastic . . . and usually fraught with error and misconception. Major
+artifacts are secretive things, their current whereabouts unknown,
+waiting to be found and once again unleashed upon the world.
+Never introduce a major artifact into a campaign without care-
+ful consideration. These are the most potent of magic items, capa-
+ble of altering the balance of a campaign.
+Unlike all other magic items, major artifacts are not easily de-
+stroyed. Each should have only a single, specific means of destruc-
+tion, determined ahead of time by you. For example, a specific arti-
+fact might be undone by one of the following means:
+CHAPTER 7:
+MAGIC ITEMS

@@ -1,0 +1,102 @@
+184
+Dragon disciples prefer a life of exploration to a cloistered exis-
+tence. Most are barbarians, fighters, or rangers who have dabbled
+as sorcerers or bards. Occasionally, a serious spellcaster explores
+the path to further a goal of finding out more about his draconic
+heritage, though at the expense of most of his arcane studies. Cler-
+ics and druids rarely choose to become dragon disciples. Already
+adept at magic, many pursue adventure, especially if it furthers
+their goal of finding out more about their draconic heritage. All
+dragon disciples are drawn to areas known to harbor dragons.
+Hit Die:d12.
+Requirements
+To qualify to become a dragon disciple, a character must fulfill all
+the following criteria.
+Race:Any nondragon (cannot already be a half-dragon).
+Skills:Knowledge (arcana) 8 ranks.
+Languages:Draconic.
+Spellcasting:Ability to cast arcane spells without preparation.
+Special:The player chooses a dragon variety
+when taking the first level in this prestige
+class, subject to the DM’s approval.
+Class Skills
+The dragon disciple’s class
+skills (and the key ability for
+each  skill)  are  Concentration  (Con),
+Craft  (Int),  Diplomacy  (Cha),
+Escape Artist (Dex), Gather
+Information  (Cha),  Knowl-
+edge (all skills, taken individu-
+ally) (Int) Listen (Wis), Profes-
+sion (Wis), Search (Int), Speak
+Language (Int), Spellcraft (Int),
+and Spot (Wis). See Chapter 4
+of the Player ’s Handbookfor skill
+descriptions.
+Skill Points at Each Level:2 + Int
+modifier.
+Class Features
+All of the following
+are class features
+of the dragon dis-
+ciple prestige class.
+Weapon and Armor
+Proficiency:Dragon  dis-
+ciples gain no proficiency with any weapon or armor.
+Bonus Spells:Dragon disciples gain bonus spells as they gain
+levels in this prestige class, as if from having a high ability score, as
+given on Table 6–7. A bonus spell can be added to any level of
+spells the disciple already has the ability to cast.
+If a character has more than one spellcasting class, he must
+decide to which class he adds each bonus spell as it is gained. Once
+a bonus spell has been applied, it cannot be shifted.
+Natural Armor Increase (Ex):At 1st, 4th, and 7th level, a
+dragon disciple becomes more draconic in appearance. His skin
+develops tiny iridescent scales, nearly invisible at first but becom-
+ing more noticeable at higher levels. This provides an increase to
+the character’s existing natural armor (if any), as indicated on
+Table 6–7 (the numbers represent the total increase gained to that
+point). As his skin thickens, a dragon disciple takes on more and
+more of his progenitor’s physical aspect.
+Claws and Bite (Ex):At 2nd level, a
+dragon disciple gains claw
+and bite attacks if he
+does not already
+have them. Use the
+values above or the dis-
+ciple’s base claw and bite
+damage values, whichever are greater. 
+SizeBite DamageClaw Damage
+Small1d41d3
+Medium1d61d4
+Large1d81d6
+A dragon disciple is considered proficient with
+these attacks. When making a full attack, a dragon
+disciple uses his full base attack bonus with his bite
+attack but takes a –5 penalty on claw attacks. The
+Multiattack feat (see page 304 of
+the Monster Manual) reduces
+this  penalty  to  only  –2.
+Ability Boost (Ex):As a
+dragon disciple gains levels in
+this  prestige  class,  his  ability
+scores increase as noted on Table 6–7.
+These increases stack and are gained as if through level
+advancement.
+CHAPTER 6:
+CHARACTERS
+Illus. by  J. Jarvis
+Table 6–7: The Dragon Disciple
+BaseFortRefWill
+LevelAttack BonusSaveSaveSaveSpecialBonus Spells
+1st+0+2+0+2Natural armor increase (+1)1
+2nd+1+3+0+3Ability boost (Str +2), claws and bite1
+3rd+2+3+1+3Breath weapon (2d8)0
+4th+3+4+1+4Ability boost (Str +2), natural armor increase (+2)1
+5th+3+4+1+4Blindsense 30 ft.1
+6th+4+5+2+5Ability boost (Con +2)1
+7th+5+5+2+5Breath weapon (4d8), natural armor increase (+3)0
+8th+6+6+2+6Ability boost (Int +2)1
+9th+6+6+3+6Wings1
+10th+7+7+3+7Blindsense 60 ft., dragon apotheosis0
+A dragon disciple

@@ -1,0 +1,128 @@
+15
+CHAPTER 1:
+RUNNING 
+THE GAME
+take it seriously. If you come across with a relaxed, lighthearted
+tone, they will crack a few jokes and make side comments of their
+own. You make the game the way you want it to be.
+Recapping
+“Last time, you had just discovered the entrance to the lair of the
+basilisk and learned that a tribe of goblins living nearby appar-
+ently worships the creature like a god. You were near the end of
+your fifth day of traveling through the Thangrat Forest. Mialee the
+wizard had suffered a great wound while fighting the initial
+goblin scouts. Krusk wanted to go straight to the goblins’ camp
+and deal with them then and there, but the rest of you talked him
+into helping you find a suitable place to make a safe and defensible
+camp. The goblins, meanwhile, were obviously preparing for a
+fight, based on the sounds you had heard earlier that day. Now, as
+the sun sets beyond the distant mountains, it seems as though the
+basilisk is stirring within its lair. What do you do?”
+In the middle of a campaign, recapping activity from the previ-
+ous session (or sessions) at the start of a new session often helps
+establish the mood and remind everyone what was going on. It
+can be frustrating to DM and players alike that while in the game
+the characters continue what they were just doing, in real life the
+players have lived perhaps several days of real time between then
+and now. They might have forgotten important details that will
+affect their decisions if they don’t get reminders.
+Of course, you need to keep notes on what happens so that
+you don’t forget either. At the very least, jotting down a few sen-
+tences about what was going on at the very end of a game session
+and bringing them out at the beginning of the next session is
+always a good idea. You may find that you tend to think about the
+game between sessions more than the players do, and thus you
+have a better grasp of the events. You may get to the point where
+you won’t forget what has happened in past sessions, especially
+since the adventures you’re working on now will often build off
+those events.
+USING MINIATURE FIGURES
+Metal or plastic figures are used to represent characters, monsters,
+and scenery in the game. You can use them on a grid to determine and
+regulate the distance between individuals, tactical movement, line of
+sight, and areas of spell effects. This book includes a two-sided poster
+map containing a sample dungeon on one side and a 1-inch grid on
+the other. (For regular use, a vinyl mat with a grid that you can write
+on with wipe-off markers is especially useful. Mats of this sort are
+often available at the same hobby and game stores that sell dice.)
+Even without a grid, you can use miniatures arrayed on the
+table to show marching order and relative position, or you can use
+a tape measure and a scale of 1 inch = 5 feet to determine distances
+on the tabletop precisely. Sometimes position in combat means
+the difference between life and death, and miniature figures (per-
+haps along with other suitable objects to represent terrain features
+or dungeon furnishings) help everyone agree on the locations of
+characters, creatures, and significant objects.
+With a little searching, a player can usually find a miniature
+that resembles the character he or she wants to play, and perhaps
+is even posed the way the character would carry himself or herself.
+MAPPING
+When one of the players is drawing a map as the characters explore
+a new place, give her a break. Describe the layout of the place in as
+much detail as she wants, including dimensions of rooms. For clar-
+ity, you might draw out the shape and size of a room on a grid in
+front of you. Be willing to repeat a description if needed. Describe
+anything the characters should be able to see (considering illumi-
+nation and their own vision capabilities) or reasonably estimate
+(such as the distance to the far wall of a cavern).
+Of course, when the PCs are lost in a dungeon or walking
+through fog, the whole point of the situation is that they don’t
+know where they are (or where they’re going). In cases such as
+these, don’t take pains to help the mapper. If the characters are
+sneaking through a maze and they make a wrong turn, it’s all the
+more fun when they have to backtrack.
+PACING THE GAME SESSION
+The pace of the game determines how much time you spend on a
+given activity or action taken by the characters. Different players
+enjoy different paces. Some players have their characters pick up
+every copper piece; others decide it’s not worth the playing time.
+Some roleplay every encounter, while some want to skip on to the
+“good bits”—combat and other action-oriented activity.
+Do your best to please the group, but above all, keep things
+moving. Don’t feel that it’s necessary to play out rest periods,
+replenishing supplies, or carrying out daily tasks unless the play-
+ers want to. Sometimes that degree of detail is an opportunity to
+develop characters, but most of the time it’s unimportant.
+Determine ahead of time, if possible, how long the playing ses-
+sion will last. Doing this enables you to judge about how much
+time is left at any point and pace things accordingly—you should
+always end a session at a good stopping point (see Ending a Ses-
+sion, below). Three to four hours is a good length for an evening
+game. Some people like to play longer sessions, usually on a week-
+end. Even if you normally play for shorter periods, sometimes it’s
+fun to run a longer, “marathon” session.
+Referencing Rules
+Look at the rules only when you truly need to during a game. While
+the rulebooks are here to help you, paging through a book to
+double-check yourself can slow things down. Look when necessary
+(and mark things you’ll need to refer to again with a bookmark), but
+recall a rule from memory when you can. You may not be perfectly
+correct in your recollection, but the game keeps moving.
+Asking Questions
+Don’t be afraid to stop and ask important questions. If the players
+seem bored, ask if they would like you to skip ahead or pick up the
+pace. If you’re unsure how they want to handle a situation, ask.
+Taking Breaks
+When you finish up a lengthy combat encounter or a tension-
+filled scene, take a break. Particularly in a long playing session,
+establish a few breaks for food, drinks, trips to the bathroom, or
+just a little time to relax. During this time, you can take your mind
+off things for a few minutes, or you can begin to prepare for the
+coming encounter.
+HANDLING PC ACTIONS
+The important point to remember regarding the actions of player
+characters during an adventure is that each player controls his or
+her own character. Don’t force a character to take a specific action
+(unless the character is under a magical compulsion; see below).
+Don’t tell a player what his or her character’s emotions are. Even
+if an NPC with a high Charisma score attempts to persuade a
+character, no mere die roll should force a character into doing
+something. Some rules in the game apply specifically to NPCs
+and not PCs, the most significant of which are the rules concern-
+ing NPC attitudes (see NPC Attitudes, page 128, and the Diplo-
+macy skill on page 71 of the Player ’s Handbook). These rules should
+never be used to enable an NPC to change the way a player char-
+acter views that NPC. When running an NPC, feel free to try
+praising, misleading, tricking, cajoling, or maligning a character,
+but don’t use your authority as DM to exert control over what a
+player character does.

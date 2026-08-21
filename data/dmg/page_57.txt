@@ -1,0 +1,131 @@
+56
+Minor, Medium, and Major Magic Items:Refer to the
+appropriate column on Table 7–1: Random Magic Item Genera-
+tion and use it to generate the specified number of magic items.
+OTHER REWARDS
+With great deeds and increasing reputation come the grati-
+tude and admiration of those around you. Heroes are often
+awarded grants of land (which aid in the building of strong-
+holds), decreees of friendship from communities they have
+rescued, and even honorary titles of nobility. As PCs gain
+levels and complete adventure after adventure, their notoriety
+(good or bad) spreads throughout the land so that NPCs may
+recognize them on sight.
+Once PCs establish a reputation, it becomes easier for them to
+attract like-minded allies and admiring followers. Cohorts arrive
+who wish to share in their adventures, as do apprentices eager to
+be trained by such legendary figures. Villains begin to consider
+the PCs’ possible actions when concocting their evil schemes. The
+player characters have left their mark and made a place for them-
+selves in the campaign world with their grand exploits.
+Introducing rewards such as noble titles, land grants, and a
+widely known reputation is a matter of knowing what motivates
+your players. These less tangible rewards only work if your players
+perceive them as valuable. Experience points are always valuable,
+and even exotic treasure types can usually be sold for cash, but being
+known as a Knight of the Red Tower is only worth something if
+your players regard it as valuable. Perhaps its value lies in access to
+noble patrons who wouldn’t previously give the characters the time
+of day. Maybe there’s a hierarchy of knightly orders that the charac-
+ters are determined to climb. Or maybe players just like it when
+NPC peasants bow and scrape in the presence of their characters.
+Consider the example of a vacant stronghold given to a PC by a
+grateful king. For one player, the grant of a small keep is a chance
+to create a base of operations and leave her mark on the commu-
+nity. Another player might just ignore the keep, content to enjoy
+an adventurers’ wandering lifestyle. And a third player might
+bring the game to a halt, worried that the keep will be destroyed if
+he leaves on another adventurer. Before you introduce other
+rewards, think carefully about how your players will react to them.
+While less tangible rewards require a little more work than tra-
+ditional treasure and experience awards, they can be powerful
+motivators to players precisely because they can’t be reduced to gp
+or XP. After all, we often say of a valuable thing that it’s “something
+that money can’t buy.” You may be surprised at the lengths players
+will go to acquire something they can’t buy, borrow, or steal any
+other way.
+BRINGING ADVENTURES 
+TOGETHER
+Taking different adventures and tying them together makes a
+campaign. While creating a campaign is discussed elsewhere
+(see Chapter 5), below are some ideas for designing adventures
+that fit together.
+EPISODIC OR CONTINUING
+Episodic adventures are those that stand alone, with no relation to
+the one that came before or the one that follows. These adventures
+are fun, stand-alone scenarios that can be inserted anytime they’re
+needed or desired. They often provide interesting diversions from
+a continuing campaign. For example, in the middle of a series of
+adventures dealing with an evil prince, his minions, and the
+plague he unleashes on the land, the PCs might have a short
+episode dealing with recovering a lost lammasu cub.
+A continuing adventure has links that connect its compo-
+nents, each of them an individual adventure. A link may take the
+form of a recurring NPC or a group of related events. A sorcerer
+who sends the PCs on three different adventures, all to recover
+lost relics, forms the link that transforms those three missions
+into a continuing adventure. Another example might be three
+adventures dealing with defeating an evil monk, coping with his
+evil cronies who come to avenge his death, and fending off the
+evil bard who seeks the powerful magic gem the monk once
+owned. Each part of a continuing adventure builds on some-
+thing that has come before, with the ramifications of one series
+of events causing another series of events and thus producing
+another adventure.
+CHAPTER 3:
+ADVENTURES
+Table 3–8: Mundane Items
+d%Mundane Item
+01–17Alchemical item
+01–12Alchemist’s fire (1d4 flasks, 20 gp each)
+13–24Acid (2d4 flasks, 10 gp each)
+25–36Smokesticks (1d4 sticks, 20 gp each)
+37–48Holy water (1d4 flasks, 25 gp each)
+49–62Antitoxin (1d4 doses, 50 gp each)
+63–74Everburning torch
+75–88Tanglefoot bags (1d4 bags, 50 gp each)
+89–100Thunderstones (1d4 stones, 30 gp each)
+18–50Armor (roll d%: 01–10 = Small, 11–100 = Medium)
+01–12Chain shirt (100 gp)
+13–18Masterwork studded leather (175 gp)
+19–26Breastplate (200 gp)
+27–34Banded mail (250 gp)
+35–54Half-plate (600 gp)
+55–80Full plate (1,500 gp)
+81–90Darkwood
+01–50Buckler (205 gp)
+51–100Shield (257 gp)
+91–100Masterwork shield
+01–17Buckler (165 gp)
+18–40Light wooden shield (153 gp)
+41–60Light steel shield (159 gp)
+61–83Heavy wooden shield (157 gp)
+84–100Heavy steel shield (170 gp)
+51–83Weapons
+01–50Masterwork common melee weapon (roll on Table 7–11:
+Common Melee Weapons)
+51–70Masterwork uncommon weapon (roll on Table 7–12:
+Uncommon Weapons)
+71–100Masterwork common ranged weapon (roll on Table
+7–13: Common Ranged Weapons)
+84–100Tools and gear
+01–03Backpack, empty (2 gp)
+04–06Crowbar (2 gp)
+07–11Lantern, bullseye (12 gp)
+12–16Lock, simple (20 gp)
+17–21Lock, average (40 gp)
+22–28Lock, good (80 gp)
+29–35Lock, superior (150 gp)
+36–40Manacles, masterwork (50 gp)
+41–43Mirror, small steel (10 gp)
+44–46Rope, silk (50 ft.) (10 gp)
+47–53Spyglass (1,000 gp)
+54–58Artisan’s tools, masterwork (55 gp)
+59–63Climber’s kit (80 gp)
+64–68Disguise kit (50 gp)
+69–73Healer’s kit (50 gp)
+74–77Holy symbol, silver (25 gp)
+78–81Hourglass (25 gp)
+82–88Magnifying glass (100 gp)
+89–95Musical instrument, masterwork (100 gp)
+96–100Thieves’ tools, masterwork (50 gp)

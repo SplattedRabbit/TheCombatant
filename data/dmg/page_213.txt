@@ -1,0 +1,132 @@
+212
+newly created wand has 50 charges, and each use of the wand
+depletes one of those charges.
+Wondrous Items:These objects include magic jewelry, tools,
+books, clothing, and much more. They range from innocuous
+items such as a hat of disguise, which allows the wearer to take on
+the appearance of others, to the monstrous apparatus of Kwalish, a
+metallic, crablike construction that characters can ride within and
+control.
+HANDLING MAGIC ITEMS
+You should keep all the following information in mind when deal-
+ing with magic items.
+PLACEMENT AS TREASURE
+Including magic items as part of a treasure is a vital task of the
+DM. It’s also a delicately difficult one. It can be tempting to hand
+out powerful or particularly interesting items too soon or too
+often. (A smaller number of DMs make the opposite mistake,
+being too stingy and handing out too few magic items.) A single
+overpowering item can ruin a whole campaign—but if the PCs
+don’t get enough magic items, they won’t be powerful enough to
+deal with the challenges that have been balanced for characters of
+their level. The treasure tables (pages 52–53) were designed to
+help in this regard (see Random Magic Items, page 216). Occa-
+sionally, however, you’ll want to give your players items you have
+hand-picked as especially suitable for their characters. Feel free to
+do this more and more as you gain experience as a DM and—
+most important—as you become familiar with what the items
+can and can’t do.
+Remember that magic items can and probably will be used by
+the NPCs who own them. If an orc chief has a +2 longswordin his
+treasure hoard, most likely he’ll use it in that final battle with the
+PCs’ champion. Creatures such as a medusa or a lammasu might
+be able to use certain items, such as a necklace of adaptation, and
+even a dragon can drink a potion.
+APPEARANCE
+Most magic items come into the campaign as treasure found by
+the PCs. When they find a new item, you have to describe it to
+them. Describing magic items to the players verbally requires a
+little forethought on your part. You don’t want to say “You see a +2
+short swordand a wand of webon the table.” That gives away too
+much information. Presumably, a character can’t tell what bonus a
+magic weapon has by looking at it, and can’t know a wand’s spell by
+its appearance. Even if he or she could identify an item in this way,
+that should be because the ability to do so is something that you
+have consciously decided to incorporate into your game.
+You have three approaches to choose from when describing
+magic items.
+Magic Items Appear Mundane:Magic items don’t look like
+anything special. Only detect magicor a suspicious, curious, or lucky
+player (see Trial and Error, below) allows a PC to discover that the
+stick he’s been using as a backscratcher is really a staff of the magi.
+The benefit to this approach is that characters are always curiously
+examining everything. The drawback is that the characters are
+always curiously examining everything, taking a great deal of time
+away from the action. You also run the risk of making magic seem
+dull because magic items are nothing special to look at.
+Magic Items Appear Distinctive: Magic items glow, pulse
+with power, and are covered in runes, gems, and ornate workman-
+ship. In this flashy sort of campaign, appearance usually has a
+direct relationship to the power of the item. Magic swords glow,
+and particularly powerful magic swords (encrusted with gems or
+carved entirely from a single pure gemstone) glow particularly
+bright. The item’s appearance also may be a clue to its powers. A
+wand of burning handscould be carved from cedar or redwood with
+a fiery pattern etched into its surface in gold leaf.Boots of speed
+might be stitched with the image of a runner on their sides. The
+benefit of this approach is that magic items always seem grand and
+marvelous. The drawback is that they also become obvious, to the
+point of being ostentatious.
+Magic Items Vary in Appearance:Magic items vary greatly in
+appearance, from unremarkable to exotic-looking. (This is the
+default method. Magic items described in this chapter were han-
+dled in this way.) Sometimes great power lies hidden within
+modest housing. Other times, items indicate their function or
+level of power in obvious ways. This case-by-case approach has the
+benefits and drawbacks of both methods above and allows you to
+focus your level of detail where and when you want to.
+IDENTIFYING ITEMS
+When PCs find magic items as treasure, they’re going to need to
+figure out what to do. The following methods are available to iden-
+tify magic items.
+Trial and Error:This is often the first approach that a group of
+PCs tries once they believe they’ve found a magic item. It’s a fun
+part of any game. Without access to spells that tell what an item
+does, PCs are free to experiment. This usually entails a PC attempt-
+ing to use the item. “I put the ring on and jump up and down, flap-
+ping my arms,” a player might say. If the item happens to be a ring
+of jumping, then the experiment (and the good guesswork) should
+be rewarded. Or, the character might put the same ring on and ask
+if she feels anything. In this case, a DM might say, “You feel light-
+headed and your stomach lurches upward,” or even “You feel par-
+ticularly light on your feet.” With items that are normally com-
+pletely consumed, allow for minor experimentation. A sip of a
+potion, for example, might be enough to give a character a tin-
+gling sensation and some clue to its function.
+Close study of an item might provide some information. A
+command word could be etched in tiny letters on the inside of a
+ring, or a feathered design might hint that it allows one to fly. In
+such a case, a DC 15 (or maybe 20) Search check should reveal
+the clue.
+You might also permit a character to attempt a DC 30 Spellcraft
+check or Knowledge (arcana) check to determine if she can attune
+herself with the item’s power or if she remembers reading of it
+once in her studies. The PCs may want to consult bards, sages, or
+high-level spellcasters who might be able to identify items either
+through their own spell use, prior knowledge and experience, or
+research. They might know some details or rumors about an item’s
+history as well. Such consultants always want something in return
+for the information, of course.
+Spells: Obviously, the easiest way for characters to discern
+whether an object is magical is to use detect magic. That spell can
+also be used to find out a little about an item. When focused on
+an item, it can determine the school of the spell or spells embed-
+ded within it, as well as the strength of the aura the item gives off
+(based on the caster level). When a character uses detect magicon
+a magic item, the information you provide often serves as a clue
+to a smart player for identifying the item. Because of this, always
+be clear about the school of the spell and the caster level. (See the
+detect magicspell description on page 219 of the Player ’s Handbook
+for exact details.)
+Theidentifyand analyze dweomerspells provide much more
+information. See their descriptions in the Player ’s Handbook.
+DM Explanation: Eventually, you might just break down and
+tell the players what an item is. That’s okay, particularly when the
+item provides a bonus on actions the PC is already taking. The
+player of a character using a +2 short sword, for example, eventually
+notices the amount that the sword is helping him and can thereby
+determine its bonus. Use this option if it becomes a pain for you to
+keep mentally adding +2 to all the character’s attack and damage
+rolls with that unidentified (to him) item.
+CHAPTER 7:
+MAGIC ITEMS

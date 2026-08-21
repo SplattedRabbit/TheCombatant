@@ -1,0 +1,137 @@
+276
+Necklace of Strangulation:A necklace of strangulationappears
+to be a rare and wondrous piece of valuable jewelry and, short of
+the use of something as powerful as a miracleor a wish, can only be
+identified as a cursed item when placed around a character’s neck.
+The necklace immediately constricts, dealing 6 points of damage
+per round. It cannot be removed by any means short of a limited
+wish, wish,or miracleand remains clasped around the victim’s
+throat even after his death. Only when he has decayed to a dry
+skeleton (after approximately one month) does the necklace
+loosen, ready for another victim.
+Strong conjuration; CL 18th; Create Wondrous Item, slay living;
+Price 60,000 gp.
+Net of Snaring:This net provides a +3 bonus on attack rolls but
+can only be used underwater, thus making it a somewhat useful item
+rather than what most would really call a cursed item. Underwater, it
+can be commanded to shoot forth up to 30 feet to trap a creature.
+Moderate evocation; CL 8th; Craft Magic Arms and Armor, free-
+dom of movement; Price 10,000 gp.
+Periapt of Foul Rotting:This engraved gem appears to be of
+little value. If any character keeps the periapt in her possession for
+more than 24 hours, she contracts a terrible rotting affliction that
+permanently  drains  1  point  of  Dexterity,  Constitution,  and
+Charisma every week. The periapt (and the affliction) can be
+removed only by application of a remove cursespell followed by a
+cure diseaseand then a heal, miracle, limited wish, or wishspell. The
+rotting can also be countered by crushing a periapt of healthand
+sprinkling its dust upon the afflicted character (a full-round
+action), whereupon the periapt of foul rotting likewise crumbles to
+dust.
+Faint abjuration; CL 10th; Create Wondrous Item, contagion;
+Price 17,000 gp.
+Potion of Poison:This potion has lost its once beneficial mag-
+ical abilities and has become a potent poison. The imbiber must
+make a DC 16 Fortitude save or take 1d10 points of Constitution
+damage. A minute later he must save again (DC 16) or take 1d10
+points of Constitution damage.
+Moderate conjuration; CL 12th; Craft Wondrous Item, poison;
+Price 5,000 gp.
+Robe of Powerlessness:A robe of powerlessnessappears to be a
+magic robe of another sort. As soon as a character dons this gar-
+ment, she takes a –10 penalty to Strength and Intelligence, forget-
+ting spells and magic knowledge accordingly. The robe can be
+removed easily, but in order to restore mind and body, the charac-
+ter must receive a remove cursespell followed by heal.
+Moderate transmutation; CL 13th; Create Wondrous Item,
+bestow curse, permanency; Price 5,500 gp.
+Robe of Vermin:The wearer notices nothing unusual when
+the robe is donned, other than that it offers great magical defense
+(as a cloak of protection +4). However, as soon as he is in a situation
+requiring concentration and action against hostile opponents, the
+true nature of the garment is revealed: The wearer immediately
+suffers a multitude of bites from the insects that magically infest
+the garment. He must cease all other activities in order to scratch,
+shift the robe, and generally show signs of the extreme discomfort
+caused by the bites and movement of these pests.
+The wearer takes a –5 penalty on initiative checks and a –2
+penalty on all attack rolls, saves, and skill checks. If he tries to cast
+a spell, he must make a Concentration check (DC 20 + spell level)
+or lose the spell.
+Moderate abjuration; CL 13th; Create Wondrous Item, summon
+swarm, creator must be at least 13th level; Price 16,500 gp.
+Ring of Clumsiness:This ring operates exactly like a ring of
+feather falling. However, it also makes the wearer clumsy. She takes
+a –4 penalty to Dexterity and has a 20% chance of spell failure
+when trying to cast any arcane spell that has a somatic component.
+(This chance of spell failure stacks with other arcane spell failure
+chances.)
+Strong transmutation; CL 15th; Forge Ring, feather fall, bestow
+curse; Price 500 gp.
+Scarab of Death:This small pin appears to be any one of the
+various beneficial amulets, brooches, or scarabs. However, if it is
+held for more than 1 round or carried by a living creature for 1
+minute, it changes into a horrible burrowing beetlelike crea-
+ture. The thing tears through any leather or cloth, burrows into
+flesh, and reaches the victim’s heart in 1 round, causing death. A
+DC 25 Reflex save allows the wearer to tear the scarab away
+before it burrows out of sight, but he still takes 3d6 points of
+damage. The beetle then returns to its scarab form. Placing the
+scarab in a container of wood, ceramic, bone, ivory, or metal pre-
+vents the monster from coming to life and allows for long-term
+storage of the item.
+Strong abjuration; CL 19th; Create Wondrous Item, slay living;
+Price 80,000 gp.
+Spear, Cursed Backbiter:This is a +2 shortspear,but each time
+it is used in melee against a foe and the attack roll is a natural 1,
+it damages its wielder instead of her intended target. When the
+curse takes effect, the spear curls around to strike its wielder in
+the back, automatically dealing the damage to the wielder. The
+curse even functions when the spear is hurled, and in such a case
+the damage to the hurler is doubled.
+Moderate evocation; CL 10th; Craft Magic Arms and Armor,
+bestow curse; Price 7,500 gp.
+Stone of Weight (Loadstone):This stone appears to be a dark,
+smoothly polished stone. It reduces the possessor’s base land
+speed to one-half of normal. Once picked up, the stone cannot be
+disposed of by any nonmagical means—if it is thrown away or
+smashed, it reappears somewhere on his person. If a remove curse
+spell is cast upon a loadstone,the item may be discarded normally
+and no longer haunts the individual.
+Faint transmutation; CL 5th; Create Wondrous Item, slow; Price
+1,000 gp.
+–2 Sword, Cursed:This longsword performs well against tar-
+gets in practice, but when used against an opponent in combat, it
+causes its wielder to take a –2 penalty on attack rolls.
+All damage dealt is also reduced by 2 points, but never below a
+minimum of 1 point of damage on any successful hit. After one
+week in a character’s possession, the sword always forces that
+character to employ it rather than another weapon. The sword’s
+owner automatically draws it and fights with it even when she
+meant to draw or ready some other weapon. The sword can be
+gotten rid of only by means of limited wish, wish, ormiracle.
+Strong evocation; CL 15th; Craft Magic Arms and Armor, bestow
+curse, and limited wish ormiracle; Price 1,500 gp.
+Sword, Berserking:This item appears to have the characteris-
+tics of a +2 greatsword.However, whenever the sword is used in
+battle, its wielder goes berserk (gaining all the benefits and draw-
+backs of the barbarian’s rage ability). He attacks the nearest crea-
+ture and continues to fight until unconscious or dead or until no
+living thing remains within 30 feet. Although many see this
+sword as a cursed object, others see it as a boon.
+Moderate evocation; CL 8th; Craft Magic Arms and Armor, rage,
+bestow curse; Price 17,500 gp.
+Vacuous Grimoire:A book of this sort looks like a normal
+one on some mildly interesting topic. Any character who opens
+the work and reads so much as a single word therein must
+make two DC 15 Will saves. The first is to determine if the
+reader takes 1 point of permanent Intelligence drain. The
+second is to find out if the reader takes 2 points of permanent
+Wisdom drain. To destroy the book, a character must burn it
+while casting remove curse. If the grimoire is placed with other
+books, its appearance instantly alters to conform to the look of
+those other works.
+Strong enchantment; CL 20th; Create Wondrous Item, feeble-
+mind; Price 6,000 gp.
+CHAPTER 7:
+MAGIC ITEMS

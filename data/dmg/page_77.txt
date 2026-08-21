@@ -1,0 +1,129 @@
+76
+Spell Trap Cost
+A spell trap has a cost only if the builder must hire an NPC spell-
+caster to cast it. See Table 7–8: Goods and Services, page 128 of the
+Player ’s Handbook,for these costs.
+Craft DCs for Mechanical Traps
+Once you know the Challenge Rating of a trap that a PC wants to
+design and build, determine the Craft (trapmaking) DC by refer-
+ring to the table and the modifiers given below.
+Trap CRBase Craft (Trapmaking) DC
+1–320
+4–625
+7–1030
+Modifier to Craft
+Additional Components(Trapmaking) DC
+Proximity trigger+5
+Automatic reset+5
+Making the Checks: To determine how much progress a char-
+acter makes on building a trap each week, that character makes a
+Craft (trapmaking) check. Page 70 of the Player ’s Handbookcontains
+details on Craft checks and the circumstances that can affect them.
+DUNGEON ECOLOGY
+An inhabited dungeon is an environment in and of itself. The crea-
+tures that live there need to eat, drink, breathe, and sleep just as
+the creatures of the forest or the plains do. Predators need prey.
+Creatures living in the dungeon need to be able to get around.
+Locked doors, or even doors that require hands to open, can pre-
+vent creatures from getting to food or water.
+Consider these factors when designing a dungeon you want the
+players to believe in. If the environment doesn’t have some logic
+behind it, the PCs can’t make decisions based on reasoning while
+adventuring there. For example, upon finding a pool of fresh
+water in the dungeon, a character should be able to make the
+assumption that many of the creatures inhabiting the place come
+to that spot often. Thus, the PCs could wait in ambush for a partic-
+ular creature that they’re after. Bits of faulty dungeon logic, such as
+all the doors in a dungeon being locked when the dungeon is
+home to many creatures, destroy any chance of verisimilitude.
+DUNGEON ANIMALS
+Not everything that lives in a dungeon is a monster. Other crea-
+tures inhabit these unlit labyrinths as well.
+Creepy Crawlers:Insects, spiders, grubs, and worms of all
+kinds live in the dark recesses of dungeons. They don’t present a
+real threat, but they do provide food for predators and scavengers
+in the dungeon—which in turn pose a threat to adventurers.
+Rats:Rats make up an important part of any dungeon ecology.
+These omnivorous rodents serve as the staple for most dungeon
+predators and scavengers. In huge swarms, they become a threat
+themselves.
+Bats:Like rats, bats are found throughout any dungeon with
+access to outside air. Although normal bats aren’t dangerous, a
+swarm of bats can obscure vision and hamper the actions of dun-
+geon delvers—particularly spellcasting.
+Other Animals:Small creatures such as badgers and ferrets or
+large omnivores such as bears and apes may take to a full-time (or
+almost full-time) subterranean existence in a world filled with
+dungeons and caverns. Predatory animals such as tigers, wolves,
+and snakes follow their prey down into the dungeons and remain,
+becoming a part of the ecology. Deep dungeon delvers have
+brought back stories of colossal caverns far underground with
+flocks of birds flying about. And of course underground streams,
+lakes, and even seas teem with all sorts of fish, water mammals,
+and aquatic reptiles.
+Over the generations, dungeon animals have developed dark-
+vision in order to survive. They have adapted to their environ-
+ment, and now they thrive in the dark confines of caves and pas-
+sages. They feed on mold, fungi, or each other. Because of the lack
+of sunlight, many species have become entirely white, while
+others have evolved a black coloration to hide in the darkness.
+Slimes, Molds, and Fungi
+In a dungeon’s damp, dark recesses, molds and fungi thrive. While
+some plants and fungi are monsters (see the Monster Manual), and
+other slime, mold, and fungus is just normal, innocuous stuff, a
+few varieties are dangerous dungeon encounters. For purposes of
+spells and other special effects, all slimes, molds, and fungi are
+treated as plants. Like traps, dangerous slimes and molds have
+CRs, and characters earn XP for encountering them.
+A form of glistening organic sludge coats almost anything that
+remains in the damp and dark for too long. This kind of slime,
+though it might be repulsive, is not dangerous.
+Molds and fungi flourish in dark, cool, damp places. While some
+are as inoffensive as the normal dungeon slime, others are quite
+dangerous. Mushrooms, puffballs, yeasts, mildew, and other sorts
+of bulbous, fibrous, or flat patches of fungi can be found through-
+out most dungeons. They are usually inoffensive, and some are
+even edible (though most are unappealing or odd-tasting).
+Green Slime (CR 4):This dungeon peril  is a dangerous variety
+of normal slime. Green slime devours flesh and organic materials
+on contact and is even capable of dissolving metal. Bright green,
+wet, and sticky, it clings to walls, floors, and ceilings in patches,
+reproducing as it consumes organic matter. It drops from walls
+and ceilings when it detects movement (and possible food) below.
+A single 5-foot square of green slime deals 1d6 points of Con-
+stitution damage per round while it devours flesh. On the first
+round of contact, the slime can be scraped off a creature (most
+likely destroying the scraping device), but after that it must be
+frozen, burned, or cut away (dealing damage to the victim as
+well). Anything that deals cold or fire damage, sunlight, or a
+remove disease spell destroys a patch of green slime. Against
+wood or metal, green slime deals 2d6 points of damage per
+round, ignoring metal’s hardness but not that of wood. It does
+not harm stone.
+Dwarves consider green slime to be one of the worst hazards
+of mining and underground construction. They have their own
+ways of burning it out of infested areas, methods that they say are
+thorough. “If you don’t do it proper, the stuff comes right back,”
+they claim.
+Yellow Mold (CR 6):If disturbed, a 5-foot square of this mold
+bursts forth with a cloud of poisonous spores. All within 10 feet of
+the mold must make a DC 15 Fortitude save or take 1d6 points of
+Constitution damage. Another DC 15 Fortitude save is required 1
+minute later—even by those who succeeded on the first save—to
+avoid taking 2d6 points of Constitution damage. Fire destroys
+yellow mold, and sunlight renders it dormant.
+Brown Mold (CR 2):Brown mold feeds on warmth, drawing
+heat from anything around it. It normally comes in patches 5 feet
+in diameter, and the temperature is always cold in a 30-foot radius
+around it. Living creatures within 5 feet of it take 3d6 points of
+nonlethal cold damage. Fire brought within 5 feet of brown mold
+causes it to instantly double in size. Cold damage, such as from a
+cone of cold, instantly destroys it.
+Phosphorescent Fungus (No CR): This strange underground
+fungus grows in clumps that look almost like stunted shrubbery.
+Drow elves cultivate it for food and light. It gives off a soft violet
+glow that illuminates underground caverns and passages as well
+as a candle does. Rare patches of fungus illuminate as well as a
+torch does.
+CHAPTER 3:
+ADVENTURES

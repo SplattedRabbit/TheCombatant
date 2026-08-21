@@ -1,0 +1,129 @@
+84
+speed). If the PCs do not act quickly, the tube is swept away and
+lost in a single round. The tube contains treasure.
+Getting the map will be hard for characters unless they act fast
+and roll well. However, the reward is great, because they are
+shown a secret passage that they probably would otherwise miss.
+Treasure:Inside this not-quite-watertight ivory tube is a
+vellum map, smeared due to water seepage.
+Depending on how you want to proceed, this map might depict
+other rooms deeper inside the monastery cellar (if you want to
+develop them and continue this adventure) or some other site that
+you want to use as a springboard for further adventuring.
+3. Empty Ceremonial Chamber (EL 4)
+This area can be represented by the 3-by-5-square room to the south of the
+area the PCs are coming from (disregard the walls that block off the two
+squares in the southeast corner).
+The monks brought the faithful here after death, consecrated each
+corpse, and then carried it to its final resting place in the crypts. A
+wooden platform against the west wall served as both a dais upon
+which to hold the ceremony and as a means to reach the secret
+door leading into the crypts to the west. The platform has been
+gone from this site for many years; when it was here, it rose 9 feet
+off the ground, with the bottom of the secret door being 1 foot
+above that. Two knobs just above the level of the vanished plat-
+form look like mere bumps in the wall, but when they are pushed
+simultaneously, a 5-foot-by-5-foot portion of the wall swings out-
+ward with a grinding noise.
+To move any farther into the monastery cellar, the PCs will have
+to solve the puzzle of how to open this secret passage. The two
+knobs that need to be pushed simultaneously are 10 feet off the
+ground in adjacent squares in the southwest corner of the room.
+Before the characters can begin to figure this out, they must con-
+tend with the other occupants of the room.
+Creatures:Three ghouls lurk in the east end of this chamber on
+the other side of the 5-foot-wide stream. They rush forward to
+attack the PCs as soon as all of them have moved into this chamber.
+Ghouls (3): hp 13, 13, 18.
+Going on from Here
+If you use these three encounter areas as the start of an adventure
+in the corridors and chambers beneath the monastery, you can
+take the adventure in any direction you like after the PCs dispose
+of the ghouls and figure out how to open the secret door. That
+door might lead to a long corridor riddled with traps (to discour-
+age looters from entering the crypts), or it might provide egress
+into an enormous chamber with a number of different corridors
+leading away from it . . . or anything else you can think of.
+MONSTER STATISTICS
+Here are the statistics blocks (a form of condensed creature statis-
+tics) for the creatures briefly mentioned above. These sample sta-
+tistics blocks present all the information needed to run an
+encounter with the spiders and one with the ghouls. For informa-
+tion on how to read a statistics block, see the following page.
+For your own notes, you can write out this information in as
+much or as little detail as you like. It’s best to include all the infor-
+mation you may need at first, then gradually make the entries
+more abbreviated (for example: 3 ghouls, hp 13 each, ghoul fever,
+paralysis, undead type) as you become familiar with various crea-
+tures’ abilities through repeated encounters.
+Small Monstrous Spider (1):CR 1/2; Small vermin; HD 1d8;
+hp 7; Init +3; Spd 30 ft., climb 20 ft.; AC 14, touch 14, flat-footed 11;
+Base Atk +0; Grp –6; Atk +4 melee (1d4–2 plus poison, bite); Full
+Atk +4 melee (1d4–2 plus poison, bite); Space/Reach 5 ft./5 ft.; SA
+poison, web; SQ_tremorsense, vermin traits; AL N; SV Fort +2, Ref
++3, Will +0; Str 7, Dex 17, Con 10, Int —, Wis 10, Cha 2.
+Skills and Feats:Climb +11, Hide +11*, Jump +4, Spot +12*;
+Weapon Finesse.
+Poison (Ex):Injury, Fortitude DC 10, initial and secondary
+damage 1d3 Str.
+Web (Ex):This spider produces silk. Spiders can wait in their
+webs, then lower themselves silently on silk strands and leap onto
+prey passing beneath. A single strand is strong enough to support
+the spider and one creature of the same size. *Monstrous spiders
+gain a +8 competence bonus on Hide and Move Silently checks
+when using their webs.
+Web-spinning spiders can throw a web eight times per day. This
+attack is similar to an attack with a net but maximum range of 50
+feet, range increment 10 feet, and effective against targets up to
+one size category larger than the spider. The web anchors the
+target in place, allowing no movement. An entangled creature can
+escape with a DC 15 Escape Artist check or burst it with a DC 14
+Strength check. Both are standard actions.
+Web-spinning spiders often create sheets of sticky webbing.
+Approaching creatures must succeed on a DC 20 Spot check to
+notice a web; otherwise, they stumble into it and become trapped
+as though by a successful thrown web attack. Attempts to escape
+or burst the webbing gain a +5 bonus if the trapped creature has
+something to walk on or grab while pulling free. Each 5-foot sec-
+tion has 4 hit points, and sheet webs have damage reduction
+5/fire.
+A monstrous spider can move across its own sheet web at its
+climb speed and can determine the exact location of any creature
+touching the web.
+Tremorsense (Ex):A monstrous spider can detect and locate any
+creature or object in contact with the ground within 60 feet, or
+any creature or object in contact with the spider’s webs at an
+unlimited range.
+Vermin Traits:Darkvision out to 60 feet. Mindless; no Intelli-
+gence score, and immunity to mind-affecting effects (charms,
+compulsions, phantasms, patterns, and morale effects).
+Tiny Monstrous Spiders (6):CR 1/4; Tiny vermin; HD 1/2 d8;
+hp 2 each; Init +3; Spd 20 ft., climb 10 ft.; AC 15, touch 15, flat-footed
+12; Base Atk +0; Grp –12; Atk +5 melee (1d3–4 plus poison, bite);
+Full Atk +5 melee (1d3–4 plus poison, bite); Space/Reach 2-1/2 ft./0
+ft.; SA poison, web; SQ tremorsense, vermin traits; AL N; SV Fort +2,
+Ref +3, Will +0; Str 3, Dex 17, Con 10, Int —, Wis 10, Cha 2.
+Skills and Feats:Climb +11, Hide +15*, Jump +0, Spot +12*;
+Weapon Finesse.
+Poison (Ex):Injury, Fortitude DC 10, initial and secondary
+damage 1d2 Str.
+Web (Ex):The webs in this encounter were all produced by the
+mother spider; see the Small monstrous spider entry, above, for
+details. *Monstrous spiders gain a +8 competence bonus on Hide
+and Move Silently checks when using their webs.
+These monstrous spiders can move across their mother’s sheet
+web at their climb speed and can determine the exact location of
+any creature touching the web.
+Tremorsense (Ex):A monstrous spider can detect and locate any
+creature or object in contact with the ground within 60 feet, or
+any creature or object in contact with the spider’s webs at an
+unlimited range.
+Vermin Traits:Darkvision out to 60 feet. Mindless; no Intelli-
+gence score, and immunity to mind-affecting effects (charms,
+compulsions, phantasms, patterns, and morale effects).
+This room appears to be a dead end. Its domed ceiling arches
+up to 25 feet high in the center. On the east side of the cham-
+ber, a fast-flowing stream of water 5 feet wide runs from north
+to south.
+CHAPTER 3:
+ADVENTURES

@@ -1,0 +1,133 @@
+156
+A map of the Great Dismal Delve looks like any dungeon, only
+it stretches far beyond what’s available on the Material Plane. The
+Great Dismal Delve is a mix of natural caverns and finely worked
+passageways. Doors, corridors, and rooms are as likely to be
+trapped as they are in the deadliest dungeon, and almost any mon-
+ster can be found either lurking in its lair or stalking the PCs
+through the hallways.
+ELEMENTAL PLANE OF FIRE
+Everything is alight on the Elemental Plane of Fire. The ground is
+nothing more than great, evershifting plates of compressed flame.
+The air ripples with the heat of continual firestorms, and the
+most common liquid is magma, not water. The oceans are
+made of liquid flame, and the mountains ooze
+with molten lava. The plane is a crema-
+torium for the unprepared traveler
+and an uncomfortable spot even for
+the dedicated adventurer.
+Fire survives here without
+need for fuel or air, but flam-
+mables  brought  onto  the
+plane are consumed readily.
+The elemental fires seem
+to feed on each other to
+produce a continually
+burning landscape.
+The Elemental Plane
+of Fire has the following
+traits.
+•Fire-dominant.
+•Enhanced  magic.
+Spells   and   spell-
+like abilities with the
+fire  descriptor  are  both
+maximized and enlarged
+(as  if  the  Maximize  Spell
+and  Enlarge  Spell  had  been
+used  on  them,  but  the  spells
+don’t  require  higher-level  slots).
+Spells  and  spell-like  abilities
+that  are  already  maxi-
+mized  or  enlarged  are  un-
+affected by this benefit.
+•Impeded  magic.  Spells  and  spell-like
+abilities that use or create water (includ-
+ing  spells  of  the  Water  domain  and  spells
+that  summon  water  elementals  or  outsiders
+with the water subtype) are impeded.
+Example Plane of Fire Site: City of Brass
+The City of Brass is populated by powerful efreet and is considered
+by many efreet to be their home and their capital. Efreet may be
+found elsewhere on the Elemental Plane of Fire, but even far-
+flung settlements owe fealty and allegiance to the grand sultan
+who rules the City of Brass from his burning palace. The grand
+sultan is said to be an efreeti of singular power and prowess, and is
+advised by all manner of elemental nobles. His direct servants,
+both in the city and on the Material Plane, are six lords of consid-
+erable power.
+The city is cradled in a brass hemisphere 40 miles across, float-
+ing above a plate of cracked obsidian at the heart of the Elemental
+Plane of Fire. Stairs of burning basalt and rivers of flame stream
+up from the surface below to the well-armed gates of the city. The
+city walls may be breached by flying creatures, but the efreet take
+a dim view of interlopers who refuse to present themselves at one
+of the city’s gates.
+The City of Brass is the best known location on the Elemental
+Plane of Fire and is also the most likely to be visited by travelers
+from the Material Plane. The air is slightly cooler here; it deals no
+damage (unlike everywhere else on this fire-dominant plane), but
+it is still stiflingly hot. That doesn’t mean the City of Brass is par-
+ticularly hospitable. Every brass wall glows with heat, and casual
+contact with the walls deals 1d6 points of fire damage per round.
+Even the iron cobblestones glow with heat, dealing 1 point of
+fire damage per round. Without the aid of magic, visitors soon
+writhe and burn in the streets.
+The City of Brass has the mildly evil-aligned trait. Good-aligned
+creatures within the City of Brass take a –2 penalty on all Cha-
+risma-based checks. This alignment trait is due in part to the
+nature of the efreet within the walls, but the city also has a
+number of freestanding portals leading to the Nine Hells of
+Baator. Devils are common within the
+walls of the City of Brass, either
+performing  missions  for
+their infernal masters or
+bringing tribute and gifts
+to  the  grand  sultan’s
+court.
+To make   an   en-
+counter map for the
+City of Brass, use the
+guidelines in the Ur-
+ban Adventures section
+(page 98), but the build-
+ings are half again as tall
+as they would be in a
+Material  Plane  city,
+and   most   have   a
+plethora of exterior
+staircases,  ledges,
+and   balconies.   In-
+clude  some  pools  of
+magma, which deals 2d6
+points of fire damage to
+characters who wade
+through  it  and  20d6
+points of fire damage
+to creatures who are
+fully immersed. Some
+pedestals and sconces
+spout blasts of flame
+every     1d4     rounds
+(dealing 5d6 points of
+fire damage to everyone
+within 20 feet at initiative
+count 0; Reflex DC 14 half ).
+At the center of the city are its tallest towers and greatest foun-
+tains of flame. Here is the Burning Palace of the Grand Sultan of
+All the Efreet, where he rules from the Charcoal Throne. It is said
+that within the great palace are wonders beyond belief and trea-
+sure beyond counting. But here also is found death for any unin-
+vited guest who seeks to wrest even a single coin or bauble from
+the treasure rooms of the grand sultan.
+Elemental Plane of Fire Encounters (EL 10)
+d%EncounterAverage EL
+01–151d4+2 efreet (genie)12
+16–401 elder fire elemental11
+41–601d4+2 average salamanders10
+61–751 noble salamander10
+76–901 greater fire elemental9
+91–1001 Huge fire elemental7
+CHAPTER 5:
+CAMPAIGNS
+Elemental Plane of Fire

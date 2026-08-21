@@ -1,0 +1,137 @@
+256
+Faint illusion; CL 2nd; Craft Wondrous Item, creator must have
+5 ranks in the Swim skill; Price 250 gp.
+Elixir of Truth:This elixir forces the individual drinking it to
+say nothing but the truth for 10 minutes (Will DC 13 negates).
+She is compelled to answer any questions put to her in that time,
+but with each question she is free to make a separate DC 13 Will
+save. If one of these secondary saves is successful, she doesn’t
+break free of the truth-compelling enchantment but also doesn’t
+have to answer that particular question. No more than one ques-
+tion can be asked each round. This is a mind-affecting compulsion
+enchantment.
+Faint enchantment; CL 5th; Craft Wondrous Item, zone of truth;
+Price 500 gp.
+Elixir of Vision: Drinking this elixir grants the imbiber the
+ability to notice acute details with great accuracy (+10 competence
+bonus on Search checks for 1 hour).
+Faint divination; CL 2nd; Craft Wondrous Item, true seeing; Price
+250 gp.
+Eversmoking Bottle:This metal urn is identical in appearance
+to an efreeti bottle,except that it does nothing but smoke. The
+amount of smoke is great if the stopper is pulled out, pouring from
+the bottle and totally obscuring vision across a 50-foot spread in 1
+round. If the bottle is left unstoppered, the smoke billows out
+another 10 feet per round until it has covered a 100-foot radius.
+This area remains smoke-filled until the eversmoking bottleis stop-
+pered. The bottle must be resealed by a command word, after
+which the smoke dissipates normally. A moderate wind (11+ mph)
+disperses the smoke in 4 rounds; a strong wind (21+ mph) dis-
+perses the smoke in 1 round.
+Faint transmutation; CL 3rd; Craft Wondrous Item, pyrotechnics;
+Price 5,400 gp; Weight 1 lb.
+Eyes of Charming:These two crystal lenses fit over the user’s
+eyes. The wearer is able to use charm person(one target per round)
+merely by meeting a target’s gaze. Those failing a DC 16 Will save
+are charmedas per the spell. If the wearer has only one lens, the DC
+of the saving throw is reduced to 10.
+Moderate enchantment; CL 7th; Craft Wondrous Item, Height-
+en Spell, charm person; Price 56,000 gp for a pair.
+Eyes of Doom:These crystal lenses fit over the user’s eyes,
+enabling him to cast doom upon those around him (one target per
+round) as a gaze attack, except that the wearer must take a standard
+action, and those merely looking at the wearer are not affected.
+Those failing a DC 11 Will save are affected as by the doomspell. If
+the wearer has only one lens, the DC of the saving throw is
+reduced to 10. However, if the wearer has both lenses, he gains the
+additional power of a continual deathwatch effect and can use fear
+(Will DC 16 partial) as a normal gaze attack once per week.
+Moderate necromancy; CL 11th; Craft Wondrous Item, doom,
+deathwatch, fear; Price 25,000 gp.
+Eyes of the Eagle:These items are made of special crystal and
+fit over the eyes of the wearer. These lenses grant a +5 competence
+bonus on Spot checks. Wearing only one of the pair causes a char-
+acter to become dizzy and, in effect, stunned for 1 round. There-
+after, the wearer can use the single lens without being stunned so
+long as she covers her other eye. Of course, she can remove the
+single lens and see normally at any time, or wear both lenses to
+end or avoid the dizziness.
+Faint divination; CL 3rd; Craft Wondrous Item, clairaudience/
+clairvoyance; Price 2,500 gp.
+Eyes  of  Petrification:These  items  are  made  of  special  crystal
+and fit over the eyes of the wearer. They allow her to use a petrifi-
+cation gaze attack (Fortitude DC 19 negates), such as that of a
+basilisk, for 10 rounds per day (see page 24 of the Monster Manual
+for details on the basilisk’s gaze attack). Both lenses must be worn
+for the magic to be effective.
+Moderate transmutation; CL 11th; Craft Wondrous Item, flesh to
+stone; Price 98,000 gp.
+Figurines of Wondrous Power:Each of the several kinds of
+figurines of wondrous power appears to be a miniature statuette of a
+creature an inch or so high (with one exception). When the fig-
+urine is tossed down and the correct command word spoken, it
+becomes a living creature of normal size (except when noted oth-
+erwise below). The creature obeys and serves its owner. Unless
+stated otherwise, the creature understands Common but does not
+speak.
+If  a  figurine of wondrous poweris broken or destroyed in its stat-
+uette form, it is forever ruined. All magic is lost, its power
+departed. If slain in animal form, the figurine simply reverts to a
+statuette that can be used again at a later time.
+Bronze Griffon:When animated, a bronze griffonacts in all ways
+like a normal griffon under the command of its possessor. The
+item can be used twice per week for up to 6 hours per use. When
+6 hours have passed or when the command word is spoken, the
+bronze griffon once again becomes a tiny statuette.
+Moderate transmutation; CL 11th; Craft Wondrous Item, ani-
+mate objects; Price 10,000 gp.
+Ebony Fly:When animated, an ebony flyis the size of a pony and
+has all the statistics of a hippogriff (Hit Dice, AC, carrying capac-
+ity, speed, and so on; see page 152 of the Monster Manual) but can
+make no attacks. The item can be used three times per week for up
+to 12 hours per use. When 12 hours have passed or when the com-
+mand word is spoken, the ebony flyagain becomes a tiny statuette.
+Moderate transmutation; CL 11th; Craft Wondrous Item, ani-
+mate objects; Price 10,000 gp.
+Golden Lions:These figurines come in pairs. They become
+normal adult male lions (see page 274 of the Monster Manual). If
+slain in combat, the lions cannot be brought back from statuette
+form for one full week. Otherwise, they can be used once per day
+for up to 1 hour. They enlarge and shrink upon speaking the com-
+mand word.
+Moderate transmutation; CL 11th; Craft Wondrous Item, ani-
+mate objects; Price 16,500 gp.
+Ivory Goats:These figurines come in threes. Each goat of this trio
+looks slightly different from the others, and each has a different
+function:
+•The Goat of Traveling:This statuette provides a speedy and endur-
+ing  mount  equal  to  that  of  a  heavy  horse  (see  page  273  of  the
+Monster Manual) in every way except appearance. The goat can
+travel for a maximum of one day each week—continuously or
+in any combination of periods totaling 24 hours. At this point,
+or when the command word is uttered, it returns to its statuette
+form for not less than one day before it can again be used.
+•The  Goat  of  Travail:This  statuette  becomes  an  enormous  crea-
+ture,  larger  than  a  bull,  with  the  statistics  of  a  nightmare  (see
+page 194 of the Monster Manual) except for the addition of a pair
+of  wicked  horns  of  exceptional  size  (damage  1d8+4  for  each
+horn). If it is charging to attack, it may only use its horns (but
+add 6 points of damage to each successful attack in that round).
+It can be called to life just once per month for up to 12 hours at
+a time.
+•The Goat of Terror:When called upon with the proper command
+word, this statuette becomes a destrierlike mount, with the sta-
+tistics of a light warhorse (see page 274 of the Monster Manual).
+However, its rider can employ the goat’s horns as weapons (one
+horn  as  a  +3  heavy  lance,the  other  as  a  +5  longsword).  When
+ridden  in  an  attack  against  an  opponent,  the  goat  of  terrorradi-
+ates fearas  the  spell  in  a  30-foot  radius  (Will  DC  16  partial).  It
+can be used once every two weeks for up to 3 hours per use.
+Moderate transmutation; CL 11th; Craft Wondrous Item, ani-
+mate objects; Price 21,000 gp.
+Marble Elephant:This is the largest of the figurines, the statuette
+being about the size of a human hand. Upon utterance of the com-
+mand word, a marble elephantgrows to the size and specifications
+of a true elephant (see page 272 of the Monster Manual). The animal
+CHAPTER 7:
+MAGIC ITEMS

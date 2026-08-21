@@ -1,0 +1,132 @@
+200
+contains statistics and other details on potential cohorts. Take the
+level adjustment plus the Hit Dice to generate ECL.
+Using the numbers given in the Monster Manual,we find that an
+ettin, which is a 10 HD creature with a +5 level adjustment, is the
+equivalent of a 15th level character or cohort. If you add a tem-
+plate, add the template’s level adjustment, too. For instance, the
+fiendish creature template (see page 107 of the Monster Manual)
+has a level adjustment of +2. A fiendish ettin would be a 17th-level
+cohort. That’s all there is to it.
+You should carefully consider any special attacks or qualities
+that a potential cohort possesses and may choose to disallow or
+make ad hoc adjustments to suit your campaign.
+If a creature in the Monster Manualdoesn’t have a level adjust-
+ment, this means we don’t recommend using it as either a player
+character or a cohort. The dryad is a good example; she’s connected
+to her tree and as such has very limited mobility. Mindless or low-
+Intelligence creatures also make undesirable cohorts.
+LEADERSHIP AND MOUNTS
+A character may use the Leadership feat to attract a cohort that can
+serve as a mount. This feat cannot attract a mount with an Intelli-
+gence of less than 4. If such a character already has a special
+mount, familiar, or animal companion, he takes a –2 penalty to his
+Leadership score.
+PALADIN COHORT MOUNTS
+At the DM’s option, she may allow a paladin or other character
+with a special mount class feature to combine the special mount
+with the cohort feat. The special qualities such as the empathic
+link and shared spells make this quite potent and worth a mini-
+mum of a +2 level adjustment to the cohort mount ECL.
+CONTINGENT COHORTS
+What can a DM do if the number of players in her group is irregu-
+lar? Sometimes a cohort is a much-needed addition to a party;
+sometimes it’s one character too many. A DM might work with
+her players to allow contingent cohorts.
+For instance, the DM may have between three to seven players
+show up at any one game. Suppose she likes a group of five to
+seven best. She may rule that the Leadership feat isn’t always
+active. The player selecting the Leadership feat also chooses an
+alternate feat. (This alternate feat cannot function as the prerequi-
+site for any other feat. Improved Initiative is a fine alternate feat.)
+The DM may declare that if the number of players is less than five,
+characters who took the Leadership feat may bring along their
+cohorts. If the number of players is five or more, players who took
+the Leadership feat can’t bring their cohorts, but instead gain the
+benefits of their alternate feat for the session.
+This can work out very amiably if the contingent cohort condi-
+tions are clarified before the DM allows the character to take the
+Leadership feat.
+FAMILIARS
+Few investments yield greater riches than the time and gold spent
+to acquire a familiar. A lifelong companion, guard, spy, and ser-
+vant, it is every spellcaster’s best friend and most trusted confi-
+dante. Changes to the rules on familiars in the Player ’s Handbook
+are completely under the DM’s control. Here are some possibili-
+ties, beginning with the Improved Familiar variant feat.
+Improved Familiar [General]
+This feat allows spellcasters to acquire a new familiar from a non-
+standard list, but only when they could normally acquire a new
+familiar (see page 52 of the Player ’s Handbook).
+Prerequisites: Ability to acquire a new familiar, compatible
+alignment, sufficiently high level (see below).
+Benefit: When choosing a familiar, the creatures listed below
+are also available to the spellcaster. The spellcaster may choose a
+familiar with an alignment up to one step away on each of the
+alignment axes (lawful through chaotic, good through evil). For
+example, a chaotic good spellcaster could acquire a neutral familiar.
+A lawful neutral spellcaster could acquire a neutral good familiar.
+Arcane Spellcaster
+FamiliarAlignmentLevel
+Shocker lizardNeutral5th
+StirgeNeutral5th
+Formian workerLawful neutral7th
+ImpLawful evil7th
+PseudodragonNeutral good7th
+QuasitChaotic evil7th
+Improved familiars otherwise use the rules on page 52 of the Player ’s
+Handbook, with two exceptions: If the creature’s type is something
+other than animal, its type does not change; and improved familiars
+do not gain the ability to speak with other creatures of their kind
+(although many of them already have the ability to communicate).
+The  list  in  the  table  above  presents  only  a  few  possible
+improved familiars. Almost any creature of the same general size
+and power as those on the list makes a suitable familiar. Nor is the
+master’s alignment the only possible categorization. For instance,
+improved familiars could be assigned by the master’s creature type
+or subtype, as shown below.
+Arcane Spellcaster
+FamiliarType/SubtypeLevel
+Celestial hawk
+1
+Good3rd
+Fiendish Tiny viper snake
+2
+Evil3rd
+Air elemental, SmallAir5th
+Earth elemental, SmallEarth5th
+Fire elemental, SmallFire5th
+Shocker lizardElectricity5th
+Water elemental, SmallWater5th
+Homunculus
+3
+Undead7th
+Ice mephitCold7th
+1 Or other celestial animal from the standard familiar list.
+2 Or other fiendish animal from the standard familiar list.
+3 The master must first create the homunculus, substituting ichor or
+another part of the master’s body for blood if necessary.
+The following statistics assume a master of the minimum required
+level with no additional class or race bonuses to attack rolls or
+saving throws.
+Granted Abilities:In addition to their own special qualities,
+all familiars grant their masters the Alertness feat, the benefit of
+an empathic link, and the ability to share spells with the familiar.
+See page 53 of the Player ’s Handbookfor details.
+Improved Evasion (Ex):When subjected to an attack that nor-
+mally allows a Reflex saving throw for half damage, a familiar
+takes no damage if it makes a successful saving throw and half
+damage even if the saving throw fails.
+Celestial Hawk Familiar:CR —; Tiny magical beast; HD 3; hp
+1/2 master’s; Init +3; Spd 10 ft., fly 60 ft. (average); AC 19, touch 15,
+flat-footed 16; Base Atk +0; Grp –10; Atk +5 melee (1d4–2, talons);
+Full Atk +5 melee (1d4–2, talons); Space/Reach 2-1/2 ft./0 ft.; SA
+smite evil; SQ darkvision 60 ft., deliver touch spells, improved eva-
+sion, low-light vision, resistance to acid 5, cold 5, and electricity 5,
+spell resistance 8, granted abilities; AL any good; SV Fort +2, Ref
++5, Will +2, Str 6, Dex 17, Con 10, Int 7, Wis 14, Cha 6.
+Skills and Feats:Listen +2, Spot +14; Weapon Finesse.
+Smite Evil (Su): Once per day, make a normal melee attack to
+deal +1 damage against an evil foe.
+CHAPTER 6:
+CHARACTERS

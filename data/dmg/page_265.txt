@@ -1,0 +1,137 @@
+264
+sor’s Wisdom score in the form of an enhancement bonus of +2,
++4, or +6 (depending on the individual item).
+Moderate transmutation; CL 8th; Craft Wondrous Item, owl’s
+wisdom; Price 4,000 gp (+2), 16,000 gp (+4), 36,000 gp (+6).
+Periapt of Wound Closure:This stone is bright red and dan-
+gles on a gold chain. The wearer of this periapt automatically
+becomes stable if his hit points drop to between –1 and –9 inclu-
+sive. The periapt doubles the wearer’s normal rate of healing or
+allows normal healing of wounds that would not do so normally.
+Hit point damage that involves bleeding (such as damage caused
+by the horned devil’s infernal wound ability; see page 55 of the
+Monster Manual), is negated for the wearer of the periapt, but he is
+still susceptible to damage from bleeding that causes Constitution
+loss, such as that dealt by a wounding weapon.
+Moderate conjuration; CL 10th; Craft Wondrous Item, heal;
+Price 15,000 gp.
+Phylactery of Faithfulness:This item is a small box contain-
+ing religious scripture affixed to a leather cord and tied around the
+forehead. There is no mundane way to determine what function
+this religious item performs until it is worn. The wearer of a phy-
+lactery of faithfulnessis aware of any action or item that could
+adversely affect his alignment and his standing with his deity,
+including magical effects. He acquires this information prior to
+performing such an action or becoming associated with such an
+item if he takes a moment to contemplate the act.
+Faint divination; CL 1st; Craft Wondrous Item, detect chaos, detect
+evil, detect good, detect law; Price 1,000 gp.
+Phylactery of Undead Turning:This item is a boon to any
+character able to turn undead, allowing him to do so as if his class
+level were four levels higher than it actually is.
+Moderate necromancy [good]; CL 10th; Craft Wondrous Item,
+10th-level cleric; Price 11,000 gp.
+Pipes of Haunting:This magic item appears to be a small set of
+pan pipes. When played by a person who succeeds on a DC 15 Per-
+form (wind instruments) check, the pipes create an eerie, spell-
+binding tune. Those within 30 feet who hear the tune must suc-
+ceed on a DC 13 Will save or become frightened for 4 rounds.
+Creatures with 6 or more Hit Dice are unaffected. Pipes of haunting
+can be sounded twice a day.
+Faint necromancy; CL 4th; Craft Wondrous Item, scare; Price
+6,000 gp; Weight 3 lb.
+Pipes of Pain:These appear to be like any other standard set of
+pipes with nothing to reveal their true nature. When played by
+someone who succeeds on a DC 15 Perform (wind instruments)
+check, the pipes create a wondrous melody. All within 30 feet
+must make a DC 14 Will save or be fascinated by the sound. (This
+is a mind-affecting sonic compulsion.)
+As soon as the piping stops, all those affected are stricken by in-
+tense pain at even the slightest noise. Unless a character is in a
+totally silent area, she takes 1d4 points of damage per round for
+2d4 rounds. During this time, damage from sonic attacks, such as
+sound burst, is doubled. Thereafter, the least noise causes an
+affected character to become shaken (except when she is in a
+totally silent area). This hypersensitivity is a curse and therefore
+hard to remove (see the bestow cursespell).
+Faint enchantment and evocation; CL 6th; Craft Wondrous
+Item, creator must have the bardic music class feature,sound burst;
+Price 12,000 gp; Weight 3 lb.
+Pipes of the Sewers:These wooden pipes appear ordinary, but
+if the possessor learns the proper tune, he can attract 1d3 rat
+swarms (see page 239 of the Monster Manual) if rats are within 400
+feet. For each 50-foot distance the rats have to travel, there is a 1-
+round delay. The piper must continue playing until the rats appear,
+and when they do so, the piper must make a DC 10 Perform (wind
+instruments) check. Success means that they obey the piper’s tele-
+pathic commands so long as he continues to play. Failure indicates
+that they turn on the piper. If for any reason the piper ceases play-
+ing, the rats leave immediately. If they are called again within a
+day, the Perform check DC is 15.
+If the rats are under the control of another creature, add the HD
+of the controller to the Perform check DC. Once control is as-
+sumed, another check is required each round to maintain it if the
+other creature is actively seeking to reassert its control.
+Faint conjuration; CL 2nd; Craft Wondrous Item, charm
+animal, summon nature’s ally I, wild empathy ability; Price 1,150
+gp; Weight 3 lb.
+Pipes of Sounding:When played by a character who has the
+Perform (wind instruments) skill, these pipes create a variety of
+sounds. The figment sounds are the equivalent of ghost sound
+(caster level 2nd).
+Faint illusion; CL 2nd; Craft Wondrous Item, ghost sound; Price
+1,800 gp; Weight 3 lb.
+Portable Hole:A portable hole is a circle of cloth spun from
+the webs of a phase spider interwoven with strands of ether and
+beams of starlight. When opened fully, a portable hole is 6 feet in
+diameter, but it can be folded up to be as small as a pocket hand-
+kerchief. When spread upon any surface, it causes an extradimen-
+sional space 10 feet deep to come into being. This hole can be
+picked up from inside or out by simply taking hold of the edges of
+the cloth and folding it up. Either way, the entrance disappears,
+but anything inside the hole remains.
+The only air in the hole is that which enters when the hole is
+opened. It contains enough air to supply one Medium creature or
+two Small creatures for 10 minutes. (See Suffocation, page 304.)
+The cloth does not accumulate weight even if its hole is filled
+(with gold, for example). Each portable  holeopens on its own par-
+ticular nondimensional space. If a bag of holding(see page 248) is
+placed within a portable hole, a rift to the Astral Plane is torn in that
+place. Both the bag and the cloth are sucked into the void and for-
+ever lost. If a portable holeis placed within a bag of holding,it opens
+a gate to the Astral Plane. The hole, the bag, and any creatures
+within a 10-foot radius are drawn there, the portable holeand bag of
+holdingbeing destroyed in the process.
+Moderate conjuration; CL 12th; Craft Wondrous Item, plane
+shift; Price 20,000 gp.
+Quaal’s Feather Token:Each of these items is a small feather
+that has a power to suit a special need. The kinds of tokens are
+described below. Each token is usable once.
+Anchor:A token useful to moor a craft in water so as to render it
+immobile for up to one day.
+Bird:A token that can be used to deliver a small written message
+unerringly to a designated target as would a carrier pigeon. The
+token lasts as long as it takes to carry the message.
+Fan:A token that forms a huge flapping fan, causing a breeze of
+sufficient strength to propel one ship (about 25 mph). This wind is
+not cumulative with existing wind speed—if a severe wind is
+already blowing, for example, this wind cannot be added to it to
+create a windstorm. The token can, however, be used to lessen
+existing winds, creating an area of relative calm or lighter winds
+(but wave size in a storm is not affected). The fan can be used for
+up to 8 hours. It does not function on land.
+Swan Boat:A token that forms a swanlike boat capable of
+moving on water at a speed of 60 feet. It can carry eight horses and
+gear or thirty-two Medium characters or any equivalent combina-
+tion. The boat lasts for one day.
+Tree:A token that causes a great oak to spring into being (5-foot-
+diameter trunk, 60-foot height, 40-foot top diameter). This is an
+instantaneous effect.
+Whip:A token that forms into a huge leather whip and wields
+itself against any opponent desired just like a dancing weapon (see
+page 224). The weapon has a +10 base attack bonus, does 1d6+1
+points of damage, has a +1 enhancement bonus on attack and
+damage rolls, and a makes a free grapple attack (with a +15 attack
+bonus) if it hits. The whip lasts no longer than 1 hour.
+CHAPTER 7:
+MAGIC ITEMS

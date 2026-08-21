@@ -1,0 +1,131 @@
+ter. If all the items in the encounter’s treasure are expendable,
+such as potions and scrolls, you don’t want to spend the entire trea-
+sure value on them. If you did, the characters might find nothing
+but empty potion bottles and scroll tubes after defeating the
+encounter.
+NPCs with Treasure
+The gear that NPCs carry serves as the bulk of their treasure. The
+average value of an NPC’s gear is listed on Table 4–23: NPC Gear
+Value, and examples of what specific gear a character of a given
+class and level would have are in the sample NPC descriptions in
+Chapter 4. NPCs may have treasure in addition to their gear, at
+your discretion, but an NPC’s gear is already worth about three
+times the average value of a treasure of his or her level. Defeating
+NPC foes brings about great reward for treasure-seekers, but since
+the gear is mostly magic that the NPC can use against the charac-
+ters (some of which is one-use), it all evens out.
+Other Treasure
+At times you’re going to want to generate a treasure on the fly
+that’s not directly related to a monster. You might, for example,
+have created a devious dungeon full of traps and puzzles with no
+monsters at all, and now you have to generate the “grand treasure”
+that the traps were protecting. You can still use the table. First find
+the average party level, then use the table in the Treasure Values
+sidebar (page 54) to figure out the wealth the PCs should gain in
+the course of the adventure. Subtract the total value of all the other
+treasure in the adventure. What’s left is the value of the grand trea-
+sure. You can generate the contents randomly by finding the aver-
+age treasure value on Table 3–3: Treasure Values per Encounter
+that most closely matches it. That tells you the level of the grand
+treasure, and you can use that to roll on Table 3–5: Treasure for
+coins, goods, and items.
+Using the Treasure Table
+Cross-reference the level of the treasure on the left with the type
+of treasure. The level of the treasure is equal to the CR of the
+monsters  in  the  encounter.  A  standard  treasure  (one  that
+includes coins, goods, and items) requires three rolls, one for
+each category.
+TYPES OF TREASURE
+Treasure comes in many forms: piles of coins, pouches of gems,
+useful adventuring equipment, and magic items.
+Coins:The most basic type of treasure is money. Table 3–5:
+Treasure generates anything from common copper pieces to rare
+platinum pieces. When placing a hoard of coins, remember the
+volume and weight of large numbers of coins is considerable (50
+coins weigh 1 pound, so 10,000 coins weigh 200 pounds).
+Gems:PCs love gems because they’re small, lightweight, and
+easily concealed compared with the same value in coins. Gem
+treasures are more interesting when you describe them and pro-
+vide names. “A lustrous golden pearl” is more interesting than “a
+100 gp gem.”
+Art:Idols of solid gold, necklaces dripping with gems, old
+paintings of ancient kings, a bejeweled golden flagon—this cate-
+gory includes all these and more. Portability is a major concern
+here. A jeweled comb is easy to carry, but a life-sized bronze statue
+of a knight is not. In general, most treasure you place in encoun-
+ters should be easy for the PCs to carry (weighing 10 pounds or
+less). Treasure that’s impossible to take out of the dungeon isn’t
+really treasure.
+Mundane Items:While nonmagical, these items are worth-
+while as treasure because they are useful or valuable or both. Many
+of these treasures are used by intelligent opponents rather than
+just stored away as coins or gems are.
+55
+CHAPTER 3:
+ADVENTURES
+Table 3–6: Gems
+d%ValueAverageExamples
+01–25   4d4 gp10 gpBanded, eye, or moss agate;
+azurite; blue quartz; hematite;
+lapis lazuli; malachite; obsidian;
+rhodochrosite; tiger eye turquoise;
+freshwater (irregular) pearl
+26–50   2d4×10 gp50 gpBloodstone; carnelian;
+chalcedony; chrysoprase; citrine;
+iolite, jasper; moonstone; onyx;
+peridot; rock crystal (clear quartz);
+sard; sardonyx; rose, smoky, or
+star rose quartz; zircon
+51–70   4d4×10 gp100 gpAmber; amethyst; chrysoberyl;
+coral; red or brown-green garnet;
+jade; jet; white, golden, pink, or
+silver pearl; red spinel, red-brown
+or deep green spinel; tourmaline
+71–90   2d4×100 gp500 gpAlexandrite; aquamarine; violet
+garnet; black pearl; deep blue
+spinel; golden yellow topaz
+91–99   4d4×100 gp1,000 gpEmerald; white, black, or fire opal;
+blue sapphire; fiery yellow or rich
+purple corundum; blue or black
+star sapphire; star ruby
+1002d4×1,000 gp5,000 gpClearest bright green emerald;
+blue-white, canary, pink, brown, or
+blue diamond; jacinth
+Table 3–7: Art Objects
+d%ValueAverageExamples
+01–10   1d10×10 gp55 gpSilver ewer; carved bone or ivory
+statuette; finely wrought small
+gold bracelet
+11–25   3d6×10 gp105 gpCloth of gold vestments; black
+velvet mask with numerous
+citrines; silver chalice with lapis
+lazuli gems
+26–40   1d6×100 gp350 gpLarge well-done wool tapestry;
+brass mug with jade inlays
+41–50   1d10×100 gp550 gpSilver comb with moonstones;
+silver-plated steel longsword with
+jet jewel in hilt
+51–60   2d6×100 gp700 gpCarved harp of exotic wood with
+ivory inlay and zircon gems; solid
+gold idol (10 lb.)
+61–70   3d6×100 gp1,050 gpGold dragon comb with red garnet
+eye; gold and topaz bottle stopper
+cork; ceremonial electrum dagger
+with a star ruby in the pommel
+71–80   4d6×100 gp1,400 gpEyepatch with mock eye of
+sapphire and moonstone; fire opal
+pendant on a fine gold chain; old
+masterpiece painting
+81–85   5d6×100 gp1,750 gpEmbroidered silk and velvet
+mantle with numerous
+moonstones; sapphire pendant on
+gold chain
+86–90   1d4×1,000 gp2,500 gpEmbroidered and bejeweled glove;
+jeweled anklet; gold music box
+91–95   1d6×1,000 gp3,500 gpGolden circlet with four
+aquamarines; a string of small
+pink pearls (necklace)
+96–99   2d4×1,000 gp5,000 gpJeweled gold crown; jeweled
+electrum ring
+1002d6×1,000 gp7,000 gpGold and ruby ring; gold cup set
+with emeralds

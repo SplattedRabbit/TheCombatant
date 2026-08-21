@@ -1,0 +1,193 @@
+96
+CHAPTER 3:
+ADVENTURES
+Table 3–25: 
+Wilderness Encounter Lists
+CR  Any Wilderness Environment
+1/8  Rat (animal)
+1/3  Dire rat
+1/3  Human warrior skeleton
+1/2  Tiny animated object
+1/2  Human commoner zombie
+1Small animated object
+1Ghoul
+1Homunculus
+2Medium animated object
+2Wererat (lycanthrope)
+2Rat swarm
+3Allip
+3Large animated object
+3Doppelganger
+3Ghast (ghoul)
+3Shadow
+3Wight
+4Gargoyle
+4Vampire spawn
+5Huge animated object
+5Mummy
+5Wraith
+7Gargantuan animated object
+7Flesh golem
+7Spectre
+8Greater shadow
+8Mohrg
+8Shield guardian
+10   Colossal animated object
+10   Clay golem
+11   Devourer
+11   Dread wraith
+11   Stone golem
+13   Iron golem
+13   Lich, 11th-level human wizard
+14   Nightwing (nightshade)
+15   Mummy lord
+16   Greater stone golem
+16   Nightwalker (nightshade)
+18   Nightcrawler (nightshade)
+20   Tarrasque
+CR  Cold Aquatic
+1Medium shark (animal)
+2Large shark (animal)
+4Huge shark (animal)
+5Scrag (troll)
+5Orca whale (animal)
+9Dire shark
+CR  Cold Deserts
+7Remorhaz
+CR  Cold Forests
+2Wolverine (animal)
+4Brown bear (animal)
+4Dire wolverine
+5Werebear (lycanthrope)
+5Winter wolf
+7Dire bear
+CR  Cold Hills
+5Ettin skeleton
+6Ettin
+6Gauth (beholder)
+6Ogre mage
+13   Beholder
+CR  Cold Marshes
+4Gray ooze (ooze)
+6Annis (hag)
+6Five-headed cryohydra
+7Six-headed cryohydra
+8Seven-headed cryohydra
+9Eight-headed cryohydra
+10   Nine-headed cryohydra
+11   Ten-headed cryohydra
+12   Eleven-headed cryohydra
+13   Twelve-headed cryohydra
+CR  Cold Mountains
+2Wyrmling white dragon
+3Very young white dragon
+3Troll skeleton
+4Young white dragon
+5Troll
+6Juvenile white dragon
+7Young adult white dragon
+9Frost giant
+10   Adult white dragon
+11   Troll hunter
+12   Mature adult white dragon
+15   Old white dragon
+17   Very old white dragon
+17   Frost giant jarl
+18   Ancient white dragon
+19   Wyrm white dragon
+21   Great wyrm white dragon
+CR  Cold Plains
+4Polar bear (animal)
+12   Frost worm
+CR  Temperate Aquatic
+1/2  Aquatic elf
+1/2  Merfolk
+1/2  Porpoise (animal)
+1Nixie (sprite)
+1Squid (animal)
+2Kuo-toa
+2Triton
+3Merrow (ogre)
+4Sea cat
+4Sea hag (hag)
+7Cachalot whale (animal)
+7Water naga
+9Dragon turtle
+9Giant squid (animal)
+12   Kraken
+CR  Temperate Deserts
+1/6  Donkey (animal)
+2Dire bat
+2Bat swarm
+3Wyrmling blue dragon
+4Very young blue dragon
+6Young blue dragon
+6Lamia
+7Dragonne
+8Juvenile blue dragon
+8Lammasu
+11   Young adult blue dragon
+14   Adult blue dragon
+16   Mature adult blue dragon
+18   Old blue dragon
+19   Very old blue dragon
+21   Ancient blue dragon
+23   Wyrm blue dragon
+25   Great wyrm blue dragon
+CR  Temperate Forests
+1/4  Kobold
+1/4  Tiny monstrous spider (vermin)
+1/4  Kobold zombie
+1/2  Badger (animal)
+1/2  Wood elf
+1/2  Tallfellow halfling
+1/2  Half-elf
+1/2  Small monstrous spider (vermin)
+1Grig
+1Krenshar
+1Medium monstrous spider (vermin)
+1Pseudodragon
+1Wolf skeleton
+1Wolf (animal)
+2Black bear (animal)
+2Boar (animal)
+2Dire badger
+2Large monstrous spider (vermin)
+2Satyr
+2Owlbear skeleton
+3Assassin vine
+3Centaur
+3Dire wolf
+3Wyrmling green dragon
+3Dryad
+3Giant praying mantis (vermin)
+3Giant wasp (vermin)
+3Werewolf (lycanthrope)
+3Giant owl
+3Pegasus
+3Unicorn
+4Aranea
+4Dire boar
+4Very young green dragon
+4Giant stag beetle (vermin)
+4Wereboar (lycanthrope)
+4Owlbear
+4Pixie (sprite)
+5Young green dragon
+5Huge monstrous spider (vermin)
+5Pixie with Otto’s irresistible dance
+(sprite)
+5Spider eater
+6Tendriculos
+7Nymph
+8Juvenile green dragon
+8Gargantuan monstrous spider (vermin)
+8Treant
+11   Celestial charger (unicorn)
+11   Young adult green dragon
+11   Colossal monstrous spider (vermin)
+13   Adult green dragon
+14   Werewolf lord (lycanthrope)
+15   Vampire, elite
+16   Mature adult green dragon
+18   Old green dragon

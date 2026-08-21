@@ -1,0 +1,135 @@
++8/+8 melee (1d6+4, 2 hooves) and +1 melee (1d4+2, bite);
+Space/Reach 10 ft./5 ft.; SQ command,low-light vision,
+scent, spell resistance 20; SV Fort +7, Ref +5, Will +2; Str
+22, Dex 13, Con 17, Int 9, Wis 13, Cha 6.
+Skills and Feats:Listen +5, Spot +4; Endurance, Run.
+Command (Sp):Usable 7/day against other equines (Will
+DC 21 negates).
+Improved Evasion (Ex):When subjected to an attack that
+normally allows a Reflex saving throw for half damage,
+this mount takes no damage if it makes a successful saving
+throw and half damage if the saving throw fails.
+Low-Light Vision (Ex):Can see twice as far as a human in
+dim light.
+Scent (Ex):Can detect approaching enemies, sniff out
+hidden foes, and track by sense of smell.
+Lay on Hands (Su): This paladin can cure 60 hit points of
+wounds per day.
+Remove Disease (Sp): This paladin can remove disease, as the spell,
+four times per week 
+Paladin Spells Prepared(3/2/1/1; save DC 14 + spell level): 1st—
+bless weapon(2), divine favor;2nd—bull’s strength, shield other;3rd—
+heal mount;4th—holy sword.
+Possessions: +3 full plate, +3 heavy steel shield, ring of protection +1, +3
+longsword, +1 composite longbow (+2 Str bonus), 10 normal arrows, 10
++2 arrows,10 cold iron arrows, 10 silvered arrows, 8 adamantine
+arrows, cloak of Charisma +2, bag of holding type II,2 potions of cure
+moderate wounds, 2 potions of cure serious wounds, potion of fly, potion of
+owl’s wisdom, potion of tongues, scroll ofdeath ward, 3 scrolls ofdelay
+poison, 2 scrolls ofmagic weapon, 2 scrolls ofremove paralysis, 2
+scrolls ofresist energy (fire), 2 doses antitoxin, bit and bridle
+(mount), dagger, 4 flasks holy water, masterwork banded mail
+barding (mount), military saddle (mount), saddlebags (mount),
+silver holy symbol.
+NPC RANGER
+Starting Ability Scores:Str 14, Dex 15, Con 13, Int 10, Wis 12,
+Cha 8.
+Increased Ability Scores:4th, Dex 16; 8th, Dex 17; 10th, Dex
+17 (19); 12th, Dex 18 (20); 14th, Wis 12 (14); 16th, Str 14 (18); Dex
+19 (21); 17th, Dex 19 (23); 20th, Dex 20 (24).
+Sample 5th-Level NPC Ranger:Gnoll Rgr 5; CR 6; Medium
+humanoid; HD 7d8+14; hp 49; Init +3; Spd 30 ft.; AC 18, touch 13,
+flat-footed 15; Base Atk +6; Grp +10; Atk +11 melee (1d8+6/19–20,
+masterwork longsword) or +11 ranged (1d8+4/×3, masterwork
+composite longbow [+4 Str bonus]); Full Atk +11/+6 melee
+(1d8+6/19–20,  masterwork  longsword)  or  +11/+6  ranged
+(1d8+4/×3, masterwork composite longbow [+4 Str bonus]) or
++9/+9/+4 ranged (1d8+4/×3, masterwork composite longbow [+4
+Str bonus]); SA —; SQ animal companion, darkvision 60 ft.,
+favored enemy elves +4, favored enemy humans +2, link with
+companion, share spells; AL CE; SV Fort +6, Ref +7, Will +2; Str 18,
+Dex 16, Con 15, Int 8, Wis 12, Cha 6.
+Skills and Feats:Hide +10, Listen +5, Move Silently +10, Spot +11,
+Survival +8; Endurance, Power Attack, Quick Draw, Rapid Shot,
+Track, Weapon Focus (composite longbow). 
+Combat Style (Ex): This ranger has selected archery. He gains the
+Rapid Shot feat without the normal prerequisites.
+Animal Companion (Ex):This ranger has a wolf as an animal
+companion. This creature is a loyal companion that accompanies
+the ranger on adventures as appropriate for its kind. Its abilities
+and characteristics are summarized below.
+Wolf Animal Companion:CR —; Medium magical
+beast; HD 2d8+4; hp 13; Init +2, Spd 50 ft.; AC 14, touch 12,
+flat-footed 12; Base Atk +1; Grp +2; Atk +3 melee (1d6+1,
+bite); Full Atk +3 melee (1d6+1, bite); Space/Reach 5 ft./5
+ft.; SA trip; SQ bonus trick, evasion, low-light vision, scent;
+AL N; SV Fort +5, Ref +5, Will +1; Str 13, Dex 15, Con 15,
+Int 2, Wis 12, Cha 6.
+Skills and Feats:Hide +2, Listen +3, Move Silently +3,
+Spot +3, Survival +1; Track, Weapon Focus (bite).
+Trip (Ex):A wolf that hits with a bite attack can attempt
+to trip the opponent as a free action. See page 158 of the
+Player ’s Handbookfor more information.
+Bonus Trick:This animal companion is capable of learn-
+ing one trick in addition to any that the ranger might
+choose to teach it (see the Handle Animal skill, page 74 of
+the Player ’s Handbook). This bonus trick doesn’t require any
+training time or Handle Animal checks, and it doesn’t
+count against the normal limit of tricks known by the
+creature. The ranger selects this bonus trick, and once
+selected, it can’t be changed.
+Evasion (Ex): If an animal companion is subjected to an
+attack that normally allows a Reflex saving throw for half
+damage, it takes no damage if it makes a successful saving
+throw.
+Low-Light Vision (Ex):Can see twice as far as a human in
+dim light.
+Scent (Ex):Can detect approaching enemies, sniff out
+hidden foes, and track by sense of smell.
+Favored Enemy (Ex): This ranger gains the indicated bonus on his
+Bluff, Listen, Sense Motive, Spot, and Survival checks when using
+these skills against this type of creature. He gets the same bonus
+on weapon damage rolls against creatures of this type.
+Link with Companion (Ex): This ranger can handle his animal
+companion as a free action, or push it as a move action, with a +4
+bonus on wild empathy and Handle Animal checks made while
+dealing with that animal.
+Share Spells (Ex): This ranger may have any spell he casts on him-
+self also affect his animal companion if the latter is within 5 feet at
+the time. The ranger may also cast a spell with a target of “You” on
+his animal companion.
+Wild Empathy (Ex): This ranger can improve the attitude of an
+animal in the same way a Diplomacy check can improve the atti-
+tude of a sentient being. He rolls 1d20+3, or 1d20–1 if attempting
+to influence a magical beast with an Intelligence score of 1 or 2.
+Ranger Spells Prepared(1; save DC 12): 1st—entangle.
+Possessions: +1 studded leather,masterwork longsword, master-
+work composite longbow (+4 Str bonus), 20 normal arrows, 10
+cold iron arrows, 10 silvered arrows,eyes of the eagle,3potions of cure
+light wounds.
+Sample 15th-Level NPC Ranger:Gnoll Rgr 15; CR 16;
+Medium humanoid; HD 17d8+34; hp 114; Init +5; Spd 40 ft.;
+AC 23, touch 16, flat-footed 18; Base Atk +16; Grp +20; Atk +23
+melee (1d8+8/17–20, +2 longsword) or +24 ranged (1d8+6/×3, +2
+composite longbow [+4 Str bonus]); Full Atk +23/+18/+13/+8
+melee (1d8+8/17–20, +2 longsword); or +21/+16/+11/+6 melee
+(1d8+8/17–20, +2   longsword)   and   +20/+15/+10   melee
+(1d6+3/19–20, +1 short sword); or +24/+19/+14/+9 ranged
+(1d8+6/×3, +2 composite longbow [+4 Str bonus]); SA —; SQ
+animal companion, camouflage, darkvision 60 ft., evasion,
+favored enemy elves +6, favored enemy humans +4, favored
+enemy magical beasts +2, favored enemy fey +2, swift tracker,
+woodland stride; AL CE; SV Fort +11, Ref +13, Will +7; Str 18,
+Dex 21, Con 15, Int 8, Wis 14, Cha 6. 
+Skills and Feats:Handle Animal +13, Hide +25, Jump +9, Listen
++6, Move Silently +20, Ride +7, Spot +23, Survival +17; Endurance,
+Greater Two-Weapon Fighting, Improved Critical (longsword),
+Point Blank Shot, Power Attack, Precise Shot, Track, Weapon
+Focus (composite longbow) Weapon Focus (short sword).
+Combat Style Mastery (Ex): This ranger has selected two-weapon
+combat. He gains the Greater Two-Weapon Fighting feat without
+the normal prerequisites.
+121
+CHAPTER 4:
+NONPLAYER
+CHARACTERS

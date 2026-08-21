@@ -1,0 +1,131 @@
+134
+OTHER CAMPAIGN ISSUES
+Other factors in dealing with campaigns include introducing new
+players to an ongoing campaign, fostering player goals, changing
+alignments, managing the transition of PCs from low to high
+levels, and coping with increasing character power.
+INTRODUCING NEW PLAYERS
+Players come and go. When a new player joins the group, take the
+average of the levels of the existing PCs and allow the new player
+to create a character of that level. The only exception to this guide-
+line is when the new player is completely unfamiliar with the
+D&D game. In that case, it’s easiest for that player to start with a
+1st-level character.
+Working a new character into the group is similar to establish-
+ing why the group got together in the first place, but can be more
+difficult if the party is in the middle of an adventure. A few possi-
+bilities are given below.
+•The new PC is a friend or relative of one of the existing PCs and
+finally caught up with the group to join in.
+•The new PC is a prisoner of the foes the existing PCs are fight-
+ing. When they rescue him, he joins their group.
+•The new PC was a part of another adventuring group that was
+wiped out except for her.
+•The new  PC  was  sent  to  the  site  for  reasons  unrelated  to  the
+party’s adventure (which might lead later to another adventure
+that  the  new  PC  can  initiate)  and  joins  with  the  existing  PCs
+because there’s strength in numbers.
+FOSTERING PLAYER GOALS
+Players should eventually develop goals for their characters. Goals
+might include joining a particular guild, starting their own
+church, building a fortress, starting a business, obtaining a partic-
+ular magic item, getting powerful enough to defeat the enemies
+threatening their hometown, finding a lost brother, or tracking
+down the villain who escaped them long ago. You should not only
+encourage goals for characters, but you should be willing to
+design adventures based around them. Goals shouldn’t be easy to
+attain, but a player should always at least have the opportunity to
+realize the goals he developed for his character (assuming they are
+at all realistic).
+CHANGING ALIGNMENT
+A character can have a change of heart that leads to the adoption
+of a different alignment. Alignments aren’t commitments, except
+in specific cases (such as for paladins and clerics). Player charac-
+ters have free will, and their actions often dictate a change of
+alignment. Here are two examples of how a change of alignment
+can be handled.
+•A player  creates  a  new  character,  a  rogue  named  Garrett.  The
+player  decides  he  wants  Garrett  to  be  neutral  good  and  writes
+that on Garrett’s character sheet. By the second playing session
+of Garrett’s career, however, it’s clear that the player isn’t playing
+Garrett  as  a  good-aligned  character  at  all.  Garrett  likes  to  steal
+minor valuables from others (although not his friends) and does
+not  care  about  helping  people  or  stopping  evil.  Garrett  is  a
+neutral character, and the player made a mistake when declaring
+Garrett’s alignment because he hadn’t yet really decided how he
+wanted to play him. The DM tells the player to erase “good” on
+Garrett’s character sheet, making his alignment simply “neutral.”
+No big deal.
+•An NPC traveling with the PCs is chaotic evil and is pretending
+to  be  otherwise  because  he  was  sent  to  spy  on  them  and  foil
+their plans. He has been evil all his life, and he has lived among
+others  who  acted  as  he  did.  As  he  fights  alongside  the  good-
+aligned  PC  adventurers,  however,  he  sees  how  they  work
+together  and  help  each  other.  He  begins  to  envy  them  their
+camaraderie. Finally, he watches as the paladin PC gives his life
+to save not only his friends, but an entire town that was poised
+on  the  brink  of  destruction  at  the  hands  of  an  evil  sorcerer.
+Everyone  is  deeply  moved,  including  the  evil  NPC,  and  the
+town  celebrates  and  honors  the  paladin’s  self-sacrifice.  The
+townfolk hail the adventurers as heroes. The NPC is so moved
+that  he  repents,  casting  aside  his  own  evil  ways  (and  his
+mission). He becomes chaotic neutral, but he is well on his way
+to  becoming  chaotic  good,  particularly  if  he  remains  in  the
+company  of  the  PCs.  If  the  PCs  had  not  acted  so  gallantly,  he
+might  not  have  changed  his  ways.  If  they  turn  on  the  NPC
+when they learn of his past, he may turn back to evil.
+Most characters incur no game penalty for changing alignment,
+but you should keep a few points in mind.
+Yo u’r e  in Control:You control alignment changes, not the
+players. If a player says, “My neutral good character becomes
+chaotic good,” the appropriate response from you is “Prove it.”
+Actions dictate alignment, not statements of intent by players.
+Alignment Change Is Gradual:Changes in alignment should
+not be drastic. Usually, a character changes alignment only one
+step at a time—from lawful evil to lawful neutral, for example,
+and not directly to neutral good. A character on her way to adopt-
+ing another alignment might have other alignments during the
+transition to the final alignment.
+Time Requirements:Changing alignment usually takes time.
+Changes of heart are rarely sudden (although they can be). What
+you want to avoid is a player changing her character’s alignment to
+evil to use an evil artifact properly and then changing it right back
+when she’s done. Alignments aren’t garments you can take off and
+put on casually. Require an interval of at least a week of game time
+between alignment changes.
+Indecisiveness Indicates Neutrality:Wishy-washy charac-
+ters should just be neutral. If a character changes alignment over
+and over again during a campaign, what’s really happened is that
+the character hasn’t made a choice, and thus she is neutral.
+Exceptions:There are exceptions to all of the above. For in-
+stance, it’s possible (although unlikely) that the most horrible neu-
+tral evil villain has a sudden and dramatic change of heart and im-
+mediately becomes neutral good.
+THE TRANSITION 
+FROM LOW TO HIGH LEVEL
+One of the most rewarding and fun aspects of a campaign, for
+players and DMs alike, is the slow but steady transition from 1st
+level through the low levels (2nd–5th) to the middle levels
+(6th–11th) into the high levels (12th–15th) and finally to the very
+high levels (16th–20th). You should be aware that low-level play
+and high-level play are very different experiences. At low levels,
+it’s difficult to keep the characters alive. At high levels, it’s difficult
+to cause them a lot of harm. Although you should be impartial
+overall, at low levels make sure that the challenges the PCs face
+aren’t far too tough for them. There’s plenty of time at the higher
+levels when you can feel free to take off the kid gloves and throw
+whatever you want at them. High-level characters have the power
+and resources to survive and overcome just about anything.
+Low Level
+As characters start out and even after they gain a few levels, the
+following points apply.
+•Characters  are  fragile.  Save  bonuses,  AC,  and  hit  points  are  all
+low.
+•Characters can face only a few encounters before resting.
+•Characters shouldn’t stray far from civilization.
+•Characters can’t count on having a specific capability. Even if a
+cleric prepares a certain spell, for example, there’s no guarantee
+that he will still have it in his repertoire when he really needs it.
+Spell durations are short, and resources are few.
+CHAPTER 5:
+CAMPAIGNS

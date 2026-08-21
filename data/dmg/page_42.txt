@@ -1,0 +1,119 @@
+XP awards for roleplaying are purely ad hoc. That is, no system
+exists for assigning Challenge Ratings to bits of roleplaying. The
+awards should be just large enough for the player to notice them,
+probably no more than 50 XP per character level per adventure.
+Story Awards and Standard Awards
+You can handle story awards in one of two ways. The first is to
+make all awards story awards. Thus, killing monsters would earn
+no experience in and of itself—although it may allow characters
+to achieve what they need to do in order to earn a story award. If
+you follow this method, you should still pay attention to how
+many experience points the characters would be earning by
+defeating enemies, so that you can make sure the PCs’ treasure
+totals are in line with what they should be earning.
+The second way is to use standard awards for defeating enemies
+but award only half the normal amount for doing so, making up
+the other half through story awards. This method has the virtue of
+keeping the treasure earned at about the same rate as XP earned.
+Don’t simply add story awards to standard awards (even if
+you compensate by giving out more treasure as well) unless
+you want to speed up character progression.
+EXPERIENCE PENALTIES
+Characters can lose experience points by casting certain
+spells or creating magic items. This allocation of personal
+power serves a specific game function: It limits and controls
+these activities, as well as making them interesting choices for
+players. In general, however, you shouldn’t use experience
+penalties in any other situation. While awards can be used to
+encourage behavior, penalties don’t serve to discourage bad
+behavior. They usually only lead to arguments and anger. If a
+player behaves in a way you don’t want him to behave, talk to
+him about it. If he continues, stop playing with him.
+DEATH AND EXPERIENCE POINTS
+If a character takes part in an encounter, even if she dies
+during the encounter, that character gets a share of the experi-
+ence points. If a character dies and is raised, the awarded
+experience points are granted to her after she comes back
+from the dead (and after she loses the level from death, if
+appropriate).
+TREASURE AND OTHER REWARDS
+Unless you’re making up an adventure as you go, you assign
+treasure as you make up encounters. The rules for treasure and
+other rewards appear in Chapter 3: Adventures.
+CHARACTER DEATH
+It happens. Adventuring is a high-risk enterprise. Characters in
+your campaign will die, sometimes because they were reckless and
+sometimes because luck was against them. Fortunately, D&D is a
+game, and death doesn’t have to be the end.
+Raise dead, reincarnation, resurrection,and true resurrectioncan
+return characters to life. Bringing Back the Dead, on page 171 of
+the Player ’s Handbook,briefly discusses all four. Any creature
+brought back to life loses one level of experience, unless brought
+back with true resurrection.The character’s new XP total is midway
+between the minimum needed for his or her new level and the
+minimum needed for the next one. If the character was 1st level,
+he or she loses 2 points of Constitution instead of losing a level.
+This level loss or Constitution loss cannot be repaired by any
+mortal spell, even wishor miracle.Still, the revived character can
+improve his or her Constitution normally (at 4th, 8th, 12th, 16th,
+and 20th level) and earn experience by further adventuring to
+regain the lost level.
+Raise deadhas a number of limitations. The caster can only
+raise characters who have been dead up to one day per caster
+level. Casting time is a single minute. It does heal 1 hit point
+per Hit Die, but the body of the raised character must be
+whole. Raise deaddoesn’t regenerate missing body parts.
+Paying someone to cast raise dead costs 450 gp (assuming a 9th-
+level caster) plus 5,000 gp for expensive material components. 
+Reincarnatebrings back creatures dead one week or less, but
+in entirely new bodies. The subject of the spell faces the same
+level loss or Constitution loss as with other spells. Paying some-
+one to cast reincarnatecosts 1,280 gp (assuming a 7th-level
+caster), making it the least expensive option. The drawback, of
+course, is that the player has no control over the new form
+and may not be welcome in civilized society.
+Resurrectionmust be cast within 10 years per
+caster level of the time of death. It
+works as long as some small
+portion  of  the  character’s
+body still exists.
+41
+CHAPTER 2:
+USING 
+THE RULES
+BEHIND THE CURTAIN: 
+EXPERIENCE POINTS
+The experience point award for encounters is based on the concept
+that 13.33 encounters of an EL equal to the player characters’ level
+allow them to gain a level.
+Thirteen or fourteen encounters can seem to go by very quickly.
+This is particularly true at low levels, where most of the encounters
+that characters take part in are appropriate for their levels. At higher
+levels, the PCs face a varied range of Encounter Levels (more lower
+than  higher,  if  they’re  to  survive)  and  thus  gain  levels  somewhat
+more  slowly.  Higher-level  characters  also  tend  to  spend  more  and
+more time interacting with each other and with NPCs, which results
+in fewer XP over time.
+With this information in mind, you can roughly gauge how quickly
+the PCs in your game will advance. In fact, you can control it. You are
+in charge of what encounters happen and the circumstances in which
+they occur. You can predict at what level the characters will reach the
+dark temple and prepare accordingly. If it turns out that you predicted
+incorrectly, you can engineer encounters to allow them to reach the
+appropriate  level  or  increase  the  difficulty  of  the  temple  encounters
+as needed.
+Published adventures always provide a guideline for which levels
+of characters are appropriate to play. Keep in mind that this infor-
+mation  is  based  on  character  power  as  well  as  expected  treasure.
+Table 5–1: Character Wealth by Level gives a guideline for about how
+much  treasure  a  character  of  a  certain  level  should  possess.  This
+guideline is based on the (slightly more than) thirteen-encounters-
+per-level formula and assumes average treasures were given out. If
+you use a published adventure but tend to be generous with experi-
+ence points, you might find that the characters in your group don’t
+have as much treasure as the scenario assumes. Likewise, if you’re
+stingy with experience points, the characters will probably gain trea-
+sure faster than levels. Of course, if you’re stingy or generous with
+both treasure and experience points, it might just all even out.
+pqqqqrs
+pqqqqrs

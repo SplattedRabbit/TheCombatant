@@ -1,0 +1,129 @@
+increase its effectiveness, or quicken a spell to allow it to be used
+as a free action, placing it within an item at the higher metamagic
+level. See Chapter 5: Feats in the Player ’s Handbookfor more on
+metamagic feats.
+Magic supplies for items are always half of the base price in gp
+and 1/25 of the base price in XP. For many items, the market price
+equals the base price. For example, a cloak of elvenkindhas a market
+price (and base price) of 2,500 gp. Making one costs 1,250 gp in
+raw materials plus 100 XP.
+Armor, shields, weapons, and items with a value independent of
+their magically enhanced properties add their item cost to the
+market price. The item cost does not influence the base price
+(which determines the cost of magic supplies and the experience
+point cost), but it does increase the final market price.
+In addition, some items cast or replicate spells with costly
+material components or with XP components. For these items,
+the market price equals the base price plus an extra price for the
+spell component costs. Each XP in the component costs adds 5 gp
+to the market price. The cost to create these items is the magic
+supplies cost and the base XP cost (both determined by the base
+price) plus the costs for the components. For example, a ring of
+three wishes has a market price of 97,950 gp, which includes 75,000
+gp for the extra 15,000 XP that the creator must expend to forge
+the ring. The ring’s base price is only 22,950 gp (the market price
+minus the extra cost for the XP expenditure). Descriptions of
+these items include an entry that gives the total cost of creating
+the item. (You don’t have to calculate creation costs for these
+items. It’s done for you.)
+The creator also needs a fairly quiet, comfortable, and well-lit
+place in which to work. Any place suitable for preparing spells
+(see Preparing Wizard Spells, page 177 of the Player ’s Handbook)
+is suitable for making items. Creating an item requires one day
+per 1,000 gp in the item’s base price, with a minimum of at least
+one day. Potions are an exception to this rule; they always take
+just one day to brew. The character must spend the gold and XP
+at the beginning of the construction process.
+The caster works for 8 hours each day. He cannot rush the
+process by working longer each day. But the days need not be con-
+secutive, and the caster can use the rest of his time as he sees fit. A
+character who takes a break from item creation to adventure
+should keep track of how many days of work remain on that item.
+A character can work on only one item at a time. If a character
+starts work on a new item, all materials used and XP spent on the
+under-construction item are wasted.
+The secrets of creating artifacts are long lost.
+MASTERWORK ITEMS
+As detailed on pages 122 and 126 of the Player ’s Handbook, mas-
+terwork items are extraordinarily well-made items. They are
+more expensive, but they benefit the user with improved qual-
+ity. They are not magical in any way. However, only masterwork
+items may be enhanced to become magic armor and weapons.
+(Items that are not weapons or armor may or may not be mas-
+terwork items.)
+SPECIAL MATERIALS
+In addition to magic items created with spells, some substances
+have innate special properties. While only a few such materials are
+presented here, other special materials may exist in a given cam-
+paign. If you make a suit of armor or weapon out of more than one
+special material, you get the benefit of only the most prevalent
+material. For example, full plate made of both adamantine and
+mithral will either provide damage reduction or lower weight, not
+both. However, you can build a double weapon with each head
+made of a different special material. A dire flail, for example, could
+have an alchemical silver head for fighting lycanthropes and a
+cold iron head for fighting fey.
+Adamantine:Found only in meteorites and the rarest of veins in
+magical areas, this ultrahard metal adds to the quality of a weapon or
+suit of armor. Weapons fashioned from adamantine have a natural
+ability to bypass hardness when sundering weapons or attacking
+objects, ignoring hardness less than 20. Armor made from adaman-
+tine grants its wearer damage reduction of 1/– if it’s light armor, 2/–
+if it’s medium armor, and 3/– if it’s heavy armor. Adamantine is so
+costly that weapons and armor made from it are always of master-
+work quality; the masterwork cost is included in the prices given
+below. Thus, adamantine weapons and ammunition have a +1
+enhancement bonus on attack rolls, and the armor check penalty of
+adamantine armor is lessened by 1 compared to ordinary armor of its
+type. Items without metal parts cannot be made from adamantine.
+An arrow could be made of adamantine, but a quarterstaff could not.
+Only weapons, armor, and shields normally made of metal can
+be fashioned from adamantine. Weapons, armor and shields nor-
+mally made of steel that are made of adamantine have one-third
+more hit points than normal; for instance, an adamantine great-
+sword has 13 hit points instead of the normal 10 for steel. Adaman-
+tine has 40 hit points per inch of thickness and hardness 20.
+Type of Adamantine ItemItem Cost Modifier
+Ammunition+60 gp
+Light armor+5,000 gp
+Medium armor+10,000 gp
+Heavy armor+15,000 gp
+Weapon+3,000 gp
+Darkwood: This rare magic wood is as hard as normal wood
+but very light. Any wooden or mostly wooden item (such as a bow,
+an arrow, or a spear) made from darkwood is considered a master-
+work item and weighs only half as much as a normal wooden item
+of that type. Items not normally made of wood or only partially of
+wood (such as a battleaxe or a mace) either cannot be made from
+darkwood or do not gain any special benefit from being made of
+darkwood. The armor check penalty of a darkwood shield is less-
+ened by 2 compared to an ordinary shield of its type. To determine
+the price of a darkwood item, use the original weight but add 10 gp
+per pound to the price of a masterwork version of that item.
+Darkwood has 10 hit points per inch of thickness and hard-
+ness 5.
+Dragonhide: Armorsmiths can work with the hides of dragons
+to produce armor or shields of masterwork quality. One dragon
+283
+CHAPTER 7:
+MAGIC ITEMS
+BEHIND THE CURTAIN: 
+SPECIAL WEAPONS MATERIALS
+Each  of  the  special  materials  described  in  this  section  has  a  definite
+game  effect.  Some  creatures,  such  as  fey,  have  damage  reduction
+based on their creature type or core concept. Some are resistant to all
+but  a  special  type  of  damage,  such  as  that  dealt  by  evil-aligned
+weapons or bludgeoning weapons. Others are vulnerable to weapons
+of  a  particular  material.  Fey  tend  to  be  susceptible  to  cold  iron.
+Combating golems is best done with adamantine weapons.
+Characters may choose to carry several different types of weapons,
+depending  upon  the  campaign  and  types  of  creatures  they  most
+commonly  encounter.  Some  may  use  silversheen, described  on  page
+266, designed to temporarily add the property of alchemical silver to a
+weapon.  Its  cost  was  carefully  considered  so  as  not  to  let  silversheen
+overshadow weapons actually containing alchemical silver. You’ll also
+notice  that  cold  ironsheenis  not  mentioned.  This  is  intentional.  Cold
+iron’s  core  attribute  is  its  resistance  to  magic.  Making  a  magic  item
+that mimics this attribute undermines its concept.
+pqqqqrs
+pqqqqrs

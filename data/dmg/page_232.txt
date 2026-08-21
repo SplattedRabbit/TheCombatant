@@ -1,0 +1,130 @@
+Air. When the ring is rubbed (a standard action), the call goes out,
+and the djinni appears on the next round. The djinni faithfully
+obeys and serves the wearer of the ring, but never for more than 1
+hour per day. If the djinni of the ring is ever killed, the ring
+becomes nonmagical and worthless. See the Monster Manualfor
+details of a djinni’s abilities.
+Strong conjuration; CL 17th; Forge Ring, gate; Price 125,000 gp.
+Elemental Command:All four kinds of elemental command
+rings are very powerful. Each appears to be nothing more than
+a lesser magic ring until fully activated (see below), but each
+has certain other powers as well as the following common
+properties.
+Elementals of the plane to which the ring is attuned can’t
+attack the wearer, or even approach within 5 feet of him. If the
+wearer desires, he may forego this protection and instead attempt
+to charmthe elemental (as charm monster, Will DC 17 negates). If
+the charmattempt fails, however, absolute protection is lost and
+no further attempt at charmingcan be made.
+Creatures from the plane to which the ring is attuned who
+attack the wearer take a –1 penalty on their attack rolls. The ring
+wearer makes applicable saving throws from the extraplanar crea-
+ture’s attacks with a +2 resistance bonus. He gains a +4 morale bo-
+nus on all attack rolls against such creatures. Any weapon he uses
+bypasses the damage reduction of such creatures, regardless of any
+qualities the weapon may or may not have.
+The wearer of the ring is able to converse with creatures from
+the plane to which his ring is attuned. These creatures recognize
+that he wears the ring. They show a healthy respect for the wearer
+if alignments are similar. If alignments are opposed, creatures fear
+the wearer if he is strong. If he is weak, they hate and desire to slay
+him. Fear, hatred, and respect are determined by the DM.
+The possessor of a ring of elemental commandtakes a saving
+throw penalty as follows:
+ElementSaving Throw Penalty
+Air–2 against earth-based effects
+Earth–2 against air- or electricity-based effects
+Fire–2 against water- or cold-based effects
+Water–2 against fire-based effects
+In addition to the powers described above, each specific ring gives
+its wearer the following abilities according to its kind.
+Ring of Elemental Command (Air)
+•Feather fall(unlimited use, wearer only)
+•Resist energy (electricity)(unlimited use, wearer only)
+•Gust of wind(twice per day)
+•Wind wall(unlimited use)
+•Air walk (once per day, wearer only)
+•Chain lightning(once per week)
+The ring appears to be a ring of feather falling until a certain con-
+dition is met, such as having the ring immersed in holy water,
+single-handedly slaying an air elemental, or whatever the DM
+determines necessary to activate its full potential. It must be reac-
+tivated each time a new wearer acquires it.
+Ring of Elemental Command (Earth)
+•Meld into stone(unlimited use, wearer only)
+•Soften earth or stone(unlimited use)
+•Stone shape(twice per day)
+•Stoneskin(once per week, wearer only)
+•Passwall(twice per week)
+•Wall of stone(once per day)
+The ring appears to be a ring of meld into stoneuntil the DM-
+established condition is met.
+Ring of Elemental Command (Fire)
+•Resist energy (fire)(as a major ring of energy resistance [fire])
+•Burning hands(unlimited use)
+•Flaming sphere(twice per day)
+•Pyrotechnics(twice per day)
+•Wall of fire(once per day)
+•Flame strike(twice per week)
+The ring appears to be a major ring of energy resistance (fire) until
+the DM-established condition is met.
+Ring of Elemental Command (Water)
+•Water walk(unlimited use)
+•Create water(unlimited use)
+•Water breathing(unlimited use)
+•Wall of ice(once per day)
+•Ice storm(twice per week)
+•Controlwater (twice per week)
+The ring appears to be a ring of water walkinguntil the DM-
+established condition is met.
+231
+CHAPTER 7:
+MAGIC ITEMS
+Table 7–18: Rings
+Minor   Medium  MajorRingMarket Price
+01–18——Protection +12,000 gp
+19–28——Feather falling2,200 gp
+29–36——Sustenance2,500 gp
+37–44——Climbing2,500 gp
+45–52——Jumping2,500 gp
+53–60——Swimming2,500 gp
+61–7001–05—Counterspells4,000 gp
+71–7506–08—Mind shielding8,000 gp
+76–8009–18—Protection +28,000 gp
+81–8519–23—Force shield8,500 gp
+86–9024–28—Ram8,600 gp
+—29–34—Climbing, improved10,000 gp
+—35–40—Jumping, improved10,000 gp
+—41–46—Swimming, improved10,000 gp
+91–9347–51—Animal friendship10,800 gp
+94–9650–56    01–02Energy resistance, minor12,000 gp
+97–9857–61—Chameleon power12,700 gp
+99–100    62–66—Water walking15,000 gp
+—67–71    03–07Protection +318,000 gp
+—72–76    08–10Spell storing, minor18,000 gp
+—77–81    11–15Invisibility20,000 gp
+—82–85    16–19Wizardry (I)20,000 gp
+—86–90    20–25Evasion25,000 gp
+—91–93    26–28X-ray vision25,000 gp
+—94–97    29–32Blinking27,000 gp
+—98–100   33–39Energy resistance, major28,000 gp
+——40–49Protection +432,000 gp
+——50–55Wizardry (II)40,000 gp
+——56–60Freedom of movement40,000 gp
+——61–63Energy resistance, greater44,000 gp
+——64–65Friend shield(pair)50,000 gp
+——66–70Protection +550,000 gp
+——71–74Shooting stars50,000 gp
+——75–79Spell storing50,000 gp
+——80–83Wizardry (III)70,000 gp
+——84–86Telekinesis75,000 gp
+——87–88Regeneration90,000 gp
+——89Three wishes97,950 gp
+——90–92Spell turning98,280 gp
+——93–94Wizardry (IV)100,000 gp
+——95Djinni calling125,000 gp
+——96Elemental command (air)200,000 gp
+——97Elemental command (earth)200,000 gp
+——98Elemental command (fire)200,000 gp
+——99Elemental command (water)200,000 gp
+——100Spell storing, major200,000 gp

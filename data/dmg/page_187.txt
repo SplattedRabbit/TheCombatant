@@ -1,0 +1,136 @@
+186
+Precise Strike (Ex):At 5th level, a duelist gains the ability to
+strike precisely with a light or one-handed piercing weapon,
+gaining an extra 1d6 damage added to her normal damage roll.
+When making a precise strike, a duelist cannot attack with a
+weapon in her other hand or use a shield. A duelist’s precise
+strike only works against living creatures with discernible
+anatomies. Any creature that is immune to critical hits (includ-
+ing undead, constructs, oozes, plants, and incorporeal creatures)
+is not vulnerable to a precise strike, and any item or ability that
+protects a creature from critical hits (such as armor with the for-
+tification special ability)also protects a creature from a precise
+strike. At 10th level, the extra
+damage on a precise strike
+increases to +2d6.
+Acrobatic Charge (Ex):
+At 6th level, a duelist gains
+the ability to charge in sit-
+uations where others can-
+not. She may charge over
+difficult terrain that nor-
+mally  slows  movement.
+This  enables  her  to  run
+down  steep  stairs,  leap
+down from a balcony, or to
+tumble over tables to get to
+her charge target. Depend-
+ing on the circumstance, she
+may still need to make appro-
+priate checks (Jump or Tumble
+checks in particular) to success-
+fully move over the terrain.
+Elaborate Parry (Ex):At 7th
+level and higher, if a duelist
+chooses to fight defensively or
+use  total  defense  in  melee
+combat, she gains an additional
++1 dodge bonus to AC for each
+level of duelist she has.
+Deflect Arrows:At 9th level, a
+duelist gains the benefit of the Deflect
+Arrows feat (see page 93 of the Player ’s
+Handbook) when using a light or one-
+handed piercing weapon.
+DWARVEN DEFENDER
+The defender is a sponsored champion
+of a dwarven cause, a dwarf aristocrat, a
+dwarven deity, or the dwarven way of
+life. As the name might imply, this
+character is a skilled combatant
+trained in the arts of defense.
+A line of dwarven defenders is
+a far better defense than a 10-
+foot-thick wall of stone, and much more
+dangerous.
+Most dwarven defenders are fighters, paladins, rangers, or
+clerics, although ex-barbarians, sorcerers, wizards, and druids
+can certainly all benefit from the defensive capabilities of this
+prestige class. Rogues, bards, and monks usually depend too
+heavily on mobility to use the abilities of the dwarven defender
+class to their fullest.
+NPC dwarven defenders are usually soldiers in a dwarven citadel,
+segregated into their own units separate from regular warriors or
+fighters. Occasionally a lone, wandering dwarven defender can be
+encountered on some mission, although he usually guards his words
+so closely that it’s difficult to learn what his quest actually entails.
+Hit Die:d12.
+Requirements
+To qualify to become a defender, a character must fulfill all the fol-
+lowing criteria.
+Race: Dwarf. 
+Alignment: Any lawful.
+Base Attack Bonus: +7.
+Feats: Dodge, Endurance, Toughness.
+Class Skills
+The defender’s class skills (and the key ability for each skill) are
+Craft (Int), Listen (Wis), Sense Motive (Wis), and Spot (Wis). See
+Chapter 4 of the Player ’s Handbookfor skill descriptions.
+Skill Points at Each Level:2 + Int modifier.
+Class Features
+All of the following are class features of the dwarven defender
+prestige class.
+AC Bonus (Ex):The dwarven defender receives a
+dodge bonus to Armor Class that starts
+at +1 and improves as the defender
+gains levels, until it reaches
++4 at 10th level.
+Weapon   and   Armor
+Proficiency: A dwarven
+defender is proficient with
+all   simple   and   martial
+weapons,    all    types    of
+armor, and shields. 
+Defensive       Stance:
+When  he  needs  to,  a  de-
+fender can become a stal-
+wart bastion of defense. In
+this   defensive   stance,   a
+defender gains phenomenal
+strength and durability, but
+he cannot  move  from  the
+spot  he  is  defending.  He
+gains  +2  to  Strength,  +4  to
+Constitution, a +2 resistance
+bonus on all saves, and a +4
+dodge bonus to AC.
+The increase in Constitution
+increases  the  defender’s  hit
+points by 2 points per level, but
+these hit points go away at the end
+of the defensive stance when the
+Constitution score drops back 4
+points. These extra hit points are
+not lost first the way temporary hit
+points are. While in a defensive
+stance,  a  defender  cannot  use
+skills or abilities that would re-
+quire him to shift his position, such
+as Move Silently or Jump. A defensive
+stance lasts for a number of rounds equal
+to 3 + the character’s (newly improved) Constitution modifier. A
+defender may end his defensive stance voluntarily prior to this
+limit. At the end of the defensive stance, the defender is winded
+and takes a –2 penalty to Strength for the duration of that
+encounter. A defender can only use his defensive stance a certain
+number of times per day as determined by his level (see Table
+6–9). Using the defensive stance takes no time itself, but a
+defender can only do so during his action. (A defender can’t, for
+example, use the stance when struck down by an arrow in order to
+get the extra hit points from the increased Constitution.)
+Uncanny  Dodge  (Ex):  Starting  at  2nd  level,  a  dwarven
+defender gains the extraordinary ability to react to danger before
+CHAPTER 6:
+CHARACTERS
+A dwarven
+defender

@@ -1,0 +1,135 @@
+at the center, then if the majority of a grid square lies within that
+circle, the square is a part of the spell’s area.
+Cones:Determining the area of a cone spell requires that the
+caster declare a direction and an intersection where the cone
+starts. From there, the cone expands in a quarter circle.
+Miscellaneous: Using the rules given above, apply areas to the
+grid as well as you can. Remember to maintain a consistent num-
+ber of affected squares in areas that differ on the diagonal.
+BIG AND LITTLE CREATURES IN COMBAT
+Creatures smaller than Small or larger than Medium have special
+rules relating to position. These rules concern the creatures’
+“faces,” or sides, and their reach.
+Table 2–4: Creature Sizes summarizes the characteristics of
+each of the nine size categories. The Max. Height and Max. Weight
+columns are guidelines, not firm limits; for instance, almost all
+Medium creatures weigh between 60 and 500 pounds, but excep-
+tions can exist. The figures in the Space and Natural Reach
+columns are explained below.
+Space:Space is the width of the square a creature needs to
+fight without penalties (see Squeezing Through, below). This
+width determines how many creatures can fight side by side in a
+10-foot-wide corridor, and how many opponents can attack a
+creature at the same time. A creature’s space does not have a front,
+back, left, or right side, because combatants are constantly
+moving and turning in battle. Unless a creature is immobile, it
+effectively doesn’t have a front or a left side—at least not one you
+can locate on the tabletop.
+Natural Reach: Natural reach is how far a creature can reach
+when it fights. The creature threatens the area within that distance
+from itself. Remember that when measuring diagonally, every
+second square counts as 2 squares. The exception is a creature with
+10-foot reach. It threatens targets up to 2 squares away, including a
+2-square distance diagonally away from its square. (This is an
+exception to the rule that 2 squares of diagonal distance is meas-
+ured as 15 feet.)
+As a general rule, consider creatures to be as tall as their space,
+meaning that a creature can reach up a distance equal to its space
+plus its reach.
+Big Creatures
+Large or larger creatures with reach weapons can strike out to
+double their natural reach but can’t use their weapons at their nat-
+ural reach or less.
+A creature may move through an occupied square if it is three
+size categories or more larger than the occupant.
+Very Small Creatures
+Tiny, Diminutive, and Fine creatures have no natural reach. They
+must enter an opponent’s square (and thus be subject to an attack
+of opportunity) in order to attack that opponent in melee
+unless they are armed with weapons that give them at least 5 feet
+of reach.
+Because Tiny, Diminutive, and Fine creatures have no natural
+reach, they do not normally get attacks of opportunity. Specific
+creatures may be exceptions, and some may carry reach weapons
+that do threaten adjacent squares. 
+Mixing It Up
+Two creatures less than two size categories apart cannot occupy
+the same spaces in combat except under special circumstances (for
+example, when grappling, riding a mount, or if one is unconscious
+or dead).
+Creatures two size categories apart can occupy the same space
+without special circumstances. Half the normal number of crea-
+tures can occupy the space as usual (fractions are not allowed).
+Creatures may occupy the same square if they are three or more
+size categories different. For instance, a human could occupy one
+of the squares also occupied by a purple worm.
+Example:A human (Medium) fights a cloud giant (Huge). The
+human occupies a single space. The cloud giant occupies roughly
+nine spaces. If the human tried to occupy one of the giant’s spaces,
+up to half as many humans as normal could fit, since the creatures
+are two size categories apart. Since that only amounts to one-half
+of a human, the human cannot occupy one of the giant’s spaces
+without grappling.
+Example:A halfling (Small) fights the same cloud giant. The
+halfling, like the human, occupies a single space. If the halfling
+tries to occupy one of the giant’s cubes, the normal number of
+halflings (one) could fit, since the creatures are three size cate-
+gories apart.
+If a creature is in at least one of the spaces occupied by a larger
+creature when that creature moves out of that space without
+taking a 5-foot adjustment or a withdraw action, then the smaller
+creature gets attacks of opportunity against the departing creature.
+Since a creature can attack into its own space (unless armed
+with a reach weapon), a smaller creature in one of the spaces occu-
+pied by another creature cannot take a withdrawal action.
+Any time more than one allied creature occupies an opponent’s
+space (either in the same square on the grid or in separate squares),
+the allied creatures provide each other with the benefit of flank-
+ing. If a creature occupies part of an opponent’s space, it provides
+flanking to all allied creatures outside the opponent’s space.
+Example:A colony of stirges (Tiny) attacks a human (Medium).
+Up to four Tiny creatures can occupy the same space. They are two
+size categories apart from a human, so up to two Tiny stirges can
+occupy the same space as the human, and they provide each other
+with flanking against the human.
+Example:A squad of halflings (Small) attacks a bulette (Huge).
+The bulette takes up a space three squares across. Since the half-
+lings are three or more size categories apart from the bulette, they
+can enter the space the bulette occupies. Each halfling can only
+occupy one space, but the bulette occupies nine squares, so up to
+nine halflings can occupy the same space as the bulette. The half-
+lings provide each other with flanking.
+Squeezing Through
+A creature can squeeze through a space as narrow in width as one-
+half its space. While doing so, it moves at half its normal speed. It
+takes a –4 penalty on attack rolls and a –4 penalty to AC. While a
+creature is squeezing through a narrow space, it’s not possible for
+other smaller creatures to also occupy that space.
+A creature can move through a space with a ceiling as low as
+half its height with the same penalties (in spaces both narrow and
+29
+CHAPTER 2:
+USING 
+THE RULES
+Table 2–4: Creature Sizes
+Max.Max.Natural Reach
+SizeHeight
+1
+Weight
+2
+Space(Tall)(Long)
+Fine6 in.1/8 lb.1/2 ft.0 ft.0 ft.
+or lessor less
+Diminutive1 ft. 1 lb.1 ft.0 ft.0 ft.
+Tiny2 ft.8 lb.2-1/2 ft.0 ft.0 ft.
+Small4 ft.60 lb.5 ft.5 ft.5 ft.
+Medium8 ft.500 lb.5 ft.5 ft. 5 ft.
+Large16 ft.4,000 lb.10 ft.10 ft.5 ft.
+Huge32 ft.32,000 lb.15 ft.15 ft.10 ft.
+Gargantuan   64 ft.250,000 lb.20 ft.20 ft.15 ft.
+Colossal64 ft.250,000 lb.30 ft.30 ft.20 ft.
+or more   or moreor moreor more   or more
+1Biped’s height, quadruped’s body length (nose to base of tail)
+2Assumes that the creature is roughly as dense as a regular animal. A
+creature made of stone will weigh considerably more. A gaseous
+creature will weigh much less.

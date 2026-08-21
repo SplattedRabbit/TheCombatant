@@ -1,0 +1,131 @@
+of others can succeed is 6d6×10 feet. In a swamp, this distance is
+2d8×10 feet.
+Undergrowth and deep bogs provide plentiful concealment, so
+it’s easy to hide in a marsh.
+A marsh imposes no penalties on Listen checks, and using the
+Move Silently skill is more difficult in both undergrowth and bogs.
+HILLS TERRAIN
+A hill can exist in most other types of terrain, but hills can also
+dominate the landscape. Hills terrain is divided into two cate-
+gories: gentle hills and rugged hills. Hills terrain often serves as a
+transition zone between rugged terrain such as mountains and flat
+terrain such as plains.
+Hills terrain requires extra forethought on your part because play-
+ers will naturally want to know which direction is uphill. The table
+below indicates typical percentages of gradual and steep slopes in
+hills terrain, but you’ll want to draw your map carefully so uphill and
+downhill are clear and logical. The percentages below include no
+provision for flat space, but you may want the tops of your hills and
+the bottoms of your valleys to have at least a few squares of flat space.
+Hills Terrain Features
+——Hills Category——
+Gentle HillRugged Hill
+Gradual slope75%40%
+Steep slope20%50%
+Cliff5%10%
+Light undergrowth15%15%
+To draw hills terrain quickly, decide where you want your hill-
+tops and valleys to be, then surround them with rings of gradual
+slope and steep slope squares. If you use cliffs, put them next to or
+within steep slope squares. Finally, draw arrows pointing downhill.
+Gradual Slope: This incline isn’t steep enough to affect move-
+ment, but characters gain a +1 bonus on melee attacks against foes
+downhill from them.
+Steep Slope: Characters moving uphill (to an adjacent square
+of higher elevation) must spend 2 squares of movement to enter
+each square of steep slope. Characters running or charging down-
+hill (moving to an adjacent square of lower elevation) must suc-
+ceed on a DC 10 Balance check upon entering the first steep slope
+square. Mounted characters make a DC 10 Ride check instead.
+Characters who fail this check stumble and must end their move-
+ment 1d2×5 feet later. Characters who fail by 5 or more fall prone
+in the square where they end their movement.
+A steep slope increases the DC of Tumble checks by 2.
+Cliff: A cliff typically requires a DC 15 Climb check to scale and
+is 1d4×10 feet tall, although the needs of your map may mandate a
+taller cliff. A cliff isn’t perfectly vertical, taking up 5-foot squares if
+it’s less than 30 feet tall and 10-foot squares if it’s 30 feet or taller.
+Light Undergrowth: Sagebrush and other scrubby bushes
+grow on hills, athough they rarely cover the landscape as they do
+in forests and marshes. Light undergrowth provides concealment
+and increases the DC of Tumble and Move Silently checks by 2.
+Other Hills Terrain Elements: Trees aren’t out of place in hills
+terrain, and valleys often have active streams (5 to 10 feet wide and
+no more than 5 feet deep) or dry streambeds (treat as a trench 5 to
+10 feet across) in them. If you add a stream or streambed, remem-
+ber that water always flows downhill. 
+Stealth and Detection in Hills: In gentle hills, the maximum
+distance at which a Spot check for detecting the nearby presence
+of others can succeed is 2d10×10 feet. In rugged hills, this dis-
+tance is 2d6×10 feet.
+Hiding in hills terrain can be difficult if there isn’t undergrowth
+around. A hilltop or ridge provides enough cover to hide from
+anyone below the hilltop or ridge.
+Hills don’t affect Listen or Move Silently checks.
+Sample Temperate Hills Encounter Table (EL 5)
+d%EncounterAverage EL
+01–021 young copper dragon7
+03–051 bulette7
+06–091 hill giant7
+10–171d3 displacer beasts6
+18–271d3 griffons6
+28–341 wyvern6
+35–445th-level human bard NPC5
+45–581 ogre and 1d4+2 hobgoblin warriors5
+59–681d3 ogre zombies5
+69–771 rast5
+78–851d3 wights5
+86–951d3 hippogriffs4
+96–1001 doppelganger3
+MOUNTAIN TERRAIN
+The three mountain terrain categories are alpine meadows,
+rugged mountains, and forbidding mountains. As characters
+ascend into a mountainous area, they’re likely to face each terrain
+category in turn, beginning with alpine meadows, extending
+through rugged mountains, and reaching forbidding mountains
+near the summit.
+To draw a map for mountain terrain, use the percentages in
+the table below to arrange the terrain elements. As with hills
+terrain, you’ll want to pay close attention to uphill and downhill,
+identifying the direction of descent on slopes. Gentle slopes,
+steep slopes, cliffs, and chasms are mutually exclusive. Either of
+the slope types may have undergrowth, scree, or dense rubble
+on it.
+Mountains have an important terrain element, the rock wall,
+that is marked on the border between squares rather than taking
+up squares itself. After you draw the other terrain elements on the
+map, add rock walls, placing them within or adjacent to steep
+slopes and cliffs. 
+Mountain Terrain Features
+———— Mountain Category ————
+Alpine MeadowRuggedForbidding
+Gradual slope50%25%15%
+Steep slope40%55%55%
+Cliff10%15%20%
+Chasm—5%10%
+Light undergrowth20%10%—
+Scree—20%30%
+Dense rubble—20%30%
+Gradual and Steep Slopes: These function as described in
+Hills Terrain, above.
+Cliff: These terrain elements also function like their hills ter-
+rain counterparts, but they’re typically 2d6×10 feet tall. Cliffs
+taller than 80 feet take up 20 feet of horizontal space.
+Chasm: Usually formed by natural geological processes,
+chasms function like pits in a dungeon setting. Chasms aren’t
+hidden, so characters won’t fall into them by accident (although
+bull rushes are another story). A typical chasm is 2d4×10 feet deep,
+at least 20 feet long, and anywhere from 5 feet to 20 feet wide. It
+takes a DC 15 Climb check to climb out of a chasm.
+In forbidding mountain terrain, chasms are typically 2d8×10
+feet deep.
+Light Undergrowth: This functions as described in Forest Ter-
+rain, above.
+Scree: A field of shifting gravel, scree doesn’t affect speed, but it
+can be treacherous on a slope. The DC of Balance and Tumble
+checks increases by 2 if there’s scree on a gradual slope and by 5 if
+there’s scree on a steep slope. The DC of Move silently checks in-
+creases by 2 if the scree is on a slope of any kind.
+89
+CHAPTER 3:
+ADVENTURES

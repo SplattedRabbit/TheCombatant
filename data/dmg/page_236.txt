@@ -1,0 +1,139 @@
+Enemy Detection:This device pulses in the wielder’s hand
+and points in the direction of any creature or creatures hostile to
+the bearer of the device (nearest ones first). These creatures can be
+invisible, ethereal, hidden, disguised, or in plain sight. Detection
+range is 60 feet. If the bearer of the rod concentrates for a full
+round, the rod pinpoints the location of the nearest enemy and
+indicates how many enemies are within range. The rod can be
+used three times each day, each use lasting up to 10 minutes. Acti-
+vating  the  rod  is  a  standard
+action.
+Moderate  divination;  CL
+10th; Craft Rod, true seeing; Price
+23,500 gp.
+Flailing:Upon the command of
+its possessor, the rod activates, changing
+from a normal-seeming rod to a +3 dire
+flail. The dire flail is a double weapon, which
+means that each of the weapon’s heads can be
+used to attack (see the weapon description on
+page 117 of the Player ’s Handbook). The wielder can
+gain an extra attack (with the second head) at the cost
+of making all attacks at a –2 penalty (as if she had the
+Two-Weapon Fighting feat).
+Once per day the wielder can use a free action to cause
+the rod to grant her a +4 deflection bonus to Armor Class
+and a +4 resistance bonus on saving throws for 10 minutes.
+The rod need not be in weapon form to grant this bene-
+fit. Transforming it into a weapon or back into a rod is a
+move action.
+Moderate enchantment; CL 9th; Craft Rod, Craft
+Magic Arms and Armor, bless; Price 50,000 gp.
+Flame Extinguishing: This rod can extinguish Medium
+or smaller nonmagical fires with simply a touch (a stan-
+dard action). For the rod to be effective against other
+sorts of fires, the wielder must expend 1 or more of
+the rod’s charges.
+Extinguishing a Large or larger nonmagical
+fire, or a magic fire of Medium or smaller
+(such as that of a flaming weapon or a burn-
+ing handsspell), expends 1 charge. Con-
+tinual magic flames, such as those of a
+weapon or a fire creature, are sup-
+pressed for 6 rounds and flare up
+again after that time. To extinguish an instantaneous fire spell, the
+rod must be within the area of the effect and the wielder must
+have used a ready action, effectively countering the entire spell.
+When applied to Large or larger magic fires, such as those
+caused by fireball, flame strike,or wall of fire, extinguishing the
+flames expends 2 charges from the rod.
+If the device is used upon a fire creature (a melee touch attack),
+it deals 6d6 points of damage to the creature. This use requires 3
+charges.
+A rod of flame extinguishinghas 10 charges when found. Spent
+charges are renewed every day, so that a wielder can expend up to
+10 charges in any 24-hour period.
+Strong transmutation; CL 12th; Craft Rod, pyrotechnics; Price
+15,000 gp.
+Immovable Rod:This rod is a flat iron bar with a small button
+on one end. When the button is pushed (a move action), the rod
+does not move from where it is, even if staying in place defies grav-
+ity. Thus, the owner can lift or place the rod wherever he wishes,
+push the button, and let go. Adventurers have found the immov-
+able roduseful for holding ropes, barring doors, and all sorts of
+other utilitarian tasks. Many adventurers have found it useful to
+have more than one. Several immovable rodscan even make a
+ladder when used together (although only two are needed). An
+immovable rodcan support up to 8,000 pounds before falling to the
+ground. If a creature pushes against an immovable rod,it must make
+a DC_30 Strength check to move the rod up to 10 feet in a single
+round.
+Moderate transmutation; CL 10th; Craft Rod, levitate; Price
+5,000 gp.
+Lordly Might:This rod has functions that are spell-like,
+and it can also be used as a magic weapon of various
+sorts. It also has several more mundane uses. The
+rod of lordly mightis metal, thicker than other
+rods, with a flanged ball at one end and six
+studlike buttons along its length. (Pushing
+any of the rod’s buttons is equivalent to
+drawing a weapon.) It weighs 10 pounds.
+The following spell-like functions of the rod
+can each be used once per day.
+•Hold personupon touch, if the wielder
+so commands (Will DC 14 negates). The
+wielder  must  choose  to  use  this  power  and
+then  succeed  on  a  melee  touch  attack  to  activate
+the power. If the attack fails, the effect is lost.
+•Fearupon all enemies viewing it, if the wielder so
+desires   (10-foot   maximum   range,   Will   DC   16
+partial). Invoking this power is a standard action.
+•Deal 2d4 hit points of damage to an opponent on
+a  successful  touch  attack  (Will  DC  17
+half )   and   cure   the   wielder   of   a   like
+amount of damage. The wielder
+must choose to use this power
+before  attacking,  as  with  hold
+person.
+The following weapon func-
+tions of the rod have no limit on the
+number of times they can be employed.
+•In its normal form, the rod can be used as
+a +2 light mace.
+•When  button  1  is  pushed,  the  rod
+becomes  a  +1  flaming  longsword.A  blade
+springs  from  the  ball,  with  the  ball  itself
+becoming  the  sword’s  hilt.  The  weapon  lengthens  to  an
+overall length of 4 feet.
+•When button 2 is pushed, the rod becomes a +4 battleaxe.A
+wide blade springs forth at the ball, and the whole lengthens
+to 4 feet.
+•When button 3 is pushed, the rod becomes a +3 shortspear
+or +3 longspear.The spear blade springs forth, and the handle
+can be lengthened up to 12 feet (wielder’s choice), for an
+overall length of from 6 feet to 15 feet. At
+its  15-foot  length,  the  rod  is  suitable  for
+use as a lance.
+The following other functions of the rod also
+have no limit on the number of times they can be employed.
+•Climbing pole/ladder. When button 4 is pushed, a spike that
+can  anchor  in  granite  is  extruded  from  the  ball,  while  the
+other  end  sprouts  three  sharp  hooks.  The  rod  lengthens  to
+anywhere  between  5  and  50  feet  in  a  single  round,  stopping
+when  button  4  is  pushed  again.  Horizontal  bars  three  inches
+long fold out from the sides, 1 foot apart, in staggered progres-
+sion.  The  rod  is  firmly  held  by  the  spike  and  hooks  and  can
+bear  up  to  4,000  pounds.  The  wielder  can  retract  the  pole  by
+pushing button 5.
+•The ladder  function  can  be  used  to  force  open  doors.  The
+wielder plants the rod’s base 30 feet or less from the portal to be
+forced  and  in  line  with  it,  then  pushes  button  4.  The  force
+exerted has a Strength modifier of +12.
+•When button 6 is pushed, the rod indicates magnetic north and
+gives  the  wielder  a  knowledge  of  his  approximate  depth  be-
+neath the surface or height above it.
+235
+CHAPTER 7:
+MAGIC ITEMS
+Using multiple
+immovable rods

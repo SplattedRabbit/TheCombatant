@@ -1,0 +1,120 @@
+288
+The creator must have prepared the spell to be stored (or must
+know the spell, in the case of a sorcerer or bard) and must provide
+any focuses the spell requires. Fifty of each needed material com-
+ponent are required, one for each charge. If casting the spell
+would reduce the caster’s XP total, she pays the cost (multiplied by
+50) upon beginning the wand in addition to the XP cost for
+making the wand itself. Likewise, material components are con-
+sumed when she begins working, but focuses are not. (A focus
+used in creating a wand can be reused.) The act of working on the
+wand triggers the prepared spell, making it unavailable for casting
+during each day devoted to the wand’s creation. (That is, that spell
+slot is expended from her currently prepared spells, just as if it had
+been cast.)
+Crafting a wand requires one day per each 1,000 gp of the base
+price. A wand of stoneskinand a wand of charm monstereach take
+twenty-one days to create.
+Item Creation Feat Required: Craft Wand.
+CREATING WONDROUS ITEMS
+To create a wondrous item, a character usually needs some sort of
+equipment or tools to work on the item. She also needs a supply of
+materials, the most obvious being the item itself or the pieces of
+the item to be assembled. The cost for the materials is subsumed in
+the cost for creating the item. Wondrous item costs are difficult to
+formularize. Refer to Table 7–33 on page 285 and use the item
+prices in this chapter as a guideline. Creating an item costs half
+the market value listed.
+If spells are involved in the prerequisites for making the item,
+the creator must have prepared the spells to be cast (or must know
+the spells, in the case of a sorcerer or bard) but need not provide
+any material components or focuses the spells require, nor are any
+XP costs inherent in a prerequisite spell incurred in the creation of
+the item. The act of working on the item triggers the prepared
+spells, making them unavailable for casting during each day of the
+item’s creation. (That is, those spell slots are expended from his
+currently prepared spells, just as if they had been cast.)
+Creating some items may entail other prerequisites beyond or
+other than spellcasting. See the individual descriptions beginning
+on page 246 for details.
+Crafting a wondrous item requires one day for each 1,000 gp of
+the base price.
+Item Creation Feat Required:Craft Wondrous Item. 
+INTELLIGENT ITEM CREATION
+To create an intelligent item, a character must have a caster level of
+15th or higher. Time and creation cost are based on the normal item
+creation rules, with the market price values on Table 7–30: Item
+Intelligence, Wisdom, Charisma, and Capabilities (page 269)
+treated as additions to time, gp cost, and XP cost. The item’s align-
+ment is the same as its creator’s. Determine other features randomly,
+following the guidelines in the relevant sections of this chapter.
+ADDING NEW ABILITIES
+A creator can add new magical abilities to a magic item with no
+restrictions. The cost to do this is the same as if the item was not
+magical. Thus, a +1 longswordcan be made into a +2 vorpal long-
+sword, with the cost to create it being equal to that of a +2 vorpal
+sword minus the cost of a +1 sword.
+If the item is one that occupies a specific place on a character’s
+body (see Magic Items on the Body, page 214), the cost of adding
+any additional ability to that item increases by 50%. For example, if
+a character adds the power to confer invisibilityto her ring of protec-
+tion +2, the cost of adding this ability is the same as for creating a
+ring of invisibilitymultiplied by 1.5.
+CHAPTER 7:
+MAGIC ITEMS
+BEHIND THE CURTAIN: 
+BODY SLOT AFFINITIES
+A  character  who  already  has  winged  bootswants  the  hasteeffect  pro-
+vided  by  boots  of  speed.The  player  asks,  “Can  I  make  a  hat  of  speed
+instead?” What’s your answer?
+The question comes up with some frequency because some parts of
+the  body  can  accommodate  many  more  kinds  of  magic  items  than
+others. Almost every character gets a magic cloak of some kind early in
+her career, even if it’s a simple cloak of resistance +1.But magic vests
+are few in number, and almost all the magic robes are too expensive for
+low-level  characters.  Characters  who  have  “empty”  spaces  on  their
+bodies are naturally eager to fill them with useful items that would ordi-
+narily go in spots where they already have magic.
+Some  magic  items  strain  credulity  if  they’re  placed  in  an  unusual
+location on the body. It’s much easier to imagine gauntlets of ogre power
+than goggles  of  ogre  power.Other  changes  seem  straightforward
+enough; for instance, acloak of blendingmakes just as much sense as
+a robe of blending.
+Each location on the body, or body slot, has one or more affinities:
+a word or phrase that describes the general function or nature of magic
+items  designed  for  that  body  slot.  Body  slot  affinities  are  deliberately
+broad,  abstract  categorizations,  because  a  hard-and-fast  rule  can’t
+cover the great variety among wondrous items.
+You can use the affinities in the list below to guide your decisions on
+which  magic  items  you’ll  allow  in  which  body  slots.  And  when  you
+design your own magic items, the affinities give you some guidance for
+what form a particular item should take.
+Some  body  slots  have  different  affinities  for  different  specific
+items.  Gloves  and  gauntlets  occupy  the  same  body  slot,  for
+example, but have the affinities of quickness and destructive power
+respectively.
+Body SlotAffinity
+Headband, helmetMental improvement, ranged attacks
+HatInteraction
+PhylacteryMorale, alignment
+Eye lenses, gogglesVision
+Cloak, cape, mantleTransformation, protection
+Amulet, brooch, medallion,Protection, discernment
+necklace, periapt, scarab
+RobeMultiple effects
+ShirtPhysical improvement
+Vest, vestmentClass ability improvement
+BracersCombat
+BraceletsAllies
+GlovesQuickness
+GauntletsDestructive power
+BeltPhysical improvement
+BootsMovement
+Wondrous  items  that  don’t  match  the  affinity  for  a  particular  body
+slot  should  cost  50%  more  than  wondrous  items  that  match  the
+affinity. Compare the boots of teleportationwith the helm of teleporta-
+tion. Unless  you  are  intentionally  aiming  for  a  truly  oddball  game,
+avoid  patently  absurd  combinations  such  as  eyeglasses  of  giant
+Strengthat any price.
+pqqqqrs
+pqqqqrs

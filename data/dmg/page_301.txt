@@ -1,0 +1,136 @@
+300
+CONDITION SUMMARY
+This section describes the adverse conditions that weaken, slow,
+or even kill characters. If more than one condition affects a char-
+acter, apply them all. If certain effects can’t combine, apply the
+most severe effect. For example, a character who is dazed and con-
+fusedtakes no actions whatsoever (dazed is more severe than con-
+fused). The confusedcharacter might want to attack a random char-
+acter, but he can’t because he’s dazed.
+Ability Damaged: The character has temporarily lost 1 or
+more ability score points. Lost points return at a rate of 1 per day
+unless noted otherwise by the condition dealing the damage. A
+character with Strength 0 falls to the ground and is helpless. A
+character with Dexterity 0 is paralyzed. A character with Constitu-
+tion  0  is  dead.  A  character  with  Intelligence,  Wisdom,  or
+Charisma 0 is unconscious. (See Ability Score Loss under Special
+Abilities earlier in this chapter.)
+Ability damage is different from penalties to ability scores,
+which go away when the conditions causing them (fatigue, entan-
+glement, and so on) go away.
+Ability Drained: The character has permanently lost 1 or more
+ability score points. The character can regain these points only
+through magical means. A character with Strength 0 falls to the
+ground and is helpless. A character with Dexterity 0 is paralyzed.
+A character with Constitution 0 is dead. A character with Intelli-
+gence, Wisdom, or Charisma 0 is unconscious. (See Ability Score
+Loss under Special Abilities earlier in this chapter.)
+Blinded:The character cannot see. He takes a –2 penalty to
+Armor Class, loses his Dexterity bonus to AC (if any), moves at
+half speed, and takes a –4 penalty on Search checks and on most
+Strength- and Dexterity-based skill checks. All checks and activi-
+ties that rely on vision (such as reading and Spot checks) automat-
+ically fail. All opponents are considered to have total concealment
+(50% miss chance) to the blinded character.
+Characters who remain blinded for a long time grow accus-
+tomed to these drawbacks and can overcome some of them (DM’s
+discretion).
+Blown Away:Depending on its size, a creature can be blown
+away by winds of high velocity (see Table 3–24, page 95). A creature
+on the ground that is blown away is knocked down and rolls 1d4×10
+feet, taking 1d4 points of nonlethal damage per 10 feet. A flying
+creature that is blown away is blown back 2d6×10 feet and takes 2d6
+points of nonlethal damage due to battering and buffering.
+Checked: Prevented from achieving forward motion by an
+applied force, such as wind. Checked creatures on the ground
+merely stop. Checked flying creatures move back a distance speci-
+fied in the description of the effect. 
+Confused:A confusedcharacter’s actions are determined by rolling
+d% at the beginning of his turn: 01–10, attack caster with melee or
+ranged weapons (or close with caster if attacking is not possible);
+11–20, act normally; 21–50, do nothing but babble incoherently;
+51–70, flee away from caster at top possible speed; 71–100, attack
+nearest creature (for this purpose, a familiar counts as part of the
+subject’s self ). A confusedcharacter who can’t carry out the indicated
+action does nothing but babble incoherently. Attackers are not at
+any special advantage when attacking a confusedcharacter. Any con-
+fusedcharacter who is attacked automatically attacks its attackers
+on its next turn, as long as it is still confusedwhen its turn comes. A
+confusedcharacter does not make attacks of opportunity against any
+creature that it is not already devoted to attacking (either because
+of its most recent action or because it has just been attacked).
+Cowering: The character is frozen in fear and can take no
+actions. A cowering character takes a –2 penalty to Armor Class
+and loses her Dexterity bonus (if any).
+Dazed:The creature is unable to act normally. A dazed creature
+can take no actions, but has no penalty to AC.
+A dazed condition typically lasts 1 round.
+Dazzled:The creature is unable to see well because of overstimu-
+lation of the eyes. A dazzled creature takes a –1 penalty on attack rolls,
+Search checks, and Spot checks.
+Dead:The character’s hit points are reduced to –10, his Consti-
+tution drops to 0, or he is killed outright by a spell or effect. The
+character’s soul leaves his body. Dead characters cannot benefit
+from normal or magical healing, but they can be restored to life via
+magic. A dead body decays normally unless magically preserved,
+but magic that restores a dead character to life also restores the
+body either to full health or to its condition at the time of death
+(depending on the spell or device).
+Either way, resurrected characters need not worry about rigor
+mortis, decomposition, and other conditions that affect dead bodies.
+Deafened:A deafened character cannot hear. She takes a –4
+penalty on initiative checks,  automatically fails Listen checks, and
+has a 20% chance of spell failure when casting spells with verbal
+components.
+Characters who remain deafened for a long time grow accus-
+tomed to these drawbacks and can overcome some of them (DM’s
+discretion).
+Disabled: A character with 0 hit points, or one who has nega-
+tive hit points but has become stable and conscious, is disabled. A
+disabled character may take a single move action or standard
+action each round (but not both, nor can she take full-round
+actions). She moves at half speed. Taking move actions doesn’t risk
+further injury, but performing any standard action (or any other
+action the DM deems strenuous, including some free actions such
+as casting a quickened spell) deals 1 point of damage after the com-
+pletion of the act. Unless the action increased the disabled charac-
+ter’s hit points, she is now in negative hit points and dying.
+A disabled character with negative hit points recovers hit points
+naturally if she is being helped. Otherwise, each day she has a 10%
+chance to start recovering hit points naturally (starting with that
+day); otherwise, she loses 1 hit point. Once an unaided character
+starts recovering hit points naturally, she is no longer in danger of
+losing hit points (even if her current hit points are negative).
+Dying:A dying character is unconscious and near death. She
+has –1 to –9 current  hit points. A dying character can take no
+actions and is unconscious. At the end of each round (starting
+with the round in which the character dropped below 0 hit
+points), the character rolls d% to see whether she becomes
+stable. She has a 10% chance to become stable. If she does not,
+she loses 1 hit point. If a dying character reaches –10 hit points,
+she is dead.
+Energy Drained: The character gains one or more negative
+levels, which might permanently drain the character’s levels.
+If the subject has at least as many negative levels as Hit Dice, he
+dies. Each negative level gives a creature the following penalties:
+–1 penalty on attack rolls, saving throws, skill checks, ability
+checks; loss of 5 hit points; and –1 to effective level (for determin-
+ing the power, duration, DC, and other details of spells or special
+abilities). In addition, a spellcaster loses one spell or spell slot from
+the highest spell level castable.
+Entangled:The character is ensnared. Being entangled impedes
+movement, but does not entirely prevent it unless the bonds are
+anchored to an immobile object or tethered by an opposing force.
+An entangled creature moves at half speed, cannot run or charge,
+and takes a –2 penalty on all attack rolls and a –4 penalty to Dexter-
+ity. An entangled character who attempts to cast a spell must make a
+Concentration check (DC 15 + the spell’s level) or lose the spell.
+Exhausted:An exhausted character moves at half speed and
+takes a –6 penalty to Strength and Dexterity. After 1 hour of com-
+plete rest, an exhausted character becomes fatigued. A fatigued
+character becomes exhausted by doing something else that would
+normally cause fatigue. 
+Fascinated:A fascinated creature is entranced by a supernatu-
+ral or spell effect. The creature stands or sits quietly, taking no
+CHAPTER 8:
+GLOSSARY

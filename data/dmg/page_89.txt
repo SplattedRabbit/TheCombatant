@@ -1,0 +1,132 @@
+88
+The leading edge of a fire (the downwind side) can advance
+faster than a human can run (assume 120 feet per round for winds
+of moderate strength). Once a particular portion of the forest is
+ablaze, it remains so for 2d4×10 minutes before dying to a smok-
+ing smolder. Characters overtaken by a forest fire may find the
+leading edge of the fire advancing away from them faster than
+they can keep up, trapping them deeper and deeper in its grasp.
+Within the bounds of a forest fire, a character faces three dan-
+gers: heat damage, catching on fire, and smoke inhalation.
+Heat Damage: Getting caught within a forest fire is even worse
+than being exposed to extreme heat (see Heat Dangers, page 303).
+Breathing the air causes a character to take 1d6 points of damage
+per round (no save). In addition, a character must make a Forti-
+tude save every 5 rounds (DC 15, +1 per previous check) or take
+1d4 points of nonlethal damage. A character who holds his breath
+can avoid the lethal damage, but not the nonlethal damage. Those
+wearing heavy clothing or any sort of armor take a –4 penalty on
+their saving throws. In addition, those wearing metal armor or
+coming into contact with very hot metal are affected as if by a heat
+metal spell (see page 239 of the Player ’s Handbook).
+Catching on Fire: Characters engulfed in a forest fire are at
+risk of catching on fire when the leading edge of the fire overtakes
+them, and are then at risk once per minute thereafter (see Catch-
+ing on Fire, page 303).
+Smoke Inhalation:Forest fires naturally produce a great deal
+of smoke. A character who breathes heavy smoke must make a
+Fortitude save each round (DC 15, +1 per previous check) or spend
+that round choking and coughing. A character who chokes for 2
+consecutive rounds takes 1d6 points of nonlethal damage. Also,
+smoke obscures vision, providing concealment to characters
+within it.
+MARSH TERRAIN
+Two categories of marsh exist: relatively dry moors and watery
+swamps. Both are often bordered by lakes (described in Aquatic
+Terrain, below), which effectively are a third category of terrain
+found in marshes.
+The table below describes terrain features found in marshes.
+The percentages are indicative of typical marsh terrain and don’t
+represent the exact chance that a given square will contain the ter-
+rain element.
+Marsh Terrain Features
+— Marsh Category —
+MoorSwamp
+Shallow bog20%40%
+Deep bog5%20%
+Light undergrowth30%20%
+Heavy undergrowth10%20%
+Bogs: If a square is part of a shallow bog, it has deep mud or
+standing water of about 1 foot in depth. It costs 2 squares of move-
+ment to move into a square with a shallow bog, and the DC of
+Tumble checks in such a square increases by 2.
+A square that is part of a deep bog has roughly 4 feet of standing
+water. It costs Medium or larger creatures 4 squares of movement
+to move into a square with a deep bog, or characters can swim if
+they wish. Small or smaller creatures must swim to move through
+a deep bog. Tumbling is impossible in a deep bog.
+The water in a deep bog provides cover for Medium or larger
+creatures. Smaller creatures gain improved cover (+8 bonus to AC,
++4 bonus on Reflex saves). Medium or larger creatures can crouch
+as a move action to gain this improved cover. Creatures with this
+improved cover take a –10 penalty on attacks against creatures
+that aren’t underwater.
+Deep bog squares are usually clustered together and sur-
+rounded by an irregular ring of shallow bog squares.
+Both shallow and deep bogs increase the DC of Move Silently
+checks by 2.
+Undergrowth: The bushes, rushes, and other tall grasses in
+marshes function as undergrowth does in a forest (see above). A
+square that is part of a bog does not also have undergrowth.
+Quicksand: Patches of quicksand present a deceptively solid
+appearance (appearing as undergrowth or open land) that may
+trap careless characters. A character approaching a patch of quick-
+sand at a normal pace is entitled to a DC 8 Survival check to spot
+the danger before stepping in, but charging or running characters
+don’t have a chance to detect a hidden bog before blundering in. A
+typical patch of quicksand is 20 feet in diameter; the momentum
+of a charging or running character carries him or her 1d2×5 feet
+into the quicksand.
+Effects of Quicksand: Characters in quicksand must make a DC 10
+Swim check every round to simply tread water in place, or a DC 15
+Swim check to move 5 feet in whatever direction is desired. If a
+trapped character fails this check by 5 or more, he sinks below the
+surface and begins to drown whenever he can no longer hold his
+breath (see the Swim skill description, page 84 of the Player ’s Hand-
+book, and Drowning, page 304 of this book).
+Characters below the surface of a bog may swim back to the sur-
+face with a successful Swim check (DC 15, +1 per consecutive
+round of being under the surface).
+Rescue: Pulling out a character trapped in quicksand can be dif-
+ficult. A rescuer needs a branch, spear haft, rope, or similar tool
+that enables him to reach the victim with one end of it. Then he
+must make a DC 15 Strength check to successfully pull the
+victim, and the victim must make a DC 10 Strength check to hold
+onto the branch, pole, or rope. If the victim fails to hold on, he
+must make a DC 15 Swim check immediately to stay above the
+surface. If both checks succeed, the victim is pulled 5 feet closer
+to safety.
+Hedgerows: Common in moors, hedgerows are tangles of
+stones, soil, and thorny bushes.
+Narrow hedgerows function as low walls, and it takes 15 feet of
+movement to cross them.
+Wide hedgerows are more than 5 feet tall and take up entire
+squares. They provide total cover, just as a wall does. It takes 4
+squares of movement to move through a square with a wide
+hedgerow; creatures that succeed on a DC 10 Climb check need
+only 2 squares of movement to move through the square.
+Sample Temperate Marsh Encounter Table (EL 9)
+d%EncounterAverage EL
+01–071 eleven-headed hydra10
+08–111d3 mohrgs10
+12–151 young adult black dragon9
+16–191d4+2 5th-level kobold sorcerer NPCs9
+20–301d3 chuuls9
+31–381d3 medusas9
+39–451d4+2 5th-level goblin rogue NPCs9
+46–531d3 spectres9
+54–631d4 will-o’-wisps9
+64–701d4 gray render zombies9
+71–811 gray render8
+82–911 hag covey (sea hag, annis, green hag)8
+92–972d4 harpies8
+98–1001 shambling mound6
+Other Marsh Terrain Elements: Some marshes, particularly
+swamps, have trees just as forests do, usually clustered in small
+stands. Paths lead across many marshes, winding to avoid bog
+areas. As in forests, paths allow normal movement and don’t pro-
+vide the concealment that undergrowth does.
+Stealth and Detection in a Marsh: In a moor, the maximum
+distance at which a Spot check for detecting the nearby presence
+CHAPTER 3:
+ADVENTURES

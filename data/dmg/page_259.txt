@@ -1,0 +1,137 @@
+258
+secret doors, traps, and similar concealed objects. Both lenses
+must be worn for the magic to be effective.
+Faint divination; CL 3rd; Craft Wondrous Item, true seeing; Price
+1,250 gp.
+Goggles of Night: The lenses of this item are made of dark
+crystal. Even though the lenses are opaque, when placed over the
+eyes of the wearer they enable him to see normally and also grant
+him 60-foot darkvision. Both lenses must be worn for the magic to
+be effective.
+Faint transmutation; CL 3rd; Craft Wondrous Item, darkvision;
+Price 12,000 gp.
+Golem Manual: A golem manualcontains information, incanta-
+tions and magical power that help a character to craft a golem (see
+page 134 of the Monster Manual). The instructions therein grant a
++5 competence bonus on skill checks made to craft the golem’s
+body. Each manual also holds the prerequisite spells needed for a
+specific golem, effectively grants the builder use of the Craft Con-
+struct feat (see page 303 of the Monster Manual) during the con-
+struction of the golem, and grants the character an increase to her
+caster level for the purpose of crafting a golem. Any golem built
+using a golem manualdoes not cost the creator any XP, since the
+requisite XP are “contained” in the book and “expended” by the
+book during the creation process.
+The spells included in a golem manualrequire a spell trigger acti-
+vation and can be activated only to assist in the construction of a
+golem. The cost of the book does not include the cost of con-
+structing the golem’s body. Once the golem is finished, the writing
+in the manual fades and the book is consumed in flames. When
+the book’s ashes are sprinkled upon the golem, it becomes fully
+animated.
+Clay Golem Manual:The book contains animate objects, bless,
+commune, prayer, and resurrection. The reader may treat her caster
+level as two levels higher than normal for the purpose of crafting
+a clay golem. The book supplies 1,540 XP for the creation of a clay
+golem.
+Moderate conjuration, divination, enchantment, and transmu-
+tation; CL 11th; Craft Construct, creator must be caster level 11th,
+animate objects, commune, prayer, resurrection; Price 12,000 gp; Cost
+2,150 gp + 1,712 XP; Weight 5 lb.
+Flesh Golem Manual:The book contains animate dead, bull’s
+strength, geas/quest, andlimited wish. The reader may treat her caster
+level as one level higher than normal for the purpose of crafting a
+flesh golem. The book supplies 780 XP for the creation of a flesh
+golem.
+Moderate enchantment, necromancy [evil], and transmutation;
+CL 8th; Craft Construct, creator must be caster level 8th, animate
+dead, bull’s strength, geas/quest, limited wish; Price 8,000 gp; Cost
+2,050 gp + 944 XP; Weight 5 lb.
+Iron Golem Manual:The book contains cloudkill, geas/quest, lim-
+ited wish, and polymorph any object. The reader may treat her caster
+level as four levels higher than normal for the purpose of crafting
+a iron golem. The book supplies 5,600 XP for the creation of a iron
+golem.
+Strong conjuration, enchantment and transmutation; CL 16th;
+Craft Construct, creator must be caster level 16th, cloudkill,
+geas/quest, limited wish, polymorph any object; Price 35,000 gp; Cost
+3,500 gp + 5,880 XP; Weight 5 lb.
+Stone Golem Manual:The book contains geas/quest, limited wish,
+polymorph any object, and slow. The reader may treat her caster level
+as three levels higher than normal for the purpose of crafting a
+stone golem. The book supplies 3,400 XP for the creation of a
+stone golem.
+Strong abjuration and enchantment; CL 14th; Craft Construct,
+creator must be caster level 14th, antimagic field, geas/quest, symbol of
+stunning; Price 22,000 gp; Cost 2,500 gp + 3,600 XP; Weight 5 lb.
+Stone Golem Manual, Greater:The book contains geas/quest, lim-
+ited wish, polymorph any object, and slow. The reader may treat her
+caster level as three levels higher than normal for the purpose of
+crafting a stone golem. The book supplies 7,640 XP for the cre-
+ation of a greater stone golem.
+Strong abjuration and enchantment; CL 16th; Craft Construct,
+creator must be caster level 16th, antimagic field, geas/quest, symbol of
+stunning; Price 44,000 gp; Cost 2,900 gp + 7,872 XP; Weight 5 lb.
+Hand of Glory:This mummified human hand hangs by a
+leather cord around a character’s neck (taking up space as a magic
+necklace would). If a magic ring is placed on one of the fingers of
+the hand, the wearer benefits from the ring as if wearing it herself,
+and it does not count against her two-ring limit. The hand can
+wear only one ring at a time.
+Even without a ring, the hand itself allows its wearer to use day-
+light and see invisibilityeach once per day.
+Faint varied; CL 5th; Craft Wondrous Item, animate dead, day-
+light, detect invisibility; Price 8,000 gp; Weight 2 lb.
+Hand of the Mage:This mummified elf hand hangs by a
+golden chain around a character’s neck (taking up space as a magic
+necklace would). It allows the wearer to utilize the spell mage hand
+at will.
+Faint transmutation; CL 2nd; Craft Wondrous Item, mage hand;
+Price 900 gp; Weight 2 lb.
+Harp of Charming:This instrument is a golden, intricately
+carved harp. When played, it enables the performer to work one
+suggestion (as the spell, Will DC 14 negates) into the music for each
+10 minutes of playing if he can succeed on a DC 14 Perform
+(string instruments) check. If the check fails, the audience cannot
+be affected by any further performances from the harpist for 24
+hours.
+Faint enchantment; CL 5th; Craft Wondrous Item, suggestion;
+Price 7,500 gp; Weight 5 lb.
+Hat of Disguise:This apparently normal hat allows its wearer
+to alter her appearance as with a disguise selfspell. As part of the dis-
+guise, the hat can be changed to appear as a comb, ribbon, head-
+band, cap, coif, hood, helmet, and so on.
+Faint illusion; CL 1st; Craft Wondrous Item, disguise self; Price
+1,800 gp.
+Headband of Intellect: This device is a light cord with a small
+gem set so that it rests upon the forehead of the wearer. The head-
+band adds to the wearer’s Intelligence score in the form of an en-
+hancement bonus of +2, +4, or +6. This enhancement bonus does
+not earn the wearer extra skill points when a new level is attained;
+use the unenhanced Intelligence bonus to determine skill points.
+Moderate transmutation; CL 8th; Craft Wondrous Item, fox’s
+cunning; Price 4,000 gp (+2), 16,000 gp (+4), 36,000 gp (+6).
+Helm of Brilliance:This normal-looking helm takes its true
+form and manifests its powers when the user dons it and speaks
+the command word. Made of brilliant silver and polished steel, a
+newly created helm is set with large magic gems: ten diamonds,
+twenty rubies, thirty fire opals, and forty opals. When struck by
+bright light, the helm scintillates and sends forth reflective rays in
+all directions from its crownlike, gem-tipped spikes. The jewels’
+functions are as follows:
+•Diamond: Prismatic spray(save DC 20)
+•Ruby: Wall of fire
+•Fire opal: Fireball(10d6, Reflex DC 20 half )
+•Opal: Daylight
+The helm may be used once per round, but each gem can per-
+form its spell-like power just once. Until all its jewels are depleted,
+a helm of brilliancealso has the following magical properties when
+activated.
+•It emanates a bluish light when undead are within 30 feet. This
+light  causes  1d6  points  of  damage  per  round  to  all  such  crea-
+tures within that range.
+•The wearer  may  command  any  weapon  he  wields  to  become  a
+flaming weapon (see page 224). This is in addition to whatever
+abilities  the  weapon  may  already  have  (unless  the  weapon
+CHAPTER 7:
+MAGIC ITEMS

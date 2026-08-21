@@ -1,0 +1,195 @@
+97
+CHAPTER 3:
+ADVENTURES
+19   Very old green dragon
+21   Ancient green dragon
+22   Wyrm green dragon
+24   Great wyrm green dragon
+CR  Temperate Hills
+1/2  Gnome
+1/2  Forest gnome
+1/2  Orc
+2Dire weasel
+2Hippogriff
+3Wyrmling bronze dragon
+3Ogre
+3Ogre zombie
+4Displacer beast
+4Griffon
+5Very young bronze dragon
+7Bulette
+7Chimera
+7Young bronze dragon
+7Hill giant
+7Ogre barbarian
+8Athach
+8Juvenile bronze dragon
+8Dark naga
+11   Hill giant dire wereboar (lycanthrope)
+12   Displacer beast pack lord
+12   Young adult bronze dragon
+15   Adult bronze dragon
+17   Mature adult bronze dragon
+19   Old bronze dragon
+20   Very old bronze dragon
+22   Ancient bronze dragon
+23   Wyrm bronze dragon
+25   Great wyrm bronze dragon
+CR  Temperate Marshes
+1/3  Tiny viper snake (animal)
+1/2  Small viper snake (animal)
+1Lizardfolk
+1Medium viper snake (animal)
+2Large viper snake (animal)
+3Huge viper snake (animal)
+4Harpy
+4Five-headed hydra
+5Green hag (hag)
+5Six-headed hydra
+5Ochre jelly (ooze)
+6Seven-headed hydra
+6Shambling mound
+6Will-o’-wisp
+6Gray render zombie
+7Chuul
+7Eight-headed hydra
+7Medusa
+8Gray render
+8Nine-headed hydra
+9Ten-headed hydra
+9Spirit naga
+10   Eleven-headed hydra
+11   Harpy archer
+11   Twelve-headed hydra
+CR  Temperate Mountains
+1/2  Dwarf
+1/2  Eagle
+1/2  Gray elf
+2Bugbear
+2Bugbear zombie
+3Giant eagle
+4Wyrmling silver dragon
+5Very young silver dragon
+7Young silver dragon
+7Cloud giant skeleton
+8Stone giant
+9Yrthak
+10   Juvenile silver dragon
+11   Cloud giant
+13   Young adult silver dragon
+15   Adult silver dragon
+18   Mature adult silver dragon
+20   Old silver dragon
+21   Very old silver dragon
+23   Ancient silver dragon
+24   Wyrm silver dragon
+26   Great wyrm silver dragon
+CR  Temperate Plains
+1/4  Pony (animal)
+1/4  Pony, war (animal)
+1/3  Dog (animal)
+1/3  Goblin
+1/2  Giant bee (vermin)
+1Aasimar (planetouched)
+1Dog, riding (animal)
+1Giant ant, worker (vermin)
+1Horse, heavy (animal)
+1Horse, light (animal)
+1Horse, light war (animal)
+1Tiefling (planetouched)
+2Bison (animal)
+2Blink dog
+2Giant ant, queen (vermin)
+2Giant ant, soldier (vermin)
+2Horse, heavy war (animal)
+2Worg
+3Cockatrice
+3Locust swarm
+6Half-dragon 4th-level human fighter
+7Ghost, 5th-level human fighter
+7Triceratops (dinosaur)
+7Vampire, 5th-level human fighter
+8Gorgon
+9Half-fiend, 7th-level human cleric
+10   Guardian naga
+11   Half-celestial, 9th-level human paladin
+CR  Warm Aquatic
+1/2  Locathah
+1Manta ray (animal)
+1Octopus (animal)
+2Sahuagin
+6Baleen whale (animal)
+7Elasmosaurus (dinosaur)
+8Giant octopus (animal)
+CR  Warm Deserts
+1/4  Tiny monstrous scorpion (vermin)
+1/2  Small monstrous scorpion (vermin)
+1Camel (animal)
+1Hyena (animal)
+1Medium monstrous scorpion (vermin)
+2Large monstrous scorpion (vermin)
+3Wyrmling brass dragon
+4Very young brass dragon
+4Janni (genie)
+5Basilisk
+5Hieracosphinx
+6Young brass dragon
+7Criosphinx
+7Huge monstrous scorpion (vermin)
+8Juvenile brass dragon
+8Gynosphinx 
+9Androsphinx
+10   Young adult brass dragon
+10Gargantuan monstrous scorpion 
+(vermin)
+12   Adult brass dragon
+12   Colossal monstrous scorpion (vermin)
+15   Mature adult brass dragon
+17   Old brass dragon
+19   Very old brass dragon
+20   Ancient brass dragon
+21   Wyrm brass dragon
+23   Great wyrm brass dragon
+CR  Warm Forests
+1/2  Wild elf
+1Spider swarm
+2Ape (animal)
+2Giant bombardier beetle (vermin)
+2Leopard (animal)
+2Monitor lizard (animal)
+2Constrictor snake (animal)
+3Deinonychus (dinosaur)
+3Dire ape
+3Ettercap
+3Yuan-ti pureblood
+4Tiger (animal)
+5Girallon
+5Weretiger (lycanthrope)
+5Giant constrictor snake (animal)
+5Yuan-ti halfblood
+6Digester
+6Megaraptor (dinosaur)
+6Advanced megaraptor skeleton
+7Yuan-ti abomination
+8Dire tiger
+10   Couatl
+CR  Warm Hills
+1/2  Deep halfling
+1/2  Hobgoblin
+3Wyrmling copper dragon
+4Wyvern zombie
+5Very young copper dragon
+5Phase spider
+5Rast
+6Wyvern
+7Young copper dragon
+8Behir
+9Juvenile copper dragon
+11   Young adult copper dragon
+14   Adult copper dragon
+16   Mature adult copper dragon
+19   Old copper dragon
+20   Very old copper dragon
+22   Ancient copper dragon
+23   Wyrm copper dragon
+25   Great wyrm copper dragon

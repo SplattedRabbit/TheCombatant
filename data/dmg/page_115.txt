@@ -1,0 +1,91 @@
+114
+Song of Freedom (Sp):By singing for 1 minute without interrup-
+tion, this bard can create a break enchantmenteffect as the spell
+from a 15th-level caster, on a single target within 30 feet. The bard
+cannot use this ability on himself.
+Suggestion (Sp):This bard can make a suggestion (as the spell) to
+a creature he has already fascinated. A DC 22 Will save negates the
+effect.
+Bard Spells Known(4/6/4/4/4/3; save DC 15 + spell level):
+0—dancing lights, daze, ghost sound, light, lullaby, read magic;
+1st—cause fear, charm person, cure light wounds, sleep; 2nd—cure
+moderate wounds, glitterdust, hold person, invisibility;3rd—blink,
+charm monster, dispel magic, glibness; 4th—break enchantment,
+dominate person, hold monster, shout;5th—greater dispel magic,
+mind fog, mislead.
+Possessions: Amulet of natural armor +2, bracers of armor +3, ring of
+protection +3, +2 longsword,masterwork light crossbow, 10 bolts, 5
+cold iron bolts, 5 silvered bolts, 3potions of cure serious wounds, 2
+potions of eagle’s splendor,2potions of fly, 3potions of glibness,2potions
+of tongues, cloak of Charisma +2, wand of summon monster II, master-
+work lute.
+NPC CLERIC
+Starting Ability Scores:Str 13, Dex 8, Con 14, Int 10, Wis 15,
+Cha 12.
+Increased Ability Scores:4th, Wis 16; 8th, Wis 17; 10th, Wis
+17 (19); 12th, Wis 18 (20); 13th, Dex 8 (10); 14th, Wis 18 (22); 16th,
+Wis 19 (23); 17th, Wis 19 (25); 20th, Wis 20 (26).
+Sample 5th-Level NPC Cleric:Human Clr 5; CR 5; Medium
+humanoid; HD 5d8+10; hp 36; Init –1; Spd 20 ft.; AC 21, touch 9,
+flat-footed 21; Base Atk +3; Grp +4; Atk +6 melee (1d8+1, master-
+work morningstar) or +2 ranged (1d8/19–20, light crossbow); Full
+Atk +6 melee (1d8+1, masterwork morningstar) or +2 ranged
+(1d8/19–20, light crossbow); SA turn undead 4/day; SQ —; AL
+NG; SV Fort +6, Ref +2, Will +7; Str 13, Dex 8, Con 14, Int 10, Wis
+16, Cha 12.
+Skills and Feats:Concentration +10, Listen +11, Spellcraft +8;
+Brew Potion, Lightning Reflexes, Weapon Focus (morningstar).
+Cleric Spells Prepared(5/5/4/3; save DC 13 + spell level): 0—detect
+magic, guidance(2), light, resistance;1st—bane, bless (2), sanctuary*, shield
+of faith;2nd—aid, bull’s strength, cure moderate wounds*, sound burst;
+3rd—dispel magic, magic circle against evil, protection from energy*.
+*Domain spell. Domains:Healing (cast healing spells at +1 caster
+level), Protection (protective ward grants +5 resistance bonus on
+next save, 1/day).
+Possessions: +1 full plate, +1 heavy steel shield,masterwork morn-
+ingstar, light crossbow, 10 bolts, 2 scrolls of cure light wounds,
+wooden holy symbol, 6 torches.
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–13: NPC Bard
+Skill Pts./Spells
+LevelhpACMeleeRangedF/R/WFeatsper DayGear
+1st714+1+2+1/+3/+124/12Mwk studded leather*, mwk melee, mwk ranged
+2nd1114+2+3+1/+4/+230/13/1 As 1st level, plus 1,000 gp
+3rd1614+3+4+2/+4/+236/23/2As 1st level, plus 1,500 gp
+4th2014+4+5+2/+5/+342/23/3/1 As 1st level, plus 2,300 gp
+5th2515+4+5+2/+5/+348/23/4/2 Mwk studded leather, amulet of natural armor +1,
+mwk melee, mwk ranged, 1,400 gp
+6th2915+5+6+3/+6/+454/33/4/3As 5th level, except 2,500 gp
+7th3415+6+7+3/+6/+460/33/4/3/1As 5th level, except 4,000 gp
+8th3815+7/2+8/3+3/+7/+566/33/4/4/2 Mwk studded leather, amulet +1, mwk melee,
+mwk ranged, cloak of Charisma +2,2,500 gp
+9th4315+7/2+8/3+4/+7/+572/43/4/4/3As 8th level, except 5,000 gp
+10th4715+8/3+9/4+4/+8/+678/43/4/4/3/1amulet +2, bracers of armor +2, mwk melee,
+mwk ranged, cloak +2
+11th5216+9/4+10/5+4/+8/+684/43/4/4/4/2amulet +2, bracers +3, mwk melee, mwk ranged,
+cloak +2
+12th5617+10/5+11/6+5/+9/+790/53/5/4/4/3amulet +2, bracers +3, ring of protection +1, +1 melee,
+mwk ranged, cloak +2, 1,400 gp
+13th6118+10/5+11/6+5/+9/+796/53/5/4/4/3/1amulet +2,bracers +3, ring +2, +1 melee,mwk
+ranged, cloak +2,3,500 gp
+14th6519+12/7+12/7+5/+10/+8102/54/5/4/4/4/2amulet +2, bracers +3, ring +3, +2 melee, mwk
+ranged, cloak +2,2,500 gp
+15th7019+13/8/3+13/8/3+6/+10/+8108/64/6/4/4/4/3As 14th level, except 16,500 gp
+16th7420+14/9/4+14/9/4+6/+11/+9114/64/6/5/4/4/3amulet +2, bracers +4, ring +3, +2 melee,mwk
+ranged, cloak +2, 28,500 gp
+17th7922+14/9/4+14/9/4+6/+11/+9120/64/6/6/5/4/4/2amulet +3, bracers +5, ring +3, +2 melee,mwk
+ranged, cloak +4, 20,000 gp
+18th8323+15/10/5+15/10/5+7/+12/+10126/74/6/6/6/5/4/3 amulet +4, bracers +5, ring +3, +2 melee,  mwk
+ranged, cloak +6,22,000 gp
+19th8823+16/11/6+16/11/6+7/+12/+10132/74/6/6/6/5/5/4    As 18th level, except 62,000 gp
+20th9223+17/12/7+17/12/7+7/+13/+11138/74/6/6/6/6/5/5    As 18th level, except 112,000 gp
+*15% chance of arcane spell failure at 1st–9th level.
+Spells Known per Level
+LevelSpellsLevelSpellsLevelSpellsLevelSpells
+1st42nd5/23rd6/34th6/3/2
+5th6/4/36th6/4/37th6/4/4/28th6/4/4/3
+9th6/4/4/310th6/4/4/4/211th6/4/4/4/312th6/4/4/4/3
+13th6/4/4/4/4/214th6/4/4/4/4/315th6/4/4/4/4/316th6/5/4/4/4/4
+17th6/5/5/4/4/4/318th6/5/5/5/4/4/319th6/5/5/5/5/4/420th6/5/5/5/5/5/4

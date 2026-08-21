@@ -1,0 +1,97 @@
+poorest of the poor live here in decrepit buildings,
+refugee colonies, and squatter camps.
+Buildings:Poor residences (100).
+First Impression: Lean-tos, smoky fires, and
+makeshift  hovels  crowd  in  among  the  debris  and
+rubble of the dirty, destitute streets.
+Social Class:Lower class.
+Slave Quarter
+Slaves merit slightly better huts than those who live in
+a shantytown, if only because their masters care about
+their welfare to some small degree. Districts such as
+this are rare, since good-aligned societies find slavery
+abhorrent.
+Buildings:Overseer’s station, poor services (5),
+poor residences (94).
+First Impression: Whip-wielding masters lead
+chained slaves in threadbare robes from place to place.
+Few of the slaves are bold enough to meet the gaze of a
+bystander.
+Social Class:Lower class.
+Slum
+This district is clearly for the down-and-out. A slum
+falls somewhere between poor apartments and a shan-
+tytown on the scale of poverty and misery.
+Buildings:Temple (Olidammara or Pelor), poor
+lodging (1), poor food (3), poor trades (10), poor serv-
+ices (5), poor residences (70).
+First Impression: Home to the destitute, this
+neighborhood features a mix of shanties, hovels, and
+tenements in disrepair. Trash fills the streets and alleys,
+and the stench of offal mixed with rotting flesh and
+even less wholesome substances hangs heavy in the air.
+Social Class:Lower class.
+Tannery District
+Tanneries—businesses that turn animal hides into
+leather—are typically in lower-class neighborhoods
+simply because they smell unbelievably bad. No one
+who can afford to do otherwise lives near a tannery.
+Buildings:Temple (any, especially poorer or
+more obscure faiths), poor lodging (2), poor food (7),
+poor trades (tanners, dyers, and other folk who practice
+odiferous trades) (60), poor services (30).
+First Impression: The acrid smell of tanning
+hides would reveal the nature of this district even to a
+blindfolded person. A cluster of small, dingy shops
+caters to the unfortunate denizens of this nauseating
+district.
+Social Class:Lower class.
+Tavern District
+Adventurers spend a lot of time in taverns, and most
+cities of any size feature at least one. Inns sandwiched
+among the bars provide revelers with relatively safe
+places in which to sleep off their intoxication.
+Buildings:Temple (Fharlanghn or Olidammara),
+average lodging (3), poor lodging (20), average food (6),
+poor food (30), poor trades (10), poor services (10), poor
+residences (20).
+First Impression: By night, inebriated revelers
+stumble forth into the crowded streets from literally
+dozens of taverns. By day, this district is a virtual ghost
+town, with only cleanup crews, delivery personnel, and
+the  occasional  determined  drunk  to  liven  up  the
+streetscape.
+Social Class:Lower class.
+Tenement District
+This district is similar to a slum, but without any
+nearby businesses to support its poverty-stricken popu-
+lace. This district must be placed close to one in which
+even the desperately poor can acquire staples.
+Buildings:Poor residences (60).
+First Impression: Crammed together like so
+many sardines, the poor residents of this district cluster
+on stoops, in their rat-infested apartments, and in the
+streets and alleys.
+Social Class:Lower class.
+Theater District
+Theaters tend to spring up in lower-class neighbor-
+hoods because rent is cheaper there. Drama patrons
+rarely linger for long, although nearby pubs and shops
+entice some to stay and celebrate a fine performance.
+This district can serve as a musician’s quarter or a
+dancehall district with only a name change.
+Buildings:Theaters (4), temple (Olidammara),
+poor lodging (10), poor food (20), poor trades (20), poor
+services (30), poor residences (15).
+First Impression: Each theater features a large
+sign promising comedy, tragedy, and inspiration—often
+all in the same play. Lines of people wait outside the box
+offices, and periodically a large crowd emerges from a
+theater, heatedly discussing the play that has just ended.
+Social Class:Lower class.
+Undercity
+This district, typically situated underneath the city’s
+streets, is a combination of a dungeon and a neighbor-
+hood. The residents of the city may or may not be
+aware of the undercity’s existence.
+8

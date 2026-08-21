@@ -1,0 +1,108 @@
+The Leader . . .Modifier
+Has a stronghold, base of operations, +2
+guildhouse, or the like
+Moves around a lot–1
+Caused the death of other followers–1
+NPC SPELLCASTING
+Characters need healing. They need curses removed. They need to
+be teleported. They need to be raised from the dead. At various
+points during the campaign, the PCs will need to find NPCs to cast
+spells for them, either because they don’t want to do it themselves
+or, more often, because a particular spell is beyond them. Refer to
+page 139 for information on the highest-level spellcaster available
+in a given community.
+Assuming that the PCs can find a caster of the needed level and
+that she’s amenable to helping them out, the NPC charges them 10
+gp per spell level ×her caster level (or 5 gp ×her caster level for a
+0-level spell). If she’s a cleric, she might require the amount as a
+donation to her faith. If she’s a wizard, she might call the price a
+“magical research fee.” Whatever the case, the higher her caster
+level, the more she can charge for spells.
+If a spell has an expensive material component, the NPC makes
+her client pay for those expenses in addition to the base cost.
+If the spell requires a focus component (other than a divine
+focus), the NPC makes her client pay 10% of the cost of the focus
+(even if caster already possesses the item).
+Finally, if the spell has an XP component, the NPC charges an
+additional 5 gp for each experience point she must expend.
+NPC CLASSES
+The Player ’s Handbookextensively describes adventurers. But what
+about the rest of the world? Surely not everyone’s a fighter, rogue,
+or wizard. Presented in this section are five classes specifically
+designed for NPCs. None of them, with the possible exceptions of
+the expert and the aristocrat, stands up as a playable class for PCs.
+Instead, they represent the rest of the people in the world around
+the PCs who don’t train to go on adventures and explore dungeons.
+Treat these classes as you would any other. Their members get
+feats every three levels and ability score increases every four levels
+(see Table 3–2: Experience and Level-Dependent Benefits on page
+22 of the Player ’s Handbook). Most NPCs take feats such as En-
+durance, Skill Focus, Track, and other noncombat-related abilities.
+It’s possible for NPCs to multiclass, and even to obtain levels in PC
+classes if you so desire.
+The level and class of an NPC give an indication of how well
+that NPC knows his or her field. A typical blacksmith might only
+be a 3rd-level commoner, but the world’s greatest blacksmith is
+probably a 20th-level expert. That 20th-level character is a capable
+person with great skill, but she can’t fight as well as a fighter equal
+to her level (or even one much lower in level), nor can she cast
+spells or do the other things that characters with PC class levels
+can do.
+NPCs gain experience points the same way that PCs do. Not
+being adventurers, however, their opportunities are more limited.
+Therefore, a commoner is likely to progress in levels very slowly.
+Most commoners never attain higher than 2nd or 3rd level in
+their whole lives. A warrior serving as a town guard is more likely
+to earn XP here and there and thus might gain a few levels, but
+this experience is still paltry compared to what an adventurer
+gains. Keep in mind, though, that dangerous areas are more likely
+to produce higher-level NPCs than peaceful, settled lands. A com-
+moner who must regularly fight off gnolls trying to ransack his
+farm or burn his crops is likely to be of higher level than one who
+rarely encounters a challenge of this sort.
+These NPC classes should provide enough distinction to create
+anyone the PCs meet who isn’t an adventurer. See Total Characters
+of Each Class, page 138, for information on how many characters
+belonging to each of these NPC classes are found in a typical town
+and their respective levels.
+ADEPT
+Some tribal societies or less sophisticated regions don’t have the
+resources to train wizards and clerics. Reflecting a lesser knowl-
+edge of magic yet an intriguing combination of arcane and divine
+skills, the adept serves these cultures as both wise woman (or holy
+man) and mystical defender.
+Adepts can be found in isolated human, elf, dwarf, gnome, and
+halfling communities but are most prevalent among more bestial
+humanoid and giant species such as orcs, goblins, gnolls, bug-
+bears, and ogres.
+Hit Die:d6.
+Class Skills
+The adept’s class skills (and the key ability for each skill) are Con-
+centration (Con), Craft (Int), Handle Animal (Cha), Heal (Wis),
+107
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–2: The Adept
+NPCBaseFortRefWill——————— Spells per Day ——––———
+LevelAttack BonusSaveSaveSaveSpecial01st2nd3rd4th5th
+1st+0+0+0+231————
+2nd+1+0+0+3Summon familiar31————
+3rd+1+1+1+332————
+4th+2+1+1+4320———
+5th+2+1+1+4321———
+6th+3+2+2+5321———
+7th+3+2+2+5332———
+8th+4+2+2+63320——
+9th+4+3+3+63321——
+10th+5+3+3+73321——
+11th+5+3+3+73332——
+12th+6/+1+4+4+833320—
+13th+6/+1+4+4+833321—
+14th+7/+2+4+4+933321—
+15th+7/+2+5+5+933332—
+16th+8/+3+5+5+10333320
+17th+8/+3+5+5+10333321
+18th+9/+4+6+6+11333321
+19th+9/+4+6+6+11333332
+20th+10/+5+6+6+12333332

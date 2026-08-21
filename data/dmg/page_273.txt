@@ -1,0 +1,130 @@
+272
+Bosk, the Poetic Blade:+2 longsword; AL N; Int 14, Wis 14, Cha
+10; Speech, 30 ft. vision and hearing; Ego score 8.
+Lesser Powers: Bless 3/day, hold person3/day.
+Personality:Created by a wizard experimenting with sentience,
+Bosk was later sold by its creator and has changed hands many
+times. Always willing to offer its opinion, advice, a story, or even a
+poem of its own devising, Bosk has never met an owner who was a
+perfect match, though perhaps a deaf swordwielder would be best.
+Moderate divination; CL 15th; Craft Magic Arms and Armor,
+legend lore;Price 15,815 gp.
+Vesac, the Deceiver:Luck blade;AL NE; Int 16, Wis 10, Cha 16;
+Speech, 60 ft. darkvision and hearing; Ego score 15.
+Lesser Powers: Minor image1/day, major image 1/day, 10 ranks in
+Bluff (total modifier +13).
+Personality:A powerful and selfish blade, Vesac has served as the
+weapon of dozens of petty tyrants and would-be conquerors. The
+lure of its powerful three wishesdraws in many who seek to gain
+power, wealth, or advance their own agenda. However, Vesac itself
+is only interested in advancing the tales of its own legend. Despite
+having many wielders over the ages, it continues to hoard its
+wishes,frequently deluding wielders (by using its illusion powers)
+into thinking that their desires have been fulfilled.
+Strong evocation (if miracleis used); CL 17th; Craft Magic Arms
+and Armor, wishor miracle;Price 161,560 gp; Cost 80,780 gp +
+5,718 XP.
+Zax, Cloak of Kings: Cloak of Charisma +6;AL LN; Int 10, Wis
+14, Cha 14; Speech, 120 ft. vision and hearing; Ego score 5.
+Lesser Powers: Zone of truth3/day, Item has 10 ranks in Diplo-
+macy (total modifier +12) and 10 ranks in Knowledge (history)
+(total modifier +10).
+Personality:This magic cloak has provided advice to royal courts
+for generation after generation, not only the settling of disputes,
+but also with accounts of the foibles of leaders past. Zax, as this
+cape has always been known, is a fine-looking garment of sable
+and fur. Like most rulers, Zax itself has grown somewhat stern and
+aloof over the years, though its Ego has never been strong enough
+to dominate its wearer.
+Moderate conjuration; CL 15th; Craft Wondrous Item, eagle’s
+splendor;Price 56,500 gp.
+CURSED ITEMS
+In the process of crafting a magic item, so many delicate factors
+have to be taken into account that occasionally things are bound
+to go awry. These small errors are often readily apparent and usu-
+ally show up immediately. Sometimes, however, they are more
+subtle and don’t emerge until days, months, or even years later.
+Other factors can make a magic item go wrong as well—things
+not the fault of its creator in any way. The forces of chaos and gen-
+eral entropy can cause magic to decay or become corrupted. Time
+corrodes all things—even magic. Long exposure to powerful mag-
+ical forces, gateways to other planes, or even the proximity of
+other magic items or creatures can alter a magic item in odd ways.
+Finally, items with unpredictable or cursed effects can be created
+by the devious intention of spellcasters who are malicious, chaotic,
+or simply insane. These are the most dangerous cursed items of all.
+Cursed items are magic items with some sort of potentially neg-
+ative impact. Sometimes they’re directly bad for the user; some-
+times they’re just inconvenient. Occasionally they mix bad with
+good, forcing characters to make difficult choices. If you want to
+include the chance for cursed items in your game, determine trea-
+sure randomly as usual. Whenever you roll for a magic item, how-
+ever, make a second secret d% roll. On a result of 01–05, the item
+generated is cursed in some way. To determine how the item is
+cursed, consult the table below.
+Cursed Item Common Curses
+d%Curse
+01–15Delusion
+16–35Opposite effect or target
+36–45Intermittent functioning
+46–60Requirement
+61–75Drawback
+76–90Completely different effect
+91–100Substitute specific cursed item
+Delusion: The user believes the item is what it appears to be,
+yet it actually has no magical power other than to deceive. The
+user is mentally fooled into thinking the item is functioning
+(making him invisible, emitting lightning bolts, or whatever)
+and cannot be convinced otherwise without the help of a remove
+cursespell.
+Opposite Effect or Target:These cursed items malfunction, so
+that either they do the opposite of what the creator intended, or
+they target the user instead of someone else. For example, eyes of
+charming with the opposite effect makes targets hostile rather than
+charmingthem. A staff of healingcauses wounds. Eyes of petrification
+turn the wearer to stone. A magic arrow curves around to strike the
+archer. The interesting point to keep in mind here is that these
+items aren’t always bad to have. A wand of lightning boltthat heals
+rather than harms can be used as a potent healing item.
+Opposite-effect items include weapons that impose penalties
+on attack and damage rolls rather than bonuses. Just as a character
+shouldn’t necessarily immediately know what the enhancement
+bonus of a noncursed magic item is, she shouldn’t immediately
+know that a weapon is cursed. Once she knows, however, the item
+can be discarded unless some sort of compulsion is placed upon it
+that compels the wielder to keep and use it. In such cases, a remove
+cursespell is generally needed to get rid of the item.
+Intermittent Functioning: The three varieties of intermit-
+tent functioning items all function perfectly as described—at
+least some of the time. The three varieties are unreliable, depend-
+ent, and uncontrolled items.
+Unreliable: Each time the item is activated, there is a 5% chance
+(01–05 on d%) that it does not function. At the DM’s option, the
+failure chance can be altered to be anything from 1% to 10%, de-
+pending on the item and the campaign.
+Dependent: The item only functions in certain situations. To
+determine what the situation is, either select a situation or roll on
+the following table.
+d%Situation
+01–03Temperature below freezing
+04–05Temperature above freezing
+06–10During the day
+11–15During the night
+16–20In direct sunlight
+21–25Out of direct sunlight
+26–34Underwater
+35–37Out of water
+38–45Underground
+46–55Aboveground
+56–60Within 10 feet of a random creature type
+61–64Within 10 feet of a random race or kind of creature
+65–72Within 10 feet of an arcane spellcaster
+73–80Within 10 feet of a divine spellcaster
+81–85In the hands of a nonspellcaster
+86–90In the hands of a spellcaster
+91–95In the hands of a creature of a particular alignment
+96In the hands of a creature of particular gender
+97–99On nonholy days or during particular astrological events
+100More than 100 miles from a particular site
+CHAPTER 7:
+MAGIC ITEMS

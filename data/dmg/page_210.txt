@@ -1,0 +1,128 @@
+by +1d6 at every odd-numbered level (+11d6 at 21st, +12d6 at 23rd,
+and so on).
+Special Abilities: The rogue does not gain additional rogue
+special abilities after 19th level, but can choose a rogue special
+ability from the Player ’s Handbook(crippling strike, defensive roll,
+improved evasion, opportunist, skill mastery, and slippery mind)
+instead of a bonus feat.
+Bonus Feats:The epic rogue gains a bonus feat every four
+levels higher than 20th (24th, 28th, and so on).
+EPIC SORCERER
+The epic sorcerer has grown his natural arcane ability to mythi-
+cal proportions, but the need for ever-greater power never
+abates.
+Hit Die:d4.
+Skill Points at Each Additional Level: 2 + Int modifier.
+Spells:The sorcerer’s caster level is equal to his class level. The
+sorcerer’s number of spells per day does not increase after 20th
+level. The sorcerer does not learn additional spells.
+Familiar:The epic sorcerer’s familiar continues to increase in
+power. Every two levels higher than 20th (22nd, 24th, and so on)
+the familiar’s natural armor bonus and Intelligence each increase
+by +1. The familiar’s spell resistance is equal to the master’s level +
+5. At 21st level and again every ten levels higher than 21st, the
+familiar gains the benefit of the Familiar Spell epic feat for a spell
+of its master’s choice.
+Bonus Feats:The epic sorcerer gains a bonus feat every three
+levels higher than 20th (23rd, 26th, and so on).
+EPIC WIZARD
+To the epic wizard, knowledge is power, and the quest for knowl-
+edge is never-ending. The secrets of greater magic and the cre-
+ation of artifacts tempt the epic wizard, who pursues these secrets
+across the planes.
+Hit Die:d4.
+Skill Points at Each Additional Level: 2 + Int modifier.
+Spells:The wizard’s caster level is equal to her class level. The
+wizard’s number of spells per day does not increase after 20th
+level. Each time the wizard attains a new level, she learns two
+new spells of any level or levels that she can cast (according to
+her new level).
+Familiar:The epic wizard’s familiar continues to increase in
+power. Every two levels higher than 20th (22nd, 24th, and so on)
+the familiar’s natural armor bonus and Intelligence each increase
+by +1. The familiar’s spell resistance is equal to the master’s level +
+5. At 21st level and again every ten levels higher than 21st, the
+familiar gains the benefit of the Familiar Spell epic feat for a spell
+of its master’s choice.
+Bonus Feats:The epic wizard gains a bonus feat every three
+levels higher than 20th (23rd, 26th, and so on).
+CREATING CHARACTERS ABOVE 20TH LEVEL
+If you want to create (or allow players to create) characters above
+20th level, use the table below to assign a value for such a charac-
+ter’s starting gear.
+Character LevelWealthCharacter LevelWealth
+21st975,000 gp31st4,900,000 gp
+22nd1,200,000 gp32nd5,600,000 gp
+23rd1,500,000 gp33rd6,300,000 gp
+24th1,800,000 gp34th7,000,000 gp
+25th2,100,000 gp35th7,900,000 gp
+26th2,500,000 gp36th8,800,000 gp
+27th2,900,000 gp37th9,900,000 gp
+28th3,300,000 gp38th11,000,000 gp
+29th3,800,000 gp39th12,300,000 gp
+30th4,300,000 gp40th13,600,000 gp
+Limiting Magic Items: Just as when you create (or allow
+players to create) characters above 1st level (see page 199), you
+might wish to rule that a character above 20th level has a limited
+selection of magic items to choose from, or that he can only
+spend a certain fraction of his starting wealth on any single piece
+of equipment.
+For instance, you might decide that a newly created character
+can select any single item that represents no more than 25% of
+that character’s starting wealth, and no more than three addi-
+tional items each of which is worth more than 10% of his starting
+wealth. Thus, a newly created 22nd-level character, with a whop-
+ping 1,200,000 gp to spend, could have any single item worth no
+more than 400,000 gp and could have as many as three additional
+items each of which is worth no more than 120,000 gp.
+MONSTERS AS EPIC CHARACTERS
+The epic rules in this section also work for monsters with char-
+acter levels, using the creature’s effective character level (ECL)
+instead of just its class levels. For example, a bugbear (3 Hit Dice
+and +2 level adjustment) that is also a 14th-level fighter/3rd-
+level blackguard is ECL 22 and thus gains an epic attack and
+save bonus.
+The Monster Manual has level adjustments for many monsters
+appropriate for use as characters. Use these modifiers to estimate
+appropriate modifiers for other nonstandard PC races that you
+might choose to include.
+EPIC FEATS
+The following feats are available only to epic characters. When-
+ever an epic character gains a new feat, it can be from among the
+ones in the Player ’s Handbookor one of the feats described below.
+Familiar Spell [Epic]
+Your familiar can cast a spell.
+Prerequisite:Int 25 (if your spellcasting is controlled by Intel-
+ligence) or Cha 25 (if your spellcasting is controlled by Charisma).
+Benefit:Choose one spell you know of 8th level or lower, such
+as chain lightning orcircle of death. Your familiar can now cast this
+spell once per day as a spell-like ability as a caster of a level equal to
+your caster level. You cannot bestow a spell upon your familiar if
+the spell normally has a material component cost of more than 1
+gp, or any XP cost.
+Special: You can gain this feat multiple times. Each time you
+take the feat, you can give your familiar a new spell-like ability, or
+another daily use of the same spell-like ability.
+Great Smiting [Epic]
+Your smite attacks are much more powerful than normal.
+Prerequisites:Cha 25, smite ability (from class feature or
+domain granted power).
+Benefit:Whenever you make a successful smite attack, add
+twice the appropriate level to damage (rather than just your level).
+Special:You may select this feat multiple times. Its effects stack.
+(Remember that two doublings equals a tripling, and so forth.)
+Improved Elemental Wild Shape [Epic]
+You can take the form of a larger variety of elementals than normal.
+Prerequisites:Wis 25, ability to wild shape into an elemental.
+Benefit:Your  ability  to  wild  shape  into  an  elemental  is
+expanded to include all elemental creatures (not just air, earth,
+fire, and water elementals) of any size that you can take when wild
+shaping into an animal. For instance, if you are normally capable
+of taking the shape of an animal of Huge size, you can now wild
+shape into a Huge elemental creature. You gain all extraordinary
+and supernatural abilities of the elemental whose form you take.
+Normal:Without this feat, you may only take the shape of a
+Small, Medium, or Large air, earth, fire, or water elemental.
+209
+CHAPTER 6:
+CHARACTERS

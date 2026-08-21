@@ -24,7 +24,11 @@ export const checkPrerequisites = (feat: any, pc: any): { met: boolean; details:
 
   let met = true;
   const details: Array<{ desc: string; met: boolean }> = [];
-  const learnedIds = Array.isArray(pc.feats) ? pc.feats.map((f: any) => f.id) : [];
+  const autoFeatIds = typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats().map((f: any) => f.id) : [];
+  const learnedIds = [
+    ...(Array.isArray(pc.feats) ? pc.feats.map((f: any) => f.id) : []),
+    ...autoFeatIds
+  ];
 
   const getAblVal = (statObj: any) => {
     if (!statObj) return 10;
@@ -135,7 +139,19 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   const hasWizard = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'wizard'), [pc.classes]);
   const hasMonk = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'monk'), [pc.classes]);
 
+  const autoFeats = useMemo(() => typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats() : [], [pc.classes, pc.rangerCombatStyle]);
   const activeFeats = useMemo(() => Array.isArray(pc.feats) ? pc.feats : [], [pc.feats]);
+  
+  const combinedFeats = useMemo(() => {
+    const list = [...activeFeats.map((f: any) => ({ ...f, isAutomatic: false }))];
+    autoFeats.forEach((af: any) => {
+      if (!list.some((lf: any) => lf.id === af.id)) {
+        list.push({ id: af.id, isAutomatic: true, source: af.source });
+      }
+    });
+    return list;
+  }, [activeFeats, autoFeats]);
+
   const activeClasses = useMemo(() => Array.isArray(pc.classes) ? pc.classes : [], [pc.classes]);
 
   const totalLevel = useMemo(() => activeClasses.reduce((sum: number, c: any) => sum + (c.level || 0), 0) || 1, [activeClasses]);
@@ -188,16 +204,20 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   const isLimitReached = useMemo(() => activeFeats.length >= totalMax, [activeFeats.length, totalMax]);
 
   const learnedFeatsFiltered = useMemo(() => {
-    return activeFeats.filter((f: any) => {
+    return combinedFeats.filter((f: any) => {
       const reg = CombatFeats.REGISTRY[f.id];
       const name = (reg?.nameEn || reg?.nameDe) ?? f.id;
       return name.toLowerCase().includes(learnedSearch.toLowerCase().trim());
     });
-  }, [activeFeats, learnedSearch]);
+  }, [combinedFeats, learnedSearch]);
 
   const compendiumList = useMemo(() => {
     const list: Array<{ feat: any; depth: number }> = [];
-    const learnedIds = activeFeats.map((f: any) => f.id);
+    const autoFeatIds = typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats().map((f: any) => f.id) : [];
+    const learnedIds = [
+      ...activeFeats.map((f: any) => f.id),
+      ...autoFeatIds
+    ];
 
     const addFeatWithChildren = (featId: string, depth: number) => {
       const feat = CombatFeats.REGISTRY[featId];
@@ -304,9 +324,16 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                 
                 const optionLabel = featInst.option ? ` (${featInst.option})` : '';
                 const categoryEn = (({ combat: 'Combat Feat', metamagic: 'Metamagic', item_creation: 'Item Creation', general: 'General' } as Record<string, string>)[feat.category]) || 'General';
-                const isClassBonus = (getBonusFeatClass(feat) === 'fighter' && hasFighter) ||
+                
+                const isAutomatic = featInst.isAutomatic;
+                const isClassBonus = !isAutomatic && ((getBonusFeatClass(feat) === 'fighter' && hasFighter) ||
                                      (getBonusFeatClass(feat) === 'wizard' && hasWizard) ||
-                                     (getBonusFeatClass(feat) === 'monk' && hasMonk);
+                                     (getBonusFeatClass(feat) === 'monk' && hasMonk));
+
+                const borderColor = isAutomatic ? '#1976d2' : (isClassBonus ? '#2a6a2a' : 'var(--pb)');
+                const borderLeftColor = isAutomatic ? '#1976d2' : (isClassBonus ? '#2a6a2a' : 'var(--pb)');
+                const backgroundVal = isAutomatic ? 'rgba(25, 118, 210, 0.03)' : (isClassBonus ? 'rgba(42, 106, 42, 0.03)' : 'transparent');
+                const hoverBackgroundVal = isAutomatic ? 'rgba(25, 118, 210, 0.07)' : (isClassBonus ? 'rgba(42, 106, 42, 0.07)' : 'rgba(200, 169, 110, 0.05)');
 
                 const prereqsResult = checkPrerequisites(feat, pc);
 
@@ -325,15 +352,15 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       flexDirection: 'column',
                       gap: '2px',
                       transition: 'transform 0.15s, background-color 0.15s',
-                      border: isClassBonus ? '1.2px solid #2a6a2a' : '0.5px solid var(--pb)',
-                      borderLeft: isClassBonus ? '3.5px solid #2a6a2a' : '0.5px solid var(--pb)',
-                      background: isClassBonus ? 'rgba(42, 106, 42, 0.03)' : 'transparent',
+                      border: isAutomatic || isClassBonus ? `1.2px solid ${borderColor}` : '0.5px solid var(--pb)',
+                      borderLeft: isAutomatic || isClassBonus ? `3.5px solid ${borderLeftColor}` : '0.5px solid var(--pb)',
+                      background: backgroundVal,
                     }}
                     onMouseOver={(e) => {
-                      e.currentTarget.style.background = isClassBonus ? 'rgba(42, 106, 42, 0.07)' : 'rgba(200, 169, 110, 0.05)';
+                      e.currentTarget.style.background = hoverBackgroundVal;
                     }}
                     onMouseOut={(e) => {
-                      e.currentTarget.style.background = isClassBonus ? 'rgba(42, 106, 42, 0.03)' : 'transparent';
+                      e.currentTarget.style.background = backgroundVal;
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -345,7 +372,14 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                           </span>
                         )}
                       </span>
-                      <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px' }}>{categoryEn}</span>
+                      <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+                        {isAutomatic && (
+                          <span style={{ fontSize: '7px', color: '#1976d2', background: 'rgba(25, 118, 210, 0.1)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold' }}>
+                            {featInst.source || 'Klassentalent'}
+                          </span>
+                        )}
+                        <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px' }}>{categoryEn}</span>
+                      </div>
                     </div>
                     <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={feat.benefitEn || feat.benefitDe}>
                       {feat.benefitEn || feat.benefitDe}

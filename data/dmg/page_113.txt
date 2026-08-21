@@ -1,0 +1,106 @@
+112
+bow, that bow does not have a high strength rating (see Composite
+Longbow, page 119 of the Player ’s Handbook). For brevity in this
+column, “mwk” is an abbreviation for “masterwork,” and the terms
+“melee” and “ranged” should be read as “melee weapon” and “ranged
+weapon.” Also, the name of a specific magic item is shortened to a
+single word in all references after the first one; for instance, ring of
+protectionbecomes ring.
+The wealth possessed by an NPC in excess of his or her gear’s
+value is indicated at the end of this entry and can be used to pur-
+chase additional equipment as desired. The expense of outfitting a
+character with an exotic weapon or with a ranged weapon that has
+a high strength rating should come out of this excess wealth.
+These balances are rounded to the nearest 50 gp for neatness; it’s
+okay to exceed them by a few gp.
+Spells Known per Level:For bards and sorcerers, an addi-
+tional table gives the number of spells known at each level from
+1st through 20th.
+NPC BARBARIAN
+Starting Ability Scores:Str 15, Dex 14, Con 13, Int 10, Wis 12,
+Cha 8.
+Increased Ability Scores:4th, Str 16; 8th, Con 14; 12th, Str 17;
+16th, Str 18; 17th, Str 18 (20); 19th, Str 18 (24), Dex 14 (16); 20th,
+Str 19 (25).
+Sample 5th-Level NPC Barbarian:Half-orc Bbn 5; CR 5;
+Medium humanoid (orc); HD 5d12+5; hp 43; Init +2; Spd 30 ft.;
+AC 18, touch 12, flat-footed 18; Base Atk +5; Grp +9; Atk +11 melee
+(1d12+6/×3, masterwork greataxe) or +7 ranged (1d8+4/×3, com-
+posite longbow [+4 Str bonus]); Full Atk +11 melee (1d12+6/×3,
+masterwork greataxe) or +7 ranged (1d8+4/×3, composite long-
+bow [+4 Str bonus]); SA —; SQ darkvision 60 ft., improved
+uncanny dodge, rage 2/day, trap sense +1, uncanny dodge; AL CE;
+SV Fort +5, Ref +3, Will +2; Str 18, Dex 14, Con 13, Int 8, Wis 12,
+Cha 6.
+Skills and Feats:Climb +7, Jump +7, Listen +7, Survival +7;
+Dodge, Weapon Focus (greataxe).
+Improved Uncanny Dodge (Ex):This barbarian cannot be flanked
+except by a rogue of at least four levels higher than the barbarian.
+Rage (Ex):+4 to Str, +4 to Con, +2 on Will saves, –2 to AC for up
+to 6 rounds.
+Trap Sense (Ex): This barbarian has an intuitive sense that alerts
+him to danger from traps, granting a +1 bonus on Reflex saves and
+a +1 dodge bonus to AC against attacks by traps.
+Uncanny Dodge (Ex):This barbarian can react to danger before
+his senses would normally allow him to do so. He retains his Dex-
+terity bonus to AC even when caught flat-footed.
+Possessions: +1 breastplate, masterwork greataxe, composite long-
+bow (+4 Str bonus), 20 arrows, 5 cold iron arrows, 5 silvered
+arrows, 2 potions of cure moderate wounds, potion of lesser restoration,
+potion of neutralize poison, 3 flasks alchemist’s fire, climber’s kit,
+dagger.
+Sample 10th-Level NPC Barbarian:Half-orc Bbn 10; CR 10;
+Medium humanoid (orc); HD 10d12+30; hp 90; Init +2; Spd 40 ft.;
+AC 18, touch 12, flat-footed 18; Base Atk +10; Grp +14; Atk +16
+melee (1d12+7/19–20/×3, +1 greataxe) or +13 ranged (1d8+5/×3, +1
+composite  longbow  [+4  Str  bonus]);  Full  Atk  +16/+11  melee
+(1d12+7/19–20/×3, +1 greataxe) or +13/+8 ranged (1d8+5/×3, +1
+composite longbow [+4 Str bonus]); SA —; SQ darkvision 60 ft.,
+CHAPTER 4:
+NONPLAYER
+CHARACTERS
+Table 4–11: Evil NPC Race or Kind
+BbnBrdClrDrdFtrMnkRgrRogSorWizRace/KindLevel
+2
+——01–02—01–02——01——Dwarf, deepNormal
+——03—03–04—————Dwarf, hillNormal
+—0104—05—0102—01–10Elf, highNormal
+01—05—————01—Elf, wildNormal
+02–030206–0801–0206–07—02–1103—11Elf, woodNormal
+0403–1709–180308–1201–1012–2804–1802–1612–26Half-elfNormal
+051819–20—13—2919–3817–2127Halfling, lightfootNormal
+061921—14——3922—Halfling, deepNormal
+—202204——30402328Halfling, tallfellowNormal
+07–2921–2223–2505–0615–2311–2031–3941–5024–28—Half-orcNormal
+30–3923–9726–5607–5624–5321–9040–6951–7029–6829–78HumanNormal
+40–44—57–6357–7154—70–71—69—LizardfolkNormal
+4598647255——71–8570—GoblinNormal
+46—657356–8091–9372867179–80HobgoblinNormal
+47—667481——8772–86—KoboldNormal
+48–77—677582–86—————OrcNormal
+789968——94—88–89—81Tiefling (planetouched)Normal
+——69–71—87—————Drow (elf ) [female]–1
+————88————82–91Drow (elf ) [male]–1
+——72—89—————Dwarf, duergar–1
+————90—————Derro–1
+79–83—73–7476–10091—73–92—8792Gnoll–1
+84—75–89—92—93—88–90—Troglodyte–1
+85–86—90–91—93—9490–939193Bugbear–2
+87–90—92—94—95—92—Ogre–2
+91–94—93—————93—Minotaur–4
+——94—95——949494Mind flayer–8
+——95—9695–96——9595–96Ogre mage–8
+——96—9797–989695–969697Wererat (lycanthrope)
+1
+–1
+95–9610097—98—97–98979798Werewolf (lycanthrope)
+1
+–1
+97–98—98–99—99999998–999899Half-fiend
+1
+–2
+99–100—100—10010010010099–100100Half-dragon
+1
+–2
+1 Reroll to determine the NPC’s base race or kind. (On the reroll, ignore rolls marked with a 1.)
+2 If the creature is exceptionally powerful, reduce its class level to balance. If its class level is 0 or lower, reroll.

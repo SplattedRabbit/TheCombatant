@@ -1,0 +1,32 @@
+{
+  "title": "Dungeon Master's Guide v.3.5 Index Map",
+  "pdf_page_offset": 1,
+  "chapters": {
+    "1": { "name": "Running the Game", "start_page": 5, "start_file": "page_6.txt" },
+    "2": { "name": "Using the Rules", "start_page": 19, "start_file": "page_20.txt" },
+    "3": { "name": "Adventures", "start_page": 43, "start_file": "page_44.txt" },
+    "4": { "name": "Nonplayer Characters", "start_page": 103, "start_file": "page_104.txt" },
+    "5": { "name": "Campaigns", "start_page": 129, "start_file": "page_130.txt" },
+    "6": { "name": "Characters", "start_page": 169, "start_file": "page_170.txt" },
+    "7": { "name": "Magic Items", "start_page": 211, "start_file": "page_212.txt" },
+    "8": { "name": "Glossary", "start_page": 289, "start_file": "page_290.txt" }
+  },
+  "prestige_classes": {
+    "Arcane Archer": { "printed_page": 176, "file": "page_177.txt" },
+    "Arcane Trickster": { "printed_page": 177, "file": "page_178.txt" },
+    "Archmage": { "printed_page": 178, "file": "page_179.txt" },
+    "Assassin": { "printed_page": 180, "file": "page_181.txt" },
+    "Blackguard": { "printed_page": 181, "file": "page_182.txt" },
+    "Dragon Disciple": { "printed_page": 183, "file": "page_184.txt" },
+    "Duelist": { "printed_page": 185, "file": "page_186.txt" },
+    "Dwarven Defender": { "printed_page": 186, "file": "page_187.txt" },
+    "Eldritch Knight": { "printed_page": 187, "file": "page_188.txt" },
+    "Hierophant": { "printed_page": 188, "file": "page_189.txt" },
+    "Horizon Walker": { "printed_page": 189, "file": "page_190.txt" },
+    "Loremaster": { "printed_page": 190, "file": "page_191.txt" },
+    "Mystic Theurge": { "printed_page": 192, "file": "page_193.txt" },
+    "Red Wizard": { "printed_page": 193, "file": "page_194.txt" },
+    "Shadowdancer": { "printed_page": 194, "file": "page_195.txt" },
+    "Thaumaturgist": { "printed_page": 196, "file": "page_197.txt" }
+  }
+}

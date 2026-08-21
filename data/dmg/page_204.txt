@@ -1,0 +1,123 @@
+deliver touch spells, improved evasion, low-light vision, speak
+with master, granted abilities; AL any; SV Fort +2, Ref +6, Will +1;
+Str 3, Dex 19, Con 10, Int 8, Wis 12, Cha 6.
+Skills and Feats:Hide +14, Listen +4, Spot +4 (or master’s, if
+better); Alertness, Weapon Finesse.
+Attach (Ex): If a stirge hits with a touch attack, it latches onto the
+opponent’s body (AC 12 when attached).
+Blood Drain (Ex): An attached stirge deals 1d4 points of Consti-
+tution damage each round. Once it has drained 4 points of Con-
+stitution, it detaches and cannot drain blood again for 8 hours.
+ALTERNATE FAMILIARS BY MASTER SIZE
+The suggested familiars in the Player ’s Handbookassume a Small to
+Large master. Masters outside this size range could have smaller or
+larger familiars, as appropriate to their size.
+Tiny or Smaller Masters
+Masters smaller than the usual size can have proportionately
+smaller familiars, as indicated on the table below.
+FamiliarSpecial
+Bat—
+FerretMaster gains a +2 bonus on Reflex saves
+HedgehogMaster gains a +1 natural armor bonus
+MouseMaster gains a +2 bonus on Move Silently checks
+Screech owlMaster gains a +2 bonus on Move Silently checks
+ToadMaster gains +3 hit points
+ThrushSpeaks one language
+The statistics given below assume a 1st-level master with no addi-
+tional class or race bonuses to attack rolls or saving throws.
+Granted Abilities:In addition to their own special qualities, all
+familiars grant their masters the Alertness feat, the benefit of an
+empathic link, and the ability to share spells with the familiar. See
+page 53 of the Player ’s Handbookfor details.
+Improved Evasion (Ex): When subjected to an attack that nor-
+mally allows a Reflex saving throw for half damage, a familiar
+takes no damage if it makes a successful saving throw and half
+damage even if the saving throw fails.
+Bat Familiar: CR —; Diminutive magical beast; HD 1; hp 1/2
+master’s; Init +2; Spd 5 ft., fly 40 ft. (good); AC 17, touch 16, flat-
+footed 15; Base Atk +0; Grp –17; Atk —; Full Atk —; Space/Reach
+1 ft./0 ft.; SA —; SQ blindsense 20 ft., improved evasion, granted
+abilities; AL any; SV Fort +2, Ref +4, Will +2; Str 1, Dex 15, Con 10,
+Int 6, Wis 14, Cha 4.
+Skills and Feats:Hide +14, Listen +8, Move Silently +6, Spot +8;
+Alertness.
+Blindsense (Ex):Notices and locates creatures within 20 feet.
+Adds +4 to Spot and Listen checks (already included above).
+Ferret Familiar:CR —; Diminutive magical beast; HD 1;
+hp 1/2 master’s; Init +2; Spd 15 ft., climb 15 ft; AC 17, touch 16,
+flat-footed 15; Base Atk +0; Grp –16; Atk +6 melee (1d2–4, bite);
+Full Atk +6 melee (1d2–4, bite); Space/Reach 1 ft./0 ft.; SA attach;
+SQ improved evasion, scent, granted abilities; AL any; SV Fort +2,
+Ref+4, Will +1; Str 3, Dex 15, Con 10, Int 6, Wis 2, Cha 5.
+Skills and Feats: Balance +10, Climb +11, Hide +13, Move Silently
++9, Spot +14; Weapon Finesse.
+Attach (Ex):On a hit with its bite attack, it automatically deals
+bite damage each round (AC 15 when attached).
+Hedgehog Familiar:CR —; Diminutive magical beast;
+HD 1; hp 1/2 master’s; Init +0; Spd 15 ft.; AC 17, touch 15, flat-
+footed 16; Base Atk +0; Grp –16; Atk +5 melee (1d3–4 bite); Full
+Atk +5 melee (1d3–4 bite); Space/Reach 1 ft./0 ft.; SA poison;
+SQ defensive ball, improved evasion, granted abilities; AL any;
+SV Fort +2, Ref +3, Will +1; Str 3, Dex 12, Con 10, Int 6, Wis 12,
+Cha 5.
+Skills and Feats:Hide +17, Listen +5, Spot +5; Weapon Finesse.
+Poison (Ex):When in a defensive ball (see below), spines poison
+foes touching the hedgehog; injury, Fortitude DC 10, initial and
+secondary damage 1d2 Dex.
+Defensive Ball (Ex):Rolls into a ball as a standard action, granting
+a +2 circumstance bonus on saves and AC. Unrolling is a free
+action.
+Mouse Familiar:CR —; Fine magical beast; HD 1; hp 1/2
+master’s; Init +0; Spd 10 ft., climb 10 ft.; AC 19, touch 18, flat-
+footed 19; Base Atk +0; Grp –21; Atk —; Full Atk —; Space/Reach
+1/2 ft./0 ft.; SA —; SQ improved evasion, scent, granted abilities;
+AL any; SV Fort +2, Ref +2, Will +1; Str 1, Dex 11, Con 10, Int 6,
+Wis 12, Cha 2.
+Skills and Feats:Balance +8, Climb +10, Hide +20, Move
+Silently +12.
+Screech Owl Familiar:CR —; Diminutive magical beast;
+HD 1; hp 1/2 master’s; Init +3; Spd 10 ft., fly 30 ft. (average); AC 18,
+touch 17, flat-footed 15; Base Atk +0; Grp –15; Atk +7 melee
+(1d2–3, talons); Full Atk +7 melee (1d2–3, talons); Space/Reach 1
+ft./0 ft.; SA —; SQ improved evasion, granted abilities; AL any; SV
+Fort +2, Ref +5, Will +2; Str 4, Dex 17, Con 10, Int 6, Wis 14, Cha 4.
+Skills  and  Feats:Listen  +14,  Move  Silently  +20,  Spot  +8;
+Weapon Finesse.
+Thrush Familiar:CR —; Diminutive magical beast; HD 1;
+hp 1/2 master’s; Init +2; Spd 10 ft., fly 40 ft. (average); AC 17, touch
+16, flat-footed 15; Base Atk +0; Grp –17; Atk —; Full Atk —;
+Space/Reach 1 ft./0 ft.; SA —; SQ improved evasion, granted abil-
+ities; AL any; SV Fort +2, Ref +4, Will +2; Str 1, Dex 15, Con 10,
+Int6, Wis 14, Cha 6.
+Skills and Feats:Listen +8, Spot +8; Alertness.
+Toad Familiar:CR —; Diminutive magical beast; HD 1; hp 1/2
+master’s; Init +1; Spd 5 ft.; AC 16, touch 15, flat-footed 15; Base Atk
++0; Grp –17; Atk —; Full Atk —; Space/Reach 1 ft./0 ft.; SA —; SQ
+improved evasion, low-light vision, granted abilities; AL any; SV
+Fort +2, Ref +3, Will +2; Str 1, Dex 12, Con 11, Int 6, Wis 14, Cha 4.
+Skills and Feats:Hide +21, Listen +4, Spot +4; Alertness.
+Huge or Bigger Masters
+Masters larger than the usual size can have proportionately larger
+familiars, as shown below.
+FamiliarSpecial
+Dire ratMaster gains a +2 bonus on Fortitude saves
+LeopardMaster gains a +2 bonus on Move Silently checks
+Monitor lizardMaster gains +3 hit points
+Owl (Medium)Master gains a +2 bonus on Move Silently checks
+Raven (Small)Speaks one language
+Viper snake —
+(Medium)
+WolverineMaster gains a +2 bonus on Reflex saves
+The statistics given below assume a 1st-level master with no addi-
+tional class or race bonuses to attack rolls or saving throws.
+Granted Abilities:In addition to their own special qualities, all
+familiars grant their masters the Alertness feat, the benefit of an
+empathic link, and the ability to share spells with the familiar. See
+page 53 of the Player ’s Handbookfor details.
+Improved Evasion (Ex): When subjected to an attack that nor-
+mally allows a Reflex saving throw for half damage, a familiar
+takes no damage if it makes a successful saving throw and half
+damage even if the saving throw fails.
+203
+CHAPTER 6:
+CHARACTERS

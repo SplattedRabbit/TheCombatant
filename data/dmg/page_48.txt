@@ -1,0 +1,134 @@
+building or a dungeon). Mark important areas with numbers or
+letters that reference the map key. Make notes on the map describ-
+ing anything of importance, including room contents (statues,
+pools, furniture, pillars, steps, pits, curtains, and so on). Plan out
+which areas are linked by similar or allied inhabitants. Place traps,
+taking care to note particularly the location of trap triggers. Con-
+sider spell ranges—if an NPC wizard is in a particular area and you
+know that she might cast a particular spell, save yourself time
+during the playing of the adventure by noting now how far the
+spell effect can extend.
+As you map out the site, think about how you’ll depict each area
+at the gaming table. It’s a bad idea, for example, to design a site
+with many areas that are larger than the grid you place your minia-
+tures on. If it’s likely that characters will travel back and forth
+between two adjacent rooms, make each of the rooms small
+enough to fit both of them on the tabletop grid at the same time.
+Remember that the player characters are catalysts for change.
+While you play, note changes caused by the PCs’ presence—pos-
+sibly even writing them directly on the map. That way it’s easier to
+remember, on the second time they pass through an area, which
+doors they have knocked down, which traps they have triggered,
+which treasures they have looted, which guardians they have
+defeated, and so forth.
+Create a Key: A map key is a set of notes (as detailed or brief as
+you  need  them  to  be)  detailing  each  area’s  contents,  NPCs
+(description, statistics, possible actions), and whatever else makes
+the place special. For example, on an outdoor map you might mark
+an area that triggers a landslide if crossed, a bridge over the river
+guarded by lizardfolk, and the lair of a basilisk—complete with
+details about the interior of the lair and the treasure formerly in
+the possession of the half-eaten, petrified victims in the back.
+Each entry should include the game information needed to run
+that encounter. If an area has nothing to write about, don’t bother
+marking it on the key.
+Most dungeon adventures are site-based. See The Dungeon,
+page 57, as well as the sample dungeon adventure that begins on
+page 78.
+A site-based adventure allows the PCs to drive the action. If
+they come to a fork in the path, they’re free to choose whichever
+way they want. It doesn’t matter which path they choose, or if they
+never go down one path at all. The characters can leave the loca-
+tion and come back, often resuming the adventure exactly where
+they left off (although some aspects of the site may have changed,
+depending on how static the site is; see below).
+A site-based adventure is easy to run once you’ve made all the
+preparations. All the information is right there in front of you, on
+the map and in the key. Between the two of them, you should be
+able to handle any sort of action the PCs may take during the
+adventure.
+Site-based adventures often lure PCs based simply on the repu-
+tation of the site, but sometimes an event triggers a site-based
+adventure, drawing the PCs to the location. Once they are at the
+site, your map and its key come into play.
+STATIC OR DYNAMIC
+Sometimes a site-based adventure takes place at a static location.
+The map depicts an old ruin filled with monsters, shows where
+the ancient treasures are located within the ruin, where the traps
+or danger spots are located, and so on. The PCs can arrive at this
+location at any time, stay as long as they desire, leave whenever
+they want, and come back later to find the site pretty much the
+same as they left it (although more monsters may have taken up
+residence, or a few may have wandered off; maybe a trap has been
+triggered by a monster and no longer threatens the PCs, or a trap
+the PCs previously triggered has been reset).
+Designing a static site-based adventure is fairly easy. You don’t
+have to think much about how the residents of the various en-
+counter areas interact, and each encounter area need only be de-
+signed with the most immediate implications in mind—namely,
+what happens when the PCs arrive?
+By contrast, a good example of a dynamic site is a drow fortress-
+temple. A dynamic site usually involves some sort of intelligent
+organization. As the PCs move around the site, they discover that
+actions in certain areas affect encounters in other areas. For
+example, if the PCs kill two of the drow priestesses in the fortress-
+temple but allow a third one to escape, the fortress-temple mobi-
+lizes its populace—now, defenders are moving around from loca-
+tion to location and are much more likely to attack any unknown
+intruders rather than ask questions. Perhaps the two dead priest-
+esses rise from the dead as vampires and start creating vampire
+spawn as bodyguards.
+Designing a dynamic site is more complicated than designing a
+static one. In addition to creating a map and a key—both of which
+might be updated significantly as the adventure develops—you
+must address the following issues as well.
+•Formulate defensive plans for the inhabitants. “If attacked, the
+guards  use  the  gong  to  raise  the  alarm.  The  sound  of  the  gong
+can be heard in areas A, B, and D. The inhabitants in those areas
+hastily  don  hide  armor  (5  rounds)  and  overturn  tables  to  give
+themselves cover. The sorcerer in area B casts mass invisibilityon
+himself and the barbarian.”
+•Develop conditional requirements for various areas. “If anyone
+disturbs  the  three  unholy  gems  upon  the  altar,  the  Infernal
+Gates in area 5 open, allowing access to the City of Dis but also
+calling 3d4 barbazu devils, who live in the dungeon by day and
+come out at night to raid the countryside in a 5-mile radius.”
+•Determine the inhabitants’ long-term plans. “In a month’s time,
+the  goblins  will  have  completed  the  wall  in  area  39.  With  that
+defense  to  fall  back  on,  they  begin  the  assault  on  the  kobold
+caves in areas 32 through 37. If no one intervenes, the goblins
+will clear out the kobolds in three weeks and the goblin adept
+will  gain  the  wand  of  lightning  boltstored  in  the  secret  vault  in
+area 35.”
+EVENT-BASED ADVENTURES
+The death of the king. The Rain of Colorless Fire. The carnival’s
+arrival in town. Unexplained disappearances. Merchants of Druus
+looking for caravan guards. Events can lead to adventures, drawing
+the PCs in and getting them involved in amazing predicaments.
+When you create an an event-based adventure, you structure it
+in the form of “Something happens, and if the PCs do this, then
+thathappens. . . .” An event-based adventure is built around a series
+of events influenced by the PCs’ actions. The PCs’ reactions
+change the events that occur, or the order in which they occur, or
+both.
+In an event-based adventure, the PCs usually have a goal or a
+mission beyond “Kill all the monsters” or “Get as much treasure as
+possible” or even “Explore this area.” The adventure instead
+focuses on the adventurers trying to accomplish something spe-
+cific. The encounters in the adventure occur as an offshoot of that
+effort—either as a consequence of their actions, or as opposing
+forces attempting to stop them, or both.
+This kind of adventure is often described as story-based,
+because it’s more like a book or a movie and less like exploration of
+a passive site. An event-based adventure usually doesn’t use a
+room-by-room key of a location but instead consists of notes on
+which events occur when. Two of the best ways to organize these
+notes are in the form of a flowchart or a timeline.
+Flowchart:By drawing connected boxes or circles with event
+descriptions in them, it’s easy to visually track the flow of events:
+“As the PCs investigate the murder, they question the innkeeper.
+She tells them that she saw someone suspicious hanging around
+the back of the livery last night. If they ask specifically about Greg-
+47
+CHAPTER 3:
+ADVENTURES

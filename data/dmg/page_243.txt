@@ -1,0 +1,198 @@
+242
+CHAPTER 7:
+MAGIC ITEMS
+77snare150 gp
+78soften earth and stone150 gp
+79–80sound burst150 gp
+81speak with plants150 gp
+82–83spider climb150 gp
+84–85spiritual weapon150 gp
+86status150 gp
+87–88summon monster II150 gp
+89–90summon nature’s ally II150 gp
+91–92summon swarm150 gp
+93tree shape150 gp
+94–95undetectable alignment150 gp
+96–97warp wood150 gp
+98wood shape150 gp
+99–100zone of truth150 gp
+3rd-Level Divine Spells
+d%SpellMarket Price
+01–02animate dead625 gp
+03–04bestow curse375 gp
+05–06blindness/deafness375 gp
+07–08call lightning375 gp
+09–10contagion375 gp
+11–12continual flame425 gp
+13–14create food and water375 gp
+15–18cure serious wounds375 gp
+19darkvision375 gp
+20–21daylight375 gp
+22–23deeper darkness375 gp
+24–25diminish plants375 gp
+26–27dispel magic375 gp
+28–29dominate animal375 gp
+30–31glyph of warding575 gp
+32heal mount375 gp
+33–34helping hand375 gp
+35–36inflict serious wounds375 gp
+37–38invisibility purge375 gp
+39-40locate object375 gp
+41–46magic circle against chaos/375 gp
+evil/good/law
+47–48magic fang, greater375 gp
+49–50magic vestment375 gp
+51–52meld into stone375 gp
+53–55neutralize poison375 gp
+56–57obscure object375 gp
+58–59plant growth375 gp
+60–62prayer375 gp
+63–64protection from energy375 gp
+65–66quench375 gp
+67–69remove blindness/deafness375 gp
+70–71remove curse375 gp
+72–73remove disease375 gp
+74–76searing light375 gp
+77–78sleet storm375 gp
+79–80snare375 gp
+81–83speak with dead375 gp
+84–85speak with plants375 gp
+86–87spike growth375 gp
+88–89stone shape375 gp
+90–91summon monster III375 gp
+92–93summon nature’s ally III375 gp
+94–96water breathing375 gp
+97–98water walk375 gp
+99–100wind wall375 gp
+4th-Level Divine Spells
+d%SpellMarket Price
+01–05air walk700 gp
+06–07antiplant shell700 gp
+08–09blight700 gp
+10–11break enchantment700 gp
+12–13command plants700 gp
+14–15control water700 gp
+16–21cure critical wounds700 gp
+22–26death ward700 gp
+27–31dimensional anchor700 gp
+32–34discern lies700 gp
+35–37dismissal700 gp
+38–39divination725 gp
+40–42divine power700 gp
+43–47freedom of movement700 gp
+48–49giant vermin700 gp
+50–51holy sword700 gp
+52–54imbue with spell ability700 gp
+55–57inflict critical wounds700 gp
+58–60magic weapon, greater700 gp
+61–62nondetection750 gp
+63–64planar ally, lesser1,200 gp
+65–67poison700 gp
+68–69reincarnate700 gp
+70–71repel vermin700 gp
+72–76restoration800 gp
+77–78rusting grasp700 gp
+79–81sending700 gp
+82–85spell immunity700 gp
+86–87spike stones700 gp
+88–90summon monster IV700 gp
+91–93summon nature’s ally IV700 gp
+94–98tongues700 gp
+99–100tree stride700 gp
+5th-Level Divine Spells
+d%SpellMarket Price
+01–03animal growth1,125 gp
+04–05atonement3,625 gp
+06awaken2,375 gp
+07–09baleful polymorph1,125 gp
+10–13break enchantment1,125 gp
+14–16call lightning storm1,125 gp
+17–20command, greater1,125 gp
+21commune1,625 gp
+22commune with nature1,125 gp
+23–24control winds1,125 gp
+25–30cure light wounds, mass1,125 gp
+31–34dispel chaos/evil/
+good/law1,125 gp
+35–38disrupting weapon1,125 gp
+39–41flame strike1,125 gp
+42–43hallow6,125 gp
+1
+44–46ice storm1,125 gp
+47–49inflict light wounds, mass1,125 gp
+50–52insect plague1,125 gp
+53mark of justice1,125 gp
+54–56plane shift1,125 gp
+57–58raise dead6,125 gp
+59–61righteous might1,125 gp
+62–63scrying1,125 gp
+64–66slay living1,125 gp
+67–69spell resistance1,125 gp
+70–71stoneskin1,375 gp
+72–74summon monster V1,125 gp
+75–77summon nature’s ally V1,125 gp
+78symbol of pain2,125 gp
+79symbol of sleep2,125 gp
+80–82transmute mud to rock1,125 gp
+83–85transmute rock to mud1,125 gp
+86–89true seeing1,375 gp
+90–91unhallow6,125 gp
+1
+92–94wall of fire1,125 gp
+95–97wall of stone1,125 gp
+98–100wall of thorns1,125 gp
+1 Allows for a spell of up to 4th level to be
+tied to the hallowedor unhallowedarea.
+6th-Level Divine Spells
+d%SpellMarket Price
+01–03animate objects1,650 gp
+04–06antilife shell1,650 gp
+07–09banishment1,650 gp
+10–13bear’s endurance, mass1,650 gp
+14–16blade barrier1,650 gp
+17–20bull’s strength, mass1,650 gp
+21–24cat’s grace, mass1,650 gp
+25create undead1,650 gp
+26–29cure moderate wounds,1,650 gp
+mass
+30–33dispel magic, greater1,650 gp
+34–37eagle’s splendor, mass1,650 gp
+38–40find the path1,650 gp
+41–43fire seeds1,650 gp
+44forbiddance4,650 gp
+1
+45geas/quest1,650 gp
+46glyph of warding, greater1,650 gp
+47–49harm1,650 gp
+50–52heal1,650 gp
+53–55heroes’ feast1,650 gp
+56–58inflict moderate wounds,1,650 gp
+mass
+59–61ironwood1,650 gp
+62liveoak1,650 gp
+63–65move earth1,650 gp
+66–69owl’s wisdom, mass1,650 gp
+70–71planar ally2,400 gp
+72–74repel wood1,650 gp
+75–77spellstaff1,650 gp
+78–80stone tell1,650 gp
+81–83summon monster VI1,650 gp
+84–86summon nature’s ally VI1,650 gp
+87symbol of fear2,650 gp
+88symbol of persuasion6,650 gp
+89–91transport via plants1,650 gp
+92–94undeath to death2,150 gp
+95–97wind walk1,650 gp
+98–100word of recall1,650 gp
+1 Assumes an area equivalent to one 60-
+foot cube.
+7th-Level Divine Spells
+d%SpellMarket Price
+01–05animate plants2,275 gp
+06–09blasphemy2,275 gp
+10–14changestaff2,275 gp
+15–16control weather2,275 gp
+17–21creeping doom2,275 gp
+22–27cure serious wounds,2,275 gp
+mass
+28–32destruction2,275 gp

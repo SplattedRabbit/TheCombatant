@@ -1,0 +1,128 @@
+COMBAT ACTIONS
+A troll with a longspear mounted on a purple worm can reach
+opponents 4 squares away. Surrounded by enemies, it can guide its
+mount’s attacks against the same foe that it attacks, hoping to take
+him out of the combat entirely, or it can attack one foe and encour-
+age the worm to bite (and try to swallow) another while it stings a
+third enemy with its venomous tail. Combat can be a tactical game
+in and of itself, filled with good and bad decisions.
+You need to play each NPC appropriately. A combat-savvy fight-
+er with a fair Intelligence score isn’t going to allow his opponents
+to get attacks of opportunity unless he has to, but a stupid goblin
+might. A phase spider with an Intelligence of 7 might figure that
+phasing in behind the dexterous wizard he’s fighting is the best
+course of action (since the wizard blasted him with a magic missile
+spell last round), but an ankheg (Intelligence 1) might not know
+which character is the biggest threat.
+Adjudicating Actions Not Covered
+While the combat actions defined in the Player ’s Handbookare
+numerous and fairly comprehensive, they cannot begin to cover
+every possible action that a character might want to take. Your job
+is to make up rules on the spot to handle such things. In general,
+use the rules for combat actions as guidelines, and apply ability
+checks, skill checks, and (rarely) saving throws when they are
+appropriate.
+The following are a few examples of ad hoc rules decisions.
+•Reinforcements  show  up  to  help  the  bugbears  that  the  adven-
+turers are fighting. Tordek can hear these newcomers attempt-
+ing to open the door to get in. He races to the door and tries to
+hold it shut while the others finish off the foes in the room. If
+it  were  a  normal  door,  you  might  call  for  an  opposed  Strength
+check  between  Tordek  and  the  bugbears  pushing  on  the  door.
+Since  the  door  is  already  stuck,  however,  you  decide  that  the
+bugbears  must  first  push  it  open  and  then  (if  they  succeed)
+make an opposed check against Tordek.
+•A monk  wants  to  jump  up,  grab  a  chandelier,  and  swing  on  it
+into an enemy. You rule that a DC 13 Dexterity check allows the
+monk  to  grab  the  chandelier  and  swing.  The  player  asks  if  the
+monk can use his Tumble skill, and you let him. Ruling that the
+swing is somewhat like a charge, you give the monk a +2 bonus
+on the roll to see if his dramatic swinging attack succeeds.
+•A sorcerer readies a spell so that he casts it as soon as he sees a
+beholder’s small eyes shoot rays. (He decides this is the best way
+for  him  to  determine  whether  the  beholder’s  antimagic  ray  is
+currently  active.)  That  means,  however,  that  the  rays  need  to
+have  actually  fired  before  the  spell  is  cast  (the  spell  can’t  go
+before the rays in this case). Still, the sorcerer needs to know if
+he gets  his  spell  cast  before  he’s  struck  by  the  dangerous  rays.
+You rule that if the sorcerer can beat the beholder in an opposed
+check,  he  can  get  the  spell  off.  The  sorcerer  makes  a  Wisdom
+check, and the beholder opposes that with a Dexterity check.
+Combat Actions outside Combat
+As a general rule, combat actions should only be performed in
+combat—when you’re keeping track of rounds and the players are
+acting in initiative order. You’ll find obvious exceptions to this
+rule. For example, a cleric doesn’t need to roll initiative to cast cure
+light woundson a friend after the battle’s over. Spellcasting and skill
+use are often used outside combat, and that’s fine. Attacks, readied
+actions, charges, and other actions are meant to simulate combat,
+however, and are best used within the round structure.
+Consider the following situation: Outside combat, Lidda de-
+cides to pull a mysterious lever that she has found in a dungeon
+room. Mialee, standing right next to her, thinks that Lidda’s sud-
+den plan is a bad one. Mialee tries to stop Lidda. The best way to
+handle this situation is by using the combat rules as presented.
+Lidda and Mialee roll initiative. If Lidda wins, she pulls the lever.
+If Mialee wins, she grabs Lidda, requiring a melee touch attack (as
+if starting a grapple). If Mialee hits, Lidda needs to determine
+whether or not she resists. (Since Mialee is a good friend, grabbing
+Lidda’s arm might be enough to make her stop.) If Lidda keeps
+trying to pull the lever, use the grapple rules to determine
+whether Mialee can hold Lidda back.
+Adjudicating the Ready Action
+The ready action is particularly open-ended and requires that you
+make the players using it be as specific as possible about what
+their characters are doing. If a character readies a spell so that it
+will be cast when a foe comes at her, the player needs to specify
+the exact spell—and you’re justified in making the player identify
+a specific foe, either one that the character is currently aware of or
+one that might come at her from a certain direction.
+If a character specifies a readied action and then decides not to
+perform the action when the conditions are met, the standard rule
+is that the character can keep his action readied. Because combat is
+often confusing and fast, however, you’re within your rights to
+25
+CHAPTER 2:
+USING 
+THE RULES
+VARIANT: AUTOMATIC HITS AND MISSES
+The Player’s  Handbooksays  that  an  attack  roll  of  natural  1  (the  d20
+comes up 1) is always a miss. A natural 20 (the d20 comes up 20) is
+always a hit.
+This  rule  means  that  the  lowliest  kobold  can  strike  the  most
+magically protected, armored, dexterous character on a roll of 20.
+It  also  means  that  regardless  of  a  warrior’s  training,  experience,
+and magical assistance, he still misses a given foe at least 5% of
+the time.
+A different way to handle this is to say that a natural 1 is treated as
+a  roll  of  –10.  Someone  with  an  attack  bonus  of  +6  nets  a  –4  result,
+which can’t hit anything. Someone with a +23 attack bonus rolling a 1
+would hit AC 13 or lower. At the other extreme, a natural 20 is treated
+as a roll of 30. Even someone with a –2 attack penalty would hit AC 28
+with such a roll.
+VARIANT: DEFENSE ROLL
+More randomness can sometimes eliminate the foregone conclusion
+of a high-level character who always hits, or a low-level one who never
+has a chance. A good way to introduce this randomness is to allow (or
+force)  characters  to  make  defense  rolls.  Every  time  a  character  is
+attacked,  rather  than  just  using  his  never-changing,  static  AC,  he
+makes  a  d20  roll  and  adds  it  to  all  his  AC  modifiers.  Every  attack
+becomes  an  opposed  roll,  with  attacker  and  defender  matching  their
+modified rolls against one another. (One way to look at it is that with-
+out the defense roll, characters are “taking 10” on the roll each round,
+and thus are using a base of 10 for Armor Class.)
+The defense roll can be expressed like this:
+1d20 + (AC – 10)
+For example, a paladin attacks an evil fighter. The paladin rolls a 13 and
+adds his attack bonus of +10 for a result of 23. The fighter makes his
+defense roll and gets a 9. He adds his defensive bonuses (all the things
+that modify AC, including armor), which amount to +11. The fighter’s
+result is 20, less than 23, so the paladin hits.
+This  variant  rule  really  comes  in  handy  at  high  levels,  where  high-
+level fighters always hit with their primary attacks, and other characters
+rarely  do.  Unfortunately,  it  can  slow  down  play,  almost  doubling  the
+number of rolls in any given combat. A compromise might be to have
+each  defender  make  a  defense  roll  once  in  a  round,  using  that  same
+total for all attacks made against him in that round.
+pqqqqrs
+pqqqqrs

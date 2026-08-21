@@ -1,0 +1,132 @@
+and  has  a  special  cold-dominant  trait.  Creatures  there  take
+3d10  points  of  cold  damage  each  round  they’re  away  from
+shelter of some kind.
+•Mildly law-aligned and mildly evil-aligned.
+Random Encounters: Use the Hellish Encounters table (page
+167) for random encounters in the Nine Hells.
+Example Nine Hells Site: Bronze Citadel
+This brutish, unimaginative city on Avernus covers dozens of
+square miles and features twelve concentric ring walls, each bris-
+tling with war machines. The city is filled with hundreds of thou-
+sands of lesser devils of all kinds bound for the Blood War.
+Because Avernus is the likeliest beachhead for any massed de-
+monic attack, fortifications are always being added to the Bronze
+Citadel. Work gangs of lesser devils constantly expand the city.
+The construction is so pervasive that bone scaffolding is as likely
+to be supporting a given wall as not.
+To create an encounter map for the Bronze Citadel, start with
+the battlefield elements described in the Plains Terrain section
+(see page 91). Then add walls, towers and gatehouses described in
+the Urban Features section (page 99), and augment both with
+magical features such as flaming surfaces (which deal damage as a
+wall of fire spell), self-firing ballistas, and spikes that grow out of
+the walls (a trap triggered by the proximity of enemy troops).
+Any kind of devil can be found here. Even a fight with low-level
+devils will quickly escalate, because the devil armies are disciplined
+enough to train their troops to report to their commanders that
+they’re under attack. Unless they employ stealth, characters will
+work their way up the food chain, eventually facing horned devils,
+ice devils, and pit fiends sent to find out what the commotion is.
+INFERNAL BATTLEFIELD OF ACHERON
+The hue and cry of battle is the first sound a soldier hears when
+arriving on Acheron and the last sound a refugee hears when leav-
+ing. That’s all Acheron offers: conflict, war, strife, and struggle.
+Many armies populate Acheron, but leaders are scarce. Truly,
+rebels without a cause are common on Acheron, whether they’re
+mortals, fiends, or celestials.
+Avalas, Thuldanin, Tintibulus, and Ocanthus are the layers of
+Acheron, each made of island- or even continent-sized iron cubes
+floating in an airy void. Sometimes the cubes collide, and echoes of
+past collisions linger throughout the plane, mingling with the ring
+of sword on sword as armies clash across the faces of the cubes.
+Acheron has the following traits.
+•Objective  directional  gravity.  Which  way  is  down  depends  on
+which  face  of  a  cube  you’re  on.  Walking  across  edges  between
+faces can be dizzying for the inexperienced.
+•Divinely morphic. Acheron changes at the whim of its deities.
+Ordinary  creatures  must  use  spells  and  physical  effort  to
+change the infernal battlefield.
+•Mildly law-aligned.
+Random Encounters: Use the Hellish Encounters table (page
+167) for random encounters on Acheron.
+Example Acheron Site: Thuldanin’s War-Cubes
+The cubes of this layer are riddled with pockets and hollows. Sur-
+face pits lead down into labyrinthine spaces cluttered with the
+refuse of every war that was ever fought here.
+Broken scraps of a myriad of devices are everywhere. Great ships
+that have burst asunder, toppled siege towers, enormous weapons,
+steam-driven carriages, flying devices of every description, and con-
+traptions with even more obscure sources of power and purpose can
+be found within these cubes. Most of the refuse is inoperative, petri-
+fied to stonelike immobility by the “preservative” quality of the layer. 
+Scavenging for intact weapons is an occupation for many a
+team of salvagers and opportunists, because many quality weapons
+and engines of war are scattered through the rubble on Thuldanin.
+But wise salvagers don’t spend too long on Thuldanin, because
+creatures can be petrified just as objects can be. Any given object or
+creature has a 1% cumulative chance per 30 days spent on Thuldanin
+of spontaneously petrifying into stone. Objects or creatures petrified
+by the natural qualities of Thuldanin cannot be returned to their pre-
+vious state, except by such high-level magic as a wishor miraclespell.
+To make encounter maps for the war-cubes, simply create
+expansive dungeon terrain: large rooms, wide hallways, tall ceil-
+ings, and so forth. Then fill much of it with junk (light rubble or
+dense rubble). Add large structures such as catapults, war galleys,
+and strange clockwork devices. Finally, add a few statues—unfor-
+tunate ex-adventurers who lingered too long looking for treasure.
+Characters searching for treasure will undoubtedly confront
+rival salvagers; Thuldanin is known throughout the Great Wheel,
+so almost anyone or anything can be searching the caverns of the
+war-cubes. Not everything in Thuldanin is ruined. Constructs
+such as inevitables and golems might yet be functional, springing
+to action when the characters draw near. To represent the riches of
+the war-cubes, consider all creatures encountered here (except the
+constructs) to have double standard treasure. But rather than put-
+ting the treasure with the creatures, hide it among the debris of
+war and let the characters find the loot.
+CLOCKWORK NIRVANA OF MECHANUS
+Mechanus is the plane where perfectly regimented order reigns
+supreme. It consists of equal measures of light and dark, and equal
+proportions of heat and cold. On Mechanus, all law is reflected in
+a single infinite realm of immense clockwork gears, all inter-
+locked, all turning according to their own measure. The cogs seem
+to be engaged in a calculation so vast that no deity knows its pur-
+pose, except that it is somehow a function of law.
+At first glance, the nature of Mechanus seems straightforward.
+However, subtleties lurk just below the surface. Every kind of law
+can be found in the Clockwork Nirvana of Mechanus, from
+simple maxims to devilishly twisted rules of decorum.
+Mechanus has the following traits.
+•Objective  directional  gravity.  The  direction  of  “down”  is
+oriented to the face of each rotating cog. Walking between cogs
+can  be  dizzying  for  newcomers—and  dangerous  if  a  traveler
+falls between the cogs.
+•Divinely  morphic.  Lesser  deities  can  alter  Mechanus  with  a
+thought; ordinary creatures require spells and physical effort to
+do so.
+•Strongly law-aligned.
+Random Encounters: Alternate between the Hellish Encoun-
+ters table and the Heavenly Encounters table (page 167) for
+random encounters in Mechanus.
+Example Mechanus Site:  
+Fortress of Disciplined Enlightenment
+This structure sits on its own cog, and its spires and towers rise
+high into the void of Mechanus. The fortress is 2 miles in diame-
+ter, and some of its spires reach twice that height. Inevitables
+enforcing the “don’t trespass” law patrol the parapets, keeping a
+vigilant eye out for fiendish infiltrators or colonizing formians.
+A group of mortals from the Material Plane called the Frater-
+nity of Order are the masters of the fortress. The members of the
+Fraternity of Order believe that if they can but tease forth every
+law of the cosmos, they will have the power of the deities. To that
+end, they built this stronghold on the plane of ultimate law.
+A horde of clerks, functionaries, legal aides, translators, mathe-
+maticians, philosophers, and bureaucrats staff the Fortress of Dis-
+ciplined Enlightenment. Most belong to the Fraternity of Order,
+though sometimes visitors are granted access to study at the
+vaunted libraries of the Fortress. The libraries extend through
+hundreds of rooms and hold tomes of legal volumes from all over
+the Great Wheel.
+163
+CHAPTER 5:
+CAMPAIGNS

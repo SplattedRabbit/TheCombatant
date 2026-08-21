@@ -1,0 +1,131 @@
+254
+cold-based attacks (such as ice storm, cone of cold,and white dragon
+breath). However, if the field is subjected to more than 50 points
+of cold damage in 1 round (from one or multiple attacks), it col-
+lapses into its portable form and cannot be reactivated for 1 hour.
+If the field absorbs more than 100 points of cold damage in a 10-
+round period, the cube is destroyed.
+Faint abjuration; CL 5th; Craft Wondrous Item, protection from
+energy; Price 27,000 gp.
+Cubic Gate:This item is fashioned from carnelian. Each of the
+six sides of the cube is keyed to a plane, one of which is the Mate-
+rial Plane. The character creating the item should choose the
+planes to which the other five sides are keyed. If such a cube is
+found as treasure, the DM can determine the planes accessed by
+the device in any manner he or she chooses.
+If a side of the cubic gateis pressed once, it opens a gateto a ran-
+dom point on the plane keyed to that side. There is a 10% chance
+per minute that an outsider from that plane (determine randomly)
+comes through it looking for food, fun, or trouble. Pressing the
+side a second time closes the gate. It is impossible to open more
+than one gateat a time.
+If a side is pressed twice in quick succession, the character so
+doing is transported to a random point on the other plane, along
+with all creatures in adjacent squares. (The other creatures may
+avoid this fate by succeeding on DC 23 Will saves).
+Strong conjuration; CL 13th; Craft Wondrous Item, plane shift;
+Price 164,000 gp.
+Daern’s Instant Fortress:This metal cube is small, but when
+activated by speaking a command word it grows to form a tower 20
+feet square and 30 feet high, with arrow slits on all sides and a crenel-
+lated battlement atop it. The metal walls extend 10 feet into the
+ground, rooting it to the spot and preventing it from being tipped
+over. The fortress has a small door that opens only at the command of
+the owner of the fortress—even knockspells can’t open the door.
+The adamantine walls of Daern’s instant fortresshave 100 hit
+points and hardness 20. The fortress cannot be repaired except by
+a wish or a miracle, which restores 50 points of damage taken.
+The fortress springs up in just 1 round, with the door facing the
+device’s owner. The door opens and closes instantly at his com-
+mand. People and creatures nearby (except the owner) must be
+careful not to be caught by the fortress’s sudden growth. Anyone
+so caught takes 10d10 points of damage (Reflex DC 19 half ).
+The fortress is deactivated by speaking a command word (dif-
+ferent from the one used to activate it). It cannot be deactivated
+unless it is empty.
+Strong conjuration; CL 13th; Craft Wondrous Item, Morden-
+kainen’s magnificent mansion; Price 55,000 gp.
+Darkskull:This skull, carved from ebony, is wholly evil. Wher-
+ever the skull goes, the area around it is treated as though an unhal-
+low spell had been cast with the skull as the touched point of origin
+(except that no additional spell effect is tied or fixed to the darkskull).
+Moderate evocation [evil]; CL 9th; Craft Wondrous Item, unhal-
+low, creator must be evil; Price 60,000 gp; Weight 5 lb.
+Decanter of Endless Water:If the stopper is removed from
+this ordinary-looking flask and a command word spoken, an
+amount of fresh or salt water pours out. Separate command words
+determine the type as well as the volume and velocity.
+•“Stream” pours out 1 gallon per round.
+•“Fountain” produces a 5-foot-long stream at 5 gallons per round.
+•“Geyser”  produces  a  20-foot-long,  1-foot-wide  stream  at  30
+gallons per round.
+The geyser effect causes considerable back pressure, requiring
+the holder to make a DC 12 Strength check to avoid being
+knocked down. The force of the geyser deals 1d4 points of damage
+but can only affect one target per round. The command word must
+be spoken to stop it.
+Moderate transmutation; CL 9th; Craft Wondrous Item, control
+water; Price 9,000 gp; Weight 2 lb.
+Deck of Illusions:This set of parchment cards is usually found
+in an ivory, leather, or wooden box. A full deck consists of thirty-
+four cards. When a card is drawn at random and thrown to the
+ground, a major imageof a creature is formed. The figment lasts until
+dispelled. The illusory creature cannot move more than 30 feet away
+from where the card landed, but otherwise moves and acts as if it
+were real. At all times it obeys the desires of the character who drew
+the card. When the illusion is dispelled, the card becomes blank and
+cannot be used again. If the card is picked up, the illusion is auto-
+matically and instantly dispelled. The cards in a deck and the illu-
+sions they bring forth are summarized on the following table. (Use
+one of the first two columns to simulate the contents of a full deck
+using either ordinary playing cards or tarot cards.)
+Playing CardTarot CardCreature
+Ace of heartsIV. The EmperorRed dragon
+King of heartsKnight of swordsMale human fighter
+and four guards
+Queen of heartsQueen of stavesFemale human wizard
+Jack of heartsKing of stavesMale human druid
+Ten of heartsVII. The ChariotCloud giant
+Nine of heartsPage of stavesEttin
+Eight of heartsAce of cupsBugbear
+Two of heartsFive of stavesGoblin
+Playing CardTarot CardCreature
+Ace of diamondsIII. The EmpressBeholder
+King of diamondsTwo of cupsMale elf wizard and
+female apprentice
+Queen of diamonds   Queen of swordsHalf-elf ranger
+(female)
+Jack of diamondsXIV. TemperanceHarpy
+Ten of diamondsSeven of stavesMale half-orc barbarian
+Nine of diamondsFour of pentaclesOgre mage
+Eight of diamondsAce of pentaclesGnoll
+Two of diamondsSix of pentaclesKobold
+Playing CardTarot CardCreature
+Ace of spadesII. The High Priestess   Lich
+King of spadesThree of stavesThree male 
+human clerics
+Queen of spadesFour of cupsMedusa
+Jack of spadesKnight of pentaclesMale dwarf paladin
+Ten of spadesSeven of swordsFrost giant
+Nine of spadesThree of swordsTroll
+Eight of spadesAce of swordsHobgoblin
+Two of spadesFive of cupsGoblin
+Playing CardTarot CardCreature
+Ace of clubsVIII. StrengthIron golem
+King of clubsPage of pentaclesThree male 
+halfling rogues
+Queen of clubsTen of cupsPixies
+Jack of clubsNine of pentaclesFemale half-elf bard
+Ten of clubsNine of stavesHill giant
+Nine of clubsKing of swordsOgre
+Eight of clubsAce of stavesOrc
+Two of clubsFive of cupsKobold
+Playing CardTarot CardCreature
+JokerTwo of pentaclesIllusion of deck’s owner
+JokerTwo of stavesIllusion of deck’s owner
+(sex reversed)
+A randomly generated deck is usually complete (11–100 on d%),
+but may be discovered (01–10) with 1d20 of its cards missing. If
+cards are missing, reduce the price by a corresponding amount.
+CHAPTER 7:
+MAGIC ITEMS
