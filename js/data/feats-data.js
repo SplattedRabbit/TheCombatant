@@ -8,9 +8,9 @@
  * @notHere   Einzelne Talent-Definitionen -> feats-combat.js, feats-magic.js, feats-general.js
  */
 
-import { COMBAT_FEATS_REGISTRY } from './feats-combat.js';
-import { MAGIC_FEATS_REGISTRY } from './feats-magic.js';
-import { GENERAL_FEATS_REGISTRY } from './feats-general.js';
+import { COMBAT_FEATS_REGISTRY } from './feats/combat/index.js';
+import { MAGIC_FEATS_REGISTRY } from './feats/magic/index.js';
+import { GENERAL_FEATS_REGISTRY } from './feats/general/index.js';
 
 export const CombatFeats = {
   REGISTRY: {

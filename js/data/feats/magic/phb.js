@@ -1,14 +1,10 @@
 /**
- * @module    feats-magic
- * @summary   Statische Datenbank für D&D 3.5e Magietalente (Metamagie und Gegenstandserschaffung).
- * @exports   MAGIC_FEATS_REGISTRY
- * @reads     Keine
- * @stateOps  Keine
- * @depends   Keine
- * @notHere   Regelprüfung -> rules.js | UI -> PCFeatsTab.js | Facade -> feats-data.js
+ * @module    feats-magic-phb
+ * @summary   Statische Datenbank für D&D 3.5e magic Talente (Player's Handbook).
+ * @exports   MAGIC_FEATS_REGISTRY_PHB
  */
 
-export const MAGIC_FEATS_REGISTRY = {
+export const MAGIC_FEATS_REGISTRY_PHB = {
   "brew_potion": {
     "id": "brew_potion",
     "nameDe": "Tränke brauen",
@@ -24,7 +20,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Create magic potions of spells level 3 or lower.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Tränke brauen freigeschaltet (ab Caster-Lvl 3)"
+    "appEffect": "Tränke brauen freigeschaltet (ab Caster-Lvl 3)",
+    "source": "phb"
   },
   "scribe_scroll": {
     "id": "scribe_scroll",
@@ -41,7 +38,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Create magic scrolls.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Schriftrollen schreiben freigeschaltet"
+    "appEffect": "Schriftrollen schreiben freigeschaltet",
+    "source": "phb"
   },
   "craft_wand": {
     "id": "craft_wand",
@@ -58,7 +56,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Create magic wands of spells level 4 or lower.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Zauberstäbe herstellen freigeschaltet (ab Caster-Lvl 5)"
+    "appEffect": "Zauberstäbe herstellen freigeschaltet (ab Caster-Lvl 5)",
+    "source": "phb"
   },
   "craft_arms_armor": {
     "id": "craft_arms_armor",
@@ -75,7 +74,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Create magic weapons, armor, and shields.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Waffen/Rüstungen herstellen freigeschaltet (ab Caster-Lvl 5)"
+    "appEffect": "Waffen/Rüstungen herstellen freigeschaltet (ab Caster-Lvl 5)",
+    "source": "phb"
   },
   "craft_wondrous": {
     "id": "craft_wondrous",
@@ -92,7 +92,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Create magic wondrous items.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Wundersame Gegenstände herstellen freigeschaltet (ab Caster-Lvl 3)"
+    "appEffect": "Wundersame Gegenstände herstellen freigeschaltet (ab Caster-Lvl 3)",
+    "source": "phb"
   },
   "craft_rod": {
     "id": "craft_rod",
@@ -109,7 +110,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Create magic rods.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Zepter herstellen freigeschaltet (ab Caster-Lvl 9)"
+    "appEffect": "Zepter herstellen freigeschaltet (ab Caster-Lvl 9)",
+    "source": "phb"
   },
   "craft_staff": {
     "id": "craft_staff",
@@ -126,7 +128,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Create magic staffs.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Stecken herstellen freigeschaltet (ab Caster-Lvl 12)"
+    "appEffect": "Stecken herstellen freigeschaltet (ab Caster-Lvl 12)",
+    "source": "phb"
   },
   "forge_ring": {
     "id": "forge_ring",
@@ -143,7 +146,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Create magic rings.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Ringe schmieden freigeschaltet (ab Caster-Lvl 12)"
+    "appEffect": "Ringe schmieden freigeschaltet (ab Caster-Lvl 12)",
+    "source": "phb"
   },
   "empower_spell": {
     "id": "empower_spell",
@@ -155,7 +159,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Increase spell’s variable, numeric effects by 50% (+2 spell slot level).",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 Zaubergrade Slot-Erhöhung"
+    "appEffect": "+2 Zaubergrade Slot-Erhöhung",
+    "source": "phb"
   },
   "enlarge_spell": {
     "id": "enlarge_spell",
@@ -167,7 +172,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Double spell’s range (+1 spell slot level).",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+1 Zaubergrad Slot-Erhöhung"
+    "appEffect": "+1 Zaubergrad Slot-Erhöhung",
+    "source": "phb"
   },
   "extend_spell": {
     "id": "extend_spell",
@@ -179,7 +185,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Double spell’s duration (+1 spell slot level).",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+1 Zaubergrad Slot-Erhöhung"
+    "appEffect": "+1 Zaubergrad Slot-Erhöhung",
+    "source": "phb"
   },
   "heighten_spell": {
     "id": "heighten_spell",
@@ -191,7 +198,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Cast spells as higher level (slot level used determines DC and target).",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Freie Slot-Erhöhung für SG-Steigerung"
+    "appEffect": "Freie Slot-Erhöhung für SG-Steigerung",
+    "source": "phb"
   },
   "maximize_spell": {
     "id": "maximize_spell",
@@ -203,7 +211,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Maximize spell’s variable, numeric effects (+3 spell slot level).",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+3 Zaubergrade Slot-Erhöhung"
+    "appEffect": "+3 Zaubergrade Slot-Erhöhung",
+    "source": "phb"
   },
   "quicken_spell": {
     "id": "quicken_spell",
@@ -215,7 +224,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Cast spells as a swift action (+4 spell slot level).",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+4 Zaubergrade Slot-Erhöhung"
+    "appEffect": "+4 Zaubergrade Slot-Erhöhung",
+    "source": "phb"
   },
   "silent_spell": {
     "id": "silent_spell",
@@ -227,7 +237,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Cast spells without verbal components (+1 spell slot level).",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+1 Zaubergrad Slot-Erhöhung"
+    "appEffect": "+1 Zaubergrad Slot-Erhöhung",
+    "source": "phb"
   },
   "still_spell": {
     "id": "still_spell",
@@ -239,7 +250,8 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Cast spells without somatic components (+1 spell slot level).",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+1 Zaubergrad Slot-Erhöhung"
+    "appEffect": "+1 Zaubergrad Slot-Erhöhung",
+    "source": "phb"
   },
   "widen_spell": {
     "id": "widen_spell",
@@ -251,6 +263,7 @@ export const MAGIC_FEATS_REGISTRY = {
     "benefitRaw": "Double spell’s area (+3 spell slot level).",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+3 Zaubergrade Slot-Erhöhung"
+    "appEffect": "+3 Zaubergrade Slot-Erhöhung",
+    "source": "phb"
   }
 };

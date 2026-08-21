@@ -13,7 +13,7 @@ import { CombatSpells } from '../js/spells.js';
 // Setup spell registry from spells_de.json to mimic the runtime app
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const spellsPath = path.resolve(__dirname, '../data/spells.json');
+const spellsPath = path.resolve(__dirname, '../data/spells-phb.json');
 const spellsData = JSON.parse(fs.readFileSync(spellsPath, 'utf8'));
 Object.assign(CombatSpells.REGISTRY, spellsData);
 

@@ -1,0 +1,41 @@
+{
+  "dimension_hop": {
+    "id": "dimension_hop",
+    "nameDe": "Dimensionstritt",
+    "nameEn": "Dimension Hop",
+    "level": 2,
+    "school": "Transmutation",
+    "classes": ["wizard", "sorcerer"],
+    "description": "Teleport the subject a short distance (10 ft. + 5 ft./2 levels). The destination must be within line of sight.",
+    "duration": "Instantaneous",
+    "range": "Touch",
+    "save": "Will negates",
+    "sr": "Yes"
+  },
+  "seeking_ray": {
+    "id": "seeking_ray",
+    "nameDe": "Suchstrahl",
+    "nameEn": "Seeking Ray",
+    "level": 2,
+    "school": "Evocation",
+    "classes": ["wizard", "sorcerer"],
+    "description": "Ray deals 4d6 electricity damage, ignores concealment and cover. Subsequent rays against the same target gain +4 attack bonus for 1 round.",
+    "duration": "Instantaneous",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "save": "None",
+    "sr": "Yes"
+  },
+  "arcane_turmoil": {
+    "id": "arcane_turmoil",
+    "nameDe": "Arkaner Aufruhr",
+    "nameEn": "Arcane Turmoil",
+    "level": 2,
+    "school": "Abjuration",
+    "classes": ["wizard", "sorcerer"],
+    "description": "Dispels one spell on the target, and forces the target to make a Will save or lose its highest-level prepared spell or spell slot.",
+    "duration": "Instantaneous",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "Will partial",
+    "sr": "Yes"
+  }
+}

@@ -134,6 +134,14 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   const [learnedSearch, setLearnedSearch] = useState('');
   const [compendiumSearch, setCompendiumSearch] = useState('');
   const [compendiumFilter, setCompendiumFilter] = useState<string>('all');
+  const [sourceFilter, setSourceFilter] = useState<string>('all');
+  const [showOnlyMet, setShowOnlyMet] = useState<boolean>(false);
+  const [visibleLimit, setVisibleLimit] = useState<number>(30);
+  const [expandedParents, setExpandedParents] = useState<Set<string>>(new Set());
+
+  React.useEffect(() => {
+    setVisibleLimit(30);
+  }, [compendiumSearch, compendiumFilter, sourceFilter, showOnlyMet]);
 
   const hasFighter = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'fighter'), [pc.classes]);
   const hasWizard = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'wizard'), [pc.classes]);
@@ -246,9 +254,31 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   }, [activeFeats]);
 
   const compendiumFiltered = useMemo(() => {
-    return compendiumList.filter((item) => {
+    const visibleList: Array<{ feat: any; depth: number }> = [];
+    
+    compendiumList.forEach(item => {
+      const feat = item.feat;
+      let showItem = true;
+      if (item.depth > 0) {
+        let currentParentId = feat.parent;
+        while (currentParentId) {
+          if (!expandedParents.has(currentParentId)) {
+            showItem = false;
+            break;
+          }
+          const parentFeat = CombatFeats.REGISTRY[currentParentId];
+          currentParentId = parentFeat ? parentFeat.parent : null;
+        }
+      }
+      if (showItem) {
+        visibleList.push(item);
+      }
+    });
+
+    return visibleList.filter((item) => {
       const q = compendiumSearch.toLowerCase().trim();
       const feat = item.feat;
+      
       const matchesSearch =
         (feat.nameDe || '').toLowerCase().includes(q) ||
         (feat.nameEn || '').toLowerCase().includes(q) ||
@@ -258,13 +288,42 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
 
       if (!matchesSearch) return false;
 
-      if (compendiumFilter !== 'all') {
-        return feat.category === compendiumFilter;
+      if (compendiumFilter !== 'all' && feat.category !== compendiumFilter) {
+        return false;
+      }
+
+      if (sourceFilter !== 'all' && feat.source !== sourceFilter) {
+        return false;
+      }
+
+      if (showOnlyMet) {
+        const prereqsResult = checkPrerequisites(feat, pc);
+        if (!prereqsResult.met) return false;
       }
 
       return true;
     });
-  }, [compendiumList, compendiumSearch, compendiumFilter]);
+  }, [compendiumList, compendiumSearch, compendiumFilter, sourceFilter, showOnlyMet, expandedParents, pc]);
+
+  const toggleParent = (featId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setExpandedParents(prev => {
+      const next = new Set(prev);
+      if (next.has(featId)) {
+        next.delete(featId);
+      } else {
+        next.add(featId);
+      }
+      return next;
+    });
+  };
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.currentTarget;
+    if (target.scrollHeight - target.scrollTop <= target.clientHeight + 40) {
+      setVisibleLimit(prev => Math.min(prev + 30, compendiumFiltered.length));
+    }
+  };
 
   const handleFeatRowClick = (feat: any, isLearned: boolean, option?: string, e?: React.MouseEvent) => {
     showFeatScrollDialog(feat, pc, isLearned, option || '', e?.nativeEvent);
@@ -394,30 +453,59 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
         {/* Right Column: Compendium (60%) */}
         <div style={{ width: '60%', display: 'flex', flexDirection: 'column', gap: '4px' }}>
           {/* Filters Header */}
-          <div style={{ display: 'flex', gap: '4px', marginBottom: '4px' }}>
-            <input
-              type="text"
-              value={compendiumSearch}
-              onChange={(e) => setCompendiumSearch(e.target.value)}
-              placeholder="Suchen..."
-              className="cinput"
-              style={{ flex: 1, fontSize: '11px', height: '22px', padding: '0 4px', fontFamily: "'Crimson Text', serif", boxSizing: 'border-box' }}
-            />
-            <select
-              value={compendiumFilter}
-              onChange={(e) => setCompendiumFilter(e.target.value)}
-              className="cinput"
-              style={{ flex: 1, fontSize: '11px', height: '22px', padding: '0 2px', fontFamily: "'Crimson Text', serif", boxSizing: 'border-box' }}
-            >
-              <option value="all">All Categories</option>
-              <option value="general">General</option>
-              <option value="combat">Combat Feats</option>
-              <option value="metamagic">Metamagic</option>
-              <option value="item_creation">Item Creation</option>
-            </select>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginBottom: '4px' }}>
+            <div style={{ display: 'flex', gap: '3px' }}>
+              <input
+                type="text"
+                value={compendiumSearch}
+                onChange={(e) => setCompendiumSearch(e.target.value)}
+                placeholder="Search..."
+                className="cinput"
+                style={{ flex: 1.5, fontSize: '10px', height: '18px', padding: '0 4px', fontFamily: "'Crimson Text', serif", boxSizing: 'border-box' }}
+              />
+              <select
+                value={compendiumFilter}
+                onChange={(e) => setCompendiumFilter(e.target.value)}
+                className="cinput"
+                style={{ flex: 1, fontSize: '10px', height: '18px', padding: 0, fontFamily: "'Crimson Text', serif", boxSizing: 'border-box', cursor: 'pointer' }}
+              >
+                <option value="all">All Categories</option>
+                <option value="general">General</option>
+                <option value="combat">Combat Feats</option>
+                <option value="metamagic">Metamagic</option>
+                <option value="item_creation">Item Creation</option>
+              </select>
+              <select
+                value={sourceFilter}
+                onChange={(e) => setSourceFilter(e.target.value)}
+                className="cinput"
+                style={{ flex: 1, fontSize: '10px', height: '18px', padding: 0, fontFamily: "'Crimson Text', serif", boxSizing: 'border-box', cursor: 'pointer' }}
+              >
+                <option value="all">All Books</option>
+                <option value="phb">PHB</option>
+                <option value="phb2">PHB2</option>
+                <option value="ca">CA</option>
+                <option value="cs">CS</option>
+              </select>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', padding: '0 2px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '8px', color: 'var(--inkl)', cursor: 'pointer', userSelect: 'none' }}>
+                <input
+                  type="checkbox"
+                  checked={showOnlyMet}
+                  onChange={(e) => setShowOnlyMet(e.target.checked)}
+                  style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
+                />
+                <span>Only show feats with met prerequisites</span>
+              </label>
+            </div>
           </div>
 
-          <div className="compendium-feats-list" style={{ flex: 1, overflowY: 'auto', maxHeight: '340px', boxSizing: 'border-box', border: '0.5px dashed rgba(200, 169, 110, 0.2)', padding: '4px', borderRadius: '2px' }}>
+          <div
+            onScroll={handleScroll}
+            className="compendium-feats-list"
+            style={{ flex: 1, overflowY: 'auto', maxHeight: '340px', boxSizing: 'border-box', border: '0.5px dashed rgba(200, 169, 110, 0.2)', padding: '4px', borderRadius: '2px' }}
+          >
             {isLimitReached && (
               <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', marginBottom: '4px', fontFamily: "'Crimson Text', serif", fontSize: '8px', color: 'var(--red)', textAlign: 'center', fontWeight: 'bold' }}>
                 ⚠️ Feat limit reached ({activeFeats.length} / {totalMax}). You must first remove a feat to choose a new one.
@@ -428,7 +516,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                 No feats found (filter active).
               </div>
             ) : (
-              compendiumFiltered.map((item) => {
+              compendiumFiltered.slice(0, visibleLimit).map((item) => {
                 const feat = item.feat;
                 const depth = item.depth;
                 
@@ -455,6 +543,10 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
 
                 const matchingInstance = activeFeats.find((f: any) => f.id === feat.id);
                 const option = matchingInstance ? matchingInstance.option : '';
+
+                // Collapsible parent check
+                const hasChildren = Object.keys(CombatFeats.REGISTRY).some(childId => CombatFeats.REGISTRY[childId].parent === feat.id);
+                const isExpanded = expandedParents.has(feat.id);
 
                 return (
                   <div
@@ -487,6 +579,15 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       e.currentTarget.style.background = backgroundStyle;
                     }}
                   >
+                    {hasChildren && (
+                      <button
+                        onClick={(e) => toggleParent(feat.id, e)}
+                        style={{ background: 'none', border: 'none', outline: 'none', padding: '0 2px', fontSize: '8px', color: 'var(--red)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                        title={isExpanded ? "Collapse children" : "Expand children"}
+                      >
+                        {isExpanded ? '▼' : '▶'}
+                      </button>
+                    )}
                     <span style={{ fontSize: '8px', flexShrink: 0 }}>{icon}</span>
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

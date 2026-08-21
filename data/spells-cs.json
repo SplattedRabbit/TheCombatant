@@ -1,0 +1,41 @@
+{
+  "blockade": {
+    "id": "blockade",
+    "nameDe": "Blockade",
+    "nameEn": "Blockade",
+    "level": 1,
+    "school": "Conjuration",
+    "classes": ["druid", "ranger"],
+    "description": "Fills a 5-ft. square with an enormous block of wood, providing cover and blocking movement. Created as a swift action.",
+    "duration": "3 rounds",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "None",
+    "sr": "No"
+  },
+  "armor_lock": {
+    "id": "armor_lock",
+    "nameDe": "Rüstungssperre",
+    "nameEn": "Armor Lock",
+    "level": 1,
+    "school": "Transmutation",
+    "classes": ["bard"],
+    "description": "Target's armor becomes restrictive and locks up. Target's speed is reduced to 10 ft. and take extra armor check penalties.",
+    "duration": "1 round/level",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "Reflex negates",
+    "sr": "Yes"
+  },
+  "spell_theft": {
+    "id": "spell_theft",
+    "nameDe": "Zauberdiebstahl",
+    "nameEn": "Spell Theft",
+    "level": 4,
+    "school": "Abjuration",
+    "classes": ["bard"],
+    "description": "Make a dispel check. For each active spell successfully dispelled from the target, you gain the benefits of that spell for the remainder of its duration.",
+    "duration": "Instantaneous",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "None",
+    "sr": "No"
+  }
+}

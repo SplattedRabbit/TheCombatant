@@ -1,0 +1,41 @@
+{
+  "arrow_mind": {
+    "id": "arrow_mind",
+    "nameDe": "Pfeilverstand",
+    "nameEn": "Arrow Mind",
+    "level": 1,
+    "school": "Divination",
+    "classes": ["ranger", "wizard", "sorcerer"],
+    "description": "You do not provoke attacks of opportunity for firing a bow in threatened squares. You can make attacks of opportunity with your bow.",
+    "duration": "1 min./level",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No"
+  },
+  "snipers_eye": {
+    "id": "snipers_eye",
+    "nameDe": "Scharfschützenauge",
+    "nameEn": "Sniper's Eye",
+    "level": 4,
+    "school": "Divination",
+    "classes": ["ranger"],
+    "description": "Allows you to make sneak attacks and death attacks at a range of up to 60 feet. Also grants darkvision and the ability to see through cover.",
+    "duration": "1 round/level",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No"
+  },
+  "blindsight": {
+    "id": "blindsight",
+    "nameDe": "Blindsicht",
+    "nameEn": "Blindsight",
+    "level": 2,
+    "school": "Transmutation",
+    "classes": ["druid", "cleric"],
+    "description": "Subject gains blindsight out to 30 feet, allowing them to pinpoint creatures without vision.",
+    "duration": "1 min./level",
+    "range": "Touch",
+    "save": "Will negates",
+    "sr": "Yes"
+  }
+}

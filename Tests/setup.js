@@ -180,9 +180,17 @@ import { CombatSpells } from '../js/spells.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const spellsPath = path.resolve(__dirname, '../data/spells.json');
-const spellsData = JSON.parse(fs.readFileSync(spellsPath, 'utf8'));
-Object.assign(CombatSpells.REGISTRY, spellsData);
+const books = ['phb', 'phb2', 'ca', 'cs'];
+books.forEach(book => {
+  const spellsPath = path.resolve(__dirname, `../data/spells-${book}.json`);
+  if (fs.existsSync(spellsPath)) {
+    const spellsData = JSON.parse(fs.readFileSync(spellsPath, 'utf8'));
+    Object.keys(spellsData).forEach(spellKey => {
+      spellsData[spellKey].source = book;
+    });
+    Object.assign(CombatSpells.REGISTRY, spellsData);
+  }
+});
 
 // Mock dynamic UI shared registry functions
 import { uiRegistry } from '../js/ui/ui-shared.js';

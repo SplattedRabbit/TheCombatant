@@ -1,0 +1,11 @@
+import { GENERAL_FEATS_REGISTRY_PHB } from './phb.js';
+import { GENERAL_FEATS_REGISTRY_PHB2 } from './phb2.js';
+import { GENERAL_FEATS_REGISTRY_CA } from './ca.js';
+import { GENERAL_FEATS_REGISTRY_CS } from './cs.js';
+
+export const GENERAL_FEATS_REGISTRY = {
+  ...GENERAL_FEATS_REGISTRY_PHB,
+  ...GENERAL_FEATS_REGISTRY_PHB2,
+  ...GENERAL_FEATS_REGISTRY_CA,
+  ...GENERAL_FEATS_REGISTRY_CS
+};

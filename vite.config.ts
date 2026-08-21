@@ -20,8 +20,10 @@ function copyStaticAssets() {
       const copies: [string, string][] = [
         // PeerJS: globales Script, nicht über Vite gebundelt (window.Peer API)
         [path.resolve(__dirname, 'js/peerjs.min.js'), path.join(distDir, 'peerjs.min.js')],
-        // Zauber-Datenbank: zu groß für Bundle, wird zur Laufzeit geladen
-        [path.resolve(__dirname, 'data/spells.json'), path.join(distDir, 'data/spells.json')],
+        [path.resolve(__dirname, 'data/spells-phb.json'), path.join(distDir, 'data/spells-phb.json')],
+        [path.resolve(__dirname, 'data/spells-phb2.json'), path.join(distDir, 'data/spells-phb2.json')],
+        [path.resolve(__dirname, 'data/spells-ca.json'), path.join(distDir, 'data/spells-ca.json')],
+        [path.resolve(__dirname, 'data/spells-cs.json'), path.join(distDir, 'data/spells-cs.json')],
         // PWA-Assets
         [path.resolve(__dirname, 'manifest.json'), path.join(distDir, 'manifest.json')],
         [path.resolve(__dirname, 'icon-192.png'), path.join(distDir, 'icon-192.png')],

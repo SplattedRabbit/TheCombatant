@@ -1,0 +1,11 @@
+import { COMBAT_FEATS_REGISTRY_PHB } from './phb.js';
+import { COMBAT_FEATS_REGISTRY_PHB2 } from './phb2.js';
+import { COMBAT_FEATS_REGISTRY_CA } from './ca.js';
+import { COMBAT_FEATS_REGISTRY_CS } from './cs.js';
+
+export const COMBAT_FEATS_REGISTRY = {
+  ...COMBAT_FEATS_REGISTRY_PHB,
+  ...COMBAT_FEATS_REGISTRY_PHB2,
+  ...COMBAT_FEATS_REGISTRY_CA,
+  ...COMBAT_FEATS_REGISTRY_CS
+};

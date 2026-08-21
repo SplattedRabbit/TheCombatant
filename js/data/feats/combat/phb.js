@@ -1,14 +1,10 @@
 /**
- * @module    feats-combat
- * @summary   Statische Datenbank für D&D 3.5e Kampftalente (category: combat).
- * @exports   COMBAT_FEATS_REGISTRY
- * @reads     Keine
- * @stateOps  Keine
- * @depends   Keine
- * @notHere   Regelprüfung -> rules.js | UI -> PCFeatsTab.js | Facade -> feats-data.js
+ * @module    feats-combat-phb
+ * @summary   Statische Datenbank für D&D 3.5e combat Talente (Player's Handbook).
+ * @exports   COMBAT_FEATS_REGISTRY_PHB
  */
 
-export const COMBAT_FEATS_REGISTRY = {
+export const COMBAT_FEATS_REGISTRY_PHB = {
   "improved_initiative": {
     "id": "improved_initiative",
     "nameDe": "Verbesserte Initiative",
@@ -19,7 +15,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You get a +4 bonus on initiative checks.",
     "normalRaw": "",
     "specialRaw": "A fighter may select Improved Initiative as one of his fighter bonus feats.",
-    "appEffect": "+4 Bonus auf Initiative"
+    "appEffect": "+4 Bonus auf Initiative",
+    "source": "phb"
   },
   "weapon_focus": {
     "id": "weapon_focus",
@@ -38,7 +35,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You gain a +1 bonus on all attack rolls you make using the selected weapon.",
     "normalRaw": "",
     "specialRaw": "A fighter may select Weapon Focus as one of his fighter bonus feats. You can gain this feat multiple times, choosing a different weapon each time.",
-    "appEffect": "+1 Angriffswurf mit der gewählten Waffe"
+    "appEffect": "+1 Angriffswurf mit der gewählten Waffe",
+    "source": "phb"
   },
   "weapon_specialization": {
     "id": "weapon_specialization",
@@ -63,7 +61,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You gain a +2 bonus on all damage rolls you make using the selected weapon.",
     "normalRaw": "",
     "specialRaw": "Only a fighter of 4th level or higher may select Weapon Specialization as a bonus feat.",
-    "appEffect": "+2 Schadenswurf mit der gewählten Waffe"
+    "appEffect": "+2 Schadenswurf mit der gewählten Waffe",
+    "source": "phb"
   },
   "greater_weapon_focus": {
     "id": "greater_weapon_focus",
@@ -88,7 +87,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You gain a +1 bonus on all attack rolls you make using the selected weapon.",
     "normalRaw": "",
     "specialRaw": "Only an 8th-level fighter may select this feat.",
-    "appEffect": "Zusätzlich +1 Angriffswurf mit der gewählten Waffe"
+    "appEffect": "Zusätzlich +1 Angriffswurf mit der gewählten Waffe",
+    "source": "phb"
   },
   "greater_weapon_specialization": {
     "id": "greater_weapon_specialization",
@@ -117,7 +117,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You gain a +2 bonus on all damage rolls you make using the selected weapon.",
     "normalRaw": "",
     "specialRaw": "Only a 12th-level fighter may select this feat.",
-    "appEffect": "Zusätzlich +2 Schadenswurf mit der gewählten Waffe"
+    "appEffect": "Zusätzlich +2 Schadenswurf mit der gewählten Waffe",
+    "source": "phb"
   },
   "combat_expertise": {
     "id": "combat_expertise",
@@ -135,7 +136,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You can subtract up to 5 from your attack roll and add the same number as a dodge bonus to your Armor Class.",
     "normalRaw": "Defensive fighting options are limited to -4/+2.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Schaltet Kampfgetümmel-Optionen frei"
+    "appEffect": "Schaltet Kampfgetümmel-Optionen frei",
+    "source": "phb"
   },
   "improved_disarm": {
     "id": "improved_disarm",
@@ -153,7 +155,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You gain a +4 bonus on your attempt to disarm an opponent, and you do not provoke an attack of opportunity.",
     "normalRaw": "Disarming provokes an attack of opportunity.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+4 auf Entwaffnungswürfe; kein AoO"
+    "appEffect": "+4 auf Entwaffnungswürfe; kein AoO",
+    "source": "phb"
   },
   "improved_feint": {
     "id": "improved_feint",
@@ -171,7 +174,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You can make a Bluff check to feint in combat as a move action.",
     "normalRaw": "Feinting in combat is a standard action.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Fintieren im Kampf als Bewegungsaktion"
+    "appEffect": "Fintieren im Kampf als Bewegungsaktion",
+    "source": "phb"
   },
   "improved_trip": {
     "id": "improved_trip",
@@ -189,7 +193,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You gain a +4 bonus on your ability checks to trip an opponent. If you trip an opponent, you immediately get a melee attack against that opponent.",
     "normalRaw": "Tripping provokes an attack of opportunity.",
     "specialRaw": "Fighter bonus feat. A monk can select this at level 6 without prerequisites.",
-    "appEffect": "+4 auf Trip-Prüfung; freier Folgeangriff bei Erfolg"
+    "appEffect": "+4 auf Trip-Prüfung; freier Folgeangriff bei Erfolg",
+    "source": "phb"
   },
   "whirlwind_attack": {
     "id": "whirlwind_attack",
@@ -228,7 +233,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "When you use the full attack action, you can give up your regular attacks and instead make one melee attack at your full base attack bonus against each opponent within reach.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Wirbelwind-Rundumschlag (Volle Aktion)"
+    "appEffect": "Wirbelwind-Rundumschlag (Volle Aktion)",
+    "source": "phb"
   },
   "dodge": {
     "id": "dodge",
@@ -246,7 +252,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "During your action, you designate an opponent and receive a +1 dodge bonus to AC against attacks from that opponent.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat. A monk can select this at level 1.",
-    "appEffect": "+1 Ausweich-RK gegen benannten Gegner"
+    "appEffect": "+1 Ausweich-RK gegen benannten Gegner",
+    "source": "phb"
   },
   "mobility": {
     "id": "mobility",
@@ -264,7 +271,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You get a +4 dodge bonus to Armor Class against attacks of opportunity caused by you moving out of or within a threatened area.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat. A monk can select this at level 2.",
-    "appEffect": "+4 RK gegen AoO durch Bewegung"
+    "appEffect": "+4 RK gegen AoO durch Bewegung",
+    "source": "phb"
   },
   "spring_attack": {
     "id": "spring_attack",
@@ -286,7 +294,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You can move, make a single melee attack, and then move again, without provoking an attack of opportunity from the defender.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Angriff in der Bewegung ohne AoO vom Ziel"
+    "appEffect": "Angriff in der Bewegung ohne AoO vom Ziel",
+    "source": "phb"
   },
   "power_attack": {
     "id": "power_attack",
@@ -304,7 +313,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "On your action, before making attack rolls, you may choose to subtract a number from all melee attack rolls and add that same number to all melee damage rolls.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Schaltet Power-Attack-Regler frei"
+    "appEffect": "Schaltet Power-Attack-Regler frei",
+    "source": "phb"
   },
   "cleave": {
     "id": "cleave",
@@ -322,7 +332,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "If you deal a creature enough damage to make it drop, you get an immediate extra melee attack against another creature within reach.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Zusatzangriff bei besiegtem Gegner (1/Runde)"
+    "appEffect": "Zusatzangriff bei besiegtem Gegner (1/Runde)",
+    "source": "phb"
   },
   "great_cleave": {
     "id": "great_cleave",
@@ -344,7 +355,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "This feat works like Cleave, except that there is no limit to the number of times you can use it per round.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Beliebig viele Rundumschläge pro Runde"
+    "appEffect": "Beliebig viele Rundumschläge pro Runde",
+    "source": "phb"
   },
   "improved_bull_rush": {
     "id": "improved_bull_rush",
@@ -362,7 +374,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You gain a +4 bonus on your Strength checks to bull rush an opponent, and you do not provoke an attack of opportunity.",
     "normalRaw": "Bull rushing provokes an AoO.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+4 auf Ansturmwürfe; kein AoO"
+    "appEffect": "+4 auf Ansturmwürfe; kein AoO",
+    "source": "phb"
   },
   "improved_overrun": {
     "id": "improved_overrun",
@@ -380,7 +393,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "When you overrun, the target may not choose to avoid you. You also gain a +4 bonus on Strength checks to knock down the target.",
     "normalRaw": "Opponent can choose to avoid you.",
     "specialRaw": "Fighter bonus feat. A monk can select this at level 1.",
-    "appEffect": "+4 auf Überrennprüfungen; kein Ausweichen"
+    "appEffect": "+4 auf Überrennprüfungen; kein Ausweichen",
+    "source": "phb"
   },
   "improved_sunder": {
     "id": "improved_sunder",
@@ -398,7 +412,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You gain a +4 bonus on attack rolls to strike an opponent’s weapon or shield, and you do not provoke an attack of opportunity.",
     "normalRaw": "Sunder attempts provoke an AoO.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+4 auf Zerschlagen-Angriffe; kein AoO"
+    "appEffect": "+4 auf Zerschlagen-Angriffe; kein AoO",
+    "source": "phb"
   },
   "point_blank_shot": {
     "id": "point_blank_shot",
@@ -410,7 +425,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You get a +1 bonus on attack and damage rolls with ranged weapons at ranges up to 30 feet.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+1 Fernkampf-Angriff/Schaden bis 30 Fuß"
+    "appEffect": "+1 Fernkampf-Angriff/Schaden bis 30 Fuß",
+    "source": "phb"
   },
   "far_shot": {
     "id": "far_shot",
@@ -428,7 +444,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "When you use a ranged weapon, its range increment increases by 50% (or 100% for thrown weapons).",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+50% / +100% Reichweitensteigerung"
+    "appEffect": "+50% / +100% Reichweitensteigerung",
+    "source": "phb"
   },
   "precise_shot": {
     "id": "precise_shot",
@@ -446,7 +463,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You can shoot or throw ranged weapons at an opponent engaged in melee without taking the standard -4 penalty.",
     "normalRaw": "Shooting into melee incurs a -4 penalty.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Kein -4 Malus bei Schuss in den Nahkampf"
+    "appEffect": "Kein -4 Malus bei Schuss in den Nahkampf",
+    "source": "phb"
   },
   "rapid_shot": {
     "id": "rapid_shot",
@@ -469,7 +487,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You can get one extra attack per round with a ranged weapon. All attacks take a -2 penalty.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat. A ranger can select this at level 2.",
-    "appEffect": "Zusätzlicher Angriff im Fernkampf; alle Angriffe -2"
+    "appEffect": "Zusätzlicher Angriff im Fernkampf; alle Angriffe -2",
+    "source": "phb"
   },
   "manyshot": {
     "id": "manyshot",
@@ -500,7 +519,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "As a standard action, you can fire two arrows at a single opponent within 30 feet. Both arrows use a single attack roll with a -4 penalty.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat. A ranger can select this at level 6.",
-    "appEffect": "Zwei Pfeile gleichzeitig abfeuern (Standardaktion, -4)"
+    "appEffect": "Zwei Pfeile gleichzeitig abfeuern (Standardaktion, -4)",
+    "source": "phb"
   },
   "shot_on_the_run": {
     "id": "shot_on_the_run",
@@ -535,7 +555,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You can move, make a single ranged attack, and then move again as a full-round action.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Fernkampfangriff während der Bewegung"
+    "appEffect": "Fernkampfangriff während der Bewegung",
+    "source": "phb"
   },
   "improved_precise_shot": {
     "id": "improved_precise_shot",
@@ -566,7 +587,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "Your ranged attacks ignore anything less than total cover and total concealment.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat. A ranger can select this at level 11.",
-    "appEffect": "Ignoriere Teil-Deckung / Teil-Tarnung im Fernkampf"
+    "appEffect": "Ignoriere Teil-Deckung / Teil-Tarnung im Fernkampf",
+    "source": "phb"
   },
   "two_weapon_fighting": {
     "id": "two_weapon_fighting",
@@ -584,7 +606,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "Your penalties for fighting with two weapons are reduced.",
     "normalRaw": "Standard penalties are -6 primary / -10 off-hand.",
     "specialRaw": "Fighter bonus feat. A ranger can select this at level 2.",
-    "appEffect": "Reduziert Angriffs-Mali für zwei Waffen auf -2/-2"
+    "appEffect": "Reduziert Angriffs-Mali für zwei Waffen auf -2/-2",
+    "source": "phb"
   },
   "two_weapon_defense": {
     "id": "two_weapon_defense",
@@ -602,7 +625,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "When fighting with two weapons, you gain a +1 shield bonus to AC.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+1 Schild-RK beim Kampf mit 2 Waffen"
+    "appEffect": "+1 Schild-RK beim Kampf mit 2 Waffen",
+    "source": "phb"
   },
   "improved_two_weapon_fighting": {
     "id": "improved_two_weapon_fighting",
@@ -629,7 +653,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You get a second off-hand attack with a -5 penalty.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat. A ranger can select this at level 6.",
-    "appEffect": "Zweiter Angriff mit der Schildhand (-5)"
+    "appEffect": "Zweiter Angriff mit der Schildhand (-5)",
+    "source": "phb"
   },
   "greater_two_weapon_fighting": {
     "id": "greater_two_weapon_fighting",
@@ -656,7 +681,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You get a third off-hand attack with a -10 penalty.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat. A ranger can select this at level 11.",
-    "appEffect": "Dritter Angriff mit der Schildhand (-10)"
+    "appEffect": "Dritter Angriff mit der Schildhand (-10)",
+    "source": "phb"
   },
   "weapon_finesse": {
     "id": "weapon_finesse",
@@ -673,7 +699,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "With a light weapon, you may use your Dexterity modifier instead of your Strength modifier on attack rolls.",
     "normalRaw": "Strength modifier is used for melee attack rolls.",
     "specialRaw": "Fighter bonus feat. Natural weapons count as light weapons.",
-    "appEffect": "Ges-Mod für Angriffswürfe mit leichten Waffen"
+    "appEffect": "Ges-Mod für Angriffswürfe mit leichten Waffen",
+    "source": "phb"
   },
   "improved_unarmed_strike": {
     "id": "improved_unarmed_strike",
@@ -685,7 +712,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You are considered to be armed even when unarmed. Your unarmed strikes can deal lethal or nonlethal damage.",
     "normalRaw": "Unarmed strikes provoke AoO and deal nonlethal damage.",
     "specialRaw": "Fighter bonus feat. Monks get this for free at level 1.",
-    "appEffect": "Kein AoO bei waffenlosem Schlag; freie Wahl lethal/nonlethal"
+    "appEffect": "Kein AoO bei waffenlosem Schlag; freie Wahl lethal/nonlethal",
+    "source": "phb"
   },
   "improved_grapple": {
     "id": "improved_grapple",
@@ -708,7 +736,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You gain a +4 bonus on grapple checks, and you do not provoke an attack of opportunity.",
     "normalRaw": "Grappling attempts provoke an AoO.",
     "specialRaw": "Fighter bonus feat. A monk can select this at level 1.",
-    "appEffect": "+4 auf Ringerprüfungen; kein AoO"
+    "appEffect": "+4 auf Ringerprüfungen; kein AoO",
+    "source": "phb"
   },
   "deflect_arrows": {
     "id": "deflect_arrows",
@@ -731,7 +760,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You must have at least one hand free. Once per round when you would normally be hit by a ranged weapon, you may deflect it so that you take no damage.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat. A monk can select this at level 1.",
-    "appEffect": "Wehre 1 Fernkampfangriff pro Runde ab"
+    "appEffect": "Wehre 1 Fernkampfangriff pro Runde ab",
+    "source": "phb"
   },
   "snatch_arrows": {
     "id": "snatch_arrows",
@@ -754,7 +784,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You can catch a deflected ranged weapon and immediately throw it back as an immediate action.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Fange Geschosse und wirf sie zurück"
+    "appEffect": "Fange Geschosse und wirf sie zurück",
+    "source": "phb"
   },
   "stunning_fist": {
     "id": "stunning_fist",
@@ -786,7 +817,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "Declare a stunning attack before rolling. If you hit, target must succeed on a Fortitude save (DC 10 + 1/2 character level + Wis mod) or be stunned for 1 round.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat. A monk can select this at level 1. Monks get 1 stun attempt per level per day.",
-    "appEffect": "Schaltet Betäubenden Schlag frei"
+    "appEffect": "Schaltet Betäubenden Schlag frei",
+    "source": "phb"
   },
   "mounted_combat": {
     "id": "mounted_combat",
@@ -803,7 +835,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "Once per round when your mount is hit in combat, you may make a Ride check to negate the hit.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Negiere Treffer auf Reittier via Reiten-Wurf (1/Runde)"
+    "appEffect": "Negiere Treffer auf Reittier via Reiten-Wurf (1/Runde)",
+    "source": "phb"
   },
   "mounted_archery": {
     "id": "mounted_archery",
@@ -821,7 +854,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "Penalties for ranged attacks while mounted are halved.",
     "normalRaw": "Standard penalties are -4 (moving) / -8 (galloping).",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Halbiert Fernkampf-Mali auf Reittier (-2/-4)"
+    "appEffect": "Halbiert Fernkampf-Mali auf Reittier (-2/-4)",
+    "source": "phb"
   },
   "ride_by_attack": {
     "id": "ride_by_attack",
@@ -839,7 +873,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "When you charge on a mount, you may move and attack, and then move again in a straight line.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Bewegung nach berittenem Sturmangriff in gerader Linie"
+    "appEffect": "Bewegung nach berittenem Sturmangriff in gerader Linie",
+    "source": "phb"
   },
   "spirited_charge": {
     "id": "spirited_charge",
@@ -857,7 +892,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "When mounted and making a charge, you deal double damage with a melee weapon (triple with a lance).",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "x2 Schaden / x3 Lanzen-Schaden bei berittenem Charge"
+    "appEffect": "x2 Schaden / x3 Lanzen-Schaden bei berittenem Charge",
+    "source": "phb"
   },
   "trample": {
     "id": "trample",
@@ -875,7 +911,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "When you overrun an opponent while mounted, the target cannot choose to avoid you.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Reittier-Trampelangriff; kein Ausweichen möglich"
+    "appEffect": "Reittier-Trampelangriff; kein Ausweichen möglich",
+    "source": "phb"
   },
   "improved_shield_bash": {
     "id": "improved_shield_bash",
@@ -893,7 +930,8 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "When you perform a shield bash, you may still apply the shield’s shield bonus to your AC.",
     "normalRaw": "You lose shield bonus to AC when bashing.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Behalte RK-Schildbonus bei Schildstoß"
+    "appEffect": "Behalte RK-Schildbonus bei Schildstoß",
+    "source": "phb"
   },
   "exotic_weapon_prof": {
     "id": "exotic_weapon_prof",
@@ -912,6 +950,7 @@ export const COMBAT_FEATS_REGISTRY = {
     "benefitRaw": "You make attack rolls with the selected exotic weapon without penalty.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Kein Malus bei der gewählten exotischen Waffe"
+    "appEffect": "Kein Malus bei der gewählten exotischen Waffe",
+    "source": "phb"
   }
 };

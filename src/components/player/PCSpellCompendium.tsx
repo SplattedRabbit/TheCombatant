@@ -31,7 +31,13 @@ interface PCSpellCompendiumProps {
 export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [levelFilter, setLevelFilter] = useState('all');
+  const [sourceFilter, setSourceFilter] = useState('all');
   const [filterClassAndLevel, setFilterClassAndLevel] = useState(true);
+  const [visibleLimit, setVisibleLimit] = useState(30);
+
+  React.useEffect(() => {
+    setVisibleLimit(30);
+  }, [searchQuery, levelFilter, sourceFilter, filterClassAndLevel]);
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
   const isCaster = hasClasses && pc.classes.some((c: any) => ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger'].includes(c.classType));
@@ -55,7 +61,8 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
       const matchName = s.nameDe.toLowerCase().includes(q) || (s.nameEn && s.nameEn.toLowerCase().includes(q));
       const matchLevel = levelFilter === 'all' || String(s.level) === levelFilter;
       const matchClass = showAll || !isCaster || isSpellEligibleForPC(s, pc);
-      return matchName && matchLevel && matchClass;
+      const matchSource = sourceFilter === 'all' || s.source === sourceFilter;
+      return matchName && matchLevel && matchClass && matchSource;
     });
 
     list.sort((a, b) => {
@@ -66,7 +73,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
     });
 
     return list;
-  }, [allSpells, searchQuery, levelFilter, filterClassAndLevel, isCaster, pc]);
+  }, [allSpells, searchQuery, levelFilter, sourceFilter, filterClassAndLevel, isCaster, pc]);
 
   const handleLearnSpell = (key: string) => {
     const spell = findSpell(pc, key);
@@ -126,6 +133,13 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
     showSpellDetailsDialog(s, s.id, pc);
   };
 
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.currentTarget;
+    if (target.scrollHeight - target.scrollTop <= target.clientHeight + 40) {
+      setVisibleLimit(prev => Math.min(prev + 30, filteredSpells.length));
+    }
+  };
+
   const learnedSpellsSet = new Set(Array.isArray(pc.learnedSpells) ? pc.learnedSpells : []);
 
   return (
@@ -143,12 +157,24 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
           value={levelFilter}
           onChange={(e) => setLevelFilter(e.target.value)}
           className="cinput comp-level-select"
-          style={{ width: '60px', fontSize: '9px', height: '18px', padding: 0, outline: 'none', cursor: 'pointer' }}
+          style={{ width: '50px', fontSize: '9px', height: '18px', padding: 0, outline: 'none', cursor: 'pointer' }}
         >
-          <option value="all">All</option>
+          <option value="all">Levels</option>
           {eligibleLevels.map(i => (
-            <option key={i} value={String(i)}>Level {i}</option>
+            <option key={i} value={String(i)}>Lvl {i}</option>
           ))}
+        </select>
+        <select
+          value={sourceFilter}
+          onChange={(e) => setSourceFilter(e.target.value)}
+          className="cinput comp-source-select"
+          style={{ width: '55px', fontSize: '9px', height: '18px', padding: 0, outline: 'none', cursor: 'pointer' }}
+        >
+          <option value="all">Books</option>
+          <option value="phb">PHB</option>
+          <option value="phb2">PHB2</option>
+          <option value="ca">CA</option>
+          <option value="cs">CS</option>
         </select>
         <button
           onClick={handleOpenCreatorWizard}
@@ -175,13 +201,17 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
       )}
 
       {/* Spells List */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '300px', overflowY: 'auto', paddingRight: '2px' }} className="pc-scroll-compendium">
+      <div
+        onScroll={handleScroll}
+        style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '300px', overflowY: 'auto', paddingRight: '2px' }}
+        className="pc-scroll-compendium"
+      >
         {filteredSpells.length === 0 ? (
           <div style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '35px 0', background: 'rgba(0,0,0,0.01)', border: '0.5px dashed rgba(200, 169, 110, 0.2)', borderRadius: '2px' }}>
             No matching spells found in the compendium.
           </div>
         ) : (
-          filteredSpells.map(s => {
+          filteredSpells.slice(0, visibleLimit).map(s => {
             const isLearned = learnedSpellsSet.has(s.id);
             const isCustom = String(s.id).startsWith('custom_');
 

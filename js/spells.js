@@ -7,21 +7,32 @@ export const CombatSpells = {
   REGISTRY: {},
   
   /**
-   * Asynchronously loads the spell library from the static JSON file.
+   * Asynchronously loads the spell library from separate book-specific JSON files.
    */
   async loadSpells() {
     try {
-      const response = await fetch('./data/spells.json');
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
+      const books = ['phb', 'phb2', 'ca', 'cs'];
+      const promises = books.map(book =>
+        fetch(`./data/spells-${book}.json`).then(res => {
+          if (!res.ok) throw new Error(`HTTP error loading spells-${book}.json! status: ${res.status}`);
+          return res.json();
+        })
+      );
       
+      const results = await Promise.all(promises);
+
       // Clear existing entries and merge new data to maintain identical object reference
       for (const key in CombatSpells.REGISTRY) {
         delete CombatSpells.REGISTRY[key];
       }
-      Object.assign(CombatSpells.REGISTRY, data);
+      
+      results.forEach((data, idx) => {
+        const book = books[idx];
+        Object.keys(data).forEach(spellKey => {
+          data[spellKey].source = book;
+        });
+        Object.assign(CombatSpells.REGISTRY, data);
+      });
       
       console.log('Spell database loaded successfully:', Object.keys(CombatSpells.REGISTRY).length, 'spells.');
       return true;

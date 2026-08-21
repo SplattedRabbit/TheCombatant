@@ -1,14 +1,10 @@
 /**
- * @module    feats-general
- * @summary   Statische Datenbank für D&D 3.5e allgemeine Talente (category: general).
- * @exports   GENERAL_FEATS_REGISTRY
- * @reads     Keine
- * @stateOps  Keine
- * @depends   Keine
- * @notHere   Regelprüfung -> rules.js | UI -> PCFeatsTab.js | Facade -> feats-data.js
+ * @module    feats-general-phb
+ * @summary   Statische Datenbank für D&D 3.5e general Talente (Player's Handbook).
+ * @exports   GENERAL_FEATS_REGISTRY_PHB
  */
 
-export const GENERAL_FEATS_REGISTRY = {
+export const GENERAL_FEATS_REGISTRY_PHB = {
   "toughness": {
     "id": "toughness",
     "nameDe": "Zähigkeit (Toughness)",
@@ -19,7 +15,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You gain +3 hit points.",
     "normalRaw": "",
     "specialRaw": "You can gain this feat multiple times. Its effects stack.",
-    "appEffect": "+3 maximale Trefferpunkte (stapelbar)"
+    "appEffect": "+3 maximale Trefferpunkte (stapelbar)",
+    "source": "phb"
   },
   "great_fortitude": {
     "id": "great_fortitude",
@@ -31,7 +28,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You get a +2 bonus on all Fortitude saving throws.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Zähigkeits-Rettungswurf"
+    "appEffect": "+2 auf Zähigkeits-Rettungswurf",
+    "source": "phb"
   },
   "lightning_reflexes": {
     "id": "lightning_reflexes",
@@ -43,7 +41,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You get a +2 bonus on all Reflex saving throws.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Reflex-Rettungswurf"
+    "appEffect": "+2 auf Reflex-Rettungswurf",
+    "source": "phb"
   },
   "iron_will": {
     "id": "iron_will",
@@ -55,7 +54,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You get a +2 bonus on all Will saving throws.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Willens-Rettungswurf"
+    "appEffect": "+2 auf Willens-Rettungswurf",
+    "source": "phb"
   },
   "extra_turning": {
     "id": "extra_turning",
@@ -72,7 +72,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "Each time you take this feat, you can use your ability to turn or rebuke undead four more times per day than normal.",
     "normalRaw": "",
     "specialRaw": "You can gain this feat multiple times. Its effects stack.",
-    "appEffect": "+4 Ladungen pro Tag für \"Untote vertreiben\""
+    "appEffect": "+4 Ladungen pro Tag für \"Untote vertreiben\"",
+    "source": "phb"
   },
   "extra_music": {
     "id": "extra_music",
@@ -89,7 +90,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You can use your bardic music four more times per day than normal.",
     "normalRaw": "",
     "specialRaw": "You can gain this feat multiple times. Its effects stack.",
-    "appEffect": "+4 Ladungen pro Tag für \"Bardisches Lied\""
+    "appEffect": "+4 Ladungen pro Tag für \"Bardisches Lied\"",
+    "source": "phb"
   },
   "spell_focus": {
     "id": "spell_focus",
@@ -103,7 +105,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select.",
     "normalRaw": "",
     "specialRaw": "You can gain this feat multiple times, choosing a different school each time.",
-    "appEffect": "+1 auf Rettungswurf-SG der gewählten Magieschule"
+    "appEffect": "+1 auf Rettungswurf-SG der gewählten Magieschule",
+    "source": "phb"
   },
   "greater_spell_focus": {
     "id": "greater_spell_focus",
@@ -123,7 +126,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select.",
     "normalRaw": "",
     "specialRaw": "You can gain this feat multiple times, choosing a different school each time.",
-    "appEffect": "Zusätzlich +1 auf Rettungswurf-SG der gewählten Schule"
+    "appEffect": "Zusätzlich +1 auf Rettungswurf-SG der gewählten Schule",
+    "source": "phb"
   },
   "spell_penetration": {
     "id": "spell_penetration",
@@ -135,7 +139,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You get a +2 bonus on caster level checks to defeat a creature’s spell resistance.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Zauberresistenz-Überwindungswürfe"
+    "appEffect": "+2 auf Zauberresistenz-Überwindungswürfe",
+    "source": "phb"
   },
   "greater_spell_penetration": {
     "id": "greater_spell_penetration",
@@ -153,7 +158,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You get a +2 bonus on caster level checks to defeat spell resistance. This stacks with Spell Penetration.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Zusätzlich +2 auf Zauberresistenz-Überwindungswürfe"
+    "appEffect": "Zusätzlich +2 auf Zauberresistenz-Überwindungswürfe",
+    "source": "phb"
   },
   "combat_casting": {
     "id": "combat_casting",
@@ -165,7 +171,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You get a +4 bonus on Concentration checks made to cast a spell or use a spell-like ability while on the defensive or while grappling.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+4 Konzentration beim defensiven Zaubern"
+    "appEffect": "+4 Konzentration beim defensiven Zaubern",
+    "source": "phb"
   },
   "natural_spell": {
     "id": "natural_spell",
@@ -187,7 +194,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You can complete the somatic and verbal components of a spell while in wild shape.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Erlaubt Zaubern in Tiergestalt"
+    "appEffect": "Erlaubt Zaubern in Tiergestalt",
+    "source": "phb"
   },
   "eschew_materials": {
     "id": "eschew_materials",
@@ -199,7 +207,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You can cast any spell that has a material component costing 1 gp or less without needing that component.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Keine Standard-Materialkomponenten nötig (<1 GM)"
+    "appEffect": "Keine Standard-Materialkomponenten nötig (<1 GM)",
+    "source": "phb"
   },
   "spell_mastery": {
     "id": "spell_mastery",
@@ -216,7 +225,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "Each time you take this feat, choose a number of spells equal to your Intelligence modifier. You can prepare these spells without a spellbook.",
     "normalRaw": "",
     "specialRaw": "Wizard only.",
-    "appEffect": "Einige Zauber ohne Zauberbuch vorbereiten"
+    "appEffect": "Einige Zauber ohne Zauberbuch vorbereiten",
+    "source": "phb"
   },
   "run": {
     "id": "run",
@@ -228,7 +238,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You run at 5 times your normal speed (if wearing light or no armor) or 4 times speed (in medium/heavy armor). You keep Dex bonus to AC while running.",
     "normalRaw": "Run at 4 times normal speed and lose Dex bonus to AC.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "x5 Renn-Geschwindigkeit; +4 Weitsprung"
+    "appEffect": "x5 Renn-Geschwindigkeit; +4 Weitsprung",
+    "source": "phb"
   },
   "track": {
     "id": "track",
@@ -240,7 +251,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "To find tracks or to follow them, make a Survival check (DC depends on terrain/conditions).",
     "normalRaw": "Cannot follow tracks without this feat.",
     "specialRaw": "Rangers get this for free at level 1.",
-    "appEffect": "Erlaubt Fährtensuche via Überleben"
+    "appEffect": "Erlaubt Fährtensuche via Überleben",
+    "source": "phb"
   },
   "endurance": {
     "id": "endurance",
@@ -252,7 +264,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You gain a +4 bonus on checks/saves made to resist nonlethal damage, swim/run exhaustion, hot/cold environments, or sleep deprivation.",
     "normalRaw": "",
     "specialRaw": "Rangers get this for free at level 3.",
-    "appEffect": "+4 auf Zähigkeitsprüfungen gegen Erschöpfung/Umwelt"
+    "appEffect": "+4 auf Zähigkeitsprüfungen gegen Erschöpfung/Umwelt",
+    "source": "phb"
   },
   "diehard": {
     "id": "diehard",
@@ -270,7 +283,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "If reduced to -1 to -9 hp, you automatically stabilize. You can choose to act as disabled rather than dying.",
     "normalRaw": "At -1 to -9 hp, you are unconscious and losing 1 hp per round.",
     "specialRaw": "",
-    "appEffect": "Handlungsfähig bei -1 bis -9 TP"
+    "appEffect": "Handlungsfähig bei -1 bis -9 TP",
+    "source": "phb"
   },
   "leadership": {
     "id": "leadership",
@@ -287,7 +301,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You attract a loyal cohort and followers who assist you in your adventures.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Schaltet Gefährten/Gefolgsleute frei"
+    "appEffect": "Schaltet Gefährten/Gefolgsleute frei",
+    "source": "phb"
   },
   "armor_light": {
     "id": "armor_light",
@@ -299,7 +314,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "When you wear light armor, the armor check penalty applies only to skill checks, not attack rolls.",
     "normalRaw": "Wearing non-proficient armor applies penalty to attack rolls.",
     "specialRaw": "Most martial classes get this for free.",
-    "appEffect": "Kein Angriffs-Malus durch leichte Rüstung"
+    "appEffect": "Kein Angriffs-Malus durch leichte Rüstung",
+    "source": "phb"
   },
   "armor_medium": {
     "id": "armor_medium",
@@ -317,7 +333,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "When you wear medium armor, the armor check penalty does not apply to attack rolls.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Kein Angriffs-Malus durch mittelschwere Rüstung"
+    "appEffect": "Kein Angriffs-Malus durch mittelschwere Rüstung",
+    "source": "phb"
   },
   "armor_heavy": {
     "id": "armor_heavy",
@@ -335,7 +352,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "When you wear heavy armor, the armor check penalty does not apply to attack rolls.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Kein Angriffs-Malus durch schwere Rüstung"
+    "appEffect": "Kein Angriffs-Malus durch schwere Rüstung",
+    "source": "phb"
   },
   "shield_prof": {
     "id": "shield_prof",
@@ -347,7 +365,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "When you use a shield, the shield check penalty applies only to skill checks, not attack rolls.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Kein Angriffs-Malus durch Schilde"
+    "appEffect": "Kein Angriffs-Malus durch Schilde",
+    "source": "phb"
   },
   "tower_shield_prof": {
     "id": "tower_shield_prof",
@@ -365,7 +384,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "When you use a tower shield, its penalty applies only to skill checks, not attack rolls.",
     "normalRaw": "",
     "specialRaw": "Fighters get this for free.",
-    "appEffect": "Kein Angriffs-Malus durch Turmschilde"
+    "appEffect": "Kein Angriffs-Malus durch Turmschilde",
+    "source": "phb"
   },
   "simple_weapon_prof": {
     "id": "simple_weapon_prof",
@@ -377,7 +397,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You make attack rolls with simple weapons without penalty.",
     "normalRaw": "Non-proficient attacks suffer a -4 penalty.",
     "specialRaw": "",
-    "appEffect": "Kein Malus bei einfachen Waffen"
+    "appEffect": "Kein Malus bei einfachen Waffen",
+    "source": "phb"
   },
   "martial_weapon_prof": {
     "id": "martial_weapon_prof",
@@ -391,7 +412,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You make attack rolls with the selected martial weapon without penalty.",
     "normalRaw": "",
     "specialRaw": "Fighters, Paladins, Rangers get all martial proficiencies.",
-    "appEffect": "Kein Malus bei der gewählten Kriegswaffe"
+    "appEffect": "Kein Malus bei der gewählten Kriegswaffe",
+    "source": "phb"
   },
   "acrobatic": {
     "id": "acrobatic",
@@ -403,7 +425,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Jump and Tumble checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Springen und Akrobatik"
+    "appEffect": "+2 auf Springen und Akrobatik",
+    "source": "phb"
   },
   "agile": {
     "id": "agile",
@@ -415,7 +438,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Balance and Escape Artist checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Balance und Entfesselungskunst"
+    "appEffect": "+2 auf Balance und Entfesselungskunst",
+    "source": "phb"
   },
   "alertness": {
     "id": "alertness",
@@ -427,7 +451,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Listen and Spot checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Lauschen und Entdecken"
+    "appEffect": "+2 auf Lauschen und Entdecken",
+    "source": "phb"
   },
   "animal_affinity": {
     "id": "animal_affinity",
@@ -439,7 +464,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Handle Animal and Ride checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Mit Tieren umgehen und Reiten"
+    "appEffect": "+2 auf Mit Tieren umgehen und Reiten",
+    "source": "phb"
   },
   "athletic": {
     "id": "athletic",
@@ -451,7 +477,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Climb and Swim checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Klettern und Schwimmen"
+    "appEffect": "+2 auf Klettern und Schwimmen",
+    "source": "phb"
   },
   "deceitful": {
     "id": "deceitful",
@@ -463,7 +490,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Disguise and Forgery checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Verkleiden und Fälschen"
+    "appEffect": "+2 auf Verkleiden und Fälschen",
+    "source": "phb"
   },
   "deft_hands": {
     "id": "deft_hands",
@@ -475,7 +503,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Sleight of Hand and Use Rope checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Taschendiebstahl und Seilbenutzung"
+    "appEffect": "+2 auf Taschendiebstahl und Seilbenutzung",
+    "source": "phb"
   },
   "diligent": {
     "id": "diligent",
@@ -487,7 +516,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Appraise and Decipher Script checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Schätzen und Entziffern"
+    "appEffect": "+2 auf Schätzen und Entziffern",
+    "source": "phb"
   },
   "investigator": {
     "id": "investigator",
@@ -499,7 +529,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Gather Information and Search checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Infos sammeln und Suchen"
+    "appEffect": "+2 auf Infos sammeln und Suchen",
+    "source": "phb"
   },
   "negotiator": {
     "id": "negotiator",
@@ -511,7 +542,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Diplomacy and Sense Motive checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Diplomatie und Motiv erkennen"
+    "appEffect": "+2 auf Diplomatie und Motiv erkennen",
+    "source": "phb"
   },
   "nimble_fingers": {
     "id": "nimble_fingers",
@@ -523,7 +555,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Open Lock and Disable Device checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Schloss öffnen und Fallen entschärfen"
+    "appEffect": "+2 auf Schloss öffnen und Fallen entschärfen",
+    "source": "phb"
   },
   "persuasive": {
     "id": "persuasive",
@@ -535,7 +568,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Bluff and Intimidate checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Bluffen und Einschüchtern"
+    "appEffect": "+2 auf Bluffen und Einschüchtern",
+    "source": "phb"
   },
   "self_sufficient": {
     "id": "self_sufficient",
@@ -547,7 +581,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Heal and Survival checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Heilkunde und Überleben"
+    "appEffect": "+2 auf Heilkunde und Überleben",
+    "source": "phb"
   },
   "stealthy": {
     "id": "stealthy",
@@ -559,7 +594,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Hide and Move Silently checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Verstecken und Leise bewegen"
+    "appEffect": "+2 auf Verstecken und Leise bewegen",
+    "source": "phb"
   },
   "magical_aptitude": {
     "id": "magical_aptitude",
@@ -571,7 +607,8 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "+2 bonus on Spellcraft and Use Magic Device checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Zauberkunde und Magischen Gegenstand benutzen"
+    "appEffect": "+2 auf Zauberkunde und Magischen Gegenstand benutzen",
+    "source": "phb"
   },
   "skill_focus": {
     "id": "skill_focus",
@@ -585,6 +622,7 @@ export const GENERAL_FEATS_REGISTRY = {
     "benefitRaw": "You get a +3 bonus on all checks involving the chosen skill.",
     "normalRaw": "",
     "specialRaw": "You can gain this feat multiple times, choosing a different skill each time.",
-    "appEffect": "+3 Bonus auf gewählte Fertigkeit"
+    "appEffect": "+3 Bonus auf gewählte Fertigkeit",
+    "source": "phb"
   }
 };
