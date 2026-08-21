@@ -67,7 +67,7 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Service Worker / Cache| `service-worker.js`, `scratch/update_sw.js`              | `index.html`                                 |
 | DM-Screen & Init-Bar  | `src/components/dm/DMScreen.tsx`, `DMCombatantsTable.tsx`, `InitBar.tsx` | `src/App.tsx`, `src/components/player/PlayerSheet.tsx` |
 | Kampf-Verwaltung      | `js/state/EncounterManager.js`, `js/state/ConditionManager.js`, `js/state/ConcentrationManager.js`, `js/state/EncounterSamples.js` | `js/state.js`, `js/network/SyncProtocol.js`, `Tests/` |
-| Prestige Classes      | `js/rules/classValidation.js`, `js/rules/RulesSpells.js`  | `Step3LevelConfig.tsx`, `Tests/prestige.test.js` |
+| Prestige Classes      | `js/rules/classValidation.js` (Voraussetzungen), `js/rules/prestigeClassEngine.js` (Stufen-Features), `js/data/prestigeClasses-dmg.js` (Registry + UI-Metadaten) | `src/components/player/features/PrestigeClassFeaturesCard.tsx`, `PCAttributes.tsx`, `Step3LevelConfig.tsx`, `Tests/prestige.test.js`, `Tests/prestigeClassEngine.test.js` |
 
 ---
 

@@ -45,11 +45,13 @@ import {
 } from './rules/RulesFeats.js';
 
 import {
-  validatePrestigeClassPrereqs
+  validatePrestigeClassPrereqs,
+  isOnlySpecialTextUnmet
 } from './rules/classValidation.js';
 
 import {
-  getPrestigeClassFeatures
+  getPrestigeClassFeatures,
+  getSneakAttackDiceFromPrestigeClasses
 } from './rules/prestigeClassEngine.js';
 
 import {
@@ -81,7 +83,9 @@ export const CombatRules = {
   calculateMaxFeats,
   validateFeatsAssignment,
   validatePrestigeClassPrereqs,
+  isOnlySpecialTextUnmet,
   getPrestigeClassFeatures,
+  getSneakAttackDiceFromPrestigeClasses,
   PRESTIGE_CLASSES_REGISTRY
 };
 
@@ -96,12 +100,14 @@ export {
 } from './rules/RulesFeats.js';
 
 export {
-  validatePrestigeClassPrereqs
+  validatePrestigeClassPrereqs,
+  isOnlySpecialTextUnmet
 } from './rules/classValidation.js';
 
 export {
   getPrestigeClassFeatures,
-  getAblMod as getPrestigeClassAblMod
+  getAblMod as getPrestigeClassAblMod,
+  getSneakAttackDiceFromPrestigeClasses
 } from './rules/prestigeClassEngine.js';
 
 export {

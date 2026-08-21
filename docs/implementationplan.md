@@ -3,6 +3,9 @@
 
 Dieses Dokument ist ein **Planungsdokument zur Review** – es beschreibt Architekturentscheidungen, Refactorings und ein Umsetzungskonzept für die Integration der 39 neuen Prestige-Klassen aus Player's Handbook II (PHB2), Complete Adventurer (CA) und Complete Scoundrel (CS). Es enthält **keine Code-Änderungen**; diese folgen erst nach Freigabe der hier getroffenen Entscheidungen.
 
+> [!NOTE]
+> **Status (21.08.2026): Phase 1, 2 und 3 sind implementiert, getestet und commit-bereit.** Phase 4 (Pilotklassen Tempest/Daggerspell Mage/Mountebank) und Phase 5 (Bulk-Rollout) sind noch offen und warten auf Freigabe. Details zum tatsächlichen Umsetzungsstand inkl. während der manuellen QA gefundener Zusatz-Bugfixes siehe **Abschnitt 10** am Ende dieses Dokuments.
+
 ---
 
 ## 0. Ausgangslage
@@ -371,3 +374,17 @@ Diese drei wurden gezielt wegen unterschiedlicher Komplexität aus den neuen Bü
 | 4 | Zauber-Kopplungsmuster | 3 Kategorien: `ownTable` / `linkedProgression` / `none` |
 | 5 | Umfang & Phasing | Gestaffelt: Refactoring → Pilot (3 Klassen) → Bulk-Rollout nach Buch |
 | 6 | `specialText`-Prereqs | Bewusst manueller Bestätigungs-Flag statt Automatisierung |
+
+---
+
+## 10. Umsetzungsstand & Abweichungen (Nachtrag, 21.08.2026)
+
+Phase 1 (Engine + Schema, reines Refactoring der 4 bestehenden Klassen) und die kombinierte Phase 2+3 (Sneak-Attack-Generalisierung, `specialText`-Gate, generische UI-Karte) sind vollständig umgesetzt, `Tests/prestige.test.js` + `Tests/prestigeClassEngine.test.js` grün, `tsc --noEmit` sauber. Umbenennung `prestigeClasses-phb.js` → `prestigeClasses-dmg.js` (Abschnitt 3b, Source-Korrektur PHB→DMG) ebenfalls durchgeführt.
+
+Bei der anschließenden manuellen Verifikation im Dev-Server (Plan-Abschnitt "Verification", Punkt 4) wurden **3 zusätzliche Bugs** gefunden und behoben, die nicht Teil des ursprünglichen Plans waren, aber für die `specialText`-Bestätigung essenziell sind:
+
+1. **`toJSON()` in `Combatant.js` ließ `alignment` unter den Tisch fallen.** Der React-State-Bridge-Hook (`useCombatState.ts`) rebuildet den sichtbaren PC-Snapshot bei jedem Event via `JSON.parse(JSON.stringify(rawPC))`, was implizit `toJSON()` aufruft. Da `alignment` in der Serialisierungs-Whitelist fehlte, wurde jeder Tastendruck im Alignment-Feld beim nächsten Re-Render sofort wieder gelöscht — das Feld war de facto nicht editierbar. Fix: `alignment` zur Whitelist ergänzt. (Hinweis: `size` und `levelAdjustment` fehlen ebenfalls, sind aber aktuell nirgends im UI editierbar — bewusst nicht mitgefixt, da außerhalb des angefragten Scopes.)
+2. **Alignment-Abkürzungen wie "LE" wurden von der Voraussetzungsprüfung nicht erkannt.** `classValidation.js` prüfte nur Volltext-Substrings (`'evil'`, `'lawful'`), das Eingabefeld selbst wirbt aber mit `placeholder="e.g. LG"` für exakt die 2-Buchstaben-Kurzform. Fix: `ALIGNMENT_ABBREVIATIONS`-Map + `normalizeAlignment()`-Helper ergänzt, in beiden Alignment-Zweigen (`evil`, `nonlawful`) angewendet. 2 neue Testfälle in `Tests/prestige.test.js`.
+3. **Der `specialText`-Bestätigungsdialog war in `PCAttributes.tsx` durch natives `<select>`-Markup strukturell unerreichbar.** Prestige-Klassen wurden dort als `<option disabled={!isAvailable}>` gerendert — ein Browser lässt eine disabled `<option>` nie auswählen, wodurch `onChange` (und damit der Confirm-Dialog) nie feuern konnte, selbst mit korrekter Validierungslogik. Fix: `hardLocked = !isAvailable && !isOnlySpecialTextUnmet(validation)` — nur noch *echt* gesperrte Klassen bekommen das `disabled`-Attribut; bei offener `specialText`-Bedingung bleibt die Option wählbar und löst den Confirm-Dialog aus. Zusätzlich wurde die Options-Beschriftung von einem irreführenden pauschalen `(Locked)` auf `(Locked)` vs. `(Confirm Required)` differenziert, und beide Dialoge (Zeilen-Dropdown + "+ Class"-Formular) zeigen jetzt — analog zum bereits bestehenden `Step3LevelConfig.tsx`-Wizard-Verhalten — die vollständige, farbcodierte Voraussetzungsliste inkl. des konkreten `specialText`-Wortlauts an, statt nur einer generischen Meldung.
+
+Betroffene Dateien über den ursprünglichen Plan hinaus: `js/models/Combatant.js`, `js/rules/classValidation.js`, `src/components/player/PCAttributes.tsx`.

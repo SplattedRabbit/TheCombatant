@@ -199,8 +199,69 @@ test('Prestige Classes - Assassin Prerequisite validation', () => {
   assert.strictEqual(res1.success, false, 'Should fail validation');
   assert.ok(res1.errors.some(e => e.includes('Böse Gesinnung')), 'Should complain about alignment');
 
-  // 2. Qualified PC (Rogue 5, Neutral Evil, Disguise 4, Hide 8, Move Silently 8)
+  // 2. Qualified PC (Rogue 5, Neutral Evil, Disguise 4, Hide 8, Move Silently 8, special text confirmed)
   const qualifiedPC = new Combatant({
+    classes: [
+      { classType: 'rogue', level: 5 }
+    ],
+    alignment: 'Neutral Evil',
+    skills: {
+      disguise: { ranks: 4, misc: 0 },
+      hide: { ranks: 8, misc: 0 },
+      move_silently: { ranks: 8, misc: 0 }
+    },
+    prestigeSpecialTextConfirmed: { assassin: true }
+  });
+
+  const res2 = CombatRules.validatePrestigeClassPrereqs(qualifiedPC, 'assassin');
+  assert.strictEqual(res2.success, true, 'Should pass validation');
+  assert.strictEqual(res2.errors.length, 0, 'Should have no errors');
+});
+
+test('Prestige Classes - Assassin accepts abbreviated alignment input (e.g. "LE")', () => {
+  const pc = new Combatant({
+    classes: [
+      { classType: 'rogue', level: 5 }
+    ],
+    alignment: 'LE',
+    skills: {
+      disguise: { ranks: 4, misc: 0 },
+      hide: { ranks: 8, misc: 0 },
+      move_silently: { ranks: 8, misc: 0 }
+    },
+    prestigeSpecialTextConfirmed: { assassin: true }
+  });
+
+  const res = CombatRules.validatePrestigeClassPrereqs(pc, 'assassin');
+  assert.strictEqual(res.success, true, 'Should recognize "LE" as an evil alignment');
+});
+
+test('Prestige Classes - Arcane Trickster accepts abbreviated nonlawful alignment (e.g. "CG"), rejects "LG"', () => {
+  const base = {
+    classes: [
+      { classType: 'wizard', level: 5 },
+      { classType: 'rogue', level: 3 }
+    ],
+    skills: {
+      decipher_script: { ranks: 7, misc: 0 },
+      disable_device: { ranks: 7, misc: 0 },
+      escape_artist: { ranks: 7, misc: 0 },
+      knowledge_arcana: { ranks: 4, misc: 0 }
+    }
+  };
+
+  const nonlawfulPC = new Combatant({ ...base, alignment: 'CG' });
+  const res1 = CombatRules.validatePrestigeClassPrereqs(nonlawfulPC, 'arcane_trickster');
+  assert.strictEqual(res1.success, true, 'Should recognize "CG" as non-lawful');
+
+  const lawfulPC = new Combatant({ ...base, alignment: 'LG' });
+  const res2 = CombatRules.validatePrestigeClassPrereqs(lawfulPC, 'arcane_trickster');
+  assert.strictEqual(res2.success, false, 'Should recognize "LG" as lawful and reject it');
+});
+
+test('Prestige Classes - Assassin specialText confirmation gate', () => {
+  // PC meets every mechanical prerequisite but has not confirmed the special text condition
+  const unconfirmedPC = new Combatant({
     classes: [
       { classType: 'rogue', level: 5 }
     ],
@@ -212,9 +273,16 @@ test('Prestige Classes - Assassin Prerequisite validation', () => {
     }
   });
 
-  const res2 = CombatRules.validatePrestigeClassPrereqs(qualifiedPC, 'assassin');
-  assert.strictEqual(res2.success, true, 'Should pass validation');
-  assert.strictEqual(res2.errors.length, 0, 'Should have no errors');
+  const res1 = CombatRules.validatePrestigeClassPrereqs(unconfirmedPC, 'assassin');
+  assert.strictEqual(res1.success, false, 'Should fail validation without confirmation');
+  assert.ok(res1.errors.some(e => e.includes('kill someone')), 'Should complain about the unconfirmed special requirement');
+  assert.ok(CombatRules.isOnlySpecialTextUnmet(res1), 'Only the special text requirement should be unmet');
+
+  // Same PC, but with the flag set
+  unconfirmedPC.prestigeSpecialTextConfirmed.assassin = true;
+  const res2 = CombatRules.validatePrestigeClassPrereqs(unconfirmedPC, 'assassin');
+  assert.strictEqual(res2.success, true, 'Should pass validation once confirmed');
+  assert.strictEqual(res2.errors.length, 0, 'Should have no errors once confirmed');
 });
 
 test('Prestige Classes - Assassin spell slots and sneak attack scaling', () => {

@@ -1,4 +1,6 @@
 import { CombatRules } from '@core/rules.js';
+// @ts-ignore
+import { getSneakAttackDiceFromPrestigeClasses } from '@core/rules/prestigeClassEngine.js';
 import { CLASSES_LIST } from './constants';
 
 export const getRacialModifier = (race: string, stat: string): number => {
@@ -135,6 +137,16 @@ export const getDraftPCState = (
     }
   }
 
+  const prestigeSpecialTextConfirmed: Record<string, boolean> = {};
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg && cfg.prestigeSpecialTextConfirmed) {
+      Object.entries(cfg.prestigeSpecialTextConfirmed).forEach(([prcKey, confirmed]) => {
+        prestigeSpecialTextConfirmed[prcKey] = confirmed as boolean;
+      });
+    }
+  }
+
   const draftPC = {
     race: selectedRace,
     isHuman: selectedRace === 'human',
@@ -155,18 +167,11 @@ export const getDraftPCState = (
     getSkillMisc: () => 0,
     getArmorCheckPenalty: () => 0,
     prestigeSpellLinks,
+    prestigeSpecialTextConfirmed,
     getSneakAttackDiceCount: () => {
       const rogueClass = classesList.find(c => c.classType === 'rogue');
-      let count = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
-      const atClass = classesList.find(c => c.classType === 'arcane_trickster');
-      if (atClass) {
-        count += Math.floor(atClass.level / 2);
-      }
-      const assClass = classesList.find(c => c.classType === 'assassin');
-      if (assClass) {
-        count += Math.floor((assClass.level + 1) / 2);
-      }
-      return count;
+      const rogueCount = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
+      return rogueCount + getSneakAttackDiceFromPrestigeClasses({ classes: classesList });
     }
   };
 
@@ -272,6 +277,16 @@ export const getCompletedDraftPCState = (
     }
   }
 
+  const prestigeSpecialTextConfirmed: Record<string, boolean> = {};
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg && cfg.prestigeSpecialTextConfirmed) {
+      Object.entries(cfg.prestigeSpecialTextConfirmed).forEach(([prcKey, confirmed]) => {
+        prestigeSpecialTextConfirmed[prcKey] = confirmed as boolean;
+      });
+    }
+  }
+
   const draftPC = {
     race: selectedRace,
     isHuman: selectedRace === 'human',
@@ -292,18 +307,11 @@ export const getCompletedDraftPCState = (
     getSkillMisc: () => 0,
     getArmorCheckPenalty: () => 0,
     prestigeSpellLinks,
+    prestigeSpecialTextConfirmed,
     getSneakAttackDiceCount: () => {
       const rogueClass = classesList.find(c => c.classType === 'rogue');
-      let count = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
-      const atClass = classesList.find(c => c.classType === 'arcane_trickster');
-      if (atClass) {
-        count += Math.floor(atClass.level / 2);
-      }
-      const assClass = classesList.find(c => c.classType === 'assassin');
-      if (assClass) {
-        count += Math.floor((assClass.level + 1) / 2);
-      }
-      return count;
+      const rogueCount = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
+      return rogueCount + getSneakAttackDiceFromPrestigeClasses({ classes: classesList });
     }
   };
 

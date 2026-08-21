@@ -43,6 +43,14 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     return seq.join(' / ');
   };
 
+  // Render a validation result's requirement list as colored HTML lines (met = green, unmet = red)
+  const formatPrereqLines = (validation: any) => {
+    return (validation.metDetails || []).map((req: any) => {
+      const color = req.met ? '#2e7d32' : '#d32f2f';
+      return `<div style="color: ${color}; margin-bottom: 10px;"><strong>${req.label}</strong><br/>[Current: ${req.current} / Required: ${req.required}]</div>`;
+    }).join('');
+  };
+
   // Validate and apply attribute change
   const handleAbilityChange = (key: string, val: string) => {
     let num = parseInt(val);
@@ -108,16 +116,38 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     const isAlreadyChosen = pc.classes?.some((c: any) => c.classType === newClassKey);
     const validation = CombatRules.validatePrestigeClassPrereqs(pc, newClassKey);
     const isAvailable = !clsDef?.isPrestige || isAlreadyChosen || validation.success;
+
+    const addClassNow = (specialTextConfirmed?: boolean) => {
+      CombatState.updatePCBatch((freshPC: any) => {
+        if (specialTextConfirmed) {
+          freshPC.prestigeSpecialTextConfirmed = { ...freshPC.prestigeSpecialTextConfirmed, [newClassKey]: true };
+        }
+        if (!Array.isArray(freshPC.classes)) freshPC.classes = [];
+        freshPC.classes.push({ classType: newClassKey, level: newClassLvl });
+        freshPC.rebuildStatModifiers();
+      });
+      setShowAddForm(false);
+    };
+
     if (!isAvailable) {
-      showCustomAlert("Locked Class", `You do not meet the prerequisites for ${clsDef?.nameEn || newClassKey}.`, "OK", "🔒");
+      const lines = formatPrereqLines(validation);
+      if (CombatRules.isOnlySpecialTextUnmet(validation)) {
+        showCustomConfirm(
+          `Prerequisites for ${clsDef?.nameEn || newClassKey}`,
+          `<div style="text-align: left; max-height: 300px; overflow-y: auto; padding: 4px;"><p style="margin-bottom: 12px; color: var(--ink);">All requirements are met except for one special condition that must be manually confirmed:</p>${lines}<p style="margin-top: 12px; color: var(--ink);">Do you confirm that this condition is met?</p></div>`,
+          () => addClassNow(true)
+        );
+      } else {
+        showCustomAlert(
+          `Prerequisites for ${clsDef?.nameEn || newClassKey}`,
+          `<div style="text-align: left; max-height: 300px; overflow-y: auto; padding: 4px;"><p style="margin-bottom: 12px; color: var(--ink);">You do not yet meet the prerequisites for this prestige class:</p>${lines}</div>`,
+          "OK",
+          "🔒"
+        );
+      }
       return;
     }
-    CombatState.updatePCBatch((freshPC: any) => {
-      if (!Array.isArray(freshPC.classes)) freshPC.classes = [];
-      freshPC.classes.push({ classType: newClassKey, level: newClassLvl });
-      freshPC.rebuildStatModifiers();
-    });
-    setShowAddForm(false);
+    addClassNow(false);
   };
 
   // Remove class
@@ -291,7 +321,26 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                       const validation = CombatRules.validatePrestigeClassPrereqs(pc, newType);
                       const isAvailable = !clsDef?.isPrestige || isAlreadyChosen || validation.success;
                       if (!isAvailable) {
-                        showCustomAlert("Locked Class", `You do not meet the prerequisites for ${clsDef?.nameEn || newType}.`, "OK", "🔒");
+                        const lines = formatPrereqLines(validation);
+                        if (CombatRules.isOnlySpecialTextUnmet(validation)) {
+                          showCustomConfirm(
+                            `Prerequisites for ${clsDef?.nameEn || newType}`,
+                            `<div style="text-align: left; max-height: 300px; overflow-y: auto; padding: 4px;"><p style="margin-bottom: 12px; color: var(--ink);">All requirements are met except for one special condition that must be manually confirmed:</p>${lines}<p style="margin-top: 12px; color: var(--ink);">Do you confirm that this condition is met?</p></div>`,
+                            () => {
+                              CombatState.updatePCBatch((freshPC: any) => {
+                                freshPC.prestigeSpecialTextConfirmed = { ...freshPC.prestigeSpecialTextConfirmed, [newType]: true };
+                              });
+                              CombatState.updatePCClassType(idx, newType);
+                            }
+                          );
+                        } else {
+                          showCustomAlert(
+                            `Prerequisites for ${clsDef?.nameEn || newType}`,
+                            `<div style="text-align: left; max-height: 300px; overflow-y: auto; padding: 4px;"><p style="margin-bottom: 12px; color: var(--ink);">You do not yet meet the prerequisites for this prestige class:</p>${lines}</div>`,
+                            "OK",
+                            "🔒"
+                          );
+                        }
                         return;
                       }
                       CombatState.updatePCClassType(idx, newType);
@@ -304,9 +353,14 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                         const isAlreadyChosen = pc.classes?.some((x: any) => x.classType === cls.key);
                         const validation = CombatRules.validatePrestigeClassPrereqs(pc, cls.key);
                         const isAvailable = !cls.isPrestige || isAlreadyChosen || validation.success;
+                        // Only hard-disable the <option> when locked for reasons other than the
+                        // specialText confirmation gate — a native disabled option can never fire
+                        // onChange, which would make the confirm-dialog flow unreachable.
+                        const hardLocked = !isAvailable && !CombatRules.isOnlySpecialTextUnmet(validation);
+                        const suffix = hardLocked ? ' (Locked)' : (!isAvailable ? ' (Confirm Required)' : '');
                         return (
-                          <option key={cls.key} value={cls.key} disabled={!isAvailable}>
-                            {cls.nameEn || cls.nameDe}{!isAvailable ? ' (Locked)' : ''}
+                          <option key={cls.key} value={cls.key} disabled={hardLocked}>
+                            {cls.nameEn || cls.nameDe}{suffix}
                           </option>
                         );
                       })}
@@ -359,9 +413,11 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                       const isAlreadyChosen = pc.classes?.some((x: any) => x.classType === cls.key);
                       const validation = CombatRules.validatePrestigeClassPrereqs(pc, cls.key);
                       const isAvailable = !cls.isPrestige || isAlreadyChosen || validation.success;
+                      const hardLocked = !isAvailable && !CombatRules.isOnlySpecialTextUnmet(validation);
+                      const suffix = hardLocked ? ' (Locked)' : (!isAvailable ? ' (Confirm Required)' : '');
                       return (
-                        <option key={cls.key} value={cls.key} disabled={!isAvailable}>
-                          {cls.nameEn || cls.nameDe}{!isAvailable ? ' (Locked)' : ''}
+                        <option key={cls.key} value={cls.key} disabled={hardLocked}>
+                          {cls.nameEn || cls.nameDe}{suffix}
                         </option>
                       );
                     })}

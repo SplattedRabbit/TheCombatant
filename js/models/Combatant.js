@@ -76,6 +76,7 @@ export class Combatant {
       ? p.classes.map(c => ({ classType: c.classType, level: parseInt(c.level) || 1 }))
       : (p.classType && p.classType !== 'custom' ? [{ classType: p.classType, level: parseInt(p.level) || 1 }] : []);
     this.prestigeSpellLinks = p.prestigeSpellLinks || {};
+    this.prestigeSpecialTextConfirmed = p.prestigeSpecialTextConfirmed || {};
     this.alignment = p.alignment || '';
 
 
@@ -359,8 +360,10 @@ export class Combatant {
       feats: this.feats,
       skills: this.skills,
       race: this.race,
+      alignment: this.alignment,
       isHuman: this.isHuman,
-      prestigeSpellLinks: this.prestigeSpellLinks
+      prestigeSpellLinks: this.prestigeSpellLinks,
+      prestigeSpecialTextConfirmed: this.prestigeSpecialTextConfirmed
     };
 
   }

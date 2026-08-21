@@ -10,6 +10,20 @@
 import { getMaxSpellLevel } from './RulesSpells.js';
 import { CLASSES } from './RulesData.js';
 
+// Maps standard D&D alignment abbreviations (e.g. 'LE', 'NG', 'TN') to their full names,
+// so free-text alignment input like the header field's "e.g. LG" placeholder validates correctly.
+const ALIGNMENT_ABBREVIATIONS = {
+  lg: 'lawful good', ng: 'neutral good', cg: 'chaotic good',
+  ln: 'lawful neutral', n: 'true neutral', tn: 'true neutral', cn: 'chaotic neutral',
+  le: 'lawful evil', ne: 'neutral evil', ce: 'chaotic evil'
+};
+
+function normalizeAlignment(raw) {
+  const trimmed = (raw || '').trim().toLowerCase();
+  const compact = trimmed.replace(/\s+/g, '');
+  return ALIGNMENT_ABBREVIATIONS[compact] || trimmed;
+}
+
 export function validatePrestigeClassPrereqs(pc, classKey) {
   const errors = [];
   const metDetails = [];
@@ -83,14 +97,14 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
     if (prereqs.alignment === 'nonlawful') {
       label = 'Alignment: Non-Lawful';
       reqStr = 'Non-Lawful';
-      const lowerAlign = currentAlign.toLowerCase();
+      const lowerAlign = normalizeAlignment(currentAlign);
       if (lowerAlign.includes('lawful') || lowerAlign.includes('rechtschaffen')) {
         met = false;
       }
     } else if (prereqs.alignment === 'evil') {
       label = 'Alignment: Evil';
       reqStr = 'Evil';
-      const lowerAlign = currentAlign.toLowerCase();
+      const lowerAlign = normalizeAlignment(currentAlign);
       if (!lowerAlign.includes('evil') && !lowerAlign.includes('böse') && !lowerAlign.includes('boese')) {
         met = false;
       }
@@ -231,15 +245,29 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
 
   // 9. Custom Special Text condition
   if (prereqs.specialText) {
+    const met = !!(pc.prestigeSpecialTextConfirmed && pc.prestigeSpecialTextConfirmed[classKey]);
     metDetails.push({
       label: `Special: ${prereqs.specialText}`,
-      current: 'Met',
+      current: met ? 'Met' : 'Not confirmed',
       required: 'Met',
-      met: true
+      met
     });
+    if (!met) errors.push(`Besondere Voraussetzung muss bestätigt werden: ${prereqs.specialText}`);
   }
 
   const success = errors.length === 0;
   return { success, errors, metDetails };
+}
+
+/**
+ * Returns true if the only unmet requirement in a validation result is the
+ * freetext "specialText" prerequisite (label starts with "Special: ") — used
+ * by UI dialogs to decide whether a locked class can be unlocked via a
+ * confirmation prompt instead of a plain read-only alert.
+ */
+export function isOnlySpecialTextUnmet(validation) {
+  if (!validation || validation.success) return false;
+  const unmet = (validation.metDetails || []).filter(d => !d.met);
+  return unmet.length === 1 && unmet[0].label.startsWith('Special:');
 }
 

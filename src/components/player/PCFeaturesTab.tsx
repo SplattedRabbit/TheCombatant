@@ -4,7 +4,7 @@
  * @exports   PCFeaturesTab
  * @reads     pc.classes, pc.race, pc.companionType, pc.familiarType, pc.dailyAbilities
  * @stateOps  CombatState.resetDailyResources
- * @depends   React, @core/state.js, @core/ui/components/dialogs.js, PCCompanionWrapper, features/*
+ * @depends   React, @core/state.js, @core/ui/components/dialogs.js, @core/data/prestigeClasses-data.js, PCCompanionWrapper, features/*
  */
 
 import React, { useState, useEffect } from 'react';
@@ -27,10 +27,9 @@ import { DruidFeaturesCard } from './features/DruidFeaturesCard';
 import { RangerFeaturesCard } from './features/RangerFeaturesCard';
 import { WizardFeaturesCard } from './features/WizardFeaturesCard';
 import { SorcererFeaturesCard } from './features/SorcererFeaturesCard';
-import { MysticTheurgeFeaturesCard } from './features/MysticTheurgeFeaturesCard';
-import { ArcaneTricksterFeaturesCard } from './features/ArcaneTricksterFeaturesCard';
-import { DragonDiscipleFeaturesCard } from './features/DragonDiscipleFeaturesCard';
-import { AssassinFeaturesCard } from './features/AssassinFeaturesCard';
+import { PrestigeClassFeaturesCard } from './features/PrestigeClassFeaturesCard';
+// @ts-ignore
+import { PRESTIGE_CLASSES_REGISTRY } from '@core/data/prestigeClasses-data.js';
 
 interface PCFeaturesTabProps {
   pc: any;
@@ -116,15 +115,10 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
                 return <WizardFeaturesCard key="wizard" pc={pc} level={level} />;
               case 'sorcerer':
                 return <SorcererFeaturesCard key="sorcerer" pc={pc} level={level} />;
-              case 'mystic_theurge':
-                return <MysticTheurgeFeaturesCard key="mystic_theurge" pc={pc} level={level} />;
-              case 'arcane_trickster':
-                return <ArcaneTricksterFeaturesCard key="arcane_trickster" pc={pc} level={level} />;
-              case 'dragon_disciple':
-                return <DragonDiscipleFeaturesCard key="dragon_disciple" pc={pc} level={level} />;
-              case 'assassin':
-                return <AssassinFeaturesCard key="assassin" pc={pc} level={level} />;
               default:
+                if (PRESTIGE_CLASSES_REGISTRY[cls.classType]) {
+                  return <PrestigeClassFeaturesCard key={cls.classType} pc={pc} level={level} classKey={cls.classType} />;
+                }
                 return null;
             }
           })}

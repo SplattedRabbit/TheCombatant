@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v4.2.0** | Release | 21.08.2026 | Generische Prestige-Klassen-Engine (Phase 1–3) & Alignment-/specialText-Bugfixes |
 | **v4.1.0** | Release | 17.06.2026 | Architecture Modularization & Token-Optimized Testing |
 | **v4.0.0** | Release | 14.06.2026 | Migration Complete & Tablet-Deployable (Offline & PWA) |
 | **v3.6.0** | Release | 14.06.2026 | React-Zustandsaktualisierung, Prototyp-Rehydrierung & Ausrüstungs-Fixes |
@@ -72,6 +73,22 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v4.2.0 — Generische Prestige-Klassen-Engine (Phase 1–3) & Alignment-/specialText-Bugfixes (Release v4.2.0)
+
+* **🏛️ Generische Prestige-Klassen-Engine (Phase 1)**:
+  - Neue Registry-getriebene Engine `js/rules/prestigeClassEngine.js`: Stufen-Features (Boni, Ability-Boosts, Dice-Stacks) werden nicht mehr pro Klasse hartkodiert, sondern aus `js/data/prestigeClasses-dmg.js` berechnet.
+  - Neue generische UI-Karte `src/components/player/features/PrestigeClassFeaturesCard.tsx` ersetzt vier fast identische Karten-Komponenten (Assassine, Mystic Theurge, Arcane Trickster, Dragon Disciple) — eine neue Prestige-Klasse benötigt künftig nur noch einen Registry-Eintrag inkl. `ui`-Metadaten, keine neue `.tsx`-Datei.
+
+* **🗡️ Generalisierung Sneak-Attack-Stacking & specialText-Voraussetzung (Phase 2+3)**:
+  - `RogueHelper.js`: Die zwei hartkodierten `if`-Blöcke für Arcane-Trickster-/Assassinen-Sneak-Attack-Stacking wurden durch den generischen Aufruf `getSneakAttackDiceFromPrestigeClasses(pc)` ersetzt — Stacking funktioniert jetzt automatisch für jede Registry-Klasse mit `diceStack`/`pool: 'sneakAttack'`-Feature.
+  - `classValidation.js`: Freitext-Voraussetzungen (`specialText`, z.B. die Assassinen-Mordbedingung) werden jetzt tatsächlich gegen ein SL-Bestätigungsflag (`pc.prestigeSpecialTextConfirmed`) geprüft, statt immer als automatisch erfüllt zu gelten. Neuer Export `isOnlySpecialTextUnmet(validation)` unterscheidet "nur noch SL-Bestätigung nötig" von "harte Voraussetzung fehlt".
+  - Quellenkorrektur: Die vier Prestigeklassen (Assassine, Mystic Theurge, Arcane Trickster, Dragon Disciple) waren fälschlich als `source: 'phb'` markiert, obwohl das Player's Handbook keine Prestigeklassen enthält — korrigiert auf `source: 'dmg'` (Dungeon Master's Guide), Datei `prestigeClasses-phb.js` → `prestigeClasses-dmg.js` umbenannt.
+
+* **🐛 Zusätzliche Bugfixes (im Rahmen der manuellen QA dieser Phase gefunden)**:
+  - **`Combatant.js` `toJSON()`**: Das Feld `alignment` fehlte in der Serialisierungs-Whitelist und ging bei jedem State-Sync (`JSON.parse(JSON.stringify(pc))`) stillschweigend verloren — Prestige-Klassen mit Alignment-Voraussetzung (z.B. Assassine: "Lawful Evil, Neutral Evil oder Chaotic Evil") konnten dadurch nie validiert werden, obwohl der Wert im UI sichtbar gesetzt war.
+  - **Alignment-Abkürzungs-Normalisierung**: Kurzformen wie `LE`/`NE`/`CE` wurden von der Prestige-Klassen-Prüfung nicht als vollständige Alignment-Werte erkannt.
+  - **specialText-Bestätigungsdialog strukturell unerreichbar**: Das `<option disabled>`-Attribut im "+ Klasse"-Dropdown wurde immer gesetzt, sobald irgendeine Voraussetzung (inkl. der neu gegateten `specialText`) offen war — ein natives, per HTML deaktiviertes `<option>` lässt sich aber grundsätzlich nicht anklicken, wodurch der zugehörige Bestätigungsdialog nie ausgelöst werden konnte. Behoben durch eine separate `hardLocked`-Berechnung, die den reinen specialText-Fall ausklammert; zusätzlich zeigt das Label jetzt korrekt "(Confirm Required)" statt irreführend "(Locked)", und beide Dialoge (Klassen-Zeile & "+ Klasse"-Formular) listen alle Voraussetzungen inkl. Erfüllungsstatus farblich auf (grün/rot), analog zum bereits bestehenden Muster in `Step3LevelConfig.tsx`.
 
 ### v4.1.0 — Architecture Modularization & Token-Optimized Testing (Release v4.1.0)
 

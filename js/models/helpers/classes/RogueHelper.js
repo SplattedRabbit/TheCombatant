@@ -9,6 +9,7 @@
  */
 
 import { RogueRules } from '../../../rules/classes/RogueRules.js';
+import { getSneakAttackDiceFromPrestigeClasses } from '../../../rules/prestigeClassEngine.js';
 
 export function getSneakAttackDiceCount(pc) {
   let count = 0;
@@ -16,14 +17,7 @@ export function getSneakAttackDiceCount(pc) {
   if (rogueClass) {
     count += RogueRules.getSneakAttackDiceCount(rogueClass.level);
   }
-  const atClass = Array.isArray(pc.classes) && pc.classes.find(c => c.classType === 'arcane_trickster');
-  if (atClass) {
-    count += Math.floor(atClass.level / 2);
-  }
-  const assClass = Array.isArray(pc.classes) && pc.classes.find(c => c.classType === 'assassin');
-  if (assClass) {
-    count += Math.floor((assClass.level + 1) / 2);
-  }
+  count += getSneakAttackDiceFromPrestigeClasses(pc);
   return count;
 }
 

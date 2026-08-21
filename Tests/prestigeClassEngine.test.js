@@ -4,7 +4,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
 import { Combatant } from '../js/models/Combatant.js';
-import { getPrestigeClassFeatures, getAblMod } from '../js/rules/prestigeClassEngine.js';
+import { getPrestigeClassFeatures, getAblMod, getSneakAttackDiceFromPrestigeClasses } from '../js/rules/prestigeClassEngine.js';
 
 test('PrestigeClassEngine - Assassin: formula, diceStack and steppedBonus', () => {
   const pc = new Combatant({
@@ -146,4 +146,32 @@ test('PrestigeClassEngine - getAblMod handles raw numbers and Stat instances ide
   assert.strictEqual(getAblMod(pc.int), 2);
   assert.strictEqual(getAblMod(8), -1);
   assert.strictEqual(getAblMod(undefined), 0);
+});
+
+test('PrestigeClassEngine - getSneakAttackDiceFromPrestigeClasses sums across simultaneous prestige classes', () => {
+  // Assassin 4 contributes floor((4+1)/2) = 2, Arcane Trickster 3 contributes floor(3/2) = 1
+  const pc = new Combatant({
+    classes: [
+      { classType: 'assassin', level: 4 },
+      { classType: 'arcane_trickster', level: 3 }
+    ]
+  });
+
+  assert.strictEqual(getSneakAttackDiceFromPrestigeClasses(pc), 3);
+});
+
+test('PrestigeClassEngine - getSneakAttackDiceFromPrestigeClasses ignores classes without a sneakAttack diceStack pool', () => {
+  const pc = new Combatant({
+    classes: [
+      { classType: 'mystic_theurge', level: 5 },
+      { classType: 'dragon_disciple', level: 10 }
+    ]
+  });
+
+  assert.strictEqual(getSneakAttackDiceFromPrestigeClasses(pc), 0);
+});
+
+test('PrestigeClassEngine - getSneakAttackDiceFromPrestigeClasses ignores non-prestige base classes', () => {
+  const pc = new Combatant({ classes: [{ classType: 'wizard', level: 5 }] });
+  assert.strictEqual(getSneakAttackDiceFromPrestigeClasses(pc), 0);
 });
