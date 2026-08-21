@@ -30,7 +30,9 @@ import {
   isClassSkill,
   getPCMaxRanks,
   calculateTotalSkillPoints,
-  calculateSpentSkillPoints
+  calculateSpentSkillPoints,
+  getMaxSkillTricksLimit,
+  checkSkillTrickPrerequisites
 } from './rules/RulesSkills.js';
 
 import {
@@ -77,6 +79,8 @@ export const CombatRules = {
   getPCMaxRanks,
   calculateTotalSkillPoints,
   calculateSpentSkillPoints,
+  getMaxSkillTricksLimit,
+  checkSkillTrickPrerequisites,
   getMaxSpellLevel,
   calculateMaxSpellSlots,
   checkSpellKnownLimit,

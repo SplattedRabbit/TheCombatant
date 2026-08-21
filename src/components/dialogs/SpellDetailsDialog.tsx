@@ -177,7 +177,7 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
         <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '14px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px' }}>
           {spell.nameEn || spell.nameDe}
         </div>
-        {spell.nameEn && spell.nameDe && (
+        {spell.nameEn && spell.nameDe && spell.nameEn !== spell.nameDe && (
           <p style={{ margin: '0 0 8px', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>{spell.nameDe}</p>
         )}
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />

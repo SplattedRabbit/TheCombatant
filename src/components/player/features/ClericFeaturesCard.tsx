@@ -19,14 +19,14 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
   const chaValue = pc.cha ? pc.cha.getValue() : 10;
   const chaMod = getAblMod(chaValue);
   
-  const turnAbility = pc.dailyAbilities?.find((a: any) => a.name === "Untote vertreiben");
+  const turnAbility = pc.dailyAbilities?.find((a: any) => a.name === "Untote vertreiben" || a.name === "Turn Undead");
   const turnMax = turnAbility ? turnAbility.max : 0;
   const turnUsed = turnAbility ? turnAbility.used : 0;
   const turnRemaining = Math.max(0, turnMax - turnUsed);
 
   const handleTurnBubbleClick = (idx: number) => {
     const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Untote vertreiben");
+    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Untote vertreiben" || a.name === "Turn Undead");
     if (ability) {
       if (idx <= ability.used) {
         ability.used = idx - 1;

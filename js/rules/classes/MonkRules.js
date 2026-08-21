@@ -7,7 +7,10 @@ export const MonkRules = {
     const monkKiAbilities = [
       "Joch des Geistes (Abundant Step)",
       "Zitternde Hand (Quivering Palm)",
-      "Unbefleckter Körper (Empty Body)"
+      "Unbefleckter Körper (Empty Body)",
+      "Abundant Step",
+      "Quivering Palm",
+      "Empty Body"
     ];
     if (Array.isArray(pc.dailyAbilities)) {
       pc.dailyAbilities = pc.dailyAbilities.filter(a => !monkKiAbilities.includes(a.name));
@@ -16,21 +19,27 @@ export const MonkRules = {
 
   recalculateDailyAbilities(pc, level) {
     if (level >= 12) {
-      let step = pc.dailyAbilities.find(a => a.name === "Joch des Geistes (Abundant Step)");
+      let step = pc.dailyAbilities.find(a => a.name === "Joch des Geistes (Abundant Step)" || a.name === "Abundant Step");
       if (!step) {
-        pc.dailyAbilities.push({ name: "Joch des Geistes (Abundant Step)", max: 1, used: 0 });
+        pc.dailyAbilities.push({ name: "Abundant Step", max: 1, used: 0 });
+      } else {
+        step.name = "Abundant Step";
       }
     }
     if (level >= 15) {
-      let palm = pc.dailyAbilities.find(a => a.name === "Zitternde Hand (Quivering Palm)");
+      let palm = pc.dailyAbilities.find(a => a.name === "Zitternde Hand (Quivering Palm)" || a.name === "Quivering Palm");
       if (!palm) {
-        pc.dailyAbilities.push({ name: "Zitternde Hand (Quivering Palm)", max: 1, used: 0 });
+        pc.dailyAbilities.push({ name: "Quivering Palm", max: 1, used: 0 });
+      } else {
+        palm.name = "Quivering Palm";
       }
     }
     if (level >= 19) {
-      let body = pc.dailyAbilities.find(a => a.name === "Unbefleckter Körper (Empty Body)");
+      let body = pc.dailyAbilities.find(a => a.name === "Unbefleckter Körper (Empty Body)" || a.name === "Empty Body");
       if (!body) {
-        pc.dailyAbilities.push({ name: "Unbefleckter Körper (Empty Body)", max: 1, used: 0 });
+        pc.dailyAbilities.push({ name: "Empty Body", max: 1, used: 0 });
+      } else {
+        body.name = "Empty Body";
       }
     }
   },

@@ -343,10 +343,10 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       // Add daily abilities if applicable
       pc.dailyAbilities = pc.dailyAbilities || [];
       if (selectedRace === 'anima_construct') {
-        const hasRepair = pc.dailyAbilities.some((ab: any) => ab.name === 'Manuelle Reparatur');
+        const hasRepair = pc.dailyAbilities.some((ab: any) => ab.name === 'Manuelle Reparatur' || ab.name === 'Manual Repair');
         if (!hasRepair) {
           pc.dailyAbilities.push({
-            name: 'Manuelle Reparatur',
+            name: 'Manual Repair',
             max: 4,
             used: 0
           });

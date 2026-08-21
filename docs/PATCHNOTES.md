@@ -103,6 +103,19 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
   - **Alignment-Abkürzungs-Normalisierung**: Kurzformen wie `LE`/`NE`/`CE` wurden von der Prestige-Klassen-Prüfung nicht als vollständige Alignment-Werte erkannt.
   - **specialText-Bestätigungsdialog strukturell unerreichbar**: Das `<option disabled>`-Attribut im "+ Klasse"-Dropdown wurde immer gesetzt, sobald irgendeine Voraussetzung (inkl. der neu gegateten `specialText`) offen war — ein natives, per HTML deaktiviertes `<option>` lässt sich aber grundsätzlich nicht anklicken, wodurch der zugehörige Bestätigungsdialog nie ausgelöst werden konnte. Behoben durch eine separate `hardLocked`-Berechnung, die den reinen specialText-Fall ausklammert; zusätzlich zeigt das Label jetzt korrekt "(Confirm Required)" statt irreführend "(Locked)", und beide Dialoge (Klassen-Zeile & "+ Klasse"-Formular) listen alle Voraussetzungen inkl. Erfüllungsstatus farblich auf (grün/rot), analog zum bereits bestehenden Muster in `Step3LevelConfig.tsx`.
 
+* **🃏 Complete Scoundrel Skill Tricks & Prestige Classes**:
+  - **Vollständige englische Skill-Trick-Datenbank:** In [`js/data/skillTricks-data.js`](file:///c:/Users/Juls/Desktop/CombatApp/js/data/skillTricks-data.js) wurden alle 42 Skill Tricks aus Complete Scoundrel originalgetreu auf Englisch implementiert.
+  - **Sonderregel-Validierung:** Unterstützung für `Knowledge (any) 5 ranks` bei *Collector of Stories* durch dynamisches Scannen aller Wissensfertigkeiten in [`RulesSkills.js`](file:///c:/Users/Juls/Desktop/CombatApp/js/rules/RulesSkills.js).
+  - **Premium-Interface:** Anpassung des Reitersystems in [`PCSkillsTab.tsx`](file:///c:/Users/Juls/Desktop/CombatApp/src/components/player/PCSkillsTab.tsx) an das Design von *Saves & Defenses*, inklusive Suchfunktion, Kategoriefilter (mit dem neuen Filter `Movement`) und dem pergamentartigen [`SkillTrickDetailsDialog.tsx`](file:///c:/Users/Juls/Desktop/CombatApp/src/components/dialogs/SkillTrickDetailsDialog.tsx) auf Englisch.
+  - **Stufenunterstützung:** Unterstützung für *Spellwarp Sniper* und *Battle Trickster* mit ihren spezifischen Fertigkeitenlisten, Skill Trick Limits und täglichen Fähigkeiten.
+
+* **🌍 Durchgehende englische Lokalisierung**:
+  - **Bereinigung deutscher Begriffe:** Alle versteckten deutschen Daily-Ability-Bezeichnungen (z. B. *Untote vertreiben*, *Bardisches Lied*, *Tiergestalt*, *Böses niederstrecken*, *Hände auflegen*, *Manuelle Reparatur* und die Mönch Ki-Fähigkeiten) wurden in ihre englischen D&D RAW Entsprechungen (*Turn Undead*, *Bardic Music*, *Wild Shape*, *Smite Evil*, *Lay on Hands*, *Manual Repair*, *Abundant Step* etc.) übersetzt.
+  - **Abwärtskompatibilität:** Suchlogiken in den UI-Komponenten und Regelprüfern unterstützen bei alten Charakterbögen weiterhin beide Sprachvarianten und führen eine automatische Migration auf die englischen Begriffe durch.
+  - **Spell Creator & Details:** [`SpellCreatorDialog.tsx`](file:///c:/Users/Juls/Desktop/CombatApp/src/components/dialogs/SpellCreatorDialog.tsx) erfordert nun den englischen Zaubernamen und bietet den deutschen als optional an. In [`SpellDetailsDialog.tsx`](file:///c:/Users/Juls/Desktop/CombatApp/src/components/dialogs/SpellDetailsDialog.tsx) werden doppelte Namen unterdrückt, falls der deutsche und englische Name identisch sind.
+  - **App Mechanics Übersetzer:** Dynamischer Übersetzungs-Mapper in [`FeatScrollDialog.tsx`](file:///c:/Users/Juls/Desktop/CombatApp/src/components/dialogs/FeatScrollDialog.tsx) für `appEffect`-Werte.
+  - **Unit-Tests:** Alle Unit-Tests und Build-Tests wurden für die lokalisierte Testumgebung aktualisiert.
+
 ### v4.1.0 — Architecture Modularization & Token-Optimized Testing (Release v4.1.0)
 
 * **🏗️ Domain-Driven Design Modularisierung**:

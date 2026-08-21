@@ -5,6 +5,7 @@
  */
 
 import { CLASS_SKILLS, CLASS_BASE_SKILLS } from './RulesData.js';
+import { SKILL_TRICKS_REGISTRY } from '../data/skillTricks-data.js';
 
 export function isClassSkill(skillKey, pc) {
   if (!pc || !Array.isArray(pc.classes) || pc.classes.length === 0) {
@@ -69,14 +70,119 @@ export function calculateTotalSkillPoints(pc) {
 }
 
 export function calculateSpentSkillPoints(pc) {
-  if (!pc || !pc.skills) return 0;
+  if (!pc) return 0;
   let spent = 0;
-  for (const key of Object.keys(pc.skills)) {
-    const ranks = parseFloat(pc.skills[key].ranks) || 0;
-    if (ranks > 0) {
-      const isClass = isClassSkill(key, pc);
-      spent += ranks * (isClass ? 1 : 2);
+  if (pc.skills) {
+    for (const key of Object.keys(pc.skills)) {
+      const ranks = parseFloat(pc.skills[key].ranks) || 0;
+      if (ranks > 0) {
+        const isClass = isClassSkill(key, pc);
+        spent += ranks * (isClass ? 1 : 2);
+      }
     }
+  }
+  if (Array.isArray(pc.skillTricks)) {
+    pc.skillTricks.forEach(trick => {
+      const isBonus = typeof trick === 'object' ? !!trick.isBonus : false;
+      if (!isBonus) {
+        spent += 2;
+      }
+    });
   }
   return spent;
 }
+
+export function getMaxSkillTricksLimit(pc) {
+  if (!pc) return 0;
+  const totalLevel = Array.isArray(pc.classes) ? pc.classes.reduce((sum, c) => sum + (c.level || 0), 0) : 1;
+  let limit = Math.ceil(totalLevel / 2);
+  
+  if (Array.isArray(pc.classes)) {
+    const bt = pc.classes.find(c => c.classType === 'battle_trickster');
+    if (bt) {
+      if (bt.level >= 1) limit += 1;
+      if (bt.level >= 3) limit += 1;
+    }
+  }
+  return limit;
+}
+
+export function checkSkillTrickPrerequisites(trickId, pc) {
+  const details = [];
+  let met = true;
+
+  if (!pc) return { met: false, details };
+  const trick = typeof trickId === 'string' ? SKILL_TRICKS_REGISTRY[trickId] : trickId;
+  if (!trick) return { met: false, details };
+
+  const getSkillRanks = (key) => {
+    if (typeof pc.getSkillRanks === 'function') {
+      return pc.getSkillRanks(key);
+    }
+    return (pc.skills && pc.skills[key]) ? parseFloat(pc.skills[key].ranks) || 0 : 0;
+  };
+
+  const hasFeat = (featId) => {
+    if (typeof pc.hasFeat === 'function') {
+      return pc.hasFeat(featId);
+    }
+    return pc.feats && pc.feats.some(f => f.id === featId);
+  };
+
+  const prereqs = trick.prerequisites || {};
+
+  if (prereqs.skills) {
+    Object.entries(prereqs.skills).forEach(([skillKey, requiredRanks]) => {
+      const ranks = getSkillRanks(skillKey);
+      const req = requiredRanks;
+      const skillName = skillKey.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      const isMet = ranks >= req;
+      details.push({
+        desc: `${skillName}: ${ranks} / ${req} ranks`,
+        met: isMet
+      });
+      if (!isMet) met = false;
+    });
+  }
+
+  if (prereqs.feats) {
+    prereqs.feats.forEach(featId => {
+      const isMet = hasFeat(featId);
+      const featName = featId.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      details.push({
+        desc: `Feat: ${featName}`,
+        met: isMet
+      });
+      if (!isMet) met = false;
+    });
+  }
+
+  if (prereqs.special) {
+    const spec = prereqs.special;
+    if (spec.or_skills && spec.ranks) {
+      const ranks1 = getSkillRanks(spec.or_skills[0]);
+      const ranks2 = getSkillRanks(spec.or_skills[1]);
+      const isMet = ranks1 >= spec.ranks || ranks2 >= spec.ranks;
+      const name1 = spec.or_skills[0].split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      const name2 = spec.or_skills[1].split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      details.push({
+        desc: `${name1} or ${name2}: ${spec.ranks} ranks`,
+        met: isMet
+      });
+      if (!isMet) met = false;
+    }
+    if (spec.any_knowledge) {
+      const knowledgeKeys = ['knowledge_arcana', 'knowledge_dungeons', 'knowledge_history', 'knowledge_local', 'knowledge_nature', 'knowledge_planes', 'knowledge_religion', 'knowledge_other'];
+      const maxRanks = Math.max(...knowledgeKeys.map(k => getSkillRanks(k)));
+      const isMet = maxRanks >= spec.any_knowledge;
+      details.push({
+        desc: `Knowledge (any): ${maxRanks} / ${spec.any_knowledge} ranks`,
+        met: isMet
+      });
+      if (!isMet) met = false;
+    }
+  }
+
+  return { met, details };
+}
+

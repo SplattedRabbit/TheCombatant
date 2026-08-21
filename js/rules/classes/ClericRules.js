@@ -8,7 +8,7 @@ export const ClericRules = {
     const hasPaladinTurn = paladinClass && paladinClass.level >= 4;
     if (Array.isArray(pc.dailyAbilities)) {
       pc.dailyAbilities = pc.dailyAbilities.filter(a => {
-        if (a.name === "Untote vertreiben" && !hasPaladinTurn) return false;
+        if ((a.name === "Untote vertreiben" || a.name === "Turn Undead") && !hasPaladinTurn) return false;
         return true;
       });
     }
@@ -18,11 +18,12 @@ export const ClericRules = {
     const chaScore = pc.cha ? pc.cha.getValue() : 10;
     const chaMod = Math.floor((chaScore - 10) / 2);
     const turnMax = Math.max(1, 3 + chaMod);
-    let turnAbility = pc.dailyAbilities.find(a => a.name === "Untote vertreiben");
+    let turnAbility = pc.dailyAbilities.find(a => a.name === "Untote vertreiben" || a.name === "Turn Undead");
     if (!turnAbility) {
-      pc.dailyAbilities.push({ name: "Untote vertreiben", max: turnMax, used: 0 });
+      pc.dailyAbilities.push({ name: "Turn Undead", max: turnMax, used: 0 });
     } else {
       turnAbility.max = turnMax;
+      turnAbility.name = "Turn Undead";
     }
   }
 };

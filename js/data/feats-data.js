@@ -74,26 +74,26 @@ export function checkFeatPrerequisites(featId, pc) {
         });
       }
       prMet = maxCL >= pr.value;
-      desc  = `Zaubererstufe ${pr.value} (aktuell: ${maxCL})`;
+      desc  = `Caster level ${pr.value} (current: ${maxCL})`;
     } else if (pr.type === 'custom') {
-      if (pr.desc === 'Fähigkeit, Untote zu vertreiben') {
+      if (pr.desc === 'Fähigkeit, Untote zu vertreiben' || pr.desc === 'Ability to turn undead') {
         const clericClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'cleric') : null;
         const paladinClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'paladin') : null;
         const clericLvl = clericClass ? clericClass.level : 0;
         const paladinLvl = paladinClass ? paladinClass.level : 0;
         prMet = clericLvl >= 1 || paladinLvl >= 4;
-        desc  = `Fähigkeit, Untote zu vertreiben (Kleriker 1+ oder Paladin 4+)`;
-      } else if (pr.desc === 'Bardenmusik') {
+        desc  = `Ability to turn undead (Cleric 1+ or Paladin 4+)`;
+      } else if (pr.desc === 'Bardenmusik' || pr.desc === 'Bardic music') {
         const bardClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'bard') : null;
         const bardLvl = bardClass ? bardClass.level : 0;
         prMet = bardLvl >= 1;
-        desc  = `Bardenmusik (Barde 1+)`;
-      } else if (pr.desc === 'Tiergestalt (Wild Shape)') {
+        desc  = `Bardic music (Bard 1+)`;
+      } else if (pr.desc === 'Tiergestalt (Wild Shape)' || pr.desc === 'Wild shape') {
         const druidClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'druid') : null;
         const druidLvl = druidClass ? druidClass.level : 0;
         prMet = druidLvl >= 5;
-        desc  = `Tiergestalt (Druide 5+)`;
-      } else if (pr.desc === 'Reiten 1 Rang') {
+        desc  = `Wild shape (Druid 5+)`;
+      } else if (pr.desc === 'Reiten 1 Rang' || pr.desc === 'Ride 1 rank') {
         let ranks = 0;
         if (typeof pc.getSkillRanks === 'function') {
           ranks = pc.getSkillRanks('ride');
@@ -101,10 +101,10 @@ export function checkFeatPrerequisites(featId, pc) {
           ranks = parseFloat(pc.skills['ride'].ranks) || 0;
         }
         prMet = ranks >= 1;
-        desc = `Reiten 1 Rang (aktuell: ${ranks})`;
+        desc = `Ride 1 rank (current: ${ranks})`;
       } else {
         prMet = true;
-        desc = `Spezial: ${pr.desc}`;
+        desc = `Special: ${pr.desc}`;
       }
     }
 

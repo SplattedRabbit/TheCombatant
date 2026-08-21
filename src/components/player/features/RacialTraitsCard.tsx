@@ -19,7 +19,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
     half_elf: 'Half-Elf',
     half_orc: 'Half-Orc',
     tiefling: 'Tiefling',
-    anima_construct: 'Anima-Konstrukt'
+    anima_construct: 'Anima Construct'
   };
   const raceName = raceNames[race] || 'Human';
 
@@ -28,7 +28,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
   const totalMod = craftRanks + intMod;
 
   const repairAbilityIdx = Array.isArray(pc.dailyAbilities) 
-    ? pc.dailyAbilities.findIndex((ab: any) => ab.name === 'Manuelle Reparatur') 
+    ? pc.dailyAbilities.findIndex((ab: any) => ab.name === 'Manuelle Reparatur' || ab.name === 'Manual Repair') 
     : -1;
   const repairAbility = repairAbilityIdx >= 0 ? pc.dailyAbilities[repairAbilityIdx] : null;
   const usedSlots = repairAbility ? repairAbility.used : 0;
@@ -36,7 +36,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
 
   const handleRepair = (dc: number, healDice: '1d4' | '1d8') => {
     if (repairAbility && usedSlots >= maxSlots) {
-      showCustomAlert('Fehler', 'Du hast deine maximale Anzahl an Reparaturen für heute bereits aufgebraucht.', 'OK', '❌');
+      showCustomAlert('Error', 'You have already used all of your repairs for today.', 'OK', '❌');
       return;
     }
 
@@ -44,25 +44,25 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
     const totalRoll = d20 + totalMod;
     const success = totalRoll >= dc;
 
-    let resultMsg = `Wurf auf Handwerk (Craft): 1d20 (${d20}) + Mod (${totalMod}) = <strong>${totalRoll}</strong> vs DC ${dc}.<br/><br/>`;
+    let resultMsg = `Craft Check: 1d20 (${d20}) + Mod (${totalMod}) = <strong>${totalRoll}</strong> vs DC ${dc}.<br/><br/>`;
 
     if (success) {
       const sides = healDice === '1d4' ? 4 : 8;
       const healRoll = Math.floor(Math.random() * sides) + 1;
-      resultMsg += `<strong>Erfolg!</strong> Du heilst <strong>${healRoll}</strong> Trefferpunkte.`;
+      resultMsg += `<strong>Success!</strong> You heal <strong>${healRoll}</strong> Hit Points.`;
       
       CombatState.applyDamage(pc.id, healRoll, true, false);
       
       if (repairAbilityIdx >= 0) {
         CombatState.updatePCDailyAbilityUsed(repairAbilityIdx, 1);
       }
-      showCustomAlert('Reparatur Erfolgreich 🛠️', resultMsg, 'Fertig', '✅');
+      showCustomAlert('Repair Successful 🛠️', resultMsg, 'Done', '✅');
     } else {
-      resultMsg += `<strong>Fehlschlag!</strong> Die Reparatur war nicht erfolgreich.`;
+      resultMsg += `<strong>Failure!</strong> The repair was unsuccessful.`;
       if (repairAbilityIdx >= 0) {
         CombatState.updatePCDailyAbilityUsed(repairAbilityIdx, 1);
       }
-      showCustomAlert('Reparatur Fehlgeschlagen 🛠️', resultMsg, 'OK', '❌');
+      showCustomAlert('Repair Failed 🛠️', resultMsg, 'OK', '❌');
     }
   };
 
@@ -158,14 +158,14 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
 
           <div style={{ borderTop: '0.5px dashed rgba(200, 169, 110, 0.4)', paddingTop: '8px', marginTop: '4px' }}>
             <strong style={{ fontSize: '10px', display: 'block', marginBottom: '6px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
-              🛠️ Manuelle Reparatur (Living Construct)
+              🛠️ Manual Repair (Living Construct)
             </strong>
             <p style={{ margin: '0 0 8px 0', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', lineHeight: 1.25 }}>
-              Erfordert Handwerkszeug und 1 Stunde Arbeit. Führe einen Wurf auf Handwerk (Craft) durch.
+              Requires artisan tools and 1 hour of labor. Perform a Craft check.
             </p>
             
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px', fontSize: '10px' }}>
-              <span>Tägliche Reparaturen:</span>
+              <span>Daily Repairs:</span>
               <div style={{ display: 'flex', gap: '3px' }}>
                 {Array.from({ length: maxSlots }).map((_, idx) => (
                   <span key={idx} style={{ fontSize: '12px', opacity: idx < usedSlots ? 1 : 0.25 }}>
@@ -174,7 +174,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
                 ))}
               </div>
               <span style={{ fontSize: '9px', color: 'var(--inkl)' }}>
-                ({usedSlots} / {maxSlots} verwendet)
+                ({usedSlots} / {maxSlots} used)
               </span>
             </div>
 
@@ -186,7 +186,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
                 onClick={() => handleRepair(15, '1d4')}
                 style={{ fontSize: '9.5px', padding: '4px 10px', cursor: 'pointer' }}
               >
-                Leichte Reparatur (DC 15)
+                Minor Repair (DC 15)
               </button>
               <button
                 type="button"
@@ -195,7 +195,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
                 onClick={() => handleRepair(20, '1d8')}
                 style={{ fontSize: '9.5px', padding: '4px 10px', cursor: 'pointer' }}
               >
-                Komplexe Instandsetzung (DC 20)
+                Major Repair (DC 20)
               </button>
             </div>
           </div>

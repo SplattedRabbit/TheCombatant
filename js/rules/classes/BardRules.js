@@ -5,18 +5,19 @@ export const BardRules = {
   cleanup(pc) {
     pc.bardicMusicExtra = 0;
     if (Array.isArray(pc.dailyAbilities)) {
-      pc.dailyAbilities = pc.dailyAbilities.filter(a => a.name !== "Bardisches Lied");
+      pc.dailyAbilities = pc.dailyAbilities.filter(a => a.name !== "Bardisches Lied" && a.name !== "Bardic Music");
     }
   },
 
   recalculateDailyAbilities(pc, level) {
     const extraMusic = pc.bardicMusicExtra || 0;
     const totalMax = level + extraMusic;
-    let musicAbility = pc.dailyAbilities.find(a => a.name === "Bardisches Lied");
+    let musicAbility = pc.dailyAbilities.find(a => a.name === "Bardisches Lied" || a.name === "Bardic Music");
     if (!musicAbility) {
-      pc.dailyAbilities.push({ name: "Bardisches Lied", max: totalMax, used: 0 });
+      pc.dailyAbilities.push({ name: "Bardic Music", max: totalMax, used: 0 });
     } else {
       musicAbility.max = totalMax;
+      musicAbility.name = "Bardic Music";
     }
   }
 };

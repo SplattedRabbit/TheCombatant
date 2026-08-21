@@ -38,7 +38,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
   const [description, setDescription] = useState('');
 
   const handleSave = () => {
-    if (!nameDe.trim() || !school.trim() || !description.trim()) {
+    if (!nameEn.trim() || !school.trim() || !description.trim()) {
       showCustomAlert('Error', 'Please fill in all required fields (*)!');
       return;
     }
@@ -57,8 +57,8 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
 
     const newSpell = {
       id: 'custom_' + Date.now(),
-      nameDe: nameDe.trim(),
-      nameEn: nameEn.trim() || undefined,
+      nameDe: nameDe.trim() || nameEn.trim(),
+      nameEn: nameEn.trim(),
       level,
       school: school.trim(),
       castingTime,
@@ -139,14 +139,14 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', position: 'relative', zIndex: 10 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
             <div>
-              <label style={labelStyle}>German Name *</label>
-              <input className="cinput" style={inputStyle} placeholder="e.g. Feuerball"
-                value={nameDe} onChange={e => setNameDe(e.target.value)} />
-            </div>
-            <div>
-              <label style={labelStyle}>English Name</label>
+              <label style={labelStyle}>Spell Name *</label>
               <input className="cinput" style={inputStyle} placeholder="e.g. Fireball"
                 value={nameEn} onChange={e => setNameEn(e.target.value)} />
+            </div>
+            <div>
+              <label style={labelStyle}>Alternate Name (Optional)</label>
+              <input className="cinput" style={inputStyle} placeholder="e.g. Feuerball"
+                value={nameDe} onChange={e => setNameDe(e.target.value)} />
             </div>
           </div>
 

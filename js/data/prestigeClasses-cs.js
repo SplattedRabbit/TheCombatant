@@ -22,6 +22,7 @@ export const CS_PRESTIGE_CLASSES_REGISTRY = {
       // Sudden Raystrike: at lvl 2 -> +1d6, lvl 4 -> +2d6, etc. Implemented as diceStack (counts of d6).
       suddenRaystrike: {
         type: 'diceStack',
+        pool: 'sneakAttack',
         diceByLevel: (level) => Math.floor(level / 2)
       },
 
@@ -62,7 +63,7 @@ export const CS_PRESTIGE_CLASSES_REGISTRY = {
       bonusTricks: {
         type: 'steppedBonus',
         base: 0,
-        steps: [[1, 1], [3, 2], [5, 3]]
+        steps: [[1, 1], [3, 2]]
       },
 
       // Bonus Feat: granted at 2nd level (represented as steppedBonus)

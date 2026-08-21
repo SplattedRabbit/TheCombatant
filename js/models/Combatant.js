@@ -143,6 +143,7 @@ export class Combatant {
     this.customSpells = Array.isArray(p.customSpells) ? [...p.customSpells] : [];
     this.spellTemplates = p.spellTemplates || {};
     this.feats = Array.isArray(p.feats) ? [...p.feats] : [];
+    this.skillTricks = p.skillTricks || [];
     this.skills = p.skills || {};
     this.race = p.race || 'human';
     this.isHuman = p.isHuman !== undefined ? !!p.isHuman : (this.race === 'human');
@@ -155,6 +156,7 @@ export class Combatant {
     this.isDefensiveFighting = !!p.isDefensiveFighting;
     this.isTotalDefense = !!p.isTotalDefense;
     this.isFlurrying = !!p.isFlurrying;
+    this.isTrickyFightingActive = !!p.isTrickyFightingActive;
     this.powerAttackPenalty = p.powerAttackPenalty !== undefined ? parseInt(p.powerAttackPenalty) : 0;
     this.combatExpertisePenalty = p.combatExpertisePenalty !== undefined ? parseInt(p.combatExpertisePenalty) : 0;
     this.divineGraceActive = p.divineGraceActive !== undefined ? !!p.divineGraceActive : true;
@@ -404,6 +406,7 @@ export class Combatant {
       powerAttackPenalty: this.powerAttackPenalty,
       combatExpertisePenalty: this.combatExpertisePenalty,
       divineGraceActive: this.divineGraceActive,
+      isTrickyFightingActive: this.isTrickyFightingActive,
       favoredEnemy: this.favoredEnemy,
       rangerCombatStyle: this.rangerCombatStyle,
       wizardSpecialization: this.wizardSpecialization,
@@ -421,6 +424,7 @@ export class Combatant {
       activeShape: this.activeShape,
       originalStats: this.originalStats,
       feats: this.feats,
+      skillTricks: this.skillTricks,
       skills: this.skills,
       race: this.race,
       alignment: this.alignment,

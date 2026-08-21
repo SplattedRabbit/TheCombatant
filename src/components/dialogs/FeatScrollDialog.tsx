@@ -14,6 +14,68 @@ interface FeatScrollDialogProps {
   onRefresh: () => void; // Used to re-render the dialog if instances change
 }
 
+function translateAppEffect(text: string): string {
+  if (!text) return text;
+  let t = text;
+  t = t.replace(/maximale Trefferpunkte/g, 'maximum Hit Points');
+  t = t.replace(/\(stapelbar\)/g, '(stacks)');
+  t = t.replace(/auf Zähigkeits-Rettungswurf/g, 'to Fortitude saves');
+  t = t.replace(/auf Reflex-Rettungswurf/g, 'to Reflex saves');
+  t = t.replace(/auf Willens-Rettungswurf/g, 'to Will saves');
+  t = t.replace(/auf Willens-Rettungs-Wurf/g, 'to Will saves');
+  t = t.replace(/auf Rettungswurf/g, 'to saves');
+  t = t.replace(/Ladungen pro Tag für "Untote vertreiben"/g, 'turn undead attempts per day');
+  t = t.replace(/Ladungen pro Tag für "Bardisches Lied"/g, 'bardic music uses per day');
+  t = t.replace(/auf Rettungswurf-SG der gewählten Magieschule/g, 'to save DCs of selected school');
+  t = t.replace(/Zusätzlich \+1 auf Rettungswurf-SG der gewählten Schule/g, '+1 to save DCs of selected school (stacks)');
+  t = t.replace(/auf Zauberresistenz-Überwindungswürfe/g, 'to caster level checks to overcome spell resistance');
+  t = t.replace(/Zusätzlich \+2 auf Zauberresistenz-Überwindungswürfe/g, '+2 to caster level checks to overcome spell resistance (stacks)');
+  t = t.replace(/Konzentration beim defensiven Zaubern/g, 'Concentration checks when casting defensively');
+  t = t.replace(/Erlaubt Zaubern in Tiergestalt/g, 'Allows casting spells in wild shape');
+  t = t.replace(/Keine Standard-Materialkomponenten nötig \(<1 GM\)/g, 'No standard material components needed (<1 gp)');
+  t = t.replace(/Einige Zauber ohne Zauberbuch vorbereiten/g, 'Prepare some spells without spellbook');
+  t = t.replace(/Renn-Geschwindigkeit/g, 'run speed');
+  t = t.replace(/Weitsprung/g, 'running jumps');
+  t = t.replace(/Erlaubt Fährtensuche via Überleben/g, 'Allows tracking using Survival');
+  t = t.replace(/auf Zähigkeitsprüfungen gegen Erschöpfung\/Umwelt/g, 'to Fortitude saves/checks against exhaustion/environments');
+  t = t.replace(/Handlungsfähig bei -1 bis -9 TP/g, 'Act normally at -1 to -9 HP');
+  t = t.replace(/Schaltet Gefährten\/Gefolgsleute frei/g, 'Unlocks cohort and followers');
+  t = t.replace(/Kein Angriffs-Malus durch leichte Rüstung/g, 'No attack penalty for wearing light armor');
+  t = t.replace(/Kein Angriffs-Malus durch mittelschwere Rüstung/g, 'No attack penalty for wearing medium armor');
+  t = t.replace(/Kein Angriffs-Malus durch schwere Rüstung/g, 'No attack penalty for wearing heavy armor');
+  t = t.replace(/Kein Angriffs-Malus durch Schilde/g, 'No attack penalty for shields');
+  t = t.replace(/Kein Angriffs-Malus durch Turmschilde/g, 'No attack penalty for tower shields');
+  t = t.replace(/Kein Malus bei einfachen Waffen/g, 'No penalty for simple weapons');
+  t = t.replace(/Kein Malus bei der gewählten Kriegswaffe/g, 'No penalty for selected martial weapon');
+  t = t.replace(/auf Springen und Akrobatik/g, 'to Jump and Tumble');
+  t = t.replace(/auf Balance und Entfesselungskunst/g, 'to Balance and Escape Artist');
+  t = t.replace(/auf Lauschen und Entdecken/g, 'to Listen and Spot');
+  t = t.replace(/auf Mit Tieren umgehen und Reiten/g, 'to Handle Animal and Ride');
+  t = t.replace(/auf Klettern und Schwimmen/g, 'to Climb and Swim');
+  t = t.replace(/auf Verkleiden und Fälschen/g, 'to Disguise and Forgery');
+  t = t.replace(/auf Taschendiebstahl und Seilbenutzung/g, 'to Sleight of Hand and Use Rope');
+  t = t.replace(/Tränke brauen freigeschaltet \(ab Caster-Lvl 3\)/g, 'Brew Potions unlocked (Caster level 3)');
+  t = t.replace(/Schriftrollen schreiben freigeschaltet/g, 'Scribe Scrolls unlocked');
+  t = t.replace(/Zauberstäbe herstellen freigeschaltet \(ab Caster-Lvl 5\)/g, 'Craft Wands unlocked (Caster level 5)');
+  t = t.replace(/Waffen\/Rüstungen herstellen freigeschaltet \(ab Caster-Lvl 5\)/g, 'Craft Arms & Armor unlocked (Caster level 5)');
+  t = t.replace(/Wundersame Gegenstände herstellen freigeschaltet \(ab Caster-Lvl 3\)/g, 'Craft Wondrous Items unlocked (Caster level 3)');
+  t = t.replace(/Zepter herstellen freigeschaltet \(ab Caster-Lvl 9\)/g, 'Craft Rods unlocked (Caster level 9)');
+  t = t.replace(/Stecken herstellen freigeschaltet \(ab Caster-Lvl 12\)/g, 'Craft Staffs unlocked (Caster level 12)');
+  t = t.replace(/Ringe schmieden freigeschaltet \(ab Caster-Lvl 12\)/g, 'Craft Rings unlocked (Caster level 12)');
+  t = t.replace(/Zaubergrade Slot-Erhöhung/g, 'spell slot level increase');
+  t = t.replace(/Zaubergrad Slot-Erhöhung/g, 'spell slot level increase');
+  t = t.replace(/Freie Slot-Erhöhung für SG-Steigerung/g, 'Free slot increase for DC increase');
+  
+  // Generic translation fallbacks for common words
+  t = t.replace(/freigeschaltet/gi, 'unlocked');
+  t = t.replace(/ab Caster-Lvl/gi, 'from Caster level');
+  t = t.replace(/pro Tag für/gi, 'per day for');
+  t = t.replace(/auf/gi, 'to');
+  t = t.replace(/oder/gi, 'or');
+  t = t.replace(/benötigt/gi, 'required');
+  return t;
+}
+
 export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
   feat,
   pc,
@@ -212,7 +274,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
             <div style={{ gridColumn: 'span 2' }}>
               <strong>App Mechanics:</strong>{' '}
               <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>
-                {feat.appEffect || 'No automatic stat changes'}
+                {translateAppEffect(feat.appEffect) || 'No automatic stat changes'}
               </span>
             </div>
           </div>
@@ -241,7 +303,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
 
           <div style={{ fontSize: '9.5px', marginBottom: '6px', lineHeight: 1.35 }}>
             <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Benefit (RAW):</strong>
-            <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>{feat.benefitEn || feat.benefitDe}</div>
+            <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>{feat.benefitRaw || feat.benefitEn || feat.benefitDe}</div>
           </div>
 
           {feat.normalRaw && (

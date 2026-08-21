@@ -52,6 +52,8 @@ export {
   resetDailyResources,
   addPCFeat,
   removePCFeat,
+  addPCSkillTrick,
+  removePCSkillTrick,
   savePCSpellTemplate,
   deletePCSpellTemplate,
   applyPCSpellTemplate,

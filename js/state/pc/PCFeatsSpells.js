@@ -9,6 +9,7 @@ import { saveToStorage } from '../StorageManager.js';
 import { updatePCBatch, recalculatePCStats, syncPCToHost } from './PCGeneral.js';
 import { CombatFeats, checkFeatPrerequisites } from '../../data/feats-data.js';
 import { CombatRules } from '../../rules.js';
+import { SKILL_TRICKS_REGISTRY } from '../../data/skillTricks-data.js';
 
 export function updatePCSpellSlotsMax(lvl, max) {
   const pc = getActivePC();
@@ -190,5 +191,64 @@ export function applyPCSpellTemplate(name) {
 export function clearPreparedSpells() {
   updatePCBatch(pc => {
     pc.preparedSpells = [];
+  });
+}
+
+export function addPCSkillTrick(trickId, isBonus = false) {
+  const pc = getActivePC();
+  if (!pc) return { success: false, error: 'Kein aktiver Charakter.' };
+
+  const trickDef = SKILL_TRICKS_REGISTRY[trickId];
+  if (!trickDef) return { success: false, error: 'Ungültiger Skill Trick.' };
+
+  const alreadyLearned = Array.isArray(pc.skillTricks) && pc.skillTricks.some(t => {
+    if (typeof t === 'object') {
+      return t.id === trickId;
+    }
+    return t === trickId;
+  });
+
+  if (alreadyLearned) {
+    return { success: false, error: `Der Skill Trick "${trickDef.nameDe}" wurde bereits erlernt.` };
+  }
+
+  if (!isBonus) {
+    const limit = CombatRules.getMaxSkillTricksLimit(pc);
+    const nonBonusCount = pc.skillTricks.filter(t => typeof t === 'object' ? !t.isBonus : true).length;
+    if (nonBonusCount >= limit) {
+      return { success: false, error: `Maximale Anzahl an erlernbaren Skill Tricks (${limit}) erreicht.` };
+    }
+
+    const spent = CombatRules.calculateSpentSkillPoints(pc);
+    const total = CombatRules.calculateTotalSkillPoints(pc);
+    if (spent + 2 > total) {
+      return { success: false, error: `Nicht genügend Fertigkeitspunkte. 2 SP benötigt.` };
+    }
+  }
+
+  const { met, details } = CombatRules.checkSkillTrickPrerequisites(trickId, pc);
+  if (!met) {
+    const unmetList = details.filter(d => !d.met).map(d => d.desc).join('\n• ');
+    return { success: false, error: `Voraussetzungen nicht erfüllt:\n• ${unmetList}` };
+  }
+
+  updatePCBatch(pc => {
+    if (!Array.isArray(pc.skillTricks)) pc.skillTricks = [];
+    pc.skillTricks.push({ id: trickId, isBonus: !!isBonus });
+  });
+
+  return { success: true };
+}
+
+export function removePCSkillTrick(trickId) {
+  updatePCBatch(pc => {
+    if (!Array.isArray(pc.skillTricks)) return;
+    const idx = pc.skillTricks.findIndex(t => {
+      if (typeof t === 'object') return t.id === trickId;
+      return t === trickId;
+    });
+    if (idx !== -1) {
+      pc.skillTricks.splice(idx, 1);
+    }
   });
 }

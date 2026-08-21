@@ -187,7 +187,9 @@ export const CLASSES_LIST = [
   { key: 'mystic_theurge', name: 'Mystic Theurge', hd: 4, skillBase: 2, desc: 'Master of both arcane and divine magic.', isPrestige: true },
   { key: 'arcane_trickster', name: 'Arcane Trickster', hd: 4, skillBase: 4, desc: 'Combines magic with rogue abilities.', isPrestige: true },
   { key: 'dragon_disciple', name: 'Dragon Disciple', hd: 12, skillBase: 2, desc: 'Awakens draconic blood for physical power.', isPrestige: true },
-  { key: 'assassin', name: 'Assassin', hd: 6, skillBase: 4, desc: 'Master of stealth, anatomy, and lethal strikes.', isPrestige: true }
+  { key: 'assassin', name: 'Assassin', hd: 6, skillBase: 4, desc: 'Master of stealth, anatomy, and lethal strikes.', isPrestige: true },
+  { key: 'battle_trickster', name: 'Battle Trickster', hd: 10, skillBase: 4, desc: 'A master of martial prowess combined with tricky tactics and skill tricks.', isPrestige: true },
+  { key: 'spellwarp_sniper', name: 'Spellwarp Sniper', hd: 6, skillBase: 4, desc: 'Transforms area-of-effect spells into precise, deadly ray spells.', isPrestige: true }
 ];
 
 

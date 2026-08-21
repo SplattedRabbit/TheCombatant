@@ -458,15 +458,15 @@ test('Feat Automation - Custom Prerequisite Checks (Bypass Prevention)', () => {
   });
   const resTurning = checkFeatPrerequisites('extra_turning', fighter);
   assert.strictEqual(resTurning.met, false, 'Fighter should not be able to learn Extra Turning');
-  assert.ok(resTurning.unmetDescs.some(d => d.includes('Untote zu vertreiben')));
+  assert.ok(resTurning.unmetDescs.some(d => d.toLowerCase().includes('turn undead') || d.includes('Untote zu vertreiben')));
 
   const resMusic = checkFeatPrerequisites('extra_music', fighter);
   assert.strictEqual(resMusic.met, false, 'Fighter should not be able to learn Extra Music');
-  assert.ok(resMusic.unmetDescs.some(d => d.includes('Bardenmusik')));
+  assert.ok(resMusic.unmetDescs.some(d => d.toLowerCase().includes('music') || d.includes('Bardenmusik')));
 
   const resNatural = checkFeatPrerequisites('natural_spell', fighter);
   assert.strictEqual(resNatural.met, false, 'Fighter should not be able to learn Natural Spell');
-  assert.ok(resNatural.unmetDescs.some(d => d.includes('Tiergestalt')));
+  assert.ok(resNatural.unmetDescs.some(d => d.toLowerCase().includes('shape') || d.includes('Tiergestalt')));
 
   // 2. Cleric Level 1 CAN learn Extra Turning
   const cleric = new Combatant({
@@ -558,7 +558,7 @@ test('Class Feature - Turn Undead Daily Resources (Cleric & Paladin)', () => {
     classes: [{ classType: 'cleric', level: 1 }]
   });
   recalculateDailyAbilities(cleric);
-  const turnCleric = cleric.dailyAbilities.find(a => a.name === 'Untote vertreiben');
+  const turnCleric = cleric.dailyAbilities.find(a => a.name === 'Untote vertreiben' || a.name === 'Turn Undead');
   assert.ok(turnCleric, 'Cleric should have Turn Undead ability');
   assert.strictEqual(turnCleric.max, 5, 'Cleric Turn Undead max should be 5');
 
@@ -570,7 +570,7 @@ test('Class Feature - Turn Undead Daily Resources (Cleric & Paladin)', () => {
     classes: [{ classType: 'paladin', level: 3 }]
   });
   recalculateDailyAbilities(paladin3);
-  const turnPal3 = paladin3.dailyAbilities.find(a => a.name === 'Untote vertreiben');
+  const turnPal3 = paladin3.dailyAbilities.find(a => a.name === 'Untote vertreiben' || a.name === 'Turn Undead');
   assert.strictEqual(turnPal3, undefined, 'Paladin 3 should not have Turn Undead ability');
 
   // 3. Paladin level 4 gets turn undead (3 + Cha Mod = 3 + 2 = 5)
@@ -581,7 +581,7 @@ test('Class Feature - Turn Undead Daily Resources (Cleric & Paladin)', () => {
     classes: [{ classType: 'paladin', level: 4 }]
   });
   recalculateDailyAbilities(paladin4);
-  const turnPal4 = paladin4.dailyAbilities.find(a => a.name === 'Untote vertreiben');
+  const turnPal4 = paladin4.dailyAbilities.find(a => a.name === 'Untote vertreiben' || a.name === 'Turn Undead');
   assert.ok(turnPal4, 'Paladin 4 should have Turn Undead ability');
   assert.strictEqual(turnPal4.max, 5, 'Paladin 4 Turn Undead max should be 5');
 
@@ -596,7 +596,7 @@ test('Class Feature - Turn Undead Daily Resources (Cleric & Paladin)', () => {
     ]
   });
   recalculateDailyAbilities(multiclass);
-  const turns = multiclass.dailyAbilities.filter(a => a.name === 'Untote vertreiben');
+  const turns = multiclass.dailyAbilities.filter(a => a.name === 'Untote vertreiben' || a.name === 'Turn Undead');
   assert.strictEqual(turns.length, 1, 'Should only have a single instance of Turn Undead');
   assert.strictEqual(turns[0].max, 5, 'Multiclass Turn Undead max should be 5');
 
@@ -609,7 +609,7 @@ test('Class Feature - Turn Undead Daily Resources (Cleric & Paladin)', () => {
     feats: [{ id: 'extra_turning' }]
   });
   recalculateDailyAbilities(extraTurningPC);
-  const turnExtra = extraTurningPC.dailyAbilities.find(a => a.name === 'Untote vertreiben');
+  const turnExtra = extraTurningPC.dailyAbilities.find(a => a.name === 'Untote vertreiben' || a.name === 'Turn Undead');
   assert.ok(turnExtra);
   assert.strictEqual(turnExtra.max, 9, 'Turn Undead with Extra Turning should be 9');
 });

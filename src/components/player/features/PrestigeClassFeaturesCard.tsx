@@ -78,6 +78,25 @@ export const PrestigeClassFeaturesCard: React.FC<PrestigeClassFeaturesCardProps>
     CombatState.syncPCToHost();
   };
 
+  const handleToggleTrickyFighting = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const activePC = CombatState.getActivePC();
+    activePC.isTrickyFightingActive = e.target.checked;
+    CombatState.saveToStorage();
+    CombatState.syncPCToHost();
+  };
+
+  const empowerAbilityIdx = Array.isArray(pc.dailyAbilities)
+    ? pc.dailyAbilities.findIndex((ab: any) => ab.name === 'Ray Mastery: Empower')
+    : -1;
+  const empowerAbility = empowerAbilityIdx >= 0 ? pc.dailyAbilities[empowerAbilityIdx] : null;
+  const empowerAbilityUsed = empowerAbility ? empowerAbility.used : 0;
+
+  const handleUpdateEmpowerUsed = (diff: number) => {
+    if (empowerAbilityIdx >= 0) {
+      CombatState.updatePCDailyAbilityUsed(empowerAbilityIdx, diff);
+    }
+  };
+
   const rows = (ui.rows || []).filter((row: any) => !row.showIf || row.showIf(features));
 
   return (
@@ -136,6 +155,41 @@ export const PrestigeClassFeaturesCard: React.FC<PrestigeClassFeaturesCardProps>
               />
               <span><strong>Apply Sneak Attack to damage</strong></span>
             </label>
+          )}
+
+          {classKey === 'battle_trickster' && level >= 3 && (
+            <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '8px', cursor: 'pointer', padding: '2px 0' }}>
+              <input
+                type="checkbox"
+                checked={pc.isTrickyFightingActive || false}
+                onChange={handleToggleTrickyFighting}
+                style={{ cursor: 'pointer', width: '10px', height: '10px' }}
+              />
+              <span><strong>Tricky Fighting Active (+1 competence bonus to attack)</strong></span>
+            </label>
+          )}
+
+          {classKey === 'spellwarp_sniper' && level >= 5 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '8px', borderTop: '0.5px dashed rgba(200,169,110,0.15)', paddingTop: '4px', marginTop: '4px' }}>
+              <span><strong>Ray Mastery Empower (1/day):</strong></span>
+              <button
+                className="btn btn-p"
+                disabled={empowerAbilityUsed >= 1}
+                onClick={() => handleUpdateEmpowerUsed(1)}
+                style={{ fontSize: '7.5px', padding: '1px 5px', cursor: 'pointer' }}
+              >
+                Use
+              </button>
+              <button
+                className="btn"
+                disabled={empowerAbilityUsed <= 0}
+                onClick={() => handleUpdateEmpowerUsed(-1)}
+                style={{ fontSize: '7.5px', padding: '1px 5px', cursor: 'pointer', background: 'transparent', border: '0.5px solid var(--pb)', color: 'var(--ink)' }}
+              >
+                Refill
+              </button>
+              <span style={{ marginLeft: '4px', fontSize: '7.5px' }}>({1 - empowerAbilityUsed} available)</span>
+            </div>
           )}
 
         </div>

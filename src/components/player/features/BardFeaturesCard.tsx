@@ -92,7 +92,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
   const [musicRulesOpen, setMusicRulesOpen] = useState(false);
 
   const extraMusic = pc.bardicMusicExtra || 0;
-  const musicAbility = pc.dailyAbilities?.find((a: any) => a.name === "Bardisches Lied");
+  const musicAbility = pc.dailyAbilities?.find((a: any) => a.name === "Bardisches Lied" || a.name === "Bardic Music");
   const musicMax = musicAbility ? musicAbility.max : 0;
   const musicUsed = musicAbility ? musicAbility.used : 0;
   const remaining = Math.max(0, musicMax - musicUsed);
@@ -106,7 +106,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
 
   const handleBubbleClick = (idx: number) => {
     CombatState.updatePCBatch((activePC: any) => {
-      const ability = activePC.dailyAbilities.find((a: any) => a.name === "Bardisches Lied");
+      const ability = activePC.dailyAbilities.find((a: any) => a.name === "Bardisches Lied" || a.name === "Bardic Music");
       if (ability) {
         if (idx <= ability.used) {
           ability.used = Math.max(0, idx - 1);
@@ -221,7 +221,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
       const isZeroCost = song.key === 'suggestion' || song.key === 'mass_suggestion';
       if (!isZeroCost) {
         CombatState.updatePCBatch((pcToUpdate: any) => {
-          const innerAbility = pcToUpdate.dailyAbilities.find((a: any) => a.name === "Bardisches Lied");
+          const innerAbility = pcToUpdate.dailyAbilities.find((a: any) => a.name === "Bardisches Lied" || a.name === "Bardic Music");
           if (innerAbility) {
             innerAbility.used = Math.min(innerAbility.max, innerAbility.used + 1);
           }

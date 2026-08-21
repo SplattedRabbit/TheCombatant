@@ -273,9 +273,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
         {/* Tab 2: Skills & Feats */}
         <div className={`player-tab-panel ${activeTab === 'skills' ? 'active' : ''}`} id="tabPanelSkills">
           <div className="skills-feats-grid">
-            <BaseCard title="📔 Skills">
-              <PCSkillsTab pc={pc} />
-            </BaseCard>
+            <PCSkillsTab pc={pc} />
             <BaseCard title="🎓 Feats">
               <PCFeatsTab pc={pc} />
             </BaseCard>

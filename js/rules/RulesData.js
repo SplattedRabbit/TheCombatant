@@ -253,6 +253,17 @@ export const CLASS_SKILLS = {
     'balance', 'bluff', 'climb', 'craft', 'decipher_script', 'diplomacy', 'disable_device', 'disguise',
     'escape_artist', 'forgery', 'gather_information', 'hide', 'intimidate', 'jump', 'listen',
     'move_silently', 'open_lock', 'search', 'sense_motive', 'sleight_of_hand', 'spot', 'swim', 'tumble', 'use_magic_device', 'use_rope'
+  ],
+  spellwarp_sniper: [
+    'concentration', 'craft', 'decipher_script', 'jump', 'knowledge_arcana', 'knowledge_dungeons',
+    'knowledge_history', 'knowledge_local', 'knowledge_nature', 'knowledge_planes', 'knowledge_religion',
+    'knowledge_other', 'profession', 'search', 'sense_motive', 'spellcraft', 'spot', 'tumble'
+  ],
+  battle_trickster: [
+    'balance', 'bluff', 'climb', 'craft', 'diplomacy', 'disable_device', 'disguise', 'escape_artist',
+    'gather_information', 'handle_animal', 'hide', 'intimidate', 'jump', 'listen', 'move_silently',
+    'open_lock', 'perform', 'profession', 'ride', 'search', 'sense_motive', 'sleight_of_hand', 'spot',
+    'survival', 'swim', 'tumble', 'use_rope'
   ]
 };
 

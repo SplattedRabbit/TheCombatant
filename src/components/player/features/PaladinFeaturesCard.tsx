@@ -22,8 +22,8 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
   const chaValue = pc.cha ? pc.cha.getValue() : 10;
   const chaMod = getAblMod(chaValue);
   
-  const smiteAbility = pc.dailyAbilities?.find((a: any) => a.name === "Böses niederstrecken");
-  const lohAbility = pc.dailyAbilities?.find((a: any) => a.name === "Hände auflegen");
+  const smiteAbility = pc.dailyAbilities?.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil");
+  const lohAbility = pc.dailyAbilities?.find((a: any) => a.name === "Hände auflegen" || a.name === "Lay on Hands");
   
   const smiteMax = smiteAbility ? smiteAbility.max : 0;
   const smiteUsed = smiteAbility ? smiteAbility.used : 0;
@@ -33,14 +33,14 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
   const lohUsed = lohAbility ? lohAbility.used : 0;
   const lohRemaining = lohMax - lohUsed;
 
-  const turnAbility = pc.dailyAbilities?.find((a: any) => a.name === "Untote vertreiben");
+  const turnAbility = pc.dailyAbilities?.find((a: any) => a.name === "Untote vertreiben" || a.name === "Turn Undead");
   const turnMax = turnAbility ? turnAbility.max : 0;
   const turnUsed = turnAbility ? turnAbility.used : 0;
   const turnRemaining = Math.max(0, turnMax - turnUsed);
 
   const handleSmiteBubbleClick = (idx: number) => {
     const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Böses niederstrecken");
+    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil");
     if (ability) {
       if (idx <= ability.used) {
         ability.used = idx - 1;
@@ -54,7 +54,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
 
   const handleTurnBubbleClick = (idx: number) => {
     const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Untote vertreiben");
+    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Untote vertreiben" || a.name === "Turn Undead");
     if (ability) {
       if (idx <= ability.used) {
         ability.used = idx - 1;
@@ -77,7 +77,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
   const handleLohChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = parseInt(e.target.value) || 0;
     const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Hände auflegen");
+    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Hände auflegen" || a.name === "Lay on Hands");
     if (ability) {
       ability.used = Math.max(0, Math.min(ability.max, ability.max - val));
       CombatState.saveToStorage();
@@ -87,7 +87,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
 
   const handleAdjustLoh = (dir: number) => {
     const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Hände auflegen");
+    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Hände auflegen" || a.name === "Lay on Hands");
     if (ability && ability.max > 0) {
       if (dir === -1) {
         ability.used = Math.min(ability.max, ability.used + 1);

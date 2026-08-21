@@ -36,11 +36,17 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
   // Exclude class-specific abilities from this general list
   const EXCLUDED_ABILITIES = [
     "Kampfrausch (Rage)",
+    "Rage",
     "Böses niederstrecken",
+    "Smite Evil",
     "Hände auflegen",
+    "Lay on Hands",
     "Untote vertreiben",
+    "Turn Undead",
     "Bardisches Lied",
-    "Tiergestalt"
+    "Bardic Music",
+    "Tiergestalt",
+    "Wild Shape"
   ];
 
   const hasGeneralAbilities = pc.dailyAbilities && pc.dailyAbilities.some(

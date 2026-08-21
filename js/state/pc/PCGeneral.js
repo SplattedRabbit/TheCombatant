@@ -52,11 +52,21 @@ export function recalculateDailyAbilities(pc) {
     });
   }
 
+  if (hasClasses) {
+    const sw = pc.classes.find(c => c.classType === 'spellwarp_sniper');
+    if (sw && sw.level >= 5) {
+      const hasEmpower = pc.dailyAbilities.some(a => a.name === "Ray Mastery: Empower");
+      if (!hasEmpower) {
+        pc.dailyAbilities.push({ name: "Ray Mastery: Empower", max: 1, used: 0 });
+      }
+    }
+  }
+
   // Apply feats modifications on daily resources
   if (Array.isArray(pc.feats)) {
     const extraTurningCount = pc.feats.filter(f => f.id === 'extra_turning').length;
     if (extraTurningCount > 0) {
-      let turnAbility = pc.dailyAbilities.find(a => a.name === "Untote vertreiben");
+      let turnAbility = pc.dailyAbilities.find(a => a.name === "Untote vertreiben" || a.name === "Turn Undead");
       if (turnAbility) {
         turnAbility.max += extraTurningCount * 4;
       }
@@ -64,7 +74,7 @@ export function recalculateDailyAbilities(pc) {
 
     const extraMusicCount = pc.feats.filter(f => f.id === 'extra_music').length;
     if (extraMusicCount > 0) {
-      let musicAbility = pc.dailyAbilities.find(a => a.name === "Bardisches Lied");
+      let musicAbility = pc.dailyAbilities.find(a => a.name === "Bardisches Lied" || a.name === "Bardic Music");
       if (musicAbility) {
         musicAbility.max += extraMusicCount * 4;
       }

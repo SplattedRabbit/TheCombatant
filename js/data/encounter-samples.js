@@ -77,7 +77,7 @@ export const morgwenSample = {
     2: { max: 2, used: 0 }
   },
   dailyAbilities: [
-    { name: 'Untote vertreiben', max: 5, used: 1 }
+    { name: 'Turn Undead', max: 5, used: 1 }
   ]
 };
 
@@ -493,9 +493,9 @@ export const paladinLvl10Sample = {
     { id: 'prep-pal-2', spellKey: 'cure_light_wounds', metamagic: [], isUsed: false, isSpecialist: false }
   ],
   dailyAbilities: [
-    { name: 'Hände auflegen', max: 30, used: 0 },
-    { name: 'Böses niederstrecken', max: 3, used: 0 },
-    { name: 'Untote vertreiben', max: 6, used: 0 }
+    { name: 'Lay on Hands', max: 30, used: 0 },
+    { name: 'Smite Evil', max: 3, used: 0 },
+    { name: 'Turn Undead', max: 6, used: 0 }
   ]
 };
 

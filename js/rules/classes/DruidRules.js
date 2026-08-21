@@ -24,10 +24,10 @@ export const DruidRules = {
     let wildAbility = pc.dailyAbilities.find(a => a.name === "Tiergestalt" || a.name === "Wild Shape");
     if (wildShapeMax > 0) {
       if (!wildAbility) {
-        pc.dailyAbilities.push({ name: "Tiergestalt", max: wildShapeMax, used: 0 });
+        pc.dailyAbilities.push({ name: "Wild Shape", max: wildShapeMax, used: 0 });
       } else {
         wildAbility.max = wildShapeMax;
-        wildAbility.name = "Tiergestalt";
+        wildAbility.name = "Wild Shape";
       }
     } else if (wildAbility) {
       pc.dailyAbilities = pc.dailyAbilities.filter(a => a.name !== "Tiergestalt" && a.name !== "Wild Shape");

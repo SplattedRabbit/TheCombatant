@@ -91,6 +91,11 @@ export function calculateGeneralAtkModifiers(ctx) {
     generalAtkBreakdown.push({ label: 'Größenmodifikator', value: sizeMod });
   }
 
+  if (ctx.pc.isTrickyFightingActive) {
+    generalAtkMod += 1;
+    generalAtkBreakdown.push({ label: 'Tricky Fighting (Kampftrick-Bonus)', value: 1 });
+  }
+
   if (ctx.buffAtkBonus) {
     generalAtkMod += ctx.buffAtkBonus;
   }
