@@ -232,3 +232,44 @@ test('Armory 2.0 - State: Equip, Unequip, Swap & Smart Ring Distribution', () =>
   assert.strictEqual(char.items[3].isEquipped, false);
   assert.strictEqual(char.str.getValue(), 10);
 });
+
+test('Armory 2.0 - Rules: Item Sets Engine (MIC Mechanics)', () => {
+  const pc = {
+    items: [
+      new Item({
+        id: 'r1',
+        name: 'Gloves of the Starry Sky',
+        slot: 'hands',
+        setId: 'raiment_of_the_four',
+        isEquipped: true,
+        effects: [{ type: 'skill', target: 'concentration', value: 2, bonusType: 'competence' }]
+      }),
+      new Item({
+        id: 'r2',
+        name: 'Boots of the Big Sky',
+        slot: 'feet',
+        setId: 'raiment_of_the_four',
+        isEquipped: true,
+        effects: [{ type: 'skill', target: 'jump', value: 2, bonusType: 'competence' }]
+      }),
+      new Item({
+        id: 'r3',
+        name: 'Goggles of the Golden Sun',
+        slot: 'face',
+        setId: 'raiment_of_the_four',
+        isEquipped: true,
+        effects: [{ type: 'skill', target: 'spot', value: 2, bonusType: 'competence' }]
+      })
+    ]
+  };
+
+  const effects = calculateEquippedItemEffects(pc);
+  // 3 pieces of Raiment of the Four:
+  // - 2 pieces bonus: +2 resistance on all saves
+  // - 3 pieces bonus: +10 speed
+  assert.strictEqual(effects.saves.all, 2);
+  assert.strictEqual(effects.speed, 10);
+  assert.strictEqual(effects.activeSets.length, 1);
+  assert.strictEqual(effects.activeSets[0].equippedCount, 3);
+  assert.strictEqual(effects.activeSets[0].activeBonuses.length, 2);
+});

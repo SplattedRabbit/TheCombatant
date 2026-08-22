@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { ITEM_SLOTS, MAGIC_ITEMS_REGISTRY, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
+// @ts-ignore
+import { calculateItemSetBonuses, getItemStackingBreakdown } from '@core/rules.js';
 import { BaseCard } from '../../shared/BaseCard';
 import { BodySlotCard, formatEffectDisplay } from './BodySlotCard';
 import { EmptySlotCard } from './EmptySlotCard';
@@ -129,6 +131,9 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
     { key: 'slotless', label: '🎒 Slotless' }
   ];
 
+  const setBonusData = calculateItemSetBonuses(pc);
+  const stackingBreakdown = getItemStackingBreakdown(pc);
+
   return (
     <div className="armory-layout-grid" style={{ marginBottom: '16px' }}>
       
@@ -152,6 +157,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                     slotDef={slotDef}
                     item={equippedEntry.item}
                     itemIdx={equippedEntry.idx}
+                    stackingBreakdown={stackingBreakdown}
                     onUnequip={() => handleUnequipSlot(equippedEntry.idx)}
                     onEdit={() => setEditingItemData({ item: equippedEntry.item, itemIdx: equippedEntry.idx })}
                   />
@@ -168,6 +174,54 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
               );
             })}
           </div>
+
+          {/* Active Item Sets */}
+          {setBonusData.activeSets.length > 0 && (
+            <div style={{ marginTop: '4px', borderTop: '0.5px solid var(--pb)', paddingTop: '6px' }}>
+              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '4px' }}>
+                ✨ Active Item Sets ({setBonusData.activeSets.length})
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                {setBonusData.activeSets.map((activeSet: any) => (
+                  <div
+                    key={activeSet.set.id}
+                    style={{
+                      background: 'rgba(200, 169, 110, 0.12)',
+                      border: '1px solid var(--pb)',
+                      borderLeft: '3px solid var(--red)',
+                      borderRadius: '3px',
+                      padding: '4px 8px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '2px'
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
+                        {activeSet.set.name}
+                      </span>
+                      <span style={{ fontSize: '8px', background: 'rgba(139, 26, 26, 0.15)', color: 'var(--red)', padding: '0 4px', borderRadius: '2px', fontWeight: 'bold' }}>
+                        {activeSet.equippedCount} / {activeSet.totalPieces} Pieces
+                      </span>
+                    </div>
+                    {activeSet.activeBonuses.length > 0 ? (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
+                        {activeSet.activeBonuses.map((b: any, bIdx: number) => (
+                          <div key={bIdx} style={{ fontSize: '8.5px', color: 'var(--ink)', fontFamily: "'Crimson Text', serif", fontWeight: 600 }}>
+                            • {b.requiredPieces} Pieces: {b.description}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div style={{ fontSize: '8px', color: 'var(--inkm)', fontStyle: 'italic', fontFamily: "'Crimson Text', serif" }}>
+                        Equip 1 more piece to unlock the 2-piece set bonus.
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Slotless & Wondrous Equipped Items */}
           {slotlessEquipped.length > 0 && (

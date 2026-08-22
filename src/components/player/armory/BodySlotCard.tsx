@@ -7,6 +7,7 @@ interface BodySlotCardProps {
   slotDef: { nameEn: string; nameDe: string; icon: string };
   item: any;
   itemIdx: number;
+  stackingBreakdown?: any[];
   onUnequip: () => void;
   onSwap?: () => void;
   onEdit: () => void;
@@ -83,6 +84,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
   slotDef,
   item,
   itemIdx,
+  stackingBreakdown = [],
   onUnequip,
   onEdit,
   onActivateBuff
@@ -92,6 +94,8 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
 
   const rawEffects = Array.isArray(item.effects) ? item.effects : [];
   const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);
+
+  const suppressedEntry = stackingBreakdown.find((s: any) => s.itemIdx === itemIdx && !s.isActive);
 
   const handleToggleFlip = (targetState: boolean) => {
     setIsAnimating(true);
@@ -124,7 +128,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
           style={{
             background: 'var(--pd, #fdf6e2)',
             border: '1.5px solid var(--pb, #c8a96e)',
-            borderLeft: '3.5px solid var(--red, #8b1a1a)',
+            borderLeft: suppressedEntry ? '3.5px solid #d97706' : '3.5px solid var(--red, #8b1a1a)',
             borderRadius: '3px',
             padding: '5px 7px',
             cursor: 'pointer',
@@ -136,7 +140,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
             boxSizing: 'border-box',
             boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
           }}
-          title="Click to flip / unequip"
+          title={suppressedEntry ? `Bonus suppressed by ${suppressedEntry.overriddenBy || 'another item'}` : "Click to flip / unequip"}
         >
           {/* Header Row: Slot Icon + Name and clean Effect Pill */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', lineHeight: 1 }}>
@@ -151,18 +155,22 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
               <span
                 style={{
                   fontSize: '8.5px',
-                  background: 'rgba(200, 169, 110, 0.25)',
-                  border: '0.5px solid var(--pb)',
+                  background: suppressedEntry ? 'rgba(217, 119, 6, 0.15)' : 'rgba(200, 169, 110, 0.25)',
+                  border: suppressedEntry ? '0.5px solid #d97706' : '0.5px solid var(--pb)',
+                  textDecoration: suppressedEntry ? 'line-through' : 'none',
+                  opacity: suppressedEntry ? 0.75 : 1,
                   borderRadius: '2px',
                   padding: '0 4px',
-                  color: 'var(--ink)',
+                  color: suppressedEntry ? '#b45309' : 'var(--ink)',
                   fontWeight: 'bold',
                   fontFamily: "'Crimson Text', serif",
                   lineHeight: '14px'
                 }}
+                title={suppressedEntry ? `Suppressed by ${suppressedEntry.overriddenBy || 'another item'}` : ''}
               >
                 {formatEffectDisplay(activeEffects[0])}
                 {activeEffects.length > 1 ? ` +${activeEffects.length - 1}` : ''}
+                {suppressedEntry ? ' ⚠️' : ''}
               </span>
             )}
           </div>

@@ -1,13 +1,73 @@
 /**
  * @module    RulesItems
- * @summary   Rules engine for D&D 3.5e magic items & equipment (Armory 2.0). Calculates stacking, active vs overridden bonuses, and equipment buffs.
- * @exports   calculateEquippedItemEffects, getItemStackingBreakdown, getAvailableEquipmentBuffs
+ * @summary   Rules engine for D&D 3.5e magic items & equipment (Armory 2.0). Calculates stacking, active vs overridden bonuses, equipment buffs, and item sets.
+ * @exports   calculateEquippedItemEffects, getItemStackingBreakdown, getAvailableEquipmentBuffs, calculateItemSetBonuses
  */
+
+import { MAGIC_ITEM_SETS } from '../data/magicItems-data.js';
+
+/**
+ * Calculates active Magic Item Sets and their cumulative set bonus effects for a character.
+ * @param {Object} pc 
+ * @returns {{ activeSets: Array<Object>, setEffects: Array<Object> }}
+ */
+export function calculateItemSetBonuses(pc) {
+  const result = {
+    activeSets: [],
+    setEffects: []
+  };
+
+  if (!pc || !Array.isArray(pc.items)) return result;
+
+  // Count equipped pieces per setId
+  const setPieceCounts = {};
+  const equippedItems = pc.items.filter(item => item && item.isEquipped);
+
+  equippedItems.forEach(item => {
+    if (item.setId && MAGIC_ITEM_SETS[item.setId]) {
+      setPieceCounts[item.setId] = (setPieceCounts[item.setId] || 0) + 1;
+    }
+  });
+
+  // Evaluate set bonuses for each set with >= 2 equipped pieces
+  Object.entries(setPieceCounts).forEach(([setId, count]) => {
+    const setDef = MAGIC_ITEM_SETS[setId];
+    if (!setDef || !Array.isArray(setDef.bonuses)) return;
+
+    const totalPieces = setDef.items?.length || 4;
+    const activeBonuses = [];
+
+    setDef.bonuses.forEach(b => {
+      if (count >= b.requiredPieces) {
+        activeBonuses.push(b);
+        if (Array.isArray(b.effects)) {
+          b.effects.forEach(eff => {
+            result.setEffects.push({
+              ...eff,
+              source: `${setDef.name} (${b.requiredPieces} Pieces)`
+            });
+          });
+        }
+      }
+    });
+
+    if (activeBonuses.length > 0 || count >= 2) {
+      result.activeSets.push({
+        set: setDef,
+        equippedCount: count,
+        totalPieces,
+        activeBonuses
+      });
+    }
+  });
+
+  return result;
+}
 
 /**
  * Calculates aggregated stat modifiers from all equipped items on a character applying D&D 3.5e stacking rules.
  * @param {Object} pc 
- * @returns {Object} { attributes, saves, ac, skills, speed, initiative }
+ * @returns {Object} { attributes, saves, ac, skills, speed, initiative, activeSets }
  */
 export function calculateEquippedItemEffects(pc) {
   const result = {
@@ -16,7 +76,8 @@ export function calculateEquippedItemEffects(pc) {
     ac: { deflection: 0, natural: 0, armor: 0, shield: 0, dodge: 0 },
     skills: {},
     speed: 0,
-    initiative: 0
+    initiative: 0,
+    activeSets: []
   };
 
   if (!pc || !Array.isArray(pc.items)) return result;
@@ -33,6 +94,7 @@ export function calculateEquippedItemEffects(pc) {
     bonusGroups[key].push(value);
   };
 
+  // 1. Direct Item Effects
   equippedItems.forEach(item => {
     const effects = Array.isArray(item.effects) ? item.effects : [];
     effects.forEach(eff => {
@@ -61,6 +123,37 @@ export function calculateEquippedItemEffects(pc) {
         addBonus('speed', 'speed', bType, val);
       }
     });
+  });
+
+  // 2. Item Set Bonuses
+  const setBonusData = calculateItemSetBonuses(pc);
+  result.activeSets = setBonusData.activeSets;
+
+  setBonusData.setEffects.forEach(eff => {
+    const type = eff.type || 'save';
+    const target = eff.target || 'all';
+    const val = parseInt(eff.value) || 0;
+    const bType = eff.bonusType || 'untyped';
+
+    if (val === 0) return;
+
+    if (type === 'attribute') {
+      if (result.attributes[target] !== undefined) {
+        addBonus('attribute', target, bType, val);
+      }
+    } else if (type === 'save') {
+      addBonus('save', target, bType, val);
+    } else if (type === 'ac') {
+      addBonus('ac', target, bType, val);
+    } else if (type === 'skill') {
+      if (target === 'ini' || target === 'initiative') {
+        addBonus('initiative', 'ini', bType, val);
+      } else {
+        addBonus('skill', target, bType, val);
+      }
+    } else if (type === 'speed') {
+      addBonus('speed', 'speed', bType, val);
+    }
   });
 
   // Resolve stacking for each group
@@ -121,6 +214,7 @@ export function getItemStackingBreakdown(pc) {
       allEffects.push({
         itemIdx,
         effIdx,
+        itemId: item.id,
         itemName: item.name || 'Item',
         type,
         target,
@@ -182,6 +276,8 @@ export function getAvailableEquipmentBuffs(pc) {
       costType: item.activation.costType,
       cost: item.activation.cost,
       availableUses,
+      charges: item.charges,
+      dailyUses: item.dailyUses,
       description: item.activation.effectDescription
     });
   });

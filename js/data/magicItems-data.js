@@ -1,7 +1,7 @@
 /**
  * @module    magicItems-data
- * @summary   Static registry of D&D 3.5e DMG & Magic Item Compendium standard item presets and slot definitions.
- * @exports   ITEM_SLOTS, MAGIC_ITEMS_REGISTRY, CONSOLIDATED_COMPENDIUM
+ * @summary   Static registry of D&D 3.5e DMG & Magic Item Compendium standard item presets, item sets, and slot definitions.
+ * @exports   ITEM_SLOTS, MAGIC_ITEMS_REGISTRY, CONSOLIDATED_COMPENDIUM, MAGIC_ITEM_SETS
  */
 
 export const ITEM_SLOTS = {
@@ -18,6 +18,74 @@ export const ITEM_SLOTS = {
   ring1: { key: 'ring1', nameEn: 'Ring 1', nameDe: 'Ring 1', icon: '💍', allowedTypes: ['ring'] },
   ring2: { key: 'ring2', nameEn: 'Ring 2', nameDe: 'Ring 2', icon: '💍', allowedTypes: ['ring'] },
   slotless: { key: 'slotless', nameEn: 'Slotless / Wondrous', nameDe: 'Slotless / Wondrous', icon: '🎒', allowedTypes: ['wondrous', 'consumable', 'wand', 'scroll', 'potion'] }
+};
+
+export const MAGIC_ITEM_SETS = {
+  raiment_of_the_four: {
+    id: 'raiment_of_the_four',
+    name: 'Raiment of the Four',
+    source: 'Magic Item Compendium',
+    description: 'A sacred vestment set harnessing the four elemental principles.',
+    items: ['gloves_of_the_starry_sky', 'boots_of_the_big_sky', 'goggles_of_the_golden_sun', 'periapt_of_the_sullying_horn'],
+    bonuses: [
+      {
+        requiredPieces: 2,
+        description: '+2 Resistance bonus on all saving throws.',
+        effects: [{ type: 'save', target: 'all', value: 2, bonusType: 'resistance' }]
+      },
+      {
+        requiredPieces: 3,
+        description: '+10 ft. Enhancement bonus to base speed.',
+        effects: [{ type: 'speed', target: 'speed', value: 10, bonusType: 'enhancement' }]
+      },
+      {
+        requiredPieces: 4,
+        description: '+2 Deflection bonus to AC.',
+        effects: [{ type: 'ac', target: 'deflection', value: 2, bonusType: 'deflection' }]
+      }
+    ]
+  },
+  wraiths_woe: {
+    id: 'wraiths_woe',
+    name: "Wraith's Woe",
+    source: 'Magic Item Compendium',
+    description: 'Forged to battle the incorporeal terrors of the night.',
+    items: ['amulet_of_teamwork', 'ring_of_dread', 'cloak_of_the_bat'],
+    bonuses: [
+      {
+        requiredPieces: 2,
+        description: '+2 Dodge AC bonus.',
+        effects: [{ type: 'ac', target: 'dodge', value: 2, bonusType: 'dodge' }]
+      },
+      {
+        requiredPieces: 3,
+        description: '+4 Insight bonus to Initiative.',
+        effects: [{ type: 'skill', target: 'ini', value: 4, bonusType: 'insight' }]
+      }
+    ]
+  },
+  garb_of_the_hunting_cat: {
+    id: 'garb_of_the_hunting_cat',
+    name: 'Garb of the Hunting Cat',
+    source: 'Magic Item Compendium',
+    description: 'Attuned to feline agility and predatory stealth.',
+    items: ['boots_of_the_panther', 'cloak_of_the_cat', 'gauntlets_of_the_panther'],
+    bonuses: [
+      {
+        requiredPieces: 2,
+        description: '+5 Competence bonus on Move Silently and Hide.',
+        effects: [
+          { type: 'skill', target: 'move_silently', value: 5, bonusType: 'competence' },
+          { type: 'skill', target: 'hide', value: 5, bonusType: 'competence' }
+        ]
+      },
+      {
+        requiredPieces: 3,
+        description: '+2 Competence bonus on attack rolls.',
+        effects: [{ type: 'damage', target: 'ranged_atk', value: 2, bonusType: 'competence' }]
+      }
+    ]
+  }
 };
 
 export const MAGIC_ITEMS_REGISTRY = {
@@ -72,6 +140,15 @@ export const MAGIC_ITEMS_REGISTRY = {
     aura: 'Faint Divination',
     effects: [{ type: 'skill', target: 'spot', value: 5, bonusType: 'competence' }],
     description: 'Grants a +5 competence bonus on Spot checks.'
+  },
+  goggles_of_the_golden_sun: {
+    key: 'goggles_of_the_golden_sun',
+    name: 'Goggles of the Golden Sun',
+    slot: 'face',
+    setId: 'raiment_of_the_four',
+    aura: 'Faint Evocation',
+    effects: [{ type: 'skill', target: 'spot', value: 2, bonusType: 'competence' }],
+    description: 'Part of Raiment of the Four. Grants +2 on Spot checks and immunity to blindness from bright light.'
   },
 
   // === NECK ===
@@ -163,6 +240,24 @@ export const MAGIC_ITEMS_REGISTRY = {
     effects: [{ type: 'attribute', target: 'wis', value: 6, bonusType: 'enhancement' }],
     description: 'Grants an enhancement bonus to Wisdom of +6.'
   },
+  periapt_of_the_sullying_horn: {
+    key: 'periapt_of_the_sullying_horn',
+    name: 'Periapt of the Sullying Horn',
+    slot: 'neck',
+    setId: 'raiment_of_the_four',
+    aura: 'Faint Abjuration',
+    effects: [{ type: 'save', target: 'fort', value: 1, bonusType: 'resistance' }],
+    description: 'Part of Raiment of the Four. Grants +1 resistance on Fortitude saves.'
+  },
+  amulet_of_teamwork: {
+    key: 'amulet_of_teamwork',
+    name: 'Amulet of Teamwork',
+    slot: 'neck',
+    setId: 'wraiths_woe',
+    aura: 'Faint Divination',
+    effects: [{ type: 'damage', target: 'melee_atk', value: 1, bonusType: 'competence' }],
+    description: "Part of Wraith's Woe. Grants +1 competence bonus on melee damage when flanking."
+  },
 
   // === SHOULDERS ===
   cloak_of_resistance_1: {
@@ -236,6 +331,24 @@ export const MAGIC_ITEMS_REGISTRY = {
     aura: 'Faint Illusion',
     effects: [{ type: 'special', target: 'concealment', value: 20, bonusType: 'untyped' }],
     description: 'Distorts light around wearer, granting a 20% miss chance.'
+  },
+  cloak_of_the_bat: {
+    key: 'cloak_of_the_bat',
+    name: 'Cloak of the Bat',
+    slot: 'shoulders',
+    setId: 'wraiths_woe',
+    aura: 'Moderate Transmutation',
+    effects: [{ type: 'skill', target: 'hide', value: 5, bonusType: 'competence' }],
+    description: "Part of Wraith's Woe. Grants +5 competence bonus on Hide checks and flight in darkness."
+  },
+  cloak_of_the_cat: {
+    key: 'cloak_of_the_cat',
+    name: 'Cloak of the Cat',
+    slot: 'shoulders',
+    setId: 'garb_of_the_hunting_cat',
+    aura: 'Faint Transmutation',
+    effects: [{ type: 'skill', target: 'balance', value: 4, bonusType: 'competence' }],
+    description: 'Part of Garb of the Hunting Cat. Grants +4 on Balance and feline reflexes.'
   },
 
   // === TORSO & BODY ===
@@ -352,6 +465,24 @@ export const MAGIC_ITEMS_REGISTRY = {
     effects: [{ type: 'attribute', target: 'str', value: 2, bonusType: 'enhancement' }],
     description: 'Grants an enhancement bonus to Strength of +2.'
   },
+  gloves_of_the_starry_sky: {
+    key: 'gloves_of_the_starry_sky',
+    name: 'Gloves of the Starry Sky',
+    slot: 'hands',
+    setId: 'raiment_of_the_four',
+    aura: 'Faint Evocation',
+    effects: [{ type: 'skill', target: 'concentration', value: 2, bonusType: 'competence' }],
+    description: 'Part of Raiment of the Four. Grants +2 on Concentration checks and light emissions.'
+  },
+  gauntlets_of_the_panther: {
+    key: 'gauntlets_of_the_panther',
+    name: 'Gauntlets of the Panther',
+    slot: 'hands',
+    setId: 'garb_of_the_hunting_cat',
+    aura: 'Faint Transmutation',
+    effects: [{ type: 'skill', target: 'climb', value: 4, bonusType: 'competence' }],
+    description: 'Part of Garb of the Hunting Cat. Grants +4 competence bonus on Climb checks.'
+  },
 
   // === WAIST ===
   belt_of_giant_strength_2: {
@@ -438,6 +569,24 @@ export const MAGIC_ITEMS_REGISTRY = {
     effects: [{ type: 'skill', target: 'move_silently', value: 5, bonusType: 'competence' }],
     description: '+5 competence bonus on Move Silently checks.'
   },
+  boots_of_the_big_sky: {
+    key: 'boots_of_the_big_sky',
+    name: 'Boots of the Big Sky',
+    slot: 'feet',
+    setId: 'raiment_of_the_four',
+    aura: 'Faint Transmutation',
+    effects: [{ type: 'skill', target: 'jump', value: 2, bonusType: 'competence' }],
+    description: 'Part of Raiment of the Four. Grants +2 on Jump checks.'
+  },
+  boots_of_the_panther: {
+    key: 'boots_of_the_panther',
+    name: 'Boots of the Panther',
+    slot: 'feet',
+    setId: 'garb_of_the_hunting_cat',
+    aura: 'Faint Transmutation',
+    effects: [{ type: 'skill', target: 'move_silently', value: 3, bonusType: 'competence' }],
+    description: 'Part of Garb of the Hunting Cat. Grants +3 competence bonus on Move Silently checks.'
+  },
 
   // === RINGS ===
   ring_of_protection_1: {
@@ -502,6 +651,15 @@ export const MAGIC_ITEMS_REGISTRY = {
       appliedBuffKey: 'invisibility'
     },
     description: 'Standard action: activates Invisibility as the spell at will.'
+  },
+  ring_of_dread: {
+    key: 'ring_of_dread',
+    name: 'Ring of Dread',
+    slot: 'ring1',
+    setId: 'wraiths_woe',
+    aura: 'Faint Necromancy',
+    effects: [{ type: 'save', target: 'wil', value: 1, bonusType: 'resistance' }],
+    description: "Part of Wraith's Woe. Grants +1 resistance bonus on Will saves."
   },
 
   // === SLOTLESS / WONDROUS ===
@@ -600,6 +758,13 @@ export const CONSOLIDATED_COMPENDIUM = [
     description: 'Grants a +5 competence bonus on Spot checks.',
     variants: [{ label: 'Standard', key: 'eyes_of_the_eagle' }]
   },
+  {
+    id: 'goggles_of_the_golden_sun',
+    baseName: 'Goggles of the Golden Sun',
+    slot: 'face',
+    description: 'Part of Raiment of the Four. Grants +2 on Spot checks.',
+    variants: [{ label: 'Set Piece', key: 'goggles_of_the_golden_sun' }]
+  },
 
   // Neck
   {
@@ -637,6 +802,20 @@ export const CONSOLIDATED_COMPENDIUM = [
       { label: '+6', key: 'periapt_of_wisdom_6' }
     ]
   },
+  {
+    id: 'periapt_of_the_sullying_horn',
+    baseName: 'Periapt of the Sullying Horn',
+    slot: 'neck',
+    description: 'Part of Raiment of the Four. Grants +1 on Fortitude saves.',
+    variants: [{ label: 'Set Piece', key: 'periapt_of_the_sullying_horn' }]
+  },
+  {
+    id: 'amulet_of_teamwork',
+    baseName: 'Amulet of Teamwork',
+    slot: 'neck',
+    description: "Part of Wraith's Woe. Grants +1 damage when flanking.",
+    variants: [{ label: 'Set Piece', key: 'amulet_of_teamwork' }]
+  },
 
   // Shoulders
   {
@@ -669,6 +848,20 @@ export const CONSOLIDATED_COMPENDIUM = [
     slot: 'shoulders',
     description: 'Distorts light around wearer, granting a 20% miss chance.',
     variants: [{ label: 'Standard', key: 'cloak_of_displacement_minor' }]
+  },
+  {
+    id: 'cloak_of_the_bat',
+    baseName: 'Cloak of the Bat',
+    slot: 'shoulders',
+    description: "Part of Wraith's Woe. Grants +5 on Hide checks and flight.",
+    variants: [{ label: 'Set Piece', key: 'cloak_of_the_bat' }]
+  },
+  {
+    id: 'cloak_of_the_cat',
+    baseName: 'Cloak of the Cat',
+    slot: 'shoulders',
+    description: 'Part of Garb of the Hunting Cat. Grants +4 on Balance.',
+    variants: [{ label: 'Set Piece', key: 'cloak_of_the_cat' }]
   },
 
   // Torso & Body
@@ -729,6 +922,20 @@ export const CONSOLIDATED_COMPENDIUM = [
     description: 'Grants an enhancement bonus to Strength of +2.',
     variants: [{ label: '+2 STR', key: 'gauntlets_of_ogre_power' }]
   },
+  {
+    id: 'gloves_of_the_starry_sky',
+    baseName: 'Gloves of the Starry Sky',
+    slot: 'hands',
+    description: 'Part of Raiment of the Four. Grants +2 Concentration.',
+    variants: [{ label: 'Set Piece', key: 'gloves_of_the_starry_sky' }]
+  },
+  {
+    id: 'gauntlets_of_the_panther',
+    baseName: 'Gauntlets of the Panther',
+    slot: 'hands',
+    description: 'Part of Garb of the Hunting Cat. Grants +4 on Climb.',
+    variants: [{ label: 'Set Piece', key: 'gauntlets_of_the_panther' }]
+  },
 
   // Waist
   {
@@ -779,6 +986,20 @@ export const CONSOLIDATED_COMPENDIUM = [
     description: '+5 competence bonus on Move Silently checks.',
     variants: [{ label: 'Standard', key: 'boots_of_elvenkind' }]
   },
+  {
+    id: 'boots_of_the_big_sky',
+    baseName: 'Boots of the Big Sky',
+    slot: 'feet',
+    description: 'Part of Raiment of the Four. Grants +2 on Jump.',
+    variants: [{ label: 'Set Piece', key: 'boots_of_the_big_sky' }]
+  },
+  {
+    id: 'boots_of_the_panther',
+    baseName: 'Boots of the Panther',
+    slot: 'feet',
+    description: 'Part of Garb of the Hunting Cat. Grants +3 Move Silently.',
+    variants: [{ label: 'Set Piece', key: 'boots_of_the_panther' }]
+  },
 
   // Rings
   {
@@ -807,6 +1028,13 @@ export const CONSOLIDATED_COMPENDIUM = [
     slot: 'ring1',
     description: 'Standard action: activates Invisibility as the spell at will.',
     variants: [{ label: 'Standard', key: 'ring_of_invisibility' }]
+  },
+  {
+    id: 'ring_of_dread',
+    baseName: 'Ring of Dread',
+    slot: 'ring1',
+    description: "Part of Wraith's Woe. Grants +1 on Will saves.",
+    variants: [{ label: 'Set Piece', key: 'ring_of_dread' }]
   },
 
   // Slotless

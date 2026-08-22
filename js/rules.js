@@ -63,7 +63,8 @@ import {
 import {
   calculateEquippedItemEffects,
   getItemStackingBreakdown,
-  getAvailableEquipmentBuffs
+  getAvailableEquipmentBuffs,
+  calculateItemSetBonuses
 } from './rules/RulesItems.js';
 
 export const CombatRules = {
@@ -99,13 +100,15 @@ export const CombatRules = {
   calculateEquippedItemEffects,
   getItemStackingBreakdown,
   getAvailableEquipmentBuffs,
+  calculateItemSetBonuses,
   PRESTIGE_CLASSES_REGISTRY
 };
 
 export {
   calculateEquippedItemEffects,
   getItemStackingBreakdown,
-  getAvailableEquipmentBuffs
+  getAvailableEquipmentBuffs,
+  calculateItemSetBonuses
 } from './rules/RulesItems.js';
 
 export {

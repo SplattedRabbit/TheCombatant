@@ -188,10 +188,10 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
           🎓 Feats
         </button>
         <button onClick={() => setActiveTab('offense')} className={`player-tab-btn ${activeTab === 'offense' ? 'active' : ''}`}>
-          ⚔️ Kampf / Waffen
+          ⚔️ Combat & Weapons
         </button>
         <button onClick={() => setActiveTab('magicitems')} className={`player-tab-btn ${activeTab === 'magicitems' ? 'active' : ''}`}>
-          ✨ Armory (Magie-Items)
+          ✨ Armory (Magic Items)
         </button>
         {hasCasterClass && (
           <button onClick={() => setActiveTab('spells')} className={`player-tab-btn ${activeTab === 'spells' ? 'active' : ''}`}>

@@ -441,9 +441,9 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
         </BaseCard>
       </div>
 
-      {/* Right Column: Backpack & Inventory */}
+      {/* Right Column: Weapons & Armor Arsenal */}
       <div>
-        <BaseCard title="🎒 Backpack &amp; Inventory">
+        <BaseCard title="⚔️ Weapons &amp; Armor Arsenal">
           {pc.activeShape !== 'none' ? (
             <div style={{ padding: '20px', textAlign: 'center', fontStyle: 'italic', color: 'var(--inkl)', fontSize: '8.5px' }}>
               In Wild Shape, your equipment is inactive.
