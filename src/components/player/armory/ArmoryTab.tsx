@@ -110,7 +110,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
 
   const handleEmptySlotClick = (slotKey: string) => {
     setSlotFilter(slotKey === 'ring1' || slotKey === 'ring2' ? 'rings' : slotKey);
-    setRightPanelMode('compendium');
+    setRightPanelMode('backpack');
   };
 
   const filterChips = [
@@ -322,8 +322,20 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
             {rightPanelMode === 'backpack' ? (
               /* === BACKPACK VIEW === */
               filteredBackpack.length === 0 ? (
-                <div style={{ padding: '24px 10px', textAlign: 'center', color: 'var(--inkl)', fontSize: '10.5px', fontStyle: 'italic' }}>
-                  Backpack is empty. Click <strong>📖 Compendium</strong> above to add items!
+                <div style={{ padding: '24px 10px', textAlign: 'center', color: 'var(--inkm)', fontSize: '10.5px', fontStyle: 'italic', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                  <span>
+                    {slotFilter !== 'all'
+                      ? `No ${slotFilter} items in your backpack.`
+                      : 'Your backpack is currently empty.'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setRightPanelMode('compendium')}
+                    className="btn btn-p"
+                    style={{ fontSize: '9px', padding: '3px 10px', fontFamily: "'IM Fell English SC', serif" }}
+                  >
+                    📖 Browse {slotFilter !== 'all' ? `${slotFilter} in ` : ''}Compendium
+                  </button>
                 </div>
               ) : (
                 filteredBackpack.map(({ item, idx }) => {
