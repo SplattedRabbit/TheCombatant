@@ -679,15 +679,15 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                 const isBonus = learnedTricks.some((lt: any) => typeof lt === 'object' && lt.id === trick.key && lt.isBonus);
                 const { met } = CombatRules.checkSkillTrickPrerequisites(trick.key, patchedPC);
                 const borderStyle = isLearned
-                  ? '1px solid #1976d2'
-                  : (met ? '1px solid #7c5a2b' : '0.5px dashed rgba(120, 100, 80, 0.35)');
+                  ? '0.5px solid #1976d2'
+                  : (met ? '0.5px solid var(--pb)' : '0.5px dashed rgba(120, 100, 80, 0.25)');
                 
                 const bgStyle = isLearned
-                  ? 'rgba(25, 118, 210, 0.05)'
-                  : (met ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(250, 245, 235, 0.95))' : 'rgba(0, 0, 0, 0.025)');
+                  ? 'rgba(25, 118, 210, 0.04)'
+                  : (met ? 'rgba(200, 169, 110, 0.08)' : 'transparent');
 
-                const shadowStyle = met && !isLearned ? '0 1px 3px rgba(124, 90, 43, 0.12)' : 'none';
-                const opacityVal = isLearned ? 1 : (met ? 1 : 0.55);
+                const shadowStyle = 'none';
+                const opacityVal = isLearned ? 1 : (met ? 0.95 : 0.55);
 
                 return (
                   <div

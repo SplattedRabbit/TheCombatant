@@ -567,16 +567,16 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                   let shadowStyle = 'none';
 
                   if (isAlreadyLearned) {
-                    borderStyle = isClassBonus ? '1.2px solid #2a6a2a' : '1.2px solid #1976d2';
-                    borderLeftStyle = isClassBonus ? '4px solid #2a6a2a' : '3.5px solid #1976d2';
-                    backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.06)' : 'rgba(25, 118, 210, 0.05)';
+                    borderStyle = isClassBonus ? '0.5px solid #2a6a2a' : '0.5px solid #1976d2';
+                    borderLeftStyle = isClassBonus ? '3.5px solid #2a6a2a' : '3.5px solid #1976d2';
+                    backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.05)' : 'rgba(25, 118, 210, 0.04)';
                   } else if (isEligible) {
-                    borderStyle = isClassBonus ? '1.2px solid #2a6a2a' : '1.2px solid #7c5a2b';
-                    borderLeftStyle = isClassBonus ? '4px solid #2a6a2a' : (depth > 0 ? '3.5px solid #7c5a2b' : '1.5px solid #7c5a2b');
+                    borderStyle = isClassBonus ? '0.5px solid #2a6a2a' : '0.5px solid var(--pb)';
+                    borderLeftStyle = isClassBonus ? '3.5px solid #2a6a2a' : (depth > 0 ? '3px solid var(--pb)' : '0.5px solid var(--pb)');
                     backgroundStyle = isClassBonus 
-                      ? 'linear-gradient(135deg, rgba(245, 255, 245, 0.98), rgba(235, 250, 235, 0.95))' 
-                      : 'linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(252, 247, 236, 0.95))';
-                    shadowStyle = '0 1px 3px rgba(124, 90, 43, 0.12)';
+                      ? 'rgba(42, 106, 42, 0.04)' 
+                      : 'rgba(200, 169, 110, 0.08)';
+                    shadowStyle = 'none';
                   } else if (isClassBonus) {
                     borderStyle = '0.5px solid rgba(42, 106, 42, 0.4)';
                     borderLeftStyle = '3px solid rgba(42, 106, 42, 0.5)';
@@ -623,7 +623,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                           borderRadius: '2px',
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '6px',
+                          gap: '5px',
                           minWidth: 0,
                           boxSizing: 'border-box',
                           transition: 'all 0.15s ease',
@@ -632,7 +632,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                           border: borderStyle,
                           borderLeft: borderLeftStyle,
                           boxShadow: shadowStyle,
-                          opacity: isAlreadyLearned ? 1 : (isEligible ? 1 : 0.55)
+                          opacity: isAlreadyLearned ? 1 : (isEligible ? 0.95 : 0.55)
                         }}
                         onMouseOver={(e) => {
                           e.currentTarget.style.filter = 'brightness(0.97)';
@@ -641,29 +641,26 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                           e.currentTarget.style.filter = 'none';
                         }}
                       >
-                        {/* Tree Branch Expand/Collapse Button */}
+                        {/* Tree Branch Expand/Collapse Arrow */}
                         {hasChildren && (
-                          <button
+                          <span
                             onClick={(e) => toggleParent(feat.id, e)}
                             style={{
-                              background: isExpanded ? 'rgba(139, 26, 26, 0.12)' : 'rgba(200, 169, 110, 0.2)',
-                              border: '0.5px solid var(--pb)',
-                              borderRadius: '2px',
-                              padding: '1px 3px',
-                              fontSize: '7px',
-                              color: 'var(--red)',
+                              fontSize: '9.5px',
+                              color: 'var(--inkm)',
                               cursor: 'pointer',
+                              userSelect: 'none',
                               display: 'inline-flex',
                               alignItems: 'center',
-                              gap: '2px',
+                              justifyContent: 'center',
+                              width: '10px',
                               flexShrink: 0,
-                              fontWeight: 'bold',
                               lineHeight: 1
                             }}
-                            title={isExpanded ? "Collapse tree" : `Expand ${childCount} sub-feats`}
+                            title={isExpanded ? "Collapse tree" : `Expand sub-feats`}
                           >
-                            {isExpanded ? `▼ ${childCount}` : `▶ ${childCount}`}
-                          </button>
+                            {isExpanded ? '▾' : '▸'}
+                          </span>
                         )}
 
                         <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
