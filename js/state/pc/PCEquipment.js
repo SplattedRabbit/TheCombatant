@@ -1,7 +1,7 @@
 /**
  * @module    PCEquipment
  * @summary   State mutations for Player Character equipment (weapons, armor, items).
- * @exports   updatePCWeapon, addPCWeapon, deletePCWeapon, togglePCWeaponEquip, addPCArmor, removePCArmor, togglePCArmorEquip, updatePCArmorField, setPCAutoAC, addPCItem, deletePCItem, updatePCItem, togglePCItemEquip, addPCItemEffect, deletePCItemEffect, updatePCItemEffect
+ * @exports   updatePCWeapon, addPCWeapon, deletePCWeapon, togglePCWeaponEquip, addPCArmor, removePCArmor, togglePCArmorEquip, updatePCArmorField, setPCAutoAC, addPCItem, deletePCItem, updatePCItem, togglePCItemEquip, addPCItemEffect, deletePCItemEffect, updatePCItemEffect, equipPCItem, unequipPCItem, swapPCItem, usePCItemCharge, addPCItemFromCompendium
  */
 
 import { getActivePC } from '../state-core.js';
@@ -9,6 +9,7 @@ import { saveToStorage } from '../StorageManager.js';
 import { recalculatePCStats, syncPCToHost } from './PCGeneral.js';
 import { Weapon, Armor, Item } from '../../models/model-core.js';
 import { WeaponRegistry } from '../../models/Weapon.js';
+import { MAGIC_ITEMS_REGISTRY } from '../../data/magicItems-data.js';
 
 export function updatePCWeapon(idx, key, val) {
   const pc = getActivePC();
@@ -318,3 +319,138 @@ export function updatePCItemEffect(itemIdx, effectIdx, key, val) {
     }
   }
 }
+
+/**
+ * Equips an item into a specified slot or its default slot with smart ring distribution.
+ * @param {number} itemIdx
+ * @param {string} [targetSlot]
+ */
+export function equipPCItem(itemIdx, targetSlot) {
+  const pc = getActivePC();
+  if (!pc || !Array.isArray(pc.items) || !pc.items[itemIdx]) return;
+
+  const target = pc.items[itemIdx];
+  let slot = targetSlot || target.slot || 'slotless';
+
+  // Smart Ring distribution: if 'ring' or unspecified, check ring1 / ring2
+  if (slot === 'ring' || slot === 'ring1' || slot === 'ring2') {
+    if (targetSlot) {
+      slot = targetSlot;
+    } else {
+      const ring1Occupied = pc.items.some((it, idx) => idx !== itemIdx && it.isEquipped && it.slot === 'ring1');
+      const ring2Occupied = pc.items.some((it, idx) => idx !== itemIdx && it.isEquipped && it.slot === 'ring2');
+      if (!ring1Occupied) {
+        slot = 'ring1';
+      } else if (!ring2Occupied) {
+        slot = 'ring2';
+      } else {
+        slot = 'ring1';
+      }
+    }
+  }
+
+  target.slot = slot;
+
+  // Unequip existing occupant in the same slot (unless slotless)
+  if (slot !== 'slotless') {
+    pc.items.forEach((item, idx) => {
+      if (idx !== itemIdx && item.slot === slot) {
+        item.isEquipped = false;
+      }
+    });
+  }
+
+  target.isEquipped = true;
+  recalculatePCStats(pc);
+  saveToStorage();
+  syncPCToHost();
+}
+
+/**
+ * Unequips an item.
+ * @param {number} itemIdx
+ */
+export function unequipPCItem(itemIdx) {
+  const pc = getActivePC();
+  if (!pc || !Array.isArray(pc.items) || !pc.items[itemIdx]) return;
+
+  pc.items[itemIdx].isEquipped = false;
+  recalculatePCStats(pc);
+  saveToStorage();
+  syncPCToHost();
+}
+
+/**
+ * Swaps currently equipped item in slot with a new item from inventory.
+ * @param {string} slot
+ * @param {number} newItemIdx
+ */
+export function swapPCItem(slot, newItemIdx) {
+  const pc = getActivePC();
+  if (!pc || !Array.isArray(pc.items) || !pc.items[newItemIdx]) return;
+
+  // Unequip currently equipped item in slot
+  pc.items.forEach((it, idx) => {
+    if (idx !== newItemIdx && it.isEquipped && it.slot === slot) {
+      it.isEquipped = false;
+    }
+  });
+
+  const newItem = pc.items[newItemIdx];
+  newItem.slot = slot;
+  newItem.isEquipped = true;
+
+  recalculatePCStats(pc);
+  saveToStorage();
+  syncPCToHost();
+}
+
+/**
+ * Deducts charges or daily uses from an item.
+ * @param {number} itemIdx
+ * @param {number} [amount=1]
+ */
+export function usePCItemCharge(itemIdx, amount = 1) {
+  const pc = getActivePC();
+  if (!pc || !Array.isArray(pc.items) || !pc.items[itemIdx]) return;
+
+  const item = pc.items[itemIdx];
+  if (item.charges && item.charges.current > 0) {
+    item.charges.current = Math.max(0, item.charges.current - amount);
+  } else if (item.dailyUses && item.dailyUses.current > 0) {
+    item.dailyUses.current = Math.max(0, item.dailyUses.current - amount);
+  }
+
+  saveToStorage();
+  syncPCToHost();
+}
+
+/**
+ * Adds an item from the MAGIC_ITEMS_REGISTRY preset compendium to the PC inventory.
+ * @param {string} presetKey
+ * @param {boolean} [shouldEquip=false]
+ */
+export function addPCItemFromCompendium(presetKey, shouldEquip = false) {
+  const pc = getActivePC();
+  if (!pc) return;
+
+  const preset = MAGIC_ITEMS_REGISTRY[presetKey];
+  if (!preset) return;
+
+  if (!Array.isArray(pc.items)) {
+    pc.items = [];
+  }
+
+  const newItem = new Item(preset);
+  const newIdx = pc.items.length;
+  pc.items.push(newItem);
+
+  if (shouldEquip) {
+    equipPCItem(newIdx, preset.slot);
+  } else {
+    recalculatePCStats(pc);
+    saveToStorage();
+    syncPCToHost();
+  }
+}
+

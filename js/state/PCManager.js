@@ -40,7 +40,12 @@ export {
   togglePCItemEquip,
   addPCItemEffect,
   deletePCItemEffect,
-  updatePCItemEffect
+  updatePCItemEffect,
+  equipPCItem,
+  unequipPCItem,
+  swapPCItem,
+  usePCItemCharge,
+  addPCItemFromCompendium
 } from './pc/PCEquipment.js';
 
 export {

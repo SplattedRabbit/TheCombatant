@@ -753,6 +753,53 @@
   }
 }
 
+/* ==========================================================================
+   Armory 2.0: Crystal-Clear Card-Flip & Paperdoll Grid
+   ========================================================================== */
+
+.armory-layout-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+@media (max-width: 950px) {
+  .armory-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.paperdoll-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.item-slot-card-container {
+  min-height: 94px;
+  position: relative;
+}
+
+@keyframes flipCardAnim {
+  0% {
+    transform: perspective(600px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(600px) rotateY(90deg);
+  }
+  100% {
+    transform: perspective(600px) rotateY(0deg);
+  }
+}
+
+.item-card-animating {
+  animation: flipCardAnim 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+
 
 
 

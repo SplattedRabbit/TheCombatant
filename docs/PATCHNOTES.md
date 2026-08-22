@@ -6,9 +6,34 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v4.6.0** | Feature | 22.08.2026 | Armory 2.0: Paperdoll-Grid, 3D-Card-Flip UX, Magic Items Kompendium & Stacking Engine |
 | **v4.5.1** | Release | 22.08.2026 | Skills/Feats Tab-Trennung, Skill Tricks im Wizard & Spellwarp Sniper Sample |
 | **v4.5.0** | Release | 22.08.2026 | Scaled Compendium, PHB2/CA/CS Base & Prestige Classes, Dynamic Class Picker |
 | **v4.2.0** | Release | 21.08.2026 | Prestige Classes Refactoring & Anima Construct Race Integration |
+
+---
+
+### v4.6.0 — Armory 2.0: Paperdoll-Grid, 3D-Card-Flip UX, Magic Items Kompendium & Stacking Engine (Phase 1 & 2)
+
+* **✨ Neues Tab `✨ Armory (Magie-Items)` & Paperdoll-Grid**:
+  - **11 Körperslots + Slotless**: Vollständige Repräsentation aller D&D 3.5e Körperslots (*Head, Face, Neck, Shoulders, Torso, Body, Wrists, Hands, Waist, Feet, Ring 1, Ring 2, Slotless*).
+  - **3D-Card-Flip Kacheln (`BodySlotCard.tsx`)**: Klick auf ein angelegtes Item dreht die Kachel um 180° und zeigt die Schnelloptionen *"Unequip?"*, *"Swap Item"* und *"Details"*.
+  - **Gestochen scharfes Vektor-Rendering**: 100% kristallklares Schrift-Rendering ohne bilineare 3D-GPU-Textur-Unschärfe.
+  - **Schnellausrüstungs-Modal (`SlotEquipModal.tsx`)**: Klick auf leere Kacheln öffnet passende Rucksack-Gegenstände und D&D 3.5e Standard-Presets für den jeweiligen Slot.
+
+* **📖 D&D 3.5e Magic Items Kompendium (`magicItems-data.js` & `ItemCompendiumModal.tsx`)**:
+  - **Standard-Presets**: Beinhaltet klassische DMG/MIC Gegenstände (*Headband of Intellect*, *Amulet of Health*, *Amulet of Natural Armor*, *Cloak of Resistance*, *Belt of Giant Strength*, *Gloves of Dexterity*, *Boots of Speed*, *Rings of Protection*, *Wands*, *Potions* etc.).
+  - **Slot-Filter & Suchleiste**: Filterbar nach allen Körperslots mit 1-Klick-Aktionen (`+ To Backpack` und `⚡ Add & Equip`).
+
+* **🎒 Rucksack 2.0 & Custom Item Creator (`BackpackGrid.tsx` & `ItemEditorModal.tsx`)**:
+  - Durchsuchbares Inventar mit Slot-Kategorie-Filter, Ausrüsten- und Lösch-Buttons.
+  - Editor zum Erstellen und Anpassen eigener magischer Gegenstände mit Multi-Effekten, Bonus-Typen, Ladungs- (`charges`) und Tagesnutzungs-Tracking (`dailyUses`).
+
+* **⚙️ Regelschicht & D&D 3.5e Stacking Engine (`RulesItems.js` & `PCEquipment.js`)**:
+  - **Bonus-Stacking**: Höchster Bonus gleichen Typs zählt (*Enhancement*, *Resistance*, *Deflection* etc.); *Dodge* und *Untyped* stacken additiv; Mali summieren sich regelkonform.
+  - **Intelligente Ring-Verteilung**: Belegt bei ungenauer Angabe automatisch freie Slots (`ring1` bzw. `ring2`).
+  - **227 / 227 Unit-Tests grün** (`rules_items.test.js`).
+
 
 ---
 
