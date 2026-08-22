@@ -113,7 +113,7 @@ test('Offense Hub - Tactical Belt Potion Consumption', () => {
     name: 'Lyra',
     type: 'p',
     hp: 10,
-    maxHp: 25,
+    maxHP: 25,
     items: [potion]
   });
 
@@ -127,3 +127,43 @@ test('Offense Hub - Tactical Belt Potion Consumption', () => {
   // Consumed single-use potion is removed
   assert.equal(pc.items.length, 0);
 });
+
+test('Tactical Belt - Potion of Cure Moderate Wounds does not cap at 20 HP when Character has 65 MaxHP', () => {
+  const potion = new Item({
+    name: 'Potion of Cure Moderate Wounds',
+    slot: 'slotless',
+    healingFormula: '2d8+3',
+    charges: { current: 1, max: 1 }
+  });
+
+  const highLvlPC = new Combatant({
+    id: 'test_high_lvl',
+    name: 'Valerius',
+    type: 'p',
+    hp: 65,
+    maxHP: 65,
+    items: [potion]
+  });
+
+  CombatState.getState().combatants = [highLvlPC];
+
+  // At full HP (65/65), drinking potion should keep HP at 65, never drop to 20
+  const resFull = CombatState.usePCItemCharge(0);
+  assert.equal(resFull.success, true);
+  assert.equal(highLvlPC.hp, 65);
+
+  // At damaged HP (45/65), drinking potion heals up towards 65
+  const potion2 = new Item({
+    name: 'Potion of Cure Moderate Wounds',
+    slot: 'slotless',
+    healingFormula: '2d8+3',
+    charges: { current: 1, max: 1 }
+  });
+  highLvlPC.hp = 45;
+  highLvlPC.items = [potion2];
+
+  const resDamaged = CombatState.usePCItemAction(0, 10); // heal exactly 10
+  assert.equal(resDamaged.success, true);
+  assert.equal(highLvlPC.hp, 55);
+});
+

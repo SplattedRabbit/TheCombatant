@@ -4,7 +4,7 @@
  * @exports   updatePCWeapon, addPCWeapon, deletePCWeapon, togglePCWeaponEquip, addPCArmor, removePCArmor, togglePCArmorEquip, updatePCArmorField, setPCAutoAC, addPCItem, deletePCItem, updatePCItem, togglePCItemEquip, addPCItemEffect, deletePCItemEffect, updatePCItemEffect, equipPCItem, unequipPCItem, swapPCItem, usePCItemCharge, addPCItemFromCompendium
  */
 
-import { getActivePC } from '../state-core.js';
+import { getActivePC, StateEvents } from '../state-core.js';
 import { saveToStorage } from '../StorageManager.js';
 import { recalculatePCStats, syncPCToHost } from './PCGeneral.js';
 import { Weapon, Armor, Item } from '../../models/model-core.js';
@@ -498,9 +498,16 @@ export function usePCItemAction(itemIdx, customHealAmount) {
       }
     }
 
-    const currentHp = typeof pc.hp === 'number' ? pc.hp : (typeof pc.hp?.getValue === 'function' ? pc.hp.getValue() : 20);
-    const maxHp = typeof pc.maxHp === 'number' ? pc.maxHp : 20;
-    const newHp = Math.min(maxHp, currentHp + healAmount);
+    const currentHp = typeof pc.hp === 'number' ? pc.hp : (typeof pc.hp?.getValue === 'function' ? pc.hp.getValue() : (parseInt(pc.hp) || 0));
+    const maxHp = typeof pc.maxHP === 'number' ? pc.maxHP : (typeof pc.maxHp === 'number' ? pc.maxHp : (parseInt(pc.maxHP) || parseInt(pc.maxHp) || 20));
+    
+    // Anima Construct racial rule: half healing from magical sources
+    let effectiveHeal = healAmount;
+    if ((pc.race || '').toLowerCase() === 'anima_construct') {
+      effectiveHeal = Math.floor(healAmount / 2);
+    }
+
+    const newHp = Math.min(maxHp, currentHp + effectiveHeal);
     
     if (typeof pc.hp === 'object' && typeof pc.hp.setValue === 'function') {
       pc.hp.setValue(newHp);
@@ -508,7 +515,12 @@ export function usePCItemAction(itemIdx, customHealAmount) {
       pc.hp = newHp;
     }
 
-    resultMessage = `Drank ${item.name}: Restored +${healAmount} HP! (${currentHp} ➔ ${newHp}/${maxHp} HP)`;
+    const delta = newHp - currentHp;
+    if (delta !== 0) {
+      StateEvents.emit('hp_changed', { id: pc.id, delta, isHeal: delta > 0 });
+    }
+
+    resultMessage = `Drank ${item.name}: Restored +${effectiveHeal} HP! (${currentHp} ➔ ${newHp}/${maxHp} HP)`;
   }
 
   // 2. Buff Resolution

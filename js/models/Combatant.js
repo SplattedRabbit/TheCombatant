@@ -46,7 +46,7 @@ export class Combatant {
     this.init = parseInt(p.init) || 0;
     
     // HP encapsulation
-    const maxHP = parseInt(p.maxHP) || parseInt(p.hp) || 10;
+    const maxHP = parseInt(p.maxHP) || parseInt(p.maxHp) || parseInt(p.hp) || 10;
     this.maxHP = maxHP;
     this.hp = p.hp !== undefined ? parseInt(p.hp) : maxHP;
     
