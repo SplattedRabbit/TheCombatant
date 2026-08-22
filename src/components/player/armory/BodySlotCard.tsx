@@ -16,7 +16,7 @@ interface BodySlotCardProps {
 export const formatEffectDisplay = (eff: any) => {
   const val = parseInt(eff.value) || 0;
   const sign = val >= 0 ? `+${val}` : `${val}`;
-  const target = (eff.target || 'str').toLowerCase();
+  const rawTarget = (eff.target || '').toLowerCase().trim();
   
   const targetNames: Record<string, string> = {
     str: 'STR',
@@ -28,7 +28,7 @@ export const formatEffectDisplay = (eff: any) => {
     fort: 'Fort',
     ref: 'Ref',
     wil: 'Will',
-    all: 'Saves',
+    all: 'All Saves',
     deflection: 'Defl AC',
     natural: 'Nat AC',
     armor: 'Armor AC',
@@ -37,12 +37,44 @@ export const formatEffectDisplay = (eff: any) => {
     speed: 'Speed',
     ini: 'Init',
     spot: 'Spot',
+    listen: 'Listen',
+    search: 'Search',
     jump: 'Jump',
-    move_silently: 'Stealth',
-    ranged_atk: 'Ranged'
+    move_silently: 'Move Silently',
+    hide: 'Hide',
+    concentration: 'Concentration',
+    spellcraft: 'Spellcraft',
+    ranged_atk: 'Ranged ATK',
+    melee_atk: 'Melee ATK',
+    attack: 'Attack',
+    damage: 'Damage',
+    spell_resistance: 'SR',
+    spell_penetration: 'Spell Pen',
+    darkvision: 'Darkvision',
+    concealment: 'Concealment',
+    miss_chance: 'Miss Chance',
+    dr: 'DR',
+    fast_healing: 'Fast Healing',
+    fire_res: 'Fire Res',
+    cold_res: 'Cold Res',
+    elec_res: 'Elec Res',
+    acid_res: 'Acid Res',
+    sonic_res: 'Sonic Res'
   };
 
-  const cleanTarget = targetNames[target] || target.toUpperCase();
+  if (rawTarget === 'spell_resistance') {
+    return `SR ${val}`;
+  }
+  if (rawTarget === 'darkvision') {
+    return `Darkvision ${val} ft.`;
+  }
+  if (rawTarget === 'concealment' || rawTarget === 'miss_chance') {
+    return `${val}% Miss Chance`;
+  }
+
+  const cleanTarget = targetNames[rawTarget] || 
+    rawTarget.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+
   return `${sign} ${cleanTarget}`;
 };
 
