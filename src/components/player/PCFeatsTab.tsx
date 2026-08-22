@@ -638,27 +638,26 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                           e.currentTarget.style.filter = 'none';
                         }}
                       >
-                        {/* Tree Branch Expand/Collapse Arrow */}
-                        {hasChildren && (
-                          <span
-                            onClick={(e) => toggleParent(feat.id, e)}
-                            style={{
-                              fontSize: '9.5px',
-                              color: 'var(--inkm)',
-                              cursor: 'pointer',
-                              userSelect: 'none',
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              width: '10px',
-                              flexShrink: 0,
-                              lineHeight: 1
-                            }}
-                            title={isExpanded ? "Collapse tree" : `Expand sub-feats`}
-                          >
-                            {isExpanded ? '▾' : '▸'}
-                          </span>
-                        )}
+                        {/* Dedicated fixed-width expand arrow or alignment placeholder */}
+                        <span
+                          onClick={hasChildren ? (e) => toggleParent(feat.id, e) : undefined}
+                          style={{
+                            fontSize: '9.5px',
+                            color: 'var(--inkm)',
+                            cursor: hasChildren ? 'pointer' : 'default',
+                            userSelect: 'none',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '12px',
+                            height: '12px',
+                            flexShrink: 0,
+                            lineHeight: 1
+                          }}
+                          title={hasChildren ? (isExpanded ? "Collapse tree" : `Expand sub-feats`) : undefined}
+                        >
+                          {hasChildren ? (isExpanded ? '▾' : '▸') : (depth > 0 ? '•' : null)}
+                        </span>
 
                         <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
