@@ -620,3 +620,128 @@ export const arcaneTricksterLvl11Sample = {
   ],
   isSneakAttacking: true
 };
+
+export const spellwarpSniperLvl10Sample = {
+  name: 'Valerius Strahlenweber',
+  init: 8,
+  hp: 58,
+  maxHP: 58,
+  ac: 19,
+  acTouch: 14,
+  acFlat: 15,
+  bw: 30,
+  za: 5,
+  ref: 10,
+  wil: 8,
+  type: 'p',
+  str: 10,
+  dex: 18,
+  con: 14,
+  int: 19,
+  wis: 12,
+  cha: 8,
+  baseZa: 3,
+  baseRef: 6,
+  baseWil: 7,
+  iniMisc: 4,
+  bab: 5,
+  classType: 'multiclass',
+  level: 10,
+  classes: [
+    { classType: 'rogue', level: 1 },
+    { classType: 'wizard', level: 5 },
+    { classType: 'spellwarp_sniper', level: 4 }
+  ],
+  prestigeSpellLinks: {
+    spellwarp_sniper: 'wizard'
+  },
+  alignment: 'Neutral Good',
+  autoAC: true,
+  weapons: [
+    { name: 'Strahlenangriff (Ray Spell Attack)', attackBonus: '', damageDice: '4w6', crit: '20 / x2', grip: 'rng', enhancement: 0 },
+    { name: 'Meisterwerk-Dolch +1', attackBonus: '', damageDice: '1w4', crit: '19-20 / x2', grip: '1h', enhancement: 1 },
+    { name: 'Leichte Armbrust +1', attackBonus: '', damageDice: '1w8', crit: '19-20 / x2', grip: 'rng', enhancement: 1 }
+  ],
+  armors: [
+    { name: 'Mithral-Kettenhemd +1 (Dämmerung)', type: 'chain_shirt', enhancement: 1, isEquipped: true, maxDexOverride: 6 }
+  ],
+  items: [
+    {
+      name: 'Schutzring +1',
+      slot: 'ring1',
+      isEquipped: true,
+      effects: [
+        { type: 'ac', target: 'deflection', value: 1 }
+      ]
+    },
+    {
+      name: 'Handschuhe der Geschicklichkeit +2',
+      slot: 'hands',
+      isEquipped: true,
+      effects: []
+    },
+    {
+      name: 'Stirnreif des Intellekts +2',
+      slot: 'head',
+      isEquipped: true,
+      effects: []
+    }
+  ],
+  feats: [
+    { id: 'point_blank_shot', option: '' },
+    { id: 'precise_shot', option: '' },
+    { id: 'improved_initiative', option: '' },
+    { id: 'scribe_scroll', option: '' },
+    { id: 'empower_spell', option: '' }
+  ],
+  skillTricks: [
+    { id: 'spot_the_weak_point', isBonus: false },
+    { id: 'collector_of_stories', isBonus: false }
+  ],
+  skills: {
+    concentration: { ranks: 13, misc: 0 },
+    spellcraft: { ranks: 13, misc: 0 },
+    spot: { ranks: 12, misc: 0 },
+    hide: { ranks: 13, misc: 0 },
+    move_silently: { ranks: 13, misc: 0 },
+    knowledge_arcana: { ranks: 10, misc: 0 },
+    knowledge_dungeons: { ranks: 5, misc: 0 },
+    disable_device: { ranks: 6, misc: 0 },
+    open_lock: { ranks: 4, misc: 0 },
+    tumble: { ranks: 6, misc: 0 },
+    listen: { ranks: 5, misc: 0 }
+  },
+  spellSlots: {
+    0: { max: 4, used: 0 },
+    1: { max: 5, used: 0 },
+    2: { max: 5, used: 0 },
+    3: { max: 4, used: 0 },
+    4: { max: 3, used: 0 },
+    5: { max: 2, used: 0 }
+  },
+  learnedSpells: [
+    'ray_of_frost', 'detect_magic', 'read_magic', 'mage_hand',
+    'mage_armor', 'shield', 'magic_missile', 'ray_of_enfeeblement',
+    'scorching_ray', 'invisibility', 'mirror_image', 'web',
+    'fireball', 'lightning_bolt', 'ray_of_exhaustion', 'dispel_magic',
+    'ice_storm', 'enervation', 'dimension_door',
+    'cone_of_cold', 'teleport'
+  ],
+  preparedSpells: [
+    { id: 'prep-sws-1', spellKey: 'ray_of_enfeeblement', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-sws-2', spellKey: 'shield', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-sws-3', spellKey: 'scorching_ray', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-sws-4', spellKey: 'invisibility', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-sws-5', spellKey: 'ray_of_exhaustion', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-sws-6', spellKey: 'fireball', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-sws-7', spellKey: 'enervation', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-sws-8', spellKey: 'ice_storm', metamagic: [], isUsed: false, isSpecialist: false },
+    { id: 'prep-sws-9', spellKey: 'cone_of_cold', metamagic: [], isUsed: false, isSpecialist: false }
+  ],
+  dailyAbilities: [
+    { name: 'Spellwarp (1st-4th level area spells into rays)', max: 99, used: 0 },
+    { name: 'Sudden Raystrike (+2d6)', max: 99, used: 0 }
+  ],
+  isSneakAttacking: true
+};
+

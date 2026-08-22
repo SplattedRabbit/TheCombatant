@@ -68,8 +68,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   // Skill Search State
   const [skillSearch, setSkillSearch] = useState('');
 
-  // Right column active tab ('skills' or 'feats')
-  const [activeTab, setActiveTab] = useState<'skills' | 'feats'>('skills');
+  // Right column active tab ('skills', 'tricks', or 'feats')
+  const [activeTab, setActiveTab] = useState<'skills' | 'tricks' | 'feats'>('skills');
 
   // Sum of distributed base points (must equal 74)
   const totalStatsSpent = baseStats.str + baseStats.dex + baseStats.con + baseStats.int + baseStats.wis + baseStats.cha;
@@ -84,6 +84,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         hpRoll: i === 0 ? 10 : 0,
         abilityIncrease: null,
         skills: {}, // skillKey -> clicks count (every click costs 1 skillpoint)
+        skillTricks: [], // array of trick keys learned at this level (each costs 2 SP)
         feats: []
       });
     }
@@ -122,7 +123,9 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   const completedDraft = isTargetLevelSet ? getCompletedDraftPCState(currentLevelIndex, baseStats, selectedRace, levelConfigs, alignmentStr) : null;
 
   const currentLevelMaxSkillPoints = getSkillPointsForLevel(currentLevelIndex, currentConfig.classType, selectedRace, baseStats, currentDraft);
-  const currentLevelSpentSkillPoints = Object.values(currentConfig.skills || {}).reduce((a: any, b: any) => a + b, 0) as number;
+  const currentLevelSkillsSpent = Object.values(currentConfig.skills || {}).reduce((a: any, b: any) => a + b, 0) as number;
+  const currentLevelTricksSpent = ((currentConfig.skillTricks || []).length * 2);
+  const currentLevelSpentSkillPoints = currentLevelSkillsSpent + currentLevelTricksSpent;
   const currentLevelRemainingSkillPoints = currentLevelMaxSkillPoints - currentLevelSpentSkillPoints;
 
   // Feat slots for current level
@@ -335,6 +338,20 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                 benefitDe: featDef?.benefitDe || '',
                 appEffect: featDef?.appEffect || ''
               });
+            }
+          });
+        }
+      });
+
+      // Compile and save skill tricks
+      pc.skillTricks = [];
+      const addedTrickIds = new Set<string>();
+      levelConfigs.forEach(cfg => {
+        if (Array.isArray(cfg.skillTricks)) {
+          cfg.skillTricks.forEach((tid: string) => {
+            if (tid && !addedTrickIds.has(tid)) {
+              addedTrickIds.add(tid);
+              pc.skillTricks.push({ id: tid, isBonus: false });
             }
           });
         }

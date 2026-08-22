@@ -19,7 +19,8 @@ import {
   wizardLvl10Sample,
   rangerLvl10Sample,
   paladinLvl10Sample,
-  arcaneTricksterLvl11Sample
+  arcaneTricksterLvl11Sample,
+  spellwarpSniperLvl10Sample
 } from '../data/encounter-samples.js';
 
 export function loadSampleData(choice) {
@@ -41,6 +42,7 @@ export function loadSampleData(choice) {
       else if (choice === 'ranger_lvl10') template = rangerLvl10Sample;
       else if (choice === 'paladin_lvl10') template = paladinLvl10Sample;
       else if (choice === 'trickster_lvl11') template = arcaneTricksterLvl11Sample;
+      else if (choice === 'spellwarp_lvl10') template = spellwarpSniperLvl10Sample;
       else if (choice === 'paladin_lvl3') template = aranisSample;
       
       const newPC = createCombatant(template);

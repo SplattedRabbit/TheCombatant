@@ -6,8 +6,40 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v4.5.1** | Release | 22.08.2026 | Skills/Feats Tab-Trennung, Skill Tricks im Wizard & Spellwarp Sniper Sample |
 | **v4.5.0** | Release | 22.08.2026 | Scaled Compendium, PHB2/CA/CS Base & Prestige Classes, Dynamic Class Picker |
 | **v4.2.0** | Release | 21.08.2026 | Prestige Classes Refactoring & Anima Construct Race Integration |
+
+---
+
+### v4.5.1 — Skills/Feats Tab-Trennung, Skill Tricks im Wizard & Spellwarp Sniper Sample (Release v4.5.1)
+
+* **📜 Haupt-Tabs: Trennung von Fertigkeiten & Talenten**:
+  - **Eigene Haupt-Tabs**: `📜 Skills` und `🎓 Feats` besitzen nun separate Top-Level-Reiter.
+  - **Zweispaltiges Skills-Layout**:
+    - Linke Spalte (60%): Vollständige Fertigkeitstabelle mit Rängen, Attributen, Modifikatoren, Würfelbuttons und SP-Zähler.
+    - Rechte Spalte (40%): Gelernte Skill Tricks, Kategoriefilter und scrollbares Skill-Trick-Kompendium (*Complete Scoundrel*).
+  - **Zweispaltiges Feats-Layout**:
+    - Linke Spalte (40%): Alle aktiven Talente mit Slot-Übersicht (General, Fighter, Wizard, Monk).
+    - Rechte Spalte (60%): Vollständiges Talent-Kompendium mit Buch-Filtern und Suchleiste.
+
+* **🎓 Feat-Kompendium Verbesserungen & Bugfixes**:
+  - **Einsicht gelockter Talente**: Gesperrte Talente im Kompendium sind nun anklickbar und öffnen die Pergament-Schriftrolle (`FeatScrollDialog`), in der alle erfüllten (`✓`) und fehlenden (`✗`) Voraussetzungen aufgeschlüsselt werden. Der Lern-Button ist bei Nichterfüllung deaktiviert.
+  - **Rekursiver Talentbaum für alle Talente**: Kind-Talente (z. B. *Power Attack* ➔ *Cleave* ➔ *Great Cleave*) lassen sich nun auch dann aufklappen (`▶` / `▼`), wenn das Basistalent noch nicht gelernt ist.
+  - **Horizontale Scrollleiste eliminiert**: Umstellung auf inneres `paddingLeft` und einzeilige Beschreibungskürzung mit Tooltip.
+
+* **🧙 Skill Tricks im Character Wizard (Schritt 3)**:
+  - **Neuer Tab `🎭 Tricks`**: Nahtlose Integration von Skill Tricks in den Level-Up-Assistenten.
+  - **Regelkonforme SP-Kosten & Limits**: Jeder gelernte Trick kostet genau 2 SP aus dem Stufenpool und prüft das Level-Limit ($\lfloor \text{Level}/2 \rfloor$) sowie Ränge-Voraussetzungen live gegen den `draftPC`.
+  - **Wiederverwendbare Architektur**: Nutzt direkt `CombatRules.getMaxSkillTricksLimit` und `CombatRules.checkSkillTrickPrerequisites` ohne Code-Duplikation.
+  - **Symmetrische Wizard-Kopfzeilen**: Symmetrisch bündige Ausrichtung der Header und Suchleisten quer über alle Spalten.
+  - **Kompaktes Klassen-Dropdown**: Die 280px-Scrollbox im Wizard wurde durch ein nach Büchern gruppiertes Dropdown (`<optgroup>`) und eine *Class Summary Card* ersetzt.
+
+* **🎯 Neuer 5. Beispielcharakter: Spellwarp Sniper (Stufe 10)**:
+  - **Valerius Strahlenweber**: Vollständig ausgebauter Schurke 1 / Magier 5 / Spellwarp Sniper 4 (*Complete Scoundrel*).
+  - **2 Skill Tricks**: *Spot the Weak Point* (Macht nächsten Angriff zum Berührungsangriff) & *Collector of Stories* (+5 auf Monster-Identifikation).
+  - **Vollständige Ausrüstung & Zauber**: Plötzlicher Strahlenangriff (+2d6), Zauberkrümmung (Flächenzauber in Strahlen wandeln), vorbereitete Strahlen- und Flächenzauber (z. B. *Scorching Ray*, *Ray of Exhaustion*, *Fireball*, *Enervation*, *Cone of Cold*) und Mithral-Kettenhemd.
+
 | **v4.1.0** | Release | 17.06.2026 | Architecture Modularization & Token-Optimized Testing |
 | **v4.0.0** | Release | 14.06.2026 | Migration Complete & Tablet-Deployable (Offline & PWA) |
 | **v3.6.0** | Release | 14.06.2026 | React-Zustandsaktualisierung, Prototyp-Rehydrierung & Ausrüstungs-Fixes |

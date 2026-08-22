@@ -2,8 +2,9 @@ import React from 'react';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { CLASSES_LIST, CLASS_KEY_ATTRIBUTES } from './constants';
 import { SkillsTabContent } from './SkillsTabContent';
+import { SkillTricksTabContent } from './SkillTricksTabContent';
 import { FeatsTabContent } from './FeatsTabContent';
-import { validatePrestigeClassPrereqs, isOnlySpecialTextUnmet } from '@core/rules.js';
+import { validatePrestigeClassPrereqs, isOnlySpecialTextUnmet, CombatRules } from '@core/rules.js';
 // @ts-ignore
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 
@@ -17,8 +18,8 @@ interface Step3LevelConfigProps {
   completedDraft: any;
   getClassHitDie: (cls: string) => number;
   updateLevelConfig: (idx: number, key: string, val: any) => void;
-  activeTab: 'skills' | 'feats';
-  setActiveTab: (tab: 'skills' | 'feats') => void;
+  activeTab: 'skills' | 'tricks' | 'feats';
+  setActiveTab: (tab: 'skills' | 'tricks' | 'feats') => void;
   currentLevelRemainingSkillPoints: number;
   currentLevelMaxSkillPoints: number;
   skillSearch: string;
@@ -581,59 +582,94 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
         {/* Right Column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {/* Tabs Header */}
-          <div style={{ display: 'flex', gap: '5px', height: '30px', borderBottom: '1.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px', boxSizing: 'border-box' }}>
-            <button
-              onClick={() => setActiveTab('skills')}
-              style={{
-                flex: 1,
-                padding: '4px 10px',
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: activeTab === 'skills' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
-                border: 'none',
-                borderBottom: activeTab === 'skills' ? '2px solid var(--red)' : '2px solid transparent',
-                color: activeTab === 'skills' ? 'var(--red)' : 'var(--inkm)',
-                fontWeight: activeTab === 'skills' ? 'bold' : 'normal',
-                fontSize: '12px',
-                cursor: 'pointer',
-                fontFamily: "'IM Fell English SC', serif",
-                boxSizing: 'border-box'
-              }}
-            >
-              📝 Skills ({currentLevelRemainingSkillPoints} / {currentLevelMaxSkillPoints})
-            </button>
-            <button
-              onClick={() => {
-                if (currentFeatSlots.length > 0) {
-                  setActiveTab('feats');
-                }
-              }}
-              disabled={currentFeatSlots.length === 0}
-              style={{
-                flex: 1,
-                padding: '4px 10px',
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: activeTab === 'feats' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
-                border: 'none',
-                borderBottom: activeTab === 'feats' ? '2px solid var(--red)' : '2px solid transparent',
-                color: currentFeatSlots.length === 0 ? 'var(--inkl)' : (activeTab === 'feats' ? 'var(--red)' : 'var(--inkm)'),
-                fontWeight: activeTab === 'feats' ? 'bold' : 'normal',
-                fontSize: '12px',
-                cursor: currentFeatSlots.length === 0 ? 'not-allowed' : 'pointer',
-                fontFamily: "'IM Fell English SC', serif",
-                opacity: currentFeatSlots.length === 0 ? 0.5 : 1,
-                boxSizing: 'border-box'
-              }}
-              title={currentFeatSlots.length === 0 ? "No feat slots available at this level" : ""}
-            >
-              🛡️ Feats ({currentFeatSlots.filter((_, idx) => !currentConfig.feats?.[idx]).length} open)
-            </button>
-          </div>
+          {(() => {
+            const totalLearnedTricksCount = levelConfigs.slice(0, currentLevelIndex + 1).reduce((sum, cfg) => sum + (cfg.skillTricks?.length || 0), 0);
+            const maxTricksLimit = currentDraft?.draftPC ? CombatRules.getMaxSkillTricksLimit(currentDraft.draftPC) : Math.floor((currentLevelIndex + 1) / 2);
+
+            return (
+              <div style={{ display: 'flex', gap: '4px', height: '30px', borderBottom: '1.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px', boxSizing: 'border-box' }}>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('skills')}
+                  style={{
+                    flex: 1.2,
+                    padding: '4px 6px',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: activeTab === 'skills' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
+                    border: 'none',
+                    borderBottom: activeTab === 'skills' ? '2px solid var(--red)' : '2px solid transparent',
+                    color: activeTab === 'skills' ? 'var(--red)' : 'var(--inkm)',
+                    fontWeight: activeTab === 'skills' ? 'bold' : 'normal',
+                    fontSize: '11.5px',
+                    cursor: 'pointer',
+                    fontFamily: "'IM Fell English SC', serif",
+                    boxSizing: 'border-box',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  📝 Skills ({currentLevelRemainingSkillPoints} / {currentLevelMaxSkillPoints})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('tricks')}
+                  style={{
+                    flex: 1,
+                    padding: '4px 6px',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: activeTab === 'tricks' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
+                    border: 'none',
+                    borderBottom: activeTab === 'tricks' ? '2px solid var(--red)' : '2px solid transparent',
+                    color: activeTab === 'tricks' ? 'var(--red)' : 'var(--inkm)',
+                    fontWeight: activeTab === 'tricks' ? 'bold' : 'normal',
+                    fontSize: '11.5px',
+                    cursor: 'pointer',
+                    fontFamily: "'IM Fell English SC', serif",
+                    boxSizing: 'border-box',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  🎭 Tricks ({totalLearnedTricksCount} / {maxTricksLimit})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (currentFeatSlots.length > 0) {
+                      setActiveTab('feats');
+                    }
+                  }}
+                  disabled={currentFeatSlots.length === 0}
+                  style={{
+                    flex: 1,
+                    padding: '4px 6px',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: activeTab === 'feats' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
+                    border: 'none',
+                    borderBottom: activeTab === 'feats' ? '2px solid var(--red)' : '2px solid transparent',
+                    color: currentFeatSlots.length === 0 ? 'var(--inkl)' : (activeTab === 'feats' ? 'var(--red)' : 'var(--inkm)'),
+                    fontWeight: activeTab === 'feats' ? 'bold' : 'normal',
+                    fontSize: '11.5px',
+                    cursor: currentFeatSlots.length === 0 ? 'not-allowed' : 'pointer',
+                    fontFamily: "'IM Fell English SC', serif",
+                    opacity: currentFeatSlots.length === 0 ? 0.5 : 1,
+                    boxSizing: 'border-box',
+                    whiteSpace: 'nowrap'
+                  }}
+                  title={currentFeatSlots.length === 0 ? "No feat slots available at this level" : ""}
+                >
+                  🛡️ Feats ({currentFeatSlots.filter((_, idx) => !currentConfig.feats?.[idx]).length} open)
+                </button>
+              </div>
+            );
+          })()}
 
           {activeTab === 'skills' && (
             <SkillsTabContent
@@ -645,6 +681,17 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
               setSkillSearch={setSkillSearch}
               currentLevelRemainingSkillPoints={currentLevelRemainingSkillPoints}
               currentLevelMaxSkillPoints={currentLevelMaxSkillPoints}
+              updateLevelConfig={updateLevelConfig}
+            />
+          )}
+
+          {activeTab === 'tricks' && (
+            <SkillTricksTabContent
+              currentConfig={currentConfig}
+              levelConfigs={levelConfigs}
+              currentLevelIndex={currentLevelIndex}
+              currentDraft={currentDraft}
+              currentLevelRemainingSkillPoints={currentLevelRemainingSkillPoints}
               updateLevelConfig={updateLevelConfig}
             />
           )}
