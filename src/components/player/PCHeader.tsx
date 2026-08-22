@@ -68,6 +68,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
       dwarf: 'Dwarf',
       gnome: 'Gnome',
       halfling: 'Halfling',
+      deep_halfling: 'Deep Halfling',
       half_elf: 'Half-Elf',
       half_orc: 'Half-Orc',
       tiefling: 'Tiefling',

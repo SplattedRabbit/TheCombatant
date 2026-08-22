@@ -38,6 +38,8 @@ export function calculateSkillModifier(pc, skillKey) {
     if (skillKey === 'listen' || skillKey === 'craft') total += 2;
   } else if (race === 'halfling') {
     if (['climb', 'jump', 'move_silently', 'listen'].includes(skillKey)) total += 2;
+  } else if (race === 'deep_halfling') {
+    if (['listen', 'appraise', 'craft', 'search'].includes(skillKey)) total += 2;
   } else if (race === 'half_elf') {
     if (['listen', 'search', 'spot'].includes(skillKey)) total += 1;
     if (['diplomacy', 'gather_information'].includes(skillKey)) total += 2;

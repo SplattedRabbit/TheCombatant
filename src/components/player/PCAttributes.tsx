@@ -98,7 +98,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     CombatState.updatePCBatch((freshPC: any) => {
       freshPC.race = val;
       freshPC.isHuman = (val === 'human');
-      const lowSpeedRaces = ['dwarf', 'gnome', 'halfling'];
+      const lowSpeedRaces = ['dwarf', 'gnome', 'halfling', 'deep_halfling'];
       freshPC.baseBw = lowSpeedRaces.includes(val) ? 20 : 30;
       freshPC.levelAdjustment = (val === 'tiefling') ? 1 : 0;
       if (val === 'tiefling') {
@@ -317,6 +317,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
               <option value="dwarf">Dwarf</option>
               <option value="gnome">Gnome</option>
               <option value="halfling">Halfling</option>
+              <option value="deep_halfling">Deep Halfling</option>
               <option value="half_elf">Half-Elf</option>
               <option value="half_orc">Half-Orc</option>
               <option value="tiefling">Tiefling</option>

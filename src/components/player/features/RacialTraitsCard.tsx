@@ -17,6 +17,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
     dwarf: 'Dwarf',
     gnome: 'Gnome',
     halfling: 'Halfling',
+    deep_halfling: 'Deep Halfling',
     half_elf: 'Half-Elf',
     half_orc: 'Half-Orc',
     tiefling: 'Tiefling',
@@ -114,6 +115,20 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
           <li><strong>Halfling Luck:</strong> +1 racial bonus on all saving throws (already included).</li>
           <li><strong>Fearless:</strong> +2 morale bonus on saving throws against fear.</li>
           <li><strong>Keen Senses:</strong> +2 racial bonus on Climb, Jump, Listen, and Move Silently checks (already included).</li>
+        </ul>
+      );
+    } else if (race === 'deep_halfling') {
+      return (
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+          <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, -2 Strength (already included).</li>
+          <li><strong>Small Size:</strong> +1 size bonus to AC, +1 size bonus on attack rolls, +4 bonus on Hide checks (already included).</li>
+          <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
+          <li><strong>Stonecunning:</strong> +2 racial bonus on Search checks to notice unusual stonework and find stone traps like a rogue.</li>
+          <li><strong>Craft &amp; Appraise Mastery:</strong> +2 racial bonus on Appraise and Craft checks related to stone or metal.</li>
+          <li><strong>Halfling Luck:</strong> +1 racial bonus on all saving throws (already included).</li>
+          <li><strong>Fearless:</strong> +2 morale bonus on saving throws against fear.</li>
+          <li><strong>Keen Senses:</strong> +2 racial bonus on Listen checks (already included; no bonuses on Climb, Jump, Move Silently).</li>
+          <li><strong>Languages:</strong> Speaks Dwarven fluently.</li>
         </ul>
       );
     } else if (race === 'half_elf') {

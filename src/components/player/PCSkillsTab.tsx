@@ -110,6 +110,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     else if (race === 'elf' && ['listen', 'search', 'spot'].includes(key)) racialBonus = 2;
     else if (race === 'gnome' && ['listen', 'craft'].includes(key)) racialBonus = 2;
     else if (race === 'halfling' && ['climb', 'jump', 'move_silently', 'listen'].includes(key)) racialBonus = 2;
+    else if (race === 'deep_halfling' && ['listen', 'appraise', 'craft', 'search'].includes(key)) racialBonus = 2;
     else if (race === 'half_elf') {
       if (['listen', 'search', 'spot'].includes(key)) racialBonus = 1;
       if (['diplomacy', 'gather_information'].includes(key)) racialBonus = 2;
@@ -169,6 +170,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     else if (race === 'elf' && ['listen', 'search', 'spot'].includes(key)) racialBonus = 2;
     else if (race === 'gnome' && ['listen', 'craft'].includes(key)) racialBonus = 2;
     else if (race === 'halfling' && ['climb', 'jump', 'move_silently', 'listen'].includes(key)) racialBonus = 2;
+    else if (race === 'deep_halfling' && ['listen', 'appraise', 'craft', 'search'].includes(key)) racialBonus = 2;
     else if (race === 'half_elf') {
       if (['listen', 'search', 'spot'].includes(key)) racialBonus = 1;
       if (['diplomacy', 'gather_information'].includes(key)) racialBonus = 2;

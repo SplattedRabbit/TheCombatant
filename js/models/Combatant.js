@@ -443,7 +443,7 @@ export class Combatant {
       return -1;
     }
     const race = (this.race || 'human').toLowerCase();
-    if (race === 'gnome' || race === 'halfling') {
+    if (race === 'gnome' || race === 'halfling' || race === 'deep_halfling') {
       return 1;
     }
     return 0;

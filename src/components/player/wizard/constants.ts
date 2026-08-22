@@ -107,6 +107,22 @@ export const RACES: RaceDetail[] = [
     ]
   },
   {
+    key: 'deep_halfling',
+    name: 'Deep Halfling',
+    modifiers: '+2 Dexterity (DEX), -2 Strength (STR)',
+    size: 'Small',
+    traits: [
+      'Size: Small (+1 bonus to Armor Class, +1 bonus on attack rolls, +4 bonus on Hide checks).',
+      'Darkvision 60 ft. (can see in the dark).',
+      'Stonecunning: +2 racial bonus on checks to notice unusual stonework and find stone traps like a rogue.',
+      '+2 racial bonus on Appraise and Craft checks related to stone or metal.',
+      '+2 racial bonus on Listen checks (loses Climb, Jump, Move Silently bonuses).',
+      '+1 racial bonus on all saving throws.',
+      '+2 racial bonus on saving throws against fear.',
+      'Speaks Dwarven fluently.'
+    ]
+  },
+  {
     key: 'half_elf',
     name: 'Half-Elf',
     modifiers: 'No modifiers',
