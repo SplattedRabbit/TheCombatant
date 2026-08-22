@@ -304,7 +304,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       const matchesQuery = trick.nameDe.toLowerCase().includes(q) || trick.nameEn.toLowerCase().includes(q) || trick.key.includes(q);
       const matchesCategory = tricksFilterCategory === 'all' || trick.category === tricksFilterCategory;
       return matchesQuery && matchesCategory;
-    }).sort((a: any, b: any) => a.nameDe.localeCompare(b.nameDe));
+    }).sort((a: any, b: any) => (a.nameEn || a.nameDe).localeCompare(b.nameEn || b.nameDe));
   }, [tricksSearchQuery, tricksFilterCategory]);
 
   return (

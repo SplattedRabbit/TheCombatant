@@ -433,14 +433,14 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                         {isAutomatic && (
                           <span style={{ fontSize: '7px', color: '#7c5a2b', background: 'rgba(200, 169, 110, 0.15)', border: '0.5px solid var(--pb)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
-                            {featInst.source || 'Klassentalent'}
+                            {featInst.source || 'Class Feat'}
                           </span>
                         )}
                         <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
                       </div>
                     </div>
-                    <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitEn || feat.benefitDe || feat.benefitRaw}>
-                      {feat.benefitEn || feat.benefitDe || feat.benefitRaw}
+                    <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
+                      {feat.benefitRaw || feat.benefitEn || feat.benefitDe}
                     </div>
                   </div>
                 );
@@ -684,8 +684,8 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                               <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
                             </div>
                           </div>
-                          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: isEligible || isAlreadyLearned ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitEn || feat.benefitDe || feat.benefitRaw}>
-                            {feat.benefitEn || feat.benefitDe || feat.benefitRaw}
+                          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: isEligible || isAlreadyLearned ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
+                            {feat.benefitRaw || feat.benefitEn || feat.benefitDe}
                           </div>
                         </div>
                       </div>

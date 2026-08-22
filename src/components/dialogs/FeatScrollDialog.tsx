@@ -426,10 +426,10 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
           ) : isAutomatic ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '100%', textAlign: 'center' }}>
               <div style={{ fontSize: '11px', color: '#7c5a2b', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>
-                Klassentalent
+                Class Feat
               </div>
               <p style={{ fontSize: '10px', color: 'var(--inkm)', margin: '0 0 4px 0', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, maxWidth: '280px' }}>
-                Dieses Talent wird dir automatisch als Klassen- oder Rassenmerkmal gewährt und kann nicht verlernt werden.
+                This feat is automatically granted as a class or racial feature and cannot be unlearned.
               </p>
               <button
                 onClick={onClose}
@@ -447,7 +447,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                   outline: 'none'
                 }}
               >
-                Schließen
+                Close
               </button>
             </div>
           ) : (
