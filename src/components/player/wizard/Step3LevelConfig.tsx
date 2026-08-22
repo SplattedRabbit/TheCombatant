@@ -206,98 +206,146 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
 
       <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1.3fr', gap: '24px' }}>
         {/* Left Column */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <h4 style={{ color: 'var(--red)', margin: '0 0 4px 0', fontSize: '14px', borderBottom: '0.5px solid var(--pb)', paddingBottom: '3px' }}>
-            Level {currentLevelIndex + 1}: Class & HP
-          </h4>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '30px', borderBottom: '1.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px', boxSizing: 'border-box' }}>
+            <h4 style={{ color: 'var(--red)', margin: 0, fontSize: '13.5px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+              Level {currentLevelIndex + 1}: Class &amp; HP
+            </h4>
 
-          {/* Source-Tabs + Suchfeld */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+            {/* Source-Chips */}
+            <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
               {(['all', 'phb', 'phb2', 'ca', 'prestige'] as const).map(tab => (
                 <button
                   key={tab}
                   type="button"
                   onClick={() => setSourceTab(tab)}
                   style={{
-                    fontSize: '10px', padding: '2px 8px', borderRadius: '3px', cursor: 'pointer',
+                    fontSize: '9.5px', padding: '1.5px 6px', borderRadius: '2px', cursor: 'pointer',
                     border: '1px solid var(--pb)',
                     fontFamily: "'Crimson Text', serif",
                     background: sourceTab === tab ? 'var(--red)' : 'rgba(139,26,26,0.06)',
                     color: sourceTab === tab ? '#fff' : 'var(--inkm)',
                     fontWeight: sourceTab === tab ? 700 : 400,
-                    transition: 'all 0.15s'
+                    transition: 'all 0.15s',
+                    lineHeight: '13px'
                   }}
                 >
-                  {tab === 'all' ? 'Alle' : tab === 'phb' ? 'Core' : tab === 'phb2' ? 'PHB2' : tab === 'ca' ? 'C.Adv' : 'Prestige'}
+                  {tab === 'all' ? 'All' : tab === 'phb' ? 'Core' : tab === 'phb2' ? 'PHB2' : tab === 'ca' ? 'C.Adv' : 'Prestige'}
                 </button>
               ))}
             </div>
-            <input
-              type="text"
-              placeholder="Klasse suchen..."
-              value={classSearch}
-              onChange={e => setClassSearch(e.target.value)}
-              className="cinput"
-              style={{ width: '100%', fontSize: '11px', height: '26px', padding: '0 8px' }}
-            />
           </div>
 
-          {/* Klassen-Liste */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '280px', overflowY: 'auto' }}>
-            {filteredWizardClasses.map(c => {
-              const isSelected = currentConfig.classType === c.key;
-              const isPrestige = c.isPrestige;
-              const validation = prevDraft ? validatePrestigeClassPrereqs(prevDraft.draftPC, c.key) : { success: !isPrestige, metDetails: [] };
-              const isAvailable = !isPrestige || validation.success;
-              const srcBadge = (c as any).source && (c as any).source !== 'phb' ? ` [${(c as any).source.toUpperCase()}]` : '';
+          {/* Class Dropdown */}
+          <select
+            value={currentConfig.classType || ''}
+            onChange={(e) => {
+              const selectedKey = e.target.value;
+              const selectedClass = CLASSES_LIST.find(c => c.key === selectedKey);
+              if (!selectedClass) return;
 
-              return (
-                <button
-                  key={c.key}
-                  type="button"
-                  onClick={() => {
-                    if (isPrestige && !isAvailable) {
-                      handleLockedClassClick(c);
-                    } else {
-                      handleClassSelect(c.key);
-                    }
-                  }}
-                  style={{
-                    width: '100%',
-                    padding: '7px 10px',
-                    borderRadius: '4px',
-                    fontFamily: "'Crimson Text', serif",
-                    border: isSelected
-                      ? '1.5px solid var(--red)'
-                      : (isPrestige && !isAvailable ? '1px dashed rgba(0,0,0,0.2)' : '1px solid var(--pb)'),
-                    background: isSelected
-                      ? 'rgba(139, 26, 26, 0.08)'
-                      : (isPrestige && !isAvailable ? 'rgba(240,240,240,0.4)' : 'rgba(244, 232, 193, 0.15)'),
-                    color: isSelected ? 'var(--red)' : (isPrestige && !isAvailable ? 'rgba(0,0,0,0.4)' : 'var(--ink)'),
-                    fontWeight: isSelected ? 'bold' : 'normal',
-                    fontSize: '11px',
-                    cursor: (isPrestige && !isAvailable) ? 'help' : 'pointer',
-                    textAlign: 'left',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    transition: 'all 0.2s'
-                  }}
-                >
-                  <span style={{ fontFamily: "'IM Fell English SC', serif" }}>{c.name}{srcBadge}</span>
-                  <span style={{ fontSize: '9.5px', opacity: 0.8, fontFamily: "'Crimson Text', serif" }}>
-                    {isSelected ? '🎯 Selected' : (isPrestige ? (isAvailable ? '🔓 Available' : '🔒 Locked') : `d${c.hd}`)}
-                  </span>
-                </button>
-              );
-            })}
-            {filteredWizardClasses.length === 0 && (
-              <div style={{ fontSize: '11px', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", fontStyle: 'italic', textAlign: 'center', padding: '10px 0' }}>
-                Keine Klassen gefunden.
-              </div>
+              if (selectedClass.isPrestige) {
+                const validation = prevDraft ? validatePrestigeClassPrereqs(prevDraft.draftPC, selectedClass.key) : { success: false, metDetails: [] };
+                if (!validation.success) {
+                  handleLockedClassClick(selectedClass);
+                  return;
+                }
+              }
+              handleClassSelect(selectedKey);
+            }}
+            className="cinput"
+            style={{ width: '100%', fontSize: '11px', height: '24px', padding: '0 6px', boxSizing: 'border-box', cursor: 'pointer' }}
+          >
+            <option value="" disabled>-- Select Class --</option>
+            {sourceTab === 'all' ? (
+              <>
+                <optgroup label="Core Classes (PHB)">
+                  {CLASSES_LIST.filter(c => !c.isPrestige && (c as any).source === 'phb').map(c => (
+                    <option key={c.key} value={c.key}>
+                      {c.name} (d{c.hd}, {c.skillBase}+INT Skills)
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Player's Handbook II (PHB2)">
+                  {CLASSES_LIST.filter(c => !c.isPrestige && (c as any).source === 'phb2').map(c => (
+                    <option key={c.key} value={c.key}>
+                      {c.name} (d{c.hd}, {c.skillBase}+INT Skills)
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Complete Adventurer (CA)">
+                  {CLASSES_LIST.filter(c => !c.isPrestige && (c as any).source === 'ca').map(c => (
+                    <option key={c.key} value={c.key}>
+                      {c.name} (d{c.hd}, {c.skillBase}+INT Skills)
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Prestige Classes (PHB / CS)">
+                  {CLASSES_LIST.filter(c => c.isPrestige).map(c => {
+                    const validation = prevDraft ? validatePrestigeClassPrereqs(prevDraft.draftPC, c.key) : { success: false, metDetails: [] };
+                    const isAvailable = validation.success;
+                    return (
+                      <option key={c.key} value={c.key}>
+                        {c.name} (d{c.hd}) {isAvailable ? '🔓' : '🔒 [Locked]'}
+                      </option>
+                    );
+                  })}
+                </optgroup>
+              </>
+            ) : (
+              filteredWizardClasses.map(c => {
+                const isPrestige = c.isPrestige;
+                const validation = prevDraft ? validatePrestigeClassPrereqs(prevDraft.draftPC, c.key) : { success: !isPrestige, metDetails: [] };
+                const isAvailable = !isPrestige || validation.success;
+                return (
+                  <option key={c.key} value={c.key}>
+                    {c.name} (d{c.hd}{c.skillBase ? `, ${c.skillBase}+INT Skills` : ''}) {isPrestige ? (isAvailable ? '🔓' : '🔒 [Locked]') : ''}
+                  </option>
+                );
+              })
             )}
-          </div>
+          </select>
+
+          {/* Compact Class Summary Card */}
+          {(() => {
+            const selectedClass = CLASSES_LIST.find(c => c.key === currentConfig.classType);
+            if (!selectedClass) return null;
+            const srcLabel = (selectedClass as any).source ? (selectedClass as any).source.toUpperCase() : 'PHB';
+            return (
+              <div
+                style={{
+                  padding: '6px 8px',
+                  borderRadius: '3px',
+                  border: '1px solid var(--pb)',
+                  background: 'rgba(244, 232, 193, 0.25)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '2px',
+                  boxSizing: 'border-box'
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
+                    {selectedClass.name}
+                  </span>
+                  <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+                    <span style={{ fontSize: '8px', background: 'rgba(0,0,0,0.06)', color: 'var(--inkm)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold' }}>
+                      {srcLabel}
+                    </span>
+                    <span style={{ fontSize: '8px', background: 'rgba(139, 26, 26, 0.08)', color: 'var(--red)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold' }}>
+                      Hit Die: d{selectedClass.hd}
+                    </span>
+                    <span style={{ fontSize: '8px', background: 'rgba(0,0,0,0.04)', color: 'var(--inkm)', padding: '0 4px', borderRadius: '1px' }}>
+                      Skills: {selectedClass.skillBase}+INT
+                    </span>
+                  </div>
+                </div>
+                <div style={{ fontSize: '9.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.25 }}>
+                  {selectedClass.desc}
+                </div>
+              </div>
+            );
+          })()}
 
           {/* Linked Spellcaster selection */}
           {currentConfig.classType === 'mystic_theurge' && currentDraft && (
@@ -533,12 +581,16 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
         {/* Right Column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {/* Tabs Header */}
-          <div style={{ display: 'flex', gap: '5px', borderBottom: '1.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px' }}>
+          <div style={{ display: 'flex', gap: '5px', height: '30px', borderBottom: '1.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px', boxSizing: 'border-box' }}>
             <button
               onClick={() => setActiveTab('skills')}
               style={{
                 flex: 1,
-                padding: '6px 12px',
+                padding: '4px 10px',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 background: activeTab === 'skills' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
                 border: 'none',
                 borderBottom: activeTab === 'skills' ? '2px solid var(--red)' : '2px solid transparent',
@@ -546,7 +598,8 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                 fontWeight: activeTab === 'skills' ? 'bold' : 'normal',
                 fontSize: '12px',
                 cursor: 'pointer',
-                fontFamily: "'IM Fell English SC', serif"
+                fontFamily: "'IM Fell English SC', serif",
+                boxSizing: 'border-box'
               }}
             >
               📝 Skills ({currentLevelRemainingSkillPoints} / {currentLevelMaxSkillPoints})
@@ -560,7 +613,11 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
               disabled={currentFeatSlots.length === 0}
               style={{
                 flex: 1,
-                padding: '6px 12px',
+                padding: '4px 10px',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 background: activeTab === 'feats' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
                 border: 'none',
                 borderBottom: activeTab === 'feats' ? '2px solid var(--red)' : '2px solid transparent',
@@ -569,7 +626,8 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                 fontSize: '12px',
                 cursor: currentFeatSlots.length === 0 ? 'not-allowed' : 'pointer',
                 fontFamily: "'IM Fell English SC', serif",
-                opacity: currentFeatSlots.length === 0 ? 0.5 : 1
+                opacity: currentFeatSlots.length === 0 ? 0.5 : 1,
+                boxSizing: 'border-box'
               }}
               title={currentFeatSlots.length === 0 ? "No feat slots available at this level" : ""}
             >

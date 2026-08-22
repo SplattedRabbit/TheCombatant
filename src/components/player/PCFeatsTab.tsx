@@ -221,26 +221,23 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
 
   const compendiumList = useMemo(() => {
     const list: Array<{ feat: any; depth: number }> = [];
-    const autoFeatIds = typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats().map((f: any) => f.id) : [];
-    const learnedIds = [
-      ...activeFeats.map((f: any) => f.id),
-      ...autoFeatIds
-    ];
+    const visited = new Set<string>();
 
     const addFeatWithChildren = (featId: string, depth: number) => {
+      if (visited.has(featId)) return;
+      visited.add(featId);
+
       const feat = CombatFeats.REGISTRY[featId];
       if (!feat) return;
 
       list.push({ feat, depth });
 
-      if (learnedIds.includes(featId)) {
-        Object.keys(CombatFeats.REGISTRY).forEach((childId) => {
-          const child = CombatFeats.REGISTRY[childId];
-          if (child.parent === featId) {
-            addFeatWithChildren(childId, depth + 1);
-          }
-        });
-      }
+      Object.keys(CombatFeats.REGISTRY).forEach((childId) => {
+        const child = CombatFeats.REGISTRY[childId];
+        if (child.parent === featId) {
+          addFeatWithChildren(childId, depth + 1);
+        }
+      });
     };
 
     Object.keys(CombatFeats.REGISTRY).forEach((featId) => {
@@ -251,15 +248,16 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
     });
 
     return list;
-  }, [activeFeats]);
+  }, []);
 
   const compendiumFiltered = useMemo(() => {
     const visibleList: Array<{ feat: any; depth: number }> = [];
+    const isSearching = compendiumSearch.trim().length > 0;
     
     compendiumList.forEach(item => {
       const feat = item.feat;
       let showItem = true;
-      if (item.depth > 0) {
+      if (!isSearching && item.depth > 0) {
         let currentParentId = feat.parent;
         while (currentParentId) {
           if (!expandedParents.has(currentParentId)) {
@@ -329,9 +327,9 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
     showFeatScrollDialog(feat, pc, isLearned, option || '', e?.nativeEvent);
   };
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', boxSizing: 'border-box', width: '100%', minWidth: 0 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', boxSizing: 'border-box', width: '100%', minWidth: 0, overflowX: 'hidden' }}>
       {/* Legend */}
-      <div className="feats-legend" style={{ marginBottom: '8px', padding: '5px 8px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '8.5px', display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', minWidth: 0, boxSizing: 'border-box' }}>
+      <div className="feats-legend" style={{ marginBottom: '8px', padding: '5px 8px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '8.5px', display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', minWidth: 0, boxSizing: 'border-box', overflowX: 'hidden' }}>
         <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '9px' }}>Legend:</span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', opacity: hasFighter ? 1 : 0.5 }}>
           <span style={{ display: 'inline-block', width: '8px', height: '6px', border: '1.2px solid #2a6a2a', background: 'rgba(42, 106, 42, 0.1)', borderLeftWidth: '3px' }}></span>
@@ -347,9 +345,9 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
         </span>
       </div>
 
-      <div style={{ display: 'flex', gap: '10px', height: '100%', minHeight: '380px', width: '100%', minWidth: 0, boxSizing: 'border-box' }}>
+      <div style={{ display: 'flex', gap: '10px', height: '100%', minHeight: '380px', width: '100%', minWidth: 0, boxSizing: 'border-box', overflowX: 'hidden' }}>
         {/* Left Column: Active Feats (40%) */}
-        <div style={{ flex: '4 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', borderRight: '0.5px solid var(--pb)', paddingRight: '8px', boxSizing: 'border-box' }}>
+        <div style={{ flex: '4 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', borderRight: '0.5px solid var(--pb)', paddingRight: '8px', boxSizing: 'border-box', overflowX: 'hidden' }}>
           <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', textAlign: 'center' }}>
             🧬 Feats ({activeFeats.length} / {totalMax})
           </h3>
@@ -370,7 +368,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
             style={{ height: '18px', fontSize: '9px', padding: '0 4px', marginBottom: '4px', minWidth: 0, width: '100%', boxSizing: 'border-box' }}
           />
 
-          <div className="active-feats-list" style={{ flex: 1, minWidth: 0, width: '100%', overflowY: 'auto', maxHeight: '360px', boxSizing: 'border-box' }}>
+          <div className="active-feats-list" style={{ flex: 1, minWidth: 0, width: '100%', overflowY: 'auto', overflowX: 'hidden', maxHeight: '360px', boxSizing: 'border-box' }}>
             {learnedFeatsFiltered.length === 0 ? (
               <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '15px' }}>
                 No feats found.
@@ -410,7 +408,6 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       flexDirection: 'column',
                       gap: '2px',
                       minWidth: 0,
-                      width: '100%',
                       boxSizing: 'border-box',
                       transition: 'transform 0.15s, background-color 0.15s',
                       border: isAutomatic || isClassBonus ? `1.2px solid ${borderColor}` : '0.5px solid var(--pb)',
@@ -453,7 +450,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
         </div>
 
         {/* Right Column: Compendium (60%) */}
-        <div style={{ flex: '6 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', boxSizing: 'border-box' }}>
+        <div style={{ flex: '6 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', boxSizing: 'border-box', overflowX: 'hidden' }}>
           {/* Filters Header */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginBottom: '4px', minWidth: 0 }}>
             <div style={{ display: 'flex', gap: '3px', minWidth: 0 }}>
@@ -511,6 +508,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
               minWidth: 0,
               width: '100%',
               overflowY: 'auto',
+              overflowX: 'hidden',
               maxHeight: '340px',
               boxSizing: 'border-box',
               paddingRight: '4px'
@@ -523,7 +521,8 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                 borderRadius: '2px',
                 padding: '4px',
                 boxSizing: 'border-box',
-                minWidth: 0
+                minWidth: 0,
+                overflowX: 'hidden'
               }}
             >
               {isLimitReached && (
@@ -552,7 +551,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                   
                   const borderStyle = isClassBonus ? { border: '1px solid #2a6a2a', borderLeft: '3.5px solid #2a6a2a' } : { border: '0.5px solid var(--pb)' };
                   const backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.04)' : 'transparent';
-                  const opacityStyle = isBlocked ? { opacity: 0.5, cursor: 'not-allowed' } : { cursor: 'pointer' };
+                  const opacityStyle = isBlocked ? { opacity: 0.65 } : {};
                   
                   let icon = '⚪';
                   if (isAlreadyLearned) icon = '🟢';
@@ -573,30 +572,28 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       key={feat.id}
                       className="comp-feat-row"
                       onClick={(e) => {
-                        if (!isBlocked || isAlreadyLearned) {
-                          handleFeatRowClick(feat, isAlreadyLearned, option, e);
-                        }
+                        handleFeatRowClick(feat, isAlreadyLearned, option, e);
                       }}
                       style={{
                         padding: '4px 6px',
+                        paddingLeft: `${depthPadding + 6}px`,
                         marginBottom: '3px',
                         borderRadius: '2px',
-                        marginLeft: `${depthPadding}px`,
                         display: 'flex',
                         alignItems: 'center',
                         gap: '6px',
                         minWidth: 0,
-                        width: '100%',
                         boxSizing: 'border-box',
                         transition: 'background-color 0.15s, opacity 0.15s',
+                        cursor: 'pointer',
                         background: backgroundStyle,
                         ...borderStyle,
                         ...opacityStyle
                       }}
                       onMouseOver={(e) => {
-                        if (!isBlocked) {
-                          e.currentTarget.style.background = isClassBonus ? 'rgba(42, 106, 42, 0.08)' : 'rgba(200, 169, 110, 0.05)';
-                        }
+                        e.currentTarget.style.background = isClassBonus
+                          ? 'rgba(42, 106, 42, 0.08)'
+                          : (isBlocked ? 'rgba(200, 169, 110, 0.03)' : 'rgba(200, 169, 110, 0.05)');
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.background = backgroundStyle;

@@ -34,7 +34,6 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
   const [tricksSearchQuery, setTricksSearchQuery] = useState('');
   const [tricksFilterCategory, setTricksFilterCategory] = useState<string>('all');
   const [selectedTrick, setSelectedTrick] = useState<any>(null);
-  const [activeSubTab, setActiveSubTab] = useState<'skills' | 'tricks'>('skills');
 
   // Format Mod helper
   const formatMod = (val: number) => (val >= 0 ? `+${val}` : `${val}`);
@@ -303,324 +302,313 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
   }, [tricksSearchQuery, tricksFilterCategory]);
 
   return (
-    <div className="panel" id="pcSkillsPanel" style={{ width: '100%' }}>
-      {/* Sub-Tab Navigation Bar */}
-      <div className="panel-tab-bar">
-        <button
-          onClick={() => setActiveSubTab('skills')}
-          className={`sub-tab-btn ${activeSubTab === 'skills' ? 'active' : ''}`}
-        >
-          📔 Skills
-        </button>
-        <button
-          onClick={() => setActiveSubTab('tricks')}
-          className={`sub-tab-btn ${activeSubTab === 'tricks' ? 'active' : ''}`}
-        >
-          🎭 Skill Tricks ({learnedTricks.length} / {maxTricksLimit})
-        </button>
+    <div className="panel" id="pcSkillsPanel" style={{ width: '100%', minWidth: 0, boxSizing: 'border-box' }}>
+      <div className="phdr">
+        <h2>📜 Skills &amp; Skill Tricks</h2>
       </div>
 
-      {/* Sub-Tab Content */}
-      <div className="pbody" style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-        {activeSubTab === 'skills' ? (
-        /* Tab 1: Skills List */
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: 0 }}>
-          {/* Search & Filter Controls */}
-          <div style={{ display: 'flex', gap: '3px', alignItems: 'center', marginBottom: '5px', background: 'rgba(0,0,0,0.02)', padding: '3px', borderRadius: '2px', border: '0.5px solid var(--pb)' }}>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search skill..."
-              style={{ flex: 1, fontSize: '8px', height: '16px', padding: '0 4px' }}
-              className="cinput"
-            />
-            <select
-              value={filterType}
-              onChange={(e) => setFilterType(e.target.value as any)}
-              className="cinput"
-              style={{ width: '75px', fontSize: '7.5px', height: '16px', padding: 0, outline: 'none', cursor: 'pointer' }}
-            >
-              <option value="all">All Skills</option>
-              <option value="class">Class Skills</option>
-              <option value="trained">With Ranks</option>
-            </select>
-            
-            <span
-              style={{
-                fontSize: '8px',
-                fontWeight: 'bold',
-                background: badgeBg,
-                color: 'var(--red)',
-                border: `0.5px solid ${badgeBorderColor}`,
-                padding: '2px 5px',
-                borderRadius: '1.5px',
-                whiteSpace: 'nowrap',
-                height: '16px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                boxSizing: 'border-box'
-              }}
-              title={`Spent Skill Points (SP): ${spentSP} of ${totalSP} consumed`}
-            >
-              {spentSP}/{totalSP} SP
-            </span>
-          </div>
-
-          {/* Legend */}
-          <div className="skills-legend" style={{ marginBottom: '5px', padding: '4px 6px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '7.5px', display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>Legend:</span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5px' }}>
-              <span style={{ fontSize: '6px', fontWeight: 'bold', color: '#1a5c1a', background: 'rgba(26,92,26,0.08)', padding: '0.5px 2px', borderRadius: '1px' }}>C</span>
-              <span>Class Skill</span>
-            </span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5px' }}>
-              <span style={{ fontSize: '6px', color: '#7c5c1d', background: 'rgba(200,169,110,0.08)', padding: '0.5px 2px', borderRadius: '1px' }}>CC</span>
-              <span>Cross-Class</span>
-            </span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5px' }}>
-              <span style={{ fontSize: '6px', color: 'var(--red)', background: 'rgba(139,26,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', fontWeight: 'bold' }}>Trained</span>
-              <span>Trained Only</span>
-            </span>
-          </div>
-
-          {/* Skills list */}
-          <div style={{ display: 'flex', flexDirection: 'column', maxHeight: '380px', overflowY: 'auto', paddingRight: '2px' }} className="pc-scroll-skills">
-            {filteredSkillKeys.length > 0 ? (
-              filteredSkillKeys.map(key => {
-                const skill = SKILLS_REGISTRY[key];
-                const isClass = CombatRules.isClassSkill(key, patchedPC);
-                const ranks = patchedPC.getSkillRanks(key);
-                const misc = patchedPC.getSkillMisc(key);
-                const maxRanks = CombatRules.getPCMaxRanks(key, patchedPC);
-                const ranksExceeded = ranks > maxRanks;
-                const totalMod = patchedPC.getSkillModifier(key);
-                const attrMod = patchedPC.getAttributeMod(skill.abl);
-                const isTrainedOnlyDisabled = skill.trainedOnly && ranks === 0;
-                const hasSkillExtras = totalMod !== (ranks + attrMod + misc);
-
-                return (
-                  <div
-                    key={key}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: '3px 4px',
-                      borderBottom: '0.5px solid rgba(200, 169, 110, 0.15)',
-                      fontSize: '8px',
-                      opacity: isTrainedOnlyDisabled ? 0.5 : 1
-                    }}
-                  >
-                    {/* Left: Dice Roll & Info */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '3.5px', flex: 1.2, minWidth: 0 }}>
-                      <button
-                        disabled={isTrainedOnlyDisabled}
-                        onClick={(e) => handleRollSkill(key, skill, ranks, attrMod, misc, e)}
-                        style={{
-                          border: 'none',
-                          background: 'transparent',
-                          padding: '0 2px',
-                          cursor: isTrainedOnlyDisabled ? 'not-allowed' : 'pointer',
-                          textAlign: 'left',
-                          fontFamily: "'Crimson Text', serif",
-                          fontSize: '9.5px',
-                          fontWeight: 'bold',
-                          color: 'var(--red)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '2.5px',
-                          opacity: isTrainedOnlyDisabled ? 0.4 : 1
-                        }}
-                        title={isTrainedOnlyDisabled ? 'Trained Only (cannot be used untrained)' : `Roll skill check for ${skill.nameEn || skill.nameDe}`}
-                      >
-                        🎲 <span style={{ borderBottom: '0.5px dashed rgba(139, 26, 26, 0.4)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '110px' }}>{skill.nameEn || skill.nameDe}</span>
-                      </button>
-                      <span style={{ fontSize: '6.5px', color: 'var(--inkl)', flexShrink: 0 }}>({skill.abl.toUpperCase()})</span>
-                      {isClass ? (
-                        <span style={{ fontSize: '5.5px', fontWeight: 'bold', color: '#1a5c1a', background: 'rgba(26,92,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0 }} title={`Class Skill (Max Ranks: ${maxRanks})`}>C</span>
-                      ) : (
-                        <span style={{ fontSize: '5.5px', color: '#7c5c1d', background: 'rgba(200,169,110,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0 }} title={`Cross-Class (Max Ranks: ${maxRanks})`}>CC</span>
-                      )}
-                      {skill.trainedOnly && ranks === 0 && (
-                        <span style={{ fontSize: '5.5px', color: 'var(--red)', background: 'rgba(139,26,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0, fontWeight: 'bold' }} title="Trained Only">Trained</span>
-                      )}
-                    </div>
-
-                    {/* Center: Total Modifier */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '2px', flex: 0.5, justifyContent: 'center', flexShrink: 0 }}>
-                      <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Total:</span>
-                      <span
-                        style={{
-                          fontWeight: 'bold',
-                          color: 'var(--red)',
-                          fontSize: '9px',
-                          minWidth: '16px',
-                          textAlign: 'left',
-                          textDecoration: hasSkillExtras ? 'underline dotted var(--red)' : 'none',
-                          cursor: 'help'
-                        }}
-                        title={getSkillTooltip(key, totalMod, ranks, attrMod, misc, skill)}
-                      >
-                        {formatMod(totalMod)}{hasSkillExtras ? ' *' : ''}
-                      </span>
-                    </div>
-
-                    {/* Right: Inputs */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0, flex: 1.3, justifyContent: 'flex-end' }}>
-                      {/* Ranks */}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-                        <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Ranks:</span>
-                        <input
-                          type="number"
-                          step="1"
-                          min="0"
-                          max={Math.floor(maxRanks)}
-                          value={ranks}
-                          onChange={(e) => handleRanksChange(key, e.target.value)}
-                          style={{
-                            width: '22px',
-                            fontSize: '8px',
-                            height: '11px',
-                            padding: 0,
-                            textAlign: 'center',
-                            borderRadius: '1px',
-                            border: '0.5px solid var(--pb)',
-                            outline: 'none',
-                            background: ranksExceeded ? 'rgba(139, 26, 26, 0.08)' : 'white',
-                            color: ranksExceeded ? 'var(--red)' : 'var(--ink)',
-                            fontWeight: ranksExceeded ? 'bold' : 'normal',
-                            borderColor: ranksExceeded ? 'var(--red)' : 'var(--pb)'
-                          }}
-                          title={`Acquired Ranks (Max allowed: ${Math.floor(maxRanks)})`}
-                        />
-                      </div>
-
-                      {/* Attribute (Readonly) */}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-                        <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Attr:</span>
-                        <input
-                          type="text"
-                          value={formatMod(attrMod)}
-                          readOnly
-                          style={{
-                            width: '18px',
-                            fontSize: '8px',
-                            height: '11px',
-                            padding: 0,
-                            textAlign: 'center',
-                            borderRadius: '1px',
-                            border: '0.5px solid var(--pb)',
-                            background: 'rgba(0,0,0,0.04)',
-                            color: 'var(--inkm)',
-                            cursor: 'not-allowed',
-                            outline: 'none'
-                          }}
-                          tabIndex={-1}
-                        />
-                      </div>
-
-                      {/* Misc */}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-                        <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Misc:</span>
-                        <input
-                          type="number"
-                          value={misc}
-                          onChange={(e) => handleMiscChange(key, e.target.value)}
-                          style={{
-                            width: '16px',
-                            fontSize: '8px',
-                            height: '11px',
-                            padding: 0,
-                            textAlign: 'center',
-                            borderRadius: '1px',
-                            border: '0.5px solid var(--pb)',
-                            outline: 'none'
-                          }}
-                          title="Other modifiers (e.g. racial bonuses, equipment)"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '25px 0' }}>
-                No skills found.
-              </div>
-            )}
-          </div>
-        </div>
-      ) : (
-        /* Tab 2: Skill Tricks Panel */
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--pb)', paddingBottom: '4px' }}>
-            <h3 style={{ margin: 0, fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: '#8b1a1a', letterSpacing: '0.3px' }}>
-              Skill Tricks
+      <div className="pbody" style={{ minWidth: 0, boxSizing: 'border-box' }}>
+        <div style={{ display: 'flex', gap: '10px', width: '100%', minWidth: 0, boxSizing: 'border-box', minHeight: '380px' }}>
+          {/* Left Column: Skills (60%) */}
+          <div style={{ flex: '6 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', borderRight: '0.5px solid var(--pb)', paddingRight: '8px', boxSizing: 'border-box' }}>
+            <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', textAlign: 'center' }}>
+              📔 Skills
             </h3>
-            <span style={{ fontSize: '7.5px', fontWeight: 'bold', background: 'rgba(25, 118, 210, 0.08)', color: '#1976d2', border: '0.5px solid #1976d2', padding: '1px 4px', borderRadius: '1.5px' }}>
-              Tricks: {learnedTricks.length} / {maxTricksLimit}
-            </span>
-          </div>
 
-          {/* Learned Tricks List */}
-          <div style={{ background: 'rgba(0,0,0,0.01)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '6px', minHeight: '60px' }}>
-            <h4 style={{ margin: '0 0 4px 0', fontSize: '7.5px', color: 'var(--inkm)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-              Learned Tricks
-            </h4>
-            {learnedTricks.length > 0 ? (
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                {learnedTricks.map((t: any) => {
-                  const trickId = typeof t === 'object' ? t.id : t;
-                  const isBonus = typeof t === 'object' ? !!t.isBonus : false;
-                  const trickDef = SKILL_TRICKS_REGISTRY[trickId];
-                  if (!trickDef) return null;
+            {/* Search & Filter Controls */}
+            <div style={{ display: 'flex', gap: '3px', alignItems: 'center', marginBottom: '4px', background: 'rgba(0,0,0,0.02)', padding: '3px', borderRadius: '2px', border: '0.5px solid var(--pb)', minWidth: 0 }}>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search skill..."
+                style={{ flex: 1, fontSize: '8.5px', height: '18px', padding: '0 4px', minWidth: 0 }}
+                className="cinput"
+              />
+              <select
+                value={filterType}
+                onChange={(e) => setFilterType(e.target.value as any)}
+                className="cinput"
+                style={{ width: '75px', fontSize: '8px', height: '18px', padding: 0, outline: 'none', cursor: 'pointer', flexShrink: 0 }}
+              >
+                <option value="all">All Skills</option>
+                <option value="class">Class Skills</option>
+                <option value="trained">With Ranks</option>
+              </select>
+              
+              <span
+                style={{
+                  fontSize: '8px',
+                  fontWeight: 'bold',
+                  background: badgeBg,
+                  color: 'var(--red)',
+                  border: `0.5px solid ${badgeBorderColor}`,
+                  padding: '2px 5px',
+                  borderRadius: '1.5px',
+                  whiteSpace: 'nowrap',
+                  height: '18px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  boxSizing: 'border-box',
+                  flexShrink: 0
+                }}
+                title={`Spent Skill Points (SP): ${spentSP} of ${totalSP} consumed`}
+              >
+                {spentSP}/{totalSP} SP
+              </span>
+            </div>
+
+            {/* Legend */}
+            <div className="skills-legend" style={{ marginBottom: '4px', padding: '4px 6px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '7.5px', display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>Legend:</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5px' }}>
+                <span style={{ fontSize: '6px', fontWeight: 'bold', color: '#1a5c1a', background: 'rgba(26,92,26,0.08)', padding: '0.5px 2px', borderRadius: '1px' }}>C</span>
+                <span>Class Skill</span>
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5px' }}>
+                <span style={{ fontSize: '6px', color: '#7c5c1d', background: 'rgba(200,169,110,0.08)', padding: '0.5px 2px', borderRadius: '1px' }}>CC</span>
+                <span>Cross-Class</span>
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5px' }}>
+                <span style={{ fontSize: '6px', color: 'var(--red)', background: 'rgba(139,26,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', fontWeight: 'bold' }}>Trained</span>
+                <span>Trained Only</span>
+              </span>
+            </div>
+
+            {/* Skills list */}
+            <div style={{ display: 'flex', flexDirection: 'column', maxHeight: '360px', overflowY: 'auto', paddingRight: '2px', minWidth: 0 }} className="pc-scroll-skills">
+              {filteredSkillKeys.length > 0 ? (
+                filteredSkillKeys.map(key => {
+                  const skill = SKILLS_REGISTRY[key];
+                  const isClass = CombatRules.isClassSkill(key, patchedPC);
+                  const ranks = patchedPC.getSkillRanks(key);
+                  const misc = patchedPC.getSkillMisc(key);
+                  const maxRanks = CombatRules.getPCMaxRanks(key, patchedPC);
+                  const ranksExceeded = ranks > maxRanks;
+                  const totalMod = patchedPC.getSkillModifier(key);
+                  const attrMod = patchedPC.getAttributeMod(skill.abl);
+                  const isTrainedOnlyDisabled = skill.trainedOnly && ranks === 0;
+                  const hasSkillExtras = totalMod !== (ranks + attrMod + misc);
+
                   return (
                     <div
-                      key={trickId}
-                      onClick={() => {
-                        setSelectedTrick({ ...trickDef, isLearned: true, isBonus });
-                      }}
+                      key={key}
                       style={{
-                        fontSize: '7.5px',
-                        padding: '2px 5px',
-                        borderRadius: '1.5px',
-                        border: isBonus ? '0.5px solid #2a6a2a' : '0.5px solid var(--pb)',
-                        background: isBonus ? 'rgba(42, 106, 42, 0.05)' : 'white',
-                        color: isBonus ? '#2a6a2a' : 'var(--ink)',
-                        cursor: 'pointer',
-                        display: 'inline-flex',
+                        display: 'flex',
                         alignItems: 'center',
-                        gap: '3px'
+                        justifyContent: 'space-between',
+                        padding: '3px 4px',
+                        borderBottom: '0.5px solid rgba(200, 169, 110, 0.15)',
+                        fontSize: '8px',
+                        opacity: isTrainedOnlyDisabled ? 0.5 : 1
                       }}
-                      title={`${trickDef.nameEn || trickDef.nameDe} (${isBonus ? 'Bonus Trick' : 'Cost: 2 SP'}). Click for details.`}
                     >
-                      🎭 {trickDef.nameEn || trickDef.nameDe} {isBonus && <span style={{ fontSize: '6px', color: '#2a6a2a' }}>★</span>}
+                      {/* Left: Dice Roll & Info */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '3.5px', flex: 1.2, minWidth: 0 }}>
+                        <button
+                          disabled={isTrainedOnlyDisabled}
+                          onClick={(e) => handleRollSkill(key, skill, ranks, attrMod, misc, e)}
+                          style={{
+                            border: 'none',
+                            background: 'transparent',
+                            padding: '0 2px',
+                            cursor: isTrainedOnlyDisabled ? 'not-allowed' : 'pointer',
+                            textAlign: 'left',
+                            fontFamily: "'Crimson Text', serif",
+                            fontSize: '9.5px',
+                            fontWeight: 'bold',
+                            color: 'var(--red)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '2.5px',
+                            opacity: isTrainedOnlyDisabled ? 0.4 : 1
+                          }}
+                          title={isTrainedOnlyDisabled ? 'Trained Only (cannot be used untrained)' : `Roll skill check for ${skill.nameEn || skill.nameDe}`}
+                        >
+                          🎲 <span style={{ borderBottom: '0.5px dashed rgba(139, 26, 26, 0.4)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '110px' }}>{skill.nameEn || skill.nameDe}</span>
+                        </button>
+                        <span style={{ fontSize: '6.5px', color: 'var(--inkl)', flexShrink: 0 }}>({skill.abl.toUpperCase()})</span>
+                        {isClass ? (
+                          <span style={{ fontSize: '5.5px', fontWeight: 'bold', color: '#1a5c1a', background: 'rgba(26,92,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0 }} title={`Class Skill (Max Ranks: ${maxRanks})`}>C</span>
+                        ) : (
+                          <span style={{ fontSize: '5.5px', color: '#7c5c1d', background: 'rgba(200,169,110,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0 }} title={`Cross-Class (Max Ranks: ${maxRanks})`}>CC</span>
+                        )}
+                        {skill.trainedOnly && ranks === 0 && (
+                          <span style={{ fontSize: '5.5px', color: 'var(--red)', background: 'rgba(139,26,26,0.08)', padding: '0.5px 2px', borderRadius: '1px', flexShrink: 0, fontWeight: 'bold' }} title="Trained Only">Trained</span>
+                        )}
+                      </div>
+
+                      {/* Center: Total Modifier */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '2px', flex: 0.5, justifyContent: 'center', flexShrink: 0 }}>
+                        <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Total:</span>
+                        <span
+                          style={{
+                            fontWeight: 'bold',
+                            color: 'var(--red)',
+                            fontSize: '9px',
+                            minWidth: '16px',
+                            textAlign: 'left',
+                            textDecoration: hasSkillExtras ? 'underline dotted var(--red)' : 'none',
+                            cursor: 'help'
+                          }}
+                          title={getSkillTooltip(key, totalMod, ranks, attrMod, misc, skill)}
+                        >
+                          {formatMod(totalMod)}{hasSkillExtras ? ' *' : ''}
+                        </span>
+                      </div>
+
+                      {/* Right: Inputs */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0, flex: 1.3, justifyContent: 'flex-end' }}>
+                        {/* Ranks */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
+                          <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Ranks:</span>
+                          <input
+                            type="number"
+                            step="1"
+                            min="0"
+                            max={Math.floor(maxRanks)}
+                            value={ranks}
+                            onChange={(e) => handleRanksChange(key, e.target.value)}
+                            style={{
+                              width: '22px',
+                              fontSize: '8px',
+                              height: '11px',
+                              padding: 0,
+                              textAlign: 'center',
+                              borderRadius: '1px',
+                              border: '0.5px solid var(--pb)',
+                              outline: 'none',
+                              background: ranksExceeded ? 'rgba(139, 26, 26, 0.08)' : 'white',
+                              color: ranksExceeded ? 'var(--red)' : 'var(--ink)',
+                              fontWeight: ranksExceeded ? 'bold' : 'normal',
+                              borderColor: ranksExceeded ? 'var(--red)' : 'var(--pb)'
+                            }}
+                            title={`Acquired Ranks (Max allowed: ${Math.floor(maxRanks)})`}
+                          />
+                        </div>
+
+                        {/* Attribute (Readonly) */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
+                          <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Attr:</span>
+                          <input
+                            type="text"
+                            value={formatMod(attrMod)}
+                            readOnly
+                            style={{
+                              width: '18px',
+                              fontSize: '8px',
+                              height: '11px',
+                              padding: 0,
+                              textAlign: 'center',
+                              borderRadius: '1px',
+                              border: '0.5px solid var(--pb)',
+                              background: 'rgba(0,0,0,0.04)',
+                              color: 'var(--inkm)',
+                              cursor: 'not-allowed',
+                              outline: 'none'
+                            }}
+                            tabIndex={-1}
+                          />
+                        </div>
+
+                        {/* Misc */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
+                          <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Misc:</span>
+                          <input
+                            type="number"
+                            value={misc}
+                            onChange={(e) => handleMiscChange(key, e.target.value)}
+                            style={{
+                              width: '16px',
+                              fontSize: '8px',
+                              height: '11px',
+                              padding: 0,
+                              textAlign: 'center',
+                              borderRadius: '1px',
+                              border: '0.5px solid var(--pb)',
+                              outline: 'none'
+                            }}
+                            title="Other modifiers (e.g. racial bonuses, equipment)"
+                          />
+                        </div>
+                      </div>
                     </div>
                   );
-                })}
-              </div>
-            ) : (
-              <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>No skill tricks learned.</div>
-            )}
+                })
+              ) : (
+                <div style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '25px 0' }}>
+                  No skills found.
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* Compendium (Available Tricks) */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+          {/* Right Column: Skill Tricks (40%) */}
+          <div style={{ flex: '4 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', boxSizing: 'border-box' }}>
+            <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span>🎭 Skill Tricks</span>
+              <span style={{ fontSize: '8px', fontWeight: 'bold', background: 'rgba(25, 118, 210, 0.08)', color: '#1976d2', border: '0.5px solid #1976d2', padding: '1px 4px', borderRadius: '1.5px' }}>
+                {learnedTricks.length} / {maxTricksLimit}
+              </span>
+            </h3>
+
+            {/* Learned Tricks Box */}
+            <div style={{ background: 'rgba(0,0,0,0.01)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '5px', minHeight: '48px', boxSizing: 'border-box', minWidth: 0 }}>
+              <h4 style={{ margin: '0 0 4px 0', fontSize: '7.5px', color: 'var(--inkm)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Learned Tricks
+              </h4>
+              {learnedTricks.length > 0 ? (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                  {learnedTricks.map((t: any) => {
+                    const trickId = typeof t === 'object' ? t.id : t;
+                    const isBonus = typeof t === 'object' ? !!t.isBonus : false;
+                    const trickDef = SKILL_TRICKS_REGISTRY[trickId];
+                    if (!trickDef) return null;
+                    return (
+                      <div
+                        key={trickId}
+                        onClick={() => {
+                          setSelectedTrick({ ...trickDef, isLearned: true, isBonus });
+                        }}
+                        style={{
+                          fontSize: '7.5px',
+                          padding: '2px 5px',
+                          borderRadius: '1.5px',
+                          border: isBonus ? '0.5px solid #2a6a2a' : '0.5px solid var(--pb)',
+                          background: isBonus ? 'rgba(42, 106, 42, 0.05)' : 'white',
+                          color: isBonus ? '#2a6a2a' : 'var(--ink)',
+                          cursor: 'pointer',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '3px'
+                        }}
+                        title={`${trickDef.nameEn || trickDef.nameDe} (${isBonus ? 'Bonus Trick' : 'Cost: 2 SP'}). Click for details.`}
+                      >
+                        🎭 {trickDef.nameEn || trickDef.nameDe} {isBonus && <span style={{ fontSize: '6px', color: '#2a6a2a' }}>★</span>}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>No skill tricks learned.</div>
+              )}
+            </div>
+
+            {/* Compendium (Available Tricks) Header & Filters */}
+            <div style={{ display: 'flex', gap: '3px', alignItems: 'center', minWidth: 0, marginTop: '2px' }}>
               <input
                 type="text"
                 placeholder="Filter tricks..."
                 value={tricksSearchQuery}
                 onChange={(e) => setTricksSearchQuery(e.target.value)}
-                style={{ flex: 1, fontSize: '8px', height: '15px', padding: '0 3px' }}
+                style={{ flex: 1, fontSize: '8.5px', height: '18px', padding: '0 4px', minWidth: 0 }}
                 className="cinput"
               />
               <select
                 value={tricksFilterCategory}
                 onChange={(e) => setTricksFilterCategory(e.target.value)}
                 className="cinput"
-                style={{ width: '80px', fontSize: '7.5px', height: '15px', padding: 0 }}
+                style={{ width: '85px', fontSize: '8px', height: '18px', padding: 0, cursor: 'pointer', flexShrink: 0 }}
               >
                 <option value="all">All Categories</option>
                 <option value="interaction">Interaction</option>
@@ -631,7 +619,21 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
             </div>
 
             {/* Scrollable compendium tricks */}
-            <div style={{ maxHeight: '200px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '3px', paddingRight: '2px' }} className="pc-scroll-skills">
+            <div
+              style={{
+                flex: 1,
+                minWidth: 0,
+                width: '100%',
+                maxHeight: '260px',
+                overflowY: 'auto',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '3px',
+                paddingRight: '2px',
+                boxSizing: 'border-box'
+              }}
+              className="pc-scroll-skills"
+            >
               {filteredTricks.map((trick: any) => {
                 const isLearned = learnedTricks.some((lt: any) => (typeof lt === 'object' ? lt.id === trick.key : lt === trick.key));
                 const isBonus = learnedTricks.some((lt: any) => typeof lt === 'object' && lt.id === trick.key && lt.isBonus);
@@ -644,7 +646,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                       setSelectedTrick({ ...trick, isLearned, isBonus });
                     }}
                     style={{
-                      padding: '3px 4px',
+                      padding: '3px 5px',
                       border: isLearned ? '0.5px solid #1976d2' : '0.5px solid rgba(200, 169, 110, 0.25)',
                       background: isLearned ? 'rgba(25,118,210,0.03)' : (met ? 'rgba(42, 106, 42, 0.02)' : 'transparent'),
                       borderRadius: '2px',
@@ -656,10 +658,10 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     }}
                   >
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', minWidth: 0 }}>
-                      <span style={{ fontSize: '8px', fontWeight: 'bold', color: isLearned ? '#1976d2' : 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: '8.5px', fontWeight: 'bold', color: isLearned ? '#1976d2' : 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {trick.nameEn || trick.nameDe}
                       </span>
-                      <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>
+                      <span style={{ fontSize: '6.5px', color: 'var(--inkl)' }}>
                         {trick.category.toUpperCase()}
                       </span>
                     </div>
@@ -678,7 +680,6 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
             </div>
           </div>
         </div>
-      )}
       </div>
 
       {/* Details Popup */}
