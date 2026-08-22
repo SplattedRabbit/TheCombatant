@@ -561,26 +561,23 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                   const parentName = parentFeatDef ? (parentFeatDef.nameEn || parentFeatDef.nameDe) : feat.parent;
 
                   // Border & background styling based on status
-                  let borderStyle = '0.5px dashed rgba(120, 100, 80, 0.35)';
-                  let borderLeftStyle = '0.5px dashed rgba(120, 100, 80, 0.35)';
-                  let backgroundStyle = 'rgba(0, 0, 0, 0.025)';
+                  let borderStyle = '0.5px dashed rgba(120, 100, 80, 0.3)';
+                  let borderLeftStyle = '0.5px dashed rgba(120, 100, 80, 0.3)';
+                  let backgroundStyle = 'transparent';
                   let shadowStyle = 'none';
 
                   if (isAlreadyLearned) {
-                    borderStyle = isClassBonus ? '0.5px solid #2a6a2a' : '0.5px solid var(--pb)';
-                    borderLeftStyle = isClassBonus ? '3.5px solid #2a6a2a' : '3.5px solid var(--pb)';
-                    backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.05)' : 'rgba(200, 169, 110, 0.06)';
+                    borderStyle = '0.5px solid var(--pb)';
+                    borderLeftStyle = '3.5px solid var(--red)';
+                    backgroundStyle = 'rgba(139, 26, 26, 0.035)';
                   } else if (isEligible) {
-                    borderStyle = isClassBonus ? '0.5px solid #2a6a2a' : '0.5px solid var(--pb)';
-                    borderLeftStyle = isClassBonus ? '3.5px solid #2a6a2a' : (depth > 0 ? '3px solid var(--pb)' : '0.5px solid var(--pb)');
-                    backgroundStyle = isClassBonus 
-                      ? 'rgba(42, 106, 42, 0.04)' 
-                      : 'rgba(200, 169, 110, 0.08)';
-                    shadowStyle = 'none';
+                    borderStyle = isClassBonus ? '0.5px solid #2a6a2a' : '0.5px solid rgba(42, 106, 42, 0.35)';
+                    borderLeftStyle = '3.5px solid #2a6a2a';
+                    backgroundStyle = 'rgba(42, 106, 42, 0.04)';
                   } else if (isClassBonus) {
-                    borderStyle = '0.5px solid rgba(42, 106, 42, 0.4)';
-                    borderLeftStyle = '3px solid rgba(42, 106, 42, 0.5)';
-                    backgroundStyle = 'rgba(42, 106, 42, 0.025)';
+                    borderStyle = '0.5px solid rgba(42, 106, 42, 0.3)';
+                    borderLeftStyle = '3px solid rgba(42, 106, 42, 0.4)';
+                    backgroundStyle = 'rgba(42, 106, 42, 0.02)';
                   }
 
                   const categoryEn = (({ combat: 'Combat', metamagic: 'Metamagic', item_creation: 'Creation', general: 'General' } as Record<string, string>)[feat.category]) || 'General';
@@ -632,7 +629,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                           border: borderStyle,
                           borderLeft: borderLeftStyle,
                           boxShadow: shadowStyle,
-                          opacity: isAlreadyLearned ? 1 : (isEligible ? 0.95 : 0.55)
+                          opacity: isAlreadyLearned || isEligible ? 1 : 0.55
                         }}
                         onMouseOver={(e) => {
                           e.currentTarget.style.filter = 'brightness(0.97)';
@@ -666,8 +663,8 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                         <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '4px', minWidth: 0, overflow: 'hidden' }}>
-                              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: isAlreadyLearned ? 'var(--ink)' : (isEligible ? '#5c3a1e' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                {feat.nameEn || feat.nameDe}
+                              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: isAlreadyLearned ? 'var(--red)' : (isEligible ? '#2a6a2a' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                {isEligible && !isAlreadyLearned ? '✨ ' : ''}{feat.nameEn || feat.nameDe}
                               </span>
                               {feat.parent && (
                                 <span style={{ fontSize: '6.5px', color: '#8b6934', background: 'rgba(139, 105, 52, 0.08)', padding: '0 3px', borderRadius: '1px', border: '0.5px solid rgba(139, 105, 52, 0.2)', whiteSpace: 'nowrap', flexShrink: 0 }} title={`Prerequisite / Parent Feat: ${parentName}`}>
@@ -677,13 +674,13 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                             </div>
                             <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                               {isAlreadyLearned ? (
-                                <span style={{ fontSize: '7px', color: '#7c5a2b', fontWeight: 'bold', background: 'rgba(200, 169, 110, 0.15)', border: '0.5px solid rgba(200, 169, 110, 0.3)', padding: '1px 4px', borderRadius: '1.5px' }}>✓ Learned</span>
+                                <span style={{ fontSize: '7px', color: 'var(--red)', fontWeight: 'bold', background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid rgba(139, 26, 26, 0.25)', padding: '1px 4px', borderRadius: '1.5px' }}>✓ Learned</span>
                               ) : isEligible ? (
-                                <span style={{ fontSize: '7px', color: isClassBonus ? '#2a6a2a' : '#7c5a2b', fontWeight: 'bold', background: isClassBonus ? 'rgba(42, 106, 42, 0.12)' : 'rgba(124, 90, 43, 0.12)', padding: '1px 4px', borderRadius: '1.5px', border: '0.5px solid rgba(124, 90, 43, 0.25)' }}>
+                                <span style={{ fontSize: '7px', color: '#2a6a2a', fontWeight: 'bold', background: 'rgba(42, 106, 42, 0.12)', border: '0.5px solid rgba(42, 106, 42, 0.3)', padding: '1px 4px', borderRadius: '1.5px' }}>
                                   ✨ Available
                                 </span>
                               ) : (
-                                <span style={{ fontSize: '7px', color: '#8b1a1a', fontWeight: 'bold', background: 'rgba(139, 26, 26, 0.06)', padding: '1px 3px', borderRadius: '1.5px' }}>🔒 Locked</span>
+                                <span style={{ fontSize: '7px', color: '#8b1a1a', fontWeight: 'bold', background: 'rgba(139, 26, 26, 0.05)', border: '0.5px dashed rgba(139, 26, 26, 0.15)', padding: '1px 3px', borderRadius: '1.5px' }}>🔒 Locked</span>
                               )}
                               <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
                             </div>

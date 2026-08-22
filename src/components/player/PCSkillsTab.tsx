@@ -609,9 +609,9 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                       <div
                         key={trickId}
                         style={{
-                          background: 'rgba(200, 169, 110, 0.08)',
+                          background: 'rgba(139, 26, 26, 0.035)',
                           border: '0.5px solid var(--pb)',
-                          borderLeft: '2.5px solid var(--pb)',
+                          borderLeft: '2.5px solid var(--red)',
                           borderRadius: '2px',
                           padding: '2px 4px',
                           display: 'flex',
@@ -622,7 +622,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                         }}
                         onClick={() => setSelectedTrick({ ...trickDef, isLearned: true, isBonus })}
                       >
-                        <span style={{ fontWeight: 'bold', color: 'var(--ink)' }}>
+                        <span style={{ fontWeight: 'bold', color: 'var(--red)' }}>
                           {trickDef.nameEn || trickDef.nameDe}
                         </span>
                         {isBonus && (
@@ -716,16 +716,23 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                 const isLearned = learnedTricks.some((lt: any) => (typeof lt === 'object' ? lt.id === trick.key : lt === trick.key));
                 const isBonus = learnedTricks.some((lt: any) => typeof lt === 'object' && lt.id === trick.key && lt.isBonus);
                 const { met } = CombatRules.checkSkillTrickPrerequisites(trick.key, patchedPC);
-                const borderStyle = isLearned
-                  ? '0.5px solid var(--pb)'
-                  : (met ? '0.5px solid var(--pb)' : '0.5px dashed rgba(120, 100, 80, 0.25)');
                 
-                const bgStyle = isLearned
-                  ? 'rgba(200, 169, 110, 0.06)'
-                  : (met ? 'rgba(200, 169, 110, 0.08)' : 'transparent');
+                let borderStyle = '0.5px dashed rgba(120, 100, 80, 0.3)';
+                let borderLeftStyle = '0.5px dashed rgba(120, 100, 80, 0.3)';
+                let bgStyle = 'transparent';
+                let opacityVal = 0.55;
 
-                const shadowStyle = 'none';
-                const opacityVal = isLearned ? 1 : (met ? 0.95 : 0.55);
+                if (isLearned) {
+                  borderStyle = '0.5px solid var(--pb)';
+                  borderLeftStyle = '3.5px solid var(--red)';
+                  bgStyle = 'rgba(139, 26, 26, 0.035)';
+                  opacityVal = 1;
+                } else if (met) {
+                  borderStyle = '0.5px solid rgba(42, 106, 42, 0.35)';
+                  borderLeftStyle = '3.5px solid #2a6a2a';
+                  bgStyle = 'rgba(42, 106, 42, 0.04)';
+                  opacityVal = 1;
+                }
 
                 return (
                   <div
@@ -736,9 +743,9 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     style={{
                       padding: '3.5px 6px',
                       border: borderStyle,
-                      borderLeft: isLearned ? '3px solid var(--pb)' : (met ? '3px solid #7c5a2b' : borderStyle),
+                      borderLeft: borderLeftStyle,
                       background: bgStyle,
-                      boxShadow: shadowStyle,
+                      boxShadow: 'none',
                       borderRadius: '2px',
                       cursor: 'pointer',
                       display: 'flex',
@@ -749,7 +756,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     }}
                   >
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', minWidth: 0 }}>
-                      <span style={{ fontSize: '8.5px', fontWeight: met || isLearned ? 'bold' : '600', color: isLearned ? 'var(--ink)' : (met ? '#5c3a1e' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: '8.5px', fontWeight: met || isLearned ? 'bold' : '600', color: isLearned ? 'var(--red)' : (met ? '#2a6a2a' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {met && !isLearned ? '✨ ' : ''}{trick.nameEn || trick.nameDe}
                       </span>
                       <span style={{ fontSize: '6.5px', color: met ? 'var(--inkm)' : 'var(--inkl)' }}>
@@ -758,9 +765,9 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     </div>
                     <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                       {isLearned ? (
-                        <span style={{ fontSize: '7px', color: '#7c5a2b', fontWeight: 'bold', background: 'rgba(200, 169, 110, 0.15)', border: '0.5px solid rgba(200, 169, 110, 0.3)', padding: '1px 3px', borderRadius: '1.5px' }}>✓ Learned</span>
+                        <span style={{ fontSize: '7px', color: 'var(--red)', fontWeight: 'bold', background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid rgba(139, 26, 26, 0.25)', padding: '1px 3px', borderRadius: '1.5px' }}>✓ Learned</span>
                       ) : (
-                        <span style={{ fontSize: '7px', color: met ? '#2a6a2a' : '#8b1a1a', fontWeight: 'bold', background: met ? 'rgba(42, 106, 42, 0.1)' : 'rgba(139, 26, 26, 0.06)', padding: '1px 3px', borderRadius: '1.5px' }}>
+                        <span style={{ fontSize: '7px', color: met ? '#2a6a2a' : '#8b1a1a', fontWeight: 'bold', background: met ? 'rgba(42, 106, 42, 0.12)' : 'rgba(139, 26, 26, 0.05)', border: met ? '0.5px solid rgba(42, 106, 42, 0.3)' : '0.5px dashed rgba(139, 26, 26, 0.15)', padding: '1px 3px', borderRadius: '1.5px' }}>
                           {met ? '✨ Ready' : '🔒 Locked'}
                         </span>
                       )}
