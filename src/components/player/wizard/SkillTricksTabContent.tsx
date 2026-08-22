@@ -191,8 +191,8 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
 
                 const canLearn = !isPrior && !isCurrent && met && !isLimitReached && currentLevelRemainingSkillPoints >= 2;
 
-                const borderColor = isCurrent ? 'var(--red)' : (isPrior ? '#1976d2' : (met ? 'var(--pb)' : 'rgba(0,0,0,0.15)'));
-                const bgColor = isCurrent ? 'rgba(139, 26, 26, 0.04)' : (isPrior ? 'rgba(25, 118, 210, 0.03)' : (met ? 'white' : 'rgba(0,0,0,0.02)'));
+                const borderColor = isCurrent ? 'var(--red)' : (isPrior ? 'var(--pb)' : (met ? 'var(--pb)' : 'rgba(0,0,0,0.15)'));
+                const bgColor = isCurrent ? 'rgba(139, 26, 26, 0.04)' : (isPrior ? 'rgba(200, 169, 110, 0.06)' : (met ? 'rgba(200, 169, 110, 0.03)' : 'rgba(0,0,0,0.02)'));
                 const opacity = isPrior ? 0.75 : (met || isCurrent ? 1 : 0.6);
 
                 return (
@@ -225,8 +225,8 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                       {/* Action / Status */}
                       <div>
                         {isPrior ? (
-                          <span style={{ fontSize: '8.5px', color: '#1976d2', fontWeight: 'bold' }}>
-                            ✓ Learned at Lvl {priorLearnedMap[trick.key]}
+                          <span style={{ fontSize: '7.5px', color: '#7c5a2b', fontWeight: 'bold', background: 'rgba(200, 169, 110, 0.15)', border: '0.5px solid rgba(200, 169, 110, 0.3)', padding: '1px 4px', borderRadius: '1.5px' }}>
+                            ✓ Lvl {priorLearnedMap[trick.key]}
                           </span>
                         ) : isCurrent ? (
                           <button

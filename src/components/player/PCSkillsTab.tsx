@@ -587,7 +587,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
           <div style={{ flex: '4 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', boxSizing: 'border-box' }}>
             <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>🎭 Skill Tricks</span>
-              <span style={{ fontSize: '8px', fontWeight: 'bold', background: 'rgba(25, 118, 210, 0.08)', color: '#1976d2', border: '0.5px solid #1976d2', padding: '1px 4px', borderRadius: '1.5px' }}>
+              <span style={{ fontSize: '8px', fontWeight: 'bold', background: 'rgba(200, 169, 110, 0.15)', color: '#7c5a2b', border: '0.5px solid var(--pb)', padding: '1px 4px', borderRadius: '1.5px' }}>
                 {learnedTricks.length} / {maxTricksLimit}
               </span>
             </h3>
@@ -604,72 +604,100 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     const isBonus = typeof t === 'object' ? !!t.isBonus : false;
                     const trickDef = SKILL_TRICKS_REGISTRY[trickId];
                     if (!trickDef) return null;
+
                     return (
                       <div
                         key={trickId}
-                        onClick={() => {
-                          setSelectedTrick({ ...trickDef, isLearned: true, isBonus });
-                        }}
                         style={{
-                          fontSize: '7.5px',
-                          padding: '2px 5px',
-                          borderRadius: '1.5px',
-                          border: isBonus ? '0.5px solid #2a6a2a' : '0.5px solid var(--pb)',
-                          background: isBonus ? 'rgba(42, 106, 42, 0.05)' : 'white',
-                          color: isBonus ? '#2a6a2a' : 'var(--ink)',
-                          cursor: 'pointer',
-                          display: 'inline-flex',
+                          background: 'rgba(200, 169, 110, 0.08)',
+                          border: '0.5px solid var(--pb)',
+                          borderLeft: '2.5px solid var(--pb)',
+                          borderRadius: '2px',
+                          padding: '2px 4px',
+                          display: 'flex',
                           alignItems: 'center',
-                          gap: '3px'
+                          gap: '3px',
+                          fontSize: '8px',
+                          cursor: 'pointer'
                         }}
-                        title={`${trickDef.nameEn || trickDef.nameDe} (${isBonus ? 'Bonus Trick' : 'Cost: 2 SP'}). Click for details.`}
+                        onClick={() => setSelectedTrick({ ...trickDef, isLearned: true, isBonus })}
                       >
-                        🎭 {trickDef.nameEn || trickDef.nameDe} {isBonus && <span style={{ fontSize: '6px', color: '#2a6a2a' }}>★</span>}
+                        <span style={{ fontWeight: 'bold', color: 'var(--ink)' }}>
+                          {trickDef.nameEn || trickDef.nameDe}
+                        </span>
+                        {isBonus && (
+                          <span style={{ fontSize: '6.5px', color: '#2a6a2a', fontWeight: 'bold' }}>
+                            (Bonus)
+                          </span>
+                        )}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            CombatState.removePCSkillTrick(trickId);
+                          }}
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            color: 'var(--red)',
+                            fontSize: '8px',
+                            padding: '0 2px',
+                            lineHeight: 1
+                          }}
+                          title="Remove Skill Trick"
+                        >
+                          ✕
+                        </button>
                       </div>
                     );
                   })}
                 </div>
               ) : (
-                <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>No skill tricks learned.</div>
+                <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>
+                  No skill tricks learned yet.
+                </div>
               )}
             </div>
 
-            {/* Compendium (Available Tricks) Header & Filters */}
-            <div style={{ display: 'flex', gap: '3px', alignItems: 'center', minWidth: 0, marginTop: '2px' }}>
-              <input
-                type="text"
-                placeholder="Filter tricks..."
-                value={tricksSearchQuery}
-                onChange={(e) => setTricksSearchQuery(e.target.value)}
-                style={{ flex: 1, fontSize: '8.5px', height: '18px', padding: '0 4px', minWidth: 0 }}
-                className="cinput"
-              />
-              <select
-                value={tricksFilterCategory}
-                onChange={(e) => setTricksFilterCategory(e.target.value)}
-                className="cinput"
-                style={{ width: '85px', fontSize: '8px', height: '18px', padding: 0, cursor: 'pointer', flexShrink: 0 }}
-              >
-                <option value="all">All Categories</option>
-                <option value="interaction">Interaction</option>
-                <option value="manipulation">Manipulation</option>
-                <option value="mental">Mental</option>
-                <option value="movement">Movement</option>
-              </select>
+            {/* Filter Tabs */}
+            <div style={{ display: 'flex', gap: '2px', margin: '4px 0 2px 0' }}>
+              {(['all', 'interaction', 'movement', 'manipulation'] as const).map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setTrickCategoryFilter(cat)}
+                  style={{
+                    flex: 1,
+                    fontSize: '7.5px',
+                    fontFamily: "'IM Fell English SC', serif",
+                    padding: '2px 0',
+                    border: trickCategoryFilter === cat ? '1px solid var(--red)' : '0.5px solid var(--pb)',
+                    background: trickCategoryFilter === cat ? 'var(--red)' : 'transparent',
+                    color: trickCategoryFilter === cat ? '#fff' : 'var(--inkm)',
+                    borderRadius: '2px',
+                    cursor: 'pointer',
+                    textTransform: 'capitalize'
+                  }}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
 
-            {/* Scrollable compendium tricks */}
+            {/* Trick Compendium List */}
             <div
               style={{
                 flex: 1,
-                minWidth: 0,
-                width: '100%',
-                maxHeight: '260px',
+                minHeight: '140px',
+                maxHeight: '220px',
                 overflowY: 'auto',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '3px',
-                paddingRight: '2px',
+                gap: '2px',
+                border: '0.5px dashed rgba(200, 169, 110, 0.3)',
+                borderRadius: '2px',
+                padding: '4px',
                 boxSizing: 'border-box'
               }}
               className="pc-scroll-skills"
@@ -679,11 +707,11 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                 const isBonus = learnedTricks.some((lt: any) => typeof lt === 'object' && lt.id === trick.key && lt.isBonus);
                 const { met } = CombatRules.checkSkillTrickPrerequisites(trick.key, patchedPC);
                 const borderStyle = isLearned
-                  ? '0.5px solid #1976d2'
+                  ? '0.5px solid var(--pb)'
                   : (met ? '0.5px solid var(--pb)' : '0.5px dashed rgba(120, 100, 80, 0.25)');
                 
                 const bgStyle = isLearned
-                  ? 'rgba(25, 118, 210, 0.04)'
+                  ? 'rgba(200, 169, 110, 0.06)'
                   : (met ? 'rgba(200, 169, 110, 0.08)' : 'transparent');
 
                 const shadowStyle = 'none';
@@ -698,6 +726,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     style={{
                       padding: '3.5px 6px',
                       border: borderStyle,
+                      borderLeft: isLearned ? '3px solid var(--pb)' : (met ? '3px solid #7c5a2b' : borderStyle),
                       background: bgStyle,
                       boxShadow: shadowStyle,
                       borderRadius: '2px',
@@ -710,7 +739,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     }}
                   >
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', minWidth: 0 }}>
-                      <span style={{ fontSize: '8.5px', fontWeight: met || isLearned ? 'bold' : '600', color: isLearned ? '#1976d2' : (met ? '#5c3a1e' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: '8.5px', fontWeight: met || isLearned ? 'bold' : '600', color: isLearned ? 'var(--ink)' : (met ? '#5c3a1e' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {met && !isLearned ? '✨ ' : ''}{trick.nameEn || trick.nameDe}
                       </span>
                       <span style={{ fontSize: '6.5px', color: met ? 'var(--inkm)' : 'var(--inkl)' }}>
@@ -719,7 +748,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     </div>
                     <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                       {isLearned ? (
-                        <span style={{ fontSize: '7px', color: '#1976d2', fontWeight: 'bold', background: 'rgba(25, 118, 210, 0.1)', padding: '1px 3px', borderRadius: '1.5px' }}>✓ Learned</span>
+                        <span style={{ fontSize: '7px', color: '#7c5a2b', fontWeight: 'bold', background: 'rgba(200, 169, 110, 0.15)', border: '0.5px solid rgba(200, 169, 110, 0.3)', padding: '1px 3px', borderRadius: '1.5px' }}>✓ Learned</span>
                       ) : (
                         <span style={{ fontSize: '7px', color: met ? '#2a6a2a' : '#8b1a1a', fontWeight: 'bold', background: met ? 'rgba(42, 106, 42, 0.1)' : 'rgba(139, 26, 26, 0.06)', padding: '1px 3px', borderRadius: '1.5px' }}>
                           {met ? '✨ Ready' : '🔒 Locked'}

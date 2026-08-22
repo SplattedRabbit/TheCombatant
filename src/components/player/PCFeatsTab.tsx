@@ -386,10 +386,10 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                                      (getBonusFeatClass(feat) === 'wizard' && hasWizard) ||
                                      (getBonusFeatClass(feat) === 'monk' && hasMonk));
 
-                const borderColor = isAutomatic ? '#1976d2' : (isClassBonus ? '#2a6a2a' : 'var(--pb)');
-                const borderLeftColor = isAutomatic ? '#1976d2' : (isClassBonus ? '#2a6a2a' : 'var(--pb)');
-                const backgroundVal = isAutomatic ? 'rgba(25, 118, 210, 0.03)' : (isClassBonus ? 'rgba(42, 106, 42, 0.03)' : 'transparent');
-                const hoverBackgroundVal = isAutomatic ? 'rgba(25, 118, 210, 0.07)' : (isClassBonus ? 'rgba(42, 106, 42, 0.07)' : 'rgba(200, 169, 110, 0.05)');
+                const borderColor = isAutomatic ? 'var(--pb)' : (isClassBonus ? '#2a6a2a' : 'var(--pb)');
+                const borderLeftColor = isAutomatic ? 'var(--pb)' : (isClassBonus ? '#2a6a2a' : 'var(--pb)');
+                const backgroundVal = isAutomatic ? 'rgba(200, 169, 110, 0.04)' : (isClassBonus ? 'rgba(42, 106, 42, 0.03)' : 'transparent');
+                const hoverBackgroundVal = isAutomatic ? 'rgba(200, 169, 110, 0.08)' : (isClassBonus ? 'rgba(42, 106, 42, 0.07)' : 'rgba(200, 169, 110, 0.05)');
 
                 const prereqsResult = checkPrerequisites(feat, pc);
 
@@ -432,7 +432,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       </span>
                       <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                         {isAutomatic && (
-                          <span style={{ fontSize: '7px', color: '#1976d2', background: 'rgba(25, 118, 210, 0.1)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                          <span style={{ fontSize: '7px', color: '#7c5a2b', background: 'rgba(200, 169, 110, 0.15)', border: '0.5px solid var(--pb)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
                             {featInst.source || 'Klassentalent'}
                           </span>
                         )}
@@ -567,9 +567,9 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                   let shadowStyle = 'none';
 
                   if (isAlreadyLearned) {
-                    borderStyle = isClassBonus ? '0.5px solid #2a6a2a' : '0.5px solid #1976d2';
-                    borderLeftStyle = isClassBonus ? '3.5px solid #2a6a2a' : '3.5px solid #1976d2';
-                    backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.05)' : 'rgba(25, 118, 210, 0.04)';
+                    borderStyle = isClassBonus ? '0.5px solid #2a6a2a' : '0.5px solid var(--pb)';
+                    borderLeftStyle = isClassBonus ? '3.5px solid #2a6a2a' : '3.5px solid var(--pb)';
+                    backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.05)' : 'rgba(200, 169, 110, 0.06)';
                   } else if (isEligible) {
                     borderStyle = isClassBonus ? '0.5px solid #2a6a2a' : '0.5px solid var(--pb)';
                     borderLeftStyle = isClassBonus ? '3.5px solid #2a6a2a' : (depth > 0 ? '3px solid var(--pb)' : '0.5px solid var(--pb)');
@@ -666,7 +666,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                         <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '4px', minWidth: 0, overflow: 'hidden' }}>
-                              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: isAlreadyLearned ? '#1976d2' : (isEligible ? '#5c3a1e' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: isAlreadyLearned ? 'var(--ink)' : (isEligible ? '#5c3a1e' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                 {feat.nameEn || feat.nameDe}
                               </span>
                               {feat.parent && (
@@ -677,7 +677,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                             </div>
                             <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                               {isAlreadyLearned ? (
-                                <span style={{ fontSize: '7px', color: '#1976d2', fontWeight: 'bold', background: 'rgba(25, 118, 210, 0.1)', padding: '1px 4px', borderRadius: '1.5px' }}>✓ Learned</span>
+                                <span style={{ fontSize: '7px', color: '#7c5a2b', fontWeight: 'bold', background: 'rgba(200, 169, 110, 0.15)', border: '0.5px solid rgba(200, 169, 110, 0.3)', padding: '1px 4px', borderRadius: '1.5px' }}>✓ Learned</span>
                               ) : isEligible ? (
                                 <span style={{ fontSize: '7px', color: isClassBonus ? '#2a6a2a' : '#7c5a2b', fontWeight: 'bold', background: isClassBonus ? 'rgba(42, 106, 42, 0.12)' : 'rgba(124, 90, 43, 0.12)', padding: '1px 4px', borderRadius: '1.5px', border: '0.5px solid rgba(124, 90, 43, 0.25)' }}>
                                   ✨ Available

@@ -425,7 +425,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
             </div>
           ) : isAutomatic ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '100%', textAlign: 'center' }}>
-              <div style={{ fontSize: '11px', color: '#1976d2', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>
+              <div style={{ fontSize: '11px', color: '#7c5a2b', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>
                 Klassentalent
               </div>
               <p style={{ fontSize: '10px', color: 'var(--inkm)', margin: '0 0 4px 0', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, maxWidth: '280px' }}>
