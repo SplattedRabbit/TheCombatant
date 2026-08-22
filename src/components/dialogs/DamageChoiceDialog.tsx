@@ -15,9 +15,9 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
   options = {},
   onClose
 }) => {
-  const [smiteActive, setSmiteActive] = useState<boolean>(!!pc.isSmiteActive);
-  const [favoredEnemyActive, setFavoredEnemyActive] = useState<boolean>(!!pc.isFavoredEnemyActive);
-  const [sneakActive, setSneakActive] = useState<boolean>(!!pc.isSneakAttacking);
+  const [smiteActive, setSmiteActive] = useState<boolean>(options.smite !== undefined ? !!options.smite : !!pc.isSmiteActive);
+  const [favoredEnemyActive, setFavoredEnemyActive] = useState<boolean>(options.favoredEnemy !== undefined ? !!options.favoredEnemy : !!pc.isFavoredEnemyActive);
+  const [sneakActive, setSneakActive] = useState<boolean>(options.sneakAttack !== undefined ? !!options.sneakAttack : !!pc.isSneakAttacking);
 
   const hasPaladin = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'paladin');
   const paladinClass = hasPaladin ? pc.classes.find((c: any) => c.classType === 'paladin') : null;

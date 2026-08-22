@@ -233,12 +233,15 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
 
     // 1. Paladin (Smite Evil / Charging Smite ACF)
     if (paladinLvl > 0 || !!smiteAbility) {
-      const isSmiteActive = !!pc.isSmiteActive;
+      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
       const smiteTitle = hasChargingSmite ? 'Charging Smite' : 'Smite Evil';
-      const smiteDmgText = hasChargingSmite ? `+${paladinLvl * 2} (Charge)` : `+${paladinLvl}`;
+      const smiteSeq = AttackEngine.calculateAttackSequence(pc, w, false, { smite: true, noSneak: true });
+      const stdSmite = smiteSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w8' };
+      const smiteDmgText = hasChargingSmite ? `+${paladinLvl * 2}` : `+${paladinLvl}`;
+
       return (
         <div
-          className={`arpg-slot class-ability-slot ${isSmiteActive ? 'rarity-epic' : ''}`}
+          className="arpg-slot class-ability-slot rarity-epic"
           style={{
             position: 'relative',
             flex: 1,
@@ -247,12 +250,12 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             alignItems: 'center',
             justifyContent: 'space-between',
             minHeight: '88px',
-            border: isSmiteActive ? '1px solid #ff4444' : '0.5px solid var(--pb)',
+            border: '1px solid var(--red)',
             borderRadius: '4px',
             padding: '5px 6px',
             textAlign: 'center',
-            background: isSmiteActive ? 'rgba(139, 26, 26, 0.12)' : 'rgba(200, 169, 110, 0.04)',
-            boxShadow: isSmiteActive ? '0 0 8px rgba(255, 50, 50, 0.25)' : 'none'
+            background: 'rgba(139, 26, 26, 0.08)',
+            boxShadow: '0 0 8px rgba(139, 26, 26, 0.2)'
           }}
         >
           <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
@@ -266,7 +269,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
           </div>
 
           {/* Charge Bubbles */}
-          <div style={{ display: 'flex', gap: '2px', margin: '2px 0' }}>
+          <div style={{ display: 'flex', gap: '2px', margin: '1px 0' }}>
             {Array.from({ length: Math.min(6, smiteMax) }).map((_, i) => (
               <span
                 key={i}
@@ -278,38 +281,44 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
                   border: '1px solid var(--red)',
                   background: i < smiteUsed ? 'var(--red)' : 'transparent'
                 }}
+                title={i < smiteUsed ? 'Expended' : 'Ready'}
               />
             ))}
           </div>
 
-          <button
-            className={`xbtn ${isSmiteActive ? 'xbtn-dmg' : ''}`}
-            onClick={() => CombatState.updatePCField('isSmiteActive', !isSmiteActive)}
-            style={{
-              padding: '1px 4px',
-              fontSize: '6.5px',
-              fontWeight: 'bold',
-              width: '100%',
-              height: '16px',
-              lineHeight: 1,
-              borderColor: 'var(--red)',
-              color: isSmiteActive ? '#fff' : 'var(--red)',
-              background: isSmiteActive ? 'var(--red)' : 'rgba(139, 26, 26, 0.08)',
-              cursor: 'pointer'
-            }}
-          >
-            {isSmiteActive ? '🌟 SMITE ON' : '🌟 SMITE OFF'}
-          </button>
+          {/* Action Attack & Damage Buttons */}
+          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+            <button
+              className="xbtn xbtn-atk"
+              onClick={(e) => handleRollAttack(w, false, e, { smite: true })}
+              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+              title={`Roll Smite Attack (${formatMod(stdSmite.atkTotal)})`}
+            >
+              ATK {formatMod(stdSmite.atkTotal)}
+            </button>
+            <button
+              className="xbtn xbtn-dmg"
+              onClick={(e) => handleRollDamage(w, false, e, { smite: true })}
+              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+              title={`Roll Smite Damage (${stdSmite.damageDice} ${formatMod(stdSmite.dmgTotal)})`}
+            >
+              DMG {formatMod(stdSmite.dmgTotal)}
+            </button>
+          </div>
         </div>
       );
     }
 
     // 2. Sneak Attack Classes (Rogue, Assassin, Arcane Trickster, Mountebank)
     if (sneakAttackDice > 0) {
-      const isSneakActive = !!pc.isSneakAttacking;
+      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+      const sneakSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, noSmite: true });
+      const stdSneak = sneakSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
+      const baseDmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : (w.damage || '1w6');
+
       return (
         <div
-          className={`arpg-slot class-ability-slot ${isSneakActive ? 'rarity-rare' : ''}`}
+          className="arpg-slot class-ability-slot rarity-rare"
           style={{
             position: 'relative',
             flex: 1,
@@ -318,12 +327,12 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             alignItems: 'center',
             justifyContent: 'space-between',
             minHeight: '88px',
-            border: isSneakActive ? '1px solid #27ae60' : '0.5px solid var(--pb)',
+            border: '1px solid #27ae60',
             borderRadius: '4px',
             padding: '5px 6px',
             textAlign: 'center',
-            background: isSneakActive ? 'rgba(39, 174, 96, 0.12)' : 'rgba(200, 169, 110, 0.04)',
-            boxShadow: isSneakActive ? '0 0 8px rgba(39, 174, 96, 0.25)' : 'none'
+            background: 'rgba(39, 174, 96, 0.08)',
+            boxShadow: '0 0 8px rgba(39, 174, 96, 0.2)'
           }}
         >
           <div style={{ fontSize: '6.5px', color: '#1e824c', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
@@ -333,37 +342,41 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             Sneak Attack
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{sneakAttackDice}d6 Damage (Flank)
+            +{sneakAttackDice}d6 (Flank / Denied Dex)
           </div>
 
-          <div style={{ fontSize: '6.5px', color: '#27ae60', fontStyle: 'italic' }}>
-            {isSneakActive ? '✓ Added to damage roll' : 'Target denied Dex'}
+          <div style={{ fontSize: '6.5px', color: '#1e824c', fontStyle: 'italic' }}>
+            Precision Strike
           </div>
 
-          <button
-            className={`xbtn ${isSneakActive ? 'xbtn-heal' : ''}`}
-            onClick={() => CombatState.updatePCField('isSneakAttacking', !isSneakActive)}
-            style={{
-              padding: '1px 4px',
-              fontSize: '6.5px',
-              fontWeight: 'bold',
-              width: '100%',
-              height: '16px',
-              lineHeight: 1,
-              borderColor: '#27ae60',
-              color: isSneakActive ? '#fff' : '#1e824c',
-              background: isSneakActive ? '#27ae60' : 'rgba(39, 174, 96, 0.08)',
-              cursor: 'pointer'
-            }}
-          >
-            {isSneakActive ? '🗡️ SNEAK ON' : '🗡️ SNEAK OFF'}
-          </button>
+          {/* Action Attack & Damage Buttons */}
+          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+            <button
+              className="xbtn xbtn-atk"
+              onClick={(e) => handleRollAttack(w, false, e, { sneakAttack: true })}
+              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+              title={`Roll Sneak Attack (${formatMod(stdSneak.atkTotal)})`}
+            >
+              ATK {formatMod(stdSneak.atkTotal)}
+            </button>
+            <button
+              className="xbtn"
+              onClick={(e) => handleRollDamage(w, false, e, { sneakAttack: true })}
+              style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1, borderColor: '#27ae60', color: '#1e824c', background: 'rgba(39, 174, 96, 0.12)' }}
+              title={`Roll Sneak Damage (${baseDmgDice}+${sneakAttackDice}d6 ${formatMod(stdSneak.dmgTotal)})`}
+            >
+              DMG +{sneakAttackDice}d6
+            </button>
+          </div>
         </div>
       );
     }
 
     // 3. Duskblade (Arcane Channeling)
     if (duskbladeClass) {
+      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+      const duskSeq = AttackEngine.calculateAttackSequence(pc, w, false, {});
+      const stdDusk = duskSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
       return (
         <div
           className="arpg-slot class-ability-slot"
@@ -389,18 +402,24 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             Arcane Channeling
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            Channel touch spell via melee strike
+            Channel spell through strike
           </div>
-          <div style={{ fontSize: '6.5px', color: '#8e44ad', fontStyle: 'italic' }}>
-            Standard Action (Lvl 3+)
+          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+            <button
+              className="xbtn xbtn-atk"
+              onClick={(e) => handleRollAttack(w, false, e, { arcaneChanneling: true })}
+              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+            >
+              ATK {formatMod(stdDusk.atkTotal)}
+            </button>
+            <button
+              className="xbtn"
+              onClick={(e) => handleRollDamage(w, false, e, { arcaneChanneling: true })}
+              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1, borderColor: '#8e44ad', color: '#8e44ad' }}
+            >
+              DMG+Spell
+            </button>
           </div>
-          <button
-            className="xbtn"
-            onClick={() => showCustomAlert("Arcane Channeling", "At 3rd level, a duskblade can cast any touch spell and deliver it through a melee weapon with a standard attack.", "Understood", "⚡")}
-            style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: '#8e44ad', color: '#8e44ad', cursor: 'pointer' }}
-          >
-            ⚡ CHANNEL INFO
-          </button>
         </div>
       );
     }
@@ -410,6 +429,10 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
       const skirmishLvl = scoutClass.level;
       const skirmishDice = 1 + Math.floor((skirmishLvl - 1) / 4);
       const skirmishAC = 1 + Math.floor((skirmishLvl - 1) / 4);
+      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+      const skirSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, skirmish: true });
+      const stdSkir = skirSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
+
       return (
         <div
           className="arpg-slot class-ability-slot"
@@ -435,18 +458,24 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             Skirmish Attack
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{skirmishDice}d6 Dmg / +{skirmishAC} AC
+            +{skirmishDice}d6 Dmg / +{skirmishAC} AC (10ft+)
           </div>
-          <div style={{ fontSize: '6.5px', color: '#b7950b', fontStyle: 'italic' }}>
-            When moved $\ge$ 10 ft
+          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+            <button
+              className="xbtn xbtn-atk"
+              onClick={(e) => handleRollAttack(w, false, e, { sneakAttack: true, skirmish: true })}
+              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+            >
+              ATK {formatMod(stdSkir.atkTotal)}
+            </button>
+            <button
+              className="xbtn"
+              onClick={(e) => handleRollDamage(w, false, e, { sneakAttack: true, skirmish: true })}
+              style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1, borderColor: '#d4ac0d', color: '#b7950b' }}
+            >
+              DMG +{skirmishDice}d6
+            </button>
           </div>
-          <button
-            className="xbtn"
-            onClick={() => CombatState.updatePCField('isSneakAttacking', !pc.isSneakAttacking)}
-            style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: '#d4ac0d', color: '#b7950b', cursor: 'pointer' }}
-          >
-            {pc.isSneakAttacking ? '🏃 SKIRMISH ON' : '🏃 SKIRMISH OFF'}
-          </button>
         </div>
       );
     }
@@ -454,6 +483,10 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
     // 5. Ninja (Sudden Strike)
     if (ninjaClass) {
       const ninjaDice = 1 + Math.floor((ninjaClass.level - 1) / 2);
+      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+      const sudSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, suddenStrike: true });
+      const stdSud = sudSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
+
       return (
         <div
           className="arpg-slot class-ability-slot"
@@ -479,15 +512,24 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             Sudden Strike
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{ninjaDice}d6 (Target denied Dex)
+            +{ninjaDice}d6 (Denied Dex)
           </div>
-          <button
-            className="xbtn"
-            onClick={() => CombatState.updatePCField('isSneakAttacking', !pc.isSneakAttacking)}
-            style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: '#34495e', color: '#2c3e50', cursor: 'pointer' }}
-          >
-            {pc.isSneakAttacking ? '🥷 STRIKE ON' : '🥷 STRIKE OFF'}
-          </button>
+          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+            <button
+              className="xbtn xbtn-atk"
+              onClick={(e) => handleRollAttack(w, false, e, { sneakAttack: true, suddenStrike: true })}
+              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+            >
+              ATK {formatMod(stdSud.atkTotal)}
+            </button>
+            <button
+              className="xbtn"
+              onClick={(e) => handleRollDamage(w, false, e, { sneakAttack: true, suddenStrike: true })}
+              style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1, borderColor: '#34495e', color: '#2c3e50' }}
+            >
+              DMG +{ninjaDice}d6
+            </button>
+          </div>
         </div>
       );
     }
@@ -546,6 +588,10 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
 
     // 7. Ranger (Favored Enemy / Distracting Attack ACF)
     if (rangerLvl > 0 || favoredEnemyBonus > 0) {
+      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+      const feSeq = AttackEngine.calculateAttackSequence(pc, w, false, { favoredEnemy: true });
+      const stdFE = feSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w8' };
+
       return (
         <div
           className="arpg-slot class-ability-slot"
@@ -557,11 +603,11 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             alignItems: 'center',
             justifyContent: 'space-between',
             minHeight: '88px',
-            border: pc.isFavoredEnemyActive ? '1px solid #2a6a8a' : '0.5px solid var(--pb)',
+            border: '1px solid #2a6a8a',
             borderRadius: '4px',
             padding: '5px 6px',
             textAlign: 'center',
-            background: pc.isFavoredEnemyActive ? 'rgba(42, 106, 138, 0.12)' : 'rgba(200, 169, 110, 0.04)'
+            background: 'rgba(42, 106, 138, 0.08)'
           }}
         >
           <div style={{ fontSize: '6.5px', color: '#2a6a8a', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
@@ -571,15 +617,24 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             Favored Enemy
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{favoredEnemyBonus} Damage {hasDistractingAttack ? '(Flanks)' : 'Bonus'}
+            +{favoredEnemyBonus} Damage {hasDistractingAttack ? '(Flanks)' : `vs ${pc.favoredEnemy || 'Enemy'}`}
           </div>
-          <button
-            className="xbtn"
-            onClick={() => CombatState.updatePCField('isFavoredEnemyActive', !pc.isFavoredEnemyActive)}
-            style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: '#2a6a8a', color: pc.isFavoredEnemyActive ? '#fff' : '#2a6a8a', background: pc.isFavoredEnemyActive ? '#2a6a8a' : 'transparent', cursor: 'pointer' }}
-          >
-            {pc.isFavoredEnemyActive ? '🏹 FE ACTIVE' : '🏹 FE OFF'}
-          </button>
+          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+            <button
+              className="xbtn xbtn-atk"
+              onClick={(e) => handleRollAttack(w, false, e, { favoredEnemy: true })}
+              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+            >
+              ATK {formatMod(stdFE.atkTotal)}
+            </button>
+            <button
+              className="xbtn"
+              onClick={(e) => handleRollDamage(w, false, e, { favoredEnemy: true })}
+              style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1, borderColor: '#2a6a8a', color: '#2a6a8a', background: 'rgba(42, 106, 138, 0.12)' }}
+            >
+              DMG +{favoredEnemyBonus}
+            </button>
+          </div>
         </div>
       );
     }

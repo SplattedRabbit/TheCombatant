@@ -16,9 +16,17 @@ import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface ClassCombatAbilitiesCardProps {
   pc: any;
+  mainHandWeapon?: any;
+  handleRollAttack?: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
+  handleRollDamage?: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
 }
 
-export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> = ({ pc }) => {
+export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> = ({
+  pc,
+  mainHandWeapon,
+  handleRollAttack,
+  handleRollDamage
+}) => {
   const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
   const paladinClass = activeClasses.find((c: any) => c.classType === 'paladin');
   const paladinLvl = paladinClass ? paladinClass.level : 0;
@@ -108,19 +116,6 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
     hasTrickyFighting ||
     (dragonDiscipleLvl >= 3);
 
-  const handleSmiteToggle = (checked: boolean) => {
-    if (checked && smiteRemaining <= 0) {
-      showCustomAlert(
-        "No Smite Evil Uses Left",
-        "You have expended all daily uses of Smite Evil for today.",
-        "Understood",
-        "⚠️"
-      );
-      return;
-    }
-    CombatState.updatePCField('isSmiteActive', checked);
-  };
-
   const handleSmiteBubbleClick = (idx: number, e: React.MouseEvent) => {
     e.stopPropagation();
     const activePC = CombatState.getActivePC();
@@ -162,22 +157,22 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
     return (
       <BaseCard title="🌟 Class Combat Abilities">
         <div style={{ padding: '8px', textAlign: 'center', color: 'var(--inkl)', fontStyle: 'italic', fontSize: '8px', fontFamily: "'Crimson Text', serif" }}>
-          No specific class combat toggles available for current classes.
+          No specific class combat strikes available for current classes.
         </div>
       </BaseCard>
     );
   }
 
   return (
-    <BaseCard title="🌟 Class Combat Abilities">
+    <BaseCard title="🌟 Class Combat Abilities &amp; Strikes">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
 
         {/* Smite Evil */}
         {(paladinLvl > 0 || !!smiteAbility) && (
           <div
             style={{
-              background: pc.isSmiteActive ? 'rgba(139, 26, 26, 0.1)' : 'rgba(200, 169, 110, 0.05)',
-              border: `1px solid ${pc.isSmiteActive ? 'var(--red)' : 'var(--pb)'}`,
+              background: 'rgba(139, 26, 26, 0.06)',
+              border: '1px solid var(--red)',
               borderRadius: '3px',
               padding: '5px 8px',
               display: 'flex',
@@ -186,27 +181,9 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <label
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  cursor: 'pointer',
-                  color: 'var(--red)',
-                  margin: 0,
-                  fontWeight: 'bold',
-                  fontSize: '8.5px',
-                  fontFamily: "'IM Fell English SC', serif"
-                }}
-              >
-                <input
-                  type="checkbox"
-                  checked={!!pc.isSmiteActive}
-                  onChange={(e) => handleSmiteToggle(e.target.checked)}
-                  style={{ margin: 0, width: '12px', height: '12px', cursor: 'pointer' }}
-                />
+              <div style={{ color: 'var(--red)', fontWeight: 'bold', fontSize: '8.5px', fontFamily: "'IM Fell English SC', serif" }}>
                 🌟 Smite Evil (+{smiteAtkBonus} Atk / +{smiteDmgBonus} Dmg)
-              </label>
+              </div>
 
               {/* Charge Bubbles */}
               {smiteMax > 0 && (
@@ -239,10 +216,32 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
               )}
             </div>
 
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", display: 'flex', justifyContent: 'space-between' }}>
-              <span>⚔️ Automatically consumes 1 charge on melee attack roll.</span>
-              <span style={{ fontStyle: 'italic' }}>Only affects Evil targets (RAW).</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px' }}>
+              <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+                Auto-consumes 1 charge. Evil targets only (RAW).
+              </div>
+              {handleRollAttack && handleRollDamage && (
+                <div style={{ display: 'flex', gap: '4px' }}>
+                  <button
+                    className="xbtn xbtn-atk"
+                    onClick={(e) => handleRollAttack(mainHandWeapon, false, e, { smite: true })}
+                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold' }}
+                    title="Roll Attack with Smite Evil"
+                  >
+                    ⚔️ Smite Atk (+{smiteAtkBonus})
+                  </button>
+                  <button
+                    className="xbtn xbtn-dmg"
+                    onClick={(e) => handleRollDamage(mainHandWeapon, false, e, { smite: true })}
+                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold' }}
+                    title="Roll Damage with Smite Evil"
+                  >
+                    💥 Smite Dmg (+{smiteDmgBonus})
+                  </button>
+                </div>
+              )}
             </div>
+
             {hasChargingSmite && (
               <div style={{ fontSize: '7px', color: '#b7950b', fontStyle: 'italic', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '2px' }}>
                 ⚡ ACF: Charging Smite (+{smiteDmgBonus * 2} Dmg on charge, miss refunds charge attempt).
@@ -255,8 +254,8 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
         {sneakAttackDice > 0 && (
           <div
             style={{
-              background: pc.isSneakAttacking ? 'rgba(39, 174, 96, 0.08)' : 'rgba(200, 169, 110, 0.05)',
-              border: `1px solid ${pc.isSneakAttacking ? '#27ae60' : 'var(--pb)'}`,
+              background: 'rgba(39, 174, 96, 0.06)',
+              border: '1px solid #27ae60',
               borderRadius: '3px',
               padding: '5px 8px',
               display: 'flex',
@@ -265,41 +264,30 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <label
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  cursor: 'pointer',
-                  color: pc.isSneakAttacking ? '#1e824c' : 'var(--ink)',
-                  margin: 0,
-                  fontWeight: 'bold',
-                  fontSize: '8.5px',
-                  fontFamily: "'IM Fell English SC', serif"
-                }}
-              >
-                <input
-                  type="checkbox"
-                  checked={!!pc.isSneakAttacking}
-                  onChange={(e) => CombatState.updatePCField('isSneakAttacking', e.target.checked)}
-                  style={{ margin: 0, width: '12px', height: '12px', cursor: 'pointer' }}
-                />
+              <div style={{ color: '#1e824c', fontWeight: 'bold', fontSize: '8.5px', fontFamily: "'IM Fell English SC', serif" }}>
                 🗡️ Sneak Attack (+{sneakAttackDice}d6 Damage)
-              </label>
+              </div>
 
-              <span
-                style={{
-                  background: pc.isSneakAttacking ? '#27ae60' : 'rgba(0,0,0,0.06)',
-                  color: pc.isSneakAttacking ? '#fff' : 'var(--inkm)',
-                  fontSize: '7.5px',
-                  fontWeight: 'bold',
-                  padding: '1px 5px',
-                  borderRadius: '2px',
-                  fontFamily: 'monospace'
-                }}
-              >
-                +{sneakAttackDice}w6
-              </span>
+              {handleRollAttack && handleRollDamage && (
+                <div style={{ display: 'flex', gap: '4px' }}>
+                  <button
+                    className="xbtn xbtn-atk"
+                    onClick={(e) => handleRollAttack(mainHandWeapon, false, e, { sneakAttack: true })}
+                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold' }}
+                    title="Roll Attack with Sneak Attack"
+                  >
+                    ⚔️ Sneak Atk
+                  </button>
+                  <button
+                    className="xbtn"
+                    onClick={(e) => handleRollDamage(mainHandWeapon, false, e, { sneakAttack: true })}
+                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold', borderColor: '#27ae60', color: '#1e824c', background: 'rgba(39, 174, 96, 0.12)' }}
+                    title="Roll Damage with Sneak Attack"
+                  >
+                    💥 Sneak Dmg (+{sneakAttackDice}d6)
+                  </button>
+                </div>
+              )}
             </div>
             {hasDisruptiveAttack && (
               <div style={{ fontSize: '7px', color: '#b7950b', fontStyle: 'italic', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '2px' }}>
@@ -313,8 +301,8 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
         {(rangerLvl > 0 || favoredEnemyBonus > 0) && (
           <div
             style={{
-              background: pc.isFavoredEnemyActive ? 'rgba(42, 106, 138, 0.08)' : 'rgba(200, 169, 110, 0.05)',
-              border: `1px solid ${pc.isFavoredEnemyActive ? '#2a6a8a' : 'var(--pb)'}`,
+              background: 'rgba(42, 106, 138, 0.06)',
+              border: '1px solid #2a6a8a',
               borderRadius: '3px',
               padding: '5px 8px',
               display: 'flex',
@@ -323,41 +311,30 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <label
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  cursor: 'pointer',
-                  color: pc.isFavoredEnemyActive ? '#2a6a8a' : 'var(--ink)',
-                  margin: 0,
-                  fontWeight: 'bold',
-                  fontSize: '8.5px',
-                  fontFamily: "'IM Fell English SC', serif"
-                }}
-              >
-                <input
-                  type="checkbox"
-                  checked={!!pc.isFavoredEnemyActive}
-                  onChange={(e) => CombatState.updatePCField('isFavoredEnemyActive', e.target.checked)}
-                  style={{ margin: 0, width: '12px', height: '12px', cursor: 'pointer' }}
-                />
-                🏹 Favored Enemy (+{favoredEnemyBonus} Damage)
-              </label>
+              <div style={{ color: '#2a6a8a', fontWeight: 'bold', fontSize: '8.5px', fontFamily: "'IM Fell English SC', serif" }}>
+                🏹 Favored Enemy (+{favoredEnemyBonus} Damage vs {pc.favoredEnemy || 'Enemy'})
+              </div>
 
-              <span
-                style={{
-                  background: pc.isFavoredEnemyActive ? '#2a6a8a' : 'rgba(0,0,0,0.06)',
-                  color: pc.isFavoredEnemyActive ? '#fff' : 'var(--inkm)',
-                  fontSize: '7.5px',
-                  fontWeight: 'bold',
-                  padding: '1px 5px',
-                  borderRadius: '2px',
-                  fontFamily: 'monospace'
-                }}
-              >
-                +{favoredEnemyBonus} DMG
-              </span>
+              {handleRollAttack && handleRollDamage && (
+                <div style={{ display: 'flex', gap: '4px' }}>
+                  <button
+                    className="xbtn xbtn-atk"
+                    onClick={(e) => handleRollAttack(mainHandWeapon, false, e, { favoredEnemy: true })}
+                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold' }}
+                    title="Roll Attack vs Favored Enemy"
+                  >
+                    ⚔️ FE Atk
+                  </button>
+                  <button
+                    className="xbtn"
+                    onClick={(e) => handleRollDamage(mainHandWeapon, false, e, { favoredEnemy: true })}
+                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold', borderColor: '#2a6a8a', color: '#2a6a8a', background: 'rgba(42, 106, 138, 0.12)' }}
+                    title="Roll Damage vs Favored Enemy"
+                  >
+                    💥 FE Dmg (+{favoredEnemyBonus})
+                  </button>
+                </div>
+              )}
             </div>
             {hasDistractingAttack && (
               <div style={{ fontSize: '7px', color: '#b7950b', fontStyle: 'italic', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '2px' }}>
