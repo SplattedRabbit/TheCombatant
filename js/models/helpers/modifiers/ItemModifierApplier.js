@@ -9,12 +9,13 @@
  */
 
 import { Stat } from '../../Stat.js';
+import { getDefaultBonusType } from '../../Item.js';
 
 export function applyItemModifiers(pc) {
-  if (!Array.isArray(pc.items)) return;
+  if (!pc || !Array.isArray(pc.items)) return;
 
   pc.items.forEach(item => {
-    if (!item.isEquipped) return;
+    if (!item || !item.isEquipped) return;
 
     const effects = Array.isArray(item.effects) ? item.effects : [];
     effects.forEach(eff => {
@@ -22,52 +23,56 @@ export function applyItemModifiers(pc) {
       if (val === 0) return;
 
       const sourceName = item.name || "Magischer Gegenstand";
-      const type = eff.type;
-      const target = eff.target;
+      const type = eff.type || 'attribute';
+      const target = eff.target || 'str';
+      const bType = eff.bonusType || getDefaultBonusType(type, target);
 
       if (type === 'attribute') {
         const stat = pc[target];
         if (stat instanceof Stat) {
-          stat.addModifier(val, "enhancement", sourceName);
+          stat.addModifier(val, bType, sourceName);
           stat.modifiers[stat.modifiers.length - 1].isItem = true;
         }
       } 
       else if (type === 'save') {
         if (target === 'fort' || target === 'all') {
-          pc.za.addModifier(val, "resistance", sourceName);
-          pc.za.modifiers[pc.za.modifiers.length - 1].isItem = true;
+          if (pc.za instanceof Stat) {
+            pc.za.addModifier(val, bType, sourceName);
+            pc.za.modifiers[pc.za.modifiers.length - 1].isItem = true;
+          }
         }
         if (target === 'ref' || target === 'all') {
-          pc.ref.addModifier(val, "resistance", sourceName);
-          pc.ref.modifiers[pc.ref.modifiers.length - 1].isItem = true;
+          if (pc.ref instanceof Stat) {
+            pc.ref.addModifier(val, bType, sourceName);
+            pc.ref.modifiers[pc.ref.modifiers.length - 1].isItem = true;
+          }
         }
         if (target === 'wil' || target === 'all') {
-          pc.wil.addModifier(val, "resistance", sourceName);
-          pc.wil.modifiers[pc.wil.modifiers.length - 1].isItem = true;
+          if (pc.wil instanceof Stat) {
+            pc.wil.addModifier(val, bType, sourceName);
+            pc.wil.modifiers[pc.wil.modifiers.length - 1].isItem = true;
+          }
         }
       } 
       else if (type === 'ac') {
         if (pc.autoAC) {
           if (target === 'deflection') {
-            pc.ac.addModifier(val, "deflection", sourceName);
-            pc.ac.modifiers[pc.ac.modifiers.length - 1].isItem = true;
-            pc.acTouch.addModifier(val, "deflection", sourceName);
-            pc.acTouch.modifiers[pc.acTouch.modifiers.length - 1].isItem = true;
-            pc.acFlat.addModifier(val, "deflection", sourceName);
-            pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isItem = true;
+            if (pc.ac instanceof Stat) { pc.ac.addModifier(val, bType, sourceName); pc.ac.modifiers[pc.ac.modifiers.length - 1].isItem = true; }
+            if (pc.acTouch instanceof Stat) { pc.acTouch.addModifier(val, bType, sourceName); pc.acTouch.modifiers[pc.acTouch.modifiers.length - 1].isItem = true; }
+            if (pc.acFlat instanceof Stat) { pc.acFlat.addModifier(val, bType, sourceName); pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isItem = true; }
           } else if (target === 'natural') {
-            pc.ac.addModifier(val, "natural", sourceName);
-            pc.ac.modifiers[pc.ac.modifiers.length - 1].isItem = true;
-            pc.acFlat.addModifier(val, "natural", sourceName);
-            pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isItem = true;
-          } else if (target === 'armor') {
-            pc.ac.addModifier(val, "armor", sourceName);
-            pc.ac.modifiers[pc.ac.modifiers.length - 1].isItem = true;
-            pc.acFlat.addModifier(val, "armor", sourceName);
-            pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isItem = true;
+            if (pc.ac instanceof Stat) { pc.ac.addModifier(val, bType, sourceName); pc.ac.modifiers[pc.ac.modifiers.length - 1].isItem = true; }
+            if (pc.acFlat instanceof Stat) { pc.acFlat.addModifier(val, bType, sourceName); pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isItem = true; }
+          } else if (target === 'armor' || target === 'shield') {
+            if (pc.ac instanceof Stat) { pc.ac.addModifier(val, bType, sourceName); pc.ac.modifiers[pc.ac.modifiers.length - 1].isItem = true; }
+            if (pc.acFlat instanceof Stat) { pc.acFlat.addModifier(val, bType, sourceName); pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isItem = true; }
+          } else if (target === 'dodge') {
+            if (pc.ac instanceof Stat) { pc.ac.addModifier(val, 'dodge', sourceName); pc.ac.modifiers[pc.ac.modifiers.length - 1].isItem = true; }
+            if (pc.acTouch instanceof Stat) { pc.acTouch.addModifier(val, 'dodge', sourceName); pc.acTouch.modifiers[pc.acTouch.modifiers.length - 1].isItem = true; }
           }
         }
       }
     });
   });
 }
+

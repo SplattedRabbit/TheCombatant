@@ -40,7 +40,13 @@ export {
   togglePCItemEquip,
   addPCItemEffect,
   deletePCItemEffect,
-  updatePCItemEffect
+  updatePCItemEffect,
+  equipPCItem,
+  unequipPCItem,
+  swapPCItem,
+  usePCItemCharge,
+  usePCItemAction,
+  addPCItemFromCompendium
 } from './pc/PCEquipment.js';
 
 export {
@@ -57,5 +63,7 @@ export {
   savePCSpellTemplate,
   deletePCSpellTemplate,
   applyPCSpellTemplate,
-  clearPreparedSpells
+  clearPreparedSpells,
+  consumeSmiteEvilCharge,
+  togglePCRage
 } from './pc/PCFeatsSpells.js';

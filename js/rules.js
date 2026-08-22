@@ -60,6 +60,13 @@ import {
   PRESTIGE_CLASSES_REGISTRY
 } from './data/prestigeClasses-data.js';
 
+import {
+  calculateEquippedItemEffects,
+  getItemStackingBreakdown,
+  getAvailableEquipmentBuffs,
+  calculateItemSetBonuses
+} from './rules/RulesItems.js';
+
 export const CombatRules = {
   CONDITIONS,
   CLASSES,
@@ -90,8 +97,19 @@ export const CombatRules = {
   isOnlySpecialTextUnmet,
   getPrestigeClassFeatures,
   getSneakAttackDiceFromPrestigeClasses,
+  calculateEquippedItemEffects,
+  getItemStackingBreakdown,
+  getAvailableEquipmentBuffs,
+  calculateItemSetBonuses,
   PRESTIGE_CLASSES_REGISTRY
 };
+
+export {
+  calculateEquippedItemEffects,
+  getItemStackingBreakdown,
+  getAvailableEquipmentBuffs,
+  calculateItemSetBonuses
+} from './rules/RulesItems.js';
 
 export {
   getAllCompendiumSpells,
@@ -117,4 +135,5 @@ export {
 export {
   PRESTIGE_CLASSES_REGISTRY
 } from './data/prestigeClasses-data.js';
+
 

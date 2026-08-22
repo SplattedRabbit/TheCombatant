@@ -71,7 +71,15 @@ import {
   togglePCItemEquip,
   addPCItemEffect,
   deletePCItemEffect,
-  updatePCItemEffect
+  updatePCItemEffect,
+  equipPCItem,
+  unequipPCItem,
+  swapPCItem,
+  usePCItemCharge,
+  usePCItemAction,
+  addPCItemFromCompendium,
+  consumeSmiteEvilCharge,
+  togglePCRage
 } from './state/PCManager.js';
 
 import {
@@ -156,6 +164,12 @@ export {
   addPCItemEffect,
   deletePCItemEffect,
   updatePCItemEffect,
+  equipPCItem,
+  unequipPCItem,
+  swapPCItem,
+  usePCItemCharge,
+  usePCItemAction,
+  addPCItemFromCompendium,
   
   updateMeta,
   addCombatant,
@@ -233,6 +247,14 @@ export const CombatState = {
   addPCItemEffect,
   deletePCItemEffect,
   updatePCItemEffect,
+  equipPCItem,
+  unequipPCItem,
+  swapPCItem,
+  usePCItemCharge,
+  usePCItemAction,
+  addPCItemFromCompendium,
+  consumeSmiteEvilCharge,
+  togglePCRage,
   updateMeta,
   addCombatant,
   removeCombatant,

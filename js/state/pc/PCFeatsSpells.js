@@ -62,6 +62,45 @@ export function updatePCDailyAbilityUsed(idx, diff) {
   }
 }
 
+export function consumeSmiteEvilCharge() {
+  const pc = getActivePC();
+  if (pc && Array.isArray(pc.dailyAbilities)) {
+    const smiteAbility = pc.dailyAbilities.find(a => a.name === "Böses niederstrecken" || a.name === "Smite Evil");
+    if (smiteAbility) {
+      if (smiteAbility.used < smiteAbility.max) {
+        smiteAbility.used += 1;
+        saveToStorage();
+        syncPCToHost();
+        return { success: true, remaining: smiteAbility.max - smiteAbility.used };
+      } else {
+        return { success: false, remaining: 0 };
+      }
+    }
+  }
+  return { success: true, remaining: 99 };
+}
+
+export function togglePCRage(forceState) {
+  const pc = getActivePC();
+  if (!pc) return { success: false };
+  const shouldRage = forceState !== undefined ? forceState : !pc.isRaging;
+  if (shouldRage) {
+    const ability = pc.dailyAbilities?.find(a => a.name === "Kampfrausch (Rage)");
+    if (ability && ability.used >= ability.max) {
+      return { success: false, message: 'No rage uses remaining today.' };
+    }
+    if (ability) {
+      ability.used = Math.min(ability.max, ability.used + 1);
+    }
+    pc.enterRage();
+  } else {
+    pc.exitRage();
+  }
+  saveToStorage();
+  syncPCToHost();
+  return { success: true, isRaging: pc.isRaging };
+}
+
 export function resetDailyResources() {
   const pc = getActivePC();
   if (pc) {

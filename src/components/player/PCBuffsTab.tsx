@@ -17,6 +17,8 @@ import { CLASS_BUFFS } from '@core/data/class-buffs-data.js';
 // @ts-ignore
 import { activateBuffByKey, isBuffEligible, isBuffSuppressed, checkBuffConflict } from '@core/rules/BuffRules.js';
 // @ts-ignore
+import { getAvailableEquipmentBuffs } from '@core/rules.js';
+// @ts-ignore
 import { showCustomConfirm, showCustomAlert, showCustomPrompt } from '@core/ui/components/dialogs.js';
 // @ts-ignore
 import { uiRegistry } from '@core/ui/ui-shared.js';
@@ -110,6 +112,37 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
         freshPc.quickBuffs = freshPc.quickBuffs.filter((b: any) => b.key !== key);
       }
     });
+  };
+
+  const handleEquipmentBuffClick = (eb: any) => {
+    const isCurrentlyActive = activeBuffs.some((b: any) => b.spellKey === eb.buffKey);
+    if (isCurrentlyActive) {
+      CombatState.updatePCBatch((freshPc: any) => {
+        if (Array.isArray(freshPc.activeBuffs)) {
+          freshPc.activeBuffs = freshPc.activeBuffs.filter((b: any) => b.spellKey !== eb.buffKey);
+        }
+      });
+    } else {
+      if (eb.availableUses <= 0) {
+        showCustomAlert("No Uses Remaining", `You have no charges or daily uses remaining on ${eb.itemName}.`, "Got it", "⚠️");
+        return;
+      }
+      activateBuffByKey(pc, eb.buffKey, false, {
+        showCustomConfirm,
+        showCustomAlert,
+        showCustomPrompt: (title: string, msg: string, defaultValue: string, onConfirm: (val: string) => void) => {
+          showCustomPrompt(title, msg, defaultValue, "OK", onConfirm);
+        },
+        renderPlayerScreen: () => {
+          if (uiRegistry && typeof uiRegistry.renderPlayerScreen === 'function') {
+            uiRegistry.renderPlayerScreen();
+          }
+        }
+      });
+      if (eb.costType === 'charges' || eb.costType === 'daily') {
+        CombatState.usePCItemCharge(eb.itemIdx, eb.cost || 1);
+      }
+    }
   };
 
   // Search Results calculation
@@ -349,6 +382,64 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
           )}
         </div>
       </div>
+
+      {/* Equipped Magic Items Quick Buffs */}
+      {(() => {
+        const equipmentBuffs = getAvailableEquipmentBuffs(pc);
+        if (!equipmentBuffs || equipmentBuffs.length === 0) return null;
+
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
+              ⚡ Equipped Magic Items (Quick Buffs)
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3px' }}>
+              {equipmentBuffs.map((eb: any) => {
+                const isActive = activeBuffs.some((b: any) => b.spellKey === eb.buffKey);
+                const usesLabel = eb.charges ? `${eb.charges.current}/${eb.charges.max}` : (eb.dailyUses ? `${eb.dailyUses.current}/${eb.dailyUses.max}` : '∞');
+                const isOutOfUses = eb.availableUses <= 0;
+
+                return (
+                  <button
+                    key={`${eb.itemId || eb.itemIdx}_${eb.buffKey}`}
+                    type="button"
+                    onClick={() => handleEquipmentBuffClick(eb)}
+                    disabled={!isActive && isOutOfUses}
+                    className="quick-buff-btn"
+                    style={{
+                      width: '100%',
+                      fontFamily: "'IM Fell English SC', serif",
+                      fontSize: '9px',
+                      padding: '3px 5px',
+                      cursor: (!isActive && isOutOfUses) ? 'not-allowed' : 'pointer',
+                      border: '1px solid',
+                      borderRadius: '2px',
+                      transition: 'all 0.15s ease',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      boxSizing: 'border-box',
+                      ...(isActive
+                        ? { background: 'var(--red, #8b1a1a)', color: '#f4e8c1', borderColor: 'var(--red, #8b1a1a)', fontWeight: 'bold' }
+                        : (isOutOfUses
+                          ? { background: 'rgba(0,0,0,0.03)', color: 'var(--inkl)', borderColor: 'rgba(200,169,110,0.3)', opacity: 0.6 }
+                          : { background: 'rgba(200, 169, 110, 0.12)', color: 'var(--ink)', borderColor: 'var(--pb)' }))
+                    }}
+                    title={`${eb.itemName}: ${eb.description || eb.buffKey}`}
+                  >
+                    <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      {isActive ? '✓ ' : '⚡ '}{eb.itemName}
+                    </span>
+                    <span style={{ fontSize: '7.5px', background: isActive ? 'rgba(0,0,0,0.25)' : 'rgba(0,0,0,0.06)', padding: '0 3px', borderRadius: '2px', marginLeft: '4px' }}>
+                      {usesLabel}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Quick Toggles */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
