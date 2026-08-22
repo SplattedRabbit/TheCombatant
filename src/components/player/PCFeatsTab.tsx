@@ -547,75 +547,153 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                                        (bonusClass === 'wizard' && hasWizard) ||
                                        (bonusClass === 'monk' && hasMonk);
 
+                  const isEligible = prereqsResult.met && !isAlreadyLearned && !isLimitReached;
                   const isBlocked = (!prereqsResult.met || isLimitReached) && !isAlreadyLearned;
-                  
-                  const borderStyle = isClassBonus ? { border: '1px solid #2a6a2a', borderLeft: '3.5px solid #2a6a2a' } : { border: '0.5px solid var(--pb)' };
-                  const backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.04)' : 'transparent';
-                  const opacityStyle = isBlocked ? { opacity: 0.65 } : {};
-                  
-                  let icon = '⚪';
-                  if (isAlreadyLearned) icon = '🟢';
-                  else if (isBlocked) icon = '🔒';
-                  
-                  const categoryEn = (({ combat: 'Combat', metamagic: 'Metamagic', item_creation: 'Creation', general: 'General' } as Record<string, string>)[feat.category]) || 'General';
-                  const depthPadding = depth * 14;
 
                   const matchingInstance = activeFeats.find((f: any) => f.id === feat.id);
                   const option = matchingInstance ? matchingInstance.option : '';
 
                   // Collapsible parent check
-                  const hasChildren = Object.keys(CombatFeats.REGISTRY).some(childId => CombatFeats.REGISTRY[childId].parent === feat.id);
+                  const childCount = Object.keys(CombatFeats.REGISTRY).filter(childId => CombatFeats.REGISTRY[childId].parent === feat.id).length;
+                  const hasChildren = childCount > 0;
                   const isExpanded = expandedParents.has(feat.id);
+                  const parentFeatDef = feat.parent ? CombatFeats.REGISTRY[feat.parent] : null;
+                  const parentName = parentFeatDef ? (parentFeatDef.nameEn || parentFeatDef.nameDe) : feat.parent;
+
+                  // Border & background styling based on status
+                  let borderStyle = '0.5px dashed rgba(120, 100, 80, 0.35)';
+                  let borderLeftStyle = '0.5px dashed rgba(120, 100, 80, 0.35)';
+                  let backgroundStyle = 'rgba(0, 0, 0, 0.025)';
+                  let shadowStyle = 'none';
+
+                  if (isAlreadyLearned) {
+                    borderStyle = isClassBonus ? '1.2px solid #2a6a2a' : '1.2px solid #1976d2';
+                    borderLeftStyle = isClassBonus ? '4px solid #2a6a2a' : '3.5px solid #1976d2';
+                    backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.06)' : 'rgba(25, 118, 210, 0.05)';
+                  } else if (isEligible) {
+                    borderStyle = isClassBonus ? '1.2px solid #2a6a2a' : '1.2px solid #7c5a2b';
+                    borderLeftStyle = isClassBonus ? '4px solid #2a6a2a' : (depth > 0 ? '3.5px solid #7c5a2b' : '1.5px solid #7c5a2b');
+                    backgroundStyle = isClassBonus 
+                      ? 'linear-gradient(135deg, rgba(245, 255, 245, 0.98), rgba(235, 250, 235, 0.95))' 
+                      : 'linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(252, 247, 236, 0.95))';
+                    shadowStyle = '0 1px 3px rgba(124, 90, 43, 0.12)';
+                  } else if (isClassBonus) {
+                    borderStyle = '0.5px solid rgba(42, 106, 42, 0.4)';
+                    borderLeftStyle = '3px solid rgba(42, 106, 42, 0.5)';
+                    backgroundStyle = 'rgba(42, 106, 42, 0.025)';
+                  }
+
+                  const categoryEn = (({ combat: 'Combat', metamagic: 'Metamagic', item_creation: 'Creation', general: 'General' } as Record<string, string>)[feat.category]) || 'General';
 
                   return (
                     <div
                       key={feat.id}
-                      className="comp-feat-row"
-                      onClick={(e) => {
-                        handleFeatRowClick(feat, isAlreadyLearned, option, e);
-                      }}
                       style={{
-                        padding: '4px 6px',
-                        paddingLeft: `${depthPadding + 6}px`,
-                        marginBottom: '3px',
-                        borderRadius: '2px',
                         display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        minWidth: 0,
-                        boxSizing: 'border-box',
-                        transition: 'background-color 0.15s, opacity 0.15s',
-                        cursor: 'pointer',
-                        background: backgroundStyle,
-                        ...borderStyle,
-                        ...opacityStyle
-                      }}
-                      onMouseOver={(e) => {
-                        e.currentTarget.style.background = isClassBonus
-                          ? 'rgba(42, 106, 42, 0.08)'
-                          : (isBlocked ? 'rgba(200, 169, 110, 0.03)' : 'rgba(200, 169, 110, 0.05)');
-                      }}
-                      onMouseOut={(e) => {
-                        e.currentTarget.style.background = backgroundStyle;
+                        flexDirection: 'column',
+                        marginBottom: '3px',
+                        marginLeft: depth > 0 ? `${depth * 14}px` : '0px',
+                        position: 'relative'
                       }}
                     >
-                      {hasChildren && (
-                        <button
-                          onClick={(e) => toggleParent(feat.id, e)}
-                          style={{ background: 'none', border: 'none', outline: 'none', padding: '0 2px', fontSize: '8px', color: 'var(--red)', cursor: 'pointer', display: 'flex', alignItems: 'center', flexShrink: 0 }}
-                          title={isExpanded ? "Collapse children" : "Expand children"}
-                        >
-                          {isExpanded ? '▼' : '▶'}
-                        </button>
+                      {/* Tree Branch Connector Line */}
+                      {depth > 0 && (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            left: '-10px',
+                            top: '10px',
+                            width: '8px',
+                            height: '8px',
+                            borderLeft: '1.5px solid rgba(124, 90, 43, 0.45)',
+                            borderBottom: '1.5px solid rgba(124, 90, 43, 0.45)',
+                            borderBottomLeftRadius: '2px',
+                            pointerEvents: 'none'
+                          }}
+                        />
                       )}
-                      <span style={{ fontSize: '8px', flexShrink: 0 }}>{icon}</span>
-                      <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
-                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>{feat.nameEn || feat.nameDe}</span>
-                          <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', marginLeft: 'auto', flexShrink: 0, whiteSpace: 'nowrap' }}>{categoryEn}</span>
-                        </div>
-                        <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitEn || feat.benefitDe || feat.benefitRaw}>
-                          {feat.benefitEn || feat.benefitDe || feat.benefitRaw}
+
+                      <div
+                        className="comp-feat-row"
+                        onClick={(e) => {
+                          handleFeatRowClick(feat, isAlreadyLearned, option, e);
+                        }}
+                        style={{
+                          padding: '4px 6px',
+                          borderRadius: '2px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          minWidth: 0,
+                          boxSizing: 'border-box',
+                          transition: 'all 0.15s ease',
+                          cursor: 'pointer',
+                          background: backgroundStyle,
+                          border: borderStyle,
+                          borderLeft: borderLeftStyle,
+                          boxShadow: shadowStyle,
+                          opacity: isAlreadyLearned ? 1 : (isEligible ? 1 : 0.55)
+                        }}
+                        onMouseOver={(e) => {
+                          e.currentTarget.style.filter = 'brightness(0.97)';
+                        }}
+                        onMouseOut={(e) => {
+                          e.currentTarget.style.filter = 'none';
+                        }}
+                      >
+                        {/* Tree Branch Expand/Collapse Button */}
+                        {hasChildren && (
+                          <button
+                            onClick={(e) => toggleParent(feat.id, e)}
+                            style={{
+                              background: isExpanded ? 'rgba(139, 26, 26, 0.12)' : 'rgba(200, 169, 110, 0.2)',
+                              border: '0.5px solid var(--pb)',
+                              borderRadius: '2px',
+                              padding: '1px 3px',
+                              fontSize: '7px',
+                              color: 'var(--red)',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '2px',
+                              flexShrink: 0,
+                              fontWeight: 'bold',
+                              lineHeight: 1
+                            }}
+                            title={isExpanded ? "Collapse tree" : `Expand ${childCount} sub-feats`}
+                          >
+                            {isExpanded ? `▼ ${childCount}` : `▶ ${childCount}`}
+                          </button>
+                        )}
+
+                        <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', minWidth: 0, overflow: 'hidden' }}>
+                              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: isAlreadyLearned ? '#1976d2' : (isEligible ? '#5c3a1e' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                {feat.nameEn || feat.nameDe}
+                              </span>
+                              {feat.parent && (
+                                <span style={{ fontSize: '6.5px', color: '#8b6934', background: 'rgba(139, 105, 52, 0.08)', padding: '0 3px', borderRadius: '1px', border: '0.5px solid rgba(139, 105, 52, 0.2)', whiteSpace: 'nowrap', flexShrink: 0 }} title={`Prerequisite / Parent Feat: ${parentName}`}>
+                                  ↳ {parentName}
+                                </span>
+                              )}
+                            </div>
+                            <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
+                              {isAlreadyLearned ? (
+                                <span style={{ fontSize: '7px', color: '#1976d2', fontWeight: 'bold', background: 'rgba(25, 118, 210, 0.1)', padding: '1px 4px', borderRadius: '1.5px' }}>✓ Learned</span>
+                              ) : isEligible ? (
+                                <span style={{ fontSize: '7px', color: isClassBonus ? '#2a6a2a' : '#7c5a2b', fontWeight: 'bold', background: isClassBonus ? 'rgba(42, 106, 42, 0.12)' : 'rgba(124, 90, 43, 0.12)', padding: '1px 4px', borderRadius: '1.5px', border: '0.5px solid rgba(124, 90, 43, 0.25)' }}>
+                                  ✨ Available
+                                </span>
+                              ) : (
+                                <span style={{ fontSize: '7px', color: '#8b1a1a', fontWeight: 'bold', background: 'rgba(139, 26, 26, 0.06)', padding: '1px 3px', borderRadius: '1.5px' }}>🔒 Locked</span>
+                              )}
+                              <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
+                            </div>
+                          </div>
+                          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: isEligible || isAlreadyLearned ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitEn || feat.benefitDe || feat.benefitRaw}>
+                            {feat.benefitEn || feat.benefitDe || feat.benefitRaw}
+                          </div>
                         </div>
                       </div>
                     </div>

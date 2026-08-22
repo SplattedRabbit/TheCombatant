@@ -678,7 +678,17 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                 const isLearned = learnedTricks.some((lt: any) => (typeof lt === 'object' ? lt.id === trick.key : lt === trick.key));
                 const isBonus = learnedTricks.some((lt: any) => typeof lt === 'object' && lt.id === trick.key && lt.isBonus);
                 const { met } = CombatRules.checkSkillTrickPrerequisites(trick.key, patchedPC);
+                const borderStyle = isLearned
+                  ? '1px solid #1976d2'
+                  : (met ? '1px solid #7c5a2b' : '0.5px dashed rgba(120, 100, 80, 0.35)');
                 
+                const bgStyle = isLearned
+                  ? 'rgba(25, 118, 210, 0.05)'
+                  : (met ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(250, 245, 235, 0.95))' : 'rgba(0, 0, 0, 0.025)');
+
+                const shadowStyle = met && !isLearned ? '0 1px 3px rgba(124, 90, 43, 0.12)' : 'none';
+                const opacityVal = isLearned ? 1 : (met ? 1 : 0.55);
+
                 return (
                   <div
                     key={trick.key}
@@ -686,31 +696,33 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                       setSelectedTrick({ ...trick, isLearned, isBonus });
                     }}
                     style={{
-                      padding: '3px 5px',
-                      border: isLearned ? '0.5px solid #1976d2' : '0.5px solid rgba(200, 169, 110, 0.25)',
-                      background: isLearned ? 'rgba(25,118,210,0.03)' : (met ? 'rgba(42, 106, 42, 0.02)' : 'transparent'),
+                      padding: '3.5px 6px',
+                      border: borderStyle,
+                      background: bgStyle,
+                      boxShadow: shadowStyle,
                       borderRadius: '2px',
                       cursor: 'pointer',
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      opacity: isLearned ? 1 : (met ? 0.9 : 0.6)
+                      opacity: opacityVal,
+                      transition: 'all 0.15s ease'
                     }}
                   >
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', minWidth: 0 }}>
-                      <span style={{ fontSize: '8.5px', fontWeight: 'bold', color: isLearned ? '#1976d2' : 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {trick.nameEn || trick.nameDe}
+                      <span style={{ fontSize: '8.5px', fontWeight: met || isLearned ? 'bold' : '600', color: isLearned ? '#1976d2' : (met ? '#5c3a1e' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {met && !isLearned ? '✨ ' : ''}{trick.nameEn || trick.nameDe}
                       </span>
-                      <span style={{ fontSize: '6.5px', color: 'var(--inkl)' }}>
+                      <span style={{ fontSize: '6.5px', color: met ? 'var(--inkm)' : 'var(--inkl)' }}>
                         {trick.category.toUpperCase()}
                       </span>
                     </div>
                     <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                       {isLearned ? (
-                        <span style={{ fontSize: '7px', color: '#1976d2', fontWeight: 'bold' }}>Learned</span>
+                        <span style={{ fontSize: '7px', color: '#1976d2', fontWeight: 'bold', background: 'rgba(25, 118, 210, 0.1)', padding: '1px 3px', borderRadius: '1.5px' }}>✓ Learned</span>
                       ) : (
-                        <span style={{ fontSize: '7px', color: met ? '#2a6a2a' : '#8b1a1a', fontWeight: 'bold' }}>
-                          {met ? 'Met' : '🔒 Locked'}
+                        <span style={{ fontSize: '7px', color: met ? '#2a6a2a' : '#8b1a1a', fontWeight: 'bold', background: met ? 'rgba(42, 106, 42, 0.1)' : 'rgba(139, 26, 26, 0.06)', padding: '1px 3px', borderRadius: '1.5px' }}>
+                          {met ? '✨ Ready' : '🔒 Locked'}
                         </span>
                       )}
                     </div>
