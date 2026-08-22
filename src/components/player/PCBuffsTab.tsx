@@ -329,7 +329,11 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                     title="Show D&D 3.5e RAW rule explanation"
                   >
                     ✨ {displayName}{warningBadge}
-                    <span style={{ fontSize: '8px', color: 'var(--inkl)', opacity: 0.85, fontWeight: 'normal' }}>({shortEffectsSummary})</span>
+                    {shortEffectsSummary ? (
+                      <span style={{ fontSize: '8px', color: 'var(--inkl)', opacity: 0.85, fontWeight: 'normal' }}>
+                        {' '}({shortEffectsSummary})
+                      </span>
+                    ) : null}
                     <span style={{ fontSize: '8px', opacity: 0.75, marginLeft: '1px', color: 'var(--red)' }}>📖</span>
                   </span>
                   {buff.durationRemainingRounds !== undefined && buff.durationRemainingRounds !== null && (

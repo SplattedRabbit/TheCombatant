@@ -16,7 +16,7 @@ import { BaseCard } from '../shared/BaseCard';
 import { CombatRules } from '@core/rules.js';
 // @ts-ignore
 import { showCustomAlert, showCustomConfirm, showRollBreakdown } from '@core/ui/components/dialogs.js';
-import { showAttributeExplanation } from './attributeHelper';
+import { showAttributeExplanation, getAblMod } from './attributeHelper';
 
 interface PCAttributesProps {
   pc: any;
@@ -70,7 +70,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     const stat = pc[key];
     const score = stat?.getValue?.() ?? stat?.total ?? 0;
     const baseVal = stat?.base ?? 0;
-    const mod = stat?.mod ?? 0;
+    const mod = getAblMod(score);
     
     let detailParts: string[] = [];
     if (baseVal > 0) {
@@ -167,7 +167,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
   const renderAttributeBox = (key: 'str' | 'dex' | 'con' | 'int' | 'wis' | 'cha', label: string, icon: string) => {
     const stat = pc[key];
     const score = stat?.getValue?.() ?? stat?.total ?? 0;
-    const mod = stat?.mod ?? 0;
+    const mod = getAblMod(score);
     const hasModifiers = Array.isArray(stat?.modifiers) && stat.modifiers.some((m: any) => m.value !== 0);
 
     let tooltip = `${label} Score`;

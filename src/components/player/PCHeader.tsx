@@ -104,6 +104,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
           assassin: 'Assassin',
           battle_trickster: 'Battle Trickster',
           spellwarp_sniper: 'Spellwarp Sniper',
+          shadowbane_inquisitor: 'Shadowbane Inquisitor',
           custom: 'Custom',
         };
         const name = clsNames[c.classType.toLowerCase()] || c.classType

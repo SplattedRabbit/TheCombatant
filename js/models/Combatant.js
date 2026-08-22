@@ -247,6 +247,12 @@ export class Combatant {
       }
     }
     
+    // Shadowbane Inquisitor automatic feats
+    const sbi = activeClasses.find(c => c.classType === 'shadowbane_inquisitor');
+    if (sbi && sbi.level >= 3) {
+      list.push({ id: 'improved_sunder', source: 'Shadowbane Inquisitor (Class)' });
+    }
+    
     return list.filter(item => !disabled.includes(item.id));
   }
 

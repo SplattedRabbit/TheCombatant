@@ -10,43 +10,46 @@ import { CombatState } from '../state.js';
 
 export function translateTarget(target) {
   const mapping = {
-    str: 'Stärke (STR)',
-    dex: 'Geschick (DEX)',
-    con: 'Konstitution (CON)',
-    int: 'Intelligenz (INT)',
-    wis: 'Weisheit (WIS)',
+    str: 'Strength (STR)',
+    dex: 'Dexterity (DEX)',
+    con: 'Constitution (CON)',
+    int: 'Intelligence (INT)',
+    wis: 'Wisdom (WIS)',
     cha: 'Charisma (CHA)',
-    za: 'Zähigkeit (Fort)',
+    za: 'Fortitude (Fort)',
     ref: 'Reflex (Ref)',
-    wil: 'Willen (Will)',
-    baseZa: 'Zähigkeit (Fort)',
+    wil: 'Will (Will)',
+    baseZa: 'Fortitude (Fort)',
     baseRef: 'Reflex (Ref)',
-    baseWil: 'Willen (Will)',
-    ac: 'Rüstungsklasse (AC)',
-    acArmor: 'Rüstungs-RK (Armor)',
-    acShield: 'Schild-RK (Shield)',
-    acNatural: 'Natürliche Rüstung',
-    acDeflection: 'Ablenkung (Deflection)',
-    acDodge: 'Ausweich-RK (Dodge)',
-    atk: 'Angriffswurf (ATK)',
-    dmg: 'Schadenswurf (DMG)'
+    baseWil: 'Will (Will)',
+    ac: 'Armor Class (AC)',
+    acArmor: 'Armor Bonus (AC)',
+    acShield: 'Shield Bonus (AC)',
+    acNatural: 'Natural Armor (AC)',
+    acDeflection: 'Deflection Bonus (AC)',
+    acDodge: 'Dodge Bonus (AC)',
+    atk: 'Attack Roll (ATK)',
+    dmg: 'Damage Roll (DMG)'
   };
   return mapping[target] || target;
 }
 
 export function translateType(type) {
   const mapping = {
-    morale: 'Moral',
-    luck: 'Glück',
-    dodge: 'Ausweichen',
-    enhancement: 'Verbesserung',
-    insight: 'Einsicht',
-    sacred: 'Heilig',
-    profane: 'Unheilig',
-    armor: 'Rüstung',
-    shield: 'Schild',
-    natural: 'Natürlich',
-    untyped: 'Ohne Typ'
+    morale: 'Morale',
+    luck: 'Luck',
+    dodge: 'Dodge',
+    enhancement: 'Enhancement',
+    insight: 'Insight',
+    sacred: 'Sacred',
+    profane: 'Profane',
+    armor: 'Armor',
+    shield: 'Shield',
+    natural: 'Natural Armor',
+    natural_enhancement: 'Natural Armor Enhancement',
+    deflection: 'Deflection',
+    resistance: 'Resistance',
+    untyped: 'Untyped'
   };
   return mapping[type] || type;
 }

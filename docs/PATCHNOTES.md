@@ -32,7 +32,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
    - **3-Spalten Active Loadout**: Haupthand, Nebenhand/Schild und dynamischer *Class Strike & ACF Action Slot* (unterstützt *Smite Evil, Sneak Attack, Skirmish, Sudden Strike, Arcane Channeling, Fighting Challenge, Stunning Fist, Kampfrausch*).
    - **Tagesressourcen-Automatik**: Automatischer Abzug von *Smite Evil* Tagesladungen bei Aktivierung im Angriff.
    - **Interaktive Taktik-Slider**: *Power Attack* (mit 1H/2H Live-Schadensmultiplikatoren) und *Combat Expertise* (mit Echtzeit-Ausweich-RK) sowie *Fight Defensively* (inkl. Akrobatik-Synergie) und *Total Defense*.
-   - **🎒 Diablo 2 Style Tactical Combat Belt**: Schnellzugriffs-Gürtel für Tränke, Wands und Schriftrollen mit 1-Klick-Sofortnutzung und Buff-Applikation.
+   - **🎒 Diablo 2 Style Tactical Combat Belt & Consumable Handling**: Klare Trennung zwischen Verbrauchsgegenständen (Tränke, Rollen, Wands im Rucksack/Gürtel ohne verwirrendes Equippen) und passiven Slotless-Items (*Ioun Stones, Luckstones* mit Equip-Status für Boni). 1-Klick-Sofortnutzung und automatische Buff-Applikation.
 
 3. **📚 Umfassende Quellenbuch-Erweiterung (PHB, PHB2, Complete Adventurer, Complete Scoundrel)**:
    - **Neue Basisklassen**: *Beguiler, Duskblade, Knight, Scout, Ninja*.

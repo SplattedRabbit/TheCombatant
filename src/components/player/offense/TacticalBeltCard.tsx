@@ -14,6 +14,8 @@ import { BaseCard } from '../../shared/BaseCard';
 // @ts-ignore
 import { showCustomAlert, showCustomPrompt, showHealingRollDialog, showItemDamageDialog } from '@core/ui/components/dialogs.js';
 
+import { isConsumableItem } from '../armory/ArmoryTab';
+
 interface TacticalBeltCardProps {
   pc: any;
 }
@@ -22,8 +24,9 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
   const [feedbackToast, setFeedbackToast] = useState<{ id: number; message: string; isHeal: boolean } | null>(null);
   const [draggedIdx, setDraggedIdx] = useState<number | null>(null);
   const [dragOverSlot, setDragOverSlot] = useState<number | null>(null);
+  const [selectedItemForInfo, setSelectedItemForInfo] = useState<{ item: any; originalIdx: number } | null>(null);
 
-  // Filter consumables / slotless items: Potions, Scrolls, Wands, Alchemical, Slotless or items with charges / healing
+  // Filter consumables / usable items: Potions, Scrolls, Wands, Alchemical, or items with charges / healing / activation
   const allItems = Array.isArray(pc.items) ? pc.items : [];
   const consumables = allItems
     .map((item: any, originalIdx: number) => ({ item, originalIdx }))
@@ -31,12 +34,13 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
       const isPotion = item.type === 'potion' || item.slot === 'potion' || item.name?.toLowerCase().includes('potion') || item.name?.toLowerCase().includes('trank');
       const isScroll = item.type === 'scroll' || item.slot === 'scroll' || item.name?.toLowerCase().includes('scroll') || item.name?.toLowerCase().includes('schriftrolle');
       const isWand = item.type === 'wand' || item.slot === 'wand' || item.name?.toLowerCase().includes('wand') || item.name?.toLowerCase().includes('stab');
-      const isSlotless = item.slot === 'slotless' || !item.slot;
       const hasCharges = item.charges && item.charges.max > 0;
       const hasDaily = item.dailyUses && item.dailyUses.max > 0;
       const hasHealing = !!item.healingFormula;
-      const isUsable = item.activation?.isUsable;
-      return isPotion || isScroll || isWand || isSlotless || hasCharges || hasDaily || hasHealing || isUsable;
+      const hasDamage = !!item.damageFormula;
+      const hasBuff = !!item.activation?.appliedBuffKey;
+      const isUsable = item.activation?.isUsable || isConsumableItem(item);
+      return isPotion || isScroll || isWand || hasCharges || hasDaily || hasHealing || hasDamage || hasBuff || isUsable;
     });
 
   // Strict 6-slot limit for the combat belt
@@ -251,24 +255,22 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
     };
   };
 
-  const showItemInfo = (item: any, e: React.MouseEvent) => {
+  const showItemInfo = (item: any, originalIdx: number, e: React.MouseEvent) => {
     e.stopPropagation();
-    const aesthetic = getPotionAesthetic(item);
-    showCustomAlert(
-      item.name,
-      `<div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11px;">
-        <p><strong>Type:</strong> ${item.type || item.slot || 'Consumable'}</p>
-        <p><strong>Effect:</strong> ${item.description || item.activation?.effectDescription || (item.healingFormula ? `Heals ${item.healingFormula} HP` : 'Usable combat item.')}</p>
-        ${item.charges ? `<p><strong>Charges:</strong> ${item.charges.current} / ${item.charges.max}</p>` : ''}
-        ${item.dailyUses ? `<p><strong>Daily Uses:</strong> ${item.dailyUses.current} / ${item.dailyUses.max}</p>` : ''}
-      </div>`,
-      "Close",
-      aesthetic.icon
-    );
+    setSelectedItemForInfo({ item, originalIdx });
   };
 
   return (
-    <BaseCard title="🎒 Tactical Combat Belt (6 Quick Slots)">
+    <BaseCard
+      title="🎒 Tactical Combat Belt"
+      headerRight={
+        consumables.length > 0 ? (
+          <span style={{ fontSize: '8px', color: 'var(--inkm)', fontStyle: 'italic', fontFamily: "'Crimson Text', serif" }}>
+            {Math.min(6, consumables.length)} of {consumables.length} ready
+          </span>
+        ) : undefined
+      }
+    >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
         
         {/* Toast Feedback */}
@@ -433,17 +435,25 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
                       [{slotIdx + 1}]
                     </span>
                     <button
-                      onClick={(e) => showItemInfo(item, e)}
+                      type="button"
+                      onClick={(e) => showItemInfo(item, originalIdx, e)}
                       style={{
-                        background: 'transparent',
-                        border: 'none',
-                        color: '#8c5f30',
-                        fontSize: '8px',
-                        padding: 0,
+                        background: 'rgba(110, 70, 31, 0.12)',
+                        border: '0.5px solid rgba(110, 70, 31, 0.35)',
+                        borderRadius: '50%',
+                        color: '#6e461f',
+                        fontSize: '9px',
+                        width: '14px',
+                        height: '14px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         cursor: 'pointer',
-                        lineHeight: 1
+                        padding: 0,
+                        lineHeight: 1,
+                        boxShadow: '0 1px 2px rgba(0,0,0,0.06)'
                       }}
-                      title="Info"
+                      title="Item info"
                     >
                       ℹ
                     </button>
@@ -536,6 +546,226 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
         </div>
 
       </div>
+
+      {/* === TACTICAL ITEM DETAILS MODAL === */}
+      {selectedItemForInfo && (() => {
+        const item = selectedItemForInfo.item;
+        const originalIdx = selectedItemForInfo.originalIdx;
+        const aesthetic = getPotionAesthetic(item);
+        const name = (item.name || 'Item').trim();
+        const chargesLeft = item.charges ? item.charges.current : (item.dailyUses ? item.dailyUses.current : null);
+        const maxCharges = item.charges ? item.charges.max : (item.dailyUses ? item.dailyUses.max : null);
+        const isOutOfCharges = chargesLeft !== null && chargesLeft <= 0;
+        
+        const isPotion = item.type === 'potion' || item.slot === 'potion' || name.toLowerCase().includes('potion') || name.toLowerCase().includes('trank');
+        const isScroll = item.type === 'scroll' || item.slot === 'scroll' || name.toLowerCase().includes('scroll') || name.toLowerCase().includes('schriftrolle');
+        const isWand = item.type === 'wand' || item.slot === 'wand' || name.toLowerCase().includes('wand') || name.toLowerCase().includes('stab');
+        
+        const actionTypeName = item.activation?.actionType ? `${item.activation.actionType.charAt(0).toUpperCase() + item.activation.actionType.slice(1)} Action` : 'Standard Action';
+        const itemCategory = isPotion ? 'Potion (Consumable)' : (isScroll ? 'Magic Scroll' : (isWand ? 'Magic Wand' : (item.type || 'Consumable / Wondrous')));
+        const itemAura = item.aura || (isPotion || isScroll || isWand ? 'Magic Item' : 'Adventuring Gear');
+        
+        const effectSummary = item.healingFormula
+          ? `Restores ${item.healingFormula} Hit Points.`
+          : (item.damageFormula
+            ? `Deals ${item.damageFormula} damage.`
+            : (item.activation?.effectDescription || item.description || 'Usable combat item.'));
+
+        const rawEffects = Array.isArray(item.effects) ? item.effects : [];
+        const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);
+
+        return (
+          <div
+            style={{
+              position: 'fixed',
+              inset: 0,
+              background: 'rgba(18, 11, 5, 0.65)',
+              backdropFilter: 'blur(3px)',
+              zIndex: 2500,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '16px'
+            }}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) setSelectedItemForInfo(null);
+            }}
+          >
+            <div
+              className="custom-alert-box"
+              style={{
+                background: 'var(--p, #fcf6e8)',
+                border: '2px solid var(--pb, #c8a96e)',
+                borderRadius: '4px',
+                padding: '16px 20px',
+                width: '460px',
+                maxWidth: '92vw',
+                boxShadow: '0 12px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(200,169,110,0.1)',
+                fontFamily: "'IM Fell English SC', serif",
+                textAlign: 'center',
+                position: 'relative'
+              }}
+            >
+              <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.35)', pointerEvents: 'none', borderRadius: '2px' }} />
+
+              {/* Close X */}
+              <button
+                type="button"
+                onClick={() => setSelectedItemForInfo(null)}
+                style={{
+                  position: 'absolute',
+                  top: '8px',
+                  right: '10px',
+                  background: 'none',
+                  border: 'none',
+                  fontSize: '14px',
+                  color: 'var(--inkm, #8c7b6c)',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  zIndex: 2
+                }}
+              >
+                ✕
+              </button>
+
+              {/* Modal Title */}
+              <div style={{ fontSize: '15px', color: 'var(--red, #8b1a1a)', fontWeight: 'bold', marginBottom: '2px', letterSpacing: '0.6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                <span>{aesthetic.icon}</span>
+                <span>{name}</span>
+              </div>
+              <div style={{ fontSize: '8.5px', color: 'var(--inkm, #8c7b6c)', fontStyle: 'italic', marginBottom: '6px' }}>
+                {itemAura}
+              </div>
+              <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.45)', margin: '4px 0 10px' }} />
+
+              {/* Ancient Parchment Content */}
+              <div
+                className="ancient-parchment"
+                style={{
+                  background: '#f4e8c1',
+                  border: '2px solid #8b1a1a',
+                  padding: '12px 16px',
+                  borderRadius: '4px',
+                  boxShadow: 'inset 0 0 25px rgba(139, 26, 26, 0.12)',
+                  fontFamily: "'Crimson Text', serif",
+                  color: '#1a0f00',
+                  lineHeight: 1.45,
+                  textAlign: 'left',
+                  boxSizing: 'border-box'
+                }}
+              >
+                {/* Meta Grid */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '10.5px', borderBottom: '1px solid rgba(139,26,26,0.25)', paddingBottom: '8px', marginBottom: '8px' }}>
+                  <div>
+                    <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>Type: </span>
+                    <span>{itemCategory}</span>
+                  </div>
+                  <div>
+                    <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>Action: </span>
+                    <span>{actionTypeName}</span>
+                  </div>
+                  <div>
+                    <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>Charges: </span>
+                    <span>
+                      {chargesLeft !== null ? `${chargesLeft} / ${maxCharges}` : (item.dailyUses ? `${item.dailyUses.current}/${item.dailyUses.max} Daily` : 'Single-Use')}
+                    </span>
+                  </div>
+                  <div>
+                    <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>Belt Slot: </span>
+                    <span>Ready [Quick-Slot]</span>
+                  </div>
+                </div>
+
+                {/* Effect / Description */}
+                <div style={{ fontSize: '11px', lineHeight: 1.5, color: '#2a1b0a', marginBottom: '6px' }}>
+                  <div style={{ fontWeight: 'bold', color: '#8b1a1a', marginBottom: '2px', fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px' }}>
+                    Effect &amp; Rules:
+                  </div>
+                  <div style={{ fontStyle: 'italic', marginBottom: '6px' }}>
+                    {item.description || item.activation?.effectDescription || effectSummary}
+                  </div>
+                </div>
+
+                {/* Stat Modifiers pills */}
+                {activeEffects.length > 0 && (
+                  <div style={{ marginTop: '6px', borderTop: '0.5px dashed rgba(139, 26, 26, 0.3)', paddingTop: '6px' }}>
+                    <div style={{ fontWeight: 'bold', color: '#8b1a1a', fontSize: '10.5px', fontFamily: "'IM Fell English SC', serif", marginBottom: '3px' }}>
+                      Passive / Applied Modifiers:
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
+                      {activeEffects.map((eff: any, eIdx: number) => {
+                        const sign = (parseInt(eff.value) || 0) >= 0 ? '+' : '';
+                        return (
+                          <span
+                            key={eIdx}
+                            style={{
+                              fontSize: '9px',
+                              background: 'rgba(139, 26, 26, 0.08)',
+                              border: '0.5px solid rgba(139, 26, 26, 0.3)',
+                              borderRadius: '2px',
+                              padding: '1px 5px',
+                              color: '#601212',
+                              fontWeight: 600
+                            }}
+                          >
+                            {sign}{eff.value} {eff.type || ''} ({eff.target || ''})
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Action Buttons */}
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '12px' }}>
+                <button
+                  type="button"
+                  onClick={() => setSelectedItemForInfo(null)}
+                  className="btn"
+                  style={{
+                    fontSize: '9.5px',
+                    padding: '3px 12px',
+                    fontFamily: "'IM Fell English SC', serif",
+                    fontWeight: 'bold',
+                    background: 'rgba(200, 169, 110, 0.12)',
+                    border: '0.5px solid var(--pb, #c8a96e)',
+                    color: 'var(--ink, #1a0f00)',
+                    borderRadius: '2px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Close
+                </button>
+                {!isOutOfCharges && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      setSelectedItemForInfo(null);
+                      handleUseItem(originalIdx, e);
+                    }}
+                    className="btn btn-p"
+                    style={{
+                      fontSize: '9.5px',
+                      padding: '3px 14px',
+                      fontFamily: "'IM Fell English SC', serif",
+                      fontWeight: 'bold',
+                      background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                      border: '0.5px solid #8b6914',
+                      color: '#ffffff',
+                      borderRadius: '2px',
+                      cursor: 'pointer',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.15)'
+                    }}
+                  >
+                    {isPotion ? '🍷 Drink Potion' : (isWand ? '🪄 Cast Wand' : (isScroll ? '📜 Read Scroll' : '⚡ Use Item'))}
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
     </BaseCard>
   );
 };

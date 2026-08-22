@@ -105,3 +105,28 @@ test('Stat - Negativwerte und sonstige Ränder', () => {
   s.addModifier(-2, 'morale', 'Furcht-Typisiert');
   assert.strictEqual(s.getValue(), 6, 'Typisierte negative Boni (Mali) müssen angewendet werden');
 });
+
+test('Stat - D&D 3.5e Attributmodifikator (mod Getter)', () => {
+  const str18 = new Stat(18);
+  assert.strictEqual(str18.mod, 4);
+
+  const dex15 = new Stat(15);
+  assert.strictEqual(dex15.mod, 2);
+
+  const con10 = new Stat(10);
+  assert.strictEqual(con10.mod, 0);
+
+  const int9 = new Stat(9);
+  assert.strictEqual(int9.mod, -1);
+
+  const wis8 = new Stat(8);
+  assert.strictEqual(wis8.mod, -1);
+
+  const cha6 = new Stat(6);
+  assert.strictEqual(cha6.mod, -2);
+
+  // Mit Modifikatoren
+  str18.addModifier(4, 'enhancement', 'Belt of Strength');
+  assert.strictEqual(str18.getValue(), 22);
+  assert.strictEqual(str18.mod, 6);
+});

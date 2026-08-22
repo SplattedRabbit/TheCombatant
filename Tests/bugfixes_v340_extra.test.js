@@ -42,7 +42,7 @@ test('Bug 8 - Spell details retrieval from registry and custom spells', () => {
   const bless = findSpell(pc, 'bless');
   assert.ok(bless, 'Should find bless spell');
   assert.ok(bless.description, 'Bless should have a description');
-  assert.ok(bless.description.includes('Moralbonus'), 'Bless description should contain German text');
+  assert.ok(bless.description.toLowerCase().includes('morale bonus'), 'Bless description should describe morale bonus');
 
   // Find custom spell and check details
   const custom = findSpell(pc, 'custom_spell_1');

@@ -711,6 +711,22 @@ export const MAGIC_ITEMS_REGISTRY = {
     },
     description: 'Restores 3d8+5 HP when consumed.'
   },
+  potion_cure_critical_wounds: {
+    key: 'potion_cure_critical_wounds',
+    name: 'Potion of Cure Critical Wounds',
+    slot: 'slotless',
+    aura: 'Moderate Conjuration',
+    effects: [],
+    healingFormula: '4d8+7',
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Restores 4d8+7 hit points when drunk.'
+    },
+    description: 'Restores 4d8+7 HP when consumed.'
+  },
   potion_bulls_strength: {
     key: 'potion_bulls_strength',
     name: "Potion of Bull's Strength",
@@ -727,6 +743,54 @@ export const MAGIC_ITEMS_REGISTRY = {
     },
     description: 'Grants +4 STR for 3 minutes when drunk.'
   },
+  potion_cats_grace: {
+    key: 'potion_cats_grace',
+    name: "Potion of Cat's Grace",
+    slot: 'slotless',
+    aura: 'Faint Transmutation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'cats_grace',
+      effectDescription: 'Grants +4 enhancement bonus to Dexterity for 3 minutes.'
+    },
+    description: 'Grants +4 DEX for 3 minutes when drunk.'
+  },
+  potion_bears_endurance: {
+    key: 'potion_bears_endurance',
+    name: "Potion of Bear's Endurance",
+    slot: 'slotless',
+    aura: 'Faint Transmutation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'bears_endurance',
+      effectDescription: 'Grants +4 enhancement bonus to Constitution for 3 minutes.'
+    },
+    description: 'Grants +4 CON for 3 minutes when drunk.'
+  },
+  potion_foxs_cunning: {
+    key: 'potion_foxs_cunning',
+    name: "Potion of Fox's Cunning",
+    slot: 'slotless',
+    aura: 'Faint Transmutation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'foxs_cunning',
+      effectDescription: 'Grants +4 enhancement bonus to Intelligence for 3 minutes.'
+    },
+    description: 'Grants +4 INT for 3 minutes when drunk.'
+  },
   potion_invisibility: {
     key: 'potion_invisibility',
     name: 'Potion of Invisibility',
@@ -742,6 +806,86 @@ export const MAGIC_ITEMS_REGISTRY = {
       effectDescription: 'Grants Invisibility for 3 minutes.'
     },
     description: 'Grants Invisibility for 3 minutes when drunk.'
+  },
+  potion_mage_armor: {
+    key: 'potion_mage_armor',
+    name: 'Potion of Mage Armor',
+    slot: 'slotless',
+    aura: 'Faint Conjuration',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'mage_armor',
+      effectDescription: 'Grants +4 armor bonus to AC for 1 hour.'
+    },
+    description: 'Grants +4 Armor AC for 1 hour when drunk.'
+  },
+  potion_haste: {
+    key: 'potion_haste',
+    name: 'Potion of Haste',
+    slot: 'slotless',
+    aura: 'Faint Transmutation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'haste',
+      effectDescription: 'Grants extra attack, +1 on attack rolls, +1 dodge AC/Reflex, and +30 ft speed for 5 rounds.'
+    },
+    description: 'Grants Haste for 5 rounds when drunk.'
+  },
+  potion_fly: {
+    key: 'potion_fly',
+    name: 'Potion of Fly',
+    slot: 'slotless',
+    aura: 'Faint Transmutation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'fly',
+      effectDescription: 'Grants fly speed 60 ft (good maneuverability) for 5 minutes.'
+    },
+    description: 'Grants Fly speed 60 ft for 5 minutes when drunk.'
+  },
+  potion_shield_of_faith: {
+    key: 'potion_shield_of_faith',
+    name: 'Potion of Shield of Faith',
+    slot: 'slotless',
+    aura: 'Faint Abjuration',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'shield_of_faith',
+      effectDescription: 'Grants +2 deflection bonus to AC for 1 minute.'
+    },
+    description: 'Grants +2 Deflection AC for 1 minute when drunk.'
+  },
+  potion_bless: {
+    key: 'potion_bless',
+    name: 'Potion of Bless',
+    slot: 'slotless',
+    aura: 'Faint Enchantment',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'bless',
+      effectDescription: 'Grants +1 morale bonus on attack rolls and saves against fear for 1 minute.'
+    },
+    description: 'Grants +1 Attack and Fear Saves for 1 minute.'
   },
   wand_of_magic_missile_cl1: {
     key: 'wand_of_magic_missile_cl1',
@@ -804,6 +948,182 @@ export const MAGIC_ITEMS_REGISTRY = {
     },
     description: 'Single-use scroll. Casts Fireball (5d6 fire damage).'
   },
+  scroll_of_invisibility: {
+    key: 'scroll_of_invisibility',
+    name: 'Scroll of Invisibility',
+    slot: 'slotless',
+    aura: 'Faint Illusion',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'invisibility',
+      effectDescription: 'Casts Invisibility on reader (or touched creature) for 3 minutes.'
+    },
+    description: 'Single-use scroll. Casts Invisibility for 3 minutes.'
+  },
+  scroll_of_shield: {
+    key: 'scroll_of_shield',
+    name: 'Scroll of Shield',
+    slot: 'slotless',
+    aura: 'Faint Abjuration',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'shield',
+      effectDescription: 'Grants +4 shield bonus to AC and blocks Magic Missile for 1 minute.'
+    },
+    description: 'Single-use scroll. Casts Shield (+4 Shield AC).'
+  },
+  scroll_of_mage_armor: {
+    key: 'scroll_of_mage_armor',
+    name: 'Scroll of Mage Armor',
+    slot: 'slotless',
+    aura: 'Faint Conjuration',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'mage_armor',
+      effectDescription: 'Grants +4 armor bonus to AC for 1 hour.'
+    },
+    description: 'Single-use scroll. Casts Mage Armor (+4 Armor AC).'
+  },
+  scroll_of_haste: {
+    key: 'scroll_of_haste',
+    name: 'Scroll of Haste',
+    slot: 'slotless',
+    aura: 'Faint Transmutation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'haste',
+      effectDescription: 'Grants extra attack, +1 on attack rolls, +1 dodge AC/Reflex, and +30 ft speed for 5 rounds.'
+    },
+    description: 'Single-use scroll. Casts Haste (+1 attack/AC/Ref, +30ft speed, extra attack).'
+  },
+  scroll_of_bulls_strength: {
+    key: 'scroll_of_bulls_strength',
+    name: "Scroll of Bull's Strength",
+    slot: 'slotless',
+    aura: 'Faint Transmutation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'bulls_strength',
+      effectDescription: 'Grants +4 enhancement bonus to Strength for 3 minutes.'
+    },
+    description: "Single-use scroll. Casts Bull's Strength (+4 STR)."
+  },
+  scroll_of_cats_grace: {
+    key: 'scroll_of_cats_grace',
+    name: "Scroll of Cat's Grace",
+    slot: 'slotless',
+    aura: 'Faint Transmutation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'cats_grace',
+      effectDescription: 'Grants +4 enhancement bonus to Dexterity for 3 minutes.'
+    },
+    description: "Single-use scroll. Casts Cat's Grace (+4 DEX)."
+  },
+  scroll_of_bless: {
+    key: 'scroll_of_bless',
+    name: 'Scroll of Bless',
+    slot: 'slotless',
+    aura: 'Faint Enchantment',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'bless',
+      effectDescription: 'Grants +1 morale bonus on attack rolls and saves against fear for 1 minute.'
+    },
+    description: 'Single-use scroll. Casts Bless (+1 Attack & Fear Saves).'
+  },
+  scroll_of_mirror_image: {
+    key: 'scroll_of_mirror_image',
+    name: 'Scroll of Mirror Image',
+    slot: 'slotless',
+    aura: 'Faint Illusion',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'mirror_image',
+      effectDescription: 'Creates 1d4+1 illusory duplicates for 3 minutes.'
+    },
+    description: 'Single-use scroll. Casts Mirror Image (1d4+1 duplicates).'
+  },
+  scroll_of_fly: {
+    key: 'scroll_of_fly',
+    name: 'Scroll of Fly',
+    slot: 'slotless',
+    aura: 'Faint Transmutation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'fly',
+      effectDescription: 'Grants fly speed 60 ft (good maneuverability) for 5 minutes.'
+    },
+    description: 'Single-use scroll. Casts Fly (speed 60 ft).'
+  },
+  scroll_of_cure_light_wounds: {
+    key: 'scroll_of_cure_light_wounds',
+    name: 'Scroll of Cure Light Wounds',
+    slot: 'slotless',
+    aura: 'Faint Conjuration',
+    effects: [],
+    healingFormula: '1d8+1',
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Heals 1d8+1 hit points.'
+    },
+    description: 'Single-use scroll. Restores 1d8+1 HP.'
+  },
+  scroll_of_cure_moderate_wounds: {
+    key: 'scroll_of_cure_moderate_wounds',
+    name: 'Scroll of Cure Moderate Wounds',
+    slot: 'slotless',
+    aura: 'Faint Conjuration',
+    effects: [],
+    healingFormula: '2d8+3',
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Heals 2d8+3 hit points.'
+    },
+    description: 'Single-use scroll. Restores 2d8+3 HP.'
+  },
   pearl_of_power_1: {
     key: 'pearl_of_power_1',
     name: 'Pearl of Power (1st Level)',
@@ -826,6 +1146,83 @@ export const MAGIC_ITEMS_REGISTRY = {
     aura: 'Moderate Conjuration',
     effects: [],
     description: 'Holds up to 250 lbs or 30 cu. ft. while weighing only 15 lbs.'
+  },
+  ioun_stone_dusty_rose: {
+    key: 'ioun_stone_dusty_rose',
+    name: 'Ioun Stone (Dusty Rose Prism)',
+    slot: 'slotless',
+    aura: 'Moderate Abjuration',
+    effects: [{ type: 'ac', target: 'insight', value: 1, bonusType: 'insight' }],
+    description: 'When floating in orbit around your head, grants a +1 insight bonus to Armor Class.'
+  },
+  stone_of_good_luck: {
+    key: 'stone_of_good_luck',
+    name: 'Stone of Good Luck (Luckstone)',
+    slot: 'slotless',
+    aura: 'Moderate Evocation',
+    effects: [
+      { type: 'save', target: 'all', value: 1, bonusType: 'luck' },
+      { type: 'skill', target: 'all', value: 1, bonusType: 'luck' }
+    ],
+    description: 'Grants a +1 luck bonus on saving throws, ability checks, and skill checks.'
+  },
+  alchemists_fire: {
+    key: 'alchemists_fire',
+    name: "Alchemist's Fire",
+    slot: 'slotless',
+    type: 'consumable',
+    damageFormula: '1d6 fire',
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Ranged touch attack dealing 1d6 fire damage, +1d6 fire on the next round.'
+    },
+    description: 'Flask of alchemical fire. Deals 1d6 direct + 1d6 next round.'
+  },
+  holy_water: {
+    key: 'holy_water',
+    name: 'Holy Water',
+    slot: 'slotless',
+    type: 'consumable',
+    damageFormula: '2d4 holy',
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Deals 2d4 holy damage to undead creatures and evil outsiders.'
+    },
+    description: 'Flask of blessed water dealing 2d4 damage to undead/evil outsiders.'
+  },
+  smokestick: {
+    key: 'smokestick',
+    name: 'Smokestick',
+    slot: 'slotless',
+    type: 'consumable',
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Instantly creates a 10-ft. cube of thick smoke providing concealment.'
+    },
+    description: 'Alchemical wooden stick. Produces a 10-ft smoke cloud.'
+  },
+  tanglefoot_bag: {
+    key: 'tanglefoot_bag',
+    name: 'Tanglefoot Bag',
+    slot: 'slotless',
+    type: 'consumable',
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Ranged touch attack entangles target creature (DC 15 Reflex).'
+    },
+    description: 'Bag of tough resin that entangles targets on impact.'
   }
 };
 
@@ -1148,7 +1545,7 @@ export const CONSOLIDATED_COMPENDIUM = [
     variants: [{ label: 'Set Piece', key: 'ring_of_dread' }]
   },
 
-  // Slotless & Consumables
+  // === POTIONS & CONSUMABLES ===
   {
     id: 'potion_cure_wounds',
     baseName: 'Potion of Cure Wounds',
@@ -1157,37 +1554,217 @@ export const CONSOLIDATED_COMPENDIUM = [
     variants: [
       { label: 'Light (1d8+1)', key: 'potion_cure_light_wounds' },
       { label: 'Moderate (2d8+3)', key: 'potion_cure_moderate_wounds' },
-      { label: 'Serious (3d8+5)', key: 'potion_cure_serious_wounds' }
+      { label: 'Serious (3d8+5)', key: 'potion_cure_serious_wounds' },
+      { label: 'Critical (4d8+7)', key: 'potion_cure_critical_wounds' }
     ]
   },
   {
-    id: 'potion_buffs',
-    baseName: 'Enhancement Potions',
+    id: 'potion_bulls_strength',
+    baseName: "Potion of Bull's Strength",
     slot: 'slotless',
-    description: 'Imbues drinker with magical enhancements.',
+    description: 'Grants +4 enhancement bonus to Strength for 3 minutes.',
+    variants: [{ label: '+4 STR', key: 'potion_bulls_strength' }]
+  },
+  {
+    id: 'potion_cats_grace',
+    baseName: "Potion of Cat's Grace",
+    slot: 'slotless',
+    description: 'Grants +4 enhancement bonus to Dexterity for 3 minutes.',
+    variants: [{ label: '+4 DEX', key: 'potion_cats_grace' }]
+  },
+  {
+    id: 'potion_bears_endurance',
+    baseName: "Potion of Bear's Endurance",
+    slot: 'slotless',
+    description: 'Grants +4 enhancement bonus to Constitution for 3 minutes.',
+    variants: [{ label: '+4 CON', key: 'potion_bears_endurance' }]
+  },
+  {
+    id: 'potion_foxs_cunning',
+    baseName: "Potion of Fox's Cunning",
+    slot: 'slotless',
+    description: 'Grants +4 enhancement bonus to Intelligence for 3 minutes.',
+    variants: [{ label: '+4 INT', key: 'potion_foxs_cunning' }]
+  },
+  {
+    id: 'potion_invisibility',
+    baseName: 'Potion of Invisibility',
+    slot: 'slotless',
+    description: 'Grants Invisibility for 3 minutes when consumed.',
+    variants: [{ label: 'Invisibility', key: 'potion_invisibility' }]
+  },
+  {
+    id: 'potion_mage_armor',
+    baseName: 'Potion of Mage Armor',
+    slot: 'slotless',
+    description: 'Grants +4 armor bonus to AC for 1 hour.',
+    variants: [{ label: '+4 AC', key: 'potion_mage_armor' }]
+  },
+  {
+    id: 'potion_haste',
+    baseName: 'Potion of Haste',
+    slot: 'slotless',
+    description: 'Grants extra attack, +1 on attack rolls, +1 dodge AC/Reflex, and +30 ft speed for 5 rounds.',
+    variants: [{ label: 'Haste', key: 'potion_haste' }]
+  },
+  {
+    id: 'potion_fly',
+    baseName: 'Potion of Fly',
+    slot: 'slotless',
+    description: 'Grants fly speed 60 ft (good maneuverability) for 5 minutes.',
+    variants: [{ label: 'Fly (60 ft)', key: 'potion_fly' }]
+  },
+  {
+    id: 'potion_shield_of_faith',
+    baseName: 'Potion of Shield of Faith',
+    slot: 'slotless',
+    description: 'Grants +2 deflection bonus to AC for 1 minute.',
+    variants: [{ label: '+2 AC', key: 'potion_shield_of_faith' }]
+  },
+  {
+    id: 'potion_bless',
+    baseName: 'Potion of Bless',
+    slot: 'slotless',
+    description: 'Grants +1 morale bonus on attack rolls and fear saves for 1 minute.',
+    variants: [{ label: '+1 Bless', key: 'potion_bless' }]
+  },
+
+  // === SCROLLS ===
+  {
+    id: 'scroll_cure_wounds',
+    baseName: 'Scroll of Cure Wounds',
+    slot: 'slotless',
+    description: 'Single-use spell scrolls for restoring hit points.',
     variants: [
-      { label: "Bull's Str (+4 STR)", key: 'potion_bulls_strength' },
-      { label: 'Invisibility', key: 'potion_invisibility' }
+      { label: 'Light (1d8+1)', key: 'scroll_of_cure_light_wounds' },
+      { label: 'Moderate (2d8+3)', key: 'scroll_of_cure_moderate_wounds' }
     ]
   },
   {
-    id: 'wands',
-    baseName: 'Magic Wands (50 Charges)',
+    id: 'scroll_of_invisibility',
+    baseName: 'Scroll of Invisibility',
     slot: 'slotless',
-    description: 'Spellcasting wands with 50 charges.',
-    variants: [
-      { label: 'Magic Missile (CL 1)', key: 'wand_of_magic_missile_cl1' },
-      { label: 'Cure Light Wounds', key: 'wand_of_cure_light_wounds' },
-      { label: 'Fireball (CL 5)', key: 'wand_of_fireball_cl5' }
-    ]
+    description: 'Single-use scroll. Casts Invisibility for 3 minutes.',
+    variants: [{ label: 'Invisibility', key: 'scroll_of_invisibility' }]
+  },
+  {
+    id: 'scroll_of_shield',
+    baseName: 'Scroll of Shield',
+    slot: 'slotless',
+    description: 'Single-use scroll. Casts Shield (+4 Shield AC, negates Magic Missile).',
+    variants: [{ label: '+4 AC', key: 'scroll_of_shield' }]
+  },
+  {
+    id: 'scroll_of_mage_armor',
+    baseName: 'Scroll of Mage Armor',
+    slot: 'slotless',
+    description: 'Single-use scroll. Casts Mage Armor (+4 Armor AC for 1 hour).',
+    variants: [{ label: '+4 AC', key: 'scroll_of_mage_armor' }]
+  },
+  {
+    id: 'scroll_of_haste',
+    baseName: 'Scroll of Haste',
+    slot: 'slotless',
+    description: 'Single-use scroll. Casts Haste (+1 attack/AC/Ref, +30ft speed, extra attack).',
+    variants: [{ label: 'Haste', key: 'scroll_of_haste' }]
+  },
+  {
+    id: 'scroll_of_bulls_strength',
+    baseName: "Scroll of Bull's Strength",
+    slot: 'slotless',
+    description: "Single-use scroll. Casts Bull's Strength (+4 STR for 3 minutes).",
+    variants: [{ label: '+4 STR', key: 'scroll_of_bulls_strength' }]
+  },
+  {
+    id: 'scroll_of_cats_grace',
+    baseName: "Scroll of Cat's Grace",
+    slot: 'slotless',
+    description: "Single-use scroll. Casts Cat's Grace (+4 DEX for 3 minutes).",
+    variants: [{ label: '+4 DEX', key: 'scroll_of_cats_grace' }]
+  },
+  {
+    id: 'scroll_of_bless',
+    baseName: 'Scroll of Bless',
+    slot: 'slotless',
+    description: 'Single-use scroll. Casts Bless (+1 Attack & Fear Saves for allies).',
+    variants: [{ label: 'Bless', key: 'scroll_of_bless' }]
+  },
+  {
+    id: 'scroll_of_mirror_image',
+    baseName: 'Scroll of Mirror Image',
+    slot: 'slotless',
+    description: 'Single-use scroll. Casts Mirror Image (creates 1d4+1 illusory duplicates).',
+    variants: [{ label: 'Mirror Image', key: 'scroll_of_mirror_image' }]
+  },
+  {
+    id: 'scroll_of_fly',
+    baseName: 'Scroll of Fly',
+    slot: 'slotless',
+    description: 'Single-use scroll. Casts Fly (speed 60 ft for 5 minutes).',
+    variants: [{ label: 'Fly', key: 'scroll_of_fly' }]
   },
   {
     id: 'scroll_of_fireball',
     baseName: 'Scroll of Fireball',
     slot: 'slotless',
-    description: 'Single-use scroll. Casts Fireball (5d6 fire damage).',
-    variants: [{ label: '1 Cast', key: 'scroll_of_fireball' }]
+    description: 'Single-use scroll. Casts Fireball (5d6 fire damage, DC 14 Reflex half).',
+    variants: [{ label: '5d6 Fire', key: 'scroll_of_fireball' }]
   },
+
+  // === WANDS ===
+  {
+    id: 'wand_of_magic_missile',
+    baseName: 'Wand of Magic Missile (CL 1)',
+    slot: 'slotless',
+    description: '50 charges. Fires 1 magic missile dealing 1d4+1 force damage.',
+    variants: [{ label: 'CL 1', key: 'wand_of_magic_missile_cl1' }]
+  },
+  {
+    id: 'wand_of_cure_light_wounds',
+    baseName: 'Wand of Cure Light Wounds',
+    slot: 'slotless',
+    description: '50 charges. Heals 1d8+1 hit points per charge.',
+    variants: [{ label: '50 Charges', key: 'wand_of_cure_light_wounds' }]
+  },
+  {
+    id: 'wand_of_fireball',
+    baseName: 'Wand of Fireball (CL 5)',
+    slot: 'slotless',
+    description: '50 charges. Casts 5d6 Fireball (DC 14 Reflex half).',
+    variants: [{ label: 'CL 5', key: 'wand_of_fireball_cl5' }]
+  },
+
+  // === ALCHEMICAL & ADVENTURING ===
+  {
+    id: 'alchemists_fire',
+    baseName: "Alchemist's Fire",
+    slot: 'slotless',
+    description: 'Deals 1d6 fire damage on direct hit + 1d6 the following round.',
+    variants: [{ label: 'Flask', key: 'alchemists_fire' }]
+  },
+  {
+    id: 'holy_water',
+    baseName: 'Holy Water',
+    slot: 'slotless',
+    description: 'Deals 2d4 holy damage to undead creatures and evil outsiders.',
+    variants: [{ label: 'Flask', key: 'holy_water' }]
+  },
+  {
+    id: 'smokestick',
+    baseName: 'Smokestick',
+    slot: 'slotless',
+    description: 'Creates a 10-ft cube of thick smoke providing concealment.',
+    variants: [{ label: 'Stick', key: 'smokestick' }]
+  },
+  {
+    id: 'tanglefoot_bag',
+    baseName: 'Tanglefoot Bag',
+    slot: 'slotless',
+    description: 'Entangles target creature on a successful ranged touch attack (DC 15 Reflex).',
+    variants: [{ label: 'Bag', key: 'tanglefoot_bag' }]
+  },
+
+  // === WONDROUS SLOTLESS ===
   {
     id: 'pearl_of_power',
     baseName: 'Pearl of Power (1st Level)',
@@ -1201,5 +1778,19 @@ export const CONSOLIDATED_COMPENDIUM = [
     slot: 'slotless',
     description: 'Holds up to 250 lbs or 30 cu. ft. while weighing only 15 lbs.',
     variants: [{ label: 'Type I', key: 'bag_of_holding_type1' }]
+  },
+  {
+    id: 'ioun_stone_dusty_rose',
+    baseName: 'Ioun Stone (Dusty Rose Prism)',
+    slot: 'slotless',
+    description: 'Grants a +1 insight bonus to Armor Class when active.',
+    variants: [{ label: '+1 AC', key: 'ioun_stone_dusty_rose' }]
+  },
+  {
+    id: 'stone_of_good_luck',
+    baseName: 'Stone of Good Luck (Luckstone)',
+    slot: 'slotless',
+    description: 'Grants a +1 luck bonus on saving throws and skill checks.',
+    variants: [{ label: '+1 Luck', key: 'stone_of_good_luck' }]
   }
 ];

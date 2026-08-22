@@ -24,6 +24,36 @@ const BODY_SLOTS_ORDER = [
   'feet', 'ring1', 'ring2'
 ];
 
+export function isConsumableItem(item: any): boolean {
+  if (!item) return false;
+  const slot = item.slot;
+  const type = item.type;
+  const name = (item.name || '').toLowerCase();
+  
+  if (type === 'potion' || type === 'scroll' || type === 'wand' || type === 'consumable' || type === 'alchemical') return true;
+  if (slot === 'potion' || slot === 'scroll' || slot === 'wand' || slot === 'consumable') return true;
+  if (name.includes('potion') || name.includes('trank') || name.includes('scroll') || name.includes('schriftrolle') || name.includes('wand') || name.includes('zauberstab') || name.includes('alchemist') || name.includes('smokestick') || name.includes('tanglefoot') || name.includes('holy water')) return true;
+  
+  const hasPassiveEffects = Array.isArray(item.effects) && item.effects.some((e: any) => (parseInt(e.value) || 0) !== 0);
+  if (!hasPassiveEffects && (item.healingFormula || item.damageFormula || item.activation?.appliedBuffKey || item.charges?.max === 1)) {
+    return true;
+  }
+  return false;
+}
+
+export function getItemTypeIcon(itemOrPreset: any, defaultIcon: string = '🎒'): string {
+  if (!itemOrPreset) return defaultIcon;
+  const type = (itemOrPreset.type || '').toLowerCase();
+  const name = (itemOrPreset.name || '').toLowerCase();
+  const key = (itemOrPreset.key || itemOrPreset.id || '').toLowerCase();
+  if (type === 'potion' || key.includes('potion') || name.includes('potion') || name.includes('trank')) return '🧪';
+  if (type === 'scroll' || key.includes('scroll') || name.includes('scroll') || name.includes('schriftrolle')) return '📜';
+  if (type === 'wand' || key.includes('wand') || name.includes('wand') || name.includes('stab')) return '🪄';
+  if (key.includes('ioun') || name.includes('ioun')) return '💎';
+  if (key.includes('bag') || name.includes('bag') || name.includes('haversack')) return '🎒';
+  return defaultIcon;
+}
+
 export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   const [rightPanelMode, setRightPanelMode] = useState<'backpack' | 'compendium'>('backpack');
   const [search, setSearch] = useState('');
@@ -91,7 +121,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
     const healDetails = getHealingFormulaDetails(item);
     if (healDetails) {
       showHealingRollDialog({
-        itemName: item.name,
+        itemName: item.name || 'Potion',
         dice: healDetails.dice,
         bonus: healDetails.bonus,
         formula: healDetails.formula,
@@ -111,7 +141,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
     const dmgDetails = getDamageFormulaDetails(item);
     if (dmgDetails) {
       showItemDamageDialog({
-        itemName: item.name,
+        itemName: item.name || 'Offensive Item',
         dice: dmgDetails.dice,
         bonus: dmgDetails.bonus,
         formula: dmgDetails.formula,
@@ -142,12 +172,12 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
 
   const items = Array.isArray(pc.items) ? pc.items : [];
 
-  // Map equipped items to slot
+  // Map equipped items to slot (excluding consumables)
   const equippedMap: Record<string, { item: any; idx: number }> = {};
   const slotlessEquipped: Array<{ item: any; idx: number }> = [];
 
   items.forEach((item: any, idx: number) => {
-    if (item && item.isEquipped) {
+    if (item && item.isEquipped && !isConsumableItem(item)) {
       if (item.slot && item.slot !== 'slotless') {
         equippedMap[item.slot] = { item, idx };
       } else {
@@ -156,10 +186,10 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
     }
   });
 
-  // Backpack entries
+  // Backpack entries: unequipped items + all consumables
   const backpackEntries = items
     .map((item: any, idx: number) => ({ item, idx }))
-    .filter(({ item }: { item: any }) => !item.isEquipped);
+    .filter(({ item }: { item: any }) => !item.isEquipped || isConsumableItem(item));
 
   const filteredBackpack = backpackEntries.filter(({ item }: { item: any }) => {
     if (slotFilter !== 'all') {
@@ -697,21 +727,23 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                               {isPotion ? '🍷 Drink' : (isWand ? '🪄 Cast' : (isScroll ? '📜 Read' : '⚡ Use'))}
                             </button>
                           )}
-                          <button
-                            type="button"
-                            onClick={() => CombatState.equipPCItem(idx, item.slot)}
-                            className="btn btn-p"
-                            style={{
-                              fontSize: '8px',
-                              padding: '1px 6px',
-                              fontFamily: "'IM Fell English SC', serif",
-                              background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-                              border: '0.5px solid #8b6914',
-                              color: '#ffffff'
-                            }}
-                          >
-                            ⚡ Equip
-                          </button>
+                          {!isConsumableItem(item) && (
+                            <button
+                              type="button"
+                              onClick={() => CombatState.equipPCItem(idx, item.slot)}
+                              className="btn btn-p"
+                              style={{
+                                fontSize: '8px',
+                                padding: '1px 6px',
+                                fontFamily: "'IM Fell English SC', serif",
+                                background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                                border: '0.5px solid #8b6914',
+                                color: '#ffffff'
+                              }}
+                            >
+                              ⚡ Equip
+                            </button>
+                          )}
                           <button
                             type="button"
                             onClick={() => setEditingItemData({ item, itemIdx: idx })}
@@ -771,6 +803,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                   const slotInfo = (ITEM_SLOTS as any)[entry.slot] || { icon: '🎒', nameEn: entry.slot };
                   const rawEffects = Array.isArray(activePreset.effects) ? activePreset.effects : [];
                   const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);
+                  const itemIcon = getItemTypeIcon(activePreset, slotInfo.icon);
 
                   return (
                     <div
@@ -789,12 +822,12 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexWrap: 'wrap' }}>
-                          <span style={{ fontSize: '12px' }}>{slotInfo.icon}</span>
+                          <span style={{ fontSize: '12px' }}>{itemIcon}</span>
                           <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                             {activePreset.name || entry.baseName}
                           </span>
                           <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(200, 169, 110, 0.15)', padding: '0 3px', borderRadius: '2px', fontFamily: "'IM Fell English SC', serif" }}>
-                            {slotInfo.nameEn}
+                            {isConsumableItem(activePreset) ? 'Consumable' : slotInfo.nameEn}
                           </span>
                         </div>
 
@@ -837,35 +870,37 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                               padding: '1px 6px',
                               fontFamily: "'IM Fell English SC', serif",
                               fontWeight: 'bold',
-                              background: 'rgba(200, 169, 110, 0.12)',
-                              border: '0.5px solid var(--pb)',
-                              color: 'var(--ink)',
+                              background: isConsumableItem(activePreset) ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.12)',
+                              border: isConsumableItem(activePreset) ? '0.5px solid #8b6914' : '0.5px solid var(--pb)',
+                              color: isConsumableItem(activePreset) ? '#ffffff' : 'var(--ink)',
                               borderRadius: '2px',
                               cursor: 'pointer'
                             }}
-                            title="Add to Backpack"
+                            title={isConsumableItem(activePreset) ? "Add to Backpack / Belt" : "Add to Backpack"}
                           >
-                            + Stash
+                            {isConsumableItem(activePreset) ? '+ Belt / Stash' : '+ Stash'}
                           </button>
-                          <button
-                            type="button"
-                            onClick={() => handleAddAndEquip(activeKey)}
-                            className="btn btn-p"
-                            style={{
-                              fontSize: '8px',
-                              padding: '1px 6px',
-                              fontFamily: "'IM Fell English SC', serif",
-                              fontWeight: 'bold',
-                              background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-                              border: '0.5px solid #8b6914',
-                              color: '#ffffff',
-                              borderRadius: '2px',
-                              cursor: 'pointer'
-                            }}
-                            title="Add and immediately equip"
-                          >
-                            ⚡ Equip
-                          </button>
+                          {!isConsumableItem(activePreset) && (
+                            <button
+                              type="button"
+                              onClick={() => handleAddAndEquip(activeKey)}
+                              className="btn btn-p"
+                              style={{
+                                fontSize: '8px',
+                                padding: '1px 6px',
+                                fontFamily: "'IM Fell English SC', serif",
+                                fontWeight: 'bold',
+                                background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                                border: '0.5px solid #8b6914',
+                                color: '#ffffff',
+                                borderRadius: '2px',
+                                cursor: 'pointer'
+                              }}
+                              title="Add and immediately equip"
+                            >
+                              ⚡ Equip
+                            </button>
+                          )}
                         </div>
                       </div>
 

@@ -1228,7 +1228,7 @@
   "cloudkill": {
     "nameDe": "Todeswolke",
     "nameEn": "Cloudkill",
-    "school": "Beschwörung (Erschaffung)",
+    "school": "Conjuration (Creation)",
     "level": 5,
     "classLevels": [
       {
@@ -1242,12 +1242,12 @@
     ],
     "components": "V, S",
     "castingTime": "1 standard action",
-    "range": "Mittel (30 m + 3 m/Stufe)",
+    "range": "Medium (100 ft. + 10 ft./level)",
     "targetOrEffectOrArea": "Effect: Cloud spreads in 20-ft. radius, 20 ft.",
-    "duration": "1 min./Stufe",
-    "savingThrow": "Zähigkeit, siehe Text",
-    "spellResistance": "Nein",
-    "description": "Erzeugt eine wandernde, giftige Nebelwolke aus gelbgrünem Gas. Kreaturen mit 3 oder weniger HD sterben sofort ohne Rettungswurf. Kreaturen mit 4-6 HD sterben bei misslungenem Zähigkeitswurf. Höhere Kreaturen erleiden jede Runde Konstitutionsschaden."
+    "duration": "1 min./level",
+    "savingThrow": "Fortitude partial; see text",
+    "spellResistance": "No",
+    "description": "Generates a bank of fog that moves away from you at 10 ft./round. Slays creatures with 3 or fewer HD; creatures with 4-6 HD must save or die (1d4 Con on save); creatures with 6+ HD take 1d4 Con damage/round."
   },
   "color_spray": {
     "nameDe": "Color Spray",
@@ -1344,7 +1344,7 @@
   "cone_of_cold": {
     "nameDe": "Kältekegel",
     "nameEn": "Cone of Cold",
-    "school": "Hervorrufung",
+    "school": "Evocation [Cold]",
     "level": 5,
     "classLevels": [
       {
@@ -1358,12 +1358,12 @@
     ],
     "components": "V, S, M/DF",
     "castingTime": "1 standard action",
-    "range": "15 m",
+    "range": "60 ft.",
     "targetOrEffectOrArea": "Area: Cone-shaped burst",
-    "duration": "Sofort",
-    "savingThrow": "Reflex, halbiert",
-    "spellResistance": "Ja",
-    "description": "Entfesselt einen eisigen Kältestrom in einem kegelförmigen Bereich. Verursacht 1w6 Kälteschaden pro Zauberstufe (maximal 15w6)."
+    "duration": "Instantaneous",
+    "savingThrow": "Reflex half",
+    "spellResistance": "Yes",
+    "description": "Creates an area of extreme cold in a 60-ft. cone, dealing 1d6 points of cold damage per caster level (maximum 15d6)."
   },
   "consecrate": {
     "nameDe": "Consecrate",
@@ -1644,7 +1644,7 @@
   "cure_light_wounds": {
     "nameDe": "Leichte Wunden heilen",
     "nameEn": "Cure Light Wounds",
-    "school": "Beschwörung (Heilung)",
+    "school": "Conjuration (Healing)",
     "level": 1,
     "classLevels": [
       {
@@ -1666,12 +1666,12 @@
     ],
     "components": "V, S",
     "castingTime": "1 standard action",
-    "range": "Berührung",
+    "range": "Touch",
     "targetOrEffectOrArea": "Target: Creature touched",
-    "duration": "Sofort",
-    "savingThrow": "Willen, halbiert (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Wenn du deine Hand auf ein lebendes Geschöpf legst, kanalisierst du positive Energie, die 1w8 + 1 Punkt pro Zauberstufe (maximal +5) heilt. Untote nehmen stattdessen Schaden."
+    "duration": "Instantaneous",
+    "savingThrow": "Will half (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "When laying your hand upon a living creature, you channel positive energy that cures 1d8 points of damage +1 point per caster level (maximum +5). Deals damage to undead instead."
   },
   "cure_light_wounds_mass": {
     "nameDe": "Cure Light Wounds, Mass",
@@ -2248,7 +2248,7 @@
   "dimension_door": {
     "nameDe": "Dimensionstür",
     "nameEn": "Dimension Door",
-    "school": "Beschwörung (Teleportation)",
+    "school": "Conjuration (Teleportation)",
     "level": 4,
     "classLevels": [
       {
@@ -2266,12 +2266,12 @@
     ],
     "components": "V",
     "castingTime": "1 standard action",
-    "range": "Persönlich oder Berührung",
+    "range": "Long (400 ft. + 40 ft./level)",
     "targetOrEffectOrArea": "Target: You and touched objects or other",
-    "duration": "Sofort",
-    "savingThrow": "Keiner",
-    "spellResistance": "Nein",
-    "description": "Du teleportierst dich und optional verbundene Kreaturen augenblicklich an einen beliebigen Ort innerhalb der Reichweite (120 m + 12 m/Stufe). Nach dem Teleportieren kannst du in dieser Runde nicht mehr handeln."
+    "duration": "Instantaneous",
+    "savingThrow": "None and Will negates (object)",
+    "spellResistance": "No and Yes (object)",
+    "description": "Instantly transfers you and optional touched allies up to the spell's range. After using this spell, you cannot take any other actions until your next turn."
   },
   "dimensional_anchor": {
     "nameDe": "Dimensional Anchor",
@@ -2460,7 +2460,7 @@
   "dispel_magic": {
     "nameDe": "Bannen von Magie",
     "nameEn": "Dispel Magic",
-    "school": "Abbeschwörung",
+    "school": "Abjuration",
     "level": 3,
     "classLevels": [
       {
@@ -2482,12 +2482,12 @@
     ],
     "components": "V, S",
     "castingTime": "1 standard action",
-    "range": "Mittel (30 m + 3 m/Stufe)",
+    "range": "Medium (100 ft. + 10 ft./level)",
     "targetOrEffectOrArea": "",
-    "duration": "Sofort",
-    "savingThrow": "Keiner",
-    "spellResistance": "Nein",
-    "description": "Du kannst diesen Zauber verwenden, um aktive magische Effekte auf Kreaturen oder Objekten zu beenden, oder um das Wirken eines Zaubers als Gegenzauber zu neutralisieren."
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Can be used to end ongoing spells that are on a creature or object, to suppress the magical abilities of a magic item, or to counter another spellcaster's spell (1d20 + caster level, max +10 vs DC 11 + spell's caster level)."
   },
   "displacement": {
     "nameDe": "Displacement",
@@ -3246,7 +3246,7 @@
   "fireball": {
     "nameDe": "Feuerball",
     "nameEn": "Fireball",
-    "school": "Hervorrufung",
+    "school": "Evocation [Fire]",
     "level": 3,
     "classLevels": [
       {
@@ -3260,12 +3260,12 @@
     ],
     "components": "V, S, M",
     "castingTime": "1 standard action",
-    "range": "Weit (120 m + 12 m/Stufe)",
+    "range": "Long (400 ft. + 40 ft./level)",
     "targetOrEffectOrArea": "Area: 20-ft.-radius spread",
-    "duration": "Sofort",
-    "savingThrow": "Reflex, halbiert",
-    "spellResistance": "Ja",
-    "description": "Ein zischender Feuerball explodiert in einem Radius von 6 m und verursacht 1w6 Punkte Feuerschaden pro Zauberstufe (maximal 10w6)."
+    "duration": "Instantaneous",
+    "savingThrow": "Reflex half",
+    "spellResistance": "Yes",
+    "description": "A 20-ft. radius burst of fire dealing 1d6 points of fire damage per caster level (maximum 10d6) to every creature and unattended object within the area."
   },
   "flame_arrow": {
     "nameDe": "Flame Arrow",
@@ -3436,12 +3436,12 @@
     ],
     "components": "V, S, F/DF",
     "castingTime": "1 standard action",
-    "range": "Berührung",
+    "range": "Touch",
     "targetOrEffectOrArea": "Target: Creature touched",
-    "duration": "1 min./Stufe",
-    "savingThrow": "Willen, keine Wirkung (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Das berührte Geschöpf kann mit einer Geschwindigkeit von 18 m (bzw. 12 m in schwerer Rüstung) fliegen (gute Manövrierfähigkeit)."
+    "duration": "1 min./level",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "The subject can fly at a speed of 60 feet (or 40 feet if wearing medium or heavy armor, or carrying a medium or heavy load) with good maneuverability."
   },
   "fog_cloud": {
     "nameDe": "Fog Cloud",
@@ -3904,7 +3904,7 @@
   "grease": {
     "nameDe": "Schmieren",
     "nameEn": "Grease",
-    "school": "Beschwörung",
+    "school": "Conjuration (Creation)",
     "level": 1,
     "classLevels": [
       {
@@ -3922,12 +3922,12 @@
     ],
     "components": "V, S, M",
     "castingTime": "1 standard action",
-    "range": "Nah (7.5 m + 1.5 m/2 Stufen)",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
     "targetOrEffectOrArea": "",
-    "duration": "1 Runde/Stufe (K)",
-    "savingThrow": "Siehe Text",
-    "spellResistance": "Nein",
-    "description": "Macht einen quadratischen Bereich von 3m Seitenlänge extrem rutschig. Jede Kreatur im Bereich muss einen Reflexwurf bestehen oder fällt hin. Wer sich hindurchbewegen will, muss einen Wurf auf Balance machen."
+    "duration": "1 round/level (D)",
+    "savingThrow": "See text",
+    "spellResistance": "No",
+    "description": "Covers a solid surface with a slippery layer of oil in a 10-ft. square or on a single object. Creatures in the area must make a DC Reflex save each round or fall prone."
   },
   "guards_and_wards": {
     "nameDe": "Guards and Wards",
@@ -4148,12 +4148,12 @@
     ],
     "components": "V, S, M",
     "castingTime": "1 standard action",
-    "range": "Nah (7.5 m + 1.5 m/2 Stufen)",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
     "targetOrEffectOrArea": "",
-    "duration": "1 round/level (D)",
-    "savingThrow": "Willen, keine Wirkung (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Empfänger bewegen und handeln extrem schnell. Sie erhalten +1 Ausweichen-Bonus auf die RK, +1 Bonus auf Angriffswürfe und +1 Bonus auf Reflexwürfe, sowie einen zusätzlichen Angriff bei einem vollen Angriff.",
+    "duration": "1 round/level",
+    "savingThrow": "Fortitude negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "Subjects move and act faster: +1 bonus on attack rolls, +1 dodge bonus to AC and Reflex saves, +30 ft. enhancement bonus to speed, and an extra attack at full BAB on a full attack action.",
     "effects": [
       {
         "target": "atk",
@@ -4178,7 +4178,7 @@
   "heal": {
     "nameDe": "Heilung",
     "nameEn": "Heal",
-    "school": "Beschwörung (Heilung)",
+    "school": "Conjuration (Healing)",
     "level": 6,
     "classLevels": [
       {
@@ -4192,12 +4192,12 @@
     ],
     "components": "V, S",
     "castingTime": "1 standard action",
-    "range": "Berührung",
+    "range": "Touch",
     "targetOrEffectOrArea": "Target: Creature touched",
-    "duration": "Sofort",
-    "savingThrow": "Willen, keine Wirkung (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Kanalisiert gewaltige positive Energie, um alle Wunden eines Geschöpfs vollständig zu heilen (10 Punkte pro Zauberstufe, maximal 150 Punkte). Heilt außerdem Blindheit, Betäubung, Verwirrung, Erschöpfung und Krankheiten."
+    "duration": "Instantaneous",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "Channels positive energy to wipe away disease and injury, curing 10 hit points per caster level (max 150 hp) and removing blindness, deafness, feeblemind, poison, and other conditions."
   },
   "heal_mount": {
     "nameDe": "Heal Mount",
@@ -4719,7 +4719,7 @@
   "invisibility": {
     "nameDe": "Unsichtbarkeit",
     "nameEn": "Invisibility",
-    "school": "Illusion",
+    "school": "Illusion (Glamer)",
     "level": 2,
     "classLevels": [
       {
@@ -4737,12 +4737,12 @@
     ],
     "components": "V, S, M/DF",
     "castingTime": "1 standard action",
-    "range": "Persönlich oder Berührung",
+    "range": "Personal or touch",
     "targetOrEffectOrArea": "Target: You or a creature or object weigh-",
-    "duration": "1 min./Stufe (K)",
-    "savingThrow": "Willen, keine Wirkung (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Das berührte Geschöpf oder Objekt wird unsichtbar. Der Zauber endet vorzeitig, wenn das unsichtbare Geschöpf einen Angriff ausführt oder einen offensiven Zauber wirkt."
+    "duration": "1 min./level (D)",
+    "savingThrow": "Will negates (harmless) or Will negates (harmless, object)",
+    "spellResistance": "Yes (harmless) or Yes (harmless, object)",
+    "description": "The creature or object touched becomes invisible, vanishing from sight, even from darkvision. If the recipient is carrying gear, that gear vanishes too. The spell ends if the subject attacks any creature."
   },
   "ironwood": {
     "nameDe": "Ironwood",
@@ -5125,12 +5125,12 @@
     ],
     "components": "V, S, F",
     "castingTime": "1 standard action",
-    "range": "Berührung",
+    "range": "Touch",
     "targetOrEffectOrArea": "Target: Creature touched",
     "duration": "1 hour/level (D)",
-    "savingThrow": "Willen, keine Wirkung (harmlos)",
-    "spellResistance": "Nein",
-    "description": "Ein unsichtbares, greifbares Kraftfeld umgibt den Empfänger und gewährt einen +4 Rüstungsbonus auf die Rüstungsklasse. Wirkt nicht kumulativ mit normaler Rüstung.",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "No",
+    "description": "An invisible but tangible field of force surrounds the subject of a mage armor spell, providing a +4 armor bonus to AC. Unlike mundane armor, mage armor entails no armor check penalty, arcane spell failure chance, or speed reduction.",
     "effects": [
       {
         "target": "acArmor",
@@ -5251,7 +5251,7 @@
   "magic_missile": {
     "nameDe": "Magisches Geschoss",
     "nameEn": "Magic Missile",
-    "school": "Hervorrufung",
+    "school": "Evocation [Force]",
     "level": 1,
     "classLevels": [
       {
@@ -5265,12 +5265,12 @@
     ],
     "components": "V, S",
     "castingTime": "1 standard action",
-    "range": "Mittel (30 m + 3 m/Stufe)",
+    "range": "Medium (100 ft. + 10 ft./level)",
     "targetOrEffectOrArea": "",
-    "duration": "Sofort",
-    "savingThrow": "Keiner",
-    "spellResistance": "Ja",
-    "description": "Ein Geschoss aus magischer Kraft schießt aus deinen Fingern und trifft sein Ziel unfehlbar. Es verursacht 1w4+1 Punkte Kraftschaden. Für je zwei Stufen über der 1. erhältst du ein weiteres Geschoss (maximal 5 Geschosse bei Stufe 9)."
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "Yes",
+    "description": "A missile of magical energy darts forth from your fingertip and unerringly strikes its target, dealing 1d4+1 points of force damage. Gains +1 missile per 2 caster levels beyond 1st (max 5 missiles at 9th level)."
   },
   "magic_mouth": {
     "nameDe": "Magic Mouth",
@@ -8075,12 +8075,12 @@
     ],
     "components": "V, S, M",
     "castingTime": "1 standard action",
-    "range": "Berührung",
+    "range": "Touch",
     "targetOrEffectOrArea": "Target: Creature touched",
     "duration": "1 min./level",
-    "savingThrow": "Willen, keine Wirkung (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Ein göttliches Feld umgibt den Empfänger und gewährt einen +2 Ablenkung-Bonus auf die Rüstungsklasse (steigt um +1 pro 6 Zauberstufen, maximal +5).",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "Surrounds the subject with a shimmering magical field of divine energy that grants a +2 deflection bonus to Armor Class, with an additional +1 per six caster levels (max +5 deflection at 18th level).",
     "effects": [
       {
         "target": "acDeflection",
@@ -8830,7 +8830,7 @@
   "stoneskin": {
     "nameDe": "Steinhaut",
     "nameEn": "Stoneskin",
-    "school": "Abbeschwörung",
+    "school": "Abjuration",
     "level": 4,
     "classLevels": [
       {
@@ -8848,12 +8848,12 @@
     ],
     "components": "V, S, M",
     "castingTime": "1 standard action",
-    "range": "Berührung",
+    "range": "Touch",
     "targetOrEffectOrArea": "Target: Creature touched",
-    "duration": "10 min./Stufe oder bis entladen",
-    "savingThrow": "Willen, keine Wirkung (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Die Haut des Empfängers wird so hart wie Stein. Gewährt Schadensreduktion (DR) 10/Adamant. Sobald der Zauber insgesamt 10 TP Schaden pro Zauberstufe blockiert hat, erlischt er."
+    "duration": "10 min./level or until discharged",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "The warded creature gains resistance to blows, cuts, stabs, and slashes. The subject gains damage reduction 10/adamantine, absorbing up to 10 points of damage per caster level (max 150 points)."
   },
   "stone_to_flesh": {
     "nameDe": "Stone to Flesh",
@@ -10103,7 +10103,7 @@
   "wish": {
     "nameDe": "Wunsch",
     "nameEn": "Wish",
-    "school": "Universell",
+    "school": "Universal",
     "level": 9,
     "classLevels": [
       {
@@ -10117,12 +10117,12 @@
     ],
     "components": "V, XP",
     "castingTime": "1 standard action",
-    "range": "Siehe Text",
+    "range": "See text",
     "targetOrEffectOrArea": "",
-    "duration": "Sofort",
-    "savingThrow": "Siehe Text",
-    "spellResistance": "Ja",
-    "description": "Der mächtigste Zauber, den ein sterblicher Magier wirken kann. Kann fast jeden Zauber replizieren, Wunden vollständig heilen, Attribute dauerhaft steigern oder die Realität selbst verändern. Kostet 5.000 EP."
+    "duration": "Instantaneous",
+    "savingThrow": "See text",
+    "spellResistance": "Yes",
+    "description": "The mightiest spell a mortal wizard or sorcerer can cast. By simply speaking aloud, you can alter the reality of the world itself to replicate any lower-level spell, remove harmful effects, or grant inherent bonuses."
   },
   "wood_shape": {
     "nameDe": "Wood Shape",
@@ -10194,10 +10194,10 @@
     "school": "Abjuration [Force]",
     "level": 1,
     "duration": "1 min./level (D)",
-    "range": "Persönlich",
-    "savingThrow": "Keiner",
-    "spellResistance": "Nein",
-    "description": "Erzeugt eine unsichtbare Scheibe aus Kraft, die dir einen +4 Schildbonus auf die RK gewährt und magische Geschosse (wie Magisches Geschoss) blockiert.",
+    "range": "Personal",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Creates an invisible, mobile disk of force that hovers in front of you, granting a +4 shield bonus to AC and negating magic missile attacks directed at you.",
     "effects": [
       {
         "target": "acShield",
@@ -10224,9 +10224,9 @@
     "level": 1,
     "duration": "1 min./level",
     "range": "50 ft.",
-    "savingThrow": "Keiner",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Verbündete erhalten einen +1 Moralbonus auf Angriffswürfe und Rettungswürfe gegen Furcht.",
+    "savingThrow": "None",
+    "spellResistance": "Yes (harmless)",
+    "description": "Bless fills your allies with courage. Each ally gains a +1 morale bonus on attack rolls and on saving throws against fear effects.",
     "effects": [
       {
         "target": "atk",
@@ -10255,13 +10255,13 @@
   "sleep": {
     "nameDe": "Schlaf",
     "nameEn": "Sleep",
-    "school": "Verzauberung (Zwang)",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
     "level": 1,
-    "duration": "1 min./Stufe",
-    "range": "Mittel (30 m + 3 m/Stufe)",
-    "savingThrow": "Willen, keine Wirkung",
-    "spellResistance": "Ja",
-    "description": "Dieser Zauber versetzt ein oder mehrere Geschöpfe in einen tiefen, magischen Schlaf. Betrifft bis zu 4 Trefferwürfel (HD) von Kreaturen.",
+    "duration": "1 min./level",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "savingThrow": "Will negates",
+    "spellResistance": "Yes",
+    "description": "A sleep spell causes a magical slumber to come upon 4 HD of creatures. Sleeping creatures are helpless. Slapping or wounding awakens an affected creature, but normal noise does not.",
     "classLevels": [
       {
         "class": "bard",
@@ -10283,10 +10283,10 @@
     "school": "Transmutation",
     "level": 2,
     "duration": "1 min./level",
-    "range": "Berührung",
-    "savingThrow": "Willen, keine Wirkung (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Der Empfänger wird stärker. Der Zauber gewährt einen +4 Verbesserung-Bonus auf Stärke (+2 auf STR-Modifikator).",
+    "range": "Touch",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "The subject becomes stronger. The spell grants a +4 enhancement bonus to Strength, adding the usual benefits to melee attack rolls, melee damage rolls, and Strength-based checks.",
     "effects": [
       {
         "target": "str",
@@ -10324,10 +10324,10 @@
     "school": "Transmutation",
     "level": 2,
     "duration": "1 min./level",
-    "range": "Berührung",
-    "savingThrow": "Willen, keine Wirkung (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Der Empfänger wird geschmeidiger. Gewährt einen +4 Verbesserung-Bonus auf Geschicklichkeit.",
+    "range": "Touch",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "The transmuted creature becomes more graceful, agile, and coordinated. The spell grants a +4 enhancement bonus to Dexterity, adding the usual benefits to AC, Reflex saves, and Dexterity-based checks.",
     "effects": [
       {
         "target": "dex",
@@ -10365,10 +10365,10 @@
     "school": "Transmutation",
     "level": 2,
     "duration": "1 min./level",
-    "range": "Berührung",
-    "savingThrow": "Willen, keine Wirkung (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Der Empfänger wird widerstandsfähiger. Gewährt einen +4 Verbesserung-Bonus auf Konstitution.",
+    "range": "Touch",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "The transmuted creature gains greater vitality and stamina. The spell grants a +4 enhancement bonus to Constitution, adding the usual benefits to hit points, Fortitude saves, and Constitution checks.",
     "effects": [
       {
         "target": "con",
@@ -10403,13 +10403,13 @@
   "mirror_image": {
     "nameDe": "Spiegelbilder",
     "nameEn": "Mirror Image",
-    "school": "Illusion",
+    "school": "Illusion (Figment)",
     "level": 2,
-    "duration": "1 min./Stufe (K)",
-    "range": "Persönlich",
-    "savingThrow": "Keiner",
-    "spellResistance": "Nein",
-    "description": "Erzeugt 1w4 + 1 Trugbilder (Spiegelbilder) von dir, die sich synchron mit dir bewegen. Jeder Angriff gegen dich trifft stattdessen mit hoher Wahrscheinlichkeit eines der Spiegelbilder und zerstört es.",
+    "duration": "1 min./level (D)",
+    "range": "Personal",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Creates 1d4 + 1 illusory duplicates of yourself (max 8) that move in coordination with you. An attacker must choose a target at random; hitting a figment destroys it.",
     "classLevels": [
       {
         "class": "bard",
@@ -10432,9 +10432,9 @@
     "level": 3,
     "duration": "1 round/level",
     "range": "40 ft.",
-    "savingThrow": "Keiner",
-    "spellResistance": "Ja",
-    "description": "Du erflehst die Gunst deiner Gottheit. Verbündete erhalten einen +1 Glücksbonus auf Angriffs-, Schadens-, Rettungswürfe und Fertigkeitswürfe. Feinde erleiden −1 auf dieselben Würfe.",
+    "savingThrow": "None",
+    "spellResistance": "Yes",
+    "description": "You bring special favor upon yourself and your allies while bringing disfavor to your enemies. You and each of your allies gain a +1 luck bonus on attack rolls, weapon damage rolls, saves, and skill checks, while each of your enemies takes a -1 penalty on such rolls.",
     "effects": [
       {
         "target": "atk",
@@ -10481,13 +10481,13 @@
   "cure_serious_wounds": {
     "nameDe": "Schwere Wunden heilen",
     "nameEn": "Cure Serious Wounds",
-    "school": "Beschwörung (Heilung)",
+    "school": "Conjuration (Healing)",
     "level": 4,
-    "duration": "Sofort",
-    "range": "Berührung",
-    "savingThrow": "Willen, halbiert (harmlos)",
-    "spellResistance": "Ja (harmlos)",
-    "description": "Kanalisiert positive Energie, die 3w8 + 1 Punkt pro Zauberstufe (maximal +15) heilt.",
+    "duration": "Instantaneous",
+    "range": "Touch",
+    "savingThrow": "Will half (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "Channels positive energy to cure 3d8 points of damage +1 point per caster level (maximum +15). Deals damage to undead instead.",
     "classLevels": [
       {
         "class": "cleric",
@@ -10516,11 +10516,11 @@
     "nameEn": "Time Stop",
     "school": "Transmutation",
     "level": 9,
-    "duration": "Persönlich",
-    "range": "Persönlich",
-    "savingThrow": "Keiner",
-    "spellResistance": "Nein",
-    "description": "Du scheinst dich so schnell zu bewegen, dass die Zeit für alle anderen Geschöpfe stillsteht. Du kannst 1w4+1 Runden lang in völliger Freiheit agieren, in denen andere handlungsunfähig sind.",
+    "duration": "1d4+1 rounds (apparent time)",
+    "range": "Personal",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You speed up so greatly that all other creatures seem, to you, to be frozen, though they are actually moving at normal speed. You can act freely for 1d4+1 rounds of apparent time.",
     "classLevels": [
       {
         "class": "sorcerer",

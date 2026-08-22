@@ -60,6 +60,17 @@ export function recalculateDailyAbilities(pc) {
         pc.dailyAbilities.push({ name: "Ray Mastery: Empower", max: 1, used: 0 });
       }
     }
+
+    const sbi = pc.classes.find(c => c.classType === 'shadowbane_inquisitor');
+    if (sbi && sbi.level >= 2) {
+      const sbiSmiteMax = sbi.level >= 10 ? 3 : (sbi.level >= 6 ? 2 : 1);
+      const existingSmite = pc.dailyAbilities.find(a => a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt");
+      if (existingSmite) {
+        existingSmite.max = sbiSmiteMax;
+      } else {
+        pc.dailyAbilities.push({ name: "Smite (Inquisitor)", max: sbiSmiteMax, used: 0 });
+      }
+    }
   }
 
   // Apply feats modifications on daily resources

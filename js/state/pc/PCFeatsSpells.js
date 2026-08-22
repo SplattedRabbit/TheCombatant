@@ -65,7 +65,7 @@ export function updatePCDailyAbilityUsed(idx, diff) {
 export function consumeSmiteEvilCharge() {
   const pc = getActivePC();
   if (pc && Array.isArray(pc.dailyAbilities)) {
-    const smiteAbility = pc.dailyAbilities.find(a => a.name === "Böses niederstrecken" || a.name === "Smite Evil");
+    const smiteAbility = pc.dailyAbilities.find(a => a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt");
     if (smiteAbility) {
       if (smiteAbility.used < smiteAbility.max) {
         smiteAbility.used += 1;

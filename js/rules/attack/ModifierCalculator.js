@@ -77,10 +77,12 @@ export function calculateGeneralAtkModifiers(ctx) {
 
   if (ctx.options.smite && ctx.isMelee) {
     const paladinClass = Array.isArray(ctx.pc.classes) && ctx.pc.classes.find(c => c.classType === 'paladin');
-    if (paladinClass) {
+    const shadowbaneClass = Array.isArray(ctx.pc.classes) && ctx.pc.classes.find(c => c.classType === 'shadowbane_inquisitor' && c.level >= 2);
+    if (paladinClass || shadowbaneClass) {
       if (ctx.chaMod > 0) {
         generalAtkMod += ctx.chaMod;
-        generalAtkBreakdown.push({ label: 'Böses niederstrecken (CHA)', value: ctx.chaMod });
+        const label = shadowbaneClass && !paladinClass ? 'Smite Corrupt (CHA)' : 'Böses niederstrecken (CHA)';
+        generalAtkBreakdown.push({ label, value: ctx.chaMod });
       }
     }
   }
@@ -152,6 +154,11 @@ export function calculateGeneralDmgModifiers(ctx) {
     if (paladinClass) {
       generalDmgMod += paladinClass.level;
       generalDmgBreakdown.push({ label: 'Böses niederstrecken (Stufe)', value: paladinClass.level });
+    }
+    const shadowbaneClass = Array.isArray(ctx.pc.classes) && ctx.pc.classes.find(c => c.classType === 'shadowbane_inquisitor' && c.level >= 2);
+    if (shadowbaneClass) {
+      generalDmgMod += shadowbaneClass.level;
+      generalDmgBreakdown.push({ label: 'Smite Corrupt (Inquisitor-Stufe)', value: shadowbaneClass.level });
     }
   }
 

@@ -12,8 +12,10 @@
 
 import { DMG_PRESTIGE_CLASSES_REGISTRY } from './prestigeClasses-dmg.js';
 import { CS_PRESTIGE_CLASSES_REGISTRY } from './prestigeClasses-cs.js';
+import { CA_PRESTIGE_CLASSES_REGISTRY } from './prestigeClasses-ca.js';
 
 export const PRESTIGE_CLASSES_REGISTRY = {
   ...DMG_PRESTIGE_CLASSES_REGISTRY,
-  ...CS_PRESTIGE_CLASSES_REGISTRY
+  ...CS_PRESTIGE_CLASSES_REGISTRY,
+  ...CA_PRESTIGE_CLASSES_REGISTRY
 };

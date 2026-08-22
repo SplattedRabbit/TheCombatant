@@ -4,6 +4,7 @@ import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { ITEM_SLOTS, MAGIC_ITEMS_REGISTRY, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
 import { formatEffectDisplay } from './BodySlotCard';
+import { isConsumableItem, getItemTypeIcon } from './ArmoryTab';
 
 interface ItemCompendiumModalProps {
   initialSlot?: string;
@@ -185,12 +186,12 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexWrap: 'wrap' }}>
-                      <span style={{ fontSize: '12px' }}>{slotInfo.icon}</span>
+                      <span style={{ fontSize: '12px' }}>{getItemTypeIcon(activePreset, slotInfo.icon)}</span>
                       <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                         {activePreset.name || entry.baseName}
                       </span>
                       <span style={{ fontSize: '7.5px', background: 'rgba(200, 169, 110, 0.15)', color: 'var(--inkm)', padding: '0 4px', borderRadius: '2px', fontFamily: "'IM Fell English SC', serif" }}>
-                        {slotInfo.nameEn}
+                        {isConsumableItem(activePreset) ? 'Consumable' : slotInfo.nameEn}
                       </span>
                     </div>
 
@@ -231,35 +232,37 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                           padding: '2px 7px',
                           fontFamily: "'IM Fell English SC', serif",
                           fontWeight: 'bold',
-                          background: 'rgba(200, 169, 110, 0.12)',
-                          border: '0.5px solid var(--pb)',
-                          color: 'var(--ink)',
+                          background: isConsumableItem(activePreset) ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.12)',
+                          border: isConsumableItem(activePreset) ? '0.5px solid #8b6914' : '0.5px solid var(--pb)',
+                          color: isConsumableItem(activePreset) ? '#ffffff' : 'var(--ink)',
                           borderRadius: '2px',
                           cursor: 'pointer'
                         }}
-                        title="Add to Backpack"
+                        title={isConsumableItem(activePreset) ? "Add to Backpack / Belt" : "Add to Backpack"}
                       >
-                        + Backpack
+                        {isConsumableItem(activePreset) ? '+ Belt / Stash' : '+ Backpack'}
                       </button>
-                      <button
-                        type="button"
-                        onClick={() => handleAddAndEquip(activeKey)}
-                        className="btn btn-p"
-                        style={{
-                          fontSize: '8px',
-                          padding: '2px 7px',
-                          fontFamily: "'IM Fell English SC', serif",
-                          fontWeight: 'bold',
-                          background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-                          border: '0.5px solid #8b6914',
-                          color: '#ffffff',
-                          borderRadius: '2px',
-                          cursor: 'pointer'
-                        }}
-                        title="Add & Equip"
-                      >
-                        ⚡ Equip
-                      </button>
+                      {!isConsumableItem(activePreset) && (
+                        <button
+                          type="button"
+                          onClick={() => handleAddAndEquip(activeKey)}
+                          className="btn btn-p"
+                          style={{
+                            fontSize: '8px',
+                            padding: '2px 7px',
+                            fontFamily: "'IM Fell English SC', serif",
+                            fontWeight: 'bold',
+                            background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                            border: '0.5px solid #8b6914',
+                            color: '#ffffff',
+                            borderRadius: '2px',
+                            cursor: 'pointer'
+                          }}
+                          title="Add & Equip directly"
+                        >
+                          ⚡ Equip
+                        </button>
+                      )}
                     </div>
                   </div>
 

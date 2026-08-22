@@ -10,6 +10,8 @@ import { recalculatePCStats, syncPCToHost } from './PCGeneral.js';
 import { Weapon, Armor, Item } from '../../models/model-core.js';
 import { WeaponRegistry } from '../../models/Weapon.js';
 import { MAGIC_ITEMS_REGISTRY } from '../../data/magicItems-data.js';
+import { CombatSpells } from '../../spells.js';
+import { CLASS_BUFFS } from '../../data/class-buffs-data.js';
 
 export function updatePCWeapon(idx, key, val) {
   const pc = getActivePC();
@@ -529,14 +531,18 @@ export function usePCItemAction(itemIdx, customHealAmount) {
     if (!Array.isArray(pc.activeBuffs)) pc.activeBuffs = [];
     const isAlreadyActive = pc.activeBuffs.some(b => b.spellKey === buffKey);
     if (!isAlreadyActive) {
+      const classBuff = CLASS_BUFFS.find(b => b.key === buffKey);
+      const spell = CombatSpells.REGISTRY?.[buffKey];
+      const buffDisplayName = classBuff?.name || spell?.nameEn || spell?.nameDe || buffKey.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+
       pc.activeBuffs.push({
         id: 'item_buff_' + Date.now(),
         spellKey: buffKey,
-        name: item.name,
+        name: buffDisplayName,
         source: item.name,
         durationRemainingRounds: 10
       });
-      resultMessage += (resultMessage ? ' | ' : '') + `Activated ${buffKey.toUpperCase()} from ${item.name}!`;
+      resultMessage += (resultMessage ? ' | ' : '') + `Activated ${buffDisplayName} from ${item.name}!`;
     }
   }
 
@@ -567,6 +573,23 @@ export function usePCItemAction(itemIdx, customHealAmount) {
   };
 }
 
+function isConsumablePreset(preset) {
+  if (!preset) return false;
+  const name = (preset.name || '').toLowerCase();
+  const key = (preset.key || '').toLowerCase();
+  const type = (preset.type || '').toLowerCase();
+
+  if (type === 'potion' || type === 'scroll' || type === 'wand' || type === 'consumable' || type === 'alchemical') return true;
+  if (key.startsWith('potion_') || key.startsWith('scroll_') || key.startsWith('wand_')) return true;
+  if (name.includes('potion') || name.includes('scroll') || name.includes('wand') || name.includes('trank') || name.includes('schriftrolle')) return true;
+
+  const hasPassiveEffects = Array.isArray(preset.effects) && preset.effects.some(e => (parseInt(e.value) || 0) !== 0);
+  if (!hasPassiveEffects && (preset.healingFormula || preset.damageFormula || preset.activation?.appliedBuffKey || preset.charges?.max === 1)) {
+    return true;
+  }
+  return false;
+}
+
 /**
  * Adds an item from the MAGIC_ITEMS_REGISTRY preset compendium to the PC inventory.
  * @param {string} presetKey
@@ -587,9 +610,12 @@ export function addPCItemFromCompendium(presetKey, shouldEquip = false) {
   const newIdx = pc.items.length;
   pc.items.push(newItem);
 
-  if (shouldEquip) {
+  const isConsumable = isConsumablePreset(preset);
+
+  if (shouldEquip && !isConsumable) {
     equipPCItem(newIdx, preset.slot);
   } else {
+    newItem.isEquipped = false;
     recalculatePCStats(pc);
     saveToStorage();
     syncPCToHost();

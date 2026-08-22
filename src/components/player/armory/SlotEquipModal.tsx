@@ -4,6 +4,7 @@ import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { MAGIC_ITEMS_REGISTRY, ITEM_SLOTS, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
 import { formatEffectDisplay } from './BodySlotCard';
+import { isConsumableItem } from './ArmoryTab';
 
 interface SlotEquipModalProps {
   slotKey: string;
@@ -30,9 +31,9 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
   const backpackCandidates: Array<{ item: any; idx: number }> = [];
   items.forEach((item: any, idx: number) => {
     if (!item.isEquipped) {
-      const isDirectMatch = item.slot === slotKey;
+      const isDirectMatch = item.slot === slotKey && !isConsumableItem(item);
       const isRingMatch = (slotKey === 'ring1' || slotKey === 'ring2') && (item.slot === 'ring' || item.slot === 'ring1' || item.slot === 'ring2');
-      const isSlotlessMatch = item.slot === 'slotless' && slotKey === 'slotless';
+      const isSlotlessMatch = item.slot === 'slotless' && slotKey === 'slotless' && !isConsumableItem(item);
       if (isDirectMatch || isRingMatch || isSlotlessMatch) {
         backpackCandidates.push({ item, idx });
       }

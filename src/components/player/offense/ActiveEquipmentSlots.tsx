@@ -64,12 +64,14 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
   const duskbladeClass = activeClasses.find((c: any) => c.classType === 'duskblade');
   const scoutClass = activeClasses.find((c: any) => c.classType === 'scout');
   const ninjaClass = activeClasses.find((c: any) => c.classType === 'ninja');
+  const shadowbaneClass = activeClasses.find((c: any) => c.classType === 'shadowbane_inquisitor');
+  const shadowbaneLvl = shadowbaneClass ? shadowbaneClass.level : 0;
 
   const sneakAttackDice = typeof pc.getSneakAttackDiceCount === 'function' ? pc.getSneakAttackDiceCount() : 0;
   const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus() : 0;
 
   const smiteAbility = Array.isArray(pc.dailyAbilities) 
-    ? pc.dailyAbilities.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil")
+    ? pc.dailyAbilities.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt")
     : null;
   const smiteMax = smiteAbility ? smiteAbility.max : 0;
   const smiteUsed = smiteAbility ? smiteAbility.used : 0;
@@ -251,13 +253,13 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
 
     const strikes: Array<{ id: string; name: string; render: (selectorDropdown?: React.ReactNode) => React.ReactNode }> = [];
 
-    // 1. Paladin (Smite Evil / Charging Smite)
-    if (paladinLvl > 0 || !!smiteAbility) {
+    // 1. Paladin / Shadowbane Inquisitor (Smite Evil / Smite Corrupt / Charging Smite)
+    if (paladinLvl > 0 || shadowbaneLvl >= 2 || !!smiteAbility) {
       const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
-      const smiteTitle = hasChargingSmite ? 'Charging Smite' : 'Smite Evil';
+      const smiteTitle = shadowbaneLvl >= 2 && paladinLvl === 0 ? 'Smite Corrupt' : (hasChargingSmite ? 'Charging Smite' : 'Smite Evil');
       const smiteSeq = AttackEngine.calculateAttackSequence(pc, w, false, { smite: true, noSneak: true });
       const stdSmite = smiteSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w8' };
-      const smiteDmgText = hasChargingSmite ? `+${paladinLvl * 2}` : `+${paladinLvl}`;
+      const smiteDmgText = shadowbaneLvl >= 2 && paladinLvl === 0 ? `+${shadowbaneLvl}` : (hasChargingSmite ? `+${paladinLvl * 2}` : `+${paladinLvl + shadowbaneLvl}`);
 
       strikes.push({
         id: 'smite',

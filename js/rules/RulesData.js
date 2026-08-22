@@ -214,6 +214,35 @@ export const CLASSES = [
     }
   },
 
+  // Complete Adventurer Prestige Classes
+  {
+    key: 'shadowbane_inquisitor',
+    nameDe: 'Schattenbann-Inquisitor',
+    nameEn: 'Shadowbane Inquisitor',
+    isPrestige: true,
+    source: 'ca',
+    hd: 10,
+    skillBase: 4,
+    bab: 'full',
+    saves: { fort: 'good', ref: 'poor', wil: 'poor' },
+    spellcastingBonus: false,
+    prerequisites: {
+      alignment: 'lawful_good',
+      bab: 5,
+      skills: {
+        gather_information: 4,
+        knowledge_religion: 2,
+        sense_motive: 8
+      },
+      feats: ['power_attack'],
+      special: {
+        detect_evil: true,
+        turn_undead: true,
+        sneak_attack: 1
+      }
+    }
+  },
+
   // ── Prestige Classes ─────────────────────────────────────────────────────
   // (prestige classes retain their existing definitions below)
 
@@ -223,6 +252,11 @@ export const CLASSES = [
 
 
 export const CLASS_SKILLS = {
+  shadowbane_inquisitor: [
+    'climb', 'concentration', 'craft', 'decipher_script', 'gather_information',
+    'heal', 'hide', 'jump', 'knowledge_religion', 'move_silently',
+    'profession', 'search', 'sense_motive', 'swim'
+  ],
   barbarian: ['climb', 'craft', 'handle_animal', 'intimidate', 'jump', 'listen', 'ride', 'survival', 'swim'],
   bard: [
     'appraise', 'balance', 'bluff', 'climb', 'concentration', 'craft', 'decipher_script', 'diplomacy',

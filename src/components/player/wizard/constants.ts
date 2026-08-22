@@ -227,6 +227,7 @@ export const CLASSES_LIST = [
   { key: 'assassin',        name: 'Assassin',         hd: 6,  skillBase: 4, source: 'phb', desc: 'Master of stealth, anatomy, and lethal strikes.',                     isPrestige: true },
   { key: 'battle_trickster',name: 'Battle Trickster',  hd: 10, skillBase: 4, source: 'cs',  desc: 'A master of martial prowess combined with tricky tactics.',           isPrestige: true },
   { key: 'spellwarp_sniper',name: 'Spellwarp Sniper',  hd: 6,  skillBase: 4, source: 'cs',  desc: 'Transforms area-of-effect spells into precise, deadly ray spells.', isPrestige: true },
+  { key: 'shadowbane_inquisitor', name: 'Shadowbane Inquisitor', hd: 10, skillBase: 4, source: 'ca', desc: 'Righteous inquisitor purging evil with holy light, smite, and stealth.', isPrestige: true },
 ];
 
 

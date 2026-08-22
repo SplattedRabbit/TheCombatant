@@ -94,7 +94,14 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
     let label = 'Alignment';
     let reqStr = '';
     
-    if (prereqs.alignment === 'nonlawful') {
+    if (prereqs.alignment === 'lawful_good' || prereqs.alignment === 'lawful good' || prereqs.alignment === 'lg') {
+      label = 'Alignment: Lawful Good';
+      reqStr = 'Lawful Good';
+      const lowerAlign = normalizeAlignment(currentAlign);
+      if (lowerAlign !== 'lawful good' && !lowerAlign.includes('rechtschaffen gut') && !lowerAlign.includes('lawful good')) {
+        met = false;
+      }
+    } else if (prereqs.alignment === 'nonlawful') {
       label = 'Alignment: Non-Lawful';
       reqStr = 'Non-Lawful';
       const lowerAlign = normalizeAlignment(currentAlign);
@@ -117,7 +124,9 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
       met
     });
     if (!met) {
-      if (prereqs.alignment === 'nonlawful') {
+      if (prereqs.alignment === 'lawful_good' || prereqs.alignment === 'lawful good' || prereqs.alignment === 'lg') {
+        errors.push('Rechtschaffen Gute (LG) Gesinnung erforderlich');
+      } else if (prereqs.alignment === 'nonlawful') {
         errors.push('Gesinnung darf nicht rechtschaffen sein');
       } else {
         errors.push('Böse Gesinnung erforderlich');
@@ -227,8 +236,38 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
     }
   }
 
-  // 8. Special / Sneak Attack check
+  // 8. Special / Class Feature checks
   if (prereqs.special) {
+    if (prereqs.special.detect_evil) {
+      const hasDetectEvil = (Array.isArray(pc.classes) && pc.classes.some(c => 
+        (c.classType === 'paladin' && c.level >= 1) || 
+        (c.classType === 'cleric' && c.level >= 1)
+      )) || (Array.isArray(pc.learnedSpells) && pc.learnedSpells.includes('detect_evil'));
+      
+      metDetails.push({
+        label: 'Special: Detect Evil (class feature or divine spell)',
+        current: hasDetectEvil ? 'Yes' : 'No',
+        required: 'Yes',
+        met: hasDetectEvil
+      });
+      if (!hasDetectEvil) errors.push('Fähigkeit Böses Entdecken (Klassenmerkmal oder göttlicher Zauber) erforderlich');
+    }
+
+    if (prereqs.special.turn_undead) {
+      const hasTurnUndead = (Array.isArray(pc.classes) && pc.classes.some(c => 
+        (c.classType === 'cleric' && c.level >= 1) || 
+        (c.classType === 'paladin' && c.level >= 4)
+      )) || (typeof pc.hasFeat === 'function' && pc.hasFeat('turn_undead'));
+
+      metDetails.push({
+        label: 'Special: Turn Undead class feature',
+        current: hasTurnUndead ? 'Yes' : 'No',
+        required: 'Yes',
+        met: hasTurnUndead
+      });
+      if (!hasTurnUndead) errors.push('Klassenmerkmal Untote Vertreiben erforderlich');
+    }
+
     if (prereqs.special.sneak_attack !== undefined) {
       const saDice = pc.getSneakAttackDiceCount ? pc.getSneakAttackDiceCount() : 0;
       const met = saDice >= prereqs.special.sneak_attack;

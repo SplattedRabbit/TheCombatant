@@ -61,7 +61,7 @@ export const aranisSample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+4 Enhancement bonus to Strength for 3 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'bulls_strength', effectDescription: '+4 Enhancement bonus to Strength for 3 minutes' }
     },
     {
       name: 'Potion of Shield of Faith +2',
@@ -69,7 +69,7 @@ export const aranisSample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+2 Deflection bonus to AC for 1 minute' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'shield_of_faith', effectDescription: '+2 Deflection bonus to AC for 1 minute' }
     },
     {
       name: 'Holy Water',
@@ -86,7 +86,7 @@ export const aranisSample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+2 Resistance saves & +2 Deflection AC vs Evil' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'protection_from_evil', effectDescription: '+2 Resistance saves & +2 Deflection AC vs Evil' }
     },
     {
       name: "Alchemist's Fire",
@@ -167,7 +167,7 @@ export const morgwenSample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+2 Enhancement to Natural Armor AC for 20 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'barkskin', effectDescription: '+2 Enhancement to Natural Armor AC for 20 minutes' }
     },
     {
       name: 'Scroll of Searing Light',
@@ -276,7 +276,7 @@ export const thordakSample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+4 Enhancement bonus to Strength for 3 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'bulls_strength', effectDescription: '+4 Enhancement bonus to Strength for 3 minutes' }
     },
     {
       name: 'Potion of Enlarge Person',
@@ -284,7 +284,7 @@ export const thordakSample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: 'Large Size (+2 Str, -2 Dex, -1 AC/Attack, 10ft Reach) for 3 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'enlarge_person', effectDescription: 'Large Size (+2 Str, -2 Dex, -1 AC/Attack, 10ft Reach) for 3 minutes' }
     },
     {
       name: "Alchemist's Fire",
@@ -301,7 +301,7 @@ export const thordakSample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+2 Morale bonus on attack rolls, saves, and skill checks for 50 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'heroism', effectDescription: '+2 Morale bonus on attack rolls, saves, and skill checks for 50 minutes' }
     },
     {
       name: 'Tanglefoot Bag',
@@ -402,7 +402,16 @@ export const lysaraSample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: 'Invisibility for 3 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'invisibility', effectDescription: 'Invisibility for 3 minutes' }
+    },
+    {
+      name: 'Scroll of Invisibility',
+      slot: 'slotless',
+      type: 'scroll',
+      isEquipped: false,
+      quantity: 1,
+      charges: { current: 1, max: 1 },
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'invisibility', effectDescription: 'Casts Invisibility on reader for 3 minutes' }
     },
     {
       name: 'Wand of Magic Missile (CL 3)',
@@ -419,7 +428,7 @@ export const lysaraSample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+4 Armor AC for 1 hour' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'mage_armor', effectDescription: '+4 Armor AC for 1 hour' }
     }
   ],
   feats: [
@@ -523,7 +532,7 @@ export const wizardLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+1 Attack roll, +1 Dodge AC, +30ft speed for 5 rounds' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'haste', effectDescription: '+1 Attack roll, +1 Dodge AC, +30ft speed for 5 rounds' }
     },
     {
       name: 'Scroll of Chain Lightning',
@@ -558,7 +567,7 @@ export const wizardLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: 'Fly speed 60 ft. (good maneuverability) for 5 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'fly', effectDescription: 'Fly speed 60 ft. (good maneuverability) for 5 minutes' }
     }
   ],
   feats: [
@@ -678,7 +687,7 @@ export const rangerLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+1 Attack roll (extra attack on full attack), +1 Dodge AC, +30ft speed' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'haste', effectDescription: '+1 Attack roll (extra attack on full attack), +1 Dodge AC, +30ft speed' }
     },
     {
       name: 'Potion of Greater Invisibility',
@@ -686,7 +695,7 @@ export const rangerLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: 'Invisibility that remains active even when attacking for 1 minute' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'greater_invisibility', effectDescription: 'Invisibility that remains active even when attacking for 1 minute' }
     },
     {
       name: "Alchemist's Fire (Superior)",
@@ -703,7 +712,7 @@ export const rangerLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+3 Natural Armor bonus to AC for 30 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'barkskin', effectDescription: '+3 Natural Armor bonus to AC for 30 minutes' }
     },
     {
       name: "Potion of Cat's Grace",
@@ -711,7 +720,7 @@ export const rangerLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+4 Enhancement bonus to Dexterity for 3 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'cats_grace', effectDescription: '+4 Enhancement bonus to Dexterity for 3 minutes' }
     }
   ],
   feats: [
@@ -832,7 +841,7 @@ export const paladinLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+3 Luck bonus on attack and weapon damage rolls for 1 minute' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'divine_favor', effectDescription: '+3 Luck bonus on attack and weapon damage rolls for 1 minute' }
     },
     {
       name: 'Holy Water (Blessed)',
@@ -849,7 +858,7 @@ export const paladinLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+4 Enhancement bonus to Strength for 3 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'bulls_strength', effectDescription: '+4 Enhancement bonus to Strength for 3 minutes' }
     },
     {
       name: 'Potion of Heroism',
@@ -857,7 +866,7 @@ export const paladinLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+2 Morale bonus on attack rolls, saves, and skill checks for 50 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'heroism', effectDescription: '+2 Morale bonus on attack rolls, saves, and skill checks for 50 minutes' }
     },
     {
       name: 'Scroll of Holy Smite',
@@ -976,7 +985,7 @@ export const arcaneTricksterLvl11Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: 'Invisibility that remains active when attacking for 1 minute' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'greater_invisibility', effectDescription: 'Invisibility that remains active when attacking for 1 minute' }
     },
     {
       name: 'Scroll of Scorching Ray (CL 7)',
@@ -1002,7 +1011,7 @@ export const arcaneTricksterLvl11Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+4 Enhancement bonus to Dexterity for 3 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'cats_grace', effectDescription: '+4 Enhancement bonus to Dexterity for 3 minutes' }
     },
     {
       name: 'Smokestick',
@@ -1172,7 +1181,16 @@ export const spellwarpSniperLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: 'Invisibility for 3 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'invisibility', effectDescription: 'Invisibility for 3 minutes' }
+    },
+    {
+      name: 'Scroll of Invisibility',
+      slot: 'slotless',
+      type: 'scroll',
+      isEquipped: false,
+      quantity: 1,
+      charges: { current: 1, max: 1 },
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'invisibility', effectDescription: 'Casts Invisibility on reader for 3 minutes' }
     },
     {
       name: "Potion of Fox's Cunning",
@@ -1180,7 +1198,7 @@ export const spellwarpSniperLvl10Sample = {
       type: 'potion',
       isEquipped: false,
       quantity: 1,
-      activation: { action: 'standard', effectDescription: '+4 Enhancement bonus to Intelligence for 3 minutes' }
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, appliedBuffKey: 'foxs_cunning', effectDescription: '+4 Enhancement bonus to Intelligence for 3 minutes' }
     }
   ],
   feats: [
