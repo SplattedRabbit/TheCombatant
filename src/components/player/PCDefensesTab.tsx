@@ -12,29 +12,19 @@ import React from 'react';
 import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { showRollBreakdown } from '@core/ui/components/dialogs.js';
+import { getStatMod, formatMod } from './attributeHelper';
+
 
 interface PCDefensesTabProps {
   pc: any;
 }
 
 export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
-  const getAblVal = (statObj: any) => {
-    if (!statObj) return 10;
-    if (typeof statObj.getValue === 'function') return statObj.getValue();
-    return statObj.base ?? 10;
-  };
 
-  const getAblMod = (statObj: any) => {
-    return Math.floor((getAblVal(statObj) - 10) / 2);
-  };
+  const dexMod = getStatMod(pc.dex);
+  const conMod = getStatMod(pc.con);
+  const wisMod = getStatMod(pc.wis);
 
-  const formatMod = (val: number) => {
-    return val >= 0 ? `+${val}` : `${val}`;
-  };
-
-  const dexMod = getAblMod(pc.dex);
-  const conMod = getAblMod(pc.con);
-  const wisMod = getAblMod(pc.wis);
 
   const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some((f: any) => f.id === 'improved_initiative');
   const totFort = pc.za?.getValue?.() ?? pc.za?.total ?? 0;

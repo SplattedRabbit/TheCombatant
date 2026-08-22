@@ -815,9 +815,9 @@ export const MAGIC_ITEMS_REGISTRY = {
       actionType: 'standard',
       costType: 'daily',
       cost: 1,
-      effectDescription: 'Recalls one prepared 1st-level spell that was cast today.'
+      effectDescription: 'Recalls 1 prepared 1st-level spell cast today, making it immediately available to cast again.'
     },
-    description: 'Recalls one prepared and cast 1st-level spell.'
+    description: 'Wondrous Item (1/Day): Recalls 1 prepared 1st-level spell you already cast today, making it prepared again.'
   },
   bag_of_holding_type1: {
     key: 'bag_of_holding_type1',

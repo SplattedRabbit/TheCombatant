@@ -136,48 +136,39 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
     });
   };
 
-  // Roll Attack / Damage with Smite Evil auto-consumption
-  const handleRollAttack = (w: any, isOffhand = false, e: React.MouseEvent) => {
+  // Roll Attack / Damage with Smite Evil auto-consumption and customOptions support
+  const handleRollAttack = (w: any, isOffhand = false, e: React.MouseEvent, customOptions: any = {}) => {
     if (pc.isTotalDefense) return;
-    if (pc.isSmiteActive) {
+    const targetWeapon = w || mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+    const isSmite = customOptions.smite || (pc.isSmiteActive && !customOptions.noSmite);
+    if (isSmite) {
       const res = CombatState.consumeSmiteEvilCharge();
       if (res && res.remaining === 0) {
         CombatState.updatePCField('isSmiteActive', false);
       }
     }
-    showAttackChoiceDialog(pc, w, e.nativeEvent, isOffhand ? { isOffhandAttack: true } : {});
+    const opts = {
+      ...(isOffhand ? { isOffhandAttack: true } : {}),
+      ...customOptions
+    };
+    showAttackChoiceDialog(pc, targetWeapon, e.nativeEvent, opts);
   };
 
-  const handleRollDamage = (w: any, isOffhand = false, e: React.MouseEvent) => {
+  const handleRollDamage = (w: any, isOffhand = false, e: React.MouseEvent, customOptions: any = {}) => {
     if (pc.isTotalDefense) return;
-    if (pc.isSmiteActive) {
+    const targetWeapon = w || mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+    const isSmite = customOptions.smite || (pc.isSmiteActive && !customOptions.noSmite);
+    if (isSmite) {
       const res = CombatState.consumeSmiteEvilCharge();
       if (res && res.remaining === 0) {
         CombatState.updatePCField('isSmiteActive', false);
       }
     }
-    const hasPaladin = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'paladin');
-    const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus() : 0;
-    const sneakAttackDice = typeof pc.getSneakAttackDiceCount === 'function' ? pc.getSneakAttackDiceCount() : 0;
-    const hasDmgToggles = (hasPaladin && w.grip !== 'rng') || favoredEnemyBonus > 0 || sneakAttackDice > 0;
-    
-    if (hasDmgToggles) {
-      showDamageChoiceDialog(pc, w, e.nativeEvent, isOffhand ? { isOffhandAttack: true } : {});
-    } else {
-      const seq = AttackEngine.calculateAttackSequence(pc, w, false, isOffhand ? {
-        isOffhandAttack: true,
-        smite: pc.isSmiteActive,
-        favoredEnemy: pc.isFavoredEnemyActive,
-        sneakAttack: pc.isSneakAttacking
-      } : {
-        smite: pc.isSmiteActive,
-        favoredEnemy: pc.isFavoredEnemyActive,
-        sneakAttack: pc.isSneakAttacking
-      });
-      const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [], damageDice: '1w6' };
-      const wName = isOffhand && isDoubleWielded ? `${w.name} (Off-hand)` : w.name;
-      showRollBreakdown(`${wName} (Damage)`, stdAtkObj.damageDice, stdAtkObj.dmgBreakdown, e.nativeEvent);
-    }
+    const opts = {
+      ...(isOffhand ? { isOffhandAttack: true } : {}),
+      ...customOptions
+    };
+    showDamageChoiceDialog(pc, targetWeapon, e.nativeEvent, opts);
   };
 
   const handleDoubleWeaponOption = (isDouble: boolean) => {
@@ -223,6 +214,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
         {/* 3. Dynamic Class Powers Hub (Smite Evil, Sneak Attack, Favored Enemy, Rage) */}
         <ClassCombatAbilitiesCard pc={pc} />
 
+
       </div>
 
       {/* Right Column: Diablo 2 Tactical Belt & Weapon Arsenal */}
@@ -251,9 +243,22 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                   style={{ flex: 1, fontSize: '8px', height: '18px', padding: '1px 6px' }}
                 />
                 <button
-                  className="btn btn-p"
+                  className="btn"
                   onClick={() => CombatState.addPCWeapon()}
-                  style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '7.5px', padding: '1px 6px', height: '18px', lineHeight: 1, whiteSpace: 'nowrap' }}
+                  style={{
+                    fontFamily: "'IM Fell English SC', serif",
+                    fontSize: '7.5px',
+                    fontWeight: 'bold',
+                    padding: '1px 8px',
+                    height: '18px',
+                    lineHeight: 1,
+                    whiteSpace: 'nowrap',
+                    background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                    border: '0.5px solid #8b6914',
+                    color: '#ffffff',
+                    borderRadius: '2px',
+                    cursor: 'pointer'
+                  }}
                 >
                   ➕ Weapon
                 </button>

@@ -14,6 +14,7 @@ import { CompanionRules } from '@core/rules/CompanionRules.js';
 import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { showRollBreakdown, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { getAblMod, formatMod } from '../attributeHelper';
 
 interface CompanionSheetProps {
   pc: any;
@@ -127,14 +128,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
     );
   }
 
-  const getAblMod = (score: any) => {
-    const s = parseInt(score) || 10;
-    return s >= 10 ? Math.floor((s - 10) / 2) : (s === 9 || s === 8 ? -1 : (s === 7 || s === 6 ? -2 : (s === 5 || s === 4 ? -4 : -5)));
-  };
 
-  const formatMod = (mod: number) => {
-    return (mod >= 0 ? '+' : '') + mod;
-  };
 
   const displayAC = type === 'custom' ? maxHP : (baseStats ? baseStats.ac : 10);
   const str = baseStats ? baseStats.str : 10;

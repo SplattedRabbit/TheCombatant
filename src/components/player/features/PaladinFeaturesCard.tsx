@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { showRollBreakdown } from '@core/ui/components/dialogs.js';
+import { ClassACFSelector } from './ClassACFSelector';
+import { getAblMod } from '../attributeHelper';
 
 interface PaladinFeaturesCardProps {
   pc: any;
@@ -10,93 +12,112 @@ interface PaladinFeaturesCardProps {
 }
 
 export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, level }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [smiteRulesOpen, setSmiteRulesOpen] = useState(false);
   const [lohRulesOpen, setLohRulesOpen] = useState(false);
   const [dgRulesOpen, setDgRulesOpen] = useState(false);
   const [turnRulesOpen, setTurnRulesOpen] = useState(false);
 
-  const getAblMod = (score: number) => {
-    return score >= 10 ? Math.floor((score - 10) / 2) : (score === 9 || score === 8 ? -1 : (score === 7 || score === 6 ? -2 : (score === 5 || score === 4 ? -4 : -5)));
-  };
 
   const chaValue = pc.cha ? pc.cha.getValue() : 10;
   const chaMod = getAblMod(chaValue);
   
-  const smiteAbility = pc.dailyAbilities?.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil");
-  const lohAbility = pc.dailyAbilities?.find((a: any) => a.name === "Hände auflegen" || a.name === "Lay on Hands");
+  const defaultSmiteMax = Math.max(1, 1 + Math.floor((level - 1) / 4));
+  const defaultLohMax = Math.max(0, level * Math.max(0, chaMod));
+  const defaultTurnMax = Math.max(1, 3 + chaMod);
+
+  const smiteAbility = pc.dailyAbilities?.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name?.includes("Smite Evil") || a.name?.includes("Böses niederstrecken"));
+  const lohAbility = pc.dailyAbilities?.find((a: any) => a.name === "Hände auflegen" || a.name === "Lay on Hands" || a.name?.includes("Lay on Hands") || a.name?.includes("Hände auflegen"));
   
-  const smiteMax = smiteAbility ? smiteAbility.max : 0;
+  const smiteMax = smiteAbility ? smiteAbility.max : defaultSmiteMax;
   const smiteUsed = smiteAbility ? smiteAbility.used : 0;
   const smiteRemaining = Math.max(0, smiteMax - smiteUsed);
 
-  const lohMax = lohAbility ? lohAbility.max : 0;
+  const lohMax = lohAbility ? lohAbility.max : defaultLohMax;
   const lohUsed = lohAbility ? lohAbility.used : 0;
   const lohRemaining = lohMax - lohUsed;
 
-  const turnAbility = pc.dailyAbilities?.find((a: any) => a.name === "Untote vertreiben" || a.name === "Turn Undead");
-  const turnMax = turnAbility ? turnAbility.max : 0;
+  const turnAbility = pc.dailyAbilities?.find((a: any) => a.name === "Untote vertreiben" || a.name === "Turn Undead" || a.name?.includes("Turn Undead") || a.name?.includes("Untote vertreiben"));
+  const turnMax = turnAbility ? turnAbility.max : defaultTurnMax;
   const turnUsed = turnAbility ? turnAbility.used : 0;
   const turnRemaining = Math.max(0, turnMax - turnUsed);
 
   const handleSmiteBubbleClick = (idx: number) => {
-    const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil");
-    if (ability) {
+    CombatState.updatePCBatch((activePC: any) => {
+      if (!Array.isArray(activePC.dailyAbilities)) {
+        activePC.dailyAbilities = [];
+      }
+      let ability = activePC.dailyAbilities.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name?.includes("Smite Evil") || a.name?.includes("Böses niederstrecken"));
+      if (!ability) {
+        ability = { name: "Smite Evil", max: defaultSmiteMax, used: 0 };
+        activePC.dailyAbilities.push(ability);
+      }
       if (idx <= ability.used) {
         ability.used = idx - 1;
       } else {
         ability.used = idx;
       }
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
-    }
+    });
   };
 
   const handleTurnBubbleClick = (idx: number) => {
-    const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Untote vertreiben" || a.name === "Turn Undead");
-    if (ability) {
+    CombatState.updatePCBatch((activePC: any) => {
+      if (!Array.isArray(activePC.dailyAbilities)) {
+        activePC.dailyAbilities = [];
+      }
+      let ability = activePC.dailyAbilities.find((a: any) => a.name === "Untote vertreiben" || a.name === "Turn Undead" || a.name?.includes("Turn Undead") || a.name?.includes("Untote vertreiben"));
+      if (!ability) {
+        ability = { name: "Turn Undead", max: defaultTurnMax, used: 0 };
+        activePC.dailyAbilities.push(ability);
+      }
       if (idx <= ability.used) {
         ability.used = idx - 1;
       } else {
         ability.used = idx;
       }
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
-    }
+    });
   };
 
   const handleToggleDivineGrace = () => {
-    const activePC = CombatState.getActivePC();
-    activePC.divineGraceActive = !activePC.divineGraceActive;
-    activePC.rebuildStatModifiers();
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.divineGraceActive = !activePC.divineGraceActive;
+      activePC.rebuildStatModifiers();
+    });
   };
 
   const handleLohChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = parseInt(e.target.value) || 0;
-    const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Hände auflegen" || a.name === "Lay on Hands");
-    if (ability) {
+    CombatState.updatePCBatch((activePC: any) => {
+      if (!Array.isArray(activePC.dailyAbilities)) {
+        activePC.dailyAbilities = [];
+      }
+      let ability = activePC.dailyAbilities.find((a: any) => a.name === "Hände auflegen" || a.name === "Lay on Hands" || a.name?.includes("Lay on Hands") || a.name?.includes("Hände auflegen"));
+      if (!ability) {
+        ability = { name: "Lay on Hands", max: defaultLohMax, used: 0 };
+        activePC.dailyAbilities.push(ability);
+      }
       ability.used = Math.max(0, Math.min(ability.max, ability.max - val));
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
-    }
+    });
   };
 
   const handleAdjustLoh = (dir: number) => {
-    const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Hände auflegen" || a.name === "Lay on Hands");
-    if (ability && ability.max > 0) {
-      if (dir === -1) {
-        ability.used = Math.min(ability.max, ability.used + 1);
-      } else {
-        ability.used = Math.max(0, ability.used - 1);
+    CombatState.updatePCBatch((activePC: any) => {
+      if (!Array.isArray(activePC.dailyAbilities)) {
+        activePC.dailyAbilities = [];
       }
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
-    }
+      let ability = activePC.dailyAbilities.find((a: any) => a.name === "Hände auflegen" || a.name === "Lay on Hands" || a.name?.includes("Lay on Hands") || a.name?.includes("Hände auflegen"));
+      if (!ability) {
+        ability = { name: "Lay on Hands", max: defaultLohMax, used: 0 };
+        activePC.dailyAbilities.push(ability);
+      }
+      if (ability.max > 0) {
+        if (dir === -1) {
+          ability.used = Math.min(ability.max, ability.used + 1);
+        } else {
+          ability.used = Math.max(0, ability.used - 1);
+        }
+      }
+    });
   };
 
   const handleRollTurn = (e: React.MouseEvent) => {
@@ -106,11 +127,17 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
   };
 
   return (
-    <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
-      <div className="class-card-hdr" style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
+    <div className={`class-card ${isExpanded ? 'expanded' : ''}`} style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
+      <div 
+        className="class-card-hdr" 
+        onClick={() => setIsExpanded(!isExpanded)}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+      >
         <span>🎭 Paladin (Level {level})</span>
+        <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
       </div>
-      <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%' }}>
+      {isExpanded && (
+        <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '100%' }}>
           <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
             Class Features
@@ -125,7 +152,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                   <button 
                     onClick={() => setDgRulesOpen(!dgRulesOpen)}
                     className="btn btn-toggle-rules-dg" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show rules"
                   >
                     📖 {dgRulesOpen ? '▲' : '▼'}
@@ -161,13 +188,13 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                 <button 
                   onClick={() => setSmiteRulesOpen(!smiteRulesOpen)}
                   className="btn btn-toggle-rules-smite" 
-                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                   title="Show rules"
                 >
                   📖 {smiteRulesOpen ? '▲' : '▼'}
                 </button>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <div style={{ display: 'flex' }}>
                   {smiteMax > 0 && Array.from({ length: smiteMax }).map((_, i) => {
                     const bubbleIdx = i + 1;
@@ -178,13 +205,14 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                         onClick={() => handleSmiteBubbleClick(bubbleIdx)}
                         className={`smite-bubble use-icon use-icon-smite ${spent ? 'used' : ''}`}
                         style={{ cursor: 'pointer' }}
+                        title={spent ? 'Used (Click to restore)' : 'Available (Click to use)'}
                       >
-                        🌟
+                        ⚡
                       </span>
                     );
                   })}
                 </div>
-                <span>({smiteRemaining})</span>
+                <span>({smiteRemaining} remaining)</span>
               </div>
             </div>
             
@@ -206,7 +234,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                 <button 
                   onClick={() => setLohRulesOpen(!lohRulesOpen)}
                   className="btn btn-toggle-rules-loh" 
-                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                   title="Show rules"
                 >
                   📖 {lohRulesOpen ? '▲' : '▼'}
@@ -218,7 +246,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                   <button 
                     onClick={() => handleAdjustLoh(-1)}
                     className="btn loh-minus-btn" 
-                    style={{ width: '12px', height: '12px', fontSize: '8px', lineIndex: 1, display: 'flex', alignItems: 'center', justifyCenter: 'center', padding: 0, cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--red)', fontWeight: 'bold', borderRadius: '1px' } as any} 
+                    style={{ width: '14px', height: '14px', fontSize: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--red)', fontWeight: 'bold', borderRadius: '1px' }} 
                     title="Subtract points"
                   >
                     -
@@ -228,13 +256,13 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                     value={lohRemaining} 
                     onChange={handleLohChange}
                     className="cinput paladin-loh-val" 
-                    style={{ width: '24px', fontSize: '8px', textAlign: 'center', height: '12px', fontWeight: 'bold', color: 'var(--red)', borderRadius: '1px', border: '0.5px solid var(--pb)', padding: 0 }} 
+                    style={{ width: '26px', fontSize: '8px', textAlign: 'center', height: '14px', fontWeight: 'bold', color: 'var(--red)', borderRadius: '1px', border: '0.5px solid var(--pb)', padding: 0 }} 
                     title="Remaining points"
                   />
                   <button 
                     onClick={() => handleAdjustLoh(1)}
                     className="btn loh-plus-btn" 
-                    style={{ width: '12px', height: '12px', fontSize: '8px', lineIndex: 1, display: 'flex', alignItems: 'center', justifyCenter: 'center', padding: 0, cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--red)', fontWeight: 'bold', borderRadius: '1px' } as any} 
+                    style={{ width: '14px', height: '14px', fontSize: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--red)', fontWeight: 'bold', borderRadius: '1px' }} 
                     title="Add points"
                   >
                     +
@@ -268,7 +296,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                   <button 
                     onClick={() => setTurnRulesOpen(!turnRulesOpen)}
                     className="btn btn-toggle-rules-turn" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show rules"
                   >
                     📖 {turnRulesOpen ? '▲' : '▼'}
@@ -316,8 +344,11 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
             </div>
           )}
 
+          <ClassACFSelector pc={pc} classKey="paladin" level={level} />
+
         </div>
       </div>
+      )}
     </div>
   );
 };

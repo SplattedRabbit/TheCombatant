@@ -97,56 +97,57 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         
         {/* Power Attack Slider */}
+        {/* Power Attack Slider */}
         {hasPowerAttack ? (
           <div
             style={{
-              background: paVal > 0 ? 'rgba(139, 26, 26, 0.08)' : 'rgba(139, 26, 26, 0.03)',
-              border: `1px solid ${paVal > 0 ? 'var(--red)' : 'rgba(139, 26, 26, 0.25)'}`,
-              borderRadius: '4px',
-              padding: '6px 8px',
+              background: paVal > 0 ? 'rgba(139, 26, 26, 0.03)' : 'rgba(200, 169, 110, 0.02)',
+              border: `0.5px solid ${paVal > 0 ? 'rgba(139, 26, 26, 0.4)' : 'var(--pb)'}`,
+              borderRadius: '3px',
+              padding: '3px 6px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '4px'
+              gap: '2px'
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: paVal > 0 ? 'var(--red)' : 'var(--ink)' }}>
                 <span>⚔️ Power Attack</span>
                 <button
                   onClick={showPowerAttackRules}
-                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontSize: '8px', padding: 0, color: 'var(--red)', opacity: 0.8 }}
+                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontSize: '7.5px', padding: 0, color: 'var(--red)', opacity: 0.7 }}
                   title="Show rules"
                 >
                   📖 ↗
                 </button>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <span
                   style={{
-                    background: paVal > 0 ? 'var(--red)' : 'rgba(0,0,0,0.06)',
+                    background: paVal > 0 ? 'var(--red)' : 'rgba(0,0,0,0.05)',
                     color: paVal > 0 ? '#fff' : 'var(--inkm)',
-                    fontSize: '8px',
+                    fontSize: '7.5px',
                     fontWeight: 'bold',
-                    padding: '1px 5px',
-                    borderRadius: '2px',
+                    padding: '0 4px',
+                    borderRadius: '1.5px',
                     fontFamily: 'monospace'
                   }}
                 >
                   -{paVal} Atk
                 </span>
-                <span style={{ fontSize: '7.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", fontWeight: 'bold' }}>
-                  (1H: +{paVal} | 2H: +{paVal * 2} Dmg)
+                <span style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+                  (+{paVal} / +{paVal * 2} Dmg)
                 </span>
               </div>
             </div>
 
-            {/* Slider & Stepper Bar */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
+            {/* Slim Minimalist Slider Bar */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
               <button
                 className="btn"
                 onClick={() => handlePowerAttackChange(paVal - 1)}
                 disabled={paVal <= 0}
-                style={{ width: '18px', height: '18px', padding: 0, fontSize: '9px', lineHeight: 1, fontWeight: 'bold' }}
+                style={{ width: '13px', height: '13px', padding: 0, fontSize: '7.5px', lineHeight: '11px', fontWeight: 'bold', borderRadius: '1.5px', border: '0.5px solid var(--pb)', background: 'rgba(200, 169, 110, 0.08)' }}
               >
                 -
               </button>
@@ -156,23 +157,24 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
                 max={babVal}
                 value={paVal}
                 onChange={(e) => handlePowerAttackChange(parseInt(e.target.value) || 0)}
-                style={{ flex: 1, accentColor: 'var(--red)', cursor: 'pointer', height: '4px' }}
+                className="tactical-range-slider"
+                style={{ flex: 1, '--slider-thumb-color': 'var(--red)' } as any}
               />
               <button
                 className="btn"
                 onClick={() => handlePowerAttackChange(paVal + 1)}
                 disabled={paVal >= babVal}
-                style={{ width: '18px', height: '18px', padding: 0, fontSize: '9px', lineHeight: 1, fontWeight: 'bold' }}
+                style={{ width: '13px', height: '13px', padding: 0, fontSize: '7.5px', lineHeight: '11px', fontWeight: 'bold', borderRadius: '1.5px', border: '0.5px solid var(--pb)', background: 'rgba(200, 169, 110, 0.08)' }}
               >
                 +
               </button>
-              <span style={{ fontSize: '7.5px', color: 'var(--inkm)', minWidth: '35px', textAlign: 'right', fontFamily: "'IM Fell English SC', serif" }}>
+              <span style={{ fontSize: '7px', color: 'var(--inkm)', minWidth: '30px', textAlign: 'right', fontFamily: "'IM Fell English SC', serif" }}>
                 Max: {babVal}
               </span>
             </div>
           </div>
         ) : (
-          <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px dashed rgba(200, 169, 110, 0.3)', borderRadius: '3px', padding: '4px 6px', fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px dashed rgba(200, 169, 110, 0.3)', borderRadius: '3px', padding: '3px 6px', fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span>⚔️ Power Attack (Feat not learned)</span>
             <span style={{ fontSize: '7px', opacity: 0.7 }}>Requires STR 13+, BAB +1</span>
           </div>
@@ -182,53 +184,53 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
         {hasCombatExpertise ? (
           <div
             style={{
-              background: ceVal > 0 ? 'rgba(42, 106, 138, 0.08)' : 'rgba(42, 106, 138, 0.03)',
-              border: `1px solid ${ceVal > 0 ? '#2a6a8a' : 'rgba(42, 106, 138, 0.25)'}`,
-              borderRadius: '4px',
-              padding: '6px 8px',
+              background: ceVal > 0 ? 'rgba(200, 169, 110, 0.06)' : 'rgba(200, 169, 110, 0.02)',
+              border: '0.5px solid var(--pb)',
+              borderRadius: '3px',
+              padding: '3px 6px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '4px'
+              gap: '2px'
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: '#2a6a8a' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
                 <span>🛡️ Combat Expertise</span>
                 <button
                   onClick={showCombatExpertiseRules}
-                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontSize: '8px', padding: 0, color: '#2a6a8a', opacity: 0.8 }}
+                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontSize: '7.5px', padding: 0, color: 'var(--pb)', opacity: 0.8 }}
                   title="Show rules"
                 >
                   📖 ↗
                 </button>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <span
                   style={{
-                    background: ceVal > 0 ? '#2a6a8a' : 'rgba(0,0,0,0.06)',
+                    background: ceVal > 0 ? '#634320' : 'rgba(0,0,0,0.05)',
                     color: ceVal > 0 ? '#fff' : 'var(--inkm)',
-                    fontSize: '8px',
+                    fontSize: '7.5px',
                     fontWeight: 'bold',
-                    padding: '1px 5px',
-                    borderRadius: '2px',
+                    padding: '0 4px',
+                    borderRadius: '1.5px',
                     fontFamily: 'monospace'
                   }}
                 >
                   -{ceVal} Atk
                 </span>
-                <span style={{ fontSize: '7.5px', color: '#2a6a8a', fontFamily: "'Crimson Text', serif", fontWeight: 'bold' }}>
+                <span style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
                   (+{ceVal} Dodge AC)
                 </span>
               </div>
             </div>
 
-            {/* Slider & Stepper Bar */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
+            {/* Slim Minimalist Slider Bar */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
               <button
                 className="btn"
                 onClick={() => handleCombatExpertiseChange(ceVal - 1)}
                 disabled={ceVal <= 0}
-                style={{ width: '18px', height: '18px', padding: 0, fontSize: '9px', lineHeight: 1, fontWeight: 'bold' }}
+                style={{ width: '13px', height: '13px', padding: 0, fontSize: '7.5px', lineHeight: '11px', fontWeight: 'bold', borderRadius: '1.5px', border: '0.5px solid var(--pb)', background: 'rgba(200, 169, 110, 0.08)' }}
               >
                 -
               </button>
@@ -238,23 +240,24 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
                 max={maxCE}
                 value={ceVal}
                 onChange={(e) => handleCombatExpertiseChange(parseInt(e.target.value) || 0)}
-                style={{ flex: 1, accentColor: '#2a6a8a', cursor: 'pointer', height: '4px' }}
+                className="tactical-range-slider"
+                style={{ flex: 1, '--slider-thumb-color': '#634320' } as any}
               />
               <button
                 className="btn"
                 onClick={() => handleCombatExpertiseChange(ceVal + 1)}
                 disabled={ceVal >= maxCE}
-                style={{ width: '18px', height: '18px', padding: 0, fontSize: '9px', lineHeight: 1, fontWeight: 'bold' }}
+                style={{ width: '13px', height: '13px', padding: 0, fontSize: '7.5px', lineHeight: '11px', fontWeight: 'bold', borderRadius: '1.5px', border: '0.5px solid var(--pb)', background: 'rgba(200, 169, 110, 0.08)' }}
               >
                 +
               </button>
-              <span style={{ fontSize: '7.5px', color: 'var(--inkm)', minWidth: '35px', textAlign: 'right', fontFamily: "'IM Fell English SC', serif" }}>
+              <span style={{ fontSize: '7px', color: 'var(--inkm)', minWidth: '30px', textAlign: 'right', fontFamily: "'IM Fell English SC', serif" }}>
                 Max: {maxCE}
               </span>
             </div>
           </div>
         ) : (
-          <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px dashed rgba(200, 169, 110, 0.3)', borderRadius: '3px', padding: '4px 6px', fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px dashed rgba(200, 169, 110, 0.3)', borderRadius: '3px', padding: '3px 6px', fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span>🛡️ Combat Expertise (Feat not learned)</span>
             <span style={{ fontSize: '7px', opacity: 0.7 }}>Requires INT 13+</span>
           </div>

@@ -151,8 +151,9 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        background: '#ffffff',
-                        border: '1px solid var(--pb)',
+                        background: 'rgba(255, 255, 255, 0.5)',
+                        border: '0.5px solid rgba(200, 169, 110, 0.4)',
+                        borderLeft: '3px solid #c8a96e',
                         borderRadius: '3px',
                         padding: '5px 7px'
                       }}
@@ -169,7 +170,17 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                         type="button"
                         onClick={() => handleEquipBackpackItem(idx)}
                         className="btn btn-p"
-                        style={{ fontSize: '8.5px', padding: '2px 8px', fontFamily: "'IM Fell English SC', serif" }}
+                        style={{
+                          fontSize: '8px',
+                          padding: '2px 8px',
+                          fontFamily: "'IM Fell English SC', serif",
+                          fontWeight: 'bold',
+                          background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                          border: '0.5px solid #8b6914',
+                          color: '#ffffff',
+                          borderRadius: '2px',
+                          cursor: 'pointer'
+                        }}
                       >
                         ⚡ Equip Now
                       </button>
@@ -192,7 +203,14 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                   onOpenCompendium(slotKey);
                 }}
                 className="btn"
-                style={{ fontSize: '8px', padding: '1px 5px' }}
+                style={{
+                  fontSize: '8px',
+                  padding: '1px 6px',
+                  fontFamily: "'IM Fell English SC', serif",
+                  background: 'rgba(200, 169, 110, 0.1)',
+                  border: '0.5px solid var(--pb)',
+                  color: 'var(--inkm)'
+                }}
               >
                 Full Compendium ➔
               </button>
@@ -212,8 +230,9 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        background: '#ffffff',
-                        border: '1px solid var(--pb)',
+                        background: 'rgba(255, 255, 255, 0.5)',
+                        border: '0.5px solid rgba(200, 169, 110, 0.4)',
+                        borderLeft: '3px solid #c8a96e',
                         borderRadius: '3px',
                         padding: '5px 7px'
                       }}
@@ -241,11 +260,14 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                                 className="btn"
                                 style={{
                                   fontSize: '7.5px',
-                                  padding: '1px 3px',
-                                  background: activeKey === v.key ? 'var(--red)' : 'white',
-                                  color: activeKey === v.key ? 'white' : 'var(--ink)',
-                                  borderColor: activeKey === v.key ? 'var(--red)' : 'var(--pb)',
-                                  fontWeight: activeKey === v.key ? 'bold' : 'normal'
+                                  padding: '1px 4px',
+                                  fontFamily: "'IM Fell English SC', serif",
+                                  fontWeight: 'bold',
+                                  background: activeKey === v.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.1)',
+                                  color: activeKey === v.key ? '#ffffff' : 'var(--inkm)',
+                                  borderColor: activeKey === v.key ? '#8b6914' : 'var(--pb)',
+                                  borderRadius: '2px',
+                                  cursor: 'pointer'
                                 }}
                               >
                                 {v.label}
@@ -258,7 +280,18 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                           type="button"
                           onClick={() => handleAddAndEquipPreset(activeKey)}
                           className="btn btn-p"
-                          style={{ fontSize: '8px', padding: '2px 7px', fontFamily: "'IM Fell English SC', serif", whiteSpace: 'nowrap' }}
+                          style={{
+                            fontSize: '8px',
+                            padding: '2px 7px',
+                            fontFamily: "'IM Fell English SC', serif",
+                            fontWeight: 'bold',
+                            whiteSpace: 'nowrap',
+                            background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                            border: '0.5px solid #8b6914',
+                            color: '#ffffff',
+                            borderRadius: '2px',
+                            cursor: 'pointer'
+                          }}
                         >
                           ⚡ Equip
                         </button>
@@ -279,10 +312,20 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
               onClose();
               onOpenCustomEditor(slotKey);
             }}
-            className="btn"
-            style={{ fontSize: '9px', padding: '3px 8px', fontFamily: "'IM Fell English SC', serif" }}
+            className="btn btn-p"
+            style={{
+              fontSize: '8.5px',
+              padding: '2px 8px',
+              fontFamily: "'IM Fell English SC', serif",
+              fontWeight: 'bold',
+              background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+              border: '0.5px solid #8b6914',
+              color: '#ffffff',
+              borderRadius: '2px',
+              cursor: 'pointer'
+            }}
           >
-            + Create Custom Item
+            ➕ Create Custom Item
           </button>
           <button
             type="button"

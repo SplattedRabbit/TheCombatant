@@ -5,6 +5,7 @@ import { CombatState } from '@core/state.js';
 import { getSchoolCodeFromInput } from '@core/spells.js';
 // @ts-ignore
 import { cleanProhibitedSpells } from '@core/rules/SpellRules.js';
+import { ClassACFSelector } from './ClassACFSelector';
 
 const showCustomAlert = (...args: any[]) =>
   (window as any).__REACT_DIALOG_BRIDGE__?.showCustomAlert?.(...args);
@@ -25,6 +26,7 @@ const PROHIBITED_SCHOOLS = [
 ];
 
 export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, level }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [wizardRulesOpen, setWizardRulesOpen] = useState(false);
 
   const spec = pc.wizardSpecialization || 'none';
@@ -84,92 +86,98 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
   };
 
   return (
-    <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
-      <div className="class-card-hdr" style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
+    <div className={`class-card ${isExpanded ? 'expanded' : ''}`} style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
+      <div 
+        className="class-card-hdr" 
+        onClick={() => setIsExpanded(!isExpanded)}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+      >
         <span>🎭 Wizard (Level {level})</span>
+        <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
       </div>
-      <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
-          <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
-            Class Features
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '8px', marginTop: '1px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span><strong>School:</strong></span>
+      {isExpanded && (
+        <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
+            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 'bold' }}>
+              <span>Class Features</span>
               <button 
-                onClick={() => setWizardRulesOpen(!wizardRulesOpen)}
+                onClick={(e) => { e.stopPropagation(); setWizardRulesOpen(!wizardRulesOpen); }}
                 className="btn btn-toggle-rules-wizard" 
-                style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
-                title="Show Rules"
+                style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                title="Show rules"
               >
                 📖 {wizardRulesOpen ? '▲' : '▼'}
               </button>
             </div>
-            <select 
-              value={spec}
-              onChange={handleSpecChange}
-              className="cinput wizard-spec" 
-              style={{ width: '95px', fontSize: '7.5px', height: '14px', padding: '0 1px', borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none' }}
-            >
-              <option value="none">Universalist</option>
-              <option value="abj">Abjuration</option>
-              <option value="con">Conjuration</option>
-              <option value="div">Divination</option>
-              <option value="enc">Enchantment</option>
-              <option value="evo">Evocation</option>
-              <option value="ill">Illusion</option>
-              <option value="nec">Necromancy</option>
-              <option value="tra">Transmutation</option>
-            </select>
-          </div>
-          
-          {wizardRulesOpen && (
-            <div className="wizard-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif", marginBottom: '2px' }}>
-              <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>Wizard School Specialization (D&D 3.5 RAW):</strong><br />
-              • <strong>Extra Spell Slots:</strong> +1 spell slot per spell level per day (specialty school only).<br />
-              • <strong>Spellcraft:</strong> +2 bonus on checks to learn spells of the specialty school.<br />
-              • <strong>Prohibited Schools:</strong> Specialists (except Diviners) must choose 2 prohibited schools. Diviners choose 1 prohibited school. Prohibited spells are completely unusable.
-            </div>
-          )}
-          
-          {spec !== 'none' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginTop: '2px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '8px' }}>
-                <span>Prohibited 1:</span>
-                <select 
-                  value={prob1Code}
-                  onChange={handleProhibited1Change}
-                  className="cinput wizard-prob1" 
-                  style={{ width: '95px', fontSize: '7.5px', height: '14px', padding: '0 1px', borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none' }}
-                >
-                  <option value="">-- Select --</option>
-                  {availableSchools.map(s => {
-                    const disabled = prob2Code && s.value === prob2Code;
-                    return <option key={s.value} value={s.value} disabled={disabled}>{s.label}</option>;
-                  })}
-                </select>
+            {wizardRulesOpen && (
+              <div className="wizard-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
+                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Wizard Class Features:</strong><br />
+                • <strong>Arcane Spells:</strong> Casts arcane spells from a spellbook based on Intelligence.<br />
+                • <strong>Familiar:</strong> Can summon a magical familiar to gain attribute bonuses and abilities.<br />
+                • <strong>School Specialization:</strong> May specialize in one magic school to gain +1 spell slot per spell level for specialized spells (requires prohibiting 2 opposing schools, or 1 for Divination).
               </div>
-              {spec !== 'div' && (
+            )}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '8.5px', marginTop: '2px' }}>
+              <span><strong>School Specialization:</strong></span>
+              <select 
+                value={spec}
+                onChange={handleSpecChange}
+                className="cinput wizard-spec" 
+                style={{ width: '100px', fontSize: '8px', height: '16px', padding: '0 2px', borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none' }}
+              >
+                <option value="none">Universal (No School)</option>
+                <option value="abj">Abjuration</option>
+                <option value="con">Conjuration</option>
+                <option value="div">Divination (1 Prohibited School)</option>
+                <option value="enc">Enchantment</option>
+                <option value="evo">Evocation</option>
+                <option value="ill">Illusion</option>
+                <option value="nec">Necromancy</option>
+                <option value="tra">Transmutation</option>
+              </select>
+            </div>
+
+            {spec !== 'none' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginTop: '2px', background: 'rgba(200,169,110,0.06)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '2px', padding: '3px 5px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '8px' }}>
-                  <span>Prohibited 2:</span>
+                  <span>Prohibited 1:</span>
                   <select 
-                    value={prob2Code}
-                    onChange={handleProhibited2Change}
-                    className="cinput wizard-prob2" 
+                    value={prob1Code}
+                    onChange={handleProhibited1Change}
+                    className="cinput wizard-prob1" 
                     style={{ width: '95px', fontSize: '7.5px', height: '14px', padding: '0 1px', borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none' }}
                   >
                     <option value="">-- Select --</option>
                     {availableSchools.map(s => {
-                      const disabled = prob1Code && s.value === prob1Code;
+                      const disabled = prob2Code && s.value === prob2Code;
                       return <option key={s.value} value={s.value} disabled={disabled}>{s.label}</option>;
                     })}
                   </select>
                 </div>
-              )}
-            </div>
-          )}
+                {spec !== 'div' && (
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '8px' }}>
+                    <span>Prohibited 2:</span>
+                    <select 
+                      value={prob2Code}
+                      onChange={handleProhibited2Change}
+                      className="cinput wizard-prob2" 
+                      style={{ width: '95px', fontSize: '7.5px', height: '14px', padding: '0 1px', borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none' }}
+                    >
+                      <option value="">-- Select --</option>
+                      {availableSchools.map(s => {
+                        const disabled = prob1Code && s.value === prob1Code;
+                        return <option key={s.value} value={s.value} disabled={disabled}>{s.label}</option>;
+                      })}
+                    </select>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <ClassACFSelector pc={pc} classKey="wizard" level={level} />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

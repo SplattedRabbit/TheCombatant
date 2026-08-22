@@ -65,7 +65,7 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
   const hasCompanionOrFamiliar = hasCompanion || hasFamiliar;
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', height: '100%', boxSizing: 'border-box' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', boxSizing: 'border-box', alignItems: 'start', minHeight: '520px' }}>
       {/* Left Column: Class Features */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', borderRight: '0.5px solid rgba(200, 169, 110, 0.2)', paddingRight: '8px' }}>
         <div style={{ display: 'flex', justifySelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px' }}>
@@ -82,7 +82,7 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
           </button>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '380px', overflowY: 'auto', paddingRight: '2px' }} className="pc-scroll-features">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', paddingRight: '2px' }}>
           {/* Racial traits */}
           <RacialTraitsCard pc={pc} />
 

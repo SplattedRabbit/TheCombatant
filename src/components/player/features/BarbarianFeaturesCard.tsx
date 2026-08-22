@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
+import { ClassACFSelector } from './ClassACFSelector';
 
 interface BarbarianFeaturesCardProps {
   pc: any;
@@ -8,10 +9,12 @@ interface BarbarianFeaturesCardProps {
 }
 
 export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc, level }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [rageRulesOpen, setRageRulesOpen] = useState(false);
 
-  const rageAbility = pc.dailyAbilities?.find((a: any) => a.name === "Kampfrausch (Rage)");
-  const maxUses = rageAbility ? rageAbility.max : 0;
+  const totalRageCalculated = 1 + Math.floor(level / 4);
+  const rageAbility = pc.dailyAbilities?.find((a: any) => a.name === "Kampfrausch (Rage)" || a.name === "Rage" || a.name?.includes("Rage"));
+  const maxUses = rageAbility ? rageAbility.max : totalRageCalculated;
   const usedUses = rageAbility ? rageAbility.used : 0;
   const remaining = Math.max(0, maxUses - usedUses);
 
@@ -29,44 +32,58 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
   };
 
   const handleToggleRage = () => {
-    const activePC = CombatState.getActivePC();
-    if (activePC.isRaging) {
-      const ability = activePC.dailyAbilities.find((a: any) => a.name === "Kampfrausch (Rage)");
-      if (ability) {
+    CombatState.updatePCBatch((activePC: any) => {
+      if (!Array.isArray(activePC.dailyAbilities)) {
+        activePC.dailyAbilities = [];
+      }
+      let ability = activePC.dailyAbilities.find((a: any) => a.name === "Kampfrausch (Rage)" || a.name === "Rage" || a.name?.includes("Rage"));
+      if (!ability) {
+        ability = { name: "Rage", max: totalRageCalculated, used: 0 };
+        activePC.dailyAbilities.push(ability);
+      }
+
+      if (activePC.isRaging) {
         ability.used = Math.min(ability.max, ability.used + 1);
+        activePC.exitRage();
+      } else {
+        if (ability.used >= ability.max) {
+          return;
+        }
+        activePC.enterRage();
       }
-      activePC.exitRage();
-    } else {
-      const ability = activePC.dailyAbilities.find((a: any) => a.name === "Kampfrausch (Rage)");
-      if (ability && ability.used >= ability.max) {
-        return;
-      }
-      activePC.enterRage();
-    }
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    });
   };
 
   const handleBubbleClick = (idx: number) => {
-    const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities.find((a: any) => a.name === "Kampfrausch (Rage)");
-    if (ability) {
+    CombatState.updatePCBatch((activePC: any) => {
+      if (!Array.isArray(activePC.dailyAbilities)) {
+        activePC.dailyAbilities = [];
+      }
+      let ability = activePC.dailyAbilities.find((a: any) => a.name === "Kampfrausch (Rage)" || a.name === "Rage" || a.name?.includes("Rage"));
+      if (!ability) {
+        ability = { name: "Rage", max: totalRageCalculated, used: 0 };
+        activePC.dailyAbilities.push(ability);
+      }
       if (idx <= ability.used) {
         ability.used = idx - 1;
       } else {
         ability.used = idx;
       }
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
-    }
+    });
   };
 
   return (
-    <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
-      <div className="class-card-hdr" style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
+    <div className={`class-card ${isExpanded ? 'expanded' : ''}`} style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
+      <div 
+        className="class-card-hdr" 
+        onClick={() => setIsExpanded(!isExpanded)}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+      >
         <span>🎭 Barbarian (Level {level})</span>
+        <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
       </div>
-      <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%' }}>
+      {isExpanded && (
+        <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '100%' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '8.5px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -74,7 +91,7 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
               <button 
                 onClick={() => setRageRulesOpen(!rageRulesOpen)}
                 className="btn btn-toggle-rules-rage" 
-                style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
+                style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                 title="Show rules"
               >
                 📖 {rageRulesOpen ? '▲' : '▼'}
@@ -156,8 +173,11 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
               Note: After rage ends, you will be <strong>fatigued</strong> for the duration of the encounter (–2 Strength, –2 Dexterity, cannot charge or run).
             </div>
           </div>
+
+          <ClassACFSelector pc={pc} classKey="barbarian" level={level} />
         </div>
       </div>
+      )}
     </div>
   );
 };

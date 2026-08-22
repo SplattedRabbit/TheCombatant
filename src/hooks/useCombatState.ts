@@ -144,31 +144,28 @@ export function useCombatState(): UseCombatStateReturn {
     setSnapshot(createSnapshot(getState()));
     setActivePC(mapPC(getActivePC()) as Combatant | null);
 
-    // Event-Handler
-    const onStateChanged = () => {
+    // Single handler: both state_changed and pc_changed trigger the same full re-sync.
+    // Merging them avoids double-renders on events that fire together.
+    const syncSnapshot = () => {
       setSnapshot(createSnapshot(getState()));
       setActivePC(mapPC(getActivePC()) as Combatant | null);
     };
 
-    const onPCChanged = () => {
-      setSnapshot(createSnapshot(getState()));
-      setActivePC(mapPC(getActivePC()) as Combatant | null);
-    };
-
-    StateEvents.on('state_changed', onStateChanged);
-    StateEvents.on('pc_changed', onPCChanged);
+    StateEvents.on('state_changed', syncSnapshot);
+    StateEvents.on('pc_changed', syncSnapshot);
 
     // Cleanup: Listener aus dem Bus entfernen
     return () => {
       if (StateEvents.listeners['state_changed']) {
         StateEvents.listeners['state_changed'] =
-          StateEvents.listeners['state_changed'].filter(cb => cb !== onStateChanged);
+          StateEvents.listeners['state_changed'].filter(cb => cb !== syncSnapshot);
       }
       if (StateEvents.listeners['pc_changed']) {
         StateEvents.listeners['pc_changed'] =
-          StateEvents.listeners['pc_changed'].filter(cb => cb !== onPCChanged);
+          StateEvents.listeners['pc_changed'].filter(cb => cb !== syncSnapshot);
       }
     };
+
   }, [isReady, getState, getActivePC, StateEvents]);
 
   const result = useMemo<UseCombatStateReturn>(() => ({

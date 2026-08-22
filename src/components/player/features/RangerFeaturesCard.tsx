@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
+import { ClassACFSelector } from './ClassACFSelector';
+import { getAblMod } from '../attributeHelper';
 
 interface RangerFeaturesCardProps {
   pc: any;
@@ -10,6 +12,7 @@ interface RangerFeaturesCardProps {
 }
 
 export const RangerFeaturesCard: React.FC<RangerFeaturesCardProps> = ({ pc, level }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [generalRulesOpen, setGeneralRulesOpen] = useState(false);
   const [favoredRulesOpen, setFavoredRulesOpen] = useState(false);
   const [combatstyleRulesOpen, setCombatstyleRulesOpen] = useState(false);
@@ -21,9 +24,6 @@ export const RangerFeaturesCard: React.FC<RangerFeaturesCardProps> = ({ pc, leve
     setFavoredEnemyLocal(pc.favoredEnemy || '');
   }, [pc.favoredEnemy]);
 
-  const getAblMod = (score: number) => {
-    return score >= 10 ? Math.floor((score - 10) / 2) : (score === 9 || score === 8 ? -1 : (score === 7 || score === 6 ? -2 : (score === 5 || score === 4 ? -4 : -5)));
-  };
 
   const enemyBonus = Math.floor(level / 5) * 2 + 2;
   const combatStyle = pc.rangerCombatStyle || 'none';
@@ -103,18 +103,24 @@ export const RangerFeaturesCard: React.FC<RangerFeaturesCardProps> = ({ pc, leve
   };
 
   return (
-    <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
-      <div className="class-card-hdr" style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
+    <div className={`class-card ${isExpanded ? 'expanded' : ''}`} style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
+      <div 
+        className="class-card-hdr" 
+        onClick={() => setIsExpanded(!isExpanded)}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+      >
         <span>🎭 Ranger (Level {level})</span>
+        <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
       </div>
-      <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%' }}>
+      {isExpanded && (
+        <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
           <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 'bold' }}>
             <span>Class Features</span>
             <button 
               onClick={() => setGeneralRulesOpen(!generalRulesOpen)}
               className="btn btn-toggle-rules-general" 
-              style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
+              style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
               title="Show Rules"
             >
               📖 {generalRulesOpen ? '▲' : '▼'}
@@ -144,7 +150,7 @@ export const RangerFeaturesCard: React.FC<RangerFeaturesCardProps> = ({ pc, leve
                 <button 
                   onClick={() => setFavoredRulesOpen(!favoredRulesOpen)}
                   className="btn btn-toggle-rules-favored" 
-                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                   title="Show Rules"
                 >
                   📖 {favoredRulesOpen ? '▲' : '▼'}
@@ -183,7 +189,7 @@ export const RangerFeaturesCard: React.FC<RangerFeaturesCardProps> = ({ pc, leve
                   <button 
                     onClick={() => setCombatstyleRulesOpen(!combatstyleRulesOpen)}
                     className="btn btn-toggle-rules-combatstyle" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show Rules"
                   >
                     📖 {combatstyleRulesOpen ? '▲' : '▼'}
@@ -220,7 +226,7 @@ export const RangerFeaturesCard: React.FC<RangerFeaturesCardProps> = ({ pc, leve
                 <button 
                   onClick={() => setWildempathyRulesOpen(!wildempathyRulesOpen)}
                   className="btn btn-toggle-rules-wildempathy" 
-                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                   title="Show Rules"
                 >
                   📖 {wildempathyRulesOpen ? '▲' : '▼'}
@@ -252,8 +258,11 @@ export const RangerFeaturesCard: React.FC<RangerFeaturesCardProps> = ({ pc, leve
               <div style={{ textAlign: 'right' }}>🔮 Ranger Caster Level: <strong>{casterLvl}</strong></div>
             </div>
           )}
+
+          <ClassACFSelector pc={pc} classKey="ranger" level={level} />
         </div>
       </div>
+      )}
     </div>
   );
 };

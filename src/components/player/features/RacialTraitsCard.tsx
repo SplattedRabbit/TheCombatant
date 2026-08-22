@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 // @ts-ignore
@@ -9,6 +9,7 @@ interface RacialTraitsCardProps {
 }
 
 export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const race = (pc.race || 'human').toLowerCase();
   const raceNames: Record<string, string> = {
     human: 'Human',
@@ -16,6 +17,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
     dwarf: 'Dwarf',
     gnome: 'Gnome',
     halfling: 'Halfling',
+    deep_halfling: 'Deep Halfling',
     half_elf: 'Half-Elf',
     half_orc: 'Half-Orc',
     tiefling: 'Tiefling',
@@ -115,6 +117,20 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
           <li><strong>Keen Senses:</strong> +2 racial bonus on Climb, Jump, Listen, and Move Silently checks (already included).</li>
         </ul>
       );
+    } else if (race === 'deep_halfling') {
+      return (
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+          <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, -2 Strength (already included).</li>
+          <li><strong>Small Size:</strong> +1 size bonus to AC, +1 size bonus on attack rolls, +4 bonus on Hide checks (already included).</li>
+          <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
+          <li><strong>Stonecunning:</strong> +2 racial bonus on Search checks to notice unusual stonework and find stone traps like a rogue.</li>
+          <li><strong>Craft &amp; Appraise Mastery:</strong> +2 racial bonus on Appraise and Craft checks related to stone or metal.</li>
+          <li><strong>Halfling Luck:</strong> +1 racial bonus on all saving throws (already included).</li>
+          <li><strong>Fearless:</strong> +2 morale bonus on saving throws against fear.</li>
+          <li><strong>Keen Senses:</strong> +2 racial bonus on Listen checks (already included; no bonuses on Climb, Jump, Move Silently).</li>
+          <li><strong>Languages:</strong> Speaks Dwarven fluently.</li>
+        </ul>
+      );
     } else if (race === 'half_elf') {
       return (
         <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
@@ -206,15 +222,20 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
   };
 
   return (
-    <div style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', padding: '6px 8px', background: 'rgba(200, 169, 110, 0.03)', marginBottom: '6px', display: 'flex', flexDirection: 'column', gap: '3.5px' }}>
-      <div style={{ display: 'flex', justifySelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', paddingBottom: '2px' }}>
-        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>
-          🧬 Racial Traits: {raceName}
-        </span>
+    <div className={`class-card ${isExpanded ? 'expanded' : ''}`} style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
+      <div 
+        className="class-card-hdr" 
+        onClick={() => setIsExpanded(!isExpanded)}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+      >
+        <span>🧬 Racial Traits: {raceName}</span>
+        <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-        {getRacialTraitsContent()}
-      </div>
+      {isExpanded && (
+        <div className="class-card-body" style={{ display: 'flex', flexDirection: 'column', padding: '6px 8px', gap: '3.5px', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
+          {getRacialTraitsContent()}
+        </div>
+      )}
     </div>
   );
 };

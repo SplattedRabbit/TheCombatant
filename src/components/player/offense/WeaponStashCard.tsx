@@ -114,11 +114,24 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
             </select>
           )}
           <button
-            className="xbtn equip-btn"
+            type="button"
+            className="btn"
             onClick={() => handleWeaponEquipToggle(idx, w)}
-            style={{ padding: '0 6px', fontSize: '7.5px', fontWeight: 'bold', height: '16px', borderRadius: '2px' }}
+            style={{
+              padding: '0 8px',
+              fontSize: '7.5px',
+              fontWeight: 'bold',
+              fontFamily: "'IM Fell English SC', serif",
+              height: '18px',
+              lineHeight: 1,
+              borderRadius: '2px',
+              background: w.isEquipped ? 'rgba(200, 169, 110, 0.15)' : 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+              border: w.isEquipped ? '0.5px solid var(--pb)' : '0.5px solid #8b6914',
+              color: w.isEquipped ? 'var(--ink)' : '#ffffff',
+              cursor: 'pointer'
+            }}
           >
-            {w.isEquipped ? 'Unequip' : 'Equip'}
+            {w.isEquipped ? 'Unequip' : '⚡ Equip'}
           </button>
           <button
             className="xbtn"

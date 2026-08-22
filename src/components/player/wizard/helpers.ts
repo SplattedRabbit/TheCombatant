@@ -16,7 +16,7 @@ export const getRacialModifier = (race: string, stat: string): number => {
     if (stat === 'con') return 2;
     if (stat === 'str') return -2;
   }
-  if (race === 'halfling') {
+  if (race === 'halfling' || race === 'deep_halfling') {
     if (stat === 'dex') return 2;
     if (stat === 'str') return -2;
   }

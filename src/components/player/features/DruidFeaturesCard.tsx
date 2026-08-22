@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
+import { ClassACFSelector } from './ClassACFSelector';
 
 interface DruidFeaturesCardProps {
   pc: any;
@@ -8,11 +9,13 @@ interface DruidFeaturesCardProps {
 }
 
 export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [wildshapeRulesOpen, setWildshapeRulesOpen] = useState(false);
   const [showSelectModal, setShowSelectModal] = useState(false);
 
-  const wildAbility = pc.dailyAbilities?.find((a: any) => a.name === "Tiergestalt" || a.name === "Wild Shape");
-  const maxUses = wildAbility ? (parseInt(wildAbility.max) || 0) : 0;
+  const defaultWildMax = level >= 5 ? (level >= 18 ? 6 : (level >= 14 ? 5 : (level >= 10 ? 4 : (level >= 7 ? 3 : (level >= 6 ? 2 : 1))))) : 0;
+  const wildAbility = pc.dailyAbilities?.find((a: any) => a.name === "Tiergestalt" || a.name === "Wild Shape" || a.name?.includes("Wild Shape") || a.name?.includes("Tiergestalt"));
+  const maxUses = wildAbility ? (parseInt(wildAbility.max) || 0) : defaultWildMax;
   const usedUses = wildAbility ? (parseInt(wildAbility.used) || 0) : 0;
   const remaining = Math.max(0, maxUses - usedUses);
 
@@ -24,14 +27,19 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
 
   const handleBubbleClick = (idx: number) => {
     CombatState.updatePCBatch((activePC: any) => {
-      const ability = activePC.dailyAbilities.find((a: any) => a.name === "Tiergestalt" || a.name === "Wild Shape");
-      if (ability) {
-        const used = parseInt(ability.used) || 0;
-        if (idx <= used) {
-          ability.used = Math.max(0, idx - 1);
-        } else {
-          ability.used = Math.min(ability.max, idx);
-        }
+      if (!Array.isArray(activePC.dailyAbilities)) {
+        activePC.dailyAbilities = [];
+      }
+      let ability = activePC.dailyAbilities.find((a: any) => a.name === "Tiergestalt" || a.name === "Wild Shape" || a.name?.includes("Wild Shape") || a.name?.includes("Tiergestalt"));
+      if (!ability) {
+        ability = { name: "Wild Shape", max: defaultWildMax, used: 0 };
+        activePC.dailyAbilities.push(ability);
+      }
+      const used = parseInt(ability.used) || 0;
+      if (idx <= used) {
+        ability.used = Math.max(0, idx - 1);
+      } else {
+        ability.used = Math.min(ability.max, idx);
       }
     });
   };
@@ -50,18 +58,21 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
   const handleSelectShape = (shape: string) => {
     try {
       CombatState.updatePCBatch((pcToUpdate: any) => {
-        const innerWild = pcToUpdate.dailyAbilities.find((a: any) => a.name === "Tiergestalt" || a.name === "Wild Shape");
-        if (innerWild) {
-          const used = parseInt(innerWild.used) || 0;
-          const max = parseInt(innerWild.max) || 0;
-          if (used < max) {
-            innerWild.used = used + 1;
-            pcToUpdate.enterShape(shape);
-          } else {
-            throw new Error("No Wild Shape uses remaining!");
-          }
+        if (!Array.isArray(pcToUpdate.dailyAbilities)) {
+          pcToUpdate.dailyAbilities = [];
+        }
+        let innerWild = pcToUpdate.dailyAbilities.find((a: any) => a.name === "Tiergestalt" || a.name === "Wild Shape" || a.name?.includes("Wild Shape") || a.name?.includes("Tiergestalt"));
+        if (!innerWild) {
+          innerWild = { name: "Wild Shape", max: defaultWildMax, used: 0 };
+          pcToUpdate.dailyAbilities.push(innerWild);
+        }
+        const used = parseInt(innerWild.used) || 0;
+        const max = parseInt(innerWild.max) || 0;
+        if (used < max) {
+          innerWild.used = used + 1;
+          pcToUpdate.enterShape(shape);
         } else {
-          throw new Error("Wild Shape charges not found!");
+          throw new Error("No Wild Shape uses remaining!");
         }
       });
       setShowSelectModal(false);
@@ -118,11 +129,17 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
   };
 
   return (
-    <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
-      <div className="class-card-hdr" style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
+    <div className={`class-card ${isExpanded ? 'expanded' : ''}`} style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
+      <div 
+        className="class-card-hdr" 
+        onClick={() => setIsExpanded(!isExpanded)}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+      >
         <span>🎭 Druid (Level {level})</span>
+        <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
       </div>
-      <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%' }}>
+      {isExpanded && (
+        <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
           <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
             Class Features
@@ -136,7 +153,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                     <button 
                       onClick={() => setWildshapeRulesOpen(!wildshapeRulesOpen)}
                       className="btn btn-toggle-rules-wildshape" 
-                      style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
+                      style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                       title="Show rules"
                     >
                       📖 {wildshapeRulesOpen ? '▲' : '▼'}
@@ -199,8 +216,11 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
               Wild Shape is unlocked at level 5.
             </div>
           )}
+
+          <ClassACFSelector pc={pc} classKey="druid" level={level} />
         </div>
       </div>
+      )}
 
       {/* Wild Shape Select Modal */}
       {showSelectModal && (
@@ -242,7 +262,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                   <span>🐺 Wolf</span>
                   <span style={{ fontSize: '7.5px', background: 'rgba(46, 125, 50, 0.1)', color: '#2e7d32', border: '0.5px solid rgba(46, 125, 50, 0.3)', borderRadius: '2px', padding: '0 3px' }}>Level 5+</span>
                 </div>
-                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineIndex: 1.2, marginTop: '1px' } as any}>
+                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
                   • STR 13, DEX 15, CON 15 | AC: 14<br />
                   • Bite +3 (1d6+1 + Trip)
                 </div>
@@ -264,7 +284,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                   <span>🐆 Leopard</span>
                   <span style={{ fontSize: '7.5px', background: 'rgba(46, 125, 50, 0.1)', color: '#2e7d32', border: '0.5px solid rgba(46, 125, 50, 0.3)', borderRadius: '2px', padding: '0 3px' }}>Level 6+</span>
                 </div>
-                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineIndex: 1.2, marginTop: '1px' } as any}>
+                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
                   • STR 16, DEX 19, CON 15 | AC: 15<br />
                   • Bite +6 (1d6+3) & 2 Claws +1 (1d3+1)
                 </div>
@@ -287,7 +307,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                     <span>🐻 Brown Bear</span>
                     <span style={{ fontSize: '7.5px', background: 'rgba(46, 125, 50, 0.1)', color: '#2e7d32', border: '0.5px solid rgba(46, 125, 50, 0.3)', borderRadius: '2px', padding: '0 3px' }}>Level 8+</span>
                   </div>
-                  <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineIndex: 1.2, marginTop: '1px' } as any}>
+                  <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
                     • STR 27, DEX 13, CON 19 | AC: 15<br />
                     • 2 Claws +11 (1d8+8) & Bite +6 (2d6+4)
                   </div>
@@ -308,7 +328,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                     <span>🐻 Brown Bear</span>
                     <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', border: '0.5px solid rgba(0,0,0,0.08)', borderRadius: '2px', padding: '0 3px' }}>Level 8+</span>
                   </div>
-                  <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--inkl)', lineIndex: 1.2, marginTop: '1px' } as any}>
+                  <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--inkl)', lineHeight: 1.2, marginTop: '1px' } as any}>
                     • Requires Druid level 8.
                   </div>
                 </div>

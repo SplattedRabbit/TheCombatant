@@ -122,6 +122,13 @@ export function resetDailyResources() {
         ps.isUsed = false;
       });
     }
+    if (Array.isArray(pc.items)) {
+      pc.items.forEach(item => {
+        if (item && item.dailyUses && item.dailyUses.max) {
+          item.dailyUses.current = item.dailyUses.max;
+        }
+      });
+    }
     saveToStorage();
     syncPCToHost();
   }
@@ -164,6 +171,14 @@ export function addPCFeat(featId, option = '') {
   updatePCBatch(pc => {
     if (!Array.isArray(pc.feats)) pc.feats = [];
 
+    // Re-enable if it was disabled as an automatic feat
+    if (Array.isArray(pc.disabledAutomaticFeats)) {
+      const dIdx = pc.disabledAutomaticFeats.indexOf(featId);
+      if (dIdx !== -1) {
+        pc.disabledAutomaticFeats.splice(dIdx, 1);
+      }
+    }
+
     // Add the feat
     pc.feats.push({ id: featId, option: option || '' });
 
@@ -179,17 +194,27 @@ export function addPCFeat(featId, option = '') {
 
 export function removePCFeat(featId, option = '') {
   updatePCBatch(pc => {
-    if (!Array.isArray(pc.feats)) return;
-    
-    // Find index of the feat to remove
-    const idx = pc.feats.findIndex(f => f.id === featId && f.option === option);
-    if (idx !== -1) {
-      pc.feats.splice(idx, 1);
-      
-      // Special handling for Toughness
-      if (featId === 'toughness') {
-        pc.maxHP = Math.max(1, (pc.maxHP || 0) - 3);
-        pc.hp = Math.max(-99, (pc.hp || 0) - 3);
+    let removed = false;
+    if (Array.isArray(pc.feats)) {
+      // Find index of the feat to remove (match option if passed, or first match if option is empty)
+      const idx = pc.feats.findIndex(f => f.id === featId && (!option || f.option === option));
+      if (idx !== -1) {
+        pc.feats.splice(idx, 1);
+        removed = true;
+        
+        // Special handling for Toughness
+        if (featId === 'toughness') {
+          pc.maxHP = Math.max(1, (pc.maxHP || 0) - 3);
+          pc.hp = Math.max(-99, (pc.hp || 0) - 3);
+        }
+      }
+    }
+
+    // If it was not in manual feats or is an automatic class feat, add to disabledAutomaticFeats
+    if (!removed) {
+      if (!Array.isArray(pc.disabledAutomaticFeats)) pc.disabledAutomaticFeats = [];
+      if (!pc.disabledAutomaticFeats.includes(featId)) {
+        pc.disabledAutomaticFeats.push(featId);
       }
     }
   });

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { uiRegistry } from '@core/ui/ui-shared.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
-import { checkPrerequisites } from '../player/PCFeatsTab';
+// @ts-ignore
+import { checkPrerequisites } from '@core/rules/RulesFeats.js';
+
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
 
 interface FeatScrollDialogProps {
@@ -89,15 +91,20 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
       { combat: 'Combat Feat', metamagic: 'Metamagic Feat', item_creation: 'Item Creation Feat', general: 'General Feat' } as Record<string, string>
     )[feat.category] || 'General Feat';
 
-  // Evaluate prerequisites
-  const { met, details: prereqsDetails } = checkPrerequisites(feat, pc);
+  const currentPC = (CombatState && typeof CombatState.getActivePC === 'function' ? CombatState.getActivePC() : null) || pc;
+  const activeFeatsList = currentPC.feats || [];
 
-  const autoFeats = typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats() : [];
-  const isAutomatic = autoFeats.some((af: any) => af.id === feat.id);
+  // Evaluate prerequisites
+  const { met, details: prereqsDetails } = checkPrerequisites(feat, currentPC);
+
+  const autoFeats = typeof currentPC.getAutomaticFeats === 'function' ? currentPC.getAutomaticFeats() : [];
+  const autoFeatObj = autoFeats.find((af: any) => af.id === feat.id);
+  const isAutomatic = !!autoFeatObj;
+  const isActuallyLearned = isLearned || activeFeatsList.some((f: any) => f.id === feat.id) || isAutomatic;
 
   // Stackability & Options info
   const isStackable = feat.specialRaw && feat.specialRaw.toLowerCase().includes('multiple times');
-  const learnedInstances = (pc.feats || []).filter((f: any) => f.id === feat.id);
+  const learnedInstances = activeFeatsList.filter((f: any) => f.id === feat.id);
 
   // Generate options list if option dropdown is needed
   let optionsList: string[] = [];
@@ -376,8 +383,8 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
         </div>
 
         {/* Action Footer */}
-        <div style={{ marginTop: '2px' }}>
-          {!isLearned || isStackable ? (
+        <div style={{ marginTop: '4px' }}>
+          {!isActuallyLearned || isStackable ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
               <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.3px' }}>
                 {isLearnBlocked ? '🔒 Prerequisites not met!' : 'Do you want to learn this feat?'}
@@ -424,20 +431,44 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
               </div>
             </div>
           ) : isAutomatic ? (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '100%', textAlign: 'center' }}>
-              <div style={{ fontSize: '11px', color: '#1976d2', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>
-                Klassentalent
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', width: '100%' }}>
+              <div
+                style={{
+                  background: 'rgba(200, 169, 110, 0.12)',
+                  border: '1px solid var(--pb)',
+                  borderLeft: '4px solid #7c5a2b',
+                  borderRadius: '3px',
+                  padding: '8px 12px',
+                  width: '100%',
+                  boxSizing: 'border-box',
+                  textAlign: 'left',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '4px'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '0.5px solid rgba(124, 90, 43, 0.25)', paddingBottom: '3px' }}>
+                  <span style={{ fontSize: '10.5px', color: '#7c5a2b', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <span>🛡️</span> Automatic Class Feature
+                  </span>
+                  {autoFeatObj && (
+                    <span style={{ fontSize: '7.5px', color: '#7c5a2b', background: 'rgba(124, 90, 43, 0.12)', padding: '1px 5px', borderRadius: '2px', fontWeight: 'bold' }}>
+                      {autoFeatObj.source || 'Class Feature'}
+                    </span>
+                  )}
+                </div>
+                <p style={{ fontSize: '9.5px', color: 'var(--ink)', margin: 0, fontFamily: "'Crimson Text', serif", lineHeight: 1.35 }}>
+                  This feat is granted automatically as an integral part of your character's class or racial progression. Because it is a permanent inherent trait, it cannot be unlearned.
+                </p>
               </div>
-              <p style={{ fontSize: '10px', color: 'var(--inkm)', margin: '0 0 4px 0', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, maxWidth: '280px' }}>
-                Dieses Talent wird dir automatisch als Klassen- oder Rassenmerkmal gewährt und kann nicht verlernt werden.
-              </p>
+
               <button
                 onClick={onClose}
                 className="btn btn-close-feat"
                 style={{
                   fontFamily: "'IM Fell English SC', serif",
-                  fontSize: '9px',
-                  padding: '4px 22px',
+                  fontSize: '9.5px',
+                  padding: '4px 28px',
                   cursor: 'pointer',
                   background: 'transparent',
                   border: '1px solid var(--pb)',
@@ -447,7 +478,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                   outline: 'none'
                 }}
               >
-                Schließen
+                Close
               </button>
             </div>
           ) : (

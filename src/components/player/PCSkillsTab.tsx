@@ -34,6 +34,10 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
   const [tricksSearchQuery, setTricksSearchQuery] = useState('');
   const [tricksFilterCategory, setTricksFilterCategory] = useState<string>('all');
   const [selectedTrick, setSelectedTrick] = useState<any>(null);
+  const [focusedRanksKey, setFocusedRanksKey] = useState<string | null>(null);
+  const [focusedRanksVal, setFocusedRanksVal] = useState<string>('');
+  const [focusedMiscKey, setFocusedMiscKey] = useState<string | null>(null);
+  const [focusedMiscVal, setFocusedMiscVal] = useState<string>('');
 
   // Format Mod helper
   const formatMod = (val: number) => (val >= 0 ? `+${val}` : `${val}`);
@@ -110,6 +114,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     else if (race === 'elf' && ['listen', 'search', 'spot'].includes(key)) racialBonus = 2;
     else if (race === 'gnome' && ['listen', 'craft'].includes(key)) racialBonus = 2;
     else if (race === 'halfling' && ['climb', 'jump', 'move_silently', 'listen'].includes(key)) racialBonus = 2;
+    else if (race === 'deep_halfling' && ['listen', 'appraise', 'craft', 'search'].includes(key)) racialBonus = 2;
     else if (race === 'half_elf') {
       if (['listen', 'search', 'spot'].includes(key)) racialBonus = 1;
       if (['diplomacy', 'gather_information'].includes(key)) racialBonus = 2;
@@ -169,6 +174,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     else if (race === 'elf' && ['listen', 'search', 'spot'].includes(key)) racialBonus = 2;
     else if (race === 'gnome' && ['listen', 'craft'].includes(key)) racialBonus = 2;
     else if (race === 'halfling' && ['climb', 'jump', 'move_silently', 'listen'].includes(key)) racialBonus = 2;
+    else if (race === 'deep_halfling' && ['listen', 'appraise', 'craft', 'search'].includes(key)) racialBonus = 2;
     else if (race === 'half_elf') {
       if (['listen', 'search', 'spot'].includes(key)) racialBonus = 1;
       if (['diplomacy', 'gather_information'].includes(key)) racialBonus = 2;
@@ -298,7 +304,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       const matchesQuery = trick.nameDe.toLowerCase().includes(q) || trick.nameEn.toLowerCase().includes(q) || trick.key.includes(q);
       const matchesCategory = tricksFilterCategory === 'all' || trick.category === tricksFilterCategory;
       return matchesQuery && matchesCategory;
-    }).sort((a: any, b: any) => a.nameDe.localeCompare(b.nameDe));
+    }).sort((a: any, b: any) => (a.nameEn || a.nameDe).localeCompare(b.nameEn || b.nameDe));
   }, [tricksSearchQuery, tricksFilterCategory]);
 
   return (
@@ -467,8 +473,25 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                             step="1"
                             min="0"
                             max={Math.floor(maxRanks)}
-                            value={ranks}
-                            onChange={(e) => handleRanksChange(key, e.target.value)}
+                            value={focusedRanksKey === key ? focusedRanksVal : ranks}
+                            onFocus={() => {
+                              setFocusedRanksKey(key);
+                              setFocusedRanksVal(ranks === 0 ? '' : String(ranks));
+                            }}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              setFocusedRanksVal(val);
+                              if (val !== '') {
+                                handleRanksChange(key, val);
+                              }
+                            }}
+                            onBlur={() => {
+                              if (focusedRanksVal === '' || isNaN(parseFloat(focusedRanksVal))) {
+                                handleRanksChange(key, '0');
+                              }
+                              setFocusedRanksKey(null);
+                              setFocusedRanksVal('');
+                            }}
                             style={{
                               width: '22px',
                               fontSize: '8px',
@@ -516,8 +539,25 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                           <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Misc:</span>
                           <input
                             type="number"
-                            value={misc}
-                            onChange={(e) => handleMiscChange(key, e.target.value)}
+                            value={focusedMiscKey === key ? focusedMiscVal : misc}
+                            onFocus={() => {
+                              setFocusedMiscKey(key);
+                              setFocusedMiscVal(misc === 0 ? '' : String(misc));
+                            }}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              setFocusedMiscVal(val);
+                              if (val !== '' && val !== '-') {
+                                handleMiscChange(key, val);
+                              }
+                            }}
+                            onBlur={() => {
+                              if (focusedMiscVal === '' || focusedMiscVal === '-' || isNaN(parseInt(focusedMiscVal))) {
+                                handleMiscChange(key, '0');
+                              }
+                              setFocusedMiscKey(null);
+                              setFocusedMiscVal('');
+                            }}
                             style={{
                               width: '16px',
                               fontSize: '8px',
@@ -547,7 +587,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
           <div style={{ flex: '4 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', boxSizing: 'border-box' }}>
             <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>🎭 Skill Tricks</span>
-              <span style={{ fontSize: '8px', fontWeight: 'bold', background: 'rgba(25, 118, 210, 0.08)', color: '#1976d2', border: '0.5px solid #1976d2', padding: '1px 4px', borderRadius: '1.5px' }}>
+              <span style={{ fontSize: '8px', fontWeight: 'bold', background: 'rgba(200, 169, 110, 0.15)', color: '#7c5a2b', border: '0.5px solid var(--pb)', padding: '1px 4px', borderRadius: '1.5px' }}>
                 {learnedTricks.length} / {maxTricksLimit}
               </span>
             </h3>
@@ -564,72 +604,110 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     const isBonus = typeof t === 'object' ? !!t.isBonus : false;
                     const trickDef = SKILL_TRICKS_REGISTRY[trickId];
                     if (!trickDef) return null;
+
                     return (
                       <div
                         key={trickId}
-                        onClick={() => {
-                          setSelectedTrick({ ...trickDef, isLearned: true, isBonus });
-                        }}
                         style={{
-                          fontSize: '7.5px',
+                          background: 'rgba(50, 115, 55, 0.06)',
+                          border: '0.5px solid rgba(50, 115, 55, 0.35)',
+                          borderLeft: '2.5px solid #2e7d32',
+                          borderRadius: '2px',
                           padding: '2px 5px',
-                          borderRadius: '1.5px',
-                          border: isBonus ? '0.5px solid #2a6a2a' : '0.5px solid var(--pb)',
-                          background: isBonus ? 'rgba(42, 106, 42, 0.05)' : 'white',
-                          color: isBonus ? '#2a6a2a' : 'var(--ink)',
-                          cursor: 'pointer',
-                          display: 'inline-flex',
+                          display: 'flex',
                           alignItems: 'center',
-                          gap: '3px'
+                          gap: '4px',
+                          fontSize: '8px',
+                          cursor: 'pointer'
                         }}
-                        title={`${trickDef.nameEn || trickDef.nameDe} (${isBonus ? 'Bonus Trick' : 'Cost: 2 SP'}). Click for details.`}
+                        onClick={() => setSelectedTrick({ ...trickDef, isLearned: true, isBonus })}
                       >
-                        🎭 {trickDef.nameEn || trickDef.nameDe} {isBonus && <span style={{ fontSize: '6px', color: '#2a6a2a' }}>★</span>}
+                        <span style={{ fontWeight: 'bold', color: '#245e28' }}>
+                          {trickDef.nameEn || trickDef.nameDe}
+                        </span>
+                        {isBonus && (
+                          <span style={{ fontSize: '6.5px', color: '#2e7d32', fontWeight: 'bold' }}>
+                            (Bonus)
+                          </span>
+                        )}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            CombatState.removePCSkillTrick(trickId);
+                          }}
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            color: '#245e28',
+                            fontSize: '8px',
+                            padding: '0 2px',
+                            lineHeight: 1
+                          }}
+                          title="Remove Skill Trick"
+                        >
+                          ✕
+                        </button>
                       </div>
                     );
                   })}
                 </div>
               ) : (
-                <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>No skill tricks learned.</div>
+                <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>
+                  No skill tricks learned yet.
+                </div>
               )}
             </div>
 
-            {/* Compendium (Available Tricks) Header & Filters */}
-            <div style={{ display: 'flex', gap: '3px', alignItems: 'center', minWidth: 0, marginTop: '2px' }}>
+            {/* Filter Tabs & Search */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', margin: '4px 0 2px 0' }}>
+              <div style={{ display: 'flex', gap: '2px' }}>
+                {(['all', 'interaction', 'movement', 'manipulation', 'mental'] as const).map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setTricksFilterCategory(cat)}
+                    style={{
+                      flex: 1,
+                      fontSize: '7.5px',
+                      fontFamily: "'IM Fell English SC', serif",
+                      padding: '2px 0',
+                      border: tricksFilterCategory === cat ? '1px solid var(--red)' : '0.5px solid var(--pb)',
+                      background: tricksFilterCategory === cat ? 'var(--red)' : 'transparent',
+                      color: tricksFilterCategory === cat ? '#fff' : 'var(--inkm)',
+                      borderRadius: '2px',
+                      cursor: 'pointer',
+                      textTransform: 'capitalize'
+                    }}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
               <input
                 type="text"
-                placeholder="Filter tricks..."
                 value={tricksSearchQuery}
                 onChange={(e) => setTricksSearchQuery(e.target.value)}
-                style={{ flex: 1, fontSize: '8.5px', height: '18px', padding: '0 4px', minWidth: 0 }}
+                placeholder="Search trick..."
                 className="cinput"
+                style={{ fontSize: '8px', height: '18px', padding: '0 4px', width: '100%', boxSizing: 'border-box' }}
               />
-              <select
-                value={tricksFilterCategory}
-                onChange={(e) => setTricksFilterCategory(e.target.value)}
-                className="cinput"
-                style={{ width: '85px', fontSize: '8px', height: '18px', padding: 0, cursor: 'pointer', flexShrink: 0 }}
-              >
-                <option value="all">All Categories</option>
-                <option value="interaction">Interaction</option>
-                <option value="manipulation">Manipulation</option>
-                <option value="mental">Mental</option>
-                <option value="movement">Movement</option>
-              </select>
             </div>
 
-            {/* Scrollable compendium tricks */}
+            {/* Trick Compendium List */}
             <div
               style={{
                 flex: 1,
-                minWidth: 0,
-                width: '100%',
-                maxHeight: '260px',
+                minHeight: '140px',
+                maxHeight: '220px',
                 overflowY: 'auto',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '3px',
-                paddingRight: '2px',
+                gap: '2px',
+                border: '0.5px dashed rgba(200, 169, 110, 0.3)',
+                borderRadius: '2px',
+                padding: '4px',
                 boxSizing: 'border-box'
               }}
               className="pc-scroll-skills"
@@ -638,7 +716,44 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                 const isLearned = learnedTricks.some((lt: any) => (typeof lt === 'object' ? lt.id === trick.key : lt === trick.key));
                 const isBonus = learnedTricks.some((lt: any) => typeof lt === 'object' && lt.id === trick.key && lt.isBonus);
                 const { met } = CombatRules.checkSkillTrickPrerequisites(trick.key, patchedPC);
-                
+                const spentSP = CombatRules.calculateSpentSkillPoints(patchedPC);
+                const totalSP = CombatRules.calculateTotalSkillPoints(patchedPC);
+                const freeSkillPoints = Math.max(0, totalSP - spentSP);
+                const hasEnoughSP = freeSkillPoints >= 2;
+
+                // 4-state color scheme:
+                // 1. Ausgegraut: Nicht verfügbar (!met)
+                // 2. Leichtes Rot: Verfügbar aber nicht genügend Skillpunkte frei (met && !hasEnoughSP)
+                // 3. Gelb: Verfügbar und genügend Skillpunkte (met && hasEnoughSP)
+                // 4. Grün: Gelernt (isLearned)
+                let borderStyle = '0.5px dashed rgba(140, 130, 120, 0.35)';
+                let borderLeftStyle = '2.5px solid rgba(140, 130, 120, 0.4)';
+                let bgStyle = 'rgba(0, 0, 0, 0.015)';
+                let titleColor = 'var(--inkl)';
+                let opacityVal = 0.48;
+
+                if (isLearned) {
+                  borderStyle = '0.5px solid rgba(50, 115, 55, 0.35)';
+                  borderLeftStyle = '3.5px solid #2e7d32';
+                  bgStyle = 'rgba(50, 115, 55, 0.06)';
+                  titleColor = '#245e28';
+                  opacityVal = 1;
+                } else if (met) {
+                  if (hasEnoughSP) {
+                    borderStyle = '0.5px solid rgba(184, 134, 11, 0.4)';
+                    borderLeftStyle = '3px solid #b8860b';
+                    bgStyle = 'rgba(212, 175, 55, 0.07)';
+                    titleColor = '#7d5f1a';
+                    opacityVal = 1;
+                  } else {
+                    borderStyle = '0.5px solid rgba(139, 26, 26, 0.35)';
+                    borderLeftStyle = '3px solid var(--red)';
+                    bgStyle = 'rgba(139, 26, 26, 0.04)';
+                    titleColor = 'var(--red)';
+                    opacityVal = 0.9;
+                  }
+                }
+
                 return (
                   <div
                     key={trick.key}
@@ -646,32 +761,39 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                       setSelectedTrick({ ...trick, isLearned, isBonus });
                     }}
                     style={{
-                      padding: '3px 5px',
-                      border: isLearned ? '0.5px solid #1976d2' : '0.5px solid rgba(200, 169, 110, 0.25)',
-                      background: isLearned ? 'rgba(25,118,210,0.03)' : (met ? 'rgba(42, 106, 42, 0.02)' : 'transparent'),
+                      padding: '3.5px 6px',
+                      border: borderStyle,
+                      borderLeft: borderLeftStyle,
+                      background: bgStyle,
+                      boxShadow: 'none',
                       borderRadius: '2px',
                       cursor: 'pointer',
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      opacity: isLearned ? 1 : (met ? 0.9 : 0.6)
+                      opacity: opacityVal,
+                      transition: 'all 0.15s ease'
                     }}
                   >
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', minWidth: 0 }}>
-                      <span style={{ fontSize: '8.5px', fontWeight: 'bold', color: isLearned ? '#1976d2' : 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: '8.5px', fontWeight: met || isLearned ? 'bold' : '600', color: titleColor, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {trick.nameEn || trick.nameDe}
                       </span>
-                      <span style={{ fontSize: '6.5px', color: 'var(--inkl)' }}>
+                      <span style={{ fontSize: '6.5px', color: met || isLearned ? 'var(--inkm)' : 'var(--inkl)' }}>
                         {trick.category.toUpperCase()}
                       </span>
                     </div>
                     <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                       {isLearned ? (
-                        <span style={{ fontSize: '7px', color: '#1976d2', fontWeight: 'bold' }}>Learned</span>
+                        <span style={{ fontSize: '7px', color: '#245e28', fontWeight: 'bold', background: 'rgba(50, 115, 55, 0.12)', border: '0.5px solid rgba(50, 115, 55, 0.35)', padding: '1px 3px', borderRadius: '1.5px' }}>✓ Learned</span>
+                      ) : met ? (
+                        hasEnoughSP ? (
+                          <span style={{ fontSize: '7px', color: '#7d5f1a', fontWeight: 'bold', background: 'rgba(212, 175, 55, 0.15)', border: '0.5px solid rgba(184, 134, 11, 0.4)', padding: '1px 3px', borderRadius: '1.5px' }}>Available</span>
+                        ) : (
+                          <span style={{ fontSize: '7px', color: 'var(--red)', fontWeight: 'bold', background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid rgba(139, 26, 26, 0.25)', padding: '1px 3px', borderRadius: '1.5px' }}>Need 2 SP</span>
+                        )
                       ) : (
-                        <span style={{ fontSize: '7px', color: met ? '#2a6a2a' : '#8b1a1a', fontWeight: 'bold' }}>
-                          {met ? 'Met' : '🔒 Locked'}
-                        </span>
+                        <span style={{ fontSize: '7px', color: '#7a7065', fontWeight: 'bold', background: 'rgba(0,0,0,0.04)', border: '0.5px solid rgba(0,0,0,0.12)', padding: '1px 3px', borderRadius: '1.5px' }}>🔒 Locked</span>
                       )}
                     </div>
                   </div>

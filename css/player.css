@@ -316,6 +316,7 @@
 
 .player-tab-panel.active {
   display: block;
+  min-height: 520px;
 }
 
 /* Overview Layout: Grid of Attributes & Defenses */

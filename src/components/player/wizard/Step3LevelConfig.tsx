@@ -4,6 +4,7 @@ import { CLASSES_LIST, CLASS_KEY_ATTRIBUTES } from './constants';
 import { SkillsTabContent } from './SkillsTabContent';
 import { SkillTricksTabContent } from './SkillTricksTabContent';
 import { FeatsTabContent } from './FeatsTabContent';
+import { ACFsTabContent } from './ACFsTabContent';
 import { validatePrestigeClassPrereqs, isOnlySpecialTextUnmet, CombatRules } from '@core/rules.js';
 // @ts-ignore
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
@@ -18,8 +19,8 @@ interface Step3LevelConfigProps {
   completedDraft: any;
   getClassHitDie: (cls: string) => number;
   updateLevelConfig: (idx: number, key: string, val: any) => void;
-  activeTab: 'skills' | 'tricks' | 'feats';
-  setActiveTab: (tab: 'skills' | 'tricks' | 'feats') => void;
+  activeTab: 'skills' | 'tricks' | 'feats' | 'acfs';
+  setActiveTab: (tab: 'skills' | 'tricks' | 'feats' | 'acfs') => void;
   currentLevelRemainingSkillPoints: number;
   currentLevelMaxSkillPoints: number;
   skillSearch: string;
@@ -62,7 +63,6 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   filteredFeats
 }) => {
   const [sourceTab, setSourceTab] = React.useState<'all' | 'phb' | 'phb2' | 'ca' | 'prestige'>('all');
-  const [classSearch, setClassSearch] = React.useState('');
 
   React.useEffect(() => {
     if (!currentConfig || !currentDraft) return;
@@ -102,19 +102,12 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
     }
   }, [currentConfig.classType, currentDraft, currentLevelIndex]);
 
-  const baseClasses = CLASSES_LIST.filter(c => !c.isPrestige);
-  const prestigeClasses = CLASSES_LIST.filter(c => c.isPrestige);
-
   // Unified filtered class list for wizard class picker
   const filteredWizardClasses = CLASSES_LIST.filter(c => {
     if (sourceTab === 'prestige' && !c.isPrestige) return false;
     if (sourceTab === 'phb' && (c.isPrestige || (c as any).source !== 'phb')) return false;
     if (sourceTab === 'phb2' && (c.isPrestige || (c as any).source !== 'phb2')) return false;
     if (sourceTab === 'ca' && (c.isPrestige || (c as any).source !== 'ca')) return false;
-    if (classSearch.trim()) {
-      const q = classSearch.toLowerCase();
-      return c.name.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q);
-    }
     return true;
   });
 
@@ -667,6 +660,30 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                 >
                   🛡️ Feats ({currentFeatSlots.filter((_, idx) => !currentConfig.feats?.[idx]).length} open)
                 </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('acfs')}
+                  style={{
+                    flex: 1,
+                    padding: '4px 6px',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: activeTab === 'acfs' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
+                    border: 'none',
+                    borderBottom: activeTab === 'acfs' ? '2px solid var(--red)' : '2px solid transparent',
+                    color: activeTab === 'acfs' ? 'var(--red)' : 'var(--inkm)',
+                    fontWeight: activeTab === 'acfs' ? 'bold' : 'normal',
+                    fontSize: '11.5px',
+                    cursor: 'pointer',
+                    fontFamily: "'IM Fell English SC', serif",
+                    boxSizing: 'border-box',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  ⚡ ACFs ({currentConfig.acfs?.length || 0})
+                </button>
               </div>
             );
           })()}
@@ -709,6 +726,16 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
               filteredFeats={filteredFeats}
               updateLevelConfig={updateLevelConfig}
               currentLevelIndex={currentLevelIndex}
+            />
+          )}
+
+          {activeTab === 'acfs' && (
+            <ACFsTabContent
+              currentConfig={currentConfig}
+              levelConfigs={levelConfigs}
+              currentLevelIndex={currentLevelIndex}
+              currentDraft={currentDraft}
+              updateLevelConfig={updateLevelConfig}
             />
           )}
         </div>

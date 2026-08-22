@@ -14,113 +14,16 @@ import { CombatState } from '@core/state.js';
 import { CombatFeats } from '@core/data/feats-data.js';
 // @ts-ignore
 import { showFeatScrollDialog } from '@core/ui/components/dialogs.js';
+// @ts-ignore
+import { checkPrerequisites } from '@core/rules/RulesFeats.js';
 
 interface PCFeatsTabProps {
   pc: any;
 }
 
-export const checkPrerequisites = (feat: any, pc: any): { met: boolean; details: Array<{ desc: string; met: boolean }> } => {
-  if (!feat.prereqs || feat.prereqs.length === 0) return { met: true, details: [] };
-
-  let met = true;
-  const details: Array<{ desc: string; met: boolean }> = [];
-  const autoFeatIds = typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats().map((f: any) => f.id) : [];
-  const learnedIds = [
-    ...(Array.isArray(pc.feats) ? pc.feats.map((f: any) => f.id) : []),
-    ...autoFeatIds
-  ];
-
-  const getAblVal = (statObj: any) => {
-    if (!statObj) return 10;
-    if (typeof statObj.getValue === 'function') return statObj.getValue();
-    return statObj.base ?? 10;
-  };
-
-  feat.prereqs.forEach((pr: any) => {
-    let prMet = false;
-    let desc = '';
-
-    if (pr.type === 'bab') {
-      const pcBab = pc.bab ? (typeof pc.bab.getValue === 'function' ? pc.bab.getValue() : pc.bab.base ?? pc.bab) : 0;
-      prMet = pcBab >= pr.value;
-      desc = `Base Attack Bonus (BAB) +${pr.value} (Current: +${pcBab})`;
-    } else if (pr.type === 'feat') {
-      prMet = learnedIds.includes(pr.id);
-      const parentFeat = CombatFeats.REGISTRY[pr.id];
-      const parentName = parentFeat ? (parentFeat.nameEn || parentFeat.nameDe) : pr.id;
-      desc = `Feat: ${parentName}`;
-    } else if (pr.type === 'classLevel') {
-      const cls = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === pr.class) : null;
-      const lvl = cls ? cls.level : 0;
-      prMet = lvl >= pr.value;
-      const classNameEn = pr.class === 'fighter' ? 'Fighter' : pr.class === 'wizard' ? 'Wizard' : pr.class;
-      desc = `${classNameEn} Level ${pr.value} (Current: Level ${lvl})`;
-    } else if (pr.type === 'class') {
-      const hasCls = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === pr.class);
-      prMet = hasCls;
-      const classNameEn = pr.class === 'wizard' ? 'Wizard' : pr.class;
-      desc = `Class: ${classNameEn}`;
-    } else if (pr.type === 'stat') {
-      const nameMap: Record<string, string> = { str: 'Strength', dex: 'Dexterity', con: 'Constitution', int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma' };
-      const pcStat = pc[pr.name] ? getAblVal(pc[pr.name]) : 10;
-      prMet = pcStat >= pr.value;
-      desc = `${nameMap[pr.name] || pr.name} ${pr.value}+ (Current: ${pcStat})`;
-    } else if (pr.type === 'level') {
-      const pcLevel = pc.level || pc.totalLevel || 1;
-      prMet = pcLevel >= pr.value;
-      desc = `Character Level ${pr.value} (Current: ${pcLevel})`;
-    } else if (pr.type === 'casterLevel') {
-      let maxCL = 0;
-      if (Array.isArray(pc.classes)) {
-        pc.classes.forEach((c: any) => {
-          if (['wizard', 'cleric', 'druid', 'sorcerer', 'bard'].includes(c.classType)) {
-            maxCL = Math.max(maxCL, c.level);
-          } else if (['paladin', 'ranger'].includes(c.classType) && c.level >= 4) {
-            maxCL = Math.max(maxCL, Math.floor(c.level / 2));
-          }
-        });
-      }
-      prMet = maxCL >= pr.value;
-      desc = `Caster Level ${pr.value} (Current: ${maxCL})`;
-    } else if (pr.type === 'custom') {
-      if (pr.desc === 'Fähigkeit, Untote zu vertreiben' || pr.desc === 'Ability to turn undead') {
-        const clericClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'cleric') : null;
-        const paladinClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'paladin') : null;
-        const clericLvl = clericClass ? clericClass.level : 0;
-        const paladinLvl = paladinClass ? paladinClass.level : 0;
-        prMet = clericLvl >= 1 || paladinLvl >= 4;
-        desc = `Special: Turn Undead ability (Cleric 1+ or Paladin 4+)`;
-      } else if (pr.desc === 'Bardenmusik' || pr.desc === 'Bardic music') {
-        const bardClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'bard') : null;
-        const bardLvl = bardClass ? bardClass.level : 0;
-        prMet = bardLvl >= 1;
-        desc = `Special: Bardic Music (Bard 1+)`;
-      } else if (pr.desc === 'Tiergestalt (Wild Shape)' || pr.desc === 'Wild shape') {
-        const druidClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'druid') : null;
-        const druidLvl = druidClass ? druidClass.level : 0;
-        prMet = druidLvl >= 5;
-        desc = `Special: Wild Shape (Druid 5+)`;
-      } else if (pr.desc === 'Reiten 1 Rang' || pr.desc === 'Ride 1 rank') {
-        let ranks = 0;
-        if (typeof pc.getSkillRanks === 'function') {
-          ranks = pc.getSkillRanks('ride');
-        } else if (pc.skills && pc.skills['ride']) {
-          ranks = parseFloat(pc.skills['ride'].ranks) || 0;
-        }
-        prMet = ranks >= 1;
-        desc = `Special: Ride 1 rank (Current: ${ranks})`;
-      } else {
-        prMet = true;
-        desc = `Special: ${pr.desc}`;
-      }
-    }
-
-    if (!prMet) met = false;
-    details.push({ met: prMet, desc });
-  });
-
-  return { met, details };
-};
+// checkPrerequisites is now the canonical implementation in js/rules/RulesFeats.js
+// Re-exported here for backwards compatibility with any direct imports from this module.
+export { checkPrerequisites };
 
 const getBonusFeatClass = (feat: any) => {
   if (feat.category === 'combat') return 'fighter';
@@ -386,10 +289,10 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                                      (getBonusFeatClass(feat) === 'wizard' && hasWizard) ||
                                      (getBonusFeatClass(feat) === 'monk' && hasMonk));
 
-                const borderColor = isAutomatic ? '#1976d2' : (isClassBonus ? '#2a6a2a' : 'var(--pb)');
-                const borderLeftColor = isAutomatic ? '#1976d2' : (isClassBonus ? '#2a6a2a' : 'var(--pb)');
-                const backgroundVal = isAutomatic ? 'rgba(25, 118, 210, 0.03)' : (isClassBonus ? 'rgba(42, 106, 42, 0.03)' : 'transparent');
-                const hoverBackgroundVal = isAutomatic ? 'rgba(25, 118, 210, 0.07)' : (isClassBonus ? 'rgba(42, 106, 42, 0.07)' : 'rgba(200, 169, 110, 0.05)');
+                const borderStyle = '0.5px solid rgba(50, 115, 55, 0.35)';
+                const borderLeftStyle = isAutomatic ? '3.5px solid #4a6d44' : '3.5px solid #2e7d32';
+                const backgroundVal = isAutomatic ? 'rgba(70, 105, 65, 0.05)' : 'rgba(50, 115, 55, 0.06)';
+                const hoverBackgroundVal = isAutomatic ? 'rgba(70, 105, 65, 0.09)' : 'rgba(50, 115, 55, 0.11)';
 
                 const prereqsResult = checkPrerequisites(feat, pc);
 
@@ -410,8 +313,8 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       minWidth: 0,
                       boxSizing: 'border-box',
                       transition: 'transform 0.15s, background-color 0.15s',
-                      border: isAutomatic || isClassBonus ? `1.2px solid ${borderColor}` : '0.5px solid var(--pb)',
-                      borderLeft: isAutomatic || isClassBonus ? `3.5px solid ${borderLeftColor}` : '0.5px solid var(--pb)',
+                      border: borderStyle,
+                      borderLeft: borderLeftStyle,
                       background: backgroundVal,
                     }}
                     onMouseOver={(e) => {
@@ -422,7 +325,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
-                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
+                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9.5px', fontWeight: 'bold', color: '#245e28', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
                         {feat.nameEn || feat.nameDe}{optionLabel}
                         {!prereqsResult.met && (
                           <span style={{ color: 'var(--red)', marginLeft: '3px', fontSize: '8px' }} title={`Prerequisites not met!\n` + prereqsResult.details.map((d: any) => `${d.met ? '✓' : '✗'} ${d.desc}`).join('\n')}>
@@ -432,15 +335,20 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       </span>
                       <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                         {isAutomatic && (
-                          <span style={{ fontSize: '7px', color: '#1976d2', background: 'rgba(25, 118, 210, 0.1)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
-                            {featInst.source || 'Klassentalent'}
+                          <span style={{ fontSize: '7px', color: '#4a6d44', background: 'rgba(70, 105, 65, 0.12)', border: '0.5px solid rgba(70, 105, 65, 0.3)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                            {featInst.source || 'Class Feat'}
+                          </span>
+                        )}
+                        {isClassBonus && (
+                          <span style={{ fontSize: '7px', color: '#245e28', background: 'rgba(50, 115, 55, 0.12)', border: '0.5px solid rgba(50, 115, 55, 0.3)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                            Bonus Feat
                           </span>
                         )}
                         <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
                       </div>
                     </div>
-                    <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitEn || feat.benefitDe || feat.benefitRaw}>
-                      {feat.benefitEn || feat.benefitDe || feat.benefitRaw}
+                    <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
+                      {feat.benefitRaw || feat.benefitEn || feat.benefitDe}
                     </div>
                   </div>
                 );
@@ -542,80 +450,148 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                   const prereqsResult = checkPrerequisites(feat, pc);
                   const isAlreadyLearned = activeFeats.some((f: any) => f.id === feat.id);
                   
-                  const bonusClass = getBonusFeatClass(feat);
-                  const isClassBonus = (bonusClass === 'fighter' && hasFighter) ||
-                                       (bonusClass === 'wizard' && hasWizard) ||
-                                       (bonusClass === 'monk' && hasMonk);
-
-                  const isBlocked = (!prereqsResult.met || isLimitReached) && !isAlreadyLearned;
-                  
-                  const borderStyle = isClassBonus ? { border: '1px solid #2a6a2a', borderLeft: '3.5px solid #2a6a2a' } : { border: '0.5px solid var(--pb)' };
-                  const backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.04)' : 'transparent';
-                  const opacityStyle = isBlocked ? { opacity: 0.65 } : {};
-                  
-                  let icon = '⚪';
-                  if (isAlreadyLearned) icon = '🟢';
-                  else if (isBlocked) icon = '🔒';
-                  
-                  const categoryEn = (({ combat: 'Combat', metamagic: 'Metamagic', item_creation: 'Creation', general: 'General' } as Record<string, string>)[feat.category]) || 'General';
-                  const depthPadding = depth * 14;
+                  const isEligible = prereqsResult.met && !isAlreadyLearned && !isLimitReached;
 
                   const matchingInstance = activeFeats.find((f: any) => f.id === feat.id);
                   const option = matchingInstance ? matchingInstance.option : '';
 
                   // Collapsible parent check
-                  const hasChildren = Object.keys(CombatFeats.REGISTRY).some(childId => CombatFeats.REGISTRY[childId].parent === feat.id);
+                  const childCount = Object.keys(CombatFeats.REGISTRY).filter(childId => CombatFeats.REGISTRY[childId].parent === feat.id).length;
+                  const hasChildren = childCount > 0;
                   const isExpanded = expandedParents.has(feat.id);
+                  const parentFeatDef = feat.parent ? CombatFeats.REGISTRY[feat.parent] : null;
+                  const parentName = parentFeatDef ? (parentFeatDef.nameEn || parentFeatDef.nameDe) : feat.parent;
+
+                  // Border & background styling based on 3 user statuses:
+                  // 1. Grün: Wurde gelernt (isAlreadyLearned)
+                  // 2. Gelb: Kann gelernt werden (isEligible)
+                  // 3. Ausgebleicht: Nicht verfügbar (isLocked / !prereqsResult.met)
+                  let borderStyle = '0.5px dashed rgba(140, 130, 120, 0.35)';
+                  let borderLeftStyle = '2.5px solid rgba(140, 130, 120, 0.4)';
+                  let backgroundStyle = 'rgba(0, 0, 0, 0.015)';
+                  let titleColor = 'var(--inkl)';
+                  let rowOpacity = 0.48;
+                  
+                  if (isAlreadyLearned) {
+                    borderStyle = '0.5px solid rgba(50, 115, 55, 0.35)';
+                    borderLeftStyle = '3.5px solid #2e7d32';
+                    backgroundStyle = 'rgba(50, 115, 55, 0.06)';
+                    titleColor = '#245e28';
+                    rowOpacity = 1;
+                  } else if (isEligible) {
+                    borderStyle = '0.5px solid rgba(184, 134, 11, 0.4)';
+                    borderLeftStyle = '3px solid #b8860b';
+                    backgroundStyle = 'rgba(212, 175, 55, 0.07)';
+                    titleColor = '#7d5f1a';
+                    rowOpacity = 1;
+                  }
+
+                  const categoryEn = (({ combat: 'Combat', metamagic: 'Metamagic', item_creation: 'Creation', general: 'General' } as Record<string, string>)[feat.category]) || 'General';
 
                   return (
                     <div
                       key={feat.id}
-                      className="comp-feat-row"
-                      onClick={(e) => {
-                        handleFeatRowClick(feat, isAlreadyLearned, option, e);
-                      }}
                       style={{
-                        padding: '4px 6px',
-                        paddingLeft: `${depthPadding + 6}px`,
-                        marginBottom: '3px',
-                        borderRadius: '2px',
                         display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        minWidth: 0,
-                        boxSizing: 'border-box',
-                        transition: 'background-color 0.15s, opacity 0.15s',
-                        cursor: 'pointer',
-                        background: backgroundStyle,
-                        ...borderStyle,
-                        ...opacityStyle
-                      }}
-                      onMouseOver={(e) => {
-                        e.currentTarget.style.background = isClassBonus
-                          ? 'rgba(42, 106, 42, 0.08)'
-                          : (isBlocked ? 'rgba(200, 169, 110, 0.03)' : 'rgba(200, 169, 110, 0.05)');
-                      }}
-                      onMouseOut={(e) => {
-                        e.currentTarget.style.background = backgroundStyle;
+                        flexDirection: 'column',
+                        marginBottom: '3px',
+                        marginLeft: depth > 0 ? `${depth * 14}px` : '0px',
+                        position: 'relative'
                       }}
                     >
-                      {hasChildren && (
-                        <button
-                          onClick={(e) => toggleParent(feat.id, e)}
-                          style={{ background: 'none', border: 'none', outline: 'none', padding: '0 2px', fontSize: '8px', color: 'var(--red)', cursor: 'pointer', display: 'flex', alignItems: 'center', flexShrink: 0 }}
-                          title={isExpanded ? "Collapse children" : "Expand children"}
-                        >
-                          {isExpanded ? '▼' : '▶'}
-                        </button>
+                      {/* Tree Branch Connector Line */}
+                      {depth > 0 && (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            left: '-10px',
+                            top: '10px',
+                            width: '8px',
+                            height: '8px',
+                            borderLeft: '1.5px solid rgba(124, 90, 43, 0.45)',
+                            borderBottom: '1.5px solid rgba(124, 90, 43, 0.45)',
+                            borderBottomLeftRadius: '2px',
+                            pointerEvents: 'none'
+                          }}
+                        />
                       )}
-                      <span style={{ fontSize: '8px', flexShrink: 0 }}>{icon}</span>
-                      <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
-                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>{feat.nameEn || feat.nameDe}</span>
-                          <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', marginLeft: 'auto', flexShrink: 0, whiteSpace: 'nowrap' }}>{categoryEn}</span>
-                        </div>
-                        <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitEn || feat.benefitDe || feat.benefitRaw}>
-                          {feat.benefitEn || feat.benefitDe || feat.benefitRaw}
+
+                      <div
+                        className="comp-feat-row"
+                        onClick={(e) => {
+                          handleFeatRowClick(feat, isAlreadyLearned, option, e);
+                        }}
+                        style={{
+                          padding: '4px 6px',
+                          borderRadius: '2px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '5px',
+                          minWidth: 0,
+                          boxSizing: 'border-box',
+                          transition: 'all 0.15s ease',
+                          cursor: 'pointer',
+                          background: backgroundStyle,
+                          border: borderStyle,
+                          borderLeft: borderLeftStyle,
+                          opacity: rowOpacity
+                        }}
+                        onMouseOver={(e) => {
+                          e.currentTarget.style.filter = 'brightness(0.97)';
+                        }}
+                        onMouseOut={(e) => {
+                          e.currentTarget.style.filter = 'none';
+                        }}
+                      >
+                        {/* Dedicated fixed-width expand arrow or alignment placeholder */}
+                        <span
+                          onClick={hasChildren ? (e) => toggleParent(feat.id, e) : undefined}
+                          style={{
+                            fontSize: '9.5px',
+                            color: 'var(--inkm)',
+                            cursor: hasChildren ? 'pointer' : 'default',
+                            userSelect: 'none',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '12px',
+                            height: '12px',
+                            flexShrink: 0,
+                            lineHeight: 1
+                          }}
+                          title={hasChildren ? (isExpanded ? "Collapse tree" : `Expand sub-feats`) : undefined}
+                        >
+                          {hasChildren ? (isExpanded ? '▾' : '▸') : (depth > 0 ? '•' : null)}
+                        </span>
+
+                        <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', minWidth: 0, overflow: 'hidden' }}>
+                              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: titleColor, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                {feat.nameEn || feat.nameDe}
+                              </span>
+                              {feat.parent && (
+                                <span style={{ fontSize: '6.5px', color: '#8b6934', background: 'rgba(139, 105, 52, 0.08)', padding: '0 3px', borderRadius: '1px', border: '0.5px solid rgba(139, 105, 52, 0.2)', whiteSpace: 'nowrap', flexShrink: 0 }} title={`Prerequisite / Parent Feat: ${parentName}`}>
+                                  ↳ {parentName}
+                                </span>
+                              )}
+                            </div>
+                            <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
+                              {isAlreadyLearned ? (
+                                <span style={{ fontSize: '7px', color: '#245e28', fontWeight: 'bold', background: 'rgba(50, 115, 55, 0.12)', border: '0.5px solid rgba(50, 115, 55, 0.35)', padding: '1px 4px', borderRadius: '1.5px' }}>✓ Learned</span>
+                              ) : isEligible ? (
+                                <span style={{ fontSize: '7px', color: '#7d5f1a', fontWeight: 'bold', background: 'rgba(212, 175, 55, 0.15)', border: '0.5px solid rgba(184, 134, 11, 0.4)', padding: '1px 4px', borderRadius: '1.5px' }}>
+                                  Available
+                                </span>
+                              ) : (
+                                <span style={{ fontSize: '7px', color: '#7a7065', fontWeight: 'bold', background: 'rgba(0, 0, 0, 0.04)', border: '0.5px solid rgba(0, 0, 0, 0.12)', padding: '1px 3px', borderRadius: '1.5px' }}>🔒 Locked</span>
+                              )}
+                              <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
+                            </div>
+                          </div>
+                          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: isEligible || isAlreadyLearned ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
+                            {feat.benefitRaw || feat.benefitEn || feat.benefitDe}
+                          </div>
                         </div>
                       </div>
                     </div>

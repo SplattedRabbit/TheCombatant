@@ -10,6 +10,8 @@ import {
   CustomAlertModal, 
   CustomConfirmModal, 
   CustomPromptModal, 
+  HealingRollModal,
+  ItemDamageModal,
   NewDayTemplateDialog, 
   RollBreakdownDialog, 
   SampleChoiceDialog,
@@ -25,6 +27,8 @@ import { BuffDetailsDialog, CastSuccessDialog } from './PCBuffsDialog';
 import { SpellDetailsDialog } from './SpellDetailsDialog';
 import { SpellCreatorDialog } from './SpellCreatorDialog';
 import { uiRegistry } from '@core/ui/ui-shared.js';
+// @ts-ignore
+import { CombatState } from '@core/state.js';
 
 
 export function initReactDialogBridge() {
@@ -96,6 +100,57 @@ export function initReactDialogBridge() {
           onCloseModal();
         }}
         onCancel={onCloseModal}
+      />
+    ));
+  };
+
+  bridge.showHealingRollDialog = (opts: { itemName: string; dice: string; bonus: number; formula: string; onConfirm: (val: string) => void; onCancel?: () => void }) => {
+    mountModal((onCloseModal) => (
+      <HealingRollModal
+        itemName={opts.itemName}
+        dice={opts.dice}
+        bonus={opts.bonus}
+        formula={opts.formula}
+        onConfirm={(val) => {
+          opts.onConfirm(val);
+          onCloseModal();
+        }}
+        onCancel={() => {
+          if (opts.onCancel) opts.onCancel();
+          onCloseModal();
+        }}
+      />
+    ));
+  };
+
+  bridge.showItemDamageDialog = (opts: {
+    itemName: string;
+    dice: string;
+    bonus: number;
+    formula: string;
+    damageType?: string;
+    effectDesc?: string;
+    saveText?: string | null;
+    onConfirm: () => void;
+    onCancel?: () => void;
+  }) => {
+    mountModal((onCloseModal) => (
+      <ItemDamageModal
+        itemName={opts.itemName}
+        dice={opts.dice}
+        bonus={opts.bonus}
+        formula={opts.formula}
+        damageType={opts.damageType}
+        effectDesc={opts.effectDesc}
+        saveText={opts.saveText}
+        onConfirm={() => {
+          opts.onConfirm();
+          onCloseModal();
+        }}
+        onCancel={() => {
+          if (opts.onCancel) opts.onCancel();
+          onCloseModal();
+        }}
       />
     ));
   };
@@ -207,17 +262,19 @@ export function initReactDialogBridge() {
 
   bridge.showFeatScrollDialog = (feat: any, pc: any, isLearned: boolean, option?: string, _event?: any) => {
     const renderFeatModal = () => {
+      const livePC = (CombatState && typeof CombatState.getActivePC === 'function' ? CombatState.getActivePC() : null) || pc;
       mountModal((onCloseModal) => (
         <FeatScrollDialog
           feat={feat}
-          pc={pc}
-          isLearned={(pc.feats || []).some((f: any) => f.id === feat.id)}
+          pc={livePC}
+          isLearned={(livePC.feats || []).some((f: any) => f.id === feat.id) || (typeof livePC.hasFeat === 'function' && livePC.hasFeat(feat.id))}
           option={option}
           onClose={onCloseModal}
           onRefresh={() => {
             onCloseModal();
-            // Spawn it again immediately to refresh the view
-            bridge.showFeatScrollDialog(feat, pc, isLearned, option);
+            // Spawn it again immediately to refresh the view with latest state
+            const freshPC = (CombatState && typeof CombatState.getActivePC === 'function' ? CombatState.getActivePC() : null) || livePC;
+            bridge.showFeatScrollDialog(feat, freshPC, isLearned, option);
           }}
         />
       ));
