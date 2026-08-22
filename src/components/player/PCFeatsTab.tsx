@@ -328,11 +328,10 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   const handleFeatRowClick = (feat: any, isLearned: boolean, option?: string, e?: React.MouseEvent) => {
     showFeatScrollDialog(feat, pc, isLearned, option || '', e?.nativeEvent);
   };
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', boxSizing: 'border-box', width: '100%' }}>
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', boxSizing: 'border-box', width: '100%', minWidth: 0 }}>
       {/* Legend */}
-      <div className="feats-legend" style={{ marginBottom: '8px', padding: '5px 8px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '8.5px', display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+      <div className="feats-legend" style={{ marginBottom: '8px', padding: '5px 8px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '8.5px', display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', minWidth: 0, boxSizing: 'border-box' }}>
         <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '9px' }}>Legend:</span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', opacity: hasFighter ? 1 : 0.5 }}>
           <span style={{ display: 'inline-block', width: '8px', height: '6px', border: '1.2px solid #2a6a2a', background: 'rgba(42, 106, 42, 0.1)', borderLeftWidth: '3px' }}></span>
@@ -348,14 +347,14 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
         </span>
       </div>
 
-      <div style={{ display: 'flex', gap: '10px', height: '100%', minHeight: '380px' }}>
+      <div style={{ display: 'flex', gap: '10px', height: '100%', minHeight: '380px', width: '100%', minWidth: 0, boxSizing: 'border-box' }}>
         {/* Left Column: Active Feats (40%) */}
-        <div style={{ width: '40%', display: 'flex', flexDirection: 'column', gap: '4px', borderRight: '0.5px solid var(--pb)', paddingRight: '8px' }}>
+        <div style={{ flex: '4 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', borderRight: '0.5px solid var(--pb)', paddingRight: '8px', boxSizing: 'border-box' }}>
           <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', textAlign: 'center' }}>
             🧬 Feats ({activeFeats.length} / {totalMax})
           </h3>
           
-          <div style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkm)', marginBottom: '6px', display: 'flex', flexDirection: 'column', gap: '2.5px', background: 'rgba(0,0,0,0.01)', border: '0.5px solid rgba(200, 169, 110, 0.2)', padding: '4px 6px', borderRadius: '2px' }}>
+          <div style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkm)', marginBottom: '6px', display: 'flex', flexDirection: 'column', gap: '2.5px', background: 'rgba(0,0,0,0.01)', border: '0.5px solid rgba(200, 169, 110, 0.2)', padding: '4px 6px', borderRadius: '2px', minWidth: 0, boxSizing: 'border-box' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>General Slots:</span> <strong style={{ color: 'var(--red)' }}>{generalFilled} / {generalMax}</strong></div>
             {fighterMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Fighter Slots:</span> <strong style={{ color: 'var(--red)' }}>{fighterFilled} / {fighterMax}</strong></div>}
             {wizardMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Wizard Slots:</span> <strong style={{ color: 'var(--red)' }}>{wizardFilled} / {wizardMax}</strong></div>}
@@ -368,10 +367,10 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
             onChange={(e) => setLearnedSearch(e.target.value)}
             placeholder="Filter learned feats..."
             className="cinput"
-            style={{ height: '18px', fontSize: '9px', padding: '0 4px', marginBottom: '4px' }}
+            style={{ height: '18px', fontSize: '9px', padding: '0 4px', marginBottom: '4px', minWidth: 0, width: '100%', boxSizing: 'border-box' }}
           />
 
-          <div className="active-feats-list" style={{ flex: 1, overflowY: 'auto', maxHeight: '360px', boxSizing: 'border-box' }}>
+          <div className="active-feats-list" style={{ flex: 1, minWidth: 0, width: '100%', overflowY: 'auto', maxHeight: '360px', boxSizing: 'border-box' }}>
             {learnedFeatsFiltered.length === 0 ? (
               <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '15px' }}>
                 No feats found.
@@ -410,6 +409,9 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '2px',
+                      minWidth: 0,
+                      width: '100%',
+                      boxSizing: 'border-box',
                       transition: 'transform 0.15s, background-color 0.15s',
                       border: isAutomatic || isClassBonus ? `1.2px solid ${borderColor}` : '0.5px solid var(--pb)',
                       borderLeft: isAutomatic || isClassBonus ? `3.5px solid ${borderLeftColor}` : '0.5px solid var(--pb)',
@@ -422,8 +424,8 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       e.currentTarget.style.background = backgroundVal;
                     }}
                   >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
+                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
                         {feat.nameEn || feat.nameDe}{optionLabel}
                         {!prereqsResult.met && (
                           <span style={{ color: 'var(--red)', marginLeft: '3px', fontSize: '8px' }} title={`Prerequisites not met!\n` + prereqsResult.details.map((d: any) => `${d.met ? '✓' : '✗'} ${d.desc}`).join('\n')}>
@@ -431,17 +433,17 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                           </span>
                         )}
                       </span>
-                      <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+                      <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                         {isAutomatic && (
-                          <span style={{ fontSize: '7px', color: '#1976d2', background: 'rgba(25, 118, 210, 0.1)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold' }}>
+                          <span style={{ fontSize: '7px', color: '#1976d2', background: 'rgba(25, 118, 210, 0.1)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
                             {featInst.source || 'Klassentalent'}
                           </span>
                         )}
-                        <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px' }}>{categoryEn}</span>
+                        <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
                       </div>
                     </div>
-                    <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={feat.benefitEn || feat.benefitDe}>
-                      {feat.benefitEn || feat.benefitDe}
+                    <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitEn || feat.benefitDe || feat.benefitRaw}>
+                      {feat.benefitEn || feat.benefitDe || feat.benefitRaw}
                     </div>
                   </div>
                 );
@@ -451,23 +453,23 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
         </div>
 
         {/* Right Column: Compendium (60%) */}
-        <div style={{ width: '60%', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+        <div style={{ flex: '6 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', boxSizing: 'border-box' }}>
           {/* Filters Header */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginBottom: '4px' }}>
-            <div style={{ display: 'flex', gap: '3px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginBottom: '4px', minWidth: 0 }}>
+            <div style={{ display: 'flex', gap: '3px', minWidth: 0 }}>
               <input
                 type="text"
                 value={compendiumSearch}
                 onChange={(e) => setCompendiumSearch(e.target.value)}
                 placeholder="Search..."
                 className="cinput"
-                style={{ flex: 1.5, fontSize: '10px', height: '18px', padding: '0 4px', fontFamily: "'Crimson Text', serif", boxSizing: 'border-box' }}
+                style={{ flex: 1.5, minWidth: 0, fontSize: '10px', height: '18px', padding: '0 4px', fontFamily: "'Crimson Text', serif", boxSizing: 'border-box' }}
               />
               <select
                 value={compendiumFilter}
                 onChange={(e) => setCompendiumFilter(e.target.value)}
                 className="cinput"
-                style={{ flex: 1, fontSize: '10px', height: '18px', padding: 0, fontFamily: "'Crimson Text', serif", boxSizing: 'border-box', cursor: 'pointer' }}
+                style={{ flex: 1, minWidth: 0, fontSize: '10px', height: '18px', padding: 0, fontFamily: "'Crimson Text', serif", boxSizing: 'border-box', cursor: 'pointer' }}
               >
                 <option value="all">All Categories</option>
                 <option value="general">General</option>
@@ -479,7 +481,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                 value={sourceFilter}
                 onChange={(e) => setSourceFilter(e.target.value)}
                 className="cinput"
-                style={{ flex: 1, fontSize: '10px', height: '18px', padding: 0, fontFamily: "'Crimson Text', serif", boxSizing: 'border-box', cursor: 'pointer' }}
+                style={{ flex: 1, minWidth: 0, fontSize: '10px', height: '18px', padding: 0, fontFamily: "'Crimson Text', serif", boxSizing: 'border-box', cursor: 'pointer' }}
               >
                 <option value="all">All Books</option>
                 <option value="phb">PHB</option>
@@ -488,13 +490,13 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                 <option value="cs">CS</option>
               </select>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', padding: '0 2px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', padding: '0 2px', minWidth: 0 }}>
               <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '8px', color: 'var(--inkl)', cursor: 'pointer', userSelect: 'none' }}>
                 <input
                   type="checkbox"
                   checked={showOnlyMet}
                   onChange={(e) => setShowOnlyMet(e.target.checked)}
-                  style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0 }}
+                  style={{ width: '10px', height: '10px', cursor: 'pointer', margin: 0, flexShrink: 0 }}
                 />
                 <span>Only show feats with met prerequisites</span>
               </label>
@@ -503,105 +505,127 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
 
           <div
             onScroll={handleScroll}
-            className="compendium-feats-list"
-            style={{ flex: 1, overflowY: 'auto', maxHeight: '340px', boxSizing: 'border-box', border: '0.5px dashed rgba(200, 169, 110, 0.2)', padding: '4px', borderRadius: '2px' }}
+            className="compendium-feats-scroll"
+            style={{
+              flex: 1,
+              minWidth: 0,
+              width: '100%',
+              overflowY: 'auto',
+              maxHeight: '340px',
+              boxSizing: 'border-box',
+              paddingRight: '4px'
+            }}
           >
-            {isLimitReached && (
-              <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', marginBottom: '4px', fontFamily: "'Crimson Text', serif", fontSize: '8px', color: 'var(--red)', textAlign: 'center', fontWeight: 'bold' }}>
-                ⚠️ Feat limit reached ({activeFeats.length} / {totalMax}). You must first remove a feat to choose a new one.
-              </div>
-            )}
-            {compendiumFiltered.length === 0 ? (
-              <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '15px' }}>
-                No feats found (filter active).
-              </div>
-            ) : (
-              compendiumFiltered.slice(0, visibleLimit).map((item) => {
-                const feat = item.feat;
-                const depth = item.depth;
-                
-                const prereqsResult = checkPrerequisites(feat, pc);
-                const isAlreadyLearned = activeFeats.some((f: any) => f.id === feat.id);
-                
-                const bonusClass = getBonusFeatClass(feat);
-                const isClassBonus = (bonusClass === 'fighter' && hasFighter) ||
-                                     (bonusClass === 'wizard' && hasWizard) ||
-                                     (bonusClass === 'monk' && hasMonk);
+            <div
+              className="compendium-feats-list"
+              style={{
+                border: '0.5px dashed rgba(200, 169, 110, 0.25)',
+                borderRadius: '2px',
+                padding: '4px',
+                boxSizing: 'border-box',
+                minWidth: 0
+              }}
+            >
+              {isLimitReached && (
+                <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', marginBottom: '4px', fontFamily: "'Crimson Text', serif", fontSize: '8px', color: 'var(--red)', textAlign: 'center', fontWeight: 'bold' }}>
+                  ⚠️ Feat limit reached ({activeFeats.length} / {totalMax}). You must first remove a feat to choose a new one.
+                </div>
+              )}
+              {compendiumFiltered.length === 0 ? (
+                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '15px' }}>
+                  No feats found (filter active).
+                </div>
+              ) : (
+                compendiumFiltered.slice(0, visibleLimit).map((item) => {
+                  const feat = item.feat;
+                  const depth = item.depth;
+                  
+                  const prereqsResult = checkPrerequisites(feat, pc);
+                  const isAlreadyLearned = activeFeats.some((f: any) => f.id === feat.id);
+                  
+                  const bonusClass = getBonusFeatClass(feat);
+                  const isClassBonus = (bonusClass === 'fighter' && hasFighter) ||
+                                       (bonusClass === 'wizard' && hasWizard) ||
+                                       (bonusClass === 'monk' && hasMonk);
 
-                const isBlocked = (!prereqsResult.met || isLimitReached) && !isAlreadyLearned;
-                
-                const borderStyle = isClassBonus ? { border: '1px solid #2a6a2a', borderLeft: '3.5px solid #2a6a2a' } : { border: '0.5px solid var(--pb)' };
-                const backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.04)' : 'transparent';
-                const opacityStyle = isBlocked ? { opacity: 0.5, cursor: 'not-allowed' } : { cursor: 'pointer' };
-                
-                let icon = '⚪';
-                if (isAlreadyLearned) icon = '🟢';
-                else if (isBlocked) icon = '🔒';
-                
-                const categoryEn = (({ combat: 'Combat', metamagic: 'Metamagic', item_creation: 'Creation', general: 'General' } as Record<string, string>)[feat.category]) || 'General';
-                const depthPadding = depth * 14;
+                  const isBlocked = (!prereqsResult.met || isLimitReached) && !isAlreadyLearned;
+                  
+                  const borderStyle = isClassBonus ? { border: '1px solid #2a6a2a', borderLeft: '3.5px solid #2a6a2a' } : { border: '0.5px solid var(--pb)' };
+                  const backgroundStyle = isClassBonus ? 'rgba(42, 106, 42, 0.04)' : 'transparent';
+                  const opacityStyle = isBlocked ? { opacity: 0.5, cursor: 'not-allowed' } : { cursor: 'pointer' };
+                  
+                  let icon = '⚪';
+                  if (isAlreadyLearned) icon = '🟢';
+                  else if (isBlocked) icon = '🔒';
+                  
+                  const categoryEn = (({ combat: 'Combat', metamagic: 'Metamagic', item_creation: 'Creation', general: 'General' } as Record<string, string>)[feat.category]) || 'General';
+                  const depthPadding = depth * 14;
 
-                const matchingInstance = activeFeats.find((f: any) => f.id === feat.id);
-                const option = matchingInstance ? matchingInstance.option : '';
+                  const matchingInstance = activeFeats.find((f: any) => f.id === feat.id);
+                  const option = matchingInstance ? matchingInstance.option : '';
 
-                // Collapsible parent check
-                const hasChildren = Object.keys(CombatFeats.REGISTRY).some(childId => CombatFeats.REGISTRY[childId].parent === feat.id);
-                const isExpanded = expandedParents.has(feat.id);
+                  // Collapsible parent check
+                  const hasChildren = Object.keys(CombatFeats.REGISTRY).some(childId => CombatFeats.REGISTRY[childId].parent === feat.id);
+                  const isExpanded = expandedParents.has(feat.id);
 
-                return (
-                  <div
-                    key={feat.id}
-                    className="comp-feat-row"
-                    onClick={(e) => {
-                      if (!isBlocked || isAlreadyLearned) {
-                        handleFeatRowClick(feat, isAlreadyLearned, option, e);
-                      }
-                    }}
-                    style={{
-                      padding: '4px 6px',
-                      marginBottom: '3px',
-                      borderRadius: '2px',
-                      marginLeft: `${depthPadding}px`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      transition: 'background-color 0.15s, opacity 0.15s',
-                      background: backgroundStyle,
-                      ...borderStyle,
-                      ...opacityStyle
-                    }}
-                    onMouseOver={(e) => {
-                      if (!isBlocked) {
-                        e.currentTarget.style.background = isClassBonus ? 'rgba(42, 106, 42, 0.08)' : 'rgba(200, 169, 110, 0.05)';
-                      }
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.background = backgroundStyle;
-                    }}
-                  >
-                    {hasChildren && (
-                      <button
-                        onClick={(e) => toggleParent(feat.id, e)}
-                        style={{ background: 'none', border: 'none', outline: 'none', padding: '0 2px', fontSize: '8px', color: 'var(--red)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
-                        title={isExpanded ? "Collapse children" : "Expand children"}
-                      >
-                        {isExpanded ? '▼' : '▶'}
-                      </button>
-                    )}
-                    <span style={{ fontSize: '8px', flexShrink: 0 }}>{icon}</span>
-                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>{feat.nameEn || feat.nameDe}</span>
-                        <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', marginLeft: 'auto' }}>{categoryEn}</span>
-                      </div>
-                      <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={feat.benefitEn || feat.benefitDe}>
-                        {feat.benefitEn || feat.benefitDe}
+                  return (
+                    <div
+                      key={feat.id}
+                      className="comp-feat-row"
+                      onClick={(e) => {
+                        if (!isBlocked || isAlreadyLearned) {
+                          handleFeatRowClick(feat, isAlreadyLearned, option, e);
+                        }
+                      }}
+                      style={{
+                        padding: '4px 6px',
+                        marginBottom: '3px',
+                        borderRadius: '2px',
+                        marginLeft: `${depthPadding}px`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        minWidth: 0,
+                        width: '100%',
+                        boxSizing: 'border-box',
+                        transition: 'background-color 0.15s, opacity 0.15s',
+                        background: backgroundStyle,
+                        ...borderStyle,
+                        ...opacityStyle
+                      }}
+                      onMouseOver={(e) => {
+                        if (!isBlocked) {
+                          e.currentTarget.style.background = isClassBonus ? 'rgba(42, 106, 42, 0.08)' : 'rgba(200, 169, 110, 0.05)';
+                        }
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.background = backgroundStyle;
+                      }}
+                    >
+                      {hasChildren && (
+                        <button
+                          onClick={(e) => toggleParent(feat.id, e)}
+                          style={{ background: 'none', border: 'none', outline: 'none', padding: '0 2px', fontSize: '8px', color: 'var(--red)', cursor: 'pointer', display: 'flex', alignItems: 'center', flexShrink: 0 }}
+                          title={isExpanded ? "Collapse children" : "Expand children"}
+                        >
+                          {isExpanded ? '▼' : '▶'}
+                        </button>
+                      )}
+                      <span style={{ fontSize: '8px', flexShrink: 0 }}>{icon}</span>
+                      <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
+                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>{feat.nameEn || feat.nameDe}</span>
+                          <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', marginLeft: 'auto', flexShrink: 0, whiteSpace: 'nowrap' }}>{categoryEn}</span>
+                        </div>
+                        <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitEn || feat.benefitDe || feat.benefitRaw}>
+                          {feat.benefitEn || feat.benefitDe || feat.benefitRaw}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })
-            )}
+                  );
+                })
+              )}
+            </div>
           </div>
         </div>
       </div>
