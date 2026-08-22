@@ -27,8 +27,16 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
   const isRanged = weapon.grip === 'rng';
   const isMelee = !isRanged;
 
+  const smiteAbility = pc.dailyAbilities?.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil");
+  const smiteMax = smiteAbility ? smiteAbility.max : 0;
+  const smiteUsed = smiteAbility ? smiteAbility.used : 0;
+  const smiteRemaining = Math.max(0, smiteMax - smiteUsed);
+
   const handleSmiteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.checked;
+    if (val && smiteMax > 0 && smiteRemaining <= 0) {
+      return;
+    }
     setSmiteActive(val);
     CombatState.updatePCField('isSmiteActive', val);
   };

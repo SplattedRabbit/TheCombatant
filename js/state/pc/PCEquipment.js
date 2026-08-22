@@ -410,9 +410,12 @@ export function swapPCItem(slot, newItemIdx) {
  * @param {number} itemIdx
  * @param {number} [amount=1]
  */
-export function usePCItemCharge(itemIdx, amount = 1) {
+export function usePCItemCharge(itemIdx, amount) {
+  if (amount === undefined) {
+    return usePCItemAction(itemIdx);
+  }
   const pc = getActivePC();
-  if (!pc || !Array.isArray(pc.items) || !pc.items[itemIdx]) return;
+  if (!pc || !Array.isArray(pc.items) || !pc.items[itemIdx]) return { success: false };
 
   const item = pc.items[itemIdx];
   if (item.charges && item.charges.current > 0) {
@@ -423,6 +426,7 @@ export function usePCItemCharge(itemIdx, amount = 1) {
 
   saveToStorage();
   syncPCToHost();
+  return { success: true };
 }
 
 /**

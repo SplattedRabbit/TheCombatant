@@ -13,7 +13,14 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 ---
 
-### v4.6.0 — Armory 2.0: Paperdoll-Grid, 3D-Card-Flip UX, Magic Items Kompendium & Stacking Engine (Phase 1 & 2)
+### v4.6.0 — Armory 2.0: Paperdoll-Grid, 3D-Card-Flip UX, Magic Items Kompendium, Stacking Engine & Tactical Combat Action Hub (Phasen 1–4)
+
+* **⚔️ Tactical Combat Action Hub (`PCOffenseTab.tsx` & `ActiveEquipmentSlots.tsx`)**:
+  - **3-Spalten Active Loadout**: Haupthand, Nebenhand/Schild und dynamischer *Class Strike & ACF Action Slot* (z. B. *Smite Evil*, *Sneak Attack*, *Skirmish*, *Sudden Strike*, *Arcane Channeling*, *Fighting Challenge*, *Stunning Fist*, *Kampfrausch*).
+  - **Auto-Verbrauch von Smite Evil**: Automatischer Abzug einer Tagesladung aus `dailyAbilities` bei aktiver Smite-Nutzung während des Angriffs.
+  - **🎛️ Taktische Slider & Manöver (`TacticalModifiersCard.tsx`)**: Interaktive Touch-Schieberegler für *Power Attack* (mit 1H/2H Live-Schadensmultiplikatoren) und *Combat Expertise* (mit Ausweich-RK-Vorschau) sowie *Fight Defensively* (inkl. Akrobatik-Synergie) und *Total Defense*.
+  - **🎒 Diablo 2 Style Tactical Combat Belt (`TacticalBeltCard.tsx`)**: Leder- & Nieten-Schnellgürtel mit automatischer Befüllung aus dem Inventar für Tränke, Wands, Schriftrollen und Alchemie mit 1-Tap Sofort-Heilung & Buff-Applikation.
+  - **Aufgeräumtes Waffen-Arsenal**: Live-Suche (`🔍 Search weapons...`) und Entfernung der redundanten Rüstungs-Kacheln.
 
 * **✨ Neues Tab `✨ Armory (Magie-Items)` & Paperdoll-Grid**:
   - **11 Körperslots + Slotless**: Vollständige Repräsentation aller D&D 3.5e Körperslots (*Head, Face, Neck, Shoulders, Torso, Body, Wrists, Hands, Waist, Feet, Ring 1, Ring 2, Slotless*).
@@ -32,7 +39,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 * **⚙️ Regelschicht & D&D 3.5e Stacking Engine (`RulesItems.js` & `PCEquipment.js`)**:
   - **Bonus-Stacking**: Höchster Bonus gleichen Typs zählt (*Enhancement*, *Resistance*, *Deflection* etc.); *Dodge* und *Untyped* stacken additiv; Mali summieren sich regelkonform.
   - **Intelligente Ring-Verteilung**: Belegt bei ungenauer Angabe automatisch freie Slots (`ring1` bzw. `ring2`).
-  - **227 / 227 Unit-Tests grün** (`rules_items.test.js`).
+  - **233 / 233 Unit-Tests grün** (`Tests/rules_items.test.js`, `Tests/offense_hub.test.js`).
 
 
 ---

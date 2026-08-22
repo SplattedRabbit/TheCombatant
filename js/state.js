@@ -77,7 +77,9 @@ import {
   swapPCItem,
   usePCItemCharge,
   usePCItemAction,
-  addPCItemFromCompendium
+  addPCItemFromCompendium,
+  consumeSmiteEvilCharge,
+  togglePCRage
 } from './state/PCManager.js';
 
 import {
@@ -251,6 +253,8 @@ export const CombatState = {
   usePCItemCharge,
   usePCItemAction,
   addPCItemFromCompendium,
+  consumeSmiteEvilCharge,
+  togglePCRage,
   updateMeta,
   addCombatant,
   removeCombatant,

@@ -63,5 +63,7 @@ export {
   savePCSpellTemplate,
   deletePCSpellTemplate,
   applyPCSpellTemplate,
-  clearPreparedSpells
+  clearPreparedSpells,
+  consumeSmiteEvilCharge,
+  togglePCRage
 } from './pc/PCFeatsSpells.js';
