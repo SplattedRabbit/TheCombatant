@@ -35,10 +35,13 @@ export const findSpell = (pc: any, key: string) => {
 
 export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
-  const activeCasters = hasClasses ? pc.classes.filter((c: any) => ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger'].includes(c.classType)) : [];
+  const activeCasters = hasClasses ? pc.classes.filter((c: any) => [
+    'cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger',
+    'duskblade', 'beguiler'
+  ].includes(c.classType)) : [];
   
-  const hasPrepared = activeCasters.some((c: any) => ['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType));
-  const hasSpontaneous = activeCasters.some((c: any) => ['sorcerer', 'bard'].includes(c.classType));
+  const hasPrepared = activeCasters.some((c: any) => ['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'duskblade'].includes(c.classType));
+  const hasSpontaneous = activeCasters.some((c: any) => ['sorcerer', 'bard', 'beguiler'].includes(c.classType));
   const hasCantrips = !hasClasses || pc.classes.some((c: any) => ['cleric', 'wizard', 'sorcerer', 'bard', 'druid'].includes(c.classType));
 
   const minLvl = hasCantrips ? 0 : 1;
@@ -48,6 +51,9 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
   }
   if (activeCasters.length === 1 && activeCasters[0].classType === 'bard') {
     maxLvl = 6;
+  }
+  if (activeCasters.length === 1 && ['duskblade', 'beguiler'].includes(activeCasters[0].classType)) {
+    maxLvl = 5;
   }
 
   const levelsToRender = [];

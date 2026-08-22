@@ -40,7 +40,9 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
   }, [searchQuery, levelFilter, sourceFilter, filterClassAndLevel]);
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
-  const isCaster = hasClasses && pc.classes.some((c: any) => ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger'].includes(c.classType));
+  const isCaster = hasClasses && pc.classes.some((c: any) =>
+    ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger', 'duskblade', 'beguiler'].includes(c.classType)
+  );
 
   const eligibleLevels = useMemo<number[]>(() => {
     if (!filterClassAndLevel && isCaster) {

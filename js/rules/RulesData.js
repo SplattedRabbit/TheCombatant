@@ -101,17 +101,27 @@ export const CONDITIONS = [
 ];
 
 export const CLASSES = [
-  { key: 'fighter', nameDe: 'Fighter', nameEn: 'Fighter', bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' } },
-  { key: 'cleric', nameDe: 'Cleric', nameEn: 'Cleric', bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' } },
-  { key: 'rogue', nameDe: 'Rogue', nameEn: 'Rogue', bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' } },
-  { key: 'wizard', nameDe: 'Wizard', nameEn: 'Wizard', bab: 'poor',  saves: { fort: 'poor', ref: 'poor', wil: 'good' } },
-  { key: 'barbarian', nameDe: 'Barbarian', nameEn: 'Barbarian', bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' } },
-  { key: 'bard', nameDe: 'Bard', nameEn: 'Bard', bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'good' } },
-  { key: 'druid', nameDe: 'Druid', nameEn: 'Druid', bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' } },
-  { key: 'monk', nameDe: 'Monk', nameEn: 'Monk', bab: 'avg',  saves: { fort: 'good', ref: 'good', wil: 'good' } },
-  { key: 'paladin', nameDe: 'Paladin', nameEn: 'Paladin', bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' } },
-  { key: 'ranger', nameDe: 'Ranger', nameEn: 'Ranger', bab: 'good', saves: { fort: 'good', ref: 'good', wil: 'poor' } },
-  { key: 'sorcerer', nameDe: 'Sorcerer', nameEn: 'Sorcerer', bab: 'poor', saves: { fort: 'poor', ref: 'poor', wil: 'good' } },
+  // ── Core (PHB) ──────────────────────────────────────────────────────────
+  { key: 'fighter',      nameDe: 'Fighter',      nameEn: 'Fighter',      bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb' },
+  { key: 'cleric',       nameDe: 'Cleric',        nameEn: 'Cleric',       bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb' },
+  { key: 'rogue',        nameDe: 'Rogue',         nameEn: 'Rogue',        bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'phb' },
+  { key: 'wizard',       nameDe: 'Wizard',        nameEn: 'Wizard',       bab: 'poor', saves: { fort: 'poor', ref: 'poor', wil: 'good' }, source: 'phb' },
+  { key: 'barbarian',    nameDe: 'Barbarian',     nameEn: 'Barbarian',    bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb' },
+  { key: 'bard',         nameDe: 'Bard',          nameEn: 'Bard',         bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'good' }, source: 'phb' },
+  { key: 'druid',        nameDe: 'Druid',         nameEn: 'Druid',        bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb' },
+  { key: 'monk',         nameDe: 'Monk',          nameEn: 'Monk',         bab: 'avg',  saves: { fort: 'good', ref: 'good', wil: 'good' }, source: 'phb' },
+  { key: 'paladin',      nameDe: 'Paladin',       nameEn: 'Paladin',      bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb' },
+  { key: 'ranger',       nameDe: 'Ranger',        nameEn: 'Ranger',       bab: 'good', saves: { fort: 'good', ref: 'good', wil: 'poor' }, source: 'phb' },
+  { key: 'sorcerer',     nameDe: 'Sorcerer',      nameEn: 'Sorcerer',     bab: 'poor', saves: { fort: 'poor', ref: 'poor', wil: 'good' }, source: 'phb' },
+  // ── Player's Handbook II ─────────────────────────────────────────────────
+  { key: 'duskblade',     nameDe: 'Duskblade',    nameEn: 'Duskblade',    bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb2', isCaster: true,  castingType: 'arcane', castingStat: 'int' },
+  { key: 'beguiler',      nameDe: 'Beguiler',     nameEn: 'Beguiler',     bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'good' }, source: 'phb2', isCaster: true,  castingType: 'arcane', castingStat: 'int' },
+  { key: 'knight',        nameDe: 'Knight',       nameEn: 'Knight',       bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb2', isCaster: false },
+  { key: 'dragon_shaman', nameDe: 'Dragon Shaman',nameEn: 'Dragon Shaman',bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb2', isCaster: false },
+  // ── Complete Adventurer ──────────────────────────────────────────────────
+  { key: 'ninja',         nameDe: 'Ninja',        nameEn: 'Ninja',        bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'ca',   isCaster: false },
+  { key: 'scout',         nameDe: 'Scout',        nameEn: 'Scout',        bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'ca',   isCaster: false },
+  { key: 'spellthief',    nameDe: 'Spellthief',   nameEn: 'Spellthief',   bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'ca',   isCaster: false },
   {
     key: 'mystic_theurge',
     nameDe: 'Mystischer Theurge',
@@ -204,7 +214,10 @@ export const CLASSES = [
     }
   },
 
-  { key: 'custom', nameDe: 'Custom', nameEn: 'Custom', bab: 'custom', saves: { fort: 'custom', ref: 'custom', wil: 'custom' } }
+  // ── Prestige Classes ─────────────────────────────────────────────────────
+  // (prestige classes retain their existing definitions below)
+
+  { key: 'custom', nameDe: 'Custom', nameEn: 'Custom', bab: 'custom', saves: { fort: 'custom', ref: 'custom', wil: 'custom' }, source: 'phb' }
 ];
 
 
@@ -264,6 +277,46 @@ export const CLASS_SKILLS = {
     'gather_information', 'handle_animal', 'hide', 'intimidate', 'jump', 'listen', 'move_silently',
     'open_lock', 'perform', 'profession', 'ride', 'search', 'sense_motive', 'sleight_of_hand', 'spot',
     'survival', 'swim', 'tumble', 'use_rope'
+  ],
+  // PHB2 Base Classes
+  duskblade: [
+    'climb', 'concentration', 'craft', 'decipher_script', 'intimidate', 'jump', 'knowledge_arcana',
+    'knowledge_dungeons', 'profession', 'ride', 'spellcraft', 'swim'
+  ],
+  beguiler: [
+    'appraise', 'bluff', 'concentration', 'craft', 'decipher_script', 'diplomacy', 'disguise',
+    'escape_artist', 'gather_information', 'hide', 'knowledge_arcana', 'knowledge_dungeons',
+    'knowledge_local', 'knowledge_planes', 'knowledge_religion', 'knowledge_other',
+    'listen', 'move_silently', 'open_lock', 'profession', 'search', 'sense_motive',
+    'sleight_of_hand', 'spellcraft', 'spot', 'tumble', 'use_magic_device'
+  ],
+  knight: [
+    'climb', 'craft', 'diplomacy', 'handle_animal', 'intimidate', 'jump', 'knowledge_history',
+    'knowledge_other', 'profession', 'ride', 'sense_motive', 'swim'
+  ],
+  dragon_shaman: [
+    'climb', 'craft', 'diplomacy', 'jump', 'knowledge_arcana', 'knowledge_dungeons',
+    'knowledge_history', 'knowledge_nature', 'knowledge_planes', 'knowledge_religion',
+    'profession', 'swim'
+  ],
+  // Complete Adventurer Base Classes
+  ninja: [
+    'balance', 'bluff', 'climb', 'craft', 'diplomacy', 'disable_device', 'disguise',
+    'escape_artist', 'hide', 'jump', 'listen', 'move_silently', 'open_lock', 'profession',
+    'search', 'sense_motive', 'sleight_of_hand', 'spot', 'swim', 'tumble', 'use_rope'
+  ],
+  scout: [
+    'balance', 'climb', 'craft', 'disable_device', 'escape_artist', 'handle_animal',
+    'hide', 'jump', 'knowledge_dungeons', 'knowledge_geography', 'knowledge_nature',
+    'listen', 'move_silently', 'profession', 'ride', 'search', 'sense_motive', 'spot',
+    'survival', 'swim', 'tumble', 'use_rope'
+  ],
+  spellthief: [
+    'appraise', 'balance', 'bluff', 'climb', 'concentration', 'craft', 'decipher_script',
+    'diplomacy', 'disable_device', 'disguise', 'escape_artist', 'gather_information',
+    'hide', 'jump', 'knowledge_arcana', 'listen', 'move_silently', 'open_lock', 'profession',
+    'search', 'sense_motive', 'sleight_of_hand', 'spot', 'spellcraft', 'tumble',
+    'use_magic_device', 'use_rope'
   ]
 };
 
@@ -354,10 +407,58 @@ export const CLASS_PROFILES = {
       }
       return res;
     }
+  },
+  knight: {
+    nameDe: 'Knight',
+    getResources(level, stats) {
+      const score = stats.cha ? stats.cha.getValue() : 10;
+      const chaMod = Math.floor((score - 10) / 2);
+      return [
+        {
+          key: 'knights_challenge',
+          name: "Knight's Challenge",
+          max: Math.max(1, 3 + chaMod),
+          type: 'daily'
+        }
+      ];
+    }
+  },
+  ninja: {
+    nameDe: 'Ninja',
+    getResources(level, stats) {
+      const score = stats.wis ? stats.wis.getValue() : 10;
+      const wisMod = Math.floor((score - 10) / 2);
+      return [
+        {
+          key: 'ki_power',
+          name: 'Ki Power',
+          max: Math.max(1, level + wisMod),
+          type: 'daily'
+        }
+      ];
+    }
+  },
+  dragon_shaman: {
+    nameDe: 'Dragon Shaman',
+    getResources(level, stats) {
+      // Dragon Shamans breathe weapon: 3+Con-Mod/day from level 4
+      if (level < 4) return [];
+      const score = stats.con ? stats.con.getValue() : 10;
+      const conMod = Math.floor((score - 10) / 2);
+      return [
+        {
+          key: 'breath_weapon',
+          name: 'Breath Weapon',
+          max: Math.max(1, 3 + conMod),
+          type: 'daily'
+        }
+      ];
+    }
   }
 };
 
 export const CLASS_BASE_SKILLS = {
+  // PHB Core
   barbarian: 4,
   bard: 6,
   cleric: 2,
@@ -369,6 +470,15 @@ export const CLASS_BASE_SKILLS = {
   rogue: 8,
   sorcerer: 2,
   wizard: 2,
+  // PHB2
+  duskblade:    2,
+  beguiler:     6,
+  knight:       2,
+  dragon_shaman: 2,
+  // Complete Adventurer
+  ninja:       6,
+  scout:       8,
+  spellthief:  6,
   custom: 2
 };
 
@@ -523,4 +633,53 @@ export const ASSASSIN_TABLE = {
   10: [0, 3, 3, 3, 3]
 };
 
+// PHB2: Duskblade Spell Slots per Day (arcane, Intelligence-based)
+// Duskblade is a prepared spellcaster with spell slots up to 5th level (capping at class level 17+)
+export const DUSKBLADE_TABLE = {
+  1:  [2],
+  2:  [3],
+  3:  [3, 1],
+  4:  [4, 2],
+  5:  [4, 2, 1],
+  6:  [4, 3, 2],
+  7:  [4, 3, 2, 1],
+  8:  [4, 3, 3, 2],
+  9:  [4, 3, 3, 2, 1],
+  10: [4, 4, 3, 3, 2],
+  11: [4, 4, 4, 3, 2, 1],
+  12: [4, 4, 4, 3, 3, 2],
+  13: [4, 4, 4, 4, 3, 2, 1],
+  14: [4, 4, 4, 4, 3, 3, 2],
+  15: [4, 4, 4, 4, 4, 3, 2, 1],
+  16: [4, 4, 4, 4, 4, 3, 3, 2],
+  17: [4, 4, 4, 4, 4, 4, 3, 2, 1],
+  18: [4, 4, 4, 4, 4, 4, 3, 3, 2],
+  19: [4, 4, 4, 4, 4, 4, 4, 3, 2],
+  20: [4, 4, 4, 4, 4, 4, 4, 3, 3]
+};
+
+// PHB2: Beguiler Spell Slots per Day (arcane, Intelligence-based, spontaneous)
+// Beguiler uses the sorcerer/bard spontaneous model but with a fixed all-class spell list
+export const BEGUILER_TABLE = {
+  1:  [5, 3],
+  2:  [6, 4],
+  3:  [6, 5],
+  4:  [6, 6, 3],
+  5:  [6, 6, 4],
+  6:  [6, 6, 5, 3],
+  7:  [6, 6, 6, 4],
+  8:  [6, 6, 6, 5, 3],
+  9:  [6, 6, 6, 6, 4],
+  10: [6, 6, 6, 6, 5, 3],
+  11: [6, 6, 6, 6, 6, 4],
+  12: [6, 6, 6, 6, 6, 5, 3],
+  13: [6, 6, 6, 6, 6, 6, 4],
+  14: [6, 6, 6, 6, 6, 6, 5, 3],
+  15: [6, 6, 6, 6, 6, 6, 6, 4],
+  16: [6, 6, 6, 6, 6, 6, 6, 5, 3],
+  17: [6, 6, 6, 6, 6, 6, 6, 6, 4],
+  18: [6, 6, 6, 6, 6, 6, 6, 6, 5],
+  19: [6, 6, 6, 6, 6, 6, 6, 6, 6],
+  20: [6, 6, 6, 6, 6, 6, 6, 6, 6]
+};
 

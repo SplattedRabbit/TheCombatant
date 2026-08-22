@@ -92,6 +92,16 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
           rogue: 'Rogue',
           sorcerer: 'Sorcerer',
           wizard: 'Wizard',
+          // PHB2
+          duskblade: 'Duskblade',
+          beguiler: 'Beguiler',
+          knight: 'Knight',
+          dragon_shaman: 'Dragon Shaman',
+          // Complete Adventurer
+          ninja: 'Ninja',
+          scout: 'Scout',
+          spellthief: 'Spellthief',
+          // Prestige
           mystic_theurge: 'Mystic Theurge',
           arcane_trickster: 'Arcane Trickster',
           dragon_disciple: 'Dragon Disciple',

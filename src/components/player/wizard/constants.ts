@@ -159,37 +159,58 @@ export const RACES: RaceDetail[] = [
 ];
 
 export const CLASS_KEY_ATTRIBUTES: Record<string, string[]> = {
-  fighter: ['str', 'con', 'dex'],
-  rogue: ['dex', 'int'],
-  cleric: ['wis', 'cha', 'con'],
-  wizard: ['int', 'con', 'dex'],
-  barbarian: ['str', 'con', 'dex'],
-  bard: ['cha', 'dex', 'int'],
-  druid: ['wis', 'con'],
-  monk: ['wis', 'dex', 'str', 'con'],
-  paladin: ['cha', 'str', 'wis', 'con'],
-  ranger: ['dex', 'str', 'wis'],
-  sorcerer: ['cha', 'dex', 'con']
+  // PHB Core
+  fighter:       ['str', 'con', 'dex'],
+  rogue:         ['dex', 'int'],
+  cleric:        ['wis', 'cha', 'con'],
+  wizard:        ['int', 'con', 'dex'],
+  barbarian:     ['str', 'con', 'dex'],
+  bard:          ['cha', 'dex', 'int'],
+  druid:         ['wis', 'con'],
+  monk:          ['wis', 'dex', 'str', 'con'],
+  paladin:       ['cha', 'str', 'wis', 'con'],
+  ranger:        ['dex', 'str', 'wis'],
+  sorcerer:      ['cha', 'dex', 'con'],
+  // PHB2
+  duskblade:     ['str', 'int', 'con'],
+  beguiler:      ['int', 'cha', 'dex'],
+  knight:        ['str', 'con', 'cha'],
+  dragon_shaman: ['cha', 'str', 'con'],
+  // Complete Adventurer
+  ninja:         ['dex', 'wis', 'str'],
+  scout:         ['dex', 'str', 'wis'],
+  spellthief:    ['dex', 'int', 'cha'],
 };
 
 export const CLASSES_LIST = [
-  { key: 'fighter', name: 'Fighter', hd: 10, skillBase: 2, desc: 'Melee combat specialist, gains many bonus feats.' },
-  { key: 'rogue', name: 'Rogue', hd: 6, skillBase: 8, desc: 'Trap disarmer, sneak attack, extremely high number of skills.' },
-  { key: 'cleric', name: 'Cleric', hd: 8, skillBase: 2, desc: 'Divine spellcaster, armor wearer, turn undead.' },
-  { key: 'wizard', name: 'Wizard', hd: 4, skillBase: 2, desc: 'Arcane spellcaster with a spellbook, powerful spells.' },
-  { key: 'barbarian', name: 'Barbarian', hd: 12, skillBase: 2, desc: 'Tough warrior in a rage, high hit die.' },
-  { key: 'bard', name: 'Bard', hd: 6, skillBase: 4, desc: 'Supporter with songs, spells, and versatile abilities.' },
-  { key: 'druid', name: 'Druid', hd: 8, skillBase: 4, desc: 'Nature spellcaster, wild shape transformation, animal companion.' },
-  { key: 'monk', name: 'Monk', hd: 8, skillBase: 4, desc: 'Unarmed martial artist, high AC, and fast movement.' },
-  { key: 'paladin', name: 'Paladin', hd: 10, skillBase: 2, desc: 'Holy warrior, lay on hands, immunities.' },
-  { key: 'ranger', name: 'Ranger', hd: 8, skillBase: 6, desc: 'Tracker, favored enemy, two-weapon fighting or archery.' },
-  { key: 'sorcerer', name: 'Sorcerer', hd: 4, skillBase: 2, desc: 'Spontaneous arcane spellcaster with innate magic.' },
-  { key: 'mystic_theurge', name: 'Mystic Theurge', hd: 4, skillBase: 2, desc: 'Master of both arcane and divine magic.', isPrestige: true },
-  { key: 'arcane_trickster', name: 'Arcane Trickster', hd: 4, skillBase: 4, desc: 'Combines magic with rogue abilities.', isPrestige: true },
-  { key: 'dragon_disciple', name: 'Dragon Disciple', hd: 12, skillBase: 2, desc: 'Awakens draconic blood for physical power.', isPrestige: true },
-  { key: 'assassin', name: 'Assassin', hd: 6, skillBase: 4, desc: 'Master of stealth, anatomy, and lethal strikes.', isPrestige: true },
-  { key: 'battle_trickster', name: 'Battle Trickster', hd: 10, skillBase: 4, desc: 'A master of martial prowess combined with tricky tactics and skill tricks.', isPrestige: true },
-  { key: 'spellwarp_sniper', name: 'Spellwarp Sniper', hd: 6, skillBase: 4, desc: 'Transforms area-of-effect spells into precise, deadly ray spells.', isPrestige: true }
+  // ── Core (PHB) ─────────────────────────────────────────────────
+  { key: 'fighter',       name: 'Fighter',       hd: 10, skillBase: 2, source: 'phb',  desc: 'Melee combat specialist, gains many bonus feats.' },
+  { key: 'rogue',         name: 'Rogue',          hd:  6, skillBase: 8, source: 'phb',  desc: 'Trap disarmer, sneak attack, extremely high number of skills.' },
+  { key: 'cleric',        name: 'Cleric',         hd:  8, skillBase: 2, source: 'phb',  desc: 'Divine spellcaster, armor wearer, turn undead.' },
+  { key: 'wizard',        name: 'Wizard',         hd:  4, skillBase: 2, source: 'phb',  desc: 'Arcane spellcaster with a spellbook, powerful spells.' },
+  { key: 'barbarian',     name: 'Barbarian',      hd: 12, skillBase: 4, source: 'phb',  desc: 'Tough warrior in a rage, high hit die.' },
+  { key: 'bard',          name: 'Bard',           hd:  6, skillBase: 6, source: 'phb',  desc: 'Supporter with songs, spells, and versatile abilities.' },
+  { key: 'druid',         name: 'Druid',          hd:  8, skillBase: 4, source: 'phb',  desc: 'Nature spellcaster, wild shape transformation, animal companion.' },
+  { key: 'monk',          name: 'Monk',           hd:  8, skillBase: 4, source: 'phb',  desc: 'Unarmed martial artist, high AC, and fast movement.' },
+  { key: 'paladin',       name: 'Paladin',        hd: 10, skillBase: 2, source: 'phb',  desc: 'Holy warrior, lay on hands, immunities.' },
+  { key: 'ranger',        name: 'Ranger',         hd:  8, skillBase: 6, source: 'phb',  desc: 'Tracker, favored enemy, two-weapon fighting or archery.' },
+  { key: 'sorcerer',      name: 'Sorcerer',       hd:  4, skillBase: 2, source: 'phb',  desc: 'Spontaneous arcane spellcaster with innate magic.' },
+  // ── Player's Handbook II ───────────────────────────────────
+  { key: 'duskblade',     name: 'Duskblade',      hd:  8, skillBase: 2, source: 'phb2', desc: 'Arcane warrior channeling spells through weapon strikes.' },
+  { key: 'beguiler',      name: 'Beguiler',       hd:  6, skillBase: 6, source: 'phb2', desc: 'Spontaneous arcane trickster with a fixed illusion/enchantment list.' },
+  { key: 'knight',        name: 'Knight',         hd: 12, skillBase: 2, source: 'phb2', desc: 'Tank with Cha-based Knight\'s Challenge taunt mechanic.' },
+  { key: 'dragon_shaman', name: 'Dragon Shaman',  hd: 10, skillBase: 2, source: 'phb2', desc: 'Aura-radiating draconic warrior with breath weapon.' },
+  // ── Complete Adventurer ─────────────────────────────────────────
+  { key: 'ninja',         name: 'Ninja',          hd:  6, skillBase: 6, source: 'ca',   desc: 'Ki-powered stealth combatant with Ghost Step ability.' },
+  { key: 'scout',         name: 'Scout',          hd:  8, skillBase: 8, source: 'ca',   desc: 'Skirmish damage on movement, Battle Fortitude.' },
+  { key: 'spellthief',    name: 'Spellthief',     hd:  6, skillBase: 6, source: 'ca',   desc: 'Steals spells and magical buffs via Sneak Attack.' },
+  // ── Prestige Classes ─────────────────────────────────────────────────
+  { key: 'mystic_theurge',  name: 'Mystic Theurge',  hd: 4,  skillBase: 2, source: 'phb', desc: 'Master of both arcane and divine magic.',                             isPrestige: true },
+  { key: 'arcane_trickster',name: 'Arcane Trickster', hd: 4,  skillBase: 4, source: 'phb', desc: 'Combines magic with rogue abilities.',                                isPrestige: true },
+  { key: 'dragon_disciple', name: 'Dragon Disciple',  hd: 12, skillBase: 2, source: 'phb', desc: 'Awakens draconic blood for physical power.',                          isPrestige: true },
+  { key: 'assassin',        name: 'Assassin',         hd: 6,  skillBase: 4, source: 'phb', desc: 'Master of stealth, anatomy, and lethal strikes.',                     isPrestige: true },
+  { key: 'battle_trickster',name: 'Battle Trickster',  hd: 10, skillBase: 4, source: 'cs',  desc: 'A master of martial prowess combined with tricky tactics.',           isPrestige: true },
+  { key: 'spellwarp_sniper',name: 'Spellwarp Sniper',  hd: 6,  skillBase: 4, source: 'cs',  desc: 'Transforms area-of-effect spells into precise, deadly ray spells.', isPrestige: true },
 ];
 
 

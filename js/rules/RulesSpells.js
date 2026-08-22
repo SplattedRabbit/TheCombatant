@@ -5,13 +5,9 @@
  */
 
 import {
-  WIZ_CLER_DRU_TABLE,
-  SORCERER_TABLE,
-  BARD_TABLE,
-  PALADIN_RANGER_TABLE,
-  SORCERER_KNOWN_TABLE,
-  BARD_KNOWN_TABLE,
-  ASSASSIN_TABLE
+  WIZ_CLER_DRU_TABLE, SORCERER_TABLE, BARD_TABLE, PALADIN_RANGER_TABLE,
+  ASSASSIN_TABLE, SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE,
+  DUSKBLADE_TABLE, BEGUILER_TABLE
 } from './RulesData.js';
 import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput } from '../spells.js';
 
@@ -47,6 +43,10 @@ export function getMaxSpellLevel(classType, classLevel) {
     table = PALADIN_RANGER_TABLE;
   } else if (classType === 'assassin') {
     table = ASSASSIN_TABLE;
+  } else if (classType === 'duskblade') {
+    table = DUSKBLADE_TABLE;
+  } else if (classType === 'beguiler') {
+    table = BEGUILER_TABLE;
   } else {
     return -1;
   }
@@ -79,6 +79,12 @@ export function calculateMaxSpellSlots(pc) {
       keyAbility = 'wis';
     } else if (c.classType === 'assassin') {
       table = ASSASSIN_TABLE;
+      keyAbility = 'int';
+    } else if (c.classType === 'duskblade') {
+      table = DUSKBLADE_TABLE;
+      keyAbility = 'int';
+    } else if (c.classType === 'beguiler') {
+      table = BEGUILER_TABLE;
       keyAbility = 'int';
     } else {
       return; // Non-caster
@@ -127,8 +133,10 @@ export function checkSpellKnownLimit(pc, spell, findSpellFn) {
   const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
   const sorcClass = activeClasses.find(c => c.classType === 'sorcerer');
   const bardClass = activeClasses.find(c => c.classType === 'bard');
+  // Beguiler is a spontaneous caster using a fixed all-class list — treated like Sorcerer for known-spell limits
+  const beguilerClass = activeClasses.find(c => c.classType === 'beguiler');
 
-  if (!sorcClass && !bardClass) {
+  if (!sorcClass && !bardClass && !beguilerClass) {
     return { success: true };
   }
 
@@ -324,6 +332,10 @@ export function getEligibleSpellLevelsForPC(pc) {
       table = PALADIN_RANGER_TABLE;
     } else if (c.classType === 'assassin') {
       table = ASSASSIN_TABLE;
+    } else if (c.classType === 'duskblade') {
+      table = DUSKBLADE_TABLE;
+    } else if (c.classType === 'beguiler') {
+      table = BEGUILER_TABLE;
     } else {
       return;
     }

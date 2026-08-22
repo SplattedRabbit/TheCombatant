@@ -60,6 +60,8 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   activeFeatSlot,
   filteredFeats
 }) => {
+  const [sourceTab, setSourceTab] = React.useState<'all' | 'phb' | 'phb2' | 'ca' | 'prestige'>('all');
+  const [classSearch, setClassSearch] = React.useState('');
 
   React.useEffect(() => {
     if (!currentConfig || !currentDraft) return;
@@ -67,10 +69,10 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
     if (currentConfig.classType === 'mystic_theurge') {
       const arcaneOptions = currentDraft.classes.filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType));
       const divineOptions = currentDraft.classes.filter((cl: any) => ['cleric', 'druid', 'paladin', 'ranger'].includes(cl.classType));
-      
+
       const links = { ...currentConfig.prestigeSpellLinks?.mystic_theurge };
       let changed = false;
-      
+
       if (arcaneOptions.length === 1 && links.arcane !== arcaneOptions[0].classType) {
         links.arcane = arcaneOptions[0].classType;
         changed = true;
@@ -79,7 +81,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
         links.divine = divineOptions[0].classType;
         changed = true;
       }
-      
+
       if (changed) {
         updateLevelConfig(currentLevelIndex, 'prestigeSpellLinks', {
           ...currentConfig.prestigeSpellLinks,
@@ -88,7 +90,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
       }
     } else if (currentConfig.classType === 'arcane_trickster') {
       const arcaneOptions = currentDraft.classes.filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType));
-      
+
       let currentLink = currentConfig.prestigeSpellLinks?.arcane_trickster;
       if (arcaneOptions.length === 1 && currentLink !== arcaneOptions[0].classType) {
         updateLevelConfig(currentLevelIndex, 'prestigeSpellLinks', {
@@ -101,6 +103,19 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
 
   const baseClasses = CLASSES_LIST.filter(c => !c.isPrestige);
   const prestigeClasses = CLASSES_LIST.filter(c => c.isPrestige);
+
+  // Unified filtered class list for wizard class picker
+  const filteredWizardClasses = CLASSES_LIST.filter(c => {
+    if (sourceTab === 'prestige' && !c.isPrestige) return false;
+    if (sourceTab === 'phb' && (c.isPrestige || (c as any).source !== 'phb')) return false;
+    if (sourceTab === 'phb2' && (c.isPrestige || (c as any).source !== 'phb2')) return false;
+    if (sourceTab === 'ca' && (c.isPrestige || (c as any).source !== 'ca')) return false;
+    if (classSearch.trim()) {
+      const q = classSearch.toLowerCase();
+      return c.name.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q);
+    }
+    return true;
+  });
 
   const handleClassSelect = (classKey: string) => {
     updateLevelConfig(currentLevelIndex, 'classType', classKey);
@@ -145,7 +160,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', textAlign: 'left', marginTop: '10px' }}>
       {/* Level Timeline Bar */}
-      <div 
+      <div
         style={{
           display: 'flex',
           gap: '4px',
@@ -163,7 +178,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
             .split('_')
             .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ') : '?');
-          
+
           return (
             <div
               key={idx}
@@ -195,75 +210,100 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
           <h4 style={{ color: 'var(--red)', margin: '0 0 4px 0', fontSize: '14px', borderBottom: '0.5px solid var(--pb)', paddingBottom: '3px' }}>
             Level {currentLevelIndex + 1}: Class & HP
           </h4>
-          
+
+          {/* Source-Tabs + Suchfeld */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>Base Classes</label>
-            <select
-              value={baseClasses.some(b => b.key === currentConfig.classType) ? currentConfig.classType : ''}
-              onChange={(e) => handleClassSelect(e.target.value)}
-              className="cinput"
-              style={{ width: '100%', fontSize: '11.5px', height: '28px', padding: '0 4px', cursor: 'pointer' }}
-            >
-              <option value="" disabled>-- Select Base Class --</option>
-              {baseClasses.map(c => (
-                <option key={c.key} value={c.key}>
-                  {c.name} (d{c.hd})
-                </option>
+            <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+              {(['all', 'phb', 'phb2', 'ca', 'prestige'] as const).map(tab => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setSourceTab(tab)}
+                  style={{
+                    fontSize: '10px', padding: '2px 8px', borderRadius: '3px', cursor: 'pointer',
+                    border: '1px solid var(--pb)',
+                    fontFamily: "'Crimson Text', serif",
+                    background: sourceTab === tab ? 'var(--red)' : 'rgba(139,26,26,0.06)',
+                    color: sourceTab === tab ? '#fff' : 'var(--inkm)',
+                    fontWeight: sourceTab === tab ? 700 : 400,
+                    transition: 'all 0.15s'
+                  }}
+                >
+                  {tab === 'all' ? 'Alle' : tab === 'phb' ? 'Core' : tab === 'phb2' ? 'PHB2' : tab === 'ca' ? 'C.Adv' : 'Prestige'}
+                </button>
               ))}
-            </select>
+            </div>
+            <input
+              type="text"
+              placeholder="Klasse suchen..."
+              value={classSearch}
+              onChange={e => setClassSearch(e.target.value)}
+              className="cinput"
+              style={{ width: '100%', fontSize: '11px', height: '26px', padding: '0 8px' }}
+            />
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '6px' }}>
-            <label style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>Prestige Classes</label>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              {prestigeClasses.map(c => {
-                const isSelected = currentConfig.classType === c.key;
-                const validation = prevDraft ? validatePrestigeClassPrereqs(prevDraft.draftPC, c.key) : { success: false, metDetails: [] };
-                const isAvailable = validation.success;
-                
-                return (
-                  <button
-                    key={c.key}
-                    type="button"
-                    onClick={() => {
-                      if (isAvailable) {
-                        handleClassSelect(c.key);
-                      } else {
-                        handleLockedClassClick(c);
-                      }
-                    }}
-                    style={{
-                      width: '100%',
-                      padding: '8px 10px',
-                      borderRadius: '4px',
-                      border: isSelected ? '1.5px solid var(--red)' : (isAvailable ? '1px solid var(--pb)' : '1px dashed rgba(0,0,0,0.2)'),
-                      background: isSelected ? 'rgba(139, 26, 26, 0.08)' : (isAvailable ? 'rgba(244, 232, 193, 0.15)' : 'rgba(240,240,240,0.4)'),
-                      color: isSelected ? 'var(--red)' : (isAvailable ? 'var(--ink)' : 'rgba(0,0,0,0.4)'),
-                      fontWeight: isSelected ? 'bold' : 'normal',
-                      fontSize: '11px',
-                      cursor: isAvailable ? 'pointer' : 'help',
-                      textAlign: 'left',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      transition: 'all 0.2s'
-                    }}
-                  >
-                    <span>{c.name} (d{c.hd})</span>
-                    <span style={{ fontSize: '9.5px', opacity: 0.8 }}>
-                      {isSelected ? '🎯 Selected' : (isAvailable ? '🔓 Available' : '🔒 Locked')}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+          {/* Klassen-Liste */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '280px', overflowY: 'auto' }}>
+            {filteredWizardClasses.map(c => {
+              const isSelected = currentConfig.classType === c.key;
+              const isPrestige = c.isPrestige;
+              const validation = prevDraft ? validatePrestigeClassPrereqs(prevDraft.draftPC, c.key) : { success: !isPrestige, metDetails: [] };
+              const isAvailable = !isPrestige || validation.success;
+              const srcBadge = (c as any).source && (c as any).source !== 'phb' ? ` [${(c as any).source.toUpperCase()}]` : '';
+
+              return (
+                <button
+                  key={c.key}
+                  type="button"
+                  onClick={() => {
+                    if (isPrestige && !isAvailable) {
+                      handleLockedClassClick(c);
+                    } else {
+                      handleClassSelect(c.key);
+                    }
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '7px 10px',
+                    borderRadius: '4px',
+                    fontFamily: "'Crimson Text', serif",
+                    border: isSelected
+                      ? '1.5px solid var(--red)'
+                      : (isPrestige && !isAvailable ? '1px dashed rgba(0,0,0,0.2)' : '1px solid var(--pb)'),
+                    background: isSelected
+                      ? 'rgba(139, 26, 26, 0.08)'
+                      : (isPrestige && !isAvailable ? 'rgba(240,240,240,0.4)' : 'rgba(244, 232, 193, 0.15)'),
+                    color: isSelected ? 'var(--red)' : (isPrestige && !isAvailable ? 'rgba(0,0,0,0.4)' : 'var(--ink)'),
+                    fontWeight: isSelected ? 'bold' : 'normal',
+                    fontSize: '11px',
+                    cursor: (isPrestige && !isAvailable) ? 'help' : 'pointer',
+                    textAlign: 'left',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    transition: 'all 0.2s'
+                  }}
+                >
+                  <span style={{ fontFamily: "'IM Fell English SC', serif" }}>{c.name}{srcBadge}</span>
+                  <span style={{ fontSize: '9.5px', opacity: 0.8, fontFamily: "'Crimson Text', serif" }}>
+                    {isSelected ? '🎯 Selected' : (isPrestige ? (isAvailable ? '🔓 Available' : '🔒 Locked') : `d${c.hd}`)}
+                  </span>
+                </button>
+              );
+            })}
+            {filteredWizardClasses.length === 0 && (
+              <div style={{ fontSize: '11px', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", fontStyle: 'italic', textAlign: 'center', padding: '10px 0' }}>
+                Keine Klassen gefunden.
+              </div>
+            )}
           </div>
 
           {/* Linked Spellcaster selection */}
           {currentConfig.classType === 'mystic_theurge' && currentDraft && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '10px', padding: '10px', border: '1px solid var(--pb)', borderRadius: '4px', background: 'rgba(200, 169, 110, 0.05)' }}>
               <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>✦ Mystic Theurge Spell Linking</strong>
-              
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <label style={{ fontSize: '10px', fontWeight: 'bold' }}>Arcane Class (+1 Caster Level)</label>
                 <select
@@ -315,7 +355,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
           {currentConfig.classType === 'arcane_trickster' && currentDraft && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '10px', padding: '10px', border: '1px solid var(--pb)', borderRadius: '4px', background: 'rgba(200, 169, 110, 0.05)' }}>
               <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>✦ Arcane Trickster Spell Linking</strong>
-              
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <label style={{ fontSize: '10px', fontWeight: 'bold' }}>Arcane Class (+1 Caster Level)</label>
                 <select
@@ -361,8 +401,8 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                   style={{ width: '80px', padding: '5px', fontSize: '13px', textAlign: 'center' }}
                 />
                 <span style={{ fontSize: '11px', color: 'var(--inkl)', fontStyle: 'italic' }}>
-                  {currentLevelIndex === 0 
-                    ? 'Maximum value pre-selected' 
+                  {currentLevelIndex === 0
+                    ? 'Maximum value pre-selected'
                     : `Allowed: 1 to ${getClassHitDie(currentConfig.classType)}`}
                 </span>
               </div>
@@ -392,10 +432,10 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                   const currentClass = currentConfig.classType;
                   const isKey = currentClass ? CLASS_KEY_ATTRIBUTES[currentClass]?.includes(opt.key) : false;
                   return (
-                    <option 
-                      key={opt.key} 
+                    <option
+                      key={opt.key}
                       value={opt.key}
-                      style={{ 
+                      style={{
                         color: isKey ? 'green' : 'inherit',
                         fontWeight: isKey ? 'bold' : 'normal'
                       }}
@@ -445,7 +485,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                   const isActive = featSelectSlotIndex === slotIdx;
 
                   return (
-                    <div 
+                    <div
                       key={slotIdx}
                       onClick={() => {
                         if (!isPreFilled) {
@@ -455,10 +495,10 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                       style={{
                         padding: '6px 8px',
                         background: isActive ? 'rgba(139, 26, 26, 0.05)' : 'rgba(244, 232, 193, 0.25)',
-                        border: isActive 
-                          ? '1.5px solid var(--red)' 
-                          : selectedFeat 
-                            ? '1.5px solid #2e7d32' 
+                        border: isActive
+                          ? '1.5px solid var(--red)'
+                          : selectedFeat
+                            ? '1.5px solid #2e7d32'
                             : '1.5px solid var(--pb)',
                         borderRadius: '3px',
                         display: 'flex',

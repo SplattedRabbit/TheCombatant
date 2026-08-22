@@ -6,6 +6,7 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v4.5.0** | Release | 22.08.2026 | Scaled Compendium, PHB2/CA/CS Base & Prestige Classes, Dynamic Class Picker |
 | **v4.2.0** | Release | 21.08.2026 | Prestige Classes Refactoring & Anima Construct Race Integration |
 | **v4.1.0** | Release | 17.06.2026 | Architecture Modularization & Token-Optimized Testing |
 | **v4.0.0** | Release | 14.06.2026 | Migration Complete & Tablet-Deployable (Offline & PWA) |
@@ -73,6 +74,31 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 | **v1.2.0** | Release | 31.05.2026, 13:00 | 2-Spalten-Seitenlayout & Verteidigungs-Zusammenlegung |
 | **v1.1.0** | Release | 31.05.2026, 11:30 | HP-Tracker Redesign & Kampf-Controller-Widget |
 | **v1.0.0** | Release | Vorhistorisch | Ur-Version (DM-Screen, Initiative-Leiste, simple HP-Felder) |
+
+### v4.5.0 — Scaled Compendium, PHB2/CA/CS Base & Prestige Classes & Interactive Class Picker (Release v4.5.0)
+
+* **📚 Regelbuch-Erweiterung (PHB2, Complete Adventurer & Complete Scoundrel)**:
+  - **Umfangreiche Zauber- und Talente-Datenbank**: Vollständige Bereitstellung aller relevanten Zauber und Talente aus *Player's Handbook II*, *Complete Adventurer* und *Complete Scoundrel*.
+  - **Erweiterte Basisklassen**:
+    - **PHB2**: Duskblade, Beguiler, Knight, Dragon Shaman
+    - **Complete Adventurer**: Ninja, Scout, Spellthief
+  - **Zauberslot-Tabellen & Caster-Progression**:
+    - *Duskblade* (vorbereitender arkaner Zauberwirker bis Grad 5, Int-basiert).
+    - *Beguiler* (spontaner arkaner Zauberwirker bis Grad 5 mit fester Zauberliste, Int-basiert).
+  - **Integration in Zauberbuch & Vorbereitung**: Volle Unterstützung für Vorbereitung, spontane Zauberslots, Zauberlisten-Filter und Grad-Berechnungen für die neuen Caster-Klassen in `PCSpellCompendium`, `PCSpellPreparation` und `PCSpellbookTab`.
+
+* **🎭 Neuer interaktiver Klassen-Picker & Multiclassing-Manager**:
+  - **Kategorie-Tabs & Live-Suche**: Schnelles Filtern nach Klassen-Herkunft (*Alle*, *Core PHB*, *PHB2 / CA*, *Prestige*) sowie inkrementelle Volltextsuche im Klassen-Manager.
+  - **Auswählbarkeit gesperrter Klassen**: Gesperrte Prestigeklassen im Dropdown sind nun auswählbar. Beim Klick auf **Add** (bzw. beim Wechseln) wird ein detaillierter Validierungsdialog geöffnet, der exakt aufschlüsselt, welche Voraussetzungen (Attribute, Fertigkeitsränge, Talente, Sonderbedingungen) noch fehlen oder ob eine Spielleiter-Bestätigung erforderlich ist.
+  - **Visuelle Status-Indikatoren**: Dropdown-Einträge zeigen direkt anhand von `🔒` (Gesperrt) und `⚠` (Bestätigung erforderlich) den aktuellen Verfügbarkeitsstatus.
+
+* **🧙 Charaktererstellung & Stufenaufstieg (Wizard Step 3)**:
+  - **Quellen-Kategorisierung**: Filterreiter für *PHB*, *PHB2*, *CA* und *Prestige* im Charaktererstellungs- und Levelup-Assistenten.
+  - **Regelkonforme Fertigkeitspunkte & Trefferwürfel**: Hinterlegung aller Basisfähigkeiten, Trefferwürfel (HD) und Attributsempfehlungen für alle neuen Klassen.
+
+* **🔧 Bugfixes & Code-Bereinigung**:
+  - **Klassenlisten-Rendering**: Behebung eines JSX-Syntaxfehlers beim Rendern der Klassenliste im Charakterbogen.
+  - **Header-Lokalisierung**: Vollständige Anzeige der neuen Klassennamen im Charakterbogen-Header.
 
 ### v4.2.0 — Prestige Classes Refactoring & Anima Construct Race Integration (Release v4.2.0)
 

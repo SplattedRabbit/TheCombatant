@@ -31,8 +31,11 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
   const [selectedTemplate, setSelectedTemplate] = useState('');
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
-  const activeCasters = hasClasses ? pc.classes.filter((c: any) => ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger'].includes(c.classType)) : [];
-  const hasPrepared = activeCasters.some((c: any) => ['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType));
+  const activeCasters = hasClasses ? pc.classes.filter((c: any) => [
+    'cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger',
+    'duskblade', 'beguiler'
+  ].includes(c.classType)) : [];
+  const hasPrepared = activeCasters.some((c: any) => ['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'duskblade'].includes(c.classType));
 
   if (!hasPrepared) {
     return (

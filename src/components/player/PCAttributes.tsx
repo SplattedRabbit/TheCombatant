@@ -26,6 +26,9 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [newClassKey, setNewClassKey] = useState('fighter');
   const [newClassLvl, setNewClassLvl] = useState(1);
+  const [classFilter, setClassFilter] = useState<'all' | 'phb' | 'expansion' | 'prestige'>('all');
+  const [classSearch, setClassSearch] = useState('');
+  const prevFilterRef = React.useRef({ filter: 'all', search: '' });
 
   const classesCount = Array.isArray(pc.classes) ? pc.classes.length : 0;
 
@@ -251,6 +254,37 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
 
   const availableClasses = (CombatRules.CLASSES as any[]) || [];
 
+  // Helferfunktion: Kategorie-Label einer Klasse
+  const getClassCategory = (cls: any): 'phb' | 'expansion' | 'prestige' => {
+    if (cls.isPrestige) return 'prestige';
+    if (cls.source === 'phb2' || cls.source === 'ca') return 'expansion';
+    return 'phb';
+  };
+
+  // Gefilterte Klassen für das + Class Formular
+  const filteredAddClasses = availableClasses.filter((cls: any) => {
+    if (cls.key === 'custom') return false;
+    const cat = getClassCategory(cls);
+    if (classFilter !== 'all' && cat !== classFilter) return false;
+    if (classSearch.trim()) {
+      const q = classSearch.toLowerCase();
+      return (cls.nameEn || '').toLowerCase().includes(q) || (cls.nameDe || '').toLowerCase().includes(q);
+    }
+    return true;
+  });
+
+  // Reset newClassKey when filter/search changes and current key is no longer in the list
+  React.useEffect(() => {
+    const prev = prevFilterRef.current;
+    if (prev.filter !== classFilter || prev.search !== classSearch) {
+      prevFilterRef.current = { filter: classFilter, search: classSearch };
+      const stillValid = filteredAddClasses.some((c: any) => c.key === newClassKey);
+      if (!stillValid && filteredAddClasses.length > 0) {
+        setNewClassKey(filteredAddClasses[0].key);
+      }
+    }
+  }, [classFilter, classSearch, filteredAddClasses, newClassKey]);
+
   return (
     <BaseCard title="✨ Attributes & BAB">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
@@ -305,7 +339,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
           
           {/* Klassenliste */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-            {classesCount > 0 ? (
+            {classesCount > 0 && (
               pc.classes.map((c: any, idx: number) => (
                 <div
                   key={idx}
@@ -347,23 +381,35 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                     }}
                     style={{ fontSize: '8px', height: '13px', padding: 0, flex: 1, border: 'none', background: 'transparent', fontWeight: 600, color: 'var(--inkm)', outline: 'none', cursor: 'pointer' }}
                   >
-                    {availableClasses
-                      .filter((x: any) => x.key !== 'custom')
-                      .map((cls: any) => {
-                        const isAlreadyChosen = pc.classes?.some((x: any) => x.classType === cls.key);
-                        const validation = CombatRules.validatePrestigeClassPrereqs(pc, cls.key);
-                        const isAvailable = !cls.isPrestige || isAlreadyChosen || validation.success;
-                        // Only hard-disable the <option> when locked for reasons other than the
-                        // specialText confirmation gate — a native disabled option can never fire
-                        // onChange, which would make the confirm-dialog flow unreachable.
-                        const hardLocked = !isAvailable && !CombatRules.isOnlySpecialTextUnmet(validation);
-                        const suffix = hardLocked ? ' (Locked)' : (!isAvailable ? ' (Confirm Required)' : '');
-                        return (
-                          <option key={cls.key} value={cls.key} disabled={hardLocked}>
-                            {cls.nameEn || cls.nameDe}{suffix}
-                          </option>
-                        );
-                      })}
+                    {/* Core PHB */}
+                    <optgroup label="── Core (PHB) ──">
+                      {availableClasses
+                        .filter((x: any) => !x.isPrestige && (x.source === 'phb' || !x.source) && x.key !== 'custom')
+                        .map((cls: any) => {
+                          return (<option key={cls.key} value={cls.key}>{cls.nameEn || cls.nameDe}</option>);
+                        })}
+                    </optgroup>
+                    {/* Erweiterungen (PHB2 + CA) */}
+                    <optgroup label="── Erweiterungen ──">
+                      {availableClasses
+                        .filter((x: any) => !x.isPrestige && (x.source === 'phb2' || x.source === 'ca'))
+                        .map((cls: any) => {
+                          return (<option key={cls.key} value={cls.key}>{cls.nameEn || cls.nameDe} [{cls.source?.toUpperCase()}]</option>);
+                        })}
+                    </optgroup>
+                    {/* Prestigeklassen */}
+                    <optgroup label="── Prestige ──">
+                      {availableClasses
+                        .filter((x: any) => x.isPrestige)
+                        .map((cls: any) => {
+                          const isAlreadyChosen = pc.classes?.some((x: any) => x.classType === cls.key);
+                          const validation = CombatRules.validatePrestigeClassPrereqs(pc, cls.key);
+                          const isAvailable = isAlreadyChosen || validation.success;
+                          const hardLocked = !isAvailable && !CombatRules.isOnlySpecialTextUnmet(validation);
+                          const suffix = hardLocked ? ' (Locked)' : (!isAvailable ? ' (Confirm Required)' : '');
+                          return (<option key={cls.key} value={cls.key}>{cls.nameEn || cls.nameDe}{suffix}</option>);
+                        })}
+                    </optgroup>
                   </select>
                   
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -390,16 +436,40 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                   </div>
                 </div>
               ))
-            ) : (
-              <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '2px 0' }}>
-                Custom Levels / Custom
-              </div>
             )}
           </div>
           
           {/* Add Class Formular */}
           {showAddForm && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', background: 'rgba(200,169,110,0.15)', border: '0.5px solid var(--pb)', borderRadius: '1.5px', padding: '3px', marginTop: '2px' }}>
+              {/* Kategorie-Tabs */}
+              <div style={{ display: 'flex', gap: '2px', flexWrap: 'wrap' }}>
+                {(['all', 'phb', 'expansion', 'prestige'] as const).map(tab => (
+                  <button
+                    key={tab}
+                    onClick={() => setClassFilter(tab)}
+                    style={{
+                      fontSize: '6.5px', padding: '1px 4px', lineHeight: 1.3, cursor: 'pointer',
+                      border: '0.5px solid var(--pb)', borderRadius: '1px',
+                      fontFamily: "'Crimson Text', serif",
+                      background: classFilter === tab ? 'var(--red)' : 'rgba(139,26,26,0.06)',
+                      color: classFilter === tab ? '#fff' : 'var(--inkm)',
+                      fontWeight: classFilter === tab ? 700 : 400,
+                    }}
+                  >
+                    {tab === 'all' ? 'Alle' : tab === 'phb' ? 'Core PHB' : tab === 'expansion' ? 'PHB2 / CA' : 'Prestige'}
+                  </button>
+                ))}
+              </div>
+              {/* Suchfeld */}
+              <input
+                type="text"
+                placeholder="Klasse suchen..."
+                value={classSearch}
+                onChange={(e) => setClassSearch(e.target.value)}
+                className="cinput"
+                style={{ fontSize: '7.5px', height: '14px', padding: '0 4px', width: '100%' }}
+              />
               <div style={{ display: 'flex', gap: '3px' }}>
                 <select
                   value={newClassKey}
@@ -407,20 +477,21 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                   className="cinput"
                   style={{ fontSize: '7.5px', height: '14px', padding: '0 2px', flex: 1, cursor: 'pointer' }}
                 >
-                  {availableClasses
-                    .filter((cls: any) => cls.key !== 'custom')
-                    .map((cls: any) => {
-                      const isAlreadyChosen = pc.classes?.some((x: any) => x.classType === cls.key);
-                      const validation = CombatRules.validatePrestigeClassPrereqs(pc, cls.key);
-                      const isAvailable = !cls.isPrestige || isAlreadyChosen || validation.success;
-                      const hardLocked = !isAvailable && !CombatRules.isOnlySpecialTextUnmet(validation);
-                      const suffix = hardLocked ? ' (Locked)' : (!isAvailable ? ' (Confirm Required)' : '');
-                      return (
-                        <option key={cls.key} value={cls.key} disabled={hardLocked}>
-                          {cls.nameEn || cls.nameDe}{suffix}
-                        </option>
-                      );
-                    })}
+                  {filteredAddClasses.length === 0 ? (
+                    <option value="" disabled>No classes match</option>
+                  ) : filteredAddClasses.map((cls: any) => {
+                    const isAlreadyChosen = pc.classes?.some((x: any) => x.classType === cls.key);
+                    const validation = CombatRules.validatePrestigeClassPrereqs(pc, cls.key);
+                    const isAvailable = !cls.isPrestige || isAlreadyChosen || validation.success;
+                    const hardLocked = !isAvailable && !CombatRules.isOnlySpecialTextUnmet(validation);
+                    const suffix = hardLocked ? ' 🔒' : (!isAvailable ? ' ⚠' : '');
+                    const srcBadge = cls.source && cls.source !== 'phb' ? ` [${cls.source.toUpperCase()}]` : '';
+                    return (
+                      <option key={cls.key} value={cls.key}>
+                        {cls.nameEn || cls.nameDe}{srcBadge}{suffix}
+                      </option>
+                    );
+                  })}
                 </select>
                 <select
                   value={newClassLvl}
@@ -429,15 +500,13 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                   style={{ fontSize: '7.5px', height: '14px', padding: 0, width: '28px', textAlign: 'center', cursor: 'pointer' }}
                 >
                   {Array.from({ length: 20 }, (_, i) => i + 1).map((lvl) => (
-                    <option key={lvl} value={lvl}>
-                      {lvl}
-                    </option>
+                    <option key={lvl} value={lvl}>{lvl}</option>
                   ))}
                 </select>
               </div>
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '2px' }}>
                 <button className="btn btn-p" onClick={handleAddClass} style={{ fontSize: '7px', padding: '1px 5px' }}>Add</button>
-                <button className="btn" onClick={() => setShowAddForm(false)} style={{ fontSize: '7px', padding: '1px 5px' }}>✕</button>
+                <button className="btn" onClick={() => { setShowAddForm(false); setClassSearch(''); setClassFilter('all'); }} style={{ fontSize: '7px', padding: '1px 5px' }}>✕</button>
               </div>
             </div>
           )}
