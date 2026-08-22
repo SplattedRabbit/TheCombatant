@@ -34,6 +34,8 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
   const [tricksSearchQuery, setTricksSearchQuery] = useState('');
   const [tricksFilterCategory, setTricksFilterCategory] = useState<string>('all');
   const [selectedTrick, setSelectedTrick] = useState<any>(null);
+  const [focusedRanksKey, setFocusedRanksKey] = useState<string | null>(null);
+  const [focusedRanksVal, setFocusedRanksVal] = useState<string>('');
 
   // Format Mod helper
   const formatMod = (val: number) => (val >= 0 ? `+${val}` : `${val}`);
@@ -469,8 +471,25 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                             step="1"
                             min="0"
                             max={Math.floor(maxRanks)}
-                            value={ranks}
-                            onChange={(e) => handleRanksChange(key, e.target.value)}
+                            value={focusedRanksKey === key ? focusedRanksVal : ranks}
+                            onFocus={() => {
+                              setFocusedRanksKey(key);
+                              setFocusedRanksVal(ranks === 0 ? '' : String(ranks));
+                            }}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              setFocusedRanksVal(val);
+                              if (val !== '') {
+                                handleRanksChange(key, val);
+                              }
+                            }}
+                            onBlur={() => {
+                              if (focusedRanksVal === '' || isNaN(parseFloat(focusedRanksVal))) {
+                                handleRanksChange(key, '0');
+                              }
+                              setFocusedRanksKey(null);
+                              setFocusedRanksVal('');
+                            }}
                             style={{
                               width: '22px',
                               fontSize: '8px',
