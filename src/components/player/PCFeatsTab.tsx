@@ -386,10 +386,10 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                                      (getBonusFeatClass(feat) === 'wizard' && hasWizard) ||
                                      (getBonusFeatClass(feat) === 'monk' && hasMonk));
 
-                const borderColor = isAutomatic ? 'var(--pb)' : (isClassBonus ? '#2a6a2a' : 'var(--pb)');
-                const borderLeftColor = isAutomatic ? 'var(--pb)' : (isClassBonus ? '#2a6a2a' : 'var(--pb)');
-                const backgroundVal = isAutomatic ? 'rgba(200, 169, 110, 0.04)' : (isClassBonus ? 'rgba(42, 106, 42, 0.03)' : 'transparent');
-                const hoverBackgroundVal = isAutomatic ? 'rgba(200, 169, 110, 0.08)' : (isClassBonus ? 'rgba(42, 106, 42, 0.07)' : 'rgba(200, 169, 110, 0.05)');
+                const borderStyle = '0.5px solid var(--pb)';
+                const borderLeftStyle = isAutomatic ? '3px solid #7c5a2b' : '3.5px solid var(--red)';
+                const backgroundVal = isAutomatic ? 'rgba(200, 169, 110, 0.04)' : 'rgba(139, 26, 26, 0.035)';
+                const hoverBackgroundVal = isAutomatic ? 'rgba(200, 169, 110, 0.08)' : 'rgba(139, 26, 26, 0.07)';
 
                 const prereqsResult = checkPrerequisites(feat, pc);
 
@@ -410,8 +410,8 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                       minWidth: 0,
                       boxSizing: 'border-box',
                       transition: 'transform 0.15s, background-color 0.15s',
-                      border: isAutomatic || isClassBonus ? `1.2px solid ${borderColor}` : '0.5px solid var(--pb)',
-                      borderLeft: isAutomatic || isClassBonus ? `3.5px solid ${borderLeftColor}` : '0.5px solid var(--pb)',
+                      border: borderStyle,
+                      borderLeft: borderLeftStyle,
                       background: backgroundVal,
                     }}
                     onMouseOver={(e) => {
@@ -434,6 +434,11 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                         {isAutomatic && (
                           <span style={{ fontSize: '7px', color: '#7c5a2b', background: 'rgba(200, 169, 110, 0.15)', border: '0.5px solid var(--pb)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
                             {featInst.source || 'Class Feat'}
+                          </span>
+                        )}
+                        {isClassBonus && (
+                          <span style={{ fontSize: '7px', color: '#3d6137', background: 'rgba(70, 110, 65, 0.09)', border: '0.5px solid rgba(70, 110, 65, 0.25)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                            Bonus Feat
                           </span>
                         )}
                         <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>

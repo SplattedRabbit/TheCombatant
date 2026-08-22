@@ -89,15 +89,19 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
       { combat: 'Combat Feat', metamagic: 'Metamagic Feat', item_creation: 'Item Creation Feat', general: 'General Feat' } as Record<string, string>
     )[feat.category] || 'General Feat';
 
-  // Evaluate prerequisites
-  const { met, details: prereqsDetails } = checkPrerequisites(feat, pc);
+  const currentPC = (CombatState && typeof CombatState.getActivePC === 'function' ? CombatState.getActivePC() : null) || pc;
+  const activeFeatsList = currentPC.feats || [];
 
-  const autoFeats = typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats() : [];
+  // Evaluate prerequisites
+  const { met, details: prereqsDetails } = checkPrerequisites(feat, currentPC);
+
+  const autoFeats = typeof currentPC.getAutomaticFeats === 'function' ? currentPC.getAutomaticFeats() : [];
   const isAutomatic = autoFeats.some((af: any) => af.id === feat.id);
+  const isActuallyLearned = isLearned || activeFeatsList.some((f: any) => f.id === feat.id) || isAutomatic;
 
   // Stackability & Options info
   const isStackable = feat.specialRaw && feat.specialRaw.toLowerCase().includes('multiple times');
-  const learnedInstances = (pc.feats || []).filter((f: any) => f.id === feat.id);
+  const learnedInstances = activeFeatsList.filter((f: any) => f.id === feat.id);
 
   // Generate options list if option dropdown is needed
   let optionsList: string[] = [];
@@ -377,7 +381,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
 
         {/* Action Footer */}
         <div style={{ marginTop: '2px' }}>
-          {!isLearned || isStackable ? (
+          {!isActuallyLearned || isStackable ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
               <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.3px' }}>
                 {isLearnBlocked ? '🔒 Prerequisites not met!' : 'Do you want to learn this feat?'}
@@ -423,38 +427,16 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                 </button>
               </div>
             </div>
-          ) : isAutomatic ? (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '100%', textAlign: 'center' }}>
-              <div style={{ fontSize: '11px', color: '#7c5a2b', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>
-                Class Feat
-              </div>
-              <p style={{ fontSize: '10px', color: 'var(--inkm)', margin: '0 0 4px 0', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, maxWidth: '280px' }}>
-                This feat is automatically granted as a class or racial feature and cannot be unlearned.
-              </p>
-              <button
-                onClick={onClose}
-                className="btn btn-close-feat"
-                style={{
-                  fontFamily: "'IM Fell English SC', serif",
-                  fontSize: '9px',
-                  padding: '4px 22px',
-                  cursor: 'pointer',
-                  background: 'transparent',
-                  border: '1px solid var(--pb)',
-                  borderRadius: '2px',
-                  color: 'var(--inkl)',
-                  transition: 'background-color 0.15s, color 0.15s',
-                  outline: 'none'
-                }}
-              >
-                Close
-              </button>
-            </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
               <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.3px' }}>
                 Do you want to unlearn this feat?
               </div>
+              {isAutomatic && (
+                <p style={{ fontSize: '8.5px', color: 'var(--inkm)', margin: '0 0 4px 0', fontFamily: "'Crimson Text', serif", lineHeight: 1.25, maxWidth: '320px', textAlign: 'center' }}>
+                  Note: This is a class or racial feat. Unlearning will disable it for this character.
+                </p>
+              )}
               <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', width: '100%' }}>
                 <button
                   onClick={handleUnlearn}
