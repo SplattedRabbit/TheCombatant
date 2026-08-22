@@ -108,11 +108,6 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
     CombatState.unequipPCItem(idx);
   };
 
-  const handleSwapSlot = (slotKey: string) => {
-    setSlotFilter(slotKey === 'ring1' || slotKey === 'ring2' ? 'rings' : slotKey);
-    setRightPanelMode('backpack');
-  };
-
   const handleEmptySlotClick = (slotKey: string) => {
     setSlotFilter(slotKey === 'ring1' || slotKey === 'ring2' ? 'rings' : slotKey);
     setRightPanelMode('compendium');
@@ -135,13 +130,13 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   ];
 
   return (
-    <div className="armory-layout-grid">
+    <div className="armory-layout-grid" style={{ marginBottom: '16px' }}>
       
-      {/* === LEFT COLUMN: Paperdoll / Equipped Slots in BaseCard === */}
+      {/* === LEFT COLUMN: Paperdoll / Equipped Slots === */}
       <BaseCard
         title={`🧍 Equipped Magic Items (${Object.keys(equippedMap).length} / 12)`}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', paddingBottom: '4px' }}>
           
           {/* 3-Column Compact Grid */}
           <div className="paperdoll-grid">
@@ -158,7 +153,6 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                     item={equippedEntry.item}
                     itemIdx={equippedEntry.idx}
                     onUnequip={() => handleUnequipSlot(equippedEntry.idx)}
-                    onSwap={() => handleSwapSlot(slotKey)}
                     onEdit={() => setEditingItemData({ item: equippedEntry.item, itemIdx: equippedEntry.idx })}
                   />
                 );
@@ -177,32 +171,32 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
 
           {/* Slotless & Wondrous Equipped Items */}
           {slotlessEquipped.length > 0 && (
-            <div style={{ marginTop: '4px', borderTop: '0.5px solid var(--pb)', paddingTop: '4px' }}>
-              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '3px' }}>
+            <div style={{ marginTop: '4px', borderTop: '0.5px solid var(--pb)', paddingTop: '6px' }}>
+              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '4px' }}>
                 🎒 Slotless & Wondrous Items ({slotlessEquipped.length})
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 {slotlessEquipped.map(({ item, idx }) => (
                   <div
                     key={item.id || idx}
                     style={{
-                      background: 'rgba(253, 246, 226, 0.6)',
+                      background: 'rgba(253, 246, 226, 0.65)',
                       border: '1px solid var(--pb)',
                       borderLeft: '3px solid var(--red)',
                       borderRadius: '3px',
-                      padding: '3px 6px',
+                      padding: '4px 8px',
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center'
                     }}
                   >
                     <div>
-                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
                         {item.name}
                       </span>
                       {item.description && (
-                        <span style={{ fontSize: '8.5px', color: 'var(--inkm)', marginLeft: '4px', fontFamily: "'Crimson Text', serif" }}>
-                          {item.description.length > 40 ? item.description.substring(0, 40) + '...' : item.description}
+                        <span style={{ fontSize: '8.5px', color: 'var(--inkm)', marginLeft: '6px', fontFamily: "'Crimson Text', serif" }}>
+                          {item.description.length > 45 ? item.description.substring(0, 45) + '...' : item.description}
                         </span>
                       )}
                     </div>
@@ -210,7 +204,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                       type="button"
                       onClick={() => handleUnequipSlot(idx)}
                       className="xbtn"
-                      style={{ fontSize: '7.5px', padding: '0 4px' }}
+                      style={{ fontSize: '8px', padding: '1px 5px' }}
                       title="Unequip"
                     >
                       ✕
@@ -224,22 +218,25 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
         </div>
       </BaseCard>
 
-      {/* === RIGHT COLUMN: Armory Stash & Compendium in BaseCard === */}
+      {/* === RIGHT COLUMN: Armory Stash & Compendium === */}
       <BaseCard
         title="🎒 Armory Stash & Compendium"
         headerRight={
-          <div style={{ display: 'flex', gap: '4px' }}>
+          <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
             <button
               type="button"
               onClick={() => setRightPanelMode('backpack')}
               className="btn"
               style={{
-                fontSize: '8.5px',
-                padding: '1px 6px',
+                fontSize: '9px',
+                padding: '2px 8px',
                 fontFamily: "'IM Fell English SC', serif",
-                background: rightPanelMode === 'backpack' ? 'var(--pb)' : 'transparent',
-                color: rightPanelMode === 'backpack' ? 'var(--red)' : 'var(--ink)',
-                fontWeight: rightPanelMode === 'backpack' ? 'bold' : 'normal'
+                background: rightPanelMode === 'backpack' ? 'var(--pb, #c8a96e)' : 'rgba(253, 246, 226, 0.6)',
+                borderColor: rightPanelMode === 'backpack' ? 'var(--red, #8b1a1a)' : 'var(--pb, #c8a96e)',
+                color: rightPanelMode === 'backpack' ? 'var(--red, #8b1a1a)' : 'var(--ink, #1a0f00)',
+                fontWeight: rightPanelMode === 'backpack' ? 'bold' : 'normal',
+                boxShadow: rightPanelMode === 'backpack' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+                cursor: 'pointer'
               }}
             >
               🎒 Backpack ({backpackEntries.length})
@@ -249,12 +246,15 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
               onClick={() => setRightPanelMode('compendium')}
               className="btn"
               style={{
-                fontSize: '8.5px',
-                padding: '1px 6px',
+                fontSize: '9px',
+                padding: '2px 8px',
                 fontFamily: "'IM Fell English SC', serif",
-                background: rightPanelMode === 'compendium' ? 'var(--pb)' : 'transparent',
-                color: rightPanelMode === 'compendium' ? 'var(--red)' : 'var(--ink)',
-                fontWeight: rightPanelMode === 'compendium' ? 'bold' : 'normal'
+                background: rightPanelMode === 'compendium' ? 'var(--pb, #c8a96e)' : 'rgba(253, 246, 226, 0.6)',
+                borderColor: rightPanelMode === 'compendium' ? 'var(--red, #8b1a1a)' : 'var(--pb, #c8a96e)',
+                color: rightPanelMode === 'compendium' ? 'var(--red, #8b1a1a)' : 'var(--ink, #1a0f00)',
+                fontWeight: rightPanelMode === 'compendium' ? 'bold' : 'normal',
+                boxShadow: rightPanelMode === 'compendium' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+                cursor: 'pointer'
               }}
             >
               📖 Compendium
@@ -262,30 +262,30 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
           </div>
         }
       >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', paddingBottom: '4px' }}>
           
           {/* Controls Bar: Search & New Item Button */}
-          <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
             <input
               type="text"
               placeholder={rightPanelMode === 'backpack' ? 'Search backpack items...' : 'Search compendium items...'}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="cinput"
-              style={{ flex: 1, padding: '2px 6px', fontSize: '10px', height: '22px', boxSizing: 'border-box' }}
+              style={{ flex: 1, padding: '3px 7px', fontSize: '10.5px', height: '24px', boxSizing: 'border-box' }}
             />
             <button
               type="button"
               onClick={() => setEditingItemData({ defaultSlot: slotFilter !== 'all' && slotFilter !== 'rings' ? slotFilter : 'slotless' })}
               className="btn btn-p"
-              style={{ fontSize: '8.5px', padding: '2px 6px', fontFamily: "'IM Fell English SC', serif", whiteSpace: 'nowrap' }}
+              style={{ fontSize: '8.5px', padding: '2px 7px', fontFamily: "'IM Fell English SC', serif", whiteSpace: 'nowrap' }}
             >
               ➕ Custom Item
             </button>
           </div>
 
           {/* Compact Slot Filter Chips */}
-          <div style={{ display: 'flex', gap: '2px', flexWrap: 'wrap', borderBottom: '0.5px solid rgba(200, 169, 110, 0.4)', paddingBottom: '3px' }}>
+          <div style={{ display: 'flex', gap: '3px', flexWrap: 'wrap', borderBottom: '0.5px solid rgba(200, 169, 110, 0.4)', paddingBottom: '4px' }}>
             {filterChips.map(chip => (
               <button
                 key={chip.key}
@@ -293,8 +293,8 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                 onClick={() => setSlotFilter(chip.key)}
                 className="btn"
                 style={{
-                  fontSize: '7.5px',
-                  padding: '1px 4px',
+                  fontSize: '8px',
+                  padding: '1px 5px',
                   fontFamily: "'IM Fell English SC', serif",
                   background: slotFilter === chip.key ? 'rgba(139, 26, 26, 0.12)' : 'transparent',
                   borderColor: slotFilter === chip.key ? 'var(--red)' : 'var(--pb)',
@@ -310,18 +310,19 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
           {/* List Content Area */}
           <div
             style={{
-              maxHeight: '340px',
+              maxHeight: '390px',
               overflowY: 'auto',
               display: 'flex',
               flexDirection: 'column',
               gap: '4px',
-              paddingRight: '2px'
+              paddingRight: '3px',
+              paddingBottom: '6px'
             }}
           >
             {rightPanelMode === 'backpack' ? (
               /* === BACKPACK VIEW === */
               filteredBackpack.length === 0 ? (
-                <div style={{ padding: '20px 10px', textAlign: 'center', color: 'var(--inkl)', fontSize: '10px', fontStyle: 'italic' }}>
+                <div style={{ padding: '24px 10px', textAlign: 'center', color: 'var(--inkl)', fontSize: '10.5px', fontStyle: 'italic' }}>
                   Backpack is empty. Click <strong>📖 Compendium</strong> above to add items!
                 </div>
               ) : (
@@ -338,16 +339,17 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                         border: '1px solid var(--pb)',
                         borderLeft: '3px solid var(--pb)',
                         borderRadius: '3px',
-                        padding: '4px 6px',
+                        padding: '5px 7px',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '2px'
+                        gap: '2px',
+                        boxShadow: '0 1px 2px rgba(0,0,0,0.03)'
                       }}
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                          <span style={{ fontSize: '11px' }}>{slotDef.icon}</span>
-                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                          <span style={{ fontSize: '12px' }}>{slotDef.icon}</span>
+                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
                             {item.name || 'Item'}
                           </span>
                           <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.04)', padding: '0 3px', borderRadius: '2px' }}>
@@ -355,12 +357,12 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                           </span>
                         </div>
 
-                        <div style={{ display: 'flex', gap: '2px' }}>
+                        <div style={{ display: 'flex', gap: '3px' }}>
                           <button
                             type="button"
                             onClick={() => CombatState.equipPCItem(idx, item.slot)}
                             className="btn btn-p"
-                            style={{ fontSize: '7.5px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
+                            style={{ fontSize: '8px', padding: '1px 6px', fontFamily: "'IM Fell English SC', serif" }}
                           >
                             ⚡ Equip
                           </button>
@@ -368,7 +370,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                             type="button"
                             onClick={() => setEditingItemData({ item, itemIdx: idx })}
                             className="btn"
-                            style={{ fontSize: '7.5px', padding: '1px 3px' }}
+                            style={{ fontSize: '8px', padding: '1px 4px' }}
                             title="Edit"
                           >
                             ✏️
@@ -377,7 +379,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                             type="button"
                             onClick={() => CombatState.deletePCItem(idx)}
                             className="xbtn"
-                            style={{ fontSize: '7.5px', padding: '1px 3px' }}
+                            style={{ fontSize: '8px', padding: '1px 4px' }}
                             title="Delete"
                           >
                             🗑️
@@ -391,11 +393,11 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                             <span
                               key={eIdx}
                               style={{
-                                fontSize: '8px',
+                                fontSize: '8.5px',
                                 background: 'rgba(200, 169, 110, 0.18)',
                                 border: '0.5px solid var(--pb)',
                                 borderRadius: '2px',
-                                padding: '0 3px',
+                                padding: '0 4px',
                                 color: 'var(--ink)',
                                 fontWeight: 600,
                                 fontFamily: "'Crimson Text', serif"
@@ -413,7 +415,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
             ) : (
               /* === COMPENDIUM VIEW === */
               filteredCompendium.length === 0 ? (
-                <div style={{ padding: '20px 10px', textAlign: 'center', color: 'var(--inkl)', fontSize: '10px', fontStyle: 'italic' }}>
+                <div style={{ padding: '24px 10px', textAlign: 'center', color: 'var(--inkl)', fontSize: '10.5px', fontStyle: 'italic' }}>
                   No items found matching criteria.
                 </div>
               ) : (
@@ -432,16 +434,17 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                         border: '1px solid var(--pb)',
                         borderLeft: '3px solid var(--pb)',
                         borderRadius: '3px',
-                        padding: '4px 6px',
+                        padding: '5px 7px',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '2px'
+                        gap: '2px',
+                        boxShadow: '0 1px 2px rgba(0,0,0,0.03)'
                       }}
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexWrap: 'wrap' }}>
-                          <span style={{ fontSize: '11px' }}>{slotInfo.icon}</span>
-                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexWrap: 'wrap' }}>
+                          <span style={{ fontSize: '12px' }}>{slotInfo.icon}</span>
+                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                             {activePreset.name || entry.baseName}
                           </span>
                           <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.04)', padding: '0 3px', borderRadius: '2px' }}>
@@ -450,7 +453,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                         </div>
 
                         {/* Tier selection & Actions */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
                           {entry.variants.length > 1 && (
                             <div style={{ display: 'flex', gap: '2px', marginRight: '3px' }}>
                               {entry.variants.map((v: any) => (
@@ -460,9 +463,9 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                                   onClick={() => handleSelectTier(entry.id, v.key)}
                                   className="btn"
                                   style={{
-                                    fontSize: '7px',
-                                    padding: '0 3px',
-                                    height: '16px',
+                                    fontSize: '7.5px',
+                                    padding: '0 4px',
+                                    height: '17px',
                                     lineHeight: '1',
                                     background: activeKey === v.key ? 'var(--red)' : 'white',
                                     color: activeKey === v.key ? 'white' : 'var(--ink)',
@@ -480,7 +483,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                             type="button"
                             onClick={() => handleAddBackpack(activeKey)}
                             className="btn"
-                            style={{ fontSize: '7.5px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
+                            style={{ fontSize: '8px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
                             title="Add to Backpack"
                           >
                             + Stash
@@ -489,7 +492,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                             type="button"
                             onClick={() => handleAddAndEquip(activeKey)}
                             className="btn btn-p"
-                            style={{ fontSize: '7.5px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
+                            style={{ fontSize: '8px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
                             title="Add and immediately equip"
                           >
                             ⚡ Equip
@@ -503,11 +506,11 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                             <span
                               key={eIdx}
                               style={{
-                                fontSize: '8px',
+                                fontSize: '8.5px',
                                 background: 'rgba(200, 169, 110, 0.18)',
                                 border: '0.5px solid var(--pb)',
                                 borderRadius: '2px',
-                                padding: '0 3px',
+                                padding: '0 4px',
                                 color: 'var(--ink)',
                                 fontWeight: 600,
                                 fontFamily: "'Crimson Text', serif"
@@ -519,7 +522,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                         </div>
                       )}
 
-                      <div style={{ fontSize: '8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.2 }}>
+                      <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.25 }}>
                         {activePreset.description || entry.description}
                       </div>
                     </div>
