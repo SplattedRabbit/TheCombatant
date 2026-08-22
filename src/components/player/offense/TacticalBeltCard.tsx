@@ -194,59 +194,59 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
     if (name.includes('cure') || name.includes('heil') || item.healingFormula) {
       return {
         icon: '🍷',
-        liquidColor: 'linear-gradient(180deg, #ff4d4d 0%, #b30000 70%, #660000 100%)',
-        glowColor: 'rgba(255, 50, 50, 0.4)',
-        borderColor: '#e74c3c',
-        badgeColor: '#c0392b',
+        liquidColor: 'linear-gradient(180deg, #8b2c2c 0%, #6e2222 100%)',
+        glowColor: 'none',
+        borderColor: 'rgba(139, 44, 44, 0.45)',
+        badgeColor: '#6e2222',
         label: 'HEAL'
       };
     }
     if (name.includes('bull') || name.includes('bear') || name.includes('haste') || name.includes('heroism') || name.includes('bless') || name.includes('shield')) {
       return {
         icon: '🧪',
-        liquidColor: 'linear-gradient(180deg, #ffd700 0%, #d4af37 70%, #8b6508 100%)',
-        glowColor: 'rgba(212, 175, 55, 0.4)',
-        borderColor: '#c8a96e',
-        badgeColor: '#8a6d3b',
+        liquidColor: 'linear-gradient(180deg, #9c7a36 0%, #7d5f24 100%)',
+        glowColor: 'none',
+        borderColor: 'rgba(156, 122, 54, 0.45)',
+        badgeColor: '#7d5f24',
         label: 'BUFF'
       };
     }
     if (name.includes('cat') || name.includes('invis') || name.includes('mage armor') || name.includes('fly')) {
       return {
         icon: '🧪',
-        liquidColor: 'linear-gradient(180deg, #00d2ff 0%, #0077be 70%, #003366 100%)',
-        glowColor: 'rgba(0, 192, 255, 0.4)',
-        borderColor: '#3498db',
-        badgeColor: '#2980b9',
+        liquidColor: 'linear-gradient(180deg, #4a6274 0%, #364957 100%)',
+        glowColor: 'none',
+        borderColor: 'rgba(74, 98, 116, 0.45)',
+        badgeColor: '#364957',
         label: 'UTIL'
       };
     }
     if (item.type === 'wand' || item.slot === 'wand' || name.includes('wand') || name.includes('stab')) {
       return {
         icon: '🪄',
-        liquidColor: 'linear-gradient(180deg, #c39bd3 0%, #8e44ad 70%, #512e5f 100%)',
-        glowColor: 'rgba(142, 68, 173, 0.4)',
-        borderColor: '#9b59b6',
-        badgeColor: '#8e44ad',
+        liquidColor: 'linear-gradient(180deg, #6b4f7a 0%, #523b5f 100%)',
+        glowColor: 'none',
+        borderColor: 'rgba(107, 79, 122, 0.45)',
+        badgeColor: '#523b5f',
         label: 'WAND'
       };
     }
     if (item.type === 'scroll' || item.slot === 'scroll' || name.includes('scroll') || name.includes('schriftrolle')) {
       return {
         icon: '📜',
-        liquidColor: 'linear-gradient(180deg, #f9e79f 0%, #d4ac0d 70%, #7d6608 100%)',
-        glowColor: 'rgba(212, 172, 13, 0.35)',
-        borderColor: '#f1c40f',
-        badgeColor: '#b7950b',
+        liquidColor: 'linear-gradient(180deg, #8c734b 0%, #6d5734 100%)',
+        glowColor: 'none',
+        borderColor: 'rgba(140, 115, 75, 0.45)',
+        badgeColor: '#6d5734',
         label: 'SCROLL'
       };
     }
     return {
       icon: '⚗️',
-      liquidColor: 'linear-gradient(180deg, #58d68d 0%, #229954 70%, #145a32 100%)',
-      glowColor: 'rgba(39, 174, 96, 0.4)',
-      borderColor: '#2ecc71',
-      badgeColor: '#27ae60',
+      liquidColor: 'linear-gradient(180deg, #4b6848 0%, #374e35 100%)',
+      glowColor: 'none',
+      borderColor: 'rgba(75, 104, 72, 0.45)',
+      badgeColor: '#374e35',
       label: 'ITEM'
     };
   };
@@ -275,14 +275,14 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
         {feedbackToast && (
           <div
             style={{
-              background: feedbackToast.isHeal ? 'rgba(39, 174, 96, 0.15)' : 'rgba(212, 175, 55, 0.15)',
-              border: `1px solid ${feedbackToast.isHeal ? '#27ae60' : 'var(--pb)'}`,
+              background: feedbackToast.isHeal ? 'rgba(75, 104, 72, 0.12)' : 'rgba(200, 169, 110, 0.15)',
+              border: `1px solid ${feedbackToast.isHeal ? 'rgba(75, 104, 72, 0.4)' : 'var(--pb)'}`,
               borderRadius: '3px',
               padding: '4px 8px',
               fontSize: '8px',
               fontFamily: "'Crimson Text', serif",
               fontWeight: 'bold',
-              color: feedbackToast.isHeal ? '#1e824c' : 'var(--red)',
+              color: feedbackToast.isHeal ? '#374e35' : 'var(--red)',
               textAlign: 'center',
               animation: 'fadeIn 0.2s ease-in'
             }}
@@ -294,20 +294,20 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
         {/* Tactical Leather Belt Container */}
         <div
           style={{
-            background: 'linear-gradient(180deg, #c49a6c 0%, #a87948 50%, #8c5f30 100%)',
-            border: '1.5px solid #6e461f',
-            boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.4), inset 0 -1px 3px rgba(0,0,0,0.25), 0 2px 5px rgba(110,70,31,0.2)',
+            background: 'linear-gradient(180deg, #b8956e 0%, #9e7a52 50%, #825f38 100%)',
+            border: '1px solid #634320',
+            boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.25), inset 0 -1px 3px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.15)',
             borderRadius: '4px',
             padding: '6px',
             position: 'relative'
           }}
         >
-          {/* Leather Belt Stitching & Rivets Overlay */}
+          {/* Leather Belt Stitching Overlay */}
           <div
             style={{
               position: 'absolute',
               inset: '2px',
-              border: '1px dashed rgba(255, 240, 205, 0.7)',
+              border: '1px dashed rgba(255, 240, 205, 0.45)',
               borderRadius: '2px',
               pointerEvents: 'none'
             }}
@@ -402,7 +402,7 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
                   }}
                   style={{
                     background: isOutOfCharges ? 'rgba(230, 220, 205, 0.75)' : 'linear-gradient(180deg, rgba(255, 253, 248, 0.95) 0%, rgba(248, 238, 222, 0.9) 100%)',
-                    border: isOver ? '1.5px solid #8b6914' : `1px solid ${isOutOfCharges ? 'rgba(150, 130, 110, 0.45)' : aesthetic.borderColor}`,
+                    border: isOver ? '1.5px solid #634320' : `1px solid ${isOutOfCharges ? 'rgba(150, 130, 110, 0.45)' : aesthetic.borderColor}`,
                     borderRadius: '3px',
                     padding: '4px 2px',
                     display: 'flex',
@@ -411,7 +411,7 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
                     justifyContent: 'space-between',
                     minHeight: '74px',
                     position: 'relative',
-                    boxShadow: isOutOfCharges ? 'none' : (isOver ? '0 0 8px #8b6914' : `0 2px 5px rgba(0,0,0,0.12), 0 0 4px ${aesthetic.glowColor}`),
+                    boxShadow: isOutOfCharges ? 'none' : (isOver ? '0 0 6px rgba(99, 67, 32, 0.4)' : '0 1px 3px rgba(0,0,0,0.08)'),
                     transition: 'transform 0.12s ease, box-shadow 0.12s ease',
                     cursor: isOutOfCharges ? 'default' : 'pointer',
                     opacity: isDraggingThis ? 0.4 : 1,
@@ -461,8 +461,8 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
                       alignItems: 'center',
                       justifyContent: 'center',
                       fontSize: '12px',
-                      boxShadow: isOutOfCharges ? 'none' : `0 0 8px ${aesthetic.glowColor}`,
-                      border: '1px solid rgba(255,255,255,0.4)',
+                      boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.3), inset 0 -1px 2px rgba(0,0,0,0.2)',
+                      border: '1px solid rgba(255,255,255,0.3)',
                       margin: '1px 0'
                     }}
                   >

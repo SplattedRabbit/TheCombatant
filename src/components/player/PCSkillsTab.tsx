@@ -609,24 +609,24 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                       <div
                         key={trickId}
                         style={{
-                          background: 'rgba(139, 26, 26, 0.035)',
-                          border: '0.5px solid var(--pb)',
-                          borderLeft: '2.5px solid var(--red)',
+                          background: 'rgba(50, 115, 55, 0.06)',
+                          border: '0.5px solid rgba(50, 115, 55, 0.35)',
+                          borderLeft: '2.5px solid #2e7d32',
                           borderRadius: '2px',
-                          padding: '2px 4px',
+                          padding: '2px 5px',
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '3px',
+                          gap: '4px',
                           fontSize: '8px',
                           cursor: 'pointer'
                         }}
                         onClick={() => setSelectedTrick({ ...trickDef, isLearned: true, isBonus })}
                       >
-                        <span style={{ fontWeight: 'bold', color: 'var(--red)' }}>
+                        <span style={{ fontWeight: 'bold', color: '#245e28' }}>
                           {trickDef.nameEn || trickDef.nameDe}
                         </span>
                         {isBonus && (
-                          <span style={{ fontSize: '6.5px', color: '#2a6a2a', fontWeight: 'bold' }}>
+                          <span style={{ fontSize: '6.5px', color: '#2e7d32', fontWeight: 'bold' }}>
                             (Bonus)
                           </span>
                         )}
@@ -640,7 +640,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                             background: 'none',
                             border: 'none',
                             cursor: 'pointer',
-                            color: 'var(--red)',
+                            color: '#245e28',
                             fontSize: '8px',
                             padding: '0 2px',
                             lineHeight: 1
@@ -716,22 +716,42 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                 const isLearned = learnedTricks.some((lt: any) => (typeof lt === 'object' ? lt.id === trick.key : lt === trick.key));
                 const isBonus = learnedTricks.some((lt: any) => typeof lt === 'object' && lt.id === trick.key && lt.isBonus);
                 const { met } = CombatRules.checkSkillTrickPrerequisites(trick.key, patchedPC);
-                
-                let borderStyle = '0.5px dashed rgba(120, 100, 80, 0.3)';
-                let borderLeftStyle = '0.5px dashed rgba(120, 100, 80, 0.3)';
-                let bgStyle = 'transparent';
-                let opacityVal = 0.55;
+                const spentSP = CombatRules.calculateSpentSkillPoints(patchedPC);
+                const totalSP = CombatRules.calculateTotalSkillPoints(patchedPC);
+                const freeSkillPoints = Math.max(0, totalSP - spentSP);
+                const hasEnoughSP = freeSkillPoints >= 2;
+
+                // 4-state color scheme:
+                // 1. Ausgegraut: Nicht verfügbar (!met)
+                // 2. Leichtes Rot: Verfügbar aber nicht genügend Skillpunkte frei (met && !hasEnoughSP)
+                // 3. Gelb: Verfügbar und genügend Skillpunkte (met && hasEnoughSP)
+                // 4. Grün: Gelernt (isLearned)
+                let borderStyle = '0.5px dashed rgba(140, 130, 120, 0.35)';
+                let borderLeftStyle = '2.5px solid rgba(140, 130, 120, 0.4)';
+                let bgStyle = 'rgba(0, 0, 0, 0.015)';
+                let titleColor = 'var(--inkl)';
+                let opacityVal = 0.48;
 
                 if (isLearned) {
-                  borderStyle = '0.5px solid var(--pb)';
-                  borderLeftStyle = '3.5px solid var(--red)';
-                  bgStyle = 'rgba(139, 26, 26, 0.035)';
+                  borderStyle = '0.5px solid rgba(50, 115, 55, 0.35)';
+                  borderLeftStyle = '3.5px solid #2e7d32';
+                  bgStyle = 'rgba(50, 115, 55, 0.06)';
+                  titleColor = '#245e28';
                   opacityVal = 1;
                 } else if (met) {
-                  borderStyle = '0.5px solid var(--pb)';
-                  borderLeftStyle = '2.5px solid #4a6d44';
-                  bgStyle = 'rgba(70, 105, 65, 0.03)';
-                  opacityVal = 1;
+                  if (hasEnoughSP) {
+                    borderStyle = '0.5px solid rgba(184, 134, 11, 0.4)';
+                    borderLeftStyle = '3px solid #b8860b';
+                    bgStyle = 'rgba(212, 175, 55, 0.07)';
+                    titleColor = '#7d5f1a';
+                    opacityVal = 1;
+                  } else {
+                    borderStyle = '0.5px solid rgba(139, 26, 26, 0.35)';
+                    borderLeftStyle = '3px solid var(--red)';
+                    bgStyle = 'rgba(139, 26, 26, 0.04)';
+                    titleColor = 'var(--red)';
+                    opacityVal = 0.9;
+                  }
                 }
 
                 return (
@@ -756,20 +776,24 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     }}
                   >
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', minWidth: 0 }}>
-                      <span style={{ fontSize: '8.5px', fontWeight: met || isLearned ? 'bold' : '600', color: isLearned ? 'var(--red)' : (met ? 'var(--ink)' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: '8.5px', fontWeight: met || isLearned ? 'bold' : '600', color: titleColor, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {trick.nameEn || trick.nameDe}
                       </span>
-                      <span style={{ fontSize: '6.5px', color: met ? 'var(--inkm)' : 'var(--inkl)' }}>
+                      <span style={{ fontSize: '6.5px', color: met || isLearned ? 'var(--inkm)' : 'var(--inkl)' }}>
                         {trick.category.toUpperCase()}
                       </span>
                     </div>
                     <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                       {isLearned ? (
-                        <span style={{ fontSize: '7px', color: 'var(--red)', fontWeight: 'bold', background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid rgba(139, 26, 26, 0.25)', padding: '1px 3px', borderRadius: '1.5px' }}>✓ Learned</span>
+                        <span style={{ fontSize: '7px', color: '#245e28', fontWeight: 'bold', background: 'rgba(50, 115, 55, 0.12)', border: '0.5px solid rgba(50, 115, 55, 0.35)', padding: '1px 3px', borderRadius: '1.5px' }}>✓ Learned</span>
+                      ) : met ? (
+                        hasEnoughSP ? (
+                          <span style={{ fontSize: '7px', color: '#7d5f1a', fontWeight: 'bold', background: 'rgba(212, 175, 55, 0.15)', border: '0.5px solid rgba(184, 134, 11, 0.4)', padding: '1px 3px', borderRadius: '1.5px' }}>Available</span>
+                        ) : (
+                          <span style={{ fontSize: '7px', color: 'var(--red)', fontWeight: 'bold', background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid rgba(139, 26, 26, 0.25)', padding: '1px 3px', borderRadius: '1.5px' }}>Need 2 SP</span>
+                        )
                       ) : (
-                        <span style={{ fontSize: '7px', color: met ? '#3d6137' : '#8b1a1a', fontWeight: 'bold', background: met ? 'rgba(70, 110, 65, 0.09)' : 'rgba(139, 26, 26, 0.05)', border: met ? '0.5px solid rgba(70, 110, 65, 0.25)' : '0.5px dashed rgba(139, 26, 26, 0.15)', padding: '1px 3px', borderRadius: '1.5px' }}>
-                          {met ? 'Ready' : '🔒 Locked'}
-                        </span>
+                        <span style={{ fontSize: '7px', color: '#7a7065', fontWeight: 'bold', background: 'rgba(0,0,0,0.04)', border: '0.5px solid rgba(0,0,0,0.12)', padding: '1px 3px', borderRadius: '1.5px' }}>🔒 Locked</span>
                       )}
                     </div>
                   </div>

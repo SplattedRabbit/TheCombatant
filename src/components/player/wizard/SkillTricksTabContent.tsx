@@ -189,11 +189,36 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                   manipulation: 'Manipulation'
                 } as Record<string, string>)[trick.category]) || 'General';
 
-                const canLearn = !isPrior && !isCurrent && met && !isLimitReached && currentLevelRemainingSkillPoints >= 2;
+                const hasEnoughSP = currentLevelRemainingSkillPoints >= 2;
+                const canLearn = !isPrior && !isCurrent && met && !isLimitReached && hasEnoughSP;
 
-                const borderColor = isCurrent ? 'var(--red)' : (isPrior ? 'var(--pb)' : (met ? 'var(--pb)' : 'rgba(0,0,0,0.15)'));
-                const bgColor = isCurrent ? 'rgba(139, 26, 26, 0.04)' : (isPrior ? 'rgba(200, 169, 110, 0.06)' : (met ? 'rgba(200, 169, 110, 0.03)' : 'rgba(0,0,0,0.02)'));
-                const opacity = isPrior ? 0.75 : (met || isCurrent ? 1 : 0.6);
+                let borderStyle = '0.5px dashed rgba(140, 130, 120, 0.35)';
+                let borderLeftStyle = '2.5px solid rgba(140, 130, 120, 0.4)';
+                let bgStyle = 'rgba(0, 0, 0, 0.015)';
+                let titleColor = 'var(--inkl)';
+                let opacity = 0.48;
+
+                if (isCurrent || isPrior) {
+                  borderStyle = '0.5px solid rgba(50, 115, 55, 0.35)';
+                  borderLeftStyle = '3.5px solid #2e7d32';
+                  bgStyle = 'rgba(50, 115, 55, 0.06)';
+                  titleColor = '#245e28';
+                  opacity = 1;
+                } else if (met) {
+                  if (hasEnoughSP) {
+                    borderStyle = '0.5px solid rgba(184, 134, 11, 0.4)';
+                    borderLeftStyle = '3px solid #b8860b';
+                    bgStyle = 'rgba(212, 175, 55, 0.07)';
+                    titleColor = '#7d5f1a';
+                    opacity = 1;
+                  } else {
+                    borderStyle = '0.5px solid rgba(139, 26, 26, 0.35)';
+                    borderLeftStyle = '3px solid var(--red)';
+                    bgStyle = 'rgba(139, 26, 26, 0.04)';
+                    titleColor = 'var(--red)';
+                    opacity = 0.9;
+                  }
+                }
 
                 return (
                   <div
@@ -201,9 +226,9 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                     style={{
                       padding: '6px 8px',
                       borderRadius: '3px',
-                      border: `1px solid ${borderColor}`,
-                      borderLeft: `3.5px solid ${borderColor}`,
-                      background: bgColor,
+                      border: borderStyle,
+                      borderLeft: borderLeftStyle,
+                      background: bgStyle,
                       opacity,
                       display: 'flex',
                       flexDirection: 'column',
@@ -214,10 +239,10 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: isCurrent ? 'var(--red)' : 'var(--ink)' }}>
+                        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: titleColor }}>
                           🎭 {trick.nameEn || trick.nameDe}
                         </span>
-                        <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: 'var(--inkm)', padding: '0 4px', borderRadius: '1px' }}>
+                        <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: met || isCurrent || isPrior ? 'var(--inkm)' : 'var(--inkl)', padding: '0 4px', borderRadius: '1px' }}>
                           {categoryLabel}
                         </span>
                       </div>
@@ -225,7 +250,7 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                       {/* Action / Status */}
                       <div>
                         {isPrior ? (
-                          <span style={{ fontSize: '7.5px', color: '#7c5a2b', fontWeight: 'bold', background: 'rgba(200, 169, 110, 0.15)', border: '0.5px solid rgba(200, 169, 110, 0.3)', padding: '1px 4px', borderRadius: '1.5px' }}>
+                          <span style={{ fontSize: '7.5px', color: '#245e28', fontWeight: 'bold', background: 'rgba(50, 115, 55, 0.12)', border: '0.5px solid rgba(50, 115, 55, 0.35)', padding: '1px 4px', borderRadius: '1.5px' }}>
                             ✓ Lvl {priorLearnedMap[trick.key]}
                           </span>
                         ) : isCurrent ? (
@@ -236,9 +261,10 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                             style={{
                               fontSize: '8px',
                               padding: '2px 6px',
-                              color: 'var(--red)',
-                              borderColor: 'var(--red)',
-                              cursor: 'pointer'
+                              color: '#245e28',
+                              borderColor: 'rgba(50, 115, 55, 0.5)',
+                              cursor: 'pointer',
+                              background: 'rgba(50, 115, 55, 0.08)'
                             }}
                           >
                             ✕ Remove (-2 SP)
@@ -265,15 +291,15 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                               fontSize: '8.5px',
                               padding: '2px 8px',
                               fontFamily: "'IM Fell English SC', serif",
-                              background: met && canLearn ? 'rgba(42, 106, 42, 0.1)' : 'transparent',
-                              border: `1px solid ${met && canLearn ? '#2a6a2a' : 'var(--pb)'}`,
-                              color: met && canLearn ? '#2a6a2a' : (!met ? 'var(--red)' : 'var(--inkm)'),
+                              background: met ? (hasEnoughSP ? 'rgba(212, 175, 55, 0.15)' : 'rgba(139, 26, 26, 0.08)') : 'transparent',
+                              border: `1px solid ${met ? (hasEnoughSP ? 'rgba(184, 134, 11, 0.4)' : 'rgba(139, 26, 26, 0.25)') : 'rgba(0,0,0,0.12)'}`,
+                              color: met ? (hasEnoughSP ? '#7d5f1a' : 'var(--red)') : 'var(--inkl)',
                               fontWeight: 'bold',
                               cursor: !met ? 'help' : (canLearn ? 'pointer' : 'not-allowed')
                             }}
-                            title={!met ? "Prerequisites missing (click to inspect)" : (canLearn ? "Learn for 2 SP" : "Cannot learn (SP or Limit reached)")}
+                            title={!met ? "Prerequisites missing (click to inspect)" : (canLearn ? "Learn for 2 SP" : "Cannot learn (Need 2 SP or Limit reached)")}
                           >
-                            {!met ? '🔒 Locked' : '+ Learn (2 SP)'}
+                            {!met ? '🔒 Locked' : (hasEnoughSP ? '+ Learn (2 SP)' : 'Need 2 SP')}
                           </button>
                         )}
                       </div>

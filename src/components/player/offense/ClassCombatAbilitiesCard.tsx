@@ -1,8 +1,8 @@
 /**
  * @module    ClassCombatAbilitiesCard
- * @summary   Dynamic combat abilities hub for Smite Evil (with daily charge bubbles & auto-deduction), Sneak Attack pool, Favored Enemy, Barbarian Rage, and Monk Flurry.
+ * @summary   Stances & Special Class Powers hub for continuous combat states (Barbarian Rage, Monk Flurry & Stunning Fist, Bardic Music, Assassin Death Attack, Breath Weapon).
  * @exports   ClassCombatAbilitiesCard
- * @reads     pc.classes, pc.dailyAbilities, pc.isSmiteActive, pc.isSneakAttacking, pc.isFavoredEnemyActive, pc.isRaging, pc.cha
+ * @reads     pc.classes, pc.dailyAbilities, pc.isRaging, pc.isFlurrying, pc.isBardInspireActive, pc.wis, pc.int
  * @stateOps  CombatState.updatePCField, CombatState.togglePCRage
  * @depends   React, @core/state.js, src/components/shared/BaseCard
  */
@@ -16,26 +16,15 @@ import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface ClassCombatAbilitiesCardProps {
   pc: any;
-  mainHandWeapon?: any;
-  handleRollAttack?: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
-  handleRollDamage?: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
 }
 
 export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> = ({
-  pc,
-  mainHandWeapon,
-  handleRollAttack,
-  handleRollDamage
+  pc
 }) => {
   const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
-  const paladinClass = activeClasses.find((c: any) => c.classType === 'paladin');
-  const paladinLvl = paladinClass ? paladinClass.level : 0;
   
   const barbarianClass = activeClasses.find((c: any) => c.classType === 'barbarian');
   const barbarianLvl = barbarianClass ? barbarianClass.level : 0;
-
-  const rangerClass = activeClasses.find((c: any) => c.classType === 'ranger');
-  const rangerLvl = rangerClass ? rangerClass.level : 0;
 
   const monkClass = activeClasses.find((c: any) => c.classType === 'monk');
   const monkLvl = monkClass ? monkClass.level : 0;
@@ -43,27 +32,9 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
   const bardClass = activeClasses.find((c: any) => c.classType === 'bard');
   const bardLvl = bardClass ? bardClass.level : 0;
 
-  // 1. Smite Evil resolution
-  const smiteAbility = Array.isArray(pc.dailyAbilities) 
-    ? pc.dailyAbilities.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name?.includes("Smite Evil"))
-    : null;
-  const smiteMax = smiteAbility ? smiteAbility.max : (paladinLvl > 0 ? Math.max(1, 1 + Math.floor((paladinLvl - 1) / 4)) : 0);
-  const smiteUsed = smiteAbility ? smiteAbility.used : 0;
-  const smiteRemaining = Math.max(0, smiteMax - smiteUsed);
-
   const getAblMod = (score: number) => Math.floor((score - 10) / 2);
-  const chaValue = pc.cha ? (typeof pc.cha.getValue === 'function' ? pc.cha.getValue() : pc.cha) : 10;
-  const chaMod = getAblMod(chaValue);
-  const smiteAtkBonus = Math.max(0, chaMod);
-  const smiteDmgBonus = paladinLvl;
 
-  // 2. Sneak Attack pool
-  const sneakAttackDice = typeof pc.getSneakAttackDiceCount === 'function' ? pc.getSneakAttackDiceCount() : 0;
-
-  // 3. Favored Enemy
-  const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus() : 0;
-
-  // 4. Barbarian Rage resolution
+  // 1. Barbarian Rage resolution
   const rageAbility = Array.isArray(pc.dailyAbilities)
     ? pc.dailyAbilities.find((a: any) => a.name === "Kampfrausch (Rage)" || a.name === "Rage" || a.name?.includes("Rage"))
     : null;
@@ -71,20 +42,20 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
   const rageUsed = rageAbility ? rageAbility.used : 0;
   const rageRemaining = Math.max(0, rageMax - rageUsed);
 
-  // 5. Monk Flurry & Stunning Fist
+  // 2. Monk Flurry & Stunning Fist
   const wisValue = pc.wis ? (typeof pc.wis.getValue === 'function' ? pc.wis.getValue() : pc.wis) : 10;
   const wisMod = getAblMod(wisValue);
   const stunDC = 10 + Math.floor(monkLvl / 2) + Math.max(0, wisMod);
   const flurryExtraAttacks = monkLvl >= 11 ? 2 : 1;
   const flurryPenalty = monkLvl >= 9 ? 0 : (monkLvl >= 5 ? -1 : -2);
 
-  // 6. Bard Inspire Courage
+  // 3. Bard Inspire Courage
   let inspireCourageBonus = 1;
   if (bardLvl >= 20) inspireCourageBonus = 4;
   else if (bardLvl >= 14) inspireCourageBonus = 3;
   else if (bardLvl >= 8) inspireCourageBonus = 2;
 
-  // 7. Prestige Classes
+  // 4. Prestige Classes
   const assassinClass = activeClasses.find((c: any) => c.classType === 'assassin');
   const assassinLvl = assassinClass ? assassinClass.level : 0;
   const intValue = pc.int ? (typeof pc.int.getValue === 'function' ? pc.int.getValue() : pc.int) : 10;
@@ -100,36 +71,20 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
   const breathWeaponDice = dragonDiscipleLvl >= 10 ? '6d8' : (dragonDiscipleLvl >= 7 ? '4d8' : (dragonDiscipleLvl >= 3 ? '2d8' : ''));
 
   const activeACFs: string[] = Array.isArray(pc.acfs) ? pc.acfs : [];
-  const hasChargingSmite = activeACFs.includes('paladin_charging_smite');
-  const hasDisruptiveAttack = activeACFs.includes('rogue_disruptive_attack');
   const hasBerserkerStrength = activeACFs.includes('barbarian_berserker_strength');
-  const hasDistractingAttack = activeACFs.includes('ranger_distracting_attack');
   const hasDecisiveStrike = activeACFs.includes('monk_decisive_strike');
 
-  const hasAnyAbilities = (paladinLvl > 0 || !!smiteAbility) || 
-    sneakAttackDice > 0 || 
-    (rangerLvl > 0 || favoredEnemyBonus > 0) || 
-    (barbarianLvl > 0 || !!rageAbility) || 
+  const hasAnyStances = (barbarianLvl > 0 || !!rageAbility) || 
     (monkLvl > 0) || 
-    (bardLvl > 0) ||
-    (assassinLvl > 0) ||
-    hasTrickyFighting ||
+    (bardLvl > 0) || 
+    (assassinLvl > 0) || 
+    hasTrickyFighting || 
     (dragonDiscipleLvl >= 3);
 
-  const handleSmiteBubbleClick = (idx: number, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities?.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil");
-    if (ability) {
-      if (idx <= ability.used) {
-        ability.used = idx - 1;
-      } else {
-        ability.used = idx;
-      }
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
-    }
-  };
+  // If no sustained stances/powers, return null so we don't clutter the view
+  if (!hasAnyStances) {
+    return null;
+  }
 
   const handleRageToggle = () => {
     const result = CombatState.togglePCRage();
@@ -153,196 +108,9 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
     }
   };
 
-  if (!hasAnyAbilities) {
-    return (
-      <BaseCard title="🌟 Class Combat Abilities">
-        <div style={{ padding: '8px', textAlign: 'center', color: 'var(--inkl)', fontStyle: 'italic', fontSize: '8px', fontFamily: "'Crimson Text', serif" }}>
-          No specific class combat strikes available for current classes.
-        </div>
-      </BaseCard>
-    );
-  }
-
   return (
-    <BaseCard title="🌟 Class Combat Abilities &amp; Strikes">
+    <BaseCard title="🥋 Stances &amp; Class Powers">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-
-        {/* Smite Evil */}
-        {(paladinLvl > 0 || !!smiteAbility) && (
-          <div
-            style={{
-              background: 'rgba(139, 26, 26, 0.06)',
-              border: '1px solid var(--red)',
-              borderRadius: '3px',
-              padding: '5px 8px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '4px'
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ color: 'var(--red)', fontWeight: 'bold', fontSize: '8.5px', fontFamily: "'IM Fell English SC', serif" }}>
-                🌟 Smite Evil (+{smiteAtkBonus} Atk / +{smiteDmgBonus} Dmg)
-              </div>
-
-              {/* Charge Bubbles */}
-              {smiteMax > 0 && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-                  <span style={{ fontSize: '7px', color: 'var(--inkm)', marginRight: '2px', fontFamily: "'Crimson Text', serif" }}>
-                    Uses ({smiteRemaining}/{smiteMax}):
-                  </span>
-                  {Array.from({ length: smiteMax }).map((_, i) => {
-                    const isFilled = i < smiteUsed;
-                    return (
-                      <span
-                        key={i}
-                        onClick={(e) => handleSmiteBubbleClick(i + 1, e)}
-                        style={{
-                          display: 'inline-block',
-                          width: '9px',
-                          height: '9px',
-                          borderRadius: '50%',
-                          border: '1px solid var(--red)',
-                          background: isFilled ? 'var(--red)' : 'transparent',
-                          cursor: 'pointer',
-                          transition: 'transform 0.1s ease',
-                          boxShadow: isFilled ? '0 0 4px rgba(139,26,26,0.5)' : 'none'
-                        }}
-                        title={isFilled ? `Use #${i + 1} expended (Click to toggle)` : `Use #${i + 1} ready (Click to toggle)`}
-                      />
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px' }}>
-              <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
-                Auto-consumes 1 charge. Evil targets only (RAW).
-              </div>
-              {handleRollAttack && handleRollDamage && (
-                <div style={{ display: 'flex', gap: '4px' }}>
-                  <button
-                    className="xbtn xbtn-atk"
-                    onClick={(e) => handleRollAttack(mainHandWeapon, false, e, { smite: true })}
-                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold' }}
-                    title="Roll Attack with Smite Evil"
-                  >
-                    ⚔️ Smite Atk (+{smiteAtkBonus})
-                  </button>
-                  <button
-                    className="xbtn xbtn-dmg"
-                    onClick={(e) => handleRollDamage(mainHandWeapon, false, e, { smite: true })}
-                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold' }}
-                    title="Roll Damage with Smite Evil"
-                  >
-                    💥 Smite Dmg (+{smiteDmgBonus})
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {hasChargingSmite && (
-              <div style={{ fontSize: '7px', color: '#b7950b', fontStyle: 'italic', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '2px' }}>
-                ⚡ ACF: Charging Smite (+{smiteDmgBonus * 2} Dmg on charge, miss refunds charge attempt).
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Sneak Attack */}
-        {sneakAttackDice > 0 && (
-          <div
-            style={{
-              background: 'rgba(70, 105, 65, 0.04)',
-              border: '1px solid rgba(70, 105, 65, 0.4)',
-              borderRadius: '3px',
-              padding: '5px 8px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '3px'
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ color: 'var(--red)', fontWeight: 'bold', fontSize: '8.5px', fontFamily: "'IM Fell English SC', serif" }}>
-                🗡️ Sneak Attack (+{sneakAttackDice}d6 Damage)
-              </div>
-
-              {handleRollAttack && handleRollDamage && (
-                <div style={{ display: 'flex', gap: '4px' }}>
-                  <button
-                    className="xbtn xbtn-atk"
-                    onClick={(e) => handleRollAttack(mainHandWeapon, false, e, { sneakAttack: true })}
-                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold' }}
-                    title="Roll Attack with Sneak Attack"
-                  >
-                    ⚔️ Sneak Atk
-                  </button>
-                  <button
-                    className="xbtn xbtn-dmg"
-                    onClick={(e) => handleRollDamage(mainHandWeapon, false, e, { sneakAttack: true })}
-                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold' }}
-                    title="Roll Damage with Sneak Attack"
-                  >
-                    💥 Sneak Dmg (+{sneakAttackDice}d6)
-                  </button>
-                </div>
-              )}
-            </div>
-            {hasDisruptiveAttack && (
-              <div style={{ fontSize: '7px', color: '#b7950b', fontStyle: 'italic', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '2px' }}>
-                ⚡ ACF: Disruptive Attack (Optionally sacrifice sneak attack damage to inflict -5 AC penalty on target for 1 round).
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Favored Enemy */}
-        {(rangerLvl > 0 || favoredEnemyBonus > 0) && (
-          <div
-            style={{
-              background: 'rgba(42, 106, 138, 0.06)',
-              border: '1px solid #2a6a8a',
-              borderRadius: '3px',
-              padding: '5px 8px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '3px'
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ color: '#2a6a8a', fontWeight: 'bold', fontSize: '8.5px', fontFamily: "'IM Fell English SC', serif" }}>
-                🏹 Favored Enemy (+{favoredEnemyBonus} Damage vs {pc.favoredEnemy || 'Enemy'})
-              </div>
-
-              {handleRollAttack && handleRollDamage && (
-                <div style={{ display: 'flex', gap: '4px' }}>
-                  <button
-                    className="xbtn xbtn-atk"
-                    onClick={(e) => handleRollAttack(mainHandWeapon, false, e, { favoredEnemy: true })}
-                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold' }}
-                    title="Roll Attack vs Favored Enemy"
-                  >
-                    ⚔️ FE Atk
-                  </button>
-                  <button
-                    className="xbtn"
-                    onClick={(e) => handleRollDamage(mainHandWeapon, false, e, { favoredEnemy: true })}
-                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold', borderColor: '#2a6a8a', color: '#2a6a8a', background: 'rgba(42, 106, 138, 0.12)' }}
-                    title="Roll Damage vs Favored Enemy"
-                  >
-                    💥 FE Dmg (+{favoredEnemyBonus})
-                  </button>
-                </div>
-              )}
-            </div>
-            {hasDistractingAttack && (
-              <div style={{ fontSize: '7px', color: '#b7950b', fontStyle: 'italic', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '2px' }}>
-                ⚡ ACF: Distracting Attack (Hit targets are considered flanked by you and allies).
-              </div>
-            )}
-          </div>
-        )}
 
         {/* Barbarian Rage / Berserker Strength ACF */}
         {(barbarianLvl > 0 || !!rageAbility) && (
@@ -383,7 +151,6 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                 )}
               </div>
 
-              {/* Charge Bubbles */}
               {!hasBerserkerStrength && rageMax > 0 && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
                   <span style={{ fontSize: '7px', color: 'var(--inkm)', marginRight: '2px', fontFamily: "'Crimson Text', serif" }}>
@@ -410,14 +177,6 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                     );
                   })}
                 </div>
-              )}
-            </div>
-
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
-              {hasBerserkerStrength ? (
-                <span>⚡ Replaces Rage: When HP &lt; {5 * barbarianLvl}, automatically gain +4 STR, +2 all saves, DR 2/—, and -2 AC. No daily limit.</span>
-              ) : (
-                <span>🔥 +4 STR, +4 CON, +2 Will saves, -2 AC, +{2 * pc.level} HP.</span>
               )}
             </div>
           </div>
@@ -456,7 +215,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                   onChange={(e) => CombatState.updatePCField('isFlurrying', e.target.checked)}
                   style={{ margin: 0, width: '12px', height: '12px', cursor: 'pointer' }}
                 />
-                🥋 {hasDecisiveStrike ? 'Decisive Strike (Double Damage)' : `Flurry of Blows (+${flurryExtraAttacks} Extra Attack${flurryExtraAttacks > 1 ? 's' : ''})`}
+                🥋 {hasDecisiveStrike ? 'Decisive Strike' : `Flurry of Blows`}
               </label>
 
               <span
@@ -470,13 +229,8 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                   fontFamily: 'monospace'
                 }}
               >
-                {hasDecisiveStrike ? '2x DMG' : `Penalty: ${flurryPenalty}`}
+                Stun DC {stunDC}
               </span>
-            </div>
-
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", display: 'flex', justifyContent: 'space-between' }}>
-              <span>🥋 Applies only when unarmored on Full Attack actions with unarmed strike / monk weapons.</span>
-              <span>Stun DC: <strong>{stunDC}</strong></span>
             </div>
           </div>
         )}
@@ -519,7 +273,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
 
               <span
                 style={{
-                  background: pc.isBardInspireActive ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(0,0,0,0.06)',
+                  background: pc.isBardInspireActive ? 'var(--red)' : 'rgba(0,0,0,0.06)',
                   color: pc.isBardInspireActive ? '#fff' : 'var(--inkm)',
                   fontSize: '7.5px',
                   fontWeight: 'bold',
@@ -528,21 +282,22 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                   fontFamily: 'monospace'
                 }}
               >
-                +{inspireCourageBonus} MORALE
+                +{inspireCourageBonus} Morale
               </span>
             </div>
+
             <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
-              🎵 Grants morale bonus on attack &amp; weapon damage rolls to you and all allies within 30 ft.
+              🎵 Grants morale bonus on saving throws against charm and fear, and attack and weapon damage rolls.
             </div>
           </div>
         )}
 
-        {/* Assassin Death Attack & Poison Use */}
+        {/* Assassin Death Attack */}
         {assassinLvl > 0 && (
           <div
             style={{
-              background: 'rgba(74, 35, 90, 0.08)',
-              border: '1px solid #6c3483',
+              background: 'rgba(90, 107, 124, 0.05)',
+              border: '1px solid #5a6b7c',
               borderRadius: '3px',
               padding: '5px 8px',
               display: 'flex',
@@ -551,12 +306,12 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: '#6c3483' }}>
+              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: '#4a5b6c' }}>
                 ☠️ Assassin: Death Attack &amp; Poison Use
               </span>
               <span
                 style={{
-                  background: '#6c3483',
+                  background: '#5a6b7c',
                   color: '#fff',
                   fontSize: '7.5px',
                   fontWeight: 'bold',
@@ -569,7 +324,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
               </span>
             </div>
             <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
-              ☠️ Study target for 3 rounds. Next sneak attack forces Fort save (DC {deathAttackDC}) vs Kill or Paralyze (1d6+{assassinLvl} rds). Never accidental self-poison.
+              ☠️ Study target for 3 rounds. Next sneak attack forces Fort save (DC {deathAttackDC}) vs Kill or Paralyze (1d6+{assassinLvl} rds).
             </div>
           </div>
         )}
@@ -578,8 +333,8 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
         {hasTrickyFighting && (
           <div
             style={{
-              background: pc.isTrickyFightingActive ? 'rgba(39, 174, 96, 0.08)' : 'rgba(200, 169, 110, 0.05)',
-              border: `1px solid ${pc.isTrickyFightingActive ? '#27ae60' : 'var(--pb)'}`,
+              background: 'rgba(200, 169, 110, 0.05)',
+              border: '1px solid var(--pb)',
               borderRadius: '3px',
               padding: '5px 8px',
               display: 'flex',
@@ -594,7 +349,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                   alignItems: 'center',
                   gap: '5px',
                   cursor: 'pointer',
-                  color: pc.isTrickyFightingActive ? '#1e824c' : 'var(--ink)',
+                  color: pc.isTrickyFightingActive ? 'var(--red)' : 'var(--ink)',
                   margin: 0,
                   fontWeight: 'bold',
                   fontSize: '8.5px',
@@ -611,7 +366,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
               </label>
               <span
                 style={{
-                  background: pc.isTrickyFightingActive ? '#27ae60' : 'rgba(0,0,0,0.06)',
+                  background: pc.isTrickyFightingActive ? 'var(--red)' : 'rgba(0,0,0,0.06)',
                   color: pc.isTrickyFightingActive ? '#fff' : 'var(--inkm)',
                   fontSize: '7.5px',
                   fontWeight: 'bold',
@@ -633,8 +388,8 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
         {dragonDiscipleLvl >= 3 && (
           <div
             style={{
-              background: 'rgba(186, 74, 0, 0.08)',
-              border: '1px solid #ba4a00',
+              background: 'rgba(139, 26, 26, 0.05)',
+              border: '1px solid var(--red)',
               borderRadius: '3px',
               padding: '5px 8px',
               display: 'flex',
@@ -643,12 +398,12 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: '#ba4a00' }}>
+              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                 🐉 Dragon Disciple: Breath Weapon (1/day)
               </span>
               <span
                 style={{
-                  background: '#ba4a00',
+                  background: 'var(--red)',
                   color: '#fff',
                   fontSize: '7.5px',
                   fontWeight: 'bold',

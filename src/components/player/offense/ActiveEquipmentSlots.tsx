@@ -252,11 +252,11 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
     const activeACFs: string[] = Array.isArray(pc.acfs) ? pc.acfs : [];
     const hasChargingSmite = activeACFs.includes('paladin_charging_smite');
     const hasDisruptiveAttack = activeACFs.includes('rogue_disruptive_attack');
-    const hasBerserkerStrength = activeACFs.includes('barbarian_berserker_strength');
     const hasDistractingAttack = activeACFs.includes('ranger_distracting_attack');
-    const hasDecisiveStrike = activeACFs.includes('monk_decisive_strike');
 
-    // 1. Paladin (Smite Evil / Charging Smite ACF)
+    const strikes: Array<{ id: string; name: string; render: (selectorDropdown?: JSX.Element) => JSX.Element }> = [];
+
+    // 1. Paladin (Smite Evil / Charging Smite)
     if (paladinLvl > 0 || !!smiteAbility) {
       const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
       const smiteTitle = hasChargingSmite ? 'Charging Smite' : 'Smite Evil';
@@ -264,415 +264,96 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
       const stdSmite = smiteSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w8' };
       const smiteDmgText = hasChargingSmite ? `+${paladinLvl * 2}` : `+${paladinLvl}`;
 
-      return (
-        <div
-          className="arpg-slot class-ability-slot rarity-epic"
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            minHeight: '88px',
-            border: '1px solid var(--red)',
-            borderRadius: '4px',
-            padding: '5px 6px',
-            textAlign: 'center',
-            background: 'rgba(139, 26, 26, 0.08)',
-            boxShadow: '0 0 8px rgba(139, 26, 26, 0.2)'
-          }}
-        >
-          <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            {hasChargingSmite ? '⚡ ACF Strike' : '🌟 Class Strike'}
-          </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={smiteTitle}>
-            {smiteTitle}
-          </div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{Math.max(0, chaMod)} Atk / {smiteDmgText} Dmg
-          </div>
+      strikes.push({
+        id: 'smite',
+        name: smiteTitle,
+        render: (selectorDropdown) => (
+          <div
+            className="arpg-slot class-ability-slot rarity-epic"
+            style={{
+              position: 'relative',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              minHeight: '88px',
+              border: '1px solid var(--red)',
+              borderRadius: '4px',
+              padding: '5px 6px',
+              textAlign: 'center',
+              background: 'rgba(139, 26, 26, 0.08)',
+              boxShadow: '0 0 8px rgba(139, 26, 26, 0.2)'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+                {hasChargingSmite ? '⚡ ACF Strike' : '🌟 Class Strike'}
+              </div>
+              {selectorDropdown}
+            </div>
+            <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={smiteTitle}>
+              {smiteTitle}
+            </div>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
+              +{Math.max(0, chaMod)} Atk / {smiteDmgText} Dmg
+            </div>
 
-          {/* Charge Bubbles */}
-          <div style={{ display: 'flex', gap: '2px', margin: '1px 0' }}>
-            {Array.from({ length: Math.min(6, smiteMax) }).map((_, i) => (
-              <span
-                key={i}
-                style={{
-                  display: 'inline-block',
-                  width: '6px',
-                  height: '6px',
-                  borderRadius: '50%',
-                  border: '1px solid var(--red)',
-                  background: i < smiteUsed ? 'var(--red)' : 'transparent'
-                }}
-                title={i < smiteUsed ? 'Expended' : 'Ready'}
-              />
-            ))}
-          </div>
+            {/* Charge Bubbles */}
+            <div style={{ display: 'flex', gap: '2px', margin: '1px 0' }}>
+              {Array.from({ length: Math.min(6, smiteMax) }).map((_, i) => (
+                <span
+                  key={i}
+                  style={{
+                    display: 'inline-block',
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    border: '1px solid var(--red)',
+                    background: i < smiteUsed ? 'var(--red)' : 'transparent'
+                  }}
+                  title={i < smiteUsed ? 'Expended' : 'Ready'}
+                />
+              ))}
+            </div>
 
-          {/* Action Attack & Damage Buttons */}
-          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
-            <button
-              className="xbtn xbtn-atk"
-              onClick={(e) => handleRollAttack(w, false, e, { smite: true })}
-              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-              title={`Roll Smite Attack (${formatMod(stdSmite.atkTotal)})`}
-            >
-              ATK {formatMod(stdSmite.atkTotal)}
-            </button>
-            <button
-              className="xbtn xbtn-dmg"
-              onClick={(e) => handleRollDamage(w, false, e, { smite: true })}
-              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-              title={`Roll Smite Damage (${stdSmite.damageDice} ${formatMod(stdSmite.dmgTotal)})`}
-            >
-              DMG {formatMod(stdSmite.dmgTotal)}
-            </button>
+            {/* Action Attack & Damage Buttons */}
+            <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+              <button
+                className="xbtn xbtn-atk"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollAttack(w, false, e, { smite: true })}
+                style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+                title={`Roll Smite Attack (${formatMod(stdSmite.atkTotal)})`}
+              >
+                ATK {formatMod(stdSmite.atkTotal)}
+              </button>
+              <button
+                className="xbtn xbtn-dmg"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollDamage(w, false, e, { smite: true })}
+                style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+                title={`Roll Smite Damage (${stdSmite.damageDice} ${formatMod(stdSmite.dmgTotal)})`}
+              >
+                DMG {formatMod(stdSmite.dmgTotal)}
+              </button>
+            </div>
           </div>
-        </div>
-      );
+        )
+      });
     }
 
-    // 2. Sneak Attack Classes (Rogue, Assassin, Arcane Trickster, Mountebank)
+    // 2. Sneak Attack
     if (sneakAttackDice > 0) {
       const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
       const sneakSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, noSmite: true });
       const stdSneak = sneakSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
       const baseDmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : (w.damage || '1w6');
 
-      return (
-        <div
-          className="arpg-slot class-ability-slot"
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            minHeight: '88px',
-            border: '1px solid rgba(70, 105, 65, 0.5)',
-            borderRadius: '4px',
-            padding: '5px 6px',
-            textAlign: 'center',
-            background: 'rgba(70, 105, 65, 0.04)',
-            boxShadow: '0 0 6px rgba(70, 105, 65, 0.15)'
-          }}
-        >
-          <div style={{ fontSize: '6.5px', color: '#3b5e38', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            🗡️ Class Strike
-          </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Sneak Attack
-          </div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{sneakAttackDice}d6 (Flank / Denied Dex)
-          </div>
-
-          <div style={{ fontSize: '6.5px', color: '#3b5e38', fontStyle: 'italic' }}>
-            Precision Strike
-          </div>
-
-          {/* Action Attack & Damage Buttons */}
-          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
-            <button
-              className="xbtn xbtn-atk"
-              onClick={(e) => handleRollAttack(w, false, e, { sneakAttack: true })}
-              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-              title={`Roll Sneak Attack (${formatMod(stdSneak.atkTotal)})`}
-            >
-              ATK {formatMod(stdSneak.atkTotal)}
-            </button>
-            <button
-              className="xbtn xbtn-dmg"
-              onClick={(e) => handleRollDamage(w, false, e, { sneakAttack: true })}
-              style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-              title={`Roll Sneak Damage (${baseDmgDice}+${sneakAttackDice}d6 ${formatMod(stdSneak.dmgTotal)})`}
-            >
-              DMG +{sneakAttackDice}d6
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    // 3. Duskblade (Arcane Channeling)
-    if (duskbladeClass) {
-      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
-      const duskSeq = AttackEngine.calculateAttackSequence(pc, w, false, {});
-      const stdDusk = duskSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
-      return (
-        <div
-          className="arpg-slot class-ability-slot"
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            minHeight: '88px',
-            border: '0.5px solid #8e44ad',
-            borderRadius: '4px',
-            padding: '5px 6px',
-            textAlign: 'center',
-            background: 'rgba(142, 68, 173, 0.05)'
-          }}
-        >
-          <div style={{ fontSize: '6.5px', color: '#8e44ad', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            ⚡ Duskblade Strike
-          </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', fontWeight: 'bold', color: '#8e44ad', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Arcane Channeling
-          </div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            Channel spell through strike
-          </div>
-          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
-            <button
-              className="xbtn xbtn-atk"
-              onClick={(e) => handleRollAttack(w, false, e, { arcaneChanneling: true })}
-              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-            >
-              ATK {formatMod(stdDusk.atkTotal)}
-            </button>
-            <button
-              className="xbtn"
-              onClick={(e) => handleRollDamage(w, false, e, { arcaneChanneling: true })}
-              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1, borderColor: '#8e44ad', color: '#8e44ad' }}
-            >
-              DMG+Spell
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    // 4. Scout (Skirmish Attack)
-    if (scoutClass) {
-      const skirmishLvl = scoutClass.level;
-      const skirmishDice = 1 + Math.floor((skirmishLvl - 1) / 4);
-      const skirmishAC = 1 + Math.floor((skirmishLvl - 1) / 4);
-      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
-      const skirSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, skirmish: true });
-      const stdSkir = skirSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
-
-      return (
-        <div
-          className="arpg-slot class-ability-slot"
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            minHeight: '88px',
-            border: '0.5px solid #d4ac0d',
-            borderRadius: '4px',
-            padding: '5px 6px',
-            textAlign: 'center',
-            background: 'rgba(212, 172, 13, 0.05)'
-          }}
-        >
-          <div style={{ fontSize: '6.5px', color: '#b7950b', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            🏃 Scout Strike
-          </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', fontWeight: 'bold', color: '#b7950b', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Skirmish Attack
-          </div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{skirmishDice}d6 Dmg / +{skirmishAC} AC (10ft+)
-          </div>
-          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
-            <button
-              className="xbtn xbtn-atk"
-              onClick={(e) => handleRollAttack(w, false, e, { sneakAttack: true, skirmish: true })}
-              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-            >
-              ATK {formatMod(stdSkir.atkTotal)}
-            </button>
-            <button
-              className="xbtn"
-              onClick={(e) => handleRollDamage(w, false, e, { sneakAttack: true, skirmish: true })}
-              style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1, borderColor: '#d4ac0d', color: '#b7950b' }}
-            >
-              DMG +{skirmishDice}d6
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    // 5. Ninja (Sudden Strike)
-    if (ninjaClass) {
-      const ninjaDice = 1 + Math.floor((ninjaClass.level - 1) / 2);
-      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
-      const sudSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, suddenStrike: true });
-      const stdSud = sudSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
-
-      return (
-        <div
-          className="arpg-slot class-ability-slot"
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            minHeight: '88px',
-            border: '0.5px solid #34495e',
-            borderRadius: '4px',
-            padding: '5px 6px',
-            textAlign: 'center',
-            background: 'rgba(52, 73, 94, 0.05)'
-          }}
-        >
-          <div style={{ fontSize: '6.5px', color: '#2c3e50', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            🥷 Ninja Strike
-          </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', fontWeight: 'bold', color: '#2c3e50', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Sudden Strike
-          </div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{ninjaDice}d6 (Denied Dex)
-          </div>
-          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
-            <button
-              className="xbtn xbtn-atk"
-              onClick={(e) => handleRollAttack(w, false, e, { sneakAttack: true, suddenStrike: true })}
-              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-            >
-              ATK {formatMod(stdSud.atkTotal)}
-            </button>
-            <button
-              className="xbtn"
-              onClick={(e) => handleRollDamage(w, false, e, { sneakAttack: true, suddenStrike: true })}
-              style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1, borderColor: '#34495e', color: '#2c3e50' }}
-            >
-              DMG +{ninjaDice}d6
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    // 6. Barbarian (Rage / Berserker Strength ACF)
-    if (barbarianLvl > 0) {
-      const barbTitle = hasBerserkerStrength ? 'Berserker Strength' : 'Kampfrausch (Rage)';
-      const barbSubtitle = hasBerserkerStrength ? 'Auto when HP < ' + (5 * barbarianLvl) : '+4 STR / +4 CON / -2 AC';
-      return (
-        <div
-          className={`arpg-slot class-ability-slot ${pc.isRaging ? 'rarity-epic' : ''}`}
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            minHeight: '88px',
-            border: pc.isRaging ? '1px solid var(--red)' : '0.5px solid var(--pb)',
-            borderRadius: '4px',
-            padding: '5px 6px',
-            textAlign: 'center',
-            background: pc.isRaging ? 'rgba(139, 26, 26, 0.12)' : 'rgba(200, 169, 110, 0.04)'
-          }}
-        >
-          <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            {hasBerserkerStrength ? '⚡ ACF Berserk' : '🔥 Barbarian'}
-          </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={barbTitle}>
-            {barbTitle}
-          </div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            {barbSubtitle}
-          </div>
-          {hasBerserkerStrength ? (
-            <button
-              className="xbtn"
-              onClick={() => showCustomAlert("Berserker Strength", "Whenever your current HP is below 5 × Barbarian level, you automatically gain +4 STR, +2 on all saves, DR 2/—, and -2 AC.", "Understood", "⚡")}
-              style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: 'var(--red)', color: 'var(--red)', cursor: 'pointer' }}
-            >
-              ⚡ BERSERK INFO
-            </button>
-          ) : (
-            <button
-              className={`xbtn ${pc.isRaging ? 'xbtn-dmg' : ''}`}
-              onClick={() => CombatState.togglePCRage()}
-              style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: 'var(--red)', color: pc.isRaging ? '#fff' : 'var(--red)', background: pc.isRaging ? 'var(--red)' : 'transparent', cursor: 'pointer' }}
-            >
-              {pc.isRaging ? '🔴 END RAGE' : '🔥 RAGE ON'}
-            </button>
-          )}
-        </div>
-      );
-    }
-
-    // 7. Ranger (Favored Enemy / Distracting Attack ACF)
-    if (rangerLvl > 0 || favoredEnemyBonus > 0) {
-      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
-      const feSeq = AttackEngine.calculateAttackSequence(pc, w, false, { favoredEnemy: true });
-      const stdFE = feSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w8' };
-
-      return (
-        <div
-          className="arpg-slot class-ability-slot"
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            minHeight: '88px',
-            border: '1px solid #2a6a8a',
-            borderRadius: '4px',
-            padding: '5px 6px',
-            textAlign: 'center',
-            background: 'rgba(42, 106, 138, 0.08)'
-          }}
-        >
-          <div style={{ fontSize: '6.5px', color: '#2a6a8a', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            {hasDistractingAttack ? '⚡ ACF Ranger' : '🏹 Ranger'}
-          </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: '#2a6a8a', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Favored Enemy
-          </div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{favoredEnemyBonus} Damage {hasDistractingAttack ? '(Flanks)' : `vs ${pc.favoredEnemy || 'Enemy'}`}
-          </div>
-          <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
-            <button
-              className="xbtn xbtn-atk"
-              onClick={(e) => handleRollAttack(w, false, e, { favoredEnemy: true })}
-              style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-            >
-              ATK {formatMod(stdFE.atkTotal)}
-            </button>
-            <button
-              className="xbtn"
-              onClick={(e) => handleRollDamage(w, false, e, { favoredEnemy: true })}
-              style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1, borderColor: '#2a6a8a', color: '#2a6a8a', background: 'rgba(42, 106, 138, 0.12)' }}
-            >
-              DMG +{favoredEnemyBonus}
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    // 8. Monk (Flurry of Blows / Decisive Strike ACF)
-    if (monkClass) {
-      const isFlurryActive = !!pc.isFlurrying;
-      const monkLvl = monkClass.level || 0;
-      const flurryExtraAttacks = monkLvl >= 11 ? 2 : 1;
-      const flurryPenalty = monkLvl >= 9 ? 0 : (monkLvl >= 5 ? -1 : -2);
-
-      if (hasDecisiveStrike) {
-        return (
+      strikes.push({
+        id: 'sneak',
+        name: 'Sneak Attack',
+        render: (selectorDropdown) => (
           <div
             className="arpg-slot class-ability-slot"
             style={{
@@ -683,150 +364,315 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
               alignItems: 'center',
               justifyContent: 'space-between',
               minHeight: '88px',
-              border: '0.5px solid var(--pb)',
+              border: '1px solid rgba(70, 105, 65, 0.5)',
               borderRadius: '4px',
               padding: '5px 6px',
               textAlign: 'center',
-              background: 'rgba(200, 169, 110, 0.04)'
+              background: 'rgba(70, 105, 65, 0.04)',
+              boxShadow: '0 0 6px rgba(70, 105, 65, 0.15)'
             }}
           >
-            <div style={{ fontSize: '6.5px', color: 'var(--ink)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-              ⚡ ACF Strike
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <div style={{ fontSize: '6.5px', color: '#3b5e38', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+                🗡️ Class Strike
+              </div>
+              {selectorDropdown}
             </div>
             <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-              Decisive Strike
+              Sneak Attack
             </div>
             <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-              2x Damage Strike
+              +{sneakAttackDice}d6 (Flank / Denied Dex)
             </div>
-            <button
-              className="xbtn"
-              onClick={() => showCustomAlert("Decisive Strike", "Decisive Strike (PHB2): Full-round action to deliver a single strike for double damage.", "Understood", "🥋")}
-              style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: 'var(--pb)', color: 'var(--ink)', cursor: 'pointer' }}
-            >
-              🥋 STRIKE INFO
-            </button>
-          </div>
-        );
-      }
 
-      return (
-        <div
-          className={`arpg-slot class-ability-slot ${isFlurryActive ? 'rarity-epic' : ''}`}
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            minHeight: '88px',
-            border: isFlurryActive ? '1px solid var(--red)' : '0.5px solid var(--pb)',
-            borderRadius: '4px',
-            padding: '5px 6px',
-            textAlign: 'center',
-            background: isFlurryActive ? 'rgba(139, 26, 26, 0.12)' : 'rgba(200, 169, 110, 0.04)',
-            boxShadow: isFlurryActive ? '0 0 8px rgba(139, 26, 26, 0.25)' : 'none'
-          }}
-        >
-          <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            🥋 Monk Flurry
+            <div style={{ fontSize: '6.5px', color: '#3b5e38', fontStyle: 'italic' }}>
+              Precision Strike
+            </div>
+
+            {/* Action Attack & Damage Buttons */}
+            <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+              <button
+                className="xbtn xbtn-atk"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollAttack(w, false, e, { sneakAttack: true })}
+                style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+                title={`Roll Sneak Attack (${formatMod(stdSneak.atkTotal)})`}
+              >
+                ATK {formatMod(stdSneak.atkTotal)}
+              </button>
+              <button
+                className="xbtn xbtn-dmg"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollDamage(w, false, e, { sneakAttack: true })}
+                style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+                title={`Roll Sneak Damage (${baseDmgDice}+${sneakAttackDice}d6 ${formatMod(stdSneak.dmgTotal)})`}
+              >
+                DMG +{sneakAttackDice}d6
+              </button>
+            </div>
           </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Flurry of Blows
-          </div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{flurryExtraAttacks} Extra Atk {flurryPenalty !== 0 ? `(${flurryPenalty})` : '(No Pen)'}
-          </div>
-          <div style={{ fontSize: '6.5px', color: isFlurryActive ? 'var(--red)' : 'var(--inkl)', fontStyle: 'italic' }}>
-            {isFlurryActive ? '✓ Applied on Full Attack' : 'Full Attack only'}
-          </div>
-          <button
-            className={`xbtn ${isFlurryActive ? 'xbtn-dmg' : ''}`}
-            onClick={() => CombatState.updatePCField('isFlurrying', !isFlurryActive)}
-            style={{
-              padding: '1px 4px',
-              fontSize: '6.5px',
-              fontWeight: 'bold',
-              width: '100%',
-              height: '16px',
-              lineHeight: 1,
-              borderColor: 'var(--red)',
-              color: isFlurryActive ? '#fff' : 'var(--red)',
-              background: isFlurryActive ? 'var(--red)' : 'rgba(139, 26, 26, 0.08)',
-              cursor: 'pointer'
-            }}
-          >
-            {isFlurryActive ? '🥋 FLURRY ON' : '🥋 FLURRY OFF'}
-          </button>
-        </div>
-      );
+        )
+      });
     }
 
-    // 9. Bard (Inspire Courage)
-    if (bardClass) {
-      const isBardActive = !!pc.isBardInspireActive;
-      let inspireBonus = 1;
-      const bLvl = bardClass.level || 0;
-      if (bLvl >= 20) inspireBonus = 4;
-      else if (bLvl >= 14) inspireBonus = 3;
-      else if (bLvl >= 8) inspireBonus = 2;
+    // 3. Duskblade (Arcane Channeling)
+    if (duskbladeClass) {
+      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+      const duskSeq = AttackEngine.calculateAttackSequence(pc, w, false, {});
+      const stdDusk = duskSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
 
-      return (
-        <div
-          className={`arpg-slot class-ability-slot ${isBardActive ? 'rarity-rare' : ''}`}
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            minHeight: '88px',
-            border: isBardActive ? '1px solid #c8a96e' : '0.5px solid var(--pb)',
-            borderRadius: '4px',
-            padding: '5px 6px',
-            textAlign: 'center',
-            background: isBardActive ? 'rgba(200, 169, 110, 0.15)' : 'rgba(200, 169, 110, 0.04)',
-            boxShadow: isBardActive ? '0 0 8px rgba(200, 169, 110, 0.3)' : 'none'
-          }}
-        >
-          <div style={{ fontSize: '6.5px', color: '#8a6d3b', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            🎵 Bardic Music
-          </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Inspire Courage
-          </div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{inspireBonus} Morale Atk &amp; Dmg
-          </div>
-          <div style={{ fontSize: '6.5px', color: isBardActive ? '#8a6d3b' : 'var(--inkl)', fontStyle: 'italic' }}>
-            {isBardActive ? '✓ Active on Atk & Dmg' : 'Self & Allies'}
-          </div>
-          <button
-            className="xbtn"
-            onClick={() => CombatState.updatePCField('isBardInspireActive', !isBardActive)}
+      strikes.push({
+        id: 'duskblade',
+        name: 'Arcane Channeling',
+        render: (selectorDropdown) => (
+          <div
+            className="arpg-slot class-ability-slot"
             style={{
-              padding: '1px 4px',
-              fontSize: '6.5px',
-              fontWeight: 'bold',
-              width: '100%',
-              height: '16px',
-              lineHeight: 1,
-              borderColor: '#c8a96e',
-              color: isBardActive ? '#fff' : '#8a6d3b',
-              background: isBardActive ? '#c8a96e' : 'rgba(200, 169, 110, 0.08)',
-              cursor: 'pointer'
+              position: 'relative',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              minHeight: '88px',
+              border: '0.5px solid #8e44ad',
+              borderRadius: '4px',
+              padding: '5px 6px',
+              textAlign: 'center',
+              background: 'rgba(142, 68, 173, 0.05)'
             }}
           >
-            {isBardActive ? '🎵 INSPIRE ON' : '🎵 INSPIRE OFF'}
-          </button>
-        </div>
-      );
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <div style={{ fontSize: '6.5px', color: '#8e44ad', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+                ⚡ Duskblade Strike
+              </div>
+              {selectorDropdown}
+            </div>
+            <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', fontWeight: 'bold', color: '#8e44ad', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+              Arcane Channeling
+            </div>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
+              Channel spell through strike
+            </div>
+            <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+              <button
+                className="xbtn xbtn-atk"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollAttack(w, false, e, { arcaneChanneling: true })}
+                style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+              >
+                ATK {formatMod(stdDusk.atkTotal)}
+              </button>
+              <button
+                className="xbtn xbtn-dmg"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollDamage(w, false, e, { arcaneChanneling: true })}
+                style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+              >
+                DMG+Spell
+              </button>
+            </div>
+          </div>
+        )
+      });
     }
 
-    // 10. Knight (Knight's Challenge)
-    if (knightClass) {
+    // 4. Scout (Skirmish Attack)
+    if (scoutClass) {
+      const skirmishLvl = scoutClass.level;
+      const skirmishDice = 1 + Math.floor((skirmishLvl - 1) / 4);
+      const skirmishAC = 1 + Math.floor((skirmishLvl - 1) / 4);
+      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+      const skirSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, skirmish: true });
+      const stdSkir = skirSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
+      const baseDmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : (w.damage || '1w6');
+
+      strikes.push({
+        id: 'skirmish',
+        name: 'Skirmish Attack',
+        render: (selectorDropdown) => (
+          <div
+            className="arpg-slot class-ability-slot"
+            style={{
+              position: 'relative',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              minHeight: '88px',
+              border: '0.5px solid #8c734b',
+              borderRadius: '4px',
+              padding: '5px 6px',
+              textAlign: 'center',
+              background: 'rgba(140, 115, 75, 0.05)'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <div style={{ fontSize: '6.5px', color: '#6d5734', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+                🏃 Scout Strike
+              </div>
+              {selectorDropdown}
+            </div>
+            <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', fontWeight: 'bold', color: '#6d5734', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+              Skirmish Attack
+            </div>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
+              +{skirmishDice}d6 Dmg / +{skirmishAC} AC (10ft+)
+            </div>
+            <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+              <button
+                className="xbtn xbtn-atk"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollAttack(w, false, e, { sneakAttack: true, skirmish: true })}
+                style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+              >
+                ATK {formatMod(stdSkir.atkTotal)}
+              </button>
+              <button
+                className="xbtn xbtn-dmg"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollDamage(w, false, e, { sneakAttack: true, skirmish: true })}
+                style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+                title={`Roll Skirmish Damage (${baseDmgDice}+${skirmishDice}d6 ${formatMod(stdSkir.dmgTotal)})`}
+              >
+                DMG +{skirmishDice}d6
+              </button>
+            </div>
+          </div>
+        )
+      });
+    }
+
+    // 5. Ninja (Sudden Strike)
+    if (ninjaClass) {
+      const ninjaDice = 1 + Math.floor((ninjaClass.level - 1) / 2);
+      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+      const sudSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, suddenStrike: true });
+      const stdSud = sudSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
+      const baseDmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : (w.damage || '1w6');
+
+      strikes.push({
+        id: 'sudden_strike',
+        name: 'Sudden Strike',
+        render: (selectorDropdown) => (
+          <div
+            className="arpg-slot class-ability-slot"
+            style={{
+              position: 'relative',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              minHeight: '88px',
+              border: '0.5px solid #5a6b7c',
+              borderRadius: '4px',
+              padding: '5px 6px',
+              textAlign: 'center',
+              background: 'rgba(90, 107, 124, 0.05)'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <div style={{ fontSize: '6.5px', color: '#4a5b6c', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+                🥷 Ninja Strike
+              </div>
+              {selectorDropdown}
+            </div>
+            <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', fontWeight: 'bold', color: '#4a5b6c', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+              Sudden Strike
+            </div>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
+              +{ninjaDice}d6 (Denied Dex)
+            </div>
+            <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+              <button
+                className="xbtn xbtn-atk"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollAttack(w, false, e, { sneakAttack: true, suddenStrike: true })}
+                style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+              >
+                ATK {formatMod(stdSud.atkTotal)}
+              </button>
+              <button
+                className="xbtn xbtn-dmg"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollDamage(w, false, e, { sneakAttack: true, suddenStrike: true })}
+                style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+                title={`Roll Sudden Strike (${baseDmgDice}+${ninjaDice}d6 ${formatMod(stdSud.dmgTotal)})`}
+              >
+                DMG +{ninjaDice}d6
+              </button>
+            </div>
+          </div>
+        )
+      });
+    }
+
+    // 6. Ranger (Favored Enemy Strike)
+    if (rangerLvl > 0 || favoredEnemyBonus > 0) {
+      const w = mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
+      const feSeq = AttackEngine.calculateAttackSequence(pc, w, false, { favoredEnemy: true });
+      const stdFE = feSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w8' };
+
+      strikes.push({
+        id: 'favored_enemy',
+        name: 'Favored Enemy',
+        render: (selectorDropdown) => (
+          <div
+            className="arpg-slot class-ability-slot"
+            style={{
+              position: 'relative',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              minHeight: '88px',
+              border: '1px solid #4a6274',
+              borderRadius: '4px',
+              padding: '5px 6px',
+              textAlign: 'center',
+              background: 'rgba(74, 98, 116, 0.08)'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <div style={{ fontSize: '6.5px', color: '#4a6274', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+                {hasDistractingAttack ? '⚡ ACF Ranger' : '🏹 Ranger'}
+              </div>
+              {selectorDropdown}
+            </div>
+            <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: '#4a6274', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+              Favored Enemy
+            </div>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
+              +{favoredEnemyBonus} Damage {hasDistractingAttack ? '(Flanks)' : `vs ${pc.favoredEnemy || 'Enemy'}`}
+            </div>
+            <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+              <button
+                className="xbtn xbtn-atk"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollAttack(w, false, e, { favoredEnemy: true })}
+                style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+              >
+                ATK {formatMod(stdFE.atkTotal)}
+              </button>
+              <button
+                className="xbtn xbtn-dmg"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollDamage(w, false, e, { favoredEnemy: true })}
+                style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+              >
+                DMG +{favoredEnemyBonus}
+              </button>
+            </div>
+          </div>
+        )
+      });
+    }
+
+    if (strikes.length === 0) {
+      // Default fallback / Stance
       return (
         <div
           className="arpg-slot class-ability-slot"
@@ -836,59 +682,51 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             minHeight: '88px',
-            border: '0.5px solid #2980b9',
+            border: '0.5px dashed var(--pb)',
             borderRadius: '4px',
             padding: '5px 6px',
             textAlign: 'center',
-            background: 'rgba(41, 128, 185, 0.05)'
+            background: 'rgba(200, 169, 110, 0.02)'
           }}
         >
-          <div style={{ fontSize: '6.5px', color: '#2980b9', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            🛡️ Knight Challenge
-          </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', fontWeight: 'bold', color: '#2980b9', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Fighting Challenge
-          </div>
-          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +1 Morale Atk &amp; Dmg
-          </div>
-          <button
-            className="xbtn"
-            onClick={() => showCustomAlert("Fighting Challenge", "Grants +1 morale bonus on attack rolls and weapon damage against designated foes (PHB2).", "Understood", "🛡️")}
-            style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: '#2980b9', color: '#2980b9', cursor: 'pointer' }}
-          >
-            🛡️ CHALLENGE
-          </button>
+          <div style={{ fontSize: '13px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>🎯</div>
+          <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Combat Stance</div>
+          <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>Standard Strike</div>
         </div>
       );
     }
 
-    // Default / Fighter / Caster fallback
-    return (
-      <div
-        className="arpg-slot class-ability-slot"
+    const selectedStrikeId = pc.selectedClassStrike && strikes.some(s => s.id === pc.selectedClassStrike)
+      ? pc.selectedClassStrike
+      : strikes[0].id;
+    const currentStrike = strikes.find(s => s.id === selectedStrikeId) || strikes[0];
+
+    const selectorDropdown = strikes.length > 1 ? (
+      <select
+        value={selectedStrikeId}
+        onChange={(e) => CombatState.updatePCField('selectedClassStrike', e.target.value)}
         style={{
-          position: 'relative',
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          minHeight: '88px',
-          border: '0.5px dashed var(--pb)',
-          borderRadius: '4px',
-          padding: '5px 6px',
-          textAlign: 'center',
-          background: 'rgba(200, 169, 110, 0.02)'
+          fontSize: '6.5px',
+          padding: '0 1px',
+          height: '12px',
+          lineHeight: 1,
+          borderRadius: '1px',
+          border: '0.5px solid var(--pb)',
+          background: 'white',
+          color: 'var(--ink)',
+          cursor: 'pointer',
+          maxWidth: '55px'
         }}
       >
-        <div style={{ fontSize: '13px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>🎯</div>
-        <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>Combat Stance</div>
-        <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>Standard Strike</div>
-      </div>
-    );
+        {strikes.map(s => (
+          <option key={s.id} value={s.id}>{s.name}</option>
+        ))}
+      </select>
+    ) : undefined;
+
+    return currentStrike.render(selectorDropdown);
   };
 
   if (pc.activeShape !== 'none') {
