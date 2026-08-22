@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 import { ClassACFSelector } from './ClassACFSelector';
+import { getAblMod } from '../attributeHelper';
 
 interface MonkFeaturesCardProps {
   pc: any;
@@ -14,10 +15,6 @@ export const MonkFeaturesCard: React.FC<MonkFeaturesCardProps> = ({ pc, level })
   const [abundantRulesOpen, setAbundantRulesOpen] = useState(false);
   const [quiveringRulesOpen, setQuiveringRulesOpen] = useState(false);
   const [emptyRulesOpen, setEmptyRulesOpen] = useState(false);
-
-  const getAblMod = (score: number) => {
-    return score >= 10 ? Math.floor((score - 10) / 2) : (score === 9 || score === 8 ? -1 : (score === 7 || score === 6 ? -2 : (score === 5 || score === 4 ? -4 : -5)));
-  };
 
   const wisValue = pc.wis ? pc.wis.getValue() : 10;
   const wisMod = getAblMod(wisValue);

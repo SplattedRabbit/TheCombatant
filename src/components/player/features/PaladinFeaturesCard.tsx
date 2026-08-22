@@ -4,6 +4,7 @@ import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { showRollBreakdown } from '@core/ui/components/dialogs.js';
 import { ClassACFSelector } from './ClassACFSelector';
+import { getAblMod } from '../attributeHelper';
 
 interface PaladinFeaturesCardProps {
   pc: any;
@@ -17,9 +18,6 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
   const [dgRulesOpen, setDgRulesOpen] = useState(false);
   const [turnRulesOpen, setTurnRulesOpen] = useState(false);
 
-  const getAblMod = (score: number) => {
-    return score >= 10 ? Math.floor((score - 10) / 2) : (score === 9 || score === 8 ? -1 : (score === 7 || score === 6 ? -2 : (score === 5 || score === 4 ? -4 : -5)));
-  };
 
   const chaValue = pc.cha ? pc.cha.getValue() : 10;
   const chaMod = getAblMod(chaValue);

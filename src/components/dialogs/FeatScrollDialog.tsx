@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { uiRegistry } from '@core/ui/ui-shared.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
-import { checkPrerequisites } from '../player/PCFeatsTab';
+// @ts-ignore
+import { checkPrerequisites } from '@core/rules/RulesFeats.js';
+
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
 
 interface FeatScrollDialogProps {

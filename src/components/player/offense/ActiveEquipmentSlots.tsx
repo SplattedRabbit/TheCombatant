@@ -18,6 +18,7 @@ import { WeaponRegistry, matchesFeatOption, getCritThreatDisplay } from '@core/m
 import { SHAPE_ATTACKS } from '@core/models/helpers/classes/DruidHelper.js';
 // @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
+import { getAblMod } from '../attributeHelper';
 
 function isWeaponTwoHanded(w: any): boolean {
   if (!w) return false;
@@ -79,7 +80,8 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
   const smiteMax = smiteAbility ? smiteAbility.max : 0;
   const smiteUsed = smiteAbility ? smiteAbility.used : 0;
 
-  const getAblMod = (score: number) => Math.floor((score - 10) / 2);
+
+
   const chaValue = pc.cha ? (typeof pc.cha.getValue === 'function' ? pc.cha.getValue() : pc.cha) : 10;
   const chaMod = getAblMod(chaValue);
 

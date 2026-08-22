@@ -1,4 +1,36 @@
+// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
+
+// ---------------------------------------------------------------------------
+// Kanonische Attribut-Hilfsfunktionen — zentrale Implementierung für alle Komponenten.
+// Verhindert die Duplizierung von Math.floor((score - 10) / 2) in 10+ Dateien.
+// ---------------------------------------------------------------------------
+
+/**
+ * Berechnet den Attributmodifikator aus einem rohen Zahlenwert.
+ * Verwendung: getAblMod(pc.str.getValue()) oder getAblMod(statScore)
+ */
+export const getAblMod = (score: number): number => Math.floor((score - 10) / 2);
+
+/**
+ * Berechnet den Attributmodifikator aus einem Stat-Objekt (live Engine oder React-Snapshot).
+ * Snapshot-kompatibel: prüft ob getValue() vorhanden ist, fällt sonst auf .base zurück.
+ * Verwendung: getStatMod(pc.str), getStatMod(pc.dex)
+ */
+export const getStatMod = (statObj: any): number => {
+  if (!statObj) return 0;
+  if (typeof statObj.getValue === 'function') return Math.floor((statObj.getValue() - 10) / 2);
+  const base = statObj.base ?? statObj;
+  return Math.floor(((typeof base === 'number' ? base : 10) - 10) / 2);
+};
+
+/**
+ * Formatiert einen Modifikatorwert als String mit Vorzeichen (+n oder -n).
+ * Verwendung: formatMod(getAblMod(score)) → "+3" oder "-1"
+ */
+export const formatMod = (val: number): string => (val >= 0 ? `+${val}` : `${val}`);
+
+
 
 /**
  * Shows a dialog with a detailed explanation of the selected D&D 3.5 attribute.

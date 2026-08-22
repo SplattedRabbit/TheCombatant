@@ -14,113 +14,16 @@ import { CombatState } from '@core/state.js';
 import { CombatFeats } from '@core/data/feats-data.js';
 // @ts-ignore
 import { showFeatScrollDialog } from '@core/ui/components/dialogs.js';
+// @ts-ignore
+import { checkPrerequisites } from '@core/rules/RulesFeats.js';
 
 interface PCFeatsTabProps {
   pc: any;
 }
 
-export const checkPrerequisites = (feat: any, pc: any): { met: boolean; details: Array<{ desc: string; met: boolean }> } => {
-  if (!feat.prereqs || feat.prereqs.length === 0) return { met: true, details: [] };
-
-  let met = true;
-  const details: Array<{ desc: string; met: boolean }> = [];
-  const autoFeatIds = typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats().map((f: any) => f.id) : [];
-  const learnedIds = [
-    ...(Array.isArray(pc.feats) ? pc.feats.map((f: any) => f.id) : []),
-    ...autoFeatIds
-  ];
-
-  const getAblVal = (statObj: any) => {
-    if (!statObj) return 10;
-    if (typeof statObj.getValue === 'function') return statObj.getValue();
-    return statObj.base ?? 10;
-  };
-
-  feat.prereqs.forEach((pr: any) => {
-    let prMet = false;
-    let desc = '';
-
-    if (pr.type === 'bab') {
-      const pcBab = pc.bab ? (typeof pc.bab.getValue === 'function' ? pc.bab.getValue() : pc.bab.base ?? pc.bab) : 0;
-      prMet = pcBab >= pr.value;
-      desc = `Base Attack Bonus (BAB) +${pr.value} (Current: +${pcBab})`;
-    } else if (pr.type === 'feat') {
-      prMet = learnedIds.includes(pr.id);
-      const parentFeat = CombatFeats.REGISTRY[pr.id];
-      const parentName = parentFeat ? (parentFeat.nameEn || parentFeat.nameDe) : pr.id;
-      desc = `Feat: ${parentName}`;
-    } else if (pr.type === 'classLevel') {
-      const cls = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === pr.class) : null;
-      const lvl = cls ? cls.level : 0;
-      prMet = lvl >= pr.value;
-      const classNameEn = pr.class === 'fighter' ? 'Fighter' : pr.class === 'wizard' ? 'Wizard' : pr.class;
-      desc = `${classNameEn} Level ${pr.value} (Current: Level ${lvl})`;
-    } else if (pr.type === 'class') {
-      const hasCls = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === pr.class);
-      prMet = hasCls;
-      const classNameEn = pr.class === 'wizard' ? 'Wizard' : pr.class;
-      desc = `Class: ${classNameEn}`;
-    } else if (pr.type === 'stat') {
-      const nameMap: Record<string, string> = { str: 'Strength', dex: 'Dexterity', con: 'Constitution', int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma' };
-      const pcStat = pc[pr.name] ? getAblVal(pc[pr.name]) : 10;
-      prMet = pcStat >= pr.value;
-      desc = `${nameMap[pr.name] || pr.name} ${pr.value}+ (Current: ${pcStat})`;
-    } else if (pr.type === 'level') {
-      const pcLevel = pc.level || pc.totalLevel || 1;
-      prMet = pcLevel >= pr.value;
-      desc = `Character Level ${pr.value} (Current: ${pcLevel})`;
-    } else if (pr.type === 'casterLevel') {
-      let maxCL = 0;
-      if (Array.isArray(pc.classes)) {
-        pc.classes.forEach((c: any) => {
-          if (['wizard', 'cleric', 'druid', 'sorcerer', 'bard'].includes(c.classType)) {
-            maxCL = Math.max(maxCL, c.level);
-          } else if (['paladin', 'ranger'].includes(c.classType) && c.level >= 4) {
-            maxCL = Math.max(maxCL, Math.floor(c.level / 2));
-          }
-        });
-      }
-      prMet = maxCL >= pr.value;
-      desc = `Caster Level ${pr.value} (Current: ${maxCL})`;
-    } else if (pr.type === 'custom') {
-      if (pr.desc === 'Fähigkeit, Untote zu vertreiben' || pr.desc === 'Ability to turn undead') {
-        const clericClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'cleric') : null;
-        const paladinClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'paladin') : null;
-        const clericLvl = clericClass ? clericClass.level : 0;
-        const paladinLvl = paladinClass ? paladinClass.level : 0;
-        prMet = clericLvl >= 1 || paladinLvl >= 4;
-        desc = `Special: Turn Undead ability (Cleric 1+ or Paladin 4+)`;
-      } else if (pr.desc === 'Bardenmusik' || pr.desc === 'Bardic music') {
-        const bardClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'bard') : null;
-        const bardLvl = bardClass ? bardClass.level : 0;
-        prMet = bardLvl >= 1;
-        desc = `Special: Bardic Music (Bard 1+)`;
-      } else if (pr.desc === 'Tiergestalt (Wild Shape)' || pr.desc === 'Wild shape') {
-        const druidClass = Array.isArray(pc.classes) ? pc.classes.find((c: any) => c.classType === 'druid') : null;
-        const druidLvl = druidClass ? druidClass.level : 0;
-        prMet = druidLvl >= 5;
-        desc = `Special: Wild Shape (Druid 5+)`;
-      } else if (pr.desc === 'Reiten 1 Rang' || pr.desc === 'Ride 1 rank') {
-        let ranks = 0;
-        if (typeof pc.getSkillRanks === 'function') {
-          ranks = pc.getSkillRanks('ride');
-        } else if (pc.skills && pc.skills['ride']) {
-          ranks = parseFloat(pc.skills['ride'].ranks) || 0;
-        }
-        prMet = ranks >= 1;
-        desc = `Special: Ride 1 rank (Current: ${ranks})`;
-      } else {
-        prMet = true;
-        desc = `Special: ${pr.desc}`;
-      }
-    }
-
-    if (!prMet) met = false;
-    details.push({ met: prMet, desc });
-  });
-
-  return { met, details };
-};
+// checkPrerequisites is now the canonical implementation in js/rules/RulesFeats.js
+// Re-exported here for backwards compatibility with any direct imports from this module.
+export { checkPrerequisites };
 
 const getBonusFeatClass = (feat: any) => {
   if (feat.category === 'combat') return 'fighter';

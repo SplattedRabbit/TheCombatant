@@ -13,6 +13,7 @@ import { CombatState } from '@core/state.js';
 import { BaseCard } from '../../shared/BaseCard';
 // @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
+import { getAblMod } from '../attributeHelper';
 
 interface ClassCombatAbilitiesCardProps {
   pc: any;
@@ -32,7 +33,11 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
   const bardClass = activeClasses.find((c: any) => c.classType === 'bard');
   const bardLvl = bardClass ? bardClass.level : 0;
 
-  const getAblMod = (score: number) => Math.floor((score - 10) / 2);
+  const getAblVal = (statObj: any): number => {
+    if (!statObj) return 10;
+    if (typeof statObj.getValue === 'function') return statObj.getValue();
+    return statObj.base ?? 10;
+  };
 
   // 1. Barbarian Rage resolution
   const rageAbility = Array.isArray(pc.dailyAbilities)

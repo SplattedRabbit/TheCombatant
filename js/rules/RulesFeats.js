@@ -108,46 +108,72 @@ export function validateFeatsAssignment(pc, featsList) {
   return { success: true };
 }
 
+/**
+ * Checks whether a character (pc) meets all prerequisites of a given feat.
+ *
+ * This is the canonical implementation of feat prerequisite checking.
+ * It is Snapshot-compatible: Stat objects may be plain objects (no .getValue())
+ * when called from the React snapshot, or full Stat instances from the engine.
+ *
+ * @param {object} feat - Feat definition (with prereqs array)
+ * @param {object} pc   - Character (live engine object or React snapshot)
+ * @returns {{ met: boolean, details: Array<{desc: string, met: boolean}> }}
+ */
 export function checkPrerequisites(feat, pc) {
   if (!feat.prereqs || feat.prereqs.length === 0) return { met: true, details: [] };
-  
+
   let met = true;
   const details = [];
-  const learnedIds = Array.isArray(pc.feats) ? pc.feats.map(f => f.id) : [];
-  
+
+  // Support both live engine (getAutomaticFeats method) and plain snapshots
+  const autoFeatIds = typeof pc.getAutomaticFeats === 'function'
+    ? pc.getAutomaticFeats().map(f => f.id)
+    : [];
+  const learnedIds = [
+    ...(Array.isArray(pc.feats) ? pc.feats.map(f => f.id) : []),
+    ...autoFeatIds
+  ];
+
+  // Resolve a Stat object (live or snapshot) to its numeric value
+  const getAblVal = (statObj) => {
+    if (!statObj) return 10;
+    if (typeof statObj.getValue === 'function') return statObj.getValue();
+    return statObj.base ?? 10;
+  };
+
   feat.prereqs.forEach(pr => {
     let prMet = false;
     let desc = '';
-    
+
     if (pr.type === 'bab') {
-      const pcBab = pc.bab ? pc.bab.getValue() : 0;
+      const pcBab = pc.bab ? (typeof pc.bab.getValue === 'function' ? pc.bab.getValue() : pc.bab.base ?? pc.bab) : 0;
       prMet = pcBab >= pr.value;
-      desc = `Grundangriffsbonus (BAB) +${pr.value} (Aktuell: +${pcBab})`;
+      desc = `Base Attack Bonus (BAB) +${pr.value} (Current: +${pcBab})`;
     } else if (pr.type === 'feat') {
       prMet = learnedIds.includes(pr.id);
       const parentFeat = CombatFeats.REGISTRY[pr.id];
-      const parentName = parentFeat ? parentFeat.nameDe : pr.id;
-      desc = `Talent: ${parentName}`;
+      const parentName = parentFeat ? (parentFeat.nameEn || parentFeat.nameDe) : pr.id;
+      desc = `Feat: ${parentName}`;
     } else if (pr.type === 'classLevel') {
       const cls = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === pr.class) : null;
       const lvl = cls ? cls.level : 0;
       prMet = lvl >= pr.value;
-      const classNameDe = pr.class === 'fighter' ? 'Kämpfer' : pr.class === 'wizard' ? 'Magier' : pr.class;
-      desc = `${classNameDe} Stufe ${pr.value} (Aktuell: Stufe ${lvl})`;
+      const classNameEn = pr.class === 'fighter' ? 'Fighter' : pr.class === 'wizard' ? 'Wizard' : pr.class;
+      desc = `${classNameEn} Level ${pr.value} (Current: Level ${lvl})`;
     } else if (pr.type === 'class') {
       const hasCls = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === pr.class);
       prMet = hasCls;
-      const classNameDe = pr.class === 'wizard' ? 'Magier' : pr.class;
-      desc = `Klasse: ${classNameDe}`;
+      const classNameEn = pr.class === 'wizard' ? 'Wizard' : pr.class;
+      desc = `Class: ${classNameEn}`;
     } else if (pr.type === 'stat') {
-      const nameMap = { str: 'Stärke', dex: 'Geschicklichkeit', con: 'Konstitution', int: 'Intelligenz', wis: 'Weisheit', cha: 'Charisma' };
-      const pcStat = pc[pr.name] ? pc[pr.name].getValue() : 10;
+      const nameMap = { str: 'Strength', dex: 'Dexterity', con: 'Constitution', int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma' };
+      const pcStat = pc[pr.name] ? getAblVal(pc[pr.name]) : 10;
       prMet = pcStat >= pr.value;
-      desc = `${nameMap[pr.name] || pr.name} ${pr.value}+ (Aktuell: ${pcStat})`;
+      desc = `${nameMap[pr.name] || pr.name} ${pr.value}+ (Current: ${pcStat})`;
     } else if (pr.type === 'level') {
-      const pcLevel = pc.level || 1;
+      const pcLevel = pc.level || pc.totalLevel || 1;
       prMet = pcLevel >= pr.value;
-      desc = `Charakterstufe ${pr.value} (Aktuell: ${pcLevel})`;
+      desc = `Character Level ${pr.value} (Current: ${pcLevel})`;
     } else if (pr.type === 'casterLevel') {
       let maxCL = 0;
       if (Array.isArray(pc.classes)) {
@@ -160,7 +186,7 @@ export function checkPrerequisites(feat, pc) {
         });
       }
       prMet = maxCL >= pr.value;
-      desc = `Caster level ${pr.value} (Current: ${maxCL})`;
+      desc = `Caster Level ${pr.value} (Current: ${maxCL})`;
     } else if (pr.type === 'custom') {
       if (pr.desc === 'Fähigkeit, Untote zu vertreiben' || pr.desc === 'Ability to turn undead') {
         const clericClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'cleric') : null;
@@ -168,17 +194,17 @@ export function checkPrerequisites(feat, pc) {
         const clericLvl = clericClass ? clericClass.level : 0;
         const paladinLvl = paladinClass ? paladinClass.level : 0;
         prMet = clericLvl >= 1 || paladinLvl >= 4;
-        desc = `Special: Ability to turn undead (Cleric 1+ or Paladin 4+)`;
+        desc = `Special: Turn Undead ability (Cleric 1+ or Paladin 4+)`;
       } else if (pr.desc === 'Bardenmusik' || pr.desc === 'Bardic music') {
         const bardClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'bard') : null;
         const bardLvl = bardClass ? bardClass.level : 0;
         prMet = bardLvl >= 1;
-        desc = `Special: Bardic music (Bard 1+)`;
+        desc = `Special: Bardic Music (Bard 1+)`;
       } else if (pr.desc === 'Tiergestalt (Wild Shape)' || pr.desc === 'Wild shape') {
         const druidClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'druid') : null;
         const druidLvl = druidClass ? druidClass.level : 0;
         prMet = druidLvl >= 5;
-        desc = `Special: Wild shape (Druid 5+)`;
+        desc = `Special: Wild Shape (Druid 5+)`;
       } else if (pr.desc === 'Reiten 1 Rang' || pr.desc === 'Ride 1 rank') {
         let ranks = 0;
         if (typeof pc.getSkillRanks === 'function') {
@@ -193,10 +219,11 @@ export function checkPrerequisites(feat, pc) {
         desc = `Special: ${pr.desc}`;
       }
     }
-    
+
     if (!prMet) met = false;
     details.push({ met: prMet, desc });
   });
-  
+
   return { met, details };
 }
+

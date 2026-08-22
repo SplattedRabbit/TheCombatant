@@ -4,6 +4,7 @@ import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { ClassACFSelector } from './ClassACFSelector';
+import { getAblMod } from '../attributeHelper';
 
 interface RangerFeaturesCardProps {
   pc: any;
@@ -23,9 +24,6 @@ export const RangerFeaturesCard: React.FC<RangerFeaturesCardProps> = ({ pc, leve
     setFavoredEnemyLocal(pc.favoredEnemy || '');
   }, [pc.favoredEnemy]);
 
-  const getAblMod = (score: number) => {
-    return score >= 10 ? Math.floor((score - 10) / 2) : (score === 9 || score === 8 ? -1 : (score === 7 || score === 6 ? -2 : (score === 5 || score === 4 ? -4 : -5)));
-  };
 
   const enemyBonus = Math.floor(level / 5) * 2 + 2;
   const combatStyle = pc.rangerCombatStyle || 'none';

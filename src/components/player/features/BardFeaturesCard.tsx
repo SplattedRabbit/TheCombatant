@@ -8,6 +8,7 @@ import { applyFeatSkillBonuses } from '@core/models/helpers/skills/SkillFeatAppl
 // @ts-ignore
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
 import { ClassACFSelector } from './ClassACFSelector';
+import { getAblMod } from '../attributeHelper';
 
 interface BardFeaturesCardProps {
   pc: any;
@@ -158,9 +159,6 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
   };
 
   const handleRollBardicKnowledge = () => {
-    const getAblMod = (score: number) => {
-      return score >= 10 ? Math.floor((score - 10) / 2) : (score === 9 || score === 8 ? -1 : (score === 7 || score === 6 ? -2 : (score === 5 || score === 4 ? -4 : -5)));
-    };
     const intValue = pc.int ? pc.int.getValue() : 10;
     const intMod = getAblMod(intValue);
     const totalBonus = level + intMod;
@@ -236,9 +234,6 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
       }
 
       let effectHtml = song.effect;
-      const getAblMod = (score: number) => {
-        return score >= 10 ? Math.floor((score - 10) / 2) : (score === 9 || score === 8 ? -1 : (score === 7 || score === 6 ? -2 : (score === 5 || score === 4 ? -4 : -5)));
-      };
       const chaValue = pc.cha ? pc.cha.getValue() : 10;
       const chaMod = getAblMod(chaValue);
 
