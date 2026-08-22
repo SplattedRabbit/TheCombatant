@@ -254,8 +254,8 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
         {sneakAttackDice > 0 && (
           <div
             style={{
-              background: 'rgba(39, 174, 96, 0.06)',
-              border: '1px solid #27ae60',
+              background: 'rgba(70, 105, 65, 0.04)',
+              border: '1px solid rgba(70, 105, 65, 0.4)',
               borderRadius: '3px',
               padding: '5px 8px',
               display: 'flex',
@@ -264,7 +264,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ color: '#1e824c', fontWeight: 'bold', fontSize: '8.5px', fontFamily: "'IM Fell English SC', serif" }}>
+              <div style={{ color: 'var(--red)', fontWeight: 'bold', fontSize: '8.5px', fontFamily: "'IM Fell English SC', serif" }}>
                 🗡️ Sneak Attack (+{sneakAttackDice}d6 Damage)
               </div>
 
@@ -279,9 +279,9 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                     ⚔️ Sneak Atk
                   </button>
                   <button
-                    className="xbtn"
+                    className="xbtn xbtn-dmg"
                     onClick={(e) => handleRollDamage(mainHandWeapon, false, e, { sneakAttack: true })}
-                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold', borderColor: '#27ae60', color: '#1e824c', background: 'rgba(39, 174, 96, 0.12)' }}
+                    style={{ padding: '1px 5px', fontSize: '7px', fontWeight: 'bold' }}
                     title="Roll Damage with Sneak Attack"
                   >
                     💥 Sneak Dmg (+{sneakAttackDice}d6)
