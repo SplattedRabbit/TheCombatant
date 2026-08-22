@@ -32,13 +32,22 @@
     <script src="./peerjs.min.js"></script>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      // Service Worker Registrierung (Offline-Modus via dist/service-worker.js)
+      // Service Worker: Only in production (GitHub Pages); in local dev mode, auto-unregister to enable instant Vite HMR
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./service-worker.js')
-            .then(reg => console.log('[SW] Registriert:', reg.scope))
-            .catch(err => console.warn('[SW] Registrierung fehlgeschlagen:', err));
-        });
+        const isLocalDev = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+        if (isLocalDev) {
+          navigator.serviceWorker.getRegistrations().then(registrations => {
+            for (const registration of registrations) {
+              registration.unregister();
+            }
+          });
+        } else {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./service-worker.js')
+              .then(reg => console.log('[SW] Registriert:', reg.scope))
+              .catch(err => console.warn('[SW] Registrierung fehlgeschlagen:', err));
+          });
+        }
       }
     </script>
   </body>
