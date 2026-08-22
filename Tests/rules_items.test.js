@@ -273,3 +273,70 @@ test('Armory 2.0 - Rules: Item Sets Engine (MIC Mechanics)', () => {
   assert.strictEqual(effects.activeSets[0].equippedCount, 3);
   assert.strictEqual(effects.activeSets[0].activeBonuses.length, 2);
 });
+
+test('Armory 2.0 - Magic Consumables (Potions & Wands Action Execution)', () => {
+  const s = CombatState.getState();
+  s.mode = 'player';
+  s.combatants = [];
+
+  const char = createCombatant({
+    name: 'Wounded Fighter',
+    hp: 10,
+    maxHp: 30,
+    items: [
+      new Item({
+        id: 'pot-cure',
+        name: 'Potion of Cure Light Wounds',
+        slot: 'slotless',
+        healingFormula: '1d8+1',
+        charges: { current: 1, max: 1 }
+      }),
+      new Item({
+        id: 'wand-mm',
+        name: 'Wand of Magic Missile',
+        slot: 'slotless',
+        charges: { current: 50, max: 50 },
+        activation: {
+          actionType: 'standard',
+          costType: 'charges',
+          cost: 1,
+          effectDescription: '1d4+1 force missile'
+        }
+      }),
+      new Item({
+        id: 'pot-str',
+        name: "Potion of Bull's Strength",
+        slot: 'slotless',
+        charges: { current: 1, max: 1 },
+        activation: {
+          actionType: 'standard',
+          costType: 'charges',
+          cost: 1,
+          appliedBuffKey: 'bulls_strength'
+        }
+      })
+    ]
+  });
+  s.combatants.push(char);
+  s.localPCId = char.id;
+
+  // 1. Drink healing potion (idx 0)
+  const healRes = CombatState.usePCItemAction(0);
+  assert.strictEqual(healRes.success, true);
+  assert.ok(char.hp > 10, 'HP should have increased');
+  // Potion should be consumed and removed from items
+  assert.strictEqual(char.items.length, 2);
+  assert.strictEqual(char.items[0].name, 'Wand of Magic Missile');
+
+  // 2. Use wand charge (idx 0 now)
+  const wandRes = CombatState.usePCItemAction(0);
+  assert.strictEqual(wandRes.success, true);
+  assert.strictEqual(char.items[0].charges.current, 49);
+  assert.strictEqual(char.items.length, 2); // Wand remains in inventory
+
+  // 3. Drink Bull's strength potion (idx 1)
+  const buffRes = CombatState.usePCItemAction(1);
+  assert.strictEqual(buffRes.success, true);
+  assert.ok(char.activeBuffs.some(b => b.spellKey === 'bulls_strength'), 'Buff should be active');
+  assert.strictEqual(char.items.length, 1); // Potion consumed
+});

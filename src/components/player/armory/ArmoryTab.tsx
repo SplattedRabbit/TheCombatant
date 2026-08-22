@@ -29,6 +29,17 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   const [selectedTiers, setSelectedTiers] = useState<Record<string, string>>({});
   const [activeEquipSlot, setActiveEquipSlot] = useState<string | null>(null);
   const [editingItemData, setEditingItemData] = useState<{ item?: any; itemIdx?: number; defaultSlot?: string } | null>(null);
+  const [actionFeedback, setActionFeedback] = useState<string | null>(null);
+
+  const handleUseItem = (idx: number) => {
+    const res = CombatState.usePCItemAction(idx);
+    if (res && res.message) {
+      setActionFeedback(res.message);
+      setTimeout(() => {
+        setActionFeedback(null);
+      }, 4500);
+    }
+  };
 
   const items = Array.isArray(pc.items) ? pc.items : [];
 
@@ -135,7 +146,37 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   const stackingBreakdown = getItemStackingBreakdown(pc);
 
   return (
-    <div className="armory-layout-grid" style={{ marginBottom: '16px' }}>
+    <div style={{ marginBottom: '16px' }}>
+      {/* Action Feedback Toast */}
+      {actionFeedback && (
+        <div
+          style={{
+            background: 'rgba(16, 185, 129, 0.15)',
+            border: '1px solid #10b981',
+            borderRadius: '3px',
+            padding: '6px 12px',
+            marginBottom: '10px',
+            color: '#065f46',
+            fontSize: '11px',
+            fontFamily: "'Crimson Text', serif",
+            fontWeight: 'bold',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}
+        >
+          <span>✨ {actionFeedback}</span>
+          <button
+            type="button"
+            onClick={() => setActionFeedback(null)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#065f46', fontWeight: 'bold', fontSize: '10px' }}
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+      <div className="armory-layout-grid">
       
       {/* === LEFT COLUMN: Paperdoll / Equipped Slots === */}
       <BaseCard
@@ -230,41 +271,84 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                 🎒 Slotless & Wondrous Items ({slotlessEquipped.length})
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                {slotlessEquipped.map(({ item, idx }) => (
-                  <div
-                    key={item.id || idx}
-                    style={{
-                      background: 'rgba(253, 246, 226, 0.65)',
-                      border: '1px solid var(--pb)',
-                      borderLeft: '3px solid var(--red)',
-                      borderRadius: '3px',
-                      padding: '4px 8px',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center'
-                    }}
-                  >
-                    <div>
-                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
-                        {item.name}
-                      </span>
-                      {item.description && (
-                        <span style={{ fontSize: '8.5px', color: 'var(--inkm)', marginLeft: '6px', fontFamily: "'Crimson Text', serif" }}>
-                          {item.description.length > 45 ? item.description.substring(0, 45) + '...' : item.description}
-                        </span>
-                      )}
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => handleUnequipSlot(idx)}
-                      className="xbtn"
-                      style={{ fontSize: '8px', padding: '1px 5px' }}
-                      title="Unequip"
+                {slotlessEquipped.map(({ item, idx }) => {
+                  const itemNameLower = (item.name || '').toLowerCase();
+                  const isPotion = itemNameLower.includes('potion') || itemNameLower.includes('trank') || (item.charges?.max === 1 && !itemNameLower.includes('wand') && !itemNameLower.includes('scroll'));
+                  const isWand = itemNameLower.includes('wand') || itemNameLower.includes('zauberstab');
+                  const isScroll = itemNameLower.includes('scroll') || itemNameLower.includes('schriftrolle');
+                  const hasActivation = !!item.activation?.effectDescription || !!item.activation?.appliedBuffKey || !!item.charges || !!item.dailyUses;
+                  const isUsable = isPotion || isWand || isScroll || hasActivation;
+
+                  return (
+                    <div
+                      key={item.id || idx}
+                      style={{
+                        background: 'rgba(253, 246, 226, 0.65)',
+                        border: '1px solid var(--pb)',
+                        borderLeft: '3px solid var(--red)',
+                        borderRadius: '3px',
+                        padding: '4px 8px',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                      }}
                     >
-                      ✕
-                    </button>
-                  </div>
-                ))}
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', flex: 1, minWidth: 0 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            {item.name}
+                          </span>
+                          {item.charges && (
+                            <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.06)', padding: '0 3px', borderRadius: '2px' }}>
+                              {item.charges.current}/{item.charges.max}
+                            </span>
+                          )}
+                          {item.dailyUses && (
+                            <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.06)', padding: '0 3px', borderRadius: '2px' }}>
+                              {item.dailyUses.current}/{item.dailyUses.max}
+                            </span>
+                          )}
+                        </div>
+                        {item.description && (
+                          <span style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            {item.description}
+                          </span>
+                        )}
+                      </div>
+
+                      <div style={{ display: 'flex', gap: '3px', alignItems: 'center', marginLeft: '6px' }}>
+                        {isUsable && (
+                          <button
+                            type="button"
+                            onClick={() => handleUseItem(idx)}
+                            className="btn"
+                            style={{
+                              fontSize: '8px',
+                              padding: '1px 6px',
+                              fontFamily: "'IM Fell English SC', serif",
+                              background: isPotion ? 'rgba(16, 185, 129, 0.15)' : (isWand ? 'rgba(139, 92, 246, 0.15)' : 'rgba(217, 119, 6, 0.15)'),
+                              borderColor: isPotion ? '#10b981' : (isWand ? '#8b5cf6' : '#d97706'),
+                              color: isPotion ? '#065f46' : (isWand ? '#5b21b6' : '#92400e'),
+                              fontWeight: 'bold'
+                            }}
+                            title={isPotion ? "Drink potion" : (isWand ? "Cast wand charge" : "Use item")}
+                          >
+                            {isPotion ? '🍷 Drink' : (isWand ? '🪄 Cast' : (isScroll ? '📜 Read' : '⚡ Use'))}
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => handleUnequipSlot(idx)}
+                          className="xbtn"
+                          style={{ fontSize: '8px', padding: '1px 5px' }}
+                          title="Unequip"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -397,6 +481,13 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                   const rawEffects = Array.isArray(item.effects) ? item.effects : [];
                   const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);
 
+                  const itemNameLower = (item.name || '').toLowerCase();
+                  const isPotion = itemNameLower.includes('potion') || itemNameLower.includes('trank') || (item.charges?.max === 1 && !itemNameLower.includes('wand') && !itemNameLower.includes('scroll'));
+                  const isWand = itemNameLower.includes('wand') || itemNameLower.includes('zauberstab');
+                  const isScroll = itemNameLower.includes('scroll') || itemNameLower.includes('schriftrolle');
+                  const hasActivation = !!item.activation?.effectDescription || !!item.activation?.appliedBuffKey || !!item.charges || !!item.dailyUses;
+                  const isUsable = isPotion || isWand || isScroll || hasActivation;
+
                   return (
                     <div
                       key={item.id || idx}
@@ -421,9 +512,38 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                           <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.04)', padding: '0 3px', borderRadius: '2px' }}>
                             {slotDef.nameEn}
                           </span>
+                          {item.charges && (
+                            <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.06)', padding: '0 3px', borderRadius: '2px' }}>
+                              {item.charges.current}/{item.charges.max}
+                            </span>
+                          )}
+                          {item.dailyUses && (
+                            <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.06)', padding: '0 3px', borderRadius: '2px' }}>
+                              {item.dailyUses.current}/{item.dailyUses.max}
+                            </span>
+                          )}
                         </div>
 
                         <div style={{ display: 'flex', gap: '3px' }}>
+                          {isUsable && (
+                            <button
+                              type="button"
+                              onClick={() => handleUseItem(idx)}
+                              className="btn"
+                              style={{
+                                fontSize: '8px',
+                                padding: '1px 6px',
+                                fontFamily: "'IM Fell English SC', serif",
+                                background: isPotion ? 'rgba(16, 185, 129, 0.15)' : (isWand ? 'rgba(139, 92, 246, 0.15)' : 'rgba(217, 119, 6, 0.15)'),
+                                borderColor: isPotion ? '#10b981' : (isWand ? '#8b5cf6' : '#d97706'),
+                                color: isPotion ? '#065f46' : (isWand ? '#5b21b6' : '#92400e'),
+                                fontWeight: 'bold'
+                              }}
+                              title={isPotion ? "Drink potion" : (isWand ? "Cast wand charge" : "Use item")}
+                            >
+                              {isPotion ? '🍷 Drink' : (isWand ? '🪄 Cast' : (isScroll ? '📜 Read' : '⚡ Use'))}
+                            </button>
+                          )}
                           <button
                             type="button"
                             onClick={() => CombatState.equipPCItem(idx, item.slot)}
@@ -624,6 +744,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
         />
       )}
 
+    </div>
     </div>
   );
 };

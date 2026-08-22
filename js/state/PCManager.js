@@ -45,6 +45,7 @@ export {
   unequipPCItem,
   swapPCItem,
   usePCItemCharge,
+  usePCItemAction,
   addPCItemFromCompendium
 } from './pc/PCEquipment.js';
 

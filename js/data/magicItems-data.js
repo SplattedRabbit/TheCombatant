@@ -662,7 +662,148 @@ export const MAGIC_ITEMS_REGISTRY = {
     description: "Part of Wraith's Woe. Grants +1 resistance bonus on Will saves."
   },
 
-  // === SLOTLESS / WONDROUS ===
+  // === SLOTLESS / WONDROUS / CONSUMABLES ===
+  potion_cure_light_wounds: {
+    key: 'potion_cure_light_wounds',
+    name: 'Potion of Cure Light Wounds',
+    slot: 'slotless',
+    aura: 'Faint Conjuration',
+    effects: [],
+    healingFormula: '1d8+1',
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Restores 1d8+1 hit points when drunk.'
+    },
+    description: 'Restores 1d8+1 HP when consumed.'
+  },
+  potion_cure_moderate_wounds: {
+    key: 'potion_cure_moderate_wounds',
+    name: 'Potion of Cure Moderate Wounds',
+    slot: 'slotless',
+    aura: 'Faint Conjuration',
+    effects: [],
+    healingFormula: '2d8+3',
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Restores 2d8+3 hit points when drunk.'
+    },
+    description: 'Restores 2d8+3 HP when consumed.'
+  },
+  potion_cure_serious_wounds: {
+    key: 'potion_cure_serious_wounds',
+    name: 'Potion of Cure Serious Wounds',
+    slot: 'slotless',
+    aura: 'Moderate Conjuration',
+    effects: [],
+    healingFormula: '3d8+5',
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Restores 3d8+5 hit points when drunk.'
+    },
+    description: 'Restores 3d8+5 HP when consumed.'
+  },
+  potion_bulls_strength: {
+    key: 'potion_bulls_strength',
+    name: "Potion of Bull's Strength",
+    slot: 'slotless',
+    aura: 'Faint Transmutation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'bulls_strength',
+      effectDescription: 'Grants +4 enhancement bonus to Strength for 3 minutes.'
+    },
+    description: 'Grants +4 STR for 3 minutes when drunk.'
+  },
+  potion_invisibility: {
+    key: 'potion_invisibility',
+    name: 'Potion of Invisibility',
+    slot: 'slotless',
+    aura: 'Faint Illusion',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      appliedBuffKey: 'invisibility',
+      effectDescription: 'Grants Invisibility for 3 minutes.'
+    },
+    description: 'Grants Invisibility for 3 minutes when drunk.'
+  },
+  wand_of_magic_missile_cl1: {
+    key: 'wand_of_magic_missile_cl1',
+    name: 'Wand of Magic Missile (CL 1)',
+    slot: 'slotless',
+    aura: 'Faint Evocation',
+    effects: [],
+    charges: { current: 50, max: 50 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Fires 1 magic missile dealing 1d4+1 force damage.'
+    },
+    description: '50 charges. Casts Magic Missile (1 missile, 1d4+1 force damage).'
+  },
+  wand_of_cure_light_wounds: {
+    key: 'wand_of_cure_light_wounds',
+    name: 'Wand of Cure Light Wounds',
+    slot: 'slotless',
+    aura: 'Faint Conjuration',
+    effects: [],
+    healingFormula: '1d8+1',
+    charges: { current: 50, max: 50 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Heals 1d8+1 hit points on target.'
+    },
+    description: '50 charges. Heals 1d8+1 HP per charge.'
+  },
+  wand_of_fireball_cl5: {
+    key: 'wand_of_fireball_cl5',
+    name: 'Wand of Fireball (CL 5)',
+    slot: 'slotless',
+    aura: 'Moderate Evocation',
+    effects: [],
+    charges: { current: 50, max: 50 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Casts Fireball dealing 5d6 fire damage (DC 14 Reflex half).'
+    },
+    description: '50 charges. Casts 5d6 Fireball.'
+  },
+  scroll_of_fireball: {
+    key: 'scroll_of_fireball',
+    name: 'Scroll of Fireball',
+    slot: 'slotless',
+    aura: 'Moderate Evocation',
+    effects: [],
+    charges: { current: 1, max: 1 },
+    activation: {
+      actionType: 'standard',
+      costType: 'charges',
+      cost: 1,
+      effectDescription: 'Casts Fireball dealing 5d6 fire damage (DC 14 Reflex half).'
+    },
+    description: 'Single-use scroll. Casts Fireball (5d6 fire damage).'
+  },
   pearl_of_power_1: {
     key: 'pearl_of_power_1',
     name: 'Pearl of Power (1st Level)',
@@ -685,36 +826,6 @@ export const MAGIC_ITEMS_REGISTRY = {
     aura: 'Moderate Conjuration',
     effects: [],
     description: 'Holds up to 250 lbs or 30 cu. ft. while weighing only 15 lbs.'
-  },
-  potion_cure_light_wounds: {
-    key: 'potion_cure_light_wounds',
-    name: 'Potion of Cure Light Wounds',
-    slot: 'slotless',
-    aura: 'Faint Conjuration',
-    effects: [],
-    charges: { current: 1, max: 1 },
-    activation: {
-      actionType: 'standard',
-      costType: 'charges',
-      cost: 1,
-      effectDescription: 'Heals 1d8+1 hit points.'
-    },
-    description: 'Restores 1d8+1 HP when consumed.'
-  },
-  wand_of_magic_missile_cl1: {
-    key: 'wand_of_magic_missile_cl1',
-    name: 'Wand of Magic Missile (CL 1)',
-    slot: 'slotless',
-    aura: 'Faint Evocation',
-    effects: [],
-    charges: { current: 50, max: 50 },
-    activation: {
-      actionType: 'standard',
-      costType: 'charges',
-      cost: 1,
-      effectDescription: 'Fires 1 magic missile dealing 1d4+1 force damage.'
-    },
-    description: '50 charges. Casts Magic Missile (1 missile, 1d4+1 force damage).'
   }
 };
 
@@ -1037,7 +1148,46 @@ export const CONSOLIDATED_COMPENDIUM = [
     variants: [{ label: 'Set Piece', key: 'ring_of_dread' }]
   },
 
-  // Slotless
+  // Slotless & Consumables
+  {
+    id: 'potion_cure_wounds',
+    baseName: 'Potion of Cure Wounds',
+    slot: 'slotless',
+    description: 'Restores hit points when drunk.',
+    variants: [
+      { label: 'Light (1d8+1)', key: 'potion_cure_light_wounds' },
+      { label: 'Moderate (2d8+3)', key: 'potion_cure_moderate_wounds' },
+      { label: 'Serious (3d8+5)', key: 'potion_cure_serious_wounds' }
+    ]
+  },
+  {
+    id: 'potion_buffs',
+    baseName: 'Enhancement Potions',
+    slot: 'slotless',
+    description: 'Imbues drinker with magical enhancements.',
+    variants: [
+      { label: "Bull's Str (+4 STR)", key: 'potion_bulls_strength' },
+      { label: 'Invisibility', key: 'potion_invisibility' }
+    ]
+  },
+  {
+    id: 'wands',
+    baseName: 'Magic Wands (50 Charges)',
+    slot: 'slotless',
+    description: 'Spellcasting wands with 50 charges.',
+    variants: [
+      { label: 'Magic Missile (CL 1)', key: 'wand_of_magic_missile_cl1' },
+      { label: 'Cure Light Wounds', key: 'wand_of_cure_light_wounds' },
+      { label: 'Fireball (CL 5)', key: 'wand_of_fireball_cl5' }
+    ]
+  },
+  {
+    id: 'scroll_of_fireball',
+    baseName: 'Scroll of Fireball',
+    slot: 'slotless',
+    description: 'Single-use scroll. Casts Fireball (5d6 fire damage).',
+    variants: [{ label: '1 Cast', key: 'scroll_of_fireball' }]
+  },
   {
     id: 'pearl_of_power',
     baseName: 'Pearl of Power (1st Level)',
@@ -1051,19 +1201,5 @@ export const CONSOLIDATED_COMPENDIUM = [
     slot: 'slotless',
     description: 'Holds up to 250 lbs or 30 cu. ft. while weighing only 15 lbs.',
     variants: [{ label: 'Type I', key: 'bag_of_holding_type1' }]
-  },
-  {
-    id: 'potion_cure_light_wounds',
-    baseName: 'Potion of Cure Light Wounds',
-    slot: 'slotless',
-    description: 'Restores 1d8+1 HP when consumed.',
-    variants: [{ label: 'Standard', key: 'potion_cure_light_wounds' }]
-  },
-  {
-    id: 'wand_of_magic_missile',
-    baseName: 'Wand of Magic Missile (CL 1)',
-    slot: 'slotless',
-    description: '50 charges. Casts Magic Missile (1 missile, 1d4+1 force damage).',
-    variants: [{ label: '50 Charges', key: 'wand_of_magic_missile_cl1' }]
   }
 ];

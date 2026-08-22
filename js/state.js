@@ -76,6 +76,7 @@ import {
   unequipPCItem,
   swapPCItem,
   usePCItemCharge,
+  usePCItemAction,
   addPCItemFromCompendium
 } from './state/PCManager.js';
 
@@ -165,6 +166,7 @@ export {
   unequipPCItem,
   swapPCItem,
   usePCItemCharge,
+  usePCItemAction,
   addPCItemFromCompendium,
   
   updateMeta,
@@ -247,6 +249,7 @@ export const CombatState = {
   unequipPCItem,
   swapPCItem,
   usePCItemCharge,
+  usePCItemAction,
   addPCItemFromCompendium,
   updateMeta,
   addCombatant,

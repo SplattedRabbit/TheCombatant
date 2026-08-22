@@ -426,6 +426,109 @@ export function usePCItemCharge(itemIdx, amount = 1) {
 }
 
 /**
+ * Activates or consumes a usable magic item (potion, wand, scroll, wondrous item).
+ * @param {number} itemIdx
+ * @returns {{ success: boolean, message: string, healAmount?: number }}
+ */
+export function usePCItemAction(itemIdx) {
+  const pc = getActivePC();
+  if (!pc || !Array.isArray(pc.items) || !pc.items[itemIdx]) {
+    return { success: false, message: 'Item not found.' };
+  }
+
+  const item = pc.items[itemIdx];
+  const itemName = (item.name || '').toLowerCase();
+  const isPotion = itemName.includes('potion') || itemName.includes('trank') || (item.slot === 'slotless' && item.charges?.max === 1 && !itemName.includes('wand') && !itemName.includes('scroll'));
+  const isScroll = itemName.includes('scroll') || itemName.includes('schriftrolle');
+  const isWand = itemName.includes('wand') || itemName.includes('zauberstab');
+
+  // Check available charges/daily uses
+  if (item.charges && item.charges.current <= 0) {
+    return { success: false, message: `No charges remaining on ${item.name}.` };
+  }
+  if (item.dailyUses && item.dailyUses.current <= 0) {
+    return { success: false, message: `No daily uses remaining today on ${item.name}.` };
+  }
+
+  let resultMessage = '';
+  let healAmount = 0;
+
+  // 1. Healing Resolution
+  const healingFormula = item.healingFormula || (isPotion && (itemName.includes('cure') || itemName.includes('heil')) ? '1d8+1' : null);
+  
+  if (healingFormula) {
+    const match = healingFormula.match(/(\d+)d(\d+)(?:\+(\d+))?/i);
+    if (match) {
+      const numDice = parseInt(match[1]) || 1;
+      const dieSize = parseInt(match[2]) || 8;
+      const bonus = parseInt(match[3]) || 0;
+      let rolledSum = 0;
+      for (let i = 0; i < numDice; i++) {
+        rolledSum += Math.floor(Math.random() * dieSize) + 1;
+      }
+      healAmount = rolledSum + bonus;
+    } else {
+      healAmount = 5;
+    }
+
+    const currentHp = typeof pc.hp === 'number' ? pc.hp : (typeof pc.hp?.getValue === 'function' ? pc.hp.getValue() : 20);
+    const maxHp = typeof pc.maxHp === 'number' ? pc.maxHp : 20;
+    const newHp = Math.min(maxHp, currentHp + healAmount);
+    
+    if (typeof pc.hp === 'object' && typeof pc.hp.setValue === 'function') {
+      pc.hp.setValue(newHp);
+    } else {
+      pc.hp = newHp;
+    }
+
+    resultMessage = `Drank ${item.name}: Restored +${healAmount} HP! (${currentHp} ➔ ${newHp}/${maxHp} HP)`;
+  }
+
+  // 2. Buff Resolution
+  if (item.activation?.appliedBuffKey) {
+    const buffKey = item.activation.appliedBuffKey;
+    if (!Array.isArray(pc.activeBuffs)) pc.activeBuffs = [];
+    const isAlreadyActive = pc.activeBuffs.some(b => b.spellKey === buffKey);
+    if (!isAlreadyActive) {
+      pc.activeBuffs.push({
+        id: 'item_buff_' + Date.now(),
+        spellKey: buffKey,
+        name: item.name,
+        source: item.name,
+        durationRemainingRounds: 10
+      });
+      resultMessage += (resultMessage ? ' | ' : '') + `Activated ${buffKey.toUpperCase()} from ${item.name}!`;
+    }
+  }
+
+  if (!healingFormula && !item.activation?.appliedBuffKey) {
+    resultMessage = `Used ${item.name}: ${item.activation?.effectDescription || item.description || 'Action performed.'}`;
+  }
+
+  // 3. Deduct charges / consume single-use items
+  if (item.charges) {
+    item.charges.current = Math.max(0, item.charges.current - 1);
+    if ((isPotion || isScroll || item.charges.max === 1) && item.charges.current === 0) {
+      pc.items.splice(itemIdx, 1);
+    }
+  } else if (item.dailyUses) {
+    item.dailyUses.current = Math.max(0, item.dailyUses.current - 1);
+  } else if (isPotion || isScroll) {
+    pc.items.splice(itemIdx, 1);
+  }
+
+  recalculatePCStats(pc);
+  saveToStorage();
+  syncPCToHost();
+
+  return {
+    success: true,
+    message: resultMessage,
+    healAmount
+  };
+}
+
+/**
  * Adds an item from the MAGIC_ITEMS_REGISTRY preset compendium to the PC inventory.
  * @param {string} presetKey
  * @param {boolean} [shouldEquip=false]
@@ -453,4 +556,5 @@ export function addPCItemFromCompendium(presetKey, shouldEquip = false) {
     syncPCToHost();
   }
 }
+
 
