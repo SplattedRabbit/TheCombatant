@@ -151,6 +151,17 @@ export const getDraftPCState = (
     }
   }
 
+  // Skill tricks up to lvlIdx
+  const skillTricksList: any[] = [];
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg && Array.isArray(cfg.skillTricks)) {
+      cfg.skillTricks.forEach((tKey: string) => {
+        skillTricksList.push({ id: tKey });
+      });
+    }
+  }
+
   const draftPC = {
     race: selectedRace,
     isHuman: selectedRace === 'human',
@@ -166,10 +177,13 @@ export const getDraftPCState = (
     getAttributeMod: (attrName: string) => statMods[attrName as keyof typeof statMods] || 0,
     bab: { getValue: () => babVal },
     feats: featsList.map(fid => ({ id: fid })),
+    hasFeat: (featId: string) => featsList.includes(featId),
     skills: skillsAcc,
     getSkillRanks: (skillKey: string) => skillsAcc[skillKey]?.ranks || 0,
     getSkillMisc: () => 0,
     getArmorCheckPenalty: () => 0,
+    skillTricks: skillTricksList,
+    hasSkillTrick: (trickKey: string) => skillTricksList.some(t => (typeof t === 'object' ? t.id === trickKey : t === trickKey)),
     prestigeSpellLinks,
     prestigeSpecialTextConfirmed,
     getSneakAttackDiceCount: () => {
@@ -291,6 +305,17 @@ export const getCompletedDraftPCState = (
     }
   }
 
+  // Skill tricks up to lvlIdx (inclusive)
+  const skillTricksList: any[] = [];
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg && Array.isArray(cfg.skillTricks)) {
+      cfg.skillTricks.forEach((tKey: string) => {
+        skillTricksList.push({ id: tKey });
+      });
+    }
+  }
+
   const draftPC = {
     race: selectedRace,
     isHuman: selectedRace === 'human',
@@ -306,10 +331,13 @@ export const getCompletedDraftPCState = (
     getAttributeMod: (attrName: string) => statMods[attrName as keyof typeof statMods] || 0,
     bab: { getValue: () => babVal },
     feats: featsList.map(fid => ({ id: fid })),
+    hasFeat: (featId: string) => featsList.includes(featId),
     skills: skillsAcc,
     getSkillRanks: (skillKey: string) => skillsAcc[skillKey]?.ranks || 0,
     getSkillMisc: () => 0,
     getArmorCheckPenalty: () => 0,
+    skillTricks: skillTricksList,
+    hasSkillTrick: (trickKey: string) => skillTricksList.some(t => (typeof t === 'object' ? t.id === trickKey : t === trickKey)),
     prestigeSpellLinks,
     prestigeSpecialTextConfirmed,
     getSneakAttackDiceCount: () => {

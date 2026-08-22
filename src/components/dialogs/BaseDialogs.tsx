@@ -385,6 +385,17 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({ isPlayer
                 A Rogue 3 / Wizard 5 / Arcane Trickster 3 with sneak attack, spellcasting, and Ranged Legerdemain ready to go.
               </span>
             </button>
+
+            <button
+              onClick={() => onConfirm('spellwarp_lvl10')}
+              className="btn"
+              style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
+            >
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🎯 Spellwarp Sniper (Human, Level 10)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+                A Rogue 1 / Wizard 5 / Spellwarp Sniper 4 with Sudden Raystrike (+2d6), Spellwarp, Ray spells, and 2 Skill Tricks (Spot the Weak Point & Collector of Stories).
+              </span>
+            </button>
           </div>
         </>
       ) : (

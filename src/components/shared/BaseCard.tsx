@@ -26,14 +26,14 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   headerRight,
 }) => {
   return (
-    <div className={`panel ${className}`} style={style}>
+    <div className={`panel ${className}`} style={{ minWidth: 0, boxSizing: 'border-box', ...style }}>
       {title && (
         <div className="phdr">
           <h2>{title}</h2>
           {headerRight && <div style={{ display: 'flex', alignItems: 'center' }}>{headerRight}</div>}
         </div>
       )}
-      <div className="pbody">
+      <div className="pbody" style={{ minWidth: 0, boxSizing: 'border-box' }}>
         {children}
       </div>
     </div>

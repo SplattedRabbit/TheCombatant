@@ -34,16 +34,10 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minHeight: '420px' }}>
       {featSelectSlotIndex !== null && activeFeatSlot ? (
         <>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--inkm)' }}>
-              Available Feats ({activeFeatSlot.label}):
-            </span>
-          </div>
-
           <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
             <input
               type="text"
-              placeholder="Search feat..."
+              placeholder={`Search feat (${activeFeatSlot.label})...`}
               value={featSearch}
               onChange={(e) => setFeatSearch(e.target.value)}
               className="cinput"

@@ -42,7 +42,7 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
             value={skillSearch}
             onChange={(e) => setSkillSearch(e.target.value)}
             className="cinput"
-            style={{ padding: '4px 8px', fontSize: '11px', width: '100%', boxSizing: 'border-box' }}
+            style={{ padding: '4px 8px', fontSize: '11px', height: '24px', width: '100%', boxSizing: 'border-box' }}
           />
 
           <div 

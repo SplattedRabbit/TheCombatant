@@ -182,7 +182,10 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
           🛡️ Overview
         </button>
         <button onClick={() => setActiveTab('skills')} className={`player-tab-btn ${activeTab === 'skills' ? 'active' : ''}`}>
-          📜 Skills &amp; Feats
+          📜 Skills
+        </button>
+        <button onClick={() => setActiveTab('feats')} className={`player-tab-btn ${activeTab === 'feats' ? 'active' : ''}`}>
+          🎓 Feats
         </button>
         <button onClick={() => setActiveTab('offense')} className={`player-tab-btn ${activeTab === 'offense' ? 'active' : ''}`}>
           ⚔️ Equipment
@@ -270,14 +273,16 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
           </div>
         </div>
 
-        {/* Tab 2: Skills & Feats */}
+        {/* Tab 2: Skills */}
         <div className={`player-tab-panel ${activeTab === 'skills' ? 'active' : ''}`} id="tabPanelSkills">
-          <div className="skills-feats-grid">
-            <PCSkillsTab pc={pc} />
-            <BaseCard title="🎓 Feats">
-              <PCFeatsTab pc={pc} />
-            </BaseCard>
-          </div>
+          <PCSkillsTab pc={pc} />
+        </div>
+
+        {/* Tab 3: Feats */}
+        <div className={`player-tab-panel ${activeTab === 'feats' ? 'active' : ''}`} id="tabPanelFeats">
+          <BaseCard title="🎓 Feats">
+            <PCFeatsTab pc={pc} />
+          </BaseCard>
         </div>
 
         {/* Tab 3: Weapons / Offense */}
