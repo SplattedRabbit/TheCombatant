@@ -10,6 +10,8 @@ import {
   CustomAlertModal, 
   CustomConfirmModal, 
   CustomPromptModal, 
+  HealingRollModal,
+  ItemDamageModal,
   NewDayTemplateDialog, 
   RollBreakdownDialog, 
   SampleChoiceDialog,
@@ -96,6 +98,57 @@ export function initReactDialogBridge() {
           onCloseModal();
         }}
         onCancel={onCloseModal}
+      />
+    ));
+  };
+
+  bridge.showHealingRollDialog = (opts: { itemName: string; dice: string; bonus: number; formula: string; onConfirm: (val: string) => void; onCancel?: () => void }) => {
+    mountModal((onCloseModal) => (
+      <HealingRollModal
+        itemName={opts.itemName}
+        dice={opts.dice}
+        bonus={opts.bonus}
+        formula={opts.formula}
+        onConfirm={(val) => {
+          opts.onConfirm(val);
+          onCloseModal();
+        }}
+        onCancel={() => {
+          if (opts.onCancel) opts.onCancel();
+          onCloseModal();
+        }}
+      />
+    ));
+  };
+
+  bridge.showItemDamageDialog = (opts: {
+    itemName: string;
+    dice: string;
+    bonus: number;
+    formula: string;
+    damageType?: string;
+    effectDesc?: string;
+    saveText?: string | null;
+    onConfirm: () => void;
+    onCancel?: () => void;
+  }) => {
+    mountModal((onCloseModal) => (
+      <ItemDamageModal
+        itemName={opts.itemName}
+        dice={opts.dice}
+        bonus={opts.bonus}
+        formula={opts.formula}
+        damageType={opts.damageType}
+        effectDesc={opts.effectDesc}
+        saveText={opts.saveText}
+        onConfirm={() => {
+          opts.onConfirm();
+          onCloseModal();
+        }}
+        onCancel={() => {
+          if (opts.onCancel) opts.onCancel();
+          onCloseModal();
+        }}
       />
     ));
   };

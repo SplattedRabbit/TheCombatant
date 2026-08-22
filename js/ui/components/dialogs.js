@@ -99,6 +99,18 @@ export function showCustomPrompt(title, message, value, buttonText, onConfirm) {
   }
 }
 
+export function showHealingRollDialog(opts) {
+  const bridge = getBridge();
+  if (bridge && bridge.showHealingRollDialog) return bridge.showHealingRollDialog(opts);
+  if (opts && opts.onConfirm) opts.onConfirm('');
+}
+
+export function showItemDamageDialog(opts) {
+  const bridge = getBridge();
+  if (bridge && bridge.showItemDamageDialog) return bridge.showItemDamageDialog(opts);
+  if (opts && opts.onConfirm) opts.onConfirm();
+}
+
 export function showInfoDialog(opts) {
   const bridge = getBridge();
   if (bridge && bridge.showInfoDialog) return bridge.showInfoDialog(opts);

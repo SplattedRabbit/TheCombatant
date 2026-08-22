@@ -68,8 +68,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   // Skill Search State
   const [skillSearch, setSkillSearch] = useState('');
 
-  // Right column active tab ('skills', 'tricks', or 'feats')
-  const [activeTab, setActiveTab] = useState<'skills' | 'tricks' | 'feats'>('skills');
+  // Right column active tab ('skills', 'tricks', 'feats', or 'acfs')
+  const [activeTab, setActiveTab] = useState<'skills' | 'tricks' | 'feats' | 'acfs'>('skills');
 
   // Sum of distributed base points (must equal 74)
   const totalStatsSpent = baseStats.str + baseStats.dex + baseStats.con + baseStats.int + baseStats.wis + baseStats.cha;
@@ -85,7 +85,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         abilityIncrease: null,
         skills: {}, // skillKey -> clicks count (every click costs 1 skillpoint)
         skillTricks: [], // array of trick keys learned at this level (each costs 2 SP)
-        feats: []
+        feats: [],
+        acfs: []
       });
     }
     setLevelConfigs(configs);
@@ -352,6 +353,20 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             if (tid && !addedTrickIds.has(tid)) {
               addedTrickIds.add(tid);
               pc.skillTricks.push({ id: tid, isBonus: false });
+            }
+          });
+        }
+      });
+
+      // Compile and save Alternative Class Features (ACFs)
+      pc.acfs = [];
+      const addedAcfIds = new Set<string>();
+      levelConfigs.forEach(cfg => {
+        if (Array.isArray(cfg.acfs)) {
+          cfg.acfs.forEach((aid: string) => {
+            if (aid && !addedAcfIds.has(aid)) {
+              addedAcfIds.add(aid);
+              pc.acfs.push(aid);
             }
           });
         }

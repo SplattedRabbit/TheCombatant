@@ -21,7 +21,8 @@ export {
   removePCClass,
   updatePCClassLevel,
   updatePCClassType,
-  clearPCClasses
+  clearPCClasses,
+  togglePCACF
 } from './pc/PCClasses.js';
 
 export {
@@ -36,6 +37,7 @@ export {
   setPCAutoAC,
   addPCItem,
   deletePCItem,
+  reorderPCItems,
   updatePCItem,
   togglePCItemEquip,
   addPCItemEffect,

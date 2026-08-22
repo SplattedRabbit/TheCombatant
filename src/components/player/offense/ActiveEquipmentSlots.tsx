@@ -68,6 +68,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
   const ninjaClass = activeClasses.find((c: any) => c.classType === 'ninja');
   const knightClass = activeClasses.find((c: any) => c.classType === 'knight');
   const monkClass = activeClasses.find((c: any) => c.classType === 'monk');
+  const bardClass = activeClasses.find((c: any) => c.classType === 'bard');
 
   const sneakAttackDice = typeof pc.getSneakAttackDiceCount === 'function' ? pc.getSneakAttackDiceCount() : 0;
   const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus() : 0;
@@ -223,9 +224,18 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
 
   // Render Right Slot: Dynamic Class Combat Ability & Strike Slot (Smite, Sneak, Skirmish, Arcane Channeling, etc.)
   const renderClassAbilitySlot = () => {
+    const activeACFs: string[] = Array.isArray(pc.acfs) ? pc.acfs : [];
+    const hasChargingSmite = activeACFs.includes('paladin_charging_smite');
+    const hasDisruptiveAttack = activeACFs.includes('rogue_disruptive_attack');
+    const hasBerserkerStrength = activeACFs.includes('barbarian_berserker_strength');
+    const hasDistractingAttack = activeACFs.includes('ranger_distracting_attack');
+    const hasDecisiveStrike = activeACFs.includes('monk_decisive_strike');
+
     // 1. Paladin (Smite Evil / Charging Smite ACF)
     if (paladinLvl > 0 || !!smiteAbility) {
       const isSmiteActive = !!pc.isSmiteActive;
+      const smiteTitle = hasChargingSmite ? 'Charging Smite' : 'Smite Evil';
+      const smiteDmgText = hasChargingSmite ? `+${paladinLvl * 2} (Charge)` : `+${paladinLvl}`;
       return (
         <div
           className={`arpg-slot class-ability-slot ${isSmiteActive ? 'rarity-epic' : ''}`}
@@ -246,13 +256,13 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
           }}
         >
           <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            🌟 Class Strike
+            {hasChargingSmite ? '⚡ ACF Strike' : '🌟 Class Strike'}
           </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Smite Evil
+          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={smiteTitle}>
+            {smiteTitle}
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{Math.max(0, chaMod)} Atk / +{paladinLvl} Dmg
+            +{Math.max(0, chaMod)} Atk / {smiteDmgText} Dmg
           </div>
 
           {/* Charge Bubbles */}
@@ -482,8 +492,10 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
       );
     }
 
-    // 6. Barbarian (Rage)
+    // 6. Barbarian (Rage / Berserker Strength ACF)
     if (barbarianLvl > 0) {
+      const barbTitle = hasBerserkerStrength ? 'Berserker Strength' : 'Kampfrausch (Rage)';
+      const barbSubtitle = hasBerserkerStrength ? 'Auto when HP < ' + (5 * barbarianLvl) : '+4 STR / +4 CON / -2 AC';
       return (
         <div
           className={`arpg-slot class-ability-slot ${pc.isRaging ? 'rarity-epic' : ''}`}
@@ -503,26 +515,36 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
           }}
         >
           <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            🔥 Barbarian
+            {hasBerserkerStrength ? '⚡ ACF Berserk' : '🔥 Barbarian'}
           </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Kampfrausch (Rage)
+          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={barbTitle}>
+            {barbTitle}
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +4 STR / +4 CON / -2 AC
+            {barbSubtitle}
           </div>
-          <button
-            className={`xbtn ${pc.isRaging ? 'xbtn-dmg' : ''}`}
-            onClick={() => CombatState.togglePCRage()}
-            style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: 'var(--red)', color: pc.isRaging ? '#fff' : 'var(--red)', background: pc.isRaging ? 'var(--red)' : 'transparent', cursor: 'pointer' }}
-          >
-            {pc.isRaging ? '🔴 END RAGE' : '🔥 RAGE ON'}
-          </button>
+          {hasBerserkerStrength ? (
+            <button
+              className="xbtn"
+              onClick={() => showCustomAlert("Berserker Strength", "Whenever your current HP is below 5 × Barbarian level, you automatically gain +4 STR, +2 on all saves, DR 2/—, and -2 AC.", "Understood", "⚡")}
+              style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: 'var(--red)', color: 'var(--red)', cursor: 'pointer' }}
+            >
+              ⚡ BERSERK INFO
+            </button>
+          ) : (
+            <button
+              className={`xbtn ${pc.isRaging ? 'xbtn-dmg' : ''}`}
+              onClick={() => CombatState.togglePCRage()}
+              style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: 'var(--red)', color: pc.isRaging ? '#fff' : 'var(--red)', background: pc.isRaging ? 'var(--red)' : 'transparent', cursor: 'pointer' }}
+            >
+              {pc.isRaging ? '🔴 END RAGE' : '🔥 RAGE ON'}
+            </button>
+          )}
         </div>
       );
     }
 
-    // 7. Ranger (Favored Enemy)
+    // 7. Ranger (Favored Enemy / Distracting Attack ACF)
     if (rangerLvl > 0 || favoredEnemyBonus > 0) {
       return (
         <div
@@ -543,13 +565,13 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
           }}
         >
           <div style={{ fontSize: '6.5px', color: '#2a6a8a', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            🏹 Ranger
+            {hasDistractingAttack ? '⚡ ACF Ranger' : '🏹 Ranger'}
           </div>
           <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: '#2a6a8a', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
             Favored Enemy
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            +{favoredEnemyBonus} Damage Bonus
+            +{favoredEnemyBonus} Damage {hasDistractingAttack ? '(Flanks)' : 'Bonus'}
           </div>
           <button
             className="xbtn"
@@ -562,11 +584,55 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
       );
     }
 
-    // 8. Monk (Stunning Fist / Flurry)
+    // 8. Monk (Flurry of Blows / Decisive Strike ACF)
     if (monkClass) {
+      const isFlurryActive = !!pc.isFlurrying;
+      const monkLvl = monkClass.level || 0;
+      const flurryExtraAttacks = monkLvl >= 11 ? 2 : 1;
+      const flurryPenalty = monkLvl >= 9 ? 0 : (monkLvl >= 5 ? -1 : -2);
+
+      if (hasDecisiveStrike) {
+        return (
+          <div
+            className="arpg-slot class-ability-slot"
+            style={{
+              position: 'relative',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              minHeight: '88px',
+              border: '0.5px solid var(--pb)',
+              borderRadius: '4px',
+              padding: '5px 6px',
+              textAlign: 'center',
+              background: 'rgba(200, 169, 110, 0.04)'
+            }}
+          >
+            <div style={{ fontSize: '6.5px', color: 'var(--ink)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+              ⚡ ACF Strike
+            </div>
+            <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+              Decisive Strike
+            </div>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
+              2x Damage Strike
+            </div>
+            <button
+              className="xbtn"
+              onClick={() => showCustomAlert("Decisive Strike", "Decisive Strike (PHB2): Full-round action to deliver a single strike for double damage.", "Understood", "🥋")}
+              style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: 'var(--pb)', color: 'var(--ink)', cursor: 'pointer' }}
+            >
+              🥋 STRIKE INFO
+            </button>
+          </div>
+        );
+      }
+
       return (
         <div
-          className="arpg-slot class-ability-slot"
+          className={`arpg-slot class-ability-slot ${isFlurryActive ? 'rarity-epic' : ''}`}
           style={{
             position: 'relative',
             flex: 1,
@@ -575,34 +641,111 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
             alignItems: 'center',
             justifyContent: 'space-between',
             minHeight: '88px',
-            border: '0.5px solid var(--pb)',
+            border: isFlurryActive ? '1px solid var(--red)' : '0.5px solid var(--pb)',
             borderRadius: '4px',
             padding: '5px 6px',
             textAlign: 'center',
-            background: 'rgba(200, 169, 110, 0.04)'
+            background: isFlurryActive ? 'rgba(139, 26, 26, 0.12)' : 'rgba(200, 169, 110, 0.04)',
+            boxShadow: isFlurryActive ? '0 0 8px rgba(139, 26, 26, 0.25)' : 'none'
           }}
         >
-          <div style={{ fontSize: '6.5px', color: 'var(--ink)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
-            🥋 Monk Strike
+          <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+            🥋 Monk Flurry
           </div>
           <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-            Stunning Fist
+            Flurry of Blows
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-            DC 10 + 1/2 Lvl + WIS
+            +{flurryExtraAttacks} Extra Atk {flurryPenalty !== 0 ? `(${flurryPenalty})` : '(No Pen)'}
+          </div>
+          <div style={{ fontSize: '6.5px', color: isFlurryActive ? 'var(--red)' : 'var(--inkl)', fontStyle: 'italic' }}>
+            {isFlurryActive ? '✓ Applied on Full Attack' : 'Full Attack only'}
           </div>
           <button
-            className="xbtn"
-            onClick={() => showCustomAlert("Stunning Fist", "Forces a Fortitude save against stun for 1 round when striking unarmed.", "Understood", "🥋")}
-            style={{ padding: '1px 4px', fontSize: '6.5px', fontWeight: 'bold', width: '100%', height: '16px', lineHeight: 1, borderColor: 'var(--pb)', color: 'var(--ink)', cursor: 'pointer' }}
+            className={`xbtn ${isFlurryActive ? 'xbtn-dmg' : ''}`}
+            onClick={() => CombatState.updatePCField('isFlurrying', !isFlurryActive)}
+            style={{
+              padding: '1px 4px',
+              fontSize: '6.5px',
+              fontWeight: 'bold',
+              width: '100%',
+              height: '16px',
+              lineHeight: 1,
+              borderColor: 'var(--red)',
+              color: isFlurryActive ? '#fff' : 'var(--red)',
+              background: isFlurryActive ? 'var(--red)' : 'rgba(139, 26, 26, 0.08)',
+              cursor: 'pointer'
+            }}
           >
-            🥋 STUN INFO
+            {isFlurryActive ? '🥋 FLURRY ON' : '🥋 FLURRY OFF'}
           </button>
         </div>
       );
     }
 
-    // 9. Knight (Knight's Challenge)
+    // 9. Bard (Inspire Courage)
+    if (bardClass) {
+      const isBardActive = !!pc.isBardInspireActive;
+      let inspireBonus = 1;
+      const bLvl = bardClass.level || 0;
+      if (bLvl >= 20) inspireBonus = 4;
+      else if (bLvl >= 14) inspireBonus = 3;
+      else if (bLvl >= 8) inspireBonus = 2;
+
+      return (
+        <div
+          className={`arpg-slot class-ability-slot ${isBardActive ? 'rarity-rare' : ''}`}
+          style={{
+            position: 'relative',
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            minHeight: '88px',
+            border: isBardActive ? '1px solid #c8a96e' : '0.5px solid var(--pb)',
+            borderRadius: '4px',
+            padding: '5px 6px',
+            textAlign: 'center',
+            background: isBardActive ? 'rgba(200, 169, 110, 0.15)' : 'rgba(200, 169, 110, 0.04)',
+            boxShadow: isBardActive ? '0 0 8px rgba(200, 169, 110, 0.3)' : 'none'
+          }}
+        >
+          <div style={{ fontSize: '6.5px', color: '#8a6d3b', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+            🎵 Bardic Music
+          </div>
+          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+            Inspire Courage
+          </div>
+          <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
+            +{inspireBonus} Morale Atk &amp; Dmg
+          </div>
+          <div style={{ fontSize: '6.5px', color: isBardActive ? '#8a6d3b' : 'var(--inkl)', fontStyle: 'italic' }}>
+            {isBardActive ? '✓ Active on Atk & Dmg' : 'Self & Allies'}
+          </div>
+          <button
+            className="xbtn"
+            onClick={() => CombatState.updatePCField('isBardInspireActive', !isBardActive)}
+            style={{
+              padding: '1px 4px',
+              fontSize: '6.5px',
+              fontWeight: 'bold',
+              width: '100%',
+              height: '16px',
+              lineHeight: 1,
+              borderColor: '#c8a96e',
+              color: isBardActive ? '#fff' : '#8a6d3b',
+              background: isBardActive ? '#c8a96e' : 'rgba(200, 169, 110, 0.08)',
+              cursor: 'pointer'
+            }}
+          >
+            {isBardActive ? '🎵 INSPIRE ON' : '🎵 INSPIRE OFF'}
+          </button>
+        </div>
+      );
+    }
+
+    // 10. Knight (Knight's Challenge)
     if (knightClass) {
       return (
         <div

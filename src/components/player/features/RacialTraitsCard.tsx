@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 // @ts-ignore
@@ -9,6 +9,7 @@ interface RacialTraitsCardProps {
 }
 
 export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const race = (pc.race || 'human').toLowerCase();
   const raceNames: Record<string, string> = {
     human: 'Human',
@@ -206,15 +207,20 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
   };
 
   return (
-    <div style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', padding: '6px 8px', background: 'rgba(200, 169, 110, 0.03)', marginBottom: '6px', display: 'flex', flexDirection: 'column', gap: '3.5px' }}>
-      <div style={{ display: 'flex', justifySelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', paddingBottom: '2px' }}>
-        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>
-          🧬 Racial Traits: {raceName}
-        </span>
+    <div className={`class-card ${isExpanded ? 'expanded' : ''}`} style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
+      <div 
+        className="class-card-hdr" 
+        onClick={() => setIsExpanded(!isExpanded)}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+      >
+        <span>🧬 Racial Traits: {raceName}</span>
+        <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-        {getRacialTraitsContent()}
-      </div>
+      {isExpanded && (
+        <div className="class-card-body" style={{ display: 'flex', flexDirection: 'column', padding: '6px 8px', gap: '3.5px', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
+          {getRacialTraitsContent()}
+        </div>
+      )}
     </div>
   );
 };

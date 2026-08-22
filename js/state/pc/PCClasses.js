@@ -76,3 +76,15 @@ export function clearPCClasses() {
     pc.classType = 'custom';
   });
 }
+
+export function togglePCACF(acfId) {
+  updatePCBatch(pc => {
+    if (!Array.isArray(pc.acfs)) pc.acfs = [];
+    const idx = pc.acfs.indexOf(acfId);
+    if (idx >= 0) {
+      pc.acfs.splice(idx, 1);
+    } else {
+      pc.acfs.push(acfId);
+    }
+  });
+}

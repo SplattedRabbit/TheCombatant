@@ -243,6 +243,17 @@ export function deletePCItem(idx) {
   }
 }
 
+export function reorderPCItems(fromIdx, toIdx) {
+  const pc = getActivePC();
+  if (pc && Array.isArray(pc.items) && fromIdx >= 0 && fromIdx < pc.items.length && toIdx >= 0 && toIdx < pc.items.length && fromIdx !== toIdx) {
+    const [movedItem] = pc.items.splice(fromIdx, 1);
+    pc.items.splice(toIdx, 0, movedItem);
+    recalculatePCStats(pc);
+    saveToStorage();
+    syncPCToHost();
+  }
+}
+
 export function updatePCItem(idx, key, val) {
   const pc = getActivePC();
   if (pc && pc.items && pc.items[idx]) {
@@ -432,9 +443,10 @@ export function usePCItemCharge(itemIdx, amount) {
 /**
  * Activates or consumes a usable magic item (potion, wand, scroll, wondrous item).
  * @param {number} itemIdx
+ * @param {number|string} [customHealAmount]
  * @returns {{ success: boolean, message: string, healAmount?: number }}
  */
-export function usePCItemAction(itemIdx) {
+export function usePCItemAction(itemIdx, customHealAmount) {
   const pc = getActivePC();
   if (!pc || !Array.isArray(pc.items) || !pc.items[itemIdx]) {
     return { success: false, message: 'Item not found.' };
@@ -458,21 +470,32 @@ export function usePCItemAction(itemIdx) {
   let healAmount = 0;
 
   // 1. Healing Resolution
-  const healingFormula = item.healingFormula || (isPotion && (itemName.includes('cure') || itemName.includes('heil')) ? '1d8+1' : null);
+  const healingFormula = item.healingFormula || (isPotion && (itemName.includes('cure') || itemName.includes('heil')) ? (itemName.includes('moderate') ? '2d8+3' : (itemName.includes('serious') ? '3d8+5' : (itemName.includes('critical') ? '4d8+7' : '1d8+1'))) : null);
   
   if (healingFormula) {
-    const match = healingFormula.match(/(\d+)d(\d+)(?:\+(\d+))?/i);
-    if (match) {
-      const numDice = parseInt(match[1]) || 1;
-      const dieSize = parseInt(match[2]) || 8;
-      const bonus = parseInt(match[3]) || 0;
-      let rolledSum = 0;
-      for (let i = 0; i < numDice; i++) {
-        rolledSum += Math.floor(Math.random() * dieSize) + 1;
+    if (customHealAmount !== undefined && customHealAmount !== null && String(customHealAmount).trim() !== '') {
+      const strVal = String(customHealAmount).trim();
+      try {
+        const cleanExpr = strVal.replace(/[^0-9+\-*/().]/g, '');
+        const parsed = Function('"use strict";return (' + cleanExpr + ')')();
+        healAmount = Math.max(0, Math.floor(Number(parsed) || 0));
+      } catch (e) {
+        healAmount = Math.max(0, parseInt(strVal) || 0);
       }
-      healAmount = rolledSum + bonus;
     } else {
-      healAmount = 5;
+      const match = healingFormula.match(/(\d+)d(\d+)(?:\+(\d+))?/i);
+      if (match) {
+        const numDice = parseInt(match[1]) || 1;
+        const dieSize = parseInt(match[2]) || 8;
+        const bonus = parseInt(match[3]) || 0;
+        let rolledSum = 0;
+        for (let i = 0; i < numDice; i++) {
+          rolledSum += Math.floor(Math.random() * dieSize) + 1;
+        }
+        healAmount = rolledSum + bonus;
+      } else {
+        healAmount = 5;
+      }
     }
 
     const currentHp = typeof pc.hp === 'number' ? pc.hp : (typeof pc.hp?.getValue === 'function' ? pc.hp.getValue() : 20);

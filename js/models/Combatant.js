@@ -143,7 +143,8 @@ export class Combatant {
     this.customSpells = Array.isArray(p.customSpells) ? [...p.customSpells] : [];
     this.spellTemplates = p.spellTemplates || {};
     this.feats = Array.isArray(p.feats) ? [...p.feats] : [];
-    this.skillTricks = p.skillTricks || [];
+    this.skillTricks = Array.isArray(p.skillTricks) ? [...p.skillTricks] : [];
+    this.acfs = Array.isArray(p.acfs) ? [...p.acfs] : [];
     this.skills = p.skills || {};
     this.race = p.race || 'human';
     this.isHuman = p.isHuman !== undefined ? !!p.isHuman : (this.race === 'human');
@@ -425,6 +426,7 @@ export class Combatant {
       originalStats: this.originalStats,
       feats: this.feats,
       skillTricks: this.skillTricks,
+      acfs: this.acfs,
       skills: this.skills,
       race: this.race,
       alignment: this.alignment,

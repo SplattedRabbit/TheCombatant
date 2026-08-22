@@ -7,6 +7,7 @@ import { showCustomConfirm, showRollBreakdown, showCustomAlert } from '@core/ui/
 import { applyFeatSkillBonuses } from '@core/models/helpers/skills/SkillFeatApplier.js';
 // @ts-ignore
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
+import { ClassACFSelector } from './ClassACFSelector';
 
 interface BardFeaturesCardProps {
   pc: any;
@@ -89,37 +90,43 @@ const BARD_SONGS = [
 ];
 
 export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [musicRulesOpen, setMusicRulesOpen] = useState(false);
+  const [bkRulesOpen, setBkRulesOpen] = useState(false);
 
   const extraMusic = pc.bardicMusicExtra || 0;
   const musicAbility = pc.dailyAbilities?.find((a: any) => a.name === "Bardisches Lied" || a.name === "Bardic Music");
   const musicMax = musicAbility ? musicAbility.max : 0;
   const musicUsed = musicAbility ? musicAbility.used : 0;
-  const remaining = Math.max(0, musicMax - musicUsed);
-
-  const cols = musicMax > 0 ? Math.ceil(musicMax / 2) : 0;
+  const musicRemaining = Math.max(0, musicMax - musicUsed);
 
   let inspireBonus = 1;
   if (level >= 20) inspireBonus = 4;
-  else if (level >= 8) inspireBonus = 2; // In 3.5e, level 8+ is +2, level 14+ is +3, level 20+ is +4
-  if (level >= 14) inspireBonus = 3;
+  else if (level >= 14) inspireBonus = 3;
+  else if (level >= 8) inspireBonus = 2;
 
   const handleBubbleClick = (idx: number) => {
     CombatState.updatePCBatch((activePC: any) => {
-      const ability = activePC.dailyAbilities.find((a: any) => a.name === "Bardisches Lied" || a.name === "Bardic Music");
-      if (ability) {
-        if (idx <= ability.used) {
-          ability.used = Math.max(0, idx - 1);
-        } else {
-          ability.used = Math.min(ability.max, idx);
-        }
+      if (!Array.isArray(activePC.dailyAbilities)) {
+        activePC.dailyAbilities = [];
+      }
+      let ability = activePC.dailyAbilities.find((a: any) => a.name === "Bardisches Lied" || a.name === "Bardic Music" || a.name?.includes("Bardic Music") || a.name?.includes("Bardisches Lied"));
+      if (!ability) {
+        ability = { name: "Bardic Music", max: level + extraMusic, used: 0 };
+        activePC.dailyAbilities.push(ability);
+      }
+      if (idx <= ability.used) {
+        ability.used = Math.max(0, idx - 1);
+      } else {
+        ability.used = Math.min(ability.max, idx);
       }
     });
   };
 
-  const handleAdjustExtraMusic = (dir: number) => {
+  const handleExtraMusicChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = parseInt(e.target.value) || 0;
     CombatState.updatePCBatch((activePC: any) => {
-      activePC.bardicMusicExtra = Math.max(-level, (activePC.bardicMusicExtra || 0) + dir);
+      activePC.bardicMusicExtra = val;
     });
   };
 
@@ -188,7 +195,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
         </div>
 
         <div style="font-size: 8px; font-style: italic; background: rgba(0,0,0,0.02); border: 0.5px solid rgba(200, 169, 110, 0.2); padding: 5px; border-radius: 2px; line-height: 1.25; margin-bottom: 6px;">
-          A bard has a wide, scattered knowledge of lore, legends, famous people, and historical secrets. This corresponds to a Knowledge check with their bard level + Intelligence modifier.
+          A bard has a wide, scattered knowledge of lore, legends, famous people, and historical secrets.
         </div>
 
         <div style="font-size: 8px; font-weight: bold; color: var(--red); font-family: 'IM Fell English SC', serif; margin-bottom: 2px;">Difficulty Classes (DCs):</div>
@@ -266,129 +273,152 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
     };
 
     const isZeroCost = song.key === 'suggestion' || song.key === 'mass_suggestion';
-    if (!isZeroCost && remaining <= 0) {
-      showCustomConfirm("No Music Slots!", "You have no uses of bardic music left. Do you want to perform this song anyway?", () => {
-        performCast();
-      });
-    } else {
-      performCast();
-    }
+    if (!isZeroCost && musicRemaining <= 0) {
+      showCustomConfirm("No Music Slots!", "You have no uses of bardic music left. Do you want to perform this song anyway?", () => performCast());
+    } else performCast();
   };
 
+  const bardicKnowledgeBonus = level + (pc.int ? Math.floor((pc.int.getValue() - 10) / 2) : 0);
+
   return (
-    <div className="class-card expanded" style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
-      <div className="class-card-hdr" style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '4px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
+    <div className={`class-card ${isExpanded ? 'expanded' : ''}`} style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
+      <div 
+        className="class-card-hdr" 
+        onClick={() => setIsExpanded(!isExpanded)}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+      >
         <span>🎭 Bard (Level {level})</span>
+        <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
       </div>
-      <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
-          <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
-            Class Features
-          </div>
-          
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '8px', paddingTop: '1px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span><strong>Bardic Music:</strong></span>
-              <button 
-                onClick={() => setMusicRulesOpen(!musicRulesOpen)}
-                className="btn btn-toggle-rules-music" 
-                style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyCenter: 'center' } as any} 
-                title="Show rules"
-              >
-                📖 {musicRulesOpen ? '▲' : '▼'}
-              </button>
+      {isExpanded && (
+        <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
+            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
+              Class Features
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, auto)`, gap: '1px', justifyContent: 'end', alignItems: 'center' }}>
-                {musicMax > 0 && Array.from({ length: musicMax }).map((_, i) => {
-                  const bubbleIdx = i + 1;
-                  const spent = bubbleIdx <= musicUsed;
-                  return (
-                    <span 
-                      key={bubbleIdx}
-                      onClick={() => handleBubbleClick(bubbleIdx)}
-                      className={`bardic-music-bubble use-icon use-icon-music ${spent ? 'used' : ''}`} 
-                      style={{ marginRight: '0 !important', cursor: 'pointer' } as any}
-                      title={spent ? 'Used (Click to restore)' : 'Available (Click to use)'}
-                    >
-                      🎵
-                    </span>
-                  );
-                })}
+            
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '8px', paddingTop: '1px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span><strong>Bardic Music:</strong></span>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setMusicRulesOpen(!musicRulesOpen); }}
+                  className="btn btn-toggle-rules-music" 
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center' } as any} 
+                  title="Show rules"
+                >
+                  📖 {musicRulesOpen ? '▲' : '▼'}
+                </button>
               </div>
-              <span style={{ fontSize: '7.5px', fontWeight: 'bold' }}>({remaining}/{musicMax})</span>
-            </div>
-          </div>
-          
-          {musicRulesOpen && (
-            <div className="music-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif", marginBottom: '2px' }}>
-              <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Bardic Music & Bardic Knowledge:</strong><br />
-              • <strong>Daily Uses:</strong> Equal to Bard level + bonuses (e.g., Extra Music).<br />
-              • <strong>Bardic Knowledge:</strong> Special knowledge check (d20 + bard level + INT mod) for lore about people, places, or items.
-            </div>
-          )}
-
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '7.5px', borderBottom: '0.5px dashed rgba(200,169,110,0.15)', paddingBottom: '3px', marginBottom: '1px' }}>
-            <span style={{ color: 'var(--inkl)', fontStyle: 'italic' }}>Extra Music (Feats/Items):</span>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <button 
-                onClick={() => handleAdjustExtraMusic(-1)}
-                className="btn adjust-extra-music-btn" 
-                style={{ fontSize: '7px', padding: '0 3px', cursor: 'pointer', lineIndex: 1, borderRadius: '1px', border: '0.5px solid var(--pb)', fontWeight: 'bold' } as any}
-              >
-                -
-              </button>
-              <span style={{ fontWeight: 'bold', width: '14px', textAlign: 'center' }}>{extraMusic >= 0 ? '+' : ''}{extraMusic}</span>
-              <button 
-                onClick={() => handleAdjustExtraMusic(1)}
-                className="btn adjust-extra-music-btn" 
-                style={{ fontSize: '7px', padding: '0 3px', cursor: 'pointer', lineIndex: 1, borderRadius: '1px', border: '0.5px solid var(--pb)', fontWeight: 'bold' } as any}
-              >
-                +
-              </button>
-            </div>
-          </div>
-
-          <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingTop: '2px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
-            Bardic Song Compendium
-          </div>
-          <div className="bard-songs-list" style={{ display: 'flex', flexDirection: 'column', gap: '3px', paddingRight: '2px', marginTop: '2px', border: '0.5px solid rgba(200,169,110,0.15)', borderRadius: '2px', padding: '2px' }}>
-            {BARD_SONGS.map((song) => {
-              const isLocked = level < song.minLvl;
-              const lockIcon = isLocked ? '🔒' : '🎵';
-              const songClass = isLocked ? 'locked-song' : 'unlocked-song';
-              const courageBonusText = song.key === 'inspire_courage' ? ` (Morale bonus: +${inspireBonus})` : '';
-
-              return (
-                <div key={song.key} className={`bard-song-item ${songClass}`} style={{ background: isLocked ? 'rgba(0,0,0,0.03)' : 'rgba(200,169,110,0.05)', border: `0.5px solid ${isLocked ? 'rgba(0,0,0,0.08)' : 'rgba(200,169,110,0.2)'}`, borderRadius: '2px', padding: '3px', display: 'flex', flexDirection: 'column', gap: '1.5px', fontSize: '7.5px', marginBottom: '2px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 'bold', color: isLocked ? 'var(--inkl)' : 'var(--red)' }}>
-                    <span>{lockIcon} {song.nameEn || song.nameDe}{courageBonusText}</span>
-                    {isLocked ? (
-                      <span style={{ fontSize: '6.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Level {song.minLvl}</span>
-                    ) : (
-                      <button 
-                        onClick={() => handleCastSong(song)}
-                        className="btn cast-bard-song-btn" 
-                        style={{ fontSize: '6px', padding: '1px 3px', borderRadius: '1px', cursor: 'pointer', background: 'rgba(139,26,26,0.08)', borderColor: 'var(--red)', color: 'var(--red)', fontWeight: 'bold', height: '12px', lineHeight: '8px' }}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1px', maxWidth: '80px' }}>
+                  {musicMax > 0 && Array.from({ length: musicMax }).map((_, i) => {
+                    const bubbleIdx = i + 1;
+                    const spent = bubbleIdx <= musicUsed;
+                    return (
+                      <span 
+                        key={bubbleIdx}
+                        onClick={(e) => { e.stopPropagation(); handleBubbleClick(bubbleIdx); }}
+                        className={`music-bubble use-icon ${spent ? 'used' : ''}`} 
+                        style={{ cursor: 'pointer' }}
+                        title={spent ? 'Used (Click to restore)' : 'Available (Click to use)'}
                       >
-                        Perform 🎵
-                      </button>
-                    )}
-                  </div>
-                  <div style={{ color: 'var(--ink)', lineHeight: 1.25, fontStyle: isLocked ? 'italic' : 'normal', whiteSpace: 'pre-line' }}>
-                    {song.desc}
-                  </div>
+                        🎵
+                      </span>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
+                <span>({musicRemaining})</span>
+              </div>
+            </div>
+            
+            {musicRulesOpen && (
+              <div className="music-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: "'Crimson Text', serif", marginBottom: '2px' }}>
+                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Bardic Music:</strong><br />
+                A bard can use music/poetics to produce magical effects on those around him.<br />
+                • <strong>Uses:</strong> <strong>{level + extraMusic} times per day</strong>.<br />
+                • <strong>Requirement:</strong> Requires minimum ranks in the Perform skill to activate specific songs.<br />
+                • <strong>Range:</strong> Most songs affect allies within 30 ft. who can hear the bard.
+              </div>
+            )}
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px', marginTop: '4px' }}>
-            <button onClick={handleRollBardicKnowledge} className="btn roll-bard-know-btn" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Bardic Knowledge 📜</button>
-            <button onClick={handleRollPerform} className="btn roll-bard-perform-btn" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Perform 🎲</button>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '8px' }}>
+              <span>Extra Music (Feat/Item):</span>
+              <input 
+                type="number" 
+                value={extraMusic}
+                onChange={handleExtraMusicChange}
+                className="cinput bard-extra-music" 
+                style={{ width: '35px', fontSize: '7.5px', height: '14px', padding: '0 2px', borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none', textAlign: 'center' }}
+              />
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span><strong>Bardic Knowledge:</strong></span>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setBkRulesOpen(!bkRulesOpen); }}
+                  className="btn btn-toggle-rules-bk" 
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center' } as any} 
+                  title="Show rules"
+                >
+                  📖 {bkRulesOpen ? '▲' : '▼'}
+                </button>
+              </div>
+              <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>+{bardicKnowledgeBonus}</span>
+            </div>
+            
+            {bkRulesOpen && (
+              <div className="bk-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: "'Crimson Text', serif", marginBottom: '2px' }}>
+                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Bardic Knowledge:</strong><br />
+                A bard may make a special bardic knowledge check to see whether he knows some relevant information about local notable people, legendary items, or noteworthy places.<br />
+                • <strong>Bonus:</strong> 1d20 + <strong>{level}</strong> (Bard Level) + <strong>{Math.floor(((pc.int ? pc.int.getValue() : 10) - 10) / 2)}</strong> (INT) = <strong>+{bardicKnowledgeBonus}</strong>.<br />
+                • <strong>DCs:</strong> 10 (Common), 20 (Uncommon), 25 (Obscure), 30 (Extremely heroic/ancient).
+              </div>
+            )}
+
+            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingTop: '2px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
+              Bardic Song Compendium
+            </div>
+            <div className="bard-songs-list" style={{ display: 'flex', flexDirection: 'column', gap: '3px', paddingRight: '2px', marginTop: '2px', border: '0.5px solid rgba(200,169,110,0.15)', borderRadius: '2px', padding: '2px' }}>
+              {BARD_SONGS.map((song) => {
+                const isLocked = level < song.minLvl;
+                const lockIcon = isLocked ? '🔒' : '🎵';
+                const songClass = isLocked ? 'locked-song' : 'unlocked-song';
+                const courageBonusText = song.key === 'inspire_courage' ? ` (Morale bonus: +${inspireBonus})` : '';
+
+                return (
+                  <div key={song.key} className={`bard-song-item ${songClass}`} style={{ background: isLocked ? 'rgba(0,0,0,0.03)' : 'rgba(200,169,110,0.05)', border: `0.5px solid ${isLocked ? 'rgba(0,0,0,0.08)' : 'rgba(200,169,110,0.2)'}`, borderRadius: '2px', padding: '3px', display: 'flex', flexDirection: 'column', gap: '1.5px', fontSize: '7.5px', marginBottom: '2px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 'bold', color: isLocked ? 'var(--inkl)' : 'var(--red)' }}>
+                      <span>{lockIcon} {song.nameEn || song.nameDe}{courageBonusText}</span>
+                      {isLocked ? (
+                        <span style={{ fontSize: '6.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>Level {song.minLvl}</span>
+                      ) : (
+                        <button 
+                          onClick={() => handleCastSong(song)}
+                          className="btn cast-bard-song-btn" 
+                          style={{ fontSize: '6px', padding: '1px 3px', borderRadius: '1px', cursor: 'pointer', background: 'rgba(139,26,26,0.08)', borderColor: 'var(--red)', color: 'var(--red)', fontWeight: 'bold', height: '12px', lineHeight: '8px' }}
+                        >
+                          Perform 🎵
+                        </button>
+                      )}
+                    </div>
+                    <div style={{ color: 'var(--ink)', lineHeight: 1.25, fontStyle: isLocked ? 'italic' : 'normal', whiteSpace: 'pre-line' }}>
+                      {song.desc}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px', marginTop: '4px' }}>
+              <button onClick={handleRollBardicKnowledge} className="btn roll-bard-know-btn" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Bardic Knowledge 📜</button>
+              <button onClick={handleRollPerform} className="btn roll-bard-perform-btn" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Perform 🎲</button>
+            </div>
+
+            <ClassACFSelector pc={pc} classKey="bard" level={level} />
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

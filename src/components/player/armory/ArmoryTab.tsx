@@ -5,6 +5,8 @@ import { CombatState } from '@core/state.js';
 import { ITEM_SLOTS, MAGIC_ITEMS_REGISTRY, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
 // @ts-ignore
 import { calculateItemSetBonuses, getItemStackingBreakdown } from '@core/rules.js';
+// @ts-ignore
+import { showCustomPrompt, showHealingRollDialog, showItemDamageDialog } from '@core/ui/components/dialogs.js';
 import { BaseCard } from '../../shared/BaseCard';
 import { BodySlotCard, formatEffectDisplay } from './BodySlotCard';
 import { EmptySlotCard } from './EmptySlotCard';
@@ -30,8 +32,105 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   const [activeEquipSlot, setActiveEquipSlot] = useState<string | null>(null);
   const [editingItemData, setEditingItemData] = useState<{ item?: any; itemIdx?: number; defaultSlot?: string } | null>(null);
   const [actionFeedback, setActionFeedback] = useState<string | null>(null);
+  const [draggedBackpackIdx, setDraggedBackpackIdx] = useState<number | null>(null);
+  const [dragOverBackpackIdx, setDragOverBackpackIdx] = useState<number | null>(null);
+
+  const getHealingFormulaDetails = (item: any) => {
+    if (!item) return null;
+    const name = (item.name || '').toLowerCase();
+    const formula = item.healingFormula || ((name.includes('cure') || name.includes('heil') || item.type === 'potion' || item.slot === 'potion')
+      ? (name.includes('moderate') ? '2d8+3' : (name.includes('serious') ? '3d8+5' : (name.includes('critical') ? '4d8+7' : '1d8+1')))
+      : null);
+
+    if (!formula) return null;
+    const match = formula.match(/(\d+)[dw](\d+)(?:\+(\d+))?/i);
+    if (match) {
+      const dice = `${match[1]}d${match[2]}`;
+      const bonus = match[3] ? parseInt(match[3]) : 0;
+      return { formula, dice, bonus };
+    }
+    return { formula, dice: formula, bonus: 0 };
+  };
+
+  const getDamageFormulaDetails = (item: any) => {
+    if (!item) return null;
+    const name = (item.name || '').toLowerCase();
+    if (item.healingFormula || name.includes('cure') || name.includes('heil')) return null;
+
+    const effectDesc = item.activation?.effectDescription || item.description || '';
+    const fullName = `${item.name || ''} ${effectDesc}`;
+
+    const match = item.damageFormula 
+      ? item.damageFormula.match(/(\d+)[dw](\d+)(?:\+(\d+))?/i)
+      : (fullName.match(/(\d+)[dw](\d+)(?:\+(\d+))?\s*([a-zA-ZäöüÄÖÜß]+)?\s*(?:damage|schaden)?/i) || fullName.match(/(\d+)[dw](\d+)(?:\+(\d+))?/i));
+
+    if (!match) return null;
+
+    const dice = `${match[1]}d${match[2]}`;
+    const bonus = match[3] ? parseInt(match[3]) : 0;
+    const damageType = match[4] || '';
+    const formula = bonus > 0 ? `${dice}+${bonus}` : dice;
+
+    const dcMatch = effectDesc.match(/DC\s*(\d+)\s*([a-zA-ZäöüÄÖÜß]+)?(?:\s*(?:half|negates|halbiert))?/i);
+    const saveText = dcMatch ? `DC ${dcMatch[1]} ${dcMatch[2] || 'Save'}` : null;
+
+    return {
+      formula,
+      dice,
+      bonus,
+      damageType,
+      effectDesc,
+      saveText
+    };
+  };
 
   const handleUseItem = (idx: number) => {
+    const item = pc.items && pc.items[idx];
+    if (!item) return;
+
+    const healDetails = getHealingFormulaDetails(item);
+    if (healDetails) {
+      showHealingRollDialog({
+        itemName: item.name,
+        dice: healDetails.dice,
+        bonus: healDetails.bonus,
+        formula: healDetails.formula,
+        onConfirm: (val: string) => {
+          const res = CombatState.usePCItemAction(idx, val);
+          if (res && res.message) {
+            setActionFeedback(res.message);
+            setTimeout(() => {
+              setActionFeedback(null);
+            }, 4500);
+          }
+        }
+      });
+      return;
+    }
+
+    const dmgDetails = getDamageFormulaDetails(item);
+    if (dmgDetails) {
+      showItemDamageDialog({
+        itemName: item.name,
+        dice: dmgDetails.dice,
+        bonus: dmgDetails.bonus,
+        formula: dmgDetails.formula,
+        damageType: dmgDetails.damageType,
+        effectDesc: dmgDetails.effectDesc,
+        saveText: dmgDetails.saveText,
+        onConfirm: () => {
+          const res = CombatState.usePCItemAction(idx);
+          if (res && res.message) {
+            setActionFeedback(res.message);
+            setTimeout(() => {
+              setActionFeedback(null);
+            }, 4500);
+          }
+        }
+      });
+      return;
+    }
+
     const res = CombatState.usePCItemAction(idx);
     if (res && res.message) {
       setActionFeedback(res.message);
@@ -416,7 +515,18 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
               type="button"
               onClick={() => setEditingItemData({ defaultSlot: slotFilter !== 'all' && slotFilter !== 'rings' ? slotFilter : 'slotless' })}
               className="btn btn-p"
-              style={{ fontSize: '8.5px', padding: '2px 7px', fontFamily: "'IM Fell English SC', serif", whiteSpace: 'nowrap' }}
+              style={{
+                fontSize: '8.5px',
+                padding: '2px 8px',
+                fontFamily: "'IM Fell English SC', serif",
+                fontWeight: 'bold',
+                whiteSpace: 'nowrap',
+                background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                border: '0.5px solid #8b6914',
+                color: '#ffffff',
+                borderRadius: '2px',
+                cursor: 'pointer'
+              }}
             >
               ➕ Custom Item
             </button>
@@ -432,12 +542,14 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                 className="btn"
                 style={{
                   fontSize: '8px',
-                  padding: '1px 5px',
+                  padding: '1px 6px',
                   fontFamily: "'IM Fell English SC', serif",
-                  background: slotFilter === chip.key ? 'rgba(139, 26, 26, 0.12)' : 'transparent',
-                  borderColor: slotFilter === chip.key ? 'var(--red)' : 'var(--pb)',
-                  color: slotFilter === chip.key ? 'var(--red)' : 'var(--inkm)',
-                  fontWeight: slotFilter === chip.key ? 'bold' : 'normal'
+                  background: slotFilter === chip.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.08)',
+                  borderColor: slotFilter === chip.key ? '#8b6914' : 'var(--pb)',
+                  color: slotFilter === chip.key ? '#ffffff' : 'var(--inkm)',
+                  fontWeight: slotFilter === chip.key ? 'bold' : 'normal',
+                  borderRadius: '2px',
+                  cursor: 'pointer'
                 }}
               >
                 {chip.label}
@@ -470,7 +582,17 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                     type="button"
                     onClick={() => setRightPanelMode('compendium')}
                     className="btn btn-p"
-                    style={{ fontSize: '9px', padding: '3px 10px', fontFamily: "'IM Fell English SC', serif" }}
+                    style={{
+                      fontSize: '9px',
+                      padding: '3px 10px',
+                      fontFamily: "'IM Fell English SC', serif",
+                      fontWeight: 'bold',
+                      background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                      border: '0.5px solid #8b6914',
+                      color: '#ffffff',
+                      borderRadius: '2px',
+                      cursor: 'pointer'
+                    }}
                   >
                     📖 Browse {slotFilter !== 'all' ? `${slotFilter} in ` : ''}Compendium
                   </button>
@@ -487,24 +609,55 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                   const isScroll = itemNameLower.includes('scroll') || itemNameLower.includes('schriftrolle');
                   const hasActivation = !!item.activation?.effectDescription || !!item.activation?.appliedBuffKey || !!item.charges || !!item.dailyUses;
                   const isUsable = isPotion || isWand || isScroll || hasActivation;
+                  const isOver = dragOverBackpackIdx === idx;
+                  const isDragging = draggedBackpackIdx === idx;
 
                   return (
                     <div
                       key={item.id || idx}
+                      draggable={true}
+                      onDragStart={(e) => {
+                        e.dataTransfer.setData('text/plain', String(idx));
+                        e.dataTransfer.effectAllowed = 'move';
+                        if (e.currentTarget instanceof HTMLElement && e.dataTransfer.setDragImage) {
+                          const rect = e.currentTarget.getBoundingClientRect();
+                          const offsetX = e.clientX - rect.left;
+                          const offsetY = e.clientY - rect.top;
+                          e.dataTransfer.setDragImage(e.currentTarget, Math.max(0, Math.min(rect.width, offsetX)), Math.max(0, Math.min(rect.height, offsetY)));
+                        }
+                        setDraggedBackpackIdx(idx);
+                      }}
+                      onDragOver={(e) => {
+                        e.preventDefault();
+                        setDragOverBackpackIdx(idx);
+                      }}
+                      onDragLeave={() => setDragOverBackpackIdx(null)}
+                      onDrop={(e) => {
+                        e.preventDefault();
+                        if (draggedBackpackIdx !== null && draggedBackpackIdx !== idx) {
+                          CombatState.reorderPCItems(draggedBackpackIdx, idx);
+                        }
+                        setDraggedBackpackIdx(null);
+                        setDragOverBackpackIdx(null);
+                      }}
                       style={{
-                        background: '#ffffff',
-                        border: '1px solid var(--pb)',
-                        borderLeft: '3px solid var(--pb)',
+                        background: 'rgba(255, 255, 255, 0.5)',
+                        border: isOver ? '1.5px solid #8b6914' : '0.5px solid rgba(200, 169, 110, 0.4)',
+                        borderLeft: isOver ? '3px solid #8b6914' : '3px solid #c8a96e',
                         borderRadius: '3px',
                         padding: '5px 7px',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '2px',
-                        boxShadow: '0 1px 2px rgba(0,0,0,0.03)'
+                        boxShadow: isOver ? '0 0 8px rgba(139, 105, 20, 0.4)' : '0 1px 2px rgba(0,0,0,0.03)',
+                        opacity: isDragging ? 0.4 : 1,
+                        cursor: 'grab',
+                        transition: 'border 0.15s ease, box-shadow 0.15s ease'
                       }}
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                          <span style={{ fontSize: '10px', color: 'var(--inkm)', cursor: 'grab', userSelect: 'none' }} title="Drag to reorder">⋮⋮</span>
                           <span style={{ fontSize: '12px' }}>{slotDef.icon}</span>
                           <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
                             {item.name || 'Item'}
@@ -548,7 +701,14 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                             type="button"
                             onClick={() => CombatState.equipPCItem(idx, item.slot)}
                             className="btn btn-p"
-                            style={{ fontSize: '8px', padding: '1px 6px', fontFamily: "'IM Fell English SC', serif" }}
+                            style={{
+                              fontSize: '8px',
+                              padding: '1px 6px',
+                              fontFamily: "'IM Fell English SC', serif",
+                              background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                              border: '0.5px solid #8b6914',
+                              color: '#ffffff'
+                            }}
                           >
                             ⚡ Equip
                           </button>
@@ -616,9 +776,9 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                     <div
                       key={entry.id}
                       style={{
-                        background: '#ffffff',
-                        border: '1px solid var(--pb)',
-                        borderLeft: '3px solid var(--pb)',
+                        background: 'rgba(255, 255, 255, 0.5)',
+                        border: '0.5px solid rgba(200, 169, 110, 0.4)',
+                        borderLeft: '3px solid #c8a96e',
                         borderRadius: '3px',
                         padding: '5px 7px',
                         display: 'flex',
@@ -633,7 +793,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                           <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                             {activePreset.name || entry.baseName}
                           </span>
-                          <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.04)', padding: '0 3px', borderRadius: '2px' }}>
+                          <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(200, 169, 110, 0.15)', padding: '0 3px', borderRadius: '2px', fontFamily: "'IM Fell English SC', serif" }}>
                             {slotInfo.nameEn}
                           </span>
                         </div>
@@ -650,13 +810,16 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                                   className="btn"
                                   style={{
                                     fontSize: '7.5px',
-                                    padding: '0 4px',
+                                    padding: '0 5px',
                                     height: '17px',
                                     lineHeight: '1',
-                                    background: activeKey === v.key ? 'var(--red)' : 'white',
-                                    color: activeKey === v.key ? 'white' : 'var(--ink)',
-                                    borderColor: activeKey === v.key ? 'var(--red)' : 'var(--pb)',
-                                    fontWeight: activeKey === v.key ? 'bold' : 'normal'
+                                    fontFamily: "'IM Fell English SC', serif",
+                                    fontWeight: 'bold',
+                                    background: activeKey === v.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.1)',
+                                    color: activeKey === v.key ? '#ffffff' : 'var(--inkm)',
+                                    borderColor: activeKey === v.key ? '#8b6914' : 'var(--pb)',
+                                    borderRadius: '2px',
+                                    cursor: 'pointer'
                                   }}
                                 >
                                   {v.label}
@@ -669,7 +832,17 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                             type="button"
                             onClick={() => handleAddBackpack(activeKey)}
                             className="btn"
-                            style={{ fontSize: '8px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
+                            style={{
+                              fontSize: '8px',
+                              padding: '1px 6px',
+                              fontFamily: "'IM Fell English SC', serif",
+                              fontWeight: 'bold',
+                              background: 'rgba(200, 169, 110, 0.12)',
+                              border: '0.5px solid var(--pb)',
+                              color: 'var(--ink)',
+                              borderRadius: '2px',
+                              cursor: 'pointer'
+                            }}
                             title="Add to Backpack"
                           >
                             + Stash
@@ -678,7 +851,17 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                             type="button"
                             onClick={() => handleAddAndEquip(activeKey)}
                             className="btn btn-p"
-                            style={{ fontSize: '8px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
+                            style={{
+                              fontSize: '8px',
+                              padding: '1px 6px',
+                              fontFamily: "'IM Fell English SC', serif",
+                              fontWeight: 'bold',
+                              background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                              border: '0.5px solid #8b6914',
+                              color: '#ffffff',
+                              borderRadius: '2px',
+                              cursor: 'pointer'
+                            }}
                             title="Add and immediately equip"
                           >
                             ⚡ Equip

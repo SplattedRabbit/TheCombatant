@@ -251,9 +251,22 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                   style={{ flex: 1, fontSize: '8px', height: '18px', padding: '1px 6px' }}
                 />
                 <button
-                  className="btn btn-p"
+                  className="btn"
                   onClick={() => CombatState.addPCWeapon()}
-                  style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '7.5px', padding: '1px 6px', height: '18px', lineHeight: 1, whiteSpace: 'nowrap' }}
+                  style={{
+                    fontFamily: "'IM Fell English SC', serif",
+                    fontSize: '7.5px',
+                    fontWeight: 'bold',
+                    padding: '1px 8px',
+                    height: '18px',
+                    lineHeight: 1,
+                    whiteSpace: 'nowrap',
+                    background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                    border: '0.5px solid #8b6914',
+                    color: '#ffffff',
+                    borderRadius: '2px',
+                    cursor: 'pointer'
+                  }}
                 >
                   ➕ Weapon
                 </button>

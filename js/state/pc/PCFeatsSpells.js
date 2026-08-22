@@ -122,6 +122,13 @@ export function resetDailyResources() {
         ps.isUsed = false;
       });
     }
+    if (Array.isArray(pc.items)) {
+      pc.items.forEach(item => {
+        if (item && item.dailyUses && item.dailyUses.max) {
+          item.dailyUses.current = item.dailyUses.max;
+        }
+      });
+    }
     saveToStorage();
     syncPCToHost();
   }

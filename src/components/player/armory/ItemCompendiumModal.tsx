@@ -141,12 +141,14 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
               className="btn"
               style={{
                 fontSize: '8.5px',
-                padding: '2px 5px',
+                padding: '2px 6px',
                 fontFamily: "'IM Fell English SC', serif",
-                background: selectedSlot === chip.key ? 'rgba(139, 26, 26, 0.12)' : 'transparent',
-                borderColor: selectedSlot === chip.key ? 'var(--red)' : 'var(--pb)',
-                color: selectedSlot === chip.key ? 'var(--red)' : 'var(--inkm)',
-                fontWeight: selectedSlot === chip.key ? 'bold' : 'normal'
+                background: selectedSlot === chip.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.08)',
+                borderColor: selectedSlot === chip.key ? '#8b6914' : 'var(--pb)',
+                color: selectedSlot === chip.key ? '#ffffff' : 'var(--inkm)',
+                fontWeight: selectedSlot === chip.key ? 'bold' : 'normal',
+                borderRadius: '2px',
+                cursor: 'pointer'
               }}
             >
               {chip.label}
@@ -171,9 +173,9 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                 <div
                   key={entry.id}
                   style={{
-                    background: '#ffffff',
-                    border: '1px solid var(--pb)',
-                    borderLeft: '3px solid var(--pb)',
+                    background: 'rgba(255, 255, 255, 0.5)',
+                    border: '0.5px solid rgba(200, 169, 110, 0.4)',
+                    borderLeft: '3px solid #c8a96e',
                     borderRadius: '3px',
                     padding: '6px 8px',
                     display: 'flex',
@@ -187,7 +189,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                       <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                         {activePreset.name || entry.baseName}
                       </span>
-                      <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: 'var(--inkm)', padding: '0 3px', borderRadius: '2px' }}>
+                      <span style={{ fontSize: '7.5px', background: 'rgba(200, 169, 110, 0.15)', color: 'var(--inkm)', padding: '0 4px', borderRadius: '2px', fontFamily: "'IM Fell English SC', serif" }}>
                         {slotInfo.nameEn}
                       </span>
                     </div>
@@ -204,11 +206,14 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                               className="btn"
                               style={{
                                 fontSize: '7.5px',
-                                padding: '1px 4px',
-                                background: activeKey === v.key ? 'var(--red)' : 'white',
-                                color: activeKey === v.key ? 'white' : 'var(--ink)',
-                                borderColor: activeKey === v.key ? 'var(--red)' : 'var(--pb)',
-                                fontWeight: activeKey === v.key ? 'bold' : 'normal'
+                                padding: '1px 5px',
+                                fontFamily: "'IM Fell English SC', serif",
+                                fontWeight: 'bold',
+                                background: activeKey === v.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.1)',
+                                color: activeKey === v.key ? '#ffffff' : 'var(--inkm)',
+                                borderColor: activeKey === v.key ? '#8b6914' : 'var(--pb)',
+                                borderRadius: '2px',
+                                cursor: 'pointer'
                               }}
                             >
                               {v.label}
@@ -221,7 +226,17 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                         type="button"
                         onClick={() => handleAddBackpack(activeKey)}
                         className="btn"
-                        style={{ fontSize: '8px', padding: '2px 6px', fontFamily: "'IM Fell English SC', serif" }}
+                        style={{
+                          fontSize: '8px',
+                          padding: '2px 7px',
+                          fontFamily: "'IM Fell English SC', serif",
+                          fontWeight: 'bold',
+                          background: 'rgba(200, 169, 110, 0.12)',
+                          border: '0.5px solid var(--pb)',
+                          color: 'var(--ink)',
+                          borderRadius: '2px',
+                          cursor: 'pointer'
+                        }}
                         title="Add to Backpack"
                       >
                         + Backpack
@@ -230,7 +245,17 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                         type="button"
                         onClick={() => handleAddAndEquip(activeKey)}
                         className="btn btn-p"
-                        style={{ fontSize: '8px', padding: '2px 6px', fontFamily: "'IM Fell English SC', serif" }}
+                        style={{
+                          fontSize: '8px',
+                          padding: '2px 7px',
+                          fontFamily: "'IM Fell English SC', serif",
+                          fontWeight: 'bold',
+                          background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                          border: '0.5px solid #8b6914',
+                          color: '#ffffff',
+                          borderRadius: '2px',
+                          cursor: 'pointer'
+                        }}
                         title="Add & Equip"
                       >
                         ⚡ Equip
