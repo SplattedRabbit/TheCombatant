@@ -660,29 +660,39 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
               )}
             </div>
 
-            {/* Filter Tabs */}
-            <div style={{ display: 'flex', gap: '2px', margin: '4px 0 2px 0' }}>
-              {(['all', 'interaction', 'movement', 'manipulation'] as const).map((cat) => (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setTrickCategoryFilter(cat)}
-                  style={{
-                    flex: 1,
-                    fontSize: '7.5px',
-                    fontFamily: "'IM Fell English SC', serif",
-                    padding: '2px 0',
-                    border: trickCategoryFilter === cat ? '1px solid var(--red)' : '0.5px solid var(--pb)',
-                    background: trickCategoryFilter === cat ? 'var(--red)' : 'transparent',
-                    color: trickCategoryFilter === cat ? '#fff' : 'var(--inkm)',
-                    borderRadius: '2px',
-                    cursor: 'pointer',
-                    textTransform: 'capitalize'
-                  }}
-                >
-                  {cat}
-                </button>
-              ))}
+            {/* Filter Tabs & Search */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', margin: '4px 0 2px 0' }}>
+              <div style={{ display: 'flex', gap: '2px' }}>
+                {(['all', 'interaction', 'movement', 'manipulation', 'mental'] as const).map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setTricksFilterCategory(cat)}
+                    style={{
+                      flex: 1,
+                      fontSize: '7.5px',
+                      fontFamily: "'IM Fell English SC', serif",
+                      padding: '2px 0',
+                      border: tricksFilterCategory === cat ? '1px solid var(--red)' : '0.5px solid var(--pb)',
+                      background: tricksFilterCategory === cat ? 'var(--red)' : 'transparent',
+                      color: tricksFilterCategory === cat ? '#fff' : 'var(--inkm)',
+                      borderRadius: '2px',
+                      cursor: 'pointer',
+                      textTransform: 'capitalize'
+                    }}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+              <input
+                type="text"
+                value={tricksSearchQuery}
+                onChange={(e) => setTricksSearchQuery(e.target.value)}
+                placeholder="Search trick..."
+                className="cinput"
+                style={{ fontSize: '8px', height: '18px', padding: '0 4px', width: '100%', boxSizing: 'border-box' }}
+              />
             </div>
 
             {/* Trick Compendium List */}
