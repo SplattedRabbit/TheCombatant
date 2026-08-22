@@ -53,6 +53,12 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
    - **0 TypeScript-Fehler** (`npx tsc --noEmit` mit striktem Typsystem).
    - Saubere 4-Schichten-Trennung (Presentation $\rightarrow$ State $\rightarrow$ Rules $\rightarrow$ Models).
 
+#### 🔮 Ausblick: Die nächste Evolution (Roadmap)
+> Mit Version 5.0.0 steht das Regelsystem und die Frontend-Architektur auf einem absolut soliden Fundament. Der nächste große Entwicklungsschritt transformiert die CombatApp von einer lokalen Client-/P2P-Anwendung in eine vollwertige Cloud-Webapplikation:
+> 1. **🌐 Eigenes Webserver-Hosting**: Bereitstellung einer dedizierten, hochverfügbaren Server-Umgebung.
+> 2. **🔐 Social Sign-On (SSO)**: Sichere, nahtlose Benutzeranmeldung ohne Passwort-Hürden (z. B. via Google/Discord).
+> 3. **💾 Zentrale Datenbank & Cloud-Sync**: Permanente serverseitige Speicherung von Charakterbögen, Kampagnen und DM-Begegnungen für geräteübergreifendes Spielen in Echtzeit.
+
 ---
 
 ### v4.6.1 — UI-Polish, Farbharmonisierung & 3-/4-State Status-Systeme (Release v4.6.1)
