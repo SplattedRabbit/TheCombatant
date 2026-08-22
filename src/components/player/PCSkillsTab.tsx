@@ -36,6 +36,8 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
   const [selectedTrick, setSelectedTrick] = useState<any>(null);
   const [focusedRanksKey, setFocusedRanksKey] = useState<string | null>(null);
   const [focusedRanksVal, setFocusedRanksVal] = useState<string>('');
+  const [focusedMiscKey, setFocusedMiscKey] = useState<string | null>(null);
+  const [focusedMiscVal, setFocusedMiscVal] = useState<string>('');
 
   // Format Mod helper
   const formatMod = (val: number) => (val >= 0 ? `+${val}` : `${val}`);
@@ -537,8 +539,25 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                           <span style={{ fontSize: '6px', color: 'var(--inkl)' }}>Misc:</span>
                           <input
                             type="number"
-                            value={misc}
-                            onChange={(e) => handleMiscChange(key, e.target.value)}
+                            value={focusedMiscKey === key ? focusedMiscVal : misc}
+                            onFocus={() => {
+                              setFocusedMiscKey(key);
+                              setFocusedMiscVal(misc === 0 ? '' : String(misc));
+                            }}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              setFocusedMiscVal(val);
+                              if (val !== '' && val !== '-') {
+                                handleMiscChange(key, val);
+                              }
+                            }}
+                            onBlur={() => {
+                              if (focusedMiscVal === '' || focusedMiscVal === '-' || isNaN(parseInt(focusedMiscVal))) {
+                                handleMiscChange(key, '0');
+                              }
+                              setFocusedMiscKey(null);
+                              setFocusedMiscVal('');
+                            }}
                             style={{
                               width: '16px',
                               fontSize: '8px',
