@@ -2,31 +2,30 @@ import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 // @ts-ignore
-import { ITEM_SLOTS } from '@core/data/magicItems-data.js';
-import { BodySlotCard } from './BodySlotCard';
+import { ITEM_SLOTS, MAGIC_ITEMS_REGISTRY, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
+import { BaseCard } from '../../shared/BaseCard';
+import { BodySlotCard, formatEffectDisplay } from './BodySlotCard';
 import { EmptySlotCard } from './EmptySlotCard';
 import { SlotEquipModal } from './SlotEquipModal';
-import { ItemCompendiumModal } from './ItemCompendiumModal';
 import { ItemEditorModal } from './ItemEditorModal';
-import { BackpackGrid } from './BackpackGrid';
 
 interface ArmoryTabProps {
   pc: any;
 }
 
 const BODY_SLOTS_ORDER = [
-  'head', 'face',
-  'neck', 'shoulders',
-  'torso', 'body',
-  'waist', 'wrists',
-  'hands', 'feet',
-  'ring1', 'ring2'
+  'head', 'face', 'neck',
+  'shoulders', 'torso', 'body',
+  'wrists', 'hands', 'waist',
+  'feet', 'ring1', 'ring2'
 ];
 
 export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
+  const [rightPanelMode, setRightPanelMode] = useState<'backpack' | 'compendium'>('backpack');
+  const [search, setSearch] = useState('');
+  const [slotFilter, setSlotFilter] = useState('all');
+  const [selectedTiers, setSelectedTiers] = useState<Record<string, string>>({});
   const [activeEquipSlot, setActiveEquipSlot] = useState<string | null>(null);
-  const [isCompendiumOpen, setIsCompendiumOpen] = useState(false);
-  const [compendiumDefaultSlot, setCompendiumDefaultSlot] = useState('all');
   const [editingItemData, setEditingItemData] = useState<{ item?: any; itemIdx?: number; defaultSlot?: string } | null>(null);
 
   const items = Array.isArray(pc.items) ? pc.items : [];
@@ -45,171 +44,505 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
     }
   });
 
+  // Backpack entries
+  const backpackEntries = items
+    .map((item: any, idx: number) => ({ item, idx }))
+    .filter(({ item }) => !item.isEquipped);
+
+  const filteredBackpack = backpackEntries.filter(({ item }) => {
+    if (slotFilter !== 'all') {
+      if (slotFilter === 'rings') {
+        if (item.slot !== 'ring' && item.slot !== 'ring1' && item.slot !== 'ring2') return false;
+      } else if (item.slot !== slotFilter) {
+        return false;
+      }
+    }
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      const matchName = item.name && item.name.toLowerCase().includes(q);
+      const matchDesc = item.description && item.description.toLowerCase().includes(q);
+      return matchName || matchDesc;
+    }
+    return true;
+  });
+
+  // Consolidated Compendium entries
+  const filteredCompendium = CONSOLIDATED_COMPENDIUM.filter(entry => {
+    if (slotFilter !== 'all') {
+      if (slotFilter === 'rings') {
+        if (entry.slot !== 'ring1' && entry.slot !== 'ring2' && entry.slot !== 'ring') return false;
+      } else if (entry.slot !== slotFilter) {
+        return false;
+      }
+    }
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      const matchName = entry.baseName.toLowerCase().includes(q);
+      const matchDesc = entry.description && entry.description.toLowerCase().includes(q);
+      return matchName || matchDesc;
+    }
+    return true;
+  });
+
+  const getEffectivePresetKey = (entry: any) => {
+    const selectedKey = selectedTiers[entry.id];
+    if (selectedKey && entry.variants.some((v: any) => v.key === selectedKey)) {
+      return selectedKey;
+    }
+    return entry.variants[0]?.key || entry.id;
+  };
+
+  const handleSelectTier = (entryId: string, presetKey: string) => {
+    setSelectedTiers(prev => ({ ...prev, [entryId]: presetKey }));
+  };
+
+  const handleAddBackpack = (presetKey: string) => {
+    CombatState.addPCItemFromCompendium(presetKey, false);
+  };
+
+  const handleAddAndEquip = (presetKey: string) => {
+    CombatState.addPCItemFromCompendium(presetKey, true);
+  };
+
   const handleUnequipSlot = (idx: number) => {
     CombatState.unequipPCItem(idx);
   };
 
   const handleSwapSlot = (slotKey: string) => {
-    setActiveEquipSlot(slotKey);
+    setSlotFilter(slotKey === 'ring1' || slotKey === 'ring2' ? 'rings' : slotKey);
+    setRightPanelMode('backpack');
   };
 
-  const handleEditItem = (item: any, idx: number) => {
-    setEditingItemData({ item, itemIdx: idx });
+  const handleEmptySlotClick = (slotKey: string) => {
+    setSlotFilter(slotKey === 'ring1' || slotKey === 'ring2' ? 'rings' : slotKey);
+    setRightPanelMode('compendium');
   };
 
-  const handleOpenCompendium = (defaultSlot?: string) => {
-    setCompendiumDefaultSlot(defaultSlot || 'all');
-    setIsCompendiumOpen(true);
-  };
-
-  const handleOpenCustomEditor = (item?: any, itemIdx?: number, defaultSlot?: string) => {
-    setEditingItemData({ item, itemIdx, defaultSlot });
-  };
+  const filterChips = [
+    { key: 'all', label: 'All' },
+    { key: 'head', label: '👑 Head' },
+    { key: 'face', label: '👓 Face' },
+    { key: 'neck', label: '📿 Neck' },
+    { key: 'shoulders', label: '🧥 Shld' },
+    { key: 'torso', label: '🥋 Torso' },
+    { key: 'body', label: '👘 Body' },
+    { key: 'wrists', label: '🦾 Wrists' },
+    { key: 'hands', label: '🧤 Hands' },
+    { key: 'waist', label: '🎗️ Waist' },
+    { key: 'feet', label: '🥾 Feet' },
+    { key: 'rings', label: '💍 Rings' },
+    { key: 'slotless', label: '🎒 Slotless' }
+  ];
 
   return (
-    <div className="armory-layout-grid" style={{ minHeight: '480px' }}>
+    <div className="armory-layout-grid">
       
-      {/* === LEFT COLUMN: Paperdoll / Equipped Slots === */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        
-        {/* Header Bar */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            background: 'var(--pd, #fdf6e2)',
-            border: '1.5px solid var(--pb, #c8a96e)',
-            borderRadius: '4px',
-            padding: '5px 10px'
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '14px' }}>🧍</span>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
-              Equipped Magic Items ({Object.keys(equippedMap).length} / 12 Slots)
-            </span>
-          </div>
-        </div>
+      {/* === LEFT COLUMN: Paperdoll / Equipped Slots in BaseCard === */}
+      <BaseCard
+        title={`🧍 Equipped Magic Items (${Object.keys(equippedMap).length} / 12)`}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          
+          {/* 3-Column Compact Grid */}
+          <div className="paperdoll-grid">
+            {BODY_SLOTS_ORDER.map(slotKey => {
+              const slotDef = (ITEM_SLOTS as any)[slotKey] || { nameEn: slotKey, icon: '🎒' };
+              const equippedEntry = equippedMap[slotKey];
 
-        {/* 2-Column Body Slots Grid */}
-        <div className="paperdoll-grid">
-          {BODY_SLOTS_ORDER.map(slotKey => {
-            const slotDef = (ITEM_SLOTS as any)[slotKey] || { nameEn: slotKey, icon: '🎒' };
-            const equippedEntry = equippedMap[slotKey];
+              if (equippedEntry) {
+                return (
+                  <BodySlotCard
+                    key={slotKey}
+                    slotKey={slotKey}
+                    slotDef={slotDef}
+                    item={equippedEntry.item}
+                    itemIdx={equippedEntry.idx}
+                    onUnequip={() => handleUnequipSlot(equippedEntry.idx)}
+                    onSwap={() => handleSwapSlot(slotKey)}
+                    onEdit={() => setEditingItemData({ item: equippedEntry.item, itemIdx: equippedEntry.idx })}
+                  />
+                );
+              }
 
-            if (equippedEntry) {
               return (
-                <BodySlotCard
+                <EmptySlotCard
                   key={slotKey}
                   slotKey={slotKey}
                   slotDef={slotDef}
-                  item={equippedEntry.item}
-                  itemIdx={equippedEntry.idx}
-                  onUnequip={() => handleUnequipSlot(equippedEntry.idx)}
-                  onSwap={() => handleSwapSlot(slotKey)}
-                  onEdit={() => handleEditItem(equippedEntry.item, equippedEntry.idx)}
+                  onClick={() => handleEmptySlotClick(slotKey)}
                 />
               );
-            }
-
-            return (
-              <EmptySlotCard
-                key={slotKey}
-                slotKey={slotKey}
-                slotDef={slotDef}
-                onClick={() => setActiveEquipSlot(slotKey)}
-              />
-            );
-          })}
-        </div>
-
-        {/* Slotless & Wondrous Equipped Items */}
-        {slotlessEquipped.length > 0 && (
-          <div style={{ marginTop: '2px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '3px' }}>
-              🎒 Slotless & Wondrous Items ({slotlessEquipped.length})
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-              {slotlessEquipped.map(({ item, idx }) => (
-                <div
-                  key={item.id || idx}
-                  style={{
-                    background: 'var(--pd, #fdf6e2)',
-                    border: '1px solid var(--pb)',
-                    borderLeft: '3px solid var(--red)',
-                    borderRadius: '3px',
-                    padding: '4px 8px',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                  }}
-                >
-                  <div>
-                    <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
-                      {item.name}
-                    </span>
-                    {item.description && (
-                      <span style={{ fontSize: '8.5px', color: 'var(--inkm)', marginLeft: '6px', fontFamily: "'Crimson Text', serif" }}>
-                        {item.description}
-                      </span>
-                    )}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => handleUnequipSlot(idx)}
-                    className="xbtn"
-                    style={{ fontSize: '8px', padding: '1px 5px' }}
-                    title="Unequip"
-                  >
-                    ✕
-                  </button>
-                </div>
-              ))}
-            </div>
+            })}
           </div>
-        )}
 
-      </div>
+          {/* Slotless & Wondrous Equipped Items */}
+          {slotlessEquipped.length > 0 && (
+            <div style={{ marginTop: '4px', borderTop: '0.5px solid var(--pb)', paddingTop: '4px' }}>
+              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '3px' }}>
+                🎒 Slotless & Wondrous Items ({slotlessEquipped.length})
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                {slotlessEquipped.map(({ item, idx }) => (
+                  <div
+                    key={item.id || idx}
+                    style={{
+                      background: 'rgba(253, 246, 226, 0.6)',
+                      border: '1px solid var(--pb)',
+                      borderLeft: '3px solid var(--red)',
+                      borderRadius: '3px',
+                      padding: '3px 6px',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center'
+                    }}
+                  >
+                    <div>
+                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                        {item.name}
+                      </span>
+                      {item.description && (
+                        <span style={{ fontSize: '8.5px', color: 'var(--inkm)', marginLeft: '4px', fontFamily: "'Crimson Text', serif" }}>
+                          {item.description.length > 40 ? item.description.substring(0, 40) + '...' : item.description}
+                        </span>
+                      )}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handleUnequipSlot(idx)}
+                      className="xbtn"
+                      style={{ fontSize: '7.5px', padding: '0 4px' }}
+                      title="Unequip"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
-      {/* === RIGHT COLUMN: Backpack Inventory === */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        <div
-          style={{
-            background: 'var(--pd, #fdf6e2)',
-            border: '1.5px solid var(--pb, #c8a96e)',
-            borderRadius: '4px',
-            padding: '5px 10px',
-            fontFamily: "'IM Fell English SC', serif",
-            fontSize: '12px',
-            fontWeight: 'bold',
-            color: 'var(--red)'
-          }}
-        >
-          🎒 Backpack & Inventory
         </div>
+      </BaseCard>
 
-        <BackpackGrid
-          pc={pc}
-          onOpenCompendium={() => handleOpenCompendium()}
-          onOpenCustomEditor={(it, idx) => handleOpenCustomEditor(it, idx)}
-        />
-      </div>
+      {/* === RIGHT COLUMN: Armory Stash & Compendium in BaseCard === */}
+      <BaseCard
+        title="🎒 Armory Stash & Compendium"
+        headerRight={
+          <div style={{ display: 'flex', gap: '4px' }}>
+            <button
+              type="button"
+              onClick={() => setRightPanelMode('backpack')}
+              className="btn"
+              style={{
+                fontSize: '8.5px',
+                padding: '1px 6px',
+                fontFamily: "'IM Fell English SC', serif",
+                background: rightPanelMode === 'backpack' ? 'var(--pb)' : 'transparent',
+                color: rightPanelMode === 'backpack' ? 'var(--red)' : 'var(--ink)',
+                fontWeight: rightPanelMode === 'backpack' ? 'bold' : 'normal'
+              }}
+            >
+              🎒 Backpack ({backpackEntries.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setRightPanelMode('compendium')}
+              className="btn"
+              style={{
+                fontSize: '8.5px',
+                padding: '1px 6px',
+                fontFamily: "'IM Fell English SC', serif",
+                background: rightPanelMode === 'compendium' ? 'var(--pb)' : 'transparent',
+                color: rightPanelMode === 'compendium' ? 'var(--red)' : 'var(--ink)',
+                fontWeight: rightPanelMode === 'compendium' ? 'bold' : 'normal'
+              }}
+            >
+              📖 Compendium
+            </button>
+          </div>
+        }
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+          
+          {/* Controls Bar: Search & New Item Button */}
+          <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+            <input
+              type="text"
+              placeholder={rightPanelMode === 'backpack' ? 'Search backpack items...' : 'Search compendium items...'}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="cinput"
+              style={{ flex: 1, padding: '2px 6px', fontSize: '10px', height: '22px', boxSizing: 'border-box' }}
+            />
+            <button
+              type="button"
+              onClick={() => setEditingItemData({ defaultSlot: slotFilter !== 'all' && slotFilter !== 'rings' ? slotFilter : 'slotless' })}
+              className="btn btn-p"
+              style={{ fontSize: '8.5px', padding: '2px 6px', fontFamily: "'IM Fell English SC', serif", whiteSpace: 'nowrap' }}
+            >
+              ➕ Custom Item
+            </button>
+          </div>
 
-      {/* === MODALS === */}
+          {/* Compact Slot Filter Chips */}
+          <div style={{ display: 'flex', gap: '2px', flexWrap: 'wrap', borderBottom: '0.5px solid rgba(200, 169, 110, 0.4)', paddingBottom: '3px' }}>
+            {filterChips.map(chip => (
+              <button
+                key={chip.key}
+                type="button"
+                onClick={() => setSlotFilter(chip.key)}
+                className="btn"
+                style={{
+                  fontSize: '7.5px',
+                  padding: '1px 4px',
+                  fontFamily: "'IM Fell English SC', serif",
+                  background: slotFilter === chip.key ? 'rgba(139, 26, 26, 0.12)' : 'transparent',
+                  borderColor: slotFilter === chip.key ? 'var(--red)' : 'var(--pb)',
+                  color: slotFilter === chip.key ? 'var(--red)' : 'var(--inkm)',
+                  fontWeight: slotFilter === chip.key ? 'bold' : 'normal'
+                }}
+              >
+                {chip.label}
+              </button>
+            ))}
+          </div>
+
+          {/* List Content Area */}
+          <div
+            style={{
+              maxHeight: '340px',
+              overflowY: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px',
+              paddingRight: '2px'
+            }}
+          >
+            {rightPanelMode === 'backpack' ? (
+              /* === BACKPACK VIEW === */
+              filteredBackpack.length === 0 ? (
+                <div style={{ padding: '20px 10px', textAlign: 'center', color: 'var(--inkl)', fontSize: '10px', fontStyle: 'italic' }}>
+                  Backpack is empty. Click <strong>📖 Compendium</strong> above to add items!
+                </div>
+              ) : (
+                filteredBackpack.map(({ item, idx }) => {
+                  const slotDef = (ITEM_SLOTS as any)[item.slot] || { icon: '🎒', nameEn: item.slot || 'Slotless' };
+                  const rawEffects = Array.isArray(item.effects) ? item.effects : [];
+                  const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);
+
+                  return (
+                    <div
+                      key={item.id || idx}
+                      style={{
+                        background: '#ffffff',
+                        border: '1px solid var(--pb)',
+                        borderLeft: '3px solid var(--pb)',
+                        borderRadius: '3px',
+                        padding: '4px 6px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2px'
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          <span style={{ fontSize: '11px' }}>{slotDef.icon}</span>
+                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>
+                            {item.name || 'Item'}
+                          </span>
+                          <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.04)', padding: '0 3px', borderRadius: '2px' }}>
+                            {slotDef.nameEn}
+                          </span>
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '2px' }}>
+                          <button
+                            type="button"
+                            onClick={() => CombatState.equipPCItem(idx, item.slot)}
+                            className="btn btn-p"
+                            style={{ fontSize: '7.5px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
+                          >
+                            ⚡ Equip
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setEditingItemData({ item, itemIdx: idx })}
+                            className="btn"
+                            style={{ fontSize: '7.5px', padding: '1px 3px' }}
+                            title="Edit"
+                          >
+                            ✏️
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => CombatState.deletePCItem(idx)}
+                            className="xbtn"
+                            style={{ fontSize: '7.5px', padding: '1px 3px' }}
+                            title="Delete"
+                          >
+                            🗑️
+                          </button>
+                        </div>
+                      </div>
+
+                      {activeEffects.length > 0 && (
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px' }}>
+                          {activeEffects.map((eff: any, eIdx: number) => (
+                            <span
+                              key={eIdx}
+                              style={{
+                                fontSize: '8px',
+                                background: 'rgba(200, 169, 110, 0.18)',
+                                border: '0.5px solid var(--pb)',
+                                borderRadius: '2px',
+                                padding: '0 3px',
+                                color: 'var(--ink)',
+                                fontWeight: 600,
+                                fontFamily: "'Crimson Text', serif"
+                              }}
+                            >
+                              {formatEffectDisplay(eff)}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })
+              )
+            ) : (
+              /* === COMPENDIUM VIEW === */
+              filteredCompendium.length === 0 ? (
+                <div style={{ padding: '20px 10px', textAlign: 'center', color: 'var(--inkl)', fontSize: '10px', fontStyle: 'italic' }}>
+                  No items found matching criteria.
+                </div>
+              ) : (
+                filteredCompendium.map(entry => {
+                  const activeKey = getEffectivePresetKey(entry);
+                  const activePreset = MAGIC_ITEMS_REGISTRY[activeKey] || {};
+                  const slotInfo = (ITEM_SLOTS as any)[entry.slot] || { icon: '🎒', nameEn: entry.slot };
+                  const rawEffects = Array.isArray(activePreset.effects) ? activePreset.effects : [];
+                  const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);
+
+                  return (
+                    <div
+                      key={entry.id}
+                      style={{
+                        background: '#ffffff',
+                        border: '1px solid var(--pb)',
+                        borderLeft: '3px solid var(--pb)',
+                        borderRadius: '3px',
+                        padding: '4px 6px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2px'
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexWrap: 'wrap' }}>
+                          <span style={{ fontSize: '11px' }}>{slotInfo.icon}</span>
+                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
+                            {activePreset.name || entry.baseName}
+                          </span>
+                          <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.04)', padding: '0 3px', borderRadius: '2px' }}>
+                            {slotInfo.nameEn}
+                          </span>
+                        </div>
+
+                        {/* Tier selection & Actions */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                          {entry.variants.length > 1 && (
+                            <div style={{ display: 'flex', gap: '2px', marginRight: '3px' }}>
+                              {entry.variants.map((v: any) => (
+                                <button
+                                  key={v.key}
+                                  type="button"
+                                  onClick={() => handleSelectTier(entry.id, v.key)}
+                                  className="btn"
+                                  style={{
+                                    fontSize: '7px',
+                                    padding: '0 3px',
+                                    height: '16px',
+                                    lineHeight: '1',
+                                    background: activeKey === v.key ? 'var(--red)' : 'white',
+                                    color: activeKey === v.key ? 'white' : 'var(--ink)',
+                                    borderColor: activeKey === v.key ? 'var(--red)' : 'var(--pb)',
+                                    fontWeight: activeKey === v.key ? 'bold' : 'normal'
+                                  }}
+                                >
+                                  {v.label}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+
+                          <button
+                            type="button"
+                            onClick={() => handleAddBackpack(activeKey)}
+                            className="btn"
+                            style={{ fontSize: '7.5px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
+                            title="Add to Backpack"
+                          >
+                            + Stash
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleAddAndEquip(activeKey)}
+                            className="btn btn-p"
+                            style={{ fontSize: '7.5px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
+                            title="Add and immediately equip"
+                          >
+                            ⚡ Equip
+                          </button>
+                        </div>
+                      </div>
+
+                      {activeEffects.length > 0 && (
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px' }}>
+                          {activeEffects.map((eff: any, eIdx: number) => (
+                            <span
+                              key={eIdx}
+                              style={{
+                                fontSize: '8px',
+                                background: 'rgba(200, 169, 110, 0.18)',
+                                border: '0.5px solid var(--pb)',
+                                borderRadius: '2px',
+                                padding: '0 3px',
+                                color: 'var(--ink)',
+                                fontWeight: 600,
+                                fontFamily: "'Crimson Text', serif"
+                              }}
+                            >
+                              {formatEffectDisplay(eff)}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      <div style={{ fontSize: '8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.2 }}>
+                        {activePreset.description || entry.description}
+                      </div>
+                    </div>
+                  );
+                })
+              )
+            )}
+          </div>
+
+        </div>
+      </BaseCard>
+
+      {/* === MODALS (IF OPENED) === */}
       {activeEquipSlot && (
         <SlotEquipModal
           slotKey={activeEquipSlot}
           pc={pc}
           onClose={() => setActiveEquipSlot(null)}
-          onOpenCompendium={(slot) => handleOpenCompendium(slot)}
-          onOpenCustomEditor={(slot) => handleOpenCustomEditor(undefined, undefined, slot)}
-        />
-      )}
-
-      {isCompendiumOpen && (
-        <ItemCompendiumModal
-          initialSlot={compendiumDefaultSlot}
-          onClose={() => setIsCompendiumOpen(false)}
+          onOpenCompendium={(slot) => {
+            setSlotFilter(slot || 'all');
+            setRightPanelMode('compendium');
+          }}
+          onOpenCustomEditor={(slot) => setEditingItemData({ defaultSlot: slot || 'slotless' })}
         />
       )}
 

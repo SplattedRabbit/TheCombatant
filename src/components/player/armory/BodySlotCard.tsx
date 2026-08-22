@@ -25,21 +25,21 @@ export const formatEffectDisplay = (eff: any) => {
     int: 'INT',
     wis: 'WIS',
     cha: 'CHA',
-    fort: 'Fortitude',
-    ref: 'Reflex',
+    fort: 'Fort',
+    ref: 'Ref',
     wil: 'Will',
-    all: 'All Saves',
-    deflection: 'Deflection AC',
-    natural: 'Natural Armor',
+    all: 'Saves',
+    deflection: 'Defl AC',
+    natural: 'Nat AC',
     armor: 'Armor AC',
     shield: 'Shield AC',
     dodge: 'Dodge AC',
     speed: 'Speed',
-    ini: 'Initiative',
+    ini: 'Init',
     spot: 'Spot',
     jump: 'Jump',
-    move_silently: 'Move Silently',
-    ranged_atk: 'Ranged ATK'
+    move_silently: 'Stealth',
+    ranged_atk: 'Ranged'
   };
 
   const cleanTarget = targetNames[target] || target.toUpperCase();
@@ -66,10 +66,10 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
     setIsAnimating(true);
     setTimeout(() => {
       setIsFlipped(targetState);
-    }, 130);
+    }, 120);
     setTimeout(() => {
       setIsAnimating(false);
-    }, 270);
+    }, 250);
   };
 
   const handleChargeChange = (e: React.MouseEvent, amount: number) => {
@@ -85,101 +85,104 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
   };
 
   return (
-    <div className={`item-slot-card-container ${isAnimating ? 'item-card-animating' : ''}`} style={{ minHeight: '76px' }}>
+    <div className={`item-slot-card-container ${isAnimating ? 'item-card-animating' : ''}`} style={{ minHeight: '52px' }}>
       {!isFlipped ? (
-        /* === FRONT FACE (PARCHMENT AESTHETIC) === */
+        /* === FRONT FACE (COMPACT TABLET-FIRST) === */
         <div
           onClick={() => handleToggleFlip(true)}
           style={{
             background: 'var(--pd, #fdf6e2)',
             border: '1.5px solid var(--pb, #c8a96e)',
-            borderLeft: '3.5px solid var(--red, #8b1a1a)',
-            borderRadius: '4px',
-            padding: '6px 8px',
+            borderLeft: '3px solid var(--red, #8b1a1a)',
+            borderRadius: '3px',
+            padding: '4px 6px',
             cursor: 'pointer',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            gap: '4px',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
-            minHeight: '76px',
+            gap: '2px',
+            minHeight: '52px',
             boxSizing: 'border-box'
           }}
-          title="Click to flip and inspect or unequip"
+          title="Click to flip / unequip"
         >
-          {/* Header with Icon directly in front of Slot Name */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ fontSize: '13px' }}>{slotDef.icon}</span>
-            <span style={{ fontSize: '10.5px', fontWeight: 'bold', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.4px' }}>
-              {slotDef.nameEn}
-            </span>
+          {/* Header Row: Slot Icon + Name and clean Effect Pill */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', lineHeight: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+              <span style={{ fontSize: '11px' }}>{slotDef.icon}</span>
+              <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif" }}>
+                {slotDef.nameEn}
+              </span>
+            </div>
+
+            {activeEffects.length > 0 && (
+              <span
+                style={{
+                  fontSize: '8.5px',
+                  background: 'rgba(200, 169, 110, 0.25)',
+                  border: '0.5px solid var(--pb)',
+                  borderRadius: '2px',
+                  padding: '0 3px',
+                  color: 'var(--ink)',
+                  fontWeight: 'bold',
+                  fontFamily: "'Crimson Text', serif",
+                  lineHeight: '13px'
+                }}
+              >
+                {formatEffectDisplay(activeEffects[0])}
+                {activeEffects.length > 1 ? ` +${activeEffects.length - 1}` : ''}
+              </span>
+            )}
           </div>
 
           {/* Item Name */}
-          <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '12px', fontWeight: 'bold', color: 'var(--red)', lineHeight: 1.2 }}>
-            {item.name || item.nameDe || 'Equipped Item'}
+          <div
+            style={{
+              fontFamily: "'IM Fell English SC', serif",
+              fontSize: '11px',
+              fontWeight: 'bold',
+              color: 'var(--red)',
+              lineHeight: 1.15,
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+            }}
+            title={item.name}
+          >
+            {item.name || item.nameDe || 'Equipped'}
           </div>
 
-          {/* Clean Effect Pills */}
-          {activeEffects.length > 0 ? (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
-              {activeEffects.map((eff: any, eIdx: number) => (
-                <span
-                  key={eIdx}
-                  style={{
-                    fontSize: '9.5px',
-                    background: 'rgba(200, 169, 110, 0.22)',
-                    border: '0.5px solid var(--pb)',
-                    borderRadius: '2px',
-                    padding: '0 5px',
-                    color: 'var(--ink)',
-                    fontWeight: 600,
-                    fontFamily: "'Crimson Text', serif"
-                  }}
-                >
-                  {formatEffectDisplay(eff)}
-                </span>
-              ))}
-            </div>
-          ) : (
-            <div style={{ fontSize: '9px', color: 'var(--inkm)', fontStyle: 'italic', fontFamily: "'Crimson Text', serif" }}>
-              {item.description ? (item.description.length > 45 ? item.description.substring(0, 45) + '...' : item.description) : 'No passive bonuses'}
-            </div>
-          )}
-
-          {/* Charges / Activation Footer */}
+          {/* Charges / Activation Mini-Bar */}
           {(item.charges || item.dailyUses || item.activation?.appliedBuffKey) && (
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1px', fontSize: '9.5px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '8px', lineHeight: 1 }}>
               {item.charges ? (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-                  <span style={{ color: 'var(--inkm)', fontWeight: 'bold' }}>Charges:</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                  <span style={{ color: 'var(--inkm)' }}>Chg:</span>
                   <span style={{ color: item.charges.current === 0 ? 'var(--red)' : '#2e7d32', fontWeight: 'bold' }}>
-                    {item.charges.current} / {item.charges.max}
+                    {item.charges.current}/{item.charges.max}
                   </span>
                   <button
                     type="button"
                     onClick={(e) => handleChargeChange(e, 1)}
                     disabled={item.charges.current <= 0}
                     className="btn"
-                    style={{ fontSize: '8px', padding: '0 4px', height: '16px', lineHeight: '1' }}
-                    title="Use 1 charge"
+                    style={{ fontSize: '7px', padding: '0 2px', height: '12px', lineHeight: '1' }}
                   >
                     -1
                   </button>
                 </div>
               ) : item.dailyUses ? (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-                  <span style={{ color: 'var(--inkm)', fontWeight: 'bold' }}>Daily:</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                  <span style={{ color: 'var(--inkm)' }}>Day:</span>
                   <span style={{ color: item.dailyUses.current === 0 ? 'var(--red)' : '#2e7d32', fontWeight: 'bold' }}>
-                    {item.dailyUses.current} / {item.dailyUses.max}
+                    {item.dailyUses.current}/{item.dailyUses.max}
                   </span>
                   <button
                     type="button"
                     onClick={(e) => handleChargeChange(e, 1)}
                     disabled={item.dailyUses.current <= 0}
                     className="btn"
-                    style={{ fontSize: '8px', padding: '0 4px', height: '16px', lineHeight: '1' }}
-                    title="Use 1 daily use"
+                    style={{ fontSize: '7px', padding: '0 2px', height: '12px', lineHeight: '1' }}
                   >
                     -1
                   </button>
@@ -191,14 +194,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                   type="button"
                   onClick={handleQuickActivate}
                   className="btn btn-p"
-                  style={{
-                    fontSize: '9px',
-                    padding: '1px 6px',
-                    height: '18px',
-                    lineHeight: '1',
-                    fontFamily: "'IM Fell English SC', serif"
-                  }}
-                  title={`Activate Buff: ${item.activation.appliedBuffKey}`}
+                  style={{ fontSize: '7.5px', padding: '0 4px', height: '13px', lineHeight: '1', fontFamily: "'IM Fell English SC', serif" }}
                 >
                   ⚡ Buff
                 </button>
@@ -207,30 +203,25 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
           )}
         </div>
       ) : (
-        /* === BACK FACE (FLIPPED ACTIONS) === */
+        /* === BACK FACE (COMPACT ACTIONS) === */
         <div
           style={{
             background: 'var(--pd, #fdf6e2)',
             border: '1.5px solid var(--red)',
-            borderRadius: '4px',
-            padding: '6px 8px',
+            borderRadius: '3px',
+            padding: '3px 4px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            boxShadow: '0 3px 10px rgba(139, 26, 26, 0.15)',
-            minHeight: '76px',
+            minHeight: '52px',
             boxSizing: 'border-box'
           }}
         >
-          {/* Header */}
-          <div style={{ textAlign: 'center', borderBottom: '0.5px solid var(--pb)', paddingBottom: '3px' }}>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--red)', fontWeight: 'bold' }}>
-              Unequip {slotDef.nameEn}?
-            </span>
+          <div style={{ textAlign: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', lineHeight: 1 }}>
+            Unequip {slotDef.nameEn}?
           </div>
 
-          {/* Action Buttons */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', margin: '3px 0' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '4px', margin: '2px 0' }}>
             <button
               type="button"
               onClick={(e) => {
@@ -239,16 +230,9 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                 onUnequip();
               }}
               className="btn btn-p"
-              style={{
-                fontSize: '10px',
-                padding: '2px 10px',
-                fontFamily: "'IM Fell English SC', serif",
-                background: 'var(--red)',
-                color: 'white',
-                fontWeight: 'bold'
-              }}
+              style={{ fontSize: '8.5px', padding: '1px 6px', fontFamily: "'IM Fell English SC', serif", background: 'var(--red)', color: 'white' }}
             >
-              Yes, Unequip
+              Yes
             </button>
             <button
               type="button"
@@ -257,19 +241,13 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                 handleToggleFlip(false);
               }}
               className="btn"
-              style={{
-                fontSize: '10px',
-                padding: '2px 10px',
-                fontFamily: "'IM Fell English SC', serif",
-                fontWeight: 'bold'
-              }}
+              style={{ fontSize: '8.5px', padding: '1px 6px', fontFamily: "'IM Fell English SC', serif" }}
             >
-              No, Keep
+              No
             </button>
           </div>
 
-          {/* Swap & Edit Footer */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '0.5px solid var(--pb)', paddingTop: '3px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <button
               type="button"
               onClick={(e) => {
@@ -278,9 +256,9 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                 onSwap();
               }}
               className="btn"
-              style={{ fontSize: '8.5px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
+              style={{ fontSize: '7.5px', padding: '0 3px', fontFamily: "'IM Fell English SC', serif" }}
             >
-              🔁 Swap Item
+              🔁 Swap
             </button>
             <button
               type="button"
@@ -290,9 +268,9 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                 onEdit();
               }}
               className="btn"
-              style={{ fontSize: '8.5px', padding: '1px 5px', fontFamily: "'IM Fell English SC', serif" }}
+              style={{ fontSize: '7.5px', padding: '0 3px', fontFamily: "'IM Fell English SC', serif" }}
             >
-              ✏️ Details
+              ✏️ Edit
             </button>
           </div>
         </div>
