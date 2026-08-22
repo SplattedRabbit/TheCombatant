@@ -728,9 +728,9 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                   bgStyle = 'rgba(139, 26, 26, 0.035)';
                   opacityVal = 1;
                 } else if (met) {
-                  borderStyle = '0.5px solid rgba(42, 106, 42, 0.35)';
-                  borderLeftStyle = '3.5px solid #2a6a2a';
-                  bgStyle = 'rgba(42, 106, 42, 0.04)';
+                  borderStyle = '0.5px solid var(--pb)';
+                  borderLeftStyle = '2.5px solid #4a6d44';
+                  bgStyle = 'rgba(70, 105, 65, 0.03)';
                   opacityVal = 1;
                 }
 
@@ -756,8 +756,8 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                     }}
                   >
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', minWidth: 0 }}>
-                      <span style={{ fontSize: '8.5px', fontWeight: met || isLearned ? 'bold' : '600', color: isLearned ? 'var(--red)' : (met ? '#2a6a2a' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {met && !isLearned ? '✨ ' : ''}{trick.nameEn || trick.nameDe}
+                      <span style={{ fontSize: '8.5px', fontWeight: met || isLearned ? 'bold' : '600', color: isLearned ? 'var(--red)' : (met ? 'var(--ink)' : 'var(--inkl)'), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {trick.nameEn || trick.nameDe}
                       </span>
                       <span style={{ fontSize: '6.5px', color: met ? 'var(--inkm)' : 'var(--inkl)' }}>
                         {trick.category.toUpperCase()}
@@ -767,8 +767,8 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
                       {isLearned ? (
                         <span style={{ fontSize: '7px', color: 'var(--red)', fontWeight: 'bold', background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid rgba(139, 26, 26, 0.25)', padding: '1px 3px', borderRadius: '1.5px' }}>✓ Learned</span>
                       ) : (
-                        <span style={{ fontSize: '7px', color: met ? '#2a6a2a' : '#8b1a1a', fontWeight: 'bold', background: met ? 'rgba(42, 106, 42, 0.12)' : 'rgba(139, 26, 26, 0.05)', border: met ? '0.5px solid rgba(42, 106, 42, 0.3)' : '0.5px dashed rgba(139, 26, 26, 0.15)', padding: '1px 3px', borderRadius: '1.5px' }}>
-                          {met ? '✨ Ready' : '🔒 Locked'}
+                        <span style={{ fontSize: '7px', color: met ? '#3d6137' : '#8b1a1a', fontWeight: 'bold', background: met ? 'rgba(70, 110, 65, 0.09)' : 'rgba(139, 26, 26, 0.05)', border: met ? '0.5px solid rgba(70, 110, 65, 0.25)' : '0.5px dashed rgba(139, 26, 26, 0.15)', padding: '1px 3px', borderRadius: '1.5px' }}>
+                          {met ? 'Ready' : '🔒 Locked'}
                         </span>
                       )}
                     </div>
