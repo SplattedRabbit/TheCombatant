@@ -15,28 +15,30 @@ export const EmptySlotCard: React.FC<EmptySlotCardProps> = ({
     <div
       onClick={onClick}
       style={{
-        border: '1.5px dashed rgba(200, 169, 110, 0.65)',
+        border: '1px dashed var(--pb, #c8a96e)',
         borderRadius: '4px',
-        background: 'rgba(253, 246, 226, 0.4)',
-        padding: '10px 12px',
+        background: 'rgba(253, 246, 226, 0.45)',
+        padding: '6px 8px',
         cursor: 'pointer',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        gap: '4px',
-        minHeight: '94px',
+        gap: '2px',
+        minHeight: '76px',
         boxSizing: 'border-box',
         transition: 'all 0.15s ease'
       }}
       className="empty-slot-card"
       title={`Click to equip an item into ${slotDef.nameEn}`}
     >
-      <span style={{ fontSize: '20px', opacity: 0.8 }}>{slotDef.icon}</span>
-      <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '12px', color: 'var(--inkm)', fontWeight: 'bold', letterSpacing: '0.5px' }}>
-        {slotDef.nameEn}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        <span style={{ fontSize: '13px', opacity: 0.85 }}>{slotDef.icon}</span>
+        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--inkm)', fontWeight: 'bold', letterSpacing: '0.4px' }}>
+          {slotDef.nameEn}
+        </span>
       </div>
-      <span style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>
+      <span style={{ fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>
         + Equip Item
       </span>
     </div>

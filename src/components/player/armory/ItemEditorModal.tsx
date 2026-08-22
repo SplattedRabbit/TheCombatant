@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 // @ts-ignore
-import { ITEM_SLOTS, MAGIC_ITEMS_REGISTRY } from '@core/data/magicItems-data.js';
+import { ITEM_SLOTS } from '@core/data/magicItems-data.js';
 // @ts-ignore
 import { getDefaultBonusType } from '@core/models/Item.js';
 
@@ -24,7 +24,6 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
   const [name, setName] = useState(item?.name || '');
   const [slot, setSlot] = useState(item?.slot || defaultSlot);
   const [description, setDescription] = useState(item?.description || '');
-  const [priceGp, setPriceGp] = useState<number>(item?.priceGp || 0);
   const [weightLbs, setWeightLbs] = useState<number>(item?.weightLbs || 0);
 
   // Effects
@@ -78,7 +77,6 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
       name: name.trim(),
       slot,
       description: description.trim(),
-      priceGp: parseInt(priceGp as any) || 0,
       weightLbs: parseFloat(weightLbs as any) || 0,
       effects: effects.map(e => ({
         type: e.type,
@@ -124,7 +122,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 9999,
-        padding: '12px'
+        padding: '10px'
       }}
       onClick={onClose}
     >
@@ -133,30 +131,30 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
           background: 'var(--pd, #fdf6e2)',
           border: '2px solid var(--pb, #c8a96e)',
           borderRadius: '4px',
-          padding: '16px',
-          width: '600px',
-          maxWidth: '96vw',
-          maxHeight: '90vh',
+          padding: '12px 14px',
+          width: '560px',
+          maxWidth: '94vw',
+          maxHeight: '82vh',
           display: 'flex',
           flexDirection: 'column',
-          gap: '10px',
-          boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+          gap: '8px',
+          boxShadow: '0 10px 32px rgba(0,0,0,0.4)',
           boxSizing: 'border-box'
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '6px' }}>
-          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', fontWeight: 'bold', color: 'var(--red)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '5px' }}>
+          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '14.5px', fontWeight: 'bold', color: 'var(--red)' }}>
             {isEditing ? `✏️ Edit Item: ${name || 'Item'}` : '➕ Create Custom Magic Item'}
           </span>
-          <button type="button" onClick={onClose} className="xbtn" style={{ fontSize: '13px', padding: '2px 8px' }}>
+          <button type="button" onClick={onClose} className="xbtn" style={{ fontSize: '12px', padding: '2px 6px' }}>
             ✕
           </button>
         </div>
 
-        {/* Scrollable Form Body */}
-        <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px', paddingRight: '4px' }}>
+        {/* Form Body */}
+        <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px', paddingRight: '2px' }}>
           
           {/* Row 1: Name & Slot */}
           <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '8px' }}>
@@ -170,7 +168,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Ring of Spell Turning"
                 className="cinput"
-                style={{ width: '100%', padding: '4px 6px', fontSize: '11px', height: '24px', boxSizing: 'border-box' }}
+                style={{ width: '100%', padding: '3px 6px', fontSize: '11px', height: '24px', boxSizing: 'border-box' }}
               />
             </div>
 
@@ -182,7 +180,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
                 value={slot}
                 onChange={(e) => setSlot(e.target.value)}
                 className="cinput"
-                style={{ width: '100%', padding: '2px 6px', fontSize: '11px', height: '24px', boxSizing: 'border-box' }}
+                style={{ width: '100%', padding: '2px 6px', fontSize: '10.5px', height: '24px', boxSizing: 'border-box' }}
               >
                 {Object.entries(ITEM_SLOTS).map(([k, def]: [string, any]) => (
                   <option key={k} value={k}>
@@ -193,40 +191,9 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
             </div>
           </div>
 
-          {/* Row 2: Price & Weight */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-            <div>
-              <label style={{ display: 'block', fontSize: '9px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '2px' }}>
-                Market Price (GP):
-              </label>
-              <input
-                type="number"
-                value={priceGp || ''}
-                onChange={(e) => setPriceGp(parseInt(e.target.value) || 0)}
-                placeholder="0"
-                className="cinput"
-                style={{ width: '100%', padding: '4px 6px', fontSize: '11px', height: '24px', boxSizing: 'border-box' }}
-              />
-            </div>
-            <div>
-              <label style={{ display: 'block', fontSize: '9px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '2px' }}>
-                Weight (lbs):
-              </label>
-              <input
-                type="number"
-                step="0.5"
-                value={weightLbs || ''}
-                onChange={(e) => setWeightLbs(parseFloat(e.target.value) || 0)}
-                placeholder="0"
-                className="cinput"
-                style={{ width: '100%', padding: '4px 6px', fontSize: '11px', height: '24px', boxSizing: 'border-box' }}
-              />
-            </div>
-          </div>
-
           {/* Section: Effects */}
-          <div style={{ background: 'rgba(200, 169, 110, 0.08)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '8px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+          <div style={{ background: 'rgba(200, 169, 110, 0.08)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '6px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
               <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
                 Passive Modifiers & Effects ({effects.length})
               </span>
@@ -234,19 +201,19 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
                 type="button"
                 onClick={handleAddEffect}
                 className="btn btn-p"
-                style={{ fontSize: '8px', padding: '1px 6px' }}
+                style={{ fontSize: '8px', padding: '1px 5px' }}
               >
                 + Add Effect
               </button>
             </div>
 
             {effects.map((eff, idx) => (
-              <div key={idx} style={{ display: 'flex', gap: '4px', alignItems: 'center', marginBottom: '4px' }}>
+              <div key={idx} style={{ display: 'flex', gap: '3px', alignItems: 'center', marginBottom: '3px' }}>
                 <select
                   value={eff.type}
                   onChange={(e) => handleEffectChange(idx, 'type', e.target.value)}
                   className="cinput"
-                  style={{ width: '85px', fontSize: '9.5px', height: '22px' }}
+                  style={{ width: '80px', fontSize: '9px', height: '22px' }}
                 >
                   <option value="attribute">Attribute</option>
                   <option value="save">Save</option>
@@ -259,10 +226,9 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
                   type="text"
                   value={eff.target}
                   onChange={(e) => handleEffectChange(idx, 'target', e.target.value)}
-                  placeholder="Target (str, defl...)"
+                  placeholder="Target (str, fort...)"
                   className="cinput"
-                  style={{ width: '75px', fontSize: '9.5px', height: '22px', padding: '2px 4px' }}
-                  title="str, dex, con, int, wis, cha, fort, ref, wil, all, deflection, natural, armor, spot, etc."
+                  style={{ width: '70px', fontSize: '9px', height: '22px', padding: '1px 3px' }}
                 />
 
                 <input
@@ -270,14 +236,14 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
                   value={eff.value}
                   onChange={(e) => handleEffectChange(idx, 'value', parseInt(e.target.value) || 0)}
                   className="cinput"
-                  style={{ width: '45px', fontSize: '9.5px', height: '22px', textAlign: 'center' }}
+                  style={{ width: '40px', fontSize: '9px', height: '22px', textAlign: 'center' }}
                 />
 
                 <select
                   value={eff.bonusType}
                   onChange={(e) => handleEffectChange(idx, 'bonusType', e.target.value)}
                   className="cinput"
-                  style={{ width: '95px', fontSize: '9.5px', height: '22px' }}
+                  style={{ width: '90px', fontSize: '9px', height: '22px' }}
                 >
                   <option value="enhancement">Enhancement</option>
                   <option value="deflection">Deflection</option>
@@ -295,7 +261,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
                   type="button"
                   onClick={() => handleRemoveEffect(idx)}
                   className="xbtn"
-                  style={{ fontSize: '9px', padding: '1px 4px' }}
+                  style={{ fontSize: '8.5px', padding: '1px 4px' }}
                   title="Remove effect"
                 >
                   ✕
@@ -305,27 +271,26 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
           </div>
 
           {/* Section: Charges / Usable */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-            
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
             {/* Charges */}
-            <div style={{ border: '1px solid var(--pb)', borderRadius: '3px', padding: '6px', background: 'white' }}>
+            <div style={{ border: '1px solid var(--pb)', borderRadius: '3px', padding: '5px', background: '#ffffff' }}>
               <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
                 <input
                   type="checkbox"
                   checked={hasCharges}
                   onChange={(e) => setHasCharges(e.target.checked)}
                 />
-                Item Charges (Wand/Staff)
+                Charges (Wand / Staff)
               </label>
               {hasCharges && (
-                <div style={{ display: 'flex', gap: '6px', marginTop: '4px' }}>
+                <div style={{ display: 'flex', gap: '4px', marginTop: '3px' }}>
                   <input
                     type="number"
                     value={chargesCur}
                     onChange={(e) => setChargesCur(parseInt(e.target.value) || 0)}
-                    placeholder="Cur"
+                    placeholder="Current"
                     className="cinput"
-                    style={{ width: '50%', fontSize: '9.5px', height: '22px', textAlign: 'center' }}
+                    style={{ width: '50%', fontSize: '9px', height: '20px', textAlign: 'center' }}
                   />
                   <input
                     type="number"
@@ -333,14 +298,14 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
                     onChange={(e) => setChargesMax(parseInt(e.target.value) || 0)}
                     placeholder="Max"
                     className="cinput"
-                    style={{ width: '50%', fontSize: '9.5px', height: '22px', textAlign: 'center' }}
+                    style={{ width: '50%', fontSize: '9px', height: '20px', textAlign: 'center' }}
                   />
                 </div>
               )}
             </div>
 
             {/* Daily Uses */}
-            <div style={{ border: '1px solid var(--pb)', borderRadius: '3px', padding: '6px', background: 'white' }}>
+            <div style={{ border: '1px solid var(--pb)', borderRadius: '3px', padding: '5px', background: '#ffffff' }}>
               <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
                 <input
                   type="checkbox"
@@ -350,14 +315,14 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
                 Daily Uses (X / Day)
               </label>
               {hasDailyUses && (
-                <div style={{ display: 'flex', gap: '6px', marginTop: '4px' }}>
+                <div style={{ display: 'flex', gap: '4px', marginTop: '3px' }}>
                   <input
                     type="number"
                     value={dailyUsesCur}
                     onChange={(e) => setDailyUsesCur(parseInt(e.target.value) || 0)}
-                    placeholder="Cur"
+                    placeholder="Current"
                     className="cinput"
-                    style={{ width: '50%', fontSize: '9.5px', height: '22px', textAlign: 'center' }}
+                    style={{ width: '50%', fontSize: '9px', height: '20px', textAlign: 'center' }}
                   />
                   <input
                     type="number"
@@ -365,38 +330,37 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
                     onChange={(e) => setDailyUsesMax(parseInt(e.target.value) || 0)}
                     placeholder="Max"
                     className="cinput"
-                    style={{ width: '50%', fontSize: '9.5px', height: '22px', textAlign: 'center' }}
+                    style={{ width: '50%', fontSize: '9px', height: '20px', textAlign: 'center' }}
                   />
                 </div>
               )}
             </div>
-
           </div>
 
-          {/* Section: Description */}
+          {/* Description */}
           <div>
             <label style={{ display: 'block', fontSize: '9px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '2px' }}>
-              Description & Fluff:
+              Description & Details:
             </label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={2}
               className="cinput"
-              style={{ width: '100%', padding: '4px 6px', fontSize: '10px', boxSizing: 'border-box' }}
+              style={{ width: '100%', padding: '3px 6px', fontSize: '10px', boxSizing: 'border-box' }}
             />
           </div>
 
         </div>
 
         {/* Footer */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '0.5px solid var(--pb)', paddingTop: '6px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '0.5px solid var(--pb)', paddingTop: '5px' }}>
           <button
             type="button"
             onClick={handleSave}
             disabled={!name.trim()}
             className="btn btn-p"
-            style={{ fontSize: '10px', padding: '4px 16px', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '9.5px', padding: '3px 14px', fontFamily: "'IM Fell English SC', serif" }}
           >
             {isEditing ? '💾 Save Changes' : '➕ Create Item'}
           </button>
@@ -404,7 +368,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
             type="button"
             onClick={onClose}
             className="btn"
-            style={{ fontSize: '10px', padding: '4px 16px', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '9.5px', padding: '3px 14px', fontFamily: "'IM Fell English SC', serif" }}
           >
             Cancel
           </button>

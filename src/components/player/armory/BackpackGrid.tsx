@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { ITEM_SLOTS } from '@core/data/magicItems-data.js';
+import { formatEffectDisplay } from './BodySlotCard';
 
 interface BackpackGridProps {
   pc: any;
@@ -20,7 +21,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
 
   const items = Array.isArray(pc.items) ? pc.items : [];
 
-  // Backpack items (unequipped items or slotless)
+  // Backpack items (unequipped items)
   const backpackEntries = items
     .map((item: any, idx: number) => ({ item, idx }))
     .filter(({ item }) => !item.isEquipped);
@@ -51,10 +52,10 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
       
       {/* Top Controls Bar */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '5px' }}>
         <div style={{ display: 'flex', gap: '4px', flex: 1 }}>
           <input
             type="text"
@@ -68,7 +69,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
             value={slotFilter}
             onChange={(e) => setSlotFilter(e.target.value)}
             className="cinput"
-            style={{ width: '100px', fontSize: '10px', height: '24px', boxSizing: 'border-box' }}
+            style={{ width: '95px', fontSize: '9.5px', height: '24px', boxSizing: 'border-box' }}
           >
             <option value="all">All Slots</option>
             <option value="head">👑 Head</option>
@@ -87,12 +88,12 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
         </div>
 
         {/* Action Buttons */}
-        <div style={{ display: 'flex', gap: '4px' }}>
+        <div style={{ display: 'flex', gap: '3px' }}>
           <button
             type="button"
             onClick={() => onOpenCustomEditor()}
             className="btn"
-            style={{ fontSize: '9px', padding: '3px 6px', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '8.5px', padding: '2px 5px', fontFamily: "'IM Fell English SC', serif" }}
             title="Create a new custom magic item"
           >
             ➕ New Item
@@ -101,8 +102,8 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
             type="button"
             onClick={onOpenCompendium}
             className="btn btn-p"
-            style={{ fontSize: '9px', padding: '3px 8px', fontFamily: "'IM Fell English SC', serif" }}
-            title="Open D&D 3.5e Magic Items Compendium"
+            style={{ fontSize: '8.5px', padding: '2px 7px', fontFamily: "'IM Fell English SC', serif" }}
+            title="Open Magic Items Compendium"
           >
             📖 Compendium
           </button>
@@ -114,8 +115,8 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '6px',
-          maxHeight: '620px',
+          gap: '4px',
+          maxHeight: '520px',
           overflowY: 'auto',
           paddingRight: '2px'
         }}
@@ -123,45 +124,46 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
         {filteredEntries.length === 0 ? (
           <div
             style={{
-              padding: '30px 10px',
+              padding: '24px 10px',
               textAlign: 'center',
-              border: '1.5px dashed var(--pb)',
+              border: '1px dashed var(--pb)',
               borderRadius: '4px',
-              background: 'rgba(0,0,0,0.01)',
+              background: 'rgba(253, 246, 226, 0.4)',
               color: 'var(--inkl)',
-              fontSize: '11px',
+              fontSize: '10.5px',
               fontStyle: 'italic'
             }}
           >
-            Your backpack is empty. Click <strong>📖 Compendium</strong> or <strong>➕ New Item</strong> to add equipment!
+            Backpack is empty. Click <strong>📖 Compendium</strong> or <strong>➕ New Item</strong> to add equipment!
           </div>
         ) : (
           filteredEntries.map(({ item, idx }) => {
             const slotDef = (ITEM_SLOTS as any)[item.slot] || { icon: '🎒', nameEn: item.slot || 'Slotless' };
-            const effects = Array.isArray(item.effects) ? item.effects : [];
+            const rawEffects = Array.isArray(item.effects) ? item.effects : [];
+            const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);
 
             return (
               <div
                 key={item.id || idx}
                 style={{
-                  background: 'white',
+                  background: '#ffffff',
                   border: '1px solid var(--pb)',
                   borderLeft: '3.5px solid var(--pb)',
                   borderRadius: '3px',
-                  padding: '6px 8px',
+                  padding: '5px 7px',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '3px',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.04)'
+                  boxShadow: '0 1px 2px rgba(0,0,0,0.03)'
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <span style={{ fontSize: '12px' }}>{slotDef.icon}</span>
                     <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
-                      {item.name || 'Gegenstand'}
+                      {item.name || 'Item'}
                     </span>
-                    <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: 'var(--inkm)', padding: '0 4px', borderRadius: '2px' }}>
+                    <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: 'var(--inkm)', padding: '0 3px', borderRadius: '2px' }}>
                       {slotDef.nameEn}
                     </span>
                   </div>
@@ -172,7 +174,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
                       type="button"
                       onClick={() => handleEquip(idx, item.slot)}
                       className="btn btn-p"
-                      style={{ fontSize: '8px', padding: '2px 6px', fontFamily: "'IM Fell English SC', serif" }}
+                      style={{ fontSize: '8px', padding: '2px 5px', fontFamily: "'IM Fell English SC', serif" }}
                     >
                       ⚡ Equip
                     </button>
@@ -180,7 +182,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
                       type="button"
                       onClick={() => onOpenCustomEditor(item, idx)}
                       className="btn"
-                      style={{ fontSize: '8px', padding: '2px 5px' }}
+                      style={{ fontSize: '8px', padding: '2px 4px' }}
                       title="Edit Item"
                     >
                       ✏️
@@ -189,7 +191,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
                       type="button"
                       onClick={() => handleDelete(idx)}
                       className="xbtn"
-                      style={{ fontSize: '8px', padding: '2px 5px' }}
+                      style={{ fontSize: '8px', padding: '2px 4px' }}
                       title="Delete Item"
                     >
                       🗑️
@@ -197,36 +199,32 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
                   </div>
                 </div>
 
-                {/* Effects Pills */}
-                {effects.length > 0 && (
+                {/* Clean Effect Pills */}
+                {activeEffects.length > 0 && (
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
-                    {effects.map((eff: any, eIdx: number) => {
-                      const val = eff.value >= 0 ? `+${eff.value}` : `${eff.value}`;
-                      const target = (eff.target || 'str').toUpperCase();
-                      return (
-                        <span
-                          key={eIdx}
-                          style={{
-                            fontSize: '8px',
-                            background: 'rgba(200, 169, 110, 0.15)',
-                            border: '0.5px solid var(--pb)',
-                            borderRadius: '2px',
-                            padding: '0 4px',
-                            color: 'var(--ink)',
-                            fontWeight: 600,
-                            fontFamily: "'Crimson Text', serif"
-                          }}
-                        >
-                          {val} {target} ({eff.bonusType || 'enhancement'})
-                        </span>
-                      );
-                    })}
+                    {activeEffects.map((eff: any, eIdx: number) => (
+                      <span
+                        key={eIdx}
+                        style={{
+                          fontSize: '8px',
+                          background: 'rgba(200, 169, 110, 0.18)',
+                          border: '0.5px solid var(--pb)',
+                          borderRadius: '2px',
+                          padding: '0 4px',
+                          color: 'var(--ink)',
+                          fontWeight: 600,
+                          fontFamily: "'Crimson Text', serif"
+                        }}
+                      >
+                        {formatEffectDisplay(eff)}
+                      </span>
+                    ))}
                   </div>
                 )}
 
                 {/* Description snippet */}
                 {item.description && (
-                  <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.25 }}>
+                  <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.2 }}>
                     {item.description}
                   </div>
                 )}

@@ -67,37 +67,28 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   };
 
   return (
-    <div className="armory-layout-grid" style={{ minHeight: '520px' }}>
+    <div className="armory-layout-grid" style={{ minHeight: '480px' }}>
       
       {/* === LEFT COLUMN: Paperdoll / Equipped Slots === */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         
         {/* Header Bar */}
         <div
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
             alignItems: 'center',
             background: 'var(--pd, #fdf6e2)',
             border: '1.5px solid var(--pb, #c8a96e)',
             borderRadius: '4px',
-            padding: '6px 10px'
+            padding: '5px 10px'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '15px' }}>🧍</span>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13px', fontWeight: 'bold', color: 'var(--red)' }}>
+            <span style={{ fontSize: '14px' }}>🧍</span>
+            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
               Equipped Magic Items ({Object.keys(equippedMap).length} / 12 Slots)
             </span>
           </div>
-          <button
-            type="button"
-            onClick={() => handleOpenCompendium()}
-            className="btn"
-            style={{ fontSize: '8.5px', padding: '2px 6px', fontFamily: "'IM Fell English SC', serif" }}
-          >
-            📖 Compendium
-          </button>
         </div>
 
         {/* 2-Column Body Slots Grid */}
@@ -134,16 +125,16 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
 
         {/* Slotless & Wondrous Equipped Items */}
         {slotlessEquipped.length > 0 && (
-          <div style={{ marginTop: '4px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '4px' }}>
+          <div style={{ marginTop: '2px' }}>
+            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '3px' }}>
               🎒 Slotless & Wondrous Items ({slotlessEquipped.length})
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
               {slotlessEquipped.map(({ item, idx }) => (
                 <div
                   key={item.id || idx}
                   style={{
-                    background: 'white',
+                    background: 'var(--pd, #fdf6e2)',
                     border: '1px solid var(--pb)',
                     borderLeft: '3px solid var(--red)',
                     borderRadius: '3px',
@@ -181,15 +172,15 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
       </div>
 
       {/* === RIGHT COLUMN: Backpack Inventory === */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         <div
           style={{
             background: 'var(--pd, #fdf6e2)',
             border: '1.5px solid var(--pb, #c8a96e)',
             borderRadius: '4px',
-            padding: '6px 10px',
+            padding: '5px 10px',
             fontFamily: "'IM Fell English SC', serif",
-            fontSize: '13px',
+            fontSize: '12px',
             fontWeight: 'bold',
             color: 'var(--red)'
           }}

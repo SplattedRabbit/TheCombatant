@@ -191,46 +191,46 @@ export const wizardLvl10Sample = {
   armors: [],
   items: [
     {
-      name: 'Robe des Erzmagiers',
+      name: 'Robe of the Archmagi',
       slot: 'torso',
       isEquipped: true,
       effects: [
-        { type: 'ac', target: 'armor', value: 5 },
-        { type: 'save', target: 'all', value: 4 }
+        { type: 'ac', target: 'armor', value: 5, bonusType: 'armor' },
+        { type: 'save', target: 'all', value: 4, bonusType: 'resistance' }
       ]
     },
     {
-      name: 'Schutzring +2',
+      name: 'Ring of Protection +2',
       slot: 'ring1',
       isEquipped: true,
       effects: [
-        { type: 'ac', target: 'deflection', value: 2 }
+        { type: 'ac', target: 'deflection', value: 2, bonusType: 'deflection' }
       ]
     },
     {
-      name: 'Amulett der natürlichen Rüstung +2',
+      name: 'Amulet of Natural Armor +2',
       slot: 'neck',
       isEquipped: true,
       effects: [
-        { type: 'ac', target: 'natural', value: 2 }
+        { type: 'ac', target: 'natural', value: 2, bonusType: 'natural_enhancement' }
       ]
     },
     {
-      name: 'Stirnband des Intellekts +4',
+      name: 'Headband of Intellect +4',
       slot: 'head',
       isEquipped: true,
       effects: [
-        { type: 'attribute', target: 'int', value: 4 }
+        { type: 'attribute', target: 'int', value: 4, bonusType: 'enhancement' }
       ]
     },
     {
-      name: 'Heiltrank',
+      name: 'Potion of Cure Light Wounds',
       slot: 'slotless',
       isEquipped: false,
       effects: []
     },
     {
-      name: 'Schriftrolle des Feuers',
+      name: 'Scroll of Fireball',
       slot: 'slotless',
       isEquipped: false,
       effects: []

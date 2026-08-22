@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 // @ts-ignore
-import { MAGIC_ITEMS_REGISTRY, ITEM_SLOTS } from '@core/data/magicItems-data.js';
+import { ITEM_SLOTS, MAGIC_ITEMS_REGISTRY, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
+import { formatEffectDisplay } from './BodySlotCard';
 
 interface ItemCompendiumModalProps {
   initialSlot?: string;
@@ -15,26 +16,36 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
 }) => {
   const [search, setSearch] = useState('');
   const [selectedSlot, setSelectedSlot] = useState(initialSlot || 'all');
+  const [selectedTiers, setSelectedTiers] = useState<Record<string, string>>({});
 
-  const allItems = Object.values(MAGIC_ITEMS_REGISTRY) as any[];
-
-  const filteredItems = allItems.filter(item => {
+  const filteredConsolidated = CONSOLIDATED_COMPENDIUM.filter(entry => {
     if (selectedSlot !== 'all') {
       if (selectedSlot === 'rings') {
-        if (item.slot !== 'ring1' && item.slot !== 'ring2' && item.slot !== 'ring') return false;
-      } else if (item.slot !== selectedSlot) {
+        if (entry.slot !== 'ring1' && entry.slot !== 'ring2' && entry.slot !== 'ring') return false;
+      } else if (entry.slot !== selectedSlot) {
         return false;
       }
     }
     if (search.trim()) {
       const q = search.toLowerCase();
-      const matchName = (item.name && item.name.toLowerCase().includes(q)) ||
-                        (item.nameDe && item.nameDe.toLowerCase().includes(q));
-      const matchDesc = item.description && item.description.toLowerCase().includes(q);
+      const matchName = entry.baseName.toLowerCase().includes(q);
+      const matchDesc = entry.description && entry.description.toLowerCase().includes(q);
       return matchName || matchDesc;
     }
     return true;
   });
+
+  const getEffectivePresetKey = (entry: any) => {
+    const selectedKey = selectedTiers[entry.id];
+    if (selectedKey && entry.variants.some((v: any) => v.key === selectedKey)) {
+      return selectedKey;
+    }
+    return entry.variants[0]?.key || entry.id;
+  };
+
+  const handleSelectTier = (entryId: string, presetKey: string) => {
+    setSelectedTiers(prev => ({ ...prev, [entryId]: presetKey }));
+  };
 
   const handleAddBackpack = (presetKey: string) => {
     CombatState.addPCItemFromCompendium(presetKey, false);
@@ -71,7 +82,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 9999,
-        padding: '12px'
+        padding: '10px'
       }}
       onClick={onClose}
     >
@@ -80,53 +91,48 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
           background: 'var(--pd, #fdf6e2)',
           border: '2px solid var(--pb, #c8a96e)',
           borderRadius: '4px',
-          padding: '16px',
-          width: '720px',
-          maxWidth: '96vw',
-          height: '85vh',
+          padding: '12px 14px',
+          width: '640px',
+          maxWidth: '94vw',
+          maxHeight: '80vh',
           display: 'flex',
           flexDirection: 'column',
-          gap: '10px',
-          boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+          gap: '8px',
+          boxShadow: '0 10px 32px rgba(0,0,0,0.4)',
           boxSizing: 'border-box'
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '6px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '20px' }}>📖</span>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '16px', fontWeight: 'bold', color: 'var(--red)' }}>
-              Magic Items Compendium (D&D 3.5e RAW)
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '5px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ fontSize: '18px' }}>📖</span>
+            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', fontWeight: 'bold', color: 'var(--red)' }}>
+              Magic Items Compendium
             </span>
           </div>
           <button
             type="button"
             onClick={onClose}
             className="xbtn"
-            style={{ fontSize: '13px', padding: '2px 8px', cursor: 'pointer' }}
+            style={{ fontSize: '12px', padding: '2px 6px', cursor: 'pointer' }}
           >
             ✕
           </button>
         </div>
 
-        {/* Search & Stats bar */}
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <input
-            type="text"
-            placeholder="Search magic items (name, description, effects)..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="cinput"
-            style={{ flex: 1, padding: '4px 8px', fontSize: '11px', height: '26px', boxSizing: 'border-box' }}
-          />
-          <span style={{ fontSize: '10px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", whiteSpace: 'nowrap' }}>
-            Showing <strong>{filteredItems.length}</strong> items
-          </span>
-        </div>
+        {/* Search */}
+        <input
+          type="text"
+          placeholder="Search items by name or effects..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="cinput"
+          style={{ width: '100%', padding: '3px 8px', fontSize: '11px', height: '24px', boxSizing: 'border-box' }}
+        />
 
-        {/* Slot Category Filter Chips */}
-        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', borderBottom: '1px solid rgba(200, 169, 110, 0.4)', paddingBottom: '6px' }}>
+        {/* Category Filters */}
+        <div style={{ display: 'flex', gap: '3px', flexWrap: 'wrap', borderBottom: '1px solid rgba(200, 169, 110, 0.4)', paddingBottom: '5px' }}>
           {filterChips.map(chip => (
             <button
               key={chip.key}
@@ -135,7 +141,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
               className="btn"
               style={{
                 fontSize: '8.5px',
-                padding: '2px 6px',
+                padding: '2px 5px',
                 fontFamily: "'IM Fell English SC', serif",
                 background: selectedSlot === chip.key ? 'rgba(139, 26, 26, 0.12)' : 'transparent',
                 borderColor: selectedSlot === chip.key ? 'var(--red)' : 'var(--pb)',
@@ -148,100 +154,117 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
           ))}
         </div>
 
-        {/* Items List */}
-        <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '6px', paddingRight: '4px' }}>
-          {filteredItems.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '40px', fontSize: '12px', fontStyle: 'italic', color: 'var(--inkl)' }}>
-              No magic items found matching your criteria.
+        {/* Consolidated Items List */}
+        <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '5px', paddingRight: '2px' }}>
+          {filteredConsolidated.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '30px', fontSize: '11px', fontStyle: 'italic', color: 'var(--inkl)' }}>
+              No magic items found.
             </div>
           ) : (
-            filteredItems.map(item => {
-              const slotInfo = (ITEM_SLOTS as any)[item.slot] || { icon: '🎒', nameEn: item.slot };
+            filteredConsolidated.map(entry => {
+              const activeKey = getEffectivePresetKey(entry);
+              const activePreset = MAGIC_ITEMS_REGISTRY[activeKey] || {};
+              const slotInfo = (ITEM_SLOTS as any)[entry.slot] || { icon: '🎒', nameEn: entry.slot };
+              const effects = Array.isArray(activePreset.effects) ? activePreset.effects : [];
 
               return (
                 <div
-                  key={item.key}
+                  key={entry.id}
                   style={{
-                    background: 'white',
+                    background: '#ffffff',
                     border: '1px solid var(--pb)',
-                    borderLeft: '4px solid var(--pb)',
+                    borderLeft: '3px solid var(--pb)',
                     borderRadius: '3px',
-                    padding: '8px 10px',
+                    padding: '6px 8px',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '4px'
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span style={{ fontSize: '13px' }}>{slotInfo.icon}</span>
-                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
-                        {item.name}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: '12px' }}>{slotInfo.icon}</span>
+                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                        {activePreset.name || entry.baseName}
                       </span>
-                      <span style={{ fontSize: '8px', background: 'rgba(0,0,0,0.05)', color: 'var(--inkm)', padding: '0 4px', borderRadius: '2px' }}>
+                      <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: 'var(--inkm)', padding: '0 3px', borderRadius: '2px' }}>
                         {slotInfo.nameEn}
                       </span>
-                      {item.priceGp && (
-                        <span style={{ fontSize: '8.5px', color: '#b8860b', fontWeight: 'bold' }}>
-                          {item.priceGp.toLocaleString()} GP
-                        </span>
-                      )}
                     </div>
 
-                    {/* Actions */}
-                    <div style={{ display: 'flex', gap: '4px' }}>
+                    {/* Tier selector & Actions */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      {entry.variants.length > 1 && (
+                        <div style={{ display: 'flex', gap: '2px', marginRight: '4px' }}>
+                          {entry.variants.map((v: any) => (
+                            <button
+                              key={v.key}
+                              type="button"
+                              onClick={() => handleSelectTier(entry.id, v.key)}
+                              className="btn"
+                              style={{
+                                fontSize: '7.5px',
+                                padding: '1px 4px',
+                                background: activeKey === v.key ? 'var(--red)' : 'white',
+                                color: activeKey === v.key ? 'white' : 'var(--ink)',
+                                borderColor: activeKey === v.key ? 'var(--red)' : 'var(--pb)',
+                                fontWeight: activeKey === v.key ? 'bold' : 'normal'
+                              }}
+                            >
+                              {v.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+
                       <button
                         type="button"
-                        onClick={() => handleAddBackpack(item.key)}
+                        onClick={() => handleAddBackpack(activeKey)}
                         className="btn"
-                        style={{ fontSize: '8px', padding: '2px 8px', fontFamily: "'IM Fell English SC', serif" }}
-                        title="Add item to character backpack"
+                        style={{ fontSize: '8px', padding: '2px 6px', fontFamily: "'IM Fell English SC', serif" }}
+                        title="Add to Backpack"
                       >
-                        + To Backpack
+                        + Backpack
                       </button>
                       <button
                         type="button"
-                        onClick={() => handleAddAndEquip(item.key)}
+                        onClick={() => handleAddAndEquip(activeKey)}
                         className="btn btn-p"
-                        style={{ fontSize: '8px', padding: '2px 8px', fontFamily: "'IM Fell English SC', serif" }}
-                        title="Add and immediately equip"
+                        style={{ fontSize: '8px', padding: '2px 6px', fontFamily: "'IM Fell English SC', serif" }}
+                        title="Add & Equip"
                       >
-                        ⚡ Add & Equip
+                        ⚡ Equip
                       </button>
                     </div>
                   </div>
 
-                  {/* Effects Pills */}
-                  {(item.effects || []).length > 0 && (
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                      {item.effects.map((eff: any, eIdx: number) => (
+                  {/* Clean Effect Pills */}
+                  {effects.length > 0 && (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
+                      {effects.map((eff: any, eIdx: number) => (
                         <span
                           key={eIdx}
                           style={{
                             fontSize: '8px',
-                            background: 'rgba(200, 169, 110, 0.15)',
+                            background: 'rgba(200, 169, 110, 0.18)',
                             border: '0.5px solid var(--pb)',
                             borderRadius: '2px',
-                            padding: '1px 5px',
+                            padding: '0 4px',
                             color: 'var(--ink)',
-                            fontWeight: 'bold'
+                            fontWeight: 600,
+                            fontFamily: "'Crimson Text', serif"
                           }}
                         >
-                          {eff.value >= 0 ? '+' : ''}{eff.value} {eff.target.toUpperCase()} ({eff.bonusType || 'enhancement'})
+                          {formatEffectDisplay(eff)}
                         </span>
                       ))}
                     </div>
                   )}
 
-                  {/* Description & Aura */}
-                  <div style={{ fontSize: '9px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.3 }}>
-                    {item.description}
+                  {/* Description */}
+                  <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.25 }}>
+                    {activePreset.description || entry.description}
                   </div>
-                  {item.aura && (
-                    <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>
-                      Aura: {item.aura}
-                    </div>
-                  )}
                 </div>
               );
             })
@@ -249,12 +272,12 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div style={{ display: 'flex', justifyContent: 'center', borderTop: '0.5px solid var(--pb)', paddingTop: '6px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', borderTop: '0.5px solid var(--pb)', paddingTop: '4px' }}>
           <button
             type="button"
             onClick={onClose}
             className="btn"
-            style={{ fontSize: '10px', padding: '4px 24px', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '9.5px', padding: '3px 18px', fontFamily: "'IM Fell English SC', serif" }}
           >
             Close
           </button>
