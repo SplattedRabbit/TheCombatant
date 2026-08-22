@@ -33,12 +33,6 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
   const bardClass = activeClasses.find((c: any) => c.classType === 'bard');
   const bardLvl = bardClass ? bardClass.level : 0;
 
-  const getAblVal = (statObj: any): number => {
-    if (!statObj) return 10;
-    if (typeof statObj.getValue === 'function') return statObj.getValue();
-    return statObj.base ?? 10;
-  };
-
   // 1. Barbarian Rage resolution
   const rageAbility = Array.isArray(pc.dailyAbilities)
     ? pc.dailyAbilities.find((a: any) => a.name === "Kampfrausch (Rage)" || a.name === "Rage" || a.name?.includes("Rage"))
@@ -51,8 +45,6 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
   const wisValue = pc.wis ? (typeof pc.wis.getValue === 'function' ? pc.wis.getValue() : pc.wis) : 10;
   const wisMod = getAblMod(wisValue);
   const stunDC = 10 + Math.floor(monkLvl / 2) + Math.max(0, wisMod);
-  const flurryExtraAttacks = monkLvl >= 11 ? 2 : 1;
-  const flurryPenalty = monkLvl >= 9 ? 0 : (monkLvl >= 5 ? -1 : -2);
 
   // 3. Bard Inspire Courage
   let inspireCourageBonus = 1;

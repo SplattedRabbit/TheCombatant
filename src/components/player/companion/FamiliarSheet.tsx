@@ -154,7 +154,6 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
   }
 
 
-  const parsedGetAblMod = (score: any) => getAblMod(parseInt(score) || 10);
 
   const str = baseStats ? baseStats.str : 10;
   const dex = baseStats ? baseStats.dex : 10;

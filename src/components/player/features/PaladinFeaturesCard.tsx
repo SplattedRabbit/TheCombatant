@@ -152,7 +152,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                   <button 
                     onClick={() => setDgRulesOpen(!dgRulesOpen)}
                     className="btn btn-toggle-rules-dg" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show rules"
                   >
                     📖 {dgRulesOpen ? '▲' : '▼'}
@@ -296,7 +296,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                   <button 
                     onClick={() => setTurnRulesOpen(!turnRulesOpen)}
                     className="btn btn-toggle-rules-turn" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineIndex: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show rules"
                   >
                     📖 {turnRulesOpen ? '▲' : '▼'}

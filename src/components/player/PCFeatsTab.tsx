@@ -450,13 +450,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                   const prereqsResult = checkPrerequisites(feat, pc);
                   const isAlreadyLearned = activeFeats.some((f: any) => f.id === feat.id);
                   
-                  const bonusClass = getBonusFeatClass(feat);
-                  const isClassBonus = (bonusClass === 'fighter' && hasFighter) ||
-                                       (bonusClass === 'wizard' && hasWizard) ||
-                                       (bonusClass === 'monk' && hasMonk);
-
                   const isEligible = prereqsResult.met && !isAlreadyLearned && !isLimitReached;
-                  const isBlocked = (!prereqsResult.met || isLimitReached) && !isAlreadyLearned;
 
                   const matchingInstance = activeFeats.find((f: any) => f.id === feat.id);
                   const option = matchingInstance ? matchingInstance.option : '';

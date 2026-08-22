@@ -18,7 +18,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
   const [selectedSlot, setSelectedSlot] = useState(initialSlot || 'all');
   const [selectedTiers, setSelectedTiers] = useState<Record<string, string>>({});
 
-  const filteredConsolidated = CONSOLIDATED_COMPENDIUM.filter(entry => {
+  const filteredConsolidated = CONSOLIDATED_COMPENDIUM.filter((entry: any) => {
     if (selectedSlot !== 'all') {
       if (selectedSlot === 'rings') {
         if (entry.slot !== 'ring1' && entry.slot !== 'ring2' && entry.slot !== 'ring') return false;
@@ -163,7 +163,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
               No magic items found.
             </div>
           ) : (
-            filteredConsolidated.map(entry => {
+            filteredConsolidated.map((entry: any) => {
               const activeKey = getEffectivePresetKey(entry);
               const activePreset = MAGIC_ITEMS_REGISTRY[activeKey] || {};
               const slotInfo = (ITEM_SLOTS as any)[entry.slot] || { icon: '🎒', nameEn: entry.slot };

@@ -129,7 +129,6 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
   }
 
 
-  const parsedGetAblMod = (score: any) => getAblMod(parseInt(score) || 10);
 
   const displayAC = type === 'custom' ? maxHP : (baseStats ? baseStats.ac : 10);
   const str = baseStats ? baseStats.str : 10;

@@ -159,9 +159,9 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   // Backpack entries
   const backpackEntries = items
     .map((item: any, idx: number) => ({ item, idx }))
-    .filter(({ item }) => !item.isEquipped);
+    .filter(({ item }: { item: any }) => !item.isEquipped);
 
-  const filteredBackpack = backpackEntries.filter(({ item }) => {
+  const filteredBackpack = backpackEntries.filter(({ item }: { item: any }) => {
     if (slotFilter !== 'all') {
       if (slotFilter === 'rings') {
         if (item.slot !== 'ring' && item.slot !== 'ring1' && item.slot !== 'ring2') return false;
@@ -179,7 +179,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   });
 
   // Consolidated Compendium entries
-  const filteredCompendium = CONSOLIDATED_COMPENDIUM.filter(entry => {
+  const filteredCompendium = CONSOLIDATED_COMPENDIUM.filter((entry: any) => {
     if (slotFilter !== 'all') {
       if (slotFilter === 'rings') {
         if (entry.slot !== 'ring1' && entry.slot !== 'ring2' && entry.slot !== 'ring') return false;
@@ -598,7 +598,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                   </button>
                 </div>
               ) : (
-                filteredBackpack.map(({ item, idx }) => {
+                filteredBackpack.map(({ item, idx }: { item: any; idx: number }) => {
                   const slotDef = (ITEM_SLOTS as any)[item.slot] || { icon: '🎒', nameEn: item.slot || 'Slotless' };
                   const rawEffects = Array.isArray(item.effects) ? item.effects : [];
                   const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);
@@ -765,7 +765,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                   No items found matching criteria.
                 </div>
               ) : (
-                filteredCompendium.map(entry => {
+                filteredCompendium.map((entry: any) => {
                   const activeKey = getEffectivePresetKey(entry);
                   const activePreset = MAGIC_ITEMS_REGISTRY[activeKey] || {};
                   const slotInfo = (ITEM_SLOTS as any)[entry.slot] || { icon: '🎒', nameEn: entry.slot };

@@ -24,7 +24,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
   const [name, setName] = useState(item?.name || '');
   const [slot, setSlot] = useState(item?.slot || defaultSlot);
   const [description, setDescription] = useState(item?.description || '');
-  const [weightLbs, setWeightLbs] = useState<number>(item?.weightLbs || 0);
+  const weightLbs = item?.weightLbs || 0;
 
   // Effects
   const [effects, setEffects] = useState<any[]>(
@@ -43,13 +43,13 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
   const [dailyUsesMax, setDailyUsesMax] = useState(item?.dailyUses?.max || 3);
   const [dailyUsesCur, setDailyUsesCur] = useState(item?.dailyUses?.current || 3);
 
-  // Activation
-  const [hasActivation, setHasActivation] = useState(!!item?.activation);
-  const [actionType, setActionType] = useState(item?.activation?.actionType || 'standard');
-  const [costType, setCostType] = useState(item?.activation?.costType || 'charges');
-  const [cost, setCost] = useState(item?.activation?.cost || 1);
-  const [appliedBuffKey, setAppliedBuffKey] = useState(item?.activation?.appliedBuffKey || '');
-  const [activationDesc, setActivationDesc] = useState(item?.activation?.effectDescription || '');
+  // Activation (preserved from existing item if present)
+  const hasActivation = !!item?.activation;
+  const actionType = item?.activation?.actionType || 'standard';
+  const costType = item?.activation?.costType || 'charges';
+  const cost = item?.activation?.cost || 1;
+  const appliedBuffKey = item?.activation?.appliedBuffKey || '';
+  const activationDesc = item?.activation?.effectDescription || '';
 
   const handleAddEffect = () => {
     setEffects(prev => [...prev, { type: 'attribute', target: 'str', value: 1, bonusType: 'enhancement', condition: '' }]);

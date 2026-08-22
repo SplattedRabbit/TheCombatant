@@ -74,13 +74,12 @@ export const formatEffectDisplay = (eff: any) => {
   }
 
   const cleanTarget = targetNames[rawTarget] || 
-    rawTarget.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    rawTarget.split('_').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
   return `${sign} ${cleanTarget}`;
 };
 
 export const BodySlotCard: React.FC<BodySlotCardProps> = ({
-  slotKey,
   slotDef,
   item,
   itemIdx,

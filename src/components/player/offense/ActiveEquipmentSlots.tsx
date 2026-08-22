@@ -37,8 +37,8 @@ interface ActiveEquipmentSlotsProps {
   getRarityStyle: (enhancement: number) => { border: string; background: string; boxShadow: string; glowClass: string };
   formatMod: (val: number) => string;
   handleHandSelectChange: (idx: number, val: string) => void;
-  handleRollAttack: (w: any, isOffhand: boolean, e: React.MouseEvent) => void;
-  handleRollDamage: (w: any, isOffhand: boolean, e: React.MouseEvent) => void;
+  handleRollAttack: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
+  handleRollDamage: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
 }
 
 export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
@@ -57,9 +57,6 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
   const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
   const paladinClass = activeClasses.find((c: any) => c.classType === 'paladin');
   const paladinLvl = paladinClass ? paladinClass.level : 0;
-  
-  const barbarianClass = activeClasses.find((c: any) => c.classType === 'barbarian');
-  const barbarianLvl = barbarianClass ? barbarianClass.level : 0;
 
   const rangerClass = activeClasses.find((c: any) => c.classType === 'ranger');
   const rangerLvl = rangerClass ? rangerClass.level : 0;
@@ -67,9 +64,6 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
   const duskbladeClass = activeClasses.find((c: any) => c.classType === 'duskblade');
   const scoutClass = activeClasses.find((c: any) => c.classType === 'scout');
   const ninjaClass = activeClasses.find((c: any) => c.classType === 'ninja');
-  const knightClass = activeClasses.find((c: any) => c.classType === 'knight');
-  const monkClass = activeClasses.find((c: any) => c.classType === 'monk');
-  const bardClass = activeClasses.find((c: any) => c.classType === 'bard');
 
   const sneakAttackDice = typeof pc.getSneakAttackDiceCount === 'function' ? pc.getSneakAttackDiceCount() : 0;
   const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus() : 0;
@@ -253,10 +247,9 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
   const renderClassAbilitySlot = () => {
     const activeACFs: string[] = Array.isArray(pc.acfs) ? pc.acfs : [];
     const hasChargingSmite = activeACFs.includes('paladin_charging_smite');
-    const hasDisruptiveAttack = activeACFs.includes('rogue_disruptive_attack');
     const hasDistractingAttack = activeACFs.includes('ranger_distracting_attack');
 
-    const strikes: Array<{ id: string; name: string; render: (selectorDropdown?: JSX.Element) => JSX.Element }> = [];
+    const strikes: Array<{ id: string; name: string; render: (selectorDropdown?: React.ReactNode) => React.ReactNode }> = [];
 
     // 1. Paladin (Smite Evil / Charging Smite)
     if (paladinLvl > 0 || !!smiteAbility) {

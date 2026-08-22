@@ -262,7 +262,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                   <span>🐺 Wolf</span>
                   <span style={{ fontSize: '7.5px', background: 'rgba(46, 125, 50, 0.1)', color: '#2e7d32', border: '0.5px solid rgba(46, 125, 50, 0.3)', borderRadius: '2px', padding: '0 3px' }}>Level 5+</span>
                 </div>
-                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineIndex: 1.2, marginTop: '1px' } as any}>
+                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
                   • STR 13, DEX 15, CON 15 | AC: 14<br />
                   • Bite +3 (1d6+1 + Trip)
                 </div>
@@ -284,7 +284,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                   <span>🐆 Leopard</span>
                   <span style={{ fontSize: '7.5px', background: 'rgba(46, 125, 50, 0.1)', color: '#2e7d32', border: '0.5px solid rgba(46, 125, 50, 0.3)', borderRadius: '2px', padding: '0 3px' }}>Level 6+</span>
                 </div>
-                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineIndex: 1.2, marginTop: '1px' } as any}>
+                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
                   • STR 16, DEX 19, CON 15 | AC: 15<br />
                   • Bite +6 (1d6+3) & 2 Claws +1 (1d3+1)
                 </div>
@@ -307,7 +307,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                     <span>🐻 Brown Bear</span>
                     <span style={{ fontSize: '7.5px', background: 'rgba(46, 125, 50, 0.1)', color: '#2e7d32', border: '0.5px solid rgba(46, 125, 50, 0.3)', borderRadius: '2px', padding: '0 3px' }}>Level 8+</span>
                   </div>
-                  <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineIndex: 1.2, marginTop: '1px' } as any}>
+                  <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
                     • STR 27, DEX 13, CON 19 | AC: 15<br />
                     • 2 Claws +11 (1d8+8) & Bite +6 (2d6+4)
                   </div>
@@ -328,7 +328,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                     <span>🐻 Brown Bear</span>
                     <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', border: '0.5px solid rgba(0,0,0,0.08)', borderRadius: '2px', padding: '0 3px' }}>Level 8+</span>
                   </div>
-                  <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--inkl)', lineIndex: 1.2, marginTop: '1px' } as any}>
+                  <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--inkl)', lineHeight: 1.2, marginTop: '1px' } as any}>
                     • Requires Druid level 8.
                   </div>
                 </div>

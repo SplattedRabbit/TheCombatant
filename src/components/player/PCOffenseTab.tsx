@@ -212,12 +212,8 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
         <TacticalModifiersCard pc={pc} babVal={babVal} />
 
         {/* 3. Dynamic Class Powers Hub (Smite Evil, Sneak Attack, Favored Enemy, Rage) */}
-        <ClassCombatAbilitiesCard
-          pc={pc}
-          mainHandWeapon={mainHandWeapon}
-          handleRollAttack={handleRollAttack}
-          handleRollDamage={handleRollDamage}
-        />
+        <ClassCombatAbilitiesCard pc={pc} />
+
 
       </div>
 

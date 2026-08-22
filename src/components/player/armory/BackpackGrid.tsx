@@ -24,9 +24,9 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
   // Backpack items (unequipped items)
   const backpackEntries = items
     .map((item: any, idx: number) => ({ item, idx }))
-    .filter(({ item }) => !item.isEquipped);
+    .filter(({ item }: { item: any }) => !item.isEquipped);
 
-  const filteredEntries = backpackEntries.filter(({ item }) => {
+  const filteredEntries = backpackEntries.filter(({ item }: { item: any }) => {
     if (slotFilter !== 'all') {
       if (slotFilter === 'rings') {
         if (item.slot !== 'ring' && item.slot !== 'ring1' && item.slot !== 'ring2') return false;
@@ -137,7 +137,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
             Backpack is empty. Click <strong>📖 Compendium</strong> or <strong>➕ New Item</strong> to add equipment!
           </div>
         ) : (
-          filteredEntries.map(({ item, idx }) => {
+          filteredEntries.map(({ item, idx }: { item: any; idx: number }) => {
             const slotDef = (ITEM_SLOTS as any)[item.slot] || { icon: '🎒', nameEn: item.slot || 'Slotless' };
             const rawEffects = Array.isArray(item.effects) ? item.effects : [];
             const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);

@@ -63,7 +63,6 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   filteredFeats
 }) => {
   const [sourceTab, setSourceTab] = React.useState<'all' | 'phb' | 'phb2' | 'ca' | 'prestige'>('all');
-  const [classSearch, setClassSearch] = React.useState('');
 
   React.useEffect(() => {
     if (!currentConfig || !currentDraft) return;
@@ -103,19 +102,12 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
     }
   }, [currentConfig.classType, currentDraft, currentLevelIndex]);
 
-  const baseClasses = CLASSES_LIST.filter(c => !c.isPrestige);
-  const prestigeClasses = CLASSES_LIST.filter(c => c.isPrestige);
-
   // Unified filtered class list for wizard class picker
   const filteredWizardClasses = CLASSES_LIST.filter(c => {
     if (sourceTab === 'prestige' && !c.isPrestige) return false;
     if (sourceTab === 'phb' && (c.isPrestige || (c as any).source !== 'phb')) return false;
     if (sourceTab === 'phb2' && (c.isPrestige || (c as any).source !== 'phb2')) return false;
     if (sourceTab === 'ca' && (c.isPrestige || (c as any).source !== 'ca')) return false;
-    if (classSearch.trim()) {
-      const q = classSearch.toLowerCase();
-      return c.name.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q);
-    }
     return true;
   });
 

@@ -7,7 +7,6 @@ interface EmptySlotCardProps {
 }
 
 export const EmptySlotCard: React.FC<EmptySlotCardProps> = ({
-  slotKey,
   slotDef,
   onClick
 }) => {

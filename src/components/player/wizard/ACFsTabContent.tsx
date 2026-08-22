@@ -147,8 +147,6 @@ export const ACFsTabContent: React.FC<ACFsTabContentProps> = ({
             ) : (
               filteredACFs.map(acf => {
                 const isSelected = allSelectedACFs.includes(acf.id);
-                const isSelectedAtCurrentLevel = currentLevelACFs.includes(acf.id);
-                const isPrior = priorSelectedACFs.includes(acf.id);
 
                 return (
                   <div
