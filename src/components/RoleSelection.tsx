@@ -10,11 +10,46 @@
 import React from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
+// @ts-ignore
+import { createInitialState } from '@core/models/model-core.js';
+// @ts-ignore
+import { applyLoadedState } from '@core/state/StorageManager.js';
+import { campaignService } from '../services/campaign/CampaignService.ts';
+import { characterService } from '../services/character/CharacterService.ts';
 import { UserMenu } from './auth/UserMenu';
 
 export const RoleSelection: React.FC = () => {
-  const handleSelectRole = (role: 'dm' | 'player' | 'wizard') => {
-    CombatState.setRole(role);
+  const handleSelectRole = async (role: 'dm' | 'player' | 'wizard') => {
+    if (role === 'dm') {
+      const activeCampId = campaignService.getActiveCampaignId();
+      if (activeCampId) {
+        await campaignService.switchActiveCampaign(activeCampId);
+      } else {
+        const campaigns = await campaignService.listCampaigns();
+        if (campaigns.length > 0) {
+          await campaignService.switchActiveCampaign(campaigns[0].id);
+        } else {
+          const fresh = createInitialState();
+          fresh.session = { role: 'host' };
+          fresh.combatants = [];
+          applyLoadedState(fresh);
+        }
+      }
+      CombatState.setRole('dm');
+    } else if (role === 'player') {
+      const activeCharId = characterService.getActiveCharacterId();
+      if (activeCharId) {
+        await characterService.switchActiveCharacter(activeCharId);
+      } else {
+        const characters = await characterService.listCharacters();
+        if (characters.length > 0) {
+          await characterService.switchActiveCharacter(characters[0].id);
+        }
+      }
+      CombatState.setRole('player');
+    } else {
+      CombatState.setRole(role);
+    }
   };
 
   return (

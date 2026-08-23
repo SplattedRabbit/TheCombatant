@@ -30,14 +30,18 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
   const systemBtnRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Auto-connect DM to active campaign Realtime room
+  // Auto-connect DM to active campaign Realtime room and ensure encounter is hydrated
   useEffect(() => {
     const activeCampId = campaignService.getActiveCampaignId();
-    if (activeCampId && realtimeManager.getCampaignId() !== activeCampId) {
-      const userId = storageService.getCurrentUserId() || 'dm-host';
-      realtimeManager.joinCampaign(activeCampId, 'host', {
-        userId,
-        userName: 'Dungeon Master',
+    if (activeCampId) {
+      campaignService.switchActiveCampaign(activeCampId).then(() => {
+        if (realtimeManager.getCampaignId() !== activeCampId) {
+          const userId = storageService.getCurrentUserId() || 'dm-host';
+          realtimeManager.joinCampaign(activeCampId, 'host', {
+            userId,
+            userName: 'Dungeon Master',
+          });
+        }
       });
     }
   }, []);
