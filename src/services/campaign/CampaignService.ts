@@ -257,19 +257,40 @@ export class CampaignService {
         };
       }
 
-      // 3. For authenticated users, persist in campaign_members table
+      // 3. For authenticated users, persist or update in campaign_members table
       const { data: member, error: memberError } = await (client.from('campaign_members') as any)
-        .upsert({
-          campaign_id: (campaign as any).id,
-          user_id: currentUserId,
-          character_id: characterId || null,
-          role: 'PLAYER',
-          joined_at: new Date().toISOString(),
-        })
+        .upsert(
+          {
+            campaign_id: (campaign as any).id,
+            user_id: currentUserId,
+            character_id: characterId || null,
+            role: 'PLAYER',
+          },
+          { onConflict: 'campaign_id,user_id' }
+        )
         .select()
         .single();
 
       if (memberError || !member) {
+        // Fallback: Check if already existing member
+        const { data: existing } = await client
+          .from('campaign_members')
+          .select()
+          .eq('campaign_id', (campaign as any).id)
+          .eq('user_id', currentUserId)
+          .maybeSingle();
+
+        if (existing) {
+          return {
+            id: (existing as any).id,
+            campaignId: (existing as any).campaign_id,
+            userId: (existing as any).user_id,
+            characterId: characterId || (existing as any).character_id,
+            role: (existing as any).role as 'PLAYER',
+            joinedAt: (existing as any).joined_at,
+          };
+        }
+
         throw memberError || new Error('Failed to join campaign');
       }
 
