@@ -174,7 +174,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
   return (
     <div id="playerScreen" className="sheet" style={{ display: 'block' }}>
       {/* PCHeader at the very top */}
-      <PCHeader pc={pc} activeTab={activeTab} />
+      <PCHeader pc={pc} activeTab={activeTab} onOpenWizard={() => CombatState.setRole('wizard')} />
 
       {/* Tab Bar */}
       <div className="player-tab-bar no-print" id="playerTabBar" style={{ position: 'relative', zIndex: 100 }}>

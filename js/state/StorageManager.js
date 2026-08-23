@@ -46,6 +46,20 @@ const defaultFallbackAdapter = {
 };
 
 let activeAdapter = defaultFallbackAdapter;
+const stateSaveListeners = new Set();
+
+/**
+ * Registers a callback invoked whenever saveToStorage is called.
+ * @param {Function} listener
+ * @returns {Function} unsubscribe
+ */
+export function onStateSave(listener) {
+  if (typeof listener === 'function') {
+    stateSaveListeners.add(listener);
+    return () => stateSaveListeners.delete(listener);
+  }
+  return () => {};
+}
 
 /**
  * Registers an active storage adapter (e.g. LocalStorageAdapter, SupabaseStorageAdapter, or StorageService).
@@ -106,6 +120,13 @@ export function saveToStorage() {
   try {
     const state = getState();
     activeAdapter.saveState(state);
+    for (const listener of stateSaveListeners) {
+      try {
+        listener(state);
+      } catch (err) {
+        console.error('Error in stateSaveListener:', err);
+      }
+    }
   } catch (e) {
     console.error('Failed to save combat state:', e);
   }

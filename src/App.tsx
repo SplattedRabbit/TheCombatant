@@ -4,12 +4,18 @@ import { RoleSelection } from './components/RoleSelection';
 import { DMScreen } from './components/dm/DMScreen';
 import { PlayerSheet } from './components/player/PlayerSheet';
 import { CharacterWizardDialog } from './components/player/CharacterWizardDialog';
+import { initRealtimeSyncBridge } from './services/network/RealtimeSyncBridge.ts';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 
 export default function App() {
   const { state, activePC, isReady } = useCombatState() as any;
   const role = state?.session?.role ?? 'choice';
+
+  // Initialize Realtime Sync Bridge
+  useEffect(() => {
+    initRealtimeSyncBridge();
+  }, []);
 
   // Sync Skalierungs-Logik (Zoom)
   useEffect(() => {

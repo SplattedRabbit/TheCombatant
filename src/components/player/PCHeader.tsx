@@ -15,13 +15,19 @@ import type { Combatant } from '../../types/combat';
 import { CombatState } from '@core/state.js';
 import { getStatMod } from './attributeHelper';
 import { UserMenu } from '../auth/UserMenu';
+import { CharacterRosterDialog } from './CharacterRosterDialog.tsx';
+import { JoinCampaignDialog } from '../dialogs/JoinCampaignDialog.tsx';
+import { TablePresenceBar } from '../shared/TablePresenceBar.tsx';
 
 interface PCHeaderProps {
   pc: Combatant;
   activeTab: string;
+  onOpenWizard?: () => void;
 }
 
-export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
+export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard }) => {
+  const [isRosterOpen, setIsRosterOpen] = useState<boolean>(false);
+  const [isJoinOpen, setIsJoinOpen] = useState<boolean>(false);
   const [dmgValue, setDmgValue] = useState<string>('');
   const [isHalf, setIsHalf] = useState<boolean>(false);
   const [isDouble, setIsDouble] = useState<boolean>(false);
@@ -258,7 +264,67 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
                 }}
               />
             </h1>
-            <UserMenu />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <TablePresenceBar />
+              <button
+                type="button"
+                onClick={() => setIsJoinOpen(true)}
+                className="btn"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  padding: '2px 8px',
+                  fontSize: '11px',
+                  fontFamily: "'IM Fell English SC', serif",
+                  fontWeight: 'bold',
+                  background: 'rgba(253, 246, 226, 0.9)',
+                  border: '1px solid var(--pb)',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  color: 'var(--ink)',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+                }}
+                title="Einer DM-Kampagne per Einladungscode beitreten"
+              >
+                <span>🔗</span>
+                <span>Beitreten</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsRosterOpen(true)}
+                className="btn"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  padding: '2px 8px',
+                  fontSize: '11px',
+                  fontFamily: "'IM Fell English SC', serif",
+                  fontWeight: 'bold',
+                  background: 'rgba(253, 246, 226, 0.9)',
+                  border: '1px solid var(--pb)',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  color: 'var(--ink)',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+                }}
+                title="Helden-Bibliothek öffnen (Charakter wechseln, erstellen, duplizieren)"
+              >
+                <span>📜</span>
+                <span>Helden</span>
+              </button>
+              <UserMenu />
+            </div>
+            <CharacterRosterDialog
+              isOpen={isRosterOpen}
+              onClose={() => setIsRosterOpen(false)}
+              onOpenWizard={onOpenWizard}
+            />
+            <JoinCampaignDialog
+              isOpen={isJoinOpen}
+              onClose={() => setIsJoinOpen(false)}
+            />
           </div>
 
           {/* Race, Classes, Size, Alignment */}

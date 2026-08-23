@@ -2,12 +2,15 @@
  * @module    SupabaseStorageAdapter
  * @summary   Implements IStorageAdapter for cloud persistence with Supabase PostgreSQL.
  *            Features local-first caching, 800ms debounce write-batching, flush support,
- *            and fine-grained sync status event notifications.
+ *            multi-character roster queries, and fine-grained sync status event notifications.
  */
 
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { supabase as defaultSupabaseClient } from '../supabase/supabaseClient.ts';
 import type { IStorageAdapter, SyncStatus, SyncStatusEvent, SyncStatusListener } from './IStorageAdapter.ts';
+import type { CharacterSummary } from '../../types/character.ts';
+import type { CampaignSummary } from '../../types/campaign.ts';
+import { generateUUID } from '../../utils/uuid.ts';
 
 export const CLOUD_CACHE_PREFIX = 'dd_cloud_cache_';
 export const DEFAULT_DEBOUNCE_MS = 800;
@@ -50,6 +53,14 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
   }
 
   public getCharacterId(): string | null {
+    return this.activeCharacterId;
+  }
+
+  public setActiveCharacterId(characterId: string | null): void {
+    this.activeCharacterId = characterId;
+  }
+
+  public getActiveCharacterId(): string | null {
     return this.activeCharacterId;
   }
 
@@ -176,12 +187,33 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
           .eq('dm_user_id', this.userId);
 
         if (error) throw error;
+      } else if (isDmSession) {
+        const newCampId = generateUUID();
+        const encounterName = state?.meta?.begegnung || 'Neue Kampagne';
+        const { data, error } = await this.client
+          .from('campaigns')
+          .upsert({
+            id: newCampId,
+            dm_user_id: this.userId,
+            name: encounterName,
+            invite_code: 'CAMP-' + Math.floor(10 + Math.random() * 90),
+            active_encounter_state: state,
+            is_active: true,
+            updated_at: new Date().toISOString(),
+          })
+          .select('id')
+          .single();
+
+        if (error) throw error;
+        if (data?.id) {
+          this.activeCampaignId = data.id;
+        }
       } else {
         // Player Character Mode: find active PC from combatants
         const pc = (state?.combatants || []).find((c: any) => c.type === 'p') || null;
         const charName = pc?.name || 'Held';
         const charLevel = typeof pc?.level === 'number' ? pc.level : 1;
-        const classSummary = pc?.classSummary || pc?.class_summary || '';
+        const classSummary = pc?.classSummary || pc?.class_summary || (Array.isArray(pc?.classes) ? pc.classes.map((c: any) => `${c.name || c.classType} ${c.level}`).join(' / ') : '');
 
         if (this.activeCharacterId) {
           const { error } = await this.client
@@ -299,19 +331,27 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
   async saveCharacter(characterId: string, characterData: any): Promise<void> {
     try {
       this.notify('saving');
+      const validId = characterId || this.activeCharacterId || generateUUID();
+      const pc = (characterData?.combatants || []).find((c: any) => c.type === 'p') || characterData;
+      const charName = pc?.name || characterData?.name || 'Held';
+      const charLevel = typeof pc?.level === 'number' ? pc.level : (characterData?.level || 1);
+      const classSummary = pc?.classSummary || pc?.class_summary || characterData?.class_summary || '';
+
       const { error } = await this.client
         .from('characters')
         .upsert({
-          id: characterId,
+          id: validId,
           user_id: this.userId,
-          name: characterData?.name || 'Held',
-          level: characterData?.level || 1,
-          class_summary: characterData?.class_summary || '',
+          name: charName,
+          level: charLevel,
+          class_summary: classSummary,
           character_data: characterData,
+          is_active: true,
           updated_at: new Date().toISOString(),
         });
 
       if (error) throw error;
+      this.activeCharacterId = validId;
       this.notify('saved');
     } catch (err: any) {
       console.error(`[SupabaseStorageAdapter] Failed to save character ${characterId}:`, err);
@@ -336,19 +376,88 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
     }
   }
 
-  async saveCampaign(campaignId: string, encounterState: any): Promise<void> {
+  async listCharacters(): Promise<CharacterSummary[]> {
+    try {
+      const { data, error } = await this.client
+        .from('characters')
+        .select('*')
+        .eq('user_id', this.userId)
+        .eq('is_active', true)
+        .order('updated_at', { ascending: false });
+
+      if (error) throw error;
+
+      return (data || []).map((row: any) => {
+        const rawData = row.character_data;
+        const pc = (rawData?.combatants || []).find((c: any) => c.type === 'p') || rawData || {};
+        const race = pc?.race || 'Mensch';
+        const hpCurrent = typeof pc?.hp === 'number' ? pc.hp : 10;
+        const hpMax = typeof pc?.maxHP === 'number' ? pc.maxHP : (typeof pc?.maxHp === 'number' ? pc.maxHp : 10);
+
+        return {
+          id: row.id,
+          userId: row.user_id,
+          name: row.name || pc?.name || 'Held',
+          race,
+          classSummary: row.class_summary || pc?.classSummary || '',
+          level: typeof row.level === 'number' ? row.level : 1,
+          hp: { current: hpCurrent, max: hpMax },
+          isActive: row.is_active,
+          createdAt: row.created_at,
+          updatedAt: row.updated_at,
+          isCurrentActive: row.id === this.activeCharacterId,
+        };
+      });
+    } catch (err) {
+      console.error('[SupabaseStorageAdapter] Failed to list characters from cloud:', err);
+      return [];
+    }
+  }
+
+  async deleteCharacter(characterId: string): Promise<void> {
     try {
       this.notify('saving');
       const { error } = await this.client
-        .from('campaigns')
+        .from('characters')
         .update({
-          active_encounter_state: encounterState,
+          is_active: false,
           updated_at: new Date().toISOString(),
         })
-        .eq('id', campaignId)
-        .eq('dm_user_id', this.userId);
+        .eq('id', characterId)
+        .eq('user_id', this.userId);
 
       if (error) throw error;
+
+      if (this.activeCharacterId === characterId) {
+        this.activeCharacterId = null;
+      }
+
+      this.notify('saved');
+    } catch (err: any) {
+      console.error(`[SupabaseStorageAdapter] Failed to delete character ${characterId}:`, err);
+      this.notify('error', err instanceof Error ? err : new Error(String(err?.message || err)));
+    }
+  }
+
+  async saveCampaign(campaignId: string, encounterState: any): Promise<void> {
+    try {
+      this.notify('saving');
+      const validId = campaignId || this.activeCampaignId || generateUUID();
+      const encounterName = encounterState?.meta?.begegnung || 'Kampagne';
+      const { error } = await this.client
+        .from('campaigns')
+        .upsert({
+          id: validId,
+          dm_user_id: this.userId,
+          name: encounterName,
+          invite_code: encounterState?.inviteCode || ('CAMP-' + Math.floor(10 + Math.random() * 90)),
+          active_encounter_state: encounterState,
+          is_active: true,
+          updated_at: new Date().toISOString(),
+        });
+
+      if (error) throw error;
+      this.activeCampaignId = validId;
       this.notify('saved');
     } catch (err: any) {
       console.error(`[SupabaseStorageAdapter] Failed to save campaign ${campaignId}:`, err);
@@ -370,6 +479,71 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
     } catch (err) {
       console.error(`[SupabaseStorageAdapter] Failed to load campaign ${campaignId}:`, err);
       return null;
+    }
+  }
+
+  async listCampaigns(): Promise<CampaignSummary[]> {
+    try {
+      const { data, error } = await this.client
+        .from('campaigns')
+        .select('*')
+        .eq('dm_user_id', this.userId)
+        .eq('is_active', true)
+        .order('updated_at', { ascending: false });
+
+      if (error) throw error;
+
+      return (data || []).map((row: any) => {
+        const rawEncounter = row.active_encounter_state || {};
+        const combatants = Array.isArray(rawEncounter.combatants) ? rawEncounter.combatants : [];
+        const meta = rawEncounter.meta || {};
+
+        return {
+          id: row.id,
+          dmUserId: row.dm_user_id,
+          name: row.name || meta.begegnung || 'Kampagne',
+          description: row.description || '',
+          inviteCode: row.invite_code,
+          combatantCount: combatants.length,
+          round: typeof rawEncounter.round === 'number' ? rawEncounter.round : 1,
+          turn: typeof rawEncounter.activeIdx === 'number' ? rawEncounter.activeIdx : 0,
+          encounterName: meta.begegnung || row.name,
+          location: meta.ort || 'Dungeon',
+          memberCount: 1,
+          isActive: row.is_active,
+          createdAt: row.created_at,
+          updatedAt: row.updated_at,
+          isCurrentActive: row.id === this.activeCampaignId,
+        };
+      });
+    } catch (err) {
+      console.error('[SupabaseStorageAdapter] Failed to list campaigns from cloud:', err);
+      return [];
+    }
+  }
+
+  async deleteCampaign(campaignId: string): Promise<void> {
+    try {
+      this.notify('saving');
+      const { error } = await this.client
+        .from('campaigns')
+        .update({
+          is_active: false,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', campaignId)
+        .eq('dm_user_id', this.userId);
+
+      if (error) throw error;
+
+      if (this.activeCampaignId === campaignId) {
+        this.activeCampaignId = null;
+      }
+
+      this.notify('saved');
+    } catch (err: any) {
+      console.error(`[SupabaseStorageAdapter] Failed to delete campaign ${campaignId}:`, err);
+      this.notify('error', err instanceof Error ? err : new Error(String(err?.message || err)));
     }
   }
 

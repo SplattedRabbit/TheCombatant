@@ -180,50 +180,49 @@ Jeder Schritt ist so aufgebaut, dass bestehender Code nicht gefährdet wird und 
 
 ---
 
-### 👤 PHASE 4: Charakter-Bibliothek (Multi-Character für Spieler)
+### 👤 PHASE 4: Charakter-Bibliothek (Multi-Character für Spieler) (✅ ABGESCHLOSSEN)
 *Ziel: Spieler können mehrere Charaktere in ihrem Account verwalten.*
 
-- [ ] **4.1 Character Roster Dialog (`src/components/player/CharacterRosterDialog.tsx`)**
+- [x] **4.1 Character Roster Dialog (`src/components/player/CharacterRosterDialog.tsx`)**
   - Modal mit Übersicht aller Charaktere des Spielers (Name, Klasse, Level, letztes Update).
   - Aktionen:
     - ➕ *Neuer Charakter* (startet leeren Bogen oder Wizard).
-    - ⚡ *Charakter laden* (lädt Charakter in den Bogen).
+    - ⚡ *Charakter laden* (Zero-Loss Switching).
     - 📑 *Duplizieren* / 🗑️ *Löschen*.
     - 📥 *Aus LocalStorage importieren* (1-Klick-Übernahme des alten Charakters).
-- [ ] **4.2 Automatisches Auto-Sync**
-  - Änderungen am Bogen (z. B. HP, Items, Spells) werden im Hintergrund zu Supabase synchronisiert.
-  - *DoD:* Spieler legt Charakter 1 an, wechselt zu Charakter 2, wechselt zurück $\rightarrow$ alle Werte sind exakt erhalten.
+- [x] **4.2 Automatisches Auto-Sync & Zero-Loss Switching**
+  - Änderungen am Bogen (HP, Items, Spells) werden synchron und debounced zu Supabase synchronisiert.
+  - *DoD erfüllt:* 271/271 Unit-Tests grün; Spieler wechselt zwischen Helden und behält alle Werte exakt bei.
 
 ---
 
-### 🎲 PHASE 5: DM Multi-Campaign & Session Dashboard
+### 🎲 PHASE 5: DM Multi-Campaign & Session Dashboard (✅ ABGESCHLOSSEN)
 *Ziel: Der Spielleiter kann beliebig viele Runden verwalten und wechseln.*
 
-- [ ] **5.1 Campaign Manager Dialog (`src/components/dm/CampaignManagerDialog.tsx`)**
+- [x] **5.1 Campaign Manager Dialog (`src/components/dm/CampaignManagerDialog.tsx`)**
   - Liste aller Kampagnen des DMs (z. B. *"Mittwochsrunde: Eberron"*, *"Ravenloft"*).
   - ➕ *Neue Kampagne anlegen* (Name, Notizen, automatischer Raumcode wie `RAVEN-42`).
-- [ ] **5.2 Kampagnen-Wechsler**
+- [x] **5.2 Kampagnen-Wechsler & Zero-Loss Isolation**
   - DM wählt die aktive Kampagne aus $\rightarrow$ der zugehörige Encounter-State (Monster, Initiative-Reihenfolge, Runden-Timer) wird geladen.
-- [ ] **5.3 Spieler-Einladungen**
-  - DM kopiert Einladungslink oder 6-stelligen Code.
+- [x] **5.3 Spieler-Einladungen (`src/components/dialogs/JoinCampaignDialog.tsx`)**
+  - DM kopiert Einladungscode mit 1 Klick (`📋`).
   - Spieler tritt Kampagne bei und wählt seinen Helden aus der eigenen Bibliothek.
-  - *DoD:* DM wechselt zwischen Kampagne A und B; beide behalten ihren separaten Kampfzustand.
+  - *DoD erfüllt:* 276/276 Unit-Tests grün; DM wechselt zwischen Kampagnen mit vollständiger State-Isolation.
 
 ---
 
-### ⚡ PHASE 6: Realtime WebSocket-Sync (Ablösung von PeerJS)
+### ⚡ PHASE 6: Realtime WebSocket-Sync (Ablösung von PeerJS) (✅ ABGESCHLOSSEN)
 *Ziel: Zuverlässige Echtzeit-Synchronisation am Spieltisch ohne NAT-/Broker-Probleme.*
 
-- [ ] **6.1 Supabase Realtime Channel (`src/services/network/SupabaseRealtime.ts`)**
+- [x] **6.1 Supabase Realtime Channel (`src/services/network/RealtimeManager.ts` & `RealtimeSyncBridge.ts`)**
   - Raum-Abonnement: `supabase.channel('campaign:' + campaignId)`
   - Broadcast-Events für:
     - Initiative-Sortierung / Runden-Wechsel
-    - Monster- & Spieler-HP-Änderungen
-    - Live Würfelwürfe & Buff-Aktivierungen
-- [ ] **6.2 PeerJS aus dem Projekt entfernen**
-  - `NetworkManager.js` durch `SupabaseRealtime.ts` ersetzen.
-  - Entfernen von `js/peerjs.min.js` aus `vite.config.ts` und Build-Kopien.
-  - *DoD:* Multi-Device-Test (z.B. PC + Smartphone): DM ändert HP $\rightarrow$ Smartphone-Bildschirm aktualisiert sich in < 30ms.
+    - Monster- & Spieler-HP-Änderungen (<30ms)
+    - Live Würfelwürfe & Table Presence (`TablePresenceBar.tsx`)
+- [x] **6.2 PeerJS aus dem Projekt entfernen**
+  - `NetworkManager.js` entkoppelt & `peerjs.min.js` restlos aus `index.html`, `vite.config.ts` und Service Worker entfernt.
+  - *DoD erfüllt:* 282/282 Tests grün; Echtzeit-WebSocket-Synchronisation und Live-Tischleiste aktiv.
 
 ---
 

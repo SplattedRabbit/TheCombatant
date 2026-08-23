@@ -18,8 +18,6 @@ function copyStaticAssets() {
     closeBundle() {
       const distDir = path.resolve(__dirname, 'dist');
       const copies: [string, string][] = [
-        // PeerJS: globales Script, nicht über Vite gebundelt (window.Peer API)
-        [path.resolve(__dirname, 'js/peerjs.min.js'), path.join(distDir, 'peerjs.min.js')],
         [path.resolve(__dirname, 'data/spells-phb.json'), path.join(distDir, 'data/spells-phb.json')],
         [path.resolve(__dirname, 'data/spells-phb2.json'), path.join(distDir, 'data/spells-phb2.json')],
         [path.resolve(__dirname, 'data/spells-ca.json'), path.join(distDir, 'data/spells-ca.json')],

@@ -28,8 +28,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- PeerJS: globales window.Peer-Objekt, bewusst außerhalb des Vite-Bundles -->
-    <script src="./peerjs.min.js"></script>
     <script type="module" src="/src/main.tsx"></script>
     <script>
       // Service Worker: Only in production (GitHub Pages); in local dev mode / LAN, auto-unregister and clear cache to enable instant updates

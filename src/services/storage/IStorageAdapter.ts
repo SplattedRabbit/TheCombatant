@@ -1,8 +1,12 @@
 /**
  * @module    IStorageAdapter
  * @summary   Interface and type contracts for storage adapters (LocalStorage, Supabase, etc.)
- *            supporting full state persistence, entity-level hooks, and sync status events.
+ *            supporting full state persistence, entity-level hooks, multi-character/multi-campaign
+ *            indexes, and sync status events.
  */
+
+import type { CharacterSummary } from '../../types/character.ts';
+import type { CampaignSummary } from '../../types/campaign.ts';
 
 export type SyncStatus = 'idle' | 'saving' | 'saved' | 'error';
 
@@ -48,6 +52,22 @@ export interface IStorageAdapter {
   loadCharacter?(characterId: string): Promise<any | null> | any | null;
 
   /**
+   * Optional entity hook: List all characters available in this storage adapter.
+   */
+  listCharacters?(): Promise<CharacterSummary[]> | CharacterSummary[];
+
+  /**
+   * Optional entity hook: Delete a character by ID.
+   */
+  deleteCharacter?(characterId: string): Promise<void> | void;
+
+  /**
+   * Optional active character ID tracking.
+   */
+  getActiveCharacterId?(): string | null;
+  setActiveCharacterId?(characterId: string | null): void;
+
+  /**
    * Optional entity hook: Save an individual campaign / encounter state.
    */
   saveCampaign?(campaignId: string, encounterState: any): Promise<void> | void;
@@ -56,6 +76,22 @@ export interface IStorageAdapter {
    * Optional entity hook: Load an individual campaign.
    */
   loadCampaign?(campaignId: string): Promise<any | null> | any | null;
+
+  /**
+   * Optional entity hook: List all campaigns available in this storage adapter.
+   */
+  listCampaigns?(): Promise<CampaignSummary[]> | CampaignSummary[];
+
+  /**
+   * Optional entity hook: Delete a campaign by ID.
+   */
+  deleteCampaign?(campaignId: string): Promise<void> | void;
+
+  /**
+   * Optional active campaign ID tracking.
+   */
+  getActiveCampaignId?(): string | null;
+  setActiveCampaignId?(campaignId: string | null): void;
 
   /**
    * Subscribes to sync status changes. Returns an unsubscribe function.

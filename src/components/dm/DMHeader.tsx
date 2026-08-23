@@ -8,26 +8,59 @@
  * @depends   React, @core/state.js
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 import type { EncounterMeta } from '../../types/combat';
 import { UserMenu } from '../auth/UserMenu';
+import { CampaignManagerDialog } from './CampaignManagerDialog.tsx';
+import { TablePresenceBar } from '../shared/TablePresenceBar.tsx';
 
 interface DMHeaderProps {
   meta: EncounterMeta;
 }
 
 export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
+  const [isCampaignDialogOpen, setIsCampaignDialogOpen] = useState<boolean>(false);
+
   const handleChangeMeta = (key: string, value: string) => {
     CombatState.updateMeta(key, value);
   };
 
   return (
     <div className="hdr" style={{ textAlign: 'center', marginBottom: '10px', position: 'relative' }}>
-      <div style={{ position: 'absolute', top: 0, right: 0 }}>
+      <div style={{ position: 'absolute', top: 0, right: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
+        <TablePresenceBar />
+        <button
+          type="button"
+          onClick={() => setIsCampaignDialogOpen(true)}
+          className="btn"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px',
+            padding: '2px 8px',
+            fontSize: '11px',
+            fontFamily: "'IM Fell English SC', serif",
+            fontWeight: 'bold',
+            background: 'rgba(253, 246, 226, 0.9)',
+            border: '1px solid var(--pb)',
+            borderRadius: '12px',
+            cursor: 'pointer',
+            color: 'var(--ink)',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+          }}
+          title="Kampagnen-Dashboard öffnen (Kampagnen wechseln, erstellen, duplizieren)"
+        >
+          <span>🎲</span>
+          <span>Kampagnen</span>
+        </button>
         <UserMenu />
       </div>
+      <CampaignManagerDialog
+        isOpen={isCampaignDialogOpen}
+        onClose={() => setIsCampaignDialogOpen(false)}
+      />
       <h1>Dungeon Master Combat Sheet</h1>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', margin: '2px 0' }}>
         <hr style={{ flex: 1, border: 'none', borderTop: '1px solid var(--pb)', maxWidth: '60px' }} />
