@@ -422,9 +422,14 @@ select.cinput,
   font-family: 'Crimson Text', serif;
 }
 
+/* Clear, legible cross-browser select options */
 select option {
-  font-size: 12px;
-  font-family: 'Crimson Text', serif;
+  font-size: 13.5px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  padding: 6px 10px !important;
+  color: #1a1a1a !important;
+  background-color: #ffffff !important;
+  line-height: 1.4 !important;
 }
 
 /* Modal & Dialog Form Elements */
@@ -432,7 +437,7 @@ select option {
 .modal-select,
 .modal-textarea {
   width: 100%;
-  font-family: 'Crimson Text', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 13px;
   color: var(--ink, #2c2214);
   background: #ffffff;
@@ -442,8 +447,8 @@ select option {
   box-sizing: border-box;
   outline: none;
   height: auto;
-  min-height: 32px;
-  line-height: 1.3;
+  min-height: 34px;
+  line-height: 1.4;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
@@ -456,11 +461,11 @@ select option {
 }
 
 .modal-select {
-  height: 32px !important;
-  min-height: 32px !important;
-  padding: 4px 8px !important;
-  font-size: 12.5px !important;
-  cursor: pointer;
+  height: 34px !important;
+  min-height: 34px !important;
+  padding: 5px 10px !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
 }
 
 /* Parchment Message Overlay */
