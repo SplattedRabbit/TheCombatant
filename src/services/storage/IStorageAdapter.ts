@@ -70,7 +70,11 @@ export interface IStorageAdapter {
   /**
    * Optional entity hook: Save an individual campaign / encounter state.
    */
-  saveCampaign?(campaignId: string, encounterState: any): Promise<void> | void;
+  saveCampaign?(
+    campaignId: string,
+    encounterState: any,
+    metadata?: { name?: string; description?: string; inviteCode?: string }
+  ): Promise<void> | void;
 
   /**
    * Optional entity hook: Load an individual campaign.

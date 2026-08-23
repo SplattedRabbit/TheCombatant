@@ -32,6 +32,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const fetchProfile = async (authUser: User) => {
     try {
+      console.log(`%c[AuthContext] Fetching profile for user: ${authUser.email} (${authUser.id})`, 'color: #8b5cf6;');
       // 1. Try to fetch profile
       const { data } = await supabase
         .from('profiles')
@@ -40,6 +41,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         .single();
 
       if (data) {
+        console.log('%c[AuthContext] User profile loaded:', 'color: #059669;', data);
         setProfile(data as ProfileRow);
       } else {
         // 2. If profile does not exist yet, create it
@@ -50,6 +52,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           avatar_url: authUser.user_metadata?.avatar_url || authUser.user_metadata?.picture || null,
         };
 
+        console.log('%c[AuthContext] Creating new profile in public.profiles:', 'color: #d97706;', newProfile);
         const { data: created, error: insertError } = await supabase
           .from('profiles')
           .upsert(newProfile as any, { onConflict: 'id' })
@@ -57,6 +60,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           .single();
 
         if (created) {
+          console.log('%c[AuthContext] Profile created successfully:', 'color: #059669;', created);
           setProfile(created as ProfileRow);
         } else if (insertError) {
           console.warn('[AuthContext] Could not upsert profile:', insertError);
@@ -69,6 +73,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     if (!isConfigured) {
+      console.log('%c[AuthContext] Supabase not configured -> Local guest mode active', 'color: #d97706;');
       storageService.initializeForUser(null);
       setIsLoading(false);
       return;
@@ -76,6 +81,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // 1. Check initial session
     supabase.auth.getSession().then(async ({ data: { session } }) => {
+      console.log(`%c[AuthContext] Initial session check: ${session ? 'Active User (' + session.user.email + ')' : 'No session (Guest)'}`, 'color: #0284c7; font-weight: bold;');
       setSession(session);
       setUser(session?.user ?? null);
       await storageService.initializeForUser(session?.user ?? null);
@@ -86,7 +92,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     // 2. Listen to real-time auth state changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, newSession) => {
+      console.log(`%c[AuthContext] Auth state event [${event}]: ${newSession ? newSession.user.email : 'Logged Out'}`, 'color: #0284c7; font-weight: bold;');
       setSession(newSession);
       setUser(newSession?.user ?? null);
       await storageService.initializeForUser(newSession?.user ?? null);

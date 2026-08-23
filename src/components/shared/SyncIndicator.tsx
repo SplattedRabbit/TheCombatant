@@ -14,8 +14,12 @@ export const SyncIndicator: React.FC = () => {
 
   const handleManualSync = async () => {
     try {
+      console.log(`%c[SyncIndicator] Manual sync triggered | Current adapter: ${adapterName} | Status: ${status}`, 'color: #0284c7; font-weight: bold;');
       setIsFlushing(true);
       await flushPendingSaves();
+      console.log('%c[SyncIndicator] Manual sync completed successfully', 'color: #059669; font-weight: bold;');
+    } catch (err) {
+      console.error('[SyncIndicator] Manual sync failed:', err);
     } finally {
       setTimeout(() => setIsFlushing(false), 600);
     }

@@ -180,7 +180,8 @@ describe('SupabaseStorageAdapter Test Suite', () => {
 
     // Genau 1 Call soll ausgeführt worden sein mit dem letzten Stand
     assert.equal(mockClient.calls.charactersUpsert, 1, 'Exakt 1 gebündelter Netzwerk-Request');
-    const saved = mockClient.store.characters.get('char-uuid-1');
+    const saved = Array.from(mockClient.store.characters.values())[0];
+    assert.ok(saved, 'Saved character must exist in store');
     assert.equal(saved.character_data.turn, 5);
     assert.equal(saved.name, 'Held 5');
   });

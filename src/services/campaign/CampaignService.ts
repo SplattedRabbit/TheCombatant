@@ -111,7 +111,11 @@ export class CampaignService {
     }
 
     if (typeof adapter.saveCampaign === 'function') {
-      const res = adapter.saveCampaign(campaignId, encounterState);
+      const res = adapter.saveCampaign(campaignId, encounterState, {
+        name: input.name,
+        description: input.description,
+        inviteCode,
+      });
       if (res instanceof Promise) await res;
     }
 

@@ -174,9 +174,13 @@ WITH CHECK (
   OR public.is_campaign_dm(campaign_id, auth.uid())
 );
 
-CREATE POLICY "campaign_members_delete_policy" ON public.campaign_members
-FOR DELETE TO authenticated
-USING (
-  user_id = auth.uid()
-  OR public.is_campaign_dm(campaign_id, auth.uid())
+-- --------------------------------------------------------------------
+-- 7. CLEANUP DUPLICATES (Optional / One-time)
+-- --------------------------------------------------------------------
+-- Removes generated duplicate character rows, keeping the latest one per name:
+DELETE FROM public.characters
+WHERE id NOT IN (
+  SELECT DISTINCT ON (user_id, name) id
+  FROM public.characters
+  ORDER BY user_id, name, updated_at DESC
 );

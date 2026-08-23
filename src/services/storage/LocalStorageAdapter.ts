@@ -339,9 +339,23 @@ export class LocalStorageAdapter implements IStorageAdapter {
     }
   }
 
-  saveCampaign(campaignId: string, encounterState: any): void {
+  saveCampaign(
+    campaignId: string,
+    encounterState: any,
+    metadata?: { name?: string; description?: string; inviteCode?: string }
+  ): void {
     try {
       const storage = this.getStorage();
+      if (metadata) {
+        if (!encounterState) encounterState = {};
+        if (metadata.name && (!encounterState.meta || !encounterState.meta.begegnung)) {
+          if (!encounterState.meta) encounterState.meta = {};
+          encounterState.meta.begegnung = metadata.name;
+        }
+        if (metadata.inviteCode && !encounterState.inviteCode) {
+          encounterState.inviteCode = metadata.inviteCode;
+        }
+      }
       storage.setItem(`${CAMPAIGN_PREFIX}${campaignId}`, JSON.stringify(encounterState));
 
       // Ensure campaignId is present in index
