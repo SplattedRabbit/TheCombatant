@@ -30,21 +30,40 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const isConfigured = isSupabaseConfigured();
 
-  const fetchProfile = async (userId: string) => {
+  const fetchProfile = async (authUser: User) => {
     try {
-      const { data, error } = await supabase
+      // 1. Try to fetch profile
+      const { data } = await supabase
         .from('profiles')
         .select('*')
-        .eq('id', userId)
+        .eq('id', authUser.id)
         .single();
 
-      if (error && error.code !== 'PGRST116') {
-        console.warn('Error loading user profile from Supabase:', error);
-      } else if (data) {
+      if (data) {
         setProfile(data as ProfileRow);
+      } else {
+        // 2. If profile does not exist yet, create it
+        const newProfile: Partial<ProfileRow> = {
+          id: authUser.id,
+          email: authUser.email || '',
+          name: authUser.user_metadata?.full_name || authUser.user_metadata?.name || authUser.email?.split('@')[0] || 'Adventurer',
+          avatar_url: authUser.user_metadata?.avatar_url || authUser.user_metadata?.picture || null,
+        };
+
+        const { data: created, error: insertError } = await supabase
+          .from('profiles')
+          .upsert(newProfile as any, { onConflict: 'id' })
+          .select()
+          .single();
+
+        if (created) {
+          setProfile(created as ProfileRow);
+        } else if (insertError) {
+          console.warn('[AuthContext] Could not upsert profile:', insertError);
+        }
       }
     } catch (err) {
-      console.warn('Failed to fetch profile:', err);
+      console.warn('[AuthContext] Failed to fetch/create profile:', err);
     }
   };
 
@@ -61,7 +80,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setUser(session?.user ?? null);
       await storageService.initializeForUser(session?.user ?? null);
       if (session?.user) {
-        fetchProfile(session.user.id);
+        fetchProfile(session.user);
       }
       setIsLoading(false);
     });
@@ -72,7 +91,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setUser(newSession?.user ?? null);
       await storageService.initializeForUser(newSession?.user ?? null);
       if (newSession?.user) {
-        await fetchProfile(newSession.user.id);
+        await fetchProfile(newSession.user);
       } else {
         setProfile(null);
       }
@@ -117,7 +136,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const refreshProfile = async () => {
     if (user) {
-      await fetchProfile(user.id);
+      await fetchProfile(user);
     }
   };
 

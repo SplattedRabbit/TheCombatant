@@ -154,16 +154,18 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
       this.debounceTimer = null;
     }
 
-    if (!this.pendingStateToSave) {
+    const stateToSave = this.pendingStateToSave || this.loadFromLocalCache();
+    if (!stateToSave) {
       return;
     }
 
-    const stateToSave = this.pendingStateToSave;
     this.pendingStateToSave = null;
-
     this.activeSavePromise = this.performCloudSave(stateToSave);
     try {
       await this.activeSavePromise;
+    } catch (err) {
+      this.pendingStateToSave = stateToSave; // restore for retry
+      throw err;
     } finally {
       this.activeSavePromise = null;
     }
