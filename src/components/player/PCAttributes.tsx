@@ -30,6 +30,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
   const [classSearch, setClassSearch] = useState('');
   const prevFilterRef = React.useRef({ filter: 'all', search: '' });
 
+  const [localScores, setLocalScores] = useState<Record<string, string>>({});
   const classesCount = Array.isArray(pc.classes) ? pc.classes.length : 0;
 
   // Format modifier (+X or -X)
@@ -54,14 +55,38 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     }).join('');
   };
 
-  // Validate and apply attribute change
-  const handleAbilityChange = (key: string, val: string) => {
-    let num = parseInt(val);
-    if (isNaN(num)) num = 10;
+  // Validate and apply attribute change on finished input (onBlur / Enter)
+  const handleCommitAbility = (key: string, label: string, val: string) => {
+    setLocalScores((prev) => {
+      const next = { ...prev };
+      delete next[key];
+      return next;
+    });
+
+    const trimmed = (val ?? '').trim();
+    if (trimmed === '') {
+      return;
+    }
+
+    let num = parseInt(trimmed, 10);
+    if (isNaN(num)) {
+      num = 10;
+    }
+
     if (num < 3) {
-      showCustomAlert("Warning!", "Talk to your DM, you have a problem.");
+      showCustomAlert(
+        `Attribute Rule: ${label}`,
+        `<div style="text-align: left; line-height: 1.4;">` +
+        `<strong>${label}</strong> was entered as <strong>${num}</strong>.<br/><br/>` +
+        `In D&amp;D 3.5e, the minimum viable ability score for a conscious player character is <strong>3</strong> (a score below 3 causes helplessness or incapacity).<br/><br/>` +
+        `The value has been automatically set to <strong>3</strong>.` +
+        `</div>`,
+        "OK",
+        "⚠️"
+      );
       num = 3;
     }
+
     CombatState.updatePCNumber(key, num);
   };
 
@@ -206,8 +231,15 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '2px', marginTop: '2px', justifyContent: 'space-between' }}>
           <input
             type="number"
-            value={score}
-            onChange={(e) => handleAbilityChange(key, e.target.value)}
+            value={localScores[key] !== undefined ? localScores[key] : (score ?? 10)}
+            onChange={(e) => setLocalScores((prev) => ({ ...prev, [key]: e.target.value }))}
+            onBlur={(e) => handleCommitAbility(key, label, e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleCommitAbility(key, label, (e.target as HTMLInputElement).value);
+                (e.target as HTMLInputElement).blur();
+              }
+            }}
             className={`cinput pc-${key}-inp`}
             style={{
               width: '24px',
