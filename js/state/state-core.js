@@ -41,6 +41,8 @@ export function getState() {
 export function setRole(role) {
   const s = getState();
   s.mode = role;
+  if (!s.session) s.session = {};
+  s.session.role = (role === 'dm' || role === 'host') ? 'host' : (role === 'player' ? 'player' : role);
   StateEvents.emit('state_changed', s);
 }
 
@@ -73,7 +75,7 @@ export function getActivePC() {
   }
 
   if (!pc) {
-    if (s.session && s.session.role === 'host') {
+    if (s.mode === 'dm' || s.mode === 'host' || (s.session && s.session.role === 'host')) {
       return null;
     }
     // Directly create default PC to avoid circular import dependency on EncounterManager

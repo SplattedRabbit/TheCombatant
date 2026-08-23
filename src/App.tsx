@@ -11,7 +11,11 @@ import { CombatState } from '@core/state.js';
 
 export default function App() {
   const { state, activePC, isReady } = useCombatState() as any;
-  const role = state?.session?.role ?? 'choice';
+  const role = (state?.session?.role === 'host' || state?.mode === 'dm' || state?.mode === 'host')
+    ? 'host'
+    : (state?.session?.role === 'player' || state?.mode === 'player'
+      ? 'player'
+      : (state?.mode === 'wizard' ? 'wizard' : 'choice'));
 
   // Initialize Realtime Sync Bridge
   useEffect(() => {
@@ -142,7 +146,7 @@ export default function App() {
   }
 
   let content: any;
-  if (role === 'host' || role === 'dm') {
+  if (role === 'host') {
     content = <DMScreen state={state} />;
   } else if (role === 'wizard') {
     content = <CharacterWizardDialog onClose={() => CombatState.setRole('choice')} />;

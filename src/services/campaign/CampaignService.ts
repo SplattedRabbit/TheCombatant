@@ -200,25 +200,22 @@ export class CampaignService {
     try {
       const adapter = storageService.getAdapter();
 
-      // 1. Flush pending saves of the current campaign
-      await storageService.flushPendingSaves();
-
-      // 2. Load target campaign encounter state
+      // 1. Load target campaign encounter state from storage
       const targetState = await this.getCampaign(campaignId);
       if (!targetState) {
         console.warn(`[CampaignService] Could not find encounter state for campaign ${campaignId}`);
         return false;
       }
 
-      // 3. Update adapter pointer
+      // 2. Update adapter pointer to target campaign
       if (typeof adapter.setActiveCampaignId === 'function') {
         adapter.setActiveCampaignId(campaignId);
       }
 
-      // 4. Hydrate in-memory state
+      // 3. Hydrate in-memory state
       applyLoadedState(targetState);
 
-      // 5. Emit state change events
+      // 4. Emit state change events
       StateEvents.emit('state_changed', getState());
       StateEvents.emit('encounter_changed', getState());
 

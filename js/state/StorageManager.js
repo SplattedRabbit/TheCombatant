@@ -85,12 +85,14 @@ export function getStorageAdapter() {
  * @param {object} loadedState
  * @returns {boolean} true if hydration succeeded, false otherwise
  */
-export function applyLoadedState(loadedState) {
+export function applyLoadedState(loadedState, preserveRole = true) {
   if (!loadedState || !Array.isArray(loadedState.combatants)) return false;
 
   try {
     const s = getState();
-    s.mode = 'choice'; // Force role selection overlay on startup/refresh as requested
+    const currentMode = s.mode;
+    const currentRole = s.session?.role;
+
     s.meta = { ...s.meta, ...(loadedState.meta || {}) };
     s.combatants = (loadedState.combatants || []).map(c => createCombatant(c));
     s.turn = typeof loadedState.turn === 'number' ? loadedState.turn : 0;
@@ -100,11 +102,26 @@ export function applyLoadedState(loadedState) {
     // session persistence loading
     if (loadedState.session) {
       s.session.active = !!loadedState.session.active;
-      s.session.role = loadedState.session.role || 'choice';
+      if (loadedState.session.role) {
+        s.session.role = loadedState.session.role;
+      }
       s.session.roomCode = loadedState.session.roomCode || '';
     }
 
-    StateEvents.emit('pc_changed', getActivePC());
+    if (preserveRole && currentMode && currentMode !== 'choice') {
+      s.mode = currentMode;
+      if (!s.session) s.session = {};
+      s.session.role = currentRole || (currentMode === 'dm' ? 'host' : currentMode);
+    } else if (!preserveRole) {
+      s.mode = 'choice';
+      if (!s.session) s.session = {};
+      s.session.role = 'choice';
+    }
+
+    const activePC = s.combatants.find(c => c.type === 'p');
+    if (activePC) {
+      StateEvents.emit('pc_changed', activePC);
+    }
     StateEvents.emit('state_changed', s);
     return true;
   } catch (e) {
