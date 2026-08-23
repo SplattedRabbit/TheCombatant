@@ -6,17 +6,41 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v6.0.1** | Hotfix & Polish | 23.08.2026 | Real-time Table Sync, Dynamic Presence PC Injection, DM Screen Isolation, Zero-Recursion RLS & Pergament Modals |
 | **v6.0.0** | Major Release | 23.08.2026 | Cloud-Sync, Google OAuth, Multi-Character Roster, DM Multi-Campaign Dashboard, Supabase Realtime WebSockets & CI/CD Automation (0 € Stack) |
 | **v5.0.0** | Major Release | 22.08.2026 | Milestone Release: Armory 2.0, Tactical Combat Hub, Complete Sourcebooks (PHB2/CA/CS), Skill Tricks, Wizard & Zero-Defect Architecture |
-| **v4.6.1** | Release | 22.08.2026 | Polish & Farbharmonisierung: Tri-Color Feats, 4-State Skill Tricks, Sleek Tactical Sliders |
-| **v4.6.0** | Feature | 22.08.2026 | Armory 2.0: Paperdoll-Grid, 3D-Card-Flip UX, Magic Items Kompendium & Stacking Engine |
-| **v4.5.1** | Release | 22.08.2026 | Skills/Feats Tab-Trennung, Skill Tricks im Wizard & Spellwarp Sniper Sample |
-| **v4.5.0** | Release | 22.08.2026 | Scaled Compendium, PHB2/CA/CS Base & Prestige Classes, Dynamic Class Picker |
-| **v4.2.0** | Release | 21.08.2026 | Prestige Classes Refactoring & Anima Construct Race Integration |
 
 ---
 
-### v6.0.0 — Cloud-Sync, Multi-Campaign & Realtime WebSocket Release (Major Release v6.0.0)
+### v6.0.1 — Realtime Live Sync, State Isolation & UI Polish (23.08.2026)
+
+> **Zusammenfassung:** Version 6.0.1 behebt Synchronisations- und Routing-Grenzfälle bei Mehrbenutzer-Sitzungen, schützt Encounters vor Charakter-Lecks und vollendet die visuelle Vereinheitlichung aller Dialoge im Pergament-Design.
+
+#### 🌟 Die Kern-Verbesserungen von Version 6.0.1:
+
+1. **⚡ Blitzschneller Realtime-Spieltischbeitritt (<30ms)**:
+   - **Auto-Connect beim DM (`DMScreen.tsx`)**: Der DM-Screen verbindet sich beim Laden oder Kampagnenwechsel automatisch mit dem WebSocket-Kanal der Kampagne.
+   - **Sofortiger Charakter-Broadcast (`JoinCampaignDialog.tsx`, `RealtimeSyncBridge.ts`)**: Beim Klick auf *Join Table* wird der ausgewählte Held atomar aktiviert und per WebSocket an den Spielleiter gesendet.
+   - **Dynamische Live-Einspeisung**: Der Held (inklusive Begleiter/Vertrautem) erscheint ohne Neuladen sofort live in der Initiative- und Combatants-Leiste des DMs.
+   - **Presence-Handshake**: Verbinden sich DM und Spieler zeitversetzt, triggert die Erkennung in der Presence-Liste einen automatischen Abgleich.
+
+2. **🏰 Strikte DM-Encounter- & Kampagnen-Isolation (`RoleSelection.tsx`, `CampaignService.ts`, `StorageManager.js`)**:
+   - **Kein Charakter-Leck in DM-Encountern**: Beim Wechsel in die DM-Rolle wird das Kampagnen-Encounter sauber geladen (oder ein leeres Encounter initialisiert), sodass Spieler-Charakterdaten (wie „Valerius“) niemals in DM-Sitzungen einfließen.
+   - **Keine Phantom-Kampagnen**: Phantom-Zeilen beim Löschen von Kampagnen wurden eliminiert; Kampagnen werden nur noch bei expliziter DM-Aktion erstellt.
+   - **Keine Dummy-Helden-Injektion**: `getActivePC()` schützt DM-Encounters vor automatischer Erzeugung von Platzhaltern.
+
+3. **🔄 Stabiles Rollen-Routing (`StorageManager.js`, `state-core.js`, `App.tsx`)**:
+   - `applyLoadedState` respektiert die aktuell aktive Rolle (`preserveRole = true`), wodurch versehentliches Zurückfallen auf den Auswahlscreen (`'choice'`) dauerhaft verhindert wird.
+   - `CombatState.setRole('dm')` synchronisiert intern synchron `mode = 'dm'` und `session.role = 'host'`.
+
+4. **📜 Authentische Pergament-Messageboxen & Attribut-Validierung (`BaseDialogs.tsx`, `PCAttributes.tsx`)**:
+   - Native Browser-Popups (`alert`/`confirm`) wurden restlos durch Pergament-Modals (`showCustomAlert` & `showCustomConfirm`) ersetzt.
+   - Attributwerte unter 3 werden erst bei Eingabe-Abschluss (`onBlur` / `Enter`) mit D&D 3.5e-Regelhinweisen validiert; Doppel-Popups wurden eliminiert.
+
+5. **🛡️ Rekursionsfreie PostgreSQL RLS & Gast-Rechte (`docs/supabase_rls_fix.sql`)**:
+   - Vollständig flache RLS-Policies (0 % Rekursionsgefahr / Error `42P17` behoben).
+   - Gast-Spieler (`anon`) können Kampagnen-Codes nachschlagen und mitspielen.
+   - `handle_new_user` Trigger mit Backfill für automatische `profiles`-Erstellung.
 
 > **Meilenstein-Zusammenfassung:** Version 6.0.0 transformiert die CombatApp zu einer vollwertigen Cloud-Webapplikation für Spielleiter und Spieler mit **0 € Hostingkosten** (Supabase + GitHub Pages). Sie bietet sicheren Google Social Login, ein unterbrechungsfreies Adapter-Pattern für Offline-/Gastnutzung, eine Multi-Character-Bibliothek für Spieler, ein Multi-Campaign-Dashboard für DMs, blitzschnelle Supabase-Realtime-WebSockets (<30ms) mit Live-Tischleiste und eine robuste CI/CD-Pipeline.
 
