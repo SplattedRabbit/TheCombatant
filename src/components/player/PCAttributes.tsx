@@ -55,8 +55,12 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     }).join('');
   };
 
+  const isAlertActiveRef = React.useRef(false);
+
   // Validate and apply attribute change on finished input (onBlur / Enter)
   const handleCommitAbility = (key: string, label: string, val: string) => {
+    if (isAlertActiveRef.current) return;
+
     setLocalScores((prev) => {
       const next = { ...prev };
       delete next[key];
@@ -64,30 +68,36 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
     });
 
     const trimmed = (val ?? '').trim();
-    if (trimmed === '') {
-      return;
-    }
+    if (trimmed === '') return;
 
     let num = parseInt(trimmed, 10);
     if (isNaN(num)) {
       num = 10;
     }
 
+    const currentScore = pc[key]?.getValue?.() ?? pc[key]?.base ?? pc[key] ?? 10;
+
     if (num < 3) {
+      isAlertActiveRef.current = true;
       showCustomAlert(
         `Attribute Rule: ${label}`,
-        `<div style="text-align: left; line-height: 1.4;">` +
-        `<strong>${label}</strong> was entered as <strong>${num}</strong>.<br/><br/>` +
-        `In D&amp;D 3.5e, the minimum viable ability score for a conscious player character is <strong>3</strong> (a score below 3 causes helplessness or incapacity).<br/><br/>` +
-        `The value has been automatically set to <strong>3</strong>.` +
-        `</div>`,
-        "OK",
-        "⚠️"
+        `<p style="margin: 0 0 8px 0;"><strong>${label}</strong> was entered as <strong>${num}</strong>.</p>` +
+        `<p style="margin: 0 0 8px 0;">In D&amp;D 3.5e, the minimum ability score for an active character is <strong>3</strong> (a score below 3 causes unconsciousness or helplessness).</p>` +
+        `<p style="margin: 0; color: var(--red); font-weight: bold;">The value has been adjusted to 3.</p>`,
+        "Understood",
+        "⚠️",
+        () => {
+          setTimeout(() => {
+            isAlertActiveRef.current = false;
+          }, 150);
+        }
       );
       num = 3;
     }
 
-    CombatState.updatePCNumber(key, num);
+    if (num !== currentScore) {
+      CombatState.updatePCNumber(key, num);
+    }
   };
 
   // Roll ability check
@@ -236,7 +246,6 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
             onBlur={(e) => handleCommitAbility(key, label, e.target.value)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
-                handleCommitAbility(key, label, (e.target as HTMLInputElement).value);
                 (e.target as HTMLInputElement).blur();
               }
             }}

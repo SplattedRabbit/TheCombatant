@@ -56,6 +56,7 @@ export function initReactDialogBridge() {
   };
 
   bridge.showCustomAlert = (title: string, message: string, buttonText?: string, icon?: string, onClose?: () => void) => {
+    if (document.getElementById('customAlertOverlay')) return;
     mountModal((onCloseModal) => (
       <CustomAlertModal
         title={title}
