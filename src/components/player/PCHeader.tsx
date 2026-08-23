@@ -2,10 +2,6 @@
  * @module    PCHeader
  * @summary   Header component for the player character with name, race, class/level, alignment, initiative, HP display, and damage controller.
  * @exports   PCHeader
-/**
- * @module    PCHeader
- * @summary   Header component for the player character with name, race, class/level, alignment, initiative, HP display, and damage controller.
- * @exports   PCHeader
  * @reads     pc.name, pc.race, pc.classes, pc.size, pc.alignment, pc.hp, pc.maxHP, pc.conditions, pc.init, pc.iniMisc, pc.dex, pc.feats
  * @stateOps  updatePCField, updatePCNumber, applyDamage, applyTempHP
  * @depends   React, @core/state.js, src/hooks/useCombatState
@@ -18,6 +14,7 @@ import type { Combatant } from '../../types/combat';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 import { getStatMod } from './attributeHelper';
+import { UserMenu } from '../auth/UserMenu';
 
 interface PCHeaderProps {
   pc: Combatant;
@@ -231,35 +228,38 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab }) => {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
         {/* Left: Character Name & Metadata */}
         <div style={{ flex: '1', minWidth: '200px', display: 'flex', flexDirection: 'column', gap: '3px' }}>
-          <h1
-            style={{
-              fontFamily: "'IM Fell English SC', serif",
-              fontSize: '18px',
-              color: 'var(--red)',
-              margin: 0,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-            }}
-          >
-            Character Sheet:
-            <input
-              type="text"
-              value={pc.name}
-              onChange={(e) => CombatState.updatePCField('name', e.target.value)}
-              className="pc-name-field"
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+            <h1
               style={{
-                background: 'transparent',
-                border: 'none',
-                borderBottom: '1px solid var(--pb)',
                 fontFamily: "'IM Fell English SC', serif",
                 fontSize: '18px',
                 color: 'var(--red)',
-                outline: 'none',
-                width: '180px',
+                margin: 0,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
               }}
-            />
-          </h1>
+            >
+              Character Sheet:
+              <input
+                type="text"
+                value={pc.name}
+                onChange={(e) => CombatState.updatePCField('name', e.target.value)}
+                className="pc-name-field"
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  borderBottom: '1px solid var(--pb)',
+                  fontFamily: "'IM Fell English SC', serif",
+                  fontSize: '18px',
+                  color: 'var(--red)',
+                  outline: 'none',
+                  width: '180px',
+                }}
+              />
+            </h1>
+            <UserMenu />
+          </div>
 
           {/* Race, Classes, Size, Alignment */}
           <div

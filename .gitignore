@@ -9,3 +9,9 @@ tablet_package/
 # Nur die daraus abgeleiteten, aufbereiteten Kapitel-Textdateien (data/<buch>/*.txt) werden getrackt.
 data/*.pdf
 data/_raw/
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.local

@@ -23,6 +23,7 @@ import { showRollBreakdown, showCustomAlert } from '@core/ui/components/dialogs.
 // @ts-ignore
 import { SKILL_TRICKS_REGISTRY } from '@core/data/skillTricks-data.js';
 import { SkillTrickDetailsDialog } from '../dialogs/SkillTrickDetailsDialog';
+import { formatMod, getStatMod } from './attributeHelper';
 
 interface PCSkillsTabProps {
   pc: any; // Declared as any for runtime compatibility with dynamic prototype methods
@@ -38,9 +39,6 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
   const [focusedRanksVal, setFocusedRanksVal] = useState<string>('');
   const [focusedMiscKey, setFocusedMiscKey] = useState<string | null>(null);
   const [focusedMiscVal, setFocusedMiscVal] = useState<string>('');
-
-  // Format Mod helper
-  const formatMod = (val: number) => (val >= 0 ? `+${val}` : `${val}`);
 
   // ---------------------------------------------------------------------------
   // Dynamic Method Patching for Snapshot compatibility
@@ -58,9 +56,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     };
     
     patched.getAttributeMod = (abl: string) => {
-      const stat = (patched as any)[abl];
-      const score = stat ? (typeof stat.getValue === 'function' ? stat.getValue() : stat) : 10;
-      return Math.floor((score - 10) / 2);
+      return getStatMod((patched as any)[abl]);
     };
     
     patched.getArmorCheckPenalty = () => {

@@ -1,10 +1,71 @@
 /**
  * @module    RulesItems
- * @summary   Rules engine for D&D 3.5e magic items & equipment (Armory 2.0). Calculates stacking, active vs overridden bonuses, equipment buffs, and item sets.
- * @exports   calculateEquippedItemEffects, getItemStackingBreakdown, getAvailableEquipmentBuffs, calculateItemSetBonuses
+ * @summary   Rules engine for D&D 3.5e magic items & equipment (Armory 2.0). Calculates stacking, active vs overridden bonuses, equipment buffs, item sets, and item formula details.
+ * @exports   calculateEquippedItemEffects, getItemStackingBreakdown, getAvailableEquipmentBuffs, calculateItemSetBonuses, getHealingFormulaDetails, getDamageFormulaDetails
  */
 
 import { MAGIC_ITEM_SETS } from '../data/magicItems-data.js';
+
+// ---------------------------------------------------------------------------
+// Item Formula Parsing — Domain logic for parsing D&D 3.5e item formulas.
+// Previously inline in ArmoryTab.tsx. Extracted per 4-layer architecture rule.
+// ---------------------------------------------------------------------------
+
+/**
+ * Parses an item's healing formula and returns structured dice breakdown.
+ * Falls back to standard cure potion formulas for potions without explicit healingFormula.
+ * @param {Object} item
+ * @returns {{ formula: string, dice: string, bonus: number } | null}
+ */
+export function getHealingFormulaDetails(item) {
+  if (!item) return null;
+  const name = (item.name || '').toLowerCase();
+  const formula = item.healingFormula || (
+    (name.includes('cure') || name.includes('heil') || item.type === 'potion' || item.slot === 'potion')
+      ? (name.includes('moderate') ? '2d8+3' : (name.includes('serious') ? '3d8+5' : (name.includes('critical') ? '4d8+7' : '1d8+1')))
+      : null
+  );
+
+  if (!formula) return null;
+  const match = formula.match(/(\d+)[dw](\d+)(?:\+(\d+))?/i);
+  if (match) {
+    const dice = `${match[1]}d${match[2]}`;
+    const bonus = match[3] ? parseInt(match[3]) : 0;
+    return { formula, dice, bonus };
+  }
+  return { formula, dice: formula, bonus: 0 };
+}
+
+/**
+ * Parses an item's damage formula and returns structured breakdown including save DCs.
+ * Supports both explicit damageFormula fields and embedded descriptions (Alchemist's Fire, etc.).
+ * @param {Object} item
+ * @returns {{ formula: string, dice: string, bonus: number, damageType: string, effectDesc: string, saveText: string|null } | null}
+ */
+export function getDamageFormulaDetails(item) {
+  if (!item) return null;
+  const name = (item.name || '').toLowerCase();
+  if (item.healingFormula || name.includes('cure') || name.includes('heil')) return null;
+
+  const effectDesc = item.activation?.effectDescription || item.description || '';
+  const fullName = `${item.name || ''} ${effectDesc}`;
+
+  const match = item.damageFormula
+    ? item.damageFormula.match(/(\d+)[dw](\d+)(?:\+(\d+))?/i)
+    : (fullName.match(/(\d+)[dw](\d+)(?:\+(\d+))?\s*([a-zA-ZäöüÄÖÜß]+)?\s*(?:damage|schaden)?/i) || fullName.match(/(\d+)[dw](\d+)(?:\+(\d+))?/i));
+
+  if (!match) return null;
+
+  const dice = `${match[1]}d${match[2]}`;
+  const bonus = match[3] ? parseInt(match[3]) : 0;
+  const damageType = match[4] || '';
+  const formula = bonus > 0 ? `${dice}+${bonus}` : dice;
+
+  const dcMatch = effectDesc.match(/DC\s*(\d+)\s*([a-zA-ZäöüÄÖÜß]+)?(?:\s*(?:half|negates|halbiert))?/i);
+  const saveText = dcMatch ? `DC ${dcMatch[1]} ${dcMatch[2] || 'Save'}` : null;
+
+  return { formula, dice, bonus, damageType, effectDesc, saveText };
+}
 
 /**
  * Calculates active Magic Item Sets and their cumulative set bonus effects for a character.

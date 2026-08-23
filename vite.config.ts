@@ -63,6 +63,11 @@ export default defineConfig({
           if (id.includes('/js/state/') || id.includes('/js/models/') || id.includes('/js/rules/')) {
             return 'state-core';
           }
+          // Large static data registries (magicItems-data, encounter-samples, prestige classes, etc.)
+          // are split into their own chunk to reduce the initial app bundle size.
+          if (id.includes('/js/data/')) {
+            return 'data-registry';
+          }
         }
       }
     },

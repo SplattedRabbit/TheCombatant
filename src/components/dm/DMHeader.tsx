@@ -12,6 +12,7 @@ import React from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 import type { EncounterMeta } from '../../types/combat';
+import { UserMenu } from '../auth/UserMenu';
 
 interface DMHeaderProps {
   meta: EncounterMeta;
@@ -23,7 +24,10 @@ export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
   };
 
   return (
-    <div className="hdr" style={{ textAlign: 'center', marginBottom: '10px' }}>
+    <div className="hdr" style={{ textAlign: 'center', marginBottom: '10px', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: 0, right: 0 }}>
+        <UserMenu />
+      </div>
       <h1>Dungeon Master Combat Sheet</h1>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', margin: '2px 0' }}>
         <hr style={{ flex: 1, border: 'none', borderTop: '1px solid var(--pb)', maxWidth: '60px' }} />

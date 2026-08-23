@@ -10,6 +10,8 @@
 import React from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
+import { UserMenu } from './auth/UserMenu';
+
 export const RoleSelection: React.FC = () => {
   const handleSelectRole = (role: 'dm' | 'player' | 'wizard') => {
     CombatState.setRole(role);
@@ -17,9 +19,12 @@ export const RoleSelection: React.FC = () => {
 
   return (
     <div className="role-overlay" id="roleOverlay" style={{ display: 'flex' }}>
-      <div className="role-container">
-        <div className="role-title">D&amp;D 3.5e Combat Sheet</div>
-        <div className="role-subtitle">Please select your role for this session</div>
+      <div className="role-container" style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', top: '16px', right: '16px', zIndex: 10 }}>
+          <UserMenu />
+        </div>
+        <div className="role-title">The Combatant</div>
+        <div className="role-subtitle">D&amp;D 3.5e Campaign &amp; Character Suite</div>
         
         <div className="role-grid">
           <div className="role-card" id="btnChooseDM" onClick={() => handleSelectRole('dm')}>

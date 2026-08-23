@@ -9,6 +9,7 @@ import './styles/globals.css';
 import App from './App';
 
 import { CombatEngineProvider } from './context/CombatEngineContext';
+import { AuthProvider } from './context/AuthContext';
 import { initReactDialogBridge } from './components/dialogs/ReactDialogBridge';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
@@ -23,9 +24,11 @@ if (!rootEl) {
 createRoot(rootEl).render(
   <StrictMode>
     <ErrorBoundary>
-      <CombatEngineProvider>
-        <App />
-      </CombatEngineProvider>
+      <AuthProvider>
+        <CombatEngineProvider>
+          <App />
+        </CombatEngineProvider>
+      </AuthProvider>
     </ErrorBoundary>
   </StrictMode>,
 );

@@ -11,9 +11,18 @@ export default function App() {
   const { state, activePC, isReady } = useCombatState() as any;
   const role = state?.session?.role ?? 'choice';
 
-  // Sync Skalierungs-Logik (Zoom) genau wie in Vanilla app.js
+  // Sync Skalierungs-Logik (Zoom)
   useEffect(() => {
     if (!isReady) return;
+
+    if (role === 'choice') {
+      document.documentElement.style.setProperty('--app-scale', '1.0');
+      document.body.style.minHeight = '100vh';
+      const appWrapper = document.getElementById('appWrapper');
+      if (appWrapper) appWrapper.style.height = '100vh';
+      return;
+    }
+
     let currentScale = 1.0;
 
     const syncBodyHeight = () => {
@@ -78,7 +87,7 @@ export default function App() {
           window.scrollTo(0, window.scrollY || window.pageYOffset);
         }
         if (window.visualViewport && window.visualViewport.offsetLeft !== 0) {
-          window.scrollTo(window.scrollX, window.scrollY);
+          window.scrollTo(window.visualViewport.offsetLeft, window.scrollY);
         }
       }, 80);
     };
