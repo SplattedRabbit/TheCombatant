@@ -7,6 +7,8 @@
 import React, { useState, useEffect } from 'react';
 import type { CharacterSummary } from '../../types/character.ts';
 // @ts-ignore
+import { CombatState } from '@core/state.js';
+// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { characterService } from '../../services/character/CharacterService.ts';
 import { campaignService } from '../../services/campaign/CampaignService.ts';
@@ -59,12 +61,22 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
       setIsLoading(true);
       setErrorMessage(null);
 
+      // 1. Activate selected character on client screen
+      if (selectedCharId) {
+        await characterService.switchActiveCharacter(selectedCharId);
+      }
+
+      // Ensure player role is active
+      CombatState.setRole('player');
+
+      // 2. Join campaign table
       const member = await campaignService.joinCampaignByCode(inviteCode.trim(), selectedCharId || null);
       if (member) {
+        const activePC = CombatState.getActivePC();
         const selectedChar = characters.find((c) => c.id === selectedCharId);
-        const charName = selectedChar?.name || 'Player';
+        const charName = activePC?.name || selectedChar?.name || 'Player';
 
-        // Connect live WebSocket to DM's table
+        // 3. Connect live WebSocket to DM's table
         await realtimeManager.joinCampaign(member.campaignId, 'player', {
           userId: member.userId,
           userName: charName,
@@ -72,7 +84,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
           characterName: charName,
         });
 
-        // Broadcast active PC to DM in real time
+        // 4. Broadcast active PC to DM in real time
         broadcastActivePC();
 
         showCustomAlert("Join Campaign", `Successfully joined campaign as <strong>${charName}</strong>!`, "Let's Play", "🎲");
