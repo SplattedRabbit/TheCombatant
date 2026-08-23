@@ -413,16 +413,54 @@
   justify-content: center;
 }
 
-/* Make all dropdowns/selects readable and prevent native unscaled tiny display */
-select, select.cinput {
+/* Compact in-table / combatant row selects */
+select.cinput,
+.combatant-row select {
   font-size: 11px;
   height: 18px;
   padding: 0 2px;
   font-family: 'Crimson Text', serif;
 }
+
 select option {
-  font-size: 11px !important;
-  font-family: 'Crimson Text', serif !important;
+  font-size: 12px;
+  font-family: 'Crimson Text', serif;
+}
+
+/* Modal & Dialog Form Elements */
+.modal-input,
+.modal-select,
+.modal-textarea {
+  width: 100%;
+  font-family: 'Crimson Text', serif;
+  font-size: 13px;
+  color: var(--ink, #2c2214);
+  background: #ffffff;
+  border: 1px solid var(--pb, #c8a96e);
+  border-radius: 4px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  outline: none;
+  height: auto;
+  min-height: 32px;
+  line-height: 1.3;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.modal-input:focus,
+.modal-select:focus,
+.modal-textarea:focus {
+  border-color: var(--red, #8b1a1a) !important;
+  box-shadow: 0 0 0 2px rgba(139, 26, 26, 0.2) !important;
+  outline: none !important;
+}
+
+.modal-select {
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 4px 8px !important;
+  font-size: 12.5px !important;
+  cursor: pointer;
 }
 
 /* Parchment Message Overlay */

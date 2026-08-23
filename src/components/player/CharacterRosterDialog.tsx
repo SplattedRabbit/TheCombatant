@@ -204,17 +204,17 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <input
               type="text"
+              className="modal-input"
               placeholder="🔍 Search characters..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
-                padding: '4px 8px',
-                fontSize: '11.5px',
-                fontFamily: "'Crimson Text', serif",
-                border: '1px solid var(--pb, #c8a96e)',
-                borderRadius: '4px',
-                background: 'rgba(255, 255, 255, 0.8)',
                 width: '160px',
+                minHeight: '26px',
+                height: '26px',
+                padding: '2px 8px',
+                fontSize: '11.5px',
+                background: 'rgba(255, 255, 255, 0.85)',
               }}
             />
             <button
@@ -581,42 +581,28 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               </div>
 
               <div>
-                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
+                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
                   Character Name:
                 </label>
                 <input
                   type="text"
                   required
                   autoFocus
+                  className="modal-input"
                   placeholder="e.g. Valeros"
                   value={newCharName}
                   onChange={(e) => setNewCharName(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '5px 8px',
-                    fontSize: '12px',
-                    border: '1px solid var(--pb)',
-                    borderRadius: '4px',
-                    boxSizing: 'border-box',
-                  }}
                 />
               </div>
 
               <div>
-                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
+                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
                   Starting Class:
                 </label>
                 <select
+                  className="modal-select"
                   value={newCharClass}
                   onChange={(e) => setNewCharClass(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '5px 8px',
-                    fontSize: '12px',
-                    border: '1px solid var(--pb)',
-                    borderRadius: '4px',
-                    boxSizing: 'border-box',
-                  }}
                 >
                   <option value="Fighter">Fighter</option>
                   <option value="Barbarian">Barbarian</option>
@@ -637,7 +623,16 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                   type="button"
                   onClick={() => setShowCreateModal(false)}
                   className="btn"
-                  style={{ padding: '4px 10px', fontSize: '11px' }}
+                  style={{
+                    padding: '4px 10px',
+                    fontSize: '11px',
+                    fontFamily: "'IM Fell English SC', serif",
+                    background: 'rgba(200, 169, 110, 0.2)',
+                    border: '1px solid var(--pb)',
+                    borderRadius: '3px',
+                    cursor: 'pointer',
+                    color: 'var(--ink)',
+                  }}
                 >
                   Cancel
                 </button>
@@ -651,7 +646,10 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                     fontFamily: "'IM Fell English SC', serif",
                     background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                     border: '1px solid #8b6914',
+                    borderRadius: '3px',
                     color: '#ffffff',
+                    cursor: 'pointer',
+                    fontWeight: 'bold',
                   }}
                 >
                   Create

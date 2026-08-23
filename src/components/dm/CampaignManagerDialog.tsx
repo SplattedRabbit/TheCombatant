@@ -199,17 +199,17 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <input
               type="text"
+              className="modal-input"
               placeholder="🔍 Search campaigns..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
-                padding: '4px 8px',
-                fontSize: '11.5px',
-                fontFamily: "'Crimson Text', serif",
-                border: '1px solid var(--pb, #c8a96e)',
-                borderRadius: '4px',
-                background: 'rgba(255, 255, 255, 0.8)',
                 width: '160px',
+                minHeight: '26px',
+                height: '26px',
+                padding: '2px 8px',
+                fontSize: '11.5px',
+                background: 'rgba(255, 255, 255, 0.85)',
               }}
             />
             <button
@@ -553,66 +553,47 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
               </div>
 
               <div>
-                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
+                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
                   Campaign Name:
                 </label>
                 <input
                   type="text"
                   required
                   autoFocus
+                  className="modal-input"
                   placeholder="e.g. Curse of Strahd"
                   value={newCampName}
                   onChange={(e) => setNewCampName(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '5px 8px',
-                    fontSize: '12px',
-                    border: '1px solid var(--pb)',
-                    borderRadius: '4px',
-                    boxSizing: 'border-box',
-                  }}
                 />
               </div>
 
               <div>
-                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
+                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
                   Description / Notes:
                 </label>
                 <textarea
                   rows={2}
+                  className="modal-textarea"
                   placeholder="e.g. Wednesday group, Level 3-7..."
                   value={newCampDesc}
                   onChange={(e) => setNewCampDesc(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '5px 8px',
-                    fontSize: '11px',
-                    border: '1px solid var(--pb)',
-                    borderRadius: '4px',
-                    boxSizing: 'border-box',
-                    resize: 'vertical',
-                  }}
                 />
               </div>
 
               <div>
-                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
+                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
                   Invite Code:
                 </label>
                 <input
                   type="text"
+                  className="modal-input"
                   placeholder="e.g. STRAHD-42"
                   value={newCampCode}
                   onChange={(e) => setNewCampCode(e.target.value.toUpperCase())}
                   style={{
-                    width: '100%',
-                    padding: '5px 8px',
-                    fontSize: '12px',
                     fontFamily: 'monospace',
                     fontWeight: 'bold',
-                    border: '1px solid var(--pb)',
-                    borderRadius: '4px',
-                    boxSizing: 'border-box',
+                    letterSpacing: '1px',
                   }}
                 />
               </div>
@@ -622,7 +603,16 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                   type="button"
                   onClick={() => setShowCreateModal(false)}
                   className="btn"
-                  style={{ padding: '4px 10px', fontSize: '11px' }}
+                  style={{
+                    padding: '4px 10px',
+                    fontSize: '11px',
+                    fontFamily: "'IM Fell English SC', serif",
+                    background: 'rgba(200, 169, 110, 0.2)',
+                    border: '1px solid var(--pb)',
+                    borderRadius: '3px',
+                    cursor: 'pointer',
+                    color: 'var(--ink)',
+                  }}
                 >
                   Cancel
                 </button>
@@ -636,7 +626,10 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                     fontFamily: "'IM Fell English SC', serif",
                     background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                     border: '1px solid #8b6914',
+                    borderRadius: '3px',
                     color: '#ffffff',
+                    cursor: 'pointer',
+                    fontWeight: 'bold',
                   }}
                 >
                   Create

@@ -145,49 +145,38 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
         )}
 
         <div>
-          <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
+          <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
             DM Invite Code:
           </label>
           <input
             type="text"
             required
             autoFocus
+            className="modal-input"
             placeholder="e.g. RAVEN-42"
             value={inviteCode}
             onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
             style={{
-              width: '100%',
-              padding: '6px 10px',
-              fontSize: '13px',
               fontFamily: 'monospace',
               fontWeight: 'bold',
-              border: '1px solid var(--pb)',
-              borderRadius: '4px',
-              boxSizing: 'border-box',
+              letterSpacing: '1px',
             }}
           />
         </div>
 
         <div>
-          <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
+          <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
             Select Character:
           </label>
           {characters.length === 0 ? (
-            <div style={{ fontSize: '11px', color: 'var(--inkm)', fontStyle: 'italic' }}>
+            <div style={{ fontSize: '11px', color: 'var(--inkm)', fontStyle: 'italic', padding: '6px 0' }}>
               No characters found in your roster.
             </div>
           ) : (
             <select
+              className="modal-select"
               value={selectedCharId}
               onChange={(e) => setSelectedCharId(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '6px 8px',
-                fontSize: '12px',
-                border: '1px solid var(--pb)',
-                borderRadius: '4px',
-                boxSizing: 'border-box',
-              }}
             >
               {characters.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -203,7 +192,16 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
             type="button"
             onClick={onClose}
             className="btn"
-            style={{ padding: '5px 12px', fontSize: '11px' }}
+            style={{
+              padding: '4px 12px',
+              fontSize: '11px',
+              fontFamily: "'IM Fell English SC', serif",
+              background: 'rgba(200, 169, 110, 0.2)',
+              border: '1px solid var(--pb, #c8a96e)',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              color: 'var(--ink, #2c2214)',
+            }}
           >
             Cancel
           </button>
@@ -212,12 +210,15 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
             disabled={!inviteCode.trim() || isLoading}
             className="btn btn-p"
             style={{
-              padding: '5px 14px',
+              padding: '4px 14px',
               fontSize: '11px',
               fontFamily: "'IM Fell English SC', serif",
               background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
               border: '1px solid #8b6914',
+              borderRadius: '4px',
               color: '#ffffff',
+              cursor: 'pointer',
+              fontWeight: 'bold',
             }}
           >
             {isLoading ? 'Joining...' : '🎲 Join Table'}
