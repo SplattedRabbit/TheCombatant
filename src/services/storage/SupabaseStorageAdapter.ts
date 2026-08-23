@@ -240,26 +240,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
           if (error) throw error;
           console.log('%c[SupabaseStorage] Updated active campaign successfully:', 'color: #059669;', this.activeCampaignId);
         } else {
-          const newCampId = generateUUID();
-          const { data, error } = await this.client
-            .from('campaigns')
-            .upsert({
-              id: newCampId,
-              dm_user_id: this.userId,
-              name: encounterName,
-              invite_code: 'CAMP-' + Math.floor(10 + Math.random() * 90),
-              active_encounter_state: state,
-              is_active: true,
-              updated_at: new Date().toISOString(),
-            })
-            .select('id')
-            .single();
-
-          if (error) throw error;
-          if (data?.id) {
-            this.setActiveCampaignId(data.id);
-          }
-          console.log('%c[SupabaseStorage] Created and saved new campaign:', 'color: #059669;', newCampId);
+          console.log('%c[SupabaseStorage] No active campaign selected, skipping auto-campaign creation', 'color: #6b7280;');
         }
       } else {
         // Player Character Mode: find active PC from combatants

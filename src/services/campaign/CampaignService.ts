@@ -179,8 +179,15 @@ export class CampaignService {
       if (remaining.length > 0) {
         await this.switchActiveCampaign(remaining[0].id);
       } else {
-        const fresh = await this.createCampaign({ name: 'New Campaign' });
-        await this.switchActiveCampaign(fresh.id);
+        if (typeof adapter.setActiveCampaignId === 'function') {
+          adapter.setActiveCampaignId(null as any);
+        }
+        const fresh = createInitialState();
+        fresh.session = { role: 'host' };
+        fresh.combatants = [];
+        applyLoadedState(fresh);
+        StateEvents.emit('state_changed', getState());
+        StateEvents.emit('encounter_changed', getState());
       }
     }
   }

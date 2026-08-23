@@ -8,7 +8,7 @@ import { realtimeManager } from './RealtimeManager.ts';
 // @ts-ignore
 import { getState, StateEvents, getActivePC } from '../../../js/state/state-core.js';
 // @ts-ignore
-import { onStateSave } from '../../../js/state/StorageManager.js';
+import { onStateSave, saveToStorage } from '../../../js/state/StorageManager.js';
 // @ts-ignore
 import * as EncounterManager from '../../../js/state/EncounterManager.js';
 // @ts-ignore
@@ -68,12 +68,26 @@ export function initRealtimeSyncBridge(): void {
       const state = getState();
       const isHost = state?.session?.role === 'host' || state?.mode === 'dm';
       if (isHost) {
+        console.log('%c[RealtimeSyncBridge] Received pc_sync on DM for player:', 'color: #059669;', envelope.payload.pc?.name);
         EncounterManager.mergeIncomingPC(envelope.payload.pc);
+        saveToStorage();
         StateEvents.emit('state_changed', getState());
         StateEvents.emit('combatants_changed', getState().combatants);
       }
     } catch (err) {
       console.error('[RealtimeSyncBridge] Error handling incoming pc_sync:', err);
+    }
+  });
+
+  // 4. Presence change: players broadcast their character when host is detected
+  realtimeManager.onPresenceChange((users) => {
+    const state = getState();
+    const isPlayer = state?.session?.role !== 'host' && state?.mode !== 'dm';
+    if (isPlayer) {
+      const hasHost = users.some((u) => u.role === 'host');
+      if (hasHost) {
+        broadcastActivePC();
+      }
     }
   });
 }
@@ -82,14 +96,34 @@ export function initRealtimeSyncBridge(): void {
  * Broadcasts the active PC to the host table (used upon joining or changing character).
  */
 export function broadcastActivePC(): void {
-  if (realtimeManager.getStatus() !== 'connected') return;
-  try {
-    const pc = getActivePC();
-    if (pc) {
-      realtimeManager.broadcastEvent('pc_sync', { pc });
+  const tryBroadcast = () => {
+    try {
+      const pc = getActivePC();
+      if (pc) {
+        realtimeManager.broadcastEvent('pc_sync', { pc });
+        console.log('%c[RealtimeSyncBridge] Broadcasted active PC to host:', 'color: #059669;', pc.name);
+      }
+    } catch (err) {
+      console.error('[RealtimeSyncBridge] Error broadcasting active PC:', err);
     }
-  } catch (err) {
-    console.error('[RealtimeSyncBridge] Error broadcasting active PC:', err);
+  };
+
+  if (realtimeManager.getStatus() === 'connected') {
+    tryBroadcast();
+  } else {
+    // Wait for connection to establish and then broadcast
+    const unsubscribe = realtimeManager.onStatusChange((status) => {
+      if (status === 'connected') {
+        tryBroadcast();
+        unsubscribe();
+      }
+    });
+    // Fallback timeout
+    setTimeout(() => {
+      if (realtimeManager.getStatus() === 'connected') {
+        tryBroadcast();
+      }
+    }, 600);
   }
 }
 
