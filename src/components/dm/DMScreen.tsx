@@ -16,6 +16,8 @@ import { InitBar } from './InitBar';
 import { DMCombatantsTable } from './DMCombatantsTable';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { DMToolbox } from './DMToolbox';
+import { campaignService } from '../../services/campaign/CampaignService.ts';
+import { storageService } from '../../services/storage/StorageService.ts';
 // @ts-ignore
 import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
 
@@ -27,6 +29,18 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
   const [isSystemOpen, setIsSystemOpen] = useState(false);
   const systemBtnRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Auto-connect DM to active campaign Realtime room
+  useEffect(() => {
+    const activeCampId = campaignService.getActiveCampaignId();
+    if (activeCampId && realtimeManager.getCampaignId() !== activeCampId) {
+      const userId = storageService.getCurrentUserId() || 'dm-host';
+      realtimeManager.joinCampaign(activeCampId, 'host', {
+        userId,
+        userName: 'Dungeon Master',
+      });
+    }
+  }, []);
 
   const handlePrev = () => {
     CombatState.prevTurn();

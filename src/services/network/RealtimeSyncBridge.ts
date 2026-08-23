@@ -10,6 +10,8 @@ import { getState, StateEvents, getActivePC } from '../../../js/state/state-core
 // @ts-ignore
 import { onStateSave } from '../../../js/state/StorageManager.js';
 // @ts-ignore
+import * as EncounterManager from '../../../js/state/EncounterManager.js';
+// @ts-ignore
 import { applyIncomingDelta, getEncounterStateDiff, getPCStateDiff, isProcessingNetworkIncoming } from '../../../js/network/SyncProtocol.js';
 
 let isBridgeInitialized = false;
@@ -57,6 +59,38 @@ export function initRealtimeSyncBridge(): void {
       console.error('[RealtimeSyncBridge] Error applying turn change:', err);
     }
   });
+
+  // 3. Listen for incoming full PC syncs (e.g. when a new player joins table in real time)
+  realtimeManager.onEvent('pc_sync', (envelope) => {
+    if (!envelope || !envelope.payload || !envelope.payload.pc) return;
+
+    try {
+      const state = getState();
+      const isHost = state?.session?.role === 'host' || state?.mode === 'dm';
+      if (isHost) {
+        EncounterManager.mergeIncomingPC(envelope.payload.pc);
+        StateEvents.emit('state_changed', getState());
+        StateEvents.emit('combatants_changed', getState().combatants);
+      }
+    } catch (err) {
+      console.error('[RealtimeSyncBridge] Error handling incoming pc_sync:', err);
+    }
+  });
+}
+
+/**
+ * Broadcasts the active PC to the host table (used upon joining or changing character).
+ */
+export function broadcastActivePC(): void {
+  if (realtimeManager.getStatus() !== 'connected') return;
+  try {
+    const pc = getActivePC();
+    if (pc) {
+      realtimeManager.broadcastEvent('pc_sync', { pc });
+    }
+  } catch (err) {
+    console.error('[RealtimeSyncBridge] Error broadcasting active PC:', err);
+  }
 }
 
 /**

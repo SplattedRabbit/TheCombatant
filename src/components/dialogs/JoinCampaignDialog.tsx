@@ -11,6 +11,7 @@ import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { characterService } from '../../services/character/CharacterService.ts';
 import { campaignService } from '../../services/campaign/CampaignService.ts';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
+import { broadcastActivePC } from '../../services/network/RealtimeSyncBridge.ts';
 
 interface JoinCampaignDialogProps {
   isOpen: boolean;
@@ -70,6 +71,9 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
           characterId: member.characterId || undefined,
           characterName: charName,
         });
+
+        // Broadcast active PC to DM in real time
+        broadcastActivePC();
 
         showCustomAlert("Join Campaign", `Successfully joined campaign as <strong>${charName}</strong>!`, "Let's Play", "🎲");
         if (onJoined) onJoined(member.campaignId);

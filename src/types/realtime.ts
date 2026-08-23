@@ -15,6 +15,7 @@ export type RealtimeEventType =
   | 'diff'
   | 'dice_roll'
   | 'turn_change'
+  | 'pc_sync'
   | 'full_sync_request'
   | 'full_sync_response';
 

@@ -71,6 +71,20 @@ export class RealtimeManager {
   }
 
   /**
+   * Returns current campaign ID.
+   */
+  public getCampaignId(): string | null {
+    return this.currentCampaignId;
+  }
+
+  /**
+   * Alias to broadcast a generic event.
+   */
+  public async broadcastEvent<T = any>(eventType: RealtimeEventType, payload: T): Promise<boolean> {
+    return this.broadcast(eventType, payload);
+  }
+
+  /**
    * Returns current assigned role in the active room.
    */
   public getCurrentRole(): 'host' | 'player' {
