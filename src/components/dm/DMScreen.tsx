@@ -14,6 +14,7 @@ import type { CombatStateSnapshot } from '../../types/combat';
 import { DMHeader } from './DMHeader';
 import { InitBar } from './InitBar';
 import { DMCombatantsTable } from './DMCombatantsTable';
+import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { DMToolbox } from './DMToolbox';
 // @ts-ignore
 import { showCustomConfirm, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
@@ -51,9 +52,7 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
 
   const handleSwapRole = () => {
     setIsSystemOpen(false);
-    import('../../services/network/RealtimeManager.ts').then(({ realtimeManager }) => {
-      realtimeManager.leaveCampaign();
-    });
+    realtimeManager.leaveCampaign();
     CombatState.updateSession(false, 'choice', '');
     CombatState.setRole('choice');
   };

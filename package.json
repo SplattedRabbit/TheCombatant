@@ -1,6 +1,6 @@
 {
   "name": "combatapp",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "type": "module",
   "scripts": {
     "test": "node --import ./Tests/setup.js --test Tests/**/*.test.js",

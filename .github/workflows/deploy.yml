@@ -34,6 +34,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Run Tests
+        run: node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
+
       - name: Build
         run: npm run build
 

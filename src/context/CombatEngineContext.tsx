@@ -10,6 +10,7 @@
  */
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { storageService } from '../services/storage/StorageService.ts';
 
 // Typendefinitionen für das Engine-Modul
 interface CombatEventBus {
@@ -63,7 +64,6 @@ export function CombatEngineProvider({ children }: ProviderProps) {
         const { CombatState } = await import('@core/state.js');
 
         // Registriere zentralen StorageService als aktiven Adapter
-        const { storageService } = await import('../services/storage/StorageService.ts');
         CombatState.setStorageAdapter(storageService);
 
         // Lade Zauberdatenbank & State aus aktivem Speicheradapter
@@ -92,9 +92,7 @@ export function CombatEngineProvider({ children }: ProviderProps) {
 
     // Flush any pending saves before browser window closes or reloads
     const handleBeforeUnload = () => {
-      import('../services/storage/StorageService.ts').then(({ storageService }) => {
-        storageService.flushPendingSaves();
-      });
+      storageService.flushPendingSaves();
     };
     window.addEventListener('beforeunload', handleBeforeUnload);
 

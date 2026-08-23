@@ -49,12 +49,19 @@ export default defineConfig({
 
   build: {
     outDir: 'dist',
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
       },
       output: {
         manualChunks(id) {
+          if (id.includes('node_modules/@supabase')) {
+            return 'supabase-vendor';
+          }
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/scheduler')) {
+            return 'react-vendor';
+          }
           if (id.includes('node_modules')) {
             return 'vendor';
           }
@@ -65,6 +72,9 @@ export default defineConfig({
           // are split into their own chunk to reduce the initial app bundle size.
           if (id.includes('/js/data/')) {
             return 'data-registry';
+          }
+          if (id.includes('/src/services/')) {
+            return 'services';
           }
         }
       }

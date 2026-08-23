@@ -12,6 +12,7 @@ import { getState, StateEvents } from '../state/state-core.js';
 import * as EncounterManager from '../state/EncounterManager.js';
 import { Stat, createCombatant, createConcentration } from '../models/model-core.js';
 import { DeltaRenderer } from './DeltaRenderer.js';
+import { uiRegistry } from '../ui/ui-shared.js';
 import { showCustomAlert } from '../ui/components/dialogs.js';
 
 export const SYNC_PROTOCOL_VERSION = '2.0.0';
@@ -339,10 +340,8 @@ export function applyIncomingDelta(packet, role, conn = null) {
       const success = EncounterManager.mergeIncomingPC(packet.pc);
       if (success) {
         StateEvents.emit('state_changed', s);
-        import('../ui/ui-shared.js').then(({ uiRegistry }) => {
-          if (uiRegistry.renderInitBar) uiRegistry.renderInitBar();
-          if (uiRegistry.renderAll) uiRegistry.renderAll();
-        });
+        if (uiRegistry.renderInitBar) uiRegistry.renderInitBar();
+        if (uiRegistry.renderAll) uiRegistry.renderAll();
         // Propagate registration to all other clients
         import('./NetworkManager.js').then(({ broadcastToClients }) => {
           broadcastToClients(packet);
@@ -424,10 +423,8 @@ export function applyIncomingDelta(packet, role, conn = null) {
           }
         });
         StateEvents.emit('state_changed', s);
-        import('../ui/ui-shared.js').then(({ uiRegistry }) => {
-          if (uiRegistry.renderInitBar) uiRegistry.renderInitBar();
-          if (uiRegistry.renderPlayerScreen) uiRegistry.renderPlayerScreen();
-        });
+        if (uiRegistry.renderInitBar) uiRegistry.renderInitBar();
+        if (uiRegistry.renderPlayerScreen) uiRegistry.renderPlayerScreen();
       }
       return;
     }
@@ -449,10 +446,8 @@ export function applyIncomingDelta(packet, role, conn = null) {
     if (packet.type === 'full_sync_response' && role === 'client') {
       CombatState.importEncounterState(packet.state, true);
       initializeCaches();
-      import('../ui/ui-shared.js').then(({ uiRegistry }) => {
-        uiRegistry.renderAll();
-        uiRegistry.renderConc();
-      });
+      if (uiRegistry.renderAll) uiRegistry.renderAll();
+      if (uiRegistry.renderConc) uiRegistry.renderConc();
       return;
     }
 

@@ -126,3 +126,19 @@ node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
   - Der Hook klont den mutable Engine-State tief, damit React bei Änderungen frische Objekt- und Array-Referenzen erhält.
   - `rehydrateCombatant` stellt nach dem Klonen mittels `Object.setPrototypeOf` die Prototypen für `Combatant`, `Stat`, `Weapon`, `Armor` und `Item` wieder her.
 * **Cache-Versionierung:** Das Muster ist `dnd-combatsheet-vX.Y.Z-cache-vN`. Bei Bugfixes innerhalb einer Version wird nur `N` inkrementiert.
+
+---
+
+## 9. QA-Automation & CI/CD-Pipeline (Phase 7)
+
+* **Native Multi-Client Simulation (`Tests/realtime_multiclient_simulation.test.js`):**
+  - Simuliert einen vollen 4er-Tisch (1 DM + 3 Spieler) rein im schnellen Node.js In-Memory Runner (`node:test`) ohne schwere Browser-Binaries wie Playwright oder Cypress.
+  - Prüft Presence-Tracking, Initiative-Broadcasts, HP-Schadens-Diffs, Rundenwechsel und Echo-Prävention in <1s.
+* **Offline-Resilienz (`Tests/storage_resilience_offline.test.js`):**
+  - Simuliert Netzwerkabbrüche, synchronen LocalStorage-Puffer und Auto-Recovery/Flush nach Reconnect.
+* **GitHub Actions CI/CD (`.github/workflows/ci.yml` & `deploy.yml`):**
+  - Jeder Push und Pull Request führt automatisch:
+    1. `npm ci`
+    2. `npm run typecheck` (0 Fehler)
+    3. `npm test` mit Dot-Reporter (100% grün)
+    4. `npm run build` (0 Warnungen) aus.

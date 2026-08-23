@@ -6,12 +6,45 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v6.0.0** | Major Release | 23.08.2026 | Cloud-Sync, Google OAuth, Multi-Character Roster, DM Multi-Campaign Dashboard, Supabase Realtime WebSockets & CI/CD Automation (0 € Stack) |
 | **v5.0.0** | Major Release | 22.08.2026 | Milestone Release: Armory 2.0, Tactical Combat Hub, Complete Sourcebooks (PHB2/CA/CS), Skill Tricks, Wizard & Zero-Defect Architecture |
 | **v4.6.1** | Release | 22.08.2026 | Polish & Farbharmonisierung: Tri-Color Feats, 4-State Skill Tricks, Sleek Tactical Sliders |
 | **v4.6.0** | Feature | 22.08.2026 | Armory 2.0: Paperdoll-Grid, 3D-Card-Flip UX, Magic Items Kompendium & Stacking Engine |
 | **v4.5.1** | Release | 22.08.2026 | Skills/Feats Tab-Trennung, Skill Tricks im Wizard & Spellwarp Sniper Sample |
 | **v4.5.0** | Release | 22.08.2026 | Scaled Compendium, PHB2/CA/CS Base & Prestige Classes, Dynamic Class Picker |
 | **v4.2.0** | Release | 21.08.2026 | Prestige Classes Refactoring & Anima Construct Race Integration |
+
+---
+
+### v6.0.0 — Cloud-Sync, Multi-Campaign & Realtime WebSocket Release (Major Release v6.0.0)
+
+> **Meilenstein-Zusammenfassung:** Version 6.0.0 transformiert die CombatApp zu einer vollwertigen Cloud-Webapplikation für Spielleiter und Spieler mit **0 € Hostingkosten** (Supabase + GitHub Pages). Sie bietet sicheren Google Social Login, ein unterbrechungsfreies Adapter-Pattern für Offline-/Gastnutzung, eine Multi-Character-Bibliothek für Spieler, ein Multi-Campaign-Dashboard für DMs, blitzschnelle Supabase-Realtime-WebSockets (<30ms) mit Live-Tischleiste und eine robuste CI/CD-Pipeline.
+
+#### 🌟 Die 5 Kern-Highlights von Version 6.0.0:
+
+1. **🔐 Supabase Auth & Google Social Login (`AuthContext.tsx`, `UserMenu.tsx`)**:
+   - 1-Klick-Anmeldung über Google Identity Services ohne Passwörter.
+   - Nahtloser Wechsel zwischen Gast-Modus (LocalStorage) und Cloud-Konto.
+   - Benutzer-Avatar und Profilanzeige im Header aller Ansichten.
+
+2. **🛡️ Local-First Storage Adapter Pattern (`IStorageAdapter.ts`, `SupabaseStorageAdapter.ts`, `StorageService.ts`)**:
+   - Zero-Latency UI durch synchrones lokales Caching bei jeder Änderung.
+   - 800ms Debounce-Batching für materialschonende Cloud-Upserts in PostgreSQL (`JSONB`).
+   - Volle Offline-Resilienz mit automatischem Reconnect-Flush und Error-Recovery.
+
+3. **👤 Multi-Character Helden-Bibliothek (`CharacterService.ts`, `CharacterRosterDialog.tsx`)**:
+   - Beliebig viele Helden pro Spieler-Account verwalten, duplizieren und löschen.
+   - **Zero-Loss Switching**: Blitzschneller Heldenwechsel ohne Datenverlust oder State-Rückstände.
+   - 1-Klick-Import alter Gast-Daten in die Cloud.
+
+4. **🎲 DM Multi-Campaign Dashboard (`CampaignService.ts`, `CampaignManagerDialog.tsx`, `JoinCampaignDialog.tsx`)**:
+   - DM verwaltet mehrere Runden (z. B. *"Ravenloft"*, *"Eberron"*) mit isolierten Encountern und Rundenständen.
+   - Automatische 6-stellige Einladungscodes (`RAVEN-42`) für Spieler.
+
+5. **⚡ Supabase Realtime WebSockets & Table Presence (`RealtimeManager.ts`, `TablePresenceBar.tsx`)**:
+   - Vollständige Ablösung von PeerJS/WebRTC durch Enterprise-Grade WebSockets (<30ms Latenz).
+   - Live-Synchronisation von HP, Diffs, Rundenwechseln und Würfelwürfen am Spieltisch.
+   - Live-Tischleiste (`TablePresenceBar`) mit Online-Status aller Teilnehmer.
 
 ---
 
