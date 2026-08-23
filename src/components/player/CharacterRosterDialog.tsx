@@ -7,6 +7,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import type { CharacterSummary } from '../../types/character.ts';
 import { characterService } from '../../services/character/CharacterService.ts';
+// @ts-ignore
+import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 
 interface CharacterRosterDialogProps {
   isOpen: boolean;
@@ -20,22 +22,25 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
   onOpenWizard,
 }) => {
   const [characters, setCharacters] = useState<CharacterSummary[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [activeCharId, setActiveCharId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isActionInProgress, setIsActionInProgress] = useState<boolean>(false);
+
+  // New Character Form Modal
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false);
   const [newCharName, setNewCharName] = useState<string>('');
   const [newCharClass, setNewCharClass] = useState<string>('Fighter');
-  const [activeCharId, setActiveCharId] = useState<string | null>(null);
 
-  const loadRoster = useCallback(async () => {
+  const loadCharacters = useCallback(async () => {
     try {
       setIsLoading(true);
       const list = await characterService.listCharacters();
       setCharacters(list);
-      setActiveCharId(characterService.getActiveCharacterId());
+      const activeId = characterService.getActiveCharacterId();
+      setActiveCharId(activeId);
     } catch (err) {
-      console.error('[CharacterRosterDialog] Failed to load characters:', err);
+      console.warn('[CharacterRosterDialog] Failed to load characters:', err);
     } finally {
       setIsLoading(false);
     }
@@ -43,9 +48,9 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
 
   useEffect(() => {
     if (isOpen) {
-      loadRoster();
+      loadCharacters();
     }
-  }, [isOpen, loadRoster]);
+  }, [isOpen, loadCharacters]);
 
   if (!isOpen) return null;
 
@@ -54,7 +59,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
     const q = searchQuery.toLowerCase();
     return (
       c.name.toLowerCase().includes(q) ||
-      c.classSummary.toLowerCase().includes(q) ||
+      (c.classSummary && c.classSummary.toLowerCase().includes(q)) ||
       (c.race && c.race.toLowerCase().includes(q))
     );
   });
@@ -76,27 +81,30 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
     try {
       setIsActionInProgress(true);
       await characterService.duplicateCharacter(charId);
-      await loadRoster();
-    } catch (err) {
-      alert('Error duplicating character: ' + String(err));
+      await loadCharacters();
+    } catch (err: any) {
+      showCustomAlert("Duplicate Character", `Error duplicating character:<br/>${err?.message || err}`, "OK", "⚠️");
     } finally {
       setIsActionInProgress(false);
     }
   };
 
-  const handleDelete = async (charId: string, charName: string) => {
-    const confirmed = window.confirm(`Are you sure you want to permanently delete "${charName}"?`);
-    if (!confirmed) return;
-
-    try {
-      setIsActionInProgress(true);
-      await characterService.deleteCharacter(charId);
-      await loadRoster();
-    } catch (err) {
-      alert('Error deleting character: ' + String(err));
-    } finally {
-      setIsActionInProgress(false);
-    }
+  const handleDelete = (charId: string, charName: string) => {
+    showCustomConfirm(
+      "Delete Character",
+      `Are you sure you want to permanently delete <strong>"${charName}"</strong>?`,
+      async () => {
+        try {
+          setIsActionInProgress(true);
+          await characterService.deleteCharacter(charId);
+          await loadCharacters();
+        } catch (err: any) {
+          showCustomAlert("Delete Character", `Error deleting character:<br/>${err?.message || err}`, "OK", "⚠️");
+        } finally {
+          setIsActionInProgress(false);
+        }
+      }
+    );
   };
 
   const handleCreateNew = async (e: React.FormEvent) => {
@@ -114,8 +122,8 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
       setNewCharName('');
       await characterService.switchActiveCharacter(created.id);
       onClose();
-    } catch (err) {
-      alert('Error creating character: ' + String(err));
+    } catch (err: any) {
+      showCustomAlert("Create Character", `Error creating character:<br/>${err?.message || err}`, "OK", "⚠️");
     } finally {
       setIsActionInProgress(false);
     }
@@ -126,10 +134,10 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
       setIsActionInProgress(true);
       const imported = await characterService.importFromLocalStorage();
       if (imported) {
-        await loadRoster();
-        alert(`Character "${imported.name}" successfully imported!`);
+        await loadCharacters();
+        showCustomAlert("Import Character", `Character <strong>"${imported.name}"</strong> successfully imported!`, "Great", "✨");
       } else {
-        alert('No valid local character data found in browser storage.');
+        showCustomAlert("Import Character", "No valid local character data found in browser storage.", "OK", "ℹ️");
       }
     } finally {
       setIsActionInProgress(false);

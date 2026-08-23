@@ -7,6 +7,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import type { CampaignSummary } from '../../types/campaign.ts';
 import { campaignService, generateInviteCode } from '../../services/campaign/CampaignService.ts';
+// @ts-ignore
+import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 
 interface CampaignManagerDialogProps {
   isOpen: boolean;
@@ -78,26 +80,29 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
       setIsActionInProgress(true);
       await campaignService.duplicateCampaign(campId);
       await loadCampaigns();
-    } catch (err) {
-      alert('Error duplicating campaign: ' + String(err));
+    } catch (err: any) {
+      showCustomAlert("Duplicate Campaign", `Error duplicating campaign:<br/>${err?.message || err}`, "OK", "⚠️");
     } finally {
       setIsActionInProgress(false);
     }
   };
 
-  const handleDelete = async (campId: string, campName: string) => {
-    const confirmed = window.confirm(`Are you sure you want to permanently delete campaign "${campName}"?`);
-    if (!confirmed) return;
-
-    try {
-      setIsActionInProgress(true);
-      await campaignService.deleteCampaign(campId);
-      await loadCampaigns();
-    } catch (err) {
-      alert('Error deleting campaign: ' + String(err));
-    } finally {
-      setIsActionInProgress(false);
-    }
+  const handleDelete = (campId: string, campName: string) => {
+    showCustomConfirm(
+      "Delete Campaign",
+      `Are you sure you want to permanently delete campaign <strong>"${campName}"</strong>?<br/>All encounter states and combatants will be removed.`,
+      async () => {
+        try {
+          setIsActionInProgress(true);
+          await campaignService.deleteCampaign(campId);
+          await loadCampaigns();
+        } catch (err: any) {
+          showCustomAlert("Delete Campaign", `Error deleting campaign:<br/>${err?.message || err}`, "OK", "⚠️");
+        } finally {
+          setIsActionInProgress(false);
+        }
+      }
+    );
   };
 
   const handleCreateNew = async (e: React.FormEvent) => {
@@ -120,7 +125,12 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
     } catch (err: any) {
       const msg = err?.message || err?.error_description || (typeof err === 'object' ? JSON.stringify(err) : String(err));
       console.error('[CampaignManagerDialog] Error creating campaign:', err);
-      alert('Error creating campaign: ' + msg);
+      showCustomAlert(
+        "Create Campaign",
+        `Could not create campaign:<br/><br/><strong>${msg}</strong>`,
+        "OK",
+        "⚠️"
+      );
     } finally {
       setIsActionInProgress(false);
     }

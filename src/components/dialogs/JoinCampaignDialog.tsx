@@ -6,6 +6,8 @@
 
 import React, { useState, useEffect } from 'react';
 import type { CharacterSummary } from '../../types/character.ts';
+// @ts-ignore
+import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { characterService } from '../../services/character/CharacterService.ts';
 import { campaignService } from '../../services/campaign/CampaignService.ts';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
@@ -27,16 +29,22 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  // Load user's characters on mount / open
   useEffect(() => {
     if (isOpen) {
       setErrorMessage(null);
-      characterService.listCharacters().then((list) => {
-        setCharacters(list);
-        if (list.length > 0) {
-          const active = list.find((c) => c.isCurrentActive) || list[0];
-          setSelectedCharId(active.id);
-        }
-      });
+      characterService
+        .listCharacters()
+        .then((chars) => {
+          setCharacters(chars);
+          if (chars.length > 0 && !selectedCharId) {
+            const active = chars.find((c) => c.isCurrentActive) || chars[0];
+            setSelectedCharId(active.id);
+          }
+        })
+        .catch((err) => {
+          console.warn('[JoinCampaignDialog] Could not load characters:', err);
+        });
     }
   }, [isOpen]);
 
@@ -63,7 +71,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
           characterName: charName,
         });
 
-        alert(`Successfully joined campaign table!`);
+        showCustomAlert("Join Campaign", `Successfully joined campaign as <strong>${charName}</strong>!`, "Let's Play", "🎲");
         if (onJoined) onJoined(member.campaignId);
         onClose();
       } else {

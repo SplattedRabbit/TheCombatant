@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
+// @ts-ignore
+import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { ClassACFSelector } from './ClassACFSelector';
 
 interface DruidFeaturesCardProps {
@@ -51,7 +53,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
       });
     } catch (err: any) {
       console.error("Error in exitShape:", err);
-      alert("Error exiting Wild Shape: " + err.message);
+      showCustomAlert("Wild Shape", "Error exiting Wild Shape: " + err.message, "OK", "⚠️");
     }
   };
 
@@ -78,7 +80,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
       setShowSelectModal(false);
     } catch (err: any) {
       console.error("Error in shape selection:", err);
-      alert("Error transforming: " + err.message);
+      showCustomAlert("Wild Shape", "Error transforming: " + err.message, "OK", "⚠️");
     }
   };
 

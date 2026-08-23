@@ -24,7 +24,7 @@ import { PCSpellsTab } from './PCSpellsTab';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { PCFeaturesTab } from './PCFeaturesTab';
 // @ts-ignore
-import { showCustomConfirm, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
+import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
 
 interface PlayerSheetProps {
   pc: Combatant;
@@ -81,7 +81,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
       try {
         const loadedState = JSON.parse(evt.target?.result as string);
         if (!loadedState.combatants) {
-          alert("Invalid file format. No combatants found.");
+          showCustomAlert("Import Character", "Invalid file format. No combatants found.", "OK", "⚠️");
           return;
         }
         showCustomConfirm(
@@ -92,7 +92,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
           }
         );
       } catch (err: any) {
-        alert("Error reading file: " + err.message);
+        showCustomAlert("Import Error", "Error reading file: " + err.message, "OK", "⚠️");
       }
     };
     reader.readAsText(file);

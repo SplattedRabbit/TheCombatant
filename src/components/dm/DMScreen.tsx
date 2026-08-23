@@ -17,7 +17,7 @@ import { DMCombatantsTable } from './DMCombatantsTable';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { DMToolbox } from './DMToolbox';
 // @ts-ignore
-import { showCustomConfirm, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
+import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
 
 interface DMScreenProps {
   state: CombatStateSnapshot;
@@ -90,7 +90,7 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
       try {
         const loadedState = JSON.parse(evt.target?.result as string);
         if (!loadedState.combatants) {
-          alert("Invalid file format. No combatants found.");
+          showCustomAlert("Import Encounter", "Invalid file format. No combatants found.", "OK", "⚠️");
           return;
         }
         showCustomConfirm(
@@ -101,7 +101,7 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
           }
         );
       } catch (err: any) {
-        alert("Error reading file: " + err.message);
+        showCustomAlert("Import Error", "Error reading file: " + err.message, "OK", "⚠️");
       }
     };
     reader.readAsText(file);
