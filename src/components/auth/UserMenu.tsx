@@ -41,7 +41,7 @@ export const UserMenu: React.FC = () => {
     }
   };
 
-  const displayName = profile?.name || user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Abenteurer';
+  const displayName = profile?.name || user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Adventurer';
   const avatarUrl = profile?.avatar_url || user?.user_metadata?.avatar_url;
 
   // If Supabase is not configured (e.g. offline dev mode without env), show offline badge
@@ -59,7 +59,7 @@ export const UserMenu: React.FC = () => {
             borderRadius: '10px',
             background: 'rgba(200, 169, 110, 0.1)',
           }}
-          title="Lokaler Modus: Kein Supabase konfiguriert"
+          title="Local Mode: No Supabase configured"
         >
           💾 Offline
         </span>
@@ -92,10 +92,10 @@ export const UserMenu: React.FC = () => {
             cursor: 'pointer',
             boxShadow: '0 1px 4px rgba(0,0,0,0.15)',
           }}
-          title="Mit Google anmelden, um Charaktere in der Cloud zu speichern"
+          title="Sign in with Google to save characters to the cloud"
         >
           <span>🔑</span>
-          <span>{isLoggingIn ? 'Anmelden...' : 'Anmelden'}</span>
+          <span>{isLoggingIn ? 'Signing In...' : 'Sign In'}</span>
         </button>
       </div>
     );
@@ -126,7 +126,7 @@ export const UserMenu: React.FC = () => {
             color: 'var(--ink, #2c2214)',
             boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
           }}
-          title="Benutzermenü öffnen"
+          title="Open User Menu"
         >
           {avatarUrl ? (
             <img
@@ -179,7 +179,7 @@ export const UserMenu: React.FC = () => {
               )}
               <div style={{ fontSize: '8.5px', color: '#065f46', marginTop: '3px', display: 'flex', alignItems: 'center', gap: '3px' }}>
                 <span>🟢</span>
-                <span>Cloud verbunden (Frankfurt)</span>
+                <span>Cloud Connected (Frankfurt)</span>
               </div>
             </div>
 
@@ -209,7 +209,7 @@ export const UserMenu: React.FC = () => {
               }}
             >
               <span>📜</span>
-              <span>Helden-Bibliothek</span>
+              <span>Character Roster</span>
             </button>
 
             <button
@@ -237,7 +237,7 @@ export const UserMenu: React.FC = () => {
               }}
             >
               <span>🎲</span>
-              <span>Kampagnen (DM)</span>
+              <span>Campaigns (DM)</span>
             </button>
 
             <button
@@ -264,7 +264,7 @@ export const UserMenu: React.FC = () => {
               }}
             >
               <span>🔗</span>
-              <span>Kampagne beitreten</span>
+              <span>Join Campaign</span>
             </button>
 
             <button
@@ -287,7 +287,7 @@ export const UserMenu: React.FC = () => {
                 cursor: 'pointer',
               }}
             >
-              🚪 Abmelden
+              🚪 Sign Out
             </button>
           </div>
         )}

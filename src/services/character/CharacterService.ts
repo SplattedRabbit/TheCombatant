@@ -83,7 +83,7 @@ export class CharacterService {
       const fresh = createInitialState();
       const newPC = createCombatant({
         id: 'pc-' + Date.now(),
-        name: input.name || 'Held',
+        name: input.name || 'Hero',
         race: input.race || 'human',
         type: 'p',
       });
@@ -114,17 +114,17 @@ export class CharacterService {
   }
 
   /**
-   * Duplicates an existing character with a new ID and '(Kopie)' suffix.
+   * Duplicates an existing character with a new ID and '(Copy)' suffix.
    */
   public async duplicateCharacter(characterId: string, newName?: string): Promise<CharacterSummary> {
     const existing = await this.getCharacter(characterId);
     if (!existing) {
-      throw new Error(`Charakter ${characterId} nicht gefunden.`);
+      throw new Error(`Character ${characterId} not found.`);
     }
 
     const cloned = JSON.parse(JSON.stringify(existing));
     const oldPC = (cloned.combatants || []).find((c: any) => c.type === 'p') || cloned;
-    const targetName = newName || `${oldPC?.name || 'Held'} (Kopie)`;
+    const targetName = newName || `${oldPC?.name || 'Hero'} (Copy)`;
 
     if (oldPC) {
       oldPC.id = 'pc-' + Date.now();
@@ -157,7 +157,7 @@ export class CharacterService {
       if (remaining.length > 0) {
         await this.switchActiveCharacter(remaining[0].id);
       } else {
-        const fresh = await this.createCharacter({ name: 'Held' });
+        const fresh = await this.createCharacter({ name: 'Hero' });
         await this.switchActiveCharacter(fresh.id);
       }
     }

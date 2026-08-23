@@ -50,10 +50,10 @@ export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
             color: 'var(--ink)',
             boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
           }}
-          title="Kampagnen-Dashboard öffnen (Kampagnen wechseln, erstellen, duplizieren)"
+          title="Open Campaign Dashboard (switch, create, duplicate)"
         >
           <span>🎲</span>
-          <span>Kampagnen</span>
+          <span>Campaigns</span>
         </button>
         <UserMenu />
       </div>

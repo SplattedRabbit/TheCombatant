@@ -51,14 +51,14 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
 
       const member = await campaignService.joinCampaignByCode(inviteCode.trim(), selectedCharId || null);
       if (member) {
-        alert(`Erfolgreich der Kampagne beigetreten!`);
+        alert(`Successfully joined campaign!`);
         if (onJoined) onJoined(member.campaignId);
         onClose();
       } else {
-        setErrorMessage(`Keine aktive Kampagne mit dem Code "${inviteCode.trim().toUpperCase()}" gefunden.`);
+        setErrorMessage(`No active campaign found with invite code "${inviteCode.trim().toUpperCase()}".`);
       }
     } catch (err) {
-      setErrorMessage('Fehler beim Beitreten: ' + String(err));
+      setErrorMessage('Error joining campaign: ' + String(err));
     } finally {
       setIsLoading(false);
     }
@@ -109,7 +109,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
                 color: 'var(--red, #8b1a1a)',
               }}
             >
-              Kampagne beitreten
+              Join Campaign
             </h3>
           </div>
           <button
@@ -146,13 +146,13 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
 
         <div>
           <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
-            Einladungscode des Spielleiters:
+            DM Invite Code:
           </label>
           <input
             type="text"
             required
             autoFocus
-            placeholder="z. B. RAVEN-42"
+            placeholder="e.g. RAVEN-42"
             value={inviteCode}
             onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
             style={{
@@ -170,11 +170,11 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
 
         <div>
           <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
-            Charakter auswählen:
+            Select Character:
           </label>
           {characters.length === 0 ? (
             <div style={{ fontSize: '11px', color: 'var(--inkm)', fontStyle: 'italic' }}>
-              Keine Charaktere in deiner Bibliothek gefunden.
+              No characters found in your roster.
             </div>
           ) : (
             <select
@@ -191,7 +191,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
             >
               {characters.map((c) => (
                 <option key={c.id} value={c.id}>
-                  {c.name} (Stufe {c.level} {c.classSummary})
+                  {c.name} (Level {c.level} {c.classSummary})
                 </option>
               ))}
             </select>
@@ -205,7 +205,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
             className="btn"
             style={{ padding: '5px 12px', fontSize: '11px' }}
           >
-            Abbrechen
+            Cancel
           </button>
           <button
             type="submit"
@@ -220,7 +220,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
               color: '#ffffff',
             }}
           >
-            {isLoading ? 'Beitreten...' : '🎲 Beitreten'}
+            {isLoading ? 'Joining...' : '🎲 Join Table'}
           </button>
         </div>
       </form>

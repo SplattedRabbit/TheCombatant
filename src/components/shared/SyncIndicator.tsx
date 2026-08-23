@@ -35,43 +35,43 @@ export const SyncIndicator: React.FC = () => {
   let badgeColor = '#065f46'; // Dark Emerald
   let bgStyle = 'rgba(6, 95, 70, 0.08)';
   let borderColor = 'rgba(6, 95, 70, 0.3)';
-  let title = 'Cloud-Synchronisation aktiv';
+  let title = 'Cloud synchronization active';
 
   if (adapterName === 'local') {
     icon = '💾';
-    label = 'Lokal';
+    label = 'Local';
     badgeColor = '#854d0e'; // Warm Amber
     bgStyle = 'rgba(133, 77, 14, 0.08)';
     borderColor = 'rgba(133, 77, 14, 0.3)';
-    title = 'Gastmodus: Daten werden lokal im Browser gespeichert';
+    title = 'Guest Mode: Data saved locally in browser';
   } else if (status === 'saving' || isFlushing) {
     icon = '🔄';
-    label = 'Speichert...';
+    label = 'Saving...';
     badgeColor = '#1e40af'; // Indigo
     bgStyle = 'rgba(30, 64, 175, 0.08)';
     borderColor = 'rgba(30, 64, 175, 0.3)';
-    title = 'Änderungen werden in der Cloud gesichert...';
+    title = 'Saving changes to cloud...';
   } else if (status === 'saved') {
     icon = '✓';
-    label = 'Gespeichert';
+    label = 'Saved';
     badgeColor = '#065f46';
     bgStyle = 'rgba(6, 95, 70, 0.12)';
     borderColor = 'rgba(6, 95, 70, 0.4)';
-    title = timeStr ? `In Cloud gesichert (${timeStr})` : 'In Cloud gesichert';
+    title = timeStr ? `Saved to cloud (${timeStr})` : 'Saved to cloud';
   } else if (status === 'error') {
     icon = '⚠️';
     label = 'Offline';
     badgeColor = '#991b1b'; // Red
     bgStyle = 'rgba(153, 27, 27, 0.1)';
     borderColor = 'rgba(153, 27, 27, 0.4)';
-    title = error ? `Sync-Fehler: ${error.message} (Lokaler Cache aktiv)` : 'Sync-Fehler: Lokaler Cache aktiv';
+    title = error ? `Sync Error: ${error.message} (Local cache active)` : 'Sync Error: Local cache active';
   }
 
   return (
     <button
       type="button"
       onClick={handleManualSync}
-      title={`${title} (Klicken für manuellen Sync)`}
+      title={`${title} (Click to force sync)`}
       style={{
         display: 'inline-flex',
         alignItems: 'center',

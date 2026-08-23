@@ -285,10 +285,10 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                   color: 'var(--ink)',
                   boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
                 }}
-                title="Einer DM-Kampagne per Einladungscode beitreten"
+                title="Join a DM Campaign via invite code"
               >
                 <span>🔗</span>
-                <span>Beitreten</span>
+                <span>Join Table</span>
               </button>
               <button
                 type="button"
@@ -309,10 +309,10 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                   color: 'var(--ink)',
                   boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
                 }}
-                title="Helden-Bibliothek öffnen (Charakter wechseln, erstellen, duplizieren)"
+                title="Open Character Roster (switch, create, duplicate)"
               >
                 <span>📜</span>
-                <span>Helden</span>
+                <span>Roster</span>
               </button>
               <UserMenu />
             </div>

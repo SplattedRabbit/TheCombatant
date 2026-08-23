@@ -49,7 +49,7 @@ export const TablePresenceBar: React.FC = () => {
         {status === 'connected' ? '🟢' : '🟡'}
       </span>
       <span style={{ fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', color: 'var(--ink)' }}>
-        Spieltisch ({users.length}):
+        Live Table ({users.length}):
       </span>
 
       <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
@@ -72,7 +72,7 @@ export const TablePresenceBar: React.FC = () => {
                 color: isDM ? 'var(--red)' : 'var(--ink)',
                 fontWeight: isDM ? 'bold' : 'normal',
               }}
-              title={`Verbunden seit ${new Date(u.joinedAt).toLocaleTimeString()}`}
+              title={`Connected since ${new Date(u.joinedAt).toLocaleTimeString()}`}
             >
               {u.userAvatarUrl ? (
                 <img

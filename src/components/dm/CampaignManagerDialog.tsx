@@ -79,14 +79,14 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
       await campaignService.duplicateCampaign(campId);
       await loadCampaigns();
     } catch (err) {
-      alert('Fehler beim Duplizieren der Kampagne: ' + String(err));
+      alert('Error duplicating campaign: ' + String(err));
     } finally {
       setIsActionInProgress(false);
     }
   };
 
   const handleDelete = async (campId: string, campName: string) => {
-    const confirmed = window.confirm(`Möchtest du die Kampagne "${campName}" wirklich löschen?`);
+    const confirmed = window.confirm(`Are you sure you want to permanently delete campaign "${campName}"?`);
     if (!confirmed) return;
 
     try {
@@ -94,7 +94,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
       await campaignService.deleteCampaign(campId);
       await loadCampaigns();
     } catch (err) {
-      alert('Fehler beim Löschen der Kampagne: ' + String(err));
+      alert('Error deleting campaign: ' + String(err));
     } finally {
       setIsActionInProgress(false);
     }
@@ -118,7 +118,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
       await campaignService.switchActiveCampaign(created.id);
       onClose();
     } catch (err) {
-      alert('Fehler beim Erstellen der Kampagne: ' + String(err));
+      alert('Error creating campaign: ' + String(err));
     } finally {
       setIsActionInProgress(false);
     }
@@ -188,10 +188,10 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                   lineHeight: 1.1,
                 }}
               >
-                DM Kampagnen-Dashboard
+                DM Campaign Dashboard
               </h2>
               <div style={{ fontSize: '10.5px', color: 'var(--inkm, #665c49)', fontFamily: "'Crimson Text', serif" }}>
-                {campaigns.length} {campaigns.length === 1 ? 'Kampagne' : 'Kampagnen'} verwaltet
+                {campaigns.length} {campaigns.length === 1 ? 'Campaign' : 'Campaigns'} managed
               </div>
             </div>
           </div>
@@ -199,7 +199,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <input
               type="text"
-              placeholder="🔍 Suchen..."
+              placeholder="🔍 Search campaigns..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
@@ -209,7 +209,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                 border: '1px solid var(--pb, #c8a96e)',
                 borderRadius: '4px',
                 background: 'rgba(255, 255, 255, 0.8)',
-                width: '150px',
+                width: '160px',
               }}
             />
             <button
@@ -266,7 +266,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
             }}
           >
             <span>➕</span>
-            <span>Neue Kampagne</span>
+            <span>New Campaign</span>
           </button>
         </div>
 
@@ -283,7 +283,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
         >
           {isLoading ? (
             <div style={{ textAlign: 'center', padding: '40px 0', color: 'var(--inkm)', fontStyle: 'italic' }}>
-              ⌛ Kampagnen werden geladen...
+              ⌛ Loading campaigns...
             </div>
           ) : filteredCampaigns.length === 0 ? (
             <div
@@ -297,10 +297,10 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
             >
               <div style={{ fontSize: '32px', marginBottom: '8px' }}>🏰</div>
               <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', color: 'var(--red)' }}>
-                Keine Kampagnen gefunden
+                No Campaigns Found
               </div>
               <div style={{ fontSize: '12px', color: 'var(--inkm)', marginTop: '4px' }}>
-                Erstelle jetzt deine erste D&amp;D-Kampagne und lade deine Spieler ein!
+                Create your first D&amp;D campaign and invite your players!
               </div>
             </div>
           ) : (
@@ -347,7 +347,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                           fontWeight: 'bold',
                         }}
                       >
-                        ⭐ Aktive Runde
+                        ⭐ Active Session
                       </div>
                     )}
 
@@ -413,7 +413,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                             borderRadius: '3px',
                             cursor: 'pointer',
                           }}
-                          title="Einladungscode in Zwischenablage kopieren"
+                          title="Copy invite code to clipboard"
                         >
                           <span>{isCopied ? '✓' : '📋'}</span>
                           <span>{camp.inviteCode}</span>
@@ -433,8 +433,8 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                           flexWrap: 'wrap',
                         }}
                       >
-                        <span>⚔️ Runde {camp.round}</span>
-                        <span>👾 {camp.combatantCount} Kämpfer</span>
+                        <span>⚔️ Round {camp.round}</span>
+                        <span>👾 {camp.combatantCount} Combatants</span>
                         {camp.location && <span>📍 {camp.location}</span>}
                       </div>
                     </div>
@@ -468,7 +468,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                           opacity: isActive ? 0.9 : 1,
                         }}
                       >
-                        {isActive ? '✓ Geladen' : '⚡ Öffnen'}
+                        {isActive ? '✓ Loaded' : '⚡ Open'}
                       </button>
 
                       <button
@@ -484,7 +484,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                           borderRadius: '3px',
                           cursor: 'pointer',
                         }}
-                        title="Kampagne duplizieren"
+                        title="Duplicate Campaign"
                       >
                         📑
                       </button>
@@ -503,7 +503,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                           borderRadius: '3px',
                           cursor: 'pointer',
                         }}
-                        title="Kampagne löschen"
+                        title="Delete Campaign"
                       >
                         🗑️
                       </button>
@@ -549,18 +549,18 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
               onClick={(e) => e.stopPropagation()}
             >
               <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', color: 'var(--red)', fontWeight: 'bold' }}>
-                ➕ Neue Kampagne erstellen
+                ➕ Create New Campaign
               </div>
 
               <div>
                 <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
-                  Kampagnenname:
+                  Campaign Name:
                 </label>
                 <input
                   type="text"
                   required
                   autoFocus
-                  placeholder="z. B. Fluch des Strahd"
+                  placeholder="e.g. Curse of Strahd"
                   value={newCampName}
                   onChange={(e) => setNewCampName(e.target.value)}
                   style={{
@@ -576,11 +576,11 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
 
               <div>
                 <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
-                  Beschreibung / Notizen:
+                  Description / Notes:
                 </label>
                 <textarea
                   rows={2}
-                  placeholder="z. B. Mittwochsrunde, Level 3-7..."
+                  placeholder="e.g. Wednesday group, Level 3-7..."
                   value={newCampDesc}
                   onChange={(e) => setNewCampDesc(e.target.value)}
                   style={{
@@ -597,11 +597,11 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
 
               <div>
                 <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
-                  Einladungscode:
+                  Invite Code:
                 </label>
                 <input
                   type="text"
-                  placeholder="z. B. STRAHD-42"
+                  placeholder="e.g. STRAHD-42"
                   value={newCampCode}
                   onChange={(e) => setNewCampCode(e.target.value.toUpperCase())}
                   style={{
@@ -624,7 +624,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                   className="btn"
                   style={{ padding: '4px 10px', fontSize: '11px' }}
                 >
-                  Abbrechen
+                  Cancel
                 </button>
                 <button
                   type="submit"
@@ -639,7 +639,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                     color: '#ffffff',
                   }}
                 >
-                  Erstellen
+                  Create
                 </button>
               </div>
             </form>

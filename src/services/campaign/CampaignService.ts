@@ -142,18 +142,18 @@ export class CampaignService {
   public async duplicateCampaign(campaignId: string, newName?: string): Promise<CampaignSummary> {
     const existing = await this.getCampaign(campaignId);
     if (!existing) {
-      throw new Error(`Kampagne ${campaignId} nicht gefunden.`);
+      throw new Error(`Campaign ${campaignId} not found.`);
     }
 
     const cloned = JSON.parse(JSON.stringify(existing));
-    const targetName = newName || `${existing?.meta?.begegnung || 'Kampagne'} (Kopie)`;
+    const targetName = newName || `${existing?.meta?.begegnung || 'Campaign'} (Copy)`;
     if (cloned.meta) {
       cloned.meta.begegnung = targetName;
     }
 
     return this.createCampaign({
       name: targetName,
-      description: `Kopie von Kampagne ${campaignId}`,
+      description: `Copy of campaign ${campaignId}`,
       initialState: cloned,
     });
   }
@@ -175,7 +175,7 @@ export class CampaignService {
       if (remaining.length > 0) {
         await this.switchActiveCampaign(remaining[0].id);
       } else {
-        const fresh = await this.createCampaign({ name: 'Neue Kampagne' });
+        const fresh = await this.createCampaign({ name: 'New Campaign' });
         await this.switchActiveCampaign(fresh.id);
       }
     }

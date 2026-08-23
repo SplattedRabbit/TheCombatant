@@ -53,7 +53,7 @@ describe('CharacterService Test Suite', () => {
 
     const dup = await service.duplicateCharacter(charA.id);
     assert.notEqual(dup.id, charA.id, 'Duplikat muss neue ID erhalten');
-    assert.equal(dup.name, 'Merisiel (Kopie)');
+    assert.equal(dup.name, 'Merisiel (Copy)');
 
     const list = await service.listCharacters();
     assert.equal(list.filter((c) => c.name.includes('Merisiel')).length, 2);

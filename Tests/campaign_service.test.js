@@ -63,7 +63,7 @@ describe('CampaignService Test Suite', () => {
     const dup = await service.duplicateCampaign(campA.id);
     assert.notEqual(dup.id, campA.id, 'Duplikat muss neue ID erhalten');
     assert.notEqual(dup.inviteCode, campA.inviteCode, 'Duplikat muss neuen Einladungscode erhalten');
-    assert.equal(dup.name, 'Eberron Runde (Kopie)');
+    assert.equal(dup.name, 'Eberron Runde (Copy)');
 
     const list = await service.listCampaigns();
     assert.equal(list.filter((c) => c.name.includes('Eberron Runde')).length, 2);

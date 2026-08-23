@@ -266,8 +266,8 @@ export class LocalStorageAdapter implements IStorageAdapter {
       if (!raw) continue;
 
       const pc = (raw?.combatants || []).find((c: any) => c.type === 'p') || raw;
-      const name = pc?.name || raw?.name || 'Held';
-      const race = pc?.race || 'Mensch';
+      const name = pc?.name || raw?.name || 'Hero';
+      const race = pc?.race || 'Human';
       const classSummary = pc?.classSummary || pc?.class_summary || (Array.isArray(pc?.classes) ? pc.classes.map((c: any) => `${c.name || c.classType} ${c.level}`).join(' / ') : '');
       const level = typeof pc?.level === 'number' ? pc.level : 1;
       const hpCurrent = typeof pc?.hp === 'number' ? pc.hp : 10;
@@ -293,8 +293,8 @@ export class LocalStorageAdapter implements IStorageAdapter {
       const defaultState = this.loadState();
       if (defaultState) {
         const pc = (defaultState?.combatants || []).find((c: any) => c.type === 'p') || defaultState;
-        const name = pc?.name || 'Held';
-        const race = pc?.race || 'Mensch';
+        const name = pc?.name || 'Hero';
+        const race = pc?.race || 'Human';
         const classSummary = pc?.classSummary || pc?.class_summary || '';
         const level = typeof pc?.level === 'number' ? pc.level : 1;
         const hpCurrent = typeof pc?.hp === 'number' ? pc.hp : 10;
@@ -379,7 +379,7 @@ export class LocalStorageAdapter implements IStorageAdapter {
 
       const combatants = Array.isArray(raw?.combatants) ? raw.combatants : [];
       const meta = raw?.meta || {};
-      const encounterName = meta?.begegnung || raw?.name || 'Unbenannte Kampagne';
+      const encounterName = meta?.begegnung || raw?.name || 'Unnamed Campaign';
       const location = meta?.ort || 'Dungeon';
       const round = typeof raw?.round === 'number' ? raw.round : 1;
       const turn = typeof raw?.activeIdx === 'number' ? raw.activeIdx : 0;

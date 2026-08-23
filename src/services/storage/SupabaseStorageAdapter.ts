@@ -189,7 +189,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         if (error) throw error;
       } else if (isDmSession) {
         const newCampId = generateUUID();
-        const encounterName = state?.meta?.begegnung || 'Neue Kampagne';
+        const encounterName = state?.meta?.begegnung || 'New Campaign';
         const { data, error } = await this.client
           .from('campaigns')
           .upsert({
@@ -211,7 +211,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
       } else {
         // Player Character Mode: find active PC from combatants
         const pc = (state?.combatants || []).find((c: any) => c.type === 'p') || null;
-        const charName = pc?.name || 'Held';
+        const charName = pc?.name || 'Hero';
         const charLevel = typeof pc?.level === 'number' ? pc.level : 1;
         const classSummary = pc?.classSummary || pc?.class_summary || (Array.isArray(pc?.classes) ? pc.classes.map((c: any) => `${c.name || c.classType} ${c.level}`).join(' / ') : '');
 
@@ -443,7 +443,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
     try {
       this.notify('saving');
       const validId = campaignId || this.activeCampaignId || generateUUID();
-      const encounterName = encounterState?.meta?.begegnung || 'Kampagne';
+      const encounterName = encounterState?.meta?.begegnung || 'Campaign';
       const { error } = await this.client
         .from('campaigns')
         .upsert({
@@ -501,7 +501,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         return {
           id: row.id,
           dmUserId: row.dm_user_id,
-          name: row.name || meta.begegnung || 'Kampagne',
+          name: row.name || meta.begegnung || 'Campaign',
           description: row.description || '',
           inviteCode: row.invite_code,
           combatantCount: combatants.length,

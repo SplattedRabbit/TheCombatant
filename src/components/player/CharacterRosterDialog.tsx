@@ -25,7 +25,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
   const [isActionInProgress, setIsActionInProgress] = useState<boolean>(false);
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false);
   const [newCharName, setNewCharName] = useState<string>('');
-  const [newCharClass, setNewCharClass] = useState<string>('Kämpfer');
+  const [newCharClass, setNewCharClass] = useState<string>('Fighter');
   const [activeCharId, setActiveCharId] = useState<string | null>(null);
 
   const loadRoster = useCallback(async () => {
@@ -78,14 +78,14 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
       await characterService.duplicateCharacter(charId);
       await loadRoster();
     } catch (err) {
-      alert('Fehler beim Duplizieren des Charakters: ' + String(err));
+      alert('Error duplicating character: ' + String(err));
     } finally {
       setIsActionInProgress(false);
     }
   };
 
   const handleDelete = async (charId: string, charName: string) => {
-    const confirmed = window.confirm(`Möchtest du "${charName}" wirklich dauerhaft löschen?`);
+    const confirmed = window.confirm(`Are you sure you want to permanently delete "${charName}"?`);
     if (!confirmed) return;
 
     try {
@@ -93,7 +93,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
       await characterService.deleteCharacter(charId);
       await loadRoster();
     } catch (err) {
-      alert('Fehler beim Löschen des Charakters: ' + String(err));
+      alert('Error deleting character: ' + String(err));
     } finally {
       setIsActionInProgress(false);
     }
@@ -115,7 +115,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
       await characterService.switchActiveCharacter(created.id);
       onClose();
     } catch (err) {
-      alert('Fehler beim Erstellen des Charakters: ' + String(err));
+      alert('Error creating character: ' + String(err));
     } finally {
       setIsActionInProgress(false);
     }
@@ -127,9 +127,9 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
       const imported = await characterService.importFromLocalStorage();
       if (imported) {
         await loadRoster();
-        alert(`Held "${imported.name}" erfolgreich importiert!`);
+        alert(`Character "${imported.name}" successfully imported!`);
       } else {
-        alert('Keine gültigen lokalen Charakterdaten im Speicher gefunden.');
+        alert('No valid local character data found in browser storage.');
       }
     } finally {
       setIsActionInProgress(false);
@@ -193,10 +193,10 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                   lineHeight: 1.1,
                 }}
               >
-                Helden-Bibliothek
+                Character Roster
               </h2>
               <div style={{ fontSize: '10.5px', color: 'var(--inkm, #665c49)', fontFamily: "'Crimson Text', serif" }}>
-                {characters.length} {characters.length === 1 ? 'Charakter' : 'Charaktere'} verfügbar
+                {characters.length} {characters.length === 1 ? 'Character' : 'Characters'} available
               </div>
             </div>
           </div>
@@ -204,7 +204,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <input
               type="text"
-              placeholder="🔍 Suchen..."
+              placeholder="🔍 Search characters..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
@@ -214,7 +214,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                 border: '1px solid var(--pb, #c8a96e)',
                 borderRadius: '4px',
                 background: 'rgba(255, 255, 255, 0.8)',
-                width: '140px',
+                width: '160px',
               }}
             />
             <button
@@ -268,7 +268,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
             }}
           >
             <span>➕</span>
-            <span>Neuer Held</span>
+            <span>New Character</span>
           </button>
 
           {onOpenWizard && (
@@ -293,7 +293,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               }}
             >
               <span>🧙</span>
-              <span>Mit Wizard erstellen</span>
+              <span>Create via Wizard</span>
             </button>
           )}
 
@@ -315,10 +315,10 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               cursor: 'pointer',
               marginLeft: 'auto',
             }}
-            title="Liest den aktuellen lokalen Charakter und sichert ihn als separaten Helden"
+            title="Imports current local character into your cloud library"
           >
             <span>📥</span>
-            <span>Aus Lokalspeicher importieren</span>
+            <span>Import from LocalStorage</span>
           </button>
         </div>
 
@@ -335,7 +335,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
         >
           {isLoading ? (
             <div style={{ textAlign: 'center', padding: '40px 0', color: 'var(--inkm)', fontStyle: 'italic' }}>
-              ⌛ Helden werden geladen...
+              ⌛ Loading characters...
             </div>
           ) : filteredCharacters.length === 0 ? (
             <div
@@ -349,10 +349,10 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
             >
               <div style={{ fontSize: '32px', marginBottom: '8px' }}>🛡️</div>
               <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', color: 'var(--red)' }}>
-                Keine Helden gefunden
+                No Characters Found
               </div>
               <div style={{ fontSize: '12px', color: 'var(--inkm)', marginTop: '4px' }}>
-                Erstelle jetzt deinen ersten Charakter oder importiere einen bestehenden Helden!
+                Create your first character or import an existing one!
               </div>
             </div>
           ) : (
@@ -398,7 +398,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                           fontWeight: 'bold',
                         }}
                       >
-                        ⭐ Aktiv
+                        ⭐ Active
                       </div>
                     )}
 
@@ -429,7 +429,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                           marginTop: '2px',
                         }}
                       >
-                        Stufe {char.level} {char.race ? `(${char.race})` : ''}
+                        Level {char.level} {char.race ? `(${char.race})` : ''}
                       </div>
 
                       {char.classSummary && (
@@ -496,7 +496,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                           opacity: isActive ? 0.9 : 1,
                         }}
                       >
-                        {isActive ? '✓ Ausgewählt' : '⚡ Laden'}
+                        {isActive ? '✓ Selected' : '⚡ Load'}
                       </button>
 
                       <button
@@ -512,7 +512,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                           borderRadius: '3px',
                           cursor: 'pointer',
                         }}
-                        title="Charakter duplizieren"
+                        title="Duplicate Character"
                       >
                         📑
                       </button>
@@ -531,7 +531,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                           borderRadius: '3px',
                           cursor: 'pointer',
                         }}
-                        title="Charakter löschen"
+                        title="Delete Character"
                       >
                         🗑️
                       </button>
@@ -577,18 +577,18 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               onClick={(e) => e.stopPropagation()}
             >
               <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', color: 'var(--red)', fontWeight: 'bold' }}>
-                ➕ Neuer Held
+                ➕ New Character
               </div>
 
               <div>
                 <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
-                  Heldenname:
+                  Character Name:
                 </label>
                 <input
                   type="text"
                   required
                   autoFocus
-                  placeholder="z.B. Valeros"
+                  placeholder="e.g. Valeros"
                   value={newCharName}
                   onChange={(e) => setNewCharName(e.target.value)}
                   style={{
@@ -604,7 +604,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
 
               <div>
                 <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px' }}>
-                  Startklasse:
+                  Starting Class:
                 </label>
                 <select
                   value={newCharClass}
@@ -618,17 +618,17 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                     boxSizing: 'border-box',
                   }}
                 >
-                  <option value="Kämpfer">Kämpfer</option>
-                  <option value="Barbar">Barbar</option>
-                  <option value="Kleriker">Kleriker</option>
-                  <option value="Magier">Magier</option>
-                  <option value="Schurke">Schurke</option>
+                  <option value="Fighter">Fighter</option>
+                  <option value="Barbarian">Barbarian</option>
+                  <option value="Cleric">Cleric</option>
+                  <option value="Wizard">Wizard</option>
+                  <option value="Rogue">Rogue</option>
                   <option value="Paladin">Paladin</option>
-                  <option value="Waldläufer">Waldläufer</option>
-                  <option value="Druide">Druide</option>
-                  <option value="Barde">Barde</option>
-                  <option value="Mönch">Mönch</option>
-                  <option value="Hexenmeister">Hexenmeister</option>
+                  <option value="Ranger">Ranger</option>
+                  <option value="Druid">Druid</option>
+                  <option value="Bard">Bard</option>
+                  <option value="Monk">Monk</option>
+                  <option value="Sorcerer">Sorcerer</option>
                 </select>
               </div>
 
@@ -639,7 +639,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                   className="btn"
                   style={{ padding: '4px 10px', fontSize: '11px' }}
                 >
-                  Abbrechen
+                  Cancel
                 </button>
                 <button
                   type="submit"
@@ -654,7 +654,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                     color: '#ffffff',
                   }}
                 >
-                  Erstellen
+                  Create
                 </button>
               </div>
             </form>
