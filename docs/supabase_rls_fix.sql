@@ -118,9 +118,9 @@ USING (user_id = auth.uid());
 -- --------------------------------------------------------------------
 ALTER TABLE public.campaigns ENABLE ROW LEVEL SECURITY;
 
--- 1. All authenticated users can SELECT campaigns (needed for invite codes & sessions)
-CREATE POLICY "campaigns_select_authenticated" ON public.campaigns
-FOR SELECT TO authenticated
+-- 1. All users (including guest players looking up invite codes) can SELECT campaigns
+CREATE POLICY "campaigns_select_all" ON public.campaigns
+FOR SELECT TO anon, authenticated
 USING (true);
 
 -- 2. Only the DM can INSERT campaigns

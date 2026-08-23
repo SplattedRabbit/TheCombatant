@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react';
 import type { CharacterSummary } from '../../types/character.ts';
 import { characterService } from '../../services/character/CharacterService.ts';
 import { campaignService } from '../../services/campaign/CampaignService.ts';
+import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 
 interface JoinCampaignDialogProps {
   isOpen: boolean;
@@ -51,7 +52,18 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
 
       const member = await campaignService.joinCampaignByCode(inviteCode.trim(), selectedCharId || null);
       if (member) {
-        alert(`Successfully joined campaign!`);
+        const selectedChar = characters.find((c) => c.id === selectedCharId);
+        const charName = selectedChar?.name || 'Player';
+
+        // Connect live WebSocket to DM's table
+        await realtimeManager.joinCampaign(member.campaignId, 'player', {
+          userId: member.userId,
+          userName: charName,
+          characterId: member.characterId || undefined,
+          characterName: charName,
+        });
+
+        alert(`Successfully joined campaign table!`);
         if (onJoined) onJoined(member.campaignId);
         onClose();
       } else {

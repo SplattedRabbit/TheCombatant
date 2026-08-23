@@ -227,7 +227,7 @@ export class CampaignService {
    */
   public async joinCampaignByCode(inviteCode: string, characterId?: string | null): Promise<CampaignMember | null> {
     try {
-      const cleanCode = inviteCode.trim().toUpperCase();
+      const cleanCode = inviteCode.trim().toUpperCase().replace(/\s+/g, '-');
       const client = defaultSupabaseClient;
 
       // 1. Search campaign by invite_code
@@ -243,9 +243,21 @@ export class CampaignService {
         return null;
       }
 
-      const currentUserId = storageService.getCurrentUserId() || 'guest-player';
+      const currentUserId = storageService.getCurrentUserId();
 
-      // 2. Insert or update membership
+      // 2. If user is guest / not logged in, return lightweight session member
+      if (!currentUserId) {
+        return {
+          id: generateUUID(),
+          campaignId: (campaign as any).id,
+          userId: 'guest-' + generateUUID().slice(0, 8),
+          characterId: characterId || null,
+          role: 'PLAYER',
+          joinedAt: new Date().toISOString(),
+        };
+      }
+
+      // 3. For authenticated users, persist in campaign_members table
       const { data: member, error: memberError } = await (client.from('campaign_members') as any)
         .upsert({
           campaign_id: (campaign as any).id,
