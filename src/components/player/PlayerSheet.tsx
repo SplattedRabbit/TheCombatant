@@ -23,7 +23,7 @@ import { BaseCard } from '../shared/BaseCard';
 import { PCSpellsTab } from './PCSpellsTab';
 import { PCFeaturesTab } from './PCFeaturesTab';
 // @ts-ignore
-import { showCustomConfirm, showSampleChoiceDialog, showSessionModal } from '@core/ui/components/dialogs.js';
+import { showCustomConfirm, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
 
 interface PlayerSheetProps {
   pc: Combatant;
@@ -40,15 +40,10 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
   const casterClasses = ['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'];
   const hasCasterClass = Array.isArray(pc.classes) && pc.classes.some((c: any) => casterClasses.includes(c.classType));
 
-  const handleOnlineSession = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setIsSystemOpen(false);
-    showSessionModal(e.nativeEvent);
-  };
-
   const handleSwapRole = () => {
     setIsSystemOpen(false);
-    import('@core/network/NetworkManager.js').then(({ cleanupPeer }) => {
-      cleanupPeer();
+    import('../../services/network/RealtimeManager.ts').then(({ realtimeManager }) => {
+      realtimeManager.leaveCampaign();
     });
     CombatState.updateSession(false, 'choice', '');
     CombatState.setRole('choice');
@@ -239,9 +234,6 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
               }}>
                 📜 System Options
               </div>
-              <button className="fab-item" onClick={handleOnlineSession} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Not connected"></span>Online Session
-              </button>
               <button className="fab-item" onClick={() => { setIsSystemOpen(false); CombatState.setRole('wizard'); }}>🧙‍♂️ Character Wizard</button>
               <button className="fab-item" onClick={handleSwapRole}>🎭 Change Role</button>
               <button className="fab-item" onClick={handlePrint}>🖨 Print (A4)</button>

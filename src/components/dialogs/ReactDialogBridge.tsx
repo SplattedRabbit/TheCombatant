@@ -20,7 +20,6 @@ import {
 import { AttackChoiceDialog } from './AttackChoiceDialog';
 import { DamageChoiceDialog } from './DamageChoiceDialog';
 import { PrepareSpellDialog, CastSpontaneousSpellDialog } from './PrepareSpellDialog';
-import { SessionDialog } from './SessionDialog';
 import { SpellScrollDialog } from './SpellScrollDialog';
 import { FeatScrollDialog } from './FeatScrollDialog';
 import { BuffDetailsDialog, CastSuccessDialog } from './PCBuffsDialog';
@@ -240,12 +239,6 @@ export function initReactDialogBridge() {
         }}
         onCancel={onCloseModal}
       />
-    ));
-  };
-
-  bridge.showSessionModal = () => {
-    mountModal((onCloseModal) => (
-      <SessionDialog onClose={onCloseModal} />
     ));
   };
 

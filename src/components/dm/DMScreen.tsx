@@ -16,7 +16,7 @@ import { InitBar } from './InitBar';
 import { DMCombatantsTable } from './DMCombatantsTable';
 import { DMToolbox } from './DMToolbox';
 // @ts-ignore
-import { showCustomConfirm, showSampleChoiceDialog, showSessionModal } from '@core/ui/components/dialogs.js';
+import { showCustomConfirm, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
 
 interface DMScreenProps {
   state: CombatStateSnapshot;
@@ -49,15 +49,10 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
     );
   };
 
-  const handleOnlineSession = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setIsSystemOpen(false);
-    showSessionModal(e.nativeEvent);
-  };
-
   const handleSwapRole = () => {
     setIsSystemOpen(false);
-    import('@core/network/NetworkManager.js').then(({ cleanupPeer }) => {
-      cleanupPeer();
+    import('../../services/network/RealtimeManager.ts').then(({ realtimeManager }) => {
+      realtimeManager.leaveCampaign();
     });
     CombatState.updateSession(false, 'choice', '');
     CombatState.setRole('choice');
@@ -231,22 +226,17 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
                   pointerEvents: 'auto',
                 }}
               >
-                <div style={{
-                  fontFamily: "'IM Fell English SC', serif",
-                  fontSize: '10px',
-                  color: 'var(--red)',
-                  fontWeight: 'bold',
-                  letterSpacing: '1px',
-                  marginBottom: '5px',
-                  borderBottom: '0.5px solid var(--pb)',
-                  paddingBottom: '3px',
-                  textAlign: 'center'
+                <div style={{ 
+                  fontSize: '10px', 
+                  color: 'var(--red)', 
+                  fontWeight: 'bold', 
+                  marginBottom: '5px', 
+                  borderBottom: '0.5px solid var(--pb)', 
+                  paddingBottom: '3px', 
+                  textAlign: 'center' 
                 }}>
                   📜 System Options
                 </div>
-                <button className="fab-item" onClick={handleOnlineSession} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                  🌐 <span id="connectionDot" className="conn-dot conn-disconnected" title="Not connected"></span>Online Session
-                </button>
                 <button className="fab-item" onClick={handleSwapRole}>🎭 Change Role</button>
                 <button className="fab-item" onClick={handlePrint}>🖨 Print (A4)</button>
                 <button className="fab-item" onClick={handleExport}>💾 Export</button>

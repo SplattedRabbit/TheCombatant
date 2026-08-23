@@ -12,8 +12,7 @@ import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
-import { broadcastToClients } from '@core/network/NetworkManager.js';
+import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 // @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import type { Combatant } from '../../types/combat';
@@ -72,7 +71,7 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
       targetPCId: messageTarget
     };
 
-    broadcastToClients(packet);
+    realtimeManager.broadcastDiff(packet);
     setMessageText('');
     showCustomAlert('Message sent', 'The message has been transmitted.', 'OK', '✉️');
   };

@@ -162,8 +162,8 @@ export default function App() {
             <button 
               className="btn" 
               onClick={() => {
-                import('@core/network/NetworkManager.js').then(({ cleanupPeer }) => {
-                  cleanupPeer();
+                import('./services/network/RealtimeManager.ts').then(({ realtimeManager }) => {
+                  realtimeManager.leaveCampaign();
                 });
                 CombatState.updateSession(false, 'choice', '');
                 CombatState.setRole('choice');
