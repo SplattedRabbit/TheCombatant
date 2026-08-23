@@ -117,8 +117,10 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
       setNewCampCode('');
       await campaignService.switchActiveCampaign(created.id);
       onClose();
-    } catch (err) {
-      alert('Error creating campaign: ' + String(err));
+    } catch (err: any) {
+      const msg = err?.message || err?.error_description || (typeof err === 'object' ? JSON.stringify(err) : String(err));
+      console.error('[CampaignManagerDialog] Error creating campaign:', err);
+      alert('Error creating campaign: ' + msg);
     } finally {
       setIsActionInProgress(false);
     }

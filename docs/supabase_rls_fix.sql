@@ -1,13 +1,46 @@
 -- ====================================================================
--- SUPABASE RLS FIX & INITIALIZATION SCRIPT
+-- SUPABASE RLS FIX & INITIALIZATION SCRIPT (v6.0 Cloud)
 -- ====================================================================
--- Solves:
--- 1. Infinite recursion (Error 42P17) between campaigns and campaign_members
--- 2. Clean RLS permissions for profiles, characters, campaigns, campaign_members
+-- 1. Automatischer Profil-Trigger + Backfill (verhindert Foreign-Key-Fehler)
+-- 2. Zirkelfreie RLS-Policies (verhindert Infinite-Recursion Error 42P17)
+-- 3. Volle Rechte für DM & Spieler (Campaigns, Characters, Members)
+-- 4. Einmalige Deduplizierung
 -- ====================================================================
 
 -- --------------------------------------------------------------------
--- 1. HELPER FUNCTIONS (SECURITY DEFINER to bypass RLS recursion)
+-- 1. PROFILES TRIGGER & BACKFILL
+-- --------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS trigger AS $$
+BEGIN
+  INSERT INTO public.profiles (id, email, name, avatar_url, created_at)
+  VALUES (
+    NEW.id,
+    NEW.email,
+    COALESCE(NEW.raw_user_meta_data->>'full_name', NEW.raw_user_meta_data->>'name', split_part(NEW.email, '@', 1), 'Adventurer'),
+    NEW.raw_user_meta_data->>'avatar_url',
+    NOW()
+  )
+  ON CONFLICT (id) DO UPDATE SET
+    email = EXCLUDED.email,
+    name = COALESCE(EXCLUDED.name, public.profiles.name);
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+
+-- Bestehende Auth-User in profiles nachtragen:
+INSERT INTO public.profiles (id, email, name, created_at)
+SELECT id, email, COALESCE(raw_user_meta_data->>'full_name', split_part(email, '@', 1), 'Adventurer'), created_at
+FROM auth.users
+ON CONFLICT (id) DO NOTHING;
+
+-- --------------------------------------------------------------------
+-- 2. HELPER FUNCTIONS (SECURITY DEFINER to bypass RLS recursion)
 -- --------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION public.is_campaign_member(target_campaign_id uuid, target_user_id uuid)
 RETURNS boolean
@@ -38,7 +71,7 @@ AS $$
 $$;
 
 -- --------------------------------------------------------------------
--- 2. DROP OLD POLICIES
+-- 3. DROP OLD POLICIES
 -- --------------------------------------------------------------------
 DROP POLICY IF EXISTS "profiles_select_policy" ON public.profiles;
 DROP POLICY IF EXISTS "profiles_insert_policy" ON public.profiles;
@@ -60,6 +93,8 @@ DROP POLICY IF EXISTS "campaigns_select_policy" ON public.campaigns;
 DROP POLICY IF EXISTS "campaigns_insert_policy" ON public.campaigns;
 DROP POLICY IF EXISTS "campaigns_update_policy" ON public.campaigns;
 DROP POLICY IF EXISTS "campaigns_delete_policy" ON public.campaigns;
+DROP POLICY IF EXISTS "campaigns_dm_all_policy" ON public.campaigns;
+DROP POLICY IF EXISTS "campaigns_member_select_policy" ON public.campaigns;
 
 DROP POLICY IF EXISTS "Users can view campaign members" ON public.campaign_members;
 DROP POLICY IF EXISTS "Members and DMs can view campaign_members" ON public.campaign_members;
@@ -71,7 +106,7 @@ DROP POLICY IF EXISTS "campaign_members_update_policy" ON public.campaign_member
 DROP POLICY IF EXISTS "campaign_members_delete_policy" ON public.campaign_members;
 
 -- --------------------------------------------------------------------
--- 3. PROFILES POLICIES
+-- 4. PROFILES POLICIES
 -- --------------------------------------------------------------------
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 
@@ -89,7 +124,7 @@ USING (id = auth.uid())
 WITH CHECK (id = auth.uid());
 
 -- --------------------------------------------------------------------
--- 4. CHARACTERS POLICIES
+-- 5. CHARACTERS POLICIES
 -- --------------------------------------------------------------------
 ALTER TABLE public.characters ENABLE ROW LEVEL SECURITY;
 
@@ -111,40 +146,23 @@ FOR DELETE TO authenticated
 USING (user_id = auth.uid());
 
 -- --------------------------------------------------------------------
--- 5. CAMPAIGNS POLICIES
+-- 6. CAMPAIGNS POLICIES
 -- --------------------------------------------------------------------
 ALTER TABLE public.campaigns ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "campaigns_select_policy" ON public.campaigns
+-- DM hat vollen Lese- und Schreibzugriff (INSERT, UPDATE, DELETE, SELECT) auf seine Kampagnen
+CREATE POLICY "campaigns_dm_all_policy" ON public.campaigns
+FOR ALL TO authenticated
+USING (dm_user_id = auth.uid())
+WITH CHECK (dm_user_id = auth.uid());
+
+-- Kampagnen-Mitglieder (Spieler) dürfen die Kampagne lesen
+CREATE POLICY "campaigns_member_select_policy" ON public.campaigns
 FOR SELECT TO authenticated
-USING (
-  dm_user_id = auth.uid() 
-  OR public.is_campaign_member(id, auth.uid())
-);
-
-CREATE POLICY "campaigns_insert_policy" ON public.campaigns
-FOR INSERT TO authenticated
-WITH CHECK (
-  dm_user_id = auth.uid()
-);
-
-CREATE POLICY "campaigns_update_policy" ON public.campaigns
-FOR UPDATE TO authenticated
-USING (
-  dm_user_id = auth.uid()
-)
-WITH CHECK (
-  dm_user_id = auth.uid()
-);
-
-CREATE POLICY "campaigns_delete_policy" ON public.campaigns
-FOR DELETE TO authenticated
-USING (
-  dm_user_id = auth.uid()
-);
+USING (public.is_campaign_member(id, auth.uid()));
 
 -- --------------------------------------------------------------------
--- 6. CAMPAIGN_MEMBERS POLICIES
+-- 7. CAMPAIGN_MEMBERS POLICIES
 -- --------------------------------------------------------------------
 ALTER TABLE public.campaign_members ENABLE ROW LEVEL SECURITY;
 
@@ -174,10 +192,16 @@ WITH CHECK (
   OR public.is_campaign_dm(campaign_id, auth.uid())
 );
 
+CREATE POLICY "campaign_members_delete_policy" ON public.campaign_members
+FOR DELETE TO authenticated
+USING (
+  user_id = auth.uid()
+  OR public.is_campaign_dm(campaign_id, auth.uid())
+);
+
 -- --------------------------------------------------------------------
--- 7. CLEANUP DUPLICATES (Optional / One-time)
+-- 8. DEDUPLIZIERUNG (Behält jeweils nur den neuesten Helden)
 -- --------------------------------------------------------------------
--- Removes generated duplicate character rows, keeping the latest one per name:
 DELETE FROM public.characters
 WHERE id NOT IN (
   SELECT DISTINCT ON (user_id, name) id
