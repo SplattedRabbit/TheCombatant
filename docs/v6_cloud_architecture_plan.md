@@ -165,19 +165,18 @@ Jeder Schritt ist so aufgebaut, dass bestehender Code nicht gefährdet wird und 
 
 ---
 
-### 🛡️ PHASE 3: Storage-Adapter-Pattern (Non-Breaking Fallback)
+### 🛡️ PHASE 3: Storage-Adapter-Pattern (Non-Breaking Fallback) (✅ ABGESCHLOSSEN)
 *Ziel: Die bestehende `StorageManager.js` flexibel machen, ohne Komponenten umzubauen.*
 
-- [ ] **3.1 `IStorageAdapter`-Interface definieren (`src/services/storage/IStorageAdapter.ts`)**
-  - Methoden: `saveActivePC(pc)`, `loadActivePC()`, `saveEncounter(state)`, `loadEncounter()`.
-- [ ] **3.2 `LocalStorageAdapter.ts` implementieren**
-  - Kapselt die bisherige `localStorage`-Logik 1:1.
-  - Greift automatisch, wenn der Nutzer **nicht** eingeloggt ist (Gastmodus bleibt 100% funktionsfähig).
-- [ ] **3.3 `SupabaseStorageAdapter.ts` implementieren**
-  - Speichert bei eingeloggtem Nutzer debounced (800ms) in die `characters`- bzw. `campaigns`-Tabelle.
-- [ ] **3.4 `StorageManager.js` umstellen**
-  - Delegiert transparent an den aktiven Adapter je nach `AuthContext.isAuthenticated`.
-  - *DoD:* Sämtliche 249 Unit-Tests laufen grün; Speichern funktioniert sowohl offline als auch in Supabase.
+- [x] **3.1 `IStorageAdapter`-Interface definieren (`src/services/storage/IStorageAdapter.ts`)**
+  - Verträge für State-, Character- und Campaign-Persistenz sowie Sync-Status-Events.
+- [x] **3.2 `LocalStorageAdapter.ts` implementieren**
+  - Kapselt die `localStorage`-Logik 1:1 mit defensivem In-Memory-Fallback für Gast-/Testmodus.
+- [x] **3.3 `SupabaseStorageAdapter.ts` implementieren**
+  - Local-First Puffer + 800ms Debounce-Cloud-Sync in `characters` (PC) bzw. `campaigns` (DM) mit `flushPendingSaves()`.
+- [x] **3.4 `StorageService.ts` & `StorageManager.js` umstellen**
+  - Zentraler Singleton-Dispatcher, dynamischer Adapter-Wechsel bei Auth-Events, 100% abwärtskompatible Legacy-Bridge.
+  - *DoD erfüllt:* 266/266 Unit-Tests grün; 0 TypeScript-Fehler; Live-Feedback via `SyncIndicator.tsx`.
 
 ---
 

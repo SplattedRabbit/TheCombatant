@@ -5,6 +5,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { SyncIndicator } from '../shared/SyncIndicator.tsx';
 
 export const UserMenu: React.FC = () => {
   const { user, profile, isAuthenticated, isLoading, isConfigured, signInWithGoogle, signOut } = useAuth();
@@ -24,7 +25,7 @@ export const UserMenu: React.FC = () => {
   }, []);
 
   if (!isConfigured) {
-    return null;
+    return <SyncIndicator />;
   }
 
   if (isLoading) {
@@ -52,52 +53,57 @@ export const UserMenu: React.FC = () => {
 
   if (!isAuthenticated) {
     return (
-      <button
-        type="button"
-        onClick={handleLogin}
-        disabled={isLoggingIn}
-        className="btn btn-p"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
-          padding: '3px 10px',
-          fontSize: '11px',
-          fontFamily: "'IM Fell English SC', serif",
-          fontWeight: 'bold',
-          background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-          border: '1px solid #8b6914',
-          color: '#ffffff',
-          borderRadius: '3px',
-          cursor: isLoggingIn ? 'wait' : 'pointer',
-          boxShadow: '0 1px 4px rgba(0,0,0,0.15)',
-        }}
-        title="Mit Google-Konto anmelden, um Charaktere in der Cloud zu sichern"
-      >
-        <span>🎲</span>
-        <span>{isLoggingIn ? 'Anmeldung...' : 'Mit Google anmelden'}</span>
-      </button>
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+        <SyncIndicator />
+        <button
+          type="button"
+          onClick={handleLogin}
+          disabled={isLoggingIn}
+          className="btn btn-p"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '3px 10px',
+            fontSize: '11px',
+            fontFamily: "'IM Fell English SC', serif",
+            fontWeight: 'bold',
+            background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+            border: '1px solid #8b6914',
+            color: '#ffffff',
+            borderRadius: '3px',
+            cursor: isLoggingIn ? 'wait' : 'pointer',
+            boxShadow: '0 1px 4px rgba(0,0,0,0.15)',
+          }}
+          title="Mit Google-Konto anmelden, um Charaktere in der Cloud zu sichern"
+        >
+          <span>🎲</span>
+          <span>{isLoggingIn ? 'Anmeldung...' : 'Mit Google anmelden'}</span>
+        </button>
+      </div>
     );
   }
 
   return (
-    <div ref={menuRef} style={{ position: 'relative', display: 'inline-block' }}>
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="btn"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
-          padding: '2px 8px',
-          background: 'rgba(253, 246, 226, 0.9)',
-          border: '1px solid var(--pb)',
-          borderRadius: '20px',
-          cursor: 'pointer',
-          boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-        }}
-      >
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+      <SyncIndicator />
+      <div ref={menuRef} style={{ position: 'relative', display: 'inline-block' }}>
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="btn"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '2px 8px',
+            background: 'rgba(253, 246, 226, 0.9)',
+            border: '1px solid var(--pb)',
+            borderRadius: '20px',
+            cursor: 'pointer',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+          }}
+        >
         {avatarUrl ? (
           <img
             src={avatarUrl}
@@ -199,6 +205,7 @@ export const UserMenu: React.FC = () => {
           </button>
         </div>
       )}
+      </div>
     </div>
   );
 };

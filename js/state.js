@@ -24,7 +24,10 @@ import {
 import {
   saveToStorage,
   loadFromStorage,
-  clearState
+  clearState,
+  setStorageAdapter,
+  getStorageAdapter,
+  applyLoadedState
 } from './state/StorageManager.js';
 
 import {
@@ -121,6 +124,9 @@ export {
   saveToStorage,
   loadFromStorage,
   clearState,
+  setStorageAdapter,
+  getStorageAdapter,
+  applyLoadedState,
   
   recalculatePCStats,
   recalculateDailyAbilities,
@@ -203,6 +209,9 @@ export const CombatState = {
   saveToStorage,
   loadFromStorage,
   clearState,
+  setStorageAdapter,
+  getStorageAdapter,
+  applyLoadedState,
   setRole,
   getRole,
   getActivePC,

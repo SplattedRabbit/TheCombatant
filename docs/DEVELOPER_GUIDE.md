@@ -4,13 +4,14 @@ Willkommen im Projekt! Dieses Handbuch dient als zentrale Referenz für neue AI-
 
 ---
 
-## 1. Architektur in 5 Sätzen (4-Schichten-Modell)
+## 1. Architektur im Überblick (6-Schichten-Modell)
 
-1. **Presentation Layer (`src/`)**: Komplett in React + Vite + TypeScript. Rendert die UI und leitet Inputs an die State-Bridge weiter.
-2. **State-Bridge (`src/hooks/useCombatState.ts`)**: Abonniert den Vanilla-EventBus (`StateEvents`) und liefert immutable Snapshots an die React-Komponenten.
-3. **State & Sync Layer (`js/state/`, `js/network/`)**: Verwaltet den In-Memory-Zustand (`PCManager.js`, `EncounterManager.js`) und synchronisiert Delta-Diffs via WebRTC.
-4. **Rules & Data (`js/rules/`, `js/data/`)**: Reine D&D 3.5e Regeln. Berechnet stufenbasierte Werte und enthält Registries (Waffen, Skills, Talente).
-5. **Domain Models (`js/models/`)**: Reines, HTML-freies OOD. Stat-Kapselung mit Modifikatoren-Stacking (`Stat.js`), `Weapon.js`, `Armor.js`, `Item.js` und `Combatant.js`.
+1. **Presentation Layer (`src/`)**: Komplett in React + Vite + TypeScript. Rendert die UI, Dialoge, Badges (`SyncIndicator.tsx`) und leitet Inputs an die State-Bridge weiter.
+2. **State-Bridge (`src/hooks/useCombatState.ts`)**: Abonniert den Vanilla-EventBus (`StateEvents`) und liefert immutable Snapshots mit Prototyp-Rehydrierung an die React-Komponenten.
+3. **Storage & Cloud-Sync Layer (`src/services/storage/`, `src/services/supabase/`)**: Adapter-Pattern (`IStorageAdapter`). Schaltet zwischen `LocalStorageAdapter` (Gast/Offline) und `SupabaseStorageAdapter` (Cloud-Sync mit 800ms Debounce & Local-First Puffer) um.
+4. **State Management & Facades (`js/state/`)**: Verwaltet den In-Memory-Zustand (`PCManager.js`, `EncounterManager.js`, `StorageManager.js`).
+5. **Rules & Data (`js/rules/`, `js/data/`)**: Reine D&D 3.5e Regeln. Berechnet stufenbasierte Werte und enthält Registries (Waffen, Skills, Talente).
+6. **Domain Models (`js/models/`)**: Reines, HTML-freies OOD. Stat-Kapselung mit Modifikatoren-Stacking (`Stat.js`), `Weapon.js`, `Armor.js`, `Item.js` und `Combatant.js`.
 
 ---
 
@@ -22,7 +23,7 @@ Da große Dateien den AI-Kontext blockieren, müssen folgende Befehle und Verhal
 Ausführliche Test-Protokolle verbrauchen Tausende Token. Verwende **immer** den `--test-reporter=dot` Parameter.
 ```powershell
 # 1. GEZIELTES TESTEN (während der Entwicklung nur die betroffene Datei testen):
-node --import ./Tests/setup.js --test --test-reporter=dot Tests/bugfixes_v350.test.js
+node --import ./Tests/setup.js --test --test-reporter=dot Tests/storage_supabase_adapter.test.js
 
 # 2. GLOBALER TESTLAUF (NUR einmalig direkt vor dem Turn-Ende erlaubt):
 node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
@@ -41,7 +42,20 @@ node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
 
 ---
 
-## 3. Dateigrößen & Modularisierung
+## 3. Storage- & Cloud-Sync-System (Phase 3)
+
+* **Adapter-Pattern (`src/services/storage/`):**
+  - `IStorageAdapter.ts`: Definiert den Vertrag für alle Speicheradapter samt Entity-Hooks (`saveCharacter`, `saveCampaign`) und Lifecycle-Events.
+  - `LocalStorageAdapter.ts`: Synchroner Fallback für Gäste, Offline-Nutzung und Node-Testläufe.
+  - `SupabaseStorageAdapter.ts`: Local-First Puffer + 800ms Debounce Batching + Dual-Routing (`characters` vs. `campaigns`).
+  - `StorageService.ts`: Zentraler Singleton-Dispatcher. Schaltet bei Login (`AuthContext`) auf Supabase und bei Logout auf LocalStorage.
+* **UI-Sync-Hook (`useSyncStatus.ts`):**
+  - Liefert `{ status, adapterName, lastSyncedAt, error, flushPendingSaves }` reaktiv an Komponenten.
+  - Ermöglicht dem `SyncIndicator.tsx` im Header Live-Statusfeedback (Synchronisiert, Speichert, Offline, Gast).
+
+---
+
+## 4. Dateigrößen & Modularisierung
 
 * **Richtwerte für Dateilängen (AGENT.md):**
   * `< 300 Zeilen`: Ideal.
@@ -52,7 +66,7 @@ node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
 
 ---
 
-## 4. Kern-Systeme & wichtige APIs
+## 5. Kern-Systeme & wichtige APIs
 
 * **Stat-System (`Stat.js`):** Berechnet stapelbare Boni. Dodge- und untypisierte Boni kumulieren (additiv). Boni anderer Typen (z. B. Enhancement, Deflection) stacken nicht — es zählt nur der höchste Wert.
 * **Waffeneigenschaften (`Weapon.js`):** Unterstützt `extraDamageDice` (z. B. `1w6`) und `extraDamageType` (z. B. `Feuer`). Legacy-Strings werden beim Laden geparst.
@@ -66,8 +80,7 @@ node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
 
 ---
 
-## 5. UI-Spezifika & Fallstricke
+## 6. UI-Spezifika & Fallstricke
 
 * **Dialog-Mindestbreite:** Dialogfenster für Zauberauswahl, Buffauswahl oder Vorbereitung müssen mindestens `480px` bis `520px` breit sein — geringere Breiten schneiden Inhalte und Metamagic-Optionen ab.
 * **Popup-Skalierung:** Neue Dialoge/Overlays müssen in die Skalierungsliste (`#roleOverlay ...`) in `css/popups.css` eingetragen werden — sonst werden sie auf Tablets und bei hoher DPI-Skalierung viel zu klein gerendert.
-

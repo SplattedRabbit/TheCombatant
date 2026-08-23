@@ -5,8 +5,9 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import type { User, Session } from '@supabase/supabase-js';
-import { supabase, isSupabaseConfigured } from '../services/supabase/supabaseClient';
-import type { ProfileRow } from '../services/supabase/database.types';
+import { supabase, isSupabaseConfigured } from '../services/supabase/supabaseClient.ts';
+import type { ProfileRow } from '../services/supabase/database.types.ts';
+import { storageService } from '../services/storage/StorageService.ts';
 
 interface AuthContextType {
   user: User | null;
@@ -49,14 +50,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     if (!isConfigured) {
+      storageService.initializeForUser(null);
       setIsLoading(false);
       return;
     }
 
     // 1. Check initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
+      await storageService.initializeForUser(session?.user ?? null);
       if (session?.user) {
         fetchProfile(session.user.id);
       }
@@ -67,6 +70,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
       setSession(newSession);
       setUser(newSession?.user ?? null);
+      await storageService.initializeForUser(newSession?.user ?? null);
       if (newSession?.user) {
         await fetchProfile(newSession.user.id);
       } else {
@@ -99,9 +103,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signOut = async () => {
     if (!isConfigured) {
+      await storageService.initializeForUser(null);
       return { error: null };
     }
 
+    await storageService.initializeForUser(null);
     const { error } = await supabase.auth.signOut();
     setUser(null);
     setSession(null);

@@ -62,9 +62,13 @@ export function CombatEngineProvider({ children }: ProviderProps) {
         // @ts-ignore
         const { CombatState } = await import('@core/state.js');
 
-        // Lade Zauberdatenbank & LocalStorage
+        // Registriere zentralen StorageService als aktiven Adapter
+        const { storageService } = await import('../services/storage/StorageService.ts');
+        CombatState.setStorageAdapter(storageService);
+
+        // Lade Zauberdatenbank & State aus aktivem Speicheradapter
         await CombatSpells.loadSpells();
-        CombatState.loadFromStorage();
+        await CombatState.loadFromStorage();
 
         // Stelle aktive Online-Sitzung wieder her
         const storedState = CombatState.getState();
@@ -86,8 +90,17 @@ export function CombatEngineProvider({ children }: ProviderProps) {
 
     bootstrap();
 
+    // Flush any pending saves before browser window closes or reloads
+    const handleBeforeUnload = () => {
+      import('../services/storage/StorageService.ts').then(({ storageService }) => {
+        storageService.flushPendingSaves();
+      });
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
     return () => {
       mounted = false;
+      window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, []);
 
