@@ -10,6 +10,9 @@ import { CharacterRosterDialog } from '../player/CharacterRosterDialog.tsx';
 import { CampaignManagerDialog } from '../dm/CampaignManagerDialog.tsx';
 import { JoinCampaignDialog } from '../dialogs/JoinCampaignDialog.tsx';
 
+// @ts-ignore
+import { showCustomAlert } from '@core/ui/components/dialogs.js';
+
 export const UserMenu: React.FC = () => {
   const { user, profile, isAuthenticated, isLoading, isConfigured, signInWithGoogle, signOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
@@ -31,11 +34,29 @@ export const UserMenu: React.FC = () => {
   }, []);
 
   const handleSignIn = async () => {
+    if (!isConfigured) {
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert(
+          'Local Storage Mode',
+          'Cloud authentication requires Supabase credentials. In offline/local guest mode, your characters and campaigns are saved safely in your browser storage.'
+        );
+      }
+      return;
+    }
+
     try {
       setIsLoggingIn(true);
-      await signInWithGoogle();
-    } catch (err) {
+      const res = await signInWithGoogle();
+      if (res?.error) {
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert('Sign In Failed', res.error.message || 'Could not connect to Google OAuth.');
+        }
+      }
+    } catch (err: any) {
       console.error('[UserMenu] Login failed:', err);
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert('Sign In Error', err?.message || 'Unexpected login error.');
+      }
     } finally {
       setIsLoggingIn(false);
     }
@@ -44,19 +65,7 @@ export const UserMenu: React.FC = () => {
   const displayName = profile?.name || user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Adventurer';
   const avatarUrl = profile?.avatar_url || user?.user_metadata?.avatar_url;
 
-  // If Supabase is not configured (e.g. offline dev mode without env), show offline badge
-  if (!isConfigured) {
-    return (
-      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-        <SyncIndicator />
-        <span className="hdr-action-badge" title="Local Mode: No Supabase configured">
-          💾 Offline
-        </span>
-      </div>
-    );
-  }
-
-  // Not logged in: Show Login Button
+  // Not logged in: Always show Login Button alongside SyncIndicator
   if (!isAuthenticated) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>

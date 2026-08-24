@@ -1,12 +1,7 @@
-/**
- * @module    SyncIndicator
- * @summary   Visual storage sync status pill and manual flush trigger.
- *            Displays cloud sync status ('idle' | 'saving' | 'saved' | 'error')
- *            or local guest mode with animated feedback and tooltips.
- */
-
 import React, { useState } from 'react';
 import { useSyncStatus } from '../../hooks/useSyncStatus.ts';
+// @ts-ignore
+import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 export const SyncIndicator: React.FC = () => {
   const { status, adapterName, lastSyncedAt, error, flushPendingSaves } = useSyncStatus();
@@ -14,14 +9,34 @@ export const SyncIndicator: React.FC = () => {
 
   const handleManualSync = async () => {
     try {
-      console.log(`%c[SyncIndicator] Manual sync triggered | Current adapter: ${adapterName} | Status: ${status}`, 'color: #0284c7; font-weight: bold;');
+      if (adapterName === 'local') {
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert(
+            'Local Storage Mode',
+            'Your characters and encounters are saved safely in your local browser storage. To sync across multiple devices and access live DM campaigns, click "Sign In" with Google.'
+          );
+        }
+        return;
+      }
+
       setIsFlushing(true);
       await flushPendingSaves();
-      console.log('%c[SyncIndicator] Manual sync completed successfully', 'color: #059669; font-weight: bold;');
-    } catch (err) {
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert(
+          'Cloud Synchronization',
+          'Cloud sync completed successfully. All active character changes are backed up.'
+        );
+      }
+    } catch (err: any) {
       console.error('[SyncIndicator] Manual sync failed:', err);
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert(
+          'Sync Error',
+          `Could not synchronize with cloud: ${err?.message || 'Network error'}. Local cache is still active.`
+        );
+      }
     } finally {
-      setTimeout(() => setIsFlushing(false), 600);
+      setTimeout(() => setIsFlushing(false), 500);
     }
   };
 
@@ -36,62 +51,35 @@ export const SyncIndicator: React.FC = () => {
   // Configuration based on adapter and status
   let icon = '☁️';
   let label = 'Cloud';
-  let badgeColor = '#065f46'; // Dark Emerald
-  let bgStyle = 'rgba(6, 95, 70, 0.08)';
-  let borderColor = 'rgba(6, 95, 70, 0.3)';
-  let title = 'Cloud synchronization active';
+  let title = 'Cloud synchronization active. Click for details.';
 
   if (adapterName === 'local') {
     icon = '💾';
     label = 'Local';
-    badgeColor = '#854d0e'; // Warm Amber
-    bgStyle = 'rgba(133, 77, 14, 0.08)';
-    borderColor = 'rgba(133, 77, 14, 0.3)';
-    title = 'Guest Mode: Data saved locally in browser';
+    title = 'Local Guest Mode: Data stored in browser. Click for info.';
   } else if (status === 'saving' || isFlushing) {
     icon = '🔄';
     label = 'Saving...';
-    badgeColor = '#1e40af'; // Indigo
-    bgStyle = 'rgba(30, 64, 175, 0.08)';
-    borderColor = 'rgba(30, 64, 175, 0.3)';
     title = 'Saving changes to cloud...';
   } else if (status === 'saved') {
     icon = '✓';
     label = 'Saved';
-    badgeColor = '#065f46';
-    bgStyle = 'rgba(6, 95, 70, 0.12)';
-    borderColor = 'rgba(6, 95, 70, 0.4)';
-    title = timeStr ? `Saved to cloud (${timeStr})` : 'Saved to cloud';
+    title = timeStr ? `Saved to cloud (${timeStr}). Click to force sync.` : 'Saved to cloud. Click to force sync.';
   } else if (status === 'error') {
     icon = '⚠️';
     label = 'Offline';
-    badgeColor = '#991b1b'; // Red
-    bgStyle = 'rgba(153, 27, 27, 0.1)';
-    borderColor = 'rgba(153, 27, 27, 0.4)';
-    title = error ? `Sync Error: ${error.message} (Local cache active)` : 'Sync Error: Local cache active';
+    title = error ? `Sync Error: ${error.message}. Local cache active.` : 'Sync Error: Local cache active.';
   }
 
   return (
     <button
       type="button"
       onClick={handleManualSync}
-      title={`${title} (Click to force sync)`}
+      className="hdr-action-btn"
+      title={title}
       style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '4px',
-        padding: '2px 7px',
-        borderRadius: '12px',
-        border: `1px solid ${borderColor}`,
-        background: bgStyle,
-        color: badgeColor,
-        fontSize: '10.5px',
-        fontFamily: "'IM Fell English SC', serif",
-        fontWeight: 'bold',
         cursor: 'pointer',
         userSelect: 'none',
-        transition: 'all 0.2s ease',
-        lineHeight: 1,
       }}
     >
       <span
@@ -105,7 +93,7 @@ export const SyncIndicator: React.FC = () => {
       </span>
       <span>{label}</span>
       {timeStr && status === 'saved' && (
-        <span style={{ fontSize: '9px', opacity: 0.8, fontWeight: 'normal', fontFamily: "'Crimson Text', serif" }}>
+        <span style={{ fontSize: '9px', opacity: 0.75, fontWeight: 'normal', fontFamily: "'Crimson Text', serif" }}>
           {timeStr}
         </span>
       )}
