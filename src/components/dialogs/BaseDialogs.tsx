@@ -5,6 +5,7 @@
  */
 
 import React, { useState } from 'react';
+import { sanitizeHtml } from '../../utils/sanitize';
 
 // Common overlay wrapper component
 const DialogOverlay: React.FC<{ children: React.ReactNode; onClose?: () => void; width?: number; id?: string }> = ({ children, onClose, width = 440, id }) => {
@@ -67,7 +68,7 @@ export const CustomAlertModal: React.FC<CustomAlertModalProps> = ({ title, messa
       <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, var(--pb), transparent)', margin: '8px 0 12px' }} />
       <div 
         style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--ink)', lineHeight: 1.5, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}
-        dangerouslySetInnerHTML={{ __html: message }}
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(message) }}
       />
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
         <button 
@@ -112,7 +113,7 @@ export const CustomConfirmModal: React.FC<CustomConfirmModalProps> = ({ title, m
       <div 
         className="info-dialog-body" 
         style={{ textAlign: 'left', marginBottom: '12px', fontSize: '10px', color: 'var(--ink)', fontFamily: "'Crimson Text', serif", lineHeight: 1.35 }}
-        dangerouslySetInnerHTML={{ __html: messageHtml }}
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(messageHtml) }}
       />
       <div style={{ display: 'flex', justifyContent: 'center', gap: '8px' }}>
         <button 

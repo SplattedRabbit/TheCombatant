@@ -7,6 +7,7 @@ import { getPrestigeClassFeatures } from '@core/rules/prestigeClassEngine.js';
 import { PRESTIGE_CLASSES_REGISTRY } from '@core/data/prestigeClasses-data.js';
 // @ts-ignore
 import { CLASSES } from '@core/rules/RulesData.js';
+import { sanitizeHtml } from '../../../utils/sanitize';
 
 interface PrestigeClassFeaturesCardProps {
   pc: any;
@@ -133,7 +134,7 @@ export const PrestigeClassFeaturesCard: React.FC<PrestigeClassFeaturesCardProps>
 
           {rulesOpen && ui.rawText && (
             <div style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '1px', fontFamily: "'Crimson Text', serif" }}
-              dangerouslySetInnerHTML={{ __html: ui.rawText }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(ui.rawText) }}
             />
           )}
 
