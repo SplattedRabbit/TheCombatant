@@ -22,6 +22,7 @@ import { CombatState } from '@core/state.js';
 interface CombatEventBus {
   listeners: Record<string, Array<(...args: any[]) => void>>;
   on(event: string, cb: (...args: any[]) => void): void;
+  off(event: string, cb: (...args: any[]) => void): void;
   emit(event: string, ...args: any[]): void;
 }
 

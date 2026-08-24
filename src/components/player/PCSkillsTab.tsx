@@ -25,8 +25,35 @@ import { SKILL_TRICKS_REGISTRY } from '@core/data/skillTricks-data.js';
 import { SkillTrickDetailsDialog } from '../dialogs/SkillTrickDetailsDialog';
 import { formatMod, getStatMod } from './attributeHelper';
 
+function getSkillRanks(pc: any, key: string): number {
+  return (pc?.skills && pc.skills[key]) ? parseFloat(pc.skills[key].ranks) || 0 : 0;
+}
+
+function getSkillMisc(pc: any, key: string): number {
+  return (pc?.skills && pc.skills[key]) ? parseInt(pc.skills[key].misc, 10) || 0 : 0;
+}
+
+function getArmorCheckPenalty(pc: any): number {
+  let acp = 0;
+  if (Array.isArray(pc?.armors)) {
+    pc.armors.forEach((a: any) => {
+      if (a.isEquipped) {
+        acp += (parseInt(a.checkPenaltyOverride, 10) || parseInt(a.checkPenalty, 10) || 0);
+      }
+    });
+  }
+  return acp;
+}
+
+function getSkillMod(pc: any, key: string): number {
+  if (typeof pc?.getSkillModifier === 'function') {
+    return pc.getSkillModifier(key);
+  }
+  return calculateSkillModifier(pc, key);
+}
+
 interface PCSkillsTabProps {
-  pc: any; // Declared as any for runtime compatibility with dynamic prototype methods
+  pc: any;
 }
 
 export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
@@ -40,49 +67,11 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
   const [focusedMiscKey, setFocusedMiscKey] = useState<string | null>(null);
   const [focusedMiscVal, setFocusedMiscVal] = useState<string>('');
 
-  // ---------------------------------------------------------------------------
-  // Dynamic Method Patching for Snapshot compatibility
-  // ---------------------------------------------------------------------------
-  const patchedPC: any = useMemo(() => {
-    if (!pc) return null;
-    const patched = { ...pc };
-    
-    patched.getSkillRanks = (key: string) => {
-      return (patched.skills && patched.skills[key]) ? parseFloat((patched.skills[key] as any).ranks) || 0 : 0;
-    };
-    
-    patched.getSkillMisc = (key: string) => {
-      return (patched.skills && patched.skills[key]) ? parseInt((patched.skills[key] as any).misc) || 0 : 0;
-    };
-    
-    patched.getAttributeMod = (abl: string) => {
-      return getStatMod((patched as any)[abl]);
-    };
-    
-    patched.getArmorCheckPenalty = () => {
-      let acp = 0;
-      if (Array.isArray(patched.armors)) {
-        patched.armors.forEach((a: any) => {
-          if (a.isEquipped) {
-            acp += (parseInt(a.checkPenaltyOverride) || parseInt(a.checkPenalty) || 0);
-          }
-        });
-      }
-      return acp;
-    };
-    
-    patched.getSkillModifier = (key: string) => {
-      return calculateSkillModifier(patched, key);
-    };
-
-    return patched;
-  }, [pc]);
-
-  if (!patchedPC) return null;
+  if (!pc) return null;
 
   // Calculate SP points
-  const spentSP = CombatRules.calculateSpentSkillPoints(patchedPC);
-  const totalSP = CombatRules.calculateTotalSkillPoints(patchedPC);
+  const spentSP = CombatRules.calculateSpentSkillPoints(pc);
+  const totalSP = CombatRules.calculateTotalSkillPoints(pc);
   const isOverspent = spentSP > totalSP;
   const badgeBg = isOverspent ? 'rgba(139, 26, 26, 0.15)' : 'rgba(139, 26, 26, 0.08)';
   const badgeBorderColor = isOverspent ? 'var(--red)' : 'var(--pb)';
@@ -98,13 +87,13 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     }
 
     // Feat bonuses
-    const featBonus = applyFeatSkillBonuses(patchedPC, key, skill);
+    const featBonus = applyFeatSkillBonuses(pc, key, skill);
     if (featBonus > 0) {
       lines.push(`• Feat bonuses: ${formatMod(featBonus)}`);
     }
 
     // Racial bonuses
-    const race = (patchedPC.race || 'human').toLowerCase();
+    const race = (pc.race || 'human').toLowerCase();
     let racialBonus = 0;
     if (race === 'dwarf' && key === 'craft') racialBonus = 2;
     else if (race === 'elf' && ['listen', 'search', 'spot'].includes(key)) racialBonus = 2;
@@ -121,14 +110,14 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
 
     // Synergy effects
     let synergy = 0;
-    if (key === 'balance' && patchedPC.getSkillRanks('tumble') >= 5) synergy += 2;
-    if (key === 'escape_artist' && patchedPC.getSkillRanks('tumble') >= 5) synergy += 2;
-    if (key === 'diplomacy' && patchedPC.getSkillRanks('bluff') >= 5) synergy += 2;
-    if (key === 'disguise' && patchedPC.getSkillRanks('bluff') >= 5) synergy += 2;
-    if (key === 'intimidate' && patchedPC.getSkillRanks('bluff') >= 5) synergy += 2;
+    if (key === 'balance' && getSkillRanks(pc, 'tumble') >= 5) synergy += 2;
+    if (key === 'escape_artist' && getSkillRanks(pc, 'tumble') >= 5) synergy += 2;
+    if (key === 'diplomacy' && getSkillRanks(pc, 'bluff') >= 5) synergy += 2;
+    if (key === 'disguise' && getSkillRanks(pc, 'bluff') >= 5) synergy += 2;
+    if (key === 'intimidate' && getSkillRanks(pc, 'bluff') >= 5) synergy += 2;
     if (key === 'use_magic_device') {
-      if (patchedPC.getSkillRanks('spellcraft') >= 5) synergy += 2;
-      if (patchedPC.getSkillRanks('decipher_script') >= 5) synergy += 2;
+      if (getSkillRanks(pc, 'spellcraft') >= 5) synergy += 2;
+      if (getSkillRanks(pc, 'decipher_script') >= 5) synergy += 2;
     }
     if (synergy > 0) {
       lines.push(`• Synergy: ${formatMod(synergy)}`);
@@ -136,7 +125,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
 
     // Armor check penalty (ACP)
     if (skill.hasACP) {
-      const acp = patchedPC.getArmorCheckPenalty();
+      const acp = getArmorCheckPenalty(pc);
       if (acp !== 0) {
         const penaltyVal = key === 'swim' ? -2 * acp : -acp;
         lines.push(`• Armor Check Penalty (ACP): ${formatMod(penaltyVal)}`);
@@ -144,7 +133,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     }
 
     // Conditions
-    const hasShaken = patchedPC.conditions.some((c: any) => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
+    const hasShaken = (pc.conditions || []).some((c: any) => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
     if (hasShaken) {
       lines.push(`• Condition (Shaken): -2`);
     }
@@ -159,12 +148,12 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       { label: `${skill.abl.toUpperCase()}-Mod`, value: attrMod }
     ];
 
-    const featBonus = applyFeatSkillBonuses(patchedPC, key, skill);
+    const featBonus = applyFeatSkillBonuses(pc, key, skill);
     if (featBonus > 0) {
       breakdown.push({ label: 'Feat bonuses', value: featBonus });
     }
 
-    const race = (patchedPC.race || 'human').toLowerCase();
+    const race = (pc.race || 'human').toLowerCase();
     let racialBonus = 0;
     if (race === 'dwarf' && key === 'craft') racialBonus = 2;
     else if (race === 'elf' && ['listen', 'search', 'spot'].includes(key)) racialBonus = 2;
@@ -184,19 +173,19 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     }
 
     // Synergies
-    if (key === 'balance' && patchedPC.getSkillRanks('tumble') >= 5) breakdown.push({ label: 'Synergy (Tumble)', value: 2 });
-    if (key === 'escape_artist' && patchedPC.getSkillRanks('tumble') >= 5) breakdown.push({ label: 'Synergy (Tumble)', value: 2 });
-    if (key === 'diplomacy' && patchedPC.getSkillRanks('bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
-    if (key === 'disguise' && patchedPC.getSkillRanks('bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
-    if (key === 'intimidate' && patchedPC.getSkillRanks('bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
+    if (key === 'balance' && getSkillRanks(pc, 'tumble') >= 5) breakdown.push({ label: 'Synergy (Tumble)', value: 2 });
+    if (key === 'escape_artist' && getSkillRanks(pc, 'tumble') >= 5) breakdown.push({ label: 'Synergy (Tumble)', value: 2 });
+    if (key === 'diplomacy' && getSkillRanks(pc, 'bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
+    if (key === 'disguise' && getSkillRanks(pc, 'bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
+    if (key === 'intimidate' && getSkillRanks(pc, 'bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
     if (key === 'use_magic_device') {
-      if (patchedPC.getSkillRanks('spellcraft') >= 5) breakdown.push({ label: 'Synergy (Spellcraft)', value: 2 });
-      if (patchedPC.getSkillRanks('decipher_script') >= 5) breakdown.push({ label: 'Synergy (Decipher Script)', value: 2 });
+      if (getSkillRanks(pc, 'spellcraft') >= 5) breakdown.push({ label: 'Synergy (Spellcraft)', value: 2 });
+      if (getSkillRanks(pc, 'decipher_script') >= 5) breakdown.push({ label: 'Synergy (Decipher Script)', value: 2 });
     }
 
     // ACP
     if (skill.hasACP) {
-      const acp = patchedPC.getArmorCheckPenalty();
+      const acp = getArmorCheckPenalty(pc);
       if (acp !== 0) {
         const penaltyVal = key === 'swim' ? -2 * acp : -acp;
         breakdown.push({ label: 'Armor Check Penalty (ACP)', value: penaltyVal });
@@ -204,7 +193,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     }
 
     // Conditions
-    const hasShaken = patchedPC.conditions.some((c: any) => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
+    const hasShaken = (pc.conditions || []).some((c: any) => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));
     if (hasShaken) {
       breakdown.push({ label: 'Condition (Shaken)', value: -2 });
     }
@@ -217,12 +206,12 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     if (isNaN(num) || num < 0) num = 0;
     num = Math.floor(num); // No half ranks allowed
 
-    const ranks = patchedPC.getSkillRanks(key);
-    const isClass = CombatRules.isClassSkill(key, patchedPC);
+    const ranks = getSkillRanks(pc, key);
+    const isClass = CombatRules.isClassSkill(key, pc);
 
     if (num > ranks) {
-      const spentSP = CombatRules.calculateSpentSkillPoints(patchedPC);
-      const totalSP = CombatRules.calculateTotalSkillPoints(patchedPC);
+      const spentSP = CombatRules.calculateSpentSkillPoints(pc);
+      const totalSP = CombatRules.calculateTotalSkillPoints(pc);
       const freeSP = totalSP - spentSP;
       const cost = (num - ranks) * (isClass ? 1 : 2);
 
@@ -246,7 +235,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       }
     }
 
-    const maxRanks = CombatRules.getPCMaxRanks(key, patchedPC);
+    const maxRanks = CombatRules.getPCMaxRanks(key, pc);
     const maxAllowed = Math.floor(maxRanks);
     if (num > maxAllowed) num = maxAllowed;
 
@@ -258,7 +247,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
   };
 
   const handleMiscChange = (key: string, val: string) => {
-    let num = parseInt(val);
+    let num = parseInt(val, 10);
     if (isNaN(num)) num = 0;
 
     CombatState.updatePCBatch((freshPC: any) => {
@@ -278,9 +267,9 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
 
       let matchesFilter = true;
       if (filterType === 'class') {
-        matchesFilter = CombatRules.isClassSkill(key, patchedPC);
+        matchesFilter = CombatRules.isClassSkill(key, pc);
       } else if (filterType === 'trained') {
-        matchesFilter = patchedPC.getSkillRanks(key) > 0;
+        matchesFilter = getSkillRanks(pc, key) > 0;
       }
 
       return matchesQuery && matchesFilter;
@@ -289,10 +278,10 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       const nameB = SKILLS_REGISTRY[b].nameEn || SKILLS_REGISTRY[b].nameDe;
       return nameA.localeCompare(nameB);
     });
-  }, [searchQuery, filterType, patchedPC]);
+  }, [searchQuery, filterType, pc]);
 
-  const learnedTricks = patchedPC.skillTricks || [];
-  const maxTricksLimit = CombatRules.getMaxSkillTricksLimit(patchedPC);
+  const learnedTricks = pc.skillTricks || [];
+  const maxTricksLimit = CombatRules.getMaxSkillTricksLimit(pc);
 
   const filteredTricks = useMemo(() => {
     return Object.values(SKILL_TRICKS_REGISTRY).filter((trick: any) => {
@@ -382,13 +371,13 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
               {filteredSkillKeys.length > 0 ? (
                 filteredSkillKeys.map(key => {
                   const skill = SKILLS_REGISTRY[key];
-                  const isClass = CombatRules.isClassSkill(key, patchedPC);
-                  const ranks = patchedPC.getSkillRanks(key);
-                  const misc = patchedPC.getSkillMisc(key);
-                  const maxRanks = CombatRules.getPCMaxRanks(key, patchedPC);
+                  const isClass = CombatRules.isClassSkill(key, pc);
+                  const ranks = getSkillRanks(pc, key);
+                  const misc = getSkillMisc(pc, key);
+                  const maxRanks = CombatRules.getPCMaxRanks(key, pc);
                   const ranksExceeded = ranks > maxRanks;
-                  const totalMod = patchedPC.getSkillModifier(key);
-                  const attrMod = patchedPC.getAttributeMod(skill.abl);
+                  const totalMod = getSkillMod(pc, key);
+                  const attrMod = getStatMod((pc as any)[skill.abl]);
                   const isTrainedOnlyDisabled = skill.trainedOnly && ranks === 0;
                   const hasSkillExtras = totalMod !== (ranks + attrMod + misc);
 
@@ -711,9 +700,9 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
               {filteredTricks.map((trick: any) => {
                 const isLearned = learnedTricks.some((lt: any) => (typeof lt === 'object' ? lt.id === trick.key : lt === trick.key));
                 const isBonus = learnedTricks.some((lt: any) => typeof lt === 'object' && lt.id === trick.key && lt.isBonus);
-                const { met } = CombatRules.checkSkillTrickPrerequisites(trick.key, patchedPC);
-                const spentSP = CombatRules.calculateSpentSkillPoints(patchedPC);
-                const totalSP = CombatRules.calculateTotalSkillPoints(patchedPC);
+                const { met } = CombatRules.checkSkillTrickPrerequisites(trick.key, pc);
+                const spentSP = CombatRules.calculateSpentSkillPoints(pc);
+                const totalSP = CombatRules.calculateTotalSkillPoints(pc);
                 const freeSkillPoints = Math.max(0, totalSP - spentSP);
                 const hasEnoughSP = freeSkillPoints >= 2;
 
@@ -804,7 +793,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       {selectedTrick && (
         <SkillTrickDetailsDialog
           trick={selectedTrick}
-          pc={patchedPC}
+          pc={pc}
           isLearned={selectedTrick.isLearned}
           isBonus={selectedTrick.isBonus}
           onClose={() => setSelectedTrick(null)}

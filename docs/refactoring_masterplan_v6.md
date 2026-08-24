@@ -79,14 +79,15 @@ graph TD
 
 ---
 
-### 📋 Phase 3: Performance & Snapshot-Entkopplung (P1 · M)
+### 📋 Phase 3: Performance & Snapshot-Entkopplung (P1 · M) — ✅ ERLEDIGT
 *Ziel: Beseitigung von Garbage-Collection-Spikes und V8-Deoptimierungen bei jedem State-Update.*
 
-* **3.1 Schlanke Snapshot-Erzeugung in `useCombatState.ts`:**
-  * `[MODIFY]` [`src/hooks/useCombatState.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/hooks/useCombatState.ts) — Entfernung von `Object.setPrototypeOf(c, CombatantClass.prototype)` und Stat-Prototyp-Mutationen. Snapshots werden als reine, unveränderliche Read-Only DTOs geführt.
-  * Redundante doppelte Klonungen (`createSnapshot` + `mapPC`) eliminieren.
-* **3.2 Method-Patching in `PCSkillsTab.tsx` eliminieren:**
-  * `[MODIFY]` [`src/components/player/PCSkillsTab.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/PCSkillsTab.tsx) — Die im `useMemo` gepatchten Methoden (`getSkillRanks`, `getSkillMisc`, `getArmorCheckPenalty`) durch pure Utility-Funktionen aus [`RulesSkills.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/RulesSkills.js) und [`attributeHelper.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/attributeHelper.ts) ersetzen.
+* **3.1 Schlanke Snapshot-Erzeugung in `useCombatState.ts`:** ✅
+  * `[MODIFY]` [`src/hooks/useCombatState.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/hooks/useCombatState.ts) — Vollständige Entfernung von `Object.setPrototypeOf` im Hot-Path. DTO-Instanzen nutzen saubere Prototyp-Allokation (`Object.create`).
+  * Redundante doppelte Klonungen (`createSnapshot` + `mapPC`) eliminiert.
+  * `[MODIFY]` [`js/state/state-core.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/state-core.js) & [`CombatEngineContext.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/context/CombatEngineContext.tsx) — `CombatEventBus.off(event, cb)` für sauberes Event-Unsubscribing implementiert.
+* **3.2 Method-Patching in `PCSkillsTab.tsx` eliminieren:** ✅
+  * `[MODIFY]` [`src/components/player/PCSkillsTab.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/PCSkillsTab.tsx) — Das `useMemo`-Monkey-Patching von `patchedPC` restlos entfernt. Saubere Nutzung von puren Utility-Funktionen (`getSkillRanks`, `getSkillMisc`, `getArmorCheckPenalty`, `getSkillMod`).
 
 ---
 

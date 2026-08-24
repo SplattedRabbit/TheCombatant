@@ -45,9 +45,9 @@ gantt
 | Phase | Fokus | Status | Commits | Tests | Typecheck |
 | :--- | :--- | :---: | :---: | :---: | :---: |
 | **Phase 1** | Bereinigung toter Dateien, XSS-Schutz, SW-Version | ✅ **Abgeschlossen** | `e613713`, `92d6f00` | 304 / 304 ✅ | 0 Fehler ✅ |
-| **Phase 2** | State-API-Compliance, Declarative DialogContext | ✅ **Abgeschlossen** | Aktuell | 304 / 304 ✅ | 0 Fehler ✅ |
-| **Phase 3** | Snapshot DTOs, V8-Deopt Beseitigung, SkillsTab Patch | ⏳ **In Vorbereitung** | — | — | — |
-| **Phase 4** | Modularisierung aller 13 Dateien > 600 Zeilen | ⏳ Ausstehend | — | — | — |
+| **Phase 2** | State-API-Compliance, Declarative DialogContext | ✅ **Abgeschlossen** | `5b02cb4`, `e826f88` | 304 / 304 ✅ | 0 Fehler ✅ |
+| **Phase 3** | Snapshot DTOs, V8-Deopt Beseitigung, SkillsTab Patch | ✅ **Abgeschlossen** | Aktuell | 304 / 304 ✅ | 0 Fehler ✅ |
+| **Phase 4** | Modularisierung aller 13 Dateien > 600 Zeilen | ⏳ **In Vorbereitung** | — | — | — |
 | **Phase 5** | Vollständige Typsicherheit, Abbau aller 171 `@ts-ignore` | ⏳ Ausstehend | — | — | — |
 | **Phase 6** | Vitest UI-Tests, `React.lazy()` Code-Splitting | ⏳ Ausstehend | — | — | — |
 | **Phase 7** | Finaler Healthcheck-Scan (0 Gelb / 0 Rot) | ⏳ Ausstehend | — | — | — |
@@ -82,6 +82,7 @@ gantt
 
 ### ✅ Phase 2: State-Integrität & DialogContext
 - **Datum:** 24. August 2026
+- **Commit:** `5b02cb4` (*"refactor(phase-2): enforce 100% State-API compliance in feature cards and implement declarative DialogContext"*)
 
 #### Durchgeführte Änderungen:
 1. **State-API für Feature-Karten & Companions:**
@@ -105,24 +106,25 @@ gantt
 #### Verifikation & Testergebnisse:
 - `npm run typecheck` ➔ **0 Fehler**
 - `npm run test` ➔ **304 / 304 Tests bestanden** (24 Suiten, 0 Fehler, 11.3s)
-- `npm run build` ➔ **Erfolgreich gebündelt (dist/assets/main-*.js)**
+- `npm run build` ➔ **Erfolgreich gebündelt**
 
 ---
 
-### ⏳ Phase 3: Performance & Snapshot-Entkopplung
+### ✅ Phase 3: Performance & Snapshot-Entkopplung
+- **Datum:** 24. August 2026
 
-#### Geplante Unter-Tasks:
-```
-[ ] Task 3.1: useCombatState.ts Verschlankung
-    [ ] 3.1.1: Object.setPrototypeOf Aufrufe entfernen (Snapshots als reine Read-Only DTOs)
-    [ ] 3.1.2: Doppelte JSON.parse(JSON.stringify) Klonungen auf einen Durchlauf reduzieren
-    [ ] 3.1.3: Verifikation: Profiling & npm run test
+#### Durchgeführte Änderungen:
+1. **useCombatState.ts Verschlankung:**
+   - `[MODIFY]` [`src/hooks/useCombatState.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/hooks/useCombatState.ts) — Vollständige Entfernung von `Object.setPrototypeOf` auf mutierten JSON-Objekten (V8-Hidden-Class-Deoptimierung behoben). Prototypen werden sauber bei Allokation mit `Object.create(Proto)` zugewiesen.
+   - Redundante doppelte Klonungen (`createSnapshot` + `mapPC`) auf einen Durchlauf reduziert.
+   - `[MODIFY]` [`js/state/state-core.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/state-core.js) & [`src/context/CombatEngineContext.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/context/CombatEngineContext.tsx) — `CombatEventBus.off(event, cb)` für sauberes Event-Unsubscribing implementiert.
+2. **PCSkillsTab.tsx Method-Patching eliminieren:**
+   - `[MODIFY]` [`src/components/player/PCSkillsTab.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/PCSkillsTab.tsx) — `useMemo`-Monkey-Patching von `patchedPC` restlos entfernt. Saubere Nutzung von puren Utility-Funktionen (`getSkillRanks`, `getSkillMisc`, `getArmorCheckPenalty`, `getSkillMod`).
 
-[ ] Task 3.2: PCSkillsTab.tsx Method-Patching eliminieren
-    [ ] 3.2.1: getSkillRanks, getSkillMisc, getArmorCheckPenalty durch Pure Utility-Funktionen ersetzen
-    [ ] 3.2.2: useMemo patchedPC Workaround restlos entfernen
-    [ ] 3.2.3: Verifikation: npm run test & npm run typecheck
-```
+#### Verifikation & Testergebnisse:
+- `npm run typecheck` ➔ **0 Fehler**
+- `npm run test` ➔ **304 / 304 Tests bestanden** (24 Suiten, 0 Fehler, 12.3s)
+- `npm run build` ➔ **Erfolgreich gebündelt**
 
 ---
 
