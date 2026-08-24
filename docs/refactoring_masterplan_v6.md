@@ -43,20 +43,21 @@ graph TD
 
 ## 3. Detaillierte Phasen-Spezifikation
 
-### 📋 Phase 1: Sofortige Bereinigung & Sicherheit (P1 · XS/S)
+### 📋 Phase 1: Sofortige Bereinigung & Sicherheit (P1 · XS/S) — ✅ ERLEDIGT
 *Ziel: Eliminierung toter Altlasten, Beseitigung von XSS-Sicherheitsrisiken und Synchronisation des SW-Builders.*
 
-* **1.1 Toten Legacy-Code löschen:**
-  * `[DELETE]` [`js/app.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/app.js) (705 Zeilen — alter Vanilla-Entry-Point aus v5)
-  * `[DELETE]` [`js/ui/ui-core.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/ui/ui-core.js) (106 Zeilen — importiert nicht mehr existente Alt-Dateien)
-  * `[MODIFY]` [`Tests/startup.test.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/Tests/startup.test.js) — Import-Verweise auf gelöschte Dateien bereinigen.
-* **1.2 XSS-Sanitization:**
-  * `[MODIFY]` [`src/components/dialogs/BaseDialogs.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/dialogs/BaseDialogs.tsx) — `dangerouslySetInnerHTML` in `CustomAlertModal` und `CustomConfirmModal` durch sicheres React-JSX ersetzen.
-  * `[MODIFY]` [`src/components/player/features/PrestigeClassFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/PrestigeClassFeaturesCard.tsx) — `rawText`-HTML-Rendering absichern.
-* **1.3 Service Worker Cache-Version dynamisieren:**
-  * `[MODIFY]` [`scratch/update_sw.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/scratch/update_sw.js) — Versionsnummer automatisch aus `package.json` (`6.0.0`) auslesen (behebt den alten `v4.5.0`-Cache-String).
-* **1.4 CI/CD-Pipeline Secrets:**
-  * `[MODIFY]` [`.github/workflows/deploy.yml`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/.github/workflows/deploy.yml) & [`.github/workflows/ci.yml`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/.github/workflows/ci.yml) — `env:`-Block für `VITE_SUPABASE_URL` und `VITE_SUPABASE_ANON_KEY` im Build-Step hinterlegen.
+* **1.1 Toten Legacy-Code löschen:** ✅
+  * `[DELETE]` [`js/app.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/app.js) (705 Zeilen — alter Vanilla-Entry-Point aus v5) — **Gelöscht**
+  * `[DELETE]` [`js/ui/ui-core.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/ui/ui-core.js) (106 Zeilen — fehlerhafter Alt-Import) — **Gelöscht**
+  * `[MODIFY]` [`Tests/startup.test.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/Tests/startup.test.js) — Import-Verweise bereinigt.
+* **1.2 XSS-Sanitization:** ✅
+  * `[NEW]` [`src/utils/sanitize.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/utils/sanitize.ts) — Zero-Dependency HTML Sanitizer.
+  * `[MODIFY]` [`src/components/dialogs/BaseDialogs.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/dialogs/BaseDialogs.tsx) — `CustomAlertModal` und `CustomConfirmModal` mit `sanitizeHtml` abgesichert.
+  * `[MODIFY]` [`src/components/player/features/PrestigeClassFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/PrestigeClassFeaturesCard.tsx) — `ui.rawText` mit `sanitizeHtml` abgesichert.
+* **1.3 Service Worker Cache-Version dynamisieren:** ✅
+  * `[MODIFY]` [`scratch/update_sw.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/scratch/update_sw.js) — Versionsnummer wird nun dynamisch aus `package.json` (`v6.0.0-cache-v1`) generiert.
+* **1.4 CI/CD-Pipeline Secrets:** ✅
+  * `[MODIFY]` [`.github/workflows/deploy.yml`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/.github/workflows/deploy.yml) & [`.github/workflows/ci.yml`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/.github/workflows/ci.yml) — `env:`-Block für `VITE_SUPABASE_URL` und `VITE_SUPABASE_ANON_KEY` im Build-Step hinterlegt.
 
 ---
 
