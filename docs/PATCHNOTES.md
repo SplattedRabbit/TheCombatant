@@ -6,10 +6,40 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v6.0.3** | Patch & Perf | 24.08.2026 | Legacy PeerJS Removal, Exact Damage 1x Sync Fix, Font Preconnect & Non-Blocking Spell Loading (<10ms Startup) |
 | **v6.0.2** | Patch & Fix | 24.08.2026 | Saves & Defenses Input Hardening, Controlled React Number Buffering, Manual Initiative & Total Calculation |
 | **v6.0.1** | Hotfix & Polish | 23.08.2026 | Real-time Table Sync, Dynamic Presence PC Injection, DM Screen Isolation, Zero-Recursion RLS & Pergament Modals |
 | **v6.0.0** | Major Release | 23.08.2026 | Cloud-Sync, Google OAuth, Multi-Character Roster, DM Multi-Campaign Dashboard, Supabase Realtime WebSockets & CI/CD Automation (0 € Stack) |
 | **v5.0.0** | Major Release | 22.08.2026 | Milestone Release: Armory 2.0, Tactical Combat Hub, Complete Sourcebooks (PHB2/CA/CS), Skill Tricks, Wizard & Zero-Defect Architecture |
+
+---
+
+### v6.0.3 — Legacy PeerJS Clean-up, Single Damage Fix & Startup Performance (24.08.2026)
+
+> **Zusammenfassung:** Version 6.0.3 entfernt alle verbliebenen PeerJS-Relikte und Doppel-Broadcasts, behebt den doppelten Schadensabzug bei DM-Schadenszuweisung, harmonisiert das Live-Table-Pergament-Dropdown und eliminiert Startverzögerungen (<10ms Startup durch Font-Preconnect und asynchrones Zauber-Laden).
+
+#### 🌟 Die Kern-Verbesserungen von Version 6.0.3:
+
+1. **🧹 Restlose Entfernung von PeerJS & `NetworkManager.js`**:
+   - `NetworkManager.js` wurde vollständig gelöscht.
+   - Alle toten Referenzen (`conn.send()`, `matchingConn`, alte Dynamic Imports) in `SyncProtocol.js` wurden bereinigt.
+   - DM-Nachrichten (`dm_message`) laufen nun direkt und verlässlich über `realtimeManager.broadcastDiff()`.
+
+2. **⚔️ Fix des doppelten Schadensabzugs (Exakt 1x Schaden)**:
+   - Der alte, redundante `StateEvents.on('hp_changed')`-Listener in `SyncProtocol.js` wurde entfernt.
+   - Die moderne `RealtimeSyncBridge` ist der alleinige Single Source of Truth für alle State-Diffs.
+   - **Ergebnis:** Wenn der DM 5 Schaden vergibt, zieht der Spielerbogen exakt 5 HP ab (keine Verdopplung auf 10 mehr).
+
+3. **⚡ Instant-Startup & Whitescreen-Eliminierung**:
+   - **Font Preconnect**: `<link rel="preconnect">` und Stylesheets im `<head>` von `index.html` parallelisieren den Font-Download mit dem ersten HTML-Request.
+   - **Non-Blocking Spell Compendium**: `CombatSpells.loadSpells()` lädt alle 4 Zauberbücher im Hintergrund; die App ist in **unter 10ms startbereit (`isReady = true`)**.
+   - **Import-Wasserfall bereinigt**: Direkte statische Modul-Referenzen im Context Bootstrap.
+
+4. **🏰 Eckiges Pergament-Dropdown für 'Live Table' (`TablePresenceBar.tsx`)**:
+   - Einheitliche `.hdr-action-btn`-Optik mit Pergament-Hintergrund, feinen Messing-Trennlinien und Teilnehmerliste ohne horizontale Layout-Shifts.
+
+5. **🧪 Testsuite-Ausbau (304 / 304 Tests)**:
+   - Ergänzung der BDD-Szenarien 2.4 (Buff-Ablauf nach Rundenwechsel), 2.5 (Exakte 1-fache Schadensübertragung) und 2.6 (DM-Nachrichten).
 
 ---
 

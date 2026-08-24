@@ -112,3 +112,24 @@ Um **Bestätigungsfehler (Confirmation Bias)** zu vermeiden, spiegeln diese Test
   * Die Rundenanzahl auf `0` fällt.
 * **Then (Dann):**
   * Der Buff wird automatisch auf beiden Seiten entfernt und die Boni werden zurückgesetzt.
+
+---
+
+### **Szenario 2.5: Exakte Schadensübertragung (Keine Verdopplung/Kaskadierung bei DM-Schaden)**
+* **Given (Gegeben sei):**
+  * Ein Spieler ist mit 30 HP in der Kampagne verbunden.
+* **When (Wenn):**
+  * Der DM 5 Schaden zuweist und ein `state_diff` mit Ziel-HP 25 sendet.
+* **Then (Dann):**
+  * Der Spielerbogen reduziert die HP exakt auf 25 (kein zweiter Abzug durch alte relative Events).
+
+---
+
+### **Szenario 2.6: DM-Nachrichten-Übertragung (dm_message)**
+* **Given (Gegeben sei):**
+  * Der Spieler ist mit seiner aktiven Charakter-ID am Spieltisch eingeloggt.
+* **When (Wenn):**
+  * Der Spielleiter eine Direktnachricht oder eine Nachricht an alle sendet (`type: 'dm_message'`).
+* **Then (Dann):**
+  * Das Paket wird über Supabase WebSockets empfangen und als Pergament-Mitteilungsfenster dargestellt.
+
