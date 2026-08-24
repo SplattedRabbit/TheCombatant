@@ -328,21 +328,6 @@ export function applyIncomingDelta(packet, role, conn = null) {
         DeltaRenderer.updateCombatantNameAndStats(packet.id, packet.diff);
         
         StateEvents.emit('state_changed', s);
-
-        // Propagate diff to all other clients so they see the changes in real-time
-        import('./NetworkManager.js').then(({ broadcastToClients }) => {
-          broadcastToClients(packet);
-        });
-      } else {
-        // Player not found on DM screen (e.g. DM deleted them, or disconnect occurred)
-        // Request the client to send their full PC state to restore them on the board
-        if (conn && typeof conn.send === 'function') {
-          try {
-            conn.send({ type: 'full_pc_request', id: packet.id });
-          } catch (e) {
-            console.error('SyncProtocol: Failed to request full PC recovery:', e);
-          }
-        }
       }
       return;
     }
@@ -354,24 +339,6 @@ export function applyIncomingDelta(packet, role, conn = null) {
         StateEvents.emit('state_changed', s);
         if (uiRegistry.renderInitBar) uiRegistry.renderInitBar();
         if (uiRegistry.renderAll) uiRegistry.renderAll();
-        // Propagate registration to all other clients
-        import('./NetworkManager.js').then(({ broadcastToClients }) => {
-          broadcastToClients(packet);
-        });
-      }
-      return;
-    }
-
-    // 3c. Host requests full PC recovery from Client
-    if (packet.type === 'full_pc_request' && role === 'client') {
-      const activePC = CombatState.getActivePC();
-      if (activePC && activePC.id === packet.id) {
-        import('./NetworkManager.js').then(({ sendToHost }) => {
-          sendToHost({
-            type: 'update_pc',
-            pc: activePC
-          });
-        });
       }
       return;
     }
@@ -398,14 +365,6 @@ export function applyIncomingDelta(packet, role, conn = null) {
       if (backupPC && !s.combatants.some(c => c.id === backupPC.id)) {
         console.warn('SyncProtocol: Host diff attempted to delete local PC. Restoring local PC.');
         s.combatants.push(createCombatant(backupPC));
-        
-        // Re-register it on the host to self-heal
-        import('./NetworkManager.js').then(({ sendToHost }) => {
-          sendToHost({
-            type: 'update_pc',
-            pc: CombatState.getActivePC()
-          });
-        });
       }
 
       // Rebuild modifiers on all client combatants to keep total AC / Saves in perfect sync
@@ -441,19 +400,6 @@ export function applyIncomingDelta(packet, role, conn = null) {
       return;
     }
 
-    // 5. Full state Sync Request (e.g. initial connection or recovery)
-    if (packet.type === 'full_sync_request' && role === 'host') {
-      import('./NetworkManager.js').then(({ sendEncounterStateToClient }) => {
-        // Find connection for client
-        const activeConnections = s.session.connections;
-        const matchingConn = activeConnections.find(conn => conn.peer === packet.peerId);
-        if (matchingConn) {
-          sendEncounterStateToClient(matchingConn);
-        }
-      });
-      return;
-    }
-
     // 6. Full sync response from Host (Initial sync)
     if (packet.type === 'full_sync_response' && role === 'client') {
       CombatState.importEncounterState(packet.state, true);
@@ -469,19 +415,3 @@ export function applyIncomingDelta(packet, role, conn = null) {
     isProcessingNetworkIncoming = false;
   }
 }
-
-// Listen to internal HP changes to broadcast them relatively
-StateEvents.on('hp_changed', ({ id, delta, isHeal }) => {
-  if (isProcessingNetworkIncoming) return;
-
-  const s = getState();
-  const packet = { type: 'hp_change', id, delta, isHeal };
-
-  import('./NetworkManager.js').then(({ broadcastToClients, sendToHost }) => {
-    if (s.session && s.session.role === 'host') {
-      broadcastToClients(packet);
-    } else if (s.session && s.session.role === 'client') {
-      sendToHost(packet);
-    }
-  });
-});

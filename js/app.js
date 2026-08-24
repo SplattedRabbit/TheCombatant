@@ -2,7 +2,6 @@ import { CombatState } from './state.js';
 import { CombatUI } from './ui/ui-core.js';
 import { CombatSpells } from './spells.js';
 import { showSampleChoiceDialog } from './ui/components/dialogs.js';
-import './network/NetworkManager.js';
 
 
 // Bind Modules to Window for easy console debugging or potential external hookups
@@ -477,8 +476,8 @@ function _initEncounterControls() {
         targetPCId: target
       };
       
-      import('./network/NetworkManager.js').then(({ broadcastToClients }) => {
-        broadcastToClients(packet);
+      import('../src/services/network/RealtimeManager.ts').then(({ realtimeManager }) => {
+        realtimeManager.broadcastDiff(packet);
       });
       
       textEl.value = '';
