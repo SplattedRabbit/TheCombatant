@@ -132,7 +132,8 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 
 ## 7. Offene Bugs & Roadmap
 
-- Aktuelle Bug-Liste: `docs/Bugtracking.md`
+- **Refactoring Masterplan (100% Green Healthcheck):** `docs/refactoring_masterplan_v6.md`
+- **Code-Audit & Tiefenanalyse:** `docs/deep_code_audit_analysis.md`
 - Versionshistorie & Features: `docs/PATCHNOTES.md`
 - Entwicklerhandbuch (UI-Details, Skalierung, Dialog-Maße): `docs/DEVELOPER_GUIDE.md`
 

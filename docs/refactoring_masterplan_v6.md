@@ -1,8 +1,9 @@
 # Refactoring Masterplan: Vollständige Healthcheck-Sanierung (v6.0.0)
 
 > **Dokument-Version:** 1.0.0  
-> **Status:** Bereit zur schrittweisen Ausführung  
-> **Ziel:** Transformation aller gelben und roten Analysebefunde in einen **100% fehlerfreien, grünen Healthcheck**.
+> **Status:** Aktiv / In Ausführung auf Branch `refactoring/v5.1`  
+> **Ziel:** Transformation aller gelben und roten Analysebefunde in einen **100% fehlerfreien, grünen Healthcheck**.  
+> **Analyse-Grundlage:** [`docs/deep_code_audit_analysis.md`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/docs/deep_code_audit_analysis.md)
 
 ---
 
@@ -10,141 +11,152 @@
 
 ```mermaid
 graph TD
-    P1["Phase 1: Sofortige Bereinigung & Sicherheit"] --> P2["Phase 2: State-Integrität & DialogContext"]
+    P1["Phase 1: Sofortige Bereinigung & XSS-Sicherheit"] --> P2["Phase 2: State-API-Integrität & DialogContext"]
     P2 --> P3["Phase 3: Performance & Snapshot-Entkopplung"]
-    P3 --> P4["Phase 4: Modularisierung & Dateisplits (<450 Z.)"]
+    P3 --> P4["Phase 4: Modularisierung (Dateisplits < 450 Z.)"]
     P4 --> P5["Phase 5: Vollständige Typsicherheit (0 @ts-ignore)"]
-    P5 --> P6["Phase 6: UI-Testing & Build-Optimierung"]
-    P6 --> P7["Phase 7: Finaler Healthcheck & Verifikation"]
+    P5 --> P6["Phase 6: UI-Testing (Vitest) & Code-Splitting"]
+    P6 --> P7["Phase 7: Finaler Healthcheck & QA-Abnahme"]
 ```
 
 ---
 
-## 2. Phase 1 — Sofortige Bereinigung & Sicherheit (P1 · XS/S)
+## 2. Zieldefinition & Akzeptanzkriterien (100% Green Healthcheck)
 
-### 1.1 Toter Legacy-Code entfernen
-- [DELETE] `js/app.js` (705 Zeilen alter Vanilla-App-Code)
-- [DELETE] `js/ui/ui-core.js` (106 Zeilen — fehlerhafter Alt-Import)
-- [MODIFY] `Tests/startup.test.js` — Import-Referenzen auf gelöschte Dateien anpassen.
-
-### 1.2 XSS-Sanitization
-- [MODIFY] `src/components/dialogs/BaseDialogs.tsx` — `CustomAlertModal` und `CustomConfirmModal` auf sicheres JSX umstellen.
-- [MODIFY] `src/components/player/features/PrestigeClassFeaturesCard.tsx` — `dangerouslySetInnerHTML` absichern.
-
-### 1.3 Service Worker Cache-Version dynamisieren
-- [MODIFY] `scratch/update_sw.js` — Automatisches Auslesen der Versionsnummer aus `package.json` (`v6.0.0`).
-
----
-
-## 3. Phase 2 — State-Integrität & DialogContext (P1 · M)
-
-### 2.1 State-API-Erweiterung für Feature-Karten
-- [MODIFY] `js/state/pc/PCClasses.js` & `PCGeneral.js` — Neue Aktionen:
-  - `updatePCWizardSpecialization(spec, prob1, prob2)`
-  - `togglePCSneakAttack(bool)`
-  - `togglePCTrickyFighting(bool)`
-  - `updatePCDailyAbilityUsed(index, delta)`
-- [MODIFY] `src/components/player/features/WizardFeaturesCard.tsx`
-- [MODIFY] `src/components/player/features/PrestigeClassFeaturesCard.tsx`
-- [MODIFY] `src/components/player/features/RangerFeaturesCard.tsx`
-- [MODIFY] `src/components/player/companion/CompanionSheet.tsx`
-- [MODIFY] `src/components/player/companion/FamiliarSheet.tsx`
-
-### 2.2 Deklarativer DialogContext
-- [NEW] `src/context/DialogContext.tsx`
-- [MODIFY] `src/main.tsx` — Einbindung des `DialogProvider` im React-Tree.
-- [DELETE] `src/components/dialogs/ReactDialogBridge.tsx` & Beseitigung von `(window as any).__REACT_DIALOG_BRIDGE__`.
+| Metrik / Kriterium | Ist-Zustand (Audit) | Soll-Zustand (Ziel) | Prüfmethode |
+| :--- | :--- | :--- | :--- |
+| **Sicherheit (XSS)** | 3× ungesäubertes `dangerouslySetInnerHTML` | **0× XSS-Risiko** (Sicheres JSX) | AST-Grep & Code-Scan |
+| **Toter Code / Altlasten** | `js/app.js` (705 Z.), `js/ui/ui-core.js` (106 Z.) | **Vollständig gelöscht** | Dateisystem-Check |
+| **Architektur / State** | 8× direkte Mutation von `getActivePC()` | **100% State-API-Compliance** | AST-Grep `CombatState.getActivePC().` |
+| **Performance (V8 / GC)** | `JSON.parse(JSON.stringify)` + `setPrototypeOf` in Snapshots | **Reine DTOs ohne Prototyp-Mutation** | Profiler & Benchmarks |
+| **Dialog-Architektur** | Isolierte `createRoot`-Instanzen & `window`-Hack | **Deklarativer `DialogContext` im React-Tree** | React Component Hierarchy |
+| **Typsicherheit (`@ts-ignore`)**| **171 Direktiven** | **0 Direktiven** | `grep -r "@ts-ignore"` = 0 |
+| **`any`-Typen in TypeScript** | **760 Vorkommen** | **0 unbegründete `any`** (voll typisiert) | `tsc --noEmit` & Linter |
+| **Dateigrößen (>600 Zeilen)** | 13 UI-Komponenten > 600 Zeilen | **0 UI-Dateien > 600 Zeilen** (alle < 450 Z.) | Dateilängen-Check |
+| **Prestige-Klassen-Rules** | Formellogik in `PrestigeClassFeaturesCard` | **Modulare `*Rules.js`-Dateien** in `js/rules/classes/` | Architektur-Matrix |
+| **React-Testabdeckung** | 0 Tests für React-Komponenten | **Komponententests mit Vitest & RTL** | `npm run test:ui` |
+| **Build & Chunks** | Monolithisches UI-Bundle (`main.js` 694 kB) | **Code-Splitting via `React.lazy()` (<300 kB main)** | `npm run build` Analyse |
+| **Logging im Normalbetrieb** | 47× `console.log`/`warn` in `src/` | **0× Debug-Logs in Produktion** | Statischer Grep |
+| **Service Worker Version** | Generiert alten Cache-Name `v4.5.0` | **Automatisch synchron mit `package.json`** | `update_sw.js` Lauf |
 
 ---
 
-## 4. Phase 3 — Performance & Snapshot-Entkopplung (P1 · M)
+## 3. Detaillierte Phasen-Spezifikation
 
-### 3.1 Schlanke Snapshot-Erzeugung in `useCombatState.ts`
-- [MODIFY] `src/hooks/useCombatState.ts` — Entfernung von `Object.setPrototypeOf` und Deep-JSON-Clones bei unveränderten Daten; Snapshots als reine Read-Only DTOs führen.
+### 📋 Phase 1: Sofortige Bereinigung & Sicherheit (P1 · XS/S)
+*Ziel: Eliminierung toter Altlasten, Beseitigung von XSS-Sicherheitsrisiken und Synchronisation des SW-Builders.*
 
-### 3.2 Method-Patching in `PCSkillsTab.tsx` eliminieren
-- [MODIFY] `src/components/player/PCSkillsTab.tsx` — Verlagerung von `getSkillRanks`, `getSkillMisc`, `getArmorCheckPenalty` in Pure Helper Functions (`RulesSkills.js` / `attributeHelper.ts`).
-
----
-
-## 5. Phase 4 — Modularisierung & Dateisplits (P2 · M)
-
-Alle Dateien über 600 Zeilen werden in fokussierte Subkomponenten unter 400 Zeilen aufgeteilt:
-
-1. **`BaseDialogs.tsx` (782 Z.) ➔ `src/components/dialogs/modals/`**
-   - `CustomAlertModal.tsx` (~80 Z.)
-   - `CustomConfirmModal.tsx` (~90 Z.)
-   - `CustomPromptModal.tsx` (~80 Z.)
-   - `HealingRollModal.tsx` (~110 Z.)
-   - `ItemDamageModal.tsx` (~130 Z.)
-   - `NewDayTemplateDialog.tsx` (~120 Z.)
-   - `RollBreakdownDialog.tsx` (~140 Z.)
-   - `SampleChoiceDialog.tsx` (~90 Z.)
-
-2. **`PCSkillsTab.tsx` (816 Z.) ➔ `src/components/player/skills/`**
-   - `PCSkillsTab.tsx` (~220 Z. — Orchestrierung & Filter)
-   - `SkillRow.tsx` (~180 Z. — Skill-Zeile)
-   - `SkillFilterBar.tsx` (~100 Z. — Suche & Toggle)
-   - `SkillTricksSubPanel.tsx` (~200 Z. — Trick-Verwaltung)
-
-3. **`ActiveEquipmentSlots.tsx` (785 Z.) ➔ `src/components/player/offense/slots/`**
-   - `ActiveEquipmentSlots.tsx` (~200 Z.)
-   - `WeaponSlotRenderer.tsx` (~220 Z.)
-   - `ArmorSlotRenderer.tsx` (~180 Z.)
-   - `NaturalAttacksRenderer.tsx` (~180 Z.)
-
-4. **`TacticalBeltCard.tsx` (772 Z.) ➔ `src/components/player/offense/belt/`**
-   - `TacticalBeltCard.tsx` (~180 Z.)
-   - `PotionBeltSection.tsx` (~190 Z.)
-   - `ScrollBeltSection.tsx` (~190 Z.)
-   - `WandBeltSection.tsx` (~190 Z.)
-
-5. **`CharacterWizardDialog.tsx` (794 Z.) & `Step3LevelConfig.tsx` (746 Z.)**
-   - Modularisierung in Submodule (`WizardSummaryFooter.tsx`, `ClassLevelPicker.tsx`, `PrestigeRequirementCheck.tsx`).
+* **1.1 Toten Legacy-Code löschen:**
+  * `[DELETE]` [`js/app.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/app.js) (705 Zeilen — alter Vanilla-Entry-Point aus v5)
+  * `[DELETE]` [`js/ui/ui-core.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/ui/ui-core.js) (106 Zeilen — importiert nicht mehr existente Alt-Dateien)
+  * `[MODIFY]` [`Tests/startup.test.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/Tests/startup.test.js) — Import-Verweise auf gelöschte Dateien bereinigen.
+* **1.2 XSS-Sanitization:**
+  * `[MODIFY]` [`src/components/dialogs/BaseDialogs.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/dialogs/BaseDialogs.tsx) — `dangerouslySetInnerHTML` in `CustomAlertModal` und `CustomConfirmModal` durch sicheres React-JSX ersetzen.
+  * `[MODIFY]` [`src/components/player/features/PrestigeClassFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/PrestigeClassFeaturesCard.tsx) — `rawText`-HTML-Rendering absichern.
+* **1.3 Service Worker Cache-Version dynamisieren:**
+  * `[MODIFY]` [`scratch/update_sw.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/scratch/update_sw.js) — Versionsnummer automatisch aus `package.json` (`6.0.0`) auslesen (behebt den alten `v4.5.0`-Cache-String).
+* **1.4 CI/CD-Pipeline Secrets:**
+  * `[MODIFY]` [`.github/workflows/deploy.yml`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/.github/workflows/deploy.yml) & [`.github/workflows/ci.yml`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/.github/workflows/ci.yml) — `env:`-Block für `VITE_SUPABASE_URL` und `VITE_SUPABASE_ANON_KEY` im Build-Step hinterlegen.
 
 ---
 
-## 6. Phase 5 — Vollständige Typsicherheit (0 `@ts-ignore`) (P2 · L)
+### 📋 Phase 2: State-Integrität & DialogContext (P1 · M)
+*Ziel: 100% Einhaltung des 4-Schichten-Modells (`UI ➔ State ➔ Models`) und Ablösung des `window.__REACT_DIALOG_BRIDGE__`-Hacks.*
 
-### 5.1 Domain-Typen in `src/types/combat.ts` präzisieren
-- Union-Types für alle dynamischen Stat-Felder (`acTouch`, `acFlat`, `za`, `ref`, `wil`, etc.).
-- Komponenten-Props strikt typisieren (`{ pc: Combatant }`).
-
-### 5.2 Prestige-Klassen Rule-Module
-- [NEW] `js/rules/classes/AssassinRules.js`
-- [NEW] `js/rules/classes/ArcaneTricksterRules.js`
-- [NEW] `js/rules/classes/ShadowbaneInquisitorRules.js`
-- [NEW] `js/rules/classes/BattleTricksterRules.js`
-- [NEW] `js/rules/classes/SpellwarpSniperRules.js`
-- [NEW] `js/rules/classes/EldritchKnightRules.js`
-
-### 5.3 Systematischer Abbau aller 171 `@ts-ignore` Direktiven
-- Bereinigung aller TSX-Komponenten bis `@ts-ignore` = 0.
-- Vereinheitlichung auf `@core/`-Alias.
+* **2.1 State-API für Klassen-Features:**
+  * `[MODIFY]` [`js/state/pc/PCClasses.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/pc/PCClasses.js) & [`PCGeneral.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/pc/PCGeneral.js) — Neue offizielle State-Methoden implementieren:
+    * `updatePCWizardSpecialization(spec, prob1, prob2)`
+    * `togglePCSneakAttack(isActive)`
+    * `togglePCTrickyFighting(isActive)`
+    * `updatePCDailyAbilityUsed(index, delta)`
+  * `[MODIFY]` [`WizardFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/WizardFeaturesCard.tsx), [`PrestigeClassFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/PrestigeClassFeaturesCard.tsx), [`CompanionSheet.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/companion/CompanionSheet.tsx), [`FamiliarSheet.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/companion/FamiliarSheet.tsx) — Direkte Mutationen von `CombatState.getActivePC()` und manuelle `saveToStorage()`-Aufrufe restlos durch die neuen State-Methoden ersetzen.
+* **2.2 Deklarativer DialogContext (Ablösung der Window-Bridge):**
+  * `[NEW]` `src/context/DialogContext.tsx` — Echter React Context Provider für Modals innerhalb des Komponenten-Trees (ermöglicht Context-Zugriff auf Auth/State und garantiert sauberes Unmounten ohne Memory Leaks).
+  * `[DELETE]` [`src/components/dialogs/ReactDialogBridge.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/dialogs/ReactDialogBridge.tsx) & Beseitigung aller `(window as any).__REACT_DIALOG_BRIDGE__`-Aufrufe.
 
 ---
 
-## 7. Phase 6 — UI-Testing & Build-Optimierung (P2 · M)
+### 📋 Phase 3: Performance & Snapshot-Entkopplung (P1 · M)
+*Ziel: Beseitigung von Garbage-Collection-Spikes und V8-Deoptimierungen bei jedem State-Update.*
 
-### 6.1 Vitest & React Testing Library
-- Installation & Konfiguration von Vitest.
-- Erstellung automatisierter UI-Tests für Dialoge, Wizard und PlayerSheet.
-- Neuer Befehl: `npm run test:ui`.
-
-### 6.2 Code-Splitting via `React.lazy()`
-- Lazy Loading für `CharacterWizardDialog`, `DMScreen`, `CampaignManagerDialog` und `ItemCompendiumModal`.
-- Reduktion des Haupt-Bundles von **694 kB** auf **< 280 kB**.
-
-### 6.3 Logging-Bereinigung
-- Bereinigung der 47 `console.log`-Statements aus `src/`.
+* **3.1 Schlanke Snapshot-Erzeugung in `useCombatState.ts`:**
+  * `[MODIFY]` [`src/hooks/useCombatState.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/hooks/useCombatState.ts) — Entfernung von `Object.setPrototypeOf(c, CombatantClass.prototype)` und Stat-Prototyp-Mutationen. Snapshots werden als reine, unveränderliche Read-Only DTOs geführt.
+  * Redundante doppelte Klonungen (`createSnapshot` + `mapPC`) eliminieren.
+* **3.2 Method-Patching in `PCSkillsTab.tsx` eliminieren:**
+  * `[MODIFY]` [`src/components/player/PCSkillsTab.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/PCSkillsTab.tsx) — Die im `useMemo` gepatchten Methoden (`getSkillRanks`, `getSkillMisc`, `getArmorCheckPenalty`) durch pure Utility-Funktionen aus [`RulesSkills.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/RulesSkills.js) und [`attributeHelper.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/attributeHelper.ts) ersetzen.
 
 ---
 
-## 8. Phase 7 — Finaler Healthcheck & Abnahme (P3 · S)
+### 📋 Phase 4: Modularisierung & Dateisplits (P2 · M)
+*Ziel: Strikte Einhaltung von AGENT.md §9 (alle React-Komponenten < 450 Zeilen).*
 
-Verifikation der 100% grünen Healthcheck-Kriterien:
-1. `npm run typecheck` ➔ 0 Fehler (ohne `@ts-ignore`).
-2. `npm run test` ➔ 304/304 Tests bestanden.
-3. `npm run test:ui` ➔ 100% UI-Tests bestanden.
-4. `npm run build` ➔ Sauberes Bundle (< 300 kB Haupt-Chunk).
-5. 0 Dateien > 600 Zeilen (ausgenommen statische Data-Registries).
+* **4.1 `BaseDialogs.tsx` (782 Z.) aufteilen in `src/components/dialogs/modals/`:**
+  * `CustomAlertModal.tsx` (~80 Z.)
+  * `CustomConfirmModal.tsx` (~90 Z.)
+  * `CustomPromptModal.tsx` (~80 Z.)
+  * `HealingRollModal.tsx` (~110 Z.)
+  * `ItemDamageModal.tsx` (~130 Z.)
+  * `NewDayTemplateDialog.tsx` (~120 Z.)
+  * `RollBreakdownDialog.tsx` (~140 Z.)
+  * `SampleChoiceDialog.tsx` (~90 Z.)
+* **4.2 `PCSkillsTab.tsx` (816 Z.) aufteilen in `src/components/player/skills/`:**
+  * `PCSkillsTab.tsx` (~220 Z. — Orchestrierung)
+  * `SkillRow.tsx` (~180 Z. — Einzelzeile mit Tooltip)
+  * `SkillFilterBar.tsx` (~100 Z. — Suche & Filter-Toggles)
+  * `SkillTricksSubPanel.tsx` (~200 Z. — Skill-Tricks Verwaltung)
+* **4.3 `ActiveEquipmentSlots.tsx` (785 Z.) aufteilen in `src/components/player/offense/slots/`:**
+  * `ActiveEquipmentSlots.tsx` (~200 Z.)
+  * `WeaponSlotRenderer.tsx` (~220 Z.)
+  * `ArmorSlotRenderer.tsx` (~180 Z.)
+  * `NaturalAttacksRenderer.tsx` (~180 Z.)
+* **4.4 `TacticalBeltCard.tsx` (772 Z.) aufteilen in `src/components/player/offense/belt/`:**
+  * `TacticalBeltCard.tsx` (~180 Z.)
+  * `PotionBeltSection.tsx` (~190 Z.)
+  * `ScrollBeltSection.tsx` (~190 Z.)
+  * `WandBeltSection.tsx` (~190 Z.)
+* **4.5 `CharacterWizardDialog.tsx` (794 Z.) & `Step3LevelConfig.tsx` (746 Z.) modularisieren:**
+  * `WizardSummaryFooter.tsx`, `ClassLevelPicker.tsx`, `PrestigeRequirementCheck.tsx`.
+
+---
+
+### 📋 Phase 5: Vollständige Typsicherheit (0 `@ts-ignore`) (P2 · L)
+*Ziel: Schließen aller Typen-Lücken in `src/types/combat.ts` und schrittweiser Abbau aller 171 `@ts-ignore`.*
+
+* **5.1 Domain-Typen in `src/types/combat.ts` präzisieren:**
+  * Einführung von präzisen Union-Typen (`StatBlock | number`) für alle 20+ aktuell als `any` typisierten Felder (`acTouch`, `acFlat`, `za`, `ref`, `wil`, `bw`, `sr` etc.).
+  * Alle Komponenten-Props von `{ pc: any }` auf `{ pc: Combatant }` typisieren.
+* **5.2 Prestige-Klassen Rule-Module (`js/rules/classes/`):**
+  * `[NEW]` `AssassinRules.js`, `ArcaneTricksterRules.js`, `ShadowbaneInquisitorRules.js`, `BattleTricksterRules.js`, `SpellwarpSniperRules.js`, `EldritchKnightRules.js`.
+  * Formellogik aus `PrestigeClassFeaturesCard.tsx` in diese Pure-Rule-Module verlagern.
+* **5.3 Abbau aller 171 `@ts-ignore` Direktiven:**
+  * Sukzessive Bereinigung aller TSX-Dateien bis `@ts-ignore` = 0.
+  * Vereinheitlichung aller relativen Imports auf den `@core/`-Pfadalias.
+
+---
+
+### 📋 Phase 6: UI-Testing & Build-Optimierung (P2 · M)
+*Ziel: Automatisierte Regressionstests für React und Bundle-Reduktion auf < 280 kB.*
+
+* **6.1 Setup Vitest & React Testing Library:**
+  * Installation von `vitest`, `@testing-library/react`, `@testing-library/jest-dom`.
+  * Erstellung von Komponententests in `src/__tests__/`:
+    * `PlayerSheet.test.tsx` (Rendert Tabs, Navigation, Status)
+    * `CharacterWizard.test.tsx` (74-Point-Buy, Level-Config)
+    * `Modals.test.tsx` (Alerts, Confirms, Prompts)
+  * Neuer Test-Befehl: `npm run test:ui`.
+* **6.2 Code-Splitting via `React.lazy()`:**
+  * Lazy Loading für schwere Komponenten (`CharacterWizardDialog`, `DMScreen`, `CampaignManagerDialog`, `ItemCompendiumModal`).
+  * Reduktion des Haupt-Bundles von **694 kB** auf **< 280 kB**.
+* **6.3 Logging-Bereinigung:**
+  * Alle 47 `console.log` / `console.warn` aus `src/` entfernen bzw. in einen konfigurierbaren Logger überführen.
+
+---
+
+### 📋 Phase 7: Finaler Healthcheck & QA-Abnahme (P3 · S)
+*Ziel: 100% grüne Verifikation aller Akzeptanzkriterien.*
+
+* `npm run typecheck` ➔ 0 Fehler (ohne ein einziges `@ts-ignore`).
+* `npm run test` ➔ 304/304 Tests bestanden.
+* `npm run test:ui` ➔ Alle React-Komponententests bestanden.
+* `npm run build` ➔ Sauberes Bundle, Chunks < 300 kB, SW-Version synchron.
+* Statischer Healthcheck-Scan ➔ **0 gelb, 0 rot**.
