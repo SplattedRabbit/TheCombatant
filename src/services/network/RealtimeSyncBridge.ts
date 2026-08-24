@@ -79,11 +79,36 @@ export function initRealtimeSyncBridge(): void {
     }
   });
 
-  // 4. Presence change: players broadcast their character when host is detected
-  realtimeManager.onPresenceChange((users) => {
+  // 4. Listen for sync requests from host
+  realtimeManager.onEvent('request_pc_sync', (envelope) => {
     const state = getState();
     const isPlayer = state?.session?.role !== 'host' && state?.mode !== 'dm';
     if (isPlayer) {
+      const targetUserId = envelope?.payload?.targetUserId;
+      const myUserId = (realtimeManager as any).currentUserId;
+      if (!targetUserId || targetUserId === myUserId) {
+        console.log('[RealtimeSyncBridge] Host requested PC sync, broadcasting active character...');
+        broadcastActivePC();
+      }
+    }
+  });
+
+  // 5. Presence change: bidirectional presence handshake
+  realtimeManager.onPresenceChange((users) => {
+    const state = getState();
+    const isHost = state?.session?.role === 'host' || state?.mode === 'dm';
+
+    if (isHost) {
+      // Check if any player at the table is missing from DM combatants
+      const missingPlayer = users.find((u) => 
+        u.role === 'player' && 
+        !state.combatants.some((c: any) => c.id === u.characterId || c.name === u.characterName || c.name === u.userName)
+      );
+      if (missingPlayer) {
+        console.log('[RealtimeSyncBridge] Detected connected player missing in combatants, requesting PC sheet:', missingPlayer.characterName || missingPlayer.userName);
+        realtimeManager.broadcastEvent('request_pc_sync', { targetUserId: missingPlayer.userId });
+      }
+    } else {
       const hasHost = users.some((u) => u.role === 'host');
       if (hasHost) {
         broadcastActivePC();
@@ -110,11 +135,15 @@ export function broadcastActivePC(): void {
 
   if (realtimeManager.getStatus() === 'connected') {
     tryBroadcast();
+    setTimeout(tryBroadcast, 300);
+    setTimeout(tryBroadcast, 1000);
   } else {
-    // Wait for connection to establish and then broadcast
+    // Wait for connection to establish and then broadcast with retries
     const unsubscribe = realtimeManager.onStatusChange((status) => {
       if (status === 'connected') {
         tryBroadcast();
+        setTimeout(tryBroadcast, 300);
+        setTimeout(tryBroadcast, 1000);
         unsubscribe();
       }
     });

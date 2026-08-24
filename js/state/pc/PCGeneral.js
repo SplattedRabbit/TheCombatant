@@ -153,6 +153,17 @@ export function recalculatePCStats(pc) {
   }
 
   recalculateDailyAbilities(pc);
+
+  if (pc.rawInit !== undefined && pc.rawInit !== null) {
+    if (pc.rawInit > 0) {
+      const dexMod = pc.dex instanceof Stat ? pc.dex.getMod() : Math.floor(((parseInt(pc.dex) || 10) - 10) / 2);
+      const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some(f => f.id === 'improved_initiative');
+      const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
+      pc.init = pc.rawInit + totIni;
+    } else if (pc.rawInit === 0) {
+      pc.init = 0;
+    }
+  }
 }
 
 export function syncPCToHost() {
@@ -186,7 +197,7 @@ export function clearActivePC() {
 
 export function updatePCField(field, val) {
   const pc = getActivePC();
-  if (pc && pc[field] !== undefined) {
+  if (pc) {
     pc[field] = val;
     recalculatePCStats(pc);
     saveToStorage();
@@ -196,8 +207,8 @@ export function updatePCField(field, val) {
 
 export function updatePCNumber(field, val) {
   const pc = getActivePC();
-  if (pc && pc[field] !== undefined) {
-    const num = parseInt(val) || 0;
+  if (pc) {
+    const num = val === '' ? 0 : (parseInt(val, 10) || 0);
     if (pc[field] instanceof Stat) {
       const modifiers = pc[field].getValue() - pc[field].base;
       pc[field].base = num - modifiers;

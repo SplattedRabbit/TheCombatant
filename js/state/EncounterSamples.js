@@ -26,7 +26,7 @@ import {
 export function loadSampleData(choice) {
   const s = getState();
   
-  if (s.mode === 'player' || (s.session && s.session.role === 'client')) {
+  if (s.mode === 'player' || (s.session && (s.session.role === 'client' || s.session.role === 'player'))) {
     const currentPC = getActivePC();
     if (currentPC) {
       const currentId = currentPC.id;

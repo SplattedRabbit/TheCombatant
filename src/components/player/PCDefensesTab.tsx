@@ -7,7 +7,7 @@
  * @depends   React, @core/state.js, @core/ui/components/dialogs.js
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 // @ts-ignore
 import { CombatState } from '@core/state.js';
 // @ts-ignore
@@ -20,11 +20,11 @@ interface PCDefensesTabProps {
 }
 
 export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
+  const [localValues, setLocalValues] = useState<Record<string, string>>({});
 
   const dexMod = getStatMod(pc.dex);
   const conMod = getStatMod(pc.con);
   const wisMod = getStatMod(pc.wis);
-
 
   const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some((f: any) => f.id === 'improved_initiative');
   const totFort = pc.za?.getValue?.() ?? pc.za?.total ?? 0;
@@ -34,8 +34,54 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
 
+  // Numeric primitive extractions from Stat objects
+  const acVal = pc.ac?.getValue?.() ?? pc.ac?.base ?? (typeof pc.ac === 'number' ? pc.ac : 10);
+  const acTouchVal = pc.acTouch?.getValue?.() ?? pc.acTouch?.base ?? (typeof pc.acTouch === 'number' ? pc.acTouch : 10);
+  const acFlatVal = pc.acFlat?.getValue?.() ?? pc.acFlat?.base ?? (typeof pc.acFlat === 'number' ? pc.acFlat : 10);
+  const baseZaVal = pc.baseZa?.getValue?.() ?? pc.baseZa?.base ?? (typeof pc.baseZa === 'number' ? pc.baseZa : 0);
+  const baseRefVal = pc.baseRef?.getValue?.() ?? pc.baseRef?.base ?? (typeof pc.baseRef === 'number' ? pc.baseRef : 0);
+  const baseWilVal = pc.baseWil?.getValue?.() ?? pc.baseWil?.base ?? (typeof pc.baseWil === 'number' ? pc.baseWil : 0);
+
+  const handleInputChange = (key: string, val: string) => {
+    setLocalValues((prev) => ({ ...prev, [key]: val }));
+  };
+
+  const handleCommitNumber = (key: string, val: string, fallback: number = 0) => {
+    setLocalValues((prev) => {
+      const next = { ...prev };
+      delete next[key];
+      return next;
+    });
+
+    const trimmed = (val ?? '').trim();
+    if (trimmed === '') {
+      CombatState.updatePCNumber(key, fallback);
+      return;
+    }
+
+    const num = parseInt(trimmed, 10);
+    CombatState.updatePCNumber(key, isNaN(num) ? fallback : num);
+  };
+
+  const handleCommitRawInit = (val: string) => {
+    setLocalValues((prev) => {
+      const next = { ...prev };
+      delete next['rawInit'];
+      return next;
+    });
+
+    const trimmed = (val ?? '').trim();
+    if (trimmed === '') {
+      CombatState.updatePCNumber('rawInit', 0);
+      return;
+    }
+
+    const num = parseInt(trimmed, 10);
+    CombatState.updatePCNumber('rawInit', isNaN(num) ? 0 : num);
+  };
+
   const getSaveMiscBreakdown = (type: 'za' | 'ref' | 'wil', attrMod: number) => {
-    const baseVal = type === 'za' ? (pc.baseZa?.base ?? 0) : type === 'ref' ? (pc.baseRef?.base ?? 0) : (pc.baseWil?.base ?? 0);
+    const baseVal = type === 'za' ? baseZaVal : type === 'ref' ? baseRefVal : baseWilVal;
     const saveStat = type === 'za' ? pc.za : type === 'ref' ? pc.ref : pc.wil;
     const miscVal = type === 'za' ? (pc.zaMisc ?? 0) : type === 'ref' ? (pc.refMisc ?? 0) : (pc.wilMisc ?? 0);
 
@@ -115,11 +161,11 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
     if (hasImprovedInit) {
       items.push({ label: 'Feat: Improved Initiative', value: 4 });
     }
-    showRollBreakdown('Initiative Roll', '1d20', items, e.nativeEvent);
+    showRollBreakdown('Initiative Breakdown', '1d20', items, e.nativeEvent);
   };
 
   const calculateNewMisc = (type: 'za' | 'ref' | 'wil', attrMod: number, typedVal: number) => {
-    const baseVal = type === 'za' ? (pc.baseZa?.base ?? 0) : type === 'ref' ? (pc.baseRef?.base ?? 0) : (pc.baseWil?.base ?? 0);
+    const baseVal = type === 'za' ? baseZaVal : type === 'ref' ? baseRefVal : baseWilVal;
     const saveStat = type === 'za' ? pc.za : type === 'ref' ? pc.ref : pc.wil;
     const miscVal = type === 'za' ? (pc.zaMisc ?? 0) : type === 'ref' ? (pc.refMisc ?? 0) : (pc.wilMisc ?? 0);
 
@@ -128,6 +174,19 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
     const extraMods = otherMods - miscVal;
 
     return typedVal - extraMods;
+  };
+
+  const handleCommitSaveMisc = (type: 'za' | 'ref' | 'wil', attrMod: number, val: string) => {
+    setLocalValues((prev) => {
+      const next = { ...prev };
+      delete next[`${type}Misc`];
+      return next;
+    });
+
+    const trimmed = (val ?? '').trim();
+    const typed = trimmed === '' ? 0 : (parseInt(trimmed, 10) || 0);
+    const newMisc = calculateNewMisc(type, attrMod, typed);
+    CombatState.updatePCNumber(`${type}Misc`, newMisc);
   };
 
   const getEquippedArmor = () => {
@@ -157,11 +216,13 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>AC</label>
           <input
             type="number"
-            value={pc.ac ?? 10}
+            value={localValues['ac'] !== undefined ? localValues['ac'] : acVal}
             className="cinput pc-ac-input"
             readOnly={!!pc.autoAC}
             onClick={(e) => handleAcClick('ac', 'Armor Class (AC)', e)}
-            onChange={(e) => !pc.autoAC && CombatState.updatePCNumber('ac', e.target.value)}
+            onChange={(e) => !pc.autoAC && handleInputChange('ac', e.target.value)}
+            onBlur={(e) => !pc.autoAC && handleCommitNumber('ac', e.target.value, 10)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             style={pc.autoAC ? { background: 'rgba(0,0,0,0.05)', color: 'var(--ink)', fontWeight: 'bold', cursor: 'pointer' } : undefined}
             title={pc.autoAC ? acTooltip : undefined}
           />
@@ -170,11 +231,13 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>Touch</label>
           <input
             type="number"
-            value={pc.acTouch ?? 10}
+            value={localValues['acTouch'] !== undefined ? localValues['acTouch'] : acTouchVal}
             className="cinput pc-acTouch-input"
             readOnly={!!pc.autoAC}
             onClick={(e) => handleAcClick('acTouch', 'Touch AC', e)}
-            onChange={(e) => !pc.autoAC && CombatState.updatePCNumber('acTouch', e.target.value)}
+            onChange={(e) => !pc.autoAC && handleInputChange('acTouch', e.target.value)}
+            onBlur={(e) => !pc.autoAC && handleCommitNumber('acTouch', e.target.value, 10)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             style={pc.autoAC ? { background: 'rgba(0,0,0,0.05)', color: 'var(--ink)', fontWeight: 'bold', cursor: 'pointer' } : undefined}
             title={pc.autoAC ? acTouchTooltip : undefined}
           />
@@ -183,11 +246,13 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>Flat-Footed</label>
           <input
             type="number"
-            value={pc.acFlat ?? 10}
+            value={localValues['acFlat'] !== undefined ? localValues['acFlat'] : acFlatVal}
             className="cinput pc-acFlat-input"
             readOnly={!!pc.autoAC}
             onClick={(e) => handleAcClick('acFlat', 'Flat-Footed AC', e)}
-            onChange={(e) => !pc.autoAC && CombatState.updatePCNumber('acFlat', e.target.value)}
+            onChange={(e) => !pc.autoAC && handleInputChange('acFlat', e.target.value)}
+            onBlur={(e) => !pc.autoAC && handleCommitNumber('acFlat', e.target.value, 10)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             style={pc.autoAC ? { background: 'rgba(0,0,0,0.05)', color: 'var(--ink)', fontWeight: 'bold', cursor: 'pointer' } : undefined}
             title={pc.autoAC ? acFlatTooltip : undefined}
           />
@@ -199,8 +264,10 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }} title="Natural armor bonus (e.g. Amulet)">Natural Armor</label>
           <input
             type="number"
-            value={pc.acNatural || 0}
-            onChange={(e) => CombatState.updatePCNumber('acNatural', e.target.value)}
+            value={localValues['acNatural'] !== undefined ? localValues['acNatural'] : (pc.acNatural ?? 0)}
+            onChange={(e) => handleInputChange('acNatural', e.target.value)}
+            onBlur={(e) => handleCommitNumber('acNatural', e.target.value, 0)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-acNatural-input"
             style={{ height: '18px', fontSize: '9px', textAlign: 'center' }}
           />
@@ -209,8 +276,10 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }} title="Deflection bonus to AC (e.g. Ring of Protection)">Deflection</label>
           <input
             type="number"
-            value={pc.acDeflection || 0}
-            onChange={(e) => CombatState.updatePCNumber('acDeflection', e.target.value)}
+            value={localValues['acDeflection'] !== undefined ? localValues['acDeflection'] : (pc.acDeflection ?? 0)}
+            onChange={(e) => handleInputChange('acDeflection', e.target.value)}
+            onBlur={(e) => handleCommitNumber('acDeflection', e.target.value, 0)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-acDeflection-input"
             style={{ height: '18px', fontSize: '9px', textAlign: 'center' }}
           />
@@ -219,8 +288,10 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)' }} title="Other modifiers to AC">Other (AC)</label>
           <input
             type="number"
-            value={pc.acMisc || 0}
-            onChange={(e) => CombatState.updatePCNumber('acMisc', e.target.value)}
+            value={localValues['acMisc'] !== undefined ? localValues['acMisc'] : (pc.acMisc ?? 0)}
+            onChange={(e) => handleInputChange('acMisc', e.target.value)}
+            onBlur={(e) => handleCommitNumber('acMisc', e.target.value, 0)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-acMisc-input"
             style={{ height: '18px', fontSize: '9px', textAlign: 'center' }}
           />
@@ -232,8 +303,10 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>Spell Resistance (SR)</label>
           <input
             type="number"
-            value={pc.sr ?? 0}
-            onChange={(e) => CombatState.updatePCNumber('sr', e.target.value)}
+            value={localValues['sr'] !== undefined ? localValues['sr'] : (pc.sr ?? 0)}
+            onChange={(e) => handleInputChange('sr', e.target.value)}
+            onBlur={(e) => handleCommitNumber('sr', e.target.value, 0)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-sr-input"
           />
         </div>
@@ -241,8 +314,10 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <label style={{ fontSize: '9px', fontWeight: 600, color: 'var(--inkl)' }}>Speed</label>
           <input
             type="number"
-            value={pc.bw ?? 30}
-            onChange={(e) => !getEquippedArmor() && CombatState.updatePCNumber('bw', e.target.value)}
+            value={localValues['bw'] !== undefined ? localValues['bw'] : (pc.bw ?? 30)}
+            onChange={(e) => !getEquippedArmor() && handleInputChange('bw', e.target.value)}
+            onBlur={(e) => !getEquippedArmor() && handleCommitNumber('bw', e.target.value, 30)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-bw-input"
             title="Movement speed (ft)"
             readOnly={!!getEquippedArmor()}
@@ -274,8 +349,10 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Misc Mod</label>
           <input
             type="number"
-            value={pc.iniMisc || 0}
-            onChange={(e) => CombatState.updatePCNumber('iniMisc', e.target.value)}
+            value={localValues['iniMisc'] !== undefined ? localValues['iniMisc'] : (pc.iniMisc ?? 0)}
+            onChange={(e) => handleInputChange('iniMisc', e.target.value)}
+            onBlur={(e) => handleCommitNumber('iniMisc', e.target.value, 0)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-iniMisc-input"
             style={{ width: '28px', fontSize: '9px', height: '15px', textAlign: 'center', padding: 0 }}
           />
@@ -284,8 +361,10 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Rolled</label>
           <input
             type="number"
-            value={pc.init || 0}
-            onChange={(e) => CombatState.updatePCNumber('init', e.target.value)}
+            value={localValues['rawInit'] !== undefined ? localValues['rawInit'] : (pc.rawInit ? pc.rawInit : '')}
+            onChange={(e) => handleInputChange('rawInit', e.target.value)}
+            onBlur={(e) => handleCommitRawInit(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-init-input"
             style={{ width: '28px', fontSize: '9px', height: '15px', textAlign: 'center', padding: 0, fontWeight: 'bold', color: 'var(--red)' }}
           />
@@ -293,7 +372,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Total</label>
           <span className="pc-init-total" style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', lineHeight: '15px', minWidth: '28px', textAlign: 'center', background: 'rgba(139,26,26,0.08)', border: '0.5px solid rgba(139,26,26,0.3)', borderRadius: '2px', padding: '0 2px' }}>
-            {(pc.init || 0) > 0 ? (pc.init || 0) + totIni : '--'}
+            {pc.init && pc.init > 0 ? pc.init : (pc.rawInit && pc.rawInit > 0 ? pc.rawInit + totIni : '--')}
           </span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -302,7 +381,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
             onClick={handleIniRoll}
             className="xbtn roll-ini-btn"
             style={{ padding: 0, width: '18px', height: '15px', fontSize: '9px', lineHeight: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            title="Initiative roll (Formula)"
+            title="View initiative modifier breakdown"
           >
             🎲
           </button>
@@ -328,10 +407,12 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <span style={{ fontSize: '9px', fontWeight: 600, textAlign: 'left' }} title="Fortitude">⚔️ Fortitude</span>
           <input
             type="number"
-            value={pc.baseZa?.base ?? 0}
+            value={localValues['baseZa'] !== undefined ? localValues['baseZa'] : baseZaVal}
             readOnly={!!hasClasses}
             tabIndex={hasClasses ? -1 : undefined}
-            onChange={(e) => !hasClasses && CombatState.updatePCNumber('baseZa', e.target.value)}
+            onChange={(e) => !hasClasses && handleInputChange('baseZa', e.target.value)}
+            onBlur={(e) => !hasClasses && handleCommitNumber('baseZa', e.target.value, 0)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-baseZa-inp cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', ...(hasClasses ? { background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)', cursor: 'not-allowed' } : {}) }}
           />
@@ -348,12 +429,10 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
           <input
             type="number"
-            value={zaMiscData.displayValue}
-            onChange={(e) => {
-              const typed = parseInt(e.target.value) || 0;
-              const newMisc = calculateNewMisc('za', conMod, typed);
-              CombatState.updatePCNumber('zaMisc', newMisc);
-            }}
+            value={localValues['zaMisc'] !== undefined ? localValues['zaMisc'] : zaMiscData.displayValue}
+            onChange={(e) => handleInputChange('zaMisc', e.target.value)}
+            onBlur={(e) => handleCommitSaveMisc('za', conMod, e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-zaMisc-inp cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', borderColor: 'var(--pb)' }}
             title={zaMiscData.tooltip}
@@ -373,10 +452,12 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <span style={{ fontSize: '9px', fontWeight: 600, textAlign: 'left' }} title="Reflex">🎯 Reflex</span>
           <input
             type="number"
-            value={pc.baseRef?.base ?? 0}
+            value={localValues['baseRef'] !== undefined ? localValues['baseRef'] : baseRefVal}
             readOnly={!!hasClasses}
             tabIndex={hasClasses ? -1 : undefined}
-            onChange={(e) => !hasClasses && CombatState.updatePCNumber('baseRef', e.target.value)}
+            onChange={(e) => !hasClasses && handleInputChange('baseRef', e.target.value)}
+            onBlur={(e) => !hasClasses && handleCommitNumber('baseRef', e.target.value, 0)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-baseRef-inp cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', ...(hasClasses ? { background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)', cursor: 'not-allowed' } : {}) }}
           />
@@ -393,12 +474,10 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
           <input
             type="number"
-            value={refMiscData.displayValue}
-            onChange={(e) => {
-              const typed = parseInt(e.target.value) || 0;
-              const newMisc = calculateNewMisc('ref', dexMod, typed);
-              CombatState.updatePCNumber('refMisc', newMisc);
-            }}
+            value={localValues['refMisc'] !== undefined ? localValues['refMisc'] : refMiscData.displayValue}
+            onChange={(e) => handleInputChange('refMisc', e.target.value)}
+            onBlur={(e) => handleCommitSaveMisc('ref', dexMod, e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-refMisc-inp cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', borderColor: 'var(--pb)' }}
             title={refMiscData.tooltip}
@@ -418,10 +497,12 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <span style={{ fontSize: '9px', fontWeight: 600, textAlign: 'left' }} title="Will">🔮 Will</span>
           <input
             type="number"
-            value={pc.baseWil?.base ?? 0}
+            value={localValues['baseWil'] !== undefined ? localValues['baseWil'] : baseWilVal}
             readOnly={!!hasClasses}
             tabIndex={hasClasses ? -1 : undefined}
-            onChange={(e) => !hasClasses && CombatState.updatePCNumber('baseWil', e.target.value)}
+            onChange={(e) => !hasClasses && handleInputChange('baseWil', e.target.value)}
+            onBlur={(e) => !hasClasses && handleCommitNumber('baseWil', e.target.value, 0)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-baseWil-inp cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', ...(hasClasses ? { background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)', cursor: 'not-allowed' } : {}) }}
           />
@@ -438,12 +519,10 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
           <input
             type="number"
-            value={wisMiscData.displayValue}
-            onChange={(e) => {
-              const typed = parseInt(e.target.value) || 0;
-              const newMisc = calculateNewMisc('wil', wisMod, typed);
-              CombatState.updatePCNumber('wilMisc', newMisc);
-            }}
+            value={localValues['wilMisc'] !== undefined ? localValues['wilMisc'] : wisMiscData.displayValue}
+            onChange={(e) => handleInputChange('wilMisc', e.target.value)}
+            onBlur={(e) => handleCommitSaveMisc('wil', wisMod, e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
             className="cinput pc-wilMisc-inp cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', borderColor: 'var(--pb)' }}
             title={wisMiscData.tooltip}

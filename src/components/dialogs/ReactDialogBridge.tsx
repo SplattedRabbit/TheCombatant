@@ -168,13 +168,12 @@ export function initReactDialogBridge() {
     ));
   };
 
-  bridge.showRollBreakdown = (title: string, diceFormula: string, breakdownItems: any[], _event?: any, onRollClick?: (rollVal: number) => void) => {
+  bridge.showRollBreakdown = (title: string, diceFormula: string, breakdownItems: any[], _event?: any) => {
     mountModal((onCloseModal) => (
       <RollBreakdownDialog
         title={title}
         diceFormula={diceFormula}
         breakdownItems={breakdownItems}
-        onRollClick={onRollClick}
         onClose={onCloseModal}
       />
     ));

@@ -11,11 +11,12 @@ import { CombatState } from '@core/state.js';
 
 export default function App() {
   const { state, activePC, isReady } = useCombatState() as any;
-  const role = (state?.session?.role === 'host' || state?.mode === 'dm' || state?.mode === 'host')
+  const rawRole = state?.session?.role || state?.mode;
+  const role = (rawRole === 'host' || rawRole === 'dm')
     ? 'host'
-    : (state?.session?.role === 'player' || state?.mode === 'player'
+    : (rawRole === 'player' || rawRole === 'client'
       ? 'player'
-      : (state?.mode === 'wizard' ? 'wizard' : 'choice'));
+      : (rawRole === 'wizard' ? 'wizard' : 'choice'));
 
   // Initialize Realtime Sync Bridge
   useEffect(() => {

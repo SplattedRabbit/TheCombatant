@@ -115,3 +115,69 @@ test('SyncProtocol - Löschschutz auf Spielerseite (Safeguard v2.2 Verifikation)
   // Trotz der Löschung durch den Host darf der eigene PC lokal NICHT gelöscht worden sein!
   assert.ok(s.combatants.some(c => c.id === pcId), 'Der eigene PC wurde durch den Löschschutz erfolgreich wiederhergestellt!');
 });
+
+test('SyncProtocol - Sample Data / Template change generates full update_pc with full HP', async () => {
+  const { clearCachedPCState, getPCStateDiff } = await import('../js/network/SyncProtocol.js');
+  const { CombatState } = await import('../js/state.js');
+  
+  clearCachedPCState();
+  const s = getState();
+  s.combatants = [];
+  const pc = getActivePC();
+  pc.name = 'Held';
+  pc.hp = 10;
+  pc.maxHP = 10;
+
+  // Initial diff seeds cache
+  let packet = getPCStateDiff();
+  assert.strictEqual(packet.type, 'update_pc');
+
+  // Load Paladin lvl 10 template
+  CombatState.loadSampleData('paladin_lvl10');
+  
+  // Diff must detect name/maxHP change and send full update_pc with full HP
+  const updatedPC = getActivePC();
+  assert.strictEqual(updatedPC.hp, updatedPC.maxHP);
+
+  const syncPacket = getPCStateDiff();
+  assert.ok(syncPacket);
+  if (syncPacket.type === 'update_pc') {
+    assert.strictEqual(syncPacket.pc.hp, updatedPC.maxHP);
+    assert.strictEqual(syncPacket.pc.maxHP, updatedPC.maxHP);
+  } else if (syncPacket.type === 'pc_diff') {
+    assert.strictEqual(syncPacket.diff.hp, updatedPC.maxHP);
+    assert.strictEqual(syncPacket.diff.maxHP, updatedPC.maxHP);
+  }
+});
+
+test('SyncProtocol - Initiative roll transmits total value (d20 + modifiers) to DM', async () => {
+  const { CombatState } = await import('../js/state.js');
+  const EncounterManager = await import('../js/state/EncounterManager.js');
+
+  const s = getState();
+  s.combatants = [];
+  const pc = getActivePC();
+  pc.dex = new Stat(16); // Dex mod +3
+  pc.iniMisc = 4; // Misc mod +4 -> Total mod +7
+  
+  // Player rolls 14 on d20
+  const rawRoll = 14;
+  const dexMod = 3;
+  const totIni = dexMod + 4; // 7
+  const totalVal = rawRoll + totIni; // 21
+
+  pc.rawInit = rawRoll;
+  pc.init = totalVal;
+
+  assert.strictEqual(pc.rawInit, 14);
+  assert.strictEqual(pc.init, 21);
+
+  // Host merges incoming PC
+  const ok = EncounterManager.mergeIncomingPC(pc);
+  assert.strictEqual(ok, true);
+
+  const dmCombatant = s.combatants.find(c => c.id === pc.id);
+  assert.ok(dmCombatant);
+  assert.strictEqual(dmCombatant.init, 21, 'DM must receive total initiative value (21), not raw 14');
+});
+

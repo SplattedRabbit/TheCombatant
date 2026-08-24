@@ -32,18 +32,32 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
 
   // Auto-connect DM to active campaign Realtime room and ensure encounter is hydrated
   useEffect(() => {
-    const activeCampId = campaignService.getActiveCampaignId();
-    if (activeCampId) {
-      campaignService.switchActiveCampaign(activeCampId).then(() => {
-        if (realtimeManager.getCampaignId() !== activeCampId) {
-          const userId = storageService.getCurrentUserId() || 'dm-host';
-          realtimeManager.joinCampaign(activeCampId, 'host', {
-            userId,
-            userName: 'Dungeon Master',
-          });
+    const ensureDMConnection = async () => {
+      let activeCampId = campaignService.getActiveCampaignId();
+      if (!activeCampId) {
+        const campaigns = await campaignService.listCampaigns();
+        if (campaigns.length > 0) {
+          activeCampId = campaigns[0].id;
+          await campaignService.switchActiveCampaign(activeCampId);
+        } else {
+          const fresh = await campaignService.createCampaign({ name: 'Default Encounter' });
+          activeCampId = fresh.id;
+          await campaignService.switchActiveCampaign(activeCampId);
         }
-      });
-    }
+      } else {
+        await campaignService.switchActiveCampaign(activeCampId);
+      }
+
+      if (activeCampId) {
+        const userId = storageService.getCurrentUserId() || 'dm-host';
+        await realtimeManager.joinCampaign(activeCampId, 'host', {
+          userId,
+          userName: 'Dungeon Master',
+        });
+      }
+    };
+
+    ensureDMConnection();
   }, []);
 
   const handlePrev = () => {

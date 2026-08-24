@@ -21,29 +21,34 @@ import { UserMenu } from './auth/UserMenu';
 export const RoleSelection: React.FC = () => {
   const handleSelectRole = async (role: 'dm' | 'player' | 'wizard') => {
     if (role === 'dm') {
+      let switched = false;
       const activeCampId = campaignService.getActiveCampaignId();
       if (activeCampId) {
-        await campaignService.switchActiveCampaign(activeCampId);
-      } else {
+        switched = await campaignService.switchActiveCampaign(activeCampId);
+      }
+      if (!switched) {
         const campaigns = await campaignService.listCampaigns();
         if (campaigns.length > 0) {
-          await campaignService.switchActiveCampaign(campaigns[0].id);
-        } else {
-          const fresh = createInitialState();
-          fresh.session = { role: 'host' };
-          fresh.combatants = [];
-          applyLoadedState(fresh);
+          switched = await campaignService.switchActiveCampaign(campaigns[0].id);
         }
+      }
+      if (!switched) {
+        const fresh = createInitialState();
+        fresh.session = { role: 'host' };
+        fresh.combatants = [];
+        applyLoadedState(fresh);
       }
       CombatState.setRole('dm');
     } else if (role === 'player') {
+      let switched = false;
       const activeCharId = characterService.getActiveCharacterId();
       if (activeCharId) {
-        await characterService.switchActiveCharacter(activeCharId);
-      } else {
+        switched = await characterService.switchActiveCharacter(activeCharId);
+      }
+      if (!switched) {
         const characters = await characterService.listCharacters();
         if (characters.length > 0) {
-          await characterService.switchActiveCharacter(characters[0].id);
+          switched = await characterService.switchActiveCharacter(characters[0].id);
         }
       }
       CombatState.setRole('player');

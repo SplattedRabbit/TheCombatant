@@ -190,6 +190,7 @@ export interface Combatant {
   resistances?: string;
   bw?: any;
   iniMisc?: any;
+  rawInit?: any;
   init?: any;
   za?: any;
   ref?: any;
@@ -232,6 +233,7 @@ export interface CombatStateSnapshot {
   meta: EncounterMeta;
   session: SessionInfo;
   concentrations?: any[];
+  mode?: string;
 }
 
 // ---------------------------------------------------------------------------

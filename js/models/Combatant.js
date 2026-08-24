@@ -44,17 +44,17 @@ export class Combatant {
     this.name = p.name || 'Charakter';
     this.type = p.type || 'p'; // 'p' (Player), 'e' (Enemy), 'n' (NPC)
     this.init = parseInt(p.init) || 0;
-    
+
     // HP encapsulation
     const maxHP = parseInt(p.maxHP) || parseInt(p.maxHp) || parseInt(p.hp) || 10;
     this.maxHP = maxHP;
     this.hp = p.hp !== undefined ? parseInt(p.hp) : maxHP;
-    
+
     // Elevate AC to Stat objects
     this.ac = new Stat(p.ac !== undefined ? p.ac : 10);
     this.acTouch = new Stat(p.acTouch !== undefined ? p.acTouch : 10);
     this.acFlat = new Stat(p.acFlat !== undefined ? p.acFlat : 10);
-    
+
     this.baseBw = p.baseBw !== undefined ? parseInt(p.baseBw) : (parseInt(p.bw) || 30);
     this.bw = parseInt(p.bw) || 30;
     this.conditions = Array.isArray(p.conditions) ? [...p.conditions] : [];
@@ -68,6 +68,7 @@ export class Combatant {
     this.cha = new Stat(p.cha !== undefined ? p.cha : 10);
 
     this.iniMisc = parseInt(p.iniMisc) || 0;
+    this.rawInit = parseInt(p.rawInit) || 0;
 
     // -- CLASSES & LEVEL --
     this.classType = p.classType || 'custom';
@@ -98,12 +99,12 @@ export class Combatant {
     this.sr = p.sr !== undefined ? parseInt(p.sr) : 0;
 
     // -- OFFENSE (D&D 3.5e) --
-    this.weapons = Array.isArray(p.weapons) 
-      ? p.weapons.map(w => new Weapon(w)) 
+    this.weapons = Array.isArray(p.weapons)
+      ? p.weapons.map(w => new Weapon(w))
       : [
-          new Weapon({ name: 'Langschwert', type: 'longsword', grip: '1h', damageDice: '1w8', crit: '19-20 / x2', enhancement: 0 }),
-          new Weapon({ name: 'Kompositbogen', type: 'comp_shortbow', grip: 'rng', damageDice: '1w6', crit: 'x3', enhancement: 0 })
-        ];
+        new Weapon({ name: 'Langschwert', type: 'longsword', grip: '1h', damageDice: '1w8', crit: '19-20 / x2', enhancement: 0 }),
+        new Weapon({ name: 'Kompositbogen', type: 'comp_shortbow', grip: 'rng', damageDice: '1w6', crit: 'x3', enhancement: 0 })
+      ];
 
     // -- ARMORY (D&D 3.5e) --
     this.armors = Array.isArray(p.armors) ? p.armors.map(a => new Armor(a)) : [];
@@ -198,7 +199,7 @@ export class Combatant {
     const list = [];
     const disabled = Array.isArray(this.disabledAutomaticFeats) ? this.disabledAutomaticFeats : [];
     const activeClasses = Array.isArray(this.classes) ? this.classes : [];
-    
+
     // Ranger automatic feats
     const ranger = activeClasses.find(c => c.classType === 'ranger');
     if (ranger) {
@@ -230,7 +231,7 @@ export class Combatant {
         }
       }
     }
-    
+
     // Wizard automatic feats
     const wizard = activeClasses.find(c => c.classType === 'wizard');
     if (wizard) {
@@ -238,7 +239,7 @@ export class Combatant {
         list.push({ id: 'scribe_scroll', source: 'Wizard (Class)' });
       }
     }
-    
+
     // Monk automatic feats
     const monk = activeClasses.find(c => c.classType === 'monk');
     if (monk) {
@@ -246,20 +247,20 @@ export class Combatant {
         list.push({ id: 'improved_unarmed_strike', source: 'Monk (Class)' });
       }
     }
-    
+
     // Shadowbane Inquisitor automatic feats
     const sbi = activeClasses.find(c => c.classType === 'shadowbane_inquisitor');
     if (sbi && sbi.level >= 3) {
       list.push({ id: 'improved_sunder', source: 'Shadowbane Inquisitor (Class)' });
     }
-    
+
     return list.filter(item => !disabled.includes(item.id));
   }
 
   hasFeat(featId) {
     const hasSelected = Array.isArray(this.feats) && this.feats.some(f => f.id === featId);
     if (hasSelected) return true;
-    
+
     const autoFeats = this.getAutomaticFeats();
     return autoFeats.some(f => f.id === featId);
   }
@@ -369,6 +370,7 @@ export class Combatant {
       wis: this.wis,
       cha: this.cha,
       iniMisc: this.iniMisc,
+      rawInit: this.rawInit,
       classType: this.classType,
       level: this.level,
       classes: this.classes,

@@ -214,7 +214,7 @@ export function getPCStateDiff() {
   const pc = CombatState.getActivePC();
   if (!pc) return null;
   
-  if (!cachedPCState || cachedPCState.id !== pc.id) {
+  if (!cachedPCState || cachedPCState.id !== pc.id || cachedPCState.name !== pc.name || cachedPCState.maxHP !== pc.maxHP) {
     cachedPCState = deepClone(pc);
     return {
       type: 'update_pc',
@@ -223,6 +223,18 @@ export function getPCStateDiff() {
   }
 
   const diff = getObjectDiff(cachedPCState, pc);
+  
+  // Explicitly sync HP when it changes
+  if (cachedPCState.hp !== pc.hp) {
+    diff.hp = pc.hp;
+  }
+  if (cachedPCState.init !== pc.init) {
+    diff.init = pc.init;
+  }
+  if (cachedPCState.rawInit !== pc.rawInit) {
+    diff.rawInit = pc.rawInit;
+  }
+
   cachedPCState = deepClone(pc);
 
   if (Object.keys(diff).length === 0) return null;

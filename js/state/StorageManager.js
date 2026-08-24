@@ -116,6 +116,10 @@ export function applyLoadedState(loadedState, preserveRole = true) {
       s.mode = 'choice';
       if (!s.session) s.session = {};
       s.session.role = 'choice';
+    } else if (s.session?.role === 'host' || s.session?.role === 'dm') {
+      s.mode = 'dm';
+    } else if (s.session?.role === 'player' || s.session?.role === 'client') {
+      s.mode = 'player';
     }
 
     const activePC = s.combatants.find(c => c.type === 'p');

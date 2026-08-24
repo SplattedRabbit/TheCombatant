@@ -37,7 +37,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
   const dexMod = getStatMod(pc.dex);
   const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some(f => f.id === 'improved_initiative');
   const totIni = dexMod + (parseInt((pc as any).iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
-  const finalIni = (pc.initiative || 0) > 0 ? (pc.initiative || 0) + totIni : '--';
+  const finalIni = (pc.init || 0) > 0 ? pc.init : ((pc.rawInit || 0) > 0 ? pc.rawInit + totIni : (pc.initiative ? pc.initiative + totIni : '--'));
 
   // Get Temp HP
   const tempHPObj = pc.conditions.find((c: any) => c === 'Temp-HP' || (c && c.n === 'Temp-HP'));

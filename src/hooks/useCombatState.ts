@@ -63,8 +63,21 @@ function rehydrateCombatant(c: any): any {
   return c;
 }
 
+function normalizeRole(rawRole: string | undefined): 'host' | 'player' | 'choice' | 'wizard' {
+  if (!rawRole || rawRole === 'choice') return 'choice';
+  if (rawRole === 'host' || rawRole === 'dm') return 'host';
+  if (rawRole === 'player' || rawRole === 'client') return 'player';
+  if (rawRole === 'wizard') return 'wizard';
+  return 'choice';
+}
+
 function createSnapshot(raw: unknown): CombatStateSnapshot {
   const r = (raw as any) ?? {};
+
+  const rawRole = (r.session?.role && r.session.role !== 'choice')
+    ? r.session.role
+    : (r.mode ?? 'choice');
+  const role = normalizeRole(rawRole);
 
   return {
     combatants: Array.isArray(r.combatants)
@@ -89,11 +102,10 @@ function createSnapshot(raw: unknown): CombatStateSnapshot {
     },
     session: {
       active: r.session?.active ?? false,
-      role: (r.session?.active && r.session?.role && r.session.role !== 'choice'
-        ? r.session.role
-        : (r.mode ?? 'choice')) as 'host' | 'player' | 'choice' | 'wizard',
+      role,
       roomCode: r.session?.roomCode ?? '',
     },
+    mode: r.mode || (role === 'host' ? 'dm' : role),
     concentrations: Array.isArray(r.concentrations)
       ? (JSON.parse(JSON.stringify(r.concentrations)))
       : [],

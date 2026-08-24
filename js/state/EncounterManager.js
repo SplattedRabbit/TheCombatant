@@ -225,36 +225,42 @@ export function importEncounterState(loadedState, isNetworkSync = false) {
 }
 
 export function mergeIncomingPC(pcData) {
+  if (!pcData) return false;
   const s = getState();
-  const idx = s.combatants.findIndex(x => x.id === pcData.id);
+  
+  // Clone and ensure type is player ('p')
+  const incoming = { ...pcData, type: 'p' };
+  
+  const idx = s.combatants.findIndex(x => x.id === incoming.id || (x.type === 'p' && x.name && x.name === incoming.name));
   if (idx !== -1) {
-    s.combatants[idx] = createCombatant(pcData);
+    const existingId = s.combatants[idx].id;
+    s.combatants[idx] = createCombatant({ ...incoming, id: existingId || incoming.id });
   } else {
-    s.combatants.push(createCombatant(pcData));
+    s.combatants.push(createCombatant(incoming));
   }
 
   // Also, update the companion and/or familiar if they exist in state.combatants!
-  const companionIdx = s.combatants.findIndex(x => x.id === `${pcData.id}-companion`);
+  const companionIdx = s.combatants.findIndex(x => x.id === `${incoming.id}-companion`);
   if (companionIdx !== -1) {
     const comp = s.combatants[companionIdx];
-    comp.name = pcData.companionName || comp.name;
-    if (pcData.companionMaxHP !== undefined) {
-      comp.maxHP = pcData.companionMaxHP;
+    comp.name = incoming.companionName || comp.name;
+    if (incoming.companionMaxHP !== undefined) {
+      comp.maxHP = incoming.companionMaxHP;
     }
-    if (pcData.companionHP !== undefined) {
-      comp.hp = pcData.companionHP;
+    if (incoming.companionHP !== undefined) {
+      comp.hp = incoming.companionHP;
     }
   }
 
-  const familiarIdx = s.combatants.findIndex(x => x.id === `${pcData.id}-familiar`);
+  const familiarIdx = s.combatants.findIndex(x => x.id === `${incoming.id}-familiar`);
   if (familiarIdx !== -1) {
     const fam = s.combatants[familiarIdx];
-    fam.name = pcData.familiarName || fam.name;
-    const ownerMaxHP = pcData.maxHP || 10;
+    fam.name = incoming.familiarName || fam.name;
+    const ownerMaxHP = incoming.maxHP || 10;
     const maxHP = Math.floor(ownerMaxHP / 2);
     fam.maxHP = maxHP;
-    if (pcData.familiarHP !== undefined) {
-      fam.hp = Math.min(maxHP, pcData.familiarHP);
+    if (incoming.familiarHP !== undefined) {
+      fam.hp = Math.min(maxHP, incoming.familiarHP);
     }
   }
 

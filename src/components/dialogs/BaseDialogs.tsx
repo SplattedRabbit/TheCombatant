@@ -540,10 +540,9 @@ interface RollBreakdownDialogProps {
   diceFormula: string;
   breakdownItems: Array<{ label: string; value: number }>;
   onClose: () => void;
-  onRollClick?: (rollVal: number) => void;
 }
 
-export const RollBreakdownDialog: React.FC<RollBreakdownDialogProps> = ({ title, diceFormula, breakdownItems, onClose, onRollClick }) => {
+export const RollBreakdownDialog: React.FC<RollBreakdownDialogProps> = ({ title, diceFormula, breakdownItems, onClose }) => {
   let modsSum = 0;
   const listItems = (breakdownItems || []).map((item, idx) => {
     const val = parseInt(item.value as any) || 0;
@@ -559,15 +558,6 @@ export const RollBreakdownDialog: React.FC<RollBreakdownDialogProps> = ({ title,
 
   const modsFormatted = modsSum >= 0 ? `+${modsSum}` : `${modsSum}`;
   const formulaFormatted = modsSum === 0 ? diceFormula : `${diceFormula} ${modsFormatted}`;
-
-  const triggerRoll = () => {
-    if (onRollClick) {
-      // Simulate/Trigger a 1d20 roll
-      const roll = Math.floor(Math.random() * 20) + 1;
-      onRollClick(roll);
-    }
-    onClose();
-  };
 
   return (
     <DialogOverlay onClose={onClose} width={255} id="rollBreakdown">
@@ -590,16 +580,6 @@ export const RollBreakdownDialog: React.FC<RollBreakdownDialogProps> = ({ title,
         <span>ROLL FORMULA:</span>
         <span style={{ fontSize: '13px' }}>{formulaFormatted}</span>
       </div>
-
-      {onRollClick && (
-        <button 
-          onClick={triggerRoll}
-          className="btn btn-p" 
-          style={{ width: '100%', marginTop: '12px', fontSize: '9.5px', padding: '4px 0', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}
-        >
-          Roll Now 🎲
-        </button>
-      )}
     </DialogOverlay>
   );
 };

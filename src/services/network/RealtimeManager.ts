@@ -110,9 +110,14 @@ export class RealtimeManager {
       return false;
     }
 
-    // Leave existing channel if switching rooms
-    if (this.activeChannel && this.currentCampaignId === campaignId) {
-      return true; // Already joined
+    // Leave existing channel if switching rooms, roles, or reconnecting
+    if (
+      this.activeChannel && 
+      this.currentCampaignId === campaignId && 
+      this.currentRole === role && 
+      this.status === 'connected'
+    ) {
+      return true; // Already joined with same role and connected
     } else if (this.activeChannel) {
       await this.leaveCampaign();
     }

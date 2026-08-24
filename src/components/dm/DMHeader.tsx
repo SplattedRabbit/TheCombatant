@@ -28,40 +28,71 @@ export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
   };
 
   return (
-    <div className="hdr" style={{ textAlign: 'center', marginBottom: '10px', position: 'relative' }}>
-      <div style={{ position: 'absolute', top: 0, right: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
-        <TablePresenceBar />
-        <button
-          type="button"
-          onClick={() => setIsCampaignDialogOpen(true)}
-          className="btn"
-          style={{
+    <div className="hdr" style={{ textAlign: 'center', marginBottom: '10px' }}>
+      {/* Top Utility Bar: Live Table presence, Campaign Dashboard & User Menu */}
+      <div 
+        className="hdr-top-bar no-print" 
+        style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between', 
+          marginBottom: '6px',
+          minHeight: '28px',
+          borderBottom: '0.5px solid rgba(200, 169, 110, 0.3)',
+          paddingBottom: '4px'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ 
+            fontFamily: "'IM Fell English SC', serif", 
+            fontSize: '11px', 
+            color: 'var(--red)', 
+            letterSpacing: '0.5px', 
+            fontWeight: 'bold',
             display: 'flex',
             alignItems: 'center',
-            gap: '4px',
-            padding: '2px 8px',
-            fontSize: '11px',
-            fontFamily: "'IM Fell English SC', serif",
-            fontWeight: 'bold',
-            background: 'rgba(253, 246, 226, 0.9)',
-            border: '1px solid var(--pb)',
-            borderRadius: '12px',
-            cursor: 'pointer',
-            color: 'var(--ink)',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
-          }}
-          title="Open Campaign Dashboard (switch, create, duplicate)"
-        >
-          <span>🎲</span>
-          <span>Campaigns</span>
-        </button>
-        <UserMenu />
+            gap: '4px'
+          }}>
+            <span>🏰</span>
+            <span>DM Screen · Live Encounter Table</span>
+          </span>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <TablePresenceBar />
+          <button
+            type="button"
+            onClick={() => setIsCampaignDialogOpen(true)}
+            className="btn"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              padding: '2px 8px',
+              fontSize: '11px',
+              fontFamily: "'IM Fell English SC', serif",
+              fontWeight: 'bold',
+              background: 'rgba(253, 246, 226, 0.9)',
+              border: '1px solid var(--pb)',
+              borderRadius: '12px',
+              cursor: 'pointer',
+              color: 'var(--ink)',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+            }}
+            title="Open Campaign Dashboard (switch, create, duplicate)"
+          >
+            <span>🎲</span>
+            <span>Campaigns</span>
+          </button>
+          <UserMenu />
+        </div>
       </div>
+
       <CampaignManagerDialog
         isOpen={isCampaignDialogOpen}
         onClose={() => setIsCampaignDialogOpen(false)}
       />
-      <h1>Dungeon Master Combat Sheet</h1>
+      <h1 style={{ margin: '2px 0' }}>Dungeon Master Combat Sheet</h1>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', margin: '2px 0' }}>
         <hr style={{ flex: 1, border: 'none', borderTop: '1px solid var(--pb)', maxWidth: '60px' }} />
         <span style={{ color: 'var(--gold)', fontSize: '11px' }}>✦ ❧ ✦</span>
