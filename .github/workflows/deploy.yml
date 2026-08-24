@@ -38,7 +38,7 @@ jobs:
         run: npm run typecheck
 
       - name: Run Tests
-        run: node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
+        run: node --import ./Tests/setup.js --test --test-reporter=dot Tests/*.test.js
 
       - name: Build
         run: npm run build

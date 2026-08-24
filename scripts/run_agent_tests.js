@@ -11,7 +11,7 @@ const userArgs = process.argv.slice(2);
 if (userArgs.length > 0) {
   args.push(...userArgs);
 } else {
-  args.push('Tests/**/*.test.js');
+  args.push('Tests/*.test.js');
 }
 
 const child = spawn('node', args, {

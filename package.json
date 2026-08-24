@@ -3,7 +3,7 @@
   "version": "6.0.0",
   "type": "module",
   "scripts": {
-    "test": "node --import ./Tests/setup.js --test Tests/**/*.test.js",
+    "test": "node --import ./Tests/setup.js --test Tests/*.test.js",
     "dev": "vite",
     "build": "vite build && node scratch/update_sw.js",
     "preview": "vite preview",

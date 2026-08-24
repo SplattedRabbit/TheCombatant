@@ -24,7 +24,7 @@
 >    - `Stat.js` besitzt nun `get mod()` und die Alias-Methode `getMod()`. `recalculatePCStats` läuft unterbrechungsfrei durch.
 > 
 > ### 🧪 Pflicht-Verifikation bei jedem Schritt:
-> - Tests: `node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js`
+> - Tests: `node --import ./Tests/setup.js --test --test-reporter=dot Tests/*.test.js`
 > - Typecheck: `npm run typecheck`
 > - Build: `npm run build`
 > 
@@ -63,7 +63,7 @@ Ausführliche Test-Protokolle verbrauchen Tausende Token. Verwende **immer** den
 node --import ./Tests/setup.js --test --test-reporter=dot Tests/realtime_service.test.js
 
 # 2. GLOBALER TESTLAUF (NUR einmalig direkt vor dem Turn-Ende erlaubt):
-node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
+node --import ./Tests/setup.js --test --test-reporter=dot Tests/*.test.js
 ```
 
 ### 2.2 Suchen statt Laden:

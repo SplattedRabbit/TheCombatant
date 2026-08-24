@@ -34,7 +34,7 @@ jobs:
         run: npm run typecheck
 
       - name: Run Test Suite (Dot Reporter)
-        run: node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js
+        run: node --import ./Tests/setup.js --test --test-reporter=dot Tests/*.test.js
 
       - name: Build Production Bundle
         run: npm run build
