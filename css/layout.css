@@ -53,6 +53,65 @@
   color: var(--ink);
 }
 
+/* Header Utility Action Buttons (Parchment & Wax-Seal Theme) */
+.hdr-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 10.5px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  background: linear-gradient(180deg, rgba(253, 246, 226, 0.95) 0%, rgba(232, 213, 160, 0.85) 100%);
+  border: 1px solid var(--pb);
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--inkm);
+  box-shadow: 0 1px 2px rgba(61, 43, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  line-height: 1.3;
+}
+
+.hdr-action-btn:hover {
+  background: linear-gradient(180deg, #fdf6e2 0%, #d8be7e 100%);
+  border-color: var(--gold);
+  color: var(--ink);
+  box-shadow: 0 1px 4px rgba(154, 122, 46, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.hdr-action-btn:active {
+  background: #d8be7e;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.hdr-action-btn-primary {
+  background: linear-gradient(180deg, #9b2c2c 0%, #7b1818 100%);
+  border: 1px solid #5a0a0a;
+  color: var(--p);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.hdr-action-btn-primary:hover {
+  background: linear-gradient(180deg, #b03535 0%, #8b1a1a 100%);
+  border-color: var(--gold);
+  color: #ffffff;
+  box-shadow: 0 1px 5px rgba(139, 26, 26, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.hdr-action-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9.5px;
+  font-family: 'Crimson Text', serif;
+  color: var(--inkm);
+  border: 1px solid var(--pb);
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(200, 169, 110, 0.15);
+}
+
 .mgrid {
   display: grid;
   grid-template-columns: 1fr 1fr;

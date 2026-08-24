@@ -49,18 +49,7 @@ export const UserMenu: React.FC = () => {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
         <SyncIndicator />
-        <span
-          style={{
-            fontSize: '9.5px',
-            fontFamily: "'Crimson Text', serif",
-            color: 'var(--inkm)',
-            border: '1px dashed var(--pb)',
-            padding: '2px 6px',
-            borderRadius: '10px',
-            background: 'rgba(200, 169, 110, 0.1)',
-          }}
-          title="Local Mode: No Supabase configured"
-        >
+        <span className="hdr-action-badge" title="Local Mode: No Supabase configured">
           💾 Offline
         </span>
       </div>
@@ -76,22 +65,7 @@ export const UserMenu: React.FC = () => {
           type="button"
           onClick={handleSignIn}
           disabled={isLoading || isLoggingIn}
-          className="btn btn-p"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '5px',
-            padding: '3px 9px',
-            fontSize: '10.5px',
-            fontFamily: "'IM Fell English SC', serif",
-            fontWeight: 'bold',
-            background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-            border: '1px solid #8b6914',
-            color: '#ffffff',
-            borderRadius: '12px',
-            cursor: 'pointer',
-            boxShadow: '0 1px 4px rgba(0,0,0,0.15)',
-          }}
+          className="hdr-action-btn hdr-action-btn-primary"
           title="Sign in with Google to save characters to the cloud"
         >
           <span>🔑</span>
@@ -110,22 +84,8 @@ export const UserMenu: React.FC = () => {
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="btn"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px',
-            padding: '2px 8px',
-            fontSize: '11px',
-            fontFamily: "'IM Fell English SC', serif",
-            fontWeight: 'bold',
-            background: isOpen ? 'var(--parchment, #fdf6e2)' : 'rgba(253, 246, 226, 0.9)',
-            border: '1px solid var(--pb, #c8a96e)',
-            borderRadius: '12px',
-            cursor: 'pointer',
-            color: 'var(--ink, #2c2214)',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-          }}
+          className="hdr-action-btn"
+          style={isOpen ? { background: 'linear-gradient(180deg, #fdf6e2 0%, #d8be7e 100%)', borderColor: 'var(--gold)' } : undefined}
           title="Open User Menu"
         >
           {avatarUrl ? (
@@ -133,8 +93,8 @@ export const UserMenu: React.FC = () => {
               src={avatarUrl}
               alt="Avatar"
               style={{
-                width: '16px',
-                height: '16px',
+                width: '15px',
+                height: '15px',
                 borderRadius: '50%',
                 objectFit: 'cover',
                 border: '0.5px solid var(--pb)',

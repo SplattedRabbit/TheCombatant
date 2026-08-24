@@ -269,22 +269,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
               <button
                 type="button"
                 onClick={() => setIsJoinOpen(true)}
-                className="btn"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  padding: '2px 8px',
-                  fontSize: '11px',
-                  fontFamily: "'IM Fell English SC', serif",
-                  fontWeight: 'bold',
-                  background: 'rgba(253, 246, 226, 0.9)',
-                  border: '1px solid var(--pb)',
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  color: 'var(--ink)',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
-                }}
+                className="hdr-action-btn"
                 title="Join a DM Campaign via invite code"
               >
                 <span>🔗</span>
@@ -293,22 +278,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
               <button
                 type="button"
                 onClick={() => setIsRosterOpen(true)}
-                className="btn"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  padding: '2px 8px',
-                  fontSize: '11px',
-                  fontFamily: "'IM Fell English SC', serif",
-                  fontWeight: 'bold',
-                  background: 'rgba(253, 246, 226, 0.9)',
-                  border: '1px solid var(--pb)',
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  color: 'var(--ink)',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
-                }}
+                className="hdr-action-btn"
                 title="Open Character Roster (switch, create, duplicate)"
               >
                 <span>📜</span>
