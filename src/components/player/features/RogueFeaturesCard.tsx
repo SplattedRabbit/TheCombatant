@@ -14,10 +14,7 @@ export const RogueFeaturesCard: React.FC<RogueFeaturesCardProps> = ({ pc, level 
   const saDiceCount = Math.floor((level + 1) / 2);
 
   const handleToggleSneakAttack = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    activePC.isSneakAttacking = e.target.checked;
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    CombatState.togglePCSneakAttack(e.target.checked);
   };
 
   return (

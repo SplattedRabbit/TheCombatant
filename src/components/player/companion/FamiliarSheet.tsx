@@ -80,36 +80,33 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    activePC.familiarName = e.target.value;
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    const val = e.target.value;
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.familiarName = val;
+    });
     onUpdate();
   };
 
   const handleHpCurChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    const val = parseInt(e.target.value) || 0;
-    const computedMax = Math.floor(activePC.maxHP / 2);
-    activePC.familiarHP = Math.max(0, Math.min(computedMax, val));
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    const val = parseInt(e.target.value, 10) || 0;
+    CombatState.updatePCBatch((activePC: any) => {
+      const computedMax = Math.floor((activePC.maxHP || 1) / 2);
+      activePC.familiarHP = Math.max(0, Math.min(computedMax, val));
+    });
     onUpdate();
   };
 
   const handleHpAdjust = (dir: number) => {
-    const activePC = CombatState.getActivePC();
-    const computedMax = Math.floor(activePC.maxHP / 2);
-    activePC.familiarHP = Math.max(0, Math.min(computedMax, (activePC.familiarHP || 0) + dir));
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    CombatState.updatePCBatch((activePC: any) => {
+      const computedMax = Math.floor((activePC.maxHP || 1) / 2);
+      activePC.familiarHP = Math.max(0, Math.min(computedMax, (activePC.familiarHP || 0) + dir));
+    });
     onUpdate();
   };
 
   const handleAttackRoll = (e: React.MouseEvent<HTMLButtonElement>, attName: string, bonus: number, _damage: string, _note: string) => {
     e.stopPropagation();
-    const activePC = CombatState.getActivePC();
-    const famName = activePC.familiarName || 'Familiar';
+    const famName = pc.familiarName || 'Familiar';
 
     showRollBreakdown(`${famName} - ${attName}`, `1W20`, [
       { label: "Attack Bonus (Dexterity/Size)", value: bonus }

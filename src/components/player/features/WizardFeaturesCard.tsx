@@ -36,14 +36,8 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
 
   const handleSpecChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const val = e.target.value;
+    CombatState.updatePCWizardSpecialization(val);
     const activePC = CombatState.getActivePC();
-    activePC.wizardSpecialization = val;
-    if (val === 'none') {
-      activePC.wizardProhibited1 = '';
-      activePC.wizardProhibited2 = '';
-    } else if (val === 'div') {
-      activePC.wizardProhibited2 = '';
-    }
     const removed = cleanProhibitedSpells(activePC);
     if (removed.length > 0) {
       setTimeout(() => showCustomAlert(
@@ -51,14 +45,12 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
         `The following spells were removed from your spellbook:\n\n• ${removed.join('\n• ')}`
       ), 100);
     }
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
   };
 
   const handleProhibited1Change = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const val = e.target.value;
+    CombatState.updatePCWizardProhibited1(val);
     const activePC = CombatState.getActivePC();
-    activePC.wizardProhibited1 = val;
     const removed = cleanProhibitedSpells(activePC);
     if (removed.length > 0) {
       setTimeout(() => showCustomAlert(
@@ -66,14 +58,12 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
         `The following spells were removed from your spellbook:\n\n• ${removed.join('\n• ')}`
       ), 100);
     }
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
   };
 
   const handleProhibited2Change = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const val = e.target.value;
+    CombatState.updatePCWizardProhibited2(val);
     const activePC = CombatState.getActivePC();
-    activePC.wizardProhibited2 = val;
     const removed = cleanProhibitedSpells(activePC);
     if (removed.length > 0) {
       setTimeout(() => showCustomAlert(
@@ -81,8 +71,6 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
         `The following spells were removed from your spellbook:\n\n• ${removed.join('\n• ')}`
       ), 100);
     }
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
   };
 
   return (

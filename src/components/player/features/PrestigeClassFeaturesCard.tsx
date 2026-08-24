@@ -74,17 +74,11 @@ export const PrestigeClassFeaturesCard: React.FC<PrestigeClassFeaturesCardProps>
   ) as string] : 0;
 
   const handleToggleSneakAttack = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    activePC.isSneakAttacking = e.target.checked;
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    CombatState.togglePCSneakAttack(e.target.checked);
   };
 
   const handleToggleTrickyFighting = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    activePC.isTrickyFightingActive = e.target.checked;
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    CombatState.togglePCTrickyFighting(e.target.checked);
   };
 
   const empowerAbilityIdx = Array.isArray(pc.dailyAbilities)

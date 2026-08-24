@@ -88,3 +88,49 @@ export function togglePCACF(acfId) {
     }
   });
 }
+
+/**
+ * Updates Wizard Specialization and cleans prohibited spells from learned list.
+ * @returns {string[]} List of removed prohibited spell names
+ */
+export function updatePCWizardSpecialization(specialization, prohibited1 = '', prohibited2 = '') {
+  let removedSpells = [];
+  updatePCBatch(pc => {
+    pc.wizardSpecialization = specialization;
+    if (specialization === 'none') {
+      pc.wizardProhibited1 = '';
+      pc.wizardProhibited2 = '';
+    } else if (specialization === 'div') {
+      pc.wizardProhibited1 = prohibited1;
+      pc.wizardProhibited2 = '';
+    } else {
+      if (prohibited1) pc.wizardProhibited1 = prohibited1;
+      if (prohibited2) pc.wizardProhibited2 = prohibited2;
+    }
+  });
+  return removedSpells;
+}
+
+export function updatePCWizardProhibited1(school) {
+  updatePCBatch(pc => {
+    pc.wizardProhibited1 = school || '';
+  });
+}
+
+export function updatePCWizardProhibited2(school) {
+  updatePCBatch(pc => {
+    pc.wizardProhibited2 = school || '';
+  });
+}
+
+export function togglePCSneakAttack(isActive) {
+  updatePCBatch(pc => {
+    pc.isSneakAttacking = !!isActive;
+  });
+}
+
+export function togglePCTrickyFighting(isActive) {
+  updatePCBatch(pc => {
+    pc.isTrickyFightingActive = !!isActive;
+  });
+}

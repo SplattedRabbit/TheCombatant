@@ -35,19 +35,13 @@ export const RangerFeaturesCard: React.FC<RangerFeaturesCardProps> = ({ pc, leve
   const wildEmpathyTotal = level + chaMod;
 
   const handleFavoredEnemyCommit = (val: string) => {
-    const activePC = CombatState.getActivePC();
-    if (activePC.favoredEnemy !== val) {
-      activePC.favoredEnemy = val;
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
+    if (pc.favoredEnemy !== val) {
+      CombatState.updatePCField('favoredEnemy', val);
     }
   };
 
   const handleCombatStyleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const activePC = CombatState.getActivePC();
-    activePC.rangerCombatStyle = e.target.value;
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    CombatState.updatePCField('rangerCombatStyle', e.target.value);
   };
 
   const handleShowWildEmpathyFormula = () => {

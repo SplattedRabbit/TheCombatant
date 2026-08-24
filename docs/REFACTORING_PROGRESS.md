@@ -45,8 +45,8 @@ gantt
 | Phase | Fokus | Status | Commits | Tests | Typecheck |
 | :--- | :--- | :---: | :---: | :---: | :---: |
 | **Phase 1** | Bereinigung toter Dateien, XSS-Schutz, SW-Version | ✅ **Abgeschlossen** | `e613713`, `92d6f00` | 304 / 304 ✅ | 0 Fehler ✅ |
-| **Phase 2** | State-API-Compliance, Declarative DialogContext | ⏳ **In Vorbereitung** | — | — | — |
-| **Phase 3** | Snapshot DTOs, V8-Deopt Beseitigung, SkillsTab Patch | ⏳ Ausstehend | — | — | — |
+| **Phase 2** | State-API-Compliance, Declarative DialogContext | ✅ **Abgeschlossen** | Aktuell | 304 / 304 ✅ | 0 Fehler ✅ |
+| **Phase 3** | Snapshot DTOs, V8-Deopt Beseitigung, SkillsTab Patch | ⏳ **In Vorbereitung** | — | — | — |
 | **Phase 4** | Modularisierung aller 13 Dateien > 600 Zeilen | ⏳ Ausstehend | — | — | — |
 | **Phase 5** | Vollständige Typsicherheit, Abbau aller 171 `@ts-ignore` | ⏳ Ausstehend | — | — | — |
 | **Phase 6** | Vitest UI-Tests, `React.lazy()` Code-Splitting | ⏳ Ausstehend | — | — | — |
@@ -80,28 +80,32 @@ gantt
 
 ---
 
-### ⏳ Phase 2: State-Integrität & DialogContext (Nächster Schritt)
+### ✅ Phase 2: State-Integrität & DialogContext
+- **Datum:** 24. August 2026
 
-#### Geplante Unter-Tasks:
+#### Durchgeführte Änderungen:
+1. **State-API für Feature-Karten & Companions:**
+   - `[MODIFY]` [`js/state/pc/PCClasses.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/pc/PCClasses.js) & [`PCManager.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/PCManager.js) & [`state.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state.js):
+     - `updatePCWizardSpecialization(spec, prob1, prob2)`
+     - `updatePCWizardProhibited1(school)` / `updatePCWizardProhibited2(school)`
+     - `togglePCSneakAttack(isActive)`
+     - `togglePCTrickyFighting(isActive)`
+   - `[MODIFY]` Feature-Karten & Companion-Sheets auf offizielle State-Methoden umgestellt:
+     - `WizardFeaturesCard.tsx` (Beseitigung aller `activePC.wizard*`-Mutationen)
+     - `PrestigeClassFeaturesCard.tsx` (`togglePCSneakAttack`, `togglePCTrickyFighting`)
+     - `RogueFeaturesCard.tsx` (`togglePCSneakAttack`)
+     - `RangerFeaturesCard.tsx` (`CombatState.updatePCField`)
+     - `ClassCombatAbilitiesCard.tsx` (`CombatState.updatePCBatch` für Rage)
+     - `CompanionSheet.tsx` & `FamiliarSheet.tsx` (`CombatState.updatePCBatch`)
+2. **Deklarativer DialogContext (Ablösung der Window-Bridge):**
+   - `[NEW]` [`src/context/DialogContext.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/context/DialogContext.tsx) (Echter React Context Provider mit `useDialog()` Hook und deklarativer Rendermatrix).
+   - `[MODIFY]` [`src/main.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/main.tsx) (`<DialogProvider>` fest um `<App />` gewrappt).
+   - `[DELETE]` [`src/components/dialogs/ReactDialogBridge.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/dialogs/ReactDialogBridge.tsx) (Gelöscht — keine isolierten `createRoot`-Instanzen mehr).
 
-```
-[ ] Task 2.1: State-API für Feature-Karten (js/state/pc/)
-    [ ] 2.1.1: Neue State-Funktion in PCClasses.js: updatePCWizardSpecialization(spec, prob1, prob2)
-    [ ] 2.1.2: Neue State-Funktion in PCClasses.js: togglePCSneakAttack(isActive)
-    [ ] 2.1.3: Neue State-Funktion in PCClasses.js: togglePCTrickyFighting(isActive)
-    [ ] 2.1.4: Neue State-Funktion in PCGeneral.js: updatePCDailyAbilityUsed(abilityIndex, delta)
-    [ ] 2.1.5: Refactoring WizardFeaturesCard.tsx (getActivePC-Mutationen entfernen)
-    [ ] 2.1.6: Refactoring PrestigeClassFeaturesCard.tsx (getActivePC-Mutationen entfernen)
-    [ ] 2.1.7: Refactoring CompanionSheet.tsx & FamiliarSheet.tsx (getActivePC-Mutationen entfernen)
-    [ ] 2.1.8: Verifikation: npm run test & npm run typecheck
-
-[ ] Task 2.2: Deklarativer DialogContext (Ablösung der Window-Bridge)
-    [ ] 2.2.1: src/context/DialogContext.tsx erstellen
-    [ ] 2.2.2: DialogProvider in src/main.tsx einbinden
-    [ ] 2.2.3: Dialoge deklarativ im React-Tree steuern (useDialog Hook)
-    [ ] 2.2.4: ReactDialogBridge.tsx und window.__REACT_DIALOG_BRIDGE__ entfernen
-    [ ] 2.2.5: Verifikation: npm run test & npm run typecheck
-```
+#### Verifikation & Testergebnisse:
+- `npm run typecheck` ➔ **0 Fehler**
+- `npm run test` ➔ **304 / 304 Tests bestanden** (24 Suiten, 0 Fehler, 11.3s)
+- `npm run build` ➔ **Erfolgreich gebündelt (dist/assets/main-*.js)**
 
 ---
 

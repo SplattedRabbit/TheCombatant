@@ -31,66 +31,60 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
   const baseStats = CompanionRules.getCompanionBaseStats(type, effectiveDruidLvl);
 
   const handleSpeciesChange = (newType: string) => {
-    const activePC = CombatState.getActivePC();
-    activePC.companionType = newType;
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.companionType = newType;
 
-    if (newType !== 'none') {
-      const base = CompanionRules.getCompanionBaseStats(newType, activePC.level);
-      if (base) {
-        activePC.companionName = base.name;
-        activePC.companionMaxHP = base.maxHP;
-        activePC.companionHP = base.maxHP;
+      if (newType !== 'none') {
+        const base = CompanionRules.getCompanionBaseStats(newType, activePC.level);
+        if (base) {
+          activePC.companionName = base.name;
+          activePC.companionMaxHP = base.maxHP;
+          activePC.companionHP = base.maxHP;
+        }
+      } else {
+        activePC.companionName = '';
+        activePC.companionMaxHP = 0;
+        activePC.companionHP = 0;
       }
-    } else {
-      activePC.companionName = '';
-      activePC.companionMaxHP = 0;
-      activePC.companionHP = 0;
-    }
-
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    });
     onUpdate();
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    activePC.companionName = e.target.value;
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    const val = e.target.value;
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.companionName = val;
+    });
     onUpdate();
   };
 
   const handleHpCurChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    const val = parseInt(e.target.value) || 0;
-    activePC.companionHP = Math.max(0, Math.min(activePC.companionMaxHP, val));
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    const val = parseInt(e.target.value, 10) || 0;
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.companionHP = Math.max(0, Math.min(activePC.companionMaxHP || 0, val));
+    });
     onUpdate();
   };
 
   const handleHpMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    const val = parseInt(e.target.value) || 1;
-    activePC.companionMaxHP = val;
-    activePC.companionHP = Math.min(activePC.companionHP, val);
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    const val = parseInt(e.target.value, 10) || 1;
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.companionMaxHP = val;
+      activePC.companionHP = Math.min(activePC.companionHP || 0, val);
+    });
     onUpdate();
   };
 
   const handleHpAdjust = (dir: number) => {
-    const activePC = CombatState.getActivePC();
-    activePC.companionHP = Math.max(0, Math.min(activePC.companionMaxHP, (activePC.companionHP || 0) + dir));
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.companionHP = Math.max(0, Math.min(activePC.companionMaxHP || 0, (activePC.companionHP || 0) + dir));
+    });
     onUpdate();
   };
 
   const handleAttackRoll = (e: React.MouseEvent<HTMLButtonElement>, attName: string, bonus: number, _damage: string, _note: string) => {
     e.stopPropagation();
-    const activePC = CombatState.getActivePC();
-    const compName = activePC.companionName || 'Animal Companion';
+    const compName = pc.companionName || 'Animal Companion';
 
     showRollBreakdown(`${compName} - ${attName}`, `1W20`, [
       { label: "Attack Bonus (Strength/Size)", value: bonus }

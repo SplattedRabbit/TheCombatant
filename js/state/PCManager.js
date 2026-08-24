@@ -22,7 +22,12 @@ export {
   updatePCClassLevel,
   updatePCClassType,
   clearPCClasses,
-  togglePCACF
+  togglePCACF,
+  updatePCWizardSpecialization,
+  updatePCWizardProhibited1,
+  updatePCWizardProhibited2,
+  togglePCSneakAttack,
+  togglePCTrickyFighting
 } from './pc/PCClasses.js';
 
 export {

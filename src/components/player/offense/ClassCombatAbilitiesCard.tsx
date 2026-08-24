@@ -92,17 +92,16 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
 
   const handleRageBubbleClick = (idx: number, e: React.MouseEvent) => {
     e.stopPropagation();
-    const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities?.find((a: any) => a.name === "Kampfrausch (Rage)");
-    if (ability) {
-      if (idx <= ability.used) {
-        ability.used = idx - 1;
-      } else {
-        ability.used = idx;
+    CombatState.updatePCBatch((activePC: any) => {
+      const ability = activePC.dailyAbilities?.find((a: any) => a.name === "Kampfrausch (Rage)");
+      if (ability) {
+        if (idx <= (ability.used || 0)) {
+          ability.used = idx - 1;
+        } else {
+          ability.used = idx;
+        }
       }
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
-    }
+    });
   };
 
   return (

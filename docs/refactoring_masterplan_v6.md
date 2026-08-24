@@ -61,19 +61,21 @@ graph TD
 
 ---
 
-### 📋 Phase 2: State-Integrität & DialogContext (P1 · M)
+### 📋 Phase 2: State-Integrität & DialogContext (P1 · M) — ✅ ERLEDIGT
 *Ziel: 100% Einhaltung des 4-Schichten-Modells (`UI ➔ State ➔ Models`) und Ablösung des `window.__REACT_DIALOG_BRIDGE__`-Hacks.*
 
-* **2.1 State-API für Klassen-Features:**
-  * `[MODIFY]` [`js/state/pc/PCClasses.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/pc/PCClasses.js) & [`PCGeneral.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/pc/PCGeneral.js) — Neue offizielle State-Methoden implementieren:
+* **2.1 State-API für Klassen-Features:** ✅
+  * `[MODIFY]` [`js/state/pc/PCClasses.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/pc/PCClasses.js) & [`PCManager.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/PCManager.js) & [`state.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state.js) — Neue offizielle State-Methoden implementiert:
     * `updatePCWizardSpecialization(spec, prob1, prob2)`
+    * `updatePCWizardProhibited1(school)` / `updatePCWizardProhibited2(school)`
     * `togglePCSneakAttack(isActive)`
     * `togglePCTrickyFighting(isActive)`
     * `updatePCDailyAbilityUsed(index, delta)`
-  * `[MODIFY]` [`WizardFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/WizardFeaturesCard.tsx), [`PrestigeClassFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/PrestigeClassFeaturesCard.tsx), [`CompanionSheet.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/companion/CompanionSheet.tsx), [`FamiliarSheet.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/companion/FamiliarSheet.tsx) — Direkte Mutationen von `CombatState.getActivePC()` und manuelle `saveToStorage()`-Aufrufe restlos durch die neuen State-Methoden ersetzen.
-* **2.2 Deklarativer DialogContext (Ablösung der Window-Bridge):**
-  * `[NEW]` `src/context/DialogContext.tsx` — Echter React Context Provider für Modals innerhalb des Komponenten-Trees (ermöglicht Context-Zugriff auf Auth/State und garantiert sauberes Unmounten ohne Memory Leaks).
-  * `[DELETE]` [`src/components/dialogs/ReactDialogBridge.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/dialogs/ReactDialogBridge.tsx) & Beseitigung aller `(window as any).__REACT_DIALOG_BRIDGE__`-Aufrufe.
+  * `[MODIFY]` [`WizardFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/WizardFeaturesCard.tsx), [`PrestigeClassFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/PrestigeClassFeaturesCard.tsx), [`RogueFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/RogueFeaturesCard.tsx), [`RangerFeaturesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/RangerFeaturesCard.tsx), [`ClassCombatAbilitiesCard.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/offense/ClassCombatAbilitiesCard.tsx), [`CompanionSheet.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/companion/CompanionSheet.tsx), [`FamiliarSheet.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/companion/FamiliarSheet.tsx) — Direkte Mutationen von `CombatState.getActivePC()` und manuelle `saveToStorage()`-Aufrufe restlos durch offizielle State-Methoden ersetzt.
+* **2.2 Deklarativer DialogContext (Ablösung der Window-Bridge):** ✅
+  * `[NEW]` [`src/context/DialogContext.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/context/DialogContext.tsx) — Deklarativer React Context Provider für Modals innerhalb des Komponenten-Trees mit `useDialog()` Hook.
+  * `[MODIFY]` [`src/main.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/main.tsx) — `<DialogProvider>` fest im React-Tree integriert.
+  * `[DELETE]` [`src/components/dialogs/ReactDialogBridge.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/dialogs/ReactDialogBridge.tsx) — Gelöscht.
 
 ---
 
