@@ -100,22 +100,23 @@ export const UserMenu: React.FC = () => {
           {avatarUrl ? (
             <img
               src={avatarUrl}
-              alt="Avatar"
+              alt=""
               style={{
-                width: '15px',
-                height: '15px',
+                width: '14px',
+                height: '14px',
                 borderRadius: '50%',
                 objectFit: 'cover',
                 border: '0.5px solid var(--pb)',
+                flexShrink: 0,
               }}
             />
           ) : (
-            <span>👤</span>
+            <span style={{ fontSize: '11px', flexShrink: 0 }}>👤</span>
           )}
-          <span style={{ maxWidth: '80px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <span style={{ maxWidth: '120px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {displayName}
           </span>
-          <span style={{ fontSize: '8px', opacity: 0.7 }}>▼</span>
+          <span style={{ fontSize: '8px', opacity: 0.7, flexShrink: 0 }}>▼</span>
         </button>
 
         {isOpen && (
