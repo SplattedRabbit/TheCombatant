@@ -91,35 +91,20 @@ graph TD
 
 ---
 
-### 📋 Phase 4: Modularisierung & Dateisplits (P2 · M)
-*Ziel: Strikte Einhaltung von AGENT.md §9 (alle React-Komponenten < 450 Zeilen).*
+### ✅ Phase 4: Modularisierung & Dateisplits (< 450 Zeilen) (P2 · M) — ABGESCHLOSSEN
+*Ziel: Einhaltung von AGENT.md §9 durch Aufteilung aller Monster-Komponenten in fokussierte Sub-Komponenten.*
 
-* **4.1 `BaseDialogs.tsx` (782 Z.) aufteilen in `src/components/dialogs/modals/`:**
-  * `CustomAlertModal.tsx` (~80 Z.)
-  * `CustomConfirmModal.tsx` (~90 Z.)
-  * `CustomPromptModal.tsx` (~80 Z.)
-  * `HealingRollModal.tsx` (~110 Z.)
-  * `ItemDamageModal.tsx` (~130 Z.)
-  * `NewDayTemplateDialog.tsx` (~120 Z.)
-  * `RollBreakdownDialog.tsx` (~140 Z.)
-  * `SampleChoiceDialog.tsx` (~90 Z.)
-* **4.2 `PCSkillsTab.tsx` (816 Z.) aufteilen in `src/components/player/skills/`:**
-  * `PCSkillsTab.tsx` (~220 Z. — Orchestrierung)
-  * `SkillRow.tsx` (~180 Z. — Einzelzeile mit Tooltip)
-  * `SkillFilterBar.tsx` (~100 Z. — Suche & Filter-Toggles)
-  * `SkillTricksSubPanel.tsx` (~200 Z. — Skill-Tricks Verwaltung)
-* **4.3 `ActiveEquipmentSlots.tsx` (785 Z.) aufteilen in `src/components/player/offense/slots/`:**
-  * `ActiveEquipmentSlots.tsx` (~200 Z.)
-  * `WeaponSlotRenderer.tsx` (~220 Z.)
-  * `ArmorSlotRenderer.tsx` (~180 Z.)
-  * `NaturalAttacksRenderer.tsx` (~180 Z.)
-* **4.4 `TacticalBeltCard.tsx` (772 Z.) aufteilen in `src/components/player/offense/belt/`:**
-  * `TacticalBeltCard.tsx` (~180 Z.)
-  * `PotionBeltSection.tsx` (~190 Z.)
-  * `ScrollBeltSection.tsx` (~190 Z.)
-  * `WandBeltSection.tsx` (~190 Z.)
-* **4.5 `CharacterWizardDialog.tsx` (794 Z.) & `Step3LevelConfig.tsx` (746 Z.) modularisieren:**
-  * `WizardSummaryFooter.tsx`, `ClassLevelPicker.tsx`, `PrestigeRequirementCheck.tsx`.
+* **4.1 `BaseDialogs.tsx` (782 Z.) aufgeteilt in `src/components/dialogs/modals/`:**
+  * `CustomAlertModal.tsx`, `CustomConfirmModal.tsx`, `CustomPromptModal.tsx`, `HealingRollModal.tsx`, `ItemDamageModal.tsx`, `NewDayTemplateDialog.tsx`, `RollBreakdownDialog.tsx`, `SampleChoiceDialog.tsx`, `ParchmentMessageModal.tsx`, `DialogOverlay.tsx`.
+  * `BaseDialogs.tsx` als schlanke 24-Zeilen Re-Export-Fassade.
+* **4.2 `PCSkillsTab.tsx` (805 Z. ➔ 296 Z.) aufgeteilt in `src/components/player/skills/`:**
+  * `SkillsLegend.tsx`, `SkillFilterBar.tsx`, `SkillRow.tsx`, `SkillTricksSubPanel.tsx`.
+* **4.3 `ActiveEquipmentSlots.tsx` (785 Z. ➔ 73 Z.) aufgeteilt in `src/components/player/offense/slots/`:**
+  * `slotsHelper.ts`, `MainHandSlot.tsx`, `OffHandSlot.tsx`, `StrikeAbilitySlot.tsx`, `NaturalAttacksSection.tsx`.
+* **4.4 `TacticalBeltCard.tsx` (772 Z. ➔ 204 Z.) aufgeteilt in `src/components/player/offense/belt/`:**
+  * `beltHelpers.ts`, `BeltSlot.tsx`, `BeltItemModal.tsx`.
+* **4.5 `Step3LevelConfig.tsx` (746 Z. ➔ 244 Z.) & `WizardFeaturesCard.tsx` (172 Z.) modularisiert:**
+  * `PrestigeSpellLinkSection.tsx`, `LevelHeaderAndStats.tsx`, `FeatSlotsSidebar.tsx`.
 
 ---
 

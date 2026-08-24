@@ -5,10 +5,9 @@ import { CombatState } from '@core/state.js';
 import { getSchoolCodeFromInput } from '@core/spells.js';
 // @ts-ignore
 import { cleanProhibitedSpells } from '@core/rules/SpellRules.js';
+// @ts-ignore
+import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { ClassACFSelector } from './ClassACFSelector';
-
-const showCustomAlert = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showCustomAlert?.(...args);
 
 interface WizardFeaturesCardProps {
   pc: any;

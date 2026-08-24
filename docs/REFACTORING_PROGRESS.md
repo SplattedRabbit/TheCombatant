@@ -46,8 +46,8 @@ gantt
 | :--- | :--- | :---: | :---: | :---: | :---: |
 | **Phase 1** | Bereinigung toter Dateien, XSS-Schutz, SW-Version | ✅ **Abgeschlossen** | `e613713`, `92d6f00` | 304 / 304 ✅ | 0 Fehler ✅ |
 | **Phase 2** | State-API-Compliance, Declarative DialogContext | ✅ **Abgeschlossen** | `5b02cb4`, `e826f88` | 304 / 304 ✅ | 0 Fehler ✅ |
-| **Phase 3** | Snapshot DTOs, V8-Deopt Beseitigung, SkillsTab Patch | ✅ **Abgeschlossen** | Aktuell | 304 / 304 ✅ | 0 Fehler ✅ |
-| **Phase 4** | Modularisierung aller 13 Dateien > 600 Zeilen | ⏳ **In Vorbereitung** | — | — | — |
+| **Phase 3** | Snapshot DTOs, V8-Deopt Beseitigung, SkillsTab Patch | ✅ **Abgeschlossen** | `9c66803` | 304 / 304 ✅ | 0 Fehler ✅ |
+| **Phase 4** | Modularisierung von Monster-Komponenten (< 450 Zeilen) | ✅ **Abgeschlossen** | Aktuell | 304 / 304 ✅ | 0 Fehler ✅ |
 | **Phase 5** | Vollständige Typsicherheit, Abbau aller 171 `@ts-ignore` | ⏳ Ausstehend | — | — | — |
 | **Phase 6** | Vitest UI-Tests, `React.lazy()` Code-Splitting | ⏳ Ausstehend | — | — | — |
 | **Phase 7** | Finaler Healthcheck-Scan (0 Gelb / 0 Rot) | ⏳ Ausstehend | — | — | — |
@@ -128,43 +128,53 @@ gantt
 
 ---
 
-### ⏳ Phase 4: Modularisierung aller 13 Dateien > 600 Zeilen
+### ✅ Phase 4: Modularisierung & Dateisplits (< 450 Zeilen)
+- **Datum:** 24. August 2026
+- **Status:** **Abgeschlossen**
 
-#### Geplante Unter-Tasks:
-```
-[ ] Task 4.1: BaseDialogs.tsx (782 Z.) ➔ src/components/dialogs/modals/
-    [ ] 4.1.1: CustomAlertModal.tsx
-    [ ] 4.1.2: CustomConfirmModal.tsx
-    [ ] 4.1.3: CustomPromptModal.tsx
-    [ ] 4.1.4: HealingRollModal.tsx
-    [ ] 4.1.5: ItemDamageModal.tsx
-    [ ] 4.1.6: NewDayTemplateDialog.tsx
-    [ ] 4.1.7: RollBreakdownDialog.tsx
-    [ ] 4.1.8: SampleChoiceDialog.tsx
-    [ ] 4.1.9: BaseDialogs.tsx als schlanke Re-Export Fassade (<100 Z.)
+#### Durchgeführte Modularisierungen:
+1. **Task 4.1: BaseDialogs.tsx (782 Z. ➔ 24 Z. Fassade):**
+   - Aufgeteilt in 10 eigenständige Modal-Dateien unter `src/components/dialogs/modals/`:
+     - `DialogOverlay.tsx`, `CustomAlertModal.tsx`, `CustomConfirmModal.tsx`, `CustomPromptModal.tsx`
+     - `HealingRollModal.tsx`, `ItemDamageModal.tsx`, `NewDayTemplateDialog.tsx`, `RollBreakdownDialog.tsx`, `SampleChoiceDialog.tsx`, `ParchmentMessageModal.tsx`
+   - `BaseDialogs.tsx` als Barrel-Export re-exportiert alle Komponenten (24 Zeilen).
 
-[ ] Task 4.2: PCSkillsTab.tsx (816 Z.) ➔ src/components/player/skills/
-    [ ] 4.2.1: PCSkillsTab.tsx (~220 Z. Orchestrierung)
-    [ ] 4.2.2: SkillRow.tsx (~180 Z. Zeilenkomponente)
-    [ ] 4.2.3: SkillFilterBar.tsx (~100 Z. Suche & Filter)
-    [ ] 4.2.4: SkillTricksSubPanel.tsx (~200 Z. Tricks)
+2. **Task 4.2: PCSkillsTab.tsx (805 Z. ➔ 296 Z.):**
+   - Aufgeteilt in 4 modulare Subkomponenten unter `src/components/player/skills/`:
+     - `SkillsLegend.tsx` (57 Z.)
+     - `SkillFilterBar.tsx` (84 Z.)
+     - `SkillRow.tsx` (244 Z.)
+     - `SkillTricksSubPanel.tsx` (272 Z.)
+   - `PCSkillsTab.tsx` orchestriert alle Komponenten sauber und schlank (296 Z.).
 
-[ ] Task 4.3: ActiveEquipmentSlots.tsx (785 Z.) ➔ src/components/player/offense/slots/
-    [ ] 4.3.1: ActiveEquipmentSlots.tsx (~200 Z.)
-    [ ] 4.3.2: WeaponSlotRenderer.tsx (~220 Z.)
-    [ ] 4.3.3: ArmorSlotRenderer.tsx (~180 Z.)
-    [ ] 4.3.4: NaturalAttacksRenderer.tsx (~180 Z.)
+3. **Task 4.3: ActiveEquipmentSlots.tsx (785 Z. ➔ 73 Z.):**
+   - Aufgeteilt in 4 modulare Slot-Komponenten unter `src/components/player/offense/slots/`:
+     - `slotsHelper.ts` (14 Z.)
+     - `MainHandSlot.tsx` (176 Z.)
+     - `OffHandSlot.tsx` (190 Z.)
+     - `StrikeAbilitySlot.tsx` (360 Z.)
+     - `NaturalAttacksSection.tsx` (76 Z.)
+   - `ActiveEquipmentSlots.tsx` orchestriert die ARPG-Grid-Slots (73 Zeilen).
 
-[ ] Task 4.4: TacticalBeltCard.tsx (772 Z.) ➔ src/components/player/offense/belt/
-    [ ] 4.4.1: TacticalBeltCard.tsx (~180 Z.)
-    [ ] 4.4.2: PotionBeltSection.tsx (~190 Z.)
-    [ ] 4.4.3: ScrollBeltSection.tsx (~190 Z.)
-    [ ] 4.4.4: WandBeltSection.tsx (~190 Z.)
+4. **Task 4.4: TacticalBeltCard.tsx (772 Z. ➔ 204 Z.):**
+   - Aufgeteilt in 3 modulare Belt-Komponenten unter `src/components/player/offense/belt/`:
+     - `beltHelpers.ts` (67 Z.)
+     - `BeltSlot.tsx` (260 Z.)
+     - `BeltItemModal.tsx` (278 Z.)
+   - `TacticalBeltCard.tsx` verwaltet State, Drag-and-Drop und Modale (204 Zeilen).
 
-[ ] Task 4.5: CharacterWizardDialog.tsx (794 Z.) & Step3LevelConfig.tsx (746 Z.)
-    [ ] 4.5.1: WizardSummaryFooter.tsx & WizardQuickRoster.tsx
-    [ ] 4.5.2: ClassLevelPicker.tsx & PrestigeRequirementCheck.tsx
-```
+5. **Task 4.5: Step3LevelConfig.tsx (746 Z. ➔ 244 Z.) & WizardFeaturesCard.tsx (172 Z.):**
+   - Aufgeteilt in Subkomponenten unter `src/components/player/wizard/levelConfig/`:
+     - `PrestigeSpellLinkSection.tsx` (124 Z.)
+     - `LevelHeaderAndStats.tsx` (298 Z.)
+     - `FeatSlotsSidebar.tsx` (76 Z.)
+   - `Step3LevelConfig.tsx` orchestriert Tab-Navigation und Subsektionen (244 Zeilen).
+   - `WizardFeaturesCard.tsx` von Alt-Bridge befreit und auf `@core/ui/components/dialogs.js` umgestellt (172 Zeilen).
+
+#### Verifikation & Testergebnisse:
+- `npx tsc --noEmit` ➔ **0 Fehler**
+- `npm run test` ➔ **304 / 304 Tests bestanden** (24 Suiten, 0 Fehler, 14.1s)
+- `npm run build` ➔ **Erfolgreich gebündelt** (Vite v6.4.3)
 
 ---
 

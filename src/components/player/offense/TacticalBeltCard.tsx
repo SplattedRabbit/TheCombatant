@@ -1,10 +1,10 @@
 /**
  * @module    TacticalBeltCard
  * @summary   Diablo 2 style tactical combat belt providing instant 1-tap drinking/use for potions, scrolls, wands, and alchemical items.
+ *            Modularized with dedicated sub-components: BeltSlot, BeltItemModal, and beltHelpers.
  * @exports   TacticalBeltCard
  * @reads     pc.items, pc.hp, pc.maxHp, pc.activeBuffs
  * @stateOps  CombatState.usePCItemCharge, CombatState.reorderPCItems
- * @depends   React, @core/state.js, src/components/shared/BaseCard
  */
 
 import React, { useState } from 'react';
@@ -12,11 +12,13 @@ import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { BaseCard } from '../../shared/BaseCard';
 // @ts-ignore
-import { showCustomAlert, showCustomPrompt, showHealingRollDialog, showItemDamageDialog } from '@core/ui/components/dialogs.js';
-
+import { showHealingRollDialog, showItemDamageDialog } from '@core/ui/components/dialogs.js';
 import { isConsumableItem } from '../armory/ArmoryTab';
+import { getHealingFormulaDetails, getDamageFormulaDetails } from './belt/beltHelpers';
+import { BeltSlot } from './belt/BeltSlot';
+import { BeltItemModal } from './belt/BeltItemModal';
 
-interface TacticalBeltCardProps {
+export interface TacticalBeltCardProps {
   pc: any;
 }
 
@@ -31,9 +33,21 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
   const consumables = allItems
     .map((item: any, originalIdx: number) => ({ item, originalIdx }))
     .filter(({ item }: { item: any }) => {
-      const isPotion = item.type === 'potion' || item.slot === 'potion' || item.name?.toLowerCase().includes('potion') || item.name?.toLowerCase().includes('trank');
-      const isScroll = item.type === 'scroll' || item.slot === 'scroll' || item.name?.toLowerCase().includes('scroll') || item.name?.toLowerCase().includes('schriftrolle');
-      const isWand = item.type === 'wand' || item.slot === 'wand' || item.name?.toLowerCase().includes('wand') || item.name?.toLowerCase().includes('stab');
+      const isPotion =
+        item.type === 'potion' ||
+        item.slot === 'potion' ||
+        item.name?.toLowerCase().includes('potion') ||
+        item.name?.toLowerCase().includes('trank');
+      const isScroll =
+        item.type === 'scroll' ||
+        item.slot === 'scroll' ||
+        item.name?.toLowerCase().includes('scroll') ||
+        item.name?.toLowerCase().includes('schriftrolle');
+      const isWand =
+        item.type === 'wand' ||
+        item.slot === 'wand' ||
+        item.name?.toLowerCase().includes('wand') ||
+        item.name?.toLowerCase().includes('stab');
       const hasCharges = item.charges && item.charges.max > 0;
       const hasDaily = item.dailyUses && item.dailyUses.max > 0;
       const hasHealing = !!item.healingFormula;
@@ -45,56 +59,7 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
 
   // Strict 6-slot limit for the combat belt
   const beltItems = consumables.slice(0, 6);
-  const beltSlots = [0, 1, 2, 3, 4, 5].map(i => beltItems[i] || null);
-
-  const getHealingFormulaDetails = (item: any) => {
-    if (!item) return null;
-    const name = (item.name || '').toLowerCase();
-    const formula = item.healingFormula || ((name.includes('cure') || name.includes('heil') || item.type === 'potion' || item.slot === 'potion')
-      ? (name.includes('moderate') ? '2d8+3' : (name.includes('serious') ? '3d8+5' : (name.includes('critical') ? '4d8+7' : '1d8+1')))
-      : null);
-
-    if (!formula) return null;
-    const match = formula.match(/(\d+)[dw](\d+)(?:\+(\d+))?/i);
-    if (match) {
-      const dice = `${match[1]}d${match[2]}`;
-      const bonus = match[3] ? parseInt(match[3]) : 0;
-      return { formula, dice, bonus };
-    }
-    return { formula, dice: formula, bonus: 0 };
-  };
-
-  const getDamageFormulaDetails = (item: any) => {
-    if (!item) return null;
-    const name = (item.name || '').toLowerCase();
-    if (item.healingFormula || name.includes('cure') || name.includes('heil')) return null;
-
-    const effectDesc = item.activation?.effectDescription || item.description || '';
-    const fullName = `${item.name || ''} ${effectDesc}`;
-
-    const match = item.damageFormula 
-      ? item.damageFormula.match(/(\d+)[dw](\d+)(?:\+(\d+))?/i)
-      : (fullName.match(/(\d+)[dw](\d+)(?:\+(\d+))?\s*([a-zA-ZäöüÄÖÜß]+)?\s*(?:damage|schaden)?/i) || fullName.match(/(\d+)[dw](\d+)(?:\+(\d+))?/i));
-
-    if (!match) return null;
-
-    const dice = `${match[1]}d${match[2]}`;
-    const bonus = match[3] ? parseInt(match[3]) : 0;
-    const damageType = match[4] || '';
-    const formula = bonus > 0 ? `${dice}+${bonus}` : dice;
-
-    const dcMatch = effectDesc.match(/DC\s*(\d+)\s*([a-zA-ZäöüÄÖÜß]+)?(?:\s*(?:half|negates|halbiert))?/i);
-    const saveText = dcMatch ? `DC ${dcMatch[1]} ${dcMatch[2] || 'Save'}` : null;
-
-    return {
-      formula,
-      dice,
-      bonus,
-      damageType,
-      effectDesc,
-      saveText
-    };
-  };
+  const beltSlots = [0, 1, 2, 3, 4, 5].map((i) => beltItems[i] || null);
 
   const handleUseItem = (originalIdx: number, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -114,11 +79,11 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
             setFeedbackToast({
               id: Date.now(),
               message: result.message || 'Healed!',
-              isHeal: true
+              isHeal: true,
             });
             setTimeout(() => setFeedbackToast(null), 3500);
           }
-        }
+        },
       });
       return;
     }
@@ -139,11 +104,11 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
             setFeedbackToast({
               id: Date.now(),
               message: result.message || `Used ${item.name}!`,
-              isHeal: false
+              isHeal: false,
             });
             setTimeout(() => setFeedbackToast(null), 3500);
           }
-        }
+        },
       });
       return;
     }
@@ -154,7 +119,7 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
       setFeedbackToast({
         id: Date.now(),
         message: result.message || 'Item used!',
-        isHeal
+        isHeal,
       });
       setTimeout(() => {
         setFeedbackToast(null);
@@ -193,73 +158,6 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
     setDragOverSlot(null);
   };
 
-  const getPotionAesthetic = (item: any) => {
-    const name = (item.name || '').toLowerCase();
-    if (name.includes('cure') || name.includes('heil') || item.healingFormula) {
-      return {
-        icon: '🍷',
-        liquidColor: 'linear-gradient(180deg, #8b2c2c 0%, #6e2222 100%)',
-        glowColor: 'none',
-        borderColor: 'rgba(139, 44, 44, 0.45)',
-        badgeColor: '#6e2222',
-        label: 'HEAL'
-      };
-    }
-    if (name.includes('bull') || name.includes('bear') || name.includes('haste') || name.includes('heroism') || name.includes('bless') || name.includes('shield')) {
-      return {
-        icon: '🧪',
-        liquidColor: 'linear-gradient(180deg, #9c7a36 0%, #7d5f24 100%)',
-        glowColor: 'none',
-        borderColor: 'rgba(156, 122, 54, 0.45)',
-        badgeColor: '#7d5f24',
-        label: 'BUFF'
-      };
-    }
-    if (name.includes('cat') || name.includes('invis') || name.includes('mage armor') || name.includes('fly')) {
-      return {
-        icon: '🧪',
-        liquidColor: 'linear-gradient(180deg, #4a6274 0%, #364957 100%)',
-        glowColor: 'none',
-        borderColor: 'rgba(74, 98, 116, 0.45)',
-        badgeColor: '#364957',
-        label: 'UTIL'
-      };
-    }
-    if (item.type === 'wand' || item.slot === 'wand' || name.includes('wand') || name.includes('stab')) {
-      return {
-        icon: '🪄',
-        liquidColor: 'linear-gradient(180deg, #6b4f7a 0%, #523b5f 100%)',
-        glowColor: 'none',
-        borderColor: 'rgba(107, 79, 122, 0.45)',
-        badgeColor: '#523b5f',
-        label: 'WAND'
-      };
-    }
-    if (item.type === 'scroll' || item.slot === 'scroll' || name.includes('scroll') || name.includes('schriftrolle')) {
-      return {
-        icon: '📜',
-        liquidColor: 'linear-gradient(180deg, #8c734b 0%, #6d5734 100%)',
-        glowColor: 'none',
-        borderColor: 'rgba(140, 115, 75, 0.45)',
-        badgeColor: '#6d5734',
-        label: 'SCROLL'
-      };
-    }
-    return {
-      icon: '⚗️',
-      liquidColor: 'linear-gradient(180deg, #4b6848 0%, #374e35 100%)',
-      glowColor: 'none',
-      borderColor: 'rgba(75, 104, 72, 0.45)',
-      badgeColor: '#374e35',
-      label: 'ITEM'
-    };
-  };
-
-  const showItemInfo = (item: any, originalIdx: number, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setSelectedItemForInfo({ item, originalIdx });
-  };
-
   return (
     <BaseCard
       title="🎒 Tactical Combat Belt"
@@ -272,7 +170,6 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
       }
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-        
         {/* Toast Feedback */}
         {feedbackToast && (
           <div
@@ -286,7 +183,7 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
               fontWeight: 'bold',
               color: feedbackToast.isHeal ? '#374e35' : 'var(--red)',
               textAlign: 'center',
-              animation: 'fadeIn 0.2s ease-in'
+              animation: 'fadeIn 0.2s ease-in',
             }}
           >
             ✨ {feedbackToast.message}
@@ -301,17 +198,16 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
             boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.25), inset 0 -1px 3px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.15)',
             borderRadius: '4px',
             padding: '6px',
-            position: 'relative'
+            position: 'relative',
           }}
         >
-          {/* Leather Belt Stitching Overlay */}
           <div
             style={{
               position: 'absolute',
               inset: '2px',
               border: '1px dashed rgba(255, 240, 205, 0.45)',
               borderRadius: '2px',
-              pointerEvents: 'none'
+              pointerEvents: 'none',
             }}
           />
 
@@ -322,219 +218,25 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
               gridTemplateColumns: 'repeat(6, 1fr)',
               gap: '5px',
               position: 'relative',
-              zIndex: 1
+              zIndex: 1,
             }}
           >
-            {beltSlots.map((slotData, slotIdx) => {
-              const isOver = dragOverSlot === slotIdx;
-
-              if (!slotData) {
-                // Empty Pouch Slot
-                return (
-                  <div
-                    key={`empty-slot-${slotIdx}`}
-                    onDragOver={(e) => {
-                      e.preventDefault();
-                      setDragOverSlot(slotIdx);
-                    }}
-                    onDragLeave={() => setDragOverSlot(null)}
-                    onDrop={(e) => {
-                      e.preventDefault();
-                      handleDropOnEmpty();
-                    }}
-                    style={{
-                      background: isOver ? 'rgba(255, 240, 205, 0.5)' : 'rgba(110, 70, 31, 0.15)',
-                      border: isOver ? '1.5px dashed #6e461f' : '1px dashed rgba(255, 240, 205, 0.45)',
-                      borderRadius: '3px',
-                      padding: '4px 2px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      minHeight: '74px',
-                      boxSizing: 'border-box',
-                      transition: 'all 0.15s ease'
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: '7px',
-                        color: 'rgba(255, 240, 205, 0.8)',
-                        fontFamily: "'IM Fell English SC', serif",
-                        fontWeight: 'bold'
-                      }}
-                    >
-                      [{slotIdx + 1}]
-                    </span>
-                    <span style={{ fontSize: '14px', opacity: 0.35 }}>🎒</span>
-                    <span
-                      style={{
-                        fontSize: '6.5px',
-                        color: 'rgba(255, 240, 205, 0.65)',
-                        fontFamily: "'Crimson Text', serif",
-                        fontStyle: 'italic'
-                      }}
-                    >
-                      Empty
-                    </span>
-                  </div>
-                );
-              }
-
-              const { item, originalIdx } = slotData;
-              const aesthetic = getPotionAesthetic(item);
-              const chargesLeft = item.charges ? item.charges.current : (item.dailyUses ? item.dailyUses.current : null);
-              const maxCharges = item.charges ? item.charges.max : (item.dailyUses ? item.dailyUses.max : null);
-              const isOutOfCharges = chargesLeft !== null && chargesLeft <= 0;
-              const isDraggingThis = draggedIdx === originalIdx;
-
-              return (
-                <div
-                  key={item.id || originalIdx}
-                  draggable={true}
-                  onDragStart={(e) => handleDragStart(e, originalIdx)}
-                  onDragOver={(e) => {
-                    e.preventDefault();
-                    setDragOverSlot(slotIdx);
-                  }}
-                  onDragLeave={() => setDragOverSlot(null)}
-                  onDrop={(e) => {
-                    e.preventDefault();
-                    handleDropOnSlot(originalIdx);
-                  }}
-                  style={{
-                    background: isOutOfCharges ? 'rgba(230, 220, 205, 0.75)' : 'linear-gradient(180deg, rgba(255, 253, 248, 0.95) 0%, rgba(248, 238, 222, 0.9) 100%)',
-                    border: isOver ? '1.5px solid #634320' : `1px solid ${isOutOfCharges ? 'rgba(150, 130, 110, 0.45)' : aesthetic.borderColor}`,
-                    borderRadius: '3px',
-                    padding: '4px 2px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    minHeight: '74px',
-                    position: 'relative',
-                    boxShadow: isOutOfCharges ? 'none' : (isOver ? '0 0 6px rgba(99, 67, 32, 0.4)' : '0 1px 3px rgba(0,0,0,0.08)'),
-                    transition: 'transform 0.12s ease, box-shadow 0.12s ease',
-                    cursor: isOutOfCharges ? 'default' : 'pointer',
-                    opacity: isDraggingThis ? 0.4 : 1,
-                    boxSizing: 'border-box'
-                  }}
-                  onClick={(e) => !isOutOfCharges && handleUseItem(originalIdx, e)}
-                  title={`[${slotIdx + 1}] ${item.name} (Drag to reorder)`}
-                >
-                  {/* Top Belt Slot Hotkey Badge */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center', padding: '0 2px' }}>
-                    <span
-                      style={{
-                        fontSize: '7px',
-                        color: '#6e461f',
-                        fontFamily: "'IM Fell English SC', serif",
-                        fontWeight: 'bold'
-                      }}
-                    >
-                      [{slotIdx + 1}]
-                    </span>
-                    <button
-                      type="button"
-                      onClick={(e) => showItemInfo(item, originalIdx, e)}
-                      style={{
-                        background: 'rgba(110, 70, 31, 0.12)',
-                        border: '0.5px solid rgba(110, 70, 31, 0.35)',
-                        borderRadius: '50%',
-                        color: '#6e461f',
-                        fontSize: '9px',
-                        width: '14px',
-                        height: '14px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        cursor: 'pointer',
-                        padding: 0,
-                        lineHeight: 1,
-                        boxShadow: '0 1px 2px rgba(0,0,0,0.06)'
-                      }}
-                      title="Item info"
-                    >
-                      ℹ
-                    </button>
-                  </div>
-
-                  {/* Flask Icon with liquid effect */}
-                  <div
-                    style={{
-                      position: 'relative',
-                      width: '24px',
-                      height: '24px',
-                      borderRadius: '50%',
-                      background: isOutOfCharges ? '#aaa' : aesthetic.liquidColor,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '12px',
-                      boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.3), inset 0 -1px 2px rgba(0,0,0,0.2)',
-                      border: '1px solid rgba(255,255,255,0.3)',
-                      margin: '1px 0'
-                    }}
-                  >
-                    <span style={{ filter: isOutOfCharges ? 'grayscale(1)' : 'none' }}>{aesthetic.icon}</span>
-                  </div>
-
-                  {/* Item Name */}
-                  <div
-                    style={{
-                      fontFamily: "'Crimson Text', serif",
-                      fontSize: '7px',
-                      fontWeight: 'bold',
-                      color: isOutOfCharges ? '#8c7b6c' : 'var(--ink, #1a0f00)',
-                      textAlign: 'center',
-                      lineHeight: 1.1,
-                      maxHeight: '18px',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      display: '-webkit-box',
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: 'vertical',
-                      width: '100%'
-                    }}
-                  >
-                    {item.name}
-                  </div>
-
-                  {/* Bottom Status / Charges Badge */}
-                  <div style={{ marginTop: '1px', display: 'flex', gap: '2px', alignItems: 'center' }}>
-                    {chargesLeft !== null ? (
-                      <span
-                        style={{
-                          background: isOutOfCharges ? '#888' : aesthetic.badgeColor,
-                          color: '#fff',
-                          fontSize: '6px',
-                          padding: '0 2px',
-                          borderRadius: '2px',
-                          fontWeight: 'bold',
-                          fontFamily: 'monospace'
-                        }}
-                      >
-                        {chargesLeft}/{maxCharges}
-                      </span>
-                    ) : (
-                      <span
-                        style={{
-                          background: aesthetic.badgeColor,
-                          color: '#fff',
-                          fontSize: '5.5px',
-                          padding: '0 2px',
-                          borderRadius: '2px',
-                          fontWeight: 'bold',
-                          letterSpacing: '0.5px'
-                        }}
-                      >
-                        {aesthetic.label}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            {beltSlots.map((slotData, slotIdx) => (
+              <BeltSlot
+                key={slotData ? slotData.item.id || slotData.originalIdx : `empty-slot-${slotIdx}`}
+                slotIdx={slotIdx}
+                slotData={slotData}
+                dragOverSlot={dragOverSlot}
+                draggedIdx={draggedIdx}
+                onDragStart={handleDragStart}
+                onDragOver={setDragOverSlot}
+                onDragLeave={() => setDragOverSlot(null)}
+                onDropOnSlot={handleDropOnSlot}
+                onDropOnEmpty={handleDropOnEmpty}
+                onUseItem={handleUseItem}
+                onShowItemInfo={(item, originalIdx) => setSelectedItemForInfo({ item, originalIdx })}
+              />
+            ))}
           </div>
         </div>
 
@@ -544,228 +246,16 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
             💡 1-Tap on any flask to activate. Drag &amp; drop to reorder slots [1–6].
           </span>
         </div>
-
       </div>
 
-      {/* === TACTICAL ITEM DETAILS MODAL === */}
-      {selectedItemForInfo && (() => {
-        const item = selectedItemForInfo.item;
-        const originalIdx = selectedItemForInfo.originalIdx;
-        const aesthetic = getPotionAesthetic(item);
-        const name = (item.name || 'Item').trim();
-        const chargesLeft = item.charges ? item.charges.current : (item.dailyUses ? item.dailyUses.current : null);
-        const maxCharges = item.charges ? item.charges.max : (item.dailyUses ? item.dailyUses.max : null);
-        const isOutOfCharges = chargesLeft !== null && chargesLeft <= 0;
-        
-        const isPotion = item.type === 'potion' || item.slot === 'potion' || name.toLowerCase().includes('potion') || name.toLowerCase().includes('trank');
-        const isScroll = item.type === 'scroll' || item.slot === 'scroll' || name.toLowerCase().includes('scroll') || name.toLowerCase().includes('schriftrolle');
-        const isWand = item.type === 'wand' || item.slot === 'wand' || name.toLowerCase().includes('wand') || name.toLowerCase().includes('stab');
-        
-        const actionTypeName = item.activation?.actionType ? `${item.activation.actionType.charAt(0).toUpperCase() + item.activation.actionType.slice(1)} Action` : 'Standard Action';
-        const itemCategory = isPotion ? 'Potion (Consumable)' : (isScroll ? 'Magic Scroll' : (isWand ? 'Magic Wand' : (item.type || 'Consumable / Wondrous')));
-        const itemAura = item.aura || (isPotion || isScroll || isWand ? 'Magic Item' : 'Adventuring Gear');
-        
-        const effectSummary = item.healingFormula
-          ? `Restores ${item.healingFormula} Hit Points.`
-          : (item.damageFormula
-            ? `Deals ${item.damageFormula} damage.`
-            : (item.activation?.effectDescription || item.description || 'Usable combat item.'));
-
-        const rawEffects = Array.isArray(item.effects) ? item.effects : [];
-        const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);
-
-        return (
-          <div
-            style={{
-              position: 'fixed',
-              inset: 0,
-              background: 'rgba(18, 11, 5, 0.65)',
-              backdropFilter: 'blur(3px)',
-              zIndex: 2500,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '16px'
-            }}
-            onClick={(e) => {
-              if (e.target === e.currentTarget) setSelectedItemForInfo(null);
-            }}
-          >
-            <div
-              className="custom-alert-box"
-              style={{
-                background: 'var(--p, #fcf6e8)',
-                border: '2px solid var(--pb, #c8a96e)',
-                borderRadius: '4px',
-                padding: '16px 20px',
-                width: '460px',
-                maxWidth: '92vw',
-                boxShadow: '0 12px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(200,169,110,0.1)',
-                fontFamily: "'IM Fell English SC', serif",
-                textAlign: 'center',
-                position: 'relative'
-              }}
-            >
-              <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.35)', pointerEvents: 'none', borderRadius: '2px' }} />
-
-              {/* Close X */}
-              <button
-                type="button"
-                onClick={() => setSelectedItemForInfo(null)}
-                style={{
-                  position: 'absolute',
-                  top: '8px',
-                  right: '10px',
-                  background: 'none',
-                  border: 'none',
-                  fontSize: '14px',
-                  color: 'var(--inkm, #8c7b6c)',
-                  cursor: 'pointer',
-                  fontWeight: 'bold',
-                  zIndex: 2
-                }}
-              >
-                ✕
-              </button>
-
-              {/* Modal Title */}
-              <div style={{ fontSize: '15px', color: 'var(--red, #8b1a1a)', fontWeight: 'bold', marginBottom: '2px', letterSpacing: '0.6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                <span>{aesthetic.icon}</span>
-                <span>{name}</span>
-              </div>
-              <div style={{ fontSize: '8.5px', color: 'var(--inkm, #8c7b6c)', fontStyle: 'italic', marginBottom: '6px' }}>
-                {itemAura}
-              </div>
-              <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.45)', margin: '4px 0 10px' }} />
-
-              {/* Ancient Parchment Content */}
-              <div
-                className="ancient-parchment"
-                style={{
-                  background: '#f4e8c1',
-                  border: '2px solid #8b1a1a',
-                  padding: '12px 16px',
-                  borderRadius: '4px',
-                  boxShadow: 'inset 0 0 25px rgba(139, 26, 26, 0.12)',
-                  fontFamily: "'Crimson Text', serif",
-                  color: '#1a0f00',
-                  lineHeight: 1.45,
-                  textAlign: 'left',
-                  boxSizing: 'border-box'
-                }}
-              >
-                {/* Meta Grid */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '10.5px', borderBottom: '1px solid rgba(139,26,26,0.25)', paddingBottom: '8px', marginBottom: '8px' }}>
-                  <div>
-                    <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>Type: </span>
-                    <span>{itemCategory}</span>
-                  </div>
-                  <div>
-                    <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>Action: </span>
-                    <span>{actionTypeName}</span>
-                  </div>
-                  <div>
-                    <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>Charges: </span>
-                    <span>
-                      {chargesLeft !== null ? `${chargesLeft} / ${maxCharges}` : (item.dailyUses ? `${item.dailyUses.current}/${item.dailyUses.max} Daily` : 'Single-Use')}
-                    </span>
-                  </div>
-                  <div>
-                    <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>Belt Slot: </span>
-                    <span>Ready [Quick-Slot]</span>
-                  </div>
-                </div>
-
-                {/* Effect / Description */}
-                <div style={{ fontSize: '11px', lineHeight: 1.5, color: '#2a1b0a', marginBottom: '6px' }}>
-                  <div style={{ fontWeight: 'bold', color: '#8b1a1a', marginBottom: '2px', fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px' }}>
-                    Effect &amp; Rules:
-                  </div>
-                  <div style={{ fontStyle: 'italic', marginBottom: '6px' }}>
-                    {item.description || item.activation?.effectDescription || effectSummary}
-                  </div>
-                </div>
-
-                {/* Stat Modifiers pills */}
-                {activeEffects.length > 0 && (
-                  <div style={{ marginTop: '6px', borderTop: '0.5px dashed rgba(139, 26, 26, 0.3)', paddingTop: '6px' }}>
-                    <div style={{ fontWeight: 'bold', color: '#8b1a1a', fontSize: '10.5px', fontFamily: "'IM Fell English SC', serif", marginBottom: '3px' }}>
-                      Passive / Applied Modifiers:
-                    </div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
-                      {activeEffects.map((eff: any, eIdx: number) => {
-                        const sign = (parseInt(eff.value) || 0) >= 0 ? '+' : '';
-                        return (
-                          <span
-                            key={eIdx}
-                            style={{
-                              fontSize: '9px',
-                              background: 'rgba(139, 26, 26, 0.08)',
-                              border: '0.5px solid rgba(139, 26, 26, 0.3)',
-                              borderRadius: '2px',
-                              padding: '1px 5px',
-                              color: '#601212',
-                              fontWeight: 600
-                            }}
-                          >
-                            {sign}{eff.value} {eff.type || ''} ({eff.target || ''})
-                          </span>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Action Buttons */}
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '12px' }}>
-                <button
-                  type="button"
-                  onClick={() => setSelectedItemForInfo(null)}
-                  className="btn"
-                  style={{
-                    fontSize: '9.5px',
-                    padding: '3px 12px',
-                    fontFamily: "'IM Fell English SC', serif",
-                    fontWeight: 'bold',
-                    background: 'rgba(200, 169, 110, 0.12)',
-                    border: '0.5px solid var(--pb, #c8a96e)',
-                    color: 'var(--ink, #1a0f00)',
-                    borderRadius: '2px',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Close
-                </button>
-                {!isOutOfCharges && (
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      setSelectedItemForInfo(null);
-                      handleUseItem(originalIdx, e);
-                    }}
-                    className="btn btn-p"
-                    style={{
-                      fontSize: '9.5px',
-                      padding: '3px 14px',
-                      fontFamily: "'IM Fell English SC', serif",
-                      fontWeight: 'bold',
-                      background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-                      border: '0.5px solid #8b6914',
-                      color: '#ffffff',
-                      borderRadius: '2px',
-                      cursor: 'pointer',
-                      boxShadow: '0 1px 3px rgba(0,0,0,0.15)'
-                    }}
-                  >
-                    {isPotion ? '🍷 Drink Potion' : (isWand ? '🪄 Cast Wand' : (isScroll ? '📜 Read Scroll' : '⚡ Use Item'))}
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        );
-      })()}
+      {/* Details Modal */}
+      {selectedItemForInfo && (
+        <BeltItemModal
+          selectedItem={selectedItemForInfo}
+          onClose={() => setSelectedItemForInfo(null)}
+          onUseItem={handleUseItem}
+        />
+      )}
     </BaseCard>
   );
 };
