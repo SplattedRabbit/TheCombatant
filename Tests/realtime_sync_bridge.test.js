@@ -197,4 +197,73 @@ describe('BDD Suite 2: Realtime WebSocket Synchronisation (RealtimeSyncBridge)',
     assert.ok(pcSyncBroadcasts.length >= 1, 'Muss pc_sync Broadcast gesendet haben');
     assert.equal(pcSyncBroadcasts[0].payload.payload.pc.hp, 28, 'Übertragener PC muss HP 28 haben');
   });
+
+  test('Szenario 2.4: Buff-Dauer-Synchronisation bei Rundenwechsel (10 Runden -> 9 Runden -> Expiration)', async () => {
+    // Given: Spieler hat einen aktiven Buff (Bless, 10 Runden)
+    await realtimeManager.joinCampaign('camp-alpha-1', 'player', {
+      userId: 'user-player-1',
+      userName: 'Valerius Player',
+      characterId: 'valerius-pc',
+      characterName: 'Valerius'
+    });
+
+    const pc = getActivePC();
+    pc.activeBuffs = [
+      {
+        id: 'buff-bless-1',
+        name: 'Bless',
+        spellKey: 'bless',
+        durationMaxRounds: 10,
+        durationRemainingRounds: 10,
+        effects: [{ target: 'atk', value: 1, type: 'morale', source: 'Bless' }]
+      }
+    ];
+    assert.equal(pc.activeBuffs[0].durationRemainingRounds, 10);
+
+    const mockChannel = mockClient.channels.get('campaign:camp-alpha-1');
+
+    // When: DM schaltet auf nächste Runde und sendet Diff (durationRemainingRounds = 9)
+    mockChannel.simulateRemoteEvent({
+      eventId: 'remote-dm-diff-round2',
+      eventType: 'diff',
+      senderId: 'user-dm-host',
+      senderName: 'Dungeon Master',
+      campaignId: 'camp-alpha-1',
+      timestamp: Date.now(),
+      payload: {
+        diff: {
+          type: 'state_diff',
+          diff: {
+            'combatants.0.activeBuffs.0.durationRemainingRounds': 9
+          }
+        },
+        seq: 5
+      }
+    });
+
+    // Then: Spieler-Sheet übernimmt synchron 9 verbleibende Runden
+    assert.equal(pc.activeBuffs[0].durationRemainingRounds, 9, 'Buff-Dauer muss auf 9 Runden dekrementiert sein');
+
+    // When: Nach 9 weiteren Runden läuft der Buff aus (DM sendet leeres activeBuffs Array)
+    mockChannel.simulateRemoteEvent({
+      eventId: 'remote-dm-diff-round11',
+      eventType: 'diff',
+      senderId: 'user-dm-host',
+      senderName: 'Dungeon Master',
+      campaignId: 'camp-alpha-1',
+      timestamp: Date.now(),
+      payload: {
+        diff: {
+          type: 'state_diff',
+          diff: {
+            'combatants.0.activeBuffs': []
+          }
+        },
+        seq: 15
+      }
+    });
+
+    // Then: Buff ist auf dem Spielerbogen sauber ausgelaufen
+    assert.equal(pc.activeBuffs.length, 0, 'Buff muss auf Spielerseite automatisch entfernt werden');
+  });
 });

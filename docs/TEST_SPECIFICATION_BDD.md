@@ -96,3 +96,19 @@ Um **Bestätigungsfehler (Confirmation Bias)** zu vermeiden, spiegeln diese Test
 * **Then (Dann):**
   * Die Änderungen werden lokal im Cache gepuffert (Local-First).
   * Sobald die Verbindung wiederhergestellt ist (`CONNECTED`), wird der aktuelle Stand ohne Datenverlust synchronisiert.
+
+---
+
+### **Szenario 2.4: Buff-Dauer-Synchronisation bei Rundenwechsel**
+* **Given (Gegeben sei):**
+  * Der Spieler hat einen aktiven Buff (z. B. *Bless* mit 10 Runden Dauer) aktiv.
+* **When (Wenn):**
+  * Der DM die nächste Runde startet (`nextRound()` / `turn = 0`).
+* **Then (Dann):**
+  * Der DM-Screen dekrementiert `durationRemainingRounds` von `10` auf `9` (`tickConditionTimers()`).
+  * Ein `state_diff` wird via WebSocket gesendet.
+  * Das Spieler-Sheet übernimmt synchron `9` verbleibende Runden (ohne Page-Reload).
+* **When (Wenn):**
+  * Die Rundenanzahl auf `0` fällt.
+* **Then (Dann):**
+  * Der Buff wird automatisch auf beiden Seiten entfernt und die Boni werden zurückgesetzt.
