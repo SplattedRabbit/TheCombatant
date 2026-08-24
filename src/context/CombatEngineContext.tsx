@@ -11,6 +11,12 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { storageService } from '../services/storage/StorageService.ts';
+// @ts-ignore
+import { getState, getActivePC, StateEvents } from '@core/state/state-core.js';
+// @ts-ignore
+import { CombatSpells } from '@core/spells.js';
+// @ts-ignore
+import { CombatState } from '@core/state.js';
 
 // Typendefinitionen für das Engine-Modul
 interface CombatEventBus {
@@ -50,24 +56,15 @@ export function CombatEngineProvider({ children }: ProviderProps) {
 
     async function bootstrap() {
       try {
-        // Dynamischer Import der Vanilla-Engine Module
-        // @ts-ignore
-        const coreModule = await import('@core/state/state-core.js') as {
-          getState: () => any;
-          getActivePC: () => any;
-          StateEvents: CombatEventBus;
-        };
-
-        // @ts-ignore
-        const { CombatSpells } = await import('@core/spells.js');
-        // @ts-ignore
-        const { CombatState } = await import('@core/state.js');
-
         // Registriere zentralen StorageService als aktiven Adapter
         CombatState.setStorageAdapter(storageService);
 
-        // Lade Zauberdatenbank & State aus aktivem Speicheradapter
-        await CombatSpells.loadSpells();
+        // Lade Zauberdatenbank parallel im Hintergrund (Non-Blocking für sofortigen App-Start)
+        CombatSpells.loadSpells().catch((err: any) => {
+          console.warn('[CombatEngineContext] Background spell database load error:', err);
+        });
+
+        // Lade lokalen State aus dem Speicheradapter (sofort/synchron aus Cache)
         await CombatState.loadFromStorage();
 
         // Stelle aktive Online-Sitzung wieder her
@@ -79,9 +76,9 @@ export function CombatEngineProvider({ children }: ProviderProps) {
 
         if (!mounted) return;
 
-        setGetStateRef(() => coreModule.getState);
-        setGetActivePCRef(() => coreModule.getActivePC);
-        setStateEventsRef(coreModule.StateEvents);
+        setGetStateRef(() => getState);
+        setGetActivePCRef(() => getActivePC);
+        setStateEventsRef(StateEvents);
         setIsReady(true);
       } catch (err) {
         console.error('[CombatEngineContext] Fehler beim Engine-Bootstrap:', err);
