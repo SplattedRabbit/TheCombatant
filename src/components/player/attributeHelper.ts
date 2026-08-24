@@ -1,4 +1,3 @@
-// @ts-ignore
 import { showCustomAlert } from '../../../js/ui/components/dialogs.js';
 
 // ---------------------------------------------------------------------------
@@ -105,6 +104,5 @@ export const showAttributeExplanation = (key: 'str' | 'dex' | 'con' | 'int' | 'w
     }
   };
   const info = explanations[key];
-  // @ts-ignore
   showCustomAlert(info.title, info.desc, 'Understood', info.icon);
 };

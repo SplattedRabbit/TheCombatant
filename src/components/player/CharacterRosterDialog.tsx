@@ -7,7 +7,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import type { CharacterSummary } from '../../types/character.ts';
 import { characterService } from '../../services/character/CharacterService.ts';
-// @ts-ignore
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 
 interface CharacterRosterDialogProps {

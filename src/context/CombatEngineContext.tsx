@@ -11,16 +11,13 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { storageService } from '../services/storage/StorageService.ts';
-// @ts-ignore
 import { getState, getActivePC, StateEvents } from '@core/state/state-core.js';
-// @ts-ignore
 import { CombatSpells } from '@core/spells.js';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 
 // Typendefinitionen für das Engine-Modul
 interface CombatEventBus {
-  listeners: Record<string, Array<(...args: any[]) => void>>;
+  listeners?: Record<string, Array<(...args: any[]) => void>>;
   on(event: string, cb: (...args: any[]) => void): void;
   off(event: string, cb: (...args: any[]) => void): void;
   emit(event: string, ...args: any[]): void;

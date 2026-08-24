@@ -1,5 +1,4 @@
 import React from 'react';
-// @ts-ignore
 import { checkFeatPrerequisites, CombatFeats } from '@core/data/feats-data.js';
 import { translatePrereq } from './constants';
 

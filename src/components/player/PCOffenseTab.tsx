@@ -8,15 +8,10 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-import { BaseCard } from '../shared/BaseCard';
-// @ts-ignore
-import { AttackEngine } from '@core/rules/AttackEngine.js';
-// @ts-ignore
 import { WeaponRegistry } from '@core/models/Weapon.js';
-// @ts-ignore
-import { showAttackChoiceDialog, showDamageChoiceDialog, showRollBreakdown, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { BaseCard } from '../shared/BaseCard';
+import { showCustomConfirm, showAttackChoiceDialog, showDamageChoiceDialog } from '@core/ui/components/dialogs.js';
 
 import { ActiveEquipmentSlots } from './offense/ActiveEquipmentSlots';
 import { TacticalModifiersCard } from './offense/TacticalModifiersCard';

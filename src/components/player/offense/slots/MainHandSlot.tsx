@@ -4,11 +4,8 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { AttackEngine } from '@core/rules/AttackEngine.js';
-// @ts-ignore
 import { matchesFeatOption, getCritThreatDisplay } from '@core/models/Weapon.js';
 import { isWeaponTwoHanded } from './slotsHelper';
 

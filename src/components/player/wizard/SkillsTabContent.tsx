@@ -1,9 +1,6 @@
 import React from 'react';
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface SkillsTabContentProps {

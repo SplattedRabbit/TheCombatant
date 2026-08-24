@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { showCustomConfirm, showRollBreakdown, showCustomAlert } from '@core/ui/components/dialogs.js';
-// @ts-ignore
 import { applyFeatSkillBonuses } from '@core/models/helpers/skills/SkillFeatApplier.js';
-// @ts-ignore
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
 import { ClassACFSelector } from './ClassACFSelector';
 import { getAblMod } from '../attributeHelper';

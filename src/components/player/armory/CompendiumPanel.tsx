@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { ITEM_SLOTS, MAGIC_ITEMS_REGISTRY } from '@core/data/magicItems-data.js';
 import { formatEffectDisplay } from './BodySlotCard';
 import { isConsumableItem, getItemTypeIcon } from './armoryHelpers';

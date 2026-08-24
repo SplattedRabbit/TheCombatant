@@ -8,13 +8,8 @@
  */
 
 import React, { useState, useMemo } from 'react';
-// @ts-ignore
-import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CombatFeats } from '@core/data/feats-data.js';
-// @ts-ignore
 import { showFeatScrollDialog } from '@core/ui/components/dialogs.js';
-// @ts-ignore
 import { checkPrerequisites } from '@core/rules/RulesFeats.js';
 
 interface PCFeatsTabProps {

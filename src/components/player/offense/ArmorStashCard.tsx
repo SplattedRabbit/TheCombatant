@@ -9,9 +9,7 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { ARMOR_REGISTRY } from '@core/data/armor-data.js';
 
 interface ArmorStashCardProps {

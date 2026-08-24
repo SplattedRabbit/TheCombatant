@@ -8,12 +8,8 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
-import { CombatRules } from '@core/rules.js';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import type { Combatant } from '../../types/combat';
 

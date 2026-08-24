@@ -9,11 +9,8 @@ import type { CampaignSummary, CampaignMember, CampaignCreateInput, CampaignFilt
 import { storageService } from '../storage/StorageService.ts';
 import { supabase as defaultSupabaseClient } from '../supabase/supabaseClient.ts';
 import { generateUUID } from '../../utils/uuid.ts';
-// @ts-ignore
 import { applyLoadedState } from '../../../js/state/StorageManager.js';
-// @ts-ignore
 import { createInitialState } from '../../../js/models/model-core.js';
-// @ts-ignore
 import { getState, StateEvents } from '../../../js/state/state-core.js';
 
 export function generateInviteCode(campaignName: string = ''): string {

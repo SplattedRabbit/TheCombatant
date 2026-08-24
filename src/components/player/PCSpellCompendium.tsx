@@ -8,21 +8,11 @@
  */
 
 import React, { useState, useMemo } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
-import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '@core/spells.js';
-// @ts-ignore
+import { getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '@core/spells.js';
 import { CombatRules, getEligibleSpellLevelsForPC, isSpellEligibleForPC, getAllCompendiumSpells } from '@core/rules.js';
-// @ts-ignore
-import { showCustomConfirm, showCustomAlert } from '@core/ui/components/dialogs.js';
+import { showCustomConfirm, showCustomAlert, showSpellDetailsDialog, showSpellCreatorWizard } from '@core/ui/components/dialogs.js';
 import { findSpell } from './PCSpellbookTab';
-
-const showSpellDetailsDialog = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showSpellDetailsDialog?.(...args);
-const showSpellCreatorWizard = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showSpellCreatorWizard?.(...args);
-
 
 interface PCSpellCompendiumProps {
   pc: any;

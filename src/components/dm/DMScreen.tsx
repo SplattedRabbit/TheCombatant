@@ -8,7 +8,6 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import type { CombatStateSnapshot } from '../../types/combat';
 import { DMHeader } from './DMHeader';
@@ -18,7 +17,6 @@ import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { DMToolbox } from './DMToolbox';
 import { campaignService } from '../../services/campaign/CampaignService.ts';
 import { storageService } from '../../services/storage/StorageService.ts';
-// @ts-ignore
 import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
 
 interface DMScreenProps {

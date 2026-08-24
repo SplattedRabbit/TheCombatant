@@ -11,7 +11,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import type { Combatant } from '../../types/combat';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import { getStatMod } from './attributeHelper';
 import { UserMenu } from '../auth/UserMenu';

@@ -6,9 +6,7 @@
 
 import React, { useState, useEffect } from 'react';
 import type { CharacterSummary } from '../../types/character.ts';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { characterService } from '../../services/character/CharacterService.ts';
 import { campaignService } from '../../services/campaign/CampaignService.ts';

@@ -8,10 +8,8 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import { BaseCard } from '../../shared/BaseCard';
-// @ts-ignore
 import { showHealingRollDialog, showItemDamageDialog } from '@core/ui/components/dialogs.js';
 import { isConsumableItem } from '../armory/ArmoryTab';
 import { getHealingFormulaDetails, getDamageFormulaDetails } from './belt/beltHelpers';

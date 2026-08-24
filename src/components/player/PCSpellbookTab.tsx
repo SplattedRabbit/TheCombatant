@@ -8,15 +8,15 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CombatSpells } from '@core/spells.js';
-// @ts-ignore
-import { showCustomConfirm, showCustomAlert, showPrepareSpellDialog, showCastSpontaneousSpellDialog, showNewDayTemplateDialog } from '@core/ui/components/dialogs.js';
-
-const showSpellDetailsDialog = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showSpellDetailsDialog?.(...args);
+import {
+  showCustomConfirm,
+  showPrepareSpellDialog,
+  showCastSpontaneousSpellDialog,
+  showNewDayTemplateDialog,
+  showSpellDetailsDialog,
+} from '@core/ui/components/dialogs.js';
 
 interface PCSpellbookTabProps {
   pc: any;

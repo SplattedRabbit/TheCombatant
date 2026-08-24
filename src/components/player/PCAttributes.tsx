@@ -9,12 +9,9 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import { BaseCard } from '../shared/BaseCard';
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { showCustomAlert, showCustomConfirm, showRollBreakdown } from '@core/ui/components/dialogs.js';
 import { showAttributeExplanation, getAblMod } from './attributeHelper';
 

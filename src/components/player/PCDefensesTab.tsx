@@ -8,9 +8,7 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { showRollBreakdown } from '@core/ui/components/dialogs.js';
 import { getStatMod, formatMod, extractStatValue, calculateInitiativeTotal } from './attributeHelper';
 

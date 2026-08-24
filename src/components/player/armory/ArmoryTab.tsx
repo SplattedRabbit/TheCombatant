@@ -5,15 +5,10 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
-// @ts-ignore
 import { calculateItemSetBonuses, getItemStackingBreakdown } from '@core/rules.js';
-// @ts-ignore
 import { getHealingFormulaDetails, getDamageFormulaDetails } from '@core/rules/RulesItems.js';
-// @ts-ignore
 import { showHealingRollDialog, showItemDamageDialog } from '@core/ui/components/dialogs.js';
 import { BaseCard } from '../../shared/BaseCard';
 import { PaperdollPanel } from './PaperdollPanel';

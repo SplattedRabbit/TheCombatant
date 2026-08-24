@@ -4,11 +4,8 @@
  */
 
 import React, { useState, useMemo } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { SKILL_TRICKS_REGISTRY } from '@core/data/skillTricks-data.js';
 import { SkillTrickDetailsDialog } from '../../dialogs/SkillTrickDetailsDialog';
 

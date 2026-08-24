@@ -4,9 +4,7 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { AttackEngine } from '@core/rules/AttackEngine.js';
 import { getAblMod } from '../../attributeHelper';
 

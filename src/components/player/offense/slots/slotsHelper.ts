@@ -3,7 +3,6 @@
  * @summary   Helper functions for active equipment slot rendering and two-handed detection.
  */
 
-// @ts-ignore
 import { WeaponRegistry } from '@core/models/Weapon.js';
 
 export function isWeaponTwoHanded(w: any): boolean {

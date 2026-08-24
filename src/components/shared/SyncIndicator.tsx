@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSyncStatus } from '../../hooks/useSyncStatus.ts';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 export const SyncIndicator: React.FC = () => {

@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { SKILL_TRICKS_REGISTRY } from '@core/data/skillTricks-data.js';
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface SkillTricksTabContentProps {

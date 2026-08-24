@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { CombatSpells } from '@core/spells.js';
 
 function findSpell(pc: any, key: string) {

@@ -14,7 +14,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { CombatEngineContext } from '../context/CombatEngineContext';
 import type { CombatStateSnapshot, Combatant, UseCombatStateReturn } from '../types/combat';
-// @ts-ignore
 import { Stat, Weapon, Armor, Item, Combatant as CombatantClass } from '@core/models/model-core.js';
 
 // ---------------------------------------------------------------------------

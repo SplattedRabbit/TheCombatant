@@ -5,13 +5,9 @@
  */
 
 import { realtimeManager } from './RealtimeManager.ts';
-// @ts-ignore
 import { getState, StateEvents, getActivePC } from '../../../js/state/state-core.js';
-// @ts-ignore
 import { onStateSave, saveToStorage } from '../../../js/state/StorageManager.js';
-// @ts-ignore
 import * as EncounterManager from '../../../js/state/EncounterManager.js';
-// @ts-ignore
 import { applyIncomingDelta, getEncounterStateDiff, getPCStateDiff, isProcessingNetworkIncoming } from '../../../js/network/SyncProtocol.js';
 
 let isBridgeInitialized = false;

@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { getSchoolCodeFromInput } from '@core/spells.js';
-// @ts-ignore
 import { cleanProhibitedSpells } from '@core/rules/SpellRules.js';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { ClassACFSelector } from './ClassACFSelector';
 
@@ -136,7 +132,7 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
                   >
                     <option value="">-- Select --</option>
                     {availableSchools.map(s => {
-                      const disabled = prob2Code && s.value === prob2Code;
+                      const disabled = !!(prob2Code && s.value === prob2Code);
                       return <option key={s.value} value={s.value} disabled={disabled}>{s.label}</option>;
                     })}
                   </select>
@@ -152,7 +148,7 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
                     >
                       <option value="">-- Select --</option>
                       {availableSchools.map(s => {
-                        const disabled = prob1Code && s.value === prob1Code;
+                        const disabled = !!(prob1Code && s.value === prob1Code);
                         return <option key={s.value} value={s.value} disabled={disabled}>{s.label}</option>;
                       })}
                     </select>

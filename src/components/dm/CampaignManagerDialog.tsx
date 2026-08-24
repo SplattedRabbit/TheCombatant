@@ -7,7 +7,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import type { CampaignSummary } from '../../types/campaign.ts';
 import { campaignService, generateInviteCode } from '../../services/campaign/CampaignService.ts';
-// @ts-ignore
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 
 interface CampaignManagerDialogProps {

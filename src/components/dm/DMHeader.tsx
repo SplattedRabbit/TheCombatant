@@ -9,7 +9,6 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import type { EncounterMeta } from '../../types/combat';
 import { UserMenu } from '../auth/UserMenu';

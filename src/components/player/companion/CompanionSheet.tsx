@@ -8,12 +8,9 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { CompanionRules } from '@core/rules/CompanionRules.js';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
-import { showRollBreakdown, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { showRollBreakdown } from '@core/ui/components/dialogs.js';
 import { getAblMod, formatMod } from '../attributeHelper';
 
 interface CompanionSheetProps {

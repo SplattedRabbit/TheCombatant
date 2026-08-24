@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { getPrestigeClassFeatures } from '@core/rules/prestigeClassEngine.js';
-// @ts-ignore
 import { PRESTIGE_CLASSES_REGISTRY } from '@core/data/prestigeClasses-data.js';
-// @ts-ignore
 import { CLASSES } from '@core/rules/RulesData.js';
 import { sanitizeHtml } from '../../../utils/sanitize';
 

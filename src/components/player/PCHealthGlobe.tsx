@@ -10,7 +10,6 @@
 
 import React, { useState } from 'react';
 import type { Combatant } from '../../types/combat';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import { BaseCard } from '../shared/BaseCard';
 

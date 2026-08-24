@@ -6,7 +6,6 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { ACF_REGISTRY } from '@core/data/acf-data.js';
 
 interface ACFsTabContentProps {

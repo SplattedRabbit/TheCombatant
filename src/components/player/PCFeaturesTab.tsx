@@ -8,9 +8,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { PCCompanionWrapper } from './PCCompanionWrapper';
 
@@ -28,7 +26,6 @@ import { RangerFeaturesCard } from './features/RangerFeaturesCard';
 import { WizardFeaturesCard } from './features/WizardFeaturesCard';
 import { SorcererFeaturesCard } from './features/SorcererFeaturesCard';
 import { PrestigeClassFeaturesCard } from './features/PrestigeClassFeaturesCard';
-// @ts-ignore
 import { PRESTIGE_CLASSES_REGISTRY } from '@core/data/prestigeClasses-data.js';
 
 interface PCFeaturesTabProps {

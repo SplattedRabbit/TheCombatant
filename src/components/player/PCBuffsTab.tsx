@@ -8,19 +8,12 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CombatSpells } from '@core/spells.js';
-// @ts-ignore
 import { CLASS_BUFFS } from '@core/data/class-buffs-data.js';
-// @ts-ignore
 import { activateBuffByKey, isBuffEligible, isBuffSuppressed, checkBuffConflict } from '@core/rules/BuffRules.js';
-// @ts-ignore
 import { getAvailableEquipmentBuffs } from '@core/rules.js';
-// @ts-ignore
 import { showCustomConfirm, showCustomAlert, showCustomPrompt } from '@core/ui/components/dialogs.js';
-// @ts-ignore
 import { uiRegistry } from '@core/ui/ui-shared.js';
 
 const showBuffDetailsDialog = (...args: any[]) =>

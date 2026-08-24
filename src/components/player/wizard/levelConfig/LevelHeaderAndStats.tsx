@@ -6,7 +6,6 @@
 import React from 'react';
 import { CLASSES_LIST, CLASS_KEY_ATTRIBUTES } from '../constants';
 import { validatePrestigeClassPrereqs, isOnlySpecialTextUnmet } from '@core/rules.js';
-// @ts-ignore
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { PrestigeSpellLinkSection } from './PrestigeSpellLinkSection';
 

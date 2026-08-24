@@ -8,7 +8,6 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import type { Combatant } from '../../types/combat';
 import { PCHeader } from './PCHeader';
@@ -23,7 +22,6 @@ import { BaseCard } from '../shared/BaseCard';
 import { PCSpellsTab } from './PCSpellsTab';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { PCFeaturesTab } from './PCFeaturesTab';
-// @ts-ignore
 import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
 
 interface PlayerSheetProps {

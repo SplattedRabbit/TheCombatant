@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { ITEM_SLOTS } from '@core/data/magicItems-data.js';
 import { formatEffectDisplay } from './BodySlotCard';
 

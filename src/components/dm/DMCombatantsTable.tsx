@@ -8,13 +8,9 @@
  */
 
 import React, { useState, useEffect } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { CompanionRules } from '@core/rules/CompanionRules.js';
-// @ts-ignore
 import { FamiliarRules } from '@core/rules/FamiliarRules.js';
 import type { Combatant } from '../../types/combat';
 

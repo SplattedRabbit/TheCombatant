@@ -8,11 +8,8 @@
 import type { CharacterSummary, CharacterCreateInput, CharacterFilterOptions } from '../../types/character.ts';
 import { storageService } from '../storage/StorageService.ts';
 import { generateUUID } from '../../utils/uuid.ts';
-// @ts-ignore
 import { applyLoadedState } from '../../../js/state/StorageManager.js';
-// @ts-ignore
 import { createInitialState, createCombatant } from '../../../js/models/model-core.js';
-// @ts-ignore
 import { getState, StateEvents, getActivePC } from '../../../js/state/state-core.js';
 
 export class CharacterService {

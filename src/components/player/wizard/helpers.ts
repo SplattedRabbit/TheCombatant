@@ -1,5 +1,4 @@
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { getSneakAttackDiceFromPrestigeClasses } from '@core/rules/prestigeClassEngine.js';
 import { CLASSES_LIST } from './constants';
 

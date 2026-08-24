@@ -8,9 +8,7 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { getACFsByClass } from '@core/data/acf-data.js';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 
 interface ClassACFSelectorProps {

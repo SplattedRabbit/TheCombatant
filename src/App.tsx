@@ -6,7 +6,6 @@ import { PlayerSheet } from './components/player/PlayerSheet';
 import { CharacterWizardDialog } from './components/player/CharacterWizardDialog';
 import { initRealtimeSyncBridge } from './services/network/RealtimeSyncBridge.ts';
 import { realtimeManager } from './services/network/RealtimeManager.ts';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 
 export default function App() {

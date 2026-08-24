@@ -8,10 +8,8 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import { BaseCard } from '../../shared/BaseCard';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface TacticalModifiersCardProps {

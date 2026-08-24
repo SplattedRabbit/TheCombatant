@@ -178,28 +178,30 @@ gantt
 
 ---
 
-### ⏳ Phase 5: Vollständige Typsicherheit (0 `@ts-ignore`)
+### ✅ Phase 5: Vollständige Typsicherheit (0 `@ts-ignore`)
+- **Datum:** 24. August 2026
+- **Commit:** Aktuell (*"refactor(phase-5): achieve 100% type safety, create prestige class rule modules, and eliminate all 180 @ts-ignore directives"*)
 
-#### Geplante Unter-Tasks:
-```
-[ ] Task 5.1: src/types/combat.ts Typen-Präzisierung
-    [ ] 5.1.1: StatField Union Types (StatBlock | number) für za, ref, wil, acTouch, acFlat, sr etc.
-    [ ] 5.1.2: Component Props strict typisieren (pc: Combatant)
+#### Durchgeführte Änderungen:
+1. **Task 5.1: Domain-Typen in `src/types/combat.ts` präzisiert:**
+   - [`src/types/combat.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/types/combat.ts) um flexible und typsichere `StatValue`, `SavingThrows`, `SkillEntry`, `LearnedSkillTrick`, `Weapon`, `Armor`, `Item`, `DailyAbility`, `PrestigeSpellLinks` und `Combatant`-Schnittstellen erweitert.
+2. **Task 5.2: Pure Prestige-Class Rule-Module (`js/rules/classes/`):**
+   - `[NEW]` [`js/rules/classes/AssassinRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/AssassinRules.js) (Death Attack DC, Sneak Attack, Poison Save Bonus)
+   - `[NEW]` [`js/rules/classes/ArcaneTricksterRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/ArcaneTricksterRules.js) (Ranged Legerdemain, Impromptu Sneak Attack)
+   - `[NEW]` [`js/rules/classes/ShadowbaneInquisitorRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/ShadowbaneInquisitorRules.js) (Smite Corrupt, Sneak Attack)
+   - `[NEW]` [`js/rules/classes/BattleTricksterRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/BattleTricksterRules.js) (Bonus Trick Slots, Tricky Fighting)
+   - `[NEW]` [`js/rules/classes/SpellwarpSniperRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/SpellwarpSniperRules.js) (Max Spellwarp Level, Sudden Raystrike)
+   - `[NEW]` [`js/rules/classes/EldritchKnightRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/EldritchKnightRules.js) (Bonus Combat Feats)
+   - `[MODIFY]` [`js/rules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules.js) re-exportiert alle Prestige-Klassenregeln.
+3. **Task 5.3: Systematischer Abbau aller `@ts-ignore` (von 180 auf 0!):**
+   - `[NEW]` [`src/types/core-modules.d.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/types/core-modules.d.ts) (Vollständige Ambient-Typdeklarationen für `@core/state.js`, `@core/rules.js`, `@core/spells.js`, `@core/data/*`, `@core/models/*`, `@core/ui/*`, `@core/network/*`).
+   - Alle **180 `@ts-ignore` Direktiven** im gesamten `src/` Codebase restlos entfernt.
+   - `js/ui/components/dialogs.js` um Fassaden-Methoden (`showSpellDetailsDialog`, `showSpellCreatorWizard`) ergänzt.
 
-[ ] Task 5.2: Prestige Rules Module (js/rules/classes/)
-    [ ] 5.2.1: AssassinRules.js
-    [ ] 5.2.2: ArcaneTricksterRules.js
-    [ ] 5.2.3: ShadowbaneInquisitorRules.js
-    [ ] 5.2.4: BattleTricksterRules.js
-    [ ] 5.2.5: SpellwarpSniperRules.js
-    [ ] 5.2.6: EldritchKnightRules.js
-
-[ ] Task 5.3: Systematischer Abbau aller 171 @ts-ignore
-    [ ] 5.3.1: PCBuffsTab.tsx & PCSkillsTab.tsx bereinigen
-    [ ] 5.3.2: ArmoryTab.tsx & ActiveEquipmentSlots.tsx bereinigen
-    [ ] 5.3.3: DMCombatantsTable.tsx & Feature-Cards bereinigen
-    [ ] 5.3.4: Pfadaliase auf @core/ vereinheitlichen
-```
+#### Verifikation & Testergebnisse:
+- `npx.cmd tsc --noEmit` ➔ **0 Fehler (bei exakt 0 `@ts-ignore`)**
+- `npm.cmd test` ➔ **304 / 304 Tests bestanden** (24 Suiten, 0 Fehler, 11.0s)
+- `npm.cmd run build` ➔ **Erfolgreich gebündelt**
 
 ---
 

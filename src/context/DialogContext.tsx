@@ -25,7 +25,6 @@ import { BuffDetailsDialog, CastSuccessDialog } from '../components/dialogs/PCBu
 import { SpellDetailsDialog } from '../components/dialogs/SpellDetailsDialog';
 import { SpellCreatorDialog } from '../components/dialogs/SpellCreatorDialog';
 import { uiRegistry } from '@core/ui/ui-shared.js';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 
 export interface DialogContextType {

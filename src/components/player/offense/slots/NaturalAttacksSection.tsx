@@ -4,9 +4,7 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { AttackEngine } from '@core/rules/AttackEngine.js';
-// @ts-ignore
 import { SHAPE_ATTACKS } from '@core/models/helpers/classes/DruidHelper.js';
 
 export interface NaturalAttacksSectionProps {

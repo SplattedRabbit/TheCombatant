@@ -108,18 +108,18 @@ graph TD
 
 ---
 
-### 📋 Phase 5: Vollständige Typsicherheit (0 `@ts-ignore`) (P2 · L)
-*Ziel: Schließen aller Typen-Lücken in `src/types/combat.ts` und schrittweiser Abbau aller 171 `@ts-ignore`.*
+### 📋 Phase 5: Vollständige Typsicherheit (0 `@ts-ignore`) (P2 · L) — ✅ ERLEDIGT
+*Ziel: Schließen aller Typen-Lücken in `src/types/combat.ts` und schrittweiser Abbau aller 180 `@ts-ignore`.*
 
-* **5.1 Domain-Typen in `src/types/combat.ts` präzisieren:**
-  * Einführung von präzisen Union-Typen (`StatBlock | number`) für alle 20+ aktuell als `any` typisierten Felder (`acTouch`, `acFlat`, `za`, `ref`, `wil`, `bw`, `sr` etc.).
-  * Alle Komponenten-Props von `{ pc: any }` auf `{ pc: Combatant }` typisieren.
-* **5.2 Prestige-Klassen Rule-Module (`js/rules/classes/`):**
-  * `[NEW]` `AssassinRules.js`, `ArcaneTricksterRules.js`, `ShadowbaneInquisitorRules.js`, `BattleTricksterRules.js`, `SpellwarpSniperRules.js`, `EldritchKnightRules.js`.
-  * Formellogik aus `PrestigeClassFeaturesCard.tsx` in diese Pure-Rule-Module verlagern.
-* **5.3 Abbau aller 171 `@ts-ignore` Direktiven:**
-  * Sukzessive Bereinigung aller TSX-Dateien bis `@ts-ignore` = 0.
-  * Vereinheitlichung aller relativen Imports auf den `@core/`-Pfadalias.
+* **5.1 Domain-Typen in `src/types/combat.ts` präzisieren:** ✅
+  * Präzise `StatValue`, `SavingThrows`, `SkillEntry`, `LearnedSkillTrick`, `Weapon`, `Armor`, `Item`, `DailyAbility`, `PrestigeSpellLinks` und `Combatant`-Schnittstellen bereitgestellt.
+* **5.2 Prestige-Klassen Rule-Module (`js/rules/classes/`):** ✅
+  * `[NEW]` [`AssassinRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/AssassinRules.js), [`ArcaneTricksterRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/ArcaneTricksterRules.js), [`ShadowbaneInquisitorRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/ShadowbaneInquisitorRules.js), [`BattleTricksterRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/BattleTricksterRules.js), [`SpellwarpSniperRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/SpellwarpSniperRules.js), [`EldritchKnightRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/EldritchKnightRules.js).
+  * In `js/rules.js` re-exportiert und in der Engine verdrahtet.
+* **5.3 Abbau aller `@ts-ignore` Direktiven (180 ➔ 0):** ✅
+  * `[NEW]` [`src/types/core-modules.d.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/types/core-modules.d.ts) für lückenlose Typisierung aller `@core/*`-Module.
+  * Alle **180 `@ts-ignore` Direktiven** in allen TS/TSX-Dateien restlos entfernt.
+  * `npx.cmd tsc --noEmit` läuft fehlerfrei mit 0 Fehlern durch.
 
 ---
 

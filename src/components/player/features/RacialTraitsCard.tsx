@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface RacialTraitsCardProps {

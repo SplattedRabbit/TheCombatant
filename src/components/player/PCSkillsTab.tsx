@@ -8,17 +8,11 @@
  */
 
 import React, { useState, useMemo } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
-// @ts-ignore
 import { calculateSkillModifier } from '@core/models/helpers/skills/CombatantSkills.js';
-// @ts-ignore
 import { applyFeatSkillBonuses } from '@core/models/helpers/skills/SkillFeatApplier.js';
-// @ts-ignore
 import { showRollBreakdown, showCustomAlert } from '@core/ui/components/dialogs.js';
 import { formatMod, getStatMod } from './attributeHelper';
 import { SkillFilterBar } from './skills/SkillFilterBar';

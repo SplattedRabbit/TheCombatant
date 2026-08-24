@@ -8,11 +8,8 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { createInitialState } from '@core/models/model-core.js';
-// @ts-ignore
 import { applyLoadedState } from '@core/state/StorageManager.js';
 import { campaignService } from '../services/campaign/CampaignService.ts';
 import { characterService } from '../services/character/CharacterService.ts';

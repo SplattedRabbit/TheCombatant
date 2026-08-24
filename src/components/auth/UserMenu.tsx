@@ -10,7 +10,6 @@ import { CharacterRosterDialog } from '../player/CharacterRosterDialog.tsx';
 import { CampaignManagerDialog } from '../dm/CampaignManagerDialog.tsx';
 import { JoinCampaignDialog } from '../dialogs/JoinCampaignDialog.tsx';
 
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 export const UserMenu: React.FC = () => {

@@ -8,13 +8,9 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { SpellSlotCalculator } from '@core/rules/SpellSlotCalculator.js';
-// @ts-ignore
 import { getSchoolLabel } from '@core/spells.js';
-// @ts-ignore
 import { showCustomConfirm, showCustomAlert, showCustomPrompt } from '@core/ui/components/dialogs.js';
 import { findSpell } from './PCSpellbookTab';
 

@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { ITEM_SLOTS } from '@core/data/magicItems-data.js';
-// @ts-ignore
 import { getDefaultBonusType } from '@core/models/Item.js';
 
 interface ItemEditorModalProps {

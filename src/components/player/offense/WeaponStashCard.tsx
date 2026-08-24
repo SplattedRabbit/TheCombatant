@@ -9,9 +9,7 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { WeaponRegistry } from '@core/models/Weapon.js';
 
 function isWeaponTwoHanded(w: any): boolean {

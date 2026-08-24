@@ -3,9 +3,6 @@
  * @summary   Helper functions, slot definitions and icon resolvers for the Armory tab.
  */
 
-// @ts-ignore
-import { ITEM_SLOTS } from '@core/data/magicItems-data.js';
-
 export const BODY_SLOTS_ORDER = [
   'head', 'face', 'neck',
   'shoulders', 'torso', 'body',

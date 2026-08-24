@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import { ClassACFSelector } from './ClassACFSelector';
 import { getAblMod } from '../attributeHelper';
