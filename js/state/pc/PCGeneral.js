@@ -154,15 +154,14 @@ export function recalculatePCStats(pc) {
 
   recalculateDailyAbilities(pc);
 
-  if (pc.rawInit !== undefined && pc.rawInit !== null) {
-    if (pc.rawInit > 0) {
-      const dexMod = pc.dex instanceof Stat ? pc.dex.getMod() : Math.floor(((parseInt(pc.dex) || 10) - 10) / 2);
-      const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some(f => f.id === 'improved_initiative');
-      const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
-      pc.init = pc.rawInit + totIni;
-    } else if (pc.rawInit === 0) {
-      pc.init = 0;
-    }
+  const dexMod = pc.dex instanceof Stat ? pc.dex.mod : Math.floor(((parseInt(pc.dex) || 10) - 10) / 2);
+  const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some(f => f.id === 'improved_initiative');
+  const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
+
+  if (pc.rawInit && pc.rawInit > 0) {
+    pc.init = pc.rawInit + totIni;
+  } else {
+    pc.init = 0;
   }
 }
 

@@ -6,9 +6,29 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v6.0.2** | Patch & Fix | 24.08.2026 | Saves & Defenses Input Hardening, Controlled React Number Buffering, Manual Initiative & Total Calculation |
 | **v6.0.1** | Hotfix & Polish | 23.08.2026 | Real-time Table Sync, Dynamic Presence PC Injection, DM Screen Isolation, Zero-Recursion RLS & Pergament Modals |
 | **v6.0.0** | Major Release | 23.08.2026 | Cloud-Sync, Google OAuth, Multi-Character Roster, DM Multi-Campaign Dashboard, Supabase Realtime WebSockets & CI/CD Automation (0 € Stack) |
 | **v5.0.0** | Major Release | 22.08.2026 | Milestone Release: Armory 2.0, Tactical Combat Hub, Complete Sourcebooks (PHB2/CA/CS), Skill Tricks, Wizard & Zero-Defect Architecture |
+
+---
+
+### v6.0.2 — Saves & Defenses Input Hardening & Initiative Total Sync (24.08.2026)
+
+> **Zusammenfassung:** Version 6.0.2 behebt das Sperren von Zahlenfeldern im Browser durch `Stat`-Objektinstanzen, führt lokale Eingabepufferung für kontrollierte Inputs ein und stellt die korrekte manuelle Initiative- und Gesamtwertberechnung (`Total = Rolled + Mod`) samt Live-Sync an den DM-Screen her.
+
+#### 🌟 Die Kern-Verbesserungen von Version 6.0.2:
+
+1. **🛡️ Saves & Defenses Input Hardening (`PCDefensesTab.tsx`)**:
+   - **Beseitigung des `[object Object]`-Locks**: Alle Schutzwerte und Attribute (`ac`, `acTouch`, `acFlat`, `baseZa`, `baseRef`, `baseWil`) werden strikt numerisch über `.getValue?.() ?? .base ?? 10` extrahiert, bevor sie an HTML `<input type="number">` übergeben werden.
+   - **Lokaler Eingabepuffer (`localValues`)**: Alle Zahlenfelder (AC, Rettungswürfe, Initiative, SR, Speed, Deflection etc.) puffern Tastatureingaben lokal. Das Löschen per Backspace, Eintippen zweistelliger Zahlen und Korrigieren funktioniert flüssig ohne Cursor-Resets durch asynchrone State-Events.
+   - **Verlässlicher Commit**: Eingaben werden beim Verlassen des Feldes (`onBlur`) oder Drücken von `Enter` validiert und in die Engine geschrieben.
+
+2. **🎲 Manuelle Initiative & 'Total'-Live-Sync (`PCDefensesTab.tsx`, `PCGeneral.js`, `Stat.js`)**:
+   - **Table-First Design**: Das Feld `Rolled` nimmt den am Spieltisch gewürfelten d20-Wert entgegen. Der Würfelbot wurde restlos entfernt; der 🎲-Button dient rein als statisches Modifikatoren-Aufschlüsselungsfenster.
+   - **Dynamischer Gesamtwert (`Total`)**: Vor dem Wurf zeigt `Total` sauber `--`. Nach Eintrag eines Wurfes (z. B. `14`) wird `Total` sofort als `Rolled + Initiative Mod` berechnet (z. B. `14 + 13 = 27` bei Valerius) und an den Spielleiter übertragen.
+   - **Behebung des `TypeError` bei `recalculatePCStats`**: Die `Stat`-Klasse verfügt nun über `get mod()` und die Methode `getMod()`, wodurch `recalculatePCStats` fehlerfrei und ohne Unterbrechung durchläuft.
+   - **Bereinigung historischer Beispieldaten**: Statische Legacy-Initialwerte (`init: 8`) aus früheren App-Versionen werden beim Laden von Beispieldaten automatisch neu berechnet.
 
 ---
 

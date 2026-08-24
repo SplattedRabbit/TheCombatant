@@ -1,6 +1,37 @@
 # D&D 3.5e Combat App — Entwicklerhandbuch (Developer Guide)
 
-Willkommen im Projekt! Dieses Handbuch dient als zentrale Referenz für neue AI-Agenten und Entwickler, um sich in Sekunden in der Codebasis zurechtzufinden und token-schonend zu arbeiten.
+## 🤖 Agent Handover & Quickstart Prompt (Copy & Paste for new Sessions)
+
+> **Prompt für den nächsten Agenten:**
+> ```text
+> Hallo Antigravity! Bitte setze die Arbeit an der D&D 3.5e CombatApp nahtlos fort.
+> 
+> ### 📌 Projekt- & Architektur-Kontext:
+> - **Branch:** `feature/webapplication` (Arbeitsbranch, niemals direkt auf `main` mergen).
+> - **Technologie-Stack:** TypeScript, React 19, Vanilla CSS (Design-Tokens, Pergament-Ästhetik, HSL), Supabase (Auth, PostgreSQL mit JSONB-Storage, Realtime WebSockets), Native Node.js Test-Runner (`node:test`).
+> - **Sprache:** Die gesamte Benutzeroberfläche (Buttons, Dialoge, Badges, Tabs, Tooltips) ist strikt auf Englisch (100% English UI).
+> - **PowerShell-Syntax:** Bei verketteten Shell-Befehlen unter Windows immer `;` anstelle von `&&` verwenden.
+> 
+> ### 🌟 Zuletzt implementierter Stand (v6.0.2):
+> 1. **Saves & Defenses Input Hardening (`PCDefensesTab.tsx`, `PCGeneral.js`, `Stat.js`):**
+>    - Alle Zahlenfelder (AC, Saves, Initiative, Speed, SR, DR) nutzen lokale Eingabepufferung (`localValues`), wodurch flüssiges Tippen, Backspace und Editieren ohne Re-Render-Cursorlocks gewährleistet sind.
+>    - Sichere numerische Extraktion aller `Stat`-Objektinstanzen (`.getValue?.() ?? .base ?? 10`), keine `[object Object]`-Locks im Browser.
+> 2. **Initiative & Total-Sync (Table-First, kein Würfelbot):**
+>    - Das Feld `Rolled` nimmt den am physischen Tisch gewürfelten d20-Wert entgegen.
+>    - `Total` errechnet dynamisch `Rolled + Initiative Mod` (z. B. `14 + 13 = 27` bei Valerius) und synchronisiert den Gesamtwert an den DM-Screen. Vor dem Wurf zeigt `Total` sauber `--`.
+>    - Der Würfelbot wurde vollständig entfernt; der 🎲-Button dient rein als statisches Modifikatoren-Aufschlüsselungsfenster.
+> 3. **Stat-Klasse & Recalculate-Stabilität:**
+>    - `Stat.js` besitzt nun `get mod()` und die Alias-Methode `getMod()`. `recalculatePCStats` läuft unterbrechungsfrei durch.
+> 
+> ### 🧪 Pflicht-Verifikation bei jedem Schritt:
+> - Tests: `node --import ./Tests/setup.js --test --test-reporter=dot Tests/**/*.test.js`
+> - Typecheck: `npm run typecheck`
+> - Build: `npm run build`
+> 
+> Lies bei Bedarf die `docs/DEVELOPER_GUIDE.md` und `docs/PATCHNOTES.md` für weitere Details. Wie lautet die nächste Aufgabe?
+> ```
+> 
+> Willkommen im Projekt! Dieses Handbuch dient als zentrale Referenz für neue AI-Agenten und Entwickler, um sich in Sekunden in der Codebasis zurechtzufinden und token-schonend zu arbeiten.
 
 ---
 

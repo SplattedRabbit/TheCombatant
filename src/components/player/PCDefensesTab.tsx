@@ -372,7 +372,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Total</label>
           <span className="pc-init-total" style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', lineHeight: '15px', minWidth: '28px', textAlign: 'center', background: 'rgba(139,26,26,0.08)', border: '0.5px solid rgba(139,26,26,0.3)', borderRadius: '2px', padding: '0 2px' }}>
-            {pc.init && pc.init > 0 ? pc.init : (pc.rawInit && pc.rawInit > 0 ? pc.rawInit + totIni : '--')}
+            {pc.rawInit && pc.rawInit > 0 ? (pc.init && pc.init > 0 ? pc.init : pc.rawInit + totIni) : '--'}
           </span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>

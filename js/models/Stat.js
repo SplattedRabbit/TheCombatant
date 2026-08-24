@@ -37,6 +37,10 @@ export class Stat {
     return Math.floor((this.getValue() - 10) / 2);
   }
 
+  getMod() {
+    return this.mod;
+  }
+
   addModifier(value, type, source) {
     this.removeModifiersFromSource(source);
     this.modifiers.push({ value: parseInt(value) || 0, type, source });
