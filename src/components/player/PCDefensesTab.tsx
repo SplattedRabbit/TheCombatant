@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 // @ts-ignore
 import { showRollBreakdown } from '@core/ui/components/dialogs.js';
-import { getStatMod, formatMod } from './attributeHelper';
+import { getStatMod, formatMod, extractStatValue, calculateInitiativeTotal } from './attributeHelper';
 
 
 interface PCDefensesTabProps {
@@ -27,20 +27,20 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
   const wisMod = getStatMod(pc.wis);
 
   const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some((f: any) => f.id === 'improved_initiative');
-  const totFort = pc.za?.getValue?.() ?? pc.za?.total ?? 0;
-  const totRef = pc.ref?.getValue?.() ?? pc.ref?.total ?? 0;
-  const totWil = pc.wil?.getValue?.() ?? pc.wil?.total ?? 0;
+  const totFort = extractStatValue(pc.za, 0);
+  const totRef = extractStatValue(pc.ref, 0);
+  const totWil = extractStatValue(pc.wil, 0);
   const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
 
   // Numeric primitive extractions from Stat objects
-  const acVal = pc.ac?.getValue?.() ?? pc.ac?.base ?? (typeof pc.ac === 'number' ? pc.ac : 10);
-  const acTouchVal = pc.acTouch?.getValue?.() ?? pc.acTouch?.base ?? (typeof pc.acTouch === 'number' ? pc.acTouch : 10);
-  const acFlatVal = pc.acFlat?.getValue?.() ?? pc.acFlat?.base ?? (typeof pc.acFlat === 'number' ? pc.acFlat : 10);
-  const baseZaVal = pc.baseZa?.getValue?.() ?? pc.baseZa?.base ?? (typeof pc.baseZa === 'number' ? pc.baseZa : 0);
-  const baseRefVal = pc.baseRef?.getValue?.() ?? pc.baseRef?.base ?? (typeof pc.baseRef === 'number' ? pc.baseRef : 0);
-  const baseWilVal = pc.baseWil?.getValue?.() ?? pc.baseWil?.base ?? (typeof pc.baseWil === 'number' ? pc.baseWil : 0);
+  const acVal = extractStatValue(pc.ac, 10);
+  const acTouchVal = extractStatValue(pc.acTouch, 10);
+  const acFlatVal = extractStatValue(pc.acFlat, 10);
+  const baseZaVal = extractStatValue(pc.baseZa, 0);
+  const baseRefVal = extractStatValue(pc.baseRef, 0);
+  const baseWilVal = extractStatValue(pc.baseWil, 0);
 
   const handleInputChange = (key: string, val: string) => {
     setLocalValues((prev) => ({ ...prev, [key]: val }));
@@ -372,7 +372,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <label style={{ fontSize: '8px', fontWeight: 600, color: 'var(--inkl)', marginBottom: '1px', lineHeight: 1 }}>Total</label>
           <span className="pc-init-total" style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', lineHeight: '15px', minWidth: '28px', textAlign: 'center', background: 'rgba(139,26,26,0.08)', border: '0.5px solid rgba(139,26,26,0.3)', borderRadius: '2px', padding: '0 2px' }}>
-            {pc.rawInit && pc.rawInit > 0 ? (pc.init && pc.init > 0 ? pc.init : pc.rawInit + totIni) : '--'}
+            {calculateInitiativeTotal(localValues['rawInit'] !== undefined ? localValues['rawInit'] : pc.rawInit, totIni).display}
           </span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>

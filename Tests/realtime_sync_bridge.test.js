@@ -1,0 +1,200 @@
+// Tests/realtime_sync_bridge.test.js - BDD Verification for RealtimeSyncBridge
+import { test, describe, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
+import {
+  initRealtimeSyncBridge,
+  broadcastActivePC,
+  broadcastStateChanges
+} from '../src/services/network/RealtimeSyncBridge.ts';
+import { realtimeManager } from '../src/services/network/RealtimeManager.ts';
+import { getState, getActivePC, StateEvents } from '../js/state/state-core.js';
+import { Stat } from '../js/models/Stat.js';
+import { recalculatePCStats } from '../js/state/pc/PCGeneral.js';
+
+// Mock Channel Factory for RealtimeManager
+function createMockRealtimeClient() {
+  const channels = new Map();
+
+  return {
+    channels,
+    channel(name, config) {
+      const listeners = new Map();
+      let presenceData = {};
+      const sentBroadcasts = [];
+
+      const mockChannel = {
+        name,
+        config,
+        sentBroadcasts,
+        on(type, filter, callback) {
+          const key = `${type}:${filter?.event || '*'}`;
+          if (!listeners.has(key)) listeners.set(key, []);
+          listeners.get(key).push(callback);
+          return mockChannel;
+        },
+        subscribe(callback) {
+          setTimeout(() => {
+            if (typeof callback === 'function') {
+              callback('SUBSCRIBED');
+            }
+          }, 5);
+          return mockChannel;
+        },
+        async track(presence) {
+          presenceData[presence.userId || 'user-1'] = [presence];
+          const syncCallbacks = listeners.get('presence:sync') || [];
+          syncCallbacks.forEach((cb) => cb());
+        },
+        async untrack() {
+          presenceData = {};
+        },
+        async unsubscribe() {
+          listeners.clear();
+        },
+        async send(packet) {
+          sentBroadcasts.push(packet);
+          return 'ok';
+        },
+        presenceState() {
+          return presenceData;
+        },
+        simulateRemoteEvent(envelope) {
+          const broadcastCallbacks = listeners.get('broadcast:combat_event') || [];
+          broadcastCallbacks.forEach((cb) => cb({ payload: envelope }));
+        },
+      };
+
+      channels.set(name, mockChannel);
+      return mockChannel;
+    },
+  };
+}
+
+describe('BDD Suite 2: Realtime WebSocket Synchronisation (RealtimeSyncBridge)', () => {
+  let mockClient;
+
+  beforeEach(() => {
+    mockClient = createMockRealtimeClient();
+    realtimeManager.client = mockClient;
+    realtimeManager.status = 'disconnected';
+    realtimeManager.activeChannel = null;
+    realtimeManager.currentCampaignId = null;
+
+    // Reset local PC state
+    const state = getState();
+    state.mode = 'player';
+    state.session = { role: 'client', campaignId: 'camp-alpha-1' };
+    state.combatants = [
+      {
+        id: 'valerius-pc',
+        name: 'Valerius',
+        type: 'p',
+        hp: 35,
+        maxHp: 35,
+        init: 0,
+        rawInit: 0,
+        dex: new Stat(16),
+        isBlinded: false
+      }
+    ];
+
+    initRealtimeSyncBridge();
+  });
+
+  test('Szenario 2.1: Spieler-Initiative-Broadcast an den DM', async () => {
+    // Given: Spieler A ist mit der Kampagne 'camp-alpha-1' verbunden
+    await realtimeManager.joinCampaign('camp-alpha-1', 'player', {
+      userId: 'user-player-1',
+      userName: 'Valerius Player',
+      characterId: 'valerius-pc',
+      characterName: 'Valerius'
+    });
+
+    assert.equal(realtimeManager.getStatus(), 'connected');
+    const mockChannel = mockClient.channels.get('campaign:camp-alpha-1');
+    assert.ok(mockChannel, 'Realtime Channel muss existieren');
+
+    // When: Spieler trägt Initiative ein (z. B. Total 22)
+    const pc = getActivePC();
+    pc.rawInit = 19;
+    pc.init = 22; // 19 + 3
+    recalculatePCStats(pc);
+
+    // Trigger state save / sync bridge
+    broadcastStateChanges();
+
+    // Then: Broadcast-Diff wurde an den Kanal gesendet
+    assert.ok(mockChannel.sentBroadcasts.length >= 1, 'Muss mindestens einen Diff gesendet haben');
+    const lastBroadcast = mockChannel.sentBroadcasts[mockChannel.sentBroadcasts.length - 1];
+    assert.equal(lastBroadcast.payload.eventType, 'diff');
+    assert.equal(lastBroadcast.payload.senderId, 'user-player-1');
+  });
+
+  test('Szenario 2.2: DM ändert Spieler-Zustand (Damage / Condition Sync)', async () => {
+    // Given: Spieler ist im Raum verbunden
+    await realtimeManager.joinCampaign('camp-alpha-1', 'player', {
+      userId: 'user-player-1',
+      userName: 'Valerius Player',
+      characterId: 'valerius-pc',
+      characterName: 'Valerius'
+    });
+
+    const mockChannel = mockClient.channels.get('campaign:camp-alpha-1');
+    const pc = getActivePC();
+    assert.equal(pc.hp, 35);
+    assert.equal(pc.isBlinded, false);
+
+    // When: DM sendet einen Remote-Diff (12 Schaden -> HP 23 und isBlinded: true)
+    mockChannel.simulateRemoteEvent({
+      eventId: 'remote-dm-diff-1',
+      eventType: 'diff',
+      senderId: 'user-dm-host',
+      senderName: 'Dungeon Master',
+      campaignId: 'camp-alpha-1',
+      timestamp: Date.now(),
+      payload: {
+        diff: {
+          type: 'state_diff',
+          diff: {
+            'combatants.0.hp': 23,
+            'combatants.0.isBlinded': true
+          }
+        },
+        seq: 2
+      }
+    });
+
+    // Then: Lokaler Zustand des Spielers aktualisiert sich synchron
+    assert.equal(pc.hp, 23, 'HP des Spielers muss auf 23 gesunken sein');
+    assert.equal(pc.isBlinded, true, 'Zustand isBlinded muss aktiviert worden sein');
+  });
+
+  test('Szenario 2.3: Offline-Resilienz bei Verbindungsabbruch und Reconnect', async () => {
+    // Given: Verbindung ist offline/disconnected
+    assert.equal(realtimeManager.getStatus(), 'disconnected');
+
+    // When: Spieler ändert Werte lokal (Local-First)
+    const pc = getActivePC();
+    pc.hp = 28;
+
+    // When: Verbindung wird wiederhergestellt
+    await realtimeManager.joinCampaign('camp-alpha-1', 'player', {
+      userId: 'user-player-1',
+      userName: 'Valerius Player',
+      characterId: 'valerius-pc',
+      characterName: 'Valerius'
+    });
+
+    const mockChannel = mockClient.channels.get('campaign:camp-alpha-1');
+
+    // Broadcast active PC
+    broadcastActivePC();
+
+    // Then: Active PC mit aktuellem Stand (HP 28) wird an den Host übertragen
+    const pcSyncBroadcasts = mockChannel.sentBroadcasts.filter(
+      (b) => b.payload.eventType === 'pc_sync'
+    );
+    assert.ok(pcSyncBroadcasts.length >= 1, 'Muss pc_sync Broadcast gesendet haben');
+    assert.equal(pcSyncBroadcasts[0].payload.payload.pc.hp, 28, 'Übertragener PC muss HP 28 haben');
+  });
+});

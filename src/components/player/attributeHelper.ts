@@ -1,5 +1,5 @@
 // @ts-ignore
-import { showCustomAlert } from '@core/ui/components/dialogs.js';
+import { showCustomAlert } from '../../../js/ui/components/dialogs.js';
 
 // ---------------------------------------------------------------------------
 // Kanonische Attribut-Hilfsfunktionen — zentrale Implementierung für alle Komponenten.
@@ -29,6 +29,41 @@ export const getStatMod = (statObj: any): number => {
  * Verwendung: formatMod(getAblMod(score)) → "+3" oder "-1"
  */
 export const formatMod = (val: number): string => (val >= 0 ? `+${val}` : `${val}`);
+
+/**
+ * Extrahiert sicher einen numerischen Wert aus Stat-Objekten, Zahlen oder Strings mit Fallback.
+ * Garantiert, dass niemals [object Object] oder NaN erzeugt wird.
+ */
+export const extractStatValue = (stat: any, fallback: number = 0): number => {
+  if (stat === null || stat === undefined) return fallback;
+  if (typeof stat === 'number') return isNaN(stat) ? fallback : stat;
+  if (typeof stat.getValue === 'function') {
+    const val = stat.getValue();
+    return typeof val === 'number' && !isNaN(val) ? val : fallback;
+  }
+  if (typeof stat.base === 'number') return isNaN(stat.base) ? fallback : stat.base;
+  const parsed = parseInt(String(stat), 10);
+  return isNaN(parsed) ? fallback : parsed;
+};
+
+/**
+ * Berechnet das Initiative-Gesamtergebnis aus gewürfeltem Wert (d20) und Modifikator.
+ * Gibt '--' zurück, falls noch nicht gewürfelt wurde oder der Wert ungültig ist.
+ */
+export const calculateInitiativeTotal = (
+  rawInit: number | string | null | undefined,
+  totIni: number
+): { display: string; total: number | null } => {
+  if (rawInit === null || rawInit === undefined || rawInit === '') {
+    return { display: '--', total: null };
+  }
+  const num = typeof rawInit === 'number' ? rawInit : parseInt(String(rawInit), 10);
+  if (isNaN(num) || num <= 0) {
+    return { display: '--', total: null };
+  }
+  const total = num + totIni;
+  return { display: String(total), total };
+};
 
 
 
