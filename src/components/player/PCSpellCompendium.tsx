@@ -171,7 +171,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
         <button
           onClick={handleOpenCreatorWizard}
           className="btn btn-p wizard-open-btn"
-          style={{ fontSize: '9px', padding: '2px 6px', height: '18px', lineHeight: '12px', fontFamily: "'IM Fell English SC', serif", cursor: 'pointer' }}
+          style={{ fontSize: '9px', padding: '2px 6px', height: '18px', lineHeight: '12px', fontFamily: 'var(--font-title)', cursor: 'pointer' }}
         >
           ✦ Create
         </button>
@@ -210,7 +210,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
             return (
               <div key={s.id} className="compendium-spell-item" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.25)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '3px 5px', fontSize: '9px' }}>
                 <div onClick={() => handleShowDetails(s)} style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer', flex: 1 }}>
-                  <span style={{ fontWeight: 600, color: 'var(--red)', fontFamily: "'Crimson Text', serif", fontSize: '10px' }}>
+                  <span style={{ fontWeight: 600, color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '10px' }}>
                     📜 {s.nameEn || s.nameDe} <span style={{ fontSize: '8.5px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>Level {s.level} · {s.school}</span>
                   </span>
                   {s.nameEn && s.nameEn !== s.nameDe && (

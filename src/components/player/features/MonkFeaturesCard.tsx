@@ -61,7 +61,7 @@ export const MonkFeaturesCard: React.FC<MonkFeaturesCardProps> = ({ pc, level })
       <div
         className="class-card-hdr"
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>🎭 Monk (Level {level})</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
@@ -87,7 +87,7 @@ export const MonkFeaturesCard: React.FC<MonkFeaturesCardProps> = ({ pc, level })
                 <button
                   onClick={() => setFlurryRulesOpen(!flurryRulesOpen)}
                   className="btn btn-toggle-rules-flurry"
-                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                   title="Show rules"
                 >
                   📖 {flurryRulesOpen ? '▲' : '▼'}
@@ -95,8 +95,8 @@ export const MonkFeaturesCard: React.FC<MonkFeaturesCardProps> = ({ pc, level })
               </div>
 
               {flurryRulesOpen && (
-                <div className="flurry-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                  <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Flurry of Blows:</strong><br />
+                <div className="flurry-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                  <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Flurry of Blows:</strong><br />
                   When unarmored, a monk may strike with a Flurry of Blows (full attack action) using unarmed strikes or special monk weapons.<br />
                   • <strong>Extra Attack:</strong> +1 attack (levels 1-10) or +2 attacks (level 11+).<br />
                   • <strong>Penalty:</strong> -2 (levels 1-4), -1 (levels 5-8), no penalty (level 9+) on all attacks in the round.<br />
@@ -114,7 +114,7 @@ export const MonkFeaturesCard: React.FC<MonkFeaturesCardProps> = ({ pc, level })
                     <button
                       onClick={() => setAbundantRulesOpen(!abundantRulesOpen)}
                       className="btn btn-toggle-rules-abundant"
-                      style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                      style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                       title="Show rules"
                     >
                       📖 {abundantRulesOpen ? '▲' : '▼'}
@@ -146,8 +146,8 @@ export const MonkFeaturesCard: React.FC<MonkFeaturesCardProps> = ({ pc, level })
                   </div>
                 </div>
                 {abundantRulesOpen && (
-                  <div className="abundant-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                    <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Abundant Step:</strong><br />
+                  <div className="abundant-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                    <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Abundant Step:</strong><br />
                     Starting at 12th level, a monk can slip magically between spaces once per day.<br />
                     • <strong>Effect:</strong> Works like the spell <em>Dimension Door</em>.<br />
                     • <strong>Caster Level:</strong> Half the monk's level (rounded down). For level {level}, caster level is {Math.floor(level / 2)}.
@@ -165,7 +165,7 @@ export const MonkFeaturesCard: React.FC<MonkFeaturesCardProps> = ({ pc, level })
                     <button
                       onClick={() => setQuiveringRulesOpen(!quiveringRulesOpen)}
                       className="btn btn-toggle-rules-quivering"
-                      style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                      style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                       title="Show rules"
                     >
                       📖 {quiveringRulesOpen ? '▲' : '▼'}
@@ -197,8 +197,8 @@ export const MonkFeaturesCard: React.FC<MonkFeaturesCardProps> = ({ pc, level })
                   </div>
                 </div>
                 {quiveringRulesOpen && (
-                  <div className="quivering-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                    <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Quivering Palm:</strong><br />
+                  <div className="quivering-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                    <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Quivering Palm:</strong><br />
                     Starting at 15th level, a monk can set up vibrations within the body of another creature.<br />
                     • <strong>Use:</strong> Once per week. Must be announced before the attack.<br />
                     • <strong>Saving Throw:</strong> Fortitude save against <strong>DC {palmDC}</strong> (10 + 1/2 level [{Math.floor(level / 2)}] + WIS mod [{wisMod}]). On failure, the target dies immediately.
@@ -216,7 +216,7 @@ export const MonkFeaturesCard: React.FC<MonkFeaturesCardProps> = ({ pc, level })
                     <button
                       onClick={() => setEmptyRulesOpen(!emptyRulesOpen)}
                       className="btn btn-toggle-rules-empty"
-                      style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                      style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                       title="Show rules"
                     >
                       📖 {emptyRulesOpen ? '▲' : '▼'}
@@ -248,8 +248,8 @@ export const MonkFeaturesCard: React.FC<MonkFeaturesCardProps> = ({ pc, level })
                   </div>
                 </div>
                 {emptyRulesOpen && (
-                  <div className="empty-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                    <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Empty Body:</strong><br />
+                  <div className="empty-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                    <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Empty Body:</strong><br />
                     Starting at 19th level, a monk can assume an ethereal state.<br />
                     • <strong>Duration:</strong> A total of <strong>{level} rounds per day</strong> (works like the spell <em>Etherealness</em>).
                   </div>

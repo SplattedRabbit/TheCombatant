@@ -165,10 +165,10 @@ export const ACFsTabContent: React.FC<ACFsTabContentProps> = ({
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <span style={{ fontSize: '12px' }}>🎭</span>
                         <div>
-                          <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
+                          <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
                             {acf.name || acf.nameEn || acf.nameDe}
                           </strong>
-                          <span style={{ fontSize: '9px', color: 'var(--inkl)', marginLeft: '6px', fontFamily: "'IM Fell English SC', serif" }}>
+                          <span style={{ fontSize: '9px', color: 'var(--inkl)', marginLeft: '6px', fontFamily: 'var(--font-title)' }}>
                             ({acf.classKey.toUpperCase()} • Min Level {acf.minLevel} • {acf.source?.toUpperCase() || ''})
                           </span>
                         </div>
@@ -182,7 +182,7 @@ export const ACFsTabContent: React.FC<ACFsTabContentProps> = ({
                           fontSize: '8px',
                           padding: '2px 10px',
                           fontWeight: 'bold',
-                          fontFamily: "'IM Fell English SC', serif",
+                          fontFamily: 'var(--font-title)',
                           cursor: 'pointer',
                           borderRadius: '2px',
                           border: isSelected ? '0.5px solid var(--red)' : '0.5px solid var(--pb)',
@@ -203,7 +203,7 @@ export const ACFsTabContent: React.FC<ACFsTabContentProps> = ({
                       ⚡ Replaces: <span style={{ color: 'var(--ink)' }}>{acf.replaces}</span>
                     </div>
 
-                    <div style={{ fontSize: '9.5px', color: 'var(--inkm)', lineHeight: 1.3, fontFamily: "'Crimson Text', serif" }}>
+                    <div style={{ fontSize: '9.5px', color: 'var(--inkm)', lineHeight: 1.3, fontFamily: 'var(--font-body)' }}>
                       {acf.description || acf.desc}
                     </div>
                   </div>

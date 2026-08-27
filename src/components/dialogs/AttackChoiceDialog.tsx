@@ -87,7 +87,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
           padding: '16px 24px',
           width: '310px',
           boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           textAlign: 'center',
           position: 'relative',
           transform: 'scale(1)',
@@ -114,7 +114,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                   padding: '1px 5px',
                   color: 'var(--red)',
                   background: 'rgba(139,26,26,0.05)',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontWeight: 'bold'
                 }}
               >
@@ -135,7 +135,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                   padding: '1px 5px',
                   color: 'var(--red)',
                   background: 'rgba(139,26,26,0.05)',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontWeight: 'bold'
                 }}
               >
@@ -147,7 +147,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 10px' }} />
 
         {hasPaladin && isMelee && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '10px', padding: '4px 8px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '8px', fontFamily: "'Crimson Text', serif" }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '10px', padding: '4px 8px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '8px', fontFamily: 'var(--font-body)' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: 'var(--red)' }}>
               <input
                 type="checkbox"
@@ -185,7 +185,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                 }}
               >
                 <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>Standard Attack</div>
-                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px' }}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px' }}>
                   A single attack with your full attack bonus.
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '4px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '4px' }}>
@@ -228,10 +228,10 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                     {fullSeq.length}x
                   </span>
                 </div>
-                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px' }}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px' }}>
                   Perform all available attacks.
                 </div>
-                <div style={{ marginTop: '4px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '4px', fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif" }}>
+                <div style={{ marginTop: '4px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '4px', fontSize: '8.5px', color: 'var(--inkm)', fontFamily: 'var(--font-title)' }}>
                   {fullSeq.map((atk: any, idx: number) => (
                     <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px' }}>
                       <span>{atk.name}:</span>
@@ -251,8 +251,8 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
           )}
 
           {currentView === 'std' && (
-            <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '10px', fontFamily: "'Crimson Text', serif" }}>
-              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '5px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
+            <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '10px', fontFamily: 'var(--font-body)' }}>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '5px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
                 Attack Modifiers
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '9.5px', color: 'var(--inkm)' }}>
@@ -263,13 +263,13 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                   </div>
                 ))}
                 <hr style={{ border: 'none', borderTop: '0.5px dashed rgba(200,169,110,0.3)', margin: '4px 0' }} />
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
                   <span>Total Modifier:</span>
                   <span>{formatMod(stdAtk.atkTotal)}</span>
                 </div>
               </div>
               <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.3)', margin: '6px 0 4px' }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                 <span>ROLL FORMULA:</span>
                 <span>1d20 {formatMod(stdAtk.atkTotal)}</span>
               </div>
@@ -278,13 +278,13 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
 
           {currentView === 'full' && (
             <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '8px 10px', maxHeight: '200px', overflowY: 'auto' }}>
-              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '3px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '3px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
                 Attack Modifiers (Full Attack)
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                 {fullSeq.map((atk: any, idx: number) => (
-                  <div key={idx} style={{ marginTop: '4px', borderBottom: '0.5px dotted rgba(200, 169, 110, 0.2)', paddingBottom: '3px', fontFamily: "'Crimson Text', serif" }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', color: 'var(--red)', fontSize: '9.5px', fontFamily: "'IM Fell English SC', serif" }}>
+                  <div key={idx} style={{ marginTop: '4px', borderBottom: '0.5px dotted rgba(200, 169, 110, 0.2)', paddingBottom: '3px', fontFamily: 'var(--font-body)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', color: 'var(--red)', fontSize: '9.5px', fontFamily: 'var(--font-title)' }}>
                       <span>{atk.name}:</span>
                       <span>1d20 {formatMod(atk.atkTotal)}</span>
                     </div>
@@ -307,7 +307,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
           onClick={onClose}
           className="btn btn-close-choice"
           style={{
-            fontFamily: "'IM Fell English SC', serif",
+            fontFamily: 'var(--font-title)',
             fontSize: '8px',
             padding: '2px 10px',
             marginTop: '10px',

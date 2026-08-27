@@ -165,7 +165,7 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                       </div>
                     )}
 
-                    <div style={{ fontSize: '10px', color: 'var(--ink)', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, marginBottom: '3px', paddingLeft: '16px' }}>
+                    <div style={{ fontSize: '10px', color: 'var(--ink)', fontFamily: 'var(--font-body)', lineHeight: 1.3, marginBottom: '3px', paddingLeft: '16px' }}>
                       {feat.benefitRaw || feat.benefitDe}
                     </div>
 

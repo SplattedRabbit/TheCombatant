@@ -177,7 +177,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
       >
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '5px' }}>
-          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '14.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+          <span style={{ fontFamily: 'var(--font-title)', fontSize: '14.5px', fontWeight: 'bold', color: 'var(--red)' }}>
             {isEditing ? `✏️ Edit Item: ${name || 'Item'}` : '➕ Create Custom Magic Item'}
           </span>
           <button type="button" onClick={onClose} className="xbtn" style={{ fontSize: '12px', padding: '2px 6px' }}>
@@ -226,7 +226,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
           {/* Section: Effects */}
           <div style={{ background: 'rgba(200, 169, 110, 0.08)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '6px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
+              <span style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
                 Passive Modifiers & Effects ({effects.length})
               </span>
               <button
@@ -372,7 +372,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
           {/* Section: Activation & Spell/Buff Effect */}
           <div style={{ border: '1px solid var(--pb)', borderRadius: '3px', padding: '6px', background: 'rgba(200, 169, 110, 0.08)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: hasActivation ? '4px' : '0' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", cursor: 'pointer' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)', cursor: 'pointer' }}>
                 <input
                   type="checkbox"
                   checked={hasActivation}
@@ -528,7 +528,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
             onClick={handleSave}
             disabled={!name.trim()}
             className="btn btn-p"
-            style={{ fontSize: '9.5px', padding: '3px 14px', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '9.5px', padding: '3px 14px', fontFamily: 'var(--font-title)' }}
           >
             {isEditing ? '💾 Save Changes' : '➕ Create Item'}
           </button>
@@ -536,7 +536,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
             type="button"
             onClick={onClose}
             className="btn"
-            style={{ fontSize: '9.5px', padding: '3px 14px', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '9.5px', padding: '3px 14px', fontFamily: 'var(--font-title)' }}
           >
             Cancel
           </button>

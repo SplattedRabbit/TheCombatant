@@ -484,7 +484,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
           return (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px 20px', textAlign: 'center' }}>
               <h3 style={{ color: 'var(--red)', fontSize: '18px', margin: 0 }}>Set Target Level</h3>
-              <p style={{ fontFamily: "'Crimson Text', serif", fontSize: '14px', color: 'var(--inkm)', maxWidth: '450px', lineHeight: 1.5 }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--inkm)', maxWidth: '450px', lineHeight: 1.5 }}>
                 Choose the level to which your character should be generated. We will then go through each level individually to choose class, HP, skills, and feats.
               </p>
               
@@ -497,7 +497,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                 >
                   -
                 </button>
-                <span style={{ fontSize: '32px', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", width: '50px' }}>
+                <span style={{ fontSize: '32px', fontWeight: 'bold', fontFamily: 'var(--font-title)', width: '50px' }}>
                   {targetLevel}
                 </span>
                 <button 
@@ -557,7 +557,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         
         return (
           <div style={{ textAlign: 'left', marginTop: '10px' }}>
-            <p style={{ fontFamily: "'Crimson Text', serif", fontSize: '14px', marginBottom: '20px', color: 'var(--inkm)' }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', marginBottom: '20px', color: 'var(--inkm)' }}>
               Review the details of your new character here. Clicking **Create &amp; Save** will transfer the data to your active sheet.
             </p>
 
@@ -672,7 +672,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         minHeight: '520px',
         padding: '20px 28px',
         boxSizing: 'border-box',
-        fontFamily: "'IM Fell English SC', serif",
+        fontFamily: 'var(--font-title)',
         position: 'relative'
       }}
     >

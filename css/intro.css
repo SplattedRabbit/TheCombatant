@@ -279,7 +279,7 @@
 
 .mk-char {
   display: inline-block;
-  font-family: 'IM Fell English SC', Georgia, serif;
+  font-family: var(--font-title);
   font-size: 84px;
   font-weight: 900;
   line-height: 1;
@@ -322,7 +322,7 @@
 }
 
 .intro-title {
-  font-family: 'IM Fell English SC', Georgia, serif;
+  font-family: var(--font-title);
   font-size: 38px;
   font-weight: bold;
   letter-spacing: 4px;
@@ -363,7 +363,7 @@
 .intro-skip {
   position: absolute;
   bottom: 25px;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   font-size: 10px;
   color: var(--pb);
   letter-spacing: 0.8px;

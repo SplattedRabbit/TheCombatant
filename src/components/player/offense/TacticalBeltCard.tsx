@@ -161,7 +161,7 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
       title="🎒 Tactical Combat Belt"
       headerRight={
         consumables.length > 0 ? (
-          <span style={{ fontSize: '8px', color: 'var(--inkm)', fontStyle: 'italic', fontFamily: "'Crimson Text', serif" }}>
+          <span style={{ fontSize: '8px', color: 'var(--inkm)', fontStyle: 'italic', fontFamily: 'var(--font-body)' }}>
             {Math.min(6, consumables.length)} of {consumables.length} ready
           </span>
         ) : undefined
@@ -177,7 +177,7 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
               borderRadius: '3px',
               padding: '4px 8px',
               fontSize: '8px',
-              fontFamily: "'Crimson Text', serif",
+              fontFamily: 'var(--font-body)',
               fontWeight: 'bold',
               color: feedbackToast.isHeal ? '#374e35' : 'var(--red)',
               textAlign: 'center',
@@ -240,7 +240,7 @@ export const TacticalBeltCard: React.FC<TacticalBeltCardProps> = ({ pc }) => {
 
         {/* Belt Helper Info */}
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 2px' }}>
-          <span style={{ fontSize: '7.5px', color: 'var(--inkm)', fontStyle: 'italic', fontFamily: "'Crimson Text', serif", textAlign: 'center' }}>
+          <span style={{ fontSize: '7.5px', color: 'var(--inkm)', fontStyle: 'italic', fontFamily: 'var(--font-body)', textAlign: 'center' }}>
             💡 1-Tap on any flask to activate. Drag &amp; drop to reorder slots [1–6].
           </span>
         </div>

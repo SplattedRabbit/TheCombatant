@@ -138,7 +138,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
             <h3
               style={{
                 margin: 0,
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 fontSize: '16px',
                 color: 'var(--red, #8b1a1a)',
               }}
@@ -229,7 +229,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
             style={{
               padding: '4px 12px',
               fontSize: '11px',
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               background: 'rgba(200, 169, 110, 0.2)',
               border: '1px solid var(--pb, #c8a96e)',
               borderRadius: '4px',
@@ -246,7 +246,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
             style={{
               padding: '4px 14px',
               fontSize: '11px',
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
               border: '1px solid #8b6914',
               borderRadius: '4px',

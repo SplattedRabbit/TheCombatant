@@ -181,19 +181,19 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       {totalASF > 0 && (
-        <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '3px', padding: '4px 8px', display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold' }}>
+        <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '3px', padding: '4px 8px', display: 'flex', alignItems: 'center', gap: '6px', fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 'bold' }}>
           <span>⚠️ Arcane Spell Failure: {totalASF}% chance of failure for arcane spells</span>
         </div>
       )}
 
       {/* Unified Spell Slots Grid */}
       <div style={{ background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '4px 6px' }}>
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '3px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '3px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span>🔮 Spell Slots &amp; Daily Allowances</span>
           <button
             onClick={handleNewDayReset}
             className="btn btn-new-day"
-            style={{ fontSize: '7.5px', padding: '1px 4px', height: '14px', lineHeight: 1, fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '7.5px', padding: '1px 4px', height: '14px', lineHeight: 1, fontWeight: 'bold', fontFamily: 'var(--font-title)' }}
           >
             🌅 Daily Reset
           </button>
@@ -242,7 +242,7 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
 
       {/* Area B: Known Spells Library */}
       <div>
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '5px', fontWeight: 'bold' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '5px', fontWeight: 'bold' }}>
           📖 Spell Library (Learned Spells)
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '250px', overflowY: 'auto', paddingRight: '2px' }}>
@@ -258,7 +258,7 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
 
               return (
                 <div key={lvl} style={{ marginBottom: '2px' }}>
-                  <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--inkl)', borderBottom: '0.5px dashed rgba(200, 169, 110, 0.4)', paddingBottom: '1px', fontWeight: 'bold', marginBottom: '4px', letterSpacing: '0.5px' }}>
+                  <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--inkl)', borderBottom: '0.5px dashed rgba(200, 169, 110, 0.4)', paddingBottom: '1px', fontWeight: 'bold', marginBottom: '4px', letterSpacing: '0.5px' }}>
                     Level {lvl}
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5px' }}>
@@ -266,7 +266,7 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
                       <div key={s.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.3)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '3px 5px', fontSize: '9px' }}>
                         <span
                           onClick={() => handleSpellDetails(s, s.id)}
-                          style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: "'Crimson Text', serif", fontSize: '10px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
+                          style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '10px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                           title={`${s.nameEn || s.nameDe} (${s.school})`}
                         >
                           📜 {s.nameEn || s.nameDe} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({s.school})</span>

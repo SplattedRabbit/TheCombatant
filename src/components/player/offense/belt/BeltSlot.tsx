@@ -133,7 +133,7 @@ export const BeltSlot: React.FC<BeltSlotProps> = ({
           style={{
             fontSize: '7px',
             color: 'rgba(255, 240, 205, 0.8)',
-            fontFamily: "'IM Fell English SC', serif",
+            fontFamily: 'var(--font-title)',
             fontWeight: 'bold',
           }}
         >
@@ -144,7 +144,7 @@ export const BeltSlot: React.FC<BeltSlotProps> = ({
           style={{
             fontSize: '6.5px',
             color: 'rgba(255, 240, 205, 0.65)',
-            fontFamily: "'Crimson Text', serif",
+            fontFamily: 'var(--font-body)',
             fontStyle: 'italic',
           }}
         >
@@ -208,7 +208,7 @@ export const BeltSlot: React.FC<BeltSlotProps> = ({
           style={{
             fontSize: '7px',
             color: '#6e461f',
-            fontFamily: "'IM Fell English SC', serif",
+            fontFamily: 'var(--font-title)',
             fontWeight: 'bold',
           }}
         >
@@ -262,7 +262,7 @@ export const BeltSlot: React.FC<BeltSlotProps> = ({
       {/* Item Name */}
       <div
         style={{
-          fontFamily: "'Crimson Text', serif",
+          fontFamily: 'var(--font-body)',
           fontSize: '7px',
           fontWeight: 'bold',
           color: isOutOfCharges ? '#8c7b6c' : 'var(--ink, #1a0f00)',

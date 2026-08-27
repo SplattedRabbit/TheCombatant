@@ -297,7 +297,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
         <div style={{ display: 'flex', gap: '10px', width: '100%', minWidth: 0, boxSizing: 'border-box', minHeight: '380px' }}>
           {/* Left Column: Skills (60%) */}
           <div style={{ flex: '6 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', borderRight: '0.5px solid var(--pb)', paddingRight: '8px', boxSizing: 'border-box' }}>
-            <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', textAlign: 'center' }}>
+            <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', textAlign: 'center' }}>
               📔 Skills
             </h3>
 

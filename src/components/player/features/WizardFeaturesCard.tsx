@@ -73,7 +73,7 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
       <div 
         className="class-card-hdr" 
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>🎭 Wizard (Level {level})</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
@@ -81,20 +81,20 @@ export const WizardFeaturesCard: React.FC<WizardFeaturesCardProps> = ({ pc, leve
       {isExpanded && (
         <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 'bold' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 'bold' }}>
               <span>Class Features</span>
               <button 
                 onClick={(e) => { e.stopPropagation(); setWizardRulesOpen(!wizardRulesOpen); }}
                 className="btn btn-toggle-rules-wizard" 
-                style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                 title="Show rules"
               >
                 📖 {wizardRulesOpen ? '▲' : '▼'}
               </button>
             </div>
             {wizardRulesOpen && (
-              <div className="wizard-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Wizard Class Features:</strong><br />
+              <div className="wizard-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Wizard Class Features:</strong><br />
                 • <strong>Arcane Spells:</strong> Casts arcane spells from a spellbook based on Intelligence.<br />
                 • <strong>Familiar:</strong> Can summon a magical familiar to gain attribute bonuses and abilities.<br />
                 • <strong>School Specialization:</strong> May specialize in one magic school to gain +1 spell slot per spell level for specialized spells (requires prohibiting 2 opposing schools, or 1 for Divination).

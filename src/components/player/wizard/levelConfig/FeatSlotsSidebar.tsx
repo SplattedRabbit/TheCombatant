@@ -21,7 +21,7 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
 }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '10px' }}>
-      <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
+      <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
         Talentslots:
       </span>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>

@@ -21,7 +21,7 @@ export const ParchmentMessageModal: React.FC<ParchmentMessageModalProps> = ({
     <DialogOverlay onClose={onClose} width={480} id="parchmentMessageOverlay">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
         <h2 style={{ 
-          fontFamily: "'IM Fell English SC', serif", 
+          fontFamily: 'var(--font-title)', 
           color: 'var(--red)', 
           fontSize: '18px', 
           marginBottom: '8px', 
@@ -37,7 +37,7 @@ export const ParchmentMessageModal: React.FC<ParchmentMessageModalProps> = ({
         <div 
           className="parchment-box-inner" 
           style={{ 
-            fontFamily: "'Crimson Text', serif", 
+            fontFamily: 'var(--font-body)', 
             fontSize: '14px', 
             color: 'var(--ink)', 
             lineHeight: 1.5, 
@@ -61,7 +61,7 @@ export const ParchmentMessageModal: React.FC<ParchmentMessageModalProps> = ({
           onClick={onClose}
           className="parchment-close-btn"
           style={{ 
-            fontFamily: "'IM Fell English SC', serif", 
+            fontFamily: 'var(--font-title)', 
             fontSize: '10px', 
             padding: '6px 24px', 
             cursor: 'pointer', 

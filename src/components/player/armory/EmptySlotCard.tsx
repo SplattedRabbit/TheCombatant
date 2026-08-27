@@ -33,11 +33,11 @@ export const EmptySlotCard: React.FC<EmptySlotCardProps> = ({
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '4px', lineHeight: 1 }}>
         <span style={{ fontSize: '13px', opacity: 0.8 }}>{slotDef.icon}</span>
-        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', color: 'var(--inkm)', fontWeight: 'bold' }}>
+        <span style={{ fontFamily: 'var(--font-title)', fontSize: '10px', color: 'var(--inkm)', fontWeight: 'bold' }}>
           {slotDef.nameEn}
         </span>
       </div>
-      <span style={{ fontSize: '8.5px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>
+      <span style={{ fontSize: '8.5px', color: 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)' }}>
         + Equip
       </span>
     </div>

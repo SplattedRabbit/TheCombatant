@@ -53,7 +53,7 @@
 }
 
 .pc-hp-cur-field, .pc-hp-max-field {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   text-align: center;
   border-bottom: 1px solid transparent;
 }
@@ -197,7 +197,7 @@
   border: 0.5px solid var(--pb) !important;
   color: var(--inkm) !important;
   padding: 4px 10px !important;
-  font-family: 'IM Fell English SC', serif !important;
+  font-family: var(--font-title) !important;
   font-size: 8.5px !important;
   font-weight: bold !important;
   cursor: pointer !important;
@@ -279,7 +279,7 @@
   border: 0.5px solid var(--pb);
   color: var(--inkm);
   padding: 6px 12px;
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 9.5px;
   font-weight: bold;
   cursor: pointer;
@@ -472,7 +472,7 @@
 }
 
 .globe-hp-cur {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 19px;
   font-weight: bold;
   color: #ffffff;
@@ -502,7 +502,7 @@
 }
 
 .globe-hp-max {
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   font-size: 10.5px;
   color: rgba(255, 255, 255, 0.85);
   text-align: center;
@@ -529,7 +529,7 @@
   border-radius: 2px;
   padding: 1px 3.5px;
   color: #00c0ff;
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 7.5px;
   font-weight: bold;
   margin-top: 2px;
@@ -560,7 +560,7 @@
   text-align: center;
   border-radius: 2px;
   border: 0.5px solid var(--pb);
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   font-size: 9.5px;
   outline: none;
   background: rgba(255, 255, 255, 0.7);
@@ -579,7 +579,7 @@
   font-size: 7.5px;
   font-weight: bold;
   line-height: 16px;
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   margin: 0;
   border-radius: 2px;
   cursor: pointer;
@@ -628,7 +628,7 @@
   font-size: 7px;
   padding: 0 4px;
   line-height: 11px;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   background: rgba(200, 169, 110, 0.1);
   color: var(--inkm);
   border-color: var(--pb);
@@ -704,7 +704,7 @@
 .sub-tab-btn {
   flex: 1;
   padding: 3px 8px;
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 10.5px;
   font-weight: bold;
   border: none;

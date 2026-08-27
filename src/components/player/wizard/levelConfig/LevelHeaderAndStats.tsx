@@ -164,7 +164,7 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
             color: 'var(--red)',
             margin: 0,
             fontSize: '13.5px',
-            fontFamily: "'IM Fell English SC', serif",
+            fontFamily: 'var(--font-title)',
             fontWeight: 'bold',
             whiteSpace: 'nowrap',
           }}
@@ -184,7 +184,7 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
                 borderRadius: '2px',
                 cursor: 'pointer',
                 border: '1px solid var(--pb)',
-                fontFamily: "'Crimson Text', serif",
+                fontFamily: 'var(--font-body)',
                 background: sourceTab === tab ? 'var(--red)' : 'rgba(139,26,26,0.06)',
                 color: sourceTab === tab ? '#fff' : 'var(--inkm)',
                 fontWeight: sourceTab === tab ? 700 : 400,
@@ -292,7 +292,7 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
+            <span style={{ fontFamily: 'var(--font-title)', fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
               {selectedClass.name}
             </span>
             <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
@@ -307,7 +307,7 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
               </span>
             </div>
           </div>
-          <div style={{ fontSize: '9.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.25 }}>
+          <div style={{ fontSize: '9.5px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', lineHeight: 1.25 }}>
             {selectedClass.desc}
           </div>
         </div>

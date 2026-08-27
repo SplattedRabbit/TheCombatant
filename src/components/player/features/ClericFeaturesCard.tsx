@@ -52,7 +52,7 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
       <div 
         className="class-card-hdr" 
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>🎭 Cleric (Level {level})</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
@@ -60,7 +60,7 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
       {isExpanded && (
         <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
               Class Features
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '0.5px dashed rgba(200,169,110,0.2)', paddingBottom: '4px', marginBottom: '2px' }}>
@@ -70,7 +70,7 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
                   <button 
                     onClick={(e) => { e.stopPropagation(); setTurnRulesOpen(!turnRulesOpen); }}
                     className="btn btn-toggle-rules-turn" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show rules"
                   >
                     📖 {turnRulesOpen ? '▲' : '▼'}
@@ -99,8 +99,8 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
               </div>
               
               {turnRulesOpen && (
-                <div className="turn-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                  <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Turn Undead:</strong><br />
+                <div className="turn-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                  <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Turn Undead:</strong><br />
                   As a standard action, a cleric can attempt to turn undead creatures within a 60 ft radius.<br />
                   • <strong>1. Turning Check (1d20 + CHA):</strong> Determines the maximum Hit Dice (HD) of the most powerful undead affected (Cleric level -4 to +4).<br />
                   • <strong>2. Turning Damage (2d6 + Cleric level + CHA):</strong> Determines the total Hit Dice (HD) of undead affected.<br />
@@ -111,7 +111,7 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
             <button 
               onClick={handleRollTurn}
               className="btn roll-turn-btn" 
-              style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', width: '100%', cursor: 'pointer', marginTop: '4px' }}
+              style={{ fontFamily: 'var(--font-title)', fontSize: '8px', padding: '4px', width: '100%', cursor: 'pointer', marginTop: '4px' }}
             >
               Roll Turn Undead 🎲
             </button>

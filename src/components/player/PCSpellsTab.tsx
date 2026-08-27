@@ -45,7 +45,7 @@ export const PCSpellsTab: React.FC<PCSpellsTabProps> = ({ pc }) => {
         background: 'rgba(0,0,0,0.02)',
         border: '0.5px dashed var(--pb)',
         borderRadius: '4px',
-        fontFamily: "'Crimson Text', serif"
+        fontFamily: 'var(--font-body)'
       }}>
         🔮 This character does not have any spellcasting classes (e.g., Wizard, Cleric, Bard).
       </div>
@@ -66,7 +66,7 @@ export const PCSpellsTab: React.FC<PCSpellsTabProps> = ({ pc }) => {
           display: 'flex',
           borderBottom: '1.5px solid var(--pb)',
           marginBottom: '4px',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           fontSize: '11px',
           gap: '8px'
         }}>

@@ -1,5 +1,5 @@
 .slabel {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 10px;
   color: var(--red);
   letter-spacing: 2px;
@@ -86,7 +86,7 @@
 }
 
 .init-num {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 13px;
   color: var(--red);
   line-height: 1;
@@ -170,7 +170,7 @@
   border-radius: 2px;
   padding: 2px 9px;
   font-size: 9px;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   color: var(--inkm);
   cursor: pointer;
   letter-spacing: .3px;
@@ -201,7 +201,7 @@
   grid-template-columns: 170px 25px 70px 90px 30px 25px 25px 25px 1fr;
   gap: 2px;
   padding: 2px 3px;
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 9px;
   color: var(--inkm);
   letter-spacing: .3px;
@@ -233,7 +233,7 @@
   border: .5px solid var(--pb);
   border-radius: 1px;
   padding: 1px 3px;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   font-size: 9px;
   color: var(--ink);
 }
@@ -261,7 +261,7 @@
 }
 
 .hp-cur-in {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 11px;
   width: 28px;
   text-align: right;
@@ -329,7 +329,7 @@
   border: .5px solid var(--pb);
   border-radius: 1px;
   padding: 1px 3px;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   font-size: 9px;
   color: var(--ink);
   text-align: center;
@@ -345,7 +345,7 @@
   border-radius: 1px;
   border: .5px solid;
   cursor: pointer;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   line-height: 1.4;
   white-space: nowrap;
   touch-action: manipulation; /* prevents 300ms tap delay on touch screens, no visual change */
@@ -414,7 +414,7 @@
   border: .5px solid var(--red);
   color: var(--red);
   cursor: pointer;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
 }
 .ac-badge:hover { background: rgba(139, 26, 26, .25); }
 
@@ -434,7 +434,7 @@
   border: .5px solid var(--pb);
   border-radius: 2px;
   padding: 2px 4px;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   font-size: 9px;
   color: var(--ink);
 }
@@ -476,7 +476,7 @@
   border: .5px solid var(--pb);
   border-radius: 1px;
   padding: 1px 3px;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   font-size: 9px;
   color: var(--ink);
 }

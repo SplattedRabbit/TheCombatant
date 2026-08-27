@@ -76,7 +76,7 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
       <div 
         className="class-card-hdr" 
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>🎭 Barbarian (Level {level})</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
@@ -90,7 +90,7 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
               <button 
                 onClick={() => setRageRulesOpen(!rageRulesOpen)}
                 className="btn btn-toggle-rules-rage" 
-                style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                 title="Show rules"
               >
                 📖 {rageRulesOpen ? '▲' : '▼'}
@@ -118,8 +118,8 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
             </div>
           </div>
           {rageRulesOpen && (
-            <div className="rage-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: "'Crimson Text', serif", marginBottom: '2px' }}>
-              <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Rage:</strong><br />
+            <div className="rage-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: 'var(--font-body)', marginBottom: '2px' }}>
+              <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Rage:</strong><br />
               A barbarian can fly into a rage to temporarily increase physical power drastically.<br />
               • <strong>Bonuses:</strong> +4 Strength (STR), +4 Constitution (CON), +2 morale bonus on Will saves. Hit points increase temporarily by +2 per character level.<br />
               • <strong>Penalties:</strong> –2 Armor Class (AC) due to reckless defense.<br />
@@ -131,12 +131,12 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
             onClick={handleToggleRage}
             disabled={!canRage}
             className="btn toggle-rage-btn" 
-            style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 10px', width: '100%', borderRadius: '2px', ...getRageBtnStyle() } as any}
+            style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '4px 10px', width: '100%', borderRadius: '2px', ...getRageBtnStyle() } as any}
           >
             {rageBtnText}
           </button>
           <div style={{ marginTop: '4px', padding: '5px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', fontWeight: 'bold', color: 'var(--red)', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', paddingBottom: '2px', marginBottom: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', fontWeight: 'bold', color: 'var(--red)', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', paddingBottom: '2px', marginBottom: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>Rage Effects:</span>
               {pc.isRaging ? (
                 <span style={{ background: 'var(--red)', color: '#fff', fontSize: '6px', padding: '1px 3px', borderRadius: '1px', fontFamily: 'sans-serif', fontWeight: 'bold', textTransform: 'uppercase' }}>Active 🟢</span>

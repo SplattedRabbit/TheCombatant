@@ -22,7 +22,7 @@
 }
 
 .hdr h1 {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 19px;
   letter-spacing: 3px;
   color: var(--red);
@@ -48,7 +48,7 @@
   background: transparent;
   border: none;
   border-bottom: .5px solid var(--pb);
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   font-size: 9px;
   color: var(--ink);
 }
@@ -59,7 +59,7 @@
   align-items: center;
   gap: 4px;
   padding: 2px 7px;
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 10.5px;
   font-weight: bold;
   letter-spacing: 0.4px;
@@ -104,7 +104,7 @@
   align-items: center;
   gap: 3px;
   font-size: 9.5px;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   color: var(--inkm);
   border: 1px solid var(--pb);
   padding: 1px 6px;
@@ -141,7 +141,7 @@
 }
 
 .phdr h2 {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 11px;
   color: var(--ink);
   letter-spacing: 1px;

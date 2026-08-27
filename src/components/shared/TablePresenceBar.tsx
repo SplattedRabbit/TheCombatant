@@ -100,7 +100,7 @@ export const TablePresenceBar: React.FC = () => {
           >
             <span
               style={{
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 fontSize: '11.5px',
                 fontWeight: 'bold',
                 color: 'var(--red)',
@@ -116,7 +116,7 @@ export const TablePresenceBar: React.FC = () => {
               style={{
                 fontSize: '8.5px',
                 color: isConnected ? '#065f46' : '#d97706',
-                fontFamily: "'Crimson Text', serif",
+                fontFamily: 'var(--font-body)',
               }}
             >
               {isConnected ? '● Connected' : '○ Connecting'}
@@ -156,7 +156,7 @@ export const TablePresenceBar: React.FC = () => {
                     <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
                       <span
                         style={{
-                          fontFamily: "'Crimson Text', serif",
+                          fontFamily: 'var(--font-body)',
                           fontSize: '11px',
                           fontWeight: 'bold',
                           color: isDM ? 'var(--red)' : 'var(--ink)',

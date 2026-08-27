@@ -69,14 +69,14 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
   const getRacialTraitsContent = () => {
     if (race === 'human') {
       return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
           <li><strong>Extra Feat:</strong> 1 extra feat at level 1.</li>
           <li><strong>Extra Skill Points:</strong> +4 skill points at level 1, +1 at each additional level.</li>
         </ul>
       );
     } else if (race === 'dwarf') {
       return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
           <li><strong>Ability Score Adjustments:</strong> +2 Constitution, -2 Charisma (already included).</li>
           <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
           <li><strong>Stability:</strong> +4 bonus on ability checks made to resist being bull rushed or tripped.</li>
@@ -87,7 +87,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
       );
     } else if (race === 'elf') {
       return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
           <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, -2 Constitution (already included).</li>
           <li><strong>Immunities:</strong> Immune to magic sleep effects.</li>
           <li><strong>Saving Throw Bonuses against Enchantment:</strong> +2 saving throw bonus against enchantment spells or effects.</li>
@@ -97,7 +97,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
       );
     } else if (race === 'gnome') {
       return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
           <li><strong>Ability Score Adjustments:</strong> +2 Constitution, -2 Strength (already included).</li>
           <li><strong>Small Size:</strong> +1 size bonus to AC, +1 size bonus on attack rolls, +4 bonus on Hide checks (already included).</li>
           <li><strong>Saving Throw Bonuses against Illusion:</strong> +2 saving throw bonus against illusion spells or effects.</li>
@@ -107,7 +107,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
       );
     } else if (race === 'halfling') {
       return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
           <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, -2 Strength (already included).</li>
           <li><strong>Small Size:</strong> +1 size bonus to AC, +1 size bonus on attack rolls, +4 bonus on Hide checks (already included).</li>
           <li><strong>Halfling Luck:</strong> +1 racial bonus on all saving throws (already included).</li>
@@ -117,7 +117,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
       );
     } else if (race === 'deep_halfling') {
       return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
           <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, -2 Strength (already included).</li>
           <li><strong>Small Size:</strong> +1 size bonus to AC, +1 size bonus on attack rolls, +4 bonus on Hide checks (already included).</li>
           <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
@@ -131,7 +131,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
       );
     } else if (race === 'half_elf') {
       return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
           <li><strong>Immunities:</strong> Immune to magic sleep effects, +2 saving throw bonus against enchantment spells or effects.</li>
           <li><strong>Keen Senses:</strong> +1 racial bonus on Listen, Spot, and Search checks (already included).</li>
           <li><strong>Diplomatic Senses:</strong> +2 racial bonus on Diplomacy and Gather Information checks (already included).</li>
@@ -140,7 +140,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
       );
     } else if (race === 'half_orc') {
       return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
           <li><strong>Ability Score Adjustments:</strong> +2 Strength, -2 Intelligence, -2 Charisma (already included).</li>
           <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
           <li><strong>Orc Blood:</strong> For all effects, a half-orc is considered an orc.</li>
@@ -148,7 +148,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
       );
     } else if (race === 'tiefling') {
       return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
           <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, +2 Intelligence, -2 Charisma (already included).</li>
           <li><strong>Type:</strong> Outsider (Native) (immune to person-targeting spells like Charm Person).</li>
           <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
@@ -161,7 +161,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
     } else if (race === 'anima_construct') {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--inkm)' }}>
+          <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
             <li><strong>Ability Score Adjustments:</strong> +2 Constitution, -2 Charisma (already included).</li>
             <li><strong>Type:</strong> Construct (Living Construct subtype). Has Con score, susceptible to mind-affecting and critical hits.</li>
             <li><strong>Immunities:</strong> Immune to poisons, diseases, and magic sleep effects.</li>
@@ -171,7 +171,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
           </ul>
 
           <div style={{ borderTop: '0.5px dashed rgba(200, 169, 110, 0.4)', paddingTop: '8px', marginTop: '4px' }}>
-            <strong style={{ fontSize: '10px', display: 'block', marginBottom: '6px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
+            <strong style={{ fontSize: '10px', display: 'block', marginBottom: '6px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
               🛠️ Manual Repair (Living Construct)
             </strong>
             <p style={{ margin: '0 0 8px 0', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', lineHeight: 1.25 }}>
@@ -224,7 +224,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
       <div 
         className="class-card-hdr" 
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>🧬 Racial Traits: {raceName}</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>

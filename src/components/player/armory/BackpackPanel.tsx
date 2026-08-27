@@ -52,7 +52,7 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
           style={{
             fontSize: '9px',
             padding: '3px 10px',
-            fontFamily: "'IM Fell English SC', serif",
+            fontFamily: 'var(--font-title)',
             fontWeight: 'bold',
             background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
             border: '0.5px solid #8b6914',
@@ -130,7 +130,7 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
               <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                 <span style={{ fontSize: '10px', color: 'var(--inkm)', cursor: 'grab', userSelect: 'none' }} title="Drag to reorder">⋮⋮</span>
                 <span style={{ fontSize: '12px' }}>{slotDef.icon}</span>
-                <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
+                <span style={{ fontFamily: 'var(--font-title)', fontSize: '11.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
                   {item.name || 'Item'}
                 </span>
                 <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.04)', padding: '0 3px', borderRadius: '2px' }}>
@@ -157,7 +157,7 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
                     style={{
                       fontSize: '8px',
                       padding: '1px 6px',
-                      fontFamily: "'IM Fell English SC', serif",
+                      fontFamily: 'var(--font-title)',
                       background: isPotion ? 'rgba(16, 185, 129, 0.15)' : (isWand ? 'rgba(139, 92, 246, 0.15)' : 'rgba(217, 119, 6, 0.15)'),
                       borderColor: isPotion ? '#10b981' : (isWand ? '#8b5cf6' : '#d97706'),
                       color: isPotion ? '#065f46' : (isWand ? '#5b21b6' : '#92400e'),
@@ -176,7 +176,7 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
                     style={{
                       fontSize: '8px',
                       padding: '1px 6px',
-                      fontFamily: "'IM Fell English SC', serif",
+                      fontFamily: 'var(--font-title)',
                       background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                       border: '0.5px solid #8b6914',
                       color: '#ffffff'
@@ -219,7 +219,7 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
                       padding: '0 4px',
                       color: 'var(--ink)',
                       fontWeight: 600,
-                      fontFamily: "'Crimson Text', serif"
+                      fontFamily: 'var(--font-body)'
                     }}
                   >
                     {formatEffectDisplay(eff)}

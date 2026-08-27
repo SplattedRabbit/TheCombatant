@@ -342,7 +342,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
         >
           {/* Rasse Selector */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid rgba(139,26,26,0.1)', paddingBottom: '4px', marginBottom: '2px' }}>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.3px' }}>🧬 Race</span>
+            <span style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.3px' }}>🧬 Race</span>
             <select
               id="pcRaceSelect"
               value={pc.race || 'human'}
@@ -364,7 +364,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
 
           {/* Klassen & Stufen Header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.3px' }}>🎭 Classes &amp; Levels</span>
+            <span style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.3px' }}>🎭 Classes &amp; Levels</span>
             {classesCount < 4 && !showAddForm && (
               <button
                 className="btn btn-p"
@@ -490,7 +490,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
                     style={{
                       fontSize: '6.5px', padding: '1px 4px', lineHeight: 1.3, cursor: 'pointer',
                       border: '0.5px solid var(--pb)', borderRadius: '1px',
-                      fontFamily: "'Crimson Text', serif",
+                      fontFamily: 'var(--font-body)',
                       background: classFilter === tab ? 'var(--red)' : 'rgba(139,26,26,0.06)',
                       color: classFilter === tab ? '#fff' : 'var(--inkm)',
                       fontWeight: classFilter === tab ? 700 : 400,

@@ -21,7 +21,7 @@ export const RogueFeaturesCard: React.FC<RogueFeaturesCardProps> = ({ pc, level 
       <div 
         className="class-card-hdr" 
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>🎭 Rogue (Level {level})</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
@@ -36,17 +36,17 @@ export const RogueFeaturesCard: React.FC<RogueFeaturesCardProps> = ({ pc, level 
                   <button 
                     onClick={(e) => { e.stopPropagation(); setSaRulesOpen(!saRulesOpen); }}
                     className="btn btn-toggle-rules-sa" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show Rules"
                   >
                     📖 {saRulesOpen ? '▲' : '▼'}
                   </button>
                 </div>
-                <span style={{ color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>+{saDiceCount}d6</span>
+                <span style={{ color: 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)' }}>+{saDiceCount}d6</span>
               </div>
               {saRulesOpen && (
-                <div className="sa-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                  <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Sneak Attack:</strong><br />
+                <div className="sa-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                  <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Sneak Attack:</strong><br />
                   Extra damage against opponents denied their Dex modifier to AC, or flanked.<br />
                   • <strong>Immunity:</strong> Creatures without discernible anatomy (e.g., constructs, undead, oozes) or those immune to critical hits are immune to sneak attack damage.
                 </div>

@@ -163,7 +163,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
           width: '580px',
           maxWidth: '92vw',
           boxShadow: '0 12px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(200,169,110,0.1)',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           textAlign: 'center',
           position: 'relative',
           transform: 'scale(1)',
@@ -186,7 +186,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
               padding: '16px 20px',
               borderRadius: '4px',
               boxShadow: 'inset 0 0 35px rgba(139, 26, 26, 0.15)',
-              fontFamily: "'Crimson Text', serif",
+              fontFamily: 'var(--font-body)',
               color: '#1a0f00',
               lineHeight: 1.45,
               textAlign: 'left',
@@ -209,7 +209,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
             )}
             {effectsList.length > 0 && (
               <div style={{ marginTop: '8px' }}>
-                <strong style={{ color: '#8b1a1a', fontSize: '11.5px', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.4px' }}>
+                <strong style={{ color: '#8b1a1a', fontSize: '11.5px', fontFamily: 'var(--font-title)', letterSpacing: '0.4px' }}>
                   Active Modifiers:
                 </strong>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginTop: '4px' }}>
@@ -235,7 +235,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
                 onClick={handleActivate}
                 className="btn btn-p"
                 style={{
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontSize: '9.5px',
                   padding: '4px 22px',
                   cursor: 'pointer',
@@ -252,7 +252,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
                 onClick={handleToggleFavorite}
                 className="btn btn-p"
                 style={{
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontSize: '9.5px',
                   padding: '4px 22px',
                   cursor: 'pointer',
@@ -271,7 +271,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
             onClick={onClose}
             className="btn"
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '9.5px',
               padding: '4px 22px',
               cursor: 'pointer',
@@ -436,7 +436,7 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
           width: '520px',
           maxWidth: '95vw',
           boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
-          fontFamily: "'Crimson Text', serif",
+          fontFamily: 'var(--font-body)',
           position: 'relative',
           transform: 'scale(1)',
           transition: 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
@@ -445,12 +445,12 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
       >
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
           Spell successfully cast! ✨
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
 
-        <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', textAlign: 'center', fontFamily: "'IM Fell English SC', serif" }}>
+        <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', textAlign: 'center', fontFamily: 'var(--font-title)' }}>
           {spellName}{metaSuffix}
         </div>
         <div style={{ fontSize: '8.5px', color: 'var(--inkl)', textAlign: 'center', marginBottom: '8px', fontStyle: 'italic' }}>
@@ -484,7 +484,7 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
         </div>
 
         <div style={{ marginBottom: '12px', color: 'var(--ink)' }}>
-          <strong style={{ fontSize: '9px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", display: 'block', marginBottom: '4px' }}>Targets for Buff / Aura:</strong>
+          <strong style={{ fontSize: '9px', color: 'var(--red)', fontFamily: 'var(--font-title)', display: 'block', marginBottom: '4px' }}>Targets for Buff / Aura:</strong>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '120px', overflowY: 'auto', padding: '4px', border: '0.5px solid rgba(200, 169, 110, 0.2)', background: 'rgba(0,0,0,0.01)', borderRadius: '2px' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '9px', cursor: 'pointer', color: 'var(--ink)' }}>
               <input
@@ -531,14 +531,14 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
           <button
             onClick={handleApplyBuff}
             className="btn btn-p apply-buff-btn"
-            style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 14px', cursor: 'pointer' }}
+            style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '4px 14px', cursor: 'pointer' }}
           >
             Apply as Buff
           </button>
           <button
             onClick={onClose}
             className="btn close-dialog-btn"
-            style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 14px', cursor: 'pointer', borderColor: 'var(--pb)', background: 'transparent', color: 'var(--ink)' }}
+            style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '4px 14px', cursor: 'pointer', borderColor: 'var(--pb)', background: 'transparent', color: 'var(--ink)' }}
           >
             Cast Only (No Buff)
           </button>

@@ -179,7 +179,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
             marginBottom: '10px',
             color: '#065f46',
             fontSize: '11px',
-            fontFamily: "'Crimson Text', serif",
+            fontFamily: 'var(--font-body)',
             fontWeight: 'bold',
             display: 'flex',
             justifyContent: 'space-between',
@@ -222,7 +222,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                 style={{
                   fontSize: '9px',
                   padding: '2px 8px',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   background: rightPanelMode === 'backpack' ? 'var(--pb, #c8a96e)' : 'rgba(253, 246, 226, 0.6)',
                   borderColor: rightPanelMode === 'backpack' ? 'var(--red, #8b1a1a)' : 'var(--pb, #c8a96e)',
                   color: rightPanelMode === 'backpack' ? 'var(--red, #8b1a1a)' : 'var(--ink, #1a0f00)',
@@ -240,7 +240,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                 style={{
                   fontSize: '9px',
                   padding: '2px 8px',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   background: rightPanelMode === 'compendium' ? 'var(--pb, #c8a96e)' : 'rgba(253, 246, 226, 0.6)',
                   borderColor: rightPanelMode === 'compendium' ? 'var(--red, #8b1a1a)' : 'var(--pb, #c8a96e)',
                   color: rightPanelMode === 'compendium' ? 'var(--red, #8b1a1a)' : 'var(--ink, #1a0f00)',
@@ -272,7 +272,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                 style={{
                   fontSize: '8.5px',
                   padding: '2px 8px',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontWeight: 'bold',
                   whiteSpace: 'nowrap',
                   background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
@@ -297,7 +297,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                   style={{
                     fontSize: '8px',
                     padding: '1px 6px',
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     background: slotFilter === chip.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.08)',
                     borderColor: slotFilter === chip.key ? '#8b6914' : 'var(--pb)',
                     color: slotFilter === chip.key ? '#ffffff' : 'var(--inkm)',

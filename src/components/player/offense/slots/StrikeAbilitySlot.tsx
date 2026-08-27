@@ -95,12 +95,12 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-            <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+            <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
               {hasChargingSmite ? '⚡ ACF Strike' : '🌟 Class Strike'}
             </div>
             {selectorDropdown}
           </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={smiteTitle}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={smiteTitle}>
             {smiteTitle}
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -180,12 +180,12 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-            <div style={{ fontSize: '6.5px', color: '#3b5e38', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+            <div style={{ fontSize: '6.5px', color: '#3b5e38', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
               🗡️ Class Strike
             </div>
             {selectorDropdown}
           </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
             Sneak Attack
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -247,12 +247,12 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-            <div style={{ fontSize: '6.5px', color: '#8e44ad', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+            <div style={{ fontSize: '6.5px', color: '#8e44ad', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
               ⚡ Duskblade Strike
             </div>
             {selectorDropdown}
           </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', fontWeight: 'bold', color: '#8e44ad', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 'bold', color: '#8e44ad', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
             Arcane Channeling
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -313,12 +313,12 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-            <div style={{ fontSize: '6.5px', color: '#6d5734', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+            <div style={{ fontSize: '6.5px', color: '#6d5734', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
               🏃 Scout Strike
             </div>
             {selectorDropdown}
           </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', fontWeight: 'bold', color: '#6d5734', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 'bold', color: '#6d5734', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
             Skirmish Attack
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -378,12 +378,12 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-            <div style={{ fontSize: '6.5px', color: '#4a5b6c', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+            <div style={{ fontSize: '6.5px', color: '#4a5b6c', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
               🥷 Ninja Strike
             </div>
             {selectorDropdown}
           </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', fontWeight: 'bold', color: '#4a5b6c', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 'bold', color: '#4a5b6c', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
             Sudden Strike
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -441,12 +441,12 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-            <div style={{ fontSize: '6.5px', color: '#4a6274', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+            <div style={{ fontSize: '6.5px', color: '#4a6274', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
               {hasDistractingAttack ? '⚡ ACF Ranger' : '🏹 Ranger'}
             </div>
             {selectorDropdown}
           </div>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: '#4a6274', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: '#4a6274', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
             Favored Enemy
           </div>
           <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -495,7 +495,7 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
         }}
       >
         <div style={{ fontSize: '13px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>🎯</div>
-        <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>
+        <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)' }}>
           Combat Stance
         </div>
         <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>Standard Strike</div>

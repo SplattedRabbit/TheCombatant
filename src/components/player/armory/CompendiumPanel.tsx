@@ -67,10 +67,10 @@ export const CompendiumPanel: React.FC<CompendiumPanelProps> = ({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexWrap: 'wrap' }}>
                 <span style={{ fontSize: '12px' }}>{itemIcon}</span>
-                <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                <span style={{ fontFamily: 'var(--font-title)', fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                   {activePreset.name || entry.baseName}
                 </span>
-                <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(200, 169, 110, 0.15)', padding: '0 3px', borderRadius: '2px', fontFamily: "'IM Fell English SC', serif" }}>
+                <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(200, 169, 110, 0.15)', padding: '0 3px', borderRadius: '2px', fontFamily: 'var(--font-title)' }}>
                   {isConsumableItem(activePreset) ? 'Consumable' : slotInfo.nameEn}
                 </span>
               </div>
@@ -90,7 +90,7 @@ export const CompendiumPanel: React.FC<CompendiumPanelProps> = ({
                           padding: '0 5px',
                           height: '17px',
                           lineHeight: '1',
-                          fontFamily: "'IM Fell English SC', serif",
+                          fontFamily: 'var(--font-title)',
                           fontWeight: 'bold',
                           background: activeKey === v.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.1)',
                           color: activeKey === v.key ? '#ffffff' : 'var(--inkm)',
@@ -112,7 +112,7 @@ export const CompendiumPanel: React.FC<CompendiumPanelProps> = ({
                   style={{
                     fontSize: '8px',
                     padding: '1px 6px',
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontWeight: 'bold',
                     background: isConsumableItem(activePreset) ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.12)',
                     border: isConsumableItem(activePreset) ? '0.5px solid #8b6914' : '0.5px solid var(--pb)',
@@ -132,7 +132,7 @@ export const CompendiumPanel: React.FC<CompendiumPanelProps> = ({
                     style={{
                       fontSize: '8px',
                       padding: '1px 6px',
-                      fontFamily: "'IM Fell English SC', serif",
+                      fontFamily: 'var(--font-title)',
                       fontWeight: 'bold',
                       background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                       border: '0.5px solid #8b6914',
@@ -161,7 +161,7 @@ export const CompendiumPanel: React.FC<CompendiumPanelProps> = ({
                       padding: '0 4px',
                       color: 'var(--ink)',
                       fontWeight: 600,
-                      fontFamily: "'Crimson Text', serif"
+                      fontFamily: 'var(--font-body)'
                     }}
                   >
                     {formatEffectDisplay(eff)}
@@ -170,7 +170,7 @@ export const CompendiumPanel: React.FC<CompendiumPanelProps> = ({
               </div>
             )}
 
-            <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.25 }}>
+            <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', lineHeight: 1.25 }}>
               {activePreset.description || entry.description}
             </div>
           </div>

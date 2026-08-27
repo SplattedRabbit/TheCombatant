@@ -23,7 +23,7 @@ export const SkillsLegend: React.FC = () => {
         flexWrap: 'wrap',
       }}
     >
-      <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '8px' }}>
+      <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)', fontSize: '8px' }}>
         Legend:
       </span>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5px' }}>

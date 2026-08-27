@@ -29,7 +29,7 @@ export const CustomAlertModal: React.FC<CustomAlertModalProps> = ({
       </div>
       <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, var(--pb), transparent)', margin: '8px 0 12px' }} />
       <div 
-        style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--ink)', lineHeight: 1.5, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}
+        style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--ink)', lineHeight: 1.5, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}
         dangerouslySetInnerHTML={{ __html: sanitizeHtml(message) }}
       />
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
@@ -37,7 +37,7 @@ export const CustomAlertModal: React.FC<CustomAlertModalProps> = ({
           onClick={onClose}
           className="btn btn-p pc-alert-close-btn" 
           style={{
-            fontFamily: "'IM Fell English SC', serif",
+            fontFamily: 'var(--font-title)',
             fontSize: '11px',
             padding: '4px 20px',
             cursor: 'pointer',

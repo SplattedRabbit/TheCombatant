@@ -160,8 +160,8 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
     const totalBonus = level + intMod;
 
     const html = `
-      <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.4;">
-        <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
+      <div style="font-family:var(--font-body); font-size:10px; text-align:left; color:var(--ink); line-height:1.4;">
+        <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:var(--font-title); color: var(--red); font-size: 11px;">
           ${pc.name} uses Bardic Knowledge!
         </div>
         • <strong>Class:</strong> Bard<br>
@@ -177,10 +177,10 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
           padding: 6px;
           text-align: center;
           margin-bottom: 8px;
-          font-family: 'Crimson Text', serif;
+          font-family: var(--font-body);
         ">
-          <div style="font-family: 'IM Fell English SC', serif; font-size: 7.5px; color: var(--inkl); text-transform: uppercase; letter-spacing: 0.5px;">Roll Formula</div>
-          <div style="font-family: 'IM Fell English SC', serif; font-size: 15px; font-weight: bold; color: var(--red); margin: 2px 0; line-height: 1;">
+          <div style="font-family: var(--font-title); font-size: 7.5px; color: var(--inkl); text-transform: uppercase; letter-spacing: 0.5px;">Roll Formula</div>
+          <div style="font-family: var(--font-title); font-size: 15px; font-weight: bold; color: var(--red); margin: 2px 0; line-height: 1;">
             d20 ${totalBonus >= 0 ? '+' : ''}${totalBonus}
           </div>
           <div style="font-size: 7.5px; color: var(--inkm); line-height: 1.2;">
@@ -192,7 +192,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
           A bard has a wide, scattered knowledge of lore, legends, famous people, and historical secrets.
         </div>
 
-        <div style="font-size: 8px; font-weight: bold; color: var(--red); font-family: 'IM Fell English SC', serif; margin-bottom: 2px;">Difficulty Classes (DCs):</div>
+        <div style="font-size: 8px; font-weight: bold; color: var(--red); font-family: var(--font-title); margin-bottom: 2px;">Difficulty Classes (DCs):</div>
         <table style="width: 100%; border-collapse: collapse; font-size: 7.5px; line-height: 1.25; margin-bottom: 4px;">
           <tr style="border-bottom: 0.25px solid rgba(0,0,0,0.05);">
             <td style="padding: 2.5px 0;"><strong>DC 10:</strong></td>
@@ -243,8 +243,8 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
       showCustomAlert(
         "Bardic Music Started! 🎵",
         `
-        <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.4;">
-          <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
+        <div style="font-family:var(--font-body); font-size:10px; text-align:left; color:var(--ink); line-height:1.4;">
+          <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:var(--font-title); color: var(--red); font-size: 11px;">
             ${pc.name} plays ${song.nameEn || song.nameDe}!
           </div>
           <div style="font-size: 8.5px; background: rgba(200, 169, 110, 0.05); border: 0.5px solid rgba(200, 169, 110, 0.3); padding: 5px; border-radius: 2px; line-height: 1.3;">
@@ -276,7 +276,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
       <div 
         className="class-card-hdr" 
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>🎭 Bard (Level {level})</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
@@ -284,7 +284,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
       {isExpanded && (
         <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
               Class Features
             </div>
             
@@ -294,7 +294,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
                 <button 
                   onClick={(e) => { e.stopPropagation(); setMusicRulesOpen(!musicRulesOpen); }}
                   className="btn btn-toggle-rules-music" 
-                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center' } as any} 
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center' } as any} 
                   title="Show rules"
                 >
                   📖 {musicRulesOpen ? '▲' : '▼'}
@@ -323,8 +323,8 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
             </div>
             
             {musicRulesOpen && (
-              <div className="music-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: "'Crimson Text', serif", marginBottom: '2px' }}>
-                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Bardic Music:</strong><br />
+              <div className="music-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: 'var(--font-body)', marginBottom: '2px' }}>
+                <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Bardic Music:</strong><br />
                 A bard can use music/poetics to produce magical effects on those around him.<br />
                 • <strong>Uses:</strong> <strong>{level + extraMusic} times per day</strong>.<br />
                 • <strong>Requirement:</strong> Requires minimum ranks in the Perform skill to activate specific songs.<br />
@@ -349,7 +349,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
                 <button 
                   onClick={(e) => { e.stopPropagation(); setBkRulesOpen(!bkRulesOpen); }}
                   className="btn btn-toggle-rules-bk" 
-                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center' } as any} 
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center' } as any} 
                   title="Show rules"
                 >
                   📖 {bkRulesOpen ? '▲' : '▼'}
@@ -359,15 +359,15 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
             </div>
             
             {bkRulesOpen && (
-              <div className="bk-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: "'Crimson Text', serif", marginBottom: '2px' }}>
-                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Bardic Knowledge:</strong><br />
+              <div className="bk-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: 'var(--font-body)', marginBottom: '2px' }}>
+                <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Bardic Knowledge:</strong><br />
                 A bard may make a special bardic knowledge check to see whether he knows some relevant information about local notable people, legendary items, or noteworthy places.<br />
                 • <strong>Bonus:</strong> 1d20 + <strong>{level}</strong> (Bard Level) + <strong>{Math.floor(((pc.int ? pc.int.getValue() : 10) - 10) / 2)}</strong> (INT) = <strong>+{bardicKnowledgeBonus}</strong>.<br />
                 • <strong>DCs:</strong> 10 (Common), 20 (Uncommon), 25 (Obscure), 30 (Extremely heroic/ancient).
               </div>
             )}
 
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingTop: '2px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', color: 'var(--red)', paddingTop: '2px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
               Bardic Song Compendium
             </div>
             <div className="bard-songs-list" style={{ display: 'flex', flexDirection: 'column', gap: '3px', paddingRight: '2px', marginTop: '2px', border: '0.5px solid rgba(200,169,110,0.15)', borderRadius: '2px', padding: '2px' }}>
@@ -402,8 +402,8 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px', marginTop: '4px' }}>
-              <button onClick={handleRollBardicKnowledge} className="btn roll-bard-know-btn" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Bardic Knowledge 📜</button>
-              <button onClick={handleRollPerform} className="btn roll-bard-perform-btn" style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Perform 🎲</button>
+              <button onClick={handleRollBardicKnowledge} className="btn roll-bard-know-btn" style={{ fontFamily: 'var(--font-title)', fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Bardic Knowledge 📜</button>
+              <button onClick={handleRollPerform} className="btn roll-bard-perform-btn" style={{ fontFamily: 'var(--font-title)', fontSize: '8px', padding: '4px', cursor: 'pointer', width: '100%' }}>Perform 🎲</button>
             </div>
 
             <ClassACFSelector pc={pc} classKey="bard" level={level} />

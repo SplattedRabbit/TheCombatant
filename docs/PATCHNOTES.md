@@ -6,11 +6,37 @@ Dieses Dokument enthält das chronologische Veröffentlichungsjournal und die Pa
 
 | Version | Status | Datum | Hauptfokus |
 | :--- | :--- | :--- | :--- |
+| **v6.0.4** | Polish & A11y | 27.08.2026 | Barrierefreie Typografie-Harmonisierung (Roboto + IM Fell English SC), Tablet-Lesbarkeit & Globale Font-CSS-Variablen |
 | **v6.0.3** | Patch & Perf | 24.08.2026 | Legacy PeerJS Removal, Exact Damage 1x Sync Fix, Font Preconnect & Non-Blocking Spell Loading (<10ms Startup) |
 | **v6.0.2** | Patch & Fix | 24.08.2026 | Saves & Defenses Input Hardening, Controlled React Number Buffering, Manual Initiative & Total Calculation |
 | **v6.0.1** | Hotfix & Polish | 23.08.2026 | Real-time Table Sync, Dynamic Presence PC Injection, DM Screen Isolation, Zero-Recursion RLS & Pergament Modals |
 | **v6.0.0** | Major Release | 23.08.2026 | Cloud-Sync, Google OAuth, Multi-Character Roster, DM Multi-Campaign Dashboard, Supabase Realtime WebSockets & CI/CD Automation (0 € Stack) |
 | **v5.0.0** | Major Release | 22.08.2026 | Milestone Release: Armory 2.0, Tactical Combat Hub, Complete Sourcebooks (PHB2/CA/CS), Skill Tricks, Wizard & Zero-Defect Architecture |
+
+---
+
+### v6.0.4 — Barrierefreie Typografie-Harmonisierung & Tablet-Lesbarkeit (27.08.2026)
+
+> **Zusammenfassung:** Version 6.0.4 löst das Problem unleserlicher Kleinschriften auf herunterskalierten Tablet-Displays am Spieltisch durch die Umstellung auf ein barrierefreies Dual-Font-System (`Roboto` für Ziffern, Modifikatoren, Tabellen und Fließtext; `IM Fell English SC` für Header, Titel und Fantasy-Akzente) und zentralisiert alle Schriftarten auf globale CSS-Variablen (`--font-title`, `--font-body`, `--font-mono`).
+
+#### 🌟 Die Kern-Verbesserungen von Version 6.0.4:
+
+1. **♿ Barrierefreie Typografie (`Roboto` für alle UI-Werte & Fließtexte)**:
+   - Ersatz der feingliedrigen Buch-Serife `Crimson Text` (die bei kleiner Skalierung auf Tablets verschwamm) durch `Roboto` (hohe x-Höhe, klare Unterscheidbarkeit von Zahlen wie `3`, `8`, `6`, `9` und Modifikatoren).
+   - Signifikant verbesserte Lesbarkeit am Spieltisch ohne Notwendigkeit eines risikobehafteten Layout-Umbruchs.
+
+2. **🏰 Erhalt des Fantasy-Flairs (`IM Fell English SC`)**:
+   - Charakterbogen-Titel, Reiter, Sektions-Header und Embleme behalten die markante D&D-Stilistik in `IM Fell English SC`.
+
+3. **🎨 Globale CSS-Variablen (`main.css`)**:
+   - Einführung von `:root { --font-title: ...; --font-body: ...; --font-mono: ...; }`.
+   - Bereinigung von über 90 Komponenten und allen Kern-Stylesheets ([layout.css](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/css/layout.css), [player.css](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/css/player.css), [combatants.css](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/css/combatants.css), [popups.css](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/css/popups.css), [intro.css](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/css/intro.css)) von hardcodeten Font-Strings.
+
+4. **🧪 Stabilität & Zero-Regressions**:
+   - Build-Pipeline und Service-Worker aktualisiert.
+   - Alle 304 Agent-Tests in 24 Test-Suiten fehlerfrei validiert.
+
+---
 
 ---
 

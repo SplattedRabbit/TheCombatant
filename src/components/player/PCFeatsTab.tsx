@@ -228,7 +228,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', boxSizing: 'border-box', width: '100%', minWidth: 0, overflowX: 'hidden' }}>
       {/* Legend */}
       <div className="feats-legend" style={{ marginBottom: '8px', padding: '5px 8px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px', fontSize: '8.5px', display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', minWidth: 0, boxSizing: 'border-box', overflowX: 'hidden' }}>
-        <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '9px' }}>Legend:</span>
+        <span style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)', fontSize: '9px' }}>Legend:</span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', opacity: hasFighter ? 1 : 0.5 }}>
           <span style={{ display: 'inline-block', width: '8px', height: '6px', border: '1.2px solid #2a6a2a', background: 'rgba(42, 106, 42, 0.1)', borderLeftWidth: '3px' }}></span>
           <span>Fighter Bonus (Combat Category {hasFighter ? 'Active' : 'Inactive'})</span>
@@ -246,7 +246,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
       <div style={{ display: 'flex', gap: '10px', height: '100%', minHeight: '380px', width: '100%', minWidth: 0, boxSizing: 'border-box', overflowX: 'hidden' }}>
         {/* Left Column: Active Feats (40%) */}
         <div style={{ flex: '4 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', borderRight: '0.5px solid var(--pb)', paddingRight: '8px', boxSizing: 'border-box', overflowX: 'hidden' }}>
-          <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', textAlign: 'center' }}>
+          <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', textAlign: 'center' }}>
             🧬 Feats ({activeFeats.length} / {totalMax})
           </h3>
           
@@ -268,7 +268,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
 
           <div className="active-feats-list" style={{ flex: 1, minWidth: 0, width: '100%', overflowY: 'auto', overflowX: 'hidden', maxHeight: '360px', boxSizing: 'border-box' }}>
             {learnedFeatsFiltered.length === 0 ? (
-              <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '15px' }}>
+              <div style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '15px' }}>
                 No feats found.
               </div>
             ) : (
@@ -320,7 +320,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
-                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9.5px', fontWeight: 'bold', color: '#245e28', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
+                      <span style={{ fontFamily: 'var(--font-title)', fontSize: '9.5px', fontWeight: 'bold', color: '#245e28', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
                         {feat.nameEn || feat.nameDe}{optionLabel}
                         {!prereqsResult.met && (
                           <span style={{ color: 'var(--red)', marginLeft: '3px', fontSize: '8px' }} title={`Prerequisites not met!\n` + prereqsResult.details.map((d: any) => `${d.met ? '✓' : '✗'} ${d.desc}`).join('\n')}>
@@ -342,7 +342,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                         <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
                       </div>
                     </div>
-                    <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
+                    <div style={{ fontFamily: 'var(--font-body)', fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
                       {feat.benefitRaw || feat.benefitEn || feat.benefitDe}
                     </div>
                   </div>
@@ -363,13 +363,13 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                 onChange={(e) => setCompendiumSearch(e.target.value)}
                 placeholder="Search..."
                 className="cinput"
-                style={{ flex: 1.5, minWidth: 0, fontSize: '10px', height: '18px', padding: '0 4px', fontFamily: "'Crimson Text', serif", boxSizing: 'border-box' }}
+                style={{ flex: 1.5, minWidth: 0, fontSize: '10px', height: '18px', padding: '0 4px', fontFamily: 'var(--font-body)', boxSizing: 'border-box' }}
               />
               <select
                 value={compendiumFilter}
                 onChange={(e) => setCompendiumFilter(e.target.value)}
                 className="cinput"
-                style={{ flex: 1, minWidth: 0, fontSize: '10px', height: '18px', padding: 0, fontFamily: "'Crimson Text', serif", boxSizing: 'border-box', cursor: 'pointer' }}
+                style={{ flex: 1, minWidth: 0, fontSize: '10px', height: '18px', padding: 0, fontFamily: 'var(--font-body)', boxSizing: 'border-box', cursor: 'pointer' }}
               >
                 <option value="all">All Categories</option>
                 <option value="general">General</option>
@@ -381,7 +381,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                 value={sourceFilter}
                 onChange={(e) => setSourceFilter(e.target.value)}
                 className="cinput"
-                style={{ flex: 1, minWidth: 0, fontSize: '10px', height: '18px', padding: 0, fontFamily: "'Crimson Text', serif", boxSizing: 'border-box', cursor: 'pointer' }}
+                style={{ flex: 1, minWidth: 0, fontSize: '10px', height: '18px', padding: 0, fontFamily: 'var(--font-body)', boxSizing: 'border-box', cursor: 'pointer' }}
               >
                 <option value="all">All Books</option>
                 <option value="phb">PHB</option>
@@ -429,12 +429,12 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
               }}
             >
               {isLimitReached && (
-                <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', marginBottom: '4px', fontFamily: "'Crimson Text', serif", fontSize: '8px', color: 'var(--red)', textAlign: 'center', fontWeight: 'bold' }}>
+                <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', marginBottom: '4px', fontFamily: 'var(--font-body)', fontSize: '8px', color: 'var(--red)', textAlign: 'center', fontWeight: 'bold' }}>
                   ⚠️ Feat limit reached ({activeFeats.length} / {totalMax}). You must first remove a feat to choose a new one.
                 </div>
               )}
               {compendiumFiltered.length === 0 ? (
-                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '15px' }}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '15px' }}>
                   No feats found (filter active).
                 </div>
               ) : (
@@ -562,7 +562,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                         <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '4px', minWidth: 0, overflow: 'hidden' }}>
-                              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: titleColor, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              <span style={{ fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: titleColor, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                 {feat.nameEn || feat.nameDe}
                               </span>
                               {feat.parent && (
@@ -584,7 +584,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
                               <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
                             </div>
                           </div>
-                          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '8.5px', color: isEligible || isAlreadyLearned ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
+                          <div style={{ fontFamily: 'var(--font-body)', fontSize: '8.5px', color: isEligible || isAlreadyLearned ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
                             {feat.benefitRaw || feat.benefitEn || feat.benefitDe}
                           </div>
                         </div>

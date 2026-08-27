@@ -169,7 +169,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
                   textAlign: 'center',
                   borderRadius: '2px',
                   border: '0.5px solid var(--pb)',
-                  fontFamily: "'Crimson Text', serif",
+                  fontFamily: 'var(--font-body)',
                   fontSize: '12px',
                   outline: 'none',
                   background: 'rgba(255,255,255,0.6)'
@@ -227,7 +227,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
 
           {/* Conditions Badges */}
           <div style={{ width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.15)', paddingTop: '8px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px', textAlign: 'center' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '8.5px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px', textAlign: 'center' }}>
               ✨ Active Conditions
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center' }}>
@@ -242,7 +242,7 @@ export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
                       padding: '2px 6px',
                       fontSize: '8px',
                       color: 'var(--red)',
-                      fontFamily: "'Crimson Text', serif",
+                      fontFamily: 'var(--font-body)',
                       fontWeight: 'bold',
                       cursor: 'help',
                       boxShadow: '0 1px 3px rgba(0,0,0,0.1)',

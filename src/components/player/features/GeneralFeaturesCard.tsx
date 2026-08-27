@@ -57,7 +57,7 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
       <div 
         className="class-card-hdr" 
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>📋 General Daily Abilities</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
@@ -67,7 +67,7 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
         <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '3px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
-            <h3 style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', margin: 0, lineHeight: 1 }}>Daily Abilities</h3>
+            <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', margin: 0, lineHeight: 1 }}>Daily Abilities</h3>
             <button 
               onClick={() => setShowAddForm(!showAddForm)}
               style={{
@@ -108,7 +108,7 @@ export const GeneralFeaturesCard: React.FC<GeneralFeaturesCardProps> = ({ pc }) 
                     <span style={{ fontWeight: 600, flex: 1, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', paddingRight: '4px' }} title={ab.name}>
                       {ab.name}
                     </span>
-                    <span style={{ fontSize: '7.5px', color: 'var(--inkm)', marginRight: '6px', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif" }}>
+                    <span style={{ fontSize: '7.5px', color: 'var(--inkm)', marginRight: '6px', fontWeight: 'bold', fontFamily: 'var(--font-title)' }}>
                       {remaining} / {ab.max}
                     </span>
                     <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>

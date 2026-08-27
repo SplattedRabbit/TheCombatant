@@ -31,7 +31,7 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
         {title}
       </div>
       <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 10px' }} />
-      <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '11px', color: 'var(--inkm)', marginBottom: '8px', textAlign: 'left' }}>
+      <div style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--inkm)', marginBottom: '8px', textAlign: 'left' }}>
         {message}
       </div>
       <input 
@@ -59,7 +59,7 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
           onClick={() => onConfirm(val)}
           className="btn prompt-dialog-submit" 
           style={{
-            fontFamily: "'IM Fell English SC', serif",
+            fontFamily: 'var(--font-title)',
             fontSize: '9px',
             padding: '4px 18px',
             cursor: 'pointer',
@@ -74,7 +74,7 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
         <button 
           onClick={onCancel}
           className="btn" 
-          style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 18px', cursor: 'pointer', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
+          style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '4px 18px', cursor: 'pointer', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
         >
           Cancel
         </button>

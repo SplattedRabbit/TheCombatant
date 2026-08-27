@@ -45,7 +45,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
     e.stopPropagation();
     showCustomAlert(
       "Power Attack (Heftiger Angriff)",
-      `<div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11px;">
+      `<div style="text-align: left; font-family: var(--font-body); font-size: 11px;">
         <p><strong>Concept:</strong> Trade offensive accuracy for devastating blow damage.</p>
         <p><strong>Rule (D&D 3.5 RAW):</strong> On your action, before making attack rolls for a round, you may choose to subtract a number from all melee attack rolls and add the same number to all melee damage rolls.</p>
         <p><strong>Damage Multipliers:</strong></p>
@@ -66,7 +66,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
     e.stopPropagation();
     showCustomAlert(
       "Combat Expertise (Kampfexpertise)",
-      `<div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11px;">
+      `<div style="text-align: left; font-family: var(--font-body); font-size: 11px;">
         <p><strong>Concept:</strong> Trade offensive accuracy to raise defensive guard.</p>
         <p><strong>Rule (D&D 3.5 RAW):</strong> When you make an attack or full-attack, you can choose to take a penalty on melee attack rolls (up to -5, limited by BAB). This penalty is added as a <strong>dodge bonus</strong> to your Armor Class (AC) and Touch AC until your next turn.</p>
         <p><strong>Limit:</strong> The penalty cannot exceed your Base Attack Bonus or 5 (Max: ${maxCE}).</p>
@@ -81,7 +81,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
     e.stopPropagation();
     showCustomAlert(
       "Fighting Defensively & Total Defense",
-      `<div style="text-align: left; font-family: 'Crimson Text', serif; font-size: 11px;">
+      `<div style="text-align: left; font-family: var(--font-body); font-size: 11px;">
         <p><strong>Fighting Defensively:</strong> -4 penalty on all attacks in the round; gains a +2 dodge bonus to AC (+3 with 5+ ranks in Tumble: currently ${hasTumbleSynergy ? 'Active (+3 AC)' : 'Inactive (+2 AC)'}).</p>
         <p><strong>Total Defense:</strong> Standard action; gains a +4 dodge bonus to AC (+6 with 5+ ranks in Tumble: currently ${hasTumbleSynergy ? 'Active (+6 AC)' : 'Inactive (+4 AC)'}). You cannot make attacks or attacks of opportunity.</p>
       </div>`,
@@ -109,7 +109,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: paVal > 0 ? 'var(--red)' : 'var(--ink)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontFamily: 'var(--font-title)', fontSize: '8.5px', fontWeight: 'bold', color: paVal > 0 ? 'var(--red)' : 'var(--ink)' }}>
                 <span>⚔️ Power Attack</span>
                 <button
                   onClick={showPowerAttackRules}
@@ -133,7 +133,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
                 >
                   -{paVal} Atk
                 </span>
-                <span style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+                <span style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
                   (+{paVal} / +{paVal * 2} Dmg)
                 </span>
               </div>
@@ -166,7 +166,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
               >
                 +
               </button>
-              <span style={{ fontSize: '7px', color: 'var(--inkm)', minWidth: '30px', textAlign: 'right', fontFamily: "'IM Fell English SC', serif" }}>
+              <span style={{ fontSize: '7px', color: 'var(--inkm)', minWidth: '30px', textAlign: 'right', fontFamily: 'var(--font-title)' }}>
                 Max: {babVal}
               </span>
             </div>
@@ -192,7 +192,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontFamily: 'var(--font-title)', fontSize: '8.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
                 <span>🛡️ Combat Expertise</span>
                 <button
                   onClick={showCombatExpertiseRules}
@@ -216,7 +216,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
                 >
                   -{ceVal} Atk
                 </span>
-                <span style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+                <span style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
                   (+{ceVal} Dodge AC)
                 </span>
               </div>
@@ -249,7 +249,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
               >
                 +
               </button>
-              <span style={{ fontSize: '7px', color: 'var(--inkm)', minWidth: '30px', textAlign: 'right', fontFamily: "'IM Fell English SC', serif" }}>
+              <span style={{ fontSize: '7px', color: 'var(--inkm)', minWidth: '30px', textAlign: 'right', fontFamily: 'var(--font-title)' }}>
                 Max: {maxCE}
               </span>
             </div>
@@ -274,7 +274,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
+            <span style={{ fontFamily: 'var(--font-title)', fontSize: '8.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
               🥋 Defensive Stances
             </span>
             <button
@@ -297,7 +297,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
                 margin: 0,
                 fontWeight: 'bold',
                 fontSize: '8px',
-                fontFamily: "'IM Fell English SC', serif"
+                fontFamily: 'var(--font-title)'
               }}
             >
               <input
@@ -319,7 +319,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
                 margin: 0,
                 fontWeight: 'bold',
                 fontSize: '8px',
-                fontFamily: "'IM Fell English SC', serif"
+                fontFamily: 'var(--font-title)'
               }}
             >
               <input
@@ -333,7 +333,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
           </div>
 
           {hasTumbleSynergy && (
-            <div style={{ fontSize: '7px', color: '#27ae60', fontStyle: 'italic', fontFamily: "'Crimson Text', serif" }}>
+            <div style={{ fontSize: '7px', color: '#27ae60', fontStyle: 'italic', fontFamily: 'var(--font-body)' }}>
               ✓ Tumble Mastery (5+ Ranks): Dodge bonus increased by +1 AC!
             </div>
           )}
@@ -349,7 +349,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
               padding: '4px 6px',
               textAlign: 'center',
               color: 'var(--red)',
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '8px',
               fontWeight: 'bold'
             }}

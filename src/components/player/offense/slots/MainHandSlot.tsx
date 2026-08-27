@@ -51,7 +51,7 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
         }}
       >
         <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>⚔️</div>
-        <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>
+        <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)' }}>
           Main Hand
         </div>
         <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Unarmed)</div>
@@ -120,7 +120,7 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
           color: 'var(--inkl)',
           fontWeight: 'bold',
           textTransform: 'uppercase',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           opacity: 0.9,
         }}
       >
@@ -128,7 +128,7 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
       </div>
       <div
         style={{
-          fontFamily: "'Crimson Text', serif",
+          fontFamily: 'var(--font-body)',
           fontSize: '9.5px',
           fontWeight: 'bold',
           color: 'var(--red)',

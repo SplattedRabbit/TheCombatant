@@ -142,7 +142,7 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
               borderRadius: '2px',
               padding: '4px 8px',
               fontSize: '9px',
-              fontFamily: "'Crimson Text', serif"
+              fontFamily: 'var(--font-body)'
             }}
           >
             <div>
@@ -236,7 +236,7 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: titleColor }}>
+                        <span style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: titleColor }}>
                           🎭 {trick.nameEn || trick.nameDe}
                         </span>
                         <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: met || isCurrent || isPrior ? 'var(--inkm)' : 'var(--inkl)', padding: '0 4px', borderRadius: '1px' }}>
@@ -287,7 +287,7 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                             style={{
                               fontSize: '8.5px',
                               padding: '2px 8px',
-                              fontFamily: "'IM Fell English SC', serif",
+                              fontFamily: 'var(--font-title)',
                               background: met ? (hasEnoughSP ? 'rgba(212, 175, 55, 0.15)' : 'rgba(139, 26, 26, 0.08)') : 'transparent',
                               border: `1px solid ${met ? (hasEnoughSP ? 'rgba(184, 134, 11, 0.4)' : 'rgba(139, 26, 26, 0.25)') : 'rgba(0,0,0,0.12)'}`,
                               color: met ? (hasEnoughSP ? '#7d5f1a' : 'var(--red)') : 'var(--inkl)',
@@ -320,7 +320,7 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                     )}
 
                     {/* Benefit description */}
-                    <div style={{ fontSize: '9px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.25 }}>
+                    <div style={{ fontSize: '9px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', lineHeight: 1.25 }}>
                       {trick.benefitEn || trick.benefitDe}
                     </div>
                   </div>

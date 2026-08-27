@@ -47,7 +47,7 @@ export const DialogOverlay: React.FC<DialogOverlayProps> = ({
           width: `${width}px`,
           maxWidth: '92vw',
           boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           textAlign: 'center',
           position: 'relative',
           animation: 'scaleIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',

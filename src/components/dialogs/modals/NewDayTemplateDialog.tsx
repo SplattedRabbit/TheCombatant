@@ -27,7 +27,7 @@ export const NewDayTemplateDialog: React.FC<NewDayTemplateDialogProps> = ({
       </div>
       <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 10px' }} />
       
-      <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '11px', color: 'var(--ink)', lineHeight: 1.4, marginBottom: '12px', textAlign: 'left' }}>
+      <div style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--ink)', lineHeight: 1.4, marginBottom: '12px', textAlign: 'left' }}>
         Select which spell template should be prepared for the new day. Daily resources (Rage, Hit Dice, etc.) will be reset in any case.
       </div>
 
@@ -51,14 +51,14 @@ export const NewDayTemplateDialog: React.FC<NewDayTemplateDialogProps> = ({
         <button 
           onClick={() => onConfirm(selected)}
           className="btn btn-p" 
-          style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '5px 20px', cursor: 'pointer' }}
+          style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '5px 20px', cursor: 'pointer' }}
         >
           Start Day 🌅
         </button>
         <button 
           onClick={onCancel}
           className="btn" 
-          style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '5px 20px', cursor: 'pointer', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
+          style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '5px 20px', cursor: 'pointer', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
         >
           Cancel
         </button>

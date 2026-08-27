@@ -98,8 +98,8 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
 
           showCustomAlert(
             "Spell Cast! ✨",
-            `<div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
-              <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
+            `<div style="font-family:var(--font-body); font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
+              <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:var(--font-title); color: var(--red); font-size: 11px;">
                 ${pc.name} casts prepared spell: ${spell.nameEn || spell.nameDe}${metaSuffix}!
               </div>
               • <strong>School:</strong> ${spell.school}<br>
@@ -217,7 +217,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
 
   return (
     <div style={{ background: 'rgba(200, 169, 110, 0.04)', border: '0.5px solid rgba(200, 169, 110, 0.3)', borderRadius: '2px', padding: '4px 6px' }}>
-      <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '5px', fontWeight: 'bold' }}>
+      <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '5px', fontWeight: 'bold' }}>
         🌅 Daily Spell Slots (Prepared Spells)
       </div>
 
@@ -296,7 +296,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
                 <div key={`reg_${i}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: p.isUsed ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.45)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', opacity: p.isUsed ? 0.65 : 1 }}>
                   <span
                     onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
-                    style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
+                    style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                   >
                     📜 {p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
                   </span>
@@ -347,7 +347,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
                 <div key="spec" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: p.isUsed ? 'rgba(0,0,0,0.04)' : 'rgba(200, 169, 110, 0.05)', border: '0.5px solid #c8a96e', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', opacity: p.isUsed ? 0.65 : 1 }}>
                   <span
                     onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
-                    style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
+                    style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                   >
                     ⭐ 📜 {p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
                   </span>
@@ -397,7 +397,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
               <div key={`extra_${extraIdx}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: p.isUsed ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.45)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', opacity: p.isUsed ? 0.65 : 1 }}>
                 <span
                   onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
-                  style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
+                  style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                 >
                   ⚠️ 📜 {p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
                 </span>
@@ -428,7 +428,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
 
           return (
             <div key={lvl} style={{ marginBottom: '2px' }}>
-              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--inkl)', borderBottom: '0.5px dashed rgba(200, 169, 110, 0.3)', paddingBottom: '1px', fontWeight: 'bold', marginBottom: '4px', display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--inkl)', borderBottom: '0.5px dashed rgba(200, 169, 110, 0.3)', paddingBottom: '1px', fontWeight: 'bold', marginBottom: '4px', display: 'flex', justifyContent: 'space-between' }}>
                 <span>Level {lvl} Slots</span>
                 <span style={{ fontSize: '8px', fontWeight: 'normal' }}>Prepared: {preps.length} / {max}</span>
               </div>

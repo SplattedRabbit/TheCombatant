@@ -26,8 +26,8 @@ export const RollBreakdownDialog: React.FC<RollBreakdownDialogProps> = ({
     const sign = val >= 0 ? '+' : '';
     return (
       <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', padding: '1px 0' }}>
-        <span style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkm)' }}>{item.label}:</span>
-        <span style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>{sign}{val}</span>
+        <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--inkm)' }}>{item.label}:</span>
+        <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>{sign}{val}</span>
       </div>
     );
   });
@@ -45,14 +45,14 @@ export const RollBreakdownDialog: React.FC<RollBreakdownDialogProps> = ({
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
         {listItems}
         <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '0.5px dashed rgba(200,169,110,0.4)', marginTop: '4px', paddingTop: '4px' }}>
-          <span style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', color: 'var(--inkm)' }}>Total Modifier:</span>
-          <span style={{ fontFamily: "'Crimson Text', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>{modsFormatted}</span>
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--inkm)' }}>Total Modifier:</span>
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>{modsFormatted}</span>
         </div>
       </div>
       
       <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '8px 0' }} />
       
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
         <span>ROLL FORMULA:</span>
         <span style={{ fontSize: '13px' }}>{formulaFormatted}</span>
       </div>

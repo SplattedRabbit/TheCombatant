@@ -26,7 +26,7 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
       
       {isPlayer ? (
         <>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
             Select a sample character with appropriate stats, weapons, and spells to load:
           </div>
 
@@ -36,8 +36,8 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🔮 Wizard (Elf, Level 10)</strong>
-              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>🔮 Wizard (Elf, Level 10)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', marginTop: '2px' }}>
                 A specialized wizard (Evocation) with an owl familiar and a filled spellbook.
               </span>
             </button>
@@ -47,8 +47,8 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🏹 Ranger (Human, Level 10)</strong>
-              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>🏹 Ranger (Human, Level 10)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', marginTop: '2px' }}>
                 An agile ranged combatant with an animal companion (wolf) and matching combat feats for Two-Weapon Fighting / Archery.
               </span>
             </button>
@@ -58,8 +58,8 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🛡️ Paladin (Human, Level 10)</strong>
-              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>🛡️ Paladin (Human, Level 10)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', marginTop: '2px' }}>
                 An honorable knight with divine magic, auras, and powerful melee attacks (Smite Evil).
               </span>
             </button>
@@ -69,8 +69,8 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
               className="btn"
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🗡️ Arcane Trickster (Human, Level 11)</strong>
-              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>🗡️ Arcane Trickster (Human, Level 11)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', marginTop: '2px' }}>
                 A Rogue 3 / Wizard 5 / Arcane Trickster 3 with sneak attack, spellcasting, and Ranged Legerdemain ready to go.
               </span>
             </button>
@@ -80,8 +80,8 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
               className="btn"
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🎯 Spellwarp Sniper (Human, Level 10)</strong>
-              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>🎯 Spellwarp Sniper (Human, Level 10)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', marginTop: '2px' }}>
                 A Rogue 1 / Wizard 5 / Spellwarp Sniper 4 with Sudden Raystrike (+2d6), Spellwarp, Ray spells, and 2 Skill Tricks (Spot the Weak Point & Collector of Stories).
               </span>
             </button>
@@ -89,7 +89,7 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
         </>
       ) : (
         <>
-          <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
             Select which encounter and characters should be loaded. For the Dungeon Master, all three heroes will be created simultaneously:
           </div>
 
@@ -99,8 +99,8 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🐉 Level 10 Hero Encounter</strong>
-              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>🐉 Level 10 Hero Encounter</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', marginTop: '2px' }}>
                 Creates 3 level 10 heroes (Wizard, Ranger, Paladin) and positions them against a dragon and giants.
               </span>
             </button>
@@ -110,8 +110,8 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>🛡️ Aranis Only (Paladin Level 3)</strong>
-              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", marginTop: '2px' }}>
+              <strong style={{ fontSize: '10px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>🛡️ Aranis Only (Paladin Level 3)</strong>
+              <span style={{ fontSize: '7.8px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', marginTop: '2px' }}>
                 Loads a single level 3 paladin for smaller test scenarios.
               </span>
             </button>
@@ -123,7 +123,7 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
         <button 
           onClick={onCancel}
           className="btn" 
-          style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '5px 25px', cursor: 'pointer', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
+          style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '5px 25px', cursor: 'pointer', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
         >
           Close
         </button>

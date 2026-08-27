@@ -48,7 +48,7 @@ export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
         }}
       >
         {a.isEquipped && (
-          <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', zIndex: 10 }}>Equipped</span>
+          <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: 'var(--font-title)', fontWeight: 'bold', zIndex: 10 }}>Equipped</span>
         )}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
           <input
@@ -95,7 +95,7 @@ export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
               padding: '0 8px',
               fontSize: '7.5px',
               fontWeight: 'bold',
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               height: '18px',
               lineHeight: 1,
               borderRadius: '2px',

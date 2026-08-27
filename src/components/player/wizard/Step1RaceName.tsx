@@ -41,7 +41,7 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
             placeholder="Enter adventurer name..."
             style={{
               width: '100%',
-              fontFamily: "'Crimson Text', serif",
+              fontFamily: 'var(--font-body)',
               fontSize: '14px',
               padding: '6px 12px',
               boxSizing: 'border-box'
@@ -150,7 +150,7 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
               </div>
               <div style={{ borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', paddingTop: '10px' }}>
                 <strong style={{ fontSize: '12px', display: 'block', marginBottom: '6px', color: 'var(--ink)' }}>Racial Traits:</strong>
-                <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '12px', fontFamily: "'Crimson Text', serif", lineHeight: 1.45, color: 'var(--ink)' }}>
+                <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '12px', fontFamily: 'var(--font-body)', lineHeight: 1.45, color: 'var(--ink)' }}>
                   {activeRaceInfo.traits.map((t, idx) => (
                     <li key={idx} style={{ marginBottom: '6px' }}>{t}</li>
                   ))}

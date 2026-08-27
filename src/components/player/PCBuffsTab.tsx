@@ -228,7 +228,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       {/* List of active buffs */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
           Active Buffs &amp; Auras
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', maxHeight: '120px', overflowY: 'auto', paddingRight: '2px', boxSizing: 'border-box' }}>
@@ -311,7 +311,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                     className="info-buff-trigger"
                     style={{
                       fontSize: '9px',
-                      fontFamily: "'Crimson Text', serif",
+                      fontFamily: 'var(--font-body)',
                       fontWeight: 'bold',
                       color: 'var(--red)',
                       cursor: 'pointer',
@@ -387,7 +387,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
 
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
               ⚡ Equipped Magic Items (Quick Buffs)
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3px' }}>
@@ -405,7 +405,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                     className="quick-buff-btn"
                     style={{
                       width: '100%',
-                      fontFamily: "'IM Fell English SC', serif",
+                      fontFamily: 'var(--font-title)',
                       fontSize: '9px',
                       padding: '3px 5px',
                       cursor: (!isActive && isOutOfUses) ? 'not-allowed' : 'pointer',
@@ -440,7 +440,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
 
       {/* Quick Toggles */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
           Quick Select
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3px' }}>
@@ -466,7 +466,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                     className="quick-buff-btn"
                     style={{
                       width: '100%',
-                      fontFamily: "'IM Fell English SC', serif",
+                      fontFamily: 'var(--font-title)',
                       fontSize: '9px',
                       padding: '3px 14px 3px 3px',
                       cursor: 'pointer',
@@ -523,7 +523,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
 
       {/* Autocomplete Buff Search */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', position: 'relative' }}>
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)' }}>
           🔍 Search Buff / Aura from Rulebook
         </div>
         <input
@@ -577,7 +577,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
                       padding: '3px 6px',
                       cursor: 'pointer',
                       borderBottom: '0.5px solid rgba(200, 169, 110, 0.15)',
-                      fontFamily: "'Crimson Text', serif",
+                      fontFamily: 'var(--font-body)',
                       fontSize: '10px',
                       display: 'flex',
                       justifyContent: 'space-between',
@@ -602,13 +602,13 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
 
       {/* Custom Buff Builder */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', borderTop: '0.5px dashed rgba(200,169,110,0.3)', paddingTop: '6px' }}>
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', letterSpacing: '0.5px' }}>
           Create Custom Buff / Aura
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.2fr 0.6fr', gap: '3px', alignItems: 'end' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'left' }}>
-            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", lineHeight: 1 }}>Name</label>
+            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: 'var(--font-body)', lineHeight: 1 }}>Name</label>
             <input
               type="text"
               value={customName}
@@ -619,7 +619,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
             />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'left' }}>
-            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", lineHeight: 1 }}>Target Stat</label>
+            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: 'var(--font-body)', lineHeight: 1 }}>Target Stat</label>
             <select
               value={customTarget}
               onChange={(e) => setCustomTarget(e.target.value)}
@@ -646,7 +646,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
             </select>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'left' }}>
-            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", lineHeight: 1 }}>Value</label>
+            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: 'var(--font-body)', lineHeight: 1 }}>Value</label>
             <input
               type="number"
               value={customValue}
@@ -659,7 +659,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
 
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '3px', alignItems: 'end', marginTop: '2px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'left' }}>
-            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'Crimson Text', serif", lineHeight: 1 }}>Bonus Type</label>
+            <label style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: 'var(--font-body)', lineHeight: 1 }}>Bonus Type</label>
             <select
               value={customType}
               onChange={(e) => setCustomType(e.target.value)}
@@ -684,7 +684,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
             onClick={handleAddCustomBuff}
             className="btn btn-p"
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '9px',
               padding: '2px 4px',
               height: '18px',

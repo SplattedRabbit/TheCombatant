@@ -213,10 +213,10 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span style={{ fontSize: '20px' }}>🧙‍♂️</span>
             <div style={{ textAlign: 'left' }}>
-              <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '13px', display: 'block' }}>
+              <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)', fontSize: '13px', display: 'block' }}>
                 Character Wizard
               </strong>
-              <span style={{ fontSize: '11px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+              <span style={{ fontSize: '11px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
                 Create your D&D 3.5e character step-by-step with the guided, rules-compliant assistant.
               </span>
             </div>
@@ -236,7 +236,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
             <h1
               style={{
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 fontSize: '18px',
                 color: 'var(--red)',
                 margin: 0,
@@ -255,7 +255,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                   background: 'transparent',
                   border: 'none',
                   borderBottom: '1px solid var(--pb)',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontSize: '18px',
                   color: 'var(--red)',
                   outline: 'none',
@@ -301,7 +301,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
             style={{
               fontSize: '8.5px',
               color: 'var(--inkm)',
-              fontFamily: "'Crimson Text', serif",
+              fontFamily: 'var(--font-body)',
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
@@ -329,7 +329,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                   background: 'transparent',
                   border: 'none',
                   borderBottom: '0.5px solid var(--pb)',
-                  fontFamily: "'Crimson Text', serif",
+                  fontFamily: 'var(--font-body)',
                   fontSize: '8.5px',
                   color: 'var(--inkl)',
                   outline: 'none',
@@ -370,7 +370,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 color: 'var(--red)',
                 textShadow: '0 0.5px 0.5px rgba(255,255,255,0.5)',
               }}
@@ -386,7 +386,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                     textAlign: 'center',
                     background: 'transparent',
                     border: 'none',
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontSize: '14px',
                     outline: 'none',
                     fontWeight: 'bold',
@@ -407,7 +407,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                     textAlign: 'center',
                     background: 'transparent',
                     border: 'none',
-                    fontFamily: "'Crimson Text', serif",
+                    fontFamily: 'var(--font-body)',
                     fontSize: '9.5px',
                     outline: 'none',
                     color: 'var(--inkl)',
@@ -435,7 +435,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: '#00c0ff',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontSize: '8.5px',
                   fontWeight: 'bold',
                   boxShadow: '0 2px 5px rgba(0,192,255,0.45), inset 0 1px 2px rgba(255,255,255,0.2)',
@@ -450,7 +450,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
 
           {/* Double-Layered Health Bar */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5px', width: '120px' }}>
-            <div style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: "'IM Fell English SC', serif", display: 'flex', justifyContent: 'space-between', lineHeight: 1, letterSpacing: '0.2px' }}>
+            <div style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--inkl)', fontFamily: 'var(--font-title)', display: 'flex', justifyContent: 'space-between', lineHeight: 1, letterSpacing: '0.2px' }}>
               <span>Health</span>
               <span>{totalPct}%</span>
             </div>
@@ -494,7 +494,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                 ></div>
               )}
             </div>
-            <div style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", textAlign: 'left', lineHeight: 1, letterSpacing: '0.2px' }}>
+            <div style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)', textAlign: 'left', lineHeight: 1, letterSpacing: '0.2px' }}>
               Initiative: {finalIni}
             </div>
           </div>
@@ -516,7 +516,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                   textAlign: 'center',
                   borderRadius: '2px',
                   border: '0.5px solid var(--pb)',
-                  fontFamily: "'Crimson Text', serif",
+                  fontFamily: 'var(--font-body)',
                   fontSize: '11px',
                   outline: 'none',
                   background: 'rgba(255,255,255,0.6)',
@@ -525,7 +525,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
 
               <button
                 className="xbtn xbtn-dmg pc-dmg-btn"
-                style={{ height: '22px', padding: '0 6px', fontSize: '8px', fontWeight: 'bold', lineHeight: '20px', fontFamily: "'IM Fell English SC', serif", margin: 0 }}
+                style={{ height: '22px', padding: '0 6px', fontSize: '8px', fontWeight: 'bold', lineHeight: '20px', fontFamily: 'var(--font-title)', margin: 0 }}
                 onClick={handleApplyDamage}
                 title="Subtract damage"
               >
@@ -533,7 +533,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
               </button>
               <button
                 className="xbtn xbtn-heal pc-heal-btn"
-                style={{ height: '22px', padding: '0 6px', fontSize: '8px', fontWeight: 'bold', lineHeight: '20px', fontFamily: "'IM Fell English SC', serif", margin: 0 }}
+                style={{ height: '22px', padding: '0 6px', fontSize: '8px', fontWeight: 'bold', lineHeight: '20px', fontFamily: 'var(--font-title)', margin: 0 }}
                 onClick={handleApplyHeal}
                 title="Apply healing"
               >
@@ -547,7 +547,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                   fontSize: '8px',
                   fontWeight: 'bold',
                   lineHeight: '20px',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   background: 'rgba(42,74,138,0.06)',
                   borderColor: '#2a4a8a',
                   color: '#1a2a6a',
@@ -617,7 +617,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
           >
             <h1
               style={{
-                fontFamily: "'IM Fell English SC', 'Times New Roman', serif",
+                fontFamily: 'var(--font-title)',
                 fontSize: '52px',
                 color: '#8b1a1a',
                 textShadow: '0 0 15px rgba(139, 26, 26, 0.6), 0 0 35px rgba(0,0,0,0.9)',
@@ -637,7 +637,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
                 background: 'transparent',
                 border: '1px solid rgba(200, 169, 110, 0.4)',
                 color: '#c8a96e',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 fontSize: '12px',
                 letterSpacing: '2px',
                 padding: '8px 24px',

@@ -91,7 +91,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
             type="button"
             onClick={() => onOpenCustomEditor()}
             className="btn"
-            style={{ fontSize: '8.5px', padding: '2px 5px', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '8.5px', padding: '2px 5px', fontFamily: 'var(--font-title)' }}
             title="Create a new custom magic item"
           >
             ➕ New Item
@@ -100,7 +100,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
             type="button"
             onClick={onOpenCompendium}
             className="btn btn-p"
-            style={{ fontSize: '8.5px', padding: '2px 7px', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '8.5px', padding: '2px 7px', fontFamily: 'var(--font-title)' }}
             title="Open Magic Items Compendium"
           >
             📖 Compendium
@@ -158,7 +158,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <span style={{ fontSize: '12px' }}>{slotDef.icon}</span>
-                    <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
+                    <span style={{ fontFamily: 'var(--font-title)', fontSize: '11.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
                       {item.name || 'Item'}
                     </span>
                     <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: 'var(--inkm)', padding: '0 3px', borderRadius: '2px' }}>
@@ -172,7 +172,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
                       type="button"
                       onClick={() => handleEquip(idx, item.slot)}
                       className="btn btn-p"
-                      style={{ fontSize: '8px', padding: '2px 5px', fontFamily: "'IM Fell English SC', serif" }}
+                      style={{ fontSize: '8px', padding: '2px 5px', fontFamily: 'var(--font-title)' }}
                     >
                       ⚡ Equip
                     </button>
@@ -211,7 +211,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
                           padding: '0 4px',
                           color: 'var(--ink)',
                           fontWeight: 600,
-                          fontFamily: "'Crimson Text', serif"
+                          fontFamily: 'var(--font-body)'
                         }}
                       >
                         {formatEffectDisplay(eff)}
@@ -222,7 +222,7 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
 
                 {/* Description snippet */}
                 {item.description && (
-                  <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.2 }}>
+                  <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', lineHeight: 1.2 }}>
                     {item.description}
                   </div>
                 )}

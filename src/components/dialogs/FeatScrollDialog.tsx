@@ -217,7 +217,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
           width: '540px',
           maxWidth: '92vw',
           boxShadow: '0 12px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(200,169,110,0.1)',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           textAlign: 'center',
           position: 'relative',
           transform: 'scale(1)',
@@ -238,7 +238,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
             padding: '12px 16px',
             borderRadius: '4px',
             boxShadow: 'inset 0 0 35px rgba(139, 26, 26, 0.15)',
-            fontFamily: "'Crimson Text', serif",
+            fontFamily: 'var(--font-body)',
             color: '#1a0f00',
             lineHeight: 1.4,
             textAlign: 'left',
@@ -249,7 +249,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
         >
           <h3
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '13.5px',
               color: '#8b1a1a',
               textAlign: 'center',
@@ -286,7 +286,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
           </div>
 
           <div style={{ fontSize: '9.5px', marginBottom: '8px' }}>
-            <div style={{ fontWeight: 'bold', color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif", fontSize: '10px' }}>
+            <div style={{ fontWeight: 'bold', color: '#8b1a1a', fontFamily: 'var(--font-title)', fontSize: '10px' }}>
               Prerequisites:
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginTop: '2px' }}>
@@ -308,26 +308,26 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
           </div>
 
           <div style={{ fontSize: '9.5px', marginBottom: '6px', lineHeight: 1.35 }}>
-            <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Benefit (RAW):</strong>
+            <strong style={{ color: '#8b1a1a', fontFamily: 'var(--font-title)' }}>Benefit (RAW):</strong>
             <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>{feat.benefitRaw || feat.benefitEn || feat.benefitDe}</div>
           </div>
 
           {feat.normalRaw && (
             <div style={{ fontSize: '9px', marginBottom: '6px', lineHeight: 1.35, borderTop: '0.5px dotted rgba(139,26,26,0.2)', paddingTop: '4px' }}>
-              <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Normal:</strong>
+              <strong style={{ color: '#8b1a1a', fontFamily: 'var(--font-title)' }}>Normal:</strong>
               <div style={{ color: '#4a3b2a', paddingLeft: '4px' }}>{feat.normalRaw}</div>
             </div>
           )}
 
           {feat.specialRaw && (
             <div style={{ fontSize: '9px', marginBottom: '4px', lineHeight: 1.35, borderTop: '0.5px dotted rgba(139,26,26,0.2)', paddingTop: '4px' }}>
-              <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Special:</strong>
+              <strong style={{ color: '#8b1a1a', fontFamily: 'var(--font-title)' }}>Special:</strong>
               <div style={{ color: '#4a3b2a', paddingLeft: '4px' }}>{feat.specialRaw}</div>
             </div>
           )}
 
           {feat.hasOption && (!isLearned || isStackable) && (
-            <div style={{ marginTop: '6px', display: 'flex', flexDirection: 'column', gap: '2px', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold' }}>
+            <div style={{ marginTop: '6px', display: 'flex', flexDirection: 'column', gap: '2px', fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold' }}>
               <label htmlFor="featOptionSelect" style={{ color: '#5a3a1a' }}>Specific selection for this feat:</label>
               <select
                 id="featOptionSelect"
@@ -352,7 +352,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
           )}
 
           {learnedInstances.length > 0 && (
-            <div style={{ marginTop: '6px', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', borderTop: '0.5px dashed rgba(139,26,26,0.3)', paddingTop: '6px' }}>
+            <div style={{ marginTop: '6px', fontFamily: 'var(--font-body)', fontSize: '9.5px', borderTop: '0.5px dashed rgba(139,26,26,0.3)', paddingTop: '6px' }}>
               <div style={{ fontWeight: 'bold', color: '#5a3a1a', marginBottom: '2px' }}>Already learned instances:</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                 {learnedInstances.map((inst: any, idx: number) => {
@@ -385,7 +385,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
         <div style={{ marginTop: '4px' }}>
           {!isActuallyLearned || isStackable ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
-              <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.3px' }}>
+              <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)', letterSpacing: '0.3px' }}>
                 {isLearnBlocked ? '🔒 Prerequisites not met!' : 'Do you want to learn this feat?'}
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', width: '100%' }}>
@@ -394,7 +394,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                   disabled={isLearnBlocked}
                   className="btn btn-p btn-learn-feat"
                   style={{
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontSize: '9px',
                     padding: '4px 22px',
                     cursor: isLearnBlocked ? 'not-allowed' : 'pointer',
@@ -413,7 +413,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                   onClick={onClose}
                   className="btn btn-close-feat"
                   style={{
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontSize: '9px',
                     padding: '4px 22px',
                     cursor: 'pointer',
@@ -447,7 +447,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '0.5px solid rgba(124, 90, 43, 0.25)', paddingBottom: '3px' }}>
-                  <span style={{ fontSize: '10.5px', color: '#7c5a2b', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  <span style={{ fontSize: '10.5px', color: '#7c5a2b', fontWeight: 'bold', fontFamily: 'var(--font-title)', display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <span>🛡️</span> Automatic Class Feature
                   </span>
                   {autoFeatObj && (
@@ -456,7 +456,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                     </span>
                   )}
                 </div>
-                <p style={{ fontSize: '9.5px', color: 'var(--ink)', margin: 0, fontFamily: "'Crimson Text', serif", lineHeight: 1.35 }}>
+                <p style={{ fontSize: '9.5px', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-body)', lineHeight: 1.35 }}>
                   This feat is granted automatically as an integral part of your character's class or racial progression. Because it is a permanent inherent trait, it cannot be unlearned.
                 </p>
               </div>
@@ -465,7 +465,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                 onClick={onClose}
                 className="btn btn-close-feat"
                 style={{
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontSize: '9.5px',
                   padding: '4px 28px',
                   cursor: 'pointer',
@@ -482,7 +482,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
-              <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.3px' }}>
+              <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)', letterSpacing: '0.3px' }}>
                 Do you want to unlearn this feat?
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', width: '100%' }}>
@@ -490,7 +490,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                   onClick={handleUnlearn}
                   className="btn btn-p btn-unlearn-feat"
                   style={{
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontSize: '9px',
                     padding: '4px 22px',
                     cursor: 'pointer',
@@ -509,7 +509,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
                   onClick={onClose}
                   className="btn btn-close-feat"
                   style={{
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontSize: '9px',
                     padding: '4px 22px',
                     cursor: 'pointer',

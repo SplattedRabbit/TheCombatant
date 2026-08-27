@@ -38,7 +38,7 @@ export const SkillTricksSubPanel: React.FC<SkillTricksSubPanelProps> = ({ pc }) 
     <div style={{ flex: '4 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', boxSizing: 'border-box' }}>
       <h3
         style={{
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           fontSize: '11px',
           color: 'var(--red)',
           borderBottom: '1px solid var(--pb)',
@@ -163,7 +163,7 @@ export const SkillTricksSubPanel: React.FC<SkillTricksSubPanelProps> = ({ pc }) 
               style={{
                 flex: 1,
                 fontSize: '7.5px',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 padding: '2px 0',
                 border: tricksFilterCategory === cat ? '1px solid var(--red)' : '0.5px solid var(--pb)',
                 background: tricksFilterCategory === cat ? 'var(--red)' : 'transparent',

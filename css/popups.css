@@ -18,7 +18,7 @@
 }
 
 .cond-popup-title {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 9px;
   color: var(--red);
   letter-spacing: 1px;
@@ -42,7 +42,7 @@
   background: rgba(244, 232, 193, .8);
   color: var(--inkm);
   cursor: pointer;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   display: flex;
   align-items: center;
   gap: 3px;
@@ -65,7 +65,7 @@
   border: .5px solid var(--pb);
   border-radius: 1px;
   padding: 0 2px;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   font-size: 8px;
   color: var(--inkm);
   text-align: center;
@@ -103,7 +103,7 @@
 }
 
 .ref-modal h3 {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 15px;
   color: var(--red);
   letter-spacing: 2px;
@@ -132,7 +132,7 @@
   font-size: 16px;
   cursor: pointer;
   color: var(--inkl);
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
 }
 
 .ref-modal .ref-close:hover {
@@ -155,7 +155,7 @@
   background: rgba(244, 232, 193, .8);
   color: var(--inkm);
   cursor: pointer;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   min-height: 28px;
   display: flex;
   align-items: center;
@@ -174,7 +174,7 @@
 }
 
 .qref-h {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 9px;
   color: var(--red);
   margin-bottom: 1px;
@@ -196,7 +196,7 @@
   overflow-y: auto;
   align-items: center;
   justify-content: center;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
   color: var(--ink);
   padding: 40px 20px;
   box-sizing: border-box;
@@ -226,7 +226,7 @@
 }
 
 .role-title {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 26px;
   color: var(--red);
   margin-bottom: 5px;
@@ -297,7 +297,7 @@
 }
 
 .role-card-title {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 18px;
   color: var(--red);
   margin-bottom: 8px;
@@ -356,7 +356,7 @@
   border: 0.5px solid var(--pb);
   border-radius: 2px;
   padding: 5px 8px;
-  font-family: 'IM Fell English SC', Georgia, serif;
+  font-family: var(--font-title);
   font-size: 9.5px;
   color: var(--inkm);
   text-align: left;
@@ -419,7 +419,7 @@ select.cinput,
   font-size: 11px;
   height: 18px;
   padding: 0 2px;
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-body);
 }
 
 /* Clear, legible cross-browser select options */
@@ -483,7 +483,7 @@ select option {
 }
 
 .parchment-close-btn {
-  font-family: 'IM Fell English SC', serif;
+  font-family: var(--font-title);
   font-size: 10px;
   padding: 6px 24px;
   cursor: pointer;

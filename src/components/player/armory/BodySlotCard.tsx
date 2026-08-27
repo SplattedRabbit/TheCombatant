@@ -144,7 +144,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', lineHeight: 1 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
               <span style={{ fontSize: '12px' }}>{slotDef.icon}</span>
-              <span style={{ fontSize: '9.5px', fontWeight: 'bold', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif" }}>
+              <span style={{ fontSize: '9.5px', fontWeight: 'bold', color: 'var(--inkm)', fontFamily: 'var(--font-title)' }}>
                 {slotDef.nameEn}
               </span>
             </div>
@@ -161,7 +161,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                   padding: '0 4px',
                   color: suppressedEntry ? '#b45309' : 'var(--ink)',
                   fontWeight: 'bold',
-                  fontFamily: "'Crimson Text', serif",
+                  fontFamily: 'var(--font-body)',
                   lineHeight: '14px'
                 }}
                 title={suppressedEntry ? `Suppressed by ${suppressedEntry.overriddenBy || 'another item'}` : ''}
@@ -176,7 +176,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
           {/* Item Name */}
           <div
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '11.5px',
               fontWeight: 'bold',
               color: 'var(--red)',
@@ -232,7 +232,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                   type="button"
                   onClick={handleQuickActivate}
                   className="btn btn-p"
-                  style={{ fontSize: '8px', padding: '0 5px', height: '14px', lineHeight: '1', fontFamily: "'IM Fell English SC', serif" }}
+                  style={{ fontSize: '8px', padding: '0 5px', height: '14px', lineHeight: '1', fontFamily: 'var(--font-title)' }}
                 >
                   ⚡ Buff
                 </button>
@@ -256,7 +256,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
             boxShadow: '0 2px 8px rgba(139, 26, 26, 0.12)'
           }}
         >
-          <div style={{ textAlign: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9.5px', color: 'var(--red)', fontWeight: 'bold', lineHeight: 1.1 }}>
+          <div style={{ textAlign: 'center', fontFamily: 'var(--font-title)', fontSize: '9.5px', color: 'var(--red)', fontWeight: 'bold', lineHeight: 1.1 }}>
             Unequip {slotDef.nameEn}?
           </div>
 
@@ -269,7 +269,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                 onUnequip();
               }}
               className="btn btn-p"
-              style={{ fontSize: '9px', padding: '2px 8px', fontFamily: "'IM Fell English SC', serif", background: 'var(--red)', color: 'white', fontWeight: 'bold' }}
+              style={{ fontSize: '9px', padding: '2px 8px', fontFamily: 'var(--font-title)', background: 'var(--red)', color: 'white', fontWeight: 'bold' }}
             >
               Yes
             </button>
@@ -280,7 +280,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                 handleToggleFlip(false);
               }}
               className="btn"
-              style={{ fontSize: '9px', padding: '2px 8px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold' }}
+              style={{ fontSize: '9px', padding: '2px 8px', fontFamily: 'var(--font-title)', fontWeight: 'bold' }}
             >
               No
             </button>
@@ -295,7 +295,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                 onEdit();
               }}
               className="btn"
-              style={{ fontSize: '8px', padding: '0 6px', fontFamily: "'IM Fell English SC', serif" }}
+              style={{ fontSize: '8px', padding: '0 6px', fontFamily: 'var(--font-title)' }}
             >
               ✏️ Item Details
             </button>

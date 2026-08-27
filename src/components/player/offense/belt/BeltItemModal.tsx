@@ -88,7 +88,7 @@ export const BeltItemModal: React.FC<BeltItemModalProps> = ({
           width: '460px',
           maxWidth: '92vw',
           boxShadow: '0 12px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(200,169,110,0.1)',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           textAlign: 'center',
           position: 'relative',
         }}
@@ -154,7 +154,7 @@ export const BeltItemModal: React.FC<BeltItemModalProps> = ({
             padding: '12px 16px',
             borderRadius: '4px',
             boxShadow: 'inset 0 0 25px rgba(139, 26, 26, 0.12)',
-            fontFamily: "'Crimson Text', serif",
+            fontFamily: 'var(--font-body)',
             color: '#1a0f00',
             lineHeight: 1.45,
             textAlign: 'left',
@@ -204,7 +204,7 @@ export const BeltItemModal: React.FC<BeltItemModalProps> = ({
                 fontWeight: 'bold',
                 color: '#8b1a1a',
                 marginBottom: '2px',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 fontSize: '11.5px',
               }}
             >
@@ -223,7 +223,7 @@ export const BeltItemModal: React.FC<BeltItemModalProps> = ({
                   fontWeight: 'bold',
                   color: '#8b1a1a',
                   fontSize: '10.5px',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   marginBottom: '3px',
                 }}
               >
@@ -264,7 +264,7 @@ export const BeltItemModal: React.FC<BeltItemModalProps> = ({
             style={{
               fontSize: '9.5px',
               padding: '3px 12px',
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontWeight: 'bold',
               background: 'rgba(200, 169, 110, 0.12)',
               border: '0.5px solid var(--pb, #c8a96e)',
@@ -286,7 +286,7 @@ export const BeltItemModal: React.FC<BeltItemModalProps> = ({
               style={{
                 fontSize: '9.5px',
                 padding: '3px 14px',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 fontWeight: 'bold',
                 background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                 border: '0.5px solid #8b6914',

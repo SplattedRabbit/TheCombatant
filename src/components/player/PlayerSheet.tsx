@@ -219,7 +219,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
               }}
             >
               <div style={{
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 fontSize: '10px',
                 color: 'var(--red)',
                 fontWeight: 'bold',

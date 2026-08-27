@@ -49,7 +49,7 @@ export const SorcererFeaturesCard: React.FC<SorcererFeaturesCardProps> = ({ pc, 
       <div 
         className="class-card-hdr" 
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>🎭 Sorcerer (Level {level})</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
@@ -57,7 +57,7 @@ export const SorcererFeaturesCard: React.FC<SorcererFeaturesCardProps> = ({ pc, 
       {isExpanded && (
         <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
               Class Features
             </div>
             
@@ -69,7 +69,7 @@ export const SorcererFeaturesCard: React.FC<SorcererFeaturesCardProps> = ({ pc, 
                   <button 
                     onClick={(e) => { e.stopPropagation(); setCastingRulesOpen(!castingRulesOpen); }}
                     className="btn btn-toggle-rules-casting" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show Rules"
                   >
                     📖 {castingRulesOpen ? '▲' : '▼'}
@@ -77,8 +77,8 @@ export const SorcererFeaturesCard: React.FC<SorcererFeaturesCardProps> = ({ pc, 
                 </div>
               </div>
               {castingRulesOpen && (
-                <div className="casting-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif", marginBottom: '3px' }}>
-                  <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Spontaneous Casting:</strong><br />
+                <div className="casting-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)', marginBottom: '3px' }}>
+                  <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Spontaneous Casting:</strong><br />
                   A sorcerer casts arcane spells naturally without needing to prepare them in advance.<br />
                   • <strong>Key Attribute:</strong> Charisma (determines highest spell level and saving throw DCs).<br />
                   • <strong>Spells Known:</strong> The sorcerer has a fixed selection of known spells and can freely cast from available daily spell slots.
@@ -94,7 +94,7 @@ export const SorcererFeaturesCard: React.FC<SorcererFeaturesCardProps> = ({ pc, 
                   <button 
                     onClick={(e) => { e.stopPropagation(); setEschewRulesOpen(!eschewRulesOpen); }}
                     className="btn btn-toggle-rules-eschew" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show Rules"
                   >
                     📖 {eschewRulesOpen ? '▲' : '▼'}
@@ -103,8 +103,8 @@ export const SorcererFeaturesCard: React.FC<SorcererFeaturesCardProps> = ({ pc, 
                 <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>Active</span>
               </div>
               {eschewRulesOpen && (
-                <div className="eschew-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif", marginBottom: '3px' }}>
-                  <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Eschew Materials:</strong><br />
+                <div className="eschew-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)', marginBottom: '3px' }}>
+                  <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Eschew Materials:</strong><br />
                   Bonus feat at level 1.<br />
                   • <strong>Effect:</strong> Material components with a cost of 1 GP or less are ignored.<br />
                   • <strong>Limitation:</strong> More expensive components or Magical Focuses (F) must still be provided.
@@ -120,7 +120,7 @@ export const SorcererFeaturesCard: React.FC<SorcererFeaturesCardProps> = ({ pc, 
                   <button 
                     onClick={(e) => { e.stopPropagation(); setFamiliarRulesOpen(!familiarRulesOpen); }}
                     className="btn btn-toggle-rules-familiar" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show Rules"
                   >
                     📖 {familiarRulesOpen ? '▲' : '▼'}
@@ -129,8 +129,8 @@ export const SorcererFeaturesCard: React.FC<SorcererFeaturesCardProps> = ({ pc, 
               </div>
               
               {familiarRulesOpen && (
-                <div className="familiar-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif", marginBottom: '3px' }}>
-                  <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Familiar:</strong><br />
+                <div className="familiar-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)', marginBottom: '3px' }}>
+                  <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Familiar:</strong><br />
                   • <strong>Death/Dismissal:</strong> A Fortitude save against DC 15 is required. On failure, you lose 200 XP per level; on success, you lose 100 XP per level.<br />
                   • <strong>Bonus:</strong> Applies within a distance of up to 1 mile.
                 </div>

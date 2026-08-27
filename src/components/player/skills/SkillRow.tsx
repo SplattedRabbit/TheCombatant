@@ -83,7 +83,7 @@ export const SkillRow: React.FC<SkillRowProps> = ({
             padding: '0 2px',
             cursor: isTrainedOnlyDisabled ? 'not-allowed' : 'pointer',
             textAlign: 'left',
-            fontFamily: "'Crimson Text', serif",
+            fontFamily: 'var(--font-body)',
             fontSize: '9.5px',
             fontWeight: 'bold',
             color: 'var(--red)',

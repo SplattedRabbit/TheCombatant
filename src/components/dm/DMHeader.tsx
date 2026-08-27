@@ -43,7 +43,7 @@ export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <span style={{ 
-            fontFamily: "'IM Fell English SC', serif", 
+            fontFamily: 'var(--font-title)', 
             fontSize: '11px', 
             color: 'var(--red)', 
             letterSpacing: '0.5px', 

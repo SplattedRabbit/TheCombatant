@@ -194,7 +194,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               <h2
                 style={{
                   margin: 0,
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontSize: '18px',
                   color: 'var(--red, #8b1a1a)',
                   lineHeight: 1.1,
@@ -202,7 +202,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               >
                 Character Roster
               </h2>
-              <div style={{ fontSize: '10.5px', color: 'var(--inkm, #665c49)', fontFamily: "'Crimson Text', serif" }}>
+              <div style={{ fontSize: '10.5px', color: 'var(--inkm, #665c49)', fontFamily: 'var(--font-body)' }}>
                 {characters.length} {characters.length === 1 ? 'Character' : 'Characters'} available
               </div>
             </div>
@@ -265,7 +265,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               gap: '4px',
               padding: '4px 10px',
               fontSize: '11px',
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontWeight: 'bold',
               background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
               border: '1px solid #8b6914',
@@ -292,7 +292,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                 gap: '4px',
                 padding: '4px 10px',
                 fontSize: '11px',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 background: 'rgba(200, 169, 110, 0.2)',
                 border: '1px solid var(--pb)',
                 borderRadius: '3px',
@@ -315,7 +315,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               gap: '4px',
               padding: '4px 10px',
               fontSize: '11px',
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               background: 'rgba(200, 169, 110, 0.1)',
               border: '1px solid var(--pb)',
               borderRadius: '3px',
@@ -355,7 +355,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               }}
             >
               <div style={{ fontSize: '32px', marginBottom: '8px' }}>🛡️</div>
-              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', color: 'var(--red)' }}>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: '15px', color: 'var(--red)' }}>
                 No Characters Found
               </div>
               <div style={{ fontSize: '12px', color: 'var(--inkm)', marginTop: '4px' }}>
@@ -399,7 +399,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                           background: '#065f46',
                           color: '#ffffff',
                           fontSize: '8.5px',
-                          fontFamily: "'IM Fell English SC', serif",
+                          fontFamily: 'var(--font-title)',
                           padding: '1px 6px',
                           borderRadius: '10px',
                           fontWeight: 'bold',
@@ -413,7 +413,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                       {/* Name & Race */}
                       <div
                         style={{
-                          fontFamily: "'IM Fell English SC', serif",
+                          fontFamily: 'var(--font-title)',
                           fontSize: '14px',
                           fontWeight: 'bold',
                           color: 'var(--red, #8b1a1a)',
@@ -431,7 +431,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                       <div
                         style={{
                           fontSize: '11px',
-                          fontFamily: "'Crimson Text', serif",
+                          fontFamily: 'var(--font-body)',
                           color: 'var(--ink, #2c2214)',
                           marginTop: '2px',
                         }}
@@ -461,7 +461,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                           fontSize: '10.5px',
                           color: '#854d0e',
                           fontWeight: 'bold',
-                          fontFamily: "'Crimson Text', serif",
+                          fontFamily: 'var(--font-body)',
                           display: 'flex',
                           alignItems: 'center',
                           gap: '4px',
@@ -494,7 +494,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                           flex: 1,
                           padding: '3px 6px',
                           fontSize: '10.5px',
-                          fontFamily: "'IM Fell English SC', serif",
+                          fontFamily: 'var(--font-title)',
                           background: isActive ? '#065f46' : 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                           border: '1px solid #8b6914',
                           color: '#ffffff',
@@ -583,7 +583,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', color: 'var(--red)', fontWeight: 'bold' }}>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: '15px', color: 'var(--red)', fontWeight: 'bold' }}>
                 ➕ New Character
               </div>
 
@@ -633,7 +633,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                   style={{
                     padding: '4px 10px',
                     fontSize: '11px',
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     background: 'rgba(200, 169, 110, 0.2)',
                     border: '1px solid var(--pb)',
                     borderRadius: '3px',
@@ -650,7 +650,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                   style={{
                     padding: '4px 12px',
                     fontSize: '11px',
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                     border: '1px solid #8b6914',
                     borderRadius: '3px',

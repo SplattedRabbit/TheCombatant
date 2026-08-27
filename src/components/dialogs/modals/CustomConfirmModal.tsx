@@ -28,21 +28,21 @@ export const CustomConfirmModal: React.FC<CustomConfirmModalProps> = ({
       <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 10px' }} />
       <div 
         className="info-dialog-body" 
-        style={{ textAlign: 'left', marginBottom: '12px', fontSize: '10px', color: 'var(--ink)', fontFamily: "'Crimson Text', serif", lineHeight: 1.35 }}
+        style={{ textAlign: 'left', marginBottom: '12px', fontSize: '10px', color: 'var(--ink)', fontFamily: 'var(--font-body)', lineHeight: 1.35 }}
         dangerouslySetInnerHTML={{ __html: sanitizeHtml(messageHtml) }}
       />
       <div style={{ display: 'flex', justifyContent: 'center', gap: '8px' }}>
         <button 
           onClick={onConfirm}
           className="btn btn-p confirm-dialog-yes" 
-          style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 18px', cursor: 'pointer', borderRadius: '2px' }}
+          style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '4px 18px', cursor: 'pointer', borderRadius: '2px' }}
         >
           Yes
         </button>
         <button 
           onClick={onCancel}
           className="btn confirm-dialog-no" 
-          style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 18px', cursor: 'pointer', borderRadius: '2px', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
+          style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '4px 18px', cursor: 'pointer', borderRadius: '2px', background: 'transparent', border: '1px solid var(--pb)', color: 'var(--ink)' }}
         >
           No
         </button>

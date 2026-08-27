@@ -31,7 +31,7 @@ export const NaturalAttacksSection: React.FC<NaturalAttacksSectionProps> = ({
           textAlign: 'center',
           fontStyle: 'italic',
           color: 'var(--inkl)',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           fontSize: '9px',
           marginBottom: '8px',
         }}
@@ -40,7 +40,7 @@ export const NaturalAttacksSection: React.FC<NaturalAttacksSectionProps> = ({
       </div>
       <div
         style={{
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           fontSize: '8px',
           color: 'var(--inkl)',
           paddingBottom: '2px',

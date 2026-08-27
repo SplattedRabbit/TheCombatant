@@ -124,7 +124,7 @@ export default function App() {
   if (!isReady) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#2a1a0a' }}>
-        <div style={{ textAlign: 'center', fontFamily: "'IM Fell English SC', serif" }}>
+        <div style={{ textAlign: 'center', fontFamily: 'var(--font-title)' }}>
           <div className="hp-emblem" style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'radial-gradient(circle, #f4e8c1 0%, #c8a96e 70%, #9a7a2e 100%)', border: '2px double var(--red)', display: 'inline-flex', justifyContent: 'center', alignItems: 'center', animation: 'spin 2s linear infinite', marginBottom: '15px' }}>
             <span style={{ fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>D&D</span>
           </div>
@@ -155,11 +155,11 @@ export default function App() {
     if (!activePC) {
       content = (
         <div className="sheet" style={{ maxWidth: '500px', margin: '40px auto', textAlign: 'center', padding: '24px' }}>
-          <h2 style={{ fontFamily: "'IM Fell English SC', serif", color: 'var(--red)', fontSize: '20px', marginBottom: '10px' }}>
+          <h2 style={{ fontFamily: 'var(--font-title)', color: 'var(--red)', fontSize: '20px', marginBottom: '10px' }}>
             No Active Character
           </h2>
           <hr style={{ border: 'none', borderTop: '0.5px solid var(--pb)', margin: '10px 0 20px' }} />
-          <p style={{ fontFamily: "'Crimson Text', serif", fontSize: '13px', color: 'var(--inkm)', lineHeight: 1.5, marginBottom: '20px' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--inkm)', lineHeight: 1.5, marginBottom: '20px' }}>
             There is currently no active player character (PC) loaded in this session.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>

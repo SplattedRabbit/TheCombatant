@@ -197,7 +197,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '3px 6px', marginBottom: '2px' }}>
-        <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--inkm)', margin: 0, fontWeight: 'bold', fontSize: '11px', fontFamily: "'IM Fell English SC', serif" }}>
+        <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--inkm)', margin: 0, fontWeight: 'bold', fontSize: '11px', fontFamily: 'var(--font-title)' }}>
           <input
             type="checkbox"
             className="pc-autoac-checkbox"
@@ -388,7 +388,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
 
       <hr style={{ border: 'none', borderTop: '.5px solid var(--pb)', margin: '4px 0' }} />
 
-      <div style={{ display: 'grid', gridTemplateColumns: '80px 30px 8px 30px 8px 30px 8px 1fr', gap: '2px', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--inkl)', textAlign: 'center', paddingBottom: '2px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '80px 30px 8px 30px 8px 30px 8px 1fr', gap: '2px', fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--inkl)', textAlign: 'center', paddingBottom: '2px' }}>
         <span style={{ textAlign: 'left' }}>Saving Throw</span>
         <span>Base</span>
         <span></span>
@@ -539,7 +539,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
       <hr style={{ border: 'none', borderTop: '.5px solid var(--pb)', margin: '4px 0' }} />
 
       {/* Integrated Physical Resistances & Reach */}
-      <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', letterSpacing: '0.5px', fontWeight: 'bold' }}>
+      <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', paddingBottom: '1px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', letterSpacing: '0.5px', fontWeight: 'bold' }}>
         🛡️ Physical Resistances &amp; Reach
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px', marginTop: '1px' }}>

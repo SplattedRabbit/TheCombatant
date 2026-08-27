@@ -35,7 +35,7 @@ export const PrestigeSpellLinkSection: React.FC<PrestigeSpellLinkSectionProps> =
           background: 'rgba(200, 169, 110, 0.05)',
         }}
       >
-        <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
+        <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
           ✦ Mystic Theurge Spell Linking
         </strong>
 
@@ -110,7 +110,7 @@ export const PrestigeSpellLinkSection: React.FC<PrestigeSpellLinkSectionProps> =
           background: 'rgba(200, 169, 110, 0.05)',
         }}
       >
-        <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
+        <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
           ✦ Arcane Trickster Spell Linking
         </strong>
 

@@ -171,7 +171,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                 fontWeight: activeTab === 'skills' ? 'bold' : 'normal',
                 fontSize: '11.5px',
                 cursor: 'pointer',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 boxSizing: 'border-box',
                 whiteSpace: 'nowrap',
               }}
@@ -195,7 +195,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                 fontWeight: activeTab === 'tricks' ? 'bold' : 'normal',
                 fontSize: '11.5px',
                 cursor: 'pointer',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 boxSizing: 'border-box',
                 whiteSpace: 'nowrap',
               }}
@@ -224,7 +224,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                 fontWeight: activeTab === 'feats' ? 'bold' : 'normal',
                 fontSize: '11.5px',
                 cursor: currentFeatSlots.length === 0 ? 'not-allowed' : 'pointer',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 opacity: currentFeatSlots.length === 0 ? 0.5 : 1,
                 boxSizing: 'border-box',
                 whiteSpace: 'nowrap',
@@ -250,7 +250,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                 fontWeight: activeTab === 'acfs' ? 'bold' : 'normal',
                 fontSize: '11.5px',
                 cursor: 'pointer',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 boxSizing: 'border-box',
                 whiteSpace: 'nowrap',
               }}

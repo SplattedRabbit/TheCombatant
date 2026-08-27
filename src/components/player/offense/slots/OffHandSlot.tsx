@@ -56,7 +56,7 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
         }}
       >
         <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>🛡️</div>
-        <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif" }}>
+        <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)' }}>
           Off-Hand
         </div>
         <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Empty)</div>
@@ -102,12 +102,12 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
         >
           ✕
         </button>
-        <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+        <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
           🛡️ Off-Hand
         </div>
         <div
           style={{
-            fontFamily: "'Crimson Text', serif",
+            fontFamily: 'var(--font-body)',
             fontSize: '9.5px',
             fontWeight: 'bold',
             color: 'var(--red)',
@@ -188,12 +188,12 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
       >
         ✕
       </button>
-      <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: "'IM Fell English SC', serif", opacity: 0.9 }}>
+      <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
         {offhandLabel}
       </div>
       <div
         style={{
-          fontFamily: "'Crimson Text', serif",
+          fontFamily: 'var(--font-body)',
           fontSize: '9.5px',
           fontWeight: 'bold',
           color: 'var(--red)',

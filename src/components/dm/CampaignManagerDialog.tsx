@@ -193,7 +193,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
               <h2
                 style={{
                   margin: 0,
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontSize: '18px',
                   color: 'var(--red, #8b1a1a)',
                   lineHeight: 1.1,
@@ -201,7 +201,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
               >
                 DM Campaign Dashboard
               </h2>
-              <div style={{ fontSize: '10.5px', color: 'var(--inkm, #665c49)', fontFamily: "'Crimson Text', serif" }}>
+              <div style={{ fontSize: '10.5px', color: 'var(--inkm, #665c49)', fontFamily: 'var(--font-body)' }}>
                 {campaigns.length} {campaigns.length === 1 ? 'Campaign' : 'Campaigns'} managed
               </div>
             </div>
@@ -267,7 +267,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
               gap: '4px',
               padding: '4px 10px',
               fontSize: '11px',
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontWeight: 'bold',
               background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
               border: '1px solid #8b6914',
@@ -307,7 +307,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
               }}
             >
               <div style={{ fontSize: '32px', marginBottom: '8px' }}>🏰</div>
-              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', color: 'var(--red)' }}>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: '15px', color: 'var(--red)' }}>
                 No Campaigns Found
               </div>
               <div style={{ fontSize: '12px', color: 'var(--inkm)', marginTop: '4px' }}>
@@ -352,7 +352,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                           background: '#065f46',
                           color: '#ffffff',
                           fontSize: '8.5px',
-                          fontFamily: "'IM Fell English SC', serif",
+                          fontFamily: 'var(--font-title)',
                           padding: '1px 6px',
                           borderRadius: '10px',
                           fontWeight: 'bold',
@@ -366,7 +366,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                       {/* Campaign Name */}
                       <div
                         style={{
-                          fontFamily: "'IM Fell English SC', serif",
+                          fontFamily: 'var(--font-title)',
                           fontSize: '14px',
                           fontWeight: 'bold',
                           color: 'var(--red, #8b1a1a)',
@@ -436,7 +436,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                         style={{
                           marginTop: '6px',
                           fontSize: '10.5px',
-                          fontFamily: "'Crimson Text', serif",
+                          fontFamily: 'var(--font-body)',
                           color: 'var(--ink, #2c2214)',
                           display: 'flex',
                           alignItems: 'center',
@@ -470,7 +470,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                           flex: 1,
                           padding: '3px 6px',
                           fontSize: '10.5px',
-                          fontFamily: "'IM Fell English SC', serif",
+                          fontFamily: 'var(--font-title)',
                           background: isActive ? '#065f46' : 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                           border: '1px solid #8b6914',
                           color: '#ffffff',
@@ -559,7 +559,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
               }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', color: 'var(--red)', fontWeight: 'bold' }}>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: '15px', color: 'var(--red)', fontWeight: 'bold' }}>
                 ➕ Create New Campaign
               </div>
 
@@ -617,7 +617,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                   style={{
                     padding: '4px 10px',
                     fontSize: '11px',
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     background: 'rgba(200, 169, 110, 0.2)',
                     border: '1px solid var(--pb)',
                     borderRadius: '3px',
@@ -634,7 +634,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                   style={{
                     padding: '4px 12px',
                     fontSize: '11px',
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                     border: '1px solid #8b6914',
                     borderRadius: '3px',
