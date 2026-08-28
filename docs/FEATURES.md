@@ -60,19 +60,21 @@ Hier ist die Übersicht, was Spieler und Spielleiter (DM) erwartet – auf hoher
 
 ---
 
-## 🧙‍♂️ 7. Charakter-Erschaffung & "Level-Up"-Assistent (Geplant)
-*Geführte Workflows für Neu-Erstellung und komfortablen Stufenaufstieg.*
+## ⚙️ 7. Technologische Highlights
+*Unkompliziert, schnell und zuverlässig.*
+* **Zero-Install (PWA):** Kann direkt als Web-App auf dem Startbildschirm von Handy oder Tablet installiert werden und funktioniert dank Offline-Caching auch im tiefsten Keller ohne Internet.
+* **Lokaler Server für den DM:** Ein kleines, mitgeliefertes PowerShell-Script startet den Server auf dem DM-Laptop mit einem Klick – keine Installation von Node.js oder externen Datenbanken nötig.
+
+---
+
+## 🚀 Geplante Features (Roadmap / Backlog)
+
+### 🧙‍♂️ "Level-Up"-Assistent
+*Geführte Workflows für komfortablen Stufenaufstieg bestehender Charaktere.*
 * **Schritt-für-Schritt Level-Up:** Führt den Spieler strukturiert durch den Stufenaufstieg (Basisklasse, Multiclassing oder Prestige-Klasse) basierend auf der bestehenden Wizard-Engine.
 * **Automatischer HP-Zuwachs:** Trefferwürfel (Hit Die) der gewählten Klasse würfeln oder festen Durchschnittswert eintragen (+ Konstitutions-Modifikator).
 * **Fertigkeitspunkte-Verteilung (Skill Points):** Exakte Berechnung der verfügbaren Punkte für die neue Stufe (inkl. INT-Modifikator und Rassenbonus) mit automatischer Max-Rang-Prüfung (`Level + 3` für Klassenfertigkeiten).
 * **Attributs- & Talent-Meilensteine:** Automatische Erkennung von Stufen-Meilensteinen (Attributssteigerung alle 4 Stufen, allgemeine Talente alle 3 Stufen, Klassen-Bonustalente für z. B. Kämpfer/Magier).
 * **Zauber- & Slot-Progression:** Automatische Anpassung von Zauberslots und Freischaltung neuer Zaubergrade (inkl. Prestige-Klassen-Zauberverlinkung).
 * **Klassenfeatures & ACF-Aktivierung:** Sofortige Freischaltung und Eintragung neuer Klassenmerkmale, Tiergestalt-Optionen und alternativer Klassenfeatures (ACFs).
-
----
-
-## ⚙️ 8. Technologische Highlights
-*Unkompliziert, schnell und zuverlässig.*
-* **Zero-Install (PWA):** Kann direkt als Web-App auf dem Startbildschirm von Handy oder Tablet installiert werden und funktioniert dank Offline-Caching auch im tiefsten Keller ohne Internet.
-* **Lokaler Server für den DM:** Ein kleines, mitgeliefertes PowerShell-Script startet den Server auf dem DM-Laptop mit einem Klick – keine Installation von Node.js oder externen Datenbanken nötig.
 
