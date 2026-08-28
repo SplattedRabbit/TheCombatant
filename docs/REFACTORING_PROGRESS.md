@@ -209,10 +209,10 @@ gantt
 
 #### Geplante Unter-Tasks:
 ```
-[ ] Task 6.1: Vitest & React Testing Library
+[x] Task 6.1: Vitest & React Testing Library (100% Abgeschlossen)
     [x] 6.1.1: vitest, @testing-library/react, jsdom installieren und konfigurieren (vitest.config.ts, setup.ts, test-utils.tsx)
     [x] 6.1.2: PlayerSheet.test.tsx (Header, Tab-Navigation, Caster-Sichtbarkeit, System-Dropdown)
-    [ ] 6.1.3: CharacterWizard.test.tsx
+    [x] 6.1.3: CharacterWizard.test.tsx (Race & Name, 74-Point-Buy, Step Navigation)
     [x] 6.1.4: Modals.test.tsx (CustomAlertModal, CustomConfirmModal, CustomPromptModal, ParchmentMessageModal, DialogContext)
     [x] 6.1.5: npm run test:ui Script definieren
 
