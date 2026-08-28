@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { screen, fireEvent } from '@testing-library/react';
-import React from 'react';
 import { PlayerSheet } from '../components/player/PlayerSheet';
 import { Combatant } from '@core/models/Combatant.js';
 import { aranisSample } from '@core/data/encounter-samples.js';

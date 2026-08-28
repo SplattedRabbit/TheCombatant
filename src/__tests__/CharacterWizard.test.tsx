@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CharacterWizardDialog } from '../components/player/CharacterWizardDialog';
 import { Step1RaceName } from '../components/player/wizard/Step1RaceName';
 import { Step2Attributes } from '../components/player/wizard/Step2Attributes';

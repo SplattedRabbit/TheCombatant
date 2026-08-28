@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import React from 'react';
 import { CustomAlertModal } from '../components/dialogs/modals/CustomAlertModal';
 import { CustomConfirmModal } from '../components/dialogs/modals/CustomConfirmModal';
 import { CustomPromptModal } from '../components/dialogs/modals/CustomPromptModal';
@@ -146,7 +145,7 @@ describe('Modal & Dialog UI Components (Task 6.1.2)', () => {
   });
 
   describe('DialogContext Integration', () => {
-    const TestConsumer: React.FC = () => {
+    const TestConsumer = () => {
       const dialog = useDialog();
 
       return (
