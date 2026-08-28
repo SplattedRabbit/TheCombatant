@@ -1,13 +1,18 @@
 import React, { ReactElement } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import { DialogProvider } from '../context/DialogContext';
+import { AuthProvider } from '../context/AuthContext';
 
 interface AllTheProvidersProps {
   children: React.ReactNode;
 }
 
 const AllTheProviders: React.FC<AllTheProvidersProps> = ({ children }) => {
-  return <DialogProvider>{children}</DialogProvider>;
+  return (
+    <AuthProvider>
+      <DialogProvider>{children}</DialogProvider>
+    </AuthProvider>
+  );
 };
 
 export const renderWithProviders = (
