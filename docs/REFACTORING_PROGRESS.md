@@ -47,9 +47,9 @@ gantt
 | **Phase 1** | Bereinigung toter Dateien, XSS-Schutz, SW-Version | ✅ **Abgeschlossen** | `e613713`, `92d6f00` | 304 / 304 ✅ | 0 Fehler ✅ |
 | **Phase 2** | State-API-Compliance, Declarative DialogContext | ✅ **Abgeschlossen** | `5b02cb4`, `e826f88` | 304 / 304 ✅ | 0 Fehler ✅ |
 | **Phase 3** | Snapshot DTOs, V8-Deopt Beseitigung, SkillsTab Patch | ✅ **Abgeschlossen** | `9c66803` | 304 / 304 ✅ | 0 Fehler ✅ |
-| **Phase 4** | Modularisierung von Monster-Komponenten (< 450 Zeilen) | ✅ **Abgeschlossen** | Aktuell | 304 / 304 ✅ | 0 Fehler ✅ |
-| **Phase 5** | Vollständige Typsicherheit, Abbau aller 171 `@ts-ignore` | ⏳ Ausstehend | — | — | — |
-| **Phase 6** | Vitest UI-Tests, `React.lazy()` Code-Splitting | ⏳ Ausstehend | — | — | — |
+| **Phase 4** | Modularisierung von Monster-Komponenten (< 450 Zeilen) | ✅ **Abgeschlossen** | `a48667c` | 304 / 304 ✅ | 0 Fehler ✅ |
+| **Phase 5** | Vollständige Typsicherheit, Abbau aller 180 `@ts-ignore` | ✅ **Abgeschlossen** | `595ac7d` | 304 / 304 ✅ | 0 Fehler ✅ |
+| **Phase 6** | Vitest UI-Tests (100% grün), Build-Chunking & Logging | 🔄 **In Bearbeitung** | `cb260e8`, `9ab9c10`, `2d8cbe2`, `c06c47b`, `cfc516a` | 304 Kern + 14 UI ✅ | 0 Fehler ✅ |
 | **Phase 7** | Finaler Healthcheck-Scan (0 Gelb / 0 Rot) | ⏳ Ausstehend | — | — | — |
 
 ---
@@ -180,7 +180,7 @@ gantt
 
 ### ✅ Phase 5: Vollständige Typsicherheit (0 `@ts-ignore`)
 - **Datum:** 24. August 2026
-- **Commit:** Aktuell (*"refactor(phase-5): achieve 100% type safety, create prestige class rule modules, and eliminate all 180 @ts-ignore directives"*)
+- **Commit:** `595ac7d` (*"refactor(phase-5): achieve 100% type safety, create prestige class rule modules, and eliminate all 180 @ts-ignore directives"*)
 
 #### Durchgeführte Änderungen:
 1. **Task 5.1: Domain-Typen in `src/types/combat.ts` präzisiert:**
@@ -205,23 +205,42 @@ gantt
 
 ---
 
-### ⏳ Phase 6: UI-Testing & Build-Optimierung
+### 🔄 Phase 6: UI-Testing & Build-Optimierung (In Bearbeitung)
+- **Datum:** 28. August 2026
+- **Commits:** `cb260e8`, `9ab9c10`, `2d8cbe2`, `c06c47b`, `cfc516a`
 
-#### Geplante Unter-Tasks:
+#### Durchgeführte Änderungen in Task 6.1 (Vitest & RTL Setup):
+1. **Tooling & Konfiguration:**
+   - `vitest`, `@testing-library/react` (React 19), `@testing-library/jest-dom`, `jsdom` eingerichtet.
+   - [`vitest.config.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/vitest.config.ts), [`src/test/setup.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/test/setup.ts) und [`src/test/test-utils.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/test/test-utils.tsx) erstellt.
+   - Neue Skripte in `package.json`: `"test:ui"`, `"test:ui:watch"`, `"test:all"`.
+2. **Komponententests implementiert (14 Tests, 3 Suiten):**
+   - [`src/__tests__/Modals.test.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/__tests__/Modals.test.tsx) (7 Tests: Alert, Confirm, Prompt, Parchment, DialogContext)
+   - [`src/__tests__/PlayerSheet.test.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/__tests__/PlayerSheet.test.tsx) (4 Tests: Header, 5 Tabs Navigation, Caster-Sichtbarkeit, System-Dropdown)
+   - [`src/__tests__/CharacterWizard.test.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/__tests__/CharacterWizard.test.tsx) (3 Tests: Step1 Identität/Rasse, Step2 74-Point-Buy, Step-Navigation)
+3. **CI-Fix:**
+   - Unnötige React-Imports bereinigt (Konformität mit `noUnusedLocals`).
+
+#### Architektur-Entscheidung zu Task 6.2:
+> [!NOTE]
+> **Zero-Latency Offline Tabletop Decision:**
+> Die App ist eine Offline-First PWA für den Spieltisch. Ein asynchrones Nachladen mit `React.lazy()` würde Lade-Spinner (`<Suspense>`) beim Öffnen von Tabs oder Dialogen erzeugen. Daher verzichten wir bewusst auf Laufzeit-Lazy-Loading und setzen stattdessen auf **sauberes Build-Chunking in `vite.config.ts` (`manualChunks`)**, damit alle Bundles beim App-Start parallel geladen und im Service Worker gecacht werden.
+
+#### Nächste Schritte:
 ```
 [x] Task 6.1: Vitest & React Testing Library (100% Abgeschlossen)
-    [x] 6.1.1: vitest, @testing-library/react, jsdom installieren und konfigurieren (vitest.config.ts, setup.ts, test-utils.tsx)
+    [x] 6.1.1: vitest, @testing-library/react, jsdom konfigurieren (vitest.config.ts, setup.ts, test-utils.tsx)
     [x] 6.1.2: PlayerSheet.test.tsx (Header, Tab-Navigation, Caster-Sichtbarkeit, System-Dropdown)
     [x] 6.1.3: CharacterWizard.test.tsx (Race & Name, 74-Point-Buy, Step Navigation)
     [x] 6.1.4: Modals.test.tsx (CustomAlertModal, CustomConfirmModal, CustomPromptModal, ParchmentMessageModal, DialogContext)
     [x] 6.1.5: npm run test:ui Script definieren
 
-[ ] Task 6.2: Code-Splitting via React.lazy()
-    [ ] 6.2.1: Lazy-Loading für CharacterWizardDialog, DMScreen, CampaignManagerDialog
-    [ ] 6.2.2: Bundle-Analyse: main.js < 280 kB
+[ ] Task 6.2: Build-Chunking-Optimierung (vite.config.ts manualChunks)
+    [ ] 6.2.1: Chunks für dm-screen, character-wizard, player-sheet verfeinern
+    [ ] 6.2.2: Service Worker Cache-Manifest überprüfen
 
 [ ] Task 6.3: Console Logging Cleanup
-    [ ] 6.3.1: 47 console.log/warn Statements in src/ bereinigen
+    [ ] 6.3.1: Verbliebene console.log/warn in src/ bereinigen
 ```
 
 ---

@@ -123,21 +123,21 @@ graph TD
 
 ---
 
-### 📋 Phase 6: UI-Testing & Build-Optimierung (P2 · M)
-*Ziel: Automatisierte Regressionstests für React und Bundle-Reduktion auf < 280 kB.*
+### 📋 Phase 6: UI-Testing & Build-Optimierung (P2 · M) — 🔄 IN BEARBEITUNG
+*Ziel: Automatisierte Regressionstests für React und sauberes Build-Chunking.*
 
-* **6.1 Setup Vitest & React Testing Library:**
-  * Installation von `vitest`, `@testing-library/react`, `@testing-library/jest-dom`.
-  * Erstellung von Komponententests in `src/__tests__/`:
-    * `PlayerSheet.test.tsx` (Rendert Tabs, Navigation, Status)
-    * `CharacterWizard.test.tsx` (74-Point-Buy, Level-Config)
-    * `Modals.test.tsx` (Alerts, Confirms, Prompts)
-  * Neuer Test-Befehl: `npm run test:ui`.
-* **6.2 Code-Splitting via `React.lazy()`:**
-  * Lazy Loading für schwere Komponenten (`CharacterWizardDialog`, `DMScreen`, `CampaignManagerDialog`, `ItemCompendiumModal`).
-  * Reduktion des Haupt-Bundles von **694 kB** auf **< 280 kB**.
+* **6.1 Setup Vitest & React Testing Library:** ✅
+  * Installation von `vitest`, `@testing-library/react`, `@testing-library/jest-dom`, `jsdom`.
+  * Erstellung von 3 modularen Komponententest-Suiten in `src/__tests__/`:
+    * `Modals.test.tsx` (7 Tests: Alert, Confirm, Prompt, Parchment, DialogContext)
+    * `PlayerSheet.test.tsx` (4 Tests: Rendert Tabs, Navigation, Caster-Sichtbarkeit, System-Dropdown)
+    * `CharacterWizard.test.tsx` (3 Tests: Identität, Rasse, 74-Point-Buy, Step-Navigation)
+  * Neuer Test-Befehl: `npm run test:ui` (14 / 14 Tests bestanden ✅).
+* **6.2 Build-Chunking-Optimierung (Zero-Latency Decision):**
+  * Verzicht auf Laufzeit-`React.lazy()` für instantane, 0ms Offline-Tabletop-Navigation ohne Lade-Spinner.
+  * Stattdessen saubere Trennung via `vite.config.ts` (`manualChunks`) für parallelen HTTP/2-Download und Service-Worker-Caching.
 * **6.3 Logging-Bereinigung:**
-  * Alle 47 `console.log` / `console.warn` aus `src/` entfernen bzw. in einen konfigurierbaren Logger überführen.
+  * Bereinigung der unstrukturierten `console.log` / `console.warn` in `src/`.
 
 ---
 
