@@ -210,7 +210,7 @@ gantt
 #### Geplante Unter-Tasks:
 ```
 [ ] Task 6.1: Vitest & React Testing Library
-    [ ] 6.1.1: vitest, @testing-library/react, jsdom installieren und konfigurieren
+    [x] 6.1.1: vitest, @testing-library/react, jsdom installieren und konfigurieren (vitest.config.ts, setup.ts, test-utils.tsx)
     [ ] 6.1.2: PlayerSheet.test.tsx
     [ ] 6.1.3: CharacterWizard.test.tsx
     [ ] 6.1.4: Modals.test.tsx
