@@ -213,8 +213,8 @@ gantt
     [x] 6.1.1: vitest, @testing-library/react, jsdom installieren und konfigurieren (vitest.config.ts, setup.ts, test-utils.tsx)
     [ ] 6.1.2: PlayerSheet.test.tsx
     [ ] 6.1.3: CharacterWizard.test.tsx
-    [ ] 6.1.4: Modals.test.tsx
-    [ ] 6.1.5: npm run test:ui Script definieren
+    [x] 6.1.4: Modals.test.tsx (CustomAlertModal, CustomConfirmModal, CustomPromptModal, ParchmentMessageModal, DialogContext)
+    [x] 6.1.5: npm run test:ui Script definieren
 
 [ ] Task 6.2: Code-Splitting via React.lazy()
     [ ] 6.2.1: Lazy-Loading für CharacterWizardDialog, DMScreen, CampaignManagerDialog
