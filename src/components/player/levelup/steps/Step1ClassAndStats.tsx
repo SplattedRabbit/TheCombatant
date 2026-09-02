@@ -344,6 +344,41 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
           </strong>
         </div>
       </div>
+
+      {/* 5. Class Progression Overview */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          background: 'rgba(200, 169, 110, 0.08)',
+          border: '1px solid rgba(200, 169, 110, 0.35)',
+          borderRadius: '6px',
+          padding: '7px 12px',
+          fontSize: '11px',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ fontSize: '9.5px', color: 'var(--inkl)', textTransform: 'uppercase', fontWeight: 600 }}>Current Classes:</span>
+          <span style={{ color: 'var(--ink)', fontWeight: 600 }}>
+            {(activePC?.classes || []).map((c: any) => {
+              const name = CLASSES_LIST.find((x: any) => x.key === c.classType)?.name || c.classType;
+              return `${name} ${c.level}`;
+            }).join(' / ') || 'None'}
+          </span>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>➔</span>
+          <span style={{ fontSize: '9.5px', color: 'var(--red)', textTransform: 'uppercase', fontWeight: 600 }}>New Build:</span>
+          <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>
+            {classesList.map((c: any) => {
+              const name = CLASSES_LIST.find((x: any) => x.key === c.classType)?.name || c.classType;
+              return `${name} ${c.level}`;
+            }).join(' / ')}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
