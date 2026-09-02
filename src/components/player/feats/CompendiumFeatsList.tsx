@@ -339,29 +339,29 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
                     <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px', minWidth: 0, overflow: 'hidden' }}>
-                          <span style={{ fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: titleColor, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          <span style={{ fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: titleColor, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                             {feat.nameEn || feat.nameDe}
                           </span>
                           {feat.parent && (
-                            <span style={{ fontSize: '6.5px', color: '#8b6934', background: 'rgba(139, 105, 52, 0.08)', padding: '0 3px', borderRadius: '1px', border: '0.5px solid rgba(139, 105, 52, 0.2)', whiteSpace: 'nowrap', flexShrink: 0 }} title={`Prerequisite / Parent Feat: ${parentName}`}>
+                            <span style={{ fontSize: '7px', color: '#8b6934', background: 'rgba(139, 105, 52, 0.08)', padding: '0 3px', borderRadius: '1px', border: '0.5px solid rgba(139, 105, 52, 0.2)', whiteSpace: 'nowrap', flexShrink: 0 }} title={`Prerequisite / Parent Feat: ${parentName}`}>
                               ↳ {parentName}
                             </span>
                           )}
                         </div>
                         <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                           {isAlreadyLearned ? (
-                            <span style={{ fontSize: '7px', color: '#245e28', fontWeight: 'bold', background: 'rgba(50, 115, 55, 0.12)', border: '0.5px solid rgba(50, 115, 55, 0.35)', padding: '1px 4px', borderRadius: '1.5px' }}>✓ Learned</span>
+                            <span style={{ fontSize: '7.5px', color: '#245e28', fontWeight: 'bold', background: 'rgba(50, 115, 55, 0.12)', border: '0.5px solid rgba(50, 115, 55, 0.35)', padding: '1px 4px', borderRadius: '1.5px' }}>✓ Learned</span>
                           ) : isEligible ? (
-                            <span style={{ fontSize: '7px', color: '#7d5f1a', fontWeight: 'bold', background: 'rgba(212, 175, 55, 0.15)', border: '0.5px solid rgba(184, 134, 11, 0.4)', padding: '1px 4px', borderRadius: '1.5px' }}>
+                            <span style={{ fontSize: '7.5px', color: '#7d5f1a', fontWeight: 'bold', background: 'rgba(212, 175, 55, 0.15)', border: '0.5px solid rgba(184, 134, 11, 0.4)', padding: '1px 4px', borderRadius: '1.5px' }}>
                               Available
                             </span>
                           ) : (
-                            <span style={{ fontSize: '7px', color: '#7a7065', fontWeight: 'bold', background: 'rgba(0, 0, 0, 0.04)', border: '0.5px solid rgba(0, 0, 0, 0.12)', padding: '1px 3px', borderRadius: '1.5px' }}>🔒 Locked</span>
+                            <span style={{ fontSize: '7.5px', color: '#7a7065', fontWeight: 'bold', background: 'rgba(0, 0, 0, 0.04)', border: '0.5px solid rgba(0, 0, 0, 0.12)', padding: '1px 3px', borderRadius: '1.5px' }}>🔒 Locked</span>
                           )}
-                          <span style={{ fontSize: '6.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
+                          <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
                         </div>
                       </div>
-                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '8.5px', color: isEligible || isAlreadyLearned ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
+                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '10.5px', color: isEligible || isAlreadyLearned ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.3, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
                         {feat.benefitRaw || feat.benefitEn || feat.benefitDe}
                       </div>
                     </div>

@@ -138,7 +138,7 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
-                  <span style={{ fontFamily: 'var(--font-title)', fontSize: '9.5px', fontWeight: 'bold', color: '#245e28', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
+                  <span style={{ fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: 'bold', color: '#245e28', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
                     {feat.nameEn || feat.nameDe}{optionLabel}
                     {!prereqsResult.met && (
                       <span style={{ color: 'var(--red)', marginLeft: '3px', fontSize: '8px' }} title={`Prerequisites not met!\n` + prereqsResult.details.map((d: any) => `${d.met ? '✓' : '✗'} ${d.desc}`).join('\n')}>
@@ -148,19 +148,19 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
                   </span>
                   <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                     {isAutomatic && (
-                      <span style={{ fontSize: '7px', color: '#4a6d44', background: 'rgba(70, 105, 65, 0.12)', border: '0.5px solid rgba(70, 105, 65, 0.3)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: '7.5px', color: '#4a6d44', background: 'rgba(70, 105, 65, 0.12)', border: '0.5px solid rgba(70, 105, 65, 0.3)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
                         {featInst.source || 'Class Feat'}
                       </span>
                     )}
                     {isClassBonus && (
-                      <span style={{ fontSize: '7px', color: '#245e28', background: 'rgba(50, 115, 55, 0.12)', border: '0.5px solid rgba(50, 115, 55, 0.3)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: '7.5px', color: '#245e28', background: 'rgba(50, 115, 55, 0.12)', border: '0.5px solid rgba(50, 115, 55, 0.3)', padding: '0 4px', borderRadius: '1px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
                         Bonus Feat
                       </span>
                     )}
-                    <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
+                    <span style={{ fontSize: '7.5px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 4px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
                   </div>
                 </div>
-                <div style={{ fontFamily: 'var(--font-body)', fontSize: '8.5px', color: 'var(--inkm)', lineHeight: 1.25, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '10.5px', color: 'var(--inkm)', lineHeight: 1.3, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
                   {feat.benefitRaw || feat.benefitEn || feat.benefitDe}
                 </div>
               </div>

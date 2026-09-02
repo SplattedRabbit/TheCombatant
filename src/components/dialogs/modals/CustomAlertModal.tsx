@@ -38,7 +38,7 @@ export const CustomAlertModal: React.FC<CustomAlertModalProps> = ({
           fontWeight: 500,
           textAlign: 'left',
           overflowY: 'auto',
-          maxHeight: 'calc(55vh / var(--app-scale, 1))',
+          maxHeight: '55vh',
           padding: '2px 4px',
           boxSizing: 'border-box'
         }}

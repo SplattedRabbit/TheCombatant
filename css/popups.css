@@ -379,6 +379,29 @@
   transform: scale(0.98);
 }
 
+/* Scaling all floating overlays & modals uniformly */
+#roleOverlay,
+#refOverlay,
+#customAlertOverlay,
+#customConfirmOverlay,
+#customPromptOverlay,
+#newDayTemplateOverlay,
+#attackChoiceOverlay,
+#damageChoiceOverlay,
+#sessionOverlay,
+#spellScrollOverlay,
+#featScrollOverlay,
+#castSpontaneousSpellOverlay,
+#prepareSpellOverlay,
+#wildShapeDialogOverlay,
+#buffDetails,
+#rollBreakdown,
+#sampleChoiceDialogOverlay,
+#parchmentMessageOverlay {
+  transform: scale(var(--app-scale));
+  transform-origin: center center;
+}
+
 #parchmentMessageOverlay {
   position: fixed;
   inset: 0;
