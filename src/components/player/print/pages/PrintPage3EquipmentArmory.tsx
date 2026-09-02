@@ -46,8 +46,8 @@ export const PrintPage3EquipmentArmory: React.FC<PrintPageProps> = ({ pc }) => {
   };
 
   // Inventory items
-  const inventory = (pc.inventory || []).slice(0, 22);
-  while (inventory.length < 20) {
+  const inventory = (pc.inventory || []).slice(0, 18);
+  while (inventory.length < 15) {
     inventory.push({ name: '', isPlaceholder: true });
   }
 

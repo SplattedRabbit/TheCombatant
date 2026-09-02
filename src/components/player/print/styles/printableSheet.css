@@ -413,20 +413,20 @@
     color: #000000 !important;
     width: 210mm !important;
     max-width: 210mm !important;
-    height: 297mm !important;
-    max-height: 297mm !important;
-    min-height: 297mm !important;
+    height: 296mm !important;
+    max-height: 296.5mm !important;
+    min-height: 290mm !important;
     margin: 0 !important;
-    padding: 7mm 9mm 6mm 9mm !important;
+    padding: 6mm 8mm 5mm 8mm !important;
     border: 1.5pt solid #000000 !important;
     outline: 0.5pt solid #000000 !important;
     outline-offset: -1.5mm !important;
-    page-break-before: always !important;
-    page-break-after: always !important;
     page-break-inside: avoid !important;
-    break-before: page !important;
-    break-after: page !important;
     break-inside: avoid !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-before: auto !important;
+    break-before: auto !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
@@ -435,12 +435,8 @@
     position: relative !important;
   }
 
-  .dnd-page:first-child {
-    page-break-before: auto !important;
-    break-before: auto !important;
-  }
-
-  .dnd-page:last-child {
+  .dnd-page:last-child,
+  .dnd-page:last-of-type {
     page-break-after: auto !important;
     break-after: auto !important;
   }
