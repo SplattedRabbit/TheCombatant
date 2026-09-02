@@ -52,4 +52,4 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 ---
 
 ## [1.0.0 - 3.0.0] - Legacy Milestones
-*For detailed commit-level history of legacy versions v1.0 through v3.0, refer to [`docs/archive/legacy_patchnotes.md`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/docs/archive/legacy_patchnotes.md).*
+*Detailed commit-level history and legacy release tags for versions v1.0 through v3.0 are maintained in the Git repository history.*
