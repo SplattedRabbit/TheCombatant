@@ -232,13 +232,15 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
           <button className="btn btn-p" onClick={handleNext}>Next Turn ▶</button>
           <button className="btn" onClick={handleNewRound}>New Round +</button>
           <button className="btn" onClick={handleReset}>⟳ Reset</button>
-          <div style={{ position: 'relative', display: 'inline-block' }}>
+          <div style={{ position: 'relative', display: 'inline-flex' }}>
             <button 
               className={`btn ${isSystemOpen ? 'active' : ''}`}
               ref={systemBtnRef} 
               onClick={() => setIsSystemOpen(!isSystemOpen)}
+              style={{ height: '100%', display: 'inline-flex', alignItems: 'center', gap: '3px', margin: 0 }}
             >
-              ⚙️ System
+              <span>⚙️</span>
+              <span>System</span>
             </button>
             {isSystemOpen && (
               <div 
