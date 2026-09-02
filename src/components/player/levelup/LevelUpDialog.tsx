@@ -218,7 +218,7 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
                 color: 'var(--ink)',
                 border: '1px solid var(--pb)',
                 borderRadius: '4px',
-                background: 'rgba(255,255,255,0.6)',
+                background: 'rgba(200, 169, 110, 0.2)',
               }}
             >
               ✕

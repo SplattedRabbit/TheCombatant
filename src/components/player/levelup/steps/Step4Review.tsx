@@ -48,7 +48,7 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
         display: 'flex',
         flexDirection: 'column',
         gap: '12px',
-        background: 'rgba(255, 255, 255, 0.65)',
+        background: 'rgba(200, 169, 110, 0.12)',
         border: '1px solid rgba(200, 169, 110, 0.5)',
         borderRadius: '6px',
         padding: '16px 20px',
@@ -115,7 +115,7 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
                     key={sk.key}
                     style={{
                       fontSize: '11px',
-                      background: 'rgba(255,255,255,0.7)',
+                      background: 'rgba(200, 169, 110, 0.22)',
                       border: '0.5px solid var(--pb)',
                       padding: '1px 6px',
                       borderRadius: '3px',

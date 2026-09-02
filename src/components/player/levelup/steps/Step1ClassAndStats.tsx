@@ -94,7 +94,7 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
       {/* 1. Class Selection Card */}
       <div
         style={{
-          background: 'rgba(255, 255, 255, 0.65)',
+          background: 'rgba(200, 169, 110, 0.12)',
           border: '1px solid rgba(200, 169, 110, 0.5)',
           borderRadius: '6px',
           padding: '12px 14px',
@@ -162,7 +162,7 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
       {isAbilityMilestone && (
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(139, 26, 26, 0.06), rgba(200, 169, 110, 0.12))',
+            background: 'linear-gradient(135deg, rgba(139, 26, 26, 0.06), rgba(200, 169, 110, 0.14))',
             border: '1.5px solid var(--red)',
             borderRadius: '6px',
             padding: '12px 14px',
@@ -194,7 +194,7 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
                     padding: '8px 4px',
                     borderRadius: '4px',
                     border: isSelected ? '1.5px solid var(--red)' : '1px solid var(--pb)',
-                    background: isSelected ? 'linear-gradient(135deg, #8b1a1a, #661010)' : 'rgba(255,255,255,0.85)',
+                    background: isSelected ? 'linear-gradient(135deg, #8b1a1a, #661010)' : 'rgba(200, 169, 110, 0.18)',
                     color: isSelected ? '#ffffff' : 'var(--ink)',
                     cursor: 'pointer',
                     display: 'flex',
@@ -223,7 +223,7 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
       {/* 3. Hit Die HP Roll Card */}
       <div
         style={{
-          background: 'rgba(255, 255, 255, 0.65)',
+          background: 'rgba(200, 169, 110, 0.12)',
           border: '1px solid rgba(200, 169, 110, 0.5)',
           borderRadius: '6px',
           padding: '12px 14px',

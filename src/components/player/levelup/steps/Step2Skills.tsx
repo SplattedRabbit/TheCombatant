@@ -46,7 +46,7 @@ export const Step2Skills: React.FC<Step2SkillsProps> = ({
         display: 'flex',
         flexDirection: 'column',
         gap: '10px',
-        background: 'rgba(255, 255, 255, 0.65)',
+        background: 'rgba(200, 169, 110, 0.12)',
         border: '1px solid rgba(200, 169, 110, 0.5)',
         borderRadius: '6px',
         padding: '12px 14px',
