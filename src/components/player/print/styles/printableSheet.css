@@ -341,8 +341,8 @@
    ========================================================================== */
 @media print {
   @page {
-    size: A4 portrait;
-    margin: 6mm 6mm 6mm 6mm;
+    size: 210mm 297mm;
+    margin: 0 !important;
   }
 
   html, body {
@@ -350,8 +350,8 @@
     color: #000000 !important;
     margin: 0 !important;
     padding: 0 !important;
-    width: 100% !important;
-    height: auto !important;
+    width: 210mm !important;
+    height: 100% !important;
     overflow: visible !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -376,7 +376,7 @@
     backdrop-filter: none !important;
     padding: 0 !important;
     margin: 0 !important;
-    width: 100% !important;
+    width: 210mm !important;
     height: auto !important;
     overflow: visible !important;
     inset: auto !important;
@@ -394,7 +394,7 @@
     gap: 0 !important;
     overflow: visible !important;
     display: block !important;
-    width: 100% !important;
+    width: 210mm !important;
     height: auto !important;
   }
 
@@ -402,25 +402,29 @@
     transform: none !important;
     display: block !important;
     gap: 0 !important;
-    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm !important;
   }
 
   .dnd-page {
     box-shadow: none !important;
     background: #ffffff !important;
     color: #000000 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 282mm !important;
-    max-height: 284mm !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+    min-height: 297mm !important;
     margin: 0 !important;
-    padding: 4mm 6mm 3mm 6mm !important;
+    padding: 7mm 9mm 6mm 9mm !important;
     border: 1.5pt solid #000000 !important;
     outline: 0.5pt solid #000000 !important;
-    outline-offset: -1.2mm !important;
-    page-break-before: auto !important;
+    outline-offset: -1.5mm !important;
+    page-break-before: always !important;
     page-break-after: always !important;
     page-break-inside: avoid !important;
+    break-before: page !important;
     break-after: page !important;
     break-inside: avoid !important;
     box-sizing: border-box !important;
@@ -429,6 +433,11 @@
     justify-content: space-between !important;
     overflow: hidden !important;
     position: relative !important;
+  }
+
+  .dnd-page:first-child {
+    page-break-before: auto !important;
+    break-before: auto !important;
   }
 
   .dnd-page:last-child {
