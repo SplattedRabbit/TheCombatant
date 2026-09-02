@@ -10,7 +10,7 @@ import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
 export interface Step4ReviewProps {
   currentConfig: any;
   targetLevel: number;
-  prevDraft: any;
+  prevDraft?: any;
   currentDraft: any;
   completedDraft: any;
   currentLevelRemainingSkillPoints: number;
@@ -19,7 +19,6 @@ export interface Step4ReviewProps {
 export const Step4Review: React.FC<Step4ReviewProps> = ({
   currentConfig,
   targetLevel,
-  prevDraft,
   currentDraft,
   completedDraft,
   currentLevelRemainingSkillPoints,
@@ -34,7 +33,7 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
       return {
         key,
         name: def?.nameEn || def?.nameDe || key,
-        points: pts,
+        points: String(pts),
       };
     });
 

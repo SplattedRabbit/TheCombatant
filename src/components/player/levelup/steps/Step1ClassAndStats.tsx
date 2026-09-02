@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { CLASSES_LIST } from '../../wizard/constants';
-import { CombatRules, validatePrestigeClassPrereqs, isOnlySpecialTextUnmet } from '@core/rules.js';
+import { validatePrestigeClassPrereqs, isOnlySpecialTextUnmet } from '@core/rules.js';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { PrestigeSpellLinkSection } from '../../wizard/levelConfig/PrestigeSpellLinkSection';
 
@@ -18,7 +18,7 @@ export interface Step1ClassAndStatsProps {
   currentDraft: any;
   prevDraft: any;
   completedDraft: any;
-  levelConfigs: any[];
+  levelConfigs?: any[];
 }
 
 export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
@@ -30,7 +30,6 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
   currentDraft,
   prevDraft,
   completedDraft,
-  levelConfigs,
 }) => {
   const [sourceTab, setSourceTab] = useState<'all' | 'phb' | 'phb2' | 'ca' | 'prestige'>('all');
 
@@ -65,7 +64,7 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
 
         if (isOnlySpecialTextUnmet(validation)) {
           showCustomConfirm(
-            `Prerequisites for ${clsDef.nameEn || clsDef.nameDe}`,
+            `Prerequisites for ${(clsDef as any).name || (clsDef as any).nameEn || (clsDef as any).nameDe || clsDef.key}`,
             `<div style="text-align: left; max-height: 250px; overflow-y: auto;"><p style="margin-bottom: 10px; color: var(--ink);">Prerequisites are met except for special condition:</p>${lines}<p style="margin-top: 10px; color: var(--ink);">Do you confirm this condition is met?</p></div>`,
             () => {
               updateLevelConfig(currentLevelIndex, 'classType', newClsKey);
@@ -73,7 +72,7 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
           );
         } else {
           showCustomAlert(
-            `Prerequisites for ${clsDef.nameEn || clsDef.nameDe}`,
+            `Prerequisites for ${(clsDef as any).name || (clsDef as any).nameEn || (clsDef as any).nameDe || clsDef.key}`,
             `<div style="text-align: left; max-height: 250px; overflow-y: auto;"><p style="margin-bottom: 10px; color: var(--ink);">You do not yet meet the prerequisites for this prestige class:</p>${lines}</div>`,
             'OK',
             '🔒'
@@ -84,8 +83,9 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
     }
 
     updateLevelConfig(currentLevelIndex, 'classType', newClsKey);
+    const hdVal = (clsDef as any).hd || (clsDef as any).hitDie || 8;
     if (!currentConfig.hpRoll || currentConfig.hpRoll === 0) {
-      updateLevelConfig(currentLevelIndex, 'hpRoll', Math.ceil(clsDef.hitDie / 2) + 1);
+      updateLevelConfig(currentLevelIndex, 'hpRoll', Math.ceil(hdVal / 2) + 1);
     }
   };
 
@@ -138,10 +138,12 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
           <option value="" disabled>-- Select a class --</option>
           {filteredClasses.map((cls) => {
             const isPrestige = cls.isPrestige;
+            const clsName = (cls as any).name || (cls as any).nameEn || (cls as any).nameDe || cls.key;
+            const clsHd = (cls as any).hd || (cls as any).hitDie || 8;
             const badge = cls.source && cls.source !== 'phb' ? ` [${cls.source.toUpperCase()}]` : '';
             return (
               <option key={cls.key} value={cls.key}>
-                {isPrestige ? '⭐ ' : ''}{cls.nameEn || cls.nameDe} (d{cls.hitDie}){badge}
+                {isPrestige ? '⭐ ' : ''}{clsName} (d{clsHd}){badge}
               </option>
             );
           })}
