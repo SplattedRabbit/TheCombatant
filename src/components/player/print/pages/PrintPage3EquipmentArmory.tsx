@@ -46,8 +46,8 @@ export const PrintPage3EquipmentArmory: React.FC<PrintPageProps> = ({ pc }) => {
   };
 
   // Inventory items
-  const inventory = (pc.inventory || []).slice(0, 16);
-  while (inventory.length < 14) {
+  const inventory = (pc.inventory || []).slice(0, 22);
+  while (inventory.length < 20) {
     inventory.push({ name: '', isPlaceholder: true });
   }
 
@@ -187,9 +187,9 @@ export const PrintPage3EquipmentArmory: React.FC<PrintPageProps> = ({ pc }) => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           
           {/* Inventory Table */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          <div>
             <div className="dnd-section-banner">Possessions &amp; Backpack</div>
-            <table className="dnd-table" style={{ flex: 1 }}>
+            <table className="dnd-table">
               <thead>
                 <tr>
                   <th style={{ textAlign: 'left' }}>Item Description</th>
@@ -200,7 +200,7 @@ export const PrintPage3EquipmentArmory: React.FC<PrintPageProps> = ({ pc }) => {
               </thead>
               <tbody>
                 {inventory.map((item: any, idx: number) => (
-                  <tr key={idx} style={{ height: '14px' }}>
+                  <tr key={idx}>
                     <td style={{ fontWeight: item.isPlaceholder ? 'normal' : 'bold' }}>{item.name || ''}</td>
                     <td style={{ textAlign: 'center', fontSize: '6pt' }}>{item.location || (item.isPlaceholder ? '' : 'Backpack')}</td>
                     <td style={{ textAlign: 'center' }}>{item.quantity || (item.isPlaceholder ? '' : '1')}</td>

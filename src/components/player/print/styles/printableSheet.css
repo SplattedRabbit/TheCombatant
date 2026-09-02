@@ -293,25 +293,38 @@
   font-size: 8pt;
 }
 
+.dnd-table thead {
+  display: table-header-group;
+}
+
 .dnd-table th {
   font-family: var(--font-dnd-data);
-  font-size: 5.8pt;
+  font-size: 6pt;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.3px;
   background: var(--dnd-gray-subtle);
   border: 0.5pt solid var(--dnd-black);
-  padding: 2px 3px;
+  padding: 2.5px 4px;
   text-align: center;
   color: var(--dnd-gray-dark);
+  height: 16px;
+  max-height: 18px;
+  vertical-align: middle;
+  line-height: 1.1;
+}
+
+.dnd-table tbody tr {
+  height: 16px;
 }
 
 .dnd-table td {
   border: 0.5pt solid var(--dnd-gray-med);
-  padding: 2.5px 3.5px;
+  padding: 2px 4px;
   font-family: var(--font-dnd-data);
   font-size: 8pt;
   line-height: 1.15;
+  vertical-align: middle;
 }
 
 .dnd-table tr:nth-child(even) td {

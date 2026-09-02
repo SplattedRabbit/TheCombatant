@@ -134,17 +134,17 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
       </div>
 
       {/* Prepared / Known Spells List */}
-      <div style={{ marginBottom: '10px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+      <div style={{ marginBottom: '10px' }}>
         <div className="dnd-section-banner">
           <span>Prepared &amp; Known Spells</span>
           <span style={{ fontSize: '5.5pt', fontWeight: 'normal', textTransform: 'none' }}>
             □ = Slot Cast / Expended
           </span>
         </div>
-        <table className="dnd-table" style={{ flex: 1, fontSize: '7.5pt' }}>
+        <table className="dnd-table">
           <thead>
             <tr>
-              <th style={{ width: '18px' }}>Cast</th>
+              <th style={{ width: '20px' }}>Cast</th>
               <th style={{ width: '24px' }}>Lvl</th>
               <th style={{ textAlign: 'left', width: '130px' }}>Spell Name</th>
               <th style={{ width: '70px' }}>School</th>
@@ -155,7 +155,7 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
           </thead>
           <tbody>
             {displaySpells.map((sp, idx) => (
-              <tr key={idx} style={{ height: '16px' }}>
+              <tr key={idx}>
                 <td style={{ textAlign: 'center' }}>
                   {!sp.isPlaceholder && <span className="dnd-checkbox" />}
                 </td>
