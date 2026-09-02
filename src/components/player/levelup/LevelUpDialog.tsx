@@ -175,9 +175,9 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
         backdropFilter: 'blur(3px)',
         zIndex: 99999,
         display: 'flex',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'center',
-        padding: 'calc(24px * var(--app-scale, 1)) 16px',
+        padding: '20px',
         overflowY: 'auto',
         boxSizing: 'border-box',
       }}
@@ -188,11 +188,9 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
       <div
         className="sheet no-print"
         style={{
-          width: '880px',
-          maxWidth: 'calc(96vw / var(--app-scale, 1))',
-          maxHeight: 'calc(90vh / var(--app-scale, 1))',
-          transform: 'scale(var(--app-scale, 1))',
-          transformOrigin: 'top center',
+          width: '920px',
+          maxWidth: '96vw',
+          maxHeight: '92vh',
           background: 'var(--parchment, #fdf6e2)',
           border: '2px solid var(--pb, #c8a96e)',
           borderRadius: '8px',

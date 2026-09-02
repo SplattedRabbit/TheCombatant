@@ -29,7 +29,19 @@ export const CustomAlertModal: React.FC<CustomAlertModalProps> = ({
       </div>
       <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, var(--pb), transparent)', margin: '8px 0 12px' }} />
       <div 
-        style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--ink)', lineHeight: 1.5, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}
+        style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '12.5px',
+          color: 'var(--ink)',
+          lineHeight: 1.5,
+          marginBottom: '14px',
+          fontWeight: 500,
+          textAlign: 'left',
+          overflowY: 'auto',
+          maxHeight: '60vh',
+          padding: '2px 4px',
+          boxSizing: 'border-box'
+        }}
         dangerouslySetInnerHTML={{ __html: sanitizeHtml(message) }}
       />
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>

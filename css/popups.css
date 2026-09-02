@@ -339,14 +339,14 @@
   opacity: 0;
   pointer-events: none;
   transition: transform 0.15s ease-out, opacity 0.15s ease-out;
-  transform: scale(var(--app-scale)) translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .system-dropdown.open {
   display: flex;
   opacity: 1;
   pointer-events: auto;
-  transform: scale(var(--app-scale)) translateY(0);
+  transform: translateY(0);
 }
 
 /* Menu Items - Elegant Scroll Action Buttons */
@@ -377,29 +377,6 @@
 
 .fab-item:active {
   transform: scale(0.98);
-}
-
-/* Scaling all floating overlays & modals uniformly */
-#roleOverlay,
-#refOverlay,
-#customAlertOverlay,
-#customConfirmOverlay,
-#customPromptOverlay,
-#newDayTemplateOverlay,
-#attackChoiceOverlay,
-#damageChoiceOverlay,
-#sessionOverlay,
-#spellScrollOverlay,
-#featScrollOverlay,
-#castSpontaneousSpellOverlay,
-#prepareSpellOverlay,
-#wildShapeDialogOverlay,
-#buffDetails,
-#rollBreakdown,
-#sampleChoiceDialogOverlay,
-#parchmentMessageOverlay {
-  transform: scale(var(--app-scale));
-  transform-origin: center center;
 }
 
 #parchmentMessageOverlay {
