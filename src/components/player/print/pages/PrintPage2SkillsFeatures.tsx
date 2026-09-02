@@ -126,8 +126,6 @@ export const PrintPage2SkillsFeatures: React.FC<PrintPageProps> = ({ pc }) => {
 
   return (
     <div className="dnd-page">
-      <div className="dnd-page-border" />
-
       {/* Header Banner */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
         <div>

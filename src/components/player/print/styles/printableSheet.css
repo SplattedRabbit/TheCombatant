@@ -101,44 +101,32 @@
 .dnd-page {
   width: 210mm;
   min-height: 297mm;
-  padding: 10mm 12mm;
+  padding: 8mm 10mm 6mm 10mm;
   box-sizing: border-box;
   position: relative;
   background: #ffffff;
   color: var(--dnd-black);
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1.5pt solid var(--dnd-black);
+  outline: 0.5pt solid var(--dnd-black);
+  outline-offset: -1.5mm;
   font-family: var(--font-dnd-body);
   font-size: 10pt;
   line-height: 1.15;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   page-break-after: always;
 }
 
 /* Theme: Parchment on-screen */
 .theme-parchment .dnd-page {
   background: var(--dnd-parchment-bg);
-  border: 1px solid var(--dnd-parchment-border);
 }
 
 /* Theme: Ink-Friendly (pure B&W) */
 .theme-ink .dnd-page {
   background: #ffffff;
-  border: 1px solid #cccccc;
-}
-
-/* Decorative outer double border */
-.dnd-page-border {
-  position: absolute;
-  inset: 5mm;
-  border: 1.5pt solid var(--dnd-black);
-  pointer-events: none;
-}
-.dnd-page-border::after {
-  content: '';
-  position: absolute;
-  inset: 1.5mm;
-  border: 0.5pt solid var(--dnd-black);
 }
 
 /* Header Logo & Page Title */
@@ -354,7 +342,7 @@
 @media print {
   @page {
     size: A4 portrait;
-    margin: 8mm 8mm 8mm 8mm;
+    margin: 6mm 6mm 6mm 6mm;
   }
 
   html, body {
@@ -365,6 +353,8 @@
     width: 100% !important;
     height: auto !important;
     overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   /* Hide the entire web app root and all dialogs/overlays except the printable folio */
@@ -417,20 +407,27 @@
 
   .dnd-page {
     box-shadow: none !important;
-    border: none !important;
     background: #ffffff !important;
     color: #000000 !important;
     width: 100% !important;
     max-width: 100% !important;
-    min-height: 275mm !important;
-    height: auto !important;
+    height: 282mm !important;
+    max-height: 284mm !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 4mm 6mm 3mm 6mm !important;
+    border: 1.5pt solid #000000 !important;
+    outline: 0.5pt solid #000000 !important;
+    outline-offset: -1.2mm !important;
     page-break-before: auto !important;
     page-break-after: always !important;
     page-break-inside: avoid !important;
     break-after: page !important;
+    break-inside: avoid !important;
     box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    overflow: hidden !important;
     position: relative !important;
   }
 
