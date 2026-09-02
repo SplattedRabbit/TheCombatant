@@ -175,9 +175,10 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
         backdropFilter: 'blur(3px)',
         zIndex: 99999,
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
-        padding: '16px',
+        padding: 'calc(24px * var(--app-scale, 1)) 16px',
+        overflowY: 'auto',
         boxSizing: 'border-box',
       }}
       onClick={(e) => {
@@ -187,11 +188,11 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
       <div
         className="sheet no-print"
         style={{
-          width: '860px',
+          width: '880px',
           maxWidth: 'calc(96vw / var(--app-scale, 1))',
           maxHeight: 'calc(90vh / var(--app-scale, 1))',
           transform: 'scale(var(--app-scale, 1))',
-          transformOrigin: 'center center',
+          transformOrigin: 'top center',
           background: 'var(--parchment, #fdf6e2)',
           border: '2px solid var(--pb, #c8a96e)',
           borderRadius: '8px',
@@ -201,6 +202,7 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
           overflow: 'hidden',
           position: 'relative',
           padding: 0,
+          margin: '0 auto',
         }}
         onClick={(e) => e.stopPropagation()}
       >
