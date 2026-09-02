@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import { getACFsByClass } from '@core/data/acf-data.js';
+import { getACFsByClass, getConflictingACFs, getACF } from '@core/data/acf-data.js';
 import { CombatState } from '@core/state.js';
 
 interface ClassACFSelectorProps {
@@ -48,6 +48,9 @@ export const ClassACFSelector: React.FC<ClassACFSelectorProps> = ({ pc, classKey
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
         {availableACFs.map((acf: any) => {
           const isActive = activeACFs.includes(acf.id);
+          const conflicts = getConflictingACFs(acf.id, activeACFs);
+          const conflictingName = conflicts.length > 0 ? getACF(conflicts[0])?.name : null;
+
           return (
             <div
               key={acf.id}
@@ -73,6 +76,11 @@ export const ClassACFSelector: React.FC<ClassACFSelectorProps> = ({ pc, classKey
                 </div>
                 <div style={{ fontSize: '7px', color: '#b7950b', fontStyle: 'italic', lineHeight: 1.1 }}>
                   ⚡ Replaces: <span style={{ color: 'var(--ink)' }}>{acf.replaces}</span>
+                  {!isActive && conflictingName && (
+                    <span style={{ color: 'var(--red)', marginLeft: '4px', fontWeight: 'bold' }}>
+                      (Swaps out {conflictingName})
+                    </span>
+                  )}
                 </div>
                 <div style={{ fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '1px' }}>
                   {acf.description || acf.desc}
@@ -102,7 +110,7 @@ export const ClassACFSelector: React.FC<ClassACFSelectorProps> = ({ pc, classKey
                   color: isActive ? '#fff' : 'var(--ink)'
                 }}
               >
-                {isActive ? '✓ Active' : '+ Enable'}
+                {isActive ? '✓ Active' : (conflictingName ? '⇄ Swap' : '+ Enable')}
               </button>
             </div>
           );

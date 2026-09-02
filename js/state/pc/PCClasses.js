@@ -6,6 +6,7 @@
 
 import { updatePCBatch } from './PCGeneral.js';
 import { getFeatIdsByClassPrereq } from '../../data/feats-data.js';
+import { getConflictingACFs } from '../../data/acf-data.js';
 
 /**
  * Bug 3 Fix: Removes any feats from the PC that require a specific class
@@ -84,6 +85,11 @@ export function togglePCACF(acfId) {
     if (idx >= 0) {
       pc.acfs.splice(idx, 1);
     } else {
+      // Auto-remove any conflicting ACFs that replace the exact same feature
+      const conflicting = getConflictingACFs(acfId, pc.acfs);
+      if (conflicting && conflicting.length > 0) {
+        pc.acfs = pc.acfs.filter(id => !conflicting.includes(id));
+      }
       pc.acfs.push(acfId);
 
       // Handle feature restrictions/replacements

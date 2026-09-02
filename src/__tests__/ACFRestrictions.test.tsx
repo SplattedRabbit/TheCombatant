@@ -87,4 +87,21 @@ describe('ACF UI Restrictions & Overrides', () => {
     expect(screen.getByText(/Berserker Strength \(Replaces Rage\)/i)).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Activate Rage/i })).not.toBeInTheDocument();
   });
+
+  it('shows swap warning for conflicting ACFs in RangerFeaturesCard', () => {
+    const pc = {
+      id: 'ranger_pc',
+      name: 'Ranger Hero',
+      classes: [{ classType: 'ranger', level: 6 }],
+      acfs: ['ranger_distracting_attack'],
+      dailyAbilities: []
+    };
+
+    render(<RangerFeaturesCard pc={pc} level={6} />);
+    const header = screen.getByText(/🎭 Ranger/i);
+    fireEvent.click(header);
+
+    expect(screen.getByText(/Swaps out Distracting Attack/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /⇄ Swap/i })).toBeInTheDocument();
+  });
 });

@@ -13,6 +13,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.33',
     replaces: 'Rage',
+    replacesKey: 'barbarian_rage',
     description: 'When HP falls below (5 × Barbarian level), automatically gain +4 STR (+6 at 11, +8 at 20), +2 bonus on all saves (+3 at 11, +4 at 20), DR 2/— (DR 3/— at 11, DR 4/— at 17, DR 5/— at 20), and -2 AC. Activates without daily use limit.'
   },
 
@@ -24,6 +25,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.35',
     replaces: 'Bardic Knowledge',
+    replacesKey: 'bard_bardic_knowledge',
     description: 'When making any skill check, you can use 1/2 your Bard level (rounded down) in place of your ranks in that skill (even for trained-only skills).'
   },
   bard_spellbreaker_song: {
@@ -33,6 +35,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.35',
     replaces: 'Countersong',
+    replacesKey: 'bard_countersong',
     description: 'Spend 1 bardic music use to disrupt enemy spellcasting within 30 ft. Any enemy casting a spell with a verbal component suffers a 20% spell failure chance for 3 rounds.'
   },
 
@@ -44,6 +47,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.37',
     replaces: 'Spontaneous Cure / Inflict Spells',
+    replacesKey: 'cleric_spontaneous_spells',
     description: 'Choose one of your cleric domains. You can spontaneously convert prepared cleric spells into spells from that domain instead of cure/inflict spells.'
   },
 
@@ -55,6 +59,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.39',
     replaces: "Spontaneous Summon Nature's Ally",
+    replacesKey: 'druid_spontaneous_sna',
     description: 'Sacrifice a prepared spell as a standard action to grant all allies within 30 ft (including yourself) Fast Healing equal to the spell level for 3 rounds.'
   },
   druid_shapeshift: {
@@ -64,6 +69,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.39',
     replaces: 'Wild Shape & Animal Companion',
+    replacesKey: ['druid_wild_shape', 'druid_animal_companion'],
     description: 'Change form as a swift action at will into Predator Form (+4 STR, +4 Reflex, bite 1d6) and higher forms (Aerial Form at Lvl 7, Ferocious Form at Lvl 9, Forest Avenger at Lvl 12, Elemental Form at Lvl 16) with no daily use limit.'
   },
 
@@ -75,6 +81,7 @@ export const ACF_REGISTRY = {
     minLevel: 6,
     source: 'PHB2 p.44',
     replaces: '6th-level Fighter Bonus Feat',
+    replacesKey: 'fighter_bonus_feat_6',
     description: 'As a full-round action, make one attack at highest BAB to gain a +2 dodge bonus to AC until the start of your next turn (+4 at 11th level, +6 at 16th level).'
   },
   fighter_counterattack: {
@@ -84,6 +91,7 @@ export const ACF_REGISTRY = {
     minLevel: 12,
     source: 'PHB2 p.45',
     replaces: '12th-level Fighter Bonus Feat',
+    replacesKey: 'fighter_bonus_feat_12',
     description: 'As a full-round action, make one melee attack at highest BAB. At any time before your next turn, make an immediate action melee retaliatory attack at highest BAB against an enemy who attacks you in melee.'
   },
   fighter_overpowering_attack: {
@@ -93,6 +101,7 @@ export const ACF_REGISTRY = {
     minLevel: 16,
     source: 'PHB2 p.45',
     replaces: '16th-level Fighter Bonus Feat',
+    replacesKey: 'fighter_bonus_feat_16',
     description: 'As a full-round action, deliver a single focused strike at highest BAB. This attack deals double damage, as do any attacks of opportunity made before your next turn.'
   },
 
@@ -104,6 +113,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.51',
     replaces: 'Flurry of Blows',
+    replacesKey: 'monk_flurry_of_blows',
     description: 'As a full-round action, make one attack with unarmed strike or special monk weapon at highest BAB (-2 attack penalty, -1 at 5th, 0 at 9th). If it hits, it deals double damage (and stunning save DC increases by +2). At 11th level, make two attacks at highest BAB.'
   },
   monk_spell_reflection: {
@@ -113,6 +123,7 @@ export const ACF_REGISTRY = {
     minLevel: 2,
     source: 'CS p.35',
     replaces: 'Evasion',
+    replacesKey: 'monk_evasion',
     description: 'When an enemy misses you with a ray or ranged touch attack, you can redirect the spell back at the caster as an immediate action with a successful Reflex save (DC 10 + spell level).'
   },
   monk_water_step: {
@@ -122,6 +133,7 @@ export const ACF_REGISTRY = {
     minLevel: 4,
     source: 'CS p.35',
     replaces: 'Slow Fall (20 ft)',
+    replacesKey: 'monk_slow_fall',
     description: 'Spend 1 Ki use to walk, run, or charge across any liquid or water surface as if it were solid ground for 1 round.'
   },
   monk_standing_jump: {
@@ -131,6 +143,7 @@ export const ACF_REGISTRY = {
     minLevel: 5,
     source: 'CS p.34',
     replaces: 'High Jump',
+    replacesKey: 'monk_high_jump',
     description: 'Jump without needing a 20-foot running start; vertical jump DCs are reduced and maximum height is doubled.'
   },
 
@@ -142,6 +155,7 @@ export const ACF_REGISTRY = {
     minLevel: 5,
     source: 'PHB2 p.53',
     replaces: 'Special Mount',
+    replacesKey: 'paladin_special_mount',
     description: 'When using Smite Evil on a charge attack, deal an additional +2 points of damage per paladin level (total +3 damage/level). If the charge attack misses, the smite use is not expended.'
   },
   paladin_divine_spirit: {
@@ -151,6 +165,7 @@ export const ACF_REGISTRY = {
     minLevel: 5,
     source: 'PHB2 p.54',
     replaces: 'Special Mount',
+    replacesKey: 'paladin_special_mount',
     description: 'Summon an intangible celestial spirit (Spirit of Healing, Spirit of Combat, Spirit of Heroism, or Spirit of Fallen) for a number of rounds equal to your Paladin level.'
   },
   paladin_curse_breaker: {
@@ -160,6 +175,7 @@ export const ACF_REGISTRY = {
     minLevel: 6,
     source: 'CS p.34',
     replaces: 'Remove Disease',
+    replacesKey: 'paladin_remove_disease',
     description: 'Cast Break Enchantment 1/week (+1/week per 3 levels above 6th) with caster level equal to your Paladin level.'
   },
 
@@ -171,6 +187,7 @@ export const ACF_REGISTRY = {
     minLevel: 4,
     source: 'CS p.35',
     replaces: 'Animal Companion',
+    replacesKey: 'ranger_animal_companion',
     description: 'Gain a spiritual guide entity granting a +1/4 Ranger level divine bonus to Handle Animal, Ride, and Survival checks, and Commune with Nature 1/day.'
   },
   ranger_distracting_attack: {
@@ -180,6 +197,7 @@ export const ACF_REGISTRY = {
     minLevel: 4,
     source: 'PHB2 p.55',
     replaces: 'Animal Companion',
+    replacesKey: 'ranger_animal_companion',
     description: 'Whenever you hit an enemy with a weapon attack (melee or ranged), that enemy is considered flanked by you for your allies until attacked by an ally or until your next turn.'
   },
   ranger_spell_reflection: {
@@ -189,6 +207,7 @@ export const ACF_REGISTRY = {
     minLevel: 9,
     source: 'CS p.35',
     replaces: 'Evasion',
+    replacesKey: 'ranger_evasion',
     description: 'When an enemy misses you with a ray or ranged touch attack, you can redirect the spell back at the caster as an immediate action with a successful Reflex save (DC 10 + spell level).'
   },
 
@@ -200,6 +219,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'CS p.32',
     replaces: 'Trapfinding',
+    replacesKey: 'rogue_trapfinding',
     description: 'Substitute Appraise for Knowledge checks regarding items, relics, or historical artifacts, and gain the ability to evaluate magical properties without identifying spells.'
   },
   rogue_spell_reflection: {
@@ -209,6 +229,7 @@ export const ACF_REGISTRY = {
     minLevel: 2,
     source: 'CS p.35',
     replaces: 'Evasion',
+    replacesKey: 'rogue_evasion',
     description: 'When an enemy misses you with a ray or ranged touch attack, you can redirect the spell back at the caster as an immediate action with a successful Reflex save (DC 10 + spell level).'
   },
   rogue_deaths_ruin: {
@@ -218,6 +239,7 @@ export const ACF_REGISTRY = {
     minLevel: 3,
     source: 'CS p.33',
     replaces: 'Trap Sense',
+    replacesKey: 'rogue_trap_sense',
     description: 'You can deal sneak attack damage to undead creatures, dealing 1/2 your normal sneak attack dice (rounded down, minimum 1d6).'
   },
   rogue_disruptive_attack: {
@@ -227,6 +249,7 @@ export const ACF_REGISTRY = {
     minLevel: 4,
     source: 'PHB2 p.57',
     replaces: 'Uncanny Dodge at 4th level (delayed to 8th level)',
+    replacesKey: 'rogue_uncanny_dodge',
     description: 'Whenever you hit a flat-footed or flanked target, you can choose to sacrifice your sneak attack damage to inflict a -5 penalty to the target’s Armor Class for 1 round (works even on creatures normally immune to sneak attack).'
   },
 
@@ -238,6 +261,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.61',
     replaces: 'Familiar',
+    replacesKey: 'sorcerer_familiar',
     description: 'Apply known metamagic feats to sorcerer spells without increasing casting time (allows Quicken Spell). Usable (3 + INT modifier, min 1) times per day.'
   },
 
@@ -249,6 +273,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.68',
     replaces: 'Familiar',
+    replacesKey: 'wizard_familiar',
     description: 'Gain an immediate-action school-specific spell-like ability usable (INT modifier, min 1) times per day (Abjuration: Urgent Shield +2 AC; Conjuration: Abrupt Jaunt 10 ft teleport; Divination: Glimpse Peril +2 save; Enchantment: Instant Daze; Evocation: Counterfire 1d6/3 lvl; Illusion: Brief Figment double; Necromancy: Cursed Glance -2 atk/saves; Transmutation: Sudden Shift 5 ft step).'
   },
 
@@ -260,6 +285,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'CS p.32',
     replaces: 'Grace (+1 Reflex save bonus at 2nd level)',
+    replacesKey: 'swashbuckler_grace',
     description: 'Spend a swift action (usable INT modifier, min 1, times per day) to gain Spider Climb, Expeditious Retreat, or Feather Fall for 1 round.'
   },
   swashbuckler_shield_of_blades: {
@@ -269,6 +295,7 @@ export const ACF_REGISTRY = {
     minLevel: 5,
     source: 'PHB2 p.50',
     replaces: 'Dodge Bonus',
+    replacesKey: 'swashbuckler_dodge_bonus',
     description: 'Gain a +2 shield bonus to AC (+1 per 5 levels above 5th) whenever you wield two weapons or a double weapon and attack with both in the same round.'
   },
   swashbuckler_spell_reflection: {
@@ -278,6 +305,7 @@ export const ACF_REGISTRY = {
     minLevel: 5,
     source: 'CS p.35',
     replaces: 'Dodge Bonus +1',
+    replacesKey: 'swashbuckler_dodge_bonus',
     description: 'When an enemy misses you with a ray or ranged touch attack, you can redirect the spell back at the caster as an immediate action with a successful Reflex save (DC 10 + spell level).'
   },
 
@@ -289,6 +317,7 @@ export const ACF_REGISTRY = {
     minLevel: 3,
     source: 'PHB2 p.59',
     replaces: 'Fast Movement (+10 ft)',
+    replacesKey: 'scout_fast_movement',
     description: 'Gain a climb speed equal to 1/2 base speed, retain Dex bonus to AC while climbing, and attack with one-handed or light weapons while climbing.'
   },
   scout_spell_reflection: {
@@ -298,6 +327,7 @@ export const ACF_REGISTRY = {
     minLevel: 5,
     source: 'CS p.35',
     replaces: 'Evasion',
+    replacesKey: 'scout_evasion',
     description: 'When an enemy misses you with a ray or ranged touch attack, you can redirect the spell back at the caster as an immediate action with a successful Reflex save (DC 10 + spell level).'
   },
 
@@ -309,6 +339,7 @@ export const ACF_REGISTRY = {
     minLevel: 4,
     source: 'PHB2 p.43',
     replaces: 'Familiar',
+    replacesKey: 'hexblade_familiar',
     description: 'Create an illusory shadowy panther that moves up to 24 ft per round. Any enemy adjacent to the dark companion suffers a -2 penalty on AC and saving throws.'
   },
 
@@ -320,6 +351,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.46',
     replaces: 'Skill Focus (Diplomacy)',
+    replacesKey: 'marshal_skill_focus',
     description: 'Once per day per point of CHA bonus, grant temporary HP equal to (Marshal level + CHA bonus) to an ally who is dropped below 0 HP or suffering from fear/paralysis.'
   },
 
@@ -331,6 +363,7 @@ export const ACF_REGISTRY = {
     minLevel: 3,
     source: 'PHB2 p.51',
     replaces: 'Advanced Learning',
+    replacesKey: 'warmage_advanced_learning',
     description: 'Add any wizard spell (not just evocation) to your list of spells known at a spell level 1 higher than its normal wizard spell level.'
   },
 
@@ -342,6 +375,7 @@ export const ACF_REGISTRY = {
     minLevel: 1,
     source: 'PHB2 p.41',
     replaces: 'Deity Weapon Proficiency & Weapon Focus',
+    replacesKey: 'favored_soul_deity_weapon',
     description: 'Cast divine spells without making obvious somatic or verbal gestures, requiring an enemy Spot or Listen check (DC 15 + spell level) to realize you are casting.'
   }
 };
@@ -368,3 +402,25 @@ export function getACFsByClass(classKey, level = 99) {
 export function getACF(acfId) {
   return ACF_REGISTRY[acfId] || null;
 }
+
+/**
+ * Returns any already active ACFs that replace the same feature as targetAcfId (mutually exclusive).
+ * @param {string} targetAcfId
+ * @param {string[]} [activeAcfIds=[]]
+ * @returns {string[]} List of conflicting ACF IDs
+ */
+export function getConflictingACFs(targetAcfId, activeAcfIds = []) {
+  if (!targetAcfId || !Array.isArray(activeAcfIds) || activeAcfIds.length === 0) return [];
+  const target = ACF_REGISTRY[targetAcfId];
+  if (!target || !target.replacesKey) return [];
+  const targetKeys = Array.isArray(target.replacesKey) ? target.replacesKey : [target.replacesKey];
+
+  return activeAcfIds.filter(id => {
+    if (id === targetAcfId) return false;
+    const other = ACF_REGISTRY[id];
+    if (!other || !other.replacesKey || other.classKey !== target.classKey) return false;
+    const otherKeys = Array.isArray(other.replacesKey) ? other.replacesKey : [other.replacesKey];
+    return targetKeys.some(k => otherKeys.includes(k));
+  });
+}
+

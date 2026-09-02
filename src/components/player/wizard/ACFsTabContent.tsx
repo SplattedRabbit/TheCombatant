@@ -6,7 +6,7 @@
  */
 
 import React, { useState } from 'react';
-import { ACF_REGISTRY } from '@core/data/acf-data.js';
+import { ACF_REGISTRY, getConflictingACFs, getACF } from '@core/data/acf-data.js';
 
 interface ACFsTabContentProps {
   currentConfig: any;
@@ -51,7 +51,10 @@ export const ACFsTabContent: React.FC<ACFsTabContentProps> = ({
     if (currentLevelACFs.includes(acfId)) {
       next = currentLevelACFs.filter(id => id !== acfId);
     } else {
-      next = [...currentLevelACFs, acfId];
+      // Remove any conflicting ACFs that replace the same feature
+      const conflicting = getConflictingACFs(acfId, currentLevelACFs);
+      next = currentLevelACFs.filter(id => !conflicting.includes(id));
+      next.push(acfId);
     }
     updateLevelConfig(currentLevelIndex, 'acfs', next);
   };
@@ -146,6 +149,8 @@ export const ACFsTabContent: React.FC<ACFsTabContentProps> = ({
             ) : (
               filteredACFs.map(acf => {
                 const isSelected = allSelectedACFs.includes(acf.id);
+                const conflicts = getConflictingACFs(acf.id, allSelectedACFs);
+                const conflictingName = conflicts.length > 0 ? getACF(conflicts[0])?.name : null;
 
                 return (
                   <div
@@ -195,12 +200,17 @@ export const ACFsTabContent: React.FC<ACFsTabContentProps> = ({
                           lineHeight: 1
                         }}
                       >
-                        {isSelected ? '✓ Selected' : '+ Select ACF'}
+                        {isSelected ? '✓ Selected' : (conflictingName ? '⇄ Swap' : '+ Select ACF')}
                       </button>
                     </div>
 
                     <div style={{ fontSize: '9px', color: '#b7950b', fontWeight: 'bold' }}>
                       ⚡ Replaces: <span style={{ color: 'var(--ink)' }}>{acf.replaces}</span>
+                      {!isSelected && conflictingName && (
+                        <span style={{ color: 'var(--red)', marginLeft: '6px' }}>
+                          (Swaps out {conflictingName})
+                        </span>
+                      )}
                     </div>
 
                     <div style={{ fontSize: '9.5px', color: 'var(--inkm)', lineHeight: 1.3, fontFamily: 'var(--font-body)' }}>
