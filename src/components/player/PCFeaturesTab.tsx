@@ -37,8 +37,28 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
   const triggerRender = () => setTick(t => t + 1);
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
-  const hasCompanion = (hasClasses && pc.classes.some((c: any) => ['druid', 'ranger'].includes(c.classType))) || (pc.companionType && pc.companionType !== 'none');
-  const hasFamiliar = (hasClasses && pc.classes.some((c: any) => ['wizard', 'sorcerer'].includes(c.classType))) || (pc.familiarType && pc.familiarType !== 'none');
+  const activeACFs: string[] = Array.isArray(pc.acfs) ? pc.acfs : [];
+
+  // Check if Animal Companion is available (not traded away by ACFs)
+  const isCompanionReplaced = activeACFs.includes('ranger_distracting_attack') || 
+                              activeACFs.includes('ranger_spiritual_guide') || 
+                              activeACFs.includes('druid_shapeshift');
+  
+  const hasDruid = hasClasses && pc.classes.some((c: any) => c.classType === 'druid');
+  const hasRanger = hasClasses && pc.classes.some((c: any) => c.classType === 'ranger' && (c.level || 0) >= 4);
+
+  const hasCompanion = !isCompanionReplaced && ((hasDruid || hasRanger) || (pc.companionType && pc.companionType !== 'none'));
+
+  // Check if Familiar is available (not traded away by ACFs)
+  const isFamiliarReplaced = activeACFs.includes('wizard_immediate_magic') || 
+                             activeACFs.includes('sorcerer_metamagic_specialist') || 
+                             activeACFs.includes('hexblade_dark_companion');
+
+  const hasWizard = hasClasses && pc.classes.some((c: any) => c.classType === 'wizard');
+  const hasSorcerer = hasClasses && pc.classes.some((c: any) => c.classType === 'sorcerer');
+  const hasHexblade = hasClasses && pc.classes.some((c: any) => c.classType === 'hexblade' && (c.level || 0) >= 4);
+
+  const hasFamiliar = !isFamiliarReplaced && ((hasWizard || hasSorcerer || hasHexblade) || (pc.familiarType && pc.familiarType !== 'none'));
 
   const [activeSubTab, setActiveSubTab] = useState<'companion' | 'familiar'>('companion');
 

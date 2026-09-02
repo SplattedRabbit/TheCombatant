@@ -141,10 +141,26 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
       {isExpanded && (
         <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
-          <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
-            Class Features
-          </div>
-          {maxUses > 0 ? (
+          {/* Active ACF Highlights */}
+          {Array.isArray(pc.acfs) && pc.acfs.includes('druid_spontaneous_rejuvenation') && (
+            <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--red)', lineHeight: 1.25, marginTop: '2px' }}>
+              <strong>⚡ Spontaneous Rejuvenation (Active):</strong> Replaces Spontaneous Summon Nature's Ally. Sacrifice a prepared spell to grant all allies within 30 ft Fast Healing equal to spell level for 3 rounds.
+            </div>
+          )}
+
+          {Array.isArray(pc.acfs) && pc.acfs.includes('druid_shapeshift') ? (
+            <div style={{ background: 'rgba(46, 125, 50, 0.08)', border: '0.5px solid rgba(46, 125, 50, 0.4)', borderRadius: '2px', padding: '5px 7px', fontSize: '7.5px', color: '#2e7d32', lineHeight: 1.3, marginTop: '2px' }}>
+              <strong style={{ fontSize: '8px' }}>⚡ Shapeshift (Replaces Wild Shape & Animal Companion):</strong><br />
+              Change form as a <strong>Swift Action</strong> at will (no daily limit).<br />
+              <span style={{ color: 'var(--ink)' }}>
+                • <strong>Predator Form (Lvl 1+):</strong> +4 STR, +4 Reflex, Bite 1d6.<br />
+                {level >= 7 && <>• <strong>Aerial Form (Lvl 7+):</strong> Fly 60 ft (good), +2 STR, +2 Reflex, Talon 1d6.<br /></>}
+                {level >= 9 && <>• <strong>Ferocious Form (Lvl 9+):</strong> +8 STR, +4 Fort, Claws 1d8 / Bite 1d6.<br /></>}
+                {level >= 12 && <>• <strong>Forest Avenger (Lvl 12+):</strong> +12 STR, +4 Fort, +4 AC, Slam 1d10.<br /></>}
+                {level >= 16 && <>• <strong>Elemental Form (Lvl 16+):</strong> +16 STR, +4 AC, Fly/Burrow/Swim 40 ft, Elemental Immunities.</>}
+              </span>
+            </div>
+          ) : maxUses > 0 ? (
             <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
               <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '0.5px dashed rgba(200,169,110,0.15)', paddingBottom: '4px', marginBottom: '2px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '8px', paddingTop: '1px', marginBottom: '2px' }}>

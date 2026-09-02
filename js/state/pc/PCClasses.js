@@ -85,6 +85,23 @@ export function togglePCACF(acfId) {
       pc.acfs.splice(idx, 1);
     } else {
       pc.acfs.push(acfId);
+
+      // Handle feature restrictions/replacements
+      if (['ranger_distracting_attack', 'ranger_spiritual_guide', 'druid_shapeshift'].includes(acfId)) {
+        pc.companionType = 'none';
+      }
+      if (['wizard_immediate_magic', 'sorcerer_metamagic_specialist', 'hexblade_dark_companion'].includes(acfId)) {
+        pc.familiarType = 'none';
+      }
+      if (acfId === 'barbarian_berserker_strength' && pc.isRaging) {
+        if (typeof pc.exitRage === 'function') pc.exitRage();
+      }
+      if (acfId === 'druid_shapeshift' && pc.activeShape && pc.activeShape !== 'none') {
+        if (typeof pc.exitShape === 'function') pc.exitShape();
+      }
+    }
+    if (typeof pc.rebuildStatModifiers === 'function') {
+      pc.rebuildStatModifiers();
     }
   });
 }

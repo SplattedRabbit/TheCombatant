@@ -84,57 +84,70 @@ export const BarbarianFeaturesCard: React.FC<BarbarianFeaturesCardProps> = ({ pc
       {isExpanded && (
         <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '100%' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '8.5px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span><strong>Rage:</strong></span>
-              <button 
-                onClick={() => setRageRulesOpen(!rageRulesOpen)}
-                className="btn btn-toggle-rules-rage" 
-                style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
-                title="Show rules"
-              >
-                📖 {rageRulesOpen ? '▲' : '▼'}
-              </button>
+          {Array.isArray(pc.acfs) && pc.acfs.includes('barbarian_berserker_strength') ? (
+            <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '5px 7px', fontSize: '7.5px', color: 'var(--red)', lineHeight: 1.3, marginTop: '2px' }}>
+              <strong style={{ fontSize: '8px' }}>⚡ Berserker Strength (Replaces Rage):</strong><br />
+              Triggers automatically when HP falls below <strong>{5 * level} HP</strong>.<br />
+              <span style={{ color: 'var(--ink)' }}>
+                • <strong>Active Bonuses:</strong> +{level >= 20 ? 8 : (level >= 11 ? 6 : 4)} STR, +{level >= 20 ? 4 : (level >= 11 ? 3 : 2)} to all Saves, DR {level >= 20 ? '5' : (level >= 17 ? '4' : (level >= 11 ? '3' : '2'))}/—, -2 AC.<br />
+                • <strong>Unlimited:</strong> Activates automatically whenever conditions are met with no daily use limit.
+              </span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <div style={{ display: 'flex' }}>
-                {maxUses > 0 && Array.from({ length: maxUses }).map((_, i) => {
-                  const bubbleIdx = i + 1;
-                  const spent = bubbleIdx <= usedUses;
-                  return (
-                    <span 
-                      key={bubbleIdx}
-                      onClick={() => handleBubbleClick(bubbleIdx)}
-                      className={`rage-bubble use-icon use-icon-rage ${spent ? 'used' : ''}`} 
-                      style={{ cursor: 'pointer' }}
-                      title={spent ? 'Used (Click to restore)' : 'Available (Click to use)'}
-                    >
-                      🔥
-                    </span>
-                  );
-                })}
+          ) : (
+            <>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '8.5px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span><strong>Rage:</strong></span>
+                  <button 
+                    onClick={() => setRageRulesOpen(!rageRulesOpen)}
+                    className="btn btn-toggle-rules-rage" 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                    title="Show rules"
+                  >
+                    📖 {rageRulesOpen ? '▲' : '▼'}
+                  </button>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <div style={{ display: 'flex' }}>
+                    {maxUses > 0 && Array.from({ length: maxUses }).map((_, i) => {
+                      const bubbleIdx = i + 1;
+                      const spent = bubbleIdx <= usedUses;
+                      return (
+                        <span 
+                          key={bubbleIdx}
+                          onClick={() => handleBubbleClick(bubbleIdx)}
+                          className={`rage-bubble use-icon use-icon-rage ${spent ? 'used' : ''}`} 
+                          style={{ cursor: 'pointer' }}
+                          title={spent ? 'Used (Click to restore)' : 'Available (Click to use)'}
+                        >
+                          🔥
+                        </span>
+                      );
+                    })}
+                  </div>
+                  <span>({remaining} remaining)</span>
+                </div>
               </div>
-              <span>({remaining} remaining)</span>
-            </div>
-          </div>
-          {rageRulesOpen && (
-            <div className="rage-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: 'var(--font-body)', marginBottom: '2px' }}>
-              <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Rage:</strong><br />
-              A barbarian can fly into a rage to temporarily increase physical power drastically.<br />
-              • <strong>Bonuses:</strong> +4 Strength (STR), +4 Constitution (CON), +2 morale bonus on Will saves. Hit points increase temporarily by +2 per character level.<br />
-              • <strong>Penalties:</strong> –2 Armor Class (AC) due to reckless defense.<br />
-              • <strong>Duration:</strong> 3 + modified Constitution modifier rounds.<br />
-              • <strong>Fatigue:</strong> A barbarian is fatigued after a rage for the duration of the current encounter (–2 STR, –2 DEX, cannot charge or run).
-            </div>
+              {rageRulesOpen && (
+                <div className="rage-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: 'var(--font-body)', marginBottom: '2px' }}>
+                  <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Rage:</strong><br />
+                  A barbarian can fly into a rage to temporarily increase physical power drastically.<br />
+                  • <strong>Bonuses:</strong> +4 Strength (STR), +4 Constitution (CON), +2 morale bonus on Will saves. Hit points increase temporarily by +2 per character level.<br />
+                  • <strong>Penalties:</strong> –2 Armor Class (AC) due to reckless defense.<br />
+                  • <strong>Duration:</strong> 3 + modified Constitution modifier rounds.<br />
+                  • <strong>Fatigue:</strong> A barbarian is fatigued after a rage for the duration of the current encounter (–2 STR, –2 DEX, cannot charge or run).
+                </div>
+              )}
+              <button 
+                onClick={handleToggleRage}
+                disabled={!canRage}
+                className="btn toggle-rage-btn" 
+                style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '4px 10px', width: '100%', borderRadius: '2px', ...getRageBtnStyle() } as any}
+              >
+                {rageBtnText}
+              </button>
+            </>
           )}
-          <button 
-            onClick={handleToggleRage}
-            disabled={!canRage}
-            className="btn toggle-rage-btn" 
-            style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '4px 10px', width: '100%', borderRadius: '2px', ...getRageBtnStyle() } as any}
-          >
-            {rageBtnText}
-          </button>
           <div style={{ marginTop: '4px', padding: '5px', background: 'rgba(200, 169, 110, 0.05)', border: '0.5px solid var(--pb)', borderRadius: '2px' }}>
             <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', fontWeight: 'bold', color: 'var(--red)', borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)', paddingBottom: '2px', marginBottom: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>Rage Effects:</span>

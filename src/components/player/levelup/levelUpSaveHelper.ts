@@ -96,6 +96,19 @@ export function applyLevelUpToActivePC(
         }
       });
       pc.acfs = curACFs;
+
+      if (curACFs.some(a => ['ranger_distracting_attack', 'ranger_spiritual_guide', 'druid_shapeshift'].includes(a))) {
+        pc.companionType = 'none';
+      }
+      if (curACFs.some(a => ['wizard_immediate_magic', 'sorcerer_metamagic_specialist', 'hexblade_dark_companion'].includes(a))) {
+        pc.familiarType = 'none';
+      }
+      if (curACFs.includes('barbarian_berserker_strength') && pc.isRaging) {
+        if (typeof pc.exitRage === 'function') pc.exitRage();
+      }
+      if (curACFs.includes('druid_shapeshift') && pc.activeShape && pc.activeShape !== 'none') {
+        if (typeof pc.exitShape === 'function') pc.exitShape();
+      }
     }
 
     // 8. Rebuild all calculations

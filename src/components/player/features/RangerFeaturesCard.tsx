@@ -243,10 +243,34 @@ export const RangerFeaturesCard: React.FC<RangerFeaturesCardProps> = ({ pc, leve
             )}
           </div>
 
+          {/* Active ACF Highlights */}
+          {Array.isArray(pc.acfs) && pc.acfs.includes('ranger_distracting_attack') && (
+            <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--red)', lineHeight: 1.25, marginTop: '2px' }}>
+              <strong>⚡ Distracting Attack (Active):</strong> Replaces Animal Companion. Whenever you hit an enemy with a weapon attack, that enemy is considered flanked by you for all allies!
+            </div>
+          )}
+          {Array.isArray(pc.acfs) && pc.acfs.includes('ranger_spiritual_guide') && (
+            <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--red)', lineHeight: 1.25, marginTop: '2px' }}>
+              <strong>⚡ Spiritual Guide (Active):</strong> Replaces Animal Companion. +{Math.max(1, Math.floor(level / 4))} divine bonus to Handle Animal, Ride, and Survival checks; Commune with Nature 1/day.
+            </div>
+          )}
+          {Array.isArray(pc.acfs) && pc.acfs.includes('ranger_spell_reflection') && (
+            <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--red)', lineHeight: 1.25, marginTop: '2px' }}>
+              <strong>⚡ Spell Reflection (Active):</strong> Replaces Evasion. Redirect missed ray/ranged touch spells back at the caster as an immediate action (Reflex save DC 10 + spell level).
+            </div>
+          )}
+
           {/* Tierbegleiter & Zauberstufe Fußzeile */}
           {level >= 4 && (
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px', fontSize: '7.2px', borderTop: '0.5px solid rgba(200,169,110,0.2)', paddingTop: '3px', marginTop: '2px', color: 'var(--inkm)' }}>
-              <div>🐾 Companion Level: <strong>{companionLvl}</strong></div>
+              <div>
+                🐾 Companion:{' '}
+                {Array.isArray(pc.acfs) && (pc.acfs.includes('ranger_distracting_attack') || pc.acfs.includes('ranger_spiritual_guide')) ? (
+                  <span style={{ color: 'var(--red)', fontStyle: 'italic' }}>Replaced by ACF</span>
+                ) : (
+                  <strong>Level {companionLvl}</strong>
+                )}
+              </div>
               <div style={{ textAlign: 'right' }}>🔮 Ranger Caster Level: <strong>{casterLvl}</strong></div>
             </div>
           )}
