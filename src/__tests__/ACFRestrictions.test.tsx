@@ -6,7 +6,7 @@ import { DruidFeaturesCard } from '../components/player/features/DruidFeaturesCa
 import { BarbarianFeaturesCard } from '../components/player/features/BarbarianFeaturesCard';
 
 describe('ACF UI Restrictions & Overrides', () => {
-  it('hides animal companion sheet in PCFeaturesTab when Ranger has Distracting Attack ACF active', () => {
+  it('hides animal companion column in PCFeaturesTab when Ranger has Distracting Attack ACF active', () => {
     const pc = {
       id: 'ranger_pc',
       name: 'Ranger Hero',
@@ -17,10 +17,10 @@ describe('ACF UI Restrictions & Overrides', () => {
     };
 
     render(<PCFeaturesTab pc={pc} />);
-    expect(screen.getByText(/No active animal companion or familiar/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Companions & Familiars/i)).not.toBeInTheDocument();
   });
 
-  it('shows animal companion sheet in PCFeaturesTab when Ranger has no replacement ACF', () => {
+  it('shows animal companion column in PCFeaturesTab when Ranger has no replacement ACF', () => {
     const pc = {
       id: 'ranger_pc_standard',
       name: 'Ranger Standard',
@@ -31,7 +31,7 @@ describe('ACF UI Restrictions & Overrides', () => {
     };
 
     render(<PCFeaturesTab pc={pc} />);
-    expect(screen.queryByText(/No active animal companion or familiar/i)).not.toBeInTheDocument();
+    expect(screen.getByText(/Companions & Familiars/i)).toBeInTheDocument();
   });
 
   it('renders Distracting Attack status and Replaced by ACF in RangerFeaturesCard', () => {
