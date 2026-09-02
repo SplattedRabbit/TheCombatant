@@ -21,6 +21,8 @@ export const PrestigeSpellLinkSection: React.FC<PrestigeSpellLinkSectionProps> =
 }) => {
   if (!currentDraft) return null;
 
+  const classes: any[] = currentDraft.classes || currentDraft.classesList || currentDraft.draftPC?.classes || [];
+
   if (currentConfig.classType === 'mystic_theurge') {
     return (
       <div
@@ -56,7 +58,7 @@ export const PrestigeSpellLinkSection: React.FC<PrestigeSpellLinkSectionProps> =
             <option value="" disabled>
               -- Select Arcane Class --
             </option>
-            {currentDraft.classes
+            {classes
               .filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType))
               .map((cl: any) => (
                 <option key={cl.classType} value={cl.classType}>
@@ -83,7 +85,7 @@ export const PrestigeSpellLinkSection: React.FC<PrestigeSpellLinkSectionProps> =
             <option value="" disabled>
               -- Select Divine Class --
             </option>
-            {currentDraft.classes
+            {classes
               .filter((cl: any) => ['cleric', 'druid', 'paladin', 'ranger'].includes(cl.classType))
               .map((cl: any) => (
                 <option key={cl.classType} value={cl.classType}>
@@ -130,7 +132,7 @@ export const PrestigeSpellLinkSection: React.FC<PrestigeSpellLinkSectionProps> =
             <option value="" disabled>
               -- Select Arcane Class --
             </option>
-            {currentDraft.classes
+            {classes
               .filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType))
               .map((cl: any) => (
                 <option key={cl.classType} value={cl.classType}>

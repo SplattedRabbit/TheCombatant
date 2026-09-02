@@ -70,9 +70,11 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   React.useEffect(() => {
     if (!currentConfig || !currentDraft) return;
 
+    const classes: any[] = currentDraft.classes || currentDraft.classesList || currentDraft.draftPC?.classes || [];
+
     if (currentConfig.classType === 'mystic_theurge') {
-      const arcaneOptions = currentDraft.classes.filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType));
-      const divineOptions = currentDraft.classes.filter((cl: any) => ['cleric', 'druid', 'paladin', 'ranger'].includes(cl.classType));
+      const arcaneOptions = classes.filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType));
+      const divineOptions = classes.filter((cl: any) => ['cleric', 'druid', 'paladin', 'ranger'].includes(cl.classType));
 
       const links = { ...currentConfig.prestigeSpellLinks?.mystic_theurge };
       let changed = false;
@@ -93,7 +95,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
         });
       }
     } else if (currentConfig.classType === 'arcane_trickster') {
-      const arcaneOptions = currentDraft.classes.filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType));
+      const arcaneOptions = classes.filter((cl: any) => ['wizard', 'sorcerer', 'bard'].includes(cl.classType));
 
       const currentLink = currentConfig.prestigeSpellLinks?.arcane_trickster;
       if (arcaneOptions.length === 1 && currentLink !== arcaneOptions[0].classType) {

@@ -340,6 +340,41 @@ describe('Level-Up Assistant Suite', () => {
       fireEvent.click(screen.getByRole('button', { name: /Next Step/i }));
       expect(screen.getByText(/Skills \(/i)).toBeInTheDocument();
     });
+
+    it('renders Prestige Spell Link for Arcane Trickster without errors', () => {
+      const pc = new Combatant({
+        name: 'Shadow Caster',
+        race: 'human',
+        classes: [
+          { classType: 'rogue', level: 3 },
+          { classType: 'wizard', level: 5 },
+          { classType: 'arcane_trickster', level: 1 }
+        ],
+        str: 10,
+        dex: 16,
+        con: 12,
+        int: 16,
+        wis: 12,
+        cha: 10,
+        skills: {
+          decipher_script: { ranks: 7 },
+          disable_device: { ranks: 7 },
+          escape_artist: { ranks: 7 },
+          knowledge_arcana: { ranks: 4 }
+        }
+      });
+
+      renderWithProviders(
+        <LevelUpDialog
+          activePC={pc}
+          isOpen={true}
+          onClose={vi.fn()}
+        />
+      );
+
+      expect(screen.getByText(/Arcane Trickster Spell Linking/i)).toBeInTheDocument();
+      expect(screen.getByText(/Arcane Class \(\+1 Caster Level\)/i)).toBeInTheDocument();
+    });
   });
 });
 
