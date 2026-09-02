@@ -1,0 +1,388 @@
+/**
+ * @module    printableSheet.css
+ * @summary   Authentic D&D 3.5e pen-and-paper character sheet print styles and layout.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
+   CSS Variables & Typography
+   ========================================================================== */
+:root {
+  --dnd-black: #111111;
+  --dnd-gray-dark: #333333;
+  --dnd-gray-med: #777777;
+  --dnd-gray-light: #e2e2e2;
+  --dnd-gray-subtle: #f4f4f4;
+  --dnd-red: #8b1a1a;
+  --dnd-parchment-bg: #fdfaf3;
+  --dnd-parchment-border: #c8a96e;
+  
+  --font-dnd-title: 'Cinzel', 'Georgia', serif;
+  --font-dnd-body: 'Crimson Pro', 'Georgia', serif;
+  --font-dnd-data: 'Inter', sans-serif;
+}
+
+/* ==========================================================================
+   Print Preview Modal Overlay & Toolbar
+   ========================================================================== */
+.print-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 10, 5, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.print-toolbar {
+  width: 100%;
+  background: #1c140e;
+  border-bottom: 2px solid #c8a96e;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.print-toolbar-btn {
+  font-family: var(--font-dnd-title);
+  font-size: 11px;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.print-toolbar-btn-primary {
+  background: #8b1a1a;
+  color: #ffffff;
+  border: 1px solid #c8a96e;
+}
+.print-toolbar-btn-primary:hover {
+  background: #a82323;
+  transform: translateY(-1px);
+}
+
+.print-toolbar-btn-secondary {
+  background: rgba(200, 169, 110, 0.15);
+  color: #fdf6e2;
+  border: 1px solid rgba(200, 169, 110, 0.4);
+}
+.print-toolbar-btn-secondary:hover {
+  background: rgba(200, 169, 110, 0.28);
+}
+
+.print-viewport {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   A4 / Letter Page Container
+   ========================================================================== */
+.dnd-page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 10mm 12mm;
+  box-sizing: border-box;
+  position: relative;
+  background: #ffffff;
+  color: var(--dnd-black);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  font-family: var(--font-dnd-body);
+  font-size: 10pt;
+  line-height: 1.15;
+  display: flex;
+  flex-direction: column;
+  page-break-after: always;
+}
+
+/* Theme: Parchment on-screen */
+.theme-parchment .dnd-page {
+  background: var(--dnd-parchment-bg);
+  border: 1px solid var(--dnd-parchment-border);
+}
+
+/* Theme: Ink-Friendly (pure B&W) */
+.theme-ink .dnd-page {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+}
+
+/* Decorative outer double border */
+.dnd-page-border {
+  position: absolute;
+  inset: 5mm;
+  border: 1.5pt solid var(--dnd-black);
+  pointer-events: none;
+}
+.dnd-page-border::after {
+  content: '';
+  position: absolute;
+  inset: 1.5mm;
+  border: 0.5pt solid var(--dnd-black);
+}
+
+/* Header Logo & Page Title */
+.dnd-header-title {
+  font-family: var(--font-dnd-title);
+  font-size: 17pt;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--dnd-black);
+  line-height: 1;
+  margin: 0;
+}
+
+.dnd-header-subtitle {
+  font-family: var(--font-dnd-title);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--dnd-gray-med);
+}
+
+/* Section Banner (Black header bar with white serif text) */
+.dnd-section-banner {
+  background: var(--dnd-black);
+  color: #ffffff;
+  font-family: var(--font-dnd-title);
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 2.5px 6px;
+  border-radius: 2px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dnd-sub-banner {
+  background: var(--dnd-gray-light);
+  color: var(--dnd-black);
+  font-family: var(--font-dnd-title);
+  font-size: 6.5pt;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 1.5px 4px;
+  border: 0.5pt solid var(--dnd-gray-med);
+  border-radius: 1.5px;
+  text-align: center;
+}
+
+/* Box Styling & Grid Layout */
+.dnd-box {
+  border: 0.75pt solid var(--dnd-black);
+  border-radius: 2px;
+  background: #ffffff;
+  padding: 3px 5px;
+  box-sizing: border-box;
+}
+
+.dnd-label {
+  font-family: var(--font-dnd-title);
+  font-size: 6pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dnd-gray-med);
+  line-height: 1;
+}
+
+.dnd-value {
+  font-family: var(--font-dnd-data);
+  font-size: 8.5pt;
+  font-weight: 600;
+  color: var(--dnd-black);
+  line-height: 1.1;
+}
+
+.dnd-value-large {
+  font-family: var(--font-dnd-title);
+  font-size: 12.5pt;
+  font-weight: 800;
+  color: var(--dnd-black);
+  line-height: 1;
+  text-align: center;
+}
+
+/* Attribute Box with Oval Modifier */
+.dnd-stat-box {
+  width: 48px;
+  border: 1pt solid var(--dnd-black);
+  border-radius: 3px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 2px 2px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.dnd-stat-name {
+  font-family: var(--font-dnd-title);
+  font-size: 7.5pt;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.dnd-stat-score {
+  font-family: var(--font-dnd-data);
+  font-size: 11pt;
+  font-weight: 700;
+  margin: 1px 0;
+}
+
+.dnd-stat-modifier-oval {
+  width: 38px;
+  height: 20px;
+  border: 1pt solid var(--dnd-black);
+  border-radius: 12px;
+  background: var(--dnd-gray-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-dnd-title);
+  font-size: 9.5pt;
+  font-weight: 900;
+}
+
+/* AC Shield Container */
+.dnd-shield-box {
+  border: 1.5pt solid var(--dnd-black);
+  border-radius: 4px 4px 20px 20px;
+  background: #ffffff;
+  padding: 4px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
+}
+
+/* Classic D&D Table */
+.dnd-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 7.5pt;
+}
+
+.dnd-table th {
+  font-family: var(--font-dnd-title);
+  font-size: 6.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--dnd-gray-subtle);
+  border: 0.5pt solid var(--dnd-black);
+  padding: 2px 3px;
+  text-align: center;
+}
+
+.dnd-table td {
+  border: 0.5pt solid var(--dnd-gray-med);
+  padding: 1.5px 3px;
+  font-family: var(--font-dnd-data);
+  font-size: 7.5pt;
+}
+
+.dnd-table tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Checkbox (Square for Class skills / Prepared Spells) */
+.dnd-checkbox {
+  width: 7px;
+  height: 7px;
+  border: 0.75pt solid var(--dnd-black);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6pt;
+  font-weight: bold;
+  line-height: 1;
+}
+.dnd-checkbox-checked {
+  background: var(--dnd-black);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Print Optimization Media Query
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 6mm 8mm 6mm 8mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .no-print,
+  .print-toolbar,
+  .print-modal-overlay {
+    background: transparent !important;
+    position: static !important;
+    inset: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .print-toolbar {
+    display: none !important;
+  }
+
+  .print-viewport {
+    padding: 0 !important;
+    gap: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .dnd-page {
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    width: 100% !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 2mm 0 !important;
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .dnd-page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+}

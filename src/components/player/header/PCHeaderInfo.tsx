@@ -15,9 +15,10 @@ interface PCHeaderInfoProps {
   pc: Combatant;
   onOpenWizard?: () => void;
   onOpenLevelUp?: () => void;
+  onOpenPrint?: () => void;
 }
 
-export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard, onOpenLevelUp }) => {
+export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard, onOpenLevelUp, onOpenPrint }) => {
   const [isRosterOpen, setIsRosterOpen] = useState<boolean>(false);
   const [isJoinOpen, setIsJoinOpen] = useState<boolean>(false);
 
@@ -134,6 +135,17 @@ export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard, on
             >
               <span>🧙‍♂️</span>
               <span>+ Level Up</span>
+            </button>
+          )}
+          {onOpenPrint && (
+            <button
+              type="button"
+              onClick={onOpenPrint}
+              className="hdr-action-btn"
+              title="Open printable D&D 3.5e Character Sheet Folio (A4 / PDF)"
+            >
+              <span>🖨️</span>
+              <span>Print Sheet</span>
             </button>
           )}
           <button
