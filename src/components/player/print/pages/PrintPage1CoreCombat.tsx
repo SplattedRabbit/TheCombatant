@@ -121,7 +121,7 @@ export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
         </div>
         <div className="dnd-box">
           <div className="dnd-label">Player</div>
-          <div className="dnd-value">{pc.playerName || 'Player'}</div>
+          <div className="dnd-value">{pc.playerName || ''}</div>
         </div>
         <div className="dnd-box">
           <div className="dnd-label">Total Level</div>

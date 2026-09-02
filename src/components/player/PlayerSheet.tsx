@@ -176,7 +176,6 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
         activeTab={activeTab}
         onOpenWizard={() => CombatState.setRole('wizard')}
         onOpenLevelUp={() => setIsLevelUpOpen(true)}
-        onOpenPrint={() => setIsPrintModalOpen(true)}
       />
 
       {/* Tab Bar */}
