@@ -3,6 +3,16 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.1] - 2026-09-02
+
+### Fixed
+- **Typography Restoration (`Crimson Text`):** Reverted global `--font-body` to authentic medieval book typeface `Crimson Text` and enabled subpixel font smoothing (`-webkit-font-smoothing: antialiased`, `text-rendering: optimizeLegibility`), eliminating kerning jitter, uneven letter spacing, and rendering artifacts.
+- **Overlay & Popup Scaling Architecture:** Restored unified overlay transform scaling rule in `css/popups.css` across all dialogs (`#featScrollOverlay`, `#spellScrollOverlay`, etc.) while removing duplicate inline scale in `DialogOverlay.tsx`, preventing both miniature unscaled popups and 2.56x double-scaled alerts.
+- **Feats Typography & Accessibility:** Increased feat card titles and benefits from 8.5px/9px to 10.5px for comfortable readability and tablet-first touch inspection.
+- **Creation Wizard Ergonomics:** Capped desktop creation wizard scale to 1.2 to preserve balanced proportions on high-resolution screens.
+
+---
+
 ## [6.2.0] - 2026-09-02
 
 ### Added
