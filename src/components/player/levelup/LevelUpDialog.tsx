@@ -165,6 +165,7 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
 
   return (
     <div
+      id="levelUpDialogOverlay"
       style={{
         position: 'fixed',
         inset: 0,
@@ -186,13 +187,15 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
       <div
         className="sheet no-print"
         style={{
-          width: 'min(1040px, 94vw)',
-          maxWidth: '1040px',
-          maxHeight: '88vh',
+          width: '860px',
+          maxWidth: 'calc(96vw / var(--app-scale, 1))',
+          maxHeight: 'calc(90vh / var(--app-scale, 1))',
+          transform: 'scale(var(--app-scale, 1))',
+          transformOrigin: 'center center',
           background: 'var(--parchment, #fdf6e2)',
           border: '2px solid var(--pb, #c8a96e)',
           borderRadius: '8px',
-          boxShadow: '0 16px 48px rgba(0,0,0,0.5)',
+          boxShadow: '0 16px 48px rgba(0,0,0,0.6)',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
