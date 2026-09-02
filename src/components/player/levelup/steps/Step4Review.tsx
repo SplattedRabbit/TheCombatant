@@ -6,6 +6,9 @@
 import React from 'react';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
+import { SKILL_TRICKS_REGISTRY } from '@core/data/skillTricks-data.js';
+import { getACF } from '@core/data/acf-data.js';
+import { CLASSES_LIST } from '../../wizard/constants';
 
 export interface Step4ReviewProps {
   currentConfig: any;
@@ -26,6 +29,11 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
   const conMod = completedDraft?.statMods?.con ?? currentDraft?.statMods?.con ?? 0;
   const gainedHp = Math.max(1, (parseInt(currentConfig.hpRoll) || 1) + conMod);
 
+  const clsDef = CLASSES_LIST.find((c: any) => c.key === currentConfig.classType);
+  const className = clsDef ? (clsDef.name || clsDef.key) : (currentConfig.classType ? currentConfig.classType.replace(/_/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()) : 'No class selected');
+  const classLvlEntry = (completedDraft?.classes || completedDraft?.classesList || []).find((c: any) => c.classType === currentConfig.classType);
+  const classDisplay = classLvlEntry ? `${className} (Level ${classLvlEntry.level})` : className;
+
   const allocatedSkills = Object.entries(currentConfig.skills || {})
     .filter(([_, pts]) => (parseInt(pts as any) || 0) > 0)
     .map(([key, pts]) => {
@@ -40,6 +48,16 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
   const chosenFeats = (currentConfig.feats || []).map((fid: string) => {
     const feat = (CombatFeats.REGISTRY as any)[fid];
     return feat ? (feat.nameEn || feat.nameDe || fid) : fid;
+  });
+
+  const chosenSkillTricks = (currentConfig.skillTricks || []).map((tKey: string) => {
+    const trick = (SKILL_TRICKS_REGISTRY as any)[tKey];
+    return trick ? (trick.nameEn || trick.nameDe || trick.name || tKey) : tKey;
+  });
+
+  const chosenACFs = (currentConfig.acfs || []).map((aId: string) => {
+    const acf = getACF(aId);
+    return acf ? (acf.name || acf.nameEn || acf.nameDe || aId) : aId;
   });
 
   return (
@@ -70,8 +88,8 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div style={{ background: 'rgba(200, 169, 110, 0.12)', padding: '8px 10px', borderRadius: '4px', border: '0.5px solid var(--pb)' }}>
             <span style={{ fontSize: '10px', color: 'var(--inkl)', textTransform: 'uppercase', display: 'block' }}>Class Advancement</span>
-            <strong style={{ fontSize: '13px', color: 'var(--red)', textTransform: 'capitalize' }}>
-              {currentConfig.classType || 'No class selected'}
+            <strong style={{ fontSize: '13px', color: 'var(--red)' }}>
+              {classDisplay}
             </strong>
           </div>
 
@@ -129,11 +147,11 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
           </div>
 
           {/* Skill Tricks */}
-          {(currentConfig.skillTricks || []).length > 0 && (
+          {chosenSkillTricks.length > 0 && (
             <div style={{ background: 'rgba(200, 169, 110, 0.12)', padding: '8px 10px', borderRadius: '4px', border: '0.5px solid var(--pb)' }}>
               <span style={{ fontSize: '10px', color: 'var(--inkl)', textTransform: 'uppercase', display: 'block' }}>Skill Tricks</span>
               <strong style={{ fontSize: '12px', color: 'var(--ink)' }}>
-                {currentConfig.skillTricks.join(', ')}
+                {chosenSkillTricks.join(', ')}
               </strong>
             </div>
           )}
@@ -149,11 +167,11 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
           )}
 
           {/* ACFs */}
-          {(currentConfig.acfs || []).length > 0 && (
+          {chosenACFs.length > 0 && (
             <div style={{ background: 'rgba(200, 169, 110, 0.12)', padding: '8px 10px', borderRadius: '4px', border: '0.5px solid var(--pb)' }}>
               <span style={{ fontSize: '10px', color: 'var(--inkl)', textTransform: 'uppercase', display: 'block' }}>Alternative Class Features (ACFs)</span>
               <strong style={{ fontSize: '12px', color: 'var(--ink)' }}>
-                {currentConfig.acfs.join(', ')}
+                {chosenACFs.join(', ')}
               </strong>
             </div>
           )}
