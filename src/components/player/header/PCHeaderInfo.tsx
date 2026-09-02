@@ -14,9 +14,10 @@ import { TablePresenceBar } from '../../shared/TablePresenceBar.tsx';
 interface PCHeaderInfoProps {
   pc: Combatant;
   onOpenWizard?: () => void;
+  onOpenLevelUp?: () => void;
 }
 
-export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard }) => {
+export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard, onOpenLevelUp }) => {
   const [isRosterOpen, setIsRosterOpen] = useState<boolean>(false);
   const [isJoinOpen, setIsJoinOpen] = useState<boolean>(false);
 
@@ -123,6 +124,18 @@ export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard }) 
         </h1>
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <TablePresenceBar />
+          {onOpenLevelUp && (
+            <button
+              type="button"
+              onClick={onOpenLevelUp}
+              className="hdr-action-btn animate-glow"
+              title="Open guided Level-Up Assistant"
+              style={{ fontWeight: 'bold', color: 'var(--red)', borderColor: 'var(--red)' }}
+            >
+              <span>🧙‍♂️</span>
+              <span>+ Level Up</span>
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setIsJoinOpen(true)}

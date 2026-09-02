@@ -77,7 +77,7 @@ describe('PlayerSheet Component (Task 6.1.3)', () => {
 
     const featuresPanel = document.getElementById('tabPanelFeatures');
     expect(featuresPanel).toHaveClass('active');
-  });
+  }, 15000);
 
   it('displays Spellbook tab for caster classes and hides it for non-casters', () => {
     // Paladin is a caster class

@@ -3,6 +3,16 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.1.0] - 2026-09-02
+
+### Added
+- **Guided Level-Up Assistant (`LevelUpDialog`):** Interactive step-by-step advancement for existing characters directly on the Player Sheet.
+  - Reuses existing Wizard sub-components for Skills (`SkillsTabContent`), Skill Tricks (`SkillTricksTabContent`), Feats (`FeatsTabContent`), and ACFs (`ACFsTabContent`).
+  - Automatic milestone detection: +1 Ability score increase (levels 4, 8, 12, 16, 20), general feats (levels 3, 6, 9, 12, 15, 18), and class bonus feats.
+  - HP gain calculator (+ CON modifier) and transactional state persistence via `CombatState.updatePCBatch()`.
+  - Prominent `+ Level Up` triggers in [`PCHeaderInfo.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/header/PCHeaderInfo.tsx) and [`PCClassesManager.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/attributes/PCClassesManager.tsx).
+- **Automated Level-Up Tests:** Added 4 Vitest unit and integration test cases in `src/__tests__/LevelUp.test.tsx`.
+
 ---
 
 ## [6.0.0] - 2026-09-02

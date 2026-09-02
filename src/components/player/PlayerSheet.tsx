@@ -22,6 +22,7 @@ import { BaseCard } from '../shared/BaseCard';
 import { PCSpellsTab } from './PCSpellsTab';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { PCFeaturesTab } from './PCFeaturesTab';
+import { LevelUpDialog } from './levelup/LevelUpDialog';
 import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
 import { logger } from '../../utils/logger';
 
@@ -34,6 +35,7 @@ type TabType = 'overview' | 'skills' | 'feats' | 'offense' | 'magicitems' | 'spe
 export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
   const [isSystemOpen, setIsSystemOpen] = useState(false);
+  const [isLevelUpOpen, setIsLevelUpOpen] = useState(false);
   const systemBtnRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -167,7 +169,12 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
   return (
     <div id="playerScreen" className="sheet" style={{ display: 'block' }}>
       {/* PCHeader at the very top */}
-      <PCHeader pc={pc} activeTab={activeTab} onOpenWizard={() => CombatState.setRole('wizard')} />
+      <PCHeader
+        pc={pc}
+        activeTab={activeTab}
+        onOpenWizard={() => CombatState.setRole('wizard')}
+        onOpenLevelUp={() => setIsLevelUpOpen(true)}
+      />
 
       {/* Tab Bar */}
       <div className="player-tab-bar no-print" id="playerTabBar" style={{ position: 'relative', zIndex: 100 }}>
@@ -256,7 +263,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
         <div className={`player-tab-panel ${activeTab === 'overview' ? 'active' : ''}`} id="tabPanelOverview">
           <div className="overview-grid">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <PCAttributes pc={pc} />
+              <PCAttributes pc={pc} onOpenLevelUp={() => setIsLevelUpOpen(true)} />
               <PCHealthGlobe pc={pc} />
             </div>
             <PCDefenses pc={pc} />
@@ -295,6 +302,13 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
           <PCFeaturesTab pc={pc} />
         </div>
       </div>
+
+      {/* Guided Level-Up Dialog */}
+      <LevelUpDialog 
+        activePC={pc} 
+        isOpen={isLevelUpOpen} 
+        onClose={() => setIsLevelUpOpen(false)} 
+      />
 
       {/* Hidden file input for Import */}
       <input 

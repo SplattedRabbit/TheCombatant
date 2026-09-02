@@ -20,9 +20,10 @@ interface PCHeaderProps {
   pc: Combatant;
   activeTab: string;
   onOpenWizard?: () => void;
+  onOpenLevelUp?: () => void;
 }
 
-export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard }) => {
+export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard, onOpenLevelUp }) => {
   const [showYouDied, setShowYouDied] = useState<boolean>(false);
   const [youDiedStep, setYouDiedStep] = useState<number>(0); // 0: hidden, 1: fade-in, 2: visible
 
@@ -101,7 +102,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard 
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
         {/* Left: Character Name, Details & Actions */}
-        <PCHeaderInfo pc={pc} onOpenWizard={onOpenWizard} />
+        <PCHeaderInfo pc={pc} onOpenWizard={onOpenWizard} onOpenLevelUp={onOpenLevelUp} />
 
         {/* Right: Premium Status & Combat Widget */}
         {activeTab !== 'overview' && (
