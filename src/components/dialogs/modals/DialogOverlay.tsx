@@ -34,9 +34,8 @@ export const DialogOverlay: React.FC<DialogOverlayProps> = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '16px',
-        boxSizing: 'border-box',
         animation: 'fadeIn 0.2s ease-out forwards',
+        boxSizing: 'border-box',
       }}
     >
       <div
@@ -45,18 +44,18 @@ export const DialogOverlay: React.FC<DialogOverlayProps> = ({
           background: 'var(--p)',
           border: '2px solid var(--pb)',
           borderRadius: '4px',
-          padding: '16px 22px',
+          padding: '14px 20px',
           width: `${width}px`,
-          maxWidth: 'min(92vw, 560px)',
-          maxHeight: '86vh',
-          display: 'flex',
-          flexDirection: 'column',
+          maxWidth: 'calc(94vw / var(--app-scale, 1))',
+          maxHeight: 'calc(88vh / var(--app-scale, 1))',
+          transform: 'scale(var(--app-scale, 1))',
+          transformOrigin: 'center center',
           boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
           fontFamily: 'var(--font-title)',
           textAlign: 'center',
           position: 'relative',
           boxSizing: 'border-box',
-          overflow: 'hidden',
+          overflowY: 'auto',
         }}
       >
         <div

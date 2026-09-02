@@ -54,15 +54,15 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
 
     const lines = detailValidation.metDetails.map((req: any) => {
       const color = req.met ? '#2e7d32' : '#d32f2f';
-      return `<div style="color: ${color}; margin-bottom: 10px;"><strong>${req.label}</strong><br/>[Vorhanden: ${req.current} / Benötigt: ${req.required}]</div>`;
+      return `<div style="color: ${color}; margin-bottom: 6px; font-size: 10px; line-height: 1.35;"><strong>${req.label}</strong><br/>[Vorhanden: ${req.current} / Benötigt: ${req.required}]</div>`;
     });
 
     if (isOnlySpecialTextUnmet(detailValidation)) {
       showCustomConfirm(
         title,
-        `<div style="text-align: left; max-height: 300px; overflow-y: auto; padding: 4px;"><p style="margin-bottom: 12px; color: var(--ink);">Alle Voraussetzungen sind erfüllt bis auf eine besondere Bedingung, die manuell bestätigt werden muss:</p>${lines.join(
+        `<div style="text-align: left; padding: 2px;"><p style="margin-bottom: 8px; font-size: 11px; color: var(--ink);">Alle Voraussetzungen sind erfüllt bis auf eine besondere Bedingung, die manuell bestätigt werden muss:</p>${lines.join(
           '',
-        )}<p style="margin-top: 12px; color: var(--ink);">Bestätigst du, dass diese Bedingung erfüllt ist?</p></div>`,
+        )}<p style="margin-top: 8px; font-size: 11px; color: var(--ink);">Bestätigst du, dass diese Bedingung erfüllt ist?</p></div>`,
         () => {
           updateLevelConfig(currentLevelIndex, 'prestigeSpecialTextConfirmed', {
             ...currentConfig.prestigeSpecialTextConfirmed,
@@ -76,7 +76,7 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
 
     showCustomAlert(
       title,
-      `<div style="text-align: left; max-height: 300px; overflow-y: auto; padding: 4px;"><p style="margin-bottom: 12px; color: var(--ink);">Du erfüllst die Voraussetzungen für diese Prestigeklasse noch nicht:</p>${lines.join(
+      `<div style="text-align: left; padding: 2px;"><p style="margin-bottom: 8px; font-size: 11px; color: var(--ink);">Du erfüllst die Voraussetzungen für diese Prestigeklasse noch nicht:</p>${lines.join(
         '',
       )}</div>`,
       'OK',

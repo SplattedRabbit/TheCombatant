@@ -24,33 +24,33 @@ export const CustomAlertModal: React.FC<CustomAlertModalProps> = ({
 }) => {
   return (
     <DialogOverlay onClose={onClose} id="customAlertOverlay" width={420}>
-      <div style={{ fontSize: '16px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-        <span style={{ fontSize: '18px' }}>{icon}</span> {title}
+      <div style={{ fontSize: '13.5px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+        <span style={{ fontSize: '15px' }}>{icon}</span> {title}
       </div>
-      <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, var(--pb), transparent)', margin: '8px 0 12px' }} />
+      <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, var(--pb), transparent)', margin: '6px 0 10px' }} />
       <div 
         style={{
           fontFamily: 'var(--font-body)',
-          fontSize: '12.5px',
+          fontSize: '11px',
           color: 'var(--ink)',
-          lineHeight: 1.5,
-          marginBottom: '14px',
+          lineHeight: 1.45,
+          marginBottom: '12px',
           fontWeight: 500,
           textAlign: 'left',
           overflowY: 'auto',
-          maxHeight: '60vh',
+          maxHeight: 'calc(55vh / var(--app-scale, 1))',
           padding: '2px 4px',
           boxSizing: 'border-box'
         }}
         dangerouslySetInnerHTML={{ __html: sanitizeHtml(message) }}
       />
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '8px' }}>
         <button 
           onClick={onClose}
           className="btn btn-p pc-alert-close-btn" 
           style={{
             fontFamily: 'var(--font-title)',
-            fontSize: '11px',
+            fontSize: '9.5px',
             padding: '4px 20px',
             cursor: 'pointer',
             background: 'var(--p)',
