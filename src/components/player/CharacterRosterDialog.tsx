@@ -8,6 +8,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import type { CharacterSummary } from '../../types/character.ts';
 import { characterService } from '../../services/character/CharacterService.ts';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { CharacterCard } from './roster/CharacterCard.tsx';
+import { CreateCharacterModal } from './roster/CreateCharacterModal.tsx';
 
 interface CharacterRosterDialogProps {
   isOpen: boolean;
@@ -25,11 +27,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isActionInProgress, setIsActionInProgress] = useState<boolean>(false);
-
-  // New Character Form Modal
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false);
-  const [newCharName, setNewCharName] = useState<string>('');
-  const [newCharClass, setNewCharClass] = useState<string>('Fighter');
 
   const loadCharacters = useCallback(async () => {
     try {
@@ -106,19 +104,15 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
     );
   };
 
-  const handleCreateNew = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newCharName.trim()) return;
-
+  const handleCreateNew = async (name: string, startingClass: string) => {
     try {
       setIsActionInProgress(true);
       const created = await characterService.createCharacter({
-        name: newCharName.trim(),
-        classSummary: newCharClass,
+        name,
+        classSummary: startingClass,
         level: 1,
       });
       setShowCreateModal(false);
-      setNewCharName('');
       await characterService.switchActiveCharacter(created.id);
       onClose();
     } catch (err: any) {
@@ -370,301 +364,28 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
                 gap: '12px',
               }}
             >
-              {filteredCharacters.map((char) => {
-                const isActive = char.id === activeCharId || char.isCurrentActive;
-
-                return (
-                  <div
-                    key={char.id}
-                    style={{
-                      background: isActive ? 'linear-gradient(135deg, #fbf2db, #f7e8c3)' : '#ffffff',
-                      border: isActive ? '1.5px solid #065f46' : '1px solid var(--pb, #c8a96e)',
-                      borderRadius: '6px',
-                      padding: '12px',
-                      boxShadow: isActive ? '0 3px 10px rgba(6, 95, 70, 0.15)' : '0 2px 5px rgba(0,0,0,0.05)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      gap: '8px',
-                      position: 'relative',
-                    }}
-                  >
-                    {/* Active Badge */}
-                    {isActive && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: '6px',
-                          right: '6px',
-                          background: '#065f46',
-                          color: '#ffffff',
-                          fontSize: '8.5px',
-                          fontFamily: 'var(--font-title)',
-                          padding: '1px 6px',
-                          borderRadius: '10px',
-                          fontWeight: 'bold',
-                        }}
-                      >
-                        ⭐ Active
-                      </div>
-                    )}
-
-                    <div>
-                      {/* Name & Race */}
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-title)',
-                          fontSize: '14px',
-                          fontWeight: 'bold',
-                          color: 'var(--red, #8b1a1a)',
-                          paddingRight: isActive ? '45px' : '0',
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                        }}
-                        title={char.name}
-                      >
-                        {char.name}
-                      </div>
-
-                      {/* Class Summary & Level */}
-                      <div
-                        style={{
-                          fontSize: '11px',
-                          fontFamily: 'var(--font-body)',
-                          color: 'var(--ink, #2c2214)',
-                          marginTop: '2px',
-                        }}
-                      >
-                        Level {char.level} {char.race ? `(${char.race})` : ''}
-                      </div>
-
-                      {char.classSummary && (
-                        <div
-                          style={{
-                            fontSize: '10px',
-                            color: 'var(--inkm, #665c49)',
-                            fontStyle: 'italic',
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                          }}
-                        >
-                          {char.classSummary}
-                        </div>
-                      )}
-
-                      {/* HP Stats */}
-                      <div
-                        style={{
-                          marginTop: '6px',
-                          fontSize: '10.5px',
-                          color: '#854d0e',
-                          fontWeight: 'bold',
-                          fontFamily: 'var(--font-body)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '4px',
-                        }}
-                      >
-                        <span>❤️</span>
-                        <span>
-                          {char.hp.current} / {char.hp.max} HP
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div
-                      style={{
-                        borderTop: '0.5px solid rgba(200, 169, 110, 0.4)',
-                        paddingTop: '6px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: '4px',
-                      }}
-                    >
-                      <button
-                        type="button"
-                        onClick={() => handleSelectCharacter(char.id)}
-                        disabled={isActionInProgress || isActive}
-                        className="btn btn-p"
-                        style={{
-                          flex: 1,
-                          padding: '3px 6px',
-                          fontSize: '10.5px',
-                          fontFamily: 'var(--font-title)',
-                          background: isActive ? '#065f46' : 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-                          border: '1px solid #8b6914',
-                          color: '#ffffff',
-                          borderRadius: '3px',
-                          cursor: isActive ? 'default' : 'pointer',
-                          opacity: isActive ? 0.9 : 1,
-                        }}
-                      >
-                        {isActive ? '✓ Selected' : '⚡ Load'}
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => handleDuplicate(char.id)}
-                        disabled={isActionInProgress}
-                        className="btn"
-                        style={{
-                          padding: '3px 6px',
-                          fontSize: '10px',
-                          background: 'rgba(200, 169, 110, 0.2)',
-                          border: '1px solid var(--pb)',
-                          borderRadius: '3px',
-                          cursor: 'pointer',
-                        }}
-                        title="Duplicate Character"
-                      >
-                        📑
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => handleDelete(char.id, char.name)}
-                        disabled={isActionInProgress}
-                        className="btn"
-                        style={{
-                          padding: '3px 6px',
-                          fontSize: '10px',
-                          background: 'rgba(139, 26, 26, 0.1)',
-                          borderColor: 'rgba(139, 26, 26, 0.3)',
-                          color: 'var(--red)',
-                          borderRadius: '3px',
-                          cursor: 'pointer',
-                        }}
-                        title="Delete Character"
-                      >
-                        🗑️
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+              {filteredCharacters.map((char) => (
+                <CharacterCard
+                  key={char.id}
+                  char={char}
+                  isActive={Boolean(char.id === activeCharId || char.isCurrentActive)}
+                  isActionInProgress={isActionInProgress}
+                  onSelect={handleSelectCharacter}
+                  onDuplicate={handleDuplicate}
+                  onDelete={handleDelete}
+                />
+              ))}
             </div>
           )}
         </div>
 
         {/* Create Character Sub-Modal */}
-        {showCreateModal && (
-          <div
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(0,0,0,0.5)',
-              zIndex: 100000,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '16px',
-            }}
-            onClick={() => setShowCreateModal(false)}
-          >
-            <form
-              onSubmit={handleCreateNew}
-              style={{
-                width: '320px',
-                background: 'var(--parchment, #fdf6e2)',
-                border: '2px solid var(--pb, #c8a96e)',
-                borderRadius: '6px',
-                padding: '16px',
-                boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '10px',
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div style={{ fontFamily: 'var(--font-title)', fontSize: '15px', color: 'var(--red)', fontWeight: 'bold' }}>
-                ➕ New Character
-              </div>
-
-              <div>
-                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
-                  Character Name:
-                </label>
-                <input
-                  type="text"
-                  required
-                  autoFocus
-                  className="modal-input"
-                  placeholder="e.g. Valeros"
-                  value={newCharName}
-                  onChange={(e) => setNewCharName(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
-                  Starting Class:
-                </label>
-                <select
-                  className="modal-select"
-                  value={newCharClass}
-                  onChange={(e) => setNewCharClass(e.target.value)}
-                >
-                  <option value="Fighter">Fighter</option>
-                  <option value="Barbarian">Barbarian</option>
-                  <option value="Cleric">Cleric</option>
-                  <option value="Wizard">Wizard</option>
-                  <option value="Rogue">Rogue</option>
-                  <option value="Paladin">Paladin</option>
-                  <option value="Ranger">Ranger</option>
-                  <option value="Druid">Druid</option>
-                  <option value="Bard">Bard</option>
-                  <option value="Monk">Monk</option>
-                  <option value="Sorcerer">Sorcerer</option>
-                </select>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px', marginTop: '6px' }}>
-                <button
-                  type="button"
-                  onClick={() => setShowCreateModal(false)}
-                  className="btn"
-                  style={{
-                    padding: '4px 10px',
-                    fontSize: '11px',
-                    fontFamily: 'var(--font-title)',
-                    background: 'rgba(200, 169, 110, 0.2)',
-                    border: '1px solid var(--pb)',
-                    borderRadius: '3px',
-                    cursor: 'pointer',
-                    color: 'var(--ink)',
-                  }}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={!newCharName.trim() || isActionInProgress}
-                  className="btn btn-p"
-                  style={{
-                    padding: '4px 12px',
-                    fontSize: '11px',
-                    fontFamily: 'var(--font-title)',
-                    background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-                    border: '1px solid #8b6914',
-                    borderRadius: '3px',
-                    color: '#ffffff',
-                    cursor: 'pointer',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  Create
-                </button>
-              </div>
-            </form>
-          </div>
-        )}
+        <CreateCharacterModal
+          show={showCreateModal}
+          isActionInProgress={isActionInProgress}
+          onClose={() => setShowCreateModal(false)}
+          onSubmit={handleCreateNew}
+        />
       </div>
     </div>
   );

@@ -19,27 +19,27 @@ gantt
     section Phase 1: Bereinigung & Sicherheit
     Phase 1 (Legacy Clean, XSS, SW Version)    :done, p1, 2026-08-24, 1d
     section Phase 2: State-Integrität & Dialoge
-    Task 2.1 (State-API für FeatureCards)      :active, p2_1, 2026-08-24, 1d
-    Task 2.2 (Deklarativer DialogContext)     :p2_2, after p2_1, 1d
+    Task 2.1 (State-API für FeatureCards)      :done, p2_1, 2026-08-24, 1d
+    Task 2.2 (Deklarativer DialogContext)     :done, p2_2, after p2_1, 1d
     section Phase 3: Performance & Snapshots
-    Task 3.1 (DTO Snapshots in useCombatState) :p3_1, after p2_2, 1d
-    Task 3.2 (Method-Patching SkillsTab)       :p3_2, after p3_1, 1d
+    Task 3.1 (DTO Snapshots in useCombatState) :done, p3_1, after p2_2, 1d
+    Task 3.2 (Method-Patching SkillsTab)       :done, p3_2, after p3_1, 1d
     section Phase 4: Modularisierung (<450Z)
-    Task 4.1 (BaseDialogs Split)               :p4_1, after p3_2, 1d
-    Task 4.2 (PCSkillsTab Split)               :p4_2, after p4_1, 1d
-    Task 4.3 (ActiveEquipmentSlots Split)      :p4_3, after p4_2, 1d
-    Task 4.4 (TacticalBeltCard Split)          :p4_4, after p4_3, 1d
-    Task 4.5 (Wizard & Step3LevelConfig Split) :p4_5, after p4_4, 1d
+    Task 4.1 (BaseDialogs Split)               :done, p4_1, after p3_2, 1d
+    Task 4.2 (PCSkillsTab Split)               :done, p4_2, after p4_1, 1d
+    Task 4.3 (ActiveEquipmentSlots Split)      :done, p4_3, after p4_2, 1d
+    Task 4.4 (TacticalBeltCard Split)          :done, p4_4, after p4_3, 1d
+    Task 4.5 (Wizard & Step3LevelConfig Split) :done, p4_5, after p4_4, 1d
     section Phase 5: Typsicherheit (0 @ts-ignore)
-    Task 5.1 (combat.ts Stat-Typen)            :p5_1, after p4_5, 1d
-    Task 5.2 (Prestige Rules Module)           :p5_2, after p5_1, 1d
-    Task 5.3 (171 @ts-ignore Abbau)            :p5_3, after p5_2, 2d
+    Task 5.1 (combat.ts Stat-Typen)            :done, p5_1, after p4_5, 1d
+    Task 5.2 (Prestige Rules Module)           :done, p5_2, after p5_1, 1d
+    Task 5.3 (171 @ts-ignore Abbau)            :done, p5_3, after p5_2, 2d
     section Phase 6: UI-Testing & Build
-    Task 6.1 (Vitest & RTL Setup)              :p6_1, after p5_3, 1d
-    Task 6.2 (Code-Splitting React.lazy)       :p6_2, after p6_1, 1d
-    Task 6.3 (Console Logging Cleanup)         :p6_3, after p6_2, 1d
+    Task 6.1 (Vitest & RTL Setup)              :done, p6_1, after p5_3, 1d
+    Task 6.2 (Statisches Build-Chunking & SW)  :done, p6_2, after p6_1, 1d
+    Task 6.3 (Console Logging Cleanup)         :done, p6_3, after p6_2, 1d
     section Phase 7: Finaler Healthcheck
-    Task 7.1 (QA-Audit & 100% Green Check)     :p7_1, after p6_3, 1d
+    Task 7.1 (QA-Audit & 100% Green Check)     :done, p7_1, after p6_3, 1d
 ```
 
 | Phase | Fokus | Status | Commits | Tests | Typecheck |
@@ -49,8 +49,8 @@ gantt
 | **Phase 3** | Snapshot DTOs, V8-Deopt Beseitigung, SkillsTab Patch | ✅ **Abgeschlossen** | `9c66803` | 304 / 304 ✅ | 0 Fehler ✅ |
 | **Phase 4** | Modularisierung von Monster-Komponenten (< 450 Zeilen) | ✅ **Abgeschlossen** | `a48667c` | 304 / 304 ✅ | 0 Fehler ✅ |
 | **Phase 5** | Vollständige Typsicherheit, Abbau aller 180 `@ts-ignore` | ✅ **Abgeschlossen** | `595ac7d` | 304 / 304 ✅ | 0 Fehler ✅ |
-| **Phase 6** | Vitest UI-Tests (100% grün), Build-Chunking & Logging | 🔄 **In Bearbeitung** | `cb260e8`, `9ab9c10`, `2d8cbe2`, `c06c47b`, `cfc516a` | 304 Kern + 14 UI ✅ | 0 Fehler ✅ |
-| **Phase 7** | Finaler Healthcheck-Scan (0 Gelb / 0 Rot) | ⏳ Ausstehend | — | — | — |
+| **Phase 6** | Vitest UI-Tests (100% grün), Build-Chunking & Logging | ✅ **Abgeschlossen** | `cb260e8`, `9ab9c10`, `2d8cbe2`, `c06c47b`, `cfc516a` | 304 Kern + 14 UI ✅ | 0 Fehler ✅ |
+| **Phase 7** | Finaler Healthcheck-Scan (0 Gelb / 0 Rot) | ✅ **Abgeschlossen** | `8e3a2b1` | 304 Kern + 14 UI ✅ | 0 Fehler ✅ |
 
 ---
 
@@ -221,10 +221,30 @@ gantt
 3. **CI-Fix:**
    - Unnötige React-Imports bereinigt (Konformität mit `noUnusedLocals`).
 
-#### Architektur-Entscheidung zu Task 6.2:
-> [!NOTE]
-> **Zero-Latency Offline Tabletop Decision:**
-> Die App ist eine Offline-First PWA für den Spieltisch. Ein asynchrones Nachladen mit `React.lazy()` würde Lade-Spinner (`<Suspense>`) beim Öffnen von Tabs oder Dialogen erzeugen. Daher verzichten wir bewusst auf Laufzeit-Lazy-Loading und setzen stattdessen auf **sauberes Build-Chunking in `vite.config.ts` (`manualChunks`)**, damit alle Bundles beim App-Start parallel geladen und im Service Worker gecacht werden.
+#### Durchgeführte Änderungen in Task 6.2 (Statisches Build-Chunking & SW Precache):
+1. **Rollup `manualChunks`-Optimierung (`vite.config.ts`):**
+   - [`vite.config.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/vite.config.ts) mit klar abgegrenzten Chunks:
+     - `react-vendor` (193.8 kB): `react`, `react-dom`, `scheduler`
+     - `supabase-vendor` (213.8 kB): `@supabase/*`
+     - `vendor` (6.2 kB): Third-party Utilities
+     - `state-core` (165.6 kB): D&D 3.5e Kernengine (`js/state/`, `js/rules/`, `js/models/`)
+     - `data-registry` (196.9 kB): Zauber-, Feat- und Klassen-Datenbanken (`js/data/`)
+     - `app-core` (744.4 kB): React-Anwendungs-UI, Modale, Wizard, PlayerSheet, DM-Screen
+     - `main` (0.9 kB): Schlanker Bootstrap-Loader
+   - **0 zirkuläre Chunk-Warnungen** und **0 Chunk-Größen-Warnungen**.
+2. **Service Worker Precache-Integrität:**
+   - [`scratch/update_sw.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/scratch/update_sw.js) scannt `dist/` rekursiv und erfasst alle 18 Produktions-Assets (JS-Chunks, CSS, Spells JSON, PWA Manifest & Icons).
+   - Alle Chunks werden beim App-Start / PWA-Install vollständig im Service Worker gecacht ➔ **100% Offline-Fähigkeit & Zero-Runtime-Latency**.
+
+#### Durchgeführte Änderungen in Task 6.3 (Console Logging Cleanup):
+1. **Zero-Overhead Logger Utility ([`src/utils/logger.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/utils/logger.ts)):**
+   - Schaltet alle Debug- und Info-Logs im Produktiv-Build automatisch stumm (`import.meta.env.DEV`), während Fehler- und Exception-Logs für den Support erhalten bleiben.
+2. **Bereinigung in `src/`:**
+   - [`src/context/AuthContext.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/context/AuthContext.tsx) (Entfernung von 7 verbose Farbkonsolen-Logs)
+   - [`src/context/CombatEngineContext.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/context/CombatEngineContext.tsx) (Session-Restore Log)
+   - [`src/services/storage/SupabaseStorageAdapter.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/services/storage/SupabaseStorageAdapter.ts) (11 Cloud-Save/Load Logs)
+   - [`src/services/network/RealtimeSyncBridge.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/services/network/RealtimeSyncBridge.ts) (4 Realtime-Broadcast Logs)
+   - [`src/components/player/PlayerSheet.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/PlayerSheet.tsx) & [`src/components/dm/DMScreen.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/dm/DMScreen.tsx) (Cache-Reset Logs)
 
 #### Nächste Schritte:
 ```
@@ -235,25 +255,34 @@ gantt
     [x] 6.1.4: Modals.test.tsx (CustomAlertModal, CustomConfirmModal, CustomPromptModal, ParchmentMessageModal, DialogContext)
     [x] 6.1.5: npm run test:ui Script definieren
 
-[ ] Task 6.2: Build-Chunking-Optimierung (vite.config.ts manualChunks)
-    [ ] 6.2.1: Chunks für dm-screen, character-wizard, player-sheet verfeinern
-    [ ] 6.2.2: Service Worker Cache-Manifest überprüfen
+[x] Task 6.2: Build-Chunking-Optimierung (Zero-Runtime-Latency & SW-Precache)
+    [x] 6.2.1: manualChunks in vite.config.ts definieren (state-core, data-registry, vendors, app-core)
+    [x] 6.2.2: Service Worker Cache-Manifest überprüfen (100% Precache aller 18 Assets)
 
-[ ] Task 6.3: Console Logging Cleanup
-    [ ] 6.3.1: Verbliebene console.log/warn in src/ bereinigen
+[x] Task 6.3: Console Logging Cleanup (100% Abgeschlossen)
+    [x] 6.3.1: Verbliebene console.log/warn in src/ bereinigen & logger.ts einführen
 ```
 
 ---
 
-### ⏳ Phase 7: Finaler Healthcheck & QA-Abnahme
+### ✅ Phase 7: Finaler Healthcheck & QA-Abnahme (100% Abgeschlossen)
+
+#### Durchgeführte QA-Healthcheck-Verifikation:
+1. **Typecheck ([`npx tsc --noEmit`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/package.json)):** `0 Fehler`, **0 `@ts-ignore` Direktiven** im gesamten Codebase.
+2. **Core Test Suite ([`npm run test`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/package.json)):** **304 / 304 Tests bestanden (100% grün)**.
+3. **UI Test Suite ([`npm run test:ui`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/package.json)):** **14 / 14 Vitest/RTL Tests bestanden (100% grün)**.
+4. **Produktions-Build ([`npm run build`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/package.json)):** 0 Warnings, saubere Chunk-Trennung, alle 18 Produktions-Assets im Service-Worker precached.
+5. **Security & Modularisierung:** 100% DOMPurify XSS-Sanitation, alle Target-Komponenten <= 450 Zeilen, alle 6 Prestige-Regelmodule modularisiert.
+7. **Option A Full UI Modularization:** Alle 13 überdimensionierten UI-Komponenten (`> 450 Zeilen`) wurden vollständig in saubere Domain-Subkomponenten aufgeteilt. **100% aller 144 UI-Dateien** in `src/components/` halten nun das Zeilen-Limit von `<= 450 Zeilen` ein.
 
 ```
-[ ] Task 7.1: Vollständige 100% Green Verification
-    [ ] 7.1.1: npm run typecheck (0 Fehler, 0 @ts-ignore)
-    [ ] 7.1.2: npm run test (304/304 Tests)
-    [ ] 7.1.3: npm run test:ui (100% UI Tests)
-    [ ] 7.1.4: npm run build (Sauberes Bundle)
-    [ ] 7.1.5: Healthcheck Scan (0 Gelb, 0 Rot)
+[x] Task 7.1: Vollständige 100% Green Verification (100% Abgeschlossen)
+    [x] 7.1.1: npm run typecheck (0 Fehler, 0 @ts-ignore)
+    [x] 7.1.2: npm run test (304/304 Tests)
+    [x] 7.1.3: npm run test:ui (14/14 UI Tests)
+    [x] 7.1.4: npm run build (Sauberes Bundle, 18 SW Assets)
+    [x] 7.1.5: Healthcheck Scan (0 Gelb, 0 Rot)
+    [x] 7.1.6: Option A Modularisierung aller 13 UI-Komponenten (144/144 Dateien <= 450 Zeilen)
 ```
 
 ---

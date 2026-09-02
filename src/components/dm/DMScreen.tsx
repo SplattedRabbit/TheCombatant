@@ -18,6 +18,7 @@ import { DMToolbox } from './DMToolbox';
 import { campaignService } from '../../services/campaign/CampaignService.ts';
 import { storageService } from '../../services/storage/StorageService.ts';
 import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
+import { logger } from '../../utils/logger';
 
 interface DMScreenProps {
   state: CombatStateSnapshot;
@@ -157,18 +158,18 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
           try {
             const keys = await caches.keys();
             await Promise.all(keys.map(key => caches.delete(key)));
-            console.log('Caches cleared.');
+            logger.log('Caches cleared.');
           } catch (err) {
-            console.error('Error clearing caches:', err);
+            logger.error('Error clearing caches:', err);
           }
         }
         if ('serviceWorker' in navigator) {
           try {
             const registrations = await navigator.serviceWorker.getRegistrations();
             await Promise.all(registrations.map(reg => reg.unregister()));
-            console.log('Service Workers unregistered.');
+            logger.log('Service Workers unregistered.');
           } catch (err) {
-            console.error('Error unregistering service workers:', err);
+            logger.error('Error unregistering service workers:', err);
           }
         }
         window.location.reload();

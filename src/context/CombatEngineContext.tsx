@@ -14,6 +14,7 @@ import { storageService } from '../services/storage/StorageService.ts';
 import { getState, getActivePC, StateEvents } from '@core/state/state-core.js';
 import { CombatSpells } from '@core/spells.js';
 import { CombatState } from '@core/state.js';
+import { logger } from '../utils/logger';
 
 // Typendefinitionen für das Engine-Modul
 interface CombatEventBus {
@@ -59,7 +60,7 @@ export function CombatEngineProvider({ children }: ProviderProps) {
 
         // Lade Zauberdatenbank parallel im Hintergrund (Non-Blocking für sofortigen App-Start)
         CombatSpells.loadSpells().catch((err: any) => {
-          console.warn('[CombatEngineContext] Background spell database load error:', err);
+          logger.warn('[CombatEngineContext] Background spell database load error:', err);
         });
 
         // Lade lokalen State aus dem Speicheradapter (sofort/synchron aus Cache)
@@ -68,7 +69,7 @@ export function CombatEngineProvider({ children }: ProviderProps) {
         // Stelle aktive Online-Sitzung wieder her
         const storedState = CombatState.getState();
         if (storedState.session && storedState.session.active) {
-          console.log("Restoring active network session:", storedState.session.role, "Room:", storedState.session.roomCode);
+          logger.log("Restoring active network session:", storedState.session.role, "Room:", storedState.session.roomCode);
           CombatState.updateSession(true, storedState.session.role, storedState.session.roomCode);
         }
 
@@ -79,7 +80,7 @@ export function CombatEngineProvider({ children }: ProviderProps) {
         setStateEventsRef(StateEvents);
         setIsReady(true);
       } catch (err) {
-        console.error('[CombatEngineContext] Fehler beim Engine-Bootstrap:', err);
+        logger.error('[CombatEngineContext] Fehler beim Engine-Bootstrap:', err);
       }
     }
 

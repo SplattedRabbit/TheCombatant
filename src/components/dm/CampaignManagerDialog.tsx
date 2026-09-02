@@ -8,6 +8,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import type { CampaignSummary } from '../../types/campaign.ts';
 import { campaignService, generateInviteCode } from '../../services/campaign/CampaignService.ts';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { CampaignCard } from './campaign/CampaignCard.tsx';
+import { CreateCampaignModal } from './campaign/CreateCampaignModal.tsx';
 
 interface CampaignManagerDialogProps {
   isOpen: boolean;
@@ -23,9 +25,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isActionInProgress, setIsActionInProgress] = useState<boolean>(false);
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false);
-  const [newCampName, setNewCampName] = useState<string>('');
-  const [newCampDesc, setNewCampDesc] = useState<string>('');
-  const [newCampCode, setNewCampCode] = useState<string>('');
+  const [initialCode, setInitialCode] = useState<string>('');
   const [copiedCodeId, setCopiedCodeId] = useState<string | null>(null);
   const [activeCampId, setActiveCampId] = useState<string | null>(null);
 
@@ -104,21 +104,15 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
     );
   };
 
-  const handleCreateNew = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newCampName.trim()) return;
-
+  const handleCreateNew = async (name: string, desc: string, code: string) => {
     try {
       setIsActionInProgress(true);
       const created = await campaignService.createCampaign({
-        name: newCampName.trim(),
-        description: newCampDesc.trim(),
-        inviteCode: newCampCode.trim() || undefined,
+        name,
+        description: desc,
+        inviteCode: code || undefined,
       });
       setShowCreateModal(false);
-      setNewCampName('');
-      setNewCampDesc('');
-      setNewCampCode('');
       await campaignService.switchActiveCampaign(created.id);
       onClose();
     } catch (err: any) {
@@ -257,7 +251,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
           <button
             type="button"
             onClick={() => {
-              setNewCampCode(generateInviteCode());
+              setInitialCode(generateInviteCode());
               setShowCreateModal(true);
             }}
             className="btn btn-p"
@@ -322,333 +316,31 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
                 gap: '12px',
               }}
             >
-              {filteredCampaigns.map((camp) => {
-                const isActive = camp.id === activeCampId || camp.isCurrentActive;
-                const isCopied = copiedCodeId === camp.id;
-
-                return (
-                  <div
-                    key={camp.id}
-                    style={{
-                      background: isActive ? 'linear-gradient(135deg, #fbf2db, #f7e8c3)' : '#ffffff',
-                      border: isActive ? '1.5px solid #065f46' : '1px solid var(--pb, #c8a96e)',
-                      borderRadius: '6px',
-                      padding: '12px',
-                      boxShadow: isActive ? '0 3px 10px rgba(6, 95, 70, 0.15)' : '0 2px 5px rgba(0,0,0,0.05)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      gap: '8px',
-                      position: 'relative',
-                    }}
-                  >
-                    {/* Active Badge */}
-                    {isActive && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: '6px',
-                          right: '6px',
-                          background: '#065f46',
-                          color: '#ffffff',
-                          fontSize: '8.5px',
-                          fontFamily: 'var(--font-title)',
-                          padding: '1px 6px',
-                          borderRadius: '10px',
-                          fontWeight: 'bold',
-                        }}
-                      >
-                        ⭐ Active Session
-                      </div>
-                    )}
-
-                    <div>
-                      {/* Campaign Name */}
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-title)',
-                          fontSize: '14px',
-                          fontWeight: 'bold',
-                          color: 'var(--red, #8b1a1a)',
-                          paddingRight: isActive ? '75px' : '0',
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                        }}
-                        title={camp.name}
-                      >
-                        {camp.name}
-                      </div>
-
-                      {/* Description */}
-                      {camp.description && (
-                        <div
-                          style={{
-                            fontSize: '10.5px',
-                            color: 'var(--inkm, #665c49)',
-                            fontStyle: 'italic',
-                            marginTop: '2px',
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                          }}
-                        >
-                          {camp.description}
-                        </div>
-                      )}
-
-                      {/* Invite Code Pill */}
-                      <div
-                        style={{
-                          marginTop: '6px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                        }}
-                      >
-                        <span style={{ fontSize: '10px', color: 'var(--inkm)' }}>Code:</span>
-                        <button
-                          type="button"
-                          onClick={() => handleCopyCode(camp.inviteCode, camp.id)}
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '4px',
-                            padding: '1px 6px',
-                            fontSize: '10px',
-                            fontFamily: 'monospace',
-                            fontWeight: 'bold',
-                            background: isCopied ? '#065f46' : 'rgba(200, 169, 110, 0.15)',
-                            color: isCopied ? '#ffffff' : 'var(--red)',
-                            border: '1px solid var(--pb)',
-                            borderRadius: '3px',
-                            cursor: 'pointer',
-                          }}
-                          title="Copy invite code to clipboard"
-                        >
-                          <span>{isCopied ? '✓' : '📋'}</span>
-                          <span>{camp.inviteCode}</span>
-                        </button>
-                      </div>
-
-                      {/* Encounter Stats */}
-                      <div
-                        style={{
-                          marginTop: '6px',
-                          fontSize: '10.5px',
-                          fontFamily: 'var(--font-body)',
-                          color: 'var(--ink, #2c2214)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '8px',
-                          flexWrap: 'wrap',
-                        }}
-                      >
-                        <span>⚔️ Round {camp.round}</span>
-                        <span>👾 {camp.combatantCount} Combatants</span>
-                        {camp.location && <span>📍 {camp.location}</span>}
-                      </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div
-                      style={{
-                        borderTop: '0.5px solid rgba(200, 169, 110, 0.4)',
-                        paddingTop: '6px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: '4px',
-                      }}
-                    >
-                      <button
-                        type="button"
-                        onClick={() => handleSelectCampaign(camp.id)}
-                        disabled={isActionInProgress || isActive}
-                        className="btn btn-p"
-                        style={{
-                          flex: 1,
-                          padding: '3px 6px',
-                          fontSize: '10.5px',
-                          fontFamily: 'var(--font-title)',
-                          background: isActive ? '#065f46' : 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-                          border: '1px solid #8b6914',
-                          color: '#ffffff',
-                          borderRadius: '3px',
-                          cursor: isActive ? 'default' : 'pointer',
-                          opacity: isActive ? 0.9 : 1,
-                        }}
-                      >
-                        {isActive ? '✓ Loaded' : '⚡ Open'}
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => handleDuplicate(camp.id)}
-                        disabled={isActionInProgress}
-                        className="btn"
-                        style={{
-                          padding: '3px 6px',
-                          fontSize: '10px',
-                          background: 'rgba(200, 169, 110, 0.2)',
-                          border: '1px solid var(--pb)',
-                          borderRadius: '3px',
-                          cursor: 'pointer',
-                        }}
-                        title="Duplicate Campaign"
-                      >
-                        📑
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => handleDelete(camp.id, camp.name)}
-                        disabled={isActionInProgress}
-                        className="btn"
-                        style={{
-                          padding: '3px 6px',
-                          fontSize: '10px',
-                          background: 'rgba(139, 26, 26, 0.1)',
-                          borderColor: 'rgba(139, 26, 26, 0.3)',
-                          color: 'var(--red)',
-                          borderRadius: '3px',
-                          cursor: 'pointer',
-                        }}
-                        title="Delete Campaign"
-                      >
-                        🗑️
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+              {filteredCampaigns.map((camp) => (
+                <CampaignCard
+                  key={camp.id}
+                  camp={camp}
+                  isActive={Boolean(camp.id === activeCampId || camp.isCurrentActive)}
+                  isCopied={copiedCodeId === camp.id}
+                  isActionInProgress={isActionInProgress}
+                  onSelect={handleSelectCampaign}
+                  onDuplicate={handleDuplicate}
+                  onDelete={handleDelete}
+                  onCopyCode={handleCopyCode}
+                />
+              ))}
             </div>
           )}
         </div>
 
         {/* Create Campaign Sub-Modal */}
-        {showCreateModal && (
-          <div
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(0,0,0,0.5)',
-              zIndex: 100000,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '16px',
-            }}
-            onClick={() => setShowCreateModal(false)}
-          >
-            <form
-              onSubmit={handleCreateNew}
-              style={{
-                width: '340px',
-                background: 'var(--parchment, #fdf6e2)',
-                border: '2px solid var(--pb, #c8a96e)',
-                borderRadius: '6px',
-                padding: '16px',
-                boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '10px',
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div style={{ fontFamily: 'var(--font-title)', fontSize: '15px', color: 'var(--red)', fontWeight: 'bold' }}>
-                ➕ Create New Campaign
-              </div>
-
-              <div>
-                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
-                  Campaign Name:
-                </label>
-                <input
-                  type="text"
-                  required
-                  autoFocus
-                  className="modal-input"
-                  placeholder="e.g. Curse of Strahd"
-                  value={newCampName}
-                  onChange={(e) => setNewCampName(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
-                  Description / Notes:
-                </label>
-                <textarea
-                  rows={2}
-                  className="modal-textarea"
-                  placeholder="e.g. Wednesday group, Level 3-7..."
-                  value={newCampDesc}
-                  onChange={(e) => setNewCampDesc(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <label style={{ fontSize: '11px', color: 'var(--inkm)', display: 'block', marginBottom: '3px', fontWeight: 'bold' }}>
-                  Invite Code:
-                </label>
-                <input
-                  type="text"
-                  className="modal-input"
-                  placeholder="e.g. STRAHD-42"
-                  value={newCampCode}
-                  onChange={(e) => setNewCampCode(e.target.value.toUpperCase())}
-                  style={{
-                    fontFamily: 'monospace',
-                    fontWeight: 'bold',
-                    letterSpacing: '1px',
-                  }}
-                />
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px', marginTop: '6px' }}>
-                <button
-                  type="button"
-                  onClick={() => setShowCreateModal(false)}
-                  className="btn"
-                  style={{
-                    padding: '4px 10px',
-                    fontSize: '11px',
-                    fontFamily: 'var(--font-title)',
-                    background: 'rgba(200, 169, 110, 0.2)',
-                    border: '1px solid var(--pb)',
-                    borderRadius: '3px',
-                    cursor: 'pointer',
-                    color: 'var(--ink)',
-                  }}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={!newCampName.trim() || isActionInProgress}
-                  className="btn btn-p"
-                  style={{
-                    padding: '4px 12px',
-                    fontSize: '11px',
-                    fontFamily: 'var(--font-title)',
-                    background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-                    border: '1px solid #8b6914',
-                    borderRadius: '3px',
-                    color: '#ffffff',
-                    cursor: 'pointer',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  Create
-                </button>
-              </div>
-            </form>
-          </div>
-        )}
+        <CreateCampaignModal
+          show={showCreateModal}
+          initialInviteCode={initialCode}
+          isActionInProgress={isActionInProgress}
+          onClose={() => setShowCreateModal(false)}
+          onSubmit={handleCreateNew}
+        />
       </div>
     </div>
   );
