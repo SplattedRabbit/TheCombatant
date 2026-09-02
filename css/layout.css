@@ -153,36 +153,8 @@
 
 /* Print Adjustments */
 @media print {
-  :root {
-    --app-scale: 1.0 !important;
-  }
-  #appRoot {
-    transform: none !important;  /* safety: remove any residual transform */
-    width: 100% !important;
-  }
-  body {
-    background: white;
-    padding: 0;
-    margin: 0;
-  }
-
-  .sheet {
-    width: 100%;
-    box-shadow: none;
-    border: 1.5px solid #c8a96e;
-  }
-
   .no-print {
     display: none !important;
-  }
-
-  .cond-popup, .ref-overlay {
-    display: none !important;
-  }
-
-  @page {
-    size: A4 landscape;
-    margin: 7mm;
   }
 }
 

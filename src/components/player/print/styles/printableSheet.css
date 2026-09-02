@@ -354,37 +354,65 @@
 @media print {
   @page {
     size: A4 portrait;
-    margin: 6mm 8mm 6mm 8mm;
+    margin: 8mm 8mm 8mm 8mm;
   }
 
-  body {
+  html, body {
     background: #ffffff !important;
     color: #000000 !important;
     margin: 0 !important;
     padding: 0 !important;
-  }
-
-  .no-print,
-  .print-toolbar,
-  .print-modal-overlay {
-    background: transparent !important;
-    position: static !important;
-    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
     overflow: visible !important;
-    padding: 0 !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
   }
 
-  .print-toolbar {
+  /* Hide the entire web app root and all dialogs/overlays except the printable folio */
+  #root,
+  #app,
+  #appRoot,
+  .sheet,
+  .screen,
+  .dialog-overlay,
+  .modal-overlay:not(.print-modal-overlay),
+  body > *:not(.print-modal-overlay) {
+    display: none !important;
+  }
+
+  .print-modal-overlay {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    inset: auto !important;
+    z-index: auto !important;
+  }
+
+  .print-toolbar,
+  .no-print {
     display: none !important;
   }
 
   .print-viewport {
     padding: 0 !important;
+    margin: 0 !important;
     gap: 0 !important;
     overflow: visible !important;
     display: block !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .print-viewport > div {
+    transform: none !important;
+    display: block !important;
+    gap: 0 !important;
+    width: 100% !important;
   }
 
   .dnd-page {
@@ -393,11 +421,17 @@
     background: #ffffff !important;
     color: #000000 !important;
     width: 100% !important;
-    min-height: auto !important;
+    max-width: 100% !important;
+    min-height: 275mm !important;
+    height: auto !important;
     margin: 0 !important;
-    padding: 2mm 0 !important;
+    padding: 0 !important;
+    page-break-before: auto !important;
     page-break-after: always !important;
+    page-break-inside: avoid !important;
     break-after: page !important;
+    box-sizing: border-box !important;
+    position: relative !important;
   }
 
   .dnd-page:last-child {
