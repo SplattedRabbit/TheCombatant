@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { screen } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { CombatState } from '@core/state.js';
 import { Combatant } from '@core/models/Combatant.js';
 import { createLevelUpDraft } from '../services/levelup/levelUpAdapter';
@@ -119,8 +119,8 @@ describe('Level-Up Assistant Suite', () => {
     });
   });
 
-  describe('3. LevelUpDialog Component', () => {
-    it('renders the modal with correct level progression header and tabs', () => {
+  describe('3. LevelUpDialog Component (4-Step Linear Wizard)', () => {
+    it('renders the 4-step wizard and navigates through steps to completion', () => {
       const pc = new Combatant({
         name: 'Gareth',
         race: 'human',
@@ -143,13 +143,37 @@ describe('Level-Up Assistant Suite', () => {
         />
       );
 
-      // Verify Level Header
+      // Verify Header & Breadcrumbs
       expect(screen.getByText(/Level-Up Assistant:/i)).toBeInTheDocument();
       expect(screen.getByText(/Gareth/i)).toBeInTheDocument();
       expect(screen.getByText(/Level 2 ➔ Level 3/i)).toBeInTheDocument();
-      expect(screen.getByText(/✦ Complete Level Up/i)).toBeInTheDocument();
+      expect(screen.getByText(/1\. Class & Stats/i)).toBeInTheDocument();
+      expect(screen.getByText(/2\. Skills & Tricks/i)).toBeInTheDocument();
+      expect(screen.getByText(/3\. Feats & ACFs/i)).toBeInTheDocument();
+      expect(screen.getByText(/4\. Review & Apply/i)).toBeInTheDocument();
+
+      // Step 1 Content
+      expect(screen.getByText(/Step 1\.1: Choose Class for Level 3/i)).toBeInTheDocument();
+      expect(screen.getByText(/Step 1\.3: Hit Die HP Roll/i)).toBeInTheDocument();
+
+      // Navigate to Step 2: Skills & Tricks
+      fireEvent.click(screen.getByRole('button', { name: /Next Step/i }));
       expect(screen.getByText(/Skills \(/i)).toBeInTheDocument();
-      expect(screen.getByText(/Tricks \(/i)).toBeInTheDocument();
+      expect(screen.getByText(/Skill Tricks \(/i)).toBeInTheDocument();
+
+      // Navigate to Step 3: Feats & ACFs
+      fireEvent.click(screen.getByRole('button', { name: /Next Step/i }));
+      expect(screen.getByText(/Feats \(/i)).toBeInTheDocument();
+      expect(screen.getByText(/Alternative Class Features/i)).toBeInTheDocument();
+
+      // Navigate to Step 4: Review & Apply
+      fireEvent.click(screen.getByRole('button', { name: /Next Step/i }));
+      expect(screen.getByText(/Review Level 3 Advancement/i)).toBeInTheDocument();
+      expect(screen.getByText(/✦ Complete Level Up/i)).toBeInTheDocument();
+
+      // Complete Level Up
+      fireEvent.click(screen.getByText(/✦ Complete Level Up/i));
+      expect(handleClose).toHaveBeenCalled();
     });
   });
 });
