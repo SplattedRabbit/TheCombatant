@@ -1,94 +1,79 @@
-# Testing Strategy & Quality Assurance Specification
+# Testing Strategy & Quality Assurance Architecture
 
 > **The Combatant (v6.0.0)** — D&D 3.5e Digital Combat Companion & Character Management System  
 > Dual Test Architecture: **304 Core Node Tests + 14 Vitest React Testing Library Tests**
 
 ---
 
-## 1. Test Architecture Overview
+## 1. Testing Philosophy & Core Principles
 
-The application utilizes a dual-tier testing infrastructure ensuring both mathematical precision of D&D 3.5e RAW rules and flawless UI component behavior:
+The test suite of *The Combatant* is designed around **two distinct testing tiers** to ensure both mathematical rule correctness and responsive, crash-free tabletop usability:
 
 ```mermaid
 graph TD
-    subgraph CoreTests ["Tier 1: Core Node.js Test Runner (304 Tests)"]
-        Rules["D&D 3.5e Rules (AttackEngine, Saves, Modifiers, TWF)"]
-        Prestige["Prestige Classes Engine (6 Classes)"]
-        Storage["Storage Resilience & Offline Recovery"]
-        Sync["Realtime SyncProtocol & Object Diffs"]
-        WildShape["Wild Shape & Natural Attacks"]
-        WizardRules["Point-Buy & Feats Allocation"]
+    subgraph Tier1 ["Tier 1: Deterministic Domain & Rules Tests (Node.js Test Runner)"]
+        DndRules["D&D 3.5e RAW Mechanics (BAB, TWF, Modifiers, Stacking)"]
+        Prestige["Prestige Classes Engine (6 Classes & Prerequisites)"]
+        Resilience["Storage Resilience, Offline Puffer & Debounce Batching"]
+        SyncProtocol["Realtime SyncProtocol, Object Diffs & Disconnect Safeguards"]
+        WildShape["Wild Shape Transformations & Natural Attack Allocations"]
     end
 
-    subgraph UITests ["Tier 2: Vitest + React Testing Library (14 Tests)"]
-        PlayerSheetUI["PlayerSheet (Tabs, Caster visibility, System dropdown)"]
-        WizardUI["CharacterWizard (Race/Name, 74-Pt Buy, Step flow)"]
-        ModalsUI["DialogContext (Alert, Confirm, Prompt, Parchment message)"]
+    subgraph Tier2 ["Tier 2: Component & Interaction Invariants (Vitest + RTL)"]
+        SheetUI["Player Sheet Workflows (Dynamic Caster Tabs, System Menus)"]
+        WizardUI["Character Wizard Steps (Point-Buy Allocation, Navigation State)"]
+        ModalsUI["Declarative Dialog Context (Sanitization, Modals Lifecycle)"]
     end
 
-    CoreTests --> Result["100% Green CI / Pre-Commit Validation"]
-    UITests --> Result
+    Tier1 --> QualityGate["Continuous Integration & Pre-Commit Validation (100% Green)"]
+    Tier2 --> QualityGate
 ```
 
----
-
-## 2. Test Execution Commands
-
-```powershell
-# Run all Core Node tests (304 tests)
-npm run test
-
-# Run a single core test file (fast, token-efficient)
-node --import ./Tests/setup.js --test Tests/prestige.test.js
-
-# Run all React UI tests with Vitest (14 tests)
-npm run test:ui
-
-# Run entire test suite (Core + UI)
-npm run test:all
-
-# Typecheck validation
-npm run typecheck
-```
+### Core Invariants:
+1. **Zero Math Deviation from D&D 3.5e RAW:** All calculations (stacking rules, bonus categorization, saving throws, attack penalty progression) must match the Official System Reference Document (SRD).
+2. **Offline-First & Fault Resilience:** State persistence must never throw fatal exceptions upon network drops or cloud disconnects. Local storage serves as an immediate, infallible fallback.
+3. **Behavioral UI Testing:** Component tests validate real user workflows, navigation, and DOM state transitions without mocking internal business logic.
 
 ---
 
-## 3. Core Test Domains
+## 2. Test Execution & Workflow Commands
 
-### 3.1 D&D 3.5e RAW Rules & Calculations
-- **Attack Engine:** Base Attack Bonus (BAB), Two-Weapon Fighting penalties, Power Attack slider, Weapon Finesse, Critical Threat range doubling (Keen / Improved Critical).
-- **Modifier Stacking (`Stat.js`):** Enforces D&D rules where named bonuses of the same type do not stack (e.g. two +2 Enhancement bonuses yield +2), while Dodge, Circumstance, and Untyped bonuses stack cleanly.
-- **Saving Throws:** Fortitude, Reflex, Will formula calculation across multi-classing and prestige progression.
-- **Prestige Classes Engine (`js/rules/prestigeClassEngine.js`):** Prerequisite checks and automated feature grants for Arcane Trickster, Assassin, Battle Trickster, Eldritch Knight, Shadowbane Inquisitor, and Spellwarp Sniper.
-- **Wild Shape:** Accurate attribute override, temporary HP recalculation from Constitution changes, natural weapons allocation (primary/secondary attacks), size modifier application, and clean state reversal on `exitShape()`.
-
-### 3.2 Storage Resilience & Offline Recovery
-- **Local-First Puffer:** Immediate synchronous persistence to `LocalStorageAdapter`.
-- **Debounced Cloud Sync:** 800ms debounce batching to prevent Supabase request flood.
-- **Network Drop Resilience:** Simulates connection drops during debounced saves; verifies that local data remains intact and synchronizes seamlessly once network is restored.
-
-### 3.3 Realtime Synchronization Protocol
-- **Shallow Object Diffs:** Transmits delta payloads (<30ms) between player devices and the DM Screen.
-- **Array Hydration & Safeguard:** Prevents deletion of local character state on host disconnects.
+| Scope | Command (PowerShell) | When to Use |
+|---|---|---|
+| **Core Suite** | `npm run test` | Validates all 304 rules, models, and storage suites |
+| **Single Suite** | `node --import ./Tests/setup.js --test Tests/<file>.test.js` | Fast, token-efficient feedback during feature development |
+| **UI Suite** | `npm run test:ui` | Runs all 14 Vitest + React Testing Library component tests |
+| **Full Validation** | `npm run test:all` | Complete pre-release check (Core tests + UI tests) |
+| **Typecheck** | `npm run typecheck` | Static TypeScript compiler check (`tsc --noEmit`) |
 
 ---
 
-## 4. BDD UI Component Specifications (Vitest / RTL)
+## 3. Test Domain Architecture
 
-### Scenario 1: Character Creation Wizard Flow
-- **Given** the Character Wizard is opened at Step 1 (`Identity & Race`),
-- **When** the player enters a valid character name and clicks `Next`,
-- **Then** the Wizard advances to Step 2 (`Abilities (74 Pts)`),
-- **And** highlights key class attributes when a reference class is selected.
+### 3.1 Rules & Mechanics Invariants (`Tests/*.test.js`)
+- **Modifier Stacking Engine (`Stat.js`):** Enforces strict bonus type stacking (named bonuses of the same type do not stack; Dodge, Circumstance, and Untyped bonuses stack).
+- **Combat & Attack Engines (`AttackEngine.js`):** Validates iterative attack penalties, Two-Weapon Fighting offsets, Power Attack damage multipliers, and weapon critical ranges.
+- **Prestige Classes Engine (`prestigeClassEngine.js`):** Tests progression milestones, prerequisite validation, and automated feature grants across all 6 core prestige classes.
+- **Wild Shape & Natural Weapons:** Validates physical stat overrides, size modifiers, Constitution-dependent HP recalculation, and primary/secondary natural attack matrices.
 
-### Scenario 2: Caster Tab Visibility on Player Sheet
-- **Given** a non-caster character (e.g. Fighter) is loaded,
-- **Then** the `Spellbook` tab is hidden.
-- **When** a caster class (e.g. Wizard or Cleric) is added,
-- **Then** the `Spellbook` tab dynamically appears in the navigation bar.
+### 3.2 Storage & Network Resilience (`Tests/storage_*.test.js`)
+- **Local-First Caching:** Verifies instantaneous local persistence before network synchronization.
+- **Debounce Timing:** Asserts that rapid successive state mutations are batched within an 800ms window.
+- **Connection Recovery:** Tests automatic retry and background cloud synchronization once network connectivity is re-established.
+- **SyncProtocol Diffs:** Tests shallow path-based delta serialization, preventing payload bloat and host disconnect data-loss.
 
-### Scenario 3: Declarative Dialog Context Modals
-- **Given** an action requires user confirmation (e.g. resetting character data),
-- **When** `showCustomConfirm()` is invoked via `DialogContext`,
-- **Then** the ancient parchment modal appears on screen with sanitized HTML,
-- **And** executes the confirmed callback only upon clicking `Confirm`.
+### 3.3 UI Interaction & State Invariants (`src/__tests__/*.test.tsx`)
+- **Dynamic Interface Visibility:** Asserts that contextual tabs (e.g. `Spellbook`) appear or disappear based on class progression.
+- **Wizard Step Progression:** Validates multi-step form state preservation, 74-point buy budget constraints, and class key attribute highlights.
+- **Modal Lifecycle & Security:** Validates declarative modal mounting, DOMPurify HTML sanitization, and callback execution.
+
+---
+
+## 4. Guidelines for Adding New Tests
+
+1. **Domain & Rules Logic:**
+   - Create tests in `Tests/<domain>.test.js` using native Node.js test runner (`node:test` and `node:assert/strict`).
+   - Keep tests deterministic and free of DOM dependencies.
+2. **React Components & UI Workflows:**
+   - Create tests in `src/__tests__/<Component>.test.tsx` using Vitest, React Testing Library, and the custom `renderWithProviders()` helper.
+   - Query elements using user-centric accessible roles (`getByRole`, `getByText`, `getByPlaceholderText`).
