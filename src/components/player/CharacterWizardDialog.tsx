@@ -179,17 +179,54 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         showCustomAlert("Level Selection", "Please set the target level and configure the levels.", "OK", "⚠️");
         return;
       }
-      const incompleteLevel = levelConfigs.find(cfg => !cfg.classType);
-      if (incompleteLevel) {
-        showCustomAlert("Incomplete Configuration", `Please choose a class for Level ${incompleteLevel.level}.`, "OK", "⚠️");
+      if (!currentConfig || !currentConfig.classType) {
+        showCustomAlert("Class Missing", `Please select a class for Level ${currentLevelIndex + 1}.`, "OK", "🧙‍♂️");
         return;
       }
-      setStep(4);
+      const hp = parseInt(currentConfig.hpRoll) || 0;
+      const hd = getClassHitDie(currentConfig.classType);
+      if (hp < 1 || hp > hd) {
+        showCustomAlert("Invalid Hit Points", `Please enter valid hit points between 1 and ${hd} for Level ${currentLevelIndex + 1}.`, "OK", "🎲");
+        return;
+      }
+      const isAbilityIncreaseReq = (currentLevelIndex + 1) % 4 === 0;
+      if (isAbilityIncreaseReq && !currentConfig.abilityIncrease) {
+        showCustomAlert("Ability Increase", `Please select an ability score increase for Level ${currentLevelIndex + 1}.`, "OK", "✨");
+        return;
+      }
+      if (currentLevelRemainingSkillPoints > 0) {
+        showCustomAlert("Skill Points Remaining", `You still have ${currentLevelRemainingSkillPoints} skill points to distribute for Level ${currentLevelIndex + 1}.`, "OK", "📝");
+        return;
+      }
+      if (currentLevelRemainingSkillPoints < 0) {
+        showCustomAlert("Skill Points Overspent", `You have overspent skill points by ${Math.abs(currentLevelRemainingSkillPoints)} for Level ${currentLevelIndex + 1}.`, "OK", "⚠️");
+        return;
+      }
+      const emptyFeats = currentFeatSlots.some((_, idx) => !currentConfig.feats?.[idx]);
+      if (emptyFeats) {
+        showCustomAlert("Feat Slots Open", `Please select all feats for Level ${currentLevelIndex + 1}.`, "OK", "🔒");
+        return;
+      }
+
+      if (currentLevelIndex < targetLevel - 1) {
+        setCurrentLevelIndex(currentLevelIndex + 1);
+      } else {
+        setStep(4);
+      }
     }
   };
 
   const handleBack = () => {
-    if (step > 1) setStep(step - 1);
+    if (step === 3 && isTargetLevelSet) {
+      if (currentLevelIndex > 0) {
+        setCurrentLevelIndex(currentLevelIndex - 1);
+      } else {
+        setIsTargetLevelSet(false);
+        setStep(2);
+      }
+    } else if (step > 1) {
+      setStep(step - 1);
+    }
   };
 
   const handleSaveCharacter = () => {
@@ -311,7 +348,10 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         padding: '20px 28px',
         boxSizing: 'border-box',
         fontFamily: 'var(--font-title)',
-        position: 'relative'
+        position: 'relative',
+        width: '100%',
+        maxWidth: '100%',
+        overflowX: 'hidden'
       }}
     >
       <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
@@ -344,7 +384,9 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
               className="btn"
               style={{ padding: '4px 16px', fontSize: '12px', opacity: step === 1 ? 0.5 : 1 }}
             >
-              Back
+              {step === 3 && isTargetLevelSet && currentLevelIndex > 0
+                ? `← Level ${currentLevelIndex}`
+                : 'Back'}
             </button>
             
             {step < 4 ? (
@@ -366,7 +408,11 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   ) ? 0.5 : 1
                 }}
               >
-                Next
+                {step === 3 && isTargetLevelSet && currentLevelIndex < targetLevel - 1
+                  ? `Level ${currentLevelIndex + 2} →`
+                  : step === 3 && isTargetLevelSet
+                  ? 'Review (Step 4) →'
+                  : 'Next'}
               </button>
             ) : (
               <button 

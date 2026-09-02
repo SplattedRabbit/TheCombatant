@@ -10,9 +10,7 @@ import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.
 import { PrestigeSpellLinkSection } from './PrestigeSpellLinkSection';
 
 export interface LevelHeaderAndStatsProps {
-  levelConfigs: any[];
   currentLevelIndex: number;
-  setCurrentLevelIndex: (idx: number) => void;
   currentConfig: any;
   currentDraft: any;
   prevDraft: any;
@@ -22,9 +20,7 @@ export interface LevelHeaderAndStatsProps {
 }
 
 export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
-  levelConfigs,
   currentLevelIndex,
-  setCurrentLevelIndex,
   currentConfig,
   currentDraft,
   prevDraft,
@@ -92,59 +88,7 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
   const srcLabel = selectedClass && (selectedClass as any).source ? (selectedClass as any).source.toUpperCase() : 'PHB';
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      {/* Level Timeline Bar */}
-      <div
-        style={{
-          display: 'flex',
-          gap: '4px',
-          overflowX: 'auto',
-          paddingBottom: '8px',
-          borderBottom: '0.5px solid rgba(200,169,110,0.3)',
-          marginBottom: '10px',
-        }}
-      >
-        {levelConfigs.map((cfg, idx) => {
-          const isCurrent = idx === currentLevelIndex;
-          const isPast = idx < currentLevelIndex;
-          const matched = CLASSES_LIST.find((c) => c.key === cfg.classType);
-          const clsName = matched
-            ? matched.name
-            : cfg.classType
-            ? cfg.classType
-                .split('_')
-                .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(' ')
-            : '?';
-
-          return (
-            <div
-              key={idx}
-              onClick={() => {
-                if (idx < currentLevelIndex) {
-                  setCurrentLevelIndex(idx);
-                }
-              }}
-              style={{
-                padding: '4px 10px',
-                background: isCurrent
-                  ? 'rgba(139, 26, 26, 0.08)'
-                  : isPast
-                  ? 'rgba(200, 169, 110, 0.15)'
-                  : 'transparent',
-                border: isCurrent ? '1.5px solid var(--red)' : '1px solid transparent',
-                borderRadius: '3px',
-                fontSize: '11px',
-                cursor: isPast ? 'pointer' : 'default',
-                opacity: isCurrent || isPast ? 1 : 0.5,
-                whiteSpace: 'nowrap',
-              }}
-            >
-              Level {cfg.level} ({cfg.classType ? clsName : 'No Class'})
-            </div>
-          );
-        })}
-      </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', minWidth: 0, width: '100%' }}>
 
       {/* Header and Source Chips */}
       <div

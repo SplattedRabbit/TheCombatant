@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { CombatRules } from '@core/rules.js';
+import { CLASSES_LIST } from './constants';
 import { SkillsTabContent } from './SkillsTabContent';
 import { SkillTricksTabContent } from './SkillTricksTabContent';
 import { FeatsTabContent } from './FeatsTabContent';
@@ -115,14 +116,83 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
     : Math.floor((currentLevelIndex + 1) / 2);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', textAlign: 'left', marginTop: '10px' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1.3fr', gap: '24px' }}>
-        {/* Left Column: Timeline, Class, HP, Ability Increase, Preview */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', textAlign: 'left', marginTop: '10px', width: '100%', maxWidth: '100%', minWidth: 0, boxSizing: 'border-box' }}>
+      {/* Full-width Level Timeline Bar */}
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '5px',
+          paddingBottom: '8px',
+          borderBottom: '0.5px solid rgba(200,169,110,0.3)',
+          marginBottom: '4px',
+          width: '100%',
+          maxWidth: '100%',
+          minWidth: 0,
+          boxSizing: 'border-box',
+        }}
+      >
+        {levelConfigs.map((cfg, idx) => {
+          const isCurrent = idx === currentLevelIndex;
+          const isConfigured = Boolean(cfg.classType);
+          const isSelectable = isConfigured || idx <= currentLevelIndex;
+          const matched = CLASSES_LIST.find((c) => c.key === cfg.classType);
+          const clsName = matched
+            ? matched.name
+            : cfg.classType
+            ? cfg.classType
+                .split('_')
+                .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ')
+            : 'No Class';
+
+          return (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => {
+                if (isSelectable) {
+                  setCurrentLevelIndex(idx);
+                }
+              }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '5px',
+                padding: '4px 9px',
+                background: isCurrent
+                  ? 'linear-gradient(180deg, rgba(155, 44, 44, 0.18) 0%, rgba(123, 24, 24, 0.28) 100%)'
+                  : isConfigured
+                  ? 'rgba(200, 169, 110, 0.15)'
+                  : 'rgba(0, 0, 0, 0.03)',
+                border: isCurrent
+                  ? '1.5px solid var(--red)'
+                  : isConfigured
+                  ? '1px solid var(--pb)'
+                  : '1px dashed rgba(200, 169, 110, 0.4)',
+                borderRadius: '3px',
+                fontSize: '11px',
+                fontFamily: 'var(--font-title)',
+                color: isCurrent ? 'var(--red)' : isConfigured ? 'var(--ink)' : 'var(--inkl)',
+                fontWeight: isCurrent ? 'bold' : 'normal',
+                cursor: isSelectable ? 'pointer' : 'default',
+                opacity: isSelectable ? 1 : 0.45,
+                whiteSpace: 'nowrap',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              <span>Level {cfg.level}</span>
+              <span style={{ fontSize: '9.5px', opacity: 0.85 }}>({clsName})</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.1fr) minmax(0, 1.3fr)', gap: '24px', width: '100%', maxWidth: '100%', minWidth: 0, boxSizing: 'border-box' }}>
+        {/* Left Column: Class, HP, Ability Increase, Preview */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', minWidth: 0, maxWidth: '100%' }}>
           <LevelHeaderAndStats
-            levelConfigs={levelConfigs}
             currentLevelIndex={currentLevelIndex}
-            setCurrentLevelIndex={setCurrentLevelIndex}
             currentConfig={currentConfig}
             currentDraft={currentDraft}
             prevDraft={prevDraft}
@@ -143,7 +213,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
         </div>
 
         {/* Right Column: Tab Navigation & Tab Content */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', minWidth: 0, maxWidth: '100%' }}>
           {/* Tabs Header */}
           <div
             style={{
