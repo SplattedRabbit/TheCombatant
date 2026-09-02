@@ -11,12 +11,15 @@ Agents used:
 * Google Antigravity
 * Google Gemini Flash for concepts, basic UI-Work, minor fixes and documentation
 * Claude Sonnet 4.6 most of the easy implementations and first strikes with new features
-* Claude Opus for the heavy lifting, big architecural refactorings
+## 📚 Documentation
+- [System Architecture](docs/ARCHITECTURE.md) — 6-tier architecture, layer responsibilities, Mermaid diagrams
+- [Developer Guide](docs/DEVELOPER_GUIDE.md) — Quickstart, quality constraints, and workflow commands
+- [Testing Strategy](docs/TESTING.md) — 304 core Node tests + 14 Vitest UI tests specs
+- [Changelog](docs/CHANGELOG.md) — Release notes and milestone history
 
-An in-depth documentation can be found in ./docs/DEVELOPER_TRANSITION.md
+---
 
-Full Featurelist:
-# 🏰 The Combatant — Feature-Übersicht
+## 🏰 Feature-Übersicht
 
 **The Combatant** ist ein maßgeschneidertes, mobiles und offline-fähiges Begleit-Tool für **Dungeons & Dragons 3.5e**. Es kombiniert einen hochgradig automatisierten Charakterbogen mit einer Echtzeit-Kampf- und Spielleiter-Schnittstelle.
 

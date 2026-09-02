@@ -178,14 +178,13 @@ An **nicht-offensichtlichen Stellen** (Feature-Logik in generischer Datei, Cross
 
 ---
 
-## 9. Dateigrößen-Richtwerte
+## 9. Dateigrößen-Richtwerte & UI-Modularisierungs-Standard
 
-| Größe    | Bedeutung                                                  |
-|----------|------------------------------------------------------------|
-| < 300Z   | Ideal — lesbar ohne Scroll, agent-freundlich               |
-| 300–600Z | Akzeptabel — Header ist Pflicht                            |
-| 600–900Z | Split prüfen beim nächsten größeren Feature                |
-| > 900Z   | Split bei nächster Gelegenheit — Issue in Bugtracking.md   |
+| Größe | Bedeutung |
+|---|---|
+| **<= 450Z** | **Harter Standard für alle UI-Komponenten in `src/components/`** (100% eingehalten). |
+| < 300Z | Ideal — modular, lesbar ohne Scroll, agent-freundlich. |
+| > 450Z | **Unzulässig:** Sofort in Domain-Subkomponenten im passenden Subfolder aufteilen. |
 
 ---
 
