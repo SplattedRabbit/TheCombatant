@@ -1,7 +1,7 @@
 # Testing Strategy & Quality Assurance Architecture
 
-> **The Combatant (v6.0.0)** — D&D 3.5e Digital Combat Companion & Character Management System  
-> Dual Test Architecture: **304 Core Node Tests + 14 Vitest React Testing Library Tests**
+> **The Combatant (v6.2.0)** — D&D 3.5e Digital Combat Companion & Character Management System  
+> Dual Test Architecture: **311 Core Node Tests + 34 Vitest React Testing Library Tests (345 Total Tests)**
 
 ---
 
@@ -40,9 +40,9 @@ graph TD
 
 | Scope | Command (PowerShell) | When to Use |
 |---|---|---|
-| **Core Suite** | `npm run test` | Validates all 304 rules, models, and storage suites |
+| **Core Suite** | `npm run test` | Validates all 311 rules, models, and storage suites |
 | **Single Suite** | `node --import ./Tests/setup.js --test Tests/<file>.test.js` | Fast, token-efficient feedback during feature development |
-| **UI Suite** | `npm run test:ui` | Runs all 14 Vitest + React Testing Library component tests |
+| **UI Suite** | `npm run test:ui` | Runs all 34 Vitest + React Testing Library component tests |
 | **Full Validation** | `npm run test:all` | Complete pre-release check (Core tests + UI tests) |
 | **Typecheck** | `npm run typecheck` | Static TypeScript compiler check (`tsc --noEmit`) |
 
@@ -63,9 +63,12 @@ graph TD
 - **SyncProtocol Diffs:** Tests shallow path-based delta serialization, preventing payload bloat and host disconnect data-loss.
 
 ### 3.3 UI Interaction & State Invariants (`src/__tests__/*.test.tsx`)
-- **Dynamic Interface Visibility:** Asserts that contextual tabs (e.g. `Spellbook`) appear or disappear based on class progression.
-- **Wizard Step Progression:** Validates multi-step form state preservation, 74-point buy budget constraints, and class key attribute highlights.
-- **Modal Lifecycle & Security:** Validates declarative modal mounting, DOMPurify HTML sanitization, and callback execution.
+- **Player Sheet & Tabs (`PlayerSheet.test.tsx`):** Asserts header stats, tab switching, and dynamic caster tabs (`Spellbook`).
+- **Wizard Step Progression (`CharacterWizard.test.tsx`):** Validates multi-step form state preservation, 74-point buy budget constraints, and class key attribute highlights.
+- **Level-Up Assistant (`LevelUp.test.tsx`):** Tests 4-step level advancement flow, ability score increase milestones, feat slots, and review state.
+- **Printable Character Sheet Folio (`PrintableCharacterSheet.test.tsx`):** Verifies 4-page A4 rendering, page breakdown integrity, saving throw extractions, and companion sub-sheet.
+- **ACF Restrictions & Swapping (`ACFRestrictions.test.tsx`):** Tests ACF prerequisite checks, exclusivity conflicts, and automatic replacement swapping.
+- **Modal Lifecycle & Security (`Modals.test.tsx`):** Validates declarative modal mounting, DOMPurify HTML sanitization, and callback execution.
 
 ---
 

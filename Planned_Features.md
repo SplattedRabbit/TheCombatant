@@ -4,14 +4,23 @@ Dieses Dokument dient als zentrales Backlog und Tracking-Dokument für geplante 
 
 ---
 
-## 🚀 Aktuell in Arbeit (In Progress)
+## ✅ Zuletzt Abgeschlossen (Recent Releases)
 
-### 🧙‍♂️ 1. Geführter Level-Up-Assistent (In-Game Level Advancement)
-- **Status:** `In Progress` (Branch: `feat/levelup-refinements`)
-- **Ziel:** Ermöglicht den Stufenaufstieg bestehender Charaktere ($n \rightarrow n+1$) direkt aus dem Character Sheet in einem fokussierten 4-Schritte-Assistenten:
+### 📄 1. D&D 3.5e 4-Seiten A4 / PDF Charakterbogen (Printable Folio)
+- **Status:** `Abgeschlossen & Gemerged (v6.2.0)`
+- **Umfang:** Authentisches 4-Seiten A4-Folio direkt im Druckdialog des Browsers (inkl. PDF-Export):
+  - **Seite 1:** Kampf- & Verteidigungsübersicht (Attribute, AC-Breakdown, Saves, Initiative, Waffen & Angriffsmatrix).
+  - **Seite 2:** Fertigkeiten-Matrix (45 Skills, Synergien, Ränge) & Talente/Klassenmerkmale.
+  - **Seite 3:** Ausrüstung & Rüstkammer (Rüstung/Schild mit ACP, Gürtel/Magische Gegenstände, Münzen & Traglast).
+  - **Seite 4:** Zauberslots & Tierbegleiter/Vertrauten-Bogen.
+  - Pixelgenaues Drucklayout (`296mm` Seitenbudget, `@page` Zero-Margins, kein Clipping von Headern/Footern).
+
+### 🧙‍♂️ 2. Geführter Level-Up-Assistent (In-Game Level Advancement)
+- **Status:** `Abgeschlossen & Gemerged (v6.1.0)`
+- **Umfang:** Stufenaufstieg bestehender Charaktere ($n \rightarrow n+1$) direkt aus dem Character Sheet in einem 4-Schritte-Assistenten:
   - **Schritt 1:** Klasse, Attributssteigerung (+1 auf Stufe 4, 8, 12, 16, 20) und Trefferwürfel-Wurf (mit dynamischem CON-Bonus).
   - **Schritt 2:** Vollflächige Fertigkeiten-Verteilung & Skill-Tricks.
-  - **Schritt 3:** Talente & Alternative Klassenfeatures (ACFs) mit RAW-Voraussetzungsprüfung.
+  - **Schritt 3:** Talente & Alternative Klassenfeatures (ACFs) mit RAW-Voraussetzungsprüfung und Swap-Logik.
   - **Schritt 4:** Pergament-Zusammenfassung und transaktionales Speichern.
 
 ---

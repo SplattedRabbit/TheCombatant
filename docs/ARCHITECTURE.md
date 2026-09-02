@@ -17,6 +17,8 @@ graph TD
         Sheet["PlayerSheet.tsx (Character Sheet)"]
         DM["DMScreen.tsx (DM Screen & Initiative)"]
         Wizard["CharacterWizardDialog.tsx (Creation Wizard)"]
+        LevelUp["LevelUpDialog.tsx (Level-Up Assistant)"]
+        PrintFolio["PrintableCharacterSheetModal.tsx (A4 Print Folio)"]
         Roster["CharacterRosterDialog.tsx (Character Library)"]
         CampDialog["CampaignManagerDialog.tsx (Campaign Manager)"]
         JoinDialog["JoinCampaignDialog.tsx (Table Join)"]
@@ -27,6 +29,8 @@ graph TD
         App --> DM
         App --> Wizard
         App --> SyncUI
+        Sheet --> LevelUp
+        Sheet --> PrintFolio
         Sheet --> Roster
         Sheet --> JoinDialog
         Sheet --> PresenceUI

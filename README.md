@@ -14,7 +14,7 @@ Agents used:
 ## 📚 Documentation
 - [System Architecture](docs/ARCHITECTURE.md) — 6-tier architecture, layer responsibilities, Mermaid diagrams
 - [Developer Guide](docs/DEVELOPER_GUIDE.md) — Quickstart, quality constraints, and workflow commands
-- [Testing Strategy](docs/TESTING.md) — 304 core Node tests + 14 Vitest UI tests specs
+- [Testing Strategy](docs/TESTING.md) — 311 core Node tests + 34 Vitest UI tests specs
 - [Changelog](docs/CHANGELOG.md) — Release notes and milestone history
 
 ---
@@ -54,36 +54,40 @@ Hier ist die Übersicht, was Spieler und Spielleiter (DM) erwartet – auf hoher
 
 ---
 
-## 🐾 4. Klassenfeatures & Begleiter
-*Maßgeschneiderte Mechaniken für jede Klasse.*
+## 🐾 4. Klassenfeatures, Begleiter & Level-Up
+*Maßgeschneiderte Mechaniken für jede Klasse und kontinuierliche Charakter-Entwicklung.*
+* **Geführter Level-Up-Assistent:** Direkter Stufenaufstieg bestehender Charaktere im 4-Schritte-Dialog mit automatischer Trefferwürfel-Berechnung, Fertigkeitenpunkten, Talent-Meilensteinen und ACF-Auswahl.
 * **Spezial-Ressourcen:** Tracking von täglichen Ladungen für Klassenmerkmale (z. B. *Zorn* des Barbaren, *Handauflegen* des Paladins, *Lieder* des Barden).
 * **Tierbegleiter & Vertraute:** Eigene, interaktive Begleiter-Bögen direkt im Hauptbogen integriert (für Druiden, Waldläufer, Magier und Hexenmeister).
 * **Wild Shape (Tiergestalt):** Ein-Klick-Transformation für Druiden (z. B. Wolf, Leopard, Bär). Die App überschreibt temporär deine physischen Attribute, deine Rüstungsklasse und passt deine Angriffsoptionen nach den offiziellen D&D-Regeln (RAW) an.
 
 ---
 
-## 🔗 5. Live-Spielrunde & DM-Synchronisation
+## 📄 5. Druckbarer D&D 3.5e Charakterbogen (A4 / PDF Export)
+*Klassisches Pen & Paper Feeling für den Spieltisch.*
+* **Authentisches 4-Seiten A4 Folio:** Auf Knopfdruck aus dem System-Menü druckfertig aufbereitet (oder als PDF speicherbar).
+* **Seite 1:** Kampf- & Verteidigungswerte, AC-Breakdown, Rettungswürfe, Waffen & Angriffsmatrix.
+* **Seite 2:** Komplette 45-Fertigkeiten-Matrix inkl. Synergien, Sprachen, Talente und Klassenfeatures.
+* **Seite 3:** Ausrüstung, Rüstkammer mit Rüstungsmalus (ACP), magische Gegenstände, Gürtelslots, Münzen & Traglast.
+* **Seite 4:** Zauberbuch mit Slot-Übersicht & Save DCs sowie vollwertiger Tierbegleiter-/Vertrauten-Bogen.
+* **Pixelgenaues Print-Design:** Null Randverschnitt (`296mm` Page Budget) und automatisches Ausblenden von App-Navigation und Hintergründen.
+
+---
+
+## 🔗 6. Live-Spielrunde & DM-Synchronisation
 *Nahtloses Zusammenspiel am Tisch.*
-* **Echtzeit-Synchronisation (WebRTC):** Der Spielleiter startet eine Sitzung direkt im Browser. Spieler verbinden sich per Code über ihr Tablet oder Handy – komplett ohne Cloud-Zwang oder Accounts.
+* **Echtzeit-Synchronisation (Supabase Realtime):** Der Spielleiter startet eine Kampagne. Spieler treten per 8-stelligem Einladungscode bei – mit Latenzen unter 30ms und vollautomatischem Local-First Fallback.
 * **Zentraler DM-Screen:** Der Spielleiter sieht live die HP, Rüstungsklassen und Rettungswürfe aller Charaktere und behält die volle Kontrolle.
 * **Initiative-Tracker:** Der DM startet den Kampf, die Initiative wird automatisch berechnet und die aktive Zugreihenfolge für alle Teilnehmer live synchronisiert.
 
 ---
 
-## ⚙️ 6. Technologische Highlights
+## ⚙️ 7. Technologische Highlights
 *Unkompliziert, schnell und zuverlässig.*
 * **Zero-Install (PWA):** Kann direkt als Web-App auf dem Startbildschirm von Handy oder Tablet installiert werden und funktioniert dank Offline-Caching auch im tiefsten Keller ohne Internet.
-* **Lokaler Server für den DM:** Ein kleines, mitgeliefertes PowerShell-Script startet den Server auf dem DM-Laptop mit einem Klick – keine Installation von Node.js oder externen Datenbanken nötig.
+* **Supabase Cloud + LocalStorage:** Automatische Cloud-Sicherung für registrierte Nutzer mit 800ms Debouncing und sofortiger lokaler Pufferung.
 
 ---
 
 ## 🚀 Geplante Features (Roadmap / Backlog)
-
-### 🧙‍♂️ "Level-Up"-Assistent
-*Geführte Workflows für komfortablen Stufenaufstieg bestehender Charaktere.*
-* **Schritt-für-Schritt Level-Up:** Führt den Spieler strukturiert durch den Stufenaufstieg (Basisklasse, Multiclassing oder Prestige-Klasse) basierend auf der bestehenden Wizard-Engine.
-* **Automatischer HP-Zuwachs:** Trefferwürfel (Hit Die) der gewählten Klasse würfeln oder festen Durchschnittswert eintragen (+ Konstitutions-Modifikator).
-* **Fertigkeitspunkte-Verteilung (Skill Points):** Exakte Berechnung der verfügbaren Punkte für die neue Stufe (inkl. INT-Modifikator und Rassenbonus) mit automatischer Max-Rang-Prüfung (`Level + 3` für Klassenfertigkeiten).
-* **Attributs- & Talent-Meilensteine:** Automatische Erkennung von Stufen-Meilensteinen (Attributssteigerung alle 4 Stufen, allgemeine Talente alle 3 Stufen, Klassen-Bonustalente für z. B. Kämpfer/Magier).
-* **Zauber- & Slot-Progression:** Automatische Anpassung von Zauberslots und Freischaltung neuer Zaubergrade (inkl. Prestige-Klassen-Zauberverlinkung).
-* **Klassenfeatures & ACF-Aktivierung:** Sofortige Freischaltung und Eintragung neuer Klassenmerkmale, Tiergestalt-Optionen und alternativer Klassenfeatures (ACFs).
+Details zu kommenden Erweiterungen (Encounter Builder, Homebrew Creator, Regelwerks-Filterung) findest du in [Planned_Features.md](Planned_Features.md).

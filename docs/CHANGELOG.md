@@ -3,6 +3,20 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.0] - 2026-09-02
+
+### Added
+- **Printable Character Sheet Folio (A4 / PDF Export):** Authentic D&D 3.5e 4-page character folio accessible via System Options (`PrintableCharacterSheetModal.tsx`).
+  - **Page 1 (Core Combat & Defenses):** Character header, HP/Wounds, Base Stats & Modifiers, Armor Class breakdown, Saving Throws with conditional modifiers, Initiative, BAB, Weapons & Strike card attacks matrix.
+  - **Page 2 (Skills & Class Features):** Full 45-skill matrix with cross-class markers and synergy notes, learned feats compendium, and special abilities/ACFs.
+  - **Page 3 (Equipment & Armory):** Equipped armor/shields with ACP/check penalties, magic item & belt slots, ammunition, money purse, and carrying capacity/encumbrance tracking.
+  - **Page 4 (Spells & Companion / Familiar):** Prepared/spontaneous spell slots per day with bonus slots & save DCs, active buff list, and dedicated companion sub-sheet.
+  - **Print Layout Engine:** Pixel-perfect CSS page budget (`296mm` height, zero margin `@page`, `@media print` isolation) eliminating blank pages and browser header/footer clipping.
+- **ACF Conflict Resolution & Swapping:** Enhanced ACF selection in Wizard and Level-Up with mutual exclusion detection and one-click swapping when replacing the same base class feature.
+- **Automated Printable & ACF Tests:** Added Vitest integration tests in `src/__tests__/PrintableCharacterSheet.test.tsx` and `src/__tests__/ACFRestrictions.test.tsx`.
+
+---
+
 ## [6.1.0] - 2026-09-02
 
 ### Added
