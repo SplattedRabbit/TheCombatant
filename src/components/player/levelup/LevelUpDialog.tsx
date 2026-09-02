@@ -5,7 +5,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { CombatFeats } from '@core/data/feats-data.js';
-import { CombatRules } from '@core/rules.js';
+import { CLASSES_LIST } from '../wizard/constants';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { 
   getDraftPCState, 
@@ -68,8 +68,8 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
   }, [newLevelIndex, baseStats, selectedRace, levelConfigs]);
 
   const getClassHitDie = (clsKey: string): number => {
-    const cls = CombatRules.CLASSES.find((c: any) => c.key === clsKey);
-    return cls?.hitDie || 8;
+    const cls = CLASSES_LIST.find((c: any) => c.key === clsKey);
+    return cls?.hd || 8;
   };
 
   // Skill points calculation
@@ -276,6 +276,8 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
         >
           {step === 1 && (
             <Step1ClassAndStats
+              activePC={activePC}
+              initialDraft={initialDraft}
               currentConfig={currentConfig}
               currentLevelIndex={newLevelIndex}
               targetLevel={targetLevel}

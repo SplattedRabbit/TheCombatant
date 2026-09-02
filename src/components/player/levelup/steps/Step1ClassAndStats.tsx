@@ -1,15 +1,13 @@
-/**
- * @module    Step1ClassAndStats
- * @summary   Step 1 of the Level-Up Wizard: Class selection, Ability Score Increase milestone, and Hit Die HP roll.
- */
-
 import React, { useState } from 'react';
 import { CLASSES_LIST } from '../../wizard/constants';
-import { validatePrestigeClassPrereqs, isOnlySpecialTextUnmet } from '@core/rules.js';
+import { CLASSES } from '@core/rules/RulesData.js';
+import { CombatRules, validatePrestigeClassPrereqs, isOnlySpecialTextUnmet } from '@core/rules.js';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { PrestigeSpellLinkSection } from '../../wizard/levelConfig/PrestigeSpellLinkSection';
 
 export interface Step1ClassAndStatsProps {
+  activePC?: any;
+  initialDraft?: any;
   currentConfig: any;
   currentLevelIndex: number;
   targetLevel: number;
@@ -22,13 +20,14 @@ export interface Step1ClassAndStatsProps {
 }
 
 export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
+  activePC,
+  initialDraft,
   currentConfig,
   currentLevelIndex,
   targetLevel,
   updateLevelConfig,
   getClassHitDie,
   currentDraft,
-  prevDraft,
   completedDraft,
 }) => {
   const [sourceTab, setSourceTab] = useState<'all' | 'phb' | 'phb2' | 'ca' | 'prestige'>('all');
@@ -47,6 +46,29 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
   const conMod = completedDraft?.statMods?.con ?? currentDraft?.statMods?.con ?? 0;
   const currentRoll = parseInt(currentConfig.hpRoll) || 0;
   const gainedHp = Math.max(1, currentRoll + conMod);
+
+  // HP Progression: Active PC base HP + Gained HP (+ retroactive CON if milestone increased CON mod)
+  const baseHp = activePC?.maxHP ?? activePC?.maxHp ?? activePC?.hp ?? 10;
+  const oldCon = activePC?.con?.base ?? activePC?.con?.value ?? (typeof activePC?.con === 'number' ? activePC.con : 10);
+  const oldConMod = Math.floor((oldCon - 10) / 2);
+  const conDiff = conMod - oldConMod;
+  const retroactiveConHp = conDiff > 0 ? ((initialDraft?.totalCurrentLevel || (targetLevel - 1)) * conDiff) : 0;
+  const targetTotalHp = baseHp + gainedHp + retroactiveConHp;
+
+  // BAB Progression
+  const targetBab = completedDraft?.babVal ?? currentDraft?.babVal ?? 0;
+
+  // Base Saves Progression
+  let totalFort = 0, totalRef = 0, totalWill = 0;
+  const classesList = completedDraft?.classesList ?? currentDraft?.classesList ?? [];
+  classesList.forEach((c: any) => {
+    const clsDef = CLASSES.find((x: any) => x.key === c.classType);
+    if (clsDef && clsDef.saves) {
+      totalFort += CombatRules.calculateSave(clsDef.saves.fort, c.level);
+      totalRef += CombatRules.calculateSave(clsDef.saves.ref, c.level);
+      totalWill += CombatRules.calculateSave(clsDef.saves.wil || (clsDef.saves as any).will, c.level);
+    }
+  });
 
   const handleClassChange = (newClsKey: string) => {
     const clsDef = CLASSES_LIST.find((c) => c.key === newClsKey);
@@ -84,7 +106,8 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
 
     updateLevelConfig(currentLevelIndex, 'classType', newClsKey);
     const hdVal = (clsDef as any).hd || (clsDef as any).hitDie || 8;
-    if (!currentConfig.hpRoll || currentConfig.hpRoll === 0) {
+    const curRoll = parseInt(currentConfig.hpRoll) || 0;
+    if (curRoll === 0 || curRoll > hdVal) {
       updateLevelConfig(currentLevelIndex, 'hpRoll', Math.ceil(hdVal / 2) + 1);
     }
   };
@@ -299,17 +322,17 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
           <strong style={{ fontSize: '13px', color: 'var(--red)' }}>Level {targetLevel}</strong>
         </div>
         <div>
-          <div style={{ fontSize: '9.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>Total HP</div>
-          <strong style={{ fontSize: '13px', color: 'var(--ink)' }}>{completedDraft?.hp ?? (prevDraft?.hp ? prevDraft.hp + gainedHp : '--')}</strong>
+          <div style={{ fontSize: '9.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>Target Total HP</div>
+          <strong style={{ fontSize: '13px', color: 'var(--ink)' }}>{targetTotalHp} HP</strong>
         </div>
         <div>
-          <div style={{ fontSize: '9.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>BAB</div>
-          <strong style={{ fontSize: '13px', color: 'var(--ink)' }}>+{completedDraft?.bab ?? currentDraft?.bab ?? 0}</strong>
+          <div style={{ fontSize: '9.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>Target BAB</div>
+          <strong style={{ fontSize: '13px', color: 'var(--ink)' }}>+{targetBab}</strong>
         </div>
         <div>
-          <div style={{ fontSize: '9.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>Saves (F/R/W)</div>
+          <div style={{ fontSize: '9.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>Target Base Saves</div>
           <strong style={{ fontSize: '12px', color: 'var(--ink)' }}>
-            +{completedDraft?.saves?.fort ?? currentDraft?.saves?.fort ?? 0} / +{completedDraft?.saves?.ref ?? currentDraft?.saves?.ref ?? 0} / +{completedDraft?.saves?.will ?? currentDraft?.saves?.will ?? 0}
+            +{totalFort} / +{totalRef} / +{totalWill}
           </strong>
         </div>
       </div>
