@@ -58,7 +58,8 @@ export default function App() {
       // exakt der Bildschirmbreite entspricht und kein horizontaler Überlauf entsteht.
       appRoot.style.width = targetWidth + 'px';
 
-      scale = Math.max(0.6, Math.min(1.6, scale));
+      const maxScale = role === 'wizard' ? 1.2 : 1.6;
+      scale = Math.max(0.6, Math.min(maxScale, scale));
       currentScale = scale;
       document.documentElement.style.setProperty('--app-scale', scale.toString());
       syncBodyHeight();
