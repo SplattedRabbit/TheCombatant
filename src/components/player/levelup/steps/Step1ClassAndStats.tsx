@@ -90,6 +90,8 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
             `<div style="text-align: left; max-height: 250px; overflow-y: auto;"><p style="margin-bottom: 10px; color: var(--ink);">Prerequisites are met except for special condition:</p>${lines}<p style="margin-top: 10px; color: var(--ink);">Do you confirm this condition is met?</p></div>`,
             () => {
               updateLevelConfig(currentLevelIndex, 'classType', newClsKey);
+              const hdVal = (clsDef as any).hd || (clsDef as any).hitDie || 8;
+              updateLevelConfig(currentLevelIndex, 'hpRoll', Math.ceil(hdVal / 2) + 1);
             }
           );
         } else {
@@ -106,9 +108,22 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
 
     updateLevelConfig(currentLevelIndex, 'classType', newClsKey);
     const hdVal = (clsDef as any).hd || (clsDef as any).hitDie || 8;
-    const curRoll = parseInt(currentConfig.hpRoll) || 0;
-    if (curRoll === 0 || curRoll > hdVal) {
-      updateLevelConfig(currentLevelIndex, 'hpRoll', Math.ceil(hdVal / 2) + 1);
+    updateLevelConfig(currentLevelIndex, 'hpRoll', Math.ceil(hdVal / 2) + 1);
+  };
+
+  const handleTabChange = (tab: 'all' | 'phb' | 'phb2' | 'ca' | 'prestige') => {
+    setSourceTab(tab);
+    if (tab === 'all') return;
+    const tabClasses = CLASSES_LIST.filter((c) => {
+      if (tab === 'prestige') return c.isPrestige;
+      if (tab === 'phb') return !c.isPrestige && (c as any).source === 'phb';
+      if (tab === 'phb2') return !c.isPrestige && (c as any).source === 'phb2';
+      if (tab === 'ca') return !c.isPrestige && (c as any).source === 'ca';
+      return true;
+    });
+    const currentStillInTab = tabClasses.some((c) => c.key === currentConfig.classType);
+    if (!currentStillInTab && tabClasses.length > 0) {
+      handleClassChange(tabClasses[0].key);
     }
   };
 
@@ -133,7 +148,7 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
               <button
                 key={tab}
                 type="button"
-                onClick={() => setSourceTab(tab)}
+                onClick={() => handleTabChange(tab)}
                 style={{
                   fontSize: '9.5px',
                   padding: '2px 7px',
