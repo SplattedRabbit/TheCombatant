@@ -82,6 +82,14 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
   const spentOnTricks = (currentConfig?.skillTricks || []).length * 2;
   const currentLevelRemainingSkillPoints = currentLevelMaxSkillPoints - (spentOnSkills + spentOnTricks);
 
+  // Tricks limit calculation
+  const totalLearnedTricksCount = levelConfigs
+    .slice(0, newLevelIndex + 1)
+    .reduce((sum, cfg) => sum + (cfg.skillTricks?.length || 0), 0);
+  const maxTricksLimit = currentDraft?.draftPC
+    ? CombatRules.getMaxSkillTricksLimit(currentDraft.draftPC)
+    : Math.floor((newLevelIndex + 1) / 2);
+
   // Feats calculation
   const currentFeatSlots = currentConfig?.classType
     ? getFeatSlotsAtLevel(newLevelIndex, currentConfig.classType, selectedRace, levelConfigs)
@@ -135,7 +143,7 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
       style={{
         position: 'fixed',
         inset: 0,
-        background: 'rgba(15, 10, 5, 0.75)',
+        background: 'rgba(15, 10, 5, 0.72)',
         backdropFilter: 'blur(3px)',
         zIndex: 99999,
         display: 'flex',
@@ -149,46 +157,108 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
         className="sheet no-print"
         style={{
           width: '100%',
-          maxWidth: '920px',
-          maxHeight: '92vh',
+          maxWidth: '840px',
+          maxHeight: '88vh',
           background: 'var(--parchment, #fdf6e2)',
           border: '2px solid var(--pb, #c8a96e)',
           borderRadius: '8px',
-          boxShadow: '0 12px 40px rgba(0,0,0,0.45)',
+          boxShadow: '0 16px 48px rgba(0,0,0,0.5)',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
-          padding: '16px 20px',
-          boxSizing: 'border-box',
           position: 'relative',
+          padding: 0,
         }}
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Subtle decorative inner border */}
+        <div style={{ position: 'absolute', inset: '3px', border: '1px dashed rgba(200, 169, 110, 0.35)', pointerEvents: 'none', borderRadius: '5px', zIndex: 1 }} />
+
         {/* Modal Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(200, 169, 110, 0.4)', paddingBottom: '10px', marginBottom: '12px' }}>
-          <div>
-            <div style={{ fontSize: '18px', color: 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span>🧙‍♂️</span>
-              <span>Level Up: {activePC.name || 'Adventurer'} (Level {initialDraft.totalCurrentLevel} ➔ Level {initialDraft.newLevel})</span>
-            </div>
-            <div style={{ fontSize: '11px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
-              Configure your new level advancement, allocate skill points, choose feats and apply milestone bonuses.
+        <div
+          style={{
+            padding: '12px 20px',
+            borderBottom: '1.5px solid var(--pb, #c8a96e)',
+            background: 'linear-gradient(180deg, rgba(200, 169, 110, 0.28), rgba(200, 169, 110, 0.1))',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+            position: 'relative',
+            zIndex: 2,
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '24px' }}>🧙‍♂️</span>
+            <div>
+              <h2
+                style={{
+                  margin: 0,
+                  fontFamily: 'var(--font-title)',
+                  fontSize: '18px',
+                  color: 'var(--red, #8b1a1a)',
+                  lineHeight: 1.2,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                }}
+              >
+                <span>Level-Up Assistant:</span>
+                <span style={{ color: 'var(--ink)', fontWeight: 600 }}>{activePC.name || 'Adventurer'}</span>
+              </h2>
+              <div style={{ fontSize: '11px', color: 'var(--inkm, #665c49)', fontFamily: 'var(--font-body)', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ padding: '1px 6px', background: 'rgba(139,26,26,0.08)', borderRadius: '3px', border: '0.5px solid rgba(139,26,26,0.2)', fontWeight: 'bold', color: 'var(--red)' }}>
+                  Level {initialDraft.totalCurrentLevel} ➔ Level {initialDraft.newLevel}
+                </span>
+                <span>• Configure class, hit points, skill distribution and talent choices.</span>
+              </div>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
             className="btn"
-            style={{ padding: '3px 9px', fontSize: '13px', cursor: 'pointer' }}
+            style={{
+              padding: '2px 8px',
+              fontSize: '13px',
+              cursor: 'pointer',
+              color: 'var(--ink)',
+              border: '1px solid var(--pb)',
+              borderRadius: '4px',
+              background: 'rgba(255,255,255,0.6)',
+            }}
           >
             ✕
           </button>
         </div>
 
         {/* Content Body: 2-Column Level Configuration */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '16px', overflowY: 'auto', flex: 1, minHeight: 0 }}>
-          {/* Left Column: Class & Stats */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.05fr 1.25fr',
+            gap: '14px',
+            overflowY: 'auto',
+            flex: 1,
+            minHeight: 0,
+            padding: '14px 18px',
+            position: 'relative',
+            zIndex: 2,
+          }}
+        >
+          {/* Left Column: Class & Stats in Parchment Card */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '10px',
+              background: 'rgba(255, 255, 255, 0.55)',
+              border: '1px solid rgba(200, 169, 110, 0.45)',
+              borderRadius: '6px',
+              padding: '10px 12px',
+              boxShadow: '0 1px 6px rgba(0,0,0,0.03)',
+            }}
+          >
             <LevelHeaderAndStats
               levelConfigs={levelConfigs}
               currentConfig={currentConfig}
@@ -201,7 +271,7 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
               completedDraft={completedDraft}
             />
 
-            {currentFeatSlots.length > 0 && (
+            {currentFeatSlots.length > 0 && activeTab === 'feats' && (
               <FeatSlotsSidebar
                 currentFeatSlots={currentFeatSlots}
                 currentConfig={currentConfig}
@@ -211,42 +281,131 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
             )}
           </div>
 
-          {/* Right Column: Tabbed Content (Skills, Tricks, Feats, ACFs) */}
-          <div style={{ display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-            <div style={{ display: 'flex', gap: '4px', borderBottom: '1px solid var(--pb)', paddingBottom: '4px', marginBottom: '8px' }}>
+          {/* Right Column: Tab Navigation & Tab Content in Parchment Card */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              background: 'rgba(255, 255, 255, 0.55)',
+              border: '1px solid rgba(200, 169, 110, 0.45)',
+              borderRadius: '6px',
+              padding: '10px 12px',
+              boxShadow: '0 1px 6px rgba(0,0,0,0.03)',
+              minHeight: 0,
+            }}
+          >
+            {/* Tabs Header */}
+            <div
+              style={{
+                display: 'flex',
+                gap: '4px',
+                height: '28px',
+                borderBottom: '1.5px solid var(--pb)',
+                paddingBottom: '2px',
+                marginBottom: '8px',
+                boxSizing: 'border-box',
+              }}
+            >
               <button
                 type="button"
-                className={`btn ${activeTab === 'skills' ? 'btn-p' : ''}`}
                 onClick={() => setActiveTab('skills')}
-                style={{ padding: '3px 10px', fontSize: '11px', fontWeight: 'bold' }}
+                style={{
+                  flex: 1.2,
+                  padding: '3px 6px',
+                  height: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: activeTab === 'skills' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
+                  border: 'none',
+                  borderBottom: activeTab === 'skills' ? '2px solid var(--red)' : '2px solid transparent',
+                  color: activeTab === 'skills' ? 'var(--red)' : 'var(--inkm)',
+                  fontWeight: activeTab === 'skills' ? 'bold' : 'normal',
+                  fontSize: '11px',
+                  cursor: 'pointer',
+                  fontFamily: 'var(--font-title)',
+                  boxSizing: 'border-box',
+                  whiteSpace: 'nowrap',
+                }}
               >
-                Skills ({currentLevelRemainingSkillPoints} SP left)
+                📝 Skills ({currentLevelRemainingSkillPoints} / {currentLevelMaxSkillPoints})
               </button>
               <button
                 type="button"
-                className={`btn ${activeTab === 'tricks' ? 'btn-p' : ''}`}
                 onClick={() => setActiveTab('tricks')}
-                style={{ padding: '3px 10px', fontSize: '11px' }}
+                style={{
+                  flex: 1,
+                  padding: '3px 6px',
+                  height: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: activeTab === 'tricks' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
+                  border: 'none',
+                  borderBottom: activeTab === 'tricks' ? '2px solid var(--red)' : '2px solid transparent',
+                  color: activeTab === 'tricks' ? 'var(--red)' : 'var(--inkm)',
+                  fontWeight: activeTab === 'tricks' ? 'bold' : 'normal',
+                  fontSize: '11px',
+                  cursor: 'pointer',
+                  fontFamily: 'var(--font-title)',
+                  boxSizing: 'border-box',
+                  whiteSpace: 'nowrap',
+                }}
               >
-                Skill Tricks
+                🎭 Tricks ({totalLearnedTricksCount} / {maxTricksLimit})
               </button>
-              {currentFeatSlots.length > 0 && (
-                <button
-                  type="button"
-                  className={`btn ${activeTab === 'feats' ? 'btn-p' : ''}`}
-                  onClick={() => setActiveTab('feats')}
-                  style={{ padding: '3px 10px', fontSize: '11px' }}
-                >
-                  Feats ({currentFeatSlots.length} slot{currentFeatSlots.length > 1 ? 's' : ''})
-                </button>
-              )}
               <button
                 type="button"
-                className={`btn ${activeTab === 'acfs' ? 'btn-p' : ''}`}
-                onClick={() => setActiveTab('acfs')}
-                style={{ padding: '3px 10px', fontSize: '11px' }}
+                onClick={() => {
+                  if (currentFeatSlots.length > 0) {
+                    setActiveTab('feats');
+                  }
+                }}
+                disabled={currentFeatSlots.length === 0}
+                style={{
+                  flex: 1,
+                  padding: '3px 6px',
+                  height: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: activeTab === 'feats' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
+                  border: 'none',
+                  borderBottom: activeTab === 'feats' ? '2px solid var(--red)' : '2px solid transparent',
+                  color: currentFeatSlots.length === 0 ? '#aaa' : (activeTab === 'feats' ? 'var(--red)' : 'var(--inkm)'),
+                  fontWeight: activeTab === 'feats' ? 'bold' : 'normal',
+                  fontSize: '11px',
+                  cursor: currentFeatSlots.length === 0 ? 'not-allowed' : 'pointer',
+                  fontFamily: 'var(--font-title)',
+                  boxSizing: 'border-box',
+                  whiteSpace: 'nowrap',
+                }}
               >
-                ACFs
+                🎓 Feats ({currentFeatSlots.length})
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('acfs')}
+                style={{
+                  flex: 0.8,
+                  padding: '3px 6px',
+                  height: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: activeTab === 'acfs' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
+                  border: 'none',
+                  borderBottom: activeTab === 'acfs' ? '2px solid var(--red)' : '2px solid transparent',
+                  color: activeTab === 'acfs' ? 'var(--red)' : 'var(--inkm)',
+                  fontWeight: activeTab === 'acfs' ? 'bold' : 'normal',
+                  fontSize: '11px',
+                  cursor: 'pointer',
+                  fontFamily: 'var(--font-title)',
+                  boxSizing: 'border-box',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                ⚡ ACFs
               </button>
             </div>
 
@@ -305,13 +464,33 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
           </div>
         </div>
 
-        {/* Footer Actions */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(200, 169, 110, 0.4)', paddingTop: '10px', marginTop: '10px' }}>
+        {/* Modal Footer */}
+        <div
+          style={{
+            padding: '10px 18px',
+            borderTop: '1.5px solid var(--pb, #c8a96e)',
+            background: 'linear-gradient(180deg, rgba(200, 169, 110, 0.08), rgba(200, 169, 110, 0.22))',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            position: 'relative',
+            zIndex: 2,
+          }}
+        >
           <button
             type="button"
             onClick={onClose}
             className="btn"
-            style={{ padding: '4px 16px', fontSize: '12px' }}
+            style={{
+              padding: '4px 14px',
+              fontSize: '11.5px',
+              fontFamily: 'var(--font-title)',
+              color: 'var(--inkm)',
+              background: 'rgba(255,255,255,0.7)',
+              border: '1px solid var(--pb)',
+              borderRadius: '3px',
+              cursor: 'pointer',
+            }}
           >
             Cancel
           </button>
@@ -319,7 +498,18 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
             type="button"
             onClick={handleCompleteLevelUp}
             className="btn btn-p animate-glow"
-            style={{ padding: '5px 24px', fontSize: '12px', fontWeight: 'bold' }}
+            style={{
+              padding: '5px 22px',
+              fontSize: '12px',
+              fontFamily: 'var(--font-title)',
+              fontWeight: 'bold',
+              background: 'linear-gradient(135deg, #8b1a1a, #661010)',
+              border: '1px solid #500b0b',
+              color: '#ffffff',
+              borderRadius: '3px',
+              cursor: 'pointer',
+              boxShadow: '0 2px 8px rgba(139, 26, 26, 0.3)',
+            }}
           >
             ✦ Complete Level Up
           </button>

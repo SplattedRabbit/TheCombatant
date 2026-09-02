@@ -144,10 +144,12 @@ describe('Level-Up Assistant Suite', () => {
       );
 
       // Verify Level Header
-      expect(screen.getByText(/Level Up: Gareth \(Level 2 ➔ Level 3\)/i)).toBeInTheDocument();
+      expect(screen.getByText(/Level-Up Assistant:/i)).toBeInTheDocument();
+      expect(screen.getByText(/Gareth/i)).toBeInTheDocument();
+      expect(screen.getByText(/Level 2 ➔ Level 3/i)).toBeInTheDocument();
       expect(screen.getByText(/✦ Complete Level Up/i)).toBeInTheDocument();
       expect(screen.getByText(/Skills \(/i)).toBeInTheDocument();
-      expect(screen.getByText(/Skill Tricks/i)).toBeInTheDocument();
+      expect(screen.getByText(/Tricks \(/i)).toBeInTheDocument();
     });
   });
 });
