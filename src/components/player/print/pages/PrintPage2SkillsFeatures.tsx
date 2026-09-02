@@ -88,16 +88,16 @@ export const PrintPage2SkillsFeatures: React.FC<PrintPageProps> = ({ pc }) => {
   });
 
   const renderSkillTable = (skills: typeof allSkills) => (
-    <table className="dnd-table" style={{ fontSize: '6.5pt' }}>
+    <table className="dnd-table" style={{ fontSize: '7.5pt' }}>
       <thead>
         <tr>
-          <th style={{ width: '12px' }}>CS</th>
+          <th style={{ width: '14px' }}>CS</th>
           <th style={{ textAlign: 'left' }}>Skill Name</th>
-          <th style={{ width: '22px' }}>Attr</th>
-          <th style={{ width: '22px' }}>Total</th>
-          <th style={{ width: '18px' }}>Mod</th>
-          <th style={{ width: '18px' }}>Ranks</th>
-          <th style={{ width: '18px' }}>Misc</th>
+          <th style={{ width: '24px' }}>Attr</th>
+          <th style={{ width: '24px' }}>Total</th>
+          <th style={{ width: '20px' }}>Mod</th>
+          <th style={{ width: '20px' }}>Ranks</th>
+          <th style={{ width: '20px' }}>Misc</th>
         </tr>
       </thead>
       <tbody>
@@ -111,9 +111,9 @@ export const PrintPage2SkillsFeatures: React.FC<PrintPageProps> = ({ pc }) => {
             <td>
               <strong>{s.name}</strong>
               {s.armorCheck && <span style={{ color: 'var(--dnd-red)', marginLeft: '2px' }}>*</span>}
-              {s.trainedOnly && <span style={{ color: 'var(--dnd-gray-med)', fontSize: '5pt', marginLeft: '2px' }}>†</span>}
+              {s.trainedOnly && <span style={{ color: 'var(--dnd-gray-med)', fontSize: '5.5pt', marginLeft: '2px' }}>†</span>}
             </td>
-            <td style={{ textAlign: 'center', fontSize: '5.5pt', color: 'var(--dnd-gray-dark)' }}>{s.attr}</td>
+            <td style={{ textAlign: 'center', fontSize: '6pt', color: 'var(--dnd-gray-dark)' }}>{s.attr}</td>
             <td style={{ textAlign: 'center', fontWeight: 'bold' }}>{s.total}</td>
             <td style={{ textAlign: 'center' }}>{s.attrMod >= 0 ? `+${s.attrMod}` : s.attrMod}</td>
             <td style={{ textAlign: 'center' }}>{s.ranks > 0 ? s.ranks : '—'}</td>

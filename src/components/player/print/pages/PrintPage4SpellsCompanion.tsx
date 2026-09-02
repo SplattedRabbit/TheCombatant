@@ -141,30 +141,30 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
             □ = Slot Cast / Expended
           </span>
         </div>
-        <table className="dnd-table" style={{ flex: 1, fontSize: '6.5pt' }}>
+        <table className="dnd-table" style={{ flex: 1, fontSize: '7.5pt' }}>
           <thead>
             <tr>
-              <th style={{ width: '15px' }}>Cast</th>
-              <th style={{ width: '20px' }}>Lvl</th>
+              <th style={{ width: '18px' }}>Cast</th>
+              <th style={{ width: '24px' }}>Lvl</th>
               <th style={{ textAlign: 'left', width: '130px' }}>Spell Name</th>
-              <th style={{ width: '65px' }}>School</th>
-              <th style={{ width: '45px' }}>Range</th>
-              <th style={{ width: '45px' }}>Save / SR</th>
+              <th style={{ width: '70px' }}>School</th>
+              <th style={{ width: '50px' }}>Range</th>
+              <th style={{ width: '50px' }}>Save / SR</th>
               <th style={{ textAlign: 'left' }}>Effect Summary</th>
             </tr>
           </thead>
           <tbody>
             {displaySpells.map((sp, idx) => (
-              <tr key={idx} style={{ height: '14px' }}>
+              <tr key={idx} style={{ height: '16px' }}>
                 <td style={{ textAlign: 'center' }}>
                   {!sp.isPlaceholder && <span className="dnd-checkbox" />}
                 </td>
                 <td style={{ textAlign: 'center', fontWeight: 'bold' }}>{sp.level}</td>
                 <td style={{ fontWeight: sp.isPlaceholder ? 'normal' : 'bold' }}>{sp.name}</td>
-                <td style={{ textAlign: 'center', fontSize: '5.5pt' }}>{sp.school}</td>
-                <td style={{ textAlign: 'center', fontSize: '5.5pt' }}>{sp.range}</td>
-                <td style={{ textAlign: 'center', fontSize: '5.5pt' }}>{sp.save}</td>
-                <td style={{ fontSize: '6pt', color: 'var(--dnd-gray-dark)' }}>{sp.desc}</td>
+                <td style={{ textAlign: 'center', fontSize: '6.5pt' }}>{sp.school}</td>
+                <td style={{ textAlign: 'center', fontSize: '6.5pt' }}>{sp.range}</td>
+                <td style={{ textAlign: 'center', fontSize: '6.5pt' }}>{sp.save}</td>
+                <td style={{ fontSize: '7pt', color: 'var(--dnd-gray-dark)' }}>{sp.desc}</td>
               </tr>
             ))}
           </tbody>

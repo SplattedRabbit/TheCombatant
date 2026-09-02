@@ -167,30 +167,32 @@
   background: var(--dnd-black);
   color: #ffffff;
   font-family: var(--font-dnd-title);
-  font-size: 7.5pt;
-  font-weight: 800;
-  letter-spacing: 0.6px;
+  font-size: 6.8pt;
+  font-weight: 700;
+  letter-spacing: 0.4px;
   text-transform: uppercase;
-  padding: 2.5px 6px;
+  padding: 2px 5px;
   border-radius: 2px;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  line-height: 1.2;
 }
 
 .dnd-sub-banner {
   background: var(--dnd-gray-light);
   color: var(--dnd-black);
   font-family: var(--font-dnd-title);
-  font-size: 6.5pt;
+  font-size: 6pt;
   font-weight: 700;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
   text-transform: uppercase;
-  padding: 1.5px 4px;
+  padding: 1px 4px;
   border: 0.5pt solid var(--dnd-gray-med);
   border-radius: 1.5px;
   text-align: center;
+  line-height: 1.2;
 }
 
 /* Box Styling & Grid Layout */
@@ -203,12 +205,13 @@
 }
 
 .dnd-label {
-  font-family: var(--font-dnd-title);
-  font-size: 6pt;
+  font-family: var(--font-dnd-data);
+  font-size: 5.5pt;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--dnd-gray-med);
   line-height: 1;
+  letter-spacing: 0.2px;
 }
 
 .dnd-value {
@@ -216,12 +219,12 @@
   font-size: 8.5pt;
   font-weight: 600;
   color: var(--dnd-black);
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .dnd-value-large {
   font-family: var(--font-dnd-title);
-  font-size: 12.5pt;
+  font-size: 12pt;
   font-weight: 800;
   color: var(--dnd-black);
   line-height: 1;
@@ -287,25 +290,28 @@
 .dnd-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 7.5pt;
+  font-size: 8pt;
 }
 
 .dnd-table th {
-  font-family: var(--font-dnd-title);
-  font-size: 6.5pt;
+  font-family: var(--font-dnd-data);
+  font-size: 5.8pt;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.3px;
   background: var(--dnd-gray-subtle);
   border: 0.5pt solid var(--dnd-black);
   padding: 2px 3px;
   text-align: center;
+  color: var(--dnd-gray-dark);
 }
 
 .dnd-table td {
   border: 0.5pt solid var(--dnd-gray-med);
-  padding: 1.5px 3px;
+  padding: 2.5px 3.5px;
   font-family: var(--font-dnd-data);
-  font-size: 7.5pt;
+  font-size: 8pt;
+  line-height: 1.15;
 }
 
 .dnd-table tr:nth-child(even) td {
@@ -314,8 +320,8 @@
 
 /* Checkbox (Square for Class skills / Prepared Spells) */
 .dnd-checkbox {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border: 0.75pt solid var(--dnd-black);
   display: inline-flex;
   align-items: center;
