@@ -155,19 +155,21 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
                       <span style={{ fontSize: '10px' }} title={statusTitle}>{statusIcon}</span>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flex: 1 }}>
-                        <strong style={{ fontSize: '11px', color: isBlocked ? 'var(--inkm)' : 'var(--red)' }}>{feat.nameEn || feat.nameDe}</strong>
-                        <span style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>{feat.nameDe}</span>
+                        <strong style={{ fontSize: '11px', color: isBlocked ? 'var(--inkm)' : 'var(--red)' }}>{feat.nameEn || feat.nameDe || feat.name || feat.id}</strong>
+                        {feat.nameDe && feat.nameEn && (
+                          <span style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>{feat.nameDe}</span>
+                        )}
                       </div>
                     </div>
                     
                     {parentFeat && !featSearch && (
                       <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontStyle: 'italic', marginBottom: '3px', paddingLeft: '16px' }}>
-                        ↳ Requires: <strong>{parentFeat.nameEn || parentFeat.nameDe}</strong>
+                        ↳ Requires: <strong>{parentFeat.nameEn || parentFeat.nameDe || parentFeat.name}</strong>
                       </div>
                     )}
 
                     <div style={{ fontSize: '10px', color: 'var(--ink)', fontFamily: 'var(--font-body)', lineHeight: 1.3, marginBottom: '3px', paddingLeft: '16px' }}>
-                      {feat.benefitRaw || feat.benefitDe}
+                      {feat.benefitRaw || feat.benefitDe || feat.benefit || feat.description}
                     </div>
 
                     {feat.prereqs && feat.prereqs.length > 0 && (

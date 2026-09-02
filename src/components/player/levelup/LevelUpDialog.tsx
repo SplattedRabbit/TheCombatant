@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { CLASSES_LIST } from '../wizard/constants';
 import { validatePrestigeClassPrereqs } from '@core/rules.js';
@@ -167,6 +168,8 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
       style={{
         position: 'fixed',
         inset: 0,
+        width: '100vw',
+        height: '100vh',
         background: 'rgba(15, 10, 5, 0.72)',
         backdropFilter: 'blur(3px)',
         zIndex: 99999,
@@ -174,8 +177,11 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
         alignItems: 'center',
         justifyContent: 'center',
         padding: '16px',
+        boxSizing: 'border-box',
       }}
-      onClick={onClose}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <div
         className="sheet no-print"
@@ -431,5 +437,11 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
 
 export const LevelUpDialog: React.FC<LevelUpDialogProps> = ({ activePC, isOpen, onClose }) => {
   if (!isOpen || !activePC) return null;
-  return <LevelUpDialogContent activePC={activePC} onClose={onClose} />;
+  if (typeof document === 'undefined') {
+    return <LevelUpDialogContent activePC={activePC} onClose={onClose} />;
+  }
+  return createPortal(
+    <LevelUpDialogContent activePC={activePC} onClose={onClose} />,
+    document.body
+  );
 };
