@@ -11,6 +11,7 @@ import type { IStorageAdapter, SyncStatus, SyncStatusEvent, SyncStatusListener }
 import type { CharacterSummary } from '../../types/character.ts';
 import type { CampaignSummary } from '../../types/campaign.ts';
 import { generateUUID } from '../../utils/uuid.ts';
+import { logger } from '../../utils/logger.ts';
 
 export const CLOUD_CACHE_PREFIX = 'dd_cloud_cache_';
 export const DEFAULT_DEBOUNCE_MS = 800;
@@ -204,7 +205,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
     try {
       this.notify('saving');
       const isDmSession = state?.session?.role === 'host' || state?.mode === 'dm';
-      console.log(`%c[SupabaseStorage] Performing cloud save (${isDmSession ? 'DM Campaign: ' + (this.activeCampaignId || 'new') : 'PC Character: ' + (this.activeCharacterId || 'new')}) for user: ${this.userId}`, 'color: #0284c7;');
+      logger.log(`%c[SupabaseStorage] Performing cloud save (${isDmSession ? 'DM Campaign: ' + (this.activeCampaignId || 'new') : 'PC Character: ' + (this.activeCharacterId || 'new')}) for user: ${this.userId}`, 'color: #0284c7;');
 
       if (isDmSession) {
         const encounterName = state?.meta?.begegnung || 'Campaign';
@@ -238,9 +239,9 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
             .eq('dm_user_id', this.userId);
 
           if (error) throw error;
-          console.log('%c[SupabaseStorage] Updated active campaign successfully:', 'color: #059669;', this.activeCampaignId);
+          logger.log('%c[SupabaseStorage] Updated active campaign successfully:', 'color: #059669;', this.activeCampaignId);
         } else {
-          console.log('%c[SupabaseStorage] No active campaign selected, skipping auto-campaign creation', 'color: #6b7280;');
+          logger.log('%c[SupabaseStorage] No active campaign selected, skipping auto-campaign creation', 'color: #6b7280;');
         }
       } else {
         // Player Character Mode: find active PC from combatants
@@ -284,7 +285,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
             .eq('user_id', this.userId);
 
           if (error) throw error;
-          console.log('%c[SupabaseStorage] Updated character successfully:', 'color: #059669;', this.activeCharacterId);
+          logger.log('%c[SupabaseStorage] Updated character successfully:', 'color: #059669;', this.activeCharacterId);
         } else {
           // Upsert character with consistent unique ID
           const newCharId = generateUUID();
@@ -310,7 +311,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
           if (data?.id) {
             this.setActiveCharacterId(data.id);
           }
-          console.log('%c[SupabaseStorage] Created/saved character successfully:', 'color: #059669;', this.activeCharacterId);
+          logger.log('%c[SupabaseStorage] Created/saved character successfully:', 'color: #059669;', this.activeCharacterId);
         }
       }
 
@@ -510,7 +511,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
       const cleanInviteCode = metadata?.inviteCode || encounterState?.inviteCode || `CAMP-${Math.floor(100 + Math.random() * 900)}`;
       const description = metadata?.description ?? (encounterState?.meta?.description || '');
 
-      console.log(`%c[SupabaseStorage] Saving campaign ${validId} ("${encounterName}" | ${cleanInviteCode}) for DM: ${this.userId}`, 'color: #0284c7;');
+      logger.log(`%c[SupabaseStorage] Saving campaign ${validId} ("${encounterName}" | ${cleanInviteCode}) for DM: ${this.userId}`, 'color: #0284c7;');
       const { error } = await this.client
         .from('campaigns')
         .upsert(
@@ -529,7 +530,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
 
       if (error) throw error;
       this.setActiveCampaignId(validId);
-      console.log('%c[SupabaseStorage] Campaign saved successfully:', 'color: #059669;', validId);
+      logger.log('%c[SupabaseStorage] Campaign saved successfully:', 'color: #059669;', validId);
       this.notify('saved');
     } catch (err: any) {
       console.error('[SupabaseStorage] Failed to save campaign:', campaignId, '| Error:', err?.message || err, err);
@@ -540,7 +541,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
 
   async loadCampaign(campaignId: string): Promise<any | null> {
     try {
-      console.log(`%c[SupabaseStorage] Loading campaign ${campaignId} for DM: ${this.userId}`, 'color: #0284c7;');
+      logger.log(`%c[SupabaseStorage] Loading campaign ${campaignId} for DM: ${this.userId}`, 'color: #0284c7;');
       const { data, error } = await this.client
         .from('campaigns')
         .select('active_encounter_state')
@@ -549,7 +550,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         .single();
 
       if (error) throw error;
-      console.log('%c[SupabaseStorage] Campaign loaded successfully:', 'color: #059669;', campaignId);
+      logger.log('%c[SupabaseStorage] Campaign loaded successfully:', 'color: #059669;', campaignId);
       return data?.active_encounter_state ?? null;
     } catch (err: any) {
       console.error('[SupabaseStorage] Failed to load campaign:', campaignId, '| Error:', err?.message || err, err);
@@ -559,7 +560,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
 
   async listCampaigns(): Promise<CampaignSummary[]> {
     try {
-      console.log(`%c[SupabaseStorage] Listing campaigns for DM: ${this.userId}`, 'color: #0284c7;');
+      logger.log(`%c[SupabaseStorage] Listing campaigns for DM: ${this.userId}`, 'color: #0284c7;');
       const { data, error } = await this.client
         .from('campaigns')
         .select('*')
@@ -568,7 +569,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         .order('updated_at', { ascending: false });
 
       if (error) throw error;
-      console.log(`%c[SupabaseStorage] Loaded ${data?.length || 0} campaigns from cloud`, 'color: #059669;');
+      logger.log(`%c[SupabaseStorage] Loaded ${data?.length || 0} campaigns from cloud`, 'color: #059669;');
 
       return (data || []).map((row: any) => {
         const rawEncounter = row.active_encounter_state || {};

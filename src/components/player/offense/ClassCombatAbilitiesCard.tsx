@@ -8,10 +8,8 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import { BaseCard } from '../../shared/BaseCard';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { getAblMod } from '../attributeHelper';
 
@@ -92,17 +90,16 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
 
   const handleRageBubbleClick = (idx: number, e: React.MouseEvent) => {
     e.stopPropagation();
-    const activePC = CombatState.getActivePC();
-    const ability = activePC.dailyAbilities?.find((a: any) => a.name === "Kampfrausch (Rage)");
-    if (ability) {
-      if (idx <= ability.used) {
-        ability.used = idx - 1;
-      } else {
-        ability.used = idx;
+    CombatState.updatePCBatch((activePC: any) => {
+      const ability = activePC.dailyAbilities?.find((a: any) => a.name === "Kampfrausch (Rage)");
+      if (ability) {
+        if (idx <= (ability.used || 0)) {
+          ability.used = idx - 1;
+        } else {
+          ability.used = idx;
+        }
       }
-      CombatState.saveToStorage();
-      CombatState.syncPCToHost();
-    }
+    });
   };
 
   return (
@@ -124,7 +121,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                <span style={{ fontFamily: 'var(--font-title)', fontSize: '8.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                   {hasBerserkerStrength ? '⚡ Berserker Strength' : '🔥 Barbarian Rage'}
                 </span>
                 {!hasBerserkerStrength && (
@@ -136,7 +133,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                       background: pc.isRaging ? 'var(--red)' : 'rgba(139, 26, 26, 0.1)',
                       color: pc.isRaging ? '#fff' : 'var(--red)',
                       borderColor: 'var(--red)',
-                      fontFamily: "'IM Fell English SC', serif",
+                      fontFamily: 'var(--font-title)',
                       fontSize: '7.5px',
                       padding: '1px 6px',
                       height: '16px',
@@ -150,7 +147,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
 
               {!hasBerserkerStrength && rageMax > 0 && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-                  <span style={{ fontSize: '7px', color: 'var(--inkm)', marginRight: '2px', fontFamily: "'Crimson Text', serif" }}>
+                  <span style={{ fontSize: '7px', color: 'var(--inkm)', marginRight: '2px', fontFamily: 'var(--font-body)' }}>
                     Uses ({rageRemaining}/{rageMax}):
                   </span>
                   {Array.from({ length: rageMax }).map((_, i) => {
@@ -203,7 +200,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                   margin: 0,
                   fontWeight: 'bold',
                   fontSize: '8.5px',
-                  fontFamily: "'IM Fell English SC', serif"
+                  fontFamily: 'var(--font-title)'
                 }}
               >
                 <input
@@ -256,7 +253,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                   margin: 0,
                   fontWeight: 'bold',
                   fontSize: '8.5px',
-                  fontFamily: "'IM Fell English SC', serif"
+                  fontFamily: 'var(--font-title)'
                 }}
               >
                 <input
@@ -283,7 +280,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
               </span>
             </div>
 
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
               🎵 Grants morale bonus on saving throws against charm and fear, and attack and weapon damage rolls.
             </div>
           </div>
@@ -303,7 +300,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: '#4a5b6c' }}>
+              <span style={{ fontFamily: 'var(--font-title)', fontSize: '8.5px', fontWeight: 'bold', color: '#4a5b6c' }}>
                 ☠️ Assassin: Death Attack &amp; Poison Use
               </span>
               <span
@@ -320,7 +317,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                 DC {deathAttackDC}
               </span>
             </div>
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
               ☠️ Study target for 3 rounds. Next sneak attack forces Fort save (DC {deathAttackDC}) vs Kill or Paralyze (1d6+{assassinLvl} rds).
             </div>
           </div>
@@ -350,7 +347,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                   margin: 0,
                   fontWeight: 'bold',
                   fontSize: '8.5px',
-                  fontFamily: "'IM Fell English SC', serif"
+                  fontFamily: 'var(--font-title)'
                 }}
               >
                 <input
@@ -375,7 +372,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                 +1d6 DMG
               </span>
             </div>
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
               ⚔️ Complete Scoundrel: Adds +1d6 damage when flanking or opponent is denied Dexterity bonus to AC.
             </div>
           </div>
@@ -395,7 +392,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+              <span style={{ fontFamily: 'var(--font-title)', fontSize: '8.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                 🐉 Dragon Disciple: Breath Weapon (1/day)
               </span>
               <span
@@ -412,7 +409,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                 {breathWeaponDice}
               </span>
             </div>
-            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
               🐉 Line/Cone energy breath: Reflex half DC 10 + Class Level [{dragonDiscipleLvl}] + Con Mod.
             </div>
           </div>

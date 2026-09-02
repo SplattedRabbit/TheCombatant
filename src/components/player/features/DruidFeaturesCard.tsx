@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { ClassACFSelector } from './ClassACFSelector';
 
@@ -97,7 +95,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
           <button 
             onClick={handleRevertShape}
             className="btn revert-shape-btn" 
-            style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', padding: '4px 10px', width: '100%', cursor: 'pointer', borderRadius: '2px', background: 'rgba(139, 26, 26, 0.2)', border: '1px solid var(--red)', color: 'var(--red)', fontWeight: 'bold' }}
+            style={{ fontFamily: 'var(--font-title)', fontSize: '9px', padding: '4px 10px', width: '100%', cursor: 'pointer', borderRadius: '2px', background: 'rgba(139, 26, 26, 0.2)', border: '1px solid var(--red)', color: 'var(--red)', fontWeight: 'bold' }}
           >
             🔴 Exit {shapeLabel} form
           </button>
@@ -111,7 +109,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
         disabled={remaining <= 0}
         className="btn show-transform-dialog-btn" 
         style={{
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           fontSize: '9px',
           padding: '4px 10px',
           width: '100%',
@@ -135,7 +133,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
       <div 
         className="class-card-hdr" 
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>🎭 Druid (Level {level})</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
@@ -143,7 +141,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
       {isExpanded && (
         <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
-          <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
+          <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
             Class Features
           </div>
           {maxUses > 0 ? (
@@ -155,7 +153,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                     <button 
                       onClick={() => setWildshapeRulesOpen(!wildshapeRulesOpen)}
                       className="btn btn-toggle-rules-wildshape" 
-                      style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                      style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                       title="Show rules"
                     >
                       📖 {wildshapeRulesOpen ? '▲' : '▼'}
@@ -183,8 +181,8 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                   </div>
                 </div>
                 {wildshapeRulesOpen && (
-                  <div className="wildshape-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif", marginBottom: '3px' }}>
-                    <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Wild Shape:</strong><br />
+                  <div className="wildshape-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)', marginBottom: '3px' }}>
+                    <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Wild Shape:</strong><br />
                     Starting at level 5, the druid can take the form of an animal.<br />
                     • <strong>Effect (3.5e RAW):</strong> Physical attributes (STR, DEX, CON) are replaced by those of the form. Mental attributes (INT, WIS, CHA) remain unchanged. Caster receives the natural armor of the form.<br />
                     • <strong>Equipment:</strong> Armor and shields merge with the body and lose their function.
@@ -201,7 +199,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
               </div>
               
               <div style={{ fontSize: '6.8px', border: '0.5px solid rgba(200, 169, 110, 0.2)', padding: '4px', borderRadius: '2px', lineHeight: 1.3, background: 'rgba(255,255,255,0.3)', display: 'flex', flexDirection: 'column', gap: '3px' }}>
-                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Beast Forms (Reference):</strong>
+                <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Beast Forms (Reference):</strong>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px dashed rgba(200, 169, 110, 0.15)', paddingBottom: '2px' }}>
                   <span>🐾 <strong>Wolf:</strong> STR 13, DEX 15, CON 15 | Bite 1d6+1</span>
                 </div>
@@ -234,7 +232,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
             padding: '14px 18px',
             width: '270px',
             boxShadow: '0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(200,169,110,0.08)',
-            fontFamily: "'IM Fell English SC', serif",
+            fontFamily: 'var(--font-title)',
             position: 'relative',
           }}>
             <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }}></div>
@@ -242,7 +240,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
             <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', textAlign: 'center', marginBottom: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
               🐾 Select Wild Shape Form
             </div>
-            <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '9px', color: 'var(--inkl)', textAlign: 'center', margin: '0 auto 6px', display: 'block' }}>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', color: 'var(--inkl)', textAlign: 'center', margin: '0 auto 6px', display: 'block' }}>
               Cost: 1 daily use ({remaining} remaining)
             </div>
             <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.3)', margin: '3px 0 8px;' } as any} />
@@ -264,7 +262,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                   <span>🐺 Wolf</span>
                   <span style={{ fontSize: '7.5px', background: 'rgba(46, 125, 50, 0.1)', color: '#2e7d32', border: '0.5px solid rgba(46, 125, 50, 0.3)', borderRadius: '2px', padding: '0 3px' }}>Level 5+</span>
                 </div>
-                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
                   • STR 13, DEX 15, CON 15 | AC: 14<br />
                   • Bite +3 (1d6+1 + Trip)
                 </div>
@@ -286,7 +284,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                   <span>🐆 Leopard</span>
                   <span style={{ fontSize: '7.5px', background: 'rgba(46, 125, 50, 0.1)', color: '#2e7d32', border: '0.5px solid rgba(46, 125, 50, 0.3)', borderRadius: '2px', padding: '0 3px' }}>Level 6+</span>
                 </div>
-                <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
                   • STR 16, DEX 19, CON 15 | AC: 15<br />
                   • Bite +6 (1d6+3) & 2 Claws +1 (1d3+1)
                 </div>
@@ -309,7 +307,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                     <span>🐻 Brown Bear</span>
                     <span style={{ fontSize: '7.5px', background: 'rgba(46, 125, 50, 0.1)', color: '#2e7d32', border: '0.5px solid rgba(46, 125, 50, 0.3)', borderRadius: '2px', padding: '0 3px' }}>Level 8+</span>
                   </div>
-                  <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
+                  <div style={{ fontFamily: 'var(--font-body)', fontSize: '7.5px', color: 'var(--ink)', lineHeight: 1.2, marginTop: '1px' } as any}>
                     • STR 27, DEX 13, CON 19 | AC: 15<br />
                     • 2 Claws +11 (1d8+8) & Bite +6 (2d6+4)
                   </div>
@@ -330,7 +328,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                     <span>🐻 Brown Bear</span>
                     <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', border: '0.5px solid rgba(0,0,0,0.08)', borderRadius: '2px', padding: '0 3px' }}>Level 8+</span>
                   </div>
-                  <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '7.5px', color: 'var(--inkl)', lineHeight: 1.2, marginTop: '1px' } as any}>
+                  <div style={{ fontFamily: 'var(--font-body)', fontSize: '7.5px', color: 'var(--inkl)', lineHeight: 1.2, marginTop: '1px' } as any}>
                     • Requires Druid level 8.
                   </div>
                 </div>
@@ -342,7 +340,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
                 onClick={() => setShowSelectModal(false)}
                 className="btn pc-cancel-btn" 
                 style={{
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   fontSize: '8px',
                   padding: '3px 14px',
                   cursor: 'pointer',

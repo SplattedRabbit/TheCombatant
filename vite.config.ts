@@ -56,25 +56,38 @@ export default defineConfig({
       },
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules/@supabase')) {
+          const normalized = id.replace(/\\/g, '/');
+
+          // 1. Third-Party Vendor Chunks
+          if (normalized.includes('node_modules/@supabase')) {
             return 'supabase-vendor';
           }
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/scheduler')) {
+          if (
+            normalized.includes('node_modules/react') ||
+            normalized.includes('node_modules/react-dom') ||
+            normalized.includes('node_modules/scheduler')
+          ) {
             return 'react-vendor';
           }
-          if (id.includes('node_modules')) {
+          if (normalized.includes('node_modules')) {
             return 'vendor';
           }
-          if (id.includes('/js/state/') || id.includes('/js/models/') || id.includes('/js/rules/')) {
+
+          // 2. Core Domain Logic & Static Registries
+          if (
+            normalized.includes('/js/state/') ||
+            normalized.includes('/js/models/') ||
+            normalized.includes('/js/rules/')
+          ) {
             return 'state-core';
           }
-          // Large static data registries (magicItems-data, encounter-samples, prestige classes, etc.)
-          // are split into their own chunk to reduce the initial app bundle size.
-          if (id.includes('/js/data/')) {
+          if (normalized.includes('/js/data/')) {
             return 'data-registry';
           }
-          if (id.includes('/src/services/')) {
-            return 'services';
+
+          // 3. Application Domain (Components, Services, Context, State Hooks)
+          if (normalized.includes('/src/')) {
+            return 'app-core';
           }
         }
       }

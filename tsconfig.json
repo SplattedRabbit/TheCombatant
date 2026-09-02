@@ -24,6 +24,6 @@
     },
     "ignoreDeprecations": "5.0"
   },
-  "include": ["src/**/*", "vite.config.ts"],
+  "include": ["src/**/*", "vite.config.ts", "vitest.config.ts"],
   "exclude": ["js/**/*", "Tests/**/*", "node_modules", "dist"]
 }

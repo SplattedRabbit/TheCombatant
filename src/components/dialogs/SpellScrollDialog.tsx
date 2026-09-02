@@ -55,7 +55,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
           width: '580px',
           maxWidth: '92vw',
           boxShadow: '0 12px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(200,169,110,0.1)',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           textAlign: 'center',
           position: 'relative',
           transform: 'scale(1)',
@@ -76,7 +76,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
             padding: '16px 20px',
             borderRadius: '4px',
             boxShadow: 'inset 0 0 35px rgba(139, 26, 26, 0.15)',
-            fontFamily: "'Crimson Text', serif",
+            fontFamily: 'var(--font-body)',
             color: '#1a0f00',
             lineHeight: 1.45,
             textAlign: 'left',
@@ -87,7 +87,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
         >
           <h3
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '15px',
               color: '#8b1a1a',
               textAlign: 'center',
@@ -137,7 +137,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
 
         {/* Action Section */}
         <div style={{ marginTop: '2px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
-          <div style={{ fontSize: '11px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.5px' }}>
+          <div style={{ fontSize: '11px', color: 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)', letterSpacing: '0.5px' }}>
             {actionText}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '12px' }}>
@@ -145,7 +145,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
               onClick={handleConfirm}
               className="btn btn-p pc-confirm-yes-btn"
               style={{
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 fontSize: '9px',
                 padding: '4px 22px',
                 cursor: 'pointer',
@@ -170,7 +170,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
               onClick={onClose}
               className="btn pc-confirm-no-btn"
               style={{
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 fontSize: '9px',
                 padding: '4px 22px',
                 cursor: 'pointer',

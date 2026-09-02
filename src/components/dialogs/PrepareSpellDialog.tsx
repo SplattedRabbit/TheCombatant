@@ -117,7 +117,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
           padding: '16px 20px',
           width: '320px',
           boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
-          fontFamily: "'Crimson Text', serif",
+          fontFamily: 'var(--font-body)',
           position: 'relative',
           transform: 'scale(1)',
           transition: 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
@@ -125,7 +125,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
       >
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
           Prepare Spell 📜
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
@@ -143,7 +143,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
           </div>
         ) : (
           <div style={{ textAlign: 'left', marginBottom: '8px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '3px' }}>Apply Metamagic:</div>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '3px' }}>Apply Metamagic:</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {learnedFeats.map((feat) => (
                 <label key={feat.id} style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '8px', cursor: 'pointer', color: 'var(--ink)' }}>
@@ -180,7 +180,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
           </div>
         )}
 
-        <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '4px', textAlign: 'center', marginBottom: '12px', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
+        <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '4px', textAlign: 'center', marginBottom: '12px', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
           Final Level: <span id="finalPrepLevelText">Level {finalLevel}</span>
         </div>
 
@@ -190,7 +190,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
             disabled={isTooHigh}
             className="btn btn-p prep-confirm-btn"
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '9px',
               padding: '3px 14px',
               cursor: isTooHigh ? 'not-allowed' : 'pointer',
@@ -203,7 +203,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
             onClick={onCancel}
             className="btn prep-cancel-btn"
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '9px',
               padding: '3px 14px',
               cursor: 'pointer',
@@ -283,8 +283,8 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
         });
       } else {
         showCustomAlert("Spell cast! ✨", `
-          <div style="font-family:'Crimson Text', serif; font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
-            <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:'IM Fell English SC', serif; color: var(--red); font-size: 11px;">
+          <div style="font-family:var(--font-body); font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
+            <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:var(--font-title); color: var(--red); font-size: 11px;">
               ${pc.name} casts ${spell.nameEn || spell.nameDe}${metaSuffix}!
             </div>
             • <strong>School:</strong> ${spell.school}<br>
@@ -342,7 +342,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
           padding: '16px 20px',
           width: '320px',
           boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
-          fontFamily: "'Crimson Text', serif",
+          fontFamily: 'var(--font-body)',
           position: 'relative',
           transform: 'scale(1)',
           transition: 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
@@ -350,7 +350,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
       >
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
           Cast Spell ✨
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
@@ -368,7 +368,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
           </div>
         ) : (
           <div style={{ textAlign: 'left', marginBottom: '8px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '3px' }}>Apply Metamagic (increases casting time):</div>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '3px' }}>Apply Metamagic (increases casting time):</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {learnedFeats.map((feat) => {
                 const isDisabled = feat.disabled;
@@ -407,7 +407,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
           ⚠️ Spontaneous Metamagic increases casting time to 1 full round action (or +1 round)!
         </div>
 
-        <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '4px', textAlign: 'center', marginBottom: '12px', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
+        <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '4px', textAlign: 'center', marginBottom: '12px', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
           Required Level: <span id="finalCastLevelText">Level {finalLevel}</span>
         </div>
 
@@ -417,7 +417,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
             disabled={isTooHigh}
             className="btn btn-p cast-confirm-btn"
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '9px',
               padding: '3px 14px',
               cursor: isTooHigh ? 'not-allowed' : 'pointer',
@@ -430,7 +430,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
             onClick={onCancel}
             className="btn cast-cancel-btn"
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '9px',
               padding: '3px 14px',
               cursor: 'pointer',

@@ -8,12 +8,8 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
-import { CombatRules } from '@core/rules.js';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import type { Combatant } from '../../types/combat';
 
@@ -89,7 +85,7 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
             display: 'grid',
             gridTemplateColumns: '58px 1fr 26px 18px',
             gap: '2px',
-            fontFamily: "'IM Fell English SC', serif",
+            fontFamily: 'var(--font-title)',
             fontSize: '7.5px',
             color: 'var(--inkl)',
             padding: '1px 0 3px',
@@ -200,7 +196,7 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
             rows={2}
             value={messageText}
             onChange={(e) => setMessageText(e.target.value)}
-            style={{ width: '100%', fontFamily: "'Crimson Text', serif", fontSize: '9px', resize: 'vertical', marginBottom: '4px', boxSizing: 'border-box' }}
+            style={{ width: '100%', fontFamily: 'var(--font-body)', fontSize: '9px', resize: 'vertical', marginBottom: '4px', boxSizing: 'border-box' }}
             placeholder="Write a message to players (e.g. secret discoveries)..."
           />
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>

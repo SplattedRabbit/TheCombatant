@@ -176,3 +176,15 @@ export function showFeatScrollDialog(feat, pc, isLearned, option, event) {
   if (bridge && bridge.showFeatScrollDialog) return bridge.showFeatScrollDialog(feat, pc, isLearned, option, event);
   console.log('feat scroll dialog stub called');
 }
+
+export function showSpellDetailsDialog(spell, spellKey, pc) {
+  const bridge = getBridge();
+  if (bridge && bridge.showSpellDetailsDialog) return bridge.showSpellDetailsDialog(spell, spellKey, pc);
+  console.log('spell details dialog stub called');
+}
+
+export function showSpellCreatorWizard(pc, onSave) {
+  const bridge = getBridge();
+  if (bridge && bridge.showSpellCreatorWizard) return bridge.showSpellCreatorWizard(pc, onSave);
+  if (onSave) onSave();
+}

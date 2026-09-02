@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { showRollBreakdown } from '@core/ui/components/dialogs.js';
 import { ClassACFSelector } from './ClassACFSelector';
 import { getAblMod } from '../attributeHelper';
@@ -131,7 +129,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
       <div 
         className="class-card-hdr" 
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
+        style={{ background: 'rgba(200, 169, 110, 0.1)', padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', cursor: 'pointer', userSelect: 'none' }}
       >
         <span>🎭 Paladin (Level {level})</span>
         <span style={{ fontSize: '8px', color: 'var(--inkl)', transition: 'transform 0.2s ease' }}>{isExpanded ? '▲' : '▼'}</span>
@@ -139,7 +137,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
       {isExpanded && (
         <div className="class-card-body" style={{ display: 'flex', padding: '6px', alignItems: 'start', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '100%' }}>
-          <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
+          <div style={{ fontFamily: 'var(--font-title)', fontSize: '8px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', fontWeight: 'bold' }}>
             Class Features
           </div>
           
@@ -152,7 +150,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                   <button 
                     onClick={() => setDgRulesOpen(!dgRulesOpen)}
                     className="btn btn-toggle-rules-dg" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show rules"
                   >
                     📖 {dgRulesOpen ? '▲' : '▼'}
@@ -171,8 +169,8 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
               </div>
               
               {dgRulesOpen && (
-                <div className="dg-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                  <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Divine Grace:</strong><br />
+                <div className="dg-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                  <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Divine Grace:</strong><br />
                   At 2nd level, a paladin gains a bonus on all saving throws.<br />
                   • <strong>Effect:</strong> Adds their Charisma bonus (if positive) to all saving throws (Fortitude, Reflex, and Will).
                 </div>
@@ -188,7 +186,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                 <button 
                   onClick={() => setSmiteRulesOpen(!smiteRulesOpen)}
                   className="btn btn-toggle-rules-smite" 
-                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                   title="Show rules"
                 >
                   📖 {smiteRulesOpen ? '▲' : '▼'}
@@ -217,8 +215,8 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
             </div>
             
             {smiteRulesOpen && (
-              <div className="smite-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Smite Evil:</strong><br />
+              <div className="smite-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Smite Evil:</strong><br />
                 Once per day (starting at 1st level, +1 use every 5 levels thereafter), a paladin can attempt to smite evil with one normal melee attack.<br />
                 • <strong>Effect:</strong> Charisma bonus (if positive) to the attack roll, +1 damage per paladin level.<br />
                 • <strong>Failure:</strong> If the target is not evil, the smite fails, but the use is still spent.
@@ -234,7 +232,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                 <button 
                   onClick={() => setLohRulesOpen(!lohRulesOpen)}
                   className="btn btn-toggle-rules-loh" 
-                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                  style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                   title="Show rules"
                 >
                   📖 {lohRulesOpen ? '▲' : '▼'}
@@ -277,8 +275,8 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
             </div>
             
             {lohRulesOpen && (
-              <div className="loh-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Lay on Hands:</strong><br />
+              <div className="loh-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Lay on Hands:</strong><br />
                 At 2nd level, a paladin with Charisma 12+ can heal wounds by touch.<br />
                 • <strong>Daily Pool:</strong> Paladin level × Charisma bonus.<br />
                 • <strong>Action:</strong> Standard action. Can be divided freely and applied to self or others.<br />
@@ -296,7 +294,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
                   <button 
                     onClick={() => setTurnRulesOpen(!turnRulesOpen)}
                     className="btn btn-toggle-rules-turn" 
-                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
+                    style={{ fontSize: '8px', padding: '2px 5px', borderRadius: '2px', cursor: 'pointer', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid var(--pb)', color: 'var(--inkm)', fontFamily: 'var(--font-title)', fontWeight: 'bold', height: '15px', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} 
                     title="Show rules"
                   >
                     📖 {turnRulesOpen ? '▲' : '▼'}
@@ -325,8 +323,8 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
               </div>
               
               {turnRulesOpen && (
-                <div className="turn-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: "'Crimson Text', serif" }}>
-                  <strong style={{ color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>Turn Undead:</strong><br />
+                <div className="turn-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3px', fontFamily: 'var(--font-body)' }}>
+                  <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Turn Undead:</strong><br />
                   As a standard action, a paladin can attempt to turn undead creatures within a 60 ft radius.<br />
                   • <strong>Effective Turning Level:</strong> Paladin level -3 (currently level {level - 3})<br />
                   • <strong>1. Turning Check (1d20 + CHA):</strong> Determines the maximum Hit Dice (HD) of the most powerful undead affected (Effective level -4 to +4).<br />
@@ -337,7 +335,7 @@ export const PaladinFeaturesCard: React.FC<PaladinFeaturesCardProps> = ({ pc, le
               <button 
                 onClick={handleRollTurn}
                 className="btn roll-turn-btn" 
-                style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '8px', padding: '4px', width: '100%', cursor: 'pointer', marginTop: '4px' }}
+                style={{ fontFamily: 'var(--font-title)', fontSize: '8px', padding: '4px', width: '100%', cursor: 'pointer', marginTop: '4px' }}
               >
                 Roll Turn Undead 🎲
               </button>

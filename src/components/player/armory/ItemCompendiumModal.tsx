@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { ITEM_SLOTS, MAGIC_ITEMS_REGISTRY, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
 import { formatEffectDisplay } from './BodySlotCard';
 import { isConsumableItem, getItemTypeIcon } from './ArmoryTab';
@@ -108,7 +106,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '5px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span style={{ fontSize: '18px' }}>📖</span>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '15px', fontWeight: 'bold', color: 'var(--red)' }}>
+            <span style={{ fontFamily: 'var(--font-title)', fontSize: '15px', fontWeight: 'bold', color: 'var(--red)' }}>
               Magic Items Compendium
             </span>
           </div>
@@ -143,7 +141,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
               style={{
                 fontSize: '8.5px',
                 padding: '2px 6px',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 background: selectedSlot === chip.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.08)',
                 borderColor: selectedSlot === chip.key ? '#8b6914' : 'var(--pb)',
                 color: selectedSlot === chip.key ? '#ffffff' : 'var(--inkm)',
@@ -187,10 +185,10 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexWrap: 'wrap' }}>
                       <span style={{ fontSize: '12px' }}>{getItemTypeIcon(activePreset, slotInfo.icon)}</span>
-                      <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                      <span style={{ fontFamily: 'var(--font-title)', fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                         {activePreset.name || entry.baseName}
                       </span>
-                      <span style={{ fontSize: '7.5px', background: 'rgba(200, 169, 110, 0.15)', color: 'var(--inkm)', padding: '0 4px', borderRadius: '2px', fontFamily: "'IM Fell English SC', serif" }}>
+                      <span style={{ fontSize: '7.5px', background: 'rgba(200, 169, 110, 0.15)', color: 'var(--inkm)', padding: '0 4px', borderRadius: '2px', fontFamily: 'var(--font-title)' }}>
                         {isConsumableItem(activePreset) ? 'Consumable' : slotInfo.nameEn}
                       </span>
                     </div>
@@ -208,7 +206,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                               style={{
                                 fontSize: '7.5px',
                                 padding: '1px 5px',
-                                fontFamily: "'IM Fell English SC', serif",
+                                fontFamily: 'var(--font-title)',
                                 fontWeight: 'bold',
                                 background: activeKey === v.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.1)',
                                 color: activeKey === v.key ? '#ffffff' : 'var(--inkm)',
@@ -230,7 +228,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                         style={{
                           fontSize: '8px',
                           padding: '2px 7px',
-                          fontFamily: "'IM Fell English SC', serif",
+                          fontFamily: 'var(--font-title)',
                           fontWeight: 'bold',
                           background: isConsumableItem(activePreset) ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.12)',
                           border: isConsumableItem(activePreset) ? '0.5px solid #8b6914' : '0.5px solid var(--pb)',
@@ -250,7 +248,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                           style={{
                             fontSize: '8px',
                             padding: '2px 7px',
-                            fontFamily: "'IM Fell English SC', serif",
+                            fontFamily: 'var(--font-title)',
                             fontWeight: 'bold',
                             background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                             border: '0.5px solid #8b6914',
@@ -280,7 +278,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                             padding: '0 4px',
                             color: 'var(--ink)',
                             fontWeight: 600,
-                            fontFamily: "'Crimson Text', serif"
+                            fontFamily: 'var(--font-body)'
                           }}
                         >
                           {formatEffectDisplay(eff)}
@@ -290,7 +288,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
                   )}
 
                   {/* Description */}
-                  <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.25 }}>
+                  <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', lineHeight: 1.25 }}>
                     {activePreset.description || entry.description}
                   </div>
                 </div>
@@ -305,7 +303,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
             type="button"
             onClick={onClose}
             className="btn"
-            style={{ fontSize: '9.5px', padding: '3px 18px', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '9.5px', padding: '3px 18px', fontFamily: 'var(--font-title)' }}
           >
             Close
           </button>

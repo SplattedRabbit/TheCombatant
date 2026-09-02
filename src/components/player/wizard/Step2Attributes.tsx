@@ -36,7 +36,7 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
 }) => {
   return (
     <div style={{ textAlign: 'left', marginTop: '10px' }}>
-      <p style={{ fontFamily: "'Crimson Text', serif", fontSize: '14px', margin: '0 0 20px 0', lineHeight: 1.5, color: 'var(--inkm)' }}>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', margin: '0 0 20px 0', lineHeight: 1.5, color: 'var(--inkm)' }}>
         Distribute a total of **74 points** among your 6 ability scores. Racial bonuses are calculated separately and displayed live on the right as final values.
       </p>
 
@@ -173,7 +173,7 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
             Point Distribution
           </div>
           
-          <div style={{ fontSize: '64px', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", color: totalStatsSpent === 74 ? 'green' : 'var(--red)' }}>
+          <div style={{ fontSize: '64px', fontWeight: 'bold', fontFamily: 'var(--font-title)', color: totalStatsSpent === 74 ? 'green' : 'var(--red)' }}>
             {totalStatsSpent} <span style={{ fontSize: '20px', color: 'var(--ink)' }}>/ 74</span>
           </div>
           
@@ -185,7 +185,7 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
               value={highlightClass}
               onChange={(e) => setHighlightClass(e.target.value)}
               className="cinput"
-              style={{ width: '100%', padding: '0 6px', fontSize: '11px', height: '24px', cursor: 'pointer', fontFamily: "'IM Fell English SC', serif", boxSizing: 'border-box' }}
+              style={{ width: '100%', padding: '0 6px', fontSize: '11px', height: '24px', cursor: 'pointer', fontFamily: 'var(--font-title)', boxSizing: 'border-box' }}
             >
               <option value="">-- None --</option>
               {CLASSES_LIST.filter(c => !c.isPrestige).map(c => (

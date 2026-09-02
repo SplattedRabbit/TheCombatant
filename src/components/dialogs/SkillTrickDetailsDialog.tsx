@@ -1,9 +1,6 @@
 import React from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface SkillTrickDetailsDialogProps {
@@ -95,7 +92,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
           width: '320px',
           maxWidth: '92vw',
           boxShadow: '0 12px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(200,169,110,0.1)',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           textAlign: 'center',
           position: 'relative'
         }}
@@ -111,7 +108,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
             padding: '12px 16px',
             borderRadius: '4px',
             boxShadow: 'inset 0 0 35px rgba(139, 26, 26, 0.15)',
-            fontFamily: "'Crimson Text', serif",
+            fontFamily: 'var(--font-body)',
             color: '#1a0f00',
             lineHeight: 1.4,
             textAlign: 'left',
@@ -122,7 +119,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
         >
           <h3
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '13.5px',
               color: '#8b1a1a',
               textAlign: 'center',
@@ -156,7 +153,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
           </div>
 
           <div style={{ fontSize: '9.5px', marginBottom: '8px' }}>
-            <div style={{ fontWeight: 'bold', color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif", fontSize: '10px' }}>
+            <div style={{ fontWeight: 'bold', color: '#8b1a1a', fontFamily: 'var(--font-title)', fontSize: '10px' }}>
               Prerequisites:
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginTop: '2px' }}>
@@ -178,7 +175,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
           </div>
 
           <div style={{ fontSize: '9.5px', marginBottom: '6px', lineHeight: 1.35 }}>
-            <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Benefit:</strong>
+            <strong style={{ color: '#8b1a1a', fontFamily: 'var(--font-title)' }}>Benefit:</strong>
             <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>
               {trick.benefitEn || trick.benefitDe}
             </div>
@@ -199,7 +196,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
                   onClick={handleUnlearn}
                   className="btn btn-close-feat"
                   style={{
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontSize: '9px',
                     padding: '4px 16px',
                     cursor: 'pointer',
@@ -216,7 +213,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
                   onClick={onClose}
                   className="btn btn-close-feat"
                   style={{
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontSize: '9px',
                     padding: '4px 16px',
                     cursor: 'pointer',
@@ -239,7 +236,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
                     onClick={() => handleLearn(true)}
                     className="btn btn-learn-feat"
                     style={{
-                      fontFamily: "'IM Fell English SC', serif",
+                      fontFamily: 'var(--font-title)',
                       fontSize: '9px',
                       padding: '4px 12px',
                       cursor: 'pointer',
@@ -259,7 +256,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
                   disabled={!met || !canAfford || limitReached}
                   className="btn btn-learn-feat"
                   style={{
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontSize: '9px',
                     padding: '4px 12px',
                     cursor: 'pointer',
@@ -278,7 +275,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
                   onClick={onClose}
                   className="btn btn-close-feat"
                   style={{
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontSize: '9px',
                     padding: '4px 12px',
                     cursor: 'pointer',

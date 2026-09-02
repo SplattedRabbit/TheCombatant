@@ -5,14 +5,11 @@
  */
 
 import { realtimeManager } from './RealtimeManager.ts';
-// @ts-ignore
 import { getState, StateEvents, getActivePC } from '../../../js/state/state-core.js';
-// @ts-ignore
 import { onStateSave, saveToStorage } from '../../../js/state/StorageManager.js';
-// @ts-ignore
 import * as EncounterManager from '../../../js/state/EncounterManager.js';
-// @ts-ignore
 import { applyIncomingDelta, getEncounterStateDiff, getPCStateDiff, isProcessingNetworkIncoming } from '../../../js/network/SyncProtocol.js';
+import { logger } from '../../utils/logger.ts';
 
 let isBridgeInitialized = false;
 
@@ -38,7 +35,7 @@ export function initRealtimeSyncBridge(): void {
       StateEvents.emit('pc_changed', getActivePC());
       StateEvents.emit('state_changed', getState());
     } catch (err) {
-      console.error('[RealtimeSyncBridge] Error applying incoming diff:', err);
+      logger.error('[RealtimeSyncBridge] Error applying incoming diff:', err);
     }
   });
 
@@ -56,11 +53,11 @@ export function initRealtimeSyncBridge(): void {
       }
       StateEvents.emit('state_changed', state);
     } catch (err) {
-      console.error('[RealtimeSyncBridge] Error applying turn change:', err);
+      logger.error('[RealtimeSyncBridge] Error applying turn change:', err);
     }
   });
 
-  // 3. Listen for incoming full PC syncs (e.g. when a new player joins table in real time)
+  // 3. Listen for direct PC sync payloads (DM side receives full PC sheet)
   realtimeManager.onEvent('pc_sync', (envelope) => {
     if (!envelope || !envelope.payload || !envelope.payload.pc) return;
 
@@ -68,14 +65,14 @@ export function initRealtimeSyncBridge(): void {
       const state = getState();
       const isHost = state?.session?.role === 'host' || state?.mode === 'dm';
       if (isHost) {
-        console.log('%c[RealtimeSyncBridge] Received pc_sync on DM for player:', 'color: #059669;', envelope.payload.pc?.name);
+        logger.log('%c[RealtimeSyncBridge] Received pc_sync on DM for player:', 'color: #059669;', envelope.payload.pc?.name);
         EncounterManager.mergeIncomingPC(envelope.payload.pc);
         saveToStorage();
         StateEvents.emit('state_changed', getState());
         StateEvents.emit('combatants_changed', getState().combatants);
       }
     } catch (err) {
-      console.error('[RealtimeSyncBridge] Error handling incoming pc_sync:', err);
+      logger.error('[RealtimeSyncBridge] Error handling incoming pc_sync:', err);
     }
   });
 
@@ -87,7 +84,7 @@ export function initRealtimeSyncBridge(): void {
       const targetUserId = envelope?.payload?.targetUserId;
       const myUserId = (realtimeManager as any).currentUserId;
       if (!targetUserId || targetUserId === myUserId) {
-        console.log('[RealtimeSyncBridge] Host requested PC sync, broadcasting active character...');
+        logger.log('[RealtimeSyncBridge] Host requested PC sync, broadcasting active character...');
         broadcastActivePC();
       }
     }
@@ -105,7 +102,7 @@ export function initRealtimeSyncBridge(): void {
         !state.combatants.some((c: any) => c.id === u.characterId || c.name === u.characterName || c.name === u.userName)
       );
       if (missingPlayer) {
-        console.log('[RealtimeSyncBridge] Detected connected player missing in combatants, requesting PC sheet:', missingPlayer.characterName || missingPlayer.userName);
+        logger.log('[RealtimeSyncBridge] Detected connected player missing in combatants, requesting PC sheet:', missingPlayer.characterName || missingPlayer.userName);
         realtimeManager.broadcastEvent('request_pc_sync', { targetUserId: missingPlayer.userId });
       }
     } else {
@@ -126,10 +123,10 @@ export function broadcastActivePC(): void {
       const pc = getActivePC();
       if (pc) {
         realtimeManager.broadcastEvent('pc_sync', { pc });
-        console.log('%c[RealtimeSyncBridge] Broadcasted active PC to host:', 'color: #059669;', pc.name);
+        logger.log('%c[RealtimeSyncBridge] Broadcasted active PC to host:', 'color: #059669;', pc.name);
       }
     } catch (err) {
-      console.error('[RealtimeSyncBridge] Error broadcasting active PC:', err);
+      logger.error('[RealtimeSyncBridge] Error broadcasting active PC:', err);
     }
   };
 

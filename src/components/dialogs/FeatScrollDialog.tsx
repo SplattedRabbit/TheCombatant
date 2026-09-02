@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { uiRegistry } from '@core/ui/ui-shared.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
-// @ts-ignore
 import { checkPrerequisites } from '@core/rules/RulesFeats.js';
-
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
+import { FeatScrollParchment } from './feats/FeatScrollParchment.tsx';
+import { FeatScrollActions } from './feats/FeatScrollActions.tsx';
 
 interface FeatScrollDialogProps {
   feat: any;
@@ -13,7 +13,7 @@ interface FeatScrollDialogProps {
   isLearned: boolean;
   option?: string;
   onClose: () => void;
-  onRefresh: () => void; // Used to re-render the dialog if instances change
+  onRefresh: () => void;
 }
 
 function translateAppEffect(text: string): string {
@@ -68,7 +68,6 @@ function translateAppEffect(text: string): string {
   t = t.replace(/Zaubergrad Slot-Erhöhung/g, 'spell slot level increase');
   t = t.replace(/Freie Slot-Erhöhung für SG-Steigerung/g, 'Free slot increase for DC increase');
   
-  // Generic translation fallbacks for common words
   t = t.replace(/freigeschaltet/gi, 'unlocked');
   t = t.replace(/ab Caster-Lvl/gi, 'from Caster level');
   t = t.replace(/pro Tag für/gi, 'per day for');
@@ -94,7 +93,6 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
   const currentPC = (CombatState && typeof CombatState.getActivePC === 'function' ? CombatState.getActivePC() : null) || pc;
   const activeFeatsList = currentPC.feats || [];
 
-  // Evaluate prerequisites
   const { met, details: prereqsDetails } = checkPrerequisites(feat, currentPC);
 
   const autoFeats = typeof currentPC.getAutomaticFeats === 'function' ? currentPC.getAutomaticFeats() : [];
@@ -102,57 +100,33 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
   const isAutomatic = !!autoFeatObj;
   const isActuallyLearned = isLearned || activeFeatsList.some((f: any) => f.id === feat.id) || isAutomatic;
 
-  // Stackability & Options info
   const isStackable = feat.specialRaw && feat.specialRaw.toLowerCase().includes('multiple times');
   const learnedInstances = activeFeatsList.filter((f: any) => f.id === feat.id);
 
-  // Generate options list if option dropdown is needed
   let optionsList: string[] = [];
   if (feat.hasOption && (!isLearned || isStackable)) {
     if (feat.optionType === 'weapon') {
       optionsList = [
-        'Longsword',
-        'Shortsword',
-        'Dagger',
-        'Greatsword',
-        'Composite Bow',
-        'Longbow',
-        'Unarmed Strike',
-        'Quarterstaff',
-        'Kama',
-        'Nunchaku',
-        'Sai',
-        'Shuriken',
-        'Siangham',
-        'Crossbow',
-        'Halberd',
-        'Morningstar',
-        'Battleaxe'
+        'Longsword', 'Shortsword', 'Dagger', 'Greatsword', 'Composite Bow', 'Longbow',
+        'Unarmed Strike', 'Quarterstaff', 'Kama', 'Nunchaku', 'Sai', 'Shuriken',
+        'Siangham', 'Crossbow', 'Halberd', 'Morningstar', 'Battleaxe'
       ];
     } else if (feat.optionType === 'school') {
       optionsList = [
-        'Abjuration',
-        'Conjuration',
-        'Divination',
-        'Evocation',
-        'Illusion',
-        'Necromancy',
-        'Transmutation',
-        'Enchantment'
+        'Abjuration', 'Conjuration', 'Divination', 'Evocation', 'Illusion',
+        'Necromancy', 'Transmutation', 'Enchantment'
       ];
     } else if (feat.optionType === 'skill') {
       optionsList = Object.keys(SKILLS_REGISTRY).map((key) => {
-        const englishName = key
+        return key
           .split('_')
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(' ');
-        return englishName;
       });
       optionsList.sort((a, b) => a.localeCompare(b));
     }
   }
 
-  // Filter out options already learned
   const learnedOptions = learnedInstances.map((inst: any) => inst.option).filter(Boolean);
   const filteredOptions = optionsList.filter((o) => !learnedOptions.includes(o));
 
@@ -183,7 +157,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
 
   const handleRemoveInstance = (instOption: string) => {
     CombatState.removePCFeat(feat.id, instOption);
-    onRefresh(); // Re-render this modal (bridge re-initiates)
+    onRefresh();
     if (uiRegistry && typeof uiRegistry.renderPlayerScreen === 'function') {
       uiRegistry.renderPlayerScreen();
     }
@@ -218,7 +192,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
           width: '540px',
           maxWidth: '92vw',
           boxShadow: '0 12px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(200,169,110,0.1)',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           textAlign: 'center',
           position: 'relative',
           transform: 'scale(1)',
@@ -230,304 +204,33 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
       >
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
-        {/* Scroll parchment content */}
-        <div
-          className="ancient-parchment"
-          style={{
-            background: '#f4e8c1',
-            border: '2px solid #8b1a1a',
-            padding: '12px 16px',
-            borderRadius: '4px',
-            boxShadow: 'inset 0 0 35px rgba(139, 26, 26, 0.15)',
-            fontFamily: "'Crimson Text', serif",
-            color: '#1a0f00',
-            lineHeight: 1.4,
-            textAlign: 'left',
-            maxHeight: '54vh',
-            overflowY: 'auto',
-            boxSizing: 'border-box'
-          }}
-        >
-          <h3
-            style={{
-              fontFamily: "'IM Fell English SC', serif",
-              fontSize: '13.5px',
-              color: '#8b1a1a',
-              textAlign: 'center',
-              borderBottom: '2px solid #8b1a1a',
-              paddingBottom: '4px',
-              margin: '0 0 8px 0',
-              letterSpacing: '0.8px',
-              fontWeight: 'bold'
-            }}
-          >
-            {feat.nameEn || feat.nameDe}
-          </h3>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '4px 10px',
-              fontSize: '9px',
-              borderBottom: '0.5px dashed rgba(139, 26, 26, 0.3)',
-              paddingBottom: '6px',
-              marginBottom: '8px',
-              fontWeight: 'bold'
-            }}
-          >
-            <div><strong>Category:</strong> {categoryEn}</div>
-            <div><strong>Met:</strong> {met ? 'Yes' : 'No'}</div>
-            <div style={{ gridColumn: 'span 2' }}>
-              <strong>App Mechanics:</strong>{' '}
-              <span style={{ color: '#8b1a1a', fontWeight: 'bold' }}>
-                {translateAppEffect(feat.appEffect) || 'No automatic stat changes'}
-              </span>
-            </div>
-          </div>
-
-          <div style={{ fontSize: '9.5px', marginBottom: '8px' }}>
-            <div style={{ fontWeight: 'bold', color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif", fontSize: '10px' }}>
-              Prerequisites:
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginTop: '2px' }}>
-              {prereqsDetails.length === 0 ? (
-                <div style={{ color: '#2a6a2a', fontWeight: 'bold', fontSize: '9px' }}>None</div>
-              ) : (
-                prereqsDetails.map((pr: any, idx: number) => {
-                  const color = pr.met ? '#2a6a2a' : '#8b1a1a';
-                  const mark = pr.met ? '✓' : '✗';
-                  return (
-                    <div key={idx} style={{ color, fontWeight: 500, fontSize: '9px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <span>{mark}</span>
-                      <span>{pr.desc}</span>
-                    </div>
-                  );
-                })
-              )}
-            </div>
-          </div>
-
-          <div style={{ fontSize: '9.5px', marginBottom: '6px', lineHeight: 1.35 }}>
-            <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Benefit (RAW):</strong>
-            <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>{feat.benefitRaw || feat.benefitEn || feat.benefitDe}</div>
-          </div>
-
-          {feat.normalRaw && (
-            <div style={{ fontSize: '9px', marginBottom: '6px', lineHeight: 1.35, borderTop: '0.5px dotted rgba(139,26,26,0.2)', paddingTop: '4px' }}>
-              <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Normal:</strong>
-              <div style={{ color: '#4a3b2a', paddingLeft: '4px' }}>{feat.normalRaw}</div>
-            </div>
-          )}
-
-          {feat.specialRaw && (
-            <div style={{ fontSize: '9px', marginBottom: '4px', lineHeight: 1.35, borderTop: '0.5px dotted rgba(139,26,26,0.2)', paddingTop: '4px' }}>
-              <strong style={{ color: '#8b1a1a', fontFamily: "'IM Fell English SC', serif" }}>Special:</strong>
-              <div style={{ color: '#4a3b2a', paddingLeft: '4px' }}>{feat.specialRaw}</div>
-            </div>
-          )}
-
-          {feat.hasOption && (!isLearned || isStackable) && (
-            <div style={{ marginTop: '6px', display: 'flex', flexDirection: 'column', gap: '2px', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold' }}>
-              <label htmlFor="featOptionSelect" style={{ color: '#5a3a1a' }}>Specific selection for this feat:</label>
-              <select
-                id="featOptionSelect"
-                className="cinput"
-                value={selectedOption}
-                onChange={(e) => setSelectedOption(e.target.value)}
-                style={{ width: '100%', fontSize: '9px', height: '18px', padding: '0 2px', boxSizing: 'border-box' }}
-              >
-                {filteredOptions.length > 0 ? (
-                  filteredOptions.map((o, idx) => (
-                    <option key={idx} value={o}>
-                      {o}
-                    </option>
-                  ))
-                ) : (
-                  <option value="" disabled>
-                    -- All options already learned --
-                  </option>
-                )}
-              </select>
-            </div>
-          )}
-
-          {learnedInstances.length > 0 && (
-            <div style={{ marginTop: '6px', fontFamily: "'Crimson Text', serif", fontSize: '9.5px', borderTop: '0.5px dashed rgba(139,26,26,0.3)', paddingTop: '6px' }}>
-              <div style={{ fontWeight: 'bold', color: '#5a3a1a', marginBottom: '2px' }}>Already learned instances:</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-                {learnedInstances.map((inst: any, idx: number) => {
-                  const optText = inst.option ? `(${inst.option})` : '';
-                  return (
-                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0,0,0,0.03)', border: '0.5px solid rgba(0,0,0,0.1)', borderRadius: '2px', padding: '2px 4px', fontSize: '8.5px' }}>
-                      <span style={{ fontWeight: 'bold', color: 'var(--red)' }}>
-                        {(feat.nameEn || feat.nameDe)} {optText}
-                      </span>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          e.preventDefault();
-                          handleRemoveInstance(inst.option || '');
-                        }}
-                        className="xbtn btn-remove-instance"
-                        style={{ color: 'var(--red)', borderColor: 'var(--red)', padding: '0 3px', fontSize: '7px', height: '13px', lineHeight: '13px' }}
-                      >
-                        ✕ Remove
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </div>
+        {/* Parchment Content */}
+        <FeatScrollParchment
+          feat={feat}
+          categoryEn={categoryEn}
+          met={met}
+          prereqsDetails={prereqsDetails}
+          isLearned={isLearned}
+          isStackable={isStackable}
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+          filteredOptions={filteredOptions}
+          learnedInstances={learnedInstances}
+          onRemoveInstance={handleRemoveInstance}
+          translateAppEffect={translateAppEffect}
+        />
 
         {/* Action Footer */}
-        <div style={{ marginTop: '4px' }}>
-          {!isActuallyLearned || isStackable ? (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
-              <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.3px' }}>
-                {isLearnBlocked ? '🔒 Prerequisites not met!' : 'Do you want to learn this feat?'}
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', width: '100%' }}>
-                <button
-                  onClick={handleLearn}
-                  disabled={isLearnBlocked}
-                  className="btn btn-p btn-learn-feat"
-                  style={{
-                    fontFamily: "'IM Fell English SC', serif",
-                    fontSize: '9px',
-                    padding: '4px 22px',
-                    cursor: isLearnBlocked ? 'not-allowed' : 'pointer',
-                    background: isLearnBlocked ? 'rgba(0,0,0,0.05)' : 'rgba(42, 106, 42, 0.1)',
-                    border: `1px solid ${isLearnBlocked ? 'rgba(0,0,0,0.2)' : '#2a6a2a'}`,
-                    borderRadius: '2px',
-                    color: isLearnBlocked ? '#888' : '#2a6a2a',
-                    fontWeight: 'bold',
-                    transition: 'background-color 0.15s, color 0.15s',
-                    outline: 'none'
-                  }}
-                >
-                  Learn
-                </button>
-                <button
-                  onClick={onClose}
-                  className="btn btn-close-feat"
-                  style={{
-                    fontFamily: "'IM Fell English SC', serif",
-                    fontSize: '9px',
-                    padding: '4px 22px',
-                    cursor: 'pointer',
-                    background: 'transparent',
-                    border: '1px solid var(--pb)',
-                    borderRadius: '2px',
-                    color: 'var(--inkl)',
-                    transition: 'background-color 0.15s, color 0.15s',
-                    outline: 'none'
-                  }}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          ) : isAutomatic ? (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', width: '100%' }}>
-              <div
-                style={{
-                  background: 'rgba(200, 169, 110, 0.12)',
-                  border: '1px solid var(--pb)',
-                  borderLeft: '4px solid #7c5a2b',
-                  borderRadius: '3px',
-                  padding: '8px 12px',
-                  width: '100%',
-                  boxSizing: 'border-box',
-                  textAlign: 'left',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '4px'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '0.5px solid rgba(124, 90, 43, 0.25)', paddingBottom: '3px' }}>
-                  <span style={{ fontSize: '10.5px', color: '#7c5a2b', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", display: 'flex', alignItems: 'center', gap: '5px' }}>
-                    <span>🛡️</span> Automatic Class Feature
-                  </span>
-                  {autoFeatObj && (
-                    <span style={{ fontSize: '7.5px', color: '#7c5a2b', background: 'rgba(124, 90, 43, 0.12)', padding: '1px 5px', borderRadius: '2px', fontWeight: 'bold' }}>
-                      {autoFeatObj.source || 'Class Feature'}
-                    </span>
-                  )}
-                </div>
-                <p style={{ fontSize: '9.5px', color: 'var(--ink)', margin: 0, fontFamily: "'Crimson Text', serif", lineHeight: 1.35 }}>
-                  This feat is granted automatically as an integral part of your character's class or racial progression. Because it is a permanent inherent trait, it cannot be unlearned.
-                </p>
-              </div>
-
-              <button
-                onClick={onClose}
-                className="btn btn-close-feat"
-                style={{
-                  fontFamily: "'IM Fell English SC', serif",
-                  fontSize: '9.5px',
-                  padding: '4px 28px',
-                  cursor: 'pointer',
-                  background: 'transparent',
-                  border: '1px solid var(--pb)',
-                  borderRadius: '2px',
-                  color: 'var(--inkl)',
-                  transition: 'background-color 0.15s, color 0.15s',
-                  outline: 'none'
-                }}
-              >
-                Close
-              </button>
-            </div>
-          ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
-              <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: "'IM Fell English SC', serif", letterSpacing: '0.3px' }}>
-                Do you want to unlearn this feat?
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', width: '100%' }}>
-                <button
-                  onClick={handleUnlearn}
-                  className="btn btn-p btn-unlearn-feat"
-                  style={{
-                    fontFamily: "'IM Fell English SC', serif",
-                    fontSize: '9px',
-                    padding: '4px 22px',
-                    cursor: 'pointer',
-                    background: 'rgba(139, 26, 26, 0.1)',
-                    border: '1px solid var(--pb)',
-                    borderRadius: '2px',
-                    color: 'var(--red)',
-                    fontWeight: 'bold',
-                    transition: 'background-color 0.15s, color 0.15s',
-                    outline: 'none'
-                  }}
-                >
-                  Unlearn
-                </button>
-                <button
-                  onClick={onClose}
-                  className="btn btn-close-feat"
-                  style={{
-                    fontFamily: "'IM Fell English SC', serif",
-                    fontSize: '9px',
-                    padding: '4px 22px',
-                    cursor: 'pointer',
-                    background: 'transparent',
-                    border: '1px solid var(--pb)',
-                    borderRadius: '2px',
-                    color: 'var(--inkl)',
-                    transition: 'background-color 0.15s, color 0.15s',
-                    outline: 'none'
-                  }}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+        <FeatScrollActions
+          isActuallyLearned={isActuallyLearned}
+          isStackable={isStackable}
+          isLearnBlocked={isLearnBlocked}
+          isAutomatic={isAutomatic}
+          autoFeatObj={autoFeatObj}
+          onLearn={handleLearn}
+          onUnlearn={handleUnlearn}
+          onClose={onClose}
+        />
       </div>
     </div>
   );

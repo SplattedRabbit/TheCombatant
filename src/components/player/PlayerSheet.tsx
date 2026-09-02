@@ -8,7 +8,6 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 import type { Combatant } from '../../types/combat';
 import { PCHeader } from './PCHeader';
@@ -23,8 +22,8 @@ import { BaseCard } from '../shared/BaseCard';
 import { PCSpellsTab } from './PCSpellsTab';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { PCFeaturesTab } from './PCFeaturesTab';
-// @ts-ignore
 import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
+import { logger } from '../../utils/logger';
 
 interface PlayerSheetProps {
   pc: Combatant;
@@ -117,18 +116,18 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
           try {
             const keys = await caches.keys();
             await Promise.all(keys.map(key => caches.delete(key)));
-            console.log('Caches cleared.');
+            logger.log('Caches cleared.');
           } catch (err) {
-            console.error('Error clearing caches:', err);
+            logger.error('Error clearing caches:', err);
           }
         }
         if ('serviceWorker' in navigator) {
           try {
             const registrations = await navigator.serviceWorker.getRegistrations();
             await Promise.all(registrations.map(reg => reg.unregister()));
-            console.log('Service Workers unregistered.');
+            logger.log('Service Workers unregistered.');
           } catch (err) {
-            console.error('Error unregistering service workers:', err);
+            logger.error('Error unregistering service workers:', err);
           }
         }
         window.location.reload();
@@ -221,7 +220,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
               }}
             >
               <div style={{
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 fontSize: '10px',
                 color: 'var(--red)',
                 fontWeight: 'bold',

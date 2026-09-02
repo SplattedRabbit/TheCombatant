@@ -16,6 +16,12 @@ class CombatEventBus {
     this.listeners[event].push(cb);
   }
 
+  off(event, cb) {
+    if (this.listeners[event]) {
+      this.listeners[event] = this.listeners[event].filter(l => l !== cb);
+    }
+  }
+
   emit(event, ...args) {
     if (this.listeners[event]) {
       this.listeners[event].forEach(cb => {

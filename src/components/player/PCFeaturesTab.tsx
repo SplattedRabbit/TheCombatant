@@ -8,9 +8,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { PCCompanionWrapper } from './PCCompanionWrapper';
 
@@ -28,7 +26,6 @@ import { RangerFeaturesCard } from './features/RangerFeaturesCard';
 import { WizardFeaturesCard } from './features/WizardFeaturesCard';
 import { SorcererFeaturesCard } from './features/SorcererFeaturesCard';
 import { PrestigeClassFeaturesCard } from './features/PrestigeClassFeaturesCard';
-// @ts-ignore
 import { PRESTIGE_CLASSES_REGISTRY } from '@core/data/prestigeClasses-data.js';
 
 interface PCFeaturesTabProps {
@@ -69,13 +66,13 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
       {/* Left Column: Class Features */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', borderRight: '0.5px solid rgba(200, 169, 110, 0.2)', paddingRight: '8px' }}>
         <div style={{ display: 'flex', justifySelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px' }}>
-          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>
+          <span style={{ fontFamily: 'var(--font-title)', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)' }}>
             ⚔️ Class Features
           </span>
           <button
             onClick={handleNewDayReset}
             className="btn btn-new-day"
-            style={{ fontSize: '8px', padding: '2px 8px', fontFamily: "'IM Fell English SC', serif", fontWeight: 'bold', background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)', color: 'white', border: '0.5px solid var(--red)', borderRadius: '2px', cursor: 'pointer', lineHeight: 1 }}
+            style={{ fontSize: '8px', padding: '2px 8px', fontFamily: 'var(--font-title)', fontWeight: 'bold', background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)', color: 'white', border: '0.5px solid var(--red)', borderRadius: '2px', cursor: 'pointer', lineHeight: 1 }}
             title="Restore daily abilities"
           >
             New Day Reset 🌅
@@ -127,7 +124,7 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
 
       {/* Right Column: Companions */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '0.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '0.5px solid var(--pb)', paddingBottom: '2px', marginBottom: '4px' }}>
           🐾 Companions &amp; Familiars
         </div>
 

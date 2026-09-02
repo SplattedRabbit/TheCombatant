@@ -4,6 +4,9 @@
   "type": "module",
   "scripts": {
     "test": "node --import ./Tests/setup.js --test Tests/*.test.js",
+    "test:ui": "vitest run",
+    "test:ui:watch": "vitest",
+    "test:all": "npm run test && npm run test:ui",
     "dev": "vite",
     "build": "vite build && node scratch/update_sw.js",
     "preview": "vite preview",
@@ -16,11 +19,15 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
     "@types/node": "^25.9.3",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react": "^4.5.2",
+    "jsdom": "^30.0.1",
     "typescript": "^5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vitest": "^4.1.11"
   }
 }

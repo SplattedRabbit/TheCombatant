@@ -7,16 +7,26 @@
  */
 
 // ---------------------------------------------------------------------------
-// Grundlegende Attribut-Datenstrukturen
+// Grundlegende Attribut- und Stat-Datenstrukturen
 // ---------------------------------------------------------------------------
+
+export interface StatModifier {
+  source: string;
+  value: number;
+  type: string;
+  isRace?: boolean;
+}
 
 export interface StatBlock {
   base: number;
   bonus: number;
   total: number;
   mod: number;
-  modifiers?: Array<{ source: string; value: number; type: string; isRace?: boolean }>;
+  modifiers?: StatModifier[];
+  getValue?: () => number;
 }
+
+export type StatValue = any;
 
 export interface SavingThrow {
   base: number;
@@ -31,57 +41,118 @@ export interface SavingThrows {
 }
 
 // ---------------------------------------------------------------------------
+// Fertigkeiten (Skills & Tricks)
+// ---------------------------------------------------------------------------
+
+export interface SkillEntry {
+  ranks: number;
+  misc: number;
+}
+
+export interface SkillDefinition {
+  nameDe: string;
+  nameEn?: string;
+  abl: 'str' | 'dex' | 'con' | 'int' | 'wis' | 'cha';
+  trainedOnly?: boolean;
+  hasACP?: boolean;
+}
+
+export interface LearnedSkillTrick {
+  id: string;
+  isBonus?: boolean;
+}
+
+// ---------------------------------------------------------------------------
 // Waffen & Ausrüstung
 // ---------------------------------------------------------------------------
 
 export interface Weapon {
-  id: string;
+  id?: string;
   name: string;
-  damage: string;
-  critRange: number;
-  critMult: number;
-  type: string;
-  equipped: boolean;
+  damage?: string;
+  damageDice?: string;
+  crit?: string;
+  critRange?: number;
+  critMult?: number;
+  type?: string;
+  grip?: string;
+  enhancement?: number;
+  attackBonus?: number;
+  equipped?: boolean;
+  isEquipped?: boolean;
   isNatural?: boolean;
+  isSecondary?: boolean;
+  isKeen?: boolean;
+  extraDamage?: string;
   extraDamageDice?: number;
   extraDamageType?: string;
+  [key: string]: any;
 }
 
 export interface Armor {
-  id: string;
+  id?: string;
   name: string;
-  acBonus: number;
-  equipped: boolean;
-  typeKey: string;
-}
-
-export interface Item {
-  id: string;
-  name: string;
-  slot: string;
-  equipped: boolean;
-  effects: ItemEffect[];
+  armorBonus: number;
+  enhancement?: number;
+  checkPenalty?: number;
+  checkPenaltyOverride?: number;
+  equipped?: boolean;
+  isEquipped?: boolean;
+  typeKey?: string;
+  isShield?: boolean;
+  [key: string]: any;
 }
 
 export interface ItemEffect {
-  stat: string;
-  value: number;
-  type: string;
+  stat?: string;
+  target?: string;
+  value: number | string;
+  type?: string;
+  source?: string;
+}
+
+export interface Item {
+  id?: string;
+  name: string;
+  slot?: string;
+  type?: string;
+  equipped?: boolean;
+  isEquipped?: boolean;
+  description?: string;
+  aura?: string;
+  healingFormula?: string;
+  damageFormula?: string;
+  charges?: { current: number; max: number };
+  dailyUses?: { current: number; max: number };
+  activation?: {
+    isUsable?: boolean;
+    actionType?: string;
+    effectDescription?: string;
+    appliedBuffKey?: string;
+  };
+  effects?: ItemEffect[];
+  [key: string]: any;
 }
 
 // ---------------------------------------------------------------------------
-// Talente & Klassen
+// Talente, Klassen & Tägliche Fähigkeiten
 // ---------------------------------------------------------------------------
 
 export interface Feat {
   id: string;
-  name: string;
+  name?: string;
   option?: string;
 }
 
 export interface CharClass {
   classType: string;
   level: number;
+}
+
+export interface DailyAbility {
+  name: string;
+  max: number;
+  used: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -135,22 +206,22 @@ export interface Combatant {
   tempHp: number;
   ac: number;
   initiative: number;
-  initiativeRoll: number;
-  conditions: string[];
+  initiativeRoll?: number;
+  conditions: any[];
 
   // Attribute
-  str: StatBlock;
-  dex: StatBlock;
-  con: StatBlock;
-  int: StatBlock;
-  wis: StatBlock;
-  cha: StatBlock;
+  str: any;
+  dex: any;
+  con: any;
+  int: any;
+  wis: any;
+  cha: any;
 
   // Kampf-Werte
   bab: number;
-  cmb: number;
-  cmd: number;
-  saves: SavingThrows;
+  cmb?: number;
+  cmd?: number;
+  saves?: SavingThrows;
 
   // Klasse & Stufe
   classes: CharClass[];
@@ -159,23 +230,45 @@ export interface Combatant {
   size: string;
   activeShape: string;
   alignment?: string;
+  favoredEnemy?: string;
 
   // Ausrüstung
   weapons: Weapon[];
-  armor: Armor[];
+  armor?: Armor[];
+  armors?: Armor[];
   items: Item[];
 
-  // Talente
+  // Talente & ACFs
   feats: Feat[];
+  acfs?: string[];
+  skills?: Record<string, SkillEntry>;
+  skillTricks?: Array<string | LearnedSkillTrick>;
 
   // Zauber
-  spellSlots: SpellSlots;
-  preparedSpells: PreparedSpell[];
+  spellSlots?: SpellSlots;
+  preparedSpells?: PreparedSpell[];
+  knownSpells?: any[];
+  dailyAbilities?: DailyAbility[];
+
+  // Prestige & ACFs State Flags
+  selectedClassStrike?: string;
+  wizardSpecialization?: string;
+  wizardProhibited1?: string;
+  wizardProhibited2?: string;
+  prestigeSpellLinks?: Record<string, any>;
+  prestigeSpecialTextConfirmed?: Record<string, boolean>;
+
+  // Combat Toggles
+  isTotalDefense?: boolean;
+  isSmiteActive?: boolean;
+  isFavoredEnemyActive?: boolean;
+  isSneakAttacking?: boolean;
+  isTrickyFightingActive?: boolean;
 
   // Begleiter-Verweis (für Companion-Inline-Darstellung im DM-Screen)
   companionOf?: string;
 
-  // Milestone 3 Ergänzungen für Rettung, Verteidigung & Buffs
+  // Verteidigung, Rettungswürfe & Boni
   activeBuffs?: ActiveBuff[];
   autoAC?: boolean;
   acTouch?: any;
@@ -202,6 +295,9 @@ export interface Combatant {
   refMisc?: any;
   wilMisc?: any;
   levelAdjustment?: number;
+
+  // Methoden & zusätzliche Flags
+  [key: string]: any;
 }
 
 // ---------------------------------------------------------------------------

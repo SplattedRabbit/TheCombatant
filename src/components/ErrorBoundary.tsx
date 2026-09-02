@@ -53,7 +53,7 @@ export class ErrorBoundary extends Component<Props, State> {
             boxSizing: 'border-box'
           }}>
             <h2 style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               color: 'var(--red, #8b1a1a)',
               fontSize: '22px',
               marginTop: 0,
@@ -67,7 +67,7 @@ export class ErrorBoundary extends Component<Props, State> {
               🚨 Systemabsturz / Laufzeitfehler
             </h2>
             <p style={{
-              fontFamily: "'Crimson Text', serif",
+              fontFamily: 'var(--font-body)',
               fontSize: '13px',
               color: 'var(--inkm, #2a2015)',
               lineHeight: 1.5,

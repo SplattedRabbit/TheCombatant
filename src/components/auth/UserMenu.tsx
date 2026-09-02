@@ -10,7 +10,6 @@ import { CharacterRosterDialog } from '../player/CharacterRosterDialog.tsx';
 import { CampaignManagerDialog } from '../dm/CampaignManagerDialog.tsx';
 import { JoinCampaignDialog } from '../dialogs/JoinCampaignDialog.tsx';
 
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 export const UserMenu: React.FC = () => {
@@ -139,11 +138,11 @@ export const UserMenu: React.FC = () => {
           >
             {/* User Info Header */}
             <div style={{ borderBottom: '0.5px solid var(--pb)', paddingBottom: '6px' }}>
-              <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
                 {displayName}
               </div>
               {user?.email && (
-                <div style={{ fontSize: '9.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", wordBreak: 'break-all' }}>
+                <div style={{ fontSize: '9.5px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', wordBreak: 'break-all' }}>
                   {user.email}
                 </div>
               )}
@@ -165,7 +164,7 @@ export const UserMenu: React.FC = () => {
                 width: '100%',
                 fontSize: '10.5px',
                 padding: '4px 8px',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                 border: '1px solid #8b6914',
                 color: '#ffffff',
@@ -193,7 +192,7 @@ export const UserMenu: React.FC = () => {
                 width: '100%',
                 fontSize: '10.5px',
                 padding: '4px 8px',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 background: 'rgba(200, 169, 110, 0.15)',
                 border: '1px solid var(--pb)',
                 color: 'var(--ink)',
@@ -221,7 +220,7 @@ export const UserMenu: React.FC = () => {
                 width: '100%',
                 fontSize: '10.5px',
                 padding: '4px 8px',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 background: 'rgba(200, 169, 110, 0.1)',
                 border: '1px solid var(--pb)',
                 color: 'var(--ink)',
@@ -248,7 +247,7 @@ export const UserMenu: React.FC = () => {
                 width: '100%',
                 fontSize: '10px',
                 padding: '4px 8px',
-                fontFamily: "'IM Fell English SC', serif",
+                fontFamily: 'var(--font-title)',
                 background: 'rgba(139, 26, 26, 0.08)',
                 borderColor: 'rgba(139, 26, 26, 0.4)',
                 color: 'var(--red)',

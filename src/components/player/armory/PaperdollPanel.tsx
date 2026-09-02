@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { ITEM_SLOTS } from '@core/data/magicItems-data.js';
 import { BaseCard } from '../../shared/BaseCard';
 import { BodySlotCard } from './BodySlotCard';
@@ -73,7 +72,7 @@ export const PaperdollPanel: React.FC<PaperdollPanelProps> = ({
         {/* Active Item Sets */}
         {setBonusData.activeSets.length > 0 && (
           <div style={{ marginTop: '4px', borderTop: '0.5px solid var(--pb)', paddingTop: '6px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '4px' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '4px' }}>
               ✨ Active Item Sets ({setBonusData.activeSets.length})
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -92,7 +91,7 @@ export const PaperdollPanel: React.FC<PaperdollPanelProps> = ({
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
+                    <span style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)' }}>
                       {activeSet.set.name}
                     </span>
                     <span style={{ fontSize: '8px', background: 'rgba(139, 26, 26, 0.15)', color: 'var(--red)', padding: '0 4px', borderRadius: '2px', fontWeight: 'bold' }}>
@@ -102,13 +101,13 @@ export const PaperdollPanel: React.FC<PaperdollPanelProps> = ({
                   {activeSet.activeBonuses.length > 0 ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
                       {activeSet.activeBonuses.map((b: any, bIdx: number) => (
-                        <div key={bIdx} style={{ fontSize: '8.5px', color: 'var(--ink)', fontFamily: "'Crimson Text', serif", fontWeight: 600 }}>
+                        <div key={bIdx} style={{ fontSize: '8.5px', color: 'var(--ink)', fontFamily: 'var(--font-body)', fontWeight: 600 }}>
                           • {b.requiredPieces} Pieces: {b.description}
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <div style={{ fontSize: '8px', color: 'var(--inkm)', fontStyle: 'italic', fontFamily: "'Crimson Text', serif" }}>
+                    <div style={{ fontSize: '8px', color: 'var(--inkm)', fontStyle: 'italic', fontFamily: 'var(--font-body)' }}>
                       Equip 1 more piece to unlock the 2-piece set bonus.
                     </div>
                   )}
@@ -121,7 +120,7 @@ export const PaperdollPanel: React.FC<PaperdollPanelProps> = ({
         {/* Slotless & Wondrous Equipped Items */}
         {slotlessEquipped.length > 0 && (
           <div style={{ marginTop: '4px', borderTop: '0.5px solid var(--pb)', paddingTop: '6px' }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '4px' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: 'bold', color: 'var(--inkm)', marginBottom: '4px' }}>
               🎒 Slotless & Wondrous Items ({slotlessEquipped.length})
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -149,7 +148,7 @@ export const PaperdollPanel: React.FC<PaperdollPanelProps> = ({
                   >
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', flex: 1, minWidth: 0 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        <span style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                           {item.name}
                         </span>
                         {item.charges && (
@@ -164,7 +163,7 @@ export const PaperdollPanel: React.FC<PaperdollPanelProps> = ({
                         )}
                       </div>
                       {item.description && (
-                        <span style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        <span style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                           {item.description}
                         </span>
                       )}
@@ -179,7 +178,7 @@ export const PaperdollPanel: React.FC<PaperdollPanelProps> = ({
                           style={{
                             fontSize: '8px',
                             padding: '1px 6px',
-                            fontFamily: "'IM Fell English SC', serif",
+                            fontFamily: 'var(--font-title)',
                             background: isPotion ? 'rgba(16, 185, 129, 0.15)' : (isWand ? 'rgba(139, 92, 246, 0.15)' : 'rgba(217, 119, 6, 0.15)'),
                             borderColor: isPotion ? '#10b981' : (isWand ? '#8b5cf6' : '#d97706'),
                             color: isPotion ? '#065f46' : (isWand ? '#5b21b6' : '#92400e'),

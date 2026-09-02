@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { MAGIC_ITEMS_REGISTRY, ITEM_SLOTS, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
 import { formatEffectDisplay } from './BodySlotCard';
 import { isConsumableItem } from './ArmoryTab';
@@ -105,7 +103,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '5px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span style={{ fontSize: '16px' }}>{slotDef.icon}</span>
-            <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+            <span style={{ fontFamily: 'var(--font-title)', fontSize: '13.5px', fontWeight: 'bold', color: 'var(--red)' }}>
               Equip Slot: {slotDef.nameEn}
             </span>
           </div>
@@ -134,7 +132,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
           
           {/* Section 1: Backpack Items */}
           <div>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)', marginBottom: '3px' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)', marginBottom: '3px' }}>
               🎒 Available in Backpack ({backpackCandidates.length})
             </div>
             {backpackCandidates.length === 0 ? (
@@ -160,10 +158,10 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                       }}
                     >
                       <div>
-                        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                        <div style={{ fontFamily: 'var(--font-title)', fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
                           {item.name}
                         </div>
-                        <div style={{ fontSize: '9px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif" }}>
+                        <div style={{ fontSize: '9px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
                           {(item.effects || []).map((e: any) => formatEffectDisplay(e)).join(', ')}
                         </div>
                       </div>
@@ -174,7 +172,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                         style={{
                           fontSize: '8px',
                           padding: '2px 8px',
-                          fontFamily: "'IM Fell English SC', serif",
+                          fontFamily: 'var(--font-title)',
                           fontWeight: 'bold',
                           background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
                           border: '0.5px solid #8b6914',
@@ -194,7 +192,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
           {/* Section 2: Consolidated Compendium Presets */}
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3px' }}>
-              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>
+              <span style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>
                 📖 Standard Magic Items ({slotConsolidated.length})
               </span>
               <button
@@ -207,7 +205,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                 style={{
                   fontSize: '8px',
                   padding: '1px 6px',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   background: 'rgba(200, 169, 110, 0.1)',
                   border: '0.5px solid var(--pb)',
                   color: 'var(--inkm)'
@@ -240,11 +238,11 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                     >
                       <div style={{ flex: 1, paddingRight: '6px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                          <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
+                          <span style={{ fontFamily: 'var(--font-title)', fontSize: '11.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
                             {activePreset.name || entry.baseName}
                           </span>
                         </div>
-                        <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: "'Crimson Text', serif", lineHeight: 1.2 }}>
+                        <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', lineHeight: 1.2 }}>
                           {activePreset.description || entry.description}
                         </div>
                       </div>
@@ -262,7 +260,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                                 style={{
                                   fontSize: '7.5px',
                                   padding: '1px 4px',
-                                  fontFamily: "'IM Fell English SC', serif",
+                                  fontFamily: 'var(--font-title)',
                                   fontWeight: 'bold',
                                   background: activeKey === v.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.1)',
                                   color: activeKey === v.key ? '#ffffff' : 'var(--inkm)',
@@ -284,7 +282,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                           style={{
                             fontSize: '8px',
                             padding: '2px 7px',
-                            fontFamily: "'IM Fell English SC', serif",
+                            fontFamily: 'var(--font-title)',
                             fontWeight: 'bold',
                             whiteSpace: 'nowrap',
                             background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
@@ -317,7 +315,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
             style={{
               fontSize: '8.5px',
               padding: '2px 8px',
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontWeight: 'bold',
               background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
               border: '0.5px solid #8b6914',
@@ -332,7 +330,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
             type="button"
             onClick={onClose}
             className="btn"
-            style={{ fontSize: '9px', padding: '3px 12px', fontFamily: "'IM Fell English SC', serif" }}
+            style={{ fontSize: '9px', padding: '3px 12px', fontFamily: 'var(--font-title)' }}
           >
             Cancel
           </button>

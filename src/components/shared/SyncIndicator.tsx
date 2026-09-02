@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSyncStatus } from '../../hooks/useSyncStatus.ts';
-// @ts-ignore
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 export const SyncIndicator: React.FC = () => {
@@ -93,7 +92,7 @@ export const SyncIndicator: React.FC = () => {
       </span>
       <span>{label}</span>
       {timeStr && status === 'saved' && (
-        <span style={{ fontSize: '9px', opacity: 0.75, fontWeight: 'normal', fontFamily: "'Crimson Text', serif" }}>
+        <span style={{ fontSize: '9px', opacity: 0.75, fontWeight: 'normal', fontFamily: 'var(--font-body)' }}>
           {timeStr}
         </span>
       )}

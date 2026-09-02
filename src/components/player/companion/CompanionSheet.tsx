@@ -8,12 +8,9 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { CompanionRules } from '@core/rules/CompanionRules.js';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
-import { showRollBreakdown, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { showRollBreakdown } from '@core/ui/components/dialogs.js';
 import { getAblMod, formatMod } from '../attributeHelper';
 
 interface CompanionSheetProps {
@@ -31,66 +28,60 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
   const baseStats = CompanionRules.getCompanionBaseStats(type, effectiveDruidLvl);
 
   const handleSpeciesChange = (newType: string) => {
-    const activePC = CombatState.getActivePC();
-    activePC.companionType = newType;
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.companionType = newType;
 
-    if (newType !== 'none') {
-      const base = CompanionRules.getCompanionBaseStats(newType, activePC.level);
-      if (base) {
-        activePC.companionName = base.name;
-        activePC.companionMaxHP = base.maxHP;
-        activePC.companionHP = base.maxHP;
+      if (newType !== 'none') {
+        const base = CompanionRules.getCompanionBaseStats(newType, activePC.level);
+        if (base) {
+          activePC.companionName = base.name;
+          activePC.companionMaxHP = base.maxHP;
+          activePC.companionHP = base.maxHP;
+        }
+      } else {
+        activePC.companionName = '';
+        activePC.companionMaxHP = 0;
+        activePC.companionHP = 0;
       }
-    } else {
-      activePC.companionName = '';
-      activePC.companionMaxHP = 0;
-      activePC.companionHP = 0;
-    }
-
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    });
     onUpdate();
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    activePC.companionName = e.target.value;
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    const val = e.target.value;
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.companionName = val;
+    });
     onUpdate();
   };
 
   const handleHpCurChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    const val = parseInt(e.target.value) || 0;
-    activePC.companionHP = Math.max(0, Math.min(activePC.companionMaxHP, val));
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    const val = parseInt(e.target.value, 10) || 0;
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.companionHP = Math.max(0, Math.min(activePC.companionMaxHP || 0, val));
+    });
     onUpdate();
   };
 
   const handleHpMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const activePC = CombatState.getActivePC();
-    const val = parseInt(e.target.value) || 1;
-    activePC.companionMaxHP = val;
-    activePC.companionHP = Math.min(activePC.companionHP, val);
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    const val = parseInt(e.target.value, 10) || 1;
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.companionMaxHP = val;
+      activePC.companionHP = Math.min(activePC.companionHP || 0, val);
+    });
     onUpdate();
   };
 
   const handleHpAdjust = (dir: number) => {
-    const activePC = CombatState.getActivePC();
-    activePC.companionHP = Math.max(0, Math.min(activePC.companionMaxHP, (activePC.companionHP || 0) + dir));
-    CombatState.saveToStorage();
-    CombatState.syncPCToHost();
+    CombatState.updatePCBatch((activePC: any) => {
+      activePC.companionHP = Math.max(0, Math.min(activePC.companionMaxHP || 0, (activePC.companionHP || 0) + dir));
+    });
     onUpdate();
   };
 
   const handleAttackRoll = (e: React.MouseEvent<HTMLButtonElement>, attName: string, bonus: number, _damage: string, _note: string) => {
     e.stopPropagation();
-    const activePC = CombatState.getActivePC();
-    const compName = activePC.companionName || 'Animal Companion';
+    const compName = pc.companionName || 'Animal Companion';
 
     showRollBreakdown(`${compName} - ${attName}`, `1W20`, [
       { label: "Attack Bonus (Strength/Size)", value: bonus }
@@ -101,7 +92,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
   if (type === 'none') {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '1px solid var(--pb)', paddingBottom: '3px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', letterSpacing: '0.5px' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '1px solid var(--pb)', paddingBottom: '3px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', letterSpacing: '0.5px' }}>
           <span>🐾 Companion &amp; Animal Companion Sheet (Companion Level: {effectiveDruidLvl})</span>
           <span style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'normal', fontStyle: 'italic' }}>D&amp;D 3.5e Rules</span>
         </div>
@@ -142,7 +133,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
-      <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '1px solid var(--pb)', paddingBottom: '3px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', letterSpacing: '0.5px' }}>
+      <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '1px solid var(--pb)', paddingBottom: '3px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', letterSpacing: '0.5px' }}>
         <span>🐾 Companion &amp; Animal Companion Sheet (Companion Level: {effectiveDruidLvl})</span>
         <span style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'normal', fontStyle: 'italic' }}>D&amp;D 3.5e Rules</span>
       </div>
@@ -158,7 +149,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
               value={name} 
               onChange={handleNameChange}
               placeholder="Companion Name" 
-              style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', background: 'transparent', border: 'none', borderBottom: '0.5px dashed var(--pb)', outline: 'none', width: '120px' }} 
+              style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', background: 'transparent', border: 'none', borderBottom: '0.5px dashed var(--pb)', outline: 'none', width: '120px' }} 
               title="Companion Name" 
             />
           </div>
@@ -184,7 +175,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', alignItems: 'center' }}>
           {/* Health Bar Widget */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200,169,110,0.15)', padding: '4px', borderRadius: '2px' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'radial-gradient(circle, #f4e8c1 0%, #c8a96e 70%, #9a7a2e 100%)', border: '1.2px solid var(--red)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", color: 'var(--red)', fontSize: '9px', fontWeight: 'bold' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'radial-gradient(circle, #f4e8c1 0%, #c8a96e 70%, #9a7a2e 100%)', border: '1.2px solid var(--red)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', fontFamily: 'var(--font-title)', color: 'var(--red)', fontSize: '9px', fontWeight: 'bold' }}>
               <span style={{ fontSize: '5px', color: 'var(--inkl)', lineHeight: 1, marginTop: '1px' }}>HP</span>
               <span style={{ lineHeight: 1.1, fontSize: '10px' }}>{curHP}</span>
             </div>
@@ -224,11 +215,11 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', background: 'rgba(200, 169, 110, 0.1)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '3px', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ fontSize: '6.8px', fontWeight: 'bold', color: 'var(--inkl)' }}>🛡️ ARMOR CLASS</span>
-              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', lineHeight: 1 }}>{displayAC}</span>
+              <span style={{ fontFamily: 'var(--font-title)', fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', lineHeight: 1 }}>{displayAC}</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', background: 'rgba(200, 169, 110, 0.1)', border: '0.5px solid var(--pb)', borderRadius: '2px', padding: '3px', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ fontSize: '6.8px', fontWeight: 'bold', color: 'var(--inkl)' }}>🏃 SPEED</span>
-              <span style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', lineHeight: 1 }}>30 ft.</span>
+              <span style={{ fontFamily: 'var(--font-title)', fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', lineHeight: 1 }}>30 ft.</span>
             </div>
           </div>
         </div>
@@ -269,7 +260,7 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
 
         {/* Attacks & Actions Section */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5px', marginTop: '2px' }}>
-          <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '7.5px', color: 'var(--red)', borderBottom: '0.5px solid var(--pb)', paddingBottom: '1px', fontWeight: 'bold' }}>
+          <div style={{ fontFamily: 'var(--font-title)', fontSize: '7.5px', color: 'var(--red)', borderBottom: '0.5px solid var(--pb)', paddingBottom: '1px', fontWeight: 'bold' }}>
             ⚔️ Companion Attacks
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5px' }}>

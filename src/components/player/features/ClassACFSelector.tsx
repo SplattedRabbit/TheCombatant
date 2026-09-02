@@ -8,9 +8,7 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { getACFsByClass } from '@core/data/acf-data.js';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
 
 interface ClassACFSelectorProps {
@@ -39,7 +37,7 @@ export const ClassACFSelector: React.FC<ClassACFSelectorProps> = ({ pc, classKey
       }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", textTransform: 'uppercase' }}>
+        <span style={{ fontSize: '8px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)', textTransform: 'uppercase' }}>
           🎭 Alternative Class Features (ACFs)
         </span>
         <span style={{ fontSize: '7px', color: 'var(--inkl)' }}>
@@ -69,7 +67,7 @@ export const ClassACFSelector: React.FC<ClassACFSelectorProps> = ({ pc, classKey
                   <span style={{ fontSize: '8.5px', fontWeight: 'bold', color: isActive ? 'var(--red)' : 'var(--ink)' }}>
                     {acf.name || acf.nameEn || acf.nameDe}
                   </span>
-                  <span style={{ fontSize: '6.5px', padding: '0 2px', background: 'rgba(200, 169, 110, 0.2)', borderRadius: '1px', color: 'var(--inkm)', fontFamily: "'IM Fell English SC', serif" }}>
+                  <span style={{ fontSize: '6.5px', padding: '0 2px', background: 'rgba(200, 169, 110, 0.2)', borderRadius: '1px', color: 'var(--inkm)', fontFamily: 'var(--font-title)' }}>
                     {acf.source?.toUpperCase() || ''} • Lvl {acf.minLevel}
                   </span>
                 </div>
@@ -89,7 +87,7 @@ export const ClassACFSelector: React.FC<ClassACFSelectorProps> = ({ pc, classKey
                   fontSize: '7.5px',
                   padding: '2px 8px',
                   fontWeight: 'bold',
-                  fontFamily: "'IM Fell English SC', serif",
+                  fontFamily: 'var(--font-title)',
                   cursor: 'pointer',
                   borderRadius: '2px',
                   whiteSpace: 'nowrap',

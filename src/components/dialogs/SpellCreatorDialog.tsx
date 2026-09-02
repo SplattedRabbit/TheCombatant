@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-// @ts-ignore
 import { CombatRules } from '@core/rules.js';
-// @ts-ignore
 import { CombatSpells } from '@core/spells.js';
 
 function findSpell(pc: any, key: string) {
@@ -123,7 +120,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
           maxHeight: '85vh',
           overflowY: 'auto',
           boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
-          fontFamily: "'Crimson Text', serif",
+          fontFamily: 'var(--font-body)',
           position: 'relative',
           boxSizing: 'border-box'
         }}
@@ -131,7 +128,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
       >
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
-        <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '14px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '14px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '6px', textAlign: 'center' }}>
           ✦ Custom Spell Creator ✦
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 12px' }} />
@@ -213,7 +210,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
             className="btn btn-p"
             onClick={handleSave}
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '9px',
               padding: '3px 14px',
               cursor: 'pointer',
@@ -226,7 +223,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
             className="btn"
             onClick={onClose}
             style={{
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               fontSize: '9px',
               padding: '3px 14px',
               cursor: 'pointer',

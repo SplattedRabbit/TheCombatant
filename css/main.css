@@ -5,6 +5,10 @@
 }
 
 :root {
+  --font-title: 'IM Fell English SC', Georgia, serif;
+  --font-body: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Roboto Mono', 'Courier New', monospace;
+
   --p: #f4e8c1;
   --pd: #e8d5a0;
   --pb: #c8a96e;
@@ -17,7 +21,7 @@
 
 body {
   background: #2a1a0a;
-  font-family: 'Crimson Text', Georgia, serif;
+  font-family: var(--font-body);
   color: #1a0f00;
   min-height: 100vh;
   display: flex;

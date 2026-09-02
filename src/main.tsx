@@ -10,11 +10,8 @@ import App from './App';
 
 import { CombatEngineProvider } from './context/CombatEngineContext';
 import { AuthProvider } from './context/AuthContext';
-import { initReactDialogBridge } from './components/dialogs/ReactDialogBridge';
+import { DialogProvider } from './context/DialogContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
-
-// Initialize the React modal bridge for legacy calls
-initReactDialogBridge();
 
 const rootEl = document.getElementById('root');
 if (!rootEl) {
@@ -26,7 +23,9 @@ createRoot(rootEl).render(
     <ErrorBoundary>
       <AuthProvider>
         <CombatEngineProvider>
-          <App />
+          <DialogProvider>
+            <App />
+          </DialogProvider>
         </CombatEngineProvider>
       </AuthProvider>
     </ErrorBoundary>

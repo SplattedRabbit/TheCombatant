@@ -136,4 +136,11 @@ export {
   PRESTIGE_CLASSES_REGISTRY
 } from './data/prestigeClasses-data.js';
 
+export { AssassinRules } from './rules/classes/AssassinRules.js';
+export { ArcaneTricksterRules } from './rules/classes/ArcaneTricksterRules.js';
+export { ShadowbaneInquisitorRules } from './rules/classes/ShadowbaneInquisitorRules.js';
+export { BattleTricksterRules } from './rules/classes/BattleTricksterRules.js';
+export { SpellwarpSniperRules } from './rules/classes/SpellwarpSniperRules.js';
+export { EldritchKnightRules } from './rules/classes/EldritchKnightRules.js';
+
 

@@ -106,7 +106,7 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
           padding: '16px 24px',
           width: '310px',
           boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
-          fontFamily: "'IM Fell English SC', serif",
+          fontFamily: 'var(--font-title)',
           textAlign: 'center',
           position: 'relative',
           transform: 'scale(1)',
@@ -124,7 +124,7 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 10px' }} />
 
         {(hasPaladin && isMelee || favoredEnemyBonus > 0 || sneakAttackDice > 0) && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '10px', padding: '4px 8px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '8px', fontFamily: "'Crimson Text', serif" }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '10px', padding: '4px 8px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '8px', fontFamily: 'var(--font-body)' }}>
             {hasPaladin && isMelee && (
               <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: 'var(--red)' }}>
                 <input
@@ -162,25 +162,25 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
         )}
 
         <div className="dialog-content-area" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '10px', fontFamily: "'Crimson Text', serif" }}>
-            <div style={{ fontFamily: "'IM Fell English SC', serif", fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '5px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
+          <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '10px', fontFamily: 'var(--font-body)' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '5px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
               Damage Modifiers
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '9.5px', color: 'var(--inkm)' }}>
               {rows.map((row: any, idx: number) => (
                 <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', padding: '1px 0' }}>
-                  <span style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', color: 'var(--inkm)' }}>{row.label}:</span>
-                  <span style={{ fontFamily: "'Crimson Text', serif", fontSize: '9.5px', fontWeight: 'bold', color: 'var(--ink)' }}>{row.sign}{row.value}</span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', color: 'var(--inkm)' }}>{row.label}:</span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--ink)' }}>{row.sign}{row.value}</span>
                 </div>
               ))}
               <hr style={{ border: 'none', borderTop: '0.5px dashed rgba(200,169,110,0.3)', margin: '4px 0' }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif" }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
                 <span>Total Modifier:</span>
                 <span>{modsFormatted}</span>
               </div>
             </div>
             <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.3)', margin: '6px 0 4px' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'IM Fell English SC', serif", fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
               <span>ROLL FORMULA:</span>
               <span>{formulaFormatted}</span>
             </div>
@@ -191,7 +191,7 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
           onClick={onClose}
           className="btn-close-choice"
           style={{
-            fontFamily: "'IM Fell English SC', serif",
+            fontFamily: 'var(--font-title)',
             fontSize: '8px',
             padding: '2px 10px',
             marginTop: '10px',

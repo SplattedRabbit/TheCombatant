@@ -8,15 +8,10 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import { CombatState } from '@core/state.js';
-import { BaseCard } from '../shared/BaseCard';
-// @ts-ignore
-import { AttackEngine } from '@core/rules/AttackEngine.js';
-// @ts-ignore
 import { WeaponRegistry } from '@core/models/Weapon.js';
-// @ts-ignore
-import { showAttackChoiceDialog, showDamageChoiceDialog, showRollBreakdown, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { BaseCard } from '../shared/BaseCard';
+import { showCustomConfirm, showAttackChoiceDialog, showDamageChoiceDialog } from '@core/ui/components/dialogs.js';
 
 import { ActiveEquipmentSlots } from './offense/ActiveEquipmentSlots';
 import { TacticalModifiersCard } from './offense/TacticalModifiersCard';
@@ -226,7 +221,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
         {/* 2. Weapons Arsenal & Stash */}
         <BaseCard title="🗡️ Weapons Arsenal &amp; Quick-Swap">
           {pc.activeShape !== 'none' ? (
-            <div style={{ padding: '16px', textAlign: 'center', fontStyle: 'italic', color: 'var(--inkl)', fontSize: '8.5px', fontFamily: "'Crimson Text', serif" }}>
+            <div style={{ padding: '16px', textAlign: 'center', fontStyle: 'italic', color: 'var(--inkl)', fontSize: '8.5px', fontFamily: 'var(--font-body)' }}>
               In Wild Shape, manufactured weapons are inactive. Use natural attacks from the loadout panel.
             </div>
           ) : (
@@ -246,7 +241,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
                   className="btn"
                   onClick={() => CombatState.addPCWeapon()}
                   style={{
-                    fontFamily: "'IM Fell English SC', serif",
+                    fontFamily: 'var(--font-title)',
                     fontSize: '7.5px',
                     fontWeight: 'bold',
                     padding: '1px 8px',
@@ -295,9 +290,9 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
 
         {/* 3. D&D 3.5e RAW Combat Quick-Rules Reference */}
         <BaseCard title="📜 D&amp;D 3.5e Combat Rules Reference">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '7.5px', fontFamily: "'Crimson Text', serif", lineHeight: 1.3, color: 'var(--ink)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '7.5px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--ink)' }}>
             <div style={{ background: 'rgba(200, 169, 110, 0.03)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '3px', padding: '4px 6px' }}>
-              <div style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '8px', marginBottom: '2px' }}>
+              <div style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)', fontSize: '8px', marginBottom: '2px' }}>
                 ⚔️ Melee &amp; Grips
               </div>
               <ul style={{ margin: 0, paddingLeft: '10px' }}>
@@ -307,7 +302,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
               </ul>
             </div>
             <div style={{ background: 'rgba(200, 169, 110, 0.03)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '3px', padding: '4px 6px' }}>
-              <div style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: "'IM Fell English SC', serif", fontSize: '8px', marginBottom: '2px' }}>
+              <div style={{ fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)', fontSize: '8px', marginBottom: '2px' }}>
                 🏹 Ranged &amp; Ammo
               </div>
               <ul style={{ margin: 0, paddingLeft: '10px' }}>
@@ -344,7 +339,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
               padding: '16px 20px',
               width: '280px',
               boxShadow: '0 10px 30px rgba(0,0,0,0.4)',
-              fontFamily: "'IM Fell English SC', serif",
+              fontFamily: 'var(--font-title)',
               textAlign: 'center',
               position: 'relative',
             }}
@@ -356,7 +351,7 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
             </div>
             <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 10px' }} />
             
-            <div style={{ fontFamily: "'Crimson Text', serif", fontSize: '11px', color: 'var(--ink)', lineHeight: '1.4', marginBottom: '12px', fontWeight: 500, textAlign: 'left' }}>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--ink)', lineHeight: '1.4', marginBottom: '12px', fontWeight: 500, textAlign: 'left' }}>
               How should this weapon be wielded?
               <ul style={{ margin: '6px 0', paddingLeft: '14px' }}>
                 <li><strong>Two-handed:</strong> Wielded as a single weapon (1.5x Str bonus to damage).</li>

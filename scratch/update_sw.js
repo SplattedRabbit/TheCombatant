@@ -39,19 +39,34 @@ function walkDir(dir) {
 
 const distAssets = walkDir(distDir);
 
-// 2. Root-SW lesen um aktuelle Cache-Version zu extrahieren
+// 2. Read package.json version & Root-SW to extract/update Cache-Version
 let swContent = fs.readFileSync(swSourcePath, 'utf8');
+
+const pkgPath = path.join(rootDir, 'package.json');
+let pkgVersion = '6.0.0';
+if (fs.existsSync(pkgPath)) {
+  try {
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+    if (pkg.version) pkgVersion = pkg.version;
+  } catch {}
+}
 
 // 3. Cache-Version bumpen
 const cacheNameRegex = /const CACHE_NAME = 'dnd-combatsheet-(v\d+\.\d+\.\d+)-cache-v(\d+)';/;
 const versionMatch = swContent.match(cacheNameRegex);
-let newCacheName = 'dnd-combatsheet-v4.0.0-cache-v1';
+let newCacheName = `dnd-combatsheet-v${pkgVersion}-cache-v1`;
+
 if (versionMatch) {
-  const version = versionMatch[1];
-  const cacheVersion = parseInt(versionMatch[2]) + 1;
-  newCacheName = `dnd-combatsheet-${version}-cache-v${cacheVersion}`;
-  console.log(`SW: Cache-Version → ${newCacheName}`);
+  const currentVersion = versionMatch[1]; // e.g. 'v4.5.0' or 'v6.0.0'
+  const targetVersion = `v${pkgVersion}`;
+  if (currentVersion === targetVersion) {
+    const cacheCounter = parseInt(versionMatch[2], 10) + 1;
+    newCacheName = `dnd-combatsheet-${targetVersion}-cache-v${cacheCounter}`;
+  } else {
+    newCacheName = `dnd-combatsheet-${targetVersion}-cache-v1`;
+  }
 }
+console.log(`SW: Cache-Version → ${newCacheName}`);
 
 // 4. Frischen SW-Inhalt für dist/ generieren (dist/-relative Pfade, kein Root-Verweis)
 const assetsStr = 'const ASSETS = [\n  ' + distAssets.map(a => `'${a}'`).join(',\n  ') + '\n];';
