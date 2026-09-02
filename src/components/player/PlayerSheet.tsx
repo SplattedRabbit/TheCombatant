@@ -23,6 +23,7 @@ import { PCSpellsTab } from './PCSpellsTab';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { PCFeaturesTab } from './PCFeaturesTab';
 import { LevelUpDialog } from './levelup/LevelUpDialog';
+import { PrintableCharacterSheetModal } from './print/PrintableCharacterSheetModal';
 import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
 import { logger } from '../../utils/logger';
 
@@ -36,6 +37,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
   const [isSystemOpen, setIsSystemOpen] = useState(false);
   const [isLevelUpOpen, setIsLevelUpOpen] = useState(false);
+  const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
   const systemBtnRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +53,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
 
   const handlePrint = () => {
     setIsSystemOpen(false);
-    window.print();
+    setIsPrintModalOpen(true);
   };
 
   const handleExport = () => {
@@ -308,6 +310,13 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
         activePC={pc} 
         isOpen={isLevelUpOpen} 
         onClose={() => setIsLevelUpOpen(false)} 
+      />
+
+      {/* Printable Character Sheet Folio Modal (A4 / PDF) */}
+      <PrintableCharacterSheetModal
+        pc={pc}
+        isOpen={isPrintModalOpen}
+        onClose={() => setIsPrintModalOpen(false)}
       />
 
       {/* Hidden file input for Import */}

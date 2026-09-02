@@ -167,7 +167,7 @@ export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard, on
         />
       </div>
 
-      {/* Race, Classes, Size, Alignment */}
+      {/* Race, Classes, Size, Alignment, Player Name */}
       <div
         style={{
           fontSize: '8.5px',
@@ -204,7 +204,27 @@ export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard, on
               fontSize: '8.5px',
               color: 'var(--inkl)',
               outline: 'none',
-              width: '80px',
+              width: '65px',
+              textAlign: 'center',
+            }}
+          />
+        </span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+          <span>Player:</span>
+          <input
+            type="text"
+            placeholder="Player Name"
+            value={pc.playerName || ''}
+            onChange={(e) => CombatState.updatePCField('playerName', e.target.value)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              borderBottom: '0.5px solid var(--pb)',
+              fontFamily: 'var(--font-body)',
+              fontSize: '8.5px',
+              color: 'var(--inkl)',
+              outline: 'none',
+              width: '85px',
               textAlign: 'center',
             }}
           />

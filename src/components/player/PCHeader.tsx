@@ -58,25 +58,30 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard,
     <div
       className="player-hdr-bar no-print"
       style={{
+        padding: '8px 12px',
+        background: 'linear-gradient(180deg, rgba(200, 169, 110, 0.22), rgba(200, 169, 110, 0.08))',
+        borderBottom: '1px solid var(--pb)',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
         display: 'flex',
         flexDirection: 'column',
         gap: '6px',
-        width: '100%',
-        boxSizing: 'border-box'
+        position: 'relative',
+        zIndex: 50,
       }}
     >
-      {pc.name === 'Held' && (
+      {/* Wizard banner for Level 0/New characters */}
+      {(!Array.isArray(pc.classes) || pc.classes.length === 0) && (
         <div 
-          style={{
-            background: 'linear-gradient(135deg, rgba(139, 26, 26, 0.08) 0%, rgba(200, 169, 110, 0.15) 100%)',
-            border: '1px solid var(--pb)',
-            borderRadius: '4px',
-            padding: '12px 16px',
-            display: 'flex',
+          style={{ 
+            background: 'linear-gradient(90deg, rgba(139, 26, 26, 0.1), rgba(200, 169, 110, 0.2))', 
+            border: '1px solid var(--pb)', 
+            borderRadius: '4px', 
+            padding: '8px 14px', 
+            display: 'flex', 
+            alignItems: 'center', 
             justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: '6px',
-            boxShadow: '0 2px 5px rgba(0,0,0,0.05)'
+            boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
+            marginBottom: '4px'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>

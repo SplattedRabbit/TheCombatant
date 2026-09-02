@@ -42,6 +42,7 @@ export class Combatant {
   constructor(p = {}) {
     this.id = p.id || uid();
     this.name = p.name || 'Charakter';
+    this.playerName = p.playerName || '';
     this.type = p.type || 'p'; // 'p' (Player), 'e' (Enemy), 'n' (NPC)
     this.init = parseInt(p.init) || 0;
 
