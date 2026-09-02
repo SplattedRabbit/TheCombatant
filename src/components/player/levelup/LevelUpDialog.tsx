@@ -28,33 +28,20 @@ interface LevelUpDialogProps {
   onClose: () => void;
 }
 
-export const LevelUpDialog: React.FC<LevelUpDialogProps> = ({ activePC, isOpen, onClose }) => {
-  const initialDraft = useMemo(() => {
-    if (!activePC) return null;
-    return createLevelUpDraft(activePC);
-  }, [activePC]);
+interface LevelUpDialogContentProps {
+  activePC: any;
+  onClose: () => void;
+}
 
-  const [levelConfigs, setLevelConfigs] = useState<any[]>(() => initialDraft?.levelConfigs || []);
+const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, onClose }) => {
+  const initialDraft = useMemo(() => createLevelUpDraft(activePC), [activePC]);
+
+  const [levelConfigs, setLevelConfigs] = useState<any[]>(() => initialDraft.levelConfigs);
   const [activeTab, setActiveTab] = useState<'skills' | 'tricks' | 'feats' | 'acfs'>('skills');
   const [skillSearch, setSkillSearch] = useState('');
   const [featSelectSlotIndex, setFeatSelectSlotIndex] = useState<number | null>(null);
   const [featSearch, setFeatSearch] = useState('');
   const [featFilter, setFeatFilter] = useState('all');
-
-  // Reset when dialog opens with a new character
-  React.useEffect(() => {
-    if (isOpen && activePC) {
-      const draft = createLevelUpDraft(activePC);
-      setLevelConfigs(draft.levelConfigs);
-      setActiveTab('skills');
-      setSkillSearch('');
-      setFeatSelectSlotIndex(null);
-      setFeatSearch('');
-      setFeatFilter('all');
-    }
-  }, [isOpen, activePC]);
-
-  if (!isOpen || !initialDraft || levelConfigs.length === 0) return null;
 
   const newLevelIndex = initialDraft.newLevelIndex;
   const currentConfig = levelConfigs[newLevelIndex];
@@ -69,9 +56,17 @@ export const LevelUpDialog: React.FC<LevelUpDialogProps> = ({ activePC, isOpen, 
     });
   };
 
-  const prevDraft = getDraftPCState(newLevelIndex - 1, baseStats, selectedRace, levelConfigs);
-  const currentDraft = getDraftPCState(newLevelIndex, baseStats, selectedRace, levelConfigs);
-  const completedDraft = getCompletedDraftPCState(newLevelIndex, baseStats, selectedRace, levelConfigs);
+  const prevDraft = useMemo(() => {
+    return getDraftPCState(newLevelIndex - 1, baseStats, selectedRace, levelConfigs);
+  }, [newLevelIndex, baseStats, selectedRace, levelConfigs]);
+
+  const currentDraft = useMemo(() => {
+    return getDraftPCState(newLevelIndex, baseStats, selectedRace, levelConfigs);
+  }, [newLevelIndex, baseStats, selectedRace, levelConfigs]);
+
+  const completedDraft = useMemo(() => {
+    return getCompletedDraftPCState(newLevelIndex, baseStats, selectedRace, levelConfigs);
+  }, [newLevelIndex, baseStats, selectedRace, levelConfigs]);
 
   const getClassHitDie = (clsKey: string): number => {
     const cls = CombatRules.CLASSES.find((c: any) => c.key === clsKey);
@@ -117,7 +112,7 @@ export const LevelUpDialog: React.FC<LevelUpDialogProps> = ({ activePC, isOpen, 
   }, [activeFeatSlot, currentDraft, featSearch, featFilter, levelConfigs]);
 
   const handleCompleteLevelUp = () => {
-    if (!currentConfig.classType) {
+    if (!currentConfig || !currentConfig.classType) {
       showCustomAlert('Incomplete Configuration', 'Please select a class for your new level.', 'OK', '⚠️');
       return;
     }
@@ -132,6 +127,8 @@ export const LevelUpDialog: React.FC<LevelUpDialogProps> = ({ activePC, isOpen, 
     applyLevelUpToActivePC(levelConfigs, newLevelIndex, completedDraft);
     onClose();
   };
+
+  if (!currentConfig) return null;
 
   return (
     <div
@@ -330,4 +327,9 @@ export const LevelUpDialog: React.FC<LevelUpDialogProps> = ({ activePC, isOpen, 
       </div>
     </div>
   );
+};
+
+export const LevelUpDialog: React.FC<LevelUpDialogProps> = ({ activePC, isOpen, onClose }) => {
+  if (!isOpen || !activePC) return null;
+  return <LevelUpDialogContent activePC={activePC} onClose={onClose} />;
 };
