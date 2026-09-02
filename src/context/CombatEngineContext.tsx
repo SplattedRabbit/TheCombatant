@@ -66,11 +66,13 @@ export function CombatEngineProvider({ children }: ProviderProps) {
         // Lade lokalen State aus dem Speicheradapter (sofort/synchron aus Cache)
         await CombatState.loadFromStorage();
 
-        // Stelle aktive Online-Sitzung wieder her
+        // Stelle aktive Online-Sitzung wieder her oder starte immer auf der Rollenauswahl
         const storedState = CombatState.getState();
-        if (storedState.session && storedState.session.active) {
+        if (storedState.session && storedState.session.active && storedState.session.roomCode) {
           logger.log("Restoring active network session:", storedState.session.role, "Room:", storedState.session.roomCode);
           CombatState.updateSession(true, storedState.session.role, storedState.session.roomCode);
+        } else {
+          CombatState.setRole('choice');
         }
 
         if (!mounted) return;
