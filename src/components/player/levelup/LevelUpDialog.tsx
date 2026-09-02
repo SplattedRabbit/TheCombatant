@@ -186,8 +186,8 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
       <div
         className="sheet no-print"
         style={{
-          width: '100%',
-          maxWidth: '820px',
+          width: 'min(1040px, 94vw)',
+          maxWidth: '1040px',
           maxHeight: '88vh',
           background: 'var(--parchment, #fdf6e2)',
           border: '2px solid var(--pb, #c8a96e)',
