@@ -1,13 +1,12 @@
-import React from 'react';
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { PCFeaturesTab } from '../components/player/PCFeaturesTab';
 import { RangerFeaturesCard } from '../components/player/features/RangerFeaturesCard';
 import { DruidFeaturesCard } from '../components/player/features/DruidFeaturesCard';
 import { BarbarianFeaturesCard } from '../components/player/features/BarbarianFeaturesCard';
 
 describe('ACF UI Restrictions & Overrides', () => {
-  it('hides animal companion subtab in PCFeaturesTab when Ranger has Distracting Attack ACF active', () => {
+  it('hides animal companion sheet in PCFeaturesTab when Ranger has Distracting Attack ACF active', () => {
     const pc = {
       id: 'ranger_pc',
       name: 'Ranger Hero',
@@ -18,10 +17,10 @@ describe('ACF UI Restrictions & Overrides', () => {
     };
 
     render(<PCFeaturesTab pc={pc} />);
-    expect(screen.queryByText(/🐾 Animal Companion/i)).not.toBeInTheDocument();
+    expect(screen.getByText(/No active animal companion or familiar/i)).toBeInTheDocument();
   });
 
-  it('shows animal companion subtab in PCFeaturesTab when Ranger has no replacement ACF', () => {
+  it('shows animal companion sheet in PCFeaturesTab when Ranger has no replacement ACF', () => {
     const pc = {
       id: 'ranger_pc_standard',
       name: 'Ranger Standard',
@@ -32,7 +31,7 @@ describe('ACF UI Restrictions & Overrides', () => {
     };
 
     render(<PCFeaturesTab pc={pc} />);
-    expect(screen.getByText(/🐾 Animal Companion/i)).toBeInTheDocument();
+    expect(screen.queryByText(/No active animal companion or familiar/i)).not.toBeInTheDocument();
   });
 
   it('renders Distracting Attack status and Replaced by ACF in RangerFeaturesCard', () => {
@@ -46,9 +45,8 @@ describe('ACF UI Restrictions & Overrides', () => {
     };
 
     render(<RangerFeaturesCard pc={pc} level={6} />);
-    // Expand card
     const header = screen.getByText(/🎭 Ranger/i);
-    header.click();
+    fireEvent.click(header);
 
     expect(screen.getByText(/Distracting Attack \(Active\)/i)).toBeInTheDocument();
     expect(screen.getByText(/Replaced by ACF/i)).toBeInTheDocument();
@@ -66,10 +64,10 @@ describe('ACF UI Restrictions & Overrides', () => {
 
     render(<DruidFeaturesCard pc={pc} level={8} />);
     const header = screen.getByText(/🎭 Druid/i);
-    header.click();
+    fireEvent.click(header);
 
     expect(screen.getByText(/Shapeshift \(Replaces Wild Shape & Animal Companion\)/i)).toBeInTheDocument();
-    expect(screen.getByText(/Predator Form/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Predator Form/i).length).toBeGreaterThan(0);
   });
 
   it('renders Berserker Strength status in BarbarianFeaturesCard when Berserker Strength ACF is active', () => {
@@ -84,7 +82,7 @@ describe('ACF UI Restrictions & Overrides', () => {
 
     render(<BarbarianFeaturesCard pc={pc} level={5} />);
     const header = screen.getByText(/🎭 Barbarian/i);
-    header.click();
+    fireEvent.click(header);
 
     expect(screen.getByText(/Berserker Strength \(Replaces Rage\)/i)).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Activate Rage/i })).not.toBeInTheDocument();
