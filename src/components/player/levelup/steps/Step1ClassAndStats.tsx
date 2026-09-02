@@ -113,18 +113,6 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
 
   const handleTabChange = (tab: 'all' | 'phb' | 'phb2' | 'ca' | 'prestige') => {
     setSourceTab(tab);
-    if (tab === 'all') return;
-    const tabClasses = CLASSES_LIST.filter((c) => {
-      if (tab === 'prestige') return c.isPrestige;
-      if (tab === 'phb') return !c.isPrestige && (c as any).source === 'phb';
-      if (tab === 'phb2') return !c.isPrestige && (c as any).source === 'phb2';
-      if (tab === 'ca') return !c.isPrestige && (c as any).source === 'ca';
-      return true;
-    });
-    const currentStillInTab = tabClasses.some((c) => c.key === currentConfig.classType);
-    if (!currentStillInTab && tabClasses.length > 0) {
-      handleClassChange(tabClasses[0].key);
-    }
   };
 
   return (
@@ -174,6 +162,11 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
           style={{ width: '100%', height: '28px', fontSize: '12px', fontWeight: 600, padding: '2px 8px', cursor: 'pointer' }}
         >
           <option value="" disabled>-- Select a class --</option>
+          {!filteredClasses.some((c) => c.key === currentConfig.classType) && currentConfig.classType && (
+            <option value={currentConfig.classType}>
+              (Current: {CLASSES_LIST.find((c) => c.key === currentConfig.classType)?.name || currentConfig.classType})
+            </option>
+          )}
           {filteredClasses.map((cls) => {
             const isPrestige = cls.isPrestige;
             const clsName = (cls as any).name || (cls as any).nameEn || (cls as any).nameDe || cls.key;

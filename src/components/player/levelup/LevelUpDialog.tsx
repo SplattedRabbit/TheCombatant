@@ -6,6 +6,7 @@
 import React, { useState, useMemo } from 'react';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { CLASSES_LIST } from '../wizard/constants';
+import { validatePrestigeClassPrereqs } from '@core/rules.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { 
   getDraftPCState, 
@@ -115,6 +116,19 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
       if (!currentConfig || !currentConfig.classType) {
         showCustomAlert('Class Required', 'Please select a class for your new level before proceeding.', 'OK', '⚠️');
         return;
+      }
+      const clsDef = CLASSES_LIST.find((c: any) => c.key === currentConfig.classType);
+      if (clsDef?.isPrestige && currentDraft?.draftPC) {
+        const validation = validatePrestigeClassPrereqs(currentDraft.draftPC, currentConfig.classType);
+        if (!validation.success && !currentConfig.prestigeSpecialTextConfirmed?.[currentConfig.classType]) {
+          showCustomAlert(
+            'Prerequisites Unmet',
+            `You do not meet the prerequisites for ${clsDef.name || clsDef.key}. Please select a valid class before continuing.`,
+            'OK',
+            '🔒'
+          );
+          return;
+        }
       }
       const isAbilityMilestone = (targetLevel % 4 === 0);
       if (isAbilityMilestone && !currentConfig.abilityIncrease) {

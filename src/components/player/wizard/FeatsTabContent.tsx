@@ -95,10 +95,11 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
               </div>
             ) : (
               filteredFeats.map((item: any) => {
-                const feat = item.feat;
-                const depth = item.depth;
+                const feat = item?.feat || item;
+                if (!feat || !feat.id) return null;
+                const depth = item?.depth || 0;
                 const prereqs = currentDraft ? checkFeatPrerequisites(feat.id, currentDraft.draftPC) : { met: true, unmetDescs: [] };
-                const isAlreadySelected = currentConfig.feats.includes(feat.id);
+                const isAlreadySelected = (currentConfig?.feats || []).includes(feat.id);
                 const isAlreadyLearned = currentDraft ? currentDraft.featsList.includes(feat.id) : false;
                 const isBlocked = !prereqs.met || isAlreadyLearned;
                 
