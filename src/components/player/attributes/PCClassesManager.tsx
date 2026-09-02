@@ -10,10 +10,9 @@ import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.
 
 interface PCClassesManagerProps {
   pc: any;
-  onOpenLevelUp?: () => void;
 }
 
-export const PCClassesManager: React.FC<PCClassesManagerProps> = ({ pc, onOpenLevelUp }) => {
+export const PCClassesManager: React.FC<PCClassesManagerProps> = ({ pc }) => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [newClassKey, setNewClassKey] = useState('fighter');
   const [newClassLvl, setNewClassLvl] = useState(1);
@@ -165,16 +164,6 @@ export const PCClassesManager: React.FC<PCClassesManagerProps> = ({ pc, onOpenLe
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.3px' }}>🎭 Classes &amp; Levels</span>
         <div style={{ display: 'flex', gap: '3px' }}>
-          {onOpenLevelUp && (
-            <button
-              className="btn btn-p animate-glow"
-              onClick={onOpenLevelUp}
-              style={{ fontSize: '7px', padding: '1px 5px', lineHeight: 1, fontWeight: 'bold' }}
-              title="Open guided Level-Up Assistant"
-            >
-              🧙‍♂️ Level Up
-            </button>
-          )}
           {classesCount < 4 && !showAddForm && (
             <button
               className="btn btn-p"

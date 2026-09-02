@@ -263,7 +263,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
         <div className={`player-tab-panel ${activeTab === 'overview' ? 'active' : ''}`} id="tabPanelOverview">
           <div className="overview-grid">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <PCAttributes pc={pc} onOpenLevelUp={() => setIsLevelUpOpen(true)} />
+              <PCAttributes pc={pc} />
               <PCHealthGlobe pc={pc} />
             </div>
             <PCDefenses pc={pc} />

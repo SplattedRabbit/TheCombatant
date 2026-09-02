@@ -17,10 +17,9 @@ import { PCClassesManager } from './attributes/PCClassesManager.tsx';
 
 interface PCAttributesProps {
   pc: any;
-  onOpenLevelUp?: () => void;
 }
 
-export const PCAttributes: React.FC<PCAttributesProps> = ({ pc, onOpenLevelUp }) => {
+export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
   const [localScores, setLocalScores] = useState<Record<string, string>>({});
   const classesCount = Array.isArray(pc.classes) ? pc.classes.length : 0;
   const isAlertActiveRef = useRef(false);
@@ -81,7 +80,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc, onOpenLevelUp })
     <BaseCard title="✨ Attributes & BAB">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
         {/* Race & Multiclassing Manager */}
-        <PCClassesManager pc={pc} onOpenLevelUp={onOpenLevelUp} />
+        <PCClassesManager pc={pc} />
 
         {/* Attribute Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
