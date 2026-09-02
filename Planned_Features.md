@@ -60,6 +60,24 @@ Dieses Dokument dient als zentrales Backlog und Tracking-Dokument für geplante 
 - **Beschreibung:**
   - Eigener Sub-Assistent zur Verwaltung, Aufrüstung und zum Stufenaufstieg von Tiergefährten, Vertrauten und Paladin-Reittieren.
 
+### 📚 8. Dynamische Regelwerk-Auswahl pro Charakter / Kampagne
+- **Zielgruppe:** Spieler & DM
+- **Priorität:** `Mittel`
+- **Aufwand:** 🔴 Hoch (~3–5 Tage, großer Umbau)
+- **Beschreibung:**
+  - Spieler sollen selbst konfigurieren können, welche Regelwerke für ihren Charakter (oder die gesamte Kampagne) aktiv sind.
+  - Regelwerke die gesteuert werden sollen: `PHB`, `PHB II`, `Complete Adventurer (CA)`, `Complete Arcane`, `Complete Divine`, `Complete Warrior`, `Prestige-Klassen` etc.
+  - Per Toggle/Checkbox aktivierte Bücher steuern, welche Klassen, Feats, Zauber und Skills im Level-Up, Charakter-Wizard und allen Auswahldialogen angezeigt werden.
+- **Technische Implikationen:**
+  - Aktuell wird die Regelwerks-Filterung lokal in einzelnen Komponenten über Source-Tabs (`phb`, `phb2`, `ca`, ...) gelöst — kein zentraler State.
+  - Benötigt einen globalen **Rulebook-Context** (z.B. `RulebookContext`) der die aktivierten Bücher als Set/Array hält.
+  - Alle Datenregister (`CLASSES_LIST`, `FEATS_LIST`, Zauber-JSON, `SKILLS_DATA`) müssen einheitliche `source`-Felder besitzen und konsequent danach gefiltert werden.
+  - Sinnvoll kombinierbar mit Feature **#2** (Vereinheitlichung auf rein englische Modelle), da dort ohnehin alle `source`-Felder bereinigt werden.
+  - Konfiguration sollte per Charakter (in `pc.settings.allowedSources`) und optional pro Kampagne speicherbar sein.
+- **UX-Vorschlag:**
+  - Ein kleines Settings-Panel im Charakter-Sheet und/oder im Level-Up-Dialog mit Checkboxen pro Regelwerk.
+  - Alternativ: Kampagnen-weite Konfiguration durch den DM, die für alle Spieler gilt.
+
 ---
 
 ## 📌 Bearbeitungs-Richtlinien

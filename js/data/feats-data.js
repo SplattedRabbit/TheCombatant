@@ -39,7 +39,7 @@ export function checkFeatPrerequisites(featId, pc) {
     let desc  = '';
 
     if (pr.type === 'bab') {
-      const pcBab = pc.bab ? pc.bab.getValue() : 0;
+      const pcBab = pc.bab ? (typeof pc.bab.getValue === 'function' ? pc.bab.getValue() : (typeof pc.bab === 'number' ? pc.bab : (pc.bab.value ?? pc.bab.base ?? 0))) : 0;
       prMet = pcBab >= pr.value;
       desc  = `Grundangriffsbonus +${pr.value} (aktuell: +${pcBab})`;
     } else if (pr.type === 'feat') {
@@ -56,7 +56,8 @@ export function checkFeatPrerequisites(featId, pc) {
       desc  = `Klasse: ${pr.class}`;
     } else if (pr.type === 'stat') {
       const nameMap = { str: 'Stärke', dex: 'Geschicklichkeit', con: 'Konstitution', int: 'Intelligenz', wis: 'Weisheit', cha: 'Charisma' };
-      const val = pc[pr.name] ? pc[pr.name].getValue() : 10;
+      const statObj = pc[pr.name];
+      const val = statObj ? (typeof statObj.getValue === 'function' ? statObj.getValue() : (typeof statObj === 'number' ? statObj : (statObj.base ?? statObj.value ?? 10))) : 10;
       prMet = val >= pr.value;
       desc  = `${nameMap[pr.name] || pr.name} ${pr.value}+ (aktuell: ${val})`;
     } else if (pr.type === 'level') {

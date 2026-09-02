@@ -63,16 +63,16 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
               }}
             >
               <option value="all">All</option>
-              {activeFeatSlot && activeFeatSlot.allowedCategories.includes('combat') && (
+              {activeFeatSlot && activeFeatSlot.allowedCategories?.includes('combat') && (
                 <option value="combat">Combat</option>
               )}
-              {activeFeatSlot && activeFeatSlot.allowedCategories.includes('metamagic') && (
+              {activeFeatSlot && activeFeatSlot.allowedCategories?.includes('metamagic') && (
                 <option value="metamagic">Metamagic</option>
               )}
-              {activeFeatSlot && activeFeatSlot.allowedCategories.includes('item_creation') && (
+              {activeFeatSlot && activeFeatSlot.allowedCategories?.includes('item_creation') && (
                 <option value="item_creation">Item Creation</option>
               )}
-              {activeFeatSlot && activeFeatSlot.allowedCategories.includes('general') && (
+              {activeFeatSlot && activeFeatSlot.allowedCategories?.includes('general') && (
                 <option value="general">General</option>
               )}
             </select>
@@ -98,9 +98,9 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                 const feat = item?.feat || item;
                 if (!feat || !feat.id) return null;
                 const depth = item?.depth || 0;
-                const prereqs = currentDraft ? checkFeatPrerequisites(feat.id, currentDraft.draftPC) : { met: true, unmetDescs: [] };
-                const isAlreadySelected = (currentConfig?.feats || []).includes(feat.id);
-                const isAlreadyLearned = currentDraft ? currentDraft.featsList.includes(feat.id) : false;
+                const prereqs = currentDraft?.draftPC ? checkFeatPrerequisites(feat.id, currentDraft.draftPC) : { met: true, unmetDescs: [] };
+                const isAlreadySelected = Array.isArray(currentConfig?.feats) ? currentConfig.feats.includes(feat.id) : false;
+                const isAlreadyLearned = Array.isArray(currentDraft?.featsList) ? currentDraft.featsList.includes(feat.id) : false;
                 const isBlocked = !prereqs.met || isAlreadyLearned;
                 
                 let statusIcon = '⚪';
