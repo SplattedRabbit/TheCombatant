@@ -5,25 +5,34 @@
 
 import React from 'react';
 import { CLASSES_LIST } from '../../wizard/constants';
+import { extractStatValue, getStatMod, formatMod } from '../../attributeHelper';
 
 interface PrintPageProps {
   pc: any;
 }
 
 export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
-  // Helper for safe attribute score / modifier retrieval
-  const getStat = (k: string) => {
-    const val = typeof pc[k]?.getValue === 'function' ? pc[k].getValue() : (pc[k]?.base || pc[k] || 10);
-    const mod = typeof pc.getAttributeMod === 'function' ? pc.getAttributeMod(k) : Math.floor((val - 10) / 2);
-    return { val, mod: mod >= 0 ? `+${mod}` : `${mod}` };
-  };
+  // Extract attribute scores and modifiers canonically
+  const strVal = extractStatValue(pc.str, 10);
+  const dexVal = extractStatValue(pc.dex, 10);
+  const conVal = extractStatValue(pc.con, 10);
+  const intVal = extractStatValue(pc.int, 10);
+  const wisVal = extractStatValue(pc.wis, 10);
+  const chaVal = extractStatValue(pc.cha, 10);
 
-  const str = getStat('str');
-  const dex = getStat('dex');
-  const con = getStat('con');
-  const int = getStat('int');
-  const wis = getStat('wis');
-  const cha = getStat('cha');
+  const strMod = getStatMod(pc.str);
+  const dexMod = getStatMod(pc.dex);
+  const conMod = getStatMod(pc.con);
+  const intMod = getStatMod(pc.int);
+  const wisMod = getStatMod(pc.wis);
+  const chaMod = getStatMod(pc.cha);
+
+  const str = { val: strVal, mod: formatMod(strMod) };
+  const dex = { val: dexVal, mod: formatMod(dexMod) };
+  const con = { val: conVal, mod: formatMod(conMod) };
+  const int = { val: intVal, mod: formatMod(intMod) };
+  const wis = { val: wisVal, mod: formatMod(wisMod) };
+  const cha = { val: chaVal, mod: formatMod(chaMod) };
 
   // Format Class & Level
   const classSummary = (pc.classes || [])
@@ -38,41 +47,43 @@ export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
   const totalLevel = (pc.classes || []).reduce((sum: number, c: any) => sum + (c.level || 0), 0) || 1;
 
   // AC stats
-  const totalAC = typeof pc.getArmorClass === 'function' ? pc.getArmorClass() : (pc.ac?.total || 10);
-  const touchAC = typeof pc.getTouchArmorClass === 'function' ? pc.getTouchArmorClass() : 10;
-  const flatFootedAC = typeof pc.getFlatFootedArmorClass === 'function' ? pc.getFlatFootedArmorClass() : 10;
-  const hpTotal = pc.maxHp || pc.hp || 10;
+  const totalAC = extractStatValue(pc.ac, 10);
+  const touchAC = extractStatValue(pc.acTouch, 10);
+  const flatFootedAC = extractStatValue(pc.acFlat, 10);
+  const hpTotal = pc.maxHP || pc.maxHp || pc.hp || 10;
 
-  // Saves
-  const getSave = (saveKey: 'fort' | 'ref' | 'will', attrModStr: string) => {
-    const total = typeof pc.getSaveModifier === 'function' ? pc.getSaveModifier(saveKey) : (pc.saves?.[saveKey] || 0);
-    const base = typeof pc.getBaseSave === 'function' ? pc.getBaseSave(saveKey) : 0;
-    const attrMod = parseInt(attrModStr) || 0;
-    const magic = 0;
-    const misc = total - (base + attrMod + magic);
+  // Canonical Saving Throws (Fortitude: za, Reflex: ref, Will: wil)
+  const getSave = (type: 'za' | 'ref' | 'wil', attrMod: number) => {
+    const saveStat = type === 'za' ? pc.za : type === 'ref' ? pc.ref : pc.wil;
+    const baseStat = type === 'za' ? pc.baseZa : type === 'ref' ? pc.baseRef : pc.baseWil;
+    
+    const totalVal = extractStatValue(saveStat, 0);
+    const baseVal = extractStatValue(baseStat, 0);
+    const miscVal = totalVal - (baseVal + attrMod);
+    
     return {
-      total: total >= 0 ? `+${total}` : `${total}`,
-      base: `+${base}`,
-      attr: attrModStr,
-      magic: magic ? `+${magic}` : '0',
-      misc: misc !== 0 ? (misc > 0 ? `+${misc}` : `${misc}`) : '0',
+      total: formatMod(totalVal),
+      base: formatMod(baseVal),
+      attr: formatMod(attrMod),
+      misc: miscVal !== 0 ? formatMod(miscVal) : '0',
     };
   };
 
-  const fort = getSave('fort', con.mod);
-  const ref = getSave('ref', dex.mod);
-  const will = getSave('will', wis.mod);
+  const fort = getSave('za', conMod);
+  const ref = getSave('ref', dexMod);
+  const will = getSave('wil', wisMod);
 
   // BAB & Grapple
-  const bab = typeof pc.getBaseAttackBonus === 'function' ? pc.getBaseAttackBonus() : (pc.bab?.getValue?.() || 0);
-  const babDisplay = bab > 0 ? `+${bab}` : `${bab}`;
+  const bab = extractStatValue(pc.bab, 0);
+  const babDisplay = formatMod(bab);
   const sizeMod = 0; // standard medium size mod = 0
-  const grappleTotal = bab + (parseInt(str.mod) || 0) + sizeMod;
-  const grappleDisplay = grappleTotal >= 0 ? `+${grappleTotal}` : `${grappleTotal}`;
+  const grappleTotal = bab + strMod + sizeMod;
+  const grappleDisplay = formatMod(grappleTotal);
 
   // Initiative
-  const initMod = typeof pc.getInitiativeModifier === 'function' ? pc.getInitiativeModifier() : (parseInt(dex.mod) || 0);
-  const initDisplay = initMod >= 0 ? `+${initMod}` : `${initMod}`;
+  const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some((f: any) => f.id === 'improved_initiative');
+  const initMod = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
+  const initDisplay = formatMod(initMod);
 
   // Weapons (pad to 4 blocks)
   const rawWeapons = (pc.weapons || []).slice(0, 4);
