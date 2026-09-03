@@ -8,13 +8,15 @@ interface State {
   hasError: boolean;
   error: Error | null;
   errorInfo: ErrorInfo | null;
+  copied: boolean;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
   public state: State = {
     hasError: false,
     error: null,
-    errorInfo: null
+    errorInfo: null,
+    copied: false
   };
 
   public static getDerivedStateFromError(error: Error): Partial<State> {
@@ -29,6 +31,24 @@ export class ErrorBoundary extends Component<Props, State> {
   private handleReset = () => {
     localStorage.clear();
     window.location.reload();
+  };
+
+  private handleCopy = () => {
+    const text = `Fehler: ${this.state.error?.toString()}\n\nKomponenten-Stacktrace:\n${this.state.errorInfo?.componentStack || 'Kein Stacktrace verfügbar'}`;
+    navigator.clipboard.writeText(text).then(() => {
+      this.setState({ copied: true });
+      setTimeout(() => this.setState({ copied: false }), 3000);
+    }).catch(() => {
+      // Fallback if clipboard API is restricted
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      this.setState({ copied: true });
+      setTimeout(() => this.setState({ copied: false }), 3000);
+    });
   };
 
   public render() {
@@ -100,6 +120,21 @@ export class ErrorBoundary extends Component<Props, State> {
             </div>
 
             <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+              <button 
+                className="btn btn-p" 
+                onClick={this.handleCopy}
+                style={{ 
+                  padding: '6px 14px', 
+                  fontSize: '11px', 
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  background: this.state.copied ? '#2e7d32' : 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                  borderColor: this.state.copied ? '#1b5e20' : '#8b6914',
+                  color: 'white'
+                }}
+              >
+                {this.state.copied ? '✓ Fehlerbericht kopiert!' : '📋 Fehlerbericht kopieren'}
+              </button>
               <button 
                 className="btn" 
                 onClick={() => window.location.reload()}

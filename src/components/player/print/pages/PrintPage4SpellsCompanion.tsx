@@ -21,7 +21,9 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
     ? (pc.companionName || companionBase?.name || `${pc.companionType} (Animal Companion)`)
     : (hasFamiliar ? (pc.familiarName || familiarBase?.name || `${pc.familiarType} (Familiar)`) : 'None');
 
-  const petType = hasCompanion ? (companionBase?.name || pc.companionType) : (hasFamiliar ? (familiarBase?.name || pc.familiarType) : '—');
+  const petType = hasCompanion 
+    ? (companionBase?.name && companionBase.name.toLowerCase() !== pc.companionType.toLowerCase() ? `${companionBase.name} (${pc.companionType})` : (companionBase?.name || pc.companionType)) 
+    : (hasFamiliar ? (familiarBase?.name && familiarBase.name.toLowerCase() !== pc.familiarType.toLowerCase() ? `${familiarBase.name} (${pc.familiarType})` : (familiarBase?.name || pc.familiarType)) : '—');
   const petHD = hasCompanion ? (companionBase?.hd || `${effectiveDruidLvl} HD`) : (hasFamiliar ? `${(pc.classes || []).reduce((s: number, c: any) => s + (c.level || 0), 0)} HD` : '—');
   const petHP = hasCompanion ? (pc.companionHP || pc.companionMaxHP || companionBase?.maxHP || '—') : (hasFamiliar ? (pc.familiarHP || Math.floor((pc.maxHP || 10) / 2)) : '—');
   const petSpeed = hasCompanion ? (companionBase?.speed || '40 ft.') : (hasFamiliar ? (familiarBase?.speed || '30 ft.') : '—');
@@ -53,11 +55,12 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
   // 1. Prepared spells directly from combatant
   if (Array.isArray(pc.preparedSpells)) {
     pc.preparedSpells.forEach((sp: any) => {
+      if (!sp) return;
       const key = sp.key || sp.name;
       const reg = key ? (CombatSpells.REGISTRY?.[key] || (typeof CombatSpells.getSpellDetails === 'function' ? CombatSpells.getSpellDetails(key) : null)) : null;
       preparedSpells.push({
         level: sp.level ?? reg?.level ?? 1,
-        name: sp.name || reg?.nameEn || reg?.nameDe || key,
+        name: sp.name || reg?.nameEn || reg?.nameDe || key || 'Prepared Spell',
         school: reg?.school || sp.school || 'Universal',
         range: reg?.range || sp.range || 'Close',
         duration: reg?.duration || sp.duration || 'Instant',
@@ -72,11 +75,12 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
   // 2. Spellbook spells
   if (Array.isArray(pc.spellbook)) {
     pc.spellbook.forEach((sp: any) => {
+      if (!sp) return;
       const key = sp.key || sp.nameEn || sp.name;
       if (key && !addedKeys.has(key)) {
         preparedSpells.push({
           level: sp.level ?? 1,
-          name: sp.nameEn || sp.nameDe || sp.name || key,
+          name: sp.nameEn || sp.nameDe || sp.name || key || 'Spellbook Spell',
           school: sp.school || 'Universal',
           range: sp.range || 'Close',
           duration: sp.duration || 'Instant',
@@ -93,27 +97,25 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
   if (pc.learnedSpells) {
     const learnedKeys = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : Object.keys(pc.learnedSpells);
     learnedKeys.forEach((key: string) => {
-      if (!addedKeys.has(key)) {
+      if (key && !addedKeys.has(key)) {
         const regSpell = CombatSpells.REGISTRY?.[key] || (typeof CombatSpells.getSpellDetails === 'function' ? CombatSpells.getSpellDetails(key) : null);
-        if (regSpell) {
-          preparedSpells.push({
-            level: regSpell.level ?? 1,
-            name: regSpell.nameEn || regSpell.nameDe || regSpell.name || key,
-            school: regSpell.school || 'Universal',
-            range: regSpell.range || 'Close',
-            duration: regSpell.duration || 'Instant',
-            save: regSpell.save || 'None',
-            desc: regSpell.shortDesc || regSpell.desc || '—',
-            isUsed: false,
-          });
-          addedKeys.add(key);
-        }
+        preparedSpells.push({
+          level: regSpell?.level ?? 1,
+          name: regSpell?.nameEn || regSpell?.nameDe || regSpell?.name || key || 'Learned Spell',
+          school: regSpell?.school || 'Universal',
+          range: regSpell?.range || 'Close',
+          duration: regSpell?.duration || 'Instant',
+          save: regSpell?.save || 'None',
+          desc: regSpell?.shortDesc || regSpell?.desc || '—',
+          isUsed: false,
+        });
+        addedKeys.add(key);
       }
     });
   }
 
-  // Sort spells by level then name
-  preparedSpells.sort((a, b) => (a.level - b.level) || a.name.localeCompare(b.name));
+  // Sort spells by level then name safely
+  preparedSpells.sort((a, b) => ((parseInt(a.level) || 0) - (parseInt(b.level) || 0)) || (a.name || '').localeCompare(b.name || ''));
 
   // Pad prepared spells list for clean printable lines
   const displaySpells = [...preparedSpells.slice(0, 16)];
