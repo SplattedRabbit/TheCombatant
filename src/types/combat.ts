@@ -50,11 +50,28 @@ export interface SkillEntry {
 }
 
 export interface SkillDefinition {
-  nameDe: string;
+  name: string;
+  nameDe?: string;
   nameEn?: string;
   abl: 'str' | 'dex' | 'con' | 'int' | 'wis' | 'cha';
   trainedOnly?: boolean;
   hasACP?: boolean;
+}
+
+export interface SkillTrickDefinition {
+  id: string;
+  key?: string;
+  name: string;
+  nameEn?: string;
+  nameDe?: string;
+  category: string;
+  type?: string;
+  prerequisites?: any;
+  benefit: string;
+  benefitEn?: string;
+  benefitDe?: string;
+  description?: string;
+  source?: string;
 }
 
 export interface LearnedSkillTrick {
@@ -138,10 +155,57 @@ export interface Item {
 // Talente, Klassen & Tägliche Fähigkeiten
 // ---------------------------------------------------------------------------
 
+export interface FeatDefinition {
+  id: string;
+  name: string;
+  nameEn?: string;
+  nameDe?: string;
+  category: string;
+  source: string;
+  prereqs?: any[];
+  benefit: string;
+  benefitRaw?: string;
+  benefitDe?: string;
+  special?: string;
+  specialRaw?: string;
+  normal?: string;
+  normalRaw?: string;
+  hasOption?: boolean;
+  optionType?: string;
+  appEffect?: string;
+  effects?: any[];
+  [key: string]: any;
+}
+
 export interface Feat {
   id: string;
   name?: string;
   option?: string;
+}
+
+export interface SpellDefinition {
+  key?: string;
+  id?: string;
+  name: string;
+  nameEn?: string;
+  nameDe?: string;
+  school: string;
+  level: number;
+  classLevels?: Array<{ class: string; level: number }>;
+  components?: string;
+  castingTime?: string;
+  range?: string;
+  duration?: string;
+  savingThrow?: string;
+  save?: string;
+  spellResistance?: string;
+  sr?: string;
+  description?: string;
+  desc?: string;
+  shortDesc?: string;
+  source?: string;
+  buff?: any;
+  [key: string]: any;
 }
 
 export interface CharClass {

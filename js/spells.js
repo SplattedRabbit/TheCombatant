@@ -29,7 +29,27 @@ export const CombatSpells = {
       results.forEach((data, idx) => {
         const book = books[idx];
         Object.keys(data).forEach(spellKey => {
-          data[spellKey].source = book;
+          const sp = data[spellKey];
+          const name = sp.nameEn || sp.name || sp.nameDe || spellKey;
+          const desc = sp.description || sp.desc || '';
+          const save = sp.savingThrow || sp.save || 'None';
+          const sr = sp.spellResistance || sp.sr || 'No';
+
+          data[spellKey] = {
+            ...sp,
+            key: spellKey,
+            id: spellKey,
+            name,
+            nameEn: name,
+            nameDe: sp.nameDe || name,
+            description: desc,
+            desc: desc,
+            savingThrow: save,
+            save: save,
+            spellResistance: sr,
+            sr: sr,
+            source: book
+          };
         });
         Object.assign(CombatSpells.REGISTRY, data);
       });

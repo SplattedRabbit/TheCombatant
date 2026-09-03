@@ -58,13 +58,13 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
       showCustomAlert('Prerequisites Not Met', result.error.replace(/\n/g, '<br>'), 'Understood', '🔒');
       return;
     }
-    showCustomAlert('Learned', `You have successfully learned the skill trick "${trick.nameEn || trick.nameDe}".`, 'Great', '✓');
+    showCustomAlert('Learned', `You have successfully learned the skill trick "${trick.name || trick.nameEn || trick.nameDe}".`, 'Great', '✓');
     onClose();
   };
 
   const handleUnlearn = () => {
     CombatState.removePCSkillTrick(trick.key);
-    showCustomAlert('Unlearned', `You have unlearned the skill trick "${trick.nameEn || trick.nameDe}".`, 'OK', '✓');
+    showCustomAlert('Unlearned', `You have unlearned the skill trick "${trick.name || trick.nameEn || trick.nameDe}".`, 'OK', '✓');
     onClose();
   };
 
@@ -130,7 +130,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
               fontWeight: 'bold'
             }}
           >
-            {trick.nameEn || trick.nameDe}
+            {trick.name || trick.nameEn || trick.nameDe}
           </h3>
 
           <div
@@ -177,7 +177,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
           <div style={{ fontSize: '9.5px', marginBottom: '6px', lineHeight: 1.35 }}>
             <strong style={{ color: '#8b1a1a', fontFamily: 'var(--font-title)' }}>Benefit:</strong>
             <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>
-              {trick.benefitEn || trick.benefitDe}
+              {trick.benefit || trick.benefitEn || trick.benefitDe || trick.description}
             </div>
           </div>
         </div>

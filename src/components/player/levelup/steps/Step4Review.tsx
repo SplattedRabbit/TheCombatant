@@ -40,19 +40,19 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
       const def = (SKILLS_REGISTRY as any)[key];
       return {
         key,
-        name: def?.nameEn || def?.nameDe || key,
+        name: def?.name || def?.nameEn || def?.nameDe || key,
         points: String(pts),
       };
     });
 
   const chosenFeats = (currentConfig.feats || []).map((fid: string) => {
     const feat = (CombatFeats.REGISTRY as any)[fid];
-    return feat ? (feat.nameEn || feat.nameDe || fid) : fid;
+    return feat ? (feat.name || feat.nameEn || feat.nameDe || fid) : fid;
   });
 
   const chosenSkillTricks = (currentConfig.skillTricks || []).map((tKey: string) => {
     const trick = (SKILL_TRICKS_REGISTRY as any)[tKey];
-    return trick ? (trick.nameEn || trick.nameDe || trick.name || tKey) : tKey;
+    return trick ? (trick.name || trick.nameEn || trick.nameDe || tKey) : tKey;
   });
 
   const chosenACFs = (currentConfig.acfs || []).map((aId: string) => {

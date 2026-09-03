@@ -76,10 +76,8 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
     if (categoryFilter !== 'all' && trick.category !== categoryFilter) return false;
     if (search.trim()) {
       const q = search.toLowerCase();
-      const matchName = (trick.nameEn && trick.nameEn.toLowerCase().includes(q)) ||
-                        (trick.nameDe && trick.nameDe.toLowerCase().includes(q));
-      const matchDesc = (trick.benefitEn && trick.benefitEn.toLowerCase().includes(q)) ||
-                        (trick.benefitDe && trick.benefitDe.toLowerCase().includes(q));
+      const matchName = (trick.name || trick.nameEn || trick.nameDe || '').toLowerCase().includes(q);
+      const matchDesc = (trick.benefit || trick.benefitEn || trick.benefitDe || trick.description || '').toLowerCase().includes(q);
       return matchName || matchDesc;
     }
     return true;
@@ -237,7 +235,7 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <span style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: titleColor }}>
-                          🎭 {trick.nameEn || trick.nameDe}
+                          🎭 {trick.name || trick.nameEn || trick.nameDe}
                         </span>
                         <span style={{ fontSize: '7.5px', background: 'rgba(0,0,0,0.05)', color: met || isCurrent || isPrior ? 'var(--inkm)' : 'var(--inkl)', padding: '0 4px', borderRadius: '1px' }}>
                           {categoryLabel}
@@ -258,13 +256,15 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                             style={{
                               fontSize: '8px',
                               padding: '2px 6px',
-                              color: '#245e28',
-                              borderColor: 'rgba(50, 115, 55, 0.5)',
+                              fontFamily: 'var(--font-title)',
+                              background: 'rgba(139, 26, 26, 0.1)',
+                              border: '1px solid rgba(139, 26, 26, 0.3)',
+                              color: 'var(--red)',
                               cursor: 'pointer',
-                              background: 'rgba(50, 115, 55, 0.08)'
+                              fontWeight: 'bold'
                             }}
                           >
-                            ✕ Remove (-2 SP)
+                            ✕ Remove
                           </button>
                         ) : (
                           <button
@@ -273,9 +273,9 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
                               if (!met) {
                                 const unmetList = details.filter((d: any) => !d.met).map((d: any) => `• ${d.desc}`).join('<br/>');
                                 showCustomAlert(
-                                  `Prerequisites for ${trick.nameEn || trick.nameDe}`,
-                                  `<div style="text-align:left;">Prerequisites not met yet:<br/><br/>${unmetList}</div>`,
-                                  "OK",
+                                  "Prerequisites Missing",
+                                  `<div style="text-align:left;">Prerequisites for <strong>${trick.name || trick.nameEn || trick.nameDe}</strong>:<br/><br/>${unmetList}</div>`,
+                                  "Understood",
                                   "🔒"
                                 );
                               } else {
@@ -321,7 +321,7 @@ export const SkillTricksTabContent: React.FC<SkillTricksTabContentProps> = ({
 
                     {/* Benefit description */}
                     <div style={{ fontSize: '9px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', lineHeight: 1.25 }}>
-                      {trick.benefitEn || trick.benefitDe}
+                      {trick.benefit || trick.benefitEn || trick.benefitDe || trick.description}
                     </div>
                   </div>
                 );

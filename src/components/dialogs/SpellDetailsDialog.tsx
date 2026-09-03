@@ -172,11 +172,8 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
         <div style={{ fontFamily: 'var(--font-title)', fontSize: '14px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px' }}>
-          {spell.nameEn || spell.nameDe}
+          {spell.name || spell.nameEn || spell.nameDe}
         </div>
-        {spell.nameEn && spell.nameDe && spell.nameEn !== spell.nameDe && (
-          <p style={{ margin: '0 0 8px', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>{spell.nameDe}</p>
-        )}
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 12px', fontSize: '9px', marginBottom: '10px', color: 'var(--ink)' }}>
@@ -185,13 +182,13 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
           {spell.castingTime && <span><strong>Casting Time:</strong> {spell.castingTime}</span>}
           {spell.range && <span><strong>Range:</strong> {spell.range}</span>}
           {spell.duration && <span><strong>Duration:</strong> {spell.duration}</span>}
-          {spell.savingThrow && <span><strong>Saving Throw:</strong> {spell.savingThrow}</span>}
-          {spell.spellResistance && <span><strong>Spell Resistance:</strong> {spell.spellResistance}</span>}
+          {(spell.save || spell.savingThrow) && <span><strong>Saving Throw:</strong> {spell.save || spell.savingThrow}</span>}
+          {(spell.sr || spell.spellResistance) && <span><strong>Spell Resistance:</strong> {spell.sr || spell.spellResistance}</span>}
         </div>
 
-        {spell.description && (
+        {(spell.desc || spell.description) && (
           <p style={{ fontSize: '9px', lineHeight: 1.5, color: 'var(--ink)', margin: '0 0 14px' }}>
-            {spell.description}
+            {spell.desc || spell.description}
           </p>
         )}
 

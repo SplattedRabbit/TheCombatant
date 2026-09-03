@@ -65,7 +65,7 @@ export const FeatScrollParchment: React.FC<FeatScrollParchmentProps> = ({
           fontWeight: 'bold'
         }}
       >
-        {feat.nameEn || feat.nameDe}
+        {feat.name || feat.nameEn || feat.nameDe}
       </h3>
 
       <div
@@ -114,20 +114,20 @@ export const FeatScrollParchment: React.FC<FeatScrollParchmentProps> = ({
 
       <div style={{ fontSize: '9.5px', marginBottom: '6px', lineHeight: 1.35 }}>
         <strong style={{ color: '#8b1a1a', fontFamily: 'var(--font-title)' }}>Benefit (RAW):</strong>
-        <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>{feat.benefitRaw || feat.benefitEn || feat.benefitDe}</div>
+        <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>{feat.benefit || feat.benefitRaw || feat.benefitEn || feat.benefitDe}</div>
       </div>
 
-      {feat.normalRaw && (
+      {(feat.normal || feat.normalRaw) && (
         <div style={{ fontSize: '9px', marginBottom: '6px', lineHeight: 1.35, borderTop: '0.5px dotted rgba(139,26,26,0.2)', paddingTop: '4px' }}>
           <strong style={{ color: '#8b1a1a', fontFamily: 'var(--font-title)' }}>Normal:</strong>
-          <div style={{ color: '#4a3b2a', paddingLeft: '4px' }}>{feat.normalRaw}</div>
+          <div style={{ color: '#4a3b2a', paddingLeft: '4px' }}>{feat.normal || feat.normalRaw}</div>
         </div>
       )}
 
-      {feat.specialRaw && (
+      {(feat.special || feat.specialRaw) && (
         <div style={{ fontSize: '9px', marginBottom: '4px', lineHeight: 1.35, borderTop: '0.5px dotted rgba(139,26,26,0.2)', paddingTop: '4px' }}>
           <strong style={{ color: '#8b1a1a', fontFamily: 'var(--font-title)' }}>Special:</strong>
-          <div style={{ color: '#4a3b2a', paddingLeft: '4px' }}>{feat.specialRaw}</div>
+          <div style={{ color: '#4a3b2a', paddingLeft: '4px' }}>{feat.special || feat.specialRaw}</div>
         </div>
       )}
 

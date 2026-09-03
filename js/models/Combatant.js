@@ -81,7 +81,14 @@ export class Combatant {
     this.prestigeSpecialTextConfirmed = p.prestigeSpecialTextConfirmed || {};
     this.alignment = p.alignment || '';
 
-
+    // -- PHYSICAL & LORE (RAW D&D 3.5e) --
+    this.gender = p.gender || p.geschlecht || '';
+    this.age = p.age || p.alter || '';
+    this.height = p.height || p.groesse || '';
+    this.weight = p.weight || p.gewicht || '';
+    this.eyes = p.eyes || p.augen || '';
+    this.hair = p.hair || p.haare || '';
+    this.deity = p.deity || p.gottheit || '';
 
     // -- BASE SAVES & ATTACK (D&D 3.5e) --
     this.baseZa = new Stat(p.baseZa !== undefined ? p.baseZa : (p.za !== undefined ? p.za : 0));
@@ -99,12 +106,12 @@ export class Combatant {
 
     this.sr = p.sr !== undefined ? parseInt(p.sr) : 0;
 
-    // -- OFFENSE (D&D 3.5e) --
+    // -- OFFENSE (D&D 3.5e RAW) --
     this.weapons = Array.isArray(p.weapons)
       ? p.weapons.map(w => new Weapon(w))
       : [
-        new Weapon({ name: 'Langschwert', type: 'longsword', grip: '1h', damageDice: '1w8', crit: '19-20 / x2', enhancement: 0 }),
-        new Weapon({ name: 'Kompositbogen', type: 'comp_shortbow', grip: 'rng', damageDice: '1w6', crit: 'x3', enhancement: 0 })
+        new Weapon({ name: 'Longsword', type: 'longsword', grip: '1h', damageDice: '1d8', crit: '19-20 / x2', enhancement: 0 }),
+        new Weapon({ name: 'Shortbow', type: 'comp_shortbow', grip: 'rng', damageDice: '1d6', crit: 'x3', enhancement: 0 })
       ];
 
     // -- ARMORY (D&D 3.5e) --

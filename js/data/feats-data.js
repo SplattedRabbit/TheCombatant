@@ -12,12 +12,41 @@ import { COMBAT_FEATS_REGISTRY } from './feats/combat/index.js';
 import { MAGIC_FEATS_REGISTRY } from './feats/magic/index.js';
 import { GENERAL_FEATS_REGISTRY } from './feats/general/index.js';
 
+const RAW_FEATS_REGISTRY = {
+  ...COMBAT_FEATS_REGISTRY,
+  ...MAGIC_FEATS_REGISTRY,
+  ...GENERAL_FEATS_REGISTRY
+};
+
+// Normalize all feats to canonical English properties (RAW)
+const NORMALIZED_FEATS_REGISTRY = {};
+Object.entries(RAW_FEATS_REGISTRY).forEach(([id, f]) => {
+  const name = f.nameEn || f.name || f.nameDe || id;
+  const benefit = f.benefitRaw || f.benefit || f.benefitDe || '';
+  const special = f.specialRaw || f.special || '';
+  const normal = f.normalRaw || f.normal || '';
+
+  NORMALIZED_FEATS_REGISTRY[id] = {
+    ...f,
+    id: f.id || id,
+    name,
+    nameEn: name,
+    nameDe: f.nameDe || name,
+    benefit,
+    benefitRaw: f.benefitRaw || benefit,
+    benefitDe: f.benefitDe || benefit,
+    special,
+    specialRaw: f.specialRaw || special,
+    normal,
+    normalRaw: f.normalRaw || normal,
+    description: benefit,
+    category: f.category || 'general',
+    source: f.source || 'phb'
+  };
+});
+
 export const CombatFeats = {
-  REGISTRY: {
-    ...COMBAT_FEATS_REGISTRY,
-    ...MAGIC_FEATS_REGISTRY,
-    ...GENERAL_FEATS_REGISTRY
-  }
+  REGISTRY: NORMALIZED_FEATS_REGISTRY
 };
 
 /**
