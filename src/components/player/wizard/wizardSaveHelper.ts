@@ -93,6 +93,54 @@ export function applyWizardCharacterToState(
     });
     freshPC.acfs = allACFs;
 
+    // Reset gear, equipment, items, and inventory to empty/clean state
+    freshPC.weapons = [];
+    freshPC.armors = [];
+    freshPC.items = [];
+    freshPC.autoAC = true;
+    freshPC.acNatural = 0;
+    freshPC.acDeflection = 0;
+    freshPC.acMisc = 0;
+    freshPC.dr = '';
+    freshPC.immunities = '';
+    freshPC.resistances = '';
+
+    // Reset spells, spell slots, active buffs, and daily abilities
+    freshPC.activeBuffs = [];
+    freshPC.quickBuffs = [];
+    freshPC.learnedSpells = [];
+    freshPC.preparedSpells = [];
+    freshPC.customSpells = [];
+    freshPC.spellTemplates = {};
+    freshPC.dailyAbilities = [];
+    const cleanSpellSlots: Record<number, { max: number; used: number }> = {};
+    for (let lvl = 0; lvl <= 9; lvl++) {
+      cleanSpellSlots[lvl] = { max: 0, used: 0 };
+    }
+    freshPC.spellSlots = cleanSpellSlots;
+
+    // Reset combat state flags, conditions, and companions
+    freshPC.conditions = [];
+    freshPC.isRaging = false;
+    freshPC.isSneakAttacking = false;
+    freshPC.isSmiteActive = false;
+    freshPC.isFavoredEnemyActive = false;
+    freshPC.isDefensiveFighting = false;
+    freshPC.isTotalDefense = false;
+    freshPC.isFlurrying = false;
+    freshPC.isTrickyFightingActive = false;
+    freshPC.powerAttackPenalty = 0;
+    freshPC.combatExpertisePenalty = 0;
+    freshPC.companionName = '';
+    freshPC.companionType = 'none';
+    freshPC.companionHP = 0;
+    freshPC.companionMaxHP = 0;
+    freshPC.familiarName = '';
+    freshPC.familiarType = 'none';
+    freshPC.familiarHP = 0;
+    freshPC.activeShape = 'none';
+    freshPC.originalStats = null;
+
     freshPC.rebuildStatModifiers();
   });
 }

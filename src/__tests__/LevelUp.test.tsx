@@ -441,6 +441,11 @@ describe('Level-Up Assistant Suite', () => {
       expect(activePC.classes.find((c: any) => c.classType === 'fighter')?.level).toBe(1);
       expect(activePC.classes.find((c: any) => c.classType === 'wizard')?.level).toBe(3);
       expect(activePC.feats.some((f: any) => f.id === 'scribe_scroll')).toBe(true);
+      expect(activePC.weapons).toEqual([]);
+      expect(activePC.armors).toEqual([]);
+      expect(activePC.items).toEqual([]);
+      expect(activePC.activeBuffs).toEqual([]);
+      expect(activePC.dailyAbilities).toEqual([]);
     });
 
     it('correctly maps RAW Hit Dice for all base and prestige classes (Barbarian d12, Fighter d10, etc.)', () => {
