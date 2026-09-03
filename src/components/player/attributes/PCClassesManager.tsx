@@ -157,6 +157,7 @@ export const PCClassesManager: React.FC<PCClassesManagerProps> = ({ pc }) => {
           <option value="half_elf">Half-Elf</option>
           <option value="half_orc">Half-Orc</option>
           <option value="tiefling">Tiefling</option>
+          <option value="anima_construct">Anima-Construct</option>
         </select>
       </div>
 

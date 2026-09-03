@@ -4,6 +4,7 @@
  */
 
 import { CombatState } from '@core/state.js';
+import { getFeatSlotsAtLevel } from './helpers.ts';
 
 export function applyWizardCharacterToState(
   name: string,
@@ -53,13 +54,26 @@ export function applyWizardCharacterToState(
     freshPC.maxHp = calculatedMaxHP;
     freshPC.hp = calculatedMaxHP;
 
-    freshPC.skills = { ...completedDraft.allSkills };
-    freshPC.skillTricks = [...completedDraft.allSkillTricks];
+    freshPC.skills = { ...(completedDraft.allSkills || completedDraft.skillsAcc || completedDraft.draftPC?.skills || {}) };
+    freshPC.skillTricks = Array.isArray(completedDraft.allSkillTricks)
+      ? [...completedDraft.allSkillTricks]
+      : Array.isArray(completedDraft.skillTricksList)
+      ? [...completedDraft.skillTricksList]
+      : Array.isArray(completedDraft.draftPC?.skillTricks)
+      ? [...completedDraft.draftPC.skillTricks]
+      : [];
 
     const allFeats: any[] = [];
-    levelConfigs.forEach(cfg => {
+    levelConfigs.forEach((cfg, lvlIdx) => {
+      const slots = getFeatSlotsAtLevel(lvlIdx, cfg.classType, selectedRace, levelConfigs);
+      slots.forEach((slot, sIdx) => {
+        const fid = cfg.feats?.[sIdx] || slot.defaultFeat;
+        if (fid && !allFeats.some(f => f.id === fid)) {
+          allFeats.push({ id: fid });
+        }
+      });
       (cfg.feats || []).forEach((fid: string) => {
-        if (!allFeats.some(f => f.id === fid)) {
+        if (fid && !allFeats.some(f => f.id === fid)) {
           allFeats.push({ id: fid });
         }
       });

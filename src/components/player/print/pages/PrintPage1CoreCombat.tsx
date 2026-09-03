@@ -165,7 +165,9 @@ export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.2fr 1fr 1fr 1fr 1fr', gap: '4px', marginBottom: '10px' }}>
         <div className="dnd-box">
           <div className="dnd-label">Race</div>
-          <div className="dnd-value" style={{ textTransform: 'capitalize' }}>{pc.race || 'Human'}</div>
+          <div className="dnd-value" style={{ textTransform: 'capitalize' }}>
+            {pc.race === 'anima_construct' ? 'Anima-Construct' : pc.race === 'deep_halfling' ? 'Deep Halfling' : pc.race === 'half_elf' ? 'Half-Elf' : pc.race === 'half_orc' ? 'Half-Orc' : pc.race || 'Human'}
+          </div>
         </div>
         <div className="dnd-box">
           <div className="dnd-label">Alignment</div>

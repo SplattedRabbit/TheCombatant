@@ -108,6 +108,22 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
     }
   }, [currentConfig.classType, currentDraft, currentLevelIndex]);
 
+  // Auto-populate fixed/class-granted default feats (e.g. Scribe Scroll for Wizard 1)
+  React.useEffect(() => {
+    if (!currentConfig || !currentFeatSlots || currentFeatSlots.length === 0) return;
+    let changed = false;
+    const nextFeats = Array.isArray(currentConfig.feats) ? [...currentConfig.feats] : [];
+    currentFeatSlots.forEach((slot, sIdx) => {
+      if (slot.defaultFeat && nextFeats[sIdx] !== slot.defaultFeat) {
+        nextFeats[sIdx] = slot.defaultFeat;
+        changed = true;
+      }
+    });
+    if (changed) {
+      updateLevelConfig(currentLevelIndex, 'feats', nextFeats);
+    }
+  }, [currentConfig?.classType, currentFeatSlots, currentLevelIndex]);
+
   const totalLearnedTricksCount = levelConfigs
     .slice(0, currentLevelIndex + 1)
     .reduce((sum, cfg) => sum + (cfg.skillTricks?.length || 0), 0);

@@ -5,7 +5,7 @@
  *            skill points distribution, and feat selection with prerequisites check.
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { CombatRules } from '@core/rules.js';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
@@ -139,6 +139,21 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
 
   const activeFeatSlot = featSelectSlotIndex !== null ? currentFeatSlots[featSelectSlotIndex] : null;
 
+  useEffect(() => {
+    if (!currentFeatSlots || currentFeatSlots.length === 0) {
+      setFeatSelectSlotIndex(null);
+      return;
+    }
+    const firstSelectable = currentFeatSlots.findIndex(slot => !slot.defaultFeat);
+    if (firstSelectable !== -1) {
+      if (featSelectSlotIndex === null || featSelectSlotIndex >= currentFeatSlots.length || currentFeatSlots[featSelectSlotIndex]?.defaultFeat) {
+        setFeatSelectSlotIndex(firstSelectable);
+      }
+    } else {
+      setFeatSelectSlotIndex(null);
+    }
+  }, [currentLevelIndex, currentFeatSlots]);
+
   const filteredFeats = useMemo(() => {
     if (!activeFeatSlot || !currentDraft) return [];
     const q = featSearch.toLowerCase().trim();
@@ -202,7 +217,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         showCustomAlert("Skill Points Overspent", `You have overspent skill points by ${Math.abs(currentLevelRemainingSkillPoints)} for Level ${currentLevelIndex + 1}.`, "OK", "⚠️");
         return;
       }
-      const emptyFeats = currentFeatSlots.some((_, idx) => !currentConfig.feats?.[idx]);
+      const emptyFeats = currentFeatSlots.some((slot, idx) => !(currentConfig.feats?.[idx] || slot.defaultFeat));
       if (emptyFeats) {
         showCustomAlert("Feat Slots Open", `Please select all feats for Level ${currentLevelIndex + 1}.`, "OK", "🔒");
         return;

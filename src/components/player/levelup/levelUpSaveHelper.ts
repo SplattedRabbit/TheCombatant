@@ -1,5 +1,6 @@
 import { CombatState } from '@core/state.js';
 import { CombatRules } from '@core/rules.js';
+import { getFeatSlotsAtLevel } from '../wizard/helpers.ts';
 
 export function applyLevelUpToActivePC(
   levelConfigs: any[],
@@ -77,15 +78,22 @@ export function applyLevelUpToActivePC(
     }
 
     // 6. Feats additions
-    if (Array.isArray(newLevelConfig.feats) && newLevelConfig.feats.length > 0) {
-      const curFeats = Array.isArray(pc.feats) ? [...pc.feats] : [];
+    const featSlots = getFeatSlotsAtLevel(newLevelIndex, newLevelConfig.classType, pc.race, levelConfigs);
+    const curFeats = Array.isArray(pc.feats) ? [...pc.feats] : [];
+    featSlots.forEach((slot, sIdx) => {
+      const fid = newLevelConfig.feats?.[sIdx] || slot.defaultFeat;
+      if (fid && !curFeats.some(f => (typeof f === 'object' ? f.id === fid : f === fid))) {
+        curFeats.push({ id: fid });
+      }
+    });
+    if (Array.isArray(newLevelConfig.feats)) {
       newLevelConfig.feats.forEach((fid: string) => {
         if (fid && !curFeats.some(f => (typeof f === 'object' ? f.id === fid : f === fid))) {
           curFeats.push({ id: fid });
         }
       });
-      pc.feats = curFeats;
     }
+    pc.feats = curFeats;
 
     // 7. ACFs additions
     if (Array.isArray(newLevelConfig.acfs) && newLevelConfig.acfs.length > 0) {

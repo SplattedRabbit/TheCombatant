@@ -7,6 +7,8 @@ import { applyLevelUpToActivePC } from '../components/player/levelup/levelUpSave
 import { LevelUpDialog } from '../components/player/levelup/LevelUpDialog';
 import { Step1ClassAndStats } from '../components/player/levelup/steps/Step1ClassAndStats';
 import { FeatsTabContent } from '../components/player/wizard/FeatsTabContent';
+import { getFeatSlotsAtLevel, getCompletedDraftPCState } from '../components/player/wizard/helpers';
+import { applyWizardCharacterToState } from '../components/player/wizard/wizardSaveHelper';
 import { renderWithProviders } from '../test/test-utils';
 
 describe('Level-Up Assistant Suite', () => {
@@ -376,5 +378,69 @@ describe('Level-Up Assistant Suite', () => {
       expect(screen.getByText(/Arcane Class \(\+1 Caster Level\)/i)).toBeInTheDocument();
     });
   });
+
+  describe('6. Character Wizard & Level-Up Multiclass Feats & Default Feats', () => {
+    it('correctly calculates feat slots and resolves class default feats (e.g. Scribe Scroll on Wizard 1)', () => {
+      const levelConfigs = [
+        { classType: 'fighter', hpRoll: 10, skills: {}, feats: ['power_attack', 'cleave'] },
+        { classType: 'wizard', hpRoll: 4, skills: {}, feats: [] }, // Wizard 1 multiclass
+        { classType: 'wizard', hpRoll: 4, skills: {}, feats: ['extend_spell'] }, // Level 3 Character Feat
+        { classType: 'wizard', hpRoll: 4, skills: {}, feats: [], abilityIncrease: 'int' }
+      ];
+
+      // Level 1: Fighter (Non-human) -> 2 feat slots
+      const lvl1Slots = getFeatSlotsAtLevel(0, 'fighter', 'elf', levelConfigs);
+      expect(lvl1Slots.length).toBe(2);
+      expect(lvl1Slots[0].defaultFeat).toBeUndefined();
+      expect(lvl1Slots[1].defaultFeat).toBeUndefined();
+
+      // Level 2: Wizard 1 multiclass -> 1 feat slot (Scribe Scroll defaultFeat)
+      const lvl2Slots = getFeatSlotsAtLevel(1, 'wizard', 'elf', levelConfigs);
+      expect(lvl2Slots.length).toBe(1);
+      expect(lvl2Slots[0].defaultFeat).toBe('scribe_scroll');
+      expect(lvl2Slots[0].label).toContain('Scribe Scroll');
+
+      // Level 3: Character Feat Level 3
+      const lvl3Slots = getFeatSlotsAtLevel(2, 'wizard', 'elf', levelConfigs);
+      expect(lvl3Slots.length).toBe(1);
+      expect(lvl3Slots[0].label).toBe('Character Feat (Level 3)');
+      expect(lvl3Slots[0].defaultFeat).toBeUndefined();
+
+      // Level 4: No feat slots
+      const lvl4Slots = getFeatSlotsAtLevel(3, 'wizard', 'elf', levelConfigs);
+      expect(lvl4Slots.length).toBe(0);
+
+      // Completed draft state automatically includes scribe_scroll from Wizard 1 defaultFeat
+      const baseStats = { str: 14, dex: 14, con: 14, int: 16, wis: 10, cha: 8 };
+      const draft = getCompletedDraftPCState(3, baseStats, 'elf', levelConfigs);
+      expect(draft.featsList).toContain('power_attack');
+      expect(draft.featsList).toContain('cleave');
+      expect(draft.featsList).toContain('scribe_scroll');
+      expect(draft.featsList).toContain('extend_spell');
+
+      // 7. Verify applyWizardCharacterToState executes cleanly and creates combatant in state
+      expect(() => {
+        applyWizardCharacterToState(
+          'Mialee',
+          'elf',
+          'Neutral',
+          'Good',
+          baseStats,
+          levelConfigs,
+          draft
+        );
+      }).not.toThrow();
+
+      const activePC = CombatState.getActivePC();
+      expect(activePC).toBeDefined();
+      expect(activePC.name).toBe('Mialee');
+      expect(activePC.race).toBe('elf');
+      expect(activePC.classes.length).toBe(2);
+      expect(activePC.classes.find((c: any) => c.classType === 'fighter')?.level).toBe(1);
+      expect(activePC.classes.find((c: any) => c.classType === 'wizard')?.level).toBe(3);
+      expect(activePC.feats.some((f: any) => f.id === 'scribe_scroll')).toBe(true);
+    });
+  });
 });
+
 

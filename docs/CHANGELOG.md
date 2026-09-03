@@ -3,6 +3,15 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.2] - 2026-09-03
+
+### Fixed
+- **Character Creation Wizard Multiclass Feat Resolution (`FeatSlotsSidebar.tsx` & `Step3LevelConfig.tsx`):** Fixed multiclass character creation soft-lock where class-granted bonus feats (such as *Scribe Scroll* for Wizard 1) were unpopulated in draft state, rendered as unclickable `— Select —`, and blocked level progression. Added automatic `defaultFeat` population, visual `✓ Fixed` indicators, and step validation bypass.
+- **Anima-Construct Race Selection (`PCClassesManager.tsx` & `PCHeaderInfo.tsx`):** Restored the *Anima-Construct* (Living Construct) race option in the Player Sheet race dropdown selector and character header display.
+- **Character Creation Wizard Save Finalization (`wizardSaveHelper.ts` & `helpers.ts`):** Fixed runtime `TypeError` on clicking `✦ Create & Save` by harmonizing `allSkills` and `allSkillTricks` return signatures in `getCompletedDraftPCState` and adding defensive iterable fallbacks.
+
+---
+
 ## [6.2.1] - 2026-09-02
 
 ### Fixed

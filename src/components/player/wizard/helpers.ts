@@ -107,8 +107,17 @@ export const getDraftPCState = (
   const featsList: string[] = [];
   for (let i = 0; i < lvlIdx; i++) {
     const cfg = levelConfigs[i];
-    if (cfg && Array.isArray(cfg.feats)) {
-      featsList.push(...cfg.feats);
+    if (cfg) {
+      const slots = getFeatSlotsAtLevel(i, cfg.classType, selectedRace, levelConfigs);
+      slots.forEach((slot, sIdx) => {
+        const fid = cfg.feats?.[sIdx] || slot.defaultFeat;
+        if (fid && !featsList.includes(fid)) featsList.push(fid);
+      });
+      if (Array.isArray(cfg.feats)) {
+        cfg.feats.forEach((fid: string) => {
+          if (fid && !featsList.includes(fid)) featsList.push(fid);
+        });
+      }
     }
   }
 
@@ -263,8 +272,17 @@ export const getCompletedDraftPCState = (
   const featsList: string[] = [];
   for (let i = 0; i <= lvlIdx; i++) {
     const cfg = levelConfigs[i];
-    if (cfg && Array.isArray(cfg.feats)) {
-      featsList.push(...cfg.feats);
+    if (cfg) {
+      const slots = getFeatSlotsAtLevel(i, cfg.classType, selectedRace, levelConfigs);
+      slots.forEach((slot, sIdx) => {
+        const fid = cfg.feats?.[sIdx] || slot.defaultFeat;
+        if (fid && !featsList.includes(fid)) featsList.push(fid);
+      });
+      if (Array.isArray(cfg.feats)) {
+        cfg.feats.forEach((fid: string) => {
+          if (fid && !featsList.includes(fid)) featsList.push(fid);
+        });
+      }
     }
   }
 
@@ -355,6 +373,9 @@ export const getCompletedDraftPCState = (
     babVal,
     featsList,
     skillsAcc,
+    allSkills: skillsAcc,
+    skillTricksList,
+    allSkillTricks: skillTricksList,
     draftPC
   };
 };

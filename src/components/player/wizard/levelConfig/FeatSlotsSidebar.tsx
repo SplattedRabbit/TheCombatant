@@ -26,7 +26,7 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
       </span>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
         {currentFeatSlots.map((slot, slotIdx) => {
-          const selectedFeatId = currentConfig.feats?.[slotIdx];
+          const selectedFeatId = currentConfig.feats?.[slotIdx] || slot.defaultFeat;
           const selectedFeat = CombatFeats.REGISTRY[selectedFeatId];
           const isPreFilled = !!slot.defaultFeat;
           const isActive = featSelectSlotIndex === slotIdx;
@@ -42,7 +42,7 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
               style={{
                 padding: '6px 8px',
                 background: isActive ? 'rgba(139, 26, 26, 0.05)' : 'rgba(244, 232, 193, 0.25)',
-                border: isActive ? '1.5px solid var(--red)' : selectedFeat ? '1.5px solid #2e7d32' : '1.5px solid var(--pb)',
+                border: isActive ? '1.5px solid var(--red)' : (selectedFeat || isPreFilled) ? '1.5px solid #2e7d32' : '1.5px solid var(--pb)',
                 borderRadius: '3px',
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -55,13 +55,17 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
                 <span style={{ fontSize: '8.5px', textTransform: 'uppercase', color: 'var(--inkl)', display: 'block' }}>
                   {slot.label} {isPreFilled && '(Fixed)'}
                 </span>
-                <strong style={{ fontSize: '11.5px', color: selectedFeat ? 'var(--ink)' : 'var(--red)' }}>
-                  {selectedFeat ? selectedFeat.nameEn || selectedFeat.nameDe : '— Select —'}
+                <strong style={{ fontSize: '11.5px', color: (selectedFeat || isPreFilled) ? 'var(--ink)' : 'var(--red)' }}>
+                  {selectedFeat ? (selectedFeat.nameEn || selectedFeat.nameDe) : (slot.defaultFeat ? slot.defaultFeat : '— Select —')}
                 </strong>
               </div>
-              {!isPreFilled && (
+              {!isPreFilled ? (
                 <span style={{ fontSize: '9.5px', color: 'var(--red)', fontWeight: isActive ? 'bold' : 'normal' }}>
                   {isActive ? '👉 Active' : 'Select'}
+                </span>
+              ) : (
+                <span style={{ fontSize: '9.5px', color: '#2e7d32', fontWeight: 'bold' }}>
+                  ✓ Fixed
                 </span>
               )}
             </div>
