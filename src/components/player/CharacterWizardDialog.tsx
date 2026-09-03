@@ -74,11 +74,10 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   const handleStartLevelConfigs = () => {
     const configs = [];
     for (let i = 0; i < targetLevel; i++) {
-      const clsType = i === 0 ? 'fighter' : '';
       configs.push({
         level: i + 1,
-        classType: clsType,
-        hpRoll: i === 0 ? 10 : 0,
+        classType: '',
+        hpRoll: 0,
         abilityIncrease: null,
         skills: {},
         skillTricks: [],

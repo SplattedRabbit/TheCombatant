@@ -51,8 +51,11 @@ export function applyWizardCharacterToState(
       const roll = parseInt(cfg.hpRoll) || 0;
       calculatedMaxHP += Math.max(1, roll + conMod);
     });
+    freshPC.maxHP = calculatedMaxHP;
     freshPC.maxHp = calculatedMaxHP;
     freshPC.hp = calculatedMaxHP;
+    freshPC.wounds = 0;
+    freshPC.nonLethal = 0;
 
     freshPC.skills = { ...(completedDraft.allSkills || completedDraft.skillsAcc || completedDraft.draftPC?.skills || {}) };
     freshPC.skillTricks = Array.isArray(completedDraft.allSkillTricks)

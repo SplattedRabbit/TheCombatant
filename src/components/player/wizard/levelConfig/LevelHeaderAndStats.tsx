@@ -40,8 +40,12 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
 
   const handleClassSelect = (classKey: string) => {
     updateLevelConfig(currentLevelIndex, 'classType', classKey);
-    if (currentLevelIndex > 0) {
-      updateLevelConfig(currentLevelIndex, 'hpRoll', 1);
+    const hd = getClassHitDie(classKey);
+    if (currentLevelIndex === 0) {
+      updateLevelConfig(currentLevelIndex, 'hpRoll', hd);
+    } else {
+      const defaultRoll = Math.ceil(hd / 2) + 1;
+      updateLevelConfig(currentLevelIndex, 'hpRoll', defaultRoll);
     }
   };
 
