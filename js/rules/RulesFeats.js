@@ -12,7 +12,7 @@ export function calculateMaxFeats(pc) {
   const totalLevel = activeClasses.reduce((sum, c) => sum + (c.level || 0), 0) || 1;
 
   // General feats: 1 at level 1, +1 every 3 levels thereafter (3, 6, 9, 12, 15, 18)
-  let maxFeats = 1 + Math.floor((totalLevel - 1) / 3);
+  let maxFeats = 1 + Math.floor(totalLevel / 3);
 
   // Human bonus feat: assume true if undefined
   const raceStr = (pc.race || '').toLowerCase();
@@ -50,7 +50,7 @@ export function validateFeatsAssignment(pc, featsList) {
   const raceStr = (pc.race || '').toLowerCase();
   const isHuman = pc.isHuman !== undefined ? !!pc.isHuman : (raceStr === 'human' || raceStr === 'mensch' || raceStr === '');
 
-  let generalMax = 1 + Math.floor((totalLevel - 1) / 3) + (isHuman ? 1 : 0);
+  let generalMax = 1 + Math.floor(totalLevel / 3) + (isHuman ? 1 : 0);
 
   const fighterClass = activeClasses.find(c => c.classType === 'fighter');
   let fighterMax = fighterClass ? 1 + Math.floor(fighterClass.level / 2) : 0;

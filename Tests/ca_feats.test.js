@@ -119,3 +119,28 @@ test('Skill Prerequisite Engine - Deft Boxer and Combat Intuition', () => {
   const resIntuition = checkFeatPrerequisites('combat_intuition', pc);
   assert.strictEqual(resIntuition.met, true);
 });
+
+test('Feat Slot Progression - RAW D&D 3.5e Progression (Non-Human & Human)', async () => {
+  const { calculateMaxFeats, validateFeatsAssignment } = await import('../js/rules/RulesFeats.js');
+
+  const nonHumanL1 = new Combatant({ race: 'anima_construct', classes: [{ classType: 'cleric', level: 1 }] });
+  assert.strictEqual(calculateMaxFeats(nonHumanL1), 1);
+
+  const nonHumanL2 = new Combatant({ race: 'anima_construct', classes: [{ classType: 'cleric', level: 2 }] });
+  assert.strictEqual(calculateMaxFeats(nonHumanL2), 1);
+
+  const nonHumanL3 = new Combatant({ race: 'anima_construct', classes: [{ classType: 'cleric', level: 3 }] });
+  assert.strictEqual(calculateMaxFeats(nonHumanL3), 2);
+
+  const nonHumanL6 = new Combatant({ race: 'anima_construct', classes: [{ classType: 'cleric', level: 6 }] });
+  assert.strictEqual(calculateMaxFeats(nonHumanL6), 3);
+
+  const humanL6 = new Combatant({ race: 'human', isHuman: true, classes: [{ classType: 'cleric', level: 6 }] });
+  assert.strictEqual(calculateMaxFeats(humanL6), 4);
+
+  // Validate that 3 feats on Level 6 Anima Construct Cleric is valid
+  const featsList3 = [{ id: 'extra_turning' }, { id: 'combat_casting' }, { id: 'iron_will' }];
+  const val3 = validateFeatsAssignment(nonHumanL6, featsList3);
+  assert.strictEqual(val3.success, true);
+});
+

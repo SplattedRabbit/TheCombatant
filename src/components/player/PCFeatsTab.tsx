@@ -44,7 +44,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   const raceStr = useMemo(() => (pc.race || '').toLowerCase(), [pc.race]);
   const isHuman = useMemo(() => pc.isHuman !== undefined ? !!pc.isHuman : (raceStr === 'human' || raceStr === 'mensch' || raceStr === ''), [pc.isHuman, raceStr]);
 
-  const generalMax = useMemo(() => 1 + Math.floor((totalLevel - 1) / 3) + (isHuman ? 1 : 0), [totalLevel, isHuman]);
+  const generalMax = useMemo(() => 1 + Math.floor(totalLevel / 3) + (isHuman ? 1 : 0), [totalLevel, isHuman]);
   
   const fighterMax = useMemo(() => {
     const fighterClass = activeClasses.find((c: any) => c.classType === 'fighter');
