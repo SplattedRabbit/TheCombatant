@@ -76,6 +76,26 @@ export function checkFeatPrerequisites(featId, pc) {
       }
       prMet = maxCL >= pr.value;
       desc  = `Caster level ${pr.value} (current: ${maxCL})`;
+    } else if (pr.type === 'skill') {
+      let ranks = 0;
+      if (typeof pc.getSkillRanks === 'function') {
+        ranks = pc.getSkillRanks(pr.name);
+      } else if (pc.skills && pc.skills[pr.name]) {
+        ranks = typeof pc.skills[pr.name] === 'object' ? (parseFloat(pc.skills[pr.name].ranks) || 0) : (parseFloat(pc.skills[pr.name]) || 0);
+      }
+      prMet = ranks >= pr.value;
+      const skillCleanName = pr.name.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      desc = `${skillCleanName} ${pr.value} ranks (current: ${ranks})`;
+    } else if (pr.type === 'sneak_attack') {
+      let saDice = 0;
+      if (typeof pc.getSneakAttackDiceCount === 'function') {
+        saDice = pc.getSneakAttackDiceCount();
+      } else {
+        const rogueClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'rogue') : null;
+        saDice = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
+      }
+      prMet = saDice >= pr.value;
+      desc = `Sneak attack +${pr.value}d6 (current: +${saDice}d6)`;
     } else if (pr.type === 'custom') {
       if (pr.desc === 'Fähigkeit, Untote zu vertreiben' || pr.desc === 'Ability to turn undead') {
         const clericClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'cleric') : null;

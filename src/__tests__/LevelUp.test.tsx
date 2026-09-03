@@ -485,6 +485,21 @@ describe('Level-Up Assistant Suite', () => {
       expect(getHitDie('mystic_theurge')).toBe(4);
       expect(getHitDie('arcane_trickster')).toBe(4);
     });
+
+    it('contains all Complete Adventurer feats including Expert Tactician, Brutal Throw, and Ascetic series', () => {
+      const { CombatFeats } = require('../../js/data/feats-data.js');
+      expect(CombatFeats.REGISTRY['expert_tactician']).toBeDefined();
+      expect(CombatFeats.REGISTRY['expert_tactician'].source).toBe('ca');
+      expect(CombatFeats.REGISTRY['brutal_throw']).toBeDefined();
+      expect(CombatFeats.REGISTRY['power_throw']).toBeDefined();
+      expect(CombatFeats.REGISTRY['dual_strike']).toBeDefined();
+      expect(CombatFeats.REGISTRY['open_minded']).toBeDefined();
+      expect(CombatFeats.REGISTRY['ascetic_hunter']).toBeDefined();
+      expect(CombatFeats.REGISTRY['ascetic_mage']).toBeDefined();
+      expect(CombatFeats.REGISTRY['ascetic_knight']).toBeDefined();
+      expect(CombatFeats.REGISTRY['ascetic_rogue']).toBeDefined();
+      expect(CombatFeats.REGISTRY['devoted_tracker']).toBeDefined();
+    });
   });
 });
 
