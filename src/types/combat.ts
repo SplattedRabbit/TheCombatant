@@ -380,7 +380,7 @@ export interface EncounterMeta {
 
 export interface SessionInfo {
   active: boolean;
-  role: 'host' | 'player' | 'choice' | 'wizard';
+  role: 'host' | 'dm' | 'player' | 'client' | 'choice' | 'wizard';
   roomCode: string;
 }
 

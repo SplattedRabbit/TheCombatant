@@ -82,25 +82,30 @@ export function calculateDurationRounds(durationStr, casterLevel) {
   if (s.includes('round/level') || s.includes('runde/stufe')) {
     return cl;
   }
-  if (s.includes('10 min./level') || s.includes('10 min./stufe')) {
+  if (s.includes('10 min./level') || s.includes('10 min/level') || s.includes('10 min./stufe')) {
     return cl * 100;
   }
-  if (s.includes('min./level') || s.includes('min./stufe') || s.includes('minute/level') || s.includes('minute/stufe')) {
+  if (s.includes('min./level') || s.includes('min/level') || s.includes('minute/level') || s.includes('minute/stufe') || s.includes('min./stufe')) {
     return cl * 10;
   }
   if (s.includes('hour/level') || s.includes('std./stufe') || s.includes('stunde/stufe')) {
     return null;
   }
-  if (s === '1 minute' || s === '1 min.') {
+  if (s === '1 minute' || s === '1 min.' || s === '1 min') {
     return 10;
   }
-  if (s === '5 runden' || s === '5 rounds' || s.includes('5 runden') || s.includes('5 rounds')) {
+  if (s.includes('5 rounds') || s.includes('5 runden')) {
     return 5;
   }
   
-  const roundMatch = s.match(/^(\d+)\s+(round|runde)/);
+  const roundMatch = s.match(/^(\d+)\s+(round|runde)s?/i);
   if (roundMatch) {
     return parseInt(roundMatch[1]);
+  }
+
+  const minMatch = s.match(/^(\d+)\s+min(ute)?s?$/i);
+  if (minMatch) {
+    return parseInt(minMatch[1]) * 10;
   }
   
   return null;
@@ -123,7 +128,7 @@ export function checkBuffConflict(pc, spellKey, customEffects = null) {
     }
   } else if (customEffects) {
     newEffects = customEffects;
-    buffName = customEffects[0]?.source || 'Eigener Buff';
+    buffName = customEffects[0]?.source || 'Custom Buff';
   }
 
   if (newEffects.length === 0) return { status: 'ok' };
@@ -337,9 +342,9 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
         const spellData = findSpell(pc, key);
         const lvl = spellData ? spellData.level : 0;
         const msg = wasPrep
-          ? `Vorbereiteter Zauberplatz für <strong>${buffName}</strong> wurde abgezogen.`
-          : `Spontaner Zauberplatz des Grades <strong>${lvl}</strong> für <strong>${buffName}</strong> wurde abgezogen.`;
-        showCustomAlert("Zauberplatz verbraucht ✨", msg);
+          ? `Prepared spell slot for <strong>${buffName}</strong> was expended.`
+          : `Spontaneous spell slot of level <strong>${lvl}</strong> for <strong>${buffName}</strong> was expended.`;
+        showCustomAlert("Spell Slot Expended ✨", msg);
       }
 
       renderPlayerScreen();
@@ -348,8 +353,8 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
     const conflict = checkBuffConflict(pc, key, resolvedEffects);
     if (conflict.status === 'suppressed') {
       showCustomConfirm(
-        "Stacking-Konflikt", 
-        `Ein stärkerer oder gleichwertiger Buff (<strong>${conflict.conflictingBuffName}</strong>) ist bereits aktiv.<br><br>Dein neuer Buff <strong>${conflict.buffName}</strong> (+${conflict.newValue} auf ${conflict.targetLabel}) hat denselben Bonus-Typ und würde daher <strong>keine Wirkung</strong> zeigen (Numerischer Unterschied: ${conflict.newValue - conflict.activeValue}).<br><br>Möchtest du den Buff dennoch aktivieren?`,
+        "Stacking Conflict", 
+        `A stronger or equivalent buff (<strong>${conflict.conflictingBuffName}</strong>) is already active.<br><br>Your new buff <strong>${conflict.buffName}</strong> (+${conflict.newValue} to ${conflict.targetLabel}) has the same bonus type and would have <strong>no effect</strong> (Difference: ${conflict.newValue - conflict.activeValue}).<br><br>Do you want to activate the buff anyway?`,
         () => {
           activate();
         }
@@ -357,9 +362,9 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
     } else if (conflict.status === 'overrides') {
       activate();
       showCustomAlert(
-        "Buff überlagert", 
-        `Durch das Aktivieren von <strong>${conflict.buffName}</strong> (+${conflict.newValue}) wird der schwächere aktive Buff <strong>${conflict.conflictingBuffName}</strong> (+${conflict.activeValue}) auf <strong>${conflict.targetLabel}</strong> überlagert.<br><br>Deine Werte erhöhen sich netto um <strong>+${conflict.newValue - conflict.activeValue}</strong>.`,
-        "Verstanden", 
+        "Buff Overridden", 
+        `Activating <strong>${conflict.buffName}</strong> (+${conflict.newValue}) overrides the weaker active buff <strong>${conflict.conflictingBuffName}</strong> (+${conflict.activeValue}) on <strong>${conflict.targetLabel}</strong>.<br><br>Your values increase by a net of <strong>+${conflict.newValue - conflict.activeValue}</strong>.`,
+        "Understood", 
         "✨"
       );
     } else {
@@ -378,8 +383,8 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
         });
       }
       showCustomPrompt(
-        "Zauberstufe", 
-        `Bitte gib die Zauberstufe (Caster Level) für <strong>${buffName}</strong> ein:`, 
+        "Caster Level", 
+        `Please enter the Caster Level (CL) for <strong>${buffName}</strong>:`, 
         String(defaultCL), 
         (clText) => {
           const cl = parseInt(clText) || 1;
@@ -410,16 +415,16 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
 
       if (!slotAvailable) {
         showCustomConfirm(
-          "Keine freien Zauberplätze",
-          `Du hast keinen freien Zauberplatz für <strong>${buffName}</strong> übrig (weder vorbereitet noch freie spontane Slots).<br><br>Möchtest du den Buff trotzdem aktivieren?`,
+          "No Available Spell Slots",
+          `You have no available spell slots left for <strong>${buffName}</strong> (neither prepared nor free spontaneous slots).<br><br>Do you want to activate the buff anyway?`,
           () => {
             continueActivation(false);
           }
         );
       } else {
         showCustomConfirm(
-          "Zauber wirken?", 
-          `Möchtest du einen Zauberslot verwenden, um <strong>${buffName}</strong> zu wirken?`, 
+          "Cast Spell?", 
+          `Do you want to expend a spell slot to cast <strong>${buffName}</strong>?`, 
           () => {
             continueActivation(true);
           },

@@ -1,21 +1,20 @@
-# Phasenplan: Priorität 2 — Technical Debt & Code Cleanliness
+# Phasenplan: Priorität 2 — Technical Debt & Code Cleanliness (Status: ✅ Abgeschlossen)
 
 > **Erstellung:** 2026-09-03 | Basis: `docs/CODE_ANALYSIS.md`  
-> **Status:** 📋 Bereit zur Ausführung  
-> **Zeitschätzung gesamt:** ~2–3h  
-> **Risiko:** Niedrig bis Mittel (Typisierungs- und String-Refactorings, keine Regellogik-Änderungen)
+> **Status:** ✅ Alle 5 Phasen erfolgreich umgesetzt, typgeprüft und getestet  
+> **Testsuite:** 314 Core Tests + 34 Vitest UI Tests (100% grün)
 
 ---
 
 ## Übersicht der P2-Maßnahmen
 
-| # | Bereich | Datei(en) | Beschreibung | Aufwand |
-|---|---------|-----------|--------------|---------|
-| **P2.1** | **Type Safety an der App-Root** | `src/App.tsx`, `src/hooks/useCombatState.ts` | Entfernen von `as any` auf `useCombatState()`, saubere Nutzung der `CombatStateSnapshot`-Typen | ~30 min |
-| **P2.2** | **Bilingual Cleanup in BuffRules** | `js/rules/BuffRules.js:335-435` | Umstellung der verbliebenen deutschen Prompt-/Alert-/Confirm-Dialogtexte in `activateBuffByKey()` auf standardisiertes D&D 3.5e RAW Englisch | ~30 min |
-| **P2.3** | **Dauer-Parsing Standardisierung** | `js/rules/BuffRules.js:77-107` | Bereinigung von gemischten Deutsch/Englisch Regex-Mustern in `calculateDurationRounds()` | ~20 min |
-| **P2.4** | **Production Logger im Domain-Layer** | `js/spells.js`, `js/state/StorageManager.js` | Ersetzen von ungeschützten `console.log` in Domain-Modulen durch saubere Dev-Gated Logger / Resilienz-Logs | ~25 min |
-| **P2.5** | **CQS-Absicherung in state-core** | `js/state/state-core.js:61-94` | Dokumentation und Absicherung des Bootstrap-Seiteneffekts in `getActivePC()` (Command-Query Separation) | ~15 min |
+| # | Bereich | Datei(en) | Beschreibung | Status |
+|---|---------|-----------|--------------|--------|
+| **P2.1** | **Type Safety an der App-Root** | `src/App.tsx`, `src/types/combat.ts` | Entfernen von `as any` auf `useCombatState()`, Typisierung von `SessionInfo.role` und `content` | ✅ Behoben |
+| **P2.2** | **Bilingual Cleanup in BuffRules** | `js/rules/BuffRules.js` | Umstellung der verbliebenen deutschen Prompt-/Alert-/Confirm-Dialogtexte in `activateBuffByKey()` auf standardisiertes D&D 3.5e RAW Englisch | ✅ Behoben |
+| **P2.3** | **Dauer-Parsing Standardisierung** | `js/rules/BuffRules.js` | Bereinigung und Robustheitserweiterung von Regex-Mustern in `calculateDurationRounds()` | ✅ Behoben |
+| **P2.4** | **Production Logger im Domain-Layer** | `js/spells.js` | Ungeschützte `console.log`-Meldungen mit Entwicklungsmodus-Weiche abgesichert | ✅ Behoben |
+| **P2.5** | **CQS-Absicherung in state-core** | `js/state/state-core.js` | Dokumentation des Bootstrap-Seiteneffekts in `getActivePC()` (@sideEffects) & Modernisierung des Default-Namens zu 'Adventurer' | ✅ Behoben |
 
 ---
 

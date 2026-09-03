@@ -10,6 +10,10 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 - **Error Boundary Auth Persistence (`ErrorBoundary.tsx`):** Fixed crash recovery reset to selectively remove only application state keys (`dd_combatsheet_state`, `dd_active_character_id`, `dd_active_campaign_id`) instead of executing `localStorage.clear()`, preserving user authentication sessions in Supabase.
 - **Resilient Spell Database Loading (`spells.js`):** Upgraded `loadSpells()` to use `Promise.allSettled()`, ensuring supplemental book network/CDN dropouts do not block core PHB/PHB2 spell databases from loading.
 - **Printable Folio Spell Effect Summaries (`PrintPage4SpellsCompanion.tsx`):** Added `formatSpellSummary()` to parse long spell descriptions into concise, 1-line Effect Summaries (max ~85 characters with word-boundary ellipsis and tooltip), preventing table row bloat and preserving the strict 296mm A4 print layout.
+- **Root Application Type Safety (`App.tsx` & `combat.ts`):** Removed `as any` cast on `useCombatState()`, strictly typed `SessionInfo.role` to encompass all valid role states (`host`, `dm`, `player`, `client`, `choice`, `wizard`), and typed root content as `React.ReactNode`.
+- **Bilingual Stacking & Spell Slot Dialogs (`BuffRules.js`):** Standardized all remaining alert, confirm, and prompt dialogs in `activateBuffByKey()` to English D&D 3.5e RAW terms (`Spell Slot Expended`, `Stacking Conflict`, `Buff Overridden`, `Caster Level`, `No Available Spell Slots`, `Cast Spell?`).
+- **Standardized Duration Parsing (`BuffRules.js`):** Enhanced `calculateDurationRounds()` with comprehensive regular expression recognition supporting all standard D&D 3.5e SRD duration increments (`round/level`, `10 min./level`, `min./level`, `rounds`, `minutes`).
+- **CQS Clarification & Default Character Name (`state-core.js`):** Documented the bootstrap side-effect of `getActivePC()` via JSDoc `@sideEffects` and updated the default fallback character moniker to `'Adventurer'`.
 
 ---
 

@@ -9,7 +9,7 @@ import { realtimeManager } from './services/network/RealtimeManager.ts';
 import { CombatState } from '@core/state.js';
 
 export default function App() {
-  const { state, activePC, isReady } = useCombatState() as any;
+  const { state, activePC, isReady } = useCombatState();
   const rawRole = state?.session?.role || state?.mode;
   const role = (rawRole === 'host' || rawRole === 'dm')
     ? 'host'
@@ -146,7 +146,7 @@ export default function App() {
     return <RoleSelection />;
   }
 
-  let content: any;
+  let content: React.ReactNode;
   if (role === 'host') {
     content = <DMScreen state={state} />;
   } else if (role === 'wizard') {

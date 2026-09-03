@@ -58,6 +58,14 @@ export function getRole() {
 
 let localPCId = null;
 
+/**
+ * Retrieves the active Player Character (PC) for the local player session.
+ * @summary Returns the active PC combatant object, or null in DM/host mode.
+ * @sideEffects If no PC exists in player mode, automatically creates a default initial
+ *              character ('Adventurer') and broadcasts 'state_changed' to ensure the UI
+ *              has a valid state snapshot without throwing unhandled null reference exceptions.
+ * @returns {object|null} The active PC combatant or null for DM host.
+ */
 export function getActivePC() {
   const s = getState();
   
@@ -84,8 +92,8 @@ export function getActivePC() {
     if (s.mode === 'dm' || s.mode === 'host' || (s.session && s.session.role === 'host')) {
       return null;
     }
-    // Directly create default PC to avoid circular import dependency on EncounterManager
-    pc = createCombatant({ name: 'Held', type: 'p' });
+    // Bootstrap safeguard: create default PC to avoid circular import dependency on EncounterManager
+    pc = createCombatant({ name: 'Adventurer', type: 'p' });
     s.combatants.push(pc);
     localPCId = pc.id;
     StateEvents.emit('state_changed', s);

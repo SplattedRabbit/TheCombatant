@@ -62,7 +62,9 @@ export const CombatSpells = {
       });
 
       const loadedBooks = results.filter(r => r.status === 'fulfilled').length;
-      console.log(`Spell database loaded: ${Object.keys(CombatSpells.REGISTRY).length} spells from ${loadedBooks}/${books.length} books.`);
+      if (typeof process !== 'undefined' && process.env?.NODE_ENV === 'development') {
+        console.log(`Spell database loaded: ${Object.keys(CombatSpells.REGISTRY).length} spells from ${loadedBooks}/${books.length} books.`);
+      }
       return Object.keys(CombatSpells.REGISTRY).length > 0;
     } catch (e) {
       console.error('Failed to load spells asynchronously:', e);
