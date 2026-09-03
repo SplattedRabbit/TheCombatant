@@ -27,10 +27,13 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   const hasMonk = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'monk'), [pc.classes]);
 
   const autoFeats = useMemo(() => typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats() : [], [pc.classes, pc.rangerCombatStyle]);
-  const activeFeats = useMemo(() => Array.isArray(pc.feats) ? pc.feats : [], [pc.feats]);
+  const activeFeats = useMemo(() => {
+    if (!Array.isArray(pc?.feats)) return [];
+    return pc.feats.map((f: any) => (typeof f === 'string' ? { id: f, option: '' } : f));
+  }, [pc?.feats]);
   
   const combinedFeats = useMemo(() => {
-    const list = [...activeFeats.map((f: any) => ({ ...f, isAutomatic: false }))];
+    const list = activeFeats.map((f: any) => ({ ...f, isAutomatic: false }));
     autoFeats.forEach((af: any) => {
       if (!list.some((lf: any) => lf.id === af.id)) {
         list.push({ id: af.id, isAutomatic: true, source: af.source });

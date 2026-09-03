@@ -62,6 +62,9 @@ function hydrateCombatant(raw: any): Combatant {
   if (Array.isArray(c.items)) {
     c.items = c.items.map((i: any) => Object.assign(Object.create(Item.prototype), i));
   }
+  if (Array.isArray(c.feats)) {
+    c.feats = c.feats.map((f: any) => (typeof f === 'string' ? { id: f, option: '' } : { ...f }));
+  }
 
   return c;
 }

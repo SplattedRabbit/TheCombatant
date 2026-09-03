@@ -179,8 +179,8 @@ export function addPCFeat(featId, option = '') {
       }
     }
 
-    // Add the feat
-    pc.feats.push({ id: featId, option: option || '' });
+    // Add the feat with a new array reference
+    pc.feats = [...pc.feats, { id: featId, option: option || '' }];
 
     // Special handling for Toughness: +3 MaxHP and current HP
     if (featId === 'toughness') {
@@ -197,9 +197,11 @@ export function removePCFeat(featId, option = '') {
     let removed = false;
     if (Array.isArray(pc.feats)) {
       // Find index of the feat to remove (match option if passed, or first match if option is empty)
-      const idx = pc.feats.findIndex(f => f.id === featId && (!option || f.option === option));
+      const idx = pc.feats.findIndex(f => (typeof f === 'string' ? f === featId : f.id === featId && (!option || f.option === option)));
       if (idx !== -1) {
-        pc.feats.splice(idx, 1);
+        const nextFeats = [...pc.feats];
+        nextFeats.splice(idx, 1);
+        pc.feats = nextFeats;
         removed = true;
         
         // Special handling for Toughness
