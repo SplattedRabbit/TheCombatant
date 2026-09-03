@@ -44,6 +44,9 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
         alignItems: 'center',
         justifyContent: 'center'
       }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <div
         className="custom-scroll-box"
@@ -51,8 +54,8 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
           background: 'var(--p)',
           border: '2px solid var(--pb)',
           borderRadius: '4px',
-          padding: '16px 20px',
-          width: '580px',
+          padding: '14px 18px',
+          width: '540px',
           maxWidth: '92vw',
           boxShadow: '0 12px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(200,169,110,0.1)',
           fontFamily: 'var(--font-title)',
@@ -62,7 +65,7 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
           transition: 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
           display: 'flex',
           flexDirection: 'column',
-          gap: '10px'
+          gap: '8px'
         }}
       >
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
@@ -73,14 +76,14 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
           style={{
             background: '#f4e8c1',
             border: '2px solid #8b1a1a',
-            padding: '16px 20px',
+            padding: '12px 16px',
             borderRadius: '4px',
             boxShadow: 'inset 0 0 35px rgba(139, 26, 26, 0.15)',
             fontFamily: 'var(--font-body)',
             color: '#1a0f00',
-            lineHeight: 1.45,
+            lineHeight: 1.4,
             textAlign: 'left',
-            maxHeight: '52vh',
+            maxHeight: '54vh',
             overflowY: 'auto',
             boxSizing: 'border-box'
           }}
@@ -88,28 +91,44 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
           <h3
             style={{
               fontFamily: 'var(--font-title)',
-              fontSize: '15px',
+              fontSize: '13.5px',
               color: '#8b1a1a',
               textAlign: 'center',
               borderBottom: '2px solid #8b1a1a',
-              paddingBottom: '6px',
-              margin: '0 0 10px 0',
+              paddingBottom: '4px',
+              margin: '0 0 6px 0',
               letterSpacing: '0.8px',
               fontWeight: 'bold'
             }}
           >
             {spell.nameEn || spell.nameDe}
           </h3>
+
+          {spell.nameEn && spell.nameDe && spell.nameEn !== spell.nameDe && (
+            <div
+              style={{
+                fontSize: '9.5px',
+                color: '#6a4a2a',
+                fontStyle: 'italic',
+                textAlign: 'center',
+                marginTop: '-4px',
+                marginBottom: '6px'
+              }}
+            >
+              {spell.nameDe}
+            </div>
+          )}
+
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
-              gap: '6px 14px',
-              fontSize: '9.5px',
-              borderBottom: '0.5px dashed rgba(139, 26, 26, 0.4)',
-              paddingBottom: '8px',
-              marginBottom: '10px',
-              fontWeight: 600
+              gap: '4px 10px',
+              fontSize: '9px',
+              borderBottom: '0.5px dashed rgba(139, 26, 26, 0.3)',
+              paddingBottom: '6px',
+              marginBottom: '8px',
+              fontWeight: 'bold'
             }}
           >
             <div><strong>School:</strong> {school}</div>
@@ -120,24 +139,24 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
             <div><strong>Duration:</strong> {duration}</div>
             <div><strong>Saving Throw:</strong> {savingThrow}</div>
             <div><strong>Spell Resistance:</strong> {sr}</div>
-            <div style={{ gridColumn: 'span 2' }}><strong>Target/Effect/Area:</strong> {targetOrEffectOrArea}</div>
+            {targetOrEffectOrArea && targetOrEffectOrArea !== '—' && (
+              <div style={{ gridColumn: 'span 2' }}>
+                <strong>Target/Area/Effect:</strong> {targetOrEffectOrArea}
+              </div>
+            )}
           </div>
-          <div
-            style={{
-              fontSize: '10.5px',
-              whiteSpace: 'pre-wrap',
-              fontStyle: 'italic',
-              lineHeight: 1.5,
-              color: '#2a1b0a'
-            }}
-          >
-            {spell.description || 'No description available.'}
+
+          <div style={{ fontSize: '9.5px', marginBottom: '4px', lineHeight: 1.35 }}>
+            <strong style={{ color: '#8b1a1a', fontFamily: 'var(--font-title)' }}>Description:</strong>
+            <div style={{ fontStyle: 'normal', color: '#2a1b0a', paddingLeft: '2px', marginTop: '2px', whiteSpace: 'pre-wrap' }}>
+              {spell.description || 'No description available.'}
+            </div>
           </div>
         </div>
 
         {/* Action Section */}
-        <div style={{ marginTop: '2px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
-          <div style={{ fontSize: '11px', color: 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)', letterSpacing: '0.5px' }}>
+        <div style={{ marginTop: '4px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+          <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)', letterSpacing: '0.3px' }}>
             {actionText}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '12px' }}>
@@ -178,14 +197,8 @@ export const SpellScrollDialog: React.FC<SpellScrollDialogProps> = ({
                 border: '1px solid var(--pb)',
                 borderRadius: '2px',
                 color: 'var(--inkl)',
-                transition: 'background-color 0.15s, color 0.15s',
+                transition: 'all 0.15s ease',
                 outline: 'none'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(200, 169, 110, 0.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
               No
