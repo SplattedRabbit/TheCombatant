@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { screen, fireEvent, render } from '@testing-library/react';
 import { CombatState } from '@core/state.js';
+import { CombatRules } from '@core/rules.js';
 import { Combatant } from '@core/models/Combatant.js';
 import { createLevelUpDraft } from '../services/levelup/levelUpAdapter';
 import { applyLevelUpToActivePC } from '../components/player/levelup/levelUpSaveHelper';
@@ -9,6 +10,7 @@ import { Step1ClassAndStats } from '../components/player/levelup/steps/Step1Clas
 import { FeatsTabContent } from '../components/player/wizard/FeatsTabContent';
 import { getFeatSlotsAtLevel, getCompletedDraftPCState } from '../components/player/wizard/helpers';
 import { applyWizardCharacterToState } from '../components/player/wizard/wizardSaveHelper';
+import { CLASSES_LIST } from '../components/player/wizard/constants';
 import { renderWithProviders } from '../test/test-utils';
 
 describe('Level-Up Assistant Suite', () => {
@@ -439,6 +441,41 @@ describe('Level-Up Assistant Suite', () => {
       expect(activePC.classes.find((c: any) => c.classType === 'fighter')?.level).toBe(1);
       expect(activePC.classes.find((c: any) => c.classType === 'wizard')?.level).toBe(3);
       expect(activePC.feats.some((f: any) => f.id === 'scribe_scroll')).toBe(true);
+    });
+
+    it('correctly maps RAW Hit Dice for all base and prestige classes (Barbarian d12, Fighter d10, etc.)', () => {
+      const getHitDie = (key: string) => {
+        const listMatch = CLASSES_LIST.find((c: any) => c.key === key);
+        if (listMatch?.hd) return listMatch.hd;
+        const rulesMatch = CombatRules.CLASSES.find((c: any) => c.key === key);
+        return rulesMatch?.hitDie || rulesMatch?.hd || 8;
+      };
+
+      expect(getHitDie('barbarian')).toBe(12);
+      expect(getHitDie('knight')).toBe(12);
+      expect(getHitDie('dragon_disciple')).toBe(12);
+      expect(getHitDie('fighter')).toBe(10);
+      expect(getHitDie('paladin')).toBe(10);
+      expect(getHitDie('dragon_shaman')).toBe(10);
+      expect(getHitDie('battle_trickster')).toBe(10);
+      expect(getHitDie('shadowbane_inquisitor')).toBe(10);
+      expect(getHitDie('cleric')).toBe(8);
+      expect(getHitDie('druid')).toBe(8);
+      expect(getHitDie('monk')).toBe(8);
+      expect(getHitDie('ranger')).toBe(8);
+      expect(getHitDie('duskblade')).toBe(8);
+      expect(getHitDie('scout')).toBe(8);
+      expect(getHitDie('rogue')).toBe(6);
+      expect(getHitDie('bard')).toBe(6);
+      expect(getHitDie('beguiler')).toBe(6);
+      expect(getHitDie('ninja')).toBe(6);
+      expect(getHitDie('spellthief')).toBe(6);
+      expect(getHitDie('assassin')).toBe(6);
+      expect(getHitDie('spellwarp_sniper')).toBe(6);
+      expect(getHitDie('wizard')).toBe(4);
+      expect(getHitDie('sorcerer')).toBe(4);
+      expect(getHitDie('mystic_theurge')).toBe(4);
+      expect(getHitDie('arcane_trickster')).toBe(4);
     });
   });
 });

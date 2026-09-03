@@ -24,6 +24,7 @@ import { Step3TargetLevelPrompt } from './wizard/Step3TargetLevelPrompt.tsx';
 import { Step4Review } from './wizard/Step4Review.tsx';
 import { WizardTimeline } from './wizard/WizardTimeline.tsx';
 import { applyWizardCharacterToState } from './wizard/wizardSaveHelper.ts';
+import { CLASSES_LIST } from './wizard/constants';
 
 interface CharacterWizardDialogProps {
   onClose: () => void;
@@ -116,8 +117,10 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   const currentConfig = isTargetLevelSet ? levelConfigs[currentLevelIndex] : null;
 
   const getClassHitDie = (clsKey: string): number => {
-    const cls = CombatRules.CLASSES.find((c: any) => c.key === clsKey);
-    return cls?.hitDie || 8;
+    const listMatch = CLASSES_LIST.find((c: any) => c.key === clsKey);
+    if (listMatch?.hd) return listMatch.hd;
+    const rulesMatch = CombatRules.CLASSES.find((c: any) => c.key === clsKey);
+    return rulesMatch?.hitDie || rulesMatch?.hd || 8;
   };
 
   const currentLevelMaxSkillPoints = useMemo(() => {

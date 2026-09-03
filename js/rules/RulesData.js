@@ -102,31 +102,33 @@ export const CONDITIONS = [
 
 export const CLASSES = [
   // ── Core (PHB) ──────────────────────────────────────────────────────────
-  { key: 'fighter',      nameDe: 'Fighter',      nameEn: 'Fighter',      bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb' },
-  { key: 'cleric',       nameDe: 'Cleric',        nameEn: 'Cleric',       bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb' },
-  { key: 'rogue',        nameDe: 'Rogue',         nameEn: 'Rogue',        bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'phb' },
-  { key: 'wizard',       nameDe: 'Wizard',        nameEn: 'Wizard',       bab: 'poor', saves: { fort: 'poor', ref: 'poor', wil: 'good' }, source: 'phb' },
-  { key: 'barbarian',    nameDe: 'Barbarian',     nameEn: 'Barbarian',    bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb' },
-  { key: 'bard',         nameDe: 'Bard',          nameEn: 'Bard',         bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'good' }, source: 'phb' },
-  { key: 'druid',        nameDe: 'Druid',         nameEn: 'Druid',        bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb' },
-  { key: 'monk',         nameDe: 'Monk',          nameEn: 'Monk',         bab: 'avg',  saves: { fort: 'good', ref: 'good', wil: 'good' }, source: 'phb' },
-  { key: 'paladin',      nameDe: 'Paladin',       nameEn: 'Paladin',      bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb' },
-  { key: 'ranger',       nameDe: 'Ranger',        nameEn: 'Ranger',       bab: 'good', saves: { fort: 'good', ref: 'good', wil: 'poor' }, source: 'phb' },
-  { key: 'sorcerer',     nameDe: 'Sorcerer',      nameEn: 'Sorcerer',     bab: 'poor', saves: { fort: 'poor', ref: 'poor', wil: 'good' }, source: 'phb' },
+  { key: 'fighter',      nameDe: 'Fighter',      nameEn: 'Fighter',      hitDie: 10, hd: 10, bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb' },
+  { key: 'cleric',       nameDe: 'Cleric',        nameEn: 'Cleric',       hitDie: 8,  hd: 8,  bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb' },
+  { key: 'rogue',        nameDe: 'Rogue',         nameEn: 'Rogue',        hitDie: 6,  hd: 6,  bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'phb' },
+  { key: 'wizard',       nameDe: 'Wizard',        nameEn: 'Wizard',       hitDie: 4,  hd: 4,  bab: 'poor', saves: { fort: 'poor', ref: 'poor', wil: 'good' }, source: 'phb' },
+  { key: 'barbarian',    nameDe: 'Barbarian',     nameEn: 'Barbarian',    hitDie: 12, hd: 12, bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb' },
+  { key: 'bard',         nameDe: 'Bard',          nameEn: 'Bard',         hitDie: 6,  hd: 6,  bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'good' }, source: 'phb' },
+  { key: 'druid',        nameDe: 'Druid',         nameEn: 'Druid',        hitDie: 8,  hd: 8,  bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb' },
+  { key: 'monk',         nameDe: 'Monk',          nameEn: 'Monk',         hitDie: 8,  hd: 8,  bab: 'avg',  saves: { fort: 'good', ref: 'good', wil: 'good' }, source: 'phb' },
+  { key: 'paladin',      nameDe: 'Paladin',       nameEn: 'Paladin',      hitDie: 10, hd: 10, bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb' },
+  { key: 'ranger',       nameDe: 'Ranger',        nameEn: 'Ranger',       hitDie: 8,  hd: 8,  bab: 'good', saves: { fort: 'good', ref: 'good', wil: 'poor' }, source: 'phb' },
+  { key: 'sorcerer',     nameDe: 'Sorcerer',      nameEn: 'Sorcerer',     hitDie: 4,  hd: 4,  bab: 'poor', saves: { fort: 'poor', ref: 'poor', wil: 'good' }, source: 'phb' },
   // ── Player's Handbook II ─────────────────────────────────────────────────
-  { key: 'duskblade',     nameDe: 'Duskblade',    nameEn: 'Duskblade',    bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb2', isCaster: true,  castingType: 'arcane', castingStat: 'int' },
-  { key: 'beguiler',      nameDe: 'Beguiler',     nameEn: 'Beguiler',     bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'good' }, source: 'phb2', isCaster: true,  castingType: 'arcane', castingStat: 'int' },
-  { key: 'knight',        nameDe: 'Knight',       nameEn: 'Knight',       bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb2', isCaster: false },
-  { key: 'dragon_shaman', nameDe: 'Dragon Shaman',nameEn: 'Dragon Shaman',bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb2', isCaster: false },
+  { key: 'duskblade',     nameDe: 'Duskblade',    nameEn: 'Duskblade',    hitDie: 8,  hd: 8,  bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb2', isCaster: true,  castingType: 'arcane', castingStat: 'int' },
+  { key: 'beguiler',      nameDe: 'Beguiler',     nameEn: 'Beguiler',     hitDie: 6,  hd: 6,  bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'good' }, source: 'phb2', isCaster: true,  castingType: 'arcane', castingStat: 'int' },
+  { key: 'knight',        nameDe: 'Knight',       nameEn: 'Knight',       hitDie: 12, hd: 12, bab: 'good', saves: { fort: 'good', ref: 'poor', wil: 'poor' }, source: 'phb2', isCaster: false },
+  { key: 'dragon_shaman', nameDe: 'Dragon Shaman',nameEn: 'Dragon Shaman',hitDie: 10, hd: 10, bab: 'avg',  saves: { fort: 'good', ref: 'poor', wil: 'good' }, source: 'phb2', isCaster: false },
   // ── Complete Adventurer ──────────────────────────────────────────────────
-  { key: 'ninja',         nameDe: 'Ninja',        nameEn: 'Ninja',        bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'ca',   isCaster: false },
-  { key: 'scout',         nameDe: 'Scout',        nameEn: 'Scout',        bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'ca',   isCaster: false },
-  { key: 'spellthief',    nameDe: 'Spellthief',   nameEn: 'Spellthief',   bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'ca',   isCaster: false },
+  { key: 'ninja',         nameDe: 'Ninja',        nameEn: 'Ninja',        hitDie: 6,  hd: 6,  bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'ca',   isCaster: false },
+  { key: 'scout',         nameDe: 'Scout',        nameEn: 'Scout',        hitDie: 8,  hd: 8,  bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'ca',   isCaster: false },
+  { key: 'spellthief',    nameDe: 'Spellthief',   nameEn: 'Spellthief',   hitDie: 6,  hd: 6,  bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'ca',   isCaster: false },
   {
     key: 'mystic_theurge',
     nameDe: 'Mystischer Theurge',
     nameEn: 'Mystic Theurge',
     isPrestige: true,
+    hitDie: 4,
+    hd: 4,
     bab: 'poor',
     saves: { fort: 'poor', ref: 'poor', wil: 'good' },
     spellcastingBonus: true,
@@ -140,6 +142,8 @@ export const CLASSES = [
     nameDe: 'Arkaner Trickser',
     nameEn: 'Arcane Trickster',
     isPrestige: true,
+    hitDie: 4,
+    hd: 4,
     bab: 'poor',
     saves: { fort: 'poor', ref: 'good', wil: 'good' },
     spellcastingBonus: true,
@@ -155,6 +159,8 @@ export const CLASSES = [
     nameDe: 'Drachen-Jünger',
     nameEn: 'Dragon Disciple',
     isPrestige: true,
+    hitDie: 12,
+    hd: 12,
     bab: 'avg',
     saves: { fort: 'good', ref: 'poor', wil: 'good' },
     spellcastingBonus: false,
@@ -170,6 +176,8 @@ export const CLASSES = [
     nameDe: 'Assassine',
     nameEn: 'Assassin',
     isPrestige: true,
+    hitDie: 6,
+    hd: 6,
     bab: 'avg',
     saves: { fort: 'poor', ref: 'good', wil: 'poor' },
     spellcastingBonus: false,
@@ -186,6 +194,8 @@ export const CLASSES = [
     nameDe: 'Spellwarp Sniper',
     nameEn: 'Spellwarp Sniper',
     isPrestige: true,
+    hitDie: 6,
+    hd: 6,
     bab: 'poor',
     saves: { fort: 'poor', ref: 'good', wil: 'good' },
     spellcastingBonus: true,
@@ -203,6 +213,8 @@ export const CLASSES = [
     nameDe: 'Battle Trickster',
     nameEn: 'Battle Trickster',
     isPrestige: true,
+    hitDie: 10,
+    hd: 10,
     bab: 'avg',
     saves: { fort: 'good', ref: 'good', wil: 'poor' },
     spellcastingBonus: false,
@@ -221,6 +233,7 @@ export const CLASSES = [
     nameEn: 'Shadowbane Inquisitor',
     isPrestige: true,
     source: 'ca',
+    hitDie: 10,
     hd: 10,
     skillBase: 4,
     bab: 'full',
@@ -246,7 +259,7 @@ export const CLASSES = [
   // ── Prestige Classes ─────────────────────────────────────────────────────
   // (prestige classes retain their existing definitions below)
 
-  { key: 'custom', nameDe: 'Custom', nameEn: 'Custom', bab: 'custom', saves: { fort: 'custom', ref: 'custom', wil: 'custom' }, source: 'phb' }
+  { key: 'custom', nameDe: 'Custom', nameEn: 'Custom', hitDie: 8, hd: 8, bab: 'custom', saves: { fort: 'custom', ref: 'custom', wil: 'custom' }, source: 'phb' }
 ];
 
 
