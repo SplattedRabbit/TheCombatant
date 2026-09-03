@@ -14,20 +14,27 @@ export const CombatSpells = {
       const books = ['phb', 'phb2', 'ca', 'cs'];
       const promises = books.map(book =>
         fetch(`./data/spells-${book}.json`).then(res => {
-          if (!res.ok) throw new Error(`HTTP error loading spells-${book}.json! status: ${res.status}`);
+          if (!res.ok) throw new Error(`HTTP ${res.status} loading spells-${book}.json`);
           return res.json();
         })
       );
-      
-      const results = await Promise.all(promises);
+
+      // allSettled: a single failed book does not abort the others.
+      // PHB spells remain available even if a supplemental book (e.g. cs.json) is unreachable.
+      const results = await Promise.allSettled(promises);
 
       // Clear existing entries and merge new data to maintain identical object reference
       for (const key in CombatSpells.REGISTRY) {
         delete CombatSpells.REGISTRY[key];
       }
       
-      results.forEach((data, idx) => {
+      results.forEach((result, idx) => {
         const book = books[idx];
+        if (result.status === 'rejected') {
+          console.warn(`[Spells] Could not load spells-${book}.json — skipping book:`, result.reason?.message || result.reason);
+          return;
+        }
+        const data = result.value;
         Object.keys(data).forEach(spellKey => {
           const sp = data[spellKey];
           const name = sp.nameEn || sp.name || sp.nameDe || spellKey;
@@ -53,9 +60,10 @@ export const CombatSpells = {
         });
         Object.assign(CombatSpells.REGISTRY, data);
       });
-      
-      console.log('Spell database loaded successfully:', Object.keys(CombatSpells.REGISTRY).length, 'spells.');
-      return true;
+
+      const loadedBooks = results.filter(r => r.status === 'fulfilled').length;
+      console.log(`Spell database loaded: ${Object.keys(CombatSpells.REGISTRY).length} spells from ${loadedBooks}/${books.length} books.`);
+      return Object.keys(CombatSpells.REGISTRY).length > 0;
     } catch (e) {
       console.error('Failed to load spells asynchronously:', e);
       return false;

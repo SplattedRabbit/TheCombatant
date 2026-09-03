@@ -1,7 +1,7 @@
 # Testing Strategy & Quality Assurance Architecture
 
-> **The Combatant (v6.2.0)** — D&D 3.5e Digital Combat Companion & Character Management System  
-> Dual Test Architecture: **311 Core Node Tests + 34 Vitest React Testing Library Tests (345 Total Tests)**
+> **The Combatant (v6.2.2)** — D&D 3.5e Digital Combat Companion & Character Management System  
+> Dual Test Architecture: **314 Core Node Tests + 34 Vitest React Testing Library Tests (348 Total Tests)**
 
 ---
 
@@ -17,6 +17,7 @@ graph TD
         Resilience["Storage Resilience, Offline Puffer & Debounce Batching"]
         SyncProtocol["Realtime SyncProtocol, Object Diffs & Disconnect Safeguards"]
         WildShape["Wild Shape Transformations & Natural Attack Allocations"]
+        AttrMods["RAW Ability Score Modifiers (attribute_modifiers_raw.test.js)"]
     end
 
     subgraph Tier2 ["Tier 2: Component & Interaction Invariants (Vitest + RTL)"]
@@ -40,7 +41,7 @@ graph TD
 
 | Scope | Command (PowerShell) | When to Use |
 |---|---|---|
-| **Core Suite** | `npm run test` | Validates all 311 rules, models, and storage suites |
+| **Core Suite** | `npm run test` | Validates all 314 rules, models, and storage suites |
 | **Single Suite** | `node --import ./Tests/setup.js --test Tests/<file>.test.js` | Fast, token-efficient feedback during feature development |
 | **UI Suite** | `npm run test:ui` | Runs all 34 Vitest + React Testing Library component tests |
 | **Full Validation** | `npm run test:all` | Complete pre-release check (Core tests + UI tests) |
@@ -51,6 +52,7 @@ graph TD
 ## 3. Test Domain Architecture
 
 ### 3.1 Rules & Mechanics Invariants (`Tests/*.test.js`)
+- **Ability & Attribute Modifiers (`attribute_modifiers_raw.test.js`):** Enforces RAW D&D 3.5e PHB Table 1-1 formula across all ability scores (1 through 25+) including negative penalty boundaries.
 - **Modifier Stacking Engine (`Stat.js`):** Enforces strict bonus type stacking (named bonuses of the same type do not stack; Dodge, Circumstance, and Untyped bonuses stack).
 - **Combat & Attack Engines (`AttackEngine.js`):** Validates iterative attack penalties, Two-Weapon Fighting offsets, Power Attack damage multipliers, and weapon critical ranges.
 - **Prestige Classes Engine (`prestigeClassEngine.js`):** Tests progression milestones, prerequisite validation, and automated feature grants across all 6 core prestige classes.

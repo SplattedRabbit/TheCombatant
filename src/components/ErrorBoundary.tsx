@@ -1,5 +1,12 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
 
+// App-owned localStorage keys — must stay in sync with js/state/StorageManager.js
+const APP_STORAGE_KEYS = [
+  'dd_combatsheet_state',
+  'dd_active_character_id',
+  'dd_active_campaign_id',
+];
+
 interface Props {
   children: ReactNode;
 }
@@ -29,7 +36,9 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   private handleReset = () => {
-    localStorage.clear();
+    // Only clear app-owned keys — do NOT call localStorage.clear() as it would
+    // destroy third-party state such as Supabase auth tokens, logging out the user.
+    APP_STORAGE_KEYS.forEach(key => localStorage.removeItem(key));
     window.location.reload();
   };
 

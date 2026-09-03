@@ -342,9 +342,8 @@ export class Combatant {
   getAttributeMod(attrName) {
     const attr = this[attrName];
     const score = attr ? (typeof attr.getValue === 'function' ? attr.getValue() : parseInt(attr) || 10) : 10;
-    return score >= 10
-      ? Math.floor((score - 10) / 2)
-      : (score === 9 || score === 8 ? -1 : (score === 7 || score === 6 ? -2 : (score === 5 || score === 4 ? -4 : -5)));
+    // RAW D&D 3.5e PHB p.8: floor((score - 10) / 2) — applies universally to all scores
+    return Math.floor((score - 10) / 2);
   }
 
   getSkillRanks(skillKey) {

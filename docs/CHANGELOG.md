@@ -3,6 +3,15 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.2] - 2026-09-03
+
+### Fixed
+- **D&D 3.5e RAW Ability Modifier Calculation (`Combatant.getAttributeMod`):** Fixed attribute modifier calculation for scores 1–9 by replacing the flawed ternary lookup table with the universal mathematical rule `Math.floor((score - 10) / 2)` (RAW PHB p.8), correctly resolving scores 3–5 to `-4` and `-3` instead of off-by-one errors. Added full regression test suite in `Tests/attribute_modifiers_raw.test.js`.
+- **Error Boundary Auth Persistence (`ErrorBoundary.tsx`):** Fixed crash recovery reset to selectively remove only application state keys (`dd_combatsheet_state`, `dd_active_character_id`, `dd_active_campaign_id`) instead of executing `localStorage.clear()`, preserving user authentication sessions in Supabase.
+- **Resilient Spell Database Loading (`spells.js`):** Upgraded `loadSpells()` to use `Promise.allSettled()`, ensuring supplemental book network/CDN dropouts do not block core PHB/PHB2 spell databases from loading.
+
+---
+
 ## [6.2.1] - 2026-09-02
 
 ### Fixed
