@@ -9,7 +9,30 @@ import {
   ASSASSIN_TABLE, SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE,
   DUSKBLADE_TABLE, BEGUILER_TABLE
 } from './RulesData.js';
-import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput } from '../spells.js';
+import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../spells.js';
+
+export function getSpellClassLevels(spell) {
+  if (!spell) return [];
+  if (Array.isArray(spell.classLevels) && spell.classLevels.length > 0) {
+    return spell.classLevels;
+  }
+  if (Array.isArray(spell.classes) && spell.classes.length > 0) {
+    const lvl = typeof spell.level === 'number' ? spell.level : 0;
+    return spell.classes.map(cls => ({ class: cls, level: lvl }));
+  }
+  return [];
+}
+
+export function isWizardProhibitedSchool(spell, pc) {
+  if (!pc?.classes?.some(c => c.classType === 'wizard') || !spell) return false;
+
+  const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
+  if (!schoolCode || schoolCode === 'univ') return false;
+
+  const prob1 = getSchoolCodeFromInput(pc.wizardProhibited1);
+  const prob2 = getSchoolCodeFromInput(pc.wizardProhibited2);
+  return schoolCode === prob1 || schoolCode === prob2;
+}
 
 export function getEffectiveCasterLevel(pc, classType) {
   if (!pc || !Array.isArray(pc.classes)) return 0;
@@ -122,6 +145,36 @@ export function calculateMaxSpellSlots(pc) {
   return hasCaster ? slots : { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 };
 }
 
+function isSpellAllowedByUnlimitedClass(pc, spell) {
+  const activeClasses = Array.isArray(pc?.classes) ? pc.classes : [];
+  const classLevels = getSpellClassLevels(spell);
+
+  return activeClasses.some(c => {
+    if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
+    if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) return false;
+    const clMatch = classLevels.find(cl => cl.class === c.classType);
+    if (!clMatch) return false;
+    const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
+    return clMatch.level <= maxLvl;
+  });
+}
+
+function countLearnedSpellsForClass(pc, classType, targetLevel, findSpellFn) {
+  const learnedKeys = Array.isArray(pc?.learnedSpells) ? pc.learnedSpells : [];
+  let count = 0;
+
+  for (const key of learnedKeys) {
+    const s = findSpellFn(key);
+    if (!s) continue;
+    if (isSpellAllowedByUnlimitedClass(pc, s)) continue;
+
+    const match = getSpellClassLevels(s).find(cl => cl.class === classType && cl.level === targetLevel);
+    if (match) count++;
+  }
+
+  return count;
+}
+
 export function checkSpellKnownLimit(pc, spell, findSpellFn) {
   if (!pc || !spell) return { success: true };
 
@@ -133,140 +186,66 @@ export function checkSpellKnownLimit(pc, spell, findSpellFn) {
   const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
   const sorcClass = activeClasses.find(c => c.classType === 'sorcerer');
   const bardClass = activeClasses.find(c => c.classType === 'bard');
-  // Beguiler is a spontaneous caster using a fixed all-class list — treated like Sorcerer for known-spell limits
   const beguilerClass = activeClasses.find(c => c.classType === 'beguiler');
 
   if (!sorcClass && !bardClass && !beguilerClass) {
     return { success: true };
   }
 
-  // Check if the spell is eligible via an unlimited caster class the PC has levels in
-  const isUnlimitedEligible = activeClasses.some(c => {
-    if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
-    if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) return false;
-    if (!Array.isArray(spell.classLevels)) return false;
-    const clMatch = spell.classLevels.find(cl => cl.class === c.classType);
-    if (!clMatch) return false;
-    const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
-    return clMatch.level <= maxLvl;
-  });
-
-  if (isUnlimitedEligible) {
+  if (isSpellAllowedByUnlimitedClass(pc, spell)) {
     return { success: true };
   }
 
-  // Check Sorcerer limit
+  const classLevels = getSpellClassLevels(spell);
+  const sorcMatch = classLevels.find(cl => cl.class === 'sorcerer');
+  const bardMatch = classLevels.find(cl => cl.class === 'bard');
+
   let sorcAllowed = false;
-  let sorcLvl = -1;
-  let maxSorcSpells = 0;
-  let currentSorcSpells = 0;
-
-  if (sorcClass) {
-    const sorcMatch = Array.isArray(spell.classLevels) && spell.classLevels.find(cl => cl.class === 'sorcerer');
-    if (sorcMatch) {
-      sorcLvl = sorcMatch.level;
-      const maxCastLvl = getMaxSpellLevel('sorcerer', getEffectiveCasterLevel(pc, 'sorcerer'));
-      if (sorcLvl <= maxCastLvl) {
-        const row = SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, getEffectiveCasterLevel(pc, 'sorcerer')))];
-        maxSorcSpells = row ? (row[sorcLvl] || 0) : 0;
-
-        // Count currently learned Sorcerer spells at this level (excluding unlimited ones)
-        const learnedKeys = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
-        learnedKeys.forEach(key => {
-          const s = findSpellFn(key);
-          if (!s) return;
-
-          // Check if unlimited
-          const sUnlimited = activeClasses.some(c => {
-            if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
-            if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) return false;
-            if (!Array.isArray(s.classLevels)) return false;
-            const clMatch = s.classLevels.find(cl => cl.class === c.classType);
-            if (!clMatch) return false;
-            const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
-            return clMatch.level <= maxLvl;
-          });
-          if (sUnlimited) return;
-
-          // Check if on sorcerer list at sorcLvl
-          if (Array.isArray(s.classLevels)) {
-            const match = s.classLevels.find(cl => cl.class === 'sorcerer' && cl.level === sorcLvl);
-            if (match) currentSorcSpells++;
-          }
-        });
-
-        if (currentSorcSpells < maxSorcSpells) {
-          sorcAllowed = true;
-        }
-      }
-    }
-  }
-
-  // Check Bard limit
   let bardAllowed = false;
-  let bardLvl = -1;
-  let maxBardSpells = 0;
-  let currentBardSpells = 0;
+  let sorcLvl = -1, maxSorc = 0, currentSorc = 0;
+  let bardLvl = -1, maxBard = 0, currentBard = 0;
 
-  if (bardClass) {
-    const bardMatch = Array.isArray(spell.classLevels) && spell.classLevels.find(cl => cl.class === 'bard');
-    if (bardMatch) {
-      bardLvl = bardMatch.level;
-      const maxCastLvl = getMaxSpellLevel('bard', getEffectiveCasterLevel(pc, 'bard'));
-      if (bardLvl <= maxCastLvl) {
-        const row = BARD_KNOWN_TABLE[Math.max(1, Math.min(20, getEffectiveCasterLevel(pc, 'bard')))];
-        maxBardSpells = row ? (row[bardLvl] || 0) : 0;
-
-        // Count currently learned Bard spells at this level (excluding unlimited ones)
-        const learnedKeys = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
-        learnedKeys.forEach(key => {
-          const s = findSpellFn(key);
-          if (!s) return;
-
-          // Check if unlimited
-          const sUnlimited = activeClasses.some(c => {
-            if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
-            if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) return false;
-            if (!Array.isArray(s.classLevels)) return false;
-            const clMatch = s.classLevels.find(cl => cl.class === c.classType);
-            if (!clMatch) return false;
-            const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
-            return clMatch.level <= maxLvl;
-          });
-          if (sUnlimited) return;
-
-          // Check if on bard list at bardLvl
-          if (Array.isArray(s.classLevels)) {
-            const match = s.classLevels.find(cl => cl.class === 'bard' && cl.level === bardLvl);
-            if (match) currentBardSpells++;
-          }
-        });
-
-        if (currentBardSpells < maxBardSpells) {
-          bardAllowed = true;
-        }
-      }
+  if (sorcClass && sorcMatch) {
+    sorcLvl = sorcMatch.level;
+    const maxCastLvl = getMaxSpellLevel('sorcerer', getEffectiveCasterLevel(pc, 'sorcerer'));
+    if (sorcLvl <= maxCastLvl) {
+      const row = SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, getEffectiveCasterLevel(pc, 'sorcerer')))];
+      maxSorc = row ? (row[sorcLvl] || 0) : 0;
+      currentSorc = countLearnedSpellsForClass(pc, 'sorcerer', sorcLvl, findSpellFn);
+      if (currentSorc < maxSorc) sorcAllowed = true;
     }
   }
 
-  // If the spell can be learned via Sorcerer or Bard, we allow it.
-  const hasSorcMatch = Array.isArray(spell.classLevels) && spell.classLevels.some(cl => cl.class === 'sorcerer');
-  const hasBardMatch = Array.isArray(spell.classLevels) && spell.classLevels.some(cl => cl.class === 'bard');
-
-  if ((sorcClass && hasSorcMatch) || (bardClass && hasBardMatch)) {
-    if (sorcAllowed || bardAllowed) {
-      return { success: true };
+  if (bardClass && bardMatch) {
+    bardLvl = bardMatch.level;
+    const maxCastLvl = getMaxSpellLevel('bard', getEffectiveCasterLevel(pc, 'bard'));
+    if (bardLvl <= maxCastLvl) {
+      const row = BARD_KNOWN_TABLE[Math.max(1, Math.min(20, getEffectiveCasterLevel(pc, 'bard')))];
+      maxBard = row ? (row[bardLvl] || 0) : 0;
+      currentBard = countLearnedSpellsForClass(pc, 'bard', bardLvl, findSpellFn);
+      if (currentBard < maxBard) bardAllowed = true;
     }
+  }
 
-    let errorMsg = "";
-    if (sorcClass && hasSorcMatch && bardClass && hasBardMatch) {
-      errorMsg = `Limit für bekannte Zauber des Grades ${sorcLvl} (Hexenmeister: ${currentSorcSpells}/${maxSorcSpells}) und des Grades ${bardLvl} (Barde: ${currentBardSpells}/${maxBardSpells}) überschritten!`;
-    } else if (sorcClass && hasSorcMatch) {
-      errorMsg = `Limit für bekannte Zauber des Grades ${sorcLvl} überschritten! (Hexenmeister: ${currentSorcSpells}/${maxSorcSpells})`;
-    } else {
-      errorMsg = `Limit für bekannte Zauber des Grades ${bardLvl} überschritten! (Barde: ${currentBardSpells}/${maxBardSpells})`;
+  if ((sorcClass && sorcMatch) || (bardClass && bardMatch)) {
+    if (sorcAllowed || bardAllowed) return { success: true };
+
+    if (sorcClass && sorcMatch && bardClass && bardMatch) {
+      return {
+        success: false,
+        error: `Limit für bekannte Zauber des Grades ${sorcLvl} (Hexenmeister: ${currentSorc}/${maxSorc}) und des Grades ${bardLvl} (Barde: ${currentBard}/${maxBard}) überschritten!`
+      };
     }
-    return { success: false, error: errorMsg };
+    if (sorcClass && sorcMatch) {
+      return {
+        success: false,
+        error: `Limit für bekannte Zauber des Grades ${sorcLvl} überschritten! (Hexenmeister: ${currentSorc}/${maxSorc})`
+      };
+    }
+    return {
+      success: false,
+      error: `Limit für bekannte Zauber des Grades ${bardLvl} überschritten! (Barde: ${currentBard}/${maxBard})`
+    };
   }
 
   return { success: false, error: "Dieser Zauber befindet sich nicht auf deiner Klassenliste." };
@@ -286,32 +265,80 @@ export function getAllCompendiumSpells(pc) {
 }
 
 export function isSpellEligibleForPC(spell, pc) {
-  if (!pc || !Array.isArray(pc.classes) || pc.classes.length === 0) {
-    return true;
+  if (!spell || !pc || !Array.isArray(pc.classes) || pc.classes.length === 0) {
+    return false;
   }
 
-  // Block spells belonging to wizard prohibited schools
-  const isWizard = pc.classes.some(c => c.classType === 'wizard');
-  if (isWizard) {
-    const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
-    if (schoolCode && schoolCode !== 'univ') {
-      const prob1 = getSchoolCodeFromInput(pc.wizardProhibited1);
-      const prob2 = getSchoolCodeFromInput(pc.wizardProhibited2);
-      if (schoolCode === prob1 || schoolCode === prob2) {
-        return false;
-      }
-    }
+  if (isWizardProhibitedSchool(spell, pc)) {
+    return false;
   }
 
-  if (!Array.isArray(spell.classLevels)) {
-    return true;
+  const classLevels = getSpellClassLevels(spell);
+  if (classLevels.length === 0) {
+    return false;
   }
+
   return pc.classes.some(c => {
-    const classMatch = spell.classLevels.find(cl => cl.class === c.classType);
+    const classMatch = classLevels.find(cl => cl.class === c.classType);
     if (!classMatch) return false;
+
+    if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) {
+      return false;
+    }
+
     const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
     return classMatch.level <= maxLvl;
   });
+}
+
+export function validateSpellLearnEligibility(pc, spell, findSpellFn) {
+  if (!pc || !spell) {
+    return { allowed: false, title: 'Ungültige Anfrage', reason: 'Zauber- oder Charakterdaten fehlen.' };
+  }
+
+  const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
+  if (activeClasses.length === 0) {
+    return { allowed: false, title: 'Keine Klasse', reason: 'Dein Charakter besitzt noch keine Klassenstufe.' };
+  }
+
+  const CASTER_CLASSES = ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger', 'duskblade', 'beguiler', 'assassin'];
+  const hasCasterClass = activeClasses.some(c => CASTER_CLASSES.includes(c.classType));
+  if (!hasCasterClass) {
+    return {
+      allowed: false,
+      title: 'Kein Zauberwirker',
+      reason: 'Deine Klasse besitzt kein Zauberbuch und kann keine Zauber erlernen.'
+    };
+  }
+
+  if (isWizardProhibitedSchool(spell, pc)) {
+    const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
+    const label = getSchoolLabel ? getSchoolLabel(schoolCode) : schoolCode;
+    return {
+      allowed: false,
+      title: 'Verbotene Schule',
+      reason: `Du kannst "${spell.nameEn || spell.nameDe}" nicht lernen, da er deiner Bannschule "${label}" angehört!`
+    };
+  }
+
+  if (!isSpellEligibleForPC(spell, pc)) {
+    return {
+      allowed: false,
+      title: 'Nicht erlernbar',
+      reason: `"${spell.nameEn || spell.nameDe}" steht nicht auf der Zauberliste deiner Klasse(n) bzw. übersteigt deinen maximal verfügbaren Zaubergrad!`
+    };
+  }
+
+  const knownCheck = checkSpellKnownLimit(pc, spell, findSpellFn);
+  if (!knownCheck.success) {
+    return {
+      allowed: false,
+      title: 'Zauberlimit erreicht',
+      reason: knownCheck.error || 'Du kannst keine weiteren bekannten Zauber dieses Grades erlernen.'
+    };
+  }
+
+  return { allowed: true };
 }
 
 export function getEligibleSpellLevelsForPC(pc) {

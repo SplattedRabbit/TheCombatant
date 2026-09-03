@@ -80,6 +80,9 @@ declare module '@core/rules.js' {
   export const getAllCompendiumSpells: (...args: any[]) => any[];
   export const isSpellEligibleForPC: (...args: any[]) => boolean;
   export const getEligibleSpellLevelsForPC: (...args: any[]) => number[];
+  export const validateSpellLearnEligibility: (pc: any, spell: any, findSpellFn: (k: string) => any) => { allowed: boolean; title?: string; reason?: string };
+  export const getSpellClassLevels: (spell: any) => Array<{ class: string; level: number }>;
+  export const isWizardProhibitedSchool: (spell: any, pc: any) => boolean;
   export const checkPrerequisites: (...args: any[]) => any;
   export const validatePrestigeClassPrereqs: (...args: any[]) => any;
   export const isOnlySpecialTextUnmet: (validation: { success: boolean; metDetails: any[] }) => boolean;

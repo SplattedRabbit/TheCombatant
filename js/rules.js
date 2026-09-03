@@ -38,7 +38,12 @@ import {
 import {
   getMaxSpellLevel,
   calculateMaxSpellSlots,
-  checkSpellKnownLimit
+  checkSpellKnownLimit,
+  isSpellEligibleForPC,
+  getEligibleSpellLevelsForPC,
+  validateSpellLearnEligibility,
+  getSpellClassLevels,
+  isWizardProhibitedSchool
 } from './rules/RulesSpells.js';
 
 import {
@@ -91,6 +96,11 @@ export const CombatRules = {
   getMaxSpellLevel,
   calculateMaxSpellSlots,
   checkSpellKnownLimit,
+  isSpellEligibleForPC,
+  getEligibleSpellLevelsForPC,
+  validateSpellLearnEligibility,
+  getSpellClassLevels,
+  isWizardProhibitedSchool,
   calculateMaxFeats,
   validateFeatsAssignment,
   validatePrestigeClassPrereqs,
@@ -114,7 +124,10 @@ export {
 export {
   getAllCompendiumSpells,
   isSpellEligibleForPC,
-  getEligibleSpellLevelsForPC
+  getEligibleSpellLevelsForPC,
+  validateSpellLearnEligibility,
+  getSpellClassLevels,
+  isWizardProhibitedSchool
 } from './rules/RulesSpells.js';
 
 export {

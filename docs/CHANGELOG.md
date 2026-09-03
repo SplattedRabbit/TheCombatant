@@ -3,6 +3,23 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.3.1] - 2026-09-03
+
+### Fixed
+- **Spell Eligibility & Learning Validation Engine (`RulesSpells.js`):**
+  - Implemented `validateSpellLearnEligibility` to guard spell learning in all dialogs and compendiums against class mismatch, caster level caps, and prohibited schools.
+  - Hardened `isSpellEligibleForPC`: removed permissive fallback for missing `classLevels` and enforced strict spellcasting class check (non-casters cannot learn spells; Paladin/Ranger unlocked at CL 4+).
+  - Added `getSpellClassLevels` helper with seamless fallback to `classes` and `level`.
+  - Refactored `checkSpellKnownLimit` with `countLearnedSpellsForClass` helper to eliminate duplication.
+- **Spell Data Normalization Across All Books:**
+  - Added missing `classLevels` arrays for all spells in `spells-phb2.json` (*Arcane Turmoil*, *Dimension Hop*, *Chimeric Curve*, *Evard's Menacing Tentacles*, *Ray of Deanimation*, *Seeking Ray*), `spells-ca.json` (*Baleful Transposition*, *Arrow Mind*, *Aura of Evasion*, *Blindsight*, *Sniper's Eye*), `spells-phb.json` (Alignment Domain spells), and `spells-cs.json`.
+- **UI Guardrails & Reactive Guidance (`PCSpellCompendium.tsx` & `SpellDetailsDialog.tsx`):**
+  - Fixed filter checkbox *"Only show spells matching my class & level"* to strictly exclude foreign class spells.
+  - Visually dimmed ineligible spells in browsing mode and hooked `[+ Book]` to informative explanation dialogs.
+  - Updated `SpellDetailsDialog` footer to render class-ineligibility reasons and prevent invalid additions.
+- **Test Suite Expansion:**
+  - Added `Tests/spell_eligibility_validation.test.js` (5 test suites verifying cross-class restrictions, non-caster blocking, and auditing all 461 spells for valid `classLevels`). Total test suite now stands at 325 passing tests.
+
 ## [6.3.0] - 2026-09-03
 
 ### Added

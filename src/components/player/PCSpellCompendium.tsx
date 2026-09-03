@@ -9,8 +9,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { CombatState } from '@core/state.js';
-import { getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '@core/spells.js';
-import { CombatRules, getEligibleSpellLevelsForPC, isSpellEligibleForPC, getAllCompendiumSpells } from '@core/rules.js';
+import { getEligibleSpellLevelsForPC, isSpellEligibleForPC, getAllCompendiumSpells, validateSpellLearnEligibility } from '@core/rules.js';
 import { showCustomConfirm, showCustomAlert, showSpellDetailsDialog, showSpellCreatorWizard } from '@core/ui/components/dialogs.js';
 import { findSpell } from './PCSpellbookTab';
 
@@ -31,7 +30,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
   const isCaster = hasClasses && pc.classes.some((c: any) =>
-    ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger', 'duskblade', 'beguiler'].includes(c.classType)
+    ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger', 'duskblade', 'beguiler', 'assassin'].includes(c.classType)
   );
 
   const eligibleLevels = useMemo<number[]>(() => {
@@ -70,25 +69,9 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
   const handleLearnSpell = (key: string) => {
     const spell = findSpell(pc, key);
     if (spell) {
-      const isWizard = pc.classes && pc.classes.some((c: any) => c.classType === 'wizard');
-      if (isWizard) {
-        const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
-        if (schoolCode && schoolCode !== 'univ') {
-          const prob1 = getSchoolCodeFromInput(pc.wizardProhibited1);
-          const prob2 = getSchoolCodeFromInput(pc.wizardProhibited2);
-          if (schoolCode === prob1 || schoolCode === prob2) {
-            showCustomAlert(
-              "Prohibited School",
-              `You cannot learn the spell "${spell.nameEn || spell.nameDe}" because it belongs to your prohibited school "${getSchoolLabel(schoolCode)}"!`
-            );
-            return;
-          }
-        }
-      }
-      // Check spells known limit (Bug #8)
-      const check = CombatRules.checkSpellKnownLimit(pc, spell, (k: string) => findSpell(pc, k));
-      if (!check.success) {
-        showCustomAlert("Spell Limit Exceeded", check.error || "You cannot learn any more known spells of this level.");
+      const validation = validateSpellLearnEligibility(pc, spell, (k: string) => findSpell(pc, k));
+      if (!validation.allowed) {
+        showCustomAlert(validation.title || "Spell Not Eligible", validation.reason || "You cannot learn this spell.");
         return;
       }
     }
@@ -206,6 +189,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
           filteredSpells.slice(0, visibleLimit).map(s => {
             const isLearned = learnedSpellsSet.has(s.id);
             const isCustom = String(s.id).startsWith('custom_');
+            const isEligible = isSpellEligibleForPC(s, pc);
 
             return (
               <div key={s.id} className="compendium-spell-item" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.25)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '3px 5px', fontSize: '9px' }}>
@@ -226,7 +210,15 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
                     <button
                       onClick={() => handleLearnSpell(s.id)}
                       className="btn learn-spell-btn"
-                      style={{ fontSize: '7.5px', padding: '1px 4px', borderColor: '#c8a96e', color: '#c8a96e', fontWeight: 'bold' }}
+                      style={{
+                        fontSize: '7.5px',
+                        padding: '1px 4px',
+                        borderColor: isEligible ? '#c8a96e' : 'rgba(160, 140, 110, 0.4)',
+                        color: isEligible ? '#c8a96e' : 'var(--inkl)',
+                        opacity: isEligible ? 1 : 0.65,
+                        fontWeight: 'bold'
+                      }}
+                      title={isEligible ? "Add to spellbook" : "Not on your class spell list"}
                     >
                       + Book
                     </button>

@@ -52,7 +52,17 @@
     "duration": "Instantaneous",
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "Will partial",
-    "sr": "Yes"
+    "sr": "Yes",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ]
   },
   "blade_brothers": {
     "id": "blade_brothers",
@@ -199,7 +209,17 @@
     "duration": "1 round/level",
     "range": "Personal",
     "save": "None",
-    "sr": "No"
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 4
+      },
+      {
+        "class": "wizard",
+        "level": 4
+      }
+    ]
   },
   "deflect": {
     "id": "deflect",
@@ -245,7 +265,17 @@
     "duration": "Instantaneous",
     "range": "Touch",
     "save": "Will negates",
-    "sr": "Yes"
+    "sr": "Yes",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ]
   },
   "energy_aegis": {
     "id": "energy_aegis",
@@ -296,7 +326,17 @@
     "duration": "1 round/level",
     "range": "Personal",
     "save": "None",
-    "sr": "No"
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ]
   },
   "greater_celerity": {
     "id": "greater_celerity",
@@ -678,7 +718,17 @@
     "duration": "Instantaneous",
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "None",
-    "sr": "Yes"
+    "sr": "Yes",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 4
+      },
+      {
+        "class": "wizard",
+        "level": 4
+      }
+    ]
   },
   "seeking_ray": {
     "id": "seeking_ray",
@@ -694,7 +744,17 @@
     "duration": "Instantaneous",
     "range": "Medium (100 ft. + 10 ft./level)",
     "save": "None",
-    "sr": "Yes"
+    "sr": "Yes",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ]
   },
   "stay_the_hand": {
     "id": "stay_the_hand",

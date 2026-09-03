@@ -104,3 +104,25 @@ test('Spellbook Audit - Complete Adventurer (CA) Completeness & Health', () => {
     assert.ok(ca[id].description, `${id} must have description`);
   }
 });
+
+test('Spellbook Audit - Complete Scoundrel (CS) Completeness & Health', () => {
+  const csPath = path.resolve(__dirname, '../data/spells-cs.json');
+  const cs = JSON.parse(fs.readFileSync(csPath, 'utf8'));
+
+  const requiredCsSpells = [
+    'blockade',
+    'armor_lock',
+    'spell_theft',
+    'lucky_streak',
+    'assassins_darkness',
+    'smugglers_covet'
+  ];
+
+  for (const id of requiredCsSpells) {
+    assert.ok(cs[id], `CS spell ${id} must be registered`);
+    assert.ok(cs[id].nameEn, `${id} must have nameEn`);
+    assert.ok(typeof cs[id].level === 'number', `${id} must have level`);
+    assert.ok(cs[id].description, `${id} must have description`);
+    assert.ok(Array.isArray(cs[id].classLevels) && cs[id].classLevels.length > 0, `${id} must have classLevels`);
+  }
+});

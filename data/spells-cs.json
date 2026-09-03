@@ -5,12 +5,25 @@
     "nameEn": "Blockade",
     "level": 1,
     "school": "Conjuration",
-    "classes": ["druid", "ranger"],
+    "classes": [
+      "druid",
+      "ranger"
+    ],
     "description": "Fills a 5-ft. square with an enormous block of wood, providing cover and blocking movement. Created as a swift action.",
     "duration": "3 rounds",
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "None",
-    "sr": "No"
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 1
+      },
+      {
+        "class": "ranger",
+        "level": 1
+      }
+    ]
   },
   "armor_lock": {
     "id": "armor_lock",
@@ -18,12 +31,20 @@
     "nameEn": "Armor Lock",
     "level": 1,
     "school": "Transmutation",
-    "classes": ["bard"],
+    "classes": [
+      "bard"
+    ],
     "description": "Target's armor becomes restrictive and locks up. Target's speed is reduced to 10 ft. and take extra armor check penalties.",
     "duration": "1 round/level",
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "Reflex negates",
-    "sr": "Yes"
+    "sr": "Yes",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 1
+      }
+    ]
   },
   "spell_theft": {
     "id": "spell_theft",
@@ -31,12 +52,20 @@
     "nameEn": "Spell Theft",
     "level": 4,
     "school": "Abjuration",
-    "classes": ["bard"],
+    "classes": [
+      "bard"
+    ],
     "description": "Make a dispel check. For each active spell successfully dispelled from the target, you gain the benefits of that spell for the remainder of its duration.",
     "duration": "Instantaneous",
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "None",
-    "sr": "No"
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 4
+      }
+    ]
   },
   "lucky_streak": {
     "id": "lucky_streak",
@@ -44,12 +73,20 @@
     "nameEn": "Lucky Streak",
     "level": 1,
     "school": "Divination",
-    "classes": ["bard"],
+    "classes": [
+      "bard"
+    ],
     "description": "Subject gains a +2 luck bonus on rerolls made with luck feats for the duration of the spell.",
     "duration": "1 round/level",
     "range": "Touch",
     "save": "Will negates (harmless)",
-    "sr": "Yes (harmless)"
+    "sr": "Yes (harmless)",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 1
+      }
+    ]
   },
   "assassins_darkness": {
     "id": "assassins_darkness",
@@ -57,12 +94,29 @@
     "nameEn": "Assassin's Darkness",
     "level": 4,
     "school": "Illusion",
-    "classes": ["wizard", "sorcerer"],
+    "classes": [
+      "wizard",
+      "sorcerer"
+    ],
     "description": "Creates a 20-ft. radius globe of magical darkness. Only the caster can see normally through this darkness.",
     "duration": "1 round/level",
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "None",
-    "sr": "No"
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 4
+      },
+      {
+        "class": "wizard",
+        "level": 4
+      },
+      {
+        "class": "assassin",
+        "level": 4
+      }
+    ]
   },
   "smugglers_covet": {
     "id": "smugglers_covet",
@@ -70,11 +124,19 @@
     "nameEn": "Smuggler's Covet",
     "level": 3,
     "school": "Abjuration",
-    "classes": ["bard"],
+    "classes": [
+      "bard"
+    ],
     "description": "Masks the magical aura of items carried in a pocket or pouch, making them undetectable to detect magic spells.",
     "duration": "1 hour/level",
     "range": "Touch",
     "save": "None",
-    "sr": "No"
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 3
+      }
+    ]
   }
 }

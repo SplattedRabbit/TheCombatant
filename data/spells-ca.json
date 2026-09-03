@@ -14,7 +14,21 @@
     "duration": "1 min./level",
     "range": "Personal",
     "save": "None",
-    "sr": "No"
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "ranger",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      }
+    ]
   },
   "aura_of_evasion": {
     "id": "aura_of_evasion",
@@ -32,7 +46,17 @@
     "duration": "1 round/level",
     "range": "Personal",
     "save": "None",
-    "sr": "No"
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 5
+      },
+      {
+        "class": "druid",
+        "level": 5
+      }
+    ]
   },
   "baleful_transposition": {
     "id": "baleful_transposition",
@@ -48,7 +72,17 @@
     "duration": "Instantaneous",
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "Will negates",
-    "sr": "Yes"
+    "sr": "Yes",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ]
   },
   "bladeweave": {
     "id": "bladeweave",
@@ -98,7 +132,17 @@
     "duration": "1 min./level",
     "range": "Touch",
     "save": "Will negates",
-    "sr": "Yes"
+    "sr": "Yes",
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 2
+      },
+      {
+        "class": "cleric",
+        "level": 3
+      }
+    ]
   },
   "critical_strike": {
     "id": "critical_strike",
@@ -259,7 +303,17 @@
     "duration": "1 round/level",
     "range": "Personal",
     "save": "None",
-    "sr": "No"
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "assassin",
+        "level": 4
+      },
+      {
+        "class": "ranger",
+        "level": 4
+      }
+    ]
   },
   "sonic_weapon": {
     "id": "sonic_weapon",

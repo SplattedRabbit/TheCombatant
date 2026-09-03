@@ -1179,7 +1179,12 @@
     "nameEn": "Chaos Hammer",
     "school": "Evocation [Chaotic]",
     "level": 4,
-    "classLevels": [],
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 4
+      }
+    ],
     "components": "V, S",
     "castingTime": "1 standard action",
     "range": "Medium (100 ft. + 10 ft./level)",
@@ -4887,7 +4892,12 @@
     "nameEn": "Holy Smite",
     "school": "Evocation [Good]",
     "level": 4,
-    "classLevels": [],
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 4
+      }
+    ],
     "components": "V, S",
     "castingTime": "1 standard action",
     "range": "Medium (100 ft. + 10 ft./level)",
@@ -6674,7 +6684,12 @@
     "nameEn": "Order’s Wrath",
     "school": "Evocation [Lawful]",
     "level": 4,
-    "classLevels": [],
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 4
+      }
+    ],
     "components": "V, S",
     "castingTime": "1 standard action",
     "range": "Medium (100 ft. + 10 ft./level)",
@@ -10367,7 +10382,12 @@
     "nameEn": "Unholy Blight",
     "school": "Evocation [Evil]",
     "level": 4,
-    "classLevels": [],
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 4
+      }
+    ],
     "components": "V, S",
     "castingTime": "1 standard action",
     "range": "Medium (100 ft. + 10 ft./level)",

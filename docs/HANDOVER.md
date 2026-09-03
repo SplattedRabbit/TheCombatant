@@ -1,16 +1,16 @@
-# Übergabe & Systemstatus (v6.3.0) — The Combatant
+# Übergabe & Systemstatus (v6.3.1) — The Combatant
 
 ## 🚀 Copy-Paste Prompt für den neuen Rechner / neuen Chat
 
 ```markdown
-Wir setzen die Entwicklung von The Combatant auf Basis von Branch `main` (Commit `46b467a` / aktueller Stand) fort. 
+Wir setzen die Entwicklung von The Combatant auf Basis von Branch `main` (Version v6.3.1 / aktueller Stand) fort. 
 Zuletzt abgeschlossen:
-1. Vollständige Zauberbücher für PHB (414 Spells), PHB II (27 Spells) und Complete Adventurer (14 Spells) inkl. Bereinigung aller fehlerhaften Keys, Beschreibungs-Header und Einbindung fehlender Core-Spells (u.a. Cure Minor Wounds, Read Magic, Comprehend Languages, Iron Silence, Alter Fortune).
-2. Vollständige Feat-Integration aus PHB, PHB II und Complete Adventurer (~60 CA Feats).
-3. Korrektur der Talent-Progression auf RAW D&D 3.5e (Level 1, 3, 6, 9, 12, 15, 18).
-4. Vereinheitlichung der Prerequisite-Engine mit Klarnamen für Skills & Klassen sowie Prüfung aller Klassenmerkmale (Trapfinding, Smite Evil, Evasion etc.).
-5. Optische & typografische Angleichung des Spell-Popups (SpellDetailsDialog.tsx) an das Ancient Parchment Feat-Popup.
-Alle 319 automatisierten Tests und TypeScript-Checks sind 100% grün.
+1. Vollständige Zauberbücher für PHB (414 Spells), PHB II (27 Spells), Complete Adventurer (14 Spells) und Complete Scoundrel (6 Spells) mit normalisierten classLevels für alle 461 Zauber.
+2. Gehärtete Zauber-Validierungs- und Prerequisite-Engine: Charaktere können nur Zauber ihrer eigenen Klasse und Zauberstufe lernen; Sperrung für Nicht-Zauberer und Bannschulen; verlässliche Filter-Checkbox.
+3. Vollständige Feat-Integration aus PHB, PHB II und Complete Adventurer (~60 CA Feats).
+4. Korrektur der Talent-Progression auf RAW D&D 3.5e (Level 1, 3, 6, 9, 12, 15, 18).
+5. Optische & typografische Angleichung des Spell-Popups (SpellDetailsDialog.tsx) an das Ancient Parchment Feat-Popup mit Klassenberechtigungs-Feedback.
+Alle 325 automatisierten Tests und TypeScript-Checks sind 100% grün.
 ```
 
 ---
@@ -19,10 +19,10 @@ Alle 319 automatisierten Tests und TypeScript-Checks sind 100% grün.
 
 * **Repository:** `https://github.com/SplattedRabbit/TheCombatant.git`
 * **Branch:** `main`
-* **Release-Version:** `v6.3.0`
-* **Test-Suite:** 319 Node-Tests (`npm test`) & Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **100% grün, 0 Fehler**.
+* **Release-Version:** `v6.3.1`
+* **Test-Suite:** 325 Node-Tests (`npm test`) & Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **100% grün, 0 Fehler**.
 * **TypeScript-Prüfung:** `npm run typecheck` $\rightarrow$ **0 Fehler**.
-* **Produktions-Build:** `npm run build` $\rightarrow$ Service-Worker Precache `v195`.
+* **Produktions-Build:** `npm run build` $\rightarrow$ Service-Worker Precache `v198`.
 
 ---
 

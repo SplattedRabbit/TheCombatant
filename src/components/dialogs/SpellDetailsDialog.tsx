@@ -1,6 +1,6 @@
 import React from 'react';
 import { CombatState } from '@core/state.js';
-import { getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel, CombatSpells } from '@core/spells.js';
+import { CombatSpells } from '@core/spells.js';
 import { CombatRules } from '@core/rules.js';
 
 function findSpell(pc: any, key: string) {
@@ -26,6 +26,10 @@ interface SpellDetailsDialogProps {
 
 export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, spellKey, pc, onClose }) => {
   const isLearned = Array.isArray(pc.learnedSpells) && pc.learnedSpells.includes(spellKey);
+  const learnEligibility = React.useMemo(() => {
+    if (isLearned || !spell) return { allowed: true };
+    return CombatRules.validateSpellLearnEligibility(pc, spell, (k: string) => findSpell(pc, k));
+  }, [isLearned, spell, pc]);
 
   const handleToggleLearn = () => {
     const activePC = CombatState.getActivePC();
@@ -41,24 +45,9 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
       // Unlearn
     } else {
       if (spell) {
-        const isWizard = activePC.classes?.some((c: any) => c.classType === 'wizard');
-        if (isWizard) {
-          const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
-          if (schoolCode && schoolCode !== 'univ') {
-            const prob1 = getSchoolCodeFromInput(activePC.wizardProhibited1);
-            const prob2 = getSchoolCodeFromInput(activePC.wizardProhibited2);
-            if (schoolCode === prob1 || schoolCode === prob2) {
-              showCustomAlert(
-                'Prohibited School',
-                `You cannot learn the spell "${spell.nameEn || spell.nameDe}" because it belongs to the prohibited school "${getSchoolLabel(schoolCode)}"!`
-              );
-              return;
-            }
-          }
-        }
-        const check = CombatRules.checkSpellKnownLimit(activePC, spell, (k: string) => findSpell(activePC, k));
-        if (!check.success) {
-          showCustomAlert('Spell Limit Exceeded', check.error || 'You cannot learn any more known spells of this level.');
+        const validation = CombatRules.validateSpellLearnEligibility(activePC, spell, (k: string) => findSpell(activePC, k));
+        if (!validation.allowed) {
+          showCustomAlert(validation.title || 'Spell Not Eligible', validation.reason || 'You cannot learn this spell.');
           return;
         }
       }
@@ -274,8 +263,12 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
         {/* Action Footer */}
         <div style={{ marginTop: '4px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
-            <div style={{ fontSize: '10px', color: isLearned ? '#8b1a1a' : 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)', letterSpacing: '0.3px' }}>
-              {isLearned ? 'This spell is currently in your spellbook.' : 'Do you want to learn this spell?'}
+            <div style={{ fontSize: '10px', color: isLearned ? '#8b1a1a' : (learnEligibility.allowed ? 'var(--red)' : '#8b1a1a'), fontWeight: 'bold', fontFamily: 'var(--font-title)', letterSpacing: '0.3px', textAlign: 'center', padding: '0 8px' }}>
+              {isLearned
+                ? 'This spell is currently in your spellbook.'
+                : learnEligibility.allowed
+                ? 'Do you want to learn this spell?'
+                : (learnEligibility.reason || 'This spell cannot be learned by your class.')}
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', width: '100%' }}>
               <button
@@ -286,14 +279,16 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
                   fontSize: '9px',
                   padding: '4px 22px',
                   cursor: 'pointer',
-                  background: isLearned ? 'rgba(139, 26, 26, 0.1)' : 'rgba(42, 106, 42, 0.1)',
-                  border: `1px solid ${isLearned ? '#8b1a1a' : '#2a6a2a'}`,
+                  background: isLearned ? 'rgba(139, 26, 26, 0.1)' : (learnEligibility.allowed ? 'rgba(42, 106, 42, 0.1)' : 'rgba(0, 0, 0, 0.05)'),
+                  border: `1px solid ${isLearned ? '#8b1a1a' : (learnEligibility.allowed ? '#2a6a2a' : 'rgba(139, 26, 26, 0.4)')}`,
                   borderRadius: '2px',
-                  color: isLearned ? '#8b1a1a' : '#2a6a2a',
+                  color: isLearned ? '#8b1a1a' : (learnEligibility.allowed ? '#2a6a2a' : 'var(--inkl)'),
+                  opacity: (!isLearned && !learnEligibility.allowed) ? 0.65 : 1,
                   fontWeight: 'bold',
                   transition: 'background-color 0.15s, color 0.15s',
                   outline: 'none'
                 }}
+                title={!isLearned && !learnEligibility.allowed ? learnEligibility.reason : undefined}
               >
                 {isLearned ? 'Unlearn' : 'Learn'}
               </button>
