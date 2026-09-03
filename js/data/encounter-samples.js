@@ -5,7 +5,7 @@
  */
 
 export const aranisSample = {
-  name: 'Aranis Silberklinge',
+  name: 'Aranis Silverblade',
   init: 6,
   hp: 34,
   maxHP: 34,
@@ -32,16 +32,16 @@ export const aranisSample = {
   classes: [{ classType: 'paladin', level: 3 }],
   autoAC: true,
   weapons: [
-    { name: 'Meisterwerk-Langschwert +1', type: 'longsword', attackBonus: '', damageDice: '1w8', crit: '19-20 / x2', grip: '1h', enhancement: 1, isEquipped: true, hand: 'main' },
-    { name: 'Langbogen', type: 'longbow', attackBonus: '', damageDice: '1w8', crit: 'x3', grip: 'rng', enhancement: 0, isEquipped: false }
+    { name: 'Masterwork Longsword +1', type: 'longsword', attackBonus: '', damageDice: '1d8', crit: '19-20 / x2', grip: '1h', enhancement: 1, isEquipped: true, hand: 'main' },
+    { name: 'Longbow', type: 'longbow', attackBonus: '', damageDice: '1d8', crit: 'x3', grip: 'rng', enhancement: 0, isEquipped: false }
   ],
   armors: [
-    { name: 'Brustpanzer', type: 'breastplate', enhancement: 0, isEquipped: true },
-    { name: 'Schwerer Stahlschild', type: 'shield_heavy_steel', enhancement: 0, isEquipped: true, isShield: true }
+    { name: 'Breastplate', type: 'breastplate', enhancement: 0, isEquipped: true },
+    { name: 'Heavy Steel Shield', type: 'shield_heavy_steel', enhancement: 0, isEquipped: true, isShield: true }
   ],
   items: [
     {
-      name: 'Schutzring +1',
+      name: 'Ring of Protection +1',
       slot: 'ring1',
       isEquipped: true,
       effects: [{ type: 'ac', target: 'deflection', value: 1, bonusType: 'deflection' }]
@@ -106,13 +106,13 @@ export const aranisSample = {
     1: { max: 1, used: 0 }
   },
   dailyAbilities: [
-    { name: 'Hände auflegen', max: 6, used: 0 },
-    { name: 'Böses niederstrecken', max: 1, used: 0 }
+    { name: 'Lay on Hands', max: 6, used: 0 },
+    { name: 'Smite Evil', max: 1, used: 0 }
   ]
 };
 
 export const morgwenSample = {
-  name: 'Morgwen Hüterin',
+  name: 'Morgwen Warden',
   init: 0,
   hp: 24,
   maxHP: 24,
@@ -139,15 +139,15 @@ export const morgwenSample = {
   classes: [{ classType: 'cleric', level: 3 }],
   autoAC: true,
   weapons: [
-    { name: 'Streitkolben +1', type: 'heavy_mace', attackBonus: '', damageDice: '1w8', crit: 'x2', grip: '1h', enhancement: 1, isEquipped: true, hand: 'main' }
+    { name: 'Heavy Mace +1', type: 'heavy_mace', attackBonus: '', damageDice: '1d8', crit: 'x2', grip: '1h', enhancement: 1, isEquipped: true, hand: 'main' }
   ],
   armors: [
-    { name: 'Schuppenpanzer', type: 'scale_mail', enhancement: 0, isEquipped: true },
-    { name: 'Schwerer Holzschild', type: 'shield_heavy_wooden', enhancement: 0, isEquipped: true, isShield: true }
+    { name: 'Scale Mail', type: 'scale_mail', enhancement: 0, isEquipped: true },
+    { name: 'Heavy Wooden Shield', type: 'shield_heavy_wooden', enhancement: 0, isEquipped: true, isShield: true }
   ],
   items: [
     {
-      name: 'Amulett der Weisheit +2',
+      name: 'Periapt of Wisdom +2',
       slot: 'neck',
       isEquipped: true,
       effects: [{ type: 'attribute', target: 'wis', value: 2, bonusType: 'enhancement' }]
@@ -218,7 +218,7 @@ export const morgwenSample = {
 };
 
 export const thordakSample = {
-  name: 'Thordak Eisenfaust',
+  name: 'Thordak Ironfist',
   init: 1,
   hp: 52,
   maxHP: 52,
@@ -248,15 +248,15 @@ export const thordakSample = {
   ],
   autoAC: true,
   weapons: [
-    { name: 'Zweihändige Streitaxt +1', type: 'greataxe', attackBonus: '', damageDice: '1w12', crit: 'x3', grip: '2h', enhancement: 1, isEquipped: true, hand: 'main' },
-    { name: 'Wurfaxt', type: 'throwing_axe', attackBonus: '', damageDice: '1w6', crit: 'x2', grip: 'rng', enhancement: 0, isEquipped: false }
+    { name: 'Greataxe +1', type: 'greataxe', attackBonus: '', damageDice: '1d12', crit: 'x3', grip: '2h', enhancement: 1, isEquipped: true, hand: 'main' },
+    { name: 'Throwing Axe', type: 'throwing_axe', attackBonus: '', damageDice: '1d6', crit: 'x2', grip: 'rng', enhancement: 0, isEquipped: false }
   ],
   armors: [
-    { name: 'Bänderpanzer +1', type: 'banded_mail', enhancement: 1, isEquipped: true }
+    { name: 'Banded Mail +1', type: 'banded_mail', enhancement: 1, isEquipped: true }
   ],
   items: [
     {
-      name: 'Gürtel der Riesenstärke +2',
+      name: 'Belt of Giant Strength +2',
       slot: 'waist',
       isEquipped: true,
       effects: [{ type: 'attribute', target: 'str', value: 2, bonusType: 'enhancement' }]
@@ -319,12 +319,12 @@ export const thordakSample = {
     { id: 'weapon_specialization', option: 'Greataxe' }
   ],
   dailyAbilities: [
-    { name: 'Kampfrausch (Rage)', max: 1, used: 0 }
+    { name: 'Rage', max: 1, used: 0 }
   ]
 };
 
 export const lysaraSample = {
-  name: 'Lysara d. Mystikerin',
+  name: 'Lysara the Mystic',
   init: 6,
   hp: 18,
   maxHP: 18,
@@ -352,19 +352,19 @@ export const lysaraSample = {
   classes: [{ classType: 'wizard', level: 3 }],
   autoAC: true,
   weapons: [
-    { name: 'Magischer Dolch +1', type: 'dagger', attackBonus: '', damageDice: '1w4', crit: '19-20 / x2', grip: '1h', enhancement: 1, isEquipped: true, hand: 'main' },
-    { name: 'Leichte Armbrust', type: 'light_crossbow', attackBonus: '', damageDice: '1w8', crit: '19-20 / x2', grip: 'rng', enhancement: 0, isEquipped: false }
+    { name: 'Dagger +1', type: 'dagger', attackBonus: '', damageDice: '1d4', crit: '19-20 / x2', grip: '1h', enhancement: 1, isEquipped: true, hand: 'main' },
+    { name: 'Light Crossbow', type: 'light_crossbow', attackBonus: '', damageDice: '1d8', crit: '19-20 / x2', grip: 'rng', enhancement: 0, isEquipped: false }
   ],
   armors: [],
   items: [
     {
-      name: 'Stirnreif des Intellekts +2',
+      name: 'Headband of Intellect +2',
       slot: 'head',
       isEquipped: true,
       effects: [{ type: 'attribute', target: 'int', value: 2, bonusType: 'enhancement' }]
     },
     {
-      name: 'Schutzring +1',
+      name: 'Ring of Protection +1',
       slot: 'ring1',
       isEquipped: true,
       effects: [{ type: 'ac', target: 'deflection', value: 1, bonusType: 'deflection' }]
@@ -451,7 +451,7 @@ export const lysaraSample = {
 };
 
 export const wizardLvl10Sample = {
-  name: 'Lysara die Erhabene',
+  name: 'Lysara the Exalted',
   init: 6,
   hp: 45,
   maxHP: 45,
@@ -479,8 +479,8 @@ export const wizardLvl10Sample = {
   classes: [{ classType: 'wizard', level: 10 }],
   autoAC: true,
   weapons: [
-    { name: 'Magischer Viertelstab +1', type: 'quarterstaff', attackBonus: '', damageDice: '1w6', crit: 'x2', grip: '2h', enhancement: 1, isEquipped: true, hand: 'main' },
-    { name: 'Leichte Armbrust +1', type: 'light_crossbow', attackBonus: '', damageDice: '1w8', crit: '19-20 / x2', grip: 'rng', enhancement: 1, isEquipped: false }
+    { name: 'Quarterstaff +1', type: 'quarterstaff', attackBonus: '', damageDice: '1d6', crit: 'x2', grip: '2h', enhancement: 1, isEquipped: true, hand: 'main' },
+    { name: 'Light Crossbow +1', type: 'light_crossbow', attackBonus: '', damageDice: '1d8', crit: '19-20 / x2', grip: 'rng', enhancement: 1, isEquipped: false }
   ],
   armors: [],
   items: [
@@ -605,13 +605,13 @@ export const wizardLvl10Sample = {
     { id: 'prep-wiz-5', spellKey: 'fireball', metamagic: [], isUsed: false, isSpecialist: false },
     { id: 'prep-wiz-6', spellKey: 'stoneskin', metamagic: [], isUsed: false, isSpecialist: false }
   ],
-  familiarName: 'Keks',
+  familiarName: 'Cookie',
   familiarType: 'cat',
   familiarHP: 22
 };
 
 export const rangerLvl10Sample = {
-  name: 'Gildor Windläufer',
+  name: 'Gildor Windrunner',
   init: 8,
   hp: 75,
   maxHP: 75,
@@ -638,18 +638,18 @@ export const rangerLvl10Sample = {
   level: 10,
   classes: [{ classType: 'ranger', level: 10 }],
   rangerCombatStyle: 'archery',
-  favoredEnemy: 'Orks',
+  favoredEnemy: 'Orcs',
   autoAC: true,
   weapons: [
-    { name: 'Langbogen +2', type: 'composite_longbow', attackBonus: '', damageDice: '1w8', crit: 'x3', grip: 'rng', enhancement: 2, isEquipped: true, hand: 'main' },
-    { name: 'Kurzschwert +1', type: 'shortsword', attackBonus: '', damageDice: '1w6', crit: '19-20 / x2', grip: '1h', enhancement: 1, isEquipped: false }
+    { name: 'Composite Longbow +2', type: 'composite_longbow', attackBonus: '', damageDice: '1d8', crit: 'x3', grip: 'rng', enhancement: 2, isEquipped: true, hand: 'main' },
+    { name: 'Shortsword +1', type: 'shortsword', attackBonus: '', damageDice: '1d6', crit: '19-20 / x2', grip: '1h', enhancement: 1, isEquipped: false }
   ],
   armors: [
-    { name: 'Mithral-Kettenhemd +2', type: 'chain_shirt', enhancement: 2, isEquipped: true, maxDexOverride: 6 }
+    { name: 'Mithral Chain Shirt +2', type: 'chain_shirt', enhancement: 2, isEquipped: true, maxDexOverride: 6 }
   ],
   items: [
     {
-      name: 'Geschicklichkeitshandschuhe +2',
+      name: 'Gloves of Dexterity +2',
       slot: 'hands',
       isEquipped: true,
       effects: [
@@ -657,7 +657,7 @@ export const rangerLvl10Sample = {
       ]
     },
     {
-      name: 'Schutzring +1',
+      name: 'Ring of Protection +1',
       slot: 'ring1',
       isEquipped: true,
       effects: [
@@ -665,7 +665,7 @@ export const rangerLvl10Sample = {
       ]
     },
     {
-      name: 'Umhang der Resistenz +2',
+      name: 'Cloak of Resistance +2',
       slot: 'shoulders',
       isEquipped: true,
       effects: [
@@ -786,16 +786,16 @@ export const paladinLvl10Sample = {
   divineGraceActive: true,
   autoAC: true,
   weapons: [
-    { name: 'Heiliges Langschwert +1', type: 'longsword', attackBonus: '', damageDice: '1w8', crit: '19-20 / x2', grip: '1h', enhancement: 1, isEquipped: true, hand: 'main' },
-    { name: 'Schwere Armbrust', type: 'heavy_crossbow', attackBonus: '', damageDice: '1w10', crit: '19-20 / x2', grip: 'rng', enhancement: 0, isEquipped: false }
+    { name: 'Holy Longsword +1', type: 'longsword', attackBonus: '', damageDice: '1d8', crit: '19-20 / x2', grip: '1h', enhancement: 1, isEquipped: true, hand: 'main' },
+    { name: 'Heavy Crossbow', type: 'heavy_crossbow', attackBonus: '', damageDice: '1d10', crit: '19-20 / x2', grip: 'rng', enhancement: 0, isEquipped: false }
   ],
   armors: [
-    { name: 'Ritterharnisch +1', type: 'full_plate', enhancement: 1, isEquipped: true },
-    { name: 'Schwerer Stahlschild +1', type: 'shield_heavy_steel', enhancement: 1, isEquipped: true, isShield: true }
+    { name: 'Full Plate +1', type: 'full_plate', enhancement: 1, isEquipped: true },
+    { name: 'Heavy Steel Shield +1', type: 'shield_heavy_steel', enhancement: 1, isEquipped: true, isShield: true }
   ],
   items: [
     {
-      name: 'Gürtel der Riesenstärke +2',
+      name: 'Belt of Giant Strength +2',
       slot: 'waist',
       isEquipped: true,
       effects: [
@@ -803,7 +803,7 @@ export const paladinLvl10Sample = {
       ]
     },
     {
-      name: 'Amulett der Gesundheit +2',
+      name: 'Amulet of Health +2',
       slot: 'neck',
       isEquipped: true,
       effects: [
@@ -811,7 +811,7 @@ export const paladinLvl10Sample = {
       ]
     },
     {
-      name: 'Schutzring +1',
+      name: 'Ring of Protection +1',
       slot: 'ring1',
       isEquipped: true,
       effects: [
@@ -819,7 +819,7 @@ export const paladinLvl10Sample = {
       ]
     },
     {
-      name: 'Umhang der Resistenz +1',
+      name: 'Cloak of Resistance +1',
       slot: 'shoulders',
       isEquipped: true,
       effects: [
@@ -911,7 +911,7 @@ export const paladinLvl10Sample = {
 };
 
 export const arcaneTricksterLvl11Sample = {
-  name: 'Corvin Nachtschatten',
+  name: 'Corvin Nightshade',
   init: 7,
   hp: 47,
   maxHP: 47,
@@ -947,15 +947,15 @@ export const arcaneTricksterLvl11Sample = {
   alignment: 'Chaotic Neutral',
   autoAC: true,
   weapons: [
-    { name: 'Meisterwerk-Rapier', type: 'rapier', attackBonus: '', damageDice: '1w6', crit: '18-20 / x2', grip: '1h', enhancement: 0, isEquipped: true, hand: 'main' },
-    { name: 'Handarmbrust +1', type: 'hand_crossbow', attackBonus: '', damageDice: '1w4', crit: '19-20 / x2', grip: 'rng', enhancement: 1, isEquipped: false }
+    { name: 'Masterwork Rapier', type: 'rapier', attackBonus: '', damageDice: '1d6', crit: '18-20 / x2', grip: '1h', enhancement: 0, isEquipped: true, hand: 'main' },
+    { name: 'Hand Crossbow +1', type: 'hand_crossbow', attackBonus: '', damageDice: '1d4', crit: '19-20 / x2', grip: 'rng', enhancement: 1, isEquipped: false }
   ],
   armors: [
-    { name: 'Mithral-Kettenhemd +1', type: 'chain_shirt', enhancement: 1, isEquipped: true, maxDexOverride: 6 }
+    { name: 'Mithral Chain Shirt +1', type: 'chain_shirt', enhancement: 1, isEquipped: true, maxDexOverride: 6 }
   ],
   items: [
     {
-      name: 'Schutzring +1',
+      name: 'Ring of Protection +1',
       slot: 'ring1',
       isEquipped: true,
       effects: [
@@ -963,7 +963,7 @@ export const arcaneTricksterLvl11Sample = {
       ]
     },
     {
-      name: 'Amulett der natürlichen Rüstung +1',
+      name: 'Amulet of Natural Armor +1',
       slot: 'neck',
       isEquipped: true,
       effects: [
@@ -1072,7 +1072,7 @@ export const arcaneTricksterLvl11Sample = {
 };
 
 export const spellwarpSniperLvl10Sample = {
-  name: 'Valerius Strahlenweber',
+  name: 'Valerius Rayweaver',
   init: 8,
   hp: 58,
   maxHP: 58,
@@ -1108,16 +1108,16 @@ export const spellwarpSniperLvl10Sample = {
   alignment: 'Neutral Good',
   autoAC: true,
   weapons: [
-    { name: 'Strahlenangriff (Ray Spell Attack)', type: 'other_ranged', attackBonus: '', damageDice: '4w6', crit: '20 / x2', grip: 'rng', enhancement: 0, isEquipped: true, hand: 'main' },
-    { name: 'Meisterwerk-Dolch +1', type: 'dagger', attackBonus: '', damageDice: '1w4', crit: '19-20 / x2', grip: '1h', enhancement: 1, isEquipped: false },
-    { name: 'Leichte Armbrust +1', type: 'light_crossbow', attackBonus: '', damageDice: '1w8', crit: '19-20 / x2', grip: 'rng', enhancement: 1, isEquipped: false }
+    { name: 'Ray Spell Attack', type: 'other_ranged', attackBonus: '', damageDice: '4d6', crit: '20 / x2', grip: 'rng', enhancement: 0, isEquipped: true, hand: 'main' },
+    { name: 'Masterwork Dagger +1', type: 'dagger', attackBonus: '', damageDice: '1d4', crit: '19-20 / x2', grip: '1h', enhancement: 1, isEquipped: false },
+    { name: 'Light Crossbow +1', type: 'light_crossbow', attackBonus: '', damageDice: '1d8', crit: '19-20 / x2', grip: 'rng', enhancement: 1, isEquipped: false }
   ],
   armors: [
-    { name: 'Mithral-Kettenhemd +1 (Dämmerung)', type: 'chain_shirt', enhancement: 1, isEquipped: true, maxDexOverride: 6 }
+    { name: 'Mithral Twilight Chain Shirt +1', type: 'chain_shirt', enhancement: 1, isEquipped: true, maxDexOverride: 6 }
   ],
   items: [
     {
-      name: 'Schutzring +1',
+      name: 'Ring of Protection +1',
       slot: 'ring1',
       isEquipped: true,
       effects: [
@@ -1125,7 +1125,7 @@ export const spellwarpSniperLvl10Sample = {
       ]
     },
     {
-      name: 'Handschuhe der Geschicklichkeit +2',
+      name: 'Gloves of Dexterity +2',
       slot: 'hands',
       isEquipped: true,
       effects: [
@@ -1133,7 +1133,7 @@ export const spellwarpSniperLvl10Sample = {
       ]
     },
     {
-      name: 'Stirnreif des Intellekts +2',
+      name: 'Headband of Intellect +2',
       slot: 'head',
       isEquipped: true,
       effects: [

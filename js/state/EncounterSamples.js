@@ -67,16 +67,16 @@ export function loadSampleData(choice) {
 
   if (choice === 'party_lvl10') {
     s.concentrations = [
-      createConcentration({ who: 'Lysara die Erhabene', spell: 'stoneskin', dur: 5 })
+      createConcentration({ who: 'Lysara the Exalted', spell: 'stoneskin', dur: 5 })
     ];
 
     const samples = [
       wizardLvl10Sample,
       rangerLvl10Sample,
       paladinLvl10Sample,
-      { name: 'Junger Roter Drache', init: 4, hp: 120, ac: 22, acTouch: 10, acFlat: 22, bw: 150, za: 10, ref: 8, wil: 9, type: 'e' },
-      { name: 'Steingigant 1', init: 2, hp: 119, ac: 25, acTouch: 11, acFlat: 25, bw: 40, za: 11, ref: 6, wil: 7, type: 'e' },
-      { name: 'Steingigant 2', init: 2, hp: 119, ac: 25, acTouch: 11, acFlat: 25, bw: 40, za: 11, ref: 6, wil: 7, type: 'e' }
+      { name: 'Young Red Dragon', init: 4, hp: 120, ac: 22, acTouch: 10, acFlat: 22, bw: 150, za: 10, ref: 8, wil: 9, type: 'e' },
+      { name: 'Stone Giant 1', init: 2, hp: 119, ac: 25, acTouch: 11, acFlat: 25, bw: 40, za: 11, ref: 6, wil: 7, type: 'e' },
+      { name: 'Stone Giant 2', init: 2, hp: 119, ac: 25, acTouch: 11, acFlat: 25, bw: 40, za: 11, ref: 6, wil: 7, type: 'e' }
     ];
 
     samples.forEach(samp => {
@@ -85,8 +85,8 @@ export function loadSampleData(choice) {
   } else {
     // Default / standard lvl 3/4 goblin encounter
     s.concentrations = [
-      createConcentration({ who: 'Lysara', spell: 'Magiepfeil (Fokus)', dur: 0 }),
-      createConcentration({ who: 'Goblin-Schamane', spell: 'Dornenwuchs', dur: 3 })
+      createConcentration({ who: 'Lysara', spell: 'Magic Missile (Focus)', dur: 0 }),
+      createConcentration({ who: 'Goblin Shaman', spell: 'Spike Growth', dur: 3 })
     ];
 
     const samples = [
@@ -94,11 +94,11 @@ export function loadSampleData(choice) {
       morgwenSample,
       thordakSample,
       lysaraSample,
-      { name: 'Goblin-Hauptmann', init: 14, hp: 16, ac: 15, bw: 30, za: 1, ref: 2, wil: 1, type: 'e' },
-      { name: 'Goblin Bogenschütz.1', init: 10, hp: 8, ac: 13, bw: 30, za: 0, ref: 2, wil: 0, type: 'e' },
-      { name: 'Goblin Bogenschütz.2', init: 10, hp: 3, maxHP: 8, ac: 13, bw: 30, za: 0, ref: 2, wil: 0, type: 'e' },
-      { name: 'Warg', init: 6, hp: 20, ac: 14, bw: 50, za: 3, ref: 2, wil: 1, type: 'e' },
-      { name: 'Goblin-Schamane', init: 9, hp: 12, ac: 12, bw: 30, za: 2, ref: 1, wil: 4, type: 'n' }
+      { name: 'Goblin Leader', init: 14, hp: 16, ac: 15, bw: 30, za: 1, ref: 2, wil: 1, type: 'e' },
+      { name: 'Goblin Archer 1', init: 10, hp: 8, ac: 13, bw: 30, za: 0, ref: 2, wil: 0, type: 'e' },
+      { name: 'Goblin Archer 2', init: 10, hp: 3, maxHP: 8, ac: 13, bw: 30, za: 0, ref: 2, wil: 0, type: 'e' },
+      { name: 'Worg', init: 6, hp: 20, ac: 14, bw: 50, za: 3, ref: 2, wil: 1, type: 'e' },
+      { name: 'Goblin Shaman', init: 9, hp: 12, ac: 12, bw: 30, za: 2, ref: 1, wil: 4, type: 'n' }
     ];
 
     samples.forEach(samp => {

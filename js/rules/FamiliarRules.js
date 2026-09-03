@@ -35,16 +35,16 @@ export const FamiliarRules = {
    */
   getFamiliarBaseStats(type) {
     const stats = {
-      bat: { name: 'Fledermaus', ac: 16, str: 1, dex: 15, con: 10, wis: 14, cha: 4, bonus: '+3 auf Lauschen', specials: 'Blindsinn 40 ft., Fliegen 40 ft. (gut)' },
-      cat: { name: 'Katze', ac: 15, str: 3, dex: 15, con: 10, wis: 12, cha: 7, bonus: '+3 auf Leise bewegen', specials: 'Nachtsicht, Dämmersicht, Klettern +10' },
-      hawk: { name: 'Falke', ac: 17, str: 6, dex: 17, con: 10, wis: 14, cha: 6, bonus: '+3 auf Entdecken in hellem Licht', specials: 'Fliegen 60 ft. (durchschnittlich), Dämmersicht' },
-      lizard: { name: 'Eidechse', ac: 14, str: 3, dex: 15, con: 10, wis: 12, cha: 2, bonus: '+3 auf Klettern', specials: 'Klettern +10, Dämmersicht' },
-      owl: { name: 'Eule', ac: 17, str: 6, dex: 17, con: 10, wis: 14, cha: 6, bonus: '+3 auf Entdecken in Schatten', specials: 'Fliegen 40 ft. (gut), Dämmersicht, leiser Flug (+8 auf Leise bewegen)' },
-      rat: { name: 'Ratte', ac: 14, str: 2, dex: 15, con: 10, wis: 12, cha: 2, bonus: '+2 auf Zähigkeitsrettungswürfe', specials: 'Schwimmen +8, Klettern +10, Dämmersicht, Geruchssinn' },
-      raven: { name: 'Rabe', ac: 14, str: 1, dex: 15, con: 10, wis: 14, cha: 6, bonus: '+3 auf Schätzen', specials: 'Fliegen 40 ft. (durchschnittlich), spricht eine Sprache' },
-      snake: { name: 'Schlange (Tiny Viper)', ac: 17, str: 4, dex: 17, con: 11, wis: 12, cha: 2, bonus: '+3 auf Bluffen', specials: 'Gift (Fort SG 10, 1d6 Kon / 1d6 Kon), Dämmersicht' },
-      toad: { name: 'Kröte', ac: 16, str: 1, dex: 12, con: 11, wis: 14, cha: 4, bonus: '+3 Trefferpunkte', specials: 'Dämmersicht, Weitsprung' },
-      weasel: { name: 'Wiesel', ac: 14, str: 3, dex: 15, con: 10, wis: 12, cha: 5, bonus: '+2 auf Reflexrettungswürfe', specials: 'Festhalten (Attach), Geruchssinn, Dämmersicht' }
+      bat: { name: 'Bat', ac: 16, str: 1, dex: 15, con: 10, wis: 14, cha: 4, bonus: '+3 bonus on Listen checks', specials: 'Blindsight 40 ft., Fly 40 ft. (good)' },
+      cat: { name: 'Cat', ac: 15, str: 3, dex: 15, con: 10, wis: 12, cha: 7, bonus: '+3 bonus on Move Silently checks', specials: 'Low-light vision, Scent, Climb +10' },
+      hawk: { name: 'Hawk', ac: 17, str: 6, dex: 17, con: 10, wis: 14, cha: 6, bonus: '+3 bonus on Spot checks in bright light', specials: 'Fly 60 ft. (average), Low-light vision' },
+      lizard: { name: 'Lizard', ac: 14, str: 3, dex: 15, con: 10, wis: 12, cha: 2, bonus: '+3 bonus on Climb checks', specials: 'Climb +10, Low-light vision' },
+      owl: { name: 'Owl', ac: 17, str: 6, dex: 17, con: 10, wis: 14, cha: 6, bonus: '+3 bonus on Spot checks in shadows', specials: 'Fly 40 ft. (good), Low-light vision, silent flight (+8 on Move Silently)' },
+      rat: { name: 'Rat', ac: 14, str: 2, dex: 15, con: 10, wis: 12, cha: 2, bonus: '+2 bonus on Fortitude saves', specials: 'Swim +8, Climb +10, Low-light vision, Scent' },
+      raven: { name: 'Raven', ac: 14, str: 1, dex: 15, con: 10, wis: 14, cha: 6, bonus: '+3 bonus on Appraise checks', specials: 'Fly 40 ft. (average), speaks one language' },
+      snake: { name: 'Snake (Tiny Viper)', ac: 17, str: 4, dex: 17, con: 11, wis: 12, cha: 2, bonus: '+3 bonus on Bluff checks', specials: 'Poison (Fort DC 10, 1d6 Con / 1d6 Con), Low-light vision' },
+      toad: { name: 'Toad', ac: 16, str: 1, dex: 12, con: 11, wis: 14, cha: 4, bonus: '+3 hit points', specials: 'Low-light vision, Long jump' },
+      weasel: { name: 'Weasel', ac: 14, str: 3, dex: 15, con: 10, wis: 12, cha: 5, bonus: '+2 bonus on Reflex saves', specials: 'Attach, Scent, Low-light vision' }
     };
     return stats[type] || null;
   },
@@ -63,26 +63,26 @@ export const FamiliarRules = {
 
     switch (type) {
       case 'bat':
-        return [{ name: 'Biss (Fledermaus)', bonus, damage: '1' }];
+        return [{ name: 'Bite (Bat)', bonus, damage: '1' }];
       case 'cat':
         return [
-          { name: 'Kralle (Katze)', bonus, damage: '1d2' + (strMod >= 0 ? '+' + strMod : strMod) },
-          { name: 'Biss (Katze)', bonus: bonus - 5, damage: '1d3' + (strMod >= 0 ? '+' + strMod : strMod) }
+          { name: 'Claw (Cat)', bonus, damage: '1d2' + (strMod >= 0 ? '+' + strMod : strMod) },
+          { name: 'Bite (Cat)', bonus: bonus - 5, damage: '1d3' + (strMod >= 0 ? '+' + strMod : strMod) }
         ];
       case 'hawk':
-        return [{ name: 'Krallen (Falke)', bonus, damage: '1d4' + (strMod >= 0 ? '+' + strMod : strMod) }];
+        return [{ name: 'Talons (Hawk)', bonus, damage: '1d4' + (strMod >= 0 ? '+' + strMod : strMod) }];
       case 'lizard':
-        return [{ name: 'Biss (Eidechse)', bonus, damage: '1d4' + (strMod >= 0 ? '+' + strMod : strMod) }];
+        return [{ name: 'Bite (Lizard)', bonus, damage: '1d4' + (strMod >= 0 ? '+' + strMod : strMod) }];
       case 'owl':
-        return [{ name: 'Krallen (Eule)', bonus, damage: '1d4' + (strMod >= 0 ? '+' + strMod : strMod) }];
+        return [{ name: 'Talons (Owl)', bonus, damage: '1d4' + (strMod >= 0 ? '+' + strMod : strMod) }];
       case 'rat':
-        return [{ name: 'Biss (Ratte)', bonus, damage: '1d3' + (strMod >= 0 ? '+' + strMod : strMod) }];
+        return [{ name: 'Bite (Rat)', bonus, damage: '1d3' + (strMod >= 0 ? '+' + strMod : strMod) }];
       case 'raven':
-        return [{ name: 'Krallen (Rabe)', bonus, damage: '1d2' + (strMod >= 0 ? '+' + strMod : strMod) }];
+        return [{ name: 'Claws (Raven)', bonus, damage: '1d2' + (strMod >= 0 ? '+' + strMod : strMod) }];
       case 'snake':
-        return [{ name: 'Biss (Schlange)', bonus, damage: '1d2' + (strMod >= 0 ? '+' + strMod : strMod), note: 'Gift (injury, Fort SG 10, 1d6 Kon / 1d6 Kon)' }];
+        return [{ name: 'Bite (Snake)', bonus, damage: '1d2' + (strMod >= 0 ? '+' + strMod : strMod), note: 'Poison (injury, Fort DC 10, 1d6 Con / 1d6 Con)' }];
       case 'weasel':
-        return [{ name: 'Biss (Wiesel)', bonus, damage: '1d3' + (strMod >= 0 ? '+' + strMod : strMod), note: 'Festhalten (Attach)' }];
+        return [{ name: 'Bite (Weasel)', bonus, damage: '1d3' + (strMod >= 0 ? '+' + strMod : strMod), note: 'Attach' }];
       default:
         return [];
     }
