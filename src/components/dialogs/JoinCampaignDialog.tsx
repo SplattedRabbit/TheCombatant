@@ -5,6 +5,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import type { CharacterSummary } from '../../types/character.ts';
 import { CombatState } from '@core/state.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
@@ -98,7 +99,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
     }
   };
 
-  return (
+  return createPortal(
     <div
       style={{
         position: 'fixed',
@@ -259,6 +260,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
           </button>
         </div>
       </form>
-    </div>
+    </div>,
+    document.body
   );
 };
