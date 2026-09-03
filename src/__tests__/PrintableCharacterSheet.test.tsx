@@ -46,6 +46,13 @@ describe('Printable D&D 3.5e Character Sheet Folio Suite', () => {
       },
       feats: [{ id: 'power_attack' }, { id: 'cleave' }, { id: 'extra_turning' }],
       acfs: ['paladin_charging_smite'],
+      items: [
+        { name: 'Cloak of Resistance +3', slot: 'shoulders', isEquipped: true, weight: 1 },
+        { name: 'Belt of Giant Strength +4', slot: 'waist', isEquipped: true, weight: 1 },
+        { name: 'Ring of Protection +2', slot: 'ring1', isEquipped: true, weight: 0 },
+        { name: 'Potion of Cure Serious Wounds', slot: 'belt_quick', type: 'potion', isTacticalBelt: true, count: 2, weight: 0.5 },
+        { name: 'Silk Rope (50 ft.)', slot: 'slotless', isEquipped: false, weight: 5, count: 1 }
+      ],
       currency: { gp: 4500, sp: 20, cp: 50, pp: 12 }
     });
 
@@ -131,6 +138,15 @@ describe('Printable D&D 3.5e Character Sheet Folio Suite', () => {
       expect(screen.getByText('EQUIPMENT & WEALTH')).toBeInTheDocument();
       expect(screen.getAllByText('Full Plate +1')[0]).toBeInTheDocument();
       expect(screen.getByText('+9')).toBeInTheDocument();
+
+      // Magic items slots
+      expect(screen.getByText('Cloak of Resistance +3')).toBeInTheDocument();
+      expect(screen.getByText('Belt of Giant Strength +4')).toBeInTheDocument();
+      expect(screen.getByText('Ring of Protection +2')).toBeInTheDocument();
+
+      // Tactical belt & Backpack items
+      expect(screen.getAllByText(/Potion of Cure Serious Wounds/i)[0]).toBeInTheDocument();
+      expect(screen.getByText('Silk Rope (50 ft.)')).toBeInTheDocument();
 
       // Carrying capacity for STR 20
       expect(screen.getByText(/Carrying Capacity \(STR 20\)/i)).toBeInTheDocument();
