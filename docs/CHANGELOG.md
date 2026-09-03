@@ -3,7 +3,36 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [6.2.2] - 2026-09-03
+## [6.3.0] - 2026-09-03
+
+### Added
+- **Complete Spellbook Overhaul (PHB, PHB II, Complete Adventurer):**
+  - **461 Total Spells:** Fully cataloged, validated, and tested across all four spellbooks (`spells-phb.json`, `spells-phb2.json`, `spells-ca.json`, `spells-cs.json`).
+  - **Missing PHB Spells Restored:** Added *Cure Minor Wounds*, *Inflict Minor Wounds*, *Read Magic*, *Daze*, *Know Direction*, and *Comprehend Languages* with full SRD rules text and casting profiles.
+  - **Player's Handbook II Expansion:** Integrated complete catalog including *Alter Fortune*, *Celerity* series (*Lesser*, *Standard*, *Greater*), *Deflect* series, *Heart of X* series (*Air*, *Water*, *Earth*, *Fire*), *Kelgore's* series (*Fire Bolt*, *Grave Mist*), *Chain Missile*, *Energy Aegis*, *Stay the Hand*, *Hesitate*, *Chasing Perfection*, *Vertigo Field*, *Legion of Sentinels*, *Sure Strike*, *Blade Brothers*.
+  - **Complete Adventurer Expansion:** Integrated complete catalog including *Iron Silence*, *Wraithstrike*, *Sniper's Shot*, *Guided Shot*, *Critical Strike*, *Bladeweave*, *Sonic Weapon*, *Arrow Mind*, *Wild Instincts*, *Tactical Teleportation*.
+  - **Complete Descriptions:** Added missing SRD rules descriptions for 10 previously empty PHB spells (*Analyze Dweomer*, *Animate Dead*, *Antilife Shell*, *Bless Weapon*, *Disrupting Weapon*, *Helping Hand*, *Holy Smite*, *Refuge*, *Repulsion*, *Wall of Force*).
+  - **Automated Spellbook Test Suite:** Added `Tests/spellbooks_audit.test.js` validating structural integrity, school metadata, level assignments, and description completeness.
+- **Complete Adventurer Feats Catalog:**
+  - Added ~60 Complete Adventurer feats across Combat, General, and Magic domains.
+
+### Fixed
+- **Spell & Feat Parchment Popups Visual Harmonization (`SpellDetailsDialog.tsx` & `SpellScrollDialog.tsx`):**
+  - Redesigned the spell details dialog to match the Ancient Parchment design of `FeatScrollDialog.tsx` (`#f4e8c1` parchment background, `#8b1a1a` red borders, gold dashed inner frame, 540px width, 54vh scrollable height).
+  - Enhanced metadata grid (School, Level, Casting Time, Components, Range, Duration, Saving Throw, Spell Resistance, Target/Area/Effect, Classes).
+  - Unified action buttons (`[Learn]`, `[Unlearn]`, `[Close]`) with backdrop click-to-close behavior.
+- **D&D 3.5e RAW General Feat Slot Progression Formula (`RulesFeats.js` & `PCFeatsTab.tsx`):**
+  - Fixed mathematical progression formula from `1 + Math.floor((level - 1) / 3)` to RAW `1 + Math.floor(level / 3) + (isHuman ? 1 : 0)`.
+  - Characters at level 6 now correctly receive 3 general feat slots (levels 1, 3, 6).
+- **Prerequisite Evaluation Engine & Human-Readable Labels (`RulesFeats.js` & `feats-data.js`):**
+  - Replaced technical selector IDs with clean human-readable dictionaries (`SKILL_NAMES_MAP`, `CLASS_NAMES_MAP`).
+  - Added full evaluation for custom class features: *Trapfinding*, *Favored Enemy*, *Smite Evil*, *Evasion*, *Rage*, *Ki Strike*, *Turn Undead*, *Bardic Music*, *Wild Shape*, *Spontaneous Arcane Spells*, *Familiar*.
+- **Feat Management & Reactivity (`FeatScrollActions.tsx`, `useCombatState.ts`, `PCFeatsSpells.js`):**
+  - Decoupled Learn/Unlearn action branches so learned feats always provide `[Unlearn Feat]` and stackable feats offer both `[Unlearn]` and `[Learn Another]`.
+  - Fixed in-place array mutation in `addPCFeat`/`removePCFeat` to trigger immediate React re-renders in `PCFeatsTab`.
+- **Malformed PHB Spell Keys:**
+  - Renamed 6 OCR/parser-corrupted keys: `enchantment_compulsion_` $\rightarrow$ `aid`, `enchantment_compulsion_mind_` $\rightarrow$ `animal_messenger`, `enchantment_compulsion_fear_mind_` $\rightarrow$ `bane`, `enchantment_compulsion_language_` $\rightarrow$ `command`, `illusion_phantasm_mind_affecting_` $\rightarrow$ `nightmare`, `enchantment_compulsion_death_` $\rightarrow$ `power_word_kill`.
+  - Cleaned swallowed tail header text from 300+ spell descriptions.
 
 ### Fixed
 - **Character Creation Wizard Multiclass Feat Resolution (`FeatSlotsSidebar.tsx` & `Step3LevelConfig.tsx`):** Fixed multiclass character creation soft-lock where class-granted bonus feats (such as *Scribe Scroll* for Wizard 1) were unpopulated in draft state, rendered as unclickable `— Select —`, and blocked level progression. Added automatic `defaultFeat` population, visual `✓ Fixed` indicators, and step validation bypass.
