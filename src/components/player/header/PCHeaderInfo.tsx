@@ -210,6 +210,12 @@ export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard, on
             }}
           />
         </span>
+        {pc.deity && pc.deity !== 'none' && (
+          <span style={{ background: 'rgba(200, 169, 110, 0.08)', padding: '1px 4px', borderRadius: '2px', border: '0.5px solid var(--pb)', color: 'var(--red)', fontWeight: 'bold' }} title={`Deity: ${pc.deity}`}>
+            ⛪ {pc.deity.charAt(0).toUpperCase() + pc.deity.slice(1).replace(/_/g, ' ')}
+            {Array.isArray(pc.clericDomains) && pc.clericDomains.length > 0 ? ` (${pc.clericDomains.map((d: string) => d.charAt(0).toUpperCase() + d.slice(1)).join('/')})` : ''}
+          </span>
+        )}
         <span style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
           <span>Player:</span>
           <input

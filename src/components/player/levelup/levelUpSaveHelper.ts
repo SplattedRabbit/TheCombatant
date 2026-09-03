@@ -21,6 +21,12 @@ export function applyLevelUpToActivePC(
     }
     pc.classes = currentClasses;
 
+    // Initialize Deity and Domains if gaining Cleric
+    if (newLevelConfig.classType === 'cleric' && (!Array.isArray(pc.clericDomains) || pc.clericDomains.length === 0)) {
+      if (!pc.deity) pc.deity = 'none';
+      pc.clericDomains = ['good', 'healing'];
+    }
+
     // 2. Add HP roll (+ CON mod)
     const conMod = completedDraft ? completedDraft.statMods.con : (pc.con?.mod || 0);
     const roll = parseInt(newLevelConfig.hpRoll) || 1;

@@ -11064,5 +11064,1101 @@
     "savingThrow": "None or Will negates",
     "spellResistance": "No or Yes (harmless,",
     "description": "object) Word of recall teleports you instantly back to your sanctuary when the word is ut- tered. You must designate the sanctuary when you prepare the spell, and it must be a very familiar place. The actual point of arrival is a designated area no larger than 10 feet by 10 feet. You can be transported any distance within a plane but cannot travel between planes. You can transport, in addition to yourself, any objects you carry, as long as their weight doesn’t exceed your maximum load. You may also bring one additional willing Medium or smaller creature (carrying gear or objects up to its maximum load) or its equivalent per three caster levels. A Large creature counts as two Medium creatures, a Huge creature counts as two Large creatures, and so forth. All creatures to be transported must be in contact with one another, and at least one of those creatures must be in contact with you. Exceeding this limit causes the spell to fail. An unwilling creature can’t be tele- ported by word of recall. Likewise, a crea- ture’s Will save (or spell resistance) pre- vents items in its possession from being teleported. Unattended, nonmagical ob- jects receive no saving throw."
+  },
+  "calm_animals": {
+    "nameDe": "Tiere beruhigen",
+    "nameEn": "Calm Animals",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 1,
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 1
+      },
+      {
+        "class": "ranger",
+        "level": 1
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "Animals within 30 ft. of each other",
+    "duration": "1 min./level",
+    "savingThrow": "Will negates",
+    "spellResistance": "Yes",
+    "description": "This spell soothes and calms animals, rendering them docile and non-aggressive."
+  },
+  "hold_animal": {
+    "nameDe": "Tier festhalten",
+    "nameEn": "Hold Animal",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 2,
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 2
+      },
+      {
+        "class": "ranger",
+        "level": 2
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "One animal",
+    "duration": "1 round/level (D)",
+    "savingThrow": "Will negates",
+    "spellResistance": "Yes",
+    "description": "The subject animal freezes in place and becomes paralyzed for the duration of the spell."
+  },
+  "dominate_animal": {
+    "nameDe": "Tier beherrschen",
+    "nameEn": "Dominate Animal",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 3,
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 3
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 round",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "One animal",
+    "duration": "1 round/level",
+    "savingThrow": "Will negates",
+    "spellResistance": "Yes",
+    "description": "You can enchant an animal and direct it where to go and what to attack via mental commands."
+  },
+  "summon_natures_ally_iv": {
+    "nameDe": "Verbündeten der Natur herbeizaubern IV",
+    "nameEn": "Summon Nature's Ally IV",
+    "school": "Conjuration (Summoning)",
+    "level": 4,
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 4
+      },
+      {
+        "class": "ranger",
+        "level": 4
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 round",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "One or more summoned creatures",
+    "duration": "1 round/level (D)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Summons an animal or nature ally to fight enthusiastically for you."
+  },
+  "commune_with_nature": {
+    "nameDe": "Mit der Natur verschmelzen",
+    "nameEn": "Commune with Nature",
+    "school": "Divination",
+    "level": 5,
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 5
+      },
+      {
+        "class": "ranger",
+        "level": 4
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "10 minutes",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You become one with nature, learning facts about the surrounding territory up to 1 mile per caster level."
+  },
+  "summon_natures_ally_viii": {
+    "nameDe": "Verbündeten der Natur herbeizaubern VIII",
+    "nameEn": "Summon Nature's Ally VIII",
+    "school": "Conjuration (Summoning)",
+    "level": 8,
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 8
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 round",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "One or more summoned creatures",
+    "duration": "1 round/level (D)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Summons powerful natural creatures such as dire bears or greater elementals to fight for you."
+  },
+  "shapechange": {
+    "nameDe": "Gestaltwandel",
+    "nameEn": "Shapechange",
+    "school": "Transmutation",
+    "level": 9,
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 9
+      },
+      {
+        "class": "wizard",
+        "level": 9
+      },
+      {
+        "class": "sorcerer",
+        "level": 9
+      }
+    ],
+    "components": "V, S, F",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "10 min./level (D)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You can take the form of any creature up to your HD (max 25 HD) and gain its supernatural and extraordinary abilities, switching forms each round as a free action."
+  },
+  "protection_from_law": {
+    "nameDe": "Schutz vor Ordnung",
+    "nameEn": "Protection from Law",
+    "school": "Abjuration [Chaotic]",
+    "level": 1,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 1
+      }
+    ],
+    "components": "V, S, M/DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Creature touched",
+    "duration": "1 min./level (D)",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "No; see text",
+    "description": "Wards a creature from attacks by lawful creatures, grants +2 deflection to AC and +2 resistance to saves against law, and prevents mental control."
+  },
+  "magic_circle_against_law": {
+    "nameDe": "Schutzkreis gegen Ordnung",
+    "nameEn": "Magic Circle against Law",
+    "school": "Abjuration [Chaotic]",
+    "level": 3,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      }
+    ],
+    "components": "V, S, M/DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "10-ft.-radius emanation from touched creature",
+    "duration": "10 min./level",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "No; see text",
+    "description": "As protection from law, but in a 10-ft. radius around the touched creature."
+  },
+  "dispel_law": {
+    "nameDe": "Ordnung bannen",
+    "nameEn": "Dispel Law",
+    "school": "Abjuration [Chaotic]",
+    "level": 5,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 5
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "You and a touched lawful creature or object",
+    "duration": "1 round/level or until discharged",
+    "savingThrow": "See text",
+    "spellResistance": "See text",
+    "description": "Shajks you with chaotic energy that drives lawful enchantments away and banishes lawful extraplanar creatures back to their home plane."
+  },
+  "summon_monster_ix": {
+    "nameDe": "Monster herbeizaubern IX",
+    "nameEn": "Summon Monster IX",
+    "school": "Conjuration (Summoning)",
+    "level": 9,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 9
+      },
+      {
+        "class": "wizard",
+        "level": 9
+      },
+      {
+        "class": "sorcerer",
+        "level": 9
+      }
+    ],
+    "components": "V, S, F/DF",
+    "castingTime": "1 round",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "One or more summoned creatures",
+    "duration": "1 round/level (D)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Summons a powerful extraplanar creature (e.g. Celestial Couatl, Fiendish Monstrous Scorpion, or Hezrou) to fight your enemies."
+  },
+  "create_greater_undead": {
+    "nameDe": "Mächtigen Untoten erschaffen",
+    "nameEn": "Create Greater Undead",
+    "school": "Necromancy [Evil]",
+    "level": 8,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 8
+      },
+      {
+        "class": "wizard",
+        "level": 8
+      },
+      {
+        "class": "sorcerer",
+        "level": 8
+      }
+    ],
+    "components": "V, S, M",
+    "castingTime": "1 hour",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "One corpse",
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "A potent spell that creates shadows, wraiths, spectres, or devourers from corpses."
+  },
+  "inflict_critical_wounds": {
+    "nameDe": "Kritische Wunden verursachen",
+    "nameEn": "Inflict Critical Wounds",
+    "school": "Necromancy",
+    "level": 4,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 4
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Creature touched",
+    "duration": "Instantaneous",
+    "savingThrow": "Will half",
+    "spellResistance": "Yes",
+    "description": "Channels negative energy that deals 4d8 + 1/level points of damage (max +20) on a melee touch attack, or heals undead."
+  },
+  "iron_body": {
+    "nameDe": "Eisenkörper",
+    "nameEn": "Iron Body",
+    "school": "Transmutation [Earth]",
+    "level": 8,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 8
+      },
+      {
+        "class": "sorcerer",
+        "level": 8
+      }
+    ],
+    "components": "V, S, M/DF",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "1 min./level (D)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Transforms your body into living iron, granting DR 15/adamantine, immunities to crits, poison, electricity, and immense strength."
+  },
+  "protection_from_good": {
+    "nameDe": "Schutz vor Gutem",
+    "nameEn": "Protection from Good",
+    "school": "Abjuration [Evil]",
+    "level": 1,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 1
+      }
+    ],
+    "components": "V, S, M/DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Creature touched",
+    "duration": "1 min./level (D)",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "No; see text",
+    "description": "Wards a creature from attacks by good creatures, grants +2 deflection to AC and +2 resistance to saves against good, and prevents mental control."
+  },
+  "magic_circle_against_good": {
+    "nameDe": "Schutzkreis gegen Gutes",
+    "nameEn": "Magic Circle against Good",
+    "school": "Abjuration [Evil]",
+    "level": 3,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      }
+    ],
+    "components": "V, S, M/DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "10-ft.-radius emanation from touched creature",
+    "duration": "10 min./level",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "No; see text",
+    "description": "As protection from good, but in a 10-ft. radius around the touched creature."
+  },
+  "dispel_good": {
+    "nameDe": "Gutes bannen",
+    "nameEn": "Dispel Good",
+    "school": "Abjuration [Evil]",
+    "level": 5,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 5
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "You and a touched good creature or object",
+    "duration": "1 round/level or until discharged",
+    "savingThrow": "See text",
+    "spellResistance": "See text",
+    "description": "Wreaths you in sinister energy that dispels good spells and banishes good extraplanar creatures."
+  },
+  "fire_shield": {
+    "nameDe": "Feuerschild",
+    "nameEn": "Fire Shield",
+    "school": "Evocation [Fire or Cold]",
+    "level": 4,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 4
+      },
+      {
+        "class": "sorcerer",
+        "level": 4
+      }
+    ],
+    "components": "V, S, M",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "1 round/level (D)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Flames wreath your body, dealing 1d6 + 1/level damage (fire or cold) to melee attackers, and giving you resistance against cold or fire."
+  },
+  "cure_moderate_wounds": {
+    "nameDe": "Mittelschwere Wunden heilen",
+    "nameEn": "Cure Moderate Wounds",
+    "school": "Conjuration (Healing)",
+    "level": 2,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 2
+      },
+      {
+        "class": "druid",
+        "level": 3
+      },
+      {
+        "class": "bard",
+        "level": 2
+      },
+      {
+        "class": "paladin",
+        "level": 3
+      },
+      {
+        "class": "ranger",
+        "level": 3
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Creature touched",
+    "duration": "Instantaneous",
+    "savingThrow": "Will half (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "Channels positive energy that cures 2d8 + 1/level points of damage (max +10), or damages undead."
+  },
+  "cure_critical_wounds": {
+    "nameDe": "Kritische Wunden heilen",
+    "nameEn": "Cure Critical Wounds",
+    "school": "Conjuration (Healing)",
+    "level": 4,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 4
+      },
+      {
+        "class": "druid",
+        "level": 5
+      },
+      {
+        "class": "bard",
+        "level": 4
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Creature touched",
+    "duration": "Instantaneous",
+    "savingThrow": "Will half (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "Channels positive energy that cures 4d8 + 1/level points of damage (max +20), or damages undead."
+  },
+  "cure_critical_wounds_mass": {
+    "nameDe": "Massen-Kritische Wunden heilen",
+    "nameEn": "Mass Cure Critical Wounds",
+    "school": "Conjuration (Healing)",
+    "level": 8,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 8
+      },
+      {
+        "class": "druid",
+        "level": 9
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "One creature/level, all within 30 ft.",
+    "duration": "Instantaneous",
+    "savingThrow": "Will half (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "Cures 4d8 + 1/level points of damage (max +40) to multiple creatures."
+  },
+  "mass_heal": {
+    "nameDe": "Massen-Vollständige Genesung",
+    "nameEn": "Mass Heal",
+    "school": "Conjuration (Healing)",
+    "level": 9,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 9
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "One or more creatures, no two of which can be more than 30 ft. apart",
+    "duration": "Instantaneous",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "Instantly restores up to 250 points of damage per creature and cures all conditions (blindness, disease, poison, stunned, feeblemind)."
+  },
+  "divination": {
+    "nameDe": "Weissagung",
+    "nameEn": "Divination",
+    "school": "Divination",
+    "level": 4,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 4
+      }
+    ],
+    "components": "V, S, M",
+    "castingTime": "10 minutes",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Provides you with a useful piece of advice or omen about a specific goal or event in the near future (up to 1 week)."
+  },
+  "legend_lore": {
+    "nameDe": "Sagenkunde",
+    "nameEn": "Legend Lore",
+    "school": "Divination",
+    "level": 6,
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 4
+      },
+      {
+        "class": "wizard",
+        "level": 6
+      },
+      {
+        "class": "sorcerer",
+        "level": 6
+      }
+    ],
+    "components": "V, S, M, F",
+    "castingTime": "See text",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "See text",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Brings to mind legends, lore, and obscure history regarding an important person, place, or thing."
+  },
+  "protection_from_chaos": {
+    "nameDe": "Schutz vor Chaos",
+    "nameEn": "Protection from Chaos",
+    "school": "Abjuration [Lawful]",
+    "level": 1,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 1
+      },
+      {
+        "class": "paladin",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 1
+      }
+    ],
+    "components": "V, S, M/DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Creature touched",
+    "duration": "1 min./level (D)",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "No; see text",
+    "description": "Wards a creature against attacks by chaotic creatures (+2 deflection to AC, +2 saves, blocks mental control)."
+  },
+  "calm_emotions": {
+    "nameDe": "Gefühle besänftigen",
+    "nameEn": "Calm Emotions",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 2,
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 2
+      },
+      {
+        "class": "cleric",
+        "level": 2
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "Creatures in a 20-ft.-radius spread",
+    "duration": "Concentration, up to 1 round/level (D)",
+    "savingThrow": "Will negates",
+    "spellResistance": "Yes",
+    "description": "Calms agitated creatures, suppressing rage, confusion, and fear effects while concentration lasts."
+  },
+  "magic_circle_against_chaos": {
+    "nameDe": "Schutzkreis gegen Chaos",
+    "nameEn": "Magic Circle against Chaos",
+    "school": "Abjuration [Lawful]",
+    "level": 3,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 3
+      },
+      {
+        "class": "paladin",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      }
+    ],
+    "components": "V, S, M/DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "10-ft.-radius emanation from touched creature",
+    "duration": "10 min./level",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "No; see text",
+    "description": "As protection from chaos, but in a 10-ft. radius around the touched creature."
+  },
+  "dispel_chaos": {
+    "nameDe": "Chaos bannen",
+    "nameEn": "Dispel Chaos",
+    "school": "Abjuration [Lawful]",
+    "level": 5,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 5
+      },
+      {
+        "class": "paladin",
+        "level": 4
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "You and a touched chaotic creature or object",
+    "duration": "1 round/level or until discharged",
+    "savingThrow": "See text",
+    "spellResistance": "See text",
+    "description": "Provides a defense against chaotic magic and allows you to banish chaotic outsiders."
+  },
+  "hold_monster": {
+    "nameDe": "Monster festhalten",
+    "nameEn": "Hold Monster",
+    "school": "Enchantment (Hold) [Mind-Affecting]",
+    "level": 5,
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 4
+      },
+      {
+        "class": "wizard",
+        "level": 5
+      },
+      {
+        "class": "sorcerer",
+        "level": 5
+      }
+    ],
+    "components": "V, S, M/DF",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "One living creature",
+    "duration": "1 round/level (D)",
+    "savingThrow": "Will negates",
+    "spellResistance": "Yes",
+    "description": "Paralyzes any living creature for the duration of the spell."
+  },
+  "dictum": {
+    "nameDe": "Machtwort der Ordnung",
+    "nameEn": "Dictum",
+    "school": "Evocation [Lawful, Sonic]",
+    "level": 7,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 7
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 standard action",
+    "range": "40 ft.",
+    "targetOrEffectOrArea": "Nonlawful creatures in a 40-ft.-radius spread centered on you",
+    "duration": "Instantaneous",
+    "savingThrow": "None or Will partial; see text",
+    "spellResistance": "Yes",
+    "description": "Utters an awful sacred word that stuns, deafens, paralyzes, or instantly slays non-lawful creatures."
+  },
+  "entropic_shield": {
+    "nameDe": "Entropieschild",
+    "nameEn": "Entropic Shield",
+    "school": "Abjuration",
+    "level": 1,
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 1
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "1 min./level (D)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "A magical energy field deflects incoming arrows, rays, and ranged attacks, imposing a 20% miss chance on ranged attacks against you."
+  },
+  "spell_turning": {
+    "nameDe": "Zauber reflektieren",
+    "nameEn": "Spell Turning",
+    "school": "Abjuration",
+    "level": 7,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 7
+      },
+      {
+        "class": "sorcerer",
+        "level": 7
+      }
+    ],
+    "components": "V, S, M/DF",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "Until expended or 10 min./level",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Spells and spell-like effects targeted on you are reflected back upon the caster (up to 1d4+6 spell levels)."
+  },
+  "moment_of_prescience": {
+    "nameDe": "Moment der Vorahnung",
+    "nameEn": "Moment of Prescience",
+    "school": "Divination",
+    "level": 8,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 8
+      },
+      {
+        "class": "sorcerer",
+        "level": 8
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "1 hour/level or until discharged",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Grants an insight bonus equal to your caster level (max +25) on any single attack roll, check, or saving throw."
+  },
+  "prismatic_sphere": {
+    "nameDe": "Prismakugel",
+    "nameEn": "Prismatic Sphere",
+    "school": "Abjuration",
+    "level": 9,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 9
+      },
+      {
+        "class": "sorcerer",
+        "level": 9
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 standard action",
+    "range": "10 ft.",
+    "targetOrEffectOrArea": "10-ft.-radius sphere centered on you",
+    "duration": "10 min./level (D)",
+    "savingThrow": "See text",
+    "spellResistance": "See text",
+    "description": "Immobilizing, glittering multicolors that blind, deal elemental damage, turn to stone, or banish anyone attempting to pass."
+  },
+  "bigby_s_grasping_hand": {
+    "nameDe": "Packende Hand",
+    "nameEn": "Grasping Hand",
+    "school": "Evocation [Force]",
+    "level": 7,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 7
+      },
+      {
+        "class": "sorcerer",
+        "level": 7
+      }
+    ],
+    "components": "V, S, F/DF",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "10-ft. hand of force",
+    "duration": "1 round/level (D)",
+    "savingThrow": "None",
+    "spellResistance": "Yes",
+    "description": "A giant floating hand can grapple an enemy with great strength, holding them pinned or providing cover."
+  },
+  "bigby_s_clenched_fist": {
+    "nameDe": "Geballte Faust",
+    "nameEn": "Clenched Fist",
+    "school": "Evocation [Force]",
+    "level": 8,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 8
+      },
+      {
+        "class": "sorcerer",
+        "level": 8
+      }
+    ],
+    "components": "V, S, F/DF",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "10-ft. hand of force",
+    "duration": "1 round/level (D)",
+    "savingThrow": "None",
+    "spellResistance": "Yes",
+    "description": "A colossal fist of force strikes an opponent each round, dealing 1d8+11 points of damage and stunning the target."
+  },
+  "bigby_s_crushing_hand": {
+    "nameDe": "Zermalmende Hand",
+    "nameEn": "Crushing Hand",
+    "school": "Evocation [Force]",
+    "level": 9,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 9
+      },
+      {
+        "class": "sorcerer",
+        "level": 9
+      }
+    ],
+    "components": "V, S, F/DF",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "10-ft. hand of force",
+    "duration": "1 round/level (D)",
+    "savingThrow": "None",
+    "spellResistance": "Yes",
+    "description": "A crushing hand of force grapples an opponent and deals 2d6 + 12 points of bludgeoning damage each round it holds them."
+  },
+  "longstrider": {
+    "nameDe": "Weitschritt",
+    "nameEn": "Longstrider",
+    "school": "Transmutation",
+    "level": 1,
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 1
+      },
+      {
+        "class": "ranger",
+        "level": 1
+      }
+    ],
+    "components": "V, S, M",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "1 hour/level (D)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Increases your base land speed by +10 feet."
+  },
+  "greater_teleport": {
+    "nameDe": "Mächtige Teleportation",
+    "nameEn": "Greater Teleport",
+    "school": "Conjuration (Teleportation)",
+    "level": 7,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 7
+      },
+      {
+        "class": "sorcerer",
+        "level": 7
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 standard action",
+    "range": "Personal and touch",
+    "targetOrEffectOrArea": "You and touched objects or other touched willing creatures",
+    "duration": "Instantaneous",
+    "savingThrow": "None and Will negates (object)",
+    "spellResistance": "No and Yes (object)",
+    "description": "As teleport, but with no range limit and no chance of arriving off-target."
+  },
+  "disguise_self": {
+    "nameDe": "Selbstverkleidung",
+    "nameEn": "Disguise Self",
+    "school": "Illusion (Glamer)",
+    "level": 1,
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 1
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "10 min./level (D)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "Magically alters your appearance, clothing, and gear to look 1 foot taller or shorter, or appear as another humanoid race (+10 on Disguise checks)."
+  },
+  "confusion": {
+    "nameDe": "Verwirrung",
+    "nameEn": "Confusion",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 4,
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 4
+      },
+      {
+        "class": "sorcerer",
+        "level": 4
+      }
+    ],
+    "components": "V, S, M/DF",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "All creatures in a 15-ft.-radius burst",
+    "duration": "1 round/level",
+    "savingThrow": "Will negates",
+    "spellResistance": "Yes",
+    "description": "Causes targets to act erratically: wandering away, babbling incoherently, attacking the nearest creature, or acting normally."
+  },
+  "time_stop": {
+    "nameDe": "Zeitstopp",
+    "nameEn": "Time Stop",
+    "school": "Transmutation",
+    "level": 9,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 9
+      },
+      {
+        "class": "sorcerer",
+        "level": 9
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "You",
+    "duration": "1d4+1 rounds (apparent time)",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You speed up your personal timeframe so dramatically that other creatures seem completely frozen in place for 1d4+1 rounds."
+  },
+  "power_word_blind": {
+    "nameDe": "Machtwort: Erblinden",
+    "nameEn": "Power Word Blind",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 7,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 7
+      },
+      {
+        "class": "sorcerer",
+        "level": 7
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 standard action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "One creature with 200 hp or less",
+    "duration": "See text",
+    "savingThrow": "None",
+    "spellResistance": "Yes",
+    "description": "Utters a single word of power that instantly blinds one creature with 200 hit points or less."
+  },
+  "power_word_stun": {
+    "nameDe": "Machtwort: Betäuben",
+    "nameEn": "Power Word Stun",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "level": 8,
+    "classLevels": [
+      {
+        "class": "wizard",
+        "level": 8
+      },
+      {
+        "class": "sorcerer",
+        "level": 8
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 standard action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "One creature with 150 hp or less",
+    "duration": "See text",
+    "savingThrow": "None",
+    "spellResistance": "Yes",
+    "description": "Utters a single word of power that instantly stuns one creature with 150 hit points or less for 1d4 to 4d4 rounds."
   }
 }

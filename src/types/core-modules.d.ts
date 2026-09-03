@@ -83,6 +83,14 @@ declare module '@core/rules.js' {
   export const validateSpellLearnEligibility: (pc: any, spell: any, findSpellFn: (k: string) => any) => { allowed: boolean; title?: string; reason?: string };
   export const getSpellClassLevels: (spell: any) => Array<{ class: string; level: number }>;
   export const isWizardProhibitedSchool: (spell: any, pc: any) => boolean;
+  export const getDomain: (domainId: string) => any;
+  export const getSpellDomains: (spellKey: string) => Array<{ domainId: string; domainName: string; level: number }>;
+  export const isDomainSpellForPC: (spellKey: string, pc: any) => boolean;
+  export const DEITIES_REGISTRY: Record<string, any>;
+  export const DOMAINS_REGISTRY: Record<string, any>;
+  export const getDeitiesForAlignment: (alignment: string) => any[];
+  export const getDeity: (deityId: string) => any;
+  export const isAlignmentWithinOneStep: (clericAlign: string, deityAlign: string) => boolean;
   export const checkPrerequisites: (...args: any[]) => any;
   export const validatePrestigeClassPrereqs: (...args: any[]) => any;
   export const isOnlySpecialTextUnmet: (validation: { success: boolean; metDetails: any[] }) => boolean;

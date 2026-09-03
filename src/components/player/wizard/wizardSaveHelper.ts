@@ -45,6 +45,11 @@ export function applyWizardCharacterToState(
       level: c.level
     }));
 
+    if (freshPC.classes.some((c: any) => c.classType === 'cleric') && (!freshPC.clericDomains || freshPC.clericDomains.length === 0)) {
+      if (!freshPC.deity) freshPC.deity = 'none';
+      freshPC.clericDomains = ['good', 'healing'];
+    }
+
     const conMod = completedDraft.statMods.con;
     let calculatedMaxHP = 0;
     levelConfigs.forEach(cfg => {

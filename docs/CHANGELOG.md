@@ -3,6 +3,32 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.4.0] - 2026-09-03
+
+### Added
+- **D&D 3.5e Core Deities Registry (`js/data/deities-data.js`):**
+  - Integrated all 19 Core Greyhawk deities (Pelor, Kord, Moradin, Heironeous, St. Cuthbert, Wee Jas, Boccob, Fharlanghn, Obad-Hai, Olidammara, Ehlonna, Hextor, Nerull, Vecna, Erythnul, Gruumsh, Corellon Larethian, Garl Glittergold, Yondalla) plus abstract philosophical worship (`"none"`).
+  - Configured each deity with alignment, domain portfolios, favored weapons, titles, and descriptions.
+  - Implemented `isAlignmentWithinOneStep` adhering strictly to D&D 3.5e RAW Manhattan distance on the 3x3 alignment grid.
+- **D&D 3.5e Core Cleric Domains Engine (`js/data/domains-data.js`):**
+  - Integrated all 22 Core PHB Domains: *Air, Animal, Chaos, Death, Destruction, Earth, Evil, Fire, Good, Healing, Knowledge, Law, Luck, Magic, Plant, Protection, Strength, Sun, Travel, Trickery, War, Water*.
+  - Full domain definitions with granted powers descriptions and complete spell progressions (Levels 1–9).
+  - 100% audit of all 198 domain spells: imported 44 missing Core spells into `spells-phb.json` with SRD metadata, casting profiles, and class spell lists.
+- **Cleric Spell Preparation & Domain Slots Engine (`RulesSpells.js`, `SpellSlotCalculator.js`, `SpellPreparation.js`):**
+  - Added `+1` Domain Slot per spell level (1st–9th) for Clerics when base slots > 0.
+  - Domain spell eligibility: Clerics can learn and cast domain spells that originate from outside the Cleric spell list (e.g. *Fly* from Travel, *Barkskin* from Plant).
+  - Non-cleric domain spells are strictly designated for domain slots.
+  - Tracked `isDomain: boolean` on prepared spells and enforced 1-domain-spell-per-level cap.
+- **Rich User Interface Enhancements:**
+  - `ClericFeaturesCard.tsx`: Dedicated interactive deity selector with alignment compatibility advice, domain 1 & 2 selectors, granted powers, and 1-9 domain spell lists.
+  - `PrepareSpellDialog.tsx`: Contextual domain slot detection with a dedicated "Prepare in Domain Slot ([Domain] [Lvl])" checkbox and real-time availability feedback.
+  - `PCSpellPreparation.tsx`: Visual domain slot display (`☀️ [D]` badge, crimson parchment accents, cast/unprepare actions).
+  - `PCSpellCompendium.tsx`: Domain badges on spells with green highlight if accessible through the character's chosen domains.
+  - `SpellDetailsDialog.tsx`: Added `Domains:` row in metadata grid with direct indication of cleric domain availability.
+  - `PCHeaderInfo.tsx` & Print Sheets (`PrintPage1CoreCombat.tsx`, `PrintPage4SpellsCompanion.tsx`): Displays deity and chosen domains in header and formats domain-prepared spells with `[D]` prefix on exported print sheets.
+- **Automated Test Suite Expansion (`Tests/cleric_domains.test.js`):**
+  - Added 5 comprehensive automated tests verifying the One-Step alignment rule, domain database integrity (all 198 spells exist), cleric slot calculations, Travel domain cross-class access, and domain preparation tracking. All 330 test suites are passing.
+
 ## [6.3.1] - 2026-09-03
 
 ### Fixed

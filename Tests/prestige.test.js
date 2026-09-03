@@ -127,16 +127,16 @@ test('Prestige Classes - Mystic Theurge spell level linking and effective caster
   const slots = CombatRules.calculateMaxSpellSlots(pc);
 
   // Level 5 Wizard spell slots: 0th: 4, 1st: 3 (+1 bonus), 2nd: 2 (+1 bonus), 3rd: 1 (+1 bonus)
-  // Level 5 Cleric spell slots: 0th: 4, 1st: 3 (+1 bonus), 2nd: 2 (+1 bonus), 3rd: 1 (+1 bonus)
+  // Level 5 Cleric spell slots: 0th: 4, 1st: 3 (+1 bonus + 1 domain), 2nd: 2 (+1 bonus + 1 domain), 3rd: 1 (+1 bonus + 1 domain)
   // Combined slots:
   // 0th: 4 + 4 = 8 slots
-  // 1st: (3+1) + (3+1) = 8 slots
-  // 2nd: (2+1) + (2+1) = 6 slots
-  // 3rd: (1+1) + (1+1) = 4 slots
+  // 1st: (3+1) + (3+1+1) = 9 slots (inkl. 1 Kleriker-Domänenslot)
+  // 2nd: (2+1) + (2+1+1) = 7 slots (inkl. 1 Kleriker-Domänenslot)
+  // 3rd: (1+1) + (1+1+1) = 5 slots (inkl. 1 Kleriker-Domänenslot)
   assert.strictEqual(slots[0], 8, 'Should have 8 level 0 slots');
-  assert.strictEqual(slots[1], 8, 'Should have 8 level 1 slots');
-  assert.strictEqual(slots[2], 6, 'Should have 6 level 2 slots');
-  assert.strictEqual(slots[3], 4, 'Should have 4 level 3 slots');
+  assert.strictEqual(slots[1], 9, 'Should have 9 level 1 slots');
+  assert.strictEqual(slots[2], 7, 'Should have 7 level 2 slots');
+  assert.strictEqual(slots[3], 5, 'Should have 5 level 3 slots');
   assert.strictEqual(slots[4], 0, 'Should have 0 level 4 slots');
 });
 

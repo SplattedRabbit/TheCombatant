@@ -283,8 +283,8 @@ export class Combatant {
     exitShape(this);
   }
 
-  prepareSpell(spellKey, metamagicList = [], isSpecialist = false) {
-    return prepareSpell(this, spellKey, metamagicList, isSpecialist);
+  prepareSpell(spellKey, metamagicList = [], isSpecialist = false, isDomain = false) {
+    return prepareSpell(this, spellKey, metamagicList, isSpecialist, isDomain);
   }
 
   unprepareSpell(id) {

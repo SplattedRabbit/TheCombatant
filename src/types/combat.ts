@@ -167,8 +167,13 @@ export interface SpellSlots {
 export interface PreparedSpell {
   id: string;
   level: number;
-  prepared: number;
-  used: number;
+  prepared?: number;
+  used?: number;
+  spellKey?: string;
+  isUsed?: boolean;
+  isSpecialist?: boolean;
+  isDomain?: boolean;
+  metamagic?: string[];
 }
 
 // ---------------------------------------------------------------------------
@@ -244,11 +249,13 @@ export interface Combatant {
   skills?: Record<string, SkillEntry>;
   skillTricks?: Array<string | LearnedSkillTrick>;
 
-  // Zauber
+  // Zauber & Glaube
   spellSlots?: SpellSlots;
   preparedSpells?: PreparedSpell[];
   knownSpells?: any[];
   dailyAbilities?: DailyAbility[];
+  deity?: string;
+  clericDomains?: string[];
 
   // Prestige & ACFs State Flags
   selectedClassStrike?: string;

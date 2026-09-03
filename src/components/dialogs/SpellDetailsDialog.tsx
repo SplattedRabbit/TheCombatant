@@ -1,7 +1,7 @@
 import React from 'react';
 import { CombatState } from '@core/state.js';
 import { CombatSpells } from '@core/spells.js';
-import { CombatRules } from '@core/rules.js';
+import { CombatRules, getSpellDomains, isDomainSpellForPC } from '@core/rules.js';
 
 function findSpell(pc: any, key: string) {
   if (CombatSpells.REGISTRY?.[key]) {
@@ -250,6 +250,21 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
                 <strong>Classes:</strong> {classLevelsText}
               </div>
             )}
+            {(() => {
+              const spellDomains = getSpellDomains(spell.id || spellKey);
+              const isPCDomain = isDomainSpellForPC(spell.id || spellKey, pc);
+              if (spellDomains.length === 0) return null;
+              return (
+                <div style={{ gridColumn: 'span 2' }}>
+                  <strong>Domains:</strong> {spellDomains.map(d => `${d.domainName} ${d.level}`).join(', ')}
+                  {isPCDomain && (
+                    <span style={{ color: '#1b5e20', fontWeight: 'bold', marginLeft: '6px' }}>
+                      (✓ Available via your Cleric Domain)
+                    </span>
+                  )}
+                </div>
+              );
+            })()}
           </div>
 
           <div style={{ fontSize: '9.5px', marginBottom: '4px', lineHeight: 1.35 }}>

@@ -9,7 +9,14 @@
 
 import React, { useState, useMemo } from 'react';
 import { CombatState } from '@core/state.js';
-import { getEligibleSpellLevelsForPC, isSpellEligibleForPC, getAllCompendiumSpells, validateSpellLearnEligibility } from '@core/rules.js';
+import {
+  getEligibleSpellLevelsForPC,
+  isSpellEligibleForPC,
+  getAllCompendiumSpells,
+  validateSpellLearnEligibility,
+  getSpellDomains,
+  isDomainSpellForPC
+} from '@core/rules.js';
 import { showCustomConfirm, showCustomAlert, showSpellDetailsDialog, showSpellCreatorWizard } from '@core/ui/components/dialogs.js';
 import { findSpell } from './PCSpellbookTab';
 
@@ -190,13 +197,36 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
             const isLearned = learnedSpellsSet.has(s.id);
             const isCustom = String(s.id).startsWith('custom_');
             const isEligible = isSpellEligibleForPC(s, pc);
+            const domains = getSpellDomains(s.id);
+            const isPCDomain = isDomainSpellForPC(s.id, pc);
 
             return (
               <div key={s.id} className="compendium-spell-item" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.25)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '3px 5px', fontSize: '9px' }}>
                 <div onClick={() => handleShowDetails(s)} style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer', flex: 1 }}>
-                  <span style={{ fontWeight: 600, color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '10px' }}>
-                    📜 {s.nameEn || s.nameDe} <span style={{ fontSize: '8.5px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>Level {s.level} · {s.school}</span>
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
+                    <span style={{ fontWeight: 600, color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '10px' }}>
+                      📜 {s.nameEn || s.nameDe}
+                    </span>
+                    <span style={{ fontSize: '8.5px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>
+                      Level {s.level} · {s.school}
+                    </span>
+                    {domains.length > 0 && (
+                      <span
+                        style={{
+                          fontSize: '7px',
+                          padding: '0.5px 3px',
+                          borderRadius: '2px',
+                          background: isPCDomain ? 'rgba(46, 125, 50, 0.12)' : 'rgba(139, 26, 26, 0.08)',
+                          border: `0.5px solid ${isPCDomain ? 'rgba(46, 125, 50, 0.35)' : 'rgba(139, 26, 26, 0.2)'}`,
+                          color: isPCDomain ? '#1b5e20' : '#8b1a1a',
+                          fontWeight: isPCDomain ? 'bold' : 'normal'
+                        }}
+                        title={domains.map(d => `${d.domainName} ${d.level}`).join(', ')}
+                      >
+                        {isPCDomain ? '✓ ' : ''}Domain: {domains.map(d => d.domainName).join(', ')}
+                      </span>
+                    )}
+                  </div>
                   {s.nameEn && s.nameEn !== s.nameDe && (
                     <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic', paddingLeft: '12px', marginTop: '-1px' }}>
                       {s.nameDe}

@@ -157,3 +157,16 @@ export function togglePCTrickyFighting(isActive) {
     pc.isTrickyFightingActive = !!isActive;
   });
 }
+
+export function updatePCDeity(deityId) {
+  updatePCBatch(pc => {
+    pc.deity = deityId || '';
+  });
+}
+
+export function updatePCClericDomains(domains) {
+  updatePCBatch(pc => {
+    pc.clericDomains = Array.isArray(domains) ? [...domains] : [];
+  });
+}
+

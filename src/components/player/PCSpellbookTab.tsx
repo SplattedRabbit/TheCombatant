@@ -219,9 +219,14 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
               );
             }
 
+            const isCleric = hasClasses && pc.classes.some((c: any) => c.classType === 'cleric');
+            const hasDomainSlot = isCleric && spellLvl >= 1;
+
             return (
               <div key={spellLvl} style={{ display: 'flex', alignItems: 'center', gap: '3px', fontSize: '9px', lineHeight: 1 }}>
-                <span style={{ fontWeight: 600, minWidth: '35px' }}>Level {spellLvl}:</span>
+                <span style={{ fontWeight: 600, minWidth: '40px' }} title={hasDomainSlot ? 'Includes 1 Domain Spell Slot' : undefined}>
+                  Level {spellLvl}{hasDomainSlot ? <span style={{ color: '#8b1a1a', fontSize: '7.5px', marginLeft: '1px' }}>+D</span> : ''}:
+                </span>
                 <input
                   type="number"
                   value={max}

@@ -131,11 +131,11 @@ test('SpellSlotCalculator - Spezialistenmagier Bonuszauberplätze', () => {
 test('SpellSlotCalculator - Multiklassen-Zauberer und Nicht-Zauberer', () => {
   // Wizard 3 (Int 18) + Cleric 3 (Wis 10)
   // Wizard 3 Base: [4, 2, 1] => Stufe 1: 2 base + 1 bonus (Int 18) = 3 slots. Stufe 2: 1 base + 1 bonus (Int 18) = 2 slots.
-  // Cleric 3 Base: [4, 2, 1] => Stufe 1: 2 base. Stufe 2: 1 base. (Wis 10 has +0 mod)
+  // Cleric 3 Base: [4, 2, 1] => Stufe 1: 2 base + 1 domain = 3 slots. Stufe 2: 1 base + 1 domain = 2 slots. (Wis 10 has +0 mod)
   // Summe:
   // Lvl 0: 4 + 4 = 8
-  // Lvl 1: 3 + 2 = 5
-  // Lvl 2: 2 + 1 = 3
+  // Lvl 1: 3 + 3 = 6 (inkl. 1 Kleriker-Domänenslot)
+  // Lvl 2: 2 + 2 = 4 (inkl. 1 Kleriker-Domänenslot)
   const pc = {
     classes: [
       { classType: 'wizard', level: 3 },
@@ -148,8 +148,8 @@ test('SpellSlotCalculator - Multiklassen-Zauberer und Nicht-Zauberer', () => {
 
   const slots = SpellSlotCalculator.calculateSpellSlots(pc);
   assert.strictEqual(slots[0], 8);
-  assert.strictEqual(slots[1], 5);
-  assert.strictEqual(slots[2], 3);
+  assert.strictEqual(slots[1], 6);
+  assert.strictEqual(slots[2], 4);
   assert.strictEqual(slots[3], 0);
 
   // Nicht-Zauberer: Fighter 3

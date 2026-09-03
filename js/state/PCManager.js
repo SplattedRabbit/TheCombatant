@@ -27,7 +27,9 @@ export {
   updatePCWizardProhibited1,
   updatePCWizardProhibited2,
   togglePCSneakAttack,
-  togglePCTrickyFighting
+  togglePCTrickyFighting,
+  updatePCDeity,
+  updatePCClericDomains
 } from './pc/PCClasses.js';
 
 export {

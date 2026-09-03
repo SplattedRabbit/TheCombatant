@@ -10,6 +10,7 @@ import {
   DUSKBLADE_TABLE, BEGUILER_TABLE
 } from './RulesData.js';
 import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../spells.js';
+import { getDomain, getSpellDomains, isDomainSpellForPC } from '../data/domains-data.js';
 
 export function getSpellClassLevels(spell) {
   if (!spell) return [];
@@ -137,6 +138,11 @@ export function calculateMaxSpellSlots(pc) {
           classSlots += 1;
         }
 
+        // Cleric Domain bonus (+1 domain slot per level) - also ONLY applies to spell levels 1-9
+        if (c.classType === 'cleric' && lvl > 0 && base > 0) {
+          classSlots += 1;
+        }
+
         slots[lvl] += classSlots;
       }
     }
@@ -149,7 +155,7 @@ function isSpellAllowedByUnlimitedClass(pc, spell) {
   const activeClasses = Array.isArray(pc?.classes) ? pc.classes : [];
   const classLevels = getSpellClassLevels(spell);
 
-  return activeClasses.some(c => {
+  const isClassMatch = activeClasses.some(c => {
     if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
     if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) return false;
     const clMatch = classLevels.find(cl => cl.class === c.classType);
@@ -157,6 +163,25 @@ function isSpellAllowedByUnlimitedClass(pc, spell) {
     const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
     return clMatch.level <= maxLvl;
   });
+
+  if (isClassMatch) return true;
+
+  // D&D 3.5e RAW: Cleric Domain spells from chosen domains are also granted without counting toward spontaneous known limits
+  const clericClass = activeClasses.find(c => c.classType === 'cleric');
+  if (clericClass && Array.isArray(pc.clericDomains) && pc.clericDomains.length > 0) {
+    const clericMaxLvl = getMaxSpellLevel('cleric', getEffectiveCasterLevel(pc, 'cleric'));
+    const spellId = spell.id || spell.spellKey;
+    return pc.clericDomains.some(domId => {
+      const dom = getDomain(domId);
+      if (!dom) return false;
+      for (const [lvlStr, sid] of Object.entries(dom.spells)) {
+        if (sid === spellId && Number(lvlStr) <= clericMaxLvl) return true;
+      }
+      return false;
+    });
+  }
+
+  return false;
 }
 
 function countLearnedSpellsForClass(pc, classType, targetLevel, findSpellFn) {
@@ -278,17 +303,37 @@ export function isSpellEligibleForPC(spell, pc) {
     return false;
   }
 
-  return pc.classes.some(c => {
-    const classMatch = classLevels.find(cl => cl.class === c.classType);
-    if (!classMatch) return false;
+  // 1. Check standard class lists
+  const isClassMatch = classLevels.some(cl => {
+    const pcClass = pc.classes.find(c => c.classType === cl.class);
+    if (!pcClass) return false;
 
-    if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) {
+    if (['paladin', 'ranger'].includes(cl.class) && getEffectiveCasterLevel(pc, cl.class) < 4) {
       return false;
     }
 
-    const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
-    return classMatch.level <= maxLvl;
+    const maxLvl = getMaxSpellLevel(cl.class, getEffectiveCasterLevel(pc, cl.class));
+    return cl.level <= maxLvl;
   });
+
+  if (isClassMatch) return true;
+
+  // 2. D&D 3.5e RAW: Clerics gain access to domain spells from their chosen domains
+  const clericClass = pc.classes.find(c => c.classType === 'cleric');
+  if (clericClass && Array.isArray(pc.clericDomains) && pc.clericDomains.length > 0) {
+    const clericMaxLvl = getMaxSpellLevel('cleric', getEffectiveCasterLevel(pc, 'cleric'));
+    const spellId = spell.id || spell.spellKey;
+    return pc.clericDomains.some(domId => {
+      const dom = getDomain(domId);
+      if (!dom) return false;
+      for (const [lvlStr, sid] of Object.entries(dom.spells)) {
+        if (sid === spellId && Number(lvlStr) <= clericMaxLvl) return true;
+      }
+      return false;
+    });
+  }
+
+  return false;
 }
 
 export function validateSpellLearnEligibility(pc, spell, findSpellFn) {
@@ -380,3 +425,5 @@ export function getEligibleSpellLevelsForPC(pc) {
   
   return Array.from(levels).sort((a, b) => a - b);
 }
+
+export { getDomain, getSpellDomains, isDomainSpellForPC };

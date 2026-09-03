@@ -175,7 +175,11 @@ export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
         </div>
         <div className="dnd-box">
           <div className="dnd-label">Deity</div>
-          <div className="dnd-value">{pc.deity || '—'}</div>
+          <div className="dnd-value">
+            {pc.deity
+              ? `${pc.deity.charAt(0).toUpperCase() + pc.deity.slice(1).replace(/_/g, ' ')}${pc.clericDomains?.length ? ` (${pc.clericDomains.map((d: string) => d.charAt(0).toUpperCase() + d.slice(1)).join(', ')})` : ''}`
+              : '—'}
+          </div>
         </div>
         <div className="dnd-box">
           <div className="dnd-label">Size / Gender</div>

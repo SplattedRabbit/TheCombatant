@@ -1,16 +1,25 @@
-# Übergabe & Systemstatus (v6.3.1) — The Combatant
+# Übergabe & Systemstatus (v6.4.0) — The Combatant
 
 ## 🚀 Copy-Paste Prompt für den neuen Rechner / neuen Chat
 
 ```markdown
-Wir setzen die Entwicklung von The Combatant auf Basis von Branch `main` (Version v6.3.1 / aktueller Stand) fort. 
+Wir setzen die Entwicklung von The Combatant auf Basis von Branch `main` (Version v6.4.0 / aktueller Stand) fort. 
 Zuletzt abgeschlossen:
-1. Vollständige Zauberbücher für PHB (414 Spells), PHB II (27 Spells), Complete Adventurer (14 Spells) und Complete Scoundrel (6 Spells) mit normalisierten classLevels für alle 461 Zauber.
-2. Gehärtete Zauber-Validierungs- und Prerequisite-Engine: Charaktere können nur Zauber ihrer eigenen Klasse und Zauberstufe lernen; Sperrung für Nicht-Zauberer und Bannschulen; verlässliche Filter-Checkbox.
-3. Vollständige Feat-Integration aus PHB, PHB II und Complete Adventurer (~60 CA Feats).
-4. Korrektur der Talent-Progression auf RAW D&D 3.5e (Level 1, 3, 6, 9, 12, 15, 18).
-5. Optische & typografische Angleichung des Spell-Popups (SpellDetailsDialog.tsx) an das Ancient Parchment Feat-Popup mit Klassenberechtigungs-Feedback.
-Alle 325 automatisierten Tests und TypeScript-Checks sind 100% grün.
+1. Vollständiges D&D 3.5e Gottheiten- und Kleriker-Domänensystem nach RAW:
+   - Alle 19 Greyhawk-Kerngottheiten + philosophische Ideale in `js/data/deities-data.js` inkl. One-Step-Gesinnungsregel.
+   - Alle 22 PHB-Domänen (Air, Animal, Chaos, Death, Destruction, Earth, Evil, Fire, Good, Healing, Knowledge, Law, Luck, Magic, Plant, Protection, Strength, Sun, Travel, Trickery, War, Water) in `js/data/domains-data.js` mit verliehenen Kräften und Stufen 1–9 Domänenzaubern.
+   - 100% Abdeckung aller 198 Domänenzauberslots (44 ehemals fehlende Core-Spells in `spells-phb.json` integriert).
+2. Kleriker-Zauberplatz-Engine & Vorbereitung:
+   - +1 Domänenslot pro Zauberstufe (1–9) nach RAW.
+   - Domänenzauber-Zugriff für Kleriker auch außerhalb der Klerikerliste (z.B. Fly über Travel, Barkskin über Plant).
+   - Saubere Trennung und Verfolgung von Domänenslots bei der Zaubervorbereitung (`isDomain: boolean`, `[D]`-Tag, max 1 pro Stufe).
+3. Benutzeroberfläche & Anzeige:
+   - `ClericFeaturesCard.tsx`: Gottheitsauswahl mit Gesinnungs-Kompatibilitätsprüfung, Domänenauswahl, verliehene Mächte und Zauberlisten.
+   - `PrepareSpellDialog.tsx`: Domänenslot-Erkennung mit Checkbox und Verfügbarkeits-Feedback.
+   - `PCSpellPreparation.tsx` & `PCSpellbookTab.tsx`: Dedizierte Domänen-Slots mit Pergament-Styling und `[D]`-Badge.
+   - `PCSpellCompendium.tsx` & `SpellDetailsDialog.tsx`: Domänen-Badges und Markierung freigeschalteter Domänenzauber.
+   - `PCHeaderInfo.tsx` & Druckbögen: Gottheits- und Domänenanzeige im Header und auf den Druckseiten.
+Alle 330 automatisierten Tests, 37 Vitest UI-Tests und TypeScript-Checks sind 100% grün.
 ```
 
 ---
@@ -19,48 +28,60 @@ Alle 325 automatisierten Tests und TypeScript-Checks sind 100% grün.
 
 * **Repository:** `https://github.com/SplattedRabbit/TheCombatant.git`
 * **Branch:** `main`
-* **Release-Version:** `v6.3.1`
-* **Test-Suite:** 325 Node-Tests (`npm test`) & Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **100% grün, 0 Fehler**.
+* **Release-Version:** `v6.4.0`
+* **Test-Suite:** 330 Node-Tests (`npm test`) & 37 Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **100% grün, 0 Fehler**.
 * **TypeScript-Prüfung:** `npm run typecheck` $\rightarrow$ **0 Fehler**.
-* **Produktions-Build:** `npm run build` $\rightarrow$ Service-Worker Precache `v198`.
+* **Produktions-Build:** `npm run build` $\rightarrow$ Service-Worker Precache `v202`.
 
 ---
 
 ## 🛠️ Detaillierte Übersicht der umgesetzten Änderungen
 
-### 1. Zauber-System (Spells System)
-- **PHB (`data/spells-phb.json` – 414 Zauber):**
-  - Fehlende Basis-Zauber nachgetragen: `cure_minor_wounds` (Stufe 0 Kleriker/Druide), `inflict_minor_wounds` (Stufe 0 Kleriker), `read_magic` (Stufe 0 Kleriker/Druide/Barde/Magier/Hexenmeister, Stufe 1 Paladin/Waldläufer), `daze` (Stufe 0 Barde/Magier/Hexenmeister), `know_direction` (Stufe 0 Druide, Stufe 1 Barde), `comprehend_languages` (Stufe 1 Kleriker/Barde/Magier/Hexenmeister).
-  - 6 fehlerhafte Keys repariert: `aid`, `animal_messenger`, `bane`, `command`, `nightmare`, `power_word_kill`.
-  - Bei 300+ Zaubern die verschluckten Header am Textende aus dem Feld `description` entfernt.
-  - 10 ehemals leere Beschreibungen mit offiziellem SRD-Text befüllt (`analyze_dweomer`, `animate_dead`, `antilife_shell`, `bless_weapon`, `disrupting_weapon`, `helping_hand`, `holy_smite`, `refuge`, `repulsion`, `wall_of_force`).
-- **Player's Handbook II (`data/spells-phb2.json` – 27 Zauber):**
-  - Vollständiger Katalog inkl. `alter_fortune`, `celerity` (Lesser, Standard, Greater), `deflect` (Lesser, Standard), `heart_of_air`, `heart_of_water`, `heart_of_earth`, `heart_of_fire`, `kelgores_fire_bolt`, `kelgores_grave_mist`, `chain_missile`, `energy_aegis`, `stay_the_hand`, `hesitate`, `chasing_perfection`, `vertigo_field`, `legion_of_sentinels`, `sure_strike`, `blade_brothers`.
-- **Complete Adventurer (`data/spells-ca.json` – 14 Zauber):**
-  - Vollständiger Katalog inkl. `iron_silence`, `wraithstrike`, `sniper_s_shot`, `guided_shot`, `critical_strike`, `bladeweave`, `sonic_weapon`, `arrow_mind`, `wild_instincts`, `tactical_teleportation`.
-- **Automatisierte Validierung (`Tests/spellbooks_audit.test.js`):**
-  - Prüft alle 461 Zauber auf vollständige Namen, Schulen, Grade und Beschreibungen.
+### 1. Gottheiten- & Domänen-System (Deities & Domains Engine)
+- **Gottheiten-Register (`js/data/deities-data.js`):**
+  - Alle 19 Core-Gottheiten (Pelor, Kord, Moradin, Heironeous, St. Cuthbert, Wee Jas, Boccob, Fharlanghn, Obad-Hai, Olidammara, Ehlonna, Hextor, Nerull, Vecna, Erythnul, Gruumsh, Corellon Larethian, Garl Glittergold, Yondalla) + `"none"` (Ideale/Philosophie).
+  - Jede Gottheit besitzt: ID, Name, Titel, Gesinnung, Domänenportfolio, bevorzugte Waffe und Beschreibung.
+  - Mathematische Manhattan-Distanzfunktion `isAlignmentWithinOneStep` auf dem 3×3 Gesinnungsgitter nach D&D 3.5e RAW.
+- **Domänen-Register (`js/data/domains-data.js`):**
+  - Alle 22 Core-PHB-Domänen vollständig erfasst mit verliehenen Kräften (*Granted Powers*) und Zaubern Stufe 1 bis 9.
+  - Hilfsfunktionen `getDomain`, `getSpellDomains`, `isSpellInDomain`, `isDomainSpellForPC`.
+- **Datenbank-Bereinigung (`data/spells-phb.json`):**
+  - 44 fehlende Kernzauber mit vollständigen SRD-Werten, Schulen, Komponenten und Klassenstufen nachgetragen.
+  - Alle 198 Domänenslots aller 22 Domänen mappen 1:1 auf existierende Zauber in der Datenbank.
 
-### 2. Talent-System & Voraussetzungen (Feats & Prerequisite Engine)
-- **Regelwerke:** PHB, PHB II und Complete Adventurer (~60 CA-Talente für Kampf, Magie und Allgemein) vollständig registriert.
-- **Formel-Korrektur:** Allgemeine Talent-Slots auf RAW D&D 3.5e Formel korrigiert: `1 + Math.floor(Level / 3) + (isHuman ? 1 : 0)`.
-- **Prerequisite-Engine:**
-  - Ersetzung von Roh-IDs durch `SKILL_NAMES_MAP` und `CLASS_NAMES_MAP`.
-  - Dynamische Erkennung von Klassenmerkmalen (*Trapfinding*, *Favored Enemy*, *Smite Evil*, *Evasion*, *Rage*, *Ki Strike*, *Turn Undead*, *Bardic Music*, *Wild Shape*, *Spontaneous Arcane Spells*, *Familiar*).
-- **UI-Reaktivität:** Unlearn- und Learn-Zweige in `FeatScrollActions.tsx` entkoppelt; `pc.feats` wird immutable als neue Array-Referenz aktualisiert.
+### 2. Zauberregeln & Vorbereitungsmechanik
+- **Zauberslots:**
+  - Kleriker erhalten automatisch `+1` Domänenslot pro Zauberstufe (Stufen 1–9) auf Basis von `RulesSpells.calculateMaxSpellSlots`.
+- **Zauberzugriff:**
+  - Kleriker können Domänenzauber, die regulär nicht auf der Klerikerliste stehen (z.B. *Fliegen* bei Reisestatut), erlernen und vorbereiten.
+  - Nicht-Klerikerzauber aus Domänen können ausschließlich in Domänenslots vorbereitet werden.
+- **Vorbereitungstracking:**
+  - `prepareSpell(pc, key, metamagic, isSpecialist, isDomain)` erfasst `isDomain: true`.
+  - `SpellSlotCalculator.countPreparedDomainSpellsAtLevel` limitiert Vorbereitung auf maximal 1 Domänenzauber pro Stufe.
 
-### 3. UI-Harmonisierung (Popups & Dialogs)
-- **`SpellDetailsDialog.tsx` & `SpellScrollDialog.tsx`:**
-  - 1:1 an das Ancient-Parchment-Design des Talent-Popups angepasst (`width: 540px`, `maxHeight: 54vh`, `#f4e8c1` Pergament, roter Rahmen `#8b1a1a`, sauberes Attribut-Grid, optimierte Typografie und Backdrop-Klick zum Schließen).
+### 3. UI- & Druck-Integration
+- **`ClericFeaturesCard.tsx`:** Gottheits-Auswahl mit Gesinnungs-Feedback, 2 Domänen-Auswahlen mit Granted-Powers-Karten und Zauberlisten.
+- **`PrepareSpellDialog.tsx`:** Intelligente Domänenslot-Erkennung mit Checkbox und Slot-Verfügbarkeits-Validierung.
+- **`PCSpellPreparation.tsx`:** Eigene Domänenslot-Zeile mit Sonnen-Symbol, rotem Rahmen und `[D]`-Kennzeichnung.
+- **`PCSpellCompendium.tsx` & `SpellDetailsDialog.tsx`:** Anzeige der zugehörigen Domänen und optische Hervorhebung von Zaubern der eigenen Domänen.
+- **Header & Druckseiten (`PCHeaderInfo.tsx`, `PrintPage1CoreCombat.tsx`, `PrintPage4SpellsCompanion.tsx`):** Anzeige von Gottheit und Domänen im Kopfbereich sowie Kennzeichnung vorbereiteter Domänenzauber mit `[D]`.
 
 ---
 
 ## 💻 Erste Schritte auf dem neuen Rechner
 
 ```bash
+# 1. Neueste Version von GitHub abrufen
 git pull origin main
+
+# 2. Dependencies sicherstellen
 npm install
-npm run typecheck
+
+# 3. Alle Tests ausführen
 npm test
+npm run test:ui
+npm run typecheck
+
+# 4. Entwicklungs-Server starten
 npm run dev
 ```

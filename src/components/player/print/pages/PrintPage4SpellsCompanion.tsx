@@ -56,11 +56,12 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
   if (Array.isArray(pc.preparedSpells)) {
     pc.preparedSpells.forEach((sp: any) => {
       if (!sp) return;
-      const key = sp.key || sp.name;
+      const key = sp.key || sp.spellKey || sp.name;
       const reg = key ? (CombatSpells.REGISTRY?.[key] || (typeof CombatSpells.getSpellDetails === 'function' ? CombatSpells.getSpellDetails(key) : null)) : null;
+      const baseName = sp.name || reg?.nameEn || reg?.nameDe || key || 'Prepared Spell';
       preparedSpells.push({
         level: sp.level ?? reg?.level ?? 1,
-        name: sp.name || reg?.nameEn || reg?.nameDe || key || 'Prepared Spell',
+        name: sp.isDomain ? `[D] ${baseName}` : baseName,
         school: reg?.school || sp.school || 'Universal',
         range: reg?.range || sp.range || 'Close',
         duration: reg?.duration || sp.duration || 'Instant',
