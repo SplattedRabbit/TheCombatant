@@ -85,6 +85,9 @@ describe('Level-Up Assistant Suite', () => {
       expect(updatedPC.hp).toBe(46);
       expect(updatedPC.levelIncreases.str).toBe(1);
       expect(updatedPC.skills.climb.ranks).toBe(8);
+      // Verify equipment and gear are fully preserved during Level-Up
+      expect(updatedPC.weapons.length).toBeGreaterThan(0);
+      expect(updatedPC.weapons[0].name).toBe('Langschwert');
     });
 
     it('supports multiclassing into a new secondary class', () => {
