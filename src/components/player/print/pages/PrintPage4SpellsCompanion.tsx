@@ -1,75 +1,114 @@
-/**
- * @module    PrintPage4SpellsCompanion
- * @summary   Page 4 of the Printable D&D 3.5e Character Sheet (Spellcasting Matrix, Prepared Spells, Companion/Familiar).
- */
-
 import React from 'react';
 import { CombatSpells } from '@core/spells.js';
+import { CompanionRules } from '@core/rules/CompanionRules.js';
+import { FamiliarRules } from '@core/rules/FamiliarRules.js';
+import { getStatMod, formatMod } from '../../attributeHelper';
 
 interface PrintPageProps {
   pc: any;
 }
 
 export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
-  // Companion / Familiar
+  // Companion / Familiar Detection & Live Data Resolution
   const hasCompanion = pc.companionType && pc.companionType !== 'none';
   const hasFamiliar = pc.familiarType && pc.familiarType !== 'none';
-  const petName = hasCompanion ? (pc.companionName || `${pc.companionType} (Animal Companion)`) : (hasFamiliar ? (pc.familiarName || `${pc.familiarType} (Familiar)`) : 'None');
-  const petType = hasCompanion ? pc.companionType : (hasFamiliar ? pc.familiarType : '—');
+
+  const effectiveDruidLvl = CompanionRules.calculateEffectiveDruidLevel(pc);
+  const companionBase = hasCompanion ? CompanionRules.getCompanionBaseStats(pc.companionType, effectiveDruidLvl) : null;
+  const familiarBase = hasFamiliar ? FamiliarRules.getFamiliarBaseStats(pc.familiarType) : null;
+
+  const petName = hasCompanion 
+    ? (pc.companionName || companionBase?.name || `${pc.companionType} (Animal Companion)`)
+    : (hasFamiliar ? (pc.familiarName || familiarBase?.name || `${pc.familiarType} (Familiar)`) : 'None');
+
+  const petType = hasCompanion ? (companionBase?.name || pc.companionType) : (hasFamiliar ? (familiarBase?.name || pc.familiarType) : '—');
+  const petHD = hasCompanion ? (companionBase?.hd || `${effectiveDruidLvl} HD`) : (hasFamiliar ? `${(pc.classes || []).reduce((s: number, c: any) => s + (c.level || 0), 0)} HD` : '—');
+  const petHP = hasCompanion ? (pc.companionHP || pc.companionMaxHP || companionBase?.maxHP || '—') : (hasFamiliar ? (pc.familiarHP || Math.floor((pc.maxHP || 10) / 2)) : '—');
+  const petSpeed = hasCompanion ? (companionBase?.speed || '40 ft.') : (hasFamiliar ? (familiarBase?.speed || '30 ft.') : '—');
+  const petInit = hasCompanion ? (companionBase?.init !== undefined ? formatMod(companionBase.init) : '+2') : (hasFamiliar ? (familiarBase?.init !== undefined ? formatMod(familiarBase.init) : '+2') : '—');
+  const petAC = hasCompanion ? (companionBase?.ac || '14') : (hasFamiliar ? (familiarBase?.ac || '14') : '—');
+  const petAttack = hasCompanion ? (companionBase?.attack || companionBase?.attacks?.[0]?.name || 'Natural Attack') : (hasFamiliar ? (familiarBase?.attack || familiarBase?.attacks?.[0]?.name || 'Natural Attack') : '—');
+  const petSpecial = hasCompanion 
+    ? (companionBase?.specialQualities || 'Link, Share Spells, Scent, Low-Light Vision.')
+    : (hasFamiliar ? (familiarBase?.specialQualities || 'Alertness, Improved Evasion, Share Spells, Empathic Link.') : '—');
+
+  // Determine Primary Spellcasting Attribute (WIS, CHA, or INT)
+  const isWisCaster = (pc.classes || []).some((c: any) => ['cleric', 'druid', 'ranger'].includes(c.classType));
+  const isChaCaster = (pc.classes || []).some((c: any) => ['sorcerer', 'bard', 'paladin', 'favored_soul'].includes(c.classType));
+  const casterMod = isWisCaster ? getStatMod(pc.wis) : (isChaCaster ? getStatMod(pc.cha) : getStatMod(pc.int));
 
   // Spells per day and DCs
   const spellStats = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((lvl) => {
-    const dc = typeof pc.getSpellDC === 'function' ? pc.getSpellDC(lvl) : (10 + lvl + (typeof pc.getAttributeMod === 'function' ? pc.getAttributeMod('int') : 0));
-    const perDay = pc.spellsPerDay?.[lvl] ?? (lvl === 0 ? 4 : (lvl === 1 ? 3 : '—'));
+    const dc = typeof pc.getSpellDC === 'function' ? pc.getSpellDC(lvl) : (10 + lvl + casterMod);
+    const maxSlots = pc.spellSlots?.[lvl]?.max;
+    const legacyPerDay = pc.spellsPerDay?.[lvl];
+    const perDay = maxSlots !== undefined ? (maxSlots > 0 ? maxSlots : '—') : (legacyPerDay !== undefined ? legacyPerDay : '—');
     return { lvl, dc, perDay };
   });
 
   // Extract prepared / known spells
   const preparedSpells: any[] = [];
+  const addedKeys = new Set<string>();
 
-  if (Array.isArray(pc.spellbook)) {
-    pc.spellbook.forEach((sp: any) => {
+  // 1. Prepared spells directly from combatant
+  if (Array.isArray(pc.preparedSpells)) {
+    pc.preparedSpells.forEach((sp: any) => {
+      const key = sp.key || sp.name;
+      const reg = key ? (CombatSpells.REGISTRY?.[key] || (typeof CombatSpells.getSpellDetails === 'function' ? CombatSpells.getSpellDetails(key) : null)) : null;
       preparedSpells.push({
-        level: sp.level ?? 1,
-        name: sp.nameEn || sp.nameDe || sp.name || sp.key,
-        school: sp.school || 'Universal',
-        range: sp.range || 'Close',
-        duration: sp.duration || 'Instant',
-        save: sp.save || 'None',
-        desc: sp.shortDesc || sp.desc || '—',
+        level: sp.level ?? reg?.level ?? 1,
+        name: sp.name || reg?.nameEn || reg?.nameDe || key,
+        school: reg?.school || sp.school || 'Universal',
+        range: reg?.range || sp.range || 'Close',
+        duration: reg?.duration || sp.duration || 'Instant',
+        save: reg?.save || sp.save || 'None',
+        desc: reg?.shortDesc || reg?.desc || sp.desc || sp.notes || '—',
+        isUsed: !!sp.isUsed,
       });
+      if (key) addedKeys.add(key);
     });
   }
 
-  if (pc.learnedSpells) {
-    const learnedKeys = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : Object.keys(pc.learnedSpells);
-    learnedKeys.forEach((key: string) => {
-      const regSpell = CombatSpells.REGISTRY?.[key];
-      if (regSpell) {
+  // 2. Spellbook spells
+  if (Array.isArray(pc.spellbook)) {
+    pc.spellbook.forEach((sp: any) => {
+      const key = sp.key || sp.nameEn || sp.name;
+      if (key && !addedKeys.has(key)) {
         preparedSpells.push({
-          level: regSpell.level ?? 1,
-          name: regSpell.nameEn || regSpell.nameDe || regSpell.name || key,
-          school: regSpell.school || 'Universal',
-          range: regSpell.range || 'Close',
-          duration: regSpell.duration || 'Instant',
-          save: regSpell.save || 'None',
-          desc: regSpell.shortDesc || regSpell.desc || '—',
+          level: sp.level ?? 1,
+          name: sp.nameEn || sp.nameDe || sp.name || key,
+          school: sp.school || 'Universal',
+          range: sp.range || 'Close',
+          duration: sp.duration || 'Instant',
+          save: sp.save || 'None',
+          desc: sp.shortDesc || sp.desc || '—',
+          isUsed: false,
         });
+        addedKeys.add(key);
       }
     });
   }
 
-  if (pc.spells && typeof pc.spells === 'object') {
-    Object.entries(pc.spells).forEach(([key, sp]: [string, any]) => {
-      preparedSpells.push({
-        level: sp.level ?? 1,
-        name: sp.nameEn || sp.nameDe || sp.name || key,
-        school: sp.school || 'Universal',
-        range: sp.range || 'Close',
-        duration: sp.duration || 'Instant',
-        save: sp.save || 'None',
-        desc: sp.shortDesc || sp.desc || '—',
-      });
+  // 3. Learned spells registry keys
+  if (pc.learnedSpells) {
+    const learnedKeys = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : Object.keys(pc.learnedSpells);
+    learnedKeys.forEach((key: string) => {
+      if (!addedKeys.has(key)) {
+        const regSpell = CombatSpells.REGISTRY?.[key] || (typeof CombatSpells.getSpellDetails === 'function' ? CombatSpells.getSpellDetails(key) : null);
+        if (regSpell) {
+          preparedSpells.push({
+            level: regSpell.level ?? 1,
+            name: regSpell.nameEn || regSpell.nameDe || regSpell.name || key,
+            school: regSpell.school || 'Universal',
+            range: regSpell.range || 'Close',
+            duration: regSpell.duration || 'Instant',
+            save: regSpell.save || 'None',
+            desc: regSpell.shortDesc || regSpell.desc || '—',
+            isUsed: false,
+          });
+          addedKeys.add(key);
+        }
+      }
     });
   }
 
@@ -155,7 +194,7 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
             {displaySpells.map((sp, idx) => (
               <tr key={idx}>
                 <td style={{ textAlign: 'center' }}>
-                  {!sp.isPlaceholder && <span className="dnd-checkbox" />}
+                  {!sp.isPlaceholder && <span className={`dnd-checkbox ${sp.isUsed ? 'dnd-checkbox-checked' : ''}`}>{sp.isUsed ? '✓' : ''}</span>}
                 </td>
                 <td style={{ textAlign: 'center', fontWeight: 'bold' }}>{sp.level}</td>
                 <td style={{ fontWeight: sp.isPlaceholder ? 'normal' : 'bold' }}>{sp.name}</td>
@@ -191,19 +230,19 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '4px', textAlign: 'center', marginTop: '4px' }}>
                 <div>
                   <div className="dnd-label">Hit Dice</div>
-                  <div className="dnd-value">{pc.companion?.hd || '3d8+6'}</div>
+                  <div className="dnd-value">{petHD}</div>
                 </div>
                 <div>
                   <div className="dnd-label">HP</div>
-                  <div className="dnd-value" style={{ fontWeight: 'bold' }}>{pc.companion?.hp || '20'}</div>
+                  <div className="dnd-value" style={{ fontWeight: 'bold' }}>{petHP}</div>
                 </div>
                 <div>
                   <div className="dnd-label">Speed</div>
-                  <div className="dnd-value">{pc.companion?.speed || '50 ft.'}</div>
+                  <div className="dnd-value">{petSpeed}</div>
                 </div>
                 <div>
                   <div className="dnd-label">Initiative</div>
-                  <div className="dnd-value">{pc.companion?.init || '+2'}</div>
+                  <div className="dnd-value">{petInit}</div>
                 </div>
               </div>
             </div>
@@ -212,25 +251,21 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
             <div className="dnd-box" style={{ padding: '4px' }}>
               <div className="dnd-label">Armor Class &amp; Saves</div>
               <div style={{ fontSize: '7.5pt', marginTop: '2px' }}>
-                AC: <strong>{pc.companion?.ac || '14'}</strong> (Touch 12, Flat-Footed 12)
-              </div>
-              <div style={{ fontSize: '6.5pt', color: 'var(--dnd-gray-dark)', marginTop: '2px' }}>
-                Fort: <strong>+5</strong> • Ref: <strong>+5</strong> • Will: <strong>+1</strong>
+                AC: <strong>{petAC}</strong>
               </div>
               <div style={{ borderTop: '0.5pt dashed var(--dnd-gray-med)', marginTop: '3px', paddingTop: '2px' }}>
                 <div className="dnd-label">Attack &amp; Damage</div>
                 <div style={{ fontSize: '7pt', fontWeight: 'bold' }}>
-                  {pc.companion?.attack || 'Bite +3 melee (1d6+1 plus Trip)'}
+                  {petAttack}
                 </div>
               </div>
             </div>
 
             {/* Companion Special Qualities & Tricks */}
             <div className="dnd-box" style={{ padding: '4px' }}>
-              <div className="dnd-label">Special Abilities &amp; Tricks</div>
+              <div className="dnd-label">Special Abilities &amp; Qualities</div>
               <div style={{ fontSize: '6.5pt', color: 'var(--dnd-gray-dark)', lineHeight: 1.2, marginTop: '2px' }}>
-                • Link, Share Spells, Scent, Low-Light Vision.<br />
-                • <strong>Tricks:</strong> Attack, Come, Defend, Down, Guard, Heel, Fetch.
+                {petSpecial}
               </div>
             </div>
 

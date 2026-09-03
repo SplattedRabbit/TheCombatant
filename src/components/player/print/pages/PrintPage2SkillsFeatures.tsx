@@ -1,26 +1,23 @@
-/**
- * @module    PrintPage2SkillsFeatures
- * @summary   Page 2 of the Printable D&D 3.5e Character Sheet (Skills, Feats, Skill Tricks, Features & ACFs).
- */
-
 import React from 'react';
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { SKILL_TRICKS_REGISTRY } from '@core/data/skillTricks-data.js';
 import { getACF } from '@core/data/acf-data.js';
 import { CombatRules } from '@core/rules.js';
+import { getStatMod } from '../../attributeHelper';
+import { RACES } from '../../wizard/constants';
 
 interface PrintPageProps {
   pc: any;
 }
 
 export const PrintPage2SkillsFeatures: React.FC<PrintPageProps> = ({ pc }) => {
-  // Extract all skills and calculate totals
+  // Extract all skills and calculate totals canonically
   const allSkills = Object.entries(SKILLS_REGISTRY).map(([key, def]: [string, any]) => {
     const rawSkill = pc.skills?.[key];
     const ranks = typeof rawSkill === 'object' ? (rawSkill.ranks || 0) : (Number(rawSkill) || 0);
     const keyAttr = (def.attribute || def.stat || 'str').toLowerCase();
-    const attrMod = typeof pc.getAttributeMod === 'function' ? pc.getAttributeMod(keyAttr) : 0;
+    const attrMod = getStatMod(pc[keyAttr]);
     const misc = typeof rawSkill === 'object' ? (rawSkill.misc || 0) : 0;
     const total = ranks > 0 || !def.trainedOnly ? ranks + attrMod + misc : attrMod + misc;
     
@@ -85,6 +82,47 @@ export const PrintPage2SkillsFeatures: React.FC<PrintPageProps> = ({ pc }) => {
       replaces: acfDef?.replaces || '—',
       desc: acfDef?.description || acfDef?.desc || '—',
     };
+  });
+
+  // Racial traits resolution
+  const raceMatch = RACES.find(r => r.key === (pc.race || 'human'));
+  const racialTraits = raceMatch?.traits?.join(' ') || (pc.race === 'human' 
+    ? 'Bonus feat at 1st level, +4 skill points at 1st level, +1 skill point per level.' 
+    : 'Standard racial traits and abilities.');
+
+  // Core class features compilation
+  const classFeatures: Array<{ name: string; value: string }> = [];
+  if (Array.isArray(pc.dailyAbilities) && pc.dailyAbilities.length > 0) {
+    pc.dailyAbilities.forEach((ab: any) => {
+      classFeatures.push({ name: ab.name, value: `${ab.uses || ab.total || ab.max || '—'} / Day` });
+    });
+  }
+
+  // Synthesize common 3.5e class features from classes if not in dailyAbilities
+  (pc.classes || []).forEach((c: any) => {
+    if (c.classType === 'rogue' && c.level >= 1) {
+      const sneakD6 = Math.ceil(c.level / 2);
+      if (!classFeatures.some(f => f.name.includes('Sneak Attack'))) {
+        classFeatures.push({ name: 'Sneak Attack', value: `+${sneakD6}d6` });
+      }
+    }
+    if (c.classType === 'paladin' && c.level >= 2) {
+      if (!classFeatures.some(f => f.name.includes('Smite Evil'))) {
+        const smites = 1 + Math.floor((c.level - 1) / 4);
+        classFeatures.push({ name: 'Smite Evil', value: `${smites} / Day` });
+      }
+    }
+    if (c.classType === 'barbarian' && c.level >= 1) {
+      if (!classFeatures.some(f => f.name.includes('Rage'))) {
+        const rages = 1 + Math.floor((c.level - 1) / 4);
+        classFeatures.push({ name: 'Rage', value: `${rages} / Day` });
+      }
+    }
+    if (c.classType === 'bard' && c.level >= 1) {
+      if (!classFeatures.some(f => f.name.includes('Bardic Music'))) {
+        classFeatures.push({ name: 'Bardic Music', value: `${c.level} / Day` });
+      }
+    }
   });
 
   const renderSkillTable = (skills: typeof allSkills) => (
@@ -213,11 +251,11 @@ export const PrintPage2SkillsFeatures: React.FC<PrintPageProps> = ({ pc }) => {
             {/* Daily Abilities / Core Features */}
             <div>
               <div className="dnd-sub-banner" style={{ marginBottom: '3px' }}>Class Abilities</div>
-              {(pc.dailyAbilities || []).length > 0 ? (
-                pc.dailyAbilities.map((ab: any) => (
+              {classFeatures.length > 0 ? (
+                classFeatures.map((ab: any) => (
                   <div key={ab.name} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '7pt', padding: '1px 0' }}>
                     <span>✦ {ab.name}</span>
-                    <span style={{ fontWeight: 'bold' }}>{ab.uses || ab.total || '—'} / Day</span>
+                    <span style={{ fontWeight: 'bold' }}>{ab.value}</span>
                   </div>
                 ))
               ) : (
@@ -234,9 +272,9 @@ export const PrintPage2SkillsFeatures: React.FC<PrintPageProps> = ({ pc }) => {
               <div className="dnd-value" style={{ fontSize: '7.5pt', marginBottom: '4px' }}>
                 {Array.isArray(pc.languages) && pc.languages.length > 0 ? pc.languages.join(', ') : 'Common'}
               </div>
-              <div className="dnd-label">Racial Traits</div>
-              <div style={{ fontSize: '6.5pt', color: 'var(--dnd-gray-dark)' }}>
-                {pc.race === 'human' ? 'Bonus feat at 1st level, +4 skill points at 1st level, +1 skill point per level.' : 'Standard racial abilities.'}
+              <div className="dnd-label">Racial Traits ({raceMatch?.name || pc.race || 'Human'})</div>
+              <div style={{ fontSize: '6.5pt', color: 'var(--dnd-gray-dark)', lineHeight: 1.2 }}>
+                {racialTraits}
               </div>
             </div>
           </div>

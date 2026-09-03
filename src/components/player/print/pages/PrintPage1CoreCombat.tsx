@@ -85,6 +85,41 @@ export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
   const initMod = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
   const initDisplay = formatMod(initMod);
 
+  // Weapons helper to calculate attack bonus & damage formula dynamically
+  const getWeaponStats = (w: any) => {
+    if (!w || w.isPlaceholder) {
+      return { attackBonus: '', damage: '', crit: '', range: '', type: '', notes: '' };
+    }
+
+    const isRanged = w.grip === 'rng' || (w.range && w.range !== 'Melee' && w.range !== '5 ft');
+    const isFinesse = (w.isFinesse || (w.name && (w.name.toLowerCase().includes('rapier') || w.name.toLowerCase().includes('dagger')))) && dexMod > strMod;
+    const abilityBonus = isRanged ? dexMod : (isFinesse ? dexMod : strMod);
+    const enh = parseInt(w.enhancement) || 0;
+    const totalAtk = bab + abilityBonus + enh;
+    const attackBonus = w.attackBonus || (totalAtk >= 0 ? `+${totalAtk}` : `${totalAtk}`);
+
+    const dice = w.damageDice || w.damage || '1d8';
+    const strDmgMult = w.grip === '2h' ? 1.5 : (w.grip === 'off' ? 0.5 : 1.0);
+    const dmgStatBonus = isRanged ? (w.compositeStr ? Math.min(strMod, parseInt(w.compositeStr)) : 0) : Math.floor(strMod * strDmgMult);
+    const totalDmgBonus = dmgStatBonus + enh;
+    const damage = w.damage && (w.damage.includes('+') || w.damage.includes('-')) 
+      ? w.damage 
+      : `${dice}${totalDmgBonus !== 0 ? (totalDmgBonus > 0 ? `+${totalDmgBonus}` : `${totalDmgBonus}`) : ''}`;
+
+    const crit = w.critThreat || w.crit || '20/x2';
+    const range = w.range || (isRanged ? '80 ft.' : 'Melee');
+    const type = w.damageType || (w.type ? w.type : 'Slashing');
+
+    return {
+      attackBonus,
+      damage,
+      crit,
+      range,
+      type,
+      notes: w.notes || (w.grip === '2h' ? 'Two-Handed' : (w.grip === 'rng' ? 'Ranged' : 'One-Handed'))
+    };
+  };
+
   // Weapons (pad to 4 blocks)
   const rawWeapons = (pc.weapons || []).slice(0, 4);
   const weapons = [...rawWeapons];
@@ -293,11 +328,7 @@ export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
             <div className="dnd-section-banner">Weapons &amp; Attacks</div>
 
             {weapons.map((w, idx) => {
-              const attackBonus = w.isPlaceholder ? '' : (w.attackBonus || babDisplay);
-              const damage = w.isPlaceholder ? '' : (w.damage || '1d8');
-              const crit = w.isPlaceholder ? '' : (w.critThreat || '20/x2');
-              const range = w.isPlaceholder ? '' : (w.range || 'Melee');
-              const type = w.isPlaceholder ? '' : (w.damageType || 'Slashing');
+              const stats = getWeaponStats(w);
 
               return (
                 <div
@@ -316,26 +347,26 @@ export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
                     </div>
                     <div>
                       <div className="dnd-label">Attack Bonus</div>
-                      <div className="dnd-value" style={{ fontWeight: 'bold', color: 'var(--dnd-red)' }}>{attackBonus}</div>
+                      <div className="dnd-value" style={{ fontWeight: 'bold', color: 'var(--dnd-red)' }}>{stats.attackBonus}</div>
                     </div>
                     <div>
                       <div className="dnd-label">Damage</div>
-                      <div className="dnd-value">{damage}</div>
+                      <div className="dnd-value">{stats.damage}</div>
                     </div>
                     <div>
                       <div className="dnd-label">Critical</div>
-                      <div className="dnd-value">{crit}</div>
+                      <div className="dnd-value">{stats.crit}</div>
                     </div>
                     <div>
                       <div className="dnd-label">Range / Type</div>
-                      <div className="dnd-value" style={{ fontSize: '7pt' }}>{range} {type ? `(${type})` : ''}</div>
+                      <div className="dnd-value" style={{ fontSize: '7pt' }}>{stats.range} {stats.type ? `(${stats.type})` : ''}</div>
                     </div>
                   </div>
 
                   {/* Ammunition & Notes row */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '0.5pt dashed var(--dnd-gray-med)', paddingTop: '2px', marginTop: '2px' }}>
                     <div style={{ fontSize: '6.5pt', color: 'var(--dnd-gray-dark)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      <strong>Notes:</strong> {w.notes || (w.isPlaceholder ? '—' : 'Equipped')}
+                      <strong>Notes:</strong> {stats.notes || (w.isPlaceholder ? '—' : 'Equipped')}
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
                       <span style={{ fontSize: '5.5pt', textTransform: 'uppercase', color: 'var(--dnd-gray-med)' }}>Ammo:</span>
