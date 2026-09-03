@@ -6,6 +6,7 @@
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import { CombatState } from '@core/state.js';
 import { CombatRules } from '@core/rules.js';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
@@ -254,6 +255,13 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       baseStats,
       levelConfigs,
       completedDraft
+    );
+    CombatState.setRole('player');
+    showCustomAlert(
+      "Character Created! 🎉",
+      `<div style="text-align: left; padding: 4px;"><p style="margin-bottom: 6px; font-size: 12px; color: var(--ink);"><strong>${name.trim()}</strong> has been successfully created and loaded into your character sheet.</p></div>`,
+      "Open Character Sheet",
+      "✨"
     );
     onClose();
   };
