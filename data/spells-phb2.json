@@ -1,15 +1,683 @@
 {
+  "alter_fortune": {
+    "id": "alter_fortune",
+    "nameDe": "Schicksal wandeln",
+    "nameEn": "Alter Fortune",
+    "level": 3,
+    "school": "Divination",
+    "classes": [
+      "bard",
+      "cleric",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 3
+      },
+      {
+        "class": "cleric",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ],
+    "components": "V, XP",
+    "castingTime": "1 immediate action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "Target: One creature",
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "With a single word, you alter the outcome of an event by changing fortune itself. You cause any creature within range to immediately reroll any die roll it just made (attack roll, saving throw, skill check, or level check). The subject must abide by the result of the second roll. XP Cost: 200 XP."
+  },
+  "arcane_turmoil": {
+    "id": "arcane_turmoil",
+    "nameDe": "Arkaner Aufruhr",
+    "nameEn": "Arcane Turmoil",
+    "level": 2,
+    "school": "Abjuration",
+    "classes": [
+      "wizard",
+      "sorcerer"
+    ],
+    "description": "Dispels one spell on the target, and forces the target to make a Will save or lose its highest-level prepared spell or spell slot.",
+    "duration": "Instantaneous",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "Will partial",
+    "sr": "Yes"
+  },
+  "blade_brothers": {
+    "id": "blade_brothers",
+    "nameDe": "Klingenbrüder",
+    "nameEn": "Blade Brothers",
+    "level": 1,
+    "school": "Abjuration",
+    "classes": [
+      "cleric",
+      "paladin"
+    ],
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 1
+      },
+      {
+        "class": "paladin",
+        "level": 1
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 immediate action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "Targets: You and one willing ally within range",
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "When you or your targeted ally makes a saving throw against an ongoing or instantaneous effect, you can each roll the save and choose the higher result for both of you."
+  },
+  "celerity": {
+    "id": "celerity",
+    "nameDe": "Schnelligkeit",
+    "nameEn": "Celerity",
+    "level": 4,
+    "school": "Transmutation",
+    "classes": [
+      "sorcerer",
+      "wizard",
+      "bard"
+    ],
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 4
+      },
+      {
+        "class": "wizard",
+        "level": 4
+      },
+      {
+        "class": "bard",
+        "level": 4
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 immediate action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You immediately take a standard action as if your turn had just begun. After you take this action, you are dazed until the end of your next turn."
+  },
+  "chain_missile": {
+    "id": "chain_missile",
+    "nameDe": "Ketten-Geschoss",
+    "nameEn": "Chain Missile",
+    "level": 3,
+    "school": "Evocation [Force]",
+    "classes": [
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "Target: One primary target, plus secondary targets",
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "Yes",
+    "description": "You launch magic missiles that first strike a primary target for 1d4+1 force damage per two caster levels (maximum 10d4+10 at 20th level), then secondary missiles strike secondary targets within 30 feet for 1d4+1 damage each."
+  },
+  "chasing_perfection": {
+    "id": "chasing_perfection",
+    "nameDe": "Vollendung erstreben",
+    "nameEn": "Chasing Perfection",
+    "level": 6,
+    "school": "Transmutation",
+    "classes": [
+      "cleric",
+      "druid",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 6
+      },
+      {
+        "class": "druid",
+        "level": 6
+      },
+      {
+        "class": "sorcerer",
+        "level": 6
+      },
+      {
+        "class": "wizard",
+        "level": 6
+      }
+    ],
+    "components": "V, S, M",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Target: Creature touched",
+    "duration": "1 min./level",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "The subject gains a +4 enhancement bonus to all six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma."
+  },
+  "chimeric_curve": {
+    "id": "chimeric_curve",
+    "nameDe": "Chimärische Kurve",
+    "nameEn": "Chimeric Curve",
+    "level": 4,
+    "school": "Illusion",
+    "classes": [
+      "wizard",
+      "sorcerer"
+    ],
+    "description": "Creates an illusory duplicate that mirrors your movements, deflecting the next incoming attack or ray spell to target the duplicate.",
+    "duration": "1 round/level",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No"
+  },
+  "deflect": {
+    "id": "deflect",
+    "nameDe": "Abwehr",
+    "nameEn": "Deflect",
+    "level": 2,
+    "school": "Abjuration [Force]",
+    "classes": [
+      "sorcerer",
+      "wizard",
+      "duskblade"
+    ],
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 immediate action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 attack",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You gain a +1/2 caster level deflection bonus to AC (maximum +5 at 10th level) against a single incoming melee or ranged attack."
+  },
   "dimension_hop": {
     "id": "dimension_hop",
     "nameDe": "Dimensionstritt",
     "nameEn": "Dimension Hop",
     "level": 2,
     "school": "Transmutation",
-    "classes": ["wizard", "sorcerer"],
+    "classes": [
+      "wizard",
+      "sorcerer"
+    ],
     "description": "Teleport the subject a short distance (10 ft. + 5 ft./2 levels). The destination must be within line of sight.",
     "duration": "Instantaneous",
     "range": "Touch",
     "save": "Will negates",
+    "sr": "Yes"
+  },
+  "energy_aegis": {
+    "id": "energy_aegis",
+    "nameDe": "Energie-Aegis",
+    "nameEn": "Energy Aegis",
+    "level": 3,
+    "school": "Abjuration",
+    "classes": [
+      "cleric",
+      "sorcerer",
+      "wizard",
+      "duskblade"
+    ],
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ],
+    "components": "V, DF",
+    "castingTime": "1 immediate action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "Target: One creature",
+    "duration": "1 round",
+    "savingThrow": "Will negates (harmless)",
+    "spellResistance": "Yes (harmless)",
+    "description": "You grant the target energy resistance 20 against an energy type of your choice (acid, cold, electricity, fire, or sonic) until the start of your next turn."
+  },
+  "evards_menacing_tentacles": {
+    "id": "evards_menacing_tentacles",
+    "nameDe": "Evards Bedrohliche Tentakeln",
+    "nameEn": "Evard's Menacing Tentacles",
+    "level": 3,
+    "school": "Transmutation",
+    "classes": [
+      "wizard",
+      "sorcerer"
+    ],
+    "description": "Grow 4 tentacles from your body. Each round as a free action, you can make grapple or attack checks against adjacent foes with these tentacles.",
+    "duration": "1 round/level",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No"
+  },
+  "greater_celerity": {
+    "id": "greater_celerity",
+    "nameDe": "Mächtige Schnelligkeit",
+    "nameEn": "Greater Celerity",
+    "level": 8,
+    "school": "Transmutation",
+    "classes": [
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 8
+      },
+      {
+        "class": "wizard",
+        "level": 8
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 immediate action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You immediately take a full-round action (or a standard action and a move action). After you take this action, you are dazed until the end of your next turn."
+  },
+  "heart_of_air": {
+    "id": "heart_of_air",
+    "nameDe": "Herz der Luft",
+    "nameEn": "Heart of Air",
+    "level": 2,
+    "school": "Transmutation [Air]",
+    "classes": [
+      "druid",
+      "sorcerer",
+      "wizard",
+      "wu_jen"
+    ],
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 2
+      },
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 hour/level (D) or until discharged",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You gain a +10 enhancement bonus on Jump checks and a fly speed bonus if you can fly. As an immediate action, you can discharge the spell to gain a feather fall effect. If you have two or more heart spells active, you gain light fortification."
+  },
+  "heart_of_earth": {
+    "id": "heart_of_earth",
+    "nameDe": "Herz der Erde",
+    "nameEn": "Heart of Earth",
+    "level": 4,
+    "school": "Transmutation [Earth]",
+    "classes": [
+      "druid",
+      "sorcerer",
+      "wizard",
+      "wu_jen"
+    ],
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 4
+      },
+      {
+        "class": "sorcerer",
+        "level": 4
+      },
+      {
+        "class": "wizard",
+        "level": 4
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 hour/level (D) or until discharged",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You gain a +8 bonus on checks to resist bull rush, overrun, or trip attacks, and temporary hit points equal to 2x your caster level (maximum 40). As an immediate action, you can discharge this spell to gain the benefit of stoneskin (damage reduction 10/adamantine) for 1 round per caster level."
+  },
+  "heart_of_fire": {
+    "id": "heart_of_fire",
+    "nameDe": "Herz des Feuers",
+    "nameEn": "Heart of Fire",
+    "level": 5,
+    "school": "Transmutation [Fire]",
+    "classes": [
+      "druid",
+      "sorcerer",
+      "wizard",
+      "wu_jen"
+    ],
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 5
+      },
+      {
+        "class": "sorcerer",
+        "level": 5
+      },
+      {
+        "class": "wizard",
+        "level": 5
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 hour/level (D) or until discharged",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You gain a +10-foot enhancement bonus to your land speed and fire resistance 20. As a swift action, you can discharge the spell to gain a fire shield effect for 1 round per level. If you have all four Heart spells active, you gain immunity to extra damage from critical hits and sneak attacks."
+  },
+  "heart_of_water": {
+    "id": "heart_of_water",
+    "nameDe": "Herz des Wassers",
+    "nameEn": "Heart of Water",
+    "level": 3,
+    "school": "Transmutation [Water]",
+    "classes": [
+      "druid",
+      "sorcerer",
+      "wizard",
+      "wu_jen"
+    ],
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 hour/level (D) or until discharged",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You gain a swim speed equal to your base land speed, the ability to breathe underwater, and a +5 enhancement bonus on Escape Artist checks. As an immediate action, you can discharge this spell to gain the benefit of freedom of movement for 1 round."
+  },
+  "hesitate": {
+    "id": "hesitate",
+    "nameDe": "Zögern",
+    "nameEn": "Hesitate",
+    "level": 3,
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "classes": [
+      "bard",
+      "cleric",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 3
+      },
+      {
+        "class": "cleric",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 swift action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "Target: One living creature",
+    "duration": "1 round/level (D)",
+    "savingThrow": "Will negates; see text",
+    "spellResistance": "Yes",
+    "description": "You force a subject to second-guess its actions. Each round on its turn, the subject can only take a move action unless it makes a successful Will save as a move action."
+  },
+  "kelgores_fire_bolt": {
+    "id": "kelgores_fire_bolt",
+    "nameDe": "Kelgores Feuerblitz",
+    "nameEn": "Kelgore's Fire Bolt",
+    "level": 1,
+    "school": "Conjuration/Evocation [Fire]",
+    "classes": [
+      "sorcerer",
+      "wizard",
+      "duskblade"
+    ],
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      }
+    ],
+    "components": "V, S, M",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "Target: One creature",
+    "duration": "Instantaneous",
+    "savingThrow": "Reflex half; see text",
+    "spellResistance": "Special; see text",
+    "description": "A fiery bolt deals 1d6 fire damage per level (maximum 5d6). Even if the target has spell resistance that resists the evocation effect, 1d6 points of fire damage pierces through as conjured flame without allowing spell resistance."
+  },
+  "kelgores_grave_mist": {
+    "id": "kelgores_grave_mist",
+    "nameDe": "Kelgores Grabesnebel",
+    "nameEn": "Kelgore's Grave Mist",
+    "level": 2,
+    "school": "Necromancy/Conjuration [Cold]",
+    "classes": [
+      "sorcerer",
+      "wizard",
+      "dread_necromancer"
+    ],
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ],
+    "components": "V, S, M",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "Area: 20-ft.-radius spread",
+    "duration": "1 round/level",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "A chilling fog of negative energy and frost settles over the area. Living creatures within the mist take 1d6 cold damage each round and become fatigued while they remain within the mist. No saving throw or spell resistance applies."
+  },
+  "legion_of_sentinels": {
+    "id": "legion_of_sentinels",
+    "nameDe": "Legion der Wächter",
+    "nameEn": "Legion of Sentinels",
+    "level": 3,
+    "school": "Illusion (Shadow)",
+    "classes": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ],
+    "components": "V, S, M",
+    "castingTime": "1 standard action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "Area: 10-ft.-radius emanation",
+    "duration": "1 round/level",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "A ghostly squad of armored sentinels appears in the area. They do not attack on your turn, but they threaten all squares in the area and make attacks of opportunity with ghostly swords (attack bonus equal to your caster level + your casting stat mod, dealing 1d8+1 damage per 3 caster levels)."
+  },
+  "lesser_celerity": {
+    "id": "lesser_celerity",
+    "nameDe": "Geringe Schnelligkeit",
+    "nameEn": "Lesser Celerity",
+    "level": 2,
+    "school": "Transmutation",
+    "classes": [
+      "sorcerer",
+      "wizard",
+      "bard"
+    ],
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      },
+      {
+        "class": "bard",
+        "level": 2
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 immediate action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You can immediately take a single move action on your turn or anyone else’s turn. After you take this action, you are dazed until the end of your next turn."
+  },
+  "lesser_deflect": {
+    "id": "lesser_deflect",
+    "nameDe": "Geringe Abwehr",
+    "nameEn": "Lesser Deflect",
+    "level": 1,
+    "school": "Abjuration [Force]",
+    "classes": [
+      "sorcerer",
+      "wizard",
+      "duskblade"
+    ],
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 immediate action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 attack",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You project a barrier of invisible force that deflects a single incoming attack, granting you a +1 deflection bonus to AC per 3 caster levels (maximum +5 at 15th level) against that single attack."
+  },
+  "ray_of_deanimation": {
+    "id": "ray_of_deanimation",
+    "nameDe": "Deaktivierungsstrahl",
+    "nameEn": "Ray of Deanimation",
+    "level": 4,
+    "school": "Abjuration",
+    "classes": [
+      "wizard",
+      "sorcerer"
+    ],
+    "description": "Ray deals 1d6 points of damage per caster level (max 15d6) to constructs, bypassing hardness.",
+    "duration": "Instantaneous",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "None",
     "sr": "Yes"
   },
   "seeking_ray": {
@@ -18,63 +686,117 @@
     "nameEn": "Seeking Ray",
     "level": 2,
     "school": "Evocation",
-    "classes": ["wizard", "sorcerer"],
+    "classes": [
+      "wizard",
+      "sorcerer"
+    ],
     "description": "Ray deals 4d6 electricity damage, ignores concealment and cover. Subsequent rays against the same target gain +4 attack bonus for 1 round.",
     "duration": "Instantaneous",
     "range": "Medium (100 ft. + 10 ft./level)",
     "save": "None",
     "sr": "Yes"
   },
-  "arcane_turmoil": {
-    "id": "arcane_turmoil",
-    "nameDe": "Arkaner Aufruhr",
-    "nameEn": "Arcane Turmoil",
+  "stay_the_hand": {
+    "id": "stay_the_hand",
+    "nameDe": "Schlag aufhalten",
+    "nameEn": "Stay the Hand",
     "level": 2,
-    "school": "Abjuration",
-    "classes": ["wizard", "sorcerer"],
-    "description": "Dispels one spell on the target, and forces the target to make a Will save or lose its highest-level prepared spell or spell slot.",
+    "school": "Enchantment (Compulsion) [Mind-Affecting]",
+    "classes": [
+      "bard",
+      "cleric",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 2
+      },
+      {
+        "class": "cleric",
+        "level": 2
+      },
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 immediate action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "Target: One humanoid creature",
     "duration": "Instantaneous",
-    "range": "Close (25 ft. + 5 ft./2 levels)",
-    "save": "Will partial",
-    "sr": "Yes"
+    "savingThrow": "Will negates",
+    "spellResistance": "Yes",
+    "description": "You cause an opponent who is about to make an attack or cast a harmful spell to hesitate. If the target fails its Will save, its action is lost for that round and cannot be redirected."
   },
-  "evards_menacing_tentacles": {
-    "id": "evards_menacing_tentacles",
-    "nameDe": "Evards Bedrohliche Tentakeln",
-    "nameEn": "Evard's Menacing Tentacles",
+  "sure_strike": {
+    "id": "sure_strike",
+    "nameDe": "Sicherer Schlag",
+    "nameEn": "Sure Strike",
+    "level": 2,
+    "school": "Divination",
+    "classes": [
+      "sorcerer",
+      "wizard",
+      "duskblade"
+    ],
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 swift action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 round or until discharged",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You gain a +1 insight bonus on your next single attack roll for every 3 caster levels (maximum +5 at 15th level)."
+  },
+  "vertigo_field": {
+    "id": "vertigo_field",
+    "nameDe": "Schwindelfeld",
+    "nameEn": "Vertigo Field",
     "level": 3,
-    "school": "Transmutation",
-    "classes": ["wizard", "sorcerer"],
-    "description": "Grow 4 tentacles from your body. Each round as a free action, you can make grapple or attack checks against adjacent foes with these tentacles.",
+    "school": "Illusion (Shadow)",
+    "classes": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "targetOrEffectOrArea": "Area: 20-ft.-radius spread",
     "duration": "1 round/level",
-    "range": "Personal",
-    "save": "None",
-    "sr": "No"
-  },
-  "ray_of_deanimation": {
-    "id": "ray_of_deanimation",
-    "nameDe": "Deaktivierungsstrahl",
-    "nameEn": "Ray of Deanimation",
-    "level": 4,
-    "school": "Abjuration",
-    "classes": ["wizard", "sorcerer"],
-    "description": "Ray deals 1d6 points of damage per caster level (max 15d6) to constructs, bypassing hardness.",
-    "duration": "Instantaneous",
-    "range": "Close (25 ft. + 5 ft./2 levels)",
-    "save": "None",
-    "sr": "Yes"
-  },
-  "chimeric_curve": {
-    "id": "chimeric_curve",
-    "nameDe": "Chimärische Kurve",
-    "nameEn": "Chimeric Curve",
-    "level": 4,
-    "school": "Illusion",
-    "classes": ["wizard", "sorcerer"],
-    "description": "Creates an illusory duplicate that mirrors your movements, deflecting the next incoming attack or ray spell to target the duplicate.",
-    "duration": "1 round/level",
-    "range": "Personal",
-    "save": "None",
-    "sr": "No"
+    "savingThrow": "Fortitude partial; see text",
+    "spellResistance": "Yes",
+    "description": "You create a field of swirling, illusory colors and shifting geometry. Any creature inside the area must succeed on a Fortitude save or become nauseated for as long as it remains in the field plus 1 round after. The area provides 20% concealment to creatures inside."
   }
 }

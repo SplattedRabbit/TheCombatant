@@ -5,38 +5,16 @@
     "nameEn": "Arrow Mind",
     "level": 1,
     "school": "Divination",
-    "classes": ["ranger", "wizard", "sorcerer"],
+    "classes": [
+      "ranger",
+      "wizard",
+      "sorcerer"
+    ],
     "description": "You do not provoke attacks of opportunity for firing a bow in threatened squares. You can make attacks of opportunity with your bow.",
     "duration": "1 min./level",
     "range": "Personal",
     "save": "None",
     "sr": "No"
-  },
-  "snipers_eye": {
-    "id": "snipers_eye",
-    "nameDe": "Scharfschützenauge",
-    "nameEn": "Sniper's Eye",
-    "level": 4,
-    "school": "Divination",
-    "classes": ["ranger"],
-    "description": "Allows you to make sneak attacks and death attacks at a range of up to 60 feet. Also grants darkvision and the ability to see through cover.",
-    "duration": "1 round/level",
-    "range": "Personal",
-    "save": "None",
-    "sr": "No"
-  },
-  "blindsight": {
-    "id": "blindsight",
-    "nameDe": "Blindsicht",
-    "nameEn": "Blindsight",
-    "level": 2,
-    "school": "Transmutation",
-    "classes": ["druid", "cleric"],
-    "description": "Subject gains blindsight out to 30 feet, allowing them to pinpoint creatures without vision.",
-    "duration": "1 min./level",
-    "range": "Touch",
-    "save": "Will negates",
-    "sr": "Yes"
   },
   "aura_of_evasion": {
     "id": "aura_of_evasion",
@@ -44,7 +22,12 @@
     "nameEn": "Aura of Evasion",
     "level": 5,
     "school": "Abjuration",
-    "classes": ["cleric", "druid", "wizard", "sorcerer"],
+    "classes": [
+      "cleric",
+      "druid",
+      "wizard",
+      "sorcerer"
+    ],
     "description": "Grants the evasion class feature to all allies within 10 feet. Allies who already have evasion gain +2 bonus on Reflex saves.",
     "duration": "1 round/level",
     "range": "Personal",
@@ -57,24 +40,351 @@
     "nameEn": "Baleful Transposition",
     "level": 2,
     "school": "Transmutation",
-    "classes": ["wizard", "sorcerer"],
+    "classes": [
+      "wizard",
+      "sorcerer"
+    ],
     "description": "Two target creatures swap locations. Both must fit in the destination space, otherwise the spell fails.",
     "duration": "Instantaneous",
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "Will negates",
     "sr": "Yes"
   },
+  "bladeweave": {
+    "id": "bladeweave",
+    "nameDe": "Klingenweben",
+    "nameEn": "Bladeweave",
+    "level": 2,
+    "school": "Illusion",
+    "classes": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 2
+      },
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 swift action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 round/level",
+    "savingThrow": "Will negates; see text",
+    "spellResistance": "Yes",
+    "description": "For the duration of the spell, once per round when you hit a creature with a melee attack, that creature must make a Will save or be dazed for 1 round."
+  },
+  "blindsight": {
+    "id": "blindsight",
+    "nameDe": "Blindsicht",
+    "nameEn": "Blindsight",
+    "level": 2,
+    "school": "Transmutation",
+    "classes": [
+      "druid",
+      "cleric"
+    ],
+    "description": "Subject gains blindsight out to 30 feet, allowing them to pinpoint creatures without vision.",
+    "duration": "1 min./level",
+    "range": "Touch",
+    "save": "Will negates",
+    "sr": "Yes"
+  },
   "critical_strike": {
     "id": "critical_strike",
-    "nameDe": "Kritischer Schlag",
+    "nameDe": "Kritischer Stoß",
     "nameEn": "Critical Strike",
     "level": 1,
     "school": "Divination",
-    "classes": ["bard"],
-    "description": "Your next melee attack deals +1d6 sneak attack damage. If the attack hits, it also doubles the critical threat range of your weapon.",
+    "classes": [
+      "assassin",
+      "bard",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "assassin",
+        "level": 1
+      },
+      {
+        "class": "bard",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 swift action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
     "duration": "1 round",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "For 1 round, your melee attacks against flanked foes or foes denied their Dexterity bonus to AC double their critical threat range, gain +4 bonus on rolls to confirm critical hits, and deal an additional 1d6 points of damage."
+  },
+  "guided_shot": {
+    "id": "guided_shot",
+    "nameDe": "Geführter Schuss",
+    "nameEn": "Guided Shot",
+    "level": 1,
+    "school": "Divination",
+    "classes": [
+      "ranger",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "ranger",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 swift action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 round",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "For 1 round, your ranged attacks ignore range increment penalties, and distance penalties. Your ranged attacks also ignore cover and concealment bonuses to AC (except for total cover and total concealment)."
+  },
+  "iron_silence": {
+    "id": "iron_silence",
+    "nameDe": "Eiserne Stille",
+    "nameEn": "Iron Silence",
+    "level": 2,
+    "school": "Transmutation",
+    "classes": [
+      "assassin",
+      "bard",
+      "cleric"
+    ],
+    "classLevels": [
+      {
+        "class": "assassin",
+        "level": 2
+      },
+      {
+        "class": "bard",
+        "level": 2
+      },
+      {
+        "class": "cleric",
+        "level": 2
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Target: One suit of armor touched",
+    "duration": "1 hour/level (D)",
+    "savingThrow": "Will negates (harmless, object)",
+    "spellResistance": "Yes (harmless, object)",
+    "description": "This spell completely negates the armor check penalty of the touched suit of armor on Hide and Move Silently checks. The armor functions normally in all other respects."
+  },
+  "sniper_s_shot": {
+    "id": "sniper_s_shot",
+    "nameDe": "Präzisionsschuss",
+    "nameEn": "Sniper's Shot",
+    "level": 1,
+    "school": "Divination",
+    "classes": [
+      "assassin",
+      "ranger",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "assassin",
+        "level": 1
+      },
+      {
+        "class": "ranger",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 swift action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 round",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "For 1 round, you can make sneak attacks, sudden strikes, or skirmish attacks with ranged weapons without the normal 30-foot range limitation (up to your weapon’s maximum range)."
+  },
+  "snipers_eye": {
+    "id": "snipers_eye",
+    "nameDe": "Scharfschützenauge",
+    "nameEn": "Sniper's Eye",
+    "level": 4,
+    "school": "Divination",
+    "classes": [
+      "ranger"
+    ],
+    "description": "Allows you to make sneak attacks and death attacks at a range of up to 60 feet. Also grants darkvision and the ability to see through cover.",
+    "duration": "1 round/level",
     "range": "Personal",
     "save": "None",
     "sr": "No"
+  },
+  "sonic_weapon": {
+    "id": "sonic_weapon",
+    "nameDe": "Schallwaffe",
+    "nameEn": "Sonic Weapon",
+    "level": 2,
+    "school": "Transmutation [Sonic]",
+    "classes": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 2
+      },
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ],
+    "components": "V",
+    "castingTime": "1 standard action",
+    "range": "Touch",
+    "targetOrEffectOrArea": "Target: Weapon touched",
+    "duration": "1 min./level",
+    "savingThrow": "Will negates (harmless, object)",
+    "spellResistance": "Yes (harmless, object)",
+    "description": "This spell imbues a weapon with sonic energy. The weapon deals an extra 1d6 points of sonic damage on each successful hit."
+  },
+  "tactical_teleportation": {
+    "id": "tactical_teleportation",
+    "nameDe": "Taktische Teleportation",
+    "nameEn": "Tactical Teleportation",
+    "level": 3,
+    "school": "Conjuration (Teleportation)",
+    "classes": [
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 standard action",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "targetOrEffectOrArea": "Targets: You and willing allies within range",
+    "duration": "Instantaneous",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You teleport yourself and up to one willing creature per 3 caster levels to unoccupied spaces that you can see within range."
+  },
+  "wild_instincts": {
+    "id": "wild_instincts",
+    "nameDe": "Wilde Instinkte",
+    "nameEn": "Wild Instincts",
+    "level": 3,
+    "school": "Divination",
+    "classes": [
+      "druid",
+      "ranger"
+    ],
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 3
+      },
+      {
+        "class": "ranger",
+        "level": 2
+      }
+    ],
+    "components": "V, S, DF",
+    "castingTime": "1 standard action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 min./level",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "You gain a +10 insight bonus on Listen and Spot checks. You retain your Dexterity bonus to AC even if flat-footed or struck by an invisible attacker."
+  },
+  "wraithstrike": {
+    "id": "wraithstrike",
+    "nameDe": "Geisterschlag",
+    "nameEn": "Wraithstrike",
+    "level": 2,
+    "school": "Transmutation",
+    "classes": [
+      "assassin",
+      "sorcerer",
+      "wizard"
+    ],
+    "classLevels": [
+      {
+        "class": "assassin",
+        "level": 2
+      },
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ],
+    "components": "V, S",
+    "castingTime": "1 swift action",
+    "range": "Personal",
+    "targetOrEffectOrArea": "Target: You",
+    "duration": "1 round",
+    "savingThrow": "None",
+    "spellResistance": "No",
+    "description": "For 1 round, your melee attacks and natural attacks are resolved as melee touch attacks, ignoring your opponents’ armor bonuses and natural armor bonuses to Armor Class."
   }
 }
