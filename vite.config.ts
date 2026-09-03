@@ -49,6 +49,12 @@ export default defineConfig({
 
   build: {
     outDir: 'dist',
+    target: 'es2022',
+    cssMinify: true,
+    minify: 'esbuild',
+    modulePreload: {
+      polyfill: false,
+    },
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       input: {
@@ -99,6 +105,10 @@ export default defineConfig({
       // @core → ./js/  (die bestehende, verifizierte Domain-Logik)
       '@core': path.resolve(__dirname, 'js'),
     },
+  },
+
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-dom/client', '@supabase/supabase-js'],
   },
 
   server: {

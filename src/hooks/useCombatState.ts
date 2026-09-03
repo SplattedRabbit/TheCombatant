@@ -114,23 +114,39 @@ function createSnapshot(raw: unknown): CombatStateSnapshot {
 export function useCombatState(): UseCombatStateReturn {
   const { isReady, getState, getActivePC, StateEvents } = useContext(CombatEngineContext);
 
-  // Initialzustand: leerer Snapshot bis die Engine geladen ist
-  const [snapshot, setSnapshot] = useState<CombatStateSnapshot>(() => ({
-    combatants: [],
-    meta: {
-      round: 1,
-      currentTurn: 0,
-      begegnung: '',
-      ort: '',
-      xpBudget: '',
-      xpVerteilt: '',
-      sitzung: '',
-    },
-    session: { active: false, role: 'choice', roomCode: '' },
-    concentrations: [],
-  }));
+  // Initial state: eagerly initialize from engine state if available
+  const [snapshot, setSnapshot] = useState<CombatStateSnapshot>(() => {
+    if (typeof getState === 'function') {
+      try {
+        const s = getState();
+        if (s) return createSnapshot(s);
+      } catch {}
+    }
+    return {
+      combatants: [],
+      meta: {
+        round: 1,
+        currentTurn: 0,
+        begegnung: '',
+        ort: '',
+        xpBudget: '',
+        xpVerteilt: '',
+        sitzung: '',
+      },
+      session: { active: false, role: 'choice', roomCode: '' },
+      concentrations: [],
+    };
+  });
 
-  const [activePC, setActivePC] = useState<Combatant | null>(null);
+  const [activePC, setActivePC] = useState<Combatant | null>(() => {
+    if (typeof getActivePC === 'function') {
+      try {
+        const pc = getActivePC();
+        if (pc) return hydrateCombatant(pc);
+      } catch {}
+    }
+    return null;
+  });
 
   useEffect(() => {
     if (!isReady || !getState || !getActivePC || !StateEvents) return;
@@ -142,7 +158,7 @@ export function useCombatState(): UseCombatStateReturn {
       setActivePC(pc ? hydrateCombatant(pc) : null);
     };
 
-    // Initial sync
+    // Sync on ready transition
     syncState();
 
     // Single subscription for state & pc changes
