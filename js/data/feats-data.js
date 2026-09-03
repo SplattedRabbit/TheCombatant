@@ -97,24 +97,51 @@ export function checkFeatPrerequisites(featId, pc) {
       prMet = saDice >= pr.value;
       desc = `Sneak attack +${pr.value}d6 (current: +${saDice}d6)`;
     } else if (pr.type === 'custom') {
-      if (pr.desc === 'Fähigkeit, Untote zu vertreiben' || pr.desc === 'Ability to turn undead') {
+      const descLower = (pr.desc || '').toLowerCase();
+      if (descLower.includes('trapfinding')) {
+        const hasTrapfinding = Array.isArray(pc.classes) && pc.classes.some(c => ['rogue', 'scout', 'spellthief', 'beguiler'].includes(c.classType));
+        prMet = hasTrapfinding;
+        desc = `Special: Trapfinding class feature (Rogue 1+)`;
+      } else if (descLower.includes('favored enemy')) {
+        const rangerClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'ranger') : null;
+        prMet = rangerClass && rangerClass.level >= 1;
+        desc = `Special: Favored Enemy class feature (Ranger 1+)`;
+      } else if (descLower.includes('smite evil')) {
+        const paladinClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'paladin') : null;
+        const sbiClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'shadowbane_inquisitor') : null;
+        prMet = (paladinClass && paladinClass.level >= 1) || (sbiClass && sbiClass.level >= 2);
+        desc = `Special: Smite Evil class feature (Paladin 1+)`;
+      } else if (descLower.includes('evasion')) {
+        const rogueClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'rogue') : null;
+        const monkClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'monk') : null;
+        prMet = (rogueClass && rogueClass.level >= 2) || (monkClass && monkClass.level >= 2);
+        desc = `Special: Evasion class feature (Rogue 2+ or Monk 2+)`;
+      } else if (descLower.includes('rage')) {
+        const barbarianClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'barbarian') : null;
+        prMet = barbarianClass && barbarianClass.level >= 1;
+        desc = `Special: Rage class feature (Barbarian 1+)`;
+      } else if (descLower.includes('ki strike')) {
+        const monkClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'monk') : null;
+        prMet = monkClass && monkClass.level >= 4;
+        desc = `Special: Ki Strike class feature (Monk 4+)`;
+      } else if (descLower.includes('turn undead') || descLower.includes('untote zu vertreiben')) {
         const clericClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'cleric') : null;
         const paladinClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'paladin') : null;
         const clericLvl = clericClass ? clericClass.level : 0;
         const paladinLvl = paladinClass ? paladinClass.level : 0;
         prMet = clericLvl >= 1 || paladinLvl >= 4;
         desc  = `Ability to turn undead (Cleric 1+ or Paladin 4+)`;
-      } else if (pr.desc === 'Bardenmusik' || pr.desc === 'Bardic music') {
+      } else if (descLower.includes('bardic music') || descLower.includes('bardenmusik')) {
         const bardClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'bard') : null;
         const bardLvl = bardClass ? bardClass.level : 0;
         prMet = bardLvl >= 1;
         desc  = `Bardic music (Bard 1+)`;
-      } else if (pr.desc === 'Tiergestalt (Wild Shape)' || pr.desc === 'Wild shape') {
+      } else if (descLower.includes('wild shape') || descLower.includes('tiergestalt')) {
         const druidClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'druid') : null;
         const druidLvl = druidClass ? druidClass.level : 0;
         prMet = druidLvl >= 5;
         desc  = `Wild shape (Druid 5+)`;
-      } else if (pr.desc === 'Reiten 1 Rang' || pr.desc === 'Ride 1 rank') {
+      } else if (descLower.includes('ride 1 rank') || descLower.includes('reiten 1 rang')) {
         let ranks = 0;
         if (typeof pc.getSkillRanks === 'function') {
           ranks = pc.getSkillRanks('ride');
@@ -123,6 +150,21 @@ export function checkFeatPrerequisites(featId, pc) {
         }
         prMet = ranks >= 1;
         desc = `Ride 1 rank (current: ${ranks})`;
+      } else if (descLower.includes('spontaneous 2nd level arcane spells')) {
+        const sorcererClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'sorcerer') : null;
+        const bardClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'bard') : null;
+        prMet = (sorcererClass && sorcererClass.level >= 4) || (bardClass && bardClass.level >= 4);
+        desc = `Special: Spontaneous 2nd-level arcane spells (Sorcerer 4+ or Bard 4+)`;
+      } else if (descLower.includes('ability to cast 3rd-level arcane spells')) {
+        const wizClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'wizard') : null;
+        const sorcClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'sorcerer') : null;
+        prMet = (wizClass && wizClass.level >= 5) || (sorcClass && sorcClass.level >= 6);
+        desc = `Special: Cast 3rd-level arcane spells (Wizard 5+ or Sorcerer 6+)`;
+      } else if (descLower.includes('ability to acquire a familiar')) {
+        const wizClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'wizard') : null;
+        const sorcClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'sorcerer') : null;
+        prMet = (wizClass && wizClass.level >= 1) || (sorcClass && sorcClass.level >= 1);
+        desc = `Special: Familiar class feature (Wizard 1+ or Sorcerer 1+)`;
       } else {
         prMet = true;
         desc = `Special: ${pr.desc}`;

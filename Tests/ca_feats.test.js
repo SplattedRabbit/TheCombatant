@@ -144,3 +144,42 @@ test('Feat Slot Progression - RAW D&D 3.5e Progression (Non-Human & Human)', asy
   assert.strictEqual(val3.success, true);
 });
 
+test('Tactical Trapsmith - Prerequisites evaluation and clean display descriptions', async () => {
+  const { checkPrerequisites } = await import('../js/rules/RulesFeats.js');
+  const feat = CombatFeats.REGISTRY['tactical_trapsmith'];
+  assert.ok(feat, 'Tactical Trapsmith must be registered');
+
+  // Cleric 6 without skills or trapfinding
+  const cleric = new Combatant({
+    name: 'Cleric',
+    classes: [{ classType: 'cleric', level: 6 }]
+  });
+
+  const clericCheck = checkPrerequisites(feat, cleric);
+  assert.strictEqual(clericCheck.met, false);
+  assert.strictEqual(clericCheck.details.length, 3);
+  assert.strictEqual(clericCheck.details[0].met, false);
+  assert.strictEqual(clericCheck.details[0].desc, 'Special: Trapfinding class feature (Rogue 1+)');
+  assert.strictEqual(clericCheck.details[1].met, false);
+  assert.strictEqual(clericCheck.details[1].desc, 'Disable Device 3 ranks (Current: 0)');
+  assert.strictEqual(clericCheck.details[2].met, false);
+  assert.strictEqual(clericCheck.details[2].desc, 'Search 3 ranks (Current: 0)');
+
+  // Rogue with required ranks
+  const rogue = new Combatant({
+    name: 'Rogue',
+    classes: [{ classType: 'rogue', level: 1 }],
+    skills: {
+      disable_device: { ranks: 4, misc: 0 },
+      search: { ranks: 4, misc: 0 }
+    }
+  });
+
+  const rogueCheck = checkPrerequisites(feat, rogue);
+  assert.strictEqual(rogueCheck.met, true);
+  assert.strictEqual(rogueCheck.details[0].met, true);
+  assert.strictEqual(rogueCheck.details[1].met, true);
+  assert.strictEqual(rogueCheck.details[2].met, true);
+});
+
+
