@@ -8,6 +8,29 @@ interface PrintPageProps {
   pc: any;
 }
 
+/**
+ * Formats a long spell description into a concise 1-line Effect Summary
+ * suited for the print budget of Page 4 (max ~85 characters).
+ */
+export function formatSpellSummary(rawDesc?: string, maxLen = 85): string {
+  if (!rawDesc || rawDesc === '—') return '—';
+  const clean = String(rawDesc).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  if (!clean) return '—';
+
+  // Extract first complete sentence if available
+  const firstSentenceMatch = clean.match(/^([^.!?]+[.!?])/);
+  const firstSentence = firstSentenceMatch ? firstSentenceMatch[1].trim() : clean;
+
+  if (firstSentence.length <= maxLen) {
+    return firstSentence;
+  }
+
+  // Truncate cleanly at word boundary
+  const truncated = clean.substring(0, maxLen - 1);
+  const lastSpace = truncated.lastIndexOf(' ');
+  return ((lastSpace > 40 ? truncated.substring(0, lastSpace) : truncated).trim()) + '…';
+}
+
 export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
   // Companion / Familiar Detection & Live Data Resolution
   const hasCompanion = pc.companionType && pc.companionType !== 'none';
@@ -65,7 +88,7 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
         range: reg?.range || sp.range || 'Close',
         duration: reg?.duration || sp.duration || 'Instant',
         save: reg?.save || sp.save || 'None',
-        desc: reg?.shortDesc || reg?.desc || sp.desc || sp.notes || '—',
+        desc: formatSpellSummary(reg?.shortDesc || reg?.description || reg?.desc || sp.desc || sp.notes || '—'),
         isUsed: !!sp.isUsed,
       });
       if (key) addedKeys.add(key);
@@ -85,7 +108,7 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
           range: sp.range || 'Close',
           duration: sp.duration || 'Instant',
           save: sp.save || 'None',
-          desc: sp.shortDesc || sp.desc || '—',
+          desc: formatSpellSummary(sp.shortDesc || sp.description || sp.desc || '—'),
           isUsed: false,
         });
         addedKeys.add(key);
@@ -106,7 +129,7 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
           range: regSpell?.range || 'Close',
           duration: regSpell?.duration || 'Instant',
           save: regSpell?.save || 'None',
-          desc: regSpell?.shortDesc || regSpell?.desc || '—',
+          desc: formatSpellSummary(regSpell?.shortDesc || regSpell?.description || regSpell?.desc || '—'),
           isUsed: false,
         });
         addedKeys.add(key);
@@ -203,7 +226,7 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
                 <td style={{ textAlign: 'center', fontSize: '6.5pt' }}>{sp.school}</td>
                 <td style={{ textAlign: 'center', fontSize: '6.5pt' }}>{sp.range}</td>
                 <td style={{ textAlign: 'center', fontSize: '6.5pt' }}>{sp.save}</td>
-                <td style={{ fontSize: '7pt', color: 'var(--dnd-gray-dark)' }}>{sp.desc}</td>
+                <td style={{ fontSize: '6.5pt', color: 'var(--dnd-gray-dark)', lineHeight: 1.15, maxWidth: '240px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={sp.desc}>{sp.desc}</td>
               </tr>
             ))}
           </tbody>
