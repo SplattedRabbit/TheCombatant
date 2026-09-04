@@ -79,15 +79,18 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
                 <strong 
                   style={{ 
                     fontSize: '13px', 
-                    width: '160px', 
-                    cursor: 'pointer', 
-                    borderBottom: '1px dashed var(--red)'
+                    minWidth: '190px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    whiteSpace: 'nowrap',
+                    cursor: 'pointer'
                   }}
                   onClick={() => showAttributeExplanation(k)}
                   title="Click for a brief explanation"
                 >
-                  {labelMap[k]}
-                  {isKeyAttr && <span style={{ color: 'green', fontSize: '9px', marginLeft: '6px', display: 'inline-block' }}>★ Key</span>}
+                  <span style={{ borderBottom: '1px dashed var(--red)' }}>{labelMap[k]}</span>
+                  {isKeyAttr && <span style={{ color: 'green', fontSize: '9px', whiteSpace: 'nowrap' }}>★ Key</span>}
                 </strong>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
