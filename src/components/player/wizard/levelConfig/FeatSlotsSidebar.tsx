@@ -28,7 +28,8 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
         {currentFeatSlots.map((slot, slotIdx) => {
           const selectedFeatId = currentConfig.feats?.[slotIdx] || slot.defaultFeat;
           const selectedFeat = CombatFeats.REGISTRY[selectedFeatId];
-          const isPreFilled = !!slot.defaultFeat;
+          const isChoice = Array.isArray(slot.allowedFeats) && slot.allowedFeats.length > 1;
+          const isPreFilled = !!slot.defaultFeat && !isChoice;
           const isActive = featSelectSlotIndex === slotIdx;
 
           return (
@@ -53,7 +54,7 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
             >
               <div style={{ textAlign: 'left' }}>
                 <span style={{ fontSize: '8.5px', textTransform: 'uppercase', color: 'var(--inkl)', display: 'block' }}>
-                  {slot.label} {isPreFilled && '(Fixed)'}
+                  {slot.label} {isPreFilled ? '(Fixed)' : isChoice ? '(Class Choice)' : ''}
                 </span>
                 <strong style={{ fontSize: '11.5px', color: (selectedFeat || isPreFilled) ? 'var(--ink)' : 'var(--red)' }}>
                   {selectedFeat ? (selectedFeat.nameEn || selectedFeat.nameDe) : (slot.defaultFeat ? slot.defaultFeat : '— Select —')}

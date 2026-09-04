@@ -77,15 +77,17 @@ export function checkFeatPrerequisites(featId, pc) {
       prMet = maxCL >= pr.value;
       desc  = `Caster level ${pr.value} (current: ${maxCL})`;
     } else if (pr.type === 'skill') {
+      const skillName = pr.name || pr.skill || '';
+      const reqRanks = pr.value !== undefined ? pr.value : (pr.ranks !== undefined ? pr.ranks : 0);
       let ranks = 0;
       if (typeof pc.getSkillRanks === 'function') {
-        ranks = pc.getSkillRanks(pr.name);
-      } else if (pc.skills && pc.skills[pr.name]) {
-        ranks = typeof pc.skills[pr.name] === 'object' ? (parseFloat(pc.skills[pr.name].ranks) || 0) : (parseFloat(pc.skills[pr.name]) || 0);
+        ranks = pc.getSkillRanks(skillName);
+      } else if (pc.skills && pc.skills[skillName]) {
+        ranks = typeof pc.skills[skillName] === 'object' ? (parseFloat(pc.skills[skillName].ranks) || 0) : (parseFloat(pc.skills[skillName]) || 0);
       }
-      prMet = ranks >= pr.value;
-      const skillCleanName = pr.name.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-      desc = `${skillCleanName} ${pr.value} ranks (current: ${ranks})`;
+      prMet = ranks >= reqRanks;
+      const skillCleanName = skillName ? skillName.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : 'Skill';
+      desc = `${skillCleanName} ${reqRanks} ranks (current: ${ranks})`;
     } else if (pr.type === 'sneak_attack') {
       let saDice = 0;
       if (typeof pc.getSneakAttackDiceCount === 'function') {
@@ -96,7 +98,7 @@ export function checkFeatPrerequisites(featId, pc) {
       }
       prMet = saDice >= pr.value;
       desc = `Sneak attack +${pr.value}d6 (current: +${saDice}d6)`;
-    } else if (pr.type === 'custom') {
+    } else if (pr.type === 'custom' || pr.type === 'special') {
       const descLower = (pr.desc || '').toLowerCase();
       if (descLower.includes('trapfinding')) {
         const hasTrapfinding = Array.isArray(pc.classes) && pc.classes.some(c => ['rogue', 'scout', 'spellthief', 'beguiler'].includes(c.classType));
@@ -124,6 +126,18 @@ export function checkFeatPrerequisites(featId, pc) {
         const monkClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'monk') : null;
         prMet = monkClass && monkClass.level >= 4;
         desc = `Special: Ki Strike class feature (Monk 4+)`;
+      } else if (descLower.includes('sneak attack')) {
+        let saDice = 0;
+        if (typeof pc.getSneakAttackDiceCount === 'function') {
+          saDice = pc.getSneakAttackDiceCount();
+        } else {
+          const rogueClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'rogue') : null;
+          saDice = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
+        }
+        const match = descLower.match(/\+(\d+)d6/);
+        const reqDice = match ? parseInt(match[1]) : 1;
+        prMet = saDice >= reqDice;
+        desc = `Special: Sneak attack +${reqDice}d6 (current: +${saDice}d6)`;
       } else if (descLower.includes('turn undead') || descLower.includes('untote zu vertreiben')) {
         const clericClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'cleric') : null;
         const paladinClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'paladin') : null;

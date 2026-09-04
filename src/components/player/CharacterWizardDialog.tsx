@@ -153,9 +153,11 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       setFeatSelectSlotIndex(null);
       return;
     }
-    const firstSelectable = currentFeatSlots.findIndex(slot => !slot.defaultFeat);
+    const firstSelectable = currentFeatSlots.findIndex(slot => !slot.defaultFeat || (slot.allowedFeats && slot.allowedFeats.length > 1));
     if (firstSelectable !== -1) {
-      if (featSelectSlotIndex === null || featSelectSlotIndex >= currentFeatSlots.length || currentFeatSlots[featSelectSlotIndex]?.defaultFeat) {
+      const activeSlot = featSelectSlotIndex !== null ? currentFeatSlots[featSelectSlotIndex] : null;
+      const isCurrentFixed = activeSlot?.defaultFeat && (!activeSlot?.allowedFeats || activeSlot?.allowedFeats.length <= 1);
+      if (featSelectSlotIndex === null || featSelectSlotIndex >= currentFeatSlots.length || isCurrentFixed) {
         setFeatSelectSlotIndex(firstSelectable);
       }
     } else {

@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { checkFeatPrerequisites, CombatFeats } from '@core/data/feats-data.js';
 import { translatePrereq, PRESTIGE_PREREQS, CLASSES_LIST } from './constants';
+import { getFeatSlotsAtLevel } from './helpers';
 
 interface FeatsTabContentProps {
   currentConfig: any;
@@ -15,6 +16,8 @@ interface FeatsTabContentProps {
   updateLevelConfig: (idx: number, key: string, val: any) => void;
   currentLevelIndex: number;
   targetPrestigeClass?: string;
+  levelConfigs?: any[];
+  currentFeatSlots?: any[];
 }
 
 export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
@@ -29,9 +32,31 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
   filteredFeats,
   updateLevelConfig,
   currentLevelIndex,
-  targetPrestigeClass
+  targetPrestigeClass,
+  levelConfigs,
+  currentFeatSlots
 }) => {
   const [expandedParents, setExpandedParents] = useState<Set<string>>(new Set());
+
+  const classGrantedFeatIds = useMemo(() => {
+    const ids = new Set<string>();
+    if (Array.isArray(levelConfigs)) {
+      levelConfigs.forEach((cfg, lvl) => {
+        if (cfg?.classType) {
+          const slots = getFeatSlotsAtLevel(lvl, cfg.classType, '', levelConfigs);
+          slots.forEach(s => {
+            if (s.defaultFeat) ids.add(s.defaultFeat);
+          });
+        }
+      });
+    }
+    if (Array.isArray(currentFeatSlots)) {
+      currentFeatSlots.forEach(s => {
+        if (s.defaultFeat) ids.add(s.defaultFeat);
+      });
+    }
+    return ids;
+  }, [levelConfigs, currentFeatSlots]);
 
   const reqFeats = targetPrestigeClass ? (PRESTIGE_PREREQS[targetPrestigeClass]?.feats || []) : [];
   const targetClassDef = targetPrestigeClass ? CLASSES_LIST.find(c => c.key === targetPrestigeClass) : null;
@@ -123,8 +148,12 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
       return visibleList.filter(item => reqFeats.includes(item.feat.id));
     }
 
+    if (activeFeatSlot?.allowedFeats && activeFeatSlot.allowedFeats.length > 0) {
+      return visibleList.filter(item => activeFeatSlot.allowedFeats.includes(item.feat.id));
+    }
+
     return visibleList;
-  }, [treeList, featSearch, featFilter, expandedParents, reqFeats]);
+  }, [treeList, featSearch, featFilter, expandedParents, reqFeats, activeFeatSlot]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minHeight: '420px' }}>
@@ -201,7 +230,8 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                 const isAlreadySelected = Array.isArray(currentConfig?.feats) ? currentConfig.feats.includes(feat.id) : false;
                 const isAlreadyLearned = Array.isArray(currentDraft?.featsList) ? currentDraft.featsList.includes(feat.id) : false;
                 const isSelectedInThisSlot = featSelectSlotIndex !== null && currentConfig?.feats?.[featSelectSlotIndex] === feat.id;
-                const isSlotCompatible = !activeFeatSlot?.allowedCategories || activeFeatSlot.allowedCategories.includes(feat.category);
+                const isSlotCompatible = (!activeFeatSlot?.allowedCategories || activeFeatSlot.allowedCategories.includes(feat.category)) &&
+                  (!activeFeatSlot?.allowedFeats || activeFeatSlot.allowedFeats.includes(feat.id));
                 const isEligible = prereqsResult.met && !isAlreadyLearned && !isAlreadySelected && isSlotCompatible;
                 const isTargetFeat = reqFeats.includes(feat.id);
 
@@ -351,7 +381,9 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                           </div>
 
                           <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
-                            {isAlreadyLearned ? (
+                            {classGrantedFeatIds.has(feat.id) ? (
+                              <span style={{ fontSize: '7.5px', color: '#1b5e20', fontWeight: 'bold', background: 'rgba(76, 175, 80, 0.22)', border: '0.5px solid #2e7d32', padding: '1px 4px', borderRadius: '1.5px' }}>🛡️ Class Feature</span>
+                            ) : isAlreadyLearned ? (
                               <span style={{ fontSize: '7.5px', color: '#245e28', fontWeight: 'bold', background: 'rgba(50, 115, 55, 0.12)', border: '0.5px solid rgba(50, 115, 55, 0.35)', padding: '1px 4px', borderRadius: '1.5px' }}>✓ Learned</span>
                             ) : isAlreadySelected ? (
                               <span style={{ fontSize: '7.5px', color: '#245e28', fontWeight: 'bold', background: 'rgba(50, 115, 55, 0.2)', border: '0.5px solid rgba(50, 115, 55, 0.5)', padding: '1px 4px', borderRadius: '1.5px' }}>✓ Selected</span>

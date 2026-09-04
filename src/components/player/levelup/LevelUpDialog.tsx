@@ -3,7 +3,7 @@
  * @summary   Guided 4-Step Linear Wizard for single level advancement (n -> n+1).
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { CLASSES_LIST } from '../wizard/constants';
@@ -88,6 +88,35 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
     ? getFeatSlotsAtLevel(newLevelIndex, currentConfig.classType, selectedRace, levelConfigs)
     : [];
 
+  useEffect(() => {
+    if (!currentConfig || !currentFeatSlots || currentFeatSlots.length === 0) {
+      setFeatSelectSlotIndex(null);
+      return;
+    }
+    let featsChanged = false;
+    const currentFeats = { ...(currentConfig.feats || {}) };
+    currentFeatSlots.forEach((slot, sIdx) => {
+      if (slot.defaultFeat && !currentFeats[sIdx]) {
+        currentFeats[sIdx] = slot.defaultFeat;
+        featsChanged = true;
+      }
+    });
+    if (featsChanged) {
+      updateLevelConfig(newLevelIndex, 'feats', currentFeats);
+    }
+
+    const firstSelectable = currentFeatSlots.findIndex(slot => !slot.defaultFeat || (slot.allowedFeats && slot.allowedFeats.length > 1));
+    if (firstSelectable !== -1) {
+      const activeSlot = featSelectSlotIndex !== null ? currentFeatSlots[featSelectSlotIndex] : null;
+      const isCurrentFixed = activeSlot?.defaultFeat && (!activeSlot?.allowedFeats || activeSlot?.allowedFeats.length <= 1);
+      if (featSelectSlotIndex === null || featSelectSlotIndex >= currentFeatSlots.length || isCurrentFixed) {
+        setFeatSelectSlotIndex(firstSelectable);
+      }
+    } else {
+      setFeatSelectSlotIndex(null);
+    }
+  }, [currentConfig?.classType, currentFeatSlots.length, newLevelIndex]);
+
   const activeFeatSlot = featSelectSlotIndex !== null ? currentFeatSlots[featSelectSlotIndex] : null;
 
   const filteredFeats = useMemo(() => {
@@ -101,6 +130,7 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
     return Object.values(CombatFeats.REGISTRY).filter((feat: any) => {
       if (featFilter !== 'all' && feat.category !== featFilter) return false;
       if (activeFeatSlot.allowedCategories && !activeFeatSlot.allowedCategories.includes(feat.category)) return false;
+      if (activeFeatSlot.allowedFeats && !activeFeatSlot.allowedFeats.includes(feat.id)) return false;
       if (q) {
         const nameDe = (feat.nameDe || '').toLowerCase();
         const nameEn = (feat.nameEn || '').toLowerCase();

@@ -400,6 +400,8 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
               updateLevelConfig={updateLevelConfig}
               currentLevelIndex={currentLevelIndex}
               targetPrestigeClass={targetPrestigeClass}
+              levelConfigs={levelConfigs}
+              currentFeatSlots={currentFeatSlots}
             />
           )}
 
