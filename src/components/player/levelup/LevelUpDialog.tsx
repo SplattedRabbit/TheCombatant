@@ -99,7 +99,6 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
     });
 
     return Object.values(CombatFeats.REGISTRY).filter((feat: any) => {
-      if (alreadyChosenIds.has(feat.id)) return false;
       if (featFilter !== 'all' && feat.category !== featFilter) return false;
       if (activeFeatSlot.allowedCategories && !activeFeatSlot.allowedCategories.includes(feat.category)) return false;
       if (q) {

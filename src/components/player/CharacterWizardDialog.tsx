@@ -169,7 +169,6 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     const reqFeats = targetPrestigeClass ? (PRESTIGE_PREREQS[targetPrestigeClass]?.feats || []) : [];
 
     return Object.values(CombatFeats.REGISTRY).filter((feat: any) => {
-      if (alreadyChosenIds.has(feat.id)) return false;
       if (featFilter === 'prc_target') {
         if (!reqFeats.includes(feat.id)) return false;
       } else if (featFilter !== 'all' && feat.category !== featFilter) {
