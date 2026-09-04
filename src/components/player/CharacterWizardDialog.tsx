@@ -100,20 +100,25 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     });
   };
 
+  const fullAlignment = useMemo(() => {
+    if (alignmentEthical === 'Neutral' && alignmentMoral === 'Neutral') return 'Neutral';
+    return `${alignmentEthical} ${alignmentMoral}`;
+  }, [alignmentEthical, alignmentMoral]);
+
   const prevDraft = useMemo(() => {
     if (!isTargetLevelSet || currentLevelIndex === 0) return null;
-    return getDraftPCState(currentLevelIndex - 1, baseStats, selectedRace, levelConfigs);
-  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs, currentLevelIndex]);
+    return getDraftPCState(currentLevelIndex - 1, baseStats, selectedRace, levelConfigs, fullAlignment);
+  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs, currentLevelIndex, fullAlignment]);
 
   const currentDraft = useMemo(() => {
     if (!isTargetLevelSet) return null;
-    return getDraftPCState(currentLevelIndex, baseStats, selectedRace, levelConfigs);
-  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs, currentLevelIndex]);
+    return getDraftPCState(currentLevelIndex, baseStats, selectedRace, levelConfigs, fullAlignment);
+  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs, currentLevelIndex, fullAlignment]);
 
   const completedDraft = useMemo(() => {
     if (!isTargetLevelSet) return null;
-    return getCompletedDraftPCState(levelConfigs.length - 1, baseStats, selectedRace, levelConfigs);
-  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs]);
+    return getCompletedDraftPCState(levelConfigs.length - 1, baseStats, selectedRace, levelConfigs, fullAlignment);
+  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs, fullAlignment]);
 
   const currentConfig = isTargetLevelSet ? levelConfigs[currentLevelIndex] : null;
 

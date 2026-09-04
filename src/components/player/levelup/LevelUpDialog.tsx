@@ -58,16 +58,16 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
   };
 
   const prevDraft = useMemo(() => {
-    return getDraftPCState(newLevelIndex - 1, baseStats, selectedRace, levelConfigs);
-  }, [newLevelIndex, baseStats, selectedRace, levelConfigs]);
+    return getDraftPCState(newLevelIndex - 1, baseStats, selectedRace, levelConfigs, activePC?.alignment);
+  }, [newLevelIndex, baseStats, selectedRace, levelConfigs, activePC?.alignment]);
 
   const currentDraft = useMemo(() => {
-    return getDraftPCState(newLevelIndex, baseStats, selectedRace, levelConfigs);
-  }, [newLevelIndex, baseStats, selectedRace, levelConfigs]);
+    return getDraftPCState(newLevelIndex, baseStats, selectedRace, levelConfigs, activePC?.alignment);
+  }, [newLevelIndex, baseStats, selectedRace, levelConfigs, activePC?.alignment]);
 
   const completedDraft = useMemo(() => {
-    return getCompletedDraftPCState(newLevelIndex, baseStats, selectedRace, levelConfigs);
-  }, [newLevelIndex, baseStats, selectedRace, levelConfigs]);
+    return getCompletedDraftPCState(newLevelIndex, baseStats, selectedRace, levelConfigs, activePC?.alignment);
+  }, [newLevelIndex, baseStats, selectedRace, levelConfigs, activePC?.alignment]);
 
   const getClassHitDie = (clsKey: string): number => {
     const cls = CLASSES_LIST.find((c: any) => c.key === clsKey);

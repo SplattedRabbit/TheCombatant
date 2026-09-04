@@ -113,7 +113,7 @@ export function createLevelUpDraft(activePC: any): LevelUpDraftState {
     acfs: [],
   });
 
-  const prevDraft = getDraftPCState(newLevelIndex - 1, baseStats, selectedRace, levelConfigs);
+  const prevDraft = getDraftPCState(newLevelIndex - 1, baseStats, selectedRace, levelConfigs, activePC?.alignment);
 
   return {
     totalCurrentLevel,
