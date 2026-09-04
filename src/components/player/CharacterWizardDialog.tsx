@@ -24,7 +24,7 @@ import { Step3TargetLevelPrompt } from './wizard/Step3TargetLevelPrompt.tsx';
 import { Step4Review } from './wizard/Step4Review.tsx';
 import { WizardTimeline } from './wizard/WizardTimeline.tsx';
 import { applyWizardCharacterToState } from './wizard/wizardSaveHelper.ts';
-import { CLASSES_LIST } from './wizard/constants';
+import { CLASSES_LIST, PRESTIGE_PREREQS } from './wizard/constants';
 
 interface CharacterWizardDialogProps {
   onClose: () => void;
@@ -166,9 +166,15 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       (cfg.feats || []).forEach((fid: string) => alreadyChosenIds.add(fid));
     });
 
+    const reqFeats = targetPrestigeClass ? (PRESTIGE_PREREQS[targetPrestigeClass]?.feats || []) : [];
+
     return Object.values(CombatFeats.REGISTRY).filter((feat: any) => {
       if (alreadyChosenIds.has(feat.id)) return false;
-      if (featFilter !== 'all' && feat.category !== featFilter) return false;
+      if (featFilter === 'prc_target') {
+        if (!reqFeats.includes(feat.id)) return false;
+      } else if (featFilter !== 'all' && feat.category !== featFilter) {
+        return false;
+      }
       if (activeFeatSlot.allowedCategories && !activeFeatSlot.allowedCategories.includes(feat.category)) return false;
       if (q) {
         const nameDe = (feat.nameDe || '').toLowerCase();
@@ -178,7 +184,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       }
       return true;
     });
-  }, [activeFeatSlot, currentDraft, featSearch, featFilter, levelConfigs]);
+  }, [activeFeatSlot, currentDraft, featSearch, featFilter, levelConfigs, targetPrestigeClass]);
 
   const handleNext = () => {
     if (step === 1) {

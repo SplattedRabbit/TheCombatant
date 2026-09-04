@@ -78,7 +78,7 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
             >
               <option value="all">All</option>
               {targetPrestigeClass && reqFeats.length > 0 && (
-                <option value="prc_target">★ {targetClassDef?.name || 'Zielklasse'}</option>
+                <option value="prc_target">★ {targetClassDef?.name || 'Target Class'}</option>
               )}
               {activeFeatSlot && activeFeatSlot.allowedCategories?.includes('combat') && (
                 <option value="combat">Combat</option>
@@ -164,8 +164,8 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                       opacity: isBlocked ? 0.6 : 1,
                       paddingLeft: `${8 + depthPadding}px`,
                       display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '8px',
+                      flexDirection: 'column',
+                      gap: '2px',
                       transition: 'background 0.2s, opacity 0.2s'
                     }}
                     onMouseEnter={(e) => {
@@ -197,7 +197,7 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                                 fontWeight: 'bold'
                               }}
                             >
-                              ★ Zielklasse
+                              ★ Target Class
                             </span>
                           )}
                         </div>

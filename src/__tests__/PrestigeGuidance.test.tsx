@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import { Step1RaceName } from '../components/player/wizard/Step1RaceName';
 import { Step2Attributes } from '../components/player/wizard/Step2Attributes';
 import { PrestigePrereqTrackerCard } from '../components/player/wizard/levelConfig/PrestigePrereqTrackerCard';
+import { FeatsTabContent } from '../components/player/wizard/FeatsTabContent';
 import { Combatant } from '../../js/models/Combatant.js';
+import { CombatFeats } from '../../js/data/feats-data.js';
 
 describe('Prestige Class Guidance UI Integration', () => {
   it('Step1RaceName displays guidance warning when alignment conflicts with target PrC', () => {
@@ -100,5 +102,40 @@ describe('Prestige Class Guidance UI Integration', () => {
     expect(tracker).toBeInTheDocument();
     expect(tracker.textContent).toContain('Target: Shadowbane Inquisitor');
     expect(tracker.textContent).toContain('In Progress');
+  });
+
+  it('FeatsTabContent filters and displays required feats when target prestige class filter is selected', () => {
+    const powerAttackFeat = CombatFeats.REGISTRY['power_attack'];
+    const dodgeFeat = CombatFeats.REGISTRY['dodge'];
+
+    const TestFeatsComponent = () => {
+      const [filter, setFilter] = useState('prc_target');
+      const [search, setSearch] = useState('');
+      const [cfg, setCfg] = useState({ feats: [] });
+
+      return (
+        <FeatsTabContent
+          currentConfig={cfg}
+          currentDraft={{ draftPC: new Combatant({ name: 'Test' }), featsList: [] }}
+          featSelectSlotIndex={0}
+          featSearch={search}
+          setFeatSearch={setSearch}
+          featFilter={filter}
+          setFeatFilter={setFilter}
+          activeFeatSlot={{ label: 'General Feat', allowedCategories: ['general', 'combat'] }}
+          filteredFeats={[powerAttackFeat, dodgeFeat]}
+          updateLevelConfig={() => {}}
+          currentLevelIndex={0}
+          targetPrestigeClass="shadowbane_inquisitor"
+        />
+      );
+    };
+
+    render(<TestFeatsComponent />);
+
+    // Power Attack must be shown with target badge
+    expect(screen.getByTestId('feat-target-badge-power_attack')).toBeInTheDocument();
+    // Dodge should be filtered out by prc_target
+    expect(screen.queryByText('Dodge')).toBeNull();
   });
 });
