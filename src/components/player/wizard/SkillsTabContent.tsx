@@ -96,10 +96,17 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
 
                 const isTargetSkill = reqRank !== undefined;
                 let rowBg = 'transparent';
+                let borderLeft = '3.5px solid transparent';
+
                 if (currentClicks > 0) {
                   rowBg = 'rgba(76, 175, 80, 0.15)';
+                  borderLeft = '3.5px solid #2e7d32';
+                } else if (prevRanks > 0) {
+                  rowBg = 'rgba(212, 175, 55, 0.12)';
+                  borderLeft = '3.5px solid #b8860b';
                 } else if (isTargetSkill && totalRanks < reqRank) {
                   rowBg = 'rgba(255, 235, 59, 0.12)';
+                  borderLeft = '3.5px solid rgba(255, 193, 7, 0.5)';
                 }
 
                 return (
@@ -111,8 +118,10 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
                       justifyContent: 'space-between',
                       padding: '6px 8px',
                       borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)',
+                      borderLeft,
                       fontSize: '12px',
-                      background: rowBg
+                      background: rowBg,
+                      transition: 'background 0.15s ease, border-left-color 0.15s ease'
                     }}
                   >
                     <div style={{ textAlign: 'left', flex: 1 }}>
