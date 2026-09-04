@@ -1,5 +1,5 @@
 import React from 'react';
-import { RACES, CLASSES_LIST, checkPrestigeAlignment, PRESTIGE_PREREQS } from './constants';
+import { RACES, CLASSES_LIST, checkPrestigeAlignment } from './constants';
 
 interface Step1RaceNameProps {
   name: string;

@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Step1RaceName } from '../components/player/wizard/Step1RaceName';
 import { Step2Attributes } from '../components/player/wizard/Step2Attributes';
 import { PrestigePrereqTrackerCard } from '../components/player/wizard/levelConfig/PrestigePrereqTrackerCard';
 import { FeatsTabContent } from '../components/player/wizard/FeatsTabContent';
-import { Combatant } from '../../js/models/Combatant.js';
-import { CombatFeats } from '../../js/data/feats-data.js';
+import { Combatant } from '@core/models/Combatant.js';
+import { CombatFeats } from '@core/data/feats-data.js';
 
 describe('Prestige Class Guidance UI Integration', () => {
   it('Step1RaceName displays guidance warning when alignment conflicts with target PrC', () => {
@@ -117,7 +117,7 @@ describe('Prestige Class Guidance UI Integration', () => {
     const TestFeatsComponent = () => {
       const [filter, setFilter] = useState('prc_target');
       const [search, setSearch] = useState('');
-      const [cfg, setCfg] = useState({ feats: [] });
+      const [cfg] = useState({ feats: [] });
 
       return (
         <FeatsTabContent

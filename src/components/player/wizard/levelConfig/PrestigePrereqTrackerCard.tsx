@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { validatePrestigeClassPrereqs } from '@core/rules.js';
 import { CLASSES_LIST, PRESTIGE_PREREQS } from '../constants';
-import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
-import { CombatFeats } from '@core/data/feats-data.js';
 
 interface PrestigePrereqTrackerCardProps {
   targetPrestigeClass: string;
