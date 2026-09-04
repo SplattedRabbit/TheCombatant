@@ -363,7 +363,10 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
           </strong>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '11px' }}>
             {(['str', 'dex', 'con', 'int', 'wis', 'cha'] as const).map((k) => {
-              const score = currentDraft.draftPC[k]?.base || 10;
+              const rawStat = currentDraft.stats ? currentDraft.stats[k] : currentDraft.draftPC[k];
+              const score = typeof rawStat === 'number'
+                ? rawStat
+                : (typeof rawStat?.getValue === 'function' ? rawStat.getValue() : (rawStat?.base ?? 10));
               const mod = Math.floor((score - 10) / 2);
               const sign = mod >= 0 ? '+' : '';
               return (
