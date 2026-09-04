@@ -1,5 +1,5 @@
 import React from 'react';
-import { RACES } from './constants';
+import { RACES, CLASSES_LIST, checkPrestigeAlignment, PRESTIGE_PREREQS } from './constants';
 
 interface Step1RaceNameProps {
   name: string;
@@ -10,6 +10,8 @@ interface Step1RaceNameProps {
   setAlignmentEthical: (val: string) => void;
   alignmentMoral: string;
   setAlignmentMoral: (val: string) => void;
+  targetPrestigeClass?: string;
+  setTargetPrestigeClass?: (val: string) => void;
 }
 
 export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
@@ -20,17 +22,21 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
   alignmentEthical,
   setAlignmentEthical,
   alignmentMoral,
-  setAlignmentMoral
+  setAlignmentMoral,
+  targetPrestigeClass,
+  setTargetPrestigeClass
 }) => {
   const activeRaceInfo = RACES.find(r => r.key === selectedRace);
+  const targetClassDef = targetPrestigeClass ? CLASSES_LIST.find(c => c.key === targetPrestigeClass) : null;
+  const alignmentCheck = targetPrestigeClass ? checkPrestigeAlignment(alignmentEthical, alignmentMoral, targetPrestigeClass) : { compatible: true };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', textAlign: 'left', marginTop: '10px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'left', marginTop: '10px' }}>
       
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr 1.3fr', gap: '16px' }}>
         {/* Name Input */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          <label style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
+          <label style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
             Character Name
           </label>
           <input
@@ -50,22 +56,48 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
           />
         </div>
 
+        {/* Target Prestige Class (Optional) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <label style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--inkm)', letterSpacing: '0.5px' }}>
+            Target PrC <span style={{ fontSize: '11px', fontWeight: 'normal', color: 'var(--inkl)' }}>(Guidance)</span>
+          </label>
+          <select
+            value={targetPrestigeClass || ''}
+            onChange={(e) => setTargetPrestigeClass && setTargetPrestigeClass(e.target.value)}
+            className="cinput"
+            style={{
+              width: '100%',
+              height: '34px',
+              fontSize: '12px',
+              padding: '0 8px',
+              cursor: 'pointer',
+              boxSizing: 'border-box'
+            }}
+          >
+            <option value="">-- Keine / Flexibel --</option>
+            {CLASSES_LIST.filter(c => c.isPrestige).map(c => (
+              <option key={c.key} value={c.key}>{c.name}</option>
+            ))}
+          </select>
+        </div>
+
         {/* Alignment Dropdowns */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          <label style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
+          <label style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
             Alignment (Gesinnung)
           </label>
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <div style={{ display: 'flex', gap: '8px' }}>
             <select
               value={alignmentEthical}
               onChange={(e) => setAlignmentEthical(e.target.value)}
               className="cinput"
               style={{
                 flex: 1,
-                fontSize: '13px',
+                fontSize: '12px',
                 height: '34px',
-                padding: '0 8px',
-                cursor: 'pointer'
+                padding: '0 6px',
+                cursor: 'pointer',
+                boxSizing: 'border-box'
               }}
             >
               <option value="Lawful">Rechtschaffen (Lawful)</option>
@@ -78,10 +110,11 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
               className="cinput"
               style={{
                 flex: 1,
-                fontSize: '13px',
+                fontSize: '12px',
                 height: '34px',
-                padding: '0 8px',
-                cursor: 'pointer'
+                padding: '0 6px',
+                cursor: 'pointer',
+                boxSizing: 'border-box'
               }}
             >
               <option value="Good">Gut (Good)</option>
@@ -91,6 +124,37 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Target Prestige Class Alignment Guidance Banner */}
+      {targetClassDef && alignmentCheck.requirementLabel && (
+        <div
+          data-testid="alignment-guidance-banner"
+          style={{
+            padding: '8px 12px',
+            borderRadius: '4px',
+            fontSize: '12px',
+            lineHeight: 1.4,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: alignmentCheck.compatible ? 'rgba(46, 125, 50, 0.1)' : 'rgba(211, 47, 47, 0.12)',
+            border: `1px solid ${alignmentCheck.compatible ? '#4caf50' : '#f44336'}`,
+            color: alignmentCheck.compatible ? '#2e7d32' : '#c62828'
+          }}
+        >
+          <span>{alignmentCheck.compatible ? '🎯' : '⚠️'}</span>
+          <div>
+            <strong>{targetClassDef.name}:</strong>{' '}
+            {alignmentCheck.compatible ? (
+              <span>Gesinnung kompatibel! Voraussetzung: <em>{alignmentCheck.requirementLabel}</em></span>
+            ) : (
+              <span>
+                <strong>Achtung:</strong> Die gewählte Gesinnung ({alignmentEthical} {alignmentMoral}) erfüllt nicht die Voraussetzung (<strong>{alignmentCheck.requirementLabel}</strong>). Der spätere Einstieg in die Klasse wird blockiert!
+              </span>
+            )}
+          </div>
+        </div>
+      )}
 
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '30px', marginTop: '10px' }}>
         {/* Race Grid */}

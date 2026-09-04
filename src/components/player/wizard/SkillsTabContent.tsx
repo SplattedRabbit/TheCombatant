@@ -2,6 +2,7 @@ import React from 'react';
 import { CombatRules } from '@core/rules.js';
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
+import { PRESTIGE_PREREQS } from './constants';
 
 interface SkillsTabContentProps {
   levelConfigs: any[];
@@ -13,6 +14,7 @@ interface SkillsTabContentProps {
   currentLevelRemainingSkillPoints: number;
   currentLevelMaxSkillPoints: number;
   updateLevelConfig: (idx: number, key: string, val: any) => void;
+  targetPrestigeClass?: string;
 }
 
 export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
@@ -23,8 +25,11 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
   skillSearch,
   setSkillSearch,
   currentLevelRemainingSkillPoints,
-  updateLevelConfig
+  updateLevelConfig,
+  targetPrestigeClass
 }) => {
+  const reqSkills = targetPrestigeClass ? (PRESTIGE_PREREQS[targetPrestigeClass]?.skills || {}) : {};
+
   return (
     <>
       {!currentConfig.classType ? (
@@ -58,6 +63,15 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
                 return (def.nameEn || def.nameDe || '').toLowerCase().includes(s) || 
                        (def.nameDe || '').toLowerCase().includes(s);
               })
+              .sort(([keyA]: any, [keyB]: any) => {
+                if (!skillSearch && targetPrestigeClass) {
+                  const reqA = reqSkills[keyA] !== undefined;
+                  const reqB = reqSkills[keyB] !== undefined;
+                  if (reqA && !reqB) return -1;
+                  if (!reqA && reqB) return 1;
+                }
+                return 0;
+              })
               .map(([key, def]: any) => {
                 const isClassSkill = CombatRules.CLASS_SKILLS[currentConfig.classType]?.includes(key) || 
                                      (key.startsWith('knowledge_') && (currentConfig.classType === 'wizard' || currentConfig.classType === 'bard'));
@@ -78,6 +92,15 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
                 const totalRanks = prevRanks + addedRanks;
                 
                 const maxRanks = isEverClassSkill ? (currentLevelIndex + 4) : ((currentLevelIndex + 4) / 2);
+                const reqRank = reqSkills[key];
+
+                const isTargetSkill = reqRank !== undefined;
+                let rowBg = 'transparent';
+                if (currentClicks > 0) {
+                  rowBg = 'rgba(76, 175, 80, 0.15)';
+                } else if (isTargetSkill && totalRanks < reqRank) {
+                  rowBg = 'rgba(255, 235, 59, 0.12)';
+                }
 
                 return (
                   <div
@@ -89,7 +112,7 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
                       padding: '6px 8px',
                       borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)',
                       fontSize: '12px',
-                      background: currentClicks > 0 ? 'rgba(76, 175, 80, 0.15)' : 'transparent'
+                      background: rowBg
                     }}
                   >
                     <div style={{ textAlign: 'left', flex: 1 }}>
@@ -108,6 +131,24 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
                       >
                         {isClassSkill ? 'Class' : 'Cross-Class'}
                       </span>
+
+                      {isTargetSkill && (
+                        <span 
+                          data-testid={`skill-target-badge-${key}`}
+                          style={{
+                            fontSize: '9.5px',
+                            padding: '1px 5px',
+                            borderRadius: '3px',
+                            background: totalRanks >= reqRank ? 'rgba(76, 175, 80, 0.2)' : 'rgba(255, 193, 7, 0.3)',
+                            color: totalRanks >= reqRank ? '#2e7d32' : '#8d6e15',
+                            marginLeft: '6px',
+                            fontWeight: 'bold',
+                            display: 'inline-block'
+                          }}
+                        >
+                          🎯 Ziel: {reqRank} {totalRanks >= reqRank ? '✓' : `(noch ${(reqRank - totalRanks).toFixed(1).replace('.0', '')})`}
+                        </span>
+                      )}
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>

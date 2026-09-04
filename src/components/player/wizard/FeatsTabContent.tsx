@@ -1,6 +1,6 @@
 import React from 'react';
 import { checkFeatPrerequisites, CombatFeats } from '@core/data/feats-data.js';
-import { translatePrereq } from './constants';
+import { translatePrereq, PRESTIGE_PREREQS, CLASSES_LIST } from './constants';
 
 interface FeatsTabContentProps {
   currentConfig: any;
@@ -14,6 +14,7 @@ interface FeatsTabContentProps {
   filteredFeats: any[];
   updateLevelConfig: (idx: number, key: string, val: any) => void;
   currentLevelIndex: number;
+  targetPrestigeClass?: string;
 }
 
 export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
@@ -27,8 +28,22 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
   activeFeatSlot,
   filteredFeats,
   updateLevelConfig,
-  currentLevelIndex
+  currentLevelIndex,
+  targetPrestigeClass
 }) => {
+  const reqFeats = targetPrestigeClass ? (PRESTIGE_PREREQS[targetPrestigeClass]?.feats || []) : [];
+  const targetClassDef = targetPrestigeClass ? CLASSES_LIST.find(c => c.key === targetPrestigeClass) : null;
+
+  const displayFeats = React.useMemo(() => {
+    if (featFilter === 'prc_target') {
+      return filteredFeats.filter((item: any) => {
+        const feat = item?.feat || item;
+        return feat && reqFeats.includes(feat.id);
+      });
+    }
+    return filteredFeats;
+  }, [filteredFeats, featFilter, reqFeats]);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minHeight: '420px' }}>
       {featSelectSlotIndex !== null && activeFeatSlot ? (
@@ -49,13 +64,12 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
               }}
             />
             
-            {/* Category Filter Dropdown */}
             <select
               value={featFilter}
               onChange={(e) => setFeatFilter(e.target.value)}
               className="cinput"
               style={{
-                width: '120px',
+                width: '130px',
                 padding: '0 4px',
                 fontSize: '11px',
                 height: '24px',
@@ -63,6 +77,9 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
               }}
             >
               <option value="all">All</option>
+              {targetPrestigeClass && reqFeats.length > 0 && (
+                <option value="prc_target">★ {targetClassDef?.name || 'Zielklasse'}</option>
+              )}
               {activeFeatSlot && activeFeatSlot.allowedCategories?.includes('combat') && (
                 <option value="combat">Combat</option>
               )}
@@ -89,12 +106,12 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
               padding: '4px'
             }}
           >
-            {filteredFeats.length === 0 ? (
+            {displayFeats.length === 0 ? (
               <div style={{ padding: '20px', fontSize: '11px', fontStyle: 'italic', color: 'var(--inkl)', textAlign: 'center' }}>
                 No matching feats found.
               </div>
             ) : (
-              filteredFeats.map((item: any) => {
+              displayFeats.map((item: any) => {
                 const feat = item?.feat || item;
                 if (!feat || !feat.id) return null;
                 const depth = item?.depth || 0;
@@ -102,6 +119,7 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                 const isAlreadySelected = Array.isArray(currentConfig?.feats) ? currentConfig.feats.includes(feat.id) : false;
                 const isAlreadyLearned = Array.isArray(currentDraft?.featsList) ? currentDraft.featsList.includes(feat.id) : false;
                 const isBlocked = !prereqs.met || isAlreadyLearned;
+                const isTargetFeat = reqFeats.includes(feat.id);
                 
                 let statusIcon = '⚪';
                 let statusTitle = 'Selectable';
@@ -119,6 +137,13 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                 const parentFeat = feat.parent ? CombatFeats.REGISTRY[feat.parent] : null;
                 const depthPadding = featSearch ? 0 : depth * 12;
 
+                let rowBg = 'transparent';
+                if (isAlreadySelected) {
+                  rowBg = 'rgba(200, 169, 110, 0.15)';
+                } else if (isTargetFeat && !isBlocked && !isAlreadyLearned) {
+                  rowBg = 'rgba(255, 235, 59, 0.12)';
+                }
+
                 return (
                   <div
                     key={feat.id}
@@ -134,10 +159,13 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                       padding: '6px 8px',
                       borderBottom: '0.5px solid rgba(200, 169, 110, 0.2)',
                       cursor: isBlocked ? 'not-allowed' : 'pointer',
-                      background: isAlreadySelected ? 'rgba(200, 169, 110, 0.15)' : 'transparent',
+                      background: rowBg,
                       textAlign: 'left',
                       opacity: isBlocked ? 0.6 : 1,
                       paddingLeft: `${8 + depthPadding}px`,
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '8px',
                       transition: 'background 0.2s, opacity 0.2s'
                     }}
                     onMouseEnter={(e) => {
@@ -152,10 +180,27 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                     }}
                     title={statusTitle}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px', width: '100%' }}>
                       <span style={{ fontSize: '10px' }} title={statusTitle}>{statusIcon}</span>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flex: 1 }}>
-                        <strong style={{ fontSize: '11px', color: isBlocked ? 'var(--inkm)' : 'var(--red)' }}>{feat.nameEn || feat.nameDe || feat.name || feat.id}</strong>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flex: 1, flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <strong style={{ fontSize: '11px', color: isBlocked ? 'var(--inkm)' : 'var(--red)' }}>{feat.nameEn || feat.nameDe || feat.name || feat.id}</strong>
+                          {isTargetFeat && (
+                            <span 
+                              data-testid={`feat-target-badge-${feat.id}`}
+                              style={{
+                                fontSize: '8.5px',
+                                padding: '1px 5px',
+                                borderRadius: '3px',
+                                background: isAlreadyLearned || isAlreadySelected ? 'rgba(76, 175, 80, 0.2)' : '#ffe082',
+                                color: isAlreadyLearned || isAlreadySelected ? '#2e7d32' : '#795548',
+                                fontWeight: 'bold'
+                              }}
+                            >
+                              ★ Zielklasse
+                            </span>
+                          )}
+                        </div>
                         {feat.nameDe && feat.nameEn && (
                           <span style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>{feat.nameDe}</span>
                         )}

@@ -196,7 +196,144 @@ export const CLASS_KEY_ATTRIBUTES: Record<string, string[]> = {
   ninja:         ['dex', 'wis', 'str'],
   scout:         ['dex', 'str', 'wis'],
   spellthief:    ['dex', 'int', 'cha'],
+  // Prestige Classes
+  shadowbane_inquisitor: ['str', 'wis', 'cha', 'con'],
+  arcane_trickster:      ['int', 'dex', 'cha'],
+  mystic_theurge:        ['int', 'wis', 'con'],
+  assassin:              ['int', 'dex', 'con'],
+  dragon_disciple:       ['str', 'cha', 'con'],
+  battle_trickster:      ['str', 'dex', 'con'],
+  spellwarp_sniper:      ['dex', 'int', 'cha'],
 };
+
+export interface PrestigePrereqInfo {
+  alignment?: 'lawful_good' | 'evil' | 'nonlawful';
+  alignmentLabel?: string;
+  bab?: number;
+  skills?: Record<string, number>;
+  feats?: string[];
+  attributeHints?: Record<string, string>;
+  specialText?: string;
+}
+
+export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
+  shadowbane_inquisitor: {
+    alignment: 'lawful_good',
+    alignmentLabel: 'Rechtschaffen Gut (Lawful Good)',
+    bab: 5,
+    skills: {
+      gather_information: 4,
+      knowledge_religion: 2,
+      sense_motive: 8
+    },
+    feats: ['power_attack'],
+    attributeHints: {
+      str: 'Min. STR 13 für Power Attack (Voraussetzung)',
+      wis: 'WIS für göttliche Zauber & Spruchvorbereitung',
+      cha: 'CHA für Smite & Untote vertreiben'
+    },
+    specialText: 'Detect Evil, Turn Undead, Sneak Attack +1d6'
+  },
+  arcane_trickster: {
+    alignment: 'nonlawful',
+    alignmentLabel: 'Nicht-Rechtschaffen (Any Non-Lawful)',
+    skills: {
+      decipher_script: 7,
+      disable_device: 7,
+      escape_artist: 7,
+      knowledge_arcana: 4
+    },
+    attributeHints: {
+      int: 'INT für arkane Zauber & Fertigkeitspunkte',
+      dex: 'DEX für Schurkenfertigkeiten & Reflexe'
+    },
+    specialText: 'Arcane Spells 3rd lvl, Mage Hand, Sneak Attack +2d6'
+  },
+  assassin: {
+    alignment: 'evil',
+    alignmentLabel: 'Böse (Any Evil)',
+    skills: {
+      disguise: 4,
+      hide: 8,
+      move_silently: 8
+    },
+    attributeHints: {
+      int: 'INT für Todesangriff-SG & Assassinen-Zauber',
+      dex: 'DEX für Heimlichkeit & Hinterhältigen Angriff'
+    },
+    specialText: 'Tötungsauftrag / Aufnahmeopfer'
+  },
+  dragon_disciple: {
+    skills: {
+      knowledge_arcana: 8
+    },
+    attributeHints: {
+      str: 'STR für drakonische Nahkampfboni',
+      cha: 'CHA für spontane arkane Zauber'
+    },
+    specialText: 'Sprache Drakonisch, spontane arkane Magie'
+  },
+  mystic_theurge: {
+    skills: {
+      knowledge_arcana: 6,
+      knowledge_religion: 6
+    },
+    attributeHints: {
+      int: 'INT für Magier-Zauber',
+      wis: 'WIS für Kleriker/Druiden-Zauber'
+    },
+    specialText: 'Arkane Zauber Grad 2 + Göttliche Zauber Grad 2'
+  },
+  spellwarp_sniper: {
+    skills: {
+      concentration: 8,
+      spellcraft: 8
+    },
+    feats: ['point_blank_shot'],
+    attributeHints: {
+      dex: 'Min. DEX 13 für Point Blank Shot (Voraussetzung)',
+      int: 'INT für arkane Zauber'
+    },
+    specialText: 'Arkane Zauber Grad 3, Sneak Attack +1d6'
+  },
+  battle_trickster: {
+    bab: 5,
+    attributeHints: {
+      str: 'STR für Nahkampf-Schaden',
+      dex: 'DEX für Kampfgeschick & Fertigkeitstricks'
+    },
+    specialText: '3 Fertigkeiten mit je 6 Rängen, 2 Fertigkeitstricks'
+  }
+};
+
+export function checkPrestigeAlignment(
+  ethical: string,
+  moral: string,
+  classKey: string
+): { compatible: boolean; requirementLabel?: string } {
+  const req = PRESTIGE_PREREQS[classKey];
+  if (!req || !req.alignment) return { compatible: true };
+
+  const normEth = (ethical || '').toLowerCase();
+  const normMor = (moral || '').toLowerCase();
+
+  if (req.alignment === 'lawful_good') {
+    const isLG = normEth === 'lawful' && normMor === 'good';
+    return { compatible: isLG, requirementLabel: req.alignmentLabel };
+  }
+
+  if (req.alignment === 'evil') {
+    const isEvil = normMor === 'evil';
+    return { compatible: isEvil, requirementLabel: req.alignmentLabel };
+  }
+
+  if (req.alignment === 'nonlawful') {
+    const isNonLawful = normEth !== 'lawful';
+    return { compatible: isNonLawful, requirementLabel: req.alignmentLabel };
+  }
+
+  return { compatible: true };
+}
 
 export const CLASSES_LIST = [
   // ── Core (PHB) ─────────────────────────────────────────────────

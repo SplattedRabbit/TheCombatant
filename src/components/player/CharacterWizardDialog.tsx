@@ -38,6 +38,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   const [selectedRace, setSelectedRace] = useState<string>('human');
   const [alignmentEthical, setAlignmentEthical] = useState<string>('Neutral');
   const [alignmentMoral, setAlignmentMoral] = useState<string>('Neutral');
+  const [targetPrestigeClass, setTargetPrestigeClass] = useState<string>('');
 
   // Highlight class key attributes in Point-Buy
   const [highlightClass, setHighlightClass] = useState<string>('');
@@ -288,6 +289,11 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             setAlignmentEthical={setAlignmentEthical}
             alignmentMoral={alignmentMoral}
             setAlignmentMoral={setAlignmentMoral}
+            targetPrestigeClass={targetPrestigeClass}
+            setTargetPrestigeClass={(cls) => {
+              setTargetPrestigeClass(cls);
+              if (cls) setHighlightClass(cls);
+            }}
           />
         );
 
@@ -300,6 +306,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             totalStatsSpent={totalStatsSpent}
             highlightClass={highlightClass}
             setHighlightClass={setHighlightClass}
+            targetPrestigeClass={targetPrestigeClass}
           />
         );
 
@@ -340,6 +347,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             currentFeatSlots={currentFeatSlots}
             activeFeatSlot={activeFeatSlot}
             filteredFeats={filteredFeats}
+            targetPrestigeClass={targetPrestigeClass}
           />
         );
 
