@@ -236,7 +236,7 @@ export const CLASSES = [
     hitDie: 10,
     hd: 10,
     skillBase: 4,
-    bab: 'full',
+    bab: 'good',
     saves: { fort: 'good', ref: 'poor', wil: 'poor' },
     spellcastingBonus: false,
     prerequisites: {
