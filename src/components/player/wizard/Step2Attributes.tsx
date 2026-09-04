@@ -91,6 +91,23 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
                 >
                   <span style={{ borderBottom: '1px dashed var(--red)' }}>{labelMap[k]}</span>
                   {isKeyAttr && <span style={{ color: 'green', fontSize: '9px', whiteSpace: 'nowrap' }}>★ Key</span>}
+                  {activePrereq?.attributes?.[k] && (
+                    <span 
+                      data-testid={`attr-req-badge-${k}`}
+                      style={{ 
+                        color: finalVal >= activePrereq.attributes[k] ? '#2e7d32' : '#c62828', 
+                        fontSize: '9px', 
+                        fontWeight: 'bold',
+                        whiteSpace: 'nowrap',
+                        background: finalVal >= activePrereq.attributes[k] ? 'rgba(46, 125, 50, 0.12)' : 'rgba(198, 40, 40, 0.12)',
+                        padding: '1px 5px',
+                        borderRadius: '3px',
+                        border: `1px solid ${finalVal >= activePrereq.attributes[k] ? 'rgba(46, 125, 50, 0.3)' : 'rgba(198, 40, 40, 0.3)'}`
+                      }}
+                    >
+                      Req: {activePrereq.attributes[k]}+ {finalVal >= activePrereq.attributes[k] ? '✓' : `(${finalVal})`}
+                    </span>
+                  )}
                 </strong>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

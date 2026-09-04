@@ -248,6 +248,9 @@ export const CLASSES = [
         sense_motive: 8
       },
       feats: ['power_attack'],
+      attributes: {
+        str: 13
+      },
       special: {
         detect_evil: true,
         turn_undead: true,

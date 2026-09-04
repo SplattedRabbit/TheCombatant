@@ -64,6 +64,7 @@ test('Shadowbane Inquisitor Prerequisite Validation in Level Progression', () =>
   const pc = new Combatant({
     name: 'Torm Undaunted',
     alignment: 'Lawful Good',
+    str: 14,
     classes: [
       { classType: 'paladin', level: 5 },
       { classType: 'rogue', level: 1 }
@@ -80,6 +81,14 @@ test('Shadowbane Inquisitor Prerequisite Validation in Level Progression', () =>
   const res = validatePrestigeClassPrereqs(pc, 'shadowbane_inquisitor');
   assert.strictEqual(res.success, true, 'Fully qualified character must pass Shadowbane Inquisitor prereqs');
   assert.strictEqual(res.errors.length, 0);
+  assert.ok(res.metDetails.some(d => d.label.includes('Strength (STR): 13+') && d.met), 'Must track Strength 13+ prerequisite');
+
+  // Test STR failure specifically
+  pc.str.base = 10;
+  const strFailRes = validatePrestigeClassPrereqs(pc, 'shadowbane_inquisitor');
+  assert.strictEqual(strFailRes.success, false, 'Character with STR < 13 must fail prereqs');
+  assert.ok(strFailRes.errors.some(e => e.includes('Strength') || e.includes('STR')));
+  pc.str.base = 14;
 
   // Missing BAB check
   const lowLevelPC = new Combatant({

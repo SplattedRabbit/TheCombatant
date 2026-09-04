@@ -73,6 +73,11 @@ describe('Prestige Class Guidance UI Integration', () => {
     const hintsBox = screen.getByTestId('attribute-prereq-hints');
     expect(hintsBox).toBeInTheDocument();
     expect(hintsBox.textContent).toContain('Power Attack');
+
+    // Attribute requirement badge for STR 13+
+    const strBadge = screen.getByTestId('attr-req-badge-str');
+    expect(strBadge).toBeInTheDocument();
+    expect(strBadge.textContent).toContain('Req: 13+');
   });
 
   it('PrestigePrereqTrackerCard shows criteria status and live progress', () => {
@@ -102,6 +107,7 @@ describe('Prestige Class Guidance UI Integration', () => {
     expect(tracker).toBeInTheDocument();
     expect(tracker.textContent).toContain('Target: Shadowbane Inquisitor');
     expect(tracker.textContent).toContain('In Progress');
+    expect(tracker.textContent).toContain('Strength (STR): 13+');
   });
 
   it('FeatsTabContent filters and displays required feats when target prestige class filter is selected', () => {

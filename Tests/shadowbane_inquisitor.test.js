@@ -12,6 +12,7 @@ test('Shadowbane Inquisitor - Prerequisites Validation (RAW D&D 3.5e)', () => {
   const pc = new Combatant({
     name: 'Kalva the Inquisitor',
     alignment: 'LG',
+    str: 14,
     classes: [
       { classType: 'paladin', level: 4 },
       { classType: 'rogue', level: 1 }
@@ -41,6 +42,15 @@ test('Shadowbane Inquisitor - Prerequisites Validation (RAW D&D 3.5e)', () => {
 
   const valSuccess = CombatRules.validatePrestigeClassPrereqs(pc, 'shadowbane_inquisitor');
   assert.strictEqual(valSuccess.success, true, 'Should qualify with Paladin 5 / Rogue 1, LG, Power Attack, and required skills');
+  assert.ok(valSuccess.metDetails.some(d => d.label.includes('Strength (STR): 13+') && d.met), 'MetDetails must include met Strength requirement');
+
+  // Test attribute failure: STR < 13 (implicit requirement from Power Attack)
+  pc.str.base = 10;
+  const valStrFail = CombatRules.validatePrestigeClassPrereqs(pc, 'shadowbane_inquisitor');
+  assert.strictEqual(valStrFail.success, false, 'Should fail when Strength is under 13 for Power Attack');
+  assert.ok(valStrFail.errors.some(e => e.includes('Strength') || e.includes('STR')), 'Error list should mention Strength');
+  assert.ok(valStrFail.metDetails.some(d => d.label.includes('Strength (STR): 13+') && !d.met), 'MetDetails should flag unmet Strength requirement');
+  pc.str.base = 14; // Restore STR
 
   // Test alignment failure: Not Lawful Good (e.g. CG)
   pc.alignment = 'CG';

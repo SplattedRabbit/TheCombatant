@@ -212,6 +212,7 @@ export interface PrestigePrereqInfo {
   bab?: number;
   skills?: Record<string, number>;
   feats?: string[];
+  attributes?: Record<string, number>;
   attributeHints?: Record<string, string>;
   specialText?: string;
 }
@@ -227,6 +228,7 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
       sense_motive: 8
     },
     feats: ['power_attack'],
+    attributes: { str: 13 },
     attributeHints: {
       str: 'Min. STR 13 for Power Attack (prerequisite)',
       wis: 'WIS for divine spells & spell preparation',
@@ -244,7 +246,7 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
       knowledge_arcana: 4
     },
     attributeHints: {
-      int: 'INT for arcane spells & skill points',
+      int: 'INT for arcane spells (min. 13 for 3rd-lvl spells) & skill points',
       dex: 'DEX for rogue skills & Reflex saves'
     },
     specialText: 'Arcane Spells 3rd lvl, Mage Hand, Sneak Attack +2d6'
@@ -258,7 +260,7 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
       move_silently: 8
     },
     attributeHints: {
-      int: 'INT for Death Attack DC & assassin spells',
+      int: 'INT for Death Attack DC & assassin spells (min. 11+ for spells)',
       dex: 'DEX for stealth & Sneak Attack'
     },
     specialText: 'Must kill someone for no other reason than to join the assassins'
@@ -269,7 +271,7 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
     },
     attributeHints: {
       str: 'STR for draconic melee bonuses',
-      cha: 'CHA for spontaneous arcane spells'
+      cha: 'CHA for spontaneous arcane spells (min. 11 for 1st-lvl spells)'
     },
     specialText: 'Speak Draconic, spontaneous arcane casting'
   },
@@ -279,8 +281,8 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
       knowledge_religion: 6
     },
     attributeHints: {
-      int: 'INT for wizard spells',
-      wis: 'WIS for cleric/druid spells'
+      int: 'INT for wizard spells (min. 12 for 2nd-lvl spells)',
+      wis: 'WIS for cleric/druid spells (min. 12 for 2nd-lvl spells)'
     },
     specialText: 'Arcane spells 2nd lvl + Divine spells 2nd lvl'
   },
@@ -291,8 +293,8 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
     },
     feats: ['point_blank_shot'],
     attributeHints: {
-      dex: 'Min. DEX 13 for Point Blank Shot (prerequisite)',
-      int: 'INT for arcane spells'
+      dex: 'DEX for ranged attack rolls & Sneak Attack',
+      int: 'INT for arcane spells (min. 13 for 3rd-lvl spells)'
     },
     specialText: 'Arcane spells 3rd lvl, Sneak Attack +1d6'
   },
