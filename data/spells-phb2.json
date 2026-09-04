@@ -38,32 +38,6 @@
     "spellResistance": "No",
     "description": "With a single word, you alter the outcome of an event by changing fortune itself. You cause any creature within range to immediately reroll any die roll it just made (attack roll, saving throw, skill check, or level check). The subject must abide by the result of the second roll. XP Cost: 200 XP."
   },
-  "arcane_turmoil": {
-    "id": "arcane_turmoil",
-    "nameDe": "Arkaner Aufruhr",
-    "nameEn": "Arcane Turmoil",
-    "level": 2,
-    "school": "Abjuration",
-    "classes": [
-      "wizard",
-      "sorcerer"
-    ],
-    "description": "Dispels one spell on the target, and forces the target to make a Will save or lose its highest-level prepared spell or spell slot.",
-    "duration": "Instantaneous",
-    "range": "Close (25 ft. + 5 ft./2 levels)",
-    "save": "Will partial",
-    "sr": "Yes",
-    "classLevels": [
-      {
-        "class": "sorcerer",
-        "level": 2
-      },
-      {
-        "class": "wizard",
-        "level": 2
-      }
-    ]
-  },
   "blade_brothers": {
     "id": "blade_brothers",
     "nameDe": "Klingenbrüder",
@@ -127,35 +101,6 @@
     "spellResistance": "No",
     "description": "You immediately take a standard action as if your turn had just begun. After you take this action, you are dazed until the end of your next turn."
   },
-  "chain_missile": {
-    "id": "chain_missile",
-    "nameDe": "Ketten-Geschoss",
-    "nameEn": "Chain Missile",
-    "level": 3,
-    "school": "Evocation [Force]",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ],
-    "classLevels": [
-      {
-        "class": "sorcerer",
-        "level": 3
-      },
-      {
-        "class": "wizard",
-        "level": 3
-      }
-    ],
-    "components": "V, S",
-    "castingTime": "1 standard action",
-    "range": "Medium (100 ft. + 10 ft./level)",
-    "targetOrEffectOrArea": "Target: One primary target, plus secondary targets",
-    "duration": "Instantaneous",
-    "savingThrow": "None",
-    "spellResistance": "Yes",
-    "description": "You launch magic missiles that first strike a primary target for 1d4+1 force damage per two caster levels (maximum 10d4+10 at 20th level), then secondary missiles strike secondary targets within 30 feet for 1d4+1 damage each."
-  },
   "chasing_perfection": {
     "id": "chasing_perfection",
     "nameDe": "Vollendung erstreben",
@@ -194,32 +139,6 @@
     "savingThrow": "Will negates (harmless)",
     "spellResistance": "Yes (harmless)",
     "description": "The subject gains a +4 enhancement bonus to all six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma."
-  },
-  "chimeric_curve": {
-    "id": "chimeric_curve",
-    "nameDe": "Chimärische Kurve",
-    "nameEn": "Chimeric Curve",
-    "level": 4,
-    "school": "Illusion",
-    "classes": [
-      "wizard",
-      "sorcerer"
-    ],
-    "description": "Creates an illusory duplicate that mirrors your movements, deflecting the next incoming attack or ray spell to target the duplicate.",
-    "duration": "1 round/level",
-    "range": "Personal",
-    "save": "None",
-    "sr": "No",
-    "classLevels": [
-      {
-        "class": "sorcerer",
-        "level": 4
-      },
-      {
-        "class": "wizard",
-        "level": 4
-      }
-    ]
   },
   "deflect": {
     "id": "deflect",
@@ -366,146 +285,6 @@
     "savingThrow": "None",
     "spellResistance": "No",
     "description": "You immediately take a full-round action (or a standard action and a move action). After you take this action, you are dazed until the end of your next turn."
-  },
-  "heart_of_air": {
-    "id": "heart_of_air",
-    "nameDe": "Herz der Luft",
-    "nameEn": "Heart of Air",
-    "level": 2,
-    "school": "Transmutation [Air]",
-    "classes": [
-      "druid",
-      "sorcerer",
-      "wizard",
-      "wu_jen"
-    ],
-    "classLevels": [
-      {
-        "class": "druid",
-        "level": 2
-      },
-      {
-        "class": "sorcerer",
-        "level": 2
-      },
-      {
-        "class": "wizard",
-        "level": 2
-      }
-    ],
-    "components": "V, S",
-    "castingTime": "1 standard action",
-    "range": "Personal",
-    "targetOrEffectOrArea": "Target: You",
-    "duration": "1 hour/level (D) or until discharged",
-    "savingThrow": "None",
-    "spellResistance": "No",
-    "description": "You gain a +10 enhancement bonus on Jump checks and a fly speed bonus if you can fly. As an immediate action, you can discharge the spell to gain a feather fall effect. If you have two or more heart spells active, you gain light fortification."
-  },
-  "heart_of_earth": {
-    "id": "heart_of_earth",
-    "nameDe": "Herz der Erde",
-    "nameEn": "Heart of Earth",
-    "level": 4,
-    "school": "Transmutation [Earth]",
-    "classes": [
-      "druid",
-      "sorcerer",
-      "wizard",
-      "wu_jen"
-    ],
-    "classLevels": [
-      {
-        "class": "druid",
-        "level": 4
-      },
-      {
-        "class": "sorcerer",
-        "level": 4
-      },
-      {
-        "class": "wizard",
-        "level": 4
-      }
-    ],
-    "components": "V, S",
-    "castingTime": "1 standard action",
-    "range": "Personal",
-    "targetOrEffectOrArea": "Target: You",
-    "duration": "1 hour/level (D) or until discharged",
-    "savingThrow": "None",
-    "spellResistance": "No",
-    "description": "You gain a +8 bonus on checks to resist bull rush, overrun, or trip attacks, and temporary hit points equal to 2x your caster level (maximum 40). As an immediate action, you can discharge this spell to gain the benefit of stoneskin (damage reduction 10/adamantine) for 1 round per caster level."
-  },
-  "heart_of_fire": {
-    "id": "heart_of_fire",
-    "nameDe": "Herz des Feuers",
-    "nameEn": "Heart of Fire",
-    "level": 5,
-    "school": "Transmutation [Fire]",
-    "classes": [
-      "druid",
-      "sorcerer",
-      "wizard",
-      "wu_jen"
-    ],
-    "classLevels": [
-      {
-        "class": "druid",
-        "level": 5
-      },
-      {
-        "class": "sorcerer",
-        "level": 5
-      },
-      {
-        "class": "wizard",
-        "level": 5
-      }
-    ],
-    "components": "V, S",
-    "castingTime": "1 standard action",
-    "range": "Personal",
-    "targetOrEffectOrArea": "Target: You",
-    "duration": "1 hour/level (D) or until discharged",
-    "savingThrow": "None",
-    "spellResistance": "No",
-    "description": "You gain a +10-foot enhancement bonus to your land speed and fire resistance 20. As a swift action, you can discharge the spell to gain a fire shield effect for 1 round per level. If you have all four Heart spells active, you gain immunity to extra damage from critical hits and sneak attacks."
-  },
-  "heart_of_water": {
-    "id": "heart_of_water",
-    "nameDe": "Herz des Wassers",
-    "nameEn": "Heart of Water",
-    "level": 3,
-    "school": "Transmutation [Water]",
-    "classes": [
-      "druid",
-      "sorcerer",
-      "wizard",
-      "wu_jen"
-    ],
-    "classLevels": [
-      {
-        "class": "druid",
-        "level": 3
-      },
-      {
-        "class": "sorcerer",
-        "level": 3
-      },
-      {
-        "class": "wizard",
-        "level": 3
-      }
-    ],
-    "components": "V, S",
-    "castingTime": "1 standard action",
-    "range": "Personal",
-    "targetOrEffectOrArea": "Target: You",
-    "duration": "1 hour/level (D) or until discharged",
-    "savingThrow": "None",
-    "spellResistance": "No",
-    "description": "You gain a swim speed equal to your base land speed, the ability to breathe underwater, and a +5 enhancement bonus on Escape Artist checks. As an immediate action, you can discharge this spell to gain the benefit of freedom of movement for 1 round."
   },
   "hesitate": {
     "id": "hesitate",
@@ -703,32 +482,6 @@
     "savingThrow": "None",
     "spellResistance": "No",
     "description": "You project a barrier of invisible force that deflects a single incoming attack, granting you a +1 deflection bonus to AC per 3 caster levels (maximum +5 at 15th level) against that single attack."
-  },
-  "ray_of_deanimation": {
-    "id": "ray_of_deanimation",
-    "nameDe": "Deaktivierungsstrahl",
-    "nameEn": "Ray of Deanimation",
-    "level": 4,
-    "school": "Abjuration",
-    "classes": [
-      "wizard",
-      "sorcerer"
-    ],
-    "description": "Ray deals 1d6 points of damage per caster level (max 15d6) to constructs, bypassing hardness.",
-    "duration": "Instantaneous",
-    "range": "Close (25 ft. + 5 ft./2 levels)",
-    "save": "None",
-    "sr": "Yes",
-    "classLevels": [
-      {
-        "class": "sorcerer",
-        "level": 4
-      },
-      {
-        "class": "wizard",
-        "level": 4
-      }
-    ]
   },
   "seeking_ray": {
     "id": "seeking_ray",

@@ -48,6 +48,8 @@ test('Spellbook Audit - Player Handbook II (PHB II) Completeness & Health', () =
   const phb2Path = path.resolve(__dirname, '../data/spells-phb2.json');
   const phb2 = JSON.parse(fs.readFileSync(phb2Path, 'utf8'));
 
+  assert.ok(Object.keys(phb2).length === 19, `PHB2 must contain exactly 19 RAW spells, found ${Object.keys(phb2).length}`);
+
   const requiredPhb2Spells = [
     'alter_fortune',
     'celerity',
@@ -55,11 +57,9 @@ test('Spellbook Audit - Player Handbook II (PHB II) Completeness & Health', () =
     'greater_celerity',
     'deflect',
     'lesser_deflect',
-    'chain_missile',
-    'heart_of_air',
-    'heart_of_water',
-    'heart_of_earth',
-    'heart_of_fire',
+    'dimension_hop',
+    'evards_menacing_tentacles',
+    'seeking_ray',
     'kelgores_fire_bolt',
     'kelgores_grave_mist',
     'energy_aegis',
@@ -84,17 +84,19 @@ test('Spellbook Audit - Complete Adventurer (CA) Completeness & Health', () => {
   const caPath = path.resolve(__dirname, '../data/spells-ca.json');
   const ca = JSON.parse(fs.readFileSync(caPath, 'utf8'));
 
+  assert.ok(Object.keys(ca).length === 10, `Complete Adventurer must contain exactly 10 RAW spells, found ${Object.keys(ca).length}`);
+
   const requiredCaSpells = [
     'iron_silence',
     'wraithstrike',
     'sniper_s_shot',
+    'snipers_eye',
     'guided_shot',
     'critical_strike',
     'bladeweave',
+    'blindsight',
     'sonic_weapon',
-    'arrow_mind',
-    'wild_instincts',
-    'tactical_teleportation'
+    'arrow_mind'
   ];
 
   for (const id of requiredCaSpells) {
@@ -109,20 +111,51 @@ test('Spellbook Audit - Complete Scoundrel (CS) Completeness & Health', () => {
   const csPath = path.resolve(__dirname, '../data/spells-cs.json');
   const cs = JSON.parse(fs.readFileSync(csPath, 'utf8'));
 
+  assert.ok(Object.keys(cs).length === 28, `Complete Scoundrel must contain exactly 28 RAW spells, found ${Object.keys(cs).length}`);
+
   const requiredCsSpells = [
     'blockade',
     'armor_lock',
     'spell_theft',
     'lucky_streak',
     'assassins_darkness',
-    'smugglers_covet'
+    'animate_instrument',
+    'aquatic_escape',
+    'catapult',
+    'create_fetch',
+    'disobedience',
+    'enlarge_weapon',
+    'evacuation_rune',
+    'fatal_flame',
+    'grasping_wall',
+    'harmonic_void',
+    'healers_vision',
+    'mage_burr',
+    'manifestation_of_the_deity',
+    'mimicry',
+    'opportune_dodge',
+    'scry_location',
+    'siphon',
+    'smoke_stairs',
+    'spore_field',
+    'spymasters_coin',
+    'wall_of_vermin',
+    'wand_modulation',
+    'winged_watcher'
   ];
 
   for (const id of requiredCsSpells) {
     assert.ok(cs[id], `CS spell ${id} must be registered`);
     assert.ok(cs[id].nameEn, `${id} must have nameEn`);
+    assert.ok(cs[id].nameDe, `${id} must have nameDe`);
     assert.ok(typeof cs[id].level === 'number', `${id} must have level`);
+    assert.ok(cs[id].school, `${id} must have school`);
     assert.ok(cs[id].description, `${id} must have description`);
+    assert.ok(Array.isArray(cs[id].classes) && cs[id].classes.length > 0, `${id} must have classes`);
     assert.ok(Array.isArray(cs[id].classLevels) && cs[id].classLevels.length > 0, `${id} must have classLevels`);
+    for (const cl of cs[id].classLevels) {
+      assert.ok(typeof cl.class === 'string' && cl.class.length > 0, `${id} classLevel must have a class`);
+      assert.ok(typeof cl.level === 'number' && cl.level >= 0 && cl.level <= 9, `${id} classLevel must have valid level`);
+    }
   }
 });

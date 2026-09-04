@@ -1,26 +1,42 @@
 {
-  "blockade": {
-    "id": "blockade",
-    "nameDe": "Blockade",
-    "nameEn": "Blockade",
-    "level": 1,
-    "school": "Conjuration",
+  "animate_instrument": {
+    "id": "animate_instrument",
+    "nameDe": "Instrument beleben",
+    "nameEn": "Animate Instrument",
+    "level": 2,
+    "school": "Transmutation",
     "classes": [
-      "druid",
-      "ranger"
+      "bard"
     ],
-    "description": "Fills a 5-ft. square with an enormous block of wood, providing cover and blocking movement. Created as a swift action.",
-    "duration": "3 rounds",
-    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "description": "You imbue your musical instrument with the ability to play at your command, continuing your song even while you are busy with other actions. As long as this spell is in effect, you can cause the instrument to begin playing as a swift action, effectively mimicking and continuing your performance using your Perform modifier without requiring concentration.",
+    "duration": "1 minute/level",
+    "range": "Touch",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 2
+      }
+    ]
+  },
+  "aquatic_escape": {
+    "id": "aquatic_escape",
+    "nameDe": "Wässrige Flucht",
+    "nameEn": "Aquatic Escape",
+    "level": 1,
+    "school": "Transmutation",
+    "classes": [
+      "druid"
+    ],
+    "description": "You take the form of any aquatic animal of Diminutive, Tiny, or Small size (such as a fish or squid). You gain a swim speed equal to that of the chosen form, as well as the aquatic subtype and the amphibious extraordinary quality, allowing you to breathe in both air and water.",
+    "duration": "1 round/level (D)",
+    "range": "Personal",
     "save": "None",
     "sr": "No",
     "classLevels": [
       {
         "class": "druid",
-        "level": 1
-      },
-      {
-        "class": "ranger",
         "level": 1
       }
     ]
@@ -32,9 +48,12 @@
     "level": 1,
     "school": "Transmutation",
     "classes": [
-      "bard"
+      "bard",
+      "hexblade",
+      "sorcerer",
+      "wizard"
     ],
-    "description": "Target's armor becomes restrictive and locks up. Target's speed is reduced to 10 ft. and take extra armor check penalties.",
+    "description": "Target's armor becomes restrictive and locks up. The subject's land speed is reduced to 10 feet, and its armor check penalty is doubled. The spell has no effect on unarmored opponents or creatures with only natural armor.",
     "duration": "1 round/level",
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "Reflex negates",
@@ -43,47 +62,17 @@
       {
         "class": "bard",
         "level": 1
-      }
-    ]
-  },
-  "spell_theft": {
-    "id": "spell_theft",
-    "nameDe": "Zauberdiebstahl",
-    "nameEn": "Spell Theft",
-    "level": 4,
-    "school": "Abjuration",
-    "classes": [
-      "bard"
-    ],
-    "description": "Make a dispel check. For each active spell successfully dispelled from the target, you gain the benefits of that spell for the remainder of its duration.",
-    "duration": "Instantaneous",
-    "range": "Close (25 ft. + 5 ft./2 levels)",
-    "save": "None",
-    "sr": "No",
-    "classLevels": [
+      },
       {
-        "class": "bard",
-        "level": 4
-      }
-    ]
-  },
-  "lucky_streak": {
-    "id": "lucky_streak",
-    "nameDe": "Glückssträhne",
-    "nameEn": "Lucky Streak",
-    "level": 1,
-    "school": "Divination",
-    "classes": [
-      "bard"
-    ],
-    "description": "Subject gains a +2 luck bonus on rerolls made with luck feats for the duration of the spell.",
-    "duration": "1 round/level",
-    "range": "Touch",
-    "save": "Will negates (harmless)",
-    "sr": "Yes (harmless)",
-    "classLevels": [
+        "class": "hexblade",
+        "level": 1
+      },
       {
-        "class": "bard",
+        "class": "sorcerer",
+        "level": 1
+      },
+      {
+        "class": "wizard",
         "level": 1
       }
     ]
@@ -95,15 +84,20 @@
     "level": 4,
     "school": "Illusion",
     "classes": [
-      "wizard",
-      "sorcerer"
+      "assassin",
+      "sorcerer",
+      "wizard"
     ],
-    "description": "Creates a 20-ft. radius globe of magical darkness. Only the caster can see normally through this darkness.",
+    "description": "Creates a 20-ft.-radius globe of magical darkness. All creatures within the area have total concealment against creatures outside. Only you can see within or through the darkness as if it were illuminated by bright light.",
     "duration": "1 round/level",
     "range": "Close (25 ft. + 5 ft./2 levels)",
     "save": "None",
     "sr": "No",
     "classLevels": [
+      {
+        "class": "assassin",
+        "level": 4
+      },
       {
         "class": "sorcerer",
         "level": 4
@@ -111,31 +105,685 @@
       {
         "class": "wizard",
         "level": 4
+      }
+    ]
+  },
+  "blockade": {
+    "id": "blockade",
+    "nameDe": "Blockade",
+    "nameEn": "Blockade",
+    "level": 1,
+    "school": "Conjuration",
+    "classes": [
+      "druid",
+      "ranger",
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "You create a 5-foot-cube block of solid wood in your space or in an unoccupied adjacent 5-foot square. The block weighs 2,000 pounds, completely fills a 5-foot square, provides total cover, and blocks movement. Cast as a swift action.",
+    "duration": "3 rounds",
+    "range": "0 ft.",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 1
       },
       {
+        "class": "ranger",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      }
+    ]
+  },
+  "catapult": {
+    "id": "catapult",
+    "nameDe": "Katapult",
+    "nameEn": "Catapult",
+    "level": 2,
+    "school": "Transmutation",
+    "classes": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "You cause one object of up to 5 pounds held in your hand to fly toward a designated target or space. You make a ranged attack roll with the object using your caster level + primary spellcasting attribute mod. A thrown weapon deals its normal damage, and other objects deal 1d6 damage.",
+    "duration": "Instantaneous",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 2
+      },
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ]
+  },
+  "create_fetch": {
+    "id": "create_fetch",
+    "nameDe": "Doppelgänger erschaffen",
+    "nameEn": "Create Fetch",
+    "level": 3,
+    "school": "Conjuration",
+    "classes": [
+      "assassin",
+      "bard",
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "You craft a temporary, physically real duplicate of yourself out of shadow material. The fetch looks exactly like you, has one-half your current hit point total, shares your armor class and saves, and obeys simple telepathic commands within range.",
+    "duration": "10 minutes/level (D)",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
         "class": "assassin",
+        "level": 3
+      },
+      {
+        "class": "bard",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 4
+      },
+      {
+        "class": "wizard",
         "level": 4
       }
     ]
   },
-  "smugglers_covet": {
-    "id": "smugglers_covet",
-    "nameDe": "Schmuggler-Versteck",
-    "nameEn": "Smuggler's Covet",
+  "disobedience": {
+    "id": "disobedience",
+    "nameDe": "Ungehorsam",
+    "nameEn": "Disobedience",
     "level": 3,
     "school": "Abjuration",
     "classes": [
-      "bard"
+      "bard",
+      "sorcerer",
+      "wizard"
     ],
-    "description": "Masks the magical aura of items carried in a pocket or pouch, making them undetectable to detect magic spells.",
-    "duration": "1 hour/level",
+    "description": "Subject is shielded from mental control and compulsion effects. Any creature that attempts to magically control or compel the subject is unaware the effect failed and perceives that the subject is completely under its sway, allowing the subject to act freely.",
+    "duration": "1 hour/level (D)",
+    "range": "Touch",
+    "save": "Will negates (harmless)",
+    "sr": "Yes (harmless)",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 3
+      },
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ]
+  },
+  "enlarge_weapon": {
+    "id": "enlarge_weapon",
+    "nameDe": "Waffe vergrößern",
+    "nameEn": "Enlarge Weapon",
+    "level": 2,
+    "school": "Transmutation",
+    "classes": [
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "Target weapon increases by one size category, dealing more damage according to the weapon size table. The weapon remains balanced for the wielder who held it when the spell was cast without imposing size penalties.",
+    "duration": "1 round/level",
+    "range": "Touch",
+    "save": "Fortitude negates (object)",
+    "sr": "Yes (object)",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ]
+  },
+  "evacuation_rune": {
+    "id": "evacuation_rune",
+    "nameDe": "Evakuierungsrune",
+    "nameEn": "Evacuation Rune",
+    "level": 5,
+    "school": "Conjuration",
+    "classes": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "You trace an invisible magic rune on a surface. At any time within the duration, while you are within 30 feet per caster level of the rune, you can instantly teleport yourself to the rune as a swift action, ending the spell.",
+    "duration": "24 hours or until discharged (D)",
     "range": "Touch",
     "save": "None",
     "sr": "No",
     "classLevels": [
       {
         "class": "bard",
+        "level": 5
+      },
+      {
+        "class": "sorcerer",
+        "level": 5
+      },
+      {
+        "class": "wizard",
+        "level": 5
+      }
+    ]
+  },
+  "fatal_flame": {
+    "id": "fatal_flame",
+    "nameDe": "Tödliche Flamme",
+    "nameEn": "Fatal Flame",
+    "level": 2,
+    "school": "Evocation",
+    "classes": [
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "Target creature is primed to detonate with fiery retribution. If the subject dies before the spell expires, its corpse instantly explodes into flame, dealing 1d6 fire damage per 2 caster levels (max 5d6) to all creatures within a 5-foot radius (Reflex half).",
+    "duration": "1 minute/level",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "Will negates",
+    "sr": "Yes",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ]
+  },
+  "grasping_wall": {
+    "id": "grasping_wall",
+    "nameDe": "Greifende Wand",
+    "nameEn": "Grasping Wall",
+    "level": 3,
+    "school": "Conjuration",
+    "classes": [
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "A wall surface of up to 10 sq. ft./level sprouts grappling stone hands. Hostile creatures adjacent to the wall must save or become entangled and unable to move away. Allies gain a +10 circumstance bonus on Climb checks on that wall.",
+    "duration": "1 minute/level (D)",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "save": "Reflex negates",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "sorcerer",
         "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ]
+  },
+  "harmonic_void": {
+    "id": "harmonic_void",
+    "nameDe": "Harmonisches Vakuum",
+    "nameEn": "Harmonic Void",
+    "level": 5,
+    "school": "Abjuration",
+    "classes": [
+      "bard"
+    ],
+    "description": "An aura of destructive magical feedback surrounds you in a 60-ft.-radius emanation. Any creature within the area attempting to cast a spell with a verbal component must make a Concentration check (DC 20 + spell level) or lose the spell.",
+    "duration": "1 round/level (D)",
+    "range": "60 ft.",
+    "save": "None",
+    "sr": "Yes",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 5
+      }
+    ]
+  },
+  "healers_vision": {
+    "id": "healers_vision",
+    "nameDe": "Blick des Heilers",
+    "nameEn": "Healer's Vision",
+    "level": 1,
+    "school": "Divination",
+    "classes": [
+      "assassin",
+      "cleric"
+    ],
+    "description": "You gain acute insight into creature physiology and anatomy. You receive a +5 insight bonus on Heal checks, and whenever you make a sneak attack or weapon attack against a critical-vulnerable living creature, you gain a +2 insight bonus on attack and damage rolls.",
+    "duration": "1 round/level",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "assassin",
+        "level": 1
+      },
+      {
+        "class": "cleric",
+        "level": 1
+      }
+    ]
+  },
+  "lucky_streak": {
+    "id": "lucky_streak",
+    "nameDe": "Glückssträhne",
+    "nameEn": "Lucky Streak",
+    "level": 1,
+    "school": "Divination",
+    "classes": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "Subject gains a +2 luck bonus on rerolls made with luck feats for the duration of the spell.",
+    "duration": "1 round/level",
+    "range": "Touch",
+    "save": "Will negates (harmless)",
+    "sr": "Yes (harmless)",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ]
+  },
+  "mage_burr": {
+    "id": "mage_burr",
+    "nameDe": "Magierklette",
+    "nameEn": "Mage Burr",
+    "level": 1,
+    "school": "Transmutation",
+    "classes": [
+      "bard",
+      "hexblade",
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "Causes target's armor or clothing to sprout sharp internal burrs. Doubles the arcane spell failure chance of the armor and inflicts a -5 penalty on all Concentration checks. Has no effect on creatures without armor.",
+    "duration": "1 round/level",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "Reflex negates",
+    "sr": "Yes",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 1
+      },
+      {
+        "class": "hexblade",
+        "level": 1
+      },
+      {
+        "class": "sorcerer",
+        "level": 1
+      },
+      {
+        "class": "wizard",
+        "level": 1
+      }
+    ]
+  },
+  "manifestation_of_the_deity": {
+    "id": "manifestation_of_the_deity",
+    "nameDe": "Manifestation der Gottheit",
+    "nameEn": "Manifestation of the Deity",
+    "level": 2,
+    "school": "Illusion",
+    "classes": [
+      "cleric"
+    ],
+    "description": "A terrifying illusion of your patron deity surrounds you. Enemies that see you and have fewer Hit Dice than your caster level become shaken for 1 round unless they succeed on a Will saving throw. Cast as a swift action.",
+    "duration": "1 round/3 levels (D)",
+    "range": "Personal",
+    "save": "Will negates",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "cleric",
+        "level": 2
+      }
+    ]
+  },
+  "mimicry": {
+    "id": "mimicry",
+    "nameDe": "Mimikry",
+    "nameEn": "Mimicry",
+    "level": 1,
+    "school": "Transmutation",
+    "classes": [
+      "assassin",
+      "bard"
+    ],
+    "description": "You can accurately imitate any voice or sound you have heard, from birdcalls and clanking armor to a specific individual’s speech. Listeners must make an opposed Sense Motive check against your Bluff check to detect the deception.",
+    "duration": "1 round/level",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "assassin",
+        "level": 1
+      },
+      {
+        "class": "bard",
+        "level": 1
+      }
+    ]
+  },
+  "opportune_dodge": {
+    "id": "opportune_dodge",
+    "nameDe": "Günstiges Ausweichen",
+    "nameEn": "Opportune Dodge",
+    "level": 2,
+    "school": "Abjuration",
+    "classes": [
+      "bard"
+    ],
+    "description": "Subject is granted supernatural agility against attacks of opportunity. Once during the duration, the subject can completely avoid one attack of opportunity provoked by moving out of a threatened square.",
+    "duration": "1 round/level or until discharged",
+    "range": "Touch",
+    "save": "Will negates (harmless)",
+    "sr": "Yes (harmless)",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 2
+      }
+    ]
+  },
+  "scry_location": {
+    "id": "scry_location",
+    "nameDe": "Ort ausspähen",
+    "nameEn": "Scry Location",
+    "level": 5,
+    "school": "Divination",
+    "classes": [
+      "bard",
+      "cleric",
+      "druid",
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "Creates an invisible scrying sensor at a specific known location regardless of distance. You can see and hear the location as if you were standing there, with viewing bonuses depending on your familiarity with the site.",
+    "duration": "1 minute/level",
+    "range": "See text",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 5
+      },
+      {
+        "class": "cleric",
+        "level": 7
+      },
+      {
+        "class": "druid",
+        "level": 7
+      },
+      {
+        "class": "sorcerer",
+        "level": 6
+      },
+      {
+        "class": "wizard",
+        "level": 6
+      }
+    ]
+  },
+  "siphon": {
+    "id": "siphon",
+    "nameDe": "Abschöpfen",
+    "nameEn": "Siphon",
+    "level": 3,
+    "school": "Transmutation",
+    "classes": [
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "You drain magical charges from a held wand or staff to replenish your own expended spell slots. You must drain 5 charges for each spell level you wish to restore (e.g. 5 charges for a 1st-level spell, 15 charges for a 3rd-level spell).",
+    "duration": "Instantaneous",
+    "range": "Touch",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ]
+  },
+  "smoke_stairs": {
+    "id": "smoke_stairs",
+    "nameDe": "Rauchtreppe",
+    "nameEn": "Smoke Stairs",
+    "level": 2,
+    "school": "Transmutation",
+    "classes": [
+      "assassin",
+      "druid"
+    ],
+    "description": "Subject can walk up and down a column of smoke (such as from a campfire, torch, or chimney) as if it were a solid staircase. The smoke holds your weight, providing a swift and stealthy ascent or descent.",
+    "duration": "1 minute/level (D)",
+    "range": "Touch",
+    "save": "Will negates (harmless)",
+    "sr": "Yes (harmless)",
+    "classLevels": [
+      {
+        "class": "assassin",
+        "level": 2
+      },
+      {
+        "class": "druid",
+        "level": 2
+      }
+    ]
+  },
+  "spell_theft": {
+    "id": "spell_theft",
+    "nameDe": "Zauberdiebstahl",
+    "nameEn": "Spell Theft",
+    "level": 4,
+    "school": "Abjuration",
+    "classes": [
+      "bard",
+      "hexblade",
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "Make a dispel check (1d20 + caster level, max +15) against each ongoing spell on the target. For each spell successfully dispelled, you immediately gain the benefits of that spell for the remainder of its duration, as if originally cast on you.",
+    "duration": "Instantaneous",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 4
+      },
+      {
+        "class": "hexblade",
+        "level": 4
+      },
+      {
+        "class": "sorcerer",
+        "level": 5
+      },
+      {
+        "class": "wizard",
+        "level": 5
+      }
+    ]
+  },
+  "spore_field": {
+    "id": "spore_field",
+    "nameDe": "Sporenfeld",
+    "nameEn": "Spore Field",
+    "level": 1,
+    "school": "Transmutation",
+    "classes": [
+      "druid",
+      "ranger"
+    ],
+    "description": "Patches of fungal growth sprout across a 10-foot square. Entering an affected square costs 2 squares of movement, and living creatures entering or starting their turn in the area must succeed on a Fortitude save or be sickened for 1 round.",
+    "duration": "1 minute/level",
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "save": "Fortitude negates",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 1
+      },
+      {
+        "class": "ranger",
+        "level": 2
+      }
+    ]
+  },
+  "spymasters_coin": {
+    "id": "spymasters_coin",
+    "nameDe": "Münze des Spionagemeisters",
+    "nameEn": "Spymaster's Coin",
+    "level": 2,
+    "school": "Divination",
+    "classes": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "You enchant a Fine object (such as a coin) into a dormant scrying sensor. At any time during the duration, as long as you are within 1 mile of the coin, you can activate it by concentrating, seeing and hearing the surrounding area for 1 round/level.",
+    "duration": "1 hour/level or until activated, then 1 round/level (D)",
+    "range": "Touch",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "bard",
+        "level": 2
+      },
+      {
+        "class": "sorcerer",
+        "level": 2
+      },
+      {
+        "class": "wizard",
+        "level": 2
+      }
+    ]
+  },
+  "wall_of_vermin": {
+    "id": "wall_of_vermin",
+    "nameDe": "Wand aus Ungeziefer",
+    "nameEn": "Wall of Vermin",
+    "level": 3,
+    "school": "Conjuration",
+    "classes": [
+      "druid"
+    ],
+    "description": "Summons a swirling, buzzing wall of insects and vermin up to 20 ft. long and 20 ft. high. Provides 20% concealment. Any creature passing through the wall takes 2d6 points of damage and must make a Fortitude save or be nauseated for 1 round.",
+    "duration": "1 round/level (D)",
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "save": "Fortitude negates",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 3
+      }
+    ]
+  },
+  "wand_modulation": {
+    "id": "wand_modulation",
+    "nameDe": "Zauberstab-Modulation",
+    "nameEn": "Wand Modulation",
+    "level": 3,
+    "school": "Transmutation",
+    "classes": [
+      "sorcerer",
+      "wizard"
+    ],
+    "description": "You temporarily alter a held wand to cast a different spell of equal or lower level that you know and have prepared. While modulated, each activation of the alternate spell expends 2 charges from the wand instead of 1.",
+    "duration": "1 minute/level",
+    "range": "Touch",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "sorcerer",
+        "level": 3
+      },
+      {
+        "class": "wizard",
+        "level": 3
+      }
+    ]
+  },
+  "winged_watcher": {
+    "id": "winged_watcher",
+    "nameDe": "Geflügelter Wächter",
+    "nameEn": "Winged Watcher",
+    "level": 1,
+    "school": "Transmutation",
+    "classes": [
+      "druid"
+    ],
+    "description": "You assume the form of a small bird (such as an owl, hawk, or raven). You gain a fly speed of 40 ft. (average maneuverability) and +4 size bonus on Hide checks, allowing you to scout, observe, or escape danger swiftly. Cast as a swift action.",
+    "duration": "1 round/level (D)",
+    "range": "Personal",
+    "save": "None",
+    "sr": "No",
+    "classLevels": [
+      {
+        "class": "druid",
+        "level": 1
       }
     ]
   }

@@ -74,5 +74,24 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
     "normalRaw": "",
     "specialRaw": "",
     "appEffect": "Füge Sneak Attack/Skirmish-Schaden bei kritischen Treffern hinzu"
+  },
+  "leap_of_the_heavens": {
+    "id": "leap_of_the_heavens",
+    "nameDe": "Himmelssprung",
+    "nameEn": "Leap of the Heavens",
+    "category": "general",
+    "source": "phb2",
+    "prereqs": [
+      {
+        "type": "skill",
+        "name": "jump",
+        "value": 4
+      }
+    ],
+    "benefitDe": "Die DC für Sprungwürfe (Jump) verdoppelt sich nicht, wenn du ohne 20 Fuß Anlauf aus dem Stand springst. Mit Anlauf erhältst du einen Bonus von +5.",
+    "benefitRaw": "When making a jump check without a 20-foot running start, the DC is not doubled. If you do have a running start, you gain a +5 competence bonus on the check.",
+    "normalRaw": "Standing jumps double the DC.",
+    "specialRaw": "",
+    "appEffect": "Keine DC-Verdopplung bei Stand-Sprüngen; +5 mit Anlauf"
   }
 };

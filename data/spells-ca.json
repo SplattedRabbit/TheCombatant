@@ -30,60 +30,6 @@
       }
     ]
   },
-  "aura_of_evasion": {
-    "id": "aura_of_evasion",
-    "nameDe": "Aura des Entrinnens",
-    "nameEn": "Aura of Evasion",
-    "level": 5,
-    "school": "Abjuration",
-    "classes": [
-      "cleric",
-      "druid",
-      "wizard",
-      "sorcerer"
-    ],
-    "description": "Grants the evasion class feature to all allies within 10 feet. Allies who already have evasion gain +2 bonus on Reflex saves.",
-    "duration": "1 round/level",
-    "range": "Personal",
-    "save": "None",
-    "sr": "No",
-    "classLevels": [
-      {
-        "class": "cleric",
-        "level": 5
-      },
-      {
-        "class": "druid",
-        "level": 5
-      }
-    ]
-  },
-  "baleful_transposition": {
-    "id": "baleful_transposition",
-    "nameDe": "Heilloser Tausch",
-    "nameEn": "Baleful Transposition",
-    "level": 2,
-    "school": "Transmutation",
-    "classes": [
-      "wizard",
-      "sorcerer"
-    ],
-    "description": "Two target creatures swap locations. Both must fit in the destination space, otherwise the spell fails.",
-    "duration": "Instantaneous",
-    "range": "Close (25 ft. + 5 ft./2 levels)",
-    "save": "Will negates",
-    "sr": "Yes",
-    "classLevels": [
-      {
-        "class": "sorcerer",
-        "level": 2
-      },
-      {
-        "class": "wizard",
-        "level": 2
-      }
-    ]
-  },
   "bladeweave": {
     "id": "bladeweave",
     "nameDe": "Klingenweben",
@@ -348,64 +294,6 @@
     "savingThrow": "Will negates (harmless, object)",
     "spellResistance": "Yes (harmless, object)",
     "description": "This spell imbues a weapon with sonic energy. The weapon deals an extra 1d6 points of sonic damage on each successful hit."
-  },
-  "tactical_teleportation": {
-    "id": "tactical_teleportation",
-    "nameDe": "Taktische Teleportation",
-    "nameEn": "Tactical Teleportation",
-    "level": 3,
-    "school": "Conjuration (Teleportation)",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ],
-    "classLevels": [
-      {
-        "class": "sorcerer",
-        "level": 3
-      },
-      {
-        "class": "wizard",
-        "level": 3
-      }
-    ],
-    "components": "V, S",
-    "castingTime": "1 standard action",
-    "range": "Close (25 ft. + 5 ft./2 levels)",
-    "targetOrEffectOrArea": "Targets: You and willing allies within range",
-    "duration": "Instantaneous",
-    "savingThrow": "None",
-    "spellResistance": "No",
-    "description": "You teleport yourself and up to one willing creature per 3 caster levels to unoccupied spaces that you can see within range."
-  },
-  "wild_instincts": {
-    "id": "wild_instincts",
-    "nameDe": "Wilde Instinkte",
-    "nameEn": "Wild Instincts",
-    "level": 3,
-    "school": "Divination",
-    "classes": [
-      "druid",
-      "ranger"
-    ],
-    "classLevels": [
-      {
-        "class": "druid",
-        "level": 3
-      },
-      {
-        "class": "ranger",
-        "level": 2
-      }
-    ],
-    "components": "V, S, DF",
-    "castingTime": "1 standard action",
-    "range": "Personal",
-    "targetOrEffectOrArea": "Target: You",
-    "duration": "1 min./level",
-    "savingThrow": "None",
-    "spellResistance": "No",
-    "description": "You gain a +10 insight bonus on Listen and Spot checks. You retain your Dexterity bonus to AC even if flat-footed or struck by an invisible attacker."
   },
   "wraithstrike": {
     "id": "wraithstrike",

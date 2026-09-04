@@ -88,5 +88,49 @@ export const GENERAL_FEATS_REGISTRY_CS = {
     "normalRaw": "",
     "specialRaw": "You gain 1 luck reroll per day for taking this feat.",
     "appEffect": "Wiederhole eigenen kritischen Bestätigungswurf für 1 Glückspunkt"
+  },
+  "daring_outlaw": {
+    "id": "daring_outlaw",
+    "nameDe": "Waghalsiger Gesetzloser",
+    "nameEn": "Daring Outlaw",
+    "category": "general",
+    "source": "cs",
+    "prereqs": [
+      {
+        "type": "custom",
+        "desc": "Grace +1"
+      },
+      {
+        "type": "sneak_attack",
+        "value": 2
+      }
+    ],
+    "benefitDe": "Deine Stufen als Schurke (Rogue) und Haudegen (Swashbuckler) addieren sich zur Ermittlung deines Sneak Attack Schadens und deines Ausweichbonus (Grace).",
+    "benefitRaw": "Your rogue and swashbuckler levels stack for the purpose of determining your sneak attack extra damage and your grace class feature.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Schurke und Haudegen stufenweises Stacking für Sneak Attack und Grace"
+  },
+  "daring_warrior": {
+    "id": "daring_warrior",
+    "nameDe": "Waghalsiger Krieger",
+    "nameEn": "Daring Warrior",
+    "category": "general",
+    "source": "cs",
+    "prereqs": [
+      {
+        "type": "custom",
+        "desc": "Grace +1"
+      },
+      {
+        "type": "class",
+        "class": "fighter"
+      }
+    ],
+    "benefitDe": "Deine Stufen als Kämpfer und Haudegen addieren sich zur Bestimmung deines Kämpfer-Stufenlevels für Talent-Voraussetzungen und für den Grace-Bonus.",
+    "benefitRaw": "Your fighter and swashbuckler levels stack for the purpose of qualifying for feats with a fighter level requirement, and for your grace class feature.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Kämpfer & Haudegen Stacking für Fighter-Talente und Grace"
   }
 };

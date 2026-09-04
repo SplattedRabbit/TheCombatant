@@ -41,9 +41,10 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
             placeholder="Enter adventurer name..."
             style={{
               width: '100%',
+              height: '34px',
               fontFamily: 'var(--font-body)',
-              fontSize: '14px',
-              padding: '6px 12px',
+              fontSize: '13px',
+              padding: '0 12px',
               boxSizing: 'border-box'
             }}
           />

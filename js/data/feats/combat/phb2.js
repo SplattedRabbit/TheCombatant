@@ -381,5 +381,23 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
     "appEffect": "Reduziert TWF-Schildstoß-Mali auf -2/-2"
+  },
+  "telling_blow": {
+    "id": "telling_blow",
+    "nameDe": "Verheerender Treffer",
+    "nameEn": "Telling Blow",
+    "category": "combat",
+    "source": "phb2",
+    "prereqs": [
+      {
+        "type": "custom",
+        "desc": "Sneak attack or skirmish"
+      }
+    ],
+    "benefitDe": "Immer wenn du einen kritischen Treffer erzielst, addierst du deinen Sneak Attack- oder Skirmish-Zusatzschaden zum Schadenswurf.",
+    "benefitRaw": "Whenever you score a critical hit, you add your sneak attack or skirmish damage to the damage roll.",
+    "normalRaw": "",
+    "specialRaw": "A fighter may select Telling Blow as one of his fighter bonus feats.",
+    "appEffect": "Sneak Attack / Skirmish Schaden wird bei jedem kritischen Treffer ausgelöst"
   }
 };
