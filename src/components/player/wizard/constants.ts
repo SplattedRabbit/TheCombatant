@@ -219,7 +219,7 @@ export interface PrestigePrereqInfo {
 export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
   shadowbane_inquisitor: {
     alignment: 'lawful_good',
-    alignmentLabel: 'Rechtschaffen Gut (Lawful Good)',
+    alignmentLabel: 'Lawful Good',
     bab: 5,
     skills: {
       gather_information: 4,
@@ -228,15 +228,15 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
     },
     feats: ['power_attack'],
     attributeHints: {
-      str: 'Min. STR 13 für Power Attack (Voraussetzung)',
-      wis: 'WIS für göttliche Zauber & Spruchvorbereitung',
-      cha: 'CHA für Smite & Untote vertreiben'
+      str: 'Min. STR 13 for Power Attack (prerequisite)',
+      wis: 'WIS for divine spells & spell preparation',
+      cha: 'CHA for Smite & Turn Undead'
     },
     specialText: 'Detect Evil, Turn Undead, Sneak Attack +1d6'
   },
   arcane_trickster: {
     alignment: 'nonlawful',
-    alignmentLabel: 'Nicht-Rechtschaffen (Any Non-Lawful)',
+    alignmentLabel: 'Any Non-Lawful',
     skills: {
       decipher_script: 7,
       disable_device: 7,
@@ -244,34 +244,34 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
       knowledge_arcana: 4
     },
     attributeHints: {
-      int: 'INT für arkane Zauber & Fertigkeitspunkte',
-      dex: 'DEX für Schurkenfertigkeiten & Reflexe'
+      int: 'INT for arcane spells & skill points',
+      dex: 'DEX for rogue skills & Reflex saves'
     },
     specialText: 'Arcane Spells 3rd lvl, Mage Hand, Sneak Attack +2d6'
   },
   assassin: {
     alignment: 'evil',
-    alignmentLabel: 'Böse (Any Evil)',
+    alignmentLabel: 'Any Evil',
     skills: {
       disguise: 4,
       hide: 8,
       move_silently: 8
     },
     attributeHints: {
-      int: 'INT für Todesangriff-SG & Assassinen-Zauber',
-      dex: 'DEX für Heimlichkeit & Hinterhältigen Angriff'
+      int: 'INT for Death Attack DC & assassin spells',
+      dex: 'DEX for stealth & Sneak Attack'
     },
-    specialText: 'Tötungsauftrag / Aufnahmeopfer'
+    specialText: 'Must kill someone for no other reason than to join the assassins'
   },
   dragon_disciple: {
     skills: {
       knowledge_arcana: 8
     },
     attributeHints: {
-      str: 'STR für drakonische Nahkampfboni',
-      cha: 'CHA für spontane arkane Zauber'
+      str: 'STR for draconic melee bonuses',
+      cha: 'CHA for spontaneous arcane spells'
     },
-    specialText: 'Sprache Drakonisch, spontane arkane Magie'
+    specialText: 'Speak Draconic, spontaneous arcane casting'
   },
   mystic_theurge: {
     skills: {
@@ -279,10 +279,10 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
       knowledge_religion: 6
     },
     attributeHints: {
-      int: 'INT für Magier-Zauber',
-      wis: 'WIS für Kleriker/Druiden-Zauber'
+      int: 'INT for wizard spells',
+      wis: 'WIS for cleric/druid spells'
     },
-    specialText: 'Arkane Zauber Grad 2 + Göttliche Zauber Grad 2'
+    specialText: 'Arcane spells 2nd lvl + Divine spells 2nd lvl'
   },
   spellwarp_sniper: {
     skills: {
@@ -291,18 +291,18 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
     },
     feats: ['point_blank_shot'],
     attributeHints: {
-      dex: 'Min. DEX 13 für Point Blank Shot (Voraussetzung)',
-      int: 'INT für arkane Zauber'
+      dex: 'Min. DEX 13 for Point Blank Shot (prerequisite)',
+      int: 'INT for arcane spells'
     },
-    specialText: 'Arkane Zauber Grad 3, Sneak Attack +1d6'
+    specialText: 'Arcane spells 3rd lvl, Sneak Attack +1d6'
   },
   battle_trickster: {
     bab: 5,
     attributeHints: {
-      str: 'STR für Nahkampf-Schaden',
-      dex: 'DEX für Kampfgeschick & Fertigkeitstricks'
+      str: 'STR for melee damage',
+      dex: 'DEX for martial prowess & skill tricks'
     },
-    specialText: '3 Fertigkeiten mit je 6 Rängen, 2 Fertigkeitstricks'
+    specialText: '3 skills with 6 ranks each, 2 skill tricks'
   }
 };
 

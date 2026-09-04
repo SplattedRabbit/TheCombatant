@@ -55,7 +55,7 @@ export const PrestigePrereqTrackerCard: React.FC<PrestigePrereqTrackerCardProps>
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <span style={{ fontSize: '13px' }}>🎯</span>
           <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)', fontSize: '12.5px' }}>
-            Ziel: {classDef.name}
+            Target: {classDef.name}
           </strong>
           <span 
             style={{ 
@@ -75,11 +75,11 @@ export const PrestigePrereqTrackerCard: React.FC<PrestigePrereqTrackerCardProps>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           {validation.success ? (
             <span style={{ color: '#2e7d32', fontWeight: 'bold', fontSize: '11px' }}>
-              ✓ Bereit (Stufe {currentLevelIndex + 1})
+              ✓ Ready (Level {currentLevelIndex + 1})
             </span>
           ) : (
             <span style={{ color: '#b78103', fontSize: '11px' }}>
-              In Arbeit
+              In Progress
             </span>
           )}
           <span style={{ fontSize: '10px', color: 'var(--inkl)' }}>
@@ -102,11 +102,11 @@ export const PrestigePrereqTrackerCard: React.FC<PrestigePrereqTrackerCardProps>
                 fontSize: '11px'
               }}
             >
-              🎉 Alle Voraussetzungen auf dieser Stufe erfüllt! Du kannst nun {classDef.name} wählen.
+              🎉 All prerequisites met at this level! You can now select {classDef.name}.
             </div>
           ) : (
             <div style={{ fontSize: '10.5px', color: 'var(--inkm)' }}>
-              Voraussetzungen für den Einstieg in {classDef.name}:
+              Prerequisites for {classDef.name}:
             </div>
           )}
 
@@ -127,7 +127,7 @@ export const PrestigePrereqTrackerCard: React.FC<PrestigePrereqTrackerCardProps>
               >
                 <span style={{ color: 'var(--ink)' }}>{detail.label}</span>
                 <span style={{ fontWeight: 'bold', color: detail.met ? '#2e7d32' : '#c62828', fontSize: '11px' }}>
-                  {detail.met ? '✓ Erfüllt' : `${detail.current || 'Fehlt'}`}
+                  {detail.met ? '✓ Met' : `${detail.current || 'Missing'}`}
                 </span>
               </div>
             ))}
@@ -136,7 +136,7 @@ export const PrestigePrereqTrackerCard: React.FC<PrestigePrereqTrackerCardProps>
           {/* Special requirement text if present */}
           {prereqInfo?.specialText && (
             <div style={{ fontSize: '10.5px', color: 'var(--inkl)', fontStyle: 'italic', marginTop: '2px' }}>
-              ℹ️ Besonderes: {prereqInfo.specialText}
+              ℹ️ Special: {prereqInfo.specialText}
             </div>
           )}
         </div>

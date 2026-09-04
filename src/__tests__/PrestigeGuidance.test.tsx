@@ -36,8 +36,8 @@ describe('Prestige Class Guidance UI Integration', () => {
     // Check that alignment guidance banner indicates conflict with Chaotic Good
     const banner = screen.getByTestId('alignment-guidance-banner');
     expect(banner).toBeInTheDocument();
-    expect(banner.textContent).toContain('Achtung');
-    expect(banner.textContent).toContain('Rechtschaffen Gut');
+    expect(banner.textContent).toContain('Warning');
+    expect(banner.textContent).toContain('Lawful Good');
 
     // Change ethical to Lawful
     const selects = screen.getAllByRole('combobox');
@@ -45,7 +45,7 @@ describe('Prestige Class Guidance UI Integration', () => {
     fireEvent.change(ethicalSelect, { target: { value: 'Lawful' } });
 
     // Now it should be compatible
-    expect(screen.getByTestId('alignment-guidance-banner').textContent).toContain('Gesinnung kompatibel');
+    expect(screen.getByTestId('alignment-guidance-banner').textContent).toContain('Alignment compatible');
   });
 
   it('Step2Attributes renders prestige classes in optgroups and shows prerequisite hints', () => {
@@ -98,7 +98,7 @@ describe('Prestige Class Guidance UI Integration', () => {
 
     const tracker = screen.getByTestId('prestige-prereq-tracker');
     expect(tracker).toBeInTheDocument();
-    expect(tracker.textContent).toContain('Ziel: Shadowbane Inquisitor');
-    expect(tracker.textContent).toContain('In Arbeit');
+    expect(tracker.textContent).toContain('Target: Shadowbane Inquisitor');
+    expect(tracker.textContent).toContain('In Progress');
   });
 });

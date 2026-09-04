@@ -203,12 +203,12 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
               style={{ width: '100%', padding: '0 6px', fontSize: '11px', height: '26px', cursor: 'pointer', fontFamily: 'var(--font-title)', boxSizing: 'border-box' }}
             >
               <option value="">-- None --</option>
-              <optgroup label="── Basisklassen ──">
+              <optgroup label="── Base Classes ──">
                 {CLASSES_LIST.filter(c => !c.isPrestige).map(c => (
                   <option key={c.key} value={c.key}>{c.name}</option>
                 ))}
               </optgroup>
-              <optgroup label="── Prestigeklassen ──">
+              <optgroup label="── Prestige Classes ──">
                 {CLASSES_LIST.filter(c => c.isPrestige).map(c => (
                   <option key={c.key} value={c.key}>{c.name}</option>
                 ))}
@@ -225,17 +225,18 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
                   border: '1px solid #e0c88f', 
                   borderRadius: '4px', 
                   fontSize: '11px', 
+                  fontFamily: 'var(--font-body)',
                   color: 'var(--inkm)', 
                   textAlign: 'left', 
-                  lineHeight: 1.35 
+                  lineHeight: 1.4 
                 }}
               >
-                <strong style={{ color: 'var(--red)', display: 'block', marginBottom: '4px' }}>
-                  🎯 Empfehlungen für {CLASSES_LIST.find(c => c.key === highlightClass)?.name}:
+                <strong style={{ color: 'var(--red)', display: 'block', marginBottom: '6px', fontFamily: 'var(--font-body)', fontWeight: 600 }}>
+                  🎯 Recommendations for {CLASSES_LIST.find(c => c.key === highlightClass)?.name}:
                 </strong>
-                <ul style={{ margin: 0, paddingLeft: '14px' }}>
+                <ul style={{ margin: 0, paddingLeft: '16px', fontFamily: 'var(--font-body)' }}>
                   {Object.entries(activePrereq.attributeHints).map(([k, hint]) => (
-                    <li key={k} style={{ marginBottom: '2px' }}>{hint}</li>
+                    <li key={k} style={{ marginBottom: '3px', fontFamily: 'var(--font-body)' }}>{hint}</li>
                   ))}
                 </ul>
               </div>

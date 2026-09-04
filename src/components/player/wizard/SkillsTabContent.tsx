@@ -146,7 +146,7 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
                             display: 'inline-block'
                           }}
                         >
-                          🎯 Ziel: {reqRank} {totalRanks >= reqRank ? '✓' : `(noch ${(reqRank - totalRanks).toFixed(1).replace('.0', '')})`}
+                          🎯 Target: {reqRank} {totalRanks >= reqRank ? '✓' : `(${(reqRank - totalRanks).toFixed(1).replace('.0', '')} needed)`}
                         </span>
                       )}
                     </div>

@@ -146,10 +146,10 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
           <div>
             <strong>{targetClassDef.name}:</strong>{' '}
             {alignmentCheck.compatible ? (
-              <span>Gesinnung kompatibel! Voraussetzung: <em>{alignmentCheck.requirementLabel}</em></span>
+              <span>Alignment compatible! Prerequisite: <em>{alignmentCheck.requirementLabel}</em></span>
             ) : (
               <span>
-                <strong>Achtung:</strong> Die gewählte Gesinnung ({alignmentEthical} {alignmentMoral}) erfüllt nicht die Voraussetzung (<strong>{alignmentCheck.requirementLabel}</strong>). Der spätere Einstieg in die Klasse wird blockiert!
+                <strong>Warning:</strong> The selected alignment ({alignmentEthical} {alignmentMoral}) does not meet the prerequisite (<strong>{alignmentCheck.requirementLabel}</strong>). Entering this prestige class later will be blocked!
               </span>
             )}
           </div>
