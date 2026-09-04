@@ -48,7 +48,7 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
   return (
     <div style={{ textAlign: 'left', marginTop: '10px' }}>
       <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', margin: '0 0 20px 0', lineHeight: 1.5, color: 'var(--inkm)' }}>
-        Distribute a total of **74 points** among your 6 ability scores. Racial bonuses are calculated separately and displayed live on the right as final values.
+        Distribute a total of <strong>74 points</strong> among your 6 ability scores. Racial bonuses are calculated separately and displayed live on the right as final values.
       </p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '30px' }}>
@@ -70,35 +70,27 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'space-between',
-                  padding: '6px 12px',
-                  background: isKeyAttr ? 'rgba(255, 235, 59, 0.15)' : 'white',
-                  border: isKeyAttr ? '1.5px solid #fbc02d' : '1px solid var(--pb)',
-                  borderRadius: '4px',
-                  boxShadow: isKeyAttr ? '0 0 6px rgba(251, 192, 45, 0.2)' : 'none'
+                  padding: '10px 14px',
+                  background: isKeyAttr ? 'rgba(76, 175, 80, 0.15)' : 'rgba(244, 232, 193, 0.3)',
+                  border: isKeyAttr ? '1.5px solid rgba(76, 175, 80, 0.5)' : '1px solid var(--pb)',
+                  borderRadius: '4px'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '170px' }}>
-                  <span style={{ fontSize: '13px', fontWeight: isKeyAttr ? 'bold' : 'normal', color: isKeyAttr ? 'var(--ink)' : 'var(--inkm)' }}>
-                    {labelMap[k]}
-                  </span>
-                  {isKeyAttr && (
-                    <span 
-                      title="Key attribute for chosen class/prestige class" 
-                      style={{ fontSize: '10px', color: '#f57f17', fontWeight: 'bold', cursor: 'help' }}
-                    >
-                      ★ Key
-                    </span>
-                  )}
-                  <span 
-                    onClick={() => showAttributeExplanation(k)} 
-                    style={{ fontSize: '11px', color: 'var(--inkl)', cursor: 'pointer', padding: '0 2px' }}
-                    title="Click for attribute details"
-                  >
-                    ℹ️
-                  </span>
-                </div>
+                <strong 
+                  style={{ 
+                    fontSize: '13px', 
+                    width: '160px', 
+                    cursor: 'pointer', 
+                    borderBottom: '1px dashed var(--red)'
+                  }}
+                  onClick={() => showAttributeExplanation(k)}
+                  title="Click for a brief explanation"
+                >
+                  {labelMap[k]}
+                  {isKeyAttr && <span style={{ color: 'green', fontSize: '9px', marginLeft: '6px', display: 'inline-block' }}>★ Key</span>}
+                </strong>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <button 
                     className="btn" 
                     style={{ padding: '2px 8px', fontSize: '12px' }}
@@ -181,7 +173,7 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
             background: 'rgba(200, 169, 110, 0.08)', 
             border: '1px solid var(--pb)', 
             borderRadius: '4px',
-            padding: '16px',
+            padding: '20px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',

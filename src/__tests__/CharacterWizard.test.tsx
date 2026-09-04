@@ -105,7 +105,8 @@ describe('Character Wizard & Point-Buy Components (Task 6.1.4)', () => {
 
       // Now on Step 2
       expect(screen.getByText(/Abilities \(74 Pts\)/i)).toBeInTheDocument();
-      expect(screen.getByText(/Distribute a total of \*\*74 points\*\*/i)).toBeInTheDocument();
+      expect(screen.getByText(/Distribute a total of/i)).toBeInTheDocument();
+      expect(screen.getByText(/74 points/i)).toBeInTheDocument();
 
       // Click Back returns to Step 1
       const backBtn = screen.getByRole('button', { name: /Back/i });
