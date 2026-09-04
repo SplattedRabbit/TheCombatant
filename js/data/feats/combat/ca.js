@@ -1,3 +1,9 @@
+/**
+ * @module    feats-combat-ca
+ * @summary   Statische Datenbank für D&D 3.5e Kampftalente aus dem Complete Adventurer (CA).
+ * @exports   COMBAT_FEATS_REGISTRY_CA
+ */
+
 export const COMBAT_FEATS_REGISTRY_CA = {
   "expert_tactician": {
     "id": "expert_tactician",
@@ -197,5 +203,108 @@ export const COMBAT_FEATS_REGISTRY_CA = {
     "normalRaw": "",
     "specialRaw": "A fighter may select Staggering Strike as one of his fighter bonus feats.",
     "appEffect": "Sneak Attacks können Gegner taumelnd machen (Fort DC = Schaden)"
+  },
+  "death_blow": {
+    "id": "death_blow",
+    "nameDe": "Todesstoß",
+    "nameEn": "Death Blow",
+    "category": "combat",
+    "prereqs": [
+      {
+        "type": "feat",
+        "id": "improved_initiative"
+      },
+      {
+        "type": "bab",
+        "value": 2
+      }
+    ],
+    "parent": "improved_initiative",
+    "benefitDe": "Du kannst einen Gnadenstoß (Coup de Grace) als Standard-Aktion statt als Volle Aktion ausführen.",
+    "benefitRaw": "You can perform a coup de grace attack against a helpless defender as a standard action.",
+    "normalRaw": "Performing a coup de grace is a full-round action.",
+    "specialRaw": "Fighter bonus feat.",
+    "appEffect": "Gnadenstoß (Coup de Grace) als Standard-Aktion",
+    "source": "ca"
+  },
+  "deft_strike": {
+    "id": "deft_strike",
+    "nameDe": "Gewandter Schlag",
+    "nameEn": "Deft Strike",
+    "category": "combat",
+    "prereqs": [
+      {
+        "type": "stat",
+        "name": "int",
+        "value": 13
+      },
+      {
+        "type": "feat",
+        "id": "combat_expertise"
+      },
+      {
+        "type": "skill",
+        "skill": "spot",
+        "ranks": 10
+      },
+      {
+        "type": "special",
+        "desc": "Sneak attack"
+      }
+    ],
+    "parent": "combat_expertise",
+    "benefitDe": "Als Standard-Aktion: Entdecke per Entdecken-Wurf die Schwachstelle eines Gegners, um Rüstungs- und natürliche Rüstungsboni bei deinem nächsten Angriff zu ignorieren.",
+    "benefitRaw": "As a standard action, make a Spot check against target's AC. If successful, your next melee attack ignores target's armor and natural armor bonus to AC.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Entdecken-Wurf gegen RK: nächster Nahkampfangriff ignoriert Rüstung & natürliche Rüstung",
+    "source": "ca"
+  },
+  "goad": {
+    "id": "goad",
+    "nameDe": "Aufstacheln",
+    "nameEn": "Goad",
+    "category": "combat",
+    "prereqs": [
+      {
+        "type": "stat",
+        "name": "cha",
+        "value": 13
+      },
+      {
+        "type": "bab",
+        "value": 1
+      }
+    ],
+    "benefitDe": "Als Bewegungsaktion: Stachle einen Gegner in 30 Fuß Entfernung an (Willenswurf SG 10 + 1/2 Stufe + CHA-Mod), sodass er nur dich angreifen kann.",
+    "benefitRaw": "As a move action, you can goad an opponent within 30 ft. into attacking you (Will save DC 10 + 1/2 level + Cha mod).",
+    "normalRaw": "",
+    "specialRaw": "Fighter bonus feat.",
+    "appEffect": "Gegner per Willenswurf anstacheln, nur dich im Nahkampf anzugreifen",
+    "source": "ca"
+  },
+  "leap_attack": {
+    "id": "leap_attack",
+    "nameDe": "Sprungangriff",
+    "nameEn": "Leap Attack",
+    "category": "combat",
+    "prereqs": [
+      {
+        "type": "feat",
+        "id": "power_attack"
+      },
+      {
+        "type": "skill",
+        "skill": "jump",
+        "ranks": 8
+      }
+    ],
+    "parent": "power_attack",
+    "benefitDe": "Wenn du beim Sturmangriff mindestens 10 Fuß weit springst, wird der Bonusschaden durch Heftiger Angriff (Power Attack) um 100% zusätzlich erhöht (100% bei einhändig, 200% bei zweihändig).",
+    "benefitRaw": "You can combine a jump with a charge against an opponent. If you jump at least 10 feet horizontally, your bonus damage from Power Attack is doubled (tripled with a two-handed weapon).",
+    "normalRaw": "",
+    "specialRaw": "Fighter bonus feat.",
+    "appEffect": "Power Attack Bonusschaden beim Sturmsprung verdoppelt (bzw. verdreifacht bei Zweihand)",
+    "source": "ca"
   }
 };

@@ -1,3 +1,9 @@
+/**
+ * @module    feats-magic-ca
+ * @summary   Statische Datenbank für D&D 3.5e Magietalente aus dem Complete Adventurer (CA).
+ * @exports   MAGIC_FEATS_REGISTRY_CA
+ */
+
 export const MAGIC_FEATS_REGISTRY_CA = {
   "ascetic_mage": {
     "id": "ascetic_mage",
@@ -47,5 +53,62 @@ export const MAGIC_FEATS_REGISTRY_CA = {
     "normalRaw": "Constructs and undead are immune to sneak attacks.",
     "specialRaw": "",
     "appEffect": "Opfere Zauberplatz für Sneak Attack gegen Untote & Konstrukte"
+  },
+  "extraordinary_concentration": {
+    "id": "extraordinary_concentration",
+    "nameDe": "Außergewöhnliche Konzentration",
+    "nameEn": "Extraordinary Concentration",
+    "category": "magic",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "concentration",
+        "ranks": 15
+      }
+    ],
+    "benefitDe": "Halte die Konzentration auf einen Zauber per Konzentrationswurf als Bewegungsaktion (SG 15 + Grad) oder schnelle Aktion (SG 25 + Grad) aufrecht.",
+    "benefitRaw": "Make a Concentration check to maintain concentration on a spell as a move action (DC 15 + spell level) or swift action (DC 25 + spell level).",
+    "normalRaw": "Maintaining concentration is a standard action.",
+    "specialRaw": "",
+    "appEffect": "Zauberkonzentration als Bewegungs- oder Schnelle Aktion (SG-Wurf)",
+    "source": "ca"
+  },
+  "extraordinary_spell_aim": {
+    "id": "extraordinary_spell_aim",
+    "nameDe": "Außergewöhnliches Zauberzielen",
+    "nameEn": "Extraordinary Spell Aim",
+    "category": "magic",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "spellcraft",
+        "ranks": 15
+      }
+    ],
+    "benefitDe": "Schließe mit einem erfolgreichen Zauberkunde-Wurf (SG 25 + Zaubergrad) eine Kreatur im Wirkungsbereich eines Flächenzaubers vom Zaubereffekt aus.",
+    "benefitRaw": "You can shape a spell’s area to exclude one creature inside the area (Spellcraft DC 25 + spell level).",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "1 Kreatur im Wirkungsbereich von Flächenzauber verschonen (SG-Wurf)",
+    "source": "ca"
+  },
+  "mobile_spellcasting": {
+    "id": "mobile_spellcasting",
+    "nameDe": "Mobiles Zaubern",
+    "nameEn": "Mobile Spellcasting",
+    "category": "magic",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "concentration",
+        "ranks": 8
+      }
+    ],
+    "benefitDe": "Zaubere und bewege dich in derselben Standard-Aktion durch einen Konzentrationswurf (SG 20 + Zaubergrad).",
+    "benefitRaw": "Make a special Concentration check (DC 20 + spell level) to move up to your speed and cast a spell as a standard action.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Gleichzeitig Zaubern und Bewegen als Standard-Aktion (SG-Wurf)",
+    "source": "ca"
   }
 };

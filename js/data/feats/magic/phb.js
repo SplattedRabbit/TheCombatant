@@ -1,6 +1,6 @@
 /**
  * @module    feats-magic-phb
- * @summary   Statische Datenbank für D&D 3.5e magic Talente (Player's Handbook).
+ * @summary   Statische Datenbank für D&D 3.5e Magietalente aus dem Player's Handbook (PHB).
  * @exports   MAGIC_FEATS_REGISTRY_PHB
  */
 
@@ -264,6 +264,38 @@ export const MAGIC_FEATS_REGISTRY_PHB = {
     "normalRaw": "",
     "specialRaw": "",
     "appEffect": "+3 Zaubergrade Slot-Erhöhung",
+    "source": "phb"
+  },
+  "augment_summoning": {
+    "id": "augment_summoning",
+    "nameDe": "Beschwörung verstärken",
+    "nameEn": "Augment Summoning",
+    "category": "magic",
+    "prereqs": [
+      {
+        "type": "feat",
+        "id": "spell_focus"
+      }
+    ],
+    "parent": "spell_focus",
+    "benefitDe": "Jede von dir mit einem Beschwörungszauber herbeigerufene Kreatur erhält +4 auf Stärke und Konstitution.",
+    "benefitRaw": "Each creature you conjure with any summon spell gains a +4 enhancement bonus to Strength and Constitution for the duration of the spell that summoned it.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "+4 Stärke & +4 Konstitution für beschworene Kreaturen",
+    "source": "phb"
+  },
+  "improved_counterspell": {
+    "id": "improved_counterspell",
+    "nameDe": "Verbessertes Gegenzaubern",
+    "nameEn": "Improved Counterspell",
+    "category": "magic",
+    "prereqs": [],
+    "benefitDe": "Beim Gegenzaubern darfst du jeden Zauber derselben Schule verwenden, der mindestens denselben Zaubergrad besitzt.",
+    "benefitRaw": "When counterspelling, you may use a spell of the same school that is one or more levels higher than the target spell.",
+    "normalRaw": "Without this feat, you must use the exact same spell, or a specifically designed counter.",
+    "specialRaw": "",
+    "appEffect": "Gegenzaubern mit Zauber derselben Schule (gleicher oder höherer Grad)",
     "source": "phb"
   }
 };

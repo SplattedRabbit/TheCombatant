@@ -1,3 +1,9 @@
+/**
+ * @module    feats-general-ca
+ * @summary   Statische Datenbank für D&D 3.5e allgemeine Talente aus dem Complete Adventurer (CA).
+ * @exports   GENERAL_FEATS_REGISTRY_CA
+ */
+
 export const GENERAL_FEATS_REGISTRY_CA = {
   "appraise_magic_value": {
     "id": "appraise_magic_value",
@@ -409,5 +415,367 @@ export const GENERAL_FEATS_REGISTRY_CA = {
     "normalRaw": "Search and Disable Device checks rely on Intelligence.",
     "specialRaw": "",
     "appEffect": "Geschicklichkeits-Modifikator für Search und Disable Device; keine Abzüge für Dunkelheit/Blindheit"
+  },
+  "brachiation": {
+    "id": "brachiation",
+    "nameDe": "Hangeln",
+    "nameEn": "Brachiation",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "climb",
+        "ranks": 4
+      },
+      {
+        "type": "skill",
+        "skill": "jump",
+        "ranks": 4
+      }
+    ],
+    "benefitDe": "Du kannst dich in bewaldeten Gebieten mit voller Grundbewegungsrate durch die Baumkronen fortbewegen.",
+    "benefitRaw": "You can move through wooded areas at your base land speed, ignoring terrain penalties while at least 20 feet above ground.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Volle Bewegungsrate durch Baumkronen (ab 20 Fuß Höhe)",
+    "source": "ca"
+  },
+  "devoted_inquisitor": {
+    "id": "devoted_inquisitor",
+    "nameDe": "Hingebungsvoller Inquisitor",
+    "nameEn": "Devoted Inquisitor",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "special",
+        "desc": "Smite evil"
+      },
+      {
+        "type": "special",
+        "desc": "Sneak attack"
+      }
+    ],
+    "benefitDe": "Kombiniere 'Böses niederstrecken' und 'Hinterhältiger Angriff' in einem Schlag: Das Ziel muss einen Zähigkeitswurf bestehen oder ist 1 Runde lang benommen (dazed).",
+    "benefitRaw": "When you use smite evil and sneak attack together in one strike, the target must make a Fortitude save (DC 10 + 1/2 character level + Cha mod) or be dazed for 1 round.",
+    "normalRaw": "",
+    "specialRaw": "Paladin and rogue levels stack for determining smite evil damage and multiclassing freely.",
+    "appEffect": "Böses niederstrecken + Sneak Attack macht Ziel benommen (Fort-Save)",
+    "source": "ca"
+  },
+  "quick_reconnoiter": {
+    "id": "quick_reconnoiter",
+    "nameDe": "Schnelles Erkunden",
+    "nameEn": "Quick Reconnoiter",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "listen",
+        "ranks": 5
+      },
+      {
+        "type": "skill",
+        "skill": "spot",
+        "ranks": 5
+      }
+    ],
+    "benefitDe": "Führe Lauschen- und Entdecken-Würfe als freie Aktion aus; erhalte +2 Bonus auf Initiative-Würfe.",
+    "benefitRaw": "You can make one Spot check and one Listen check each round as a free action. You also gain a +2 bonus on initiative checks.",
+    "normalRaw": "Spot and Listen checks are move actions or reactions.",
+    "specialRaw": "",
+    "appEffect": "Lauschen & Entdecken als freie Aktion + 2 auf Initiative",
+    "source": "ca"
+  },
+  "obscure_lore": {
+    "id": "obscure_lore",
+    "nameDe": "Obskures Wissen",
+    "nameEn": "Obscure Lore",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "special",
+        "desc": "Bardic music or lore class feature"
+      }
+    ],
+    "benefitDe": "+4 Bonus auf alle Würfe für Bardenwissen oder Legendenkunde.",
+    "benefitRaw": "You gain a +4 insight bonus on bardic knowledge or lore checks.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "+4 auf Bardenwissen / Legendenkunde",
+    "source": "ca"
+  },
+  "disguise_spell": {
+    "id": "disguise_spell",
+    "nameDe": "Zauber tarnen",
+    "nameEn": "Disguise Spell",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "perform",
+        "ranks": 9
+      },
+      {
+        "type": "special",
+        "desc": "Bardic music"
+      }
+    ],
+    "benefitDe": "Tarne verbale und gestische Komponenten eines Zaubers nahtlos als Teil deiner Darbietung (Auftreten-Wurf gegen Zauberkunde/Entdecken).",
+    "benefitRaw": "You can cast spells unobtrusively as part of your performance, requiring observers to beat your Perform check with Spot or Spellcraft.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Zaubern unauffällig in Darbietung integrieren (Auftreten-Gegenwurf)",
+    "source": "ca"
+  },
+  "green_ear": {
+    "id": "green_ear",
+    "nameDe": "Grünes Ohr",
+    "nameEn": "Green Ear",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "perform",
+        "ranks": 10
+      },
+      {
+        "type": "special",
+        "desc": "Bardic music"
+      }
+    ],
+    "benefitDe": "Deine geistesbeeinflussenden Bardenmusik-Effekte können auch Kreaturen des Typs Pflanze beeinflussen.",
+    "benefitRaw": "You can alter any of your mind-affecting bardic music abilities so that they influence plant creatures.",
+    "normalRaw": "Plant creatures are immune to mind-affecting effects.",
+    "specialRaw": "",
+    "appEffect": "Bardenmusik wirkt auch auf Pflanzen",
+    "source": "ca"
+  },
+  "lingering_song": {
+    "id": "lingering_song",
+    "nameDe": "Nachhallendes Lied",
+    "nameEn": "Lingering Song",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "special",
+        "desc": "Bardic music"
+      }
+    ],
+    "benefitDe": "Die Effekte deiner Bardenmusik halten nach dem Ende der Darbietung 1 Minute (10 Runden) statt 5 Runden lang an.",
+    "benefitRaw": "Your bardic music abilities that last after your performance stops now last for 1 minute (10 rounds) instead of 5 rounds.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Bardenmusik hält nach Ende 1 Minute (10 Runden) an",
+    "source": "ca"
+  },
+  "chant_of_fortitude": {
+    "id": "chant_of_fortitude",
+    "nameDe": "Gesang der Standhaftigkeit",
+    "nameEn": "Chant of Fortitude",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "concentration",
+        "ranks": 8
+      },
+      {
+        "type": "skill",
+        "skill": "perform",
+        "ranks": 8
+      },
+      {
+        "type": "special",
+        "desc": "Bardic music"
+      }
+    ],
+    "benefitDe": "Verbrauche Bardenmusik: Verbündete bleiben auch bei negativen Trefferpunkten (bis -9) bei Bewusstsein und handlungsfähig.",
+    "benefitRaw": "You can expend one daily use of bardic music to keep your allies conscious and able to act when reduced to between -1 and -9 hit points.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Verbündete bleiben bei -1 bis -9 TP bei Bewusstsein",
+    "source": "ca"
+  },
+  "ironskin_chant": {
+    "id": "ironskin_chant",
+    "nameDe": "Gesang der Eisenhaut",
+    "nameEn": "Ironskin Chant",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "concentration",
+        "ranks": 12
+      },
+      {
+        "type": "skill",
+        "skill": "perform",
+        "ranks": 12
+      },
+      {
+        "type": "special",
+        "desc": "Bardic music"
+      }
+    ],
+    "benefitDe": "Verbrauche Bardenmusik als Schnelle Aktion: Erhalte Schadensreduktion 5/— bis zum Beginn deines nächsten Zugs.",
+    "benefitRaw": "As a swift action, expend one daily use of bardic music to gain damage reduction 5/— until the start of your next turn.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Schadensreduktion 5/— für 1 Runde per Bardenmusik",
+    "source": "ca"
+  },
+  "lyric_spell": {
+    "id": "lyric_spell",
+    "nameDe": "Lyrischer Zauber",
+    "nameEn": "Lyric Spell",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "perform",
+        "ranks": 9
+      },
+      {
+        "type": "special",
+        "desc": "Bardic music"
+      },
+      {
+        "type": "special",
+        "desc": "Arcane spellcaster level 6th"
+      }
+    ],
+    "benefitDe": "Verbrauche Bardenmusik, um arkane Zauber zu wirken (1 täglicher Einsatz + Zaubergrad an Musik-Einsätzen statt Zauberplatz).",
+    "benefitRaw": "You can expend daily uses of bardic music to cast any prepared or known spell without expending a spell slot (1 use + spell level).",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Bardenmusik-Einsätze zum Wirken von Zaubern nutzen",
+    "source": "ca"
+  },
+  "blindsense_feat": {
+    "id": "blindsense",
+    "nameDe": "Blindsicht",
+    "nameEn": "Blindsense",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "listen",
+        "ranks": 4
+      },
+      {
+        "type": "special",
+        "desc": "Wild shape"
+      }
+    ],
+    "benefitDe": "Verbrauche 1 Gestaltwandel-Einsatz als Schnelle Aktion: Erhalte Blindsicht mit 30 Fuß Reichweite für 1 Minute.",
+    "benefitRaw": "Expend one use of wild shape as a swift action to gain blindsense with a range of 30 feet for 1 minute.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Blindsicht 30 ft. für 1 Minute per Gestaltwandel",
+    "source": "ca"
+  },
+  "climb_like_an_ape": {
+    "id": "climb_like_an_ape",
+    "nameDe": "Klettern wie ein Affe",
+    "nameEn": "Climb Like an Ape",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "special",
+        "desc": "Wild shape"
+      }
+    ],
+    "benefitDe": "Verbrauche 1 Gestaltwandel-Einsatz als Schnelle Aktion: Erhalte Kletter-Bewegungsrate entsprechend deiner halben Landgeschwindigkeit für 1 Minute.",
+    "benefitRaw": "Expend one use of wild shape as a swift action to gain a climb speed equal to one-half your base land speed for 1 minute.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Kletter-Bewegungsrate für 1 Minute per Gestaltwandel",
+    "source": "ca"
+  },
+  "cougars_vision": {
+    "id": "cougars_vision",
+    "nameDe": "Puma-Sicht",
+    "nameEn": "Cougar's Vision",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "spot",
+        "ranks": 2
+      },
+      {
+        "type": "special",
+        "desc": "Wild shape"
+      }
+    ],
+    "benefitDe": "Verbrauche 1 Gestaltwandel-Einsatz als Schnelle Aktion: Erhalte Dämmersicht (Low-Light Vision) für 1 Stunde.",
+    "benefitRaw": "Expend one use of wild shape as a swift action to gain low-light vision for 1 hour.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Dämmersicht für 1 Stunde per Gestaltwandel",
+    "source": "ca"
+  },
+  "hawks_vision": {
+    "id": "hawks_vision",
+    "nameDe": "Falken-Sicht",
+    "nameEn": "Hawk's Vision",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "skill",
+        "skill": "spot",
+        "ranks": 4
+      },
+      {
+        "type": "special",
+        "desc": "Wild shape"
+      }
+    ],
+    "benefitDe": "Verbrauche 1 Gestaltwandel-Einsatz als Schnelle Aktion: Erhalte +8 auf Entdecken-Würfe und halbiere Entfernungs-Mali für 1 Stunde.",
+    "benefitRaw": "Expend one use of wild shape as a swift action to gain a +8 bonus on Spot checks and halve range increment penalties for 1 hour.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "+8 auf Entdecken & halbe Entfernungs-Mali per Gestaltwandel",
+    "source": "ca"
+  },
+  "savage_grapple": {
+    "id": "savage_grapple",
+    "nameDe": "Wildes Ringen",
+    "nameEn": "Savage Grapple",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "special",
+        "desc": "Wild shape"
+      },
+      {
+        "type": "special",
+        "desc": "Sneak attack"
+      }
+    ],
+    "benefitDe": "Füge deinen Hinterhältigen Schaden (Sneak Attack) jedem erfolgreichen Ringen-Schaden in Tiergestalt hinzu.",
+    "benefitRaw": "While in wild shape, you deal sneak attack damage whenever you deal damage with a successful grapple check.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Sneak Attack bei jedem Ringen-Schaden in Tiergestalt",
+    "source": "ca"
+  },
+  "scent_feat": {
+    "id": "scent",
+    "nameDe": "Geruchssinn",
+    "nameEn": "Scent",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "special",
+        "desc": "Wild shape"
+      }
+    ],
+    "benefitDe": "Verbrauche 1 Gestaltwandel-Einsatz als Schnelle Aktion: Erhalte Geruchssinn (Scent) für 1 Stunde.",
+    "benefitRaw": "Expend one use of wild shape as a swift action to gain the scent extraordinary ability for 1 hour.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "Geruchssinn (Scent) für 1 Stunde per Gestaltwandel",
+    "source": "ca"
   }
 };

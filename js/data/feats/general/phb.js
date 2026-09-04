@@ -1,6 +1,6 @@
 /**
  * @module    feats-general-phb
- * @summary   Statische Datenbank für D&D 3.5e general Talente (Player's Handbook).
+ * @summary   Statische Datenbank für D&D 3.5e allgemeine Talente aus dem Player's Handbook (PHB).
  * @exports   GENERAL_FEATS_REGISTRY_PHB
  */
 
@@ -623,6 +623,24 @@ export const GENERAL_FEATS_REGISTRY_PHB = {
     "normalRaw": "",
     "specialRaw": "You can gain this feat multiple times, choosing a different skill each time.",
     "appEffect": "+3 Bonus auf gewählte Fertigkeit",
+    "source": "phb"
+  },
+  "improved_turning": {
+    "id": "improved_turning",
+    "nameDe": "Verbessertes Vertreiben",
+    "nameEn": "Improved Turning",
+    "category": "general",
+    "prereqs": [
+      {
+        "type": "special",
+        "desc": "Ability to turn or rebuke creatures"
+      }
+    ],
+    "benefitDe": "Vertreibe oder unterwerfe Untote, als ob du eine Stufe höher wärst.",
+    "benefitRaw": "You turn or rebuke creatures as if you were one level higher than you actually are.",
+    "normalRaw": "",
+    "specialRaw": "",
+    "appEffect": "+1 effektive Stufe für Untote vertreiben/unterwerfen",
     "source": "phb"
   }
 };
