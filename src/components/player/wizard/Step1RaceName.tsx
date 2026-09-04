@@ -58,8 +58,8 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
 
         {/* Target Prestige Class (Optional) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          <label style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--inkm)', letterSpacing: '0.5px' }}>
-            Target PrC <span style={{ fontSize: '11px', fontWeight: 'normal', color: 'var(--inkl)' }}>(Guidance)</span>
+          <label style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
+            Target Prestigeclass <span style={{ fontSize: '11px', fontWeight: 'normal', color: 'var(--inkl)' }}>(Guidance)</span>
           </label>
           <select
             value={targetPrestigeClass || ''}
