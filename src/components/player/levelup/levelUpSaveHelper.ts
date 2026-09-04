@@ -66,9 +66,14 @@ export function applyLevelUpToActivePC(
 
       const rankInc = isClassSkill ? 1.0 * clickCount : 0.5 * clickCount;
       const curRanks = typeof pc.skills[sKey] === 'object' ? (pc.skills[sKey].ranks || 0) : (Number(pc.skills[sKey]) || 0);
+      const curSpent = typeof pc.skills[sKey] === 'object' && pc.skills[sKey].spent !== undefined
+        ? pc.skills[sKey].spent
+        : (curRanks * (CombatRules.isClassSkill(sKey, pc) ? 1 : 2));
+
       pc.skills[sKey] = {
         ranks: curRanks + rankInc,
-        misc: pc.skills[sKey].misc || 0
+        misc: pc.skills[sKey].misc || 0,
+        spent: curSpent + clickCount
       };
     });
 

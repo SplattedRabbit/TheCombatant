@@ -122,19 +122,20 @@ export const getDraftPCState = (
   }
 
   // Skill ranks up to lvlIdx-1 (accumulated)
-  const skillsAcc: Record<string, { ranks: number, misc: number }> = {};
+  const skillsAcc: Record<string, { ranks: number; misc: number; spent?: number }> = {};
   for (let i = 0; i < lvlIdx; i++) {
     const cfg = levelConfigs[i];
     if (cfg && cfg.skills) {
       Object.entries(cfg.skills).forEach(([sKey, clicks]) => {
         if (!skillsAcc[sKey]) {
-          skillsAcc[sKey] = { ranks: 0, misc: 0 };
+          skillsAcc[sKey] = { ranks: 0, misc: 0, spent: 0 };
         }
         // Each click in class skill = 1.0 rank, cross-class = 0.5 ranks
         const wasClass = CombatRules.CLASS_SKILLS[cfg.classType]?.includes(sKey) || 
                          (sKey.startsWith('knowledge_') && (cfg.classType === 'wizard' || cfg.classType === 'bard'));
         const increment = wasClass ? 1.0 : 0.5;
         skillsAcc[sKey].ranks += (clicks as number) * increment;
+        skillsAcc[sKey].spent = (skillsAcc[sKey].spent || 0) + (clicks as number);
       });
     }
   }
@@ -287,18 +288,19 @@ export const getCompletedDraftPCState = (
   }
 
   // Skill ranks up to lvlIdx (inclusive)
-  const skillsAcc: Record<string, { ranks: number, misc: number }> = {};
+  const skillsAcc: Record<string, { ranks: number; misc: number; spent?: number }> = {};
   for (let i = 0; i <= lvlIdx; i++) {
     const cfg = levelConfigs[i];
     if (cfg && cfg.skills) {
       Object.entries(cfg.skills).forEach(([sKey, clicks]) => {
         if (!skillsAcc[sKey]) {
-          skillsAcc[sKey] = { ranks: 0, misc: 0 };
+          skillsAcc[sKey] = { ranks: 0, misc: 0, spent: 0 };
         }
         const wasClass = CombatRules.CLASS_SKILLS[cfg.classType]?.includes(sKey) || 
                          (sKey.startsWith('knowledge_') && (cfg.classType === 'wizard' || cfg.classType === 'bard'));
         const increment = wasClass ? 1.0 : 0.5;
         skillsAcc[sKey].ranks += (clicks as number) * increment;
+        skillsAcc[sKey].spent = (skillsAcc[sKey].spent || 0) + (clicks as number);
       });
     }
   }

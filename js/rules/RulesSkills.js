@@ -74,10 +74,15 @@ export function calculateSpentSkillPoints(pc) {
   let spent = 0;
   if (pc.skills) {
     for (const key of Object.keys(pc.skills)) {
-      const ranks = parseFloat(pc.skills[key].ranks) || 0;
-      if (ranks > 0) {
-        const isClass = isClassSkill(key, pc);
-        spent += ranks * (isClass ? 1 : 2);
+      const skillObj = pc.skills[key];
+      if (typeof skillObj === 'object' && skillObj !== null && skillObj.spent !== undefined && !isNaN(skillObj.spent)) {
+        spent += parseFloat(skillObj.spent) || 0;
+      } else {
+        const ranks = parseFloat(typeof skillObj === 'object' ? skillObj?.ranks : skillObj) || 0;
+        if (ranks > 0) {
+          const isClass = isClassSkill(key, pc);
+          spent += ranks * (isClass ? 1 : 2);
+        }
       }
     }
   }
