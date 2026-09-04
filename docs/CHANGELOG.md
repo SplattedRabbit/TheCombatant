@@ -3,6 +3,23 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.4.1] - 2026-09-05
+
+### Added
+- **Core, CAd, CS & PHB II Feats Catalog Expansion:**
+  - Integrated over 100 missing feats across Combat, General, and Magic categories from Player's Handbook, Player's Handbook II, Complete Adventurer, and Complete Scoundrel (luck feats excluded).
+- **Class Feature Feats & Slot Mechanics:**
+  - Automated `(Fixed)` slots in Character Creation Wizard and Level-Up Assistant for mandatory class-granted feats (Shadowbane Inquisitor 3, Ranger 1/3, Monk 1, Wizard 1, Duskblade 2, Knight 2, Dragon Shaman 2).
+  - Automated `(Class Choice)` slots for restricted selections (Ranger Combat Styles, Monk Bonus Feats).
+  - Added visual `🛡️ Class Feature` badge in the feat selection compendium.
+- **Skill Point Tracking & UI Guidance:**
+  - Added amber/gold visual highlight (`borderLeft: 3.5px solid #b8860b`) for skills with ranks from previous levels in the creation wizard and level-up dialog.
+  - Universal `spent` points tracking (`pc.skills[id].spent`) across character sheet, wizard, and level-up adapter, preserving cross-class cost investments (2 pts/rank).
+
+### Fixed
+- **Prestige Class Base Skill Lookup:** Added all prestige classes to `CLASS_BASE_SKILLS` in `RulesData.js` and added dynamic fallback to `CLASSES_LIST.find()?.skillBase`.
+- **Prerequisite Validation Hardening (`feats-data.js`):** Support for both `name`/`value` and `skill`/`ranks` formats, preventing `undefined.split()` TypeError. Added dynamic parsing for `special` requirements (`sneak attack +Xd6`, `turn undead`, `bardic music`, `evasion`, etc.).
+
 ## [6.4.0] - 2026-09-03
 
 ### Added
