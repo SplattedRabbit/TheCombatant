@@ -529,6 +529,14 @@ export const CLASS_BASE_SKILLS = {
   ninja:       6,
   scout:       8,
   spellthief:  6,
+  // Prestige Classes
+  mystic_theurge: 2,
+  arcane_trickster: 4,
+  dragon_disciple: 2,
+  assassin: 4,
+  battle_trickster: 4,
+  spellwarp_sniper: 4,
+  shadowbane_inquisitor: 4,
   custom: 2
 };
 
