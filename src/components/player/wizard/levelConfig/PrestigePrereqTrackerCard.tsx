@@ -136,7 +136,7 @@ export const PrestigePrereqTrackerCard: React.FC<PrestigePrereqTrackerCardProps>
           {/* Special requirement text if present */}
           {prereqInfo?.specialText && (
             <div style={{ fontSize: '10.5px', color: 'var(--inkl)', fontStyle: 'italic', marginTop: '2px' }}>
-              ℹ️ Special: {prereqInfo.specialText}
+              Special: {prereqInfo.specialText}
             </div>
           )}
         </div>
