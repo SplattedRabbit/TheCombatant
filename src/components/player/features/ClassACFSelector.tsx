@@ -59,7 +59,7 @@ export const ClassACFSelector: React.FC<ClassACFSelectorProps> = ({ pc, classKey
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 padding: '4px 6px',
-                background: isActive ? 'rgba(139, 26, 26, 0.08)' : 'rgba(255, 255, 255, 0.5)',
+                background: isActive ? 'rgba(139, 26, 26, 0.08)' : 'rgba(200, 169, 110, 0.08)',
                 border: isActive ? '0.5px solid var(--red)' : '0.5px solid var(--pb)',
                 borderRadius: '2px',
                 gap: '6px'

@@ -66,8 +66,9 @@ export const CompanionMiniStatusWidget: React.FC<CompanionMiniStatusWidgetProps>
   return (
     <div
       style={{
-        background: 'rgba(255, 255, 255, 0.65)',
-        border: '0.5px solid var(--pb)',
+        background: 'linear-gradient(180deg, rgba(244, 232, 193, 0.55) 0%, rgba(232, 213, 160, 0.65) 100%)',
+        border: '1px solid var(--pb)',
+        boxShadow: 'inset 0 0 12px rgba(200, 169, 110, 0.15), 0 1px 4px rgba(0, 0, 0, 0.08)',
         borderRadius: '4px',
         padding: '8px 10px',
         display: 'flex',
@@ -101,7 +102,7 @@ export const CompanionMiniStatusWidget: React.FC<CompanionMiniStatusWidgetProps>
             fontWeight: 'bold',
             color: 'var(--red)',
             borderColor: 'var(--pb)',
-            background: 'rgba(200, 169, 110, 0.1)',
+            background: 'rgba(200, 169, 110, 0.18)',
           }}
           title="Open full companion sheet"
         >

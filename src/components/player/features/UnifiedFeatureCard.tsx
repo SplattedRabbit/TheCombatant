@@ -33,9 +33,9 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
     <div
       onClick={onSelect}
       style={{
-        background: isSelected ? 'rgba(200, 169, 110, 0.15)' : 'rgba(255, 255, 255, 0.5)',
-        border: isSelected ? '1px solid var(--red)' : '0.5px solid rgba(200, 169, 110, 0.35)',
-        boxShadow: isSelected ? '0 1px 4px rgba(139, 26, 26, 0.15)' : 'none',
+        background: isSelected ? 'rgba(200, 169, 110, 0.28)' : 'rgba(200, 169, 110, 0.08)',
+        border: isSelected ? '1px solid var(--red)' : '0.5px solid rgba(200, 169, 110, 0.45)',
+        boxShadow: isSelected ? '0 1px 4px rgba(139, 26, 26, 0.2)' : 'none',
         borderRadius: '3px',
         padding: '5px 8px',
         cursor: 'pointer',
@@ -44,6 +44,12 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
         gap: '3px',
         transition: 'all 0.12s ease',
         userSelect: 'none',
+      }}
+      onMouseEnter={(e) => {
+        if (!isSelected) e.currentTarget.style.background = 'rgba(200, 169, 110, 0.16)';
+      }}
+      onMouseLeave={(e) => {
+        if (!isSelected) e.currentTarget.style.background = 'rgba(200, 169, 110, 0.08)';
       }}
     >
       {/* Top Header: Title, Source Badge, and Category Badge */}
@@ -71,8 +77,8 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
               fontSize: '7.5px',
               fontFamily: 'var(--font-title)',
               fontWeight: 'bold',
-              background: 'rgba(0,0,0,0.05)',
-              border: '0.5px solid rgba(0,0,0,0.1)',
+              background: 'rgba(200, 169, 110, 0.15)',
+              border: '0.5px solid rgba(200, 169, 110, 0.35)',
               padding: '1px 4px',
               borderRadius: '2px',
               color: 'var(--inkm)',

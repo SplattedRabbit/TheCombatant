@@ -49,6 +49,9 @@ export const FeaturesFilterBar: React.FC<FeaturesFilterBarProps> = ({
               fontSize: '10px',
               padding: '2px 22px 2px 6px',
               boxSizing: 'border-box',
+              background: 'rgba(200, 169, 110, 0.12)',
+              border: '0.5px solid var(--pb)',
+              color: 'var(--ink)',
             }}
           />
           {searchQuery && (
@@ -95,13 +98,16 @@ export const FeaturesFilterBar: React.FC<FeaturesFilterBarProps> = ({
                   alignItems: 'center',
                   gap: '3px',
                   borderRadius: '2px',
-                  background: isSelected ? undefined : 'rgba(200, 169, 110, 0.08)',
+                  fontFamily: 'var(--font-title)',
+                  fontWeight: 'bold',
+                  background: isSelected ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.1)',
                   borderColor: isSelected ? 'var(--red)' : 'var(--pb)',
+                  color: isSelected ? 'white' : 'var(--inkm)',
                 }}
               >
                 <span>{opt.icon}</span>
                 <span>{opt.label}</span>
-                <span style={{ fontSize: '7px', opacity: 0.8 }}>({count})</span>
+                <span style={{ fontSize: '7.5px', opacity: 0.85 }}>({count})</span>
               </button>
             );
           })}

@@ -45,9 +45,9 @@ export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({ feat
   return (
     <div
       style={{
-        background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(250, 246, 238, 0.95) 100%)',
-        border: '0.5px solid var(--pb)',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.05)',
+        background: 'linear-gradient(180deg, rgba(244, 232, 193, 0.55) 0%, rgba(232, 213, 160, 0.65) 100%)',
+        border: '1px solid var(--pb)',
+        boxShadow: 'inset 0 0 16px rgba(200, 169, 110, 0.2), 0 2px 8px rgba(0, 0, 0, 0.12)',
         borderRadius: '4px',
         padding: '10px 12px',
         display: 'flex',

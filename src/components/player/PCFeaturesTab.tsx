@@ -286,7 +286,7 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
                     color: 'var(--inkl)',
                     fontSize: '10px',
                     fontStyle: 'italic',
-                    background: 'rgba(0,0,0,0.02)',
+                    background: 'rgba(200, 169, 110, 0.08)',
                     border: '0.5px dashed var(--pb)',
                     borderRadius: '3px',
                   }}

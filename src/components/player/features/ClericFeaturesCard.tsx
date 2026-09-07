@@ -135,7 +135,7 @@ export const ClericFeaturesCard: React.FC<ClericFeaturesCardProps> = ({ pc, leve
         <div className="class-card-body" style={{ display: 'flex', flexDirection: 'column', padding: '6px', width: '100%', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)', boxSizing: 'border-box' }}>
           
           {/* 1. DEITY & DOMAIN SECTION */}
-          <div style={{ background: 'rgba(255, 255, 255, 0.3)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '3px', padding: '6px', marginBottom: '6px' }}>
+          <div style={{ background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid rgba(200, 169, 110, 0.3)', borderRadius: '3px', padding: '6px', marginBottom: '6px' }}>
             <div style={{ fontFamily: 'var(--font-title)', fontSize: '8.5px', color: 'var(--red)', fontWeight: 'bold', borderBottom: '0.5px solid rgba(200,169,110,0.2)', paddingBottom: '2px', marginBottom: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>⛪ Deity &amp; Divine Domains</span>
               {!isAlignmentCompliant && (
