@@ -145,12 +145,12 @@ export function addPCFeat(featId, option = '') {
     if (hasFeat) {
       const isStackable = featDef.hasOption || (featDef.specialRaw && featDef.specialRaw.toLowerCase().includes('multiple times'));
       if (!isStackable) {
-        return { success: false, error: `Das Talent "${featDef.nameDe}" wurde bereits erlernt und kann nicht mehrfach gewählt werden.` };
+        return { success: false, error: `The feat "${featDef.name || featDef.nameEn}" has already been selected and cannot be chosen multiple times.` };
       }
       
       const hasExactOption = pc.feats.some(f => f.id === featId && f.option === option);
       if (hasExactOption) {
-        return { success: false, error: `Das Talent "${featDef.nameDe} (${option})" wurde bereits erlernt.` };
+        return { success: false, error: `The feat "${featDef.name || featDef.nameEn} (${option})" has already been selected.` };
       }
     }
   }
@@ -275,27 +275,27 @@ export function addPCSkillTrick(trickId, isBonus = false) {
   });
 
   if (alreadyLearned) {
-    return { success: false, error: `Der Skill Trick "${trickDef.nameDe}" wurde bereits erlernt.` };
+    return { success: false, error: `The skill trick "${trickDef.name || trickDef.nameEn}" has already been learned.` };
   }
 
   if (!isBonus) {
     const limit = CombatRules.getMaxSkillTricksLimit(pc);
     const nonBonusCount = pc.skillTricks.filter(t => typeof t === 'object' ? !t.isBonus : true).length;
     if (nonBonusCount >= limit) {
-      return { success: false, error: `Maximale Anzahl an erlernbaren Skill Tricks (${limit}) erreicht.` };
+      return { success: false, error: `Maximum limit of learnable skill tricks (${limit}) reached.` };
     }
 
     const spent = CombatRules.calculateSpentSkillPoints(pc);
     const total = CombatRules.calculateTotalSkillPoints(pc);
     if (spent + 2 > total) {
-      return { success: false, error: `Nicht genügend Fertigkeitspunkte. 2 SP benötigt.` };
+      return { success: false, error: `Not enough skill points. 2 SP required.` };
     }
   }
 
   const { met, details } = CombatRules.checkSkillTrickPrerequisites(trickId, pc);
   if (!met) {
     const unmetList = details.filter(d => !d.met).map(d => d.desc).join('\n• ');
-    return { success: false, error: `Voraussetzungen nicht erfüllt:\n• ${unmetList}` };
+    return { success: false, error: `Prerequisites not met:\n• ${unmetList}` };
   }
 
   updatePCBatch(pc => {

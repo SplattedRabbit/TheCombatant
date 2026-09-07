@@ -263,15 +263,17 @@ export function checkPrerequisites(feat, pc) {
       prMet = maxCL >= pr.value;
       desc = `Caster Level ${pr.value} (Current: ${maxCL})`;
     } else if (pr.type === 'skill') {
+      const skillKey = pr.name || pr.skill;
+      const reqRanks = pr.value !== undefined ? pr.value : (pr.ranks || 0);
       let ranks = 0;
       if (typeof pc.getSkillRanks === 'function') {
-        ranks = pc.getSkillRanks(pr.name);
-      } else if (pc.skills && pc.skills[pr.name]) {
-        ranks = typeof pc.skills[pr.name] === 'object' ? (parseFloat(pc.skills[pr.name].ranks) || 0) : (parseFloat(pc.skills[pr.name]) || 0);
+        ranks = pc.getSkillRanks(skillKey);
+      } else if (pc.skills && pc.skills[skillKey]) {
+        ranks = typeof pc.skills[skillKey] === 'object' ? (parseFloat(pc.skills[skillKey].ranks) || 0) : (parseFloat(pc.skills[skillKey]) || 0);
       }
-      prMet = ranks >= pr.value;
-      const cleanSkill = SKILL_NAMES_MAP[pr.name] || pr.name.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-      desc = `${cleanSkill} ${pr.value} ranks (Current: ${ranks})`;
+      prMet = ranks >= reqRanks;
+      const cleanSkill = (skillKey && SKILL_NAMES_MAP[skillKey]) || (skillKey ? skillKey.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : 'Skill');
+      desc = `${cleanSkill} ${reqRanks} ranks (Current: ${ranks})`;
     } else if (pr.type === 'sneak_attack') {
       let saDice = 0;
       if (typeof pc.getSneakAttackDiceCount === 'function') {

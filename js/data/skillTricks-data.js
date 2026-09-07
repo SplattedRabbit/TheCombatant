@@ -479,3 +479,13 @@ export const SKILL_TRICKS_REGISTRY = {
     benefitEn: 'Leap horizontally from a wall as if you had a running start.'
   }
 };
+
+// Normalize all skill tricks with canonical English properties (RAW)
+Object.entries(SKILL_TRICKS_REGISTRY).forEach(([k, trick]) => {
+  trick.id = trick.id || trick.key || k;
+  trick.key = trick.key || trick.id;
+  trick.name = trick.nameEn || trick.nameDe || trick.name || k;
+  trick.benefit = trick.benefitEn || trick.benefitDe || trick.benefit || '';
+  trick.description = trick.description || trick.benefit;
+  trick.source = trick.source || 'cs';
+});

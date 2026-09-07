@@ -40,10 +40,10 @@ VITE_SUPABASE_ANON_KEY=<your-anon-key>
 |---|---|---|
 | **Dev Server** | `npm run dev` | Starts Vite dev server with hot module reloading (HMR) |
 | **Typecheck** | `npm run typecheck` | Validates TypeScript types (`tsc --noEmit`) |
-| **Core Tests** | `npm run test` | Executes all 304 core Node test runner suites |
+| **Core Tests** | `npm run test` | Executes all 314 core Node test runner suites |
 | **Single Test** | `node --import ./Tests/setup.js --test Tests/<file>.test.js` | Fast execution for a single test file during feature work |
-| **UI Tests** | `npm run test:ui` | Runs all 14 Vitest + React Testing Library component tests |
-| **All Tests** | `npm run test:all` | Executes both Core Node tests and Vitest UI tests |
+| **UI Tests** | `npm run test:ui` | Runs all 34 Vitest + React Testing Library component tests |
+| **All Tests** | `npm run test:all` | Executes both Core Node tests and Vitest UI tests (348 total) |
 | **Production Build** | `npm run build` | Compiles Vite production bundle and updates Service Worker cache |
 
 > [!IMPORTANT]

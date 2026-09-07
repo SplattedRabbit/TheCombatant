@@ -74,7 +74,7 @@ export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
             style={{ fontSize: '7.5px', padding: '0 2px', height: '16px', flex: 1.2, cursor: 'pointer' }}
           >
             {Object.values(ARMOR_REGISTRY).map((def: any) => (
-              <option key={def.key} value={def.key}>{def.nameEn || def.nameDe}</option>
+              <option key={def.key} value={def.key}>{def.nameEn || def.name || def.nameDe}</option>
             ))}
           </select>
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flex: 0.8 }}>

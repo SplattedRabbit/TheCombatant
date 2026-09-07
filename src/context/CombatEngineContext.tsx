@@ -46,9 +46,6 @@ interface ProviderProps {
 
 export function CombatEngineProvider({ children }: ProviderProps) {
   const [isReady, setIsReady] = useState(false);
-  const [getStateRef, setGetStateRef] = useState<(() => any) | null>(null);
-  const [getActivePCRef, setGetActivePCRef] = useState<(() => any) | null>(null);
-  const [stateEventsRef, setStateEventsRef] = useState<CombatEventBus | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -75,12 +72,9 @@ export function CombatEngineProvider({ children }: ProviderProps) {
           CombatState.setRole('choice');
         }
 
-        if (!mounted) return;
-
-        setGetStateRef(() => getState);
-        setGetActivePCRef(() => getActivePC);
-        setStateEventsRef(StateEvents);
-        setIsReady(true);
+        if (mounted) {
+          setIsReady(true);
+        }
       } catch (err) {
         logger.error('[CombatEngineContext] Fehler beim Engine-Bootstrap:', err);
       }
@@ -104,9 +98,9 @@ export function CombatEngineProvider({ children }: ProviderProps) {
     <CombatEngineContext.Provider
       value={{
         isReady,
-        getState: getStateRef,
-        getActivePC: getActivePCRef,
-        StateEvents: stateEventsRef,
+        getState: () => getState(),
+        getActivePC: () => getActivePC(),
+        StateEvents,
       }}
     >
       {children}

@@ -124,9 +124,9 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
                 <div 
                   key={`${idx}-${fIdx}`} 
                   style={{ padding: '3px 8px', background: 'rgba(139,26,26,0.06)', border: '1px solid var(--pb)', borderRadius: '3px', fontSize: '11px' }}
-                  title={feat.benefitRaw || feat.benefitDe}
+                  title={feat.benefitRaw || feat.benefit || feat.benefitDe}
                 >
-                  {feat.nameEn || feat.nameDe}
+                  {feat.nameEn || feat.name || feat.nameDe}
                 </div>
               );
             }) : []

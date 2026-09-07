@@ -24,14 +24,14 @@ export const SkillTricksSubPanel: React.FC<SkillTricksSubPanelProps> = ({ pc }) 
   const filteredTricks = useMemo(() => {
     return Object.values(SKILL_TRICKS_REGISTRY).filter((trick: any) => {
       const q = tricksSearchQuery.toLowerCase().trim();
+      const name = trick.nameEn || trick.name || trick.nameDe || '';
       const matchesQuery =
-        trick.nameDe.toLowerCase().includes(q) ||
-        trick.nameEn.toLowerCase().includes(q) ||
+        name.toLowerCase().includes(q) ||
         trick.key.includes(q);
       const matchesCategory =
         tricksFilterCategory === 'all' || trick.category === tricksFilterCategory;
       return matchesQuery && matchesCategory;
-    }).sort((a: any, b: any) => (a.nameEn || a.nameDe).localeCompare(b.nameEn || b.nameDe));
+    }).sort((a: any, b: any) => (a.nameEn || a.name || a.nameDe || '').localeCompare(b.nameEn || b.name || b.nameDe || ''));
   }, [tricksSearchQuery, tricksFilterCategory]);
 
   return (
@@ -115,7 +115,7 @@ export const SkillTricksSubPanel: React.FC<SkillTricksSubPanelProps> = ({ pc }) 
                   onClick={() => setSelectedTrick({ ...trickDef, isLearned: true, isBonus })}
                 >
                   <span style={{ fontWeight: 'bold', color: '#245e28' }}>
-                    {trickDef.nameEn || trickDef.nameDe}
+                    {trickDef.nameEn || trickDef.name || trickDef.nameDe}
                   </span>
                   {isBonus && (
                     <span style={{ fontSize: '6.5px', color: '#2e7d32', fontWeight: 'bold' }}>
@@ -277,7 +277,7 @@ export const SkillTricksSubPanel: React.FC<SkillTricksSubPanelProps> = ({ pc }) 
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  {trick.nameEn || trick.nameDe}
+                  {trick.nameEn || trick.name || trick.nameDe}
                 </span>
                 <span style={{ fontSize: '6.5px', color: met || isLearned ? 'var(--inkm)' : 'var(--inkl)' }}>
                   {trick.category.toUpperCase()}

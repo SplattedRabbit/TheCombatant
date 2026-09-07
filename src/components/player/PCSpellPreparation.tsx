@@ -100,7 +100,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
             "Spell Cast! ✨",
             `<div style="font-family:var(--font-body); font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
               <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:var(--font-title); color: var(--red); font-size: 11px;">
-                ${pc.name} casts prepared spell: ${spell.nameEn || spell.nameDe}${metaSuffix}!
+                ${pc.name} casts prepared spell: ${spell.name || spell.nameEn}${metaSuffix}!
               </div>
               • <strong>School:</strong> ${spell.school}<br>
               • <strong>Effective Level:</strong> Level ${finalLevel} (Base ${spell.level})<br>
@@ -303,7 +303,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
                     onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
                     style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                   >
-                    📜 {p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
+                    📜 {p.spell.name || p.spell.nameEn} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
                   </span>
                   <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                     {p.isUsed ? (
@@ -354,7 +354,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
                     onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
                     style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                   >
-                    ⭐ 📜 {p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
+                    ⭐ 📜 {p.spell.name || p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
                   </span>
                   <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                     {p.isUsed ? (
@@ -405,7 +405,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
                     onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
                     style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                   >
-                    ☀️ 📜 {p.spell.nameEn || p.spell.nameDe} <span style={{ fontSize: '7.5px', color: '#8b1a1a', fontWeight: 'bold' }}>[D]</span> {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
+                    ☀️ 📜 {p.spell.name || p.spell.nameEn || p.spell.nameDe} <span style={{ fontSize: '7.5px', color: '#8b1a1a', fontWeight: 'bold' }}>[D]</span> {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
                   </span>
                   <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                     {p.isUsed ? (
@@ -455,7 +455,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
                   onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
                   style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
                 >
-                  ⚠️ 📜 {p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
+                  ⚠️ 📜 {p.spell.name || p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
                 </span>
                 <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
                   {p.isUsed ? (

@@ -1,13 +1,13 @@
 /**
- * @module    feats-combat-phb2
- * @summary   Statische Datenbank für D&D 3.5e Kampftalente aus dem Player's Handbook II (PHB2).
+ * @module    phb2
+ * @summary   Standardized D&D 3.5e RAW English feats registry.
  * @exports   COMBAT_FEATS_REGISTRY_PHB2
  */
 
 export const COMBAT_FEATS_REGISTRY_PHB2 = {
   "acrobatic_strike": {
     "id": "acrobatic_strike",
-    "nameDe": "Akrobatischer Schlag",
+    "nameDe": "Acrobatic Strike",
     "nameEn": "Acrobatic Strike",
     "category": "combat",
     "source": "phb2",
@@ -17,15 +17,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "desc": "Tumble 12 ranks"
       }
     ],
-    "benefitDe": "Gewährt +6 Bonus auf den nächsten Angriffswurf nach einem erfolgreichen Akrobatik-Wurf (Tumble) durch das Feld des Gegners.",
+    "benefitDe": "If you succeed on a Tumble check to move through an enemy's threatened area or space, you gain a +6 bonus on your next single melee attack roll against that enemy.",
     "benefitRaw": "If you succeed on a Tumble check to move through an enemy's threatened area or space, you gain a +6 bonus on your next single melee attack roll against that enemy.",
     "normalRaw": "",
     "specialRaw": "A fighter may select Acrobatic Strike as one of his fighter bonus feats.",
-    "appEffect": "+6 Angriffswurf nach erfolgreichem Tumble durch Gegnerfeld"
+    "appEffect": "If you succeed on a Tumble check to move through an enemy's threatened area or space, you gain a +6 bonus on y...",
+    "name": "Acrobatic Strike",
+    "benefit": "If you succeed on a Tumble check to move through an enemy's threatened area or space, you gain a +6 bonus on your next single melee attack roll against that enemy.",
+    "benefitEn": "If you succeed on a Tumble check to move through an enemy's threatened area or space, you gain a +6 bonus on your next single melee attack roll against that enemy."
   },
   "bounding_assault": {
     "id": "bounding_assault",
-    "nameDe": "Stürmischer Sturmangriff",
+    "nameDe": "Bounding Assault",
     "nameEn": "Bounding Assault",
     "category": "combat",
     "source": "phb2",
@@ -45,15 +48,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 12
       }
     ],
-    "benefitDe": "Führe zwei Angriffe während eines Ausfallschritts (Spring Attack) durch, unter Aufteilung der Bewegung.",
+    "benefitDe": "When using the Spring Attack feat, you can designate two foes and make a single melee attack against each. Your movement resolves normally between or after the attacks.",
     "benefitRaw": "When using the Spring Attack feat, you can designate two foes and make a single melee attack against each. Your movement resolves normally between or after the attacks.",
     "normalRaw": "Spring Attack allows only a single attack.",
     "specialRaw": "A fighter may select Bounding Assault as one of his fighter bonus feats.",
-    "appEffect": "Zwei Angriffe während Ausfallschritt (Spring Attack)"
+    "appEffect": "When using the Spring Attack feat, you can designate two foes and make a single melee attack against each",
+    "name": "Bounding Assault",
+    "benefit": "When using the Spring Attack feat, you can designate two foes and make a single melee attack against each. Your movement resolves normally between or after the attacks.",
+    "benefitEn": "When using the Spring Attack feat, you can designate two foes and make a single melee attack against each. Your movement resolves normally between or after the attacks."
   },
   "brutal_strike": {
     "id": "brutal_strike",
-    "nameDe": "Brutaler Schlag",
+    "nameDe": "Brutal Strike",
     "nameEn": "Brutal Strike",
     "category": "combat",
     "source": "phb2",
@@ -73,15 +79,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 6
       }
     ],
-    "benefitDe": "Ziehe Angriffsbonus für Power Attack ab; bei Treffer mit einer Wuchtwaffe muss der Gegner einen ZÄ-Rettungswurf machen oder ist für 1 Runde benommen.",
+    "benefitDe": "When using Power Attack with a bludgeoning weapon, you can choose to make a brutal strike. If you hit, target must make a Fortitude save (DC 10 + Power Attack damage added) or be sickened for 1 round.",
     "benefitRaw": "When using Power Attack with a bludgeoning weapon, you can choose to make a brutal strike. If you hit, target must make a Fortitude save (DC 10 + Power Attack damage added) or be sickened for 1 round.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Schaltet Wuchtwaffen-Zähigkeitsprüfung auf Benommenheit/Sickness frei"
+    "appEffect": "When using Power Attack with a bludgeoning weapon, you can choose to make a brutal strike",
+    "name": "Brutal Strike",
+    "benefit": "When using Power Attack with a bludgeoning weapon, you can choose to make a brutal strike. If you hit, target must make a Fortitude save (DC 10 + Power Attack damage added) or be sickened for 1 round.",
+    "benefitEn": "When using Power Attack with a bludgeoning weapon, you can choose to make a brutal strike. If you hit, target must make a Fortitude save (DC 10 + Power Attack damage added) or be sickened for 1 round."
   },
   "rapid_blitz": {
     "id": "rapid_blitz",
-    "nameDe": "Blitzangriff",
+    "nameDe": "Rapid Blitz",
     "nameEn": "Rapid Blitz",
     "category": "combat",
     "source": "phb2",
@@ -101,15 +110,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 18
       }
     ],
-    "benefitDe": "Führe drei Angriffe während eines Ausfallschritts (Spring Attack) gegen drei verschiedene Gegner durch.",
+    "benefitDe": "When using the Spring Attack feat, you can designate three foes and make a single melee attack against each, moving normally between them.",
     "benefitRaw": "When using the Spring Attack feat, you can designate three foes and make a single melee attack against each, moving normally between them.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Drei Angriffe während Ausfallschritt (Spring Attack)"
+    "appEffect": "When using the Spring Attack feat, you can designate three foes and make a single melee attack against each, m...",
+    "name": "Rapid Blitz",
+    "benefit": "When using the Spring Attack feat, you can designate three foes and make a single melee attack against each, moving normally between them.",
+    "benefitEn": "When using the Spring Attack feat, you can designate three foes and make a single melee attack against each, moving normally between them."
   },
   "crossbow_sniper": {
     "id": "crossbow_sniper",
-    "nameDe": "Armbrust-Scharfschütze",
+    "nameDe": "Crossbow Sniper",
     "nameEn": "Crossbow Sniper",
     "category": "combat",
     "source": "phb2",
@@ -123,15 +135,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 1
       }
     ],
-    "benefitDe": "Addiere die Hälfte deines Geschicklichkeitsbonus zum Schaden deiner Armbrust. Deine Reichweite für Sneak Attack / Skirmish mit Armbrüsten steigt auf 60 ft.",
+    "benefitDe": "Apply half your Dexterity bonus on damage rolls with selected crossbow. Ranged sneak attacks can be made out to 60 feet.",
     "benefitRaw": "Apply half your Dexterity bonus on damage rolls with selected crossbow. Ranged sneak attacks can be made out to 60 feet.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+1/2 Ges-Mod auf Armbrustschaden; Sneak Attack bis 60 Fuß"
+    "appEffect": "Apply half your Dexterity bonus on damage rolls with selected crossbow",
+    "name": "Crossbow Sniper",
+    "benefit": "Apply half your Dexterity bonus on damage rolls with selected crossbow. Ranged sneak attacks can be made out to 60 feet.",
+    "benefitEn": "Apply half your Dexterity bonus on damage rolls with selected crossbow. Ranged sneak attacks can be made out to 60 feet."
   },
   "deadeye_shot": {
     "id": "deadeye_shot",
-    "nameDe": "Präzisions-Fernschuss",
+    "nameDe": "Deadeye Shot",
     "nameEn": "Deadeye Shot",
     "category": "combat",
     "source": "phb2",
@@ -150,15 +165,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 4
       }
     ],
-    "benefitDe": "Bereite eine Fernkampfaktion vor. Wenn dein Verbündeter denselben Gegner im Nahkampf trifft, verliert dieser seinen Geschicklichkeitsbonus auf RK gegen deinen Fernkampfangriff.",
+    "benefitDe": "By readying a ranged attack against a foe adjacent to an ally, you deny that foe their Dex bonus to AC against your attack if the ally hits them.",
     "benefitRaw": "By readying a ranged attack against a foe adjacent to an ally, you deny that foe their Dex bonus to AC against your attack if the ally hits them.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Bereiteter Schuss nimmt Geschicklichkeitsbonus auf RK bei Treffer von Verbündetem"
+    "appEffect": "By readying a ranged attack against a foe adjacent to an ally, you deny that foe their Dex bonus to AC against...",
+    "name": "Deadeye Shot",
+    "benefit": "By readying a ranged attack against a foe adjacent to an ally, you deny that foe their Dex bonus to AC against your attack if the ally hits them.",
+    "benefitEn": "By readying a ranged attack against a foe adjacent to an ally, you deny that foe their Dex bonus to AC against your attack if the ally hits them."
   },
   "defensive_sweep": {
     "id": "defensive_sweep",
-    "nameDe": "Defensiver Rundumfeger",
+    "nameDe": "Defensive Sweep",
     "nameEn": "Defensive Sweep",
     "category": "combat",
     "source": "phb2",
@@ -168,15 +186,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 15
       }
     ],
-    "benefitDe": "Jeder Gegner, der seine Runde in einem von dir bedrohten Feld beginnt und sich in seinem Zug nicht wegbewegt, provoziert einen Gelegenheitsangriff von dir.",
+    "benefitDe": "Foes starting their turn adjacent to you provoke an attack of opportunity if they do not move during their turn.",
     "benefitRaw": "Foes starting their turn adjacent to you provoke an attack of opportunity if they do not move during their turn.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Gegner provokieren AoO, falls sie im bedrohten Feld stehenbleiben"
+    "appEffect": "Foes starting their turn adjacent to you provoke an attack of opportunity if they do not move during their turn.",
+    "name": "Defensive Sweep",
+    "benefit": "Foes starting their turn adjacent to you provoke an attack of opportunity if they do not move during their turn.",
+    "benefitEn": "Foes starting their turn adjacent to you provoke an attack of opportunity if they do not move during their turn."
   },
   "melee_weapon_mastery": {
     "id": "melee_weapon_mastery",
-    "nameDe": "Nahkampfwaffen-Meisterschaft",
+    "nameDe": "Melee Weapon Mastery",
     "nameEn": "Melee Weapon Mastery",
     "category": "combat",
     "source": "phb2",
@@ -195,15 +216,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 8
       }
     ],
-    "benefitDe": "Wähle eine Schadensart (Wucht, Stich, Hieb). Du erhältst +1 auf Angriffswürfe und +2 auf Schadenswürfe mit allen Nahkampfwaffen dieser Schadensart.",
+    "benefitDe": "Select bludgeoning, piercing, or slashing. You gain +1 on attacks and +2 on damage with all melee weapons of that type.",
     "benefitRaw": "Select bludgeoning, piercing, or slashing. You gain +1 on attacks and +2 on damage with all melee weapons of that type.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+1 Angriff / +2 Schaden mit gewählter Nahkampfwaffen-Schadensart"
+    "appEffect": "Select bludgeoning, piercing, or slashing",
+    "name": "Melee Weapon Mastery",
+    "benefit": "Select bludgeoning, piercing, or slashing. You gain +1 on attacks and +2 on damage with all melee weapons of that type.",
+    "benefitEn": "Select bludgeoning, piercing, or slashing. You gain +1 on attacks and +2 on damage with all melee weapons of that type."
   },
   "robilars_gambit": {
     "id": "robilars_gambit",
-    "nameDe": "Robilars Gambit",
+    "nameDe": "Robilar's Gambit",
     "nameEn": "Robilar's Gambit",
     "category": "combat",
     "source": "phb2",
@@ -217,15 +241,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 12
       }
     ],
-    "benefitDe": "Gegner erhalten +4 Bonus auf Angriffe und Schaden gegen dich, aber jeder ihrer Angriffe provoziert sofort einen Gelegenheitsangriff von dir (nachdem ihr Angriff abgehandelt wurde).",
+    "benefitDe": "Foes gain +4 bonus on attack and damage rolls against you, but each attack they resolve against you provokes an attack of opportunity from you.",
     "benefitRaw": "Foes gain +4 bonus on attack and damage rolls against you, but each attack they resolve against you provokes an attack of opportunity from you.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Gegner erhalten +4 Ang/Schd; provozieren dafür AoO bei jedem Angriff"
+    "appEffect": "Foes gain +4 bonus on attack and damage rolls against you, but each attack they resolve against you provokes a...",
+    "name": "Robilar's Gambit",
+    "benefit": "Foes gain +4 bonus on attack and damage rolls against you, but each attack they resolve against you provokes an attack of opportunity from you.",
+    "benefitEn": "Foes gain +4 bonus on attack and damage rolls against you, but each attack they resolve against you provokes an attack of opportunity from you."
   },
   "shield_specialization": {
     "id": "shield_specialization",
-    "nameDe": "Schildspezialisierung",
+    "nameDe": "Shield Specialization",
     "nameEn": "Shield Specialization",
     "category": "combat",
     "source": "phb2",
@@ -235,15 +262,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "id": "shield_prof"
       }
     ],
-    "benefitDe": "Erhöht den Rüstungsklassen-Schildbonus deines gewählten Schildes um +1.",
+    "benefitDe": "Increase the shield bonus to AC granted by your chosen type of shield by 1.",
     "benefitRaw": "Increase the shield bonus to AC granted by your chosen type of shield by 1.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+1 Schildbonus auf RK"
+    "appEffect": "Increase the shield bonus to AC granted by your chosen type of shield by 1.",
+    "name": "Shield Specialization",
+    "benefit": "Increase the shield bonus to AC granted by your chosen type of shield by 1.",
+    "benefitEn": "Increase the shield bonus to AC granted by your chosen type of shield by 1."
   },
   "shield_ward": {
     "id": "shield_ward",
-    "nameDe": "Schildwall-Schutz",
+    "nameDe": "Shield Ward",
     "nameEn": "Shield Ward",
     "category": "combat",
     "source": "phb2",
@@ -254,15 +284,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "id": "shield_specialization"
       }
     ],
-    "benefitDe": "Addiere deinen Schildbonus auf deine Touch AC und auf alle Würfe zur Abwehr von Anstürmen, Entwaffnen, Ringen, Überrennen und ZU-Boden-Werfen.",
+    "benefitDe": "Apply shield bonus to touch AC and to resist bull rush, disarm, grapple, overrun, and trip checks.",
     "benefitRaw": "Apply shield bonus to touch AC and to resist bull rush, disarm, grapple, overrun, and trip checks.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Schildbonus wirkt auf Touch AC und Spezial-Kampfmanöver-Abwehr"
+    "appEffect": "Apply shield bonus to touch AC and to resist bull rush, disarm, grapple, overrun, and trip checks.",
+    "name": "Shield Ward",
+    "benefit": "Apply shield bonus to touch AC and to resist bull rush, disarm, grapple, overrun, and trip checks.",
+    "benefitEn": "Apply shield bonus to touch AC and to resist bull rush, disarm, grapple, overrun, and trip checks."
   },
   "two_weapon_pounce": {
     "id": "two_weapon_pounce",
-    "nameDe": "Zwei-Waffen-Sturzangriff",
+    "nameDe": "Two-Weapon Pounce",
     "nameEn": "Two-Weapon Pounce",
     "category": "combat",
     "source": "phb2",
@@ -282,15 +315,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 6
       }
     ],
-    "benefitDe": "Führe beim Beenden eines Sturmangriffs (Charge) einen Angriff mit der Haupt- und Schildhand aus.",
+    "benefitDe": "When you make a charge, you can attack with both of your equipped weapons instead of just one.",
     "benefitRaw": "When you make a charge, you can attack with both of your equipped weapons instead of just one.",
     "normalRaw": "Charging allows only a single attack.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Doppelangriff am Ende eines Sturmangriffs (TWF Charge)"
+    "appEffect": "When you make a charge, you can attack with both of your equipped weapons instead of just one.",
+    "name": "Two-Weapon Pounce",
+    "benefit": "When you make a charge, you can attack with both of your equipped weapons instead of just one.",
+    "benefitEn": "When you make a charge, you can attack with both of your equipped weapons instead of just one."
   },
   "two_weapon_rend": {
     "id": "two_weapon_rend",
-    "nameDe": "Zwei-Waffen-Zerreißen",
+    "nameDe": "Two-Weapon Rend",
     "nameEn": "Two-Weapon Rend",
     "category": "combat",
     "source": "phb2",
@@ -314,15 +350,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 11
       }
     ],
-    "benefitDe": "Triffst du einen Gegner in derselben Runde mit Haupt- und Schildhand, verursachst du zusätzlich +1w6 + 1.5x Stärke Bonus-Schaden (1-mal pro Runde).",
+    "benefitDe": "If you hit an opponent with both primary and off-hand weapons, you deal an extra 1d6 + 1.5x Str mod damage.",
     "benefitRaw": "If you hit an opponent with both primary and off-hand weapons, you deal an extra 1d6 + 1.5x Str mod damage.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+1w6 + 1.5x Str Modifikator Bonus-Schaden bei Treffer mit beiden Waffen"
+    "appEffect": "If you hit an opponent with both primary and off-hand weapons, you deal an extra 1d6 + 1.5x Str mod damage.",
+    "name": "Two-Weapon Rend",
+    "benefit": "If you hit an opponent with both primary and off-hand weapons, you deal an extra 1d6 + 1.5x Str mod damage.",
+    "benefitEn": "If you hit an opponent with both primary and off-hand weapons, you deal an extra 1d6 + 1.5x Str mod damage."
   },
   "vexing_flanker": {
     "id": "vexing_flanker",
-    "nameDe": "Lästiger Flankierer",
+    "nameDe": "Vexing Flanker",
     "nameEn": "Vexing Flanker",
     "category": "combat",
     "source": "phb2",
@@ -332,15 +371,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "id": "combat_reflexes"
       }
     ],
-    "benefitDe": "Du erhältst einen Angriffsbonus von +4 (statt +2) beim Flankieren eines Gegners.",
+    "benefitDe": "You gain a +4 bonus on attack rolls when flanking an opponent, rather than the standard +2.",
     "benefitRaw": "You gain a +4 bonus on attack rolls when flanking an opponent, rather than the standard +2.",
     "normalRaw": "Flanking bonus is +2.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+4 Angriffsbonus beim Flankieren (statt +2)"
+    "appEffect": "A +4 bonus on attack rolls when flanking an opponent, rather than the standard +2.",
+    "name": "Vexing Flanker",
+    "benefit": "You gain a +4 bonus on attack rolls when flanking an opponent, rather than the standard +2.",
+    "benefitEn": "You gain a +4 bonus on attack rolls when flanking an opponent, rather than the standard +2."
   },
   "adaptable_flanker": {
     "id": "adaptable_flanker",
-    "nameDe": "Anpassungsfähiger Flankierer",
+    "nameDe": "Adaptable Flanker",
     "nameEn": "Adaptable Flanker",
     "category": "combat",
     "source": "phb2",
@@ -359,15 +401,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 4
       }
     ],
-    "benefitDe": "Erlaube dir selbst, einen Gegner aus jedem von dir bedrohten Feld zu flankieren.",
+    "benefitDe": "As a swift action, you can count as occupying any adjacent square you threaten for flanking purposes.",
     "benefitRaw": "As a swift action, you can count as occupying any adjacent square you threaten for flanking purposes.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Bestimme beliebiges bedrohtes Nachbarfeld für Flankierungs-Berechnung"
+    "appEffect": "As a swift action, you can count as occupying any adjacent square you threaten for flanking purposes.",
+    "name": "Adaptable Flanker",
+    "benefit": "As a swift action, you can count as occupying any adjacent square you threaten for flanking purposes.",
+    "benefitEn": "As a swift action, you can count as occupying any adjacent square you threaten for flanking purposes."
   },
   "agile_shield_fighter": {
     "id": "agile_shield_fighter",
-    "nameDe": "Agiler Schildkämpfer",
+    "nameDe": "Agile Shield Fighter",
     "nameEn": "Agile Shield Fighter",
     "category": "combat",
     "source": "phb2",
@@ -382,15 +427,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "id": "shield_specialization"
       }
     ],
-    "benefitDe": "Die Mali für das Kämpfen mit Waffe und Schildstoß reduzieren sich auf jeweils -2/-2 (ersetzt reguläre TWF-Mali).",
+    "benefitDe": "When making a shield bash and armed strike as part of a full attack, you take a -2 penalty on each attack.",
     "benefitRaw": "When making a shield bash and armed strike as part of a full attack, you take a -2 penalty on each attack.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Reduziert TWF-Schildstoß-Mali auf -2/-2"
+    "appEffect": "When making a shield bash and armed strike as part of a full attack, you take a -2 penalty on each attack.",
+    "name": "Agile Shield Fighter",
+    "benefit": "When making a shield bash and armed strike as part of a full attack, you take a -2 penalty on each attack.",
+    "benefitEn": "When making a shield bash and armed strike as part of a full attack, you take a -2 penalty on each attack."
   },
   "telling_blow": {
     "id": "telling_blow",
-    "nameDe": "Verheerender Treffer",
+    "nameDe": "Telling Blow",
     "nameEn": "Telling Blow",
     "category": "combat",
     "source": "phb2",
@@ -400,15 +448,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "desc": "Sneak attack or skirmish"
       }
     ],
-    "benefitDe": "Immer wenn du einen kritischen Treffer erzielst, addierst du deinen Sneak Attack- oder Skirmish-Zusatzschaden zum Schadenswurf.",
+    "benefitDe": "Whenever you score a critical hit, you add your sneak attack or skirmish damage to the damage roll.",
     "benefitRaw": "Whenever you score a critical hit, you add your sneak attack or skirmish damage to the damage roll.",
     "normalRaw": "",
     "specialRaw": "A fighter may select Telling Blow as one of his fighter bonus feats.",
-    "appEffect": "Sneak Attack / Skirmish Schaden wird bei jedem kritischen Treffer ausgelöst"
+    "appEffect": "Whenever you score a critical hit, you add your sneak attack or skirmish damage to the damage roll.",
+    "name": "Telling Blow",
+    "benefit": "Whenever you score a critical hit, you add your sneak attack or skirmish damage to the damage roll.",
+    "benefitEn": "Whenever you score a critical hit, you add your sneak attack or skirmish damage to the damage roll."
   },
   "armor_specialization": {
     "id": "armor_specialization",
-    "nameDe": "Rüstungsspezialisierung",
+    "nameDe": "Armor Specialization",
     "nameEn": "Armor Specialization",
     "category": "combat",
     "source": "phb2",
@@ -424,15 +475,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
     ],
     "hasOption": true,
     "optionType": "armor",
-    "benefitDe": "Erhalte Schadensreduktion 2/— (DR 2/—), wenn du die gewählte Rüstungsart trägst.",
+    "benefitDe": "You gain damage reduction 2/— when wearing the chosen type of armor (medium or heavy).",
     "benefitRaw": "You gain damage reduction 2/— when wearing the chosen type of armor (medium or heavy).",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "DR 2/— beim Tragen der gewählten Rüstung"
+    "appEffect": "Damage reduction 2/— when wearing the chosen type of armor (medium or heavy).",
+    "name": "Armor Specialization",
+    "benefit": "You gain damage reduction 2/— when wearing the chosen type of armor (medium or heavy).",
+    "benefitEn": "You gain damage reduction 2/— when wearing the chosen type of armor (medium or heavy)."
   },
   "weapon_supremacy": {
     "id": "weapon_supremacy",
-    "nameDe": "Waffenvorherrschaft",
+    "nameDe": "Weapon Supremacy",
     "nameEn": "Weapon Supremacy",
     "category": "combat",
     "source": "phb2",
@@ -457,15 +511,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
     ],
     "hasOption": true,
     "optionType": "weapon",
-    "benefitDe": "Höchste Waffenmeisterschaft: +4 auf Entwaffnen-Gegenwürfe, nimm '10' bei einem Angriffswurf pro Runde, führe Angriffe im Ringen aus und erhalte +1 RK.",
+    "benefitDe": "With chosen weapon: +4 bonus on checks to resist disarm, can take 10 on one attack roll per round, +1 shield bonus to AC, and can wield weapon in grapple.",
     "benefitRaw": "With chosen weapon: +4 bonus on checks to resist disarm, can take 10 on one attack roll per round, +1 shield bonus to AC, and can wield weapon in grapple.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Take 10 auf 1 Angriff/Runde, +4 gegen Entwaffnen, +1 RK & Waffe im Ringen nutzbar"
+    "appEffect": "With chosen weapon: +4 bonus on checks to resist disarm, can take 10 on one attack roll per round, +1 shield b...",
+    "name": "Weapon Supremacy",
+    "benefit": "With chosen weapon: +4 bonus on checks to resist disarm, can take 10 on one attack roll per round, +1 shield bonus to AC, and can wield weapon in grapple.",
+    "benefitEn": "With chosen weapon: +4 bonus on checks to resist disarm, can take 10 on one attack roll per round, +1 shield bonus to AC, and can wield weapon in grapple."
   },
   "ranged_weapon_mastery": {
     "id": "ranged_weapon_mastery",
-    "nameDe": "Fernkampfwaffen-Meisterschaft",
+    "nameDe": "Ranged Weapon Mastery",
     "nameEn": "Ranged Weapon Mastery",
     "category": "combat",
     "source": "phb2",
@@ -489,15 +546,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
     ],
     "hasOption": true,
     "optionType": "weapon",
-    "benefitDe": "+2 auf Angriffs- und Schadenswürfe mit Fernkampfwaffen des gewählten Schadentyps (Hieb/Stich/Wucht) und Reichweitenschritt um 20 Fuß erhöht.",
+    "benefitDe": "+2 bonus on attack and damage rolls with ranged weapons of the chosen damage type, and range increment increases by 20 feet.",
     "benefitRaw": "+2 bonus on attack and damage rolls with ranged weapons of the chosen damage type, and range increment increases by 20 feet.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+2 Angriff/Schaden und +20 ft. Reichweitenschritt für Fernkampfwaffen"
+    "appEffect": "+2 bonus on attack and damage rolls with ranged weapons of the chosen damage type, and range increment increases by 20 feet.",
+    "name": "Ranged Weapon Mastery",
+    "benefit": "+2 bonus on attack and damage rolls with ranged weapons of the chosen damage type, and range increment increases by 20 feet.",
+    "benefitEn": "+2 bonus on attack and damage rolls with ranged weapons of the chosen damage type, and range increment increases by 20 feet."
   },
   "crushing_strike": {
     "id": "crushing_strike",
-    "nameDe": "Zermalmender Schlag",
+    "nameDe": "Crushing Strike",
     "nameEn": "Crushing Strike",
     "category": "combat",
     "source": "phb2",
@@ -519,15 +579,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 14
       }
     ],
-    "benefitDe": "Bei jedem erfolgreichen Treffer mit einer Wuchtwaffe erhältst du für den Rest der Runde einen kumulativen Bonus von +1 auf alle folgenden Nahkampfangriffe gegen dasselbe Ziel.",
+    "benefitDe": "Each time you hit with a bludgeoning weapon, you gain a cumulative +1 bonus on attack rolls against that opponent for the rest of your turn.",
     "benefitRaw": "Each time you hit with a bludgeoning weapon, you gain a cumulative +1 bonus on attack rolls against that opponent for the rest of your turn.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Kumulativer +1 Angriffsbonus pro Treffer mit Wuchtwaffe gegen dasselbe Ziel"
+    "appEffect": "Each time you hit with a bludgeoning weapon, you gain a cumulative +1 bonus on attack rolls against that oppon...",
+    "name": "Crushing Strike",
+    "benefit": "Each time you hit with a bludgeoning weapon, you gain a cumulative +1 bonus on attack rolls against that opponent for the rest of your turn.",
+    "benefitEn": "Each time you hit with a bludgeoning weapon, you gain a cumulative +1 bonus on attack rolls against that opponent for the rest of your turn."
   },
   "driving_attack": {
     "id": "driving_attack",
-    "nameDe": "Vortreibender Angriff",
+    "nameDe": "Driving Attack",
     "nameEn": "Driving Attack",
     "category": "combat",
     "source": "phb2",
@@ -549,15 +612,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 14
       }
     ],
-    "benefitDe": "Volle Aktion: Führe einen einzelnen Angriff mit einer Stichwaffe aus; triffst du, führst du einen kostenlosen Ansturm (Bull Rush) durch und wirfst das Ziel bei 10+ ft. zu Boden.",
+    "benefitDe": "Full-round action: make a single attack with a piercing weapon. If it hits, you also initiate a bull rush with a bonus, knocking the foe prone if driven back 10+ feet.",
     "benefitRaw": "Full-round action: make a single attack with a piercing weapon. If it hits, you also initiate a bull rush with a bonus, knocking the foe prone if driven back 10+ feet.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Stichwaffen-Angriff löst kostenlosen Ansturm mit Chance auf Prone aus"
+    "appEffect": "Full-round action: make a single attack with a piercing weapon",
+    "name": "Driving Attack",
+    "benefit": "Full-round action: make a single attack with a piercing weapon. If it hits, you also initiate a bull rush with a bonus, knocking the foe prone if driven back 10+ feet.",
+    "benefitEn": "Full-round action: make a single attack with a piercing weapon. If it hits, you also initiate a bull rush with a bonus, knocking the foe prone if driven back 10+ feet."
   },
   "slashing_flurry": {
     "id": "slashing_flurry",
-    "nameDe": "Wirbelnde Klingen",
+    "nameDe": "Slashing Flurry",
     "nameEn": "Slashing Flurry",
     "category": "combat",
     "source": "phb2",
@@ -579,15 +645,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 14
       }
     ],
-    "benefitDe": "Voller Angriff: Erhalte 1 zusätzlichen Angriff mit deiner Hiebwaffe mit höchstem Angriffsbonus, nimm dafür -5 auf alle Angriffe der Runde.",
+    "benefitDe": "When making a full attack with a slashing weapon, you can make one additional attack with chosen weapon at your highest base attack bonus, taking a -5 penalty on all attacks that round.",
     "benefitRaw": "When making a full attack with a slashing weapon, you can make one additional attack with chosen weapon at your highest base attack bonus, taking a -5 penalty on all attacks that round.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Zusätzlicher Hiebwaffen-Angriff im vollen Angriff (alle Angriffe bei -5)"
+    "appEffect": "When making a full attack with a slashing weapon, you can make one additional attack with chosen weapon at you...",
+    "name": "Slashing Flurry",
+    "benefit": "When making a full attack with a slashing weapon, you can make one additional attack with chosen weapon at your highest base attack bonus, taking a -5 penalty on all attacks that round.",
+    "benefitEn": "When making a full attack with a slashing weapon, you can make one additional attack with chosen weapon at your highest base attack bonus, taking a -5 penalty on all attacks that round."
   },
   "combat_focus": {
     "id": "combat_focus",
-    "nameDe": "Kampffokus",
+    "nameDe": "Combat Focus",
     "nameEn": "Combat Focus",
     "category": "combat",
     "source": "phb2",
@@ -598,15 +667,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 13
       }
     ],
-    "benefitDe": "Im Kampf erhältst du +2 Willensbonus auf Willensrettungswürfe. Bei deinem ersten erfolgreichen Treffer trittst du in den Kampffokus ein (hält 10 Runden plus 1 Runde pro weiterem Kampffokus-Talent).",
+    "benefitDe": "In combat, you gain a +2 bonus on Will saves. After your first successful attack, you gain combat focus for 10 rounds (longer with additional combat focus feats).",
     "benefitRaw": "In combat, you gain a +2 bonus on Will saves. After your first successful attack, you gain combat focus for 10 rounds (longer with additional combat focus feats).",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+2 Willensrettungswürfe; aktiviert Kampffokus nach erstem Treffer"
+    "appEffect": "In combat, you gain a +2 bonus on Will saves",
+    "name": "Combat Focus",
+    "benefit": "In combat, you gain a +2 bonus on Will saves. After your first successful attack, you gain combat focus for 10 rounds (longer with additional combat focus feats).",
+    "benefitEn": "In combat, you gain a +2 bonus on Will saves. After your first successful attack, you gain combat focus for 10 rounds (longer with additional combat focus feats)."
   },
   "combat_awareness": {
     "id": "combat_awareness",
-    "nameDe": "Kampfbewusstsein",
+    "nameDe": "Combat Awareness",
     "nameEn": "Combat Awareness",
     "category": "combat",
     "source": "phb2",
@@ -626,15 +698,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 12
       }
     ],
-    "benefitDe": "Solange dein Kampffokus aktiv ist, erfährst du die exakten aktuellen Trefferpunkte und eventuelle Verzauberungen aller benachbarten Verbündeten und Gegner.",
+    "benefitDe": "While your combat focus is active, you know the current hit point total and status of each adjacent ally and enemy.",
     "benefitRaw": "While your combat focus is active, you know the current hit point total and status of each adjacent ally and enemy.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Exakte TP aller benachbarten Kreaturen im Kampffokus sichtbar"
+    "appEffect": "While your combat focus is active, you know the current hit point total and status of each adjacent ally and enemy.",
+    "name": "Combat Awareness",
+    "benefit": "While your combat focus is active, you know the current hit point total and status of each adjacent ally and enemy.",
+    "benefitEn": "While your combat focus is active, you know the current hit point total and status of each adjacent ally and enemy."
   },
   "combat_defense": {
     "id": "combat_defense",
-    "nameDe": "Kampfverteidigung",
+    "nameDe": "Combat Defense",
     "nameEn": "Combat Defense",
     "category": "combat",
     "source": "phb2",
@@ -658,15 +733,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 6
       }
     ],
-    "benefitDe": "Solange dein Kampffokus aktiv ist, kannst du das Ziel deines Ausweichen-Talents (Dodge) als sofortige Aktion im Zug eines Gegners wechseln.",
+    "benefitDe": "While your combat focus is active, you can change the target of your Dodge feat as an immediate action.",
     "benefitRaw": "While your combat focus is active, you can change the target of your Dodge feat as an immediate action.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Dodge-Ziel als sofortige Aktion wechseln im Kampffokus"
+    "appEffect": "While your combat focus is active, you can change the target of your Dodge feat as an immediate action.",
+    "name": "Combat Defense",
+    "benefit": "While your combat focus is active, you can change the target of your Dodge feat as an immediate action.",
+    "benefitEn": "While your combat focus is active, you can change the target of your Dodge feat as an immediate action."
   },
   "combat_stability": {
     "id": "combat_stability",
-    "nameDe": "Kampfstabilität",
+    "nameDe": "Combat Stability",
     "nameEn": "Combat Stability",
     "category": "combat",
     "source": "phb2",
@@ -686,15 +764,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 3
       }
     ],
-    "benefitDe": "Solange dein Kampffokus aktiv ist, erhältst du +4 Bonus auf alle Würfe zur Abwehr von Ansturm, Entwaffnen, Ringen, Überrennen und Zu-Boden-Werfen.",
+    "benefitDe": "While your combat focus is active, you gain a +4 bonus on checks to resist bull rush, disarm, grapple, overrun, and trip attempts.",
     "benefitRaw": "While your combat focus is active, you gain a +4 bonus on checks to resist bull rush, disarm, grapple, overrun, and trip attempts.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+4 gegen Ansturm, Entwaffnen, Ringen, Überrennen, Trip im Kampffokus"
+    "appEffect": "While your combat focus is active, you gain a +4 bonus on checks to resist bull rush, disarm, grapple, overrun, and trip attempts.",
+    "name": "Combat Stability",
+    "benefit": "While your combat focus is active, you gain a +4 bonus on checks to resist bull rush, disarm, grapple, overrun, and trip attempts.",
+    "benefitEn": "While your combat focus is active, you gain a +4 bonus on checks to resist bull rush, disarm, grapple, overrun, and trip attempts."
   },
   "combat_strike": {
     "id": "combat_strike",
-    "nameDe": "Kampfschlag",
+    "nameDe": "Combat Strike",
     "nameEn": "Combat Strike",
     "category": "combat",
     "source": "phb2",
@@ -714,15 +795,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 12
       }
     ],
-    "benefitDe": "Beende deinen Kampffokus als Schnelle Aktion: Erhalte für diesen Zug einen Bonus auf alle Angriffs- und Schadenswürfe in Höhe deines BAB; verliere danach RK-Bonus.",
+    "benefitDe": "As a swift action, end your combat focus to gain a bonus on all attack rolls and damage rolls equal to your base attack bonus for the rest of your turn.",
     "benefitRaw": "As a swift action, end your combat focus to gain a bonus on all attack rolls and damage rolls equal to your base attack bonus for the rest of your turn.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Kampffokus beenden für +BAB auf alle Angriffe & Schaden dieser Runde"
+    "appEffect": "As a swift action, end your combat focus to gain a bonus on all attack rolls and damage rolls equal to your ba...",
+    "name": "Combat Strike",
+    "benefit": "As a swift action, end your combat focus to gain a bonus on all attack rolls and damage rolls equal to your base attack bonus for the rest of your turn.",
+    "benefitEn": "As a swift action, end your combat focus to gain a bonus on all attack rolls and damage rolls equal to your base attack bonus for the rest of your turn."
   },
   "combat_vigor": {
     "id": "combat_vigor",
-    "nameDe": "Kampflebenskraft",
+    "nameDe": "Combat Vigor",
     "nameEn": "Combat Vigor",
     "category": "combat",
     "source": "phb2",
@@ -742,15 +826,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 9
       }
     ],
-    "benefitDe": "Solange dein Kampffokus aktiv ist, erhältst du Schnelle Heilung 2 (Fast Healing 2), bis zu maximal der Hälfte deiner maximalen Trefferpunkte.",
+    "benefitDe": "While your combat focus is active, you gain fast healing 2 (up to half your maximum hit points).",
     "benefitRaw": "While your combat focus is active, you gain fast healing 2 (up to half your maximum hit points).",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Schnelle Heilung 2 im Kampffokus (bis 50% max TP)"
+    "appEffect": "While your combat focus is active, you gain fast healing 2 (up to half your maximum hit points).",
+    "name": "Combat Vigor",
+    "benefit": "While your combat focus is active, you gain fast healing 2 (up to half your maximum hit points).",
+    "benefitEn": "While your combat focus is active, you gain fast healing 2 (up to half your maximum hit points)."
   },
   "combat_tactician": {
     "id": "combat_tactician",
-    "nameDe": "Kampftaktiker",
+    "nameDe": "Combat Tactician",
     "nameEn": "Combat Tactician",
     "category": "combat",
     "source": "phb2",
@@ -770,15 +857,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "dodge",
-    "benefitDe": "Wenn du dich auf einen Gegner zubewegst, der zu Beginn deines Zugs nicht benachbart war, erhältst du +2 auf den Nahkampf-Schaden gegen ihn.",
+    "benefitDe": "When you approach an enemy not adjacent at the start of your turn, you gain a +2 bonus on melee damage against that enemy this turn.",
     "benefitRaw": "When you approach an enemy not adjacent at the start of your turn, you gain a +2 bonus on melee damage against that enemy this turn.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+2 Nahkampfschaden gegen herannahende Gegner"
+    "appEffect": "When you approach an enemy not adjacent at the start of your turn, you gain a +2 bonus on melee damage against...",
+    "name": "Combat Tactician",
+    "benefit": "When you approach an enemy not adjacent at the start of your turn, you gain a +2 bonus on melee damage against that enemy this turn.",
+    "benefitEn": "When you approach an enemy not adjacent at the start of your turn, you gain a +2 bonus on melee damage against that enemy this turn."
   },
   "cometary_collision": {
     "id": "cometary_collision",
-    "nameDe": "Kometenkollision",
+    "nameDe": "Cometary Collision",
     "nameEn": "Cometary Collision",
     "category": "combat",
     "source": "phb2",
@@ -798,15 +888,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "improved_bull_rush",
-    "benefitDe": "Bereite eine Aktion vor: Wenn ein Gegner anstürmt, stürmst du ihm entgegen! Du fängst seinen Sturmangriff ab, handelst zuerst und erhältst verdoppelte Sturmangriffs-Boni.",
+    "benefitDe": "Ready an action to counter-charge an incoming foe. Your charge interrupts theirs, and you deal extra damage.",
     "benefitRaw": "Ready an action to counter-charge an incoming foe. Your charge interrupts theirs, and you deal extra damage.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Gegensturmangriff als vorbereitete Aktion fängt gegnerischen Sturmangriff ab"
+    "appEffect": "Ready an action to counter-charge an incoming foe",
+    "name": "Cometary Collision",
+    "benefit": "Ready an action to counter-charge an incoming foe. Your charge interrupts theirs, and you deal extra damage.",
+    "benefitEn": "Ready an action to counter-charge an incoming foe. Your charge interrupts theirs, and you deal extra damage."
   },
   "melee_evasion": {
     "id": "melee_evasion",
-    "nameDe": "Nahkampf-Entrinnen",
+    "nameDe": "Melee Evasion",
     "nameEn": "Melee Evasion",
     "category": "combat",
     "source": "phb2",
@@ -831,15 +924,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "dodge",
-    "benefitDe": "Wenn du defensiv kämpfst: Neutralisiere den ersten erfolgreichen Nahkampfangriff deines Ausweichen-Gegners, indem du mit einem eigenen Angriffswurf seinen Wurf übertriffst.",
+    "benefitDe": "While fighting defensively or using total defense, negate the first melee attack from your dodge target if your attack roll exceeds his.",
     "benefitRaw": "While fighting defensively or using total defense, negate the first melee attack from your dodge target if your attack roll exceeds his.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Neutralisiere gegnerischen Nahkampftreffer bei defensiver Kampfführung"
+    "appEffect": "While fighting defensively or using total defense, negate the first melee attack from your dodge target if you...",
+    "name": "Melee Evasion",
+    "benefit": "While fighting defensively or using total defense, negate the first melee attack from your dodge target if your attack roll exceeds his.",
+    "benefitEn": "While fighting defensively or using total defense, negate the first melee attack from your dodge target if your attack roll exceeds his."
   },
   "flay": {
     "id": "flay",
-    "nameDe": "Schinden",
+    "nameDe": "Flay",
     "nameEn": "Flay",
     "category": "combat",
     "source": "phb2",
@@ -855,11 +951,14 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "power_attack",
-    "benefitDe": "Bei einem erfolgreichen Angriff gegen ein ungepanzertes Ziel (ohne Rüstungs- oder natürliche Rüstungsboni) erleidet das Ziel in der nächsten Runde 1d6 Blutungsschaden.",
+    "benefitDe": "When you hit an unarmored opponent (no armor or natural armor), you inflict 1d6 points of pain damage on your next turn.",
     "benefitRaw": "When you hit an unarmored opponent (no armor or natural armor), you inflict 1d6 points of pain damage on your next turn.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+1d6 Blutungsschaden in Folgerunde gegen ungepanzerte Ziele"
+    "appEffect": "When you hit an unarmored opponent (no armor or natural armor), you inflict 1d6 points of pain damage on your next turn.",
+    "name": "Flay",
+    "benefit": "When you hit an unarmored opponent (no armor or natural armor), you inflict 1d6 points of pain damage on your next turn.",
+    "benefitEn": "When you hit an unarmored opponent (no armor or natural armor), you inflict 1d6 points of pain damage on your next turn."
   },
   "grenadier": {
     "id": "grenadier",
@@ -868,15 +967,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
     "category": "combat",
     "source": "phb2",
     "prereqs": [],
-    "benefitDe": "+1 auf Angriffs- und Schadenswürfe mit Wurfwaffen mit Flächenschaden (Alchemistenfeuer, Säure etc.); lenke Streuschaden gezielt von 1 Feld ab.",
+    "benefitDe": "+1 on attacks and damage with splash weapons, and you can exclude one square from splash damage.",
     "benefitRaw": "+1 on attacks and damage with splash weapons, and you can exclude one square from splash damage.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+1 Angriff/Schaden mit Spritzwaffen & 1 Feld von Streuschaden ausschließen"
+    "appEffect": "+1 on attacks and damage with splash weapons, and you can exclude one square from splash damage.",
+    "name": "Grenadier",
+    "benefit": "+1 on attacks and damage with splash weapons, and you can exclude one square from splash damage.",
+    "benefitEn": "+1 on attacks and damage with splash weapons, and you can exclude one square from splash damage."
   },
   "hindering_opportunist": {
     "id": "hindering_opportunist",
-    "nameDe": "Hinderlicher Opportunist",
+    "nameDe": "Hindering Opportunist",
     "nameEn": "Hindering Opportunist",
     "category": "combat",
     "source": "phb2",
@@ -891,15 +993,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "combat_reflexes",
-    "benefitDe": "Du kannst einen Gelegenheitsangriff durch eine 'Jemandem helfen'-Aktion (Aid Another) ersetzen, um einem Verbündeten +2 RK gegen den Gegner zu gewähren.",
+    "benefitDe": "You can replace an attack of opportunity with an aid another action to grant an ally a bonus to AC.",
     "benefitRaw": "You can replace an attack of opportunity with an aid another action to grant an ally a bonus to AC.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Gelegenheitsangriff durch 'Jemandem helfen' (+2 RK für Verbündeten) ersetzen"
+    "appEffect": "Replace an attack of opportunity with an aid another action to grant an ally a bonus to AC.",
+    "name": "Hindering Opportunist",
+    "benefit": "You can replace an attack of opportunity with an aid another action to grant an ally a bonus to AC.",
+    "benefitEn": "You can replace an attack of opportunity with an aid another action to grant an ally a bonus to AC."
   },
   "stalwart_defense": {
     "id": "stalwart_defense",
-    "nameDe": "Standhafte Verteidigung",
+    "nameDe": "Stalwart Defense",
     "nameEn": "Stalwart Defense",
     "category": "combat",
     "source": "phb2",
@@ -918,15 +1023,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 9
       }
     ],
-    "benefitDe": "Gegner provozieren bei dir eine 'Jemandem helfen'-Aktion, wann immer sie einen deiner Verbündeten angreifen.",
+    "benefitDe": "Foes provoke an aid another action from you when they attack adjacent allies.",
     "benefitRaw": "Foes provoke an aid another action from you when they attack adjacent allies.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Gegner provozieren 'Jemandem helfen' beim Angriff auf Verbündete"
+    "appEffect": "Foes provoke an aid another action from you when they attack adjacent allies.",
+    "name": "Stalwart Defense",
+    "benefit": "Foes provoke an aid another action from you when they attack adjacent allies.",
+    "benefitEn": "Foes provoke an aid another action from you when they attack adjacent allies."
   },
   "intimidating_strike": {
     "id": "intimidating_strike",
-    "nameDe": "Einschüchternder Schlag",
+    "nameDe": "Intimidating Strike",
     "nameEn": "Intimidating Strike",
     "category": "combat",
     "source": "phb2",
@@ -937,15 +1045,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "ranks": 4
       }
     ],
-    "benefitDe": "Standard-Aktion: Führe einen Nahkampfangriff aus und mache einen Einschüchtern-Wurf gegen das Ziel. Bei Erfolg ist das Ziel für die gesamte Begegnung erschüttert (shaken).",
+    "benefitDe": "Standard action: make a melee attack with a penalty and make a free Intimidate check to shake the opponent for the rest of the encounter.",
     "benefitRaw": "Standard action: make a melee attack with a penalty and make a free Intimidate check to shake the opponent for the rest of the encounter.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Nahkampfangriff mit Einschüchtern kombiniert; Ziel wird shaken"
+    "appEffect": "Standard action: make a melee attack with a penalty and make a free Intimidate check to shake the opponent for...",
+    "name": "Intimidating Strike",
+    "benefit": "Standard action: make a melee attack with a penalty and make a free Intimidate check to shake the opponent for the rest of the encounter.",
+    "benefitEn": "Standard action: make a melee attack with a penalty and make a free Intimidate check to shake the opponent for the rest of the encounter."
   },
   "lunging_strike": {
     "id": "lunging_strike",
-    "nameDe": "Ausfallschlag",
+    "nameDe": "Lunging Strike",
     "nameEn": "Lunging Strike",
     "category": "combat",
     "source": "phb2",
@@ -955,15 +1066,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 6
       }
     ],
-    "benefitDe": "Volle Aktion: Führe einen einzelnen Nahkampfangriff aus, dessen Reichweite um zusätzliche 5 Fuß vergrößert ist.",
+    "benefitDe": "Full-round action: make a single melee attack with your reach extended by 5 feet.",
     "benefitRaw": "Full-round action: make a single melee attack with your reach extended by 5 feet.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Einzelner Nahkampfangriff mit +5 ft. Reichweite als volle Aktion"
+    "appEffect": "Full-round action: make a single melee attack with your reach extended by 5 feet.",
+    "name": "Lunging Strike",
+    "benefit": "Full-round action: make a single melee attack with your reach extended by 5 feet.",
+    "benefitEn": "Full-round action: make a single melee attack with your reach extended by 5 feet."
   },
   "overwhelming_assault": {
     "id": "overwhelming_assault",
-    "nameDe": "Überwältigender Ansturm",
+    "nameDe": "Overwhelming Assault",
     "nameEn": "Overwhelming Assault",
     "category": "combat",
     "source": "phb2",
@@ -973,15 +1087,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "value": 15
       }
     ],
-    "benefitDe": "Erhalte +4 Schadensbonus gegen einen benachbarten Gegner, wenn er in seiner vorherigen Runde keinen Angriff gegen dich gerichtet hat.",
+    "benefitDe": "Gain a +4 bonus on melee damage rolls against an adjacent opponent who did not attack you on his last turn.",
     "benefitRaw": "Gain a +4 bonus on melee damage rolls against an adjacent opponent who did not attack you on his last turn.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+4 Nahkampfschaden gegen Gegner, die dich nicht angegriffen haben"
+    "appEffect": "Gain a +4 bonus on melee damage rolls against an adjacent opponent who did not attack you on his last turn.",
+    "name": "Overwhelming Assault",
+    "benefit": "Gain a +4 bonus on melee damage rolls against an adjacent opponent who did not attack you on his last turn.",
+    "benefitEn": "Gain a +4 bonus on melee damage rolls against an adjacent opponent who did not attack you on his last turn."
   },
   "penetrating_shot": {
     "id": "penetrating_shot",
-    "nameDe": "Durchschlagender Schuss",
+    "nameDe": "Penetrating Shot",
     "nameEn": "Penetrating Shot",
     "category": "combat",
     "source": "phb2",
@@ -1001,15 +1118,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "point_blank_shot",
-    "benefitDe": "Standard-Aktion: Dein Pfeil/Bolzen durchschlägt alle Ziele in einer 60-Fuß-Linie (separater Angriffswurf gegen jedes Ziel).",
+    "benefitDe": "Standard action: make a single ranged attack that targets all creatures in a 60-foot line.",
     "benefitRaw": "Standard action: make a single ranged attack that targets all creatures in a 60-foot line.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Fernkampfangriff durchdringt alle Kreaturen in 60 ft. Linie"
+    "appEffect": "Standard action: make a single ranged attack that targets all creatures in a 60-foot line.",
+    "name": "Penetrating Shot",
+    "benefit": "Standard action: make a single ranged attack that targets all creatures in a 60-foot line.",
+    "benefitEn": "Standard action: make a single ranged attack that targets all creatures in a 60-foot line."
   },
   "shield_sling": {
     "id": "shield_sling",
-    "nameDe": "Schildwurf",
+    "nameDe": "Shield Sling",
     "nameEn": "Shield Sling",
     "category": "combat",
     "source": "phb2",
@@ -1024,15 +1144,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "shield_specialization",
-    "benefitDe": "Du kannst deinen Schild als Fernkampfwaffe werfen (Reichweite 20 Fuß, Schildstoß-Schaden) und bei einem Treffer einen Zu-Boden-Werfen-Versuch unternehmen.",
+    "benefitDe": "Throw your shield as a ranged attack (range increment 20 ft.), with a free trip attempt on a hit.",
     "benefitRaw": "Throw your shield as a ranged attack (range increment 20 ft.), with a free trip attempt on a hit.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Schild werfen (20 ft.) mit kostenlosem Trip-Versuch"
+    "appEffect": "Throw your shield as a ranged attack (range increment 20 ft.), with a free trip attempt on a hit.",
+    "name": "Shield Sling",
+    "benefit": "Throw your shield as a ranged attack (range increment 20 ft.), with a free trip attempt on a hit.",
+    "benefitEn": "Throw your shield as a ranged attack (range increment 20 ft.), with a free trip attempt on a hit."
   },
   "short_haft": {
     "id": "short_haft",
-    "nameDe": "Kurzer Schaft",
+    "nameDe": "Short Haft",
     "nameEn": "Short Haft",
     "category": "combat",
     "source": "phb2",
@@ -1047,15 +1170,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "weapon_focus",
-    "benefitDe": "Schnelle Aktion: Ändere deinen Griff an einer Stangenwaffe (Reach Weapon), um benachbarte Felder statt entfernter Felder anzugreifen.",
+    "benefitDe": "As a swift action, adjust your grip on a reach weapon to strike adjacent foes instead of distant ones.",
     "benefitRaw": "As a swift action, adjust your grip on a reach weapon to strike adjacent foes instead of distant ones.",
     "normalRaw": "Reach weapons cannot attack adjacent creatures.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Stangenwaffe per schneller Aktion auf benachbarte Gegner umschalten"
+    "appEffect": "As a swift action, adjust your grip on a reach weapon to strike adjacent foes instead of distant ones.",
+    "name": "Short Haft",
+    "benefit": "As a swift action, adjust your grip on a reach weapon to strike adjacent foes instead of distant ones.",
+    "benefitEn": "As a swift action, adjust your grip on a reach weapon to strike adjacent foes instead of distant ones."
   },
   "spectral_skirmisher": {
     "id": "spectral_skirmisher",
-    "nameDe": "Spektraler Plänkler",
+    "nameDe": "Spectral Skirmisher",
     "nameEn": "Spectral Skirmisher",
     "category": "combat",
     "source": "phb2",
@@ -1075,15 +1201,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "combat_reflexes",
-    "benefitDe": "Solange du unsichtbar bist oder vollständige Tarnung besitzt, provoziert jeder Gegner, der dich im Nahkampf angreift (ob Treffer oder Fehlschlag), einen Gelegenheitsangriff von dir.",
+    "benefitDe": "While invisible, all opponents who attack you in melee provoke an attack of opportunity from you.",
     "benefitRaw": "While invisible, all opponents who attack you in melee provoke an attack of opportunity from you.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Gegnerische Angriffe provozieren Gelegenheitsangriffe während Unsichtbarkeit"
+    "appEffect": "While invisible, all opponents who attack you in melee provoke an attack of opportunity from you.",
+    "name": "Spectral Skirmisher",
+    "benefit": "While invisible, all opponents who attack you in melee provoke an attack of opportunity from you.",
+    "benefitEn": "While invisible, all opponents who attack you in melee provoke an attack of opportunity from you."
   },
   "tumbling_feint": {
     "id": "tumbling_feint",
-    "nameDe": "Akrobatische Finte",
+    "nameDe": "Tumbling Feint",
     "nameEn": "Tumbling Feint",
     "category": "combat",
     "source": "phb2",
@@ -1099,15 +1228,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "combat_expertise",
-    "benefitDe": "Wenn du dich per Akrobatik (Tumble) erfolgreich durch den Bedrohungsbereich eines Gegners bewegst, erhältst du +5 auf deinen nächsten Finte-Wurf gegen ihn.",
+    "benefitDe": "Tumbling through an opponent's threatened area grants you a +5 bonus on a Bluff check to feint him.",
     "benefitRaw": "Tumbling through an opponent's threatened area grants you a +5 bonus on a Bluff check to feint him.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+5 auf Finte nach erfolgreicher Akrobatik durch Gegnerbereich"
+    "appEffect": "Tumbling through an opponent's threatened area grants you a +5 bonus on a Bluff check to feint him.",
+    "name": "Tumbling Feint",
+    "benefit": "Tumbling through an opponent's threatened area grants you a +5 bonus on a Bluff check to feint him.",
+    "benefitEn": "Tumbling through an opponent's threatened area grants you a +5 bonus on a Bluff check to feint him."
   },
   "versatile_unarmed_strike": {
     "id": "versatile_unarmed_strike",
-    "nameDe": "Vielseitiger Waffenloser Schlag",
+    "nameDe": "Versatile Unarmed Strike",
     "nameEn": "Versatile Unarmed Strike",
     "category": "combat",
     "source": "phb2",
@@ -1118,15 +1250,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "improved_unarmed_strike",
-    "benefitDe": "Schnelle Aktion: Wähle, ob deine waffenlosen Schläge Wucht-, Stich- oder Hiebschaden verursachen.",
+    "benefitDe": "As a swift action, choose whether your unarmed strikes deal bludgeoning, piercing, or slashing damage.",
     "benefitRaw": "As a swift action, choose whether your unarmed strikes deal bludgeoning, piercing, or slashing damage.",
     "normalRaw": "Unarmed strikes deal only bludgeoning damage.",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Schadenstyp für waffenlose Schläge frei wählbar (Wucht/Stich/Hieb)"
+    "appEffect": "As a swift action, choose whether your unarmed strikes deal bludgeoning, piercing, or slashing damage.",
+    "name": "Versatile Unarmed Strike",
+    "benefit": "As a swift action, choose whether your unarmed strikes deal bludgeoning, piercing, or slashing damage.",
+    "benefitEn": "As a swift action, choose whether your unarmed strikes deal bludgeoning, piercing, or slashing damage."
   },
   "water_splitting_stone": {
     "id": "water_splitting_stone",
-    "nameDe": "Wasser spaltet Stein",
+    "nameDe": "Water Splitting Stone",
     "nameEn": "Water Splitting Stone",
     "category": "combat",
     "source": "phb2",
@@ -1146,15 +1281,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "improved_unarmed_strike",
-    "benefitDe": "Deine waffenlosen Angriffe fügen Gegnern mit Schadensreduktion (DR) +4 zusätzlichen Schaden zu.",
+    "benefitDe": "Gain a +4 bonus on melee damage rolls with unarmed strikes against opponents with damage reduction.",
     "benefitRaw": "Gain a +4 bonus on melee damage rolls with unarmed strikes against opponents with damage reduction.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "+4 waffenloser Schaden gegen Kreaturen mit Schadensreduktion (DR)"
+    "appEffect": "Gain a +4 bonus on melee damage rolls with unarmed strikes against opponents with damage reduction.",
+    "name": "Water Splitting Stone",
+    "benefit": "Gain a +4 bonus on melee damage rolls with unarmed strikes against opponents with damage reduction.",
+    "benefitEn": "Gain a +4 bonus on melee damage rolls with unarmed strikes against opponents with damage reduction."
   },
   "blood_spiked_charger": {
     "id": "blood_spiked_charger",
-    "nameDe": "Stachel-Stürmer",
+    "nameDe": "Blood-Spiked Charger",
     "nameEn": "Blood-Spiked Charger",
     "category": "combat",
     "source": "phb2",
@@ -1172,15 +1310,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "desc": "Proficiency with armor spikes and spiked shield"
       }
     ],
-    "benefitDe": "Taktisches Talent: Schaltet Spike Slam, Spiked Avalanche und Spiked Charge frei.",
+    "benefitDe": "Tactical feat: Spiked Avalanche, Spike Slam, and Spiked Charge options with spiked armor and shield.",
     "benefitRaw": "Tactical feat: Spiked Avalanche, Spike Slam, and Spiked Charge options with spiked armor and shield.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Taktische Optionen mit Rüstungs- und Schildstacheln"
+    "appEffect": "Tactical feat: Spiked Avalanche, Spike Slam, and Spiked Charge options with spiked armor and shield.",
+    "name": "Blood-Spiked Charger",
+    "benefit": "Tactical feat: Spiked Avalanche, Spike Slam, and Spiked Charge options with spiked armor and shield.",
+    "benefitEn": "Tactical feat: Spiked Avalanche, Spike Slam, and Spiked Charge options with spiked armor and shield."
   },
   "combat_cloak_expert": {
     "id": "combat_cloak_expert",
-    "nameDe": "Kampfumhang-Experte",
+    "nameDe": "Combat Cloak Expert",
     "nameEn": "Combat Cloak Expert",
     "category": "combat",
     "source": "phb2",
@@ -1195,15 +1336,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "combat_reflexes",
-    "benefitDe": "Taktisches Talent: Nutze deinen Umhang für Cloaked Strike, Flick of the Cloak und Defense of the Cloak.",
+    "benefitDe": "Tactical feat: Cloaked Strike, Flick of the Cloak, and Defense of the Cloak options using a cloak in combat.",
     "benefitRaw": "Tactical feat: Cloaked Strike, Flick of the Cloak, and Defense of the Cloak options using a cloak in combat.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Taktische Optionen mit dem Umhang (Tarnung, Fehlschlag, Verwirrung)"
+    "appEffect": "Tactical feat: Cloaked Strike, Flick of the Cloak, and Defense of the Cloak options using a cloak in combat.",
+    "name": "Combat Cloak Expert",
+    "benefit": "Tactical feat: Cloaked Strike, Flick of the Cloak, and Defense of the Cloak options using a cloak in combat.",
+    "benefitEn": "Tactical feat: Cloaked Strike, Flick of the Cloak, and Defense of the Cloak options using a cloak in combat."
   },
   "combat_panache": {
     "id": "combat_panache",
-    "nameDe": "Kampf-Grandezza",
+    "nameDe": "Combat Panache",
     "nameEn": "Combat Panache",
     "category": "combat",
     "source": "phb2",
@@ -1219,15 +1363,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "ranks": 8
       }
     ],
-    "benefitDe": "Taktisches Talent: Nutze Bluffen im Nahkampf für Sneak Attack Ablenkung, Play the Fool und Fortuitous Tumble.",
+    "benefitDe": "Tactical feat: Sneak Smash, Play the Fool, and Fortuitous Tumble tactical options in combat.",
     "benefitRaw": "Tactical feat: Sneak Smash, Play the Fool, and Fortuitous Tumble tactical options in combat.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Taktische Optionen mit Bluffen im Nahkampf"
+    "appEffect": "Tactical feat: Sneak Smash, Play the Fool, and Fortuitous Tumble tactical options in combat.",
+    "name": "Combat Panache",
+    "benefit": "Tactical feat: Sneak Smash, Play the Fool, and Fortuitous Tumble tactical options in combat.",
+    "benefitEn": "Tactical feat: Sneak Smash, Play the Fool, and Fortuitous Tumble tactical options in combat."
   },
   "einhander": {
     "id": "einhander",
-    "nameDe": "Einhänder",
+    "nameDe": "Einhander",
     "nameEn": "Einhander",
     "category": "combat",
     "source": "phb2",
@@ -1252,15 +1399,18 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "dodge",
-    "benefitDe": "Taktischer Kampfstil mit einer einzelnen Einhandwaffe und freier Zweithand: Schaltet Narrow Profile, Off-Hand Balance und Lunging Thrust frei.",
+    "benefitDe": "Tactical feat: Narrow Profile (+2 AC), Off-Hand Balance, and Lunging Thrust when fighting with a single one-handed weapon and empty off-hand.",
     "benefitRaw": "Tactical feat: Narrow Profile (+2 AC), Off-Hand Balance, and Lunging Thrust when fighting with a single one-handed weapon and empty off-hand.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Taktischer Fechtstil: +2 RK, Gleichgewicht und Stoßangriff"
+    "appEffect": "Tactical feat: Narrow Profile (+2 AC), Off-Hand Balance, and Lunging Thrust when fighting with a single one-ha...",
+    "name": "Einhander",
+    "benefit": "Tactical feat: Narrow Profile (+2 AC), Off-Hand Balance, and Lunging Thrust when fighting with a single one-handed weapon and empty off-hand.",
+    "benefitEn": "Tactical feat: Narrow Profile (+2 AC), Off-Hand Balance, and Lunging Thrust when fighting with a single one-handed weapon and empty off-hand."
   },
   "shadow_striker": {
     "id": "shadow_striker",
-    "nameDe": "Schatten-Angreifer",
+    "nameDe": "Shadow Striker",
     "nameEn": "Shadow Striker",
     "category": "combat",
     "source": "phb2",
@@ -1275,10 +1425,13 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
         "desc": "Sneak attack"
       }
     ],
-    "benefitDe": "Taktisches Talent: Schaltet Fade Away, Shadow Evade und Strikethrough im Schatten frei.",
+    "benefitDe": "Tactical feat: tactical options in dim light and shadowy areas.",
     "benefitRaw": "Tactical feat: tactical options in dim light and shadowy areas.",
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
-    "appEffect": "Taktische Optionen in Schatten und Dämmerlicht"
+    "appEffect": "Tactical feat: tactical options in dim light and shadowy areas.",
+    "name": "Shadow Striker",
+    "benefit": "Tactical feat: tactical options in dim light and shadowy areas.",
+    "benefitEn": "Tactical feat: tactical options in dim light and shadowy areas."
   }
 };

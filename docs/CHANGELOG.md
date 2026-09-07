@@ -3,6 +3,20 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.5.0] - 2026-09-07
+
+### Changed
+- **100% D&D 3.5e RAW English Standardization:**
+  - **Feat Databases (`js/data/feats/**/*.js`):** Standardized all 12 feat files (Combat, General, Magic across PHB, PHB II, CA, CS). Removed German `benefitDe` and legacy German `appEffect` texts. Mapped `name`, `nameEn`, and `nameDe` to canonical RAW English; mapped `benefit`, `benefitRaw`, and `benefitDe` to canonical RAW English text. Standardized concise English `appEffect` strings.
+  - **Spell Databases (`data/spells-*.json`):** Standardized all 4 spell catalogs (`spells-phb.json`, `spells-phb2.json`, `spells-ca.json`, `spells-cs.json`). Set `name: nameEn` and `nameDe: nameEn`. Translated all 35 German spell effect sources (`"Stärke des Stiers"` $\rightarrow$ `"Bull's Strength"`, `"Hast"` $\rightarrow$ `"Haste"`, `"Schild"` $\rightarrow$ `"Shield"`, etc.) so that dice roll breakdowns display pure English.
+  - **Engine & Rules (`RulesData.js`, `RulesSpells.js`, `PCFeatsSpells.js`):** Prestige classes standardized to canonical English (*Mystic Theurge*, *Arcane Trickster*, *Dragon Disciple*, *Assassin*, *Shadowbane Inquisitor*). Spell eligibility, prohibited school, and feat validation errors converted to English (*"Not a Spellcaster"*, *"Cannot Learn Spell"*, *"Prohibited School"*).
+  - **UI & Dialog Cleanups:** Removed German subtitles, alternate name inputs, and fallback strings across `FeatScrollDialog`, `SpellCompendium`, `SpellbookTab`, `SpellPreparation`, `SpellCreatorDialog`, `SpellDetailsDialog`, `SpellScrollDialog`, and `SkillTrickDetailsDialog`.
+  - **Character Wizard & Alignment:** Updated alignment select dropdown in `Step1RaceName` to pure canonical English (*Lawful*, *Neutral*, *Chaotic*, *Good*, *Neutral*, *Evil*). Translated prestige class prerequisite checking and confirmation dialogs in `LevelHeaderAndStats` to English.
+  - **Print Layouts:** Standardized `PrintPage2SkillsFeatures`, `PrintPage3EquipmentArmory`, and `PrintPage4SpellsCompanion` to prioritize canonical English names and rule descriptions.
+
+### Fixed
+- **Test Suite Updates:** Updated `Tests/spell_eligibility_validation.test.js` to assert canonical English error messages. Fixed JSX closing tag in `PCSpellCompendium.tsx`.
+
 ## [6.4.1] - 2026-09-05
 
 ### Added
@@ -93,11 +107,23 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 - **Malformed PHB Spell Keys:**
   - Renamed 6 OCR/parser-corrupted keys: `enchantment_compulsion_` $\rightarrow$ `aid`, `enchantment_compulsion_mind_` $\rightarrow$ `animal_messenger`, `enchantment_compulsion_fear_mind_` $\rightarrow$ `bane`, `enchantment_compulsion_language_` $\rightarrow$ `command`, `illusion_phantasm_mind_affecting_` $\rightarrow$ `nightmare`, `enchantment_compulsion_death_` $\rightarrow$ `power_word_kill`.
   - Cleaned swallowed tail header text from 300+ spell descriptions.
-
-### Fixed
 - **Character Creation Wizard Multiclass Feat Resolution (`FeatSlotsSidebar.tsx` & `Step3LevelConfig.tsx`):** Fixed multiclass character creation soft-lock where class-granted bonus feats (such as *Scribe Scroll* for Wizard 1) were unpopulated in draft state, rendered as unclickable `— Select —`, and blocked level progression. Added automatic `defaultFeat` population, visual `✓ Fixed` indicators, and step validation bypass.
 - **Anima-Construct Race Selection (`PCClassesManager.tsx` & `PCHeaderInfo.tsx`):** Restored the *Anima-Construct* (Living Construct) race option in the Player Sheet race dropdown selector and character header display.
 - **Character Creation Wizard Save Finalization (`wizardSaveHelper.ts` & `helpers.ts`):** Fixed runtime `TypeError` on clicking `✦ Create & Save` by harmonizing `allSkills` and `allSkillTricks` return signatures in `getCompletedDraftPCState` and adding defensive iterable fallbacks.
+
+---
+
+## [6.2.2] - 2026-09-03
+
+### Fixed
+- **D&D 3.5e RAW Ability Modifier Calculation (`Combatant.getAttributeMod`):** Fixed attribute modifier calculation for scores 1–9 by replacing the flawed ternary lookup table with the universal mathematical rule `Math.floor((score - 10) / 2)` (RAW PHB p.8), correctly resolving scores 3–5 to `-4` and `-3` instead of off-by-one errors. Added full regression test suite in `Tests/attribute_modifiers_raw.test.js`.
+- **Error Boundary Auth Persistence (`ErrorBoundary.tsx`):** Fixed crash recovery reset to selectively remove only application state keys (`dd_combatsheet_state`, `dd_active_character_id`, `dd_active_campaign_id`) instead of executing `localStorage.clear()`, preserving user authentication sessions in Supabase.
+- **Resilient Spell Database Loading (`spells.js`):** Upgraded `loadSpells()` to use `Promise.allSettled()`, ensuring supplemental book network/CDN dropouts do not block core PHB/PHB2 spell databases from loading.
+- **Printable Folio Spell Effect Summaries (`PrintPage4SpellsCompanion.tsx`):** Added `formatSpellSummary()` to parse long spell descriptions into concise, 1-line Effect Summaries (max ~85 characters with word-boundary ellipsis and tooltip), preventing table row bloat and preserving the strict 296mm A4 print layout.
+- **Root Application Type Safety (`App.tsx` & `combat.ts`):** Removed `as any` cast on `useCombatState()`, strictly typed `SessionInfo.role` to encompass all valid role states (`host`, `dm`, `player`, `client`, `choice`, `wizard`), and typed root content as `React.ReactNode`.
+- **Bilingual Stacking & Spell Slot Dialogs (`BuffRules.js`):** Standardized all remaining alert, confirm, and prompt dialogs in `activateBuffByKey()` to English D&D 3.5e RAW terms (`Spell Slot Expended`, `Stacking Conflict`, `Buff Overridden`, `Caster Level`, `No Available Spell Slots`, `Cast Spell?`).
+- **Standardized Duration Parsing (`BuffRules.js`):** Enhanced `calculateDurationRounds()` with comprehensive regular expression recognition supporting all standard D&D 3.5e SRD duration increments (`round/level`, `10 min./level`, `min./level`, `rounds`, `minutes`).
+- **CQS Clarification & Default Character Name (`state-core.js`):** Documented the bootstrap side-effect of `getActivePC()` via JSDoc `@sideEffects` and updated the default fallback character moniker to `'Adventurer'`.
 
 ---
 

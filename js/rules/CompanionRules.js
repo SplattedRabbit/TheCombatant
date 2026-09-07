@@ -49,9 +49,9 @@ export const CompanionRules = {
           cha: 6,
           maxHP: 13,
           attacks: [
-            { name: 'Biss-Angriff (Wolf)', bonus: 3, damage: '1w6+1', note: 'plus Zu-Boden-werfen' }
+            { name: 'Bite Attack (Wolf)', bonus: 3, damage: '1d6+1', note: 'plus Trip' }
           ],
-          specials: 'Geruchssinn, Link, Zauber teilen'
+          specials: 'Scent, Link, Share Spells, Trip'
         };
         baseHD = 2;
         attackScaleType = 'str';
@@ -67,18 +67,18 @@ export const CompanionRules = {
           cha: 6,
           maxHP: 19,
           attacks: [
-            { name: 'Biss-Angriff (Leopard)', bonus: 6, damage: '1w6+3' },
-            { name: '2x Krallen (Leopard)', bonus: 1, damage: '1w3+1' },
-            { name: 'Anspringen & Ankrallen (Rake)', bonus: 1, damage: '1w3+1', note: 'falls angesprungen' }
+            { name: 'Bite Attack (Leopard)', bonus: 6, damage: '1d6+3' },
+            { name: '2x Claws (Leopard)', bonus: 1, damage: '1d3+1' },
+            { name: 'Pounce & Rake', bonus: 1, damage: '1d3+1', note: 'on charge' }
           ],
-          specials: 'Geruchssinn, Link, Zauber teilen, Anspringen'
+          specials: 'Scent, Link, Share Spells, Pounce'
         };
         baseHD = 3;
         attackScaleType = 'dex';
         break;
       case 'bear':
         stats = {
-          name: 'Braunbär',
+          name: 'Brown Bear',
           ac: 15,
           str: 27,
           dex: 13,
@@ -87,17 +87,17 @@ export const CompanionRules = {
           cha: 6,
           maxHP: 51,
           attacks: [
-            { name: '2x Krallen-Angriff (Bär)', bonus: 11, damage: '1w8+8' },
-            { name: 'Biss-Angriff (Bär)', bonus: 6, damage: '2w6+4', note: 'plus Umklammern' }
+            { name: '2x Claws Attack (Bear)', bonus: 11, damage: '1d8+8' },
+            { name: 'Bite Attack (Bear)', bonus: 6, damage: '2d6+4', note: 'plus Improved Grab' }
           ],
-          specials: 'Geruchssinn, Link, Zauber teilen, Umklammern (Grab)'
+          specials: 'Scent, Link, Share Spells, Improved Grab'
         };
         baseHD = 6;
         attackScaleType = 'str';
         break;
       case 'custom':
         return {
-          name: 'Benutzerdefiniert',
+          name: 'Custom',
           ac: 10,
           str: 10,
           dex: 10,
@@ -106,9 +106,9 @@ export const CompanionRules = {
           cha: 10,
           maxHP: 10,
           attacks: [
-            { name: 'Nahkampfangriff (Custom)', bonus: 0, damage: '1w6' }
+            { name: 'Melee Attack (Custom)', bonus: 0, damage: '1d6' }
           ],
-          specials: 'Eigene Werte eingetragen'
+          specials: 'Custom stats configured'
         };
       default:
         return null;
@@ -160,16 +160,16 @@ export const CompanionRules = {
       
       // Scale damage formula dynamically
       if (type === 'wolf') {
-        scaledDamage = `1w6+${Math.floor(newStrMod * 1.5)}`;
+        scaledDamage = `1d6+${Math.floor(newStrMod * 1.5)}`;
       } else if (type === 'leopard') {
-        if (att.name.includes('Biss')) {
-          scaledDamage = `1w6+${newStrMod}`;
+        if (att.name.includes('Biss') || att.name.includes('Bite')) {
+          scaledDamage = `1d6+${newStrMod}`;
         } else {
-          scaledDamage = `1w3+${Math.floor(newStrMod / 2)}`;
+          scaledDamage = `1d3+${Math.floor(newStrMod / 2)}`;
         }
       } else if (type === 'bear') {
-        if (att.name.includes('Kralle')) {
-          scaledDamage = `1w8+${newStrMod}`;
+        if (att.name.includes('Kralle') || att.name.includes('Claw')) {
+          scaledDamage = `1d8+${newStrMod}`;
         } else {
           scaledDamage = `2d6+${Math.floor(newStrMod / 2)}`;
         }
@@ -183,7 +183,7 @@ export const CompanionRules = {
     });
 
     if (bonusHD > 0) {
-      stats.specials += `, +${bonusHD} HD (Boni eingerechnet)`;
+      stats.specials += `, +${bonusHD} HD (bonuses included)`;
     }
 
     return stats;

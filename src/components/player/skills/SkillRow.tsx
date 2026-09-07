@@ -92,7 +92,7 @@ export const SkillRow: React.FC<SkillRowProps> = ({
             gap: '2.5px',
             opacity: isTrainedOnlyDisabled ? 0.4 : 1,
           }}
-          title={isTrainedOnlyDisabled ? 'Trained Only (cannot be used untrained)' : `Roll skill check for ${skill.nameEn || skill.nameDe}`}
+          title={isTrainedOnlyDisabled ? 'Trained Only (cannot be used untrained)' : `Roll skill check for ${skill.nameEn || skill.name || skill.nameDe}`}
         >
           🎲{' '}
           <span
@@ -104,7 +104,7 @@ export const SkillRow: React.FC<SkillRowProps> = ({
               maxWidth: '110px',
             }}
           >
-            {skill.nameEn || skill.nameDe}
+            {skill.nameEn || skill.name || skill.nameDe}
           </span>
         </button>
         <span style={{ fontSize: '6.5px', color: 'var(--inkl)', flexShrink: 0 }}>({skill.abl.toUpperCase()})</span>

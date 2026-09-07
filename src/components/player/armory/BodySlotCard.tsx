@@ -187,7 +187,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
             }}
             title={item.name}
           >
-            {item.name || item.nameDe || 'Equipped'}
+            {item.name || item.nameEn || item.nameDe || 'Equipped'}
           </div>
 
           {/* Charges / Activation Mini-Bar */}

@@ -102,26 +102,44 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch: Network-First, Fallback auf Cache (Offline-Modus)
+// Fetch: Cache-First for static assets (JS, CSS, JSON, Fonts, Images), Network-First for navigation HTML
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
+
+  // 1. HTML Navigations -> Network-First (with offline cache fallback)
+  if (event.request.mode === 'navigate' || event.request.destination === 'document') {
+    event.respondWith(
+      fetch(event.request).then(networkResponse => {
+        if (networkResponse && networkResponse.status === 200) {
+          const resClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, resClone));
+        }
+        return networkResponse;
+      }).catch(() => caches.match(event.request).then(cached => cached || caches.match('./index.html')))
+    );
+    return;
+  }
+
+  // 2. Static Assets & Data -> Cache-First
   event.respondWith(
-    fetch(event.request).then(networkResponse => {
-      if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseToCache));
+    caches.match(event.request).then(cached => {
+      if (cached) {
+        return cached;
       }
-      return networkResponse;
-    }).catch(() =>
-      caches.match(event.request).then(cached => {
-        if (cached) return cached;
-        return new Response('Offline – Ressource nicht gecacht', {
+      return fetch(event.request).then(networkResponse => {
+        if (networkResponse && networkResponse.status === 200) {
+          const resClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, resClone));
+        }
+        return networkResponse;
+      }).catch(() => {
+        return new Response('Offline – Resource not cached', {
           status: 503,
           statusText: 'Service Unavailable',
           headers: new Headers({ 'Content-Type': 'text/plain; charset=utf-8' })
         });
-      })
-    )
+      });
+    })
   );
 });
 `;

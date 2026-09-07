@@ -12,12 +12,41 @@ import { COMBAT_FEATS_REGISTRY } from './feats/combat/index.js';
 import { MAGIC_FEATS_REGISTRY } from './feats/magic/index.js';
 import { GENERAL_FEATS_REGISTRY } from './feats/general/index.js';
 
+const RAW_FEATS_REGISTRY = {
+  ...COMBAT_FEATS_REGISTRY,
+  ...MAGIC_FEATS_REGISTRY,
+  ...GENERAL_FEATS_REGISTRY
+};
+
+// Normalize all feats to canonical English properties (RAW)
+const NORMALIZED_FEATS_REGISTRY = {};
+Object.entries(RAW_FEATS_REGISTRY).forEach(([id, f]) => {
+  const name = f.nameEn || f.name || f.nameDe || id;
+  const benefit = f.benefitRaw || f.benefit || f.benefitDe || '';
+  const special = f.specialRaw || f.special || '';
+  const normal = f.normalRaw || f.normal || '';
+
+  NORMALIZED_FEATS_REGISTRY[id] = {
+    ...f,
+    id: f.id || id,
+    name,
+    nameEn: name,
+    nameDe: f.nameDe || name,
+    benefit,
+    benefitRaw: f.benefitRaw || benefit,
+    benefitDe: f.benefitDe || benefit,
+    special,
+    specialRaw: f.specialRaw || special,
+    normal,
+    normalRaw: f.normalRaw || normal,
+    description: benefit,
+    category: f.category || 'general',
+    source: f.source || 'phb'
+  };
+});
+
 export const CombatFeats = {
-  REGISTRY: {
-    ...COMBAT_FEATS_REGISTRY,
-    ...MAGIC_FEATS_REGISTRY,
-    ...GENERAL_FEATS_REGISTRY
-  }
+  REGISTRY: NORMALIZED_FEATS_REGISTRY
 };
 
 /**
@@ -41,28 +70,30 @@ export function checkFeatPrerequisites(featId, pc) {
     if (pr.type === 'bab') {
       const pcBab = pc.bab ? (typeof pc.bab.getValue === 'function' ? pc.bab.getValue() : (typeof pc.bab === 'number' ? pc.bab : (pc.bab.value ?? pc.bab.base ?? 0))) : 0;
       prMet = pcBab >= pr.value;
-      desc  = `Grundangriffsbonus +${pr.value} (aktuell: +${pcBab})`;
+      desc  = `Base attack bonus +${pr.value} (current: +${pcBab})`;
     } else if (pr.type === 'feat') {
       prMet = learnedIds.includes(pr.id);
       const pf = CombatFeats.REGISTRY[pr.id];
-      desc  = `Talent: ${pf ? pf.nameDe : pr.id}`;
+      desc  = `Feat: ${pf ? (pf.name || pf.nameEn || pf.nameDe) : pr.id}`;
     } else if (pr.type === 'classLevel') {
       const cls = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === pr.class) : null;
       const lvl = cls ? cls.level : 0;
       prMet = lvl >= pr.value;
-      desc  = `${pr.class} Stufe ${pr.value} (aktuell: ${lvl})`;
+      const className = pr.class ? pr.class.charAt(0).toUpperCase() + pr.class.slice(1) : 'Class';
+      desc  = `${className} level ${pr.value} (current: ${lvl})`;
     } else if (pr.type === 'class') {
       prMet = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === pr.class);
-      desc  = `Klasse: ${pr.class}`;
+      const className = pr.class ? pr.class.charAt(0).toUpperCase() + pr.class.slice(1) : 'Class';
+      desc  = `Class: ${className}`;
     } else if (pr.type === 'stat') {
-      const nameMap = { str: 'Stärke', dex: 'Geschicklichkeit', con: 'Konstitution', int: 'Intelligenz', wis: 'Weisheit', cha: 'Charisma' };
+      const nameMap = { str: 'Strength', dex: 'Dexterity', con: 'Constitution', int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma' };
       const statObj = pc[pr.name];
       const val = statObj ? (typeof statObj.getValue === 'function' ? statObj.getValue() : (typeof statObj === 'number' ? statObj : (statObj.base ?? statObj.value ?? 10))) : 10;
       prMet = val >= pr.value;
-      desc  = `${nameMap[pr.name] || pr.name} ${pr.value}+ (aktuell: ${val})`;
+      desc  = `${nameMap[pr.name] || pr.name} ${pr.value}+ (current: ${val})`;
     } else if (pr.type === 'level') {
       prMet = (pc.level || 1) >= pr.value;
-      desc  = `Charakterstufe ${pr.value} (aktuell: ${pc.level || 1})`;
+      desc  = `Character level ${pr.value} (current: ${pc.level || 1})`;
     } else if (pr.type === 'casterLevel') {
       let maxCL = 0;
       if (Array.isArray(pc.classes)) {
@@ -138,7 +169,7 @@ export function checkFeatPrerequisites(featId, pc) {
         const reqDice = match ? parseInt(match[1]) : 1;
         prMet = saDice >= reqDice;
         desc = `Special: Sneak attack +${reqDice}d6 (current: +${saDice}d6)`;
-      } else if (descLower.includes('turn undead') || descLower.includes('untote zu vertreiben')) {
+      } else if (descLower.includes('turn undead') || descLower.includes('turn or rebuke undead') || descLower.includes('rebuke undead') || descLower.includes('untote zu vertreiben')) {
         const clericClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'cleric') : null;
         const paladinClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'paladin') : null;
         const clericLvl = clericClass ? clericClass.level : 0;

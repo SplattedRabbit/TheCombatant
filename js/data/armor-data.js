@@ -2,6 +2,7 @@ export const ARMOR_REGISTRY = {
   // Leichte Rüstung
   padded: {
     key: 'padded',
+    name: 'Padded armor',
     nameDe: 'Gepolsterte Rüstung',
     nameEn: 'Padded armor',
     armorBonus: 1,
@@ -13,6 +14,7 @@ export const ARMOR_REGISTRY = {
   },
   leather: {
     key: 'leather',
+    name: 'Leather armor',
     nameDe: 'Lederrüstung',
     nameEn: 'Leather armor',
     armorBonus: 2,
@@ -24,6 +26,7 @@ export const ARMOR_REGISTRY = {
   },
   studded_leather: {
     key: 'studded_leather',
+    name: 'Studded leather',
     nameDe: 'Beschlagenes Leder',
     nameEn: 'Studded leather',
     armorBonus: 3,
@@ -35,6 +38,7 @@ export const ARMOR_REGISTRY = {
   },
   chain_shirt: {
     key: 'chain_shirt',
+    name: 'Chain shirt',
     nameDe: 'Kettenhemd',
     nameEn: 'Chain shirt',
     armorBonus: 4,
@@ -48,6 +52,7 @@ export const ARMOR_REGISTRY = {
   // Mittelschwere Rüstung
   hide: {
     key: 'hide',
+    name: 'Hide armor',
     nameDe: 'Fellrüstung',
     nameEn: 'Hide armor',
     armorBonus: 3,
@@ -59,6 +64,7 @@ export const ARMOR_REGISTRY = {
   },
   scale_mail: {
     key: 'scale_mail',
+    name: 'Scale mail',
     nameDe: 'Schuppenpanzer',
     nameEn: 'Scale mail',
     armorBonus: 4,
@@ -70,6 +76,7 @@ export const ARMOR_REGISTRY = {
   },
   chainmail: {
     key: 'chainmail',
+    name: 'Chainmail',
     nameDe: 'Kettenpanzer',
     nameEn: 'Chainmail',
     armorBonus: 5,
@@ -81,6 +88,7 @@ export const ARMOR_REGISTRY = {
   },
   breastplate: {
     key: 'breastplate',
+    name: 'Breastplate',
     nameDe: 'Brustplatte',
     nameEn: 'Breastplate',
     armorBonus: 5,
@@ -94,6 +102,7 @@ export const ARMOR_REGISTRY = {
   // Schwere Rüstung
   splint_mail: {
     key: 'splint_mail',
+    name: 'Splint mail',
     nameDe: 'Schienenpanzer',
     nameEn: 'Splint mail',
     armorBonus: 6,
@@ -105,6 +114,7 @@ export const ARMOR_REGISTRY = {
   },
   banded_mail: {
     key: 'banded_mail',
+    name: 'Banded mail',
     nameDe: 'Bänderpanzer',
     nameEn: 'Banded mail',
     armorBonus: 6,
@@ -116,6 +126,7 @@ export const ARMOR_REGISTRY = {
   },
   half_plate: {
     key: 'half_plate',
+    name: 'Half-plate',
     nameDe: 'Halbharnisch',
     nameEn: 'Half-plate',
     armorBonus: 7,
@@ -127,6 +138,7 @@ export const ARMOR_REGISTRY = {
   },
   full_plate: {
     key: 'full_plate',
+    name: 'Full plate',
     nameDe: 'Ritterharnisch',
     nameEn: 'Full plate',
     armorBonus: 8,
@@ -140,6 +152,7 @@ export const ARMOR_REGISTRY = {
   // Schilde
   buckler: {
     key: 'buckler',
+    name: 'Buckler',
     nameDe: 'Buckler',
     nameEn: 'Buckler',
     armorBonus: 1,
@@ -151,6 +164,7 @@ export const ARMOR_REGISTRY = {
   },
   shield_light_wooden: {
     key: 'shield_light_wooden',
+    name: 'Shield, light wooden',
     nameDe: 'Leichter Holzschild',
     nameEn: 'Shield, light wooden',
     armorBonus: 1,
@@ -162,6 +176,7 @@ export const ARMOR_REGISTRY = {
   },
   shield_light_steel: {
     key: 'shield_light_steel',
+    name: 'Shield, light steel',
     nameDe: 'Leichter Stahlschild',
     nameEn: 'Shield, light steel',
     armorBonus: 1,
@@ -173,6 +188,7 @@ export const ARMOR_REGISTRY = {
   },
   shield_heavy_wooden: {
     key: 'shield_heavy_wooden',
+    name: 'Shield, heavy wooden',
     nameDe: 'Schwerer Holzschild',
     nameEn: 'Shield, heavy wooden',
     armorBonus: 2,
@@ -184,6 +200,7 @@ export const ARMOR_REGISTRY = {
   },
   shield_heavy_steel: {
     key: 'shield_heavy_steel',
+    name: 'Shield, heavy steel',
     nameDe: 'Schwerer Stahlschild',
     nameEn: 'Shield, heavy steel',
     armorBonus: 2,
@@ -195,6 +212,7 @@ export const ARMOR_REGISTRY = {
   },
   shield_tower: {
     key: 'shield_tower',
+    name: 'Tower shield',
     nameDe: 'Turmschild',
     nameEn: 'Tower shield',
     armorBonus: 4,
@@ -208,6 +226,7 @@ export const ARMOR_REGISTRY = {
   // Eigene / Benutzerdefinierte Typen
   custom_light_armor: {
     key: 'custom_light_armor',
+    name: 'Custom light armor',
     nameDe: 'Eigene leichte Rüstung',
     nameEn: 'Custom light armor',
     armorBonus: 2,
@@ -219,6 +238,7 @@ export const ARMOR_REGISTRY = {
   },
   custom_medium_armor: {
     key: 'custom_medium_armor',
+    name: 'Custom medium armor',
     nameDe: 'Eigene mittelschwere Rüstung',
     nameEn: 'Custom medium armor',
     armorBonus: 5,
@@ -230,6 +250,7 @@ export const ARMOR_REGISTRY = {
   },
   custom_heavy_armor: {
     key: 'custom_heavy_armor',
+    name: 'Custom heavy armor',
     nameDe: 'Eigene schwere Rüstung',
     nameEn: 'Custom heavy armor',
     armorBonus: 8,
@@ -241,6 +262,7 @@ export const ARMOR_REGISTRY = {
   },
   custom_shield: {
     key: 'custom_shield',
+    name: 'Custom shield',
     nameDe: 'Eigener Schild',
     nameEn: 'Custom shield',
     armorBonus: 2,

@@ -57,7 +57,7 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
                   {slot.label} {isPreFilled ? '(Fixed)' : isChoice ? '(Class Choice)' : ''}
                 </span>
                 <strong style={{ fontSize: '11.5px', color: (selectedFeat || isPreFilled) ? 'var(--ink)' : 'var(--red)' }}>
-                  {selectedFeat ? (selectedFeat.nameEn || selectedFeat.nameDe) : (slot.defaultFeat ? slot.defaultFeat : '— Select —')}
+                  {selectedFeat ? (selectedFeat.nameEn || selectedFeat.name || selectedFeat.nameDe) : (slot.defaultFeat ? slot.defaultFeat : '— Select —')}
                 </strong>
               </div>
               {!isPreFilled ? (

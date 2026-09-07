@@ -7,7 +7,15 @@
     <link rel="icon" type="image/png" href="./icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&family=Roboto+Mono:wght@400;600&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    </noscript>
+    <link rel="preload" href="./data/spells-phb.json" as="fetch" crossorigin />
+    <link rel="preload" href="./data/spells-phb2.json" as="fetch" crossorigin />
+    <link rel="preload" href="./data/spells-ca.json" as="fetch" crossorigin />
+    <link rel="preload" href="./data/spells-cs.json" as="fetch" crossorigin />
     <script>
       // Dynamische Pfadauflösung für PWA-Assets (funktioniert lokal und auf GitHub Pages)
       const baseDir = window.location.pathname.endsWith('/') 

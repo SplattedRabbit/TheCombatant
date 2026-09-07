@@ -38,7 +38,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
   const isWizard = pc.classes && pc.classes.some((c: any) => c.classType === 'wizard');
   const wizardSpecialization = pc.wizardSpecialization || 'none';
   const hasSpecSlot = isWizard && wizardSpecialization !== 'none';
-  const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
+  const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.name || spell.nameEn);
 
   const isCleric = pc.classes && pc.classes.some((c: any) => c.classType === 'cleric');
   const hasClericDomains = isCleric && Array.isArray(pc.clericDomains) && pc.clericDomains.length > 0;
@@ -96,11 +96,11 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
     const currentPrepsCount = SpellSlotCalculator.countPreparedSpellsAtLevel(pc, finalLevel);
 
     if (maxSlots === 0) {
-      showCustomConfirm("No Slots!", `You have no spell slots of level ${finalLevel}. Do you want to prepare "${spell.nameEn || spell.nameDe}" anyway?`, () => {
+      showCustomConfirm("No Slots!", `You have no spell slots of level ${finalLevel}. Do you want to prepare "${spell.name || spell.nameEn}" anyway?`, () => {
         performPrep();
       });
     } else if (currentPrepsCount >= maxSlots) {
-      showCustomConfirm("All Slots Filled!", `You have already filled ${currentPrepsCount} out of ${maxSlots} slots of level ${finalLevel}. Do you want to prepare "${spell.nameEn || spell.nameDe}" anyway?`, () => {
+      showCustomConfirm("All Slots Filled!", `You have already filled ${currentPrepsCount} out of ${maxSlots} slots of level ${finalLevel}. Do you want to prepare "${spell.name || spell.nameEn}" anyway?`, () => {
         performPrep();
       });
     } else {
@@ -147,7 +147,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
 
         <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)', marginBottom: '2px', textAlign: 'center' }}>
-          {spell.nameEn || spell.nameDe} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span>
+          {spell.name || spell.nameEn} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span>
         </div>
         <div style={{ fontSize: '8px', color: 'var(--inkl)', textAlign: 'center', marginBottom: '10px' }}>
           Base Level: Level {spell.level}
@@ -331,7 +331,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
         showCustomAlert("Spell cast! ✨", `
           <div style="font-family:var(--font-body); font-size:10px; text-align:left; color:var(--ink); line-height:1.35;">
             <div style="border-bottom: 0.5px solid var(--pb); padding-bottom: 2px; margin-bottom: 4px; font-weight: bold; text-align: center; font-family:var(--font-title); color: var(--red); font-size: 11px;">
-              ${pc.name} casts ${spell.nameEn || spell.nameDe}${metaSuffix}!
+              ${pc.name} casts ${spell.name || spell.nameEn}${metaSuffix}!
             </div>
             • <strong>School:</strong> ${spell.school}<br>
             • <strong>Level:</strong> Level ${finalLevel} (Base ${spell.level})<br>
@@ -351,11 +351,11 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
     const usedSlots = pc.spellSlots[finalLevel]?.used || 0;
 
     if (maxSlots === 0) {
-      showCustomConfirm("No Slots!", `You have no spell slots of level ${finalLevel}. Do you want to cast "${spell.nameEn || spell.nameDe}" anyway?`, () => {
+      showCustomConfirm("No Slots!", `You have no spell slots of level ${finalLevel}. Do you want to cast "${spell.name || spell.nameEn}" anyway?`, () => {
         performCast();
       });
     } else if (usedSlots >= maxSlots) {
-      showCustomConfirm("No Free Slots!", `You have expended all spell slots of level ${finalLevel}. Do you want to cast "${spell.nameEn || spell.nameDe}" anyway?`, () => {
+      showCustomConfirm("No Free Slots!", `You have expended all spell slots of level ${finalLevel}. Do you want to cast "${spell.name || spell.nameEn}" anyway?`, () => {
         performCast();
       });
     } else {
@@ -402,7 +402,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
 
         <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)', marginBottom: '2px', textAlign: 'center' }}>
-          {spell.nameEn || spell.nameDe} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span>
+          {spell.name || spell.nameEn} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span>
         </div>
         <div style={{ fontSize: '8px', color: 'var(--inkl)', textAlign: 'center', marginBottom: '10px' }}>
           Base Level: Level {spell.level}

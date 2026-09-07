@@ -205,7 +205,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       breakdown.push({ label: 'Condition (Shaken)', value: -2 });
     }
 
-    showRollBreakdown(`Skill check: ${skill.nameEn || skill.nameDe}`, '1d20', breakdown, e.nativeEvent);
+    showRollBreakdown(`Skill check: ${skill.nameEn || skill.name || skill.nameDe || ''}`, '1d20', breakdown, e.nativeEvent);
   };
 
   const handleRanksChange = (key: string, val: string) => {
@@ -223,15 +223,15 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       if (freeSP < cost) {
         if (!isClass && freeSP === 1) {
           showCustomAlert(
-            'Aktion nicht möglich',
-            'Es ist nicht möglich, einen einzelnen verbleibenden Skillpunkt für eine klassenfremde Fertigkeit auszugeben. Sie benötigen mindestens 2 freie Skillpunkte, da klassenfremde Fertigkeiten 2 Skillpunkte pro Rang kosten.',
+            'Action Not Allowed',
+            'It is not possible to spend a single remaining skill point on a cross-class skill. You need at least 2 available skill points, as cross-class skills cost 2 points per rank.',
             'OK',
             '📝',
           );
         } else {
           showCustomAlert(
-            'Nicht genügend Skillpunkte',
-            `Sie haben nicht genügend freie Skillpunkte (${freeSP} vorhanden, ${cost} benötigt).`,
+            'Not Enough Skill Points',
+            `You do not have enough available skill points (${freeSP} available, ${cost} required).`,
             'OK',
             '📝',
           );
@@ -274,7 +274,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       .filter((key) => {
         const skill = SKILLS_REGISTRY[key];
         const q = searchQuery.toLowerCase().trim();
-        const name = skill.nameEn || skill.nameDe;
+        const name = skill.nameEn || skill.name || skill.nameDe || '';
         const matchesQuery = name.toLowerCase().includes(q) || key.includes(q);
 
         let matchesFilter = true;
@@ -287,8 +287,8 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
         return matchesQuery && matchesFilter;
       })
       .sort((a, b) => {
-        const nameA = SKILLS_REGISTRY[a].nameEn || SKILLS_REGISTRY[a].nameDe;
-        const nameB = SKILLS_REGISTRY[b].nameEn || SKILLS_REGISTRY[b].nameDe;
+        const nameA = SKILLS_REGISTRY[a].nameEn || SKILLS_REGISTRY[a].name || SKILLS_REGISTRY[a].nameDe || '';
+        const nameB = SKILLS_REGISTRY[b].nameEn || SKILLS_REGISTRY[b].name || SKILLS_REGISTRY[b].nameDe || '';
         return nameA.localeCompare(nameB);
       });
   }, [searchQuery, filterType, pc]);

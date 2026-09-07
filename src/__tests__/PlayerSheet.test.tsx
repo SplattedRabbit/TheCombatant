@@ -28,7 +28,7 @@ describe('PlayerSheet Component (Task 6.1.3)', () => {
     renderWithProviders(<PlayerSheet pc={samplePC} />);
 
     // Header checks (character name input and class badge)
-    expect(screen.getByDisplayValue('Aranis Silberklinge')).toBeInTheDocument();
+    expect(screen.getByDisplayValue('Aranis Silverblade')).toBeInTheDocument();
     expect(screen.getByText(/Paladin 3/i)).toBeInTheDocument();
 
     // Overview panel should be active

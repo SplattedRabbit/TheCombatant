@@ -124,7 +124,8 @@ export const CLASSES = [
   { key: 'spellthief',    nameDe: 'Spellthief',   nameEn: 'Spellthief',   hitDie: 6,  hd: 6,  bab: 'avg',  saves: { fort: 'poor', ref: 'good', wil: 'poor' }, source: 'ca',   isCaster: false },
   {
     key: 'mystic_theurge',
-    nameDe: 'Mystischer Theurge',
+    name: 'Mystic Theurge',
+    nameDe: 'Mystic Theurge',
     nameEn: 'Mystic Theurge',
     isPrestige: true,
     hitDie: 4,
@@ -139,7 +140,8 @@ export const CLASSES = [
   },
   {
     key: 'arcane_trickster',
-    nameDe: 'Arkaner Trickser',
+    name: 'Arcane Trickster',
+    nameDe: 'Arcane Trickster',
     nameEn: 'Arcane Trickster',
     isPrestige: true,
     hitDie: 4,
@@ -156,7 +158,8 @@ export const CLASSES = [
   },
   {
     key: 'dragon_disciple',
-    nameDe: 'Drachen-Jünger',
+    name: 'Dragon Disciple',
+    nameDe: 'Dragon Disciple',
     nameEn: 'Dragon Disciple',
     isPrestige: true,
     hitDie: 12,
@@ -173,7 +176,8 @@ export const CLASSES = [
   },
   {
     key: 'assassin',
-    nameDe: 'Assassine',
+    name: 'Assassin',
+    nameDe: 'Assassin',
     nameEn: 'Assassin',
     isPrestige: true,
     hitDie: 6,
@@ -229,7 +233,8 @@ export const CLASSES = [
   // Complete Adventurer Prestige Classes
   {
     key: 'shadowbane_inquisitor',
-    nameDe: 'Schattenbann-Inquisitor',
+    name: 'Shadowbane Inquisitor',
+    nameDe: 'Shadowbane Inquisitor',
     nameEn: 'Shadowbane Inquisitor',
     isPrestige: true,
     source: 'ca',

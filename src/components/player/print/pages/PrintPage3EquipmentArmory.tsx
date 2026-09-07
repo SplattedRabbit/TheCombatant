@@ -35,7 +35,7 @@ export const PrintPage3EquipmentArmory: React.FC<PrintPageProps> = ({ pc }) => {
   const getArmorName = (a: any) => {
     if (!a) return 'None';
     const reg = (ARMOR_REGISTRY as any)[a.type];
-    const baseName = a.name || reg?.nameEn || reg?.nameDe || a.type;
+    const baseName = a.name || reg?.nameEn || reg?.name || reg?.nameDe || a.type;
     const enh = a.enhancement ? `+${a.enhancement} ` : '';
     return `${enh}${baseName}`;
   };

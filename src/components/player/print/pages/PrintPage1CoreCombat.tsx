@@ -238,7 +238,7 @@ export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
               <div className="dnd-box" style={{ textAlign: 'center' }}>
                 <div className="dnd-label">Speed</div>
-                <div className="dnd-value">{pc.speed || '30 ft.'}</div>
+                <div className="dnd-value">{pc.speed ? (typeof pc.speed === 'number' || /^\d+$/.test(String(pc.speed).trim()) ? `${pc.speed} ft.` : pc.speed) : '30 ft.'}</div>
               </div>
               <div className="dnd-box" style={{ textAlign: 'center' }}>
                 <div className="dnd-label">Initiative</div>

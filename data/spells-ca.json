@@ -1,7 +1,7 @@
 {
   "arrow_mind": {
     "id": "arrow_mind",
-    "nameDe": "Pfeilverstand",
+    "nameDe": "Arrow Mind",
     "nameEn": "Arrow Mind",
     "level": 1,
     "school": "Divination",
@@ -28,11 +28,12 @@
         "class": "wizard",
         "level": 1
       }
-    ]
+    ],
+    "name": "Arrow Mind"
   },
   "bladeweave": {
     "id": "bladeweave",
-    "nameDe": "Klingenweben",
+    "nameDe": "Bladeweave",
     "nameEn": "Bladeweave",
     "level": 2,
     "school": "Illusion",
@@ -62,11 +63,12 @@
     "duration": "1 round/level",
     "savingThrow": "Will negates; see text",
     "spellResistance": "Yes",
-    "description": "For the duration of the spell, once per round when you hit a creature with a melee attack, that creature must make a Will save or be dazed for 1 round."
+    "description": "For the duration of the spell, once per round when you hit a creature with a melee attack, that creature must make a Will save or be dazed for 1 round.",
+    "name": "Bladeweave"
   },
   "blindsight": {
     "id": "blindsight",
-    "nameDe": "Blindsicht",
+    "nameDe": "Blindsight",
     "nameEn": "Blindsight",
     "level": 2,
     "school": "Transmutation",
@@ -88,11 +90,12 @@
         "class": "cleric",
         "level": 3
       }
-    ]
+    ],
+    "name": "Blindsight"
   },
   "critical_strike": {
     "id": "critical_strike",
-    "nameDe": "Kritischer Stoß",
+    "nameDe": "Critical Strike",
     "nameEn": "Critical Strike",
     "level": 1,
     "school": "Divination",
@@ -127,11 +130,12 @@
     "duration": "1 round",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "For 1 round, your melee attacks against flanked foes or foes denied their Dexterity bonus to AC double their critical threat range, gain +4 bonus on rolls to confirm critical hits, and deal an additional 1d6 points of damage."
+    "description": "For 1 round, your melee attacks against flanked foes or foes denied their Dexterity bonus to AC double their critical threat range, gain +4 bonus on rolls to confirm critical hits, and deal an additional 1d6 points of damage.",
+    "name": "Critical Strike"
   },
   "guided_shot": {
     "id": "guided_shot",
-    "nameDe": "Geführter Schuss",
+    "nameDe": "Guided Shot",
     "nameEn": "Guided Shot",
     "level": 1,
     "school": "Divination",
@@ -161,11 +165,12 @@
     "duration": "1 round",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "For 1 round, your ranged attacks ignore range increment penalties, and distance penalties. Your ranged attacks also ignore cover and concealment bonuses to AC (except for total cover and total concealment)."
+    "description": "For 1 round, your ranged attacks ignore range increment penalties, and distance penalties. Your ranged attacks also ignore cover and concealment bonuses to AC (except for total cover and total concealment).",
+    "name": "Guided Shot"
   },
   "iron_silence": {
     "id": "iron_silence",
-    "nameDe": "Eiserne Stille",
+    "nameDe": "Iron Silence",
     "nameEn": "Iron Silence",
     "level": 2,
     "school": "Transmutation",
@@ -195,11 +200,12 @@
     "duration": "1 hour/level (D)",
     "savingThrow": "Will negates (harmless, object)",
     "spellResistance": "Yes (harmless, object)",
-    "description": "This spell completely negates the armor check penalty of the touched suit of armor on Hide and Move Silently checks. The armor functions normally in all other respects."
+    "description": "This spell completely negates the armor check penalty of the touched suit of armor on Hide and Move Silently checks. The armor functions normally in all other respects.",
+    "name": "Iron Silence"
   },
   "sniper_s_shot": {
     "id": "sniper_s_shot",
-    "nameDe": "Präzisionsschuss",
+    "nameDe": "Sniper's Shot",
     "nameEn": "Sniper's Shot",
     "level": 1,
     "school": "Divination",
@@ -234,11 +240,12 @@
     "duration": "1 round",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "For 1 round, you can make sneak attacks, sudden strikes, or skirmish attacks with ranged weapons without the normal 30-foot range limitation (up to your weapon’s maximum range)."
+    "description": "For 1 round, you can make sneak attacks, sudden strikes, or skirmish attacks with ranged weapons without the normal 30-foot range limitation (up to your weapon’s maximum range).",
+    "name": "Sniper's Shot"
   },
   "snipers_eye": {
     "id": "snipers_eye",
-    "nameDe": "Scharfschützenauge",
+    "nameDe": "Sniper's Eye",
     "nameEn": "Sniper's Eye",
     "level": 4,
     "school": "Divination",
@@ -259,11 +266,12 @@
         "class": "ranger",
         "level": 4
       }
-    ]
+    ],
+    "name": "Sniper's Eye"
   },
   "sonic_weapon": {
     "id": "sonic_weapon",
-    "nameDe": "Schallwaffe",
+    "nameDe": "Sonic Weapon",
     "nameEn": "Sonic Weapon",
     "level": 2,
     "school": "Transmutation [Sonic]",
@@ -293,11 +301,12 @@
     "duration": "1 min./level",
     "savingThrow": "Will negates (harmless, object)",
     "spellResistance": "Yes (harmless, object)",
-    "description": "This spell imbues a weapon with sonic energy. The weapon deals an extra 1d6 points of sonic damage on each successful hit."
+    "description": "This spell imbues a weapon with sonic energy. The weapon deals an extra 1d6 points of sonic damage on each successful hit.",
+    "name": "Sonic Weapon"
   },
   "wraithstrike": {
     "id": "wraithstrike",
-    "nameDe": "Geisterschlag",
+    "nameDe": "Wraithstrike",
     "nameEn": "Wraithstrike",
     "level": 2,
     "school": "Transmutation",
@@ -327,6 +336,7 @@
     "duration": "1 round",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "For 1 round, your melee attacks and natural attacks are resolved as melee touch attacks, ignoring your opponents’ armor bonuses and natural armor bonuses to Armor Class."
+    "description": "For 1 round, your melee attacks and natural attacks are resolved as melee touch attacks, ignoring your opponents’ armor bonuses and natural armor bonuses to Armor Class.",
+    "name": "Wraithstrike"
   }
 }

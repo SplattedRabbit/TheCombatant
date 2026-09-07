@@ -160,7 +160,7 @@ export const RACES: RaceDetail[] = [
   },
   {
     key: 'anima_construct',
-    name: 'Anima-Konstrukt (Anima Construct)',
+    name: 'Anima Construct',
     modifiers: '+2 Constitution (CON), -2 Charisma (CHA)',
     size: 'Medium',
     traits: [

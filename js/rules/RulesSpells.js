@@ -343,7 +343,7 @@ export function validateSpellLearnEligibility(pc, spell, findSpellFn) {
 
   const activeClasses = Array.isArray(pc.classes) ? pc.classes : [];
   if (activeClasses.length === 0) {
-    return { allowed: false, title: 'Keine Klasse', reason: 'Dein Charakter besitzt noch keine Klassenstufe.' };
+    return { allowed: false, title: 'No Class', reason: 'Your character does not have any class levels yet.' };
   }
 
   const CASTER_CLASSES = ['cleric', 'wizard', 'sorcerer', 'bard', 'druid', 'paladin', 'ranger', 'duskblade', 'beguiler', 'assassin'];
@@ -351,26 +351,26 @@ export function validateSpellLearnEligibility(pc, spell, findSpellFn) {
   if (!hasCasterClass) {
     return {
       allowed: false,
-      title: 'Kein Zauberwirker',
-      reason: 'Deine Klasse besitzt kein Zauberbuch und kann keine Zauber erlernen.'
+      title: 'Not a Spellcaster',
+      reason: 'Your class does not use a spellbook and cannot learn spells.'
     };
   }
 
   if (isWizardProhibitedSchool(spell, pc)) {
-    const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.nameDe || spell.nameEn);
+    const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.name || spell.nameEn);
     const label = getSchoolLabel ? getSchoolLabel(schoolCode) : schoolCode;
     return {
       allowed: false,
-      title: 'Verbotene Schule',
-      reason: `Du kannst "${spell.nameEn || spell.nameDe}" nicht lernen, da er deiner Bannschule "${label}" angehört!`
+      title: 'Prohibited School',
+      reason: `You cannot learn "${spell.name || spell.nameEn}" because it belongs to your prohibited school "${label}"!`
     };
   }
 
   if (!isSpellEligibleForPC(spell, pc)) {
     return {
       allowed: false,
-      title: 'Nicht erlernbar',
-      reason: `"${spell.nameEn || spell.nameDe}" steht nicht auf der Zauberliste deiner Klasse(n) bzw. übersteigt deinen maximal verfügbaren Zaubergrad!`
+      title: 'Cannot Learn Spell',
+      reason: `"${spell.name || spell.nameEn}" is not on your class spell list or exceeds your maximum available spell level!`
     };
   }
 
@@ -378,8 +378,8 @@ export function validateSpellLearnEligibility(pc, spell, findSpellFn) {
   if (!knownCheck.success) {
     return {
       allowed: false,
-      title: 'Zauberlimit erreicht',
-      reason: knownCheck.error || 'Du kannst keine weiteren bekannten Zauber dieses Grades erlernen.'
+      title: 'Spell Limit Reached',
+      reason: knownCheck.error || 'You cannot learn any more known spells of this level.'
     };
   }
 

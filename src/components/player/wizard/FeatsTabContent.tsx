@@ -355,7 +355,7 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px', flexWrap: 'wrap' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '5px', minWidth: 0 }}>
                             <strong style={{ fontFamily: 'var(--font-title)', fontSize: '11px', color: titleColor, whiteSpace: 'nowrap' }}>
-                              {feat.nameEn || feat.nameDe || feat.name || feat.id}
+                              {feat.name || feat.nameEn || feat.nameDe || feat.id}
                             </strong>
                             {isTargetFeat && (
                               <span 
@@ -397,7 +397,7 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                         </div>
 
                         <div style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: isEligible || isAlreadyLearned || isAlreadySelected ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.3, marginTop: '2px' }}>
-                          {feat.benefitRaw || feat.benefitEn || feat.benefitDe || feat.benefit || feat.description}
+                          {feat.benefit || feat.benefitRaw || feat.benefitEn || feat.benefitDe || feat.description}
                         </div>
 
                         {feat.prereqs && feat.prereqs.length > 0 && (

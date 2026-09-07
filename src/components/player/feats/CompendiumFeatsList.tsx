@@ -92,11 +92,9 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
       const feat = item.feat;
       
       const matchesSearch =
-        (feat.nameDe || '').toLowerCase().includes(q) ||
-        (feat.nameEn || '').toLowerCase().includes(q) ||
+        (feat.name || feat.nameEn || feat.nameDe || '').toLowerCase().includes(q) ||
         feat.id.toLowerCase().includes(q) ||
-        (feat.benefitDe || '').toLowerCase().includes(q) ||
-        (feat.benefitEn || '').toLowerCase().includes(q);
+        (feat.benefit || feat.benefitRaw || feat.benefitEn || feat.benefitDe || '').toLowerCase().includes(q);
 
       if (!matchesSearch) return false;
 
@@ -340,7 +338,7 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px', minWidth: 0, overflow: 'hidden' }}>
                           <span style={{ fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: titleColor, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                            {feat.nameEn || feat.nameDe}
+                            {feat.name || feat.nameEn || feat.nameDe}
                           </span>
                           {feat.parent && (
                             <span style={{ fontSize: '7px', color: '#8b6934', background: 'rgba(139, 105, 52, 0.08)', padding: '0 3px', borderRadius: '1px', border: '0.5px solid rgba(139, 105, 52, 0.2)', whiteSpace: 'nowrap', flexShrink: 0 }} title={`Prerequisite / Parent Feat: ${parentName}`}>
@@ -361,8 +359,8 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
                           <span style={{ fontSize: '7px', color: 'var(--inkm)', background: 'rgba(0,0,0,0.05)', padding: '0 3px', borderRadius: '1px', whiteSpace: 'nowrap' }}>{categoryEn}</span>
                         </div>
                       </div>
-                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '10.5px', color: isEligible || isAlreadyLearned ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.3, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
-                        {feat.benefitRaw || feat.benefitEn || feat.benefitDe}
+                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '10.5px', color: isEligible || isAlreadyLearned ? 'var(--inkm)' : 'var(--inkl)', lineHeight: 1.3, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', minWidth: 0 }} title={feat.benefit || feat.benefitRaw || feat.benefitEn || feat.benefitDe}>
+                        {feat.benefit || feat.benefitRaw || feat.benefitEn || feat.benefitDe}
                       </div>
                     </div>
                   </div>

@@ -23,7 +23,6 @@ interface SpellCreatorDialogProps {
 }
 
 export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc, onClose }) => {
-  const [nameDe, setNameDe] = useState('');
   const [nameEn, setNameEn] = useState('');
   const [level, setLevel] = useState(1);
   const [school, setSchool] = useState('');
@@ -54,7 +53,8 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
 
     const newSpell = {
       id: 'custom_' + Date.now(),
-      nameDe: nameDe.trim() || nameEn.trim(),
+      name: nameEn.trim(),
+      nameDe: nameEn.trim(),
       nameEn: nameEn.trim(),
       level,
       school: school.trim(),
@@ -83,7 +83,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
       }
     });
 
-    showCustomAlert('Success!', `"${nameEn || nameDe}" was successfully created and added to your spellbook!`);
+    showCustomAlert('Success!', `"${nameEn}" was successfully created and added to your spellbook!`);
     onClose();
   };
 
@@ -134,17 +134,10 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 12px' }} />
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', position: 'relative', zIndex: 10 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-            <div>
-              <label style={labelStyle}>Spell Name *</label>
-              <input className="cinput" style={inputStyle} placeholder="e.g. Fireball"
-                value={nameEn} onChange={e => setNameEn(e.target.value)} />
-            </div>
-            <div>
-              <label style={labelStyle}>Alternate Name (Optional)</label>
-              <input className="cinput" style={inputStyle} placeholder="e.g. Feuerball"
-                value={nameDe} onChange={e => setNameDe(e.target.value)} />
-            </div>
+          <div>
+            <label style={labelStyle}>Spell Name *</label>
+            <input className="cinput" style={inputStyle} placeholder="e.g. Fireball"
+              value={nameEn} onChange={e => setNameEn(e.target.value)} />
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>

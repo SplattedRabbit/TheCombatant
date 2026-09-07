@@ -56,7 +56,7 @@ export const CastSuccessDialog: React.FC<CastSuccessDialogProps> = ({
   const metaSuffix = appliedMeta.length > 0 ? ` (${appliedMeta.join(', ')})` : '';
   const metamagicAdjustment = metamagic.reduce((sum, fId) => sum + ((METAMAGIC_COSTS as any)[fId] || 0), 0);
   const finalLevel = spell.level + metamagicAdjustment;
-  const spellName = spell.nameDe || spell.nameEn || spellKey;
+  const spellName = spell.name || spell.nameEn || spellKey;
 
   const allPcs = CombatState.getState().combatants || [];
   const allies = allPcs.filter((c: any) => c.type === 'p' && c.id !== pc.id);

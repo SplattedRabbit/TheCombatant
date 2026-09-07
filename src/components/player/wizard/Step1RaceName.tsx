@@ -100,9 +100,9 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
                 boxSizing: 'border-box'
               }}
             >
-              <option value="Lawful">Rechtschaffen (Lawful)</option>
-              <option value="Neutral">Neutral (Neutral)</option>
-              <option value="Chaotic">Chaotisch (Chaotic)</option>
+              <option value="Lawful">Lawful</option>
+              <option value="Neutral">Neutral</option>
+              <option value="Chaotic">Chaotic</option>
             </select>
             <select
               value={alignmentMoral}
@@ -117,9 +117,9 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
                 boxSizing: 'border-box'
               }}
             >
-              <option value="Good">Gut (Good)</option>
-              <option value="Neutral">Neutral (Neutral)</option>
-              <option value="Evil">Böse (Evil)</option>
+              <option value="Good">Good</option>
+              <option value="Neutral">Neutral</option>
+              <option value="Evil">Evil</option>
             </select>
           </div>
         </div>

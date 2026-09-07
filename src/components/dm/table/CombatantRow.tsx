@@ -76,7 +76,7 @@ export const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList })
   if (c.type === 'p' && Array.isArray(c.classes) && c.classes.length > 0) {
     const classStr = c.classes.map(cl => {
       const matched = CombatRules.CLASSES.find((x: any) => x.key === cl.classType);
-      const name = matched ? (matched.nameEn || matched.nameDe) : cl.classType;
+      const name = matched ? (matched.nameEn || matched.name || matched.nameDe) : cl.classType;
       return `${name} ${cl.level}`;
     }).join(' / ');
     classBadge = (

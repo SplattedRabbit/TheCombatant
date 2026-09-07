@@ -1,7 +1,7 @@
 {
   "alter_fortune": {
     "id": "alter_fortune",
-    "nameDe": "Schicksal wandeln",
+    "nameDe": "Alter Fortune",
     "nameEn": "Alter Fortune",
     "level": 3,
     "school": "Divination",
@@ -36,11 +36,12 @@
     "duration": "Instantaneous",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "With a single word, you alter the outcome of an event by changing fortune itself. You cause any creature within range to immediately reroll any die roll it just made (attack roll, saving throw, skill check, or level check). The subject must abide by the result of the second roll. XP Cost: 200 XP."
+    "description": "With a single word, you alter the outcome of an event by changing fortune itself. You cause any creature within range to immediately reroll any die roll it just made (attack roll, saving throw, skill check, or level check). The subject must abide by the result of the second roll. XP Cost: 200 XP.",
+    "name": "Alter Fortune"
   },
   "blade_brothers": {
     "id": "blade_brothers",
-    "nameDe": "Klingenbrüder",
+    "nameDe": "Blade Brothers",
     "nameEn": "Blade Brothers",
     "level": 1,
     "school": "Abjuration",
@@ -65,11 +66,12 @@
     "duration": "Instantaneous",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "When you or your targeted ally makes a saving throw against an ongoing or instantaneous effect, you can each roll the save and choose the higher result for both of you."
+    "description": "When you or your targeted ally makes a saving throw against an ongoing or instantaneous effect, you can each roll the save and choose the higher result for both of you.",
+    "name": "Blade Brothers"
   },
   "celerity": {
     "id": "celerity",
-    "nameDe": "Schnelligkeit",
+    "nameDe": "Celerity",
     "nameEn": "Celerity",
     "level": 4,
     "school": "Transmutation",
@@ -99,11 +101,12 @@
     "duration": "Instantaneous",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "You immediately take a standard action as if your turn had just begun. After you take this action, you are dazed until the end of your next turn."
+    "description": "You immediately take a standard action as if your turn had just begun. After you take this action, you are dazed until the end of your next turn.",
+    "name": "Celerity"
   },
   "chasing_perfection": {
     "id": "chasing_perfection",
-    "nameDe": "Vollendung erstreben",
+    "nameDe": "Chasing Perfection",
     "nameEn": "Chasing Perfection",
     "level": 6,
     "school": "Transmutation",
@@ -138,11 +141,12 @@
     "duration": "1 min./level",
     "savingThrow": "Will negates (harmless)",
     "spellResistance": "Yes (harmless)",
-    "description": "The subject gains a +4 enhancement bonus to all six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma."
+    "description": "The subject gains a +4 enhancement bonus to all six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma.",
+    "name": "Chasing Perfection"
   },
   "deflect": {
     "id": "deflect",
-    "nameDe": "Abwehr",
+    "nameDe": "Deflect",
     "nameEn": "Deflect",
     "level": 2,
     "school": "Abjuration [Force]",
@@ -168,11 +172,12 @@
     "duration": "1 attack",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "You gain a +1/2 caster level deflection bonus to AC (maximum +5 at 10th level) against a single incoming melee or ranged attack."
+    "description": "You gain a +1/2 caster level deflection bonus to AC (maximum +5 at 10th level) against a single incoming melee or ranged attack.",
+    "name": "Deflect"
   },
   "dimension_hop": {
     "id": "dimension_hop",
-    "nameDe": "Dimensionstritt",
+    "nameDe": "Dimension Hop",
     "nameEn": "Dimension Hop",
     "level": 2,
     "school": "Transmutation",
@@ -194,11 +199,12 @@
         "class": "wizard",
         "level": 2
       }
-    ]
+    ],
+    "name": "Dimension Hop"
   },
   "energy_aegis": {
     "id": "energy_aegis",
-    "nameDe": "Energie-Aegis",
+    "nameDe": "Energy Aegis",
     "nameEn": "Energy Aegis",
     "level": 3,
     "school": "Abjuration",
@@ -229,11 +235,12 @@
     "duration": "1 round",
     "savingThrow": "Will negates (harmless)",
     "spellResistance": "Yes (harmless)",
-    "description": "You grant the target energy resistance 20 against an energy type of your choice (acid, cold, electricity, fire, or sonic) until the start of your next turn."
+    "description": "You grant the target energy resistance 20 against an energy type of your choice (acid, cold, electricity, fire, or sonic) until the start of your next turn.",
+    "name": "Energy Aegis"
   },
   "evards_menacing_tentacles": {
     "id": "evards_menacing_tentacles",
-    "nameDe": "Evards Bedrohliche Tentakeln",
+    "nameDe": "Evard's Menacing Tentacles",
     "nameEn": "Evard's Menacing Tentacles",
     "level": 3,
     "school": "Transmutation",
@@ -255,11 +262,12 @@
         "class": "wizard",
         "level": 3
       }
-    ]
+    ],
+    "name": "Evard's Menacing Tentacles"
   },
   "greater_celerity": {
     "id": "greater_celerity",
-    "nameDe": "Mächtige Schnelligkeit",
+    "nameDe": "Greater Celerity",
     "nameEn": "Greater Celerity",
     "level": 8,
     "school": "Transmutation",
@@ -284,11 +292,12 @@
     "duration": "Instantaneous",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "You immediately take a full-round action (or a standard action and a move action). After you take this action, you are dazed until the end of your next turn."
+    "description": "You immediately take a full-round action (or a standard action and a move action). After you take this action, you are dazed until the end of your next turn.",
+    "name": "Greater Celerity"
   },
   "hesitate": {
     "id": "hesitate",
-    "nameDe": "Zögern",
+    "nameDe": "Hesitate",
     "nameEn": "Hesitate",
     "level": 3,
     "school": "Enchantment (Compulsion) [Mind-Affecting]",
@@ -323,11 +332,12 @@
     "duration": "1 round/level (D)",
     "savingThrow": "Will negates; see text",
     "spellResistance": "Yes",
-    "description": "You force a subject to second-guess its actions. Each round on its turn, the subject can only take a move action unless it makes a successful Will save as a move action."
+    "description": "You force a subject to second-guess its actions. Each round on its turn, the subject can only take a move action unless it makes a successful Will save as a move action.",
+    "name": "Hesitate"
   },
   "kelgores_fire_bolt": {
     "id": "kelgores_fire_bolt",
-    "nameDe": "Kelgores Feuerblitz",
+    "nameDe": "Kelgore's Fire Bolt",
     "nameEn": "Kelgore's Fire Bolt",
     "level": 1,
     "school": "Conjuration/Evocation [Fire]",
@@ -353,11 +363,12 @@
     "duration": "Instantaneous",
     "savingThrow": "Reflex half; see text",
     "spellResistance": "Special; see text",
-    "description": "A fiery bolt deals 1d6 fire damage per level (maximum 5d6). Even if the target has spell resistance that resists the evocation effect, 1d6 points of fire damage pierces through as conjured flame without allowing spell resistance."
+    "description": "A fiery bolt deals 1d6 fire damage per level (maximum 5d6). Even if the target has spell resistance that resists the evocation effect, 1d6 points of fire damage pierces through as conjured flame without allowing spell resistance.",
+    "name": "Kelgore's Fire Bolt"
   },
   "kelgores_grave_mist": {
     "id": "kelgores_grave_mist",
-    "nameDe": "Kelgores Grabesnebel",
+    "nameDe": "Kelgore's Grave Mist",
     "nameEn": "Kelgore's Grave Mist",
     "level": 2,
     "school": "Necromancy/Conjuration [Cold]",
@@ -383,11 +394,12 @@
     "duration": "1 round/level",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "A chilling fog of negative energy and frost settles over the area. Living creatures within the mist take 1d6 cold damage each round and become fatigued while they remain within the mist. No saving throw or spell resistance applies."
+    "description": "A chilling fog of negative energy and frost settles over the area. Living creatures within the mist take 1d6 cold damage each round and become fatigued while they remain within the mist. No saving throw or spell resistance applies.",
+    "name": "Kelgore's Grave Mist"
   },
   "legion_of_sentinels": {
     "id": "legion_of_sentinels",
-    "nameDe": "Legion der Wächter",
+    "nameDe": "Legion of Sentinels",
     "nameEn": "Legion of Sentinels",
     "level": 3,
     "school": "Illusion (Shadow)",
@@ -417,11 +429,12 @@
     "duration": "1 round/level",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "A ghostly squad of armored sentinels appears in the area. They do not attack on your turn, but they threaten all squares in the area and make attacks of opportunity with ghostly swords (attack bonus equal to your caster level + your casting stat mod, dealing 1d8+1 damage per 3 caster levels)."
+    "description": "A ghostly squad of armored sentinels appears in the area. They do not attack on your turn, but they threaten all squares in the area and make attacks of opportunity with ghostly swords (attack bonus equal to your caster level + your casting stat mod, dealing 1d8+1 damage per 3 caster levels).",
+    "name": "Legion of Sentinels"
   },
   "lesser_celerity": {
     "id": "lesser_celerity",
-    "nameDe": "Geringe Schnelligkeit",
+    "nameDe": "Lesser Celerity",
     "nameEn": "Lesser Celerity",
     "level": 2,
     "school": "Transmutation",
@@ -451,11 +464,12 @@
     "duration": "Instantaneous",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "You can immediately take a single move action on your turn or anyone else’s turn. After you take this action, you are dazed until the end of your next turn."
+    "description": "You can immediately take a single move action on your turn or anyone else’s turn. After you take this action, you are dazed until the end of your next turn.",
+    "name": "Lesser Celerity"
   },
   "lesser_deflect": {
     "id": "lesser_deflect",
-    "nameDe": "Geringe Abwehr",
+    "nameDe": "Lesser Deflect",
     "nameEn": "Lesser Deflect",
     "level": 1,
     "school": "Abjuration [Force]",
@@ -481,11 +495,12 @@
     "duration": "1 attack",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "You project a barrier of invisible force that deflects a single incoming attack, granting you a +1 deflection bonus to AC per 3 caster levels (maximum +5 at 15th level) against that single attack."
+    "description": "You project a barrier of invisible force that deflects a single incoming attack, granting you a +1 deflection bonus to AC per 3 caster levels (maximum +5 at 15th level) against that single attack.",
+    "name": "Lesser Deflect"
   },
   "seeking_ray": {
     "id": "seeking_ray",
-    "nameDe": "Suchstrahl",
+    "nameDe": "Seeking Ray",
     "nameEn": "Seeking Ray",
     "level": 2,
     "school": "Evocation",
@@ -507,11 +522,12 @@
         "class": "wizard",
         "level": 2
       }
-    ]
+    ],
+    "name": "Seeking Ray"
   },
   "stay_the_hand": {
     "id": "stay_the_hand",
-    "nameDe": "Schlag aufhalten",
+    "nameDe": "Stay the Hand",
     "nameEn": "Stay the Hand",
     "level": 2,
     "school": "Enchantment (Compulsion) [Mind-Affecting]",
@@ -546,11 +562,12 @@
     "duration": "Instantaneous",
     "savingThrow": "Will negates",
     "spellResistance": "Yes",
-    "description": "You cause an opponent who is about to make an attack or cast a harmful spell to hesitate. If the target fails its Will save, its action is lost for that round and cannot be redirected."
+    "description": "You cause an opponent who is about to make an attack or cast a harmful spell to hesitate. If the target fails its Will save, its action is lost for that round and cannot be redirected.",
+    "name": "Stay the Hand"
   },
   "sure_strike": {
     "id": "sure_strike",
-    "nameDe": "Sicherer Schlag",
+    "nameDe": "Sure Strike",
     "nameEn": "Sure Strike",
     "level": 2,
     "school": "Divination",
@@ -576,11 +593,12 @@
     "duration": "1 round or until discharged",
     "savingThrow": "None",
     "spellResistance": "No",
-    "description": "You gain a +1 insight bonus on your next single attack roll for every 3 caster levels (maximum +5 at 15th level)."
+    "description": "You gain a +1 insight bonus on your next single attack roll for every 3 caster levels (maximum +5 at 15th level).",
+    "name": "Sure Strike"
   },
   "vertigo_field": {
     "id": "vertigo_field",
-    "nameDe": "Schwindelfeld",
+    "nameDe": "Vertigo Field",
     "nameEn": "Vertigo Field",
     "level": 3,
     "school": "Illusion (Shadow)",
@@ -610,6 +628,7 @@
     "duration": "1 round/level",
     "savingThrow": "Fortitude partial; see text",
     "spellResistance": "Yes",
-    "description": "You create a field of swirling, illusory colors and shifting geometry. Any creature inside the area must succeed on a Fortitude save or become nauseated for as long as it remains in the field plus 1 round after. The area provides 20% concealment to creatures inside."
+    "description": "You create a field of swirling, illusory colors and shifting geometry. Any creature inside the area must succeed on a Fortitude save or become nauseated for as long as it remains in the field plus 1 round after. The area provides 20% concealment to creatures inside.",
+    "name": "Vertigo Field"
   }
 }

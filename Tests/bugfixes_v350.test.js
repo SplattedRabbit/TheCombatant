@@ -34,7 +34,7 @@ test('Bug 1 - Animal Companion scaling (Wolf at Level 1 and 6)', () => {
   assert.strictEqual(wolfLvl1.str, 13, 'Wolf Str at level 1 should be 13');
   assert.strictEqual(wolfLvl1.maxHP, 13, 'Wolf Max HP at level 1 should be 13');
   assert.strictEqual(wolfLvl1.attacks[0].bonus, 3, 'Wolf bite bonus at level 1 should be +3');
-  assert.strictEqual(wolfLvl1.attacks[0].damage, '1w6+1', 'Wolf bite damage at level 1 should be 1w6+1');
+  assert.strictEqual(wolfLvl1.attacks[0].damage, '1d6+1', 'Wolf bite damage at level 1 should be 1d6+1');
 
   // Level 6 Wolf (+4 HD, +4 Natural Armor, +2 Str/Dex)
   // New AC: 14 + 4 = 18
@@ -46,14 +46,14 @@ test('Bug 1 - Animal Companion scaling (Wolf at Level 1 and 6)', () => {
   // Str mod diff: +2 - +1 = +1
   // Total attack bonus diff: +3 (BAB diff) + 1 (Str diff) = +4
   // New bite attack bonus: 3 + 4 = 7
-  // New bite damage: 1w6 + Math.floor(2 * 1.5) = 1w6+3
+  // New bite damage: 1d6 + Math.floor(2 * 1.5) = 1d6+3
   const wolfLvl6 = CompanionRules.getCompanionBaseStats('wolf', 6);
   assert.ok(wolfLvl6, 'Wolf stats should be defined at level 6');
   assert.strictEqual(wolfLvl6.ac, 18, `Wolf AC at level 6 should be 18, but was ${wolfLvl6.ac}`);
   assert.strictEqual(wolfLvl6.str, 15, `Wolf Str at level 6 should be 15, but was ${wolfLvl6.str}`);
   assert.strictEqual(wolfLvl6.maxHP, 39, `Wolf Max HP at level 6 should be 39, but was ${wolfLvl6.maxHP}`);
   assert.strictEqual(wolfLvl6.attacks[0].bonus, 7, `Wolf bite bonus at level 6 should be +7, but was +${wolfLvl6.attacks[0].bonus}`);
-  assert.strictEqual(wolfLvl6.attacks[0].damage, '1w6+3', `Wolf bite damage at level 6 should be 1w6+3, but was ${wolfLvl6.attacks[0].damage}`);
+  assert.strictEqual(wolfLvl6.attacks[0].damage, '1d6+3', `Wolf bite damage at level 6 should be 1d6+3, but was ${wolfLvl6.attacks[0].damage}`);
 });
 
 test('Bug 6 - Feat allocation and priority validation', () => {
@@ -114,17 +114,17 @@ test('v3.5.0 - loadSampleData choice validation', () => {
   // 1. Wizard level 10
   CombatState.loadSampleData('wizard_lvl10');
   const wizard = CombatState.getActivePC();
-  assert.strictEqual(wizard.name, 'Lysara die Erhabene');
+  assert.strictEqual(wizard.name, 'Lysara the Exalted');
   assert.strictEqual(wizard.level, 10);
   assert.strictEqual(wizard.classType, 'wizard');
   assert.strictEqual(wizard.familiarType, 'cat');
-  assert.strictEqual(wizard.familiarName, 'Keks');
+  assert.strictEqual(wizard.familiarName, 'Cookie');
   assert.strictEqual(wizard.preparedSpells.length, 6);
 
   // 2. Ranger level 10
   CombatState.loadSampleData('ranger_lvl10');
   const ranger = CombatState.getActivePC();
-  assert.strictEqual(ranger.name, 'Gildor Windläufer');
+  assert.strictEqual(ranger.name, 'Gildor Windrunner');
   assert.strictEqual(ranger.level, 10);
   assert.strictEqual(ranger.classType, 'ranger');
   assert.strictEqual(ranger.companionType, 'wolf');
@@ -142,10 +142,10 @@ test('v3.5.0 - loadSampleData choice validation', () => {
   state.session = null; // solo mode
   CombatState.loadSampleData('party_lvl10');
   assert.strictEqual(state.combatants.length, 6);
-  assert.ok(state.combatants.some(c => c.name === 'Lysara die Erhabene'), 'Should contain wizard');
-  assert.ok(state.combatants.some(c => c.name === 'Gildor Windläufer'), 'Should contain ranger');
+  assert.ok(state.combatants.some(c => c.name === 'Lysara the Exalted'), 'Should contain wizard');
+  assert.ok(state.combatants.some(c => c.name === 'Gildor Windrunner'), 'Should contain ranger');
   assert.ok(state.combatants.some(c => c.name === 'Sir Valerius'), 'Should contain paladin');
-  assert.ok(state.combatants.some(c => c.name === 'Junger Roter Drache'), 'Should contain red dragon');
+  assert.ok(state.combatants.some(c => c.name === 'Young Red Dragon'), 'Should contain red dragon');
 });
 
 test('v3.5.0 - Companion and Familiar Stats Synchronization', () => {

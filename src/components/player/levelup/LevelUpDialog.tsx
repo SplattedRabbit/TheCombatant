@@ -132,10 +132,9 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
       if (activeFeatSlot.allowedCategories && !activeFeatSlot.allowedCategories.includes(feat.category)) return false;
       if (activeFeatSlot.allowedFeats && !activeFeatSlot.allowedFeats.includes(feat.id)) return false;
       if (q) {
-        const nameDe = (feat.nameDe || '').toLowerCase();
-        const nameEn = (feat.nameEn || '').toLowerCase();
-        const benefit = (feat.benefitDe || feat.benefitRaw || '').toLowerCase();
-        if (!nameDe.includes(q) && !nameEn.includes(q) && !benefit.includes(q)) return false;
+        const name = (feat.name || feat.nameEn || feat.nameDe || '').toLowerCase();
+        const benefit = (feat.benefit || feat.benefitRaw || feat.benefitDe || '').toLowerCase();
+        if (!name.includes(q) && !benefit.includes(q)) return false;
       }
       return true;
     });

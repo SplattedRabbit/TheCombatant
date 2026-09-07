@@ -169,7 +169,7 @@ test('SHAPE_ATTACKS - wolf enthält genau 1 Angriff (Biss, isNatural, primär, s
   const attacks = SHAPE_ATTACKS['wolf'];
   assert.strictEqual(attacks.length, 1, 'Wolf sollte genau 1 natürlichen Angriff haben');
   const atk = attacks[0];
-  assert.strictEqual(atk.name, 'Biss (Wolf)');
+  assert.strictEqual(atk.name, 'Bite (Wolf)');
   assert.strictEqual(atk.isNatural, true);
   assert.strictEqual(atk.isSecondary, false);
   assert.strictEqual(atk.strMult, 1.0);
