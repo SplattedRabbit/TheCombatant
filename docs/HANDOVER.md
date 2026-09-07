@@ -1,26 +1,24 @@
-# Übergabe & Systemstatus (v6.4.1 / Branch `fix_feats`) — The Combatant
+# Übergabe & Systemstatus (v6.5.0 / Branch `refactor/bilingual-cleanup`) — The Combatant
 
-## 🚀 Copy-Paste Prompt für den neuen Rechner / neuen Chat / Morgen
+## 🚀 Copy-Paste Prompt für den neuen Rechner / neuen Chat
 
 ```markdown
-Wir setzen die Entwicklung von The Combatant auf Basis von Branch `fix_feats` (Version v6.4.1 / aktueller Stand) fort.
+Wir setzen die Entwicklung von The Combatant auf Basis von Branch `refactor/bilingual-cleanup` (Version v6.5.0 / aktueller Stand) fort.
 
 Zuletzt abgeschlossen:
-1. Umfassende Talente-Erweiterung (PHB, PHB II, Complete Adventurer, Complete Scoundrel - ohne Glücks-Talente):
-   - Über 100 fehlende Talente aus den Quellenbüchern in `js/data/feats/` integriert (Combat, General, Magic).
-   - Prerequisite-Engine in `js/data/feats-data.js` gehärtet: Volle Unterstützung für `skill` (`skill` + `ranks` sowie `name` + `value`) und `special`/`custom` (Sneak Attack +Xd6, Turn Undead, Evasion, Bardic Music etc.).
-2. Klassenfeature-Talente & Slot-Logik im Wizard & Level-Up-Assistant:
-   - Automatische `(Fixed)` Slots für feste Klassentalente (z.B. Shadowbane Inquisitor 3: Improved Sunder, Ranger 1: Track, Ranger 3: Endurance, Monk 1: Imp. Unarmed Strike, Wizard 1: Scribe Scroll, Duskblade 2: Combat Casting, Knight 2: Mounted Combat, Dragon Shaman 2: Skill Focus).
-   - Automatische `(Class Choice)` Slots für gefilterte Klassenauswahlen (z.B. Ranger Combat Styles, Monk Bonus Feats).
-   - Neues visuelles Badge `🛡️ Class Feature` in der Talentliste zur Vermeidung doppelter/verschwendeter Talentwahlen.
-3. Skill-Point-Engine & Multi-Classing-Fix:
-   - Prestige-Klassen-Basisfertigkeiten in `CLASS_BASE_SKILLS` (`RulesData.js`) und generischer Fallback in `RulesSkills.js`.
-   - Universelles `spent`-Tracking (`pc.skills[id].spent`) im Wizard, LevelUp-Assistant und Character Sheet, damit Cross-Class-Kosten (2 Punkte/Rang) beim Levelaufstieg nicht fälschlich verflacht werden.
-   - Visuelle Hervorhebung: Fertigkeiten mit Rängen aus vorherigen Stufen werden nun in warmem Goldgelb hervorgehoben.
-4. Test- & Build-Status:
-   - 336 Node-Tests (`npm test`) & 41 Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ 100% bestanden (0 Fehler).
+1. Vollständige 100% RAW-Englisch-Bereinigung (Rules As Written) über die gesamte Applikation:
+   - Alle 12 Feat-Dateien (`js/data/feats/**/*.js`) bereinigt: Sämtliche deutschen Texte (`benefitDe`, alte `appEffect`-Strings) durch kanonische englische RAW-Regeln und standardisierte englische Kurzeffekte ersetzt.
+   - Alle 4 Zauberdatenbanken (`data/spells-*.json`) bereinigt: Zaubernamen vereinheitlicht (`name: nameEn`, `nameDe: nameEn`), 35 deutsche Zaubereffekt-Quellen (wie 'Stärke des Stiers' -> 'Bull\'s Strength', 'Hast' -> 'Haste') übersetzt für rein englische Würfel-Breakdowns.
+   - Regel- & Validierungs-Engine (`RulesData.js`, `RulesSpells.js`, `PCFeatsSpells.js`): Prestigeklassen (Mystic Theurge, Arcane Trickster, etc.) und Fehlermeldungen (Not a Spellcaster, Cannot Learn Spell, Prohibited School) auf Englisch umgestellt.
+   - UI & Wizard Dialoge: Deutsche Untertitel, Alt-Namen-Felder und Lokalisierungsreste in FeatScrollDialog, SpellCompendium, SpellDetailsDialog, SpellCreatorDialog, LevelUpDialog, Alignment-Auswahl (Lawful, Neutral, Chaotic, Good, Neutral, Evil) und LevelHeaderAndStats entfernt.
+   - Print Pages 2, 3 und 4: Fertigkeiten, Talente, Ausrüstung und Zauber konsistent auf Englisch aufgelöst.
+2. 100% Abwärtskompatibilität gewahrt:
+   - Vorhandene Charaktere in localStorage, Supabase und JSON-Dateien bleiben vollständig intakt (kein Datenverlust, Aliasing über Combatant-Helfer und nameDe=nameEn Mapping).
+3. Test- & Build-Status:
+   - 343 Node-Tests (`npm test`) in 24 Suites $\rightarrow$ 100% bestanden (0 Fehler).
+   - 41 Vitest UI-Tests (`npm run test:ui`) in 7 Suites $\rightarrow$ 100% bestanden (0 Fehler).
    - TypeScript (`npm run typecheck`) $\rightarrow$ 0 Fehler.
-   - Build (`npm run build`) $\rightarrow$ erfolgreich generiert.
+   - Produktions-Build (`npm run build`) $\rightarrow$ erfolgreich generiert (Code 0).
 ```
 
 ---
@@ -28,52 +26,107 @@ Zuletzt abgeschlossen:
 ## 📋 Systemstatus & Git-Metadaten
 
 * **Repository:** `https://github.com/SplattedRabbit/TheCombatant.git`
-* **Aktueller Branch:** `fix_feats` (Up-to-date mit Remote)
-* **Letzter Commit:** `d499078` (*feat(feats): enhance class feature feats, mark with badge, lock fixed feats and validate prereqs*)
-* **Test-Suite:** 336 Node-Tests (`npm test`) & 41 Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **100% grün, 0 Fehler**.
-* **TypeScript-Prüfung:** `npm run typecheck` $\rightarrow$ **0 Fehler**.
-* **Produktions-Build:** `npm run build` $\rightarrow$ **Erfolgreich**.
+* **Aktueller Branch:** `refactor/bilingual-cleanup` (Up-to-date mit Remote `origin/refactor/bilingual-cleanup`)
+* **Letzter Commit:** `51ef826` (*"refactor: complete 100% RAW English standardization across data, engine, and UI"*)
+* **Test-Suite:** 
+  * 343 Node-Tests (`npm test`) $\rightarrow$ **343 / 343 bestanden (100% Pass)**
+  * 41 Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **41 / 41 bestanden (100% Pass)**
+* **TypeScript-Prüfung:** `npm run typecheck` (`tsc --noEmit`) $\rightarrow$ **0 Fehler**
+* **Produktions-Build:** `npm run build` $\rightarrow$ **Erfolgreich (Code 0)**
 
 ---
 
-## 🛠️ Detaillierte Übersicht der heutigen Session
+## 🛠️ Detaillierte Dokumentation aller Änderungen & Übergaben
 
-### 1. Talente-Erweiterung & Prerequisite-Engine
-- **Quellenbücher:** PHB, PHB II, Complete Adventurer (CAd), Complete Scoundrel (CS) vollständig gesichtet und alle fehlenden Talente nachgetragen (Glücks-Talente bewusst ausgeklammert).
-- **Hardening (`js/data/feats-data.js`):**
-  - Behebung von `TypeError: Cannot read properties of undefined (reading 'split')`: Prerequisite-Parser liest nun sowohl `name`/`value` als auch `skill`/`ranks`.
-  - Robuste Auswertung von `type: 'special'` (inkl. dynamischer Erkennung von `Sneak Attack +Xd6`, `Turn Undead`, `Evasion`, `Ki Strike`, `Wild Shape`).
+### 1. Feat-Datenbanken (`js/data/feats/**/*.js`)
+* **Umfang:** Alle 12 Feat-Dateien über 3 Kategorien (*combat*, *general*, *magic*) und 4 Regelwerke (*phb*, *phb2*, *ca*, *cs*):
+  - `combat/phb.js`, `combat/phb2.js`, `combat/ca.js`, `combat/cs.js`
+  - `general/phb.js`, `general/phb2.js`, `general/ca.js`, `general/cs.js`
+  - `magic/phb.js`, `magic/phb2.js`, `magic/ca.js`, `magic/cs.js`
+* **Maßnahmen:**
+  - `name`: Kanonischer englischer RAW-Name.
+  - `nameEn`: Kanonischer englischer RAW-Name.
+  - `nameDe`: Aus Kompatibilitätsgründen identisch auf den englischen RAW-Namen gesetzt (verhindert Brüche in älteren Abfragen und Unit-Tests).
+  - `benefit` & `benefitRaw`: Kanonischer englischer RAW-Regeltext aus den offiziellen Büchern.
+  - `benefitDe`: Identisch auf den englischen RAW-Text gesetzt.
+  - `appEffect`: Präziser, standardisierter englischer Kurzeffekt für Tooltips und Schnellansichten.
+  - **Umlaut-Scan:** 0 deutsche Umlaute im gesamten Feat-Verzeichnis.
 
-### 2. Klassenfeature-Talente & UI-Führung
-- **`src/components/player/wizard/helpers.ts` (`getFeatSlotsAtLevel`):**
-  - Generiert dedizierte Slots für feste Klassentalente (`(Fixed)`), die gesperrt sind.
-  - Generiert dedizierte Slots für Klassenauswahlen (`(Class Choice)` mit `allowedFeats`).
-- **`src/components/player/wizard/FeatsTabContent.tsx` & `CharacterWizardDialog.tsx` & `LevelUpDialog.tsx`:**
-  - `🛡️ Class Feature`-Badge bei allen Talenten, die über Klassenfeatures verliehen werden.
-  - Automatische Slot-Filterung auf erlaubte Klassen-Optionen.
+### 2. Zauber-Kataloge (`data/spells-*.json`)
+* **Umfang:** `spells-phb.json`, `spells-phb2.json`, `spells-ca.json`, `spells-cs.json`.
+* **Maßnahmen:**
+  - Alle Zaubereinträge besitzen `name: nameEn` und `nameDe: nameEn`.
+  - Sämtliche 35 deutschen Buff-/Effekt-Quellen übersetzt:
+    - `"Stärke des Stiers"` $\rightarrow$ `"Bull's Strength"`
+    - `"Ausdauer des Bären"` $\rightarrow$ `"Bear's Endurance"`
+    - `"Katzenhafte Anmut"` $\rightarrow$ `"Cat's Grace"`
+    - `"Pracht des Adlers"` $\rightarrow$ `"Eagle's Splendor"`
+    - `"Schläue des Fuchses"` $\rightarrow$ `"Fox's Cunning"`
+    - `"Weisheit der Eule"` $\rightarrow$ `"Owl's Wisdom"`
+    - `"Hast"` $\rightarrow$ `"Haste"`
+    - `"Schild"` $\rightarrow$ `"Shield"`
+    - `"Magische Rüstung"` $\rightarrow$ `"Mage Armor"`
+    - etc.
+  - **Effekt:** Sämtliche Angriffs- und Schadens-Breakdowns im Combatant-Sheet zeigen nun reine englische Bezeichnungen an.
+  - **Umlaut-Scan:** 0 deutsche Umlaute im gesamten Zauberverzeichnis.
 
-### 3. Skill-Punkte-Berechnung & Zwerg 5 Rogue / 4 Paladin / 4 Shadowbane Inquisitor
-- **Problem:** Sheet zeigte 70/65 Skillpunkte, weil Prestige-Klassen nicht im Basisskill-Lookup waren und Cross-Class-Skillkosten beim Import/Speichern auf 1 Punkt/Rang verflacht wurden.
-- **Lösung:**
-  - `CLASS_BASE_SKILLS` in `RulesData.js` um alle Prestigeklassen erweitert + Fallback auf `CLASSES_LIST`.
-  - Universelles `spent`-Tracking im Datenmodell (`pc.skills[k].spent` speichert tatsächlich investierte Punkte).
-  - Stufe-1-Klasse (4-fache Punkte) folgt deterministisch `pc.classes[0]`.
-  - Gelb-goldene Kennzeichnung für bereits vorher gesteigerte Skills im Wizard und Level-Up-Assistant.
+### 3. Engine & Daten-Definitionen (`js/rules/`, `js/state/`)
+* **`js/rules/RulesData.js`:** Prestigeklassen auf kanonische englische Bezeichnungen standardisiert (*Mystic Theurge*, *Arcane Trickster*, *Dragon Disciple*, *Assassin*, *Shadowbane Inquisitor*).
+* **`js/rules/RulesSpells.js`:** Zauber-Zulässigkeit, Fehlermeldungen und verbotene Schulen auf Englisch umgestellt (*"Not a Spellcaster"*, *"Cannot Learn Spell"*, *"Prohibited School"*).
+* **`js/state/pc/PCFeatsSpells.js`:** Validierungsmeldungen beim Hinzufügen von Talenten und Skill-Tricks auf Englisch umgestellt.
+
+### 4. UI-Komponenten & Dialoge (`src/components/`)
+* **`src/components/dialogs/FeatScrollDialog.tsx` & `feats/FeatScrollParchment.tsx`:** Regex-Wörterbuch entfernt; Darstellung greift direkt auf englischen `appEffect` und `benefitRaw` zu.
+* **`src/components/player/PCSpellCompendium.tsx`:** Deutsche Untertitel-Anzeige entfernt; saubere englische Suche und Domänen-Tag-Darstellung.
+* **`src/components/player/PCSpellbookTab.tsx` & `PCSpellPreparation.tsx`:** Deutsche Untertitel entfernt; Zaubernamen, Slot-Header und Vorbereitungs-Logs auf Englisch.
+* **`src/components/dialogs/SpellCreatorDialog.tsx`:** Eingabefeld für alternativen deutschen Namen entfernt; reines "Spell Name"-Feld.
+* **`src/components/dialogs/SpellDetailsDialog.tsx` & `SpellScrollDialog.tsx`:** Deutsche Untertitel und Fallbacks entfernt.
+* **`src/components/dialogs/SkillTrickDetailsDialog.tsx`:** Deutsche Titel- und Warnmeldungs-Fallbacks bereinigt.
+* **`src/components/player/wizard/Step1RaceName.tsx`:** Gesinnungsauswahl auf reines kanonisches Englisch umgestellt (*Lawful*, *Neutral*, *Chaotic*, *Good*, *Neutral*, *Evil*).
+* **`src/components/player/wizard/levelConfig/LevelHeaderAndStats.tsx`:** Dialoge für Prestigeklassen-Voraussetzungen und manuelle Bestätigungen auf Englisch übersetzt.
+* **`src/components/player/wizard/SkillsTabContent.tsx`, `SkillTricksTabContent.tsx`, `levelConfig/FeatSlotsSidebar.tsx`, `Step4Review.tsx`:** Alle Filter- und Rendering-Fallbacks auf kanonische englische Felder ausgerichtet.
+* **`src/components/player/print/pages/`:**
+  - `PrintPage2SkillsFeatures.tsx`: Fertigkeiten, Talente, Skill Tricks und ACFs auf Englisch.
+  - `PrintPage3EquipmentArmory.tsx`: Rüstungs- und Schildnamen auf Englisch.
+  - `PrintPage4SpellsCompanion.tsx`: Vorbereitete, Zauberbuch- und gelernte Zauber auf Englisch.
+
+### 5. Test-Suiten
+* **`Tests/spell_eligibility_validation.test.js`:** Erwartungswerte von deutschen Strings auf englische Fehlermeldungen aktualisiert (*"Not a Spellcaster"*, *"Cannot Learn Spell"*, *"Prohibited School"*).
+* **`Tests/build.test.js`:** Erfolgreich ausgeführt im Rahmen von `npm test`.
 
 ---
 
-## 💻 Erste Schritte beim Neustart / Morgen
+## 🔒 Abwärtskompatibilitäts-Garantie (Backward Compatibility)
+
+1. **Vorhandene Speicherstände (`localStorage` & `Supabase`):**
+   - Charaktere, die unter früheren Versionen mit `nameDe` oder alten Klassen-/Talent-IDs abgespeichert wurden, bleiben voll funktionsfähig.
+   - Dual-Resolution im Sheet (`c.name || c.nameEn || c.nameDe`) fängt jede bestehende Datenstruktur ab.
+   - Es wurden keine Primärschlüssel (`id`, `key`) gelöscht oder umbenannt.
+2. **Import & Export:**
+   - JSON-Charaktere können uneingeschränkt geladen werden. Neue Exporte erfolgen vollständig in standardisiertem RAW-Englisch.
+
+---
+
+## 💻 Nächste Schritte / Merge nach Main
+
+Sobald gewünscht, kann dieser Branch direkt in `main` gemergt werden:
 
 ```bash
-# 1. Sicherstellen, dass auf fix_feats gearbeitet wird
-git status
-git pull origin fix_feats
+# 1. Sicherstellen, dass alles aktuell ist
+git checkout refactor/bilingual-cleanup
+git pull origin refactor/bilingual-cleanup
 
-# 2. Schnelltest ausführen
+# 2. Main aktualisieren und zusammenführen
+git checkout main
+git pull origin main
+git merge refactor/bilingual-cleanup --no-ff -m "merge: 100% RAW English standardization from refactor/bilingual-cleanup"
+
+# 3. Tests auf Main verifizieren
 npm test
 npm run test:ui
 npm run typecheck
+npm run build
 
-# 3. Dev-Server starten
-npm run dev
+# 4. Nach Remote pushen
+git push origin main
 ```

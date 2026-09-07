@@ -3,6 +3,20 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.5.0] - 2026-09-07
+
+### Changed
+- **100% D&D 3.5e RAW English Standardization:**
+  - **Feat Databases (`js/data/feats/**/*.js`):** Standardized all 12 feat files (Combat, General, Magic across PHB, PHB II, CA, CS). Removed German `benefitDe` and legacy German `appEffect` texts. Mapped `name`, `nameEn`, and `nameDe` to canonical RAW English; mapped `benefit`, `benefitRaw`, and `benefitDe` to canonical RAW English text. Standardized concise English `appEffect` strings.
+  - **Spell Databases (`data/spells-*.json`):** Standardized all 4 spell catalogs (`spells-phb.json`, `spells-phb2.json`, `spells-ca.json`, `spells-cs.json`). Set `name: nameEn` and `nameDe: nameEn`. Translated all 35 German spell effect sources (`"Stärke des Stiers"` $\rightarrow$ `"Bull's Strength"`, `"Hast"` $\rightarrow$ `"Haste"`, `"Schild"` $\rightarrow$ `"Shield"`, etc.) so that dice roll breakdowns display pure English.
+  - **Engine & Rules (`RulesData.js`, `RulesSpells.js`, `PCFeatsSpells.js`):** Prestige classes standardized to canonical English (*Mystic Theurge*, *Arcane Trickster*, *Dragon Disciple*, *Assassin*, *Shadowbane Inquisitor*). Spell eligibility, prohibited school, and feat validation errors converted to English (*"Not a Spellcaster"*, *"Cannot Learn Spell"*, *"Prohibited School"*).
+  - **UI & Dialog Cleanups:** Removed German subtitles, alternate name inputs, and fallback strings across `FeatScrollDialog`, `SpellCompendium`, `SpellbookTab`, `SpellPreparation`, `SpellCreatorDialog`, `SpellDetailsDialog`, `SpellScrollDialog`, and `SkillTrickDetailsDialog`.
+  - **Character Wizard & Alignment:** Updated alignment select dropdown in `Step1RaceName` to pure canonical English (*Lawful*, *Neutral*, *Chaotic*, *Good*, *Neutral*, *Evil*). Translated prestige class prerequisite checking and confirmation dialogs in `LevelHeaderAndStats` to English.
+  - **Print Layouts:** Standardized `PrintPage2SkillsFeatures`, `PrintPage3EquipmentArmory`, and `PrintPage4SpellsCompanion` to prioritize canonical English names and rule descriptions.
+
+### Fixed
+- **Test Suite Updates:** Updated `Tests/spell_eligibility_validation.test.js` to assert canonical English error messages. Fixed JSX closing tag in `PCSpellCompendium.tsx`.
+
 ## [6.4.1] - 2026-09-05
 
 ### Added
