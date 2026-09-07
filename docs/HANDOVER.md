@@ -1,9 +1,9 @@
-# Übergabe & Systemstatus (v6.5.0 / Branch `refactor/bilingual-cleanup`) — The Combatant
+# Übergabe & Systemstatus (v6.5.0 / Branch `main`) — The Combatant
 
 ## 🚀 Copy-Paste Prompt für den neuen Rechner / neuen Chat
 
 ```markdown
-Wir setzen die Entwicklung von The Combatant auf Basis von Branch `refactor/bilingual-cleanup` (Version v6.5.0 / aktueller Stand) fort.
+Wir setzen die Entwicklung von The Combatant auf Basis von Branch `main` (Version v6.5.0 / aktueller Stand) fort.
 
 Zuletzt abgeschlossen:
 1. Vollständige 100% RAW-Englisch-Bereinigung (Rules As Written) über die gesamte Applikation:
@@ -19,6 +19,7 @@ Zuletzt abgeschlossen:
    - 41 Vitest UI-Tests (`npm run test:ui`) in 7 Suites $\rightarrow$ 100% bestanden (0 Fehler).
    - TypeScript (`npm run typecheck`) $\rightarrow$ 0 Fehler.
    - Produktions-Build (`npm run build`) $\rightarrow$ erfolgreich generiert (Code 0).
+4. Branch `refactor/bilingual-cleanup` erfolgreich nach `main` gemergt und gepusht.
 ```
 
 ---
@@ -26,8 +27,8 @@ Zuletzt abgeschlossen:
 ## 📋 Systemstatus & Git-Metadaten
 
 * **Repository:** `https://github.com/SplattedRabbit/TheCombatant.git`
-* **Aktueller Branch:** `refactor/bilingual-cleanup` (Up-to-date mit Remote `origin/refactor/bilingual-cleanup`)
-* **Letzter Commit:** `51ef826` (*"refactor: complete 100% RAW English standardization across data, engine, and UI"*)
+* **Aktueller Branch:** `main` (Up-to-date mit Remote `origin/main`)
+* **Letzter Commit:** `d0d2176` (*"build: update service worker cache version for v6.5.0 on main"*)
 * **Test-Suite:** 
   * 343 Node-Tests (`npm test`) $\rightarrow$ **343 / 343 bestanden (100% Pass)**
   * 41 Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **41 / 41 bestanden (100% Pass)**
