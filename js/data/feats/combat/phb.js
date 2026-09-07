@@ -827,8 +827,9 @@ export const COMBAT_FEATS_REGISTRY_PHB = {
     "category": "combat",
     "prereqs": [
       {
-        "type": "custom",
-        "desc": "Reiten 1 Rang"
+        "type": "skill",
+        "skill": "ride",
+        "ranks": 1
       }
     ],
     "benefitDe": "Negiere Treffer gegen dein Reittier durch eine erfolgreiche Reiten-Prüfung (1/Runde).",

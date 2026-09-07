@@ -223,15 +223,15 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       if (freeSP < cost) {
         if (!isClass && freeSP === 1) {
           showCustomAlert(
-            'Aktion nicht möglich',
-            'Es ist nicht möglich, einen einzelnen verbleibenden Skillpunkt für eine klassenfremde Fertigkeit auszugeben. Sie benötigen mindestens 2 freie Skillpunkte, da klassenfremde Fertigkeiten 2 Skillpunkte pro Rang kosten.',
+            'Action Not Allowed',
+            'It is not possible to spend a single remaining skill point on a cross-class skill. You need at least 2 available skill points, as cross-class skills cost 2 points per rank.',
             'OK',
             '📝',
           );
         } else {
           showCustomAlert(
-            'Nicht genügend Skillpunkte',
-            `Sie haben nicht genügend freie Skillpunkte (${freeSP} vorhanden, ${cost} benötigt).`,
+            'Not Enough Skill Points',
+            `You do not have enough available skill points (${freeSP} available, ${cost} required).`,
             'OK',
             '📝',
           );

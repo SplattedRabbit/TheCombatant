@@ -65,7 +65,7 @@ export const GENERAL_FEATS_REGISTRY_PHB = {
     "prereqs": [
       {
         "type": "custom",
-        "desc": "Fähigkeit, Untote zu vertreiben"
+        "desc": "Ability to turn or rebuke undead"
       }
     ],
     "benefitDe": "Erlaubt das Vertreiben von Untoten 4-mal häufiger pro Tag.",
@@ -83,7 +83,7 @@ export const GENERAL_FEATS_REGISTRY_PHB = {
     "prereqs": [
       {
         "type": "custom",
-        "desc": "Bardenmusik"
+        "desc": "Bardic music"
       }
     ],
     "benefitDe": "Erlaubt die Nutzung von Bardenmusik 4-mal häufiger pro Tag.",
@@ -187,7 +187,7 @@ export const GENERAL_FEATS_REGISTRY_PHB = {
       },
       {
         "type": "custom",
-        "desc": "Tiergestalt (Wild Shape)"
+        "desc": "Wild shape"
       }
     ],
     "benefitDe": "Erlaubt das Zaubern während der Tiergestalt (Wild Shape).",

@@ -41,7 +41,7 @@ const uid = () => {
 export class Combatant {
   constructor(p = {}) {
     this.id = p.id || uid();
-    this.name = p.name || 'Charakter';
+    this.name = p.name || 'Adventurer';
     this.playerName = p.playerName || '';
     this.type = p.type || 'p'; // 'p' (Player), 'e' (Enemy), 'n' (NPC)
     this.init = parseInt(p.init) || 0;
@@ -56,8 +56,13 @@ export class Combatant {
     this.acTouch = new Stat(p.acTouch !== undefined ? p.acTouch : 10);
     this.acFlat = new Stat(p.acFlat !== undefined ? p.acFlat : 10);
 
-    this.baseBw = p.baseBw !== undefined ? parseInt(p.baseBw) : (parseInt(p.bw) || 30);
-    this.bw = parseInt(p.bw) || 30;
+    const initialBaseSpeed = p.baseSpeed !== undefined ? p.baseSpeed : (p.baseBw !== undefined ? p.baseBw : (p.speed !== undefined ? p.speed : (p.bw !== undefined ? p.bw : 30)));
+    this.baseSpeed = parseInt(initialBaseSpeed) || 30;
+    this.baseBw = this.baseSpeed;
+
+    const initialSpeed = p.speed !== undefined ? p.speed : (p.bw !== undefined ? p.bw : this.baseSpeed);
+    this.speed = parseInt(initialSpeed) || 30;
+    this.bw = this.speed;
     this.conditions = Array.isArray(p.conditions) ? [...p.conditions] : [];
 
     // -- ABILITY SCORES (D&D 3.5e) --
@@ -68,7 +73,8 @@ export class Combatant {
     this.wis = new Stat(p.wis !== undefined ? p.wis : 10);
     this.cha = new Stat(p.cha !== undefined ? p.cha : 10);
 
-    this.iniMisc = parseInt(p.iniMisc) || 0;
+    this.initMisc = parseInt(p.initMisc !== undefined ? p.initMisc : p.iniMisc) || 0;
+    this.iniMisc = this.initMisc;
     this.rawInit = parseInt(p.rawInit) || 0;
 
     // -- CLASSES & LEVEL --
@@ -90,19 +96,36 @@ export class Combatant {
     this.hair = p.hair || p.haare || '';
     this.deity = p.deity || p.gottheit || '';
 
-    // -- BASE SAVES & ATTACK (D&D 3.5e) --
-    this.baseZa = new Stat(p.baseZa !== undefined ? p.baseZa : (p.za !== undefined ? p.za : 0));
+    // -- BASE SAVES & ATTACK (D&D 3.5e RAW) --
+    const initialBaseFort = p.baseFort !== undefined ? p.baseFort : (p.baseZa !== undefined ? p.baseZa : (p.fort !== undefined ? p.fort : (p.za !== undefined ? p.za : 0)));
+    this.baseFort = new Stat(initialBaseFort);
+    this.baseZa = this.baseFort;
+
     this.baseRef = new Stat(p.baseRef !== undefined ? p.baseRef : (p.ref !== undefined ? p.ref : 0));
-    this.baseWil = new Stat(p.baseWil !== undefined ? p.baseWil : (p.wil !== undefined ? p.wil : 0));
+
+    const initialBaseWill = p.baseWill !== undefined ? p.baseWill : (p.baseWil !== undefined ? p.baseWil : (p.will !== undefined ? p.will : (p.wil !== undefined ? p.wil : 0)));
+    this.baseWill = new Stat(initialBaseWill);
+    this.baseWil = this.baseWill;
+
     this.bab = new Stat(p.bab !== undefined ? p.bab : 0);
 
-    this.zaMisc = parseInt(p.zaMisc) || 0;
-    this.refMisc = parseInt(p.refMisc) || 0;
-    this.wilMisc = parseInt(p.wilMisc) || 0;
+    this.fortMisc = parseInt(p.fortMisc !== undefined ? p.fortMisc : p.zaMisc) || 0;
+    this.zaMisc = this.fortMisc;
 
-    this.za = new Stat(p.za !== undefined ? p.za : (p.baseZa !== undefined ? p.baseZa : 0));
-    this.ref = new Stat(p.ref !== undefined ? p.ref : (p.baseRef !== undefined ? p.baseRef : 0));
-    this.wil = new Stat(p.wil !== undefined ? p.wil : (p.baseWil !== undefined ? p.baseWil : 0));
+    this.refMisc = parseInt(p.refMisc) || 0;
+
+    this.willMisc = parseInt(p.willMisc !== undefined ? p.willMisc : p.wilMisc) || 0;
+    this.wilMisc = this.willMisc;
+
+    const initialFort = p.fort !== undefined ? p.fort : (p.za !== undefined ? p.za : this.baseFort);
+    this.fort = new Stat(initialFort);
+    this.za = this.fort;
+
+    this.ref = new Stat(p.ref !== undefined ? p.ref : this.baseRef);
+
+    const initialWill = p.will !== undefined ? p.will : (p.wil !== undefined ? p.wil : this.baseWill);
+    this.will = new Stat(initialWill);
+    this.wil = this.will;
 
     this.sr = p.sr !== undefined ? parseInt(p.sr) : 0;
 
@@ -369,6 +392,8 @@ export class Combatant {
       ac: this.ac,
       bw: this.bw,
       baseBw: this.baseBw,
+      speed: this.speed,
+      baseSpeed: this.baseSpeed,
       conditions: this.conditions,
       str: this.str,
       dex: this.dex,
@@ -377,20 +402,27 @@ export class Combatant {
       wis: this.wis,
       cha: this.cha,
       iniMisc: this.iniMisc,
+      initMisc: this.initMisc,
       rawInit: this.rawInit,
       classType: this.classType,
       level: this.level,
       classes: this.classes,
       baseZa: this.baseZa,
+      baseFort: this.baseFort,
       baseRef: this.baseRef,
       baseWil: this.baseWil,
+      baseWill: this.baseWill,
       za: this.za,
+      fort: this.fort,
       ref: this.ref,
       wil: this.wil,
+      will: this.will,
       bab: this.bab,
       zaMisc: this.zaMisc,
+      fortMisc: this.fortMisc,
       refMisc: this.refMisc,
       wilMisc: this.wilMisc,
+      willMisc: this.willMisc,
       acTouch: this.acTouch,
       acFlat: this.acFlat,
       sr: this.sr,

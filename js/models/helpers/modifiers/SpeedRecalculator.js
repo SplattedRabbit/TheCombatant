@@ -73,4 +73,5 @@ export function recalculateSpeed(pc) {
   }
 
   pc.bw = baseAndBonus;
+  pc.speed = baseAndBonus;
 }

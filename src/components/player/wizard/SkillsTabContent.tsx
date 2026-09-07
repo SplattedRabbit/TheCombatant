@@ -193,8 +193,8 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
                           const cost = isClassSkill ? 1 : 2;
                           if (currentLevelRemainingSkillPoints < cost) {
                             showCustomAlert(
-                              "Aktion nicht möglich",
-                              `Es ist nicht möglich, eine klassenfremde Fertigkeit zu steigern. Sie benötigen mindestens ${cost} freie Skillpunkte, da klassenfremde Fertigkeiten ${cost} Skillpunkte pro Rang kosten.`,
+                              "Action Not Allowed",
+                              `It is not possible to increase a cross-class skill without enough points. You need at least ${cost} available skill points, as cross-class skills cost ${cost} skill points per rank.`,
                               "OK",
                               "📝"
                             );
