@@ -205,7 +205,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       breakdown.push({ label: 'Condition (Shaken)', value: -2 });
     }
 
-    showRollBreakdown(`Skill check: ${skill.nameEn || skill.nameDe}`, '1d20', breakdown, e.nativeEvent);
+    showRollBreakdown(`Skill check: ${skill.nameEn || skill.name || skill.nameDe || ''}`, '1d20', breakdown, e.nativeEvent);
   };
 
   const handleRanksChange = (key: string, val: string) => {
@@ -274,7 +274,7 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
       .filter((key) => {
         const skill = SKILLS_REGISTRY[key];
         const q = searchQuery.toLowerCase().trim();
-        const name = skill.nameEn || skill.nameDe;
+        const name = skill.nameEn || skill.name || skill.nameDe || '';
         const matchesQuery = name.toLowerCase().includes(q) || key.includes(q);
 
         let matchesFilter = true;
@@ -287,8 +287,8 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
         return matchesQuery && matchesFilter;
       })
       .sort((a, b) => {
-        const nameA = SKILLS_REGISTRY[a].nameEn || SKILLS_REGISTRY[a].nameDe;
-        const nameB = SKILLS_REGISTRY[b].nameEn || SKILLS_REGISTRY[b].nameDe;
+        const nameA = SKILLS_REGISTRY[a].nameEn || SKILLS_REGISTRY[a].name || SKILLS_REGISTRY[a].nameDe || '';
+        const nameB = SKILLS_REGISTRY[b].nameEn || SKILLS_REGISTRY[b].name || SKILLS_REGISTRY[b].nameDe || '';
         return nameA.localeCompare(nameB);
       });
   }, [searchQuery, filterType, pc]);

@@ -60,8 +60,7 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
             {Object.entries(SKILLS_REGISTRY)
               .filter(([_, def]: any) => {
                 const s = skillSearch.toLowerCase();
-                return (def.nameEn || def.nameDe || '').toLowerCase().includes(s) || 
-                       (def.nameDe || '').toLowerCase().includes(s);
+                return (def.nameEn || def.name || def.nameDe || '').toLowerCase().includes(s);
               })
               .sort(([keyA]: any, [keyB]: any) => {
                 if (!skillSearch && targetPrestigeClass) {
@@ -125,7 +124,7 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
                     }}
                   >
                     <div style={{ textAlign: 'left', flex: 1 }}>
-                      <strong>{def.nameEn || def.nameDe}</strong>{' '}
+                      <strong>{def.nameEn || def.name || def.nameDe}</strong>{' '}
                       <span style={{ fontSize: '10px', color: 'var(--inkl)' }}>({def.abl.toUpperCase()})</span>
                       <span 
                         style={{

@@ -202,23 +202,8 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
               fontWeight: 'bold'
             }}
           >
-            {spell.name || spell.nameEn || spell.nameDe}
+            {spell.name || spell.nameEn}
           </h3>
-
-          {spell.nameEn && spell.nameDe && spell.nameEn !== spell.nameDe && (
-            <div
-              style={{
-                fontSize: '9.5px',
-                color: '#6a4a2a',
-                fontStyle: 'italic',
-                textAlign: 'center',
-                marginTop: '-4px',
-                marginBottom: '6px'
-              }}
-            >
-              {spell.nameDe}
-            </div>
-          )}
 
           <div
             style={{

@@ -167,8 +167,8 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
 
   sortedSpells.sort((a, b) => {
     if (a.level !== b.level) return a.level - b.level;
-    const nameA = a.nameEn || a.nameDe || '';
-    const nameB = b.nameEn || b.nameDe || '';
+    const nameA = a.name || a.nameEn || '';
+    const nameB = b.name || b.nameEn || '';
     return nameA.localeCompare(nameB);
   });
 
@@ -272,9 +272,9 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
                         <span
                           onClick={() => handleSpellDetails(s, s.id)}
                           style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '10px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
-                          title={`${s.nameEn || s.nameDe} (${s.school})`}
+                          title={`${s.name || s.nameEn} (${s.school})`}
                         >
-                          📜 {s.nameEn || s.nameDe} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({s.school})</span>
+                          📜 {s.name || s.nameEn} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({s.school})</span>
                         </span>
                         <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0, position: 'relative', zIndex: 1 }}>
                           {hasPrepared && (

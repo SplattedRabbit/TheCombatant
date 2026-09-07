@@ -29,7 +29,7 @@ export const PrintPage2SkillsFeatures: React.FC<PrintPageProps> = ({ pc }) => {
 
     return {
       key,
-      name: def.nameEn || def.nameDe || key,
+      name: def.nameEn || def.name || def.nameDe || key,
       attr: keyAttr.toUpperCase(),
       isClassSkill,
       trainedOnly: !!def.trainedOnly,
@@ -55,9 +55,9 @@ export const PrintPage2SkillsFeatures: React.FC<PrintPageProps> = ({ pc }) => {
     const featDef = (CombatFeats.REGISTRY as any)[fid];
     return {
       id: fid,
-      name: featDef?.nameEn || featDef?.nameDe || fid,
+      name: featDef?.nameEn || featDef?.name || featDef?.nameDe || fid,
       category: featDef?.category || 'General',
-      benefit: featDef?.benefitRaw || featDef?.benefitDe || featDef?.benefit || '—',
+      benefit: featDef?.benefitRaw || featDef?.benefit || featDef?.benefitDe || '—',
     };
   });
 
@@ -67,7 +67,7 @@ export const PrintPage2SkillsFeatures: React.FC<PrintPageProps> = ({ pc }) => {
     const trickDef = (SKILL_TRICKS_REGISTRY as any)[tid];
     return {
       id: tid,
-      name: trickDef?.nameEn || trickDef?.nameDe || tid,
+      name: trickDef?.nameEn || trickDef?.name || trickDef?.nameDe || tid,
       type: trickDef?.type || 'Interaction',
       desc: trickDef?.description || trickDef?.benefit || '—',
     };

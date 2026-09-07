@@ -31,7 +31,7 @@ test('Spell Eligibility - Non-caster character is not eligible for any spell', (
 
   const res = validateSpellLearnEligibility(fighterPC, fireball, () => null);
   assert.strictEqual(res.allowed, false);
-  assert.strictEqual(res.title, 'Kein Zauberwirker');
+  assert.strictEqual(res.title, 'Not a Spellcaster');
 });
 
 test('Spell Eligibility - Cleric cannot learn Sorc/Wiz-exclusive spells', () => {
@@ -69,7 +69,7 @@ test('Spell Eligibility - Cleric cannot learn Sorc/Wiz-exclusive spells', () => 
   // Validation check on learn attempt
   const resTurmoil = validateSpellLearnEligibility(clericPC, arcaneTurmoil, () => null);
   assert.strictEqual(resTurmoil.allowed, false);
-  assert.strictEqual(resTurmoil.title, 'Nicht erlernbar');
+  assert.strictEqual(resTurmoil.title, 'Cannot Learn Spell');
 
   const resCure = validateSpellLearnEligibility(clericPC, cureModerateWounds, () => null);
   assert.strictEqual(resCure.allowed, true);
@@ -111,13 +111,13 @@ test('Spell Eligibility - Wizard cannot learn Cleric/Druid spells or prohibited 
 
   const resProhibited = validateSpellLearnEligibility(wizardPC, animateDead, () => null);
   assert.strictEqual(resProhibited.allowed, false);
-  assert.strictEqual(resProhibited.title, 'Verbotene Schule');
+  assert.strictEqual(resProhibited.title, 'Prohibited School');
 
   // Wrong class list check
   assert.strictEqual(isSpellEligibleForPC(cureLightWounds, wizardPC), false);
   const resWrongClass = validateSpellLearnEligibility(wizardPC, cureLightWounds, () => null);
   assert.strictEqual(resWrongClass.allowed, false);
-  assert.strictEqual(resWrongClass.title, 'Nicht erlernbar');
+  assert.strictEqual(resWrongClass.title, 'Cannot Learn Spell');
 
   // Allowed spell
   assert.strictEqual(isSpellEligibleForPC(fireball, wizardPC), true);

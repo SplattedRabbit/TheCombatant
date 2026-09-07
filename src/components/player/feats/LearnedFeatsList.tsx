@@ -57,7 +57,7 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
   const learnedFeatsFiltered = useMemo(() => {
     return combinedFeats.filter((f: any) => {
       const reg = CombatFeats.REGISTRY[f.id];
-      const name = (reg?.name || reg?.nameEn || reg?.nameDe) ?? f.id;
+      const name = (reg?.name || reg?.nameEn) ?? f.id;
       return name.toLowerCase().includes(learnedSearch.toLowerCase().trim());
     });
   }, [combinedFeats, learnedSearch]);
@@ -139,7 +139,7 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: 0, gap: '4px' }}>
                   <span style={{ fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: 'bold', color: '#245e28', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
-                    {feat.name || feat.nameEn || feat.nameDe}{optionLabel}
+                    {feat.name || feat.nameEn}{optionLabel}
                     {!prereqsResult.met && (
                       <span style={{ color: 'var(--red)', marginLeft: '3px', fontSize: '8px' }} title={`Prerequisites not met!\n` + prereqsResult.details.map((d: any) => `${d.met ? '✓' : '✗'} ${d.desc}`).join('\n')}>
                         ⚠️

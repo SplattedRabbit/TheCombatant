@@ -81,7 +81,7 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
       if (!sp) return;
       const key = sp.key || sp.spellKey || sp.name;
       const reg = key ? (CombatSpells.REGISTRY?.[key] || (typeof CombatSpells.getSpellDetails === 'function' ? CombatSpells.getSpellDetails(key) : null)) : null;
-      const baseName = sp.name || reg?.nameEn || reg?.nameDe || key || 'Prepared Spell';
+      const baseName = sp.name || reg?.nameEn || reg?.name || reg?.nameDe || key || 'Prepared Spell';
       preparedSpells.push({
         level: sp.level ?? reg?.level ?? 1,
         name: sp.isDomain ? `[D] ${baseName}` : baseName,
@@ -104,7 +104,7 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
       if (key && !addedKeys.has(key)) {
         preparedSpells.push({
           level: sp.level ?? 1,
-          name: sp.nameEn || sp.nameDe || sp.name || key || 'Spellbook Spell',
+          name: sp.nameEn || sp.name || sp.nameDe || key || 'Spellbook Spell',
           school: sp.school || 'Universal',
           range: sp.range || 'Close',
           duration: sp.duration || 'Instant',
@@ -125,7 +125,7 @@ export const PrintPage4SpellsCompanion: React.FC<PrintPageProps> = ({ pc }) => {
         const regSpell = CombatSpells.REGISTRY?.[key] || (typeof CombatSpells.getSpellDetails === 'function' ? CombatSpells.getSpellDetails(key) : null);
         preparedSpells.push({
           level: regSpell?.level ?? 1,
-          name: regSpell?.nameEn || regSpell?.nameDe || regSpell?.name || key || 'Learned Spell',
+          name: regSpell?.nameEn || regSpell?.name || regSpell?.nameDe || key || 'Learned Spell',
           school: regSpell?.school || 'Universal',
           range: regSpell?.range || 'Close',
           duration: regSpell?.duration || 'Instant',

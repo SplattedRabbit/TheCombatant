@@ -1,13 +1,13 @@
 /**
- * @module    feats-general-phb2
- * @summary   Statische Datenbank für D&D 3.5e allgemeine Talente aus dem Player's Handbook II (PHB2).
+ * @module    phb2
+ * @summary   Standardized D&D 3.5e RAW English feats registry.
  * @exports   GENERAL_FEATS_REGISTRY_PHB2
  */
 
 export const GENERAL_FEATS_REGISTRY_PHB2 = {
   "companion_spellbond": {
     "id": "companion_spellbond",
-    "nameDe": "Tierbegleiter-Zauberband",
+    "nameDe": "Companion Spellbond",
     "nameEn": "Companion Spellbond",
     "category": "general",
     "source": "phb2",
@@ -17,15 +17,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Animal companion class feature"
       }
     ],
-    "benefitDe": "Teile deine Zauber mit deinem Tierbegleiter auf bis zu 30 Fuß Entfernung (statt standardmäßig 5 Fuß).",
+    "benefitDe": "You can share spells with your animal companion out to a range of 30 feet, rather than the standard 5 feet.",
     "benefitRaw": "You can share spells with your animal companion out to a range of 30 feet, rather than the standard 5 feet.",
     "normalRaw": "Shared spells are lost if the companion is more than 5 feet away.",
     "specialRaw": "",
-    "appEffect": "Teile Tierbegleiter-Zauber bis zu 30 Fuß Distanz"
+    "appEffect": "Share spells with your animal companion out to a range of 30 feet, rather than the standard 5 feet.",
+    "name": "Companion Spellbond",
+    "benefit": "You can share spells with your animal companion out to a range of 30 feet, rather than the standard 5 feet.",
+    "benefitEn": "You can share spells with your animal companion out to a range of 30 feet, rather than the standard 5 feet."
   },
   "combat_acrobat": {
     "id": "combat_acrobat",
-    "nameDe": "Kampfakrobat",
+    "nameDe": "Combat Acrobat",
     "nameEn": "Combat Acrobat",
     "category": "general",
     "source": "phb2",
@@ -39,15 +42,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Tumble 9 ranks"
       }
     ],
-    "benefitDe": "Vermeide es, zu Boden zu stürzen (Prone) durch eine erfolgreiche Balance-Prüfung (DC 15); Tumble durch schwieriges Gelände.",
+    "benefitDe": "If you are tripped or knocked prone, you can make a DC 15 Balance check as an immediate action to remain standing. You can also tumble through difficult terrain without penalty.",
     "benefitRaw": "If you are tripped or knocked prone, you can make a DC 15 Balance check as an immediate action to remain standing. You can also tumble through difficult terrain without penalty.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Sofortige Balance-Rettung (DC 15) gegen Prone-Status; Tumble im schwierigen Gelände"
+    "appEffect": "If you are tripped or knocked prone, you can make a DC 15 Balance check as an immediate action to remain standing",
+    "name": "Combat Acrobat",
+    "benefit": "If you are tripped or knocked prone, you can make a DC 15 Balance check as an immediate action to remain standing. You can also tumble through difficult terrain without penalty.",
+    "benefitEn": "If you are tripped or knocked prone, you can make a DC 15 Balance check as an immediate action to remain standing. You can also tumble through difficult terrain without penalty."
   },
   "steadfast_determination": {
     "id": "steadfast_determination",
-    "nameDe": "Eiserne Entschlossenheit (Steadfast Determination)",
+    "nameDe": "Steadfast Determination",
     "nameEn": "Steadfast Determination",
     "category": "general",
     "source": "phb2",
@@ -57,15 +63,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "id": "endurance"
       }
     ],
-    "benefitDe": "Nutze deinen Konstitutions-Modifikator anstelle deines Weisheits-Modifikators für Willens-Rettungswürfe. Du scheiterst bei Zähigkeitswürfen nicht automatisch bei einer gewürfelten 1.",
+    "benefitDe": "You use your Constitution modifier instead of your Wisdom modifier on Will saves. You do not automatically fail Fortitude saves on a roll of 1.",
     "benefitRaw": "You use your Constitution modifier instead of your Wisdom modifier on Will saves. You do not automatically fail Fortitude saves on a roll of 1.",
     "normalRaw": "Wisdom modifies Will saves. A roll of 1 on a Fortitude save is an automatic failure.",
     "specialRaw": "",
-    "appEffect": "Konstitutions-Mod für Willens-Rettungswürfe; kein Auto-Fail auf Fortitude 1"
+    "appEffect": "Your Constitution modifier instead of your Wisdom modifier on Will saves",
+    "name": "Steadfast Determination",
+    "benefit": "You use your Constitution modifier instead of your Wisdom modifier on Will saves. You do not automatically fail Fortitude saves on a roll of 1.",
+    "benefitEn": "You use your Constitution modifier instead of your Wisdom modifier on Will saves. You do not automatically fail Fortitude saves on a roll of 1."
   },
   "telling_blow": {
     "id": "telling_blow",
-    "nameDe": "Enthüllender Schlag (Telling Blow)",
+    "nameDe": "Telling Blow",
     "nameEn": "Telling Blow",
     "category": "general",
     "source": "phb2",
@@ -75,15 +84,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Sneak attack or skirmish ability"
       }
     ],
-    "benefitDe": "Jedes Mal, wenn du einen kritischen Treffer erzielst, fügst du deinen Bonus-Schaden durch Sneak Attack oder Skirmish hinzu.",
+    "benefitDe": "You add your sneak attack or skirmish extra damage to any critical hit you score in combat.",
     "benefitRaw": "You add your sneak attack or skirmish extra damage to any critical hit you score in combat.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Füge Sneak Attack/Skirmish-Schaden bei kritischen Treffern hinzu"
+    "appEffect": "You add your sneak attack or skirmish extra damage to any critical hit you score in combat.",
+    "name": "Telling Blow",
+    "benefit": "You add your sneak attack or skirmish extra damage to any critical hit you score in combat.",
+    "benefitEn": "You add your sneak attack or skirmish extra damage to any critical hit you score in combat."
   },
   "leap_of_the_heavens": {
     "id": "leap_of_the_heavens",
-    "nameDe": "Himmelssprung",
+    "nameDe": "Leap of the Heavens",
     "nameEn": "Leap of the Heavens",
     "category": "general",
     "source": "phb2",
@@ -94,15 +106,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "value": 4
       }
     ],
-    "benefitDe": "Die DC für Sprungwürfe (Jump) verdoppelt sich nicht, wenn du ohne 20 Fuß Anlauf aus dem Stand springst. Mit Anlauf erhältst du einen Bonus von +5.",
+    "benefitDe": "When making a jump check without a 20-foot running start, the DC is not doubled. If you do have a running start, you gain a +5 competence bonus on the check.",
     "benefitRaw": "When making a jump check without a 20-foot running start, the DC is not doubled. If you do have a running start, you gain a +5 competence bonus on the check.",
     "normalRaw": "Standing jumps double the DC.",
     "specialRaw": "",
-    "appEffect": "Keine DC-Verdopplung bei Stand-Sprüngen; +5 mit Anlauf"
+    "appEffect": "When making a jump check without a 20-foot running start, the DC is not doubled",
+    "name": "Leap of the Heavens",
+    "benefit": "When making a jump check without a 20-foot running start, the DC is not doubled. If you do have a running start, you gain a +5 competence bonus on the check.",
+    "benefitEn": "When making a jump check without a 20-foot running start, the DC is not doubled. If you do have a running start, you gain a +5 competence bonus on the check."
   },
   "battle_dancer": {
     "id": "battle_dancer",
-    "nameDe": "Kampftänzer",
+    "nameDe": "Battle Dancer",
     "nameEn": "Battle Dancer",
     "category": "general",
     "source": "phb2",
@@ -116,15 +131,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Bardic music"
       }
     ],
-    "benefitDe": "+2 Moralbonus auf Angriffswürfe, solange du dich bewegst und gleichzeitig Bardenmusik nutzt.",
+    "benefitDe": "+2 morale bonus on melee attacks while moving and singing with bardic music.",
     "benefitRaw": "+2 morale bonus on melee attacks while moving and singing with bardic music.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 Angriff bei Bewegung während Bardenmusik"
+    "appEffect": "+2 morale bonus on melee attacks while moving and singing with bardic music.",
+    "name": "Battle Dancer",
+    "benefit": "+2 morale bonus on melee attacks while moving and singing with bardic music.",
+    "benefitEn": "+2 morale bonus on melee attacks while moving and singing with bardic music."
   },
   "cunning_evasion": {
     "id": "cunning_evasion",
-    "nameDe": "Listiges Entrinnen",
+    "nameDe": "Cunning Evasion",
     "nameEn": "Cunning Evasion",
     "category": "general",
     "source": "phb2",
@@ -139,15 +157,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Evasion"
       }
     ],
-    "benefitDe": "Sofortige Aktion: Wenn du einen Flächenzauber per Entrinnen (Evasion) vermeidest, kannst du dich sofort 5 Fuß bewegen und einen Verstecken-Wurf machen.",
+    "benefitDe": "Immediately hide and take a 5-ft. step when avoiding area attack via evasion.",
     "benefitRaw": "Immediately hide and take a 5-ft. step when avoiding area attack via evasion.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Sofortiges Verstecken und 5 ft. Schritt nach erfolgreichem Entrinnen"
+    "appEffect": "Immediately hide and take a 5-ft",
+    "name": "Cunning Evasion",
+    "benefit": "Immediately hide and take a 5-ft. step when avoiding area attack via evasion.",
+    "benefitEn": "Immediately hide and take a 5-ft. step when avoiding area attack via evasion."
   },
   "fade_into_violence": {
     "id": "fade_into_violence",
-    "nameDe": "Im Kampf untertauchen",
+    "nameDe": "Fade into Violence",
     "nameEn": "Fade into Violence",
     "category": "general",
     "source": "phb2",
@@ -163,15 +184,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "ranks": 6
       }
     ],
-    "benefitDe": "Schnelle Aktion: Wenn du neben einem Verbündeten stehst, mache einen Bluffen-Wurf, damit ein Gegner statt dir deinen Verbündeten angreift.",
+    "benefitDe": "Opponent attacks adjacent ally instead of you if your Bluff check succeeds.",
     "benefitRaw": "Opponent attacks adjacent ally instead of you if your Bluff check succeeds.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Gegnerische Angriffe per Bluffen auf Verbündeten umlenken"
+    "appEffect": "Opponent attacks adjacent ally instead of you if your Bluff check succeeds.",
+    "name": "Fade into Violence",
+    "benefit": "Opponent attacks adjacent ally instead of you if your Bluff check succeeds.",
+    "benefitEn": "Opponent attacks adjacent ally instead of you if your Bluff check succeeds."
   },
   "fiery_ki_defense": {
     "id": "fiery_ki_defense",
-    "nameDe": "Feurige Ki-Verteidigung",
+    "nameDe": "Fiery Ki Defense",
     "nameEn": "Fiery Ki Defense",
     "category": "general",
     "source": "phb2",
@@ -195,15 +219,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "fiery_fist",
-    "benefitDe": "Schnelle Aktion: Verbrauche 1 Betäubungsschlag, um dich in Flammen zu hüllen; jeder Nahkampfangreifer erleidet 1d6 Feuerschaden.",
+    "benefitDe": "Cloak yourself in flame, dealing 1d6 fire damage to melee attackers.",
     "benefitRaw": "Cloak yourself in flame, dealing 1d6 fire damage to melee attackers.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "1d6 Feuerschaden für jeden Nahkampfangreifer"
+    "appEffect": "Cloak yourself in flame, dealing 1d6 fire damage to melee attackers.",
+    "name": "Fiery Ki Defense",
+    "benefit": "Cloak yourself in flame, dealing 1d6 fire damage to melee attackers.",
+    "benefitEn": "Cloak yourself in flame, dealing 1d6 fire damage to melee attackers."
   },
   "ki_blast": {
     "id": "ki_blast",
-    "nameDe": "Ki-Explosion",
+    "nameDe": "Ki Blast",
     "nameEn": "Ki Blast",
     "category": "general",
     "source": "phb2",
@@ -227,15 +254,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "fiery_fist",
-    "benefitDe": "Standard-Aktion: Verbrauche 2 Betäubungsschläge für ein Geschoss aus Ki-Energie (Fernkampf-Berührungsangriff, 60 ft., waffenloser Schaden + Weisheitsmodifikator).",
+    "benefitDe": "Hurl a ball of ki energy (ranged touch attack up to 60 ft.) dealing unarmed damage + Wis mod.",
     "benefitRaw": "Hurl a ball of ki energy (ranged touch attack up to 60 ft.) dealing unarmed damage + Wis mod.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Ki-Fernkampfangriff (60 ft., Berührung, Schaden = Faust + WIS)"
+    "appEffect": "Hurl a ball of ki energy (ranged touch attack up to 60 ft.) dealing unarmed damage + Wis mod.",
+    "name": "Ki Blast",
+    "benefit": "Hurl a ball of ki energy (ranged touch attack up to 60 ft.) dealing unarmed damage + Wis mod.",
+    "benefitEn": "Hurl a ball of ki energy (ranged touch attack up to 60 ft.) dealing unarmed damage + Wis mod."
   },
   "keen_eared_scout": {
     "id": "keen_eared_scout",
-    "nameDe": "Scharfhöriger Kundschafter",
+    "nameDe": "Keen-Eared Scout",
     "nameEn": "Keen-Eared Scout",
     "category": "general",
     "source": "phb2",
@@ -246,15 +276,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "ranks": 6
       }
     ],
-    "benefitDe": "Lauschen-Würfe enthüllen genaue Anzahl, Bewegungsrichtung und Rüstungsart von Kreaturen hinter Türen und Wänden.",
+    "benefitDe": "Listen checks reveal exact details about sounds, creature numbers and armor types.",
     "benefitRaw": "Listen checks reveal exact details about sounds, creature numbers and armor types.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Exakte Details über Kreaturen und Bewegung durch Lauschen"
+    "appEffect": "Listen checks reveal exact details about sounds, creature numbers and armor types.",
+    "name": "Keen-Eared Scout",
+    "benefit": "Listen checks reveal exact details about sounds, creature numbers and armor types.",
+    "benefitEn": "Listen checks reveal exact details about sounds, creature numbers and armor types."
   },
   "master_manipulator": {
     "id": "master_manipulator",
-    "nameDe": "Meister-Manipulator",
+    "nameDe": "Master Manipulator",
     "nameEn": "Master Manipulator",
     "category": "general",
     "source": "phb2",
@@ -270,15 +303,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "ranks": 9
       }
     ],
-    "benefitDe": "Schaltet 'Trap the Words' und 'Outrage' mit Diplomatie frei, um Gegner in Gesprächen auszutricksen.",
+    "benefitDe": "Use Diplomacy checks to trick foes in conversations into revealing secrets or turning against allies.",
     "benefitRaw": "Use Diplomacy checks to trick foes in conversations into revealing secrets or turning against allies.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Neue Gesprächs-Taktiken mit Diplomatie"
+    "appEffect": "Use Diplomacy checks to trick foes in conversations into revealing secrets or turning against allies.",
+    "name": "Master Manipulator",
+    "benefit": "Use Diplomacy checks to trick foes in conversations into revealing secrets or turning against allies.",
+    "benefitEn": "Use Diplomacy checks to trick foes in conversations into revealing secrets or turning against allies."
   },
   "trophy_collector": {
     "id": "trophy_collector",
-    "nameDe": "Trophäen-Sammler",
+    "nameDe": "Trophy Collector",
     "nameEn": "Trophy Collector",
     "category": "general",
     "source": "phb2",
@@ -288,28 +324,34 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "value": 6
       }
     ],
-    "benefitDe": "Sammle Trophäen von besiegten Gegnern; gewährt +2 Moralbonus auf Rettungswürfe und Einschüchtern gegen diese Kreaturenart.",
+    "benefitDe": "Harvest trophies from fallen foes for bonuses on saves and Intimidate checks.",
     "benefitRaw": "Harvest trophies from fallen foes for bonuses on saves and Intimidate checks.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 Rettungswürfe & Einschüchtern durch Trophäen"
+    "appEffect": "Harvest trophies from fallen foes for bonuses on saves and Intimidate checks.",
+    "name": "Trophy Collector",
+    "benefit": "Harvest trophies from fallen foes for bonuses on saves and Intimidate checks.",
+    "benefitEn": "Harvest trophies from fallen foes for bonuses on saves and Intimidate checks."
   },
   "wanderers_diplomacy": {
     "id": "wanderers_diplomacy",
-    "nameDe": "Wanderer-Diplomatie",
+    "nameDe": "Wanderer's Diplomacy",
     "nameEn": "Wanderer's Diplomacy",
     "category": "general",
     "source": "phb2",
     "prereqs": [],
-    "benefitDe": "Schaltet feilschende Diplomatie frei: Günstigere Preise und Bestechung von Wachen.",
+    "benefitDe": "Use Diplomacy to haggle for lower prices and influence attitudes rapidly.",
     "benefitRaw": "Use Diplomacy to haggle for lower prices and influence attitudes rapidly.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Feilschen für günstigere Preise mit Diplomatie"
+    "appEffect": "Use Diplomacy to haggle for lower prices and influence attitudes rapidly.",
+    "name": "Wanderer's Diplomacy",
+    "benefit": "Use Diplomacy to haggle for lower prices and influence attitudes rapidly.",
+    "benefitEn": "Use Diplomacy to haggle for lower prices and influence attitudes rapidly."
   },
   "mad_alchemist": {
     "id": "mad_alchemist",
-    "nameDe": "Verrückter Alchemist",
+    "nameDe": "Mad Alchemist",
     "nameEn": "Mad Alchemist",
     "category": "general",
     "source": "phb2",
@@ -320,15 +362,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "ranks": 6
       }
     ],
-    "benefitDe": "Taktisches Talent: Schaltet Feuerbrand, Säurespritzer und Klebekraft bei alchemistischen Waffen frei.",
+    "benefitDe": "Tactical feat: fiery blaze, acid splash, and tanglefoot tactical benefits.",
     "benefitRaw": "Tactical feat: fiery blaze, acid splash, and tanglefoot tactical benefits.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Taktische Optionen mit Alchemie-Artikeln"
+    "appEffect": "Tactical feat: fiery blaze, acid splash, and tanglefoot tactical benefits.",
+    "name": "Mad Alchemist",
+    "benefit": "Tactical feat: fiery blaze, acid splash, and tanglefoot tactical benefits.",
+    "benefitEn": "Tactical feat: fiery blaze, acid splash, and tanglefoot tactical benefits."
   },
   "mad_foam_rager": {
     "id": "mad_foam_rager",
-    "nameDe": "Schäumender Berserker",
+    "nameDe": "Mad Foam Rager",
     "nameEn": "Mad Foam Rager",
     "category": "general",
     "source": "phb2",
@@ -338,15 +383,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Rage or frenzy ability"
       }
     ],
-    "benefitDe": "1-mal pro Kampfrausch (Rage): Verzögere den erlittenen Schaden eines Angriffs oder Zaubereffekts um 1 volle Runde.",
+    "benefitDe": "Once per rage, delay the damage or effect of an attack or spell for 1 round.",
     "benefitRaw": "Once per rage, delay the damage or effect of an attack or spell for 1 round.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Schaden/Zaubereffekt im Kampfrausch um 1 Runde verzögern"
+    "appEffect": "Once per rage, delay the damage or effect of an attack or spell for 1 round.",
+    "name": "Mad Foam Rager",
+    "benefit": "Once per rage, delay the damage or effect of an attack or spell for 1 round.",
+    "benefitEn": "Once per rage, delay the damage or effect of an attack or spell for 1 round."
   },
   "vatic_gaze": {
     "id": "vatic_gaze",
-    "nameDe": "Vatikanischer Blick",
+    "nameDe": "Vatic Gaze",
     "nameEn": "Vatic Gaze",
     "category": "general",
     "source": "phb2",
@@ -356,15 +404,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Arcane caster level 9th"
       }
     ],
-    "benefitDe": "Schnelle Aktion: Erkenne magische Auren und schätze die Zauberstufe eines Ziels per Blick ab.",
+    "benefitDe": "Instantly detect magic and sense a target's caster level as a swift action.",
     "benefitRaw": "Instantly detect magic and sense a target's caster level as a swift action.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Magie und Zauberstufe als schnelle Aktion analysieren"
+    "appEffect": "Instantly detect magic and sense a target's caster level as a swift action.",
+    "name": "Vatic Gaze",
+    "benefit": "Instantly detect magic and sense a target's caster level as a swift action.",
+    "benefitEn": "Instantly detect magic and sense a target's caster level as a swift action."
   },
   "arcane_accompaniment": {
     "id": "arcane_accompaniment",
-    "nameDe": "Arkane Begleitung",
+    "nameDe": "Arcane Accompaniment",
     "nameEn": "Arcane Accompaniment",
     "category": "general",
     "source": "phb2",
@@ -379,15 +430,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Bardic music, arcane caster level 1st"
       }
     ],
-    "benefitDe": "Opfere einen Zauberplatz als schnelle Aktion, um die Wirkungsdauer deiner Bardenmusik um Runden in Höhe des Zaubergrads zu verlängern.",
+    "benefitDe": "Expend a spell slot to extend the duration of your bardic music.",
     "benefitRaw": "Expend a spell slot to extend the duration of your bardic music.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Bardenmusik per Zauberslot-Opferung verlängern"
+    "appEffect": "Expend a spell slot to extend the duration of your bardic music.",
+    "name": "Arcane Accompaniment",
+    "benefit": "Expend a spell slot to extend the duration of your bardic music.",
+    "benefitEn": "Expend a spell slot to extend the duration of your bardic music."
   },
   "arcane_flourish": {
     "id": "arcane_flourish",
-    "nameDe": "Arkane Verzierung",
+    "nameDe": "Arcane Flourish",
     "nameEn": "Arcane Flourish",
     "category": "general",
     "source": "phb2",
@@ -402,15 +456,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Arcane caster level 1st"
       }
     ],
-    "benefitDe": "Opfere einen Zauberslot als schnelle Aktion für einen Kompetenzbonus auf deinen nächsten Auftreten-Wurf = 1 + Zaubergrad.",
+    "benefitDe": "Expend a spell slot to gain a competence bonus on your next Perform check.",
     "benefitRaw": "Expend a spell slot to gain a competence bonus on your next Perform check.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+1 + Grad auf Auftreten-Wurf durch Zauberslot-Opferung"
+    "appEffect": "Expend a spell slot to gain a competence bonus on your next Perform check.",
+    "name": "Arcane Flourish",
+    "benefit": "Expend a spell slot to gain a competence bonus on your next Perform check.",
+    "benefitEn": "Expend a spell slot to gain a competence bonus on your next Perform check."
   },
   "arcane_toughness": {
     "id": "arcane_toughness",
-    "nameDe": "Arkane Zähigkeit",
+    "nameDe": "Arcane Toughness",
     "nameEn": "Arcane Toughness",
     "category": "general",
     "source": "phb2",
@@ -425,15 +482,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "toughness",
-    "benefitDe": "Sofortige Aktion: Wenn du auf 0 oder weniger Trefferpunkte fällst, opfere einen Zauberplatz, um sofort TP in Höhe des doppelten Zaubergrads zu heilen.",
+    "benefitDe": "Expend a spell slot as an immediate action when reduced to 0 or fewer HP to heal twice the slot's level.",
     "benefitRaw": "Expend a spell slot as an immediate action when reduced to 0 or fewer HP to heal twice the slot's level.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Zauberslot bei 0 TP opfern, um 2x Grad TP sofort zu heilen"
+    "appEffect": "Expend a spell slot as an immediate action when reduced to 0 or fewer HP to heal twice the slot's level.",
+    "name": "Arcane Toughness",
+    "benefit": "Expend a spell slot as an immediate action when reduced to 0 or fewer HP to heal twice the slot's level.",
+    "benefitEn": "Expend a spell slot as an immediate action when reduced to 0 or fewer HP to heal twice the slot's level."
   },
   "bonded_familiar": {
     "id": "bonded_familiar",
-    "nameDe": "Verbündeter Vertrauter",
+    "nameDe": "Bonded Familiar",
     "nameEn": "Bonded Familiar",
     "category": "general",
     "source": "phb2",
@@ -443,15 +503,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Familiar"
       }
     ],
-    "benefitDe": "Wenn du tödlichen Schaden erleidest, kannst du den Schaden sofort auf deinen Vertrauten übertragen.",
+    "benefitDe": "Shift deadly damage from yourself to your familiar as an immediate action.",
     "benefitRaw": "Shift deadly damage from yourself to your familiar as an immediate action.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Tödlichen Schaden auf Vertrauten übertragen"
+    "appEffect": "Shift deadly damage from yourself to your familiar as an immediate action.",
+    "name": "Bonded Familiar",
+    "benefit": "Shift deadly damage from yourself to your familiar as an immediate action.",
+    "benefitEn": "Shift deadly damage from yourself to your familiar as an immediate action."
   },
   "combat_familiar": {
     "id": "combat_familiar",
-    "nameDe": "Kampfvertrauter",
+    "nameDe": "Combat Familiar",
     "nameEn": "Combat Familiar",
     "category": "general",
     "source": "phb2",
@@ -461,15 +524,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Familiar, arcane caster level 1st"
       }
     ],
-    "benefitDe": "Dein Vertrauter kann das Feld von Gegnern betreten, ohne Gelegenheitsangriffe zu provozieren.",
+    "benefitDe": "Your familiar enters a foe's square without provoking attacks of opportunity.",
     "benefitRaw": "Your familiar enters a foe's square without provoking attacks of opportunity.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Vertrauter provoziert keine AoO beim Betreten gegnerischer Felder"
+    "appEffect": "Your familiar enters a foe's square without provoking attacks of opportunity.",
+    "name": "Combat Familiar",
+    "benefit": "Your familiar enters a foe's square without provoking attacks of opportunity.",
+    "benefitEn": "Your familiar enters a foe's square without provoking attacks of opportunity."
   },
   "lurking_familiar": {
     "id": "lurking_familiar",
-    "nameDe": "Lauernder Vertrauter",
+    "nameDe": "Lurking Familiar",
     "nameEn": "Lurking Familiar",
     "category": "general",
     "source": "phb2",
@@ -484,15 +550,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Arcane caster level 6th"
       }
     ],
-    "benefitDe": "Dein Vertrauter kann sich in deinem eigenen Feld verstecken und erhält dort vollständige Deckung.",
+    "benefitDe": "Your familiar can hide in your space and has total cover while there.",
     "benefitRaw": "Your familiar can hide in your space and has total cover while there.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Vertrauter kann sich im Feld des Meisters verstecken mit totaler Deckung"
+    "appEffect": "Your familiar can hide in your space and has total cover while there.",
+    "name": "Lurking Familiar",
+    "benefit": "Your familiar can hide in your space and has total cover while there.",
+    "benefitEn": "Your familiar can hide in your space and has total cover while there."
   },
   "divine_armor": {
     "id": "divine_armor",
-    "nameDe": "Göttliche Rüstung",
+    "nameDe": "Divine Armor",
     "nameEn": "Divine Armor",
     "category": "general",
     "source": "phb2",
@@ -502,15 +571,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Ability to turn or rebuke undead"
       }
     ],
-    "benefitDe": "Schnelle Aktion: Verbrauche 1 Vertreiben-Einsatz für Schadensreduktion 5/Böse (bzw. 5/Gut) für 1 Runde.",
+    "benefitDe": "Expend a turn/rebuke use as a swift action to gain DR 5/evil or DR 5/good for 1 round.",
     "benefitRaw": "Expend a turn/rebuke use as a swift action to gain DR 5/evil or DR 5/good for 1 round.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "DR 5/Böse oder Gut für 1 Runde per Vertreiben"
+    "appEffect": "Expend a turn/rebuke use as a swift action to gain DR 5/evil or DR 5/good for 1 round.",
+    "name": "Divine Armor",
+    "benefit": "Expend a turn/rebuke use as a swift action to gain DR 5/evil or DR 5/good for 1 round.",
+    "benefitEn": "Expend a turn/rebuke use as a swift action to gain DR 5/evil or DR 5/good for 1 round."
   },
   "divine_fortune": {
     "id": "divine_fortune",
-    "nameDe": "Göttliches Glück",
+    "nameDe": "Divine Fortune",
     "nameEn": "Divine Fortune",
     "category": "general",
     "source": "phb2",
@@ -520,15 +592,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Ability to turn or rebuke undead"
       }
     ],
-    "benefitDe": "Sofortige Aktion: Verbrauche 1 Vertreiben-Einsatz für +4 Bonus auf deinen nächsten Rettungswurf.",
+    "benefitDe": "Expend a turn/rebuke use as an immediate action for a +4 bonus on your next save.",
     "benefitRaw": "Expend a turn/rebuke use as an immediate action for a +4 bonus on your next save.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+4 auf nächsten Rettungswurf per Vertreiben"
+    "appEffect": "Expend a turn/rebuke use as an immediate action for a +4 bonus on your next save.",
+    "name": "Divine Fortune",
+    "benefit": "Expend a turn/rebuke use as an immediate action for a +4 bonus on your next save.",
+    "benefitEn": "Expend a turn/rebuke use as an immediate action for a +4 bonus on your next save."
   },
   "divine_justice": {
     "id": "divine_justice",
-    "nameDe": "Göttliche Gerechtigkeit",
+    "nameDe": "Divine Justice",
     "nameEn": "Divine Justice",
     "category": "general",
     "source": "phb2",
@@ -538,15 +613,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Ability to turn or rebuke undead"
       }
     ],
-    "benefitDe": "Sofortige Aktion: Wenn ein Gegner dir Schaden zufügt, verbrauche 1 Vertreiben-Einsatz; dein nächster Treffer fügt zusätzlichen Schaden = gegnerischer Schaden zu.",
+    "benefitDe": "Expend a turn/rebuke use to deal retribution damage to a foe who injured you.",
     "benefitRaw": "Expend a turn/rebuke use to deal retribution damage to a foe who injured you.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Vergeltungsschaden per Vertreiben"
+    "appEffect": "Expend a turn/rebuke use to deal retribution damage to a foe who injured you.",
+    "name": "Divine Justice",
+    "benefit": "Expend a turn/rebuke use to deal retribution damage to a foe who injured you.",
+    "benefitEn": "Expend a turn/rebuke use to deal retribution damage to a foe who injured you."
   },
   "divine_ward": {
     "id": "divine_ward",
-    "nameDe": "Göttlicher Schutz",
+    "nameDe": "Divine Ward",
     "nameEn": "Divine Ward",
     "category": "general",
     "source": "phb2",
@@ -556,15 +634,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Ability to turn or rebuke undead"
       }
     ],
-    "benefitDe": "Schnelle Aktion: Stimme dich auf einen Verbündeten ein; du kannst Berührungszauber auf ihn auf Distanz wirken.",
+    "benefitDe": "Cast touch spells on an attuned ally at range.",
     "benefitRaw": "Cast touch spells on an attuned ally at range.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Berührungszauber auf Distanz auf eingestimmten Verbündeten wirken"
+    "appEffect": "Cast touch spells on an attuned ally at range.",
+    "name": "Divine Ward",
+    "benefit": "Cast touch spells on an attuned ally at range.",
+    "benefitEn": "Cast touch spells on an attuned ally at range."
   },
   "profane_aura": {
     "id": "profane_aura",
-    "nameDe": "Entheiligte Aura",
+    "nameDe": "Profane Aura",
     "nameEn": "Profane Aura",
     "category": "general",
     "source": "phb2",
@@ -574,15 +655,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Ability to rebuke undead"
       }
     ],
-    "benefitDe": "Schnelle Aktion: Verbrauche 1 Untote-Unterwerfen-Einsatz; alle Gegner in 60 ft. erleiden -2 auf Rettungswürfe gegen Furcht.",
+    "benefitDe": "Expend a rebuke use to create a 60-ft. aura imposing penalties on foe saves against fear.",
     "benefitRaw": "Expend a rebuke use to create a 60-ft. aura imposing penalties on foe saves against fear.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "60 ft. Aura: -2 auf Rettungswürfe gegen Furcht für Gegner"
+    "appEffect": "Expend a rebuke use to create a 60-ft",
+    "name": "Profane Aura",
+    "benefit": "Expend a rebuke use to create a 60-ft. aura imposing penalties on foe saves against fear.",
+    "benefitEn": "Expend a rebuke use to create a 60-ft. aura imposing penalties on foe saves against fear."
   },
   "sacred_healing": {
     "id": "sacred_healing",
-    "nameDe": "Geweihte Heilung",
+    "nameDe": "Sacred Healing",
     "nameEn": "Sacred Healing",
     "category": "general",
     "source": "phb2",
@@ -592,15 +676,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Ability to turn undead, Heal 8 ranks"
       }
     ],
-    "benefitDe": "Schnelle Aktion: Verbrauche 1 Vertreiben-Einsatz; deine nächsten Heilzauber heilen +2 TP pro Zaubergrad.",
+    "benefitDe": "Expend a turn use to grant your healing spells +2 healed HP per spell level for 1 round.",
     "benefitRaw": "Expend a turn use to grant your healing spells +2 healed HP per spell level for 1 round.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 TP Heilung pro Zaubergrad per Vertreiben"
+    "appEffect": "Expend a turn use to grant your healing spells +2 healed HP per spell level for 1 round.",
+    "name": "Sacred Healing",
+    "benefit": "Expend a turn use to grant your healing spells +2 healed HP per spell level for 1 round.",
+    "benefitEn": "Expend a turn use to grant your healing spells +2 healed HP per spell level for 1 round."
   },
   "sacred_purification": {
     "id": "sacred_purification",
-    "nameDe": "Geweihte Reinigung",
+    "nameDe": "Sacred Purification",
     "nameEn": "Sacred Purification",
     "category": "general",
     "source": "phb2",
@@ -610,15 +697,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Ability to turn undead"
       }
     ],
-    "benefitDe": "Schnelle Aktion: Verbrauche 1 Vertreiben-Einsatz für eine 60 ft. Welle: heilt alle lebenden Wesen um 1d8+CHA TP und fügt Untoten 1d8+CHA Schaden zu.",
+    "benefitDe": "Expend a turn use to emit a burst healing living creatures 1d8+Cha and damaging undead.",
     "benefitRaw": "Expend a turn use to emit a burst healing living creatures 1d8+Cha and damaging undead.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "60 ft. Welle heilt Lebende (1d8+CHA) und schädigt Untote"
+    "appEffect": "Expend a turn use to emit a burst healing living creatures 1d8+Cha and damaging undead.",
+    "name": "Sacred Purification",
+    "benefit": "Expend a turn use to emit a burst healing living creatures 1d8+Cha and damaging undead.",
+    "benefitEn": "Expend a turn use to emit a burst healing living creatures 1d8+Cha and damaging undead."
   },
   "sacred_radiance": {
     "id": "sacred_radiance",
-    "nameDe": "Geweihtes Strahlen",
+    "nameDe": "Sacred Radiance",
     "nameEn": "Sacred Radiance",
     "category": "general",
     "source": "phb2",
@@ -628,15 +718,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "desc": "Ability to turn undead"
       }
     ],
-    "benefitDe": "Schnelle Aktion: Verbrauche 1 Vertreiben-Einsatz; erzeuge gleißendes Licht, das Untoten im Nahkampf jede Runde 2d6 Schaden zufügt.",
+    "benefitDe": "Expend a turn use to radiate bright light damaging undead for 2d6 per round.",
     "benefitRaw": "Expend a turn use to radiate bright light damaging undead for 2d6 per round.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Strahlen fügt Untoten 2d6 Schaden/Runde zu"
+    "appEffect": "Expend a turn use to radiate bright light damaging undead for 2d6 per round.",
+    "name": "Sacred Radiance",
+    "benefit": "Expend a turn use to radiate bright light damaging undead for 2d6 per round.",
+    "benefitEn": "Expend a turn use to radiate bright light damaging undead for 2d6 per round."
   },
   "celestial_sorcerer_heritage": {
     "id": "celestial_sorcerer_heritage",
-    "nameDe": "Himmlisches Hexenmeister-Erbe",
+    "nameDe": "Celestial Sorcerer Heritage",
     "nameEn": "Celestial Sorcerer Heritage",
     "category": "general",
     "source": "phb2",
@@ -646,15 +739,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "class": "sorcerer"
       }
     ],
-    "benefitDe": "+2 auf Rettungswürfe gegen Gift und Elektrizität; Zauberkunde als Klassenfertigkeit.",
+    "benefitDe": "+2 bonus on saves against poison and electricity; gain Spellcraft as class skill.",
     "benefitRaw": "+2 bonus on saves against poison and electricity; gain Spellcraft as class skill.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Rettungswürfe gegen Gift & Elektrizität"
+    "appEffect": "+2 bonus on saves against poison and electricity; gain Spellcraft as class skill.",
+    "name": "Celestial Sorcerer Heritage",
+    "benefit": "+2 bonus on saves against poison and electricity; gain Spellcraft as class skill.",
+    "benefitEn": "+2 bonus on saves against poison and electricity; gain Spellcraft as class skill."
   },
   "celestial_sorcerer_aura": {
     "id": "celestial_sorcerer_aura",
-    "nameDe": "Himmlische Aura",
+    "nameDe": "Celestial Sorcerer Aura",
     "nameEn": "Celestial Sorcerer Aura",
     "category": "general",
     "source": "phb2",
@@ -665,15 +761,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "id": "celestial_sorcerer_heritage"
       }
     ],
-    "benefitDe": "Schnelle Aktion: Opfere einen Zauberslot; böse Gegner in 20 ft. müssen Willenswurf bestehen oder werden erschüttert.",
+    "benefitDe": "Expend spell slot to cause evil foes to become shaken.",
     "benefitRaw": "Expend spell slot to cause evil foes to become shaken.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Böse Gegner in 20 ft. werden shaken"
+    "appEffect": "Expend spell slot to cause evil foes to become shaken.",
+    "name": "Celestial Sorcerer Aura",
+    "benefit": "Expend spell slot to cause evil foes to become shaken.",
+    "benefitEn": "Expend spell slot to cause evil foes to become shaken."
   },
   "celestial_sorcerer_lance": {
     "id": "celestial_sorcerer_lance",
-    "nameDe": "Himmlische Lanze",
+    "nameDe": "Celestial Sorcerer Lance",
     "nameEn": "Celestial Sorcerer Lance",
     "category": "general",
     "source": "phb2",
@@ -684,15 +783,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "id": "celestial_sorcerer_heritage"
       }
     ],
-    "benefitDe": "Standard-Aktion: Opfere einen Zauberslot für eine 60-ft.-Linie aus Licht, die 1d8 Schaden pro Zaubergrad zufügt.",
+    "benefitDe": "Expend spell slot to create a 60-ft. line dealing 1d8 damage per slot level.",
     "benefitRaw": "Expend spell slot to create a 60-ft. line dealing 1d8 damage per slot level.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "60 ft. Lichtlinie: 1d8 Schaden pro Slot-Grad"
+    "appEffect": "Expend spell slot to create a 60-ft",
+    "name": "Celestial Sorcerer Lance",
+    "benefit": "Expend spell slot to create a 60-ft. line dealing 1d8 damage per slot level.",
+    "benefitEn": "Expend spell slot to create a 60-ft. line dealing 1d8 damage per slot level."
   },
   "celestial_sorcerer_lore": {
     "id": "celestial_sorcerer_lore",
-    "nameDe": "Himmlisches Wissen",
+    "nameDe": "Celestial Sorcerer Lore",
     "nameEn": "Celestial Sorcerer Lore",
     "category": "general",
     "source": "phb2",
@@ -703,15 +805,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "id": "celestial_sorcerer_heritage"
       }
     ],
-    "benefitDe": "Erweitere deine bekannten Zauber um Schutzzauber und göttliche Erkenntniszauber.",
+    "benefitDe": "Add defensive and divination spells to your spells known list.",
     "benefitRaw": "Add defensive and divination spells to your spells known list.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Zusätzliche Schutzzauber als bekannt"
+    "appEffect": "Add defensive and divination spells to your spells known list.",
+    "name": "Celestial Sorcerer Lore",
+    "benefit": "Add defensive and divination spells to your spells known list.",
+    "benefitEn": "Add defensive and divination spells to your spells known list."
   },
   "celestial_sorcerer_wings": {
     "id": "celestial_sorcerer_wings",
-    "nameDe": "Himmlische Flügel",
+    "nameDe": "Celestial Sorcerer Wings",
     "nameEn": "Celestial Sorcerer Wings",
     "category": "general",
     "source": "phb2",
@@ -722,15 +827,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "id": "celestial_sorcerer_heritage"
       }
     ],
-    "benefitDe": "Schnelle Aktion: Opfere einen Zauberslot ab Grad 3; erhalte Flügel mit Flugbewegungsrate für Runden = Zaubergrad.",
+    "benefitDe": "Expend 3rd-level or higher slot to sprout wings and fly.",
     "benefitRaw": "Expend 3rd-level or higher slot to sprout wings and fly.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Flügel wachsen lassen mit Fluggeschwindigkeit"
+    "appEffect": "Expend 3rd-level or higher slot to sprout wings and fly.",
+    "name": "Celestial Sorcerer Wings",
+    "benefit": "Expend 3rd-level or higher slot to sprout wings and fly.",
+    "benefitEn": "Expend 3rd-level or higher slot to sprout wings and fly."
   },
   "infernal_sorcerer_heritage": {
     "id": "infernal_sorcerer_heritage",
-    "nameDe": "Infernales Hexenmeister-Erbe",
+    "nameDe": "Infernal Sorcerer Heritage",
     "nameEn": "Infernal Sorcerer Heritage",
     "category": "general",
     "source": "phb2",
@@ -740,15 +848,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "class": "sorcerer"
       }
     ],
-    "benefitDe": "+2 auf Rettungswürfe gegen Gift und Feuer; Zauberkunde als Klassenfertigkeit.",
+    "benefitDe": "+2 on saves against poison and fire; Spellcraft as class skill.",
     "benefitRaw": "+2 on saves against poison and fire; Spellcraft as class skill.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Rettungswürfe gegen Gift & Feuer"
+    "appEffect": "+2 on saves against poison and fire; Spellcraft as class skill.",
+    "name": "Infernal Sorcerer Heritage",
+    "benefit": "+2 on saves against poison and fire; Spellcraft as class skill.",
+    "benefitEn": "+2 on saves against poison and fire; Spellcraft as class skill."
   },
   "infernal_sorcerer_eyes": {
     "id": "infernal_sorcerer_eyes",
-    "nameDe": "Infernale Augen",
+    "nameDe": "Infernal Sorcerer Eyes",
     "nameEn": "Infernal Sorcerer Eyes",
     "category": "general",
     "source": "phb2",
@@ -759,15 +870,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "id": "infernal_sorcerer_heritage"
       }
     ],
-    "benefitDe": "Erhalte Dunkelsicht 60 ft., die sogar magische Dunkelheit durchdringt.",
+    "benefitDe": "Gain darkvision 60 ft., seeing through even magical darkness.",
     "benefitRaw": "Gain darkvision 60 ft., seeing through even magical darkness.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Dunkelsicht 60 ft. durchdringt magische Dunkelheit"
+    "appEffect": "Gain darkvision 60 ft., seeing through even magical darkness.",
+    "name": "Infernal Sorcerer Eyes",
+    "benefit": "Gain darkvision 60 ft., seeing through even magical darkness.",
+    "benefitEn": "Gain darkvision 60 ft., seeing through even magical darkness."
   },
   "infernal_sorcerer_howl": {
     "id": "infernal_sorcerer_howl",
-    "nameDe": "Infernales Heulen",
+    "nameDe": "Infernal Sorcerer Howl",
     "nameEn": "Infernal Sorcerer Howl",
     "category": "general",
     "source": "phb2",
@@ -778,15 +892,18 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "id": "infernal_sorcerer_heritage"
       }
     ],
-    "benefitDe": "Schnelle Aktion: Opfere einen Zauberslot für ein Heulen; alle Gegner in 20 ft. werden für 1 Runde taub geschlagen.",
+    "benefitDe": "Expend a spell slot to deafen adjacent enemies with a terrifying howl.",
     "benefitRaw": "Expend a spell slot to deafen adjacent enemies with a terrifying howl.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Heulen taubt Gegner in 20 ft."
+    "appEffect": "Expend a spell slot to deafen adjacent enemies with a terrifying howl.",
+    "name": "Infernal Sorcerer Howl",
+    "benefit": "Expend a spell slot to deafen adjacent enemies with a terrifying howl.",
+    "benefitEn": "Expend a spell slot to deafen adjacent enemies with a terrifying howl."
   },
   "infernal_sorcerer_resistance": {
     "id": "infernal_sorcerer_resistance",
-    "nameDe": "Infernale Resistenz",
+    "nameDe": "Infernal Sorcerer Resistance",
     "nameEn": "Infernal Sorcerer Resistance",
     "category": "general",
     "source": "phb2",
@@ -797,10 +914,13 @@ export const GENERAL_FEATS_REGISTRY_PHB2 = {
         "id": "infernal_sorcerer_heritage"
       }
     ],
-    "benefitDe": "Erhalte Feuer- und Kälteresistenz in Höhe deiner bekannten Hexenmeister-Erbe-Talente.",
+    "benefitDe": "Gain resistance to acid and cold equal to twice your infernal feats.",
     "benefitRaw": "Gain resistance to acid and cold equal to twice your infernal feats.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Säure- und Kälteresistenz durch Erbe-Talente"
+    "appEffect": "Gain resistance to acid and cold equal to twice your infernal feats.",
+    "name": "Infernal Sorcerer Resistance",
+    "benefit": "Gain resistance to acid and cold equal to twice your infernal feats.",
+    "benefitEn": "Gain resistance to acid and cold equal to twice your infernal feats."
   }
 };

@@ -1,7 +1,7 @@
 {
   "animate_instrument": {
     "id": "animate_instrument",
-    "nameDe": "Instrument beleben",
+    "nameDe": "Animate Instrument",
     "nameEn": "Animate Instrument",
     "level": 2,
     "school": "Transmutation",
@@ -18,11 +18,12 @@
         "class": "bard",
         "level": 2
       }
-    ]
+    ],
+    "name": "Animate Instrument"
   },
   "aquatic_escape": {
     "id": "aquatic_escape",
-    "nameDe": "Wässrige Flucht",
+    "nameDe": "Aquatic Escape",
     "nameEn": "Aquatic Escape",
     "level": 1,
     "school": "Transmutation",
@@ -39,11 +40,12 @@
         "class": "druid",
         "level": 1
       }
-    ]
+    ],
+    "name": "Aquatic Escape"
   },
   "armor_lock": {
     "id": "armor_lock",
-    "nameDe": "Rüstungssperre",
+    "nameDe": "Armor Lock",
     "nameEn": "Armor Lock",
     "level": 1,
     "school": "Transmutation",
@@ -75,11 +77,12 @@
         "class": "wizard",
         "level": 1
       }
-    ]
+    ],
+    "name": "Armor Lock"
   },
   "assassins_darkness": {
     "id": "assassins_darkness",
-    "nameDe": "Finsternis des Assassinen",
+    "nameDe": "Assassin's Darkness",
     "nameEn": "Assassin's Darkness",
     "level": 4,
     "school": "Illusion",
@@ -106,7 +109,8 @@
         "class": "wizard",
         "level": 4
       }
-    ]
+    ],
+    "name": "Assassin's Darkness"
   },
   "blockade": {
     "id": "blockade",
@@ -142,11 +146,12 @@
         "class": "wizard",
         "level": 1
       }
-    ]
+    ],
+    "name": "Blockade"
   },
   "catapult": {
     "id": "catapult",
-    "nameDe": "Katapult",
+    "nameDe": "Catapult",
     "nameEn": "Catapult",
     "level": 2,
     "school": "Transmutation",
@@ -173,11 +178,12 @@
         "class": "wizard",
         "level": 2
       }
-    ]
+    ],
+    "name": "Catapult"
   },
   "create_fetch": {
     "id": "create_fetch",
-    "nameDe": "Doppelgänger erschaffen",
+    "nameDe": "Create Fetch",
     "nameEn": "Create Fetch",
     "level": 3,
     "school": "Conjuration",
@@ -209,11 +215,12 @@
         "class": "wizard",
         "level": 4
       }
-    ]
+    ],
+    "name": "Create Fetch"
   },
   "disobedience": {
     "id": "disobedience",
-    "nameDe": "Ungehorsam",
+    "nameDe": "Disobedience",
     "nameEn": "Disobedience",
     "level": 3,
     "school": "Abjuration",
@@ -240,11 +247,12 @@
         "class": "wizard",
         "level": 3
       }
-    ]
+    ],
+    "name": "Disobedience"
   },
   "enlarge_weapon": {
     "id": "enlarge_weapon",
-    "nameDe": "Waffe vergrößern",
+    "nameDe": "Enlarge Weapon",
     "nameEn": "Enlarge Weapon",
     "level": 2,
     "school": "Transmutation",
@@ -266,11 +274,12 @@
         "class": "wizard",
         "level": 2
       }
-    ]
+    ],
+    "name": "Enlarge Weapon"
   },
   "evacuation_rune": {
     "id": "evacuation_rune",
-    "nameDe": "Evakuierungsrune",
+    "nameDe": "Evacuation Rune",
     "nameEn": "Evacuation Rune",
     "level": 5,
     "school": "Conjuration",
@@ -297,11 +306,12 @@
         "class": "wizard",
         "level": 5
       }
-    ]
+    ],
+    "name": "Evacuation Rune"
   },
   "fatal_flame": {
     "id": "fatal_flame",
-    "nameDe": "Tödliche Flamme",
+    "nameDe": "Fatal Flame",
     "nameEn": "Fatal Flame",
     "level": 2,
     "school": "Evocation",
@@ -323,11 +333,12 @@
         "class": "wizard",
         "level": 2
       }
-    ]
+    ],
+    "name": "Fatal Flame"
   },
   "grasping_wall": {
     "id": "grasping_wall",
-    "nameDe": "Greifende Wand",
+    "nameDe": "Grasping Wall",
     "nameEn": "Grasping Wall",
     "level": 3,
     "school": "Conjuration",
@@ -349,11 +360,12 @@
         "class": "wizard",
         "level": 3
       }
-    ]
+    ],
+    "name": "Grasping Wall"
   },
   "harmonic_void": {
     "id": "harmonic_void",
-    "nameDe": "Harmonisches Vakuum",
+    "nameDe": "Harmonic Void",
     "nameEn": "Harmonic Void",
     "level": 5,
     "school": "Abjuration",
@@ -370,11 +382,12 @@
         "class": "bard",
         "level": 5
       }
-    ]
+    ],
+    "name": "Harmonic Void"
   },
   "healers_vision": {
     "id": "healers_vision",
-    "nameDe": "Blick des Heilers",
+    "nameDe": "Healer's Vision",
     "nameEn": "Healer's Vision",
     "level": 1,
     "school": "Divination",
@@ -396,11 +409,12 @@
         "class": "cleric",
         "level": 1
       }
-    ]
+    ],
+    "name": "Healer's Vision"
   },
   "lucky_streak": {
     "id": "lucky_streak",
-    "nameDe": "Glückssträhne",
+    "nameDe": "Lucky Streak",
     "nameEn": "Lucky Streak",
     "level": 1,
     "school": "Divination",
@@ -427,11 +441,12 @@
         "class": "wizard",
         "level": 2
       }
-    ]
+    ],
+    "name": "Lucky Streak"
   },
   "mage_burr": {
     "id": "mage_burr",
-    "nameDe": "Magierklette",
+    "nameDe": "Mage Burr",
     "nameEn": "Mage Burr",
     "level": 1,
     "school": "Transmutation",
@@ -463,11 +478,12 @@
         "class": "wizard",
         "level": 1
       }
-    ]
+    ],
+    "name": "Mage Burr"
   },
   "manifestation_of_the_deity": {
     "id": "manifestation_of_the_deity",
-    "nameDe": "Manifestation der Gottheit",
+    "nameDe": "Manifestation of the Deity",
     "nameEn": "Manifestation of the Deity",
     "level": 2,
     "school": "Illusion",
@@ -484,11 +500,12 @@
         "class": "cleric",
         "level": 2
       }
-    ]
+    ],
+    "name": "Manifestation of the Deity"
   },
   "mimicry": {
     "id": "mimicry",
-    "nameDe": "Mimikry",
+    "nameDe": "Mimicry",
     "nameEn": "Mimicry",
     "level": 1,
     "school": "Transmutation",
@@ -510,11 +527,12 @@
         "class": "bard",
         "level": 1
       }
-    ]
+    ],
+    "name": "Mimicry"
   },
   "opportune_dodge": {
     "id": "opportune_dodge",
-    "nameDe": "Günstiges Ausweichen",
+    "nameDe": "Opportune Dodge",
     "nameEn": "Opportune Dodge",
     "level": 2,
     "school": "Abjuration",
@@ -531,11 +549,12 @@
         "class": "bard",
         "level": 2
       }
-    ]
+    ],
+    "name": "Opportune Dodge"
   },
   "scry_location": {
     "id": "scry_location",
-    "nameDe": "Ort ausspähen",
+    "nameDe": "Scry Location",
     "nameEn": "Scry Location",
     "level": 5,
     "school": "Divination",
@@ -572,11 +591,12 @@
         "class": "wizard",
         "level": 6
       }
-    ]
+    ],
+    "name": "Scry Location"
   },
   "siphon": {
     "id": "siphon",
-    "nameDe": "Abschöpfen",
+    "nameDe": "Siphon",
     "nameEn": "Siphon",
     "level": 3,
     "school": "Transmutation",
@@ -598,11 +618,12 @@
         "class": "wizard",
         "level": 3
       }
-    ]
+    ],
+    "name": "Siphon"
   },
   "smoke_stairs": {
     "id": "smoke_stairs",
-    "nameDe": "Rauchtreppe",
+    "nameDe": "Smoke Stairs",
     "nameEn": "Smoke Stairs",
     "level": 2,
     "school": "Transmutation",
@@ -624,11 +645,12 @@
         "class": "druid",
         "level": 2
       }
-    ]
+    ],
+    "name": "Smoke Stairs"
   },
   "spell_theft": {
     "id": "spell_theft",
-    "nameDe": "Zauberdiebstahl",
+    "nameDe": "Spell Theft",
     "nameEn": "Spell Theft",
     "level": 4,
     "school": "Abjuration",
@@ -660,11 +682,12 @@
         "class": "wizard",
         "level": 5
       }
-    ]
+    ],
+    "name": "Spell Theft"
   },
   "spore_field": {
     "id": "spore_field",
-    "nameDe": "Sporenfeld",
+    "nameDe": "Spore Field",
     "nameEn": "Spore Field",
     "level": 1,
     "school": "Transmutation",
@@ -686,11 +709,12 @@
         "class": "ranger",
         "level": 2
       }
-    ]
+    ],
+    "name": "Spore Field"
   },
   "spymasters_coin": {
     "id": "spymasters_coin",
-    "nameDe": "Münze des Spionagemeisters",
+    "nameDe": "Spymaster's Coin",
     "nameEn": "Spymaster's Coin",
     "level": 2,
     "school": "Divination",
@@ -717,11 +741,12 @@
         "class": "wizard",
         "level": 2
       }
-    ]
+    ],
+    "name": "Spymaster's Coin"
   },
   "wall_of_vermin": {
     "id": "wall_of_vermin",
-    "nameDe": "Wand aus Ungeziefer",
+    "nameDe": "Wall of Vermin",
     "nameEn": "Wall of Vermin",
     "level": 3,
     "school": "Conjuration",
@@ -738,11 +763,12 @@
         "class": "druid",
         "level": 3
       }
-    ]
+    ],
+    "name": "Wall of Vermin"
   },
   "wand_modulation": {
     "id": "wand_modulation",
-    "nameDe": "Zauberstab-Modulation",
+    "nameDe": "Wand Modulation",
     "nameEn": "Wand Modulation",
     "level": 3,
     "school": "Transmutation",
@@ -764,11 +790,12 @@
         "class": "wizard",
         "level": 3
       }
-    ]
+    ],
+    "name": "Wand Modulation"
   },
   "winged_watcher": {
     "id": "winged_watcher",
-    "nameDe": "Geflügelter Wächter",
+    "nameDe": "Winged Watcher",
     "nameEn": "Winged Watcher",
     "level": 1,
     "school": "Transmutation",
@@ -785,6 +812,7 @@
         "class": "druid",
         "level": 1
       }
-    ]
+    ],
+    "name": "Winged Watcher"
   }
 }

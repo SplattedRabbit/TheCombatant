@@ -59,7 +59,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
     } else {
       spell = CombatSpells.REGISTRY?.[spellKey];
       if (spell) {
-        displayName = spell.nameEn || spell.nameDe || spellKey;
+        displayName = spell.name || spell.nameEn || spellKey;
         effectsList = spell.effects || [];
         durationStr = spell.duration || '—';
         description = spell.description || '';

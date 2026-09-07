@@ -65,7 +65,7 @@ export const FeatScrollParchment: React.FC<FeatScrollParchmentProps> = ({
           fontWeight: 'bold'
         }}
       >
-        {feat.name || feat.nameEn || feat.nameDe}
+        {feat.name || feat.nameEn}
       </h3>
 
       <div
@@ -114,7 +114,7 @@ export const FeatScrollParchment: React.FC<FeatScrollParchmentProps> = ({
 
       <div style={{ fontSize: '9.5px', marginBottom: '6px', lineHeight: 1.35 }}>
         <strong style={{ color: '#8b1a1a', fontFamily: 'var(--font-title)' }}>Benefit (RAW):</strong>
-        <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>{feat.benefit || feat.benefitRaw || feat.benefitEn || feat.benefitDe}</div>
+        <div style={{ fontStyle: 'italic', color: '#2a1b0a', paddingLeft: '4px' }}>{feat.benefit || feat.benefitRaw || feat.benefitEn}</div>
       </div>
 
       {(feat.normal || feat.normalRaw) && (

@@ -1,13 +1,13 @@
 /**
- * @module    feats-magic-phb2
- * @summary   Statische Datenbank für D&D 3.5e Magietalente aus dem Player's Handbook II (PHB2).
+ * @module    phb2
+ * @summary   Standardized D&D 3.5e RAW English feats registry.
  * @exports   MAGIC_FEATS_REGISTRY_PHB2
  */
 
 export const MAGIC_FEATS_REGISTRY_PHB2 = {
   "arcane_thesis": {
     "id": "arcane_thesis",
-    "nameDe": "Arkanes Hauptwerk (Arcane Thesis)",
+    "nameDe": "Arcane Thesis",
     "nameEn": "Arcane Thesis",
     "category": "metamagic",
     "source": "phb2",
@@ -23,15 +23,18 @@ export const MAGIC_FEATS_REGISTRY_PHB2 = {
     ],
     "hasOption": true,
     "optionType": "spell",
-    "benefitDe": "Wähle einen Zauber. Du wirfst ihn mit +2 Caster Level. Jedes angewandte metamagische Talent kostet 1 Zaubergrad weniger (Minimum +0 adjustment).",
+    "benefitDe": "Select one spell. You cast this spell at +2 caster level. Any metamagic feat applied to this spell has its spell slot adjustment reduced by 1 (minimum +0).",
     "benefitRaw": "Select one spell. You cast this spell at +2 caster level. Any metamagic feat applied to this spell has its spell slot adjustment reduced by 1 (minimum +0).",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 Caster Level für den gewählten Zauber; Metamagic-Kosten um 1 reduziert"
+    "appEffect": "Select one spell",
+    "name": "Arcane Thesis",
+    "benefit": "Select one spell. You cast this spell at +2 caster level. Any metamagic feat applied to this spell has its spell slot adjustment reduced by 1 (minimum +0).",
+    "benefitEn": "Select one spell. You cast this spell at +2 caster level. Any metamagic feat applied to this spell has its spell slot adjustment reduced by 1 (minimum +0)."
   },
   "arcane_consumption": {
     "id": "arcane_consumption",
-    "nameDe": "Arkaner Verschleiß",
+    "nameDe": "Arcane Consumption",
     "nameEn": "Arcane Consumption",
     "category": "metamagic",
     "source": "phb2",
@@ -45,15 +48,18 @@ export const MAGIC_FEATS_REGISTRY_PHB2 = {
         "value": 6
       }
     ],
-    "benefitDe": "Einmal pro Tag als schnelle Aktion erhält dein nächster Zauber +4 auf den Rettungswurf-DC. Du wirst danach für 12 Stunden erschöpft (fatigued).",
+    "benefitDe": "Once per day as a swift action, you can grant the next spell you cast a +4 bonus on its save DC. You must cast this spell before the end of your turn. You then become fatigued for 12 hours.",
     "benefitRaw": "Once per day as a swift action, you can grant the next spell you cast a +4 bonus on its save DC. You must cast this spell before the end of your turn. You then become fatigued for 12 hours.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+4 Zauber-Rettungswurf DC; danach fatigued für 12 Stunden"
+    "appEffect": "Once per day as a swift action, you can grant the next spell you cast a +4 bonus on its save DC",
+    "name": "Arcane Consumption",
+    "benefit": "Once per day as a swift action, you can grant the next spell you cast a +4 bonus on its save DC. You must cast this spell before the end of your turn. You then become fatigued for 12 hours.",
+    "benefitEn": "Once per day as a swift action, you can grant the next spell you cast a +4 bonus on its save DC. You must cast this spell before the end of your turn. You then become fatigued for 12 hours."
   },
   "fiery_fist": {
     "id": "fiery_fist",
-    "nameDe": "Feurige Faust",
+    "nameDe": "Fiery Fist",
     "nameEn": "Fiery Fist",
     "category": "metamagic",
     "source": "phb2",
@@ -81,67 +87,82 @@ export const MAGIC_FEATS_REGISTRY_PHB2 = {
         "value": 8
       }
     ],
-    "benefitDe": "Gib eine Anwendung von Stunning Fist aus, um deinen unbewaffneten Schlägen für 1 Runde +1d6 Feuerschaden hinzuzufügen.",
+    "benefitDe": "As a swift action, you can expend one of your daily uses of Stunning Fist to cloak your hands in fire. Your unarmed strikes deal an extra 1d6 points of fire damage until the start of your next turn.",
     "benefitRaw": "As a swift action, you can expend one of your daily uses of Stunning Fist to cloak your hands in fire. Your unarmed strikes deal an extra 1d6 points of fire damage until the start of your next turn.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Opfere Stunning Fist für +1d6 Feuerschaden auf unbewaffnete Schläge (1 Runde)"
+    "appEffect": "As a swift action, you can expend one of your daily uses of Stunning Fist to cloak your hands in fire",
+    "name": "Fiery Fist",
+    "benefit": "As a swift action, you can expend one of your daily uses of Stunning Fist to cloak your hands in fire. Your unarmed strikes deal an extra 1d6 points of fire damage until the start of your next turn.",
+    "benefitEn": "As a swift action, you can expend one of your daily uses of Stunning Fist to cloak your hands in fire. Your unarmed strikes deal an extra 1d6 points of fire damage until the start of your next turn."
   },
   "blistering_spell": {
     "id": "blistering_spell",
-    "nameDe": "Blasenschlagender Zauber",
+    "nameDe": "Blistering Spell",
     "nameEn": "Blistering Spell",
     "category": "metamagic",
     "source": "phb2",
     "prereqs": [],
-    "benefitDe": "Metamagie (+1 Zaubergrad): Ein Feuerzauber fügt Zielen zusätzlich +2 Feuerschaden pro Zaubergrad zu und belegt sie mit -2 auf Angriff und Rettungswürfe.",
+    "benefitDe": "Metamagic (+1 slot level): A fire spell deals +2 fire damage per spell level and imposes a -2 penalty on attacks and saves.",
     "benefitRaw": "Metamagic (+1 slot level): A fire spell deals +2 fire damage per spell level and imposes a -2 penalty on attacks and saves.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+1 Slot: +2 Feuerschaden/Grad und -2 Angriff/Saves für Ziel"
+    "appEffect": "Metamagic (+1 slot level): A fire spell deals +2 fire damage per spell level and imposes a -2 penalty on attacks and saves.",
+    "name": "Blistering Spell",
+    "benefit": "Metamagic (+1 slot level): A fire spell deals +2 fire damage per spell level and imposes a -2 penalty on attacks and saves.",
+    "benefitEn": "Metamagic (+1 slot level): A fire spell deals +2 fire damage per spell level and imposes a -2 penalty on attacks and saves."
   },
   "flash_frost_spell": {
     "id": "flash_frost_spell",
-    "nameDe": "Frostblitz-Zauber",
+    "nameDe": "Flash Frost Spell",
     "nameEn": "Flash Frost Spell",
     "category": "metamagic",
     "source": "phb2",
     "prereqs": [],
-    "benefitDe": "Metamagie (+1 Zaubergrad): Ein Kältezauber fügt allen Kreaturen im Bereich zusätzlich +2 Kälteschaden pro Zaubergrad zu und überzieht den Boden mit rutschigem Glatteis.",
+    "benefitDe": "Metamagic (+1 slot level): A cold spell deals +2 cold damage per spell level and coats the area in slippery ice.",
     "benefitRaw": "Metamagic (+1 slot level): A cold spell deals +2 cold damage per spell level and coats the area in slippery ice.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+1 Slot: +2 Kälteschaden/Grad und eisglatter Untergrund"
+    "appEffect": "Metamagic (+1 slot level): A cold spell deals +2 cold damage per spell level and coats the area in slippery ice.",
+    "name": "Flash Frost Spell",
+    "benefit": "Metamagic (+1 slot level): A cold spell deals +2 cold damage per spell level and coats the area in slippery ice.",
+    "benefitEn": "Metamagic (+1 slot level): A cold spell deals +2 cold damage per spell level and coats the area in slippery ice."
   },
   "earthbound_spell": {
     "id": "earthbound_spell",
-    "nameDe": "Erdgebundener Zauber",
+    "nameDe": "Earthbound Spell",
     "nameEn": "Earthbound Spell",
     "category": "metamagic",
     "source": "phb2",
     "prereqs": [],
-    "benefitDe": "Metamagie (+1 Zaubergrad): Platziere einen Zauber auf dem Boden als unsichtbare magische Falle; löst aus, wenn eine Kreatur das Feld betritt.",
+    "benefitDe": "Metamagic (+1 slot level): Place a spell on the ground that triggers when a creature enters its space.",
     "benefitRaw": "Metamagic (+1 slot level): Place a spell on the ground that triggers when a creature enters its space.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+1 Slot: Zauber als Bodenfalle platzieren"
+    "appEffect": "Metamagic (+1 slot level): Place a spell on the ground that triggers when a creature enters its space.",
+    "name": "Earthbound Spell",
+    "benefit": "Metamagic (+1 slot level): Place a spell on the ground that triggers when a creature enters its space.",
+    "benefitEn": "Metamagic (+1 slot level): Place a spell on the ground that triggers when a creature enters its space."
   },
   "smiting_spell": {
     "id": "smiting_spell",
-    "nameDe": "Strafender Zauber",
+    "nameDe": "Smiting Spell",
     "nameEn": "Smiting Spell",
     "category": "metamagic",
     "source": "phb2",
     "prereqs": [],
-    "benefitDe": "Metamagie (+1 Zaubergrad): Wirke einen Berührungszauber in deine Nahkampfwaffe; der Zauber entlädt sich bei deinem nächsten erfolgreichen Waffentreffer.",
+    "benefitDe": "Metamagic (+1 slot level): Channel a touch spell into a melee weapon, discharging it on your next successful strike.",
     "benefitRaw": "Metamagic (+1 slot level): Channel a touch spell into a melee weapon, discharging it on your next successful strike.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+1 Slot: Berührungszauber in Waffe leiten für nächsten Treffer"
+    "appEffect": "Metamagic (+1 slot level): Channel a touch spell into a melee weapon, discharging it on your next successful strike.",
+    "name": "Smiting Spell",
+    "benefit": "Metamagic (+1 slot level): Channel a touch spell into a melee weapon, discharging it on your next successful strike.",
+    "benefitEn": "Metamagic (+1 slot level): Channel a touch spell into a melee weapon, discharging it on your next successful strike."
   },
   "imbued_summoning": {
     "id": "imbued_summoning",
-    "nameDe": "Beseelte Beschwörung",
+    "nameDe": "Imbued Summoning",
     "nameEn": "Imbued Summoning",
     "category": "metamagic",
     "source": "phb2",
@@ -152,15 +173,18 @@ export const MAGIC_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "augment_summoning",
-    "benefitDe": "Metamagie (+1 Zaubergrad): Wirke gleichzeitig einen Verstärkungszauber (Grad 3 oder niedriger) auf eine Kreatur, die du gerade beschwörst.",
+    "benefitDe": "Metamagic (+1 slot level): Automatically cast a 3rd-level or lower buff spell on a creature as you summon it.",
     "benefitRaw": "Metamagic (+1 slot level): Automatically cast a 3rd-level or lower buff spell on a creature as you summon it.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+1 Slot: Beschworene Kreatur erhält sofort Buff-Zauber"
+    "appEffect": "Metamagic (+1 slot level): Automatically cast a 3rd-level or lower buff spell on a creature as you summon it.",
+    "name": "Imbued Summoning",
+    "benefit": "Metamagic (+1 slot level): Automatically cast a 3rd-level or lower buff spell on a creature as you summon it.",
+    "benefitEn": "Metamagic (+1 slot level): Automatically cast a 3rd-level or lower buff spell on a creature as you summon it."
   },
   "elven_spell_lore": {
     "id": "elven_spell_lore",
-    "nameDe": "Elfische Zauberkunde",
+    "nameDe": "Elven Spell Lore",
     "nameEn": "Elven Spell Lore",
     "category": "magic",
     "source": "phb2",
@@ -171,15 +195,18 @@ export const MAGIC_FEATS_REGISTRY_PHB2 = {
         "ranks": 12
       }
     ],
-    "benefitDe": "Erhalte +2 auf Zauberstufe beim Bannen (Dispel). Du kannst den Energietyp eines Zaubers bei Vorbereitung/Wahl ändern.",
+    "benefitDe": "+2 bonus on caster level checks to dispel, and you can alter energy types of prepared spells.",
     "benefitRaw": "+2 bonus on caster level checks to dispel, and you can alter energy types of prepared spells.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "+2 auf Bannwürfe & Energietyp von Zaubern anpassen"
+    "appEffect": "+2 bonus on caster level checks to dispel, and you can alter energy types of prepared spells.",
+    "name": "Elven Spell Lore",
+    "benefit": "+2 bonus on caster level checks to dispel, and you can alter energy types of prepared spells.",
+    "benefitEn": "+2 bonus on caster level checks to dispel, and you can alter energy types of prepared spells."
   },
   "dampen_spell": {
     "id": "dampen_spell",
-    "nameDe": "Zauber dämpfen",
+    "nameDe": "Dampen Spell",
     "nameEn": "Dampen Spell",
     "category": "magic",
     "source": "phb2",
@@ -190,15 +217,18 @@ export const MAGIC_FEATS_REGISTRY_PHB2 = {
       }
     ],
     "parent": "improved_counterspell",
-    "benefitDe": "Sofortige Aktion: Opfere einen Zauberslot, um den Rettungswurf-SG eines gegnerischen Zaubers für alle Ziele um den Grad des geopferten Slots zu senken.",
+    "benefitDe": "Immediate action: expend a spell slot to reduce a foe's spell DC by the level of the slot expended.",
     "benefitRaw": "Immediate action: expend a spell slot to reduce a foe's spell DC by the level of the slot expended.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Rettungswurf-SG von gegnerischem Zauber per Slot-Opferung senken"
+    "appEffect": "Immediate action: expend a spell slot to reduce a foe's spell DC by the level of the slot expended.",
+    "name": "Dampen Spell",
+    "benefit": "Immediate action: expend a spell slot to reduce a foe's spell DC by the level of the slot expended.",
+    "benefitEn": "Immediate action: expend a spell slot to reduce a foe's spell DC by the level of the slot expended."
   },
   "spell_linked_familiar": {
     "id": "spell_linked_familiar",
-    "nameDe": "Zauberverbundener Vertrauter",
+    "nameDe": "Spell-Linked Familiar",
     "nameEn": "Spell-Linked Familiar",
     "category": "magic",
     "source": "phb2",
@@ -208,10 +238,13 @@ export const MAGIC_FEATS_REGISTRY_PHB2 = {
         "desc": "Familiar, caster level 9th"
       }
     ],
-    "benefitDe": "Du kannst Zauber bis zu Grad 2 durch deinen Vertrauten bis zu einer Entfernung von 1 Meile wirken.",
+    "benefitDe": "Cast spells of up to 2nd level through your familiar up to a range of 1 mile.",
     "benefitRaw": "Cast spells of up to 2nd level through your familiar up to a range of 1 mile.",
     "normalRaw": "",
     "specialRaw": "",
-    "appEffect": "Zauber bis Grad 2 über 1 Meile Distanz durch Vertrauten wirken"
+    "appEffect": "Cast spells of up to 2nd level through your familiar up to a range of 1 mile.",
+    "name": "Spell-Linked Familiar",
+    "benefit": "Cast spells of up to 2nd level through your familiar up to a range of 1 mile.",
+    "benefitEn": "Cast spells of up to 2nd level through your familiar up to a range of 1 mile."
   }
 };

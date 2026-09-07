@@ -56,7 +56,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
     const showAll = !filterClassAndLevel;
 
     const list = allSpells.filter(s => {
-      const matchName = s.nameDe.toLowerCase().includes(q) || (s.nameEn && s.nameEn.toLowerCase().includes(q));
+      const matchName = (s.name || s.nameEn || '').toLowerCase().includes(q);
       const matchLevel = levelFilter === 'all' || String(s.level) === levelFilter;
       const matchClass = showAll || !isCaster || isSpellEligibleForPC(s, pc);
       const matchSource = sourceFilter === 'all' || s.source === sourceFilter;
@@ -65,8 +65,8 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
 
     list.sort((a, b) => {
       if (a.level !== b.level) return a.level - b.level;
-      const nameA = a.nameEn || a.nameDe || '';
-      const nameB = b.nameEn || b.nameDe || '';
+      const nameA = a.name || a.nameEn || '';
+      const nameB = b.name || b.nameEn || '';
       return nameA.localeCompare(nameB);
     });
 
@@ -95,7 +95,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
     const spell = findSpell(pc, key);
     if (!spell) return;
 
-    showCustomConfirm("Delete Spell?", `Do you want to permanently delete your custom spell "${spell.nameEn || spell.nameDe}" from the database?`, () => {
+    showCustomConfirm("Delete Spell?", `Do you want to permanently delete your custom spell "${spell.name || spell.nameEn}" from the database?`, () => {
       CombatState.updatePCBatch((freshPc: any) => {
         if (Array.isArray(freshPc.customSpells)) {
           freshPc.customSpells = freshPc.customSpells.filter((s: any) => s.id !== key);
@@ -203,9 +203,8 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
             return (
               <div key={s.id} className="compendium-spell-item" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.25)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '3px 5px', fontSize: '9px' }}>
                 <div onClick={() => handleShowDetails(s)} style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer', flex: 1 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
                     <span style={{ fontWeight: 600, color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '10px' }}>
-                      📜 {s.nameEn || s.nameDe}
+                      📜 {s.name || s.nameEn}
                     </span>
                     <span style={{ fontSize: '8.5px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>
                       Level {s.level} · {s.school}
@@ -227,12 +226,6 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
                       </span>
                     )}
                   </div>
-                  {s.nameEn && s.nameEn !== s.nameDe && (
-                    <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontStyle: 'italic', paddingLeft: '12px', marginTop: '-1px' }}>
-                      {s.nameDe}
-                    </span>
-                  )}
-                </div>
                 <div style={{ display: 'flex', gap: '2.5px', alignItems: 'center' }}>
                   {isLearned ? (
                     <span style={{ fontSize: '8px', color: '#1a5c1a', fontWeight: 'bold', padding: '1px 4px' }}>In Book ✓</span>
