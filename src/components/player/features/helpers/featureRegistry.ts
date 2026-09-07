@@ -82,7 +82,7 @@ Ranged attacks can count as sneak attacks only if the target is within 30 feet. 
 A character can sneak attack only living creatures with discernible anatomies—undead, constructs, oozes, plants, and incorporeal creatures lack vital areas to attack. Any creature that is immune to critical hits is not vulnerable to sneak attacks.`,
       actionType: 'Passive',
       stackInfo: `Combined from: ${saSources.join(', ')}`,
-      interactive: 'toggle',
+      interactive: 'none',
     });
   }
 

@@ -5,7 +5,6 @@
 
 import React from 'react';
 import { CombatState } from '@core/state.js';
-import { getSneakAttackDiceCount } from '@core/models/helpers/classes/RogueHelper.js';
 
 interface QuickCombatDashboardProps {
   pc: any;
@@ -29,9 +28,6 @@ export const QuickCombatDashboard: React.FC<QuickCombatDashboardProps> = ({ pc, 
   const rageData = findAbility('Rage');
   const bardicData = findAbility('Bardic Music');
   const wildShapeData = findAbility('Wild Shape');
-
-  const sneakDice = getSneakAttackDiceCount(pc);
-  const isSneakActive = !!pc.isSneakAttackActive;
 
   const handleSmiteBubbleClick = (targetBubble: number) => {
     if (!smiteData) return;
@@ -60,12 +56,7 @@ export const QuickCombatDashboard: React.FC<QuickCombatDashboardProps> = ({ pc, 
     onUpdate?.();
   };
 
-  const handleToggleSneak = (e: React.ChangeEvent<HTMLInputElement>) => {
-    CombatState.togglePCSneakAttack(e.target.checked);
-    onUpdate?.();
-  };
-
-  const hasAnyDailyAction = smiteData || lohData || turnData || rageData || bardicData || wildShapeData || sneakDice > 0;
+  const hasAnyDailyAction = smiteData || lohData || turnData || rageData || bardicData || wildShapeData;
 
   if (!hasAnyDailyAction) return null;
 
@@ -86,43 +77,14 @@ export const QuickCombatDashboard: React.FC<QuickCombatDashboardProps> = ({ pc, 
     >
       {/* Title & Quick Label */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-        <span style={{ fontSize: '11px' }}>⚡</span>
+        <span style={{ fontSize: '11px' }}>⏳</span>
         <strong style={{ fontFamily: 'var(--font-title)', fontSize: '10.5px', color: 'var(--red)', letterSpacing: '0.3px' }}>
-          Combat Actions &amp; Resources
+          Daily Combat Resources
         </strong>
       </div>
 
       {/* Quick Interactive Items */}
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px' }}>
-        {/* Sneak Attack Toggle */}
-        {sneakDice > 0 && (
-          <label
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '5px',
-              padding: '2px 6px',
-              borderRadius: '3px',
-              background: isSneakActive ? 'rgba(46, 125, 50, 0.12)' : 'rgba(0,0,0,0.03)',
-              border: `0.5px solid ${isSneakActive ? '#2e7d32' : 'var(--pb)'}`,
-              cursor: 'pointer',
-              fontSize: '9.5px',
-              fontWeight: 'bold',
-              color: isSneakActive ? '#1b5e20' : 'var(--inkm)',
-              transition: 'all 0.15s ease',
-            }}
-            title="Toggle Sneak Attack damage for attacks"
-          >
-            <input
-              type="checkbox"
-              checked={isSneakActive}
-              onChange={handleToggleSneak}
-              style={{ cursor: 'pointer', margin: 0 }}
-            />
-            <span>🗡️ Sneak Attack +{sneakDice}d6</span>
-            {isSneakActive && <span style={{ fontSize: '7.5px', color: '#2e7d32' }}>(Active)</span>}
-          </label>
-        )}
 
         {/* Smite Evil Pips */}
         {smiteData && (
