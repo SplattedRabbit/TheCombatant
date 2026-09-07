@@ -5,7 +5,8 @@
  *            skill points distribution, and feat selection with prerequisites check.
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { CombatState } from '@core/state.js';
 import { CombatRules } from '@core/rules.js';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
@@ -23,6 +24,7 @@ import { Step3TargetLevelPrompt } from './wizard/Step3TargetLevelPrompt.tsx';
 import { Step4Review } from './wizard/Step4Review.tsx';
 import { WizardTimeline } from './wizard/WizardTimeline.tsx';
 import { applyWizardCharacterToState } from './wizard/wizardSaveHelper.ts';
+import { CLASSES_LIST, PRESTIGE_PREREQS } from './wizard/constants';
 
 interface CharacterWizardDialogProps {
   onClose: () => void;
@@ -36,6 +38,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   const [selectedRace, setSelectedRace] = useState<string>('human');
   const [alignmentEthical, setAlignmentEthical] = useState<string>('Neutral');
   const [alignmentMoral, setAlignmentMoral] = useState<string>('Neutral');
+  const [targetPrestigeClass, setTargetPrestigeClass] = useState<string>('');
 
   // Highlight class key attributes in Point-Buy
   const [highlightClass, setHighlightClass] = useState<string>('');
@@ -73,11 +76,10 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   const handleStartLevelConfigs = () => {
     const configs = [];
     for (let i = 0; i < targetLevel; i++) {
-      const clsType = i === 0 ? 'fighter' : '';
       configs.push({
         level: i + 1,
-        classType: clsType,
-        hpRoll: i === 0 ? 10 : 0,
+        classType: '',
+        hpRoll: 0,
         abilityIncrease: null,
         skills: {},
         skillTricks: [],
@@ -98,26 +100,33 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     });
   };
 
+  const fullAlignment = useMemo(() => {
+    if (alignmentEthical === 'Neutral' && alignmentMoral === 'Neutral') return 'Neutral';
+    return `${alignmentEthical} ${alignmentMoral}`;
+  }, [alignmentEthical, alignmentMoral]);
+
   const prevDraft = useMemo(() => {
     if (!isTargetLevelSet || currentLevelIndex === 0) return null;
-    return getDraftPCState(currentLevelIndex - 1, baseStats, selectedRace, levelConfigs);
-  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs, currentLevelIndex]);
+    return getDraftPCState(currentLevelIndex - 1, baseStats, selectedRace, levelConfigs, fullAlignment);
+  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs, currentLevelIndex, fullAlignment]);
 
   const currentDraft = useMemo(() => {
     if (!isTargetLevelSet) return null;
-    return getDraftPCState(currentLevelIndex, baseStats, selectedRace, levelConfigs);
-  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs, currentLevelIndex]);
+    return getDraftPCState(currentLevelIndex, baseStats, selectedRace, levelConfigs, fullAlignment);
+  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs, currentLevelIndex, fullAlignment]);
 
   const completedDraft = useMemo(() => {
     if (!isTargetLevelSet) return null;
-    return getCompletedDraftPCState(levelConfigs.length - 1, baseStats, selectedRace, levelConfigs);
-  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs]);
+    return getCompletedDraftPCState(levelConfigs.length - 1, baseStats, selectedRace, levelConfigs, fullAlignment);
+  }, [isTargetLevelSet, selectedRace, baseStats, levelConfigs, fullAlignment]);
 
   const currentConfig = isTargetLevelSet ? levelConfigs[currentLevelIndex] : null;
 
   const getClassHitDie = (clsKey: string): number => {
-    const cls = CombatRules.CLASSES.find((c: any) => c.key === clsKey);
-    return cls?.hitDie || 8;
+    const listMatch = CLASSES_LIST.find((c: any) => c.key === clsKey);
+    if (listMatch?.hd) return listMatch.hd;
+    const rulesMatch = CombatRules.CLASSES.find((c: any) => c.key === clsKey);
+    return rulesMatch?.hitDie || rulesMatch?.hd || 8;
   };
 
   const currentLevelMaxSkillPoints = useMemo(() => {
@@ -139,6 +148,23 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
 
   const activeFeatSlot = featSelectSlotIndex !== null ? currentFeatSlots[featSelectSlotIndex] : null;
 
+  useEffect(() => {
+    if (!currentFeatSlots || currentFeatSlots.length === 0) {
+      setFeatSelectSlotIndex(null);
+      return;
+    }
+    const firstSelectable = currentFeatSlots.findIndex(slot => !slot.defaultFeat || (slot.allowedFeats && slot.allowedFeats.length > 1));
+    if (firstSelectable !== -1) {
+      const activeSlot = featSelectSlotIndex !== null ? currentFeatSlots[featSelectSlotIndex] : null;
+      const isCurrentFixed = activeSlot?.defaultFeat && (!activeSlot?.allowedFeats || activeSlot?.allowedFeats.length <= 1);
+      if (featSelectSlotIndex === null || featSelectSlotIndex >= currentFeatSlots.length || isCurrentFixed) {
+        setFeatSelectSlotIndex(firstSelectable);
+      }
+    } else {
+      setFeatSelectSlotIndex(null);
+    }
+  }, [currentLevelIndex, currentFeatSlots]);
+
   const filteredFeats = useMemo(() => {
     if (!activeFeatSlot || !currentDraft) return [];
     const q = featSearch.toLowerCase().trim();
@@ -147,9 +173,14 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       (cfg.feats || []).forEach((fid: string) => alreadyChosenIds.add(fid));
     });
 
+    const reqFeats = targetPrestigeClass ? (PRESTIGE_PREREQS[targetPrestigeClass]?.feats || []) : [];
+
     return Object.values(CombatFeats.REGISTRY).filter((feat: any) => {
-      if (alreadyChosenIds.has(feat.id)) return false;
-      if (featFilter !== 'all' && feat.category !== featFilter) return false;
+      if (featFilter === 'prc_target') {
+        if (!reqFeats.includes(feat.id)) return false;
+      } else if (featFilter !== 'all' && feat.category !== featFilter) {
+        return false;
+      }
       if (activeFeatSlot.allowedCategories && !activeFeatSlot.allowedCategories.includes(feat.category)) return false;
       if (q) {
         const nameDe = (feat.nameDe || '').toLowerCase();
@@ -159,7 +190,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       }
       return true;
     });
-  }, [activeFeatSlot, currentDraft, featSearch, featFilter, levelConfigs]);
+  }, [activeFeatSlot, currentDraft, featSearch, featFilter, levelConfigs, targetPrestigeClass]);
 
   const handleNext = () => {
     if (step === 1) {
@@ -202,7 +233,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         showCustomAlert("Skill Points Overspent", `You have overspent skill points by ${Math.abs(currentLevelRemainingSkillPoints)} for Level ${currentLevelIndex + 1}.`, "OK", "⚠️");
         return;
       }
-      const emptyFeats = currentFeatSlots.some((_, idx) => !currentConfig.feats?.[idx]);
+      const emptyFeats = currentFeatSlots.some((slot, idx) => !(currentConfig.feats?.[idx] || slot.defaultFeat));
       if (emptyFeats) {
         showCustomAlert("Feat Slots Open", `Please select all feats for Level ${currentLevelIndex + 1}.`, "OK", "🔒");
         return;
@@ -240,6 +271,13 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       levelConfigs,
       completedDraft
     );
+    CombatState.setRole('player');
+    showCustomAlert(
+      "Character Created! 🎉",
+      `<div style="text-align: left; padding: 4px;"><p style="margin-bottom: 6px; font-size: 12px; color: var(--ink);"><strong>${name.trim()}</strong> has been successfully created and loaded into your character sheet.</p></div>`,
+      "Open Character Sheet",
+      "✨"
+    );
     onClose();
   };
 
@@ -263,6 +301,11 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             setAlignmentEthical={setAlignmentEthical}
             alignmentMoral={alignmentMoral}
             setAlignmentMoral={setAlignmentMoral}
+            targetPrestigeClass={targetPrestigeClass}
+            setTargetPrestigeClass={(cls) => {
+              setTargetPrestigeClass(cls);
+              if (cls) setHighlightClass(cls);
+            }}
           />
         );
 
@@ -275,6 +318,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             totalStatsSpent={totalStatsSpent}
             highlightClass={highlightClass}
             setHighlightClass={setHighlightClass}
+            targetPrestigeClass={targetPrestigeClass}
           />
         );
 
@@ -315,6 +359,7 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             currentFeatSlots={currentFeatSlots}
             activeFeatSlot={activeFeatSlot}
             filteredFeats={filteredFeats}
+            targetPrestigeClass={targetPrestigeClass}
           />
         );
 

@@ -1,12 +1,16 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { screen, fireEvent, render } from '@testing-library/react';
 import { CombatState } from '@core/state.js';
+import { CombatRules } from '@core/rules.js';
 import { Combatant } from '@core/models/Combatant.js';
 import { createLevelUpDraft } from '../services/levelup/levelUpAdapter';
 import { applyLevelUpToActivePC } from '../components/player/levelup/levelUpSaveHelper';
 import { LevelUpDialog } from '../components/player/levelup/LevelUpDialog';
 import { Step1ClassAndStats } from '../components/player/levelup/steps/Step1ClassAndStats';
 import { FeatsTabContent } from '../components/player/wizard/FeatsTabContent';
+import { getFeatSlotsAtLevel, getCompletedDraftPCState } from '../components/player/wizard/helpers';
+import { applyWizardCharacterToState } from '../components/player/wizard/wizardSaveHelper';
+import { CLASSES_LIST } from '../components/player/wizard/constants';
 import { renderWithProviders } from '../test/test-utils';
 
 describe('Level-Up Assistant Suite', () => {
@@ -81,6 +85,9 @@ describe('Level-Up Assistant Suite', () => {
       expect(updatedPC.hp).toBe(46);
       expect(updatedPC.levelIncreases.str).toBe(1);
       expect(updatedPC.skills.climb.ranks).toBe(8);
+      // Verify equipment and gear are fully preserved during Level-Up
+      expect(updatedPC.weapons.length).toBeGreaterThan(0);
+      expect(['Longsword', 'Langschwert']).toContain(updatedPC.weapons[0].name);
     });
 
     it('supports multiclassing into a new secondary class', () => {
@@ -376,5 +383,124 @@ describe('Level-Up Assistant Suite', () => {
       expect(screen.getByText(/Arcane Class \(\+1 Caster Level\)/i)).toBeInTheDocument();
     });
   });
+
+  describe('6. Character Wizard & Level-Up Multiclass Feats & Default Feats', () => {
+    it('correctly calculates feat slots and resolves class default feats (e.g. Scribe Scroll on Wizard 1)', () => {
+      const levelConfigs = [
+        { classType: 'fighter', hpRoll: 10, skills: {}, feats: ['power_attack', 'cleave'] },
+        { classType: 'wizard', hpRoll: 4, skills: {}, feats: [] }, // Wizard 1 multiclass
+        { classType: 'wizard', hpRoll: 4, skills: {}, feats: ['extend_spell'] }, // Level 3 Character Feat
+        { classType: 'wizard', hpRoll: 4, skills: {}, feats: [], abilityIncrease: 'int' }
+      ];
+
+      // Level 1: Fighter (Non-human) -> 2 feat slots
+      const lvl1Slots = getFeatSlotsAtLevel(0, 'fighter', 'elf', levelConfigs);
+      expect(lvl1Slots.length).toBe(2);
+      expect(lvl1Slots[0].defaultFeat).toBeUndefined();
+      expect(lvl1Slots[1].defaultFeat).toBeUndefined();
+
+      // Level 2: Wizard 1 multiclass -> 1 feat slot (Scribe Scroll defaultFeat)
+      const lvl2Slots = getFeatSlotsAtLevel(1, 'wizard', 'elf', levelConfigs);
+      expect(lvl2Slots.length).toBe(1);
+      expect(lvl2Slots[0].defaultFeat).toBe('scribe_scroll');
+      expect(lvl2Slots[0].label).toContain('Scribe Scroll');
+
+      // Level 3: Character Feat Level 3
+      const lvl3Slots = getFeatSlotsAtLevel(2, 'wizard', 'elf', levelConfigs);
+      expect(lvl3Slots.length).toBe(1);
+      expect(lvl3Slots[0].label).toBe('Character Feat (Level 3)');
+      expect(lvl3Slots[0].defaultFeat).toBeUndefined();
+
+      // Level 4: No feat slots
+      const lvl4Slots = getFeatSlotsAtLevel(3, 'wizard', 'elf', levelConfigs);
+      expect(lvl4Slots.length).toBe(0);
+
+      // Completed draft state automatically includes scribe_scroll from Wizard 1 defaultFeat
+      const baseStats = { str: 14, dex: 14, con: 14, int: 16, wis: 10, cha: 8 };
+      const draft = getCompletedDraftPCState(3, baseStats, 'elf', levelConfigs);
+      expect(draft.featsList).toContain('power_attack');
+      expect(draft.featsList).toContain('cleave');
+      expect(draft.featsList).toContain('scribe_scroll');
+      expect(draft.featsList).toContain('extend_spell');
+
+      // 7. Verify applyWizardCharacterToState executes cleanly and creates combatant in state
+      expect(() => {
+        applyWizardCharacterToState(
+          'Mialee',
+          'elf',
+          'Neutral',
+          'Good',
+          baseStats,
+          levelConfigs,
+          draft
+        );
+      }).not.toThrow();
+
+      const activePC = CombatState.getActivePC();
+      expect(activePC).toBeDefined();
+      expect(activePC.name).toBe('Mialee');
+      expect(activePC.race).toBe('elf');
+      expect(activePC.classes.length).toBe(2);
+      expect(activePC.classes.find((c: any) => c.classType === 'fighter')?.level).toBe(1);
+      expect(activePC.classes.find((c: any) => c.classType === 'wizard')?.level).toBe(3);
+      expect(activePC.feats.some((f: any) => f.id === 'scribe_scroll')).toBe(true);
+      expect(activePC.weapons).toEqual([]);
+      expect(activePC.armors).toEqual([]);
+      expect(activePC.items).toEqual([]);
+      expect(activePC.activeBuffs).toEqual([]);
+      expect(activePC.dailyAbilities).toEqual([]);
+    });
+
+    it('correctly maps RAW Hit Dice for all base and prestige classes (Barbarian d12, Fighter d10, etc.)', () => {
+      const getHitDie = (key: string) => {
+        const listMatch = CLASSES_LIST.find((c: any) => c.key === key);
+        if (listMatch?.hd) return listMatch.hd;
+        const rulesMatch = CombatRules.CLASSES.find((c: any) => c.key === key);
+        return rulesMatch?.hitDie || rulesMatch?.hd || 8;
+      };
+
+      expect(getHitDie('barbarian')).toBe(12);
+      expect(getHitDie('knight')).toBe(12);
+      expect(getHitDie('dragon_disciple')).toBe(12);
+      expect(getHitDie('fighter')).toBe(10);
+      expect(getHitDie('paladin')).toBe(10);
+      expect(getHitDie('dragon_shaman')).toBe(10);
+      expect(getHitDie('battle_trickster')).toBe(10);
+      expect(getHitDie('shadowbane_inquisitor')).toBe(10);
+      expect(getHitDie('cleric')).toBe(8);
+      expect(getHitDie('druid')).toBe(8);
+      expect(getHitDie('monk')).toBe(8);
+      expect(getHitDie('ranger')).toBe(8);
+      expect(getHitDie('duskblade')).toBe(8);
+      expect(getHitDie('scout')).toBe(8);
+      expect(getHitDie('rogue')).toBe(6);
+      expect(getHitDie('bard')).toBe(6);
+      expect(getHitDie('beguiler')).toBe(6);
+      expect(getHitDie('ninja')).toBe(6);
+      expect(getHitDie('spellthief')).toBe(6);
+      expect(getHitDie('assassin')).toBe(6);
+      expect(getHitDie('spellwarp_sniper')).toBe(6);
+      expect(getHitDie('wizard')).toBe(4);
+      expect(getHitDie('sorcerer')).toBe(4);
+      expect(getHitDie('mystic_theurge')).toBe(4);
+      expect(getHitDie('arcane_trickster')).toBe(4);
+    });
+
+    it('contains all Complete Adventurer feats including Expert Tactician, Brutal Throw, and Ascetic series', () => {
+      const { CombatFeats } = require('../../js/data/feats-data.js');
+      expect(CombatFeats.REGISTRY['expert_tactician']).toBeDefined();
+      expect(CombatFeats.REGISTRY['expert_tactician'].source).toBe('ca');
+      expect(CombatFeats.REGISTRY['brutal_throw']).toBeDefined();
+      expect(CombatFeats.REGISTRY['power_throw']).toBeDefined();
+      expect(CombatFeats.REGISTRY['dual_strike']).toBeDefined();
+      expect(CombatFeats.REGISTRY['open_minded']).toBeDefined();
+      expect(CombatFeats.REGISTRY['ascetic_hunter']).toBeDefined();
+      expect(CombatFeats.REGISTRY['ascetic_mage']).toBeDefined();
+      expect(CombatFeats.REGISTRY['ascetic_knight']).toBeDefined();
+      expect(CombatFeats.REGISTRY['ascetic_rogue']).toBeDefined();
+      expect(CombatFeats.REGISTRY['devoted_tracker']).toBeDefined();
+    });
+  });
 });
+
 

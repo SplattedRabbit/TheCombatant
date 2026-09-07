@@ -4,6 +4,7 @@
  */
 
 import { CombatState } from '@core/state.js';
+import { getFeatSlotsAtLevel } from './helpers.ts';
 
 export function applyWizardCharacterToState(
   name: string,
@@ -44,22 +45,43 @@ export function applyWizardCharacterToState(
       level: c.level
     }));
 
+    if (freshPC.classes.some((c: any) => c.classType === 'cleric') && (!freshPC.clericDomains || freshPC.clericDomains.length === 0)) {
+      if (!freshPC.deity) freshPC.deity = 'none';
+      freshPC.clericDomains = ['good', 'healing'];
+    }
+
     const conMod = completedDraft.statMods.con;
     let calculatedMaxHP = 0;
     levelConfigs.forEach(cfg => {
       const roll = parseInt(cfg.hpRoll) || 0;
       calculatedMaxHP += Math.max(1, roll + conMod);
     });
+    freshPC.maxHP = calculatedMaxHP;
     freshPC.maxHp = calculatedMaxHP;
     freshPC.hp = calculatedMaxHP;
+    freshPC.wounds = 0;
+    freshPC.nonLethal = 0;
 
-    freshPC.skills = { ...completedDraft.allSkills };
-    freshPC.skillTricks = [...completedDraft.allSkillTricks];
+    freshPC.skills = { ...(completedDraft.allSkills || completedDraft.skillsAcc || completedDraft.draftPC?.skills || {}) };
+    freshPC.skillTricks = Array.isArray(completedDraft.allSkillTricks)
+      ? [...completedDraft.allSkillTricks]
+      : Array.isArray(completedDraft.skillTricksList)
+      ? [...completedDraft.skillTricksList]
+      : Array.isArray(completedDraft.draftPC?.skillTricks)
+      ? [...completedDraft.draftPC.skillTricks]
+      : [];
 
     const allFeats: any[] = [];
-    levelConfigs.forEach(cfg => {
+    levelConfigs.forEach((cfg, lvlIdx) => {
+      const slots = getFeatSlotsAtLevel(lvlIdx, cfg.classType, selectedRace, levelConfigs);
+      slots.forEach((slot, sIdx) => {
+        const fid = cfg.feats?.[sIdx] || slot.defaultFeat;
+        if (fid && !allFeats.some(f => f.id === fid)) {
+          allFeats.push({ id: fid });
+        }
+      });
       (cfg.feats || []).forEach((fid: string) => {
-        if (!allFeats.some(f => f.id === fid)) {
+        if (fid && !allFeats.some(f => f.id === fid)) {
           allFeats.push({ id: fid });
         }
       });
@@ -75,6 +97,54 @@ export function applyWizardCharacterToState(
       });
     });
     freshPC.acfs = allACFs;
+
+    // Reset gear, equipment, items, and inventory to empty/clean state
+    freshPC.weapons = [];
+    freshPC.armors = [];
+    freshPC.items = [];
+    freshPC.autoAC = true;
+    freshPC.acNatural = 0;
+    freshPC.acDeflection = 0;
+    freshPC.acMisc = 0;
+    freshPC.dr = '';
+    freshPC.immunities = '';
+    freshPC.resistances = '';
+
+    // Reset spells, spell slots, active buffs, and daily abilities
+    freshPC.activeBuffs = [];
+    freshPC.quickBuffs = [];
+    freshPC.learnedSpells = [];
+    freshPC.preparedSpells = [];
+    freshPC.customSpells = [];
+    freshPC.spellTemplates = {};
+    freshPC.dailyAbilities = [];
+    const cleanSpellSlots: Record<number, { max: number; used: number }> = {};
+    for (let lvl = 0; lvl <= 9; lvl++) {
+      cleanSpellSlots[lvl] = { max: 0, used: 0 };
+    }
+    freshPC.spellSlots = cleanSpellSlots;
+
+    // Reset combat state flags, conditions, and companions
+    freshPC.conditions = [];
+    freshPC.isRaging = false;
+    freshPC.isSneakAttacking = false;
+    freshPC.isSmiteActive = false;
+    freshPC.isFavoredEnemyActive = false;
+    freshPC.isDefensiveFighting = false;
+    freshPC.isTotalDefense = false;
+    freshPC.isFlurrying = false;
+    freshPC.isTrickyFightingActive = false;
+    freshPC.powerAttackPenalty = 0;
+    freshPC.combatExpertisePenalty = 0;
+    freshPC.companionName = '';
+    freshPC.companionType = 'none';
+    freshPC.companionHP = 0;
+    freshPC.companionMaxHP = 0;
+    freshPC.familiarName = '';
+    freshPC.familiarType = 'none';
+    freshPC.familiarHP = 0;
+    freshPC.activeShape = 'none';
+    freshPC.originalStats = null;
 
     freshPC.rebuildStatModifiers();
   });

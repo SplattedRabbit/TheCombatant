@@ -1,5 +1,6 @@
 import { CombatState } from '@core/state.js';
 import { CombatRules } from '@core/rules.js';
+import { getFeatSlotsAtLevel } from '../wizard/helpers.ts';
 
 export function applyLevelUpToActivePC(
   levelConfigs: any[],
@@ -19,6 +20,12 @@ export function applyLevelUpToActivePC(
       currentClasses.push({ classType: newLevelConfig.classType, level: 1 });
     }
     pc.classes = currentClasses;
+
+    // Initialize Deity and Domains if gaining Cleric
+    if (newLevelConfig.classType === 'cleric' && (!Array.isArray(pc.clericDomains) || pc.clericDomains.length === 0)) {
+      if (!pc.deity) pc.deity = 'none';
+      pc.clericDomains = ['good', 'healing'];
+    }
 
     // 2. Add HP roll (+ CON mod)
     const conMod = completedDraft ? completedDraft.statMods.con : (pc.con?.mod || 0);
@@ -59,9 +66,14 @@ export function applyLevelUpToActivePC(
 
       const rankInc = isClassSkill ? 1.0 * clickCount : 0.5 * clickCount;
       const curRanks = typeof pc.skills[sKey] === 'object' ? (pc.skills[sKey].ranks || 0) : (Number(pc.skills[sKey]) || 0);
+      const curSpent = typeof pc.skills[sKey] === 'object' && pc.skills[sKey].spent !== undefined
+        ? pc.skills[sKey].spent
+        : (curRanks * (CombatRules.isClassSkill(sKey, pc) ? 1 : 2));
+
       pc.skills[sKey] = {
         ranks: curRanks + rankInc,
-        misc: pc.skills[sKey].misc || 0
+        misc: pc.skills[sKey].misc || 0,
+        spent: curSpent + clickCount
       };
     });
 
@@ -77,15 +89,22 @@ export function applyLevelUpToActivePC(
     }
 
     // 6. Feats additions
-    if (Array.isArray(newLevelConfig.feats) && newLevelConfig.feats.length > 0) {
-      const curFeats = Array.isArray(pc.feats) ? [...pc.feats] : [];
+    const featSlots = getFeatSlotsAtLevel(newLevelIndex, newLevelConfig.classType, pc.race, levelConfigs);
+    const curFeats = Array.isArray(pc.feats) ? [...pc.feats] : [];
+    featSlots.forEach((slot, sIdx) => {
+      const fid = newLevelConfig.feats?.[sIdx] || slot.defaultFeat;
+      if (fid && !curFeats.some(f => (typeof f === 'object' ? f.id === fid : f === fid))) {
+        curFeats.push({ id: fid });
+      }
+    });
+    if (Array.isArray(newLevelConfig.feats)) {
       newLevelConfig.feats.forEach((fid: string) => {
         if (fid && !curFeats.some(f => (typeof f === 'object' ? f.id === fid : f === fid))) {
           curFeats.push({ id: fid });
         }
       });
-      pc.feats = curFeats;
     }
+    pc.feats = curFeats;
 
     // 7. ACFs additions
     if (Array.isArray(newLevelConfig.acfs) && newLevelConfig.acfs.length > 0) {

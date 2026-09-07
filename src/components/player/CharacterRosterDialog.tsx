@@ -5,6 +5,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import type { CharacterSummary } from '../../types/character.ts';
 import { characterService } from '../../services/character/CharacterService.ts';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
@@ -137,7 +138,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
     }
   };
 
-  return (
+  return createPortal(
     <div
       style={{
         position: 'fixed',
@@ -387,6 +388,7 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
           onSubmit={handleCreateNew}
         />
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

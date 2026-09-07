@@ -9,6 +9,7 @@
 
 import { getMaxSpellLevel } from './RulesSpells.js';
 import { CLASSES } from './RulesData.js';
+import { CombatFeats } from '../data/feats-data.js';
 
 // Maps standard D&D alignment abbreviations (e.g. 'LE', 'NG', 'TN') to their full names,
 // so free-text alignment input like the header field's "e.g. LG" placeholder validates correctly.
@@ -87,7 +88,86 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
     });
   }
 
-  // 4. Alignment Check
+  // 4. Attributes Check (Explicit and implicit from required feats)
+  const requiredStats = {};
+
+  // a) Explicit attributes defined in class prerequisites
+  if (prereqs.attributes) {
+    Object.entries(prereqs.attributes).forEach(([statKey, minVal]) => {
+      const lowerKey = statKey.toLowerCase();
+      requiredStats[lowerKey] = {
+        minVal,
+        sources: []
+      };
+    });
+  }
+
+  // b) Implicit attributes from required feats
+  if (Array.isArray(prereqs.feats)) {
+    prereqs.feats.forEach(featId => {
+      const featDef = CombatFeats?.REGISTRY?.[featId];
+      if (featDef && Array.isArray(featDef.prereqs)) {
+        featDef.prereqs.forEach(fp => {
+          if (fp.type === 'stat' && fp.name && fp.value) {
+            const statKey = fp.name.toLowerCase();
+            const featName = featDef.nameEn || featDef.nameDe || featId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+            if (!requiredStats[statKey]) {
+              requiredStats[statKey] = {
+                minVal: fp.value,
+                sources: [featName]
+              };
+            } else {
+              if (fp.value > requiredStats[statKey].minVal) {
+                requiredStats[statKey].minVal = fp.value;
+              }
+              if (!requiredStats[statKey].sources.includes(featName)) {
+                requiredStats[statKey].sources.push(featName);
+              }
+            }
+          }
+        });
+      }
+    });
+  }
+
+  const STAT_NAMES = {
+    str: 'Strength (STR)',
+    dex: 'Dexterity (DEX)',
+    con: 'Constitution (CON)',
+    int: 'Intelligence (INT)',
+    wis: 'Wisdom (WIS)',
+    cha: 'Charisma (CHA)'
+  };
+
+  Object.entries(requiredStats).forEach(([statKey, info]) => {
+    const { minVal, sources } = info;
+    const statObj = pc && (pc[statKey] !== undefined ? pc[statKey] : (pc.attributes && pc.attributes[statKey]));
+    let currentVal = 10;
+    if (statObj !== undefined && statObj !== null) {
+      if (typeof statObj === 'number') currentVal = statObj;
+      else if (typeof statObj.getValue === 'function') currentVal = statObj.getValue();
+      else if (statObj.base !== undefined) currentVal = statObj.base;
+      else if (statObj.value !== undefined) currentVal = statObj.value;
+    }
+
+    const met = currentVal >= minVal;
+    const statLabel = STAT_NAMES[statKey] || statKey.toUpperCase();
+    const sourceSuffix = sources.length > 0 ? ` (Required for ${sources.join(', ')})` : '';
+    const fullLabel = `${statLabel}: ${minVal}+${sourceSuffix}`;
+
+    metDetails.push({
+      label: fullLabel,
+      current: `${currentVal}`,
+      required: `${minVal}+`,
+      met
+    });
+
+    if (!met) {
+      errors.push(`${statLabel} ${minVal}+ erforderlich (${currentVal} vorhanden)`);
+    }
+  });
+
+  // 5. Alignment Check
   if (prereqs.alignment) {
     let met = true;
     let currentAlign = pc.alignment || 'Neutral';

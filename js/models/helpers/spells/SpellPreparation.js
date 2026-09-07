@@ -15,7 +15,7 @@ const generateUid = () => {
   return Date.now() + '-' + Math.random().toString(36).slice(2, 7);
 };
 
-export function prepareSpell(pc, spellKey, metamagicList = [], isSpecialist = false) {
+export function prepareSpell(pc, spellKey, metamagicList = [], isSpecialist = false, isDomain = false) {
   if (!Array.isArray(pc.preparedSpells)) {
     pc.preparedSpells = [];
   }
@@ -25,7 +25,8 @@ export function prepareSpell(pc, spellKey, metamagicList = [], isSpecialist = fa
     spellKey,
     metamagic: [...metamagicList],
     isUsed: false,
-    isSpecialist: !!isSpecialist
+    isSpecialist: !!isSpecialist,
+    isDomain: !!isDomain
   });
   return id;
 }

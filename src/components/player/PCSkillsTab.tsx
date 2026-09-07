@@ -247,7 +247,13 @@ export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
     CombatState.updatePCBatch((freshPC: any) => {
       if (!freshPC.skills) freshPC.skills = {};
       if (!freshPC.skills[key]) freshPC.skills[key] = { ranks: 0, misc: 0 };
+      const oldRanks = parseFloat(freshPC.skills[key].ranks) || 0;
+      const rankDiff = num - oldRanks;
       freshPC.skills[key].ranks = num;
+      if (freshPC.skills[key].spent !== undefined) {
+        const costDiff = rankDiff * (isClass ? 1 : 2);
+        freshPC.skills[key].spent = Math.max(0, (parseFloat(freshPC.skills[key].spent) || 0) + costDiff);
+      }
     });
   };
 

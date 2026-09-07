@@ -1,5 +1,5 @@
 import React from 'react';
-import { CLASSES_LIST, CLASS_KEY_ATTRIBUTES } from './constants';
+import { CLASSES_LIST, CLASS_KEY_ATTRIBUTES, PRESTIGE_PREREQS } from './constants';
 import { showAttributeExplanation } from '../attributeHelper';
 import { getRacialModifier, getMod, getRacialModifierString } from './helpers';
 
@@ -24,6 +24,7 @@ interface Step2AttributesProps {
   highlightClass: string;
   setHighlightClass: (val: string) => void;
   totalStatsSpent: number;
+  targetPrestigeClass?: string;
 }
 
 export const Step2Attributes: React.FC<Step2AttributesProps> = ({
@@ -32,12 +33,22 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
   selectedRace,
   highlightClass,
   setHighlightClass,
-  totalStatsSpent
+  totalStatsSpent,
+  targetPrestigeClass
 }) => {
+  // If target prestige class was chosen in Step 1 and highlightClass is empty, auto-focus target class
+  React.useEffect(() => {
+    if (targetPrestigeClass && !highlightClass) {
+      setHighlightClass(targetPrestigeClass);
+    }
+  }, [targetPrestigeClass]);
+
+  const activePrereq = PRESTIGE_PREREQS[highlightClass];
+
   return (
     <div style={{ textAlign: 'left', marginTop: '10px' }}>
       <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', margin: '0 0 20px 0', lineHeight: 1.5, color: 'var(--inkm)' }}>
-        Distribute a total of **74 points** among your 6 ability scores. Racial bonuses are calculated separately and displayed live on the right as final values.
+        Distribute a total of <strong>74 points</strong> among your 6 ability scores. Racial bonuses are calculated separately and displayed live on the right as final values.
       </p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '30px' }}>
@@ -68,17 +79,37 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
                 <strong 
                   style={{ 
                     fontSize: '13px', 
-                    width: '150px', 
-                    cursor: 'pointer', 
-                    borderBottom: '1px dashed var(--red)'
+                    minWidth: '190px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    whiteSpace: 'nowrap',
+                    cursor: 'pointer'
                   }}
                   onClick={() => showAttributeExplanation(k)}
                   title="Click for a brief explanation"
                 >
-                  {labelMap[k]}
-                  {isKeyAttr && <span style={{ color: 'green', fontSize: '9px', marginLeft: '4px', display: 'inline-block' }}>★ Key</span>}
+                  <span style={{ borderBottom: '1px dashed var(--red)' }}>{labelMap[k]}</span>
+                  {isKeyAttr && <span style={{ color: 'green', fontSize: '9px', whiteSpace: 'nowrap' }}>★ Key</span>}
+                  {activePrereq?.attributes?.[k] && (
+                    <span 
+                      data-testid={`attr-req-badge-${k}`}
+                      style={{ 
+                        color: finalVal >= activePrereq.attributes[k] ? '#2e7d32' : '#c62828', 
+                        fontSize: '9px', 
+                        fontWeight: 'bold',
+                        whiteSpace: 'nowrap',
+                        background: finalVal >= activePrereq.attributes[k] ? 'rgba(46, 125, 50, 0.12)' : 'rgba(198, 40, 40, 0.12)',
+                        padding: '1px 5px',
+                        borderRadius: '3px',
+                        border: `1px solid ${finalVal >= activePrereq.attributes[k] ? 'rgba(46, 125, 50, 0.3)' : 'rgba(198, 40, 40, 0.3)'}`
+                      }}
+                    >
+                      Req: {activePrereq.attributes[k]}+ {finalVal >= activePrereq.attributes[k] ? '✓' : `(${finalVal})`}
+                    </span>
+                  )}
                 </strong>
-                
+
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <button 
                     className="btn" 
@@ -86,16 +117,17 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
                     disabled={base <= 3}
                     onClick={() => setBaseStats({ ...baseStats, [k]: base - 1 })}
                   >
-                    -
+                    −
                   </button>
-                  
+
                   <input
                     type="number"
                     value={base}
                     onChange={(e) => {
                       let val = parseInt(e.target.value);
-                      if (isNaN(val)) {
-                        setBaseStats({ ...baseStats, [k]: 0 });
+                      if (isNaN(val)) return;
+                      if (val < 3) {
+                        setBaseStats({ ...baseStats, [k]: 3 });
                         return;
                       }
                       if (val > 18) val = 18;
@@ -185,13 +217,47 @@ export const Step2Attributes: React.FC<Step2AttributesProps> = ({
               value={highlightClass}
               onChange={(e) => setHighlightClass(e.target.value)}
               className="cinput"
-              style={{ width: '100%', padding: '0 6px', fontSize: '11px', height: '24px', cursor: 'pointer', fontFamily: 'var(--font-title)', boxSizing: 'border-box' }}
+              style={{ width: '100%', padding: '0 6px', fontSize: '11px', height: '26px', cursor: 'pointer', fontFamily: 'var(--font-title)', boxSizing: 'border-box' }}
             >
               <option value="">-- None --</option>
-              {CLASSES_LIST.filter(c => !c.isPrestige).map(c => (
-                <option key={c.key} value={c.key}>{c.name}</option>
-              ))}
+              <optgroup label="── Base Classes ──">
+                {CLASSES_LIST.filter(c => !c.isPrestige).map(c => (
+                  <option key={c.key} value={c.key}>{c.name}</option>
+                ))}
+              </optgroup>
+              <optgroup label="── Prestige Classes ──">
+                {CLASSES_LIST.filter(c => c.isPrestige).map(c => (
+                  <option key={c.key} value={c.key}>{c.name}</option>
+                ))}
+              </optgroup>
             </select>
+
+            {activePrereq?.attributeHints && (
+              <div 
+                data-testid="attribute-prereq-hints"
+                style={{ 
+                  marginTop: '10px', 
+                  padding: '8px 10px', 
+                  background: 'rgba(255, 255, 255, 0.85)', 
+                  border: '1px solid #e0c88f', 
+                  borderRadius: '4px', 
+                  fontSize: '11px', 
+                  fontFamily: 'var(--font-body)',
+                  color: 'var(--inkm)', 
+                  textAlign: 'left', 
+                  lineHeight: 1.4 
+                }}
+              >
+                <strong style={{ color: 'var(--red)', display: 'block', marginBottom: '6px', fontFamily: 'var(--font-body)', fontWeight: 600 }}>
+                  🎯 Recommendations for {CLASSES_LIST.find(c => c.key === highlightClass)?.name}:
+                </strong>
+                <ul style={{ margin: 0, paddingLeft: '16px', fontFamily: 'var(--font-body)' }}>
+                  {Object.entries(activePrereq.attributeHints).map(([k, hint]) => (
+                    <li key={k} style={{ marginBottom: '3px', fontFamily: 'var(--font-body)' }}>{hint}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

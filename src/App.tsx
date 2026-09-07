@@ -150,7 +150,15 @@ export default function App() {
   if (role === 'host') {
     content = <DMScreen state={state} />;
   } else if (role === 'wizard') {
-    content = <CharacterWizardDialog onClose={() => CombatState.setRole('choice')} />;
+    content = (
+      <CharacterWizardDialog
+        onClose={() => {
+          if (CombatState.getState()?.session?.role === 'wizard') {
+            CombatState.setRole('choice');
+          }
+        }}
+      />
+    );
   } else {
     // Player
     if (!activePC) {

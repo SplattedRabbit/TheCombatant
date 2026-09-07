@@ -27,10 +27,13 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   const hasMonk = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'monk'), [pc.classes]);
 
   const autoFeats = useMemo(() => typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats() : [], [pc.classes, pc.rangerCombatStyle]);
-  const activeFeats = useMemo(() => Array.isArray(pc.feats) ? pc.feats : [], [pc.feats]);
+  const activeFeats = useMemo(() => {
+    if (!Array.isArray(pc?.feats)) return [];
+    return pc.feats.map((f: any) => (typeof f === 'string' ? { id: f, option: '' } : f));
+  }, [pc?.feats]);
   
   const combinedFeats = useMemo(() => {
-    const list = [...activeFeats.map((f: any) => ({ ...f, isAutomatic: false }))];
+    const list = activeFeats.map((f: any) => ({ ...f, isAutomatic: false }));
     autoFeats.forEach((af: any) => {
       if (!list.some((lf: any) => lf.id === af.id)) {
         list.push({ id: af.id, isAutomatic: true, source: af.source });
@@ -44,7 +47,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   const raceStr = useMemo(() => (pc.race || '').toLowerCase(), [pc.race]);
   const isHuman = useMemo(() => pc.isHuman !== undefined ? !!pc.isHuman : (raceStr === 'human' || raceStr === 'mensch' || raceStr === ''), [pc.isHuman, raceStr]);
 
-  const generalMax = useMemo(() => 1 + Math.floor((totalLevel - 1) / 3) + (isHuman ? 1 : 0), [totalLevel, isHuman]);
+  const generalMax = useMemo(() => 1 + Math.floor(totalLevel / 3) + (isHuman ? 1 : 0), [totalLevel, isHuman]);
   
   const fighterMax = useMemo(() => {
     const fighterClass = activeClasses.find((c: any) => c.classType === 'fighter');

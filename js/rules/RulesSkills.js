@@ -4,7 +4,7 @@
  * @exports   isClassSkill, getPCMaxRanks, calculateTotalSkillPoints, calculateSpentSkillPoints
  */
 
-import { CLASS_SKILLS, CLASS_BASE_SKILLS } from './RulesData.js';
+import { CLASS_SKILLS, CLASS_BASE_SKILLS, CLASSES } from './RulesData.js';
 import { SKILL_TRICKS_REGISTRY } from '../data/skillTricks-data.js';
 
 export function isClassSkill(skillKey, pc) {
@@ -51,7 +51,7 @@ export function calculateTotalSkillPoints(pc) {
 
   let total = 0;
   pc.classes.forEach((c, idx) => {
-    const base = CLASS_BASE_SKILLS[c.classType] || 2;
+    const base = CLASS_BASE_SKILLS[c.classType] ?? (Array.isArray(CLASSES) ? CLASSES.find(x => x.key === c.classType)?.skillBase : null) ?? 2;
     const level = c.level || 0;
     if (level <= 0) return;
 
@@ -74,10 +74,15 @@ export function calculateSpentSkillPoints(pc) {
   let spent = 0;
   if (pc.skills) {
     for (const key of Object.keys(pc.skills)) {
-      const ranks = parseFloat(pc.skills[key].ranks) || 0;
-      if (ranks > 0) {
-        const isClass = isClassSkill(key, pc);
-        spent += ranks * (isClass ? 1 : 2);
+      const skillObj = pc.skills[key];
+      if (typeof skillObj === 'object' && skillObj !== null && skillObj.spent !== undefined && !isNaN(skillObj.spent)) {
+        spent += parseFloat(skillObj.spent) || 0;
+      } else {
+        const ranks = parseFloat(typeof skillObj === 'object' ? skillObj?.ranks : skillObj) || 0;
+        if (ranks > 0) {
+          const isClass = isClassSkill(key, pc);
+          spent += ranks * (isClass ? 1 : 2);
+        }
       }
     }
   }

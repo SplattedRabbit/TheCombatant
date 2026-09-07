@@ -32,10 +32,22 @@ export const SpellSlotCalculator = {
   countPreparedSpellsAtLevel(pc, level) {
     if (!Array.isArray(pc.preparedSpells)) return 0;
     return pc.preparedSpells.filter(p => {
-      const sp = pc.findSpell(p.spellKey);
+      const sp = pc.findSpell ? pc.findSpell(p.spellKey) : null;
+      if (!sp) return false;
+      const adjLevel = this.getAdjustedSpellLevel(sp, p.metamagic);
+      return adjLevel === level;
+    }).length;
+  },
+
+  countPreparedDomainSpellsAtLevel(pc, level) {
+    if (!Array.isArray(pc.preparedSpells)) return 0;
+    return pc.preparedSpells.filter(p => {
+      if (!p.isDomain) return false;
+      const sp = pc.findSpell ? pc.findSpell(p.spellKey) : null;
       if (!sp) return false;
       const adjLevel = this.getAdjustedSpellLevel(sp, p.metamagic);
       return adjLevel === level;
     }).length;
   }
 };
+

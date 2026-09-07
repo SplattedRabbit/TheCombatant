@@ -1,6 +1,6 @@
 /**
  * @module    feats-combat-phb
- * @summary   Statische Datenbank für D&D 3.5e combat Talente (Player's Handbook).
+ * @summary   Statische Datenbank für D&D 3.5e Kampftalente aus dem Player's Handbook (PHB).
  * @exports   COMBAT_FEATS_REGISTRY_PHB
  */
 
@@ -951,6 +951,85 @@ export const COMBAT_FEATS_REGISTRY_PHB = {
     "normalRaw": "",
     "specialRaw": "Fighter bonus feat.",
     "appEffect": "Kein Malus bei der gewählten exotischen Waffe",
+    "source": "phb"
+  },
+  "improved_critical": {
+    "id": "improved_critical",
+    "nameDe": "Verbesserter Kritischer Treffer",
+    "nameEn": "Improved Critical",
+    "category": "combat",
+    "prereqs": [
+      {
+        "type": "bab",
+        "value": 8
+      }
+    ],
+    "hasOption": true,
+    "optionType": "weapon",
+    "benefitDe": "Verdoppelt den Bedrohungsbereich (Threat Range) für kritische Treffer der gewählten Waffe.",
+    "benefitRaw": "Doubles the threat range of the chosen weapon. Multiple effects that increase threat range do not stack.",
+    "normalRaw": "",
+    "specialRaw": "Fighter bonus feat. You can gain this feat multiple times, each time for a different weapon.",
+    "appEffect": "Verdoppelt Bedrohungsbereich für kritische Treffer",
+    "source": "phb"
+  },
+  "combat_reflexes": {
+    "id": "combat_reflexes",
+    "nameDe": "Kampfreflexe",
+    "nameEn": "Combat Reflexes",
+    "category": "combat",
+    "prereqs": [],
+    "benefitDe": "Erlaube zusätzliche Gelegenheitsangriffe pro Runde in Höhe deines GE-Modifikators und Angriffe auf dem falschen Fuß.",
+    "benefitRaw": "You may make a number of additional attacks of opportunity each round equal to your Dexterity bonus. You can also make attacks of opportunity while flat-footed.",
+    "normalRaw": "You may only make one attack of opportunity per round, and cannot make attacks of opportunity while flat-footed.",
+    "specialRaw": "Fighter bonus feat. A monk can select this at 2nd level.",
+    "appEffect": "Zusätzliche Gelegenheitsangriffe (DEX-Mod) & AoO auf falschem Fuß",
+    "source": "phb"
+  },
+  "blind_fight": {
+    "id": "blind_fight",
+    "nameDe": "Blind kämpfen",
+    "nameEn": "Blind-Fight",
+    "category": "combat",
+    "prereqs": [],
+    "benefitDe": "Darf Fehlschlag-Chance wegen Tarnung im Nahkampf einmal wiederholen; kein Vorteil für unsichtbare Angreifer.",
+    "benefitRaw": "In melee, every time you miss because of concealment, you can reroll your miss chance once. An invisible attacker gets no bonus in melee against you.",
+    "normalRaw": "",
+    "specialRaw": "Fighter bonus feat.",
+    "appEffect": "Verdeckungs-Fehlschlag im Nahkampf wiederholen & unsichtbare Angreifer ohne Bonus",
+    "source": "phb"
+  },
+  "quick_draw": {
+    "id": "quick_draw",
+    "nameDe": "Schnelles Ziehen",
+    "nameEn": "Quick Draw",
+    "category": "combat",
+    "prereqs": [
+      {
+        "type": "bab",
+        "value": 1
+      }
+    ],
+    "benefitDe": "Ziehe eine Waffe als freie Aktion statt als Bewegungsaktion.",
+    "benefitRaw": "You can draw a weapon as a free action instead of as a move action.",
+    "normalRaw": "Without this feat, you can draw a weapon as a move action, or as a free action as part of movement with BAB +1.",
+    "specialRaw": "Fighter bonus feat.",
+    "appEffect": "Waffe als freie Aktion ziehen",
+    "source": "phb"
+  },
+  "rapid_reload": {
+    "id": "rapid_reload",
+    "nameDe": "Schnelles Nachladen",
+    "nameEn": "Rapid Reload",
+    "category": "combat",
+    "prereqs": [],
+    "hasOption": true,
+    "optionType": "weapon",
+    "benefitDe": "Verringert die Nachladezeit der gewählten Armbrust (leichte Armbrust: freie Aktion; schwere Armbrust: Bewegungsaktion).",
+    "benefitRaw": "The time required for you to reload your chosen type of crossbow is reduced to a free action (for a hand or light crossbow) or a move action (for a heavy crossbow).",
+    "normalRaw": "",
+    "specialRaw": "Fighter bonus feat.",
+    "appEffect": "Nachladen: Leichte Armbrust als freie Aktion, schwere als Bewegungsaktion",
     "source": "phb"
   }
 };

@@ -38,8 +38,27 @@ import {
 import {
   getMaxSpellLevel,
   calculateMaxSpellSlots,
-  checkSpellKnownLimit
+  checkSpellKnownLimit,
+  isSpellEligibleForPC,
+  getEligibleSpellLevelsForPC,
+  validateSpellLearnEligibility,
+  getSpellClassLevels,
+  isWizardProhibitedSchool,
+  getDomain,
+  getSpellDomains,
+  isDomainSpellForPC
 } from './rules/RulesSpells.js';
+
+import {
+  DEITIES_REGISTRY,
+  getDeitiesForAlignment,
+  getDeity,
+  isAlignmentWithinOneStep
+} from './data/deities-data.js';
+
+import {
+  DOMAINS_REGISTRY
+} from './data/domains-data.js';
 
 import {
   calculateMaxFeats,
@@ -91,6 +110,19 @@ export const CombatRules = {
   getMaxSpellLevel,
   calculateMaxSpellSlots,
   checkSpellKnownLimit,
+  isSpellEligibleForPC,
+  getEligibleSpellLevelsForPC,
+  validateSpellLearnEligibility,
+  getSpellClassLevels,
+  isWizardProhibitedSchool,
+  getDomain,
+  getSpellDomains,
+  isDomainSpellForPC,
+  DEITIES_REGISTRY,
+  DOMAINS_REGISTRY,
+  getDeitiesForAlignment,
+  getDeity,
+  isAlignmentWithinOneStep,
   calculateMaxFeats,
   validateFeatsAssignment,
   validatePrestigeClassPrereqs,
@@ -113,9 +145,27 @@ export {
 
 export {
   getAllCompendiumSpells,
+  calculateMaxSpellSlots,
   isSpellEligibleForPC,
-  getEligibleSpellLevelsForPC
+  getEligibleSpellLevelsForPC,
+  validateSpellLearnEligibility,
+  getSpellClassLevels,
+  isWizardProhibitedSchool,
+  getDomain,
+  getSpellDomains,
+  isDomainSpellForPC
 } from './rules/RulesSpells.js';
+
+export {
+  DEITIES_REGISTRY,
+  getDeitiesForAlignment,
+  getDeity,
+  isAlignmentWithinOneStep
+} from './data/deities-data.js';
+
+export {
+  DOMAINS_REGISTRY
+} from './data/domains-data.js';
 
 export {
   checkPrerequisites

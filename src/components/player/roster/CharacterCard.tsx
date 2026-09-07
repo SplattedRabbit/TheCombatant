@@ -15,6 +15,26 @@ interface CharacterCardProps {
   onDelete: (id: string, name: string) => void;
 }
 
+const getRaceDisplayName = (raceKey?: string) => {
+  if (!raceKey) return '';
+  const raceMap: Record<string, string> = {
+    human: 'Human',
+    elf: 'Elf',
+    wood_elf: 'Wood Elf',
+    wild_elf: 'Wild Elf',
+    drow: 'Drow',
+    dwarf: 'Dwarf',
+    gnome: 'Gnome',
+    halfling: 'Halfling',
+    deep_halfling: 'Deep Halfling',
+    half_elf: 'Half-Elf',
+    half_orc: 'Half-Orc',
+    tiefling: 'Tiefling',
+    anima_construct: 'Anima-Construct',
+  };
+  return raceMap[raceKey.toLowerCase()] || raceKey.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+};
+
 export const CharacterCard: React.FC<CharacterCardProps> = ({
   char,
   isActive,
@@ -85,7 +105,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({
             marginTop: '2px',
           }}
         >
-          Level {char.level} {char.race ? `(${char.race})` : ''}
+          Level {char.level} {char.race ? `(${getRaceDisplayName(char.race)})` : ''}
         </div>
 
         {char.classSummary && (

@@ -13,6 +13,7 @@ import { FeatsTabContent } from './FeatsTabContent';
 import { ACFsTabContent } from './ACFsTabContent';
 import { LevelHeaderAndStats } from './levelConfig/LevelHeaderAndStats';
 import { FeatSlotsSidebar } from './levelConfig/FeatSlotsSidebar';
+import { PrestigePrereqTrackerCard } from './levelConfig/PrestigePrereqTrackerCard';
 
 export interface Step3LevelConfigProps {
   levelConfigs: any[];
@@ -39,6 +40,7 @@ export interface Step3LevelConfigProps {
   currentFeatSlots: any[];
   activeFeatSlot: any;
   filteredFeats: any[];
+  targetPrestigeClass?: string;
 }
 
 export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
@@ -66,6 +68,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   currentFeatSlots,
   activeFeatSlot,
   filteredFeats,
+  targetPrestigeClass,
 }) => {
   // Sync prestige spell progression links if single arcane/divine class is available
   React.useEffect(() => {
@@ -107,6 +110,22 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
       }
     }
   }, [currentConfig.classType, currentDraft, currentLevelIndex]);
+
+  // Auto-populate fixed/class-granted default feats (e.g. Scribe Scroll for Wizard 1)
+  React.useEffect(() => {
+    if (!currentConfig || !currentFeatSlots || currentFeatSlots.length === 0) return;
+    let changed = false;
+    const nextFeats = Array.isArray(currentConfig.feats) ? [...currentConfig.feats] : [];
+    currentFeatSlots.forEach((slot, sIdx) => {
+      if (slot.defaultFeat && nextFeats[sIdx] !== slot.defaultFeat) {
+        nextFeats[sIdx] = slot.defaultFeat;
+        changed = true;
+      }
+    });
+    if (changed) {
+      updateLevelConfig(currentLevelIndex, 'feats', nextFeats);
+    }
+  }, [currentConfig?.classType, currentFeatSlots, currentLevelIndex]);
 
   const totalLearnedTricksCount = levelConfigs
     .slice(0, currentLevelIndex + 1)
@@ -200,6 +219,15 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
             getClassHitDie={getClassHitDie}
             updateLevelConfig={updateLevelConfig}
           />
+
+          {/* Target Prestige Class Live Prerequisite Tracker */}
+          {targetPrestigeClass && (
+            <PrestigePrereqTrackerCard
+              targetPrestigeClass={targetPrestigeClass}
+              currentDraft={currentDraft}
+              currentLevelIndex={currentLevelIndex}
+            />
+          )}
 
           {/* Feat Slots sidebar tiles (when Feats tab is active) */}
           {activeTab === 'feats' && (
@@ -343,6 +371,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
               currentLevelRemainingSkillPoints={currentLevelRemainingSkillPoints}
               currentLevelMaxSkillPoints={currentLevelMaxSkillPoints}
               updateLevelConfig={updateLevelConfig}
+              targetPrestigeClass={targetPrestigeClass}
             />
           )}
 
@@ -370,6 +399,9 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
               filteredFeats={filteredFeats}
               updateLevelConfig={updateLevelConfig}
               currentLevelIndex={currentLevelIndex}
+              targetPrestigeClass={targetPrestigeClass}
+              levelConfigs={levelConfigs}
+              currentFeatSlots={currentFeatSlots}
             />
           )}
 

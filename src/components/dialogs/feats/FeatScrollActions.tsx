@@ -1,6 +1,6 @@
 /**
  * @module    FeatScrollActions
- * @summary   Modal action footer buttons (Learn, Unlearn, Close, Automatic class feature badge).
+ * @summary   Modal action footer buttons (Learn, Unlearn, Learn Another, Close, Automatic class feature badge).
  */
 
 import React from 'react';
@@ -28,7 +28,7 @@ export const FeatScrollActions: React.FC<FeatScrollActionsProps> = ({
 }) => {
   return (
     <div style={{ marginTop: '4px' }}>
-      {!isActuallyLearned || isStackable ? (
+      {!isActuallyLearned ? (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
           <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)', letterSpacing: '0.3px' }}>
             {isLearnBlocked ? '🔒 Prerequisites not met!' : 'Do you want to learn this feat?'}
@@ -126,18 +126,18 @@ export const FeatScrollActions: React.FC<FeatScrollActionsProps> = ({
           </button>
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '100%' }}>
           <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 'bold', fontFamily: 'var(--font-title)', letterSpacing: '0.3px' }}>
-            Do you want to unlearn this feat?
+            Feat Management
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', width: '100%' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', width: '100%', flexWrap: 'wrap' }}>
             <button
               onClick={onUnlearn}
               className="btn btn-p btn-unlearn-feat"
               style={{
                 fontFamily: 'var(--font-title)',
                 fontSize: '9px',
-                padding: '4px 22px',
+                padding: '4px 18px',
                 cursor: 'pointer',
                 background: 'rgba(139, 26, 26, 0.1)',
                 border: '1px solid var(--pb)',
@@ -148,15 +148,37 @@ export const FeatScrollActions: React.FC<FeatScrollActionsProps> = ({
                 outline: 'none'
               }}
             >
-              Unlearn
+              Unlearn Feat
             </button>
+            {isStackable && (
+              <button
+                onClick={onLearn}
+                disabled={isLearnBlocked}
+                className="btn btn-p btn-learn-another-feat"
+                style={{
+                  fontFamily: 'var(--font-title)',
+                  fontSize: '9px',
+                  padding: '4px 18px',
+                  cursor: isLearnBlocked ? 'not-allowed' : 'pointer',
+                  background: isLearnBlocked ? 'rgba(0,0,0,0.05)' : 'rgba(42, 106, 42, 0.1)',
+                  border: `1px solid ${isLearnBlocked ? 'rgba(0,0,0,0.2)' : '#2a6a2a'}`,
+                  borderRadius: '2px',
+                  color: isLearnBlocked ? '#888' : '#2a6a2a',
+                  fontWeight: 'bold',
+                  transition: 'background-color 0.15s, color 0.15s',
+                  outline: 'none'
+                }}
+              >
+                Learn Another
+              </button>
+            )}
             <button
               onClick={onClose}
               className="btn btn-close-feat"
               style={{
                 fontFamily: 'var(--font-title)',
                 fontSize: '9px',
-                padding: '4px 22px',
+                padding: '4px 18px',
                 cursor: 'pointer',
                 background: 'transparent',
                 border: '1px solid var(--pb)',

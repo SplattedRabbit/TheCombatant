@@ -140,6 +140,8 @@ export const Step3Feats: React.FC<Step3FeatsProps> = ({
                 setFeatSearch={setFeatSearch}
                 featFilter={featFilter}
                 setFeatFilter={setFeatFilter}
+                levelConfigs={levelConfigs}
+                currentFeatSlots={currentFeatSlots}
               />
             </div>
           ) : (
