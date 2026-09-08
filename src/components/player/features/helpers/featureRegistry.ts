@@ -408,17 +408,56 @@ At 8th level, a rogue can no longer be flanked; she can react to opponents on op
           duration: `${prcLevel} rounds`,
         });
       }
+    } else if (cls.classType === 'battle_trickster') {
+      const bonusTricks = computed.bonusTricks || (prcLevel >= 3 ? 2 : 1);
+      features.push({
+        id: 'battle_trickster_bonus_tricks',
+        name: `Bonus Tricks (${bonusTricks})`,
+        source: `Battle Trickster (Lvl ${prcLevel})`,
+        category: 'passive',
+        typeLabel: 'Skill Tricks',
+        summary: `You gain ${bonusTricks} bonus skill trick(s) that do not count against your maximum limit.`,
+        rawRules: `At 1st level and again at 3rd level, a battle trickster gains a bonus skill trick for which she meets the prerequisite. These bonus tricks do not count against her maximum number of skill tricks.`,
+        actionType: 'Passive',
+      });
+
+      if (prcLevel >= 2) {
+        features.push({
+          id: 'battle_trickster_bonus_feat',
+          name: 'Bonus Feat',
+          source: `Battle Trickster (Lvl ${prcLevel})`,
+          category: 'passive',
+          typeLabel: 'Fighter Feat',
+          summary: `Gain a bonus combat feat selected from the fighter bonus feat list.`,
+          rawRules: `At 2nd level, a battle trickster gains a bonus feat. This feat must be selected from the list of fighter bonus feats.`,
+          actionType: 'Passive',
+        });
+      }
+
+      if (prcLevel >= 3) {
+        features.push({
+          id: 'battle_trickster_tricky_fighting',
+          name: 'Tricky Fighting (+1 Damage)',
+          source: `Battle Trickster (Lvl ${prcLevel})`,
+          category: 'combat',
+          typeLabel: 'Combat Precision',
+          summary: `+1 competence bonus on weapon damage rolls whenever you use a skill trick or strike a flat-footed/flanked foe.`,
+          rawRules: `At 3rd level, a battle trickster has mastered the art of combining combat prowess with deception. Whenever she successfully uses a skill trick in combat, or strikes an opponent that is flat-footed or flanked, she gains a +1 competence bonus on all weapon damage rolls made in that round.`,
+          actionType: 'Free Action',
+        });
+      }
     } else {
       // Generic prestige class feature mapping from UI rows
       (prcDef.ui?.rows || []).forEach((row: any) => {
         if (row.showIf && !row.showIf(computed)) return;
-        const val = computed[row.key];
+        const featKey = row.key || row.featureKey;
+        const val = computed[featKey];
         if (val === undefined || val === null || val === false) return;
 
         features.push({
-          id: `${cls.classType}_${row.key}`,
+          id: `${cls.classType}_${featKey}`,
           name: row.label,
-          source: `${prcDef.name || cls.classType} ${prcLevel}`,
+          source: `${prcDef.name || cls.classType} (Lvl ${prcLevel})`,
           category: row.format === 'perDay' ? 'daily' : 'passive',
           typeLabel: row.format === 'perDay' ? 'Daily' : 'Passive',
           summary: `${row.label}: ${val}`,

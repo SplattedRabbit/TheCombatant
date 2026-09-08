@@ -1259,3 +1259,197 @@ export const spellwarpSniperLvl10Sample = {
   isSneakAttacking: true
 };
 
+export const battleTricksterLvl13Sample = {
+  name: 'Kaelen Swiftblade',
+  init: 9,
+  hp: 104,
+  maxHP: 104,
+  ac: 24,
+  acTouch: 17,
+  acFlat: 19,
+  bw: 30,
+  za: 11,
+  ref: 14,
+  wil: 7,
+  type: 'p',
+  str: 16,
+  dex: 20,
+  con: 14,
+  int: 14,
+  wis: 10,
+  cha: 10,
+  baseZa: 9,
+  baseRef: 9,
+  baseWil: 4,
+  iniMisc: 4,
+  bab: 11,
+  classType: 'multiclass',
+  level: 13,
+  classes: [
+    { classType: 'fighter', level: 6 },
+    { classType: 'rogue', level: 4 },
+    { classType: 'battle_trickster', level: 3 }
+  ],
+  prestigeSpecialTextConfirmed: {
+    battle_trickster: true
+  },
+  race: 'human',
+  alignment: 'Chaotic Good',
+  autoAC: true,
+  weapons: [
+    {
+      name: '+2 Keen Rapier',
+      type: 'rapier',
+      attackBonus: '',
+      damageDice: '1d6',
+      crit: '15-20 / x2',
+      grip: '1h',
+      enhancement: 2,
+      isEquipped: true,
+      hand: 'main'
+    },
+    {
+      name: '+1 Shortsword',
+      type: 'shortsword',
+      attackBonus: '',
+      damageDice: '1d6',
+      crit: '19-20 / x2',
+      grip: '1h',
+      enhancement: 1,
+      isEquipped: true,
+      hand: 'off'
+    },
+    {
+      name: '+1 Composite Shortbow (+3 Str)',
+      type: 'shortbow',
+      attackBonus: '',
+      damageDice: '1d6',
+      crit: '20 / x3',
+      grip: 'rng',
+      enhancement: 1,
+      isEquipped: false
+    },
+    {
+      name: 'Masterwork Dagger',
+      type: 'dagger',
+      attackBonus: '',
+      damageDice: '1d4',
+      crit: '19-20 / x2',
+      grip: '1h',
+      enhancement: 0,
+      isEquipped: false
+    }
+  ],
+  armors: [
+    {
+      name: '+2 Mithral Chain Shirt',
+      type: 'chain_shirt',
+      enhancement: 2,
+      isEquipped: true,
+      maxDexOverride: 6
+    }
+  ],
+  items: [
+    {
+      name: 'Gloves of Dexterity +2',
+      slot: 'hands',
+      isEquipped: true,
+      effects: [
+        { type: 'attribute', target: 'dex', value: 2, bonusType: 'enhancement' }
+      ]
+    },
+    {
+      name: 'Belt of Giant Strength +2',
+      slot: 'waist',
+      isEquipped: true,
+      effects: [
+        { type: 'attribute', target: 'str', value: 2, bonusType: 'enhancement' }
+      ]
+    },
+    {
+      name: 'Cloak of Resistance +2',
+      slot: 'shoulders',
+      isEquipped: true,
+      effects: [
+        { type: 'save', target: 'all', value: 2, bonusType: 'resistance' }
+      ]
+    },
+    {
+      name: 'Ring of Protection +2',
+      slot: 'ring1',
+      isEquipped: true,
+      effects: [
+        { type: 'ac', target: 'deflection', value: 2, bonusType: 'deflection' }
+      ]
+    },
+    {
+      name: 'Amulet of Natural Armor +1',
+      slot: 'neck',
+      isEquipped: true,
+      effects: [
+        { type: 'ac', target: 'natural', value: 1, bonusType: 'natural' }
+      ]
+    },
+    {
+      name: 'Potion of Cure Serious Wounds',
+      slot: 'slotless',
+      type: 'potion',
+      isEquipped: false,
+      quantity: 3,
+      healingFormula: '3d8+5',
+      description: 'Heals 3d8+5 hit points.'
+    },
+    {
+      name: 'Potion of Haste',
+      slot: 'slotless',
+      type: 'potion',
+      isEquipped: false,
+      quantity: 2,
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, effectDescription: '+1 Attack, +1 Dodge AC, +30ft speed, extra attack on full attack for 5 rounds' }
+    },
+    {
+      name: 'Potion of Heroism',
+      slot: 'slotless',
+      type: 'potion',
+      isEquipped: false,
+      quantity: 1,
+      activation: { action: 'standard', actionType: 'standard', costType: 'charges', cost: 1, effectDescription: '+2 Morale bonus on attack rolls, saves, and skill checks for 50 minutes' }
+    }
+  ],
+  feats: [
+    { id: 'weapon_finesse', option: '' },
+    { id: 'weapon_focus', option: 'rapier' },
+    { id: 'weapon_specialization', option: 'rapier' },
+    { id: 'combat_expertise', option: '' },
+    { id: 'improved_feint', option: '' },
+    { id: 'combat_reflexes', option: '' },
+    { id: 'improved_initiative', option: '' },
+    { id: 'quick_draw', option: '' },
+    { id: 'two_weapon_fighting', option: '' },
+    { id: 'dodge', option: '' },
+    { id: 'mobility', option: '' }
+  ],
+  skillTricks: [
+    { id: 'spot_the_weak_point', isBonus: false },
+    { id: 'acrobatic_backstab', isBonus: false },
+    { id: 'nimble_stand', isBonus: true },
+    { id: 'sudden_draw', isBonus: true }
+  ],
+  skills: {
+    tumble: { ranks: 16, misc: 0 },
+    bluff: { ranks: 14, misc: 0 },
+    balance: { ranks: 8, misc: 0 },
+    jump: { ranks: 10, misc: 0 },
+    escape_artist: { ranks: 8, misc: 0 },
+    spot: { ranks: 12, misc: 0 },
+    listen: { ranks: 8, misc: 0 },
+    hide: { ranks: 12, misc: 0 },
+    move_silently: { ranks: 12, misc: 0 },
+    climb: { ranks: 6, misc: 0 }
+  },
+  dailyAbilities: [
+    { name: 'Tricky Fighting (+1 damage on trick / flanked strike)', max: 99, used: 0 }
+  ]
+};
+
+

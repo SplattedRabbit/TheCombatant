@@ -85,6 +85,17 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
                 A Rogue 1 / Wizard 5 / Spellwarp Sniper 4 with Sudden Raystrike (+2d6), Spellwarp, Ray spells, and 2 Skill Tricks (Spot the Weak Point & Collector of Stories).
               </span>
             </button>
+
+            <button
+              onClick={() => onConfirm('battle_trickster_lvl13')}
+              className="btn"
+              style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
+            >
+              <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>⚔️ Battle Trickster (Human, Level 13)</strong>
+              <span style={{ fontSize: '9px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', marginTop: '2px' }}>
+                Fighter 6 / Rogue 4 / Battle Trickster 3 — A martial skirmisher with BAB +11/+6/+1, Sneak Attack (+2d6), Tricky Fighting, and 4 combat Skill Tricks (Acrobatic Backstab, Spot the Weak Point, Nimble Stand, Sudden Draw).
+              </span>
+            </button>
           </div>
         </>
       ) : (
