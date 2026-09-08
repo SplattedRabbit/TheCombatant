@@ -3,6 +3,22 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.6.0] - 2026-09-08
+
+### Added
+- **Class & Companion Features Tab Redesign:**
+  - **Daily Combat Resources Bar (`QuickCombatDashboard.tsx`):** Interactive daily resource pips directly accessible at the top of the features tab. Provides click-to-expend/restore pips for Smite Evil / Smite Corrupt, Turn Undead, Barbarian Rage, Bardic Music, and an interactive HP counter for Lay on Hands.
+  - **Live Search & Category Filter Bar (`FeaturesFilterBar.tsx`):** Instant search filtering across feature names, origins, summaries, and full RAW rules. Includes category pills with dynamic counts (`All`, `Combat / Active`, `Daily Resources`, `Passives`, `Auras`, `Spell-like`).
+  - **Unified Feature Cards with Stacking & Merging (`UnifiedFeatureCard.tsx`, `featureRegistry.ts`):** Automatically consolidates multi-source cumulative abilities (such as *Sneak Attack* from Rogue + Shadowbane Inquisitor or combined effective *Turn Undead* levels) with origin badges and category classifications.
+  - **RAW Rules Inspector Drawer (`RulesInspectorDrawer.tsx`):** Embedded slide-out drawer providing official D&D 3.5e RAW rules text on click, with structured action cost, duration, range, and stacking sources.
+  - **Companion Hub & Sidebar Mini-Widget (`CompanionMiniStatusWidget.tsx`):** Persistent right-column mini-widget displaying companion HP, AC, and one-click attacks, coupled with header sub-tabs for switching between Class Features and full Companion Sheets.
+  - **Warm Parchment Fantasy Styling:** Refined all panels, search inputs, badges, and drawers to strictly adhere to the warm fantasy parchment theme, eliminating harsh white backgrounds.
+- **Level 13 Battle Trickster Demo Character ("Kaelen Swiftblade"):**
+  - Integrated a fully configured Level 13 Human Fighter 6 / Rogue 4 / Battle Trickster 3 into `encounter-samples.js` and `SampleChoiceDialog.tsx`. Features BAB +11/+6/+1, iterative attacks, *+2 Keen Rapier*, equipped skill tricks (*Acrobatic Backstab*, *Spot the Weak Point*, *Nimble Stand*, *Sudden Draw*), and full magic equipment suite (AC 24, Touch 17).
+
+### Changed
+- **Character Wizard Keyword Search Audit:** Audited and verified deep keyword search across Feats, ACFs, and Skill Tricks within Step 3 of the Character Creation Wizard.
+
 ## [6.5.0] - 2026-09-07
 
 ### Changed

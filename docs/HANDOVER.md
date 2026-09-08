@@ -1,25 +1,28 @@
-# Übergabe & Systemstatus (v6.5.0 / Branch `main`) — The Combatant
+# Übergabe & Systemstatus (v6.6.0 / Branch `main`) — The Combatant
 
 ## 🚀 Copy-Paste Prompt für den neuen Rechner / neuen Chat
 
 ```markdown
-Wir setzen die Entwicklung von The Combatant auf Basis von Branch `main` (Version v6.5.0 / aktueller Stand) fort.
+Wir setzen die Entwicklung von The Combatant auf Basis von Branch `main` (Version v6.6.0 / aktueller Stand) fort.
 
 Zuletzt abgeschlossen:
-1. Vollständige 100% RAW-Englisch-Bereinigung (Rules As Written) über die gesamte Applikation:
-   - Alle 12 Feat-Dateien (`js/data/feats/**/*.js`) bereinigt: Sämtliche deutschen Texte (`benefitDe`, alte `appEffect`-Strings) durch kanonische englische RAW-Regeln und standardisierte englische Kurzeffekte ersetzt.
-   - Alle 4 Zauberdatenbanken (`data/spells-*.json`) bereinigt: Zaubernamen vereinheitlicht (`name: nameEn`, `nameDe: nameEn`), 35 deutsche Zaubereffekt-Quellen (wie 'Stärke des Stiers' -> 'Bull\'s Strength', 'Hast' -> 'Haste') übersetzt für rein englische Würfel-Breakdowns.
-   - Regel- & Validierungs-Engine (`RulesData.js`, `RulesSpells.js`, `PCFeatsSpells.js`): Prestigeklassen (Mystic Theurge, Arcane Trickster, etc.) und Fehlermeldungen (Not a Spellcaster, Cannot Learn Spell, Prohibited School) auf Englisch umgestellt.
-   - UI & Wizard Dialoge: Deutsche Untertitel, Alt-Namen-Felder und Lokalisierungsreste in FeatScrollDialog, SpellCompendium, SpellDetailsDialog, SpellCreatorDialog, LevelUpDialog, Alignment-Auswahl (Lawful, Neutral, Chaotic, Good, Neutral, Evil) und LevelHeaderAndStats entfernt.
-   - Print Pages 2, 3 und 4: Fertigkeiten, Talente, Ausrüstung und Zauber konsistent auf Englisch aufgelöst.
-2. 100% Abwärtskompatibilität gewahrt:
-   - Vorhandene Charaktere in localStorage, Supabase und JSON-Dateien bleiben vollständig intakt (kein Datenverlust, Aliasing über Combatant-Helfer und nameDe=nameEn Mapping).
-3. Test- & Build-Status:
-   - 343 Node-Tests (`npm test`) in 24 Suites $\rightarrow$ 100% bestanden (0 Fehler).
-   - 41 Vitest UI-Tests (`npm run test:ui`) in 7 Suites $\rightarrow$ 100% bestanden (0 Fehler).
-   - TypeScript (`npm run typecheck`) $\rightarrow$ 0 Fehler.
-   - Produktions-Build (`npm run build`) $\rightarrow$ erfolgreich generiert (Code 0).
-4. Branch `refactor/bilingual-cleanup` erfolgreich nach `main` gemergt und gepusht.
+1. Redesign des "Class & Companion Features" Tabs:
+   - Daily Combat Resources Bar (`QuickCombatDashboard.tsx`): Interaktive Klick-Pips am oberen Rand für Smite Evil/Corrupt, Turn Undead, Barbarian Rage, Bardic Music und dynamischer HP-Zähler für Lay on Hands.
+   - Live-Suche & Kategoriefilter (`FeaturesFilterBar.tsx`): Filter-Pills (All, Combat/Active, Daily Resources, Passives, Auras, Spell-like) mit Live-Zählern und Sofortsuche über Namen, Quellen, Zusammenfassungen und RAW-Regeln.
+   - Unified Feature Cards mit Stacking & Merging (`UnifiedFeatureCard.tsx`, `featureRegistry.ts`): Kumulative Boni werden automatisch zusammengeführt (z. B. Sneak Attack +5d6 aus Rogue + Shadowbane Inquisitor, Turn Undead Stufen), inklusive Herkunfts- und Kategorie-Badges.
+   - RAW Rules Inspector Drawer (`RulesInspectorDrawer.tsx`): Klick auf eine Fähigkeit öffnet rechts den vollständigen offiziellen D&D 3.5e RAW-Regeltext samt Aktionsökonomie, Dauer, Reichweite und Stacking-Quellen.
+   - Begleiter-Hub & Mini-Widget (`CompanionMiniStatusWidget.tsx`): Rechts dauerhaft Begleiter-HP, RK und Schnellangriffe im Blick + Umschalter für das vollständige Begleiter-Sheet.
+   - Design System: Alle weißen Hintergründe durch das warme D&D-Fantasy-Pergament-Theme (`var(--pb)`, Pergament-Gradients) ersetzt.
+2. Neuer Democharakter ("Kaelen Swiftblade"):
+   - Vollständig konfigurierter Level 13 Battle Trickster (Human Fighter 6 / Rogue 4 / Battle Trickster 3) in `encounter-samples.js` und im Sample-Auswahldialog hinterlegt (BAB +11/+6/+1, Keen Rapier 15–20/x2, Skill-Tricks, magische Ausrüstung, RK 24).
+3. Character Wizard Audit:
+   - Verifiziert, dass im Wizard (Schritt 3) bei Feats, ACFs und Skill-Tricks eine tiefe Stichwortsuche in den Regeln aktiv ist.
+4. Test- & Build-Status:
+   - 343 Node-Tests (`npm test`) in 24 Suites → 100% bestanden (0 Fehler).
+   - 41 Vitest UI-Tests (`npm run test:ui`) in 7 Suites → 100% bestanden (0 Fehler).
+   - TypeScript (`npm run typecheck`) → 0 Fehler.
+   - Produktions-Build (`npm run build`) → erfolgreich generiert (Code 0).
+   - Branch `class_feature_rebuild` vollständig nach `main` gemergt und auf GitHub synchronisiert.
 ```
 
 ---
@@ -28,7 +31,7 @@ Zuletzt abgeschlossen:
 
 * **Repository:** `https://github.com/SplattedRabbit/TheCombatant.git`
 * **Aktueller Branch:** `main` (Up-to-date mit Remote `origin/main`)
-* **Letzter Commit:** `d0d2176` (*"build: update service worker cache version for v6.5.0 on main"*)
+* **Letzter Commit:** `e0655cd` (*"build: update service worker cache version"*)
 * **Test-Suite:** 
   * 343 Node-Tests (`npm test`) $\rightarrow$ **343 / 343 bestanden (100% Pass)**
   * 41 Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **41 / 41 bestanden (100% Pass)**
@@ -37,97 +40,54 @@ Zuletzt abgeschlossen:
 
 ---
 
-## 🛠️ Detaillierte Dokumentation aller Änderungen & Übergaben
+## 🛠️ Detaillierte Dokumentation aller Neuerungen & Architektur (v6.6.0)
 
-### 1. Feat-Datenbanken (`js/data/feats/**/*.js`)
-* **Umfang:** Alle 12 Feat-Dateien über 3 Kategorien (*combat*, *general*, *magic*) und 4 Regelwerke (*phb*, *phb2*, *ca*, *cs*):
-  - `combat/phb.js`, `combat/phb2.js`, `combat/ca.js`, `combat/cs.js`
-  - `general/phb.js`, `general/phb2.js`, `general/ca.js`, `general/cs.js`
-  - `magic/phb.js`, `magic/phb2.js`, `magic/ca.js`, `magic/cs.js`
-* **Maßnahmen:**
-  - `name`: Kanonischer englischer RAW-Name.
-  - `nameEn`: Kanonischer englischer RAW-Name.
-  - `nameDe`: Aus Kompatibilitätsgründen identisch auf den englischen RAW-Namen gesetzt (verhindert Brüche in älteren Abfragen und Unit-Tests).
-  - `benefit` & `benefitRaw`: Kanonischer englischer RAW-Regeltext aus den offiziellen Büchern.
-  - `benefitDe`: Identisch auf den englischen RAW-Text gesetzt.
-  - `appEffect`: Präziser, standardisierter englischer Kurzeffekt für Tooltips und Schnellansichten.
-  - **Umlaut-Scan:** 0 deutsche Umlaute im gesamten Feat-Verzeichnis.
+### 1. Class & Companion Features Tab (`src/components/player/features/`)
+* **`QuickCombatDashboard.tsx`:**
+  - Platziert am oberen Rand des Features-Tabs für schnelle Kampfaktionen ohne Scrollen.
+  - Verwendet klickbare Pips für limitierte Tagesressourcen:
+    - *Smite Evil / Smite Corrupt:* `⚡ 2/3 übrig` (Klick verbraucht/stellt wieder her).
+    - *Lay on Hands:* Dynamischer HP-Pool mit `-` und `+` Buttons (`18 / 24 HP`).
+    - *Turn Undead:* Heilige Sonnen-Pips (`☀️ 3/4 übrig`).
+    - *Barbarian Rage & Bardic Music:* Tageszähler werden nur eingeblendet, wenn die Klasse aktiv ist.
+* **`FeaturesFilterBar.tsx`:**
+  - Echtzeit-Suchfeld filtert über Name, Herkunft, Zusammenfassung und RAW-Regeltext.
+  - Filter-Pills mit dynamischen Zählern: `[📜 All]`, `[⚔️ Combat / Active]`, `[⏳ Daily Resources]`, `[🛡️ Passives]`, `[✨ Auras]`, `[🔮 Spell-like]`.
+* **`featureRegistry.ts` & `UnifiedFeatureCard.tsx`:**
+  - Vereinheitlichte Datenstruktur `UnifiedFeature` für alle Klassen- und Rassenfähigkeiten.
+  - Automatisches Merging kumulativer Boni:
+    - *Sneak Attack:* Fasst z. B. Rogue Lv.5 (+3d6) und Shadowbane Inquisitor Lv.4 (+2d6) zu einer gemeinsamen Karte `Sneak Attack +5d6` zusammen.
+    - *Turn Undead:* Addiert effektive Kleriker- und Paladinstufen sowie Verwendungen.
+  - Warme Pergament-Optik mit Herkunfts-Badge (`Rogue 5`, `Paladin 3`), Kategorie-Badge und kompakter Zusammenfassung.
+* **`RulesInspectorDrawer.tsx`:**
+  - Rechte Spalte fungiert als Detail-Inspektor für RAW-Regeln.
+  - Zeigt Aktionsaufwand (*Swift Action*, *Standard Action*, *Passive*), Reichweite, Dauer, Stacking-Quellen und den vollständigen D&D 3.5e Regeltext.
+* **`CompanionMiniStatusWidget.tsx` & `PCCompanionWrapper.tsx`:**
+  - Bei Charakteren mit Begleiter (Animal Companion, Paladin Mount, Familiar) wird rechts dauerhaft ein Mini-Status-Widget angezeigt (HP-Balken, RK, Direktangriffe).
+  - Ein Klick auf `[Full Sheet ↗]` oder die Kopf-Sub-Tabs wechselt nahtlos auf den vollwertigen Begleiterbogen.
 
-### 2. Zauber-Kataloge (`data/spells-*.json`)
-* **Umfang:** `spells-phb.json`, `spells-phb2.json`, `spells-ca.json`, `spells-cs.json`.
-* **Maßnahmen:**
-  - Alle Zaubereinträge besitzen `name: nameEn` und `nameDe: nameEn`.
-  - Sämtliche 35 deutschen Buff-/Effekt-Quellen übersetzt:
-    - `"Stärke des Stiers"` $\rightarrow$ `"Bull's Strength"`
-    - `"Ausdauer des Bären"` $\rightarrow$ `"Bear's Endurance"`
-    - `"Katzenhafte Anmut"` $\rightarrow$ `"Cat's Grace"`
-    - `"Pracht des Adlers"` $\rightarrow$ `"Eagle's Splendor"`
-    - `"Schläue des Fuchses"` $\rightarrow$ `"Fox's Cunning"`
-    - `"Weisheit der Eule"` $\rightarrow$ `"Owl's Wisdom"`
-    - `"Hast"` $\rightarrow$ `"Haste"`
-    - `"Schild"` $\rightarrow$ `"Shield"`
-    - `"Magische Rüstung"` $\rightarrow$ `"Mage Armor"`
-    - etc.
-  - **Effekt:** Sämtliche Angriffs- und Schadens-Breakdowns im Combatant-Sheet zeigen nun reine englische Bezeichnungen an.
-  - **Umlaut-Scan:** 0 deutsche Umlaute im gesamten Zauberverzeichnis.
+### 2. Demo-Charakter: Battle Trickster Level 13 (`js/data/encounter-samples.js`)
+* **Name:** *Kaelen Swiftblade* (Human, Chaotic Good).
+* **Klassen:** Fighter 6 / Rogue 4 / Battle Trickster 3.
+* **Kampfwerte:**
+  - BAB: +11 / +6 / +1 (3 iterative Angriffe mit *+2 Keen Rapier* [15–20/x2] und *+1 Shortsword*).
+  - RK: 24, Berührung 17, Auf falschem Fuß 19.
+  - Prestigefeatures: *Tricky Fighting* (+1 Schaden bei Skill Tricks oder Flankieren/Flat-Footed), *Bonus Tricks*, *Bonus Feat*.
+  - Skill Tricks ausgerüstet: *Acrobatic Backstab*, *Spot the Weak Point*, *Nimble Stand*, *Sudden Draw*.
+  - Auswahldialog: Direkt im Menü unter **"📋 Sample Data"** wählbar.
 
-### 3. Engine & Daten-Definitionen (`js/rules/`, `js/state/`)
-* **`js/rules/RulesData.js`:** Prestigeklassen auf kanonische englische Bezeichnungen standardisiert (*Mystic Theurge*, *Arcane Trickster*, *Dragon Disciple*, *Assassin*, *Shadowbane Inquisitor*).
-* **`js/rules/RulesSpells.js`:** Zauber-Zulässigkeit, Fehlermeldungen und verbotene Schulen auf Englisch umgestellt (*"Not a Spellcaster"*, *"Cannot Learn Spell"*, *"Prohibited School"*).
-* **`js/state/pc/PCFeatsSpells.js`:** Validierungsmeldungen beim Hinzufügen von Talenten und Skill-Tricks auf Englisch umgestellt.
-
-### 4. UI-Komponenten & Dialoge (`src/components/`)
-* **`src/components/dialogs/FeatScrollDialog.tsx` & `feats/FeatScrollParchment.tsx`:** Regex-Wörterbuch entfernt; Darstellung greift direkt auf englischen `appEffect` und `benefitRaw` zu.
-* **`src/components/player/PCSpellCompendium.tsx`:** Deutsche Untertitel-Anzeige entfernt; saubere englische Suche und Domänen-Tag-Darstellung.
-* **`src/components/player/PCSpellbookTab.tsx` & `PCSpellPreparation.tsx`:** Deutsche Untertitel entfernt; Zaubernamen, Slot-Header und Vorbereitungs-Logs auf Englisch.
-* **`src/components/dialogs/SpellCreatorDialog.tsx`:** Eingabefeld für alternativen deutschen Namen entfernt; reines "Spell Name"-Feld.
-* **`src/components/dialogs/SpellDetailsDialog.tsx` & `SpellScrollDialog.tsx`:** Deutsche Untertitel und Fallbacks entfernt.
-* **`src/components/dialogs/SkillTrickDetailsDialog.tsx`:** Deutsche Titel- und Warnmeldungs-Fallbacks bereinigt.
-* **`src/components/player/wizard/Step1RaceName.tsx`:** Gesinnungsauswahl auf reines kanonisches Englisch umgestellt (*Lawful*, *Neutral*, *Chaotic*, *Good*, *Neutral*, *Evil*).
-* **`src/components/player/wizard/levelConfig/LevelHeaderAndStats.tsx`:** Dialoge für Prestigeklassen-Voraussetzungen und manuelle Bestätigungen auf Englisch übersetzt.
-* **`src/components/player/wizard/SkillsTabContent.tsx`, `SkillTricksTabContent.tsx`, `levelConfig/FeatSlotsSidebar.tsx`, `Step4Review.tsx`:** Alle Filter- und Rendering-Fallbacks auf kanonische englische Felder ausgerichtet.
-* **`src/components/player/print/pages/`:**
-  - `PrintPage2SkillsFeatures.tsx`: Fertigkeiten, Talente, Skill Tricks und ACFs auf Englisch.
-  - `PrintPage3EquipmentArmory.tsx`: Rüstungs- und Schildnamen auf Englisch.
-  - `PrintPage4SpellsCompanion.tsx`: Vorbereitete, Zauberbuch- und gelernte Zauber auf Englisch.
-
-### 5. Test-Suiten
-* **`Tests/spell_eligibility_validation.test.js`:** Erwartungswerte von deutschen Strings auf englische Fehlermeldungen aktualisiert (*"Not a Spellcaster"*, *"Cannot Learn Spell"*, *"Prohibited School"*).
-* **`Tests/build.test.js`:** Erfolgreich ausgeführt im Rahmen von `npm test`.
+### 3. Wizard Stichwortsuche-Audit (`src/components/player/wizard/`)
+* **Feats-Tab:** Sucht in Namen (`nameDe`, `nameEn`) und Regeltext/Nutzen (`benefitDe`, `benefitRaw`).
+* **ACFs-Tab:** Sucht in Namen, Regeltext (`description`) und ersetztem Feature (`replaces`).
+* **Skill Tricks-Tab:** Sucht in Namen und Regelnutzen (`benefit`, `description`).
+* **Skills-Tab:** Sucht in Skill-Namen.
 
 ---
 
 ## 🔒 Abwärtskompatibilitäts-Garantie (Backward Compatibility)
 
 1. **Vorhandene Speicherstände (`localStorage` & `Supabase`):**
-   - Charaktere, die unter früheren Versionen mit `nameDe` oder alten Klassen-/Talent-IDs abgespeichert wurden, bleiben voll funktionsfähig.
-   - Dual-Resolution im Sheet (`c.name || c.nameEn || c.nameDe`) fängt jede bestehende Datenstruktur ab.
-   - Es wurden keine Primärschlüssel (`id`, `key`) gelöscht oder umbenannt.
+   - Bestehende Charaktere laden die neuen Feature-Karten und Dashboards automatisch ohne Konvertierung.
+   - Fehlende Begleiterdaten oder neue Tracking-Flags werden durch sichere Defaults (`pc.companion || null`) abgefedert.
 2. **Import & Export:**
-   - JSON-Charaktere können uneingeschränkt geladen werden. Neue Exporte erfolgen vollständig in standardisiertem RAW-Englisch.
-
----
-
-## 💻 Nächste Schritte / Merge nach Main
-
-Sobald gewünscht, kann dieser Branch direkt in `main` gemergt werden:
-
-```bash
-# 1. Sicherstellen, dass alles aktuell ist
-git checkout refactor/bilingual-cleanup
-git pull origin refactor/bilingual-cleanup
-
-# 2. Main aktualisieren und zusammenführen
-git checkout main
-git pull origin main
-git merge refactor/bilingual-cleanup --no-ff -m "merge: 100% RAW English standardization from refactor/bilingual-cleanup"
-
-# 3. Tests auf Main verifizieren
-npm test
-npm run test:ui
-npm run typecheck
-npm run build
-
-# 4. Nach Remote pushen
-git push origin main
-```
+   - JSON-Charaktere bleiben zu 100% kompatibel.
