@@ -66,9 +66,9 @@ export const AttackEngine = {
                               (isRapidShotThis ? -2 : 0);
 
     const activeAtkPenaltyBreakdowns = [];
-    if (isTWFActive) activeAtkPenaltyBreakdowns.push({ label: 'Zwei-Waffen-Kampf-Abzug', value: twfPenalties.primary });
-    if (isFlurryingThis) activeAtkPenaltyBreakdowns.push({ label: 'Schlaghagel-Abzug', value: flurryPenalty });
-    if (isRapidShotThis) activeAtkPenaltyBreakdowns.push({ label: 'Talent: Schnelles Schießen', value: -2 });
+    if (isTWFActive) activeAtkPenaltyBreakdowns.push({ label: 'Two-Weapon Fighting Penalty', value: twfPenalties.primary });
+    if (isFlurryingThis) activeAtkPenaltyBreakdowns.push({ label: 'Flurry of Blows Penalty', value: flurryPenalty });
+    if (isRapidShotThis) activeAtkPenaltyBreakdowns.push({ label: 'Rapid Shot Penalty', value: -2 });
 
     // 6. Generate standard primary sequence
     buildPrimarySequence(

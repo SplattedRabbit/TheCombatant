@@ -1,11 +1,11 @@
 /**
  * @module    SequenceBuilder
- * @summary   Konstruiert die konkrete Liste der Angriffs-Objekte mit ihren jeweiligen Würfel-Formeln und Log-Einträgen.
+ * @summary   Constructs the list of attack objects with their respective roll formulas and breakdown entries.
  * @exports   buildPrimarySequence(...), appendHasteAttack(...), appendRapidShotAttack(...), appendFlurryAttacks(...), appendOffhandAttacks(...)
  * @reads     ctx.isRanged, ctx.isMelee, ctx.isLight, ctx.isUnarmed, ctx.isNatural, ctx.isOffhand, ctx.weapon, ctx.pc
- * @stateOps  keine
+ * @stateOps  none
  * @depends   WeaponRegistry, isLightWeapon, matchesFeatOption (../../models/Weapon.js), buildFinalDamageDiceAndBreakdown (./DamageFormulaBuilder.js)
- * @notHere   Modifikatoren-Berechnung -> ModifierCalculator.js
+ * @notHere   Modifier calculation -> ModifierCalculator.js
  */
 
 import { WeaponRegistry, isLightWeapon, matchesFeatOption } from '../../models/Weapon.js';
@@ -28,10 +28,10 @@ export function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtk
       const typeDef = WeaponRegistry[ctx.weapon.type] || WeaponRegistry.longsword;
       if (typeDef.isCrossbow) {
         dmgAbilityMod = 0;
-        dmgAbilityLabel = 'Fernkampf (Armbrust: kein STR)';
+        dmgAbilityLabel = 'Ranged (Crossbow: no STR)';
       } else if (typeDef.isBow) {
         dmgAbilityMod = Math.min(0, ctx.strMod);
-        dmgAbilityLabel = ctx.strMod < 0 ? 'STR-Malus' : 'Fernkampf (Bogen: kein STR-Bonus)';
+        dmgAbilityLabel = ctx.strMod < 0 ? 'STR Penalty' : 'Ranged (Bow: no STR bonus)';
       } else if (typeDef.isComposite) {
         let rating = parseInt(ctx.weapon.strengthRating) || 0;
         if (!rating && ctx.weapon.name) {
@@ -40,10 +40,10 @@ export function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtk
         }
         if (ctx.strMod < rating) {
           dmgAbilityMod = ctx.strMod;
-          dmgAbilityLabel = `STR (Komposit-Malus: ${ctx.strMod} < +${rating})`;
+          dmgAbilityLabel = `STR (Composite Penalty: ${ctx.strMod} < +${rating})`;
         } else {
           dmgAbilityMod = rating;
-          dmgAbilityLabel = `STR (Komposit Max +${rating})`;
+          dmgAbilityLabel = `STR (Composite Max +${rating})`;
         }
       } else {
         dmgAbilityMod = ctx.strMod;
@@ -55,10 +55,10 @@ export function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtk
     } else {
       if (ctx.weapon.grip === '2h' && !ctx.weapon.isDoubleWielded) {
         dmgAbilityMod = Math.floor(ctx.strMod * 1.5);
-        dmgAbilityLabel = 'STR (2-Hand * 1.5)';
+        dmgAbilityLabel = 'STR (Two-Handed ×1.5)';
       } else if (ctx.isOffhand) {
         dmgAbilityMod = Math.floor(ctx.strMod * 0.5);
-        dmgAbilityLabel = 'STR (Off-hand * 0.5)';
+        dmgAbilityLabel = 'STR (Off-Hand ×0.5)';
       } else {
         dmgAbilityMod = ctx.strMod;
         dmgAbilityLabel = 'STR';
@@ -69,8 +69,8 @@ export function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtk
     const dmgTotal = dmgAbilityMod + generalDmgMod + paDmgBonus;
 
     const atkBreakdown = [
-      { label: `Basis-Angriff (BAB #${index + 1})`, value: baseAtk },
-      { label: `${atkAbilityLabel}-Modifikator`, value: atkAbilityMod },
+      { label: `Base Attack Bonus (BAB #${index + 1})`, value: baseAtk },
+      { label: `${atkAbilityLabel} Modifier`, value: atkAbilityMod },
       ...generalAtkBreakdown,
       ...activeAtkPenaltyBreakdowns
     ];
@@ -80,11 +80,11 @@ export function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtk
       ...generalDmgBreakdown
     ];
     if (paDmgBonus > 0) {
-      dmgBreakdown.push({ label: 'Heftiger Angriff (Power Attack)', value: paDmgBonus });
+      dmgBreakdown.push({ label: 'Power Attack', value: paDmgBonus });
     }
 
     sequence.push({
-      name: ctx.isNatural ? `${ctx.weapon.name} (Angriff #${index + 1})` : `Haupthand-Angriff #${index + 1}`,
+      name: ctx.isNatural ? `${ctx.weapon.name} (Attack #${index + 1})` : `Main Hand Attack #${index + 1}`,
       atkTotal,
       atkBreakdown,
       dmgTotal,
@@ -107,8 +107,8 @@ export function appendHasteAttack(ctx, generalAtkMod, generalAtkBreakdown, activ
   const atkTotal = baseAtk + atkAbilityMod + generalAtkMod + activeAtkPenalties;
   
   const atkBreakdown = [
-    { label: 'Basis-Angriff (BAB)', value: baseAtk },
-    { label: `${atkAbilityLabel}-Modifikator`, value: atkAbilityMod },
+    { label: 'Base Attack Bonus (BAB)', value: baseAtk },
+    { label: `${atkAbilityLabel} Modifier`, value: atkAbilityMod },
     ...generalAtkBreakdown,
     ...activeAtkPenaltyBreakdowns
   ];
@@ -120,10 +120,10 @@ export function appendHasteAttack(ctx, generalAtkMod, generalAtkBreakdown, activ
     dmgAbilityLabel = 'STR (Flurry 1.0x)';
   } else if (ctx.weapon.grip === '2h' && !ctx.weapon.isDoubleWielded) {
     dmgAbilityMod = Math.floor(ctx.strMod * 1.5);
-    dmgAbilityLabel = 'STR (2-Hand * 1.5)';
+    dmgAbilityLabel = 'STR (Two-Handed ×1.5)';
   } else if (ctx.isOffhand) {
     dmgAbilityMod = Math.floor(ctx.strMod * 0.5);
-    dmgAbilityLabel = 'STR (Off-hand * 0.5)';
+    dmgAbilityLabel = 'STR (Off-Hand ×0.5)';
   }
 
   const dmgTotal = dmgAbilityMod + generalDmgMod + paDmgBonus;
@@ -132,11 +132,11 @@ export function appendHasteAttack(ctx, generalAtkMod, generalAtkBreakdown, activ
     ...generalDmgBreakdown
   ];
   if (paDmgBonus > 0) {
-    dmgBreakdown.push({ label: 'Heftiger Angriff (Power Attack)', value: paDmgBonus });
+    dmgBreakdown.push({ label: 'Power Attack', value: paDmgBonus });
   }
 
   sequence.push({
-    name: 'Hast-Bonusangriff',
+    name: 'Haste Bonus Attack',
     atkTotal,
     atkBreakdown,
     dmgTotal,
@@ -154,8 +154,8 @@ export function appendRapidShotAttack(ctx, generalAtkMod, generalAtkBreakdown, a
   const atkTotal = baseAtk + atkAbilityMod + generalAtkMod + activeAtkPenalties;
   
   const atkBreakdown = [
-    { label: 'Basis-Angriff (BAB)', value: baseAtk },
-    { label: `${atkAbilityLabel}-Modifikator`, value: atkAbilityMod },
+    { label: 'Base Attack Bonus (BAB)', value: baseAtk },
+    { label: `${atkAbilityLabel} Modifier`, value: atkAbilityMod },
     ...generalAtkBreakdown,
     ...activeAtkPenaltyBreakdowns
   ];
@@ -165,10 +165,10 @@ export function appendRapidShotAttack(ctx, generalAtkMod, generalAtkBreakdown, a
   const typeDef = WeaponRegistry[ctx.weapon.type] || WeaponRegistry.longsword;
   if (typeDef.isCrossbow) {
     dmgAbilityMod = 0;
-    dmgAbilityLabel = 'Fernkampf (Armbrust: kein STR)';
+    dmgAbilityLabel = 'Ranged (Crossbow: no STR)';
   } else if (typeDef.isBow) {
     dmgAbilityMod = Math.min(0, ctx.strMod);
-    dmgAbilityLabel = ctx.strMod < 0 ? 'STR-Malus' : 'Fernkampf (Bogen: kein STR-Bonus)';
+    dmgAbilityLabel = ctx.strMod < 0 ? 'STR Penalty' : 'Ranged (Bow: no STR bonus)';
   } else if (typeDef.isComposite) {
     let rating = parseInt(ctx.weapon.strengthRating) || 0;
     if (!rating && ctx.weapon.name) {
@@ -177,10 +177,10 @@ export function appendRapidShotAttack(ctx, generalAtkMod, generalAtkBreakdown, a
     }
     if (ctx.strMod < rating) {
       dmgAbilityMod = ctx.strMod;
-      dmgAbilityLabel = `STR (Komposit-Malus: ${ctx.strMod} < +${rating})`;
+      dmgAbilityLabel = `STR (Composite Penalty: ${ctx.strMod} < +${rating})`;
     } else {
       dmgAbilityMod = rating;
-      dmgAbilityLabel = `STR (Komposit Max +${rating})`;
+      dmgAbilityLabel = `STR (Composite Max +${rating})`;
     }
   }
 
@@ -191,7 +191,7 @@ export function appendRapidShotAttack(ctx, generalAtkMod, generalAtkBreakdown, a
   ];
 
   sequence.push({
-    name: 'Schnelles Schießen Extra-Angriff',
+    name: 'Rapid Shot Extra Attack',
     atkTotal,
     atkBreakdown,
     dmgTotal,
@@ -218,8 +218,8 @@ export function appendFlurryAttacks(ctx, generalAtkMod, generalAtkBreakdown, act
     const atkTotal = baseAtk + atkAbilityMod + generalAtkMod + activeAtkPenalties;
     
     const atkBreakdown = [
-      { label: `Schlaghagel Extra #${i + 1}`, value: baseAtk },
-      { label: `${atkAbilityLabel}-Modifikator`, value: atkAbilityMod },
+      { label: `Flurry Extra #${i + 1}`, value: baseAtk },
+      { label: `${atkAbilityLabel} Modifier`, value: atkAbilityMod },
       ...generalAtkBreakdown,
       ...activeAtkPenaltyBreakdowns
     ];
@@ -230,11 +230,11 @@ export function appendFlurryAttacks(ctx, generalAtkMod, generalAtkBreakdown, act
       ...generalDmgBreakdown
     ];
     if (paDmgBonus > 0) {
-      dmgBreakdown.push({ label: 'Heftiger Angriff (Power Attack)', value: paDmgBonus });
+      dmgBreakdown.push({ label: 'Power Attack', value: paDmgBonus });
     }
 
     sequence.push({
-      name: `Schlaghagel-Bonusangriff #${i + 1}`,
+      name: `Flurry of Blows Extra Attack #${i + 1}`,
       atkTotal,
       atkBreakdown,
       dmgTotal,
@@ -254,51 +254,51 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
   
   let ohAtkMod = ohEnh;
   const ohAtkBreakdown = [];
-  if (ohEnh > 0) ohAtkBreakdown.push({ label: 'Waffen-Effekt', value: ohEnh });
+  if (ohEnh > 0) ohAtkBreakdown.push({ label: 'Weapon Enhancement', value: ohEnh });
 
   let ohDmgMod = ohEnh;
   const ohDmgBreakdown = [];
-  if (ohEnh > 0) ohDmgBreakdown.push({ label: 'Waffen-Effekt', value: ohEnh });
+  if (ohEnh > 0) ohDmgBreakdown.push({ label: 'Weapon Enhancement', value: ohEnh });
 
   if (ctx.pc.feats) {
     ctx.pc.feats.forEach(feat => {
       if (feat.id === 'weapon_focus' && feat.option && matchesFeatOption(offhandWeapon, feat.option)) {
         ohAtkMod += 1;
-        ohAtkBreakdown.push({ label: `Talent: Waffenfokus (${feat.option})`, value: 1 });
+        ohAtkBreakdown.push({ label: `Weapon Focus (${feat.option})`, value: 1 });
       }
       if (feat.id === 'greater_weapon_focus' && feat.option && matchesFeatOption(offhandWeapon, feat.option)) {
         ohAtkMod += 1;
-        ohAtkBreakdown.push({ label: `Talent: Mächtiger Waffenfokus (${feat.option})`, value: 1 });
+        ohAtkBreakdown.push({ label: `Greater Weapon Focus (${feat.option})`, value: 1 });
       }
       if (feat.id === 'weapon_specialization' && feat.option && matchesFeatOption(offhandWeapon, feat.option)) {
         ohDmgMod += 2;
-        ohDmgBreakdown.push({ label: `Talent: Waffenspezialisierung (${feat.option})`, value: 2 });
+        ohDmgBreakdown.push({ label: `Weapon Specialization (${feat.option})`, value: 2 });
       }
       if (feat.id === 'greater_weapon_specialization' && feat.option && matchesFeatOption(offhandWeapon, feat.option)) {
         ohDmgMod += 2;
-        ohDmgBreakdown.push({ label: `Talent: Mächtige Waffenspezialisierung (${feat.option})`, value: 2 });
+        ohDmgBreakdown.push({ label: `Greater Weapon Specialization (${feat.option})`, value: 2 });
       }
     });
   }
 
   if (ctx.hasHaste) {
     ohAtkMod += 1;
-    ohAtkBreakdown.push({ label: 'Zauber: Hast', value: 1 });
+    ohAtkBreakdown.push({ label: 'Haste', value: 1 });
   }
 
   if (ctx.paPenalty > 0) {
     ohAtkMod -= ctx.paPenalty;
-    ohAtkBreakdown.push({ label: 'Heftiger Angriff (Power Attack)', value: -ctx.paPenalty });
+    ohAtkBreakdown.push({ label: 'Power Attack', value: -ctx.paPenalty });
   }
   if (ctx.cePenalty > 0) {
     ohAtkMod -= ctx.cePenalty;
-    ohAtkBreakdown.push({ label: 'Kampfgetümmel (Expertise)', value: -ctx.cePenalty });
+    ohAtkBreakdown.push({ label: 'Combat Expertise', value: -ctx.cePenalty });
   }
 
   const ohCustomAtk = parseInt(offhandWeapon.attackBonus) || 0;
   if (ohCustomAtk !== 0) {
     ohAtkMod += ohCustomAtk;
-    ohAtkBreakdown.push({ label: 'Waffen-Zusatz-Atk', value: ohCustomAtk });
+    ohAtkBreakdown.push({ label: 'Weapon Attack Bonus', value: ohCustomAtk });
   }
 
   if (ctx.options.smite) {
@@ -306,7 +306,7 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
     if (paladinClass) {
       if (ctx.chaMod > 0) {
         ohAtkMod += ctx.chaMod;
-        ohAtkBreakdown.push({ label: 'Böses niederstrecken (CHA)', value: ctx.chaMod });
+        ohAtkBreakdown.push({ label: 'Smite Evil (CHA)', value: ctx.chaMod });
       }
     }
   }
@@ -315,7 +315,7 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
     const feBonus = ctx.pc.getFavoredEnemyBonus();
     if (feBonus > 0) {
       ohDmgMod += feBonus;
-      ohDmgBreakdown.push({ label: 'Erzfeind-Bonus', value: feBonus });
+      ohDmgBreakdown.push({ label: 'Favored Enemy Bonus', value: feBonus });
     }
   }
 
@@ -349,10 +349,10 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
     if (isOhRanged) {
       if (typeDef.isCrossbow) {
         dmgAbilityMod = 0;
-        dmgAbilityLabel = 'Fernkampf Nebenhand (Armbrust: kein STR)';
+        dmgAbilityLabel = 'Ranged Off-Hand (Crossbow: no STR)';
       } else if (typeDef.isBow) {
         dmgAbilityMod = Math.min(0, ctx.strMod);
-        dmgAbilityLabel = ctx.strMod < 0 ? 'STR-Malus' : 'Fernkampf Nebenhand (Bogen: kein STR-Bonus)';
+        dmgAbilityLabel = ctx.strMod < 0 ? 'STR Penalty' : 'Ranged Off-Hand (Bow: no STR bonus)';
       } else if (typeDef.isComposite) {
         let rating = parseInt(offhandWeapon.strengthRating) || 0;
         if (!rating && offhandWeapon.name) {
@@ -361,34 +361,34 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
         }
         if (ctx.strMod < 0) {
           dmgAbilityMod = ctx.strMod;
-          dmgAbilityLabel = `STR (Komposit-Malus: ${ctx.strMod})`;
+          dmgAbilityLabel = `STR (Composite Penalty: ${ctx.strMod})`;
         } else {
           const allowedBonus = Math.min(ctx.strMod, rating);
           dmgAbilityMod = Math.floor(allowedBonus * 0.5);
-          dmgAbilityLabel = `STR (Komposit Nebenhand Max +${rating} * 0.5)`;
+          dmgAbilityLabel = `STR (Composite Off-Hand Max +${rating} ×0.5)`;
         }
       } else {
         // Sling, Thrown, or other ranged (slings & thrown add STR, negative is full, positive is half)
         if (ctx.strMod < 0) {
           dmgAbilityMod = ctx.strMod;
-          dmgAbilityLabel = 'STR-Malus';
+          dmgAbilityLabel = 'STR Penalty';
         } else {
           dmgAbilityMod = Math.floor(ctx.strMod * 0.5);
-          dmgAbilityLabel = 'STR (Nebenhand * 0.5)';
+          dmgAbilityLabel = 'STR (Off-Hand ×0.5)';
         }
       }
     } else {
       dmgAbilityMod = Math.floor(ctx.strMod * 0.5);
-      dmgAbilityLabel = 'STR (Nebenhand * 0.5)';
+      dmgAbilityLabel = 'STR (Off-Hand ×0.5)';
     }
 
     const dmgTotal = dmgAbilityMod + ohDmgMod;
 
     const atkBreakdown = [
-      { label: `Nebenhand-Angriff (BAB #${index + 1})`, value: ohBaseAtk },
-      { label: `${atkAbilityLabel}-Modifikator`, value: atkAbilityMod },
+      { label: `Off-Hand Attack (BAB #${index + 1})`, value: ohBaseAtk },
+      { label: `${atkAbilityLabel} Modifier`, value: atkAbilityMod },
       ...ohAtkBreakdown,
-      { label: 'Zwei-Waffen-Kampf-Abzug', value: twfPenalties.offhand }
+      { label: 'Two-Weapon Fighting Penalty', value: twfPenalties.offhand }
     ];
 
     const dmgBreakdown = [
@@ -397,7 +397,7 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
     ];
 
     sequence.push({
-      name: ctx.weapon.isDoubleWielded ? `Nebenhand-Angriff #${index + 1} (Nebenseite)` : `Nebenhand-Angriff #${index + 1} (${offhandWeapon.name})`,
+      name: ctx.weapon.isDoubleWielded ? `Off-Hand Attack #${index + 1} (Secondary)` : `Off-Hand Attack #${index + 1} (${offhandWeapon.name})`,
       atkTotal,
       atkBreakdown,
       dmgTotal,
@@ -408,3 +408,4 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
     });
   });
 }
+

@@ -17,25 +17,25 @@ export function calculateGeneralAtkModifiers(ctx) {
   const enh = parseInt(ctx.weapon.enhancement) || 0;
   if (enh > 0) {
     generalAtkMod += enh;
-    generalAtkBreakdown.push({ label: 'Waffen-Effekt', value: enh });
+    generalAtkBreakdown.push({ label: 'Weapon Enhancement', value: enh });
   }
 
   if (ctx.pc.feats) {
     ctx.pc.feats.forEach(feat => {
       if (feat.id === 'weapon_focus' && feat.option && matchesFeatOption(ctx.weapon, feat.option)) {
         generalAtkMod += 1;
-        generalAtkBreakdown.push({ label: `Talent: Waffenfokus (${feat.option})`, value: 1 });
+        generalAtkBreakdown.push({ label: `Weapon Focus (${feat.option})`, value: 1 });
       }
       if (feat.id === 'greater_weapon_focus' && feat.option && matchesFeatOption(ctx.weapon, feat.option)) {
         generalAtkMod += 1;
-        generalAtkBreakdown.push({ label: `Talent: Mächtiger Waffenfokus (${feat.option})`, value: 1 });
+        generalAtkBreakdown.push({ label: `Greater Weapon Focus (${feat.option})`, value: 1 });
       }
     });
   }
 
   if (ctx.isRanged && ctx.hasFeat('point_blank_shot')) {
     generalAtkMod += 1;
-    generalAtkBreakdown.push({ label: 'Talent: Nahschuss', value: 1 });
+    generalAtkBreakdown.push({ label: 'Point Blank Shot', value: 1 });
   }
 
   if (ctx.isRanged) {
@@ -48,31 +48,31 @@ export function calculateGeneralAtkModifiers(ctx) {
       }
       if (ctx.strMod < rating) {
         generalAtkMod -= 2;
-        generalAtkBreakdown.push({ label: 'Ungenügende Stärke (Bogen)', value: -2 });
+        generalAtkBreakdown.push({ label: 'Insufficient Strength (Bow)', value: -2 });
       }
     }
   }
 
   if (ctx.pc.isDefensiveFighting) {
     generalAtkMod -= 4;
-    generalAtkBreakdown.push({ label: 'Verteidigend kämpfen', value: -4 });
+    generalAtkBreakdown.push({ label: 'Defensive Fighting', value: -4 });
   }
 
   if (ctx.isMelee) {
     if (ctx.paPenalty > 0) {
       generalAtkMod -= ctx.paPenalty;
-      generalAtkBreakdown.push({ label: 'Heftiger Angriff (Power Attack)', value: -ctx.paPenalty });
+      generalAtkBreakdown.push({ label: 'Power Attack', value: -ctx.paPenalty });
     }
     if (ctx.cePenalty > 0) {
       generalAtkMod -= ctx.cePenalty;
-      generalAtkBreakdown.push({ label: 'Kampfgetümmel (Expertise)', value: -ctx.cePenalty });
+      generalAtkBreakdown.push({ label: 'Combat Expertise', value: -ctx.cePenalty });
     }
   }
 
   const customAtkOffset = parseInt(ctx.weapon.attackBonus) || 0;
   if (customAtkOffset !== 0) {
     generalAtkMod += customAtkOffset;
-    generalAtkBreakdown.push({ label: 'Waffen-Zusatz-Atk', value: customAtkOffset });
+    generalAtkBreakdown.push({ label: 'Weapon Attack Bonus', value: customAtkOffset });
   }
 
   if (ctx.options.smite && ctx.isMelee) {
@@ -81,7 +81,7 @@ export function calculateGeneralAtkModifiers(ctx) {
     if (paladinClass || shadowbaneClass) {
       if (ctx.chaMod > 0) {
         generalAtkMod += ctx.chaMod;
-        const label = shadowbaneClass && !paladinClass ? 'Smite Corrupt (CHA)' : 'Böses niederstrecken (CHA)';
+        const label = shadowbaneClass && !paladinClass ? 'Smite Corrupt (CHA)' : 'Smite Evil (CHA)';
         generalAtkBreakdown.push({ label, value: ctx.chaMod });
       }
     }
@@ -90,12 +90,12 @@ export function calculateGeneralAtkModifiers(ctx) {
   const sizeMod = (typeof ctx.pc.getSizeModifier === 'function') ? ctx.pc.getSizeModifier() : 0;
   if (sizeMod !== 0) {
     generalAtkMod += sizeMod;
-    generalAtkBreakdown.push({ label: 'Größenmodifikator', value: sizeMod });
+    generalAtkBreakdown.push({ label: 'Size Modifier', value: sizeMod });
   }
 
   if (ctx.pc.isTrickyFightingActive) {
     generalAtkMod += 1;
-    generalAtkBreakdown.push({ label: 'Tricky Fighting (Kampftrick-Bonus)', value: 1 });
+    generalAtkBreakdown.push({ label: 'Tricky Fighting', value: 1 });
   }
 
   if (ctx.buffAtkBonus) {
@@ -115,25 +115,25 @@ export function calculateGeneralDmgModifiers(ctx) {
   const enh = parseInt(ctx.weapon.enhancement) || 0;
   if (enh > 0) {
     generalDmgMod += enh;
-    generalDmgBreakdown.push({ label: 'Waffen-Effekt', value: enh });
+    generalDmgBreakdown.push({ label: 'Weapon Enhancement', value: enh });
   }
 
   if (ctx.pc.feats) {
     ctx.pc.feats.forEach(feat => {
       if (feat.id === 'weapon_specialization' && feat.option && matchesFeatOption(ctx.weapon, feat.option)) {
         generalDmgMod += 2;
-        generalDmgBreakdown.push({ label: `Talent: Waffenspezialisierung (${feat.option})`, value: 2 });
+        generalDmgBreakdown.push({ label: `Weapon Specialization (${feat.option})`, value: 2 });
       }
       if (feat.id === 'greater_weapon_specialization' && feat.option && matchesFeatOption(ctx.weapon, feat.option)) {
         generalDmgMod += 2;
-        generalDmgBreakdown.push({ label: `Talent: Mächtige Waffenspezialisierung (${feat.option})`, value: 2 });
+        generalDmgBreakdown.push({ label: `Greater Weapon Specialization (${feat.option})`, value: 2 });
       }
     });
   }
 
   if (ctx.isRanged && ctx.hasFeat('point_blank_shot')) {
     generalDmgMod += 1;
-    generalDmgBreakdown.push({ label: 'Talent: Nahschuss', value: 1 });
+    generalDmgBreakdown.push({ label: 'Point Blank Shot', value: 1 });
   }
 
   let paDmgBonus = 0;
@@ -142,10 +142,10 @@ export function calculateGeneralDmgModifiers(ctx) {
       paDmgBonus = 0;
     } else if (ctx.weapon.grip === '2h' && !ctx.weapon.isDoubleWielded) {
       paDmgBonus = ctx.paPenalty * 2;
-      generalDmgBreakdown.push({ label: 'Heftiger Angriff (PA 2-Hand x2)', value: paDmgBonus });
+      generalDmgBreakdown.push({ label: 'Power Attack (Two-Handed ×2)', value: paDmgBonus });
     } else {
       paDmgBonus = ctx.paPenalty;
-      generalDmgBreakdown.push({ label: 'Heftiger Angriff (PA 1-Hand)', value: paDmgBonus });
+      generalDmgBreakdown.push({ label: 'Power Attack (One-Handed)', value: paDmgBonus });
     }
   }
 
@@ -153,12 +153,12 @@ export function calculateGeneralDmgModifiers(ctx) {
     const paladinClass = Array.isArray(ctx.pc.classes) && ctx.pc.classes.find(c => c.classType === 'paladin');
     if (paladinClass) {
       generalDmgMod += paladinClass.level;
-      generalDmgBreakdown.push({ label: 'Böses niederstrecken (Stufe)', value: paladinClass.level });
+      generalDmgBreakdown.push({ label: 'Smite Evil (Paladin Level)', value: paladinClass.level });
     }
     const shadowbaneClass = Array.isArray(ctx.pc.classes) && ctx.pc.classes.find(c => c.classType === 'shadowbane_inquisitor' && c.level >= 2);
     if (shadowbaneClass) {
       generalDmgMod += shadowbaneClass.level;
-      generalDmgBreakdown.push({ label: 'Smite Corrupt (Inquisitor-Stufe)', value: shadowbaneClass.level });
+      generalDmgBreakdown.push({ label: 'Smite Corrupt (Inquisitor Level)', value: shadowbaneClass.level });
     }
   }
 
@@ -166,7 +166,7 @@ export function calculateGeneralDmgModifiers(ctx) {
     const feBonus = ctx.pc.getFavoredEnemyBonus();
     if (feBonus > 0) {
       generalDmgMod += feBonus;
-      generalDmgBreakdown.push({ label: 'Erzfeind-Bonus', value: feBonus });
+      generalDmgBreakdown.push({ label: 'Favored Enemy Bonus', value: feBonus });
     }
   }
 

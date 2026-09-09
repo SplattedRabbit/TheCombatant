@@ -14,14 +14,14 @@ import { CombatState } from '../../state.js';
 
 function getTypeLabel(type) {
   const labels = {
-    morale: 'Moral',
-    luck: 'Glück',
-    dodge: 'Ausweichen',
-    enhancement: 'Verbesserung',
-    insight: 'Einsicht',
-    sacred: 'Heilig',
-    profane: 'Unheilig',
-    untyped: 'Ohne Typ'
+    morale: 'Morale',
+    luck: 'Luck',
+    dodge: 'Dodge',
+    enhancement: 'Enhancement',
+    insight: 'Insight',
+    sacred: 'Sacred',
+    profane: 'Profane',
+    untyped: 'Untyped'
   };
   return labels[type] || type;
 }
@@ -47,7 +47,7 @@ function resolveAtkDmgBuffs(pc, target) {
             effects.push({
               value: parseInt(eff.value) || 0,
               type: eff.type || 'untyped',
-              source: buff.name || eff.source || 'Eigener Buff'
+              source: buff.name || eff.source || 'Self Buff'
             });
           }
         });
@@ -59,7 +59,7 @@ function resolveAtkDmgBuffs(pc, target) {
               effects.push({
                 value: parseInt(eff.value) || 0,
                 type: eff.type || 'untyped',
-                source: spell.nameDe || spell.nameEn || buff.name || 'Zauber'
+                source: spell.nameEn || spell.nameDe || buff.name || 'Spell'
               });
             }
           });
@@ -77,7 +77,7 @@ function resolveAtkDmgBuffs(pc, target) {
         if (Array.isArray(other.activeBuffs)) {
           other.activeBuffs.forEach(buff => {
             if (buff.sharedWith && Array.isArray(buff.sharedWith) && buff.sharedWith.includes(pc.id)) {
-              const remoteSource = (buff.name || 'Fremder Buff') + ` (${other.name || 'Verbündeter'})`;
+              const remoteSource = (buff.name || 'Ally Buff') + ` (${other.name || 'Ally'})`;
               
               if (Array.isArray(buff.effects)) {
                 buff.effects.forEach(eff => {
