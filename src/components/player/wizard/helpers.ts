@@ -198,7 +198,11 @@ export const getDraftPCState = (
     getSneakAttackDiceCount: () => {
       const rogueClass = classesList.find(c => c.classType === 'rogue');
       const rogueCount = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
-      return rogueCount + getSneakAttackDiceFromPrestigeClasses({ classes: classesList });
+      const spellthiefClass = classesList.find(c => c.classType === 'spellthief');
+      const spellthiefCount = spellthiefClass && spellthiefClass.level >= 1 ? Math.floor((spellthiefClass.level + 3) / 4) : 0;
+      const ninjaClass = classesList.find(c => c.classType === 'ninja');
+      const ninjaCount = ninjaClass && ninjaClass.level >= 1 ? Math.floor((ninjaClass.level + 1) / 2) : 0;
+      return rogueCount + spellthiefCount + ninjaCount + getSneakAttackDiceFromPrestigeClasses({ classes: classesList });
     }
   };
 
@@ -363,7 +367,11 @@ export const getCompletedDraftPCState = (
     getSneakAttackDiceCount: () => {
       const rogueClass = classesList.find(c => c.classType === 'rogue');
       const rogueCount = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
-      return rogueCount + getSneakAttackDiceFromPrestigeClasses({ classes: classesList });
+      const spellthiefClass = classesList.find(c => c.classType === 'spellthief');
+      const spellthiefCount = spellthiefClass && spellthiefClass.level >= 1 ? Math.floor((spellthiefClass.level + 3) / 4) : 0;
+      const ninjaClass = classesList.find(c => c.classType === 'ninja');
+      const ninjaCount = ninjaClass && ninjaClass.level >= 1 ? Math.floor((ninjaClass.level + 1) / 2) : 0;
+      return rogueCount + spellthiefCount + ninjaCount + getSneakAttackDiceFromPrestigeClasses({ classes: classesList });
     }
   };
 

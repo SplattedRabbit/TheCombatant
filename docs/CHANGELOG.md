@@ -3,6 +3,26 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.7.0] - 2026-09-09
+
+### Added
+- **Modular Unified Class Features Registry (`src/components/player/features/registry/`):**
+  - Modularized class ability rules and token management into dedicated domain registries: `coreClasses.ts`, `expansionClasses.ts`, `prestigeClasses.ts`, and specialized modules like `prc/spellwarpSniper.ts`.
+  - Added full D&D 3.5e RAW rules, mechanics, action costs, ranges, saving throws, and rule descriptions for Base Classes, Expansion Classes (Duskblade, Scout, Ninja, Knight, Dragon Shaman), and Prestige Classes (Spellwarp Sniper, Assassin, Dragon Disciple, Shadowbane Inquisitor, Arcane Trickster, Mystic Theurge, Eldritch Knight, Hierophant, Archmage, Horizon Walker, Duelist, Loremaster, Dwarven Defender, Thaumaturgist, Red Wizard).
+  - Integrated automated RAW rule audits and assertions into `Tests/unified_feature_registry.test.js`.
+- **Interactive Companion & Familiar RAW Rule Modals (`CompanionAbilityDetailsDialog.tsx`, `companionAbilitiesRules.ts`):**
+  - Clickable ancient-parchment modal dialogs for all Animal Companion traits (*Link*, *Share Spells*, *Evasion*, *Devotion*, *Multiattack*, *Trip*, *Pounce*, *Improved Grab*, *Scent*, *Low-Light Vision*) and Familiar special abilities (*Alertness*, *Improved Evasion*, *Share Spells*, *Empathic Link*, *Deliver Touch Spells*, *Speak with Master*, *Speak with Animals of its Kind*, *Spell Resistance*, *Scry on Familiar*).
+  - Normalizing lookup helper resolving any dynamic or hardcoded trait string into its canonical D&D 3.5e RAW entry.
+
+### Changed
+- **Animal Companion & Familiar Dashboard Optimization (`CompanionSheet.tsx`, `FamiliarSheet.tsx`):**
+  - Re-architected both sheets into a balanced 2-column responsive dashboard with dedicated vital cards, attribute matrices, defenses, and attack rosters.
+  - Eliminated plain white backgrounds across attack cards and score boxes, replacing them with theme-consistent parchment tones (`rgba(200, 169, 110, 0.08)` and `0.5px solid var(--pb)`).
+
+### Fixed
+- **Prestige Class Creation Wizard Domain Link Crash:** Resolved `TypeError: (intermediate value).getSelectedDomains is not a function` in `PrestigeSpellLinkSection.tsx` and `PCFeaturesTab.tsx` when selecting or leveling prestige spellcaster classes.
+- **Stacking Source Formatting:** Standardized multi-source stacking source descriptions in `featureRegistry.ts` to display human-readable, title-cased class names (e.g. *Spellwarp Sniper Lv.4 (+2d6)* instead of raw internal snake_case tokens).
+
 ## [6.6.0] - 2026-09-08
 
 ### Added

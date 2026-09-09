@@ -248,7 +248,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
 
   // 7. Spells / Spellcasting Checks
   if (prereqs.spells) {
-    const arcaneClasses = ['wizard', 'sorcerer', 'bard'];
+    const arcaneClasses = ['wizard', 'sorcerer', 'bard', 'duskblade', 'beguiler', 'assassin'];
     const divineClasses = ['cleric', 'druid', 'paladin', 'ranger'];
 
     // Arcane level check

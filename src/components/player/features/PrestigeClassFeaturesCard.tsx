@@ -13,7 +13,14 @@ interface PrestigeClassFeaturesCardProps {
 
 const formatClassName = (key: string) => {
   if (!key) return 'Not selected';
-  return key.charAt(0).toUpperCase() + key.slice(1);
+  const cls = CLASSES.find((c: any) => c.key === key);
+  if (cls) return cls.nameEn || cls.name || cls.nameDe || key;
+  const prc = PRESTIGE_CLASSES_REGISTRY[key];
+  if (prc?.name) return prc.name;
+  return key
+    .split(/[-_]/)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(' ');
 };
 
 function formatHeadline(format: string, value: any): string {

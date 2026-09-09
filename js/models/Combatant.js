@@ -285,6 +285,12 @@ export class Combatant {
       list.push({ id: 'improved_sunder', source: 'Shadowbane Inquisitor (Class)' });
     }
 
+    // Spellwarp Sniper automatic feats
+    const sws = activeClasses.find(c => c.classType === 'spellwarp_sniper');
+    if (sws && sws.level >= 3) {
+      list.push({ id: 'precise_shot', source: 'Spellwarp Sniper (Class)' });
+    }
+
     return list.filter(item => !disabled.includes(item.id));
   }
 

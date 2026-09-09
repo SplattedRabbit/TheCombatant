@@ -17,6 +17,7 @@
 export const DMG_PRESTIGE_CLASSES_REGISTRY = {
   assassin: {
     key: 'assassin',
+    name: 'Assassin',
     source: 'dmg',
     spellcasting: { pattern: 'ownTable', tableRef: 'ASSASSIN_TABLE' },
     features: {
@@ -53,6 +54,7 @@ export const DMG_PRESTIGE_CLASSES_REGISTRY = {
 
   mystic_theurge: {
     key: 'mystic_theurge',
+    name: 'Mystic Theurge',
     source: 'dmg',
     spellcasting: { pattern: 'linkedProgression', shape: 'dual' },
     features: {
@@ -69,6 +71,7 @@ export const DMG_PRESTIGE_CLASSES_REGISTRY = {
 
   arcane_trickster: {
     key: 'arcane_trickster',
+    name: 'Arcane Trickster',
     source: 'dmg',
     spellcasting: { pattern: 'linkedProgression', shape: 'single' },
     features: {
@@ -106,6 +109,7 @@ export const DMG_PRESTIGE_CLASSES_REGISTRY = {
 
   dragon_disciple: {
     key: 'dragon_disciple',
+    name: 'Dragon Disciple',
     source: 'dmg',
     spellcasting: { pattern: 'none' },
     features: {

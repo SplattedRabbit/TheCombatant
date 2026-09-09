@@ -12,6 +12,7 @@
 export const CS_PRESTIGE_CLASSES_REGISTRY = {
   spellwarp_sniper: {
     key: 'spellwarp_sniper',
+    name: 'Spellwarp Sniper',
     source: 'cs',
     // Links existing spellcasting progression (you pick which existing caster class to link)
     spellcasting: { pattern: 'linkedProgression', shape: 'single' },
@@ -49,12 +50,17 @@ export const CS_PRESTIGE_CLASSES_REGISTRY = {
         { featureKey: 'preciseShot', label: 'Precise Shot', format: 'boolText', trueText: 'Yes', falseText: 'No' },
         { featureKey: 'rayMastery', label: 'Ray Mastery', format: 'plain' }
       ],
-      rawText: '<strong>Spellwarp Sniper (Complete Scoundrel):</strong><br />Spellwarp allows the sniper to contort area spells into pinpoint rays. At certain levels the class grants sudden raystrike (extra d6) and other ray-focused features. This entry is a compact, UI-friendly summary.'
+      rawText: '<strong>Spellwarp Sniper (Complete Scoundrel):</strong><br />' +
+        '• <strong>Spellwarp (Ex):</strong> As a free action, alter instantaneous area spells (range > touch, max spell level = class level) into pinpoint rays requiring a ranged touch attack. Targets receive NO Reflex save against the primary effect.<br />' +
+        '• <strong>Sudden Raystrike (Ex):</strong> +1d6 (lvl 2) / +2d6 (lvl 4) extra precision damage with ray spells against targets denied Dex to AC within 30 ft. Stacks with Sneak Attack.<br />' +
+        '• <strong>Precise Shot (Bonus Feat):</strong> At 3rd level, gain Precise Shot (shoot rays into melee without penalty).<br />' +
+        '• <strong>Ray Mastery (Ex):</strong> At 5th level: Sudden Raystrike range extends to 60 ft; deliver coup de grace with damaging rays; 1/day empower a ray spell without level or casting time increase.'
     }
   },
 
   battle_trickster: {
     key: 'battle_trickster',
+    name: 'Battle Trickster',
     source: 'cs',
     // No spellcasting progression for this PrC (martial-focused)
     spellcasting: { pattern: 'none' },

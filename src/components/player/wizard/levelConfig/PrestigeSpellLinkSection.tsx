@@ -145,5 +145,53 @@ export const PrestigeSpellLinkSection: React.FC<PrestigeSpellLinkSectionProps> =
     );
   }
 
+  if (currentConfig.classType === 'spellwarp_sniper') {
+    const casterClasses = classes.filter((cl: any) =>
+      ['wizard', 'sorcerer', 'bard', 'cleric', 'druid', 'duskblade', 'beguiler'].includes(cl.classType)
+    );
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '8px',
+          marginTop: '10px',
+          padding: '10px',
+          border: '1px solid var(--pb)',
+          borderRadius: '4px',
+          background: 'rgba(200, 169, 110, 0.05)',
+        }}
+      >
+        <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
+          ✦ Spellwarp Sniper Spell Linking
+        </strong>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <label style={{ fontSize: '10px', fontWeight: 'bold' }}>Spellcasting Class (+1 Caster Level & Slots)</label>
+          <select
+            value={currentConfig.prestigeSpellLinks?.spellwarp_sniper || ''}
+            onChange={(e) => {
+              updateLevelConfig(currentLevelIndex, 'prestigeSpellLinks', {
+                ...currentConfig.prestigeSpellLinks,
+                spellwarp_sniper: e.target.value,
+              });
+            }}
+            className="cinput"
+            style={{ width: '100%', fontSize: '11.5px', height: '28px', padding: '0 4px' }}
+          >
+            <option value="" disabled>
+              -- Select Spellcasting Class --
+            </option>
+            {casterClasses.map((cl: any) => (
+              <option key={cl.classType} value={cl.classType}>
+                {CLASSES_LIST.find((x) => x.key === cl.classType)?.name || cl.classType} (Lvl {cl.level})
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+    );
+  }
+
   return null;
 };

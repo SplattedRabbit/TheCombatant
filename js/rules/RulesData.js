@@ -201,7 +201,7 @@ export const CLASSES = [
     hitDie: 6,
     hd: 6,
     bab: 'poor',
-    saves: { fort: 'poor', ref: 'good', wil: 'good' },
+    saves: { fort: 'poor', ref: 'poor', wil: 'good' },
     spellcastingBonus: true,
     prerequisites: {
       skills: { concentration: 8, spellcraft: 8 },
@@ -323,9 +323,8 @@ export const CLASS_SKILLS = {
     'move_silently', 'open_lock', 'search', 'sense_motive', 'sleight_of_hand', 'spot', 'swim', 'tumble', 'use_magic_device', 'use_rope'
   ],
   spellwarp_sniper: [
-    'concentration', 'craft', 'decipher_script', 'jump', 'knowledge_arcana', 'knowledge_dungeons',
-    'knowledge_history', 'knowledge_local', 'knowledge_nature', 'knowledge_planes', 'knowledge_religion',
-    'knowledge_other', 'profession', 'search', 'sense_motive', 'spellcraft', 'spot', 'tumble'
+    'concentration', 'craft', 'hide', 'intimidate', 'knowledge_arcana', 'move_silently',
+    'profession', 'spellcraft', 'spot'
   ],
   battle_trickster: [
     'balance', 'bluff', 'climb', 'craft', 'diplomacy', 'disable_device', 'disguise', 'escape_artist',

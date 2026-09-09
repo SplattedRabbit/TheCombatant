@@ -12,6 +12,7 @@
 export const CA_PRESTIGE_CLASSES_REGISTRY = {
   shadowbane_inquisitor: {
     key: 'shadowbane_inquisitor',
+    name: 'Shadowbane Inquisitor',
     source: 'ca',
     spellcasting: { pattern: 'none' },
     features: {
