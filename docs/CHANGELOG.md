@@ -3,6 +3,22 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.8.0] - 2026-09-09
+
+### Added
+- **100% D&D 3.5e RAW Class Audits & Expansions:**
+  - **Spellwarp Sniper (*Complete Scoundrel*):** Complete RAW implementation of *Spellwarp (Su)* (levels 1–5 area-to-ray conversions without Reflex saves), *Sudden Raystrike (Ex)* (+1d6 at Lv.2, +2d6 at Lv.4), *Precise Shot* bonus feat at Lv.3, *Ray Mastery (Ex)* at Lv.5 (60 ft precision range, ray Coup de Grace, 1/day free Empower Ray), and full 5/5 spellcaster advancement.
+  - **Weapon-like Spell Slot Integration:** Generic *"Ray Spell Attack"* weapon slot with Ranged Touch Attack calculation, critical threat (20/x2), and precision damage toggles (Sneak Attack / Sudden Strike / Sudden Raystrike).
+  - **Ninja (*Complete Adventurer*):** Complete RAW implementation of *Ki Power*, *Ghost Step* (Swift Action Invisibility/Ethereal), *Sudden Strike* (+1d6 to +10d6), *AC Bonus* (Wisdom to AC unarmored), *Trapfinding*, *Poison Use*, *Speed Climb*, *Great Leap*, and *Ghost Strike*.
+  - **Dragon Shaman (*Player's Handbook II*):** Full 20-level implementation of *Draconic Auras* (+1 to +5 bonus, 3 to 7 auras known, dual aura projection at Lv.20 *Communal Dragon*), *Breath Weapon* (2d6 to 10d6, cone/line, DC 10 + 1/2 DS level + CON mod, 1d4 round recharge), *Touch of Vitality* (2x level HP pool, condition removal), *Draconic Resolve* (sleep/paralysis/frightful presence immunities), *Natural Armor* (+1/+2/+3), *Energy Immunity*, and *Draconic Wings* (fly speed).
+  - **Battle Trickster (*Complete Scoundrel*):** 3-level martial prestige class with bonus skill tricks, fighter bonus feat, and *Tricky Fighting* (+1 weapon damage).
+- **Prestige Class Level Caps:** Enforced strict RAW level caps (Spellwarp Sniper 5, Battle Trickster 3) in character level progression and Step 1 of the Level-Up Dialog.
+
+### Changed
+- **Complete Attack & Damage Breakdown Localization:**
+  - Standardized all remaining German labels across `SequenceBuilder.js`, `ModifierCalculator.js`, `AttackContext.js`, and `AttackEngine.js` to pure English (*Base Attack Bonus*, *STR/DEX Modifier*, *Main Hand Attack*, *Off-Hand Attack*, *Haste Bonus Attack*, *Rapid Shot Extra Attack*, *Flurry of Blows Penalty*, *Two-Weapon Fighting Penalty*, *Power Attack*, *Combat Expertise*, *Ranged (Crossbow: no STR)*, *STR Penalty*, *Smite Evil*).
+- **Character Creation Wizard QoL:** Clarified optional status of Alternate Class Features in the Wizard tab header (`(0 selected - optional)` with instructional banner).
+
 ## [6.7.0] - 2026-09-09
 
 ### Added
