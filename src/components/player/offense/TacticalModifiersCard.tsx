@@ -44,7 +44,7 @@ export const TacticalModifiersCard: React.FC<TacticalModifiersCardProps> = ({ pc
     e.preventDefault();
     e.stopPropagation();
     showCustomAlert(
-      "Power Attack (Heftiger Angriff)",
+      "Power Attack",
       `<div style="text-align: left; font-family: var(--font-body); font-size: 11px;">
         <p><strong>Concept:</strong> Trade offensive accuracy for devastating blow damage.</p>
         <p><strong>Rule (D&D 3.5 RAW):</strong> On your action, before making attack rolls for a round, you may choose to subtract a number from all melee attack rolls and add the same number to all melee damage rolls.</p>

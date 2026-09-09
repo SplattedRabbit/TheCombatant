@@ -22,7 +22,7 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '10px' }}>
       <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
-        Talentslots:
+        Feat Slots:
       </span>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
         {currentFeatSlots.map((slot, slotIdx) => {

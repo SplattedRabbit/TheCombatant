@@ -74,7 +74,7 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
               boxSizing: 'border-box'
             }}
           >
-            <option value="">-- Keine / Flexibel --</option>
+            <option value="">-- None / Flexible --</option>
             {CLASSES_LIST.filter(c => c.isPrestige).map(c => (
               <option key={c.key} value={c.key}>{c.name}</option>
             ))}
@@ -84,7 +84,7 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
         {/* Alignment Dropdowns */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
           <label style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
-            Alignment (Gesinnung)
+            Alignment
           </label>
           <div style={{ display: 'flex', gap: '8px' }}>
             <select
