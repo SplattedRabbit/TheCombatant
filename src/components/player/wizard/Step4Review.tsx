@@ -85,6 +85,21 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
             <div>
               <strong>Base Attack Bonus (BAB):</strong> +{isTargetLevelSet && currentDraft && currentDraft.babVal}
             </div>
+            {hasWizard && (
+              <div style={{ marginTop: '4px', paddingTop: '4px', borderTop: '0.5px dashed rgba(200,169,110,0.4)' }}>
+                <strong>Wizard Specialization:</strong>{' '}
+                <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>
+                  {currentDraft?.wizardSpecialization && currentDraft.wizardSpecialization !== 'none'
+                    ? currentDraft.wizardSpecialization.charAt(0).toUpperCase() + currentDraft.wizardSpecialization.slice(1)
+                    : 'Universalist'}
+                </span>
+                {currentDraft?.wizardSpecialization && currentDraft.wizardSpecialization !== 'none' && (
+                  <div style={{ fontSize: '11px', color: '#8b1a1a', marginTop: '2px' }}>
+                    Prohibited Schools: {[currentDraft.wizardProhibited1, currentDraft.wizardSpecialization !== 'div' ? currentDraft.wizardProhibited2 : null].filter(Boolean).map(s => s.toUpperCase()).join(', ')}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
 

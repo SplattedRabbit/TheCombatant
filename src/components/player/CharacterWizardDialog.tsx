@@ -25,6 +25,7 @@ import { Step4Review } from './wizard/Step4Review.tsx';
 import { WizardTimeline } from './wizard/WizardTimeline.tsx';
 import { applyWizardCharacterToState } from './wizard/wizardSaveHelper.ts';
 import { CLASSES_LIST, PRESTIGE_PREREQS } from './wizard/constants';
+import { isSpellSelectorClass, getSpellSelectionQuota } from './wizard/spells/spellSelectionRules';
 
 interface CharacterWizardDialogProps {
   onClose: () => void;
@@ -32,6 +33,7 @@ interface CharacterWizardDialogProps {
 
 export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ onClose }) => {
   const [step, setStep] = useState(1);
+  const [isSpellModalOpen, setIsSpellModalOpen] = useState(false);
   
   // Step 1 State
   const [name, setName] = useState('');
@@ -239,6 +241,35 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         return;
       }
 
+      // Mandatory Wizard School Specialization & Prohibited schools check
+      if (currentConfig.classType === 'wizard') {
+        const spec = currentConfig.wizardSpecialization || 'none';
+        if (spec !== 'none') {
+          if (!currentConfig.wizardProhibited1) {
+            showCustomAlert("Prohibited School Required", "Please select your first prohibited school for your Wizard specialization.", "OK", "⚠️");
+            return;
+          }
+          if (spec !== 'div' && !currentConfig.wizardProhibited2) {
+            showCustomAlert("Prohibited School Required", "Please select your second prohibited school for your Wizard specialization.", "OK", "⚠️");
+            return;
+          }
+        }
+      }
+
+      // Check if spell selection is required for this level
+      const isCaster = isSpellSelectorClass(currentConfig.classType);
+      const classCountAtThisLevel = levelConfigs
+        .slice(0, currentLevelIndex + 1)
+        .filter((c) => c.classType === currentConfig.classType).length || 1;
+      const intMod = currentDraft?.statMods?.int ?? 0;
+      const quotaInfo = isCaster ? getSpellSelectionQuota(currentConfig.classType, classCountAtThisLevel, intMod) : null;
+      const currentSpells = currentConfig.spells || [];
+
+      if (quotaInfo && quotaInfo.quota > 0 && currentSpells.length < quotaInfo.quota) {
+        setIsSpellModalOpen(true);
+        return;
+      }
+
       if (currentLevelIndex < targetLevel - 1) {
         setCurrentLevelIndex(currentLevelIndex + 1);
       } else {
@@ -360,6 +391,10 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
             activeFeatSlot={activeFeatSlot}
             filteredFeats={filteredFeats}
             targetPrestigeClass={targetPrestigeClass}
+            isSpellModalOpen={isSpellModalOpen}
+            setIsSpellModalOpen={setIsSpellModalOpen}
+            targetLevel={targetLevel}
+            onConfirmAndAdvance={handleConfirmAndAdvance}
           />
         );
 
@@ -381,6 +416,26 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         return null;
     }
   };
+
+  const handleConfirmAndAdvance = () => {
+    if (currentLevelIndex < targetLevel - 1) {
+      setCurrentLevelIndex(currentLevelIndex + 1);
+    } else {
+      setStep(4);
+    }
+  };
+
+  const isCurrentLevelCaster = isSpellSelectorClass(currentConfig?.classType);
+  const currentLevelClassCount = isCurrentLevelCaster
+    ? levelConfigs.slice(0, currentLevelIndex + 1).filter((c) => c.classType === currentConfig?.classType).length || 1
+    : 1;
+  const currentIntMod = currentDraft?.statMods?.int ?? 0;
+  const currentQuotaInfo = isCurrentLevelCaster
+    ? getSpellSelectionQuota(currentConfig?.classType, currentLevelClassCount, currentIntMod)
+    : null;
+  const currentSelectedSpellsCount = (currentConfig?.spells || []).length;
+  const needsSpellsAtCurrentLevel =
+    currentQuotaInfo && currentQuotaInfo.quota > 0 && currentSelectedSpellsCount < currentQuotaInfo.quota;
 
   return (
     <div 
@@ -453,7 +508,9 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
                   ) ? 0.5 : 1
                 }}
               >
-                {step === 3 && isTargetLevelSet && currentLevelIndex < targetLevel - 1
+                {step === 3 && isTargetLevelSet && needsSpellsAtCurrentLevel
+                  ? `Select Spells for Level ${currentLevelIndex + 1} →`
+                  : step === 3 && isTargetLevelSet && currentLevelIndex < targetLevel - 1
                   ? `Level ${currentLevelIndex + 2} →`
                   : step === 3 && isTargetLevelSet
                   ? 'Review (Step 4) →'

@@ -51,6 +51,16 @@ export function applyWizardCharacterToState(
       freshPC.clericDomains = ['good', 'healing'];
     }
 
+    if (freshPC.classes.some((c: any) => c.classType === 'wizard')) {
+      freshPC.wizardSpecialization = completedDraft.wizardSpecialization || 'none';
+      freshPC.wizardProhibited1 = completedDraft.wizardProhibited1 || '';
+      freshPC.wizardProhibited2 = completedDraft.wizardProhibited2 || '';
+    } else {
+      freshPC.wizardSpecialization = 'none';
+      freshPC.wizardProhibited1 = '';
+      freshPC.wizardProhibited2 = '';
+    }
+
     const conMod = completedDraft.statMods.con;
     let calculatedMaxHP = 0;
     levelConfigs.forEach(cfg => {

@@ -11,6 +11,8 @@ export interface SpellSelectionModalProps {
   currentDraft: any;
   updateLevelConfig: (idx: number, key: string, val: any) => void;
   allLevelConfigs: any[];
+  targetLevel?: number;
+  onConfirmAndAdvance?: () => void;
 }
 
 export const SpellSelectionModal: React.FC<SpellSelectionModalProps> = ({
@@ -21,6 +23,8 @@ export const SpellSelectionModal: React.FC<SpellSelectionModalProps> = ({
   currentDraft,
   updateLevelConfig,
   allLevelConfigs,
+  targetLevel = 1,
+  onConfirmAndAdvance,
 }) => {
   if (!isOpen) return null;
 
@@ -221,6 +225,27 @@ export const SpellSelectionModal: React.FC<SpellSelectionModalProps> = ({
             type="button"
             onClick={onClose}
             style={{
+              padding: '5px 14px',
+              fontFamily: 'var(--font-title)',
+              fontSize: '11px',
+              background: 'rgba(0,0,0,0.06)',
+              color: 'var(--inkm)',
+              border: '1px solid var(--pb)',
+              borderRadius: '2px',
+              cursor: 'pointer',
+            }}
+          >
+            Close (Finish Later)
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              onClose();
+              if (onConfirmAndAdvance) {
+                onConfirmAndAdvance();
+              }
+            }}
+            style={{
               padding: '5px 18px',
               fontFamily: 'var(--font-title)',
               fontSize: '11px',
@@ -232,7 +257,11 @@ export const SpellSelectionModal: React.FC<SpellSelectionModalProps> = ({
               cursor: 'pointer',
             }}
           >
-            {isQuotaReached ? '✓ Done & Confirm Selection' : 'Close (Finish Later)'}
+            {isQuotaReached
+              ? currentLevelIndex < targetLevel - 1
+                ? `✓ Confirm & Next Level (${currentLevelIndex + 2}) →`
+                : '✓ Confirm & Review (Step 4) →'
+              : 'Save Selection'}
           </button>
         </div>
       </div>

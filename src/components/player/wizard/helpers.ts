@@ -171,6 +171,19 @@ export const getDraftPCState = (
     }
   }
 
+  // Wizard School Specialization & Prohibited Schools up to lvlIdx
+  let wizardSpecialization = 'none';
+  let wizardProhibited1 = '';
+  let wizardProhibited2 = '';
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg) {
+      if (cfg.wizardSpecialization !== undefined) wizardSpecialization = cfg.wizardSpecialization;
+      if (cfg.wizardProhibited1 !== undefined) wizardProhibited1 = cfg.wizardProhibited1;
+      if (cfg.wizardProhibited2 !== undefined) wizardProhibited2 = cfg.wizardProhibited2;
+    }
+  }
+
   const draftPC = {
     race: selectedRace,
     isHuman: selectedRace === 'human',
@@ -195,6 +208,9 @@ export const getDraftPCState = (
     hasSkillTrick: (trickKey: string) => skillTricksList.some(t => (typeof t === 'object' ? t.id === trickKey : t === trickKey)),
     prestigeSpellLinks,
     prestigeSpecialTextConfirmed,
+    wizardSpecialization,
+    wizardProhibited1,
+    wizardProhibited2,
     getSneakAttackDiceCount: () => {
       const rogueClass = classesList.find(c => c.classType === 'rogue');
       const rogueCount = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
@@ -215,7 +231,10 @@ export const getDraftPCState = (
     babVal,
     featsList,
     skillsAcc,
-    draftPC
+    draftPC,
+    wizardSpecialization,
+    wizardProhibited1,
+    wizardProhibited2
   };
 };
 
@@ -340,6 +359,19 @@ export const getCompletedDraftPCState = (
     }
   }
 
+  // Wizard School Specialization & Prohibited Schools up to lvlIdx
+  let wizardSpecialization = 'none';
+  let wizardProhibited1 = '';
+  let wizardProhibited2 = '';
+  for (let i = 0; i <= lvlIdx; i++) {
+    const cfg = levelConfigs[i];
+    if (cfg) {
+      if (cfg.wizardSpecialization !== undefined) wizardSpecialization = cfg.wizardSpecialization;
+      if (cfg.wizardProhibited1 !== undefined) wizardProhibited1 = cfg.wizardProhibited1;
+      if (cfg.wizardProhibited2 !== undefined) wizardProhibited2 = cfg.wizardProhibited2;
+    }
+  }
+
   const draftPC = {
     race: selectedRace,
     isHuman: selectedRace === 'human',
@@ -364,6 +396,9 @@ export const getCompletedDraftPCState = (
     hasSkillTrick: (trickKey: string) => skillTricksList.some(t => (typeof t === 'object' ? t.id === trickKey : t === trickKey)),
     prestigeSpellLinks,
     prestigeSpecialTextConfirmed,
+    wizardSpecialization,
+    wizardProhibited1,
+    wizardProhibited2,
     getSneakAttackDiceCount: () => {
       const rogueClass = classesList.find(c => c.classType === 'rogue');
       const rogueCount = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
@@ -386,7 +421,10 @@ export const getCompletedDraftPCState = (
     allSkills: skillsAcc,
     skillTricksList,
     allSkillTricks: skillTricksList,
-    draftPC
+    draftPC,
+    wizardSpecialization,
+    wizardProhibited1,
+    wizardProhibited2
   };
 };
 

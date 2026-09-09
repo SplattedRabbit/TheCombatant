@@ -11,6 +11,16 @@ import { PrestigeSpellLinkSection } from './PrestigeSpellLinkSection';
 import { SpellSelectionModal } from '../spells/SpellSelectionModal';
 import { isSpellSelectorClass, getSpellSelectionQuota } from '../spells/spellSelectionRules';
 
+const PROHIBITED_SCHOOLS = [
+  { value: 'abj', label: 'Abjuration' },
+  { value: 'con', label: 'Conjuration' },
+  { value: 'enc', label: 'Enchantment' },
+  { value: 'evo', label: 'Evocation' },
+  { value: 'ill', label: 'Illusion' },
+  { value: 'nec', label: 'Necromancy' },
+  { value: 'tra', label: 'Transmutation' },
+];
+
 export interface LevelHeaderAndStatsProps {
   currentLevelIndex: number;
   currentConfig: any;
@@ -20,6 +30,10 @@ export interface LevelHeaderAndStatsProps {
   getClassHitDie: (cls: string) => number;
   updateLevelConfig: (idx: number, key: string, val: any) => void;
   allLevelConfigs?: any[];
+  isSpellModalOpen?: boolean;
+  setIsSpellModalOpen?: (open: boolean) => void;
+  targetLevel?: number;
+  onConfirmAndAdvance?: () => void;
 }
 
 export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
@@ -31,12 +45,33 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
   getClassHitDie,
   updateLevelConfig,
   allLevelConfigs = [],
+  isSpellModalOpen: externalIsSpellModalOpen,
+  setIsSpellModalOpen: externalSetIsSpellModalOpen,
+  targetLevel = 1,
+  onConfirmAndAdvance,
 }) => {
   const [sourceTab, setSourceTab] = React.useState<'all' | 'phb' | 'phb2' | 'ca' | 'prestige'>('all');
-  const [isSpellModalOpen, setIsSpellModalOpen] = useState(false);
+  const [localIsSpellModalOpen, setLocalIsSpellModalOpen] = useState(false);
+
+  const isSpellModalOpen = externalIsSpellModalOpen !== undefined ? externalIsSpellModalOpen : localIsSpellModalOpen;
+  const setIsSpellModalOpen = externalSetIsSpellModalOpen || setLocalIsSpellModalOpen;
 
   const classType = currentConfig.classType || '';
   const isSpellSelector = isSpellSelectorClass(classType);
+
+  // Auto-sync Wizard school specialization across Wizard levels
+  React.useEffect(() => {
+    if (currentConfig?.classType === 'wizard') {
+      const firstWizardConfig = allLevelConfigs.find(
+        (c) => c.classType === 'wizard' && c.wizardSpecialization !== undefined
+      );
+      if (firstWizardConfig && currentConfig.wizardSpecialization === undefined) {
+        updateLevelConfig(currentLevelIndex, 'wizardSpecialization', firstWizardConfig.wizardSpecialization);
+        updateLevelConfig(currentLevelIndex, 'wizardProhibited1', firstWizardConfig.wizardProhibited1 || '');
+        updateLevelConfig(currentLevelIndex, 'wizardProhibited2', firstWizardConfig.wizardProhibited2 || '');
+      }
+    }
+  }, [currentConfig?.classType, currentLevelIndex, allLevelConfigs]);
 
   const classCountAtThisLevel = allLevelConfigs
     .slice(0, currentLevelIndex + 1)
@@ -291,6 +326,122 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
         updateLevelConfig={updateLevelConfig}
       />
 
+      {/* Wizard School Specialization (Mandatory on Level 1 / Wizard builds) */}
+      {currentConfig.classType === 'wizard' && (
+        <div
+          style={{
+            padding: '8px 10px',
+            borderRadius: '3px',
+            border: '1px solid var(--pb)',
+            background: 'rgba(200, 169, 110, 0.08)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px',
+            marginTop: '2px',
+            boxSizing: 'border-box',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
+              🎭 Wizard School Specialization
+            </span>
+            <span style={{ fontSize: '8.5px', color: 'var(--inkm)' }}>
+              {currentConfig.wizardSpecialization && currentConfig.wizardSpecialization !== 'none'
+                ? '+1 Slot/Lvl (Specialist)'
+                : 'Universalist'}
+            </span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '10px' }}>
+            <span style={{ fontWeight: 'bold' }}>School:</span>
+            <select
+              value={currentConfig.wizardSpecialization || 'none'}
+              onChange={(e) => {
+                const newSpec = e.target.value;
+                updateLevelConfig(currentLevelIndex, 'wizardSpecialization', newSpec);
+                if (newSpec === 'none') {
+                  updateLevelConfig(currentLevelIndex, 'wizardProhibited1', '');
+                  updateLevelConfig(currentLevelIndex, 'wizardProhibited2', '');
+                } else if (newSpec === 'div') {
+                  updateLevelConfig(currentLevelIndex, 'wizardProhibited2', '');
+                }
+              }}
+              className="cinput"
+              style={{ width: '170px', fontSize: '10px', height: '22px', padding: '0 4px', boxSizing: 'border-box' }}
+            >
+              <option value="none">Universal (No School)</option>
+              <option value="abj">Abjuration</option>
+              <option value="con">Conjuration</option>
+              <option value="div">Divination (1 Prohibited School)</option>
+              <option value="enc">Enchantment</option>
+              <option value="evo">Evocation</option>
+              <option value="ill">Illusion</option>
+              <option value="nec">Necromancy</option>
+              <option value="tra">Transmutation</option>
+            </select>
+          </div>
+
+          {currentConfig.wizardSpecialization && currentConfig.wizardSpecialization !== 'none' && (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '5px',
+                background: 'rgba(139, 26, 26, 0.05)',
+                border: '0.5px solid rgba(139, 26, 26, 0.25)',
+                borderRadius: '2px',
+                padding: '6px 8px',
+                marginTop: '2px',
+              }}
+            >
+              <div style={{ fontSize: '9px', color: 'var(--red)', fontWeight: 'bold' }}>
+                ⚠️ Prohibited Schools (Cannot cast or learn spells from these schools):
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '9.5px' }}>
+                <span>Prohibited School 1:</span>
+                <select
+                  value={currentConfig.wizardProhibited1 || ''}
+                  onChange={(e) => updateLevelConfig(currentLevelIndex, 'wizardProhibited1', e.target.value)}
+                  className="cinput"
+                  style={{ width: '150px', fontSize: '9.5px', height: '20px', padding: '0 4px', boxSizing: 'border-box' }}
+                >
+                  <option value="">-- Select Required --</option>
+                  {PROHIBITED_SCHOOLS
+                    .filter((s) => s.value !== currentConfig.wizardSpecialization)
+                    .map((s) => (
+                      <option key={s.value} value={s.value} disabled={s.value === currentConfig.wizardProhibited2}>
+                        {s.label}
+                      </option>
+                    ))}
+                </select>
+              </div>
+
+              {currentConfig.wizardSpecialization !== 'div' && (
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '9.5px' }}>
+                  <span>Prohibited School 2:</span>
+                  <select
+                    value={currentConfig.wizardProhibited2 || ''}
+                    onChange={(e) => updateLevelConfig(currentLevelIndex, 'wizardProhibited2', e.target.value)}
+                    className="cinput"
+                    style={{ width: '150px', fontSize: '9.5px', height: '20px', padding: '0 4px', boxSizing: 'border-box' }}
+                  >
+                    <option value="">-- Select Required --</option>
+                    {PROHIBITED_SCHOOLS
+                      .filter((s) => s.value !== currentConfig.wizardSpecialization)
+                      .map((s) => (
+                        <option key={s.value} value={s.value} disabled={s.value === currentConfig.wizardProhibited1}>
+                          {s.label}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Conditional Spell Selection Trigger for Spellcasting Classes */}
       {isSpellSelector && quotaInfo && (
         <div
@@ -464,6 +615,8 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
           currentDraft={currentDraft}
           updateLevelConfig={updateLevelConfig}
           allLevelConfigs={allLevelConfigs}
+          targetLevel={targetLevel}
+          onConfirmAndAdvance={onConfirmAndAdvance}
         />
       )}
     </div>
