@@ -130,6 +130,31 @@ export const ACFsTabContent: React.FC<ACFsTabContentProps> = ({
             </select>
           </div>
 
+          {/* Educational Info Banner */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '8px',
+              background: 'rgba(200, 169, 110, 0.12)',
+              border: '1px solid var(--pb)',
+              borderRadius: '4px',
+              padding: '6px 10px',
+              fontSize: '9.5px',
+              color: 'var(--inkm)',
+              lineHeight: 1.35,
+            }}
+          >
+            <span style={{ fontSize: '13px', lineHeight: 1 }}>💡</span>
+            <div>
+              <strong style={{ color: 'var(--ink)' }}>Optional Class Substitutions:</strong>{' '}
+              Alternative Class Features (ACFs) allow you to swap standard class abilities for specialized options. You do not need to select any ACF to proceed with your standard class progression.
+              <div style={{ marginTop: '2px', fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic' }}>
+                Active on this character: <strong>{allSelectedACFs.length}</strong> | Available for your class: <strong>{filteredACFs.length}</strong>
+              </div>
+            </div>
+          </div>
+
           {/* ACFs List */}
           <div
             style={{

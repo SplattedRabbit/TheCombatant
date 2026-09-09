@@ -346,16 +346,17 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
                 background: activeTab === 'acfs' ? 'rgba(139, 26, 26, 0.08)' : 'transparent',
                 border: 'none',
                 borderBottom: activeTab === 'acfs' ? '2px solid var(--red)' : '2px solid transparent',
-                color: activeTab === 'acfs' ? 'var(--red)' : 'var(--inkm)',
-                fontWeight: activeTab === 'acfs' ? 'bold' : 'normal',
+                color: activeTab === 'acfs' ? 'var(--red)' : (currentConfig.acfs?.length ? 'var(--red)' : 'var(--inkm)'),
+                fontWeight: activeTab === 'acfs' || currentConfig.acfs?.length ? 'bold' : 'normal',
                 fontSize: '11.5px',
                 cursor: 'pointer',
                 fontFamily: 'var(--font-title)',
                 boxSizing: 'border-box',
                 whiteSpace: 'nowrap',
               }}
+              title="Alternative Class Features (ACFs) - Optional substitutions for standard class features."
             >
-              ⚡ ACFs ({currentConfig.acfs?.length || 0})
+              ⚡ ACFs ({currentConfig.acfs?.length ? `${currentConfig.acfs.length} active` : 'Optional'})
             </button>
           </div>
 
