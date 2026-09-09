@@ -3,9 +3,9 @@
  * @summary   Resolves stacked and cumulative D&D 3.5e mechanics across multiple classes (Sneak Attack, Smite, Turn Undead, Lay on Hands).
  */
 
-import { PRESTIGE_CLASSES_REGISTRY } from '@core/data/prestigeClasses-data.js';
-import { getSneakAttackDiceFromPrestigeClasses } from '@core/rules/prestigeClassEngine.js';
-import { RogueRules } from '@core/rules/classes/RogueRules.js';
+import { PRESTIGE_CLASSES_REGISTRY } from '../../../../../js/data/prestigeClasses-data.js';
+import { getSneakAttackDiceFromPrestigeClasses } from '../../../../../js/rules/prestigeClassEngine.js';
+import { RogueRules } from '../../../../../js/rules/classes/RogueRules.js';
 import type { UnifiedFeature } from './types.ts';
 import { formatClassName } from './formatters.ts';
 

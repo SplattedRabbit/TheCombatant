@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dnd-combatsheet-v6.0.0-cache-v289';
+const CACHE_NAME = 'dnd-combatsheet-v6.0.0-cache-v291';
 const ASSETS = [
   './dist/assets/app-core-BWFkwDwa.css',
   './dist/assets/app-core-DrcxTbRj.js',

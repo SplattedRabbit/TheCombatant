@@ -14,8 +14,8 @@ import { getCSPrestigeFeatures } from './prestige/csPrestige.ts';
 import { getDMGPrestigeFeatures } from './prestige/dmgPrestige.ts';
 import { getCAPrestigeFeatures } from './prestige/caPrestige.ts';
 import { getRacialTraits } from './races/racialTraits.ts';
-import { PRESTIGE_CLASSES_REGISTRY } from '@core/data/prestigeClasses-data.js';
-import { getPrestigeClassFeatures } from '@core/rules/prestigeClassEngine.js';
+import { PRESTIGE_CLASSES_REGISTRY } from '../../../../../js/data/prestigeClasses-data.js';
+import { getPrestigeClassFeatures } from '../../../../../js/rules/prestigeClassEngine.js';
 
 export * from './types.ts';
 export * from './formatters.ts';

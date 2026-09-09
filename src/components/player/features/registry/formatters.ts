@@ -3,8 +3,8 @@
  * @summary   Formatting helpers for class names, modifiers, and features in the UI.
  */
 
-import { CLASSES } from '@core/rules/RulesData.js';
-import { PRESTIGE_CLASSES_REGISTRY } from '@core/data/prestigeClasses-data.js';
+import { CLASSES } from '../../../../../js/rules/RulesData.js';
+import { PRESTIGE_CLASSES_REGISTRY } from '../../../../../js/data/prestigeClasses-data.js';
 
 /**
  * Converts a raw class key (e.g. 'spellwarp_sniper', 'dragon_disciple') into its official display name.

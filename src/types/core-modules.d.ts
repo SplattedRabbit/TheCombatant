@@ -309,3 +309,33 @@ declare module '*js/ui/components/dialogs.js' {
   export const showSpellDetailsDialog: (...args: any[]) => void;
   export const showSpellCreatorWizard: (...args: any[]) => void;
 }
+
+declare module '*js/data/domains-data.js' {
+  export const DOMAINS_REGISTRY: Record<string, any>;
+}
+
+declare module '*js/data/prestigeClasses-data.js' {
+  export const PRESTIGE_CLASSES: any;
+  export const PRESTIGE_CLASSES_REGISTRY: Record<string, any>;
+}
+
+declare module '*js/rules/RulesData.js' {
+  export const CONDITIONS: any[];
+  export const CLASSES: any[];
+  export const CLASSES_LIST: any[];
+  export const CLASS_SKILLS: Record<string, string[]>;
+  export const CLASS_PROFILES: Record<string, any>;
+  export const CLASS_BASE_SKILLS: Record<string, number>;
+}
+
+declare module '*js/rules/prestigeClassEngine.js' {
+  export const PrestigeClassEngine: any;
+  export const getPrestigeClassFeatures: (pc: any, classKey: string) => Record<string, any>;
+  export const getAblMod: (stat: any) => number;
+  export const getSneakAttackDiceFromPrestigeClasses: (pc: any) => number;
+}
+
+declare module '*js/rules/classes/RogueRules.js' {
+  export const RogueRules: any;
+}
+
