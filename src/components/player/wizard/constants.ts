@@ -360,13 +360,13 @@ export const CLASSES_LIST = [
   { key: 'scout',         name: 'Scout',          hd:  8, skillBase: 8, source: 'ca',   desc: 'Skirmish damage on movement, Battle Fortitude.' },
   { key: 'spellthief',    name: 'Spellthief',     hd:  6, skillBase: 6, source: 'ca',   desc: 'Steals spells and magical buffs via Sneak Attack.' },
   // ── Prestige Classes ─────────────────────────────────────────────────
-  { key: 'mystic_theurge',  name: 'Mystic Theurge',  hd: 4,  skillBase: 2, source: 'phb', desc: 'Master of both arcane and divine magic.',                             isPrestige: true },
-  { key: 'arcane_trickster',name: 'Arcane Trickster', hd: 4,  skillBase: 4, source: 'phb', desc: 'Combines magic with rogue abilities.',                                isPrestige: true },
-  { key: 'dragon_disciple', name: 'Dragon Disciple',  hd: 12, skillBase: 2, source: 'phb', desc: 'Awakens draconic blood for physical power.',                          isPrestige: true },
-  { key: 'assassin',        name: 'Assassin',         hd: 6,  skillBase: 4, source: 'phb', desc: 'Master of stealth, anatomy, and lethal strikes.',                     isPrestige: true },
-  { key: 'battle_trickster',name: 'Battle Trickster',  hd: 10, skillBase: 4, source: 'cs',  desc: 'A master of martial prowess combined with tricky tactics.',           isPrestige: true },
-  { key: 'spellwarp_sniper',name: 'Spellwarp Sniper',  hd: 6,  skillBase: 4, source: 'cs',  desc: 'Transforms area-of-effect spells into precise, deadly ray spells.', isPrestige: true },
-  { key: 'shadowbane_inquisitor', name: 'Shadowbane Inquisitor', hd: 10, skillBase: 4, source: 'ca', desc: 'Righteous inquisitor purging evil with holy light, smite, and stealth.', isPrestige: true },
+  { key: 'mystic_theurge',  name: 'Mystic Theurge',  hd: 4,  skillBase: 2, source: 'phb', maxLevel: 10, desc: 'Master of both arcane and divine magic.',                             isPrestige: true },
+  { key: 'arcane_trickster',name: 'Arcane Trickster', hd: 4,  skillBase: 4, source: 'phb', maxLevel: 10, desc: 'Combines magic with rogue abilities.',                                isPrestige: true },
+  { key: 'dragon_disciple', name: 'Dragon Disciple',  hd: 12, skillBase: 2, source: 'phb', maxLevel: 10, desc: 'Awakens draconic blood for physical power.',                          isPrestige: true },
+  { key: 'assassin',        name: 'Assassin',         hd: 6,  skillBase: 4, source: 'phb', maxLevel: 10, desc: 'Master of stealth, anatomy, and lethal strikes.',                     isPrestige: true },
+  { key: 'battle_trickster',name: 'Battle Trickster',  hd: 10, skillBase: 4, source: 'cs',  maxLevel: 3,  desc: 'A master of martial prowess combined with tricky tactics (Max Lv.3).', isPrestige: true },
+  { key: 'spellwarp_sniper',name: 'Spellwarp Sniper',  hd: 6,  skillBase: 4, source: 'cs',  maxLevel: 5,  desc: 'Transforms area spells into rays with pinpoint accuracy (Max Lv.5).', isPrestige: true },
+  { key: 'shadowbane_inquisitor', name: 'Shadowbane Inquisitor', hd: 10, skillBase: 4, source: 'ca', maxLevel: 10, desc: 'Righteous inquisitor purging evil with holy light, smite, and stealth.', isPrestige: true },
 ];
 
 

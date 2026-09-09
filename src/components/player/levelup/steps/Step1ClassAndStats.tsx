@@ -74,35 +74,49 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
     const clsDef = CLASSES_LIST.find((c) => c.key === newClsKey);
     if (!clsDef) return;
 
-    if (clsDef.isPrestige && currentDraft?.draftPC) {
-      const validation = validatePrestigeClassPrereqs(currentDraft.draftPC, newClsKey);
-      if (!validation.success) {
-        const lines = (validation.metDetails || [])
-          .map((req: any) => {
-            const color = req.met ? '#2e7d32' : '#d32f2f';
-            return `<div style="color: ${color}; margin-bottom: 8px;"><strong>${req.label}</strong><br/>[Current: ${req.current} / Required: ${req.required}]</div>`;
-          })
-          .join('');
-
-        if (isOnlySpecialTextUnmet(validation)) {
-          showCustomConfirm(
-            `Prerequisites for ${(clsDef as any).name || (clsDef as any).nameEn || (clsDef as any).nameDe || clsDef.key}`,
-            `<div style="text-align: left; max-height: 250px; overflow-y: auto;"><p style="margin-bottom: 10px; color: var(--ink);">Prerequisites are met except for special condition:</p>${lines}<p style="margin-top: 10px; color: var(--ink);">Do you confirm this condition is met?</p></div>`,
-            () => {
-              updateLevelConfig(currentLevelIndex, 'classType', newClsKey);
-              const hdVal = (clsDef as any).hd || (clsDef as any).hitDie || 8;
-              updateLevelConfig(currentLevelIndex, 'hpRoll', Math.ceil(hdVal / 2) + 1);
-            }
-          );
-        } else {
-          showCustomAlert(
-            `Prerequisites for ${(clsDef as any).name || (clsDef as any).nameEn || (clsDef as any).nameDe || clsDef.key}`,
-            `<div style="text-align: left; max-height: 250px; overflow-y: auto;"><p style="margin-bottom: 10px; color: var(--ink);">You do not yet meet the prerequisites for this prestige class:</p>${lines}</div>`,
-            'OK',
-            '🔒'
-          );
-        }
+    if (clsDef.isPrestige) {
+      const currentClassLevel = (initialDraft?.draftPC?.classes || []).find((c: any) => c.classType === newClsKey)?.level || 0;
+      const maxAllowedLevel = (clsDef as any).maxLevel;
+      if (maxAllowedLevel && currentClassLevel >= maxAllowedLevel) {
+        showCustomAlert(
+          `Class Level Cap: ${(clsDef as any).name || clsDef.key}`,
+          `<div style="text-align: left;"><p style="color: var(--ink);">This prestige class has a maximum progression of <strong>${maxAllowedLevel} levels</strong> (currently level ${currentClassLevel}). You cannot gain further levels in this class.</p></div>`,
+          'OK',
+          '⚠️'
+        );
         return;
+      }
+
+      if (currentDraft?.draftPC) {
+        const validation = validatePrestigeClassPrereqs(currentDraft.draftPC, newClsKey);
+        if (!validation.success) {
+          const lines = (validation.metDetails || [])
+            .map((req: any) => {
+              const color = req.met ? '#2e7d32' : '#d32f2f';
+              return `<div style="color: ${color}; margin-bottom: 8px;"><strong>${req.label}</strong><br/>[Current: ${req.current} / Required: ${req.required}]</div>`;
+            })
+            .join('');
+
+          if (isOnlySpecialTextUnmet(validation)) {
+            showCustomConfirm(
+              `Prerequisites for ${(clsDef as any).name || (clsDef as any).nameEn || (clsDef as any).nameDe || clsDef.key}`,
+              `<div style="text-align: left; max-height: 250px; overflow-y: auto;"><p style="margin-bottom: 10px; color: var(--ink);">Prerequisites are met except for special condition:</p>${lines}<p style="margin-top: 10px; color: var(--ink);">Do you confirm this condition is met?</p></div>`,
+              () => {
+                updateLevelConfig(currentLevelIndex, 'classType', newClsKey);
+                const hdVal = (clsDef as any).hd || (clsDef as any).hitDie || 8;
+                updateLevelConfig(currentLevelIndex, 'hpRoll', Math.ceil(hdVal / 2) + 1);
+              }
+            );
+          } else {
+            showCustomAlert(
+              `Prerequisites for ${(clsDef as any).name || (clsDef as any).nameEn || (clsDef as any).nameDe || clsDef.key}`,
+              `<div style="text-align: left; max-height: 250px; overflow-y: auto;"><p style="margin-bottom: 10px; color: var(--ink);">You do not yet meet the prerequisites for this prestige class:</p>${lines}</div>`,
+              'OK',
+              '🔒'
+            );
+          }
+          return;
+        }
       }
     }
 
