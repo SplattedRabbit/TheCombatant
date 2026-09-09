@@ -180,28 +180,58 @@ At 3rd level (Bulwark of Defense), an opponent that begins its turn in your thre
   if (classMap.has('dragon_shaman')) {
     const dsLvl = classMap.get('dragon_shaman')!;
     const auraBonus = 1 + Math.floor((dsLvl - 1) / 5);
+    const aurasKnown = dsLvl >= 9 ? 7 : (dsLvl >= 7 ? 6 : (dsLvl >= 5 ? 5 : (dsLvl >= 3 ? 4 : 3)));
 
-    // 1. Draconic Auras
+    // 1. Draconic Auras (1st+)
     features.push({
       id: 'dragon_shaman_auras',
-      name: `Draconic Auras (+${auraBonus} Aura Bonus)`,
+      name: `Draconic Auras (+${auraBonus} Bonus • ${aurasKnown} Auras Known)`,
       source: `Dragon Shaman Lv.${dsLvl}`,
       category: 'aura',
-      typeLabel: 'Party Aura (30 ft)',
-      summary: `Project a draconic aura granting +${auraBonus} to all allies within 30 ft (Vigor: Fast Healing up to 50% HP, Energy Shield, Power, Presence, Resistance, Senses, Toughness).`,
-      rawRules: `A dragon shaman can project a draconic aura granting yourself and all allies within 30 feet a special benefit (+${auraBonus} bonus):
+      typeLabel: dsLvl >= 20 ? 'Dual Party Aura (30 ft)' : 'Party Aura (30 ft)',
+      summary: `Project a draconic aura granting +${auraBonus} to all allies within 30 ft (Vigor: Fast Healing up to 50% HP, Energy Shield, Power, Presence, Resistance, Senses, Toughness).${dsLvl >= 20 ? ' (Communal Dragon: 2 Auras simultaneously active!)' : ''}`,
+      rawRules: `A dragon shaman can project a draconic aura granting yourself and all allies within 30 feet a special benefit (+${auraBonus} bonus, ${aurasKnown} auras known):
 • Vigor: Fast Healing ${auraBonus} to allies below one-half maximum hit points.
 • Energy Shield: Deal ${2 * auraBonus} elemental damage to attackers who strike with melee or natural weapons.
 • Power: +${auraBonus} bonus on melee damage rolls.
 • Presence: +${auraBonus} bonus on Bluff, Diplomacy, and Intimidate checks.
 • Resistance: Energy resistance ${5 * auraBonus} against totem energy.
 • Senses: +${auraBonus} bonus on Listen, Spot, and Initiative checks.
-• Toughness: Damage Reduction ${auraBonus}/magic.`,
+• Toughness: Damage Reduction ${auraBonus}/magic.${dsLvl >= 20 ? '\n\n• Communal Dragon: At 20th level, you can project two draconic auras simultaneously.' : ''}`,
       actionType: 'Swift Action',
       range: '30 ft emanation',
     });
 
-    // 2. Breath Weapon (4th+)
+    // 2. Draconic Adaptation (3rd+ & 13th+)
+    if (dsLvl >= 3) {
+      features.push({
+        id: 'dragon_shaman_draconic_adaptation',
+        name: dsLvl >= 13 ? 'Draconic Adaptation (Shared with Allies)' : 'Draconic Adaptation',
+        source: `Dragon Shaman Lv.${dsLvl}`,
+        category: 'passive',
+        typeLabel: 'Draconic Quality',
+        summary: `Gain your totem dragon's innate environmental adaptation.${dsLvl >= 13 ? ' (At 13th level, you can share this adaptation with allies within 30 ft as a swift action).' : ''}`,
+        rawRules: `At 3rd level, you gain a special draconic adaptation based on your chosen totem dragon (e.g. water breathing, climb speed, burrow speed, or swimming).
+${dsLvl >= 13 ? 'At 13th level, as a swift action you can share this adaptation with all allies within 30 feet for a number of rounds equal to your Charisma modifier.' : ''}`,
+        actionType: dsLvl >= 13 ? 'Swift Action' : 'Passive',
+      });
+    }
+
+    // 3. Draconic Resolve (4th+)
+    if (dsLvl >= 4) {
+      features.push({
+        id: 'dragon_shaman_draconic_resolve',
+        name: 'Draconic Resolve (Immunities)',
+        source: `Dragon Shaman Lv.${dsLvl}`,
+        category: 'passive',
+        typeLabel: 'Condition Immunities',
+        summary: `Immunity to sleep, paralysis, and the frightful presence of dragons.`,
+        rawRules: `At 4th level, you become immune to paralysis and sleep effects. You are also immune to the frightful presence of dragons.`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 4. Breath Weapon (4th+)
     if (dsLvl >= 4) {
       const breathDice = `${Math.floor(dsLvl / 2)}d6`;
       const conScore = typeof pc.con?.getValue === 'function' ? pc.con.getValue() : (pc.con || 10);
@@ -221,7 +251,7 @@ At 3rd level (Bulwark of Defense), an opponent that begins its turn in your thre
       });
     }
 
-    // 3. Touch of Vitality (5th+) & Draconic Resolve (4th+)
+    // 5. Touch of Vitality (5th+)
     if (dsLvl >= 5) {
       const healPool = 2 * dsLvl;
       features.push({
@@ -231,11 +261,55 @@ At 3rd level (Bulwark of Defense), an opponent that begins its turn in your thre
         category: 'daily',
         typeLabel: 'Healing Pool',
         summary: `Heal living creatures by touch up to ${healPool} HP per day, or spend healing points to cure conditions (paralysis, poison, disease, blind).`,
-        rawRules: `At 5th level, you can heal the wounds of living creatures by touch. Each day you can heal a total number of hit points equal to twice your dragon shaman level (${healPool} HP). You can also spend pool points to cure conditions (e.g., 5 HP to remove fatigued/dazed/sickened; 10 HP to remove diseased/exhausted/poisoned/stunned).`,
+        rawRules: `At 5th level, you can heal the wounds of living creatures by touch. Each day you can heal a total number of hit points equal to twice your dragon shaman level (${healPool} HP).
+${dsLvl >= 11 ? 'At 11th level, you can spend points from your pool to remove negative conditions: 5 points to cure fatigued/dazed/sickened; 10 points to cure blinded/deafened/diseased/exhausted/poisoned/stunned; 20 points to cure confused/nauseated/paralyzed.' : ''}`,
         actionType: 'Standard Action',
         range: 'Touch',
         interactive: 'counter',
         dailyAbilityKey: 'Touch of Vitality',
+      });
+    }
+
+    // 6. Natural Armor (7th+)
+    if (dsLvl >= 7) {
+      const natBonus = dsLvl >= 17 ? 3 : (dsLvl >= 12 ? 2 : 1);
+      features.push({
+        id: 'dragon_shaman_natural_armor',
+        name: `Natural Armor (+${natBonus} AC)`,
+        source: `Dragon Shaman Lv.${dsLvl}`,
+        category: 'passive',
+        typeLabel: 'Draconic Scales',
+        summary: `Gains a +${natBonus} natural armor bonus to Armor Class as scales harden.`,
+        rawRules: `At 7th level, your skin thickens and takes on a faint draconic sheen, granting you a +1 natural armor bonus to AC. This bonus increases to +2 at 12th level and to +3 at 17th level.`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 7. Energy Immunity (9th+)
+    if (dsLvl >= 9) {
+      features.push({
+        id: 'dragon_shaman_energy_immunity',
+        name: 'Energy Immunity (Totem Energy)',
+        source: `Dragon Shaman Lv.${dsLvl}`,
+        category: 'passive',
+        typeLabel: 'Elemental Immunity',
+        summary: `Complete immunity to your totem dragon's energy type (acid, cold, electricity, or fire).`,
+        rawRules: `At 9th level, you gain immunity to the energy type of your totem dragon's breath weapon.`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 8. Draconic Wings (19th+)
+    if (dsLvl >= 19) {
+      features.push({
+        id: 'dragon_shaman_draconic_wings',
+        name: 'Draconic Wings (Fly Speed)',
+        source: `Dragon Shaman Lv.${dsLvl}`,
+        category: 'passive',
+        typeLabel: 'Flight (Good)',
+        summary: `Grow draconic wings granting a fly speed equal to your base land speed with good maneuverability.`,
+        rawRules: `At 19th level, you sprout a pair of draconic wings. You gain a fly speed equal to your land speed with good maneuverability.`,
+        actionType: 'Passive',
       });
     }
   }
