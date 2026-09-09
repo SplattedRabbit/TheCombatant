@@ -34,20 +34,22 @@ Unlike sneak attack, sudden strike damage cannot be delivered simply by flanking
       range: 'Melee or 30 ft ranged',
     });
 
-    // 2. Ki Power (Ghost Step, Ki Dodge, Ghost Strike)
+    // 2. Ki Power (Ghost Step, Ki Dodge, Ghost Strike, Greater Ghost Step, Greater Ki Dodge, Blindsight)
     features.push({
       id: 'ninja_ki_power',
       name: `Ki Power (${kiUses}/day • Ghost Step / Invisibility)`,
       source: `Ninja Lv.${nLvl}`,
       category: 'daily',
       typeLabel: 'Supernatural Ki Pool',
-      summary: `Spend 1 ki use as a swift action: Ghost Step (become invisible for 1 round)${nLvl >= 6 ? ', Ki Dodge (20% concealment miss chance)' : ''}${nLvl >= 8 ? ', Ghost Strike (strike ethereal creatures)' : ''}${nLvl >= 10 ? ', Greater Ghost Step (become ethereal)' : ''}.`,
-      rawRules: `A ninja can channel her ki to manifest supernatural stealth and evasion abilities ${kiUses} times per day (equal to 1/2 ninja level + Wisdom modifier).
+      summary: `Spend 1 ki use as a swift action: Ghost Step (become invisible for 1 round)${nLvl >= 6 ? ', Ki Dodge (20% concealment miss chance)' : ''}${nLvl >= 8 ? ', Ghost Strike (strike ethereal creatures)' : ''}${nLvl >= 10 ? ', Greater Ghost Step (become ethereal)' : ''}${nLvl >= 14 ? ', Greater Ki Dodge (50% total concealment)' : ''}${nLvl >= 16 ? ', Blindsight 30 ft' : ''}. +2 on Will saves when pool is not empty.`,
+      rawRules: `A ninja can channel her ki to manifest supernatural stealth and evasion abilities ${kiUses} times per day (equal to 1/2 ninja level + Wisdom modifier). As long as the ninja's ki pool is not empty (at least 1 daily use remains), she gains a +2 bonus on Will saves.
 
-• Ghost Step (Swift Action): Become invisible for 1 round.
-• Ki Dodge (6th+): Gain concealment (20% miss chance) for 1 round.
+• Ghost Step (2nd+): Become invisible for 1 round as a swift action.
+• Ki Dodge (6th+): Gain concealment (20% miss chance) for 1 round as a swift action.
 • Ghost Strike (8th+): Attacks pass into the Ethereal Plane, striking incorporeal or ethereal foes with full normal damage.
-• Greater Ghost Step (10th+): Turn ethereal instead of merely invisible for 1 round.`,
+• Greater Ghost Step (10th+): Turn ethereal instead of invisible for 1 round as a swift action.
+• Greater Ki Dodge (14th+): Gain total concealment (50% miss chance) for 1 round as a swift action.
+• Blindsight (16th+): Gain blindsight out to 30 feet for 1 round as a swift action.`,
       actionType: 'Swift Action',
       duration: '1 round per use',
       interactive: 'counter',
@@ -55,18 +57,120 @@ Unlike sneak attack, sudden strike damage cannot be delivered simply by flanking
     });
 
     // 3. AC Bonus & Trapfinding
+    const classAcBonus = Math.floor(nLvl / 5);
     features.push({
       id: 'ninja_ac_trapfinding',
-      name: `Ninja AC Bonus (+${wisMod + Math.floor(nLvl / 6)}) & Trapfinding`,
+      name: `Ninja AC Bonus (+${wisMod + classAcBonus}) & Trapfinding`,
       source: `Ninja Lv.${nLvl}`,
       category: 'passive',
       typeLabel: 'Unarmored Defense',
-      summary: `Adds Wisdom modifier (+${wisMod}) and +${Math.floor(nLvl / 6)} class bonus to AC when unarmored. Can find and disarm magical traps.`,
-      rawRules: `When unarmored and unencumbered, a ninja adds her Wisdom bonus (if any) to her AC. In addition, she gains a +1 bonus to AC at 6th level and every six levels thereafter (+2 at 12th, +3 at 18th level).
+      summary: `Adds Wisdom modifier (+${wisMod}) and +${classAcBonus} class bonus to AC when unarmored and unencumbered. Can find and disarm magical traps.`,
+      rawRules: `When unarmored and unencumbered, a ninja adds her Wisdom bonus (if any) to her AC. In addition, she gains a +1 bonus to AC at 5th level and every 5 levels thereafter (+2 at 10th, +3 at 15th, +4 at 20th level). This bonus applies even against touch attacks or when flat-footed.
 
 A ninja can use Search to locate traps with DC > 20 and Disable Device to disarm magical traps, just like a rogue.`,
       actionType: 'Passive',
     });
+
+    // 4. Poison Use (3rd) & Improved Poison Use (9th)
+    if (nLvl >= 3) {
+      features.push({
+        id: 'ninja_poison_use',
+        name: nLvl >= 9 ? 'Improved Poison Use (Move Action)' : 'Poison Use',
+        source: `Ninja Lv.${nLvl}`,
+        category: 'passive',
+        typeLabel: 'Special Quality',
+        summary: nLvl >= 9 ? 'Never accidentally poison self; apply poison to a weapon as a move action.' : 'Never accidentally poison self when applying poison to a weapon.',
+        rawRules: nLvl >= 9
+          ? `At 3rd level, a ninja never risks accidentally poisoning herself when applying poison to a weapon. At 9th level, she can apply poison to a weapon as a move action rather than a standard action.`
+          : `At 3rd level, a ninja never risks accidentally poisoning herself when applying poison to a weapon.`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 5. Great Leap (4th)
+    if (nLvl >= 4) {
+      features.push({
+        id: 'ninja_great_leap',
+        name: 'Great Leap (+4 Jump & Running Start)',
+        source: `Ninja Lv.${nLvl}`,
+        category: 'passive',
+        typeLabel: 'Mobility (Su)',
+        summary: 'Always make Jump checks as if running with the Run feat (+4 bonus, no running start required) when unarmored/light load.',
+        rawRules: `At 4th level and higher, a ninja always makes Jump checks as if she were running and had the Run feat, enabling her to make long jumps without a running start and granting a +4 bonus on the jump check. Usable only when wearing no armor and carrying no more than a light load.`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 6. Acrobatics (6th: +2, 12th: +4, 18th: +6)
+    if (nLvl >= 6) {
+      const acroBonus = nLvl >= 18 ? 6 : (nLvl >= 12 ? 4 : 2);
+      features.push({
+        id: 'ninja_acrobatics',
+        name: `Acrobatics (+${acroBonus} Climb, Jump, Tumble)`,
+        source: `Ninja Lv.${nLvl}`,
+        category: 'passive',
+        typeLabel: 'Skill Bonus (Ex)',
+        summary: `+${acroBonus} competence bonus on Climb, Jump, and Tumble checks.`,
+        rawRules: `Starting at 6th level, a ninja gains a +2 bonus on Climb, Jump, and Tumble checks. This bonus increases to +4 at 12th level and +6 at 18th level.`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 7. Speed Climb (7th)
+    if (nLvl >= 7) {
+      features.push({
+        id: 'ninja_speed_climb',
+        name: 'Speed Climb (Full Land Speed)',
+        source: `Ninja Lv.${nLvl}`,
+        category: 'passive',
+        typeLabel: 'Mobility (Ex)',
+        summary: 'Scramble up or down walls at full land speed with two free hands (unarmored/light load).',
+        rawRules: `A ninja of 7th level or higher can scramble up or down walls and slopes with great speed. She can climb at her normal speed as a standard move action without taking the standard -5 penalty. She needs both hands free, must be unarmored, and cannot carry more than a light load.`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 8. Evasion (12th)
+    if (nLvl >= 12) {
+      features.push({
+        id: 'ninja_evasion',
+        name: 'Evasion',
+        source: `Ninja Lv.${nLvl}`,
+        category: 'passive',
+        typeLabel: 'Defensive Agility (Ex)',
+        summary: 'Take no damage on successful Reflex saving throws against area attacks.',
+        rawRules: `At 12th level, a ninja gains evasion. If she makes a successful Reflex saving throw against an attack that normally inflicts half damage on a successful save, she instead takes no damage. Usable only when wearing no armor and carrying no more than a light load.`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 9. Ghost Mind (17th)
+    if (nLvl >= 17) {
+      features.push({
+        id: 'ninja_ghost_mind',
+        name: 'Ghost Mind (+2 vs Divinations & Reroll)',
+        source: `Ninja Lv.${nLvl}`,
+        category: 'passive',
+        typeLabel: 'Mental Shield (Ex)',
+        summary: '+2 bonus on saves against Divination spells; if failed, immediately attempt a second saving throw.',
+        rawRules: `At 17th level, a ninja gains a +2 bonus on saving throws against divination spells and effects. Furthermore, if she fails a saving throw against a divination spell or effect, she immediately gets a second saving throw at the same DC to resist it.`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 10. Ghost Sight (20th)
+    if (nLvl >= 20) {
+      features.push({
+        id: 'ninja_ghost_sight',
+        name: 'Ghost Sight (See Invisible & Ethereal)',
+        source: `Ninja Lv.${nLvl}`,
+        category: 'passive',
+        typeLabel: 'Sensory Mastery (Su)',
+        summary: 'Permanently see invisible and ethereal creatures as easily as normal creatures.',
+        rawRules: `At 20th level, a ninja can see invisible and ethereal creatures and objects as easily as she sees material creatures and objects.`,
+        actionType: 'Passive',
+      });
+    }
   }
 
   // ==========================================

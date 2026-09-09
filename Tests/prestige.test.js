@@ -52,7 +52,7 @@ test('Prestige Classes - Arcane Trickster Prerequisite validation', () => {
 
   const res1 = CombatRules.validatePrestigeClassPrereqs(disqualifiedPC, 'arcane_trickster');
   assert.strictEqual(res1.success, false, 'Should fail validation');
-  assert.ok(res1.errors.some(e => e.includes('Hinterhältiger Angriff')), 'Should complain about sneak attack');
+  assert.ok(res1.errors.some(e => e.includes('Sneak Attack') || e.includes('Hinterhältiger Angriff')), 'Should complain about sneak attack');
 
   // 2. Qualified PC (Rogue 3 / Wizard 5, alignment nonlawful, high ranks in trickster skills)
   const qualifiedPC = new Combatant({
@@ -197,7 +197,7 @@ test('Prestige Classes - Assassin Prerequisite validation', () => {
 
   const res1 = CombatRules.validatePrestigeClassPrereqs(disqualifiedPC, 'assassin');
   assert.strictEqual(res1.success, false, 'Should fail validation');
-  assert.ok(res1.errors.some(e => e.includes('Böse Gesinnung')), 'Should complain about alignment');
+  assert.ok(res1.errors.some(e => e.includes('Evil alignment') || e.includes('Böse Gesinnung')), 'Should complain about alignment');
 
   // 2. Qualified PC (Rogue 5, Neutral Evil, Disguise 4, Hide 8, Move Silently 8, special text confirmed)
   const qualifiedPC = new Combatant({

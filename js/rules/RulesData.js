@@ -486,7 +486,7 @@ export const CLASS_PROFILES = {
         {
           key: 'ki_power',
           name: 'Ki Power',
-          max: Math.max(1, level + wisMod),
+          max: Math.max(1, Math.floor(level / 2)) + Math.max(0, wisMod),
           type: 'daily'
         }
       ];

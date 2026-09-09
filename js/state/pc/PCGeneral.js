@@ -22,6 +22,7 @@ import { WizardRules } from '../../rules/classes/WizardRules.js';
 import { SorcererRules } from '../../rules/classes/SorcererRules.js';
 import { RangerRules } from '../../rules/classes/RangerRules.js';
 import { RogueRules } from '../../rules/classes/RogueRules.js';
+import { NinjaRules } from '../../rules/classes/NinjaRules.js';
 
 function cleanupClassBleed(pc) {
   const activeClasses = Array.isArray(pc.classes) ? pc.classes.map(c => c.classType) : [];
@@ -32,6 +33,7 @@ function cleanupClassBleed(pc) {
   if (!activeClasses.includes('druid') && !activeClasses.includes('ranger')) DruidRules.cleanup(pc);
   if (!activeClasses.includes('wizard') && !activeClasses.includes('sorcerer')) WizardRules.cleanup(pc);
   if (!activeClasses.includes('monk')) MonkRules.cleanup(pc);
+  if (!activeClasses.includes('ninja')) NinjaRules.cleanup(pc);
   if (!activeClasses.includes('rogue')) RogueRules.cleanup(pc);
 }
 
@@ -49,6 +51,7 @@ export function recalculateDailyAbilities(pc) {
       if (c.classType === 'bard') BardRules.recalculateDailyAbilities(pc, c.level);
       if (c.classType === 'druid') DruidRules.recalculateDailyAbilities(pc, c.level);
       if (c.classType === 'monk') MonkRules.recalculateDailyAbilities(pc, c.level);
+      if (c.classType === 'ninja') NinjaRules.recalculateDailyAbilities(pc, c.level);
     });
   }
 

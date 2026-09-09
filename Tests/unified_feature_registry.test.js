@@ -209,4 +209,58 @@ test('Spellwarp Sniper - RAW 100% Rules Compliance Audit (Saves, Skills, Feats, 
   assert.strictEqual(valResult.success, true, 'Ninja 1 / Wizard 5 with Point Blank Shot and 8 ranks in Concentration/Spellcraft must qualify');
 });
 
+test('Ninja, Wizard & Spellwarp Sniper - Complete Multi-Class Integration Audit', async () => {
+  const { Combatant } = await import('../js/models/Combatant.js');
+  const { recalculateDailyAbilities, recalculatePCStats } = await import('../js/state/pc/PCGeneral.js');
+
+  // 1. Build Ninja 1 / Wizard 5 / Spellwarp Sniper 5 character (Level 11)
+  const pc = new Combatant({
+    name: 'Shadow Caster',
+    autoAC: true,
+    wis: 14, // Wis mod +2
+    int: 18, // Int mod +4
+    dex: 16, // Dex mod +3
+    classes: [
+      { classType: 'ninja', level: 1 },
+      { classType: 'wizard', level: 5 },
+      { classType: 'spellwarp_sniper', level: 5 }
+    ],
+    feats: [{ id: 'point_blank_shot' }]
+  });
+
+  // Calculate stats & daily abilities
+  recalculatePCStats(pc);
+  recalculateDailyAbilities(pc);
+
+  // A. Ninja Ki Power daily resource allocation: 1/2 lvl (min 1) + Wis mod (+2) = 3
+  const ki = pc.dailyAbilities.find(a => a.name === 'Ki Power');
+  assert.ok(ki, 'Ki Power must be registered in dailyAbilities');
+  assert.strictEqual(ki.max, 3, 'Ninja Lv.1 with Wis 14 (+2) must have 3 Ki uses/day');
+
+  // B. Spellwarp Sniper Ray Mastery Empower daily ability: 1/day
+  const empower = pc.dailyAbilities.find(a => a.name === 'Ray Mastery: Empower');
+  assert.ok(empower, 'Ray Mastery: Empower must be registered in dailyAbilities for SWS Lv.5');
+  assert.strictEqual(empower.max, 1, 'Ray Mastery Empower must have 1 use/day');
+
+  // C. Unarmored AC Bonus from Ninja: 10 (base) + 3 (Dex) + 2 (Wis) = 15
+  assert.strictEqual(pc.ac.getValue(), 15, 'Unarmored AC must include Dex (+3) and Ninja Wis (+2)');
+  assert.strictEqual(pc.acTouch.getValue(), 15, 'Touch AC must include Dex (+3) and Ninja Wis (+2)');
+
+  // D. Precision Damage: Ninja 1d6 + Spellwarp Sniper 2d6 = 3d6
+  assert.strictEqual(pc.getSneakAttackDiceCount(), 3, 'Total precision damage pool must be +3d6 (Ninja 1d6 + SWS 2d6)');
+
+  // E. Automatic Feats: Wizard gives Scribe Scroll, SWS 3+ gives Precise Shot
+  assert.strictEqual(pc.hasFeat('scribe_scroll'), true, 'Must have Scribe Scroll from Wizard');
+  assert.strictEqual(pc.hasFeat('precise_shot'), true, 'Must have Precise Shot from Spellwarp Sniper Lv.3+');
+
+  // F. Unified Features Check
+  const features = getAllUnifiedFeatures(pc);
+  assert.ok(features.some(f => f.id === 'ninja_sudden_strike'), 'Ninja Sudden Strike feature present');
+  assert.ok(features.some(f => f.id === 'ninja_ki_power'), 'Ninja Ki Power feature present');
+  assert.ok(features.some(f => f.id === 'wizard_spellcasting'), 'Wizard Spellcasting feature present');
+  assert.ok(features.some(f => f.id === 'spellwarp_sniper_spellwarp'), 'Spellwarp feature present');
+  assert.ok(features.some(f => f.id === 'spellwarp_sniper_ray_mastery'), 'Ray Mastery feature present');
+});
+
+
 

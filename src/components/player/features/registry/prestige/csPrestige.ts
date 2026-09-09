@@ -18,11 +18,11 @@ export function getCSPrestigeFeatures(_pc: any, classType: string, level: number
     // 1. Spellwarp (Su)
     features.push({
       id: 'spellwarp_sniper_spellwarp',
-      name: `Spellwarp (Max Grad ${maxSpellwarpLvl} Spells)`,
+      name: `Spellwarp (Max Level ${maxSpellwarpLvl} Spells)`,
       source: `Spellwarp Sniper Lv.${level}`,
       category: 'combat',
       typeLabel: 'Supernatural Ray Conversion',
-      summary: `Contort instantaneous area spells of up to ${maxSpellwarpLvl}. level into pinpoint rays. Target receives NO Reflex save.`,
+      summary: `Contort instantaneous area spells of up to level ${maxSpellwarpLvl} into pinpoint rays. Target receives NO Reflex save.`,
       rawRules: `A spellwarp sniper can contort instantaneous area spells into pinpoint rays. She can alter spells up to 1st level at 1st level, up to 2nd level at 2nd level, up to 3rd level at 3rd level, up to 4th level at 4th level, and up to 5th level at 5th level.
 
 • Conversion: You can change the shape of an instantaneous area spell into a ray. The spell requires a ranged touch attack to hit a single target.

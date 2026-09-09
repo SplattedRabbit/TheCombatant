@@ -25,17 +25,44 @@ export function applyClassModifiers(pc, getMod) {
 
     // B. Monk: Wisdom AC Bonus & Level AC Bonus (No armor/shield check)
     const monkClass = pc.classes.find(c => c.classType === 'monk');
+    let monkWisApplied = false;
     if (monkClass && monkClass.level >= 1) {
       const wisMod = getMod(pc.wis);
       const levelBonus = Math.floor(monkClass.level / 5);
       const totalMonkAC = Math.max(0, wisMod) + levelBonus;
+      if (wisMod > 0) monkWisApplied = true;
       
       if (totalMonkAC > 0) {
         const acs = [pc.ac, pc.acTouch, pc.acFlat];
         acs.forEach(s => {
-          s.addModifier(totalMonkAC, "untyped", "Mönch-RK-Bonus");
+          s.addModifier(totalMonkAC, "untyped", "Monk AC Bonus");
           s.modifiers[s.modifiers.length - 1].isClass = true;
         });
+      }
+    }
+
+    // B2. Ninja: Wisdom AC Bonus & Level AC Bonus (Complete Adventurer RAW: unarmored, non-stacking with Monk Wis)
+    const ninjaClass = pc.classes.find(c => c.classType === 'ninja');
+    if (ninjaClass && ninjaClass.level >= 1) {
+      const wisMod = getMod(pc.wis);
+      const ninjaWis = monkWisApplied ? 0 : Math.max(0, wisMod);
+      const ninjaLevelBonus = Math.floor(ninjaClass.level / 5);
+      const totalNinjaAC = ninjaWis + ninjaLevelBonus;
+
+      if (totalNinjaAC > 0) {
+        const acs = [pc.ac, pc.acTouch, pc.acFlat];
+        acs.forEach(s => {
+          s.addModifier(totalNinjaAC, "untyped", "Ninja AC Bonus");
+          s.modifiers[s.modifiers.length - 1].isClass = true;
+        });
+      }
+
+      // Ki Power Will save bonus (+2 on Will saves as long as at least 1 daily use remains)
+      const kiAbility = Array.isArray(pc.dailyAbilities) ? pc.dailyAbilities.find(a => a.name === 'Ki Power') : null;
+      const kiRemaining = kiAbility ? (kiAbility.max - (kiAbility.used || 0)) : (Math.max(1, Math.floor(ninjaClass.level / 2)) + Math.max(0, wisMod));
+      if (kiRemaining > 0 && pc.wil) {
+        pc.wil.addModifier(2, "untyped", "Ki Power (Will Save Bonus)");
+        pc.wil.modifiers[pc.wil.modifiers.length - 1].isClass = true;
       }
     }
 

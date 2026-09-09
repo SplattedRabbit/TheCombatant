@@ -32,7 +32,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
   // Find class definition in RULES
   const clsDef = CLASSES.find(c => c.key === classKey);
   if (!clsDef) {
-    return { success: false, errors: ['Klasse nicht gefunden'], metDetails };
+    return { success: false, errors: ['Class not found'], metDetails };
   }
 
   // If it's not a prestige class, it's always available!
@@ -52,7 +52,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
       required: `+${prereqs.bab}`,
       met
     });
-    if (!met) errors.push(`BAB +${prereqs.bab} erforderlich (+${bab} vorhanden)`);
+    if (!met) errors.push(`BAB +${prereqs.bab} required (+${bab} present)`);
   }
 
   // 2. Skill Ranks Check
@@ -69,7 +69,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
         required: `${requiredRanks} Ranks`,
         met
       });
-      if (!met) errors.push(`${skillLabel}: ${requiredRanks} Ränge erforderlich (${ranks} vorhanden)`);
+      if (!met) errors.push(`${skillLabel}: ${requiredRanks} ranks required (${ranks} present)`);
     });
   }
 
@@ -84,7 +84,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
         required: 'Yes',
         met: hasFeat
       });
-      if (!hasFeat) errors.push(`Talent ${featName} erforderlich`);
+      if (!hasFeat) errors.push(`Feat ${featName} required`);
     });
   }
 
@@ -205,11 +205,11 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
     });
     if (!met) {
       if (prereqs.alignment === 'lawful_good' || prereqs.alignment === 'lawful good' || prereqs.alignment === 'lg') {
-        errors.push('Rechtschaffen Gute (LG) Gesinnung erforderlich');
+        errors.push('Lawful Good (LG) alignment required');
       } else if (prereqs.alignment === 'nonlawful') {
-        errors.push('Gesinnung darf nicht rechtschaffen sein');
+        errors.push('Alignment must not be lawful');
       } else {
-        errors.push('Böse Gesinnung erforderlich');
+        errors.push('Evil alignment required');
       }
     }
   }
@@ -230,7 +230,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
       required: 'Non-Dragon',
       met
     });
-    if (!met) errors.push('Rasse darf kein Drache / Halbdrache sein');
+    if (!met) errors.push('Race must not be a Dragon / Half-Dragon');
   }
 
   // 6. Languages Check
@@ -265,7 +265,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
         required: `Level ${prereqs.spells.arcane}`,
         met
       });
-      if (!met) errors.push(`Fähigkeit, arkane Zauber des ${prereqs.spells.arcane}. Grades zu wirken, erforderlich`);
+      if (!met) errors.push(`Ability to cast ${prereqs.spells.arcane}th-level arcane spells required`);
     }
 
     // Divine level check
@@ -282,7 +282,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
         required: `Level ${prereqs.spells.divine}`,
         met
       });
-      if (!met) errors.push(`Fähigkeit, göttliche Zauber des ${prereqs.spells.divine}. Grades zu wirken, erforderlich`);
+      if (!met) errors.push(`Ability to cast ${prereqs.spells.divine}th-level divine spells required`);
     }
 
     // Mage hand check
@@ -297,7 +297,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
         required: 'Yes',
         met: canCastArcane
       });
-      if (!canCastArcane) errors.push('Fähigkeit, Magische Hand (Mage Hand) zu wirken, erforderlich');
+      if (!canCastArcane) errors.push('Ability to cast Mage Hand required');
     }
 
     // Spontaneous Arcane check
@@ -312,7 +312,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
         required: 'Yes',
         met: hasSpontaneousArcane
       });
-      if (!hasSpontaneousArcane) errors.push('Fähigkeit, arkane Zauber ohne Vorbereitung zu wirken (Hexenmeister oder Barde), erforderlich');
+      if (!hasSpontaneousArcane) errors.push('Ability to cast spontaneous arcane spells (Sorcerer or Bard) required');
     }
   }
 
@@ -330,7 +330,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
         required: 'Yes',
         met: hasDetectEvil
       });
-      if (!hasDetectEvil) errors.push('Fähigkeit Böses Entdecken (Klassenmerkmal oder göttlicher Zauber) erforderlich');
+      if (!hasDetectEvil) errors.push('Detect Evil class feature or divine spell required');
     }
 
     if (prereqs.special.turn_undead) {
@@ -345,7 +345,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
         required: 'Yes',
         met: hasTurnUndead
       });
-      if (!hasTurnUndead) errors.push('Klassenmerkmal Untote Vertreiben erforderlich');
+      if (!hasTurnUndead) errors.push('Turn Undead class feature required');
     }
 
     if (prereqs.special.sneak_attack !== undefined) {
@@ -358,7 +358,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
         required: `+${prereqs.special.sneak_attack}d6`,
         met
       });
-      if (!met) errors.push(`Hinterhältiger Angriff +${prereqs.special.sneak_attack}d6 erforderlich (+${saDice}d6 vorhanden)`);
+      if (!met) errors.push(`Sneak Attack +${prereqs.special.sneak_attack}d6 required (+${saDice}d6 present)`);
     }
   }
 
@@ -371,7 +371,7 @@ export function validatePrestigeClassPrereqs(pc, classKey) {
       required: 'Met',
       met
     });
-    if (!met) errors.push(`Besondere Voraussetzung muss bestätigt werden: ${prereqs.specialText}`);
+    if (!met) errors.push(`Special prerequisite must be confirmed: ${prereqs.specialText}`);
   }
 
   const success = errors.length === 0;

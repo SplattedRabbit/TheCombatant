@@ -262,8 +262,58 @@ At 3rd level, a druid leaves no trail in natural surroundings and cannot be trac
   if (classMap.has('wizard')) {
     const wLvl = classMap.get('wizard')!;
     const isImmediateMagic = activeACFs.includes('wizard_immediate_magic');
+    // 1. Prepared Arcane Spellcasting & Spellbook
+    features.push({
+      id: 'wizard_spellcasting',
+      name: 'Arcane Spellcasting & Spellbook',
+      source: `Wizard Lv.${wLvl}`,
+      category: 'passive',
+      typeLabel: 'Arcane Mastery',
+      summary: 'Prepare and cast arcane spells from a spellbook using Intelligence for bonus slots and DCs.',
+      rawRules: `A wizard casts arcane spells which are drawn from the sorcerer/wizard spell list. A wizard must choose and prepare her spells ahead of time.
 
-    // 1. Scribe Scroll
+To learn, prepare, or cast a spell, the wizard must have an Intelligence score equal to at least 10 + the spell level. The Difficulty Class for a saving throw against a wizard's spell is 10 + the spell level + the wizard's Intelligence modifier. A wizard can cast only a certain number of spells of each spell level per day, augmented by bonus spells from high Intelligence.`,
+      actionType: 'Passive',
+    });
+
+    // 2. Arcane Specialization & Prohibited Schools
+    if (pc.wizardSpecialization && pc.wizardSpecialization !== 'none') {
+      const specName = String(pc.wizardSpecialization).replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      const prohibited = [pc.wizardProhibited1, pc.wizardProhibited2].filter(Boolean).map(p => String(p).replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()));
+      features.push({
+        id: 'wizard_specialization',
+        name: `Specialist School: ${specName}`,
+        source: `Wizard Lv.${wLvl}`,
+        category: 'passive',
+        typeLabel: 'Arcane Specialization',
+        summary: `+1 bonus spell slot per spell level for ${specName} spells.${prohibited.length > 0 ? ` Prohibited: ${prohibited.join(', ')}.` : ''}`,
+        rawRules: `A specialist wizard gains one additional spell slot of each spell level she can cast, from 1st on up. Each day, a specialist must prepare a spell of her chosen school in that extra slot.
+
+To specialize, a wizard must select prohibited schools from which she can never learn or cast spells (${prohibited.length > 0 ? prohibited.join(', ') : '2 prohibited schools required'}).`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 3. Summon Familiar (Core PHB, replaced if Immediate Magic or similar ACF is taken)
+    if (!isImmediateMagic) {
+      const famName = pc.familiarName || pc.familiarType;
+      const famLabel = famName && famName !== 'none' ? ` (${famName})` : '';
+      features.push({
+        id: 'wizard_summon_familiar',
+        name: `Summon Familiar${famLabel}`,
+        source: `Wizard Lv.${wLvl}`,
+        category: 'passive',
+        typeLabel: 'Arcane Bond',
+        summary: 'Bond with a magical familiar beast granting special abilities, sensory links, and touch spell delivery.',
+        rawRules: `A wizard can obtain a familiar. Doing so takes 24 hours and uses up magical materials that cost 100 gp. A familiar is an animal that gains new powers and becomes a magical beast when summoned to service a wizard.
+
+• Link & Spells: Empathic link (up to 1 mile), Share Spells, and Deliver Touch Spells (at master level 3+).
+• Special Bonus: Grants the master a passive benefit depending on familiar type (e.g. Rat +2 Fortitude, Weasel +2 Reflex, Toad +3 HP, Owl/Hawk +3 Spot, Raven speaks).`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 4. Scribe Scroll (Bonus Feat at 1st level)
     features.push({
       id: 'wizard_scribe_scroll',
       name: 'Scribe Scroll (Bonus Feat)',
@@ -275,7 +325,7 @@ At 3rd level, a druid leaves no trail in natural surroundings and cannot be trac
       actionType: 'Passive',
     });
 
-    // 2. Immediate Magic ACF
+    // 5. Immediate Magic ACF
     if (isImmediateMagic) {
       const intScore = typeof pc.int?.getValue === 'function' ? pc.int.getValue() : (pc.int || 10);
       const intMod = Math.max(1, Math.floor((intScore - 10) / 2));
@@ -293,7 +343,7 @@ At 3rd level, a druid leaves no trail in natural surroundings and cannot be trac
       });
     }
 
-    // 3. Wizard Bonus Feats (5th, 10th, 15th, 20th)
+    // 6. Wizard Bonus Feats (5th, 10th, 15th, 20th)
     if (wLvl >= 5) {
       const bonusFeats = Math.floor(wLvl / 5);
       features.push({
