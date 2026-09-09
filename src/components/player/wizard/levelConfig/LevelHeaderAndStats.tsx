@@ -3,12 +3,11 @@
  * @summary   Level Timeline Bar, Class Selector, HP input, Ability Increase, and Current Attributes preview card.
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { CLASSES_LIST, CLASS_KEY_ATTRIBUTES } from '../constants';
 import { validatePrestigeClassPrereqs, isOnlySpecialTextUnmet } from '@core/rules.js';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { PrestigeSpellLinkSection } from './PrestigeSpellLinkSection';
-import { SpellSelectionModal } from '../spells/SpellSelectionModal';
 
 const PROHIBITED_SCHOOLS = [
   { value: 'abj', label: 'Abjuration' },
@@ -29,10 +28,6 @@ export interface LevelHeaderAndStatsProps {
   getClassHitDie: (cls: string) => number;
   updateLevelConfig: (idx: number, key: string, val: any) => void;
   allLevelConfigs?: any[];
-  isSpellModalOpen?: boolean;
-  setIsSpellModalOpen?: (open: boolean) => void;
-  targetLevel?: number;
-  onConfirmAndAdvance?: () => void;
 }
 
 export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
@@ -44,16 +39,8 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
   getClassHitDie,
   updateLevelConfig,
   allLevelConfigs = [],
-  isSpellModalOpen: externalIsSpellModalOpen,
-  setIsSpellModalOpen: externalSetIsSpellModalOpen,
-  targetLevel = 1,
-  onConfirmAndAdvance,
 }) => {
   const [sourceTab, setSourceTab] = React.useState<'all' | 'phb' | 'phb2' | 'ca' | 'prestige'>('all');
-  const [localIsSpellModalOpen, setLocalIsSpellModalOpen] = useState(false);
-
-  const isSpellModalOpen = externalIsSpellModalOpen !== undefined ? externalIsSpellModalOpen : localIsSpellModalOpen;
-  const setIsSpellModalOpen = externalSetIsSpellModalOpen || setLocalIsSpellModalOpen;
 
   // Auto-sync Wizard school specialization across Wizard levels
   React.useEffect(() => {
@@ -537,20 +524,6 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
             })}
           </div>
         </div>
-      )}
-
-      {isSpellModalOpen && (
-        <SpellSelectionModal
-          isOpen={isSpellModalOpen}
-          onClose={() => setIsSpellModalOpen(false)}
-          currentConfig={currentConfig}
-          currentLevelIndex={currentLevelIndex}
-          currentDraft={currentDraft}
-          updateLevelConfig={updateLevelConfig}
-          allLevelConfigs={allLevelConfigs}
-          targetLevel={targetLevel}
-          onConfirmAndAdvance={onConfirmAndAdvance}
-        />
       )}
     </div>
   );

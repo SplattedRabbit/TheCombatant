@@ -41,10 +41,6 @@ export interface Step3LevelConfigProps {
   activeFeatSlot: any;
   filteredFeats: any[];
   targetPrestigeClass?: string;
-  isSpellModalOpen?: boolean;
-  setIsSpellModalOpen?: (open: boolean) => void;
-  targetLevel?: number;
-  onConfirmAndAdvance?: () => void;
 }
 
 export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
@@ -73,10 +69,6 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   activeFeatSlot,
   filteredFeats,
   targetPrestigeClass,
-  isSpellModalOpen,
-  setIsSpellModalOpen,
-  targetLevel,
-  onConfirmAndAdvance,
 }) => {
   // Sync prestige spell progression links if single arcane/divine class is available
   React.useEffect(() => {
@@ -227,10 +219,6 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
             getClassHitDie={getClassHitDie}
             updateLevelConfig={updateLevelConfig}
             allLevelConfigs={levelConfigs}
-            isSpellModalOpen={isSpellModalOpen}
-            setIsSpellModalOpen={setIsSpellModalOpen}
-            targetLevel={targetLevel}
-            onConfirmAndAdvance={onConfirmAndAdvance}
           />
 
           {/* Target Prestige Class Live Prerequisite Tracker */}
