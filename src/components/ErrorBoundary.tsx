@@ -43,7 +43,7 @@ export class ErrorBoundary extends Component<Props, State> {
   };
 
   private handleCopy = () => {
-    const text = `Fehler: ${this.state.error?.toString()}\n\nKomponenten-Stacktrace:\n${this.state.errorInfo?.componentStack || 'Kein Stacktrace verfügbar'}`;
+    const text = `Error: ${this.state.error?.toString()}\n\nComponent Stacktrace:\n${this.state.errorInfo?.componentStack || 'No stacktrace available'}`;
     navigator.clipboard.writeText(text).then(() => {
       this.setState({ copied: true });
       setTimeout(() => this.setState({ copied: false }), 3000);
@@ -93,7 +93,7 @@ export class ErrorBoundary extends Component<Props, State> {
               borderBottom: '1px solid rgba(139, 26, 26, 0.3)',
               paddingBottom: '8px'
             }}>
-              🚨 Systemabsturz / Laufzeitfehler
+              🚨 Application Crash / Runtime Error
             </h2>
             <p style={{
               fontFamily: 'var(--font-body)',
@@ -102,7 +102,7 @@ export class ErrorBoundary extends Component<Props, State> {
               lineHeight: 1.5,
               marginBottom: '15px'
             }}>
-              Ein schwerwiegender React-Laufzeitfehler ist aufgetreten. Bitte kopiere diesen Fehlerbericht für das Debugging:
+              A fatal React runtime error occurred. Please copy this error report for debugging:
             </p>
             
             <div style={{
@@ -118,11 +118,11 @@ export class ErrorBoundary extends Component<Props, State> {
               whiteSpace: 'pre-wrap',
               marginBottom: '20px'
             }}>
-              <strong>Fehler:</strong> {this.state.error?.toString()}
+              <strong>Error:</strong> {this.state.error?.toString()}
               {this.state.errorInfo && (
                 <>
                   <br /><br />
-                  <strong>Komponenten-Stacktrace:</strong>
+                  <strong>Component Stacktrace:</strong>
                   {this.state.errorInfo.componentStack}
                 </>
               )}
@@ -142,14 +142,14 @@ export class ErrorBoundary extends Component<Props, State> {
                   color: 'white'
                 }}
               >
-                {this.state.copied ? '✓ Fehlerbericht kopiert!' : '📋 Fehlerbericht kopieren'}
+                {this.state.copied ? '✓ Error report copied!' : '📋 Copy Error Report'}
               </button>
               <button 
                 className="btn" 
                 onClick={() => window.location.reload()}
                 style={{ padding: '6px 12px', fontSize: '11px', cursor: 'pointer' }}
               >
-                🔄 Seite neu laden
+                🔄 Reload Page
               </button>
               <button 
                 className="btn btn-p" 
@@ -163,7 +163,7 @@ export class ErrorBoundary extends Component<Props, State> {
                   color: 'white'
                 }}
               >
-                🗑️ App-Daten zurücksetzen &amp; Neuladen
+                🗑️ Reset App Data &amp; Reload
               </button>
             </div>
           </div>

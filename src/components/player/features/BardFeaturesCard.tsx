@@ -22,7 +22,7 @@ const BARD_SONGS = [
   },
   {
     key: 'fascinate',
-    nameDe: 'Faszinieren',
+    nameDe: 'Fascinate',
     nameEn: 'Fascinate',
     minLvl: 1,
     desc: '• Range: 90 ft. radius | Duration: 1 rd./level\n• Effect: Captivates targets. Will DC = your Perform check. Targets sit quietly.',
@@ -30,7 +30,7 @@ const BARD_SONGS = [
   },
   {
     key: 'inspire_courage',
-    nameDe: 'Mut einflößen',
+    nameDe: 'Inspire Courage',
     nameEn: 'Inspire Courage',
     minLvl: 1,
     desc: '• Bonuses: +1 morale bonus on saving throws against fear/charm and attack/damage rolls.\n• Scaling: +2 at level 8, +3 at 14, +4 at 20.',
@@ -38,7 +38,7 @@ const BARD_SONGS = [
   },
   {
     key: 'inspire_competence',
-    nameDe: 'Kompetenz einflößen',
+    nameDe: 'Inspire Competence',
     nameEn: 'Inspire Competence',
     minLvl: 3,
     desc: '• Range: 30 ft. (1 ally) | Duration: up to 2 min. (concentration)\n• Effect: Grants +2 competence bonus on all skill checks.',
@@ -46,7 +46,7 @@ const BARD_SONGS = [
   },
   {
     key: 'suggestion',
-    nameDe: 'Einflüsterung',
+    nameDe: 'Suggestion',
     nameEn: 'Suggestion',
     minLvl: 6,
     desc: '• Target: 1 fascinated creature | Will DC: 10 + 1/2 bard level + CHA mod\n• Effect: Casts suggestion. Costs 0 additional music uses (RAW!).',
@@ -54,7 +54,7 @@ const BARD_SONGS = [
   },
   {
     key: 'inspire_greatness',
-    nameDe: 'Größe einflößen',
+    nameDe: 'Inspire Greatness',
     nameEn: 'Inspire Greatness',
     minLvl: 9,
     desc: '• Targets: 1 ally (+1 per 3 levels above 9)\n• Effect: +2d10 Hit Dice, temporary HP, +2 competence on attacks, +1 competence on Fortitude.',
@@ -62,7 +62,7 @@ const BARD_SONGS = [
   },
   {
     key: 'song_of_freedom',
-    nameDe: 'Lied der Freiheit',
+    nameDe: 'Song of Freedom',
     nameEn: 'Song of Freedom',
     minLvl: 12,
     desc: '• Range: 30 ft. | Activation: Perform for 1 minute\n• Effect: Acts like break enchantment (caster level = bard level).',
@@ -70,7 +70,7 @@ const BARD_SONGS = [
   },
   {
     key: 'inspire_heroics',
-    nameDe: 'Heldenmut einflößen',
+    nameDe: 'Inspire Heroics',
     nameEn: 'Inspire Heroics',
     minLvl: 15,
     desc: '• Targets: 1 ally (+1 per 3 levels above 15) | Activation: Perform for 1 round\n• Effect: +4 morale bonus on saving throws, +4 dodge bonus to AC.',
@@ -78,7 +78,7 @@ const BARD_SONGS = [
   },
   {
     key: 'mass_suggestion',
-    nameDe: 'Massen-Einflüsterung',
+    nameDe: 'Mass Suggestion',
     nameEn: 'Mass Suggestion',
     minLvl: 18,
     desc: '• Will DC: 10 + 1/2 bard level + CHA mod\n• Effect: Like suggestion, but affects all fascinated creatures within range simultaneously.',

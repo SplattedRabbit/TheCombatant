@@ -1,9 +1,9 @@
 export const ARMOR_REGISTRY = {
-  // Leichte Rüstung
+  // Light Armor
   padded: {
     key: 'padded',
     name: 'Padded armor',
-    nameDe: 'Gepolsterte Rüstung',
+    nameDe: 'Padded armor',
     nameEn: 'Padded armor',
     armorBonus: 1,
     maxDex: 8,
@@ -15,7 +15,7 @@ export const ARMOR_REGISTRY = {
   leather: {
     key: 'leather',
     name: 'Leather armor',
-    nameDe: 'Lederrüstung',
+    nameDe: 'Leather armor',
     nameEn: 'Leather armor',
     armorBonus: 2,
     maxDex: 6,
@@ -27,7 +27,7 @@ export const ARMOR_REGISTRY = {
   studded_leather: {
     key: 'studded_leather',
     name: 'Studded leather',
-    nameDe: 'Beschlagenes Leder',
+    nameDe: 'Studded leather',
     nameEn: 'Studded leather',
     armorBonus: 3,
     maxDex: 5,
@@ -39,7 +39,7 @@ export const ARMOR_REGISTRY = {
   chain_shirt: {
     key: 'chain_shirt',
     name: 'Chain shirt',
-    nameDe: 'Kettenhemd',
+    nameDe: 'Chain shirt',
     nameEn: 'Chain shirt',
     armorBonus: 4,
     maxDex: 4,
@@ -49,11 +49,11 @@ export const ARMOR_REGISTRY = {
     isShield: false
   },
 
-  // Mittelschwere Rüstung
+  // Medium Armor
   hide: {
     key: 'hide',
     name: 'Hide armor',
-    nameDe: 'Fellrüstung',
+    nameDe: 'Hide armor',
     nameEn: 'Hide armor',
     armorBonus: 3,
     maxDex: 4,
@@ -65,7 +65,7 @@ export const ARMOR_REGISTRY = {
   scale_mail: {
     key: 'scale_mail',
     name: 'Scale mail',
-    nameDe: 'Schuppenpanzer',
+    nameDe: 'Scale mail',
     nameEn: 'Scale mail',
     armorBonus: 4,
     maxDex: 3,
@@ -77,7 +77,7 @@ export const ARMOR_REGISTRY = {
   chainmail: {
     key: 'chainmail',
     name: 'Chainmail',
-    nameDe: 'Kettenpanzer',
+    nameDe: 'Chainmail',
     nameEn: 'Chainmail',
     armorBonus: 5,
     maxDex: 2,
@@ -89,7 +89,7 @@ export const ARMOR_REGISTRY = {
   breastplate: {
     key: 'breastplate',
     name: 'Breastplate',
-    nameDe: 'Brustplatte',
+    nameDe: 'Breastplate',
     nameEn: 'Breastplate',
     armorBonus: 5,
     maxDex: 3,
@@ -99,11 +99,11 @@ export const ARMOR_REGISTRY = {
     isShield: false
   },
 
-  // Schwere Rüstung
+  // Heavy Armor
   splint_mail: {
     key: 'splint_mail',
     name: 'Splint mail',
-    nameDe: 'Schienenpanzer',
+    nameDe: 'Splint mail',
     nameEn: 'Splint mail',
     armorBonus: 6,
     maxDex: 0,
@@ -115,7 +115,7 @@ export const ARMOR_REGISTRY = {
   banded_mail: {
     key: 'banded_mail',
     name: 'Banded mail',
-    nameDe: 'Bänderpanzer',
+    nameDe: 'Banded mail',
     nameEn: 'Banded mail',
     armorBonus: 6,
     maxDex: 1,
@@ -127,7 +127,7 @@ export const ARMOR_REGISTRY = {
   half_plate: {
     key: 'half_plate',
     name: 'Half-plate',
-    nameDe: 'Halbharnisch',
+    nameDe: 'Half-plate',
     nameEn: 'Half-plate',
     armorBonus: 7,
     maxDex: 0,
@@ -139,7 +139,7 @@ export const ARMOR_REGISTRY = {
   full_plate: {
     key: 'full_plate',
     name: 'Full plate',
-    nameDe: 'Ritterharnisch',
+    nameDe: 'Full plate',
     nameEn: 'Full plate',
     armorBonus: 8,
     maxDex: 1,
@@ -149,7 +149,7 @@ export const ARMOR_REGISTRY = {
     isShield: false
   },
 
-  // Schilde
+  // Shields
   buckler: {
     key: 'buckler',
     name: 'Buckler',
@@ -165,7 +165,7 @@ export const ARMOR_REGISTRY = {
   shield_light_wooden: {
     key: 'shield_light_wooden',
     name: 'Shield, light wooden',
-    nameDe: 'Leichter Holzschild',
+    nameDe: 'Shield, light wooden',
     nameEn: 'Shield, light wooden',
     armorBonus: 1,
     maxDex: null,
@@ -177,7 +177,7 @@ export const ARMOR_REGISTRY = {
   shield_light_steel: {
     key: 'shield_light_steel',
     name: 'Shield, light steel',
-    nameDe: 'Leichter Stahlschild',
+    nameDe: 'Shield, light steel',
     nameEn: 'Shield, light steel',
     armorBonus: 1,
     maxDex: null,
@@ -189,7 +189,7 @@ export const ARMOR_REGISTRY = {
   shield_heavy_wooden: {
     key: 'shield_heavy_wooden',
     name: 'Shield, heavy wooden',
-    nameDe: 'Schwerer Holzschild',
+    nameDe: 'Shield, heavy wooden',
     nameEn: 'Shield, heavy wooden',
     armorBonus: 2,
     maxDex: null,
@@ -201,7 +201,7 @@ export const ARMOR_REGISTRY = {
   shield_heavy_steel: {
     key: 'shield_heavy_steel',
     name: 'Shield, heavy steel',
-    nameDe: 'Schwerer Stahlschild',
+    nameDe: 'Shield, heavy steel',
     nameEn: 'Shield, heavy steel',
     armorBonus: 2,
     maxDex: null,
@@ -213,7 +213,7 @@ export const ARMOR_REGISTRY = {
   shield_tower: {
     key: 'shield_tower',
     name: 'Tower shield',
-    nameDe: 'Turmschild',
+    nameDe: 'Tower shield',
     nameEn: 'Tower shield',
     armorBonus: 4,
     maxDex: 2,
@@ -223,11 +223,11 @@ export const ARMOR_REGISTRY = {
     isShield: true
   },
 
-  // Eigene / Benutzerdefinierte Typen
+  // Custom Armor Types
   custom_light_armor: {
     key: 'custom_light_armor',
     name: 'Custom light armor',
-    nameDe: 'Eigene leichte Rüstung',
+    nameDe: 'Custom light armor',
     nameEn: 'Custom light armor',
     armorBonus: 2,
     maxDex: 6,
@@ -239,7 +239,7 @@ export const ARMOR_REGISTRY = {
   custom_medium_armor: {
     key: 'custom_medium_armor',
     name: 'Custom medium armor',
-    nameDe: 'Eigene mittelschwere Rüstung',
+    nameDe: 'Custom medium armor',
     nameEn: 'Custom medium armor',
     armorBonus: 5,
     maxDex: 3,
@@ -251,7 +251,7 @@ export const ARMOR_REGISTRY = {
   custom_heavy_armor: {
     key: 'custom_heavy_armor',
     name: 'Custom heavy armor',
-    nameDe: 'Eigene schwere Rüstung',
+    nameDe: 'Custom heavy armor',
     nameEn: 'Custom heavy armor',
     armorBonus: 8,
     maxDex: 1,
@@ -263,7 +263,7 @@ export const ARMOR_REGISTRY = {
   custom_shield: {
     key: 'custom_shield',
     name: 'Custom shield',
-    nameDe: 'Eigener Schild',
+    nameDe: 'Custom shield',
     nameEn: 'Custom shield',
     armorBonus: 2,
     maxDex: null,
