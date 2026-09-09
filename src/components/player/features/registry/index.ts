@@ -86,5 +86,12 @@ export function getAllUnifiedFeatures(pc: any): UnifiedFeature[] {
   // 4. Racial Traits
   features.push(...getRacialTraits(pc));
 
+  // 5. Prioritize Specialist School / Arcane Specialization to ALWAYS be at the very top
+  const specIndex = features.findIndex((f) => f.id === 'wizard_specialization');
+  if (specIndex > 0) {
+    const [specFeat] = features.splice(specIndex, 1);
+    features.unshift(specFeat);
+  }
+
   return features;
 }

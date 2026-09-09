@@ -1,120 +1,176 @@
 /**
  * @module    PCSpellsTab
- * @summary   Wrapper component for the spellbook tab. Coordinates the left spellbook and the right dashboard (Preparation vs. Compendium).
- * @exports   PCSpellsTab
- * @reads     pc.classes
- * @depends   React, PCSpellbookTab, PCSpellPreparation, PCSpellCompendium
+ * @summary   The Arcane Hub: Compact, tablet-optimized all-in-one Grimoire view with on-demand Compendium drawer.
  */
 
-import React, { useState, useEffect } from 'react';
-import { PCSpellbookTab } from './PCSpellbookTab';
-import { PCSpellPreparation } from './PCSpellPreparation';
-import { PCSpellCompendium } from './PCSpellCompendium';
+import React, { useState } from 'react';
+import { CombatState } from '@core/state.js';
+import { showCustomConfirm, showNewDayTemplateDialog } from '@core/ui/components/dialogs.js';
+import { PCSpellsHeaderBar } from './spells/PCSpellsHeaderBar';
+import { PCCompactGrimoireView } from './spells/PCCompactGrimoireView';
+import { PCSpellLibraryPanel } from './spells/PCSpellLibraryPanel';
+import { WizardSpecializationDialog } from '../dialogs/BaseDialogs';
 
 interface PCSpellsTabProps {
   pc: any;
 }
 
 export const PCSpellsTab: React.FC<PCSpellsTabProps> = ({ pc }) => {
-  const casterClasses = ['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'];
-  const hasCasterClass = Array.isArray(pc.classes) && pc.classes.some((c: any) => casterClasses.includes(c.classType));
+  const [, setTick] = useState(0);
+  const triggerRender = () => setTick((t) => t + 1);
 
-  const hasPrepared = Array.isArray(pc.classes) && pc.classes.some((c: any) => 
-    ['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)
-  );
+  const casterClasses = [
+    'wizard',
+    'cleric',
+    'druid',
+    'paladin',
+    'ranger',
+    'sorcerer',
+    'bard',
+    'duskblade',
+    'beguiler',
+    'assassin',
+  ];
+  const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
+  const hasCasterClass =
+    hasClasses && pc.classes.some((c: any) => casterClasses.includes(c.classType));
 
-  const [rightTab, setRightTab] = useState<'prepared' | 'compendium'>('prepared');
+  const hasPrepared =
+    hasClasses &&
+    pc.classes.some((c: any) =>
+      ['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'duskblade'].includes(c.classType)
+    );
 
-  // Adjust default tab if caster is spontaneous
-  useEffect(() => {
-    if (!hasPrepared) {
-      setRightTab('compendium');
-    } else {
-      setRightTab('prepared');
-    }
-  }, [hasPrepared]);
+  const isWizard = hasClasses && pc.classes.some((c: any) => c.classType === 'wizard');
+
+  // Library panel sub-tab (Learned Spells vs Compendium)
+  const [libraryTab, setLibraryTab] = useState<'spellbook' | 'compendium'>('spellbook');
+  const [isSpecDialogOpen, setIsSpecDialogOpen] = useState(false);
 
   if (!hasCasterClass) {
     return (
-      <div style={{
-        fontStyle: 'italic',
-        color: 'var(--inkl)',
-        fontSize: '11px',
-        textAlign: 'center',
-        padding: '40px 20px',
-        background: 'rgba(0,0,0,0.02)',
-        border: '0.5px dashed var(--pb)',
-        borderRadius: '4px',
-        fontFamily: 'var(--font-body)'
-      }}>
-        🔮 This character does not have any spellcasting classes (e.g., Wizard, Cleric, Bard).
+      <div
+        style={{
+          fontStyle: 'italic',
+          color: 'var(--inkl)',
+          fontSize: '11px',
+          textAlign: 'center',
+          padding: '40px 20px',
+          background: 'rgba(0,0,0,0.02)',
+          border: '0.5px dashed var(--pb)',
+          borderRadius: '4px',
+          fontFamily: 'var(--font-body)',
+        }}
+      >
+        🔮 This character does not possess any spellcasting classes (e.g., Wizard, Cleric, Bard).
       </div>
     );
   }
 
+  const handleNewDayReset = () => {
+    const performNewDayReset = (templateChoice = 'keep') => {
+      CombatState.updatePCBatch((freshPc: any) => {
+        if (templateChoice === 'empty') {
+          freshPc.preparedSpells = [];
+        } else if (templateChoice !== 'keep') {
+          for (let lvl = 0; lvl <= 9; lvl++) {
+            if (freshPc.spellSlots?.[lvl]) {
+              freshPc.spellSlots[lvl].used = 0;
+            }
+          }
+          const template = freshPc.spellTemplates?.[templateChoice];
+          if (template) {
+            freshPc.preparedSpells = JSON.parse(JSON.stringify(template));
+          }
+        } else {
+          // Keep spells, restore used state
+          if (Array.isArray(freshPc.preparedSpells)) {
+            freshPc.preparedSpells.forEach((p: any) => {
+              p.isUsed = false;
+            });
+          }
+        }
+
+        // Reset all slot bubble usages
+        for (let lvl = 0; lvl <= 9; lvl++) {
+          if (freshPc.spellSlots?.[lvl]) {
+            freshPc.spellSlots[lvl].used = 0;
+          }
+        }
+      });
+
+      CombatState.resetDailyResources();
+      triggerRender();
+    };
+
+    if (hasPrepared) {
+      showNewDayTemplateDialog(pc, pc.spellTemplates || {}, (choice: string) => {
+        performNewDayReset(choice);
+      });
+    } else {
+      showCustomConfirm(
+        'A New Day! 🌅',
+        'Would you like to restore all spent spell slots and daily class features and begin a new day?',
+        () => {
+          performNewDayReset('keep');
+        }
+      );
+    }
+  };
+
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '12px', height: '100%', boxSizing: 'border-box' }}>
-      {/* Left Column: Slots & Library */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', borderRight: '0.5px solid rgba(200, 169, 110, 0.2)', paddingRight: '8px' }}>
-        <PCSpellbookTab pc={pc} />
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '6px',
+        boxSizing: 'border-box',
+        minHeight: '520px',
+        width: '100%',
+      }}
+    >
+      {/* 1. Global Status Bar: Specialization, transparent ASF, and Daily Reset */}
+      <PCSpellsHeaderBar
+        pc={pc}
+        onOpenSpecializationDialog={isWizard ? () => setIsSpecDialogOpen(true) : undefined}
+        onNewDayReset={handleNewDayReset}
+      />
+
+      {/* 2. Main Body: 2-Column Responsive Layout */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'minmax(330px, 1.15fr) minmax(300px, 1fr)',
+          gap: '8px',
+          alignItems: 'start',
+          width: '100%',
+        }}
+      >
+        {/* Left Column: Active Grimoire (Slots & Prepared Spells / Cast View) */}
+        <PCCompactGrimoireView
+          pc={pc}
+          onOpenCompendium={() => setLibraryTab('compendium')}
+        />
+
+        {/* Right Column: Spell Library (Learned Spells) & Compendium */}
+        <PCSpellLibraryPanel
+          pc={pc}
+          activeTab={libraryTab}
+          onTabChange={setLibraryTab}
+        />
       </div>
 
-      {/* Right Column: Dashboards (Preparation or Compendium) */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-        {/* Right Tab Navigation */}
-        <div style={{
-          display: 'flex',
-          borderBottom: '1.5px solid var(--pb)',
-          marginBottom: '4px',
-          fontFamily: 'var(--font-title)',
-          fontSize: '11px',
-          gap: '8px'
-        }}>
-          {hasPrepared && (
-            <button
-              onClick={() => setRightTab('prepared')}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                borderBottom: rightTab === 'prepared' ? '2px solid var(--red)' : '2px solid transparent',
-                color: rightTab === 'prepared' ? 'var(--red)' : 'var(--inkm)',
-                padding: '4px 8px 2px 8px',
-                cursor: 'pointer',
-                fontWeight: 'bold',
-                transition: 'all 0.15s ease',
-                outline: 'none'
-              }}
-            >
-              🌅 Preparation
-            </button>
-          )}
-          <button
-            onClick={() => setRightTab('compendium')}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              borderBottom: rightTab === 'compendium' ? '2px solid var(--red)' : '2px solid transparent',
-              color: rightTab === 'compendium' ? 'var(--red)' : 'var(--inkm)',
-              padding: '4px 8px 2px 8px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              transition: 'all 0.15s ease',
-              outline: 'none'
-            }}
-          >
-            📚 Compendium
-          </button>
-        </div>
-
-        {/* Tab Content */}
-        <div style={{ padding: '2px 0' }}>
-          {rightTab === 'prepared' && hasPrepared ? (
-            <PCSpellPreparation pc={pc} />
-          ) : (
-            <PCSpellCompendium pc={pc} />
-          )}
-        </div>
-      </div>
+      {/* Wizard Specialization Modal */}
+      {isWizard && (
+        <WizardSpecializationDialog
+          pc={pc}
+          isOpen={isSpecDialogOpen}
+          onClose={() => {
+            setIsSpecDialogOpen(false);
+            triggerRender();
+          }}
+        />
+      )}
     </div>
   );
 };

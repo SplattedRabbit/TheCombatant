@@ -125,6 +125,28 @@ declare module '@core/rules/SpellRules.js' {
   export const calculateCasterLevel: (...args: any[]) => number;
 }
 
+declare module '@core/rules/SpellSlotCalculator.js' {
+  export const SpellSlotCalculator: {
+    calculateSpellSlots: (pc: any) => Record<number, number>;
+    countPreparedDomainSpellsAtLevel: (pc: any, level: number) => number;
+    countPreparedSpellsAtLevel: (pc: any, level: number) => number;
+    getAdjustedSpellLevel: (spell: any, metamagic: any[]) => number;
+    [key: string]: any;
+  };
+}
+
+declare module '@core/spells.js' {
+  export const CombatSpells: {
+    REGISTRY: Record<string, any>;
+    loadSpells: () => Promise<boolean>;
+    [key: string]: any;
+  };
+  export const getSpellSchoolCode: (schoolStr?: string, id?: string, name?: string) => string | null;
+  export const getSchoolCodeFromInput: (inputStr?: string) => string | null;
+  export const getSchoolLabel: (code: string) => string;
+  export const findSpell: (pc: any, key: string) => any;
+}
+
 declare module '@core/rules/classValidation.js' {
   export const validatePrestigeClassPrereqs: (pc: any, classKey: string) => { success: boolean; metDetails: any[] };
   export const isOnlySpecialTextUnmet: (validation: { success: boolean; metDetails: any[] }) => boolean;

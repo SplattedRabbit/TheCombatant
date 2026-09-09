@@ -1,28 +1,48 @@
-# Übergabe & Systemstatus (v6.6.0 / Branch `main`) — The Combatant
+# Übergabe & Systemstatus (v6.8.0 / Branch `feature/spell_selection_wizard`) — The Combatant
 
 ## 🚀 Copy-Paste Prompt für den neuen Rechner / neuen Chat
 
 ```markdown
-Wir setzen die Entwicklung von The Combatant auf Basis von Branch `main` (Version v6.6.0 / aktueller Stand) fort.
+Wir setzen die Entwicklung von The Combatant auf Basis von Branch `feature/spell_selection_wizard` (Version v6.8.0 / aktueller Stand) fort.
 
 Zuletzt abgeschlossen:
-1. Redesign des "Class & Companion Features" Tabs:
-   - Daily Combat Resources Bar (`QuickCombatDashboard.tsx`): Interaktive Klick-Pips am oberen Rand für Smite Evil/Corrupt, Turn Undead, Barbarian Rage, Bardic Music und dynamischer HP-Zähler für Lay on Hands.
-   - Live-Suche & Kategoriefilter (`FeaturesFilterBar.tsx`): Filter-Pills (All, Combat/Active, Daily Resources, Passives, Auras, Spell-like) mit Live-Zählern und Sofortsuche über Namen, Quellen, Zusammenfassungen und RAW-Regeln.
-   - Unified Feature Cards mit Stacking & Merging (`UnifiedFeatureCard.tsx`, `featureRegistry.ts`): Kumulative Boni werden automatisch zusammengeführt (z. B. Sneak Attack +5d6 aus Rogue + Shadowbane Inquisitor, Turn Undead Stufen), inklusive Herkunfts- und Kategorie-Badges.
-   - RAW Rules Inspector Drawer (`RulesInspectorDrawer.tsx`): Klick auf eine Fähigkeit öffnet rechts den vollständigen offiziellen D&D 3.5e RAW-Regeltext samt Aktionsökonomie, Dauer, Reichweite und Stacking-Quellen.
-   - Begleiter-Hub & Mini-Widget (`CompanionMiniStatusWidget.tsx`): Rechts dauerhaft Begleiter-HP, RK und Schnellangriffe im Blick + Umschalter für das vollständige Begleiter-Sheet.
-   - Design System: Alle weißen Hintergründe durch das warme D&D-Fantasy-Pergament-Theme (`var(--pb)`, Pergament-Gradients) ersetzt.
-2. Neuer Democharakter ("Kaelen Swiftblade"):
-   - Vollständig konfigurierter Level 13 Battle Trickster (Human Fighter 6 / Rogue 4 / Battle Trickster 3) in `encounter-samples.js` und im Sample-Auswahldialog hinterlegt (BAB +11/+6/+1, Keen Rapier 15–20/x2, Skill-Tricks, magische Ausrüstung, RK 24).
-3. Character Wizard Audit:
-   - Verifiziert, dass im Wizard (Schritt 3) bei Feats, ACFs und Skill-Tricks eine tiefe Stichwortsuche in den Regeln aktiv ist.
-4. Test- & Build-Status:
-   - 343 Node-Tests (`npm test`) in 24 Suites → 100% bestanden (0 Fehler).
-   - 41 Vitest UI-Tests (`npm run test:ui`) in 7 Suites → 100% bestanden (0 Fehler).
+1. Spell Selection im Level-Up Wizard & D&D 3.5e RAW Quota Engine:
+   - Dynamischer Schritt 4 (`🔮 Spells`) für Zauberwirker (`StepSpells.tsx`, `LevelUpDialog.tsx`). Nicht-Zauberwirker verbleiben schlank bei 4 Schritten.
+   - RAW-Quota-Berechnung (`levelUpSpellRules.ts`):
+     * Wizard / Spellbook: 2 freie Zauber bis maximal verfügbarer Zaubergrad.
+     * Spontane Caster (Sorcerer, Bard): Exakter Abgleich neuer Spells Known laut Tabellen.
+     * Divine / Full-List (Cleric, Druid, Paladin, Ranger): Infobanner über neu freigeschaltete Zaubergrade.
+     * Prestige-Klassen-Verlinkung: Nahtlose Fortführung über `prestigeSpellLinks` (z. B. Spellwarp Sniper -> Wizard).
+   - Spell-Picker mit persistentem Auswahl-Tray, Sofortsuche, Grad- & Schulenfiltern, Zähler-Badge und RAW Rules Inspector Drawer.
+   - Validation-Guard vor dem Review-Schritt und automatische Speicherung in `pc.learnedSpells` + `pc.spellSlots`.
+2. Wizard Arcane School Specialization & Prohibited Schools:
+   - `WizardSpecializationDialog.tsx` für die RAW 3.5e Schulwahl (Universalist, Diviner mit 1 Bannschule, alle anderen Spezialisten mit 2 Bannschulen).
+   - Class & Companion Features Tab (`PCFeaturesTab.tsx`): Spezialschule steht IMMER an oberster Stelle und hebt sich dezent ab (Akademie-Badge, Pergament-Gradient, feine rote Akzentlinie). Klick öffnet RAW Inspector mit Konfigurations-Button.
+3. Spells Tab Redesign (High-Density 2-Spalten-Grimoire & Modularisierung):
+   - `PCSpellsHeaderBar.tsx`: Schlanke ~26px Statuszeile mit Spezialisierungspille, transparenter ASF-Pill (nur sichtbar bei ASF > 0%) und Daily Reset.
+   - Linke Spalte `⚔️ Active Grimoire` (`PCCompactGrimoireView.tsx` & `grimoire/`):
+     * `GrimoireTemplateMenu.tsx`: Kompaktes Popover für Tages-Templates (blickdicht auf `var(--p)` mit hohem Z-Index).
+     * `GrimoireLevelGroup.tsx`: Grad-Subheader mit Save DC & Slotzähler.
+     * `GrimoireSpellRow.tsx`: ~22px Zeilen mit Stufe, Name, Schule, Reichweite, DC, Spezialist (`⭐ Spec`) und `[⚡ Cast]` + `[✕]`.
+     * `GrimoireEmptySlotRow.tsx`: Gestrichelte Inline-Zeile für freie Slots (`+ Prepare Spell`).
+     * `GrimoireSpentSpells.tsx`: Durchgestrichene Badges verbrauchter Zauber mit `[↺]`.
+     * `grimoireActions.ts`: Kapselung von Zauberwirken, Slot-Abzug, Metamagie und Vorbereitung.
+   - Rechte Spalte `📖 Spell Library & Compendium` (`PCSpellLibraryPanel.tsx` & `SpellLibraryList.tsx`):
+     * Tab-Umschaltung `[📖 Spell Library (X)]` und `[📚 Compendium]`.
+     * Gelerntes Zauberbuch mit Echtzeitsuche, Grad-Filtern und 1-Klick `[+ Prepare]`-Zuweisung in freie Slots links.
+     * Vollbild-Button entfernt; konsistente 2-Spalten-Struktur beibehalten.
+     * Alle weißen Hintergründe durch authentische Pergament-Farben (`rgba(200, 169, 110, ...)`) ersetzt.
+   - Strikte Modularisierung: Alle Grimoire-Dateien unter 300 Zeilen (Clean Code & Single Responsibility).
+   - Bugfix Spell Failure: `spellFailureHelper.ts` für itemisierte Berechnung; `spellFailureOverride: 0` für Mithral Twilight Chain Shirt +1 in Demodaten.
+4. Bugfix: Blickdichte Dropdown-Hintergründe & CSS-Aliasse:
+   - `--parchment` und `--pf` in `css/main.css` global auf `--p: #f4e8c1` registriert.
+   - Dropdowns in `UserMenu.tsx`, `GrimoireTemplateMenu.tsx` und `TablePresenceBar.tsx` auf solide Hintergründe und `box-shadow` umgestellt (kein Durchscheinen mehr).
+5. Bugfix: Historical Skill Ranks Halving im Level-Up Assistant:
+   - Behoben, dass historische Skill-Ränge in Level 1 durch Cross-Class-Regeln halbiert wurden (`helpers.ts`, `levelUpAdapter.ts`), wodurch z. B. der Spellwarp Sniper fälschlicherweise blockiert wurde.
+6. Test- & Build-Status:
+   - 350 Node-Tests (`npm test`) in 24 Suites → 100% bestanden (0 Fehler).
+   - 47 Vitest UI-Tests (`npm run test:ui`) in 7 Suites → 100% bestanden (0 Fehler).
    - TypeScript (`npm run typecheck`) → 0 Fehler.
-   - Produktions-Build (`npm run build`) → erfolgreich generiert (Code 0).
-   - Branch `class_feature_rebuild` vollständig nach `main` gemergt und auf GitHub synchronisiert.
 ```
 
 ---
@@ -30,13 +50,11 @@ Zuletzt abgeschlossen:
 ## 📋 Systemstatus & Git-Metadaten
 
 * **Repository:** `https://github.com/SplattedRabbit/TheCombatant.git`
-* **Aktueller Branch:** `main` (Up-to-date mit Remote `origin/main`)
-* **Letzter Commit:** `e0655cd` (*"build: update service worker cache version"*)
+* **Aktueller Branch:** `feature/spell_selection_wizard`
 * **Test-Suite:** 
-  * 343 Node-Tests (`npm test`) $\rightarrow$ **343 / 343 bestanden (100% Pass)**
-  * 41 Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **41 / 41 bestanden (100% Pass)**
+  * 350 Node-Tests (`npm test`) $\rightarrow$ **350 / 350 bestanden (100% Pass)**
+  * 47 Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **47 / 47 bestanden (100% Pass)**
 * **TypeScript-Prüfung:** `npm run typecheck` (`tsc --noEmit`) $\rightarrow$ **0 Fehler**
-* **Produktions-Build:** `npm run build` $\rightarrow$ **Erfolgreich (Code 0)**
 
 ---
 

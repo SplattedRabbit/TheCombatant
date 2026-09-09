@@ -8,6 +8,7 @@ import { CombatFeats } from '@core/data/feats-data.js';
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
 import { SKILL_TRICKS_REGISTRY } from '@core/data/skillTricks-data.js';
 import { getACF } from '@core/data/acf-data.js';
+import { CombatSpells } from '@core/spells.js';
 import { CLASSES_LIST } from '../../wizard/constants';
 
 export interface Step4ReviewProps {
@@ -173,6 +174,37 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
               <strong style={{ fontSize: '12px', color: 'var(--ink)' }}>
                 {chosenACFs.join(', ')}
               </strong>
+            </div>
+          )}
+
+          {/* New Spells Learned */}
+          {Array.isArray(currentConfig.spells) && currentConfig.spells.length > 0 && (
+            <div style={{ background: 'rgba(200, 169, 110, 0.12)', padding: '8px 10px', borderRadius: '4px', border: '0.5px solid var(--pb)' }}>
+              <span style={{ fontSize: '10px', color: 'var(--inkl)', textTransform: 'uppercase', display: 'block' }}>
+                🔮 New Spells Learned ({currentConfig.spells.length})
+              </span>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '4px' }}>
+                {currentConfig.spells.map((sKey: string) => {
+                  const sp = (CombatSpells.REGISTRY as any)?.[sKey];
+                  const name = sp?.nameDe || sp?.name || sp?.nameEn || sKey;
+                  return (
+                    <span
+                      key={sKey}
+                      style={{
+                        fontSize: '11px',
+                        background: 'rgba(139, 26, 26, 0.08)',
+                        border: '1px solid rgba(139, 26, 26, 0.2)',
+                        borderRadius: '3px',
+                        padding: '2px 6px',
+                        color: 'var(--red)',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      {name}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           )}
 

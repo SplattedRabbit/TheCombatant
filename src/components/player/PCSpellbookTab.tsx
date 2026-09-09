@@ -7,9 +7,9 @@
  * @depends   React, @core/state.js, @core/spells.js, @core/rules/SpellSlotCalculator.js, @core/ui/components/dialogs.js
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
-import { CombatSpells } from '@core/spells.js';
+import { CombatSpells, getSchoolLabel } from '@core/spells.js';
 import {
   showCustomConfirm,
   showPrepareSpellDialog,
@@ -17,6 +17,7 @@ import {
   showNewDayTemplateDialog,
   showSpellDetailsDialog,
 } from '@core/ui/components/dialogs.js';
+import { WizardSpecializationDialog } from '../dialogs/BaseDialogs';
 
 interface PCSpellbookTabProps {
   pc: any;
@@ -178,11 +179,77 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
     groupedSpells[s.level].push(s);
   });
 
+  const isWizard = hasClasses && pc.classes.some((c: any) => c.classType === 'wizard');
+  const [isSpecDialogOpen, setIsSpecDialogOpen] = useState(false);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       {totalASF > 0 && (
         <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '3px', padding: '4px 8px', display: 'flex', alignItems: 'center', gap: '6px', fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', fontWeight: 'bold' }}>
           <span>⚠️ Arcane Spell Failure: {totalASF}% chance of failure for arcane spells</span>
+        </div>
+      )}
+
+      {/* Wizard Arcane Specialization Banner */}
+      {isWizard && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '6px 10px',
+            background: 'linear-gradient(90deg, rgba(200, 169, 110, 0.18), rgba(200, 169, 110, 0.06))',
+            border: '1px solid var(--pb)',
+            borderRadius: '4px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+            <span style={{ fontSize: '15px' }}>🎭</span>
+            <div>
+              <div style={{ fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
+                {pc.wizardSpecialization && pc.wizardSpecialization !== 'none'
+                  ? `Specialist: ${getSchoolLabel(pc.wizardSpecialization)}`
+                  : 'Arcane School: Universalist (Generalist)'}
+              </div>
+              <div style={{ fontSize: '9px', color: 'var(--inkm)' }}>
+                {pc.wizardSpecialization && pc.wizardSpecialization !== 'none' ? (
+                  <>
+                    <span style={{ color: '#2e7d32', fontWeight: 600 }}>+1 Specialty Slot / Level</span>
+                    {[pc.wizardProhibited1, pc.wizardProhibited2].filter(Boolean).length > 0 && (
+                      <span style={{ marginLeft: '6px', color: 'var(--red)' }}>
+                        • Banned: {[pc.wizardProhibited1, pc.wizardProhibited2].filter(Boolean).map(getSchoolLabel).join(', ')}
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  'Full access to all magic schools • No prohibited schools'
+                )}
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setIsSpecDialogOpen(true)}
+            className="btn"
+            style={{
+              fontSize: '9px',
+              padding: '2px 8px',
+              height: '22px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              fontWeight: 'bold',
+              fontFamily: 'var(--font-title)',
+              cursor: 'pointer',
+              border: '1px solid var(--pb)',
+              background: 'rgba(200, 169, 110, 0.15)',
+              color: 'var(--ink)',
+            }}
+            title="Configure Wizard Specialization & Prohibited Schools"
+          >
+            <span>⚙️</span> {pc.wizardSpecialization && pc.wizardSpecialization !== 'none' ? 'Change School' : 'Specialize'}
+          </button>
         </div>
       )}
 
@@ -313,6 +380,14 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
           )}
         </div>
       </div>
+
+      {isWizard && (
+        <WizardSpecializationDialog
+          pc={pc}
+          isOpen={isSpecDialogOpen}
+          onClose={() => setIsSpecDialogOpen(false)}
+        />
+      )}
     </div>
   );
 };

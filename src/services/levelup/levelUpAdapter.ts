@@ -72,10 +72,12 @@ export function createLevelUpDraft(activePC: any): LevelUpDraftState {
       classType: clsType,
       hpRoll: defaultHp,
       abilityIncrease: null,
+      isHistoricalRanks: i === 0,
       skills: i === 0 ? { ...currentSkills } : {}, // assign all historical skill ranks to base
       skillTricks: i === 0 ? [...currentTricks] : [],
       feats: i === 0 ? [...currentFeatIds] : [],
       acfs: i === 0 ? [...currentACFs] : [],
+      prestigeSpellLinks: activePC.prestigeSpellLinks ? { ...activePC.prestigeSpellLinks } : undefined,
     });
   }
 
@@ -111,6 +113,7 @@ export function createLevelUpDraft(activePC: any): LevelUpDraftState {
     skillTricks: [],
     feats: [],
     acfs: [],
+    prestigeSpellLinks: activePC.prestigeSpellLinks ? { ...activePC.prestigeSpellLinks } : undefined,
   });
 
   const prevDraft = getDraftPCState(newLevelIndex - 1, baseStats, selectedRace, levelConfigs, activePC?.alignment);
