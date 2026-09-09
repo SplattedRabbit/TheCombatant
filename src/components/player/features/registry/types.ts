@@ -12,7 +12,7 @@ export interface UnifiedFeature {
   typeLabel: string;
   summary: string;
   rawRules: string;
-  actionType: 'Passive' | 'Free Action' | 'Swift Action' | 'Standard Action' | 'Full-Round Action' | 'Immediate Action' | 'Special';
+  actionType: 'Passive' | 'Free Action' | 'Swift Action' | 'Move Action' | 'Standard Action' | 'Full-Round Action' | 'Immediate Action' | 'Special';
   duration?: string;
   range?: string;
   stackInfo?: string;

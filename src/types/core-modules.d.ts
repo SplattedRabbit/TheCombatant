@@ -131,6 +131,7 @@ declare module '@core/rules/classValidation.js' {
 }
 
 declare module '@core/rules/prestigeClassEngine.js' {
+  export const PrestigeClassEngine: any;
   export const getPrestigeClassFeatures: (pc: any, classKey: string) => Record<string, any>;
   export const getAblMod: (stat: any) => number;
   export const getSneakAttackDiceFromPrestigeClasses: (pc: any) => number;
@@ -144,6 +145,10 @@ declare module '@core/rules/FamiliarRules.js' {
   export const FamiliarRules: any;
 }
 
+declare module '@core/rules/classes/RogueRules.js' {
+  export const RogueRules: any;
+}
+
 declare module '@core/rules/RulesFeats.js' {
   export const checkPrerequisites: (feat: any, pc: any) => any;
   export const calculateMaxFeats: (...args: any[]) => any;
@@ -153,6 +158,7 @@ declare module '@core/rules/RulesFeats.js' {
 declare module '@core/rules/RulesData.js' {
   export const CONDITIONS: any[];
   export const CLASSES: any[];
+  export const CLASSES_LIST: any[];
   export const CLASS_SKILLS: Record<string, string[]>;
   export const CLASS_PROFILES: Record<string, any>;
   export const CLASS_BASE_SKILLS: Record<string, number>;
@@ -182,6 +188,10 @@ declare module '@core/data/skillTricks-data.js' {
   export const SKILL_TRICKS_REGISTRY: Record<string, any>;
 }
 
+declare module '@core/data/domains-data.js' {
+  export const DOMAINS_REGISTRY: Record<string, any>;
+}
+
 declare module '@core/data/feats-data.js' {
   export const CombatFeats: {
     REGISTRY: Record<string, any>;
@@ -197,6 +207,7 @@ declare module '@core/data/magicItems-data.js' {
 }
 
 declare module '@core/data/prestigeClasses-data.js' {
+  export const PRESTIGE_CLASSES: any;
   export const PRESTIGE_CLASSES_REGISTRY: Record<string, any>;
 }
 

@@ -6,7 +6,7 @@
 
 import type { UnifiedFeature } from '../types.ts';
 
-export function getCSPrestigeFeatures(pc: any, classType: string, level: number, computed: any): UnifiedFeature[] {
+export function getCSPrestigeFeatures(_pc: any, classType: string, level: number, computed: any): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];
 
   // ==========================================

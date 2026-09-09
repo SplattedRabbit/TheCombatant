@@ -149,7 +149,7 @@ At 8th level, she can use the Hide skill in any natural terrain without cover. A
 • Target Loss: The target loses one prepared spell or spell slot of the chosen level (or highest level available).
 • Casting Stolen Spells: The spellthief can cast the stolen spell himself within 1 hour, using his own stats or the victim's caster level.
 • Storage Pool: A spellthief can hold a total number of stolen spell levels equal to his class level (${stLvl} spell levels).`,
-      actionType: 'Free Action on Sneak Attack',
+      actionType: 'Free Action',
       duration: '1 hour to cast stolen spell',
     });
 
@@ -165,7 +165,7 @@ At 8th level, she can use the Hide skill in any natural terrain without cover. A
         rawRules: `At 2nd level, a spellthief who hits an opponent with a sneak attack can forgo 1d6 damage to steal an active, ongoing spell effect (such as bull's strength or invisibility) from the target, suppressing it on the victim and granting its benefit to the spellthief for ${stLvl} minute(s).
 
 At 3rd level, he can forgo 1d6 sneak attack damage to steal 10 points of an energy resistance from a foe for 1 minute.`,
-        actionType: 'Free Action on Sneak Attack',
+        actionType: 'Free Action',
         duration: `${stLvl} minutes`,
       });
     }
@@ -182,7 +182,7 @@ At 3rd level, he can forgo 1d6 sneak attack damage to steal 10 points of an ener
         rawRules: `Beginning at 4th level, if a spellthief succeeds on a saving throw against a targeted spell directed at him, he can attempt a level check (1d20 + class level vs. DC 10 + spell level) to absorb the spell entirely into his stolen spell pool.
 
 At 5th level, he can use Arcane Sight at will to see magical auras on creatures and objects within 120 feet.`,
-        actionType: 'Immediate Action / Reaction',
+        actionType: 'Immediate Action',
       });
     }
   }

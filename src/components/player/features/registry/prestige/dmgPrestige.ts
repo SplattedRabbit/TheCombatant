@@ -6,7 +6,7 @@
 
 import type { UnifiedFeature } from '../types.ts';
 
-export function getDMGPrestigeFeatures(pc: any, classType: string, level: number, computed: any): UnifiedFeature[] {
+export function getDMGPrestigeFeatures(pc: any, classType: string, level: number, _computed: any): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];
 
   // ==========================================
