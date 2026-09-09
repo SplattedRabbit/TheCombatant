@@ -3,6 +3,17 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.9.0] - 2026-09-09
+
+### Added
+- **Character Creation Wizard Inline Spell Selection (`src/components/player/wizard/spells/`):**
+  - **Zero-Popup / Zero-Modal Full-Page Flow:** Integrated a dedicated full-page inline spell selection view (`Step3SpellSelectionView.tsx`) directly into Step 3 of the character creation wizard. Transition occurs seamlessly within the main wizard container when leveling up a spellcasting class.
+  - **Dynamic Level Step Transition:** For caster levels (Wizard, Sorcerer, Bard, Duskblade, etc.), the footer action button dynamically displays `"Select Spells for Level N →"`. Clicking it advances to the Level $N$ Spell Selection view, which transitions forward to Level $N+1$ (or Step 4 Review) once quotas are satisfied.
+  - **D&D 3.5e RAW Spell Quota Calculator (`spellSelectionRules.ts`):** Automatically computes spell allowances per level according to D&D 3.5e RAW (Wizard Lv.1: $3 + \max(0, \text{INT mod})$, Sorcerer/Bard spells known progression, Duskblade progression, and auto-cantrip grants).
+  - **Wizard School Specialization & Prohibited Schools Selector:** On Wizard Level 1, players can choose a Specialist School (Abjuration, Conjuration, Divination, Enchantment, Evocation, Illusion, Necromancy, Transmutation) or Generalist. Specialist selection enforces selection of required prohibited schools (1 for Divination, 2 for other schools). Prohibited schools are automatically excluded and locked out of the spell compendium.
+  - **100% Component Reuse of `PCSpellCompendium.tsx`:** Embedded the compendium directly into the inline spell selection view with support for custom learned spell sets (`customLearnedSpells`, `onLearnSpell`), full-text search, multi-source filters (PHB, PHB II, Complete Arcane, Complete Scoundrel), and spell details cards.
+  - **Wizard Review & Save Pipeline (`wizardSaveHelper.ts`, `Step4Review.tsx`):** All chosen spells and auto-granted Level 0 cantrips are saved to `freshPC.learnedSpells`, and Wizard specialization/prohibited schools are persisted to `freshPC.wizardSpecialization`, `freshPC.wizardProhibited1`, and `freshPC.wizardProhibited2`. Step 4 Review displays a complete summary of chosen schools and spells.
+
 ## [6.8.0] - 2026-09-09
 
 ### Added
