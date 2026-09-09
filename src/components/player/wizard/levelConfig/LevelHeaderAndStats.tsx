@@ -3,13 +3,12 @@
  * @summary   Level Timeline Bar, Class Selector, HP input, Ability Increase, and Current Attributes preview card.
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { CLASSES_LIST, CLASS_KEY_ATTRIBUTES } from '../constants';
 import { validatePrestigeClassPrereqs, isOnlySpecialTextUnmet } from '@core/rules.js';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { PrestigeSpellLinkSection } from './PrestigeSpellLinkSection';
 import { SpellSelectionModal } from '../spells/SpellSelectionModal';
-import { isSpellSelectorClass, getSpellSelectionQuota } from '../spells/spellSelectionRules';
 
 const PROHIBITED_SCHOOLS = [
   { value: 'abj', label: 'Abjuration' },
@@ -56,9 +55,6 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
   const isSpellModalOpen = externalIsSpellModalOpen !== undefined ? externalIsSpellModalOpen : localIsSpellModalOpen;
   const setIsSpellModalOpen = externalSetIsSpellModalOpen || setLocalIsSpellModalOpen;
 
-  const classType = currentConfig.classType || '';
-  const isSpellSelector = isSpellSelectorClass(classType);
-
   // Auto-sync Wizard school specialization across Wizard levels
   React.useEffect(() => {
     if (currentConfig?.classType === 'wizard') {
@@ -72,19 +68,6 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
       }
     }
   }, [currentConfig?.classType, currentLevelIndex, allLevelConfigs]);
-
-  const classCountAtThisLevel = allLevelConfigs
-    .slice(0, currentLevelIndex + 1)
-    .filter((c) => c.classType === classType).length || 1;
-
-  const intMod = currentDraft?.statMods?.int ?? 0;
-  const quotaInfo = useMemo(
-    () => (isSpellSelector ? getSpellSelectionQuota(classType, classCountAtThisLevel, intMod) : null),
-    [isSpellSelector, classType, classCountAtThisLevel, intMod]
-  );
-
-  const selectedSpellsCount = Array.isArray(currentConfig.spells) ? currentConfig.spells.length : 0;
-  const isQuotaFulfilled = quotaInfo ? selectedSpellsCount >= quotaInfo.quota : true;
 
   const filteredWizardClasses = CLASSES_LIST.filter((c) => {
     if (sourceTab === 'prestige' && !c.isPrestige) return false;
@@ -439,56 +422,6 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
               )}
             </div>
           )}
-        </div>
-      )}
-
-      {/* Conditional Spell Selection Trigger for Spellcasting Classes */}
-      {isSpellSelector && quotaInfo && (
-        <div
-          style={{
-            padding: '8px 10px',
-            borderRadius: '3px',
-            border: isQuotaFulfilled ? '1px solid #2e7d32' : '1px solid #b8860b',
-            background: isQuotaFulfilled ? 'rgba(46, 125, 50, 0.08)' : 'rgba(184, 134, 11, 0.08)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '8px',
-            marginTop: '4px',
-            boxSizing: 'border-box',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', textAlign: 'left', minWidth: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11px', fontWeight: 'bold', color: isQuotaFulfilled ? '#2e7d32' : '#b8860b', fontFamily: 'var(--font-title)' }}>
-              <span>✨</span>
-              <span>Spell Selection</span>
-              <span style={{ fontSize: '9.5px', opacity: 0.9 }}>
-                ({selectedSpellsCount} / {quotaInfo.quota} chosen)
-              </span>
-            </div>
-            <div style={{ fontSize: '8.5px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
-              {isQuotaFulfilled ? '✓ Required spells selected for this level.' : quotaInfo.label}
-            </div>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => setIsSpellModalOpen(true)}
-            style={{
-              padding: '4px 10px',
-              fontFamily: 'var(--font-title)',
-              fontSize: '10px',
-              fontWeight: 'bold',
-              background: isQuotaFulfilled ? 'rgba(46, 125, 50, 0.15)' : 'var(--red)',
-              color: isQuotaFulfilled ? '#2e7d32' : '#fff',
-              border: isQuotaFulfilled ? '1px solid #2e7d32' : 'none',
-              borderRadius: '2px',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {isQuotaFulfilled ? '✎ Modify Spells' : '📖 Select Spells'}
-          </button>
         </div>
       )}
 
