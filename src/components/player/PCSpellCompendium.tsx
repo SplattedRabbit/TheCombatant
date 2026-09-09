@@ -22,9 +22,11 @@ import { findSpell } from './PCSpellbookTab';
 
 interface PCSpellCompendiumProps {
   pc: any;
+  customLearnedSpells?: string[];
+  onLearnSpell?: (key: string) => void;
 }
 
-export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
+export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, customLearnedSpells, onLearnSpell }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [levelFilter, setLevelFilter] = useState('all');
   const [sourceFilter, setSourceFilter] = useState('all');
@@ -74,6 +76,11 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
   }, [allSpells, searchQuery, levelFilter, sourceFilter, filterClassAndLevel, isCaster, pc]);
 
   const handleLearnSpell = (key: string) => {
+    if (onLearnSpell) {
+      onLearnSpell(key);
+      return;
+    }
+
     const spell = findSpell(pc, key);
     if (spell) {
       const validation = validateSpellLearnEligibility(pc, spell, (k: string) => findSpell(pc, k));
@@ -122,7 +129,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc }) => {
     }
   };
 
-  const learnedSpellsSet = new Set(Array.isArray(pc.learnedSpells) ? pc.learnedSpells : []);
+  const learnedSpellsSet = new Set(Array.isArray(customLearnedSpells || pc.learnedSpells) ? (customLearnedSpells || pc.learnedSpells) : []);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>

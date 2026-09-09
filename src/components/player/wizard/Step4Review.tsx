@@ -7,6 +7,7 @@ import React from 'react';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { showAttributeExplanation } from '../attributeHelper';
 import { RACES, CLASSES_LIST } from './constants';
+import { findSpell } from '../PCSpellbookTab';
 
 interface Step4ReviewProps {
   name: string;
@@ -32,6 +33,16 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
   const conMod = currentDraft ? currentDraft.statMods.con : 0;
   const totalHPRolls = levelConfigs.reduce((sum, cfg) => sum + (parseInt(cfg.hpRoll) || 0), 0);
   const finalMaxHP = levelConfigs.reduce((sum, cfg) => sum + Math.max(1, (parseInt(cfg.hpRoll) || 0) + conMod), 0);
+
+  const allSelectedSpells: string[] = [];
+  levelConfigs.forEach((cfg) => {
+    if (Array.isArray(cfg.spells)) {
+      cfg.spells.forEach((spId: string) => {
+        if (!allSelectedSpells.includes(spId)) allSelectedSpells.push(spId);
+      });
+    }
+  });
+  const hasWizard = currentDraft?.classesList?.some((c: any) => c.classType === 'wizard');
 
   return (
     <div style={{ textAlign: 'left', marginTop: '10px' }}>
@@ -133,6 +144,37 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
           ).filter(Boolean)}
         </div>
       </div>
+
+      {/* Spells Summary */}
+      {(allSelectedSpells.length > 0 || hasWizard) && (
+        <div style={{ padding: '16px', border: '1px solid var(--pb)', background: 'rgba(244,232,193,0.3)', borderRadius: '4px', marginTop: '15px' }}>
+          <h4 style={{ margin: '0 0 10px 0', color: 'var(--red)', fontSize: '14px', borderBottom: '0.5px solid var(--pb)', paddingBottom: '3px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span>Learned Spells / Spellbook</span>
+            <span style={{ fontSize: '11px', color: 'var(--inkm)', fontWeight: 'normal' }}>
+              {allSelectedSpells.length} chosen {hasWizard ? '+ all 0-level Cantrips' : ''}
+            </span>
+          </h4>
+          {allSelectedSpells.length > 0 ? (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {allSelectedSpells.map((spId) => {
+                const spObj = findSpell(currentDraft?.draftPC, spId);
+                return (
+                  <div
+                    key={spId}
+                    style={{ padding: '3px 8px', background: 'rgba(46,125,50,0.08)', border: '1px solid rgba(46,125,50,0.3)', borderRadius: '3px', fontSize: '11px', color: '#1b5e20' }}
+                  >
+                    📜 {spObj ? spObj.nameEn || spObj.nameDe || spId : spId} {spObj ? `(Lv. ${spObj.level})` : ''}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div style={{ fontSize: '11px', color: 'var(--inkm)', fontStyle: 'italic' }}>
+              All 0-level Cantrips will be automatically added to your Spellbook upon creation.
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

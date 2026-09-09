@@ -218,6 +218,7 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
             completedDraft={completedDraft}
             getClassHitDie={getClassHitDie}
             updateLevelConfig={updateLevelConfig}
+            allLevelConfigs={levelConfigs}
           />
 
           {/* Target Prestige Class Live Prerequisite Tracker */}

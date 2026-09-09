@@ -5,6 +5,7 @@
 
 import { CombatState } from '@core/state.js';
 import { getFeatSlotsAtLevel } from './helpers.ts';
+import { getAllCompendiumSpells } from '@core/rules.js';
 
 export function applyWizardCharacterToState(
   name: string,
@@ -110,14 +111,39 @@ export function applyWizardCharacterToState(
     freshPC.immunities = '';
     freshPC.resistances = '';
 
-    // Reset spells, spell slots, active buffs, and daily abilities
+    // Spells, spell slots, active buffs, and daily abilities
     freshPC.activeBuffs = [];
     freshPC.quickBuffs = [];
-    freshPC.learnedSpells = [];
     freshPC.preparedSpells = [];
     freshPC.customSpells = [];
     freshPC.spellTemplates = {};
     freshPC.dailyAbilities = [];
+
+    const allSelectedSpells: string[] = [];
+    levelConfigs.forEach(cfg => {
+      if (Array.isArray(cfg.spells)) {
+        cfg.spells.forEach((spId: string) => {
+          if (!allSelectedSpells.includes(spId)) {
+            allSelectedSpells.push(spId);
+          }
+        });
+      }
+    });
+
+    if (freshPC.classes.some((c: any) => c.classType === 'wizard')) {
+      const allCompSpells = getAllCompendiumSpells(freshPC) as any[];
+      allCompSpells.forEach(s => {
+        if (s.level === 0 && Array.isArray(s.classes) && s.classes.includes('wizard')) {
+          if (freshPC.wizardProhibited1 && s.school && s.school.toLowerCase() === freshPC.wizardProhibited1.toLowerCase()) return;
+          if (freshPC.wizardProhibited2 && s.school && s.school.toLowerCase() === freshPC.wizardProhibited2.toLowerCase()) return;
+          if (!allSelectedSpells.includes(s.id)) {
+            allSelectedSpells.push(s.id);
+          }
+        }
+      });
+    }
+    freshPC.learnedSpells = allSelectedSpells;
+
     const cleanSpellSlots: Record<number, { max: number; used: number }> = {};
     for (let lvl = 0; lvl <= 9; lvl++) {
       cleanSpellSlots[lvl] = { max: 0, used: 0 };
