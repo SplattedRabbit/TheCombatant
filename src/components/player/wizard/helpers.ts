@@ -130,12 +130,17 @@ export const getDraftPCState = (
         if (!skillsAcc[sKey]) {
           skillsAcc[sKey] = { ranks: 0, misc: 0, spent: 0 };
         }
-        // Each click in class skill = 1.0 rank, cross-class = 0.5 ranks
-        const wasClass = CombatRules.CLASS_SKILLS[cfg.classType]?.includes(sKey) || 
-                         (sKey.startsWith('knowledge_') && (cfg.classType === 'wizard' || cfg.classType === 'bard'));
-        const increment = wasClass ? 1.0 : 0.5;
-        skillsAcc[sKey].ranks += (clicks as number) * increment;
-        skillsAcc[sKey].spent = (skillsAcc[sKey].spent || 0) + (clicks as number);
+        if (cfg.isHistoricalRanks) {
+          skillsAcc[sKey].ranks += (clicks as number);
+          skillsAcc[sKey].spent = (skillsAcc[sKey].spent || 0) + (clicks as number);
+        } else {
+          // Each click in class skill = 1.0 rank, cross-class = 0.5 ranks
+          const wasClass = CombatRules.CLASS_SKILLS[cfg.classType]?.includes(sKey) || 
+                           (sKey.startsWith('knowledge_') && (cfg.classType === 'wizard' || cfg.classType === 'bard'));
+          const increment = wasClass ? 1.0 : 0.5;
+          skillsAcc[sKey].ranks += (clicks as number) * increment;
+          skillsAcc[sKey].spent = (skillsAcc[sKey].spent || 0) + (clicks as number);
+        }
       });
     }
   }
@@ -319,11 +324,17 @@ export const getCompletedDraftPCState = (
         if (!skillsAcc[sKey]) {
           skillsAcc[sKey] = { ranks: 0, misc: 0, spent: 0 };
         }
-        const wasClass = CombatRules.CLASS_SKILLS[cfg.classType]?.includes(sKey) || 
-                         (sKey.startsWith('knowledge_') && (cfg.classType === 'wizard' || cfg.classType === 'bard'));
-        const increment = wasClass ? 1.0 : 0.5;
-        skillsAcc[sKey].ranks += (clicks as number) * increment;
-        skillsAcc[sKey].spent = (skillsAcc[sKey].spent || 0) + (clicks as number);
+        if (cfg.isHistoricalRanks) {
+          skillsAcc[sKey].ranks += (clicks as number);
+          skillsAcc[sKey].spent = (skillsAcc[sKey].spent || 0) + (clicks as number);
+        } else {
+          // Each click in class skill = 1.0 rank, cross-class = 0.5 ranks
+          const wasClass = CombatRules.CLASS_SKILLS[cfg.classType]?.includes(sKey) || 
+                           (sKey.startsWith('knowledge_') && (cfg.classType === 'wizard' || cfg.classType === 'bard'));
+          const increment = wasClass ? 1.0 : 0.5;
+          skillsAcc[sKey].ranks += (clicks as number) * increment;
+          skillsAcc[sKey].spent = (skillsAcc[sKey].spent || 0) + (clicks as number);
+        }
       });
     }
   }

@@ -292,6 +292,19 @@ To learn, prepare, or cast a spell, the wizard must have an Intelligence score e
 To specialize, a wizard must select prohibited schools from which she can never learn or cast spells (${prohibited.length > 0 ? prohibited.join(', ') : '2 prohibited schools required'}).`,
         actionType: 'Passive',
       });
+    } else {
+      features.push({
+        id: 'wizard_specialization',
+        name: 'Arcane School: Universalist',
+        source: `Wizard Lv.${wLvl}`,
+        category: 'passive',
+        typeLabel: 'Arcane Specialization',
+        summary: 'Study all 8 schools of magic without prohibited schools. Standard spell slots without specialist bonuses.',
+        rawRules: `A generalist wizard studies all schools of magic universally. A generalist wizard does not gain bonus spell slots from school specialization, but has no prohibited schools and may freely cast and prepare spells of any school.
+
+A wizard may choose to specialize in one school to gain +1 bonus spell slot per spell level in exchange for 2 prohibited schools (1 for Divination).`,
+        actionType: 'Passive',
+      });
     }
 
     // 3. Summon Familiar (Core PHB, replaced if Immediate Magic or similar ACF is taken)

@@ -130,7 +130,37 @@ export function applyLevelUpToActivePC(
       }
     }
 
-    // 8. Rebuild all calculations
+    // 8. Prestige spell links
+    if (newLevelConfig.prestigeSpellLinks) {
+      pc.prestigeSpellLinks = {
+        ...(pc.prestigeSpellLinks || {}),
+        ...newLevelConfig.prestigeSpellLinks
+      };
+    }
+
+    // 9. Spells additions
+    if (Array.isArray(newLevelConfig.spells) && newLevelConfig.spells.length > 0) {
+      if (!Array.isArray(pc.learnedSpells)) pc.learnedSpells = [];
+      newLevelConfig.spells.forEach((spKey: string) => {
+        if (!pc.learnedSpells.includes(spKey)) {
+          pc.learnedSpells.push(spKey);
+        }
+      });
+    }
+
+    // 10. Recalculate spell slots
+    const updatedSlots = CombatRules.calculateMaxSpellSlots(pc);
+    if (updatedSlots) {
+      if (!pc.spellSlots) pc.spellSlots = {};
+      for (let lvl = 0; lvl <= 9; lvl++) {
+        pc.spellSlots[lvl] = {
+          max: updatedSlots[lvl] || 0,
+          used: pc.spellSlots[lvl]?.used || 0
+        };
+      }
+    }
+
+    // 11. Rebuild all calculations
     pc.rebuildStatModifiers();
   });
 }

@@ -8,9 +8,10 @@ import { UnifiedFeature } from './helpers/featureRegistry';
 
 interface RulesInspectorDrawerProps {
   feature: UnifiedFeature | null;
+  onConfigureSpecialization?: () => void;
 }
 
-export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({ feature }) => {
+export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({ feature, onConfigureSpecialization }) => {
   if (!feature) {
     return (
       <div
@@ -95,37 +96,66 @@ export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({ feat
         </div>
       </div>
 
+      {/* Action button for Wizard Specialization */}
+      {onConfigureSpecialization && feature.id === 'wizard_specialization' && (
+        <button
+          type="button"
+          onClick={onConfigureSpecialization}
+          className="btn btn-p"
+          style={{
+            width: '100%',
+            padding: '5px 10px',
+            fontSize: '10px',
+            fontWeight: 'bold',
+            fontFamily: 'var(--font-title)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
+            cursor: 'pointer',
+          }}
+        >
+          <span>⚙️</span> Configure Specialization & Prohibited Schools
+        </button>
+      )}
+
       {/* Mechanics Metadata Grid */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(80px, 1fr))',
+          gridTemplateColumns: '1fr 1fr',
           gap: '4px',
-          background: 'rgba(200, 169, 110, 0.08)',
-          border: '0.5px solid rgba(200, 169, 110, 0.25)',
+          background: 'rgba(200, 169, 110, 0.12)',
+          border: '0.5px solid var(--pb)',
           borderRadius: '3px',
-          padding: '5px 8px',
-          fontSize: '8px',
+          padding: '6px 8px',
+          fontSize: '8.5px',
         }}
       >
         <div>
-          <span style={{ color: 'var(--inkl)', display: 'block', fontSize: '7px' }}>ACTION</span>
-          <strong style={{ color: 'var(--ink)' }}>{feature.actionType}</strong>
+          <strong style={{ color: 'var(--inkm)' }}>Action:</strong>{' '}
+          <span style={{ color: 'var(--ink)', fontWeight: 600 }}>{feature.actionType || 'Passive'}</span>
         </div>
         <div>
-          <span style={{ color: 'var(--inkl)', display: 'block', fontSize: '7px' }}>TYPE</span>
-          <strong style={{ color: 'var(--ink)' }}>{feature.typeLabel}</strong>
+          <strong style={{ color: 'var(--inkm)' }}>Type:</strong>{' '}
+          <span style={{ color: 'var(--ink)', fontWeight: 600 }}>{feature.typeLabel || feature.category}</span>
         </div>
         {feature.range && (
           <div>
-            <span style={{ color: 'var(--inkl)', display: 'block', fontSize: '7px' }}>RANGE</span>
-            <strong style={{ color: 'var(--ink)' }}>{feature.range}</strong>
+            <strong style={{ color: 'var(--inkm)' }}>Range:</strong>{' '}
+            <span style={{ color: 'var(--ink)', fontWeight: 600 }}>{feature.range}</span>
           </div>
         )}
         {feature.duration && (
           <div>
-            <span style={{ color: 'var(--inkl)', display: 'block', fontSize: '7px' }}>DURATION</span>
-            <strong style={{ color: 'var(--ink)' }}>{feature.duration}</strong>
+            <strong style={{ color: 'var(--inkm)' }}>Duration:</strong>{' '}
+            <span style={{ color: 'var(--ink)', fontWeight: 600 }}>{feature.duration}</span>
+          </div>
+        )}
+        {feature.saveThrow && (
+          <div style={{ gridColumn: 'span 2' }}>
+            <strong style={{ color: 'var(--inkm)' }}>Save:</strong>{' '}
+            <span style={{ color: 'var(--ink)', fontWeight: 600 }}>{feature.saveThrow}</span>
           </div>
         )}
       </div>

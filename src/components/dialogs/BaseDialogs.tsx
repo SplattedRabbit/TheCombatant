@@ -14,6 +14,7 @@ export { NewDayTemplateDialog } from './modals/NewDayTemplateDialog';
 export { RollBreakdownDialog } from './modals/RollBreakdownDialog';
 export { SampleChoiceDialog } from './modals/SampleChoiceDialog';
 export { ParchmentMessageModal } from './modals/ParchmentMessageModal';
+export { WizardSpecializationDialog } from './modals/WizardSpecializationDialog';
 
 export type { DialogOverlayProps } from './modals/DialogOverlay';
 export type { CustomAlertModalProps } from './modals/CustomAlertModal';
@@ -25,3 +26,4 @@ export type { NewDayTemplateDialogProps } from './modals/NewDayTemplateDialog';
 export type { RollBreakdownDialogProps } from './modals/RollBreakdownDialog';
 export type { SampleChoiceDialogProps } from './modals/SampleChoiceDialog';
 export type { ParchmentMessageModalProps } from './modals/ParchmentMessageModal';
+export type { WizardSpecializationDialogProps } from './modals/WizardSpecializationDialog';

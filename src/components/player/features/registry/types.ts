@@ -15,6 +15,7 @@ export interface UnifiedFeature {
   actionType: 'Passive' | 'Free Action' | 'Swift Action' | 'Move Action' | 'Standard Action' | 'Full-Round Action' | 'Immediate Action' | 'Special';
   duration?: string;
   range?: string;
+  saveThrow?: string;
   stackInfo?: string;
   interactive?: 'toggle' | 'counter' | 'none';
   dailyAbilityKey?: string;

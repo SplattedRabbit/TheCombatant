@@ -1113,7 +1113,7 @@ export const spellwarpSniperLvl10Sample = {
     { name: 'Light Crossbow +1', type: 'light_crossbow', attackBonus: '', damageDice: '1d8', crit: '19-20 / x2', grip: 'rng', enhancement: 1, isEquipped: false }
   ],
   armors: [
-    { name: 'Mithral Twilight Chain Shirt +1', type: 'chain_shirt', enhancement: 1, isEquipped: true, maxDexOverride: 6 }
+    { name: 'Mithral Twilight Chain Shirt +1', type: 'chain_shirt', enhancement: 1, isEquipped: true, maxDexOverride: 6, spellFailureOverride: 0 }
   ],
   items: [
     {

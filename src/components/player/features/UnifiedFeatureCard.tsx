@@ -17,7 +17,17 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
   isSelected,
   onSelect,
 }) => {
+  const isSpecialistSchool = feature.id === 'wizard_specialization';
+
   const getCategoryColor = (cat: string) => {
+    if (isSpecialistSchool) {
+      return { 
+        bg: 'rgba(139, 26, 26, 0.08)', 
+        border: 'rgba(139, 26, 26, 0.35)', 
+        text: 'var(--red)', 
+        icon: '🏛️' 
+      };
+    }
     switch (cat) {
       case 'combat': return { bg: 'rgba(139, 26, 26, 0.1)', border: '#8b1a1a', text: '#8b1a1a', icon: '⚔️' };
       case 'daily': return { bg: 'rgba(197, 137, 24, 0.12)', border: '#b8860b', text: '#7d5f1a', icon: '⏳' };
@@ -33,9 +43,30 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
     <div
       onClick={onSelect}
       style={{
-        background: isSelected ? 'rgba(200, 169, 110, 0.28)' : 'rgba(200, 169, 110, 0.08)',
-        border: isSelected ? '1px solid var(--red)' : '0.5px solid rgba(200, 169, 110, 0.45)',
-        boxShadow: isSelected ? '0 1px 4px rgba(139, 26, 26, 0.2)' : 'none',
+        background: isSpecialistSchool
+          ? isSelected
+            ? 'rgba(200, 169, 110, 0.32)'
+            : 'linear-gradient(90deg, rgba(200, 169, 110, 0.22) 0%, rgba(200, 169, 110, 0.10) 100%)'
+          : isSelected
+          ? 'rgba(200, 169, 110, 0.28)'
+          : 'rgba(200, 169, 110, 0.08)',
+        border: isSelected
+          ? '1px solid var(--red)'
+          : isSpecialistSchool
+          ? '0.5px solid rgba(139, 26, 26, 0.35)'
+          : '0.5px solid rgba(200, 169, 110, 0.45)',
+        borderLeft: isSpecialistSchool
+          ? isSelected
+            ? '3.5px solid var(--red)'
+            : '3.5px solid rgba(139, 26, 26, 0.65)'
+          : isSelected
+          ? '1px solid var(--red)'
+          : '0.5px solid rgba(200, 169, 110, 0.45)',
+        boxShadow: isSelected
+          ? '0 1px 4px rgba(139, 26, 26, 0.2)'
+          : isSpecialistSchool
+          ? '0 1px 3px rgba(0, 0, 0, 0.06)'
+          : 'none',
         borderRadius: '3px',
         padding: '5px 8px',
         cursor: 'pointer',
@@ -46,10 +77,18 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
         userSelect: 'none',
       }}
       onMouseEnter={(e) => {
-        if (!isSelected) e.currentTarget.style.background = 'rgba(200, 169, 110, 0.16)';
+        if (!isSelected) {
+          e.currentTarget.style.background = isSpecialistSchool
+            ? 'rgba(200, 169, 110, 0.26)'
+            : 'rgba(200, 169, 110, 0.16)';
+        }
       }}
       onMouseLeave={(e) => {
-        if (!isSelected) e.currentTarget.style.background = 'rgba(200, 169, 110, 0.08)';
+        if (!isSelected) {
+          e.currentTarget.style.background = isSpecialistSchool
+            ? 'linear-gradient(90deg, rgba(200, 169, 110, 0.22) 0%, rgba(200, 169, 110, 0.10) 100%)'
+            : 'rgba(200, 169, 110, 0.08)';
+        }
       }}
     >
       {/* Top Header: Title, Source Badge, and Category Badge */}

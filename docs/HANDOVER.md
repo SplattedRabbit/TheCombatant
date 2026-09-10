@@ -1,4 +1,4 @@
-# Übergabe & Systemstatus (`feature/spell_selection_wizard`) — The Combatant
+# Übergabe & Systemstatus (Branch `feature/spell_selection_wizard`) — The Combatant
 
 ## 🚀 Copy-Paste Prompt für den neuen Rechner / neuen Chat
 
@@ -12,10 +12,30 @@ Zuletzt abgeschlossen:
    - Wizard-Spezialisierung & Verbotene Schulen: Auf Stufe 1 wählt der Magier seine Schule (Universalist vs. Spezialist) und verbotene Schulen (1 für Erkenntniszauber/Divination, 2 für alle anderen Schulen). Verbotene Schulen werden live im Zauberkompendium gesperrt.
    - 100% Wiederverwendung von `PCSpellCompendium.tsx`: Volle Quellenfilter (PHB, PHB2, CA, CS), Suchfeld, Zauber-Detail-Dialoge und Quoten-Zähler.
    - D&D 3.5e RAW Quoten & Speicherung: Automatische Erfassung aller Grad-0-Cantrips für Magier 1, Quotenberechnung (z. B. Magier 1: 3 + INT-Modifikator Grad 1 Zauber), Speicherung in `freshPC.learnedSpells` und Übergabe an `freshPC.wizardSpecialization`, `wizardProhibited1`, `wizardProhibited2`.
-2. Test- & Build-Status:
+2. Spell Selection im Level-Up Wizard & D&D 3.5e RAW Quota Engine:
+   - Dynamischer Schritt 4 (`🔮 Spells`) für Zauberwirker (`StepSpells.tsx`, `LevelUpDialog.tsx`). Nicht-Zauberwirker verbleiben schlank bei 4 Schritten.
+   - RAW-Quota-Berechnung (`levelUpSpellRules.ts`):
+     * Wizard / Spellbook: 2 freie Zauber bis maximal verfügbarer Zaubergrad.
+     * Spontane Caster (Sorcerer, Bard): Exakter Abgleich neuer Spells Known laut Tabellen.
+     * Divine / Full-List (Cleric, Druid, Paladin, Ranger): Infobanner über neu freigeschaltete Zaubergrade.
+     * Prestige-Klassen-Verlinkung: Nahtlose Fortführung über `prestigeSpellLinks` (z. B. Spellwarp Sniper -> Wizard).
+   - Spell-Picker mit persistentem Auswahl-Tray, Sofortsuche, Grad- & Schulenfiltern, Zähler-Badge und RAW Rules Inspector Drawer.
+3. Spells Tab Redesign (High-Density 2-Spalten-Grimoire & Modularisierung):
+   - `PCSpellsHeaderBar.tsx`: Schlanke ~26px Statuszeile mit Spezialisierungspille, transparenter ASF-Pill (nur sichtbar bei ASF > 0%) und Daily Reset.
+   - Linke Spalte `⚔️ Active Grimoire` (`PCCompactGrimoireView.tsx` & `grimoire/`):
+     * `GrimoireTemplateMenu.tsx`: Kompaktes Popover für Tages-Templates.
+     * `GrimoireLevelGroup.tsx`: Grad-Subheader mit Save DC & Slotzähler.
+     * `GrimoireSpellRow.tsx`: ~22px Zeilen mit Stufe, Name, Schule, Reichweite, DC, Spezialist (`⭐ Spec`) und `[⚡ Cast]` + `[✕]`.
+     * `GrimoireEmptySlotRow.tsx`: Gestrichelte Inline-Zeile für freie Slots (`+ Prepare Spell`).
+     * `GrimoireSpentSpells.tsx`: Durchgestrichene Badges verbrauchter Zauber mit `[↺]`.
+     * `grimoireActions.ts`: Kapselung von Zauberwirken, Slot-Abzug, Metamagie und Vorbereitung.
+   - Rechte Spalte `📖 Spell Library & Compendium` (`PCSpellLibraryPanel.tsx` & `SpellLibraryList.tsx`):
+     * Tab-Umschaltung `[📖 Spell Library (X)]` und `[📚 Compendium]`.
+     * Gelerntes Zauberbuch mit Echtzeitsuche, Grad-Filtern und 1-Klick `[+ Prepare]`-Zuweisung in freie Slots links.
+4. Test- & Build-Status:
    - 350 Node-Tests (`npm test`) → 100% bestanden (0 Fehler).
-   - 41 Vitest UI-Tests (`npm run test:ui`) → 100% bestanden (0 Fehler).
-   - TypeScript (`tsc --noEmit`) → 0 Fehler.
+   - 47 Vitest UI-Tests (`npm run test:ui`) → 100% bestanden (0 Fehler).
+   - TypeScript (`npm run typecheck`) → 0 Fehler.
    - Produktions-Build (`npm run build`) → erfolgreich generiert (Code 0).
    - Branch: `feature/spell_selection_wizard` ist sauber eingecheckt und synchron.
 ```
@@ -28,46 +48,6 @@ Zuletzt abgeschlossen:
 * **Aktueller Branch:** `feature/spell_selection_wizard`
 * **Test-Suite:** 
   * 350 Node-Tests (`npm test`) $\rightarrow$ **350 / 350 bestanden (100% Pass)**
-  * 41 Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **41 / 41 bestanden (100% Pass)**
+  * 47 Vitest UI-Tests (`npm run test:ui`) $\rightarrow$ **47 / 47 bestanden (100% Pass)**
 * **TypeScript-Prüfung:** `tsc --noEmit` $\rightarrow$ **0 Fehler**
 * **Produktions-Build:** `npm run build` $\rightarrow$ **Erfolgreich (Code 0)**
-
----
-
-## 🛠️ Detaillierte Dokumentation aller Neuerungen & Architektur (`feature/spell_selection_wizard`)
-
-### 1. Zero-Popup Inline View Architektur (`src/components/player/wizard/`)
-* **`CharacterWizardDialog.tsx`:**
-  - Interner Zustand `levelSubView: 'config' | 'spells'` steuert innerhalb von Schritt 3 nahtlos zwischen Stufenkonfiguration und Zauberauswahl.
-  - Der Footer-Button wechselt dynamisch:
-    - Normal / Nicht-Zauberer: `Level N+1 →`
-    - Zauberer auf Stufe $N$ (`levelSubView = 'config'`): `Select Spells for Level N →`
-    - Zauberer in Zauberansicht (`levelSubView = 'spells'`): `Level N+1 →` (oder `Review (Step 4) →` auf der Maximalstufe).
-  - Volle Unterstützung für Vor- und Zurück-Navigation zwischen Stufen und Zauberseiten.
-
-### 2. Zauberkompendium & Quoten-Engine (`src/components/player/wizard/spells/`)
-* **`spellSelectionRules.ts`:**
-  - Berechnet nach D&D 3.5e RAW die erlaubte Zauberanzahl für jede Stufe (z. B. Wizard 1: 3 + INT-Mod Grad-1 Zauber, Sorcerer/Bard Tabellen für Spells Known, Duskblade).
-  - Definiert Klassen mit Zauberauswahl (`hasSpellSelection`) und automatischen Grad-0-Cantrip-Vergaben.
-* **`Step3SpellSelectionView.tsx`:**
-  - Linke Spalte: Ausgewählte Zauber für die aktuelle Stufe, Quoten-Balken, Schnell-Lösch-Buttons (`✕`), Cantrip-Hinweisbanner.
-  - Rechte Spalte: Vollständig eingebundenes [`PCSpellCompendium.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/PCSpellCompendium.tsx) mit Suchfilter, Quellenfiltern (PHB, PHB2, CA, CS), Detail-Popups und Blockade verbotener Magieschulen.
-* **`LevelHeaderAndStats.tsx`:**
-  - Magier-Spezialisierungskarte auf Stufe 1 für Schule (Universalist oder Spezialschule) und verbotene Schulen (1 für Divination, 2 für andere Spezialisierungen).
-
-### 3. Persistenz & Review (`wizardSaveHelper.ts`, `Step4Review.tsx`)
-* **`wizardSaveHelper.ts`:**
-  - Sammelt alle in Schritt 3 ausgewählten Zauber aus allen Stufen.
-  - Fügt bei Magiern automatisch alle Grad-0-Cantrips (außer verbotenen Schulen) zu `freshPC.learnedSpells` hinzu.
-  - Speichert `freshPC.wizardSpecialization`, `freshPC.wizardProhibited1` und `freshPC.wizardProhibited2`.
-* **`Step4Review.tsx`:**
-  - Zeigt im abschließenden Review-Schritt die gewählte Schule, die verbotenen Schulen und eine Übersicht aller ausgewählten Zauber.
-
----
-
-## 🔒 Abwärtskompatibilitäts-Garantie (Backward Compatibility)
-
-1. **Nicht-Zauberer-Klassen:**
-   - Klassen ohne Zauberauswahl (Fighter, Rogue, Barbarian, etc.) behalten den gewohnten direkten Level-zu-Level-Flow ohne Zwischenschritt.
-2. **Bestehende Charaktere & Speicherstände:**
-   - Alle bestehenden Charaktere in `localStorage` und JSON-Dateien laden weiterhin 100% abwärtskompatibel.

@@ -23,7 +23,25 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
   - **Ninja (*Complete Adventurer*):** Complete RAW implementation of *Ki Power*, *Ghost Step* (Swift Action Invisibility/Ethereal), *Sudden Strike* (+1d6 to +10d6), *AC Bonus* (Wisdom to AC unarmored), *Trapfinding*, *Poison Use*, *Speed Climb*, *Great Leap*, and *Ghost Strike*.
   - **Dragon Shaman (*Player's Handbook II*):** Full 20-level implementation of *Draconic Auras* (+1 to +5 bonus, 3 to 7 auras known, dual aura projection at Lv.20 *Communal Dragon*), *Breath Weapon* (2d6 to 10d6, cone/line, DC 10 + 1/2 DS level + CON mod, 1d4 round recharge), *Touch of Vitality* (2x level HP pool, condition removal), *Draconic Resolve* (sleep/paralysis/frightful presence immunities), *Natural Armor* (+1/+2/+3), *Energy Immunity*, and *Draconic Wings* (fly speed).
   - **Battle Trickster (*Complete Scoundrel*):** 3-level martial prestige class with bonus skill tricks, fighter bonus feat, and *Tricky Fighting* (+1 weapon damage).
-- **Prestige Class Level Caps:** Enforced strict RAW level caps (Spellwarp Sniper 5, Battle Trickster 3) in character level progression and Step 1 of the Level-Up Dialog.
+- **Wizard Arcane School Specialization & Prohibited Schools UI (`WizardSpecializationDialog.tsx`, `PCSpellbookTab.tsx`, `PCFeaturesTab.tsx`):**
+  - Interactive ancient-parchment modal dialog allowing players to choose or change their Wizard School Specialization and Prohibited Schools directly within Player View (enforcing RAW 3.5e constraints: Diviners select 1 prohibited school, other specialists select 2 distinct schools, neither can ban Divination or chosen specialty).
+  - Prominent Arcane Specialization status banner in the Spellbook tab with one-click `[⚙️ Specialize]` / `[⚙️ Change School]`.
+  - Prioritized display in Class Features: The Arcane School / Specialization card is **always positioned at the very top** of the features list and subtly elevated with an elegant left accent border, warm parchment gradient, and arcane academy badge.
+  - Interactive RAW Rules Inspector Drawer action button to trigger school reconfiguration.
+  - Contextual specialization indicator in the Level-Up Wizard spell selection banner with automatic filtering of banned schools.
+  - Automatic purging of prohibited spells (`cleanProhibitedSpells`) and instant recalculation of specialist spell slots (+1 per level 1–9 via `SpellSlotCalculator`).
+- **Level-Up Spell Selection Wizard & D&D 3.5e RAW Quota Engine (`LevelUpDialog.tsx`, `StepSpells.tsx`, `levelUpSpellRules.ts`):**
+  - Integrated dynamic Step 4 (`🔮 Spells`) into the Level-Up assistant for spellcasters (non-casters retain a sleek 4-step flow):
+    - *Wizard / Spellbook Casters:* 2 free spells of any accessible spell level.
+    - *Spontaneous Casters (Sorcerer, Bard):* Exact derivation of new spells known based on RAW progression tables.
+    - *Divine & Full-List Casters (Cleric, Druid, Paladin, Ranger):* Informational banner detailing newly unlocked spell levels.
+    - *Prestige Class Advancement:* Seamless resolution of `prestigeSpellLinks` (e.g. Spellwarp Sniper advancing Wizard).
+  - Searchable spell picker with level & school filter pills, quota counter badge, and live RAW rules inspector drawer.
+  - Progression validation guard enforcing complete spell quota fulfillment before moving to Review.
+  - Automatic persistence of selected spells into `activePC.learnedSpells` and dynamic recalculation of `pc.spellSlots`.
+
+### Fixed
+- **Level-Up Historical Skill Ranks Halving Bug:** Fixed a calculation error in `getDraftPCState` / `getCompletedDraftPCState` where pre-existing skill ranks in `levelConfigs[0]` were treated as freshly purchased points and halved if level 1 was cross-class, causing prestige class prerequisites to fail falsely.
 
 ### Changed
 - **Complete Attack & Damage Breakdown Localization:**

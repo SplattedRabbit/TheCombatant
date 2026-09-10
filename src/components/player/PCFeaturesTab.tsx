@@ -14,6 +14,7 @@ import { FeaturesFilterBar, FeatureCategoryFilter } from './features/FeaturesFil
 import { UnifiedFeatureCard } from './features/UnifiedFeatureCard';
 import { CompanionMiniStatusWidget } from './features/CompanionMiniStatusWidget';
 import { RulesInspectorDrawer } from './features/RulesInspectorDrawer';
+import { WizardSpecializationDialog } from '../dialogs/BaseDialogs';
 
 interface PCFeaturesTabProps {
   pc: any;
@@ -22,6 +23,7 @@ interface PCFeaturesTabProps {
 export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
   const [, setTick] = useState(0);
   const triggerRender = () => setTick(t => t + 1);
+  const [isSpecDialogOpen, setIsSpecDialogOpen] = useState(false);
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
   const activeACFs: string[] = Array.isArray(pc.acfs) ? pc.acfs : [];
@@ -65,7 +67,7 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
   // Filtered features
   const filteredFeatures = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
-    return allFeatures.filter((f) => {
+    const list = allFeatures.filter((f) => {
       if (activeFilter !== 'all' && f.category !== activeFilter) return false;
       if (q) {
         const matchName = f.name.toLowerCase().includes(q);
@@ -76,6 +78,15 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
       }
       return true;
     });
+
+    // Ensure specialist school is ALWAYS at the very top
+    list.sort((a, b) => {
+      if (a.id === 'wizard_specialization') return -1;
+      if (b.id === 'wizard_specialization') return 1;
+      return 0;
+    });
+
+    return list;
   }, [allFeatures, searchQuery, activeFilter]);
 
   // Counts by category
@@ -325,10 +336,25 @@ export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
               )}
 
               {/* RAW Rules Inspector Drawer */}
-              <RulesInspectorDrawer feature={selectedFeature} />
+              <RulesInspectorDrawer
+                feature={selectedFeature}
+                onConfigureSpecialization={hasWizard ? () => setIsSpecDialogOpen(true) : undefined}
+              />
             </div>
           </div>
         </div>
+      )}
+
+      {/* Wizard Specialization & Prohibited Schools Dialog */}
+      {hasWizard && (
+        <WizardSpecializationDialog
+          pc={pc}
+          isOpen={isSpecDialogOpen}
+          onClose={() => {
+            setIsSpecDialogOpen(false);
+            triggerRender();
+          }}
+        />
       )}
     </div>
   );

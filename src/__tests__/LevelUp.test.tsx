@@ -12,6 +12,11 @@ import { getFeatSlotsAtLevel, getCompletedDraftPCState } from '../components/pla
 import { applyWizardCharacterToState } from '../components/player/wizard/wizardSaveHelper';
 import { CLASSES_LIST } from '../components/player/wizard/constants';
 import { renderWithProviders } from '../test/test-utils';
+import {
+  calculateLevelUpSpellQuota,
+  getEligibleSpellsForLevelUp,
+  validateLevelUpSpellSelection,
+} from '../services/levelup/levelUpSpellRules';
 
 describe('Level-Up Assistant Suite', () => {
   beforeEach(() => {
@@ -499,6 +504,248 @@ describe('Level-Up Assistant Suite', () => {
       expect(CombatFeats.REGISTRY['ascetic_knight']).toBeDefined();
       expect(CombatFeats.REGISTRY['ascetic_rogue']).toBeDefined();
       expect(CombatFeats.REGISTRY['devoted_tracker']).toBeDefined();
+    });
+
+    it('correctly validates prerequisites for Spellwarp Sniper demo character in LevelUp draft', () => {
+      const { spellwarpSniperLvl10Sample } = require('../../js/data/encounter-samples.js');
+      const { validatePrestigeClassPrereqs } = require('../../js/rules/classValidation.js');
+      const pc = new Combatant(spellwarpSniperLvl10Sample);
+      const draft = createLevelUpDraft(pc);
+
+      const currentDraft = getCompletedDraftPCState(
+        draft.newLevelIndex,
+        draft.baseStats,
+        draft.selectedRace,
+        draft.levelConfigs,
+        pc.alignment
+      );
+
+      const validation = validatePrestigeClassPrereqs(currentDraft.draftPC, 'spellwarp_sniper');
+      expect(validation.success).toBe(true);
+      expect(validation.errors).toHaveLength(0);
+      expect(currentDraft.draftPC.getSkillRanks('concentration')).toBe(13);
+      expect(currentDraft.draftPC.getSkillRanks('spellcraft')).toBe(13);
+    });
+  });
+
+  describe('6. Spell Selection Wizard & Rules Engine', () => {
+    it('calculates correct RAW spell quotas for Wizard, Sorcerer, Divine, and Non-Casters', () => {
+      // Wizard Level 1 -> 2: 2 free spells <= Level 1
+      const wizardPC = new Combatant({
+        name: 'Elminster',
+        classes: [{ classType: 'wizard', level: 1 }],
+        int: 16,
+      });
+      const draftLvl2 = {
+        draftPC: new Combatant({
+          name: 'Elminster',
+          classes: [{ classType: 'wizard', level: 2 }],
+          int: 16,
+        }),
+      };
+      const wizQuotaLvl2 = calculateLevelUpSpellQuota(wizardPC, draftLvl2, { classType: 'wizard' });
+      expect(wizQuotaLvl2.requiresSpellSelection).toBe(true);
+      expect(wizQuotaLvl2.mode).toBe('wizard');
+      expect(wizQuotaLvl2.totalSpellsToChoose).toBe(2);
+      expect(wizQuotaLvl2.maxSpellLevel).toBe(1);
+      expect(wizQuotaLvl2.effectiveCasterLevel).toBe(2);
+
+      // Wizard Level 2 -> 3: 2 free spells <= Level 2
+      const draftLvl3 = {
+        draftPC: new Combatant({
+          name: 'Elminster',
+          classes: [{ classType: 'wizard', level: 3 }],
+          int: 16,
+        }),
+      };
+      const wizQuotaLvl3 = calculateLevelUpSpellQuota(wizardPC, draftLvl3, { classType: 'wizard' });
+      expect(wizQuotaLvl3.maxSpellLevel).toBe(2);
+      expect(wizQuotaLvl3.totalSpellsToChoose).toBe(2);
+
+      // Sorcerer Level 1 -> 2: gains 1 cantrip and 1 1st-level spell
+      const sorcPC = new Combatant({
+        name: 'Vael',
+        classes: [{ classType: 'sorcerer', level: 1 }],
+        cha: 16,
+      });
+      const sorcDraft = {
+        draftPC: new Combatant({
+          name: 'Vael',
+          classes: [{ classType: 'sorcerer', level: 2 }],
+          cha: 16,
+        }),
+      };
+      const sorcQuota = calculateLevelUpSpellQuota(sorcPC, sorcDraft, { classType: 'sorcerer' });
+      expect(sorcQuota.requiresSpellSelection).toBe(true);
+      expect(sorcQuota.mode).toBe('spontaneous');
+      expect(sorcQuota.totalSpellsToChoose).toBe(1);
+      expect(sorcQuota.spontaneousQuotaByLevel?.[0]).toBe(1);
+
+      // Cleric Level 2 -> 3: Full-list prepared caster, informs about unlocking 2nd-level spells
+      const clericPC = new Combatant({
+        name: 'Joran',
+        classes: [{ classType: 'cleric', level: 2 }],
+        wis: 16,
+      });
+      const clericDraft = {
+        draftPC: new Combatant({
+          name: 'Joran',
+          classes: [{ classType: 'cleric', level: 3 }],
+          wis: 16,
+        }),
+      };
+      const clericQuota = calculateLevelUpSpellQuota(clericPC, clericDraft, { classType: 'cleric' });
+      expect(clericQuota.requiresSpellSelection).toBe(false);
+      expect(clericQuota.mode).toBe('info_only');
+      expect(clericQuota.newlyUnlockedSpellLevel).toBe(2);
+
+      // Rogue: Non-caster
+      const roguePC = new Combatant({
+        name: 'Shadow',
+        classes: [{ classType: 'rogue', level: 2 }],
+      });
+      const rogueDraft = {
+        draftPC: new Combatant({
+          name: 'Shadow',
+          classes: [{ classType: 'rogue', level: 3 }],
+        }),
+      };
+      const rogueQuota = calculateLevelUpSpellQuota(roguePC, rogueDraft, { classType: 'rogue' });
+      expect(rogueQuota.requiresSpellSelection).toBe(false);
+      expect(rogueQuota.mode).toBe('none');
+    });
+
+    it('advances base spellcaster progression via prestige class links (e.g. Spellwarp Sniper)', () => {
+      const sniperPC = new Combatant({
+        name: 'Valerius',
+        classes: [
+          { classType: 'rogue', level: 1 },
+          { classType: 'wizard', level: 5 },
+          { classType: 'spellwarp_sniper', level: 3 },
+        ],
+        prestigeSpellLinks: { spellwarp_sniper: 'wizard' },
+      });
+
+      const sniperDraft = {
+        draftPC: new Combatant({
+          name: 'Valerius',
+          classes: [
+            { classType: 'rogue', level: 1 },
+            { classType: 'wizard', level: 5 },
+            { classType: 'spellwarp_sniper', level: 4 },
+          ],
+          prestigeSpellLinks: { spellwarp_sniper: 'wizard' },
+        }),
+      };
+
+      // Advance Spellwarp Sniper to Level 4 (character level 10)
+      // Wizard CL goes from 8 (5 + 3) to 9 (5 + 4). At CL 9, max spell level is 5th level.
+      const sniperQuota = calculateLevelUpSpellQuota(sniperPC, sniperDraft, {
+        classType: 'spellwarp_sniper',
+        prestigeSpellLinks: { spellwarp_sniper: 'wizard' },
+      });
+      expect(sniperQuota.requiresSpellSelection).toBe(true);
+      expect(sniperQuota.mode).toBe('wizard');
+      expect(sniperQuota.effectiveCasterLevel).toBe(9);
+      expect(sniperQuota.maxSpellLevel).toBe(5);
+      expect(sniperQuota.totalSpellsToChoose).toBe(2);
+    });
+
+    it('filters eligible spells by class, maxSpellLevel, already learned, and prohibited schools', () => {
+      const specialistPC = new Combatant({
+        name: 'Necromancer',
+        classes: [{ classType: 'wizard', level: 3 }],
+        wizardSpecialization: 'nec',
+        wizardProhibited1: 'evo',
+        wizardProhibited2: 'enc',
+        learnedSpells: ['mage_armor'],
+      });
+
+      const mockSpells = [
+        { id: 'mage_armor', name: 'Mage Armor', school: 'Abjuration', classLevels: [{ class: 'wizard', level: 1 }] },
+        { id: 'fireball', name: 'Fireball', school: 'Evocation', classLevels: [{ class: 'wizard', level: 3 }] },
+        { id: 'burning_hands', name: 'Burning Hands', school: 'Evocation', classLevels: [{ class: 'wizard', level: 1 }] },
+        { id: 'blindness_deafness', name: 'Blindness/Deafness', school: 'Necromancy', classLevels: [{ class: 'wizard', level: 2 }] },
+        { id: 'ice_storm', name: 'Ice Storm', school: 'Evocation', classLevels: [{ class: 'wizard', level: 4 }] },
+        { id: 'cure_light_wounds', name: 'Cure Light Wounds', school: 'Conjuration', classLevels: [{ class: 'cleric', level: 1 }] },
+      ];
+
+      const draftLvl4 = {
+        draftPC: new Combatant({
+          name: 'Necromancer',
+          classes: [{ classType: 'wizard', level: 4 }],
+          wizardSpecialization: 'nec',
+          wizardProhibited1: 'evo',
+          wizardProhibited2: 'enc',
+          learnedSpells: ['mage_armor'],
+        }),
+      };
+
+      const quota = calculateLevelUpSpellQuota(specialistPC, draftLvl4, { classType: 'wizard' }); // CL 4 -> maxSpellLevel 2
+      const eligible = getEligibleSpellsForLevelUp(specialistPC, quota, mockSpells);
+
+      const eligibleIds = eligible.map(s => s.id);
+      // Mage Armor is already learned -> excluded
+      expect(eligibleIds).not.toContain('mage_armor');
+      // Fireball is level 3 > maxSpellLevel 2 AND Evocation is prohibited -> excluded
+      expect(eligibleIds).not.toContain('fireball');
+      // Burning hands is Evocation (prohibited) -> excluded
+      expect(eligibleIds).not.toContain('burning_hands');
+      // Ice Storm is level 4 > maxSpellLevel 2 -> excluded
+      expect(eligibleIds).not.toContain('ice_storm');
+      // Cure Light Wounds is Cleric only -> excluded
+      expect(eligibleIds).not.toContain('cure_light_wounds');
+      // Blindness/Deafness is Wizard level 2 Necromancy -> ELIGIBLE!
+      expect(eligibleIds).toContain('blindness_deafness');
+    });
+
+    it('validates wizard quota requirements strictly', () => {
+      const quota = {
+        requiresSpellSelection: true,
+        mode: 'wizard' as const,
+        casterClass: 'wizard',
+        effectiveCasterLevel: 2,
+        maxSpellLevel: 1,
+        totalSpellsToChoose: 2,
+      };
+
+      const mockSpellsMap = {
+        shield: { id: 'shield', level: 1 },
+        grease: { id: 'grease', level: 1 },
+        sleep: { id: 'sleep', level: 1 },
+      };
+
+      expect(validateLevelUpSpellSelection([], quota, mockSpellsMap).valid).toBe(false);
+      expect(validateLevelUpSpellSelection(['shield'], quota, mockSpellsMap).valid).toBe(false);
+      expect(validateLevelUpSpellSelection(['shield', 'grease'], quota, mockSpellsMap).valid).toBe(true);
+      expect(validateLevelUpSpellSelection(['shield', 'grease', 'sleep'], quota, mockSpellsMap).valid).toBe(false);
+    });
+
+    it('persists selected spells into activePC.learnedSpells on level-up completion', () => {
+      const wizardPC = new Combatant({
+        name: 'Raistlin',
+        classes: [{ classType: 'wizard', level: 2 }],
+        int: 16,
+        learnedSpells: ['mage_armor', 'magic_missile'],
+      });
+
+      CombatState.applyLoadedState({ activePC: wizardPC, combatants: [wizardPC] });
+
+      const draft = createLevelUpDraft(wizardPC);
+      const newLevelIdx = draft.newLevelIndex;
+      draft.levelConfigs[newLevelIdx].classType = 'wizard';
+      draft.levelConfigs[newLevelIdx].hpRoll = 4;
+      draft.levelConfigs[newLevelIdx].spells = ['web', 'mirror_image'];
+
+      applyLevelUpToActivePC(draft.levelConfigs, newLevelIdx, null);
+
+      const updatedPC = CombatState.getActivePC();
+      expect(updatedPC.classes[0].level).toBe(3);
+      expect(updatedPC.learnedSpells).toContain('mage_armor');
+      expect(updatedPC.learnedSpells).toContain('magic_missile');
+      expect(updatedPC.learnedSpells).toContain('web');
+      expect(updatedPC.learnedSpells).toContain('mirror_image');
+      expect(updatedPC.spellSlots).toBeDefined();
     });
   });
 });

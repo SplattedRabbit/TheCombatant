@@ -3,7 +3,7 @@ const ASSETS = [
   './dist/assets/app-core-BWFkwDwa.css',
   './dist/assets/app-core-TnXLNXJV.js',
   './dist/assets/BaseDialogs-DxH0phdZ.js',
-  './dist/assets/data-registry-BD2bRF1W.js',
+  './dist/assets/data-registry-BXteeSuz.js',
   './dist/assets/icon-192-BiJXAwPn.png',
   './dist/assets/react-vendor-B7Y6DWK4.js',
   './dist/assets/spells-ca-Bq0PoxXV.json',

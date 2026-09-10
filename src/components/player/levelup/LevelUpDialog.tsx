@@ -20,7 +20,10 @@ import { applyLevelUpToActivePC } from './levelUpSaveHelper';
 import { Step1ClassAndStats } from './steps/Step1ClassAndStats';
 import { Step2Skills } from './steps/Step2Skills';
 import { Step3Feats } from './steps/Step3Feats';
+import { StepSpells } from './steps/StepSpells';
 import { Step4Review } from './steps/Step4Review';
+import { getAllCompendiumSpells } from '@core/rules/RulesSpells.js';
+import { calculateLevelUpSpellQuota, validateLevelUpSpellSelection } from '../../../services/levelup/levelUpSpellRules';
 
 interface LevelUpDialogProps {
   activePC: any;
@@ -140,8 +143,28 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
     });
   }, [activeFeatSlot, currentDraft, featSearch, featFilter, levelConfigs]);
 
+  const spellQuota = useMemo(() => {
+    return calculateLevelUpSpellQuota(activePC, currentDraft, currentConfig);
+  }, [activePC, currentDraft, currentConfig]);
+
+  const stepLabels = useMemo(() => {
+    const list = [
+      { id: 'class', label: 'Class & Stats', icon: '⚔️' },
+      { id: 'skills', label: 'Skills & Tricks', icon: '📜' },
+      { id: 'feats', label: 'Feats & ACFs', icon: '🎓' },
+    ];
+    if (spellQuota.requiresSpellSelection || spellQuota.mode === 'info_only') {
+      list.push({ id: 'spells', label: 'Spells', icon: '🔮' });
+    }
+    list.push({ id: 'review', label: 'Review & Apply', icon: '✦' });
+    return list.map((item, idx) => ({ ...item, num: idx + 1 }));
+  }, [spellQuota.requiresSpellSelection, spellQuota.mode]);
+
+  const currentStepDef = stepLabels[step - 1] || stepLabels[0];
+  const currentStepId = currentStepDef?.id || 'class';
+
   const handleNextStep = () => {
-    if (step === 1) {
+    if (currentStepId === 'class') {
       if (!currentConfig || !currentConfig.classType) {
         showCustomAlert('Class Required', 'Please select a class for your new level before proceeding.', 'OK', '⚠️');
         return;
@@ -168,9 +191,19 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
         const defaultRoll = Math.ceil(getClassHitDie(currentConfig.classType) / 2) + 1;
         updateLevelConfig(newLevelIndex, 'hpRoll', defaultRoll);
       }
+    } else if (currentStepId === 'spells') {
+      if (spellQuota.requiresSpellSelection) {
+        const allSpells = getAllCompendiumSpells(activePC);
+        const allSpellsMap = Object.fromEntries(allSpells.map((s: any) => [s.id || s.key, s]));
+        const val = validateLevelUpSpellSelection(currentConfig.spells || [], spellQuota, allSpellsMap);
+        if (!val.valid) {
+          showCustomAlert('Spell Selection Incomplete', val.reason || 'Please complete your spell selection before continuing.', 'OK', '⚠️');
+          return;
+        }
+      }
     }
 
-    setStep(prev => Math.min(4, prev + 1));
+    setStep(prev => Math.min(stepLabels.length, prev + 1));
   };
 
   const handlePrevStep = () => {
@@ -183,13 +216,6 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
   };
 
   if (!currentConfig) return null;
-
-  const stepLabels = [
-    { num: 1, label: 'Class & Stats', icon: '⚔️' },
-    { num: 2, label: 'Skills & Tricks', icon: '📜' },
-    { num: 3, label: 'Feats & ACFs', icon: '🎓' },
-    { num: 4, label: 'Review & Apply', icon: '✦' },
-  ];
 
   return (
     <div
@@ -325,7 +351,7 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
             zIndex: 2,
           }}
         >
-          {step === 1 && (
+          {currentStepId === 'class' && (
             <Step1ClassAndStats
               activePC={activePC}
               initialDraft={initialDraft}
@@ -341,7 +367,7 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
             />
           )}
 
-          {step === 2 && (
+          {currentStepId === 'skills' && (
             <Step2Skills
               levelConfigs={levelConfigs}
               currentConfig={currentConfig}
@@ -355,7 +381,7 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
             />
           )}
 
-          {step === 3 && (
+          {currentStepId === 'feats' && (
             <Step3Feats
               levelConfigs={levelConfigs}
               currentConfig={currentConfig}
@@ -375,7 +401,18 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
             />
           )}
 
-          {step === 4 && (
+          {currentStepId === 'spells' && (
+            <StepSpells
+              activePC={activePC}
+              currentConfig={currentConfig}
+              currentLevelIndex={newLevelIndex}
+              targetLevel={targetLevel}
+              updateLevelConfig={updateLevelConfig}
+              quota={spellQuota}
+            />
+          )}
+
+          {currentStepId === 'review' && (
             <Step4Review
               currentConfig={currentConfig}
               targetLevel={targetLevel}
@@ -422,9 +459,8 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
           )}
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            {step < 4 ? (
+            {step < stepLabels.length ? (
               <button
-                type="button"
                 onClick={handleNextStep}
                 className="btn btn-p"
                 style={{
