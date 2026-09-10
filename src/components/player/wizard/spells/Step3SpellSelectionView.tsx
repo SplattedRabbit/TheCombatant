@@ -215,7 +215,18 @@ export const Step3SpellSelectionView: React.FC<Step3SpellSelectionViewProps> = (
               Use the compendium on the right to select your {quotaInfo.quota} spells.
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', overflowY: 'auto', maxHeight: '380px' }}>
+            <div
+              className="custom-scrollbar"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '6px',
+                overflowY: 'auto',
+                maxHeight: '380px',
+                paddingRight: '4px',
+                scrollbarGutter: 'stable',
+              }}
+            >
               {currentLevelSpells.map((spId: string) => {
                 const spObj = findSpell(currentDraft?.draftPC, spId);
 

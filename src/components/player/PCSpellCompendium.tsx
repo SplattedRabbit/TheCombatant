@@ -192,8 +192,16 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
       {/* Spells List */}
       <div
         onScroll={handleScroll}
-        style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '300px', overflowY: 'auto', paddingRight: '2px' }}
-        className="pc-scroll-compendium"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '4px',
+          maxHeight: '300px',
+          overflowY: 'auto',
+          paddingRight: '4px',
+          scrollbarGutter: 'stable',
+        }}
+        className="pc-scroll-compendium custom-scrollbar"
       >
         {filteredSpells.length === 0 ? (
           <div style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '35px 0', background: 'rgba(0,0,0,0.01)', border: '0.5px dashed rgba(200, 169, 110, 0.2)', borderRadius: '2px' }}>

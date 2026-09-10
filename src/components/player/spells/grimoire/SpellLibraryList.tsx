@@ -217,13 +217,15 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
 
       {/* Spell List (Compact Rows ~22px) */}
       <div
+        className="pc-library-scroll custom-scrollbar"
         style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '2px',
           overflowY: 'auto',
           maxHeight: '460px',
-          paddingRight: '1px',
+          paddingRight: '4px',
+          scrollbarGutter: 'stable',
         }}
       >
         {filteredSpells.length === 0 ? (

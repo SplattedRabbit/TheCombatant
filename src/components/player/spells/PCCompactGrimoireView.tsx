@@ -221,13 +221,15 @@ export const PCCompactGrimoireView: React.FC<PCCompactGrimoireViewProps> = ({
 
       {/* 3. Spell List by Level */}
       <div
+        className="pc-grimoire-scroll custom-scrollbar"
         style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '3px',
           overflowY: 'auto',
           maxHeight: '480px',
-          paddingRight: '1px',
+          paddingRight: '4px',
+          scrollbarGutter: 'stable',
         }}
       >
         {displayedLevels.map((lvl) => (

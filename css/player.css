@@ -128,21 +128,22 @@
 
 /* Custom Scrollbar for Slots/Abilities */
 #pcResources div::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
 
 #pcResources div::-webkit-scrollbar-track {
-  background: rgba(200, 169, 110, 0.1);
-  border-radius: 2px;
+  background: rgba(200, 169, 110, 0.08);
+  border-radius: 3px;
 }
 
 #pcResources div::-webkit-scrollbar-thumb {
-  background: rgba(139, 26, 26, 0.3);
-  border-radius: 2px;
+  background: rgba(139, 26, 26, 0.35);
+  border-radius: 3px;
+  border: 1px solid rgba(200, 169, 110, 0.25);
 }
 
 #pcResources div::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 26, 26, 0.5);
+  background: rgba(139, 26, 26, 0.7);
 }
 
 /* Add custom ability animations */

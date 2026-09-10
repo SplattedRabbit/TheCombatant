@@ -442,13 +442,15 @@ export const StepSpells: React.FC<StepSpellsProps> = ({
 
           {/* Spell Cards List */}
           <div
+            className="custom-scrollbar"
             style={{
               display: 'flex',
               flexDirection: 'column',
               gap: '6px',
               overflowY: 'auto',
               maxHeight: '380px',
-              paddingRight: '4px',
+              paddingRight: '6px',
+              scrollbarGutter: 'stable',
             }}
           >
             {filteredSpells.length === 0 ? (
@@ -565,6 +567,7 @@ export const StepSpells: React.FC<StepSpellsProps> = ({
 
         {/* Right Column: RAW Rules Inspector */}
         <div
+          className="custom-scrollbar"
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -576,6 +579,7 @@ export const StepSpells: React.FC<StepSpellsProps> = ({
             boxShadow: '0 1px 4px rgba(0,0,0,0.03)',
             maxHeight: '430px',
             overflowY: 'auto',
+            scrollbarGutter: 'stable',
           }}
         >
           {previewSpell ? (

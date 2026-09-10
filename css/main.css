@@ -88,15 +88,41 @@ input[type=number]::-webkit-outer-spin-button {
   100% { box-shadow: 0 0 2px #2a9d8f; }
 }
 
-/* Mobil-Zoom bei Fokus verhindern: Inputs auf Touch-Geräten bei Fokus auf mindestens 16px setzen, ohne readonly-Elemente zu verzerren */
-@media (hover: none) and (pointer: coarse) {
-  input[type="text"]:not([readonly]):focus,
-  input[type="number"]:not([readonly]):focus,
-  input[type="search"]:not([readonly]):focus,
-  input:not([type]):not([readonly]):focus,
-  select:focus,
-  textarea:focus {
-    font-size: 16px !important;
-  }
+/* Universal Elegant Fantasy Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 26, 26, 0.45) rgba(200, 169, 110, 0.12);
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(200, 169, 110, 0.08);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 26, 26, 0.35);
+  border-radius: 3px;
+  border: 1px solid rgba(200, 169, 110, 0.25);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 26, 26, 0.7);
+}
+
+/* Dedicated Scroll Container Utilities */
+.custom-scrollbar,
+.pc-scroll-compendium,
+.pc-grimoire-scroll,
+.pc-library-scroll,
+.pc-spell-scroll {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 26, 26, 0.45) rgba(200, 169, 110, 0.12);
+}
+
 
