@@ -84,8 +84,12 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
           background: 'var(--p)',
           border: '2px solid var(--pb)',
           borderRadius: '4px',
-          padding: '16px 24px',
-          width: '310px',
+          padding: '18px 26px',
+          width: '400px',
+          maxWidth: '92vw',
+          maxHeight: '88vh',
+          overflowY: 'auto',
+          boxSizing: 'border-box',
           boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
           fontFamily: 'var(--font-title)',
           textAlign: 'center',
@@ -96,10 +100,10 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
       >
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
-        <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '2px' }}>
+        <div style={{ fontSize: '16px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '3px' }}>
           ⚔️ {weapon.name || 'Weapon'}
         </div>
-        <div className="dialog-subtitle" style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '6px' }}>
+        <div className="dialog-subtitle" style={{ fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '8px' }}>
           {currentView === 'grid' && 'Choose attack type'}
           {currentView === 'std' && (
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
@@ -107,11 +111,11 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
               <span
                 onClick={() => setCurrentView('grid')}
                 style={{
-                  fontSize: '7.5px',
+                  fontSize: '9px',
                   cursor: 'pointer',
                   border: '0.5px solid var(--pb)',
                   borderRadius: '2.5px',
-                  padding: '1px 5px',
+                  padding: '2px 7px',
                   color: 'var(--red)',
                   background: 'rgba(139,26,26,0.05)',
                   fontFamily: 'var(--font-title)',
@@ -128,11 +132,11 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
               <span
                 onClick={() => setCurrentView('grid')}
                 style={{
-                  fontSize: '7.5px',
+                  fontSize: '9px',
                   cursor: 'pointer',
                   border: '0.5px solid var(--pb)',
                   borderRadius: '2.5px',
-                  padding: '1px 5px',
+                  padding: '2px 7px',
                   color: 'var(--red)',
                   background: 'rgba(139,26,26,0.05)',
                   fontFamily: 'var(--font-title)',
@@ -144,23 +148,23 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
             </div>
           )}
         </div>
-        <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 10px' }} />
+        <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 12px' }} />
 
         {hasPaladin && isMelee && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '10px', padding: '4px 8px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '8px', fontFamily: 'var(--font-body)' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: 'var(--red)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '12px', padding: '6px 10px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '10px', fontFamily: 'var(--font-body)' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: 'var(--red)' }}>
               <input
                 type="checkbox"
                 checked={smiteActive}
                 onChange={handleSmiteChange}
-                style={{ margin: 0, width: '11px', height: '11px', cursor: 'pointer' }}
+                style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
               />
               Smite Evil (+{Math.max(0, pc.getAttributeMod('cha'))} Atk / +{paladinClass.level} Dmg)
             </label>
           </div>
         )}
 
-        <div className="dialog-content-area" style={{ display: 'flex', flexDirection: 'column', gap: '8px', minHeight: '120px' }}>
+        <div className="dialog-content-area" style={{ display: 'flex', flexDirection: 'column', gap: '10px', minHeight: '120px' }}>
           {currentView === 'grid' && (
             <>
               {/* Standard Attack Choice Card */}
@@ -170,7 +174,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                   background: 'rgba(200, 169, 110, 0.1)',
                   border: '1px solid var(--pb)',
                   borderRadius: '3px',
-                  padding: '8px 10px',
+                  padding: '10px 12px',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'background-color 0.15s, border-color 0.15s'
@@ -184,16 +188,16 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                   e.currentTarget.style.borderColor = 'var(--pb)';
                 }}
               >
-                <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>Standard Attack</div>
-                <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px' }}>
+                <div style={{ fontSize: '12.5px', fontWeight: 'bold', color: 'var(--ink)' }}>Standard Attack</div>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '10.5px', color: 'var(--inkm)', lineHeight: 1.3, marginTop: '3px' }}>
                   A single attack with your full attack bonus.
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '4px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '4px' }}>
-                  <span style={{ fontSize: '7px', color: 'var(--inkl)' }}>Formula:</span>
-                  <span style={{ fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '6px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '6px' }}>
+                  <span style={{ fontSize: '9px', color: 'var(--inkl)' }}>Formula:</span>
+                  <span style={{ fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
                     1d20 {formatMod(stdAtk.atkTotal)}
                     {doubledCritDisplay && (
-                      <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'normal', marginLeft: '3px' }}>
+                      <span style={{ fontSize: '9.5px', color: 'var(--inkl)', fontWeight: 'normal', marginLeft: '4px' }}>
                         (Crit: {doubledCritDisplay})
                       </span>
                     )}
@@ -208,7 +212,7 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                   background: 'rgba(200, 169, 110, 0.1)',
                   border: '1px solid var(--pb)',
                   borderRadius: '3px',
-                  padding: '8px 10px',
+                  padding: '10px 12px',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'background-color 0.15s, border-color 0.15s'
@@ -223,22 +227,22 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)' }}>Full Attack</span>
-                  <span style={{ fontSize: '7px', background: 'rgba(139,26,26,0.1)', color: 'var(--red)', padding: '0 3px', borderRadius: '1px', fontWeight: 'bold' }}>
+                  <span style={{ fontSize: '12.5px', fontWeight: 'bold', color: 'var(--ink)' }}>Full Attack</span>
+                  <span style={{ fontSize: '9px', background: 'rgba(139,26,26,0.1)', color: 'var(--red)', padding: '1px 5px', borderRadius: '1px', fontWeight: 'bold' }}>
                     {fullSeq.length}x
                   </span>
                 </div>
-                <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', color: 'var(--inkm)', lineHeight: 1.2, marginTop: '2px' }}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '10.5px', color: 'var(--inkm)', lineHeight: 1.3, marginTop: '3px' }}>
                   Perform all available attacks.
                 </div>
-                <div style={{ marginTop: '4px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '4px', fontSize: '8.5px', color: 'var(--inkm)', fontFamily: 'var(--font-title)' }}>
+                <div style={{ marginTop: '6px', borderTop: '0.5px dotted rgba(200,169,110,0.4)', paddingTop: '6px', fontSize: '10.5px', color: 'var(--inkm)', fontFamily: 'var(--font-title)' }}>
                   {fullSeq.map((atk: any, idx: number) => (
-                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px' }}>
+                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '3px' }}>
                       <span>{atk.name}:</span>
                       <span style={{ fontWeight: 'bold', color: 'var(--red)' }}>
                         1d20 {formatMod(atk.atkTotal)}
                         {doubledCritDisplay && (
-                          <span style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'normal', marginLeft: '3px' }}>
+                          <span style={{ fontSize: '9.5px', color: 'var(--inkl)', fontWeight: 'normal', marginLeft: '4px' }}>
                             (Crit: {doubledCritDisplay})
                           </span>
                         )}
@@ -251,25 +255,25 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
           )}
 
           {currentView === 'std' && (
-            <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '10px', fontFamily: 'var(--font-body)' }}>
-              <div style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '5px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
+            <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '12px', fontFamily: 'var(--font-body)' }}>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '6px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '4px' }}>
                 Attack Modifiers
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '9.5px', color: 'var(--inkm)' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11px', color: 'var(--inkm)' }}>
                 {Array.isArray(stdAtk.atkBreakdown) && stdAtk.atkBreakdown.map((item: any, idx: number) => (
                   <div key={idx} style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>{item.label}:</span>
                     <span style={{ fontWeight: 'bold', color: 'var(--ink)' }}>{formatMod(item.value)}</span>
                   </div>
                 ))}
-                <hr style={{ border: 'none', borderTop: '0.5px dashed rgba(200,169,110,0.3)', margin: '4px 0' }} />
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
+                <hr style={{ border: 'none', borderTop: '0.5px dashed rgba(200,169,110,0.3)', margin: '5px 0' }} />
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
                   <span>Total Modifier:</span>
                   <span>{formatMod(stdAtk.atkTotal)}</span>
                 </div>
               </div>
-              <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.3)', margin: '6px 0 4px' }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+              <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.3)', margin: '8px 0 5px' }} />
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '13px', fontWeight: 'bold', color: 'var(--red)' }}>
                 <span>ROLL FORMULA:</span>
                 <span>1d20 {formatMod(stdAtk.atkTotal)}</span>
               </div>
@@ -277,18 +281,18 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
           )}
 
           {currentView === 'full' && (
-            <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '8px 10px', maxHeight: '200px', overflowY: 'auto' }}>
-              <div style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '3px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
+            <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '10px 12px', maxHeight: '280px', overflowY: 'auto' }}>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '4px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '4px' }}>
                 Attack Modifiers (Full Attack)
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 {fullSeq.map((atk: any, idx: number) => (
-                  <div key={idx} style={{ marginTop: '4px', borderBottom: '0.5px dotted rgba(200, 169, 110, 0.2)', paddingBottom: '3px', fontFamily: 'var(--font-body)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', color: 'var(--red)', fontSize: '9.5px', fontFamily: 'var(--font-title)' }}>
+                  <div key={idx} style={{ marginTop: '5px', borderBottom: '0.5px dotted rgba(200, 169, 110, 0.2)', paddingBottom: '4px', fontFamily: 'var(--font-body)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', color: 'var(--red)', fontSize: '11.5px', fontFamily: 'var(--font-title)' }}>
                       <span>{atk.name}:</span>
                       <span>1d20 {formatMod(atk.atkTotal)}</span>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5px', fontSize: '7.5px', color: 'var(--inkm)', paddingLeft: '6px', marginTop: '1px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', fontSize: '9.5px', color: 'var(--inkm)', paddingLeft: '8px', marginTop: '2px' }}>
                       {Array.isArray(atk.atkBreakdown) && atk.atkBreakdown.map((item: any, bIdx: number) => (
                         <div key={bIdx} style={{ display: 'flex', justifyContent: 'space-between' }}>
                           <span>{item.label}:</span>
@@ -308,9 +312,9 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
           className="btn btn-close-choice"
           style={{
             fontFamily: 'var(--font-title)',
-            fontSize: '8px',
-            padding: '2px 10px',
-            marginTop: '10px',
+            fontSize: '10px',
+            padding: '4px 14px',
+            marginTop: '12px',
             cursor: 'pointer',
             background: 'transparent',
             border: currentView === 'grid' ? '0.5px solid var(--pb)' : '0.5px solid var(--red)',

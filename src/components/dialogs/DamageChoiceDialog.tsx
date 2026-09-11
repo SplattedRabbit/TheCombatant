@@ -103,8 +103,12 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
           background: 'var(--p)',
           border: '2px solid var(--pb)',
           borderRadius: '4px',
-          padding: '16px 24px',
-          width: '310px',
+          padding: '18px 26px',
+          width: '400px',
+          maxWidth: '92vw',
+          maxHeight: '88vh',
+          overflowY: 'auto',
+          boxSizing: 'border-box',
           boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(200,169,110,0.08)',
           fontFamily: 'var(--font-title)',
           textAlign: 'center',
@@ -115,45 +119,45 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
       >
         <div style={{ position: 'absolute', inset: '3px', border: '0.5px dashed rgba(200, 169, 110, 0.3)', pointerEvents: 'none', borderRadius: '2px' }} />
 
-        <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '2px' }}>
+        <div style={{ fontSize: '16px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '3px' }}>
           ⚔️ {weapon.name || 'Weapon'} (Damage)
         </div>
-        <div className="dialog-subtitle" style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '6px' }}>
+        <div className="dialog-subtitle" style={{ fontSize: '10px', color: 'var(--inkl)', fontStyle: 'italic', marginBottom: '8px' }}>
           Choose damage options
         </div>
-        <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 10px' }} />
+        <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 12px' }} />
 
         {(hasPaladin && isMelee || favoredEnemyBonus > 0 || sneakAttackDice > 0) && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '10px', padding: '4px 8px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '8px', fontFamily: 'var(--font-body)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '12px', padding: '6px 10px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '10px', fontFamily: 'var(--font-body)' }}>
             {hasPaladin && isMelee && (
-              <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: 'var(--red)' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: 'var(--red)' }}>
                 <input
                   type="checkbox"
                   checked={smiteActive}
                   onChange={handleSmiteChange}
-                  style={{ margin: 0, width: '11px', height: '11px', cursor: 'pointer' }}
+                  style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
                 />
                 Smite Evil (+{paladinClass.level} Damage)
               </label>
             )}
             {favoredEnemyBonus > 0 && (
-              <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: '#1a4a1a' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: '#1a4a1a' }}>
                 <input
                   type="checkbox"
                   checked={favoredEnemyActive}
                   onChange={handleFavoredEnemyChange}
-                  style={{ margin: 0, width: '11px', height: '11px', cursor: 'pointer' }}
+                  style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
                 />
                 Vs Favored Enemy (+{favoredEnemyBonus} Damage)
               </label>
             )}
             {sneakAttackDice > 0 && (
-              <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: '#a0522d' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: '#a0522d' }}>
                 <input
                   type="checkbox"
                   checked={sneakActive}
                   onChange={handleSneakChange}
-                  style={{ margin: 0, width: '11px', height: '11px', cursor: 'pointer' }}
+                  style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
                 />
                 Sneak Attack (+{sneakAttackDice}d6 Damage)
               </label>
@@ -161,26 +165,26 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
           </div>
         )}
 
-        <div className="dialog-content-area" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '10px', fontFamily: 'var(--font-body)' }}>
-            <div style={{ fontFamily: 'var(--font-title)', fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '5px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '3px' }}>
+        <div className="dialog-content-area" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div style={{ textAlign: 'left', background: 'rgba(200, 169, 110, 0.04)', border: '1px solid var(--pb)', borderRadius: '3px', padding: '12px', fontFamily: 'var(--font-body)' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', marginBottom: '6px', borderBottom: '0.5px solid rgba(200,169,110,0.3)', paddingBottom: '4px' }}>
               Damage Modifiers
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '9.5px', color: 'var(--inkm)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11px', color: 'var(--inkm)' }}>
               {rows.map((row: any, idx: number) => (
                 <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', padding: '1px 0' }}>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', color: 'var(--inkm)' }}>{row.label}:</span>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--ink)' }}>{row.sign}{row.value}</span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--inkm)' }}>{row.label}:</span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '11px', fontWeight: 'bold', color: 'var(--ink)' }}>{row.sign}{row.value}</span>
                 </div>
               ))}
-              <hr style={{ border: 'none', borderTop: '0.5px dashed rgba(200,169,110,0.3)', margin: '4px 0' }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
+              <hr style={{ border: 'none', borderTop: '0.5px dashed rgba(200,169,110,0.3)', margin: '5px 0' }} />
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
                 <span>Total Modifier:</span>
                 <span>{modsFormatted}</span>
               </div>
             </div>
-            <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.3)', margin: '6px 0 4px' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+            <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200,169,110,0.3)', margin: '8px 0 5px' }} />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-title)', fontSize: '13px', fontWeight: 'bold', color: 'var(--red)' }}>
               <span>ROLL FORMULA:</span>
               <span>{formulaFormatted}</span>
             </div>
@@ -192,9 +196,9 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
           className="btn-close-choice"
           style={{
             fontFamily: 'var(--font-title)',
-            fontSize: '8px',
-            padding: '2px 10px',
-            marginTop: '10px',
+            fontSize: '10px',
+            padding: '4px 14px',
+            marginTop: '12px',
             cursor: 'pointer',
             background: 'transparent',
             border: '0.5px solid var(--red)',
