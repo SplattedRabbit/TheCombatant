@@ -19,11 +19,11 @@ node scripts/run_agent_tests.js Tests/bugfixes_v350.test.js
 # GLOBALER TESTLAUF (Token-optimiert, einmalig vor Turn-Ende):
 node scripts/run_agent_tests.js
 
-# D&D-REGELWERK DURCHSUCHEN (NIE die TXT laden):
-node scratch/search_rules.js "<Suchabfrage>"
+# PLAYER'S HANDBOOK DURCHSUCHEN (NIE die TXT-Kapitel einzeln laden):
+node scratch/search_phb.js "<Suchabfrage>"
 
-# ZAUBER-DATENBANK DURCHSUCHEN (NIE spells_de.json direkt laden):
-node scratch/search_spells.js "<Zaubername>"
+# DUNGEON MASTER'S GUIDE DURCHSUCHEN (NIE die Seiten-TXT einzeln laden):
+node scratch/search_dmg.js "<Suchabfrage>"
 ```
 
 ---
@@ -124,7 +124,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - HTML-Strings in `js/models/` erzeugen
 - D&D-Rechenlogik direkt in UI-Dateien — immer Rule-Engine verwenden
 - `js/state/state-core.js` direkt importieren — immer `js/state.js`
-- `playershandbook_35e.txt` in den Kontext laden — `search_rules.js` nutzen
+- PHB/DMG-Rohtexte in den Kontext laden — `scratch/search_phb.js` / `scratch/search_dmg.js` nutzen
 - Zeilennummern in `AGENT.md` eintragen — veralten sofort, nur Funktionsnamen
 - Halbe Ränge bei cross-class skills verbessern den Wurf nicht — beim Modifikator immer `Math.floor`
 
@@ -132,9 +132,8 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 
 ## 7. Offene Bugs & Roadmap
 
-- **Refactoring Masterplan (100% Green Healthcheck):** `docs/refactoring_masterplan_v6.md`
-- **Code-Audit & Tiefenanalyse:** `docs/deep_code_audit_analysis.md`
-- Versionshistorie & Features: `docs/PATCHNOTES.md`
+- Ältere Refactoring-Masterpläne und Code-Audits wurden am 2026-09-02 bewusst archiviert und entfernt (Single Source of Truth statt Kontext-Altlasten).
+- Versionshistorie & Features: `docs/CHANGELOG.md`
 - Entwicklerhandbuch (UI-Details, Skalierung, Dialog-Maße): `docs/DEVELOPER_GUIDE.md`
 
 ---

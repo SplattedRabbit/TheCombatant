@@ -86,11 +86,11 @@ When working with AI coding assistants (Antigravity, Claude, Gemini), follow the
 
 - **Search Rules instead of loading full text files:**
   ```powershell
-  # Search D&D rulebook without loading 2.2MB txt
-  node scratch/search_rules.js "<query>"
+  # Search Player's Handbook chapters without loading them individually
+  node scratch/search_phb.js "<query>"
 
-  # Search spells without loading 600KB json
-  node scratch/search_spells.js "<spell_name>"
+  # Search Dungeon Master's Guide pages without loading them individually
+  node scratch/search_dmg.js "<query>"
   ```
 - **Slice reading:** Always specify `StartLine` and `EndLine` when viewing files.
 - **Run minimal reporter tests during development:**
