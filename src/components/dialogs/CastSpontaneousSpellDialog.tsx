@@ -10,8 +10,7 @@ import { CombatState } from '@core/state.js';
 import { CombatSpells } from '@core/spells.js';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 
-const showCastSuccessDialog = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showCastSuccessDialog?.(...args);
+import { useDialog } from '../../context/DialogContext.tsx';
 
 function findSpell(pc: any, key: string) {
   if (CombatSpells.REGISTRY[key]) {
@@ -37,6 +36,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
   onConfirm,
   onCancel
 }) => {
+  const { showCastSuccess } = useDialog();
   const spell = findSpell(pc, spellKey);
   if (!spell) return null;
 
@@ -81,7 +81,7 @@ export const CastSpontaneousSpellDialog: React.FC<CastSpontaneousSpellDialogProp
       const metaSuffix = selectedMetaNames.length > 0 ? ` (${selectedMetaNames.join(', ')})` : '';
 
       if (spell.effects && spell.effects.length > 0) {
-        showCastSuccessDialog(pc, spell, spellKey, selectedMeta, () => {
+        showCastSuccess(pc, spell, spellKey, selectedMeta, () => {
           onConfirm();
         });
       } else {

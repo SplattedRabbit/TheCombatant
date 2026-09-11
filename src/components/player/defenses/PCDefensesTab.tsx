@@ -9,11 +9,11 @@
 
 import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
-import { getStatMod, extractStatValue } from './attributeHelper';
-import { ACBreakdownCard } from './defenses/ACBreakdownCard.tsx';
-import { InitiativeWidget } from './defenses/InitiativeWidget.tsx';
-import { SavingThrowsCard } from './defenses/SavingThrowsCard.tsx';
-import { ResistancesCard } from './defenses/ResistancesCard.tsx';
+import { getStatMod, extractStatValue } from '../attributeHelper';
+import { ACBreakdownCard } from './ACBreakdownCard.tsx';
+import { InitiativeWidget } from './InitiativeWidget.tsx';
+import { SavingThrowsCard } from './SavingThrowsCard.tsx';
+import { ResistancesCard } from './ResistancesCard.tsx';
 
 interface PCDefensesTabProps {
   pc: any;

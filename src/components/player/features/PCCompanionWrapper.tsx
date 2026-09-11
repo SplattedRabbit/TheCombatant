@@ -7,8 +7,8 @@
  */
 
 import React from 'react';
-import { CompanionSheet } from './companion/CompanionSheet';
-import { FamiliarSheet } from './companion/FamiliarSheet';
+import { CompanionSheet } from '../companion/CompanionSheet';
+import { FamiliarSheet } from '../companion/FamiliarSheet';
 
 interface PCCompanionWrapperProps {
   pc: any;

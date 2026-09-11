@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { PCFeaturesTab } from '../components/player/PCFeaturesTab';
+import { PCFeaturesTab } from '../components/player/features/PCFeaturesTab';
+import { PCProvider } from '../context/PCContext';
 import { RangerFeaturesCard } from '../components/player/features/RangerFeaturesCard';
 import { DruidFeaturesCard } from '../components/player/features/DruidFeaturesCard';
 import { BarbarianFeaturesCard } from '../components/player/features/BarbarianFeaturesCard';
@@ -12,11 +13,15 @@ describe('ACF UI Restrictions & Overrides', () => {
       name: 'Ranger Hero',
       classes: [{ classType: 'ranger', level: 6 }],
       companionType: 'none',
-      acfs: ['ranger_distracting_attack'],
+      acfs: ['ranger_spiritual_guide'],
       dailyAbilities: []
-    };
+    } as any;
 
-    render(<PCFeaturesTab pc={pc} />);
+    render(
+      <PCProvider pc={pc}>
+        <PCFeaturesTab />
+      </PCProvider>
+    );
     expect(screen.queryByText(/Companions & Familiars/i)).not.toBeInTheDocument();
   });
 
@@ -28,9 +33,13 @@ describe('ACF UI Restrictions & Overrides', () => {
       companionType: 'none',
       acfs: [],
       dailyAbilities: []
-    };
+    } as any;
 
-    render(<PCFeaturesTab pc={pc} />);
+    render(
+      <PCProvider pc={pc}>
+        <PCFeaturesTab />
+      </PCProvider>
+    );
     expect(screen.getByText(/Companions & Familiars/i)).toBeInTheDocument();
   });
 

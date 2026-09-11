@@ -5,7 +5,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { CombatState } from '@core/state.js';
-import { findSpell } from '../../PCSpellbookTab';
+import { findSpell } from '../PCSpellbookTab';
 import { SpellLibraryItemRow } from './SpellLibraryItemRow';
 import {
   showCustomConfirm,

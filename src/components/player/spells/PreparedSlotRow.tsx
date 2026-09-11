@@ -7,8 +7,7 @@
 
 import React from 'react';
 
-const showSpellDetailsDialog = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showSpellDetailsDialog?.(...args);
+import { useDialog } from '../../../context/DialogContext.tsx';
 
 interface PreparedSlotRowProps {
   prep?: any;
@@ -29,6 +28,7 @@ export const PreparedSlotRow: React.FC<PreparedSlotRowProps> = ({
   onUnprepare,
   onPrepareClick
 }) => {
+  const { showSpellDetails } = useDialog();
   if (prep) {
     let bg = prep.isUsed ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.45)';
     let border = '0.5px solid rgba(200, 169, 110, 0.25)';
@@ -82,7 +82,7 @@ export const PreparedSlotRow: React.FC<PreparedSlotRowProps> = ({
     return (
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: bg, border, borderRadius: '2px', padding: '2px 4px', fontSize: '9px', opacity: prep.isUsed ? 0.65 : 1 }}>
         <span
-          onClick={() => showSpellDetailsDialog(prep.spell, prep.spellKey, pc)}
+          onClick={() => showSpellDetails(prep.spell, prep.spellKey, pc)}
           style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
         >
           {prefix}{prep.spell.name || prep.spell.nameEn || prep.spell.nameDe} {badge}{prep.metamagic?.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}

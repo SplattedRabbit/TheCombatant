@@ -10,18 +10,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { CombatState } from '@core/state.js';
 import type { Combatant } from '../../types/combat';
-import { PCHeader } from './PCHeader';
-import { PCHealthGlobe } from './PCHealthGlobe';
-import { PCAttributes } from './PCAttributes';
-import { PCOffenseTab } from './PCOffenseTab';
-import { PCSkillsTab } from './PCSkillsTab';
-import { PCDefenses } from './PCDefenses';
-import { PCFeatsTab } from './PCFeatsTab';
-import { PCMagicItemsTab } from './PCMagicItemsTab';
+import { PCProvider } from '../../context/PCContext';
+import { PCHeader } from './header/PCHeader';
+import { PCHealthGlobe } from './attributes/PCHealthGlobe';
+import { PCAttributes } from './attributes/PCAttributes';
+import { PCOffenseTab } from './offense/PCOffenseTab';
+import { PCSkillsTab } from './skills/PCSkillsTab';
+import { PCDefenses } from './defenses/PCDefenses';
+import { PCFeatsTab } from './feats/PCFeatsTab';
+import { PCMagicItemsTab } from './armory/PCMagicItemsTab';
 import { BaseCard } from '../shared/BaseCard';
-import { PCSpellsTab } from './PCSpellsTab';
+import { PCSpellsTab } from './spells/PCSpellsTab';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
-import { PCFeaturesTab } from './PCFeaturesTab';
+import { PCFeaturesTab } from './features/PCFeaturesTab';
 import { LevelUpDialog } from './levelup/LevelUpDialog';
 import { PrintableCharacterSheetModal } from './print/PrintableCharacterSheetModal';
 import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
@@ -169,11 +170,11 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
 
 
   return (
-    <div id="playerScreen" className="sheet" style={{ display: 'block' }}>
-      {/* PCHeader at the very top */}
-      <PCHeader
-        pc={pc}
-        activeTab={activeTab}
+    <PCProvider pc={pc}>
+      <div id="playerScreen" className="sheet" style={{ display: 'block' }}>
+        {/* PCHeader at the very top */}
+        <PCHeader
+          activeTab={activeTab}
         onOpenWizard={() => CombatState.setRole('wizard')}
         onOpenLevelUp={() => setIsLevelUpOpen(true)}
       />
@@ -265,43 +266,43 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
         <div className={`player-tab-panel ${activeTab === 'overview' ? 'active' : ''}`} id="tabPanelOverview">
           <div className="overview-grid">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <PCAttributes pc={pc} />
-              <PCHealthGlobe pc={pc} />
+              <PCAttributes />
+              <PCHealthGlobe />
             </div>
-            <PCDefenses pc={pc} />
+            <PCDefenses />
           </div>
         </div>
 
         {/* Tab 2: Skills */}
         <div className={`player-tab-panel ${activeTab === 'skills' ? 'active' : ''}`} id="tabPanelSkills">
-          <PCSkillsTab pc={pc} />
+          <PCSkillsTab />
         </div>
 
         {/* Tab 3: Feats */}
         <div className={`player-tab-panel ${activeTab === 'feats' ? 'active' : ''}`} id="tabPanelFeats">
           <BaseCard title="🎓 Feats">
-            <PCFeatsTab pc={pc} />
+            <PCFeatsTab />
           </BaseCard>
         </div>
 
         {/* Tab 3: Weapons / Offense */}
         <div className={`player-tab-panel ${activeTab === 'offense' ? 'active' : ''}`} id="tabPanelOffense">
-          <PCOffenseTab pc={pc} />
+          <PCOffenseTab />
         </div>
 
         {/* Tab: Magic Items */}
         <div className={`player-tab-panel ${activeTab === 'magicitems' ? 'active' : ''}`} id="tabPanelMagicItems">
-          <PCMagicItemsTab pc={pc} />
+          <PCMagicItemsTab />
         </div>
 
         {/* Tab 4: Spellbook & Compendium */}
         <div className={`player-tab-panel ${activeTab === 'spells' ? 'active' : ''}`} id="tabPanelSpells">
-          {hasCasterClass && <PCSpellsTab pc={pc} />}
+          {hasCasterClass && <PCSpellsTab />}
         </div>
 
         {/* Tab 5: Features & Companions */}
         <div className={`player-tab-panel ${activeTab === 'features' ? 'active' : ''}`} id="tabPanelFeatures">
-          <PCFeaturesTab pc={pc} />
+          <PCFeaturesTab />
         </div>
       </div>
 
@@ -327,6 +328,7 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
         onChange={handleImportFileChange} 
         style={{ display: 'none' }} 
       />
-    </div>
+      </div>
+    </PCProvider>
   );
 };

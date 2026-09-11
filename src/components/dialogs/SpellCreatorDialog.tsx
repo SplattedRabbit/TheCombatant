@@ -14,8 +14,7 @@ function findSpell(pc: any, key: string) {
   return null;
 }
 
-const showCustomAlert = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showCustomAlert?.(...args);
+import { useDialog } from '../../context/DialogContext.tsx';
 
 interface SpellCreatorDialogProps {
   pc: any;
@@ -23,6 +22,7 @@ interface SpellCreatorDialogProps {
 }
 
 export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc, onClose }) => {
+  const { showAlert } = useDialog();
   const [nameEn, setNameEn] = useState('');
   const [level, setLevel] = useState(1);
   const [school, setSchool] = useState('');
@@ -35,7 +35,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
 
   const handleSave = () => {
     if (!nameEn.trim() || !school.trim() || !description.trim()) {
-      showCustomAlert('Error', 'Please fill in all required fields (*)!');
+      showAlert('Error', 'Please fill in all required fields (*)!');
       return;
     }
 
@@ -69,7 +69,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
 
     const check = CombatRules.checkSpellKnownLimit(activePC, newSpell, (k: string) => findSpell(activePC, k));
     if (!check.success) {
-      showCustomAlert('Spell Limit Exceeded', check.error || 'You cannot learn any more known spells of this level.');
+      showAlert('Spell Limit Exceeded', check.error || 'You cannot learn any more known spells of this level.');
       return;
     }
 
@@ -83,7 +83,7 @@ export const SpellCreatorDialog: React.FC<SpellCreatorDialogProps> = ({ pc: _pc,
       }
     });
 
-    showCustomAlert('Success!', `"${nameEn}" was successfully created and added to your spellbook!`);
+    showAlert('Success!', `"${nameEn}" was successfully created and added to your spellbook!`);
     onClose();
   };
 

@@ -10,14 +10,15 @@
 import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { WeaponRegistry } from '@core/models/Weapon.js';
-import { BaseCard } from '../shared/BaseCard';
+import { BaseCard } from '../../shared/BaseCard';
 import { showCustomConfirm, showAttackChoiceDialog, showDamageChoiceDialog } from '@core/ui/components/dialogs.js';
 
-import { ActiveEquipmentSlots } from './offense/ActiveEquipmentSlots';
-import { TacticalModifiersCard } from './offense/TacticalModifiersCard';
-import { ClassCombatAbilitiesCard } from './offense/ClassCombatAbilitiesCard';
-import { TacticalBeltCard } from './offense/TacticalBeltCard';
-import { WeaponStashCard } from './offense/WeaponStashCard';
+import { ActiveEquipmentSlots } from './ActiveEquipmentSlots';
+import { TacticalModifiersCard } from './TacticalModifiersCard';
+import { ClassCombatAbilitiesCard } from './ClassCombatAbilitiesCard';
+import { TacticalBeltCard } from './TacticalBeltCard';
+import { WeaponStashCard } from './WeaponStashCard';
+import { usePC } from '../../../context/PCContext';
 
 const getEquippedArmorFallback = (pc: any) => {
   if (typeof pc.getEquippedArmor === 'function') return pc.getEquippedArmor();
@@ -27,30 +28,28 @@ const getEquippedArmorFallback = (pc: any) => {
   return null;
 };
 
-interface PCOffenseTabProps {
-  pc: any;
-}
-
-export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
+export const PCOffenseTab: React.FC = () => {
+  const pc = usePC();
+  const loosePc = pc as any;
   const [expandedWeaponIds, setExpandedWeaponIds] = useState<Record<string, boolean>>({});
   const [doubleWeaponIdx, setDoubleWeaponIdx] = useState<number | null>(null);
   const [weaponSearchQuery, setWeaponSearchQuery] = useState('');
 
   const formatMod = (val: number) => (val >= 0 ? `+${val}` : `${val}`);
-  const babVal = typeof pc.bab === 'number' ? pc.bab : (typeof pc.bab?.getValue === 'function' ? pc.bab.getValue() : 0);
+  const babVal = typeof loosePc.bab === 'number' ? loosePc.bab : (typeof loosePc.bab?.getValue === 'function' ? loosePc.bab.getValue() : 0);
 
   // Filter equipped weapons
-  const equippedWeapons = Array.isArray(pc.weapons) ? pc.weapons.filter((w: any) => w.isEquipped) : [];
+  const equippedWeapons = Array.isArray(loosePc.weapons) ? loosePc.weapons.filter((w: any) => w.isEquipped) : [];
   const mainHandWeapon = equippedWeapons.find((w: any) => w.hand === 'main') || equippedWeapons.find((w: any) => w.hand !== 'off') || null;
   let offHandWeapon = equippedWeapons.find((w: any) => w.hand === 'off' || w.grip === 'sec') || null;
   let isDoubleWielded = false;
-  if (mainHandWeapon && (mainHandWeapon as any).isDoubleWielded) {
+  if (mainHandWeapon && mainHandWeapon.isDoubleWielded) {
     offHandWeapon = mainHandWeapon;
     isDoubleWielded = true;
   }
   
-  const equippedArmor = Array.isArray(pc.armors) ? pc.armors.find((a: any) => a.isEquipped && !(a as any).isShield) : null;
-  const equippedShield = Array.isArray(pc.armors) ? pc.armors.find((a: any) => a.isEquipped && (a as any).isShield) : null;
+  const equippedArmor = Array.isArray(loosePc.armors) ? loosePc.armors.find((a: any) => a.isEquipped && !(a as any).isShield) : null;
+  const equippedShield = Array.isArray(loosePc.armors) ? loosePc.armors.find((a: any) => a.isEquipped && (a as any).isShield) : null;
 
   // Rarity style helper
   const getRarityStyle = (enhancement: number) => {
@@ -74,16 +73,16 @@ export const PCOffenseTab: React.FC<PCOffenseTabProps> = ({ pc }) => {
     
     // Warning for off-hand weapon without TWF
     if (w.hand === 'off') {
-      const hasTWF = pc.feats && (
-        pc.feats.some((f: any) => f.id === 'two_weapon_fighting' || f.id === 'zwei_waffen_kampf') ||
+      const hasTWF = loosePc.feats && (
+        loosePc.feats.some((f: any) => f.id === 'two_weapon_fighting' || f.id === 'zwei_waffen_kampf') ||
         (() => {
-          const armor = getEquippedArmorFallback(pc);
+          const armor = getEquippedArmorFallback(loosePc);
           const speedCategory = armor ? armor.speedCategory : '';
           const isWearingMediumOrHeavy = speedCategory === 'medium' || speedCategory === 'heavy';
           if (!isWearingMediumOrHeavy) {
-            const rangerClass = Array.isArray(pc.classes) && pc.classes.find((c: any) => c.classType === 'ranger');
+            const rangerClass = Array.isArray(loosePc.classes) && loosePc.classes.find((c: any) => c.classType === 'ranger');
             const rangerLvl = rangerClass ? rangerClass.level : 0;
-            return rangerLvl >= 2 && pc.rangerCombatStyle === 'twoweapon';
+            return rangerLvl >= 2 && loosePc.rangerCombatStyle === 'twoweapon';
           }
           return false;
         })()

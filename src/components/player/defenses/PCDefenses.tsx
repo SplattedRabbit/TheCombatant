@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { PCDefensesTab } from './PCDefensesTab';
-import { PCBuffsTab } from './PCBuffsTab';
+import { PCBuffsTab } from '../buffs/PCBuffsTab';
+import { usePC } from '../../../context/PCContext';
 
-interface PCDefensesProps {
-  pc: any;
-}
-
-export const PCDefenses: React.FC<PCDefensesProps> = ({ pc }) => {
+export const PCDefenses: React.FC = () => {
+  const pc = usePC();
   const [subTab, setSubTab] = useState<'defenses' | 'buffs'>('defenses');
   const buffCount = Array.isArray(pc.activeBuffs) ? pc.activeBuffs.length : 0;
 

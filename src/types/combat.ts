@@ -100,6 +100,7 @@ export interface Weapon {
   isNatural?: boolean;
   isSecondary?: boolean;
   isKeen?: boolean;
+  isDoubleWielded?: boolean;
   extraDamage?: string;
   extraDamageDice?: number;
   extraDamageType?: string;
@@ -257,6 +258,7 @@ export interface ActiveBuff {
   effects: Array<{ target: string; value: number; type: string; source?: string }>;
   durationRemainingRounds?: number;
   isSuppressed?: boolean;
+  sharedWith?: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -268,11 +270,11 @@ export type CombatantType = 'p' | 'e' | 'a'; // player / enemy / ally
 export interface Combatant {
   id: string;
   name: string;
+  playerName?: string;
   type: CombatantType;
   hp: number;
   maxHp: number;
   maxHP: number;
-  tempHp: number;
   ac: number;
   initiative: number;
   initiativeRoll?: number;
@@ -288,15 +290,12 @@ export interface Combatant {
 
   // Kampf-Werte
   bab: number;
-  cmb?: number;
-  cmd?: number;
   saves?: SavingThrows;
 
   // Klasse & Stufe
   classes: CharClass[];
   totalLevel: number;
   race: string;
-  size: string;
   activeShape: string;
   alignment?: string;
   favoredEnemy?: string;
@@ -335,9 +334,14 @@ export interface Combatant {
   isFavoredEnemyActive?: boolean;
   isSneakAttacking?: boolean;
   isTrickyFightingActive?: boolean;
-
-  // Begleiter-Verweis (für Companion-Inline-Darstellung im DM-Screen)
-  companionOf?: string;
+  deathScreenShown?: boolean;
+  companionType?: string;
+  companionName?: string;
+  companionHP?: number;
+  companionMaxHP?: number;
+  familiarType?: string;
+  familiarName?: string;
+  familiarHP?: number;
 
   // Verteidigung, Rettungswürfe & Boni
   activeBuffs?: ActiveBuff[];
@@ -368,7 +372,6 @@ export interface Combatant {
   levelAdjustment?: number;
 
   // Methoden & zusätzliche Flags
-  [key: string]: any;
 }
 
 // ---------------------------------------------------------------------------

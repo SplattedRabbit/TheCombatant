@@ -10,20 +10,7 @@
 
 import { isLightWeapon } from '../../models/Weapon.js';
 import { CombatSpells } from '../../spells.js';
-
-function getTypeLabel(type) {
-  const labels = {
-    morale: 'Morale',
-    luck: 'Luck',
-    dodge: 'Dodge',
-    enhancement: 'Enhancement',
-    insight: 'Insight',
-    sacred: 'Sacred',
-    profane: 'Profane',
-    untyped: 'Untyped'
-  };
-  return labels[type] || type;
-}
+import { resolveModifierStacking } from '../RulesStacking.js';
 
 function resolveAtkDmgBuffs(pc, target, allCombatants) {
   const effects = [];
@@ -106,57 +93,7 @@ function resolveAtkDmgBuffs(pc, target, allCombatants) {
     });
   }
 
-  const groupedBoni = {};
-  let penaltiesSum = 0;
-  const penalties = [];
-
-  effects.forEach(eff => {
-    if (eff.value < 0) {
-      penaltiesSum += eff.value;
-      penalties.push({
-        label: `${eff.source} (${getTypeLabel(eff.type)})`,
-        value: eff.value
-      });
-    } else if (eff.type === 'dodge' || eff.type === 'untyped') {
-      const key = `${eff.type}_${eff.source}`;
-      groupedBoni[key] = {
-        value: (groupedBoni[key]?.value || 0) + eff.value,
-        type: eff.type,
-        source: eff.source,
-        label: `${eff.source} (${getTypeLabel(eff.type)})`
-      };
-    } else {
-      const existing = groupedBoni[eff.type];
-      if (!existing || eff.value > existing.value) {
-        groupedBoni[eff.type] = {
-          value: eff.value,
-          type: eff.type,
-          source: eff.source,
-          label: `${eff.source} (${getTypeLabel(eff.type)})`
-        };
-      }
-    }
-  });
-
-  let bonusSum = 0;
-  const breakdown = [];
-
-  Object.values(groupedBoni).forEach(b => {
-    bonusSum += b.value;
-    breakdown.push({
-      label: b.label,
-      value: b.value
-    });
-  });
-
-  penalties.forEach(p => {
-    breakdown.push(p);
-  });
-
-  return {
-    total: bonusSum + penaltiesSum,
-    breakdown
-  };
+  return resolveModifierStacking(effects);
 }
 
 export function buildContext(pc, weapon, options = {}, allCombatants = []) {

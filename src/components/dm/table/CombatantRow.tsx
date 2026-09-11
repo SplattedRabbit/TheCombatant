@@ -8,6 +8,8 @@ import { CombatState } from '@core/state.js';
 import { CombatRules } from '@core/rules.js';
 import { CompanionRules } from '@core/rules/CompanionRules.js';
 import { FamiliarRules } from '@core/rules/FamiliarRules.js';
+// @ts-ignore
+import { resolveModifierStacking } from '../../../../js/rules/RulesStacking.js';
 import type { Combatant } from '../../../types/combat';
 import { CombatantInput } from './CombatantInput.tsx';
 
@@ -24,22 +26,8 @@ export const getVal = (field: any): number => {
   if (typeof field === 'object') {
     const base = typeof field.base === 'number' ? field.base : (parseInt(field.base) || 0);
     const modifiers = Array.isArray(field.modifiers) ? field.modifiers : [];
-    const grouped: Record<string, number> = {};
-    let penaltiesSum = 0;
-    
-    modifiers.forEach((m: any) => {
-      if (!m) return;
-      const val = parseInt(m.value) || 0;
-      if (val < 0) {
-        penaltiesSum += val;
-      } else if (m.type === 'dodge' || m.type === 'untyped') {
-        grouped[m.type] = (grouped[m.type] || 0) + val;
-      } else {
-        grouped[m.type] = Math.max(grouped[m.type] || 0, val);
-      }
-    });
-    const totalMod = Object.values(grouped).reduce((sum, val) => sum + val, 0);
-    return base + totalMod + penaltiesSum;
+    const { total } = resolveModifierStacking(modifiers);
+    return base + total;
   }
   return 0;
 };
@@ -67,7 +55,7 @@ export const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList })
 
   const hpColor = c.hp < 0 ? { color: 'var(--red)' } : {};
   const tempHPObj = Array.isArray(c.conditions) 
-    ? (c.conditions as any[]).find((x: any) => typeof x === 'object' && x.n === 'Temp-HP')
+    ? c.conditions.find((x: any) => typeof x === 'object' && x.n === 'Temp-HP')
     : null;
   const tempHP = tempHPObj ? (parseInt(tempHPObj.tmpVal) || 0) : 0;
 
@@ -113,7 +101,7 @@ export const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList })
   let buffBadges = null;
   if (Array.isArray(c.activeBuffs) && c.activeBuffs.length > 0) {
     buffBadges = c.activeBuffs.map(b => {
-      const auraPrefix = (b as any).sharedWith ? '✦ ' : '';
+      const auraPrefix = b.sharedWith ? '✦ ' : '';
       return (
         <span key={b.id} className="dm-effect-badge badge-buff">
           {auraPrefix}{b.name}{' '}
@@ -146,14 +134,14 @@ export const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList })
     const companionExists = combatantsList.some(x => x.id === companionId);
     const familiarExists = combatantsList.some(x => x.id === familiarId);
 
-    if ((c as any).companionType && (c as any).companionType !== 'none' && !companionExists) {
+    if (c.companionType && c.companionType !== 'none' && !companionExists) {
       recallButton = (
         <button 
           className="recall-btn companion-recall-btn" 
           style={{ fontSize: '7px', padding: '1px 3px', marginLeft: '3px', cursor: 'pointer' }} 
           title="Summon animal companion"
           onClick={() => {
-            const companionType = (c as any).companionType;
+            const companionType = c.companionType;
             const level = c.totalLevel || 1;
             const rangerClass = c.classes?.find(cl => cl.classType === 'ranger');
             const druidClass = c.classes?.find(cl => cl.classType === 'druid');
@@ -169,10 +157,10 @@ export const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList })
 
             CombatState.addCombatant({
               id: companionId,
-              name: (c as any).companionName || companionStats.name || 'Animal Companion',
+              name: c.companionName || companionStats.name || 'Animal Companion',
               type: 'n',
-              hp: (c as any).companionHP || companionStats.maxHP || 10,
-              maxHP: (c as any).companionMaxHP || companionStats.maxHP || 10,
+              hp: c.companionHP || companionStats.maxHP || 10,
+              maxHP: c.companionMaxHP || companionStats.maxHP || 10,
               init: c.init || 0,
               ac: finalAC,
               bw: companionStats.bw || 30,
@@ -182,25 +170,25 @@ export const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList })
             });
           }}
         >
-          🐾 {(c as any).companionName || 'Companion'}
+          🐾 {c.companionName || 'Companion'}
         </button>
       );
-    } else if ((c as any).familiarType && (c as any).familiarType !== 'none' && !familiarExists) {
+    } else if (c.familiarType && c.familiarType !== 'none' && !familiarExists) {
       recallButton = (
         <button 
           className="recall-btn familiar-recall-btn" 
           style={{ fontSize: '7px', padding: '1px 3px', marginLeft: '3px', cursor: 'pointer' }} 
           title="Summon familiar"
           onClick={() => {
-            const familiarType = (c as any).familiarType;
+            const familiarType = c.familiarType;
             const familiarStats = FamiliarRules.getFamiliarBaseStats(familiarType) || {};
             const finalAC = familiarStats.ac || 15;
             const maxHP = Math.floor(c.maxHp / 2);
-            const curHP = (c as any).familiarHP !== undefined ? Math.min(maxHP, (c as any).familiarHP) : maxHP;
+            const curHP = c.familiarHP !== undefined ? Math.min(maxHP, c.familiarHP) : maxHP;
 
             CombatState.addCombatant({
               id: familiarId,
-              name: (c as any).familiarName || familiarStats.name || 'Familiar',
+              name: c.familiarName || familiarStats.name || 'Familiar',
               type: 'n',
               hp: curHP,
               maxHP: maxHP,
@@ -213,7 +201,7 @@ export const CombatantRow: React.FC<CombatantRowProps> = ({ c, combatantsList })
             });
           }}
         >
-          🐾 {(c as any).familiarName || 'Familiar'}
+          🐾 {c.familiarName || 'Familiar'}
         </button>
       );
     }

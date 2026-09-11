@@ -53,294 +53,231 @@ export interface DialogContextType {
 const DialogContext = createContext<DialogContextType | undefined>(undefined);
 
 export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [activeModal, setActiveModal] = useState<{ id: string; type: string; props: any } | null>(null);
+  const [activeModals, setActiveModals] = useState<Array<{ id: string; type: string; props: any }>>([]);
   const [parchmentMessages, setParchmentMessages] = useState<Array<{ id: string; text: string; sender: string }>>([]);
 
-  const closeDialog = useCallback(() => {
-    setActiveModal(null);
+  const closeDialog = useCallback((idToClose?: string) => {
+    setActiveModals(prev => {
+      if (prev.length === 0) return prev;
+      if (idToClose) return prev.filter(m => m.id !== idToClose);
+      return prev.slice(0, -1); // pop top
+    });
   }, []);
 
   const closeAllDialogs = useCallback(() => {
-    setActiveModal(null);
+    setActiveModals([]);
     setParchmentMessages([]);
   }, []);
 
+  const pushModal = useCallback((type: string, propsFactory: (id: string) => any) => {
+    const id = type + '_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+    setActiveModals(prev => [...prev, { id, type, props: propsFactory(id) }]);
+  }, []);
+
   const showAlert = useCallback((title: string, message: string, buttonText?: string, icon?: string, onClose?: () => void) => {
-    setActiveModal({
-      id: 'alert_' + Date.now(),
-      type: 'alert',
-      props: {
-        title,
-        message,
-        buttonText,
-        icon,
-        onClose: () => {
-          closeDialog();
-          if (onClose) onClose();
-        },
+    pushModal('alert', (id) => ({
+      title,
+      message,
+      buttonText,
+      icon,
+      onClose: () => {
+        closeDialog(id);
+        if (onClose) onClose();
       },
-    });
-  }, [closeDialog]);
+    }));
+  }, [closeDialog, pushModal]);
 
   const showConfirm = useCallback((title: string, messageHtml: string, onConfirm: () => void, onCancel?: () => void) => {
-    setActiveModal({
-      id: 'confirm_' + Date.now(),
-      type: 'confirm',
-      props: {
-        title,
-        messageHtml,
-        onConfirm: () => {
-          closeDialog();
-          onConfirm();
-        },
-        onCancel: () => {
-          closeDialog();
-          if (onCancel) onCancel();
-        },
+    pushModal('confirm', (id) => ({
+      title,
+      messageHtml,
+      onConfirm: () => {
+        closeDialog(id);
+        onConfirm();
       },
-    });
-  }, [closeDialog]);
+      onCancel: () => {
+        closeDialog(id);
+        if (onCancel) onCancel();
+      },
+    }));
+  }, [closeDialog, pushModal]);
 
   const showPrompt = useCallback((title: string, message: string, defaultValue: string, buttonText: string, onConfirm: (val: string) => void) => {
-    setActiveModal({
-      id: 'prompt_' + Date.now(),
-      type: 'prompt',
-      props: {
-        title,
-        message,
-        defaultValue,
-        buttonText,
-        onConfirm: (val: string) => {
-          closeDialog();
-          onConfirm(val);
-        },
-        onCancel: closeDialog,
+    pushModal('prompt', (id) => ({
+      title,
+      message,
+      defaultValue,
+      buttonText,
+      onConfirm: (val: string) => {
+        closeDialog(id);
+        onConfirm(val);
       },
-    });
-  }, [closeDialog]);
+      onCancel: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showHealingRoll = useCallback((opts: { itemName: string; dice: string; bonus: number; formula: string; onConfirm: (val: string) => void; onCancel?: () => void }) => {
-    setActiveModal({
-      id: 'healing_' + Date.now(),
-      type: 'healing',
-      props: {
-        ...opts,
-        onConfirm: (val: string) => {
-          closeDialog();
-          opts.onConfirm(val);
-        },
-        onCancel: () => {
-          closeDialog();
-          if (opts.onCancel) opts.onCancel();
-        },
+    pushModal('healing', (id) => ({
+      ...opts,
+      onConfirm: (val: string) => {
+        closeDialog(id);
+        opts.onConfirm(val);
       },
-    });
-  }, [closeDialog]);
+      onCancel: () => {
+        closeDialog(id);
+        if (opts.onCancel) opts.onCancel();
+      },
+    }));
+  }, [closeDialog, pushModal]);
 
   const showItemDamage = useCallback((opts: { itemName: string; dice: string; bonus: number; formula: string; damageType?: string; effectDesc?: string; saveText?: string | null; onConfirm: () => void; onCancel?: () => void }) => {
-    setActiveModal({
-      id: 'item_damage_' + Date.now(),
-      type: 'itemDamage',
-      props: {
-        ...opts,
-        onConfirm: () => {
-          closeDialog();
-          opts.onConfirm();
-        },
-        onCancel: () => {
-          closeDialog();
-          if (opts.onCancel) opts.onCancel();
-        },
+    pushModal('itemDamage', (id) => ({
+      ...opts,
+      onConfirm: () => {
+        closeDialog(id);
+        opts.onConfirm();
       },
-    });
-  }, [closeDialog]);
+      onCancel: () => {
+        closeDialog(id);
+        if (opts.onCancel) opts.onCancel();
+      },
+    }));
+  }, [closeDialog, pushModal]);
 
   const showNewDayTemplate = useCallback((templates: Record<string, any>, onConfirm: (choice: string) => void) => {
-    setActiveModal({
-      id: 'new_day_' + Date.now(),
-      type: 'newDay',
-      props: {
-        templates,
-        onConfirm: (choice: string) => {
-          closeDialog();
-          onConfirm(choice);
-        },
-        onCancel: closeDialog,
+    pushModal('newDay', (id) => ({
+      templates,
+      onConfirm: (choice: string) => {
+        closeDialog(id);
+        onConfirm(choice);
       },
-    });
-  }, [closeDialog]);
+      onCancel: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showRollBreakdown = useCallback((title: string, diceFormula: string, breakdownItems: any[], _event?: any) => {
-    setActiveModal({
-      id: 'roll_breakdown_' + Date.now(),
-      type: 'rollBreakdown',
-      props: {
-        title,
-        diceFormula,
-        breakdownItems,
-        onClose: closeDialog,
-      },
-    });
-  }, [closeDialog]);
+    pushModal('rollBreakdown', (id) => ({
+      title,
+      diceFormula,
+      breakdownItems,
+      onClose: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showSampleChoice = useCallback((isPlayer: boolean, onConfirm: (choice: string) => void) => {
-    setActiveModal({
-      id: 'sample_choice_' + Date.now(),
-      type: 'sampleChoice',
-      props: {
-        isPlayer,
-        onConfirm: (choice: string) => {
-          closeDialog();
-          onConfirm(choice);
-        },
-        onCancel: closeDialog,
+    pushModal('sampleChoice', (id) => ({
+      isPlayer,
+      onConfirm: (choice: string) => {
+        closeDialog(id);
+        onConfirm(choice);
       },
-    });
-  }, [closeDialog]);
+      onCancel: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showAttackChoice = useCallback((pc: any, weapon: any, _event?: any, options?: any) => {
-    setActiveModal({
-      id: 'attack_choice_' + Date.now(),
-      type: 'attackChoice',
-      props: {
-        pc,
-        weapon,
-        options,
-        onClose: closeDialog,
-      },
-    });
-  }, [closeDialog]);
+    pushModal('attackChoice', (id) => ({
+      pc,
+      weapon,
+      options,
+      onClose: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showDamageChoice = useCallback((pc: any, weapon: any, _event?: any, options?: any) => {
-    setActiveModal({
-      id: 'damage_choice_' + Date.now(),
-      type: 'damageChoice',
-      props: {
-        pc,
-        weapon,
-        options,
-        onClose: closeDialog,
-      },
-    });
-  }, [closeDialog]);
+    pushModal('damageChoice', (id) => ({
+      pc,
+      weapon,
+      options,
+      onClose: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showPrepareSpell = useCallback((pc: any, spellKey: string, onComplete?: () => void) => {
-    setActiveModal({
-      id: 'prepare_spell_' + Date.now(),
-      type: 'prepareSpell',
-      props: {
-        pc,
-        spellKey,
-        onConfirm: () => {
-          closeDialog();
-          if (onComplete) onComplete();
-        },
-        onCancel: closeDialog,
+    pushModal('prepareSpell', (id) => ({
+      pc,
+      spellKey,
+      onConfirm: () => {
+        closeDialog(id);
+        if (onComplete) onComplete();
       },
-    });
-  }, [closeDialog]);
+      onCancel: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showCastSpontaneousSpell = useCallback((pc: any, spellKey: string, onComplete?: () => void) => {
-    setActiveModal({
-      id: 'cast_spontaneous_' + Date.now(),
-      type: 'castSpontaneous',
-      props: {
-        pc,
-        spellKey,
-        onConfirm: () => {
-          closeDialog();
-          if (onComplete) onComplete();
-        },
-        onCancel: closeDialog,
+    pushModal('castSpontaneous', (id) => ({
+      pc,
+      spellKey,
+      onConfirm: () => {
+        closeDialog(id);
+        if (onComplete) onComplete();
       },
-    });
-  }, [closeDialog]);
+      onCancel: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showSpellScroll = useCallback((spell: any, isLearned: boolean, onToggleLearn?: () => void) => {
-    setActiveModal({
-      id: 'spell_scroll_' + Date.now(),
-      type: 'spellScroll',
-      props: {
-        spell,
-        isLearned,
-        onToggleLearn: onToggleLearn || (() => {}),
-        onClose: closeDialog,
-      },
-    });
-  }, [closeDialog]);
+    pushModal('spellScroll', (id) => ({
+      spell,
+      isLearned,
+      onToggleLearn: onToggleLearn || (() => {}),
+      onClose: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showFeatScroll = useCallback((feat: any, pc: any, isLearned: boolean, option?: string, _event?: any) => {
     const livePC = (CombatState && typeof CombatState.getActivePC === 'function' ? CombatState.getActivePC() : null) || pc;
-    setActiveModal({
-      id: 'feat_scroll_' + Date.now(),
-      type: 'featScroll',
-      props: {
-        feat,
-        pc: livePC,
-        isLearned: (livePC?.feats || []).some((f: any) => f.id === feat.id) || (typeof livePC?.hasFeat === 'function' && livePC.hasFeat(feat.id)),
-        option,
-        onClose: closeDialog,
-        onRefresh: () => {
-          const freshPC = (CombatState && typeof CombatState.getActivePC === 'function' ? CombatState.getActivePC() : null) || livePC;
-          showFeatScroll(feat, freshPC, isLearned, option);
-        },
+    pushModal('featScroll', (id) => ({
+      feat,
+      pc: livePC,
+      isLearned: (livePC?.feats || []).some((f: any) => f.id === feat.id) || (typeof livePC?.hasFeat === 'function' && livePC.hasFeat(feat.id)),
+      option,
+      onClose: () => closeDialog(id),
+      onRefresh: () => {
+        const freshPC = (CombatState && typeof CombatState.getActivePC === 'function' ? CombatState.getActivePC() : null) || livePC;
+        showFeatScroll(feat, freshPC, isLearned, option);
       },
-    });
-  }, [closeDialog]);
+    }));
+  }, [closeDialog, pushModal]);
 
   const showBuffDetails = useCallback((pc: any, key: string, isClass: boolean, isAlreadyActiveIndex?: number | null) => {
-    setActiveModal({
-      id: 'buff_details_' + Date.now(),
-      type: 'buffDetails',
-      props: {
-        pc,
-        spellKey: key,
-        isClass,
-        isAlreadyActiveIndex,
-        onClose: closeDialog,
-      },
-    });
-  }, [closeDialog]);
+    pushModal('buffDetails', (id) => ({
+      pc,
+      spellKey: key,
+      isClass,
+      isAlreadyActiveIndex,
+      onClose: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showCastSuccess = useCallback((pc: any, _spell: any, spellKey: string, metamagic?: string[], onAppliedCallback?: () => void) => {
-    setActiveModal({
-      id: 'cast_success_' + Date.now(),
-      type: 'castSuccess',
-      props: {
-        pc,
-        spellKey,
-        metamagic,
-        onClose: () => {
-          closeDialog();
-          if (onAppliedCallback) onAppliedCallback();
-        },
+    pushModal('castSuccess', (id) => ({
+      pc,
+      spellKey,
+      metamagic,
+      onClose: () => {
+        closeDialog(id);
+        if (onAppliedCallback) onAppliedCallback();
       },
-    });
-  }, [closeDialog]);
+    }));
+  }, [closeDialog, pushModal]);
 
   const showSpellDetails = useCallback((spell: any, spellKey: string, pc: any) => {
-    setActiveModal({
-      id: 'spell_details_' + Date.now(),
-      type: 'spellDetails',
-      props: {
-        spell,
-        spellKey,
-        pc,
-        onClose: closeDialog,
-      },
-    });
-  }, [closeDialog]);
+    pushModal('spellDetails', (id) => ({
+      spell,
+      spellKey,
+      pc,
+      onClose: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showSpellCreator = useCallback((pc: any) => {
-    setActiveModal({
-      id: 'spell_creator_' + Date.now(),
-      type: 'spellCreator',
-      props: {
-        pc,
-        onClose: closeDialog,
-      },
-    });
-  }, [closeDialog]);
+    pushModal('spellCreator', (id) => ({
+      pc,
+      onClose: () => closeDialog(id),
+    }));
+  }, [closeDialog, pushModal]);
 
   const showParchmentMessage = useCallback((text: string, sender: string = 'Dungeon Master') => {
     const msgId = 'msg_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
@@ -352,7 +289,7 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     };
   }, []);
 
-  // Bridge synchronization: guarantees backwards-compatibility for non-React JS calls
+  // Bridge synchronization: required for dialogs.js (Vanilla JS) to trigger React dialogs
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -360,7 +297,7 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     uiRegistry.renderPlayerScreen = uiRegistry.renderPlayerScreen || (() => {});
     uiRegistry.renderInitBar = uiRegistry.renderInitBar || (() => {});
     uiRegistry.renderConc = uiRegistry.renderConc || (() => {});
-
+    
     const bridge = {
       showCustomAlert: showAlert,
       showCustomConfirm: showConfirm,
@@ -391,25 +328,10 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       }
     };
   }, [
-    showAlert,
-    showConfirm,
-    showPrompt,
-    showHealingRoll,
-    showItemDamage,
-    showNewDayTemplate,
-    showRollBreakdown,
-    showSampleChoice,
-    showAttackChoice,
-    showDamageChoice,
-    showPrepareSpell,
-    showCastSpontaneousSpell,
-    showSpellScroll,
-    showFeatScroll,
-    showBuffDetails,
-    showCastSuccess,
-    showSpellDetails,
-    showSpellCreator,
-    showParchmentMessage,
+    showAlert, showConfirm, showPrompt, showHealingRoll, showItemDamage, showNewDayTemplate,
+    showRollBreakdown, showSampleChoice, showAttackChoice, showDamageChoice, showPrepareSpell,
+    showCastSpontaneousSpell, showSpellScroll, showFeatScroll, showBuffDetails, showCastSuccess,
+    showSpellDetails, showSpellCreator, showParchmentMessage
   ]);
 
   return (
@@ -439,25 +361,29 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     >
       {children}
 
-      {/* Render Active Declarative Modal inside React Component Tree */}
-      {activeModal && activeModal.type === 'alert' && <CustomAlertModal {...activeModal.props} />}
-      {activeModal && activeModal.type === 'confirm' && <CustomConfirmModal {...activeModal.props} />}
-      {activeModal && activeModal.type === 'prompt' && <CustomPromptModal {...activeModal.props} />}
-      {activeModal && activeModal.type === 'healing' && <HealingRollModal {...activeModal.props} />}
-      {activeModal && activeModal.type === 'itemDamage' && <ItemDamageModal {...activeModal.props} />}
-      {activeModal && activeModal.type === 'newDay' && <NewDayTemplateDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'rollBreakdown' && <RollBreakdownDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'sampleChoice' && <SampleChoiceDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'attackChoice' && <AttackChoiceDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'damageChoice' && <DamageChoiceDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'prepareSpell' && <PrepareSpellDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'castSpontaneous' && <CastSpontaneousSpellDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'spellScroll' && <SpellScrollDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'featScroll' && <FeatScrollDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'buffDetails' && <BuffDetailsDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'castSuccess' && <CastSuccessDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'spellDetails' && <SpellDetailsDialog {...activeModal.props} />}
-      {activeModal && activeModal.type === 'spellCreator' && <SpellCreatorDialog {...activeModal.props} />}
+      {/* Render Active Declarative Modals inside React Component Tree as Stack */}
+      {activeModals.map(activeModal => (
+        <React.Fragment key={activeModal.id}>
+          {activeModal.type === 'alert' && <CustomAlertModal {...activeModal.props} />}
+          {activeModal.type === 'confirm' && <CustomConfirmModal {...activeModal.props} />}
+          {activeModal.type === 'prompt' && <CustomPromptModal {...activeModal.props} />}
+          {activeModal.type === 'healing' && <HealingRollModal {...activeModal.props} />}
+          {activeModal.type === 'itemDamage' && <ItemDamageModal {...activeModal.props} />}
+          {activeModal.type === 'newDay' && <NewDayTemplateDialog {...activeModal.props} />}
+          {activeModal.type === 'rollBreakdown' && <RollBreakdownDialog {...activeModal.props} />}
+          {activeModal.type === 'sampleChoice' && <SampleChoiceDialog {...activeModal.props} />}
+          {activeModal.type === 'attackChoice' && <AttackChoiceDialog {...activeModal.props} />}
+          {activeModal.type === 'damageChoice' && <DamageChoiceDialog {...activeModal.props} />}
+          {activeModal.type === 'prepareSpell' && <PrepareSpellDialog {...activeModal.props} />}
+          {activeModal.type === 'castSpontaneous' && <CastSpontaneousSpellDialog {...activeModal.props} />}
+          {activeModal.type === 'spellScroll' && <SpellScrollDialog {...activeModal.props} />}
+          {activeModal.type === 'featScroll' && <FeatScrollDialog {...activeModal.props} />}
+          {activeModal.type === 'buffDetails' && <BuffDetailsDialog {...activeModal.props} />}
+          {activeModal.type === 'castSuccess' && <CastSuccessDialog {...activeModal.props} />}
+          {activeModal.type === 'spellDetails' && <SpellDetailsDialog {...activeModal.props} />}
+          {activeModal.type === 'spellCreator' && <SpellCreatorDialog {...activeModal.props} />}
+        </React.Fragment>
+      ))}
 
       {/* Render Parchment Messages */}
       {parchmentMessages.map(msg => (

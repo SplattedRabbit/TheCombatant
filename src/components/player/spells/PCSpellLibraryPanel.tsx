@@ -7,7 +7,7 @@
  */
 
 import React, { useState } from 'react';
-import { PCSpellCompendium } from '../PCSpellCompendium';
+import { PCSpellCompendium } from './PCSpellCompendium';
 import { SpellLibraryList } from './grimoire/SpellLibraryList';
 
 interface PCSpellLibraryPanelProps {

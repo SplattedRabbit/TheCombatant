@@ -16,14 +16,14 @@ import { findSpell } from './PCSpellbookTab';
 import { SpellTemplateBar } from './SpellTemplateBar';
 import { PreparedSlotRow } from './PreparedSlotRow';
 
-const showCastSuccessDialog = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showCastSuccessDialog?.(...args);
+import { useDialog } from '../../../context/DialogContext.tsx';
 
 interface PCSpellPreparationProps {
   pc: any;
 }
 
 export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) => {
+  const { showCastSuccess } = useDialog();
   const [selectedTemplate, setSelectedTemplate] = useState('');
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
@@ -86,7 +86,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
       const spell = findSpell(pc, castPrep.spellKey);
       if (spell) {
         if (spell.effects && spell.effects.length > 0) {
-          showCastSuccessDialog(pc, spell, castPrep.spellKey, castPrep.metamagic || [], () => {});
+          showCastSuccess(pc, spell, castPrep.spellKey, castPrep.metamagic || [], () => {});
         } else {
           const METAMAGIC_COSTS: Record<string, number> = { extend_spell: 1, empower_spell: 2, maximize_spell: 3, quicken_spell: 4 };
           const metamagicNames: Record<string, string> = { extend_spell: 'Extended', empower_spell: 'Empowered', maximize_spell: 'Maximized', quicken_spell: 'Quickened' };

@@ -10,16 +10,14 @@
 
 import React, { useState, useRef } from 'react';
 import { CombatState } from '@core/state.js';
-import { BaseCard } from '../shared/BaseCard';
+import { BaseCard } from '../../shared/BaseCard';
+import { PCAttributeBox } from './PCAttributeBox.tsx';
+import { PCClassesManager } from './PCClassesManager.tsx';
+import { usePC } from '../../../context/PCContext';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
-import { PCAttributeBox } from './attributes/PCAttributeBox.tsx';
-import { PCClassesManager } from './attributes/PCClassesManager.tsx';
 
-interface PCAttributesProps {
-  pc: any;
-}
-
-export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
+export const PCAttributes: React.FC = () => {
+  const pc = usePC();
   const [localScores, setLocalScores] = useState<Record<string, string>>({});
   const classesCount = Array.isArray(pc.classes) ? pc.classes.length : 0;
   const isAlertActiveRef = useRef(false);
@@ -51,7 +49,8 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
       num = 10;
     }
 
-    const currentScore = pc[key]?.getValue?.() ?? pc[key]?.base ?? pc[key] ?? 10;
+    const loosePc = pc as any;
+    const currentScore = loosePc[key]?.getValue?.() ?? loosePc[key]?.base ?? loosePc[key] ?? 10;
 
     if (num < 3) {
       isAlertActiveRef.current = true;
@@ -145,7 +144,7 @@ export const PCAttributes: React.FC<PCAttributesProps> = ({ pc }) => {
           <label style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>⚔️ Base Attack Bonus (BAB):</label>
           <input
             type="text"
-            value={getBabSequence(typeof pc.bab === 'number' ? pc.bab : (typeof pc.bab?.getValue === 'function' ? pc.bab.getValue() : 0))}
+            value={getBabSequence(typeof (pc as any).bab === 'number' ? (pc as any).bab : (typeof (pc as any).bab?.getValue === 'function' ? (pc as any).bab.getValue() : 0))}
             onChange={(e) => {
               CombatState.clearPCClasses();
               CombatState.updatePCNumber('bab', e.target.value);

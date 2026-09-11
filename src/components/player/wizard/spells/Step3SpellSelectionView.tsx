@@ -5,8 +5,8 @@
 
 import React, { useMemo } from 'react';
 import { getSpellSelectionQuota } from './spellSelectionRules';
-import { PCSpellCompendium } from '../../PCSpellCompendium';
-import { findSpell } from '../../PCSpellbookTab';
+import { PCSpellCompendium } from '../../spells/PCSpellCompendium';
+import { findSpell } from '../../spells/PCSpellbookTab';
 
 export interface Step3SpellSelectionViewProps {
   currentConfig: any;

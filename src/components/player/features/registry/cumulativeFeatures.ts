@@ -8,7 +8,7 @@ import { getSneakAttackDiceFromPrestigeClasses } from '../../../../../js/rules/p
 import { RogueRules } from '../../../../../js/rules/classes/RogueRules.js';
 import type { UnifiedFeature } from './types.ts';
 import { formatClassName } from './formatters.ts';
-import { getAblMod } from '../../attributeHelper';
+import { getAblMod } from '../../attributeHelper.ts';
 
 export function getCumulativeFeatures(pc: any, classMap: Map<string, number>): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];

@@ -6,7 +6,7 @@
 
 import type { UnifiedFeature } from '../types.ts';
 import { DOMAINS_REGISTRY } from '../../../../../../js/data/domains-data.js';
-import { getAblMod } from '../../../attributeHelper';
+import { getAblMod } from '../../../attributeHelper.ts';
 
 export function getPHBCoreCasterFeatures(pc: any, classMap: Map<string, number>): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];

@@ -9,15 +9,12 @@
  */
 
 import React, { useState } from 'react';
-import type { Combatant } from '../../types/combat';
+import { BaseCard } from '../../shared/BaseCard';
+import { usePC } from '../../../context/PCContext';
 import { CombatState } from '@core/state.js';
-import { BaseCard } from '../shared/BaseCard';
 
-interface PCHealthGlobeProps {
-  pc: Combatant;
-}
-
-export const PCHealthGlobe: React.FC<PCHealthGlobeProps> = ({ pc }) => {
+export const PCHealthGlobe: React.FC = () => {
+  const pc = usePC();
   const [dmgValue, setDmgValue] = useState<string>('');
   const [isHalf, setIsHalf] = useState<boolean>(false);
   const [isDouble, setIsDouble] = useState<boolean>(false);

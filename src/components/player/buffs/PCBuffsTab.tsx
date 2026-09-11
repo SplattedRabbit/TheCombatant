@@ -12,18 +12,17 @@ import { CombatState } from '@core/state.js';
 import { activateBuffByKey } from '@core/rules/BuffRules.js';
 import { showCustomConfirm, showCustomAlert, showCustomPrompt } from '@core/ui/components/dialogs.js';
 import { uiRegistry } from '@core/ui/ui-shared.js';
-import { ActiveBuffsPills } from './buffs/ActiveBuffsPills.tsx';
-import { QuickBuffsSection } from './buffs/QuickBuffsSection.tsx';
-import { BuffSearchSection } from './buffs/BuffSearchSection.tsx';
-
-const showBuffDetailsDialog = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showBuffDetailsDialog?.(...args);
+import { ActiveBuffsPills } from './ActiveBuffsPills.tsx';
+import { QuickBuffsSection } from './QuickBuffsSection.tsx';
+import { BuffSearchSection } from './BuffSearchSection.tsx';
+import { useDialog } from '../../../context/DialogContext.tsx';
 
 interface PCBuffsTabProps {
   pc: any;
 }
 
 export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
+  const { showBuffDetails } = useDialog();
   const activeBuffs = Array.isArray(pc.activeBuffs) ? pc.activeBuffs : [];
   const quickBuffs = Array.isArray(pc.quickBuffs) ? pc.quickBuffs : [];
 
@@ -50,7 +49,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
   const handleBuffDetailClick = (idx: number) => {
     const buff = activeBuffs[idx];
     if (!buff) return;
-    showBuffDetailsDialog(pc, buff.spellKey, false, idx);
+    showBuffDetails(pc, buff.spellKey, false, idx);
   };
 
   const handleQuickBuffClick = (qb: any) => {
@@ -119,7 +118,7 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
   };
 
   const handleSelectSearchResult = (m: any) => {
-    showBuffDetailsDialog(pc, m.key, m.isClass);
+    showBuffDetails(pc, m.key, m.isClass);
   };
 
   return (

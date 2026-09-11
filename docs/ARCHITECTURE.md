@@ -143,6 +143,7 @@ graph TD
 - Built with **React 19** and strictly typed with **TypeScript**.
 - Follows the **Option A Component Sizing Standard**: 100% of UI component files are `<= 450 lines` (0 files in `src/components/` exceed 450 lines).
 - All modals and alerts are declaratively managed through [`src/context/DialogContext.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/context/DialogContext.tsx) via `useDialog()`.
+- **Legacy Dialog Bridge:** The `window.__REACT_DIALOG_BRIDGE__` facade is intentionally maintained within `DialogContext.tsx` strictly for Vanilla JS backwards-compatibility (via `js/ui/components/dialogs.js`). React components must NEVER call the bridge directly and must always use `useDialog()`.
 - Uses Vanilla CSS and parchment design tokens (`var(--p)`, `var(--pb)`, `var(--red)`, `var(--ink)`).
 - **Zero Runtime Latency:** Static chunking with Vite; no dynamic `React.lazy()` spinners during live tabletop gameplay.
 

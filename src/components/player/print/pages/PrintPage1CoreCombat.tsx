@@ -183,7 +183,7 @@ export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
         </div>
         <div className="dnd-box">
           <div className="dnd-label">Size / Gender</div>
-          <div className="dnd-value">{pc.size || 'Medium'} / {pc.gender || '—'}</div>
+          <div className="dnd-value">{'Medium'} / {pc.gender || '—'}</div>
         </div>
         <div className="dnd-box">
           <div className="dnd-label">Age / Height</div>

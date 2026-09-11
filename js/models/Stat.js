@@ -1,3 +1,5 @@
+import { resolveModifierStacking } from './helpers/modifiers/ModifierStacking.js';
+
 /**
  * Encapsulates a D&D 3.5e base score and active modifier stacking resolution rules.
  */
@@ -13,20 +15,8 @@ export class Stat {
   }
 
   getValue() {
-    const grouped = {};
-    let penaltiesSum = 0;
-    this.modifiers.forEach(m => {
-      const val = parseInt(m.value) || 0;
-      if (val < 0) {
-        penaltiesSum += val;
-      } else if (m.type === 'dodge' || m.type === 'untyped') {
-        grouped[m.type] = (grouped[m.type] || 0) + val;
-      } else {
-        grouped[m.type] = Math.max(grouped[m.type] || 0, val);
-      }
-    });
-    const totalMod = Object.values(grouped).reduce((sum, val) => sum + val, 0);
-    return this.base + totalMod + penaltiesSum;
+    const { total } = resolveModifierStacking(this.modifiers);
+    return this.base + total;
   }
 
   getModifierSum() {

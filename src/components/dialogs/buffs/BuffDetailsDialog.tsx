@@ -13,7 +13,7 @@ import {
   translateType,
   activateBuffByKey
 } from '@core/rules/BuffRules.js';
-import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { useDialog } from '../../../context/DialogContext.tsx';
 
 export interface BuffDetailsDialogProps {
   pc: any;
@@ -30,6 +30,7 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
   isAlreadyActiveIndex = null,
   onClose
 }) => {
+  const { showConfirm, showAlert, showPrompt } = useDialog();
   let displayName = '';
   let effectsList: any[] = [];
   let durationStr = '—';
@@ -94,13 +95,10 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
   const handleActivate = () => {
     onClose();
     activateBuffByKey(pc, spellKey, isClass, {
-      showCustomConfirm,
-      showCustomAlert,
+      showCustomConfirm: showConfirm,
+      showCustomAlert: showAlert,
       showCustomPrompt: (title: string, msg: string, def: string, onConfirm: (val: string) => void) => {
-        const bridge = (window as any).__REACT_DIALOG_BRIDGE__;
-        if (bridge && bridge.showCustomPrompt) {
-          bridge.showCustomPrompt(title, msg, def, "OK", onConfirm);
-        }
+        showPrompt(title, msg, def, "OK", onConfirm);
       },
       renderPlayerScreen: () => {
         if (uiRegistry && typeof uiRegistry.renderPlayerScreen === 'function') {

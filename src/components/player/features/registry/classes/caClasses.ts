@@ -5,7 +5,7 @@
  */
 
 import type { UnifiedFeature } from '../types.ts';
-import { getAblMod } from '../../../attributeHelper';
+import { getAblMod } from '../../../attributeHelper.ts';
 
 export function getCAClassFeatures(pc: any, classMap: Map<string, number>): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];

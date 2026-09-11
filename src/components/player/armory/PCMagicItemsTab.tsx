@@ -4,13 +4,10 @@
  * @exports   PCMagicItemsTab
  */
 
-import React from 'react';
-import { ArmoryTab } from './armory/ArmoryTab';
+import { ArmoryTab } from './ArmoryTab';
+import { usePC } from '../../../context/PCContext';
 
-interface PCMagicItemsTabProps {
-  pc: any;
-}
-
-export const PCMagicItemsTab: React.FC<PCMagicItemsTabProps> = ({ pc }) => {
+export const PCMagicItemsTab: React.FC = () => {
+  const pc = usePC();
   return <ArmoryTab pc={pc} />;
 };

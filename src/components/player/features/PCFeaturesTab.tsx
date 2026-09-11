@@ -7,20 +7,18 @@ import React, { useState, useMemo } from 'react';
 import { CombatState } from '@core/state.js';
 import { showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { PCCompanionWrapper } from './PCCompanionWrapper';
+import { usePC } from '../../../context/PCContext';
 
-import { getAllUnifiedFeatures } from './features/helpers/featureRegistry';
-import { QuickCombatDashboard } from './features/QuickCombatDashboard';
-import { FeaturesFilterBar, FeatureCategoryFilter } from './features/FeaturesFilterBar';
-import { UnifiedFeatureCard } from './features/UnifiedFeatureCard';
-import { CompanionMiniStatusWidget } from './features/CompanionMiniStatusWidget';
-import { RulesInspectorDrawer } from './features/RulesInspectorDrawer';
-import { WizardSpecializationDialog } from '../dialogs/BaseDialogs';
+import { getAllUnifiedFeatures } from './helpers/featureRegistry';
+import { QuickCombatDashboard } from './QuickCombatDashboard';
+import { FeaturesFilterBar, FeatureCategoryFilter } from './FeaturesFilterBar';
+import { UnifiedFeatureCard } from './UnifiedFeatureCard';
+import { CompanionMiniStatusWidget } from './CompanionMiniStatusWidget';
+import { RulesInspectorDrawer } from './RulesInspectorDrawer';
+import { WizardSpecializationDialog } from '../../dialogs/BaseDialogs';
 
-interface PCFeaturesTabProps {
-  pc: any;
-}
-
-export const PCFeaturesTab: React.FC<PCFeaturesTabProps> = ({ pc }) => {
+export const PCFeaturesTab: React.FC = () => {
+  const pc = usePC();
   const [, setTick] = useState(0);
   const triggerRender = () => setTick(t => t + 1);
   const [isSpecDialogOpen, setIsSpecDialogOpen] = useState(false);

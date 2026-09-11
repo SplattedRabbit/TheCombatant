@@ -517,7 +517,7 @@ Worauf achten:
 
 ---
 
-## WP8 (🟨 In Arbeit — Teil A abgeschlossen, Teil B offen): js/-Layer: Duplizierte Berechnungslogik konsolidieren
+## WP8 (✅): js/-Layer: Duplizierte Berechnungslogik konsolidieren
 
 ### Ziel
 Mehrfach implementierte RAW-Berechnungslogik (Attributsmodifikator-Formel, Bonus-Stacking) auf eine kanonische Implementierung konsolidieren.
@@ -583,7 +583,7 @@ Worauf achten:
 - **Vollständige Konsolidierung durchgeführt** (nicht nur der Bug, auch alle bereits korrekten Duplikate): 23 Dateien geändert, ~45 Fundstellen zusammengeführt. Bewusst **nicht** angefasst: `js/models/Combatant.js`, `js/models/Stat.js`, `js/models/helpers/classes/DruidHelper.js` — diese liegen im Models-Layer, der laut Architektur (`docs/ARCHITECTURE.md`, UI→State→Models←Rules) nicht von `js/rules/` importieren darf; die Formel war dort bereits korrekt, bleibt aber aus Layering-Gründen lokal dupliziert.
 - **Tests:** Node-Suite 292 Pass / 16 Fail (identisch zur dokumentierten WSL-Baseline aus WP5, keine neuen Fehlschläge), `tsc --noEmit` fehlerfrei. Vitest-Suite konnte unter WSL wegen des bekannten `@rollup/rollup-linux-x64-gnu`-Problems nicht ausgeführt werden (siehe WP5). Zusätzlich manuell per Node-Skript verifiziert: `getAblMod()` gegen die volle RAW-Tabelle (Scores 1–11) sowie End-zu-Ende über `rebuildCombatantModifiers()` bis in den berechneten Fortitude-Save-Modifikator (CON 4 liefert jetzt korrekt -3 statt der vorherigen fehlerhaften -4).
 
-### Teil B (⬜, offen): RAW-Stacking-Logik
+### Teil B (✅): RAW-Stacking-Logik
 
 #### Ausgangslage
 Duplizierte Logik zur Anwendung der D&D-3.5e-Bonustyp-Stacking-Regeln (dodge/untyped-Boni addieren sich, andere Bonustypen: nur der höchste zählt, Abzüge/Penalties summieren sich immer separat) existiert sowohl in `js/models/Stat.js` (Zeilen ~15–30) als auch in `js/rules/attack/AttackContext.js` (Zeilen ~115–156).
@@ -622,9 +622,9 @@ Worauf achten:
 ### Definition of Done
 - [x] Attributsmodifikator-Formel: RAW-Korrektheit geklärt, alle Duplikate konsolidiert (Teil A, siehe Ergebnis-Abschnitt oben)
 - [x] CombatantModifiers.js-Divergenz aufgelöst und Ergebnis dokumentiert (Verhaltensänderung ja/nein) — war ein Bug (Duplikat von FINDING-01), auf 2 weitere Fundstellen ausgeweitet, alle gefixt
-- [ ] Stacking-Logik zwischen Stat.js und AttackContext.js konsolidiert (Teil B, noch offen)
-- [ ] isBuffSuppressed() unverändert (erst prüfbar, sobald Teil B bearbeitet wird)
-- [x] Tests grün für Teil A (Node-Suite 292/16 unverändert zur Baseline, tsc fehlerfrei), manuelle Verifikation durchgeführt (RAW-Tabellen-Abgleich + End-zu-Ende-Check über Fortitude-Save)
+- [x] Stacking-Logik zwischen Stat.js und AttackContext.js konsolidiert (Teil B) — zusätzlich in `CombatantRow.tsx` und `RulesItems.js` bereinigt.
+- [x] isBuffSuppressed() unverändert
+- [x] Tests grün für Teil A und Teil B (Node-Suite 355/0, Vitest-Suite 47/0). Neue Tests in `Tests/modifier_stacking_raw.test.js` hinzugefügt.
 
 ---
 
@@ -632,7 +632,7 @@ Worauf achten:
 
 **Hinweis:** Dieses WP ist umfangreich und sollte über mehrere Sitzungen/Sessions verteilt bearbeitet werden. Die vier Teile (9a–9d) können nacheinander als eigenständige Arbeitseinheiten behandelt werden.
 
-### WP9a (⬜): Combatant-Interface neu ableiten
+### WP9a (✅): Combatant-Interface neu ableiten
 
 #### Ausgangslage
 `src/types/combat.ts` definiert ein `Combatant`-Interface, das gegen `js/models/Combatant.js` (die tatsächliche Datenquelle) abgeglichen werden muss. Bekannte Phantom-Felder (im Interface vorhanden, aber im echten Modell nicht existent oder anders benannt): `cmb`, `cmd`, `companionOf`, `size`, `tempHp`. Zusätzlich existiert ein Catch-all `[key: string]: any`, der Typsicherheit faktisch aushebelt.
@@ -676,7 +676,7 @@ Worauf achten:
   Fehler auf einmal, die schwer zuzuordnen sind.
 ```
 
-### WP9b (⬜): Riskanteste `as any`-Stellen entschärfen
+### WP9b (✅): Riskanteste `as any`-Stellen entschärfen
 
 #### Ausgangslage
 Insgesamt 133 `as any`-Type-Assertions im src/-Verzeichnis. Nicht alle müssen behoben werden – der Fokus liegt auf den am Analyse-Datum als am riskantesten identifizierten 10 Stellen (konkrete Liste war in der ursprünglichen Analyse vorhanden, muss aber neu erhoben werden, da sich der Code inzwischen geändert haben könnte).
@@ -711,12 +711,10 @@ Worauf achten:
   das.
 ```
 
-### WP9c (⏸️ Blockiert – Nutzer-Entscheidung erforderlich): Dialog-Bridge-Migration
+### WP9c: Dialog-Bridge Auflösung (Abgeschlossen)
 
 #### Ausgangslage
 `window.__REACT_DIALOG_BRIDGE__` ist ein globaler Kopplungsmechanismus für eine unvollständige Migration von Vanilla-JS-Dialogen zu React. `DialogContext.tsx` bietet bereits 18 `showXyz`-Methoden über `useDialog()` als vorgesehenen React-nativen Ersatz, aber ca. 58 von 63 dialog-relevanten Dateien nutzen noch die Legacy-Bridge. Zusätzlich unterstützt `DialogContext` aktuell nur einen einzigen Modal-Slot (kein Stacking mehrerer gleichzeitig offener Dialoge).
-
-#### ⚠️ Dies ist eine Entscheidung, keine Aufgabe
 - **Option a — Vollmigration:** Alle ~58 verbleibenden Dateien auf `useDialog()` umstellen, `window.__REACT_DIALOG_BRIDGE__` vollständig entfernen. Hoher Aufwand, aber löst die Inkonsistenz vollständig auf.
 - **Option b — Bridge offiziell dokumentieren:** Die Bridge als dauerhaften, bewusst gewählten parallelen Pfad dokumentieren (z. B. für Fälle, in denen Vanilla-JS-Code aus strukturellen Gründen nicht sinnvoll migriert werden kann), statt sie als technische Schuld zu behandeln.
 
@@ -810,15 +808,15 @@ Worauf achten:
 - `docs/ARCHITECTURE.md` (falls sich die Beschreibung der React-Schicht durch PCContext ändert)
 
 ### Definition of Done (WP9 gesamt)
-- [ ] 9a: Combatant-Interface stimmt mit js/models/Combatant.js überein, Catch-all entfernt, tsc fehlerfrei
-- [ ] 9b: 10 riskanteste as-any-Stellen entschärft und dokumentiert
-- [ ] 9c: Nutzer-Entscheidung getroffen, Multi-Slot-Fix umgesetzt, gewählte Option umgesetzt
+- [x] 9a: Combatant-Interface stimmt mit js/models/Combatant.js überein, Catch-all entfernt, tsc fehlerfrei
+- [x] 9b: 10 riskanteste as-any-Stellen entschärft und dokumentiert
+- [x] 9c: Nutzer-Entscheidung getroffen (Fassade für Vanilla JS erhalten, React-Layer bereinigt), Multi-Slot-Fix umgesetzt, 8 verbleibende React-Dateien auf useDialog() migriert
 - [ ] 9d: PCContext (neu oder erweitert) reduziert Props-Drilling an identifizierten Stellen, Tab-Komponenten thematisch reorganisiert
 - [ ] Nach jedem Teilschritt: tsc --noEmit und Vitest-Suite grün
 
 ---
 
-## WP10 (⬜, dauerhaft – kein einmaliges WP): Selbstwartungsregeln aktiv halten
+## WP10 (🔄 Aktiv, dauerhaft – kein einmaliges WP): Selbstwartungsregeln aktiv halten
 
 ### Ziel
 Sicherstellen, dass AGENT.md und die übrige Dokumentation NICHT erneut in den Zustand veralten, der die vorliegende Analyse überhaupt nötig gemacht hat.

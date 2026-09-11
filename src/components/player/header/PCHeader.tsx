@@ -2,49 +2,49 @@
  * @module    PCHeader
  * @summary   Header component for the player character with name, race, class/level, alignment, initiative, HP display, and damage controller.
  * @exports   PCHeader
- * @reads     pc.name, pc.race, pc.classes, pc.size, pc.alignment, pc.hp, pc.maxHP, pc.conditions, pc.init, pc.iniMisc, pc.dex, pc.feats
+ * @reads     pc.name, pc.race, pc.classes, pc.alignment, pc.hp, pc.maxHP, pc.conditions, pc.init, pc.iniMisc, pc.dex, pc.feats
  * @stateOps  updatePCField, updatePCNumber, applyDamage, applyTempHP
  * @depends   React, @core/state.js, src/hooks/useCombatState
  * @notHere   Attributes & Multiclass Manager -> PCAttributes.tsx | HP Globe -> PCHealthGlobe.tsx
  */
 
 import React, { useState, useEffect } from 'react';
-import type { Combatant } from '../../types/combat';
 import { CombatState } from '@core/state.js';
-import { getStatMod } from './attributeHelper';
-import { PCHeaderInfo } from './header/PCHeaderInfo.tsx';
-import { PCHeaderStatsWidget } from './header/PCHeaderStatsWidget.tsx';
-import { YouDiedOverlay } from './header/YouDiedOverlay.tsx';
+import { getStatMod } from '../attributeHelper';
+import { PCHeaderInfo } from './PCHeaderInfo.tsx';
+import { PCHeaderStatsWidget } from './PCHeaderStatsWidget.tsx';
+import { YouDiedOverlay } from './YouDiedOverlay.tsx';
+import { usePC } from '../../../context/PCContext';
 
 interface PCHeaderProps {
-  pc: Combatant;
   activeTab: string;
   onOpenWizard?: () => void;
   onOpenLevelUp?: () => void;
 }
 
-export const PCHeader: React.FC<PCHeaderProps> = ({ pc, activeTab, onOpenWizard, onOpenLevelUp }) => {
+export const PCHeader: React.FC<PCHeaderProps> = ({ activeTab, onOpenWizard, onOpenLevelUp }) => {
+  const pc = usePC();
   const [showYouDied, setShowYouDied] = useState<boolean>(false);
   const [youDiedStep, setYouDiedStep] = useState<number>(0); // 0: hidden, 1: fade-in, 2: visible
 
   const dexMod = getStatMod(pc.dex);
   const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some(f => f.id === 'improved_initiative');
-  const totIni = dexMod + (parseInt((pc as any).iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
+  const totIni = dexMod + (parseInt(pc.iniMisc as unknown as string) || 0) + (hasImprovedInit ? 4 : 0);
   const finalIni = (pc.init || 0) > 0 ? pc.init : ((pc.rawInit || 0) > 0 ? pc.rawInit + totIni : (pc.initiative ? pc.initiative + totIni : '--'));
 
   // You Died Overlay monitoring
   useEffect(() => {
-    if (pc.hp <= -10 && !(pc as any).deathScreenShown) {
+    if (pc.hp <= -10 && !pc.deathScreenShown) {
       CombatState.updatePCField('deathScreenShown', true);
       setShowYouDied(true);
       setYouDiedStep(1);
       setTimeout(() => setYouDiedStep(2), 50);
-    } else if (pc.hp > -10 && (pc as any).deathScreenShown) {
+    } else if (pc.hp > -10 && pc.deathScreenShown) {
       CombatState.updatePCField('deathScreenShown', false);
       setShowYouDied(false);
       setYouDiedStep(0);
     }
-  }, [pc.hp, (pc as any).deathScreenShown]);
+  }, [pc.hp, pc.deathScreenShown]);
 
   const handleYouDiedDismiss = () => {
     setYouDiedStep(1);

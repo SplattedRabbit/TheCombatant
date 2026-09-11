@@ -7,7 +7,7 @@ import React from 'react';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { showAttributeExplanation } from '../attributeHelper';
 import { RACES, CLASSES_LIST } from './constants';
-import { findSpell } from '../PCSpellbookTab';
+import { findSpell } from '../spells/PCSpellbookTab';
 
 interface Step4ReviewProps {
   name: string;

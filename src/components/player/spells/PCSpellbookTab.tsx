@@ -17,7 +17,7 @@ import {
   showNewDayTemplateDialog,
   showSpellDetailsDialog,
 } from '@core/ui/components/dialogs.js';
-import { WizardSpecializationDialog } from '../dialogs/BaseDialogs';
+import { WizardSpecializationDialog } from '../../dialogs/BaseDialogs';
 
 interface PCSpellbookTabProps {
   pc: any;

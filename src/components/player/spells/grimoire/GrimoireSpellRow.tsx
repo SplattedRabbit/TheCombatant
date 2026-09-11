@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { findSpell } from '../../PCSpellbookTab';
+import { findSpell } from '../PCSpellbookTab';
 import { showSpellDetailsDialog } from '@core/ui/components/dialogs.js';
 import { castPreparedSpell, castSpontaneousSpell, unprepareSpell } from './grimoireActions';
 

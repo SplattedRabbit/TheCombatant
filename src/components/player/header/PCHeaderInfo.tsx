@@ -188,7 +188,7 @@ export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard, on
           🎭 {getClassesString()}
         </span>
         <span style={{ background: 'rgba(200, 169, 110, 0.08)', padding: '1px 4px', borderRadius: '2px', border: '0.5px solid var(--pb)' }}>
-          📏 {getSizeName(pc.size || 'medium')}
+          📏 {getSizeName('medium')}
         </span>
         <span style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
           <span>Alignment:</span>

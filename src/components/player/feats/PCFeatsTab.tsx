@@ -8,25 +8,25 @@
  */
 
 import React, { useMemo } from 'react';
+import { usePC } from '../../../context/PCContext';
 import { showFeatScrollDialog } from '@core/ui/components/dialogs.js';
 import { checkPrerequisites } from '@core/rules/RulesFeats.js';
 import { CombatFeats } from '@core/data/feats-data.js';
-import { LearnedFeatsList } from './feats/LearnedFeatsList.tsx';
-import { CompendiumFeatsList } from './feats/CompendiumFeatsList.tsx';
+import { LearnedFeatsList } from './LearnedFeatsList.tsx';
+import { CompendiumFeatsList } from './CompendiumFeatsList.tsx';
 
-interface PCFeatsTabProps {
-  pc: any;
-}
 
 // Re-exported for backwards compatibility
 export { checkPrerequisites };
 
-export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
+export const PCFeatsTab: React.FC = () => {
+  const pc = usePC();
   const hasFighter = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'fighter'), [pc.classes]);
   const hasWizard = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'wizard'), [pc.classes]);
   const hasMonk = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'monk'), [pc.classes]);
+  const loosePc = pc as any;
 
-  const autoFeats = useMemo(() => typeof pc.getAutomaticFeats === 'function' ? pc.getAutomaticFeats() : [], [pc.classes, pc.rangerCombatStyle]);
+  const autoFeats = useMemo(() => typeof loosePc.getAutomaticFeats === 'function' ? loosePc.getAutomaticFeats() : [], [pc.classes, loosePc.rangerCombatStyle]);
   const activeFeats = useMemo(() => {
     if (!Array.isArray(pc?.feats)) return [];
     return pc.feats.map((f: any) => (typeof f === 'string' ? { id: f, option: '' } : f));
@@ -45,7 +45,7 @@ export const PCFeatsTab: React.FC<PCFeatsTabProps> = ({ pc }) => {
   const activeClasses = useMemo(() => Array.isArray(pc.classes) ? pc.classes : [], [pc.classes]);
   const totalLevel = useMemo(() => activeClasses.reduce((sum: number, c: any) => sum + (c.level || 0), 0) || 1, [activeClasses]);
   const raceStr = useMemo(() => (pc.race || '').toLowerCase(), [pc.race]);
-  const isHuman = useMemo(() => pc.isHuman !== undefined ? !!pc.isHuman : (raceStr === 'human' || raceStr === 'mensch' || raceStr === ''), [pc.isHuman, raceStr]);
+  const isHuman = useMemo(() => loosePc.isHuman !== undefined ? !!loosePc.isHuman : (raceStr === 'human' || raceStr === 'mensch' || raceStr === ''), [loosePc.isHuman, raceStr]);
 
   const generalMax = useMemo(() => 1 + Math.floor(totalLevel / 3) + (isHuman ? 1 : 0), [totalLevel, isHuman]);
   

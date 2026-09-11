@@ -77,8 +77,18 @@ function normalizeRole(rawRole: string | undefined): 'host' | 'player' | 'choice
   return 'choice';
 }
 
+type RawState = {
+  combatants?: any[];
+  round?: number;
+  turn?: number;
+  meta?: any;
+  session?: any;
+  mode?: string;
+  concentrations?: any[];
+};
+
 function createSnapshot(raw: unknown): CombatStateSnapshot {
-  const r = (raw as any) ?? {};
+  const r = (raw as RawState) ?? {};
 
   const rawRole = (r.session?.role && r.session.role !== 'choice')
     ? r.session.role

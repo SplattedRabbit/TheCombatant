@@ -4,7 +4,7 @@
  */
 
 import { CombatState } from '@core/state.js';
-import { findSpell } from '../../PCSpellbookTab';
+import { findSpell } from '@core/ui/components/player/PCSpellbookTab.js';
 import {
   showCustomAlert,
   showCustomConfirm,
@@ -12,9 +12,7 @@ import {
   showPrepareSpellDialog,
   showCastSpontaneousSpellDialog,
 } from '@core/ui/components/dialogs.js';
-
-const showCastSuccessDialog = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showCastSuccessDialog?.(...args);
+import { showCastSuccessDialog } from '@core/ui/components/player/PCBuffsDialog.js';
 
 export const METAMAGIC_COSTS: Record<string, number> = {
   extend_spell: 1,

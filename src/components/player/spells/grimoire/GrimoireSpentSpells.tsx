@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { findSpell } from '../../PCSpellbookTab';
+import { findSpell } from '../PCSpellbookTab';
 import { restorePreparedSpell } from './grimoireActions';
 
 interface GrimoireSpentSpellsProps {

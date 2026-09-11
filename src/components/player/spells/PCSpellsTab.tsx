@@ -6,16 +6,15 @@
 import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { showCustomConfirm, showNewDayTemplateDialog } from '@core/ui/components/dialogs.js';
-import { PCSpellsHeaderBar } from './spells/PCSpellsHeaderBar';
-import { PCCompactGrimoireView } from './spells/PCCompactGrimoireView';
-import { PCSpellLibraryPanel } from './spells/PCSpellLibraryPanel';
-import { WizardSpecializationDialog } from '../dialogs/BaseDialogs';
+import { PCSpellsHeaderBar } from './PCSpellsHeaderBar';
+import { PCCompactGrimoireView } from './PCCompactGrimoireView';
+import { PCSpellLibraryPanel } from './PCSpellLibraryPanel';
+import { usePC } from '../../../context/PCContext';
+import { WizardSpecializationDialog } from '../../dialogs/BaseDialogs';
 
-interface PCSpellsTabProps {
-  pc: any;
-}
-
-export const PCSpellsTab: React.FC<PCSpellsTabProps> = ({ pc }) => {
+export const PCSpellsTab: React.FC = () => {
+  const pc = usePC();
+  const loosePc = pc as any;
   const [, setTick] = useState(0);
   const triggerRender = () => setTick((t) => t + 1);
 
@@ -78,7 +77,7 @@ export const PCSpellsTab: React.FC<PCSpellsTabProps> = ({ pc }) => {
               freshPc.spellSlots[lvl].used = 0;
             }
           }
-          const template = freshPc.spellTemplates?.[templateChoice];
+          const template = loosePc.spellTemplates?.[templateChoice];
           if (template) {
             freshPc.preparedSpells = JSON.parse(JSON.stringify(template));
           }
@@ -104,7 +103,7 @@ export const PCSpellsTab: React.FC<PCSpellsTabProps> = ({ pc }) => {
     };
 
     if (hasPrepared) {
-      showNewDayTemplateDialog(pc, pc.spellTemplates || {}, (choice: string) => {
+      showNewDayTemplateDialog(pc, loosePc.spellTemplates || {}, (choice: string) => {
         performNewDayReset(choice);
       });
     } else {

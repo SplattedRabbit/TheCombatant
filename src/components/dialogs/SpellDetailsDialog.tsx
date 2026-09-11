@@ -14,8 +14,7 @@ function findSpell(pc: any, key: string) {
   return null;
 }
 
-const showCustomAlert = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showCustomAlert?.(...args);
+import { useDialog } from '../../context/DialogContext.tsx';
 
 interface SpellDetailsDialogProps {
   spell: any;
@@ -25,6 +24,7 @@ interface SpellDetailsDialogProps {
 }
 
 export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, spellKey, pc, onClose }) => {
+  const { showAlert } = useDialog();
   const isLearned = Array.isArray(pc.learnedSpells) && pc.learnedSpells.includes(spellKey);
   const learnEligibility = React.useMemo(() => {
     if (isLearned || !spell) return { allowed: true };
@@ -47,7 +47,7 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
       if (spell) {
         const validation = CombatRules.validateSpellLearnEligibility(activePC, spell, (k: string) => findSpell(activePC, k));
         if (!validation.allowed) {
-          showCustomAlert(validation.title || 'Spell Not Eligible', validation.reason || 'You cannot learn this spell.');
+          showAlert(validation.title || 'Spell Not Eligible', validation.reason || 'You cannot learn this spell.');
           return;
         }
       }

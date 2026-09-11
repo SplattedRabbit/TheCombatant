@@ -14,11 +14,12 @@ import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
 import { calculateSkillModifier } from '@core/models/helpers/skills/CombatantSkills.js';
 import { applyFeatSkillBonuses } from '@core/models/helpers/skills/SkillFeatApplier.js';
 import { showRollBreakdown, showCustomAlert } from '@core/ui/components/dialogs.js';
-import { formatMod, getStatMod } from './attributeHelper';
-import { SkillFilterBar } from './skills/SkillFilterBar';
-import { SkillsLegend } from './skills/SkillsLegend';
-import { SkillRow } from './skills/SkillRow';
-import { SkillTricksSubPanel } from './skills/SkillTricksSubPanel';
+
+import { formatMod, getStatMod } from '../attributeHelper';
+import { SkillFilterBar } from './SkillFilterBar';
+import { SkillsLegend } from './SkillsLegend';
+import { SkillRow } from './SkillRow';
+import { SkillTricksSubPanel } from './SkillTricksSubPanel';
 
 export function getSkillRanks(pc: any, key: string): number {
   return pc?.skills && pc.skills[key] ? parseFloat(pc.skills[key].ranks) || 0 : 0;
@@ -47,11 +48,10 @@ export function getSkillMod(pc: any, key: string): number {
   return calculateSkillModifier(pc, key);
 }
 
-export interface PCSkillsTabProps {
-  pc: any;
-}
+import { usePC } from '../../../context/PCContext';
 
-export const PCSkillsTab: React.FC<PCSkillsTabProps> = ({ pc }) => {
+export const PCSkillsTab: React.FC = () => {
+  const pc = usePC();
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState<'all' | 'class' | 'trained'>('all');
   const [focusedRanksKey, setFocusedRanksKey] = useState<string | null>(null);
