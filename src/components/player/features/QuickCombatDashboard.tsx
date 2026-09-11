@@ -28,6 +28,7 @@ export const QuickCombatDashboard: React.FC<QuickCombatDashboardProps> = ({ pc, 
   const rageData = findAbility('Rage');
   const bardicData = findAbility('Bardic Music');
   const wildShapeData = findAbility('Wild Shape');
+  const kiData = findAbility('Ki Power');
 
   const handleSmiteBubbleClick = (targetBubble: number) => {
     if (!smiteData) return;
@@ -50,13 +51,23 @@ export const QuickCombatDashboard: React.FC<QuickCombatDashboardProps> = ({ pc, 
     onUpdate?.();
   };
 
+  const handleKiBubbleClick = (targetBubble: number) => {
+    if (!kiData) return;
+    const { ability, index } = kiData;
+    const currentUsed = ability.used || 0;
+    const nextUsed = targetBubble <= currentUsed ? targetBubble - 1 : targetBubble;
+    const diff = nextUsed - currentUsed;
+    CombatState.updatePCDailyAbilityUsed(index, diff);
+    onUpdate?.();
+  };
+
   const handleAdjustLoh = (diff: number) => {
     if (!lohData) return;
     CombatState.updatePCDailyAbilityUsed(lohData.index, -diff);
     onUpdate?.();
   };
 
-  const hasAnyDailyAction = smiteData || lohData || turnData || rageData || bardicData || wildShapeData;
+  const hasAnyDailyAction = smiteData || lohData || turnData || rageData || bardicData || wildShapeData || kiData;
 
   if (!hasAnyDailyAction) return null;
 
@@ -173,6 +184,38 @@ export const QuickCombatDashboard: React.FC<QuickCombatDashboardProps> = ({ pc, 
             </div>
             <span style={{ fontSize: '8.5px', color: 'var(--inkl)' }}>
               ({(turnData.ability.max || 1) - (turnData.ability.used || 0)}/{(turnData.ability.max || 1)})
+            </span>
+          </div>
+        )}
+
+        {/* Ninja Ki Power */}
+        {kiData && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '9px' }}>
+            <span style={{ fontWeight: 'bold', color: 'var(--ink)' }}>Ki Power:</span>
+            <div style={{ display: 'flex', gap: '2px', alignItems: 'center' }}>
+              {Array.from({ length: kiData.ability.max || 1 }).map((_, i) => {
+                const bubbleIdx = i + 1;
+                const isUsed = bubbleIdx <= (kiData.ability.used || 0);
+                return (
+                  <span
+                    key={bubbleIdx}
+                    onClick={() => handleKiBubbleClick(bubbleIdx)}
+                    style={{
+                      cursor: 'pointer',
+                      fontSize: '11px',
+                      filter: isUsed ? 'grayscale(1) opacity(0.35)' : 'none',
+                      transition: 'transform 0.1s',
+                      userSelect: 'none',
+                    }}
+                    title={isUsed ? 'Used (Click to restore)' : 'Available (Click to use)'}
+                  >
+                    🌀
+                  </span>
+                );
+              })}
+            </div>
+            <span style={{ fontSize: '8.5px', color: 'var(--inkl)' }}>
+              ({(kiData.ability.max || 1) - (kiData.ability.used || 0)}/{(kiData.ability.max || 1)})
             </span>
           </div>
         )}
