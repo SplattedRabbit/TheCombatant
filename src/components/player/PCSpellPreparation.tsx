@@ -13,11 +13,11 @@ import { SpellSlotCalculator } from '@core/rules/SpellSlotCalculator.js';
 import { getSchoolLabel } from '@core/spells.js';
 import { showCustomConfirm, showCustomAlert, showCustomPrompt } from '@core/ui/components/dialogs.js';
 import { findSpell } from './PCSpellbookTab';
+import { SpellTemplateBar } from './SpellTemplateBar';
+import { PreparedSlotRow } from './PreparedSlotRow';
 
 const showCastSuccessDialog = (...args: any[]) =>
   (window as any).__REACT_DIALOG_BRIDGE__?.showCastSuccessDialog?.(...args);
-const showSpellDetailsDialog = (...args: any[]) =>
-  (window as any).__REACT_DIALOG_BRIDGE__?.showSpellDetailsDialog?.(...args);
 
 interface PCSpellPreparationProps {
   pc: any;
@@ -222,46 +222,14 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
       </div>
 
       {/* Spell Templates Management UI */}
-      <div style={{ display: 'flex', gap: '4px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(200, 169, 110, 0.06)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '3px 5px', marginBottom: '6px' }}>
-        <span style={{ fontSize: '8.5px', color: 'var(--inkl)', fontWeight: 'bold' }}>Templates:</span>
-        <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flex: 1, justifyContent: 'flex-end' }}>
-          <select
-            value={selectedTemplate}
-            onChange={(e) => handleLoadTemplate(e.target.value)}
-            className="cinput select-spell-template"
-            style={{ fontSize: '8px', padding: '1px 3px', height: '16px', maxWidth: '95px', borderRadius: '1px', border: '0.5px solid var(--pb)', outline: 'none', background: 'white', color: 'var(--ink)' }}
-          >
-            <option value="">-- Load --</option>
-            {Object.keys(templates).map(name => (
-              <option key={name} value={name}>{name}</option>
-            ))}
-          </select>
-          <button
-            onClick={handleSaveTemplate}
-            className="btn"
-            style={{ fontSize: '8px', padding: '1px 4px', height: '16px', lineHeight: 1, fontWeight: 'bold', borderColor: 'var(--pb)' }}
-            title="Save current set as template"
-          >
-            💾 Save
-          </button>
-          <button
-            onClick={handleDeleteTemplate}
-            className="btn"
-            style={{ fontSize: '8px', padding: '1px 3px', height: '16px', lineHeight: 1, borderColor: 'transparent', color: 'var(--inkl)' }}
-            title="Delete selected template"
-          >
-            ✕
-          </button>
-          <button
-            onClick={handleClearPrepared}
-            className="btn"
-            style={{ fontSize: '8px', padding: '1px 4px', height: '16px', lineHeight: 1, borderColor: 'var(--red)', background: 'rgba(139,26,26,0.05)', color: 'var(--red)', fontWeight: 'bold' }}
-            title="Remove all prepared spells"
-          >
-            🧹 Clear
-          </button>
-        </div>
-      </div>
+      <SpellTemplateBar
+        templates={templates}
+        selectedTemplate={selectedTemplate}
+        onLoadTemplate={handleLoadTemplate}
+        onSaveTemplate={handleSaveTemplate}
+        onDeleteTemplate={handleDeleteTemplate}
+        onClearPrepared={handleClearPrepared}
+      />
 
       {/* Slots List per Level */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', maxHeight: '250px', overflowY: 'auto', paddingRight: '2px' }} className="pc-scroll-spellbook">
@@ -295,190 +263,63 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
 
           // Render regular slots
           for (let i = 0; i < numRegSlots; i++) {
-            const p = regPreps[i];
-            if (p) {
-              slotsListHtml.push(
-                <div key={`reg_${i}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: p.isUsed ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.45)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', opacity: p.isUsed ? 0.65 : 1 }}>
-                  <span
-                    onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
-                    style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
-                  >
-                    📜 {p.spell.name || p.spell.nameEn} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
-                  </span>
-                  <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
-                    {p.isUsed ? (
-                      <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Expended</span>
-                    ) : (
-                      <button
-                        onClick={() => handleCastPrepared(p.id)}
-                        className="btn"
-                        style={{ fontSize: '8px', padding: '1px 3px', cursor: 'pointer', borderRadius: '2px', background: 'rgba(139,26,26,0.1)', borderColor: 'var(--red)', color: 'var(--red)', fontWeight: 'bold' }}
-                      >
-                        Cast
-                      </button>
-                    )}
-                    <button
-                      onClick={() => handleUnprepare(p.id)}
-                      className="btn"
-                      style={{ fontSize: '8px', padding: '1px 3px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer' }}
-                      title="Clear slot"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </div>
-              );
-            } else {
-              slotsListHtml.push(
-                <div key={`reg_empty_${i}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>
-                  <span>Empty Slot</span>
-                  <button
-                    onClick={handleShowPlaceholderAlert}
-                    className="btn"
-                    style={{ fontSize: '7px', padding: '0.5px 4px', borderColor: 'var(--pb)', background: 'transparent', color: 'var(--ink)', cursor: 'pointer' }}
-                  >
-                    ➕ Prepare
-                  </button>
-                </div>
-              );
-            }
+            slotsListHtml.push(
+              <PreparedSlotRow
+                key={`reg_${i}`}
+                prep={regPreps[i]}
+                slotType="regular"
+                pc={pc}
+                onCast={handleCastPrepared}
+                onUnprepare={handleUnprepare}
+                onPrepareClick={handleShowPlaceholderAlert}
+              />
+            );
           }
 
           // Render specialist slot if wizard has specialization
           if (hasSpecSlotAtLvl) {
-            const p = specPreps[0];
-            if (p) {
-              slotsListHtml.push(
-                <div key="spec" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: p.isUsed ? 'rgba(0,0,0,0.04)' : 'rgba(200, 169, 110, 0.05)', border: '0.5px solid #c8a96e', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', opacity: p.isUsed ? 0.65 : 1 }}>
-                  <span
-                    onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
-                    style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
-                  >
-                    ⭐ 📜 {p.spell.name || p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
-                  </span>
-                  <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
-                    {p.isUsed ? (
-                      <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Expended</span>
-                    ) : (
-                      <button
-                        onClick={() => handleCastPrepared(p.id)}
-                        className="btn"
-                        style={{ fontSize: '8px', padding: '1px 3px', cursor: 'pointer', borderRadius: '2px', background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)', borderColor: 'var(--red)', color: 'white', fontWeight: 'bold' }}
-                      >
-                        Cast
-                      </button>
-                    )}
-                    <button
-                      onClick={() => handleUnprepare(p.id)}
-                      className="btn"
-                      style={{ fontSize: '8px', padding: '1px 3px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer' }}
-                      title="Clear slot"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </div>
-              );
-            } else {
-              slotsListHtml.push(
-                <div key="spec_empty" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(200, 169, 110, 0.03)', border: '0.5px dashed #c8a96e', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', color: '#9a7a2e', fontStyle: 'italic' }}>
-                  <span>⭐ Specialist Slot ({specSchoolName})</span>
-                  <button
-                    onClick={handleShowPlaceholderAlert}
-                    className="btn"
-                    style={{ fontSize: '7px', padding: '0.5px 4px', border: '0.5px solid #c8a96e', background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)', color: 'white', cursor: 'pointer' }}
-                  >
-                    ➕ Prepare
-                  </button>
-                </div>
-              );
-            }
+            slotsListHtml.push(
+              <PreparedSlotRow
+                key="spec"
+                prep={specPreps[0]}
+                slotType="specialist"
+                pc={pc}
+                specSchoolName={specSchoolName}
+                onCast={handleCastPrepared}
+                onUnprepare={handleUnprepare}
+                onPrepareClick={handleShowPlaceholderAlert}
+              />
+            );
           }
 
           // Render cleric domain slot
           if (hasDomainSlotAtLvl) {
-            const p = domainPreps[0];
-            if (p) {
-              slotsListHtml.push(
-                <div key="domain" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: p.isUsed ? 'rgba(0,0,0,0.04)' : 'rgba(139, 26, 26, 0.05)', border: '0.5px solid #8b1a1a', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', opacity: p.isUsed ? 0.65 : 1 }}>
-                  <span
-                    onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
-                    style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
-                  >
-                    ☀️ 📜 {p.spell.name || p.spell.nameEn || p.spell.nameDe} <span style={{ fontSize: '7.5px', color: '#8b1a1a', fontWeight: 'bold' }}>[D]</span> {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
-                  </span>
-                  <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
-                    {p.isUsed ? (
-                      <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Expended</span>
-                    ) : (
-                      <button
-                        onClick={() => handleCastPrepared(p.id)}
-                        className="btn"
-                        style={{ fontSize: '8px', padding: '1px 3px', cursor: 'pointer', borderRadius: '2px', background: 'linear-gradient(135deg, #8b1a1a, #5a0f0f)', borderColor: 'var(--red)', color: 'white', fontWeight: 'bold' }}
-                      >
-                        Cast
-                      </button>
-                    )}
-                    <button
-                      onClick={() => handleUnprepare(p.id)}
-                      className="btn"
-                      style={{ fontSize: '8px', padding: '1px 3px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer' }}
-                      title="Clear domain slot"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </div>
-              );
-            } else {
-              slotsListHtml.push(
-                <div key="domain_empty" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(139, 26, 26, 0.03)', border: '0.5px dashed #8b1a1a', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', color: '#8b1a1a', fontStyle: 'italic' }}>
-                  <span>☀️ Domain Slot (1 Slot)</span>
-                  <button
-                    onClick={handleShowPlaceholderAlert}
-                    className="btn"
-                    style={{ fontSize: '7px', padding: '0.5px 4px', border: '0.5px solid #8b1a1a', background: 'linear-gradient(135deg, #8b1a1a, #5a0f0f)', color: 'white', cursor: 'pointer' }}
-                  >
-                    ➕ Prepare
-                  </button>
-                </div>
-              );
-            }
+            slotsListHtml.push(
+              <PreparedSlotRow
+                key="domain"
+                prep={domainPreps[0]}
+                slotType="domain"
+                pc={pc}
+                onCast={handleCastPrepared}
+                onUnprepare={handleUnprepare}
+                onPrepareClick={handleShowPlaceholderAlert}
+              />
+            );
           }
 
           // If there are extra prepared spells, render them too
           const extraRegPreps = regPreps.slice(numRegSlots);
           extraRegPreps.forEach((p: any, extraIdx: number) => {
             slotsListHtml.push(
-              <div key={`extra_${extraIdx}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: p.isUsed ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.45)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', opacity: p.isUsed ? 0.65 : 1 }}>
-                <span
-                  onClick={() => showSpellDetailsDialog(p.spell, p.spellKey, pc)}
-                  style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
-                >
-                  ⚠️ 📜 {p.spell.name || p.spell.nameEn || p.spell.nameDe} {p.metamagic.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
-                </span>
-                <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
-                  {p.isUsed ? (
-                    <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Expended</span>
-                  ) : (
-                    <button
-                      onClick={() => handleCastPrepared(p.id)}
-                      className="btn"
-                      style={{ fontSize: '8px', padding: '1px 3px', cursor: 'pointer', borderRadius: '2px', background: 'rgba(139,26,26,0.1)', borderColor: 'var(--red)', color: 'var(--red)', fontWeight: 'bold' }}
-                    >
-                      Cast
-                    </button>
-                  )}
-                  <button
-                    onClick={() => handleUnprepare(p.id)}
-                    className="btn"
-                    style={{ fontSize: '8px', padding: '1px 3px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer' }}
-                    title="Clear slot"
-                  >
-                    ✕
-                  </button>
-                </div>
-              </div>
+              <PreparedSlotRow
+                key={`extra_${extraIdx}`}
+                prep={p}
+                slotType="extra"
+                pc={pc}
+                onCast={handleCastPrepared}
+                onUnprepare={handleUnprepare}
+                onPrepareClick={handleShowPlaceholderAlert}
+              />
             );
           });
 

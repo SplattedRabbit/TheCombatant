@@ -7,7 +7,6 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { CombatState } from '@core/state.js';
-import { CombatRules } from '@core/rules.js';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
@@ -17,16 +16,12 @@ import {
   getFeatSlotsAtLevel, 
   getSkillPointsForLevel 
 } from './wizard/helpers';
-import { Step1RaceName } from './wizard/Step1RaceName';
-import { Step2Attributes } from './wizard/Step2Attributes';
-import { Step3LevelConfig } from './wizard/Step3LevelConfig';
-import { Step3SpellSelectionView } from './wizard/spells/Step3SpellSelectionView';
-import { Step3TargetLevelPrompt } from './wizard/Step3TargetLevelPrompt.tsx';
-import { Step4Review } from './wizard/Step4Review.tsx';
-import { WizardTimeline } from './wizard/WizardTimeline.tsx';
+import { CharacterWizardStepContent } from './wizard/CharacterWizardStepContent';
+import { CharacterWizardNav } from './wizard/CharacterWizardNav.tsx';
 import { applyWizardCharacterToState } from './wizard/wizardSaveHelper.ts';
-import { CLASSES_LIST, PRESTIGE_PREREQS } from './wizard/constants';
+import { PRESTIGE_PREREQS } from './wizard/constants';
 import { isSpellSelectorClass, getSpellSelectionQuota } from './wizard/spells/spellSelectionRules';
+import { getClassHitDie, validateStep3Config } from './wizard/wizardValidation';
 
 interface CharacterWizardDialogProps {
   onClose: () => void;
@@ -125,13 +120,6 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
 
   const currentConfig = isTargetLevelSet ? levelConfigs[currentLevelIndex] : null;
 
-  const getClassHitDie = (clsKey: string): number => {
-    const listMatch = CLASSES_LIST.find((c: any) => c.key === clsKey);
-    if (listMatch?.hd) return listMatch.hd;
-    const rulesMatch = CombatRules.CLASSES.find((c: any) => c.key === clsKey);
-    return rulesMatch?.hitDie || rulesMatch?.hd || 8;
-  };
-
   const currentLevelMaxSkillPoints = useMemo(() => {
     if (!currentConfig || !currentConfig.classType) return 0;
     return getSkillPointsForLevel(currentLevelIndex, currentConfig.classType, selectedRace, baseStats, prevDraft);
@@ -223,48 +211,20 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       const currentSpells = currentConfig?.spells || [];
 
       if (levelSubView === 'config') {
-        if (!currentConfig || !currentConfig.classType) {
-          showCustomAlert("Class Missing", `Please select a class for Level ${currentLevelIndex + 1}.`, "OK", "🧙‍♂️");
+        const validation = validateStep3Config({
+          currentConfig,
+          currentLevelIndex,
+          currentLevelRemainingSkillPoints,
+          currentFeatSlots,
+        });
+        if (!validation.valid && validation.alert) {
+          showCustomAlert(
+            validation.alert.title,
+            validation.alert.message,
+            validation.alert.buttonText,
+            validation.alert.icon
+          );
           return;
-        }
-        const hp = parseInt(currentConfig.hpRoll) || 0;
-        const hd = getClassHitDie(currentConfig.classType);
-        if (hp < 1 || hp > hd) {
-          showCustomAlert("Invalid Hit Points", `Please enter valid hit points between 1 and ${hd} for Level ${currentLevelIndex + 1}.`, "OK", "🎲");
-          return;
-        }
-        const isAbilityIncreaseReq = (currentLevelIndex + 1) % 4 === 0;
-        if (isAbilityIncreaseReq && !currentConfig.abilityIncrease) {
-          showCustomAlert("Ability Increase", `Please select an ability score increase for Level ${currentLevelIndex + 1}.`, "OK", "✨");
-          return;
-        }
-        if (currentLevelRemainingSkillPoints > 0) {
-          showCustomAlert("Skill Points Remaining", `You still have ${currentLevelRemainingSkillPoints} skill points to distribute for Level ${currentLevelIndex + 1}.`, "OK", "📝");
-          return;
-        }
-        if (currentLevelRemainingSkillPoints < 0) {
-          showCustomAlert("Skill Points Overspent", `You have overspent skill points by ${Math.abs(currentLevelRemainingSkillPoints)} for Level ${currentLevelIndex + 1}.`, "OK", "⚠️");
-          return;
-        }
-        const emptyFeats = currentFeatSlots.some((slot, idx) => !(currentConfig.feats?.[idx] || slot.defaultFeat));
-        if (emptyFeats) {
-          showCustomAlert("Feat Slots Open", `Please select all feats for Level ${currentLevelIndex + 1}.`, "OK", "🔒");
-          return;
-        }
-
-        // Mandatory Wizard School Specialization & Prohibited schools check
-        if (currentConfig.classType === 'wizard') {
-          const spec = currentConfig.wizardSpecialization || 'none';
-          if (spec !== 'none') {
-            if (!currentConfig.wizardProhibited1) {
-              showCustomAlert("Prohibited School Required", "Please select your first prohibited school for your Wizard specialization.", "OK", "⚠️");
-              return;
-            }
-            if (spec !== 'div' && !currentConfig.wizardProhibited2) {
-              showCustomAlert("Prohibited School Required", "Please select your second prohibited school for your Wizard specialization.", "OK", "⚠️");
-              return;
-            }
-          }
         }
 
         // If caster class, transition to inline spell selection view!
@@ -351,112 +311,6 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     { num: 4, label: 'Review & Complete' }
   ];
 
-  const renderStepContent = () => {
-    switch (step) {
-      case 1:
-        return (
-          <Step1RaceName
-            name={name}
-            setName={setName}
-            selectedRace={selectedRace}
-            setSelectedRace={setSelectedRace}
-            alignmentEthical={alignmentEthical}
-            setAlignmentEthical={setAlignmentEthical}
-            alignmentMoral={alignmentMoral}
-            setAlignmentMoral={setAlignmentMoral}
-            targetPrestigeClass={targetPrestigeClass}
-            setTargetPrestigeClass={(cls) => {
-              setTargetPrestigeClass(cls);
-              if (cls) setHighlightClass(cls);
-            }}
-          />
-        );
-
-      case 2:
-        return (
-          <Step2Attributes
-            selectedRace={selectedRace}
-            baseStats={baseStats}
-            setBaseStats={setBaseStats}
-            totalStatsSpent={totalStatsSpent}
-            highlightClass={highlightClass}
-            setHighlightClass={setHighlightClass}
-            targetPrestigeClass={targetPrestigeClass}
-          />
-        );
-
-      case 3:
-        if (!isTargetLevelSet) {
-          return (
-            <Step3TargetLevelPrompt
-              targetLevel={targetLevel}
-              setTargetLevel={setTargetLevel}
-              onStart={handleStartLevelConfigs}
-            />
-          );
-        }
-
-        if (levelSubView === 'spells') {
-          return (
-            <Step3SpellSelectionView
-              currentConfig={currentConfig}
-              currentLevelIndex={currentLevelIndex}
-              currentDraft={currentDraft}
-              updateLevelConfig={updateLevelConfig}
-              allLevelConfigs={levelConfigs}
-            />
-          );
-        }
-
-        return (
-          <Step3LevelConfig
-            levelConfigs={levelConfigs}
-            currentLevelIndex={currentLevelIndex}
-            setCurrentLevelIndex={setCurrentLevelIndex}
-            currentConfig={currentConfig}
-            currentDraft={currentDraft}
-            prevDraft={prevDraft}
-            completedDraft={completedDraft}
-            getClassHitDie={getClassHitDie}
-            updateLevelConfig={updateLevelConfig}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            currentLevelRemainingSkillPoints={currentLevelRemainingSkillPoints}
-            currentLevelMaxSkillPoints={currentLevelMaxSkillPoints}
-            skillSearch={skillSearch}
-            setSkillSearch={setSkillSearch}
-            featSelectSlotIndex={featSelectSlotIndex}
-            setFeatSelectSlotIndex={setFeatSelectSlotIndex}
-            featSearch={featSearch}
-            setFeatSearch={setFeatSearch}
-            featFilter={featFilter}
-            setFeatFilter={setFeatFilter}
-            currentFeatSlots={currentFeatSlots}
-            activeFeatSlot={activeFeatSlot}
-            filteredFeats={filteredFeats}
-            targetPrestigeClass={targetPrestigeClass}
-          />
-        );
-
-      case 4:
-        return (
-          <Step4Review
-            name={name}
-            selectedRace={selectedRace}
-            alignmentEthical={alignmentEthical}
-            alignmentMoral={alignmentMoral}
-            targetLevel={targetLevel}
-            isTargetLevelSet={isTargetLevelSet}
-            currentDraft={currentDraft}
-            levelConfigs={levelConfigs}
-          />
-        );
-
-      default:
-        return null;
-    }
-  };
-
   const isCurrentLevelCaster = isSpellSelectorClass(currentConfig?.classType);
   const currentLevelClassCount = isCurrentLevelCaster
     ? levelConfigs.slice(0, currentLevelIndex + 1).filter((c) => c.classType === currentConfig?.classType).length || 1
@@ -466,7 +320,6 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     ? getSpellSelectionQuota(currentConfig?.classType, currentLevelClassCount, currentIntMod)
     : null;
   const currentSelectedSpellsCount = (currentConfig?.spells || []).length;
-  const isSpellSelectionOpen = step === 3 && isTargetLevelSet && levelSubView === 'spells';
   const needsSpellsAtCurrentLevel =
     currentQuotaInfo && currentQuotaInfo.quota > 0 && currentSelectedSpellsCount < currentQuotaInfo.quota;
 
@@ -497,84 +350,73 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
       </div>
 
       <div style={{ flex: 1 }}>
-        {renderStepContent()}
-      </div>
-
-      <div style={{ marginTop: '20px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-          <button 
-            onClick={onClose}
-            className="btn"
-            style={{ padding: '4px 16px', fontSize: '12px' }}
-          >
-            Cancel
-          </button>
-          
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <button 
-              onClick={handleBack}
-              disabled={step === 1}
-              className="btn"
-              style={{ padding: '4px 16px', fontSize: '12px', opacity: step === 1 ? 0.5 : 1 }}
-            >
-              {isSpellSelectionOpen
-                ? `← Level ${currentLevelIndex + 1} Config`
-                : step === 3 && isTargetLevelSet && currentLevelIndex > 0
-                ? `← Level ${currentLevelIndex}`
-                : 'Back'}
-            </button>
-            
-            {step < 4 ? (
-              <button 
-                onClick={handleNext}
-                disabled={
-                  step === 1 ? (!name.trim() || !selectedRace) : 
-                  step === 2 ? (totalStatsSpent !== 74) : 
-                  step === 3 ? (!isTargetLevelSet) : false
-                }
-                className="btn btn-p"
-                style={{
-                  padding: '4px 20px',
-                  fontSize: '12px',
-                  opacity: (
-                    (step === 1 && (!name.trim() || !selectedRace)) ||
-                    (step === 2 && totalStatsSpent !== 74) ||
-                    (step === 3 && !isTargetLevelSet) ||
-                    (isSpellSelectionOpen && needsSpellsAtCurrentLevel)
-                  ) ? 0.5 : 1
-                }}
-              >
-                {step === 3 && isTargetLevelSet && levelSubView === 'config' && isCurrentLevelCaster
-                  ? `Select Spells for Level ${currentLevelIndex + 1} →`
-                  : step === 3 && isTargetLevelSet && currentLevelIndex < targetLevel - 1
-                  ? `Level ${currentLevelIndex + 2} →`
-                  : step === 3 && isTargetLevelSet
-                  ? 'Review (Step 4) →'
-                  : 'Next'}
-              </button>
-            ) : (
-              <button 
-                onClick={handleSaveCharacter}
-                className="btn btn-p animate-glow"
-                style={{
-                  padding: '4px 24px',
-                  fontSize: '12px'
-                }}
-              >
-                ✦ Create &amp; Save
-              </button>
-            )}
-          </div>
-        </div>
-
-        <WizardTimeline
+        <CharacterWizardStepContent
           step={step}
-          stepsList={stepsList}
           name={name}
+          setName={setName}
           selectedRace={selectedRace}
+          setSelectedRace={setSelectedRace}
+          alignmentEthical={alignmentEthical}
+          setAlignmentEthical={setAlignmentEthical}
+          alignmentMoral={alignmentMoral}
+          setAlignmentMoral={setAlignmentMoral}
+          targetPrestigeClass={targetPrestigeClass}
+          setTargetPrestigeClass={setTargetPrestigeClass}
+          setHighlightClass={setHighlightClass}
+          highlightClass={highlightClass}
+          baseStats={baseStats}
+          setBaseStats={setBaseStats}
+          totalStatsSpent={totalStatsSpent}
+          isTargetLevelSet={isTargetLevelSet}
           targetLevel={targetLevel}
+          setTargetLevel={setTargetLevel}
+          handleStartLevelConfigs={handleStartLevelConfigs}
+          levelSubView={levelSubView}
+          currentConfig={currentConfig}
+          currentLevelIndex={currentLevelIndex}
+          setCurrentLevelIndex={setCurrentLevelIndex}
+          currentDraft={currentDraft}
+          prevDraft={prevDraft}
+          completedDraft={completedDraft}
+          updateLevelConfig={updateLevelConfig}
+          levelConfigs={levelConfigs}
+          getClassHitDie={getClassHitDie}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          currentLevelRemainingSkillPoints={currentLevelRemainingSkillPoints}
+          currentLevelMaxSkillPoints={currentLevelMaxSkillPoints}
+          skillSearch={skillSearch}
+          setSkillSearch={setSkillSearch}
+          featSelectSlotIndex={featSelectSlotIndex}
+          setFeatSelectSlotIndex={setFeatSelectSlotIndex}
+          featSearch={featSearch}
+          setFeatSearch={setFeatSearch}
+          featFilter={featFilter}
+          setFeatFilter={setFeatFilter}
+          currentFeatSlots={currentFeatSlots}
+          activeFeatSlot={activeFeatSlot}
+          filteredFeats={filteredFeats}
         />
       </div>
+
+      <CharacterWizardNav
+        step={step}
+        stepsList={stepsList}
+        name={name}
+        selectedRace={selectedRace}
+        targetLevel={targetLevel}
+        currentLevelIndex={currentLevelIndex}
+        isTargetLevelSet={isTargetLevelSet}
+        levelSubView={levelSubView}
+        isCurrentLevelCaster={isCurrentLevelCaster}
+        needsSpellsAtCurrentLevel={!!needsSpellsAtCurrentLevel}
+        totalStatsSpent={totalStatsSpent}
+        onClose={onClose}
+        onBack={handleBack}
+        onNext={handleNext}
+        onSave={handleSaveCharacter}
+      />
     </div>
   );
 };
+

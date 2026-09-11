@@ -10,10 +10,11 @@
 import React, { useState } from 'react';
 import { CompanionRules } from '@core/rules/CompanionRules.js';
 import { CombatState } from '@core/state.js';
-import { showRollBreakdown } from '@core/ui/components/dialogs.js';
 import { getAblMod, formatMod } from '../attributeHelper';
 import { CompanionAbilityDetailsDialog, CompanionAbilityData } from '../../dialogs/companion/CompanionAbilityDetailsDialog';
 import { getCompanionAbilityDetails } from './companionAbilitiesRules';
+import { CompanionEmptyState } from './CompanionEmptyState';
+import { CompanionAttacksCard } from './CompanionAttacksCard';
 
 interface CompanionSheetProps {
   pc: any;
@@ -82,92 +83,15 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
     onUpdate();
   };
 
-  const handleAttackRoll = (e: React.MouseEvent<HTMLButtonElement>, attName: string, bonus: number, _damage: string, _note: string) => {
-    e.stopPropagation();
-    const compName = pc.companionName || 'Animal Companion';
-
-    showRollBreakdown(`${compName} - ${attName}`, `1d20`, [
-      { label: 'Attack Bonus (Strength/Size)', value: bonus }
-    ], e.nativeEvent);
-  };
-
   // ==========================================
   // EMPTY STATE: SUMMON COMPANION HERO CARD
   // ==========================================
   if (type === 'none') {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', boxSizing: 'border-box' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--pb)', paddingBottom: '4px' }}>
-          <span style={{ fontFamily: 'var(--font-title)', fontSize: '11px', color: 'var(--red)', fontWeight: 'bold' }}>
-            🐾 Animal Companion &amp; Mount (Effective Level: {effectiveDruidLvl})
-          </span>
-          <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>D&amp;D 3.5e RAW Rules</span>
-        </div>
-
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '30px 20px',
-            background: 'rgba(200, 169, 110, 0.05)',
-            border: '1px dashed var(--pb)',
-            borderRadius: '4px',
-            gap: '12px',
-            textAlign: 'center',
-          }}
-        >
-          <div style={{ fontSize: '28px' }}>🐾</div>
-          <div>
-            <strong style={{ fontFamily: 'var(--font-title)', fontSize: '12px', color: 'var(--ink)' }}>
-              No Active Animal Companion
-            </strong>
-            <p style={{ fontSize: '9.5px', color: 'var(--inkl)', margin: '4px 0 0 0', maxWidth: '420px' }}>
-              Choose a loyal beast companion to summon. The companion automatically scales its Hit Dice, Natural Armor, Strength/Dexterity, and Bonus Tricks with your effective druid/ranger level.
-            </p>
-          </div>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center', marginTop: '4px' }}>
-            <button
-              type="button"
-              onClick={() => handleSpeciesChange('wolf')}
-              className="btn btn-p"
-              style={{ fontSize: '10px', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: '6px' }}
-            >
-              <span>🐺</span>
-              <span>Wolf (Trip &amp; Track)</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSpeciesChange('leopard')}
-              className="btn btn-p"
-              style={{ fontSize: '10px', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: '6px' }}
-            >
-              <span>🐆</span>
-              <span>Leopard (Pounce &amp; Rake)</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSpeciesChange('bear')}
-              className="btn btn-p"
-              style={{ fontSize: '10px', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: '6px' }}
-            >
-              <span>🐻</span>
-              <span>Brown Bear (Huge Power)</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSpeciesChange('custom')}
-              className="btn"
-              style={{ fontSize: '10px', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: '6px' }}
-            >
-              <span>🛡️</span>
-              <span>Custom Companion</span>
-            </button>
-          </div>
-        </div>
-      </div>
+      <CompanionEmptyState
+        effectiveDruidLvl={effectiveDruidLvl}
+        onSelectSpecies={handleSpeciesChange}
+      />
     );
   }
 
@@ -364,66 +288,11 @@ export const CompanionSheet: React.FC<CompanionSheetProps> = ({ pc, onUpdate }) 
         {/* COLUMN 2: ATTACKS, TRICKS & SPECIAL RULES  */}
         {/* ========================================== */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          {/* Natural Attacks Card */}
-          <div
-            style={{
-              background: 'rgba(200, 169, 110, 0.06)',
-              border: '1px solid var(--pb)',
-              borderRadius: '4px',
-              padding: '10px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '6px',
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid var(--pb)', paddingBottom: '3px' }}>
-              <span style={{ fontFamily: 'var(--font-title)', fontSize: '10.5px', color: 'var(--red)', fontWeight: 'bold' }}>
-                ⚔️ Companion Attacks &amp; Actions
-              </span>
-              <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>Click to roll attack</span>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-              {baseStats && Array.isArray(baseStats.attacks) && baseStats.attacks.length > 0 ? (
-                baseStats.attacks.map((att: any, idx: number) => (
-                  <div
-                    key={idx}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      background: 'rgba(200, 169, 110, 0.08)',
-                      border: '0.5px solid var(--pb)',
-                      borderRadius: '3px',
-                      padding: '6px 8px',
-                    }}
-                  >
-                    <div>
-                      <strong style={{ fontSize: '10px', color: 'var(--ink)' }}>{att.name}:</strong>{' '}
-                      <span style={{ color: 'var(--red)', fontWeight: 'bold', fontSize: '10px' }}>{formatMod(att.bonus)}</span>{' '}
-                      <span style={{ fontSize: '9.5px', color: 'var(--inkm)' }}>({att.damage})</span>
-                      {att.note && (
-                        <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', marginTop: '1px' }}>
-                          • {att.note}
-                        </div>
-                      )}
-                    </div>
-                    <button
-                      onClick={(e) => handleAttackRoll(e, att.name, att.bonus, att.damage, att.note || '')}
-                      className="btn roll-companion-attack-btn"
-                      style={{ fontSize: '9px', padding: '3px 8px', fontWeight: 'bold', cursor: 'pointer', borderRadius: '3px' }}
-                    >
-                      Roll 🎲
-                    </button>
-                  </div>
-                ))
-              ) : (
-                <div style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '10px' }}>
-                  No natural attacks listed for this species.
-                </div>
-              )}
-            </div>
-          </div>
+          {/* Companion Attacks Card */}
+          <CompanionAttacksCard
+            attacks={baseStats?.attacks || []}
+            companionName={name}
+          />
 
           {/* Special Qualities & Tricks Card */}
           <div

@@ -7,6 +7,9 @@ import React, { useState, useMemo } from 'react';
 import { getAllCompendiumSpells } from '@core/rules/RulesSpells.js';
 import { LevelUpSpellQuota, getEligibleSpellsForLevelUp } from '../../../../services/levelup/levelUpSpellRules';
 import { getSpellSchoolCode, getSchoolLabel } from '@core/spells.js';
+import { SpellInspectorPanel } from './SpellInspectorPanel';
+import { SelectedSpellsBar } from './SelectedSpellsBar';
+import { SpellFilterControls } from './SpellFilterControls';
 
 export interface StepSpellsProps {
   activePC: any;
@@ -242,203 +245,31 @@ export const StepSpells: React.FC<StepSpellsProps> = ({
         </div>
       </div>
 
-      {/* Persistent Selected Spells Bar (Always visible regardless of active level filter) */}
-      {chosenSpellKeys.length > 0 && (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '8px',
-            padding: '8px 12px',
-            background: 'rgba(200, 169, 110, 0.12)',
-            border: '1px solid var(--pb)',
-            borderRadius: '5px',
-          }}
-        >
-          <span
-            style={{
-              fontSize: '11px',
-              fontWeight: 'bold',
-              color: 'var(--red)',
-              fontFamily: 'var(--font-title)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-            }}
-          >
-            <span>✨</span> Selected Spells ({chosenSpellKeys.length}/{quota.totalSpellsToChoose}):
-          </span>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-            {chosenSpells.map(sp => {
-              const clMatch = Array.isArray(sp.classLevels)
-                ? sp.classLevels.find((cl: any) => cl.class === quota.casterClass)
-                : null;
-              const spLvl = clMatch ? clMatch.level : sp.level;
-              const isInspected = previewSpell && (previewSpell.id === (sp.id || sp.key) || previewSpell.key === (sp.id || sp.key));
-
-              return (
-                <div
-                  key={sp.id || sp.key}
-                  onClick={() => setPreviewSpell(sp)}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '3px 8px',
-                    borderRadius: '12px',
-                    background: isInspected ? 'rgba(139, 26, 26, 0.08)' : 'rgba(255, 255, 255, 0.85)',
-                    border: isInspected ? '1.5px solid var(--red)' : '1px solid var(--pb)',
-                    boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
-                    fontSize: '11px',
-                    color: 'var(--ink)',
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                  }}
-                  title="Click to view RAW rules in inspector"
-                >
-                  <span
-                    style={{
-                      fontSize: '9px',
-                      fontWeight: 'bold',
-                      color: '#fff',
-                      background: 'var(--red)',
-                      borderRadius: '8px',
-                      padding: '1px 5px',
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    Lvl {spLvl ?? '?'}
-                  </span>
-                  <span style={{ fontWeight: 600, color: 'var(--ink)' }}>
-                    {sp.nameDe || sp.name || sp.nameEn}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleToggleSelectSpell(sp.id || sp.key, sp);
-                    }}
-                    style={{
-                      border: 'none',
-                      background: 'transparent',
-                      color: 'var(--inkm)',
-                      cursor: 'pointer',
-                      fontWeight: 'bold',
-                      fontSize: '13px',
-                      lineHeight: 1,
-                      padding: '0 2px',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--red)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--inkm)')}
-                    title="Remove spell"
-                  >
-                    ✕
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      {/* Persistent Selected Spells Bar */}
+      <SelectedSpellsBar
+        chosenSpells={chosenSpells}
+        chosenSpellKeys={chosenSpellKeys}
+        quota={quota}
+        previewSpell={previewSpell}
+        onPreview={setPreviewSpell}
+        onRemove={handleToggleSelectSpell}
+      />
 
       {/* Main Dual-Column: Left (Spell Picker) / Right (RAW Rules Inspector) */}
       <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: '14px', minHeight: '380px' }}>
         {/* Left Column: Filter & List */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {/* Search and Filters */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <input
-              type="text"
-              placeholder="Search spells by name or keyword..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="cinput"
-              style={{ width: '100%', height: '28px', padding: '0 8px', fontSize: '11.5px', boxSizing: 'border-box' }}
-            />
-
-            {/* Level Filter Pills */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', alignItems: 'center' }}>
-              <span style={{ fontSize: '10px', color: 'var(--inkm)', fontWeight: 'bold' }}>Level:</span>
-              <button
-                type="button"
-                onClick={() => setLevelFilter('all')}
-                style={{
-                  padding: '2px 7px',
-                  borderRadius: '10px',
-                  fontSize: '10.5px',
-                  border: levelFilter === 'all' ? '1px solid var(--red)' : '1px solid var(--pb)',
-                  background: levelFilter === 'all' ? 'var(--red)' : 'rgba(200, 169, 110, 0.1)',
-                  color: levelFilter === 'all' ? '#fff' : 'var(--ink)',
-                  cursor: 'pointer',
-                  fontWeight: levelFilter === 'all' ? 'bold' : 'normal',
-                }}
-              >
-                All
-              </button>
-
-              {chosenSpellKeys.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setLevelFilter('selected')}
-                  style={{
-                    padding: '2px 7px',
-                    borderRadius: '10px',
-                    fontSize: '10.5px',
-                    border: levelFilter === 'selected' ? '1.5px solid var(--red)' : '1px solid #2e7d32',
-                    background: levelFilter === 'selected' ? 'var(--red)' : 'rgba(46, 125, 50, 0.12)',
-                    color: levelFilter === 'selected' ? '#fff' : '#1b5e20',
-                    cursor: 'pointer',
-                    fontWeight: 'bold',
-                  }}
-                  title="Show only selected spells"
-                >
-                  ✓ Selected ({chosenSpellKeys.length})
-                </button>
-              )}
-              {availableLevels.map(lvl => (
-                <button
-                  key={lvl}
-                  type="button"
-                  onClick={() => setLevelFilter(String(lvl))}
-                  style={{
-                    padding: '2px 7px',
-                    borderRadius: '10px',
-                    fontSize: '10.5px',
-                    border: levelFilter === String(lvl) ? '1px solid var(--red)' : '1px solid var(--pb)',
-                    background: levelFilter === String(lvl) ? 'var(--red)' : 'rgba(200, 169, 110, 0.1)',
-                    color: levelFilter === String(lvl) ? '#fff' : 'var(--ink)',
-                    cursor: 'pointer',
-                    fontWeight: levelFilter === String(lvl) ? 'bold' : 'normal',
-                  }}
-                >
-                  {lvl === 0 ? '0 (Cantrips)' : `Lvl ${lvl}`}
-                </button>
-              ))}
-
-              <span style={{ fontSize: '10px', color: 'var(--inkm)', fontWeight: 'bold', marginLeft: '6px' }}>School:</span>
-              <select
-                value={schoolFilter}
-                onChange={(e) => setSchoolFilter(e.target.value)}
-                className="cinput"
-                style={{ height: '22px', fontSize: '10px', padding: '0 4px', borderRadius: '4px', maxWidth: '110px' }}
-              >
-                <option value="all">All Schools</option>
-                <option value="abj">Abjuration</option>
-                <option value="con">Conjuration</option>
-                <option value="div">Divination</option>
-                <option value="enc">Enchantment</option>
-                <option value="evo">Evocation</option>
-                <option value="ill">Illusion</option>
-                <option value="nec">Necromancy</option>
-                <option value="tra">Transmutation</option>
-                <option value="univ">Universal</option>
-              </select>
-            </div>
-          </div>
+          <SpellFilterControls
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            levelFilter={levelFilter}
+            onLevelFilterChange={setLevelFilter}
+            chosenCount={chosenSpellKeys.length}
+            availableLevels={availableLevels}
+            schoolFilter={schoolFilter}
+            onSchoolFilterChange={setSchoolFilter}
+          />
 
           {/* Spell Cards List */}
           <div
@@ -566,93 +397,12 @@ export const StepSpells: React.FC<StepSpellsProps> = ({
         </div>
 
         {/* Right Column: RAW Rules Inspector */}
-        <div
-          className="custom-scrollbar"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-            padding: '12px',
-            borderRadius: '5px',
-            border: '1.5px solid var(--pb)',
-            background: 'linear-gradient(180deg, rgba(200, 169, 110, 0.08), rgba(200, 169, 110, 0.16))',
-            boxShadow: '0 1px 4px rgba(0,0,0,0.03)',
-            maxHeight: '430px',
-            overflowY: 'auto',
-            scrollbarGutter: 'stable',
-          }}
-        >
-          {previewSpell ? (
-            <>
-              <div style={{ borderBottom: '1px solid var(--pb)', paddingBottom: '6px', marginBottom: '4px' }}>
-                <div style={{ fontFamily: 'var(--font-title)', fontSize: '14px', fontWeight: 'bold', color: 'var(--red)' }}>
-                  {previewSpell.nameDe || previewSpell.name || previewSpell.nameEn}
-                </div>
-                {previewSpell.nameEn && previewSpell.nameEn !== previewSpell.nameDe && (
-                  <div style={{ fontSize: '10.5px', color: 'var(--inkm)', fontStyle: 'italic' }}>
-                    {previewSpell.nameEn}
-                  </div>
-                )}
-                <div style={{ fontSize: '10px', color: 'var(--red)', marginTop: '2px', fontWeight: 'bold' }}>
-                  {previewSpell.school}
-                </div>
-              </div>
-
-              {/* Fast Facts Grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '10.5px', marginBottom: '6px' }}>
-                <div><strong>Level:</strong> {previewSpell.level}</div>
-                <div><strong>Components:</strong> {previewSpell.components || 'V, S'}</div>
-                <div><strong>Casting Time:</strong> {previewSpell.castingTime || '1 standard action'}</div>
-                <div><strong>Range:</strong> {previewSpell.range || 'Close (25 ft. + 5 ft./2 levels)'}</div>
-                <div><strong>Duration:</strong> {previewSpell.duration || 'Instantaneous'}</div>
-                <div><strong>Saving Throw:</strong> {previewSpell.savingThrow || previewSpell.save || 'None'}</div>
-                <div><strong>Spell Resistance:</strong> {previewSpell.spellResistance || previewSpell.sr || 'No'}</div>
-              </div>
-
-              {/* RAW Description */}
-              <div
-                style={{
-                  fontSize: '11px',
-                  color: 'var(--ink)',
-                  lineHeight: '1.4',
-                  whiteSpace: 'pre-wrap',
-                  borderTop: '0.5px dashed var(--pb)',
-                  paddingTop: '8px',
-                }}
-              >
-                {previewSpell.description || previewSpell.desc || 'No description available.'}
-              </div>
-
-              {/* Action Button inside Inspector */}
-              <div style={{ marginTop: 'auto', paddingTop: '10px' }}>
-                {!alreadyLearnedKeys.has(previewSpell.id || previewSpell.key) && (
-                  <button
-                    type="button"
-                    onClick={() => handleToggleSelectSpell(previewSpell.id || previewSpell.key, previewSpell)}
-                    style={{
-                      width: '100%',
-                      padding: '6px 12px',
-                      borderRadius: '4px',
-                      border: 'none',
-                      background: chosenSpellKeys.includes(previewSpell.id || previewSpell.key) ? '#2e7d32' : 'var(--red)',
-                      color: '#fff',
-                      fontFamily: 'var(--font-title)',
-                      fontWeight: 'bold',
-                      fontSize: '11.5px',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {chosenSpellKeys.includes(previewSpell.id || previewSpell.key) ? '✓ Deselect Spell' : '+ Add Spell to Selection'}
-                  </button>
-                )}
-              </div>
-            </>
-          ) : (
-            <div style={{ padding: '40px 10px', textAlign: 'center', color: 'var(--inkl)', fontStyle: 'italic', fontSize: '11.5px' }}>
-              Select a spell on the left to inspect its RAW rules details.
-            </div>
-          )}
-        </div>
+        <SpellInspectorPanel
+          previewSpell={previewSpell}
+          chosenSpellKeys={chosenSpellKeys}
+          alreadyLearnedKeys={alreadyLearnedKeys}
+          onToggleSpell={handleToggleSelectSpell}
+        />
       </div>
     </div>
   );

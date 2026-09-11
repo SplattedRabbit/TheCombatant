@@ -141,7 +141,7 @@ graph TD
 
 ### Tier 1: Presentation Layer (`src/components/`, `src/context/`)
 - Built with **React 19** and strictly typed with **TypeScript**.
-- Follows the **Option A Component Sizing Standard**: 100% of UI component files must be `<= 450 lines`.
+- Follows the **Option A Component Sizing Standard**: 100% of UI component files are `<= 450 lines` (0 files in `src/components/` exceed 450 lines).
 - All modals and alerts are declaratively managed through [`src/context/DialogContext.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/context/DialogContext.tsx) via `useDialog()`.
 - Uses Vanilla CSS and parchment design tokens (`var(--p)`, `var(--pb)`, `var(--red)`, `var(--ink)`).
 - **Zero Runtime Latency:** Static chunking with Vite; no dynamic `React.lazy()` spinners during live tabletop gameplay.
@@ -159,11 +159,17 @@ graph TD
 ### Tier 4: State Management (`js/state/`)
 - In-memory single source of truth managed through `CombatState` singleton.
 - Mutations are routed through domain facades: `PCManager.js`, `EncounterManager.js`, `ConditionManager.js`, and `StorageManager.js`.
+- Large state mutation modules utilize domain submodules with backward-compatible facades (e.g. `js/state/pc/PCEquipment.js` delegating to `js/state/pc/equipment/PCWeapons.js`, `PCArmor.js`, `PCItems.js`).
 - React consumption uses `useCombatState()` hook, providing rehydrated immutable state snapshots.
 
-### Tier 5 & 6: Domain Models & D&D 3.5e RAW Rules (`js/models/`, `js/rules/`)
+### Tier 5 & 6: Domain Models, Rules & Modular Data Facades (`js/models/`, `js/rules/`, `js/data/`)
 - **Strict Separation of Concerns:**
   - `js/models/` contains data structures without HTML or rule logic.
   - `js/rules/` contains pure, stateless D&D 3.5e rule functions.
   - `Stat.js` encapsulates modifier stacking rules: identical bonus types (e.g. enhancement) do not stack; dodge and untyped bonuses stack.
   - `prestigeClassEngine.js` drives progression for 6 core Prestige Classes (Arcane Trickster, Assassin, Battle Trickster, Eldritch Knight, Shadowbane Inquisitor, Spellwarp Sniper).
+- **Token-Optimized Data Facades:**
+  - Large static registries are split into domain submodules while preserving entrypoint facades:
+    - `js/data/magicItems-data.js` -> `js/data/magicItems/` (`itemSlots`, `magicItemSets`, `registryWorn`, `registrySlotless`, `consolidatedCompendium`)
+    - `js/rules/RulesData.js` -> `js/rules/data/` (`conditions`, `classes`, `classSkills`, `classProfiles`, `spellTables`)
+  - Ensures zero regression for existing imports while drastically reducing context size and token costs during AI code navigation.

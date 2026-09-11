@@ -328,7 +328,7 @@ Worauf achten:
 
 ---
 
-## WP5 (⬜): Testinfrastruktur reparieren
+## WP5 (✅): Testinfrastruktur reparieren
 
 ### Ziel
 Die strukturelle Inkompatibilität zwischen Node's nativem Test-Runner und der TypeScript/React-Codebasis beheben.
@@ -396,94 +396,34 @@ Worauf achten:
 - `docs/TESTING.md`
 
 ### Definition of Done
-- [ ] Alle 13 vormals fehlschlagenden Testdateien laufen wieder (migriert oder repariert)
-- [ ] build.test.js Rollup-Problem gelöst oder als dokumentierte Umgebungs-Einschränkung festgehalten
-- [ ] Gesamte Test-Suite (Node + Vitest) läuft grün
-- [ ] AGENT.md §10 und docs/TESTING.md ohne hartcodierte, schnell veraltende Testzahlen
+- [x] Alle 13 vormals fehlschlagenden Testdateien laufen wieder — bei Analyse (2026-09-11) waren beide Suites bereits vollständig grün: 350 Node-Tests und 47 Vitest-Tests bestehen ohne Fehler. Die Node-Tests importieren ausschließlich `.js`-Dateien aus `js/`; kein `.ts`-Import, kein `ERR_UNKNOWN_FILE_EXTENSION` reproduzierbar.
+- [x] build.test.js Rollup-Problem gelöst oder als dokumentierte Umgebungs-Einschränkung festgehalten — `build.test.js` läuft grün (Production Build Verification: 1/1 Pass). **Umgebungskontext:** Die ursprünglich gemeldeten Probleme (`ERR_UNKNOWN_FILE_EXTENSION`, `@rollup/rollup-linux-x64-gnu`) wurden von einer früheren ClaudeCode-CLI-Session in WSL (Linux x64) verursacht. **Windows x64 ist die primäre Entwicklungsumgebung** (Nutzer-Entscheidung 2026-09-11) — dort sind diese Probleme nicht vorhanden. Falls künftig eine CI/CD-Pipeline auf Linux läuft, ist ein `npm ci` vor dem Testlauf die empfohlene Abhilfe für das optionale Rollup-Plattformpaket.
+- [x] Gesamte Test-Suite (Node + Vitest) läuft grün — verifiziert 2026-09-11 auf Windows x64: `npm test` (350 Pass, 0 Fail), `npm run test:ui` (47 Pass, 0 Fail).
+- [x] AGENT.md §10 und docs/TESTING.md ohne hartcodierte, schnell veraltende Testzahlen — `docs/TESTING.md` Header und Tabellen-Zeilen von konkreten Zahlen (314/34/348) auf qualitative Beschreibungen umgestellt. AGENT.md §10 enthielt keine hartcodierten Testzahlen.
 
 ---
 
-## WP6 (⏸️ Blockiert – Nutzer-Entscheidung erforderlich): Dateigrößen-Standard §9
+## WP6 (✅): Dateigrößen-Standard §9 & Modulare Daten-Fassaden
 
 ### Ziel
-Den Widerspruch zwischen der in `AGENT.md` §9 (Zeile ~185) behaupteten "100% eingehalten"-Compliance zur 450-Zeilen-Grenze und der tatsächlichen Codebasis (10 Dateien überschreiten das Limit) auflösen.
+Den Widerspruch zwischen der in `AGENT.md` §9 behaupteten "100% eingehalten"-Compliance zur 450-Zeilen-Grenze und der tatsächlichen Codebasis auflösen, alle überlangen UI-Komponenten strikt modularisieren sowie große Datenbestände token-optimiert strukturieren.
 
 ### Ausgangslage
-`AGENT.md` §9 und `docs/ARCHITECTURE.md` (Zeile ~144, "100% of UI component files must be <= 450 lines") behaupten beide fälschlich vollständige Einhaltung. Tatsächlich existieren mindestens 10 Dateien über 450 Zeilen (genaue Liste muss vom Agenten neu ermittelt werden, da sich der Codestand seit der letzten Analyse geändert haben kann).
+`AGENT.md` §9 und `docs/ARCHITECTURE.md` ("100% of UI component files must be <= 450 lines") behaupteten beide pauschale Einhaltung, während diverse Komponenten (`StepSpells.tsx`, `CharacterWizardDialog.tsx`, `wizard/helpers.ts`, `LevelHeaderAndStats.tsx`, `FamiliarSheet.tsx`, `CompanionSheet.tsx`, `LevelUpDialog.tsx`, `PCSpellPreparation.tsx`, `phbCoreMartial.ts`, `PrepareSpellDialog.tsx`) sowie Datendateien (`magicItems-data.js`, `RulesData.js`, `PCEquipment.js`) das Limit teils massiv überschritten.
 
-### ⚠️ Dies ist eine Entscheidung, keine Aufgabe
-**Ein Agent darf diesen Punkt NICHT eigenmächtig lösen.** Es gibt zwei grundsätzlich unterschiedliche, gültige Lösungswege mit unterschiedlichem Aufwand und Risiko:
-
-- **Option A — Durchsetzen:** Die betroffenen Dateien tatsächlich aufteilen, bis die 450-Zeilen-Grenze eingehalten wird. Hoher Aufwand, Risiko von Regressionen, aber stellt die dokumentierte Regel tatsächlich her.
-- **Option B — Dokumentation korrigieren:** Die falsche "100% eingehalten"-Behauptung durch eine ehrliche Beschreibung des tatsächlichen Zustands ersetzen (z. B. "X von Y Dateien eingehalten, Ausnahmen: ..."), ohne den Code zu verändern. Geringer Aufwand, aber die Datei-Größen-Regel bleibt de facto unvollständig durchgesetzt.
-
-### Agenten-Prompt
-```
-Du arbeitest am Repository "TheCombatant". Dieser Punkt betrifft AGENT.md §9
-(Dateigrößen-Standard) und die dort behauptete 100%-Compliance zur
-450-Zeilen-Grenze.
-
-WICHTIG - STOPP-BEDINGUNG: Bevor du irgendeine Änderung vornimmst, prüfe,
-ob dir vom Nutzer bereits explizit mitgeteilt wurde, welche Option gewählt
-werden soll:
-- Option A: Betroffene Dateien tatsächlich aufteilen/refactoren, bis die
-  450-Zeilen-Grenze eingehalten wird.
-- Option B: Die Dokumentation korrigieren, sodass sie den tatsächlichen
-  Ist-Zustand ehrlich beschreibt, ohne den Code zu verändern.
-
-Wenn dir diese Entscheidung NICHT explizit mitgeteilt wurde, STOPPE and
-frage den Nutzer aktiv, welche Option gewählt werden soll. Wähle NICHT
-eigenmächtig Option A (Code-Refactoring), da dies das risikoreichere und
-aufwendigere Vorgehen ist und tief in die Codebasis eingreift.
-
-Falls die Entscheidung bereits vorliegt, gehe wie folgt vor:
-
-Schritte (unabhängig von der Entscheidung):
-1. Ermittle per Zeilenzählung (z.B. wc -l über alle relevanten Quelldateien
-   in js/ und src/) die AKTUELLE Liste aller Dateien über 450 Zeilen. Die
-   Liste kann sich seit der letzten Analyse verändert haben – nicht auf
-   eine alte Liste verlassen.
-
-Falls Option A gewählt wurde:
-2a. Bearbeite die Dateien EINZELN, nicht alle auf einmal. Für jede Datei:
-    - Identifiziere sinnvolle Trennlinien (z.B. nach Verantwortlichkeit,
-      nicht nach willkürlicher Zeilenzahl).
-    - Stelle sicher, dass vor der Aufteilung eine grüne Test-Baseline
-      existiert (siehe WP5 – sollte vorher abgeschlossen sein).
-    - Teile die Datei auf, aktualisiere alle Imports/Referenzen im gesamten
-      Repository.
-    - Führe die Test-Suite aus und verifiziere manuell im Dev-Server
-      (falls UI-relevant), dass sich das Verhalten nicht geändert hat.
-    - Aktualisiere AGENT.md §3 (Feature-Index), falls sich Dateipfade durch
-      die Aufteilung ändern.
-    - Committe/melde diese eine Datei als abgeschlossen, bevor du zur
-      nächsten übergehst.
-
-Falls Option B gewählt wurde:
-2b. Ersetze die Behauptung "100% eingehalten" in AGENT.md §9 und in
-    docs/ARCHITECTURE.md durch eine ehrliche, konkrete Aussage über den
-    tatsächlichen Zustand (z.B. "X von Y Dateien halten die Grenze ein,
-    Ausnahmen sind: [Liste mit Zeilenzahlen]"). Verändere keinen
-    Produktionscode.
-
-Worauf achten:
-- Bei Option A: Nach JEDER einzelnen Datei-Aufteilung müssen Tests grün
-  sein, bevor die nächste Datei angefasst wird. Kein Big-Bang-Refactoring
-  aller 10 Dateien in einem Schritt.
-- Bei Option B: Sei ehrlich und konkret – keine vage Umformulierung, die
-  das Problem nur verschleiert.
-```
-
-### Zu pflegende Dokumente
-- `AGENT.md` §9
-- `docs/ARCHITECTURE.md` (Tier-1-Aussage zu Dateigrößen)
-- `AGENT.md` §3 (falls Option A zu Pfadänderungen führt)
+### Gewählte Lösung (Nutzer-Entscheidung 2026-09-11)
+- **Option A für UI-Komponenten (`src/components/`):** Konsequente Aufteilung aller Komponenten über 450 Zeilen in fokussierte Subkomponenten. Resultat: **0 Dateien in `src/components/` überschreiten 450 Zeilen** (100% echter, verifizierter Status).
+- **Token-Optimiertes Fassaden-Pattern für Datendateien (`js/`):** Große statische Registries und State-Dateien wurden in Domain-Submodule zerlegt, während schlanke Fassaden (< 40 Zeilen) 100% Abwärtskompatibilität aller bestehenden Importpfade garantieren:
+  - `js/data/magicItems-data.js` (Fassade) ➔ `js/data/magicItems/` (`itemSlots.js`, `magicItemSets.js`, `registryWorn.js`, `registrySlotless.js`, `consolidatedCompendium.js`, `magicItemsRegistry.js`)
+  - `js/rules/RulesData.js` (Fassade) ➔ `js/rules/data/` (`conditions.js`, `classes.js`, `classSkills.js`, `classProfiles.js`, `spellTables.js`)
+  - `js/state/pc/PCEquipment.js` (Fassade) ➔ `js/state/pc/equipment/` (`PCWeapons.js`, `PCArmor.js`, `PCItems.js`)
+- **Dokumentations-Präzisierung:** `AGENT.md` §3 und §9 sowie `docs/ARCHITECTURE.md` wurden aktualisiert und spiegeln den Zustand wahrheitsgemäß wider.
 
 ### Definition of Done
-- [ ] Nutzer-Entscheidung (Option A oder B) liegt dokumentiert vor
-- [ ] Bei Option A: alle Dateien über 450 Zeilen aufgeteilt, Tests grün nach jedem Schritt, §3 aktualisiert
-- [ ] Bei Option B: AGENT.md §9 und ARCHITECTURE.md korrigiert, kein Code verändert
-- [ ] Keine falsche "100%"-Behauptung mehr im Dokument, unabhängig von der gewählten Option
+- [x] Nutzer-Entscheidung (Option A mit Token-optimierten Daten-Fassaden) liegt dokumentiert vor (Entscheidung 2026-09-11)
+- [x] Bei Option A: alle UI-Dateien in `src/components/` über 450 Zeilen aufgeteilt (100% eingehalten, 0 Dateien > 450Z), große Daten- und State-Dateien modularisiert (`magicItems-data.js`, `RulesData.js`, `PCEquipment.js` mit 100% abwärtskompatiblen Fassaden), Tests grün nach jedem Schritt, `AGENT.md` §3 aktualisiert
+- [x] `AGENT.md` §9 und `docs/ARCHITECTURE.md` korrigiert und ehrlich formuliert
+- [x] Keine falsche "100%"-Behauptung mehr im Dokument; ehrlicher und nachweisbarer Status
 
 ---
 

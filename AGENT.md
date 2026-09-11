@@ -54,13 +54,14 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 |-----------------------|----------------------------------------------------------|----------------------------------------------|
 | Wild Shape            | `js/models/helpers/classes/DruidHelper.js`                | `Combatant.js`, `src/components/player/features/DruidFeaturesCard.tsx` |
 | Natürliche Angriffe   | `src/components/player/offense/slots/NaturalAttacksSection.tsx` | `js/rules/attack/AttackContext.js`, `js/rules/attack/BaseAttackCalculator.js` |
-| Magische Gegenstände  | `js/models/Item.js`, `src/components/player/PCMagicItemsTab.tsx` | `js/state/PCManager.js` (`addPCItem*`)       |
-| Waffen-UI             | `src/components/player/offense/WeaponStashCard.tsx`      | `AttackEngine.js`, `js/models/Weapon.js`     |
-| Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `src/components/player/offense/ArmorStashCard.tsx` | `PCOffenseTab.tsx`                           |
+| Magische Gegenstände  | `js/models/Item.js`, `js/data/magicItems-data.js` (Fassade), `js/data/magicItems/`, `src/components/player/PCMagicItemsTab.tsx` | `js/state/PCManager.js` (`addPCItem*`)       |
+| Waffen-UI             | `src/components/player/offense/WeaponStashCard.tsx`      | `AttackEngine.js`, `js/models/Weapon.js`, `js/state/pc/equipment/PCWeapons.js` |
+| Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `src/components/player/offense/ArmorStashCard.tsx`, `js/state/pc/equipment/PCArmor.js` | `PCOffenseTab.tsx`                           |
+| Ausrüstung (State)    | `js/state/pc/PCEquipment.js` (Fassade), `js/state/pc/equipment/` (`PCWeapons.js`, `PCArmor.js`, `PCItems.js`) | `js/state/PCManager.js` |
 | Ausrüstung (React)    | `src/components/player/PCOffenseTab.tsx`, `src/components/player/offense/ActiveEquipmentSlots.tsx` | `PlayerSheet.tsx` |
 | Angriffs-Engine       | `js/rules/AttackEngine.js`, `js/rules/attack/`           | `PCOffenseTab.tsx`, `js/ui/dialogs/AttackChoiceDialog.js` |
 | Rettungswürfe         | `js/rules/SaveCalculator.js`                             | `js/models/Combatant.js`, `helpers/modifiers/` |
-| Zauber / Slots        | `src/components/player/PCSpellbookTab.tsx`, `src/components/player/PCSpellsTab.tsx`, `helpers/spells/CombatantSpells.js` | `js/rules/SpellSlotCalculator.js`, `Combatant.js` |
+| Zauber / Slots        | `src/components/player/PCSpellbookTab.tsx`, `src/components/player/PCSpellsTab.tsx`, `helpers/spells/CombatantSpells.js`, `js/rules/RulesData.js` (Fassade), `js/rules/data/` | `js/rules/SpellSlotCalculator.js`, `Combatant.js` |
 | Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `src/components/player/features/` (z.B. `UnifiedFeatureCard.tsx`) |
 | Talente               | `js/data/feats-data.js` (Fassade), `js/data/feats/combat/`, `js/data/feats/general/`, `js/data/feats/magic/` (je nach Quellbuch `phb`/`phb2`/`ca`/`cs`) | `PCManager.js` (`addPCFeat`), `src/components/player/PCFeatsTab.tsx` |
 | Auren & Buffs         | `js/models/helpers/modifiers/SpellModifierApplier.js`, `js/rules/attack/AttackContext.js`, `js/rules/BuffRules.js` | `js/network/SyncProtocol.js` (Sync über Supabase Realtime, kein WebRTC) |
@@ -183,13 +184,20 @@ An **nicht-offensichtlichen Stellen** (Feature-Logik in generischer Datei, Cross
 
 ---
 
-## 9. Dateigrößen-Richtwerte & UI-Modularisierungs-Standard
+## 9. Dateigrößen-Richtwerte & Modularisierungs-Standards
 
-| Größe | Bedeutung |
-|---|---|
-| **<= 450Z** | **Harter Standard für alle UI-Komponenten in `src/components/`** (100% eingehalten). |
-| < 300Z | Ideal — modular, lesbar ohne Scroll, agent-freundlich. |
-| > 450Z | **Unzulässig:** Sofort in Domain-Subkomponenten im passenden Subfolder aufteilen. |
+### 9.1 UI-Komponenten (`src/components/`) — Harter Standard
+| Größe | Bedeutung | Status |
+|---|---|---|
+| **<= 450Z** | **Harter Standard für alle UI-Komponenten in `src/components/`** | **100% eingehalten (0 Dateien > 450Z)** |
+| < 300Z | Ideal — modular, lesbar ohne Scroll, agent-freundlich. | Standard für extrahierte Subviews |
+| > 450Z | **Unzulässig:** Sofort in Domain-Subkomponenten im passenden Subfolder aufteilen. | — |
+
+### 9.2 Daten- & State-Dateien — Token-Optimiertes Fassaden-Pattern
+Große statische Datenbestände und State-Registries in `js/` werden über Fassaden-Module zerlegt:
+- **Fassaden-Datei** (z.B. `js/data/magicItems-data.js`, `js/rules/RulesData.js`, `js/state/pc/PCEquipment.js`): Schlanke Re-Export-Schnittstelle (< 40 Zeilen), garantiert 100% Abwärtskompatibilität aller bestehenden Importpfade.
+- **Domain-Submodule** (z.B. `js/data/magicItems/*`, `js/rules/data/*`, `js/state/pc/equipment/*`): Enthalten isolierte Daten- oder Mutationsbereiche.
+- **Token-Vorteil:** LLMs und Wartungs-Agenten laden bei gezielten Anpassungen nur die relevanten Subdateien in den Kontext, anstatt riesige 1500+-Zeilen-Monolithen zu verarbeiten.
 
 ---
 

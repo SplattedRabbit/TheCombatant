@@ -5,137 +5,17 @@
  */
 
 import type { UnifiedFeature } from '../types.ts';
+import { getBarbarianFeatures } from './phbCoreMartial.barbarian.ts';
+import { getRogueFeatures } from './phbCoreMartial.rogue.ts';
 
 export function getPHBCoreMartialFeatures(pc: any, classMap: Map<string, number>): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];
-  const activeACFs: string[] = Array.isArray(pc?.acfs) ? pc.acfs : [];
 
   // ==========================================
   // BARBARIAN
   // ==========================================
   if (classMap.has('barbarian')) {
-    const bLvl = classMap.get('barbarian')!;
-    const isBerserkerStrength = activeACFs.includes('barbarian_berserker_strength');
-
-    // 1. Fast Movement
-    features.push({
-      id: 'barbarian_fast_movement',
-      name: 'Fast Movement (+10 ft)',
-      source: `Barbarian Lv.${bLvl}`,
-      category: 'passive',
-      typeLabel: 'Speed Enhancement',
-      summary: '+10 ft bonus to base land speed when wearing no armor, light armor, or medium armor and not carrying a heavy load.',
-      rawRules: `A barbarian's land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load.`,
-      actionType: 'Passive',
-    });
-
-    // 2. Rage / Berserker Strength
-    if (isBerserkerStrength) {
-      const threshold = 5 * bLvl;
-      const strBonus = bLvl >= 20 ? 8 : (bLvl >= 11 ? 6 : 4);
-      const saveBonus = bLvl >= 20 ? 4 : (bLvl >= 11 ? 3 : 2);
-      const drValue = bLvl >= 20 ? '5/—' : (bLvl >= 17 ? '4/—' : (bLvl >= 11 ? '3/—' : (bLvl >= 7 ? '2/—' : '2/—')));
-
-      features.push({
-        id: 'barbarian_berserker_strength',
-        name: `Berserker Strength (Trigger < ${threshold} HP)`,
-        source: `Barbarian Lv.${bLvl} (ACF)`,
-        category: 'combat',
-        typeLabel: 'Alternative Class Feature',
-        summary: `Triggers automatically when HP drops below ${threshold} HP: +${strBonus} STR, +${saveBonus} to all saves, DR ${drValue}, -2 AC. Unlimited uses.`,
-        rawRules: `Whenever your current hit point total is below ${threshold} HP (5 × Barbarian Level), you automatically enter a state of berserker strength.
-
-• Bonuses: You gain a +${strBonus} bonus to Strength, a +${saveBonus} bonus on all saving throws, and Damage Reduction ${drValue}.
-• Penalties: You take a -2 penalty to Armor Class and cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except Balance, Escape Artist, Intimidate, and Ride) or cast spells.
-• Unlimited: This state lasts until your HP rises above the threshold or the combat ends. It triggers automatically whenever conditions are met without daily limits.`,
-        actionType: 'Passive',
-      });
-    } else {
-      const rageCount = 1 + Math.floor(bLvl / 4);
-      const isMighty = bLvl >= 20;
-      const isGreater = bLvl >= 11;
-      const rageType = isMighty ? 'Mighty Rage' : (isGreater ? 'Greater Rage' : 'Rage');
-      const strConBonus = isMighty ? 8 : (isGreater ? 6 : 4);
-      const willBonus = isMighty ? 4 : (isGreater ? 3 : 2);
-
-      features.push({
-        id: 'barbarian_rage',
-        name: `${rageType} (${rageCount}/day)`,
-        source: `Barbarian Lv.${bLvl}`,
-        category: 'daily',
-        typeLabel: 'Combat Surge',
-        summary: `+${strConBonus} STR & CON, +${willBonus} morale Will saves, -2 AC. Duration 3 + CON modifier rounds.`,
-        rawRules: `A barbarian can fly into a rage a certain number of times per day (${rageCount}/day).
-
-• Bonuses: +${strConBonus} bonus to Strength, +${strConBonus} bonus to Constitution, and a +${willBonus} morale bonus on Will saves.
-• Penalties: -2 penalty to Armor Class.
-• Duration: 3 rounds + the barbarian's (newly improved) Constitution modifier.
-• Fatigued: At the end of the rage, the barbarian loses the rage modifiers and becomes fatigued (-2 Str, -2 Dex, cannot run/charge) for the remainder of the encounter${bLvl >= 17 ? ' (Immune to fatigue due to Tireless Rage)' : ''}.`,
-        actionType: 'Free Action',
-        interactive: 'toggle',
-        dailyAbilityKey: 'Rage',
-      });
-    }
-
-    // 3. Uncanny Dodge (2nd) & Improved Uncanny Dodge (5th)
-    if (bLvl >= 2) {
-      features.push({
-        id: 'barbarian_uncanny_dodge',
-        name: bLvl >= 5 ? 'Improved Uncanny Dodge' : 'Uncanny Dodge',
-        source: `Barbarian Lv.${bLvl}`,
-        category: 'passive',
-        typeLabel: 'Defense',
-        summary: bLvl >= 5
-          ? 'Cannot be flanked; only a rogue 4+ levels higher can sneak attack you.'
-          : 'Retain Dexterity bonus to AC even if caught flat-footed or struck by an invisible attacker.',
-        rawRules: `At 2nd level, a barbarian retains his Dexterity bonus to AC even if flat-footed. At 5th level, he can no longer be flanked by opponents.`,
-        actionType: 'Passive',
-      });
-    }
-
-    // 4. Trap Sense (3rd)
-    if (bLvl >= 3) {
-      const trapBonus = Math.floor(bLvl / 3);
-      features.push({
-        id: 'barbarian_trap_sense',
-        name: `Trap Sense (+${trapBonus})`,
-        source: `Barbarian Lv.${bLvl}`,
-        category: 'passive',
-        typeLabel: 'Reflex & Dodge',
-        summary: `+${trapBonus} bonus on Reflex saves vs. traps and +${trapBonus} dodge bonus to AC against trap attacks.`,
-        rawRules: `Starting at 3rd level, a barbarian gains an intuitive sense that alerts him to danger from traps, giving him a +${trapBonus} bonus on Reflex saves made to avoid traps and a +${trapBonus} dodge bonus to AC against attacks made by traps.`,
-        actionType: 'Passive',
-      });
-    }
-
-    // 5. Damage Reduction (7th)
-    if (bLvl >= 7 && !isBerserkerStrength) {
-      const dr = 1 + Math.floor((bLvl - 7) / 3);
-      features.push({
-        id: 'barbarian_damage_reduction',
-        name: `Damage Reduction (${dr}/—)`,
-        source: `Barbarian Lv.${bLvl}`,
-        category: 'passive',
-        typeLabel: 'Damage Reduction',
-        summary: `Subtract ${dr} points from any damage dealt by a weapon or natural attack.`,
-        rawRules: `At 7th level, a barbarian gains Damage Reduction. Subtract 1 from the damage the barbarian takes each time he is dealt damage from a weapon or a natural attack. At 10th level, and every three barbarian levels thereafter, this damage reduction rises by 1 point (up to 5/— at 19th level).`,
-        actionType: 'Passive',
-      });
-    }
-
-    // 6. Indomitable Will (14th)
-    if (bLvl >= 14) {
-      features.push({
-        id: 'barbarian_indomitable_will',
-        name: 'Indomitable Will (+4 vs Mind-Affecting in Rage)',
-        source: `Barbarian Lv.${bLvl}`,
-        category: 'passive',
-        typeLabel: 'Mental Resilience',
-        summary: '+4 bonus on Will saves to resist enchantment spells and effects while in a rage.',
-        rawRules: `While in a rage, a barbarian of 14th level or higher gains a +4 bonus on Will saves to resist enchantment spells and effects. This bonus stacks with all other modifiers, including the morale bonus on Will saves he receives from rage.`,
-        actionType: 'Passive',
-      });
-    }
+    features.push(...getBarbarianFeatures(pc, classMap.get('barbarian')!));
   }
 
   // ==========================================
@@ -486,70 +366,7 @@ At 17th level, a ranger can use the Hide skill in natural terrain even while bei
   // ROGUE (Passives & Utilities)
   // ==========================================
   if (classMap.has('rogue')) {
-    const rLvl = classMap.get('rogue')!;
-
-    // 1. Trapfinding
-    features.push({
-      id: 'rogue_trapfinding',
-      name: 'Trapfinding',
-      source: `Rogue Lv.${rLvl}`,
-      category: 'passive',
-      typeLabel: 'Class Ability',
-      summary: 'Can use the Search skill to locate traps with DC 20+ and Disable Device for magical traps.',
-      rawRules: `Rogues (and only rogues) can use the Search skill to locate traps when the task has a Difficulty Class higher than 20. Finding a nonmagical trap has a DC of at least 20, or higher if it is well hidden. Finding a magic trap has a DC of 25 + the level of the spell used to create it.
-
-Rogues can use the Disable Device skill to disarm magic traps. A magic trap generally has a DC of 25 + the level of the spell used to create it. A rogue who beats a trap's DC by 10 or more with a Disable Device check can study a trap, figure out how it works, and bypass it (with her party) without disarming it.`,
-      actionType: 'Passive',
-    });
-
-    // 2. Evasion (2nd+)
-    if (rLvl >= 2) {
-      features.push({
-        id: 'rogue_evasion',
-        name: 'Evasion',
-        source: `Rogue Lv.${rLvl}`,
-        category: 'passive',
-        typeLabel: 'Reflex Defense',
-        summary: 'Take no damage on a successful Reflex save that normally deals half damage.',
-        rawRules: `At 2nd level and higher, a rogue can avoid even magical and unusual attacks with great agility. If she makes a successful Reflex saving throw against an attack that normally deals half damage on a successful save (such as a red dragon's fiery breath or a fireball), she instead takes no damage.
-
-Evasion can be used only if the rogue is wearing light armor or no armor. A helpless rogue (such as one who is unconscious or paralyzed) does not gain the benefit of evasion.`,
-        actionType: 'Passive',
-      });
-    }
-
-    // 3. Trap Sense (3rd+)
-    if (rLvl >= 3) {
-      const bonus = Math.floor(rLvl / 3);
-      features.push({
-        id: 'rogue_trap_sense',
-        name: `Trap Sense (+${bonus})`,
-        source: `Rogue Lv.${rLvl}`,
-        category: 'passive',
-        typeLabel: 'Dodge / Save',
-        summary: `+${bonus} bonus on Reflex saves to avoid traps and a +${bonus} dodge bonus to AC against trap attacks.`,
-        rawRules: `At 3rd level, a rogue gains an intuitive sense that alerts her to danger from traps, giving her a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses rise by +1 every three levels thereafter (6th, 9th, 12th, 15th, 18th).`,
-        actionType: 'Passive',
-      });
-    }
-
-    // 4. Uncanny Dodge (4th+) & Improved Uncanny Dodge (8th+)
-    if (rLvl >= 4) {
-      features.push({
-        id: 'rogue_uncanny_dodge',
-        name: rLvl >= 8 ? 'Improved Uncanny Dodge' : 'Uncanny Dodge',
-        source: `Rogue Lv.${rLvl}`,
-        category: 'passive',
-        typeLabel: 'Defense',
-        summary: rLvl >= 8
-          ? 'Cannot be flanked; only a rogue of 4+ levels higher can sneak attack you.'
-          : 'Retain Dexterity bonus to AC even if caught flat-footed or struck by an invisible attacker.',
-        rawRules: `Starting at 4th level, a rogue can react to danger before her senses would normally allow her to do so. She retains her Dexterity bonus to AC (if any) even if she is caught flat-footed or struck by an invisible attacker. However, she still loses her Dexterity bonus to AC if immobilized.
-
-At 8th level, a rogue can no longer be flanked; she can react to opponents on opposite sides of her as easily as she can react to a single attacker. This defense denies another rogue the ability to sneak attack the character by flanking her, unless the attacker has at least four more rogue levels than the target.`,
-        actionType: 'Passive',
-      });
-    }
+    features.push(...getRogueFeatures(classMap.get('rogue')!));
   }
 
   return features;

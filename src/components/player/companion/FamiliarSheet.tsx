@@ -10,10 +10,12 @@
 import React, { useState } from 'react';
 import { FamiliarRules } from '@core/rules/FamiliarRules.js';
 import { CombatState } from '@core/state.js';
-import { showRollBreakdown, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { getAblMod, formatMod } from '../attributeHelper';
 import { CompanionAbilityDetailsDialog, CompanionAbilityData } from '../../dialogs/companion/CompanionAbilityDetailsDialog';
 import { getCompanionAbilityDetails } from './companionAbilitiesRules';
+import { FamiliarEmptyState } from './FamiliarEmptyState';
+import { FamiliarAttacksCard } from './FamiliarAttacksCard';
 
 interface FamiliarSheetProps {
   pc: any;
@@ -103,81 +105,15 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
     onUpdate();
   };
 
-  const handleAttackRoll = (e: React.MouseEvent<HTMLButtonElement>, attName: string, bonus: number, _damage: string, _note: string) => {
-    e.stopPropagation();
-    const famName = pc.familiarName || 'Familiar';
-
-    showRollBreakdown(`${famName} - ${attName}`, `1d20`, [
-      { label: 'Attack Bonus (Dexterity/Size/Master BAB)', value: bonus }
-    ], e.nativeEvent);
-  };
-
   // ==========================================
   // EMPTY STATE: SUMMON FAMILIAR HERO CARD
   // ==========================================
   if (type === 'none') {
-    const FAMILIAR_OPTIONS = [
-      { key: 'bat', icon: '🦇', label: 'Bat (+3 Listen)' },
-      { key: 'cat', icon: '🐈', label: 'Cat (+3 Move Silently)' },
-      { key: 'hawk', icon: '🦅', label: 'Hawk (+3 Spot in light)' },
-      { key: 'lizard', icon: '🦎', label: 'Lizard (+3 Climb)' },
-      { key: 'owl', icon: '🦉', label: 'Owl (+3 Spot in shadows)' },
-      { key: 'rat', icon: '🐀', label: 'Rat (+2 Fort Save)' },
-      { key: 'raven', icon: '🐦', label: 'Raven (+3 Appraise / Speaks)' },
-      { key: 'snake', icon: '🐍', label: 'Snake (+3 Bluff)' },
-      { key: 'toad', icon: '🐸', label: 'Toad (+3 Max HP)' },
-      { key: 'weasel', icon: '🦦', label: 'Weasel (+2 Ref Save)' },
-    ];
-
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', boxSizing: 'border-box' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--pb)', paddingBottom: '4px' }}>
-          <span style={{ fontFamily: 'var(--font-title)', fontSize: '11px', color: 'var(--red)', fontWeight: 'bold' }}>
-            🦇 Arcane Familiar Sheet (Effective Level: {effectiveFamiliarLvl})
-          </span>
-          <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>D&amp;D 3.5e RAW Rules</span>
-        </div>
-
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '30px 20px',
-            background: 'rgba(200, 169, 110, 0.05)',
-            border: '1px dashed var(--pb)',
-            borderRadius: '4px',
-            gap: '12px',
-            textAlign: 'center',
-          }}
-        >
-          <div style={{ fontSize: '28px' }}>🦇</div>
-          <div>
-            <strong style={{ fontFamily: 'var(--font-title)', fontSize: '12px', color: 'var(--ink)' }}>
-              No Active Familiar Summoned
-            </strong>
-            <p style={{ fontSize: '9.5px', color: 'var(--inkl)', margin: '4px 0 0 0', maxWidth: '420px' }}>
-              Choose an arcane familiar to summon. The familiar grants a permanent special bonus to its master, shares your saving throws and spell effects, and scales in intelligence and natural armor.
-            </p>
-          </div>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center', maxWidth: '520px', marginTop: '4px' }}>
-            {FAMILIAR_OPTIONS.map((fam) => (
-              <button
-                key={fam.key}
-                type="button"
-                onClick={() => handleSpeciesChange(fam.key)}
-                className="btn btn-p"
-                style={{ fontSize: '9.5px', padding: '5px 10px', display: 'flex', alignItems: 'center', gap: '6px' }}
-              >
-                <span>{fam.icon}</span>
-                <span>{fam.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+      <FamiliarEmptyState
+        effectiveFamiliarLvl={effectiveFamiliarLvl}
+        onSelectSpecies={handleSpeciesChange}
+      />
     );
   }
 
@@ -418,65 +354,11 @@ export const FamiliarSheet: React.FC<FamiliarSheetProps> = ({ pc, onUpdate }) =>
           </div>
 
           {/* Familiar Attacks Card */}
-          <div
-            style={{
-              background: 'rgba(200, 169, 110, 0.06)',
-              border: '1px solid var(--pb)',
-              borderRadius: '4px',
-              padding: '10px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '6px',
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '0.5px solid var(--pb)', paddingBottom: '3px' }}>
-              <span style={{ fontFamily: 'var(--font-title)', fontSize: '10.5px', color: 'var(--red)', fontWeight: 'bold' }}>
-                ⚔️ Familiar Attacks (Uses Master BAB: +{masterBab})
-              </span>
-              <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>Click to roll attack</span>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-              {attacks.length > 0 ? (
-                attacks.map((att: any, idx: number) => (
-                  <div
-                    key={idx}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      background: 'rgba(200, 169, 110, 0.08)',
-                      border: '0.5px solid var(--pb)',
-                      borderRadius: '3px',
-                      padding: '6px 8px',
-                    }}
-                  >
-                    <div>
-                      <strong style={{ fontSize: '10px', color: 'var(--ink)' }}>{att.name}:</strong>{' '}
-                      <span style={{ color: 'var(--red)', fontWeight: 'bold', fontSize: '10px' }}>{formatMod(att.bonus)}</span>{' '}
-                      <span style={{ fontSize: '9.5px', color: 'var(--inkm)' }}>({att.damage})</span>
-                      {att.note && (
-                        <div style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', marginTop: '1px' }}>
-                          • {att.note}
-                        </div>
-                      )}
-                    </div>
-                    <button
-                      onClick={(e) => handleAttackRoll(e, att.name, att.bonus, att.damage, att.note || '')}
-                      className="btn roll-familiar-attack-btn"
-                      style={{ fontSize: '9px', padding: '3px 8px', fontWeight: 'bold', cursor: 'pointer', borderRadius: '3px' }}
-                    >
-                      Roll 🎲
-                    </button>
-                  </div>
-                ))
-              ) : (
-                <div style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '10px' }}>
-                  No natural attacks listed for this familiar.
-                </div>
-              )}
-            </div>
-          </div>
+          <FamiliarAttacksCard
+            attacks={attacks}
+            masterBab={masterBab}
+            familiarName={name}
+          />
 
           {/* Special Qualities Card */}
           <div
