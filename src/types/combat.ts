@@ -224,9 +224,15 @@ export interface DailyAbility {
 // Zaubersystem
 // ---------------------------------------------------------------------------
 
+export interface SpellSlotLevel {
+  max: number;
+  used: number;
+}
+
 export interface SpellSlots {
-  max: number[];
-  used: number[];
+  [level: number]: SpellSlotLevel;
+  max?: number[];
+  used?: number[];
 }
 
 export interface PreparedSpell {

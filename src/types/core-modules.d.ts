@@ -108,6 +108,12 @@ declare module '@core/rules.js' {
   export const BattleTricksterRules: any;
   export const SpellwarpSniperRules: any;
   export const EldritchKnightRules: any;
+  export const SORCERER_KNOWN_TABLE: Record<number, number[]>;
+  export const BARD_KNOWN_TABLE: Record<number, number[]>;
+  export const getEffectiveCasterLevel: (pc: any, classType: string) => number;
+  export const getMaxSpellLevel: (classType: string, casterLevel: number) => number;
+  export const calculateMaxSpellSlots: (pc: any, classType: string, casterLevel: number) => number[];
+  export const checkSpellKnownLimit: (pc: any, spell: any, findSpellFn: (k: string) => any) => { success: boolean; error?: string };
 }
 
 declare module '@core/rules/AttackEngine.js' {
