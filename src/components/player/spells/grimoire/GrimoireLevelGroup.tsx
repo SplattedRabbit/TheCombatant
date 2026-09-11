@@ -8,6 +8,13 @@ import { GrimoireSpellRow } from './GrimoireSpellRow';
 import { GrimoireEmptySlotRow } from './GrimoireEmptySlotRow';
 import { GrimoireSpentSpells } from './GrimoireSpentSpells';
 import { openPrepareSlotDialog } from './grimoireActions';
+import { findSpell } from '../PCSpellbookTab';
+import { SpellSlotCalculator } from '@core/rules/SpellSlotCalculator.js';
+import {
+  SORCERER_KNOWN_TABLE,
+  BARD_KNOWN_TABLE,
+  getEffectiveCasterLevel,
+} from '@core/rules.js';
 
 interface GrimoireLevelGroupProps {
   pc: any;
@@ -39,23 +46,41 @@ export const GrimoireLevelGroup: React.FC<GrimoireLevelGroupProps> = ({
   const preparedSpells: any[] = Array.isArray(pc.preparedSpells) ? pc.preparedSpells : [];
   const learnedSpells: any[] = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
 
+  const learnedCountAtLvl = learnedSpells
+    .map((k: any) => (typeof k === 'string' ? findSpell(pc, k) : k))
+    .filter((s: any) => s && s.level === lvl).length;
+
+  const isSorc = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'sorcerer');
+  const isBard = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'bard');
+  let maxKnown: number | undefined = undefined;
+  if (isSorc) {
+    const cl = getEffectiveCasterLevel(pc, 'sorcerer');
+    const row = SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, cl))] || [];
+    maxKnown = (maxKnown || 0) + (row[lvl] || 0);
+  }
+  if (isBard) {
+    const cl = getEffectiveCasterLevel(pc, 'bard');
+    const row = BARD_KNOWN_TABLE[Math.max(1, Math.min(20, cl))] || [];
+    maxKnown = (maxKnown || 0) + (row[lvl] || 0);
+  }
+
   let activeLevelSpells: any[] = [];
   let spentLevelSpells: any[] = [];
 
   if (hasPrepared) {
     const levelPreps = preparedSpells.filter((p: any) => {
-      const sp = p.spellKey ? pc.learnedSpells?.find?.((k: string) => k === p.spellKey) : null;
-      return p.preparedLevel === lvl || (!p.preparedLevel && sp?.level === lvl);
+      if (p.preparedLevel !== undefined && p.preparedLevel === lvl) return true;
+      const sp = findSpell(pc, p.spellKey || p.id);
+      if (!sp) return false;
+      const finalLvl = SpellSlotCalculator.getAdjustedSpellLevel(sp, p.metamagic, pc);
+      return finalLvl === lvl;
     });
     activeLevelSpells = levelPreps.filter((p: any) => !p.isUsed);
     spentLevelSpells = levelPreps.filter((p: any) => p.isUsed);
   } else if (hasSpontaneous) {
     const knownAtLvl = learnedSpells
-      .map((k: string) => (typeof k === 'object' ? k : { id: k, spellKey: k }))
-      .filter((s: any) => {
-        const fullSp = s.level !== undefined ? s : pc.learnedSpells?.find?.((item: any) => item.id === s.spellKey);
-        return fullSp?.level === lvl;
-      });
+      .map((k: any) => (typeof k === 'string' ? findSpell(pc, k) : k))
+      .filter((s: any) => s && s.level === lvl);
     activeLevelSpells = knownAtLvl;
   }
 
@@ -99,6 +124,11 @@ export const GrimoireLevelGroup: React.FC<GrimoireLevelGroupProps> = ({
         <span>{lvl === 0 ? 'Cantrips (Level 0)' : `Spell Level ${lvl}`}</span>
         <div style={{ display: 'flex', gap: '5px', fontSize: '7px', color: 'var(--inkm)', fontWeight: 'normal' }}>
           <span>Save DC: <strong>{10 + lvl + casterMod}</strong></span>
+          {hasSpontaneous && maxKnown !== undefined ? (
+            <span>Known: <strong style={{ color: 'var(--red)' }}>{learnedCountAtLvl}/{maxKnown}</strong></span>
+          ) : (
+            <span>In Book: <strong style={{ color: 'var(--red)' }}>{learnedCountAtLvl}</strong></span>
+          )}
           <span>Slots: <strong>{remaining}/{max}</strong></span>
         </div>
       </div>

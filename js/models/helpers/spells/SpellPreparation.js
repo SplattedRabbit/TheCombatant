@@ -44,7 +44,7 @@ export function castPreparedSpell(pc, id) {
     prep.isUsed = true;
     const spell = findSpell(pc, prep.spellKey);
     if (spell) {
-      const adjustedLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, prep.metamagic);
+      const adjustedLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, prep.metamagic, pc);
       if (pc.spellSlots && pc.spellSlots[adjustedLevel]) {
         pc.spellSlots[adjustedLevel].used = Math.min(pc.spellSlots[adjustedLevel].max, (pc.spellSlots[adjustedLevel].used || 0) + 1);
       }

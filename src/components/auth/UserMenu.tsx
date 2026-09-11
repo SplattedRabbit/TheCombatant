@@ -126,7 +126,7 @@ export const UserMenu: React.FC = () => {
               right: 0,
               width: '210px',
               backgroundColor: '#f4e8c1',
-              background: 'var(--p, #f4e8c1)',
+              backgroundImage: 'var(--p)',
               border: '1.5px solid var(--pb)',
               borderRadius: '4px',
               boxShadow: '0 6px 24px rgba(0, 0, 0, 0.35)',

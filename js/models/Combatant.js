@@ -73,7 +73,7 @@ export class Combatant {
     this.wis = new Stat(p.wis !== undefined ? p.wis : 10);
     this.cha = new Stat(p.cha !== undefined ? p.cha : 10);
 
-    this.initMisc = parseInt(p.initMisc !== undefined ? p.initMisc : p.iniMisc) || 0;
+    this.initMisc = parseInt((p.initMisc !== undefined && p.initMisc !== 0) ? p.initMisc : (p.iniMisc !== undefined ? p.iniMisc : (p.initMisc || 0))) || 0;
     this.iniMisc = this.initMisc;
     this.rawInit = parseInt(p.rawInit) || 0;
 
@@ -81,8 +81,8 @@ export class Combatant {
     this.classType = p.classType || 'custom';
     this.level = p.level !== undefined ? parseInt(p.level) : 1;
     this.classes = Array.isArray(p.classes)
-      ? p.classes.map(c => ({ classType: c.classType, level: parseInt(c.level) || 1 }))
-      : (p.classType && p.classType !== 'custom' ? [{ classType: p.classType, level: parseInt(p.level) || 1 }] : []);
+      ? p.classes.map(c => ({ classType: c.classType ? c.classType.toLowerCase() : 'custom', level: parseInt(c.level) || 1 }))
+      : (p.classType && p.classType.toLowerCase() !== 'custom' ? [{ classType: p.classType.toLowerCase(), level: parseInt(p.level) || 1 }] : []);
     this.prestigeSpellLinks = p.prestigeSpellLinks || {};
     this.prestigeSpecialTextConfirmed = p.prestigeSpecialTextConfirmed || {};
     this.alignment = p.alignment || '';

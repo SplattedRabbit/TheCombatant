@@ -30,6 +30,14 @@ export const PCSpellLibraryPanel: React.FC<PCSpellLibraryPanelProps> = ({
 
   const learnedCount = Array.isArray(pc.learnedSpells) ? pc.learnedSpells.length : 0;
 
+  const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
+  const isSpontaneousOnly =
+    hasClasses &&
+    pc.classes.some((c: any) => ['sorcerer', 'bard', 'beguiler'].includes(c.classType)) &&
+    !pc.classes.some((c: any) => ['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'duskblade'].includes(c.classType));
+
+  const tabTitle = isSpontaneousOnly ? '✨ Known Spells' : '📖 Spell Library';
+
   return (
     <div
       style={{
@@ -76,7 +84,7 @@ export const PCSpellLibraryPanel: React.FC<PCSpellLibraryPanelProps> = ({
               transition: 'all 0.15s ease',
             }}
           >
-            <span>📖</span> Spell Library ({learnedCount})
+            {tabTitle} ({learnedCount})
           </button>
 
           <button

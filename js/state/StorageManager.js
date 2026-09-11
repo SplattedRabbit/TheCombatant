@@ -1,5 +1,6 @@
 import { getState, StateEvents, getActivePC } from './state-core.js';
 import { createInitialState, createCombatant, createConcentration } from '../models/model-core.js';
+import { recalculatePCStats } from './pc/PCGeneral.js';
 
 const STORAGE_KEY = 'dd_combatsheet_state';
 
@@ -94,7 +95,13 @@ export function applyLoadedState(loadedState, preserveRole = true) {
     const currentRole = s.session?.role;
 
     s.meta = { ...s.meta, ...(loadedState.meta || {}) };
-    s.combatants = (loadedState.combatants || []).map(c => createCombatant(c));
+    s.combatants = (loadedState.combatants || []).map(c => {
+      const comb = createCombatant(c);
+      if (comb.type === 'p') {
+        recalculatePCStats(comb);
+      }
+      return comb;
+    });
     s.turn = typeof loadedState.turn === 'number' ? loadedState.turn : 0;
     s.round = typeof loadedState.round === 'number' ? loadedState.round : 1;
     s.concentrations = (loadedState.concentrations || []).map(c => createConcentration(c));

@@ -44,7 +44,7 @@ export interface DialogContextType {
   showFeatScroll: (feat: any, pc: any, isLearned: boolean, option?: string, event?: any) => void;
   showBuffDetails: (pc: any, key: string, isClass: boolean, isAlreadyActiveIndex?: number | null) => void;
   showCastSuccess: (pc: any, spell: any, spellKey: string, metamagic?: string[], onAppliedCallback?: () => void) => void;
-  showSpellDetails: (spell: any, spellKey: string, pc: any) => void;
+  showSpellDetails: (spell: any, spellKey: string, pc: any, onLearnSpell?: (spellKey: string, shouldLearn: boolean) => void) => void;
   showSpellCreator: (pc: any) => void;
   showParchmentMessage: (text: string, sender?: string) => { dismiss: () => void };
   closeAllDialogs: () => void;
@@ -263,12 +263,13 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }));
   }, [closeDialog, pushModal]);
 
-  const showSpellDetails = useCallback((spell: any, spellKey: string, pc: any) => {
+  const showSpellDetails = useCallback((spell: any, spellKey: string, pc: any, onLearnSpell?: (spellKey: string, shouldLearn: boolean) => void) => {
     pushModal('spellDetails', (id) => ({
       spell,
       spellKey,
       pc,
       onClose: () => closeDialog(id),
+      onLearnSpell,
     }));
   }, [closeDialog, pushModal]);
 

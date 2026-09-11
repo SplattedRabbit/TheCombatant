@@ -143,7 +143,10 @@ export function applyWizardCharacterToState(
     if (freshPC.classes.some((c: any) => c.classType === 'wizard')) {
       const allCompSpells = getAllCompendiumSpells(freshPC) as any[];
       allCompSpells.forEach(s => {
-        if (s.level === 0 && Array.isArray(s.classes) && s.classes.includes('wizard')) {
+        const isWizCantrip = Array.isArray(s.classLevels) 
+          ? s.classLevels.some((cl: any) => cl.class === 'wizard' && cl.level === 0)
+          : (s.level === 0 && Array.isArray(s.classes) && s.classes.includes('wizard'));
+        if (isWizCantrip) {
           if (freshPC.wizardProhibited1 && s.school && s.school.toLowerCase() === freshPC.wizardProhibited1.toLowerCase()) return;
           if (freshPC.wizardProhibited2 && s.school && s.school.toLowerCase() === freshPC.wizardProhibited2.toLowerCase()) return;
           if (!allSelectedSpells.includes(s.id)) {

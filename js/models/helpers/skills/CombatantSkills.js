@@ -12,6 +12,7 @@ import { SKILLS_REGISTRY } from '../../../data/skills-data.js';
 import { calculateBaseSkillValue } from './SkillBaseCalculator.js';
 import { resolveSynergyBonuses } from './SkillSynergyResolver.js';
 import { applyFeatSkillBonuses } from './SkillFeatApplier.js';
+import { getItemModForSkill } from '../../../rules/RulesSkills.js';
 
 export function calculateSkillModifier(pc, skillKey) {
   const skillDef = SKILLS_REGISTRY[skillKey];
@@ -46,6 +47,9 @@ export function calculateSkillModifier(pc, skillKey) {
   } else if (race === 'tiefling') {
     if (['bluff', 'hide'].includes(skillKey)) total += 2;
   }
+
+  // 3.8. Equipment
+  total += getItemModForSkill(pc, skillKey);
 
   // 4. Conditions penalties (Shaken / Sickened)
   const hasShaken = pc.conditions.some(c => c === 'Erschüttet' || (c && c.n === 'Erschüttet') || c === 'Schüttelnd' || (c && c.n === 'Schüttelnd'));

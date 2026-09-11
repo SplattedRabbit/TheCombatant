@@ -19,8 +19,13 @@ export interface SpellQuotaInfo {
   allowedSpellLevels: number[];
 }
 
+import { CLASSES } from '@core/rules/RulesData.js';
+
 export function isSpellSelectorClass(classType: string): boolean {
-  return ['wizard', 'sorcerer', 'bard', 'duskblade', 'spellthief', 'assassin'].includes(classType);
+  if (['wizard', 'sorcerer', 'bard', 'duskblade', 'spellthief', 'assassin'].includes(classType)) return true;
+  const clsDef = CLASSES?.find(c => c.key === classType);
+  if (clsDef && clsDef.spellcastingBonus) return true;
+  return false;
 }
 
 /**
@@ -112,13 +117,14 @@ export function getSpellSelectionQuota(
   }
 
   // Default fallback for other casters
+  const fallbackMax = maxLvl || 9;
   return {
     isCaster: true,
     quota: 2,
-    label: `Select new spells (up to Level ${maxLvl}).`,
-    maxSpellLevel: maxLvl,
+    label: `Select new spells (up to Level ${fallbackMax}).`,
+    maxSpellLevel: fallbackMax,
     autoCantrips: false,
-    allowedSpellLevels: Array.from({ length: maxLvl + 1 }, (_, i) => i)
+    allowedSpellLevels: Array.from({ length: fallbackMax + 1 }, (_, i) => i)
   };
 }
 

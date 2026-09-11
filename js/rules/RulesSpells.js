@@ -7,7 +7,7 @@
 import {
   WIZ_CLER_DRU_TABLE, SORCERER_TABLE, BARD_TABLE, PALADIN_RANGER_TABLE,
   ASSASSIN_TABLE, SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE,
-  DUSKBLADE_TABLE, BEGUILER_TABLE
+  DUSKBLADE_TABLE, BEGUILER_TABLE, CLASSES
 } from './RulesData.js';
 import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../spells.js';
 import { getDomain, getSpellDomains, isDomainSpellForPC } from '../data/domains-data.js';
@@ -41,18 +41,42 @@ export function getEffectiveCasterLevel(pc, classType) {
   const baseClass = pc.classes.find(cls => cls.classType === classType);
   if (!baseClass) return 0;
   let effectiveLevel = baseClass.level;
-  if (pc.prestigeSpellLinks) {
-    Object.entries(pc.prestigeSpellLinks).forEach(([prcKey, links]) => {
-      const prcClass = pc.classes.find(cls => cls.classType === prcKey);
-      if (prcClass) {
-        if (typeof links === 'string' && links === classType) {
-          effectiveLevel += prcClass.level;
-        } else if (typeof links === 'object' && links !== null && Object.values(links).includes(classType)) {
-          effectiveLevel += prcClass.level;
-        }
+  pc.classes.forEach(prcClass => {
+    const clsDef = CLASSES.find(c => c.key === prcClass.classType);
+    if (!clsDef || !clsDef.isPrestige || clsDef.spellcastingBonus === undefined || clsDef.spellcastingBonus === false) return;
+
+    let isLinked = false;
+    const links = pc.prestigeSpellLinks ? pc.prestigeSpellLinks[prcClass.classType] : null;
+
+    if (links) {
+      if (typeof links === 'string' && links === classType) {
+        isLinked = true;
+      } else if (typeof links === 'object' && links !== null && Object.values(links).includes(classType)) {
+        isLinked = true;
       }
-    });
-  }
+    } else {
+      // Fallback for imported old characters: assume it progresses the requested classType
+      const casters = pc.classes.filter(c => ['wizard', 'cleric', 'druid', 'sorcerer', 'bard', 'duskblade', 'beguiler'].includes(c.classType));
+      if (casters.length === 1 && casters[0].classType === classType) {
+        isLinked = true;
+      } else if (classType === 'wizard' && casters.some(c => c.classType === 'wizard')) {
+        isLinked = true;
+      }
+    }
+
+    if (isLinked) {
+      if (Array.isArray(clsDef.spellcastingBonus)) {
+        const idx = Math.max(0, prcClass.level - 1);
+        if (idx < clsDef.spellcastingBonus.length) {
+          effectiveLevel += clsDef.spellcastingBonus[idx];
+        } else {
+          effectiveLevel += clsDef.spellcastingBonus[clsDef.spellcastingBonus.length - 1];
+        }
+      } else {
+        effectiveLevel += prcClass.level;
+      }
+    }
+  });
   return effectiveLevel;
 }
 

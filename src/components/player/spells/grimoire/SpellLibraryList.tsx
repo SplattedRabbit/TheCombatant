@@ -12,6 +12,8 @@ import {
   showPrepareSpellDialog,
   showCastSpontaneousSpellDialog,
 } from '@core/ui/components/dialogs.js';
+import { SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE } from '@core/rules/RulesData.js';
+import { getEffectiveCasterLevel, getMaxSpellLevel } from '@core/rules/RulesSpells.js';
 
 interface SpellLibraryListProps {
   pc: any;
@@ -76,6 +78,56 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
       .filter((s): s is NonNullable<typeof s> => s !== null && s !== undefined);
   }, [pc, learnedKeys]);
 
+  // Quota and capacity calculations (D&D 3.5e RAW)
+  const quotaStats = useMemo(() => {
+    const isSorc = activeCasters.some((c: any) => c.classType === 'sorcerer');
+    const isBard = activeCasters.some((c: any) => c.classType === 'bard');
+    const isWiz = activeCasters.some((c: any) => c.classType === 'wizard');
+
+    const sorcCL = isSorc ? getEffectiveCasterLevel(pc, 'sorcerer') : 0;
+    const bardCL = isBard ? getEffectiveCasterLevel(pc, 'bard') : 0;
+    const wizCL = isWiz ? getEffectiveCasterLevel(pc, 'wizard') : 0;
+
+    const sorcRow = isSorc ? (SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, sorcCL))] || []) : [];
+    const bardRow = isBard ? (BARD_KNOWN_TABLE[Math.max(1, Math.min(20, bardCL))] || []) : [];
+
+    const perLevel: Record<number, { count: number; maxKnown?: number; isSpontaneous: boolean }> = {};
+    let totalCurrent = 0;
+    let totalMaxSpontaneous = 0;
+
+    for (let lvl = minLvl; lvl <= maxLvl; lvl++) {
+      const countAtLvl = learnedSpells.filter((s) => s.level === lvl).length;
+      let maxKnown: number | undefined = undefined;
+      let isSpontaneous = false;
+
+      if (isSorc && sorcRow[lvl] !== undefined) {
+        maxKnown = (maxKnown || 0) + sorcRow[lvl];
+        isSpontaneous = true;
+      }
+      if (isBard && bardRow[lvl] !== undefined) {
+        maxKnown = (maxKnown || 0) + bardRow[lvl];
+        isSpontaneous = true;
+      }
+
+      if (maxKnown !== undefined) {
+        totalMaxSpontaneous += maxKnown;
+      }
+      totalCurrent += countAtLvl;
+
+      perLevel[lvl] = { count: countAtLvl, maxKnown, isSpontaneous };
+    }
+
+    return {
+      isWizard: isWiz,
+      isSpontaneous: isSorc || isBard,
+      wizCL,
+      maxWizLvl: isWiz ? getMaxSpellLevel('wizard', wizCL) : -1,
+      totalCurrent,
+      totalMaxSpontaneous,
+      perLevel,
+    };
+  }, [pc, activeCasters, learnedSpells, minLvl, maxLvl]);
+
   const sortedSpells = useMemo(() => {
     return [...learnedSpells].sort((a, b) => {
       if ((a.level ?? 0) !== (b.level ?? 0)) {
@@ -128,6 +180,47 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      {/* Spell Capacity & Quota Info Banner */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          background: 'rgba(200, 169, 110, 0.12)',
+          border: '0.5px solid var(--pb)',
+          borderRadius: '3px',
+          padding: '3px 6px',
+          fontSize: '8px',
+          fontFamily: 'var(--font-title)',
+          color: 'var(--ink)',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          {quotaStats.isSpontaneous ? (
+            <span>
+              ✨ <strong>Known Spells:</strong> {quotaStats.totalCurrent} / {quotaStats.totalMaxSpontaneous}
+            </span>
+          ) : quotaStats.isWizard ? (
+            <span>
+              📖 <strong>Spellbook:</strong> {quotaStats.totalCurrent} Spells recorded{' '}
+              <span style={{ fontSize: '7px', color: '#2e7d32', fontWeight: 'normal' }}>
+                (Unlimited Scribing)
+              </span>
+            </span>
+          ) : (
+            <span>
+              📜 <strong>Spellbook:</strong> {quotaStats.totalCurrent} Spells
+            </span>
+          )}
+        </div>
+
+        {quotaStats.isWizard && quotaStats.maxWizLvl >= 0 && (
+          <div style={{ fontSize: '7.5px', color: 'var(--red)', fontWeight: 'bold' }}>
+            Max Castable: Level {quotaStats.maxWizLvl}
+          </div>
+        )}
+      </div>
+
       {/* Controls: Filter Pills and Search */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
         <div style={{ display: 'flex', gap: '2px', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -147,10 +240,21 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
               cursor: 'pointer',
             }}
           >
-            All
+            All ({quotaStats.totalCurrent})
           </button>
           {levelsToRender.map((lvl) => {
-            const countAtLvl = learnedSpells.filter((s) => s.level === lvl).length;
+            const stat = quotaStats.perLevel[lvl];
+            const countAtLvl = stat?.count || 0;
+            const isSpont = stat?.isSpontaneous && stat.maxKnown !== undefined;
+            const isFull = isSpont && countAtLvl >= (stat.maxKnown || 0);
+
+            let label = `${lvl === 0 ? '0' : lvl}`;
+            if (isSpont) {
+              label += ` (${countAtLvl}/${stat.maxKnown})`;
+            } else if (countAtLvl > 0) {
+              label += ` (${countAtLvl})`;
+            }
+
             return (
               <button
                 key={lvl}
@@ -164,14 +268,22 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
                   fontFamily: 'var(--font-title)',
                   fontWeight: 'bold',
                   background: activeLevelFilter === lvl ? 'var(--red)' : 'rgba(200, 169, 110, 0.1)',
-                  border: activeLevelFilter === lvl ? '0.5px solid var(--red)' : '0.5px solid var(--pb)',
+                  border:
+                    activeLevelFilter === lvl
+                      ? '0.5px solid var(--red)'
+                      : isFull
+                      ? '0.5px solid rgba(139, 26, 26, 0.4)'
+                      : '0.5px solid var(--pb)',
                   color: activeLevelFilter === lvl ? '#ffffff' : 'var(--inkm)',
                   cursor: 'pointer',
                 }}
-                title={`${countAtLvl} learned spells at level ${lvl}`}
+                title={
+                  isSpont
+                    ? `Level ${lvl}: ${countAtLvl} of ${stat.maxKnown} known spells learned`
+                    : `Level ${lvl}: ${countAtLvl} learned spells in spellbook`
+                }
               >
-                {lvl === 0 ? '0' : lvl}
-                {countAtLvl > 0 ? ` (${countAtLvl})` : ''}
+                {label}
               </button>
             );
           })}

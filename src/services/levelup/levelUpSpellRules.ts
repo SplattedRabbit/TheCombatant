@@ -54,6 +54,18 @@ export function calculateLevelUpSpellQuota(
       targetCasterClass = links.spellwarp_sniper || '';
     } else if (typeof links[rawClassType] === 'string') {
       targetCasterClass = links[rawClassType];
+    } else {
+      targetCasterClass = '';
+    }
+
+    if (!targetCasterClass) {
+      const draftClasses = currentDraft?.draftPC?.classes || activePC?.classes || [];
+      const casters = draftClasses.filter((c: any) =>
+        ['wizard', 'sorcerer', 'cleric', 'druid', 'bard', 'duskblade', 'beguiler'].includes(c.classType)
+      );
+      if (casters.length > 0) {
+        targetCasterClass = casters[0].classType;
+      }
     }
   }
 

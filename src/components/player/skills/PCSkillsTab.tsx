@@ -13,6 +13,7 @@ import { CombatRules } from '@core/rules.js';
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
 import { calculateSkillModifier } from '@core/models/helpers/skills/CombatantSkills.js';
 import { applyFeatSkillBonuses } from '@core/models/helpers/skills/SkillFeatApplier.js';
+import { getItemModForSkill } from '@core/rules/RulesSkills.js';
 import { showRollBreakdown, showCustomAlert } from '@core/ui/components/dialogs.js';
 
 import { formatMod, getStatMod } from '../attributeHelper';
@@ -80,6 +81,11 @@ export const PCSkillsTab: React.FC = () => {
 
     if (misc !== 0) {
       lines.push(`• Misc (base value): ${formatMod(misc)}`);
+    }
+
+    const itemMod = getItemModForSkill(pc, key);
+    if (itemMod !== 0) {
+      lines.push(`• Equipment: ${formatMod(itemMod)}`);
     }
 
     const featBonus = applyFeatSkillBonuses(pc, key, skill);
@@ -155,6 +161,11 @@ export const PCSkillsTab: React.FC = () => {
     const featBonus = applyFeatSkillBonuses(pc, key, skill);
     if (featBonus > 0) {
       breakdown.push({ label: 'Feat bonuses', value: featBonus });
+    }
+
+    const itemMod = getItemModForSkill(pc, key);
+    if (itemMod !== 0) {
+      breakdown.push({ label: 'Equipment', value: itemMod });
     }
 
     const race = (pc.race || 'human').toLowerCase();

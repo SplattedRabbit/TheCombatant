@@ -21,9 +21,10 @@ interface SpellDetailsDialogProps {
   spellKey: string;
   pc: any;
   onClose: () => void;
+  onLearnSpell?: (spellKey: string, shouldLearn: boolean) => void;
 }
 
-export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, spellKey, pc, onClose }) => {
+export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, spellKey, pc, onClose, onLearnSpell }) => {
   const { showAlert } = useDialog();
   const isLearned = Array.isArray(pc.learnedSpells) && pc.learnedSpells.includes(spellKey);
   const learnEligibility = React.useMemo(() => {
@@ -32,26 +33,29 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
   }, [isLearned, spell, pc]);
 
   const handleToggleLearn = () => {
-    const activePC = CombatState.getActivePC();
-    if (!activePC) return;
-
     let shouldLearn = false;
     let idx = -1;
-    if (Array.isArray(activePC.learnedSpells)) {
-      idx = activePC.learnedSpells.indexOf(spellKey);
+    if (Array.isArray(pc.learnedSpells)) {
+      idx = pc.learnedSpells.indexOf(spellKey);
     }
 
     if (idx > -1) {
       // Unlearn
     } else {
       if (spell) {
-        const validation = CombatRules.validateSpellLearnEligibility(activePC, spell, (k: string) => findSpell(activePC, k));
+        const validation = CombatRules.validateSpellLearnEligibility(pc, spell, (k: string) => findSpell(pc, k));
         if (!validation.allowed) {
           showAlert(validation.title || 'Spell Not Eligible', validation.reason || 'You cannot learn this spell.');
           return;
         }
       }
       shouldLearn = true;
+    }
+
+    if (onLearnSpell) {
+      onLearnSpell(spellKey, shouldLearn);
+      onClose();
+      return;
     }
 
     CombatState.updatePCBatch((freshPc: any) => {

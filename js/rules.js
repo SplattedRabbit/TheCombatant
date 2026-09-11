@@ -36,6 +36,7 @@ import {
 } from './rules/RulesSkills.js';
 
 import {
+  getEffectiveCasterLevel,
   getMaxSpellLevel,
   calculateMaxSpellSlots,
   checkSpellKnownLimit,
@@ -107,6 +108,7 @@ export const CombatRules = {
   calculateSpentSkillPoints,
   getMaxSkillTricksLimit,
   checkSkillTrickPrerequisites,
+  getEffectiveCasterLevel,
   getMaxSpellLevel,
   calculateMaxSpellSlots,
   checkSpellKnownLimit,
@@ -137,6 +139,11 @@ export const CombatRules = {
 };
 
 export {
+  SORCERER_KNOWN_TABLE,
+  BARD_KNOWN_TABLE
+} from './rules/RulesData.js';
+
+export {
   calculateEquippedItemEffects,
   getItemStackingBreakdown,
   getAvailableEquipmentBuffs,
@@ -153,7 +160,10 @@ export {
   isWizardProhibitedSchool,
   getDomain,
   getSpellDomains,
-  isDomainSpellForPC
+  isDomainSpellForPC,
+  getEffectiveCasterLevel,
+  getMaxSpellLevel,
+  checkSpellKnownLimit
 } from './rules/RulesSpells.js';
 
 export {

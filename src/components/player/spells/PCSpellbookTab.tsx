@@ -314,8 +314,13 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
 
       {/* Area B: Known Spells Library */}
       <div>
-        <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '5px', fontWeight: 'bold' }}>
-          📖 Spell Library (Learned Spells)
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '5px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span>📖 Spell Library ({learnedSpells.length} Learned)</span>
+          {isWizard && (
+            <span style={{ fontSize: '7.5px', color: '#2e7d32', fontWeight: 'normal' }}>
+              (Unlimited Scribing)
+            </span>
+          )}
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '250px', overflowY: 'auto', paddingRight: '2px' }}>
           {learnedSpells.length === 0 ? (

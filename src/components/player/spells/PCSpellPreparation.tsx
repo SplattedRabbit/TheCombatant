@@ -247,7 +247,7 @@ export const PCSpellPreparation: React.FC<PCSpellPreparationProps> = ({ pc }) =>
           const preps = (pc.preparedSpells || []).map((p: any) => {
             const spell = findSpell(pc, p.spellKey);
             if (!spell) return null;
-            const adjustedLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, p.metamagic);
+            const adjustedLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, p.metamagic, pc);
             return { ...p, spell, adjustedLevel };
           }).filter((p: any) => p && p.adjustedLevel === lvl);
 

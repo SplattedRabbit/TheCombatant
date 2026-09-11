@@ -15,7 +15,10 @@ import {
   getAllCompendiumSpells,
   validateSpellLearnEligibility,
   getSpellDomains,
-  isDomainSpellForPC
+  isDomainSpellForPC,
+  SORCERER_KNOWN_TABLE,
+  BARD_KNOWN_TABLE,
+  getEffectiveCasterLevel,
 } from '@core/rules.js';
 import { showCustomConfirm, showCustomAlert, showSpellDetailsDialog, showSpellCreatorWizard } from '@core/ui/components/dialogs.js';
 import { findSpell } from './PCSpellbookTab';
@@ -131,6 +134,50 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
 
   const learnedSpellsSet = new Set(Array.isArray(customLearnedSpells || pc.learnedSpells) ? (customLearnedSpells || pc.learnedSpells) : []);
 
+  const quotaInfo = useMemo(() => {
+    if (!isCaster || levelFilter === 'all') return null;
+    const targetLvl = Number(levelFilter);
+    if (isNaN(targetLvl)) return null;
+
+    const isSorc = pc.classes?.some((c: any) => c.classType === 'sorcerer');
+    const isBard = pc.classes?.some((c: any) => c.classType === 'bard');
+    const isWiz = pc.classes?.some((c: any) => c.classType === 'wizard');
+
+    const learnedKeys: string[] = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
+    const countAtLvl = learnedKeys
+      .map((k) => findSpell(pc, k))
+      .filter((s): s is NonNullable<typeof s> => s !== null && s !== undefined && s.level === targetLvl).length;
+
+    if (isSorc || isBard) {
+      let maxKnown = 0;
+      if (isSorc) {
+        const cl = getEffectiveCasterLevel(pc, 'sorcerer');
+        const row = SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, cl))] || [];
+        maxKnown += row[targetLvl] || 0;
+      }
+      if (isBard) {
+        const cl = getEffectiveCasterLevel(pc, 'bard');
+        const row = BARD_KNOWN_TABLE[Math.max(1, Math.min(20, cl))] || [];
+        maxKnown += row[targetLvl] || 0;
+      }
+      return {
+        type: 'spontaneous' as const,
+        count: countAtLvl,
+        maxKnown,
+        full: countAtLvl >= maxKnown,
+      };
+    }
+
+    if (isWiz) {
+      return {
+        type: 'wizard' as const,
+        count: countAtLvl,
+      };
+    }
+
+    return null;
+  }, [pc, isCaster, levelFilter]);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
       <div style={{ display: 'flex', gap: '3px', alignItems: 'center', marginBottom: '4px' }}>
@@ -175,7 +222,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
       </div>
 
       {isCaster && (
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '6px', padding: '0 2px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px', padding: '0 2px' }}>
           <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '8px', color: 'var(--inkl)', cursor: 'pointer', userSelect: 'none' }}>
             <input
               type="checkbox"
@@ -186,6 +233,32 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
             />
             <span>Only show spells matching my class &amp; level</span>
           </label>
+
+          {quotaInfo && (
+            <div
+              style={{
+                fontSize: '7.5px',
+                padding: '1px 5px',
+                borderRadius: '2px',
+                background: quotaInfo.type === 'spontaneous' && quotaInfo.full ? 'rgba(139, 26, 26, 0.12)' : 'rgba(200, 169, 110, 0.15)',
+                border: '0.5px solid var(--pb)',
+                color: quotaInfo.type === 'spontaneous' && quotaInfo.full ? 'var(--red)' : 'var(--ink)',
+                fontFamily: 'var(--font-title)',
+                fontWeight: 'bold',
+              }}
+            >
+              {quotaInfo.type === 'spontaneous' ? (
+                <span>
+                  Lvl {levelFilter}: {quotaInfo.count} / {quotaInfo.maxKnown} Known
+                  {quotaInfo.full ? ' (Full)' : ''}
+                </span>
+              ) : (
+                <span>
+                  Lvl {levelFilter}: {quotaInfo.count} in Book (Unlimited)
+                </span>
+              )}
+            </div>
+          )}
         </div>
       )}
 

@@ -12,6 +12,7 @@ import { getState, getActivePC, StateEvents } from './state-core.js';
 import { saveToStorage } from './StorageManager.js';
 import { createCombatant, createConcentration, Stat } from '../models/model-core.js';
 import { tickConditionTimers } from './ConditionManager.js';
+import { recalculatePCStats } from './pc/PCGeneral.js';
 
 // Re-export modular functions for 100% backward-compatibility
 export { addConcentration, removeConcentration, updateConcentrationField } from './ConcentrationManager.js';
@@ -208,6 +209,8 @@ export function importEncounterState(loadedState, isNetworkSync = false) {
           if (typeof currentPC.rebuildStatModifiers === 'function') {
             currentPC.rebuildStatModifiers();
           }
+          
+          recalculatePCStats(currentPC);
           saveToStorage();
           StateEvents.emit('pc_changed', currentPC, { forceFullSync: true });
           StateEvents.emit('state_changed', s);
@@ -216,7 +219,13 @@ export function importEncounterState(loadedState, isNetworkSync = false) {
     }
   } else {
     s.meta = { ...s.meta, ...(loadedState.meta || {}) };
-    s.combatants = (loadedState.combatants || []).map(c => createCombatant(c));
+    s.combatants = (loadedState.combatants || []).map(c => {
+      const comb = createCombatant(c);
+      if (comb.type === 'p') {
+        recalculatePCStats(comb);
+      }
+      return comb;
+    });
     s.turn = typeof loadedState.turn === 'number' ? loadedState.turn : 0;
     s.round = typeof loadedState.round === 'number' ? loadedState.round : 1;
     s.concentrations = (loadedState.concentrations || []).map(c => createConcentration(c));
@@ -232,11 +241,16 @@ export function mergeIncomingPC(pcData) {
   const incoming = { ...pcData, type: 'p' };
   
   const idx = s.combatants.findIndex(x => x.id === incoming.id || (x.type === 'p' && x.name && x.name === incoming.name));
+  let createdPC;
   if (idx !== -1) {
     const existingId = s.combatants[idx].id;
-    s.combatants[idx] = createCombatant({ ...incoming, id: existingId || incoming.id });
+    createdPC = createCombatant({ ...incoming, id: existingId || incoming.id });
+    recalculatePCStats(createdPC);
+    s.combatants[idx] = createdPC;
   } else {
-    s.combatants.push(createCombatant(incoming));
+    createdPC = createCombatant(incoming);
+    recalculatePCStats(createdPC);
+    s.combatants.push(createdPC);
   }
 
   // Also, update the companion and/or familiar if they exist in state.combatants!

@@ -58,7 +58,19 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
     return acc + (feat ? feat.cost : 0);
   }, 0);
 
-  const finalLevel = spell.level + metaCost;
+  let baseLevel = spell.level;
+  if (baseLevel === undefined && Array.isArray(spell.classLevels)) {
+    const pcClassTypes = Array.isArray(pc.classes) ? pc.classes.map((c: any) => c.classType) : [];
+    const match = spell.classLevels.find((cl: any) => pcClassTypes.includes(cl.class));
+    if (match) {
+      baseLevel = match.level;
+    } else if (spell.classLevels.length > 0) {
+      baseLevel = spell.classLevels[0].level;
+    }
+  }
+  if (baseLevel === undefined) baseLevel = 0;
+
+  const finalLevel = baseLevel + metaCost;
   const isTooHigh = finalLevel > 9;
 
   // Domain slot checks
@@ -84,12 +96,25 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
 
     const performPrep = () => {
       CombatState.updatePCBatch((freshPc: any) => {
-        freshPc.prepareSpell(spellKey, selectedMeta, isSpec, isDomain);
+        if (!Array.isArray(freshPc.preparedSpells)) {
+          freshPc.preparedSpells = [];
+        }
+        freshPc.preparedSpells.push({
+          id: `prep_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+          spellKey: spellKey,
+          preparedLevel: finalLevel,
+          metamagic: selectedMeta,
+          isSpecialist: isSpec,
+          isDomain: isDomain,
+          isSpecialistSlot: isSpec,
+          isDomainSlot: isDomain,
+          isUsed: false
+        });
       });
       onConfirm();
     };
 
-    const maxSlots = pc.spellSlots[finalLevel]?.max || 0;
+    const maxSlots = pc.spellSlots?.[finalLevel]?.max || 0;
     const currentPrepsCount = SpellSlotCalculator.countPreparedSpellsAtLevel(pc, finalLevel);
 
     if (maxSlots === 0) {
@@ -147,7 +172,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
           {spell.name || spell.nameEn} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span>
         </div>
         <div style={{ fontSize: '8px', color: 'var(--inkl)', textAlign: 'center', marginBottom: '10px' }}>
-          Base Level: Level {spell.level}
+          Base Level: Level {baseLevel}
         </div>
 
         {learnedFeats.length === 0 ? (

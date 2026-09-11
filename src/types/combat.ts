@@ -316,6 +316,8 @@ export interface Combatant {
   spellSlots?: SpellSlots;
   preparedSpells?: PreparedSpell[];
   knownSpells?: any[];
+  learnedSpells?: string[];
+  customSpells?: any[];
   dailyAbilities?: DailyAbility[];
   deity?: string;
   clericDomains?: string[];

@@ -10,6 +10,12 @@ import React, { useState, useMemo } from 'react';
 import { GrimoireTemplateMenu } from './grimoire/GrimoireTemplateMenu';
 import { GrimoireLevelGroup } from './grimoire/GrimoireLevelGroup';
 import { getAblMod } from '../attributeHelper';
+import { findSpell } from './PCSpellbookTab';
+import {
+  SORCERER_KNOWN_TABLE,
+  BARD_KNOWN_TABLE,
+  getEffectiveCasterLevel,
+} from '@core/rules.js';
 
 interface PCCompactGrimoireViewProps {
   pc: any;
@@ -113,6 +119,40 @@ export const PCCompactGrimoireView: React.FC<PCCompactGrimoireViewProps> = ({
     return allLevels.filter((lvl) => lvl === activeLevelFilter);
   }, [activeLevelFilter, allLevels]);
 
+  const levelStats = useMemo(() => {
+    const isSorc = activeCasters.some((c: any) => c.classType === 'sorcerer');
+    const isBard = activeCasters.some((c: any) => c.classType === 'bard');
+    const sorcCL = isSorc ? getEffectiveCasterLevel(pc, 'sorcerer') : 0;
+    const bardCL = isBard ? getEffectiveCasterLevel(pc, 'bard') : 0;
+    const sorcRow = isSorc ? (SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, sorcCL))] || []) : [];
+    const bardRow = isBard ? (BARD_KNOWN_TABLE[Math.max(1, Math.min(20, bardCL))] || []) : [];
+
+    const learnedKeys: string[] = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
+    const learnedSpells = learnedKeys
+      .map((k) => findSpell(pc, k))
+      .filter((s): s is NonNullable<typeof s> => s !== null && s !== undefined);
+
+    const stats: Record<number, { count: number; maxKnown?: number; isSpontaneous: boolean }> = {};
+    for (let lvl = minLvl; lvl <= maxLvl; lvl++) {
+      const countAtLvl = learnedSpells.filter((s) => s.level === lvl).length;
+      let maxKnown: number | undefined = undefined;
+      let isSpontaneous = false;
+      if (isSorc && sorcRow[lvl] !== undefined) {
+        maxKnown = (maxKnown || 0) + sorcRow[lvl];
+        isSpontaneous = true;
+      }
+      if (isBard && bardRow[lvl] !== undefined) {
+        maxKnown = (maxKnown || 0) + bardRow[lvl];
+        isSpontaneous = true;
+      }
+      stats[lvl] = { count: countAtLvl, maxKnown, isSpontaneous };
+    }
+    return {
+      totalCount: learnedSpells.length,
+      stats,
+    };
+  }, [pc, activeCasters, minLvl, maxLvl]);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%', minWidth: 0 }}>
       {/* 1. Sub-Bar: Quick Level Filters, Search & Templates */}
@@ -143,29 +183,45 @@ export const PCCompactGrimoireView: React.FC<PCCompactGrimoireViewProps> = ({
               cursor: 'pointer',
             }}
           >
-            All
+            All ({levelStats.totalCount})
           </button>
-          {allLevels.map((lvl) => (
-            <button
-              key={lvl}
-              type="button"
-              onClick={() => setActiveLevelFilter(lvl)}
-              style={{
-                fontSize: '7.5px',
-                padding: '1px 4px',
-                height: '17px',
-                fontFamily: 'var(--font-title)',
-                fontWeight: 'bold',
-                borderRadius: '2px',
-                background: activeLevelFilter === lvl ? 'var(--red)' : 'rgba(200, 169, 110, 0.1)',
-                border: activeLevelFilter === lvl ? '0.5px solid var(--red)' : '0.5px solid var(--pb)',
-                color: activeLevelFilter === lvl ? '#ffffff' : 'var(--inkm)',
-                cursor: 'pointer',
-              }}
-            >
-              {lvl === 0 ? '0' : lvl}
-            </button>
-          ))}
+          {allLevels.map((lvl) => {
+            const st = levelStats.stats[lvl];
+            const countAtLvl = st?.count || 0;
+            let label = `${lvl === 0 ? '0' : lvl}`;
+            if (st?.isSpontaneous && st.maxKnown !== undefined) {
+              label += ` (${countAtLvl}/${st.maxKnown})`;
+            } else if (countAtLvl > 0) {
+              label += ` (${countAtLvl})`;
+            }
+
+            return (
+              <button
+                key={lvl}
+                type="button"
+                onClick={() => setActiveLevelFilter(lvl)}
+                style={{
+                  fontSize: '7.5px',
+                  padding: '1px 4px',
+                  height: '17px',
+                  fontFamily: 'var(--font-title)',
+                  fontWeight: 'bold',
+                  borderRadius: '2px',
+                  background: activeLevelFilter === lvl ? 'var(--red)' : 'rgba(200, 169, 110, 0.1)',
+                  border: activeLevelFilter === lvl ? '0.5px solid var(--red)' : '0.5px solid var(--pb)',
+                  color: activeLevelFilter === lvl ? '#ffffff' : 'var(--inkm)',
+                  cursor: 'pointer',
+                }}
+                title={
+                  st?.isSpontaneous && st.maxKnown !== undefined
+                    ? `Level ${lvl}: ${countAtLvl} of ${st.maxKnown} known spells`
+                    : `Level ${lvl}: ${countAtLvl} spells in spellbook`
+                }
+              >
+                {label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Action Controls: Search & Templates */}

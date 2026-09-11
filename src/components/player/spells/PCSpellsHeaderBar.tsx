@@ -6,6 +6,12 @@
 import React, { useMemo } from 'react';
 import { getSchoolLabel } from '@core/spells.js';
 import { getArcaneSpellFailureBreakdown } from './spellFailureHelper';
+import {
+  SORCERER_KNOWN_TABLE,
+  BARD_KNOWN_TABLE,
+  getEffectiveCasterLevel,
+  getMaxSpellLevel,
+} from '@core/rules.js';
 
 interface PCSpellsHeaderBarProps {
   pc: any;
@@ -24,6 +30,38 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
   const asfBreakdown = useMemo(() => {
     return getArcaneSpellFailureBreakdown(pc);
   }, [pc]);
+
+  // Quota and capacity calculations
+  const quotaStats = useMemo(() => {
+    const isSorc = hasClasses && pc.classes.some((c: any) => c.classType === 'sorcerer');
+    const isBard = hasClasses && pc.classes.some((c: any) => c.classType === 'bard');
+    const isWiz = hasClasses && pc.classes.some((c: any) => c.classType === 'wizard');
+
+    const learnedKeys: string[] = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
+    const totalLearned = learnedKeys.length;
+
+    const sorcCL = isSorc ? getEffectiveCasterLevel(pc, 'sorcerer') : 0;
+    const bardCL = isBard ? getEffectiveCasterLevel(pc, 'bard') : 0;
+    const wizCL = isWiz ? getEffectiveCasterLevel(pc, 'wizard') : 0;
+
+    const sorcRow = isSorc ? (SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, sorcCL))] || []) : [];
+    const bardRow = isBard ? (BARD_KNOWN_TABLE[Math.max(1, Math.min(20, bardCL))] || []) : [];
+
+    let totalMaxSpontaneous = 0;
+    for (let lvl = 0; lvl <= 9; lvl++) {
+      if (isSorc && sorcRow[lvl] !== undefined) totalMaxSpontaneous += sorcRow[lvl];
+      if (isBard && bardRow[lvl] !== undefined) totalMaxSpontaneous += bardRow[lvl];
+    }
+
+    return {
+      isWizard: isWiz,
+      isSpontaneous: isSorc || isBard,
+      wizCL,
+      maxWizLvl: isWiz ? getMaxSpellLevel('wizard', wizCL) : -1,
+      totalLearned,
+      totalMaxSpontaneous,
+    };
+  }, [pc, hasClasses]);
 
   // Calculate total slot usage across all levels
   const slotStats = useMemo(() => {
@@ -177,6 +215,47 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
               </span>
             )}
           </div>
+        )}
+      </div>
+
+      {/* Center: Learned / Known Spells Quota Badge */}
+      <div
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '5px',
+          padding: '2px 8px',
+          background: 'rgba(200, 169, 110, 0.12)',
+          border: '0.5px solid var(--pb)',
+          borderRadius: '3px',
+          fontSize: '9px',
+          fontFamily: 'var(--font-title)',
+          color: 'var(--ink)',
+        }}
+      >
+        {quotaStats.isSpontaneous ? (
+          <span>
+            ✨ <strong>Known Spells:</strong>{' '}
+            <strong style={{ color: 'var(--red)' }}>{quotaStats.totalLearned}</strong> / {quotaStats.totalMaxSpontaneous}
+          </span>
+        ) : quotaStats.isWizard ? (
+          <span>
+            📖 <strong>Spellbook:</strong>{' '}
+            <strong style={{ color: 'var(--red)' }}>{quotaStats.totalLearned}</strong> Spells recorded{' '}
+            <span style={{ fontSize: '7.5px', color: '#2e7d32', fontWeight: 'normal' }}>
+              (Unlimited Scribing)
+            </span>
+            {quotaStats.maxWizLvl >= 0 && (
+              <span style={{ marginLeft: '6px', color: 'var(--inkl)', fontSize: '7.5px' }}>
+                • Max Castable: <strong>Lvl {quotaStats.maxWizLvl}</strong>
+              </span>
+            )}
+          </span>
+        ) : (
+          <span>
+            📜 <strong>Spellbook:</strong>{' '}
+            <strong style={{ color: 'var(--red)' }}>{quotaStats.totalLearned}</strong> Spells
+          </span>
         )}
       </div>
 

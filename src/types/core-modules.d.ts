@@ -130,7 +130,7 @@ declare module '@core/rules/SpellSlotCalculator.js' {
     calculateSpellSlots: (pc: any) => Record<number, number>;
     countPreparedDomainSpellsAtLevel: (pc: any, level: number) => number;
     countPreparedSpellsAtLevel: (pc: any, level: number) => number;
-    getAdjustedSpellLevel: (spell: any, metamagic: any[]) => number;
+    getAdjustedSpellLevel: (spell: any, metamagic: any[], pc?: any) => number;
     [key: string]: any;
   };
 }

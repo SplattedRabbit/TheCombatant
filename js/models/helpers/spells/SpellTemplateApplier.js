@@ -37,7 +37,7 @@ export function applySpellTemplate(pc, name) {
       unplaced.push(item.spellKey);
       return;
     }
-    const adjustedLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, item.metamagic);
+    const adjustedLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, item.metamagic, pc);
     if (adjustedLevel >= 0 && adjustedLevel <= 9) {
       templateSpellsByLevel[adjustedLevel].push({
         spellKey: item.spellKey,

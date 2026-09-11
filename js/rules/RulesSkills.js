@@ -66,6 +66,31 @@ export function calculateTotalSkillPoints(pc) {
   return total;
 }
 
+export function getItemModForSkill(pc, skillKey) {
+  if (!pc || !pc.equipment) return 0;
+  let totalMod = 0;
+  
+  const checkModifiers = (modifiers) => {
+    if (!Array.isArray(modifiers)) return;
+    modifiers.forEach(mod => {
+      if (mod.type === 'skill' && mod.target === skillKey && typeof mod.value === 'number') {
+        totalMod += mod.value;
+      }
+    });
+  };
+
+  if (Array.isArray(pc.equipment.worn)) {
+    pc.equipment.worn.forEach(item => {
+      if (item && item.modifiers) checkModifiers(item.modifiers);
+    });
+  }
+  
+  if (pc.equipment.mainHand && pc.equipment.mainHand.modifiers) checkModifiers(pc.equipment.mainHand.modifiers);
+  if (pc.equipment.offHand && pc.equipment.offHand.modifiers) checkModifiers(pc.equipment.offHand.modifiers);
+  
+  return totalMod;
+}
+
 export function calculateSpentSkillPoints(pc) {
   if (!pc) return 0;
   let spent = 0;

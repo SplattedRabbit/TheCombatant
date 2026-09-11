@@ -24,9 +24,21 @@ export const SpellSlotCalculator = {
     return metamagicList.reduce((sum, featId) => sum + this.getMetamagicCost(featId), 0);
   },
 
-  getAdjustedSpellLevel(spell, metamagicList) {
+  getAdjustedSpellLevel(spell, metamagicList, pc) {
     if (!spell) return 0;
-    return spell.level + this.getMetamagicAdjustment(metamagicList);
+    let baseLevel = spell.level;
+    if (baseLevel === undefined && Array.isArray(spell.classLevels)) {
+      if (pc && Array.isArray(pc.classes)) {
+        const pcClassTypes = pc.classes.map(c => c.classType);
+        const match = spell.classLevels.find(cl => pcClassTypes.includes(cl.class));
+        if (match) baseLevel = match.level;
+      }
+      if (baseLevel === undefined && spell.classLevels.length > 0) {
+        baseLevel = spell.classLevels[0].level;
+      }
+    }
+    if (baseLevel === undefined) baseLevel = 0;
+    return baseLevel + this.getMetamagicAdjustment(metamagicList);
   },
 
   countPreparedSpellsAtLevel(pc, level) {
@@ -34,7 +46,7 @@ export const SpellSlotCalculator = {
     return pc.preparedSpells.filter(p => {
       const sp = pc.findSpell ? pc.findSpell(p.spellKey) : null;
       if (!sp) return false;
-      const adjLevel = this.getAdjustedSpellLevel(sp, p.metamagic);
+      const adjLevel = this.getAdjustedSpellLevel(sp, p.metamagic, pc);
       return adjLevel === level;
     }).length;
   },
@@ -45,7 +57,7 @@ export const SpellSlotCalculator = {
       if (!p.isDomain) return false;
       const sp = pc.findSpell ? pc.findSpell(p.spellKey) : null;
       if (!sp) return false;
-      const adjLevel = this.getAdjustedSpellLevel(sp, p.metamagic);
+      const adjLevel = this.getAdjustedSpellLevel(sp, p.metamagic, pc);
       return adjLevel === level;
     }).length;
   }
