@@ -5,6 +5,7 @@
  */
 
 import type { UnifiedFeature } from '../types.ts';
+import { getAblMod } from '../../../attributeHelper';
 
 export function getCAClassFeatures(pc: any, classMap: Map<string, number>): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];
@@ -15,7 +16,7 @@ export function getCAClassFeatures(pc: any, classMap: Map<string, number>): Unif
   if (classMap.has('ninja')) {
     const nLvl = classMap.get('ninja')!;
     const wisScore = typeof pc.wis?.getValue === 'function' ? pc.wis.getValue() : (pc.wis || 10);
-    const wisMod = Math.max(0, Math.floor((wisScore - 10) / 2));
+    const wisMod = Math.max(0, getAblMod(wisScore));
     const kiUses = Math.max(1, Math.floor(nLvl / 2) + wisMod);
     const ssDice = Math.floor((nLvl + 1) / 2);
 

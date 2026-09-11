@@ -9,6 +9,7 @@
 import React, { useState, useMemo } from 'react';
 import { GrimoireTemplateMenu } from './grimoire/GrimoireTemplateMenu';
 import { GrimoireLevelGroup } from './grimoire/GrimoireLevelGroup';
+import { getAblMod } from '../attributeHelper';
 
 interface PCCompactGrimoireViewProps {
   pc: any;
@@ -90,9 +91,9 @@ export const PCCompactGrimoireView: React.FC<PCCompactGrimoireViewProps> = ({
     const wisScore = typeof pc.wis?.getValue === 'function' ? pc.wis.getValue() : (pc.wis || 10);
     const chaScore = typeof pc.cha?.getValue === 'function' ? pc.cha.getValue() : (pc.cha || 10);
 
-    const intMod = Math.floor((intScore - 10) / 2);
-    const wisMod = Math.floor((wisScore - 10) / 2);
-    const chaMod = Math.floor((chaScore - 10) / 2);
+    const intMod = getAblMod(intScore);
+    const wisMod = getAblMod(wisScore);
+    const chaMod = getAblMod(chaScore);
 
     if (activeCasters.some((c: any) => ['wizard', 'duskblade', 'beguiler', 'assassin'].includes(c.classType))) {
       return intMod;

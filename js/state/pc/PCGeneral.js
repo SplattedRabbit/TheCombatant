@@ -10,6 +10,7 @@ import { Stat, createCombatant } from '../../models/model-core.js';
 import { BABCalculator } from '../../rules/BABCalculator.js';
 import { SaveCalculator } from '../../rules/SaveCalculator.js';
 import { SpellSlotCalculator } from '../../rules/SpellSlotCalculator.js';
+import { getAblMod } from '../../rules/RulesMath.js';
 
 // Import Class Rules
 import { BarbarianRules } from '../../rules/classes/BarbarianRules.js';
@@ -157,7 +158,7 @@ export function recalculatePCStats(pc) {
 
   recalculateDailyAbilities(pc);
 
-  const dexMod = pc.dex instanceof Stat ? pc.dex.mod : Math.floor(((parseInt(pc.dex) || 10) - 10) / 2);
+  const dexMod = pc.dex instanceof Stat ? pc.dex.mod : getAblMod(pc.dex);
   const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some(f => f.id === 'improved_initiative');
   const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
 

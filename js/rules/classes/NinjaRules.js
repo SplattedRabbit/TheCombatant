@@ -5,6 +5,8 @@
  * @exports   NinjaRules
  */
 
+import { getAblMod } from '../RulesMath.js';
+
 export const NinjaRules = {
   cleanup(pc) {
     if (Array.isArray(pc.dailyAbilities)) {
@@ -14,7 +16,7 @@ export const NinjaRules = {
 
   recalculateDailyAbilities(pc, level) {
     const wisScore = pc.wis && typeof pc.wis.getValue === 'function' ? pc.wis.getValue() : (pc.wis || 10);
-    const wisMod = Math.max(0, Math.floor((wisScore - 10) / 2));
+    const wisMod = Math.max(0, getAblMod(wisScore));
     const maxKi = Math.max(1, Math.floor(level / 2)) + wisMod;
 
     let kiAbility = pc.dailyAbilities.find(a => a.name === 'Ki Power');

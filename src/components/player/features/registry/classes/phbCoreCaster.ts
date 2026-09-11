@@ -6,6 +6,7 @@
 
 import type { UnifiedFeature } from '../types.ts';
 import { DOMAINS_REGISTRY } from '../../../../../../js/data/domains-data.js';
+import { getAblMod } from '../../../attributeHelper';
 
 export function getPHBCoreCasterFeatures(pc: any, classMap: Map<string, number>): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];
@@ -41,7 +42,7 @@ export function getPHBCoreCasterFeatures(pc: any, classMap: Map<string, number>)
 
     // 2. Bardic Knowledge
     const intScore = typeof pc.int?.getValue === 'function' ? pc.int.getValue() : (pc.int || 10);
-    const intMod = Math.floor((intScore - 10) / 2);
+    const intMod = getAblMod(intScore);
     features.push({
       id: 'bard_bardic_knowledge',
       name: `Bardic Knowledge (+${bLvl + intMod})`,
@@ -229,7 +230,7 @@ At 3rd level, a druid leaves no trail in natural surroundings and cannot be trac
 
     if (isMetamagicSpecialist) {
       const intScore = typeof pc.int?.getValue === 'function' ? pc.int.getValue() : (pc.int || 10);
-      const intMod = Math.max(1, 3 + Math.floor((intScore - 10) / 2));
+      const intMod = Math.max(1, 3 + getAblMod(intScore));
       features.push({
         id: 'sorcerer_metamagic_specialist',
         name: `Metamagic Specialist (${intMod}/day • Replaces Familiar)`,
@@ -341,7 +342,7 @@ A wizard may choose to specialize in one school to gain +1 bonus spell slot per 
     // 5. Immediate Magic ACF
     if (isImmediateMagic) {
       const intScore = typeof pc.int?.getValue === 'function' ? pc.int.getValue() : (pc.int || 10);
-      const intMod = Math.max(1, Math.floor((intScore - 10) / 2));
+      const intMod = Math.max(1, getAblMod(intScore));
       features.push({
         id: 'wizard_immediate_magic',
         name: `Immediate Magic (${intMod}/day • Replaces Familiar)`,

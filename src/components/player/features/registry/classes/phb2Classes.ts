@@ -5,6 +5,7 @@
  */
 
 import type { UnifiedFeature } from '../types.ts';
+import { getAblMod } from '../../../attributeHelper';
 
 export function getPHB2ClassFeatures(pc: any, classMap: Map<string, number>): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];
@@ -139,7 +140,7 @@ At 8th level, you also gain a +2 bonus on caster level checks to overcome the ta
   if (classMap.has('knight')) {
     const kLvl = classMap.get('knight')!;
     const chaScore = typeof pc.cha?.getValue === 'function' ? pc.cha.getValue() : (pc.cha || 10);
-    const chaMod = Math.max(0, Math.floor((chaScore - 10) / 2));
+    const chaMod = Math.max(0, getAblMod(chaScore));
     const challengeUses = Math.max(1, Math.floor(kLvl / 2) + chaMod);
 
     // 1. Knight's Challenge
@@ -235,7 +236,7 @@ ${dsLvl >= 13 ? 'At 13th level, as a swift action you can share this adaptation 
     if (dsLvl >= 4) {
       const breathDice = `${Math.floor(dsLvl / 2)}d6`;
       const conScore = typeof pc.con?.getValue === 'function' ? pc.con.getValue() : (pc.con || 10);
-      const conMod = Math.floor((conScore - 10) / 2);
+      const conMod = getAblMod(conScore);
       const breathDc = 10 + Math.floor(dsLvl / 2) + conMod;
 
       features.push({

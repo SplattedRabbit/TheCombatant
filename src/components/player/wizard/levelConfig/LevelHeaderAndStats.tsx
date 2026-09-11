@@ -7,6 +7,7 @@ import React from 'react';
 import { PrestigeSpellLinkSection } from './PrestigeSpellLinkSection';
 import { ClassSelector } from './ClassSelector';
 import { CLASS_KEY_ATTRIBUTES } from '../constants';
+import { getAblMod } from '../../attributeHelper';
 
 const PROHIBITED_SCHOOLS = [
   { value: 'abj', label: 'Abjuration' },
@@ -286,7 +287,7 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
               const score = typeof rawStat === 'number'
                 ? rawStat
                 : (typeof rawStat?.getValue === 'function' ? rawStat.getValue() : (rawStat?.base ?? 10));
-              const mod = Math.floor((score - 10) / 2);
+              const mod = getAblMod(score);
               const sign = mod >= 0 ? '+' : '';
               return (
                 <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '1px 4px' }}>

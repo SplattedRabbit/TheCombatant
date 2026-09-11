@@ -3,7 +3,10 @@
  * @summary   Racial ability score modifier definitions and ability score modifier calculations for the wizard.
  * @feature   player/wizard
  * @exports   getRacialModifier, getMod, getRacialModifierString
+ * @depends   attributeHelper.ts (kanonische getAblMod-Formel — getMod ist hier nur ein lokal etablierter Alias)
  */
+
+import { getAblMod } from '../attributeHelper';
 
 export const getRacialModifier = (race: string, stat: string): number => {
   if (race === 'elf') {
@@ -39,11 +42,7 @@ export const getRacialModifier = (race: string, stat: string): number => {
   return 0;
 };
 
-export const getMod = (score: number): number => {
-  return score >= 10
-    ? Math.floor((score - 10) / 2)
-    : (score === 9 || score === 8 ? -1 : (score === 7 || score === 6 ? -2 : (score === 5 || score === 4 ? -4 : -5)));
-};
+export const getMod = getAblMod;
 
 export const getRacialModifierString = (race: string, stat: string): string => {
   const mod = getRacialModifier(race, stat);

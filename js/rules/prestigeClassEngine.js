@@ -7,17 +7,16 @@
  * @exports   getPrestigeClassFeatures, getAblMod, getSneakAttackDiceFromPrestigeClasses
  * @reads     pc.classes, pc.prestigeSpellLinks, Ability-Stats (z.B. pc.int)
  * @stateOps  Keine
- * @depends   prestigeClasses-data.js
+ * @depends   prestigeClasses-data.js, RulesMath.js (kanonische getAblMod-Formel)
  * @notHere   Voraussetzungsprüfung -> classValidation.js | Zauberslot-Berechnung -> RulesSpells.js |
- *            Rogue-Basisklassen-Sneak-Attack -> RogueRules.js (RogueHelper.js summiert beide)
+ *            Rogue-Basisklassen-Sneak-Attack -> RogueRules.js (RogueHelper.js summiert beide) |
+ *            Kanonische Attributmodifikator-Formel -> RulesMath.js (hier nur re-exportiert, für Abwärtskompatibilität bestehender Importe)
  */
 
 import { PRESTIGE_CLASSES_REGISTRY } from '../data/prestigeClasses-data.js';
+import { getAblMod } from './RulesMath.js';
 
-export function getAblMod(stat) {
-  const score = typeof stat?.getValue === 'function' ? stat.getValue() : (stat ?? 10);
-  return Math.floor((score - 10) / 2);
-}
+export { getAblMod };
 
 function computeFeature(feature, ctx) {
   switch (feature.type) {

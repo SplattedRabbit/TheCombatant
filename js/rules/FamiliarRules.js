@@ -4,9 +4,11 @@
  * @exports   FamiliarRules
  * @reads     pc.classes, pc.level, pc.classType
  * @stateOps  keine
- * @depends   keine
+ * @depends   RulesMath.js (kanonische getAblMod-Formel)
  * @notHere   UI-Rendering -> src/components/player/companion/FamiliarSheet.tsx
  */
+
+import { getAblMod } from './RulesMath.js';
 
 export const FamiliarRules = {
   /**
@@ -53,8 +55,8 @@ export const FamiliarRules = {
    * Berechnet die Angriffe des Vertrauten basierend auf dem Meister-BAB und eigenen Attributen.
    */
   getFamiliarAttacks(type, masterBab, str, dex) {
-    const strMod = Math.floor((str - 10) / 2);
-    const dexMod = Math.floor((dex - 10) / 2);
+    const strMod = getAblMod(str);
+    const dexMod = getAblMod(dex);
     const useMod = Math.max(strMod, dexMod);
     
     // Size modifiers: Diminutive = +4, Tiny = +2

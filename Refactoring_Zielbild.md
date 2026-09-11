@@ -517,12 +517,12 @@ Worauf achten:
 
 ---
 
-## WP8 (⬜): js/-Layer: Duplizierte Berechnungslogik konsolidieren
+## WP8 (🟨 In Arbeit — Teil A abgeschlossen, Teil B offen): js/-Layer: Duplizierte Berechnungslogik konsolidieren
 
 ### Ziel
 Mehrfach implementierte RAW-Berechnungslogik (Attributsmodifikator-Formel, Bonus-Stacking) auf eine kanonische Implementierung konsolidieren.
 
-### Teil A: Attributsmodifikator-Formel
+### Teil A (✅): Attributsmodifikator-Formel
 
 #### Ausgangslage
 Die Standardformel `floor((score-10)/2)` ist mindestens 19-fach im Code dupliziert. Eine kanonische Implementierung `getAblMod()` existiert in `js/rules/prestigeClassEngine.js` (Zeilen ~17–19). **Wichtige Abweichung:** `js/models/CombatantModifiers.js` (Zeile ~45) enthält eine DIVERGENTE Formel mit Sonderbehandlung für Werte unter 10. Es ist bei der Analyse ungeklärt geblieben, welche Formel RAW-korrekt (D&D 3.5e Regelwerk-konform) ist.
@@ -575,7 +575,15 @@ Worauf achten:
   Vermutungen.
 ```
 
-### Teil B: RAW-Stacking-Logik
+#### Ergebnis (2026-09-11)
+- **RAW-Klärung:** Per `scratch/search_phb.js` gegen `data/phb/phb_ch1_abilities.txt` ("Average Ability Scores"-Tabellen, Kapitel 1) verifiziert: Die universelle Formel `floor((score-10)/2)` ist für alle Scores korrekt (1→-5, 2→-4, 3→-4, 4/5→-3, 6/7→-2, 8/9→-1), **kein** Sonderfall für Werte unter 10 nötig.
+- **CombatantModifiers.js-Divergenz aufgelöst:** War tatsächlich ein Bug, kein bewusster Sonderfall — und war bereits in `docs/CODE_ANALYSIS.md` als FINDING-01 dokumentiert (dort aber nur für `Combatant.js` als behoben markiert; `CombatantModifiers.js` hatte exakt dieselbe fehlerhafte Ternary-Kaskade unverändert behalten). Zwei weitere, bislang unentdeckte Stellen mit derselben fehlerhaften Kaskade gefunden und gefixt: `js/rules/RulesSkills.js` und `src/components/player/wizard/helpers.racial.ts`.
+- **Verhaltensänderung:** Ja, aber nur für Attributwerte 2–5 (in beiden Richtungen — Score 2/3 lieferten fälschlich zu milde -5 statt korrekt -4, Score 4/5 fälschlich zu harsche -4 statt korrekt -3). Betrifft in der Praxis primär Attributschaden/-verfall auf sehr niedrige Werte sowie bewusst schwache NPCs/Tiere; reguläre Spielercharaktere mit Werten ≥ 6 sind nicht betroffen. Keine Regression für gespeicherte Charaktere, da nur der rohe Attributwert persistiert wird — der Modifikator wird bei jedem Rendern live aus der (jetzt korrigierten) Formel neu berechnet.
+- **Kanonische Implementierung:** `js/rules/RulesMath.js#getAblMod()` (neu, generischer Ort als die Prestige-Klassen-spezifische `prestigeClassEngine.js`) für den `js/`-Layer (Rules- und State-Schicht); `js/rules/prestigeClassEngine.js#getAblMod` bleibt als Re-Export bestehen (Abwärtskompatibilität für 7 bestehende Importe). `src/components/player/attributeHelper.ts#getAblMod()` (bereits vorhanden, trug bereits den Kommentar "kanonische Implementierung") für den React-Layer.
+- **Vollständige Konsolidierung durchgeführt** (nicht nur der Bug, auch alle bereits korrekten Duplikate): 23 Dateien geändert, ~45 Fundstellen zusammengeführt. Bewusst **nicht** angefasst: `js/models/Combatant.js`, `js/models/Stat.js`, `js/models/helpers/classes/DruidHelper.js` — diese liegen im Models-Layer, der laut Architektur (`docs/ARCHITECTURE.md`, UI→State→Models←Rules) nicht von `js/rules/` importieren darf; die Formel war dort bereits korrekt, bleibt aber aus Layering-Gründen lokal dupliziert.
+- **Tests:** Node-Suite 292 Pass / 16 Fail (identisch zur dokumentierten WSL-Baseline aus WP5, keine neuen Fehlschläge), `tsc --noEmit` fehlerfrei. Vitest-Suite konnte unter WSL wegen des bekannten `@rollup/rollup-linux-x64-gnu`-Problems nicht ausgeführt werden (siehe WP5). Zusätzlich manuell per Node-Skript verifiziert: `getAblMod()` gegen die volle RAW-Tabelle (Scores 1–11) sowie End-zu-Ende über `rebuildCombatantModifiers()` bis in den berechneten Fortitude-Save-Modifikator (CON 4 liefert jetzt korrekt -3 statt der vorherigen fehlerhaften -4).
+
+### Teil B (⬜, offen): RAW-Stacking-Logik
 
 #### Ausgangslage
 Duplizierte Logik zur Anwendung der D&D-3.5e-Bonustyp-Stacking-Regeln (dodge/untyped-Boni addieren sich, andere Bonustypen: nur der höchste zählt, Abzüge/Penalties summieren sich immer separat) existiert sowohl in `js/models/Stat.js` (Zeilen ~15–30) als auch in `js/rules/attack/AttackContext.js` (Zeilen ~115–156).
@@ -612,11 +620,11 @@ Worauf achten:
 - `docs/CODE_ANALYSIS.md` (zugehörige Findings als behoben markieren, falls dort erwähnt)
 
 ### Definition of Done
-- [ ] Attributsmodifikator-Formel: RAW-Korrektheit geklärt, alle Duplikate konsolidiert
-- [ ] CombatantModifiers.js-Divergenz aufgelöst und Ergebnis dokumentiert (Verhaltensänderung ja/nein)
-- [ ] Stacking-Logik zwischen Stat.js und AttackContext.js konsolidiert
-- [ ] isBuffSuppressed() unverändert
-- [ ] Tests grün, manuelle Verifikation durchgeführt
+- [x] Attributsmodifikator-Formel: RAW-Korrektheit geklärt, alle Duplikate konsolidiert (Teil A, siehe Ergebnis-Abschnitt oben)
+- [x] CombatantModifiers.js-Divergenz aufgelöst und Ergebnis dokumentiert (Verhaltensänderung ja/nein) — war ein Bug (Duplikat von FINDING-01), auf 2 weitere Fundstellen ausgeweitet, alle gefixt
+- [ ] Stacking-Logik zwischen Stat.js und AttackContext.js konsolidiert (Teil B, noch offen)
+- [ ] isBuffSuppressed() unverändert (erst prüfbar, sobald Teil B bearbeitet wird)
+- [x] Tests grün für Teil A (Node-Suite 292/16 unverändert zur Baseline, tsc fehlerfrei), manuelle Verifikation durchgeführt (RAW-Tabellen-Abgleich + End-zu-Ende-Check über Fortitude-Save)
 
 ---
 

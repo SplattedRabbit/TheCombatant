@@ -6,6 +6,7 @@
 
 import { CLASS_SKILLS, CLASS_BASE_SKILLS, CLASSES } from './RulesData.js';
 import { SKILL_TRICKS_REGISTRY } from '../data/skillTricks-data.js';
+import { getAblMod } from './RulesMath.js';
 
 export function isClassSkill(skillKey, pc) {
   if (!pc || !Array.isArray(pc.classes) || pc.classes.length === 0) {
@@ -39,11 +40,7 @@ export function calculateTotalSkillPoints(pc) {
   if (typeof pc.getAttributeMod === 'function') {
     intMod = pc.getAttributeMod('int');
   } else {
-    const attr = pc.int;
-    const score = attr ? (typeof attr.getValue === 'function' ? attr.getValue() : parseInt(attr) || 10) : 10;
-    intMod = score >= 10
-      ? Math.floor((score - 10) / 2)
-      : (score === 9 || score === 8 ? -1 : (score === 7 || score === 6 ? -2 : (score === 5 || score === 4 ? -4 : -5)));
+    intMod = getAblMod(pc.int);
   }
 
   const raceStr = (pc.race || '').toLowerCase();

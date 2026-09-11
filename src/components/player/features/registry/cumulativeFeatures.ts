@@ -8,6 +8,7 @@ import { getSneakAttackDiceFromPrestigeClasses } from '../../../../../js/rules/p
 import { RogueRules } from '../../../../../js/rules/classes/RogueRules.js';
 import type { UnifiedFeature } from './types.ts';
 import { formatClassName } from './formatters.ts';
+import { getAblMod } from '../../attributeHelper';
 
 export function getCumulativeFeatures(pc: any, classMap: Map<string, number>): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];
@@ -79,7 +80,7 @@ A character can sneak attack only living creatures with discernible anatomies—
     if (shadowbaneSmite > 0) smiteSources.push(`Shadowbane Inquisitor Lv.${classMap.get('shadowbane_inquisitor')} (${shadowbaneSmite}/day)`);
 
     const chaScore = typeof pc.cha?.getValue === 'function' ? pc.cha.getValue() : (pc.cha || 10);
-    const chaMod = Math.max(0, Math.floor((chaScore - 10) / 2));
+    const chaMod = Math.max(0, getAblMod(chaScore));
     const palLvl = classMap.get('paladin') || 0;
     const totalSmite = paladinSmite + shadowbaneSmite;
 
@@ -110,7 +111,7 @@ Shadowbane Inquisitors gain Smite Corrupt, which functions against evil creature
   if (classMap.has('paladin') && classMap.get('paladin')! >= 2) {
     const pLvl = classMap.get('paladin')!;
     const chaScore = typeof pc.cha?.getValue === 'function' ? pc.cha.getValue() : (pc.cha || 10);
-    const chaMod = Math.floor((chaScore - 10) / 2);
+    const chaMod = getAblMod(chaScore);
     const lohMax = Math.max(0, pLvl * chaMod);
 
     features.push({
@@ -151,7 +152,7 @@ Alternatively, a paladin can use any or all of this healing power to deal damage
     }
 
     const chaScore = typeof pc.cha?.getValue === 'function' ? pc.cha.getValue() : (pc.cha || 10);
-    const chaMod = Math.floor((chaScore - 10) / 2);
+    const chaMod = getAblMod(chaScore);
     const turnMax = Math.max(1, 3 + chaMod);
 
     features.push({

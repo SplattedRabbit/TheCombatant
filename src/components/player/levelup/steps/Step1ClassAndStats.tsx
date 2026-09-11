@@ -4,6 +4,7 @@ import { CLASSES } from '@core/rules/RulesData.js';
 import { CombatRules, validatePrestigeClassPrereqs, isOnlySpecialTextUnmet } from '@core/rules.js';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { PrestigeSpellLinkSection } from '../../wizard/levelConfig/PrestigeSpellLinkSection';
+import { getAblMod } from '../../attributeHelper';
 
 export interface Step1ClassAndStatsProps {
   activePC?: any;
@@ -50,7 +51,7 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
   // HP Progression: Active PC base HP + Gained HP (+ retroactive CON if milestone increased CON mod)
   const baseHp = activePC?.maxHP ?? activePC?.maxHp ?? activePC?.hp ?? 10;
   const oldCon = activePC?.con?.base ?? activePC?.con?.value ?? (typeof activePC?.con === 'number' ? activePC.con : 10);
-  const oldConMod = Math.floor((oldCon - 10) / 2);
+  const oldConMod = getAblMod(oldCon);
   const conDiff = conMod - oldConMod;
   const retroactiveConHp = conDiff > 0 ? ((initialDraft?.totalCurrentLevel || (targetLevel - 1)) * conDiff) : 0;
   const targetTotalHp = baseHp + gainedHp + retroactiveConHp;
@@ -247,7 +248,7 @@ export const Step1ClassAndStats: React.FC<Step1ClassAndStatsProps> = ({
             {(['str', 'dex', 'con', 'int', 'wis', 'cha'] as const).map((stat) => {
               const isSelected = currentConfig.abilityIncrease === stat;
               const baseVal = completedDraft?.stats?.[stat] ?? currentDraft?.stats?.[stat] ?? 10;
-              const curMod = Math.floor((baseVal - 10) / 2);
+              const curMod = getAblMod(baseVal);
               return (
                 <button
                   key={stat}

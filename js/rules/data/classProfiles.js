@@ -3,7 +3,10 @@
  * @summary   Static D&D 3.5e class profiles detailing class-specific resource pools (rage, smite, turn undead, etc.).
  * @feature   rules
  * @exports   CLASS_PROFILES
+ * @depends   RulesMath.js (kanonische getAblMod-Formel)
  */
+
+import { getAblMod } from '../RulesMath.js';
 
 export const CLASS_PROFILES = {
   barbarian: {
@@ -23,7 +26,7 @@ export const CLASS_PROFILES = {
     nameDe: "Paladin",
     getResources(level, stats) {
       const score = stats.cha ? stats.cha.getValue() : 10;
-      const chaMod = Math.floor((score - 10) / 2);
+      const chaMod = getAblMod(score);
       return [
         {
           key: "smite_evil",
@@ -44,7 +47,7 @@ export const CLASS_PROFILES = {
     nameDe: "Cleric",
     getResources(level, stats) {
       const score = stats.cha ? stats.cha.getValue() : 10;
-      const chaMod = Math.floor((score - 10) / 2);
+      const chaMod = getAblMod(score);
       return [
         {
           key: "turn_undead",
@@ -95,7 +98,7 @@ export const CLASS_PROFILES = {
     nameDe: 'Knight',
     getResources(level, stats) {
       const score = stats.cha ? stats.cha.getValue() : 10;
-      const chaMod = Math.floor((score - 10) / 2);
+      const chaMod = getAblMod(score);
       return [
         {
           key: 'knights_challenge',
@@ -110,7 +113,7 @@ export const CLASS_PROFILES = {
     nameDe: 'Ninja',
     getResources(level, stats) {
       const score = stats.wis ? stats.wis.getValue() : 10;
-      const wisMod = Math.floor((score - 10) / 2);
+      const wisMod = getAblMod(score);
       return [
         {
           key: 'ki_power',
@@ -127,7 +130,7 @@ export const CLASS_PROFILES = {
       // Dragon Shamans breathe weapon: 3+Con-Mod/day from level 4
       if (level < 4) return [];
       const score = stats.con ? stats.con.getValue() : 10;
-      const conMod = Math.floor((score - 10) / 2);
+      const conMod = getAblMod(score);
       return [
         {
           key: 'breath_weapon',

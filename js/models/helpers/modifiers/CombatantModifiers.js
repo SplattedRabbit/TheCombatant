@@ -40,10 +40,13 @@ export function rebuildCombatantModifiers(pc) {
   pc.ref.base = pc.baseRef.getValue();
   pc.wil.base = pc.baseWil.getValue();
 
-  // Helper for attribute mod calculations
+  // RAW D&D 3.5e ability modifier formula: floor((score - 10) / 2), applies universally to all
+  // scores including values below 10 (verified against PHB Chapter 1, "Average Ability Scores"
+  // tables; matches Combatant.js#getAttributeMod). No cross-layer import here — Models must not
+  // depend on js/rules/, so the formula is kept local rather than pulled from RulesMath.js.
   const getMod = (score) => {
     const s = parseInt(score) || 10;
-    return s >= 10 ? Math.floor((s - 10) / 2) : (s === 9 || s === 8 ? -1 : (s === 7 || s === 6 ? -2 : (s === 5 || s === 4 ? -4 : -5)));
+    return Math.floor((s - 10) / 2);
   };
 
   const state = CombatState.getState();

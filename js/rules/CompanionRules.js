@@ -4,9 +4,11 @@
  * @exports   CompanionRules
  * @reads     pc.classes, pc.level, pc.classType
  * @stateOps  keine
- * @depends   keine
+ * @depends   RulesMath.js (kanonische getAblMod-Formel)
  * @notHere   UI-Rendering -> src/components/player/companion/CompanionSheet.tsx
  */
+
+import { getAblMod } from './RulesMath.js';
 
 export const CompanionRules = {
   /**
@@ -133,18 +135,18 @@ export const CompanionRules = {
       bonusHD = 2; natArmorBonus = 2; strDexBonus = 1;
     }
 
-    const oldStrMod = Math.floor((stats.str - 10) / 2);
-    const oldDexMod = Math.floor((stats.dex - 10) / 2);
+    const oldStrMod = getAblMod(stats.str);
+    const oldDexMod = getAblMod(stats.dex);
     const oldBAB = Math.floor(baseHD * 0.75);
 
     stats.ac += natArmorBonus;
     stats.str += strDexBonus;
     stats.dex += strDexBonus;
 
-    const newStrMod = Math.floor((stats.str - 10) / 2);
-    const newDexMod = Math.floor((stats.dex - 10) / 2);
+    const newStrMod = getAblMod(stats.str);
+    const newDexMod = getAblMod(stats.dex);
     const newBAB = Math.floor((baseHD + bonusHD) * 0.75);
-    const newConMod = Math.floor((stats.con - 10) / 2);
+    const newConMod = getAblMod(stats.con);
 
     stats.maxHP += Math.floor(bonusHD * 4.5) + bonusHD * newConMod;
     

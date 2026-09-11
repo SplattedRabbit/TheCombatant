@@ -5,6 +5,7 @@
  */
 
 import type { UnifiedFeature } from '../types.ts';
+import { getAblMod } from '../../../attributeHelper';
 
 export function getDMGPrestigeFeatures(pc: any, classType: string, level: number, _computed: any): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];
@@ -14,7 +15,7 @@ export function getDMGPrestigeFeatures(pc: any, classType: string, level: number
   // ==========================================
   if (classType === 'assassin') {
     const intScore = typeof pc.int?.getValue === 'function' ? pc.int.getValue() : (pc.int || 10);
-    const intMod = Math.floor((intScore - 10) / 2);
+    const intMod = getAblMod(intScore);
     const deathDc = 10 + level + intMod;
 
     // 1. Poison Use (Ex)
@@ -189,7 +190,7 @@ The attack must still meet all other conditions of a sneak attack (e.g., target 
     // 3. Breath Weapon (Su) - Level 3+
     if (level >= 3 && breathDice) {
       const conScore = typeof pc.con?.getValue === 'function' ? pc.con.getValue() : (pc.con || 10);
-      const conMod = Math.floor((conScore - 10) / 2);
+      const conMod = getAblMod(conScore);
       const breathDc = 10 + level + conMod;
 
       features.push({

@@ -7,6 +7,7 @@
 import type { UnifiedFeature } from '../types.ts';
 import { getBarbarianFeatures } from './phbCoreMartial.barbarian.ts';
 import { getRogueFeatures } from './phbCoreMartial.rogue.ts';
+import { getAblMod } from '../../../attributeHelper';
 
 export function getPHBCoreMartialFeatures(pc: any, classMap: Map<string, number>): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];
@@ -61,7 +62,7 @@ These feats must be drawn from the feats noted as fighter bonus feats. A fighter
 
     // 2. Monk AC Bonus & Fast Movement
     const wisScore = typeof pc.wis?.getValue === 'function' ? pc.wis.getValue() : (pc.wis || 10);
-    const wisMod = Math.max(0, Math.floor((wisScore - 10) / 2));
+    const wisMod = Math.max(0, getAblMod(wisScore));
     const acBonus = Math.floor(mLvl / 5);
     const speedBonus = mLvl >= 18 ? 60 : (mLvl >= 15 ? 50 : (mLvl >= 12 ? 40 : (mLvl >= 9 ? 30 : (mLvl >= 6 ? 20 : (mLvl >= 3 ? 10 : 0)))));
 
@@ -217,7 +218,7 @@ At 3rd level, a monk gains an enhancement bonus to her land speed (+10 ft every 
     // Divine Grace (Lvl 2+)
     if (pLvl >= 2) {
       const chaScore = typeof pc.cha?.getValue === 'function' ? pc.cha.getValue() : (pc.cha || 10);
-      const chaMod = Math.max(0, Math.floor((chaScore - 10) / 2));
+      const chaMod = Math.max(0, getAblMod(chaScore));
       features.push({
         id: 'paladin_divine_grace',
         name: `Divine Grace (+${chaMod} to Saves)`,

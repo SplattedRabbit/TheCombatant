@@ -269,7 +269,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
     } else performCast();
   };
 
-  const bardicKnowledgeBonus = level + (pc.int ? Math.floor((pc.int.getValue() - 10) / 2) : 0);
+  const bardicKnowledgeBonus = level + (pc.int ? getAblMod(pc.int.getValue()) : 0);
 
   return (
     <div className={`class-card ${isExpanded ? 'expanded' : ''}`} style={{ border: '0.5px solid var(--pb)', borderRadius: '3px', marginBottom: '5px', background: 'rgba(200, 169, 110, 0.03)', width: '100%' }}>
@@ -362,7 +362,7 @@ export const BardFeaturesCard: React.FC<BardFeaturesCardProps> = ({ pc, level })
               <div className="bk-rules-box" style={{ background: 'rgba(0, 0, 0, 0.02)', border: '0.5px solid rgba(200, 169, 110, 0.25)', borderRadius: '2px', padding: '4px', fontSize: '7.5px', color: 'var(--inkm)', lineHeight: 1.25, marginTop: '3.5px', fontFamily: 'var(--font-body)', marginBottom: '2px' }}>
                 <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Bardic Knowledge:</strong><br />
                 A bard may make a special bardic knowledge check to see whether he knows some relevant information about local notable people, legendary items, or noteworthy places.<br />
-                • <strong>Bonus:</strong> 1d20 + <strong>{level}</strong> (Bard Level) + <strong>{Math.floor(((pc.int ? pc.int.getValue() : 10) - 10) / 2)}</strong> (INT) = <strong>+{bardicKnowledgeBonus}</strong>.<br />
+                • <strong>Bonus:</strong> 1d20 + <strong>{level}</strong> (Bard Level) + <strong>{getAblMod(pc.int ? pc.int.getValue() : 10)}</strong> (INT) = <strong>+{bardicKnowledgeBonus}</strong>.<br />
                 • <strong>DCs:</strong> 10 (Common), 20 (Uncommon), 25 (Obscure), 30 (Extremely heroic/ancient).
               </div>
             )}

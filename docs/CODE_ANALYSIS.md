@@ -69,6 +69,8 @@ return score >= 10
 
 **Status:** ✅ Behoben — verifiziert am Code (`js/models/Combatant.js:371-376`, Stand 2026-09-11). `getAttributeMod()` nutzt jetzt ausschließlich `Math.floor((score - 10) / 2)` ohne Ternary-Fallback.
 
+**Nachtrag (WP8 Teil A, 2026-09-11):** Bei der Konsolidierung aller Attributmodifikator-Duplikate im Rahmen von `Refactoring_Zielbild.md` WP8 wurde festgestellt, dass **dieselbe fehlerhafte Ternary-Kaskade** unverändert an zwei weiteren Stellen existierte, die dieser Fund nicht erfasst hatte: `js/models/helpers/modifiers/CombatantModifiers.js` (lokale `getMod`-Hilfsfunktion, betraf u.a. die Fortitude/Reflex/Will-Save-Berechnung) und `js/rules/RulesSkills.js` (Fallback-Pfad in `calculateTotalSkillPoints`), sowie im React-Layer `src/components/player/wizard/helpers.racial.ts` (`getMod`). Alle drei wurden auf die korrekte, RAW-verifizierte Formel umgestellt. Alle übrigen ~40 im Code verstreuten, bereits korrekten Duplikate wurden im selben Zug auf eine kanonische Implementierung konsolidiert: `js/rules/RulesMath.js#getAblMod()` für den `js/`-Layer (Rules- und State-Schicht; `prestigeClassEngine.js#getAblMod` bleibt als Re-Export für Abwärtskompatibilität bestehender Importe erhalten), `src/components/player/attributeHelper.ts#getAblMod()` für den React-Layer. Bewusst **nicht** konsolidiert: die lokalen Kopien in `js/models/Combatant.js`, `js/models/Stat.js` und `js/models/helpers/classes/DruidHelper.js` — diese liegen im Models-Layer, der laut Architektur nicht von `js/rules/` importieren darf (Schichtentrennung UI→State→Models←Rules); dort war die Formel bereits korrekt, nur weiterhin lokal dupliziert.
+
 ---
 
 ### FINDING-02 🟡 — `as any`: Type-Safety-Erosion

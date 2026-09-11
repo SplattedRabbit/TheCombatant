@@ -4,9 +4,11 @@
  * @exports   PaladinRules
  * @reads     pc.dailyAbilities, pc.cha, pc.classes
  * @stateOps  Keine — mutiert pc direkt (aufgerufen durch PCManager)
- * @depends   Keine externen Imports
+ * @depends   RulesMath.js (kanonische getAblMod-Formel)
  * @notHere   UI-Rendering → PaladinFeatures.js | Slot-Berechnung → rules.js CLASS_PROFILES
  */
+import { getAblMod } from '../RulesMath.js';
+
 export const PaladinRules = {
   cleanup(pc) {
     if (pc.divineGraceActive) {
@@ -35,7 +37,7 @@ export const PaladinRules = {
     }
 
     const chaScore = pc.cha ? pc.cha.getValue() : 10;
-    const chaMod = Math.floor((chaScore - 10) / 2);
+    const chaMod = getAblMod(chaScore);
     const totalHands = (level >= 2 && chaScore >= 12) ? (level * chaMod) : 0;
     let lohAbility = pc.dailyAbilities.find(a => a.name === "Hände auflegen" || a.name === "Lay on Hands");
     if (!lohAbility) {

@@ -11,6 +11,7 @@ import {
 } from './RulesData.js';
 import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../spells.js';
 import { getDomain, getSpellDomains, isDomainSpellForPC } from '../data/domains-data.js';
+import { getAblMod } from './RulesMath.js';
 
 export function getSpellClassLevels(spell) {
   if (!spell) return [];
@@ -127,7 +128,7 @@ export function calculateMaxSpellSlots(pc) {
           const scoreStat = pc[keyAbility];
           const score = scoreStat instanceof Object && typeof scoreStat.getValue === 'function' ? scoreStat.getValue() : (parseInt(scoreStat) || 10);
           if (score >= 10 + lvl) {
-            const modifier = Math.floor((score - 10) / 2);
+            const modifier = getAblMod(score);
             const bonus = (modifier - lvl >= 0) ? Math.ceil((modifier - lvl + 1) / 4) : 0;
             classSlots += bonus;
           }
