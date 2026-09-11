@@ -4,7 +4,7 @@
  */
 
 import { CombatState } from '@core/state.js';
-import { findSpell } from '@core/ui/components/player/PCSpellbookTab.js';
+import { findSpell } from '../PCSpellbookTab';
 import {
   showCustomAlert,
   showCustomConfirm,
