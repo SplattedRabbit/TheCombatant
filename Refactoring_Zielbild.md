@@ -230,7 +230,7 @@ Worauf achten:
 
 ---
 
-## WP4 (⬜): scratch/ und docs/ Aufräumen
+## WP4 (✅): scratch/ und docs/ Aufräumen
 
 ### Ziel
 Das `scratch/`-Verzeichnis (26 Dateien, ~148K) und veraltete `docs/`-Dateien nach klarer Kategorisierung bereinigen.
@@ -321,10 +321,10 @@ Worauf achten:
 - `docs/Planned_Features.md`
 
 ### Definition of Done
-- [ ] scratch/ enthält nur noch aktiv genutzte + dokumentierte Dateien im Hauptverzeichnis, Rest gelöscht oder in scratch/archive/
-- [ ] docs/ enthält keine durch CHANGELOG.md ersetzten Alt-Dokumente mehr
-- [ ] CODE_ANALYSIS.md FINDING-01/08 als behoben markiert
-- [ ] Planned_Features.md aktuell
+- [x] scratch/ enthält nur noch aktiv genutzte + dokumentierte Dateien im Hauptverzeichnis (`search_phb.js`, `search_dmg.js`, `zoom_diagnostics.js`, `update_sw.js`), Rest gelöscht (13 einmalige Hilfsskripte, per Grep auf fehlende Referenzen verifiziert) oder nach `scratch/archive/` verschoben (9 Datenerstellungsskripte)
+- [x] docs/ enthält keine durch CHANGELOG.md ersetzten Alt-Dokumente mehr — `HANDOVER.md`, `IMPLEMENTATION_PLAN_SPELL_WIZARD.md`, `WALKTHROUGH_SPELL_WIZARD.md`, `PHASENPLAN_P2.md` gelöscht (Inhalt vor Löschung gegen CHANGELOG.md `[6.9.0]`/`[6.8.0]` und die BuffRules-Einträge abgeglichen)
+- [x] CODE_ANALYSIS.md FINDING-01/08 als `[BEHOBEN 2026-09-11]` markiert, Status am aktuellen Code verifiziert (`js/models/Combatant.js:371-376`, `src/components/ErrorBoundary.tsx:38-41`)
+- [x] Planned_Features.md (liegt im Repo-Root, nicht unter docs/ — Abweichung von der WP4-Beschreibung festgestellt) aktualisiert: "Zuletzt Abgeschlossen" um v6.7.0/v6.8.0/v6.9.0 aus CHANGELOG.md ergänzt, ältester Stand (v6.1.0/v6.2.0) beibehalten
 
 ---
 

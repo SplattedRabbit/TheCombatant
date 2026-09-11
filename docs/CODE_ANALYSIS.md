@@ -45,7 +45,7 @@ Gezielt nachschärfbare Pain Points in Type Safety, Domain-Layer-Qualität und D
 
 ---
 
-### FINDING-01 🔴 — `getAttributeMod()`: Falsche Ternary-Kaskade
+### FINDING-01 🔴 [BEHOBEN 2026-09-11] — `getAttributeMod()`: Falsche Ternary-Kaskade
 
 **Schweregrad:** Bug — fachlich falsch  
 **Priorität:** P1  
@@ -66,6 +66,8 @@ return score >= 10
 | 3     | -5 ❌              | -4 ✓                   |
 
 **Lösung:** Die universelle Formel `Math.floor((score - 10) / 2)` funktioniert korrekt für alle Werte ≥ 1, ist kürzer und wartbar.
+
+**Status:** ✅ Behoben — verifiziert am Code (`js/models/Combatant.js:371-376`, Stand 2026-09-11). `getAttributeMod()` nutzt jetzt ausschließlich `Math.floor((score - 10) / 2)` ohne Ternary-Fallback.
 
 ---
 
@@ -178,7 +180,7 @@ Es gibt **nur einen aktiven Modal-Slot**. Wenn ein Dialog einen zweiten Dialog �
 
 ---
 
-### FINDING-08 🔴 — `localStorage.clear()` im ErrorBoundary
+### FINDING-08 🔴 [BEHOBEN 2026-09-11] — `localStorage.clear()` im ErrorBoundary
 
 **Schweregrad:** Hoch — löscht fremde Daten  
 **Priorität:** P1  
@@ -194,6 +196,8 @@ private handleReset = () => {
 `localStorage.clear()` löscht auch Third-Party-Keys (Supabase Auth-Session, andere App-Daten). Nach einem Crash werden eingeloggte User ausgeloggt, was unerwartet und störend ist.
 
 **Lösung:** Gezieltes Löschen nur des App-Keys: `localStorage.removeItem('dd_combatsheet_state')`
+
+**Status:** ✅ Behoben — verifiziert am Code (`src/components/ErrorBoundary.tsx:38-41`, Stand 2026-09-11). `handleReset()` iteriert jetzt gezielt über `APP_STORAGE_KEYS` statt `localStorage.clear()` aufzurufen.
 
 ---
 

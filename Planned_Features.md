@@ -6,7 +6,19 @@ Dieses Dokument dient als zentrales Backlog und Tracking-Dokument für geplante 
 
 ## ✅ Zuletzt Abgeschlossen (Recent Releases)
 
-### 📄 1. D&D 3.5e 4-Seiten A4 / PDF Charakterbogen (Printable Folio)
+### 🪄 1. Inline Zauberauswahl im Charakter-Wizard & Level-Up-Quoten-Engine
+- **Status:** `Abgeschlossen & Gemerged (v6.9.0)`
+- **Umfang:** Vollflächige Zero-Popup/Zero-Modal-Zauberauswahl direkt im Charakter-Erstellungs-Wizard (`Step3SpellSelectionView.tsx`) für Zauberklassen (Wizard, Sorcerer, Bard, Duskblade), inkl. D&D-3.5e-RAW-Quoten-Rechner (`spellSelectionRules.ts`), Wizard-Schul-Spezialisierung mit verbotenen Schulen und voller Wiederverwendung von `PCSpellCompendium.tsx`.
+
+### ⚔️ 2. RAW-Klassenaudits, Spellwarp Sniper & Wizard-Spezialisierung (v6.8.0)
+- **Status:** `Abgeschlossen & Gemerged (v6.8.0)`
+- **Umfang:** Vollständige RAW-Implementierungen für Spellwarp Sniper, Ninja, Dragon Shaman und Battle Trickster; interaktiver Wizard-Schul-Spezialisierungs-Dialog mit verbotenen Schulen; Level-Up-Zauberauswahl-Assistent mit RAW-Quoten-Engine für alle Caster-Typen.
+
+### 🧩 3. Modulare Unified-Class-Features-Registry & Begleiter-Regel-Popups (v6.7.0)
+- **Status:** `Abgeschlossen & Gemerged (v6.7.0)`
+- **Umfang:** Modularisierung der Klassen-Feature-Regeln in dedizierte Registries (`coreClasses.ts`, `expansionClasses.ts`, `prestigeClasses.ts`, PrC-Submodule); interaktive RAW-Regel-Modals für Tierbegleiter- und Vertrauten-Fähigkeiten; überarbeitetes Companion-/Familiar-Dashboard.
+
+### 📄 4. D&D 3.5e 4-Seiten A4 / PDF Charakterbogen (Printable Folio)
 - **Status:** `Abgeschlossen & Gemerged (v6.2.0)`
 - **Umfang:** Authentisches 4-Seiten A4-Folio direkt im Druckdialog des Browsers (inkl. PDF-Export):
   - **Seite 1:** Kampf- & Verteidigungsübersicht (Attribute, AC-Breakdown, Saves, Initiative, Waffen & Angriffsmatrix).
@@ -15,7 +27,7 @@ Dieses Dokument dient als zentrales Backlog und Tracking-Dokument für geplante 
   - **Seite 4:** Zauberslots & Tierbegleiter/Vertrauten-Bogen.
   - Pixelgenaues Drucklayout (`296mm` Seitenbudget, `@page` Zero-Margins, kein Clipping von Headern/Footern).
 
-### 🧙‍♂️ 2. Geführter Level-Up-Assistent (In-Game Level Advancement)
+### 🧙‍♂️ 5. Geführter Level-Up-Assistent (In-Game Level Advancement)
 - **Status:** `Abgeschlossen & Gemerged (v6.1.0)`
 - **Umfang:** Stufenaufstieg bestehender Charaktere ($n \rightarrow n+1$) direkt aus dem Character Sheet in einem 4-Schritte-Assistenten:
   - **Schritt 1:** Klasse, Attributssteigerung (+1 auf Stufe 4, 8, 12, 16, 20) und Trefferwürfel-Wurf (mit dynamischem CON-Bonus).

@@ -26,6 +26,11 @@ node scratch/search_phb.js "<Suchabfrage>"
 node scratch/search_dmg.js "<Suchabfrage>"
 ```
 
+**Weiteres aktiv nutzbares Werkzeug:**
+- `scratch/zoom_diagnostics.js` — Browser-Console-Snippet (F12 → Console → Paste) zur Diagnose von Zoom-/Skalierungsproblemen der UI. Kein Node-Skript, wird direkt im Browser ausgeführt.
+
+`scratch/` enthält daneben `scratch/archive/` mit historischen Datenerstellungs-/Extraktionsskripten (PDF-Parsing, Zauber-/Talent-Datenbank-Aufbau) ohne aktiven Bedarf, aber mit potenziellem Wiederverwendungswert.
+
 ---
 
 ## 2. Architektur in 5 Zeilen
