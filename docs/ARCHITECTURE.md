@@ -1,6 +1,6 @@
 # System Architecture & Technical Specifications
 
-> **The Combatant (v6.0.0)** — D&D 3.5e Digital Combat Companion & Character Management System  
+> **The Combatant** — D&D 3.5e Digital Combat Companion & Character Management System  
 > Architecture Model: **Hybrid Vanilla-Core & Modular React 19 Presentation**
 
 ---

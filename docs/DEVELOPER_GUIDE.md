@@ -1,6 +1,6 @@
 # Developer Guide & Coding Standards
 
-> **The Combatant (v6.0.0)** — D&D 3.5e Digital Combat Companion & Character Management System  
+> **The Combatant** — D&D 3.5e Digital Combat Companion & Character Management System  
 > Fast onboarding, development workflows, quality gates, and architectural constraints.
 
 ---

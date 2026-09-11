@@ -1,6 +1,6 @@
 # Testing Strategy & Quality Assurance Architecture
 
-> **The Combatant (v6.2.2)** — D&D 3.5e Digital Combat Companion & Character Management System  
+> **The Combatant** — D&D 3.5e Digital Combat Companion & Character Management System  
 > Dual Test Architecture: **314 Core Node Tests + 34 Vitest React Testing Library Tests (348 Total Tests)**
 
 ---

@@ -116,6 +116,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - Immer **beide** Stellen gleichzeitig bumpen:
   - `service-worker.js` Zeile 1: `const CACHE_NAME = '...'`
   - `index.html` Footer-Versionsstring
+- ⚠️ **Bekannte Abweichung (Stand 2026-09-11):** `index.html` enthält aktuell keinen Footer-Versionsstring mehr. Ob dieser wieder eingeführt werden soll, ist offen (Nutzer-Entscheidung ausstehend) — bis dahin ist `service-worker.js` die einzige verlässliche Versionsquelle.
 
 ---
 

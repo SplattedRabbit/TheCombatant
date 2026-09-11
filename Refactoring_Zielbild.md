@@ -160,7 +160,7 @@ Worauf achten:
 
 ---
 
-## WP3 (⬜): Versionsnummern-Konsolidierung
+## WP3 (✅): Versionsnummern-Konsolidierung
 
 ### Ziel
 Einheitlichen und korrekten Umgang mit Versionsnummern über alle relevanten Dateien herstellen.
@@ -223,10 +223,10 @@ Worauf achten:
 - `docs/ARCHITECTURE.md`, `docs/CODE_ANALYSIS.md`, `docs/DEVELOPER_GUIDE.md`, `docs/TESTING.md`
 
 ### Definition of Done
-- [ ] Aktuelle Version eindeutig ermittelt und dokumentiert
-- [ ] service-worker.js CACHE_NAME stimmt mit ermittelter Version überein
-- [ ] Für jedes betroffene docs/-Dokument wurde eine explizite Entscheidung (aktualisieren vs. entfernen) getroffen und umgesetzt
-- [ ] Status des index.html-Footer-Strings dokumentiert (vorhanden/nicht vorhanden)
+- [x] Aktuelle Version eindeutig ermittelt und dokumentiert: **6.9.0** — CHANGELOG.md-Eintrag `[6.9.0]` (Commit `3bfbc22`, 2026-09-09 21:29) entstand nach dem letzten package.json-Bump auf 6.8.0 (Commit `7fea808`, 2026-09-09 18:10); package.json war schlicht nicht mitgezogen worden. package.json auf 6.9.0 korrigiert.
+- [x] service-worker.js CACHE_NAME stimmt mit ermittelter Version überein — auf `dnd-combatsheet-v6.9.0-cache-v1` gesetzt (X/Y/Z hochgezählt → N=1 gemäß AGENT.md §5)
+- [x] Für jedes betroffene docs/-Dokument wurde eine explizite Entscheidung getroffen: `docs/ARCHITECTURE.md`, `docs/DEVELOPER_GUIDE.md`, `docs/TESTING.md` (allgemeine, fortlaufend gepflegte Leitfäden ohne Versionsbezug) → Versionsangabe im Header entfernt statt hochgezählt, da sie strukturell nicht mitgepflegt wurde (Beleg: ARCHITECTURE.md wurde 2026-09-02 auf v6.2.0-Features synchronisiert, Header blieb aber bei v6.0.0). `docs/CODE_ANALYSIS.md` → unverändert gelassen, da explizit als datierte Momentaufnahme gekennzeichnet ("Analysiert am: 2026-09-03", "Production Build v6.0.0") — Version dort korrekter historischer Kontext, kein Aktualisierungsbedarf.
+- [x] Status des index.html-Footer-Strings dokumentiert: **nicht vorhanden** (Repo-weite Suche ergebnislos). Als bekannte Abweichung von AGENT.md §5 vermerkt, keine eigenmächtige Entscheidung über Wiedereinführung getroffen — offener Punkt für Nutzer-Entscheidung. Hinweis zur automatisierten Pflege bei WP10 ergänzt (`scratch/update_sw.js` deckt bereits service-worker.js ab, nicht aber den Footer).
 
 ---
 
@@ -875,7 +875,14 @@ konkreten Auftrag, gilt zusätzlich:
    Aufgabe.
 4. Cache-Version synchron halten: Wird package.json-Version geändert, muss
    im selben Schritt service-worker.js CACHE_NAME nach der in AGENT.md §5
-   beschriebenen Konvention mit hochgezählt werden.
+   beschriebenen Konvention mit hochgezählt werden. Für service-worker.js
+   existiert bereits ein automatisierter Mechanismus (`scratch/update_sw.js`,
+   liest package.json und bumpt CACHE_NAME beim Build). Der in AGENT.md §5
+   ebenfalls geforderte index.html-Footer-Versionsstring existiert seit
+   mind. 2026-09-11 nicht mehr und wird von diesem Skript nicht abgedeckt
+   (siehe WP3-Befund) — falls der Footer wieder eingeführt wird, sollte
+   seine Pflege in denselben oder einen neuen automatisierten Schritt
+   integriert werden, statt manuell gepflegt zu werden.
 5. AGENT.md §4 (State-API-Referenz) aktualisieren, sobald neue State-
    Actions hinzugefügt werden.
 6. Proaktives Aufteilen: Nähert sich eine Datei der 450-Zeilen-Grenze
