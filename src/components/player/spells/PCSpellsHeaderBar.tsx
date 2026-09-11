@@ -6,6 +6,8 @@
 import React, { useMemo } from 'react';
 import { getSchoolLabel } from '@core/spells.js';
 import { getArcaneSpellFailureBreakdown } from './spellFailureHelper';
+import { findSpell } from './PCSpellbookTab';
+import { computeWizardBudget } from './wizardBudget';
 import {
   SORCERER_KNOWN_TABLE,
   BARD_KNOWN_TABLE,
@@ -42,7 +44,6 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
 
     const sorcCL = isSorc ? getEffectiveCasterLevel(pc, 'sorcerer') : 0;
     const bardCL = isBard ? getEffectiveCasterLevel(pc, 'bard') : 0;
-    const wizCL = isWiz ? getEffectiveCasterLevel(pc, 'wizard') : 0;
 
     const sorcRow = isSorc ? (SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, sorcCL))] || []) : [];
     const bardRow = isBard ? (BARD_KNOWN_TABLE[Math.max(1, Math.min(20, bardCL))] || []) : [];
@@ -53,13 +54,18 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
       if (isBard && bardRow[lvl] !== undefined) totalMaxSpontaneous += bardRow[lvl];
     }
 
+    // Wizard: level-up budget via shared helper
+    const wizBudget = isWiz
+      ? computeWizardBudget(pc, learnedKeys.map(k => findSpell(pc, k)))
+      : null;
+
     return {
       isWizard: isWiz,
       isSpontaneous: isSorc || isBard,
-      wizCL,
-      maxWizLvl: isWiz ? getMaxSpellLevel('wizard', wizCL) : -1,
+      maxWizLvl: isWiz ? getMaxSpellLevel('wizard', wizBudget!.wizCL) : -1,
       totalLearned,
       totalMaxSpontaneous,
+      wizBudget,
     };
   }, [pc, hasClasses]);
 
@@ -238,16 +244,23 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
             ✨ <strong>Known Spells:</strong>{' '}
             <strong style={{ color: 'var(--red)' }}>{quotaStats.totalLearned}</strong> / {quotaStats.totalMaxSpontaneous}
           </span>
-        ) : quotaStats.isWizard ? (
-          <span>
-            📖 <strong>Spellbook:</strong>{' '}
-            <strong style={{ color: 'var(--red)' }}>{quotaStats.totalLearned}</strong> Spells recorded{' '}
-            <span style={{ fontSize: '7.5px', color: '#2e7d32', fontWeight: 'normal' }}>
-              (Unlimited Scribing)
-            </span>
-            {quotaStats.maxWizLvl >= 0 && (
-              <span style={{ marginLeft: '6px', color: 'var(--inkl)', fontSize: '7.5px' }}>
-                • Max Castable: <strong>Lvl {quotaStats.maxWizLvl}</strong>
+        ) : quotaStats.isWizard && quotaStats.wizBudget ? (
+          <span
+            title={`Zauberbuch (D&D 3.5e RAW): ${quotaStats.wizBudget.currentCantrips} Cantrips + ${quotaStats.wizBudget.currentNonCantrip} / ${quotaStats.wizBudget.maxFromLevelUps} Nicht-Cantrip-Zauber (aus Levelups: 3+INT-Mod bei Stufe 1, +2 pro Stufe). Max. Zaubergrad: ${quotaStats.maxWizLvl}`}
+            style={{ cursor: 'help' }}
+          >
+            📖 <strong>Zauberbuch:</strong>{' '}
+            <strong style={{
+              color: quotaStats.wizBudget.overCap ? '#c0392b'
+                : quotaStats.wizBudget.atCap ? '#1a6b1a'
+                : 'var(--red)',
+            }}>
+              {quotaStats.wizBudget.currentNonCantrip}
+            </strong>{' '}/ {quotaStats.wizBudget.maxFromLevelUps}{' '}
+            <span style={{ fontWeight: 'normal', color: 'var(--inkm)' }}>Zauber</span>
+            {quotaStats.wizBudget.currentCantrips > 0 && (
+              <span style={{ marginLeft: '5px', fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'normal' }}>
+                +{quotaStats.wizBudget.currentCantrips} Cantrips
               </span>
             )}
           </span>

@@ -14,6 +14,7 @@ import {
 } from '@core/ui/components/dialogs.js';
 import { SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE } from '@core/rules/RulesData.js';
 import { getEffectiveCasterLevel, getMaxSpellLevel } from '@core/rules/RulesSpells.js';
+import { computeWizardBudget } from '../wizardBudget';
 
 interface SpellLibraryListProps {
   pc: any;
@@ -117,6 +118,12 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
       perLevel[lvl] = { count: countAtLvl, maxKnown, isSpontaneous };
     }
 
+    // Wizard budget via shared helper
+    let wizBudget = null;
+    if (isWiz) {
+      wizBudget = computeWizardBudget(pc, learnedSpells);
+    }
+
     return {
       isWizard: isWiz,
       isSpontaneous: isSorc || isBard,
@@ -125,6 +132,7 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
       totalCurrent,
       totalMaxSpontaneous,
       perLevel,
+      wizBudget,
     };
   }, [pc, activeCasters, learnedSpells, minLvl, maxLvl]);
 
@@ -200,12 +208,25 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
             <span>
               ✨ <strong>Known Spells:</strong> {quotaStats.totalCurrent} / {quotaStats.totalMaxSpontaneous}
             </span>
-          ) : quotaStats.isWizard ? (
-            <span>
-              📖 <strong>Spellbook:</strong> {quotaStats.totalCurrent} Spells recorded{' '}
-              <span style={{ fontSize: '7px', color: '#2e7d32', fontWeight: 'normal' }}>
-                (Unlimited Scribing)
-              </span>
+          ) : quotaStats.isWizard && quotaStats.wizBudget ? (
+            <span
+              title={`Zauberbuch: ${quotaStats.wizBudget.currentCantrips} Cantrips + ${quotaStats.wizBudget.currentNonCantrip} / ${quotaStats.wizBudget.maxFromLevelUps} Nicht-Cantrip-Zauber aus Levelups.`}
+              style={{ cursor: 'help' }}
+            >
+              📖 <strong>Zauberbuch:</strong>{' '}
+              <strong style={{
+                color: quotaStats.wizBudget.overCap ? '#c0392b'
+                  : quotaStats.wizBudget.atCap ? '#1a6b1a'
+                  : 'var(--red)',
+              }}>
+                {quotaStats.wizBudget.currentNonCantrip}
+              </strong>{' '}/ {quotaStats.wizBudget.maxFromLevelUps}{' '}
+              <span style={{ fontWeight: 'normal', color: 'var(--inkm)', fontSize: '7px' }}>Zauber</span>
+              {quotaStats.wizBudget.currentCantrips > 0 && (
+                <span style={{ marginLeft: '5px', fontSize: '7px', color: 'var(--inkl)', fontWeight: 'normal' }}>
+                  +{quotaStats.wizBudget.currentCantrips} Cantrips
+                </span>
+              )}
             </span>
           ) : (
             <span>
@@ -215,8 +236,8 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
         </div>
 
         {quotaStats.isWizard && quotaStats.maxWizLvl >= 0 && (
-          <div style={{ fontSize: '7.5px', color: 'var(--red)', fontWeight: 'bold' }}>
-            Max Castable: Level {quotaStats.maxWizLvl}
+          <div style={{ fontSize: '7.5px', color: 'var(--inkm)' }}>
+            Max Grad {quotaStats.maxWizLvl}
           </div>
         )}
       </div>

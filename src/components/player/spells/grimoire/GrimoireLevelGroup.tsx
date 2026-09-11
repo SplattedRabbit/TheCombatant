@@ -14,7 +14,9 @@ import {
   SORCERER_KNOWN_TABLE,
   BARD_KNOWN_TABLE,
   getEffectiveCasterLevel,
+  getMaxSpellLevel,
 } from '@core/rules.js';
+import { getAblMod } from '../../attributeHelper';
 
 interface GrimoireLevelGroupProps {
   pc: any;
@@ -62,6 +64,20 @@ export const GrimoireLevelGroup: React.FC<GrimoireLevelGroupProps> = ({
     const cl = getEffectiveCasterLevel(pc, 'bard');
     const row = BARD_KNOWN_TABLE[Math.max(1, Math.min(20, cl))] || [];
     maxKnown = (maxKnown || 0) + (row[lvl] || 0);
+  }
+
+  // Wizard access calculation
+  const isWiz = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'wizard');
+  let wizAccessible = false;
+  let wizIntSufficient = false;
+  let wizMaxLvl = -1;
+  if (isWiz) {
+    const wizCL = getEffectiveCasterLevel(pc, 'wizard');
+    wizMaxLvl = getMaxSpellLevel('wizard', wizCL);
+    wizAccessible = lvl === 0 || lvl <= wizMaxLvl; // cantrips always accessible
+    const intScore = typeof pc.int?.getValue === 'function' ? pc.int.getValue() : (pc.int || 10);
+    const intMod = getAblMod(intScore);
+    wizIntSufficient = lvl === 0 || (10 + intMod) >= (10 + lvl); // INT ≥ 10 + spell level
   }
 
   let activeLevelSpells: any[] = [];
@@ -126,6 +142,24 @@ export const GrimoireLevelGroup: React.FC<GrimoireLevelGroupProps> = ({
           <span>Save DC: <strong>{10 + lvl + casterMod}</strong></span>
           {hasSpontaneous && maxKnown !== undefined ? (
             <span>Known: <strong style={{ color: 'var(--red)' }}>{learnedCountAtLvl}/{maxKnown}</strong></span>
+          ) : isWiz ? (
+            // Wizard: show accessibility gate, not a count limit
+            wizAccessible && wizIntSufficient ? (
+              <span title={`In Book: ${learnedCountAtLvl} spells. No cap — scribing unlimited.`}>
+                In Book: <strong style={{ color: '#1a6b1a' }}>{learnedCountAtLvl}</strong>{' '}
+                <span style={{ color: '#1a6b1a' }}>✓</span>
+              </span>
+            ) : !wizAccessible ? (
+              <span title={`Requires Wizard Level ${lvl * 2 - 1} to access Level ${lvl} spells. Current max: Level ${wizMaxLvl}.`}
+                style={{ color: 'var(--inkm)', cursor: 'help' }}>
+                🔒 Level {lvl <= wizMaxLvl + 1 ? `${lvl * 2 - 1} req.` : 'not yet'}
+              </span>
+            ) : (
+              <span title={`INT too low: need ${10 + lvl}, have ${typeof pc.int?.getValue === 'function' ? pc.int.getValue() : (pc.int || 10)}`}
+                style={{ color: '#c0392b', cursor: 'help' }}>
+                ⚠️ INT zu niedrig
+              </span>
+            )
           ) : (
             <span>In Book: <strong style={{ color: 'var(--red)' }}>{learnedCountAtLvl}</strong></span>
           )}
