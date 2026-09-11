@@ -1,7 +1,7 @@
 # Testing Strategy & Quality Assurance Architecture
 
 > **The Combatant** — D&D 3.5e Digital Combat Companion & Character Management System  
-> Dual Test Architecture: **314 Core Node Tests + 34 Vitest React Testing Library Tests (348 Total Tests)**
+> Dual Test Architecture: **Node.js Test Runner (Core Domain & Rules)** + **Vitest + React Testing Library (UI Components)**
 
 ---
 
@@ -41,9 +41,9 @@ graph TD
 
 | Scope | Command (PowerShell) | When to Use |
 |---|---|---|
-| **Core Suite** | `npm run test` | Validates all 314 rules, models, and storage suites |
+| **Core Suite** | `npm run test` | Validates all domain rules, models, and storage suites |
 | **Single Suite** | `node --import ./Tests/setup.js --test Tests/<file>.test.js` | Fast, token-efficient feedback during feature development |
-| **UI Suite** | `npm run test:ui` | Runs all 34 Vitest + React Testing Library component tests |
+| **UI Suite** | `npm run test:ui` | Runs all Vitest + React Testing Library component tests |
 | **Full Validation** | `npm run test:all` | Complete pre-release check (Core tests + UI tests) |
 | **Typecheck** | `npm run typecheck` | Static TypeScript compiler check (`tsc --noEmit`) |
 
