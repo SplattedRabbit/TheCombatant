@@ -106,7 +106,8 @@ export const BuffDetailsDialog: React.FC<BuffDetailsDialogProps> = ({
         if (uiRegistry && typeof uiRegistry.renderPlayerScreen === 'function') {
           uiRegistry.renderPlayerScreen();
         }
-      }
+      },
+      updatePCBatch: CombatState.updatePCBatch
     });
   };
 

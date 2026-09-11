@@ -72,7 +72,8 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
           if (uiRegistry && typeof uiRegistry.renderPlayerScreen === 'function') {
             uiRegistry.renderPlayerScreen();
           }
-        }
+        },
+        updatePCBatch: CombatState.updatePCBatch
       });
     }
   };
@@ -108,7 +109,8 @@ export const PCBuffsTab: React.FC<PCBuffsTabProps> = ({ pc }) => {
           if (uiRegistry && typeof uiRegistry.renderPlayerScreen === 'function') {
             uiRegistry.renderPlayerScreen();
           }
-        }
+        },
+        updatePCBatch: CombatState.updatePCBatch
       });
       if (eb.costType === 'charges' || eb.costType === 'daily') {
         CombatState.usePCItemCharge(eb.itemIdx, eb.cost || 1);

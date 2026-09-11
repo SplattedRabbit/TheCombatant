@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { Combatant } from '../js/models/Combatant.js';
 import { CombatSpells } from '../js/spells.js';
 import { activateBuffByKey } from '../js/rules/BuffRules.js';
-import { getState, getActivePC } from '../js/state.js';
+import { getState, getActivePC, updatePCBatch } from '../js/state.js';
 import { showCustomConfirm, showCustomAlert, showCustomPrompt } from '../js/ui/components/dialogs.js';
 
 // Setup spell registry from spells_de.json to mimic the runtime app
@@ -85,7 +85,7 @@ test('Spell Buff Phase 2 - Prepared caster slot deduction', async () => {
 
   confirmTriggered = false;
   // Activate buff
-  activateBuffByKey(pc, 'bulls_strength', false, { showCustomConfirm, showCustomAlert, showCustomPrompt });
+  activateBuffByKey(pc, 'bulls_strength', false, { showCustomConfirm, showCustomAlert, showCustomPrompt, updatePCBatch });
 
   await sleep(100);
 
@@ -113,7 +113,7 @@ test('Spell Buff Phase 2 - Spontaneous caster slot deduction', async () => {
 
   confirmTriggered = false;
   // Activate buff
-  activateBuffByKey(pc, 'bulls_strength', false, { showCustomConfirm, showCustomAlert, showCustomPrompt });
+  activateBuffByKey(pc, 'bulls_strength', false, { showCustomConfirm, showCustomAlert, showCustomPrompt, updatePCBatch });
 
   await sleep(100);
 
@@ -140,7 +140,7 @@ test('Spell Buff Phase 2 - No slots available confirmation override', async () =
   confirmTriggered = false;
 
   // Activate buff (should trigger confirm dialog)
-  activateBuffByKey(pc, 'bulls_strength', false, { showCustomConfirm, showCustomAlert, showCustomPrompt });
+  activateBuffByKey(pc, 'bulls_strength', false, { showCustomConfirm, showCustomAlert, showCustomPrompt, updatePCBatch });
 
   await sleep(100);
 

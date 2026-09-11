@@ -1,16 +1,15 @@
 /**
  * @module    AttackContext
  * @summary   Baut das initiale Kontext-Objekt auf und normalisiert Fähigkeiten, Toggles, Waffengriffe und Feat-Prüfungen.
- * @exports   buildContext(pc, weapon, options)
+ * @exports   buildContext(pc, weapon, options, allCombatants)
  * @reads     pc.bab, pc.feats, pc.str/dex/cha, pc.activeShape, pc.isSmiteActive, pc.isFavoredEnemyActive, pc.isSneakAttacking, weapon.*
- * @stateOps  keine
+ * @stateOps  keine — allCombatants (für geteilte Verbündeten-Buffs) wird vom Aufrufer (AttackEngine.js) als Parameter übergeben, kein direkter State-Import
  * @depends   isLightWeapon (../../models/Weapon.js)
  * @notHere   Sequenz-Generierung -> SequenceBuilder.js
  */
 
 import { isLightWeapon } from '../../models/Weapon.js';
 import { CombatSpells } from '../../spells.js';
-import { CombatState } from '../../state.js';
 
 function getTypeLabel(type) {
   const labels = {
@@ -26,9 +25,9 @@ function getTypeLabel(type) {
   return labels[type] || type;
 }
 
-function resolveAtkDmgBuffs(pc, target) {
+function resolveAtkDmgBuffs(pc, target, allCombatants) {
   const effects = [];
-  
+
   // 1. Eigene/lokale Buffs
   if (Array.isArray(pc.activeBuffs)) {
     pc.activeBuffs.forEach(buff => {
@@ -69,18 +68,28 @@ function resolveAtkDmgBuffs(pc, target) {
   }
 
   // 2. Geteilte/remote Buffs von Verbündeten
-  try {
-    const state = CombatState.getState();
-    if (state && Array.isArray(state.combatants)) {
-      state.combatants.forEach(other => {
-        if (other.id === pc.id) return;
-        if (Array.isArray(other.activeBuffs)) {
-          other.activeBuffs.forEach(buff => {
-            if (buff.sharedWith && Array.isArray(buff.sharedWith) && buff.sharedWith.includes(pc.id)) {
-              const remoteSource = (buff.name || 'Ally Buff') + ` (${other.name || 'Ally'})`;
-              
-              if (Array.isArray(buff.effects)) {
-                buff.effects.forEach(eff => {
+  if (Array.isArray(allCombatants)) {
+    allCombatants.forEach(other => {
+      if (other.id === pc.id) return;
+      if (Array.isArray(other.activeBuffs)) {
+        other.activeBuffs.forEach(buff => {
+          if (buff.sharedWith && Array.isArray(buff.sharedWith) && buff.sharedWith.includes(pc.id)) {
+            const remoteSource = (buff.name || 'Ally Buff') + ` (${other.name || 'Ally'})`;
+
+            if (Array.isArray(buff.effects)) {
+              buff.effects.forEach(eff => {
+                if (eff.target === target) {
+                  effects.push({
+                    value: parseInt(eff.value) || 0,
+                    type: eff.type || 'untyped',
+                    source: remoteSource
+                  });
+                }
+              });
+            } else if (buff.spellKey) {
+              const spell = CombatSpells.REGISTRY?.[buff.spellKey];
+              if (spell && Array.isArray(spell.effects)) {
+                spell.effects.forEach(eff => {
                   if (eff.target === target) {
                     effects.push({
                       value: parseInt(eff.value) || 0,
@@ -89,27 +98,12 @@ function resolveAtkDmgBuffs(pc, target) {
                     });
                   }
                 });
-              } else if (buff.spellKey) {
-                const spell = CombatSpells.REGISTRY?.[buff.spellKey];
-                if (spell && Array.isArray(spell.effects)) {
-                  spell.effects.forEach(eff => {
-                    if (eff.target === target) {
-                      effects.push({
-                        value: parseInt(eff.value) || 0,
-                        type: eff.type || 'untyped',
-                        source: remoteSource
-                      });
-                    }
-                  });
-                }
               }
             }
-          });
-        }
-      });
-    }
-  } catch (e) {
-    console.error('Error resolving remote attack/damage buffs:', e);
+          }
+        });
+      }
+    });
   }
 
   const groupedBoni = {};
@@ -165,7 +159,7 @@ function resolveAtkDmgBuffs(pc, target) {
   };
 }
 
-export function buildContext(pc, weapon, options = {}) {
+export function buildContext(pc, weapon, options = {}, allCombatants = []) {
   const normalizedOptions = {
     smite: options.smite !== undefined ? !!options.smite : !!pc.isSmiteActive,
     favoredEnemy: options.favoredEnemy !== undefined ? !!options.favoredEnemy : !!pc.isFavoredEnemyActive,
@@ -215,19 +209,14 @@ export function buildContext(pc, weapon, options = {}) {
     }
 
     // 2. Remote Buffs prüfen
-    try {
-      const state = CombatState.getState();
-      if (state && Array.isArray(state.combatants)) {
-        return state.combatants.some(other => {
-          if (other.id === pc.id) return false;
-          return Array.isArray(other.activeBuffs) && other.activeBuffs.some(b => {
-            if (b.spellKey !== spellKey) return false;
-            return b.sharedWith && Array.isArray(b.sharedWith) && b.sharedWith.includes(pc.id);
-          });
+    if (Array.isArray(allCombatants)) {
+      return allCombatants.some(other => {
+        if (other.id === pc.id) return false;
+        return Array.isArray(other.activeBuffs) && other.activeBuffs.some(b => {
+          if (b.spellKey !== spellKey) return false;
+          return b.sharedWith && Array.isArray(b.sharedWith) && b.sharedWith.includes(pc.id);
         });
-      }
-    } catch (e) {
-      console.error('Error in hasBuff remote check:', e);
+      });
     }
     return false;
   };
@@ -248,8 +237,8 @@ export function buildContext(pc, weapon, options = {}) {
 
   const isOffhand = weapon.grip === 'sec' || isSecondary || weapon.hand === 'off' || !!normalizedOptions.isOffhandAttack;
 
-  const atkResolution = resolveAtkDmgBuffs(pc, 'atk');
-  const dmgResolution = resolveAtkDmgBuffs(pc, 'dmg');
+  const atkResolution = resolveAtkDmgBuffs(pc, 'atk', allCombatants);
+  const dmgResolution = resolveAtkDmgBuffs(pc, 'dmg', allCombatants);
 
   return {
     pc,

@@ -120,7 +120,7 @@ test('WebRTC Buff Propagation - Remote Attack Buff & Source Breakdown', () => {
   // Test charB (Bari) attack context.
   // Bari has BAB +3. Str mod +0.
   // Should receive +1 morale bonus from Alistair's Bless -> total attack bonus +4 (buff bonus: +1)
-  const ctxB = buildContext(charB, weapon);
+  const ctxB = buildContext(charB, weapon, {}, state.combatants);
   assert.strictEqual(ctxB.buffAtkBonus, 1, `Bari's buff attack bonus should be 1, but was ${ctxB.buffAtkBonus}`);
   
   // Verify breakdown includes "Segen (Alistair)"

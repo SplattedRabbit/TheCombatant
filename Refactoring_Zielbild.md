@@ -427,7 +427,7 @@ Den Widerspruch zwischen der in `AGENT.md` §9 behaupteten "100% eingehalten"-Co
 
 ---
 
-## WP7 (⬜): js/-Layer: Rules→State-Kopplung auflösen
+## WP7 (✅): js/-Layer: Rules→State-Kopplung auflösen
 
 ### Ziel
 Die direkte Kopplung von Regel-Engines an den globalen State auflösen, um die Rules-Schicht unabhängig testbar zu machen.
@@ -439,6 +439,8 @@ Folgende Dateien importieren `CombatState` direkt, statt benötigte Daten als Fu
 - `js/models/helpers/modifiers/SpellModifierApplier.js` (Zeile ~13)
 
 Diese direkte Kopplung verletzt die in `docs/ARCHITECTURE.md` beschriebene Schichtentrennung (Rules-Engines sollen zustandslos/reine Funktionen sein) und erschwert Unit-Tests der Rules-Schicht ohne vollständigen State-Mock.
+
+**Präzisierung bei der Umsetzung (2026-09-11):** `AttackContext.js` und `SpellModifierApplier.js` nutzten `CombatState` ausschließlich lesend (`getState().combatants`, für geteilte Verbündeten-Buffs). `BuffRules.js` hingegen nutzte `CombatState.updatePCBatch(...)` als **Schreib**-Aufruf innerhalb von `activateBuffByKey()` — kein einfacher Datenparameter, sondern eine Zustandsänderung. Für die Lesezugriffe wurde die Kopplung eine Ebene höher zum jeweiligen Orchestrator verschoben (State-Read bleibt dort, wird aber als Parameter durchgereicht); für den Schreibzugriff wurde das bereits bestehende `dialogs`-Callback-Objekt in `activateBuffByKey()` um `updatePCBatch` erweitert (analog zu `showCustomConfirm`/`showCustomAlert`), sodass der Aufrufer den Callback injiziert statt `BuffRules.js` selbst `CombatState` importieren zu lassen.
 
 ### Agenten-Prompt
 ```
@@ -488,10 +490,14 @@ Worauf achten:
 - `AGENT.md` §6 (Anti-Patterns) — ggf. ergänzen, dass diese Kopplung ein behobenes Anti-Pattern war
 
 ### Definition of Done
-- [ ] AttackContext.js, BuffRules.js, SpellModifierApplier.js importieren CombatState nicht mehr direkt
-- [ ] Alle Aufrufstellen angepasst und übergeben benötigte Daten explizit
-- [ ] Test-Suite grün, manuelle Verifikation im Dev-Server für mind. ein Kampf-Szenario durchgeführt
-- [ ] Kein Verhaltensunterschied festgestellt
+- [x] AttackContext.js, BuffRules.js, SpellModifierApplier.js importieren CombatState nicht mehr direkt — verifiziert per Grep, kein `import ... CombatState` mehr in den drei Dateien (nur noch Erwähnung in Kommentar/Fehlermeldungstext in BuffRules.js).
+- [x] Alle Aufrufstellen angepasst und übergeben benötigte Daten explizit:
+  - `buildContext(pc, weapon, options, allCombatants)` — einziger Aufrufer `js/rules/AttackEngine.js` liest `CombatState.getState().combatants` und reicht es durch; die einzige direkte Test-Aufrufstelle (`Tests/spell_buff_network.test.js`) wurde ebenfalls angepasst.
+  - `applySpellModifiers(pc, allCombatants)` — einziger Aufrufer `js/models/helpers/modifiers/CombatantModifiers.js` (`rebuildCombatantModifiers`) liest und reicht durch.
+  - `activateBuffByKey(pc, key, isClass, dialogs)` — `dialogs.updatePCBatch` ist jetzt Pflichtparameter (wirft Fehler, wenn keine Funktion übergeben wird). Alle 3 Aufrufstellen angepasst: `src/components/dialogs/buffs/BuffDetailsDialog.tsx`, `src/components/player/PCBuffsTab.tsx` (2 Aufrufe) — jeweils `updatePCBatch: CombatState.updatePCBatch` ergänzt (CombatState war dort bereits importiert); `Tests/spell_buff_integration_phase2.test.js` (3 Aufrufe) — `updatePCBatch` aus `js/state.js` importiert und übergeben.
+  - `isBuffSuppressed()` unverändert gelassen (siehe Vorgabe im Agenten-Prompt).
+- [x] Test-Suite grün — `npm test` (Node-Suite) läuft nach jeder der drei Dateien einzeln mit exakt denselben 16 vorbestehenden WSL-spezifischen Fehlschlägen (dokumentiertes Umgebungsproblem aus WP5: `.ts`-Importe unter Node sowie `@rollup/rollup-linux-x64-gnu`; Windows x64 ist die primäre Entwicklungsumgebung, dort nicht reproduzierbar), keine neuen Fehlschläge. Manuelle Dev-Server-Verifikation im Browser war unter WSL wegen desselben Rollup-Problems nicht möglich; ersatzweise wurde ein Kampf-Szenario (geteilter "Bless"-Buff eines Verbündeten auf Angriffsbonus) direkt über die Produktionsfunktionen (`AttackEngine.calculateAttackSequence` → `buildContext`) in einem eigenständigen Node-Skript nachgestellt und als unverändert korrekt verifiziert (Angriffsbonus inkl. Buff-Breakdown-Eintrag "Segen (Cleric)" wie erwartet).
+- [x] Kein Verhaltensunterschied festgestellt — Datenfluss identisch (dieselbe `state.combatants`-Referenz wird nur eine Ebene höher gelesen und als Parameter durchgereicht statt intern importiert), keine Assertion in bestehenden Tests musste inhaltlich geändert werden (nur Aufruf-Signaturen in 2 Testdateien).
 
 ---
 

@@ -2,13 +2,14 @@
  * @module    AttackEngine
  * @summary   Fassade — Orchestriert die Angriffs- und Schadensberechnungssequenzen für Spieler, Gegner und Tiergestalten.
  * @exports   AttackEngine (object)
- * @reads     keine (delegiert an Sub-Helper)
- * @stateOps  keine (pure Berechnungslogik)
- * @depends   AttackContext, BaseAttackCalculator, ModifierCalculator, SequenceBuilder
+ * @reads     CombatState.getState().combatants (für geteilte Verbündeten-Buffs, wird an buildContext() durchgereicht)
+ * @stateOps  keine (pure Berechnungslogik) — liest CombatState nur, um es als Parameter an AttackContext.js zu übergeben
+ * @depends   AttackContext, BaseAttackCalculator, ModifierCalculator, SequenceBuilder, CombatState
  * @notHere   Konkrete Teilberechnungen -> js/rules/attack/*
  */
 
 import { buildContext } from './attack/AttackContext.js';
+import { CombatState } from '../state.js';
 import {
   calculateBaseAttacks,
   calculateTWFPenalties,
@@ -41,7 +42,9 @@ export const AttackEngine = {
     if (!pc || !weapon) return sequence;
 
     // 1. Gather all baseline attributes & statuses
-    const ctx = buildContext(pc, weapon, options);
+    const state = CombatState.getState();
+    const allCombatants = (state && Array.isArray(state.combatants)) ? state.combatants : [];
+    const ctx = buildContext(pc, weapon, options, allCombatants);
 
     // 2. Resolve basic BAB/natural attack counts
     const baseAttacks = calculateBaseAttacks(ctx, isFullAttack);

@@ -1,11 +1,11 @@
 /**
  * @module    BuffRules
  * @summary   Domain rules logic for D&D 3.5e buffs stacking, scaling value resolution, and round duration tracking.
- * @exports   resolveSpellEffectValue, calculateDurationRounds, checkBuffConflict, translateTarget, translateType
+ * @exports   resolveSpellEffectValue, calculateDurationRounds, checkBuffConflict, translateTarget, translateType, activateBuffByKey
+ * @stateOps  keine direkte — activateBuffByKey() erhält updatePCBatch als injizierten Callback im dialogs-Parameter statt CombatState selbst zu importieren
  */
 import { CLASS_BUFFS } from '../data/class-buffs-data.js';
 import { CombatSpells, findSpell } from '../spells.js';
-import { CombatState } from '../state.js';
 
 
 export function translateTarget(target) {
@@ -262,8 +262,13 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
     showCustomConfirm = (title, msg, onConfirm) => onConfirm(),
     showCustomAlert = () => {},
     showCustomPrompt = (title, msg, def, onConfirm) => onConfirm(def),
-    renderPlayerScreen = () => {}
+    renderPlayerScreen = () => {},
+    updatePCBatch
   } = dialogs;
+
+  if (typeof updatePCBatch !== 'function') {
+    throw new Error('activateBuffByKey: dialogs.updatePCBatch (CombatState.updatePCBatch) muss übergeben werden.');
+  }
 
   let hasScaling = false;
   let durationFormula = '';
@@ -309,7 +314,7 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
     const rounds = calculateDurationRounds(durationFormula, casterLevel);
 
     const activate = () => {
-      CombatState.updatePCBatch(freshPc => {
+      updatePCBatch(freshPc => {
         if (shouldDeduct && !isClass) {
           const spellData = findSpell(freshPc, key);
           if (spellData) {

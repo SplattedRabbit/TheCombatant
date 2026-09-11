@@ -2,9 +2,9 @@
  * @module    CombatantModifiers
  * @summary   Orchestriert das Leeren und Neuberechnen aller temporären Modifikatoren auf den Stat-Instanzen des Charakters.
  * @exports   rebuildCombatantModifiers(pc)
- * @reads     pc.str, pc.dex, pc.con, pc.int, pc.wis, pc.cha, pc.baseZa, pc.baseRef, pc.baseWil, pc.bab, pc.ac, pc.acTouch, pc.acFlat, pc.za, pc.ref, pc.wil
- * @stateOps  keine
- * @depends   ItemModifierApplier, BaseSavingThrowModifierApplier, SpellModifierApplier, ClassModifierApplier, FeatModifierApplier, SpeedRecalculator
+ * @reads     pc.str, pc.dex, pc.con, pc.int, pc.wis, pc.cha, pc.baseZa, pc.baseRef, pc.baseWil, pc.bab, pc.ac, pc.acTouch, pc.acFlat, pc.za, pc.ref, pc.wil, CombatState.getState().combatants (für geteilte Verbündeten-Buffs, wird an SpellModifierApplier.js durchgereicht)
+ * @stateOps  keine — liest CombatState nur, um es als Parameter an applySpellModifiers() zu übergeben
+ * @depends   ItemModifierApplier, BaseSavingThrowModifierApplier, SpellModifierApplier, ClassModifierApplier, FeatModifierApplier, SpeedRecalculator, CombatState
  * @notHere   Konkrete Boni-Berechnungen -> Sub-Helper Dateien (ItemModifierApplier etc.)
  */
 
@@ -14,6 +14,7 @@ import { applySpellModifiers } from './SpellModifierApplier.js';
 import { applyClassModifiers } from './ClassModifierApplier.js';
 import { applyFeatModifiers } from './FeatModifierApplier.js';
 import { recalculateSpeed } from './SpeedRecalculator.js';
+import { CombatState } from '../../../state.js';
 
 export function rebuildCombatantModifiers(pc) {
   const statsList = [
@@ -45,7 +46,9 @@ export function rebuildCombatantModifiers(pc) {
     return s >= 10 ? Math.floor((s - 10) / 2) : (s === 9 || s === 8 ? -1 : (s === 7 || s === 6 ? -2 : (s === 5 || s === 4 ? -4 : -5)));
   };
 
-  applySpellModifiers(pc);
+  const state = CombatState.getState();
+  const allCombatants = (state && Array.isArray(state.combatants)) ? state.combatants : [];
+  applySpellModifiers(pc, allCombatants);
   applyClassModifiers(pc, getMod);
   applyFeatModifiers(pc, getMod);
   applyBaseSavingThrowModifiers(pc, getMod);

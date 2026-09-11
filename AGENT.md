@@ -134,6 +134,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - PHB/DMG-Rohtexte in den Kontext laden — `scratch/search_phb.js` / `scratch/search_dmg.js` nutzen
 - Zeilennummern in `AGENT.md` eintragen — veralten sofort, nur Funktionsnamen
 - Halbe Ränge bei cross-class skills verbessern den Wurf nicht — beim Modifikator immer `Math.floor`
+- `CombatState` direkt in Rules-Engines (`js/rules/`, `js/models/helpers/modifiers/`) importieren — Rules-Funktionen erhalten benötigte State-Daten (z. B. `allCombatants` für geteilte Buffs) als expliziten Parameter vom Aufrufer, Schreibzugriffe (z. B. `updatePCBatch`) als injizierten Callback (behobenes Anti-Pattern, siehe `Refactoring_Zielbild.md` WP7: `AttackContext.js`, `BuffRules.js`, `SpellModifierApplier.js`)
 
 ---
 
