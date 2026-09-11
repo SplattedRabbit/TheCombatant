@@ -47,27 +47,27 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 
 | Feature               | Primärdatei(en)                                          | Sekundär / Aufrufer                          |
 |-----------------------|----------------------------------------------------------|----------------------------------------------|
-| Wild Shape            | `js/models/helpers/classes/DruidHelper.js`                | `Combatant.js`, `PCOffense.js`, `DruidFeatures.js` |
-| Natürliche Angriffe   | `js/ui/components/player/offense/NaturalAttacksRenderer.js` (`SHAPE_ATTACKS`) | `js/rules/AttackEngine.js` (`isNatural`), `PCOffense.js` |
-| Magische Gegenstände  | `js/models/Item.js`, `PCMagicItemsTab.js`                | `js/state/PCManager.js` (`addPCItem*`)       |
-| Waffen-UI             | `js/ui/components/player/offense/WeaponStashCard.js`, `src/components/player/offense/WeaponStashCard.tsx` | `AttackEngine.js`, `js/models/Weapon.js`, `InventoryStashRenderer.js` |
-| Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `offense/ArmorStashCard.js`, `src/components/player/offense/ArmorStashCard.tsx` | `PCOffense.js`, `InventoryStashRenderer.js`  |
-| Ausrüstung (React)    | `src/components/player/PCOffenseTab.tsx`, `ActiveEquipmentSlots.tsx` | `PlayerSheet.tsx` |
-| Angriffs-Engine       | `js/rules/AttackEngine.js`, `js/rules/attack/`           | `PCOffense.js`, `dialogs/AttackChoiceDialog.js` |
+| Wild Shape            | `js/models/helpers/classes/DruidHelper.js`                | `Combatant.js`, `src/components/player/features/DruidFeaturesCard.tsx` |
+| Natürliche Angriffe   | `src/components/player/offense/slots/NaturalAttacksSection.tsx` | `js/rules/attack/AttackContext.js`, `js/rules/attack/BaseAttackCalculator.js` |
+| Magische Gegenstände  | `js/models/Item.js`, `src/components/player/PCMagicItemsTab.tsx` | `js/state/PCManager.js` (`addPCItem*`)       |
+| Waffen-UI             | `src/components/player/offense/WeaponStashCard.tsx`      | `AttackEngine.js`, `js/models/Weapon.js`     |
+| Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `src/components/player/offense/ArmorStashCard.tsx` | `PCOffenseTab.tsx`                           |
+| Ausrüstung (React)    | `src/components/player/PCOffenseTab.tsx`, `src/components/player/offense/ActiveEquipmentSlots.tsx` | `PlayerSheet.tsx` |
+| Angriffs-Engine       | `js/rules/AttackEngine.js`, `js/rules/attack/`           | `PCOffenseTab.tsx`, `js/ui/dialogs/AttackChoiceDialog.js` |
 | Rettungswürfe         | `js/rules/SaveCalculator.js`                             | `js/models/Combatant.js`, `helpers/modifiers/` |
-| Zauber / Slots        | `PCSpellbookTab.js`, `PCCompendiumTab.js`, `helpers/spells/CombatantSpells.js` | `SpellSlotCalculator.js`, `Combatant.js` |
-| Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `js/ui/components/class-features/` |
-| Talente               | `js/data/feats-data.js`, `js/data/feats-combat.js`, `js/data/feats-magic.js`, `js/data/feats-general.js` | `PCManager.js` (`addPCFeat`), `PCFeatsTab.js` |
-| WebRTC-Auren & Buffs  | `js/models/helpers/modifiers/SpellModifierApplier.js`, `js/rules/attack/AttackContext.js` | `js/network/SyncProtocol.js` |
-| Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.js`, `PCOffenseTab.tsx` |
-| Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `offense/WeaponStashCard.js`, `AttackEngine.js`, `PCOffenseTab.tsx` |
-| Initiative / RK       | `PCDefenses.js`                                          | `Combatant.js`, `helpers/modifiers/`         |
-| HP & Globe            | `PCHealthGlobe.js`                                       | `PCManager.js` (`applyDamage`/`applyHeal`)  |
-| Netzwerk-Sync         | `js/network/SyncProtocol.js`                             | `NetworkManager.js`, `MessageQueue.js`       |
+| Zauber / Slots        | `src/components/player/PCSpellbookTab.tsx`, `src/components/player/PCSpellsTab.tsx`, `helpers/spells/CombatantSpells.js` | `js/rules/SpellSlotCalculator.js`, `Combatant.js` |
+| Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `src/components/player/features/` (z.B. `UnifiedFeatureCard.tsx`) |
+| Talente               | `js/data/feats-data.js` (Fassade), `js/data/feats/combat/`, `js/data/feats/general/`, `js/data/feats/magic/` (je nach Quellbuch `phb`/`phb2`/`ca`/`cs`) | `PCManager.js` (`addPCFeat`), `src/components/player/PCFeatsTab.tsx` |
+| Auren & Buffs         | `js/models/helpers/modifiers/SpellModifierApplier.js`, `js/rules/attack/AttackContext.js`, `js/rules/BuffRules.js` | `js/network/SyncProtocol.js` (Sync über Supabase Realtime, kein WebRTC) |
+| Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.tsx`, `PCOffenseTab.tsx` |
+| Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `offense/WeaponStashCard.tsx`, `AttackEngine.js`, `PCOffenseTab.tsx` |
+| Initiative / RK       | `src/components/player/PCDefenses.tsx`, `src/components/player/PCDefensesTab.tsx` | `Combatant.js`, `helpers/modifiers/` |
+| HP & Globe            | `src/components/player/PCHealthGlobe.tsx`                | `PCManager.js` (`applyDamage`/`applyHeal`)  |
+| Netzwerk-Sync         | `js/network/SyncProtocol.js`                             | `js/network/MessageQueue.js`, `js/network/DeltaRenderer.js` (Supabase Realtime; PeerJS/WebRTC-`NetworkManager.js` entfernt) |
 | Service Worker / Cache| `service-worker.js`, `scratch/update_sw.js`              | `index.html`                                 |
 | DM-Screen & Init-Bar  | `src/components/dm/DMScreen.tsx`, `DMCombatantsTable.tsx`, `InitBar.tsx` | `src/App.tsx`, `src/components/player/PlayerSheet.tsx` |
 | Kampf-Verwaltung      | `js/state/EncounterManager.js`, `js/state/ConditionManager.js`, `js/state/ConcentrationManager.js`, `js/state/EncounterSamples.js` | `js/state.js`, `js/network/SyncProtocol.js`, `Tests/` |
-| Prestige Classes      | `js/rules/classValidation.js` (Voraussetzungen), `js/rules/prestigeClassEngine.js` (Stufen-Features), `js/data/prestigeClasses-dmg.js` (Registry + UI-Metadaten) | `src/components/player/features/PrestigeClassFeaturesCard.tsx`, `PCAttributes.tsx`, `Step3LevelConfig.tsx`, `Tests/prestige.test.js`, `Tests/prestigeClassEngine.test.js` |
+| Prestige Classes      | `js/rules/classValidation.js` (Voraussetzungen), `js/rules/prestigeClassEngine.js` (Stufen-Features), `js/data/prestigeClasses-data.js` (Fassade, mergt `-dmg.js`/`-cs.js`/`-ca.js`) | `src/components/player/features/PrestigeClassFeaturesCard.tsx`, `PCAttributes.tsx`, `Step3LevelConfig.tsx`, `Tests/prestige.test.js`, `Tests/prestigeClassEngine.test.js`, `Tests/prestige_guidance.test.js` |
 
 ---
 
