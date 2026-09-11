@@ -15,6 +15,22 @@
 
 ---
 
+## Aktueller Stand (Stand 2026-09-11, Ende der Session)
+
+**WP1–WP7 sind abgeschlossen**, committed und auf `origin/refactoring/wp1-wp10-cleanup` gepusht (letzter Commit dieses Branches: `274352e`, Merge von `main`). Der Branch ist sauber (kein uncommitteter Stand), lokale und Remote-Branch-Historie sind identisch.
+
+**Nächster Schritt: WP8** (siehe unten) — noch nicht begonnen.
+
+**Nebenbei erledigt (nicht Teil der WP-Nummerierung):** Ein UI-Lesbarkeitsfix für `AttackChoiceDialog.tsx`/`DamageChoiceDialog.tsx` (zu kleine Schrift/Breite) wurde direkt auf `main` committed (`dbbfa52`) und anschließend konfliktfrei in `refactoring/wp1-wp10-cleanup` gemergt, damit beide Branches synchron bleiben. Reines Styling, keine Logikänderung, keine Testauswirkung.
+
+**Bekannte Umgebungs-Baseline (nicht neu, seit WP5 dokumentiert):** `npm test` zeigt unter WSL/Linux 292 Pass / 16 Fail. Diese 16 Fehlschläge sind ein bekanntes Umgebungsproblem (`.ts`-Importe unter Node sowie `@rollup/rollup-linux-x64-gnu`, siehe WP5-Befund) und **kein** Hinweis auf einen Regressions-Bug — unter Windows x64 (primäre Entwicklungsumgebung) treten sie nicht auf. Vor WP8 nicht erneut untersuchen, einfach als Baseline übernehmen.
+
+**Für den Einstieg morgen/später:**
+1. `git status` und `git log --oneline -5` prüfen, um zu bestätigen, dass der Stand noch `274352e` (oder neuer, falls zwischenzeitlich manuell getestet/geändert wurde) entspricht.
+2. Direkt mit WP8 (Ausgangslage unten) beginnen — Teil A zuerst (Formel-Klärung per PHB-Suche), dann Teil B (Stacking-Logik).
+
+---
+
 ## Empfohlene Reihenfolge
 
 1. **WP1–WP4 zuerst** – reine Dokumentations- und Aufräumarbeiten ohne Laufzeitrisiko. Können unabhängig voneinander und ggf. parallel bearbeitet werden (mit Ausnahme der Abhängigkeit WP1 → WP4, siehe dort).
