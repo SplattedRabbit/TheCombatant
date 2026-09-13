@@ -115,10 +115,12 @@ export const PCFeatsTab: React.FC = () => {
     let rangerFilled = 0;
     let generalFilled = 0;
 
-    for (const f of activeFeats) {
+    for (const f of combinedFeats) {
       const featDef = CombatFeats.REGISTRY[f.id];
       if (!featDef) continue;
-      if (dragonShamanMax > 0 && dragonShamanFilled < dragonShamanMax && f.id === 'skill_focus') {
+      if (hasRanger && rangerBonusIds.includes(f.id) && rangerFilled < rangerMax) {
+        rangerFilled++;
+      } else if (dragonShamanMax > 0 && dragonShamanFilled < dragonShamanMax && f.id === 'skill_focus') {
         dragonShamanFilled++;
       } else if (monkMax > 0 && monkFilled < monkMax && monkBonusIds.includes(f.id)) {
         monkFilled++;
@@ -126,17 +128,15 @@ export const PCFeatsTab: React.FC = () => {
         wizardFilled++;
       } else if (fighterMax > 0 && fighterFilled < fighterMax && featDef.category === 'combat') {
         fighterFilled++;
-      } else if (rangerMax > 0 && rangerFilled < rangerMax && rangerBonusIds.includes(f.id)) {
-        rangerFilled++;
-      } else {
+      } else if (!f.isAutomatic) {
         generalFilled++;
       }
     }
 
     return { generalFilled, fighterFilled, wizardFilled, monkFilled, dragonShamanFilled, rangerFilled };
-  }, [activeFeats, monkMax, wizardMax, fighterMax, dragonShamanMax, rangerMax, rangerBonusIds]);
+  }, [combinedFeats, monkMax, wizardMax, fighterMax, dragonShamanMax, rangerMax, rangerBonusIds, hasRanger]);
 
-  const isLimitReached = useMemo(() => activeFeats.length >= totalMax, [activeFeats.length, totalMax]);
+  const isLimitReached = useMemo(() => combinedFeats.length >= totalMax, [combinedFeats.length, totalMax]);
 
   const handleFeatRowClick = (feat: any, isLearned: boolean, option?: string, e?: React.MouseEvent) => {
     showFeatScrollDialog(feat, pc, isLearned, option || '', e?.nativeEvent);

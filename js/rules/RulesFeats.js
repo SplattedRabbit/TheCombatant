@@ -48,6 +48,13 @@ export function calculateMaxFeats(pc) {
     maxFeats += dsl >= 16 ? 3 : (dsl >= 8 ? 2 : (dsl >= 2 ? 1 : 0));
   }
 
+  // Ranger bonus feats (Track at 1, Combat Style at 2, Endurance at 3, Imp. Combat Style at 6, Mastery at 11)
+  const rangerClass = activeClasses.find(c => c.classType === 'ranger');
+  if (rangerClass) {
+    const rl = rangerClass.level || 0;
+    maxFeats += rl >= 11 ? 5 : (rl >= 6 ? 4 : (rl >= 3 ? 3 : (rl >= 2 ? 2 : (rl >= 1 ? 1 : 0))));
+  }
+
   return maxFeats;
 }
 
@@ -72,12 +79,20 @@ export function validateFeatsAssignment(pc, featsList) {
   const dsClass = activeClasses.find(c => c.classType === 'dragon_shaman');
   let dsMax = dsClass ? ((dsClass.level || 0) >= 16 ? 3 : ((dsClass.level || 0) >= 8 ? 2 : ((dsClass.level || 0) >= 2 ? 1 : 0))) : 0;
 
-  const totalMax = generalMax + fighterMax + wizardMax + monkMax + dsMax;
+  const rangerClass = activeClasses.find(c => c.classType === 'ranger');
+  let rangerMax = 0;
+  if (rangerClass) {
+    const rl = rangerClass.level || 0;
+    rangerMax = rl >= 11 ? 5 : (rl >= 6 ? 4 : (rl >= 3 ? 3 : (rl >= 2 ? 2 : (rl >= 1 ? 1 : 0))));
+  }
+
+  const totalMax = generalMax + fighterMax + wizardMax + monkMax + dsMax + rangerMax;
   if (featsList.length > totalMax) {
     return { success: false, error: `Feat limit exceeded (Maximum ${totalMax} feats allowed, you have selected ${featsList.length}).` };
   }
 
   const monkBonusIds = ['improved_unarmed_strike', 'improved_grapple', 'deflect_arrows', 'snatch_arrows', 'stunning_fist', 'improved_trip', 'improved_overrun'];
+  const rangerBonusIds = ['track', 'endurance', 'rapid_shot', 'two_weapon_fighting', 'manyshot', 'improved_two_weapon_fighting', 'improved_precise_shot', 'greater_two_weapon_fighting'];
 
   const dsTotemKey = pc.dragonTotem || (dsClass ? 'red' : null);
   const dsTotemDef = dsTotemKey && DRAGON_TOTEMS ? DRAGON_TOTEMS[dsTotemKey] : null;
@@ -97,6 +112,7 @@ export function validateFeatsAssignment(pc, featsList) {
   let wizardFilled = 0;
   let fighterFilled = 0;
   let dsFilled = 0;
+  let rangerFilled = 0;
   let unassigned = [];
 
   for (const f of featsList) {
@@ -108,8 +124,6 @@ export function validateFeatsAssignment(pc, featsList) {
     if (dsMax > 0 && dsFilled < dsMax && f.id === 'skill_focus') {
       const isTotem = matchesSkillList(f.option, dsTotemSkills);
       const isClass = matchesSkillList(f.option, dsAllClassSkills);
-      // Slot 1 (Level 2) requires Totem Skill (or class skill if all totem skills already taken)
-      // Slot 2 & 3 (Level 8 & 16) require Totem Skill or Class Skill
       if (dsFilled === 0) {
         if (isTotem || isClass) {
           dsFilled++;
@@ -132,6 +146,10 @@ export function validateFeatsAssignment(pc, featsList) {
     }
     else if (fighterMax > 0 && fighterFilled < fighterMax && featDef.category === 'combat') {
       fighterFilled++;
+      assigned = true;
+    }
+    else if (rangerMax > 0 && rangerFilled < rangerMax && rangerBonusIds.includes(f.id)) {
+      rangerFilled++;
       assigned = true;
     }
 
