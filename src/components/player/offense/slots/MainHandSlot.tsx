@@ -167,7 +167,7 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
       )}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', margin: '1px 0', fontSize: '7px', color: 'var(--inkm)' }}>
         <div style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={`${dmgDice}${extraDamage} • ${doubledCritDisplay}`}>
-          {dmgDice}${extraDamage} • {doubledCritDisplay}
+          {dmgDice}{extraDamage} • {doubledCritDisplay}
         </div>
         {w.type !== 'unarmed' && !isWeaponTwoHanded(w) && (
           <select
