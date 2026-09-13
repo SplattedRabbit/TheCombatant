@@ -8,6 +8,7 @@ import type { User, Session } from '@supabase/supabase-js';
 import { supabase, isSupabaseConfigured } from '../services/supabase/supabaseClient.ts';
 import type { ProfileRow } from '../services/supabase/database.types.ts';
 import { storageService } from '../services/storage/StorageService.ts';
+import { characterService } from '../services/character/CharacterService.ts';
 import { logger } from '../utils/logger';
 
 interface AuthContextType {
@@ -88,6 +89,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await storageService.initializeForUser(session?.user ?? null);
       if (session?.user) {
         fetchProfile(session.user);
+        await characterService.autoLoadRecentCharacter();
       }
       setIsLoading(false);
     });
@@ -100,6 +102,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await storageService.initializeForUser(newSession?.user ?? null);
       if (newSession?.user) {
         await fetchProfile(newSession.user);
+        await characterService.autoLoadRecentCharacter();
       } else {
         setProfile(null);
       }

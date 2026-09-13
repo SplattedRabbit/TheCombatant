@@ -250,26 +250,6 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         const charLevel = typeof pc?.level === 'number' ? pc.level : 1;
         const classSummary = pc?.classSummary || pc?.class_summary || (Array.isArray(pc?.classes) ? pc.classes.map((c: any) => `${c.name || c.classType} ${c.level}`).join(' / ') : '');
 
-        if (!this.activeCharacterId) {
-          try {
-            // Check if an existing character by this name exists for this user before inserting a duplicate
-            const { data: existingChar } = await this.client
-              .from('characters')
-              .select('id')
-              .eq('user_id', this.userId)
-              .eq('name', charName)
-              .eq('is_active', true)
-              .order('updated_at', { ascending: false })
-              .limit(1)
-              .maybeSingle();
-
-            if (existingChar?.id) {
-              this.setActiveCharacterId(existingChar.id);
-            }
-          } catch {
-            // Ignore pre-check query error and proceed with save
-          }
-        }
 
         if (this.activeCharacterId) {
           const { error } = await this.client

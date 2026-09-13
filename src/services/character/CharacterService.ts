@@ -199,6 +199,31 @@ export class CharacterService {
   }
 
   /**
+   * Saves the current in-memory PC state directly to the active cloud adapter and binds activeCharacterId.
+   */
+  public async saveCurrentPCToCloud(): Promise<CharacterSummary | null> {
+    try {
+      const state = getState();
+      const pc = getActivePC();
+      if (!pc) return null;
+
+      const created = await this.createCharacter({
+        name: pc.name || 'Hero',
+        race: pc.race || 'human',
+        classSummary: pc.classSummary || pc.class_summary || '',
+        level: typeof pc.level === 'number' ? pc.level : 1,
+        initialData: state,
+      });
+
+      await this.switchActiveCharacter(created.id);
+      return created;
+    } catch (err) {
+      console.error('[CharacterService] Error saving current PC to cloud:', err);
+      return null;
+    }
+  }
+
+  /**
    * Zero-Loss character switching:
    * Flushes current character saves -> loads target character -> updates adapter pointer -> hydriert state.
    */
@@ -233,6 +258,58 @@ export class CharacterService {
     } catch (err) {
       console.error(`[CharacterService] Failed to switch to character ${characterId}:`, err);
       return false;
+    }
+  }
+
+  /**
+   * Checks whether the given PC object is merely the unedited initial template
+   * (e.g. "Adventurer" or "Hero", level 1, no classes, no inventory).
+   */
+  public isDefaultOrBlankPC(pc: any): boolean {
+    if (!pc) return true;
+    const hasCustomName = pc.name && pc.name !== 'Adventurer' && pc.name !== 'Hero';
+    const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
+    const hasHighLevel = typeof pc.level === 'number' && pc.level > 1;
+    const hasInventory =
+      (Array.isArray(pc.weapons) && pc.weapons.length > 0) ||
+      (Array.isArray(pc.items) && pc.items.length > 0) ||
+      (Array.isArray(pc.armors) && pc.armors.length > 0);
+    const hasSpells = Array.isArray(pc.learnedSpells) && pc.learnedSpells.length > 0;
+    const hasCustomRace = pc.race && pc.race !== 'human';
+    return !hasCustomName && !hasClasses && !hasHighLevel && !hasInventory && !hasSpells && !hasCustomRace;
+  }
+
+  /**
+   * Safely auto-loads the most recent cloud character upon login IF the current local
+   * in-memory PC is empty/default. If local unsaved edits exist, leaves state intact.
+   */
+  public async autoLoadRecentCharacter(): Promise<{ loaded: boolean; recentCharacter?: CharacterSummary; hasLocalUnsaved?: boolean }> {
+    try {
+      const activeId = this.getActiveCharacterId();
+      if (activeId) {
+        return { loaded: true };
+      }
+
+      const list = await this.listCharacters();
+      if (!list || list.length === 0) {
+        return { loaded: false };
+      }
+
+      const sorted = [...list].sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+      const mostRecent = sorted[0];
+
+      const currentPC = getActivePC();
+      const isBlank = this.isDefaultOrBlankPC(currentPC);
+
+      if (isBlank) {
+        const success = await this.switchActiveCharacter(mostRecent.id);
+        return { loaded: success, recentCharacter: mostRecent };
+      } else {
+        return { loaded: false, recentCharacter: mostRecent, hasLocalUnsaved: true };
+      }
+    } catch (err) {
+      console.warn('[CharacterService] autoLoadRecentCharacter failed:', err);
+      return { loaded: false };
     }
   }
 

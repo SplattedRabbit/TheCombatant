@@ -14,6 +14,7 @@ import { getStatMod } from '../attributeHelper';
 import { PCHeaderInfo } from './PCHeaderInfo.tsx';
 import { PCHeaderStatsWidget } from './PCHeaderStatsWidget.tsx';
 import { YouDiedOverlay } from './YouDiedOverlay.tsx';
+import { UnlinkedCharacterBanner } from './UnlinkedCharacterBanner.tsx';
 import { usePC } from '../../../context/PCContext';
 
 interface PCHeaderProps {
@@ -69,6 +70,9 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ activeTab, onOpenWizard, onO
         zIndex: 500,
       }}
     >
+      {/* Banner when user is logged in with an unlinked local character */}
+      <UnlinkedCharacterBanner />
+
       {/* Wizard banner for Level 0/New characters */}
       {(!Array.isArray(pc.classes) || pc.classes.length === 0) && (
         <div 
