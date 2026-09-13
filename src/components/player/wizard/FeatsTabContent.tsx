@@ -2,6 +2,10 @@ import React, { useState, useMemo } from 'react';
 import { checkFeatPrerequisites, CombatFeats } from '@core/data/feats-data.js';
 import { translatePrereq, PRESTIGE_PREREQS, CLASSES_LIST } from './constants';
 import { getFeatSlotsAtLevel } from './helpers';
+import { DRAGON_TOTEMS } from '@core/rules/data/dragonTotems.js';
+import type { DragonTotemDef } from '@core/rules/data/dragonTotems.js';
+import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
+import { isSkillFeat, isTotemFeat, getTotemSkills, getDragonShamanClassSkills, formatSkillName } from '../feats/skillFeatsHelper';
 
 interface FeatsTabContentProps {
   currentConfig: any;
@@ -117,6 +121,10 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
     return list;
   }, [filteredFeats]);
 
+  const totemKey: string | undefined = activeFeatSlot?.totemKey || currentConfig?.dragonTotem || (levelConfigs?.find((c: { dragonTotem?: string }) => c.dragonTotem)?.dragonTotem) || undefined;
+  const totemDef: DragonTotemDef | undefined = totemKey ? DRAGON_TOTEMS[totemKey] : undefined;
+  const totemName = totemDef ? (totemDef.name || totemDef.nameDe) : 'Totem';
+
   const displayFeats = useMemo(() => {
     const isSearching = featSearch.trim().length > 0;
     const isTargetPrCFilter = featFilter === 'prc_target';
@@ -152,8 +160,39 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
       return visibleList.filter(item => activeFeatSlot.allowedFeats.includes(item.feat.id));
     }
 
+    if (featFilter === 'skill') {
+      return visibleList.filter(item => isSkillFeat(item.feat));
+    }
+
+    if (featFilter === 'totem') {
+      return visibleList.filter(item => isTotemFeat(item.feat, totemKey));
+    }
+
+    if (featFilter !== 'all' && ['combat', 'metamagic', 'item_creation', 'general'].includes(featFilter)) {
+      return visibleList.filter(item => item.feat.category === featFilter);
+    }
+
     return visibleList;
-  }, [treeList, featSearch, featFilter, expandedParents, reqFeats, activeFeatSlot]);
+  }, [treeList, featSearch, featFilter, expandedParents, reqFeats, activeFeatSlot, totemKey]);
+
+  const rawSlotVal = featSelectSlotIndex !== null ? (currentConfig?.feats?.[featSelectSlotIndex] || activeFeatSlot?.defaultFeat) : null;
+  const currentSlotFeatId = typeof rawSlotVal === 'object' ? rawSlotVal?.id : rawSlotVal;
+  const currentSlotOption = typeof rawSlotVal === 'object' ? rawSlotVal?.option : (featSelectSlotIndex !== null ? currentConfig?.featOptions?.[featSelectSlotIndex] : '');
+  const currentSlotFeatDef = currentSlotFeatId ? CombatFeats.REGISTRY[currentSlotFeatId] : null;
+  const needsOption = Boolean(activeFeatSlot?.hasOption || currentSlotFeatDef?.hasOption);
+
+  const allowedSkillOptions = useMemo(() => {
+    if (!activeFeatSlot) return [];
+    const tKey = totemKey || 'red';
+
+    if (activeFeatSlot.optionScope === 'totem') {
+      return getTotemSkills(tKey).map(formatSkillName);
+    }
+    if (activeFeatSlot.optionScope === 'class') {
+      return getDragonShamanClassSkills(tKey).map(formatSkillName).sort((a: string, b: string) => a.localeCompare(b));
+    }
+    return Object.keys(SKILLS_REGISTRY).map(formatSkillName).sort((a, b) => a.localeCompare(b));
+  }, [activeFeatSlot, totemKey]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minHeight: '420px' }}>
@@ -191,6 +230,10 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
               {targetPrestigeClass && reqFeats.length > 0 && (
                 <option value="prc_target">★ {targetClassDef?.name || 'Target Class'}</option>
               )}
+              <option value="skill">Skill Feats</option>
+              {totemKey && (
+                <option value="totem">Totem Skills & Feats</option>
+              )}
               {activeFeatSlot && activeFeatSlot.allowedCategories?.includes('combat') && (
                 <option value="combat">Combat</option>
               )}
@@ -205,6 +248,80 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
               )}
             </select>
           </div>
+
+          {/* Dedicated Feat Option Selection Banner (e.g. Skill Focus, Weapon Focus) */}
+          {needsOption && currentSlotFeatId && (
+            <div
+              style={{
+                padding: '7px 10px',
+                background: 'rgba(200, 169, 110, 0.16)',
+                border: '1px solid var(--red)',
+                borderRadius: '3px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                fontSize: '11px',
+                boxSizing: 'border-box'
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)', fontSize: '11.5px' }}>
+                  🎯 Select Option for {currentSlotFeatDef?.nameEn || currentSlotFeatId}:
+                </strong>
+                {activeFeatSlot?.optionScope === 'totem' && (
+                  <span style={{ fontSize: '9px', color: 'var(--red)', fontWeight: 'bold' }}>Totem Class Skills</span>
+                )}
+                {activeFeatSlot?.optionScope === 'class' && (
+                  <span style={{ fontSize: '9px', color: 'var(--inkm)' }}>Dragon Shaman Class Skills</span>
+                )}
+              </div>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <select
+                  value={currentSlotOption || ''}
+                  onChange={(e) => {
+                    const opt = e.target.value;
+                    const nextFeats = [...(currentConfig.feats || [])];
+                    nextFeats[featSelectSlotIndex] = { id: currentSlotFeatId, option: opt };
+                    updateLevelConfig(currentLevelIndex, 'feats', nextFeats);
+                    const nextOptions = { ...(currentConfig.featOptions || {}) };
+                    nextOptions[featSelectSlotIndex] = opt;
+                    updateLevelConfig(currentLevelIndex, 'featOptions', nextOptions);
+                  }}
+                  className="cinput"
+                  style={{ flex: 1, height: '24px', fontSize: '11px', padding: '0 6px', boxSizing: 'border-box' }}
+                >
+                  <option value="" disabled>-- Select a Skill / Option --</option>
+                  {totemKey && activeFeatSlot?.optionScope === 'class' ? (
+                    <>
+                      <optgroup label={`Totem Skills (${totemName})`}>
+                        {getTotemSkills(totemKey).map(formatSkillName).map((opt) => (
+                          <option key={opt} value={opt}>{opt}</option>
+                        ))}
+                      </optgroup>
+                      <optgroup label="Dragon Shaman Class Skills">
+                        {allowedSkillOptions
+                          .filter(opt => !getTotemSkills(totemKey).map(formatSkillName).includes(opt))
+                          .map((opt) => (
+                            <option key={opt} value={opt}>{opt}</option>
+                          ))}
+                      </optgroup>
+                    </>
+                  ) : (
+                    allowedSkillOptions.map((opt: string) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))
+                  )}
+                </select>
+                {currentSlotOption && (
+                  <span style={{ color: '#2e7d32', fontWeight: 'bold', fontSize: '12px' }} title="Option selected">
+                    ✓ Saved
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
 
           <div
             style={{
@@ -227,9 +344,27 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                 if (!feat || !feat.id) return null;
                 const depth = item?.depth || 0;
                 const prereqsResult = currentDraft?.draftPC ? checkFeatPrerequisites(feat.id, currentDraft.draftPC) : { met: true, unmetDescs: [] };
-                const isAlreadySelected = Array.isArray(currentConfig?.feats) ? currentConfig.feats.includes(feat.id) : false;
-                const isAlreadyLearned = Array.isArray(currentDraft?.featsList) ? currentDraft.featsList.includes(feat.id) : false;
-                const isSelectedInThisSlot = featSelectSlotIndex !== null && currentConfig?.feats?.[featSelectSlotIndex] === feat.id;
+                const isAlreadySelected = Array.isArray(currentConfig?.feats)
+                  ? currentConfig.feats.some((f: any, i: number) => {
+                      if (i === featSelectSlotIndex) return false;
+                      const fid = typeof f === 'object' ? f?.id : f;
+                      const fOpt = typeof f === 'object' ? f?.option : currentConfig?.featOptions?.[i];
+                      if (fid === 'skill_focus' && feat.id === 'skill_focus') {
+                        return fOpt && fOpt === currentSlotOption;
+                      }
+                      return fid === feat.id;
+                    })
+                  : false;
+                const isAlreadyLearned = Array.isArray(currentDraft?.featsList)
+                  ? currentDraft.featsList.some((f: any) => {
+                      const fid = typeof f === 'object' ? f?.id : f;
+                      if (fid === 'skill_focus' && feat.id === 'skill_focus') {
+                        return false;
+                      }
+                      return fid === feat.id;
+                    })
+                  : false;
+                const isSelectedInThisSlot = featSelectSlotIndex !== null && currentSlotFeatId === feat.id;
                 const isSlotCompatible = (!activeFeatSlot?.allowedCategories || activeFeatSlot.allowedCategories.includes(feat.category)) &&
                   (!activeFeatSlot?.allowedFeats || activeFeatSlot.allowedFeats.includes(feat.id));
                 const isEligible = prereqsResult.met && !isAlreadyLearned && !isAlreadySelected && isSlotCompatible;
@@ -249,7 +384,7 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                 let titleColor = 'var(--inkl)';
                 let rowOpacity = 0.48;
 
-                if (isAlreadyLearned || isAlreadySelected) {
+                if (isAlreadyLearned || isAlreadySelected || isSelectedInThisSlot) {
                   borderStyle = '0.5px solid rgba(50, 115, 55, 0.35)';
                   borderLeftStyle = '3.5px solid #2e7d32';
                   backgroundStyle = 'rgba(50, 115, 55, 0.06)';
@@ -297,7 +432,16 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                       onClick={() => {
                         if (isEligible) {
                           const nextFeats = [...(currentConfig.feats || [])];
-                          nextFeats[featSelectSlotIndex] = feat.id;
+                          const featDef = CombatFeats.REGISTRY[feat.id];
+                          if (featDef?.hasOption || activeFeatSlot?.hasOption) {
+                            const defaultOpt = currentSlotOption || allowedSkillOptions[0] || '';
+                            nextFeats[featSelectSlotIndex] = { id: feat.id, option: defaultOpt };
+                            const nextOptions = { ...(currentConfig.featOptions || {}) };
+                            nextOptions[featSelectSlotIndex] = defaultOpt;
+                            updateLevelConfig(currentLevelIndex, 'featOptions', nextOptions);
+                          } else {
+                            nextFeats[featSelectSlotIndex] = feat.id;
+                          }
                           updateLevelConfig(currentLevelIndex, 'feats', nextFeats);
                           setFeatSearch('');
                         } else if (isSelectedInThisSlot) {
@@ -357,6 +501,23 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                             <strong style={{ fontFamily: 'var(--font-title)', fontSize: '11px', color: titleColor, whiteSpace: 'nowrap' }}>
                               {feat.name || feat.nameEn || feat.nameDe || feat.id}
                             </strong>
+                            {totemKey && isTotemFeat(feat, totemKey) && (
+                              <span
+                                style={{
+                                  fontSize: '7.5px',
+                                  padding: '1px 4px',
+                                  borderRadius: '2px',
+                                  background: 'rgba(139, 26, 26, 0.08)',
+                                  border: '0.5px solid rgba(139, 26, 26, 0.3)',
+                                  color: '#8b1a1a',
+                                  fontWeight: 'bold',
+                                  whiteSpace: 'nowrap'
+                                }}
+                                title={`Totem Skill Feat (${totemName})`}
+                              >
+                                Totem Skill
+                              </span>
+                            )}
                             {isTargetFeat && (
                               <span 
                                 data-testid={`feat-target-badge-${feat.id}`}

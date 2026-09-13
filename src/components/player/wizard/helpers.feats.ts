@@ -5,9 +5,20 @@
  *            class type, character level and race (RAW D&D 3.5e rules).
  */
 
+export interface FeatSlotDefinition {
+  label: string;
+  allowedCategories: string[];
+  defaultFeat?: string;
+  allowedFeats?: string[];
+  hasOption?: boolean;
+  optionType?: string;
+  optionScope?: string;
+  totemKey?: string;
+}
+
 // Helper to determine feat slots at a level
-export const getFeatSlotsAtLevel = (lvlIdx: number, currentClassType: string, selectedRace: string, levelConfigs: any[]) => {
-  const slots: { label: string; allowedCategories: string[]; defaultFeat?: string; allowedFeats?: string[] }[] = [];
+export const getFeatSlotsAtLevel = (lvlIdx: number, currentClassType: string, selectedRace: string, levelConfigs: any[]): FeatSlotDefinition[] => {
+  const slots: FeatSlotDefinition[] = [];
   const totalLevel = lvlIdx + 1;
   const isHuman = selectedRace === 'human';
 
@@ -144,11 +155,39 @@ export const getFeatSlotsAtLevel = (lvlIdx: number, currentClassType: string, se
       });
     }
   } else if (currentClassType === 'dragon_shaman') {
+    const currentTotemKey = levelConfigs?.find(c => c.dragonTotem)?.dragonTotem || 'red';
     if (classLevel === 2) {
       slots.push({
-        label: 'Dragon Shaman (Skill Focus)',
+        label: 'Dragon Shaman (Skill Focus: Totem Skill)',
         allowedCategories: ['general'],
-        defaultFeat: 'skill_focus'
+        defaultFeat: 'skill_focus',
+        allowedFeats: ['skill_focus'],
+        hasOption: true,
+        optionType: 'skill',
+        optionScope: 'totem',
+        totemKey: currentTotemKey,
+      });
+    } else if (classLevel === 8) {
+      slots.push({
+        label: 'Dragon Shaman (Skill Focus: Class Skill)',
+        allowedCategories: ['general'],
+        defaultFeat: 'skill_focus',
+        allowedFeats: ['skill_focus'],
+        hasOption: true,
+        optionType: 'skill',
+        optionScope: 'class',
+        totemKey: currentTotemKey,
+      });
+    } else if (classLevel === 16) {
+      slots.push({
+        label: 'Dragon Shaman (Skill Focus: Class Skill)',
+        allowedCategories: ['general'],
+        defaultFeat: 'skill_focus',
+        allowedFeats: ['skill_focus'],
+        hasOption: true,
+        optionType: 'skill',
+        optionScope: 'class',
+        totemKey: currentTotemKey,
       });
     }
   }

@@ -14,6 +14,7 @@ import { ACFsTabContent } from './ACFsTabContent';
 import { LevelHeaderAndStats } from './levelConfig/LevelHeaderAndStats';
 import { FeatSlotsSidebar } from './levelConfig/FeatSlotsSidebar';
 import { PrestigePrereqTrackerCard } from './levelConfig/PrestigePrereqTrackerCard';
+import { DRAGON_TOTEMS } from '@core/rules/data/dragonTotems.js';
 
 export interface Step3LevelConfigProps {
   levelConfigs: any[];
@@ -41,6 +42,10 @@ export interface Step3LevelConfigProps {
   activeFeatSlot: any;
   filteredFeats: any[];
   targetPrestigeClass?: string;
+  alignmentEthical?: string;
+  setAlignmentEthical?: (val: string) => void;
+  alignmentMoral?: string;
+  setAlignmentMoral?: (val: string) => void;
 }
 
 export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
@@ -69,6 +74,10 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
   activeFeatSlot,
   filteredFeats,
   targetPrestigeClass,
+  alignmentEthical,
+  setAlignmentEthical,
+  alignmentMoral,
+  setAlignmentMoral,
 }) => {
   // Sync prestige spell progression links if single arcane/divine class is available
   React.useEffect(() => {
@@ -111,21 +120,39 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
     }
   }, [currentConfig.classType, currentDraft, currentLevelIndex]);
 
-  // Auto-populate fixed/class-granted default feats (e.g. Scribe Scroll for Wizard 1)
+  // Auto-populate fixed/class-granted default feats (e.g. Scribe Scroll for Wizard 1, Skill Focus for Dragon Shaman 2)
   React.useEffect(() => {
     if (!currentConfig || !currentFeatSlots || currentFeatSlots.length === 0) return;
     let changed = false;
     const nextFeats = Array.isArray(currentConfig.feats) ? [...currentConfig.feats] : [];
+    const nextOptions = { ...(currentConfig.featOptions || {}) };
     currentFeatSlots.forEach((slot, sIdx) => {
-      if (slot.defaultFeat && nextFeats[sIdx] !== slot.defaultFeat) {
-        nextFeats[sIdx] = slot.defaultFeat;
-        changed = true;
+      const existing = nextFeats[sIdx];
+      const existingId = typeof existing === 'object' ? existing?.id : existing;
+      if (slot.defaultFeat) {
+        if (slot.hasOption) {
+          if (!existingId || existingId !== slot.defaultFeat) {
+            const totemKey = slot.totemKey || currentConfig.dragonTotem || 'red';
+            const totem = (DRAGON_TOTEMS as any)[totemKey] || DRAGON_TOTEMS.red;
+            const defaultOpt = slot.optionScope === 'totem' && totem.skills?.[0]
+              ? totem.skills[0].split('_').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+              : 'Jump';
+            const chosenOpt = (typeof existing === 'object' && existing?.option) || nextOptions[sIdx] || defaultOpt;
+            nextFeats[sIdx] = { id: slot.defaultFeat, option: chosenOpt };
+            nextOptions[sIdx] = chosenOpt;
+            changed = true;
+          }
+        } else if (existingId !== slot.defaultFeat) {
+          nextFeats[sIdx] = slot.defaultFeat;
+          changed = true;
+        }
       }
     });
     if (changed) {
       updateLevelConfig(currentLevelIndex, 'feats', nextFeats);
+      updateLevelConfig(currentLevelIndex, 'featOptions', nextOptions);
     }
-  }, [currentConfig?.classType, currentFeatSlots, currentLevelIndex]);
+  }, [currentConfig?.classType, currentConfig?.dragonTotem, currentFeatSlots, currentLevelIndex]);
 
   const totalLearnedTricksCount = levelConfigs
     .slice(0, currentLevelIndex + 1)
@@ -219,10 +246,14 @@ export const Step3LevelConfig: React.FC<Step3LevelConfigProps> = ({
             getClassHitDie={getClassHitDie}
             updateLevelConfig={updateLevelConfig}
             allLevelConfigs={levelConfigs}
+            alignmentEthical={alignmentEthical}
+            setAlignmentEthical={setAlignmentEthical}
+            alignmentMoral={alignmentMoral}
+            setAlignmentMoral={setAlignmentMoral}
           />
 
           {/* Target Prestige Class Live Prerequisite Tracker */}
-          {targetPrestigeClass && (
+          {targetPrestigeClass && CLASSES_LIST.find(c => c.key === targetPrestigeClass)?.isPrestige && (
             <PrestigePrereqTrackerCard
               targetPrestigeClass={targetPrestigeClass}
               currentDraft={currentDraft}

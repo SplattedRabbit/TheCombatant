@@ -159,6 +159,22 @@ export const RACES: RaceDetail[] = [
     ]
   },
   {
+    key: 'lizardfolk',
+    name: 'Lizardfolk',
+    modifiers: '+2 Strength (STR), +2 Constitution (CON), -2 Intelligence (INT)',
+    size: 'Medium',
+    traits: [
+      'Type: Humanoid (Reptilian).',
+      '+5 Natural Armor bonus to Armor Class.',
+      '+4 racial bonus on Balance, Jump, and Swim checks.',
+      'Natural Weapons: 2 claws (1d4) and bite (1d4).',
+      'Hold Breath (Ex): Can hold breath for 4 × CON score rounds before risking drowning.',
+      'Proficient with simple weapons and shields (except tower shields).',
+      'Favored Class: Druid.',
+      'Level Adjustment: +1 (increases ECL by 1).'
+    ]
+  },
+  {
     key: 'anima_construct',
     name: 'Anima Construct',
     modifiers: '+2 Constitution (CON), -2 Charisma (CHA)',
@@ -207,7 +223,7 @@ export const CLASS_KEY_ATTRIBUTES: Record<string, string[]> = {
 };
 
 export interface PrestigePrereqInfo {
-  alignment?: 'lawful_good' | 'evil' | 'nonlawful';
+  alignment?: 'lawful_good' | 'evil' | 'nonlawful' | 'nontrueneutral';
   alignmentLabel?: string;
   bab?: number;
   skills?: Record<string, number>;
@@ -305,6 +321,15 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
       dex: 'DEX for martial prowess & skill tricks'
     },
     specialText: '3 skills with 6 ranks each, 2 skill tricks'
+  },
+  dragon_shaman: {
+    alignment: 'nontrueneutral',
+    alignmentLabel: 'Any Non-True-Neutral (within 1 step of chosen Totem Dragon)',
+    attributeHints: {
+      cha: 'CHA for Breath DC, Touch of Vitality pool & Auras',
+      con: 'CON for hit points & Breath Weapon save DC'
+    },
+    specialText: 'Must choose a True Dragon totem. True Neutral characters cannot become Dragon Shamans (PHB2 p. 11).'
   }
 };
 
@@ -318,6 +343,11 @@ export function checkPrestigeAlignment(
 
   const normEth = (ethical || '').toLowerCase();
   const normMor = (moral || '').toLowerCase();
+
+  if (req.alignment === 'nontrueneutral') {
+    const isTrueNeutral = normEth === 'neutral' && normMor === 'neutral';
+    return { compatible: !isTrueNeutral, requirementLabel: req.alignmentLabel };
+  }
 
   if (req.alignment === 'lawful_good') {
     const isLG = normEth === 'lawful' && normMor === 'good';

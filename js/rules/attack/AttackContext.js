@@ -165,7 +165,7 @@ export function buildContext(pc, weapon, options = {}, allCombatants = []) {
   const hasHaste = hasBuff('haste');
 
   const isNatural = !!weapon.isNatural;
-  const isSecondary = !!weapon.isSecondary || (isNatural && (
+  const isSecondary = weapon.isSecondary !== undefined ? !!weapon.isSecondary : (isNatural && (
     weapon.name.toLowerCase().includes('kralle') || 
     weapon.name.toLowerCase().includes('claw') || 
     (weapon.name.toLowerCase().includes('biss') && pc.activeShape === 'bear') || 

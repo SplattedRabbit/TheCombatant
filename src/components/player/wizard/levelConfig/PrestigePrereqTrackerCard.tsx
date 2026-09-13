@@ -18,7 +18,7 @@ export const PrestigePrereqTrackerCard: React.FC<PrestigePrereqTrackerCardProps>
   if (!targetPrestigeClass) return null;
 
   const classDef = CLASSES_LIST.find(c => c.key === targetPrestigeClass);
-  if (!classDef) return null;
+  if (!classDef || !classDef.isPrestige) return null;
 
   const draftPC = currentDraft?.draftPC;
   if (!draftPC) return null;

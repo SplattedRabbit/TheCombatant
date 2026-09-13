@@ -36,6 +36,12 @@ function cleanupClassBleed(pc) {
   if (!activeClasses.includes('monk')) MonkRules.cleanup(pc);
   if (!activeClasses.includes('ninja')) NinjaRules.cleanup(pc);
   if (!activeClasses.includes('rogue')) RogueRules.cleanup(pc);
+  if (!activeClasses.includes('dragon_shaman')) {
+    if (Array.isArray(pc.dailyAbilities)) {
+      pc.dailyAbilities = pc.dailyAbilities.filter(a => a.name !== "Touch of Vitality" && a.name !== "Breath Weapon");
+    }
+    delete pc.touchOfVitalityMax;
+  }
 }
 
 export function recalculateDailyAbilities(pc) {
@@ -54,6 +60,25 @@ export function recalculateDailyAbilities(pc) {
       if (c.classType === 'monk') MonkRules.recalculateDailyAbilities(pc, c.level);
       if (c.classType === 'ninja') NinjaRules.recalculateDailyAbilities(pc, c.level);
     });
+
+    const ds = pc.classes.find(c => c.classType === 'dragon_shaman');
+    if (ds && ds.level >= 6) {
+      const chaScore = pc.cha ? (typeof pc.cha.getValue === 'function' ? pc.cha.getValue() : pc.cha) : 10;
+      const chaMod = getAblMod(chaScore);
+      const tovMax = Math.max(0, 2 * ds.level * Math.max(0, chaMod));
+      pc.touchOfVitalityMax = tovMax;
+      const existingTov = pc.dailyAbilities.find(a => a.name === "Touch of Vitality");
+      if (existingTov) {
+        existingTov.max = tovMax;
+      } else if (tovMax > 0) {
+        pc.dailyAbilities.push({ name: "Touch of Vitality", max: tovMax, used: 0 });
+      }
+    } else {
+      pc.dailyAbilities = pc.dailyAbilities.filter(a => a.name !== "Touch of Vitality");
+      delete pc.touchOfVitalityMax;
+    }
+    // Clean up any legacy breath weapon daily usage
+    pc.dailyAbilities = pc.dailyAbilities.filter(a => a.name !== "Breath Weapon");
   }
 
   if (hasClasses) {

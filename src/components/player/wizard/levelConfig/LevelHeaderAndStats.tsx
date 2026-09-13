@@ -8,6 +8,7 @@ import { PrestigeSpellLinkSection } from './PrestigeSpellLinkSection';
 import { ClassSelector } from './ClassSelector';
 import { CLASS_KEY_ATTRIBUTES } from '../constants';
 import { getAblMod } from '../../attributeHelper';
+import { DRAGON_TOTEMS, isTotemAllowedForAlignment } from '@core/rules/data/dragonTotems.js';
 
 const PROHIBITED_SCHOOLS = [
   { value: 'abj', label: 'Abjuration' },
@@ -28,6 +29,10 @@ export interface LevelHeaderAndStatsProps {
   getClassHitDie: (cls: string) => number;
   updateLevelConfig: (idx: number, key: string, val: any) => void;
   allLevelConfigs?: any[];
+  alignmentEthical?: string;
+  setAlignmentEthical?: (val: string) => void;
+  alignmentMoral?: string;
+  setAlignmentMoral?: (val: string) => void;
 }
 
 export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
@@ -39,6 +44,10 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
   getClassHitDie,
   updateLevelConfig,
   allLevelConfigs = [],
+  alignmentEthical,
+  setAlignmentEthical,
+  alignmentMoral,
+  setAlignmentMoral,
 }) => {
   // Auto-sync Wizard school specialization across Wizard levels
   React.useEffect(() => {
@@ -51,8 +60,44 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
         updateLevelConfig(currentLevelIndex, 'wizardProhibited1', firstWizardConfig.wizardProhibited1 || '');
         updateLevelConfig(currentLevelIndex, 'wizardProhibited2', firstWizardConfig.wizardProhibited2 || '');
       }
+    } else if (currentConfig?.classType === 'dragon_shaman') {
+      const firstDSConfig = allLevelConfigs.find(
+        (c) => c.classType === 'dragon_shaman' && c.dragonTotem !== undefined
+      );
+      if (firstDSConfig && currentConfig.dragonTotem === undefined) {
+        updateLevelConfig(currentLevelIndex, 'dragonTotem', firstDSConfig.dragonTotem);
+      }
     }
   }, [currentConfig?.classType, currentLevelIndex, allLevelConfigs]);
+
+  const getAlignmentAbbr = (eth?: string, mor?: string) => {
+    const e = (eth || 'Neutral').toLowerCase();
+    const m = (mor || 'Neutral').toLowerCase();
+    if (e === 'neutral' && m === 'neutral') return 'N';
+    const eLetter = e === 'lawful' ? 'L' : (e === 'chaotic' ? 'C' : 'N');
+    const mLetter = m === 'good' ? 'G' : (m === 'evil' ? 'E' : 'N');
+    return `${eLetter}${mLetter}`;
+  };
+
+  const ALIGNMENT_MAP: Record<string, { ethical: string; moral: string; label: string }> = {
+    LG: { ethical: 'Lawful', moral: 'Good', label: 'Lawful Good' },
+    LN: { ethical: 'Lawful', moral: 'Neutral', label: 'Lawful Neutral' },
+    LE: { ethical: 'Lawful', moral: 'Evil', label: 'Lawful Evil' },
+    NG: { ethical: 'Neutral', moral: 'Good', label: 'Neutral Good' },
+    N:  { ethical: 'Neutral', moral: 'Neutral', label: 'True Neutral' },
+    NE: { ethical: 'Neutral', moral: 'Evil', label: 'Neutral Evil' },
+    CG: { ethical: 'Chaotic', moral: 'Good', label: 'Chaotic Good' },
+    CN: { ethical: 'Chaotic', moral: 'Neutral', label: 'Chaotic Neutral' },
+    CE: { ethical: 'Chaotic', moral: 'Evil', label: 'Chaotic Evil' },
+  };
+
+  const currentAlignmentAbbr = getAlignmentAbbr(alignmentEthical, alignmentMoral);
+  const isCurrentTrueNeutral = currentAlignmentAbbr === 'N';
+
+  const selectedTotem = currentConfig.dragonTotem ? DRAGON_TOTEMS[currentConfig.dragonTotem] : null;
+  const isSelectedTotemAllowed = selectedTotem
+    ? (!isCurrentTrueNeutral && isTotemAllowedForAlignment(currentConfig.dragonTotem, currentAlignmentAbbr))
+    : true;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', minWidth: 0, width: '100%' }}>
@@ -104,22 +149,21 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
             <select
               value={currentConfig.wizardSpecialization || 'none'}
               onChange={(e) => {
-                const newSpec = e.target.value;
-                updateLevelConfig(currentLevelIndex, 'wizardSpecialization', newSpec);
-                if (newSpec === 'none') {
-                  updateLevelConfig(currentLevelIndex, 'wizardProhibited1', '');
-                  updateLevelConfig(currentLevelIndex, 'wizardProhibited2', '');
-                } else if (newSpec === 'div') {
-                  updateLevelConfig(currentLevelIndex, 'wizardProhibited2', '');
-                }
+                const val = e.target.value;
+                updateLevelConfig(currentLevelIndex, 'wizardSpecialization', val);
+                allLevelConfigs.forEach((cfg, idx) => {
+                  if (cfg.classType === 'wizard') {
+                    updateLevelConfig(idx, 'wizardSpecialization', val);
+                  }
+                });
               }}
               className="cinput"
-              style={{ width: '170px', fontSize: '10px', height: '22px', padding: '0 4px', boxSizing: 'border-box' }}
+              style={{ width: '140px', fontSize: '10px', height: '22px', padding: '0 4px', boxSizing: 'border-box' }}
             >
-              <option value="none">Universal (No School)</option>
+              <option value="none">Universalist (No School)</option>
               <option value="abj">Abjuration</option>
               <option value="con">Conjuration</option>
-              <option value="div">Divination (1 Prohibited School)</option>
+              <option value="div">Divination</option>
               <option value="enc">Enchantment</option>
               <option value="evo">Evocation</option>
               <option value="ill">Illusion</option>
@@ -129,61 +173,201 @@ export const LevelHeaderAndStats: React.FC<LevelHeaderAndStatsProps> = ({
           </div>
 
           {currentConfig.wizardSpecialization && currentConfig.wizardSpecialization !== 'none' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '5px',
-                background: 'rgba(139, 26, 26, 0.05)',
-                border: '0.5px solid rgba(139, 26, 26, 0.25)',
-                borderRadius: '2px',
-                padding: '6px 8px',
-                marginTop: '2px',
-              }}
-            >
-              <div style={{ fontSize: '9px', color: 'var(--red)', fontWeight: 'bold' }}>
-                ⚠️ Prohibited Schools (Cannot cast or learn spells from these schools):
-              </div>
-
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '2px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '9.5px' }}>
-                <span>Prohibited School 1:</span>
+                <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>Prohibited 1:</span>
                 <select
                   value={currentConfig.wizardProhibited1 || ''}
-                  onChange={(e) => updateLevelConfig(currentLevelIndex, 'wizardProhibited1', e.target.value)}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    updateLevelConfig(currentLevelIndex, 'wizardProhibited1', val);
+                    allLevelConfigs.forEach((cfg, idx) => {
+                      if (cfg.classType === 'wizard') {
+                        updateLevelConfig(idx, 'wizardProhibited1', val);
+                      }
+                    });
+                  }}
                   className="cinput"
-                  style={{ width: '150px', fontSize: '9.5px', height: '20px', padding: '0 4px', boxSizing: 'border-box' }}
+                  style={{ width: '120px', fontSize: '9.5px', height: '20px', padding: '0 4px', boxSizing: 'border-box' }}
                 >
-                  <option value="">-- Select Required --</option>
+                  <option value="" disabled>-- Select School --</option>
                   {PROHIBITED_SCHOOLS
-                    .filter((s) => s.value !== currentConfig.wizardSpecialization)
+                    .filter((s) => s.value !== currentConfig.wizardSpecialization && s.value !== currentConfig.wizardProhibited2)
                     .map((s) => (
-                      <option key={s.value} value={s.value} disabled={s.value === currentConfig.wizardProhibited2}>
-                        {s.label}
-                      </option>
+                      <option key={s.value} value={s.value}>{s.label}</option>
                     ))}
                 </select>
               </div>
 
               {currentConfig.wizardSpecialization !== 'div' && (
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '9.5px' }}>
-                  <span>Prohibited School 2:</span>
+                  <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>Prohibited 2:</span>
                   <select
                     value={currentConfig.wizardProhibited2 || ''}
-                    onChange={(e) => updateLevelConfig(currentLevelIndex, 'wizardProhibited2', e.target.value)}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      updateLevelConfig(currentLevelIndex, 'wizardProhibited2', val);
+                      allLevelConfigs.forEach((cfg, idx) => {
+                        if (cfg.classType === 'wizard') {
+                          updateLevelConfig(idx, 'wizardProhibited2', val);
+                        }
+                      });
+                    }}
                     className="cinput"
-                    style={{ width: '150px', fontSize: '9.5px', height: '20px', padding: '0 4px', boxSizing: 'border-box' }}
+                    style={{ width: '120px', fontSize: '9.5px', height: '20px', padding: '0 4px', boxSizing: 'border-box' }}
                   >
-                    <option value="">-- Select Required --</option>
+                    <option value="" disabled>-- Select School --</option>
                     {PROHIBITED_SCHOOLS
-                      .filter((s) => s.value !== currentConfig.wizardSpecialization)
+                      .filter((s) => s.value !== currentConfig.wizardSpecialization && s.value !== currentConfig.wizardProhibited1)
                       .map((s) => (
-                        <option key={s.value} value={s.value} disabled={s.value === currentConfig.wizardProhibited1}>
-                          {s.label}
-                        </option>
+                        <option key={s.value} value={s.value}>{s.label}</option>
                       ))}
                   </select>
                 </div>
               )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Dragon Shaman Totem Dragon Selection */}
+      {currentConfig.classType === 'dragon_shaman' && (
+        <div
+          style={{
+            padding: '8px 10px',
+            borderRadius: '3px',
+            border: '1px solid var(--pb)',
+            background: 'rgba(200, 169, 110, 0.08)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px',
+            marginTop: '2px',
+            boxSizing: 'border-box',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
+              Totem Dragon Selection
+            </span>
+            <span style={{ fontSize: '8.5px', color: isCurrentTrueNeutral || !isSelectedTotemAllowed ? 'var(--red)' : 'var(--inkm)' }}>
+              Alignment: <strong>{ALIGNMENT_MAP[currentAlignmentAbbr]?.label || currentAlignmentAbbr}</strong>
+            </span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '10px' }}>
+            <span style={{ fontWeight: 'bold' }}>Totem:</span>
+            <select
+              value={currentConfig.dragonTotem || ''}
+              onChange={(e) => {
+                const newTotem = e.target.value;
+                updateLevelConfig(currentLevelIndex, 'dragonTotem', newTotem);
+                allLevelConfigs.forEach((cfg, idx) => {
+                  if (cfg.classType === 'dragon_shaman') {
+                    updateLevelConfig(idx, 'dragonTotem', newTotem);
+                  }
+                });
+              }}
+              className="cinput"
+              style={{ width: '170px', fontSize: '10px', height: '22px', padding: '0 4px', boxSizing: 'border-box' }}
+            >
+              <option value="" disabled>-- Select Totem Dragon --</option>
+              {Object.values(DRAGON_TOTEMS).map((totem: any) => {
+                const isMatch = !isCurrentTrueNeutral && isTotemAllowedForAlignment(totem.id, currentAlignmentAbbr);
+                return (
+                  <option key={totem.id} value={totem.id}>
+                    {totem.name} ({totem.energy.toUpperCase()}, {totem.alignments.join('/')}) {!isMatch ? '⚠️' : ''}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          {/* Inline Alignment Quick-Sync Box if incompatible or True Neutral */}
+          {selectedTotem && !isSelectedTotemAllowed && (
+            <div
+              style={{
+                padding: '6px 8px',
+                background: 'rgba(211, 47, 47, 0.08)',
+                border: '1px solid var(--red)',
+                borderRadius: '3px',
+                fontSize: '9.5px',
+                lineHeight: 1.35,
+              }}
+            >
+              <div style={{ color: 'var(--red)', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span>⚠️</span>
+                <span>
+                  {isCurrentTrueNeutral
+                    ? 'True Neutral characters cannot be Dragon Shamans (PHB2 p. 11).'
+                    : `Alignment Mismatch: ${selectedTotem.name} requires ${selectedTotem.alignments.join(' or ')} (Current: ${ALIGNMENT_MAP[currentAlignmentAbbr]?.label || currentAlignmentAbbr}).`}
+                </span>
+              </div>
+              <div style={{ marginTop: '5px', display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '9px', color: 'var(--inkm)', fontWeight: 'bold' }}>Quick-Sync Alignment:</span>
+                {selectedTotem.alignments.map((code: string) => {
+                  const def = ALIGNMENT_MAP[code];
+                  if (!def) return null;
+                  return (
+                    <button
+                      key={code}
+                      type="button"
+                      onClick={() => {
+                        if (setAlignmentEthical) setAlignmentEthical(def.ethical);
+                        if (setAlignmentMoral) setAlignmentMoral(def.moral);
+                      }}
+                      className="btn"
+                      style={{
+                        fontSize: '8.5px',
+                        padding: '2px 6px',
+                        background: 'var(--card-bg)',
+                        border: '0.5px solid var(--red)',
+                        color: 'var(--red)',
+                        borderRadius: '2px',
+                        cursor: 'pointer',
+                        fontWeight: 'bold',
+                      }}
+                      title={`Change character alignment to ${def.label}`}
+                    >
+                      {def.label} ({code})
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {currentConfig.dragonTotem && DRAGON_TOTEMS[currentConfig.dragonTotem] && (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '3px',
+                padding: '6px 8px',
+                background: 'rgba(0, 0, 0, 0.03)',
+                borderRadius: '3px',
+                border: '1px dashed var(--pb)',
+                fontSize: '9.5px',
+                marginTop: '2px',
+              }}
+            >
+              <div>
+                <strong>Breath:</strong> {DRAGON_TOTEMS[currentConfig.dragonTotem].breathName} ({DRAGON_TOTEMS[currentConfig.dragonTotem].energy})
+              </div>
+              <div>
+                <strong>Bonus Class Skills:</strong>{' '}
+                <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>
+                  {DRAGON_TOTEMS[currentConfig.dragonTotem].skills.map((s: string) => s.replace(/_/g, ' ')).join(', ')}
+                </span>
+              </div>
+              <div>
+                <strong>Adaptation (Lv.3):</strong> <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>{DRAGON_TOTEMS[currentConfig.dragonTotem].adaptation}</span>
+                <div style={{ fontSize: '8.5px', color: 'var(--inkm)', marginTop: '1px' }}>
+                  {DRAGON_TOTEMS[currentConfig.dragonTotem].adaptationDesc}
+                </div>
+              </div>
+              <div>
+                <strong>Acceptable Alignments:</strong> {DRAGON_TOTEMS[currentConfig.dragonTotem].alignments.join(', ')}
+              </div>
             </div>
           )}
         </div>

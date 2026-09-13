@@ -98,5 +98,19 @@ export function applyClassModifiers(pc, getMod) {
         pc.ref.modifiers[pc.ref.modifiers.length - 1].isClass = true;
       }
     }
+
+    // E. Dragon Shaman: Natural Armor (+1 at 7th, +2 at 12th, +3 at 17th)
+    const dsClass = pc.classes.find(c => c.classType === 'dragon_shaman');
+    if (dsClass && dsClass.level >= 7) {
+      const natBonus = dsClass.level >= 17 ? 3 : (dsClass.level >= 12 ? 2 : 1);
+      if (pc.ac) {
+        pc.ac.addModifier(natBonus, "natural", "Dragon Shaman (Natural Armor)");
+        pc.ac.modifiers[pc.ac.modifiers.length - 1].isClass = true;
+      }
+      if (pc.acFlat) {
+        pc.acFlat.addModifier(natBonus, "natural", "Dragon Shaman (Natural Armor)");
+        pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isClass = true;
+      }
+    }
   }
 }

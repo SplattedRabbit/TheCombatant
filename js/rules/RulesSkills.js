@@ -4,7 +4,7 @@
  * @exports   isClassSkill, getPCMaxRanks, calculateTotalSkillPoints, calculateSpentSkillPoints
  */
 
-import { CLASS_SKILLS, CLASS_BASE_SKILLS, CLASSES } from './RulesData.js';
+import { CLASS_SKILLS, CLASS_BASE_SKILLS, CLASSES, DRAGON_TOTEMS } from './RulesData.js';
 import { SKILL_TRICKS_REGISTRY } from '../data/skillTricks-data.js';
 import { getAblMod } from './RulesMath.js';
 
@@ -13,6 +13,12 @@ export function isClassSkill(skillKey, pc) {
     return false;
   }
   return pc.classes.some(c => {
+    if (c.classType === 'dragon_shaman' && pc.dragonTotem) {
+      const totem = DRAGON_TOTEMS?.[pc.dragonTotem];
+      if (totem && Array.isArray(totem.skills) && totem.skills.includes(skillKey)) {
+        return true;
+      }
+    }
     const skills = CLASS_SKILLS[c.classType];
     if (Array.isArray(skills)) {
       if (skillKey.startsWith('knowledge_') && (c.classType === 'wizard' || c.classType === 'bard')) {

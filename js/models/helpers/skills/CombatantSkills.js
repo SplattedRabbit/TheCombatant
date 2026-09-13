@@ -46,6 +46,16 @@ export function calculateSkillModifier(pc, skillKey) {
     if (['diplomacy', 'gather_information'].includes(skillKey)) total += 2;
   } else if (race === 'tiefling') {
     if (['bluff', 'hide'].includes(skillKey)) total += 2;
+  } else if (race === 'lizardfolk') {
+    if (['balance', 'jump', 'swim'].includes(skillKey)) total += 4;
+  }
+
+  // 3.6. Dragon Shaman: Draconic Adaptation - Red Dragon: Treasure Seeker (Ex) (+5 competence bonus on Appraise and Search at level 3+)
+  const dsClass = Array.isArray(pc.classes) ? pc.classes.find(c => c.classType === 'dragon_shaman') : null;
+  if (dsClass && (dsClass.level || 0) >= 3 && pc.dragonTotem === 'red') {
+    if (skillKey === 'appraise' || skillKey === 'search') {
+      total += 5;
+    }
   }
 
   // 3.8. Equipment

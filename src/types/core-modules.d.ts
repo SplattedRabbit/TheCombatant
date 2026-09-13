@@ -215,6 +215,60 @@ declare module '@core/rules/RulesData.js' {
   export const BARD_KNOWN_TABLE: any[];
   export const ASSASSIN_TABLE: any[];
   export const ASSASSIN_KNOWN_TABLE: any[];
+  export interface DragonTotemDef {
+    id: string;
+    name: string;
+    nameDe: string;
+    alignments: string[];
+    energy: string;
+    shape: string;
+    breathName: string;
+    breathDesc: string;
+    skills: string[];
+    adaptation: string;
+    adaptationType: string;
+    adaptationDesc: string;
+  }
+  export const DRAGON_TOTEMS: Record<string, DragonTotemDef>;
+  export const isTotemAllowedForAlignment: (totemKey: string, alignment: string) => boolean;
+}
+
+declare module '@core/rules/data/dragonTotems.js' {
+  export interface DragonTotemDef {
+    id: string;
+    name: string;
+    nameDe: string;
+    alignments: string[];
+    energy: string;
+    shape: string;
+    breathName: string;
+    breathDesc: string;
+    skills: string[];
+    adaptation: string;
+    adaptationType: string;
+    adaptationDesc: string;
+  }
+  export const DRAGON_TOTEMS: Record<string, DragonTotemDef>;
+  export const isTotemAllowedForAlignment: (totemKey: string, alignment: string) => boolean;
+}
+
+declare module '*/dragonTotems.js' {
+  export interface DragonTotemDef {
+    id: string;
+    name: string;
+    nameDe: string;
+    alignments: string[];
+    energy: string;
+    shape: string;
+    breathName: string;
+    breathDesc: string;
+    skills: string[];
+    adaptation: string;
+    adaptationType: string;
+    adaptationDesc: string;
+  }
+  export const DRAGON_TOTEMS: Record<string, DragonTotemDef>;
+  export const isTotemAllowedForAlignment: (totemKey: string, alignment: string) => boolean;
 }
 
 declare module '@core/spells.js' {
@@ -396,5 +450,28 @@ declare module '*js/rules/prestigeClassEngine.js' {
 
 declare module '*js/rules/classes/RogueRules.js' {
   export const RogueRules: any;
+}
+
+declare module '*js/data/skills-data.js' {
+  export const SKILLS_REGISTRY: Record<string, any>;
+}
+
+declare module '*js/rules/data/dragonTotems.js' {
+  export interface DragonTotemDef {
+    id: string;
+    name: string;
+    nameDe: string;
+    alignments: string[];
+    energy: string;
+    shape: string;
+    breathName: string;
+    breathDesc: string;
+    skills: string[];
+    adaptation: string;
+    adaptationType: string;
+    adaptationDesc: string;
+  }
+  export const DRAGON_TOTEMS: Record<string, DragonTotemDef>;
+  export const isTotemAllowedForAlignment: (totemKey: string, alignment: string) => boolean;
 }
 

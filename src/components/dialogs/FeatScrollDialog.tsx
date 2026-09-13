@@ -4,6 +4,7 @@ import { uiRegistry } from '@core/ui/ui-shared.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { checkPrerequisites } from '@core/rules/RulesFeats.js';
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
+import { getTotemSkills, formatSkillName } from '../player/feats/skillFeatsHelper';
 import { FeatScrollParchment } from './feats/FeatScrollParchment.tsx';
 import { FeatScrollActions } from './feats/FeatScrollActions.tsx';
 
@@ -73,8 +74,15 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
   const learnedOptions = learnedInstances.map((inst: any) => inst.option).filter(Boolean);
   const filteredOptions = optionsList.filter((o) => !learnedOptions.includes(o));
 
+  const hasDragonShaman = Array.isArray(currentPC.classes) && currentPC.classes.some((c: any) => c.classType === 'dragon_shaman');
+  const totemKey: string | undefined = currentPC.dragonTotem || (hasDragonShaman ? 'red' : undefined);
+  const dsTotemSkills = (feat.optionType === 'skill' && hasDragonShaman && totemKey)
+    ? getTotemSkills(totemKey).map(formatSkillName)
+    : [];
+  const firstUnlearnedTotem = dsTotemSkills.find((ts) => filteredOptions.includes(ts));
+
   const [selectedOption, setSelectedOption] = useState<string>(
-    filteredOptions.length > 0 ? filteredOptions[0] : ''
+    firstUnlearnedTotem || (filteredOptions.length > 0 ? filteredOptions[0] : '')
   );
 
   const handleLearn = () => {
@@ -161,6 +169,7 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
           learnedInstances={learnedInstances}
           onRemoveInstance={handleRemoveInstance}
           translateAppEffect={translateAppEffect}
+          pc={currentPC}
         />
 
         {/* Action Footer */}

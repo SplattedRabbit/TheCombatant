@@ -127,15 +127,17 @@ export const CLASS_PROFILES = {
   dragon_shaman: {
     nameDe: 'Dragon Shaman',
     getResources(level, stats) {
-      // Dragon Shamans breathe weapon: 3+Con-Mod/day from level 4
-      if (level < 4) return [];
-      const score = stats.con ? stats.con.getValue() : 10;
-      const conMod = getAblMod(score);
+      // Touch of Vitality pool starting at level 6: 2 * level * Cha bonus
+      if (level < 6) return [];
+      const score = stats.cha ? (typeof stats.cha.getValue === 'function' ? stats.cha.getValue() : stats.cha) : 10;
+      const chaMod = getAblMod(score);
+      const pool = Math.max(0, 2 * level * Math.max(0, chaMod));
+      if (pool <= 0) return [];
       return [
         {
-          key: 'breath_weapon',
-          name: 'Breath Weapon',
-          max: Math.max(1, 3 + conMod),
+          key: 'touch_of_vitality',
+          name: 'Touch of Vitality',
+          max: pool,
           type: 'daily'
         }
       ];

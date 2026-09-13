@@ -165,7 +165,7 @@ export function addPCFeat(featId, option = '') {
   // 3. Check prerequisites
   const { met, unmetDescs } = checkFeatPrerequisites(featId, pc);
   if (!met) {
-    return { success: false, error: `Voraussetzungen nicht erfüllt:\n• ${unmetDescs.join('\n• ')}` };
+    return { success: false, error: `Prerequisites not met:\n• ${unmetDescs.join('\n• ')}` };
   }
 
   updatePCBatch(pc => {

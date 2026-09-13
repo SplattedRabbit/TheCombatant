@@ -27,6 +27,11 @@ export function applyLevelUpToActivePC(
       pc.clericDomains = ['good', 'healing'];
     }
 
+    // Initialize Dragon Totem if gaining Dragon Shaman
+    if (newLevelConfig.classType === 'dragon_shaman' && newLevelConfig.dragonTotem && !pc.dragonTotem) {
+      pc.dragonTotem = newLevelConfig.dragonTotem;
+    }
+
     // 2. Add HP roll (+ CON mod)
     const conMod = completedDraft ? completedDraft.statMods.con : (pc.con?.mod || 0);
     const roll = parseInt(newLevelConfig.hpRoll) || 1;
@@ -61,7 +66,9 @@ export function applyLevelUpToActivePC(
         pc.skills[sKey] = { ranks: 0, misc: 0 };
       }
 
+      const activeTotem = pc.dragonTotem || newLevelConfig.dragonTotem;
       const isClassSkill = (CombatRules.CLASS_SKILLS[clsType] && CombatRules.CLASS_SKILLS[clsType].includes(sKey)) ||
+        (clsType === 'dragon_shaman' && activeTotem && CombatRules.DRAGON_TOTEMS?.[activeTotem]?.skills.includes(sKey)) ||
         (sKey.startsWith('knowledge_') && (clsType === 'wizard' || clsType === 'bard'));
 
       const rankInc = isClassSkill ? 1.0 * clickCount : 0.5 * clickCount;

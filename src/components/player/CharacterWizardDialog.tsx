@@ -20,6 +20,7 @@ import { CharacterWizardStepContent } from './wizard/CharacterWizardStepContent'
 import { CharacterWizardNav } from './wizard/CharacterWizardNav.tsx';
 import { applyWizardCharacterToState } from './wizard/wizardSaveHelper.ts';
 import { PRESTIGE_PREREQS } from './wizard/constants';
+import { isSkillFeat, isTotemFeat } from './feats/skillFeatsHelper';
 import { isSpellSelectorClass, getSpellSelectionQuota } from './wizard/spells/spellSelectionRules';
 import { getClassHitDie, validateStep3Config } from './wizard/wizardValidation';
 
@@ -165,10 +166,15 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     });
 
     const reqFeats = targetPrestigeClass ? (PRESTIGE_PREREQS[targetPrestigeClass]?.feats || []) : [];
+    const totemKey = activeFeatSlot?.totemKey || currentConfig?.dragonTotem || (levelConfigs?.find((c: { dragonTotem?: string }) => c.dragonTotem)?.dragonTotem);
 
     return Object.values(CombatFeats.REGISTRY).filter((feat: any) => {
       if (featFilter === 'prc_target') {
         if (!reqFeats.includes(feat.id)) return false;
+      } else if (featFilter === 'skill') {
+        if (!isSkillFeat(feat)) return false;
+      } else if (featFilter === 'totem') {
+        if (!isTotemFeat(feat, totemKey)) return false;
       } else if (featFilter !== 'all' && feat.category !== featFilter) {
         return false;
       }
@@ -177,11 +183,13 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         const nameDe = (feat.nameDe || '').toLowerCase();
         const nameEn = (feat.nameEn || '').toLowerCase();
         const benefit = (feat.benefitDe || feat.benefitRaw || '').toLowerCase();
-        if (!nameDe.includes(q) && !nameEn.includes(q) && !benefit.includes(q)) return false;
+        const isSkillQuery = q.includes('skill') || q.includes('fertigkeit');
+        const matchesSkill = isSkillQuery && isSkillFeat(feat);
+        if (!nameDe.includes(q) && !nameEn.includes(q) && !benefit.includes(q) && !matchesSkill) return false;
       }
       return true;
     });
-  }, [activeFeatSlot, currentDraft, featSearch, featFilter, levelConfigs, targetPrestigeClass]);
+  }, [activeFeatSlot, currentDraft, featSearch, featFilter, levelConfigs, targetPrestigeClass, currentConfig]);
 
   const handleNext = () => {
     if (step === 1) {
@@ -216,6 +224,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
           currentLevelIndex,
           currentLevelRemainingSkillPoints,
           currentFeatSlots,
+          alignmentEthical,
+          alignmentMoral,
         });
         if (!validation.valid && validation.alert) {
           showCustomAlert(
@@ -285,6 +295,26 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
 
   const handleSaveCharacter = () => {
     if (!completedDraft) return;
+
+    // Final Hardlock Safeguard for Dragon Shaman
+    for (let idx = 0; idx < levelConfigs.length; idx++) {
+      const cfg = levelConfigs[idx];
+      if (cfg.classType === 'dragon_shaman') {
+        const check = validateStep3Config({
+          currentConfig: cfg,
+          currentLevelIndex: idx,
+          currentLevelRemainingSkillPoints: 0,
+          currentFeatSlots: [],
+          alignmentEthical,
+          alignmentMoral,
+        });
+        if (!check.valid && check.alert) {
+          showCustomAlert(check.alert.title, check.alert.message, check.alert.buttonText, check.alert.icon);
+          return;
+        }
+      }
+    }
+
     applyWizardCharacterToState(
       name,
       selectedRace,

@@ -9,6 +9,7 @@ import { CombatFeats } from '@core/data/feats-data.js';
 import { CLASSES_LIST } from '../wizard/constants';
 import { validatePrestigeClassPrereqs } from '@core/rules.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
+import { isSkillFeat, isTotemFeat } from '../feats/skillFeatsHelper';
 import { 
   getDraftPCState, 
   getCompletedDraftPCState, 
@@ -132,18 +133,28 @@ const LevelUpDialogContent: React.FC<LevelUpDialogContentProps> = ({ activePC, o
       (cfg.feats || []).forEach((fid: string) => alreadyChosenIds.add(fid));
     });
 
+    const totemKey = activeFeatSlot?.totemKey || currentConfig?.dragonTotem || activePC?.dragonTotem || (levelConfigs?.find((c: { dragonTotem?: string }) => c.dragonTotem)?.dragonTotem);
+
     return Object.values(CombatFeats.REGISTRY).filter((feat: any) => {
-      if (featFilter !== 'all' && feat.category !== featFilter) return false;
+      if (featFilter === 'skill') {
+        if (!isSkillFeat(feat)) return false;
+      } else if (featFilter === 'totem') {
+        if (!isTotemFeat(feat, totemKey)) return false;
+      } else if (featFilter !== 'all' && feat.category !== featFilter) {
+        return false;
+      }
       if (activeFeatSlot.allowedCategories && !activeFeatSlot.allowedCategories.includes(feat.category)) return false;
       if (activeFeatSlot.allowedFeats && !activeFeatSlot.allowedFeats.includes(feat.id)) return false;
       if (q) {
         const name = (feat.name || feat.nameEn || feat.nameDe || '').toLowerCase();
         const benefit = (feat.benefit || feat.benefitRaw || feat.benefitDe || '').toLowerCase();
-        if (!name.includes(q) && !benefit.includes(q)) return false;
+        const isSkillQuery = q.includes('skill') || q.includes('fertigkeit');
+        const matchesSkill = isSkillQuery && isSkillFeat(feat);
+        if (!name.includes(q) && !benefit.includes(q) && !matchesSkill) return false;
       }
       return true;
     });
-  }, [activeFeatSlot, currentDraft, featSearch, featFilter, levelConfigs]);
+  }, [activeFeatSlot, currentDraft, featSearch, featFilter, levelConfigs, currentConfig, activePC]);
 
   const spellQuota = useMemo(() => {
     return calculateLevelUpSpellQuota(activePC, currentDraft, currentConfig);

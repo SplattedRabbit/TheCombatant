@@ -18,8 +18,18 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
   onSelect,
 }) => {
   const isSpecialistSchool = feature.id === 'wizard_specialization';
+  const isTotemDragon = feature.id === 'dragon_shaman_totem_dragon';
+  const isPinnacleFeature = isSpecialistSchool || isTotemDragon;
 
   const getCategoryColor = (cat: string) => {
+    if (isTotemDragon) {
+      return { 
+        bg: 'rgba(139, 26, 26, 0.08)', 
+        border: 'rgba(139, 26, 26, 0.35)', 
+        text: 'var(--red)', 
+        icon: '🛡️' 
+      };
+    }
     if (isSpecialistSchool) {
       return { 
         bg: 'rgba(139, 26, 26, 0.08)', 
@@ -43,7 +53,7 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
     <div
       onClick={onSelect}
       style={{
-        background: isSpecialistSchool
+        background: isPinnacleFeature
           ? isSelected
             ? 'rgba(200, 169, 110, 0.32)'
             : 'linear-gradient(90deg, rgba(200, 169, 110, 0.22) 0%, rgba(200, 169, 110, 0.10) 100%)'
@@ -52,10 +62,10 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
           : 'rgba(200, 169, 110, 0.08)',
         border: isSelected
           ? '1px solid var(--red)'
-          : isSpecialistSchool
+          : isPinnacleFeature
           ? '0.5px solid rgba(139, 26, 26, 0.35)'
           : '0.5px solid rgba(200, 169, 110, 0.45)',
-        borderLeft: isSpecialistSchool
+        borderLeft: isPinnacleFeature
           ? isSelected
             ? '3.5px solid var(--red)'
             : '3.5px solid rgba(139, 26, 26, 0.65)'
@@ -64,7 +74,7 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
           : '0.5px solid rgba(200, 169, 110, 0.45)',
         boxShadow: isSelected
           ? '0 1px 4px rgba(139, 26, 26, 0.2)'
-          : isSpecialistSchool
+          : isPinnacleFeature
           ? '0 1px 3px rgba(0, 0, 0, 0.06)'
           : 'none',
         borderRadius: '3px',
@@ -78,14 +88,14 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
       }}
       onMouseEnter={(e) => {
         if (!isSelected) {
-          e.currentTarget.style.background = isSpecialistSchool
+          e.currentTarget.style.background = isPinnacleFeature
             ? 'rgba(200, 169, 110, 0.26)'
             : 'rgba(200, 169, 110, 0.16)';
         }
       }}
       onMouseLeave={(e) => {
         if (!isSelected) {
-          e.currentTarget.style.background = isSpecialistSchool
+          e.currentTarget.style.background = isPinnacleFeature
             ? 'linear-gradient(90deg, rgba(200, 169, 110, 0.22) 0%, rgba(200, 169, 110, 0.10) 100%)'
             : 'rgba(200, 169, 110, 0.08)';
         }

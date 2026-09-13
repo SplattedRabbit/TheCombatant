@@ -6,6 +6,9 @@
 import React, { useState, useMemo } from 'react';
 import { CombatFeats } from '@core/data/feats-data.js';
 import { checkPrerequisites } from '@core/rules/RulesFeats.js';
+import { isSkillFeat, isTotemFeat } from './skillFeatsHelper';
+import { DRAGON_TOTEMS } from '@core/rules/data/dragonTotems.js';
+import type { DragonTotemDef } from '@core/rules/data/dragonTotems.js';
 
 interface CompendiumFeatsListProps {
   pc: any;
@@ -64,6 +67,17 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
     return list;
   }, []);
 
+  const totemKey: string | undefined = useMemo(() => {
+    if (pc?.dragonTotem) return pc.dragonTotem;
+    if (Array.isArray(pc?.classes) && pc.classes.some((c: any) => c.classType === 'dragon_shaman')) {
+      return 'red';
+    }
+    return undefined;
+  }, [pc?.dragonTotem, pc?.classes]);
+
+  const totemDef: DragonTotemDef | undefined = totemKey ? DRAGON_TOTEMS[totemKey] : undefined;
+  const totemName = totemDef ? (totemDef.name || totemDef.nameDe) : 'Totem';
+
   const compendiumFiltered = useMemo(() => {
     const visibleList: Array<{ feat: any; depth: number }> = [];
     const isSearching = compendiumSearch.trim().length > 0;
@@ -98,7 +112,11 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
 
       if (!matchesSearch) return false;
 
-      if (compendiumFilter !== 'all' && feat.category !== compendiumFilter) {
+      if (compendiumFilter === 'skill') {
+        if (!isSkillFeat(feat)) return false;
+      } else if (compendiumFilter === 'totem') {
+        if (!isTotemFeat(feat, totemKey)) return false;
+      } else if (compendiumFilter !== 'all' && feat.category !== compendiumFilter) {
         return false;
       }
 
@@ -113,7 +131,7 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
 
       return true;
     });
-  }, [compendiumList, compendiumSearch, compendiumFilter, sourceFilter, showOnlyMet, expandedParents, pc]);
+  }, [compendiumList, compendiumSearch, compendiumFilter, sourceFilter, showOnlyMet, expandedParents, pc, totemKey]);
 
   const toggleParent = (featId: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -155,6 +173,10 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
             style={{ flex: 1, minWidth: 0, fontSize: '10px', height: '18px', padding: 0, fontFamily: 'var(--font-body)', boxSizing: 'border-box', cursor: 'pointer' }}
           >
             <option value="all">All Categories</option>
+            <option value="skill">Skill Feats</option>
+            {totemKey && (
+              <option value="totem">Totem Skills & Feats</option>
+            )}
             <option value="general">General</option>
             <option value="combat">Combat Feats</option>
             <option value="metamagic">Metamagic</option>
@@ -340,6 +362,24 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
                           <span style={{ fontFamily: 'var(--font-title)', fontSize: '10.5px', fontWeight: isEligible || isAlreadyLearned ? 'bold' : '600', color: titleColor, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                             {feat.name || feat.nameEn || feat.nameDe}
                           </span>
+                          {totemKey && isTotemFeat(feat, totemKey) && (
+                            <span
+                              style={{
+                                fontSize: '7px',
+                                color: '#8b1a1a',
+                                background: 'rgba(139, 26, 26, 0.08)',
+                                padding: '0 3px',
+                                borderRadius: '1.5px',
+                                border: '0.5px solid rgba(139, 26, 26, 0.3)',
+                                fontWeight: 'bold',
+                                whiteSpace: 'nowrap',
+                                flexShrink: 0
+                              }}
+                              title={`Totem Skill Feat (${totemName})`}
+                            >
+                              Totem Skill
+                            </span>
+                          )}
                           {feat.parent && (
                             <span style={{ fontSize: '7px', color: '#8b6934', background: 'rgba(139, 105, 52, 0.08)', padding: '0 3px', borderRadius: '1px', border: '0.5px solid rgba(139, 105, 52, 0.2)', whiteSpace: 'nowrap', flexShrink: 0 }} title={`Prerequisite / Parent Feat: ${parentName}`}>
                               ↳ {parentName}

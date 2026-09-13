@@ -33,6 +33,7 @@ export const PCHeaderInfo: React.FC<PCHeaderInfoProps> = ({ pc, onOpenWizard, on
       half_elf: 'Half-Elf',
       half_orc: 'Half-Orc',
       tiefling: 'Tiefling',
+      lizardfolk: 'Lizardfolk',
       anima_construct: 'Anima-Construct',
     };
     return names[race.toLowerCase()] || race;

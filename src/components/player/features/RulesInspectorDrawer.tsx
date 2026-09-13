@@ -9,9 +9,10 @@ import { UnifiedFeature } from './helpers/featureRegistry';
 interface RulesInspectorDrawerProps {
   feature: UnifiedFeature | null;
   onConfigureSpecialization?: () => void;
+  onConfigureTotem?: () => void;
 }
 
-export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({ feature, onConfigureSpecialization }) => {
+export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({ feature, onConfigureSpecialization, onConfigureTotem }) => {
   if (!feature) {
     return (
       <div
@@ -116,6 +117,29 @@ export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({ feat
           }}
         >
           <span>⚙️</span> Configure Specialization & Prohibited Schools
+        </button>
+      )}
+
+      {/* Action button for Dragon Shaman Totem */}
+      {onConfigureTotem && (feature.id === 'dragon_shaman_totem_dragon' || feature.id === 'dragon_shaman_draconic_adaptation') && (
+        <button
+          type="button"
+          onClick={onConfigureTotem}
+          className="btn btn-p"
+          style={{
+            width: '100%',
+            padding: '5px 10px',
+            fontSize: '10px',
+            fontWeight: 'bold',
+            fontFamily: 'var(--font-title)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
+            cursor: 'pointer',
+          }}
+        >
+          Change Totem Dragon
         </button>
       )}
 

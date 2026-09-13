@@ -99,6 +99,14 @@ function applyRaceModifiers(pc) {
       addRaceModifier(pc.int, 2, 'racial', 'Volk (Tiefling)');
     }
     addRaceModifier(pc.cha, -2, 'racial', 'Volk (Tiefling)');
+  } else if (race === 'lizardfolk') {
+    if (!inWildShape) {
+      addRaceModifier(pc.str, 2, 'racial', 'Volk (Echsenmensch)');
+      addRaceModifier(pc.con, 2, 'racial', 'Volk (Echsenmensch)');
+      addRaceModifier(pc.ac, 5, 'natural', 'Volk (Echsenmensch)');
+      addRaceModifier(pc.acFlat, 5, 'natural', 'Volk (Echsenmensch)');
+    }
+    addRaceModifier(pc.int, -2, 'racial', 'Volk (Echsenmensch)');
   } else if (race === 'anima_construct') {
     if (!inWildShape) {
       addRaceModifier(pc.con, 2, 'racial', 'Volk (Anima-Konstrukt)');

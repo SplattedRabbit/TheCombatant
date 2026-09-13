@@ -19,6 +19,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
     half_elf: 'Half-Elf',
     half_orc: 'Half-Orc',
     tiefling: 'Tiefling',
+    lizardfolk: 'Lizardfolk',
     anima_construct: 'Anima Construct'
   };
   const raceName = raceNames[race] || 'Human';
@@ -156,6 +157,20 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
           <li><strong>Keen Senses:</strong> +2 racial bonus on Bluff and Hide checks (already included).</li>
           <li><strong>Darkness:</strong> Can use Darkness as a spell-like ability 1/day.</li>
           <li><strong>Level Adjustment:</strong> +1 (increases ECL by 1).</li>
+        </ul>
+      );
+    } else if (race === 'lizardfolk') {
+      const conScore = pc.con?.total || pc.con?.base || 10;
+      const holdBreathRounds = conScore * 4;
+      return (
+        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
+          <li><strong>Ability Score Adjustments:</strong> +2 Strength, +2 Constitution, -2 Intelligence (already included).</li>
+          <li><strong>Natural Armor:</strong> +5 racial natural armor bonus to AC (already included).</li>
+          <li><strong>Natural Weapons:</strong> 2 Claws (1d4 primary) and 1 Bite (1d4 secondary).</li>
+          <li><strong>Hold Breath (Ex):</strong> Can hold breath for up to 4 × Constitution score ({holdBreathRounds} rounds) before risking drowning.</li>
+          <li><strong>Keen Acrobatics &amp; Swimming:</strong> +4 racial bonus on Balance, Jump, and Swim checks (already included).</li>
+          <li><strong>Level Adjustment:</strong> +1 (increases ECL by 1).</li>
+          <li><strong>Favored Class:</strong> Druid.</li>
         </ul>
       );
     } else if (race === 'anima_construct') {

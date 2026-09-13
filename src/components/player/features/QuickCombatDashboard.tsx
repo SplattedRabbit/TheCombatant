@@ -24,6 +24,7 @@ export const QuickCombatDashboard: React.FC<QuickCombatDashboardProps> = ({ pc, 
 
   const smiteData = findAbility('Smite Evil') || findAbility('Smite Corrupt');
   const lohData = findAbility('Lay on Hands');
+  const tovData = findAbility('Touch of Vitality');
   const turnData = findAbility('Turn Undead');
   const rageData = findAbility('Rage');
   const bardicData = findAbility('Bardic Music');
@@ -67,7 +68,13 @@ export const QuickCombatDashboard: React.FC<QuickCombatDashboardProps> = ({ pc, 
     onUpdate?.();
   };
 
-  const hasAnyDailyAction = smiteData || lohData || turnData || rageData || bardicData || wildShapeData || kiData;
+  const handleAdjustTov = (diff: number) => {
+    if (!tovData) return;
+    CombatState.updatePCDailyAbilityUsed(tovData.index, -diff);
+    onUpdate?.();
+  };
+
+  const hasAnyDailyAction = smiteData || lohData || tovData || turnData || rageData || bardicData || wildShapeData || kiData;
 
   if (!hasAnyDailyAction) return null;
 
@@ -148,6 +155,34 @@ export const QuickCombatDashboard: React.FC<QuickCombatDashboardProps> = ({ pc, 
             <button
               type="button"
               onClick={() => handleAdjustLoh(1)}
+              className="btn"
+              style={{ padding: '0 4px', height: '16px', fontSize: '9px', fontWeight: 'bold', lineHeight: 1 }}
+              title="Restore 1 HP"
+            >
+              +
+            </button>
+          </div>
+        )}
+
+        {/* Touch of Vitality Pool */}
+        {tovData && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '9px' }}>
+            <span style={{ fontWeight: 'bold', color: 'var(--ink)' }}>Touch of Vitality:</span>
+            <button
+              type="button"
+              onClick={() => handleAdjustTov(-1)}
+              className="btn"
+              style={{ padding: '0 4px', height: '16px', fontSize: '9px', fontWeight: 'bold', lineHeight: 1 }}
+              title="Spend 1 HP"
+            >
+              -
+            </button>
+            <span style={{ fontWeight: 'bold', color: (tovData.ability.max - (tovData.ability.used || 0)) > 0 ? '#1b5e20' : 'var(--red)', minWidth: '45px', textAlign: 'center' }}>
+              {tovData.ability.max - (tovData.ability.used || 0)} / {tovData.ability.max} HP
+            </span>
+            <button
+              type="button"
+              onClick={() => handleAdjustTov(1)}
               className="btn"
               style={{ padding: '0 4px', height: '16px', fontSize: '9px', fontWeight: 'bold', lineHeight: 1 }}
               title="Restore 1 HP"

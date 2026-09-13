@@ -393,7 +393,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontFamily: 'var(--font-title)', fontSize: '8.5px', fontWeight: 'bold', color: 'var(--red)' }}>
-                🐉 Dragon Disciple: Breath Weapon (1/day)
+                Dragon Disciple: Breath Weapon (1/day)
               </span>
               <span
                 style={{
@@ -410,7 +410,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
               </span>
             </div>
             <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
-              🐉 Line/Cone energy breath: Reflex half DC 10 + Class Level [{dragonDiscipleLvl}] + Con Mod.
+              Line/Cone energy breath: Reflex half DC 10 + Class Level [{dragonDiscipleLvl}] + Con Mod.
             </div>
           </div>
         )}

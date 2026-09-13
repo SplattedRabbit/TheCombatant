@@ -193,6 +193,10 @@ export const CharacterWizardStepContent: React.FC<CharacterWizardStepContentProp
           activeFeatSlot={activeFeatSlot}
           filteredFeats={filteredFeats}
           targetPrestigeClass={targetPrestigeClass}
+          alignmentEthical={alignmentEthical}
+          setAlignmentEthical={setAlignmentEthical}
+          alignmentMoral={alignmentMoral}
+          setAlignmentMoral={setAlignmentMoral}
         />
       );
 

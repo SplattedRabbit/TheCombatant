@@ -82,9 +82,7 @@ export const CLASS_SKILLS = {
     'knowledge_other', 'profession', 'ride', 'sense_motive', 'swim'
   ],
   dragon_shaman: [
-    'climb', 'craft', 'diplomacy', 'jump', 'knowledge_arcana', 'knowledge_dungeons',
-    'knowledge_history', 'knowledge_nature', 'knowledge_planes', 'knowledge_religion',
-    'profession', 'swim'
+    'climb', 'craft', 'intimidate', 'knowledge_nature', 'search'
   ],
   // Complete Adventurer Base Classes
   ninja: [

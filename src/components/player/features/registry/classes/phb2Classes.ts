@@ -6,6 +6,7 @@
 
 import type { UnifiedFeature } from '../types.ts';
 import { getAblMod } from '../../../attributeHelper.ts';
+import { DRAGON_TOTEMS } from '../../../../../../js/rules/data/dragonTotems.js';
 
 export function getPHB2ClassFeatures(pc: any, classMap: Map<string, number>): UnifiedFeature[] {
   const features: UnifiedFeature[] = [];
@@ -178,10 +179,31 @@ At 3rd level (Bulwark of Defense), an opponent that begins its turn in your thre
   // ==========================================
   // DRAGON SHAMAN
   // ==========================================
+  // DRAGON SHAMAN
+  // ==========================================
   if (classMap.has('dragon_shaman')) {
     const dsLvl = classMap.get('dragon_shaman')!;
     const auraBonus = 1 + Math.floor((dsLvl - 1) / 5);
     const aurasKnown = dsLvl >= 9 ? 7 : (dsLvl >= 7 ? 6 : (dsLvl >= 5 ? 5 : (dsLvl >= 3 ? 4 : 3)));
+    const totemKey = pc.dragonTotem || 'red';
+    const totem = DRAGON_TOTEMS[totemKey] || DRAGON_TOTEMS.red;
+
+    // 0. Totem Dragon (1st+)
+    features.push({
+      id: 'dragon_shaman_totem_dragon',
+      name: `Totem Dragon: ${totem.name}`,
+      source: `Dragon Shaman Lv.${dsLvl}`,
+      category: 'passive',
+      typeLabel: 'Draconic Pact',
+      summary: `Pledged to the ${totem.name}. Energy: ${totem.energy.toUpperCase()} (${totem.breathName}) • Class Skills: ${totem.skills.map((s: string) => s.replace(/_/g, ' ')).join(', ')}.`,
+      rawRules: `By choosing a totem dragon, you partake of a true dragon's power.
+• Chosen Totem: ${totem.name} (${totem.nameDe})
+• Acceptable Alignments: ${totem.alignments.join(', ')}
+• Granted Class Skills: ${totem.skills.map((s: string) => s.replace(/_/g, ' ')).join(', ')}
+• Breath Weapon: ${totem.breathName} (${totem.energy})
+• Environmental Adaptation: ${totem.adaptation}`,
+      actionType: 'Passive',
+    });
 
     // 1. Draconic Auras (1st+)
     features.push({
@@ -190,15 +212,16 @@ At 3rd level (Bulwark of Defense), an opponent that begins its turn in your thre
       source: `Dragon Shaman Lv.${dsLvl}`,
       category: 'aura',
       typeLabel: dsLvl >= 20 ? 'Dual Party Aura (30 ft)' : 'Party Aura (30 ft)',
-      summary: `Project a draconic aura granting +${auraBonus} to all allies within 30 ft (Vigor: Fast Healing up to 50% HP, Energy Shield, Power, Presence, Resistance, Senses, Toughness).${dsLvl >= 20 ? ' (Communal Dragon: 2 Auras simultaneously active!)' : ''}`,
+      summary: `Project a draconic aura granting +${auraBonus} to yourself and all allies within 30 ft (Vigor, Energy Shield, Power, Presence, Resistance [${5 * auraBonus} ${totem.energy}], Senses, Toughness [DR ${auraBonus}/magic]). Swift action to switch.${dsLvl >= 20 ? ' (Communal Dragon: 2 Auras simultaneously active!)' : ''}`,
       rawRules: `A dragon shaman can project a draconic aura granting yourself and all allies within 30 feet a special benefit (+${auraBonus} bonus, ${aurasKnown} auras known):
 • Vigor: Fast Healing ${auraBonus} to allies below one-half maximum hit points.
 • Energy Shield: Deal ${2 * auraBonus} elemental damage to attackers who strike with melee or natural weapons.
 • Power: +${auraBonus} bonus on melee damage rolls.
 • Presence: +${auraBonus} bonus on Bluff, Diplomacy, and Intimidate checks.
-• Resistance: Energy resistance ${5 * auraBonus} against totem energy.
+• Resistance: Energy resistance ${5 * auraBonus} against your totem dragon's energy type (${totem.energy}).
 • Senses: +${auraBonus} bonus on Listen, Spot, and Initiative checks.
-• Toughness: Damage Reduction ${auraBonus}/magic.${dsLvl >= 20 ? '\n\n• Communal Dragon: At 20th level, you can project two draconic auras simultaneously.' : ''}`,
+• Toughness: Damage Reduction ${auraBonus}/magic.
+Activating or switching an aura is a Swift Action. Once activated, the aura remains until dismissed or changed.${dsLvl >= 20 ? '\n\n• Communal Dragon: At 20th level, you can project two draconic auras simultaneously.' : ''}`,
       actionType: 'Swift Action',
       range: '30 ft emanation',
     });
@@ -207,14 +230,16 @@ At 3rd level (Bulwark of Defense), an opponent that begins its turn in your thre
     if (dsLvl >= 3) {
       features.push({
         id: 'dragon_shaman_draconic_adaptation',
-        name: dsLvl >= 13 ? 'Draconic Adaptation (Shared with Allies)' : 'Draconic Adaptation',
+        name: dsLvl >= 13 ? `Draconic Adaptation (${totem.adaptation} • Shared)` : `Draconic Adaptation (${totem.adaptation})`,
         source: `Dragon Shaman Lv.${dsLvl}`,
         category: 'passive',
-        typeLabel: 'Draconic Quality',
-        summary: `Gain your totem dragon's innate environmental adaptation.${dsLvl >= 13 ? ' (At 13th level, you can share this adaptation with allies within 30 ft as a swift action).' : ''}`,
-        rawRules: `At 3rd level, you gain a special draconic adaptation based on your chosen totem dragon (e.g. water breathing, climb speed, burrow speed, or swimming).
-${dsLvl >= 13 ? 'At 13th level, as a swift action you can share this adaptation with all allies within 30 feet for a number of rounds equal to your Charisma modifier.' : ''}`,
-        actionType: dsLvl >= 13 ? 'Swift Action' : 'Passive',
+        typeLabel: totem.adaptationType === 'Sp' ? 'Spell-like Ability' : 'Draconic Quality',
+        summary: `${totem.adaptationDesc}${dsLvl >= 13 ? ' (At 13th level, as a swift action you can share this adaptation with all allies within 30 ft).' : ''}`,
+        rawRules: `At 3rd level, you take on an aspect of your totem dragon:
+• Adaptation: ${totem.adaptation}
+• Details: ${totem.adaptationDesc}
+${dsLvl >= 13 ? '\n• Communal Adaptation (13th level): As a swift action, you can share the effect of your draconic adaptation with any or all allies within 30 feet. In the case of spell-like abilities, you make this decision when activating the ability. The benefit lasts until you spend a free action to rescind it or the effect ends.' : ''}`,
+        actionType: dsLvl >= 13 ? 'Swift Action' : (totem.adaptationType === 'Sp' ? 'Standard Action' : 'Passive'),
       });
     }
 
@@ -234,36 +259,54 @@ ${dsLvl >= 13 ? 'At 13th level, as a swift action you can share this adaptation 
 
     // 4. Breath Weapon (4th+)
     if (dsLvl >= 4) {
-      const breathDice = `${Math.floor(dsLvl / 2)}d6`;
+      const breathDiceCount = 2 + Math.floor((dsLvl - 4) / 2);
+      const breathDice = `${breathDiceCount}d6`;
       const conScore = typeof pc.con?.getValue === 'function' ? pc.con.getValue() : (pc.con || 10);
       const conMod = getAblMod(conScore);
       const breathDc = 10 + Math.floor(dsLvl / 2) + conMod;
+      const rangeText = totem.shape === 'cone'
+        ? (dsLvl >= 20 ? '60-ft cone' : (dsLvl >= 12 ? '30-ft cone' : '15-ft cone'))
+        : (dsLvl >= 20 ? '120-ft line' : (dsLvl >= 12 ? '60-ft line' : '30-ft line'));
 
       features.push({
         id: 'dragon_shaman_breath_weapon',
-        name: `Breath Weapon (${breathDice} • DC ${breathDc} Reflex)`,
+        name: `Breath Weapon (${breathDice} ${totem.energy.toUpperCase()} • DC ${breathDc} Ref)`,
         source: `Dragon Shaman Lv.${dsLvl}`,
         category: 'combat',
-        typeLabel: 'Supernatural Breath',
-        summary: `Breathe a cone or line of totem elemental energy dealing ${breathDice} damage (Reflex half DC ${breathDc}). Recharges in 1d4 rounds.`,
-        rawRules: `At 4th level, you gain a breath weapon corresponding to your totem dragon dealing ${breathDice} points of energy damage in a cone (30 ft) or line (60 ft). A successful Reflex save (DC ${breathDc} = 10 + 1/2 Dragon Shaman level + Con modifier) halves the damage. Once used, you must wait 1d4 rounds before breathing again.`,
+        typeLabel: `Supernatural Breath (${totem.shape === 'cone' ? 'Cone' : 'Line'})`,
+        summary: `Breathe a ${rangeText} of ${totem.energy} dealing ${breathDice} damage (Reflex half DC ${breathDc}). Recharges in 1d4 rounds (at will with cooldown).`,
+        rawRules: `At 4th level, you gain a breath weapon corresponding to your totem dragon (${totem.name}) dealing ${breathDice} points of ${totem.energy} energy damage in a ${rangeText}. A successful Reflex save (DC ${breathDc} = 10 + 1/2 Dragon Shaman level + Con modifier) halves the damage.
+Once you breathe, you must wait 1d4 rounds before breathing again.
+
+• Shape & Range:
+  - 4th–11th level: 15-ft cone or 30-ft line
+  - 12th–19th level: 30-ft cone or 60-ft line
+  - 20th level: 60-ft cone or 120-ft line`,
         actionType: 'Standard Action',
-        range: '30 ft cone or 60 ft line',
+        range: rangeText,
       });
     }
 
-    // 5. Touch of Vitality (5th+)
-    if (dsLvl >= 5) {
-      const healPool = 2 * dsLvl;
+    // 5. Touch of Vitality (6th+)
+    if (dsLvl >= 6) {
+      const chaScore = typeof pc.cha?.getValue === 'function' ? pc.cha.getValue() : (pc.cha || 10);
+      const chaMod = getAblMod(chaScore);
+      const healPool = Math.max(0, 2 * dsLvl * Math.max(0, chaMod));
       features.push({
         id: 'dragon_shaman_touch_vitality',
-        name: `Touch of Vitality (${healPool} HP Pool)`,
+        name: `Touch of Vitality (${healPool} HP Daily Pool)`,
         source: `Dragon Shaman Lv.${dsLvl}`,
         category: 'daily',
         typeLabel: 'Healing Pool',
-        summary: `Heal living creatures by touch up to ${healPool} HP per day, or spend healing points to cure conditions (paralysis, poison, disease, blind).`,
-        rawRules: `At 5th level, you can heal the wounds of living creatures by touch. Each day you can heal a total number of hit points equal to twice your dragon shaman level (${healPool} HP).
-${dsLvl >= 11 ? 'At 11th level, you can spend points from your pool to remove negative conditions: 5 points to cure fatigued/dazed/sickened; 10 points to cure blinded/deafened/diseased/exhausted/poisoned/stunned; 20 points to cure confused/nauseated/paralyzed.' : ''}`,
+        summary: `Heal living creatures by touch up to ${healPool} HP per day (2 × DS Level × Cha Mod).${dsLvl >= 11 ? ' Spend points to cure conditions (5: ability damage/fatigued/dazed/sickened; 10: exhausted/nauseated/poisoned/stunned; 20: negative level/blinded/deafened/diseased).' : ''}`,
+        rawRules: `At 6th level, you can heal the wounds of living creatures (your own or others) by touch. Each day you can heal a number of points of damage equal to twice your class level × your Charisma bonus (${healPool} HP total).
+Using touch of vitality is a standard action. It has no effect on undead.
+
+${dsLvl >= 11 ? `Beginning at 11th level, you can spend points from your healing pool to remove harmful conditions:
+• 5 points: Cure 1 point of ability damage, or remove dazed, fatigued, or sickened.
+• 10 points: Remove exhausted, nauseated, poisoned, or stunned.
+• 20 points: Remove a negative level, or cure blinded, deafened, or diseased.
+You can combine condition removal and damage healing in the same touch so long as you expend the total required points.` : ''}`,
         actionType: 'Standard Action',
         range: 'Touch',
         interactive: 'counter',
@@ -290,26 +333,42 @@ ${dsLvl >= 11 ? 'At 11th level, you can spend points from your pool to remove ne
     if (dsLvl >= 9) {
       features.push({
         id: 'dragon_shaman_energy_immunity',
-        name: 'Energy Immunity (Totem Energy)',
+        name: `Energy Immunity (${totem.energy.toUpperCase()})`,
         source: `Dragon Shaman Lv.${dsLvl}`,
         category: 'passive',
         typeLabel: 'Elemental Immunity',
-        summary: `Complete immunity to your totem dragon's energy type (acid, cold, electricity, or fire).`,
-        rawRules: `At 9th level, you gain immunity to the energy type of your totem dragon's breath weapon.`,
+        summary: `Complete immunity to ${totem.energy} damage (the energy type of your ${totem.name} totem).`,
+        rawRules: `At 9th level, you gain complete immunity to the energy type of your totem dragon's breath weapon (${totem.energy}).`,
         actionType: 'Passive',
       });
     }
 
-    // 8. Draconic Wings (19th+)
+    // 8. Commune with Dragon Spirit (14th+)
+    if (dsLvl >= 14) {
+      const questionCount = Math.floor(dsLvl / 3);
+      features.push({
+        id: 'dragon_shaman_commune',
+        name: `Commune with Dragon Spirit (${questionCount} Questions • 1/Week)`,
+        source: `Dragon Shaman Lv.${dsLvl}`,
+        category: 'combat',
+        typeLabel: 'Spell-like Ability',
+        summary: `Contact your dragon totem directly (as commune spell, no material/XP cost). Ask up to ${questionCount} questions. Recharges once every 7 days.`,
+        rawRules: `At 14th level, you gain the ability to contact your dragon totem directly to ask questions of it. This is the equivalent of casting a commune spell, except that it has no material component, focus, or XP cost and allows only one question per three class levels (${questionCount} questions).
+After using this ability, you cannot use it again for seven days.`,
+        actionType: 'Special',
+      });
+    }
+
+    // 9. Draconic Wings (19th+)
     if (dsLvl >= 19) {
       features.push({
         id: 'dragon_shaman_draconic_wings',
-        name: 'Draconic Wings (Fly Speed)',
+        name: 'Draconic Wings (Fly 60 ft, Good)',
         source: `Dragon Shaman Lv.${dsLvl}`,
         category: 'passive',
         typeLabel: 'Flight (Good)',
-        summary: `Grow draconic wings granting a fly speed equal to your base land speed with good maneuverability.`,
-        rawRules: `At 19th level, you sprout a pair of draconic wings. You gain a fly speed equal to your land speed with good maneuverability.`,
+        summary: `Grow draconic wings resembling your ${totem.name}. Fly speed 60 ft (good maneuverability), or 40 ft when carrying a medium load.`,
+        rawRules: `At 19th level, you sprout a pair of wings that resemble those of your totem dragon (${totem.name}). They allow flight at a speed of 60 feet (good maneuverability). You can even fly while carrying a medium load, though your fly speed drops to 40 feet in this case.`,
         actionType: 'Passive',
       });
     }

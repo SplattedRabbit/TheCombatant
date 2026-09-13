@@ -110,7 +110,7 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
               className="btn" 
               style={{ display: 'flex', flexDirection: 'column', padding: '6px 12px', textAlign: 'left', cursor: 'pointer', background: 'rgba(200,169,110,0.06)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}
             >
-              <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>🐉 Level 10 Hero Encounter</strong>
+              <strong style={{ fontSize: '11px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>Level 10 Hero Encounter</strong>
               <span style={{ fontSize: '9px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', marginTop: '2px' }}>
                 Creates 3 level 10 heroes (Wizard, Ranger, Paladin) and positions them against a dragon and giants.
               </span>

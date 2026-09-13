@@ -20,6 +20,7 @@ export function applyWizardCharacterToState(
     freshPC.name = name.trim();
     freshPC.race = selectedRace;
     freshPC.isHuman = (selectedRace === 'human');
+    freshPC.levelAdjustment = (selectedRace === 'tiefling' || selectedRace === 'lizardfolk') ? 1 : 0;
     freshPC.alignment = alignmentEthical === 'Neutral' && alignmentMoral === 'Neutral' 
       ? 'Neutral' 
       : `${alignmentEthical} ${alignmentMoral}`;
@@ -61,6 +62,12 @@ export function applyWizardCharacterToState(
       freshPC.wizardProhibited2 = '';
     }
 
+    if (freshPC.classes.some((c: any) => c.classType === 'dragon_shaman')) {
+      freshPC.dragonTotem = completedDraft.dragonTotem || 'red';
+    } else {
+      delete freshPC.dragonTotem;
+    }
+
     const conMod = completedDraft.statMods.con;
     let calculatedMaxHP = 0;
     levelConfigs.forEach(cfg => {
@@ -83,18 +90,27 @@ export function applyWizardCharacterToState(
       : [];
 
     const allFeats: any[] = [];
+    const addFeatInstance = (featVal: any, optFallback?: string) => {
+      if (!featVal) return;
+      const fid = typeof featVal === 'object' ? featVal.id : featVal;
+      if (!fid) return;
+      const opt = typeof featVal === 'object' ? featVal.option : (optFallback || '');
+      const alreadyHas = allFeats.some(f => f.id === fid && (f.option || '') === (opt || ''));
+      if (!alreadyHas) {
+        allFeats.push(opt ? { id: fid, option: opt } : { id: fid });
+      }
+    };
+
     levelConfigs.forEach((cfg, lvlIdx) => {
       const slots = getFeatSlotsAtLevel(lvlIdx, cfg.classType, selectedRace, levelConfigs);
       slots.forEach((slot, sIdx) => {
-        const fid = cfg.feats?.[sIdx] || slot.defaultFeat;
-        if (fid && !allFeats.some(f => f.id === fid)) {
-          allFeats.push({ id: fid });
-        }
+        const featVal = cfg.feats?.[sIdx] || slot.defaultFeat;
+        const optFallback = cfg.featOptions?.[sIdx];
+        addFeatInstance(featVal, optFallback);
       });
-      (cfg.feats || []).forEach((fid: string) => {
-        if (fid && !allFeats.some(f => f.id === fid)) {
-          allFeats.push({ id: fid });
-        }
+      (cfg.feats || []).forEach((featVal: any, fIdx: number) => {
+        const optFallback = cfg.featOptions?.[fIdx];
+        addFeatInstance(featVal, optFallback);
       });
     });
     freshPC.feats = allFeats;
@@ -110,7 +126,14 @@ export function applyWizardCharacterToState(
     freshPC.acfs = allACFs;
 
     // Reset gear, equipment, items, and inventory to empty/clean state
-    freshPC.weapons = [];
+    if (selectedRace === 'lizardfolk') {
+      freshPC.weapons = [
+        { id: 'natural-claw', name: 'Claw', damage: '1d4', isNatural: true, isSecondary: false, strMult: 1.0, damageType: 'Slashing', grip: 'primary' },
+        { id: 'natural-bite', name: 'Bite', damage: '1d4', isNatural: true, isSecondary: true, strMult: 0.5, damageType: 'Piercing/Slashing', grip: 'sec' }
+      ];
+    } else {
+      freshPC.weapons = [];
+    }
     freshPC.armors = [];
     freshPC.items = [];
     freshPC.autoAC = true;

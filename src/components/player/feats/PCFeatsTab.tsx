@@ -24,6 +24,7 @@ export const PCFeatsTab: React.FC = () => {
   const hasFighter = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'fighter'), [pc.classes]);
   const hasWizard = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'wizard'), [pc.classes]);
   const hasMonk = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'monk'), [pc.classes]);
+  const hasDragonShaman = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'dragon_shaman'), [pc.classes]);
   const loosePc = pc as any;
 
   const autoFeats = useMemo(() => typeof loosePc.getAutomaticFeats === 'function' ? loosePc.getAutomaticFeats() : [], [pc.classes, loosePc.rangerCombatStyle]);
@@ -64,19 +65,27 @@ export const PCFeatsTab: React.FC = () => {
     return monkClass ? (monkClass.level >= 6 ? 3 : (monkClass.level >= 2 ? 2 : (monkClass.level >= 1 ? 1 : 0))) : 0;
   }, [activeClasses]);
 
-  const totalMax = useMemo(() => generalMax + fighterMax + wizardMax + monkMax, [generalMax, fighterMax, wizardMax, monkMax]);
+  const dragonShamanMax = useMemo(() => {
+    const dsClass = activeClasses.find((c: any) => c.classType === 'dragon_shaman');
+    return dsClass ? ((dsClass.level || 0) >= 16 ? 3 : ((dsClass.level || 0) >= 8 ? 2 : ((dsClass.level || 0) >= 2 ? 1 : 0))) : 0;
+  }, [activeClasses]);
 
-  const { generalFilled, fighterFilled, wizardFilled, monkFilled } = useMemo(() => {
+  const totalMax = useMemo(() => generalMax + fighterMax + wizardMax + monkMax + dragonShamanMax, [generalMax, fighterMax, wizardMax, monkMax, dragonShamanMax]);
+
+  const { generalFilled, fighterFilled, wizardFilled, monkFilled, dragonShamanFilled } = useMemo(() => {
     const monkBonusIds = ['improved_unarmed_strike', 'improved_grapple', 'deflect_arrows', 'snatch_arrows', 'stunning_fist', 'improved_trip', 'improved_overrun'];
     let monkFilled = 0;
     let wizardFilled = 0;
     let fighterFilled = 0;
+    let dragonShamanFilled = 0;
     let generalFilled = 0;
 
     for (const f of activeFeats) {
       const featDef = CombatFeats.REGISTRY[f.id];
       if (!featDef) continue;
-      if (monkMax > 0 && monkFilled < monkMax && monkBonusIds.includes(f.id)) {
+      if (dragonShamanMax > 0 && dragonShamanFilled < dragonShamanMax && f.id === 'skill_focus') {
+        dragonShamanFilled++;
+      } else if (monkMax > 0 && monkFilled < monkMax && monkBonusIds.includes(f.id)) {
         monkFilled++;
       } else if (wizardMax > 0 && wizardFilled < wizardMax && (featDef.category === 'metamagic' || featDef.category === 'item_creation')) {
         wizardFilled++;
@@ -87,8 +96,8 @@ export const PCFeatsTab: React.FC = () => {
       }
     }
 
-    return { generalFilled, fighterFilled, wizardFilled, monkFilled };
-  }, [activeFeats, monkMax, wizardMax, fighterMax]);
+    return { generalFilled, fighterFilled, wizardFilled, monkFilled, dragonShamanFilled };
+  }, [activeFeats, monkMax, wizardMax, fighterMax, dragonShamanMax]);
 
   const isLimitReached = useMemo(() => activeFeats.length >= totalMax, [activeFeats.length, totalMax]);
 
@@ -113,6 +122,10 @@ export const PCFeatsTab: React.FC = () => {
           <span style={{ display: 'inline-block', width: '8px', height: '6px', border: '1.2px solid #2a6a2a', background: 'rgba(42, 106, 42, 0.1)', borderLeftWidth: '3px' }}></span>
           <span>Monk Bonus (Monk Feats {hasMonk ? 'Active' : 'Inactive'})</span>
         </span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', opacity: hasDragonShaman ? 1 : 0.5 }}>
+          <span style={{ display: 'inline-block', width: '8px', height: '6px', border: '1.2px solid #2a6a2a', background: 'rgba(42, 106, 42, 0.1)', borderLeftWidth: '3px' }}></span>
+          <span>Dragon Shaman Bonus (Skill Focus {hasDragonShaman ? 'Active' : 'Inactive'})</span>
+        </span>
       </div>
 
       <div style={{ display: 'flex', gap: '10px', height: '100%', minHeight: '380px', width: '100%', minWidth: 0, boxSizing: 'border-box', overflowX: 'hidden' }}>
@@ -130,9 +143,12 @@ export const PCFeatsTab: React.FC = () => {
           wizardMax={wizardMax}
           monkFilled={monkFilled}
           monkMax={monkMax}
+          dragonShamanFilled={dragonShamanFilled}
+          dragonShamanMax={dragonShamanMax}
           hasFighter={hasFighter}
           hasWizard={hasWizard}
           hasMonk={hasMonk}
+          hasDragonShaman={hasDragonShaman}
           onFeatClick={handleFeatRowClick}
         />
 

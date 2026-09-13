@@ -73,13 +73,16 @@ export const SkillsTabContent: React.FC<SkillsTabContentProps> = ({
               })
               .map(([key, def]: any) => {
                 const isClassSkill = CombatRules.CLASS_SKILLS[currentConfig.classType]?.includes(key) || 
+                                     (currentConfig.classType === 'dragon_shaman' && currentConfig.dragonTotem && CombatRules.DRAGON_TOTEMS?.[currentConfig.dragonTotem]?.skills.includes(key)) ||
                                      (key.startsWith('knowledge_') && (currentConfig.classType === 'wizard' || currentConfig.classType === 'bard'));
                 
                 let isEverClassSkill = false;
                 for (let i = 0; i <= currentLevelIndex; i++) {
                   const cType = levelConfigs[i]?.classType;
+                  const cTotem = levelConfigs[i]?.dragonTotem;
                   if (cType) {
                     const check = CombatRules.CLASS_SKILLS[cType]?.includes(key) || 
+                                  (cType === 'dragon_shaman' && cTotem && CombatRules.DRAGON_TOTEMS?.[cTotem]?.skills.includes(key)) ||
                                   (key.startsWith('knowledge_') && (cType === 'wizard' || cType === 'bard'));
                     if (check) isEverClassSkill = true;
                   }

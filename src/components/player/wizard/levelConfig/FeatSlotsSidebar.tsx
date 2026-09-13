@@ -26,11 +26,18 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
       </span>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
         {currentFeatSlots.map((slot, slotIdx) => {
-          const selectedFeatId = currentConfig.feats?.[slotIdx] || slot.defaultFeat;
+          const featVal = currentConfig.feats?.[slotIdx] || slot.defaultFeat;
+          const selectedFeatId = typeof featVal === 'object' ? featVal?.id : featVal;
+          const selectedOption = typeof featVal === 'object' ? featVal?.option : currentConfig.featOptions?.[slotIdx];
           const selectedFeat = CombatFeats.REGISTRY[selectedFeatId];
-          const isChoice = Array.isArray(slot.allowedFeats) && slot.allowedFeats.length > 1;
-          const isPreFilled = !!slot.defaultFeat && !isChoice;
+          const hasOption = !!(slot.hasOption || selectedFeat?.hasOption);
+          const isChoice = (Array.isArray(slot.allowedFeats) && slot.allowedFeats.length > 1) || hasOption;
+          const isPreFilled = !!slot.defaultFeat && !isChoice && !hasOption;
+          const isConfigured = !!selectedFeat && (!hasOption || !!selectedOption);
           const isActive = featSelectSlotIndex === slotIdx;
+
+          const featName = selectedFeat ? (selectedFeat.nameEn || selectedFeat.name || selectedFeat.nameDe) : (slot.defaultFeat ? slot.defaultFeat : '— Select —');
+          const displayLabel = selectedOption ? `${featName} (${selectedOption})` : (hasOption && selectedFeat ? `${featName} (Select Option)` : featName);
 
           return (
             <div
@@ -43,7 +50,7 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
               style={{
                 padding: '6px 8px',
                 background: isActive ? 'rgba(139, 26, 26, 0.05)' : 'rgba(244, 232, 193, 0.25)',
-                border: isActive ? '1.5px solid var(--red)' : (selectedFeat || isPreFilled) ? '1.5px solid #2e7d32' : '1.5px solid var(--pb)',
+                border: isActive ? '1.5px solid var(--red)' : isConfigured ? '1.5px solid #2e7d32' : '1.5px solid var(--pb)',
                 borderRadius: '3px',
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -54,15 +61,15 @@ export const FeatSlotsSidebar: React.FC<FeatSlotsSidebarProps> = ({
             >
               <div style={{ textAlign: 'left' }}>
                 <span style={{ fontSize: '8.5px', textTransform: 'uppercase', color: 'var(--inkl)', display: 'block' }}>
-                  {slot.label} {isPreFilled ? '(Fixed)' : isChoice ? '(Class Choice)' : ''}
+                  {slot.label} {isPreFilled ? '(Fixed)' : hasOption ? '(Option Required)' : isChoice ? '(Class Choice)' : ''}
                 </span>
-                <strong style={{ fontSize: '11.5px', color: (selectedFeat || isPreFilled) ? 'var(--ink)' : 'var(--red)' }}>
-                  {selectedFeat ? (selectedFeat.nameEn || selectedFeat.name || selectedFeat.nameDe) : (slot.defaultFeat ? slot.defaultFeat : '— Select —')}
+                <strong style={{ fontSize: '11.5px', color: isConfigured ? 'var(--ink)' : 'var(--red)' }}>
+                  {displayLabel}
                 </strong>
               </div>
               {!isPreFilled ? (
-                <span style={{ fontSize: '9.5px', color: 'var(--red)', fontWeight: isActive ? 'bold' : 'normal' }}>
-                  {isActive ? '👉 Active' : 'Select'}
+                <span style={{ fontSize: '9.5px', color: isConfigured ? '#2e7d32' : 'var(--red)', fontWeight: isActive ? 'bold' : 'normal' }}>
+                  {isActive ? '👉 Active' : isConfigured ? '✓ Configured' : 'Select'}
                 </span>
               ) : (
                 <span style={{ fontSize: '9.5px', color: '#2e7d32', fontWeight: 'bold' }}>

@@ -56,7 +56,7 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
           />
         </div>
 
-        {/* Target Prestige Class (Optional) */}
+        {/* Target Prestige Class (Optional Guidance) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
           <label style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.5px' }}>
             Target Prestigeclass <span style={{ fontSize: '11px', fontWeight: 'normal', color: 'var(--inkl)' }}>(Guidance)</span>
@@ -122,10 +122,15 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
               <option value="Evil">Evil</option>
             </select>
           </div>
+          {alignmentEthical.toLowerCase() === 'neutral' && alignmentMoral.toLowerCase() === 'neutral' && (
+            <span style={{ fontSize: '9.5px', color: 'var(--inkm)', marginTop: '2px', lineHeight: 1.2 }}>
+              Note: True Neutral characters cannot become Dragon Shamans (PHB2 p. 11).
+            </span>
+          )}
         </div>
       </div>
 
-      {/* Target Prestige Class Alignment Guidance Banner */}
+      {/* Target Class Alignment Guidance Banner */}
       {targetClassDef && alignmentCheck.requirementLabel && (
         <div
           data-testid="alignment-guidance-banner"
@@ -149,7 +154,7 @@ export const Step1RaceName: React.FC<Step1RaceNameProps> = ({
               <span>Alignment compatible! Prerequisite: <em>{alignmentCheck.requirementLabel}</em></span>
             ) : (
               <span>
-                <strong>Warning:</strong> The selected alignment ({alignmentEthical} {alignmentMoral}) does not meet the prerequisite (<strong>{alignmentCheck.requirementLabel}</strong>). Entering this prestige class later will be blocked!
+                <strong>Warning:</strong> The selected alignment ({alignmentEthical} {alignmentMoral}) does not meet the prerequisite (<strong>{alignmentCheck.requirementLabel}</strong>). Choosing this class will be blocked!
               </span>
             )}
           </div>

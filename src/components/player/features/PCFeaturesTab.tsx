@@ -15,16 +15,18 @@ import { FeaturesFilterBar, FeatureCategoryFilter } from './FeaturesFilterBar';
 import { UnifiedFeatureCard } from './UnifiedFeatureCard';
 import { CompanionMiniStatusWidget } from './CompanionMiniStatusWidget';
 import { RulesInspectorDrawer } from './RulesInspectorDrawer';
-import { WizardSpecializationDialog } from '../../dialogs/BaseDialogs';
+import { WizardSpecializationDialog, DragonTotemDialog } from '../../dialogs/BaseDialogs';
 
 export const PCFeaturesTab: React.FC = () => {
   const pc = usePC();
   const [, setTick] = useState(0);
   const triggerRender = () => setTick(t => t + 1);
   const [isSpecDialogOpen, setIsSpecDialogOpen] = useState(false);
+  const [isTotemDialogOpen, setIsTotemDialogOpen] = useState(false);
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
   const activeACFs: string[] = Array.isArray(pc.acfs) ? pc.acfs : [];
+  const hasDragonShaman = hasClasses && pc.classes.some((c: { classType: string; level?: number }) => c.classType === 'dragon_shaman');
 
   // Check if Animal Companion is available
   const isCompanionReplaced = activeACFs.includes('ranger_distracting_attack') || 
@@ -337,6 +339,7 @@ export const PCFeaturesTab: React.FC = () => {
               <RulesInspectorDrawer
                 feature={selectedFeature}
                 onConfigureSpecialization={hasWizard ? () => setIsSpecDialogOpen(true) : undefined}
+                onConfigureTotem={hasDragonShaman ? () => setIsTotemDialogOpen(true) : undefined}
               />
             </div>
           </div>
@@ -350,6 +353,18 @@ export const PCFeaturesTab: React.FC = () => {
           isOpen={isSpecDialogOpen}
           onClose={() => {
             setIsSpecDialogOpen(false);
+            triggerRender();
+          }}
+        />
+      )}
+
+      {/* Dragon Shaman Totem Selection Dialog */}
+      {hasDragonShaman && (
+        <DragonTotemDialog
+          pc={pc}
+          isOpen={isTotemDialogOpen}
+          onClose={() => {
+            setIsTotemDialogOpen(false);
             triggerRender();
           }}
         />

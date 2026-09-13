@@ -36,7 +36,7 @@ export const PCClassesManager: React.FC<PCClassesManagerProps> = ({ pc }) => {
       freshPC.isHuman = (val === 'human');
       const lowSpeedRaces = ['dwarf', 'gnome', 'halfling', 'deep_halfling'];
       freshPC.baseBw = lowSpeedRaces.includes(val) ? 20 : 30;
-      freshPC.levelAdjustment = (val === 'tiefling') ? 1 : 0;
+      freshPC.levelAdjustment = (val === 'tiefling' || val === 'lizardfolk') ? 1 : 0;
       if (val === 'tiefling') {
         freshPC.resistances = 'Cold 5, Electricity 5, Fire 5';
       } else if (freshPC.resistances === 'Cold 5, Electricity 5, Fire 5') {
@@ -157,6 +157,7 @@ export const PCClassesManager: React.FC<PCClassesManagerProps> = ({ pc }) => {
           <option value="half_elf">Half-Elf</option>
           <option value="half_orc">Half-Orc</option>
           <option value="tiefling">Tiefling</option>
+          <option value="lizardfolk">Lizardfolk</option>
           <option value="anima_construct">Anima-Construct</option>
         </select>
       </div>

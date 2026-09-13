@@ -20,9 +20,12 @@ interface LearnedFeatsListProps {
   wizardMax: number;
   monkFilled: number;
   monkMax: number;
+  dragonShamanFilled?: number;
+  dragonShamanMax?: number;
   hasFighter: boolean;
   hasWizard: boolean;
   hasMonk: boolean;
+  hasDragonShaman?: boolean;
   onFeatClick: (feat: any, isLearned: boolean, option?: string, e?: React.MouseEvent) => void;
 }
 
@@ -39,14 +42,18 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
   wizardMax,
   monkFilled,
   monkMax,
+  dragonShamanFilled = 0,
+  dragonShamanMax = 0,
   hasFighter,
   hasWizard,
   hasMonk,
+  hasDragonShaman = false,
   onFeatClick,
 }) => {
   const [learnedSearch, setLearnedSearch] = useState('');
 
   const getBonusFeatClass = (feat: any) => {
+    if (feat.id === 'skill_focus') return 'dragon_shaman';
     if (feat.category === 'combat') return 'fighter';
     if (feat.category === 'metamagic' || feat.category === 'item_creation') return 'wizard';
     const monkBonusIds = ['improved_unarmed_strike', 'improved_grapple', 'deflect_arrows', 'snatch_arrows', 'stunning_fist', 'improved_trip', 'improved_overrun'];
@@ -73,6 +80,7 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
         {fighterMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Fighter Slots:</span> <strong style={{ color: 'var(--red)' }}>{fighterFilled} / {fighterMax}</strong></div>}
         {wizardMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Wizard Slots:</span> <strong style={{ color: 'var(--red)' }}>{wizardFilled} / {wizardMax}</strong></div>}
         {monkMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Monk Slots:</span> <strong style={{ color: 'var(--red)' }}>{monkFilled} / {monkMax}</strong></div>}
+        {dragonShamanMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Dragon Shaman Slots:</span> <strong style={{ color: 'var(--red)' }}>{dragonShamanFilled} / {dragonShamanMax}</strong></div>}
       </div>
 
       <input
@@ -100,7 +108,8 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
             const isAutomatic = featInst.isAutomatic;
             const isClassBonus = !isAutomatic && ((getBonusFeatClass(feat) === 'fighter' && hasFighter) ||
                                  (getBonusFeatClass(feat) === 'wizard' && hasWizard) ||
-                                 (getBonusFeatClass(feat) === 'monk' && hasMonk));
+                                 (getBonusFeatClass(feat) === 'monk' && hasMonk) ||
+                                 (getBonusFeatClass(feat) === 'dragon_shaman' && hasDragonShaman));
 
             const borderStyle = '0.5px solid rgba(50, 115, 55, 0.35)';
             const borderLeftStyle = isAutomatic ? '3.5px solid #4a6d44' : '3.5px solid #2e7d32';

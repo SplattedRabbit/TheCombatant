@@ -21,3 +21,5 @@ export {
   DUSKBLADE_TABLE,
   BEGUILER_TABLE
 } from './data/spellTables.js';
+export { DRAGON_TOTEMS, isTotemAllowedForAlignment } from './data/dragonTotems.js';
+

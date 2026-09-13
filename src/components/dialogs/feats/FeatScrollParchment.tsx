@@ -3,7 +3,10 @@
  * @summary   Parchment body presentation of a feat (Prerequisites, Benefits, App Mechanics, Specific Options, Instances).
  */
 
-import React from 'react';
+import React, { useState, useMemo } from 'react';
+import { getTotemSkills, getDragonShamanClassSkills, formatSkillName } from '../../player/feats/skillFeatsHelper';
+import { DRAGON_TOTEMS } from '@core/rules/data/dragonTotems.js';
+import type { DragonTotemDef } from '@core/rules/data/dragonTotems.js';
 
 interface FeatScrollParchmentProps {
   feat: any;
@@ -18,6 +21,7 @@ interface FeatScrollParchmentProps {
   learnedInstances: any[];
   onRemoveInstance: (instOption: string) => void;
   translateAppEffect: (text: string) => string;
+  pc?: any;
 }
 
 export const FeatScrollParchment: React.FC<FeatScrollParchmentProps> = ({
@@ -33,7 +37,55 @@ export const FeatScrollParchment: React.FC<FeatScrollParchmentProps> = ({
   learnedInstances,
   onRemoveInstance,
   translateAppEffect,
+  pc,
 }) => {
+  const hasDragonShaman = Boolean(
+    pc && Array.isArray(pc.classes) && pc.classes.some((c: { classType?: string }) => c.classType === 'dragon_shaman')
+  );
+  const totemKey: string | undefined = pc?.dragonTotem || (hasDragonShaman ? 'red' : undefined);
+  const totemDef: DragonTotemDef | undefined = totemKey ? DRAGON_TOTEMS[totemKey] : undefined;
+  const totemName = totemDef ? (totemDef.name || totemDef.nameDe) : 'Totem';
+
+  const isSkillOption = feat.hasOption && feat.optionType === 'skill';
+
+  const [skillScope, setSkillScope] = useState<'totem' | 'class' | 'all'>(
+    hasDragonShaman && totemKey ? 'totem' : 'all'
+  );
+
+  const totemSkills = useMemo(() => {
+    if (!totemKey) return [];
+    return getTotemSkills(totemKey).map(formatSkillName);
+  }, [totemKey]);
+
+  const dsClassSkills = useMemo(() => {
+    if (!totemKey) return [];
+    return getDragonShamanClassSkills(totemKey).map(formatSkillName);
+  }, [totemKey]);
+
+  const unlearnedTotemSkills = useMemo(() => {
+    return filteredOptions.filter(o => totemSkills.includes(o));
+  }, [filteredOptions, totemSkills]);
+
+  const unlearnedDsBaseSkills = useMemo(() => {
+    return filteredOptions.filter(o => dsClassSkills.includes(o) && !totemSkills.includes(o));
+  }, [filteredOptions, dsClassSkills, totemSkills]);
+
+  const unlearnedOtherSkills = useMemo(() => {
+    return filteredOptions.filter(o => !dsClassSkills.includes(o));
+  }, [filteredOptions, dsClassSkills]);
+
+  const displayedOptions = useMemo(() => {
+    if (!isSkillOption || !hasDragonShaman) return filteredOptions;
+    if (skillScope === 'totem') {
+      return unlearnedTotemSkills.length > 0 ? unlearnedTotemSkills : filteredOptions;
+    }
+    if (skillScope === 'class') {
+      const classOpts = [...unlearnedTotemSkills, ...unlearnedDsBaseSkills];
+      return classOpts.length > 0 ? classOpts : filteredOptions;
+    }
+    return filteredOptions;
+  }, [isSkillOption, hasDragonShaman, skillScope, unlearnedTotemSkills, unlearnedDsBaseSkills, filteredOptions]);
+
   return (
     <div
       className="ancient-parchment"
@@ -133,7 +185,73 @@ export const FeatScrollParchment: React.FC<FeatScrollParchmentProps> = ({
 
       {feat.hasOption && (!isLearned || isStackable) && (
         <div style={{ marginTop: '6px', display: 'flex', flexDirection: 'column', gap: '2px', fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold' }}>
-          <label htmlFor="featOptionSelect" style={{ color: '#5a3a1a' }}>Specific selection for this feat:</label>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label htmlFor="featOptionSelect" style={{ color: '#5a3a1a' }}>Specific selection for this feat:</label>
+            {isSkillOption && hasDragonShaman && (
+              <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSkillScope('totem');
+                    if (unlearnedTotemSkills.length > 0 && !unlearnedTotemSkills.includes(selectedOption)) {
+                      setSelectedOption(unlearnedTotemSkills[0]);
+                    }
+                  }}
+                  style={{
+                    fontSize: '7.5px',
+                    padding: '1px 4px',
+                    borderRadius: '2px',
+                    cursor: 'pointer',
+                    border: '0.5px solid #8b1a1a',
+                    background: skillScope === 'totem' ? '#8b1a1a' : 'transparent',
+                    color: skillScope === 'totem' ? '#fff' : '#8b1a1a',
+                    fontWeight: 'bold'
+                  }}
+                >
+                  Totem ({unlearnedTotemSkills.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSkillScope('class');
+                    const classOpts = [...unlearnedTotemSkills, ...unlearnedDsBaseSkills];
+                    if (classOpts.length > 0 && !classOpts.includes(selectedOption)) {
+                      setSelectedOption(classOpts[0]);
+                    }
+                  }}
+                  style={{
+                    fontSize: '7.5px',
+                    padding: '1px 4px',
+                    borderRadius: '2px',
+                    cursor: 'pointer',
+                    border: '0.5px solid #8b6934',
+                    background: skillScope === 'class' ? '#8b6934' : 'transparent',
+                    color: skillScope === 'class' ? '#fff' : '#8b6934',
+                    fontWeight: 'bold'
+                  }}
+                >
+                  Class ({unlearnedTotemSkills.length + unlearnedDsBaseSkills.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSkillScope('all')}
+                  style={{
+                    fontSize: '7.5px',
+                    padding: '1px 4px',
+                    borderRadius: '2px',
+                    cursor: 'pointer',
+                    border: '0.5px solid #666',
+                    background: skillScope === 'all' ? '#666' : 'transparent',
+                    color: skillScope === 'all' ? '#fff' : '#444',
+                    fontWeight: 'bold'
+                  }}
+                >
+                  All ({filteredOptions.length})
+                </button>
+              </div>
+            )}
+          </div>
+
           <select
             id="featOptionSelect"
             className="cinput"
@@ -141,18 +259,74 @@ export const FeatScrollParchment: React.FC<FeatScrollParchmentProps> = ({
             onChange={(e) => setSelectedOption(e.target.value)}
             style={{ width: '100%', fontSize: '9px', height: '18px', padding: '0 2px', boxSizing: 'border-box' }}
           >
-            {filteredOptions.length > 0 ? (
-              filteredOptions.map((o, idx) => (
+            {filteredOptions.length === 0 ? (
+              <option value="" disabled>
+                -- All options already learned --
+              </option>
+            ) : isSkillOption && hasDragonShaman && skillScope === 'all' ? (
+              <>
+                {unlearnedTotemSkills.length > 0 && (
+                  <optgroup label={`Totem Skills (${totemName})`}>
+                    {unlearnedTotemSkills.map((o, idx) => (
+                      <option key={`t-${idx}`} value={o}>{o}</option>
+                    ))}
+                  </optgroup>
+                )}
+                {unlearnedDsBaseSkills.length > 0 && (
+                  <optgroup label="Dragon Shaman Class Skills">
+                    {unlearnedDsBaseSkills.map((o, idx) => (
+                      <option key={`ds-${idx}`} value={o}>{o}</option>
+                    ))}
+                  </optgroup>
+                )}
+                {unlearnedOtherSkills.length > 0 && (
+                  <optgroup label="Other Skills">
+                    {unlearnedOtherSkills.map((o, idx) => (
+                      <option key={`oth-${idx}`} value={o}>{o}</option>
+                    ))}
+                  </optgroup>
+                )}
+              </>
+            ) : isSkillOption && hasDragonShaman && skillScope === 'class' ? (
+              <>
+                {unlearnedTotemSkills.length > 0 && (
+                  <optgroup label={`Totem Skills (${totemName})`}>
+                    {unlearnedTotemSkills.map((o, idx) => (
+                      <option key={`t-${idx}`} value={o}>{o}</option>
+                    ))}
+                  </optgroup>
+                )}
+                {unlearnedDsBaseSkills.length > 0 && (
+                  <optgroup label="Dragon Shaman Class Skills">
+                    {unlearnedDsBaseSkills.map((o, idx) => (
+                      <option key={`ds-${idx}`} value={o}>{o}</option>
+                    ))}
+                  </optgroup>
+                )}
+              </>
+            ) : (
+              displayedOptions.map((o, idx) => (
                 <option key={idx} value={o}>
                   {o}
                 </option>
               ))
-            ) : (
-              <option value="" disabled>
-                -- All options already learned --
-              </option>
             )}
           </select>
+
+          {isSkillOption && hasDragonShaman && (
+            <div style={{
+              marginTop: '4px',
+              padding: '4px 6px',
+              background: 'rgba(139, 26, 26, 0.08)',
+              border: '0.5px solid rgba(139, 26, 26, 0.3)',
+              borderRadius: '2px',
+              fontSize: '8px',
+              color: '#6b1212',
+              lineHeight: 1.3
+            }}>
+              <strong style={{ fontFamily: 'var(--font-title)' }}>Dragon Shaman Bonus Feat (RAW):</strong> Level 2 requires a Totem skill ({totemSkills.join(', ')}). Levels 8 & 16 require a Totem or Class skill.
+            </div>
+          )}
         </div>
       )}
 

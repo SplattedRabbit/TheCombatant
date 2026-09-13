@@ -3,8 +3,9 @@
  * @summary   Validation logic and hit die rules for CharacterWizardDialog.
  */
 
-import { CombatRules } from '@core/rules.js';
-import { CLASSES_LIST } from './constants';
+import { CombatRules } from '../../../../js/rules.js';
+import { CLASSES_LIST } from './constants.ts';
+import { DRAGON_TOTEMS, isTotemAllowedForAlignment } from '../../../../js/rules/data/dragonTotems.js';
 
 export function getClassHitDie(clsKey: string): number {
   const listMatch = CLASSES_LIST.find((c: any) => c.key === clsKey);
@@ -28,11 +29,15 @@ export function validateStep3Config({
   currentLevelIndex,
   currentLevelRemainingSkillPoints,
   currentFeatSlots,
+  alignmentEthical,
+  alignmentMoral,
 }: {
   currentConfig: any;
   currentLevelIndex: number;
   currentLevelRemainingSkillPoints: number;
   currentFeatSlots: any[];
+  alignmentEthical?: string;
+  alignmentMoral?: string;
 }): StepValidationResult {
   if (!currentConfig || !currentConfig.classType) {
     return {
@@ -92,7 +97,16 @@ export function validateStep3Config({
       }
     };
   }
-  const emptyFeats = currentFeatSlots.some((slot, idx) => !(currentConfig.feats?.[idx] || slot.defaultFeat));
+
+  const emptyFeats = currentFeatSlots.some((slot, idx) => {
+    const f = currentConfig.feats?.[idx] || slot.defaultFeat;
+    if (!f) return true;
+    if (slot.hasOption) {
+      const opt = typeof f === 'object' ? f.option : currentConfig.featOptions?.[idx];
+      return !opt;
+    }
+    return false;
+  });
   if (emptyFeats) {
     return {
       valid: false,
@@ -126,6 +140,54 @@ export function validateStep3Config({
           alert: {
             title: "Prohibited School Required",
             message: "Please select your second prohibited school for your Wizard specialization.",
+            buttonText: "OK",
+            icon: "⚠️"
+          }
+        };
+      }
+    }
+  }
+
+  // Mandatory Dragon Shaman Totem selection & Alignment Hardlock (PHB2 p. 11)
+  if (currentConfig.classType === 'dragon_shaman') {
+    if (!currentConfig.dragonTotem) {
+      return {
+        valid: false,
+        alert: {
+          title: "Totem Dragon Required",
+          message: "Please select a Totem Dragon for your Dragon Shaman.",
+          buttonText: "OK",
+          icon: "⚠️"
+        }
+      };
+    }
+
+    const eth = (alignmentEthical || '').toLowerCase();
+    const mor = (alignmentMoral || '').toLowerCase();
+    const isTrueNeutral = eth === 'neutral' && mor === 'neutral';
+    if (isTrueNeutral) {
+      return {
+        valid: false,
+        alert: {
+          title: "Alignment Incompatible",
+          message: "True Neutral characters cannot become Dragon Shamans (PHB2 p. 11). Please choose a Good, Evil, Lawful, or Chaotic alignment.",
+          buttonText: "OK",
+          icon: "⚠️"
+        }
+      };
+    }
+
+    if (alignmentEthical || alignmentMoral) {
+      const eLetter = eth === 'lawful' ? 'L' : (eth === 'chaotic' ? 'C' : 'N');
+      const mLetter = mor === 'good' ? 'G' : (mor === 'evil' ? 'E' : 'N');
+      const abbr = `${eLetter}${mLetter}`;
+      const totem = DRAGON_TOTEMS[currentConfig.dragonTotem];
+      if (totem && !isTotemAllowedForAlignment(currentConfig.dragonTotem, abbr)) {
+        return {
+          valid: false,
+          alert: {
+            title: "Alignment Incompatible with Totem",
+            message: `The ${totem.name} requires an alignment of ${totem.alignments.join(', ')}. Your current alignment is ${alignmentEthical} ${alignmentMoral}. Please use the Quick-Sync buttons in Level Configuration to select a compatible alignment.`,
             buttonText: "OK",
             icon: "⚠️"
           }

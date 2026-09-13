@@ -30,6 +30,7 @@ const getRaceDisplayName = (raceKey?: string) => {
     half_elf: 'Half-Elf',
     half_orc: 'Half-Orc',
     tiefling: 'Tiefling',
+    lizardfolk: 'Lizardfolk',
     anima_construct: 'Anima-Construct',
   };
   return raceMap[raceKey.toLowerCase()] || raceKey.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');

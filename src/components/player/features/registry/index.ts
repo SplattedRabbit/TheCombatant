@@ -86,7 +86,13 @@ export function getAllUnifiedFeatures(pc: any): UnifiedFeature[] {
   // 4. Racial Traits
   features.push(...getRacialTraits(pc));
 
-  // 5. Prioritize Specialist School / Arcane Specialization to ALWAYS be at the very top
+  // 5. Prioritize Specialist School / Arcane Specialization & Dragon Totem to ALWAYS be at the very top
+  const totemIndex = features.findIndex((f) => f.id === 'dragon_shaman_totem_dragon');
+  if (totemIndex > 0) {
+    const [totemFeat] = features.splice(totemIndex, 1);
+    features.unshift(totemFeat);
+  }
+
   const specIndex = features.findIndex((f) => f.id === 'wizard_specialization');
   if (specIndex > 0) {
     const [specFeat] = features.splice(specIndex, 1);

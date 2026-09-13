@@ -100,7 +100,7 @@ test('Bug 6 - Feat allocation and priority validation', () => {
   ];
   const validationB = CombatRules.validateFeatsAssignment(pc, invalidFeats);
   assert.strictEqual(validationB.success, false, 'Validation should fail for too many general feats');
-  assert.ok(validationB.error.includes('Talentwahl ungültig') || validationB.error.includes('Limit für allgemeine Talente'), `Error message should explain slot mismatch: "${validationB.error}"`);
+  assert.ok(validationB.error.includes('Invalid feat selection') || validationB.error.includes('General feat limit exceeded') || validationB.error.includes('Talentwahl ungültig') || validationB.error.includes('Limit für allgemeine Talente'), `Error message should explain slot mismatch: "${validationB.error}"`);
 });
 
 test('v3.5.0 - loadSampleData choice validation', () => {

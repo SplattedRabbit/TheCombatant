@@ -18,8 +18,11 @@ import {
   SORCERER_KNOWN_TABLE,
   BARD_KNOWN_TABLE,
   ASSASSIN_TABLE,
-  ASSASSIN_KNOWN_TABLE
+  ASSASSIN_KNOWN_TABLE,
+  DRAGON_TOTEMS,
+  isTotemAllowedForAlignment
 } from './rules/RulesData.js';
+
 
 
 import {
@@ -103,6 +106,8 @@ export const CombatRules = {
   BARD_KNOWN_TABLE,
   ASSASSIN_TABLE,
   ASSASSIN_KNOWN_TABLE,
+  DRAGON_TOTEMS,
+  isTotemAllowedForAlignment,
   calculateBab,
   calculateSave,
   isClassSkill,

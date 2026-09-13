@@ -1,0 +1,59 @@
+LIZARDFOLK
+Medium Humanoid (Reptilian)
+Hit Dice: 2d8+2 (11 hp)
+Initiative: +0
+Speed: 30 ft. (6 squares)
+Armor Class: 15 (+5 natural) or 17 (+5 natural, +2 heavy shield), touch 10, flat-footed 15 or 17
+Base Attack/Grapple: +1/+2
+Attack: Claw +2 melee (1d4+1) or club +2 melee (1d6+1) or javelin +1 ranged (1d6+1)
+Full Attack: 2 claws +2 melee (1d4+1) and bite +0 melee (1d4); or club +2 melee (1d6+1) and bite +0 melee (1d4); or javelin +1 ranged (1d6+1)
+Space/Reach: 5 ft./5 ft.
+Special Attacks: —
+Special Qualities: Hold breath
+Saves: Fort +1, Ref +3, Will +0
+Abilities: Str 13, Dex 10, Con 13, Int 9, Wis 10, Cha 10
+Skills: Balance +4, Jump +5, Swim +2
+Feats: Multiattack
+Environment: Temperate marshes
+Organization: Gang (2-3), band (6-10 plus 50% noncombatants plus 1 leader of 3rd-6th level), or tribe (30-60 plus 2 lieutenants of 3rd-6th level and 1 leader of 4th-10th level)
+Challenge Rating: 1
+Treasure: 50% coins; 50% goods; 50% items
+Alignment: Usually neutral
+Advancement: By character class
+Level Adjustment: +1
+
+This tall humanoid looks like a cross between a powerfully built human and a lizard. It has clawed hands, a long tail, and toothy jaws.
+
+Lizardfolk are primitive reptilian humanoids that can be very dangerous if provoked.
+Although they are omnivores, lizardfolk prefer meat; popular lore holds that lizardfolk prefer humanoid flesh, but this charge is largely unfounded (though some tribes do eat captives or slain foes). Some more advanced tribes build huts and use a variety of weapons and shields; leaders of these tribes may have equipment stolen from or obtained in trade with other intelligent creatures.
+A lizardfolk is usually 6 to 7 feet tall with green, gray, or brown scales. Its tail is used for balance and is 3 to 4 feet long. A lizardfolk can weigh from 200 to 250 pounds.
+Lizardfolk speak Draconic.
+
+COMBAT
+Lizardfolk fight as unorganized individuals. They prefer frontal assaults and massed rushes, sometimes trying to force foes into the water, where the lizardfolk have an advantage. If outnumbered or if their territory is being invaded, they set snares, plan ambushes, and make raids to hinder enemy supplies. Advanced tribes use more sophisticated tactics and have better traps and ambushes.
+
+Hold Breath: A lizardfolk can hold its breath for a number of rounds equal to four times its Constitution score before it risks drowning (see page 304 of the Dungeon Master's Guide).
+
+Skills: Because of their tails, lizardfolk have a +4 racial bonus on Jump, Swim, and Balance checks. The skill modifiers given in the statistics block include a -2 armor check penalty (-4 on Swim checks) for carrying a heavy shield.
+
+LIZARDFOLK SOCIETY
+Lizardfolk have a patriarchal society in which the most powerful member rules the others. Shamans offer advice but rarely become leaders themselves. Survival is the utmost concern of lizardfolk, and a threatened or starving tribe will go to incredible lengths (even committing deeds considered abominable by other humanoids) to ensure its continued existence.
+Most tribes live in swamps, but about a third of the population lives in underwater air-filled caves. Local tribes often unite against a greater threat (including hostile lizardfolk tribes) and occasionally make alliances with locathahs or serve more powerful creatures such as nagas or dragons. In isolated areas they survive by fishing, gathering, and scavenging, while those that live near other humanoids make raids for food, supplies, and slaves. A lizardfolk lair has half as many noncombatant hatchlings as adults, and one egg per ten adults.
+The patron deity of lizardfolk is Semuanya, whose chief concern is the survival and propagation of its charges.
+
+LIZARDFOLK AS CHARACTERS
+Most lizardfolk leaders are barbarians or druids. Lizardfolk clerics (shamans) worship Semuanya. A lizardfolk cleric has access to two of the following domains: Animal, Plant, or Water.
+Lizardfolk characters possess the following racial traits:
+— +2 Strength, +2 Constitution, -2 Intelligence.
+— Medium size.
+— A lizardfolk's base land speed is 30 feet.
+— Racial Hit Dice: A lizardfolk begins with two levels of humanoid, which provide 2d8 Hit Dice, a base attack bonus of +1, and base saving throw bonuses of Fort +0, Ref +3, and Will +0.
+— Racial Skills: A lizardfolk's humanoid levels give it skill points equal to 5 x (2 + Int modifier, minimum 1). Its class skills are Balance, Jump, and Swim. Lizardfolk have a +4 racial bonus on Balance, Jump, and Swim checks.
+— Racial Feats: A lizardfolk's humanoid levels give it one feat.
+— Weapon and Armor Proficiency: A lizardfolk is automatically proficient with simple weapons and shields.
+— +5 natural armor bonus.
+— Natural Weapons: 2 claws (1d4) and bite (1d4).
+— Special Qualities (see above): Hold breath.
+— Automatic Languages: Common, Draconic. Bonus Languages: Aquan, Goblin, Gnoll, Orc.
+— Favored Class: Druid.
+— Level adjustment +1.

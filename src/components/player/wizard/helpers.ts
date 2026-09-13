@@ -103,6 +103,7 @@ export const getDraftPCState = (
         } else {
           // Each click in class skill = 1.0 rank, cross-class = 0.5 ranks
           const wasClass = CombatRules.CLASS_SKILLS[cfg.classType]?.includes(sKey) || 
+                           (cfg.classType === 'dragon_shaman' && cfg.dragonTotem && CombatRules.DRAGON_TOTEMS?.[cfg.dragonTotem]?.skills.includes(sKey)) ||
                            (sKey.startsWith('knowledge_') && (cfg.classType === 'wizard' || cfg.classType === 'bard'));
           const increment = wasClass ? 1.0 : 0.5;
           skillsAcc[sKey].ranks += (clicks as number) * increment;
@@ -147,12 +148,14 @@ export const getDraftPCState = (
   let wizardSpecialization = 'none';
   let wizardProhibited1 = '';
   let wizardProhibited2 = '';
+  let dragonTotem: string | undefined = undefined;
   for (let i = 0; i <= lvlIdx; i++) {
     const cfg = levelConfigs[i];
     if (cfg) {
       if (cfg.wizardSpecialization !== undefined) wizardSpecialization = cfg.wizardSpecialization;
       if (cfg.wizardProhibited1 !== undefined) wizardProhibited1 = cfg.wizardProhibited1;
       if (cfg.wizardProhibited2 !== undefined) wizardProhibited2 = cfg.wizardProhibited2;
+      if (cfg.dragonTotem) dragonTotem = cfg.dragonTotem;
     }
   }
 
@@ -183,6 +186,7 @@ export const getDraftPCState = (
     wizardSpecialization,
     wizardProhibited1,
     wizardProhibited2,
+    dragonTotem,
     getSneakAttackDiceCount: () => {
       const rogueClass = classesList.find(c => c.classType === 'rogue');
       const rogueCount = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
@@ -206,7 +210,8 @@ export const getDraftPCState = (
     draftPC,
     wizardSpecialization,
     wizardProhibited1,
-    wizardProhibited2
+    wizardProhibited2,
+    dragonTotem
   };
 };
 
@@ -297,6 +302,7 @@ export const getCompletedDraftPCState = (
         } else {
           // Each click in class skill = 1.0 rank, cross-class = 0.5 ranks
           const wasClass = CombatRules.CLASS_SKILLS[cfg.classType]?.includes(sKey) || 
+                           (cfg.classType === 'dragon_shaman' && cfg.dragonTotem && CombatRules.DRAGON_TOTEMS?.[cfg.dragonTotem]?.skills.includes(sKey)) ||
                            (sKey.startsWith('knowledge_') && (cfg.classType === 'wizard' || cfg.classType === 'bard'));
           const increment = wasClass ? 1.0 : 0.5;
           skillsAcc[sKey].ranks += (clicks as number) * increment;
@@ -341,12 +347,14 @@ export const getCompletedDraftPCState = (
   let wizardSpecialization = 'none';
   let wizardProhibited1 = '';
   let wizardProhibited2 = '';
+  let dragonTotem: string | undefined = undefined;
   for (let i = 0; i <= lvlIdx; i++) {
     const cfg = levelConfigs[i];
     if (cfg) {
       if (cfg.wizardSpecialization !== undefined) wizardSpecialization = cfg.wizardSpecialization;
       if (cfg.wizardProhibited1 !== undefined) wizardProhibited1 = cfg.wizardProhibited1;
       if (cfg.wizardProhibited2 !== undefined) wizardProhibited2 = cfg.wizardProhibited2;
+      if (cfg.dragonTotem) dragonTotem = cfg.dragonTotem;
     }
   }
 
@@ -377,6 +385,7 @@ export const getCompletedDraftPCState = (
     wizardSpecialization,
     wizardProhibited1,
     wizardProhibited2,
+    dragonTotem,
     getSneakAttackDiceCount: () => {
       const rogueClass = classesList.find(c => c.classType === 'rogue');
       const rogueCount = rogueClass ? Math.floor((rogueClass.level + 1) / 2) : 0;
@@ -402,7 +411,8 @@ export const getCompletedDraftPCState = (
     draftPC,
     wizardSpecialization,
     wizardProhibited1,
-    wizardProhibited2
+    wizardProhibited2,
+    dragonTotem
   };
 };
 

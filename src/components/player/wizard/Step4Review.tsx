@@ -8,6 +8,7 @@ import { CombatFeats } from '@core/data/feats-data.js';
 import { showAttributeExplanation } from '../attributeHelper';
 import { RACES, CLASSES_LIST } from './constants';
 import { findSpell } from '../spells/PCSpellbookTab';
+import { DRAGON_TOTEMS } from '@core/rules/data/dragonTotems.js';
 
 interface Step4ReviewProps {
   name: string;
@@ -43,6 +44,8 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
     }
   });
   const hasWizard = currentDraft?.classesList?.some((c: any) => c.classType === 'wizard');
+  const hasDragonShaman = currentDraft?.classesList?.some((c: any) => c.classType === 'dragon_shaman');
+  const totem = currentDraft?.dragonTotem ? DRAGON_TOTEMS[currentDraft.dragonTotem] : null;
 
   return (
     <div style={{ textAlign: 'left', marginTop: '10px' }}>
@@ -100,6 +103,17 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
                 )}
               </div>
             )}
+            {hasDragonShaman && totem && (
+              <div style={{ marginTop: '4px', paddingTop: '4px', borderTop: '0.5px dashed rgba(200,169,110,0.4)' }}>
+                <strong>Dragon Totem:</strong>{' '}
+                <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>
+                  {totem.name}
+                </span>
+                <div style={{ fontSize: '11px', color: 'var(--inkm)', marginTop: '2px' }}>
+                  Breath: {totem.breathName} ({totem.energy.toUpperCase()}) • Adaptation: {totem.adaptation}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -143,16 +157,19 @@ export const Step4Review: React.FC<Step4ReviewProps> = ({
         </h4>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
           {levelConfigs.flatMap((cfg, idx) => 
-            Array.isArray(cfg.feats) ? cfg.feats.map((fid: any, fIdx: number) => {
-              const feat = CombatFeats.REGISTRY[fid];
+            Array.isArray(cfg.feats) ? cfg.feats.map((featVal: any, fIdx: number) => {
+              const featId = typeof featVal === 'object' ? featVal?.id : featVal;
+              const option = typeof featVal === 'object' ? featVal?.option : cfg.featOptions?.[fIdx];
+              const feat = CombatFeats.REGISTRY[featId];
               if (!feat) return null;
+              const name = feat.nameEn || feat.name || feat.nameDe;
               return (
                 <div 
                   key={`${idx}-${fIdx}`} 
                   style={{ padding: '3px 8px', background: 'rgba(139,26,26,0.06)', border: '1px solid var(--pb)', borderRadius: '3px', fontSize: '11px' }}
                   title={feat.benefitRaw || feat.benefit || feat.benefitDe}
                 >
-                  {feat.nameEn || feat.name || feat.nameDe}
+                  {option ? `${name} (${option})` : name}
                 </div>
               );
             }) : []
