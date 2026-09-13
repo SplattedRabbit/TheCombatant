@@ -195,6 +195,7 @@ export class Combatant {
     this.divineGraceActive = p.divineGraceActive !== undefined ? !!p.divineGraceActive : true;
 
     this.favoredEnemy = p.favoredEnemy || '';
+    this.favoredEnemies = Array.isArray(p.favoredEnemies) ? p.favoredEnemies : (p.favoredEnemy ? [{ type: p.favoredEnemy, bonus: 2 }] : []);
     this.rangerCombatStyle = p.rangerCombatStyle || 'none';
     this.wizardSpecialization = p.wizardSpecialization || 'none';
     this.wizardProhibited1 = p.wizardProhibited1 || '';
@@ -234,13 +235,20 @@ export class Combatant {
     // Ranger automatic feats
     const ranger = activeClasses.find(c => c.classType === 'ranger');
     if (ranger) {
+      const featIds = (Array.isArray(this.feats) ? this.feats : []).map(f => typeof f === 'object' ? f?.id : f);
+      const effectiveStyle = this.rangerCombatStyle && this.rangerCombatStyle !== 'none'
+        ? this.rangerCombatStyle
+        : (featIds.includes('two_weapon_fighting') || featIds.includes('improved_two_weapon_fighting')
+            ? 'twoweapon'
+            : (featIds.includes('rapid_shot') || featIds.includes('manyshot') ? 'archery' : 'none'));
+
       if (ranger.level >= 1) {
         list.push({ id: 'track', source: 'Ranger (Class)' });
       }
       if (ranger.level >= 2) {
-        if (this.rangerCombatStyle === 'twoweapon') {
+        if (effectiveStyle === 'twoweapon') {
           list.push({ id: 'two_weapon_fighting', source: 'Ranger (Combat Style)' });
-        } else if (this.rangerCombatStyle === 'archery') {
+        } else if (effectiveStyle === 'archery') {
           list.push({ id: 'rapid_shot', source: 'Ranger (Combat Style)' });
         }
       }
@@ -248,16 +256,16 @@ export class Combatant {
         list.push({ id: 'endurance', source: 'Ranger (Class)' });
       }
       if (ranger.level >= 6) {
-        if (this.rangerCombatStyle === 'twoweapon') {
+        if (effectiveStyle === 'twoweapon') {
           list.push({ id: 'improved_two_weapon_fighting', source: 'Ranger (Combat Style)' });
-        } else if (this.rangerCombatStyle === 'archery') {
+        } else if (effectiveStyle === 'archery') {
           list.push({ id: 'manyshot', source: 'Ranger (Combat Style)' });
         }
       }
       if (ranger.level >= 11) {
-        if (this.rangerCombatStyle === 'twoweapon') {
+        if (effectiveStyle === 'twoweapon') {
           list.push({ id: 'greater_two_weapon_fighting', source: 'Ranger (Combat Style)' });
-        } else if (this.rangerCombatStyle === 'archery') {
+        } else if (effectiveStyle === 'archery') {
           list.push({ id: 'improved_precise_shot', source: 'Ranger (Combat Style)' });
         }
       }
@@ -467,6 +475,7 @@ export class Combatant {
       divineGraceActive: this.divineGraceActive,
       isTrickyFightingActive: this.isTrickyFightingActive,
       favoredEnemy: this.favoredEnemy,
+      favoredEnemies: this.favoredEnemies,
       rangerCombatStyle: this.rangerCombatStyle,
       wizardSpecialization: this.wizardSpecialization,
       wizardProhibited1: this.wizardProhibited1,
@@ -507,8 +516,8 @@ export class Combatant {
     return 0;
   }
 
-  getFavoredEnemyBonus() {
-    return getFavoredEnemyBonus(this);
+  getFavoredEnemyBonus(creatureType) {
+    return getFavoredEnemyBonus(this, creatureType);
   }
 
   getSneakAttackDiceCount() {

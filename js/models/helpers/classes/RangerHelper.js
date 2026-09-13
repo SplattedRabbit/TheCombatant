@@ -10,8 +10,26 @@
 
 import { RangerRules } from '../../../rules/classes/RangerRules.js';
 
-export function getFavoredEnemyBonus(pc) {
+export function getFavoredEnemyBonus(pc, creatureType) {
   const rangerClass = Array.isArray(pc.classes) && pc.classes.find(c => c.classType === 'ranger');
   if (!rangerClass) return 0;
+
+  if (Array.isArray(pc.favoredEnemies) && pc.favoredEnemies.length > 0) {
+    if (creatureType) {
+      const q = creatureType.toLowerCase().trim();
+      const match = pc.favoredEnemies.find(e => {
+        if (!e.type) return false;
+        const et = e.type.toLowerCase().trim();
+        return et === q || q.includes(et) || et.includes(q);
+      });
+      if (match) return match.bonus || 2;
+    } else {
+      const bonuses = pc.favoredEnemies.map(e => e.bonus || 2);
+      if (bonuses.length > 0) {
+        return Math.max(...bonuses);
+      }
+    }
+  }
+
   return RangerRules.getFavoredEnemyBonus(rangerClass.level);
 }

@@ -16,6 +16,7 @@ export { SampleChoiceDialog } from './modals/SampleChoiceDialog';
 export { ParchmentMessageModal } from './modals/ParchmentMessageModal';
 export { WizardSpecializationDialog } from './modals/WizardSpecializationDialog';
 export { DragonTotemDialog } from './modals/DragonTotemDialog';
+export { FavoredEnemyDialog } from './modals/FavoredEnemyDialog';
 
 export type { DialogOverlayProps } from './modals/DialogOverlay';
 export type { CustomAlertModalProps } from './modals/CustomAlertModal';
@@ -29,3 +30,4 @@ export type { SampleChoiceDialogProps } from './modals/SampleChoiceDialog';
 export type { ParchmentMessageModalProps } from './modals/ParchmentMessageModal';
 export type { WizardSpecializationDialogProps } from './modals/WizardSpecializationDialog';
 export type { DragonTotemDialogProps } from './modals/DragonTotemDialog';
+export type { FavoredEnemyDialogProps } from './modals/FavoredEnemyDialog';

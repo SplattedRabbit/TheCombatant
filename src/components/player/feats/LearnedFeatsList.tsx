@@ -22,10 +22,13 @@ interface LearnedFeatsListProps {
   monkMax: number;
   dragonShamanFilled?: number;
   dragonShamanMax?: number;
+  rangerFilled?: number;
+  rangerMax?: number;
   hasFighter: boolean;
   hasWizard: boolean;
   hasMonk: boolean;
   hasDragonShaman?: boolean;
+  hasRanger?: boolean;
   onFeatClick: (feat: any, isLearned: boolean, option?: string, e?: React.MouseEvent) => void;
 }
 
@@ -44,15 +47,20 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
   monkMax,
   dragonShamanFilled = 0,
   dragonShamanMax = 0,
+  rangerFilled = 0,
+  rangerMax = 0,
   hasFighter,
   hasWizard,
   hasMonk,
   hasDragonShaman = false,
+  hasRanger = false,
   onFeatClick,
 }) => {
   const [learnedSearch, setLearnedSearch] = useState('');
 
   const getBonusFeatClass = (feat: any) => {
+    const rangerBonusIds = ['track', 'endurance', 'rapid_shot', 'two_weapon_fighting', 'manyshot', 'improved_two_weapon_fighting', 'improved_precise_shot', 'greater_two_weapon_fighting'];
+    if (rangerBonusIds.includes(feat.id)) return 'ranger';
     if (feat.id === 'skill_focus') return 'dragon_shaman';
     if (feat.category === 'combat') return 'fighter';
     if (feat.category === 'metamagic' || feat.category === 'item_creation') return 'wizard';
@@ -81,6 +89,7 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
         {wizardMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Wizard Slots:</span> <strong style={{ color: 'var(--red)' }}>{wizardFilled} / {wizardMax}</strong></div>}
         {monkMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Monk Slots:</span> <strong style={{ color: 'var(--red)' }}>{monkFilled} / {monkMax}</strong></div>}
         {dragonShamanMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Dragon Shaman Slots:</span> <strong style={{ color: 'var(--red)' }}>{dragonShamanFilled} / {dragonShamanMax}</strong></div>}
+        {rangerMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Ranger Slots:</span> <strong style={{ color: 'var(--red)' }}>{rangerFilled} / {rangerMax}</strong></div>}
       </div>
 
       <input
@@ -109,7 +118,8 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
             const isClassBonus = !isAutomatic && ((getBonusFeatClass(feat) === 'fighter' && hasFighter) ||
                                  (getBonusFeatClass(feat) === 'wizard' && hasWizard) ||
                                  (getBonusFeatClass(feat) === 'monk' && hasMonk) ||
-                                 (getBonusFeatClass(feat) === 'dragon_shaman' && hasDragonShaman));
+                                 (getBonusFeatClass(feat) === 'dragon_shaman' && hasDragonShaman) ||
+                                 (getBonusFeatClass(feat) === 'ranger' && hasRanger));
 
             const borderStyle = '0.5px solid rgba(50, 115, 55, 0.35)';
             const borderLeftStyle = isAutomatic ? '3.5px solid #4a6d44' : '3.5px solid #2e7d32';

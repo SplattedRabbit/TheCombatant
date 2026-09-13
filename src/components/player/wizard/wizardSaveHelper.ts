@@ -92,6 +92,9 @@ export interface TargetPlayerCharacter {
   wizardProhibited1?: string;
   wizardProhibited2?: string;
   dragonTotem?: string;
+  favoredEnemy?: string;
+  favoredEnemies?: Array<{ type: string; bonus: number }>;
+  rangerCombatStyle?: string;
   prestigeSpellLinks?: Record<string, string>;
   prestigeSpecialTextConfirmed?: Record<string, boolean>;
   maxHP: number;
@@ -205,6 +208,7 @@ export function applyWizardCharacterToState(
       delete freshPC.dragonTotem;
     }
 
+
     // Persist prestige class spell links and prerequisite confirmations
     freshPC.prestigeSpellLinks = { ...(completedDraft.prestigeSpellLinks || completedDraft.draftPC?.prestigeSpellLinks || {}) };
     freshPC.prestigeSpecialTextConfirmed = { ...(completedDraft.prestigeSpecialTextConfirmed || completedDraft.draftPC?.prestigeSpecialTextConfirmed || {}) };
@@ -255,6 +259,23 @@ export function applyWizardCharacterToState(
       });
     });
     freshPC.feats = allFeats;
+
+    const hasRanger = freshPC.classes.some((c: WizardClassEntry) => c.classType === 'ranger');
+    if (hasRanger) {
+      let style = 'none';
+      if (allFeats.some(f => f.id === 'rapid_shot' || f.id === 'manyshot')) {
+        style = 'archery';
+      } else if (allFeats.some(f => f.id === 'two_weapon_fighting' || f.id === 'improved_two_weapon_fighting')) {
+        style = 'twoweapon';
+      }
+      freshPC.rangerCombatStyle = style;
+      if (Array.isArray(completedDraft.favoredEnemies) && completedDraft.favoredEnemies.length > 0) {
+        freshPC.favoredEnemies = completedDraft.favoredEnemies as Array<{ type: string; bonus: number }>;
+        freshPC.favoredEnemy = (completedDraft.favoredEnemies as any[]).map((e: any) => `${e.type} (+${e.bonus})`).join(', ');
+      }
+    } else {
+      freshPC.rangerCombatStyle = 'none';
+    }
 
     const allACFs: string[] = [];
     levelConfigs.forEach((cfg: WizardLevelConfig) => {

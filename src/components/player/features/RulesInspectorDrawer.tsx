@@ -10,9 +10,21 @@ interface RulesInspectorDrawerProps {
   feature: UnifiedFeature | null;
   onConfigureSpecialization?: () => void;
   onConfigureTotem?: () => void;
+  onConfigureFavoredEnemy?: () => void;
+  onSelectCombatStyle?: (style: 'archery' | 'twoweapon') => void;
+  currentCombatStyle?: string;
+  onRollWildEmpathy?: () => void;
 }
 
-export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({ feature, onConfigureSpecialization, onConfigureTotem }) => {
+export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({
+  feature,
+  onConfigureSpecialization,
+  onConfigureTotem,
+  onConfigureFavoredEnemy,
+  onSelectCombatStyle,
+  currentCombatStyle = 'none',
+  onRollWildEmpathy,
+}) => {
   if (!feature) {
     return (
       <div
@@ -140,6 +152,93 @@ export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({ feat
           }}
         >
           Change Totem Dragon
+        </button>
+      )}
+
+      {/* Action button for Ranger Favored Enemy */}
+      {onConfigureFavoredEnemy && feature.id === 'ranger_favored_enemy' && (
+        <button
+          type="button"
+          onClick={onConfigureFavoredEnemy}
+          className="btn btn-p"
+          style={{
+            width: '100%',
+            padding: '5px 10px',
+            fontSize: '10px',
+            fontWeight: 'bold',
+            fontFamily: 'var(--font-title)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
+            cursor: 'pointer',
+          }}
+        >
+          <span>🏹</span> Configure Favored Enemies & Bonuses
+        </button>
+      )}
+
+      {/* Action buttons for Ranger Combat Style */}
+      {onSelectCombatStyle && feature.id === 'ranger_combat_style' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <span style={{ fontSize: '8px', textTransform: 'uppercase', color: 'var(--inkl)', fontWeight: 'bold' }}>
+            Choose Active Combat Style:
+          </span>
+          <div style={{ display: 'flex', gap: '6px' }}>
+            <button
+              type="button"
+              onClick={() => onSelectCombatStyle('archery')}
+              className={`btn ${currentCombatStyle === 'archery' ? 'btn-p' : 'btn-s'}`}
+              style={{
+                flex: 1,
+                padding: '5px 8px',
+                fontSize: '9.5px',
+                fontWeight: currentCombatStyle === 'archery' ? 'bold' : 'normal',
+                fontFamily: 'var(--font-title)',
+                cursor: 'pointer',
+              }}
+            >
+              🏹 Archery
+            </button>
+            <button
+              type="button"
+              onClick={() => onSelectCombatStyle('twoweapon')}
+              className={`btn ${currentCombatStyle === 'twoweapon' ? 'btn-p' : 'btn-s'}`}
+              style={{
+                flex: 1,
+                padding: '5px 8px',
+                fontSize: '9.5px',
+                fontWeight: currentCombatStyle === 'twoweapon' ? 'bold' : 'normal',
+                fontFamily: 'var(--font-title)',
+                cursor: 'pointer',
+              }}
+            >
+              ⚔️ Two-Weapon
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Action button for Wild Empathy */}
+      {onRollWildEmpathy && feature.id === 'ranger_track_empathy' && (
+        <button
+          type="button"
+          onClick={onRollWildEmpathy}
+          className="btn btn-p"
+          style={{
+            width: '100%',
+            padding: '5px 10px',
+            fontSize: '10px',
+            fontWeight: 'bold',
+            fontFamily: 'var(--font-title)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
+            cursor: 'pointer',
+          }}
+        >
+          <span>🎲</span> Roll Wild Empathy Check
         </button>
       )}
 

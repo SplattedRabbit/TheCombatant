@@ -25,6 +25,7 @@ export const PCFeatsTab: React.FC = () => {
   const hasWizard = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'wizard'), [pc.classes]);
   const hasMonk = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'monk'), [pc.classes]);
   const hasDragonShaman = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'dragon_shaman'), [pc.classes]);
+  const hasRanger = useMemo(() => Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'ranger'), [pc.classes]);
   const loosePc = pc as any;
 
   const autoFeats = useMemo(() => typeof loosePc.getAutomaticFeats === 'function' ? loosePc.getAutomaticFeats() : [], [pc.classes, loosePc.rangerCombatStyle]);
@@ -33,15 +34,36 @@ export const PCFeatsTab: React.FC = () => {
     return pc.feats.map((f: any) => (typeof f === 'string' ? { id: f, option: '' } : f));
   }, [pc?.feats]);
   
+  const rangerBonusIds = useMemo(() => [
+    'track',
+    'endurance',
+    'rapid_shot',
+    'two_weapon_fighting',
+    'manyshot',
+    'improved_two_weapon_fighting',
+    'improved_precise_shot',
+    'greater_two_weapon_fighting'
+  ], []);
+
   const combinedFeats = useMemo(() => {
-    const list = activeFeats.map((f: any) => ({ ...f, isAutomatic: false }));
+    const list = activeFeats.map((f: any) => {
+      const isRangerBonus = hasRanger && rangerBonusIds.includes(f.id);
+      const autoMatch = autoFeats.find((af: any) => af.id === f.id);
+      if (autoMatch) {
+        return { ...f, isAutomatic: true, source: autoMatch.source };
+      }
+      if (isRangerBonus) {
+        return { ...f, isAutomatic: true, source: 'Ranger (Class)' };
+      }
+      return { ...f, isAutomatic: false };
+    });
     autoFeats.forEach((af: any) => {
       if (!list.some((lf: any) => lf.id === af.id)) {
         list.push({ id: af.id, isAutomatic: true, source: af.source });
       }
     });
     return list;
-  }, [activeFeats, autoFeats]);
+  }, [activeFeats, autoFeats, hasRanger, rangerBonusIds]);
 
   const activeClasses = useMemo(() => Array.isArray(pc.classes) ? pc.classes : [], [pc.classes]);
   const totalLevel = useMemo(() => activeClasses.reduce((sum: number, c: any) => sum + (c.level || 0), 0) || 1, [activeClasses]);
@@ -70,14 +92,27 @@ export const PCFeatsTab: React.FC = () => {
     return dsClass ? ((dsClass.level || 0) >= 16 ? 3 : ((dsClass.level || 0) >= 8 ? 2 : ((dsClass.level || 0) >= 2 ? 1 : 0))) : 0;
   }, [activeClasses]);
 
-  const totalMax = useMemo(() => generalMax + fighterMax + wizardMax + monkMax + dragonShamanMax, [generalMax, fighterMax, wizardMax, monkMax, dragonShamanMax]);
+  const rangerMax = useMemo(() => {
+    const rClass = activeClasses.find((c: any) => c.classType === 'ranger');
+    if (!rClass) return 0;
+    const lvl = rClass.level || 0;
+    if (lvl >= 11) return 5;
+    if (lvl >= 6) return 4;
+    if (lvl >= 3) return 3;
+    if (lvl >= 2) return 2;
+    if (lvl >= 1) return 1;
+    return 0;
+  }, [activeClasses]);
 
-  const { generalFilled, fighterFilled, wizardFilled, monkFilled, dragonShamanFilled } = useMemo(() => {
+  const totalMax = useMemo(() => generalMax + fighterMax + wizardMax + monkMax + dragonShamanMax + rangerMax, [generalMax, fighterMax, wizardMax, monkMax, dragonShamanMax, rangerMax]);
+
+  const { generalFilled, fighterFilled, wizardFilled, monkFilled, dragonShamanFilled, rangerFilled } = useMemo(() => {
     const monkBonusIds = ['improved_unarmed_strike', 'improved_grapple', 'deflect_arrows', 'snatch_arrows', 'stunning_fist', 'improved_trip', 'improved_overrun'];
     let monkFilled = 0;
     let wizardFilled = 0;
     let fighterFilled = 0;
     let dragonShamanFilled = 0;
+    let rangerFilled = 0;
     let generalFilled = 0;
 
     for (const f of activeFeats) {
@@ -91,13 +126,15 @@ export const PCFeatsTab: React.FC = () => {
         wizardFilled++;
       } else if (fighterMax > 0 && fighterFilled < fighterMax && featDef.category === 'combat') {
         fighterFilled++;
+      } else if (rangerMax > 0 && rangerFilled < rangerMax && rangerBonusIds.includes(f.id)) {
+        rangerFilled++;
       } else {
         generalFilled++;
       }
     }
 
-    return { generalFilled, fighterFilled, wizardFilled, monkFilled, dragonShamanFilled };
-  }, [activeFeats, monkMax, wizardMax, fighterMax, dragonShamanMax]);
+    return { generalFilled, fighterFilled, wizardFilled, monkFilled, dragonShamanFilled, rangerFilled };
+  }, [activeFeats, monkMax, wizardMax, fighterMax, dragonShamanMax, rangerMax, rangerBonusIds]);
 
   const isLimitReached = useMemo(() => activeFeats.length >= totalMax, [activeFeats.length, totalMax]);
 
@@ -126,6 +163,10 @@ export const PCFeatsTab: React.FC = () => {
           <span style={{ display: 'inline-block', width: '8px', height: '6px', border: '1.2px solid #2a6a2a', background: 'rgba(42, 106, 42, 0.1)', borderLeftWidth: '3px' }}></span>
           <span>Dragon Shaman Bonus (Skill Focus {hasDragonShaman ? 'Active' : 'Inactive'})</span>
         </span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', opacity: hasRanger ? 1 : 0.5 }}>
+          <span style={{ display: 'inline-block', width: '8px', height: '6px', border: '1.2px solid #2a6a2a', background: 'rgba(42, 106, 42, 0.1)', borderLeftWidth: '3px' }}></span>
+          <span>Ranger Bonus (Class &amp; Style {hasRanger ? 'Active' : 'Inactive'})</span>
+        </span>
       </div>
 
       <div style={{ display: 'flex', gap: '10px', height: '100%', minHeight: '380px', width: '100%', minWidth: 0, boxSizing: 'border-box', overflowX: 'hidden' }}>
@@ -145,10 +186,13 @@ export const PCFeatsTab: React.FC = () => {
           monkMax={monkMax}
           dragonShamanFilled={dragonShamanFilled}
           dragonShamanMax={dragonShamanMax}
+          rangerFilled={rangerFilled}
+          rangerMax={rangerMax}
           hasFighter={hasFighter}
           hasWizard={hasWizard}
           hasMonk={hasMonk}
           hasDragonShaman={hasDragonShaman}
+          hasRanger={hasRanger}
           onFeatClick={handleFeatRowClick}
         />
 

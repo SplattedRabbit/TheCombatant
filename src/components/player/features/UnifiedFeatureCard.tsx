@@ -19,7 +19,9 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
 }) => {
   const isSpecialistSchool = feature.id === 'wizard_specialization';
   const isTotemDragon = feature.id === 'dragon_shaman_totem_dragon';
-  const isPinnacleFeature = isSpecialistSchool || isTotemDragon;
+  const isFavoredEnemy = feature.id === 'ranger_favored_enemy';
+  const isCombatStyle = feature.id === 'ranger_combat_style';
+  const isPinnacleFeature = isSpecialistSchool || isTotemDragon || isFavoredEnemy || isCombatStyle;
 
   const getCategoryColor = (cat: string) => {
     if (isTotemDragon) {
@@ -36,6 +38,22 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
         border: 'rgba(139, 26, 26, 0.35)', 
         text: 'var(--red)', 
         icon: '🏛️' 
+      };
+    }
+    if (isFavoredEnemy) {
+      return {
+        bg: 'rgba(46, 125, 50, 0.12)',
+        border: 'rgba(46, 125, 50, 0.45)',
+        text: '#1b5e20',
+        icon: '🏹'
+      };
+    }
+    if (isCombatStyle) {
+      return {
+        bg: 'rgba(139, 26, 26, 0.08)',
+        border: 'rgba(139, 26, 26, 0.35)',
+        text: 'var(--red)',
+        icon: '⚔️'
       };
     }
     switch (cat) {
