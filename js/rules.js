@@ -46,6 +46,7 @@ import {
   validateSpellLearnEligibility,
   getSpellClassLevels,
   isWizardProhibitedSchool,
+  computeWizardBudget,
   getDomain,
   getSpellDomains,
   isDomainSpellForPC
@@ -119,6 +120,7 @@ export const CombatRules = {
   validateSpellLearnEligibility,
   getSpellClassLevels,
   isWizardProhibitedSchool,
+  computeWizardBudget,
   getDomain,
   getSpellDomains,
   isDomainSpellForPC,
@@ -167,7 +169,8 @@ export {
   isDomainSpellForPC,
   getEffectiveCasterLevel,
   getMaxSpellLevel,
-  checkSpellKnownLimit
+  checkSpellKnownLimit,
+  computeWizardBudget
 } from './rules/RulesSpells.js';
 
 export {

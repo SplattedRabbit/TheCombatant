@@ -9,8 +9,8 @@ import {
   getMaxSpellLevel,
   checkSpellKnownLimit,
   validateSpellLearnEligibility,
+  computeWizardBudget,
 } from '../js/rules.js';
-import { computeWizardBudget } from '../src/components/player/spells/wizardBudget.ts';
 
 test('Wizard Budget - Generic Per-Level Caps for Level 13 Wizard (INT 18)', () => {
   const wizard13 = new Combatant({

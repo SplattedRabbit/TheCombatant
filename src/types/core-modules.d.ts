@@ -115,6 +115,22 @@ declare module '@core/rules.js' {
   export const getMaxSpellLevel: (classType: string, casterLevel: number) => number;
   export const calculateMaxSpellSlots: (pc: any, classType: string, casterLevel: number) => number[];
   export const checkSpellKnownLimit: (pc: any, spell: any, findSpellFn: (k: string) => any) => { success: boolean; error?: string };
+  export interface WizardBudget {
+    wizCL: number;
+    maxFromLevelUps: number;
+    currentNonCantrip: number;
+    currentCantrips: number;
+    totalLearned: number;
+    atCap: boolean;
+    overCap: boolean;
+    perLevelCaps: Record<number, number>;
+    perLevelUsed: Record<number, number>;
+    anyLevelOverCap: boolean;
+    isLevelOverCap: (level: number) => boolean;
+    isLevelAtCap: (level: number) => boolean;
+    canAddSpell: (level: number) => { allowed: boolean; reason?: string };
+  }
+  export const computeWizardBudget: (pc: any, resolvedLearnedSpells: any[]) => WizardBudget;
 }
 
 declare module '@core/rules/AttackEngine.js' {
@@ -198,6 +214,7 @@ declare module '@core/rules/RulesData.js' {
   export const SORCERER_KNOWN_TABLE: any[];
   export const BARD_KNOWN_TABLE: any[];
   export const ASSASSIN_TABLE: any[];
+  export const ASSASSIN_KNOWN_TABLE: any[];
 }
 
 declare module '@core/spells.js' {
@@ -355,6 +372,19 @@ declare module '*js/rules/RulesData.js' {
   export const CLASS_SKILLS: Record<string, string[]>;
   export const CLASS_PROFILES: Record<string, any>;
   export const CLASS_BASE_SKILLS: Record<string, number>;
+  export const ASSASSIN_TABLE: any[];
+  export const ASSASSIN_KNOWN_TABLE: any[];
+}
+
+declare module '*js/rules.js' {
+  export const CombatRules: any;
+  export const getEffectiveCasterLevel: (pc: any, classType: string) => number;
+  export const getMaxSpellLevel: (classType: string, casterLevel: number) => number;
+  export const checkSpellKnownLimit: (pc: any, spell: any, findSpellFn: (k: string) => any) => { success: boolean; error?: string };
+  export const validateSpellLearnEligibility: (pc: any, spell: any, findSpellFn: (k: string) => any) => { allowed: boolean; title?: string; reason?: string };
+  export const ASSASSIN_TABLE: any[];
+  export const ASSASSIN_KNOWN_TABLE: any[];
+  export const computeWizardBudget: (pc: any, resolvedLearnedSpells: any[]) => any;
 }
 
 declare module '*js/rules/prestigeClassEngine.js' {

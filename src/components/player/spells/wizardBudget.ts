@@ -18,7 +18,7 @@
  */
 
 import { getAblMod } from '../attributeHelper.ts';
-import { getEffectiveCasterLevel } from '../../../../js/rules.js';
+import { getEffectiveCasterLevel } from '@core/rules.js';
 
 export interface WizardBudget {
   wizCL: number;
