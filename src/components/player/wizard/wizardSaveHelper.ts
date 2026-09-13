@@ -4,8 +4,10 @@
  */
 
 import { CombatState } from '../../../../js/state.js';
+import { getStorageAdapter } from '../../../../js/state/StorageManager.js';
 import { getFeatSlotsAtLevel } from './helpers.feats.ts';
 import { getAllCompendiumSpells } from '../../../../js/rules.js';
+import { generateUUID } from '../../../utils/uuid.ts';
 
 export interface WizardStatMods {
   str?: number;
@@ -153,7 +155,21 @@ export function applyWizardCharacterToState(
   levelConfigs: WizardLevelConfig[],
   completedDraft: WizardDraftPC
 ) {
+  // ── FIX: wizard-character-overwrite ──────────────────────────────────────
+  // Reset the adapter's activeCharacterId BEFORE the save so the storage layer
+  // takes the INSERT path (new record) instead of UPDATE (overwriting the
+  // existing character). Safe for all adapters: setActiveCharacterId is an
+  // optional interface member and is only called when it exists.
+  const _adapter = getStorageAdapter();
+  if (typeof (_adapter as any)?.setActiveCharacterId === 'function') {
+    (_adapter as any).setActiveCharacterId(null);
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
   CombatState.updatePCBatch((freshPC: TargetPlayerCharacter) => {
+    // Assign a fresh UUID so local state treats this as a new combatant,
+    // not a mutation of the previously active PC.
+    (freshPC as any).id = generateUUID();
     freshPC.name = name.trim();
     freshPC.race = selectedRace;
     freshPC.isHuman = (selectedRace === 'human');

@@ -361,6 +361,8 @@ declare module '*js/state/StorageManager.js' {
   export const applyLoadedState: (...args: any[]) => any;
   export const onStateSave: (cb: () => void) => void;
   export const saveToStorage: (...args: any[]) => any;
+  export const getStorageAdapter: () => any;
+  export const setStorageAdapter: (adapter: any) => void;
 }
 
 declare module '*js/models/model-core.js' {
