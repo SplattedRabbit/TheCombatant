@@ -12,7 +12,6 @@ import {
   SneakStrikeCard,
   DuskbladeStrikeCard,
   ScoutStrikeCard,
-  NinjaStrikeCard,
   RangerStrikeCard,
 } from './StrikeCardViews.tsx';
 
@@ -105,14 +104,49 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
     });
   }
 
-  // 2. Sneak Attack
+  // =========================================================================
+  // EXPLICIT HOMEBREW DESIGN DECISION (DO NOT REVERT TO SEPARATE STRIKE SLOTS)
+  // Per user specification, Sneak Attack and Sudden Strike are merged into a
+  // single unified precision strike slot. The player never has to choose between
+  // them in the dropdown; all dice are summed and assumed applicable in combat.
+  // See AGENT.md section 6.1 and docs/CHANGELOG.md for details.
+  // =========================================================================
+  const hasNinja = !!ninjaClass;
+  const hasRogue = activeClasses.some((c: any) => c.classType === 'rogue');
+  const hasSpellthief = activeClasses.some((c: any) => c.classType === 'spellthief');
+  const hasPrestigeSA = activeClasses.some((c: any) =>
+    ['assassin', 'arcane_trickster', 'shadowbane_inquisitor', 'spellwarp_sniper'].includes(c.classType)
+  );
+  const hasOtherSA = hasRogue || hasSpellthief || hasPrestigeSA;
+
+  let precisionStrikeName = 'Sneak Attack';
+  let precisionCardTitle = 'Sneak Attack';
+  let precisionCategoryLabel = '🗡️ Class Strike';
+  let precisionBadgeLabel = 'Precision Strike';
+  let precisionStrikeId = 'sneak';
+
+  if (hasNinja && hasOtherSA) {
+    precisionStrikeName = 'Sneak & Sudden Strike';
+    precisionCardTitle = 'Sneak & Sudden Strike';
+    precisionCategoryLabel = '🗡️ Precision Strike';
+    precisionBadgeLabel = 'Combined Precision';
+    precisionStrikeId = 'sneak_sudden';
+  } else if (hasNinja && !hasOtherSA) {
+    precisionStrikeName = 'Sudden Strike';
+    precisionCardTitle = 'Sudden Strike';
+    precisionCategoryLabel = '🥷 Ninja Strike';
+    precisionBadgeLabel = 'Sudden Strike';
+    precisionStrikeId = 'sudden_strike';
+  }
+
+  // 2. Precision Strike (Sneak Attack / Sudden Strike Unified Homebrew)
   if (sneakAttackDice > 0) {
-    const sneakSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, noSmite: true });
+    const sneakSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, suddenStrike: true, noSmite: true });
     const stdSneak = sneakSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
 
     strikes.push({
-      id: 'sneak',
-      name: 'Sneak Attack',
+      id: precisionStrikeId,
+      name: precisionStrikeName,
       render: (selectorDropdown) => (
         <SneakStrikeCard
           pc={pc}
@@ -124,6 +158,9 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
           sneakAttackDice={sneakAttackDice}
           stdSneak={stdSneak}
           baseDmgDice={baseDmgDice}
+          cardTitle={precisionCardTitle}
+          categoryLabel={precisionCategoryLabel}
+          badgeLabel={precisionBadgeLabel}
         />
       ),
     });
@@ -179,32 +216,7 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
     });
   }
 
-  // 5. Ninja
-  if (ninjaClass) {
-    const ninjaDice = 1 + Math.floor((ninjaClass.level - 1) / 2);
-    const sudSeq = AttackEngine.calculateAttackSequence(pc, w, false, { sneakAttack: true, suddenStrike: true });
-    const stdSud = sudSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w6' };
-
-    strikes.push({
-      id: 'sudden_strike',
-      name: 'Sudden Strike',
-      render: (selectorDropdown) => (
-        <NinjaStrikeCard
-          pc={pc}
-          w={w}
-          formatMod={formatMod}
-          selectorDropdown={selectorDropdown}
-          handleRollAttack={handleRollAttack}
-          handleRollDamage={handleRollDamage}
-          ninjaDice={ninjaDice}
-          stdSud={stdSud}
-          baseDmgDice={baseDmgDice}
-        />
-      ),
-    });
-  }
-
-  // 6. Ranger
+  // 5. Ranger
   if (rangerLvl > 0 || favoredEnemyBonus > 0) {
     const feSeq = AttackEngine.calculateAttackSequence(pc, w, false, { favoredEnemy: true });
     const stdFE = feSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w8' };
@@ -256,10 +268,14 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
     );
   }
 
-  const selectedStrikeId =
-    pc.selectedClassStrike && strikes.some((s) => s.id === pc.selectedClassStrike)
-      ? pc.selectedClassStrike
-      : strikes[0].id;
+  const isSelectedValid = pc.selectedClassStrike && (
+    strikes.some((s) => s.id === pc.selectedClassStrike) ||
+    (pc.selectedClassStrike === 'sudden_strike' && strikes.some((s) => s.id === 'sneak_sudden' || s.id === 'sneak')) ||
+    (pc.selectedClassStrike === 'sneak' && strikes.some((s) => s.id === 'sneak_sudden' || s.id === 'sudden_strike'))
+  );
+  const selectedStrikeId = isSelectedValid
+    ? (strikes.find((s) => s.id === pc.selectedClassStrike)?.id || strikes.find((s) => ['sneak_sudden', 'sneak', 'sudden_strike'].includes(s.id))?.id || strikes[0].id)
+    : strikes[0].id;
   const currentStrike = strikes.find((s) => s.id === selectedStrikeId) || strikes[0];
 
   const selectorDropdown =

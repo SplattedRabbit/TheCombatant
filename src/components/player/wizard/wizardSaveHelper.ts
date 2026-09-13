@@ -3,9 +3,146 @@
  * @summary   Applies completed Wizard character draft configuration to CombatState.
  */
 
-import { CombatState } from '@core/state.js';
-import { getFeatSlotsAtLevel } from './helpers.ts';
-import { getAllCompendiumSpells } from '@core/rules.js';
+import { CombatState } from '../../../../js/state.js';
+import { getFeatSlotsAtLevel } from './helpers.feats.ts';
+import { getAllCompendiumSpells } from '../../../../js/rules.js';
+
+export interface WizardStatMods {
+  str?: number;
+  dex?: number;
+  con?: number;
+  int?: number;
+  wis?: number;
+  cha?: number;
+}
+
+export interface WizardClassEntry {
+  classType: string;
+  level: number;
+}
+
+export interface WizardFeatObject {
+  id: string;
+  option?: string;
+}
+
+export type WizardFeatValue = string | WizardFeatObject | null | undefined;
+
+export interface WizardLevelConfig {
+  classType: string;
+  hpRoll?: string | number;
+  abilityIncrease?: string;
+  spells?: string[];
+  feats?: WizardFeatValue[];
+  featOptions?: string[];
+  acfs?: string[];
+  prestigeSpellLinks?: Record<string, string>;
+  prestigeSpecialTextConfirmed?: Record<string, boolean>;
+}
+
+export interface SkillValue {
+  ranks?: number;
+  misc?: number;
+  spent?: number;
+}
+
+export type SkillEntryValue = number | SkillValue;
+
+export interface WizardDraftPC {
+  classesList?: WizardClassEntry[];
+  classes?: WizardClassEntry[];
+  wizardSpecialization?: string;
+  wizardProhibited1?: string;
+  wizardProhibited2?: string;
+  dragonTotem?: string;
+  prestigeSpellLinks?: Record<string, string>;
+  prestigeSpecialTextConfirmed?: Record<string, boolean>;
+  statMods?: WizardStatMods;
+  allSkills?: Record<string, SkillEntryValue>;
+  skillsAcc?: Record<string, SkillEntryValue>;
+  allSkillTricks?: string[];
+  skillTricksList?: string[];
+  draftPC?: {
+    prestigeSpellLinks?: Record<string, string>;
+    prestigeSpecialTextConfirmed?: Record<string, boolean>;
+    skills?: Record<string, SkillEntryValue>;
+    skillTricks?: string[];
+  };
+  [key: string]: unknown;
+}
+
+export interface TargetPlayerCharacter {
+  name: string;
+  race: string;
+  isHuman: boolean;
+  levelAdjustment: number;
+  alignment: string;
+  baseBw: number;
+  str: { base: number; [key: string]: unknown };
+  dex: { base: number; [key: string]: unknown };
+  con: { base: number; [key: string]: unknown };
+  int: { base: number; [key: string]: unknown };
+  wis: { base: number; [key: string]: unknown };
+  cha: { base: number; [key: string]: unknown };
+  levelIncreases: Record<string, number>;
+  classes: WizardClassEntry[];
+  clericDomains?: string[];
+  deity?: string;
+  wizardSpecialization?: string;
+  wizardProhibited1?: string;
+  wizardProhibited2?: string;
+  dragonTotem?: string;
+  prestigeSpellLinks?: Record<string, string>;
+  prestigeSpecialTextConfirmed?: Record<string, boolean>;
+  maxHP: number;
+  maxHp: number;
+  hp: number;
+  wounds: number;
+  nonLethal: number;
+  skills: Record<string, unknown>;
+  skillTricks: unknown[];
+  feats: Array<{ id: string; option?: string }>;
+  acfs: string[];
+  weapons: unknown[];
+  armors: unknown[];
+  items: unknown[];
+  autoAC: boolean;
+  acNatural: number;
+  acDeflection: number;
+  acMisc: number;
+  dr: string;
+  immunities: string;
+  resistances: string;
+  activeBuffs: unknown[];
+  quickBuffs: unknown[];
+  preparedSpells: unknown[];
+  customSpells: unknown[];
+  spellTemplates: Record<string, unknown>;
+  dailyAbilities: unknown[];
+  learnedSpells: string[];
+  spellSlots: Record<number, { max: number; used: number }>;
+  conditions: unknown[];
+  isRaging: boolean;
+  isSneakAttacking: boolean;
+  isSmiteActive: boolean;
+  isFavoredEnemyActive: boolean;
+  isDefensiveFighting: boolean;
+  isTotalDefense: boolean;
+  isFlurrying: boolean;
+  isTrickyFightingActive: boolean;
+  powerAttackPenalty: number;
+  combatExpertisePenalty: number;
+  companionName: string;
+  companionType: string;
+  companionHP: number;
+  companionMaxHP: number;
+  familiarName: string;
+  familiarType: string;
+  familiarHP: number;
+  activeShape: string;
+  originalStats: unknown;
+  rebuildStatModifiers: () => void;
+}
 
 export function applyWizardCharacterToState(
   name: string,
@@ -13,10 +150,10 @@ export function applyWizardCharacterToState(
   alignmentEthical: string,
   alignmentMoral: string,
   baseStats: { str: number; dex: number; con: number; int: number; wis: number; cha: number },
-  levelConfigs: any[],
-  completedDraft: any
+  levelConfigs: WizardLevelConfig[],
+  completedDraft: WizardDraftPC
 ) {
-  CombatState.updatePCBatch((freshPC: any) => {
+  CombatState.updatePCBatch((freshPC: TargetPlayerCharacter) => {
     freshPC.name = name.trim();
     freshPC.race = selectedRace;
     freshPC.isHuman = (selectedRace === 'human');
@@ -36,23 +173,23 @@ export function applyWizardCharacterToState(
     freshPC.cha.base = baseStats.cha;
 
     freshPC.levelIncreases = { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 };
-    levelConfigs.forEach(cfg => {
+    levelConfigs.forEach((cfg: WizardLevelConfig) => {
       if (cfg.abilityIncrease && freshPC.levelIncreases[cfg.abilityIncrease] !== undefined) {
         freshPC.levelIncreases[cfg.abilityIncrease]++;
       }
     });
 
-    freshPC.classes = completedDraft.classesList.map((c: any) => ({
+    freshPC.classes = (completedDraft.classesList || []).map((c: WizardClassEntry) => ({
       classType: c.classType,
       level: c.level
     }));
 
-    if (freshPC.classes.some((c: any) => c.classType === 'cleric') && (!freshPC.clericDomains || freshPC.clericDomains.length === 0)) {
+    if (freshPC.classes.some((c: WizardClassEntry) => c.classType === 'cleric') && (!freshPC.clericDomains || freshPC.clericDomains.length === 0)) {
       if (!freshPC.deity) freshPC.deity = 'none';
       freshPC.clericDomains = ['good', 'healing'];
     }
 
-    if (freshPC.classes.some((c: any) => c.classType === 'wizard')) {
+    if (freshPC.classes.some((c: WizardClassEntry) => c.classType === 'wizard')) {
       freshPC.wizardSpecialization = completedDraft.wizardSpecialization || 'none';
       freshPC.wizardProhibited1 = completedDraft.wizardProhibited1 || '';
       freshPC.wizardProhibited2 = completedDraft.wizardProhibited2 || '';
@@ -62,16 +199,20 @@ export function applyWizardCharacterToState(
       freshPC.wizardProhibited2 = '';
     }
 
-    if (freshPC.classes.some((c: any) => c.classType === 'dragon_shaman')) {
+    if (freshPC.classes.some((c: WizardClassEntry) => c.classType === 'dragon_shaman')) {
       freshPC.dragonTotem = completedDraft.dragonTotem || 'red';
     } else {
       delete freshPC.dragonTotem;
     }
 
-    const conMod = completedDraft.statMods.con;
+    // Persist prestige class spell links and prerequisite confirmations
+    freshPC.prestigeSpellLinks = { ...(completedDraft.prestigeSpellLinks || completedDraft.draftPC?.prestigeSpellLinks || {}) };
+    freshPC.prestigeSpecialTextConfirmed = { ...(completedDraft.prestigeSpecialTextConfirmed || completedDraft.draftPC?.prestigeSpecialTextConfirmed || {}) };
+
+    const conMod = completedDraft.statMods?.con ?? 0;
     let calculatedMaxHP = 0;
-    levelConfigs.forEach(cfg => {
-      const roll = parseInt(cfg.hpRoll) || 0;
+    levelConfigs.forEach((cfg: WizardLevelConfig) => {
+      const roll = typeof cfg.hpRoll === 'number' ? cfg.hpRoll : (parseInt(String(cfg.hpRoll || 0), 10) || 0);
       calculatedMaxHP += Math.max(1, roll + conMod);
     });
     freshPC.maxHP = calculatedMaxHP;
@@ -89,8 +230,8 @@ export function applyWizardCharacterToState(
       ? [...completedDraft.draftPC.skillTricks]
       : [];
 
-    const allFeats: any[] = [];
-    const addFeatInstance = (featVal: any, optFallback?: string) => {
+    const allFeats: Array<{ id: string; option?: string }> = [];
+    const addFeatInstance = (featVal: WizardFeatValue, optFallback?: string) => {
       if (!featVal) return;
       const fid = typeof featVal === 'object' ? featVal.id : featVal;
       if (!fid) return;
@@ -101,14 +242,14 @@ export function applyWizardCharacterToState(
       }
     };
 
-    levelConfigs.forEach((cfg, lvlIdx) => {
+    levelConfigs.forEach((cfg: WizardLevelConfig, lvlIdx: number) => {
       const slots = getFeatSlotsAtLevel(lvlIdx, cfg.classType, selectedRace, levelConfigs);
       slots.forEach((slot, sIdx) => {
         const featVal = cfg.feats?.[sIdx] || slot.defaultFeat;
         const optFallback = cfg.featOptions?.[sIdx];
         addFeatInstance(featVal, optFallback);
       });
-      (cfg.feats || []).forEach((featVal: any, fIdx: number) => {
+      (cfg.feats || []).forEach((featVal: WizardFeatValue, fIdx: number) => {
         const optFallback = cfg.featOptions?.[fIdx];
         addFeatInstance(featVal, optFallback);
       });
@@ -116,7 +257,7 @@ export function applyWizardCharacterToState(
     freshPC.feats = allFeats;
 
     const allACFs: string[] = [];
-    levelConfigs.forEach(cfg => {
+    levelConfigs.forEach((cfg: WizardLevelConfig) => {
       (cfg.acfs || []).forEach((acfKey: string) => {
         if (!allACFs.includes(acfKey)) {
           allACFs.push(acfKey);
@@ -153,7 +294,7 @@ export function applyWizardCharacterToState(
     freshPC.dailyAbilities = [];
 
     const allSelectedSpells: string[] = [];
-    levelConfigs.forEach(cfg => {
+    levelConfigs.forEach((cfg: WizardLevelConfig) => {
       if (Array.isArray(cfg.spells)) {
         cfg.spells.forEach((spId: string) => {
           if (!allSelectedSpells.includes(spId)) {
@@ -163,11 +304,18 @@ export function applyWizardCharacterToState(
       }
     });
 
-    if (freshPC.classes.some((c: any) => c.classType === 'wizard')) {
-      const allCompSpells = getAllCompendiumSpells(freshPC) as any[];
+    if (freshPC.classes.some((c: WizardClassEntry) => c.classType === 'wizard')) {
+      const allCompSpells = (getAllCompendiumSpells(freshPC) || []) as Array<{
+        id: string;
+        name?: string;
+        level?: number;
+        school?: string;
+        classLevels?: Array<{ class: string; level: number }>;
+        classes?: string[];
+      }>;
       allCompSpells.forEach(s => {
         const isWizCantrip = Array.isArray(s.classLevels) 
-          ? s.classLevels.some((cl: any) => cl.class === 'wizard' && cl.level === 0)
+          ? s.classLevels.some((cl: { class: string; level: number }) => cl.class === 'wizard' && cl.level === 0)
           : (s.level === 0 && Array.isArray(s.classes) && s.classes.includes('wizard'));
         if (isWizCantrip) {
           if (freshPC.wizardProhibited1 && s.school && s.school.toLowerCase() === freshPC.wizardProhibited1.toLowerCase()) return;

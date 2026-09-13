@@ -121,3 +121,34 @@ test('Lizardfolk - Natural attacks routine (2 Claws primary, 1 Bite secondary)',
   // 0.5 * 1 STR rounded down = 0 bonus damage
   assert.strictEqual(biteSeq[0].dmgTotal, 0, 'Secondary bite damage should include half STR (0 for +1 STR)');
 });
+
+test('Lizardfolk Dragon Shaman - Skill modifier breakdown explains +4 Balance racial bonus', () => {
+  const pc = new Combatant({
+    race: 'lizardfolk',
+    classes: [{ classType: 'dragon_shaman', level: 10 }],
+    skills: {
+      balance: { ranks: 0, misc: 0 }
+    },
+    dex: { base: 10, modifiers: [] } // DEX 10 (mod 0)
+  });
+
+  pc.rebuildStatModifiers();
+
+  const breakdown = pc.getSkillModifierBreakdown('balance');
+  const totalMod = pc.getSkillModifier('balance');
+
+  assert.strictEqual(totalMod, 4, 'Total balance modifier should be +4');
+  
+  const ranksItem = breakdown.find(b => b.label === 'Ranks');
+  assert.strictEqual(ranksItem?.value, 0, 'Ranks should be 0');
+
+  const dexItem = breakdown.find(b => b.label === 'DEX-Mod');
+  assert.strictEqual(dexItem?.value, 0, 'DEX-Mod should be 0');
+
+  const racialItem = breakdown.find(b => b.label === 'Racial bonus (Lizardfolk)');
+  assert.strictEqual(racialItem?.value, 4, 'Racial bonus (Lizardfolk) should be +4');
+
+  const calculatedSum = breakdown.reduce((sum, item) => sum + item.value, 0);
+  assert.strictEqual(calculatedSum, totalMod, 'Sum of breakdown items must match totalMod');
+});
+

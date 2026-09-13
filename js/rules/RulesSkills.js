@@ -7,6 +7,7 @@
 import { CLASS_SKILLS, CLASS_BASE_SKILLS, CLASSES, DRAGON_TOTEMS } from './RulesData.js';
 import { SKILL_TRICKS_REGISTRY } from '../data/skillTricks-data.js';
 import { getAblMod } from './RulesMath.js';
+import { calculateEquippedItemEffects } from './RulesItems.js';
 
 export function isClassSkill(skillKey, pc) {
   if (!pc || !Array.isArray(pc.classes) || pc.classes.length === 0) {
@@ -73,27 +74,43 @@ export function calculateTotalSkillPoints(pc) {
 }
 
 export function getItemModForSkill(pc, skillKey) {
-  if (!pc || !pc.equipment) return 0;
+  if (!pc) return 0;
   let totalMod = 0;
-  
-  const checkModifiers = (modifiers) => {
-    if (!Array.isArray(modifiers)) return;
-    modifiers.forEach(mod => {
-      if (mod.type === 'skill' && mod.target === skillKey && typeof mod.value === 'number') {
-        totalMod += mod.value;
-      }
-    });
-  };
 
-  if (Array.isArray(pc.equipment.worn)) {
-    pc.equipment.worn.forEach(item => {
-      if (item && item.modifiers) checkModifiers(item.modifiers);
-    });
+  // 1. Armory 2.0 equipped items (pc.items) via authoritative stacking engine
+  if (Array.isArray(pc.items) && pc.items.length > 0) {
+    const itemEffects = calculateEquippedItemEffects(pc);
+    if (itemEffects && itemEffects.skills) {
+      if (typeof itemEffects.skills[skillKey] === 'number') {
+        totalMod += itemEffects.skills[skillKey];
+      }
+      if (typeof itemEffects.skills['all'] === 'number') {
+        totalMod += itemEffects.skills['all'];
+      }
+    }
   }
-  
-  if (pc.equipment.mainHand && pc.equipment.mainHand.modifiers) checkModifiers(pc.equipment.mainHand.modifiers);
-  if (pc.equipment.offHand && pc.equipment.offHand.modifiers) checkModifiers(pc.equipment.offHand.modifiers);
-  
+
+  // 2. Fallback for legacy pc.equipment (if pc.items was not populated)
+  if (totalMod === 0 && pc.equipment) {
+    const checkModifiers = (modifiers) => {
+      if (!Array.isArray(modifiers)) return;
+      modifiers.forEach(mod => {
+        if (mod.type === 'skill' && (mod.target === skillKey || mod.target === 'all') && typeof mod.value === 'number') {
+          totalMod += mod.value;
+        }
+      });
+    };
+
+    if (Array.isArray(pc.equipment.worn)) {
+      pc.equipment.worn.forEach(item => {
+        if (item && item.modifiers) checkModifiers(item.modifiers);
+      });
+    }
+
+    if (pc.equipment.mainHand && pc.equipment.mainHand.modifiers) checkModifiers(pc.equipment.mainHand.modifiers);
+    if (pc.equipment.offHand && pc.equipment.offHand.modifiers) checkModifiers(pc.equipment.offHand.modifiers);
+  }
+
   return totalMod;
 }
 

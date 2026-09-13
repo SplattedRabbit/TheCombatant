@@ -312,7 +312,7 @@ export const PRESTIGE_PREREQS: Record<string, PrestigePrereqInfo> = {
       dex: 'DEX for ranged attack rolls & Sneak Attack',
       int: 'INT for arcane spells (min. 13 for 3rd-lvl spells)'
     },
-    specialText: 'Arcane spells 3rd lvl, Sneak Attack +1d6'
+    specialText: 'Arcane spells 3rd lvl, Sneak Attack or Sudden Strike +1d6'
   },
   battle_trickster: {
     bab: 5,

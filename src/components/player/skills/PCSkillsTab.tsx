@@ -11,9 +11,7 @@ import React, { useState, useMemo } from 'react';
 import { CombatState } from '@core/state.js';
 import { CombatRules } from '@core/rules.js';
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
-import { calculateSkillModifier } from '@core/models/helpers/skills/CombatantSkills.js';
-import { applyFeatSkillBonuses } from '@core/models/helpers/skills/SkillFeatApplier.js';
-import { getItemModForSkill } from '@core/rules/RulesSkills.js';
+import { calculateSkillModifier, getSkillModifierBreakdown } from '@core/models/helpers/skills/CombatantSkills.js';
 import { showRollBreakdown, showCustomAlert } from '@core/ui/components/dialogs.js';
 
 import { formatMod, getStatMod } from '../attributeHelper';
@@ -70,77 +68,12 @@ export const PCSkillsTab: React.FC = () => {
   const getSkillTooltip = (
     key: string,
     totalMod: number,
-    ranks: number,
-    attrMod: number,
-    misc: number,
-    skill: any,
   ) => {
+    const breakdown = getSkillModifierBreakdown(pc, key);
     const lines = [`Total Modifier: ${formatMod(totalMod)}`];
-    lines.push(`• Ranks: ${ranks}`);
-    lines.push(`• ${skill.abl.toUpperCase()}-Mod: ${formatMod(attrMod)}`);
-
-    if (misc !== 0) {
-      lines.push(`• Misc (base value): ${formatMod(misc)}`);
-    }
-
-    const itemMod = getItemModForSkill(pc, key);
-    if (itemMod !== 0) {
-      lines.push(`• Equipment: ${formatMod(itemMod)}`);
-    }
-
-    const featBonus = applyFeatSkillBonuses(pc, key, skill);
-    if (featBonus > 0) {
-      lines.push(`• Feat bonuses: ${formatMod(featBonus)}`);
-    }
-
-    const race = (pc.race || 'human').toLowerCase();
-    let racialBonus = 0;
-    if (race === 'dwarf' && key === 'craft') racialBonus = 2;
-    else if (race === 'elf' && ['listen', 'search', 'spot'].includes(key)) racialBonus = 2;
-    else if (race === 'gnome' && ['listen', 'craft'].includes(key)) racialBonus = 2;
-    else if (race === 'halfling' && ['climb', 'jump', 'move_silently', 'listen'].includes(key)) racialBonus = 2;
-    else if (race === 'deep_halfling' && ['listen', 'appraise', 'craft', 'search'].includes(key)) racialBonus = 2;
-    else if (race === 'half_elf') {
-      if (['listen', 'search', 'spot'].includes(key)) racialBonus = 1;
-      if (['diplomacy', 'gather_information'].includes(key)) racialBonus = 2;
-    }
-    if (racialBonus > 0) {
-      lines.push(`• Racial bonus: ${formatMod(racialBonus)}`);
-    }
-
-    let synergy = 0;
-    if (key === 'balance' && getSkillRanks(pc, 'tumble') >= 5) synergy += 2;
-    if (key === 'escape_artist' && getSkillRanks(pc, 'tumble') >= 5) synergy += 2;
-    if (key === 'diplomacy' && getSkillRanks(pc, 'bluff') >= 5) synergy += 2;
-    if (key === 'disguise' && getSkillRanks(pc, 'bluff') >= 5) synergy += 2;
-    if (key === 'intimidate' && getSkillRanks(pc, 'bluff') >= 5) synergy += 2;
-    if (key === 'use_magic_device') {
-      if (getSkillRanks(pc, 'spellcraft') >= 5) synergy += 2;
-      if (getSkillRanks(pc, 'decipher_script') >= 5) synergy += 2;
-    }
-    if (synergy > 0) {
-      lines.push(`• Synergy: ${formatMod(synergy)}`);
-    }
-
-    if (skill.hasACP) {
-      const acp = getArmorCheckPenalty(pc);
-      if (acp !== 0) {
-        const penaltyVal = key === 'swim' ? -2 * acp : -acp;
-        lines.push(`• Armor Check Penalty (ACP): ${formatMod(penaltyVal)}`);
-      }
-    }
-
-    const hasShaken = (pc.conditions || []).some(
-      (c: any) =>
-        c === 'Erschüttet' ||
-        (c && c.n === 'Erschüttet') ||
-        c === 'Schüttelnd' ||
-        (c && c.n === 'Schüttelnd'),
-    );
-    if (hasShaken) {
-      lines.push(`• Condition (Shaken): -2`);
-    }
-
+    breakdown.forEach((item: { label: string; value: number }) => {
+      lines.push(`• ${item.label}: ${formatMod(item.value)}`);
+    });
     return lines.join('\n');
   };
 
@@ -148,74 +81,12 @@ export const PCSkillsTab: React.FC = () => {
   const handleRollSkill = (
     key: string,
     skill: any,
-    ranks: number,
-    attrMod: number,
-    misc: number,
+    _ranks: number,
+    _attrMod: number,
+    _misc: number,
     e: React.MouseEvent,
   ) => {
-    const breakdown = [
-      { label: `Ranks`, value: ranks },
-      { label: `${skill.abl.toUpperCase()}-Mod`, value: attrMod },
-    ];
-
-    const featBonus = applyFeatSkillBonuses(pc, key, skill);
-    if (featBonus > 0) {
-      breakdown.push({ label: 'Feat bonuses', value: featBonus });
-    }
-
-    const itemMod = getItemModForSkill(pc, key);
-    if (itemMod !== 0) {
-      breakdown.push({ label: 'Equipment', value: itemMod });
-    }
-
-    const race = (pc.race || 'human').toLowerCase();
-    let racialBonus = 0;
-    if (race === 'dwarf' && key === 'craft') racialBonus = 2;
-    else if (race === 'elf' && ['listen', 'search', 'spot'].includes(key)) racialBonus = 2;
-    else if (race === 'gnome' && ['listen', 'craft'].includes(key)) racialBonus = 2;
-    else if (race === 'halfling' && ['climb', 'jump', 'move_silently', 'listen'].includes(key)) racialBonus = 2;
-    else if (race === 'deep_halfling' && ['listen', 'appraise', 'craft', 'search'].includes(key)) racialBonus = 2;
-    else if (race === 'half_elf') {
-      if (['listen', 'search', 'spot'].includes(key)) racialBonus = 1;
-      if (['diplomacy', 'gather_information'].includes(key)) racialBonus = 2;
-    }
-    if (racialBonus > 0) {
-      breakdown.push({ label: 'Racial bonus', value: racialBonus });
-    }
-
-    if (misc !== 0) {
-      breakdown.push({ label: 'Misc bonuses', value: misc });
-    }
-
-    if (key === 'balance' && getSkillRanks(pc, 'tumble') >= 5) breakdown.push({ label: 'Synergy (Tumble)', value: 2 });
-    if (key === 'escape_artist' && getSkillRanks(pc, 'tumble') >= 5) breakdown.push({ label: 'Synergy (Tumble)', value: 2 });
-    if (key === 'diplomacy' && getSkillRanks(pc, 'bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
-    if (key === 'disguise' && getSkillRanks(pc, 'bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
-    if (key === 'intimidate' && getSkillRanks(pc, 'bluff') >= 5) breakdown.push({ label: 'Synergy (Bluff)', value: 2 });
-    if (key === 'use_magic_device') {
-      if (getSkillRanks(pc, 'spellcraft') >= 5) breakdown.push({ label: 'Synergy (Spellcraft)', value: 2 });
-      if (getSkillRanks(pc, 'decipher_script') >= 5) breakdown.push({ label: 'Synergy (Decipher Script)', value: 2 });
-    }
-
-    if (skill.hasACP) {
-      const acp = getArmorCheckPenalty(pc);
-      if (acp !== 0) {
-        const penaltyVal = key === 'swim' ? -2 * acp : -acp;
-        breakdown.push({ label: 'Armor Check Penalty (ACP)', value: penaltyVal });
-      }
-    }
-
-    const hasShaken = (pc.conditions || []).some(
-      (c: any) =>
-        c === 'Erschüttet' ||
-        (c && c.n === 'Erschüttet') ||
-        c === 'Schüttelnd' ||
-        (c && c.n === 'Schüttelnd'),
-    );
-    if (hasShaken) {
-      breakdown.push({ label: 'Condition (Shaken)', value: -2 });
-    }
-
+    const breakdown = getSkillModifierBreakdown(pc, key);
     showRollBreakdown(`Skill check: ${skill.nameEn || skill.name || skill.nameDe || ''}`, '1d20', breakdown, e.nativeEvent);
   };
 
@@ -344,7 +215,7 @@ export const PCSkillsTab: React.FC = () => {
                   const attrMod = getStatMod((pc as any)[skill.abl]);
                   const isTrainedOnlyDisabled = skill.trainedOnly && ranks === 0;
                   const hasSkillExtras = totalMod !== ranks + attrMod + misc;
-                  const tooltipText = getSkillTooltip(key, totalMod, ranks, attrMod, misc, skill);
+                  const tooltipText = getSkillTooltip(key, totalMod);
 
                   return (
                     <SkillRow

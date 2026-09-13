@@ -27,7 +27,7 @@ export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
   };
 
   return (
-    <div className="hdr" style={{ textAlign: 'center', marginBottom: '10px' }}>
+    <div className="hdr" style={{ textAlign: 'center', marginBottom: '10px', position: 'relative', zIndex: 500 }}>
       {/* Top Utility Bar: Live Table presence, Campaign Dashboard & User Menu */}
       <div 
         className="hdr-top-bar no-print" 

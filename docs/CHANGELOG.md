@@ -21,6 +21,13 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
   - Updated `checkSpellKnownLimit` in `js/rules/RulesSpells.js` to enforce spells known limits for Assassins identically to Sorcerers and Bards.
   - Added quota tracking and compendium integration for Assassin spells in `PCSpellsHeaderBar.tsx`, `SpellLibraryList.tsx`, and `PCSpellCompendium.tsx`.
 
+### Changed
+- **Unified Precision Damage Homebrew (Sneak Attack & Sudden Strike):**
+  - Combined *Sneak Attack* and *Sudden Strike* into a single unified tactical strike option (`Sneak & Sudden Strike`) in `StrikeAbilitySlot.tsx` and `StrikeCardViews.tsx` rather than forcing players to choose between two separate competing cards.
+  - Automatically rolls the full aggregated precision dice pool (`pc.getSneakAttackDiceCount()`), assuming qualifying combat conditions are met.
+  - Updated `DamageChoiceDialog.tsx` and `DamageFormulaBuilder.js` to dynamically label and apply the unified precision damage breakdown.
+  - Explicitly clarified Spellwarp Sniper prerequisite in `constants.ts` to `Arcane spells 3rd lvl, Sneak Attack or Sudden Strike +1d6`.
+
 ### Fixed
 - **Prepared Spells Minimum INT Requirement Check:**
   - Fixed an ability modifier vs. ability score check in `GrimoireLevelGroup.tsx` where preparing spells checked `intMod >= 10 + lvl` instead of `intScore >= 10 + lvl` (e.g. INT 18 was erroneously blocked for level 5 spells).

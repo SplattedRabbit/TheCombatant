@@ -66,7 +66,7 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ activeTab, onOpenWizard, onO
         flexDirection: 'column',
         gap: '6px',
         position: 'relative',
-        zIndex: 50,
+        zIndex: 500,
       }}
     >
       {/* Wizard banner for Level 0/New characters */}

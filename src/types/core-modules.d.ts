@@ -323,6 +323,7 @@ declare module '@core/models/Weapon.js' {
 
 declare module '@core/models/helpers/skills/CombatantSkills.js' {
   export const calculateSkillModifier: (pc: any, skillKey: string) => number;
+  export const getSkillModifierBreakdown: (pc: any, skillKey: string) => Array<{ label: string; value: number }>;
 }
 
 declare module '@core/models/helpers/skills/SkillFeatApplier.js' {
@@ -419,6 +420,19 @@ declare module '*js/data/prestigeClasses-data.js' {
   export const PRESTIGE_CLASSES_REGISTRY: Record<string, any>;
 }
 
+declare module '*js/state.js' {
+  export const CombatState: any;
+  export const StateEvents: any;
+  export const CombatEngine: any;
+  export const PCClasses: any;
+  export const PCManager: any;
+  export const DMState: any;
+  export const SyncProtocol: any;
+  export const StorageService: any;
+  export const getState: () => any;
+  export const getActivePC: () => any;
+}
+
 declare module '*js/rules/RulesData.js' {
   export const CONDITIONS: any[];
   export const CLASSES: any[];
@@ -426,16 +440,44 @@ declare module '*js/rules/RulesData.js' {
   export const CLASS_SKILLS: Record<string, string[]>;
   export const CLASS_PROFILES: Record<string, any>;
   export const CLASS_BASE_SKILLS: Record<string, number>;
+  export const WIZ_CLER_DRU_TABLE: any[];
+  export const SORCERER_TABLE: any[];
+  export const BARD_TABLE: any[];
+  export const PALADIN_RANGER_TABLE: any[];
+  export const SORCERER_KNOWN_TABLE: Record<number, number[]>;
+  export const BARD_KNOWN_TABLE: Record<number, number[]>;
   export const ASSASSIN_TABLE: any[];
   export const ASSASSIN_KNOWN_TABLE: any[];
 }
 
+declare module '*js/rules/RulesSpells.js' {
+  export const getEffectiveCasterLevel: (pc: any, classType: string) => number;
+  export const getMaxSpellLevel: (classType: string, casterLevel: number) => number;
+  export const calculateMaxSpellSlots: (pc: any, classType: string, casterLevel: number) => number[];
+  export const checkSpellKnownLimit: (pc: any, spell: any, findSpellFn: (k: string) => any) => { success: boolean; error?: string };
+  export const isSpellEligibleForPC: (pc: any, spell: any) => boolean;
+  export const getEligibleSpellLevelsForPC: (pc: any) => number[];
+  export const validateSpellLearnEligibility: (pc: any, spell: any, findSpellFn: (k: string) => any) => { allowed: boolean; title?: string; reason?: string };
+  export const getSpellClassLevels: (spell: any) => Array<{ class: string; level: number }>;
+  export const isWizardProhibitedSchool: (spell: any, pc: any) => boolean;
+  export const computeWizardBudget: (pc: any, resolvedLearnedSpells: any[]) => any;
+  export const getDomain: (domainId: string) => any;
+  export const getSpellDomains: (spellKey: string) => Array<{ domainId: string; domainName: string; level: number }>;
+  export const isDomainSpellForPC: (spellKey: string, pc: any) => boolean;
+}
+
 declare module '*js/rules.js' {
   export const CombatRules: any;
+  export const getAllCompendiumSpells: (pc?: any) => any[];
   export const getEffectiveCasterLevel: (pc: any, classType: string) => number;
   export const getMaxSpellLevel: (classType: string, casterLevel: number) => number;
   export const checkSpellKnownLimit: (pc: any, spell: any, findSpellFn: (k: string) => any) => { success: boolean; error?: string };
   export const validateSpellLearnEligibility: (pc: any, spell: any, findSpellFn: (k: string) => any) => { allowed: boolean; title?: string; reason?: string };
+  export const getSpellClassLevels: (spell: any) => Array<{ class: string; level: number }>;
+  export const isWizardProhibitedSchool: (spell: any, pc: any) => boolean;
+  export const CLASSES: any[];
+  export const SORCERER_KNOWN_TABLE: Record<number, number[]>;
+  export const BARD_KNOWN_TABLE: Record<number, number[]>;
   export const ASSASSIN_TABLE: any[];
   export const ASSASSIN_KNOWN_TABLE: any[];
   export const computeWizardBudget: (pc: any, resolvedLearnedSpells: any[]) => any;

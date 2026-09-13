@@ -151,17 +151,29 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
                 Vs Favored Enemy (+{favoredEnemyBonus} Damage)
               </label>
             )}
-            {sneakAttackDice > 0 && (
-              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: '#a0522d' }}>
-                <input
-                  type="checkbox"
-                  checked={sneakActive}
-                  onChange={handleSneakChange}
-                  style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
-                />
-                Sneak Attack (+{sneakAttackDice}d6 Damage)
-              </label>
-            )}
+            {sneakAttackDice > 0 && (() => {
+              const hasNinja = Array.isArray(pc?.classes) && pc.classes.some((c: any) => c.classType === 'ninja');
+              const hasOtherSA = Array.isArray(pc?.classes) && pc.classes.some((c: any) =>
+                ['rogue', 'spellthief', 'assassin', 'arcane_trickster', 'shadowbane_inquisitor', 'spellwarp_sniper'].includes(c.classType)
+              );
+              const precisionLabel = hasNinja && hasOtherSA
+                ? `Sneak Attack & Sudden Strike (+${sneakAttackDice}d6 Damage)`
+                : hasNinja
+                  ? `Sudden Strike (+${sneakAttackDice}d6 Damage)`
+                  : `Sneak Attack (+${sneakAttackDice}d6 Damage)`;
+
+              return (
+                <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: '#a0522d' }}>
+                  <input
+                    type="checkbox"
+                    checked={sneakActive}
+                    onChange={handleSneakChange}
+                    style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
+                  />
+                  {precisionLabel}
+                </label>
+              );
+            })()}
           </div>
         )}
 

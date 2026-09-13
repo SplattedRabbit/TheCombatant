@@ -152,9 +152,25 @@ export class CampaignService {
       cloned.meta.begegnung = targetName;
     }
 
+    const adapter = storageService.getAdapter();
+    let existingInviteCode = '';
+    if (typeof adapter.listCampaigns === 'function') {
+      const all = await adapter.listCampaigns();
+      const match = all.find((c: any) => c.id === campaignId);
+      if (match?.inviteCode) existingInviteCode = match.inviteCode;
+    }
+
+    let dupCode = generateInviteCode(targetName);
+    let attempts = 0;
+    while (existingInviteCode && dupCode === existingInviteCode && attempts < 10) {
+      dupCode = generateInviteCode(targetName);
+      attempts++;
+    }
+
     return this.createCampaign({
       name: targetName,
       description: `Copy of campaign ${campaignId}`,
+      inviteCode: dupCode,
       initialState: cloned,
     });
   }

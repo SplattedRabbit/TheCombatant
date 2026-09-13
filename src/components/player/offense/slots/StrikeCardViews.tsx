@@ -113,6 +113,9 @@ export const SneakStrikeCard: React.FC<StrikeCardBaseProps & {
   sneakAttackDice: number;
   stdSneak: any;
   baseDmgDice: string;
+  cardTitle?: string;
+  categoryLabel?: string;
+  badgeLabel?: string;
 }> = ({
   pc,
   w,
@@ -123,6 +126,9 @@ export const SneakStrikeCard: React.FC<StrikeCardBaseProps & {
   sneakAttackDice,
   stdSneak,
   baseDmgDice,
+  cardTitle,
+  categoryLabel,
+  badgeLabel,
 }) => (
   <div
     className="arpg-slot class-ability-slot"
@@ -134,7 +140,7 @@ export const SneakStrikeCard: React.FC<StrikeCardBaseProps & {
       alignItems: 'center',
       justifyContent: 'space-between',
       minHeight: '88px',
-      border: '1px solid rgba(70, 105, 65, 0.5)',
+      border: '0.5px solid #5a8a54',
       borderRadius: '4px',
       padding: '5px 6px',
       textAlign: 'center',
@@ -144,18 +150,18 @@ export const SneakStrikeCard: React.FC<StrikeCardBaseProps & {
   >
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
       <div style={{ fontSize: '6.5px', color: '#3b5e38', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
-        🗡️ Class Strike
+        {categoryLabel || '🗡️ Class Strike'}
       </div>
       {selectorDropdown}
     </div>
     <div style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-      Sneak Attack
+      {cardTitle || 'Sneak Attack'}
     </div>
     <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
       +{sneakAttackDice}d6 (Flank / Denied Dex)
     </div>
     <div style={{ fontSize: '6.5px', color: '#3b5e38', fontStyle: 'italic' }}>
-      Precision Strike
+      {badgeLabel || 'Precision Strike'}
     </div>
     <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
       <button
@@ -163,7 +169,7 @@ export const SneakStrikeCard: React.FC<StrikeCardBaseProps & {
         disabled={pc.isTotalDefense}
         onClick={(e) => handleRollAttack(w, false, e, { sneakAttack: true })}
         style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-        title={`Roll Sneak Attack (${formatMod(stdSneak.atkTotal)})`}
+        title={`Roll ${cardTitle || 'Sneak Attack'} (${formatMod(stdSneak.atkTotal)})`}
       >
         ATK {formatMod(stdSneak.atkTotal)}
       </button>
@@ -172,7 +178,7 @@ export const SneakStrikeCard: React.FC<StrikeCardBaseProps & {
         disabled={pc.isTotalDefense}
         onClick={(e) => handleRollDamage(w, false, e, { sneakAttack: true })}
         style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-        title={`Roll Sneak Damage (${baseDmgDice}+${sneakAttackDice}d6 ${formatMod(stdSneak.dmgTotal)})`}
+        title={`Roll ${cardTitle || 'Sneak'} Damage (${baseDmgDice}+${sneakAttackDice}d6 ${formatMod(stdSneak.dmgTotal)})`}
       >
         DMG +{sneakAttackDice}d6
       </button>

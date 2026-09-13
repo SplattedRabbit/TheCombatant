@@ -11,7 +11,7 @@ import { Stat } from './Stat.js';
 import { Weapon } from './Weapon.js';
 import { Armor } from './Armor.js';
 import { Item } from './Item.js';
-import { calculateSkillModifier } from './helpers/skills/CombatantSkills.js';
+import { calculateSkillModifier, getSkillModifierBreakdown } from './helpers/skills/CombatantSkills.js';
 import {
   findSpell,
   prepareSpell,
@@ -385,6 +385,10 @@ export class Combatant {
 
   getSkillModifier(skillKey) {
     return calculateSkillModifier(this, skillKey);
+  }
+
+  getSkillModifierBreakdown(skillKey) {
+    return getSkillModifierBreakdown(this, skillKey);
   }
 
   toJSON() {

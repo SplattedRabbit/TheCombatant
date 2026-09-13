@@ -36,7 +36,8 @@ import {
   calculateTotalSkillPoints,
   calculateSpentSkillPoints,
   getMaxSkillTricksLimit,
-  checkSkillTrickPrerequisites
+  checkSkillTrickPrerequisites,
+  getItemModForSkill
 } from './rules/RulesSkills.js';
 
 import {
@@ -116,6 +117,7 @@ export const CombatRules = {
   calculateSpentSkillPoints,
   getMaxSkillTricksLimit,
   checkSkillTrickPrerequisites,
+  getItemModForSkill,
   getEffectiveCasterLevel,
   getMaxSpellLevel,
   calculateMaxSpellSlots,
@@ -214,5 +216,6 @@ export { ShadowbaneInquisitorRules } from './rules/classes/ShadowbaneInquisitorR
 export { BattleTricksterRules } from './rules/classes/BattleTricksterRules.js';
 export { SpellwarpSniperRules } from './rules/classes/SpellwarpSniperRules.js';
 export { EldritchKnightRules } from './rules/classes/EldritchKnightRules.js';
+export { getItemModForSkill } from './rules/RulesSkills.js';
 
 

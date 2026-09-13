@@ -17,11 +17,11 @@ import {
   getSkillPointsForLevel 
 } from './wizard/helpers';
 import { CharacterWizardStepContent } from './wizard/CharacterWizardStepContent';
-import { CharacterWizardNav } from './wizard/CharacterWizardNav.tsx';
-import { applyWizardCharacterToState } from './wizard/wizardSaveHelper.ts';
+import { CharacterWizardNav } from './wizard/CharacterWizardNav';
+import { applyWizardCharacterToState } from './wizard/wizardSaveHelper';
 import { PRESTIGE_PREREQS } from './wizard/constants';
 import { isSkillFeat, isTotemFeat } from './feats/skillFeatsHelper';
-import { isSpellSelectorClass, getSpellSelectionQuota } from './wizard/spells/spellSelectionRules';
+import { resolveSpellLevelInfo } from './wizard/spells/spellSelectionRules';
 import { getClassHitDie, validateStep3Config } from './wizard/wizardValidation';
 
 interface CharacterWizardDialogProps {
@@ -210,12 +210,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         return;
       }
 
-      const isCaster = isSpellSelectorClass(currentConfig?.classType);
-      const classCountAtThisLevel = isCaster
-        ? levelConfigs.slice(0, currentLevelIndex + 1).filter((c) => c.classType === currentConfig.classType).length || 1
-        : 1;
       const intMod = currentDraft?.statMods?.int ?? 0;
-      const quotaInfo = isCaster ? getSpellSelectionQuota(currentConfig.classType, classCountAtThisLevel, intMod) : null;
+      const spellLevelInfo = resolveSpellLevelInfo(currentConfig, levelConfigs, currentLevelIndex, intMod, currentDraft?.draftPC);
       const currentSpells = currentConfig?.spells || [];
 
       if (levelSubView === 'config') {
@@ -237,8 +233,8 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
           return;
         }
 
-        // If caster class, transition to inline spell selection view!
-        if (quotaInfo && quotaInfo.quota > 0) {
+        // If caster class or advancing prestige class, transition to inline spell selection view!
+        if (spellLevelInfo.isCaster && spellLevelInfo.quota > 0) {
           setLevelSubView('spells');
           return;
         }
@@ -250,10 +246,10 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         }
       } else {
         // levelSubView === 'spells'
-        if (quotaInfo && quotaInfo.quota > 0 && currentSpells.length < quotaInfo.quota) {
+        if (spellLevelInfo.isCaster && spellLevelInfo.quota > 0 && currentSpells.length < spellLevelInfo.quota) {
           showCustomAlert(
             "Spell Quota Incomplete",
-            `Please select all ${quotaInfo.quota} spells for Level ${classCountAtThisLevel} (${currentSpells.length} chosen so far).`,
+            `Please select all ${spellLevelInfo.quota} spells for Level ${currentLevelIndex + 1} (${currentSpells.length} chosen so far).`,
             "OK",
             "✨"
           );
@@ -277,9 +273,10 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
         setLevelSubView('config');
       } else if (currentLevelIndex > 0) {
         const prevLevelCfg = levelConfigs[currentLevelIndex - 1];
-        const isPrevCaster = prevLevelCfg && isSpellSelectorClass(prevLevelCfg.classType);
+        const prevIntMod = prevDraft?.statMods?.int ?? 0;
+        const prevSpellInfo = prevLevelCfg ? resolveSpellLevelInfo(prevLevelCfg, levelConfigs, currentLevelIndex - 1, prevIntMod, prevDraft?.draftPC) : null;
         setCurrentLevelIndex(currentLevelIndex - 1);
-        if (isPrevCaster) {
+        if (prevSpellInfo && prevSpellInfo.isCaster && prevSpellInfo.quota > 0) {
           setLevelSubView('spells');
         } else {
           setLevelSubView('config');
@@ -341,17 +338,18 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
     { num: 4, label: 'Review & Complete' }
   ];
 
-  const isCurrentLevelCaster = isSpellSelectorClass(currentConfig?.classType);
-  const currentLevelClassCount = isCurrentLevelCaster
-    ? levelConfigs.slice(0, currentLevelIndex + 1).filter((c) => c.classType === currentConfig?.classType).length || 1
-    : 1;
   const currentIntMod = currentDraft?.statMods?.int ?? 0;
-  const currentQuotaInfo = isCurrentLevelCaster
-    ? getSpellSelectionQuota(currentConfig?.classType, currentLevelClassCount, currentIntMod)
-    : null;
+  const currentSpellInfo = resolveSpellLevelInfo(
+    currentConfig,
+    levelConfigs,
+    currentLevelIndex,
+    currentIntMod,
+    currentDraft?.draftPC
+  );
+  const isCurrentLevelCaster = currentSpellInfo.isCaster && currentSpellInfo.quota > 0;
   const currentSelectedSpellsCount = (currentConfig?.spells || []).length;
   const needsSpellsAtCurrentLevel =
-    currentQuotaInfo && currentQuotaInfo.quota > 0 && currentSelectedSpellsCount < currentQuotaInfo.quota;
+    isCurrentLevelCaster && currentSelectedSpellsCount < currentSpellInfo.quota;
 
   return (
     <div 

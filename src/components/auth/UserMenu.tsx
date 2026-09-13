@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useAuth } from '../../context/AuthContext';
 import { SyncIndicator } from '../shared/SyncIndicator.tsx';
 import { CharacterRosterDialog } from '../player/CharacterRosterDialog.tsx';
@@ -19,12 +20,41 @@ export const UserMenu: React.FC = () => {
   const [isCampaignOpen, setIsCampaignOpen] = useState(false);
   const [isJoinOpen, setIsJoinOpen] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [dropdownPos, setDropdownPos] = useState<{ top: number; right: number }>({ top: 0, right: 0 });
   const menuRef = useRef<HTMLDivElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const updatePosition = () => {
+    if (btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect();
+      setDropdownPos({
+        top: rect.bottom + 5,
+        right: Math.max(8, window.innerWidth - rect.right),
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      updatePosition();
+      window.addEventListener('resize', updatePosition);
+      window.addEventListener('scroll', updatePosition, true);
+      return () => {
+        window.removeEventListener('resize', updatePosition);
+        window.removeEventListener('scroll', updatePosition, true);
+      };
+    }
+  }, [isOpen]);
 
   // Close dropdown on outside click
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (
+        menuRef.current && !menuRef.current.contains(target) &&
+        dropdownRef.current && !dropdownRef.current.contains(target)
+      ) {
         setIsOpen(false);
       }
     };
@@ -90,6 +120,7 @@ export const UserMenu: React.FC = () => {
 
       <div style={{ position: 'relative' }} ref={menuRef}>
         <button
+          ref={btnRef}
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           className="hdr-action-btn"
@@ -118,149 +149,152 @@ export const UserMenu: React.FC = () => {
           <span style={{ fontSize: '8px', opacity: 0.7, flexShrink: 0 }}>▼</span>
         </button>
 
-        {isOpen && (
-          <div
-            style={{
-              position: 'absolute',
-              top: 'calc(100% + 5px)',
-              right: 0,
-              width: '210px',
-              backgroundColor: '#f4e8c1',
-              backgroundImage: 'var(--p)',
-              border: '1.5px solid var(--pb)',
-              borderRadius: '4px',
-              boxShadow: '0 6px 24px rgba(0, 0, 0, 0.35)',
-              padding: '8px 10px',
-              zIndex: 1000,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '6px',
-            }}
-          >
-            {/* User Info Header */}
-            <div style={{ borderBottom: '0.5px solid var(--pb)', paddingBottom: '6px' }}>
-              <div style={{ fontFamily: 'var(--font-title)', fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
-                {displayName}
-              </div>
-              {user?.email && (
-                <div style={{ fontSize: '9.5px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', wordBreak: 'break-all' }}>
-                  {user.email}
+        {isOpen &&
+          createPortal(
+            <div
+              ref={dropdownRef}
+              style={{
+                position: 'fixed',
+                top: `${dropdownPos.top}px`,
+                right: `${dropdownPos.right}px`,
+                width: '215px',
+                backgroundColor: '#f4e8c1',
+                border: '2px solid var(--pb)',
+                borderRadius: '4px',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(200, 169, 110, 0.1)',
+                padding: '8px 10px',
+                zIndex: 99999,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '6px',
+                pointerEvents: 'auto',
+              }}
+            >
+              {/* User Info Header */}
+              <div style={{ borderBottom: '0.5px solid var(--pb)', paddingBottom: '6px' }}>
+                <div style={{ fontFamily: 'var(--font-title)', fontSize: '12px', fontWeight: 'bold', color: 'var(--red)' }}>
+                  {displayName}
                 </div>
-              )}
-              <div style={{ fontSize: '8.5px', color: '#065f46', marginTop: '3px', display: 'flex', alignItems: 'center', gap: '3px' }}>
-                <span>🟢</span>
-                <span>Cloud Connected (Frankfurt)</span>
+                {user?.email && (
+                  <div style={{ fontSize: '9.5px', color: 'var(--inkm)', fontFamily: 'var(--font-body)', wordBreak: 'break-all' }}>
+                    {user.email}
+                  </div>
+                )}
+                <div style={{ fontSize: '8.5px', color: '#065f46', marginTop: '3px', display: 'flex', alignItems: 'center', gap: '3px' }}>
+                  <span>🟢</span>
+                  <span>Cloud Connected (Frankfurt)</span>
+                </div>
               </div>
-            </div>
 
-            {/* Actions */}
-            <button
-              type="button"
-              onClick={() => {
-                setIsOpen(false);
-                setIsRosterOpen(true);
-              }}
-              className="btn btn-p"
-              style={{
-                width: '100%',
-                fontSize: '10.5px',
-                padding: '4px 8px',
-                fontFamily: 'var(--font-title)',
-                background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-                border: '1px solid #8b6914',
-                color: '#ffffff',
-                fontWeight: 'bold',
-                textAlign: 'center',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '4px',
-              }}
-            >
-              <span>📜</span>
-              <span>Character Roster</span>
-            </button>
+              {/* Actions */}
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsRosterOpen(true);
+                }}
+                className="btn btn-p"
+                style={{
+                  width: '100%',
+                  fontSize: '10.5px',
+                  padding: '4px 8px',
+                  fontFamily: 'var(--font-title)',
+                  background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                  border: '1px solid #8b6914',
+                  color: '#ffffff',
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '4px',
+                }}
+              >
+                <span>📜</span>
+                <span>Character Roster</span>
+              </button>
 
-            <button
-              type="button"
-              onClick={() => {
-                setIsOpen(false);
-                setIsCampaignOpen(true);
-              }}
-              className="btn"
-              style={{
-                width: '100%',
-                fontSize: '10.5px',
-                padding: '4px 8px',
-                fontFamily: 'var(--font-title)',
-                background: 'rgba(200, 169, 110, 0.15)',
-                border: '1px solid var(--pb)',
-                color: 'var(--ink)',
-                fontWeight: 'bold',
-                textAlign: 'center',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '4px',
-              }}
-            >
-              <span>🎲</span>
-              <span>Campaigns (DM)</span>
-            </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsCampaignOpen(true);
+                }}
+                className="btn"
+                style={{
+                  width: '100%',
+                  fontSize: '10.5px',
+                  padding: '4px 8px',
+                  fontFamily: 'var(--font-title)',
+                  background: 'rgba(200, 169, 110, 0.15)',
+                  border: '1px solid var(--pb)',
+                  color: 'var(--ink)',
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '4px',
+                }}
+              >
+                <span>🎲</span>
+                <span>Campaigns (DM)</span>
+              </button>
 
-            <button
-              type="button"
-              onClick={() => {
-                setIsOpen(false);
-                setIsJoinOpen(true);
-              }}
-              className="btn"
-              style={{
-                width: '100%',
-                fontSize: '10.5px',
-                padding: '4px 8px',
-                fontFamily: 'var(--font-title)',
-                background: 'rgba(200, 169, 110, 0.1)',
-                border: '1px solid var(--pb)',
-                color: 'var(--ink)',
-                textAlign: 'center',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '4px',
-              }}
-            >
-              <span>🔗</span>
-              <span>Join Campaign</span>
-            </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsJoinOpen(true);
+                }}
+                className="btn"
+                style={{
+                  width: '100%',
+                  fontSize: '10.5px',
+                  padding: '4px 8px',
+                  fontFamily: 'var(--font-title)',
+                  background: 'rgba(200, 169, 110, 0.1)',
+                  border: '1px solid var(--pb)',
+                  color: 'var(--ink)',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '4px',
+                }}
+              >
+                <span>🔗</span>
+                <span>Join Campaign</span>
+              </button>
 
-            <button
-              type="button"
-              onClick={() => {
-                setIsOpen(false);
-                signOut();
-              }}
-              className="btn"
-              style={{
-                width: '100%',
-                fontSize: '10px',
-                padding: '4px 8px',
-                fontFamily: 'var(--font-title)',
-                background: 'rgba(139, 26, 26, 0.08)',
-                borderColor: 'rgba(139, 26, 26, 0.4)',
-                color: 'var(--red)',
-                fontWeight: 'bold',
-                textAlign: 'center',
-                cursor: 'pointer',
-              }}
-            >
-              🚪 Sign Out
-            </button>
-          </div>
-        )}
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  signOut();
+                }}
+                className="btn"
+                style={{
+                  width: '100%',
+                  fontSize: '10px',
+                  padding: '4px 8px',
+                  fontFamily: 'var(--font-title)',
+                  background: 'rgba(139, 26, 26, 0.08)',
+                  borderColor: 'rgba(139, 26, 26, 0.4)',
+                  color: 'var(--red)',
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                }}
+              >
+                🚪 Sign Out
+              </button>
+            </div>,
+            document.body
+          )}
       </div>
       <CharacterRosterDialog isOpen={isRosterOpen} onClose={() => setIsRosterOpen(false)} />
       <CampaignManagerDialog isOpen={isCampaignOpen} onClose={() => setIsCampaignOpen(false)} />

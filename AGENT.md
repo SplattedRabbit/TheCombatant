@@ -139,6 +139,19 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 
 ---
 
+## 6.1 Explizite Regel- & Homebrew-Entscheidungen (NIEMALS RÜCKGÄNGIG MACHEN)
+
+- **Zusammenlegung von Sneak Attack & Sudden Strike (Expliziter Nutzer-Homebrew):**
+  - **Kontext:** Gemäß D&D 3.5e RAW (Complete Adventurer S. 8) addieren sich die Schadenswürfel von *Sneak Attack* und *Sudden Strike*, wenn die Bedingungen beider Fähigkeiten erfüllt sind (z. B. Gegner verliert Dex-Bonus zur RK), während reines Flankieren nur für Sneak Attack gilt.
+  - **Entscheidung:** Im Kampf-Interface (`StrikeAbilitySlot.tsx`, `StrikeCardViews.tsx`, `DamageChoiceDialog.tsx`, `DamageFormulaBuilder.js`) muss der Spieler **NICHT** zwischen Sneak Attack oder Sudden Strike als zwei getrennte Angriffe im Dropdown wählen. Stattdessen werden beide Fähigkeiten zu einer **einzigen Angriffsoption** zusammengelegt:
+    - Titel bei beidem vorhanden: `Sneak & Sudden Strike` (`+Xd6 (Combined Precision)`).
+    - Titel bei nur Ninja: `Sudden Strike`.
+    - Titel bei nur Schurke / PrC: `Sneak Attack`.
+  - **Regel-Annahme:** Für die Berechnung wird davon ausgegangen, dass die Konditionen bei Durchführung erfüllt sind. Alle Würfel (`pc.getSneakAttackDiceCount()`) werden voll aufeinandergerechnet und zusammen ausgewürfelt.
+  - **WICHTIG FÜR AGENTS:** Diese Zusammenlegung ist eine feste Benutzer-Entscheidung und darf **niemals** auf zwei getrennte, sich gegenseitig ausschließende Strike-Karten im Tactical Slot zurückgebaut werden!
+
+---
+
 ## 7. Offene Bugs & Roadmap
 
 - Ältere Refactoring-Masterpläne und Code-Audits wurden am 2026-09-02 bewusst archiviert und entfernt (Single Source of Truth statt Kontext-Altlasten).

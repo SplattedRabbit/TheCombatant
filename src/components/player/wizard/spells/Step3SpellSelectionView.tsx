@@ -4,7 +4,7 @@
  */
 
 import React, { useMemo } from 'react';
-import { getSpellSelectionQuota } from './spellSelectionRules';
+import { resolveSpellLevelInfo } from './spellSelectionRules';
 import { PCSpellCompendium } from '../../spells/PCSpellCompendium';
 import { findSpell } from '../../spells/PCSpellbookTab';
 
@@ -30,8 +30,8 @@ export const Step3SpellSelectionView: React.FC<Step3SpellSelectionViewProps> = (
 
   const intMod = currentDraft?.statMods?.int ?? 0;
   const quotaInfo = useMemo(
-    () => getSpellSelectionQuota(classType, classCountAtThisLevel, intMod),
-    [classType, classCountAtThisLevel, intMod]
+    () => resolveSpellLevelInfo(currentConfig, allLevelConfigs, currentLevelIndex, intMod, currentDraft?.draftPC),
+    [currentConfig, allLevelConfigs, currentLevelIndex, intMod, currentDraft]
   );
 
   // Selected spells for this specific level
@@ -109,7 +109,9 @@ export const Step3SpellSelectionView: React.FC<Step3SpellSelectionViewProps> = (
           >
             <span>✨</span>
             <span>
-              {classNameFormatted} Level {classCountAtThisLevel} Spell Selection (Character Lv. {currentLevelIndex + 1})
+              {quotaInfo.isPrestige
+                ? `${classNameFormatted} Level ${classCountAtThisLevel} Spell Selection (+1 ${(quotaInfo.targetCasterClass || '').charAt(0).toUpperCase() + (quotaInfo.targetCasterClass || '').slice(1)} CL ${quotaInfo.effectiveCasterLevel})`
+                : `${classNameFormatted} Level ${classCountAtThisLevel} Spell Selection (Character Lv. ${currentLevelIndex + 1})`}
             </span>
           </h4>
           <div
