@@ -4,7 +4,7 @@
  */
 
 import type { UnifiedFeature } from './types.ts';
-import { getACF } from '@core/data/acf-data.js';
+import { getACF } from '../../../../../js/data/acf-data.js';
 import { formatClassName } from './formatters.ts';
 
 export function getGenericActiveACFFeatures(pc: any): UnifiedFeature[] {

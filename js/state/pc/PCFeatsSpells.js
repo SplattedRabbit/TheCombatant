@@ -141,7 +141,7 @@ export function addPCFeat(featId, option = '') {
   // 1. Check duplicate feat (Bug #18)
   const featDef = CombatFeats.REGISTRY[featId];
   if (featDef) {
-    const hasFeat = Array.isArray(pc.feats) && pc.feats.some(f => f.id === featId);
+    const hasFeat = (Array.isArray(pc.feats) && pc.feats.some(f => f.id === featId)) || (typeof pc.hasFeat === 'function' && pc.hasFeat(featId));
     if (hasFeat) {
       const isStackable = featDef.hasOption || (featDef.specialRaw && featDef.specialRaw.toLowerCase().includes('multiple times'));
       if (!isStackable) {
