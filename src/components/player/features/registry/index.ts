@@ -14,6 +14,7 @@ import { getCSPrestigeFeatures } from './prestige/csPrestige.ts';
 import { getDMGPrestigeFeatures } from './prestige/dmgPrestige.ts';
 import { getCAPrestigeFeatures } from './prestige/caPrestige.ts';
 import { getRacialTraits } from './races/racialTraits.ts';
+import { getGenericActiveACFFeatures } from './acfFeatures.ts';
 import { PRESTIGE_CLASSES_REGISTRY } from '../../../../../js/data/prestigeClasses-data.js';
 import { getPrestigeClassFeatures } from '../../../../../js/rules/prestigeClassEngine.js';
 
@@ -86,7 +87,15 @@ export function getAllUnifiedFeatures(pc: any): UnifiedFeature[] {
   // 4. Racial Traits
   features.push(...getRacialTraits(pc));
 
-  // 5. Prioritize Specialist School / Arcane Specialization & Dragon Totem to ALWAYS be at the very top
+  // 5. Active Alternative Class Features (ACFs) not already inlined
+  const genericACFs = getGenericActiveACFFeatures(pc);
+  genericACFs.forEach((acfFeat) => {
+    if (!features.some((f) => f.id === acfFeat.id)) {
+      features.push(acfFeat);
+    }
+  });
+
+  // 6. Prioritize Specialist School / Arcane Specialization & Dragon Totem to ALWAYS be at the very top
   const totemIndex = features.findIndex((f) => f.id === 'dragon_shaman_totem_dragon');
   if (totemIndex > 0) {
     const [totemFeat] = features.splice(totemIndex, 1);

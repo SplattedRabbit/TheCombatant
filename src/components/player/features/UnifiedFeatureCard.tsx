@@ -56,6 +56,15 @@ export const UnifiedFeatureCard: React.FC<UnifiedFeatureCardProps> = ({
         icon: '⚔️'
       };
     }
+    const isACF = feature.typeLabel === 'Alternative Class Feature' || feature.typeLabel === 'Alternative Feature' || feature.name.includes('(ACF)');
+    if (isACF) {
+      return {
+        bg: 'rgba(106, 50, 159, 0.1)',
+        border: 'rgba(106, 50, 159, 0.45)',
+        text: '#5c358c',
+        icon: '🎭'
+      };
+    }
     switch (cat) {
       case 'combat': return { bg: 'rgba(139, 26, 26, 0.1)', border: '#8b1a1a', text: '#8b1a1a', icon: '⚔️' };
       case 'daily': return { bg: 'rgba(197, 137, 24, 0.12)', border: '#b8860b', text: '#7d5f1a', icon: '⏳' };

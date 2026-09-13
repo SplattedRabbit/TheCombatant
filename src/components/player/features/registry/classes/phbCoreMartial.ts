@@ -375,10 +375,36 @@ At 6th level, he gains Improved Combat Style (Manyshot or Improved Two-Weapon Fi
       });
     }
 
-    // 5. Animal Companion (4th level)
+    // 5. Animal Companion (4th level) or ACF (Distracting Attack / Spiritual Guide)
     if (rLvl >= 4) {
-      const isCompanionReplaced = activeACFs.includes('ranger_distracting_attack') || activeACFs.includes('ranger_spiritual_guide');
-      if (!isCompanionReplaced) {
+      if (activeACFs.includes('ranger_distracting_attack')) {
+        features.push({
+          id: 'ranger_distracting_attack',
+          name: 'Distracting Attack (ACF)',
+          source: `Ranger Lv.${rLvl} [PHB2 p.55]`,
+          category: 'combat',
+          typeLabel: 'Alternative Class Feature',
+          summary: 'Weapon hits mark enemies as flanked for allies until your next turn or ally attack. (Replaces Animal Companion).',
+          rawRules: `**Alternative Class Feature: Distracting Attack**\n**Source:** Player's Handbook II, p. 55\n**Replaces:** Animal Companion\n\nWhenever you hit an enemy with a weapon attack (whether melee or ranged), you can choose to make that enemy distracted until the beginning of your next turn or until it is attacked by an ally (whichever comes first). While the target is distracted, it is considered flanked by you for the purpose of any attacks made against it by your allies, even if you are not threatening the target.`,
+          actionType: 'Free Action',
+          duration: '1 round or until attacked',
+          stackInfo: 'Replaces Animal Companion',
+        });
+      } else if (activeACFs.includes('ranger_spiritual_guide')) {
+        const bonus = Math.max(1, Math.floor(rLvl / 4));
+        features.push({
+          id: 'ranger_spiritual_guide',
+          name: 'Spiritual Guide (ACF)',
+          source: `Ranger Lv.${rLvl} [CS p.35]`,
+          category: 'passive',
+          typeLabel: 'Alternative Class Feature',
+          summary: `+${bonus} divine bonus on Handle Animal, Ride, and Survival. Commune with Nature 1/day. (Replaces Animal Companion).`,
+          rawRules: `**Alternative Class Feature: Spiritual Guide**\n**Source:** Complete Scoundrel, p. 35\n**Replaces:** Animal Companion\n\nYou gain a spiritual guide entity that accompanies you silently. You gain a divine bonus equal to 1/4 your ranger level (minimum +1) on Handle Animal, Ride, and Survival checks (+${bonus}). Once per day, you can ask your spiritual guide to commune with nature, functioning as the spell Commune with Nature with a caster level equal to your ranger level.`,
+          actionType: 'Passive',
+          dailyAbilityKey: 'ranger_spiritual_guide',
+          stackInfo: 'Replaces Animal Companion',
+        });
+      } else {
         const effDruidLvl = Math.floor(rLvl / 2);
         features.push({
           id: 'ranger_animal_companion',
@@ -429,18 +455,33 @@ At 8th level, a ranger can move at his normal speed while following tracks witho
       });
     }
 
-    // 8. Evasion (9th level)
+    // 8. Evasion (9th level) or ACF (Spell Reflection)
     if (rLvl >= 9) {
-      features.push({
-        id: 'ranger_evasion',
-        name: 'Evasion',
-        source: `Ranger Lv.${rLvl}`,
-        category: 'passive',
-        typeLabel: 'Agility Defense',
-        summary: 'Take no damage on a successful Reflex save against attacks that normally deal half damage (light or no armor).',
-        rawRules: `At 9th level, a ranger gains evasion. If exposed to any effect that normally allows him to attempt a Reflex saving throw for half damage, he takes no damage with a successful saving throw. This ability can only be used if the ranger is wearing light armor or no armor.`,
-        actionType: 'Passive',
-      });
+      if (activeACFs.includes('ranger_spell_reflection')) {
+        features.push({
+          id: 'ranger_spell_reflection',
+          name: 'Spell Reflection (ACF)',
+          source: `Ranger Lv.${rLvl} [CS p.35]`,
+          category: 'combat',
+          typeLabel: 'Alternative Class Feature',
+          summary: 'Redirect missed rays or ranged touch attacks back at the caster as an immediate action on a Reflex save (DC 10 + spell level). (Replaces Evasion).',
+          rawRules: `**Alternative Class Feature: Spell Reflection**\n**Source:** Complete Scoundrel, p. 35\n**Replaces:** Evasion\n\nYou do not gain evasion. Instead, when an enemy misses you with a ray or ranged touch attack, you can redirect the spell or effect back at the caster as an immediate action. You must succeed on a Reflex saving throw (DC 10 + the spell level, or 10 + 1/2 creature's HD + Cha mod for non-spell attacks). On a success, the spell or effect is redirected to attack the original user.`,
+          actionType: 'Immediate Action',
+          saveThrow: 'Reflex DC 10 + spell level',
+          stackInfo: 'Replaces Evasion',
+        });
+      } else {
+        features.push({
+          id: 'ranger_evasion',
+          name: 'Evasion',
+          source: `Ranger Lv.${rLvl}`,
+          category: 'passive',
+          typeLabel: 'Agility Defense',
+          summary: 'Take no damage on a successful Reflex save against attacks that normally deal half damage (light or no armor).',
+          rawRules: `At 9th level, a ranger gains evasion. If exposed to any effect that normally allows him to attempt a Reflex saving throw for half damage, he takes no damage with a successful saving throw. This ability can only be used if the ranger is wearing light armor or no armor.`,
+          actionType: 'Passive',
+        });
+      }
     }
 
     // 9. Camouflage (13th) & Hide in Plain Sight (17th)
