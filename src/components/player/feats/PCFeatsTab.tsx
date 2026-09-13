@@ -136,7 +136,9 @@ export const PCFeatsTab: React.FC = () => {
     return { generalFilled, fighterFilled, wizardFilled, monkFilled, dragonShamanFilled, rangerFilled };
   }, [combinedFeats, monkMax, wizardMax, fighterMax, dragonShamanMax, rangerMax, rangerBonusIds, hasRanger]);
 
-  const isLimitReached = useMemo(() => combinedFeats.length >= totalMax, [combinedFeats.length, totalMax]);
+  const selectableMax = useMemo(() => generalMax + fighterMax + wizardMax + monkMax + dragonShamanMax, [generalMax, fighterMax, wizardMax, monkMax, dragonShamanMax]);
+  const selectableFilled = useMemo(() => generalFilled + fighterFilled + wizardFilled + monkFilled + dragonShamanFilled, [generalFilled, fighterFilled, wizardFilled, monkFilled, dragonShamanFilled]);
+  const isLimitReached = useMemo(() => selectableFilled >= selectableMax, [selectableFilled, selectableMax]);
 
   const handleFeatRowClick = (feat: any, isLearned: boolean, option?: string, e?: React.MouseEvent) => {
     showFeatScrollDialog(feat, pc, isLearned, option || '', e?.nativeEvent);
@@ -169,8 +171,9 @@ export const PCFeatsTab: React.FC = () => {
         </span>
       </div>
 
-      <div style={{ display: 'flex', gap: '10px', height: '100%', minHeight: '380px', width: '100%', minWidth: 0, boxSizing: 'border-box', overflowX: 'hidden' }}>
-        {/* Left Column: Active Feats (40%) */}
+      {/* 2-Column Responsive Layout */}
+      <div className="feats-columns-container" style={{ display: 'flex', gap: '10px', flex: 1, minHeight: 0, minWidth: 0, boxSizing: 'border-box', overflowX: 'hidden' }}>
+        {/* Left Column: Learned Feats (40%) */}
         <LearnedFeatsList
           pc={pc}
           combinedFeats={combinedFeats}
@@ -200,7 +203,10 @@ export const PCFeatsTab: React.FC = () => {
         <CompendiumFeatsList
           pc={pc}
           activeFeats={activeFeats}
-          totalMax={totalMax}
+          combinedFeats={combinedFeats}
+          totalMax={selectableMax}
+          selectableFilled={selectableFilled}
+          selectableMax={selectableMax}
           isLimitReached={isLimitReached}
           onFeatClick={handleFeatRowClick}
         />

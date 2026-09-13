@@ -13,7 +13,10 @@ import type { DragonTotemDef } from '@core/rules/data/dragonTotems.js';
 interface CompendiumFeatsListProps {
   pc: any;
   activeFeats: any[];
+  combinedFeats?: any[];
   totalMax: number;
+  selectableFilled?: number;
+  selectableMax?: number;
   isLimitReached: boolean;
   onFeatClick: (feat: any, isLearned: boolean, option?: string, e?: React.MouseEvent) => void;
 }
@@ -21,7 +24,10 @@ interface CompendiumFeatsListProps {
 export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
   pc,
   activeFeats,
+  combinedFeats,
   totalMax,
+  selectableFilled,
+  selectableMax,
   isLimitReached,
   onFeatClick,
 }) => {
@@ -235,7 +241,7 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
         >
           {isLimitReached && (
             <div style={{ background: 'rgba(139, 26, 26, 0.08)', border: '0.5px solid var(--red)', borderRadius: '2px', padding: '4px', marginBottom: '4px', fontFamily: 'var(--font-body)', fontSize: '8px', color: 'var(--red)', textAlign: 'center', fontWeight: 'bold' }}>
-              ⚠️ Feat limit reached ({activeFeats.length} / {totalMax}). You must first remove a feat to choose a new one.
+              ⚠️ Feat limit reached ({selectableFilled !== undefined ? selectableFilled : activeFeats.length} / {selectableMax !== undefined ? selectableMax : totalMax}). You must first remove a feat to choose a new one.
             </div>
           )}
           {compendiumFiltered.length === 0 ? (
@@ -248,10 +254,11 @@ export const CompendiumFeatsList: React.FC<CompendiumFeatsListProps> = ({
               const depth = item.depth;
               
               const prereqsResult = checkPrerequisites(feat, pc);
-              const isAlreadyLearned = activeFeats.some((f: any) => f.id === feat.id);
+              const allKnownFeats = combinedFeats || activeFeats;
+              const isAlreadyLearned = allKnownFeats.some((f: any) => f.id === feat.id);
               const isEligible = prereqsResult.met && !isAlreadyLearned && !isLimitReached;
 
-              const matchingInstance = activeFeats.find((f: any) => f.id === feat.id);
+              const matchingInstance = allKnownFeats.find((f: any) => f.id === feat.id);
               const option = matchingInstance ? matchingInstance.option : '';
 
               const childCount = Object.keys(CombatFeats.REGISTRY).filter(childId => CombatFeats.REGISTRY[childId].parent === feat.id).length;
