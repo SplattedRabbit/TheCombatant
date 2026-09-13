@@ -358,31 +358,47 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
             const isPCDomain = isDomainSpellForPC(s.id, pc);
 
             return (
-              <div key={s.id} className="compendium-spell-item" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '3px 5px', fontSize: '9px' }}>
-                <div onClick={() => handleShowDetails(s)} style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer', flex: 1 }}>
-                    <span style={{ fontWeight: 600, color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '10px' }}>
-                      📜 {s.name || s.nameEn}
+              <div key={s.id} className="compendium-spell-item" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(200, 169, 110, 0.08)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '2px 5px', fontSize: '9px', minHeight: '22px' }}>
+                <div
+                  onClick={() => handleShowDetails(s)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    flexWrap: 'wrap',
+                    cursor: 'pointer',
+                    flex: 1,
+                    minWidth: 0,
+                    marginRight: '6px',
+                    lineHeight: 1.25,
+                  }}
+                >
+                  <span style={{ fontWeight: 600, color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', whiteSpace: 'nowrap' }}>
+                    📜 {s.name || s.nameEn}
+                  </span>
+                  <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic', whiteSpace: 'nowrap' }}>
+                    [Level {s.level} - {s.school}]
+                  </span>
+                  {domains.length > 0 && (
+                    <span
+                      style={{
+                        fontSize: '7px',
+                        padding: '0.5px 3px',
+                        borderRadius: '2px',
+                        background: isPCDomain ? 'rgba(46, 125, 50, 0.12)' : 'rgba(139, 26, 26, 0.08)',
+                        border: `0.5px solid ${isPCDomain ? 'rgba(46, 125, 50, 0.35)' : 'rgba(139, 26, 26, 0.2)'}`,
+                        color: isPCDomain ? '#1b5e20' : '#8b1a1a',
+                        fontWeight: isPCDomain ? 'bold' : 'normal',
+                        whiteSpace: 'nowrap',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                      }}
+                      title={domains.map(d => `${d.domainName} ${d.level}`).join(', ')}
+                    >
+                      {isPCDomain ? '✓ ' : ''}Domain: {domains.map(d => d.domainName).join(', ')}
                     </span>
-                    <span style={{ fontSize: '8.5px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>
-                      Level {s.level} · {s.school}
-                    </span>
-                    {domains.length > 0 && (
-                      <span
-                        style={{
-                          fontSize: '7px',
-                          padding: '0.5px 3px',
-                          borderRadius: '2px',
-                          background: isPCDomain ? 'rgba(46, 125, 50, 0.12)' : 'rgba(139, 26, 26, 0.08)',
-                          border: `0.5px solid ${isPCDomain ? 'rgba(46, 125, 50, 0.35)' : 'rgba(139, 26, 26, 0.2)'}`,
-                          color: isPCDomain ? '#1b5e20' : '#8b1a1a',
-                          fontWeight: isPCDomain ? 'bold' : 'normal'
-                        }}
-                        title={domains.map(d => `${d.domainName} ${d.level}`).join(', ')}
-                      >
-                        {isPCDomain ? '✓ ' : ''}Domain: {domains.map(d => d.domainName).join(', ')}
-                      </span>
-                    )}
-                  </div>
+                  )}
+                </div>
                 <div style={{ display: 'flex', gap: '2.5px', alignItems: 'center' }}>
                   {isLearned ? (
                     <span style={{ fontSize: '8px', color: '#1a5c1a', fontWeight: 'bold', padding: '1px 4px' }}>Im Buch ✓</span>

@@ -35,14 +35,21 @@ export const PreparedSlotRow: React.FC<PreparedSlotRowProps> = ({
     let prefix = '📜 ';
     let badge = null;
     let castBtnStyle: React.CSSProperties = {
-      fontSize: '8px',
-      padding: '1px 3px',
+      fontSize: '7px',
+      padding: '0 4px',
+      height: '14px',
       cursor: 'pointer',
       borderRadius: '2px',
       background: 'rgba(139,26,26,0.1)',
-      borderColor: 'var(--red)',
+      border: '0.5px solid var(--red)',
       color: 'var(--red)',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      whiteSpace: 'nowrap',
+      flexShrink: 0,
+      lineHeight: 1,
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     };
 
     if (slotType === 'specialist') {
@@ -50,14 +57,10 @@ export const PreparedSlotRow: React.FC<PreparedSlotRowProps> = ({
       border = '0.5px solid #c8a96e';
       prefix = '⭐ 📜 ';
       castBtnStyle = {
-        fontSize: '8px',
-        padding: '1px 3px',
-        cursor: 'pointer',
-        borderRadius: '2px',
+        ...castBtnStyle,
         background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-        borderColor: 'var(--red)',
+        border: '0.5px solid var(--red)',
         color: 'white',
-        fontWeight: 'bold'
       };
     } else if (slotType === 'domain') {
       bg = prep.isUsed ? 'rgba(0,0,0,0.04)' : 'rgba(139, 26, 26, 0.05)';
@@ -65,14 +68,10 @@ export const PreparedSlotRow: React.FC<PreparedSlotRowProps> = ({
       prefix = '☀️ 📜 ';
       badge = <span style={{ fontSize: '7.5px', color: '#8b1a1a', fontWeight: 'bold' }}>[D] </span>;
       castBtnStyle = {
-        fontSize: '8px',
-        padding: '1px 3px',
-        cursor: 'pointer',
-        borderRadius: '2px',
+        ...castBtnStyle,
         background: 'linear-gradient(135deg, #8b1a1a, #5a0f0f)',
-        borderColor: 'var(--red)',
+        border: '0.5px solid var(--red)',
         color: 'white',
-        fontWeight: 'bold'
       };
     } else if (slotType === 'extra') {
       border = '0.5px solid var(--red)';
@@ -80,14 +79,14 @@ export const PreparedSlotRow: React.FC<PreparedSlotRowProps> = ({
     }
 
     return (
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: bg, border, borderRadius: '2px', padding: '2px 4px', fontSize: '9px', opacity: prep.isUsed ? 0.65 : 1 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: bg, border, borderRadius: '2px', padding: '1px 4px', minHeight: '19px', boxSizing: 'border-box', fontSize: '9px', opacity: prep.isUsed ? 0.65 : 1 }}>
         <span
           onClick={() => showSpellDetails(prep.spell, prep.spellKey, pc)}
           style={{ fontWeight: 600, cursor: 'pointer', color: 'var(--red)', fontFamily: 'var(--font-body)', fontSize: '9.5px', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '4px' }}
         >
           {prefix}{prep.spell.name || prep.spell.nameEn || prep.spell.nameDe} {badge}{prep.metamagic?.length > 0 && <span style={{ fontSize: '8px', color: 'var(--red)', fontWeight: 'bold' }}>[M]</span>}
         </span>
-        <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
+        <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0, whiteSpace: 'nowrap' }}>
           {prep.isUsed ? (
             <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic', padding: '1px 3px' }}>Expended</span>
           ) : (
@@ -102,7 +101,7 @@ export const PreparedSlotRow: React.FC<PreparedSlotRowProps> = ({
           <button
             onClick={() => onUnprepare(prep.id)}
             className="btn"
-            style={{ fontSize: '8px', padding: '1px 3px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer' }}
+            style={{ fontSize: '7.5px', padding: '0 2px', height: '14px', borderColor: 'transparent', color: 'var(--inkl)', cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap', lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
             title="Clear slot"
           >
             ✕
@@ -115,12 +114,12 @@ export const PreparedSlotRow: React.FC<PreparedSlotRowProps> = ({
   // Empty slot rendering
   if (slotType === 'specialist') {
     return (
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(200, 169, 110, 0.03)', border: '0.5px dashed #c8a96e', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', color: '#9a7a2e', fontStyle: 'italic' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(200, 169, 110, 0.03)', border: '0.5px dashed #c8a96e', borderRadius: '2px', padding: '1px 4px', minHeight: '19px', boxSizing: 'border-box', fontSize: '9px', color: '#9a7a2e', fontStyle: 'italic' }}>
         <span>⭐ Specialist Slot ({specSchoolName})</span>
         <button
           onClick={onPrepareClick}
           className="btn"
-          style={{ fontSize: '7px', padding: '0.5px 4px', border: '0.5px solid #c8a96e', background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)', color: 'white', cursor: 'pointer' }}
+          style={{ fontSize: '7px', padding: '0 4px', height: '14px', border: '0.5px solid #c8a96e', background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)', color: 'white', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
         >
           ➕ Prepare
         </button>
@@ -130,12 +129,12 @@ export const PreparedSlotRow: React.FC<PreparedSlotRowProps> = ({
 
   if (slotType === 'domain') {
     return (
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(139, 26, 26, 0.03)', border: '0.5px dashed #8b1a1a', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', color: '#8b1a1a', fontStyle: 'italic' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(139, 26, 26, 0.03)', border: '0.5px dashed #8b1a1a', borderRadius: '2px', padding: '1px 4px', minHeight: '19px', boxSizing: 'border-box', fontSize: '9px', color: '#8b1a1a', fontStyle: 'italic' }}>
         <span>☀️ Domain Slot (1 Slot)</span>
         <button
           onClick={onPrepareClick}
           className="btn"
-          style={{ fontSize: '7px', padding: '0.5px 4px', border: '0.5px solid #8b1a1a', background: 'linear-gradient(135deg, #8b1a1a, #5a0f0f)', color: 'white', cursor: 'pointer' }}
+          style={{ fontSize: '7px', padding: '0 4px', height: '14px', border: '0.5px solid #8b1a1a', background: 'linear-gradient(135deg, #8b1a1a, #5a0f0f)', color: 'white', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
         >
           ➕ Prepare
         </button>
@@ -144,12 +143,12 @@ export const PreparedSlotRow: React.FC<PreparedSlotRowProps> = ({
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px', padding: '2px 4px', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px', padding: '1px 4px', minHeight: '19px', boxSizing: 'border-box', fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic' }}>
       <span>Empty Slot</span>
       <button
         onClick={onPrepareClick}
         className="btn"
-        style={{ fontSize: '7px', padding: '0.5px 4px', borderColor: 'var(--pb)', background: 'transparent', color: 'var(--ink)', cursor: 'pointer' }}
+        style={{ fontSize: '7px', padding: '0 4px', height: '14px', border: '0.5px solid var(--pb)', background: 'transparent', color: 'var(--ink)', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
       >
         ➕ Prepare
       </button>

@@ -40,10 +40,12 @@ export const GrimoireSpellRow: React.FC<GrimoireSpellRowProps> = ({
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: '22px 1fr minmax(70px, 95px) minmax(34px, 46px) 56px',
+        gridTemplateColumns: '22px 1fr minmax(65px, 90px) minmax(32px, 44px) minmax(60px, max-content)',
         alignItems: 'center',
         gap: '3px',
-        padding: '2px 4px',
+        padding: '1px 4px',
+        minHeight: '19px',
+        boxSizing: 'border-box',
         background: isSpec
           ? 'rgba(139, 26, 26, 0.04)'
           : idx % 2 === 0
@@ -142,7 +144,16 @@ export const GrimoireSpellRow: React.FC<GrimoireSpellRowProps> = ({
       </div>
 
       {/* Col 5: Actions: Cast & Unprepare */}
-      <div style={{ display: 'flex', gap: '3px', justifyContent: 'flex-end', alignItems: 'center' }}>
+      <div
+        style={{
+          display: 'flex',
+          gap: '3px',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          flexShrink: 0,
+          whiteSpace: 'nowrap',
+        }}
+      >
         <button
           type="button"
           onClick={() => {
@@ -155,20 +166,27 @@ export const GrimoireSpellRow: React.FC<GrimoireSpellRowProps> = ({
           disabled={remainingSlots === 0 && !hasPrepared}
           className="btn"
           style={{
-            fontSize: '7.5px',
-            padding: '1px 5px',
-            height: '17px',
+            fontSize: '7px',
+            padding: '0 4px',
+            height: '14px',
             lineHeight: 1,
             fontWeight: 'bold',
             fontFamily: 'var(--font-title)',
             borderRadius: '2px',
             background: 'linear-gradient(180deg, #992222 0%, #7a1515 100%)',
-            borderColor: '#601010',
+            border: '0.5px solid #601010',
             color: '#ffffff',
             cursor: 'pointer',
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '2px',
           }}
         >
-          ⚡ Cast
+          <span style={{ fontSize: '6.5px', lineHeight: 1 }}>⚡</span>
+          <span>Cast</span>
         </button>
 
         {hasPrepared && (
@@ -180,8 +198,14 @@ export const GrimoireSpellRow: React.FC<GrimoireSpellRowProps> = ({
               background: 'transparent',
               color: 'var(--inkl)',
               cursor: 'pointer',
-              fontSize: '8px',
+              fontSize: '7.5px',
               padding: '0 2px',
+              height: '14px',
+              lineHeight: 1,
+              flexShrink: 0,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             title="Unprepare spell (free slot)"
           >
