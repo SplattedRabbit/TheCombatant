@@ -57,6 +57,7 @@ graph TD
 - **Combat & Attack Engines (`AttackEngine.js`):** Validates iterative attack penalties, Two-Weapon Fighting offsets, Power Attack damage multipliers, and weapon critical ranges.
 - **Prestige Classes Engine (`prestigeClassEngine.js`):** Tests progression milestones, prerequisite validation, and automated feature grants across all 6 core prestige classes.
 - **Wild Shape & Natural Weapons:** Validates physical stat overrides, size modifiers, Constitution-dependent HP recalculation, and primary/secondary natural attack matrices.
+- **Spellbook Budget & Spells Known Invariants (`wizard_budget_and_assassin.test.js`):** Enforces D&D 3.5e RAW organic leveling spell caps for wizards ($\text{Cap}_G = (W - (2 \times G - 1) + 1) \times 2$), prestige class effective caster level scaling (e.g. Spellwarp Sniper), hard blocking upon budget exhaustion, and strict Spells Known limits for spontaneous casters (including Assassin).
 
 ### 3.2 Storage & Network Resilience (`Tests/storage_*.test.js`)
 - **Local-First Caching:** Verifies instantaneous local persistence before network synchronization.

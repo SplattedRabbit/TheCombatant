@@ -6,7 +6,14 @@ Dieses Dokument dient als zentrales Backlog und Tracking-Dokument für geplante 
 
 ## ✅ Zuletzt Abgeschlossen (Recent Releases)
 
-### 🪄 1. Inline Zauberauswahl im Charakter-Wizard & Level-Up-Quoten-Engine
+### 📖 1. Wizard RAW Per-Level Zauberbuch-Limits & Assassin Spells Known (v6.9.1)
+- **Status:** `Abgeschlossen & Gemerged (v6.9.1)`
+- **Umfang:**
+  - **Wizard Per-Level Caps (Option C):** Generische RAW-Formel $\text{Cap}_G = (W - (2 \times G - 1) + 1) \times 2$ für Zaubergrade $G > 1$ basierend auf organischen Level-Ups; automatische Einberechnung von Prestigeklassen (wie Spellwarp Sniper); hartes Deaktivieren des `+ Buch`-Buttons im Compendium bei Erreichen des Stufen- oder Gesamtbudgets; visuelle Warnungen (`⚠️ Über Limit`) und rote Zeilenhervorhebungen für Bestandscharaktere mit Überschreitungen.
+  - **Assassin Spells Known Table:** Vollständige `ASSASSIN_KNOWN_TABLE` gemäß DMG S. 181 und Durchsetzung in `checkSpellKnownLimit` und `validateSpellLearnEligibility`.
+  - **Bugfix Prepared Spells:** Korrektur der Mindest-INT-Prüfung (`intScore >= 10 + lvl` statt `intMod`).
+
+### 🪄 2. Inline Zauberauswahl im Charakter-Wizard & Level-Up-Quoten-Engine (v6.9.0)
 - **Status:** `Abgeschlossen & Gemerged (v6.9.0)`
 - **Umfang:** Vollflächige Zero-Popup/Zero-Modal-Zauberauswahl direkt im Charakter-Erstellungs-Wizard (`Step3SpellSelectionView.tsx`) für Zauberklassen (Wizard, Sorcerer, Bard, Duskblade), inkl. D&D-3.5e-RAW-Quoten-Rechner (`spellSelectionRules.ts`), Wizard-Schul-Spezialisierung mit verbotenen Schulen und voller Wiederverwendung von `PCSpellCompendium.tsx`.
 

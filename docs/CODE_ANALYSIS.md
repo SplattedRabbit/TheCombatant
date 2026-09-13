@@ -18,8 +18,8 @@ Gezielt nachschärfbare Pain Points in Type Safety, Domain-Layer-Qualität und D
 |--------|------|
 | `src/` TS/TSX Dateien | 188 Dateien / 1.569 KB |
 | `js/` Engine Dateien | 118 Dateien / 664 KB |
-| Test-Dateien | 72 Dateien / 450 KB |
-| Unit-Tests | 311 Tests (100% pass) |
+| Test-Dateien | 69 Dateien |
+| Unit-Tests | 365 Tests (100% pass) |
 | UI-Tests | 34 Tests (100% pass) |
 
 ---

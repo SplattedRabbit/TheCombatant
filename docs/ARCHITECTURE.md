@@ -169,6 +169,7 @@ graph TD
   - `js/rules/` contains pure, stateless D&D 3.5e rule functions.
   - `Stat.js` encapsulates modifier stacking rules: identical bonus types (e.g. enhancement) do not stack; dodge and untyped bonuses stack.
   - `prestigeClassEngine.js` drives progression for 6 core Prestige Classes (Arcane Trickster, Assassin, Battle Trickster, Eldritch Knight, Shadowbane Inquisitor, Spellwarp Sniper).
+  - `RulesSpells.js` & `wizardBudget.ts` implement pure D&D 3.5e RAW spell slot, known-spell limits (Sorcerer, Bard, Assassin), and organic leveling spellbook budgets (Option C per-level caps scaled via `getEffectiveCasterLevel`).
 - **Token-Optimized Data Facades:**
   - Large static registries are split into domain submodules while preserving entrypoint facades:
     - `js/data/magicItems-data.js` -> `js/data/magicItems/` (`itemSlots`, `magicItemSets`, `registryWorn`, `registrySlotless`, `consolidatedCompendium`)

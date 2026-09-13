@@ -3,6 +3,28 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.9.1] - 2026-09-13
+
+### Added
+- **D&D 3.5e RAW Wizard Per-Level Spellbook Limits (Option C):**
+  - **Dynamic Per-Level Formula:** Implemented organic leveling spellbook caps based on PHB p. 52–57 in `src/components/player/spells/wizardBudget.ts`. Spells of level $G > 1$ unlocked at caster level $W_G = 2 \times G - 1$ are dynamically capped at $\text{Cap}_G = (W - W_G + 1) \times 2$. Level 1 spells remain bounded by total career budget ($3 + \text{INT mod} + 2 \times (W - 1)$), and Cantrips (0th level) remain unconstrained.
+  - **Prestige Class Spellcasting Advancement:** Integrated with `getEffectiveCasterLevel(pc, 'wizard')` to automatically advance caster levels from prestige classes (e.g. Spellwarp Sniper).
+  - **Hard-Blocking & Live UI Validation:**
+    - `PCSpellCompendium.tsx`: Automatically disables the `+ Buch` button with contextual tooltips (`Limit für Grad G erreicht (X/Y Zauber aus Levelups erlaubt)` or `Gesamtbudget erreicht`) whenever a level cap or career budget is reached.
+    - `PCSpellCompendium.tsx`: Displays level-specific budget counters when filtering by spell level (`Lvl G: X / Y Zauber im Buch — voll!`).
+  - **Visual Over-Cap Indicators for Legacy Characters:**
+    - `SpellLibraryList.tsx`: Level filter pills display `(Current/Cap)` and highlight red with warnings (`⚠️ Limit`) if an imported or pre-existing character exceeds their RAW cap.
+    - `SpellLibraryItemRow.tsx`: Excess spells in the grimoire are highlighted with a soft red background and marked with a `⚠️ Über Limit` badge.
+    - `PCSpellsHeaderBar.tsx`: Enhanced tooltip with comprehensive per-level breakdown and `⚠️` alert if any cap is violated.
+- **Assassin Spells Known Progression & Table Enforcement:**
+  - Added `ASSASSIN_KNOWN_TABLE` to `js/rules/data/spellTables.js` (DMG p. 181: Levels 1–10, up to 4th level spells) and exported through `js/rules/RulesData.js` and `js/rules.js`.
+  - Updated `checkSpellKnownLimit` in `js/rules/RulesSpells.js` to enforce spells known limits for Assassins identically to Sorcerers and Bards.
+  - Added quota tracking and compendium integration for Assassin spells in `PCSpellsHeaderBar.tsx`, `SpellLibraryList.tsx`, and `PCSpellCompendium.tsx`.
+
+### Fixed
+- **Prepared Spells Minimum INT Requirement Check:**
+  - Fixed an ability modifier vs. ability score check in `GrimoireLevelGroup.tsx` where preparing spells checked `intMod >= 10 + lvl` instead of `intScore >= 10 + lvl` (e.g. INT 18 was erroneously blocked for level 5 spells).
+
 ## [6.9.0] - 2026-09-09
 
 ### Added
