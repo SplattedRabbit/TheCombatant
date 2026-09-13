@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { CombatState } from '@core/state.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { ClassACFSelector } from './ClassACFSelector';
@@ -239,7 +240,7 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
       )}
 
       {/* Wild Shape Select Modal */}
-      {showSelectModal && (
+      {showSelectModal && typeof document !== 'undefined' && createPortal(
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(18, 11, 5, 0.55)', backdropFilter: 'blur(2px)', zIndex: 2500, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div className="custom-alert-box" style={{
             background: 'var(--p)',
@@ -372,7 +373,8 @@ export const DruidFeaturesCard: React.FC<DruidFeaturesCardProps> = ({ pc, level 
               </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

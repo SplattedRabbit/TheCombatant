@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { createPortal } from 'react-dom';
 
 export interface CompanionAbilityData {
   name: string;
@@ -23,7 +24,7 @@ export const CompanionAbilityDetailsDialog: React.FC<CompanionAbilityDetailsDial
   ability,
   onClose,
 }) => {
-  return (
+  const content = (
     <div
       className="dialog-backdrop"
       style={{
@@ -43,7 +44,7 @@ export const CompanionAbilityDetailsDialog: React.FC<CompanionAbilityDetailsDial
       onClick={onClose}
     >
       <div
-        className="ancient-parchment"
+        className="ancient-parchment custom-alert-box"
         style={{
           background: '#f4e8c1',
           border: '2px solid #8b1a1a',
@@ -163,4 +164,6 @@ export const CompanionAbilityDetailsDialog: React.FC<CompanionAbilityDetailsDial
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };

@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 interface CreateCharacterModalProps {
   show: boolean;
@@ -29,7 +30,7 @@ export const CreateCharacterModal: React.FC<CreateCharacterModalProps> = ({
     onSubmit(newCharName.trim(), newCharClass);
   };
 
-  return (
+  const content = (
     <div
       style={{
         position: 'fixed',
@@ -48,6 +49,7 @@ export const CreateCharacterModal: React.FC<CreateCharacterModalProps> = ({
     >
       <form
         onSubmit={handleSubmit}
+        className="custom-alert-box"
         style={{
           width: '320px',
           background: 'var(--parchment, #fdf6e2)',
@@ -143,4 +145,6 @@ export const CreateCharacterModal: React.FC<CreateCharacterModalProps> = ({
       </form>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };

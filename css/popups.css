@@ -379,27 +379,13 @@
   transform: scale(0.98);
 }
 
-/* Scaling all floating overlays & modals uniformly */
-#roleOverlay,
-#refOverlay,
-#customAlertOverlay,
-#customConfirmOverlay,
-#customPromptOverlay,
-#newDayTemplateOverlay,
-#attackChoiceOverlay,
-#damageChoiceOverlay,
-#sessionOverlay,
-#spellScrollOverlay,
-#featScrollOverlay,
-#castSpontaneousSpellOverlay,
-#prepareSpellOverlay,
-#wildShapeDialogOverlay,
-#buffDetails,
-#rollBreakdown,
-#sampleChoiceDialogOverlay,
-#parchmentMessageOverlay {
-  transform: scale(var(--app-scale));
-  transform-origin: center center;
+/* Scale modal content boxes uniformly, keeping the outer backdrop at full viewport */
+.custom-alert-box,
+.custom-scroll-box,
+.parchment-border,
+.ref-modal,
+.role-container {
+  zoom: var(--app-scale, 1);
 }
 
 #parchmentMessageOverlay {

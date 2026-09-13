@@ -29,6 +29,10 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
   - Explicitly clarified Spellwarp Sniper prerequisite in `constants.ts` to `Arcane spells 3rd lvl, Sneak Attack or Sudden Strike +1d6`.
 
 ### Fixed
+- **Modal Overlay Backdrop Coverage & Pinch-to-Zoom Glitch Across Platforms:**
+  - Removed `transform: scale(var(--app-scale))` on full-screen backdrop overlay containers in `css/popups.css`, ensuring dark backdrops always cover 100% of the viewport on all resolutions and browsers (iOS, Windows, Android, macOS).
+  - Targeted inner parchment dialog cards (`.custom-alert-box`, `.custom-scroll-box`, `.parchment-border`, `.ref-modal`, `.role-container`) with `zoom: var(--app-scale, 1)`, keeping backdrops at a clean 100vw × 100vh while scaling dialog contents.
+  - Mounted all dialogs and modals directly to `document.body` via React `createPortal` in `DialogContext.tsx`, `DialogOverlay.tsx`, and standalone modals (`BeltItemModal`, `SlotEquipModal`, `ItemEditorModal`, `ItemCompendiumModal`, `DruidFeaturesCard` WildShape, `SkillTrickDetailsDialog`, `CompanionAbilityDetailsDialog`, `CampaignManagerDialog`, `CreateCampaignModal`, `CreateCharacterModal`), decoupling them from `#appRoot` and preventing pinch-to-zoom jitter/desync.
 - **iPad Pinch-to-Zoom Jump & Viewport Glitch:**
   - Replaced CSS `transform: scale(var(--app-scale))` on `#appRoot` and `.react-modal-container > div` with native `zoom: var(--app-scale, 1)`.
   - Removed artificial JavaScript height recalculations (`syncBodyHeight()` and `ResizeObserver`) from `App.tsx` as native `zoom` naturally scales layout flow without leaving excessive blank page space.

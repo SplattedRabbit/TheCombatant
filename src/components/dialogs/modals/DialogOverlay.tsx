@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { createPortal } from 'react-dom';
 
 export interface DialogOverlayProps {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ export const DialogOverlay: React.FC<DialogOverlayProps> = ({
   width = 440,
   id,
 }) => {
-  return (
+  const content = (
     <div
       id={id}
       className="no-print"
@@ -69,4 +70,6 @@ export const DialogOverlay: React.FC<DialogOverlayProps> = ({
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };
