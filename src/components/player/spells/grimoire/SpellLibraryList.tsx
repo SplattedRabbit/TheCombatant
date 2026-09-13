@@ -12,7 +12,7 @@ import {
   showPrepareSpellDialog,
   showCastSpontaneousSpellDialog,
 } from '@core/ui/components/dialogs.js';
-import { SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE } from '@core/rules/RulesData.js';
+import { SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE, ASSASSIN_KNOWN_TABLE } from '@core/rules/RulesData.js';
 import { getEffectiveCasterLevel, getMaxSpellLevel } from '@core/rules/RulesSpells.js';
 import { computeWizardBudget } from '../wizardBudget';
 
@@ -58,7 +58,7 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
 
   const minLvl = hasCantrips ? 0 : 1;
   let maxLvl = 9;
-  if (activeCasters.length === 1 && ['paladin', 'ranger'].includes(activeCasters[0].classType)) {
+  if (activeCasters.length === 1 && ['paladin', 'ranger', 'assassin'].includes(activeCasters[0].classType)) {
     maxLvl = 4;
   } else if (activeCasters.length === 1 && activeCasters[0].classType === 'bard') {
     maxLvl = 6;
@@ -83,16 +83,28 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
   const quotaStats = useMemo(() => {
     const isSorc = activeCasters.some((c: any) => c.classType === 'sorcerer');
     const isBard = activeCasters.some((c: any) => c.classType === 'bard');
+    const isAssassin = activeCasters.some((c: any) => c.classType === 'assassin');
     const isWiz = activeCasters.some((c: any) => c.classType === 'wizard');
 
     const sorcCL = isSorc ? getEffectiveCasterLevel(pc, 'sorcerer') : 0;
     const bardCL = isBard ? getEffectiveCasterLevel(pc, 'bard') : 0;
+    const assassinCL = isAssassin ? (getEffectiveCasterLevel(pc, 'assassin') || activeCasters.find((c: any) => c.classType === 'assassin')?.level || 0) : 0;
     const wizCL = isWiz ? getEffectiveCasterLevel(pc, 'wizard') : 0;
 
     const sorcRow = isSorc ? (SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, sorcCL))] || []) : [];
     const bardRow = isBard ? (BARD_KNOWN_TABLE[Math.max(1, Math.min(20, bardCL))] || []) : [];
+    const assassinRow = isAssassin ? (ASSASSIN_KNOWN_TABLE[Math.max(1, Math.min(10, assassinCL))] || []) : [];
 
-    const perLevel: Record<number, { count: number; maxKnown?: number; isSpontaneous: boolean }> = {};
+    // Wizard budget via shared helper
+    const wizBudget = isWiz ? computeWizardBudget(pc, learnedSpells) : null;
+
+    const perLevel: Record<number, {
+      count: number;
+      maxKnown?: number;
+      isSpontaneous: boolean;
+      wizardCap?: number;
+      isWizardOverCap?: boolean;
+    }> = {};
     let totalCurrent = 0;
     let totalMaxSpontaneous = 0;
 
@@ -109,24 +121,25 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
         maxKnown = (maxKnown || 0) + bardRow[lvl];
         isSpontaneous = true;
       }
+      if (isAssassin && assassinRow[lvl] !== undefined) {
+        maxKnown = (maxKnown || 0) + assassinRow[lvl];
+        isSpontaneous = true;
+      }
 
       if (maxKnown !== undefined) {
         totalMaxSpontaneous += maxKnown;
       }
       totalCurrent += countAtLvl;
 
-      perLevel[lvl] = { count: countAtLvl, maxKnown, isSpontaneous };
-    }
+      const wizardCap = isWiz && lvl > 0 ? wizBudget?.perLevelCaps[lvl] : undefined;
+      const isWizardOverCap = isWiz && lvl > 0 ? (wizBudget?.isLevelOverCap(lvl) ?? false) : false;
 
-    // Wizard budget via shared helper
-    let wizBudget = null;
-    if (isWiz) {
-      wizBudget = computeWizardBudget(pc, learnedSpells);
+      perLevel[lvl] = { count: countAtLvl, maxKnown, isSpontaneous, wizardCap, isWizardOverCap };
     }
 
     return {
       isWizard: isWiz,
-      isSpontaneous: isSorc || isBard,
+      isSpontaneous: isSorc || isBard || isAssassin,
       wizCL,
       maxWizLvl: isWiz ? getMaxSpellLevel('wizard', wizCL) : -1,
       totalCurrent,
@@ -186,6 +199,26 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
     );
   };
 
+  const wizTooltip = useMemo(() => {
+    if (!quotaStats.wizBudget) return '';
+    const wb = quotaStats.wizBudget;
+    const lines = [
+      `Zauberbuch (D&D 3.5e RAW):`,
+      `• Gesamt: ${wb.currentNonCantrip} / ${wb.maxFromLevelUps} Zauber (Levelups: 3+INT bei Lvl 1, +2 pro Stufe)`,
+      `• Cantrips: ${wb.currentCantrips} (zählen nicht zum Budget)`,
+      `• Max. Zaubergrad: ${quotaStats.maxWizLvl >= 0 ? quotaStats.maxWizLvl : '-'}`,
+      `--- Aufschlüsselung pro Grad ---`,
+    ];
+    for (let g = 1; g <= Math.max(1, quotaStats.maxWizLvl); g++) {
+      const used = wb.perLevelUsed[g] || 0;
+      const cap = wb.perLevelCaps[g];
+      const isOver = wb.isLevelOverCap(g);
+      const capStr = cap !== undefined && cap !== Infinity ? ` / ${cap}` : '';
+      lines.push(`• Grad ${g}: ${used}${capStr} Zauber${isOver ? ' ⚠️ Limit überschritten!' : ''}`);
+    }
+    return lines.join('\n');
+  }, [quotaStats.wizBudget, quotaStats.maxWizLvl]);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
       {/* Spell Capacity & Quota Info Banner */}
@@ -210,12 +243,12 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
             </span>
           ) : quotaStats.isWizard && quotaStats.wizBudget ? (
             <span
-              title={`Zauberbuch: ${quotaStats.wizBudget.currentCantrips} Cantrips + ${quotaStats.wizBudget.currentNonCantrip} / ${quotaStats.wizBudget.maxFromLevelUps} Nicht-Cantrip-Zauber aus Levelups.`}
+              title={wizTooltip}
               style={{ cursor: 'help' }}
             >
               📖 <strong>Zauberbuch:</strong>{' '}
               <strong style={{
-                color: quotaStats.wizBudget.overCap ? '#c0392b'
+                color: (quotaStats.wizBudget.overCap || quotaStats.wizBudget.anyLevelOverCap) ? '#c0392b'
                   : quotaStats.wizBudget.atCap ? '#1a6b1a'
                   : 'var(--red)',
               }}>
@@ -225,6 +258,11 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
               {quotaStats.wizBudget.currentCantrips > 0 && (
                 <span style={{ marginLeft: '5px', fontSize: '7px', color: 'var(--inkl)', fontWeight: 'normal' }}>
                   +{quotaStats.wizBudget.currentCantrips} Cantrips
+                </span>
+              )}
+              {(quotaStats.wizBudget.overCap || quotaStats.wizBudget.anyLevelOverCap) && (
+                <span style={{ marginLeft: '4px', color: '#c0392b', fontWeight: 'bold' }} title="Limit überschritten!">
+                  ⚠️
                 </span>
               )}
             </span>
@@ -268,13 +306,20 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
             const countAtLvl = stat?.count || 0;
             const isSpont = stat?.isSpontaneous && stat.maxKnown !== undefined;
             const isFull = isSpont && countAtLvl >= (stat.maxKnown || 0);
+            const isWizCap = quotaStats.isWizard && lvl > 0 && stat?.wizardCap !== undefined;
+            const isWizOver = stat?.isWizardOverCap || false;
+            const isWizAt = isWizCap && countAtLvl >= (stat?.wizardCap || 0);
 
             let label = `${lvl === 0 ? '0' : lvl}`;
             if (isSpont) {
               label += ` (${countAtLvl}/${stat.maxKnown})`;
+            } else if (isWizCap) {
+              label += ` (${countAtLvl}/${stat.wizardCap})`;
             } else if (countAtLvl > 0) {
               label += ` (${countAtLvl})`;
             }
+
+            const isWarning = isWizOver || (isSpont && countAtLvl > (stat.maxKnown || 0));
 
             return (
               <button
@@ -288,20 +333,36 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
                   borderRadius: '2px',
                   fontFamily: 'var(--font-title)',
                   fontWeight: 'bold',
-                  background: activeLevelFilter === lvl ? 'var(--red)' : 'rgba(200, 169, 110, 0.1)',
+                  background:
+                    activeLevelFilter === lvl
+                      ? 'var(--red)'
+                      : isWarning
+                      ? 'rgba(192, 57, 43, 0.15)'
+                      : 'rgba(200, 169, 110, 0.1)',
                   border:
                     activeLevelFilter === lvl
                       ? '0.5px solid var(--red)'
-                      : isFull
+                      : isWarning
+                      ? '0.5px solid #c0392b'
+                      : isFull || isWizAt
                       ? '0.5px solid rgba(139, 26, 26, 0.4)'
                       : '0.5px solid var(--pb)',
-                  color: activeLevelFilter === lvl ? '#ffffff' : 'var(--inkm)',
+                  color:
+                    activeLevelFilter === lvl
+                      ? '#ffffff'
+                      : isWarning
+                      ? '#c0392b'
+                      : 'var(--inkm)',
                   cursor: 'pointer',
                 }}
                 title={
-                  isSpont
-                    ? `Level ${lvl}: ${countAtLvl} of ${stat.maxKnown} known spells learned`
-                    : `Level ${lvl}: ${countAtLvl} learned spells in spellbook`
+                  isWarning
+                    ? `Limit für Grad ${lvl} überschritten (${countAtLvl}/${isWizCap ? stat.wizardCap : stat?.maxKnown})!`
+                    : isWizCap
+                    ? `Grad ${lvl}: ${countAtLvl} / ${stat.wizardCap} Zauber im Buch`
+                    : isSpont
+                    ? `Grad ${lvl}: ${countAtLvl} / ${stat?.maxKnown} Zauber bekannt`
+                    : `Level ${lvl}`
                 }
               >
                 {label}
@@ -389,19 +450,35 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
             )}
           </div>
         ) : (
-          filteredSpells.map((s, idx) => (
-            <SpellLibraryItemRow
-              key={s.id}
-              pc={pc}
-              s={s}
-              idx={idx}
-              hasPrepared={hasPrepared}
-              hasSpontaneous={hasSpontaneous}
-              onPrepare={handlePrepareSpell}
-              onCastSpontaneous={handleCastSpontaneous}
-              onRemove={handleRemoveSpell}
-            />
-          ))
+          filteredSpells.map((s, idx) => {
+            const isWizOver = quotaStats.isWizard && s.level > 0 && quotaStats.wizBudget ? (
+              quotaStats.wizBudget.isLevelOverCap(s.level) || quotaStats.wizBudget.overCap
+            ) : false;
+            let overCapReason: string | undefined;
+            if (isWizOver && quotaStats.wizBudget) {
+              if (quotaStats.wizBudget.isLevelOverCap(s.level)) {
+                overCapReason = `Limit für Grad ${s.level} überschritten (${quotaStats.wizBudget.perLevelUsed[s.level]}/${quotaStats.wizBudget.perLevelCaps[s.level]} Zauber aus Levelups)!`;
+              } else {
+                overCapReason = `Gesamtbudget überschritten (${quotaStats.wizBudget.currentNonCantrip}/${quotaStats.wizBudget.maxFromLevelUps} Zauber aus Levelups)!`;
+              }
+            }
+
+            return (
+              <SpellLibraryItemRow
+                key={s.id}
+                pc={pc}
+                s={s}
+                idx={idx}
+                hasPrepared={hasPrepared}
+                hasSpontaneous={hasSpontaneous}
+                isOverCap={isWizOver}
+                overCapReason={overCapReason}
+                onPrepare={handlePrepareSpell}
+                onCastSpontaneous={handleCastSpontaneous}
+                onRemove={handleRemoveSpell}
+              />
+            );
+          })
         )}
       </div>
     </div>

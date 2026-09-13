@@ -17,7 +17,8 @@ import {
   PALADIN_RANGER_TABLE,
   SORCERER_KNOWN_TABLE,
   BARD_KNOWN_TABLE,
-  ASSASSIN_TABLE
+  ASSASSIN_TABLE,
+  ASSASSIN_KNOWN_TABLE
 } from './rules/RulesData.js';
 
 
@@ -100,6 +101,7 @@ export const CombatRules = {
   SORCERER_KNOWN_TABLE,
   BARD_KNOWN_TABLE,
   ASSASSIN_TABLE,
+  ASSASSIN_KNOWN_TABLE,
   calculateBab,
   calculateSave,
   isClassSkill,
@@ -140,7 +142,9 @@ export const CombatRules = {
 
 export {
   SORCERER_KNOWN_TABLE,
-  BARD_KNOWN_TABLE
+  BARD_KNOWN_TABLE,
+  ASSASSIN_TABLE,
+  ASSASSIN_KNOWN_TABLE
 } from './rules/RulesData.js';
 
 export {

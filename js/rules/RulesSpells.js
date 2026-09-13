@@ -6,7 +6,7 @@
 
 import {
   WIZ_CLER_DRU_TABLE, SORCERER_TABLE, BARD_TABLE, PALADIN_RANGER_TABLE,
-  ASSASSIN_TABLE, SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE,
+  ASSASSIN_TABLE, ASSASSIN_KNOWN_TABLE, SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE,
   DUSKBLADE_TABLE, BEGUILER_TABLE, CLASSES
 } from './RulesData.js';
 import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../spells.js';
@@ -237,8 +237,9 @@ export function checkSpellKnownLimit(pc, spell, findSpellFn) {
   const sorcClass = activeClasses.find(c => c.classType === 'sorcerer');
   const bardClass = activeClasses.find(c => c.classType === 'bard');
   const beguilerClass = activeClasses.find(c => c.classType === 'beguiler');
+  const assassinClass = activeClasses.find(c => c.classType === 'assassin');
 
-  if (!sorcClass && !bardClass && !beguilerClass) {
+  if (!sorcClass && !bardClass && !beguilerClass && !assassinClass) {
     return { success: true };
   }
 
@@ -249,11 +250,14 @@ export function checkSpellKnownLimit(pc, spell, findSpellFn) {
   const classLevels = getSpellClassLevels(spell);
   const sorcMatch = classLevels.find(cl => cl.class === 'sorcerer');
   const bardMatch = classLevels.find(cl => cl.class === 'bard');
+  const assassinMatch = classLevels.find(cl => cl.class === 'assassin');
 
   let sorcAllowed = false;
   let bardAllowed = false;
+  let assassinAllowed = false;
   let sorcLvl = -1, maxSorc = 0, currentSorc = 0;
   let bardLvl = -1, maxBard = 0, currentBard = 0;
+  let assassinLvl = -1, maxAssassin = 0, currentAssassin = 0;
 
   if (sorcClass && sorcMatch) {
     sorcLvl = sorcMatch.level;
@@ -277,24 +281,35 @@ export function checkSpellKnownLimit(pc, spell, findSpellFn) {
     }
   }
 
-  if ((sorcClass && sorcMatch) || (bardClass && bardMatch)) {
-    if (sorcAllowed || bardAllowed) return { success: true };
+  if (assassinClass && assassinMatch) {
+    assassinLvl = assassinMatch.level;
+    const effLevel = getEffectiveCasterLevel(pc, 'assassin') || assassinClass.level;
+    const maxCastLvl = getMaxSpellLevel('assassin', effLevel);
+    if (assassinLvl <= maxCastLvl) {
+      const row = ASSASSIN_KNOWN_TABLE[Math.max(1, Math.min(10, effLevel))];
+      maxAssassin = row ? (row[assassinLvl] || 0) : 0;
+      currentAssassin = countLearnedSpellsForClass(pc, 'assassin', assassinLvl, findSpellFn);
+      if (currentAssassin < maxAssassin) assassinAllowed = true;
+    }
+  }
 
-    if (sorcClass && sorcMatch && bardClass && bardMatch) {
-      return {
-        success: false,
-        error: `Limit für bekannte Zauber des Grades ${sorcLvl} (Hexenmeister: ${currentSorc}/${maxSorc}) und des Grades ${bardLvl} (Barde: ${currentBard}/${maxBard}) überschritten!`
-      };
-    }
+  if ((sorcClass && sorcMatch) || (bardClass && bardMatch) || (assassinClass && assassinMatch)) {
+    if (sorcAllowed || bardAllowed || assassinAllowed) return { success: true };
+
+    const errors = [];
     if (sorcClass && sorcMatch) {
-      return {
-        success: false,
-        error: `Limit für bekannte Zauber des Grades ${sorcLvl} überschritten! (Hexenmeister: ${currentSorc}/${maxSorc})`
-      };
+      errors.push(`Grad ${sorcLvl} (Hexenmeister: ${currentSorc}/${maxSorc})`);
     }
+    if (bardClass && bardMatch) {
+      errors.push(`Grad ${bardLvl} (Barde: ${currentBard}/${maxBard})`);
+    }
+    if (assassinClass && assassinMatch) {
+      errors.push(`Grad ${assassinLvl} (Assassine: ${currentAssassin}/${maxAssassin})`);
+    }
+
     return {
       success: false,
-      error: `Limit für bekannte Zauber des Grades ${bardLvl} überschritten! (Barde: ${currentBard}/${maxBard})`
+      error: `Limit für bekannte Zauber überschritten! (${errors.join(', ')})`
     };
   }
 

@@ -18,6 +18,7 @@ import {
   isDomainSpellForPC,
   SORCERER_KNOWN_TABLE,
   BARD_KNOWN_TABLE,
+  ASSASSIN_KNOWN_TABLE,
   getEffectiveCasterLevel,
 } from '@core/rules.js';
 import { showCustomConfirm, showCustomAlert, showSpellDetailsDialog, showSpellCreatorWizard } from '@core/ui/components/dialogs.js';
@@ -87,6 +88,18 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
 
     const spell = findSpell(pc, key);
     if (spell) {
+      const isWiz = pc.classes?.some((c: any) => c.classType === 'wizard');
+      if (isWiz) {
+        const learnedKeys: string[] = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
+        const resolved = learnedKeys.map(k => findSpell(pc, k));
+        const budget = computeWizardBudget(pc, resolved);
+        const check = budget.canAddSpell(spell.level);
+        if (!check.allowed) {
+          showCustomAlert("Zauberbuch-Limit erreicht", check.reason || "Du kannst keinen weiteren Zauber dieses Grades lernen.");
+          return;
+        }
+      }
+
       const validation = validateSpellLearnEligibility(pc, spell, (k: string) => findSpell(pc, k));
       if (!validation.allowed) {
         showCustomAlert(validation.title || "Spell Not Eligible", validation.reason || "You cannot learn this spell.");
@@ -141,11 +154,12 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
 
     const isSorc = pc.classes?.some((c: any) => c.classType === 'sorcerer');
     const isBard = pc.classes?.some((c: any) => c.classType === 'bard');
+    const isAssassin = pc.classes?.some((c: any) => c.classType === 'assassin');
     const isWiz = pc.classes?.some((c: any) => c.classType === 'wizard');
 
     const learnedKeys: string[] = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
 
-    if (isSorc || isBard) {
+    if (isSorc || isBard || isAssassin) {
       if (targetLvl === null) return null;
       const countAtLvl = learnedKeys
         .map((k) => findSpell(pc, k))
@@ -161,24 +175,60 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
         const row = BARD_KNOWN_TABLE[Math.max(1, Math.min(20, cl))] || [];
         maxKnown += row[targetLvl] || 0;
       }
+      if (isAssassin) {
+        const cl = getEffectiveCasterLevel(pc, 'assassin') || pc.classes.find((c: any) => c.classType === 'assassin')?.level || 0;
+        const row = ASSASSIN_KNOWN_TABLE[Math.max(1, Math.min(10, cl))] || [];
+        maxKnown += row[targetLvl] || 0;
+      }
       return {
         type: 'spontaneous' as const,
         count: countAtLvl,
         maxKnown,
         full: countAtLvl >= maxKnown,
         wizBudget: null,
+        targetLvl,
+        isCantrip: false,
       };
     }
 
     if (isWiz) {
       const resolved = learnedKeys.map(k => findSpell(pc, k));
       const budget = computeWizardBudget(pc, resolved);
+
+      if (targetLvl !== null) {
+        if (targetLvl === 0) {
+          return {
+            type: 'wizard' as const,
+            count: budget.currentCantrips,
+            maxKnown: budget.currentCantrips,
+            full: false,
+            wizBudget: budget,
+            targetLvl: 0,
+            isCantrip: true,
+          };
+        }
+        const capForLvl = budget.perLevelCaps[targetLvl] ?? 0;
+        const countForLvl = budget.perLevelUsed[targetLvl] ?? 0;
+        const isFull = countForLvl >= capForLvl || budget.atCap;
+        return {
+          type: 'wizard' as const,
+          count: countForLvl,
+          maxKnown: capForLvl,
+          full: isFull,
+          wizBudget: budget,
+          targetLvl,
+          isCantrip: false,
+        };
+      }
+
       return {
         type: 'wizard' as const,
         count: budget.currentNonCantrip,
         maxKnown: budget.maxFromLevelUps,
         full: budget.atCap,
         wizBudget: budget,
+        targetLvl: null,
+        isCantrip: false,
       };
     }
 
@@ -260,10 +310,21 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
                   {quotaInfo.full ? ' — voll!' : ''}
                 </span>
               ) : quotaInfo.type === 'wizard' && quotaInfo.wizBudget ? (
-                <span title="Zauber aus Levelups: (3+INT) bei Stufe 1, +2 pro Stufe">
-                  Zauberbuch: {quotaInfo.wizBudget.currentNonCantrip} / {quotaInfo.wizBudget.maxFromLevelUps} Zauber
-                  {quotaInfo.full ? ' — Budget voll!' : ''}
-                </span>
+                quotaInfo.targetLvl !== null ? (
+                  quotaInfo.isCantrip ? (
+                    <span>Cantrips: {quotaInfo.count} im Buch (kein Limit)</span>
+                  ) : (
+                    <span title={`Grad ${quotaInfo.targetLvl}: ${quotaInfo.count} / ${quotaInfo.maxKnown} Zauber aus Levelups (Gesamt: ${quotaInfo.wizBudget.currentNonCantrip}/${quotaInfo.wizBudget.maxFromLevelUps})`}>
+                      Lvl {quotaInfo.targetLvl}: {quotaInfo.count} / {quotaInfo.maxKnown} Zauber im Buch
+                      {quotaInfo.full ? ' — voll!' : ''}
+                    </span>
+                  )
+                ) : (
+                  <span title={`Zauber aus Levelups: (3+INT) bei Stufe 1, +2 pro Stufe. Gesamt: ${quotaInfo.wizBudget.currentNonCantrip}/${quotaInfo.wizBudget.maxFromLevelUps}`}>
+                    Zauberbuch: {quotaInfo.wizBudget.currentNonCantrip} / {quotaInfo.wizBudget.maxFromLevelUps} Zauber
+                    {quotaInfo.full ? ' — Budget voll!' : ''}
+                  </span>
+                )
               ) : null}
             </div>
           )}
@@ -326,9 +387,12 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
                   {isLearned ? (
                     <span style={{ fontSize: '8px', color: '#1a5c1a', fontWeight: 'bold', padding: '1px 4px' }}>Im Buch ✓</span>
                   ) : (() => {
-                    // Wizard: block at budget cap (non-cantrip spells)
-                    const isWizBudgetFull = quotaInfo?.type === 'wizard' && quotaInfo.full && s.level > 0;
-                    const blocked = !isEligible || isWizBudgetFull;
+                    // Wizard: check canAddSpell per level and total budget
+                    const wizCheck = quotaInfo?.type === 'wizard' && quotaInfo.wizBudget
+                      ? quotaInfo.wizBudget.canAddSpell(s.level)
+                      : { allowed: true };
+                    const isWizBlocked = !wizCheck.allowed;
+                    const blocked = !isEligible || isWizBlocked;
                     return (
                       <button
                         onClick={() => !blocked && handleLearnSpell(s.id)}
@@ -344,7 +408,7 @@ export const PCSpellCompendium: React.FC<PCSpellCompendiumProps> = ({ pc, custom
                         }}
                         title={
                           !isEligible ? 'Nicht auf deiner Klassenliste'
-                          : isWizBudgetFull ? `Zauberbuch-Budget voll (${quotaInfo!.wizBudget!.currentNonCantrip}/${quotaInfo!.wizBudget!.maxFromLevelUps} Zauber aus Levelups)`
+                          : isWizBlocked ? (wizCheck.reason || 'Zauberbuch-Budget erreicht')
                           : 'Ins Zauberbuch eintragen'
                         }
                         disabled={blocked}

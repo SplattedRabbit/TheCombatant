@@ -11,6 +11,7 @@ import { computeWizardBudget } from './wizardBudget';
 import {
   SORCERER_KNOWN_TABLE,
   BARD_KNOWN_TABLE,
+  ASSASSIN_KNOWN_TABLE,
   getEffectiveCasterLevel,
   getMaxSpellLevel,
 } from '@core/rules.js';
@@ -37,6 +38,7 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
   const quotaStats = useMemo(() => {
     const isSorc = hasClasses && pc.classes.some((c: any) => c.classType === 'sorcerer');
     const isBard = hasClasses && pc.classes.some((c: any) => c.classType === 'bard');
+    const isAssassin = hasClasses && pc.classes.some((c: any) => c.classType === 'assassin');
     const isWiz = hasClasses && pc.classes.some((c: any) => c.classType === 'wizard');
 
     const learnedKeys: string[] = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
@@ -44,14 +46,17 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
 
     const sorcCL = isSorc ? getEffectiveCasterLevel(pc, 'sorcerer') : 0;
     const bardCL = isBard ? getEffectiveCasterLevel(pc, 'bard') : 0;
+    const assassinCL = isAssassin ? (getEffectiveCasterLevel(pc, 'assassin') || pc.classes.find((c: any) => c.classType === 'assassin')?.level || 0) : 0;
 
     const sorcRow = isSorc ? (SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, sorcCL))] || []) : [];
     const bardRow = isBard ? (BARD_KNOWN_TABLE[Math.max(1, Math.min(20, bardCL))] || []) : [];
+    const assassinRow = isAssassin ? (ASSASSIN_KNOWN_TABLE[Math.max(1, Math.min(10, assassinCL))] || []) : [];
 
     let totalMaxSpontaneous = 0;
     for (let lvl = 0; lvl <= 9; lvl++) {
       if (isSorc && sorcRow[lvl] !== undefined) totalMaxSpontaneous += sorcRow[lvl];
       if (isBard && bardRow[lvl] !== undefined) totalMaxSpontaneous += bardRow[lvl];
+      if (isAssassin && assassinRow[lvl] !== undefined) totalMaxSpontaneous += assassinRow[lvl];
     }
 
     // Wizard: level-up budget via shared helper
@@ -61,7 +66,7 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
 
     return {
       isWizard: isWiz,
-      isSpontaneous: isSorc || isBard,
+      isSpontaneous: isSorc || isBard || isAssassin,
       maxWizLvl: isWiz ? getMaxSpellLevel('wizard', wizBudget!.wizCL) : -1,
       totalLearned,
       totalMaxSpontaneous,
@@ -89,6 +94,26 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
       .filter(Boolean)
       .map(getSchoolLabel);
   }, [pc.wizardProhibited1, pc.wizardProhibited2]);
+
+  const wizTooltip = useMemo(() => {
+    if (!quotaStats.wizBudget) return '';
+    const wb = quotaStats.wizBudget;
+    const lines = [
+      `Zauberbuch (D&D 3.5e RAW):`,
+      `• Gesamt: ${wb.currentNonCantrip} / ${wb.maxFromLevelUps} Zauber (Levelups: 3+INT bei Lvl 1, +2 pro Stufe)`,
+      `• Cantrips: ${wb.currentCantrips} (zählen nicht zum Budget)`,
+      `• Max. Zaubergrad: ${quotaStats.maxWizLvl >= 0 ? quotaStats.maxWizLvl : '-'}`,
+      `--- Aufschlüsselung pro Grad ---`,
+    ];
+    for (let g = 1; g <= Math.max(1, quotaStats.maxWizLvl); g++) {
+      const used = wb.perLevelUsed[g] || 0;
+      const cap = wb.perLevelCaps[g];
+      const isOver = wb.isLevelOverCap(g);
+      const capStr = cap !== undefined && cap !== Infinity ? ` / ${cap}` : '';
+      lines.push(`• Grad ${g}: ${used}${capStr} Zauber${isOver ? ' ⚠️ Limit überschritten!' : ''}`);
+    }
+    return lines.join('\n');
+  }, [quotaStats.wizBudget, quotaStats.maxWizLvl]);
 
   const asfTooltip = useMemo(() => {
     if (asfBreakdown.items.length === 0) return 'No Arcane Spell Failure penalty.';
@@ -246,12 +271,12 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
           </span>
         ) : quotaStats.isWizard && quotaStats.wizBudget ? (
           <span
-            title={`Zauberbuch (D&D 3.5e RAW): ${quotaStats.wizBudget.currentCantrips} Cantrips + ${quotaStats.wizBudget.currentNonCantrip} / ${quotaStats.wizBudget.maxFromLevelUps} Nicht-Cantrip-Zauber (aus Levelups: 3+INT-Mod bei Stufe 1, +2 pro Stufe). Max. Zaubergrad: ${quotaStats.maxWizLvl}`}
+            title={wizTooltip}
             style={{ cursor: 'help' }}
           >
             📖 <strong>Zauberbuch:</strong>{' '}
             <strong style={{
-              color: quotaStats.wizBudget.overCap ? '#c0392b'
+              color: (quotaStats.wizBudget.overCap || quotaStats.wizBudget.anyLevelOverCap) ? '#c0392b'
                 : quotaStats.wizBudget.atCap ? '#1a6b1a'
                 : 'var(--red)',
             }}>
@@ -261,6 +286,11 @@ export const PCSpellsHeaderBar: React.FC<PCSpellsHeaderBarProps> = ({
             {quotaStats.wizBudget.currentCantrips > 0 && (
               <span style={{ marginLeft: '5px', fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'normal' }}>
                 +{quotaStats.wizBudget.currentCantrips} Cantrips
+              </span>
+            )}
+            {(quotaStats.wizBudget.overCap || quotaStats.wizBudget.anyLevelOverCap) && (
+              <span style={{ marginLeft: '4px', color: '#c0392b', fontWeight: 'bold' }} title="Ein oder mehrere Zaubergrade oder das Gesamtbudget überschreiten das Limit!">
+                ⚠️
               </span>
             )}
           </span>

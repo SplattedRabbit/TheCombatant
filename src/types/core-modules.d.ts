@@ -110,6 +110,7 @@ declare module '@core/rules.js' {
   export const EldritchKnightRules: any;
   export const SORCERER_KNOWN_TABLE: Record<number, number[]>;
   export const BARD_KNOWN_TABLE: Record<number, number[]>;
+  export const ASSASSIN_KNOWN_TABLE: Record<number, number[]>;
   export const getEffectiveCasterLevel: (pc: any, classType: string) => number;
   export const getMaxSpellLevel: (classType: string, casterLevel: number) => number;
   export const calculateMaxSpellSlots: (pc: any, classType: string, casterLevel: number) => number[];

@@ -12,6 +12,8 @@ interface SpellLibraryItemRowProps {
   idx: number;
   hasPrepared: boolean;
   hasSpontaneous: boolean;
+  isOverCap?: boolean;
+  overCapReason?: string;
   onPrepare: (id: string) => void;
   onCastSpontaneous: (id: string) => void;
   onRemove: (id: string) => void;
@@ -23,6 +25,8 @@ export const SpellLibraryItemRow: React.FC<SpellLibraryItemRowProps> = ({
   idx,
   hasPrepared,
   hasSpontaneous,
+  isOverCap = false,
+  overCapReason,
   onPrepare,
   onCastSpontaneous,
   onRemove,
@@ -37,8 +41,10 @@ export const SpellLibraryItemRow: React.FC<SpellLibraryItemRowProps> = ({
         alignItems: 'center',
         gap: '3px',
         padding: '2px 4px',
-        background: idx % 2 === 0 ? 'rgba(200, 169, 110, 0.12)' : 'rgba(200, 169, 110, 0.04)',
-        border: '0.5px solid rgba(200, 169, 110, 0.25)',
+        background: isOverCap
+          ? (idx % 2 === 0 ? 'rgba(192, 57, 43, 0.12)' : 'rgba(192, 57, 43, 0.06)')
+          : (idx % 2 === 0 ? 'rgba(200, 169, 110, 0.12)' : 'rgba(200, 169, 110, 0.04)'),
+        border: isOverCap ? '0.5px solid rgba(192, 57, 43, 0.4)' : '0.5px solid rgba(200, 169, 110, 0.25)',
         borderRadius: '2px',
         fontSize: '8px',
       }}
@@ -89,6 +95,23 @@ export const SpellLibraryItemRow: React.FC<SpellLibraryItemRowProps> = ({
         <span style={{ fontSize: '7px', color: 'var(--inkl)', fontStyle: 'italic', flexShrink: 0 }}>
           ({s.school || 'Magic'})
         </span>
+        {isOverCap && (
+          <span
+            style={{
+              fontSize: '6.5px',
+              color: '#ffffff',
+              background: '#c0392b',
+              padding: '1px 3px',
+              borderRadius: '2px',
+              fontWeight: 'bold',
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
+            }}
+            title={overCapReason || 'Über dem RAW-Limit!'}
+          >
+            ⚠️ Über Limit
+          </span>
+        )}
       </div>
 
       {/* Col 3: Range */}

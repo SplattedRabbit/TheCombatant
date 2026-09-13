@@ -2,7 +2,7 @@
  * @module    spellTables
  * @summary   Static D&D 3.5e spell progression tables for prepared and spontaneous casters.
  * @feature   rules
- * @exports   WIZ_CLER_DRU_TABLE, SORCERER_TABLE, BARD_TABLE, PALADIN_RANGER_TABLE, SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE, ASSASSIN_TABLE, DUSKBLADE_TABLE, BEGUILER_TABLE
+ * @exports   WIZ_CLER_DRU_TABLE, SORCERER_TABLE, BARD_TABLE, PALADIN_RANGER_TABLE, SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE, ASSASSIN_TABLE, ASSASSIN_KNOWN_TABLE, DUSKBLADE_TABLE, BEGUILER_TABLE
  */
 
 export const WIZ_CLER_DRU_TABLE = {
@@ -154,6 +154,19 @@ export const ASSASSIN_TABLE = {
   8:  [0, 3, 3, 3, 1],
   9:  [0, 3, 3, 3, 2],
   10: [0, 3, 3, 3, 3]
+};
+
+export const ASSASSIN_KNOWN_TABLE = {
+  1:  [0, 2, 0, 0, 0],
+  2:  [0, 3, 0, 0, 0],
+  3:  [0, 3, 2, 0, 0],
+  4:  [0, 4, 3, 0, 0],
+  5:  [0, 4, 3, 2, 0],
+  6:  [0, 4, 4, 3, 0],
+  7:  [0, 4, 4, 3, 2],
+  8:  [0, 4, 4, 4, 3],
+  9:  [0, 4, 4, 4, 3],
+  10: [0, 4, 4, 4, 4]
 };
 
 // PHB2: Duskblade Spell Slots per Day (arcane, Intelligence-based)
