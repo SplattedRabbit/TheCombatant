@@ -17,11 +17,14 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
 }) => {
   const [smiteActive, setSmiteActive] = useState<boolean>(options.smite !== undefined ? !!options.smite : !!pc.isSmiteActive);
   const [favoredEnemyActive, setFavoredEnemyActive] = useState<boolean>(options.favoredEnemy !== undefined ? !!options.favoredEnemy : !!pc.isFavoredEnemyActive);
+  const [selectedTarget, setSelectedTarget] = useState<string>(
+    options.targetCreatureType || pc.activeFavoredEnemyTarget || (Array.isArray(pc.favoredEnemies) && pc.favoredEnemies[0]?.type) || pc.favoredEnemy || ''
+  );
   const [sneakActive, setSneakActive] = useState<boolean>(options.sneakAttack !== undefined ? !!options.sneakAttack : !!pc.isSneakAttacking);
 
   const hasPaladin = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'paladin');
   const paladinClass = hasPaladin ? pc.classes.find((c: any) => c.classType === 'paladin') : null;
-  const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus() : 0;
+  const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus(selectedTarget) : 0;
   const sneakAttackDice = typeof pc.getSneakAttackDiceCount === 'function' ? pc.getSneakAttackDiceCount() : 0;
 
   const isRanged = weapon.grip === 'rng';
@@ -55,10 +58,11 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
 
   const seq = AttackEngine.calculateAttackSequence(pc, weapon, false, {
     isOffhandAttack: !!options.isOffhandAttack,
+    ...options,
     smite: smiteActive,
     favoredEnemy: favoredEnemyActive,
+    targetCreatureType: selectedTarget,
     sneakAttack: sneakActive,
-    ...options
   });
 
   const stdAtkObj = seq[0] || {
@@ -141,15 +145,37 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
               </label>
             )}
             {favoredEnemyBonus > 0 && (
-              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: '#1a4a1a' }}>
-                <input
-                  type="checkbox"
-                  checked={favoredEnemyActive}
-                  onChange={handleFavoredEnemyChange}
-                  style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
-                />
-                Vs Favored Enemy (+{favoredEnemyBonus} Damage)
-              </label>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: '#1a4a1a' }}>
+                  <input
+                    type="checkbox"
+                    checked={favoredEnemyActive}
+                    onChange={handleFavoredEnemyChange}
+                    style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
+                  />
+                  Vs Favored Enemy (+{favoredEnemyBonus} Damage)
+                </label>
+                {Array.isArray(pc.favoredEnemies) && pc.favoredEnemies.length > 1 && (
+                  <select
+                    value={selectedTarget}
+                    onChange={(e) => {
+                      setSelectedTarget(e.target.value);
+                      CombatState.updatePCBatch((freshPC: any) => {
+                        freshPC.activeFavoredEnemyTarget = e.target.value;
+                        freshPC.isFavoredEnemyActive = true;
+                      });
+                    }}
+                    className="cinput"
+                    style={{ fontSize: '8.5px', padding: '1px 4px', height: '18px', cursor: 'pointer' }}
+                  >
+                    {pc.favoredEnemies.map((fe: any, idx: number) => (
+                      <option key={idx} value={fe.type}>
+                        {fe.type} (+{fe.bonus || 2})
+                      </option>
+                    ))}
+                  </select>
+                )}
+              </div>
             )}
             {sneakAttackDice > 0 && (() => {
               const hasNinja = Array.isArray(pc?.classes) && pc.classes.some((c: any) => c.classType === 'ninja');

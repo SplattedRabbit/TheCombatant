@@ -10,6 +10,7 @@
 
 import { WeaponRegistry, isLightWeapon, matchesFeatOption } from '../../models/Weapon.js';
 import { buildFinalDamageDiceAndBreakdown } from './DamageFormulaBuilder.js';
+import { getFavoredEnemyBonus } from '../../models/helpers/classes/RangerHelper.js';
 
 export function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtkBreakdown, activeAtkPenalties, activeAtkPenaltyBreakdowns, generalDmgMod, generalDmgBreakdown, paDmgBonus, sequence) {
   baseAttacks.forEach((baseAtk, index) => {
@@ -312,10 +313,14 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
   }
 
   if (ctx.options.favoredEnemy) {
-    const feBonus = ctx.pc.getFavoredEnemyBonus();
+    const targetType = ctx.options.targetCreatureType || ctx.pc.activeFavoredEnemyTarget;
+    const feBonus = typeof ctx.pc.getFavoredEnemyBonus === 'function'
+      ? ctx.pc.getFavoredEnemyBonus(targetType)
+      : getFavoredEnemyBonus(ctx.pc, targetType);
     if (feBonus > 0) {
+      const label = targetType ? `Favored Enemy (${targetType})` : 'Favored Enemy Bonus';
       ohDmgMod += feBonus;
-      ohDmgBreakdown.push({ label: 'Favored Enemy Bonus', value: feBonus });
+      ohDmgBreakdown.push({ label, value: feBonus });
     }
   }
 
