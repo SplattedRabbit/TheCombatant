@@ -28,24 +28,8 @@ export default function App() {
 
     if (role === 'choice') {
       document.documentElement.style.setProperty('--app-scale', '1.0');
-      document.body.style.minHeight = '100vh';
-      const appWrapper = document.getElementById('appWrapper');
-      if (appWrapper) appWrapper.style.height = '100vh';
       return;
     }
-
-    let currentScale = 1.0;
-
-    const syncBodyHeight = () => {
-      const appRoot = document.getElementById('appRoot');
-      const appWrapper = document.getElementById('appWrapper');
-      if (appRoot && appWrapper) {
-        const unscaledHeight = Math.max(appRoot.offsetHeight, appRoot.scrollHeight);
-        const scaledHeight = (unscaledHeight + 20) * currentScale;
-        appWrapper.style.height = scaledHeight + 'px';
-        document.body.style.minHeight = scaledHeight + 'px';
-      }
-    };
 
     const applyScaleFactor = () => {
       const appRoot = document.getElementById('appRoot');
@@ -54,56 +38,16 @@ export default function App() {
       const targetWidth = 1150;
       let scale = window.innerWidth / targetWidth;
       
-      // Fix: Festgelegte Breite auf targetWidth (1150px) belassen, damit die Skalierung
-      // exakt der Bildschirmbreite entspricht und kein horizontaler Überlauf entsteht.
+      // Festgelegte Breite auf targetWidth (1150px) belassen, damit die Skalierung
+      // exakt der Bildschirmbreite entspricht.
       appRoot.style.width = targetWidth + 'px';
 
       const maxScale = role === 'wizard' ? 1.2 : 1.6;
       scale = Math.max(0.6, Math.min(maxScale, scale));
-      currentScale = scale;
       document.documentElement.style.setProperty('--app-scale', scale.toString());
-      syncBodyHeight();
     };
 
     window.addEventListener('resize', applyScaleFactor);
-
-    const appRoot = document.getElementById('appRoot');
-    let resizeObserver: ResizeObserver | null = null;
-    if (appRoot && typeof ResizeObserver !== 'undefined') {
-      resizeObserver = new ResizeObserver(() => {
-        requestAnimationFrame(syncBodyHeight);
-      });
-      resizeObserver.observe(appRoot);
-    }
-
-    // Scroll-Schutz
-    const handleScroll = () => {
-      if (window.scrollX !== 0 || window.pageXOffset !== 0) {
-        window.scrollTo(0, window.scrollY || window.pageYOffset);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-
-    if (window.visualViewport) {
-      const handleViewportScroll = () => {
-        if (window.visualViewport && window.visualViewport.offsetLeft !== 0) {
-          window.scrollTo(window.scrollX, window.scrollY);
-        }
-      };
-      window.visualViewport.addEventListener('scroll', handleViewportScroll);
-    }
-
-    const handleFocusIn = () => {
-      setTimeout(() => {
-        if (window.scrollX !== 0 || window.pageXOffset !== 0) {
-          window.scrollTo(0, window.scrollY || window.pageYOffset);
-        }
-        if (window.visualViewport && window.visualViewport.offsetLeft !== 0) {
-          window.scrollTo(window.visualViewport.offsetLeft, window.scrollY);
-        }
-      }, 80);
-    };
-    document.addEventListener('focusin', handleFocusIn);
 
     // Initialer Aufruf
     applyScaleFactor();
@@ -116,9 +60,6 @@ export default function App() {
       clearTimeout(t1);
       clearTimeout(t2);
       window.removeEventListener('resize', applyScaleFactor);
-      if (resizeObserver) resizeObserver.disconnect();
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('focusin', handleFocusIn);
     };
   }, [isReady, role]);
 

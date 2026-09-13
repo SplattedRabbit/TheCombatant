@@ -29,6 +29,10 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
   - Explicitly clarified Spellwarp Sniper prerequisite in `constants.ts` to `Arcane spells 3rd lvl, Sneak Attack or Sudden Strike +1d6`.
 
 ### Fixed
+- **iPad Pinch-to-Zoom Jump & Viewport Glitch:**
+  - Replaced CSS `transform: scale(var(--app-scale))` on `#appRoot` and `.react-modal-container > div` with native `zoom: var(--app-scale, 1)`.
+  - Removed artificial JavaScript height recalculations (`syncBodyHeight()` and `ResizeObserver`) from `App.tsx` as native `zoom` naturally scales layout flow without leaving excessive blank page space.
+  - Removed disruptive `handleScroll`, `handleViewportScroll`, and `handleFocusIn` listeners in `App.tsx` that forcibly snapped `scrollX` back to `0`, allowing smooth, unrestricted native pinch-to-zoom and pan interactions on iPad and touch devices.
 - **Prepared Spells Minimum INT Requirement Check:**
   - Fixed an ability modifier vs. ability score check in `GrimoireLevelGroup.tsx` where preparing spells checked `intMod >= 10 + lvl` instead of `intScore >= 10 + lvl` (e.g. INT 18 was erroneously blocked for level 5 spells).
 
