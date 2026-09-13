@@ -16,7 +16,7 @@ import {
   getEffectiveCasterLevel,
   getMaxSpellLevel,
 } from '@core/rules.js';
-import { getAblMod } from '../../attributeHelper';
+
 
 interface GrimoireLevelGroupProps {
   pc: any;
@@ -76,8 +76,7 @@ export const GrimoireLevelGroup: React.FC<GrimoireLevelGroupProps> = ({
     wizMaxLvl = getMaxSpellLevel('wizard', wizCL);
     wizAccessible = lvl === 0 || lvl <= wizMaxLvl; // cantrips always accessible
     const intScore = typeof pc.int?.getValue === 'function' ? pc.int.getValue() : (pc.int || 10);
-    const intMod = getAblMod(intScore);
-    wizIntSufficient = lvl === 0 || (10 + intMod) >= (10 + lvl); // INT ≥ 10 + spell level
+    wizIntSufficient = lvl === 0 || intScore >= (10 + lvl); // RAW: INT score ≥ 10 + spell level
   }
 
   let activeLevelSpells: any[] = [];
