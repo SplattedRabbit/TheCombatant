@@ -26,7 +26,7 @@ import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { PCFeaturesTab } from './features/PCFeaturesTab';
 import { LevelUpDialog } from './levelup/LevelUpDialog';
 import { PrintableCharacterSheetModal } from './print/PrintableCharacterSheetModal';
-import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
+import { showCustomConfirm, showCustomAlert, showCustomPrompt, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
 import { logger } from '../../utils/logger';
 
 interface PlayerSheetProps {
@@ -82,20 +82,51 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = (evt) => {
+    reader.onload = async (evt) => {
       try {
-        const loadedState = JSON.parse(evt.target?.result as string);
-        if (!loadedState.combatants) {
-          showCustomAlert("Import Character", "Invalid file format. No combatants found.", "OK", "⚠️");
+        const rawContent = evt.target?.result as string;
+        const charService = CharacterService.getInstance();
+        let parsedInfo;
+        try {
+          parsedInfo = charService.parseImportData(rawContent);
+        } catch (parseErr: any) {
+          showCustomAlert("Import Character", "Invalid file format: " + parseErr.message, "OK", "⚠️");
           return;
         }
-        showCustomConfirm(
-          "Import Character",
-          "Do you want to import this data? Current character data will be overwritten.",
-          () => {
-            CombatState.importEncounterState(loadedState);
+
+        const existing = await charService.findExistingCharacterByName(parsedInfo.originalName);
+
+        const executeImport = async (chosenName: string) => {
+          try {
+            const imported = await charService.importCharacterFromJson(rawContent, chosenName);
+            showCustomConfirm(
+              "Import Character",
+              `Character <strong>"${imported.name}"</strong> was successfully added to your Roster!<br/><br/>Would you like to switch to this character now?`,
+              async () => {
+                await charService.switchActiveCharacter(imported.id);
+              },
+              () => {
+                // Keep current character active
+              }
+            );
+          } catch (err: any) {
+            showCustomAlert("Import Error", "Failed to save character: " + (err.message || err), "OK", "⚠️");
           }
-        );
+        };
+
+        if (existing) {
+          showCustomPrompt(
+            "Character Already Exists",
+            `You already have a Character named <strong>"${parsedInfo.originalName}"</strong> in your Roster.<br/><br/>Would you like to rename the imported character?`,
+            `${parsedInfo.originalName} (Copy)`,
+            "Import",
+            (enteredName: string) => {
+              executeImport(enteredName || parsedInfo.originalName);
+            }
+          );
+        } else {
+          await executeImport(parsedInfo.originalName);
+        }
       } catch (err: any) {
         showCustomAlert("Import Error", "Error reading file: " + err.message, "OK", "⚠️");
       }

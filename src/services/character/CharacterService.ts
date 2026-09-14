@@ -102,6 +102,10 @@ export class CharacterService {
       }
       fresh.combatants = [newPC];
       stateData = fresh;
+    } else if (input.name) {
+      // Ensure the top-level PC combatant name matches the specified character name
+      const pc = (stateData?.combatants || []).find((c: any) => c.type === 'p') || stateData;
+      if (pc) pc.name = input.name;
     }
 
     if (typeof adapter.saveCharacter === 'function') {
@@ -109,14 +113,108 @@ export class CharacterService {
       if (res instanceof Promise) await res;
     }
 
+    const pc = (stateData?.combatants || []).find((c: any) => c.type === 'p') || stateData;
+    const hpCurrent = typeof pc?.hp === 'number' ? pc.hp : 10;
+    const hpMax = typeof pc?.maxHP === 'number' ? pc.maxHP : (typeof pc?.maxHp === 'number' ? pc.maxHp : 10);
+
     const summary: CharacterSummary = {
       id: charId,
       userId: storageService.getCurrentUserId() || 'local-guest',
       name: input.name,
-      race: input.race || 'human',
-      classSummary: input.classSummary || '',
-      level: input.level || 1,
-      hp: { current: 10, max: 10 },
+      race: input.race || pc?.race || 'human',
+      classSummary: input.classSummary || pc?.classSummary || pc?.class_summary || '',
+      level: input.level || (typeof pc?.level === 'number' ? pc.level : 1),
+      hp: { current: hpCurrent, max: hpMax },
+      isActive: true,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      isCurrentActive: false,
+    };
+
+    return summary;
+  }
+
+  /**
+   * Checks if a character with the given name (case-insensitive) already exists in the roster.
+   */
+  public async findExistingCharacterByName(name: string): Promise<CharacterSummary | null> {
+    const list = await this.listCharacters();
+    const cleanName = name.trim().toLowerCase();
+    return list.find((c) => c.name.trim().toLowerCase() === cleanName) || null;
+  }
+
+  /**
+   * Parses raw imported JSON string or object, extracting the PC combatant and complete state shell.
+   */
+  public parseImportData(rawInput: string | object): { pc: any; stateData: any; originalName: string } {
+    let parsed: any = typeof rawInput === 'string' ? JSON.parse(rawInput) : rawInput;
+    if (parsed && parsed.character_data) {
+      parsed = parsed.character_data;
+    }
+
+    let pc: any = null;
+    let stateData: any = null;
+
+    if (parsed && Array.isArray(parsed.combatants)) {
+      pc = parsed.combatants.find((c: any) => c.type === 'p') || parsed.combatants[0];
+      stateData = JSON.parse(JSON.stringify(parsed));
+    } else if (parsed && (parsed.type === 'p' || parsed.name || parsed.classes)) {
+      pc = JSON.parse(JSON.stringify(parsed));
+      pc.type = 'p';
+      stateData = createInitialState();
+      stateData.mode = 'player';
+      stateData.combatants = [pc];
+    }
+
+    if (!pc) {
+      throw new Error('No valid character data found in the imported file.');
+    }
+
+    const originalName = pc.name?.trim() || 'Hero';
+    return { pc, stateData, originalName };
+  }
+
+  /**
+   * Safely imports a character from JSON data into the roster without overwriting the currently active character.
+   * Generates brand-new unique IDs for both the roster entry and the internal PC combatant.
+   */
+  public async importCharacterFromJson(rawInput: string | object, customName?: string): Promise<CharacterSummary> {
+    const { pc, stateData, originalName } = this.parseImportData(rawInput);
+    const finalName = (customName || originalName).trim() || 'Hero';
+
+    // Assign fresh unique IDs to avoid any collision with existing records
+    const newCharId = generateUUID();
+    const newPcId = 'pc-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
+
+    const cleanState = JSON.parse(JSON.stringify(stateData));
+    const targetPC = (cleanState.combatants || []).find((c: any) => c.type === 'p') || cleanState.combatants?.[0];
+    if (targetPC) {
+      targetPC.id = newPcId;
+      targetPC.name = finalName;
+    } else {
+      pc.id = newPcId;
+      pc.name = finalName;
+      cleanState.combatants = [pc];
+    }
+    cleanState.mode = 'player';
+
+    const adapter = storageService.getAdapter();
+    if (typeof adapter.saveCharacter === 'function') {
+      const res = adapter.saveCharacter(newCharId, cleanState);
+      if (res instanceof Promise) await res;
+    }
+
+    const hpCurrent = typeof targetPC?.hp === 'number' ? targetPC.hp : 10;
+    const hpMax = typeof targetPC?.maxHP === 'number' ? targetPC.maxHP : (typeof targetPC?.maxHp === 'number' ? targetPC.maxHp : 10);
+
+    const summary: CharacterSummary = {
+      id: newCharId,
+      userId: storageService.getCurrentUserId() || 'local-guest',
+      name: finalName,
+      race: targetPC?.race || 'human',
+      classSummary: targetPC?.classSummary || targetPC?.class_summary || (Array.isArray(targetPC?.classes) ? targetPC.classes.map((c: any) => `${c.name || c.classType} ${c.level}`).join(' / ') : ''),
+      level: typeof targetPC?.level === 'number' ? targetPC.level : 1,
+      hp: { current: hpCurrent, max: hpMax },
       isActive: true,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),

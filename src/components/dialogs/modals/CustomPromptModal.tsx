@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { DialogOverlay } from './DialogOverlay';
+import { sanitizeHtml } from '../../../utils/sanitize';
 
 export interface CustomPromptModalProps {
   title: string;
@@ -26,14 +27,15 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
   const [val, setVal] = useState(defaultValue);
 
   return (
-    <DialogOverlay onClose={onCancel} width={360} id="customPromptOverlay">
+    <DialogOverlay onClose={onCancel} width={380} id="customPromptOverlay">
       <div style={{ fontSize: '13px', color: 'var(--red)', fontWeight: 'bold', marginBottom: '4px' }}>
         {title}
       </div>
       <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 10px' }} />
-      <div style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--inkm)', marginBottom: '8px', textAlign: 'left' }}>
-        {message}
-      </div>
+      <div 
+        style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--inkm)', marginBottom: '10px', textAlign: 'left', lineHeight: 1.45 }}
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(message) }}
+      />
       <input 
         type="text" 
         className="cinput pc-prompt-input" 

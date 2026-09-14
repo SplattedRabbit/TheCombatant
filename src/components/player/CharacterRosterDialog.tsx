@@ -8,7 +8,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import type { CharacterSummary } from '../../types/character.ts';
 import { characterService } from '../../services/character/CharacterService.ts';
-import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { showCustomAlert, showCustomConfirm, showCustomPrompt } from '@core/ui/components/dialogs.js';
 import { CombatState } from '@core/state.js';
 import { CharacterCard } from './roster/CharacterCard.tsx';
 import { CreateCharacterModal } from './roster/CreateCharacterModal.tsx';
@@ -155,6 +155,76 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
     } finally {
       setIsActionInProgress(false);
     }
+  };
+
+  const handleImportJsonClick = () => {
+    const picker = document.getElementById('rosterImportFileInput') as HTMLInputElement | null;
+    if (picker) picker.click();
+  };
+
+  const handleImportFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async (evt) => {
+      try {
+        const rawContent = evt.target?.result as string;
+        let parsedInfo;
+        try {
+          parsedInfo = characterService.parseImportData(rawContent);
+        } catch (parseErr: any) {
+          showCustomAlert("Import Character", "Invalid file format: " + parseErr.message, "OK", "⚠️");
+          return;
+        }
+
+        const existing = await characterService.findExistingCharacterByName(parsedInfo.originalName);
+
+        const executeImport = async (chosenName: string) => {
+          try {
+            setIsActionInProgress(true);
+            const imported = await characterService.importCharacterFromJson(rawContent, chosenName);
+            await loadCharacters();
+            showCustomConfirm(
+              "Import Character",
+              `Character <strong>"${imported.name}"</strong> was successfully added to your Roster!<br/><br/>Would you like to switch to this character now?`,
+              async () => {
+                const success = await characterService.switchActiveCharacter(imported.id);
+                if (success) {
+                  setActiveCharId(imported.id);
+                  onClose();
+                }
+              },
+              () => {
+                // Stay on current character
+              }
+            );
+          } catch (err: any) {
+            showCustomAlert("Import Error", "Failed to import character: " + (err.message || err), "OK", "⚠️");
+          } finally {
+            setIsActionInProgress(false);
+          }
+        };
+
+        if (existing) {
+          showCustomPrompt(
+            "Character Already Exists",
+            `You already have a Character named <strong>"${parsedInfo.originalName}"</strong> in your Roster.<br/><br/>Would you like to rename the imported character?`,
+            `${parsedInfo.originalName} (Copy)`,
+            "Import",
+            (enteredName: string) => {
+              executeImport(enteredName || parsedInfo.originalName);
+            }
+          );
+        } else {
+          await executeImport(parsedInfo.originalName);
+        }
+      } catch (err: any) {
+        showCustomAlert("Import Error", "Error reading file: " + err.message, "OK", "⚠️");
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
   };
 
   return createPortal(
@@ -317,6 +387,37 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
               <span>Create via Wizard</span>
             </button>
           )}
+
+          <button
+            type="button"
+            onClick={handleImportJsonClick}
+            disabled={isActionInProgress}
+            className="btn"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              padding: '4px 10px',
+              fontSize: '11px',
+              fontFamily: 'var(--font-title)',
+              background: 'rgba(200, 169, 110, 0.2)',
+              border: '1px solid var(--pb)',
+              borderRadius: '3px',
+              cursor: 'pointer',
+            }}
+            title="Import character from a JSON file directly into your roster"
+          >
+            <span>📁</span>
+            <span>Import JSON</span>
+          </button>
+
+          <input
+            type="file"
+            id="rosterImportFileInput"
+            accept=".json,application/json"
+            style={{ display: 'none' }}
+            onChange={handleImportFileChange}
+          />
 
           <button
             type="button"
