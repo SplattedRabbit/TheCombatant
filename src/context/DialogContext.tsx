@@ -16,6 +16,7 @@ import {
   RollBreakdownDialog,
   SampleChoiceDialog,
   ParchmentMessageModal,
+  LootRevealModal,
 } from '../components/dialogs/BaseDialogs';
 import { AttackChoiceDialog } from '../components/dialogs/AttackChoiceDialog';
 import { DamageChoiceDialog } from '../components/dialogs/DamageChoiceDialog';
@@ -48,6 +49,7 @@ export interface DialogContextType {
   showSpellDetails: (spell: any, spellKey: string, pc: any, onLearnSpell?: (spellKey: string, shouldLearn: boolean) => void) => void;
   showSpellCreator: (pc: any) => void;
   showParchmentMessage: (text: string, sender?: string) => { dismiss: () => void };
+  showLootReveal: (item: any, category?: string, onAcknowledge?: () => void) => void;
   closeAllDialogs: () => void;
 }
 
@@ -291,6 +293,17 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     };
   }, []);
 
+  const showLootReveal = useCallback((item: any, category: string = 'items', onAcknowledge?: () => void) => {
+    pushModal('lootReveal', (id) => ({
+      item,
+      category,
+      onClose: () => {
+        closeDialog(id);
+        if (onAcknowledge) onAcknowledge();
+      },
+    }));
+  }, [closeDialog, pushModal]);
+
   // Bridge synchronization: required for dialogs.js (Vanilla JS) to trigger React dialogs
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -320,6 +333,7 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       showSpellDetailsDialog: showSpellDetails,
       showSpellCreatorWizard: showSpellCreator,
       showParchmentMessage: showParchmentMessage,
+      showLootRevealDialog: showLootReveal,
     };
 
     (window as any).__REACT_DIALOG_BRIDGE__ = bridge;
@@ -333,7 +347,7 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     showAlert, showConfirm, showPrompt, showHealingRoll, showItemDamage, showNewDayTemplate,
     showRollBreakdown, showSampleChoice, showAttackChoice, showDamageChoice, showPrepareSpell,
     showCastSpontaneousSpell, showSpellScroll, showFeatScroll, showBuffDetails, showCastSuccess,
-    showSpellDetails, showSpellCreator, showParchmentMessage
+    showSpellDetails, showSpellCreator, showParchmentMessage, showLootReveal
   ]);
 
   return (
@@ -358,6 +372,7 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         showSpellDetails,
         showSpellCreator,
         showParchmentMessage,
+        showLootReveal,
         closeAllDialogs,
       }}
     >
@@ -386,6 +401,7 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
               {activeModal.type === 'castSuccess' && <CastSuccessDialog {...activeModal.props} />}
               {activeModal.type === 'spellDetails' && <SpellDetailsDialog {...activeModal.props} />}
               {activeModal.type === 'spellCreator' && <SpellCreatorDialog {...activeModal.props} />}
+              {activeModal.type === 'lootReveal' && <LootRevealModal {...activeModal.props} />}
             </React.Fragment>
           ))}
         </>,

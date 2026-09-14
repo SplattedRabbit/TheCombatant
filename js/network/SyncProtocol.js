@@ -354,6 +354,17 @@ export function applyIncomingDelta(packet, role, conn = null) {
       return;
     }
 
+    // 3e. Item Gift received on Client (Loot Reveal Animation)
+    if (packet.type === 'item_gift' && role === 'client') {
+      const activePC = CombatState.getActivePC();
+      if (activePC && activePC.id === packet.targetPCId) {
+        import('../ui/dialogs/BaseDialogs.js').then(({ showLootRevealDialog }) => {
+          showLootRevealDialog(packet.item, packet.category);
+        });
+      }
+      return;
+    }
+
     // 4. Host Board Diff applying on Client
     if (packet.type === 'state_diff' && role === 'client') {
       const activePC = CombatState.getActivePC();

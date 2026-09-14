@@ -4,6 +4,7 @@ import { CustomAlertModal } from '../components/dialogs/modals/CustomAlertModal'
 import { CustomConfirmModal } from '../components/dialogs/modals/CustomConfirmModal';
 import { CustomPromptModal } from '../components/dialogs/modals/CustomPromptModal';
 import { ParchmentMessageModal } from '../components/dialogs/modals/ParchmentMessageModal';
+import { LootRevealModal } from '../components/dialogs/modals/LootRevealModal';
 import { useDialog } from '../context/DialogContext';
 import { renderWithProviders } from '../test/test-utils';
 
@@ -141,6 +142,50 @@ describe('Modal & Dialog UI Components (Task 6.1.2)', () => {
       const closeBtn = screen.getByRole('button', { name: /Close/i });
       fireEvent.click(closeBtn);
       expect(handleClose).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('LootRevealModal', () => {
+    it('renders loot chest, displays item details after opening, and handles claim', async () => {
+      vi.useFakeTimers();
+      const handleClose = vi.fn();
+      const weapon = {
+        name: 'Vorpal Greatsword',
+        enhancement: 3,
+        damage: '2d6',
+        critThreat: 19,
+        critMult: 2,
+        extraDamage: '+1d6 Cold',
+      };
+
+      render(
+        <LootRevealModal
+          item={weapon}
+          category="weapons"
+          onClose={handleClose}
+        />
+      );
+
+      // Initially closed chest with teaser
+      expect(screen.getByText(/Ein Schatz öffnet sich.../i)).toBeInTheDocument();
+
+      // Fast-forward animation timers to trigger opening and reveal
+      act(() => {
+        vi.advanceTimersByTime(2000);
+      });
+
+      // Item card should now be visible
+      expect(screen.getByText(/Belohnung des Spielleiters/i)).toBeInTheDocument();
+      expect(screen.getByText(/\+3 Vorpal Greatsword/i)).toBeInTheDocument();
+      expect(screen.getByText(/Schaden: 2d6/i)).toBeInTheDocument();
+
+      // Click claim button
+      const claimBtn = screen.getByRole('button', { name: /In Empfang nehmen/i });
+      expect(claimBtn).toBeInTheDocument();
+      fireEvent.click(claimBtn);
+      expect(handleClose).toHaveBeenCalledTimes(1);
+
+      vi.useRealTimers();
     });
   });
 

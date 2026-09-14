@@ -7,6 +7,8 @@
 import React from 'react';
 import { CombatState } from '@core/state.js';
 import { DialogOverlay } from './DialogOverlay.tsx';
+import { realtimeManager } from '../../../services/network/RealtimeManager.ts';
+import { useDialog } from '../../../context/DialogContext.tsx';
 
 interface DistributeItemModalProps {
   itemName: string;
@@ -23,8 +25,35 @@ export const DistributeItemModal: React.FC<DistributeItemModalProps> = ({
   pcs,
   onClose,
 }) => {
+  const dialog = useDialog();
+
   const handleGive = (pcId: string) => {
+    // 1. Clone item data before removing from stash
+    const state = CombatState.getState();
+    const item = state.meta?.dmStash?.[category]?.[index];
+    const itemData = item ? JSON.parse(JSON.stringify(item)) : { name: itemName };
+
+    // 2. Transfer item in state and sync
     CombatState.giveStashItemToPC(category, index, pcId);
+
+    // 3. Broadcast loot gift packet to connected player client(s)
+    try {
+      realtimeManager.broadcastDiff({
+        type: 'item_gift',
+        targetPCId: pcId,
+        category,
+        item: itemData,
+      });
+    } catch (err) {
+      console.warn('[DistributeItemModal] Failed to broadcast item_gift:', err);
+    }
+
+    // 4. If current active local PC is the recipient (e.g. testing locally or host player), trigger reveal immediately
+    const activePC = CombatState.getActivePC();
+    if (activePC && activePC.id === pcId) {
+      dialog.showLootReveal(itemData, category);
+    }
+
     onClose();
   };
 

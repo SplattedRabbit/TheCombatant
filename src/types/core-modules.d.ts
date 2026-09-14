@@ -533,5 +533,7 @@ declare module '*acf-data.js' {
   export function getConflictingACFs(targetAcfId: string, activeAcfIds?: string[]): string[];
 }
 
-
-
+declare module '*js/ui/dialogs/BaseDialogs.js' {
+  export function showParchmentMessage(text: string, sender?: string): { dismiss: () => void };
+  export function showLootRevealDialog(item: any, category?: string, onAcknowledge?: () => void): { dismiss: () => void };
+}

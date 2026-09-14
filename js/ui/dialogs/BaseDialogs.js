@@ -7,6 +7,9 @@ const getBridge = () => {
   if (typeof window !== 'undefined' && window.__REACT_DIALOG_BRIDGE__) {
     return window.__REACT_DIALOG_BRIDGE__;
   }
+  if (typeof globalThis !== 'undefined' && globalThis.__REACT_DIALOG_BRIDGE__) {
+    return globalThis.__REACT_DIALOG_BRIDGE__;
+  }
   return null;
 };
 
@@ -46,4 +49,45 @@ export function showParchmentMessage(text, sender = 'Spielleiter') {
   return {
     dismiss: () => {}
   };
+}
+
+export function showLootRevealDialog(item, category = 'items', onAcknowledge) {
+  const bridge = getBridge();
+  if (bridge && bridge.showLootRevealDialog) {
+    return bridge.showLootRevealDialog(item, category, onAcknowledge);
+  }
+
+  // JSDOM Test Fallback / DOM fallback
+  if (typeof document !== 'undefined') {
+    const existing = document.getElementById('lootRevealOverlay');
+    if (existing) existing.remove();
+
+    const overlay = document.createElement('div');
+    overlay.id = 'lootRevealOverlay';
+    overlay.innerHTML = `
+      <div class="loot-reveal-box">
+        <span class="item-name">${item?.name || 'Gegenstand'}</span>
+        <button class="loot-claim-btn">In Empfang nehmen</button>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const btn = overlay.querySelector('.loot-claim-btn');
+    if (btn) {
+      btn.onclick = () => {
+        overlay.remove();
+        if (onAcknowledge) onAcknowledge();
+      };
+    }
+    return {
+      dismiss: () => {
+        overlay.remove();
+        if (onAcknowledge) onAcknowledge();
+      }
+    };
+  }
+
+  console.log('showLootRevealDialog stub called:', item, category);
+  if (onAcknowledge) onAcknowledge();
+  return { dismiss: () => {} };
 }
