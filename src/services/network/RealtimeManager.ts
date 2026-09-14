@@ -28,6 +28,7 @@ export class RealtimeManager {
 
   private client: any;
   private activeChannel: any | null = null;
+  private localBroadcastChannel: BroadcastChannel | null = null;
   private currentCampaignId: string | null = null;
   private currentUserId: string | null = null;
   private currentRole: 'host' | 'player' = 'player';
@@ -77,6 +78,10 @@ export class RealtimeManager {
     return this.currentCampaignId;
   }
 
+  public getCurrentCampaignId(): string | null {
+    return this.currentCampaignId;
+  }
+
   /**
    * Alias to broadcast a generic event.
    */
@@ -122,20 +127,46 @@ export class RealtimeManager {
       await this.leaveCampaign();
     }
 
-    this.currentCampaignId = campaignId;
+    const cleanCampaignId = campaignId.trim();
+    const roomTopic = cleanCampaignId.toUpperCase().replace(/\s+/g, '-');
+    this.currentCampaignId = cleanCampaignId;
     this.currentUserId = userProfile.userId;
     this.currentRole = role;
     this.currentUserProfile = userProfile;
     this.updateStatus('connecting');
 
+    // Initialize local cross-tab BroadcastChannel for zero-latency local sync
+    if (typeof BroadcastChannel !== 'undefined') {
+      try {
+        if (this.localBroadcastChannel) {
+          this.localBroadcastChannel.close();
+        }
+        this.localBroadcastChannel = new BroadcastChannel(`dnd_combat_room_${roomTopic}`);
+        if (typeof (this.localBroadcastChannel as any).unref === 'function') {
+          (this.localBroadcastChannel as any).unref();
+        }
+        this.localBroadcastChannel.onmessage = (event) => {
+          if (event?.data?.type === 'combat_event' && event.data.payload) {
+            this.handleIncomingEnvelope(event.data.payload);
+          }
+        };
+      } catch (bcErr) {
+        console.warn('[RealtimeManager] BroadcastChannel init skipped:', bcErr);
+      }
+    }
+
     try {
       if (!this.client || typeof this.client.channel !== 'function') {
-        console.warn('[RealtimeManager] No Realtime client available, fallback to offline');
+        console.warn('[RealtimeManager] No Realtime client available, fallback to local BroadcastChannel');
+        if (this.localBroadcastChannel) {
+          this.updateStatus('connected');
+          return true;
+        }
         this.updateStatus('disconnected');
         return false;
       }
 
-      const channelName = `campaign:${campaignId}`;
+      const channelName = `campaign:${cleanCampaignId}`;
       const channel = this.client.channel(channelName, {
         config: {
           presence: {
@@ -231,6 +262,15 @@ export class RealtimeManager {
       this.activeChannel = null;
     }
 
+    if (this.localBroadcastChannel) {
+      try {
+        this.localBroadcastChannel.close();
+      } catch (err) {
+        console.warn('[RealtimeManager] Error while closing local BroadcastChannel:', err);
+      }
+      this.localBroadcastChannel = null;
+    }
+
     this.currentCampaignId = null;
     this.updateStatus('disconnected');
     this.notifyPresence([]);
@@ -269,7 +309,7 @@ export class RealtimeManager {
    * Low-level envelope broadcaster.
    */
   public async broadcast<T>(eventType: RealtimeEventType, payload: T): Promise<boolean> {
-    if (!this.activeChannel || this.status !== 'connected') {
+    if (this.status !== 'connected') {
       return false;
     }
 
@@ -286,6 +326,22 @@ export class RealtimeManager {
     // Mark our own event as processed to prevent local echo
     this.processedEventIds.add(envelope.eventId);
     this.pruneEventCache();
+
+    // Mirror to local BroadcastChannel for instant local cross-tab sync
+    if (this.localBroadcastChannel) {
+      try {
+        this.localBroadcastChannel.postMessage({
+          type: 'combat_event',
+          payload: envelope,
+        });
+      } catch (bcErr) {
+        // ignore
+      }
+    }
+
+    if (!this.activeChannel) {
+      return Boolean(this.localBroadcastChannel);
+    }
 
     try {
       if (typeof this.activeChannel.send === 'function') {

@@ -8,6 +8,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import type { CampaignSummary } from '../../types/campaign.ts';
 import { campaignService, generateInviteCode } from '../../services/campaign/CampaignService.ts';
+import { storageService } from '../../services/storage/StorageService.ts';
+import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
 import { CampaignCard } from './campaign/CampaignCard.tsx';
 import { CreateCampaignModal } from './campaign/CreateCampaignModal.tsx';
@@ -68,6 +70,13 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
       const success = await campaignService.switchActiveCampaign(campId);
       if (success) {
         setActiveCampId(campId);
+        const targetCamp = campaigns.find((c) => c.id === campId);
+        const roomCode = targetCamp?.inviteCode || campId;
+        const userId = storageService.getCurrentUserId() || 'dm-host';
+        await realtimeManager.joinCampaign(roomCode, 'host', {
+          userId,
+          userName: 'Dungeon Master',
+        });
         onClose();
       }
     } finally {

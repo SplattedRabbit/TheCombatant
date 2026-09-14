@@ -7,7 +7,7 @@
 
 import type { CampaignSummary, CampaignMember, CampaignCreateInput, CampaignFilterOptions } from '../../types/campaign.ts';
 import { storageService } from '../storage/StorageService.ts';
-import { supabase as defaultSupabaseClient } from '../supabase/supabaseClient.ts';
+import { supabase as defaultSupabaseClient, isSupabaseConfigured } from '../supabase/supabaseClient.ts';
 import { generateUUID } from '../../utils/uuid.ts';
 import { applyLoadedState } from '../../../js/state/StorageManager.js';
 import { createInitialState } from '../../../js/models/model-core.js';
@@ -245,79 +245,70 @@ export class CampaignService {
   public async joinCampaignByCode(inviteCode: string, characterId?: string | null): Promise<CampaignMember | null> {
     try {
       const cleanCode = inviteCode.trim().toUpperCase().replace(/\s+/g, '-');
-      const client = defaultSupabaseClient;
-
-      // 1. Search campaign by invite_code
-      const { data: campaign, error } = await client
-        .from('campaigns')
-        .select('id, name')
-        .eq('invite_code', cleanCode)
-        .eq('is_active', true)
-        .single();
-
-      if (error || !campaign) {
-        console.warn(`[CampaignService] No active campaign found with code ${cleanCode}`);
-        return null;
-      }
+      if (!cleanCode) return null;
 
       const currentUserId = storageService.getCurrentUserId();
+      const client = defaultSupabaseClient;
 
-      // 2. If user is guest / not logged in, return lightweight session member
-      if (!currentUserId) {
-        return {
-          id: generateUUID(),
-          campaignId: (campaign as any).id,
-          userId: 'guest-' + generateUUID().slice(0, 8),
-          characterId: characterId || null,
-          role: 'PLAYER',
-          joinedAt: new Date().toISOString(),
-        };
-      }
+      // 1. Try to search campaign in cloud DB if available and configured
+      let cloudCampaign: any = null;
+      if (isSupabaseConfigured()) {
+        try {
+          const { data: campaign, error } = await client
+            .from('campaigns')
+            .select('id, name')
+            .eq('invite_code', cleanCode)
+            .eq('is_active', true)
+            .maybeSingle();
 
-      // 3. For authenticated users, persist or update in campaign_members table
-      const { data: member, error: memberError } = await (client.from('campaign_members') as any)
-        .upsert(
-          {
-            campaign_id: (campaign as any).id,
-            user_id: currentUserId,
-            character_id: characterId || null,
-            role: 'PLAYER',
-          },
-          { onConflict: 'campaign_id,user_id' }
-        )
-        .select()
-        .single();
-
-      if (memberError || !member) {
-        // Fallback: Check if already existing member
-        const { data: existing } = await client
-          .from('campaign_members')
-          .select()
-          .eq('campaign_id', (campaign as any).id)
-          .eq('user_id', currentUserId)
-          .maybeSingle();
-
-        if (existing) {
-          return {
-            id: (existing as any).id,
-            campaignId: (existing as any).campaign_id,
-            userId: (existing as any).user_id,
-            characterId: characterId || (existing as any).character_id,
-            role: (existing as any).role as 'PLAYER',
-            joinedAt: (existing as any).joined_at,
-          };
+          if (!error && campaign) {
+            cloudCampaign = campaign;
+          }
+        } catch (cloudErr) {
+          console.warn('[CampaignService] Cloud campaign lookup skipped/failed:', cloudErr);
         }
-
-        throw memberError || new Error('Failed to join campaign');
       }
 
+      // 2. If user is authenticated and cloud campaign exists, try to persist membership
+      if (currentUserId && cloudCampaign?.id) {
+        try {
+          const { data: member, error: memberError } = await (client.from('campaign_members') as any)
+            .upsert(
+              {
+                campaign_id: cloudCampaign.id,
+                user_id: currentUserId,
+                character_id: characterId || null,
+                role: 'PLAYER',
+              },
+              { onConflict: 'campaign_id,user_id' }
+            )
+            .select()
+            .single();
+
+          if (!memberError && member) {
+            return {
+              id: member.id,
+              campaignId: cleanCode,
+              userId: member.user_id,
+              characterId: member.character_id,
+              role: member.role as 'PLAYER',
+              joinedAt: member.joined_at,
+            };
+          }
+        } catch (memberErr) {
+          console.warn('[CampaignService] Cloud member upsert skipped/failed:', memberErr);
+        }
+      }
+
+      // 3. Resilient Direct Room Join (works offline, in local guest mode, and cloud fallback):
+      // Both DM and player connect directly to the room channel matching cleanCode.
       return {
-        id: member.id,
-        campaignId: member.campaign_id,
-        userId: member.user_id,
-        characterId: member.character_id,
-        role: member.role as 'PLAYER',
-        joinedAt: member.joined_at,
+        id: generateUUID(),
+        campaignId: cleanCode,
+        userId: currentUserId || 'guest-' + generateUUID().slice(0, 8),
+        characterId: characterId || null,
+        role: 'PLAYER',
+        joinedAt: new Date().toISOString(),
       };
     } catch (err) {
       console.error(`[CampaignService] Error joining campaign with code ${inviteCode}:`, err);

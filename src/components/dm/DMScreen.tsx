@@ -50,8 +50,11 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
       }
 
       if (activeCampId) {
+        const campaigns = await campaignService.listCampaigns();
+        const activeCamp = campaigns.find((c) => c.id === activeCampId) || campaigns[0];
+        const roomCode = activeCamp?.inviteCode || activeCampId;
         const userId = storageService.getCurrentUserId() || 'dm-host';
-        await realtimeManager.joinCampaign(activeCampId, 'host', {
+        await realtimeManager.joinCampaign(roomCode, 'host', {
           userId,
           userName: 'Dungeon Master',
         });

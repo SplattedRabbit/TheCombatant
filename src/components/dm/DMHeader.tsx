@@ -8,12 +8,14 @@
  * @depends   React, @core/state.js
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CombatState } from '@core/state.js';
 import type { EncounterMeta } from '../../types/combat';
 import { UserMenu } from '../auth/UserMenu';
 import { CampaignManagerDialog } from './CampaignManagerDialog.tsx';
 import { TablePresenceBar } from '../shared/TablePresenceBar.tsx';
+import { campaignService } from '../../services/campaign/CampaignService.ts';
+import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 
 interface DMHeaderProps {
   meta: EncounterMeta;
@@ -21,6 +23,22 @@ interface DMHeaderProps {
 
 export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
   const [isCampaignDialogOpen, setIsCampaignDialogOpen] = useState<boolean>(false);
+  const [activeCode, setActiveCode] = useState<string>('');
+  const [isCopied, setIsCopied] = useState<boolean>(false);
+
+  useEffect(() => {
+    const updateCode = async () => {
+      const activeId = campaignService.getActiveCampaignId();
+      const campaigns = await campaignService.listCampaigns();
+      const current = campaigns.find((c) => c.id === activeId) || campaigns[0];
+      if (current?.inviteCode) {
+        setActiveCode(current.inviteCode);
+      } else if (realtimeManager.getCurrentCampaignId()) {
+        setActiveCode(realtimeManager.getCurrentCampaignId() || '');
+      }
+    };
+    updateCode();
+  }, [isCampaignDialogOpen]);
 
   const handleChangeMeta = (key: string, value: string) => {
     CombatState.updateMeta(key, value);
@@ -59,6 +77,22 @@ export const DMHeader: React.FC<DMHeaderProps> = ({ meta }) => {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <TablePresenceBar />
+          {activeCode && (
+            <button
+              type="button"
+              onClick={() => {
+                navigator.clipboard.writeText(activeCode);
+                setIsCopied(true);
+                setTimeout(() => setIsCopied(false), 2000);
+              }}
+              className="hdr-action-btn"
+              style={isCopied ? { background: '#065f46', color: '#ffffff', borderColor: '#059669' } : { fontFamily: 'monospace', fontWeight: 'bold' }}
+              title={`Active Campaign Invite Code: ${activeCode}. Click to copy for players.`}
+            >
+              <span>{isCopied ? '✓' : '📋'}</span>
+              <span>{isCopied ? 'Copied!' : activeCode}</span>
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setIsCampaignDialogOpen(true)}
