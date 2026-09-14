@@ -14,9 +14,14 @@ import { WeaponRegistry } from '../../../models/Weapon.js';
 export function updatePCWeapon(idx, key, val) {
   const pc = getActivePC();
   if (pc && pc.weapons && pc.weapons[idx]) {
-    pc.weapons[idx][key] = val;
-    if (key === 'hand' || key === 'isDoubleWielded') {
+    if (typeof key === 'object' && key !== null) {
+      pc.weapons[idx] = new Weapon({ ...pc.weapons[idx], ...key });
       recalculatePCStats(pc);
+    } else {
+      pc.weapons[idx][key] = val;
+      if (key === 'hand' || key === 'isDoubleWielded') {
+        recalculatePCStats(pc);
+      }
     }
     saveToStorage();
     syncPCToHost();

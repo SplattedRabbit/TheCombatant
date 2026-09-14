@@ -29,7 +29,12 @@ const createInitialState = () => {
       ort: '',
       xpBudget: '',
       xpVerteilt: '',
-      sitzung: ''
+      sitzung: '',
+      dmStash: {
+        weapons: [],
+        armors: [],
+        items: []
+      }
     },
     combatants: [],
     turn: 0,

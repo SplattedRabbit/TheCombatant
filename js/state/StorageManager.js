@@ -95,6 +95,9 @@ export function applyLoadedState(loadedState, preserveRole = true) {
     const currentRole = s.session?.role;
 
     s.meta = { ...s.meta, ...(loadedState.meta || {}) };
+    if (!s.meta.dmStash) {
+      s.meta.dmStash = { weapons: [], armors: [], items: [] };
+    }
     s.combatants = (loadedState.combatants || []).map(c => {
       const comb = createCombatant(c);
       if (comb.type === 'p') {

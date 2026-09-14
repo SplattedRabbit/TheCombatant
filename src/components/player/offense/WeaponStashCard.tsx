@@ -1,16 +1,13 @@
 /**
  * @module    WeaponStashCard
- * @summary   Renders a single weapon in the inventory including detail drawer (settings for Keen, extra damage, etc.).
+ * @summary   Renders a single weapon in the inventory with clean text display and an Edit button opening WeaponEditorModal.
  * @exports   WeaponStashCard
- * @reads     none (all details read from props w and pc)
- * @stateOps  updatePCWeapon, deletePCWeapon
- * @depends   React, @core/state.js, @core/models/Weapon.js
- * @notHere   Ausrüstungsslots -> ActiveEquipmentSlots.tsx | Rüstungsliste -> ArmorStashCard.tsx
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { WeaponRegistry } from '@core/models/Weapon.js';
+import { WeaponEditorModal } from '../../dialogs/modals/WeaponEditorModal.tsx';
 
 function isWeaponTwoHanded(w: any): boolean {
   if (!w) return false;
@@ -32,13 +29,14 @@ interface WeaponStashCardProps {
 export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
   w,
   idx,
-  isExpanded,
-  onToggleExpand,
   getRarityStyle,
   handleHandSelectChange,
   handleWeaponEquipToggle
 }) => {
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
   const rStyle = getRarityStyle(w.enhancement);
+  const typeDef = WeaponRegistry[w.type] || {};
+  const typeName = typeDef.nameEn || typeDef.name || w.type || 'Weapon';
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
@@ -49,7 +47,7 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
           flexDirection: 'column',
           border: rStyle.border,
           borderRadius: '4px',
-          padding: '5px 6px',
+          padding: '6px 8px',
           background: rStyle.background,
           boxShadow: rStyle.boxShadow,
           position: 'relative',
@@ -59,182 +57,114 @@ export const WeaponStashCard: React.FC<WeaponStashCardProps> = ({
         {w.isEquipped && (
           <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: 'var(--font-title)', fontWeight: 'bold', zIndex: 10 }}>Equipped</span>
         )}
+
+        {/* Top row: Name, Type Tag, and Delete button */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
-          <input
-            type="text"
-            value={w.name}
-            onChange={(e) => CombatState.updatePCWeapon(idx, 'name', e.target.value)}
-            className="cinput"
-            placeholder="Name"
-            style={{ fontSize: '9px', height: '18px', padding: '0 4px', flex: 1, fontWeight: 'bold', borderColor: 'rgba(200, 169, 110, 0.25)' }}
-          />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', overflow: 'hidden' }}>
+            <span style={{ fontWeight: 'bold', fontSize: '11px', fontFamily: 'var(--font-title)', color: 'var(--ink)' }}>
+              {w.name || typeName}
+            </span>
+            {w.enhancement > 0 && (
+              <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', background: 'rgba(139, 26, 26, 0.08)', padding: '0 4px', borderRadius: '2px' }}>
+                +{w.enhancement}
+              </span>
+            )}
+            <span style={{ fontSize: '8px', color: 'var(--inkm)', background: 'rgba(200, 169, 110, 0.15)', padding: '1px 5px', borderRadius: '3px' }}>
+              {typeName} ({w.damageDice || typeDef.damageDice || '1w8'}, {w.crit || typeDef.crit || '20/x2'})
+            </span>
+          </div>
+
           <button
+            type="button"
             onClick={() => CombatState.deletePCWeapon(idx)}
-            style={{ border: 'none', background: 'transparent', fontSize: '10px', cursor: 'pointer', height: '18px', width: '18px', color: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            title="Delete weapon"
+            style={{ border: 'none', background: 'transparent', fontSize: '11px', cursor: 'pointer', height: '18px', width: '18px', color: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             ✕
           </button>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <select
-            value={w.type}
-            onChange={(e) => CombatState.updatePCWeapon(idx, 'type', e.target.value)}
-            className="cinput"
-            style={{ fontSize: '7.5px', padding: '0 2px', height: '16px', flex: 1.2, cursor: 'pointer' }}
-          >
-            {Object.values(WeaponRegistry).map((def: any) => (
-              <option key={def.key} value={def.key}>{def.nameEn || def.name || def.nameDe}</option>
-            ))}
-          </select>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1px', flex: 0.6 }}>
-            <span style={{ fontSize: '7.5px', color: 'var(--inkm)' }}>+</span>
-            <input
-              type="number"
-              value={w.enhancement}
-              onChange={(e) => CombatState.updatePCWeapon(idx, 'enhancement', parseInt(e.target.value) || 0)}
-              className="cinput"
-              style={{ fontSize: '8px', height: '16px', width: '20px', padding: 0, textAlign: 'center' }}
-            />
+
+        {/* Bottom row: Grip / Hand, Equip, and Edit button */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            {isWeaponTwoHanded(w) ? (
+              <span style={{ fontSize: '8px', color: 'var(--inkl)', fontStyle: 'italic' }}>
+                {w.grip === 'rng' ? '🏹 Ranged (2H)' : '⚔️ Two-Handed'}
+              </span>
+            ) : (
+              <select
+                value={w.hand || 'main'}
+                onChange={(e) => handleHandSelectChange(idx, e.target.value)}
+                className="cinput"
+                style={{ fontSize: '7.5px', padding: '0 2px', height: '18px', cursor: 'pointer' }}
+              >
+                <option value="main">Main Hand</option>
+                <option value="off">Off-Hand</option>
+              </select>
+            )}
+
+            {w.isKeen && (
+              <span style={{ fontSize: '7px', color: '#8b6914', background: 'rgba(200, 169, 110, 0.2)', padding: '1px 4px', borderRadius: '2px', fontWeight: 'bold' }}>
+                KEEN
+              </span>
+            )}
+
+            {w.extraDamage && (
+              <span style={{ fontSize: '7px', color: 'var(--red)', background: 'rgba(139, 26, 26, 0.08)', padding: '1px 4px', borderRadius: '2px' }}>
+                +{w.extraDamage}
+              </span>
+            )}
           </div>
-          {isWeaponTwoHanded(w) ? (
-            <select className="cinput" disabled style={{ fontSize: '7.5px', height: '16px', flex: 1.1, opacity: 0.65, background: 'rgba(200,169,110,0.05)', textAlign: 'center' }}>
-              <option>{w.grip === 'rng' ? 'Ranged (2H)' : 'Two-Handed'}</option>
-            </select>
-          ) : (
-            <select
-              value={w.hand || 'main'}
-              onChange={(e) => handleHandSelectChange(idx, e.target.value)}
-              className="cinput"
-              style={{ fontSize: '7.5px', padding: '0 1px', height: '16px', flex: 1.1, cursor: 'pointer' }}
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleWeaponEquipToggle(idx, w)}
+              style={{
+                padding: '0 8px',
+                fontSize: '8px',
+                fontWeight: 'bold',
+                fontFamily: 'var(--font-title)',
+                height: '20px',
+                lineHeight: 1,
+                borderRadius: '2px',
+                background: w.isEquipped ? 'rgba(200, 169, 110, 0.15)' : 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                border: w.isEquipped ? '0.5px solid var(--pb)' : '0.5px solid #8b6914',
+                color: w.isEquipped ? 'var(--ink)' : '#ffffff',
+                cursor: 'pointer'
+              }}
             >
-              <option value="main">Main Hand</option>
-              <option value="off">Off-Hand</option>
-            </select>
-          )}
-          <button
-            type="button"
-            className="btn"
-            onClick={() => handleWeaponEquipToggle(idx, w)}
-            style={{
-              padding: '0 8px',
-              fontSize: '7.5px',
-              fontWeight: 'bold',
-              fontFamily: 'var(--font-title)',
-              height: '18px',
-              lineHeight: 1,
-              borderRadius: '2px',
-              background: w.isEquipped ? 'rgba(200, 169, 110, 0.15)' : 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-              border: w.isEquipped ? '0.5px solid var(--pb)' : '0.5px solid #8b6914',
-              color: w.isEquipped ? 'var(--ink)' : '#ffffff',
-              cursor: 'pointer'
-            }}
-          >
-            {w.isEquipped ? 'Unequip' : '⚡ Equip'}
-          </button>
-          <button
-            className="xbtn"
-            onClick={onToggleExpand}
-            style={{ padding: 0, border: 'none', background: 'transparent', fontSize: '11px', cursor: 'pointer', height: '16px', width: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--inkm)' }}
-          >
-            ⚙️
-          </button>
+              {w.isEquipped ? 'Unequip' : '⚡ Equip'}
+            </button>
+
+            <button
+              type="button"
+              className="xbtn"
+              onClick={() => setIsEditorOpen(true)}
+              style={{
+                fontSize: '8px',
+                padding: '2px 6px',
+                height: '20px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '2px',
+                cursor: 'pointer',
+                fontFamily: 'var(--font-title)'
+              }}
+            >
+              ⚙️ Edit
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Weapon Detail Drawer */}
-      {isExpanded && (
-        <div style={{ display: 'flex', background: 'rgba(200,169,110,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderTop: 'none', padding: '4px 6px', fontSize: '8px', marginTop: '-2px', marginBottom: '2px', borderRadius: '0 0 3px 3px', flexDirection: 'column', gap: '4px' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', width: '100%' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Extra Atk:</span>
-              <input
-                type="text"
-                value={w.attackBonus || ''}
-                onChange={(e) => CombatState.updatePCWeapon(idx, 'attackBonus', e.target.value)}
-                className="cinput"
-                placeholder="+0"
-                style={{ width: '32px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-              />
-            </div>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer', color: 'var(--inkm)', margin: 0 }}>
-              <input
-                type="checkbox"
-                checked={w.isKeen || false}
-                onChange={(e) => CombatState.updatePCWeapon(idx, 'isKeen', e.target.checked)}
-                style={{ margin: 0, width: '10px', height: '10px' }}
-              />
-              Keen
-            </label>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', flex: 1, minWidth: '150px' }}>
-              <span style={{ color: 'var(--inkl)', flexShrink: 0 }}>Extra Damage:</span>
-              <select
-                value={w.extraDamageDice || ''}
-                onChange={(e) => CombatState.updatePCWeapon(idx, 'extraDamageDice', e.target.value)}
-                className="cinput"
-                style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', width: '45px', flexShrink: 0, cursor: 'pointer' }}
-              >
-                <option value="">None</option>
-                {['1w2', '1w3', '1w4', '1w6', '1w8', '1w10', '1w12', '2w4', '2w6', '2w8', '2w10', '3w6', '3w8', '4w6'].map(d => (
-                  <option key={d} value={d}>{d}</option>
-                ))}
-              </select>
-              <select
-                value={w.extraDamageType || ''}
-                onChange={(e) => CombatState.updatePCWeapon(idx, 'extraDamageType', e.target.value)}
-                className="cinput"
-                style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', flex: 1, minWidth: 0, cursor: 'pointer' }}
-              >
-                <option value="">—</option>
-                {['Fire', 'Cold', 'Electricity', 'Acid', 'Sonic', 'Bludgeoning', 'Piercing', 'Slashing', 'Force', 'Holy'].map(t => (
-                  <option key={t} value={t}>{t}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', width: '100%' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Grip Override:</span>
-              <select
-                value={w.gripOverride || ''}
-                onChange={(e) => CombatState.updatePCWeapon(idx, 'gripOverride', e.target.value)}
-                className="cinput"
-                style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', cursor: 'pointer' }}
-              >
-                <option value="">Default</option>
-                <option value="1h">1-Hand</option>
-                <option value="2h">2-Hand</option>
-                <option value="sec">Shield hand</option>
-                <option value="rng">Ranged</option>
-                <option value="unarmed">Unarmed</option>
-              </select>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Damage Override:</span>
-              <select
-                value={w.damageDiceOverride || ''}
-                onChange={(e) => CombatState.updatePCWeapon(idx, 'damageDiceOverride', e.target.value)}
-                className="cinput"
-                style={{ fontSize: '7.5px', height: '14px', padding: '0 1px', cursor: 'pointer' }}
-              >
-                <option value="">Default</option>
-                {['1w2', '1w3', '1w4', '1w6', '1w8', '1w10', '1w12', '2w4', '2w6', '2w8', '2w10', '3w6', '3w8', '4w6'].map(d => (
-                  <option key={d} value={d}>{d}</option>
-                ))}
-              </select>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Crit Override:</span>
-              <input
-                type="text"
-                value={w.critOverride || ''}
-                onChange={(e) => CombatState.updatePCWeapon(idx, 'critOverride', e.target.value)}
-                className="cinput"
-                placeholder="Default"
-                style={{ width: '70px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-              />
-            </div>
-          </div>
-        </div>
+      {isEditorOpen && (
+        <WeaponEditorModal
+          weapon={w}
+          onSave={(updatedWeapon) => CombatState.updatePCWeapon(idx, updatedWeapon)}
+          onClose={() => setIsEditorOpen(false)}
+        />
       )}
     </div>
   );

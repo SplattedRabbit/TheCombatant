@@ -117,8 +117,19 @@ import {
   loadSampleData
 } from './state/EncounterManager.js';
 
+import {
+  addStashItem,
+  updateStashItem,
+  deleteStashItem,
+  giveStashItemToPC
+} from './state/DMStash.js';
+
 // Named exports
 export {
+  addStashItem,
+  updateStashItem,
+  deleteStashItem,
+  giveStashItemToPC,
   getState,
   registerStateChangedCallback,
   registerPCChangedCallback,
@@ -219,6 +230,10 @@ export {
 
 // Object export facade
 export const CombatState = {
+  addStashItem,
+  updateStashItem,
+  deleteStashItem,
+  giveStashItemToPC,
   updateSession,
   getState,
   saveToStorage,

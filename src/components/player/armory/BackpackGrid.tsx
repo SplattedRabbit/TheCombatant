@@ -70,18 +70,18 @@ export const BackpackGrid: React.FC<BackpackGridProps> = ({
             style={{ width: '95px', fontSize: '9.5px', height: '24px', boxSizing: 'border-box' }}
           >
             <option value="all">All Slots</option>
-            <option value="head">👑 Head</option>
-            <option value="face">👓 Face</option>
-            <option value="neck">📿 Neck</option>
-            <option value="shoulders">🧥 Shoulders</option>
-            <option value="torso">🥋 Torso</option>
-            <option value="body">👘 Body</option>
-            <option value="wrists">🦾 Wrists</option>
-            <option value="hands">🧤 Hands</option>
-            <option value="waist">🎗️ Waist</option>
-            <option value="feet">🥾 Feet</option>
-            <option value="rings">💍 Rings</option>
-            <option value="slotless">🎒 Slotless</option>
+            <option value="head">Head</option>
+            <option value="face">Face</option>
+            <option value="neck">Neck</option>
+            <option value="shoulders">Shoulders</option>
+            <option value="torso">Torso</option>
+            <option value="body">Body</option>
+            <option value="wrists">Wrists</option>
+            <option value="hands">Hands</option>
+            <option value="waist">Waist</option>
+            <option value="feet">Feet</option>
+            <option value="rings">Rings</option>
+            <option value="slotless">Slotless</option>
           </select>
         </div>
 

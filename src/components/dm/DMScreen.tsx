@@ -15,6 +15,7 @@ import { InitBar } from './InitBar';
 import { DMCombatantsTable } from './DMCombatantsTable';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { DMToolbox } from './DMToolbox';
+import { DMStashTab } from './DMStashTab';
 import { campaignService } from '../../services/campaign/CampaignService.ts';
 import { storageService } from '../../services/storage/StorageService.ts';
 import { showCustomConfirm, showCustomAlert, showSampleChoiceDialog } from '@core/ui/components/dialogs.js';
@@ -25,6 +26,7 @@ interface DMScreenProps {
 }
 
 export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
+  const [activeTab, setActiveTab] = useState<'combat' | 'stash'>('combat');
   const [isSystemOpen, setIsSystemOpen] = useState(false);
   const systemBtnRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -209,102 +211,128 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
         round={state.meta.round} 
       />
 
-      {/* Control row */}
-      <div className="ctrl-row no-print" style={{ position: 'relative', zIndex: 100 }}>
-        <div className="legend">
-          <div className="leg-item">
-            <div className="leg-dot dot-p"></div>
-            Player
-          </div>
-          <div className="leg-item">
-            <div className="leg-dot dot-e"></div>
-            Enemy
-          </div>
-          <div className="leg-item">
-            <div className="leg-dot dot-n"></div>
-            NPC
-          </div>
-          <span>· ▼ active turn</span>
-        </div>
+      {/* DM Interface Tabs */}
+      <div className="no-print" style={{ display: 'flex', gap: '8px', marginTop: '8px', marginBottom: '10px' }}>
+        <button
+          type="button"
+          className={`btn ${activeTab === 'combat' ? 'btn-p' : ''}`}
+          onClick={() => setActiveTab('combat')}
+          style={{ fontFamily: 'var(--font-title)', fontSize: '11px', padding: '4px 14px', cursor: 'pointer' }}
+        >
+          ⚔️ Encounter
+        </button>
+        <button
+          type="button"
+          className={`btn ${activeTab === 'stash' ? 'btn-p' : ''}`}
+          onClick={() => setActiveTab('stash')}
+          style={{ fontFamily: 'var(--font-title)', fontSize: '11px', padding: '4px 14px', cursor: 'pointer' }}
+        >
+          💰 DM Stash
+        </button>
+      </div>
 
-        <div className="btns">
-          <button className="btn" onClick={handlePrev}>◀ Back</button>
-          <button className="btn btn-p" onClick={handleNext}>Next Turn ▶</button>
-          <button className="btn" onClick={handleNewRound}>New Round +</button>
-          <button className="btn" onClick={handleReset}>⟳ Reset</button>
-          <div style={{ position: 'relative', display: 'inline-flex' }}>
-            <button 
-              className={`btn ${isSystemOpen ? 'active' : ''}`}
-              ref={systemBtnRef} 
-              onClick={() => setIsSystemOpen(!isSystemOpen)}
-              style={{ height: '100%', display: 'inline-flex', alignItems: 'center', gap: '3px', margin: 0 }}
-            >
-              <span>⚙️</span>
-              <span>System</span>
-            </button>
-            {isSystemOpen && (
-              <div 
-                className="system-dropdown no-print open" 
-                ref={dropdownRef}
-                style={{
-                  position: 'absolute',
-                  top: '100%',
-                  right: 0,
-                  display: 'flex',
-                  zIndex: 2200,
-                  transform: 'translateY(4px)',
-                  transformOrigin: 'top right',
-                  opacity: 1,
-                  pointerEvents: 'auto',
-                }}
-              >
-                <div style={{ 
-                  fontSize: '10px', 
-                  color: 'var(--red)', 
-                  fontWeight: 'bold', 
-                  marginBottom: '5px', 
-                  borderBottom: '0.5px solid var(--pb)', 
-                  paddingBottom: '3px', 
-                  textAlign: 'center' 
-                }}>
-                  📜 System Options
-                </div>
-                <button className="fab-item" onClick={handleSwapRole}>🎭 Change Role</button>
-                <button className="fab-item" onClick={handlePrint}>🖨 Print (A4)</button>
-                <button className="fab-item" onClick={handleExport}>💾 Export</button>
-                <button className="fab-item" onClick={handleImportClick}>📂 Import</button>
-                <button className="fab-item" onClick={handleLoadSample}>📋 Sample Data</button>
-                <button 
-                  className="fab-item" 
-                  onClick={handleClearStorage} 
-                  style={{ background: 'rgba(139, 26, 26, 0.12)', color: 'var(--red)', fontWeight: 'bold', borderColor: 'var(--red)' }}
-                >
-                  🗑️ Clear App Data
-                </button>
+      {activeTab === 'combat' ? (
+        <>
+          {/* Control row */}
+          <div className="ctrl-row no-print" style={{ position: 'relative', zIndex: 100 }}>
+            <div className="legend">
+              <div className="leg-item">
+                <div className="leg-dot dot-p"></div>
+                Player
               </div>
-            )}
+              <div className="leg-item">
+                <div className="leg-dot dot-e"></div>
+                Enemy
+              </div>
+              <div className="leg-item">
+                <div className="leg-dot dot-n"></div>
+                NPC
+              </div>
+              <span>· ▼ active turn</span>
+            </div>
+
+            <div className="btns">
+              <button className="btn" onClick={handlePrev}>◀ Back</button>
+              <button className="btn btn-p" onClick={handleNext}>Next Turn ▶</button>
+              <button className="btn" onClick={handleNewRound}>New Round +</button>
+              <button className="btn" onClick={handleReset}>⟳ Reset</button>
+              <div style={{ position: 'relative', display: 'inline-flex' }}>
+                <button 
+                  className={`btn ${isSystemOpen ? 'active' : ''}`}
+                  ref={systemBtnRef} 
+                  onClick={() => setIsSystemOpen(!isSystemOpen)}
+                  style={{ height: '100%', display: 'inline-flex', alignItems: 'center', gap: '3px', margin: 0 }}
+                >
+                  <span>⚙️</span>
+                  <span>System</span>
+                </button>
+                {isSystemOpen && (
+                  <div 
+                    className="system-dropdown no-print open" 
+                    ref={dropdownRef}
+                    style={{
+                      position: 'absolute',
+                      top: '100%',
+                      right: 0,
+                      display: 'flex',
+                      zIndex: 2200,
+                      transform: 'translateY(4px)',
+                      transformOrigin: 'top right',
+                      opacity: 1,
+                      pointerEvents: 'auto',
+                    }}
+                  >
+                    <div style={{ 
+                      fontSize: '10px', 
+                      color: 'var(--red)', 
+                      fontWeight: 'bold', 
+                      marginBottom: '5px', 
+                      borderBottom: '0.5px solid var(--pb)', 
+                      paddingBottom: '3px', 
+                      textAlign: 'center' 
+                    }}>
+                      📜 System Options
+                    </div>
+                    <button className="fab-item" onClick={handleSwapRole}>🎭 Change Role</button>
+                    <button className="fab-item" onClick={handlePrint}>🖨 Print (A4)</button>
+                    <button className="fab-item" onClick={handleExport}>💾 Export</button>
+                    <button className="fab-item" onClick={handleImportClick}>📂 Import</button>
+                    <button className="fab-item" onClick={handleLoadSample}>📋 Sample Data</button>
+                    <button 
+                      className="fab-item" 
+                      onClick={handleClearStorage} 
+                      style={{ background: 'rgba(139, 26, 26, 0.12)', color: 'var(--red)', fontWeight: 'bold', borderColor: 'var(--red)' }}
+                    >
+                      🗑️ Clear App Data
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div className="fancy">— ✦ —</div>
+          <div className="fancy">— ✦ —</div>
 
-      {/* DM Layout Grid */}
-      <div className="dm-layout-grid">
-        {/* Main Column: Player and NPC Tables */}
-        <div className="dm-main-col" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <DMCombatantsTable side="p" combatants={state.combatants} />
-          <DMCombatantsTable side="e" combatants={state.combatants} />
-        </div>
+          {/* DM Layout Grid */}
+          <div className="dm-layout-grid">
+            {/* Main Column: Player and NPC Tables */}
+            <div className="dm-main-col" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <DMCombatantsTable side="p" combatants={state.combatants} />
+              <DMCombatantsTable side="e" combatants={state.combatants} />
+            </div>
 
-        {/* Sidebar Toolbox */}
-        <div className="dm-side-col">
-          <DMToolbox 
-            concentrations={state.concentrations || []} 
-            combatants={state.combatants}
-          />
-        </div>
-      </div>
+            {/* Sidebar Toolbox */}
+            <div className="dm-side-col">
+              <DMToolbox 
+                concentrations={state.concentrations || []} 
+                combatants={state.combatants}
+              />
+            </div>
+          </div>
+        </>
+      ) : (
+        <DMStashTab state={state} />
+      )}
 
       {/* Hidden file input for Import */}
       <input 

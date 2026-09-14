@@ -109,6 +109,11 @@ function createSnapshot(raw: unknown): CombatStateSnapshot {
       xpBudget: r.meta?.xpBudget ?? '',
       xpVerteilt: r.meta?.xpVerteilt ?? '',
       sitzung: r.meta?.sitzung ?? '',
+      dmStash: {
+        weapons: Array.isArray(r.meta?.dmStash?.weapons) ? [...r.meta.dmStash.weapons] : [],
+        armors: Array.isArray(r.meta?.dmStash?.armors) ? [...r.meta.dmStash.armors] : [],
+        items: Array.isArray(r.meta?.dmStash?.items) ? [...r.meta.dmStash.items] : [],
+      },
     },
     session: {
       active: r.session?.active ?? false,
@@ -145,6 +150,7 @@ export function useCombatState(): UseCombatStateReturn {
         xpBudget: '',
         xpVerteilt: '',
         sitzung: '',
+        dmStash: { weapons: [], armors: [], items: [] },
       },
       session: { active: false, role: 'choice', roomCode: '' },
       concentrations: [],

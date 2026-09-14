@@ -33,7 +33,7 @@ describe('Modal & Dialog UI Components (Task 6.1.2)', () => {
 
     it('triggers onClose when clicking the background overlay', () => {
       const handleClose = vi.fn();
-      const { container } = render(
+      const { baseElement } = render(
         <CustomAlertModal
           title="Alert"
           message="Click outside to close."
@@ -41,7 +41,7 @@ describe('Modal & Dialog UI Components (Task 6.1.2)', () => {
         />
       );
 
-      const overlay = container.querySelector('#customAlertOverlay');
+      const overlay = baseElement.querySelector('#customAlertOverlay');
       expect(overlay).toBeInTheDocument();
       if (overlay) {
         fireEvent.click(overlay);

@@ -1,22 +1,19 @@
 /**
  * @module    ArmorStashCard
- * @summary   Renders a single armor/shield in the inventory including detail drawer (settings for AC override, MaxDex, checkPenalty etc.).
+ * @summary   Renders a single armor or shield in the inventory with clean text display and an Edit button opening ArmorEditorModal.
  * @exports   ArmorStashCard
- * @reads     none (all details read from props a)
- * @stateOps  updatePCArmorField, removePCArmor
- * @depends   React, @core/state.js, @core/data/armor-data.js
- * @notHere   Ausrüstungsslots -> ActiveEquipmentSlots.tsx | Waffenliste -> WeaponStashCard.tsx
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { ARMOR_REGISTRY } from '@core/data/armor-data.js';
+import { ArmorEditorModal } from '../../dialogs/modals/ArmorEditorModal.tsx';
 
 interface ArmorStashCardProps {
   a: any;
   idx: number;
-  isExpanded: boolean;
-  onToggleExpand: () => void;
+  isExpanded?: boolean;
+  onToggleExpand?: () => void;
   getRarityStyle: (enhancement: number) => { border: string; background: string; boxShadow: string; glowClass: string };
   handleArmorEquipToggle: (idx: number, a: any) => void;
 }
@@ -24,12 +21,14 @@ interface ArmorStashCardProps {
 export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
   a,
   idx,
-  isExpanded,
-  onToggleExpand,
   getRarityStyle,
   handleArmorEquipToggle
 }) => {
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
   const rStyle = getRarityStyle(a.enhancement);
+  const typeDef = ARMOR_REGISTRY[a.type] || {};
+  const typeName = typeDef.nameEn || typeDef.name || a.type || 'Armor';
+  const totalAC = (a.armorBonus !== undefined ? a.armorBonus : (typeDef.armorBonus || 0)) + (parseInt(a.enhancement) || 0);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
@@ -40,7 +39,7 @@ export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
           flexDirection: 'column',
           border: rStyle.border,
           borderRadius: '4px',
-          padding: '5px 6px',
+          padding: '6px 8px',
           background: rStyle.background,
           boxShadow: rStyle.boxShadow,
           position: 'relative',
@@ -50,124 +49,90 @@ export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
         {a.isEquipped && (
           <span style={{ position: 'absolute', top: '-6px', left: '8px', fontSize: '6px', color: '#ffffff', background: '#2a6a2a', borderRadius: '2px', padding: '1px 4px', fontFamily: 'var(--font-title)', fontWeight: 'bold', zIndex: 10 }}>Equipped</span>
         )}
+
+        {/* Top row: Name, Type Tag & Delete button */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
-          <input
-            type="text"
-            value={a.name}
-            onChange={(e) => CombatState.updatePCArmorField(idx, 'name', e.target.value)}
-            className="cinput"
-            placeholder="Name"
-            style={{ fontSize: '9px', height: '18px', padding: '0 4px', flex: 1, fontWeight: 'bold', borderColor: 'rgba(200, 169, 110, 0.25)' }}
-          />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', overflow: 'hidden' }}>
+            <span style={{ fontWeight: 'bold', fontSize: '11px', fontFamily: 'var(--font-title)', color: 'var(--ink)' }}>
+              {a.name || typeName}
+            </span>
+            {a.enhancement > 0 && (
+              <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--red)', background: 'rgba(139, 26, 26, 0.08)', padding: '0 4px', borderRadius: '2px' }}>
+                +{a.enhancement}
+              </span>
+            )}
+            <span style={{ fontSize: '8px', color: 'var(--inkm)', background: 'rgba(200, 169, 110, 0.15)', padding: '1px 5px', borderRadius: '3px' }}>
+              {typeName} (+{totalAC} AC)
+            </span>
+          </div>
+
           <button
+            type="button"
             onClick={() => CombatState.removePCArmor(idx)}
-            style={{ border: 'none', background: 'transparent', fontSize: '10px', cursor: 'pointer', height: '18px', width: '18px', color: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            title="Delete armor"
+            style={{ border: 'none', background: 'transparent', fontSize: '11px', cursor: 'pointer', height: '18px', width: '18px', color: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             ✕
           </button>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <select
-            value={a.type}
-            onChange={(e) => CombatState.updatePCArmorField(idx, 'type', e.target.value)}
-            className="cinput"
-            style={{ fontSize: '7.5px', padding: '0 2px', height: '16px', flex: 1.2, cursor: 'pointer' }}
-          >
-            {Object.values(ARMOR_REGISTRY).map((def: any) => (
-              <option key={def.key} value={def.key}>{def.nameEn || def.name || def.nameDe}</option>
-            ))}
-          </select>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flex: 0.8 }}>
-            <span style={{ fontSize: '7.5px', color: 'var(--inkm)' }}>+</span>
-            <input
-              type="number"
-              value={a.enhancement}
-              onChange={(e) => CombatState.updatePCArmorField(idx, 'enhancement', parseInt(e.target.value) || 0)}
-              className="cinput"
-              style={{ fontSize: '8px', height: '16px', width: '22px', padding: 0, textAlign: 'center' }}
-            />
+
+        {/* Bottom row: Stats summary, Equip & Edit button */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '8px', color: 'var(--inkl)' }}>
+            <span>MaxDex: {typeDef.maxDex !== null && typeDef.maxDex !== undefined ? `+${typeDef.maxDex}` : '—'}</span>
+            <span>ACP: {typeDef.checkPenalty || 0}</span>
+            <span>Fail: {typeDef.spellFailure || 0}%</span>
           </div>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => handleArmorEquipToggle(idx, a)}
-            style={{
-              padding: '0 8px',
-              fontSize: '7.5px',
-              fontWeight: 'bold',
-              fontFamily: 'var(--font-title)',
-              height: '18px',
-              lineHeight: 1,
-              borderRadius: '2px',
-              background: a.isEquipped ? 'rgba(200, 169, 110, 0.15)' : 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-              border: a.isEquipped ? '0.5px solid var(--pb)' : '0.5px solid #8b6914',
-              color: a.isEquipped ? 'var(--ink)' : '#ffffff',
-              cursor: 'pointer'
-            }}
-          >
-            {a.isEquipped ? 'Unequip' : '⚡ Equip'}
-          </button>
-          <button
-            className="xbtn"
-            onClick={onToggleExpand}
-            style={{ padding: 0, border: 'none', background: 'transparent', fontSize: '11px', cursor: 'pointer', height: '16px', width: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--inkm)' }}
-          >
-            ⚙️
-          </button>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleArmorEquipToggle(idx, a)}
+              style={{
+                padding: '0 8px',
+                fontSize: '8px',
+                fontWeight: 'bold',
+                fontFamily: 'var(--font-title)',
+                height: '20px',
+                lineHeight: 1,
+                borderRadius: '2px',
+                background: a.isEquipped ? 'rgba(200, 169, 110, 0.15)' : 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                border: a.isEquipped ? '0.5px solid var(--pb)' : '0.5px solid #8b6914',
+                color: a.isEquipped ? 'var(--ink)' : '#ffffff',
+                cursor: 'pointer'
+              }}
+            >
+              {a.isEquipped ? 'Unequip' : '⚡ Equip'}
+            </button>
+
+            <button
+              type="button"
+              className="xbtn"
+              onClick={() => setIsEditorOpen(true)}
+              style={{
+                fontSize: '8px',
+                padding: '2px 6px',
+                height: '20px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '2px',
+                cursor: 'pointer',
+                fontFamily: 'var(--font-title)'
+              }}
+            >
+              ⚙️ Edit
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Armor Detail Drawer */}
-      {isExpanded && (
-        <div style={{ display: 'flex', background: 'rgba(200,169,110,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderTop: 'none', padding: '4px 6px', fontSize: '8px', marginTop: '-2px', marginBottom: '2px', borderRadius: '0 0 3px 3px', flexDirection: 'column', gap: '4px' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', width: '100%' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>AC Override:</span>
-              <input
-                type="text"
-                value={a.armorBonusOverride || ''}
-                onChange={(e) => CombatState.updatePCArmorField(idx, 'armorBonusOverride', e.target.value)}
-                className="cinput"
-                placeholder="Default"
-                style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-              />
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>MaxDex Override:</span>
-              <input
-                type="text"
-                value={a.maxDexOverride || ''}
-                onChange={(e) => CombatState.updatePCArmorField(idx, 'maxDexOverride', e.target.value)}
-                className="cinput"
-                placeholder="Default"
-                style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-              />
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>ACP Override:</span>
-              <input
-                type="text"
-                value={a.checkPenaltyOverride || ''}
-                onChange={(e) => CombatState.updatePCArmorField(idx, 'checkPenaltyOverride', e.target.value)}
-                className="cinput"
-                placeholder="Default"
-                style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-              />
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span style={{ color: 'var(--inkl)' }}>Spell Failure Override:</span>
-              <input
-                type="text"
-                value={a.spellFailureOverride || ''}
-                onChange={(e) => CombatState.updatePCArmorField(idx, 'spellFailureOverride', e.target.value)}
-                className="cinput"
-                placeholder="Default"
-                style={{ width: '45px', fontSize: '8px', height: '14px', textAlign: 'center', padding: 0 }}
-              />
-              <span style={{ color: 'var(--inkm)' }}>%</span>
-            </div>
-          </div>
-        </div>
+      {isEditorOpen && (
+        <ArmorEditorModal
+          armor={a}
+          onSave={(updatedArmor) => CombatState.updatePCArmorField(idx, updatedArmor)}
+          onClose={() => setIsEditorOpen(false)}
+        />
       )}
     </div>
   );

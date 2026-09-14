@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createPortal } from 'react-dom';
+import { DialogOverlay } from '../../dialogs/modals/DialogOverlay.tsx';
 import { CombatState } from '@core/state.js';
 import { ITEM_SLOTS, MAGIC_ITEMS_REGISTRY, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
 import { formatEffectDisplay } from './BodySlotCard';
@@ -28,7 +28,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
     }
     if (search.trim()) {
       const q = search.toLowerCase();
-      const matchName = entry.baseName.toLowerCase().includes(q);
+      const matchName = (entry.baseName || entry.nameEn || '').toLowerCase().includes(q);
       const matchDesc = entry.description && entry.description.toLowerCase().includes(q);
       return matchName || matchDesc;
     }
@@ -37,10 +37,10 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
 
   const getEffectivePresetKey = (entry: any) => {
     const selectedKey = selectedTiers[entry.id];
-    if (selectedKey && entry.variants.some((v: any) => v.key === selectedKey)) {
+    if (selectedKey && entry.variants?.some((v: any) => v.key === selectedKey)) {
       return selectedKey;
     }
-    return entry.variants[0]?.key || entry.id;
+    return entry.variants?.[0]?.key || entry.id;
   };
 
   const handleSelectTier = (entryId: string, presetKey: string) => {
@@ -49,6 +49,7 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
 
   const handleAddBackpack = (presetKey: string) => {
     CombatState.addPCItemFromCompendium(presetKey, false);
+    onClose();
   };
 
   const handleAddAndEquip = (presetKey: string) => {
@@ -57,58 +58,29 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
   };
 
   const filterChips = [
-    { key: 'all', label: 'All Slots' },
-    { key: 'head', label: '👑 Head' },
-    { key: 'face', label: '👓 Face' },
-    { key: 'neck', label: '📿 Neck' },
-    { key: 'shoulders', label: '🧥 Shoulders' },
-    { key: 'torso', label: '🥋 Torso' },
-    { key: 'body', label: '👘 Body' },
-    { key: 'wrists', label: '🦾 Wrists' },
-    { key: 'hands', label: '🧤 Hands' },
-    { key: 'waist', label: '🎗️ Waist' },
-    { key: 'feet', label: '🥾 Feet' },
-    { key: 'rings', label: '💍 Rings' },
-    { key: 'slotless', label: '🎒 Slotless' }
+    { key: 'all', label: 'All Items' },
+    { key: 'head', label: 'Head' },
+    { key: 'eyes', label: 'Eyes' },
+    { key: 'neck', label: 'Neck' },
+    { key: 'shoulders', label: 'Shoulders' },
+    { key: 'torso', label: 'Torso' },
+    { key: 'body', label: 'Body' },
+    { key: 'wrists', label: 'Wrists' },
+    { key: 'hands', label: 'Hands' },
+    { key: 'waist', label: 'Waist' },
+    { key: 'feet', label: 'Feet' },
+    { key: 'rings', label: 'Rings' },
+    { key: 'slotless', label: 'Slotless' }
   ];
 
-  const content = (
-    <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        background: 'rgba(0,0,0,0.65)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 9999,
-        padding: '10px'
-      }}
-      onClick={onClose}
-    >
-      <div
-        className="custom-alert-box"
-        style={{
-          background: 'var(--pd, #fdf6e2)',
-          border: '2px solid var(--pb, #c8a96e)',
-          borderRadius: '4px',
-          padding: '12px 14px',
-          width: '640px',
-          maxWidth: '94vw',
-          maxHeight: '80vh',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '8px',
-          boxShadow: '0 10px 32px rgba(0,0,0,0.4)',
-          boxSizing: 'border-box'
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
+  return (
+    <DialogOverlay onClose={onClose} width={640} textAlign="left" padding="16px 20px">
+      <div style={{ position: 'relative', zIndex: 1 }}>
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '5px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '7px', marginBottom: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '18px' }}>📖</span>
-            <span style={{ fontFamily: 'var(--font-title)', fontSize: '15px', fontWeight: 'bold', color: 'var(--red)' }}>
+            <span style={{ fontFamily: 'var(--font-title)', fontSize: '15px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.02em' }}>
               Magic Items Compendium
             </span>
           </div>
@@ -116,7 +88,15 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
             type="button"
             onClick={onClose}
             className="xbtn"
-            style={{ fontSize: '12px', padding: '2px 6px', cursor: 'pointer' }}
+            style={{
+              fontSize: '11px',
+              padding: '2px 7px',
+              borderRadius: '3px',
+              border: '1px solid var(--pb)',
+              background: 'rgba(200, 169, 110, 0.15)',
+              color: 'var(--inkm)',
+              cursor: 'pointer'
+            }}
           >
             ✕
           </button>
@@ -300,20 +280,27 @@ export const ItemCompendiumModal: React.FC<ItemCompendiumModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div style={{ display: 'flex', justifyContent: 'center', borderTop: '0.5px solid var(--pb)', paddingTop: '4px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', borderTop: '1px solid var(--pb)', paddingTop: '10px', marginTop: '10px' }}>
           <button
             type="button"
             onClick={onClose}
             className="btn"
-            style={{ fontSize: '9.5px', padding: '3px 18px', fontFamily: 'var(--font-title)' }}
+            style={{
+              fontFamily: 'var(--font-title)',
+              fontSize: '11px',
+              padding: '5px 24px',
+              borderRadius: '3px',
+              color: 'var(--inkm)',
+              border: '1px solid var(--pb)',
+              background: 'rgba(200, 169, 110, 0.15)',
+              cursor: 'pointer'
+            }}
           >
             Close
           </button>
         </div>
 
       </div>
-    </div>
+    </DialogOverlay>
   );
-
-  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };

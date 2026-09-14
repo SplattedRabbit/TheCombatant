@@ -71,7 +71,11 @@ export function togglePCArmorEquip(idx) {
 export function updatePCArmorField(idx, field, val) {
   const pc = getActivePC();
   if (pc && pc.armors && pc.armors[idx]) {
-    pc.armors[idx][field] = val;
+    if (typeof field === 'object' && field !== null) {
+      pc.armors[idx] = new Armor({ ...pc.armors[idx], ...field });
+    } else {
+      pc.armors[idx][field] = val;
+    }
     recalculatePCStats(pc);
     saveToStorage();
     syncPCToHost();

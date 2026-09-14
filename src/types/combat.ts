@@ -396,6 +396,11 @@ export interface EncounterMeta {
   xpBudget: string;
   xpVerteilt: string;
   sitzung: string;
+  dmStash?: {
+    weapons: any[];
+    armors: any[];
+    items: any[];
+  };
 }
 
 export interface SessionInfo {

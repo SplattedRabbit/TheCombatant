@@ -18,6 +18,9 @@ import { TacticalModifiersCard } from './TacticalModifiersCard';
 import { ClassCombatAbilitiesCard } from './ClassCombatAbilitiesCard';
 import { TacticalBeltCard } from './TacticalBeltCard';
 import { WeaponStashCard } from './WeaponStashCard';
+import { WeaponEditorModal } from '../../dialogs/modals/WeaponEditorModal';
+import { ArmorStashCard } from './ArmorStashCard';
+import { ArmorEditorModal } from '../../dialogs/modals/ArmorEditorModal';
 import { usePC } from '../../../context/PCContext';
 
 const getEquippedArmorFallback = (pc: any) => {
@@ -34,6 +37,10 @@ export const PCOffenseTab: React.FC = () => {
   const [expandedWeaponIds, setExpandedWeaponIds] = useState<Record<string, boolean>>({});
   const [doubleWeaponIdx, setDoubleWeaponIdx] = useState<number | null>(null);
   const [weaponSearchQuery, setWeaponSearchQuery] = useState('');
+  const [isCreatingWeapon, setIsCreatingWeapon] = useState(false);
+  const [arsenalTab, setArsenalTab] = useState<'weapons' | 'armors'>('weapons');
+  const [armorSearchQuery, setArmorSearchQuery] = useState('');
+  const [isCreatingArmor, setIsCreatingArmor] = useState(false);
 
   const formatMod = (val: number) => (val >= 0 ? `+${val}` : `${val}`);
   const babVal = typeof loosePc.bab === 'number' ? loosePc.bab : (typeof loosePc.bab?.getValue === 'function' ? loosePc.bab.getValue() : 0);
@@ -179,6 +186,13 @@ export const PCOffenseTab: React.FC = () => {
            (w.type || '').toLowerCase().includes(weaponSearchQuery.toLowerCase());
   }) : [];
 
+  // Filtered armors & shields for stash
+  const filteredArmors = Array.isArray(pc.armors) ? pc.armors.filter((a: any) => {
+    if (!armorSearchQuery) return true;
+    return (a.name || '').toLowerCase().includes(armorSearchQuery.toLowerCase()) ||
+           (a.type || '').toLowerCase().includes(armorSearchQuery.toLowerCase());
+  }) : [];
+
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', width: '100%', boxSizing: 'border-box' }}>
       
@@ -217,13 +231,43 @@ export const PCOffenseTab: React.FC = () => {
         {/* 1. Tactical Combat Belt (Quick Pouch) */}
         <TacticalBeltCard pc={pc} />
 
-        {/* 2. Weapons Arsenal & Stash */}
-        <BaseCard title="🗡️ Weapons Arsenal &amp; Quick-Swap">
+        {/* 2. Weapons & Armors Arsenal Stash */}
+        <BaseCard
+          title={
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span
+                onClick={() => setArsenalTab('weapons')}
+                style={{
+                  cursor: 'pointer',
+                  color: arsenalTab === 'weapons' ? 'var(--red)' : 'var(--inkm)',
+                  borderBottom: arsenalTab === 'weapons' ? '2px solid var(--red)' : 'none',
+                  paddingBottom: '2px',
+                  fontWeight: arsenalTab === 'weapons' ? 'bold' : 'normal',
+                }}
+              >
+                🗡️ Weapons ({Array.isArray(pc.weapons) ? pc.weapons.length : 0})
+              </span>
+              <span style={{ color: 'var(--pb)' }}>|</span>
+              <span
+                onClick={() => setArsenalTab('armors')}
+                style={{
+                  cursor: 'pointer',
+                  color: arsenalTab === 'armors' ? 'var(--red)' : 'var(--inkm)',
+                  borderBottom: arsenalTab === 'armors' ? '2px solid var(--red)' : 'none',
+                  paddingBottom: '2px',
+                  fontWeight: arsenalTab === 'armors' ? 'bold' : 'normal',
+                }}
+              >
+                🛡️ Armor &amp; Shields ({Array.isArray(pc.armors) ? pc.armors.length : 0})
+              </span>
+            </div>
+          }
+        >
           {pc.activeShape !== 'none' ? (
             <div style={{ padding: '16px', textAlign: 'center', fontStyle: 'italic', color: 'var(--inkl)', fontSize: '8.5px', fontFamily: 'var(--font-body)' }}>
-              In Wild Shape, manufactured weapons are inactive. Use natural attacks from the loadout panel.
+              In Wild Shape, manufactured weapons and armor are inactive. Use natural attacks from the loadout panel.
             </div>
-          ) : (
+          ) : arsenalTab === 'weapons' ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               
               {/* Header Bar with Search & Add Weapon */}
@@ -238,7 +282,7 @@ export const PCOffenseTab: React.FC = () => {
                 />
                 <button
                   className="btn"
-                  onClick={() => CombatState.addPCWeapon()}
+                  onClick={() => setIsCreatingWeapon(true)}
                   style={{
                     fontFamily: 'var(--font-title)',
                     fontSize: '7.5px',
@@ -277,6 +321,64 @@ export const PCOffenseTab: React.FC = () => {
                         getRarityStyle={getRarityStyle}
                         handleHandSelectChange={handleHandSelectChange}
                         handleWeaponEquipToggle={handleWeaponEquipToggle}
+                      />
+                    );
+                  })
+                )}
+              </div>
+
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              
+              {/* Header Bar with Search & Add Armor */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px' }}>
+                <input
+                  type="text"
+                  placeholder="🔍 Search armor & shields..."
+                  value={armorSearchQuery}
+                  onChange={(e) => setArmorSearchQuery(e.target.value)}
+                  className="cinput"
+                  style={{ flex: 1, fontSize: '8px', height: '18px', padding: '1px 6px' }}
+                />
+                <button
+                  className="btn"
+                  onClick={() => setIsCreatingArmor(true)}
+                  style={{
+                    fontFamily: 'var(--font-title)',
+                    fontSize: '7.5px',
+                    fontWeight: 'bold',
+                    padding: '1px 8px',
+                    height: '18px',
+                    lineHeight: 1,
+                    whiteSpace: 'nowrap',
+                    background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
+                    border: '0.5px solid #8b6914',
+                    color: '#ffffff',
+                    borderRadius: '2px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  ➕ Armor
+                </button>
+              </div>
+
+              {/* Armors List */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '340px', overflowY: 'auto', paddingRight: '2px' }}>
+                {filteredArmors.length === 0 ? (
+                  <div style={{ padding: '12px', textAlign: 'center', color: 'var(--inkl)', fontStyle: 'italic', fontSize: '8px' }}>
+                    {armorSearchQuery ? 'No armors match your search.' : 'No armor or shields in stash. Click "+ Armor" to add one.'}
+                  </div>
+                ) : (
+                  filteredArmors.map((a: any) => {
+                    const originalIdx = (pc.armors || []).indexOf(a);
+                    return (
+                      <ArmorStashCard
+                        key={a.id || originalIdx}
+                        a={a}
+                        idx={originalIdx}
+                        getRarityStyle={getRarityStyle}
+                        handleArmorEquipToggle={(idx) => CombatState.togglePCArmorEquip(idx)}
                       />
                     );
                   })
@@ -365,6 +467,40 @@ export const PCOffenseTab: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Create Weapon Modal */}
+      {isCreatingWeapon && (
+        <WeaponEditorModal
+          onSave={(newWeaponData) => {
+            CombatState.updatePCBatch((freshPC: any) => {
+              if (!Array.isArray(freshPC.weapons)) freshPC.weapons = [];
+              freshPC.weapons.push({
+                id: 'w_' + Date.now(),
+                hand: 'main',
+                ...newWeaponData,
+              });
+            });
+          }}
+          onClose={() => setIsCreatingWeapon(false)}
+        />
+      )}
+
+      {/* Create Armor Modal */}
+      {isCreatingArmor && (
+        <ArmorEditorModal
+          onSave={(newArmorData) => {
+            CombatState.updatePCBatch((freshPC: any) => {
+              if (!Array.isArray(freshPC.armors)) freshPC.armors = [];
+              freshPC.armors.push({
+                id: 'a_' + Date.now(),
+                isEquipped: false,
+                ...newArmorData,
+              });
+            });
+          }}
+          onClose={() => setIsCreatingArmor(false)}
+        />
       )}
       
     </div>

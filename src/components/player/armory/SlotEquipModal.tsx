@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createPortal } from 'react-dom';
+import { DialogOverlay } from '../../dialogs/modals/DialogOverlay.tsx';
 import { CombatState } from '@core/state.js';
 import { MAGIC_ITEMS_REGISTRY, ITEM_SLOTS, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
 import { formatEffectDisplay } from './BodySlotCard';
@@ -69,43 +69,14 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
     onClose();
   };
 
-  const content = (
-    <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        background: 'rgba(0,0,0,0.65)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 9999,
-        padding: '10px'
-      }}
-      onClick={onClose}
-    >
-      <div
-        className="custom-alert-box"
-        style={{
-          background: 'var(--pd, #fdf6e2)',
-          border: '2px solid var(--pb, #c8a96e)',
-          borderRadius: '4px',
-          padding: '12px 14px',
-          width: '520px',
-          maxWidth: '94vw',
-          maxHeight: '78vh',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '8px',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
-          boxSizing: 'border-box'
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
+  return (
+    <DialogOverlay onClose={onClose} width={540} textAlign="left" padding="16px 20px">
+      <div style={{ position: 'relative', zIndex: 1 }}>
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '5px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '16px' }}>{slotDef.icon}</span>
-            <span style={{ fontFamily: 'var(--font-title)', fontSize: '13.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1.5px solid var(--pb)', paddingBottom: '7px', marginBottom: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '18px' }}>{slotDef.icon}</span>
+            <span style={{ fontFamily: 'var(--font-title)', fontSize: '15px', fontWeight: 'bold', color: 'var(--red)', letterSpacing: '0.02em' }}>
               Equip Slot: {slotDef.nameEn}
             </span>
           </div>
@@ -113,7 +84,15 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
             type="button"
             onClick={onClose}
             className="xbtn"
-            style={{ fontSize: '12px', padding: '2px 6px', cursor: 'pointer' }}
+            style={{
+              fontSize: '11px',
+              padding: '2px 7px',
+              borderRadius: '3px',
+              border: '1px solid var(--pb)',
+              background: 'rgba(200, 169, 110, 0.15)',
+              color: 'var(--inkm)',
+              cursor: 'pointer'
+            }}
           >
             ✕
           </button>
@@ -306,7 +285,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
         </div>
 
         {/* Footer Actions */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '0.5px solid var(--pb)', paddingTop: '5px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--pb)', paddingTop: '10px', marginTop: '12px' }}>
           <button
             type="button"
             onClick={() => {
@@ -315,32 +294,44 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
             }}
             className="btn btn-p"
             style={{
-              fontSize: '8.5px',
-              padding: '2px 8px',
               fontFamily: 'var(--font-title)',
+              fontSize: '11px',
               fontWeight: 'bold',
-              background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-              border: '0.5px solid #8b6914',
-              color: '#ffffff',
-              borderRadius: '2px',
-              cursor: 'pointer'
+              padding: '4px 14px',
+              color: 'var(--red)',
+              border: '1.5px solid var(--pb)',
+              background: 'linear-gradient(180deg, #fefdf8 0%, #edd9b4 100%)',
+              borderRadius: '3px',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.12)',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px'
             }}
           >
-            ➕ Create Custom Item
+            <span>➕</span>
+            <span>Create Custom Item</span>
           </button>
           <button
             type="button"
             onClick={onClose}
             className="btn"
-            style={{ fontSize: '9px', padding: '3px 12px', fontFamily: 'var(--font-title)' }}
+            style={{
+              fontFamily: 'var(--font-title)',
+              fontSize: '11px',
+              padding: '5px 16px',
+              borderRadius: '3px',
+              color: 'var(--inkm)',
+              border: '1px solid var(--pb)',
+              background: 'rgba(200, 169, 110, 0.15)',
+              cursor: 'pointer'
+            }}
           >
             Cancel
           </button>
         </div>
 
       </div>
-    </div>
+    </DialogOverlay>
   );
-
-  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };
