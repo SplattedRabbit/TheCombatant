@@ -9,6 +9,7 @@ import { createPortal } from 'react-dom';
 import type { CharacterSummary } from '../../types/character.ts';
 import { characterService } from '../../services/character/CharacterService.ts';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
+import { CombatState } from '@core/state.js';
 import { CharacterCard } from './roster/CharacterCard.tsx';
 import { CreateCharacterModal } from './roster/CreateCharacterModal.tsx';
 
@@ -116,7 +117,11 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
           window.sessionStorage.removeItem('dd_wizard_preset_name');
         }
       }
-      CombatState.setRole('wizard');
+      if (typeof onOpenWizard === 'function') {
+        onOpenWizard();
+      } else {
+        CombatState.setRole('wizard');
+      }
       return;
     }
 
