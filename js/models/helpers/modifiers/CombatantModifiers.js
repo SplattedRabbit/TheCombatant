@@ -84,10 +84,15 @@ function applyRaceModifiers(pc) {
       addRaceModifier(pc.con, 2, 'racial', 'Volk (Gnom)');
       addRaceModifier(pc.str, -2, 'racial', 'Volk (Gnom)');
     }
-  } else if (race === 'halfling' || race === 'deep_halfling') {
+  } else if (race === 'halfling') {
     if (!inWildShape) {
       addRaceModifier(pc.dex, 2, 'racial', 'Volk (Halbling)');
       addRaceModifier(pc.str, -2, 'racial', 'Volk (Halbling)');
+    }
+  } else if (race === 'deep_halfling') {
+    if (!inWildShape) {
+      addRaceModifier(pc.dex, 2, 'racial', 'Volk (Tiefen-Halbling)');
+      addRaceModifier(pc.str, -2, 'racial', 'Volk (Tiefen-Halbling)');
     }
   } else if (race === 'half_orc') {
     if (!inWildShape) addRaceModifier(pc.str, 2, 'racial', 'Volk (Halbork)');
@@ -117,7 +122,7 @@ function applyRaceModifiers(pc) {
   }
 
   // 3. Saving Throw Modifiers
-  if (race === 'halfling' || race === 'deep_halfling') {
+  if (race === 'halfling') {
     addRaceModifier(pc.za, 1, 'racial', 'Volk (Halbling)');
     addRaceModifier(pc.ref, 1, 'racial', 'Volk (Halbling)');
     addRaceModifier(pc.wil, 1, 'racial', 'Volk (Halbling)');

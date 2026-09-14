@@ -21,7 +21,7 @@ test('Deep Halfling - Racial attribute modifiers and size modifier', () => {
   assert.strictEqual(pc.getSizeModifier(), 1, 'Deep Halfling should have Small size (+1)');
 });
 
-test('Deep Halfling - Saving throws get +1 racial bonus', () => {
+test('Deep Halfling - Saving throws do NOT get +1 racial bonus', () => {
   const pc = new Combatant({
     race: 'deep_halfling',
     baseZa: 0,
@@ -32,9 +32,13 @@ test('Deep Halfling - Saving throws get +1 racial bonus', () => {
 
   pc.rebuildStatModifiers();
 
-  assert.strictEqual(pc.za.getValue(), 1, 'Deep Halfling should get +1 racial bonus on Fortitude');
-  assert.strictEqual(pc.ref.getValue(), 2, 'Deep Halfling should get +1 racial bonus + 1 Dex mod on Reflex');
-  assert.strictEqual(pc.wil.getValue(), 1, 'Deep Halfling should get +1 racial bonus on Will');
+  // Deep Halflings do NOT get the normal +1 all-around save bonus.
+  // Fortitude should be 0 (Base 0 + Con mod 0)
+  assert.strictEqual(pc.za.getValue(), 0, 'Deep Halfling should NOT get +1 racial bonus on Fortitude');
+  // Reflex should be 1 (Base 0 + Dex mod 1)
+  assert.strictEqual(pc.ref.getValue(), 1, 'Deep Halfling should get 1 Dex mod on Reflex, but no racial bonus');
+  // Will should be 0 (Base 0 + Wis mod 0)
+  assert.strictEqual(pc.wil.getValue(), 0, 'Deep Halfling should NOT get +1 racial bonus on Will');
 });
 
 test('Deep Halfling - Skill bonuses (Listen, Appraise, Craft, Search vs Climb/Jump/Move Silently)', () => {

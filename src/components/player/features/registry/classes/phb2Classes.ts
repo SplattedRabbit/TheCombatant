@@ -183,7 +183,7 @@ At 3rd level (Bulwark of Defense), an opponent that begins its turn in your thre
   // ==========================================
   if (classMap.has('dragon_shaman')) {
     const dsLvl = classMap.get('dragon_shaman')!;
-    const auraBonus = 1 + Math.floor((dsLvl - 1) / 5);
+    const auraBonus = Math.floor(dsLvl / 5) + 1;
     const aurasKnown = dsLvl >= 9 ? 7 : (dsLvl >= 7 ? 6 : (dsLvl >= 5 ? 5 : (dsLvl >= 3 ? 4 : 3)));
     const totemKey = pc.dragonTotem || 'red';
     const totem = DRAGON_TOTEMS[totemKey] || DRAGON_TOTEMS.red;
