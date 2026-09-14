@@ -184,7 +184,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
       this.debounceTimer = null;
     }
 
-    const stateToSave = this.pendingStateToSave || this.loadFromLocalCache();
+    const stateToSave = this.pendingStateToSave;
     if (!stateToSave) {
       return;
     }
@@ -391,7 +391,6 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         });
 
       if (error) throw error;
-      this.activeCharacterId = validId;
       this.notify('saved');
     } catch (err: any) {
       console.error(`[SupabaseStorageAdapter] Failed to save character ${characterId}:`, err);
@@ -510,7 +509,6 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         );
 
       if (error) throw error;
-      this.setActiveCampaignId(validId);
       logger.log('%c[SupabaseStorage] Campaign saved successfully:', 'color: #059669;', validId);
       this.notify('saved');
     } catch (err: any) {
