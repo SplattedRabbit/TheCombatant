@@ -9,6 +9,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { CombatState } from '@core/state.js';
+import { CharacterService } from '../../services/character/CharacterService';
 import type { Combatant } from '../../types/combat';
 import { PCProvider } from '../../context/PCContext';
 import { PCHeader } from './header/PCHeader';
@@ -105,8 +106,8 @@ export const PlayerSheet: React.FC<PlayerSheetProps> = ({ pc }) => {
 
   const handleLoadSample = () => {
     setIsSystemOpen(false);
-    showSampleChoiceDialog(true, (choice: string) => {
-      CombatState.loadSampleData(choice);
+    showSampleChoiceDialog(true, async (choice: string) => {
+      await CharacterService.getInstance().loadSampleCharacter(choice);
     });
   };
 

@@ -11,7 +11,16 @@ import { generateUUID } from '../../utils/uuid.ts';
 import { applyLoadedState } from '../../../js/state/StorageManager.js';
 import { createInitialState, createCombatant } from '../../../js/models/model-core.js';
 import { getState, StateEvents, getActivePC } from '../../../js/state/state-core.js';
-
+// @ts-ignore - legacy JS imports without declaration files
+import {
+  aranisSample,
+  wizardLvl10Sample,
+  rangerLvl10Sample,
+  paladinLvl10Sample,
+  arcaneTricksterLvl11Sample,
+  spellwarpSniperLvl10Sample,
+  battleTricksterLvl13Sample
+} from '../../../js/data/encounter-samples.js';
 export class CharacterService {
   private static instance: CharacterService | null = null;
 
@@ -226,6 +235,44 @@ export class CharacterService {
       return created;
     } catch (err) {
       console.error('[CharacterService] Error saving current PC to cloud:', err);
+      return null;
+    }
+  }
+
+  /**
+   * Safe loading of a sample character:
+   * Creates a NEW character in the roster based on the sample template and switches to it.
+   */
+  public async loadSampleCharacter(choice: string): Promise<CharacterSummary | null> {
+    try {
+      let template: any = aranisSample; // fallback
+      if (choice === 'wizard_lvl10') template = wizardLvl10Sample;
+      else if (choice === 'ranger_lvl10') template = rangerLvl10Sample;
+      else if (choice === 'paladin_lvl10') template = paladinLvl10Sample;
+      else if (choice === 'trickster_lvl11') template = arcaneTricksterLvl11Sample;
+      else if (choice === 'spellwarp_lvl10') template = spellwarpSniperLvl10Sample;
+      else if (choice === 'battle_trickster_lvl13') template = battleTricksterLvl13Sample;
+      else if (choice === 'paladin_lvl3') template = aranisSample;
+
+      const newPC = createCombatant(template);
+
+      // Create a full combat state shell for the sample character
+      const initialState = createInitialState();
+      initialState.mode = 'player';
+      initialState.combatants = [newPC];
+
+      const created = await this.createCharacter({
+        name: template.name || 'Sample Hero',
+        race: template.race || 'human',
+        classSummary: template.classSummary || template.class_summary || '',
+        level: typeof template.level === 'number' ? template.level : 10,
+        initialData: initialState,
+      });
+
+      await this.switchActiveCharacter(created.id);
+      return created;
+    } catch (err) {
+      console.error('[CharacterService] Error loading sample character:', err);
       return null;
     }
   }

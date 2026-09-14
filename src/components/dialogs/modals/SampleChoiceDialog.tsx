@@ -28,6 +28,7 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
         <>
           <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
             Select a sample character with appropriate stats, weapons, and spells to load:
+            <br/><span style={{ fontSize: '11px', color: 'var(--inkm)' }}>This will safely add a new character to your roster without overwriting your current one.</span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -102,6 +103,7 @@ export const SampleChoiceDialog: React.FC<SampleChoiceDialogProps> = ({
         <>
           <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--ink)', lineHeight: 1.45, marginBottom: '16px', fontWeight: 500, textAlign: 'left' }}>
             Select which encounter and characters should be loaded. For the Dungeon Master, all three heroes will be created simultaneously:
+            <br/><strong style={{ fontSize: '11px', color: 'var(--red)' }}>⚠️ Warning: This will completely overwrite your current active encounter!</strong>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
