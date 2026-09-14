@@ -396,6 +396,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
     } catch (err: any) {
       console.error(`[SupabaseStorageAdapter] Failed to save character ${characterId}:`, err);
       this.notify('error', err instanceof Error ? err : new Error(String(err?.message || err)));
+      throw err;
     }
   }
 

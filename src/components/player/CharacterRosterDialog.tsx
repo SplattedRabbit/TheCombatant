@@ -105,11 +105,25 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
     );
   };
 
-  const handleCreateNew = async (name: string, startingClass: string) => {
+  const handleCreateNew = async (name: string, startingClass: string, mode: 'wizard' | 'empty') => {
+    if (mode === 'wizard') {
+      setShowCreateModal(false);
+      onClose();
+      if (typeof window !== 'undefined' && window.sessionStorage) {
+        if (name.trim()) {
+          window.sessionStorage.setItem('dd_wizard_preset_name', name.trim());
+        } else {
+          window.sessionStorage.removeItem('dd_wizard_preset_name');
+        }
+      }
+      CombatState.setRole('wizard');
+      return;
+    }
+
     try {
       setIsActionInProgress(true);
       const created = await characterService.createCharacter({
-        name,
+        name: name.trim() || 'Hero',
         classSummary: startingClass,
         level: 1,
       });

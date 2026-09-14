@@ -95,7 +95,7 @@ export default function App() {
       <CharacterWizardDialog
         onClose={() => {
           if (CombatState.getState()?.session?.role === 'wizard') {
-            CombatState.setRole('choice');
+            CombatState.setRole(activePC ? 'player' : 'choice');
           }
         }}
       />

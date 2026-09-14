@@ -33,7 +33,18 @@ export const CharacterWizardDialog: React.FC<CharacterWizardDialogProps> = ({ on
   const [levelSubView, setLevelSubView] = useState<'config' | 'spells'>('config');
   
   // Step 1 State
-  const [name, setName] = useState('');
+  const [name, setName] = useState(() => {
+    try {
+      if (typeof window !== 'undefined' && window.sessionStorage) {
+        const preset = window.sessionStorage.getItem('dd_wizard_preset_name');
+        if (preset) {
+          window.sessionStorage.removeItem('dd_wizard_preset_name');
+          return preset;
+        }
+      }
+    } catch {}
+    return '';
+  });
   const [selectedRace, setSelectedRace] = useState<string>('human');
   const [alignmentEthical, setAlignmentEthical] = useState<string>('Neutral');
   const [alignmentMoral, setAlignmentMoral] = useState<string>('Neutral');

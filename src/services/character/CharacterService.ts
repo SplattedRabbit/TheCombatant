@@ -78,12 +78,19 @@ export class CharacterService {
     let stateData = input.initialData;
     if (!stateData) {
       const fresh = createInitialState();
+      const rawClass = (input.classSummary || '').trim();
+      const classKey = rawClass.toLowerCase().replace(/\s+/g, '_');
       const newPC = createCombatant({
         id: 'pc-' + Date.now(),
         name: input.name || 'Hero',
         race: input.race || 'human',
         type: 'p',
       });
+      newPC.classSummary = rawClass;
+      newPC.level = input.level || 1;
+      if (rawClass) {
+        newPC.classes = [{ classType: classKey, level: input.level || 1 }];
+      }
       fresh.combatants = [newPC];
       stateData = fresh;
     }
