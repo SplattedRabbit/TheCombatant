@@ -6,7 +6,14 @@ Dieses Dokument dient als zentrales Backlog und Tracking-Dokument für geplante 
 
 ## ✅ Zuletzt Abgeschlossen (Recent Releases)
 
-### 📖 1. Wizard RAW Per-Level Zauberbuch-Limits & Assassin Spells Known (v6.9.1)
+### 🎁 1. Theatrical Loot Reveal, Safe Roster Import & Session Join Sync (v6.9.2)
+- **Status:** `Abgeschlossen (v6.9.2)`
+- **Umfang:**
+  - **Theatrical Loot Reveal:** Immersive Schatztruhen-Animation bei DM-Beuteübergabe (Schatztruhen-Öffnung mit Partikeln).
+  - **Safe Character Import:** Import-Schutz zur Verhinderung der Überschreibung aktiver Charaktere, Namensduplikat-Erkennung (`"Name (1)"`) und HTML-Entitäten-Decoding (`&#x27;`).
+  - **Session Join Sync (DM vs Player):** Synchronisierung der WebSocket-Räume für DM und Spieler. Gäste & Offline-Spieler können nun ohne blockierenden Datenbankfehler einer Kampagne beitreten. 1-Klick Invite-Code-Kopieren im DMHeader.
+
+### 📖 2. Wizard RAW Per-Level Zauberbuch-Limits & Assassin Spells Known (v6.9.1)
 - **Status:** `Abgeschlossen & Gemerged (v6.9.1)`
 - **Umfang:**
   - **Wizard Per-Level Caps (Option C):** Generische RAW-Formel $\text{Cap}_G = (W - (2 \times G - 1) + 1) \times 2$ für Zaubergrade $G > 1$ basierend auf organischen Level-Ups; automatische Einberechnung von Prestigeklassen (wie Spellwarp Sniper); hartes Deaktivieren des `+ Buch`-Buttons im Compendium bei Erreichen des Stufen- oder Gesamtbudgets; visuelle Warnungen (`⚠️ Über Limit`) und rote Zeilenhervorhebungen für Bestandscharaktere mit Überschreitungen.

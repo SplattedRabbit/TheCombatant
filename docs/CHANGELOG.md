@@ -3,6 +3,27 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.9.2] - 2026-09-15
+
+### Added
+- **Theatrical Loot Reveal Animation:**
+  - Added a highly polished, immersive medieval treasure chest animation (`LootRevealModal.tsx`) when a DM distributes an item from the campaign stash directly to a player.
+  - Automatically triggers via real-time network broadcast (`item_gift` packet) on the receiving player's screen.
+  - Features particle effects, dynamic chest opening sequence, and prominent display of the received item.
+
+### Changed
+- **Safe Character Import & Roster Management:**
+  - `CombatState.importPC()` now safely imports characters into the local roster without implicitly overwriting the currently active character in the session.
+  - Added duplicate name detection (`"Name (1)"`) to prevent accidental collisions.
+  - Automatically decodes HTML entities (like `&#x27;`) in imported character names.
+
+### Fixed
+- **Campaign Session Joining (DM vs Player Sync):**
+  - Aligned DM and Player WebSocket channel room codes. DMs now automatically connect to the `campaign:<inviteCode>` channel instead of the internal UUID, ensuring players using the short human-readable code land in the exact same channel.
+  - Added a 1-click copy badge for the active Invite Code directly in the `DMHeader`.
+  - Fixed a hard database-block bug where `joinCampaignByCode` would fail with an error if the campaign was created locally/offline (Guest mode) because it couldn't find the invite code in Supabase. Both offline and authenticated users now flawlessly sync presence and combat data through the same room channel.
+  - Enhanced Node test runner handling with `BroadcastChannel.unref()` to allow seamless cross-tab synchronization during local development without keeping tests indefinitely open.
+
 ## [6.9.1] - 2026-09-13
 
 ### Added
