@@ -60,3 +60,21 @@ Diese Dokumentation enthält die detaillierte Analyse und die implementierten L�
   - Nahtlos angebunden an `CombatantSkills.js` (`calculateSkillModifier`), `PCSkillsTab.tsx` (Gesamtmodifikator, Tooltip `• Equipment: +X` und Würfel-Breakdown).
 - **Verifikation:** `Tests/item_skill_modifiers.test.js`
 
+## 8. iPad Pinch-to-Zoom Viewport-Sprung nach links unten
+- **Status:** **Behoben**
+- **Problem:** Beim 2-Finger-Pinchzoom auf dem iPad (z. B. auf den Quick Actionbelt) sprang der Bildausschnitt unkontrolliert nach ganz links unten der App, anstatt an der gezoomten Stelle zu verweilen.
+- **Lösung:**
+  - In `css/layout.css` wurde `transform: scale(var(--app-scale))` auf `#appRoot` durch die native CSS `zoom: var(--app-scale, 1)` Eigenschaft ersetzt. `zoom` skaliert den Layout-Fluss nativ und bricht die WebKit-Gesten-Koordinaten nicht.
+  - In `src/App.tsx` wurden künstliche JavaScript-Höhenberechnungen (`syncBodyHeight()`, `ResizeObserver`) entfernt.
+  - In `src/App.tsx` wurden restriktive Scroll-Listener (`handleScroll`, `handleViewportScroll`, `handleFocusIn`), die bei `scrollX !== 0` ein hartes `window.scrollTo(0, window.scrollY)` ausführten, restlos entfernt. Dadurch kann Safari nun völlig frei und flüssig an jeder beliebigen Stelle zoomen und pannen.
+- **Verifikation:** Manueller Test auf WebKit/iPad, automatisierter Typecheck & `npm test`.
+
+## 9. Unvollständige Popup-Schatten & Pinch-Zoom-Blockade bei geöffneten Modals
+- **Status:** **Behoben**
+- **Problem:** Bei geöffneten Popups/Modals wurde das abdunkelnde Hintergrund-Overlay auf manchen Geräten und Auflösungen (iPad, Windows-Laptops mit Bildschirmbreite != 1150px) nicht bildschirmfüllend dargestellt (10–20 % unbeschattete Ränder). Sobald ein Popup geöffnet war, funktionierte auch der Pinch-Zoom nicht mehr stabil.
+- **Lösung:**
+  - In `css/popups.css` wurde `transform: scale(var(--app-scale))` von allen 18 Backdrop-Overlay-IDs entfernt. Der Vollbild-Schatten (`position: fixed; inset: 0; background: rgba(...)`) bleibt dadurch bei allen Auflösungen exakt bei 100vw × 100vh.
+  - Skalierung via `zoom: var(--app-scale, 1)` wird gezielt nur auf die inneren Dialogkarten (`.custom-alert-box`, `.custom-scroll-box`, `.parchment-border`, `.ref-modal`, `.role-container`) angewendet.
+  - Alle Modals im gesamten System (im `DialogContext.tsx`, in `DialogOverlay.tsx` sowie alle lokalen Standalone-Modals wie `BeltItemModal`, `SlotEquipModal`, `ItemEditorModal`, `ItemCompendiumModal`, `DruidFeaturesCard` WildShape, `SkillTrickDetailsDialog`, `CompanionAbilityDetailsDialog`, `CampaignManagerDialog`, `CreateCampaignModal`, `CreateCharacterModal`) wurden via React `createPortal` direkt an `document.body` gehängt, wodurch sie vollständig von `#appRoot` und dessen Skalierung isoliert sind.
+- **Verifikation:** Automatisierter Typecheck, 392 Unit-Tests und Production Build.
+

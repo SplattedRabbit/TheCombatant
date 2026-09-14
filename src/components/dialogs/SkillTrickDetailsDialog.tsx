@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { CombatState } from '@core/state.js';
 import { CombatRules } from '@core/rules.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
@@ -68,7 +69,7 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
     onClose();
   };
 
-  return (
+  const content = (
     <div
       className="dialog-backdrop"
       style={{
@@ -295,4 +296,6 @@ export const SkillTrickDetailsDialog: React.FC<SkillTrickDetailsDialogProps> = (
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };

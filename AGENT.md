@@ -74,6 +74,8 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | DM-Screen & Init-Bar  | `src/components/dm/DMScreen.tsx`, `DMCombatantsTable.tsx`, `InitBar.tsx` | `src/App.tsx`, `src/components/player/PlayerSheet.tsx` |
 | Kampf-Verwaltung      | `js/state/EncounterManager.js`, `js/state/ConditionManager.js`, `js/state/ConcentrationManager.js`, `js/state/EncounterSamples.js` | `js/state.js`, `js/network/SyncProtocol.js`, `Tests/` |
 | Prestige Classes      | `js/rules/classValidation.js` (Voraussetzungen), `js/rules/prestigeClassEngine.js` (Stufen-Features), `js/data/prestigeClasses-data.js` (Fassade, mergt `-dmg.js`/`-cs.js`/`-ca.js`) | `src/components/player/features/PrestigeClassFeaturesCard.tsx`, `PCAttributes.tsx`, `Step3LevelConfig.tsx`, `Tests/prestige.test.js`, `Tests/prestigeClassEngine.test.js`, `Tests/prestige_guidance.test.js` |
+| App-Skalierung & Zoom | `src/App.tsx`, `css/layout.css` (`zoom: var(--app-scale, 1)`) | `html, body` (kein `transform: scale` auf Root; native Pinch-Zoom-Unterstützung) |
+| Modals & Overlays     | `src/context/DialogContext.tsx`, `src/components/dialogs/modals/DialogOverlay.tsx`, `css/popups.css` | Alle Dialoge montieren via `createPortal(..., document.body)`; Skalierung nur auf `.custom-alert-box` etc. |
 
 ---
 
@@ -136,6 +138,9 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - Halbe Ränge bei cross-class skills verbessern den Wurf nicht — beim Modifikator immer `Math.floor`
 - `CombatState` direkt in Rules-Engines (`js/rules/`, `js/models/helpers/modifiers/`) importieren — Rules-Funktionen erhalten benötigte State-Daten (z. B. `allCombatants` für geteilte Buffs) als expliziten Parameter vom Aufrufer, Schreibzugriffe (z. B. `updatePCBatch`) als injizierten Callback (behobenes Anti-Pattern, siehe `Refactoring_Zielbild.md` WP7: `AttackContext.js`, `BuffRules.js`, `SpellModifierApplier.js`)
 - `window.__REACT_DIALOG_BRIDGE__` direkt aus React-Komponenten aufrufen. React-Komponenten müssen immer den `useDialog()` Hook verwenden. Die Bridge existiert ausschließlich als Fallback-Fassade für Vanilla JS (`js/ui/components/dialogs.js`).
+- `transform: scale()` auf Vollbild-Overlays (`position: fixed; inset: 0; background: rgba(...)`) anwenden — das schrumpft den Backdrop bei Skalierung < 1.0 zusammen, hinterlässt unbeschattete Ränder und blockiert den nativen Pinch-Zoom auf Touchgeräten (iPad/Safari/Windows/Android).
+- Modals oder Dialoge direkt als unportaliertes Kind-Element tief innerhalb von `#appRoot` rendern. Modals müssen ausnahmslos via React `createPortal(content, document.body)` an `document.body` gehängt werden.
+- Scroll-Events (`scroll`, `visualViewport scroll`) abfangen, um `scrollX = 0` zu erzwingen — das zerstört den nativen Pinch-to-Zoom auf Tablets und Mobilgeräten.
 
 ---
 
@@ -149,6 +154,20 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
     - Titel bei nur Schurke / PrC: `Sneak Attack`.
   - **Regel-Annahme:** Für die Berechnung wird davon ausgegangen, dass die Konditionen bei Durchführung erfüllt sind. Alle Würfel (`pc.getSneakAttackDiceCount()`) werden voll aufeinandergerechnet und zusammen ausgewürfelt.
   - **WICHTIG FÜR AGENTS:** Diese Zusammenlegung ist eine feste Benutzer-Entscheidung und darf **niemals** auf zwei getrennte, sich gegenseitig ausschließende Strike-Karten im Tactical Slot zurückgebaut werden!
+
+---
+
+## 6.2 Skalierungs- & Viewport-Standards (iPad / Mobile / Desktop)
+
+- **App-Canvas Skalierung via CSS `zoom` (nicht `transform`):**
+  - `#appRoot` nutzt `zoom: var(--app-scale, 1);` in `css/layout.css`.
+  - **Warum `zoom` statt `transform: scale()`?**
+    - `zoom` skaliert den physischen Layout-Fluss nativ. Dadurch wächst und schrumpft `#appWrapper` / `body` automatisch und es sind keine künstlichen JavaScript-Höhenberechnungen (`syncBodyHeight()`, `ResizeObserver`) nötig.
+    - WebKit/Safari und moderne Browser unterstützen nativen 2-Finger-Pinch-to-Zoom nur dann zuverlässig, wenn der Haupt-Container nicht durch `transform` in einen isolierten Matrix-Koordinatenraum gezwungen wird.
+- **Modal- und Dialog-Portal-Architektur:**
+  - **Backdrop / Overlay:** Vollbild-Hintergründe (`position: fixed; inset: 0; background: rgba(...)`) liegen immer direkt auf `document.body` und bleiben flach bei 100vw × 100vh ohne jede CSS-Skalierung.
+  - **Innere Dialogkarten:** Nur die inneren Pergament-Boxen (`.custom-alert-box`, `.custom-scroll-box`, `.parchment-border`, `.ref-modal`, `.role-container`) erhalten `zoom: var(--app-scale, 1);` in `css/popups.css`.
+  - **Single Source of Truth:** Neue Dialoge müssen entweder auf `DialogOverlay.tsx` basieren oder `createPortal(content, document.body)` implementieren.
 
 ---
 

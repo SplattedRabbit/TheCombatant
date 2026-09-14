@@ -282,62 +282,172 @@ Once per day, as a full-round action, a paladin may magically call her mount fro
   // ==========================================
   if (classMap.has('ranger')) {
     const rLvl = classMap.get('ranger')!;
+    const activeACFs: string[] = Array.isArray(pc?.acfs) ? pc.acfs : [];
 
     // 1. Favored Enemy
-    const feBonus = 2 + Math.floor(rLvl / 5) * 2;
+    const maxEnemies = Math.max(1, 1 + Math.floor(rLvl / 5));
+    const totalPoints = 2 + 4 * Math.floor(rLvl / 5);
+    let enemiesText = 'Not configured';
+
+    if (Array.isArray(pc?.favoredEnemies) && pc.favoredEnemies.length > 0) {
+      enemiesText = pc.favoredEnemies.map((e: any) => `${e.type} (+${e.bonus})`).join(', ');
+    } else if (pc?.favoredEnemy) {
+      enemiesText = pc.favoredEnemy;
+    }
+
     features.push({
       id: 'ranger_favored_enemy',
-      name: `Favored Enemy (+${feBonus})`,
+      name: `Favored Enemy (${Array.isArray(pc?.favoredEnemies) && pc.favoredEnemies.length > 0 ? `${pc.favoredEnemies.length}/${maxEnemies}` : `+${2 + Math.floor(rLvl / 5) * 2}`})`,
       source: `Ranger Lv.${rLvl}`,
       category: 'passive',
       typeLabel: 'Hunter Mastery',
-      summary: `+${feBonus} bonus on Bluff, Listen, Sense Motive, Spot, and Survival checks and +${feBonus} on weapon damage rolls against favored enemies.`,
-      rawRules: `At 1st level, a ranger selects a creature type from among the given table as a favored enemy. He gains a +2 bonus on Bluff, Listen, Sense Motive, Spot, and Survival checks when using these skills against creatures of this type. Likewise, he gets a +2 bonus on weapon damage rolls against such creatures.
+      summary: `Bonuses against favored enemies: ${enemiesText}. +bonus to Bluff, Listen, Sense Motive, Spot, Survival and weapon damage.`,
+      rawRules: `At 1st level, a ranger selects a creature type from the official favored enemy table. He gains a +2 bonus on Bluff, Listen, Sense Motive, Spot, and Survival checks against creatures of this type, and a +2 bonus on weapon damage rolls against them.
 
-At 5th level and every five levels thereafter (10th, 15th, and 20th level), the ranger may select an additional favored enemy and the bonus against any one favored enemy increases by 2.`,
+At 5th level and every 5 levels thereafter (10th, 15th, 20th), the ranger may select an additional favored enemy and the bonus against any one favored enemy increases by 2. (Total available bonus pool at Lv.${rLvl}: +${totalPoints} across up to ${maxEnemies} enemies).`,
       actionType: 'Passive',
+      stackInfo: `Enemies: ${enemiesText}`,
     });
 
     // 2. Track & Wild Empathy
+    const chaMod = getAblMod(pc?.cha || 10);
+    const empathyTotal = rLvl + chaMod;
     features.push({
       id: 'ranger_track_empathy',
       name: 'Track & Wild Empathy',
       source: `Ranger Lv.${rLvl}`,
       category: 'passive',
       typeLabel: 'Wilderness Expertise',
-      summary: 'Bonus Track feat to follow trails via Survival. Wild Empathy check (1d20 + Ranger Lvl + Cha mod) to influence animals.',
+      summary: `Track bonus feat. Wild Empathy check: 1d20+${empathyTotal} (${rLvl >= 0 ? `+${rLvl}` : rLvl} Ranger, ${chaMod >= 0 ? `+${chaMod}` : chaMod} Cha) to influence wild animals.`,
       rawRules: `A ranger gains Track as a bonus feat at 1st level.
 
-A ranger can improve the attitude of an animal. This ability functions just like a Diplomacy check made to improve the attitude of a person. The ranger rolls 1d20 + ranger level + Charisma modifier. The typical domestic animal has a starting attitude of indifferent, while wild animals are usually unfriendly.`,
+A ranger can improve the attitude of an animal. This ability functions just like a Diplomacy check made to improve the attitude of a person. The ranger rolls 1d20 + ranger level + Charisma modifier. Domestic animals start indifferent, wild animals start unfriendly.`,
       actionType: 'Passive',
     });
 
     // 3. Combat Style (2nd), Improved (6th), Mastery (11th)
     if (rLvl >= 2) {
-      const styleName = rLvl >= 11 ? 'Combat Style Mastery' : (rLvl >= 6 ? 'Improved Combat Style' : 'Combat Style');
+      const style = pc?.rangerCombatStyle || 'none';
+      let styleTitle = 'Combat Style';
+      if (rLvl >= 11) styleTitle = 'Combat Style Mastery';
+      else if (rLvl >= 6) styleTitle = 'Improved Combat Style';
+
+      let styleSummary = '';
+      if (style === 'archery') {
+        const feats = ['Rapid Shot'];
+        if (rLvl >= 6) feats.push('Manyshot');
+        if (rLvl >= 11) feats.push('Improved Precise Shot');
+        styleSummary = `Archery Style: Virtual feats granted in light/no armor: ${feats.join(', ')}.`;
+      } else if (style === 'twoweapon') {
+        const feats = ['Two-Weapon Fighting'];
+        if (rLvl >= 6) feats.push('Improved Two-Weapon Fighting');
+        if (rLvl >= 11) feats.push('Greater Two-Weapon Fighting');
+        styleSummary = `Two-Weapon Style: Virtual feats granted in light/no armor: ${feats.join(', ')}.`;
+      } else {
+        styleSummary = `Unchosen Style: Select Archery (Rapid Shot${rLvl >= 6 ? ', Manyshot' : ''}) or Two-Weapon Fighting (TWF${rLvl >= 6 ? ', ITWF' : ''}).`;
+      }
+
       features.push({
         id: 'ranger_combat_style',
-        name: styleName,
+        name: `${styleTitle} (${style === 'archery' ? 'Archery' : style === 'twoweapon' ? 'Two-Weapon' : 'Choose Style'})`,
         source: `Ranger Lv.${rLvl}`,
         category: 'passive',
         typeLabel: 'Virtual Combat Feat',
-        summary: 'Gain virtual combat feats (Rapid Shot/Manyshot or TWF/Improved TWF/Greater TWF) when in light or no armor.',
-        rawRules: `At 2nd level, a ranger selects a combat style (Archery or Two-Weapon Combat). He gains the feats associated with that style (Rapid Shot or Two-Weapon Fighting) even if he does not meet the prerequisites.
+        summary: styleSummary,
+        rawRules: `At 2nd level, a ranger selects a combat style (Archery or Two-Weapon Combat). He gains Rapid Shot or Two-Weapon Fighting even if he does not meet the prerequisites.
 
-At 6th level, he gains Improved Combat Style (Manyshot or Improved Two-Weapon Fighting), and at 11th level, he gains Combat Style Mastery (Improved Precise Shot or Greater Two-Weapon Fighting). These benefits apply only when wearing light armor or no armor.`,
+At 6th level, he gains Improved Combat Style (Manyshot or Improved Two-Weapon Fighting), and at 11th level, Combat Style Mastery (Improved Precise Shot or Greater Two-Weapon Fighting). These benefits apply only when wearing light armor or no armor.`,
         actionType: 'Passive',
       });
     }
 
-    // 4. Endurance (3rd), Woodland Stride (7th), Swift Tracker (8th), Camouflage (13th), Hide in Plain Sight (17th)
+    // 4. Endurance (3rd level)
+    if (rLvl >= 3) {
+      features.push({
+        id: 'ranger_endurance',
+        name: 'Endurance',
+        source: `Ranger Lv.${rLvl}`,
+        category: 'passive',
+        typeLabel: 'Class Bonus Feat',
+        summary: '+4 bonus on checks/saves vs nonlethal damage, forced march, starvation/thirst, and sleep in light/medium armor without fatigue.',
+        rawRules: `A ranger gains Endurance as a bonus feat at 3rd level. He gains a +4 bonus on Constitution checks and Fortitude saves to resist nonlethal damage from environmental conditions, drowning, thirst, and exhaustion. He can sleep in light or medium armor without becoming fatigued.`,
+        actionType: 'Passive',
+      });
+    }
+
+    // 5. Animal Companion (4th level) or ACF (Distracting Attack / Spiritual Guide)
+    if (rLvl >= 4) {
+      if (activeACFs.includes('ranger_distracting_attack')) {
+        features.push({
+          id: 'ranger_distracting_attack',
+          name: 'Distracting Attack (ACF)',
+          source: `Ranger Lv.${rLvl} [PHB2 p.55]`,
+          category: 'combat',
+          typeLabel: 'Alternative Class Feature',
+          summary: 'Weapon hits mark enemies as flanked for allies until your next turn or ally attack. (Replaces Animal Companion).',
+          rawRules: `**Alternative Class Feature: Distracting Attack**\n**Source:** Player's Handbook II, p. 55\n**Replaces:** Animal Companion\n\nWhenever you hit an enemy with a weapon attack (whether melee or ranged), you can choose to make that enemy distracted until the beginning of your next turn or until it is attacked by an ally (whichever comes first). While the target is distracted, it is considered flanked by you for the purpose of any attacks made against it by your allies, even if you are not threatening the target.`,
+          actionType: 'Free Action',
+          duration: '1 round or until attacked',
+          stackInfo: 'Replaces Animal Companion',
+        });
+      } else if (activeACFs.includes('ranger_spiritual_guide')) {
+        const bonus = Math.max(1, Math.floor(rLvl / 4));
+        features.push({
+          id: 'ranger_spiritual_guide',
+          name: 'Spiritual Guide (ACF)',
+          source: `Ranger Lv.${rLvl} [CS p.35]`,
+          category: 'passive',
+          typeLabel: 'Alternative Class Feature',
+          summary: `+${bonus} divine bonus on Handle Animal, Ride, and Survival. Commune with Nature 1/day. (Replaces Animal Companion).`,
+          rawRules: `**Alternative Class Feature: Spiritual Guide**\n**Source:** Complete Scoundrel, p. 35\n**Replaces:** Animal Companion\n\nYou gain a spiritual guide entity that accompanies you silently. You gain a divine bonus equal to 1/4 your ranger level (minimum +1) on Handle Animal, Ride, and Survival checks (+${bonus}). Once per day, you can ask your spiritual guide to commune with nature, functioning as the spell Commune with Nature with a caster level equal to your ranger level.`,
+          actionType: 'Passive',
+          dailyAbilityKey: 'ranger_spiritual_guide',
+          stackInfo: 'Replaces Animal Companion',
+        });
+      } else {
+        const effDruidLvl = Math.floor(rLvl / 2);
+        features.push({
+          id: 'ranger_animal_companion',
+          name: 'Animal Companion',
+          source: `Ranger Lv.${rLvl}`,
+          category: 'passive',
+          typeLabel: 'Companion Beast',
+          summary: `Loyal animal companion (effective Druid Level ${effDruidLvl}). Configure and inspect stats in the Companion tab.`,
+          rawRules: `At 4th level, a ranger gains an animal companion selected from the animal companion list. A ranger's effective druid level for this ability is one-half his ranger level. A ranger may select from the alternative lists of animal companions just as a druid can.`,
+          actionType: 'Passive',
+        });
+      }
+    }
+
+    // 6. Ranger Spells (4th level)
+    if (rLvl >= 4) {
+      const isSpellsReplaced = activeACFs.includes('ranger_champion_of_the_wild');
+      if (!isSpellsReplaced) {
+        const casterLvl = Math.floor(rLvl / 2);
+        features.push({
+          id: 'ranger_spells',
+          name: 'Ranger Divine Spells',
+          source: `Ranger Lv.${rLvl}`,
+          category: 'spell-like',
+          typeLabel: 'Divine Magic',
+          summary: `Cast divine ranger spells prepared from the ranger list (Wisdom-based, Caster Level ${casterLvl}).`,
+          rawRules: `Beginning at 4th level, a ranger gains the ability to cast divine spells drawn from the ranger spell list. A ranger must have a Wisdom score of at least 10 + spell level. His caster level is one-half his ranger level.`,
+          actionType: 'Passive',
+        });
+      }
+    }
+
+    // 7. Woodland Stride (7th) & Swift Tracker (8th)
     if (rLvl >= 7) {
       features.push({
         id: 'ranger_woodland_stride',
-        name: 'Woodland Stride & Swift Tracker',
+        name: rLvl >= 8 ? 'Woodland Stride & Swift Tracker' : 'Woodland Stride',
         source: `Ranger Lv.${rLvl}`,
         category: 'passive',
         typeLabel: 'Wilderness Mobility',
-        summary: 'Move through natural thorns/undergrowth at normal speed. Track at normal speed without -5 penalty (at 8th level).',
+        summary: rLvl >= 8
+          ? 'Move through thorns/overgrowth at full speed. Track at full speed without -5 penalty.'
+          : 'Move through natural thorns, briars, and overgrown terrain at normal speed without damage.',
         rawRules: `Starting at 7th level, a ranger may move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at his normal speed and without taking damage or suffering any other impairment.
 
 At 8th level, a ranger can move at his normal speed while following tracks without taking the normal -5 penalty.`,
@@ -345,6 +455,36 @@ At 8th level, a ranger can move at his normal speed while following tracks witho
       });
     }
 
+    // 8. Evasion (9th level) or ACF (Spell Reflection)
+    if (rLvl >= 9) {
+      if (activeACFs.includes('ranger_spell_reflection')) {
+        features.push({
+          id: 'ranger_spell_reflection',
+          name: 'Spell Reflection (ACF)',
+          source: `Ranger Lv.${rLvl} [CS p.35]`,
+          category: 'combat',
+          typeLabel: 'Alternative Class Feature',
+          summary: 'Redirect missed rays or ranged touch attacks back at the caster as an immediate action on a Reflex save (DC 10 + spell level). (Replaces Evasion).',
+          rawRules: `**Alternative Class Feature: Spell Reflection**\n**Source:** Complete Scoundrel, p. 35\n**Replaces:** Evasion\n\nYou do not gain evasion. Instead, when an enemy misses you with a ray or ranged touch attack, you can redirect the spell or effect back at the caster as an immediate action. You must succeed on a Reflex saving throw (DC 10 + the spell level, or 10 + 1/2 creature's HD + Cha mod for non-spell attacks). On a success, the spell or effect is redirected to attack the original user.`,
+          actionType: 'Immediate Action',
+          saveThrow: 'Reflex DC 10 + spell level',
+          stackInfo: 'Replaces Evasion',
+        });
+      } else {
+        features.push({
+          id: 'ranger_evasion',
+          name: 'Evasion',
+          source: `Ranger Lv.${rLvl}`,
+          category: 'passive',
+          typeLabel: 'Agility Defense',
+          summary: 'Take no damage on a successful Reflex save against attacks that normally deal half damage (light or no armor).',
+          rawRules: `At 9th level, a ranger gains evasion. If exposed to any effect that normally allows him to attempt a Reflex saving throw for half damage, he takes no damage with a successful saving throw. This ability can only be used if the ranger is wearing light armor or no armor.`,
+          actionType: 'Passive',
+        });
+      }
+    }
+
+    // 9. Camouflage (13th) & Hide in Plain Sight (17th)
     if (rLvl >= 13) {
       features.push({
         id: 'ranger_camouflage',

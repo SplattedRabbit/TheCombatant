@@ -29,6 +29,14 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
   - Explicitly clarified Spellwarp Sniper prerequisite in `constants.ts` to `Arcane spells 3rd lvl, Sneak Attack or Sudden Strike +1d6`.
 
 ### Fixed
+- **Modal Overlay Backdrop Coverage & Pinch-to-Zoom Glitch Across Platforms:**
+  - Removed `transform: scale(var(--app-scale))` on full-screen backdrop overlay containers in `css/popups.css`, ensuring dark backdrops always cover 100% of the viewport on all resolutions and browsers (iOS, Windows, Android, macOS).
+  - Targeted inner parchment dialog cards (`.custom-alert-box`, `.custom-scroll-box`, `.parchment-border`, `.ref-modal`, `.role-container`) with `zoom: var(--app-scale, 1)`, keeping backdrops at a clean 100vw × 100vh while scaling dialog contents.
+  - Mounted all dialogs and modals directly to `document.body` via React `createPortal` in `DialogContext.tsx`, `DialogOverlay.tsx`, and standalone modals (`BeltItemModal`, `SlotEquipModal`, `ItemEditorModal`, `ItemCompendiumModal`, `DruidFeaturesCard` WildShape, `SkillTrickDetailsDialog`, `CompanionAbilityDetailsDialog`, `CampaignManagerDialog`, `CreateCampaignModal`, `CreateCharacterModal`), decoupling them from `#appRoot` and preventing pinch-to-zoom jitter/desync.
+- **iPad Pinch-to-Zoom Jump & Viewport Glitch:**
+  - Replaced CSS `transform: scale(var(--app-scale))` on `#appRoot` and `.react-modal-container > div` with native `zoom: var(--app-scale, 1)`.
+  - Removed artificial JavaScript height recalculations (`syncBodyHeight()` and `ResizeObserver`) from `App.tsx` as native `zoom` naturally scales layout flow without leaving excessive blank page space.
+  - Removed disruptive `handleScroll`, `handleViewportScroll`, and `handleFocusIn` listeners in `App.tsx` that forcibly snapped `scrollX` back to `0`, allowing smooth, unrestricted native pinch-to-zoom and pan interactions on iPad and touch devices.
 - **Prepared Spells Minimum INT Requirement Check:**
   - Fixed an ability modifier vs. ability score check in `GrimoireLevelGroup.tsx` where preparing spells checked `intMod >= 10 + lvl` instead of `intScore >= 10 + lvl` (e.g. INT 18 was erroneously blocked for level 5 spells).
 

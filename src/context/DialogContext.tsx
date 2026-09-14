@@ -5,6 +5,7 @@
  */
 
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   CustomAlertModal,
   CustomConfirmModal,
@@ -362,39 +363,49 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     >
       {children}
 
-      {/* Render Active Declarative Modals inside React Component Tree as Stack */}
-      {activeModals.map(activeModal => (
-        <React.Fragment key={activeModal.id}>
-          {activeModal.type === 'alert' && <CustomAlertModal {...activeModal.props} />}
-          {activeModal.type === 'confirm' && <CustomConfirmModal {...activeModal.props} />}
-          {activeModal.type === 'prompt' && <CustomPromptModal {...activeModal.props} />}
-          {activeModal.type === 'healing' && <HealingRollModal {...activeModal.props} />}
-          {activeModal.type === 'itemDamage' && <ItemDamageModal {...activeModal.props} />}
-          {activeModal.type === 'newDay' && <NewDayTemplateDialog {...activeModal.props} />}
-          {activeModal.type === 'rollBreakdown' && <RollBreakdownDialog {...activeModal.props} />}
-          {activeModal.type === 'sampleChoice' && <SampleChoiceDialog {...activeModal.props} />}
-          {activeModal.type === 'attackChoice' && <AttackChoiceDialog {...activeModal.props} />}
-          {activeModal.type === 'damageChoice' && <DamageChoiceDialog {...activeModal.props} />}
-          {activeModal.type === 'prepareSpell' && <PrepareSpellDialog {...activeModal.props} />}
-          {activeModal.type === 'castSpontaneous' && <CastSpontaneousSpellDialog {...activeModal.props} />}
-          {activeModal.type === 'spellScroll' && <SpellScrollDialog {...activeModal.props} />}
-          {activeModal.type === 'featScroll' && <FeatScrollDialog {...activeModal.props} />}
-          {activeModal.type === 'buffDetails' && <BuffDetailsDialog {...activeModal.props} />}
-          {activeModal.type === 'castSuccess' && <CastSuccessDialog {...activeModal.props} />}
-          {activeModal.type === 'spellDetails' && <SpellDetailsDialog {...activeModal.props} />}
-          {activeModal.type === 'spellCreator' && <SpellCreatorDialog {...activeModal.props} />}
-        </React.Fragment>
-      ))}
+      {/* Render Active Declarative Modals directly into document.body as Stack */}
+      {typeof document !== 'undefined' && activeModals.length > 0 && createPortal(
+        <>
+          {activeModals.map(activeModal => (
+            <React.Fragment key={activeModal.id}>
+              {activeModal.type === 'alert' && <CustomAlertModal {...activeModal.props} />}
+              {activeModal.type === 'confirm' && <CustomConfirmModal {...activeModal.props} />}
+              {activeModal.type === 'prompt' && <CustomPromptModal {...activeModal.props} />}
+              {activeModal.type === 'healing' && <HealingRollModal {...activeModal.props} />}
+              {activeModal.type === 'itemDamage' && <ItemDamageModal {...activeModal.props} />}
+              {activeModal.type === 'newDay' && <NewDayTemplateDialog {...activeModal.props} />}
+              {activeModal.type === 'rollBreakdown' && <RollBreakdownDialog {...activeModal.props} />}
+              {activeModal.type === 'sampleChoice' && <SampleChoiceDialog {...activeModal.props} />}
+              {activeModal.type === 'attackChoice' && <AttackChoiceDialog {...activeModal.props} />}
+              {activeModal.type === 'damageChoice' && <DamageChoiceDialog {...activeModal.props} />}
+              {activeModal.type === 'prepareSpell' && <PrepareSpellDialog {...activeModal.props} />}
+              {activeModal.type === 'castSpontaneous' && <CastSpontaneousSpellDialog {...activeModal.props} />}
+              {activeModal.type === 'spellScroll' && <SpellScrollDialog {...activeModal.props} />}
+              {activeModal.type === 'featScroll' && <FeatScrollDialog {...activeModal.props} />}
+              {activeModal.type === 'buffDetails' && <BuffDetailsDialog {...activeModal.props} />}
+              {activeModal.type === 'castSuccess' && <CastSuccessDialog {...activeModal.props} />}
+              {activeModal.type === 'spellDetails' && <SpellDetailsDialog {...activeModal.props} />}
+              {activeModal.type === 'spellCreator' && <SpellCreatorDialog {...activeModal.props} />}
+            </React.Fragment>
+          ))}
+        </>,
+        document.body
+      )}
 
-      {/* Render Parchment Messages */}
-      {parchmentMessages.map(msg => (
-        <ParchmentMessageModal
-          key={msg.id}
-          text={msg.text}
-          sender={msg.sender}
-          onClose={() => setParchmentMessages(prev => prev.filter(m => m.id !== msg.id))}
-        />
-      ))}
+      {/* Render Parchment Messages directly into document.body */}
+      {typeof document !== 'undefined' && parchmentMessages.length > 0 && createPortal(
+        <>
+          {parchmentMessages.map(msg => (
+            <ParchmentMessageModal
+              key={msg.id}
+              text={msg.text}
+              sender={msg.sender}
+              onClose={() => setParchmentMessages(prev => prev.filter(m => m.id !== msg.id))}
+            />
+          ))}
+        </>,
+        document.body
+      )}
     </DialogContext.Provider>
   );
 };

@@ -393,53 +393,60 @@ export const RangerStrikeCard: React.FC<StrikeCardBaseProps & {
   hasDistractingAttack,
   favoredEnemyBonus,
   stdFE,
-}) => (
-  <div
-    className="arpg-slot class-ability-slot"
-    style={{
-      position: 'relative',
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      minHeight: '88px',
-      border: '1px solid #4a6274',
-      borderRadius: '4px',
-      padding: '5px 6px',
-      textAlign: 'center',
-      background: 'rgba(74, 98, 116, 0.08)',
-    }}
-  >
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-      <div style={{ fontSize: '6.5px', color: '#4a6274', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
-        {hasDistractingAttack ? '⚡ ACF Ranger' : '🏹 Ranger'}
+}) => {
+  const baseDmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : w.damage || '1w6';
+  const activeTarget = pc.activeFavoredEnemyTarget || (Array.isArray(pc.favoredEnemies) && pc.favoredEnemies[0]?.type) || pc.favoredEnemy || 'Enemy';
+
+  return (
+    <div
+      className="arpg-slot class-ability-slot"
+      style={{
+        position: 'relative',
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        minHeight: '88px',
+        border: '1px solid #4a6274',
+        borderRadius: '4px',
+        padding: '5px 6px',
+        textAlign: 'center',
+        background: 'rgba(74, 98, 116, 0.08)',
+      }}
+    >
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+        <div style={{ fontSize: '6.5px', color: '#4a6274', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
+          {hasDistractingAttack ? '⚡ ACF Ranger' : '🏹 Ranger'}
+        </div>
+        {selectorDropdown}
       </div>
-      {selectorDropdown}
+      <div style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: '#4a6274', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+        Favored Enemy
+      </div>
+      <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
+        +{favoredEnemyBonus} Damage {hasDistractingAttack ? '(Flanks)' : `vs ${activeTarget}`}
+      </div>
+      <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+        <button
+          className="xbtn xbtn-atk"
+          disabled={pc.isTotalDefense}
+          onClick={(e) => handleRollAttack(w, false, e, { favoredEnemy: true, targetCreatureType: activeTarget })}
+          style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+          title={`Roll Attack (${formatMod(stdFE.atkTotal)})`}
+        >
+          ATK {formatMod(stdFE.atkTotal)}
+        </button>
+        <button
+          className="xbtn xbtn-dmg"
+          disabled={pc.isTotalDefense}
+          onClick={(e) => handleRollDamage(w, false, e, { favoredEnemy: true, targetCreatureType: activeTarget })}
+          style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+          title={`Roll Favored Enemy Damage (${baseDmgDice} ${formatMod(stdFE.dmgTotal)})`}
+        >
+          DMG {formatMod(stdFE.dmgTotal)}
+        </button>
+      </div>
     </div>
-    <div style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: '#4a6274', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
-      Favored Enemy
-    </div>
-    <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
-      +{favoredEnemyBonus} Damage {hasDistractingAttack ? '(Flanks)' : `vs ${pc.favoredEnemy || 'Enemy'}`}
-    </div>
-    <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
-      <button
-        className="xbtn xbtn-atk"
-        disabled={pc.isTotalDefense}
-        onClick={(e) => handleRollAttack(w, false, e, { favoredEnemy: true })}
-        style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-      >
-        ATK {formatMod(stdFE.atkTotal)}
-      </button>
-      <button
-        className="xbtn xbtn-dmg"
-        disabled={pc.isTotalDefense}
-        onClick={(e) => handleRollDamage(w, false, e, { favoredEnemy: true })}
-        style={{ flex: 1.2, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-      >
-        DMG +{favoredEnemyBonus}
-      </button>
-    </div>
-  </div>
-);
+  );
+};

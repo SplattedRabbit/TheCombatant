@@ -68,6 +68,7 @@ export const NaturalAttacksSection: React.FC<NaturalAttacksSectionProps> = ({
           const seq = AttackEngine.calculateAttackSequence(pc, w, false, {
             smite: pc.isSmiteActive,
             favoredEnemy: pc.isFavoredEnemyActive,
+            targetCreatureType: pc.activeFavoredEnemyTarget,
             sneakAttack: pc.isSneakAttacking,
           });
           const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0 };

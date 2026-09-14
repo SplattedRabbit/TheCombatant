@@ -10,7 +10,7 @@ import { checkPrerequisites } from '@core/rules/RulesFeats.js';
 interface LearnedFeatsListProps {
   pc: any;
   combinedFeats: any[];
-  activeFeats: any[];
+  activeFeats?: any[];
   totalMax: number;
   generalFilled: number;
   generalMax: number;
@@ -22,17 +22,19 @@ interface LearnedFeatsListProps {
   monkMax: number;
   dragonShamanFilled?: number;
   dragonShamanMax?: number;
+  rangerFilled?: number;
+  rangerMax?: number;
   hasFighter: boolean;
   hasWizard: boolean;
   hasMonk: boolean;
   hasDragonShaman?: boolean;
+  hasRanger?: boolean;
   onFeatClick: (feat: any, isLearned: boolean, option?: string, e?: React.MouseEvent) => void;
 }
 
 export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
   pc,
   combinedFeats,
-  activeFeats,
   totalMax,
   generalFilled,
   generalMax,
@@ -44,15 +46,20 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
   monkMax,
   dragonShamanFilled = 0,
   dragonShamanMax = 0,
+  rangerFilled = 0,
+  rangerMax = 0,
   hasFighter,
   hasWizard,
   hasMonk,
   hasDragonShaman = false,
+  hasRanger = false,
   onFeatClick,
 }) => {
   const [learnedSearch, setLearnedSearch] = useState('');
 
   const getBonusFeatClass = (feat: any) => {
+    const rangerBonusIds = ['track', 'endurance', 'rapid_shot', 'two_weapon_fighting', 'manyshot', 'improved_two_weapon_fighting', 'improved_precise_shot', 'greater_two_weapon_fighting'];
+    if (rangerBonusIds.includes(feat.id)) return 'ranger';
     if (feat.id === 'skill_focus') return 'dragon_shaman';
     if (feat.category === 'combat') return 'fighter';
     if (feat.category === 'metamagic' || feat.category === 'item_creation') return 'wizard';
@@ -72,7 +79,7 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
   return (
     <div style={{ flex: '4 1 0%', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '4px', borderRight: '0.5px solid var(--pb)', paddingRight: '8px', boxSizing: 'border-box', overflowX: 'hidden' }}>
       <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '11px', color: 'var(--red)', borderBottom: '1px solid var(--pb)', paddingBottom: '2px', margin: '0 0 4px 0', fontWeight: 'bold', textAlign: 'center' }}>
-        🧬 Feats ({activeFeats.length} / {totalMax})
+        🧬 Feats ({combinedFeats.length} / {totalMax})
       </h3>
       
       <div style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkm)', marginBottom: '6px', display: 'flex', flexDirection: 'column', gap: '2.5px', background: 'rgba(0,0,0,0.01)', border: '0.5px solid rgba(200, 169, 110, 0.2)', padding: '4px 6px', borderRadius: '2px', minWidth: 0, boxSizing: 'border-box' }}>
@@ -81,6 +88,7 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
         {wizardMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Wizard Slots:</span> <strong style={{ color: 'var(--red)' }}>{wizardFilled} / {wizardMax}</strong></div>}
         {monkMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Monk Slots:</span> <strong style={{ color: 'var(--red)' }}>{monkFilled} / {monkMax}</strong></div>}
         {dragonShamanMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Dragon Shaman Slots:</span> <strong style={{ color: 'var(--red)' }}>{dragonShamanFilled} / {dragonShamanMax}</strong></div>}
+        {rangerMax > 0 && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Ranger (Class Feats):</span> <strong style={{ color: 'var(--red)' }}>{rangerFilled} / {rangerMax}</strong></div>}
       </div>
 
       <input
@@ -109,7 +117,8 @@ export const LearnedFeatsList: React.FC<LearnedFeatsListProps> = ({
             const isClassBonus = !isAutomatic && ((getBonusFeatClass(feat) === 'fighter' && hasFighter) ||
                                  (getBonusFeatClass(feat) === 'wizard' && hasWizard) ||
                                  (getBonusFeatClass(feat) === 'monk' && hasMonk) ||
-                                 (getBonusFeatClass(feat) === 'dragon_shaman' && hasDragonShaman));
+                                 (getBonusFeatClass(feat) === 'dragon_shaman' && hasDragonShaman) ||
+                                 (getBonusFeatClass(feat) === 'ranger' && hasRanger));
 
             const borderStyle = '0.5px solid rgba(50, 115, 55, 0.35)';
             const borderLeftStyle = isAutomatic ? '3.5px solid #4a6d44' : '3.5px solid #2e7d32';

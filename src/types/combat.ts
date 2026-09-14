@@ -305,6 +305,8 @@ export interface Combatant {
   activeShape: string;
   alignment?: string;
   favoredEnemy?: string;
+  favoredEnemies?: Array<{ type: string; bonus: number }>;
+  rangerCombatStyle?: string;
 
   // Ausrüstung
   weapons: Weapon[];

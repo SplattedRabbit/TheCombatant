@@ -40,10 +40,10 @@ VITE_SUPABASE_ANON_KEY=<your-anon-key>
 |---|---|---|
 | **Dev Server** | `npm run dev` | Starts Vite dev server with hot module reloading (HMR) |
 | **Typecheck** | `npm run typecheck` | Validates TypeScript types (`tsc --noEmit`) |
-| **Core Tests** | `npm run test` | Executes all 314 core Node test runner suites |
+| **Core Tests** | `npm run test` | Executes all 392 core Node test runner suites |
 | **Single Test** | `node --import ./Tests/setup.js --test Tests/<file>.test.js` | Fast execution for a single test file during feature work |
 | **UI Tests** | `npm run test:ui` | Runs all 34 Vitest + React Testing Library component tests |
-| **All Tests** | `npm run test:all` | Executes both Core Node tests and Vitest UI tests (348 total) |
+| **All Tests** | `npm run test:all` | Executes both Core Node tests and Vitest UI tests (426 total) |
 | **Production Build** | `npm run build` | Compiles Vite production bundle and updates Service Worker cache |
 
 > [!IMPORTANT]
@@ -53,7 +53,7 @@ VITE_SUPABASE_ANON_KEY=<your-anon-key>
 
 ## 3. Strict Architectural Constraints
 
-All contributors and AI coding agents must adhere to these 6 core quality constraints:
+All contributors and AI coding agents must adhere to these 8 core quality constraints:
 
 1. **Component Line-Count Budget (`<= 450 lines`):**
    - No `.tsx` or `.ts` file in `src/components/` may exceed 450 lines of code.
@@ -77,6 +77,15 @@ All contributors and AI coding agents must adhere to these 6 core quality constr
 6. **Unidirectional State Flow:**
    - `UI` → `State Facades` → `Models` ← `Rules Engines`
    - UI components never mutate models directly; all mutations go through `CombatState.*` methods or `useCombatState()` hooks.
+
+7. **Modal & Backdrop Portal Pattern:**
+   - All modal dialogs and full-screen overlays must be mounted directly to `document.body` via React `createPortal`.
+   - Full-screen backdrop overlays (`position: fixed; inset: 0; background: rgba(...)`) must never have `transform` or `zoom` applied directly.
+   - Dynamic scaling is applied exclusively to inner modal parchment cards (`.custom-alert-box`, `.ref-modal`, etc.) via `zoom: var(--app-scale, 1)`.
+
+8. **Native Viewport Scaling (No CSS Transform on Layout Root):**
+   - App-canvas scaling relies on native CSS `zoom: var(--app-scale, 1)` on `#appRoot`.
+   - Never apply `transform: scale()` to `#appRoot` or intercept touch/scroll events with artificial `scrollX = 0` resetting, as this breaks native pinch-to-zoom and gesture coordinate projection on iPad and mobile touch devices.
 
 ---
 

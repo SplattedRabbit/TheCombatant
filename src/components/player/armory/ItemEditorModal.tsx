@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { CombatState } from '@core/state.js';
 import { ITEM_SLOTS } from '@core/data/magicItems-data.js';
 import { getDefaultBonusType } from '@core/models/Item.js';
@@ -112,7 +113,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
     onClose();
   };
 
-  return (
+  const content = (
     <div
       style={{
         position: 'fixed',
@@ -127,6 +128,7 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
       onClick={onClose}
     >
       <div
+        className="custom-alert-box"
         style={{
           background: 'var(--pd, #fdf6e2)',
           border: '2px solid var(--pb, #c8a96e)',
@@ -267,4 +269,6 @@ export const ItemEditorModal: React.FC<ItemEditorModalProps> = ({
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };

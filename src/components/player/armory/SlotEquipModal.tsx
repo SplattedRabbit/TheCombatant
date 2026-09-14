@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { CombatState } from '@core/state.js';
 import { MAGIC_ITEMS_REGISTRY, ITEM_SLOTS, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
 import { formatEffectDisplay } from './BodySlotCard';
@@ -68,7 +69,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
     onClose();
   };
 
-  return (
+  const content = (
     <div
       style={{
         position: 'fixed',
@@ -83,6 +84,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
       onClick={onClose}
     >
       <div
+        className="custom-alert-box"
         style={{
           background: 'var(--pd, #fdf6e2)',
           border: '2px solid var(--pb, #c8a96e)',
@@ -339,4 +341,6 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };

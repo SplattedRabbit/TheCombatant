@@ -9,6 +9,7 @@
  */
 
 import { matchesFeatOption, WeaponRegistry } from '../../models/Weapon.js';
+import { getFavoredEnemyBonus } from '../../models/helpers/classes/RangerHelper.js';
 
 export function calculateGeneralAtkModifiers(ctx) {
   let generalAtkMod = 0;
@@ -163,10 +164,14 @@ export function calculateGeneralDmgModifiers(ctx) {
   }
 
   if (ctx.options.favoredEnemy) {
-    const feBonus = ctx.pc.getFavoredEnemyBonus();
+    const targetType = ctx.options.targetCreatureType || ctx.pc.activeFavoredEnemyTarget;
+    const feBonus = typeof ctx.pc.getFavoredEnemyBonus === 'function'
+      ? ctx.pc.getFavoredEnemyBonus(targetType)
+      : getFavoredEnemyBonus(ctx.pc, targetType);
     if (feBonus > 0) {
+      const label = targetType ? `Favored Enemy (${targetType})` : 'Favored Enemy Bonus';
       generalDmgMod += feBonus;
-      generalDmgBreakdown.push({ label: 'Favored Enemy Bonus', value: feBonus });
+      generalDmgBreakdown.push({ label, value: feBonus });
     }
   }
 

@@ -62,6 +62,7 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
   const seq = AttackEngine.calculateAttackSequence(pc, w, false, {
     smite: pc.isSmiteActive,
     favoredEnemy: pc.isFavoredEnemyActive,
+    targetCreatureType: pc.activeFavoredEnemyTarget,
     sneakAttack: pc.isSneakAttacking,
   });
   const stdAtkObj = seq[0] || { atkTotal: 0, dmgTotal: 0, dmgBreakdown: [], atkBreakdown: [] };
@@ -76,6 +77,7 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
   const doubledCritDisplay = w.isNatural ? 'x2' : getCritThreatDisplay(w.crit, isDoubleThreat);
   const dmgDice = typeof pc.getWeaponDamageDice === 'function' ? pc.getWeaponDamageDice(w) : w.damage || '1w6';
   const extraDamage = w.extraDamage ? ` + ${w.extraDamage}` : '';
+  const feBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus(pc.activeFavoredEnemyTarget) : 0;
 
   return (
     <div
@@ -142,9 +144,30 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
       >
         {w.name}
       </div>
+      {pc.isFavoredEnemyActive && feBonus > 0 && (
+        <div
+          style={{
+            fontSize: '6.5px',
+            color: '#2a6a2a',
+            fontWeight: 'bold',
+            background: 'rgba(42, 106, 42, 0.08)',
+            padding: '0 4px',
+            borderRadius: '2px',
+            border: '0.5px solid rgba(42, 106, 42, 0.3)',
+            lineHeight: 1.2,
+            whiteSpace: 'nowrap',
+            maxWidth: '100%',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+          }}
+          title={`Favored Enemy active (+${feBonus} Damage)`}
+        >
+          🏹 {pc.activeFavoredEnemyTarget ? `vs ${pc.activeFavoredEnemyTarget}` : 'Favored Enemy'} (+{feBonus})
+        </div>
+      )}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', margin: '1px 0', fontSize: '7px', color: 'var(--inkm)' }}>
         <div style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={`${dmgDice}${extraDamage} • ${doubledCritDisplay}`}>
-          {dmgDice}${extraDamage} • {doubledCritDisplay}
+          {dmgDice}{extraDamage} • {doubledCritDisplay}
         </div>
         {w.type !== 'unarmed' && !isWeaponTwoHanded(w) && (
           <select

@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { getPotionAesthetic } from './BeltSlot';
 
 export interface BeltItemModalProps {
@@ -61,7 +62,7 @@ export const BeltItemModal: React.FC<BeltItemModalProps> = ({
   const rawEffects = Array.isArray(item.effects) ? item.effects : [];
   const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value, 10) || 0) !== 0);
 
-  return (
+  const content = (
     <div
       style={{
         position: 'fixed',
@@ -303,4 +304,6 @@ export const BeltItemModal: React.FC<BeltItemModalProps> = ({
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };

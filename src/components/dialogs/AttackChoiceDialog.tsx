@@ -18,11 +18,15 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
 }) => {
   const [currentView, setCurrentView] = useState<'grid' | 'std' | 'full'>('grid');
   const [smiteActive, setSmiteActive] = useState<boolean>(options.smite !== undefined ? !!options.smite : !!pc.isSmiteActive);
-  const favoredEnemyActive = options.favoredEnemy !== undefined ? !!options.favoredEnemy : !!pc.isFavoredEnemyActive;
+  const [favoredEnemyActive, setFavoredEnemyActive] = useState<boolean>(options.favoredEnemy !== undefined ? !!options.favoredEnemy : !!pc.isFavoredEnemyActive);
+  const [selectedTarget, setSelectedTarget] = useState<string>(
+    options.targetCreatureType || pc.activeFavoredEnemyTarget || (Array.isArray(pc.favoredEnemies) && pc.favoredEnemies[0]?.type) || pc.favoredEnemy || ''
+  );
   const sneakActive = options.sneakAttack !== undefined ? !!options.sneakAttack : !!pc.isSneakAttacking;
 
   const hasPaladin = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'paladin');
   const paladinClass = hasPaladin ? pc.classes.find((c: any) => c.classType === 'paladin') : null;
+  const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus(selectedTarget) : 0;
 
   const isRanged = weapon.grip === 'rng';
   const isMelee = !isRanged;
@@ -31,17 +35,19 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
 
   // Calculate sequences based on current state
   const stdSeq = AttackEngine.calculateAttackSequence(pc, weapon, false, {
+    ...options,
     smite: smiteActive,
     favoredEnemy: favoredEnemyActive,
+    targetCreatureType: selectedTarget,
     sneakAttack: sneakActive,
-    ...options
   });
 
   const fullSeq = AttackEngine.calculateAttackSequence(pc, weapon, true, {
+    ...options,
     smite: smiteActive,
     favoredEnemy: favoredEnemyActive,
+    targetCreatureType: selectedTarget,
     sneakAttack: sneakActive,
-    ...options
   });
 
   const smiteAbility = pc.dailyAbilities?.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil");
@@ -150,17 +156,55 @@ export const AttackChoiceDialog: React.FC<AttackChoiceDialogProps> = ({
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 12px' }} />
 
-        {hasPaladin && isMelee && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '12px', padding: '6px 10px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '10px', fontFamily: 'var(--font-body)' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: 'var(--red)' }}>
-              <input
-                type="checkbox"
-                checked={smiteActive}
-                onChange={handleSmiteChange}
-                style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
-              />
-              Smite Evil (+{Math.max(0, pc.getAttributeMod('cha'))} Atk / +{paladinClass.level} Dmg)
-            </label>
+        {(hasPaladin && isMelee || favoredEnemyBonus > 0) && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '12px', padding: '6px 10px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '10px', fontFamily: 'var(--font-body)' }}>
+            {hasPaladin && isMelee && (
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: 'var(--red)' }}>
+                <input
+                  type="checkbox"
+                  checked={smiteActive}
+                  onChange={handleSmiteChange}
+                  style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
+                />
+                Smite Evil (+{Math.max(0, pc.getAttributeMod('cha'))} Atk / +{paladinClass.level} Dmg)
+              </label>
+            )}
+            {favoredEnemyBonus > 0 && (
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: '#1a4a1a' }}>
+                  <input
+                    type="checkbox"
+                    checked={favoredEnemyActive}
+                    onChange={(e) => {
+                      setFavoredEnemyActive(e.target.checked);
+                      CombatState.updatePCField('isFavoredEnemyActive', e.target.checked);
+                    }}
+                    style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
+                  />
+                  Vs Favored Enemy (+{favoredEnemyBonus} Damage)
+                </label>
+                {Array.isArray(pc.favoredEnemies) && pc.favoredEnemies.length > 1 && (
+                  <select
+                    value={selectedTarget}
+                    onChange={(e) => {
+                      setSelectedTarget(e.target.value);
+                      CombatState.updatePCBatch((freshPC: any) => {
+                        freshPC.activeFavoredEnemyTarget = e.target.value;
+                        freshPC.isFavoredEnemyActive = true;
+                      });
+                    }}
+                    className="cinput"
+                    style={{ fontSize: '8.5px', padding: '1px 4px', height: '18px', cursor: 'pointer' }}
+                  >
+                    {pc.favoredEnemies.map((fe: any, idx: number) => (
+                      <option key={idx} value={fe.type}>
+                        {fe.type} (+{fe.bonus || 2})
+                      </option>
+                    ))}
+                  </select>
+                )}
+              </div>
+            )}
           </div>
         )}
 

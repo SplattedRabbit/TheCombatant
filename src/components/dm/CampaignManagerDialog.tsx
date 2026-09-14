@@ -5,6 +5,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import type { CampaignSummary } from '../../types/campaign.ts';
 import { campaignService, generateInviteCode } from '../../services/campaign/CampaignService.ts';
 import { showCustomAlert, showCustomConfirm } from '@core/ui/components/dialogs.js';
@@ -136,7 +137,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
     });
   };
 
-  return (
+  const content = (
     <div
       style={{
         position: 'fixed',
@@ -155,6 +156,7 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
       onClick={onClose}
     >
       <div
+        className="custom-alert-box"
         style={{
           width: '100%',
           maxWidth: '820px',
@@ -344,4 +346,6 @@ export const CampaignManagerDialog: React.FC<CampaignManagerDialogProps> = ({
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };

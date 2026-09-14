@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 interface CreateCampaignModalProps {
   show: boolean;
@@ -32,7 +33,9 @@ export const CreateCampaignModal: React.FC<CreateCampaignModalProps> = ({
     onSubmit(newCampName.trim(), newCampDesc.trim(), newCampCode.trim());
   };
 
-  return (
+  if (!show) return null;
+
+  const content = (
     <div
       style={{
         position: 'fixed',
@@ -51,6 +54,7 @@ export const CreateCampaignModal: React.FC<CreateCampaignModalProps> = ({
     >
       <form
         onSubmit={handleSubmit}
+        className="custom-alert-box"
         style={{
           width: '340px',
           background: 'var(--parchment, #fdf6e2)',
@@ -154,4 +158,6 @@ export const CreateCampaignModal: React.FC<CreateCampaignModalProps> = ({
       </form>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 };

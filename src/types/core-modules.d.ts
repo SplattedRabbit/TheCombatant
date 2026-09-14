@@ -519,3 +519,19 @@ declare module '*js/rules/data/dragonTotems.js' {
   export const isTotemAllowedForAlignment: (totemKey: string, alignment: string) => boolean;
 }
 
+declare module '@core/data/acf-data.js' {
+  export const ACF_REGISTRY: Record<string, any>;
+  export function getACFsByClass(classKey: string, level?: number): any[];
+  export function getACF(acfId: string): any;
+  export function getConflictingACFs(targetAcfId: string, activeAcfIds?: string[]): string[];
+}
+
+declare module '*acf-data.js' {
+  export const ACF_REGISTRY: Record<string, any>;
+  export function getACFsByClass(classKey: string, level?: number): any[];
+  export function getACF(acfId: string): any;
+  export function getConflictingACFs(targetAcfId: string, activeAcfIds?: string[]): string[];
+}
+
+
+
