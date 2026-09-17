@@ -75,7 +75,23 @@ An evil cleric (or a neutral cleric of an evil deity) can spontaneously convert 
       actionType: 'Standard Action',
     });
 
-    // 2. Cleric Domains & Granted Powers
+    // 2. Cleric Deity & Domains Configuration Feature
+    const currentDeity = pc.deity && pc.deity !== 'none' 
+      ? String(pc.deity).charAt(0).toUpperCase() + String(pc.deity).slice(1) 
+      : 'None (Select a Deity)';
+      
+    features.push({
+      id: 'cleric_deity_domains',
+      name: `Deity & Domains: ${currentDeity}`,
+      source: `Cleric Lv.${cLvl}`,
+      category: 'passive',
+      typeLabel: 'Divine Configuration',
+      summary: 'Configure your Deity and two Divine Domains for granted powers and domain spell slots.',
+      rawRules: `A cleric's deity influences their alignment, magic, and values. A cleric must choose two domains from their deity's portfolio, gaining the granted powers and domain spells from both.\n\nClick the button below to configure your Deity and Domains.`,
+      actionType: 'Passive',
+    });
+
+    // 3. Cleric Domains & Granted Powers (Individual cards)
     const clericDomains = Array.isArray(pc.clericDomains) ? pc.clericDomains : [];
     if (clericDomains.length > 0 && DOMAINS_REGISTRY) {
       clericDomains.forEach((dKey: string) => {

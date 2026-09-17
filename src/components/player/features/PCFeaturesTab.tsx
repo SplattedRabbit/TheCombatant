@@ -15,7 +15,7 @@ import { FeaturesFilterBar, FeatureCategoryFilter } from './FeaturesFilterBar';
 import { UnifiedFeatureCard } from './UnifiedFeatureCard';
 import { CompanionMiniStatusWidget } from './CompanionMiniStatusWidget';
 import { RulesInspectorDrawer } from './RulesInspectorDrawer';
-import { WizardSpecializationDialog, DragonTotemDialog, FavoredEnemyDialog, DialogOverlay } from '../../dialogs/BaseDialogs';
+import { WizardSpecializationDialog, DragonTotemDialog, FavoredEnemyDialog, ClericDeityDomainDialog, DialogOverlay } from '../../dialogs/BaseDialogs';
 import { ClassACFSelector } from './ClassACFSelector';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { getAblMod } from '../attributeHelper.ts';
@@ -27,6 +27,7 @@ export const PCFeaturesTab: React.FC = () => {
   const [isSpecDialogOpen, setIsSpecDialogOpen] = useState(false);
   const [isTotemDialogOpen, setIsTotemDialogOpen] = useState(false);
   const [isFavoredEnemyDialogOpen, setIsFavoredEnemyDialogOpen] = useState(false);
+  const [isDeityDialogOpen, setIsDeityDialogOpen] = useState(false);
   const [isACFModalOpen, setIsACFModalOpen] = useState(false);
 
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
@@ -42,6 +43,7 @@ export const PCFeaturesTab: React.FC = () => {
   const rangerClass = hasClasses ? pc.classes.find((c: any) => c.classType === 'ranger') : null;
   const hasRangerClass = !!rangerClass;
   const hasRanger = hasClasses && pc.classes.some((c: any) => c.classType === 'ranger' && (c.level || 0) >= 4);
+  const hasCleric = hasClasses && pc.classes.some((c: any) => c.classType === 'cleric');
   const hasCompanion = !isCompanionReplaced && ((hasDruid || hasRanger) || (pc.companionType && pc.companionType !== 'none'));
 
   // Check if Familiar is available
@@ -397,6 +399,7 @@ export const PCFeaturesTab: React.FC = () => {
               {/* RAW Rules Inspector Drawer */}
               <RulesInspectorDrawer
                 feature={selectedFeature}
+                onConfigureDeity={hasCleric ? () => setIsDeityDialogOpen(true) : undefined}
                 onConfigureSpecialization={hasWizard ? () => setIsSpecDialogOpen(true) : undefined}
                 onConfigureTotem={hasDragonShaman ? () => setIsTotemDialogOpen(true) : undefined}
                 onConfigureFavoredEnemy={hasRangerClass ? () => setIsFavoredEnemyDialogOpen(true) : undefined}
@@ -419,6 +422,18 @@ export const PCFeaturesTab: React.FC = () => {
           isOpen={isSpecDialogOpen}
           onClose={() => {
             setIsSpecDialogOpen(false);
+            triggerRender();
+          }}
+        />
+      )}
+
+      {/* Cleric Deity & Domain Dialog */}
+      {hasCleric && (
+        <ClericDeityDomainDialog
+          pc={pc}
+          isOpen={isDeityDialogOpen}
+          onClose={() => {
+            setIsDeityDialogOpen(false);
             triggerRender();
           }}
         />
