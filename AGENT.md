@@ -1,7 +1,7 @@
 # AGENT.md — AI Agent Navigation & Selbstwartungsanleitung
 # CombatApp (D&D 3.5e) | Lies diese Datei ZUERST, vor jeder anderen.
-# WICHTIG: Kommuniziere mit dem Benutzer IMMER auf Deutsch.
-
+# WICHTIG: Die gesamte App-UI, D&D Begriffe und Code-Logik MÜSSEN zwingend auf Englisch (D&D 3.5e RAW) geschrieben werden!
+# Deutsch wird AUSSCHLIESSLICH im direkten Chat mit dem Entwickler gesprochen.
 ---
 
 ## 1. Pflichtbefehle

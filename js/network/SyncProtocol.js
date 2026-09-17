@@ -346,9 +346,19 @@ export function applyIncomingDelta(packet, role, conn = null) {
     // 3d. DM Message received on Client
     if (packet.type === 'dm_message' && role === 'client') {
       const activePC = CombatState.getActivePC();
-      if (packet.targetPCId === 'all' || (activePC && activePC.id === packet.targetPCId)) {
+      const isTarget = 
+        packet.targetPCId === 'all' ||
+        !packet.targetPCId ||
+        (activePC && (
+          activePC.id === packet.targetPCId ||
+          (packet.targetPCName && activePC.name && activePC.name.trim().toLowerCase() === packet.targetPCName.trim().toLowerCase())
+        ));
+
+      if (isTarget) {
         import('../ui/dialogs/BaseDialogs.js').then(({ showParchmentMessage }) => {
-          showParchmentMessage(packet.text, 'Spielleiter');
+          showParchmentMessage(packet.text, packet.sender || 'Spielleiter');
+        }).catch(err => {
+          console.error('[SyncProtocol] Failed to load BaseDialogs for dm_message:', err);
         });
       }
       return;
@@ -357,9 +367,17 @@ export function applyIncomingDelta(packet, role, conn = null) {
     // 3e. Item Gift received on Client (Loot Reveal Animation)
     if (packet.type === 'item_gift' && role === 'client') {
       const activePC = CombatState.getActivePC();
-      if (activePC && activePC.id === packet.targetPCId) {
+      const isTarget = 
+        activePC && (
+          activePC.id === packet.targetPCId ||
+          (packet.targetPCName && activePC.name && activePC.name.trim().toLowerCase() === packet.targetPCName.trim().toLowerCase())
+        );
+
+      if (isTarget) {
         import('../ui/dialogs/BaseDialogs.js').then(({ showLootRevealDialog }) => {
           showLootRevealDialog(packet.item, packet.category);
+        }).catch(err => {
+          console.error('[SyncProtocol] Failed to load BaseDialogs for item_gift:', err);
         });
       }
       return;
@@ -385,6 +403,7 @@ export function applyIncomingDelta(packet, role, conn = null) {
         }
       });
 
+      CombatState.saveToStorage();
       StateEvents.emit('state_changed', s);
 
       DeltaRenderer.applyBoardDiffUI(packet.diff);
@@ -404,6 +423,7 @@ export function applyIncomingDelta(packet, role, conn = null) {
             c.rebuildStatModifiers();
           }
         });
+        CombatState.saveToStorage();
         StateEvents.emit('state_changed', s);
         if (uiRegistry.renderInitBar) uiRegistry.renderInitBar();
         if (uiRegistry.renderPlayerScreen) uiRegistry.renderPlayerScreen();

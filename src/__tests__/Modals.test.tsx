@@ -146,8 +146,7 @@ describe('Modal & Dialog UI Components (Task 6.1.2)', () => {
   });
 
   describe('LootRevealModal', () => {
-    it('renders loot chest, displays item details after opening, and handles claim', async () => {
-      vi.useFakeTimers();
+    it('renders item details in parchment pop-up and handles claim', () => {
       const handleClose = vi.fn();
       const weapon = {
         name: 'Vorpal Greatsword',
@@ -166,15 +165,7 @@ describe('Modal & Dialog UI Components (Task 6.1.2)', () => {
         />
       );
 
-      // Initially closed chest with teaser
-      expect(screen.getByText(/Ein Schatz öffnet sich.../i)).toBeInTheDocument();
-
-      // Fast-forward animation timers to trigger opening and reveal
-      act(() => {
-        vi.advanceTimersByTime(2000);
-      });
-
-      // Item card should now be visible
+      // Item popup should be immediately visible
       expect(screen.getByText(/Belohnung des Spielleiters/i)).toBeInTheDocument();
       expect(screen.getByText(/\+3 Vorpal Greatsword/i)).toBeInTheDocument();
       expect(screen.getByText(/Schaden: 2d6/i)).toBeInTheDocument();
@@ -184,8 +175,6 @@ describe('Modal & Dialog UI Components (Task 6.1.2)', () => {
       expect(claimBtn).toBeInTheDocument();
       fireEvent.click(claimBtn);
       expect(handleClose).toHaveBeenCalledTimes(1);
-
-      vi.useRealTimers();
     });
   });
 

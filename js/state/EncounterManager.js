@@ -243,8 +243,8 @@ export function mergeIncomingPC(pcData) {
   const idx = s.combatants.findIndex(x => x.id === incoming.id || (x.type === 'p' && x.name && x.name === incoming.name));
   let createdPC;
   if (idx !== -1) {
-    const existingId = s.combatants[idx].id;
-    createdPC = createCombatant({ ...incoming, id: existingId || incoming.id });
+    const targetId = incoming.id || s.combatants[idx].id;
+    createdPC = createCombatant({ ...incoming, id: targetId });
     recalculatePCStats(createdPC);
     s.combatants[idx] = createdPC;
   } else {

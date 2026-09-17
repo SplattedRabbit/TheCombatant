@@ -56,23 +56,36 @@ export const DMToolbox: React.FC<DMToolboxProps> = ({ concentrations, combatants
     CombatState.removeConcentration(id);
   };
 
+  const players = combatants.filter(c => c.type === 'p');
+
   // Send Spielleiter message
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     const text = messageText.trim();
     if (!text) return;
+
+    if (realtimeManager.getStatus() !== 'connected') {
+      showCustomAlert('Nicht verbunden', 'Du bist aktuell mit keinem Live-Spieltisch verbunden. Bitte überprüfe den Raum-Code.', 'OK', '⚠️');
+      return;
+    }
+
+    const selectedPlayer = players.find(p => p.id === messageTarget);
 
     const packet = {
       type: 'dm_message',
       text: text,
-      targetPCId: messageTarget
+      targetPCId: messageTarget,
+      targetPCName: selectedPlayer ? selectedPlayer.name : undefined,
+      sender: 'Dungeon Master'
     };
 
-    realtimeManager.broadcastDiff(packet);
-    setMessageText('');
-    showCustomAlert('Message sent', 'The message has been transmitted.', 'OK', '✉️');
+    const success = await realtimeManager.broadcastDiff(packet);
+    if (success) {
+      setMessageText('');
+      showCustomAlert('Nachricht gesendet', 'Die Nachricht wurde erfolgreich übermittelt.', 'OK', '✉️');
+    } else {
+      showCustomAlert('Übertragungsfehler', 'Die Nachricht konnte nicht übermittelt werden. Bitte Verbindung prüfen.', 'OK', '⚠️');
+    }
   };
-
-  const players = combatants.filter(c => c.type === 'p');
 
   return (
     <div className="dm-side-col" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>

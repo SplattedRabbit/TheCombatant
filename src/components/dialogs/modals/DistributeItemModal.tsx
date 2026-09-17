@@ -38,9 +38,11 @@ export const DistributeItemModal: React.FC<DistributeItemModalProps> = ({
 
     // 3. Broadcast loot gift packet to connected player client(s)
     try {
+      const targetPC = pcs.find(p => p.id === pcId);
       realtimeManager.broadcastDiff({
         type: 'item_gift',
         targetPCId: pcId,
+        targetPCName: targetPC ? targetPC.name : undefined,
         category,
         item: itemData,
       });
@@ -49,8 +51,10 @@ export const DistributeItemModal: React.FC<DistributeItemModalProps> = ({
     }
 
     // 4. If current active local PC is the recipient (e.g. testing locally or host player), trigger reveal immediately
+    // Only trigger if we are not the DM (so the DM doesn't get the popup themselves)
     const activePC = CombatState.getActivePC();
-    if (activePC && activePC.id === pcId) {
+    const role = CombatState.getRole();
+    if (activePC && activePC.id === pcId && role !== 'dm' && role !== 'host') {
       dialog.showLootReveal(itemData, category);
     }
 

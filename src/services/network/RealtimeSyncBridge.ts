@@ -30,6 +30,9 @@ export function initRealtimeSyncBridge(): void {
       const state = getState();
       const role = state?.session?.role === 'host' ? 'host' : 'client';
       const packet = envelope.payload.diff;
+      if (packet.type === 'dm_message') {
+        logger.log('%c[RealtimeSyncBridge] Received dm_message:', 'color: #d97706;', packet.text, 'target:', packet.targetPCId, packet.targetPCName);
+      }
 
       applyIncomingDelta(packet, role);
       StateEvents.emit('pc_changed', getActivePC());
