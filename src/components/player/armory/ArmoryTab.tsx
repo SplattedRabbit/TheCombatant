@@ -4,9 +4,9 @@
  * @exports   ArmoryTab, isConsumableItem, getItemTypeIcon
  */
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { CombatState } from '@core/state.js';
-import { CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
+import { CONSOLIDATED_COMPENDIUM, MAGIC_ITEMS_REGISTRY, ITEM_SLOTS } from '@core/data/magicItems-data.js';
 import { calculateItemSetBonuses, getItemStackingBreakdown } from '@core/rules.js';
 import { getHealingFormulaDetails, getDamageFormulaDetails } from '@core/rules/RulesItems.js';
 import { showHealingRollDialog, showItemDamageDialog } from '@core/ui/components/dialogs.js';
@@ -36,6 +36,19 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   const [draggedBackpackIdx, setDraggedBackpackIdx] = useState<number | null>(null);
   const [dragOverBackpackIdx, setDragOverBackpackIdx] = useState<number | null>(null);
 
+  const feedbackTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const showToast = (msg: string) => {
+    if (feedbackTimerRef.current) {
+      clearTimeout(feedbackTimerRef.current);
+    }
+    setActionFeedback(msg);
+    feedbackTimerRef.current = setTimeout(() => {
+      setActionFeedback(null);
+      feedbackTimerRef.current = null;
+    }, 3500);
+  };
+
   const handleUseItem = (idx: number) => {
     const item = pc.items && pc.items[idx];
     if (!item) return;
@@ -50,8 +63,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
         onConfirm: (val: string) => {
           const res = CombatState.usePCItemAction(idx, val);
           if (res && res.message) {
-            setActionFeedback(res.message);
-            setTimeout(() => setActionFeedback(null), 4500);
+            showToast(`✨ ${res.message}`);
           }
         }
       });
@@ -71,8 +83,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
         onConfirm: () => {
           const res = CombatState.usePCItemAction(idx);
           if (res && res.message) {
-            setActionFeedback(res.message);
-            setTimeout(() => setActionFeedback(null), 4500);
+            showToast(`✨ ${res.message}`);
           }
         }
       });
@@ -81,8 +92,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
 
     const res = CombatState.usePCItemAction(idx);
     if (res && res.message) {
-      setActionFeedback(res.message);
-      setTimeout(() => setActionFeedback(null), 4500);
+      showToast(`✨ ${res.message}`);
     }
   };
 
@@ -148,14 +158,25 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
 
   const handleAddBackpack = (presetKey: string) => {
     CombatState.addPCItemFromCompendium(presetKey, false);
+    const preset = (MAGIC_ITEMS_REGISTRY as any)[presetKey];
+    const name = preset?.nameEn || preset?.name || 'Item';
+    showToast(`✨ ${name} added to Stash.`);
   };
 
   const handleAddAndEquip = (presetKey: string) => {
     CombatState.addPCItemFromCompendium(presetKey, true);
+    const preset = (MAGIC_ITEMS_REGISTRY as any)[presetKey];
+    const name = preset?.nameEn || preset?.name || 'Item';
+    const slotInfo = (ITEM_SLOTS as any)[preset?.slot] || { nameEn: preset?.slot || 'Slot' };
+    showToast(`⚡ ${name} equipped to ${slotInfo.nameEn}.`);
   };
 
   const handleUnequipSlot = (idx: number) => {
+    const item = pc.items && pc.items[idx];
     CombatState.unequipPCItem(idx);
+    if (item) {
+      showToast(`🎒 ${item.name} moved to Stash.`);
+    }
   };
 
   const handleEmptySlotClick = (slotKey: string) => {
@@ -172,25 +193,34 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
       {actionFeedback && (
         <div
           style={{
-            background: 'rgba(16, 185, 129, 0.15)',
-            border: '1px solid #10b981',
-            borderRadius: '3px',
-            padding: '6px 12px',
+            position: 'sticky',
+            top: '4px',
+            zIndex: 100,
+            background: 'rgba(253, 246, 226, 0.98)',
+            border: '1.5px solid #10b981',
+            boxShadow: '0 3px 10px rgba(0, 0, 0, 0.18)',
+            borderRadius: '4px',
+            padding: '7px 14px',
             marginBottom: '10px',
             color: '#065f46',
-            fontSize: '11px',
-            fontFamily: 'var(--font-body)',
+            fontSize: '11.5px',
+            fontFamily: 'var(--font-title)',
             fontWeight: 'bold',
             display: 'flex',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
+            backdropFilter: 'blur(4px)'
           }}
         >
-          <span>✨ {actionFeedback}</span>
+          <span>{actionFeedback}</span>
           <button
             type="button"
-            onClick={() => setActionFeedback(null)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#065f46', fontWeight: 'bold', fontSize: '10px' }}
+            onClick={() => {
+              if (feedbackTimerRef.current) clearTimeout(feedbackTimerRef.current);
+              setActionFeedback(null);
+            }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#065f46', fontWeight: 'bold', fontSize: '11px', padding: '0 4px' }}
+            title="Dismiss notification"
           >
             ✕
           </button>
@@ -332,9 +362,22 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                   setDraggedBackpackIdx={setDraggedBackpackIdx}
                   setDragOverBackpackIdx={setDragOverBackpackIdx}
                   onUseItem={handleUseItem}
-                  onEquipItem={(idx, slot) => CombatState.equipPCItem(idx, slot)}
+                  onEquipItem={(idx, slot) => {
+                    const item = pc.items && pc.items[idx];
+                    CombatState.equipPCItem(idx, slot);
+                    if (item) {
+                      const slotDef = (ITEM_SLOTS as any)[slot] || { nameEn: slot };
+                      showToast(`⚡ ${item.name} equipped to ${slotDef.nameEn}.`);
+                    }
+                  }}
                   onEditItem={setEditingItemData}
-                  onDeleteItem={(idx) => CombatState.deletePCItem(idx)}
+                  onDeleteItem={(idx) => {
+                    const item = pc.items && pc.items[idx];
+                    CombatState.deletePCItem(idx);
+                    if (item) {
+                      showToast(`🗑️ ${item.name} removed from Stash.`);
+                    }
+                  }}
                   onReorderItems={(from, to) => CombatState.reorderPCItems(from, to)}
                   onOpenCompendium={() => setRightPanelMode('compendium')}
                 />
@@ -362,6 +405,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
               setRightPanelMode('compendium');
             }}
             onOpenCustomEditor={(slot) => setEditingItemData({ defaultSlot: slot || 'slotless' })}
+            onFeedback={showToast}
           />
         )}
 

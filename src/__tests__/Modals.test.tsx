@@ -166,12 +166,12 @@ describe('Modal & Dialog UI Components (Task 6.1.2)', () => {
       );
 
       // Item popup should be immediately visible
-      expect(screen.getByText(/Belohnung des Spielleiters/i)).toBeInTheDocument();
+      expect(screen.getByText(/Dungeon Master's Reward/i)).toBeInTheDocument();
       expect(screen.getByText(/\+3 Vorpal Greatsword/i)).toBeInTheDocument();
-      expect(screen.getByText(/Schaden: 2d6/i)).toBeInTheDocument();
+      expect(screen.getByText(/Damage: 2d6/i)).toBeInTheDocument();
 
       // Click claim button
-      const claimBtn = screen.getByRole('button', { name: /In Empfang nehmen/i });
+      const claimBtn = screen.getByRole('button', { name: /Accept Item/i });
       expect(claimBtn).toBeInTheDocument();
       fireEvent.click(claimBtn);
       expect(handleClose).toHaveBeenCalledTimes(1);

@@ -11,6 +11,7 @@ interface SlotEquipModalProps {
   onClose: () => void;
   onOpenCompendium: (defaultSlot?: string) => void;
   onOpenCustomEditor: (defaultSlot?: string) => void;
+  onFeedback?: (msg: string) => void;
 }
 
 export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
@@ -18,7 +19,8 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
   pc,
   onClose,
   onOpenCompendium,
-  onOpenCustomEditor
+  onOpenCustomEditor,
+  onFeedback
 }) => {
   const [search, setSearch] = useState('');
   const [selectedTiers, setSelectedTiers] = useState<Record<string, string>>({});
@@ -60,13 +62,22 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
   };
 
   const handleEquipBackpackItem = (idx: number) => {
+    const item = pc.items && pc.items[idx];
     CombatState.equipPCItem(idx, slotKey);
     onClose();
+    if (onFeedback && item) {
+      onFeedback(`⚡ ${item.name} equipped to ${slotDef.nameEn}.`);
+    }
   };
 
   const handleAddAndEquipPreset = (presetKey: string) => {
     CombatState.addPCItemFromCompendium(presetKey, true);
     onClose();
+    if (onFeedback) {
+      const preset = (MAGIC_ITEMS_REGISTRY as any)[presetKey];
+      const name = preset?.nameEn || preset?.name || 'Item';
+      onFeedback(`⚡ ${name} equipped to ${slotDef.nameEn}.`);
+    }
   };
 
   return (
