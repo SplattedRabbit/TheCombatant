@@ -250,94 +250,21 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'space-between',
+          justifyContent: 'center',
           minHeight: '88px',
-          border: '0.5px solid var(--pb)',
+          border: '0.5px dashed var(--pb)',
           borderRadius: '4px',
           padding: '5px 6px',
           textAlign: 'center',
-          background: 'rgba(200, 169, 110, 0.02)',
+          background: 'rgba(0,0,0,0.02)',
         }}
       >
-        {/* Zone 1: Slot Label */}
-        <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
-          🎯 Combat Stance
+        <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>🎯</div>
+        <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)' }}>
+          Class Ability
         </div>
-
-        {/* Zone 2: Title */}
-        <div
-          style={{
-            fontFamily: 'var(--font-title)',
-            fontSize: '9.5px',
-            fontWeight: 'bold',
-            color: 'var(--red)',
-            textShadow: '0 0 1px rgba(139,26,26,0.1)',
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
-            textOverflow: 'ellipsis',
-            width: '100%',
-          }}
-          title="Standard Strike"
-        >
-          Standard Strike
-        </div>
-
-        {/* Zone 3: Badges */}
-        <div style={{ display: 'flex', gap: '3px', alignItems: 'center', justifyContent: 'center', margin: '1px 0' }}>
-          <span
-            style={{
-              fontSize: '6.5px',
-              fontFamily: 'var(--font-title)',
-              textTransform: 'uppercase',
-              color: 'var(--inkm)',
-              background: 'rgba(0,0,0,0.04)',
-              borderRadius: '2px',
-              padding: '0 3px',
-            }}
-          >
-            Standard Action
-          </span>
-          <span
-            style={{
-              fontSize: '6.5px',
-              fontFamily: 'var(--font-title)',
-              textTransform: 'uppercase',
-              color: 'var(--inkm)',
-              background: 'rgba(0,0,0,0.04)',
-              borderRadius: '2px',
-              padding: '0 3px',
-            }}
-          >
-            Full BAB
-          </span>
-        </div>
-
-        {/* Zone 4: Middle Tactical Details */}
-        <div style={{ fontSize: '6px', color: 'var(--inkm)', padding: '1px 0', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
-          <span>Main Hand • Normal Melee/Ranged</span>
-        </div>
-
-        {/* Zone 5: Bottom Action Row (18px aligned) */}
-        <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
-          <button
-            type="button"
-            className="xbtn xbtn-atk"
-            disabled={!mainHandWeapon || pc.isTotalDefense}
-            onClick={(e) => mainHandWeapon && handleRollAttack(mainHandWeapon, false, e)}
-            style={{
-              flex: 1,
-              padding: '2px 0',
-              fontSize: '7.5px',
-              fontWeight: 'bold',
-              height: '18px',
-              lineHeight: 1,
-              opacity: (!mainHandWeapon || pc.isTotalDefense) ? 0.4 : 1,
-              cursor: (!mainHandWeapon || pc.isTotalDefense) ? 'not-allowed' : 'pointer',
-            }}
-            title="Roll Standard Strike using Main Hand weapon"
-          >
-            🎯 STRIKE
-          </button>
+        <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic', marginTop: '2px' }}>
+          No class attacks available
         </div>
       </div>
     );
