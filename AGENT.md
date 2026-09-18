@@ -171,6 +171,31 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 
 ---
 
+## 6.3 Rüstungs- & Schild-Unterscheidung (`isShieldItem` Standard)
+
+- **Problem & Invariante:** Schilde und Körperrüstungen werden im selben `pc.armor`-Array verwaltet, sind aber zwei grundverschiedene Ausrüstungs-Slots, die gemäß D&D 3.5e RAW **gleichzeitig** angelegt werden dürfen (AC-Boni stacken, MaxDex nimmt das Minimum, ACP ist kumulativ).
+- **Verbindliche Prüffunktion:** Zum Prüfen, ob ein Gegenstand ein Schild ist, **muss ausnahmslos `isShieldItem(item)`** (aus `js/models/Armor.js`, re-exportiert in `js/models/model-core.js`) verwendet werden.
+- **Anti-Pattern:** Niemals `item.isShield` oder `item.isShield === target.isShield` direkt abfragen! Bei serialisierten State-Snapshots oder Plain-Objects aus Storage/Netzwerk existiert der Prototyp-Getter `isShield` nicht (`undefined`). Ein Vergleich `undefined === undefined` führte historisch dazu, dass Schilde Körperrüstungen ablegten und umgekehrt.
+- **Zweihandwaffen:** Zweihändige Waffen (`grip === '2h'`) legen beim Ausrüsten via `isShieldItem` automatisch nur den Schild ab; die Körperrüstung bleibt unberührt.
+
+---
+
+## 6.4 ARPG Tactical Loadout Grid (5-Zonen-Standard)
+
+Die 4 taktischen Slots im Combat-Tab (`MainHandSlot.tsx`, `OffHandSlot.tsx`, `ArmorSlot.tsx`, `StrikeAbilitySlot.tsx`) unterliegen einem strikten 5-Zonen-Raster zur Vermeidung von Deadspace und vertikalem Springen:
+1. **Zone 1 (Header):** Einheitliches Slot-Label in Versalien (`var(--font-title)`, 6.5–7px) mit Schnell-Ablage (`✕`).
+2. **Zone 2 (Titel):** Durchgehend `var(--font-title)` (Cinzel serif, 9.5px, bold, `var(--red)`). Niemals gemischte Fonts zwischen Waffen und Rüstung.
+3. **Zone 3 (Badges):** Kompakte Eigenschafts-Pills (Schaden/Crit, AC/Shield, Strike-Typ).
+4. **Zone 4 (Mitte):** Einzeilige taktische Kurzübersicht (Iterativ-Angriffe, ACP/Fail, Speed/MaxDex). Keine schweren Mehrspalten-Tabellen, die benachbarte Kacheln vertikal verzerren.
+5. **Zone 5 (Aktionsleiste):** Alle Buttons und Statusanzeigen schließen auf einer exakt ausgerichteten **18px-Basislinie** ab.
+- **Leere Slot-Navigation:**
+  - Main Hand (leer): Klick aktiviert sofort das Waffen-Arsenal.
+  - Off-Hand (leer): Zwei getrennte Schnell-Buttons: `[🛡️ Shield]` (Armor & Shields) und `[⚔️ Weapon]` (Weapons).
+  - Body Armor (leer): Klick aktiviert sofort das Rüstungs-Arsenal.
+  - Class Ability (leer): Hat eine Klasse keine Strike-Features (z. B. reiner Kleriker), rendert die Kachel eine ruhige Leerdarstellung (`🎯 Class Ability` • `No class attacks available`) **ohne** redundante Standard-Angriffsbuttons.
+
+---
+
 ## 7. Offene Bugs & Roadmap
 
 - Ältere Refactoring-Masterpläne und Code-Audits wurden am 2026-09-02 bewusst archiviert und entfernt (Single Source of Truth statt Kontext-Altlasten).

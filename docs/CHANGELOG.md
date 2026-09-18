@@ -3,6 +3,42 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.9.3] - 2026-09-18
+
+### Added
+- **Concurrent Body Armor & Shield Equipping (D&D 3.5e RAW Compliance):**
+  - **Independent Equipment Slots:** Resolved UAT issue where characters (e.g. Clerics) with both Body Armor and a Shield could only equip one or the other.
+  - **Category-Safe Helper (`isShieldItem`):** Added `isShieldItem(item)` in `js/models/Armor.js`, exported via `js/models/model-core.js`, and typed in `src/types/core-modules.d.ts`. Safeguards plain objects and deserialized state by checking explicit boolean `item.isShield` and falling back to `ARMOR_REGISTRY[item.type]?.isShield`.
+  - **Stacking & Limits Verification:** Fully verified that armor and shield AC bonuses stack, Max Dex is capped by the lower of the two, and Armor Check Penalties (ACP) accumulate cumulatively per PHB p. 134. Two-handed weapon equips automatically unequip shields while safely preserving body armor.
+  - **Unit Regression Suite:** Added `Tests/armor_shield_dual_equip.test.js` covering concurrent equipping, plain-object resilience, and 2H interaction (100% passing).
+- **4th ARPG Tactical Loadout Slot for Body Armor:**
+  - Integrated dedicated `ArmorSlot.tsx` directly into the Combat Tab's *Active Loadout & Attacks* panel (`ActiveEquipmentSlots.tsx`), displaying equipped armor name, enhancement glow, AC contribution, MaxDex cap, ACP, Arcane Spell Failure %, and movement speed modifier.
+  - Includes a 1-click quick-unequip button (`✕`) in the slot header.
+- **Off-Hand Shield Bash Tactical Combat Integration:**
+  - Equipping a Light or Heavy Shield in the Off-Hand slot dynamically provisions dedicated `[ BASH +X ]` and `[ DMG +Y ]` roll buttons directly powered by `AttackEngine` (Heavy Shield: `1d6`, Light Shield: `1d4`), allowing dual combatants to strike with their shield seamlessly.
+- **Sticky Action Feedback Toasts in Item Compendium:**
+  - Added unobtrusive, auto-dismissing (2.2s) tactical parchment toasts in `ArmoryTab.tsx` and `SlotEquipModal.tsx` whenever items are added, equipped, or stashed from the compendium, providing instant visual feedback.
+
+### Changed
+- **Symmetrical 5-Zone Grid & Typography Across All 4 Loadout Slots:**
+  - Harmonized `MainHandSlot.tsx`, `OffHandSlot.tsx`, `ArmorSlot.tsx`, and `StrikeAbilitySlot.tsx` into a strict 5-zone vertical grid:
+    1. *Zone 1:* Slot label uppercase (`var(--font-title)`) with quick-action `✕`.
+    2. *Zone 2:* Item / strike title in `var(--font-title)` (Cinzel serif, 9.5px, bold, `var(--red)`).
+    3. *Zone 3:* Property chips (damage dice/crit, AC/shield type, strike action).
+    4. *Zone 4:* Compact 1-line tactical info (iterative attacks, ACP/Fail, speed/MaxDex).
+    5. *Zone 5:* Strictly aligned 18px horizontal bottom action row (`[ ATK ]` / `[ DMG ]` or status pills `[ 🛡️ +X AC ]` / `[ 🏃 Speed ]`).
+  - Completely eliminated empty deadspace and vertical card jumping across all screen resolutions.
+- **Unified Empty Slot Quick-Action Navigation:**
+  - Clicking an empty Main Hand slot immediately activates the **⚔️ Weapons** arsenal tab.
+  - Empty Off-Hand slot provides two explicit quick buttons: `[🛡️ Shield]` (opens Armor/Shields) and `[⚔️ Weapon]` (opens Weapons).
+  - Clicking an empty Body Armor slot immediately activates the **🛡️ Armor & Shields** arsenal tab.
+- **Informational Class Ability Empty State:**
+  - If a character's class has no strike abilities (e.g. pure Cleric, Fighter without ACF), `StrikeAbilitySlot.tsx` renders a quiet, clean empty slot (`🎯 Class Ability` • `No class attacks available`) without redundant fake standard attack buttons.
+
+### Fixed
+- **Storage Session Defensive Initialization:**
+  - Added safety fallback `if (!s.session) s.session = {};` in `js/state/StorageManager.js` before applying `s.session.active`, preventing rare initialization errors when loading state snapshots without an active session object.
+
 ## [6.9.2] - 2026-09-15
 
 ### Added
