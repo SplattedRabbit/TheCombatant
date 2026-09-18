@@ -1,0 +1,323 @@
+{
+  "mode": "player",
+  "meta": {
+    "begegnung": "",
+    "ort": "",
+    "xpBudget": "",
+    "xpVerteilt": "",
+    "sitzung": ""
+  },
+  "combatants": [
+    {
+      "id": "1788427632407-tz483",
+      "name": "H.O.P.E",
+      "type": "p",
+      "init": 0,
+      "hp": 56,
+      "maxHP": 56,
+      "ac": {
+        "base": 10,
+        "modifiers": [
+          {
+            "value": 1,
+            "type": "natural",
+            "source": "Volk (Anima-Konstrukt)",
+            "isRace": true
+          },
+          {
+            "value": 0,
+            "type": "untyped",
+            "source": "Geschicklichkeits-Modifikator",
+            "isClass": true
+          }
+        ]
+      },
+      "bw": 20,
+      "baseBw": 20,
+      "conditions": [],
+      "str": {
+        "base": 12,
+        "modifiers": []
+      },
+      "dex": {
+        "base": 10,
+        "modifiers": []
+      },
+      "con": {
+        "base": 14,
+        "modifiers": [
+          {
+            "value": 2,
+            "type": "racial",
+            "source": "Volk (Anima-Konstrukt)",
+            "isRace": true
+          }
+        ]
+      },
+      "int": {
+        "base": 10,
+        "modifiers": []
+      },
+      "wis": {
+        "base": 18,
+        "modifiers": []
+      },
+      "cha": {
+        "base": 10,
+        "modifiers": [
+          {
+            "value": -2,
+            "type": "racial",
+            "source": "Volk (Anima-Konstrukt)",
+            "isRace": true
+          }
+        ]
+      },
+      "iniMisc": 0,
+      "rawInit": 0,
+      "classType": "cleric",
+      "level": 6,
+      "classes": [
+        {
+          "classType": "cleric",
+          "level": 6
+        }
+      ],
+      "baseZa": {
+        "base": 5,
+        "modifiers": []
+      },
+      "baseRef": {
+        "base": 2,
+        "modifiers": []
+      },
+      "baseWil": {
+        "base": 5,
+        "modifiers": []
+      },
+      "za": {
+        "base": 5,
+        "modifiers": [
+          {
+            "value": 3,
+            "type": "untyped",
+            "source": "Konstitutions-Modifikator",
+            "isClass": true
+          }
+        ]
+      },
+      "ref": {
+        "base": 2,
+        "modifiers": [
+          {
+            "value": 0,
+            "type": "untyped",
+            "source": "Geschicklichkeits-Modifikator",
+            "isClass": true
+          }
+        ]
+      },
+      "wil": {
+        "base": 5,
+        "modifiers": [
+          {
+            "value": 4,
+            "type": "untyped",
+            "source": "Weisheits-Modifikator",
+            "isClass": true
+          }
+        ]
+      },
+      "bab": {
+        "base": 4,
+        "modifiers": []
+      },
+      "zaMisc": 0,
+      "refMisc": 0,
+      "wilMisc": 0,
+      "acTouch": {
+        "base": 10,
+        "modifiers": [
+          {
+            "value": 0,
+            "type": "untyped",
+            "source": "Geschicklichkeits-Modifikator",
+            "isClass": true
+          }
+        ]
+      },
+      "acFlat": {
+        "base": 10,
+        "modifiers": [
+          {
+            "value": 1,
+            "type": "natural",
+            "source": "Volk (Anima-Konstrukt)",
+            "isRace": true
+          }
+        ]
+      },
+      "sr": 0,
+      "weapons": [],
+      "armors": [],
+      "items": [],
+      "autoAC": true,
+      "acNatural": 0,
+      "acDeflection": 0,
+      "acMisc": 0,
+      "dr": "",
+      "immunities": "",
+      "resistances": "",
+      "reach": "5 ft",
+      "spellSlots": {
+        "0": {
+          "max": 4,
+          "used": 0
+        },
+        "1": {
+          "max": 4,
+          "used": 0
+        },
+        "2": {
+          "max": 4,
+          "used": 0
+        },
+        "3": {
+          "max": 3,
+          "used": 0
+        },
+        "4": {
+          "max": 0,
+          "used": 0
+        },
+        "5": {
+          "max": 0,
+          "used": 0
+        },
+        "6": {
+          "max": 0,
+          "used": 0
+        },
+        "7": {
+          "max": 0,
+          "used": 0
+        },
+        "8": {
+          "max": 0,
+          "used": 0
+        },
+        "9": {
+          "max": 0,
+          "used": 0
+        }
+      },
+      "dailyAbilities": [
+        {
+          "name": "Turn Undead",
+          "max": 2,
+          "used": 0
+        }
+      ],
+      "learnedSpells": [],
+      "preparedSpells": [],
+      "customSpells": [],
+      "spellTemplates": {},
+      "activeBuffs": [],
+      "quickBuffs": [],
+      "isRaging": false,
+      "isSneakAttacking": false,
+      "isSmiteActive": false,
+      "isFavoredEnemyActive": false,
+      "isDefensiveFighting": false,
+      "isTotalDefense": false,
+      "isFlurrying": false,
+      "powerAttackPenalty": 0,
+      "combatExpertisePenalty": 0,
+      "divineGraceActive": false,
+      "isTrickyFightingActive": false,
+      "favoredEnemy": "",
+      "rangerCombatStyle": "none",
+      "wizardSpecialization": "none",
+      "wizardProhibited1": "",
+      "wizardProhibited2": "",
+      "deathScreenShown": false,
+      "bardicMusicExtra": 0,
+      "companionName": "",
+      "companionType": "none",
+      "companionHP": 0,
+      "companionMaxHP": 0,
+      "familiarName": "",
+      "familiarType": "none",
+      "familiarHP": 0,
+      "activeShape": "none",
+      "originalStats": null,
+      "feats": [
+        {
+          "id": "shield_prof"
+        },
+        {
+          "id": "shield_specialization"
+        }
+      ],
+      "skillTricks": [],
+      "acfs": [
+        "cleric_spontaneous_domain"
+      ],
+      "skills": {
+        "heal": {
+          "misc": 0,
+          "ranks": 6
+        },
+        "craft": {
+          "misc": 0,
+          "ranks": 1
+        },
+        "survival": {
+          "misc": 0,
+          "ranks": 1
+        },
+        "diplomacy": {
+          "misc": 0,
+          "ranks": 1
+        },
+        "profession": {
+          "misc": 0,
+          "ranks": 1
+        },
+        "spellcraft": {
+          "misc": 0,
+          "ranks": 3
+        },
+        "concentration": {
+          "misc": 0,
+          "ranks": 1
+        },
+        "knowledge_arcana": {
+          "misc": 0,
+          "ranks": 1
+        },
+        "knowledge_planes": {
+          "misc": 0,
+          "ranks": 1
+        },
+        "knowledge_religion": {
+          "misc": 0,
+          "ranks": 1
+        }
+      },
+      "race": "anima_construct",
+      "alignment": "Neutral Good",
+      "isHuman": false,
+      "prestigeSpellLinks": {},
+      "prestigeSpecialTextConfirmed": {}
+    }
+  ],
+  "turn": 0,
+  "round": 1,
+  "concentrations": [],
+  "session": {
+    "active": false,
+    "role": "player",
+    "roomCode": ""
+  }
+}
