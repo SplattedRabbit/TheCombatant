@@ -104,11 +104,11 @@ export function applyClassModifiers(pc, getMod) {
     if (dsClass && dsClass.level >= 7) {
       const natBonus = dsClass.level >= 17 ? 3 : (dsClass.level >= 12 ? 2 : 1);
       if (pc.ac) {
-        pc.ac.addModifier(natBonus, "natural", "Dragon Shaman (Natural Armor)");
+        pc.ac.addModifier(natBonus, "natural_increase", "Dragon Shaman (Natural Armor)");
         pc.ac.modifiers[pc.ac.modifiers.length - 1].isClass = true;
       }
       if (pc.acFlat) {
-        pc.acFlat.addModifier(natBonus, "natural", "Dragon Shaman (Natural Armor)");
+        pc.acFlat.addModifier(natBonus, "natural_increase", "Dragon Shaman (Natural Armor)");
         pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isClass = true;
       }
     }

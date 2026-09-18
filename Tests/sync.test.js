@@ -181,3 +181,63 @@ test('SyncProtocol - Initiative roll transmits total value (d20 + modifiers) to 
   assert.strictEqual(dmCombatant.init, 21, 'DM must receive total initiative value (21), not raw 14');
 });
 
+test('SyncProtocol - DM Parchment Message Receiving Logic', async () => {
+  const { CombatState } = await import('../js/state.js');
+  const state = CombatState.getState();
+  state.combatants = [];
+
+  // Setup client active PC
+  CombatState.addCombatant({
+    id: 'gildor_test',
+    name: 'Gildor Windläufer',
+    type: 'p',
+    hp: 75,
+    maxHP: 75,
+    init: 8
+  });
+  
+  state.localPCId = 'gildor_test';
+
+  // Test Case 1: Message to 'all'
+  const packetAll = {
+    type: 'dm_message',
+    text: 'Hier ist eine Nachricht an alle!',
+    targetPCId: 'all'
+  };
+
+  applyIncomingDelta(packetAll, 'client');
+  
+  await new Promise(resolve => setTimeout(resolve, 10));
+  let overlay = document.body.children.find(c => c.id === 'parchmentMessageOverlay');
+  assert.ok(overlay, 'Overlay should be created for "all" message');
+  assert.ok(overlay.innerHTML && overlay.innerHTML.includes('Hier ist eine Nachricht an alle!'), 'Overlay content check');
+  overlay.remove();
+
+  // Test Case 2: Message target matches current player
+  const packetGildor = {
+    type: 'dm_message',
+    text: 'Eine geheime Nachricht für Gildor!',
+    targetPCId: 'gildor_test'
+  };
+
+  applyIncomingDelta(packetGildor, 'client');
+  await new Promise(resolve => setTimeout(resolve, 10));
+  let overlay2 = document.body.children.find(c => c.id === 'parchmentMessageOverlay');
+  assert.ok(overlay2, 'Overlay should be created for matched player ID');
+  assert.ok(overlay2.innerHTML && overlay2.innerHTML.includes('Eine geheime Nachricht für Gildor!'), 'Overlay content check for Gildor');
+  overlay2.remove();
+
+  // Test Case 3: Message target does NOT match current player
+  const packetValerius = {
+    type: 'dm_message',
+    text: 'Geheimnis für Sir Valerius',
+    targetPCId: 'valerius_test'
+  };
+
+  applyIncomingDelta(packetValerius, 'client');
+  await new Promise(resolve => setTimeout(resolve, 10));
+  let overlay3 = document.body.children.find(c => c.id === 'parchmentMessageOverlay');
+  assert.ok(!overlay3, 'Overlay should NOT be created for mismatched player ID');
+});
+
+

@@ -196,3 +196,34 @@ test('Spell Templates - Apply template (Slot limit overflow warning)', () => {
   assert.strictEqual(res.unplaced[0], 'Schild', 'Spell that exceeded slot capacity should be marked as unplaced.');
 });
 
+test('Spells - Details retrieval from registry and custom spells', async () => {
+  const { findSpell } = await import('../js/spells.js');
+  const pc = new Combatant({
+    name: 'Mage Hero',
+    type: 'p',
+    customSpells: [
+      {
+        id: 'custom_spell_1',
+        nameDe: 'Eigener Feuersturm',
+        description: 'Macht viel Feuerschaden.',
+        components: 'V, S',
+        targetOrEffectOrArea: '10ft Radius'
+      }
+    ]
+  });
+
+  // Find standard spell and check description
+  const bless = findSpell(pc, 'bless');
+  assert.ok(bless, 'Should find bless spell');
+  assert.ok(bless.description, 'Bless should have a description');
+  assert.ok(bless.description.toLowerCase().includes('morale bonus'), 'Bless description should describe morale bonus');
+
+  // Find custom spell and check details
+  const custom = findSpell(pc, 'custom_spell_1');
+  assert.ok(custom, 'Should find custom spell');
+  assert.strictEqual(custom.description, 'Macht viel Feuerschaden.');
+  assert.strictEqual(custom.components, 'V, S');
+  assert.strictEqual(custom.targetOrEffectOrArea, '10ft Radius');
+});
+
+

@@ -16,6 +16,7 @@ export const DEFAULT_TYPE_LABELS = {
   resistance: 'Resistance',
   deflection: 'Deflection',
   natural: 'Natural Armor',
+  natural_increase: 'Natural Armor',
   armor: 'Armor',
   shield: 'Shield',
   size: 'Size',
@@ -32,7 +33,7 @@ function defaultFormatType(type) {
 /**
  * Resolves D&D 3.5e modifier stacking according to RAW:
  * - Negative values (penalties) always stack additively.
- * - Dodge and untyped bonuses stack additively.
+ * - Dodge, untyped, and natural armor improvement (natural_increase) bonuses stack additively.
  * - For all other bonus types, only the highest bonus of each type applies.
  *
  * @param {Array<Object>} modifiers - Array of { value, type, source }
@@ -66,7 +67,7 @@ export function resolveModifierStacking(modifiers, options = {}) {
         type: rawType,
         source
       });
-    } else if (type === 'dodge' || type === 'untyped') {
+    } else if (type === 'dodge' || type === 'untyped' || type === 'natural_increase') {
       const key = `${type}_${source}`;
       groupedBoni[key] = {
         value: (groupedBoni[key]?.value || 0) + val,
