@@ -10,6 +10,7 @@
 import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { WeaponRegistry } from '@core/models/Weapon.js';
+import { Armor, isShieldItem } from '@core/models/model-core.js';
 import { BaseCard } from '../../shared/BaseCard';
 import { showCustomConfirm, showAttackChoiceDialog, showDamageChoiceDialog } from '@core/ui/components/dialogs.js';
 
@@ -26,7 +27,7 @@ import { usePC } from '../../../context/PCContext';
 const getEquippedArmorFallback = (pc: any) => {
   if (typeof pc.getEquippedArmor === 'function') return pc.getEquippedArmor();
   if (Array.isArray(pc.armors)) {
-    return pc.armors.find((a: any) => a.isEquipped && !a.isShield) || null;
+    return pc.armors.find((a: any) => a.isEquipped && !isShieldItem(a)) || null;
   }
   return null;
 };
@@ -55,8 +56,8 @@ export const PCOffenseTab: React.FC = () => {
     isDoubleWielded = true;
   }
   
-  const equippedArmor = Array.isArray(loosePc.armors) ? loosePc.armors.find((a: any) => a.isEquipped && !(a as any).isShield) : null;
-  const equippedShield = Array.isArray(loosePc.armors) ? loosePc.armors.find((a: any) => a.isEquipped && (a as any).isShield) : null;
+  const equippedArmor = Array.isArray(loosePc.armors) ? loosePc.armors.find((a: any) => a.isEquipped && !isShieldItem(a)) : null;
+  const equippedShield = Array.isArray(loosePc.armors) ? loosePc.armors.find((a: any) => a.isEquipped && isShieldItem(a)) : null;
 
   // Rarity style helper
   const getRarityStyle = (enhancement: number) => {
@@ -213,6 +214,7 @@ export const PCOffenseTab: React.FC = () => {
             handleHandSelectChange={handleHandSelectChange}
             handleRollAttack={handleRollAttack}
             handleRollDamage={handleRollDamage}
+            onOpenArmorStash={() => setArsenalTab('armors')}
           />
         </BaseCard>
 
@@ -492,11 +494,11 @@ export const PCOffenseTab: React.FC = () => {
           onSave={(newArmorData) => {
             CombatState.updatePCBatch((freshPC: any) => {
               if (!Array.isArray(freshPC.armors)) freshPC.armors = [];
-              freshPC.armors.push({
+              freshPC.armors.push(new Armor({
                 id: 'a_' + Date.now(),
                 isEquipped: false,
                 ...newArmorData,
-              });
+              }));
             });
           }}
           onClose={() => setIsCreatingArmor(false)}

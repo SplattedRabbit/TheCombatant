@@ -8,7 +8,7 @@
 import { getActivePC } from '../../state-core.js';
 import { saveToStorage } from '../../StorageManager.js';
 import { recalculatePCStats, syncPCToHost } from '../PCGeneral.js';
-import { Weapon } from '../../../models/model-core.js';
+import { Weapon, isShieldItem } from '../../../models/model-core.js';
 import { WeaponRegistry } from '../../../models/Weapon.js';
 
 export function updatePCWeapon(idx, key, val) {
@@ -74,7 +74,7 @@ export function togglePCWeaponEquip(idx) {
         // Unequip shields
         if (Array.isArray(pc.armors)) {
           pc.armors.forEach(a => {
-            if (a.isShield) a.isEquipped = false;
+            if (isShieldItem(a)) a.isEquipped = false;
           });
         }
       } else {
@@ -92,7 +92,7 @@ export function togglePCWeaponEquip(idx) {
           // Unequip shields
           if (Array.isArray(pc.armors)) {
             pc.armors.forEach(a => {
-              if (a.isShield) a.isEquipped = false;
+              if (isShieldItem(a)) a.isEquipped = false;
             });
           }
         } else {
@@ -109,7 +109,7 @@ export function togglePCWeaponEquip(idx) {
           if (target.hand === 'off') {
             if (Array.isArray(pc.armors)) {
               pc.armors.forEach(a => {
-                if (a.isShield) a.isEquipped = false;
+                if (isShieldItem(a)) a.isEquipped = false;
               });
             }
           }

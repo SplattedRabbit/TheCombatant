@@ -8,7 +8,7 @@
 import { getActivePC } from '../../state-core.js';
 import { saveToStorage } from '../../StorageManager.js';
 import { recalculatePCStats, syncPCToHost } from '../PCGeneral.js';
-import { Armor } from '../../../models/model-core.js';
+import { Armor, isShieldItem } from '../../../models/model-core.js';
 
 export function addPCArmor(type = 'padded') {
   const pc = getActivePC();
@@ -42,16 +42,17 @@ export function togglePCArmorEquip(idx) {
   const pc = getActivePC();
   if (pc && Array.isArray(pc.armors) && pc.armors[idx]) {
     const target = pc.armors[idx];
+    const targetIsShield = isShieldItem(target);
     const newEquippedState = !target.isEquipped;
     
     if (newEquippedState) {
       pc.armors.forEach(a => {
-        if (a.isShield === target.isShield) {
+        if (isShieldItem(a) === targetIsShield) {
           a.isEquipped = false;
         }
       });
       // If equipping a shield, unequip two-handed, double wielded, or off-hand weapons
-      if (target.isShield) {
+      if (targetIsShield) {
         pc.weapons.forEach(w => {
           if (w.grip === '2h' || w.grip === 'rng' || w.isDoubleWielded || w.hand === 'off') {
             w.isEquipped = false;

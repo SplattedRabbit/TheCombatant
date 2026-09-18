@@ -111,6 +111,7 @@ export function applyLoadedState(loadedState, preserveRole = true) {
 
     // session persistence loading
     if (loadedState.session) {
+      if (!s.session) s.session = {};
       s.session.active = !!loadedState.session.active;
       if (loadedState.session.role) {
         s.session.role = loadedState.session.role;

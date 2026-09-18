@@ -9,7 +9,7 @@
  */
 import { Stat } from './Stat.js';
 import { Weapon } from './Weapon.js';
-import { Armor } from './Armor.js';
+import { Armor, isShieldItem } from './Armor.js';
 import { Item } from './Item.js';
 import { calculateSkillModifier, getSkillModifierBreakdown } from './helpers/skills/CombatantSkills.js';
 import {
@@ -539,14 +539,14 @@ export class Combatant {
     // @feature:wildshape — Armor is suppressed in wild shape
     if (this.activeShape !== 'none') return null;
     if (!Array.isArray(this.armors)) return null;
-    return this.armors.find(a => a.isEquipped && !a.isShield) || null;
+    return this.armors.find(a => a.isEquipped && !isShieldItem(a)) || null;
   }
 
   getEquippedShield() {
     // @feature:wildshape — Shield is suppressed in wild shape
     if (this.activeShape !== 'none') return null;
     if (!Array.isArray(this.armors)) return null;
-    return this.armors.find(a => a.isEquipped && a.isShield) || null;
+    return this.armors.find(a => a.isEquipped && isShieldItem(a)) || null;
   }
 
   getArmorCheckPenalty() {

@@ -3,12 +3,20 @@ import { ARMOR_REGISTRY } from '../data/armor-data.js';
 /**
  * @module    Armor
  * @summary   Rüstungs- und Schildmodell. Getter für armorBonus/maxDex/checkPenalty/spellFailure/speedCategory mit Override-Support.
- * @exports   Armor (class)
+ * @exports   Armor (class), isShieldItem (function)
  * @reads     armor.type, armor.isEquipped, armor.*Override-Felder
  * @stateOps  Keine — Mutation via PCManager (addPCArmor, togglePCArmorEquip)
  * @depends   ARMOR_REGISTRY (armor-data.js)
  * @notHere   Rüstungs-UI → PCOffense.js | Rüstungsdaten → js/data/armor-data.js
  */
+
+export function isShieldItem(item) {
+  if (!item) return false;
+  if (typeof item.isShield === 'boolean') return item.isShield;
+  const def = ARMOR_REGISTRY[item.type];
+  return def ? Boolean(def.isShield) : false;
+}
+
 export class Armor {
   constructor(a = {}) {
     this.id = a.id || (Date.now() + '-' + Math.random().toString(36).slice(2, 7));

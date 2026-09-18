@@ -61,6 +61,7 @@ declare module '@core/models/model-core.js' {
   export const Stat: any;
   export const Weapon: any;
   export const Armor: any;
+  export const isShieldItem: (item: any) => boolean;
   export const Item: any;
   export const createInitialState: (...args: any[]) => any;
   export const createCombatant: (...args: any[]) => any;
@@ -371,6 +372,7 @@ declare module '*js/models/model-core.js' {
   export const Combatant: any;
   export const PlayerCharacter: any;
   export const Monster: any;
+  export const isShieldItem: (item: any) => boolean;
   export const createInitialState: (...args: any[]) => any;
   export const createCombatant: (...args: any[]) => any;
 }

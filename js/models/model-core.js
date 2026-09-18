@@ -1,6 +1,6 @@
 import { Stat } from './Stat.js';
 import { Weapon } from './Weapon.js';
-import { Armor } from './Armor.js';
+import { Armor, isShieldItem } from './Armor.js';
 import { Item } from './Item.js';
 import { Combatant } from './Combatant.js';
 
@@ -23,34 +23,36 @@ const createConcentration = (p = {}) => {
 
 const createInitialState = () => {
   return {
-    mode: 'choice', // 'choice', 'dm', 'player'
+    version: '2.0.0',
+    round: 1,
+    activeId: null,
+    combatants: [],
+    concentrations: [],
+    history: [],
     meta: {
-      begegnung: '',
-      ort: '',
-      xpBudget: '',
-      xpVerteilt: '',
-      sitzung: '',
+      round: 1,
+      activeCombatantId: null,
       dmStash: {
         weapons: [],
         armors: [],
         items: []
-      }
-    },
-    combatants: [],
-    turn: 0,
-    round: 1,
-    concentrations: [],
-    session: {
-      active: false,
-      role: 'choice', // 'host' (DM) or 'client' (Player)
-      roomCode: '',
-      connections: [],
-      toJSON() {
-        return {
-          active: this.active,
-          role: this.role,
-          roomCode: this.roomCode
-        };
+      },
+      partyRoster: [],
+      session: {
+        id: null,
+        code: null,
+        active: false,
+        role: null,
+        roomCode: null,
+        get activeSession() {
+          return {
+            id: this.id,
+            code: this.code,
+            active: this.active,
+            role: this.role,
+            roomCode: this.roomCode
+          };
+        }
       }
     }
   };
@@ -64,7 +66,7 @@ export {
   Stat,
   Weapon,
   Armor,
+  isShieldItem,
   Item,
   Combatant
 };
-

@@ -10,6 +10,7 @@
 import React from 'react';
 import { MainHandSlot } from './slots/MainHandSlot';
 import { OffHandSlot } from './slots/OffHandSlot';
+import { ArmorSlot } from './slots/ArmorSlot';
 import { StrikeAbilitySlot } from './slots/StrikeAbilitySlot';
 import { NaturalAttacksSection } from './slots/NaturalAttacksSection';
 
@@ -25,6 +26,7 @@ export interface ActiveEquipmentSlotsProps {
   handleHandSelectChange: (idx: number, val: string) => void;
   handleRollAttack: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
   handleRollDamage: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
+  onOpenArmorStash?: () => void;
 }
 
 export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
@@ -32,12 +34,14 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
   mainHandWeapon,
   offHandWeapon,
   equippedShield,
+  equippedArmor,
   isDoubleWielded,
   getRarityStyle,
   formatMod,
   handleHandSelectChange,
   handleRollAttack,
   handleRollDamage,
+  onOpenArmorStash,
 }) => {
   if (pc.activeShape !== 'none') {
     return (
@@ -71,6 +75,12 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
         handleHandSelectChange={handleHandSelectChange}
         handleRollAttack={handleRollAttack}
         handleRollDamage={handleRollDamage}
+      />
+      <ArmorSlot
+        pc={pc}
+        equippedArmor={equippedArmor}
+        getRarityStyle={getRarityStyle}
+        onOpenArmorStash={onOpenArmorStash}
       />
       <StrikeAbilitySlot
         pc={pc}
