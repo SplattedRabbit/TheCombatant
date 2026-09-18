@@ -481,8 +481,8 @@ export const DragonBreathStrikeCard: React.FC<{
       rolls.push(r);
       total += r;
     }
-    const msg = `🐉 <strong>${totem?.name || 'Dragon Shaman'} Breath Weapon</strong>: [${rolls.join(', ')}] = <strong>${total}</strong> ${energyUpper} damage (Reflex DC ${breathDC} for half).<br><small>Shape: ${rangeText} (${shapeText}) • Recharges in 1d4 rounds.</small>`;
-    showCustomAlert('Breath Weapon Roll 🐉', msg, 'Understood', '🔥');
+    const msg = `<strong>${totem?.name || 'Dragon Shaman'} Breath Weapon</strong>: [${rolls.join(', ')}] = <strong>${total}</strong> ${energyUpper} damage (Reflex DC ${breathDC} for half).<br><small>Shape: ${rangeText} (${shapeText}) • Recharges in 1d4 rounds.</small>`;
+    showCustomAlert('Breath Weapon Roll', msg, 'Understood', '🔥');
   };
 
   return (
@@ -506,7 +506,7 @@ export const DragonBreathStrikeCard: React.FC<{
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
         <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
-          🐉 Breath Strike
+          Breath Strike
         </div>
         {selectorDropdown}
       </div>
