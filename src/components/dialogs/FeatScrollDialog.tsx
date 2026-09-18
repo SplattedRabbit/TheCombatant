@@ -68,6 +68,10 @@ export const FeatScrollDialog: React.FC<FeatScrollDialogProps> = ({
           .join(' ');
       });
       optionsList.sort((a, b) => a.localeCompare(b));
+    } else if (feat.optionType === 'shield') {
+      optionsList = [
+        'Buckler', 'Heavy shield', 'Light shield', 'Tower shield'
+      ];
     }
   }
 

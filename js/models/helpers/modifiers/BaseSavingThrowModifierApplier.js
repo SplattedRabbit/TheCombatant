@@ -8,17 +8,37 @@
  * @notHere   Item-Boni -> ItemModifierApplier.js | Buff-Boni -> SpellModifierApplier.js
  */
 
+import { matchesShieldFeatOption } from '../../Armor.js';
+import { ARMOR_REGISTRY } from '../../../data/armor-data.js';
+
 export function applyBaseSavingThrowModifiers(pc, getMod) {
   // Apply basic attributes & misc modifiers on saves for player characters
   if (pc.type === 'p') {
+    const hasFeat = (id) => (typeof pc.hasFeat === 'function' ? pc.hasFeat(id) : (Array.isArray(pc.feats) && pc.feats.some(f => (typeof f === 'string' ? f === id : f?.id === id))));
+
     pc.za.addModifier(getMod(pc.con), "untyped", "Konstitutions-Modifikator");
     pc.za.modifiers[pc.za.modifiers.length - 1].isClass = true;
 
-    pc.ref.addModifier(getMod(pc.dex), "untyped", "Geschicklichkeits-Modifikator");
-    pc.ref.modifiers[pc.ref.modifiers.length - 1].isClass = true;
+    // Reflex: Insightful Reflexes uses INT modifier instead of DEX
+    if (hasFeat('insightful_reflexes')) {
+      pc.ref.addModifier(getMod(pc.int), "untyped", "Intelligenz-Modifikator (Insightful Reflexes)");
+      pc.ref.modifiers[pc.ref.modifiers.length - 1].isFeat = true;
+    } else {
+      pc.ref.addModifier(getMod(pc.dex), "untyped", "Geschicklichkeits-Modifikator");
+      pc.ref.modifiers[pc.ref.modifiers.length - 1].isClass = true;
+    }
 
-    pc.wil.addModifier(getMod(pc.wis), "untyped", "Weisheits-Modifikator");
-    pc.wil.modifiers[pc.wil.modifiers.length - 1].isClass = true;
+    // Will: Force of Personality uses CHA modifier instead of WIS; Steadfast Determination uses CON modifier instead of WIS
+    if (hasFeat('force_of_personality')) {
+      pc.wil.addModifier(getMod(pc.cha), "untyped", "Charisma-Modifikator (Force of Personality)");
+      pc.wil.modifiers[pc.wil.modifiers.length - 1].isFeat = true;
+    } else if (hasFeat('steadfast_determination')) {
+      pc.wil.addModifier(getMod(pc.con), "untyped", "Konstitutions-Modifikator (Steadfast Determination)");
+      pc.wil.modifiers[pc.wil.modifiers.length - 1].isFeat = true;
+    } else {
+      pc.wil.addModifier(getMod(pc.wis), "untyped", "Weisheits-Modifikator");
+      pc.wil.modifiers[pc.wil.modifiers.length - 1].isClass = true;
+    }
 
     if (pc.autoAC) {
       if (pc.activeShape !== 'none') {
@@ -92,9 +112,10 @@ export function applyBaseSavingThrowModifiers(pc, getMod) {
 
         if (equippedArmor) {
           const name = equippedArmor.name || "Rüstung";
-          pc.ac.addModifier(equippedArmor.armorBonus, "armor", name);
+          const armorBonus = (typeof equippedArmor.armorBonus === 'number') ? equippedArmor.armorBonus : (ARMOR_REGISTRY[equippedArmor.type]?.armorBonus || 0);
+          pc.ac.addModifier(armorBonus, "armor", name);
           pc.ac.modifiers[pc.ac.modifiers.length - 1].isClass = true;
-          pc.acFlat.addModifier(equippedArmor.armorBonus, "armor", name);
+          pc.acFlat.addModifier(armorBonus, "armor", name);
           pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isClass = true;
 
           if (equippedArmor.enhancement > 0) {
@@ -107,9 +128,21 @@ export function applyBaseSavingThrowModifiers(pc, getMod) {
 
         if (equippedShield) {
           const name = equippedShield.name || "Schild";
-          pc.ac.addModifier(equippedShield.armorBonus, "shield", name);
+          let shieldBonus = (typeof equippedShield.armorBonus === 'number') ? equippedShield.armorBonus : (ARMOR_REGISTRY[equippedShield.type]?.armorBonus || 0);
+          const hasShieldSpec = Array.isArray(pc.feats) && pc.feats.some(f => {
+            const featId = typeof f === 'string' ? f : f?.id;
+            if (featId !== 'shield_specialization') return false;
+            const featOption = typeof f === 'object' ? f?.option : undefined;
+            return matchesShieldFeatOption(equippedShield, featOption);
+          });
+          if (hasShieldSpec) {
+            shieldBonus += 1;
+          }
+
+          const shieldLabel = hasShieldSpec ? `${name} (Schildspezialisierung)` : name;
+          pc.ac.addModifier(shieldBonus, "shield", shieldLabel);
           pc.ac.modifiers[pc.ac.modifiers.length - 1].isClass = true;
-          pc.acFlat.addModifier(equippedShield.armorBonus, "shield", name);
+          pc.acFlat.addModifier(shieldBonus, "shield", shieldLabel);
           pc.acFlat.modifiers[pc.acFlat.modifiers.length - 1].isClass = true;
 
           if (equippedShield.enhancement > 0) {

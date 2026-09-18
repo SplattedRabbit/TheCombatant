@@ -61,7 +61,7 @@ export function resolveSpellEffectValue(formula, casterLevel, defaultValue) {
     case 'shield_of_faith':
       return Math.min(5, 2 + Math.floor(cl / 6));
     case 'barkskin':
-      return Math.min(5, 1 + Math.floor(cl / 3));
+      return Math.max(2, Math.min(5, 1 + Math.floor(cl / 3)));
     case 'divine_favor':
       return Math.max(1, Math.min(3, Math.floor(cl / 3)));
     case 'righteous_might_na':
@@ -69,6 +69,13 @@ export function resolveSpellEffectValue(formula, casterLevel, defaultValue) {
     case 'magic_vestment':
     case 'magic_weapon_greater':
       return Math.min(5, Math.floor(cl / 4));
+    case 'draconic_aura':
+    case 'dragon_aura':
+      return Math.min(5, Math.max(1, 1 + Math.floor(cl / 5)));
+    case 'draconic_aura_resist':
+      return 5 * Math.min(5, Math.max(1, 1 + Math.floor(cl / 5)));
+    case 'draconic_aura_shield':
+      return 2 * Math.min(5, Math.max(1, 1 + Math.floor(cl / 5)));
     default:
       return defaultValue;
   }
@@ -146,7 +153,7 @@ export function checkBuffConflict(pc, spellKey, customEffects = null) {
     let cl = 1;
     if (Array.isArray(pc.classes)) {
       pc.classes.forEach(c => {
-        if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)) {
+        if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard', 'dragon_shaman'].includes(c.classType)) {
           if (c.level > cl) cl = c.level;
         }
       });
@@ -275,12 +282,14 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
   let effects = [];
   let buffName = '';
   
+  let classBuff = null;
   if (isClass) {
-    const classBuff = CLASS_BUFFS.find(b => b.key === key);
+    classBuff = CLASS_BUFFS.find(b => b.key === key);
     if (classBuff) {
       effects = classBuff.effects || [];
       buffName = classBuff.name;
       durationFormula = classBuff.duration || '';
+      hasScaling = effects.some(eff => !!eff.valueFormula);
     }
   } else {
     const spell = CombatSpells.REGISTRY?.[key];
@@ -378,15 +387,26 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
   };
 
   const continueActivation = (shouldDeduct) => {
-    if (hasScaling || isRoundBased) {
-      let defaultCL = 1;
-      if (Array.isArray(pc.classes)) {
+    let defaultCL = 1;
+    if (Array.isArray(pc.classes)) {
+      if (isClass && classBuff?.classRequirements?.length > 0) {
+        const reqClass = pc.classes.find(c => c.classType === classBuff.classRequirements[0].classType);
+        if (reqClass) defaultCL = reqClass.level;
+      } else {
         pc.classes.forEach(c => {
-          if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard'].includes(c.classType)) {
+          if (['wizard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'bard', 'dragon_shaman'].includes(c.classType)) {
             if (c.level > defaultCL) defaultCL = c.level;
           }
         });
       }
+    }
+
+    if (isClass && !isRoundBased) {
+      performActivation(defaultCL, shouldDeduct);
+      return;
+    }
+
+    if (hasScaling || isRoundBased) {
       showCustomPrompt(
         "Caster Level", 
         `Please enter the Caster Level (CL) for <strong>${buffName}</strong>:`, 

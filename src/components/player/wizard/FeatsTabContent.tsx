@@ -5,6 +5,7 @@ import { getFeatSlotsAtLevel } from './helpers';
 import { DRAGON_TOTEMS } from '@core/rules/data/dragonTotems.js';
 import type { DragonTotemDef } from '@core/rules/data/dragonTotems.js';
 import { SKILLS_REGISTRY } from '@core/data/skills-data.js';
+import { WeaponRegistry } from '@core/models/Weapon.js';
 import { isSkillFeat, isTotemFeat, getTotemSkills, getDragonShamanClassSkills, formatSkillName } from '../feats/skillFeatsHelper';
 
 interface FeatsTabContentProps {
@@ -181,18 +182,42 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
   const currentSlotFeatDef = currentSlotFeatId ? CombatFeats.REGISTRY[currentSlotFeatId] : null;
   const needsOption = Boolean(activeFeatSlot?.hasOption || currentSlotFeatDef?.hasOption);
 
-  const allowedSkillOptions = useMemo(() => {
-    if (!activeFeatSlot) return [];
-    const tKey = totemKey || 'red';
+  const effectiveOptionType = currentSlotFeatDef?.optionType || activeFeatSlot?.optionType || (activeFeatSlot?.optionScope ? 'skill' : (activeFeatSlot?.defaultFeat === 'skill_focus' ? 'skill' : undefined));
 
-    if (activeFeatSlot.optionScope === 'totem') {
+  const getOptionsForFeat = (featDef: any, slotDef?: any): string[] => {
+    const optType = featDef?.optionType || slotDef?.optionType || (slotDef?.optionScope ? 'skill' : (slotDef?.defaultFeat === 'skill_focus' ? 'skill' : undefined));
+    if (optType === 'weapon') {
+      const weaponNames = Object.values(WeaponRegistry)
+        .filter((w: any) => !w.key?.startsWith('other_'))
+        .map((w: any) => w.nameEn || w.name);
+      return Array.from(new Set(weaponNames)).sort((a: string, b: string) => a.localeCompare(b));
+    }
+    if (optType === 'school') {
+      return [
+        'Abjuration', 'Conjuration', 'Divination', 'Enchantment',
+        'Evocation', 'Illusion', 'Necromancy', 'Transmutation'
+      ];
+    }
+    if (optType === 'armor') {
+      return ['Light Armor', 'Medium Armor', 'Heavy Armor', 'Shield', 'Tower Shield'];
+    }
+    if (optType === 'shield') {
+      return ['Buckler', 'Heavy shield', 'Light shield', 'Tower shield'];
+    }
+    const tKey = totemKey || 'red';
+    if (slotDef?.optionScope === 'totem') {
       return getTotemSkills(tKey).map(formatSkillName);
     }
-    if (activeFeatSlot.optionScope === 'class') {
+    if (slotDef?.optionScope === 'class') {
       return getDragonShamanClassSkills(tKey).map(formatSkillName).sort((a: string, b: string) => a.localeCompare(b));
     }
     return Object.keys(SKILLS_REGISTRY).map(formatSkillName).sort((a, b) => a.localeCompare(b));
-  }, [activeFeatSlot, totemKey]);
+  };
+
+  const availableOptionsForSlot = useMemo(() => {
+    if (!needsOption) return [];
+    return getOptionsForFeat(currentSlotFeatDef, activeFeatSlot);
+  }, [needsOption, currentSlotFeatDef, activeFeatSlot, totemKey]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minHeight: '420px' }}>
@@ -266,12 +291,12 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <strong style={{ color: 'var(--red)', fontFamily: 'var(--font-title)', fontSize: '11.5px' }}>
-                  🎯 Select Option for {currentSlotFeatDef?.nameEn || currentSlotFeatId}:
+                  🎯 Select {effectiveOptionType === 'weapon' ? 'Weapon' : effectiveOptionType === 'school' ? 'Magic School' : effectiveOptionType === 'armor' ? 'Armor Type' : effectiveOptionType === 'shield' ? 'Shield Type' : 'Option'} for {currentSlotFeatDef?.nameEn || currentSlotFeatDef?.name || currentSlotFeatId}:
                 </strong>
-                {activeFeatSlot?.optionScope === 'totem' && (
+                {effectiveOptionType === 'skill' && activeFeatSlot?.optionScope === 'totem' && (
                   <span style={{ fontSize: '9px', color: 'var(--red)', fontWeight: 'bold' }}>Totem Class Skills</span>
                 )}
-                {activeFeatSlot?.optionScope === 'class' && (
+                {effectiveOptionType === 'skill' && activeFeatSlot?.optionScope === 'class' && (
                   <span style={{ fontSize: '9px', color: 'var(--inkm)' }}>Dragon Shaman Class Skills</span>
                 )}
               </div>
@@ -290,8 +315,8 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                   className="cinput"
                   style={{ flex: 1, height: '24px', fontSize: '11px', padding: '0 6px', boxSizing: 'border-box' }}
                 >
-                  <option value="" disabled>-- Select a Skill / Option --</option>
-                  {totemKey && activeFeatSlot?.optionScope === 'class' ? (
+                  <option value="" disabled>-- Select a {effectiveOptionType === 'weapon' ? 'Weapon' : effectiveOptionType === 'school' ? 'Magic School' : effectiveOptionType === 'armor' ? 'Armor Type' : effectiveOptionType === 'shield' ? 'Shield Type' : 'Skill / Option'} --</option>
+                  {effectiveOptionType === 'skill' && totemKey && activeFeatSlot?.optionScope === 'class' ? (
                     <>
                       <optgroup label={`Totem Skills (${totemName})`}>
                         {getTotemSkills(totemKey).map(formatSkillName).map((opt) => (
@@ -299,7 +324,7 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                         ))}
                       </optgroup>
                       <optgroup label="Dragon Shaman Class Skills">
-                        {allowedSkillOptions
+                        {availableOptionsForSlot
                           .filter(opt => !getTotemSkills(totemKey).map(formatSkillName).includes(opt))
                           .map((opt) => (
                             <option key={opt} value={opt}>{opt}</option>
@@ -307,7 +332,7 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                       </optgroup>
                     </>
                   ) : (
-                    allowedSkillOptions.map((opt: string) => (
+                    availableOptionsForSlot.map((opt: string) => (
                       <option key={opt} value={opt}>
                         {opt}
                       </option>
@@ -434,7 +459,8 @@ export const FeatsTabContent: React.FC<FeatsTabContentProps> = ({
                           const nextFeats = [...(currentConfig.feats || [])];
                           const featDef = CombatFeats.REGISTRY[feat.id];
                           if (featDef?.hasOption || activeFeatSlot?.hasOption) {
-                            const defaultOpt = currentSlotOption || allowedSkillOptions[0] || '';
+                            const options = getOptionsForFeat(featDef, activeFeatSlot);
+                            const defaultOpt = (currentSlotOption && options.includes(currentSlotOption)) ? currentSlotOption : (options[0] || '');
                             nextFeats[featSelectSlotIndex] = { id: feat.id, option: defaultOpt };
                             const nextOptions = { ...(currentConfig.featOptions || {}) };
                             nextOptions[featSelectSlotIndex] = defaultOpt;

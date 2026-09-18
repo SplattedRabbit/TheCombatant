@@ -25,6 +25,12 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
   const dexMod = getStatMod(pc.dex);
   const conMod = getStatMod(pc.con);
   const wisMod = getStatMod(pc.wis);
+  const intMod = getStatMod(pc.int);
+  const chaMod = getStatMod(pc.cha);
+
+  const hasFeat = (id: string) => (typeof pc.hasFeat === 'function' ? pc.hasFeat(id) : (Array.isArray(pc.feats) && pc.feats.some((f: any) => (typeof f === 'string' ? f === id : f?.id === id))));
+  const effRefMod = hasFeat('insightful_reflexes') ? intMod : dexMod;
+  const effWilMod = hasFeat('force_of_personality') ? chaMod : (hasFeat('steadfast_determination') ? conMod : wisMod);
 
   const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some((f: any) => f.id === 'improved_initiative');
   const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
@@ -126,8 +132,8 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
       <SavingThrowsCard
         pc={pc}
         conMod={conMod}
-        dexMod={dexMod}
-        wisMod={wisMod}
+        dexMod={effRefMod}
+        wisMod={effWilMod}
         localValues={localValues}
         onInputChange={handleInputChange}
         onCommitNumber={handleCommitNumber}

@@ -181,9 +181,9 @@ export class LocalStorageAdapter implements IStorageAdapter {
 
       const isDmSession = state?.session?.role === 'host' || state?.mode === 'dm';
       if (isDmSession && this.activeCampaignId) {
-        this.saveCampaign(this.activeCampaignId, state);
+        this.saveCampaign(this.activeCampaignId, state, undefined, true);
       } else if (this.activeCharacterId) {
-        this.saveCharacter(this.activeCharacterId, state);
+        this.saveCharacter(this.activeCharacterId, state, true);
       }
 
       this.notify('saved');
@@ -220,6 +220,14 @@ export class LocalStorageAdapter implements IStorageAdapter {
     try {
       const storage = this.getStorage();
       storage.removeItem(this.storageKey);
+      if (this.activeCharacterId) {
+        storage.removeItem(`${CHARACTER_PREFIX}${this.activeCharacterId}`);
+        this.setActiveCharacterId(null);
+      }
+      if (this.activeCampaignId) {
+        storage.removeItem(`${CAMPAIGN_PREFIX}${this.activeCampaignId}`);
+        this.setActiveCampaignId(null);
+      }
       this.notify('idle');
     } catch (err) {
       console.error('[LocalStorageAdapter] Failed to clear state:', err);
@@ -227,7 +235,7 @@ export class LocalStorageAdapter implements IStorageAdapter {
     }
   }
 
-  saveCharacter(characterId: string, characterData: any): void {
+  saveCharacter(characterId: string, characterData: any, silent: boolean = false): void {
     try {
       const storage = this.getStorage();
       storage.setItem(`${CHARACTER_PREFIX}${characterId}`, JSON.stringify(characterData));
@@ -239,7 +247,9 @@ export class LocalStorageAdapter implements IStorageAdapter {
         this.setCharacterIndex(index);
       }
 
-      this.notify('saved');
+      if (!silent) {
+        this.notify('saved');
+      }
     } catch (err) {
       console.error(`[LocalStorageAdapter] Failed to save character ${characterId}:`, err);
       this.notify('error', err instanceof Error ? err : new Error(String(err)));
@@ -342,7 +352,8 @@ export class LocalStorageAdapter implements IStorageAdapter {
   saveCampaign(
     campaignId: string,
     encounterState: any,
-    metadata?: { name?: string; description?: string; inviteCode?: string }
+    metadata?: { name?: string; description?: string; inviteCode?: string },
+    silent: boolean = false
   ): void {
     try {
       const storage = this.getStorage();
@@ -365,7 +376,9 @@ export class LocalStorageAdapter implements IStorageAdapter {
         this.setCampaignIndex(index);
       }
 
-      this.notify('saved');
+      if (!silent) {
+        this.notify('saved');
+      }
     } catch (err) {
       console.error(`[LocalStorageAdapter] Failed to save campaign ${campaignId}:`, err);
       this.notify('error', err instanceof Error ? err : new Error(String(err)));

@@ -150,5 +150,70 @@ export const CLASS_BUFFS = [
       { target: 'baseWil', value: 4, type: 'morale', source: 'Inspire Heroics' },
       { target: 'acDodge', value: 4, type: 'dodge', source: 'Inspire Heroics' }
     ]
+  },
+  {
+    key: 'draconic_aura_power',
+    name: 'Draconic Aura: Power',
+    school: 'Aura (Dragon Shaman)',
+    duration: 'Permanent',
+    description: 'Grants you and all allies within 30 ft a bonus on melee damage rolls (+1 to +5 based on class level) and rolls to confirm critical hits.',
+    classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    effects: [
+      { target: 'dmg', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Power' }
+    ]
+  },
+  {
+    key: 'draconic_aura_presence',
+    name: 'Draconic Aura: Presence',
+    school: 'Aura (Dragon Shaman)',
+    duration: 'Permanent',
+    description: 'Grants you and all allies within 30 ft a bonus (+1 to +5) on Bluff, Diplomacy, and Intimidate checks.',
+    classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    effects: []
+  },
+  {
+    key: 'draconic_aura_resistance',
+    name: 'Draconic Aura: Resistance',
+    school: 'Aura (Dragon Shaman)',
+    duration: 'Permanent',
+    description: 'Grants you and all allies within 30 ft energy resistance (5, 10, 15, 20, or 25) against your totem dragon\'s energy type.',
+    classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    effects: []
+  },
+  {
+    key: 'draconic_aura_senses',
+    name: 'Draconic Aura: Senses',
+    school: 'Aura (Dragon Shaman)',
+    duration: 'Permanent',
+    description: 'Grants you and all allies within 30 ft a bonus (+1 to +5) on Listen checks, Spot checks, and Initiative checks.',
+    classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    effects: []
+  },
+  {
+    key: 'draconic_aura_toughness',
+    name: 'Draconic Aura: Toughness',
+    school: 'Aura (Dragon Shaman)',
+    duration: 'Permanent',
+    description: 'Grants you and all allies within 30 ft Damage Reduction (DR 1/magic to DR 5/magic).',
+    classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    effects: []
+  },
+  {
+    key: 'draconic_aura_vigor',
+    name: 'Draconic Aura: Vigor',
+    school: 'Aura (Dragon Shaman)',
+    duration: 'Permanent',
+    description: 'Grants Fast Healing (1 to 5) to you and all allies within 30 ft who are currently at or below 50% of maximum HP.',
+    classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    effects: []
+  },
+  {
+    key: 'draconic_aura_energy_shield',
+    name: 'Draconic Aura: Energy Shield',
+    school: 'Aura (Dragon Shaman)',
+    duration: 'Permanent',
+    description: 'Any creature striking you or an ally within 30 ft with a melee attack or natural weapon takes 2 × aura bonus (2 to 10) elemental damage matching your totem dragon.',
+    classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    effects: []
   }
 ];

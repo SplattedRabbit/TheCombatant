@@ -17,6 +17,7 @@ export const DEFAULT_TYPE_LABELS = {
   deflection: 'Deflection',
   natural: 'Natural Armor',
   natural_increase: 'Natural Armor',
+  natural_enhancement: 'Natural Armor Enhancement',
   armor: 'Armor',
   shield: 'Shield',
   size: 'Size',

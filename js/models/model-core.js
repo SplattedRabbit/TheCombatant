@@ -1,6 +1,6 @@
 import { Stat } from './Stat.js';
 import { Weapon } from './Weapon.js';
-import { Armor, isShieldItem } from './Armor.js';
+import { Armor, isShieldItem, matchesShieldFeatOption } from './Armor.js';
 import { Item } from './Item.js';
 import { Combatant } from './Combatant.js';
 
@@ -67,6 +67,7 @@ export {
   Weapon,
   Armor,
   isShieldItem,
+  matchesShieldFeatOption,
   Item,
   Combatant
 };

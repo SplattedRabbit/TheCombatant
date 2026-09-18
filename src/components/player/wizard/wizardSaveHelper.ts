@@ -158,21 +158,16 @@ export function applyWizardCharacterToState(
   levelConfigs: WizardLevelConfig[],
   completedDraft: WizardDraftPC
 ) {
-  // ── FIX: wizard-character-overwrite ──────────────────────────────────────
-  // Reset the adapter's activeCharacterId BEFORE the save so the storage layer
-  // takes the INSERT path (new record) instead of UPDATE (overwriting the
-  // existing character). Safe for all adapters: setActiveCharacterId is an
-  // optional interface member and is only called when it exists.
+  const newCharId = generateUUID();
   const _adapter = getStorageAdapter();
   if (typeof (_adapter as any)?.setActiveCharacterId === 'function') {
-    (_adapter as any).setActiveCharacterId(null);
+    (_adapter as any).setActiveCharacterId(newCharId);
   }
-  // ─────────────────────────────────────────────────────────────────────────
 
   CombatState.updatePCBatch((freshPC: TargetPlayerCharacter) => {
     // Assign a fresh UUID so local state treats this as a new combatant,
     // not a mutation of the previously active PC.
-    (freshPC as any).id = generateUUID();
+    (freshPC as any).id = newCharId;
     freshPC.name = name.trim();
     freshPC.race = selectedRace;
     freshPC.isHuman = (selectedRace === 'human');
@@ -395,4 +390,13 @@ export function applyWizardCharacterToState(
 
     freshPC.rebuildStatModifiers();
   });
+
+  if (_adapter && typeof (_adapter as any).saveCharacter === 'function') {
+    try {
+      const fullState = CombatState.getState();
+      (_adapter as any).saveCharacter(newCharId, fullState);
+    } catch (err) {
+      console.warn('[wizardSaveHelper] Failed to sync new character to roster:', err);
+    }
+  }
 }

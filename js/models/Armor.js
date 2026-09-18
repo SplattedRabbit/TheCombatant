@@ -17,6 +17,32 @@ export function isShieldItem(item) {
   return def ? Boolean(def.isShield) : false;
 }
 
+export function matchesShieldFeatOption(shield, option) {
+  if (!shield) return false;
+  if (!option || typeof option !== 'string' || !option.trim()) return true;
+
+  const opt = option.toLowerCase().trim();
+  const type = (shield.type || '').toLowerCase();
+  const name = (shield.name || '').toLowerCase();
+  const def = ARMOR_REGISTRY[shield.type];
+  const defName = def ? (def.name || def.nameEn || def.nameDe || '').toLowerCase() : '';
+
+  if (opt.includes('buckler')) {
+    return type === 'buckler' || name.includes('buckler') || defName.includes('buckler');
+  }
+  if (opt.includes('light') || opt.includes('leicht')) {
+    return type.includes('light') || name.includes('light') || name.includes('leicht') || defName.includes('light') || defName.includes('leicht');
+  }
+  if (opt.includes('heavy') || opt.includes('schwer')) {
+    return type.includes('heavy') || name.includes('heavy') || name.includes('schwer') || defName.includes('heavy') || defName.includes('schwer');
+  }
+  if (opt.includes('tower') || opt.includes('turm')) {
+    return type.includes('tower') || name.includes('tower') || name.includes('turm') || defName.includes('tower') || defName.includes('turm');
+  }
+
+  return name.includes(opt) || type.includes(opt) || defName.includes(opt) || opt === 'shield' || opt === 'schild';
+}
+
 export class Armor {
   constructor(a = {}) {
     this.id = a.id || (Date.now() + '-' + Math.random().toString(36).slice(2, 7));

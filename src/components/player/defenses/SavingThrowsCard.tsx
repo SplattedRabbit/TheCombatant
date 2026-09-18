@@ -37,6 +37,14 @@ export const SavingThrowsCard: React.FC<SavingThrowsCardProps> = ({
   const baseWilVal = extractStatValue(pc.baseWil, 0);
   const hasClasses = Array.isArray(pc.classes) && pc.classes.length > 0;
 
+  const hasFeat = (id: string) => (typeof pc.hasFeat === 'function' ? pc.hasFeat(id) : (Array.isArray(pc.feats) && pc.feats.some((f: any) => (typeof f === 'string' ? f === id : f?.id === id))));
+  const hasInsightfulReflexes = hasFeat('insightful_reflexes');
+  const hasForceOfPersonality = hasFeat('force_of_personality');
+  const hasSteadfastDetermination = hasFeat('steadfast_determination');
+
+  const refTitle = hasInsightfulReflexes ? 'INT Modifier (Insightful Reflexes)' : 'DEX Modifier';
+  const willTitle = hasForceOfPersonality ? 'CHA Modifier (Force of Personality)' : (hasSteadfastDetermination ? 'CON Modifier (Steadfast Determination)' : 'WIS Modifier');
+
   const getSaveMiscBreakdown = (type: 'za' | 'ref' | 'wil', attrMod: number) => {
     const baseVal = type === 'za' ? baseZaVal : type === 'ref' ? baseRefVal : baseWilVal;
     const saveStat = type === 'za' ? pc.za : type === 'ref' ? pc.ref : pc.wil;
@@ -45,11 +53,10 @@ export const SavingThrowsCard: React.FC<SavingThrowsCardProps> = ({
     const total = saveStat?.getValue?.() ?? saveStat?.total ?? 0;
     const otherMods = total - baseVal - attrMod;
 
-    const attrName = type === 'za' ? 'Constitution Modifier' : type === 'ref' ? 'Dexterity Modifier' : 'Wisdom Modifier';
     const miscName = 'Other (Equipment/Special)';
 
     const modifiers = Array.isArray(saveStat?.modifiers) ? saveStat.modifiers : [];
-    const extras = modifiers.filter((m: any) => m.source !== attrName && m.source !== miscName && m.value !== 0);
+    const extras = modifiers.filter((m: any) => !m.source?.toLowerCase().includes('modifikator') && !m.source?.toLowerCase().includes('modifier') && m.source !== miscName && m.value !== 0);
 
     let tooltip = `Other modifier (Value: ${miscVal})`;
     if (extras.length > 0) {
@@ -162,7 +169,7 @@ export const SavingThrowsCard: React.FC<SavingThrowsCardProps> = ({
             tabIndex={-1}
             className="cinput cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)' }}
-            title="DEX Modifier"
+            title={refTitle}
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
           <input
@@ -207,7 +214,7 @@ export const SavingThrowsCard: React.FC<SavingThrowsCardProps> = ({
             tabIndex={-1}
             className="cinput cinput-c"
             style={{ fontSize: '9px', width: '30px', textAlign: 'center', padding: 0, height: '16px', fontWeight: 'bold', background: 'rgba(0,0,0,0.05)', color: 'var(--inkl)', borderColor: 'var(--pb)' }}
-            title="WIS Modifier"
+            title={willTitle}
           />
           <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--pb)', textAlign: 'center' }}>+</span>
           <input

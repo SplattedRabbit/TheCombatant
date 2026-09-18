@@ -144,4 +144,40 @@ describe('Prestige Class Guidance UI Integration', () => {
     // Dodge should be filtered out by prc_target
     expect(screen.queryByText('Dodge')).toBeNull();
   });
+
+  it('FeatsTabContent renders weapon options for weapon feats like Weapon Focus and skill options for Skill Focus', () => {
+    const weaponFocusFeat = CombatFeats.REGISTRY['weapon_focus'];
+
+    const TestFeatsComponent = () => {
+      const [filter, setFilter] = useState('all');
+      const [search, setSearch] = useState('');
+      const [cfg, setCfg] = useState<any>({ feats: [{ id: 'weapon_focus', option: 'Longsword' }] });
+
+      return (
+        <FeatsTabContent
+          currentConfig={cfg}
+          currentDraft={{ draftPC: new Combatant({ name: 'Test' }), featsList: [] }}
+          featSelectSlotIndex={0}
+          featSearch={search}
+          setFeatSearch={setSearch}
+          featFilter={filter}
+          setFeatFilter={setFilter}
+          activeFeatSlot={{ label: 'Fighter Bonus Feat', allowedCategories: ['combat'] }}
+          filteredFeats={[weaponFocusFeat]}
+          updateLevelConfig={(_idx, key, val) => setCfg((prev: any) => ({ ...prev, [key]: val }))}
+          currentLevelIndex={0}
+        />
+      );
+    };
+
+    render(<TestFeatsComponent />);
+
+    // Must show banner asking for weapon selection
+    expect(screen.getByText(/Select Weapon for Weapon Focus:/i)).toBeInTheDocument();
+    // Must contain weapon options like Longsword, Greatsword, Dagger
+    expect(screen.getByRole('option', { name: 'Longsword' })).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: 'Greatsword' })).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: 'Dagger' })).toBeInTheDocument();
+  });
 });
+

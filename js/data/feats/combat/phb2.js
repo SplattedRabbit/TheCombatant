@@ -256,6 +256,8 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
     "nameEn": "Shield Specialization",
     "category": "combat",
     "source": "phb2",
+    "hasOption": true,
+    "optionType": "shield",
     "prereqs": [
       {
         "type": "feat",
@@ -265,7 +267,7 @@ export const COMBAT_FEATS_REGISTRY_PHB2 = {
     "benefitDe": "Increase the shield bonus to AC granted by your chosen type of shield by 1.",
     "benefitRaw": "Increase the shield bonus to AC granted by your chosen type of shield by 1.",
     "normalRaw": "",
-    "specialRaw": "Fighter bonus feat.",
+    "specialRaw": "Fighter bonus feat. You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies for a new type of shield.",
     "appEffect": "Increase the shield bonus to AC granted by your chosen type of shield by 1.",
     "name": "Shield Specialization",
     "benefit": "Increase the shield bonus to AC granted by your chosen type of shield by 1.",

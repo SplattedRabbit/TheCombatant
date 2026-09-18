@@ -318,6 +318,14 @@ declare module '@core/data/acfs-data.js' {
   export const ACFS_REGISTRY: Record<string, any>;
 }
 
+declare module '@core/models/Armor.js' {
+  export class Armor {
+    [key: string]: any;
+  }
+  export const isShieldItem: (item: any) => boolean;
+  export const matchesShieldFeatOption: (shield: any, option?: string) => boolean;
+}
+
 declare module '@core/models/Weapon.js' {
   export const WeaponRegistry: Record<string, any>;
   export const matchesFeatOption: (weapon: any, option?: string) => boolean;

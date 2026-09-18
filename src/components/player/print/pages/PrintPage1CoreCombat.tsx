@@ -69,9 +69,13 @@ export const PrintPage1CoreCombat: React.FC<PrintPageProps> = ({ pc }) => {
     };
   };
 
+  const hasFeat = (id: string) => (typeof pc.hasFeat === 'function' ? pc.hasFeat(id) : (Array.isArray(pc.feats) && pc.feats.some((f: any) => (typeof f === 'string' ? f === id : f?.id === id))));
+  const effRefMod = hasFeat('insightful_reflexes') ? intMod : dexMod;
+  const effWilMod = hasFeat('force_of_personality') ? chaMod : (hasFeat('steadfast_determination') ? conMod : wisMod);
+
   const fort = getSave('za', conMod);
-  const ref = getSave('ref', dexMod);
-  const will = getSave('wil', wisMod);
+  const ref = getSave('ref', effRefMod);
+  const will = getSave('wil', effWilMod);
 
   // BAB & Grapple
   const bab = extractStatValue(pc.bab, 0);

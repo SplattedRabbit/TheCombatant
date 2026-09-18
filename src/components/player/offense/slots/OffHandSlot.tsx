@@ -130,10 +130,16 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
     const checkPenalty = sh.checkPenalty !== undefined ? sh.checkPenalty : (typeDef.checkPenalty || 0);
     const spellFailure = sh.spellFailure !== undefined ? sh.spellFailure : (typeDef.spellFailure || 0);
 
-    const isHeavy = (sh.type || '').includes('heavy');
-    const isLight = (sh.type || '').includes('light');
+    const isHeavy = (sh.type || '').includes('heavy') || (sh.name || '').toLowerCase().includes('heavy') || (sh.name || '').toLowerCase().includes('schwer');
+    const isLight = (sh.type || '').includes('light') || (sh.name || '').toLowerCase().includes('light') || (sh.name || '').toLowerCase().includes('leicht');
+    const isSpiked = (sh.name || '').toLowerCase().includes('spike') || (sh.type || '').toLowerCase().includes('spike');
     const canBash = isHeavy || isLight;
-    const bashDice = isHeavy ? '1d6' : '1d4';
+
+    const isSmall = pc.race === 'halfling' || pc.race === 'gnome' || pc.race === 'deep_halfling' || pc.size === 'small';
+    const bashDice = isHeavy
+      ? (isSpiked ? (isSmall ? '1d4' : '1d6') : (isSmall ? '1d3' : '1d4'))
+      : (isSpiked ? (isSmall ? '1d3' : '1d4') : (isSmall ? '1d2' : '1d3'));
+    const bashGrip = isLight ? 'light' : '1h';
 
     let stdBashObj = { atkTotal: 0, dmgTotal: 0 };
     let bashWeapon: any = null;
@@ -143,10 +149,11 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
         id: 'shield_bash_' + (sh.id || 'sh'),
         name: `${baseName} (Bash)`,
         type: 'martial',
-        grip: '1h',
+        grip: bashGrip,
         hand: 'off',
         damageDice: bashDice,
         damage: bashDice,
+        damageType: isSpiked ? 'Piercing' : 'Bludgeoning',
         crit: '20 / x2',
         enhancement: 0,
         isEquipped: true,

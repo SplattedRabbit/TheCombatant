@@ -664,7 +664,7 @@
         "target": "acNatural",
         "value": 2,
         "valueFormula": "barkskin",
-        "type": "natural",
+        "type": "natural_enhancement",
         "source": "Barkskin"
       }
     ],

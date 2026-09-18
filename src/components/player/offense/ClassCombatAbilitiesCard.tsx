@@ -13,6 +13,7 @@ import { BaseCard } from '../../shared/BaseCard';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { getAblMod } from '../attributeHelper';
 import { FavoredEnemyDialog } from '../../dialogs/BaseDialogs';
+import { DRAGON_TOTEMS } from '@core/rules/data/dragonTotems.js';
 
 interface ClassCombatAbilitiesCardProps {
   pc: any;
@@ -67,6 +68,19 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
   const dragonDiscipleLvl = dragonDiscipleClass ? dragonDiscipleClass.level : 0;
   const breathWeaponDice = dragonDiscipleLvl >= 10 ? '6d8' : (dragonDiscipleLvl >= 7 ? '4d8' : (dragonDiscipleLvl >= 3 ? '2d8' : ''));
 
+  const dragonShamanClass = activeClasses.find((c: any) => c.classType === 'dragon_shaman');
+  const dragonShamanLvl = dragonShamanClass ? dragonShamanClass.level : 0;
+  const totemKey = pc.dragonTotem || 'red';
+  const totem = (DRAGON_TOTEMS as any)[totemKey] || (DRAGON_TOTEMS as any).red;
+  const conValue = pc.con ? (typeof pc.con.getValue === 'function' ? pc.con.getValue() : pc.con) : 10;
+  const conMod = getAblMod(conValue);
+  const dsBreathDice = dragonShamanLvl >= 4 ? `${2 + Math.floor((dragonShamanLvl - 4) / 2)}d6` : '';
+  const dsBreathDC = 10 + Math.floor(dragonShamanLvl / 2) + conMod;
+  const dsRangeText = totem?.shape === 'cone'
+    ? (dragonShamanLvl >= 20 ? '60-ft cone' : (dragonShamanLvl >= 12 ? '30-ft cone' : '15-ft cone'))
+    : (dragonShamanLvl >= 20 ? '120-ft line' : (dragonShamanLvl >= 12 ? '60-ft line' : '30-ft line'));
+  const dsAuraBonus = Math.min(5, Math.max(1, 1 + Math.floor(dragonShamanLvl / 5)));
+
   const activeACFs: string[] = Array.isArray(pc.acfs) ? pc.acfs : [];
   const hasBerserkerStrength = activeACFs.includes('barbarian_berserker_strength');
   const hasDecisiveStrike = activeACFs.includes('monk_decisive_strike');
@@ -83,6 +97,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
     (assassinLvl > 0) || 
     hasTrickyFighting || 
     (dragonDiscipleLvl >= 3) ||
+    (dragonShamanLvl >= 1) ||
     (rangerLvl > 0 || favoredEnemyBonus > 0);
 
   // If no sustained stances/powers, return null so we don't clutter the view
@@ -421,6 +436,154 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
             </div>
             <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
               Line/Cone energy breath: Reflex half DC 10 + Class Level [{dragonDiscipleLvl}] + Con Mod.
+            </div>
+          </div>
+        )}
+
+        {/* Dragon Shaman Breath Weapon */}
+        {dragonShamanLvl >= 4 && (
+          <div
+            style={{
+              background: 'rgba(139, 26, 26, 0.05)',
+              border: '1px solid var(--red)',
+              borderRadius: '3px',
+              padding: '5px 8px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '3px'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontFamily: 'var(--font-title)', fontSize: '8.5px', fontWeight: 'bold', color: 'var(--red)' }}>
+                🐉 Dragon Shaman: Breath Weapon ({totem?.name || 'Dragon'})
+              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span
+                  style={{
+                    background: 'var(--red)',
+                    color: '#fff',
+                    fontSize: '7.5px',
+                    fontWeight: 'bold',
+                    padding: '1px 5px',
+                    borderRadius: '2px',
+                    fontFamily: 'monospace'
+                  }}
+                >
+                  {dsBreathDice} {totem?.energy?.toUpperCase() || 'FIRE'}
+                </span>
+                <span
+                  style={{
+                    background: 'rgba(0,0,0,0.06)',
+                    color: 'var(--ink)',
+                    fontSize: '7.5px',
+                    fontWeight: 'bold',
+                    padding: '1px 4px',
+                    borderRadius: '2px',
+                    fontFamily: 'monospace'
+                  }}
+                >
+                  DC {dsBreathDC} Ref
+                </span>
+              </div>
+            </div>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
+              {dsRangeText} of {totem?.energy || 'energy'} (Reflex half DC {dsBreathDC}). Recharges in 1d4 rounds (at will).
+            </div>
+          </div>
+        )}
+
+        {/* Dragon Shaman Draconic Aura */}
+        {dragonShamanLvl >= 1 && (
+          <div
+            style={{
+              background: 'rgba(200, 169, 110, 0.08)',
+              border: '1px solid var(--pb)',
+              borderRadius: '3px',
+              padding: '5px 8px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
+              <span style={{ fontFamily: 'var(--font-title)', fontSize: '8.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
+                ✨ Draconic Aura (30 ft)
+              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <select
+                  value={
+                    Array.isArray(pc.activeBuffs) && pc.activeBuffs.find((b: any) => b.spellKey?.startsWith('draconic_aura_'))?.spellKey || ''
+                  }
+                  onChange={(e) => {
+                    const chosenKey = e.target.value;
+                    CombatState.updatePCBatch((freshPC: any) => {
+                      if (!Array.isArray(freshPC.activeBuffs)) freshPC.activeBuffs = [];
+                      freshPC.activeBuffs = freshPC.activeBuffs.filter((b: any) => !b.spellKey?.startsWith('draconic_aura_'));
+                      if (chosenKey) {
+                        const auraEffects = chosenKey === 'draconic_aura_power'
+                          ? [{ target: 'dmg', value: dsAuraBonus, type: 'untyped', source: 'Draconic Aura: Power' }]
+                          : [];
+                        const auraLabels: Record<string, string> = {
+                          draconic_aura_power: 'Draconic Aura: Power',
+                          draconic_aura_presence: 'Draconic Aura: Presence',
+                          draconic_aura_resistance: 'Draconic Aura: Resistance',
+                          draconic_aura_senses: 'Draconic Aura: Senses',
+                          draconic_aura_toughness: 'Draconic Aura: Toughness',
+                          draconic_aura_vigor: 'Draconic Aura: Vigor',
+                          draconic_aura_energy_shield: 'Draconic Aura: Energy Shield'
+                        };
+                        freshPC.activeBuffs.push({
+                          id: 'spell_' + chosenKey + '_' + Date.now(),
+                          spellKey: chosenKey,
+                          name: auraLabels[chosenKey] || 'Draconic Aura',
+                          durationFormula: 'Permanent',
+                          casterLevel: dragonShamanLvl,
+                          durationMaxRounds: null,
+                          durationRemainingRounds: null,
+                          effects: auraEffects
+                        });
+                      }
+                    });
+                  }}
+                  className="cinput"
+                  style={{
+                    fontSize: '7.5px',
+                    height: '16px',
+                    padding: '0 4px',
+                    cursor: 'pointer',
+                    borderRadius: '2px',
+                    border: '0.5px solid var(--pb)',
+                    background: 'white',
+                    color: 'var(--ink)'
+                  }}
+                  title="Switch active Draconic Aura (Swift Action)"
+                >
+                  <option value="">— No Active Aura —</option>
+                  <option value="draconic_aura_power">Power (+{dsAuraBonus} Melee DMG)</option>
+                  <option value="draconic_aura_presence">Presence (+{dsAuraBonus} CHA Skills)</option>
+                  <option value="draconic_aura_resistance">Resistance ({5 * dsAuraBonus} {totem?.energy || 'Energy'})</option>
+                  <option value="draconic_aura_senses">Senses (+{dsAuraBonus} Init/Perception)</option>
+                  <option value="draconic_aura_toughness">Toughness (DR {dsAuraBonus}/magic)</option>
+                  <option value="draconic_aura_vigor">Vigor (Fast Healing {dsAuraBonus} &le;50% HP)</option>
+                  <option value="draconic_aura_energy_shield">Energy Shield ({2 * dsAuraBonus} {totem?.energy || 'Energy'})</option>
+                </select>
+                <span
+                  style={{
+                    background: 'var(--pb)',
+                    color: 'var(--ink)',
+                    fontSize: '7.5px',
+                    fontWeight: 'bold',
+                    padding: '1px 5px',
+                    borderRadius: '2px',
+                    fontFamily: 'monospace'
+                  }}
+                >
+                  +{dsAuraBonus} Aura
+                </span>
+              </div>
+            </div>
+            <div style={{ fontSize: '7px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
+              ⚡ Swift action to project/switch. Emanates 30 ft to you and all allies.
             </div>
           </div>
         )}

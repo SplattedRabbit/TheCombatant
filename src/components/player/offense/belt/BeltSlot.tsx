@@ -216,7 +216,10 @@ export const BeltSlot: React.FC<BeltSlotProps> = ({
         </span>
         <button
           type="button"
-          onClick={(e) => onShowItemInfo(item, originalIdx, e)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onShowItemInfo(item, originalIdx, e);
+          }}
           style={{
             background: 'rgba(110, 70, 31, 0.12)',
             border: '0.5px solid rgba(110, 70, 31, 0.35)',

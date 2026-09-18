@@ -131,4 +131,61 @@ test('Tactile Trapsmith - Prerequisites evaluation and clean display description
   assert.strictEqual(clericCheck.details.length, 0);
 });
 
+test('Force of Personality, Steadfast Determination & Insightful Reflexes - Save Modifiers', async () => {
+  const { rebuildCombatantModifiers } = await import('../js/models/helpers/modifiers/CombatantModifiers.js');
+
+  // 1. Force of Personality: CHA instead of WIS on Will save
+  const sorcerer = new Combatant({
+    name: 'Sorcerer',
+    type: 'p',
+    race: 'human',
+    baseWil: 2,
+    wis: 10, // mod +0
+    cha: 18, // mod +4
+    dex: 12, // mod +1
+    int: 14, // mod +2
+    classes: [{ classType: 'sorcerer', level: 1 }],
+    feats: [{ id: 'force_of_personality' }]
+  });
+
+  rebuildCombatantModifiers(sorcerer);
+  // Base Will for Sorcerer 1 = 2, CHA mod = +4 -> Total Will = 6 (instead of 2 + 0 = 2)
+  assert.strictEqual(sorcerer.wil.getValue(), 6);
+  assert.strictEqual(sorcerer.wil.modifiers.some(m => m.source.includes('Force of Personality')), true);
+
+  // 2. Insightful Reflexes: INT instead of DEX on Reflex save
+  const wizard = new Combatant({
+    name: 'Wizard',
+    type: 'p',
+    race: 'human',
+    dex: 10, // mod +0
+    int: 18, // mod +4
+    wis: 12,
+    classes: [{ classType: 'wizard', level: 1 }],
+    feats: [{ id: 'insightful_reflexes' }]
+  });
+
+  rebuildCombatantModifiers(wizard);
+  // Base Ref for Wizard 1 = 0, INT mod = +4 -> Total Ref = 4 (instead of 0 + 0 = 0)
+  assert.strictEqual(wizard.ref.getValue(), 4);
+  assert.strictEqual(wizard.ref.modifiers.some(m => m.source.includes('Insightful Reflexes')), true);
+
+  // 3. Steadfast Determination: CON instead of WIS on Will save
+  const fighter = new Combatant({
+    name: 'Fighter',
+    type: 'p',
+    race: 'human',
+    con: 16, // mod +3
+    wis: 8,  // mod -1
+    classes: [{ classType: 'fighter', level: 1 }],
+    feats: [{ id: 'steadfast_determination' }]
+  });
+
+  rebuildCombatantModifiers(fighter);
+  // Base Will for Fighter 1 = 0, CON mod = +3 -> Total Will = 3 (instead of 0 - 1 = -1)
+  assert.strictEqual(fighter.wil.getValue(), 3);
+  assert.strictEqual(fighter.wil.modifiers.some(m => m.source.includes('Steadfast Determination')), true);
+});
+
+
 
