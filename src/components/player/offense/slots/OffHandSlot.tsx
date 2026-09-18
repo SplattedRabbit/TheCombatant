@@ -8,7 +8,6 @@ import { CombatState } from '@core/state.js';
 import { AttackEngine } from '@core/rules/AttackEngine.js';
 import { matchesFeatOption, getCritThreatDisplay } from '@core/models/Weapon.js';
 import { ARMOR_REGISTRY } from '@core/data/armor-data.js';
-import { isWeaponTwoHanded } from './slotsHelper';
 
 export interface OffHandSlotProps {
   pc: any;
@@ -133,7 +132,6 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
 
     const isHeavy = (sh.type || '').includes('heavy');
     const isLight = (sh.type || '').includes('light');
-    const isTower = (sh.type || '').includes('tower');
     const canBash = isHeavy || isLight;
     const bashDice = isHeavy ? '1d6' : '1d4';
 
@@ -201,152 +199,133 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
           ✕
         </button>
 
-        {/* Top: Icon, Title & Badges */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '3px', marginBottom: '1px' }}>
-            <span style={{ fontSize: '11px' }}>🛡️</span>
-            <span
-              style={{
-                fontSize: '8px',
-                fontFamily: 'var(--font-title)',
-                fontWeight: 'bold',
-                color: 'var(--red)',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                maxWidth: '95px',
-              }}
-              title={baseName}
-            >
-              {baseName}
-            </span>
-            {sh.enhancement > 0 && (
-              <span style={{ fontSize: '7px', fontWeight: 'bold', color: 'var(--red)', background: 'rgba(139, 26, 26, 0.08)', padding: '0 3px', borderRadius: '2px' }}>
-                +{sh.enhancement}
-              </span>
-            )}
-          </div>
-
-          <div style={{ display: 'flex', gap: '3px', alignItems: 'center', justifyContent: 'center', marginTop: '2px' }}>
-            <span
-              style={{
-                fontSize: '7.5px',
-                fontFamily: 'var(--font-title)',
-                fontWeight: 'bold',
-                color: 'var(--ink)',
-                background: 'rgba(200, 169, 110, 0.2)',
-                border: '0.5px solid var(--pb)',
-                borderRadius: '2px',
-                padding: '0 4px',
-              }}
-            >
-              +{totalAC} AC
-            </span>
-            <span
-              style={{
-                fontSize: '6.5px',
-                fontFamily: 'var(--font-title)',
-                textTransform: 'uppercase',
-                color: 'var(--inkm)',
-                background: 'rgba(0,0,0,0.04)',
-                borderRadius: '2px',
-                padding: '0 3px',
-              }}
-            >
-              Shield
-            </span>
-          </div>
+        {/* Zone 1: Slot Label */}
+        <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
+          🛡️ Off-Hand
         </div>
 
-        {/* Middle: Tactical Action / Bash or Protection breakdown */}
-        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '2px', padding: '2px 0' }}>
-          {canBash ? (
-            <>
-              <div style={{ fontSize: '6.5px', color: 'var(--inkm)', fontStyle: 'italic', display: 'flex', justifyContent: 'space-between', padding: '0 2px' }}>
-                <span>⚔️ Bash ({bashDice})</span>
-                <span title="Shield bonus protects when flat-footed">🛡️ Flat: +{totalAC}</span>
-              </div>
-              <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
-                <button
-                  type="button"
-                  className="xbtn xbtn-atk"
-                  disabled={pc.isTotalDefense}
-                  onClick={(e) => handleRollAttack(bashWeapon, true, e)}
-                  style={{
-                    flex: 1,
-                    padding: '2px 0',
-                    fontSize: '7px',
-                    fontWeight: 'bold',
-                    height: '17px',
-                    lineHeight: 1,
-                    opacity: pc.isTotalDefense ? 0.4 : 1,
-                    cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer',
-                  }}
-                  title={`Roll Shield Bash Attack (${formatMod(stdBashObj.atkTotal)})`}
-                >
-                  BASH {formatMod(stdBashObj.atkTotal)}
-                </button>
-                <button
-                  type="button"
-                  className="xbtn xbtn-dmg"
-                  disabled={pc.isTotalDefense}
-                  onClick={(e) => handleRollDamage(bashWeapon, true, e)}
-                  style={{
-                    flex: 1,
-                    padding: '2px 0',
-                    fontSize: '7px',
-                    fontWeight: 'bold',
-                    height: '17px',
-                    lineHeight: 1,
-                    opacity: pc.isTotalDefense ? 0.4 : 1,
-                    cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer',
-                  }}
-                  title={`Roll Shield Bash Damage (${bashDice} ${formatMod(stdBashObj.dmgTotal)})`}
-                >
-                  DMG {formatMod(stdBashObj.dmgTotal)}
-                </button>
-              </div>
-            </>
-          ) : isTower ? (
-            <div style={{ padding: '2px 4px', background: 'rgba(0,0,0,0.02)', borderRadius: '2px', border: '0.5px solid rgba(200, 169, 110, 0.25)' }}>
-              <div style={{ fontSize: '6.5px', fontWeight: 'bold', color: 'var(--red)' }}>🏰 Total Cover Action</div>
-              <div style={{ fontSize: '5.5px', color: 'var(--inkm)' }}>Standard Action vs 1 edge</div>
-            </div>
-          ) : (
-            <div style={{ padding: '2px 4px', background: 'rgba(0,0,0,0.02)', borderRadius: '2px', border: '0.5px solid rgba(200, 169, 110, 0.25)' }}>
-              <div style={{ fontSize: '6.5px', fontWeight: 'bold', color: 'var(--ink)' }}>🏹 Free Off-Hand</div>
-              <div style={{ fontSize: '5.5px', color: 'var(--inkm)' }}>Can wield bow/crossbow (-1 ATK)</div>
-            </div>
+        {/* Zone 2: Title */}
+        <div
+          style={{
+            fontFamily: 'var(--font-title)',
+            fontSize: '9.5px',
+            fontWeight: 'bold',
+            color: 'var(--red)',
+            textShadow: '0 0 1px rgba(139,26,26,0.1)',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+            width: '100%',
+          }}
+          title={baseName}
+        >
+          {baseName}
+          {sh.enhancement > 0 && (
+            <span style={{ fontSize: '7px', fontWeight: 'bold', marginLeft: '3px', color: 'var(--red)' }}>
+              +{sh.enhancement}
+            </span>
           )}
         </div>
 
-        {/* Bottom: 3-column stats matching ArmorSlot */}
-        <div
-          style={{
-            width: '100%',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '2px',
-            fontSize: '6.5px',
-            fontFamily: 'var(--font-body)',
-            color: 'var(--inkm)',
-            borderTop: '0.5px dashed rgba(200, 169, 110, 0.35)',
-            paddingTop: '3px',
-            marginTop: '3px',
-          }}
-        >
-          <div title="Max Dexterity Bonus">
-            <span style={{ display: 'block', fontSize: '5.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>MaxDex</span>
-            <span style={{ fontWeight: 'bold', color: 'var(--ink)' }}>{maxDex !== null && maxDex !== undefined ? `+${maxDex}` : '—'}</span>
-          </div>
-          <div title="Armor Check Penalty">
-            <span style={{ display: 'block', fontSize: '5.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>ACP</span>
-            <span style={{ fontWeight: 'bold', color: checkPenalty > 0 ? 'var(--red)' : 'var(--ink)' }}>{checkPenalty > 0 ? `-${checkPenalty}` : '0'}</span>
-          </div>
-          <div title="Arcane Spell Failure">
-            <span style={{ display: 'block', fontSize: '5.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>Fail</span>
-            <span style={{ fontWeight: 'bold', color: 'var(--ink)' }}>{spellFailure}%</span>
-          </div>
+        {/* Zone 3: Badges */}
+        <div style={{ display: 'flex', gap: '3px', alignItems: 'center', justifyContent: 'center', margin: '1px 0' }}>
+          <span
+            style={{
+              fontSize: '7.5px',
+              fontFamily: 'var(--font-title)',
+              fontWeight: 'bold',
+              color: 'var(--ink)',
+              background: 'rgba(200, 169, 110, 0.2)',
+              border: '0.5px solid var(--pb)',
+              borderRadius: '2px',
+              padding: '0 4px',
+            }}
+          >
+            +{totalAC} AC
+          </span>
+          <span
+            style={{
+              fontSize: '6.5px',
+              fontFamily: 'var(--font-title)',
+              textTransform: 'uppercase',
+              color: 'var(--inkm)',
+              background: 'rgba(0,0,0,0.04)',
+              borderRadius: '2px',
+              padding: '0 3px',
+            }}
+          >
+            Shield
+          </span>
+        </div>
+
+        {/* Zone 4: Middle Tactical Details */}
+        <div style={{ fontSize: '6px', color: 'var(--inkm)', padding: '1px 0', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+          <span>{maxDex !== null && maxDex !== undefined ? `MaxDex +${maxDex} • ` : ''}Flat: +{totalAC} • ACP {checkPenalty > 0 ? `-${checkPenalty}` : '0'}{spellFailure > 0 ? ` • Fail ${spellFailure}%` : ''}</span>
+        </div>
+
+        {/* Zone 5: Bottom Action Row (18px aligned) */}
+        <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
+          {canBash ? (
+            <>
+              <button
+                type="button"
+                className="xbtn xbtn-atk"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollAttack(bashWeapon, true, e)}
+                style={{
+                  flex: 1,
+                  padding: '2px 0',
+                  fontSize: '7.5px',
+                  fontWeight: 'bold',
+                  height: '18px',
+                  lineHeight: 1,
+                  opacity: pc.isTotalDefense ? 0.4 : 1,
+                  cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer',
+                }}
+                title={`Roll Shield Bash Attack (${formatMod(stdBashObj.atkTotal)})`}
+              >
+                BASH {formatMod(stdBashObj.atkTotal)}
+              </button>
+              <button
+                type="button"
+                className="xbtn xbtn-dmg"
+                disabled={pc.isTotalDefense}
+                onClick={(e) => handleRollDamage(bashWeapon, true, e)}
+                style={{
+                  flex: 1,
+                  padding: '2px 0',
+                  fontSize: '7.5px',
+                  fontWeight: 'bold',
+                  height: '18px',
+                  lineHeight: 1,
+                  opacity: pc.isTotalDefense ? 0.4 : 1,
+                  cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer',
+                }}
+                title={`Roll Shield Bash Damage (${bashDice} ${formatMod(stdBashObj.dmgTotal)})`}
+              >
+                DMG {formatMod(stdBashObj.dmgTotal)}
+              </button>
+            </>
+          ) : (
+            <div
+              style={{
+                flex: 1,
+                height: '18px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '7px',
+                fontWeight: 'bold',
+                color: 'var(--inkl)',
+                background: 'rgba(0,0,0,0.03)',
+                border: '0.5px solid var(--pb)',
+                borderRadius: '2px',
+                lineHeight: 1,
+              }}
+            >
+              🛡️ Guarding (+{totalAC} AC)
+            </div>
+          )}
         </div>
       </div>
     );
@@ -412,12 +391,16 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
       >
         ✕
       </button>
+
+      {/* Zone 1: Slot Label */}
       <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
         {offhandLabel}
       </div>
+
+      {/* Zone 2: Title */}
       <div
         style={{
-          fontFamily: 'var(--font-body)',
+          fontFamily: 'var(--font-title)',
           fontSize: '9.5px',
           fontWeight: 'bold',
           color: 'var(--red)',
@@ -431,6 +414,7 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
       >
         {isDoubleWielded ? w.name + ' (Offhand)' : w.name}
       </div>
+
       {pc.isFavoredEnemyActive && feBonus > 0 && (
         <div
           style={{
@@ -452,11 +436,13 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
           🏹 {pc.activeFavoredEnemyTarget ? `vs ${pc.activeFavoredEnemyTarget}` : 'Favored Enemy'} (+{feBonus})
         </div>
       )}
+
+      {/* Zone 3: Badges / Weapon Properties */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', margin: '1px 0', fontSize: '7px', color: 'var(--inkm)' }}>
         <div style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} title={`${dmgDice}${extraDamage} • ${doubledCritDisplay}`}>
           {dmgDice}{extraDamage} • {doubledCritDisplay}
         </div>
-        {!isDoubleWielded && !isWeaponTwoHanded(w) && (
+        {!isDoubleWielded && (
           <select
             className="cinput weapon-hand-select"
             value="off"
@@ -479,6 +465,13 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
           </select>
         )}
       </div>
+
+      {/* Zone 4: Middle Tactical Details */}
+      <div style={{ fontSize: '6px', color: 'var(--inkm)', padding: '1px 0', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+        <span>Off-Hand Attack • 0.5× STR</span>
+      </div>
+
+      {/* Zone 5: Bottom Action Row (18px aligned) */}
       <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
         <button
           className="xbtn xbtn-atk"
@@ -494,7 +487,7 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
             opacity: pc.isTotalDefense ? 0.4 : 1,
             cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer',
           }}
-          title={`Roll Attack (${formatMod(stdAtkObj.atkTotal)})`}
+          title={`Roll Off-Hand Attack (${formatMod(stdAtkObj.atkTotal)})`}
         >
           ATK {formatMod(stdAtkObj.atkTotal)}
         </button>
@@ -512,7 +505,7 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
             opacity: pc.isTotalDefense ? 0.4 : 1,
             cursor: pc.isTotalDefense ? 'not-allowed' : 'pointer',
           }}
-          title={`Roll Damage (${dmgDice}${extraDamage} ${formatMod(stdAtkObj.dmgTotal)})`}
+          title={`Roll Off-Hand Damage (${dmgDice}${extraDamage} ${formatMod(stdAtkObj.dmgTotal)})`}
         >
           DMG {formatMod(stdAtkObj.dmgTotal)}
         </button>

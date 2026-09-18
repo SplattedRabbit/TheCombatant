@@ -61,7 +61,7 @@ export const SmiteStrikeCard: React.FC<StrikeCardBaseProps & {
       </div>
       {selectorDropdown}
     </div>
-    <div style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={smiteTitle}>
+    <div style={{ fontFamily: 'var(--font-title)', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }} title={smiteTitle}>
       {smiteTitle}
     </div>
     <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -154,7 +154,7 @@ export const SneakStrikeCard: React.FC<StrikeCardBaseProps & {
       </div>
       {selectorDropdown}
     </div>
-    <div style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+    <div style={{ fontFamily: 'var(--font-title)', fontSize: '9.5px', fontWeight: 'bold', color: 'var(--red)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
       {cardTitle || 'Sneak Attack'}
     </div>
     <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -218,7 +218,7 @@ export const DuskbladeStrikeCard: React.FC<StrikeCardBaseProps & { stdDusk: any 
       </div>
       {selectorDropdown}
     </div>
-    <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 'bold', color: '#8e44ad', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+    <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: '#8e44ad', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
       Arcane Channeling
     </div>
     <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -285,7 +285,7 @@ export const ScoutStrikeCard: React.FC<StrikeCardBaseProps & {
       </div>
       {selectorDropdown}
     </div>
-    <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 'bold', color: '#6d5734', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+    <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: '#6d5734', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
       Skirmish Attack
     </div>
     <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -351,7 +351,7 @@ export const NinjaStrikeCard: React.FC<StrikeCardBaseProps & {
       </div>
       {selectorDropdown}
     </div>
-    <div style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 'bold', color: '#4a5b6c', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+    <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: '#4a5b6c', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
       Sudden Strike
     </div>
     <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
@@ -421,7 +421,7 @@ export const RangerStrikeCard: React.FC<StrikeCardBaseProps & {
         </div>
         {selectorDropdown}
       </div>
-      <div style={{ fontFamily: 'var(--font-body)', fontSize: '9.5px', fontWeight: 'bold', color: '#4a6274', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
+      <div style={{ fontFamily: 'var(--font-title)', fontSize: '9.5px', fontWeight: 'bold', color: '#4a6274', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
         Favored Enemy
       </div>
       <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>

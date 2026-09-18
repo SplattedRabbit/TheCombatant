@@ -135,7 +135,7 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
       </div>
       <div
         style={{
-          fontFamily: 'var(--font-body)',
+          fontFamily: 'var(--font-title)',
           fontSize: '9.5px',
           fontWeight: 'bold',
           color: 'var(--red)',
@@ -195,6 +195,13 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
             <option value="main">Main</option>
             <option value="off">Off</option>
           </select>
+        )}
+      </div>
+      <div style={{ fontSize: '6px', color: 'var(--inkm)', padding: '1px 0', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+        {seq.length > 1 ? (
+          <span>Iterative: {seq.map((s: any) => formatMod(s.atkTotal)).join(' / ')}</span>
+        ) : (
+          <span>Primary Attack • Standard BAB</span>
         )}
       </div>
       <div style={{ display: 'flex', gap: '3px', width: '100%' }}>
