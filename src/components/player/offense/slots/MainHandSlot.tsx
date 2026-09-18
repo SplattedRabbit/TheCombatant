@@ -17,6 +17,7 @@ export interface MainHandSlotProps {
   handleHandSelectChange: (idx: number, val: string) => void;
   handleRollAttack: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
   handleRollDamage: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
+  onOpenWeaponStash?: () => void;
 }
 
 export const MainHandSlot: React.FC<MainHandSlotProps> = ({
@@ -27,6 +28,7 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
   handleHandSelectChange,
   handleRollAttack,
   handleRollDamage,
+  onOpenWeaponStash,
 }) => {
   const w = mainHandWeapon;
   const rStyle = getRarityStyle(w ? w.enhancement : 0);
@@ -35,6 +37,7 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
     return (
       <div
         className="arpg-slot main-hand-slot"
+        onClick={onOpenWeaponStash}
         style={{
           position: 'relative',
           flex: 1,
@@ -43,12 +46,14 @@ export const MainHandSlot: React.FC<MainHandSlotProps> = ({
           alignItems: 'center',
           justifyContent: 'center',
           minHeight: '88px',
-          border: '0.5px solid var(--pb)',
+          border: '0.5px dashed var(--pb)',
           borderRadius: '4px',
           padding: '5px 6px',
           textAlign: 'center',
           background: 'rgba(0,0,0,0.02)',
+          cursor: onOpenWeaponStash ? 'pointer' : 'default',
         }}
+        title="Click to open Weapon Arsenal"
       >
         <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>⚔️</div>
         <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)' }}>

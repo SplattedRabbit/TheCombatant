@@ -26,6 +26,7 @@ export interface ActiveEquipmentSlotsProps {
   handleHandSelectChange: (idx: number, val: string) => void;
   handleRollAttack: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
   handleRollDamage: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
+  onOpenWeaponStash?: () => void;
   onOpenArmorStash?: () => void;
 }
 
@@ -41,6 +42,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
   handleHandSelectChange,
   handleRollAttack,
   handleRollDamage,
+  onOpenWeaponStash,
   onOpenArmorStash,
 }) => {
   if (pc.activeShape !== 'none') {
@@ -64,6 +66,7 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
         handleHandSelectChange={handleHandSelectChange}
         handleRollAttack={handleRollAttack}
         handleRollDamage={handleRollDamage}
+        onOpenWeaponStash={onOpenWeaponStash}
       />
       <OffHandSlot
         pc={pc}
@@ -75,6 +78,8 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
         handleHandSelectChange={handleHandSelectChange}
         handleRollAttack={handleRollAttack}
         handleRollDamage={handleRollDamage}
+        onOpenWeaponStash={onOpenWeaponStash}
+        onOpenArmorStash={onOpenArmorStash}
       />
       <ArmorSlot
         pc={pc}

@@ -19,6 +19,8 @@ export interface OffHandSlotProps {
   handleHandSelectChange: (idx: number, val: string) => void;
   handleRollAttack: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
   handleRollDamage: (w: any, isOffhand: boolean, e: React.MouseEvent, customOptions?: any) => void;
+  onOpenWeaponStash?: () => void;
+  onOpenArmorStash?: () => void;
 }
 
 export const OffHandSlot: React.FC<OffHandSlotProps> = ({
@@ -31,6 +33,8 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
   handleHandSelectChange,
   handleRollAttack,
   handleRollDamage,
+  onOpenWeaponStash,
+  onOpenArmorStash,
 }) => {
   const w = offHandWeapon;
   const sh = equippedShield;
@@ -48,18 +52,72 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
           alignItems: 'center',
           justifyContent: 'center',
           minHeight: '88px',
-          border: '0.5px solid var(--pb)',
+          border: '0.5px dashed var(--pb)',
           borderRadius: '4px',
-          padding: '5px 6px',
+          padding: '5px 4px',
           textAlign: 'center',
           background: 'rgba(0,0,0,0.02)',
         }}
       >
-        <div style={{ fontSize: '14px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.6 }}>🛡️</div>
+        <div style={{ fontSize: '13px', color: 'var(--inkl)', marginBottom: '1px', opacity: 0.7 }}>🛡️⚔️</div>
         <div style={{ fontSize: '7.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)' }}>
           Off-Hand
         </div>
-        <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic' }}>(Empty)</div>
+        <div style={{ fontSize: '7px', color: 'var(--inkm)', fontStyle: 'italic', marginBottom: '4px' }}>(Empty)</div>
+        <div style={{ display: 'flex', gap: '3px', width: '100%', justifyContent: 'center' }}>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenArmorStash?.();
+            }}
+            title="Open Armor & Shields Arsenal"
+            style={{
+              fontSize: '6.5px',
+              fontWeight: 'bold',
+              padding: '1px 4px',
+              height: '16px',
+              lineHeight: 1,
+              background: 'rgba(0,0,0,0.04)',
+              border: '0.5px solid var(--pb)',
+              borderRadius: '2px',
+              cursor: 'pointer',
+              color: 'var(--ink)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '2px',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            🛡️ Shield
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenWeaponStash?.();
+            }}
+            title="Open Weapon Arsenal"
+            style={{
+              fontSize: '6.5px',
+              fontWeight: 'bold',
+              padding: '1px 4px',
+              height: '16px',
+              lineHeight: 1,
+              background: 'rgba(0,0,0,0.04)',
+              border: '0.5px solid var(--pb)',
+              borderRadius: '2px',
+              cursor: 'pointer',
+              color: 'var(--ink)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '2px',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            ⚔️ Weapon
+          </button>
+        </div>
       </div>
     );
   }

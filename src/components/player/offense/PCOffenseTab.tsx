@@ -214,6 +214,7 @@ export const PCOffenseTab: React.FC = () => {
             handleHandSelectChange={handleHandSelectChange}
             handleRollAttack={handleRollAttack}
             handleRollDamage={handleRollDamage}
+            onOpenWeaponStash={() => setArsenalTab('weapons')}
             onOpenArmorStash={() => setArsenalTab('armors')}
           />
         </BaseCard>
