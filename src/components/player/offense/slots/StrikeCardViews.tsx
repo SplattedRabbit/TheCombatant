@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { showCustomAlert } from '@core/ui/components/dialogs.js';
 
 interface StrikeCardBaseProps {
   pc: any;
@@ -445,6 +446,97 @@ export const RangerStrikeCard: React.FC<StrikeCardBaseProps & {
           title={`Roll Favored Enemy Damage (${baseDmgDice} ${formatMod(stdFE.dmgTotal)})`}
         >
           DMG {formatMod(stdFE.dmgTotal)}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export const DragonBreathStrikeCard: React.FC<{
+  pc: any;
+  selectorDropdown?: React.ReactNode;
+  totem: any;
+  breathDice: string;
+  breathDC: number;
+  rangeText: string;
+}> = ({
+  pc: _pc,
+  selectorDropdown,
+  totem,
+  breathDice,
+  breathDC,
+  rangeText,
+}) => {
+  const energyUpper = totem?.energy ? totem.energy.toUpperCase() : 'FIRE';
+  const shapeText = totem?.shape === 'cone' ? 'Cone' : 'Line';
+
+  const handleRollBreathDamage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const diceMatch = breathDice.match(/^(\d+)d6$/);
+    const count = diceMatch ? parseInt(diceMatch[1]) : 2;
+    let total = 0;
+    const rolls: number[] = [];
+    for (let i = 0; i < count; i++) {
+      const r = Math.floor(Math.random() * 6) + 1;
+      rolls.push(r);
+      total += r;
+    }
+    const msg = `🐉 <strong>${totem?.name || 'Dragon Shaman'} Breath Weapon</strong>: [${rolls.join(', ')}] = <strong>${total}</strong> ${energyUpper} damage (Reflex DC ${breathDC} for half).<br><small>Shape: ${rangeText} (${shapeText}) • Recharges in 1d4 rounds.</small>`;
+    showCustomAlert('Breath Weapon Roll 🐉', msg, 'Understood', '🔥');
+  };
+
+  return (
+    <div
+      className="arpg-slot class-ability-slot rarity-epic"
+      style={{
+        position: 'relative',
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        minHeight: '88px',
+        border: '1px solid var(--red)',
+        borderRadius: '4px',
+        padding: '5px 6px',
+        textAlign: 'center',
+        background: 'rgba(139, 26, 26, 0.08)',
+        boxShadow: '0 0 8px rgba(139, 26, 26, 0.2)',
+      }}
+    >
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+        <div style={{ fontSize: '6.5px', color: 'var(--red)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
+          🐉 Breath Strike
+        </div>
+        {selectorDropdown}
+      </div>
+      <div
+        style={{
+          fontFamily: 'var(--font-title)',
+          fontSize: '9.5px',
+          fontWeight: 'bold',
+          color: 'var(--red)',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+          width: '100%',
+        }}
+        title={`${totem?.name || 'Dragon Shaman'} Breath Weapon`}
+      >
+        {totem?.breathName || 'Dragon\'s Breath'}
+      </div>
+      <div style={{ fontSize: '7px', color: 'var(--inkm)', lineHeight: 1.1 }}>
+        DC {breathDC} Ref • {rangeText}
+      </div>
+
+      <div style={{ width: '100%' }}>
+        <button
+          className="xbtn xbtn-dmg"
+          onClick={handleRollBreathDamage}
+          style={{ width: '100%', padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
+          title={`Roll Breath Weapon (${breathDice} ${energyUpper})`}
+        >
+          BREATH {breathDice} {energyUpper}
         </button>
       </div>
     </div>

@@ -13,7 +13,9 @@ import {
   DuskbladeStrikeCard,
   ScoutStrikeCard,
   RangerStrikeCard,
+  DragonBreathStrikeCard,
 } from './StrikeCardViews.tsx';
+import { DRAGON_TOTEMS } from '@core/rules/data/dragonTotems.js';
 
 export interface StrikeAbilitySlotProps {
   pc: any;
@@ -42,6 +44,11 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
   const ninjaClass = activeClasses.find((c: any) => c.classType === 'ninja');
   const shadowbaneClass = activeClasses.find((c: any) => c.classType === 'shadowbane_inquisitor');
   const shadowbaneLvl = shadowbaneClass ? shadowbaneClass.level : 0;
+
+  const dragonShamanClass = activeClasses.find((c: any) => c.classType === 'dragon_shaman');
+  const dragonShamanLvl = dragonShamanClass ? dragonShamanClass.level : 0;
+  const conValue = pc.con ? (typeof pc.con.getValue === 'function' ? pc.con.getValue() : pc.con) : 10;
+  const conMod = getAblMod(conValue);
 
   const sneakAttackDice = typeof pc.getSneakAttackDiceCount === 'function' ? pc.getSneakAttackDiceCount() : 0;
   const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus() : 0;
@@ -235,6 +242,32 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
           hasDistractingAttack={hasDistractingAttack}
           favoredEnemyBonus={favoredEnemyBonus}
           stdFE={stdFE}
+        />
+      ),
+    });
+  }
+
+  // 6. Dragon Shaman Breath Weapon (Lv. 4+)
+  if (dragonShamanLvl >= 4) {
+    const totemKey = pc.dragonTotem || 'red';
+    const totem = (DRAGON_TOTEMS as any)[totemKey] || (DRAGON_TOTEMS as any).red;
+    const dsBreathDice = `${2 + Math.floor((dragonShamanLvl - 4) / 2)}d6`;
+    const dsBreathDC = 10 + Math.floor(dragonShamanLvl / 2) + conMod;
+    const dsRangeText = totem?.shape === 'cone'
+      ? (dragonShamanLvl >= 20 ? '60-ft cone' : (dragonShamanLvl >= 12 ? '30-ft cone' : '15-ft cone'))
+      : (dragonShamanLvl >= 20 ? '120-ft line' : (dragonShamanLvl >= 12 ? '60-ft line' : '30-ft line'));
+
+    strikes.push({
+      id: 'dragon_breath',
+      name: `Breath Weapon (${totem?.name || 'Dragon'})`,
+      render: (selectorDropdown) => (
+        <DragonBreathStrikeCard
+          pc={pc}
+          selectorDropdown={selectorDropdown}
+          totem={totem}
+          breathDice={dsBreathDice}
+          breathDC={dsBreathDC}
+          rangeText={dsRangeText}
         />
       ),
     });

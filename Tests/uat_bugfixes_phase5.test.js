@@ -83,14 +83,22 @@ describe('UAT Bugfixes & Feature Verifications Suite', () => {
     assert.strictEqual(isBuffEligible(dsPc, 'draconic_aura_power', true), true);
     assert.strictEqual(isBuffEligible(nonDsPc, 'draconic_aura_power', true), false);
 
-    // 4. Breath Weapon Calculation
-    const getBreathDice = (dsLvl) => dsLvl >= 4 ? `${2 + Math.floor((dsLvl - 4) / 2)}d6` : '';
-    assert.strictEqual(getBreathDice(3), '');
-    assert.strictEqual(getBreathDice(4), '2d6');
-    assert.strictEqual(getBreathDice(5), '2d6');
-    assert.strictEqual(getBreathDice(6), '3d6');
-    assert.strictEqual(getBreathDice(8), '4d6');
-    assert.strictEqual(getBreathDice(20), '10d6');
+    // 5. Single Active Draconic Aura enforcement
+    const testPc = {
+      classes: [{ classType: 'dragon_shaman', level: 5 }],
+      activeBuffs: []
+    };
+    const updatePCBatch = (fn) => fn(testPc);
+
+    activateBuffByKey(testPc, 'draconic_aura_power', true, { updatePCBatch });
+    assert.strictEqual(testPc.activeBuffs.length, 1);
+    assert.strictEqual(testPc.activeBuffs[0].spellKey, 'draconic_aura_power');
+    assert.strictEqual(testPc.activeBuffs[0].effects[0].value, 2); // Lv 5 is +2
+
+    // Switching to another aura replaces the previous aura
+    activateBuffByKey(testPc, 'draconic_aura_vigor', true, { updatePCBatch });
+    assert.strictEqual(testPc.activeBuffs.length, 1, 'Only one Draconic Aura can be active simultaneously');
+    assert.strictEqual(testPc.activeBuffs[0].spellKey, 'draconic_aura_vigor');
   });
 
   test('Bug 6: Multi-Character Index Persistence in Local Storage', () => {

@@ -122,6 +122,11 @@ export function checkBuffConflict(pc, spellKey, customEffects = null) {
   let newEffects = [];
   let buffName = '';
 
+  if (spellKey && spellKey.startsWith('draconic_aura_')) {
+    const classBuff = CLASS_BUFFS.find(b => b.key === spellKey);
+    return { status: 'ok', buffName: classBuff?.name || spellKey };
+  }
+
   if (spellKey) {
     const classBuff = CLASS_BUFFS.find(b => b.key === spellKey);
     if (classBuff) {
@@ -337,7 +342,11 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
         }
 
         if (!Array.isArray(freshPc.activeBuffs)) freshPc.activeBuffs = [];
-        freshPc.activeBuffs = freshPc.activeBuffs.filter(b => b.spellKey !== key);
+        if (key.startsWith('draconic_aura_')) {
+          freshPc.activeBuffs = freshPc.activeBuffs.filter(b => !b.spellKey?.startsWith('draconic_aura_'));
+        } else {
+          freshPc.activeBuffs = freshPc.activeBuffs.filter(b => b.spellKey !== key);
+        }
         
         freshPc.activeBuffs.push({
           id: 'spell_' + key + '_' + Date.now(),
