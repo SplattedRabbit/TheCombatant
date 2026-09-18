@@ -168,6 +168,48 @@ export const ArmorSlot: React.FC<ArmorSlotProps> = ({
         </div>
       </div>
 
+      {/* Middle section: Speed & Defensive Profile */}
+      <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '2px', padding: '2px 0' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '4px',
+            fontSize: '6.5px',
+            color: 'var(--ink)',
+            background: 'rgba(0,0,0,0.02)',
+            padding: '2px 4px',
+            borderRadius: '2px',
+            border: '0.5px solid rgba(200, 169, 110, 0.25)',
+          }}
+          title={speedCategory === 'heavy' ? 'Heavy armor: Speed reduced, Run restricted to ×3' : speedCategory === 'medium' ? 'Medium armor: Speed reduced' : 'Light armor: Full movement speed'}
+        >
+          <span>🏃 Speed:</span>
+          <span style={{ fontWeight: 'bold' }}>{pc.speed ?? 30} ft</span>
+          <span style={{ fontSize: '5.5px', color: 'var(--inkm)' }}>
+            {speedCategory === 'heavy' ? '(Run ×3)' : speedCategory === 'medium' ? '(Run ×4)' : '(Full)'}
+          </span>
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-around',
+            fontSize: '6px',
+            color: 'var(--inkm)',
+            padding: '1px 0',
+          }}
+        >
+          <span title="Armor bonus protects when flat-footed">
+            🛡️ Flat: <b style={{ color: 'var(--ink)' }}>+{totalAC}</b>
+          </span>
+          <span title="Armor bonus does not protect against touch attacks">
+            Touch: <b style={{ color: 'var(--inkm)' }}>+0</b>
+          </span>
+        </div>
+      </div>
+
       {/* Bottom section: Tactical parameters (MaxDex, ACP, Spell Failure) */}
       <div
         style={{
@@ -189,7 +231,7 @@ export const ArmorSlot: React.FC<ArmorSlotProps> = ({
         </div>
         <div title="Armor Check Penalty">
           <span style={{ display: 'block', fontSize: '5.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>ACP</span>
-          <span style={{ fontWeight: 'bold', color: checkPenalty < 0 ? 'var(--red)' : 'var(--ink)' }}>{checkPenalty}</span>
+          <span style={{ fontWeight: 'bold', color: checkPenalty > 0 ? 'var(--red)' : 'var(--ink)' }}>{checkPenalty > 0 ? `-${checkPenalty}` : '0'}</span>
         </div>
         <div title="Arcane Spell Failure">
           <span style={{ display: 'block', fontSize: '5.5px', color: 'var(--inkl)', textTransform: 'uppercase' }}>Fail</span>
