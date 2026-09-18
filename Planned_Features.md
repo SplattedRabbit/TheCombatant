@@ -6,7 +6,18 @@ Dieses Dokument dient als zentrales Backlog und Tracking-Dokument für geplante 
 
 ## ✅ Zuletzt Abgeschlossen (Recent Releases)
 
-### 🎁 1. Theatrical Loot Reveal, Safe Roster Import & Session Join Sync (v6.9.2)
+### 🛡️ 1. Duale Rüstungs- & Schild-Ausrüstung, 4. ARPG-Tactical-Slot & Toast-Feedback (v6.9.3)
+- **Status:** `Abgeschlossen & Gemerged (v6.9.3)`
+- **Umfang:**
+  - **Duale Rüstung & Schild (RAW):** Gleichzeitiges Ausrüsten von Körperrüstung und Schild ohne gegenseitige Verdrängung via `isShieldItem(item)`; D&D 3.5e RAW AC-Stacking, MaxDex-Cap und kumulativer ACP; sicheres Ablegen des Schilds bei 2H-Waffen.
+  - **4. ARPG Tactical Slot (Body Armor):** Dedizierte Kachel im Kampftab mit Schnell-Ablage (`✕`), AC-Beitrag, MaxDex/ACP/Spell Failure und Bewegungsrate.
+  - **Taktischer Schildstoß (Shield Bash):** Dynamische `[ BASH +X ]` und `[ DMG +Y ]` Buttons im Off-Hand-Slot via `AttackEngine`.
+  - **Symmetrisches 5-Zonen-Raster & Typografie:** Vereinheitlichte Schriften (`var(--font-title)` / Cinzel), kein Deadspace, harmonisierte 18px Aktionsleiste.
+  - **Einheitliche Leerslot-Navigation:** Klick auf leere Kacheln öffnet direkt das passende Arsenal.
+  - **Ruhige Class-Ability-Leerkachel:** Informative Anzeige ohne Fake-Standard-Angriffe bei Klassen ohne Strike-Features.
+  - **Sticky Action Toasts:** Unaufdringliche Status-Toasts bei Item-Aktionen im Compendium und Ausrüstungs-Modal.
+
+### 🎁 2. Theatrical Loot Reveal, Safe Roster Import & Session Join Sync (v6.9.2)
 - **Status:** `Abgeschlossen (v6.9.2)`
 - **Umfang:**
   - **Theatrical Loot Reveal:** Immersive Schatztruhen-Animation bei DM-Beuteübergabe (Schatztruhen-Öffnung mit Partikeln).
