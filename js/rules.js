@@ -53,7 +53,9 @@ import {
   computeWizardBudget,
   getDomain,
   getSpellDomains,
-  isDomainSpellForPC
+  isDomainSpellForPC,
+  getPCDomains,
+  getDomainSpellsForPC
 } from './rules/RulesSpells.js';
 
 import {
@@ -174,6 +176,8 @@ export {
   getDomain,
   getSpellDomains,
   isDomainSpellForPC,
+  getPCDomains,
+  getDomainSpellsForPC,
   getEffectiveCasterLevel,
   getMaxSpellLevel,
   checkSpellKnownLimit,

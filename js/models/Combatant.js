@@ -30,6 +30,7 @@ import {
   getSneakAttackDiceCount
 } from './helpers/classes/CombatantClassFeatures.js';
 import { rebuildCombatantModifiers } from './helpers/modifiers/CombatantModifiers.js';
+import { getPCDomains } from '../data/domains-data.js';
 
 const uid = () => {
   return Date.now() + '-' + Math.random().toString(36).slice(2, 7);
@@ -200,6 +201,9 @@ export class Combatant {
     this.wizardSpecialization = p.wizardSpecialization || 'none';
     this.wizardProhibited1 = p.wizardProhibited1 || '';
     this.wizardProhibited2 = p.wizardProhibited2 || '';
+    this.clericDomains = Array.isArray(p.clericDomains) && p.clericDomains.length > 0
+      ? [...p.clericDomains]
+      : (this.classes.some(c => c.classType === 'cleric') ? getPCDomains(this) : []);
     this.deathScreenShown = !!p.deathScreenShown;
     this.bardicMusicExtra = p.bardicMusicExtra !== undefined ? parseInt(p.bardicMusicExtra) : 0;
     this.companionName = p.companionName || '';

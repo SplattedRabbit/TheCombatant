@@ -75,24 +75,21 @@ An evil cleric (or a neutral cleric of an evil deity) can spontaneously convert 
       actionType: 'Standard Action',
     });
 
-    // 2. Cleric Domains & Granted Powers
-    const clericDomains = Array.isArray(pc.clericDomains) ? pc.clericDomains : [];
-    if (clericDomains.length > 0 && DOMAINS_REGISTRY) {
-      clericDomains.forEach((dKey: string) => {
-        const dDef = DOMAINS_REGISTRY[dKey];
-        if (!dDef) return;
-
-        features.push({
-          id: `cleric_domain_${dKey}`,
-          name: `Domain: ${dDef.name}`,
-          source: `Cleric Lv.${cLvl}`,
-          category: 'passive',
-          typeLabel: 'Deity Domain',
-          summary: dDef.desc || dDef.grantedPower?.desc || `Granted domain power for ${dDef.name}.`,
-          rawRules: `**${dDef.name} Domain:**\n${dDef.desc || ''}\n\n**Granted Power:**\n${dDef.grantedPower?.desc || 'Granted domain power.'}\n\n**Domain Spells (1st–9th):**\n` +
-            Object.entries(dDef.spells || {}).map(([lvl, sp]) => `• Level ${lvl}: ${String(sp).replace(/_/g, ' ')}`).join('\n'),
-          actionType: 'Passive',
-        });
+    if (Array.isArray(pc.clericDomains)) {
+      pc.clericDomains.forEach((domId: string) => {
+        const dom = DOMAINS_REGISTRY[domId];
+        if (dom) {
+          features.push({
+            id: `cleric_domain_${domId}`,
+            name: `Domain: ${dom.name}`,
+            source: `Cleric Lv.${cLvl}`,
+            category: 'passive',
+            typeLabel: 'Domain Granted Power',
+            summary: dom.grantedPower.desc,
+            rawRules: dom.grantedPower.desc,
+            actionType: 'Passive',
+          });
+        }
       });
     }
   }

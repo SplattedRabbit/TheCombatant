@@ -54,6 +54,7 @@ export const GrimoireLevelGroup: React.FC<GrimoireLevelGroupProps> = ({
 
   const isSorc = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'sorcerer');
   const isBard = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'bard');
+
   let maxKnown: number | undefined = undefined;
   if (isSorc) {
     const cl = getEffectiveCasterLevel(pc, 'sorcerer');
@@ -114,9 +115,9 @@ export const GrimoireLevelGroup: React.FC<GrimoireLevelGroupProps> = ({
     return null;
   }
 
-  // Calculate empty slots for prepared casters
-  const totalPreparedCount = activeLevelSpells.length + spentLevelSpells.length;
-  const emptySlotCount = hasPrepared && !searchQuery ? Math.max(0, max - totalPreparedCount) : 0;
+  // Calculate empty slots for prepared casters (excluding domain spells which do not consume normal slots)
+  const regularPreparedCount = activeLevelSpells.filter((p: any) => !p.isDomain).length + spentLevelSpells.filter((p: any) => !p.isDomain).length;
+  const emptySlotCount = hasPrepared && !searchQuery ? Math.max(0, max - regularPreparedCount) : 0;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '3px' }}>
@@ -167,28 +168,32 @@ export const GrimoireLevelGroup: React.FC<GrimoireLevelGroupProps> = ({
       </div>
 
       {/* Active Ready Spells */}
-      {activeLevelSpells.map((item: any, idx: number) => (
-        <GrimoireSpellRow
-          key={item.id || `${item.spellKey}-${idx}`}
-          pc={pc}
-          item={item}
-          idx={idx}
-          lvl={lvl}
-          casterMod={casterMod}
-          remainingSlots={remaining}
-          hasPrepared={hasPrepared}
-          hasSpontaneous={hasSpontaneous}
-        />
-      ))}
+      {activeLevelSpells.map((item: any, idx: number) => {
+        return (
+          <GrimoireSpellRow
+            key={item.id || `${item.spellKey}-${idx}`}
+            pc={pc}
+            item={item}
+            idx={idx}
+            lvl={lvl}
+            casterMod={casterMod}
+            remainingSlots={remaining}
+            hasPrepared={hasPrepared}
+            hasSpontaneous={hasSpontaneous}
+            isDomainSlot={item.isDomain || false}
+          />
+        );
+      })}
 
       {/* Empty / Unfilled Slots */}
       {Array.from({ length: emptySlotCount }).map((_, emptyIdx) => {
-        const isSpecEmpty = hasSpecSlot && lvl >= 1 && totalPreparedCount + emptyIdx === max - 1;
+        const isSpecEmpty = hasSpecSlot && lvl >= 1 && regularPreparedCount + emptyIdx === max - 1;
         return (
           <GrimoireEmptySlotRow
             key={`empty-${emptyIdx}`}
             lvl={lvl}
             isSpecialistSlot={isSpecEmpty}
+            isDomainSlot={false}
             wizardSpecialization={wizardSpecialization}
             onClick={() => openPrepareSlotDialog(pc, lvl, onOpenCompendium)}
           />

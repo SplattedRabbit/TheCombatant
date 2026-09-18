@@ -10,7 +10,7 @@ import {
   DUSKBLADE_TABLE, BEGUILER_TABLE, CLASSES
 } from './RulesData.js';
 import { CombatSpells, getSpellSchoolCode, getSchoolCodeFromInput, getSchoolLabel } from '../spells.js';
-import { getDomain, getSpellDomains, isDomainSpellForPC } from '../data/domains-data.js';
+import { getDomain, getSpellDomains, isDomainSpellForPC, getPCDomains, getDomainSpellsForPC } from '../data/domains-data.js';
 import { getAblMod } from './RulesMath.js';
 
 export function getSpellClassLevels(spell) {
@@ -36,7 +36,7 @@ export function isWizardProhibitedSchool(spell, pc) {
   return schoolCode === prob1 || schoolCode === prob2;
 }
 
-export function getEffectiveCasterLevel(pc, classType) {
+export function getEffectiveCasterLevel(pc, classType, spell = null) {
   if (!pc || !Array.isArray(pc.classes)) return 0;
   const baseClass = pc.classes.find(cls => cls.classType === classType);
   if (!baseClass) return 0;
@@ -77,6 +77,24 @@ export function getEffectiveCasterLevel(pc, classType) {
       }
     }
   });
+
+  // Apply Domain-specific Caster Level bonuses (e.g. Good, Healing domains)
+  if (spell && classType === 'cleric' && Array.isArray(pc.clericDomains)) {
+    const isHealingDomain = pc.clericDomains.includes('healing');
+    const isGoodDomain = pc.clericDomains.includes('good');
+
+    const isHealingSpell = spell.school && (spell.school.includes('(Healing)') || spell.school.includes('(healing)'));
+    const isGoodSpell = (Array.isArray(spell.descriptors) && spell.descriptors.includes('Good')) || 
+                        (spell.components && spell.components.includes('[Good]'));
+
+    if (isHealingDomain && isHealingSpell) {
+      effectiveLevel += 1;
+    }
+    if (isGoodDomain && isGoodSpell) {
+      effectiveLevel += 1;
+    }
+  }
+
   return effectiveLevel;
 }
 
@@ -163,10 +181,7 @@ export function calculateMaxSpellSlots(pc) {
           classSlots += 1;
         }
 
-        // Cleric Domain bonus (+1 domain slot per level) - also ONLY applies to spell levels 1-9
-        if (c.classType === 'cleric' && lvl > 0 && base > 0) {
-          classSlots += 1;
-        }
+
 
         slots[lvl] += classSlots;
       }
@@ -181,29 +196,33 @@ function isSpellAllowedByUnlimitedClass(pc, spell) {
   const classLevels = getSpellClassLevels(spell);
 
   const isClassMatch = activeClasses.some(c => {
-    if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(c.classType)) return false;
-    if (['paladin', 'ranger'].includes(c.classType) && getEffectiveCasterLevel(pc, c.classType) < 4) return false;
-    const clMatch = classLevels.find(cl => cl.class === c.classType);
+    const cType = (c.classType || '').toLowerCase();
+    if (!['wizard', 'cleric', 'druid', 'paladin', 'ranger'].includes(cType)) return false;
+    if (['paladin', 'ranger'].includes(cType) && getEffectiveCasterLevel(pc, cType) < 4) return false;
+    const clMatch = classLevels.find(cl => (cl.class || '').toLowerCase() === cType);
     if (!clMatch) return false;
-    const maxLvl = getMaxSpellLevel(c.classType, getEffectiveCasterLevel(pc, c.classType));
+    const maxLvl = getMaxSpellLevel(cType, getEffectiveCasterLevel(pc, cType));
     return clMatch.level <= maxLvl;
   });
 
   if (isClassMatch) return true;
 
   // D&D 3.5e RAW: Cleric Domain spells from chosen domains are also granted without counting toward spontaneous known limits
-  const clericClass = activeClasses.find(c => c.classType === 'cleric');
-  if (clericClass && Array.isArray(pc.clericDomains) && pc.clericDomains.length > 0) {
-    const clericMaxLvl = getMaxSpellLevel('cleric', getEffectiveCasterLevel(pc, 'cleric'));
-    const spellId = spell.id || spell.spellKey;
-    return pc.clericDomains.some(domId => {
-      const dom = getDomain(domId);
-      if (!dom) return false;
-      for (const [lvlStr, sid] of Object.entries(dom.spells)) {
-        if (sid === spellId && Number(lvlStr) <= clericMaxLvl) return true;
-      }
-      return false;
-    });
+  const clericClass = activeClasses.find(c => (c.classType || '').toLowerCase() === 'cleric');
+  if (clericClass) {
+    const domains = getPCDomains(pc);
+    if (domains.length > 0) {
+      const clericMaxLvl = getMaxSpellLevel('cleric', getEffectiveCasterLevel(pc, 'cleric'));
+      const spellId = spell.id || spell.spellKey;
+      return domains.some(domId => {
+        const dom = getDomain(domId);
+        if (!dom) return false;
+        for (const [lvlStr, sid] of Object.entries(dom.spells)) {
+          if (sid === spellId && Number(lvlStr) <= clericMaxLvl) return true;
+        }
+        return false;
+      });
+    }
   }
 
   return false;
@@ -345,32 +364,36 @@ export function isSpellEligibleForPC(spell, pc) {
 
   // 1. Check standard class lists
   const isClassMatch = classLevels.some(cl => {
-    const pcClass = pc.classes.find(c => c.classType === cl.class);
+    const clClass = (cl.class || '').toLowerCase();
+    const pcClass = pc.classes.find(c => (c.classType || '').toLowerCase() === clClass);
     if (!pcClass) return false;
 
-    if (['paladin', 'ranger'].includes(cl.class) && getEffectiveCasterLevel(pc, cl.class) < 4) {
+    if (['paladin', 'ranger'].includes(clClass) && getEffectiveCasterLevel(pc, clClass) < 4) {
       return false;
     }
 
-    const maxLvl = getMaxSpellLevel(cl.class, getEffectiveCasterLevel(pc, cl.class));
+    const maxLvl = getMaxSpellLevel(clClass, getEffectiveCasterLevel(pc, clClass));
     return cl.level <= maxLvl;
   });
 
   if (isClassMatch) return true;
 
   // 2. D&D 3.5e RAW: Clerics gain access to domain spells from their chosen domains
-  const clericClass = pc.classes.find(c => c.classType === 'cleric');
-  if (clericClass && Array.isArray(pc.clericDomains) && pc.clericDomains.length > 0) {
-    const clericMaxLvl = getMaxSpellLevel('cleric', getEffectiveCasterLevel(pc, 'cleric'));
-    const spellId = spell.id || spell.spellKey;
-    return pc.clericDomains.some(domId => {
-      const dom = getDomain(domId);
-      if (!dom) return false;
-      for (const [lvlStr, sid] of Object.entries(dom.spells)) {
-        if (sid === spellId && Number(lvlStr) <= clericMaxLvl) return true;
-      }
-      return false;
-    });
+  const clericClass = pc.classes.find(c => (c.classType || '').toLowerCase() === 'cleric');
+  if (clericClass) {
+    const domains = getPCDomains(pc);
+    if (domains.length > 0) {
+      const clericMaxLvl = getMaxSpellLevel('cleric', getEffectiveCasterLevel(pc, 'cleric'));
+      const spellId = spell.id || spell.spellKey;
+      return domains.some(domId => {
+        const dom = getDomain(domId);
+        if (!dom) return false;
+        for (const [lvlStr, sid] of Object.entries(dom.spells)) {
+          if (sid === spellId && Number(lvlStr) <= clericMaxLvl) return true;
+        }
+        return false;
+      });
+    }
   }
 
   return false;
@@ -587,4 +610,4 @@ export function computeWizardBudget(pc, resolvedLearnedSpells) {
   };
 }
 
-export { getDomain, getSpellDomains, isDomainSpellForPC };
+export { getDomain, getSpellDomains, isDomainSpellForPC, getPCDomains, getDomainSpellsForPC };

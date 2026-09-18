@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { getSpellSchoolCode, getSchoolLabel, CombatSpells } from '@core/spells.js';
 import { SpellSlotCalculator } from '@core/rules/SpellSlotCalculator.js';
-import { getDomain } from '@core/rules.js';
+import { getDomain, getPCDomains } from '@core/rules.js';
+
 import { showCustomConfirm } from '@core/ui/components/dialogs.js';
 
 function findSpell(pc: any, key: string) {
@@ -10,7 +11,7 @@ function findSpell(pc: any, key: string) {
     return CombatSpells.REGISTRY[key];
   }
   if (Array.isArray(pc.customSpells)) {
-    const found = pc.customSpells.find((s: any) => s.id === key || s.nameDe === key);
+    const found = pc.customSpells.find((s: any) => s.id === key || s.nameDe === key || s.nameEn === key);
     if (found) return found;
   }
   return null;
@@ -18,27 +19,77 @@ function findSpell(pc: any, key: string) {
 
 interface PrepareSpellDialogProps {
   pc: any;
-  spellKey: string;
+  spellKey?: string;
+  defaultLevel?: number;
   onConfirm: () => void;
   onCancel: () => void;
 }
 
 export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
   pc,
-  spellKey,
+  spellKey: initialSpellKey,
+  defaultLevel,
   onConfirm,
   onCancel
 }) => {
-  const spell = findSpell(pc, spellKey);
+  const [selectedMeta, setSelectedMeta] = useState<string[]>([]);
+  const [specChecked, setSpecChecked] = useState<boolean>(false);
+
+  // Compute available spells if defaultLevel is provided
+  const availableSpells = React.useMemo(() => {
+    const learnedSet = new Set<string>(Array.isArray(pc.learnedSpells) ? pc.learnedSpells : []);
+    const isCleric = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'cleric');
+    if (isCleric) {
+      const domains = getPCDomains(pc);
+      domains.forEach((domId: string) => {
+        const domain = getDomain(domId);
+        if (domain && domain.spells) {
+          Object.values(domain.spells).forEach((sKey: any) => learnedSet.add(sKey as string));
+        }
+      });
+    }
+
+    const spellsList = Array.from(learnedSet)
+      .map((k: string) => {
+        const s = findSpell(pc, k);
+        return s ? { ...s, spellKey: k } : null;
+      })
+      .filter((s: any): s is NonNullable<typeof s> => s !== null);
+
+    spellsList.sort((a: any, b: any) => {
+      const lvlA = SpellSlotCalculator.getAdjustedSpellLevel(a, [], pc);
+      const lvlB = SpellSlotCalculator.getAdjustedSpellLevel(b, [], pc);
+      if (lvlA !== lvlB) return lvlA - lvlB;
+      const nameA = a.name || a.nameEn || '';
+      const nameB = b.name || b.nameEn || '';
+      return nameA.localeCompare(nameB);
+    });
+
+    if (defaultLevel !== undefined) {
+      const matching = spellsList.filter((s: any) => {
+        const lvl = SpellSlotCalculator.getAdjustedSpellLevel(s, [], pc);
+        return lvl <= defaultLevel;
+      });
+      if (matching.length > 0) return matching;
+    }
+    return spellsList;
+  }, [pc, defaultLevel]);
+
+  const [selectedSpellKey, setSelectedSpellKey] = useState<string>(() => {
+    if (initialSpellKey) return initialSpellKey;
+    if (availableSpells.length > 0) {
+      return availableSpells[0].spellKey || availableSpells[0].id || '';
+    }
+    return '';
+  });
+
+  const spell = findSpell(pc, selectedSpellKey);
   if (!spell) return null;
 
   const isWizard = pc.classes && pc.classes.some((c: any) => c.classType === 'wizard');
   const wizardSpecialization = pc.wizardSpecialization || 'none';
   const hasSpecSlot = isWizard && wizardSpecialization !== 'none';
   const schoolCode = getSpellSchoolCode(spell.school, spell.id, spell.name || spell.nameEn);
-
-  const isCleric = pc.classes && pc.classes.some((c: any) => c.classType === 'cleric');
-  const hasClericDomains = isCleric && Array.isArray(pc.clericDomains) && pc.clericDomains.length > 0;
 
   const metamagicFeats = [
     { id: 'extend_spell', label: 'Extend Spell (+1 Level)', cost: 1, name: 'Extended' },
@@ -48,40 +99,14 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
   ];
 
   const learnedFeats = metamagicFeats.filter((f) => pc.feats && pc.feats.some((feat: any) => feat.id === f.id));
-
-  const [selectedMeta, setSelectedMeta] = useState<string[]>([]);
-  const [specChecked, setSpecChecked] = useState<boolean>(false);
-  const [domainChecked, setDomainChecked] = useState<boolean>(false);
-
   const metaCost = selectedMeta.reduce((acc, featId) => {
     const feat = learnedFeats.find(f => f.id === featId);
     return acc + (feat ? feat.cost : 0);
   }, 0);
 
-  let baseLevel = spell.level;
-  if (baseLevel === undefined && Array.isArray(spell.classLevels)) {
-    const pcClassTypes = Array.isArray(pc.classes) ? pc.classes.map((c: any) => c.classType) : [];
-    const match = spell.classLevels.find((cl: any) => pcClassTypes.includes(cl.class));
-    if (match) {
-      baseLevel = match.level;
-    } else if (spell.classLevels.length > 0) {
-      baseLevel = spell.classLevels[0].level;
-    }
-  }
-  if (baseLevel === undefined) baseLevel = 0;
-
+  const baseLevel = SpellSlotCalculator.getAdjustedSpellLevel(spell, [], pc);
   const finalLevel = baseLevel + metaCost;
   const isTooHigh = finalLevel > 9;
-
-  // Domain slot checks
-  const matchingDomain = hasClericDomains && finalLevel >= 1 ? (pc.clericDomains as string[]).find((domId: string) => {
-    const dom = getDomain(domId);
-    return dom?.spells && dom.spells[finalLevel] === spellKey;
-  }) : null;
-  const domainObj = matchingDomain ? getDomain(matchingDomain) : null;
-  const isDomainCandidate = !!matchingDomain;
-  const domainPrepsCount = SpellSlotCalculator.countPreparedDomainSpellsAtLevel(pc, finalLevel);
-  const isDomainSlotFull = domainPrepsCount >= 1;
 
   const handleMetaToggle = (featId: string) => {
     setSelectedMeta(prev =>
@@ -92,7 +117,6 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
   const handleConfirm = () => {
     if (isTooHigh) return;
     const isSpec = hasSpecSlot && specChecked;
-    const isDomain = isDomainCandidate && domainChecked;
 
     const performPrep = () => {
       CombatState.updatePCBatch((freshPc: any) => {
@@ -101,13 +125,11 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
         }
         freshPc.preparedSpells.push({
           id: `prep_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
-          spellKey: spellKey,
+          spellKey: selectedSpellKey,
           preparedLevel: finalLevel,
           metamagic: selectedMeta,
           isSpecialist: isSpec,
-          isDomain: isDomain,
           isSpecialistSlot: isSpec,
-          isDomainSlot: isDomain,
           isUsed: false
         });
       });
@@ -169,7 +191,33 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '4px 0 8px' }} />
 
         <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--ink)', marginBottom: '2px', textAlign: 'center' }}>
-          {spell.name || spell.nameEn} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span>
+          {defaultLevel !== undefined && availableSpells.length > 0 ? (
+            <select
+              value={selectedSpellKey}
+              onChange={(e) => setSelectedSpellKey(e.target.value)}
+              style={{
+                fontSize: '9.5px',
+                padding: '2px 4px',
+                borderRadius: '3px',
+                border: '1px solid var(--pb)',
+                background: 'rgba(255, 255, 255, 0.9)',
+                color: 'var(--ink)',
+                maxWidth: '260px',
+                cursor: 'pointer'
+              }}
+            >
+              {availableSpells.map((s: any) => {
+                const sLvl = SpellSlotCalculator.getAdjustedSpellLevel(s, [], pc);
+                return (
+                  <option key={s.id || s.spellKey} value={s.id || s.spellKey}>
+                    {s.name || s.nameEn} (Lvl {sLvl} - {s.school})
+                  </option>
+                );
+              })}
+            </select>
+          ) : (
+            <>{spell.name || spell.nameEn} <span style={{ fontSize: '8px', fontWeight: 'normal', color: 'var(--inkl)', fontStyle: 'italic' }}>({spell.school})</span></>
+          )}
         </div>
         <div style={{ fontSize: '8px', color: 'var(--inkl)', textAlign: 'center', marginBottom: '10px' }}>
           Base Level: Level {baseLevel}
@@ -218,35 +266,7 @@ export const PrepareSpellDialog: React.FC<PrepareSpellDialogProps> = ({
           </div>
         )}
 
-        {hasClericDomains && finalLevel >= 1 && (
-          <div style={{ textAlign: 'left', marginBottom: '10px', borderTop: '0.5px solid rgba(200, 169, 110, 0.2)', paddingTop: '6px' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '8px', cursor: (isDomainCandidate && !isDomainSlotFull) ? 'pointer' : 'not-allowed', color: (isDomainCandidate && !isDomainSlotFull) ? 'var(--ink)' : 'var(--inkl)' }}>
-              <input
-                type="checkbox"
-                checked={domainChecked}
-                disabled={!isDomainCandidate || isDomainSlotFull}
-                onChange={(e) => setDomainChecked(e.target.checked)}
-                style={{ cursor: (isDomainCandidate && !isDomainSlotFull) ? 'pointer' : 'not-allowed', margin: 0 }}
-              />
-              <span>Prepare in Domain Slot {isDomainCandidate ? `(${domainObj?.name || 'Domain'} ${finalLevel})` : ''}</span>
-            </label>
-            {!isDomainCandidate && (
-              <div style={{ fontSize: '6.5px', color: 'var(--inkm)', fontStyle: 'italic', marginTop: '2px' }}>
-                Not a domain spell of your chosen domains at level {finalLevel}.
-              </div>
-            )}
-            {isDomainCandidate && isDomainSlotFull && (
-              <div style={{ fontSize: '6.5px', color: 'var(--red)', fontStyle: 'italic', marginTop: '2px' }}>
-                Domain slot for level {finalLevel} is already filled (1/1).
-              </div>
-            )}
-            {isDomainCandidate && !isDomainSlotFull && (
-              <div style={{ fontSize: '6.5px', color: 'var(--green, #2e7d32)', fontStyle: 'italic', marginTop: '2px' }}>
-                ✓ 1 Domain slot available for {domainObj?.name} domain.
-              </div>
-            )}
-          </div>
-        )}
+
 
         <div style={{ background: 'rgba(0,0,0,0.02)', border: '0.5px solid rgba(200, 169, 110, 0.2)', borderRadius: '2px', padding: '4px', textAlign: 'center', marginBottom: '12px', fontFamily: 'var(--font-title)', fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>
           Final Level: <span id="finalPrepLevelText">Level {finalLevel}</span>

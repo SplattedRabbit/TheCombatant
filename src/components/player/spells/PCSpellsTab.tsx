@@ -11,6 +11,7 @@ import { PCCompactGrimoireView } from './PCCompactGrimoireView';
 import { PCSpellLibraryPanel } from './PCSpellLibraryPanel';
 import { usePC } from '../../../context/PCContext';
 import { WizardSpecializationDialog } from '../../dialogs/BaseDialogs';
+import { getDomain, getMaxSpellLevel, getEffectiveCasterLevel, getPCDomains } from '@core/rules.js';
 
 export const PCSpellsTab: React.FC = () => {
   const pc = usePC();
@@ -95,6 +96,38 @@ export const PCSpellsTab: React.FC = () => {
           if (freshPc.spellSlots?.[lvl]) {
             freshPc.spellSlots[lvl].used = 0;
           }
+        }
+
+        // Re-inject Domain spells
+        if (Array.isArray(freshPc.preparedSpells)) {
+          freshPc.preparedSpells = freshPc.preparedSpells.filter((p: any) => !p.isDomain);
+        } else {
+          freshPc.preparedSpells = [];
+        }
+
+        const isCleric = Array.isArray(freshPc.classes) && freshPc.classes.some((c: any) => c.classType === 'cleric');
+        if (isCleric) {
+          const domains = getPCDomains(freshPc);
+          domains.forEach((domId: string) => {
+            const dom = getDomain(domId);
+            if (dom && dom.spells) {
+              const clericMaxLvl = getMaxSpellLevel('cleric', getEffectiveCasterLevel(freshPc, 'cleric'));
+              for (const [lvlStr, spellKey] of Object.entries(dom.spells)) {
+                const spLvl = Number(lvlStr);
+                if (spLvl <= clericMaxLvl) {
+                  freshPc.preparedSpells.push({
+                    id: `prep_dom_${domId}_${spLvl}_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+                    spellKey,
+                    preparedLevel: spLvl,
+                    metamagic: [],
+                    isSpecialist: false,
+                    isDomain: true,
+                    isUsed: false
+                  });
+                }
+              }
+            }
+          });
         }
       });
 

@@ -9,6 +9,7 @@ import { getSchoolLabel } from '@core/spells.js';
 interface GrimoireEmptySlotRowProps {
   lvl: number;
   isSpecialistSlot: boolean;
+  isDomainSlot?: boolean;
   wizardSpecialization: string;
   onClick: () => void;
 }
@@ -16,6 +17,7 @@ interface GrimoireEmptySlotRowProps {
 export const GrimoireEmptySlotRow: React.FC<GrimoireEmptySlotRowProps> = ({
   lvl,
   isSpecialistSlot,
+  isDomainSlot,
   wizardSpecialization,
   onClick,
 }) => {
@@ -51,7 +53,7 @@ export const GrimoireEmptySlotRow: React.FC<GrimoireEmptySlotRowProps> = ({
       >
         <span>⚪</span>
         <span>
-          Empty Level {lvl} Slot {isSpecialistSlot ? `(⭐ Specialist: ${getSchoolLabel(wizardSpecialization)})` : ''}
+          Empty Level {lvl} Slot {isSpecialistSlot ? `(⭐ Specialist: ${getSchoolLabel(wizardSpecialization)})` : isDomainSlot ? `(⛪ Domain Spell)` : ''}
         </span>
       </span>
 

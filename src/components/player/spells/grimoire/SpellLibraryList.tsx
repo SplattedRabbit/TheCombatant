@@ -13,7 +13,8 @@ import {
   showCastSpontaneousSpellDialog,
 } from '@core/ui/components/dialogs.js';
 import { SORCERER_KNOWN_TABLE, BARD_KNOWN_TABLE, ASSASSIN_KNOWN_TABLE } from '@core/rules/RulesData.js';
-import { getEffectiveCasterLevel, getMaxSpellLevel } from '@core/rules/RulesSpells.js';
+import { getEffectiveCasterLevel, getMaxSpellLevel, getDomain, getPCDomains } from '@core/rules/RulesSpells.js';
+import { SpellSlotCalculator } from '@core/rules/SpellSlotCalculator.js';
 import { computeWizardBudget } from '../wizardBudget';
 
 interface SpellLibraryListProps {
@@ -71,13 +72,27 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
     levelsToRender.push(i);
   }
 
-  // Learned Spells
-  const learnedKeys: string[] = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
+  // Learned Spells (including domain spells for clerics)
   const learnedSpells = useMemo(() => {
-    return learnedKeys
-      .map((k) => findSpell(pc, k))
+    const learnedKeysSet = new Set<string>(Array.isArray(pc.learnedSpells) ? pc.learnedSpells : []);
+    const isCleric = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'cleric');
+    if (isCleric) {
+      const domains = getPCDomains(pc);
+      domains.forEach((domId: string) => {
+        const domain = getDomain(domId);
+        if (domain && domain.spells) {
+          Object.values(domain.spells).forEach((sKey: any) => learnedKeysSet.add(sKey as string));
+        }
+      });
+    }
+
+    return Array.from(learnedKeysSet)
+      .map((k) => {
+        const s = findSpell(pc, k);
+        return s ? { ...s, id: k } : null;
+      })
       .filter((s): s is NonNullable<typeof s> => s !== null && s !== undefined);
-  }, [pc, learnedKeys]);
+  }, [pc, pc.learnedSpells, pc.clericDomains, pc.classes]);
 
   // Quota and capacity calculations (D&D 3.5e RAW)
   const quotaStats = useMemo(() => {
@@ -109,7 +124,10 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
     let totalMaxSpontaneous = 0;
 
     for (let lvl = minLvl; lvl <= maxLvl; lvl++) {
-      const countAtLvl = learnedSpells.filter((s) => s.level === lvl).length;
+      const countAtLvl = learnedSpells.filter((s) => {
+        const sLvl = SpellSlotCalculator.getAdjustedSpellLevel(s, [], pc);
+        return sLvl === lvl;
+      }).length;
       let maxKnown: number | undefined = undefined;
       let isSpontaneous = false;
 
@@ -151,19 +169,21 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
 
   const sortedSpells = useMemo(() => {
     return [...learnedSpells].sort((a, b) => {
-      if ((a.level ?? 0) !== (b.level ?? 0)) {
-        return (a.level ?? 0) - (b.level ?? 0);
+      const lvlA = SpellSlotCalculator.getAdjustedSpellLevel(a, [], pc);
+      const lvlB = SpellSlotCalculator.getAdjustedSpellLevel(b, [], pc);
+      if (lvlA !== lvlB) {
+        return lvlA - lvlB;
       }
       const nameA = a.name || a.nameEn || '';
       const nameB = b.name || b.nameEn || '';
       return nameA.localeCompare(nameB);
     });
-  }, [learnedSpells]);
+  }, [learnedSpells, pc]);
 
   const filteredSpells = useMemo(() => {
     let list = sortedSpells;
     if (activeLevelFilter !== 'all') {
-      list = list.filter((s) => s.level === activeLevelFilter);
+      list = list.filter((s) => SpellSlotCalculator.getAdjustedSpellLevel(s, [], pc) === activeLevelFilter);
     }
     if (searchQuery) {
       const q = searchQuery.toLowerCase().trim();
@@ -174,7 +194,7 @@ export const SpellLibraryList: React.FC<SpellLibraryListProps> = ({ pc, onOpenCo
       });
     }
     return list;
-  }, [sortedSpells, activeLevelFilter, searchQuery]);
+  }, [sortedSpells, activeLevelFilter, searchQuery, pc]);
 
   // Actions
   const handlePrepareSpell = (spellKey: string) => {

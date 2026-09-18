@@ -4,6 +4,8 @@
  */
 
 import { CombatState } from '@core/state.js';
+import { CombatRules, isDomainSpellForPC, getDomain, getPCDomains } from '@core/rules.js';
+import { SpellSlotCalculator } from '@core/rules/SpellSlotCalculator.js';
 import { findSpell } from '../PCSpellbookTab';
 import {
   showCustomAlert,
@@ -61,6 +63,18 @@ export function castPreparedSpell(pc: any, prepId: string) {
   if (castPrep) {
     const spell = findSpell(pc, castPrep.spellKey);
     if (spell) {
+      let bestCL = 0;
+      if (Array.isArray(pc.classes)) {
+         pc.classes.forEach((cls: any) => {
+            const classMatch = (spell.classLevels || []).find((c: any) => c.class === cls.classType);
+            const isDomainSpell = cls.classType === 'cleric' && isDomainSpellForPC(spell.id || castPrep.spellKey, pc);
+            if (classMatch || isDomainSpell) {
+               const cl = CombatRules.getEffectiveCasterLevel(pc, cls.classType, spell);
+               if (cl > bestCL) bestCL = cl;
+            }
+         });
+      }
+
       if (spell.effects && spell.effects.length > 0) {
         showCastSuccessDialog(pc, spell, castPrep.spellKey, castPrep.metamagic || [], () => {});
       } else {
@@ -72,6 +86,7 @@ export function castPreparedSpell(pc: any, prepId: string) {
             </div>
             • <strong>School:</strong> ${spell.school}<br>
             • <strong>Level:</strong> Level ${spell.level}<br>
+            • <strong>Caster Level:</strong> ${bestCL > 0 ? bestCL : '—'}<br>
             • <strong>Range:</strong> ${spell.range || 'Touch'}<br>
             • <strong>Saving Throw:</strong> ${spell.savingThrow || 'None'}<br>
           </div>`
@@ -125,7 +140,19 @@ export function castSpontaneousSpell(pc: any, spellKey: string) {
  * Opens inline dialog to prepare a spell into a slot.
  */
 export function openPrepareSlotDialog(pc: any, defaultLevel?: number, onOpenCompendium?: () => void) {
-  const learned = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
+  const learnedSet = new Set<string>(Array.isArray(pc.learnedSpells) ? pc.learnedSpells : []);
+  
+  if (Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'cleric')) {
+    const domains = getPCDomains(pc);
+    domains.forEach((dKey: string) => {
+      const domain = getDomain(dKey);
+      if (domain && domain.spells) {
+        Object.values(domain.spells).forEach((sKey: any) => learnedSet.add(sKey as string));
+      }
+    });
+  }
+  
+  const learned = Array.from(learnedSet);
   if (learned.length === 0) {
     showCustomConfirm(
       'Empty Spellbook',
@@ -139,12 +166,24 @@ export function openPrepareSlotDialog(pc: any, defaultLevel?: number, onOpenComp
   if (defaultLevel !== undefined) {
     const match = learned.find((k: string) => {
       const sp = findSpell(pc, k);
-      return sp && sp.level === defaultLevel;
+      if (!sp) return false;
+      const spLvl = SpellSlotCalculator.getAdjustedSpellLevel(sp, [], pc);
+      return spLvl === defaultLevel;
     });
-    if (match) candidateKey = match;
+    if (match) {
+      candidateKey = match;
+    } else {
+      const lowerMatch = learned.find((k: string) => {
+        const sp = findSpell(pc, k);
+        if (!sp) return false;
+        const spLvl = SpellSlotCalculator.getAdjustedSpellLevel(sp, [], pc);
+        return spLvl <= defaultLevel;
+      });
+      if (lowerMatch) candidateKey = lowerMatch;
+    }
   }
 
-  showPrepareSpellDialog(pc, candidateKey, () => {});
+  showPrepareSpellDialog(pc, candidateKey, () => {}, defaultLevel);
 }
 
 /**

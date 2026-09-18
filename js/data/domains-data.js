@@ -4,6 +4,8 @@
  * @exports   DOMAINS_REGISTRY, getDomain, getSpellDomains, isSpellInDomain, isDomainSpellForPC, getDomainSpellsForPC
  */
 
+import { getDeity } from './deities-data.js';
+
 export const DOMAINS_REGISTRY = {
   air: {
     id: 'air',
@@ -508,14 +510,37 @@ export function isSpellInDomain(spellKey, domainId, targetLevel = null) {
 }
 
 /**
+ * Returns the effective domain keys for a PC, falling back to deity domains or default cleric domains if needed.
+ * @param {object} pc
+ * @returns {string[]}
+ */
+export function getPCDomains(pc) {
+  if (!pc) return [];
+  if (Array.isArray(pc.clericDomains) && pc.clericDomains.length > 0) {
+    return pc.clericDomains;
+  }
+  const isCleric = Array.isArray(pc.classes) && pc.classes.some(c => c.classType === 'cleric');
+  if (isCleric) {
+    const deityKey = (pc.deity || 'none').toLowerCase();
+    const deity = getDeity(deityKey);
+    if (deity && deity.id !== 'none' && Array.isArray(deity.domains) && deity.domains.length >= 2) {
+      return [deity.domains[0], deity.domains[1]];
+    }
+    return ['good', 'healing'];
+  }
+  return [];
+}
+
+/**
  * Checks if a spell is a domain spell available to a PC based on their chosen domains (pc.clericDomains).
  * @param {string} spellKey
  * @param {object} pc
  * @returns {boolean}
  */
 export function isDomainSpellForPC(spellKey, pc) {
-  if (!pc || !Array.isArray(pc.clericDomains) || pc.clericDomains.length === 0) return false;
-  return pc.clericDomains.some(domId => isSpellInDomain(spellKey, domId));
+  const domains = getPCDomains(pc);
+  if (domains.length === 0) return false;
+  return domains.some(domId => isSpellInDomain(spellKey, domId));
 }
 
 /**
@@ -525,9 +550,10 @@ export function isDomainSpellForPC(spellKey, pc) {
  * @returns {Array<{ spellId: string, domainId: string, level: number }>}
  */
 export function getDomainSpellsForPC(pc, maxSpellLevel = 9) {
-  if (!pc || !Array.isArray(pc.clericDomains) || pc.clericDomains.length === 0) return [];
+  const domains = getPCDomains(pc);
+  if (domains.length === 0) return [];
   const results = [];
-  for (const domId of pc.clericDomains) {
+  for (const domId of domains) {
     const dom = getDomain(domId);
     if (!dom) continue;
     for (let lvl = 1; lvl <= maxSpellLevel; lvl++) {
@@ -539,3 +565,4 @@ export function getDomainSpellsForPC(pc, maxSpellLevel = 9) {
   }
   return results;
 }
+

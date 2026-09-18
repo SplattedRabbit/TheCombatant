@@ -15,7 +15,10 @@ import {
   SORCERER_KNOWN_TABLE,
   BARD_KNOWN_TABLE,
   getEffectiveCasterLevel,
+  getDomain,
+  getPCDomains,
 } from '@core/rules.js';
+import { SpellSlotCalculator } from '@core/rules/SpellSlotCalculator.js';
 
 interface PCCompactGrimoireViewProps {
   pc: any;
@@ -127,14 +130,28 @@ export const PCCompactGrimoireView: React.FC<PCCompactGrimoireViewProps> = ({
     const sorcRow = isSorc ? (SORCERER_KNOWN_TABLE[Math.max(1, Math.min(20, sorcCL))] || []) : [];
     const bardRow = isBard ? (BARD_KNOWN_TABLE[Math.max(1, Math.min(20, bardCL))] || []) : [];
 
-    const learnedKeys: string[] = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
-    const learnedSpells = learnedKeys
+    const learnedKeysSet = new Set<string>(Array.isArray(pc.learnedSpells) ? pc.learnedSpells : []);
+    const isCleric = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'cleric');
+    if (isCleric) {
+      const domains = getPCDomains(pc);
+      domains.forEach((domId: string) => {
+        const domain = getDomain(domId);
+        if (domain && domain.spells) {
+          Object.values(domain.spells).forEach((sKey: any) => learnedKeysSet.add(sKey as string));
+        }
+      });
+    }
+
+    const learnedSpells = Array.from(learnedKeysSet)
       .map((k) => findSpell(pc, k))
       .filter((s): s is NonNullable<typeof s> => s !== null && s !== undefined);
 
     const stats: Record<number, { count: number; maxKnown?: number; isSpontaneous: boolean }> = {};
     for (let lvl = minLvl; lvl <= maxLvl; lvl++) {
-      const countAtLvl = learnedSpells.filter((s) => s.level === lvl).length;
+      const countAtLvl = learnedSpells.filter((s) => {
+        const sLvl = SpellSlotCalculator.getAdjustedSpellLevel(s, [], pc);
+        return sLvl === lvl;
+      }).length;
       let maxKnown: number | undefined = undefined;
       let isSpontaneous = false;
       if (isSorc && sorcRow[lvl] !== undefined) {
