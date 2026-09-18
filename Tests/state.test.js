@@ -76,3 +76,100 @@ test('state-core - local PC is removed from combatants when hosting starts', () 
   updateSession(false, 'choice', '');
   s.mode = 'choice';
 });
+
+test('CombatState - loadSampleData choice validation', async () => {
+  const { CombatState } = await import('../js/state.js');
+  const state = CombatState.getState();
+  state.session = { role: 'client' };
+  
+  // Set an active PC to overwrite
+  state.combatants = [{ id: 'active_pc_id', name: 'Held', type: 'p' }];
+  
+  // 1. Wizard level 10
+  CombatState.loadSampleData('wizard_lvl10');
+  const wizard = CombatState.getActivePC();
+  assert.strictEqual(wizard.name, 'Lysara the Exalted');
+  assert.strictEqual(wizard.level, 10);
+  assert.strictEqual(wizard.classType, 'wizard');
+  assert.strictEqual(wizard.familiarType, 'cat');
+  assert.strictEqual(wizard.familiarName, 'Cookie');
+  assert.strictEqual(wizard.preparedSpells.length, 6);
+
+  // 2. Ranger level 10
+  CombatState.loadSampleData('ranger_lvl10');
+  const ranger = CombatState.getActivePC();
+  assert.strictEqual(ranger.name, 'Gildor Windrunner');
+  assert.strictEqual(ranger.level, 10);
+  assert.strictEqual(ranger.classType, 'ranger');
+  assert.strictEqual(ranger.companionType, 'wolf');
+  assert.strictEqual(ranger.companionName, 'Borko');
+
+  // 3. Paladin level 10
+  CombatState.loadSampleData('paladin_lvl10');
+  const paladin = CombatState.getActivePC();
+  assert.strictEqual(paladin.name, 'Sir Valerius');
+  assert.strictEqual(paladin.level, 10);
+  assert.strictEqual(paladin.classType, 'paladin');
+  assert.strictEqual(paladin.dailyAbilities.length, 3);
+
+  // Test Host/Solo mode loading all three characters + enemies
+  state.session = null; // solo mode
+  CombatState.loadSampleData('party_lvl10');
+  assert.strictEqual(state.combatants.length, 6);
+  assert.ok(state.combatants.some(c => c.name === 'Lysara the Exalted'), 'Should contain wizard');
+  assert.ok(state.combatants.some(c => c.name === 'Gildor Windrunner'), 'Should contain ranger');
+  assert.ok(state.combatants.some(c => c.name === 'Sir Valerius'), 'Should contain paladin');
+  assert.ok(state.combatants.some(c => c.name === 'Young Red Dragon'), 'Should contain red dragon');
+});
+
+test('CombatState - Companion and Familiar Stats Synchronization', async () => {
+  const { CombatState } = await import('../js/state.js');
+  const state = CombatState.getState();
+  state.combatants = [];
+
+  // Add Ranger Gildor
+  const gildor = CombatState.addCombatant({
+    id: 'gildor_test',
+    name: 'Gildor Windläufer',
+    type: 'p',
+    hp: 75,
+    maxHP: 75,
+    init: 8,
+    companionType: 'wolf',
+    companionName: 'Borko',
+    companionHP: 26,
+    companionMaxHP: 26
+  });
+
+  // Recall Borko
+  CombatState.addCombatant({
+    id: 'gildor_test-companion',
+    name: 'Borko',
+    type: 'n',
+    hp: 26,
+    maxHP: 26,
+    init: 8
+  });
+
+  // Verify Borko is added
+  assert.ok(state.combatants.some(c => c.id === 'gildor_test-companion'));
+
+  // 1. DM updates Borko's HP (direct edit)
+  CombatState.updateCombatantNumber('gildor_test-companion', 'hp', 18);
+  
+  // Verify synchronization back to Gildor's PC object
+  assert.strictEqual(gildor.companionHP, 18, 'Gildor companionHP should sync to 18');
+
+  // 2. Client updates companion HP (simulated via mergeIncomingPC)
+  const updatedGildorData = JSON.parse(JSON.stringify(gildor));
+  updatedGildorData.companionHP = 22;
+  updatedGildorData.companionName = 'Borko der Starke';
+
+  CombatState.mergeIncomingPC(updatedGildorData);
+
+  // Verify companion combatant in encounter got updated
+  const updatedBorko = state.combatants.find(c => c.id === 'gildor_test-companion');
+  assert.strictEqual(updatedBorko.hp, 22, 'Borko HP combatant should sync to 22');
+  assert.strictEqual(updatedBorko.name, 'Borko der Starke', 'Borko Name combatant should sync to Borko der Starke');
+});
+

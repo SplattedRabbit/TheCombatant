@@ -106,3 +106,9 @@ test('PCCompendiumTab - getEligibleSpellLevelsForPC returns eligible spell level
   const wizardLevels = getEligibleSpellLevelsForPC(pcWizard);
   assert.deepEqual(wizardLevels, [0, 1, 2]);
 });
+
+test('DamageChoiceDialog export and presence', async () => {
+  const mod = await import('../js/ui/dialogs/DamageChoiceDialog.js');
+  assert.strictEqual(typeof mod.showDamageChoiceDialog, 'function');
+});
+

@@ -324,3 +324,26 @@ test('CombatRules - Racial Skill and Saving Throw bonuses are applied correctly'
   assert.strictEqual(pcHalfling.ref.getValue(), 4, 'Halbling sollte +1 Volksbonus auf REF erhalten (+1 Dex-Bonus)');
   assert.strictEqual(pcHalfling.wil.getValue(), 3, 'Halbling sollte +1 Volksbonus auf WIL erhalten');
 });
+
+test('Animal Companion - Scaling rules (Wolf at Level 1 and 6)', async () => {
+  const { CompanionRules } = await import('../js/rules/CompanionRules.js');
+
+  // Level 1 Wolf (no scaling)
+  const wolfLvl1 = CompanionRules.getCompanionBaseStats('wolf', 1);
+  assert.ok(wolfLvl1, 'Wolf stats should be defined');
+  assert.strictEqual(wolfLvl1.ac, 14, 'Wolf AC at level 1 should be 14');
+  assert.strictEqual(wolfLvl1.str, 13, 'Wolf Str at level 1 should be 13');
+  assert.strictEqual(wolfLvl1.maxHP, 13, 'Wolf Max HP at level 1 should be 13');
+  assert.strictEqual(wolfLvl1.attacks[0].bonus, 3, 'Wolf bite bonus at level 1 should be +3');
+  assert.strictEqual(wolfLvl1.attacks[0].damage, '1d6+1', 'Wolf bite damage at level 1 should be 1d6+1');
+
+  // Level 6 Wolf (+4 HD, +4 Natural Armor, +2 Str/Dex)
+  const wolfLvl6 = CompanionRules.getCompanionBaseStats('wolf', 6);
+  assert.ok(wolfLvl6, 'Wolf stats should be defined at level 6');
+  assert.strictEqual(wolfLvl6.ac, 18, `Wolf AC at level 6 should be 18, but was ${wolfLvl6.ac}`);
+  assert.strictEqual(wolfLvl6.str, 15, `Wolf Str at level 6 should be 15, but was ${wolfLvl6.str}`);
+  assert.strictEqual(wolfLvl6.maxHP, 39, `Wolf Max HP at level 6 should be 39, but was ${wolfLvl6.maxHP}`);
+  assert.strictEqual(wolfLvl6.attacks[0].bonus, 7, `Wolf bite bonus at level 6 should be +7, but was +${wolfLvl6.attacks[0].bonus}`);
+  assert.strictEqual(wolfLvl6.attacks[0].damage, '1d6+3', `Wolf bite damage at level 6 should be 1d6+3, but was ${wolfLvl6.attacks[0].damage}`);
+});
+

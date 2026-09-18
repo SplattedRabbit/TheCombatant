@@ -1,0 +1,673 @@
+{
+  "mode": "player",
+  "meta": {
+    "begegnung": "",
+    "ort": "",
+    "xpBudget": "",
+    "xpVerteilt": "",
+    "sitzung": ""
+  },
+  "combatants": [
+    {
+      "id": "1788420222496-snyn6",
+      "name": "Corvin Nachtschatten",
+      "type": "p",
+      "init": 0,
+      "hp": 55,
+      "maxHP": 55,
+      "ac": {
+        "base": 10,
+        "modifiers": [
+          {
+            "value": 1,
+            "type": "deflection",
+            "source": "Schutzring +1",
+            "isItem": true
+          },
+          {
+            "value": 1,
+            "type": "natural_enhancement",
+            "source": "Amulett der natürlichen Rüstung +1",
+            "isItem": true
+          },
+          {
+            "value": 3,
+            "type": "untyped",
+            "source": "Geschicklichkeits-Modifikator",
+            "isClass": true
+          },
+          {
+            "value": 4,
+            "type": "armor",
+            "source": "Mithral-Kettenhemd +1",
+            "isClass": true
+          },
+          {
+            "value": 1,
+            "type": "enhancement",
+            "source": "Mithral-Kettenhemd +1 (Magisch)",
+            "isClass": true
+          }
+        ]
+      },
+      "bw": 40,
+      "baseBw": 30,
+      "conditions": [],
+      "str": {
+        "base": 8,
+        "modifiers": []
+      },
+      "dex": {
+        "base": 16,
+        "modifiers": []
+      },
+      "con": {
+        "base": 12,
+        "modifiers": []
+      },
+      "int": {
+        "base": 18,
+        "modifiers": []
+      },
+      "wis": {
+        "base": 10,
+        "modifiers": []
+      },
+      "cha": {
+        "base": 8,
+        "modifiers": []
+      },
+      "iniMisc": 4,
+      "rawInit": 0,
+      "classType": "multiclass",
+      "level": 12,
+      "classes": [
+        {
+          "classType": "rogue",
+          "level": 3
+        },
+        {
+          "classType": "wizard",
+          "level": 5
+        },
+        {
+          "classType": "arcane_trickster",
+          "level": 3
+        },
+        {
+          "classType": "barbarian",
+          "level": 1
+        }
+      ],
+      "baseZa": {
+        "base": 5,
+        "modifiers": []
+      },
+      "baseRef": {
+        "base": 7,
+        "modifiers": []
+      },
+      "baseWil": {
+        "base": 8,
+        "modifiers": []
+      },
+      "za": {
+        "base": 5,
+        "modifiers": [
+          {
+            "value": 1,
+            "type": "untyped",
+            "source": "Konstitutions-Modifikator",
+            "isClass": true
+          }
+        ]
+      },
+      "ref": {
+        "base": 7,
+        "modifiers": [
+          {
+            "value": 3,
+            "type": "untyped",
+            "source": "Geschicklichkeits-Modifikator",
+            "isClass": true
+          }
+        ]
+      },
+      "wil": {
+        "base": 8,
+        "modifiers": [
+          {
+            "value": 0,
+            "type": "untyped",
+            "source": "Weisheits-Modifikator",
+            "isClass": true
+          }
+        ]
+      },
+      "bab": {
+        "base": 6,
+        "modifiers": []
+      },
+      "zaMisc": 0,
+      "refMisc": 0,
+      "wilMisc": 0,
+      "acTouch": {
+        "base": 10,
+        "modifiers": [
+          {
+            "value": 1,
+            "type": "deflection",
+            "source": "Schutzring +1",
+            "isItem": true
+          },
+          {
+            "value": 3,
+            "type": "untyped",
+            "source": "Geschicklichkeits-Modifikator",
+            "isClass": true
+          }
+        ]
+      },
+      "acFlat": {
+        "base": 10,
+        "modifiers": [
+          {
+            "value": 1,
+            "type": "deflection",
+            "source": "Schutzring +1",
+            "isItem": true
+          },
+          {
+            "value": 1,
+            "type": "natural_enhancement",
+            "source": "Amulett der natürlichen Rüstung +1",
+            "isItem": true
+          },
+          {
+            "value": 4,
+            "type": "armor",
+            "source": "Mithral-Kettenhemd +1",
+            "isClass": true
+          },
+          {
+            "value": 1,
+            "type": "enhancement",
+            "source": "Mithral-Kettenhemd +1 (Magisch)",
+            "isClass": true
+          }
+        ]
+      },
+      "sr": 0,
+      "weapons": [
+        {
+          "id": "1788433789829-ldrfd",
+          "name": "Meisterwerk-Rapier",
+          "type": "rapier",
+          "enhancement": 0,
+          "attackBonus": "",
+          "isKeen": false,
+          "extraDamage": "",
+          "extraDamageDice": "",
+          "extraDamageType": "",
+          "strengthRating": 0,
+          "gripOverride": "",
+          "damageDiceOverride": "",
+          "critOverride": "",
+          "isEquipped": true,
+          "hand": "main",
+          "isDoubleWielded": false
+        },
+        {
+          "id": "1788433789829-ljb91",
+          "name": "Handarmbrust +1",
+          "type": "hand_crossbow",
+          "enhancement": 1,
+          "attackBonus": "",
+          "isKeen": false,
+          "extraDamage": "",
+          "extraDamageDice": "",
+          "extraDamageType": "",
+          "strengthRating": 0,
+          "gripOverride": "",
+          "damageDiceOverride": "",
+          "critOverride": "",
+          "isEquipped": false,
+          "hand": "main",
+          "isDoubleWielded": false
+        }
+      ],
+      "armors": [
+        {
+          "id": "1788433789829-0cl5o",
+          "name": "Mithral-Kettenhemd +1",
+          "type": "chain_shirt",
+          "enhancement": 1,
+          "isEquipped": true,
+          "armorBonusOverride": "",
+          "maxDexOverride": 6,
+          "checkPenaltyOverride": "",
+          "spellFailureOverride": ""
+        }
+      ],
+      "items": [
+        {
+          "id": "item_tc677irt4",
+          "name": "Schutzring +1",
+          "slot": "ring1",
+          "isEquipped": true,
+          "effects": [
+            {
+              "type": "ac",
+              "target": "deflection",
+              "value": 1,
+              "bonusType": "deflection",
+              "condition": ""
+            }
+          ]
+        },
+        {
+          "id": "item_2rs0or7l6",
+          "name": "Amulett der natürlichen Rüstung +1",
+          "slot": "neck",
+          "isEquipped": true,
+          "effects": [
+            {
+              "type": "ac",
+              "target": "natural",
+              "value": 1,
+              "bonusType": "natural_enhancement",
+              "condition": ""
+            }
+          ]
+        },
+        {
+          "id": "item_d6rtkb2e6",
+          "name": "Potion of Cure Serious Wounds",
+          "slot": "slotless",
+          "isEquipped": false,
+          "effects": [
+            {
+              "type": "attribute",
+              "target": "str",
+              "value": 0,
+              "bonusType": "enhancement",
+              "condition": ""
+            }
+          ],
+          "description": "Heals 3d8+5 hit points."
+        },
+        {
+          "id": "item_2zvmjkapg",
+          "name": "Potion of Greater Invisibility",
+          "slot": "slotless",
+          "isEquipped": false,
+          "effects": [
+            {
+              "type": "attribute",
+              "target": "str",
+              "value": 0,
+              "bonusType": "enhancement",
+              "condition": ""
+            }
+          ],
+          "activation": {
+            "actionType": "standard",
+            "costType": "charges",
+            "cost": 1,
+            "effectDescription": "Invisibility that remains active when attacking for 1 minute",
+            "appliedBuffKey": "greater_invisibility"
+          }
+        },
+        {
+          "id": "item_mwes27b8z",
+          "name": "Scroll of Scorching Ray (CL 7)",
+          "slot": "slotless",
+          "isEquipped": false,
+          "effects": [
+            {
+              "type": "attribute",
+              "target": "str",
+              "value": 0,
+              "bonusType": "enhancement",
+              "condition": ""
+            }
+          ],
+          "activation": {
+            "actionType": "standard",
+            "costType": "charges",
+            "cost": 1,
+            "effectDescription": "Fires 2 rays dealing 4d6 Fire damage each (8d6 total)",
+            "appliedBuffKey": ""
+          }
+        },
+        {
+          "id": "item_rqqsvozo8",
+          "name": "Wand of Acid Arrow (CL 5)",
+          "slot": "slotless",
+          "isEquipped": false,
+          "effects": [
+            {
+              "type": "attribute",
+              "target": "str",
+              "value": 0,
+              "bonusType": "enhancement",
+              "condition": ""
+            }
+          ],
+          "charges": {
+            "current": 22,
+            "max": 50
+          },
+          "activation": {
+            "actionType": "standard",
+            "costType": "charges",
+            "cost": 1,
+            "effectDescription": "2d4 Acid damage on hit + 2d4 next round (no save)",
+            "appliedBuffKey": ""
+          }
+        },
+        {
+          "id": "item_65qvzc6in",
+          "name": "Potion of Cat's Grace",
+          "slot": "slotless",
+          "isEquipped": false,
+          "effects": [
+            {
+              "type": "attribute",
+              "target": "str",
+              "value": 0,
+              "bonusType": "enhancement",
+              "condition": ""
+            }
+          ],
+          "activation": {
+            "actionType": "standard",
+            "costType": "charges",
+            "cost": 1,
+            "effectDescription": "+4 Enhancement bonus to Dexterity for 3 minutes",
+            "appliedBuffKey": "cats_grace"
+          }
+        },
+        {
+          "id": "item_gokt5nzu4",
+          "name": "Smokestick",
+          "slot": "slotless",
+          "isEquipped": false,
+          "effects": [
+            {
+              "type": "attribute",
+              "target": "str",
+              "value": 0,
+              "bonusType": "enhancement",
+              "condition": ""
+            }
+          ],
+          "activation": {
+            "actionType": "standard",
+            "costType": "charges",
+            "cost": 1,
+            "effectDescription": "Creates a 10ft cube of thick smoke providing concealment",
+            "appliedBuffKey": ""
+          }
+        }
+      ],
+      "autoAC": true,
+      "acNatural": 0,
+      "acDeflection": 0,
+      "acMisc": 0,
+      "dr": "",
+      "immunities": "",
+      "resistances": "",
+      "reach": "5 ft",
+      "spellSlots": {
+        "0": {
+          "max": 4,
+          "used": 0
+        },
+        "1": {
+          "max": 5,
+          "used": 0
+        },
+        "2": {
+          "max": 4,
+          "used": 0
+        },
+        "3": {
+          "max": 4,
+          "used": 0
+        },
+        "4": {
+          "max": 3,
+          "used": 0
+        },
+        "5": {
+          "max": 0,
+          "used": 0
+        },
+        "6": {
+          "max": 0,
+          "used": 0
+        },
+        "7": {
+          "max": 0,
+          "used": 0
+        },
+        "8": {
+          "max": 0,
+          "used": 0
+        },
+        "9": {
+          "max": 0,
+          "used": 0
+        }
+      },
+      "dailyAbilities": [
+        {
+          "name": "Kampfrausch (Rage)",
+          "max": 1,
+          "used": 0
+        }
+      ],
+      "learnedSpells": [
+        "mage_hand",
+        "detect_magic",
+        "read_magic",
+        "mage_armor",
+        "shield",
+        "magic_missile",
+        "invisibility",
+        "mirror_image",
+        "scorching_ray",
+        "fireball",
+        "dispel_magic",
+        "stoneskin"
+      ],
+      "preparedSpells": [
+        {
+          "id": "prep-atk-1",
+          "isUsed": false,
+          "spellKey": "mage_hand",
+          "metamagic": [],
+          "isSpecialist": false
+        },
+        {
+          "id": "prep-atk-2",
+          "isUsed": false,
+          "spellKey": "mage_armor",
+          "metamagic": [],
+          "isSpecialist": false
+        },
+        {
+          "id": "prep-atk-3",
+          "isUsed": false,
+          "spellKey": "invisibility",
+          "metamagic": [],
+          "isSpecialist": false
+        },
+        {
+          "id": "prep-atk-4",
+          "isUsed": false,
+          "spellKey": "mirror_image",
+          "metamagic": [],
+          "isSpecialist": false
+        },
+        {
+          "id": "prep-atk-5",
+          "isUsed": false,
+          "spellKey": "scorching_ray",
+          "metamagic": [],
+          "isSpecialist": false
+        },
+        {
+          "id": "prep-atk-6",
+          "isUsed": false,
+          "spellKey": "dispel_magic",
+          "metamagic": [],
+          "isSpecialist": false
+        },
+        {
+          "id": "prep-atk-7",
+          "isUsed": false,
+          "spellKey": "stoneskin",
+          "metamagic": [],
+          "isSpecialist": false
+        }
+      ],
+      "customSpells": [],
+      "spellTemplates": {},
+      "activeBuffs": [],
+      "quickBuffs": [],
+      "isRaging": false,
+      "isSneakAttacking": true,
+      "isSmiteActive": false,
+      "isFavoredEnemyActive": false,
+      "isDefensiveFighting": false,
+      "isTotalDefense": false,
+      "isFlurrying": false,
+      "powerAttackPenalty": 0,
+      "combatExpertisePenalty": 0,
+      "divineGraceActive": false,
+      "isTrickyFightingActive": false,
+      "favoredEnemy": "",
+      "rangerCombatStyle": "none",
+      "wizardSpecialization": "none",
+      "wizardProhibited1": "",
+      "wizardProhibited2": "",
+      "deathScreenShown": false,
+      "bardicMusicExtra": 0,
+      "companionName": "",
+      "companionType": "none",
+      "companionHP": 0,
+      "companionMaxHP": 0,
+      "familiarName": "",
+      "familiarType": "none",
+      "familiarHP": 0,
+      "activeShape": "none",
+      "originalStats": null,
+      "feats": [
+        {
+          "id": "weapon_finesse",
+          "option": ""
+        },
+        {
+          "id": "combat_expertise",
+          "option": ""
+        },
+        {
+          "id": "scribe_scroll",
+          "option": ""
+        },
+        {
+          "id": "still_spell",
+          "option": ""
+        },
+        {
+          "id": "skill_focus",
+          "option": "Disable Device"
+        },
+        {
+          "id": "weapon_focus"
+        }
+      ],
+      "skillTricks": [],
+      "acfs": [],
+      "skills": {
+        "hide": {
+          "misc": 0,
+          "ranks": 11
+        },
+        "spot": {
+          "misc": 0,
+          "ranks": 6
+        },
+        "bluff": {
+          "misc": 0,
+          "ranks": 6
+        },
+        "climb": {
+          "misc": 0,
+          "ranks": 7
+        },
+        "search": {
+          "misc": 0,
+          "ranks": 8
+        },
+        "tumble": {
+          "misc": 0,
+          "ranks": 6
+        },
+        "open_lock": {
+          "misc": 0,
+          "ranks": 8
+        },
+        "spellcraft": {
+          "misc": 0,
+          "ranks": 11
+        },
+        "concentration": {
+          "misc": 0,
+          "ranks": 12
+        },
+        "escape_artist": {
+          "misc": 0,
+          "ranks": 11
+        },
+        "move_silently": {
+          "misc": 0,
+          "ranks": 11
+        },
+        "disable_device": {
+          "misc": 0,
+          "ranks": 14
+        },
+        "decipher_script": {
+          "misc": 0,
+          "ranks": 8
+        },
+        "sleight_of_hand": {
+          "misc": 0,
+          "ranks": 11
+        },
+        "knowledge_arcana": {
+          "misc": 0,
+          "ranks": 11
+        }
+      },
+      "race": "human",
+      "alignment": "Chaotic Neutral",
+      "isHuman": true,
+      "prestigeSpellLinks": {
+        "arcane_trickster": "wizard"
+      },
+      "prestigeSpecialTextConfirmed": {}
+    }
+  ],
+  "turn": 0,
+  "round": 1,
+  "concentrations": [],
+  "session": {
+    "active": false,
+    "role": "player",
+    "roomCode": ""
+  }
+}

@@ -446,3 +446,65 @@ test('Dragon Shaman - Totem Skill Feats and Bonus Slot Validation (RAW)', async 
   assert.ok(resInvalid.error.includes('Totem skills'));
 });
 
+test('Dragon Shaman + Lizardfolk Stacking & Synergies', async () => {
+  const { Combatant } = await import('../js/models/Combatant.js');
+
+  // Level 6 Lizardfolk Dragon Shaman (Natural Armor +5 from race, 0 from class)
+  const pcLvl6 = new Combatant({
+    race: 'lizardfolk',
+    classes: [{ classType: 'dragon_shaman', level: 6 }],
+    dragonTotem: 'black',
+    dex: { base: 10, modifiers: [] },
+    con: { base: 14, modifiers: [] } // base 14 + 2 racial = 16 (mod +3)
+  });
+  pcLvl6.rebuildStatModifiers();
+  assert.strictEqual(pcLvl6.ac.getValue(), 15, 'Lizardfolk Level 6 DS: 10 base + 5 racial natural armor = 15');
+  assert.strictEqual(pcLvl6.acFlat.getValue(), 15);
+  assert.strictEqual(pcLvl6.acTouch.getValue(), 10);
+
+  // Level 7 Lizardfolk Dragon Shaman (Natural Armor +5 racial + 1 class improvement = 16)
+  const pcLvl7 = new Combatant({
+    race: 'lizardfolk',
+    classes: [{ classType: 'dragon_shaman', level: 7 }],
+    dragonTotem: 'black',
+    dex: { base: 10, modifiers: [] },
+    con: { base: 14, modifiers: [] }
+  });
+  pcLvl7.rebuildStatModifiers();
+  assert.strictEqual(pcLvl7.ac.getValue(), 16, 'Lizardfolk Level 7 DS: 10 base + 5 racial + 1 class = 16 AC');
+  assert.strictEqual(pcLvl7.acFlat.getValue(), 16);
+  assert.strictEqual(pcLvl7.acTouch.getValue(), 10);
+
+  // Level 12 Lizardfolk Dragon Shaman (Natural Armor +5 racial + 2 class improvement = 17)
+  const pcLvl12 = new Combatant({
+    race: 'lizardfolk',
+    classes: [{ classType: 'dragon_shaman', level: 12 }],
+    dragonTotem: 'black',
+    dex: { base: 10, modifiers: [] },
+    con: { base: 14, modifiers: [] }
+  });
+  pcLvl12.rebuildStatModifiers();
+  assert.strictEqual(pcLvl12.ac.getValue(), 17, 'Lizardfolk Level 12 DS: 10 base + 5 racial + 2 class = 17 AC');
+
+  // Level 17 Lizardfolk Dragon Shaman (Natural Armor +5 racial + 3 class improvement = 18)
+  const pcLvl17 = new Combatant({
+    race: 'lizardfolk',
+    classes: [{ classType: 'dragon_shaman', level: 17 }],
+    dragonTotem: 'black',
+    dex: { base: 10, modifiers: [] },
+    con: { base: 14, modifiers: [] }
+  });
+  pcLvl17.rebuildStatModifiers();
+  assert.strictEqual(pcLvl17.ac.getValue(), 18, 'Lizardfolk Level 17 DS: 10 base + 5 racial + 3 class = 18 AC');
+
+  // Check Breath Weapon DC calculation on Level 6 (Con 16 -> +3 mod):
+  // DC = 10 + floor(6 / 2) + 3 = 16
+  const classMap = new Map([['dragon_shaman', 6]]);
+  const feats = getPHB2ClassFeatures(pcLvl6, classMap);
+  const breathFeat = feats.find(f => f.id === 'dragon_shaman_breath_weapon');
+  assert.ok(breathFeat);
+  assert.ok(breathFeat.name.includes('DC 16 Ref'), `Breath DC should be 16 with Con mod +3, was: ${breathFeat.name}`);
+  assert.ok(breathFeat.name.includes('3d6 ACID'));
+});
+
+

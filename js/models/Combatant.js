@@ -201,6 +201,7 @@ export class Combatant {
     this.wizardSpecialization = p.wizardSpecialization || 'none';
     this.wizardProhibited1 = p.wizardProhibited1 || '';
     this.wizardProhibited2 = p.wizardProhibited2 || '';
+    this.dragonTotem = p.dragonTotem || 'red';
     this.clericDomains = Array.isArray(p.clericDomains) && p.clericDomains.length > 0
       ? [...p.clericDomains]
       : (this.classes.some(c => c.classType === 'cleric') ? getPCDomains(this) : []);
@@ -484,6 +485,8 @@ export class Combatant {
       wizardSpecialization: this.wizardSpecialization,
       wizardProhibited1: this.wizardProhibited1,
       wizardProhibited2: this.wizardProhibited2,
+      dragonTotem: this.dragonTotem,
+      clericDomains: this.clericDomains,
       deathScreenShown: this.deathScreenShown,
       bardicMusicExtra: this.bardicMusicExtra,
       companionName: this.companionName,

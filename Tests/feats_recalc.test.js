@@ -614,4 +614,54 @@ test('Class Feature - Turn Undead Daily Resources (Cleric & Paladin)', () => {
   assert.strictEqual(turnExtra.max, 9, 'Turn Undead with Extra Turning should be 9');
 });
 
+test('Feats - Allocation and priority validation (Fighter vs General slots)', async () => {
+  const { CombatRules } = await import('../js/rules.js');
+
+  const pc = new Combatant({
+    id: 'fighter_wizard_human',
+    name: 'Gerd',
+    type: 'player',
+    race: 'human',
+    isHuman: true,
+    classes: [
+      { classType: 'fighter', level: 4 }, // 1 + 2 = 3 fighter bonus slots
+      { classType: 'wizard', level: 0 }
+    ],
+    level: 4 // totalLevel: 4 -> 1 + Math.floor(3/3) = 2 general slots (+1 human = 3 general slots)
+  });
+
+  // Total slots: 3 General + 3 Fighter = 6 slots.
+  
+  // Case A: Valid selection
+  // 3 Combat feats (dodge, mobility, power_attack) -> Fighter slots
+  // 3 General/Other feats (skill_focus, toughness, alertness) -> General slots
+  const validFeats = [
+    { id: 'dodge' },
+    { id: 'mobility' },
+    { id: 'power_attack' },
+    { id: 'skill_focus' },
+    { id: 'toughness' },
+    { id: 'alertness' }
+  ];
+  const validationA = CombatRules.validateFeatsAssignment(pc, validFeats);
+  assert.ok(validationA.success, `Validation should succeed, but failed with: ${validationA.error}`);
+
+  // Case B: Invalid selection (too many general feats)
+  // 1 Combat feat (dodge) -> 1 Fighter slot (2 empty Fighter slots)
+  // 5 General feats (skill_focus, toughness, alertness, iron_will, run)
+  // General limit is 3, but we chose 5. These cannot fit into the empty Fighter slots.
+  const invalidFeats = [
+    { id: 'dodge' },
+    { id: 'skill_focus' },
+    { id: 'toughness' },
+    { id: 'alertness' },
+    { id: 'iron_will' },
+    { id: 'run' }
+  ];
+  const validationB = CombatRules.validateFeatsAssignment(pc, invalidFeats);
+  assert.strictEqual(validationB.success, false, 'Validation should fail for too many general feats');
+  assert.ok(validationB.error.includes('Invalid feat selection') || validationB.error.includes('General feat limit exceeded') || validationB.error.includes('Talentwahl ungültig') || validationB.error.includes('Limit für allgemeine Talente'), `Error message should explain slot mismatch: "${validationB.error}"`);
+});
+
+
 

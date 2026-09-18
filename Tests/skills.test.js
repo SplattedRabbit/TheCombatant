@@ -129,3 +129,45 @@ test('CombatRules - Max ranks calculations (Class vs Cross-class)', () => {
   // Max ranks cross-class skill (spellcraft) = (total level + 3) / 2 = 7 / 2 = 3.5
   assert.strictEqual(CombatRules.getPCMaxRanks('spellcraft', pc), 3.5);
 });
+
+test('Feats - Skill bonuses calculation and retrieval (Acrobatic & Skill Focus)', async () => {
+  const { applyFeatSkillBonuses } = await import('../js/models/helpers/skills/SkillFeatApplier.js');
+  const pc = new Combatant({
+    name: 'Acrobat Hero',
+    type: 'p',
+    feats: [
+      { id: 'acrobatic' },
+      { id: 'skill_focus', option: 'Akrobatik (Tumble)' }
+    ]
+  });
+
+  // Acrobatic gives +2 to jump and tumble
+  const jumpBonus = applyFeatSkillBonuses(pc, 'jump', { nameDe: 'Springen' });
+  assert.strictEqual(jumpBonus, 2, 'Jump should get +2 from Acrobatic');
+
+  // Tumble gets +2 from Acrobatic and +3 from Skill Focus (total +5)
+  const tumbleBonus = applyFeatSkillBonuses(pc, 'tumble', { nameDe: 'Akrobatik (Tumble)' });
+  assert.strictEqual(tumbleBonus, 5, 'Tumble should get +5 from Acrobatic and Skill Focus');
+});
+
+test('Bard - Perform dynamic modifier calculation with Skill Focus', () => {
+  const pc = new Combatant({
+    id: 'bard_test',
+    name: 'Barde Alistair',
+    type: 'player',
+    race: 'human',
+    classes: [{ classType: 'bard', level: 5 }],
+    cha: { base: 16, modifiers: [] }, // CHA mod: +3
+    skills: {
+      perform: { ranks: 5, misc: 2 } // 5 ranks, 2 misc
+    },
+    feats: [
+      { id: 'skill_focus', option: 'perform' } // +3 Skill Focus
+    ]
+  });
+
+  // Calculate Perform modifier: 5 (ranks) + 3 (CHA mod) + 2 (misc) + 3 (Skill Focus) = 13
+  const totalMod = pc.getSkillModifier('perform');
+  assert.strictEqual(totalMod, 13, `Perform modifier should be 13, but was ${totalMod}`);
+});
+
