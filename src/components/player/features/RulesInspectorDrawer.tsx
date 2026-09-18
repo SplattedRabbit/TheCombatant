@@ -8,7 +8,6 @@ import { UnifiedFeature } from './helpers/featureRegistry';
 
 interface RulesInspectorDrawerProps {
   feature: UnifiedFeature | null;
-  onConfigureDeity?: () => void;
   onConfigureSpecialization?: () => void;
   onConfigureTotem?: () => void;
   onConfigureFavoredEnemy?: () => void;
@@ -19,7 +18,6 @@ interface RulesInspectorDrawerProps {
 
 export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({
   feature,
-  onConfigureDeity,
   onConfigureSpecialization,
   onConfigureTotem,
   onConfigureFavoredEnemy,
@@ -110,29 +108,6 @@ export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({
           </span>
         </div>
       </div>
-
-      {/* Action button for Cleric Deity & Domains */}
-      {onConfigureDeity && feature.id === 'cleric_deity_domains' && (
-        <button
-          type="button"
-          onClick={onConfigureDeity}
-          className="btn btn-p"
-          style={{
-            width: '100%',
-            padding: '5px 10px',
-            fontSize: '10px',
-            fontWeight: 'bold',
-            fontFamily: 'var(--font-title)',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '6px',
-            cursor: 'pointer',
-          }}
-        >
-          <span>⛪</span> Configure Deity & Domains
-        </button>
-      )}
 
       {/* Action button for Wizard Specialization */}
       {onConfigureSpecialization && feature.id === 'wizard_specialization' && (

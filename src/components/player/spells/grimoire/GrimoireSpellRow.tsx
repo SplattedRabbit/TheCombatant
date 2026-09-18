@@ -17,6 +17,7 @@ interface GrimoireSpellRowProps {
   remainingSlots: number;
   hasPrepared: boolean;
   hasSpontaneous: boolean;
+  isDomainSlot?: boolean;
 }
 
 export const GrimoireSpellRow: React.FC<GrimoireSpellRowProps> = ({
@@ -28,6 +29,7 @@ export const GrimoireSpellRow: React.FC<GrimoireSpellRowProps> = ({
   remainingSlots,
   hasPrepared,
   hasSpontaneous,
+  isDomainSlot,
 }) => {
   const sp = findSpell(pc, item.spellKey || item.id);
   if (!sp) return null;
@@ -48,11 +50,13 @@ export const GrimoireSpellRow: React.FC<GrimoireSpellRowProps> = ({
         boxSizing: 'border-box',
         background: isSpec
           ? 'rgba(139, 26, 26, 0.04)'
+          : isDomainSlot
+          ? 'rgba(139, 26, 26, 0.04)'
           : idx % 2 === 0
           ? 'rgba(200, 169, 110, 0.12)'
           : 'rgba(200, 169, 110, 0.04)',
-        border: isSpec ? '0.5px solid rgba(139, 26, 26, 0.3)' : '0.5px solid rgba(200, 169, 110, 0.2)',
-        borderLeft: isSpec ? '2.5px solid var(--red)' : undefined,
+        border: isSpec || isDomainSlot ? '0.5px solid rgba(139, 26, 26, 0.3)' : '0.5px solid rgba(200, 169, 110, 0.2)',
+        borderLeft: isSpec || isDomainSlot ? '2.5px solid var(--red)' : undefined,
         borderRadius: '2px',
         fontSize: '8px',
       }}
@@ -120,7 +124,7 @@ export const GrimoireSpellRow: React.FC<GrimoireSpellRowProps> = ({
         {sp.range || 'Touch'} • {sp.savingThrow && sp.savingThrow !== 'None' ? `DC ${dc}` : 'No Save'}
       </div>
 
-      {/* Col 4: Specialist / Meta indicator */}
+      {/* Col 4: Specialist / Domain / Meta indicator */}
       <div
         style={{
           fontSize: '7px',
@@ -133,6 +137,10 @@ export const GrimoireSpellRow: React.FC<GrimoireSpellRowProps> = ({
         {isSpec ? (
           <span style={{ color: 'var(--red)', fontWeight: 'bold' }} title="Specialist School Slot">
             ⭐ Spec
+          </span>
+        ) : isDomainSlot ? (
+          <span style={{ color: '#8b1a1a', fontWeight: 'bold' }} title="Cleric Domain Spell Slot">
+            ⛪ Dom
           </span>
         ) : item.metamagic && item.metamagic.length > 0 ? (
           <span style={{ color: '#2e7d32' }} title={`${item.metamagic.length} Metamagic Feats applied`}>

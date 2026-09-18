@@ -86,6 +86,8 @@ declare module '@core/rules.js' {
   export const getDomain: (domainId: string) => any;
   export const getSpellDomains: (spellKey: string) => Array<{ domainId: string; domainName: string; level: number }>;
   export const isDomainSpellForPC: (spellKey: string, pc: any) => boolean;
+  export const getPCDomains: (pc: any) => string[];
+  export const getDomainSpellsForPC: (pc: any, maxSpellLevel?: number) => Array<{ spellId: string; domainId: string; level: number }>;
   export const DEITIES_REGISTRY: Record<string, any>;
   export const DOMAINS_REGISTRY: Record<string, any>;
   export const getDeitiesForAlignment: (alignment: string) => any[];
@@ -466,6 +468,8 @@ declare module '*js/rules/RulesSpells.js' {
   export const getDomain: (domainId: string) => any;
   export const getSpellDomains: (spellKey: string) => Array<{ domainId: string; domainName: string; level: number }>;
   export const isDomainSpellForPC: (spellKey: string, pc: any) => boolean;
+  export const getPCDomains: (pc: any) => string[];
+  export const getDomainSpellsForPC: (pc: any, maxSpellLevel?: number) => Array<{ spellId: string; domainId: string; level: number }>;
 }
 
 declare module '*js/rules.js' {
@@ -483,6 +487,11 @@ declare module '*js/rules.js' {
   export const ASSASSIN_TABLE: any[];
   export const ASSASSIN_KNOWN_TABLE: any[];
   export const computeWizardBudget: (pc: any, resolvedLearnedSpells: any[]) => any;
+  export const getDomain: (domainId: string) => any;
+  export const getSpellDomains: (spellKey: string) => Array<{ domainId: string; domainName: string; level: number }>;
+  export const isDomainSpellForPC: (spellKey: string, pc: any) => boolean;
+  export const getPCDomains: (pc: any) => string[];
+  export const getDomainSpellsForPC: (pc: any, maxSpellLevel?: number) => Array<{ spellId: string; domainId: string; level: number }>;
 }
 
 declare module '*js/rules/prestigeClassEngine.js' {

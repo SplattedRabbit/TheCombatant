@@ -136,6 +136,18 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
     ? spell.classes.join(', ')
     : '';
 
+  let bestCL = 0;
+  if (Array.isArray(pc.classes)) {
+     pc.classes.forEach((cls: any) => {
+        const classMatch = (spell.classLevels || []).find((c: any) => c.class === cls.classType);
+        const isDomainSpell = cls.classType === 'cleric' && isDomainSpellForPC(spell.id || spellKey, pc);
+        if (classMatch || isDomainSpell) {
+           const cl = CombatRules.getEffectiveCasterLevel(pc, cls.classType, spell);
+           if (cl > bestCL) bestCL = cl;
+        }
+     });
+  }
+
   return (
     <div
       id="spellScrollOverlay"
@@ -223,6 +235,7 @@ export const SpellDetailsDialog: React.FC<SpellDetailsDialogProps> = ({ spell, s
           >
             <div><strong>School:</strong> {spell.school || '—'}</div>
             <div><strong>Level:</strong> {spell.level !== undefined ? `Level ${spell.level}` : '—'}</div>
+            <div><strong>Caster Level:</strong> {bestCL > 0 ? bestCL : '—'}</div>
             <div><strong>Casting Time:</strong> {spell.castingTime || '1 standard action'}</div>
             <div><strong>Components:</strong> {spell.components || 'V, S'}</div>
             <div><strong>Range:</strong> {spell.range || 'Touch'}</div>

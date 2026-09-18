@@ -83,18 +83,17 @@ test('Cleric Spell Slots - Cleric gains +1 Domain Slot per level (1-9), not leve
     prestigeSpellLinks: {}
   };
 
-  // At CL 5, Cleric base slots from table:
-  // Lvl 0: 5 base + 0 bonus + 0 domain = 5
-  // Lvl 1: 3 base + 1 bonus + 1 domain = 5
-  // Lvl 2: 2 base + 1 bonus + 1 domain = 4
-  // Lvl 3: 1 base + 1 bonus + 1 domain = 3
+  // Lvl 0: 4 base + 0 bonus = 4
+  // Lvl 1: 3 base + 1 bonus = 4
+  // Lvl 2: 2 base + 1 bonus = 3
+  // Lvl 3: 1 base + 1 bonus = 2
   // Lvl 4: 0
   const slots = calculateMaxSpellSlots(clericLvl5);
 
   assert.strictEqual(slots[0], 4, 'Level 0 slots do not receive domain bonus (base 4)');
-  assert.strictEqual(slots[1], 5, 'Level 1 slots = 3 base + 1 bonus + 1 domain');
-  assert.strictEqual(slots[2], 4, 'Level 2 slots = 2 base + 1 bonus + 1 domain');
-  assert.strictEqual(slots[3], 3, 'Level 3 slots = 1 base + 1 bonus + 1 domain');
+  assert.strictEqual(slots[1], 4, 'Level 1 slots = 3 base + 1 bonus');
+  assert.strictEqual(slots[2], 3, 'Level 2 slots = 2 base + 1 bonus');
+  assert.strictEqual(slots[3], 2, 'Level 3 slots = 1 base + 1 bonus');
   assert.strictEqual(slots[4], 0, 'Level 4 slots = 0 for CL 5 cleric');
 });
 
@@ -151,10 +150,40 @@ test('Cleric Domain Preparation - Tracking isDomain slot in prepared spells', ()
   assert.strictEqual(pc.preparedSpells.length, 1);
   assert.strictEqual(pc.preparedSpells[0].isDomain, false);
   assert.strictEqual(SpellSlotCalculator.countPreparedDomainSpellsAtLevel(pc, 3), 0);
+  assert.strictEqual(SpellSlotCalculator.countPreparedSpellsAtLevel(pc, 3), 1);
 
   // Prepare Fly in domain slot
   prepareSpell(pc, 'fly', [], false, true);
   assert.strictEqual(pc.preparedSpells.length, 2);
   assert.strictEqual(pc.preparedSpells[1].isDomain, true);
   assert.strictEqual(SpellSlotCalculator.countPreparedDomainSpellsAtLevel(pc, 3), 1);
+  // Domain spells must not increase standard prepared spells count
+  assert.strictEqual(SpellSlotCalculator.countPreparedSpellsAtLevel(pc, 3), 1);
 });
+
+test('Cleric Domains - getPCDomains handles explicit, deity fallback and default fallback', async () => {
+  const { getPCDomains } = await import('../js/rules.js');
+
+  const pcWithExplicit = {
+    classes: [{ classType: 'cleric', level: 1 }],
+    clericDomains: ['fire', 'water']
+  };
+  assert.deepStrictEqual(getPCDomains(pcWithExplicit), ['fire', 'water']);
+
+  const pcWithPelor = {
+    classes: [{ classType: 'cleric', level: 1 }],
+    deity: 'pelor'
+  };
+  assert.deepStrictEqual(getPCDomains(pcWithPelor), ['good', 'healing']);
+
+  const pcClericNoDeity = {
+    classes: [{ classType: 'cleric', level: 1 }]
+  };
+  assert.deepStrictEqual(getPCDomains(pcClericNoDeity), ['good', 'healing']);
+
+  const nonCaster = {
+    classes: [{ classType: 'fighter', level: 1 }]
+  };
+  assert.deepStrictEqual(getPCDomains(nonCaster), []);
+});
+

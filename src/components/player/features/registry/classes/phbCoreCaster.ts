@@ -75,40 +75,21 @@ An evil cleric (or a neutral cleric of an evil deity) can spontaneously convert 
       actionType: 'Standard Action',
     });
 
-    // 2. Cleric Deity & Domains Configuration Feature
-    const currentDeity = pc.deity && pc.deity !== 'none' 
-      ? String(pc.deity).charAt(0).toUpperCase() + String(pc.deity).slice(1) 
-      : 'None (Select a Deity)';
-      
-    features.push({
-      id: 'cleric_deity_domains',
-      name: `Deity & Domains: ${currentDeity}`,
-      source: `Cleric Lv.${cLvl}`,
-      category: 'passive',
-      typeLabel: 'Divine Configuration',
-      summary: 'Configure your Deity and two Divine Domains for granted powers and domain spell slots.',
-      rawRules: `A cleric's deity influences their alignment, magic, and values. A cleric must choose two domains from their deity's portfolio, gaining the granted powers and domain spells from both.\n\nClick the button below to configure your Deity and Domains.`,
-      actionType: 'Passive',
-    });
-
-    // 3. Cleric Domains & Granted Powers (Individual cards)
-    const clericDomains = Array.isArray(pc.clericDomains) ? pc.clericDomains : [];
-    if (clericDomains.length > 0 && DOMAINS_REGISTRY) {
-      clericDomains.forEach((dKey: string) => {
-        const dDef = DOMAINS_REGISTRY[dKey];
-        if (!dDef) return;
-
-        features.push({
-          id: `cleric_domain_${dKey}`,
-          name: `Domain: ${dDef.name}`,
-          source: `Cleric Lv.${cLvl}`,
-          category: 'passive',
-          typeLabel: 'Deity Domain',
-          summary: dDef.desc || dDef.grantedPower?.desc || `Granted domain power for ${dDef.name}.`,
-          rawRules: `**${dDef.name} Domain:**\n${dDef.desc || ''}\n\n**Granted Power:**\n${dDef.grantedPower?.desc || 'Granted domain power.'}\n\n**Domain Spells (1st–9th):**\n` +
-            Object.entries(dDef.spells || {}).map(([lvl, sp]) => `• Level ${lvl}: ${String(sp).replace(/_/g, ' ')}`).join('\n'),
-          actionType: 'Passive',
-        });
+    if (Array.isArray(pc.clericDomains)) {
+      pc.clericDomains.forEach((domId: string) => {
+        const dom = DOMAINS_REGISTRY[domId];
+        if (dom) {
+          features.push({
+            id: `cleric_domain_${domId}`,
+            name: `Domain: ${dom.name}`,
+            source: `Cleric Lv.${cLvl}`,
+            category: 'passive',
+            typeLabel: 'Domain Granted Power',
+            summary: dom.grantedPower.desc,
+            rawRules: dom.grantedPower.desc,
+            actionType: 'Passive',
+          });
+        }
       });
     }
   }

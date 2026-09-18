@@ -194,10 +194,11 @@ export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }));
   }, [closeDialog, pushModal]);
 
-  const showPrepareSpell = useCallback((pc: any, spellKey: string, onComplete?: () => void) => {
+  const showPrepareSpell = useCallback((pc: any, spellKey?: string, onComplete?: () => void, defaultLevel?: number) => {
     pushModal('prepareSpell', (id) => ({
       pc,
       spellKey,
+      defaultLevel,
       onConfirm: () => {
         closeDialog(id);
         if (onComplete) onComplete();

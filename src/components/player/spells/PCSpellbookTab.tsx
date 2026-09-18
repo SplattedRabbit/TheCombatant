@@ -18,6 +18,7 @@ import {
   showSpellDetailsDialog,
 } from '@core/ui/components/dialogs.js';
 import { WizardSpecializationDialog } from '../../dialogs/BaseDialogs';
+import { getDomain, getMaxSpellLevel, getEffectiveCasterLevel, getPCDomains } from '@core/rules.js';
 
 interface PCSpellbookTabProps {
   pc: any;
@@ -142,6 +143,38 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
             freshPc.spellSlots[lvl].used = 0;
           }
         }
+
+        // Re-inject Domain spells
+        if (Array.isArray(freshPc.preparedSpells)) {
+          freshPc.preparedSpells = freshPc.preparedSpells.filter((p: any) => !p.isDomain);
+        } else {
+          freshPc.preparedSpells = [];
+        }
+
+        const isCleric = Array.isArray(freshPc.classes) && freshPc.classes.some((c: any) => c.classType === 'cleric');
+        if (isCleric) {
+          const domains = getPCDomains(freshPc);
+          domains.forEach((domId: string) => {
+            const dom = getDomain(domId);
+            if (dom && dom.spells) {
+              const clericMaxLvl = getMaxSpellLevel('cleric', getEffectiveCasterLevel(freshPc, 'cleric'));
+              for (const [lvlStr, spellKey] of Object.entries(dom.spells)) {
+                const spLvl = Number(lvlStr);
+                if (spLvl <= clericMaxLvl) {
+                  freshPc.preparedSpells.push({
+                    id: `prep_dom_${domId}_${spLvl}_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+                    spellKey,
+                    preparedLevel: spLvl,
+                    metamagic: [],
+                    isSpecialist: false,
+                    isDomain: true,
+                    isUsed: false
+                  });
+                }
+              }
+            }
+          });
+        }
       });
 
       CombatState.resetDailyResources();
@@ -160,8 +193,22 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
     }
   };
 
-  const learnedSpells = Array.isArray(pc.learnedSpells) ? pc.learnedSpells : [];
-  const sortedSpells = learnedSpells.map((key: string) => {
+  const isWizard = hasClasses && pc.classes.some((c: any) => c.classType === 'wizard');
+  const isCleric = hasClasses && pc.classes.some((c: any) => c.classType === 'cleric');
+
+  const learnedSpellsSet = new Set<string>(Array.isArray(pc.learnedSpells) ? pc.learnedSpells : []);
+  
+  if (isCleric) {
+    const domains = getPCDomains(pc);
+    domains.forEach((dKey: string) => {
+      const domain = getDomain(dKey);
+      if (domain) {
+        Object.values(domain.spells).forEach((sKey: any) => learnedSpellsSet.add(sKey as string));
+      }
+    });
+  }
+
+  const sortedSpells = Array.from(learnedSpellsSet).map((key: string) => {
     const spell = findSpell(pc, key);
     return spell ? { ...spell, id: key } : null;
   }).filter(Boolean) as any[];
@@ -179,7 +226,6 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
     groupedSpells[s.level].push(s);
   });
 
-  const isWizard = hasClasses && pc.classes.some((c: any) => c.classType === 'wizard');
   const [isSpecDialogOpen, setIsSpecDialogOpen] = useState(false);
 
   return (
@@ -315,7 +361,7 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
       {/* Area B: Known Spells Library */}
       <div>
         <div style={{ fontFamily: 'var(--font-title)', fontSize: '9px', color: 'var(--red)', paddingBottom: '2px', borderBottom: '0.5px solid rgba(200,169,110,0.2)', marginBottom: '5px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span>📖 Spell Library ({learnedSpells.length} Learned)</span>
+          <span>📖 Spell Library ({sortedSpells.length} Learned)</span>
           {isWizard && (
             <span style={{ fontSize: '7.5px', color: '#2e7d32', fontWeight: 'normal' }}>
               (Unlimited Scribing)
@@ -323,7 +369,7 @@ export const PCSpellbookTab: React.FC<PCSpellbookTabProps> = ({ pc }) => {
           )}
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '250px', overflowY: 'auto', paddingRight: '2px' }}>
-          {learnedSpells.length === 0 ? (
+          {sortedSpells.length === 0 ? (
             <div style={{ fontSize: '9px', color: 'var(--inkl)', fontStyle: 'italic', textAlign: 'center', padding: '35px 10px', background: 'rgba(0,0,0,0.02)', border: '0.5px dashed var(--pb)', borderRadius: '2px' }}>
               Your spellbook is empty.<br />
               <span style={{ fontSize: '8px', marginTop: '3px', display: 'block' }}>Switch to the <strong>Spell Compendium</strong> to add spells!</span>

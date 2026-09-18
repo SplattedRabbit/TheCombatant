@@ -17,8 +17,6 @@ export { ParchmentMessageModal } from './modals/ParchmentMessageModal';
 export { WizardSpecializationDialog } from './modals/WizardSpecializationDialog';
 export { DragonTotemDialog } from './modals/DragonTotemDialog';
 export { FavoredEnemyDialog } from './modals/FavoredEnemyDialog';
-export { ClericDeityDomainDialog } from './modals/ClericDeityDomainDialog';
-
 export type { DialogOverlayProps } from './modals/DialogOverlay';
 export type { CustomAlertModalProps } from './modals/CustomAlertModal';
 export type { CustomConfirmModalProps } from './modals/CustomConfirmModal';
@@ -32,4 +30,3 @@ export type { ParchmentMessageModalProps } from './modals/ParchmentMessageModal'
 export type { WizardSpecializationDialogProps } from './modals/WizardSpecializationDialog';
 export type { DragonTotemDialogProps } from './modals/DragonTotemDialog';
 export type { FavoredEnemyDialogProps } from './modals/FavoredEnemyDialog';
-export type { ClericDeityDomainDialogProps } from './modals/ClericDeityDomainDialog';
