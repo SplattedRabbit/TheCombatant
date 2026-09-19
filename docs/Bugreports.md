@@ -29,13 +29,12 @@ Wenn **Zustände/Conditions** (*feared, staggered, shaken, blinded, prone, sicke
 
 ---
 
-#### 🐛 Reine Bugs im bestehenden Code (26 offene Bugs):
+#### 🐛 Reine Bugs im bestehenden Code (20 offene Bugs):
 Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen oder desynchronisiert Clients:
 
 1. **Waffen & Kampfmechanik:**
    - **#39 (WeaponRegistry `isLight`-Hack):** Dornenkette macht bei Power Attack 0 Bonusschaden; Rapier in der Schildhand erhält falsche Abzüge für leichte Waffen.
    - **#40 (Smite Doppel-Abzug & Blockade):** 1 Schlag zieht 2 Ladungen ab; Inquisitor-Smites blockiert, sobald Paladin-Smites leer sind; Smite addiert sich fälschlich auf alle Iterativangriffe.
-   - **#14 (Mönch-/Ninja-AC):** Weisheits-RK wird trotz schwerer Rüstung/Schild nicht deaktiviert.
    - **#12 (Umstandsboni-Stacking):** Stacking-Engine verwirft unterschiedliche Umstandsboni.
 
 2. **Netzwerk & Player <-> DM Live-Sync (Höchste Priorität!):**
@@ -51,18 +50,24 @@ Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen o
    - **#34 (Multiclass Spell-DC Attribut-Hijack):** Grimoire zwingt Attribut der ersten Casterklasse auf alle Sprüche auf (Kleriker-DCs rechnen mit Int).
    - **#35 (Stat-Referenzkopplung `baseZa`/`baseFort`):** Hydrierung trennt die Alias-Verknüpfung der Rettungswürfe.
    - **#37 (Inquisitor Regelfälschungen & Smite-Cap):** Erfundene Kosten, falsche Wirkungsdauern und falscher Stufe-10-Cap in `caPrestige.ts` & `ShadowbaneInquisitorRules.js`.
-   - **#10 (`Righteous Might`):** Falscher Bonus-Typ (`"natural"`) und falsche Rindenhaut-Kopierformel.
-   - **#11 (`magic_vestment` / `magic_weapon_greater`):** Ergibt +0 bei CL 1–3.
-   - **#13 (Feat-Polymorphismus):** String-Arrays brechen `hasFeat`-Prüfungen.
-   - **#15 (Generalisten-Magier Spezialisten-Slot):** `undefined !== 'none'` vergibt unberechtigten Extra-Slot.
    - **#16 (`NaN`-Vergiftung bei Spellslots):** Ungesetztes `used` erzeugt `NaN` im Slot-Objekt.
-   - **#17 (Phantom-Charaktere nach Löschung):** Gelöschte Helden tauchen nach Neustart wieder auf.
    - **#18 (Smite-Ressourcen-Kollision im Widget):** Widget zeigt nur Paladin-Smites, nicht Inquisitor-Smites.
    - **#19 (Smite-Schadensanzeige im Tooltip):** String nutzt `||` statt `+`.
    - **#22 (Fehlender 2. Klauenangriff Lizardfolk):** Generierungsroutine erzeugt nur 1 Klaue.
    - **#23 (*Tricky Fighting* UI-Inversion):** Text sagt „Schaden“, Engine rechnet richtigerweise „Angriff“.
    - **#24 & #42 (Rassenboni Halbling & Zwerg):** Deep Halfling verliert +1 auf Saves; Zwerg fehlt Stonecunning auf Search/Appraise.
    - **#41 (Initiative <= 0 verworfen):** UI blendet Werte <= 0 als `'--'` aus.
+
+---
+
+#### ✅ Bereits behoben (Branch `bugfixes` & Vorgänger-Releases):
+- **Bugs 1–9:** Spellwarp CL, Cantrips im Grimoire, Vorbereitungsdialog, Empower-Slots, Account-Dropdown, Prestige-Zauberauswahl, Item-Fertigkeitsboni, iPad Pinch-Zoom & Modal-Overlays.
+- **#10 (`Righteous Might`):** Typ auf `"natural_enhancement"` korrigiert, RAW CL-Formel mit Minimum +2 implementiert.
+- **#11 (`magic_vestment` / `magic_weapon_greater`):** Untergrenze +1 via `Math.max(1, ...)` garantiert.
+- **#13 (Feat-Polymorphismus):** String-Arrays und Objekt-Arrays in allen Talentprüfungen (`hasFeat`, Saves, AC, Skills) polymorph unterstützt.
+- **#14 (Mönch-/Ninja-AC):** Weisheits- und Klassen-RK wird bei getragener Rüstung oder Schild gemäß RAW suspendiert.
+- **#15 (Generalisten-Magier Spezialisten-Slot):** `Boolean(pc.wizardSpecialization && pc.wizardSpecialization !== 'none')` verhindert illegitime Extraslots für Generalisten.
+- **#17 (Phantom-Charaktere nach Löschung):** `LocalStorageAdapter` säubert aktiven Key; `CharacterService` filtert gelöschte IDs aus und erzeugt bei Leerstand sauberen Standardhelden.
 
 ---
 
