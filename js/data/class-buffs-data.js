@@ -169,7 +169,11 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants you and all allies within 30 ft a bonus (+1 to +5) on Bluff, Diplomacy, and Intimidate checks.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
-    effects: []
+    effects: [
+      { target: 'skill_bluff', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Presence' },
+      { target: 'skill_diplomacy', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Presence' },
+      { target: 'skill_intimidate', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Presence' }
+    ]
   },
   {
     key: 'draconic_aura_resistance',
@@ -178,7 +182,9 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants you and all allies within 30 ft energy resistance (5, 10, 15, 20, or 25) against your totem dragon\'s energy type.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
-    effects: []
+    effects: [
+      { target: 'energy_resistance', value: 5, valueFormula: 'draconic_aura_resist', type: 'untyped', source: 'Draconic Aura: Resistance' }
+    ]
   },
   {
     key: 'draconic_aura_senses',
@@ -187,7 +193,11 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants you and all allies within 30 ft a bonus (+1 to +5) on Listen checks, Spot checks, and Initiative checks.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
-    effects: []
+    effects: [
+      { target: 'init', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Senses' },
+      { target: 'skill_listen', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Senses' },
+      { target: 'skill_spot', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Senses' }
+    ]
   },
   {
     key: 'draconic_aura_toughness',
@@ -196,7 +206,9 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants you and all allies within 30 ft Damage Reduction (DR 1/magic to DR 5/magic).',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
-    effects: []
+    effects: [
+      { target: 'dr', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Toughness' }
+    ]
   },
   {
     key: 'draconic_aura_vigor',
@@ -205,7 +217,9 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants Fast Healing (1 to 5) to you and all allies within 30 ft who are currently at or below 50% of maximum HP.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
-    effects: []
+    effects: [
+      { target: 'fast_healing', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Vigor' }
+    ]
   },
   {
     key: 'draconic_aura_energy_shield',
@@ -214,6 +228,8 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Any creature striking you or an ally within 30 ft with a melee attack or natural weapon takes 2 × aura bonus (2 to 10) elemental damage matching your totem dragon.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
-    effects: []
+    effects: [
+      { target: 'damage_shield', value: 2, valueFormula: 'draconic_aura_shield', type: 'untyped', source: 'Draconic Aura: Energy Shield' }
+    ]
   }
 ];

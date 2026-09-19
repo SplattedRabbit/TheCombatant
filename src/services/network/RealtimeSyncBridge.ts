@@ -12,6 +12,7 @@ import { applyIncomingDelta, getEncounterStateDiff, getPCStateDiff, isProcessing
 import { logger } from '../../utils/logger.ts';
 
 let isBridgeInitialized = false;
+let previousHostPresent = false;
 
 export function initRealtimeSyncBridge(): void {
   if (isBridgeInitialized) return;
@@ -110,9 +111,10 @@ export function initRealtimeSyncBridge(): void {
       }
     } else {
       const hasHost = users.some((u) => u.role === 'host');
-      if (hasHost) {
+      if (hasHost && !previousHostPresent) {
         broadcastActivePC();
       }
+      previousHostPresent = hasHost;
     }
   });
 }

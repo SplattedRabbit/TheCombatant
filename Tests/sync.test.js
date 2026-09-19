@@ -240,4 +240,125 @@ test('SyncProtocol - DM Parchment Message Receiving Logic', async () => {
   assert.ok(!overlay3, 'Overlay should NOT be created for mismatched player ID');
 });
 
+test('SyncProtocol - Bug 25: getEncounterStateDiff explicitly includes combatant HP changes', async () => {
+  const { initializeCaches, getEncounterStateDiff } = await import('../js/network/SyncProtocol.js');
+  const { getState } = await import('../js/state/state-core.js');
+  const s = getState();
+  s.combatants = [
+    createCombatant({ id: 'goblin-1', name: 'Goblin', type: 'e', hp: 12, maxHP: 12 })
+  ];
+
+  initializeCaches();
+
+  // DM deals 5 damage to Goblin (HP 12 -> 7)
+  s.combatants[0].hp = 7;
+  const diffPacket = getEncounterStateDiff();
+
+  assert.ok(diffPacket, 'Must generate diff packet');
+  assert.strictEqual(diffPacket.type, 'state_diff');
+  assert.strictEqual(diffPacket.diff['combatants.0.hp'], 7, 'Must explicitly include combatants.0.hp in state_diff');
+});
+
+test('SyncProtocol - Bug 26: DM state_diff does NOT overwrite client PC local spell slots or inventory', async () => {
+  const s = getState();
+  updateSession(true, 'client', 'ROOM123');
+  s.mode = 'player';
+  s.combatants = [];
+
+  const pc = getActivePC();
+  pc.id = 'player-mage';
+  pc.name = 'Mage';
+  pc.preparedSpells = [{ id: 'fireball', name: 'Fireball', level: 3 }];
+  pc.items = [{ id: 'wand-1', name: 'Wand of Magic Missile' }];
+
+  // Host sends state_diff where combatants array has a stripped/outdated copy of the player
+  const hostDiff = {
+    type: 'state_diff',
+    diff: {
+      'round': 2,
+      'turn': 1,
+      'combatants': [
+        { id: 'player-mage', name: 'Mage', type: 'p', preparedSpells: [], items: [] },
+        { id: 'orc-1', name: 'Orc', type: 'e', hp: 15 }
+      ]
+    }
+  };
+
+  applyIncomingDelta(hostDiff, 'client');
+
+  const clientPC = s.combatants.find(c => c.id === 'player-mage');
+  assert.ok(clientPC, 'Client PC must exist');
+  assert.strictEqual(clientPC.preparedSpells.length, 1, 'Local prepared spells must be preserved');
+  assert.strictEqual(clientPC.preparedSpells[0].name, 'Fireball');
+  assert.strictEqual(clientPC.items.length, 1, 'Local items must be preserved');
+  assert.strictEqual(s.round, 2, 'Host round advancement must be applied');
+  assert.ok(s.combatants.some(c => c.id === 'orc-1'), 'Orc from host must be included');
+});
+
+test('SyncProtocol - Bug 27: pc_diff with initiative triggers automatic combatants sorting on host', async () => {
+  const s = getState();
+  updateSession(true, 'host', 'ROOM123');
+  s.mode = 'dm';
+  s.combatants = [
+    createCombatant({ id: 'pc-slow', name: 'Slow Hero', type: 'p', init: 5 }),
+    createCombatant({ id: 'orc', name: 'Orc', type: 'e', init: 15 })
+  ];
+
+  // Client sends pc_diff with higher initiative (25)
+  const initDiff = {
+    type: 'pc_diff',
+    id: 'pc-slow',
+    diff: { init: 25, rawInit: 20 }
+  };
+
+  applyIncomingDelta(initDiff, 'host');
+
+  // Combatants should now be sorted descending by initiative: pc-slow (25), then orc (15)
+  assert.strictEqual(s.combatants[0].id, 'pc-slow', 'PC with 25 init must be sorted to position 0 on host');
+  assert.strictEqual(s.combatants[1].id, 'orc', 'Orc with 15 init must be sorted to position 1 on host');
+});
+
+test('SyncProtocol - Bug 28: Stat hydration supports english saves (baseFort, baseWill, fort, will)', () => {
+  const target = {
+    baseFort: new Stat(0),
+    fort: new Stat(0),
+    baseWill: new Stat(0),
+    will: new Stat(0)
+  };
+
+  const diff = {
+    'baseFort': { base: 4 },
+    'fort': { base: 6 },
+    'baseWill': { base: 3 },
+    'will': { base: 5 }
+  };
+
+  applyObjectDiff(target, diff);
+
+  assert.ok(target.baseFort instanceof Stat, 'baseFort must be Stat instance');
+  assert.strictEqual(target.baseFort.base, 4);
+  assert.ok(target.fort instanceof Stat, 'fort must be Stat instance');
+  assert.strictEqual(target.fort.base, 6);
+  assert.ok(target.baseWill instanceof Stat, 'baseWill must be Stat instance');
+  assert.strictEqual(target.baseWill.base, 3);
+  assert.ok(target.will instanceof Stat, 'will must be Stat instance');
+  assert.strictEqual(target.will.base, 5);
+});
+
+test('SyncProtocol - Bug 31: getActivePC preserves identity via stored localPCId across reloads', async () => {
+  const { setLocalPCId, getActivePC } = await import('../js/state/state-core.js');
+  const s = getState();
+  s.combatants = [
+    createCombatant({ id: 'char-1', name: 'Fighter', type: 'p' }),
+    createCombatant({ id: 'char-2', name: 'Rogue', type: 'p' }),
+    createCombatant({ id: 'char-3', name: 'Cleric', type: 'p' })
+  ];
+
+  // Simulate user switching to char-2 (Rogue)
+  setLocalPCId('char-2');
+
+  const pc = getActivePC();
+  assert.strictEqual(pc.id, 'char-2', 'Must return char-2 based on stored localPCId, not fallback to char-1');
+});
+
 

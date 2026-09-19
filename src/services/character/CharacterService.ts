@@ -10,7 +10,8 @@ import { storageService } from '../storage/StorageService.ts';
 import { generateUUID } from '../../utils/uuid.ts';
 import { applyLoadedState } from '../../../js/state/StorageManager.js';
 import { createInitialState, createCombatant } from '../../../js/models/model-core.js';
-import { getState, StateEvents, getActivePC } from '../../../js/state/state-core.js';
+import { getState, StateEvents, getActivePC, setLocalPCId } from '../../../js/state/state-core.js';
+import { broadcastActivePC } from '../network/RealtimeSyncBridge.ts';
 // @ts-ignore - legacy JS imports without declaration files
 import {
   aranisSample,
@@ -409,8 +410,18 @@ export class CharacterService {
 
       // 5. Emit events to re-render UI
       const currentPC = getActivePC();
+      if (currentPC) {
+        setLocalPCId(currentPC.id);
+      }
       StateEvents.emit('pc_changed', currentPC);
       StateEvents.emit('state_changed', getState());
+
+      // 6. Broadcast new active PC to host/peers
+      try {
+        broadcastActivePC();
+      } catch (syncErr) {
+        console.warn('[CharacterService] Could not broadcast active PC switch:', syncErr);
+      }
 
       return true;
     } catch (err) {

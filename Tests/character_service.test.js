@@ -99,4 +99,16 @@ describe('CharacterService Test Suite', () => {
     assert.ok(remaining.length >= 1, 'A fallback Hero must exist');
     assert.strictEqual(remaining[0].name, 'Hero', 'Fallback character is named Hero');
   });
+
+  test('4.6.1.5 Bug 29: switchActiveCharacter updates localPCId and active character state', async () => {
+    const { getActivePC } = await import('../js/state/state-core.js');
+    const charA = await service.createCharacter({ name: 'Char A', race: 'Elf', level: 2 });
+    const charB = await service.createCharacter({ name: 'Char B', race: 'Dwarf', level: 3 });
+
+    await service.switchActiveCharacter(charB.id);
+
+    const activePC = getActivePC();
+    assert.ok(activePC);
+    assert.strictEqual(activePC.name, 'Char B', 'Active PC name should be Char B');
+  });
 });

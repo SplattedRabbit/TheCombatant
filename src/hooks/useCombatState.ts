@@ -25,7 +25,8 @@ const STAT_FIELDS = [
   'ac', 'acTouch', 'acFlat',
   'str', 'dex', 'con', 'int', 'wis', 'cha',
   'bab', 'za', 'ref', 'wil',
-  'baseZa', 'baseRef', 'baseWil'
+  'baseZa', 'baseRef', 'baseWil',
+  'baseFort', 'baseWill', 'fort', 'will'
 ] as const;
 
 function hydrateStat(rawStat: any): any {

@@ -56,7 +56,43 @@ export function getRole() {
   return getState().mode;
 }
 
+const LOCAL_PC_STORAGE_KEY = 'dd_local_pc_id';
+
+function getStoredLocalPCId() {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return window.localStorage.getItem(LOCAL_PC_STORAGE_KEY);
+    } else if (typeof globalThis !== 'undefined' && globalThis.localStorage) {
+      return globalThis.localStorage.getItem(LOCAL_PC_STORAGE_KEY);
+    }
+  } catch (_) {}
+  return null;
+}
+
+function setStoredLocalPCId(id) {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if (id) {
+        window.localStorage.setItem(LOCAL_PC_STORAGE_KEY, id);
+      } else {
+        window.localStorage.removeItem(LOCAL_PC_STORAGE_KEY);
+      }
+    } else if (typeof globalThis !== 'undefined' && globalThis.localStorage) {
+      if (id) {
+        globalThis.localStorage.setItem(LOCAL_PC_STORAGE_KEY, id);
+      } else {
+        globalThis.localStorage.removeItem(LOCAL_PC_STORAGE_KEY);
+      }
+    }
+  } catch (_) {}
+}
+
 let localPCId = null;
+
+export function setLocalPCId(id) {
+  localPCId = id;
+  setStoredLocalPCId(id);
+}
 
 /**
  * Retrieves the active Player Character (PC) for the local player session.
@@ -70,9 +106,17 @@ export function getActivePC() {
   const s = getState();
   
   if (!localPCId) {
+    const storedId = getStoredLocalPCId();
+    if (storedId && s.combatants.some(c => c.id === storedId)) {
+      localPCId = storedId;
+    }
+  }
+
+  if (!localPCId) {
     const pc = s.combatants.find(c => c.type === 'p');
     if (pc) {
       localPCId = pc.id;
+      setStoredLocalPCId(localPCId);
     }
   }
 
@@ -85,6 +129,7 @@ export function getActivePC() {
     pc = s.combatants.find(c => c.type === 'p');
     if (pc) {
       localPCId = pc.id;
+      setStoredLocalPCId(localPCId);
     }
   }
 
@@ -96,6 +141,7 @@ export function getActivePC() {
     pc = createCombatant({ name: 'Adventurer', type: 'p' });
     s.combatants.push(pc);
     localPCId = pc.id;
+    setStoredLocalPCId(localPCId);
     StateEvents.emit('state_changed', s);
   }
   return pc;
@@ -111,6 +157,7 @@ export function updateSession(active, role, roomCode) {
         s.combatants.splice(idx, 1);
       }
       localPCId = null;
+      setStoredLocalPCId(null);
     }
   }
 

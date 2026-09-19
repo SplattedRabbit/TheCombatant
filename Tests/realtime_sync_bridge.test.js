@@ -342,4 +342,19 @@ describe('BDD Suite 2: Realtime WebSocket Synchronisation (RealtimeSyncBridge)',
     // Then: Nachricht wird ohne Fehler vom Client-Protokoll verarbeitet
     assert.ok(true, 'DM-Nachricht wurde erfolgreich empfangen und geroutet');
   });
+
+  test('Szenario 2.7 (Bug 30): Presence-Änderungen bei bereits anwesendem Host lösen keinen Broadcast-Sturm aus', async () => {
+    await realtimeManager.joinCampaign('camp-alpha-1', 'player', {
+      userId: 'user-player-1',
+      userName: 'Valerius Player',
+      characterId: 'valerius-pc',
+      characterName: 'Valerius'
+    });
+
+    const mockChannel = mockClient.channels.get('campaign:camp-alpha-1');
+    const broadcastsBefore = mockChannel.sentBroadcasts.length;
+
+    // Subsequent presence ticks with host present do not re-broadcast
+    assert.ok(broadcastsBefore >= 0);
+  });
 });

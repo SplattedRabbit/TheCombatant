@@ -551,6 +551,12 @@ test('Dragon Shaman - Draconic Auras & Breath Weapon Verification', () => {
   assert.strictEqual(getBreathDamage(6), '3d6');
   assert.strictEqual(getBreathDamage(10), '5d6');
   assert.strictEqual(getBreathDamage(20), '10d6');
+
+  // 5. Bug 21: Draconic Auras have non-empty effects arrays
+  auraKeys.forEach(key => {
+    const aura = CLASS_BUFFS.find(b => b.key === key);
+    assert.ok(Array.isArray(aura.effects) && aura.effects.length > 0, `Aura ${key} must have non-empty effects`);
+  });
 });
 
 

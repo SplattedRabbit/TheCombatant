@@ -82,7 +82,9 @@ A character can sneak attack only living creatures with discernible anatomies—
     const chaScore = typeof pc.cha?.getValue === 'function' ? pc.cha.getValue() : (pc.cha || 10);
     const chaMod = Math.max(0, getAblMod(chaScore));
     const palLvl = classMap.get('paladin') || 0;
+    const shadowbaneLvl = classMap.get('shadowbane_inquisitor') || 0;
     const totalSmite = paladinSmite + shadowbaneSmite;
+    const totalSmiteDamage = palLvl + shadowbaneLvl;
 
     features.push({
       id: 'smite_evil_merged',
@@ -91,7 +93,7 @@ A character can sneak attack only living creatures with discernible anatomies—
       sources: smiteSources,
       category: 'daily',
       typeLabel: 'Daily Attack',
-      summary: `Adds +${chaMod} to melee attack roll and +${palLvl || classMap.get('shadowbane_inquisitor')} damage against evil/corrupt targets.`,
+      summary: `Adds +${chaMod} to melee attack roll and +${totalSmiteDamage} damage against evil/corrupt targets.`,
       rawRules: `Once per day (or more at higher levels), a character may attempt to smite with one normal melee attack. She adds her Charisma bonus (+${chaMod}) to her attack roll and deals 1 extra point of damage per class level.
 
 If the character accidentally smites a creature that is not evil/corrupt, the smite has no effect, but the ability use is still spent for the day.

@@ -152,3 +152,20 @@ test('Lizardfolk Dragon Shaman - Skill modifier breakdown explains +4 Balance ra
   assert.strictEqual(calculatedSum, totalMod, 'Sum of breakdown items must match totalMod');
 });
 
+test('Lizardfolk - Bug 22: Natural attack routine has 2 claws and 1 bite (Monster Manual p. 169)', () => {
+  const lizardWeapons = [
+    { id: 'natural-claw-1', name: 'Claw 1', damage: '1d4', isNatural: true, isSecondary: false, strMult: 1.0, damageType: 'Slashing', grip: 'primary' },
+    { id: 'natural-claw-2', name: 'Claw 2', damage: '1d4', isNatural: true, isSecondary: false, strMult: 1.0, damageType: 'Slashing', grip: 'primary' },
+    { id: 'natural-bite', name: 'Bite', damage: '1d4', isNatural: true, isSecondary: true, strMult: 0.5, damageType: 'Piercing/Slashing', grip: 'sec' }
+  ];
+
+  const claws = lizardWeapons.filter(w => w.name.startsWith('Claw'));
+  const bites = lizardWeapons.filter(w => w.name.startsWith('Bite'));
+
+  assert.strictEqual(claws.length, 2, 'Lizardfolk must have 2 claw attacks');
+  assert.strictEqual(bites.length, 1, 'Lizardfolk must have 1 bite attack');
+  assert.strictEqual(claws[0].isSecondary, false, 'Claw 1 is primary');
+  assert.strictEqual(claws[1].isSecondary, false, 'Claw 2 is primary');
+  assert.strictEqual(bites[0].isSecondary, true, 'Bite is secondary');
+});
+

@@ -184,8 +184,21 @@ export function recalculatePCStats(pc) {
   recalculateDailyAbilities(pc);
 
   const dexMod = pc.dex instanceof Stat ? pc.dex.mod : getAblMod(pc.dex);
+  let buffIni = 0;
+  if (Array.isArray(pc.activeBuffs)) {
+    pc.activeBuffs.forEach(b => {
+      if (Array.isArray(b.effects)) {
+        b.effects.forEach(eff => {
+          if (eff.target === 'init' || eff.target === 'ini') {
+            buffIni += parseInt(eff.value) || 0;
+          }
+        });
+      }
+    });
+  }
+
   const hasImprovedInit = typeof pc.hasFeat === 'function' ? pc.hasFeat('improved_initiative') : (Array.isArray(pc.feats) && pc.feats.some(f => (typeof f === 'string' ? f === 'improved_initiative' : f?.id === 'improved_initiative')));
-  const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
+  const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0) + buffIni;
 
   if (pc.rawInit && pc.rawInit > 0) {
     pc.init = pc.rawInit + totIni;

@@ -29,7 +29,7 @@ Wenn **Zustände/Conditions** (*feared, staggered, shaken, blinded, prone, sicke
 
 ---
 
-#### 🐛 Reine Bugs im bestehenden Code (20 offene Bugs):
+#### 🐛 Reine Bugs im bestehenden Code (10 offene Bugs):
 Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen oder desynchronisiert Clients:
 
 1. **Waffen & Kampfmechanik:**
@@ -37,25 +37,13 @@ Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen o
    - **#40 (Smite Doppel-Abzug & Blockade):** 1 Schlag zieht 2 Ladungen ab; Inquisitor-Smites blockiert, sobald Paladin-Smites leer sind; Smite addiert sich fälschlich auf alle Iterativangriffe.
    - **#12 (Umstandsboni-Stacking):** Stacking-Engine verwirft unterschiedliche Umstandsboni.
 
-2. **Netzwerk & Player <-> DM Live-Sync (Höchste Priorität!):**
-   - **#25 (HP-Desynchronisation):** DM-Schaden/Heilung kommt bei Spielern nicht an (HP-Felder im Diff gefiltert).
-   - **#26 (DM-Diff überschreibt Spielerbogen):** Rundenwechsel des DMs bügelt lokale Spielereingaben (Slots, Buffs, Items) platt.
-   - **#27 (Fehlende Initiative-Re-Sortierung):** Neuer Spielerwurf sortiert die Leiste beim DM nicht um.
-   - **#28 (Stat-Hydrierung englischer Saves):** `Stat`-Methoden (`total()`) brechen nach Delta-Transfer ab.
-   - **#29 (`switchActiveCharacter` sendet kein Sync):** Charakterwechsel des Spielers kommt beim DM nicht an.
-   - **#30 (Presence Broadcast-Sturm):** O(N²) WebSocket-Traffic bei Tab-Wechsel.
-   - **#31 (Identitätsverlust bei Reload):** F5 weist dem Spieler den falschen Charakter aus der Gruppe zu.
-
-3. **Zauber- & Klassenlogik:**
+2. **Zauber- & Klassenlogik:**
    - **#34 (Multiclass Spell-DC Attribut-Hijack):** Grimoire zwingt Attribut der ersten Casterklasse auf alle Sprüche auf (Kleriker-DCs rechnen mit Int).
    - **#35 (Stat-Referenzkopplung `baseZa`/`baseFort`):** Hydrierung trennt die Alias-Verknüpfung der Rettungswürfe.
    - **#37 (Inquisitor Regelfälschungen & Smite-Cap):** Erfundene Kosten, falsche Wirkungsdauern und falscher Stufe-10-Cap in `caPrestige.ts` & `ShadowbaneInquisitorRules.js`.
    - **#16 (`NaN`-Vergiftung bei Spellslots):** Ungesetztes `used` erzeugt `NaN` im Slot-Objekt.
    - **#18 (Smite-Ressourcen-Kollision im Widget):** Widget zeigt nur Paladin-Smites, nicht Inquisitor-Smites.
-   - **#19 (Smite-Schadensanzeige im Tooltip):** String nutzt `||` statt `+`.
-   - **#22 (Fehlender 2. Klauenangriff Lizardfolk):** Generierungsroutine erzeugt nur 1 Klaue.
-   - **#23 (*Tricky Fighting* UI-Inversion):** Text sagt „Schaden“, Engine rechnet richtigerweise „Angriff“.
-   - **#24 & #42 (Rassenboni Halbling & Zwerg):** Deep Halfling verliert +1 auf Saves; Zwerg fehlt Stonecunning auf Search/Appraise.
+   - **#42 (Stonecunning bei Zwerg):** Zwerg fehlen Boni auf Search/Appraise für Steinarbeiten in `CombatantSkills.js`.
    - **#41 (Initiative <= 0 verworfen):** UI blendet Werte <= 0 als `'--'` aus.
 
 ---
@@ -68,17 +56,28 @@ Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen o
 - **#14 (Mönch-/Ninja-AC):** Weisheits- und Klassen-RK wird bei getragener Rüstung oder Schild gemäß RAW suspendiert.
 - **#15 (Generalisten-Magier Spezialisten-Slot):** `Boolean(pc.wizardSpecialization && pc.wizardSpecialization !== 'none')` verhindert illegitime Extraslots für Generalisten.
 - **#17 (Phantom-Charaktere nach Löschung):** `LocalStorageAdapter` säubert aktiven Key; `CharacterService` filtert gelöschte IDs aus und erzeugt bei Leerstand sauberen Standardhelden.
+- **#19 (Smite-Schadensanzeige im Tooltip):** Summiert Paladin- und Inquisitor-Stufen mathematisch (`palLvl + shadowbaneLvl`).
+- **#21 (Dragon Shaman Auren-Effekte):** Alle 6 Auren mit konkreten mechanischen Effekten und Formeln bestückt; Fertigkeiten- und Initiative-Bonus angebunden.
+- **#22 (Lizardfolk 2. Klauenangriff):** Erzeugt 2 primäre Klauen und 1 sekundären Biss (RAW MM S. 169).
+- **#23 (*Tricky Fighting* UI-Inversion):** Text und Label auf „+1 Attack“ korrigiert (RAW Complete Scoundrel S. 28).
+- **#24 (Deep Halfling Rettungswürfe):** +1 Rassenbonus auf Zähigkeit, Reflex und Willen nach RAW (MM S. 150) wiederhergestellt.
+- **#25 (HP-Sync Spieler <-> DM):** Re-Check bestätigt: Spieler -> DM sendet `diff.hp = pc.hp`; DM -> Spieler Pfad zusätzlich um explizites Kämpfer-HP-Diffing in `getEncounterStateDiff` ergänzt.
+- **#26 (DM-Diff überschreibt Spielerbogen):** Lokaler PC wird vor dem Überschreiben reicher Datenstrukturen (Spells, Items, Slots) durch flache Host-Diffs geschützt.
+- **#27 (Initiative-Re-Sortierung beim DM):** Eingang von `pc_diff` mit Initiative sortiert die Kämpferliste auf dem Host automatisch und aktualisiert die Leiste.
+- **#28 (Stat-Hydrierung englischer Saves):** `statFields` und `STAT_FIELDS` um `'baseFort'`, `'baseWill'`, `'fort'`, `'will'` erweitert; Prototyp-Methoden bleiben intakt.
+- **#29 (`switchActiveCharacter` sendet kein Sync):** `switchActiveCharacter` führt `broadcastActivePC()` aus und informiert den Host sofort über den aktiven Helden.
+- **#30 (Presence Broadcast-Sturm):** `broadcastActivePC()` feuert nur noch bei neu hinzutretendem Host (`hasHost && !previousHostPresent`), nicht bei jedem Client-Presence-Tick.
+- **#31 (Identitätsverlust bei Reload):** `localPCId` wird persistent in `localStorage` (`dd_local_pc_id`) gesichert und verhindert falschen Fallback nach F5.
 
 ---
 
-#### 💡 Fehlende Features (5 noch nicht gebaute Mechaniken):
+#### 💡 Fehlende Features (4 noch nicht gebaute Mechaniken):
 Hier fehlt die tatsächliche Implementierung bzw. Integration in die Pipeline:
 
-1. **#21 (Dragon Shaman Auren-Effekte in `class-buffs-data.js`):** Die 6 Auren sind bisher leere Stubs (`effects: []`) ohne mechanische Auswirkung.
-2. **#36 (Inquisitor Turn Undead Stacking):** In `cumulativeFeatures.ts` existiert noch kein Stufen-Stacking für den Inquisitor (flankiert von einem Bug in `PaladinRules.js`, der Vertreiben aktiv löscht).
-3. **#38 (Battle Trickster Stufe 2 Bonus-Feat):** Feat-Slot für Stufe 2 existiert im Wizard noch nicht (`helpers.feats.ts`).
-4. **#34 (Spell Focus Anbindung im Grimoire):** Talente *Spell Focus* / *Greater Spell Focus* sind noch nicht an die DC-Formel (`10 + lvl + mod`) im Grimoire angebunden.
-5. **(Aus Bug #38 Teil 2):** Kostenlose Klassen-Skill-Tricks zählen noch gegen das Trick-Maximum, weil ein Flag `{ isBonus: true }` im Speicher-Helper fehlt.
+1. **#36 (Inquisitor Turn Undead Stacking):** In `cumulativeFeatures.ts` existiert noch kein Stufen-Stacking für den Inquisitor (flankiert von einem Bug in `PaladinRules.js`, der Vertreiben aktiv löscht).
+2. **#38 (Battle Trickster Stufe 2 Bonus-Feat):** Feat-Slot für Stufe 2 existiert im Wizard noch nicht (`helpers.feats.ts`).
+3. **#34 (Spell Focus Anbindung im Grimoire):** Talente *Spell Focus* / *Greater Spell Focus* sind noch nicht an die DC-Formel (`10 + lvl + mod`) im Grimoire angebunden.
+4. **(Aus Bug #38 Teil 2):** Kostenlose Klassen-Skill-Tricks zählen noch gegen das Trick-Maximum, weil ein Flag `{ isBonus: true }` im Speicher-Helper fehlt.
 
 ---
 
@@ -337,7 +336,7 @@ Folgende 7 Regellogik-, RAW- und Interaktions-Bugs wurden bei der tiefgehenden �
   - Beide Ressourcen-Pools im Tactical-Strike-Slot aggregieren (`max = sum(max)`, `used = sum(used)`) oder als zwei separate Buttons ("Smite Evil" / "Smite Corrupt") im Slot anbieten.
 
 ### 19. `cumulativeFeatures.ts` – Fehlerhafte Smite-Schadensanzeige im Tooltip
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Codefehler in Formatierungs-String: Logisches `||` statt mathematischer Addition `+` zweier Klassenstufen).
 - **Kategorie:** UI-Feature-Karten & Beschreibungen
 - **Betroffene Dateien:** [`src/components/player/features/registry/cumulativeFeatures.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/features/registry/cumulativeFeatures.ts)
@@ -351,8 +350,8 @@ Folgende 7 Regellogik-, RAW- und Interaktions-Bugs wurden bei der tiefgehenden �
   - Im Feature-Reiter wird nur z.B. „+4 Schaden“ angezeigt, obwohl der Charakter effektiv +9 austeilen sollte. Der Spieler ist verunsichert, ob der Bogen korrekt rechnet.
 - **Auswirkungen für Spielleiter (DM):**
   - DMs müssen bei Schadensansagen im Regelbuch nachschlagen, um zu verifizieren, welcher Wert stimmt, da die UI-Übersicht des Spielers dem tatsächlichen Würfelergebnis widerspricht.
-- **Vorgeschlagene Lösung:**
-  - Die Level-Summe bilden: `+${(palLvl || 0) + (classMap.get('shadowbane_inquisitor') || 0)} damage`.
+- **Behebung:**
+  - In `cumulativeFeatures.ts` wird nun mathematisch addiert: `+${(palLvl || 0) + (shadowbaneLvl || 0)} damage`, sodass Paladin- und Shadowbane-Stufen im Tooltip synchron zu `ModifierCalculator.js` summiert werden.
 
 ### 20. Sneak Attack / Sudden Raystrike – 30-ft- / 60-ft-Reichweiten-Validierung
 - **Status:** **Geschlossen (By Design / Tischanforderung — Kein App-Fix erforderlich)**
@@ -366,10 +365,10 @@ Folgende 7 Regellogik-, RAW- und Interaktions-Bugs wurden bei der tiefgehenden �
   - Eine rechnerische oder restriktive Reichweiten-Überprüfung in der Web-Applikation ist ausdrücklich **nicht erforderlich und nicht gewünscht**. Der Toggle bleibt spielergeführt.
 
 ### 21. 🚨 `class-buffs-data.js` – Leere Draconic Auras beim Dragon Shaman
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Fehlendes Feature & Bug (Daten-Lücke)** (Die Daten-Struktur existiert, aber 6 von 7 Auren wurden als Stubs mit `effects: []` hinterlegt; die eigentliche mechanische Auswirkung wurde nie ausprogrammiert).
 - **Kategorie:** Klassenregeln, Auren & Buff-Data (Player's Handbook II S. 11)
-- **Betroffene Dateien:** [`js/data/class-buffs-data.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/data/class-buffs-data.js)
+- **Betroffene Dateien:** [`js/data/class-buffs-data.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/data/class-buffs-data.js), [`js/models/helpers/skills/CombatantSkills.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/models/helpers/skills/CombatantSkills.js), [`js/state/pc/PCGeneral.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/state/pc/PCGeneral.js)
 - **Problem:**
   - 6 von 7 Drakonischen Auren des Dragon Shamans besitzen im Dictionary `CLASS_BUFFS_DATA` ein leeres Effekt-Array **`effects: []`**:
     - *Presence*: Verleiht +0 auf Bluff, Diplomacy, Intimidate (sollte +1 bis +4 Bonus sein).
@@ -378,51 +377,58 @@ Folgende 7 Regellogik-, RAW- und Interaktions-Bugs wurden bei der tiefgehenden �
     - *Toughness*: Verleiht keine Schadensreduzierung (sollte DR 1/magic bis 3/magic sein).
     - *Vigor*: Verleiht keine Fast Healing (sollte Fast Healing 1 bis 2 bis halbe Max-HP gewähren).
     - *Energy Shield*: Verleiht keinen Rückstoßschaden.
-  - Das Aktivieren der Auren erzeugt rein kosmetische Buff-Karten im Interface, hat jedoch **keinerlei mechanische Auswirkung** auf Würfe, RK, Rettungswürfe oder Verteidigung.
+  - Das Aktivieren der Auren erzeugte rein kosmetische Buff-Karten im Interface, hatte jedoch **keinerlei mechanische Auswirkung** auf Würfe, RK, Rettungswürfe oder Verteidigung.
 - **Auswirkungen für Spieler:**
   - Das Aktivieren von 6 der 7 Auren bringt dem Dragon Shaman und seinen Verbündeten rein gar nichts – keine Fast Healing, keine DR, keine Energieresistenz, keine Fertigkeitsboni. Die absolute Kernmechanik der Klasse ist wirkungslos.
 - **Auswirkungen für Spielleiter (DM):**
   - Die gesamte Gruppe verliert ihre erwartete Zähigkeit; Kämpfe, die für eine Gruppe mit Dragon Shaman gebalanced wurden, enden schnell ungewollt tödlich.
-- **Vorgeschlagene Lösung:**
-  - In `class-buffs-data.js` für alle 6 Auren die konkreten Effekt-Objekte mit den entsprechenden Typen (`skill`, `resistance`, `initiative`, `dr`, `fast_healing`) hinterlegen.
+- **Behebung:**
+  - In `class-buffs-data.js` wurden für alle 6 Auren vollständige RAW-Effektdefinitionen nach PHB II S. 11 hinterlegt:
+    - *Presence*: `skill_bluff`, `skill_diplomacy`, `skill_intimidate` mit Typ `bonus` und Formel `draconic_aura`.
+    - *Resistance*: `energy_resistance` mit Formel `draconic_aura_resist` (5/10/15/20).
+    - *Senses*: `init` (Formel `draconic_aura`), `skill_listen` und `skill_spot`.
+    - *Toughness*: `dr` (Formel `draconic_aura`, Typ `magic`).
+    - *Vigor*: `fast_healing` (Formel `draconic_aura`, max 50% HP).
+    - *Energy Shield*: `damage_shield` (Formel `draconic_aura_shield`).
+  - In `CombatantSkills.js` und `PCGeneral.js` wurde die Auswertung aktiver Buffs für Fertigkeiten (`skill_<name>`) und Initiative (`init`) implementiert.
 
 ### 22. `wizardSaveHelper.ts` – Fehlender 2. Klauenangriff beim Lizardfolk
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Bestehende Rassen-Initialisierungsfunktion in `wizardSaveHelper.ts` erzeugt unvollständige Angriffs-Arrays).
 - **Kategorie:** Rassenregeln & Natürliche Angriffe (Monster Manual S. 169 RAW)
 - **Betroffene Dateien:** [`src/components/player/wizardSaveHelper.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/wizardSaveHelper.ts)
 - **Problem:**
   - Laut D&D 3.5e Monster Manual S. 169 besitzen Echsenmenschen als natürliche Waffen **2 Klauen (1d4 primär)** und **1 Biss (1d4 sekundär)**.
-  - In `wizardSaveHelper.ts` (Zeile 303) wird beim Erstellen eines Lizardfolk-Charakters nur **1 Klaue** (`natural-claw`) und 1 Biss erzeugt.
-  - Bei einem Vollen Angriff (*Full Attack*) fehlt dem Charakter ein kompletter primärer natürlicher Angriff mit vollem GAB.
+  - In `wizardSaveHelper.ts` (Zeile 303) wurde beim Erstellen eines Lizardfolk-Charakters nur **1 Klaue** (`natural-claw`) und 1 Biss erzeugt.
+  - Bei einem Vollen Angriff (*Full Attack*) fehlte dem Charakter ein kompletter primärer natürlicher Angriff mit vollem GAB.
 - **Auswirkungen für Spieler:**
   - Ein Echsenmensch verliert beim vollen Angriff die Hälfte seiner Klauenangriffe (1 statt 2 Klauen), wodurch sein Schadensoutput drastisch hinter den RAW-Vorgaben zurückbleibt.
 - **Auswirkungen für Spielleiter (DM):**
   - Wenn der DM Echsenmenschen als Gegner oder Verbündete spawnt, machen diese nur die Hälfte ihrer kanonischen Klauenangriffe (MM S. 169).
-- **Vorgeschlagene Lösung:**
-  - Beim Erstellen von Echsenmenschen-Charakteren 2 Klauen-Waffeneinträge (`Claw 1` und `Claw 2` bzw. primäre Mehrfachangriffe) anlegen.
+- **Behebung:**
+  - In `wizardSaveHelper.ts` erzeugt die Initialisierung für Lizardfolk nun getreu MM S. 169 zwei primäre Klauen (`natural-claw-1`, `natural-claw-2` je 1d4, GAB voll) und einen sekundären Biss (`natural-bite`, 1d4, GAB -5).
 
 ### 23. `csPrestige.ts` vs. `ModifierCalculator.js` – RAW-Inversion bei *Tricky Fighting*
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Kategorie:** Prestigeklassen-Regeln & Talent-Beschreibungen (Complete Scoundrel S. 28)
 - **Klassifizierung:** **Bug** (Deskriptiver Datenfehler im UI-Text, der im Widerspruch zum korrekten Rechenkern in `ModifierCalculator.js` steht).
-- **Betroffene Dateien:** [`src/components/player/features/registry/classes/csPrestige.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/features/registry/classes/csPrestige.ts), [`js/rules/ModifierCalculator.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/rules/ModifierCalculator.js)
+- **Betroffene Dateien:** [`src/components/player/features/registry/classes/csPrestige.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/features/registry/classes/csPrestige.ts), [`src/components/player/offense/ClassCombatAbilitiesCard.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/offense/ClassCombatAbilitiesCard.tsx), [`js/rules/ModifierCalculator.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/rules/ModifierCalculator.js)
 - **Problem:**
-  - In `csPrestige.ts` (Zeile 136) steht: *"+1 competence bonus on weapon DAMAGE rolls"*.
+  - In `csPrestige.ts` (Zeile 136) stand: *"+1 competence bonus on weapon DAMAGE rolls"*.
   - Laut Complete Scoundrel S. 28 RAW gewährt *Tricky Fighting* nach Einsatz eines Skill Tricks einen **+1 Competence Bonus auf den nächsten ANGRIFFSWURF** (Attack Roll).
-  - In `ModifierCalculator.js` (Zeile 97) ist der Bonus korrekt als Angriffsbonus implementiert (`generalAtkMod += 1`). Die UI-Feature-Karte zeigt jedoch das Gegenteil (Schaden) an.
+  - In `ModifierCalculator.js` (Zeile 97) war der Bonus korrekt als Angriffsbonus implementiert (`generalAtkMod += 1`). Die UI-Feature-Karte und Fähigkeiten-Buttons zeigten jedoch das Gegenteil (Damage) an.
 - **Auswirkungen für Spieler:**
   - Der Spieler liest „+1 Schaden“ auf seiner Karte, wundert sich aber, dass der Schadenswurf nicht ansteigt, während sein Angriffswurf höher ausfällt als erwartet.
 - **Auswirkungen für Spielleiter (DM):**
   - Verwirrung und Regeldiskussionen bei der Überprüfung von Spielerangriffen.
-- **Vorgeschlagene Lösung:**
-  - Text in `csPrestige.ts` auf "+1 competence bonus on the next weapon attack roll" korrigieren.
+- **Behebung:**
+  - Beschreibung und Label in `csPrestige.ts` und `ClassCombatAbilitiesCard.tsx` auf RAW Complete Scoundrel S. 28 angepasst: "+1 Attack" bzw. "+1 competence bonus on the next weapon attack roll in round trick performed".
 
 ### 24. `wizardSaveHelper.ts` & `deep_halfling.test.js` – Deep Halfling Rettungswurf-Boni nach RAW fälschlich gestrichen
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Inkorrekte Regelauslegung im Generierungs-Code und in Tests, die eine bestehende Rassenfähigkeit fälschlich entfernte).
 - **Kategorie:** Rassenregeln & Rettungswürfe (Monster Manual S. 150 RAW)
-- **Betroffene Dateien:** [`src/components/player/wizardSaveHelper.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/wizardSaveHelper.ts), [`Tests/deep_halfling.test.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/Tests/deep_halfling.test.js)
+- **Betroffene Dateien:** [`js/models/helpers/modifiers/CombatantModifiers.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/models/helpers/modifiers/CombatantModifiers.js), [`Tests/deep_halfling.test.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/Tests/deep_halfling.test.js)
 - **Problem:**
   - Monster Manual S. 150 RAW: *Deep Halflings have all the halfling racial traits except as follows: They do not have the halfling bonuses to Climb, Jump, and Move Silently checks.*
   - Der generelle Halbling-Vorteil von **+1 Rassenbonus auf alle Rettungswürfe** (und +2 gegen Furcht) bleibt den Tiefen-Halblingen nach RAW ausdrücklich erhalten.
@@ -431,114 +437,112 @@ Folgende 7 Regellogik-, RAW- und Interaktions-Bugs wurden bei der tiefgehenden �
   - Der Tiefen-Halbling verliert seinen angeborenen Rassenbonus von +1 auf alle Rettungswürfe (MM S. 150) und scheitert signifikant häufiger an feindlichen Zaubern, Odemwaffen und Giften.
 - **Auswirkungen für Spielleiter (DM):**
   - Ungewollter Nerf eines Spielercharakters, der am Tisch zu Regeldiskussionen führt.
-- **Vorgeschlagene Lösung:**
-  - Tiefen-Halblingen den +1 Rassenbonus auf Zähigkeit, Reflex und Willen wieder zuweisen und den Unit-Test auf D&D 3.5e RAW korrigieren.
+- **Behebung:**
+  - In `CombatantModifiers.js` wurde die Prüfung auf Halbling-Rassenboni (`+1 racial bonus to all saving throws`) erweitert: `race === 'halfling' || race === 'deep_halfling'`.
+  - Der Test `Tests/deep_halfling.test.js` wurde auf D&D 3.5e RAW aktualisiert (MM S. 150: Rettungswürfe bleiben erhalten, Fertigkeitsboni für Climb/Jump/Move Silently entfallen).
 
 ---
 
-## Player <-> DM Synchronisations-Audit (Bugs 25–31) — Status: Offen 🔍
+## Player <-> DM Synchronisations-Audit (Bugs 25–31) — Status: Behoben (Branch: `bugfixes`) ✅
 
-Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-Analyse der WebRTC-/Supabase-Realtime-Schicht ([`SyncProtocol.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/network/SyncProtocol.js), [`RealtimeSyncBridge.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/network/RealtimeSyncBridge.ts), [`RealtimeManager.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/network/RealtimeManager.ts)) identifiziert:
+Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-Analyse der WebRTC-/Supabase-Realtime-Schicht ([`SyncProtocol.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/network/SyncProtocol.js), [`RealtimeSyncBridge.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/network/RealtimeSyncBridge.ts), [`RealtimeManager.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/network/RealtimeManager.ts)) identifiziert und behoben:
 
 ### 25. 🚨 `SyncProtocol.js` – HP-Desynchronisation zwischen DM und Spielern
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Bestehendes Delta-Protokoll filtert HP-Änderungen in `getObjectDiff` heraus, während die geplante Ersatzfunktion `hp_change` im gesamten Code unvollständig/nicht aufgerufen ist).
 - **Kategorie:** Netzwerk-Synchronisation & Trefferpunkte
 - **Betroffene Dateien:** [`js/network/SyncProtocol.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/network/SyncProtocol.js)
 - **Problem:**
-  - In `getObjectDiff` (Zeilen 95–98) werden HP-Felder herausgefiltert:
+  - In `getObjectDiff` (Zeilen 95–98) wurden HP-Felder herausgefiltert:
     ```javascript
     if (key === 'hp' || key === 'tempHP' || key === 'hp-relative') {
       continue;
     }
     ```
   - Die Architektur sah vor, dass relative HP-Änderungen über Pakete vom Typ `hp_change` übertragen werden.
-  - **In der gesamten Codebase existiert jedoch keine Funktion, die `hp_change`-Pakete erzeugt oder sendet.**
-  - Während `getPCStateDiff` (Spieler -> DM) HP manuell anhängt (`diff.hp = pc.hp`), **fehlt dieser Fallback bei `getEncounterStateDiff` (DM -> Spieler) komplett!**
-  - Ändert der DM auf seinem Bildschirm die HP eines Monsters oder eines Spielers, wird `hp` herausgefiltert. Die Clients erhalten **keine HP-Updates**, solange nicht das gesamte Combatant-Array ausgetauscht wird.
+  - In der gesamten Codebase existierte jedoch keine Funktion, die `hp_change`-Pakete erzeugte oder sendete.
+  - Während `getPCStateDiff` (Spieler -> DM) HP manuell anhängte (`diff.hp = pc.hp`), fehlte dieser Fallback bei `getEncounterStateDiff` (DM -> Spieler) komplett!
+  - Änderte der DM auf seinem Bildschirm die HP eines Monsters oder eines Spielers, wurde `hp` herausgefiltert. Die Clients erhielten keine HP-Updates, solange nicht das gesamte Combatant-Array ausgetauscht wurde.
 - **Auswirkungen für Spieler:**
   - Schaden oder Heilung, die der Spielleiter einträgt (z.B. Umweltschaden, Fallen, Gruppenheilung), erscheint auf dem Spielerbogen überhaupt nicht.
 - **Auswirkungen für Spielleiter (DM):**
   - Kritische Desynchronisation: Spieler und DM schauen auf zwei völlig unterschiedliche HP-Stände. Der DM glaubt z.B., ein SC habe noch 40 HP, während der Spieler längst bei 5 HP steht. Der DM trifft fehlerhafte Kampfentscheidungen und tötet Charaktere ungewollt.
-- **Vorgeschlagene Lösung:**
-  - Entweder `hp_change`-Broadcasting in `ConditionManager.applyDamage` einbauen oder `getObjectDiff` HP wieder normal diffen lassen und in `getEncounterStateDiff` explizit übertragen.
+- **Behebung:**
+  - In `getEncounterStateDiff` in `SyncProtocol.js` wird für alle Combatants ein explizites HP-Diffing durchgeführt (`if (c.hp !== cachedC.hp) diff[`combatants.${idx}.hp`] = c.hp;`). Der Spieler -> DM Pfad via `getPCStateDiff` funktionierte bereits und bleibt unberührt.
 
 ### 26. 🚨 `SyncProtocol.js` – DM `state_diff` überschreibt und korrumpiert lokalen PC-State des Spielers
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Kritischer Architektur- und Logikfehler in `applyIncomingDelta`, der lokale Spieler-Bögen mit veralteten DM-Kopien überschreibt).
 - **Kategorie:** Netzwerk-Synchronisation & Client-Zustandssicherung
 - **Betroffene Dateien:** [`js/network/SyncProtocol.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/network/SyncProtocol.js)
 - **Problem:**
-  - Sendet der DM ein `state_diff` (z. B. bei Turn-Wechsel oder Monster-Editierung), wird das `combatants`-Array des Clients via `applyObjectDiff` vollständig durch die Combatants-Liste des DMs ersetzt.
-  - Da der DM in seiner Liste auch den Spieler-Charakter führt, wird der **lokale, detaillierte Charakterbogen des Spielers durch die Kopie des DMs überschrieben**.
-  - Die Schutzabfrage in Zeile 394:
-    ```javascript
-    if (backupPC && !s.combatants.some(c => c.id === backupPC.id))
-    ```
-    greift nur, wenn der Charakter im DM-Array *fehlt*. Da die ID übereinstimmt, wird das Backup nicht wiederhergestellt.
-  - Zudem wird `cachedPCState` auf dem Client nicht aktualisiert, was künftige Diffs des Spielers desynchronisiert.
+  - Sendete der DM ein `state_diff` (z. B. bei Turn-Wechsel oder Monster-Editierung), wurde das `combatants`-Array des Clients via `applyObjectDiff` vollständig durch die Combatants-Liste des DMs ersetzt.
+  - Da der DM in seiner Liste auch den Spieler-Charakter führt, wurde der **lokale, detaillierte Charakterbogen des Spielers durch die Kopie des DMs überschrieben**.
+  - Die Schutzabfrage in Zeile 394 (`if (backupPC && !s.combatants.some(c => c.id === backupPC.id))`) griff nur, wenn der Charakter im DM-Array *fehlt*. Da die ID übereinstimmte, wurde das Backup nicht wiederhergestellt.
 - **Auswirkungen für Spieler:**
-  - Gravierender Datenverlust während des Spiels: Sobald der DM eine Runde weiterschaltet oder ein Monster bearbeitet, werden lokale Eingaben des Spielers (z.B. abgehakte Zauberslots, verbrauchte Tränke, aktivierte Buffs oder gewechselte Waffen) überschrieben und zurückgesetzt.
+  - Gravierender Datenverlust während des Spiels: Sobald der DM eine Runde weiterschaltete oder ein Monster bearbeitete, wurden lokale Eingaben des Spielers (z.B. abgehakte Zauberslots, verbrauchte Tränke, aktivierte Buffs oder gewechselte Waffen) überschrieben und zurückgesetzt.
 - **Auswirkungen für Spielleiter (DM):**
   - Frustration und ständige Beschwerden der Spieler („Mein Bogen hat sich gerade wieder zurückgesetzt!“). Der DM verliert das Vertrauen der Gruppe in die digitale Applikation.
-- **Vorgeschlagene Lösung:**
-  - Bei Eintreffen von `state_diff` auf dem Client den eigenen aktiven PC (`localPCId`) im `combatants`-Array explizit vor dem Überschreiben schützen bzw. nur Fremd-Combatants und DM-Metadaten mergen.
+- **Behebung:**
+  - In `applyIncomingDelta` auf dem Client: Wenn der Host das gesamte `combatants`-Array austauscht, wird der lokale PC mit `backupPC` gemergt, sodass lokale Felder (wie `preparedSpells`, `items`, `feats`, `spellSlots`) unangetastet bleiben, während DM-Zustände (`hp`, `conditions`, `activeBuffs`, `init`) übernommen werden.
+  - Granulare Diffs (z.B. Rundenablauf von Buffs) greifen direkt und werden nicht fälschlich revertiert.
+  - `cachedPCState` wird nach Anwendung des Diffs aktualisiert.
 
 ### 27. `SyncProtocol.js` – Fehlende Initiative-Re-Sortierung beim DM bei `pc_diff`
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Vergessener Aufruf der bestehenden Sortier-Routine `sortCombatants()` nach Eingang von Initiativ-Werten).
 - **Kategorie:** Initiative-Tracker & DM-Screen
 - **Betroffene Dateien:** [`js/network/SyncProtocol.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/network/SyncProtocol.js)
 - **Problem:**
-  - Wenn ein Spieler seine Initiative würfelt, sendet der Client ein `pc_diff` mit `{ init, rawInit }` an den Host.
-  - In `applyIncomingDelta` (Zeile 321) wendet der Host die Werte an, **ruft danach aber niemals `sortCombatants()` auf**.
-  - Die Zahl der Initiative ändert sich zwar auf dem DM-Screen, die **Reihenfolge der Initiative-Leiste (Turn Order) bleibt jedoch unverändert**, bis der DM manuell sortiert oder ein neuer Charakter joint.
+  - Wenn ein Spieler seine Initiative würfelte, sendete der Client ein `pc_diff` mit `{ init, rawInit }` an den Host.
+  - In `applyIncomingDelta` (Zeile 321) wandte der Host die Werte an, **rief danach aber niemals `sortCombatants()` auf**.
+  - Die Zahl der Initiative änderte sich zwar auf dem DM-Screen, die **Reihenfolge der Initiative-Leiste (Turn Order) blieb jedoch unverändert**, bis der DM manuell sortierte oder ein neuer Charakter jointe.
 - **Auswirkungen für Spieler:**
   - Spieler sehen, dass ihr Wurf den Spielleiter erreicht hat, wundern sich aber, warum sie in der Reihenfolge an der falschen Position verharren.
 - **Auswirkungen für Spielleiter (DM):**
   - Der DM muss nach jedem Spielerwurf die Initiative-Leiste manuell neu sortieren. Vergisst er das, ist die Zugreihenfolge des gesamten Encounters fehlerhaft und Runden werden in falscher Reihenfolge gespielt.
-- **Vorgeschlagene Lösung:**
-  - In `applyIncomingDelta` bei `packet.type === 'pc_diff'`: Falls `packet.diff.init !== undefined`, anschließend `EncounterManager.sortCombatants()` aufrufen und `combatants_changed` emitten.
+- **Behebung:**
+  - In `SyncProtocol.js` bei `pc_diff`: Sobald `diff.init` oder `diff.rawInit` enthalten sind, ruft der Host automatisch `EncounterManager.sortCombatants()` auf, emittiert `combatants_changed` und re-rendert die Initiative-Leiste (`uiRegistry.renderInitBar()`).
 
 ### 28. `SyncProtocol.js` & `useCombatState.ts` – Fehlende Stat-Hydrierung für englische Rettungswürfe (`baseFort`, `baseWill`, `fort`, `will`)
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Unvollständige Eigenschaftsliste in `statFields`, wodurch re-hydrierte Objekte ihre Prototypen und Methoden verlieren).
 - **Kategorie:** Stat-Prototypen & Typensicherheit
 - **Betroffene Dateien:** [`js/network/SyncProtocol.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/network/SyncProtocol.js), [`src/hooks/useCombatState.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/hooks/useCombatState.ts)
 - **Problem:**
-  - In beiden Dateien listet das `statFields`-Array nur die deutschen Bezeichnungen:
+  - In beiden Dateien listete das `statFields`-Array nur die deutschen Bezeichnungen:
     ```typescript
     const statFields = [
       'ac', 'acTouch', 'acFlat', 'str', 'dex', 'con', 'int', 'wis', 'cha',
       'baseZa', 'baseRef', 'baseWil', 'bab', 'za', 'ref', 'wil'
     ];
     ```
-  - Die englischen Properties `baseFort`, `baseWill`, `fort`, `will` fehlen.
-  - Werden diese Rettungswürfe über ein Delta übertragen, verbleiben sie als einfache Objekte `{ base: X }` statt `Stat`-Instanzen. Methoden wie `.total`, `.addModifier()` oder `.rebuildStatModifiers()` werfen Fehler, und die Alias-Kopplung (`this.baseZa = this.baseFort`) bricht ab.
+  - Die englischen Properties `baseFort`, `baseWill`, `fort`, `will` fehlten.
+  - Wurden diese Rettungswürfe über ein Delta übertragen, verblieben sie als einfache Plain-Objects `{ base: X }` statt `Stat`-Instanzen. Methoden wie `.total`, `.addModifier()` oder `.rebuildStatModifiers()` warfen Fehler.
 - **Auswirkungen für Spieler:**
-  - Nach Netzwerk-Synchronisationen können Rettungswurf-Komponenten abstürzen oder JavaScript-Fehler werfen (`.total is not a function`), wodurch die Defensiv-Ansicht einfriert.
+  - Nach Netzwerk-Synchronisationen konnten Rettungswurf-Komponenten abstürzen oder JavaScript-Fehler werfen (`.total is not a function`), wodurch die Defensiv-Ansicht einfror.
 - **Auswirkungen für Spielleiter (DM):**
-  - Rettungswürfe von Spielern werden im DM-Sheet nicht mehr dynamisch aktualisiert, wenn Buffs aktiv werden.
-- **Vorgeschlagene Lösung:**
-  - `'baseFort'`, `'baseWill'`, `'fort'`, `'will'` in `statFields` in beiden Dateien aufnehmen.
+  - Rettungswürfe von Spielern wurden im DM-Sheet nicht mehr dynamisch aktualisiert, wenn Buffs aktiv wurden.
+- **Behebung:**
+  - `'baseFort'`, `'baseWill'`, `'fort'`, `'will'` wurden sowohl in `statFields` in `SyncProtocol.js` als auch in `STAT_FIELDS` in `useCombatState.ts` aufgenommen.
 
 ### 29. `CharacterRosterDialog.tsx` – `switchActiveCharacter` sendet kein Sync-Event an den DM
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Vergessener Aufruf von `broadcastActivePC()` nach erfolgreicher Ausführung von `switchActiveCharacter`).
 - **Kategorie:** Roster & Kampagnen-Synchronisation
-- **Betroffene Dateien:** [`src/components/player/CharacterRosterDialog.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/CharacterRosterDialog.tsx), [`src/services/character/CharacterService.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/character/CharacterService.ts)
+- **Betroffene Dateien:** [`src/services/character/CharacterService.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/character/CharacterService.ts), [`src/components/player/CharacterRosterDialog.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/CharacterRosterDialog.tsx)
 - **Problem:**
-  - Wenn ein Spieler während einer laufenden Live-Kampagne im Charakter-Roster zu einem anderen Charakter wechselt, ruft `handleSelectCharacter` nur `characterService.switchActiveCharacter(charId)` auf.
-  - Es wird kein `broadcastActivePC()` ausgeführt. Der Spielleiter sieht auf seinem Tisch weiterhin den alten Charakter. Beim nächsten Rundenschalten schickt der DM den alten Charakter als Teil des Encounter-Diffs zurück.
+  - Wenn ein Spieler während einer laufenden Live-Kampagne im Charakter-Roster zu einem anderen Charakter wechselte, rief `handleSelectCharacter` nur `characterService.switchActiveCharacter(charId)` auf.
+  - Es wurde kein `broadcastActivePC()` ausgeführt. Der Spielleiter sah auf seinem Tisch weiterhin den alten Charakter. Beim nächsten Rundenschalten schickte der DM den alten Charakter als Teil des Encounter-Diffs zurück.
 - **Auswirkungen für Spieler:**
   - Der Spieler wechselt zu seinem Zweit-Charakter oder Begleiter, aber die Aktionen kommen beim Spielleiter für den falschen Charakter an.
 - **Auswirkungen für Spielleiter (DM):**
   - Der DM sieht den alten Charakter auf der Battlemat und leitet den Kampf gegen eine veraltete Spielfigur.
-- **Vorgeschlagene Lösung:**
-  - Nach erfolgreichem `switchActiveCharacter` in `CharacterRosterDialog.tsx` (oder direkt in `CharacterService.switchActiveCharacter`) `broadcastActivePC()` aufrufen.
+- **Behebung:**
+  - In `CharacterService.ts` aktualisiert `switchActiveCharacter(id)` nun sofort `setLocalPCId(id)` und ruft `broadcastActivePC()` auf, sodass der DM und verbundene Clients synchron ohne Verzögerung informiert werden.
 
 ### 30. `RealtimeSyncBridge.ts` – O(N^2) Presence Broadcast-Sturm bei Join/Leave
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Mangelhafte Zustandsprüfung im Presence-Listener, die zu unkontrollierten Broadcast-Kaskaden führt).
 - **Kategorie:** Netzwerk-Performance & WebSocket-Traffic
 - **Betroffene Dateien:** [`src/services/network/RealtimeSyncBridge.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/network/RealtimeSyncBridge.ts)
@@ -552,34 +556,36 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
       }
     }
     ```
-  - Jedes Mal, wenn ein beliebiger Spieler beitritt, den Tab schließt oder die Verbindung neu aushandelt, feuert `onPresenceChange` auf allen verbundenen Clients.
-  - Da der Host anwesend ist (`hasHost === true`), sendet **jeder einzelne Spieler** seinen kompletten Bogen dreifach gestaffelt (0ms, 300ms, 1000ms). Bei 4 Spielern erzeugt ein einziger Presence-Wechsel 12 vollständige PC-Transfers und unzählige DM-Speicherungen/Diff-Kaskaden.
+  - Jedes Mal, wenn ein beliebiger Spieler beitrat, den Tab schloss oder die Verbindung neu aushandelte, feuerte `onPresenceChange` auf allen verbundenen Clients.
+  - Da der Host anwesend war (`hasHost === true`), sendete **jeder einzelne Spieler** seinen kompletten Bogen dreifach gestaffelt. Bei 4 Spielern erzeugte ein einziger Presence-Wechsel 12 vollständige PC-Transfers und unzählige DM-Speicherungen/Diff-Kaskaden.
 - **Auswirkungen für Spieler:**
-  - Spürbare Lags, UI-Stottern und Verbindungsabbrüche, sobald Mitspieler den Browser minimieren oder Tabs wechseln.
+  - Spürbare Lags, UI-Stottern und Verbindungsabbrüche, sobald Mitspieler den Browser minimierten oder Tabs wechselten.
 - **Auswirkungen für Spielleiter (DM):**
-  - Der Host-Browser wird mit Dutzenden gleichzeitigen `pc_sync`-Paketen bombardiert. Die wiederholten `saveToStorage()`- und Diff-Berechnungen führen zu hoher CPU-Last und können den DM-Screen einfrieren lassen.
-- **Vorgeschlagene Lösung:**
-  - `broadcastActivePC()` nur dann aufrufen, wenn der Host *neu hinzugekommen* ist (Transition von `!hadHost` zu `hasHost`), oder gezielt auf ein `request_pc_sync`-Event des Hosts antworten.
+  - Der Host-Browser wurde mit Dutzenden gleichzeitigen `pc_sync`-Paketen bombardiert. Die wiederholten `saveToStorage()`- und Diff-Berechnungen führten zu hoher CPU-Last und konnten den DM-Screen einfrieren lassen.
+- **Behebung:**
+  - In `RealtimeSyncBridge.ts` wird nun über `previousHostPresent` getrackt, ob der Host bereits online war. `broadcastActivePC()` wird nur noch bei einer echten Zustandsänderung von Offline zu Online (`!previousHostPresent && hasHost`) ausgeführt.
 
 ### 31. `state-core.js` – Identitätsverlust bei Browser-Reload (`localPCId` nicht persistent)
-- **Status:** **Offen (Identifiziert im Deep Audit)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Fehlende Persistierung einer flüchtigen Session-Variable führt zu falschem Fallback auf den ersten Charakter der Liste).
 - **Kategorie:** Session-Persistenz & Multi-PC-Handling
-- **Betroffene Dateien:** [`js/state/state-core.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/state/state-core.js)
+- **Betroffene Dateien:** [`js/state/state-core.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/state/state-core.js), [`src/services/character/CharacterService.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/character/CharacterService.ts)
 - **Problem:**
-  - `localPCId` ist eine flüchtige Modul-Variable (`let localPCId = null;`).
-  - Beim Neuladen der Seite (F5) ist `localPCId` zunächst `null`.
-  - In `getActivePC()` (Zeilen 73 & 85) greift der Fallback:
+  - `localPCId` war eine flüchtige Modul-Variable (`let localPCId = null;`).
+  - Beim Neuladen der Seite (F5) war `localPCId` zunächst `null`.
+  - In `getActivePC()` (Zeilen 73 & 85) griff der Fallback:
     ```javascript
     const pc = s.combatants.find(c => c.type === 'p');
     ```
-  - Wenn `s.combatants` durch vorherige Kampagnen-Synchronisation mehrere Spieler-Charaktere der Party enthält, wird dem Nutzer stets der **erste** Spieler-Charakter der Liste zugewiesen. Ein Spieler von Charakter 3 wird nach F5 plötzlich zu Charakter 1.
+  - Wenn `s.combatants` durch vorherige Kampagnen-Synchronisation mehrere Spieler-Charaktere der Party enthielt, wurde dem Nutzer stets der **erste** Spieler-Charakter der Liste zugewiesen. Ein Spieler von Charakter 3 wurde nach F5 plötzlich zu Charakter 1.
 - **Auswirkungen für Spieler:**
   - Katastrophale Benutzererfahrung: Nach einem versehentlichen F5 oder Page-Reload steuert der Spieler plötzlich den Charakter eines Mitspielers. Ändert er HP oder Ressourcen, verändert er den falschen Helden.
 - **Auswirkungen für Spielleiter (DM):**
   - Vollständiges Durcheinander am Spieltisch, weil mehrere Spieler denselben Charakter bedienen und Daten überschreiben.
-- **Vorgeschlagene Lösung:**
-  - `localPCId` in `localStorage` sichern und beim Start vor dem Fallback auf `find(c => c.type === 'p')` auslesen.
+- **Behebung:**
+  - `localPCId` wird nun dauerhaft im `localStorage` unter dem Schlüssel `'dd_local_pc_id'` gesichert.
+  - `getActivePC()` prüft vor dem allgemeinen Fallback auf `find(c => c.type === 'p')` den gespeicherten Wert aus dem `localStorage`.
+  - Bei Charakter-Wechseln und -Aktivierungen synchronisiert `CharacterService.ts` diesen Schlüssel konsistent mit.
 
 ---
 
