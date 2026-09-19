@@ -289,11 +289,8 @@ export function usePCItemAction(itemIdx, customHealAmount) {
         const numDice = parseInt(match[1]) || 1;
         const dieSize = parseInt(match[2]) || 8;
         const bonus = parseInt(match[3]) || 0;
-        let rolledSum = 0;
-        for (let i = 0; i < numDice; i++) {
-          rolledSum += Math.floor(Math.random() * dieSize) + 1;
-        }
-        healAmount = rolledSum + bonus;
+        // Tabletop rule: no dice bot. Use deterministic average if no table roll input was provided.
+        healAmount = Math.floor(numDice * ((dieSize + 1) / 2)) + bonus;
       } else {
         healAmount = 5;
       }

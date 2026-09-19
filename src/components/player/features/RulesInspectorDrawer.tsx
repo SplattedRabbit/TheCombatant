@@ -238,7 +238,7 @@ export const RulesInspectorDrawer: React.FC<RulesInspectorDrawerProps> = ({
             cursor: 'pointer',
           }}
         >
-          <span>🎲</span> Roll Wild Empathy Check
+          <span>🐾</span> Wild Empathy (1d20 Formel)
         </button>
       )}
 

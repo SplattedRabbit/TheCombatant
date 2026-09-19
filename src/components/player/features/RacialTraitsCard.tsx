@@ -37,34 +37,26 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
 
   const handleRepair = (dc: number, healDice: '1d4' | '1d8') => {
     if (repairAbility && usedSlots >= maxSlots) {
-      showCustomAlert('Error', 'You have already used all of your repairs for today.', 'OK', '❌');
+      showCustomAlert('Fehler', 'Alle täglichen Reparaturen für heute sind bereits verbraucht.', 'OK', '❌');
       return;
     }
 
-    const d20 = Math.floor(Math.random() * 20) + 1;
-    const totalRoll = d20 + totalMod;
-    const success = totalRoll >= dc;
-
-    let resultMsg = `Craft Check: 1d20 (${d20}) + Mod (${totalMod}) = <strong>${totalRoll}</strong> vs DC ${dc}.<br/><br/>`;
-
-    if (success) {
-      const sides = healDice === '1d4' ? 4 : 8;
-      const healRoll = Math.floor(Math.random() * sides) + 1;
-      resultMsg += `<strong>Success!</strong> You heal <strong>${healRoll}</strong> Hit Points.`;
-      
-      CombatState.applyDamage(pc.id, healRoll, true, false);
-      
-      if (repairAbilityIdx >= 0) {
-        CombatState.updatePCDailyAbilityUsed(repairAbilityIdx, 1);
-      }
-      showCustomAlert('Repair Successful 🛠️', resultMsg, 'Done', '✅');
-    } else {
-      resultMsg += `<strong>Failure!</strong> The repair was unsuccessful.`;
-      if (repairAbilityIdx >= 0) {
-        CombatState.updatePCDailyAbilityUsed(repairAbilityIdx, 1);
-      }
-      showCustomAlert('Repair Failed 🛠️', resultMsg, 'OK', '❌');
+    if (repairAbilityIdx >= 0) {
+      CombatState.updatePCDailyAbilityUsed(repairAbilityIdx, 1);
     }
+
+    const modSign = totalMod >= 0 ? `+${totalMod}` : `${totalMod}`;
+    const resultMsg = `<div style="text-align:center; font-size:11px; line-height:1.5;">
+      <div style="font-size:20px; font-weight:bold; color:var(--red); margin-bottom:6px;">1d20 ${modSign} vs DC ${dc}</div>
+      <div><strong>Handwerks-Wurf (Craft):</strong> 1d20 ${modSign} (am Tisch auswürfeln)</div>
+      <div><strong>Schwierigkeitsgrad:</strong> DC ${dc}</div>
+      <div style="margin-top:8px;"><strong>Bei Erfolg:</strong> Heilt <strong>${healDice} HP</strong> (am Tisch auswürfeln und manuell im Bogen eintragen).</div>
+      <div style="margin-top:8px; font-size:9.5px; color:var(--inkm); font-style:italic;">
+        Dauer: 1 Stunde Arbeit mit Handwerkswerkzeug. 1 Reparatur verbraucht (${usedSlots + 1} / ${maxSlots}).
+      </div>
+    </div>`;
+
+    showCustomAlert('Manuelle Reparatur (Living Construct) 🛠️', resultMsg, 'Verstanden', '🛠️');
   };
 
   const getRacialTraitsContent = () => {
