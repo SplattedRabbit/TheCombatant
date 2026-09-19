@@ -9,6 +9,8 @@ import { Combatant } from '../js/models/Combatant.js';
 import { Weapon } from '../js/models/Weapon.js';
 import { AttackEngine } from '../js/rules/AttackEngine.js';
 import { CombatSpells } from '../js/spells.js';
+import { resolveSpellEffectValue } from '../js/rules/BuffRules.js';
+import { resolveModifierStacking } from '../js/models/helpers/modifiers/ModifierStacking.js';
 
 // Setup spell registry from spells_de.json to mimic the runtime app
 const __filename = fileURLToPath(import.meta.url);
@@ -241,4 +243,56 @@ test('Buff Stacking - No double-application for buffs with both spellKey and eff
   pc.weapons = [sword];
   const seq = AttackEngine.calculateAttackSequence(pc, sword, false);
   assert.strictEqual(seq[0].atkTotal, 6, 'Attack total should be 6 (haste applied once)');
+});
+
+test('Buff Stacking - Barkskin Natural Armor Enhancement & Modifier Stacking', () => {
+  // 1. Formula scaling: min +2, max +5 (1 + floor(CL/3))
+  assert.strictEqual(resolveSpellEffectValue('barkskin', 3, 2), 2);
+  assert.strictEqual(resolveSpellEffectValue('barkskin', 6, 2), 3);
+  assert.strictEqual(resolveSpellEffectValue('barkskin', 9, 2), 4);
+  assert.strictEqual(resolveSpellEffectValue('barkskin', 12, 2), 5);
+  assert.strictEqual(resolveSpellEffectValue('barkskin', 18, 2), 5);
+
+  // 2. Stacking: Barkskin (natural_enhancement +3) vs Amulet of Natural Armor (natural_enhancement +2) -> only +3 applies
+  // Base natural armor (natural +2) + Barkskin (natural_enhancement +3) -> stacks to +5
+  const modifiers = [
+    { value: 2, type: 'natural', source: 'Lizardfolk Natural Armor' },
+    { value: 3, type: 'natural_enhancement', source: 'Barkskin (CL 9)' },
+    { value: 2, type: 'natural_enhancement', source: 'Amulet of Natural Armor +2' }
+  ];
+
+  const result = resolveModifierStacking(modifiers);
+  assert.strictEqual(result.total, 5, 'Natural armor (2) + highest enhancement (3) should equal 5');
+});
+
+test('Buff Stacking - Righteous Might natural_enhancement type and CL formula bounds', () => {
+  // 1. Verify spells-phb.json type
+  const rmSpell = CombatSpells.REGISTRY['righteous_might'];
+  assert.ok(rmSpell, 'righteous_might must exist in spells-phb.json');
+  const acEffect = rmSpell.effects.find(e => e.target === 'acNatural');
+  assert.ok(acEffect, 'righteous_might must have acNatural effect');
+  assert.strictEqual(acEffect.type, 'natural_enhancement', 'acNatural effect must be typed natural_enhancement');
+
+  // 2. Verify BuffRules formula bounds
+  assert.strictEqual(resolveSpellEffectValue('righteous_might_na', 1, 2), 2, 'CL 1 must floor at +2');
+  assert.strictEqual(resolveSpellEffectValue('righteous_might_na', 8, 2), 2, 'CL 8 must floor at +2');
+  assert.strictEqual(resolveSpellEffectValue('righteous_might_na', 9, 2), 2, 'CL 9 must be +2');
+  assert.strictEqual(resolveSpellEffectValue('righteous_might_na', 12, 2), 3, 'CL 12 must be +3');
+  assert.strictEqual(resolveSpellEffectValue('righteous_might_na', 15, 2), 4, 'CL 15 must be +4');
+  assert.strictEqual(resolveSpellEffectValue('righteous_might_na', 18, 2), 5, 'CL 18 must be +5');
+  assert.strictEqual(resolveSpellEffectValue('righteous_might_na', 24, 2), 5, 'CL 24 must cap at +5');
+});
+
+test('Buff Stacking - magic_vestment & magic_weapon_greater floor at +1 for CL 1-3', () => {
+  assert.strictEqual(resolveSpellEffectValue('magic_vestment', 1, 0), 1, 'CL 1 must be minimum +1');
+  assert.strictEqual(resolveSpellEffectValue('magic_vestment', 3, 0), 1, 'CL 3 must be minimum +1');
+  assert.strictEqual(resolveSpellEffectValue('magic_vestment', 4, 0), 1, 'CL 4 must be +1');
+  assert.strictEqual(resolveSpellEffectValue('magic_vestment', 8, 0), 2, 'CL 8 must be +2');
+  assert.strictEqual(resolveSpellEffectValue('magic_vestment', 12, 0), 3, 'CL 12 must be +3');
+  assert.strictEqual(resolveSpellEffectValue('magic_vestment', 20, 0), 5, 'CL 20 must be +5');
+
+  assert.strictEqual(resolveSpellEffectValue('magic_weapon_greater', 1, 0), 1, 'CL 1 must be minimum +1');
+  assert.strictEqual(resolveSpellEffectValue('magic_weapon_greater', 3, 0), 1, 'CL 3 must be minimum +1');
+  assert.strictEqual(resolveSpellEffectValue('magic_weapon_greater', 6, 0), 1, 'CL 6 must be +1');
+  assert.strictEqual(resolveSpellEffectValue('magic_weapon_greater', 8, 0), 2, 'CL 8 must be +2');
 });

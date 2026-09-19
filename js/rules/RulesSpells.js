@@ -177,7 +177,8 @@ export function calculateMaxSpellSlots(pc) {
         }
 
         // Specialist Wizard bonus (+1 slot per level) - also ONLY applies to spell levels 1-9
-        if (c.classType === 'wizard' && pc.wizardSpecialization !== 'none' && lvl > 0 && base > 0) {
+        const isSpecialist = Boolean(pc.wizardSpecialization && pc.wizardSpecialization !== 'none');
+        if (c.classType === 'wizard' && isSpecialist && lvl > 0 && base > 0) {
           classSlots += 1;
         }
 

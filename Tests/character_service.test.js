@@ -71,4 +71,32 @@ describe('CharacterService Test Suite', () => {
     assert.equal(imported.name, 'Altheld');
     assert.equal(imported.level, 3);
   });
+
+  test('4.6.1.4 Löschung des einzigen aktiven Helden: Bereinigt State-Key und erzeugt sicheren Fallback-Helden ohne Zombie-Status', async () => {
+    // 1. Create a character
+    const char1 = await service.createCharacter({
+      name: 'Held Zur Loeschung',
+      race: 'Dwarf',
+      classSummary: 'Krieger 1',
+      level: 1
+    });
+    await service.switchActiveCharacter(char1.id);
+
+    // Verify stored in storage
+    assert.ok(globalThis.localStorage.getItem(`dd_character_${char1.id}`));
+
+    // 2. Delete the only active character
+    await service.deleteCharacter(char1.id);
+
+    // 3. Verify character is completely removed from storage
+    assert.strictEqual(globalThis.localStorage.getItem(`dd_character_${char1.id}`), null, 'Character record must be deleted');
+
+    // 4. Verify listCharacters does NOT contain the deleted character as zombie
+    const remaining = await service.listCharacters();
+    assert.strictEqual(remaining.some((c) => c.id === char1.id), false, 'Deleted character ID must not exist in list');
+
+    // 5. A fresh Hero must have been created
+    assert.ok(remaining.length >= 1, 'A fallback Hero must exist');
+    assert.strictEqual(remaining[0].name, 'Hero', 'Fallback character is named Hero');
+  });
 });

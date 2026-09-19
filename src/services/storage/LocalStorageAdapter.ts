@@ -303,27 +303,29 @@ export class LocalStorageAdapter implements IStorageAdapter {
       const defaultState = this.loadState();
       if (defaultState) {
         const pc = (defaultState?.combatants || []).find((c: any) => c.type === 'p') || defaultState;
-        const name = pc?.name || 'Hero';
-        const race = pc?.race || 'Human';
-        const classSummary = pc?.classSummary || pc?.class_summary || '';
-        const level = typeof pc?.level === 'number' ? pc.level : 1;
-        const hpCurrent = typeof pc?.hp === 'number' ? pc.hp : 10;
-        const hpMax = typeof pc?.maxHP === 'number' ? pc.maxHP : 10;
-        const defaultId = pc?.id || 'local-default';
+        if (pc && (pc.name || Array.isArray(pc.classes) || pc.level)) {
+          const name = pc?.name || 'Hero';
+          const race = pc?.race || 'Human';
+          const classSummary = pc?.classSummary || pc?.class_summary || '';
+          const level = typeof pc?.level === 'number' ? pc.level : 1;
+          const hpCurrent = typeof pc?.hp === 'number' ? pc.hp : 10;
+          const hpMax = typeof pc?.maxHP === 'number' ? pc.maxHP : 10;
+          const defaultId = pc?.id || 'local-default';
 
-        summaries.push({
-          id: defaultId,
-          userId: 'local-guest',
-          name,
-          race,
-          classSummary,
-          level,
-          hp: { current: hpCurrent, max: hpMax },
-          isActive: true,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-          isCurrentActive: true,
-        });
+          summaries.push({
+            id: defaultId,
+            userId: 'local-guest',
+            name,
+            race,
+            classSummary,
+            level,
+            hp: { current: hpCurrent, max: hpMax },
+            isActive: true,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            isCurrentActive: true,
+          });
+        }
       }
     }
 
@@ -339,7 +341,40 @@ export class LocalStorageAdapter implements IStorageAdapter {
       this.setCharacterIndex(index);
 
       if (this.activeCharacterId === characterId) {
-        this.setActiveCharacterId(index.length > 0 ? index[0] : null);
+        const nextActiveId = index.length > 0 ? index[0] : null;
+        this.setActiveCharacterId(nextActiveId);
+        if (nextActiveId) {
+          const nextData = this.loadCharacter(nextActiveId);
+          if (nextData) {
+            storage.setItem(this.storageKey, JSON.stringify(nextData));
+          } else {
+            storage.removeItem(this.storageKey);
+          }
+        } else {
+          storage.removeItem(this.storageKey);
+        }
+      } else {
+        try {
+          const raw = storage.getItem(this.storageKey);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            const pc = (parsed?.combatants || []).find((c: any) => c.type === 'p') || parsed;
+            if (pc?.id === characterId) {
+              if (index.length > 0) {
+                const nextData = this.loadCharacter(index[0]);
+                if (nextData) {
+                  storage.setItem(this.storageKey, JSON.stringify(nextData));
+                } else {
+                  storage.removeItem(this.storageKey);
+                }
+              } else {
+                storage.removeItem(this.storageKey);
+              }
+            }
+          }
+        } catch {
+          // ignore parsing error
+        }
       }
 
       this.notify('saved');

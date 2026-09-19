@@ -8,6 +8,9 @@ import { SpellSlotCalculator } from '../js/rules/SpellSlotCalculator.js';
 import { Stat } from '../js/models/Stat.js';
 import { CombatRules } from '../js/rules.js';
 import { Combatant } from '../js/models/Combatant.js';
+import { Armor } from '../js/models/Armor.js';
+import { applyClassModifiers } from '../js/models/helpers/modifiers/ClassModifierApplier.js';
+import { calculateMaxSpellSlots } from '../js/rules/RulesSpells.js';
 
 test('BABCalculator - Einzelklassen-Berechnung', () => {
   // Fighter Level 3 (guter BAB-Verlauf): BAB = 3
@@ -126,6 +129,28 @@ test('SpellSlotCalculator - Spezialistenmagier Bonuszauberplätze', () => {
   assert.strictEqual(slots[2], 4);
   assert.strictEqual(slots[3], 3);
   assert.strictEqual(slots[4], 0);
+});
+
+test('SpellSlotCalculator - Generalistenmagier (undefined/"none") erhält keinen Spezialisten-Bonusplatz', () => {
+  const generalistUndefined = {
+    classes: [{ classType: 'wizard', level: 5 }],
+    int: 16,
+    wizardSpecialization: undefined
+  };
+  const slotsGenUndef = calculateMaxSpellSlots(generalistUndefined);
+  assert.strictEqual(slotsGenUndef[1], 4, 'Generalist wizard (undefined spec) has 4 Lvl 1 slots, NOT 5');
+  assert.strictEqual(slotsGenUndef[2], 3, 'Generalist wizard (undefined spec) has 3 Lvl 2 slots, NOT 4');
+  assert.strictEqual(slotsGenUndef[3], 2, 'Generalist wizard (undefined spec) has 2 Lvl 3 slots, NOT 3');
+
+  const generalistNone = {
+    classes: [{ classType: 'wizard', level: 5 }],
+    int: 16,
+    wizardSpecialization: 'none'
+  };
+  const slotsGenNone = calculateMaxSpellSlots(generalistNone);
+  assert.strictEqual(slotsGenNone[1], 4, 'Generalist wizard ("none" spec) has 4 Lvl 1 slots');
+  assert.strictEqual(slotsGenNone[2], 3, 'Generalist wizard ("none" spec) has 3 Lvl 2 slots');
+  assert.strictEqual(slotsGenNone[3], 2, 'Generalist wizard ("none" spec) has 2 Lvl 3 slots');
 });
 
 test('SpellSlotCalculator - Multiklassen-Zauberer und Nicht-Zauberer', () => {
@@ -345,5 +370,58 @@ test('Animal Companion - Scaling rules (Wolf at Level 1 and 6)', async () => {
   assert.strictEqual(wolfLvl6.maxHP, 39, `Wolf Max HP at level 6 should be 39, but was ${wolfLvl6.maxHP}`);
   assert.strictEqual(wolfLvl6.attacks[0].bonus, 7, `Wolf bite bonus at level 6 should be +7, but was +${wolfLvl6.attacks[0].bonus}`);
   assert.strictEqual(wolfLvl6.attacks[0].damage, '1d6+3', `Wolf bite damage at level 6 should be 1d6+3, but was ${wolfLvl6.attacks[0].damage}`);
+});
+
+test('ClassModifiers - Monk und Ninja RK-Bonus entfällt bei getragener Rüstung oder Schild', () => {
+  const pcMonk = new Combatant({
+    id: 'monk-tester',
+    name: 'Monk AC Tester',
+    type: 'p',
+    wis: 16, // +3 mod
+    classes: [{ classType: 'monk', level: 5 }] // level 5 grants +1 Monk level AC
+  });
+  const getMod = (stat) => (stat?.mod !== undefined ? stat.mod : Math.floor(((stat?.getValue ? stat.getValue() : parseInt(stat) || 10) - 10) / 2));
+
+  // 1. Unarmored & Unshielded: Full Monk AC bonus (+3 wis + 1 level = +4)
+  applyClassModifiers(pcMonk, getMod);
+  assert.strictEqual(pcMonk.ac.getValue(), 14, 'Unarmored Monk gets +4 AC bonus (10 + 4)');
+
+  // 2. Equipped Body Armor: Monk AC bonus suspended
+  const breastplate = new Armor({ type: 'breastplate', isEquipped: true });
+  pcMonk.armors = [breastplate];
+  pcMonk.ac.modifiers = [];
+  pcMonk.acTouch.modifiers = [];
+  pcMonk.acFlat.modifiers = [];
+  applyClassModifiers(pcMonk, getMod);
+  assert.strictEqual(pcMonk.ac.modifiers.some(m => m.source === 'Monk AC Bonus'), false, 'Monk AC bonus must NOT be applied with armor equipped');
+
+  // 3. Equipped Shield: Monk AC bonus suspended
+  const shield = new Armor({ type: 'shield_heavy_steel', isEquipped: true });
+  pcMonk.armors = [shield];
+  pcMonk.ac.modifiers = [];
+  pcMonk.acTouch.modifiers = [];
+  pcMonk.acFlat.modifiers = [];
+  applyClassModifiers(pcMonk, getMod);
+  assert.strictEqual(pcMonk.ac.modifiers.some(m => m.source === 'Monk AC Bonus'), false, 'Monk AC bonus must NOT be applied with shield equipped');
+
+  // 4. Ninja: Unarmored gets bonus, armored loses bonus, but Ki power will bonus remains
+  const pcNinja = new Combatant({
+    id: 'ninja-tester',
+    name: 'Ninja AC Tester',
+    type: 'p',
+    wis: 16,
+    classes: [{ classType: 'ninja', level: 5 }]
+  });
+  applyClassModifiers(pcNinja, getMod);
+  assert.strictEqual(pcNinja.ac.getValue(), 14, 'Unarmored Ninja gets +4 AC bonus');
+  assert.strictEqual(pcNinja.wil.modifiers.some(m => m.source === 'Ki Power (Will Save Bonus)'), true, 'Ki Power Will save active');
+
+  // Equip armor on Ninja
+  pcNinja.armors = [breastplate];
+  pcNinja.ac.modifiers = [];
+  pcNinja.wil.modifiers = [];
+  applyClassModifiers(pcNinja, getMod);
+  assert.strictEqual(pcNinja.ac.modifiers.some(m => m.source === 'Ninja AC Bonus'), false, 'Ninja AC bonus suspended with armor');
+  assert.strictEqual(pcNinja.wil.modifiers.some(m => m.source === 'Ki Power (Will Save Bonus)'), true, 'Ki Power Will save remains active');
 });
 

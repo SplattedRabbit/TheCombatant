@@ -257,16 +257,22 @@ export class CharacterService {
   public async deleteCharacter(characterId: string): Promise<void> {
     const adapter = storageService.getAdapter();
     const currentActiveId = typeof adapter.getActiveCharacterId === 'function' ? adapter.getActiveCharacterId() : null;
+    const currentPC = getActivePC();
+    const isCurrentlyActive = currentActiveId === characterId || (currentPC && currentPC.id === characterId);
 
     if (typeof adapter.deleteCharacter === 'function') {
       const res = adapter.deleteCharacter(characterId);
       if (res instanceof Promise) await res;
     }
 
-    if (currentActiveId === characterId) {
-      const remaining = await this.listCharacters();
+    if (isCurrentlyActive) {
+      const remaining = (await this.listCharacters()).filter((c) => c.id !== characterId);
       if (remaining.length > 0) {
-        await this.switchActiveCharacter(remaining[0].id);
+        const switched = await this.switchActiveCharacter(remaining[0].id);
+        if (!switched) {
+          const fresh = await this.createCharacter({ name: 'Hero' });
+          await this.switchActiveCharacter(fresh.id);
+        }
       } else {
         const fresh = await this.createCharacter({ name: 'Hero' });
         await this.switchActiveCharacter(fresh.id);

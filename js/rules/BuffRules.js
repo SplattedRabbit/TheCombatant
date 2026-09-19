@@ -65,10 +65,10 @@ export function resolveSpellEffectValue(formula, casterLevel, defaultValue) {
     case 'divine_favor':
       return Math.max(1, Math.min(3, Math.floor(cl / 3)));
     case 'righteous_might_na':
-      return Math.min(5, 2 + Math.floor((cl - 9) / 3));
+      return Math.max(2, Math.min(5, 2 + Math.floor((cl - 9) / 3)));
     case 'magic_vestment':
     case 'magic_weapon_greater':
-      return Math.min(5, Math.floor(cl / 4));
+      return Math.max(1, Math.min(5, Math.floor(cl / 4)));
     case 'draconic_aura':
     case 'dragon_aura':
       return Math.min(5, Math.max(1, 1 + Math.floor(cl / 5)));

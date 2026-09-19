@@ -11,8 +11,8 @@
 export function applyFeatModifiers(pc, getMod) {
   if (pc.type === 'p') {
     // E. Rettungswurf-Talente (Great Fortitude, Lightning Reflexes, Iron Will)
-    if (Array.isArray(pc.feats)) {
-      const hasFeat = (featId) => pc.feats.some(f => f.id === featId);
+    if (Array.isArray(pc.feats) || typeof pc.hasFeat === 'function') {
+      const hasFeat = (featId) => (typeof pc.hasFeat === 'function' ? pc.hasFeat(featId) : (Array.isArray(pc.feats) && pc.feats.some(f => (typeof f === 'string' ? f === featId : f?.id === featId))));
       if (hasFeat('great_fortitude')) {
         pc.za.addModifier(2, "untyped", "Große Zähigkeit");
         pc.za.modifiers[pc.za.modifiers.length - 1].isFeat = true;

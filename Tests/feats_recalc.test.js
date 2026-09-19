@@ -7,6 +7,8 @@ import { Weapon } from '../js/models/Weapon.js';
 import { AttackEngine } from '../js/rules/AttackEngine.js';
 import { checkFeatPrerequisites } from '../js/data/feats-data.js';
 import { recalculateDailyAbilities } from '../js/state/PCManager.js';
+import { applyFeatModifiers } from '../js/models/helpers/modifiers/FeatModifierApplier.js';
+import { applyFeatSkillBonuses } from '../js/models/helpers/skills/SkillFeatApplier.js';
 
 test('Feat Automation - Skill Feats (+2 passive bonuses)', () => {
   const pc = new Combatant({
@@ -661,6 +663,48 @@ test('Feats - Allocation and priority validation (Fighter vs General slots)', as
   const validationB = CombatRules.validateFeatsAssignment(pc, invalidFeats);
   assert.strictEqual(validationB.success, false, 'Validation should fail for too many general feats');
   assert.ok(validationB.error.includes('Invalid feat selection') || validationB.error.includes('General feat limit exceeded') || validationB.error.includes('Talentwahl ungültig') || validationB.error.includes('Limit für allgemeine Talente'), `Error message should explain slot mismatch: "${validationB.error}"`);
+});
+
+test('Feat Automation - Polymorphism supports string arrays and object arrays seamlessly', () => {
+  const pc = new Combatant({
+    id: 'test-feat-poly',
+    name: 'Feat Poly Tester',
+    type: 'p',
+    feats: ['great_fortitude', 'iron_will', 'lightning_reflexes', 'dodge', 'alertness']
+  });
+
+  // Combatant.hasFeat
+  assert.strictEqual(pc.hasFeat('great_fortitude'), true, 'hasFeat must find string feat');
+  assert.strictEqual(pc.hasFeat('iron_will'), true, 'hasFeat must find string feat');
+  assert.strictEqual(pc.hasFeat('dodge'), true, 'hasFeat must find string feat');
+  assert.strictEqual(pc.hasFeat('non_existent'), false, 'hasFeat returns false for non-existent feat');
+
+  // FeatModifierApplier
+  applyFeatModifiers(pc, (stat) => (stat?.mod !== undefined ? stat.mod : 0));
+  assert.strictEqual(pc.za.getValue(), 2, 'Great Fortitude adds +2 untyped to Fortitude (0 base + 2 = 2)');
+  assert.strictEqual(pc.wil.getValue(), 2, 'Iron Will adds +2 untyped to Will (0 base + 2 = 2)');
+  assert.strictEqual(pc.ref.getValue(), 2, 'Lightning Reflexes adds +2 untyped to Reflex (0 base + 2 = 2)');
+  assert.strictEqual(pc.ac.getValue(), 11, 'Dodge adds +1 dodge bonus to AC (10 base + 1 = 11)');
+  assert.strictEqual(pc.acTouch.getValue(), 11, 'Dodge adds +1 dodge bonus to Touch AC');
+
+  // SkillFeatApplier
+  const spotBonus = applyFeatSkillBonuses(pc, 'spot', { nameDe: 'Entdecken' });
+  assert.strictEqual(spotBonus, 2, 'Alertness string feat grants +2 to spot');
+  const listenBonus = applyFeatSkillBonuses(pc, 'listen', { nameDe: 'Lauschen' });
+  assert.strictEqual(listenBonus, 2, 'Alertness string feat grants +2 to listen');
+
+  // Object feats still work (backward compatibility)
+  const pcObj = new Combatant({
+    id: 'test-feat-obj',
+    name: 'Feat Obj Tester',
+    type: 'p',
+    feats: [{ id: 'great_fortitude' }, { id: 'dodge' }]
+  });
+  assert.strictEqual(pcObj.hasFeat('great_fortitude'), true);
+  assert.strictEqual(pcObj.hasFeat('dodge'), true);
+  applyFeatModifiers(pcObj, (stat) => (stat?.mod !== undefined ? stat.mod : 0));
+  assert.strictEqual(pcObj.za.getValue(), 2);
+  assert.strictEqual(pcObj.ac.getValue(), 11);
 });
 
 

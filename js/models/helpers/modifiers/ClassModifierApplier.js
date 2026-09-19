@@ -9,6 +9,7 @@
  */
 
 import { BarbarianRules } from '../../../rules/classes/BarbarianRules.js';
+import { isShieldItem } from '../../Armor.js';
 
 export function applyClassModifiers(pc, getMod) {
   if (pc.type === 'p' && Array.isArray(pc.classes)) {
@@ -23,10 +24,19 @@ export function applyClassModifiers(pc, getMod) {
       });
     }
 
-    // B. Monk: Wisdom AC Bonus & Level AC Bonus (No armor/shield check)
+    // Monk and Ninja AC bonus requires character to be unarmored and unshielded (RAW: PHB p. 40, Complete Adventurer p. 6)
+    const hasArmor = typeof pc.getEquippedArmor === 'function'
+      ? !!pc.getEquippedArmor()
+      : (Array.isArray(pc.armors) && pc.armors.some(a => a.isEquipped && !isShieldItem(a)));
+    const hasShield = typeof pc.getEquippedShield === 'function'
+      ? !!pc.getEquippedShield()
+      : (Array.isArray(pc.armors) && pc.armors.some(a => a.isEquipped && isShieldItem(a)));
+    const isUnarmoredAndUnshielded = !hasArmor && !hasShield;
+
+    // B. Monk: Wisdom AC Bonus & Level AC Bonus (Requires unarmored and unshielded)
     const monkClass = pc.classes.find(c => c.classType === 'monk');
     let monkWisApplied = false;
-    if (monkClass && monkClass.level >= 1) {
+    if (monkClass && monkClass.level >= 1 && isUnarmoredAndUnshielded) {
       const wisMod = getMod(pc.wis);
       const levelBonus = Math.floor(monkClass.level / 5);
       const totalMonkAC = Math.max(0, wisMod) + levelBonus;
@@ -41,20 +51,22 @@ export function applyClassModifiers(pc, getMod) {
       }
     }
 
-    // B2. Ninja: Wisdom AC Bonus & Level AC Bonus (Complete Adventurer RAW: unarmored, non-stacking with Monk Wis)
+    // B2. Ninja: Wisdom AC Bonus & Level AC Bonus (Complete Adventurer RAW: unarmored and unshielded, non-stacking with Monk Wis)
     const ninjaClass = pc.classes.find(c => c.classType === 'ninja');
     if (ninjaClass && ninjaClass.level >= 1) {
       const wisMod = getMod(pc.wis);
-      const ninjaWis = monkWisApplied ? 0 : Math.max(0, wisMod);
-      const ninjaLevelBonus = Math.floor(ninjaClass.level / 5);
-      const totalNinjaAC = ninjaWis + ninjaLevelBonus;
+      if (isUnarmoredAndUnshielded) {
+        const ninjaWis = monkWisApplied ? 0 : Math.max(0, wisMod);
+        const ninjaLevelBonus = Math.floor(ninjaClass.level / 5);
+        const totalNinjaAC = ninjaWis + ninjaLevelBonus;
 
-      if (totalNinjaAC > 0) {
-        const acs = [pc.ac, pc.acTouch, pc.acFlat];
-        acs.forEach(s => {
-          s.addModifier(totalNinjaAC, "untyped", "Ninja AC Bonus");
-          s.modifiers[s.modifiers.length - 1].isClass = true;
-        });
+        if (totalNinjaAC > 0) {
+          const acs = [pc.ac, pc.acTouch, pc.acFlat];
+          acs.forEach(s => {
+            s.addModifier(totalNinjaAC, "untyped", "Ninja AC Bonus");
+            s.modifiers[s.modifiers.length - 1].isClass = true;
+          });
+        }
       }
 
       // Ki Power Will save bonus (+2 on Will saves as long as at least 1 daily use remains)

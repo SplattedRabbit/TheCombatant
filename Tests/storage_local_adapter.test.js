@@ -89,4 +89,27 @@ describe('LocalStorageAdapter Test Suite', () => {
     adapter.saveState({ test: 456 });
     assert.equal(statusEvents.length, 1, 'Nach Unsubscribe dürfen keine weiteren Events eintreffen');
   });
+
+  test('3.8.1.6 Multi-Character Index & Deletion Cleanup: Bereinigt storageKey bei Löschung des aktiven Charakters', () => {
+    adapter.saveCharacter('char-alpha', { name: 'Alpha', level: 1 });
+    adapter.saveCharacter('char-beta', { name: 'Beta', level: 2 });
+    adapter.setActiveCharacterId('char-alpha');
+    adapter.saveState({ combatants: [{ id: 'char-alpha', name: 'Alpha', type: 'p' }] });
+
+    let summaries = adapter.listCharacters();
+    assert.equal(summaries.length, 2);
+    assert.ok(summaries.some(c => c.id === 'char-alpha'));
+    assert.ok(summaries.some(c => c.id === 'char-beta'));
+
+    adapter.deleteCharacter('char-alpha');
+    summaries = adapter.listCharacters();
+    assert.equal(summaries.length, 1);
+    assert.equal(summaries[0].id, 'char-beta');
+    assert.equal(adapter.getActiveCharacterId(), 'char-beta');
+
+    adapter.deleteCharacter('char-beta');
+    summaries = adapter.listCharacters();
+    assert.equal(summaries.length, 0);
+    assert.equal(adapter.getActiveCharacterId(), null);
+  });
 });

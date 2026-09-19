@@ -184,7 +184,7 @@ export function recalculatePCStats(pc) {
   recalculateDailyAbilities(pc);
 
   const dexMod = pc.dex instanceof Stat ? pc.dex.mod : getAblMod(pc.dex);
-  const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some(f => f.id === 'improved_initiative');
+  const hasImprovedInit = typeof pc.hasFeat === 'function' ? pc.hasFeat('improved_initiative') : (Array.isArray(pc.feats) && pc.feats.some(f => (typeof f === 'string' ? f === 'improved_initiative' : f?.id === 'improved_initiative')));
   const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
 
   if (pc.rawInit && pc.rawInit > 0) {
