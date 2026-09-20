@@ -68,6 +68,7 @@ Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen o
 - **#29 (`switchActiveCharacter` sendet kein Sync):** `switchActiveCharacter` führt `broadcastActivePC()` aus und informiert den Host sofort über den aktiven Helden.
 - **#30 (Presence Broadcast-Sturm):** `broadcastActivePC()` feuert nur noch bei neu hinzutretendem Host (`hasHost && !previousHostPresent`), nicht bei jedem Client-Presence-Tick.
 - **#31 (Identitätsverlust bei Reload):** `localPCId` wird persistent in `localStorage` (`dd_local_pc_id`) gesichert und verhindert falschen Fallback nach F5.
+- **Bereinigung aller digitalen Würfelbots:** Vollständige Entfernung von automatischen Zufallsgeneratoren (`Math.random()`) in Atemwaffe (Dragon Shaman), Wild Empathy (Ranger), Manuelle Reparatur (Living Construct) und Trank-Fallback; strikte Umstellung auf Tabletop-First-Formelanzeigen und physische Würfe am Tisch.
 
 ---
 
