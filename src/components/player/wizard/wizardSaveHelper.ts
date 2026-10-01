@@ -301,7 +301,8 @@ export function applyWizardCharacterToState(
     // Reset gear, equipment, items, and inventory to empty/clean state
     if (selectedRace === 'lizardfolk') {
       freshPC.weapons = [
-        { id: 'natural-claw', name: 'Claw', damage: '1d4', isNatural: true, isSecondary: false, strMult: 1.0, damageType: 'Slashing', grip: 'primary' },
+        { id: 'natural-claw-1', name: 'Claw 1', damage: '1d4', isNatural: true, isSecondary: false, strMult: 1.0, damageType: 'Slashing', grip: 'primary' },
+        { id: 'natural-claw-2', name: 'Claw 2', damage: '1d4', isNatural: true, isSecondary: false, strMult: 1.0, damageType: 'Slashing', grip: 'primary' },
         { id: 'natural-bite', name: 'Bite', damage: '1d4', isNatural: true, isSecondary: true, strMult: 0.5, damageType: 'Piercing/Slashing', grip: 'sec' }
       ];
     } else {

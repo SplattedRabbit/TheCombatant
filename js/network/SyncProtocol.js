@@ -157,7 +157,8 @@ export function applyObjectDiff(target, diff) {
     else if (value && typeof value === 'object' && value.base !== undefined) {
       const statFields = [
         'ac', 'acTouch', 'acFlat', 'str', 'dex', 'con', 'int', 'wis', 'cha',
-        'baseZa', 'baseRef', 'baseWil', 'bab', 'za', 'ref', 'wil'
+        'baseZa', 'baseRef', 'baseWil', 'bab', 'za', 'ref', 'wil',
+        'baseFort', 'baseWill', 'fort', 'will'
       ];
       const isStatField = statFields.includes(lastKey) || 
         (parts[0] === 'combatants' && parts.length === 3 && statFields.includes(lastKey));
@@ -265,6 +266,17 @@ export function getEncounterStateDiff() {
   }
 
   const diff = getObjectDiff(cachedEncounterState, currentEncounter);
+
+  // Explicitly sync HP changes on combatants (DM -> clients) since getObjectDiff skips 'hp'
+  if (Array.isArray(currentEncounter.combatants) && Array.isArray(cachedEncounterState.combatants)) {
+    currentEncounter.combatants.forEach((c, idx) => {
+      const cachedC = cachedEncounterState.combatants[idx];
+      if (cachedC && cachedC.id === c.id && cachedC.hp !== c.hp) {
+        diff[`combatants.${idx}.hp`] = c.hp;
+      }
+    });
+  }
+
   cachedEncounterState = currentEncounter;
 
   if (Object.keys(diff).length === 0) return null;
@@ -326,6 +338,13 @@ export function applyIncomingDelta(packet, role, conn = null) {
           c.rebuildStatModifiers();
         }
         DeltaRenderer.updateCombatantNameAndStats(packet.id, packet.diff);
+
+        // If player rolled/updated initiative, automatically sort combatants on host
+        if (packet.diff.init !== undefined || packet.diff.rawInit !== undefined) {
+          EncounterManager.sortCombatants();
+          StateEvents.emit('combatants_changed', s.combatants);
+          if (uiRegistry.renderInitBar) uiRegistry.renderInitBar();
+        }
         
         StateEvents.emit('state_changed', s);
       }
@@ -390,10 +409,25 @@ export function applyIncomingDelta(packet, role, conn = null) {
 
       applyObjectDiff(s, packet.diff);
 
-      // Safeguard: Ensure the player's own active PC is never deleted by host diffs
-      if (backupPC && !s.combatants.some(c => c.id === backupPC.id)) {
-        console.warn('SyncProtocol: Host diff attempted to delete local PC. Restoring local PC.');
-        s.combatants.push(createCombatant(backupPC));
+      // Safeguard: Ensure the player's own active PC is never overwritten or deleted by host diffs
+      if (backupPC) {
+        const replacedEntireArray = Array.isArray(packet.diff.combatants) || Array.isArray(packet.diff['combatants']);
+        const localIdx = s.combatants.findIndex(c => c.id === backupPC.id);
+        if (localIdx >= 0) {
+          if (replacedEntireArray) {
+            const incomingHostPC = s.combatants[localIdx];
+            // Preserve rich local player fields while keeping host combat state (hp, conditions, buffs, init)
+            const mergedPC = createCombatant(backupPC);
+            if (incomingHostPC.hp !== undefined) mergedPC.hp = incomingHostPC.hp;
+            if (incomingHostPC.conditions !== undefined) mergedPC.conditions = incomingHostPC.conditions;
+            if (incomingHostPC.activeBuffs !== undefined) mergedPC.activeBuffs = incomingHostPC.activeBuffs;
+            if (incomingHostPC.init !== undefined) mergedPC.init = incomingHostPC.init;
+            s.combatants[localIdx] = mergedPC;
+          }
+        } else {
+          console.warn('SyncProtocol: Host diff attempted to delete local PC. Restoring local PC.');
+          s.combatants.push(createCombatant(backupPC));
+        }
       }
 
       // Rebuild modifiers on all client combatants to keep total AC / Saves in perfect sync

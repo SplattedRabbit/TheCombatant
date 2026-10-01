@@ -122,9 +122,10 @@ function applyRaceModifiers(pc) {
   }
 
   // 3. Saving Throw Modifiers
-  if (race === 'halfling') {
-    addRaceModifier(pc.za, 1, 'racial', 'Volk (Halbling)');
-    addRaceModifier(pc.ref, 1, 'racial', 'Volk (Halbling)');
-    addRaceModifier(pc.wil, 1, 'racial', 'Volk (Halbling)');
+  if (race === 'halfling' || race === 'deep_halfling') {
+    const label = race === 'deep_halfling' ? 'Volk (Tiefen-Halbling)' : 'Volk (Halbling)';
+    addRaceModifier(pc.za, 1, 'racial', label);
+    addRaceModifier(pc.ref, 1, 'racial', label);
+    addRaceModifier(pc.wil, 1, 'racial', label);
   }
 }

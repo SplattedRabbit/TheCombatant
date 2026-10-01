@@ -115,7 +115,7 @@ export function buildContext(pc, weapon, options = {}, allCombatants = []) {
   const isLight = isLightWeapon(weapon);
 
   const hasFeat = (featId) => {
-    if (Array.isArray(pc.feats) && pc.feats.some(f => f.id === featId)) {
+    if (Array.isArray(pc.feats) && pc.feats.some(f => (typeof f === 'string' ? f === featId : f?.id === featId))) {
       return true;
     }
     const armor = pc.getEquippedArmor ? pc.getEquippedArmor() : null;

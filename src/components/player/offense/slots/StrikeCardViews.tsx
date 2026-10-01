@@ -470,19 +470,15 @@ export const DragonBreathStrikeCard: React.FC<{
   const energyUpper = totem?.energy ? totem.energy.toUpperCase() : 'FIRE';
   const shapeText = totem?.shape === 'cone' ? 'Cone' : 'Line';
 
-  const handleRollBreathDamage = (e: React.MouseEvent) => {
+  const handleShowBreathInfo = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const diceMatch = breathDice.match(/^(\d+)d6$/);
-    const count = diceMatch ? parseInt(diceMatch[1]) : 2;
-    let total = 0;
-    const rolls: number[] = [];
-    for (let i = 0; i < count; i++) {
-      const r = Math.floor(Math.random() * 6) + 1;
-      rolls.push(r);
-      total += r;
-    }
-    const msg = `<strong>${totem?.name || 'Dragon Shaman'} Breath Weapon</strong>: [${rolls.join(', ')}] = <strong>${total}</strong> ${energyUpper} damage (Reflex DC ${breathDC} for half).<br><small>Shape: ${rangeText} (${shapeText}) • Recharges in 1d4 rounds.</small>`;
-    showCustomAlert('Breath Weapon Roll', msg, 'Understood', '🔥');
+    const msg = `<div style="text-align:center; line-height:1.5;">
+      <div style="font-size:20px; font-weight:bold; color:var(--red); margin-bottom:6px;">${breathDice} ${energyUpper}</div>
+      <div><strong>Rettungswurf:</strong> Reflex DC <strong>${breathDC}</strong> (Halbiert)</div>
+      <div><strong>Wirkungsbereich:</strong> ${rangeText} (${shapeText})</div>
+      <div style="margin-top:8px; font-size:11px; color:var(--inkm);">Wiederaufladung: <strong>1d4 Runden</strong> (am Tisch auswürfeln)</div>
+    </div>`;
+    showCustomAlert(`${totem?.name || 'Dragon Shaman'} Breath Weapon`, msg, 'Verstanden', '🔥');
   };
 
   return (
@@ -532,9 +528,9 @@ export const DragonBreathStrikeCard: React.FC<{
       <div style={{ width: '100%' }}>
         <button
           className="xbtn xbtn-dmg"
-          onClick={handleRollBreathDamage}
+          onClick={handleShowBreathInfo}
           style={{ width: '100%', padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
-          title={`Roll Breath Weapon (${breathDice} ${energyUpper})`}
+          title={`Atemwaffe Details (${breathDice} ${energyUpper}, DC ${breathDC})`}
         >
           BREATH {breathDice} {energyUpper}
         </button>

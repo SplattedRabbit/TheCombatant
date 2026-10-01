@@ -148,12 +148,14 @@ export function recalculatePCStats(pc) {
 
     if (pc.baseZa instanceof Stat) pc.baseZa.base = saves.fort;
     else pc.baseZa = new Stat(saves.fort);
+    pc.baseFort = pc.baseZa;
 
     if (pc.baseRef instanceof Stat) pc.baseRef.base = saves.ref;
     else pc.baseRef = new Stat(saves.ref);
 
     if (pc.baseWil instanceof Stat) pc.baseWil.base = saves.wil;
     else pc.baseWil = new Stat(saves.wil);
+    pc.baseWill = pc.baseWil;
     
     const calculatedSlots = SpellSlotCalculator.calculateSpellSlots(pc);
     if (calculatedSlots) {
@@ -162,7 +164,10 @@ export function recalculatePCStats(pc) {
           pc.spellSlots[lvl] = { max: 0, used: 0 };
         }
         pc.spellSlots[lvl].max = calculatedSlots[lvl] || 0;
-        pc.spellSlots[lvl].used = Math.min(pc.spellSlots[lvl].max, pc.spellSlots[lvl].used);
+        const currentUsed = typeof pc.spellSlots[lvl].used === 'number' && !isNaN(pc.spellSlots[lvl].used)
+          ? pc.spellSlots[lvl].used
+          : 0;
+        pc.spellSlots[lvl].used = Math.min(pc.spellSlots[lvl].max, Math.max(0, currentUsed));
       }
     } else {
       for (let lvl = 0; lvl <= 9; lvl++) {
@@ -184,8 +189,21 @@ export function recalculatePCStats(pc) {
   recalculateDailyAbilities(pc);
 
   const dexMod = pc.dex instanceof Stat ? pc.dex.mod : getAblMod(pc.dex);
-  const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some(f => f.id === 'improved_initiative');
-  const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
+  let buffIni = 0;
+  if (Array.isArray(pc.activeBuffs)) {
+    pc.activeBuffs.forEach(b => {
+      if (Array.isArray(b.effects)) {
+        b.effects.forEach(eff => {
+          if (eff.target === 'init' || eff.target === 'ini') {
+            buffIni += parseInt(eff.value) || 0;
+          }
+        });
+      }
+    });
+  }
+
+  const hasImprovedInit = typeof pc.hasFeat === 'function' ? pc.hasFeat('improved_initiative') : (Array.isArray(pc.feats) && pc.feats.some(f => (typeof f === 'string' ? f === 'improved_initiative' : f?.id === 'improved_initiative')));
+  const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0) + buffIni;
 
   if (pc.rawInit && pc.rawInit > 0) {
     pc.init = pc.rawInit + totIni;

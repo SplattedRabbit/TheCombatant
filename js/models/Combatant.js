@@ -308,11 +308,11 @@ export class Combatant {
   }
 
   hasFeat(featId) {
-    const hasSelected = Array.isArray(this.feats) && this.feats.some(f => f.id === featId);
+    const hasSelected = Array.isArray(this.feats) && this.feats.some(f => (typeof f === 'string' ? f === featId : f?.id === featId));
     if (hasSelected) return true;
 
     const autoFeats = this.getAutomaticFeats();
-    return autoFeats.some(f => f.id === featId);
+    return autoFeats.some(f => (typeof f === 'string' ? f === featId : f?.id === featId));
   }
 
   enterRage() {

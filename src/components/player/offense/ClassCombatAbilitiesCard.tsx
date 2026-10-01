@@ -366,7 +366,7 @@ export const ClassCombatAbilitiesCard: React.FC<ClassCombatAbilitiesCardProps> =
                   onChange={(e) => CombatState.updatePCField('isTrickyFightingActive', e.target.checked)}
                   style={{ margin: 0, width: '12px', height: '12px', cursor: 'pointer' }}
                 />
-                ⚔️ Tricky Fighting (+1d6 Damage)
+                ⚔️ Tricky Fighting (+1 Attack)
               </label>
               <span
                 style={{

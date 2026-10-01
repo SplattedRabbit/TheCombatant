@@ -10,7 +10,8 @@ import { storageService } from '../storage/StorageService.ts';
 import { generateUUID } from '../../utils/uuid.ts';
 import { applyLoadedState } from '../../../js/state/StorageManager.js';
 import { createInitialState, createCombatant } from '../../../js/models/model-core.js';
-import { getState, StateEvents, getActivePC } from '../../../js/state/state-core.js';
+import { getState, StateEvents, getActivePC, setLocalPCId } from '../../../js/state/state-core.js';
+import { broadcastActivePC } from '../network/RealtimeSyncBridge.ts';
 // @ts-ignore - legacy JS imports without declaration files
 import {
   aranisSample,
@@ -257,16 +258,22 @@ export class CharacterService {
   public async deleteCharacter(characterId: string): Promise<void> {
     const adapter = storageService.getAdapter();
     const currentActiveId = typeof adapter.getActiveCharacterId === 'function' ? adapter.getActiveCharacterId() : null;
+    const currentPC = getActivePC();
+    const isCurrentlyActive = currentActiveId === characterId || (currentPC && currentPC.id === characterId);
 
     if (typeof adapter.deleteCharacter === 'function') {
       const res = adapter.deleteCharacter(characterId);
       if (res instanceof Promise) await res;
     }
 
-    if (currentActiveId === characterId) {
-      const remaining = await this.listCharacters();
+    if (isCurrentlyActive) {
+      const remaining = (await this.listCharacters()).filter((c) => c.id !== characterId);
       if (remaining.length > 0) {
-        await this.switchActiveCharacter(remaining[0].id);
+        const switched = await this.switchActiveCharacter(remaining[0].id);
+        if (!switched) {
+          const fresh = await this.createCharacter({ name: 'Hero' });
+          await this.switchActiveCharacter(fresh.id);
+        }
       } else {
         const fresh = await this.createCharacter({ name: 'Hero' });
         await this.switchActiveCharacter(fresh.id);
@@ -403,8 +410,18 @@ export class CharacterService {
 
       // 5. Emit events to re-render UI
       const currentPC = getActivePC();
+      if (currentPC) {
+        setLocalPCId(currentPC.id);
+      }
       StateEvents.emit('pc_changed', currentPC);
       StateEvents.emit('state_changed', getState());
+
+      // 6. Broadcast new active PC to host/peers
+      try {
+        broadcastActivePC();
+      } catch (syncErr) {
+        console.warn('[CharacterService] Could not broadcast active PC switch:', syncErr);
+      }
 
       return true;
     } catch (err) {

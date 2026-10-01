@@ -262,5 +262,39 @@ test('Ninja, Wizard & Spellwarp Sniper - Complete Multi-Class Integration Audit'
   assert.ok(features.some(f => f.id === 'spellwarp_sniper_ray_mastery'), 'Ray Mastery feature present');
 });
 
+test('Unified Feature Registry - Bug 19: Smite Evil Damage Sums Paladin and Inquisitor Levels', () => {
+  const pc = {
+    race: 'dwarf',
+    cha: 14, // mod +2
+    classes: [
+      { classType: 'paladin', level: 4 },
+      { classType: 'shadowbane_inquisitor', level: 5 }
+    ]
+  };
+
+  const features = getAllUnifiedFeatures(pc);
+  const smite = features.find(f => f.id === 'smite_evil_merged');
+  assert.ok(smite, 'Merged Smite Evil feature must exist');
+  // Paladin 4 + Inquisitor 5 = +9 damage
+  assert.ok(smite.summary.includes('+9 damage'), `Smite summary must display +9 damage, was: ${smite.summary}`);
+  assert.ok(smite.summary.includes('+2 to melee attack roll'), 'Smite summary must display Cha mod +2');
+});
+
+test('Unified Feature Registry - Bug 23: Tricky Fighting reflects +1 Attack Bonus (RAW Complete Scoundrel p. 28)', () => {
+  const pc = {
+    race: 'human',
+    classes: [
+      { classType: 'fighter', level: 6 },
+      { classType: 'battle_trickster', level: 3 }
+    ]
+  };
+
+  const features = getAllUnifiedFeatures(pc);
+  const tf = features.find(f => f.id === 'battle_trickster_tricky_fighting');
+  assert.ok(tf, 'Tricky Fighting feature must exist for Battle Trickster Lv.3');
+  assert.ok(tf.name.includes('+1 Attack'), `Tricky Fighting name must include '+1 Attack', was: ${tf.name}`);
+  assert.ok(tf.summary.includes('attack roll'), `Tricky Fighting summary must mention attack roll, was: ${tf.summary}`);
+});
+
 
 

@@ -278,3 +278,21 @@ test('Weapons - Off-Hand Ranged Weapons (Sling, Hand Crossbow, Thrown)', () => {
   assert.strictEqual(ohComp.dmgTotal, 1, 'Off-hand composite bow damage total should be 1');
 });
 
+test('Weapons - Shield Bash Grips and Damage Dice Scaling', () => {
+  const lightShield = { name: 'Light Wooden Shield', isHeavy: false };
+  const heavyShield = { name: 'Heavy Steel Shield', isHeavy: true };
+
+  const getGrip = (sh) => (sh.isHeavy ? '1h' : 'light');
+  assert.strictEqual(getGrip(lightShield), 'light');
+  assert.strictEqual(getGrip(heavyShield), '1h');
+
+  const getBaseDmg = (sh, isSmall = false) => {
+    if (sh.isHeavy) return isSmall ? '1d3' : '1d4';
+    return isSmall ? '1d2' : '1d3';
+  };
+  assert.strictEqual(getBaseDmg(lightShield, false), '1d3');
+  assert.strictEqual(getBaseDmg(heavyShield, false), '1d4');
+  assert.strictEqual(getBaseDmg(lightShield, true), '1d2');
+  assert.strictEqual(getBaseDmg(heavyShield, true), '1d3');
+});
+

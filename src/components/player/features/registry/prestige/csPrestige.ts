@@ -129,14 +129,12 @@ You can shoot or throw ranged weapons and cast ray spells at an opponent engaged
     if (level >= 3) {
       features.push({
         id: 'battle_trickster_tricky_fighting',
-        name: 'Tricky Fighting (+1 Damage)',
+        name: 'Tricky Fighting (+1 Attack)',
         source: `Battle Trickster Lv.${level}`,
         category: 'combat',
         typeLabel: 'Combat Precision',
-        summary: `+1 competence bonus on weapon damage rolls whenever you use a skill trick or strike a flat-footed/flanked foe.`,
-        rawRules: `At 3rd level, a battle trickster has mastered combining combat prowess with deception.
-
-Whenever she successfully uses a skill trick in combat, or strikes an opponent that is flat-footed or flanked, she gains a +1 competence bonus on all weapon damage rolls made in that round.`,
+        summary: `+1 competence bonus on the next weapon attack roll in any round when you perform a skill trick.`,
+        rawRules: `At 3rd level, a battle trickster has mastered incorporating skill tricks into her combat routines. In any round when she performs a skill trick, she gains a +1 competence bonus on the next attack roll she makes that round (Complete Scoundrel p. 28 RAW).`,
         actionType: 'Free Action',
       });
     }

@@ -35,6 +35,7 @@ function defaultFormatType(type) {
  * Resolves D&D 3.5e modifier stacking according to RAW:
  * - Negative values (penalties) always stack additively.
  * - Dodge, untyped, and natural armor improvement (natural_increase) bonuses stack additively.
+ * - Circumstance bonuses stack additively from different sources; only the highest bonus applies if from the same source.
  * - For all other bonus types, only the highest bonus of each type applies.
  *
  * @param {Array<Object>} modifiers - Array of { value, type, source }
@@ -76,6 +77,17 @@ export function resolveModifierStacking(modifiers, options = {}) {
         source,
         label: `${source} (${getTypeLabel(rawType)})`
       };
+    } else if (type === 'circumstance') {
+      const key = `${type}_${source}`;
+      const existing = groupedBoni[key];
+      if (!existing || val > existing.value) {
+        groupedBoni[key] = {
+          value: val,
+          type: rawType,
+          source,
+          label: `${source} (${getTypeLabel(rawType)})`
+        };
+      }
     } else {
       const existing = groupedBoni[type];
       if (!existing || val > existing.value) {

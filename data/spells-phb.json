@@ -8644,7 +8644,7 @@
         "target": "acNatural",
         "value": 2,
         "valueFormula": "righteous_might_na",
-        "type": "natural",
+        "type": "natural_enhancement",
         "source": "Righteous Might"
       },
       {

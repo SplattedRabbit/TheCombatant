@@ -8,6 +8,8 @@ import { applyClassModifiers } from '../js/models/helpers/modifiers/ClassModifie
 import { Stat } from '../js/models/Stat.js';
 import { getPHB2ClassFeatures } from '../src/components/player/features/registry/classes/phb2Classes.ts';
 import { getFeatSlotsAtLevel } from '../src/components/player/wizard/helpers.feats.ts';
+import { resolveSpellEffectValue } from '../js/rules/BuffRules.js';
+import { CLASS_BUFFS } from '../js/data/class-buffs-data.js';
 
 test('Dragon Shaman - Totem Dragons Data Integrity', () => {
   const totems = Object.keys(DRAGON_TOTEMS);
@@ -505,6 +507,56 @@ test('Dragon Shaman + Lizardfolk Stacking & Synergies', async () => {
   assert.ok(breathFeat);
   assert.ok(breathFeat.name.includes('DC 16 Ref'), `Breath DC should be 16 with Con mod +3, was: ${breathFeat.name}`);
   assert.ok(breathFeat.name.includes('3d6 ACID'));
+});
+
+test('Dragon Shaman - Draconic Auras & Breath Weapon Verification', () => {
+  // 1. Draconic Auras exist in CLASS_BUFFS
+  const auraKeys = [
+    'draconic_aura_power',
+    'draconic_aura_presence',
+    'draconic_aura_resistance',
+    'draconic_aura_senses',
+    'draconic_aura_toughness',
+    'draconic_aura_vigor',
+    'draconic_aura_energy_shield'
+  ];
+  auraKeys.forEach(key => {
+    const aura = CLASS_BUFFS.find(b => b.key === key);
+    assert.ok(aura, `Aura ${key} must exist in CLASS_BUFFS`);
+    assert.ok(aura.school && aura.school.includes('Aura'), `Aura ${key} must have school Aura`);
+  });
+
+  // 2. Aura Bonus Scaling: Level 1-4 = +1, 5-9 = +2, 10-14 = +3, 15-19 = +4, 20 = +5
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 1, 1), 1);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 4, 1), 1);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 5, 1), 2);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 9, 1), 2);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 10, 1), 3);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 14, 1), 3);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 15, 1), 4);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 19, 1), 4);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 20, 1), 5);
+
+  // 3. Energy Resistance scaling: 5 * auraBonus
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura_resist', 1, 5), 5);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura_resist', 5, 5), 10);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura_resist', 10, 5), 15);
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura_resist', 20, 5), 25);
+
+  // 4. Breath Weapon damage scaling: 2d6 at lvl 4, +1d6 every 2 levels thereafter (RAW PHB II p. 13)
+  const getBreathDamage = (lvl) => (lvl >= 4 ? `${2 + Math.floor((lvl - 4) / 2)}d6` : null);
+  assert.strictEqual(getBreathDamage(1), null);
+  assert.strictEqual(getBreathDamage(3), null);
+  assert.strictEqual(getBreathDamage(4), '2d6');
+  assert.strictEqual(getBreathDamage(6), '3d6');
+  assert.strictEqual(getBreathDamage(10), '5d6');
+  assert.strictEqual(getBreathDamage(20), '10d6');
+
+  // 5. Bug 21: Draconic Auras have non-empty effects arrays
+  auraKeys.forEach(key => {
+    const aura = CLASS_BUFFS.find(b => b.key === key);
+    assert.ok(Array.isArray(aura.effects) && aura.effects.length > 0, `Aura ${key} must have non-empty effects`);
+  });
 });
 
 

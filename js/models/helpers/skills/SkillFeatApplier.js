@@ -11,8 +11,8 @@
 export function applyFeatSkillBonuses(pc, skillKey, skillDef) {
   let bonus = 0;
 
-  if (Array.isArray(pc.feats)) {
-    const hasFeat = (featId) => pc.feats.some(f => f.id === featId);
+  if (Array.isArray(pc.feats) || typeof pc.hasFeat === 'function') {
+    const hasFeat = (featId) => (typeof pc.hasFeat === 'function' ? pc.hasFeat(featId) : (Array.isArray(pc.feats) && pc.feats.some(f => (typeof f === 'string' ? f === featId : f?.id === featId))));
 
     if (hasFeat('acrobatic') && (skillKey === 'jump' || skillKey === 'tumble')) {
       bonus += 2;
@@ -60,15 +60,17 @@ export function applyFeatSkillBonuses(pc, skillKey, skillDef) {
       bonus += 2;
     }
 
-    pc.feats.forEach(feat => {
-      if (feat.id === 'skill_focus' && feat.option) {
-        const opt = feat.option.toLowerCase().trim();
-        const nameDe = skillDef.nameDe.toLowerCase();
-        if (opt === skillKey || opt.includes(skillKey) || opt.includes(nameDe) || nameDe.includes(opt)) {
-          bonus += 3;
+    if (Array.isArray(pc.feats)) {
+      pc.feats.forEach(feat => {
+        if (typeof feat === 'object' && feat?.id === 'skill_focus' && feat.option) {
+          const opt = feat.option.toLowerCase().trim();
+          const nameDe = skillDef.nameDe.toLowerCase();
+          if (opt === skillKey || opt.includes(skillKey) || opt.includes(nameDe) || nameDe.includes(opt)) {
+            bonus += 3;
+          }
         }
-      }
-    });
+      });
+    }
   }
 
   return bonus;

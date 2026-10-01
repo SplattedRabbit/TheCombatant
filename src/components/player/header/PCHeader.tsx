@@ -10,7 +10,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { CombatState } from '@core/state.js';
-import { getStatMod } from '../attributeHelper';
+import { getStatMod, calculateInitiativeTotal } from '../attributeHelper';
 import { PCHeaderInfo } from './PCHeaderInfo.tsx';
 import { PCHeaderStatsWidget } from './PCHeaderStatsWidget.tsx';
 import { YouDiedOverlay } from './YouDiedOverlay.tsx';
@@ -31,7 +31,12 @@ export const PCHeader: React.FC<PCHeaderProps> = ({ activeTab, onOpenWizard, onO
   const dexMod = getStatMod(pc.dex);
   const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some(f => f.id === 'improved_initiative');
   const totIni = dexMod + (parseInt(pc.iniMisc as unknown as string) || 0) + (hasImprovedInit ? 4 : 0);
-  const finalIni = (pc.init || 0) > 0 ? pc.init : ((pc.rawInit || 0) > 0 ? pc.rawInit + totIni : (pc.initiative ? pc.initiative + totIni : '--'));
+  const initResult = calculateInitiativeTotal(pc.rawInit, totIni);
+  const finalIni = initResult.total !== null 
+    ? initResult.total 
+    : (typeof pc.init === 'number' && !isNaN(pc.init) && pc.init !== 0 
+        ? pc.init 
+        : (pc.initiative ? pc.initiative + totIni : '--'));
 
   // You Died Overlay monitoring
   useEffect(() => {

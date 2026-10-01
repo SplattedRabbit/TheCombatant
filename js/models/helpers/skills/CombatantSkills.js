@@ -79,7 +79,7 @@ export function getSkillModifierBreakdown(pc, skillKey) {
   let racialBonus = 0;
   let racialLabel = 'Racial bonus';
   if (race === 'dwarf') {
-    if (skillKey === 'craft') { racialBonus = 2; racialLabel = 'Racial bonus (Dwarf)'; }
+    if (['craft', 'search', 'appraise'].includes(skillKey)) { racialBonus = 2; racialLabel = 'Racial bonus (Dwarf)'; }
   } else if (race === 'elf') {
     if (['listen', 'search', 'spot'].includes(skillKey)) { racialBonus = 2; racialLabel = 'Racial bonus (Elf)'; }
   } else if (race === 'gnome') {
@@ -120,6 +120,22 @@ export function getSkillModifierBreakdown(pc, skillKey) {
   );
   if (hasShaken) {
     breakdown.push({ label: 'Condition (Shaken)', value: -2 });
+  }
+
+  // 11. Buffs
+  if (Array.isArray(pc.activeBuffs)) {
+    pc.activeBuffs.forEach(b => {
+      if (Array.isArray(b.effects)) {
+        b.effects.forEach(eff => {
+          if (eff.target === `skill_${skillKey}` || eff.target === skillKey || eff.target === 'all_skills') {
+            const val = parseInt(eff.value) || 0;
+            if (val !== 0) {
+              breakdown.push({ label: eff.source || b.name || 'Buff', value: val });
+            }
+          }
+        });
+      }
+    });
   }
 
   return breakdown;

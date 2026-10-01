@@ -176,7 +176,7 @@ export function checkSkillTrickPrerequisites(trickId, pc) {
     if (typeof pc.hasFeat === 'function') {
       return pc.hasFeat(featId);
     }
-    return pc.feats && pc.feats.some(f => f.id === featId);
+    return Array.isArray(pc.feats) && pc.feats.some(f => (typeof f === 'string' ? f === featId : f?.id === featId));
   };
 
   const prereqs = trick.prerequisites || {};

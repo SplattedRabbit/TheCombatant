@@ -135,25 +135,24 @@ export const PCFeaturesTab: React.FC = () => {
     );
   };
 
-  const handleRollWildEmpathy = () => {
+  const handleShowWildEmpathy = () => {
     if (!rangerClass) return;
     const rLvl = rangerClass.level || 1;
     const chaMod = getAblMod(pc.cha || 10);
-    const d20 = Math.floor(Math.random() * 20) + 1;
-    const total = d20 + rLvl + chaMod;
-    const sign = chaMod >= 0 ? `+${chaMod}` : `${chaMod}`;
+    const totalMod = rLvl + chaMod;
+    const sign = totalMod >= 0 ? `+${totalMod}` : `${totalMod}`;
+    const chaSign = chaMod >= 0 ? `+${chaMod}` : `${chaMod}`;
     showCustomAlert(
-      'Wild Empathy Check 🐾',
+      'Wild Empathy 🐾',
       `<div style="text-align:center; font-size:12px; line-height:1.5;">
-        <div style="font-size:24px; font-weight:bold; color:var(--red); margin-bottom:6px;">${total}</div>
-        <div><strong>d20 Roll:</strong> ${d20}</div>
+        <div style="font-size:24px; font-weight:bold; color:var(--red); margin-bottom:6px;">1d20 ${sign}</div>
         <div><strong>Ranger Level:</strong> +${rLvl}</div>
-        <div><strong>Charisma Modifier:</strong> ${sign}</div>
+        <div><strong>Charisma Modifier:</strong> ${chaSign}</div>
         <div style="margin-top:8px; font-size:10px; font-style:italic; color:var(--inkm);">
-          Functions like Diplomacy to influence an animal's attitude. Domestic animals start indifferent, wild animals start unfriendly.
+          Functions like a Diplomacy check (1d20 + Ranger Level + Cha mod) rolled at the table to influence an animal's attitude. Domestic animals start indifferent, wild animals start unfriendly.
         </div>
       </div>`,
-      'Done',
+      'Verstanden',
       '🐾'
     );
   };
@@ -411,7 +410,7 @@ export const PCFeaturesTab: React.FC = () => {
                   triggerRender();
                 } : undefined}
                 currentCombatStyle={pc.rangerCombatStyle || 'none'}
-                onRollWildEmpathy={hasRangerClass ? handleRollWildEmpathy : undefined}
+                onRollWildEmpathy={hasRangerClass ? handleShowWildEmpathy : undefined}
               />
             </div>
           </div>
