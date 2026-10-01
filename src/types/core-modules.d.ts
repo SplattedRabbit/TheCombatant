@@ -388,6 +388,8 @@ declare module '*js/models/model-core.js' {
 declare module '*js/state/state-core.js' {
   export const getState: () => any;
   export const getActivePC: () => any;
+  export const setLocalPCId: (id: string | null) => void;
+  export const updateSession: (active: boolean, role: string, roomCode?: string) => void;
   export const StateEvents: any;
   export const CombatState: any;
 }
