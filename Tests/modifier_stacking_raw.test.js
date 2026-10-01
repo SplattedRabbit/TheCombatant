@@ -63,3 +63,17 @@ test('resolveModifierStacking should handle empty arrays and invalid inputs grac
   assert.strictEqual(resolveModifierStacking(null).total, 0);
   assert.strictEqual(resolveModifierStacking([null, undefined, { value: 'NaN' }]).total, 0);
 });
+
+test('resolveModifierStacking should stack circumstance bonuses additively across different sources and take highest within same source (Bug #12, RAW PHB p. 305)', () => {
+  const modifiers = [
+    { value: 2, type: 'circumstance', source: 'Higher Ground' },
+    { value: 1, type: 'circumstance', source: 'Higher Ground' }, // same source: only 2 applies
+    { value: 3, type: 'circumstance', source: 'Tactical Cover' }  // different source: stacks additively
+  ];
+  const result = resolveModifierStacking(modifiers);
+  // Higher Ground max is 2, Tactical Cover is 3 => 2 + 3 = 5
+  assert.strictEqual(result.total, 5);
+  assert.strictEqual(result.bonusSum, 5);
+  assert.strictEqual(result.breakdown.length, 2);
+});
+

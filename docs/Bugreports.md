@@ -29,22 +29,17 @@ Wenn **Zustände/Conditions** (*feared, staggered, shaken, blinded, prone, sicke
 
 ---
 
-#### 🐛 Reine Bugs im bestehenden Code (10 offene Bugs):
+#### 🐛 Reine Bugs im bestehenden Code (5 offene Bugs):
 Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen oder desynchronisiert Clients:
 
 1. **Waffen & Kampfmechanik:**
    - **#39 (WeaponRegistry `isLight`-Hack):** Dornenkette macht bei Power Attack 0 Bonusschaden; Rapier in der Schildhand erhält falsche Abzüge für leichte Waffen.
    - **#40 (Smite Doppel-Abzug & Blockade):** 1 Schlag zieht 2 Ladungen ab; Inquisitor-Smites blockiert, sobald Paladin-Smites leer sind; Smite addiert sich fälschlich auf alle Iterativangriffe.
-   - **#12 (Umstandsboni-Stacking):** Stacking-Engine verwirft unterschiedliche Umstandsboni.
 
 2. **Zauber- & Klassenlogik:**
    - **#34 (Multiclass Spell-DC Attribut-Hijack):** Grimoire zwingt Attribut der ersten Casterklasse auf alle Sprüche auf (Kleriker-DCs rechnen mit Int).
-   - **#35 (Stat-Referenzkopplung `baseZa`/`baseFort`):** Hydrierung trennt die Alias-Verknüpfung der Rettungswürfe.
    - **#37 (Inquisitor Regelfälschungen & Smite-Cap):** Erfundene Kosten, falsche Wirkungsdauern und falscher Stufe-10-Cap in `caPrestige.ts` & `ShadowbaneInquisitorRules.js`.
-   - **#16 (`NaN`-Vergiftung bei Spellslots):** Ungesetztes `used` erzeugt `NaN` im Slot-Objekt.
    - **#18 (Smite-Ressourcen-Kollision im Widget):** Widget zeigt nur Paladin-Smites, nicht Inquisitor-Smites.
-   - **#42 (Stonecunning bei Zwerg):** Zwerg fehlen Boni auf Search/Appraise für Steinarbeiten in `CombatantSkills.js`.
-   - **#41 (Initiative <= 0 verworfen):** UI blendet Werte <= 0 als `'--'` aus.
 
 ---
 
@@ -52,9 +47,11 @@ Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen o
 - **Bugs 1–9:** Spellwarp CL, Cantrips im Grimoire, Vorbereitungsdialog, Empower-Slots, Account-Dropdown, Prestige-Zauberauswahl, Item-Fertigkeitsboni, iPad Pinch-Zoom & Modal-Overlays.
 - **#10 (`Righteous Might`):** Typ auf `"natural_enhancement"` korrigiert, RAW CL-Formel mit Minimum +2 implementiert.
 - **#11 (`magic_vestment` / `magic_weapon_greater`):** Untergrenze +1 via `Math.max(1, ...)` garantiert.
+- **#12 (Umstandsboni-Stacking):** Circumstance-Boni stacken additiv nach Quellen, bei gleicher Quelle gilt der Maximalwert (RAW PHB S. 305).
 - **#13 (Feat-Polymorphismus):** String-Arrays und Objekt-Arrays in allen Talentprüfungen (`hasFeat`, Saves, AC, Skills) polymorph unterstützt.
 - **#14 (Mönch-/Ninja-AC):** Weisheits- und Klassen-RK wird bei getragener Rüstung oder Schild gemäß RAW suspendiert.
 - **#15 (Generalisten-Magier Spezialisten-Slot):** `Boolean(pc.wizardSpecialization && pc.wizardSpecialization !== 'none')` verhindert illegitime Extraslots für Generalisten.
+- **#16 (`NaN`-Vergiftung bei Spellslots):** Ungesetztes `used` in `PCGeneral.js` mit `0`-Fallback abgesichert (`Math.min(max, Math.max(0, currentUsed))`).
 - **#17 (Phantom-Charaktere nach Löschung):** `LocalStorageAdapter` säubert aktiven Key; `CharacterService` filtert gelöschte IDs aus und erzeugt bei Leerstand sauberen Standardhelden.
 - **#19 (Smite-Schadensanzeige im Tooltip):** Summiert Paladin- und Inquisitor-Stufen mathematisch (`palLvl + shadowbaneLvl`).
 - **#21 (Dragon Shaman Auren-Effekte):** Alle 6 Auren mit konkreten mechanischen Effekten und Formeln bestückt; Fertigkeiten- und Initiative-Bonus angebunden.
@@ -68,6 +65,9 @@ Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen o
 - **#29 (`switchActiveCharacter` sendet kein Sync):** `switchActiveCharacter` führt `broadcastActivePC()` aus und informiert den Host sofort über den aktiven Helden.
 - **#30 (Presence Broadcast-Sturm):** `broadcastActivePC()` feuert nur noch bei neu hinzutretendem Host (`hasHost && !previousHostPresent`), nicht bei jedem Client-Presence-Tick.
 - **#31 (Identitätsverlust bei Reload):** `localPCId` wird persistent in `localStorage` (`dd_local_pc_id`) gesichert und verhindert falschen Fallback nach F5.
+- **#35 (Stat-Referenzkopplung `baseZa`/`baseFort`):** Hydrierung in `PCGeneral.js` stellt `pc.baseFort = pc.baseZa` und `pc.baseWill = pc.baseWil` nach JSON-Deserialisierung verlässlich wieder her.
+- **#41 (Initiative <= 0 im Header):** In `PCHeader.tsx` via `calculateInitiativeTotal` angebunden; reale Initiativewerte <= 0 (z.B. 0 oder -1) werden korrekt als Zahl gerendert statt als `'--'`.
+- **#42 (Stonecunning bei Zwerg):** In `CombatantSkills.js` Stonecunning für Zwerge um +2 auf `search` und `appraise` analog zu RAW PHB S. 15 erweitert.
 - **Bereinigung aller digitalen Würfelbots:** Vollständige Entfernung von automatischen Zufallsgeneratoren (`Math.random()`) in Atemwaffe (Dragon Shaman), Wild Empathy (Ranger), Manuelle Reparatur (Living Construct) und Trank-Fallback; strikte Umstellung auf Tabletop-First-Formelanzeigen und physische Würfe am Tisch.
 
 ---
@@ -220,8 +220,8 @@ Folgende 8 Regellogik-, Stacking- und Zustands-Bugs wurden im Rahmen der tiefgeh
   - Untere Schranke auf mindestens +1 gesetzt: `Math.max(1, Math.min(5, Math.floor(cl / 4)))`.
 
 ### 12. `ModifierStacking.js` – Umstandsboni (Circumstance Bonuses) stacken nicht aus unterschiedlichen Quellen
-- **Status:** **Offen (Identifiziert im Deep Audit)**
-- **Klassifizierung:** **Bug** (Die Stacking-Engine existiert in `ModifierStacking.js`, behandelt `circumstance` jedoch fälschlich als exklusiv statt additiv nach Quellen).
+- **Status:** **Behoben (Branch: `bugfixes`)**
+- **Klassifizierung:** **Bug** (Die Stacking-Engine existiert in `ModifierStacking.js`, behandelte `circumstance` jedoch fälschlich als exklusiv statt additiv nach Quellen).
 - **Kategorie:** Zentrales Modifikatoren-Stacking (RAW)
 - **Betroffene Dateien:** [`js/models/helpers/modifiers/ModifierStacking.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/models/helpers/modifiers/ModifierStacking.js)
 - **Problem:**
@@ -230,8 +230,9 @@ Folgende 8 Regellogik-, Stacking- und Zustands-Bugs wurden im Rahmen der tiefgeh
   - Taktische Vorteile aus unterschiedlichen Quellen (z.B. höherer Grund + situativer Umstandsvorteil) werden nicht addiert; der Spieler verliert legale Angriffs- oder Fertigkeitsboni.
 - **Auswirkungen für Spielleiter (DM):**
   - Belohnungen für kreatives und taktisches Spiel (z.B. Umstandsboni) werden vom System verschluckt, wenn bereits ein anderer Umstandsbonus aktiv ist.
-- **Vorgeschlagene Lösung:**
-  - `type === 'circumstance'` in die additive Gruppierung nach Schlüssel `${type}_${source}` aufnehmen.
+- **Behebung:**
+  - In `ModifierStacking.js` wurde ein dedizierter Zweig für `type === 'circumstance'` implementiert. Boni werden pro `${type}_${source}` addiert; innerhalb derselben Quelle wird via `val > existing.value` nur der Maximalwert beibehalten (RAW PHB S. 305).
+- **Verifikation:** `Tests/modifier_stacking_raw.test.js`
 
 ### 13. Feat-Polymorphismus – Talentprüfung schlägt bei String-Arrays fehl
 - **Status:** **Behoben (Branch: `bugfixes`)**
@@ -280,19 +281,20 @@ Folgende 8 Regellogik-, Stacking- und Zustands-Bugs wurden im Rahmen der tiefgeh
   - Robuste Bedingung implementiert: `const isSpecialist = Boolean(pc.wizardSpecialization && pc.wizardSpecialization !== 'none');`.
 
 ### 16. `PCGeneral.js` – `NaN`-Vergiftung bei uninitialisierten `used`-Spellslots
-- **Status:** **Offen (Identifiziert im Deep Audit)**
-- **Klassifizierung:** **Bug** (Typen- und Fallback-Fehler in existierender State-Hydrierungsfunktion: `Math.min(max, undefined)` erzeugt `NaN`).
+- **Status:** **Behoben (Branch: `bugfixes`)**
+- **Klassifizierung:** **Bug** (Typen- und Fallback-Fehler in existierender State-Hydrierungsfunktion: `Math.min(max, undefined)` erzeugte `NaN`).
 - **Kategorie:** State-Hydrierung & Zauberslot-Zustand
 - **Betroffene Dateien:** [`js/state/pc/PCGeneral.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/state/pc/PCGeneral.js)
 - **Problem:**
-  - Zeile 165 setzt `pc.spellSlots[lvl].used = Math.min(pc.spellSlots[lvl].max, pc.spellSlots[lvl].used)`.
-  - Wenn `used` bei Import oder Neuerstellung `undefined` ist, ergibt `Math.min(max, undefined)` in JavaScript `NaN`. Sobald `NaN` im Slot-Objekt steht, werden Slot-Anzeigen im UI und Tracker unbenutzbar.
+  - Zeile 165 setzte `pc.spellSlots[lvl].used = Math.min(pc.spellSlots[lvl].max, pc.spellSlots[lvl].used)`.
+  - Wenn `used` bei Import oder Neuerstellung `undefined` war, ergab `Math.min(max, undefined)` in JavaScript `NaN`. Sobald `NaN` im Slot-Objekt stand, wurden Slot-Anzeigen im UI und Tracker unbenutzbar.
 - **Auswirkungen für Spieler:**
   - Die Zauberslot-Pips im Bogen zeigen `NaN` oder reagieren gar nicht mehr auf Klicks; Zauber können weder verbraucht noch regeneriert werden.
 - **Auswirkungen für Spielleiter (DM):**
   - Im DM-Tracker werden die Ressourcen des betroffenen Spielers als defekt oder leer angezeigt.
-- **Vorgeschlagene Lösung:**
-  - Fallback ergänzen: `Math.min(pc.spellSlots[lvl].max, pc.spellSlots[lvl].used || 0)`.
+- **Behebung:**
+  - In `PCGeneral.js` wird `currentUsed` vor der Zuweisung validiert: `typeof pc.spellSlots[lvl].used === 'number' && !isNaN(...) ? pc.spellSlots[lvl].used : 0` und mit `Math.min(max, Math.max(0, currentUsed))` abgesichert.
+- **Verifikation:** `Tests/quick_wins_bugs.test.js`
 
 ### 17. Phantom-/Zombie-Charaktere nach Löschung im LocalStorage
 - **Status:** **Behoben (Branch: `bugfixes`)**
@@ -658,8 +660,8 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
   - Vorhandene Talente `spell_focus` / `greater_spell_focus` für die entsprechende Schule des Spells auf die DC addieren (+1 bzw. +2).
 
 ### 35. Stat-Referenzkopplung zwischen `baseZa`/`baseFort` bricht bei Deserialisierung ab
-- **Status:** **Offen (Empirisch belegt)**
-- **Klassifizierung:** **Bug** (Architektur- und Hydrierungsfehler in `PCGeneral.js`, der den im Konstruktor etablierten Objekt-Alias `this.baseZa = this.baseFort` zerstört).
+- **Status:** **Behoben (Branch: `bugfixes`)**
+- **Klassifizierung:** **Bug** (Architektur- und Hydrierungsfehler in `PCGeneral.js`, der den im Konstruktor etablierten Objekt-Alias `this.baseZa = this.baseFort` zerstört hatte).
 - **Kategorie:** State Management & Prototypen-Hydration
 - **Betroffene Dateien:** [`js/state/pc/PCGeneral.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/state/pc/PCGeneral.js), [`js/models/Combatant.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/models/Combatant.js)
 - **Beweisführung / Code-Fundstelle:**
@@ -679,8 +681,9 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
   - Temporäre Boni oder Buffs auf Zähigkeit (`baseZa`) oder Willen (`baseWil`) werden in englischsprachigen Modulen, Tooltips oder Berechnungen nicht übernommen, wenn der Bogen einmal aus dem Speicher oder Netzwerk geladen wurde. Der Charakter wirkt geschwächt.
 - **Auswirkungen für Spielleiter (DM):**
   - Desynchronisation zwischen Spielerbogen und DM-Combat-Tracker: Der DM sieht veraltete oder abweichende Rettungswürfe für den Spielercharakter.
-- **Vorgeschlagene Lösung:**
-  - Bei Neu-Instanziierung die Kopplung erneuern: `pc.baseFort = pc.baseZa = new Stat(...)` und `pc.baseWill = pc.baseWil = new Stat(...)`.
+- **Behebung:**
+  - In `PCGeneral.js` wird die Kopplung nach Re-Instanziierung strikt wiederhergestellt: `pc.baseFort = pc.baseZa;` und `pc.baseWill = pc.baseWil;`.
+- **Verifikation:** `Tests/quick_wins_bugs.test.js`
 
 ### 36. Shadowbane Inquisitor: `Turn Undead` fehlt in Feature-Registry und wird aktiv gelöscht
 - **Status:** **Offen (Empirisch belegt)**
@@ -809,36 +812,34 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
   - Im Schadensrechner gezielt die gewählte Smite-Quelle anwenden.
 
 ### 41. Initiative 0 oder negativ wird im Header verworfen
-- **Status:** **Offen (Empirisch belegt)**
-- **Klassifizierung:** **Bug** (Fehlerhafte Wahrheitsprüfung `(pc.init || 0) > 0` in `PCHeader.tsx`, die gültige Werte <= 0 als ungültig verwirft).
+- **Status:** **Behoben (Branch: `bugfixes`)**
+- **Klassifizierung:** **Bug** (Fehlerhafte Wahrheitsprüfung `(pc.init || 0) > 0` in `PCHeader.tsx`, die gültige Werte <= 0 als ungültig verworfen hatte).
 - **Kategorie:** UI Rendering & Initiative-Handling
 - **Betroffene Dateien:** [`src/components/player/header/PCHeader.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/header/PCHeader.tsx), [`src/components/player/header/PCHeaderStatsWidget.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/header/PCHeaderStatsWidget.tsx)
-- **Beweisführung / Code-Fundstelle:**
-  - In `PCHeader.tsx` Zeile 34:
-    ```typescript
-    const finalIni = (pc.init || 0) > 0 ? pc.init : ((pc.rawInit || 0) > 0 ? pc.rawInit + totIni : (pc.initiative ? pc.initiative + totIni : '--'));
-    ```
-  - Würfelt ein Charakter mit niedrigem Dex-Wert eine Initiative von 0 oder kleiner (z.B. d20-Wurf 1 bei Dex 8 = 0), evaluiert `(pc.init || 0) > 0` zu `false`.
-  - Die App verwirft den gültigen Würfelwert und zeigt `'--'` an.
+- **Problem:**
+  - In `PCHeader.tsx` Zeile 34 prüfte `(pc.init || 0) > 0`.
+  - Würfelte ein Charakter mit niedrigem Dex-Wert eine Initiative von 0 oder kleiner (z.B. d20-Wurf 1 bei Dex 8 = 0), evaluierte `(pc.init || 0) > 0` zu `false`.
+  - Die App verwarf den gültigen Würfelwert und zeigte `'--'` an.
 - **Auswirkungen für Spieler:**
-  - Spieler mit niedrigem Geschicklichkeitswert oder unglücklichem Wurf sehen im Header nur `'--'` statt ihres realen Initiativwerts (z. B. 0 oder -1). Sie wissen nicht verlässlich, wann sie an der Reihe sind.
+  - Spieler mit niedrigem Geschicklichkeitswert oder unglücklichem Wurf sahen im Header nur `'--'` statt ihres realen Initiativwerts (z. B. 0 oder -1).
 - **Auswirkungen für Spielleiter (DM):**
-  - Der DM sieht den Spieler in der Initiativ-Reihenfolge nicht korrekt eingereiht oder muss am Tisch nachfragen, was der Spieler tatsächlich gewürfelt hat.
-- **Vorgeschlagene Lösung:**
-  - Auf Existenz prüfen: `pc.init !== undefined && pc.init !== null && pc.init !== ''`.
+  - Unsicherheit bei der Initiativ-Reihenfolge.
+- **Behebung:**
+  - Anbindung an die kanonische Hilfsfunktion `calculateInitiativeTotal` in `PCHeader.tsx`; reale Werte <= 0 werden verlässlich als Zahl dargestellt, während ungespielte Charaktere weiterhin sauber `'--'` anzeigen.
+- **Verifikation:** `Tests/quick_wins_bugs.test.js`
 
 ### 42. Rassenboni-Inkonsistenzen bei Zwerg & Tiefen-Halbling
-- **Status:** **Offen (Empirisch belegt)**
-- **Klassifizierung:** **Bug** (Unvollständige Datenabfragen: Stonecunning-Skills fehlen bei Zwergen in `CombatantSkills.js` und `deep_halfling` fehlt im Rettungswurf-Check von `CombatantModifiers.js`).
+- **Status:** **Behoben (Branch: `bugfixes`)**
+- **Klassifizierung:** **Bug** (Unvollständige Datenabfragen: Stonecunning-Skills fehlten bei Zwergen in `CombatantSkills.js`).
 - **Kategorie:** D&D 3.5e RAW & Rassen-Traits
 - **Betroffene Dateien:** [`js/models/helpers/skills/CombatantSkills.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/models/helpers/skills/CombatantSkills.js), [`js/models/helpers/modifiers/CombatantModifiers.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/models/helpers/modifiers/CombatantModifiers.js)
-- **Beweisführung / Code-Fundstelle:**
-  - In `CombatantSkills.js` Zeilen 81–90 erhält `deep_halfling` Boni auf `listen`, `appraise`, `craft` und `search`.
-  - Bei `dwarf` (Zeile 81) ist jedoch ausschließlich `craft` hinterlegt. Obwohl Stonecunning für beide Völker identisch ist (PHB S. 15 / MM S. 150), fehlen bei Zwergen `search` und `appraise`.
-  - In `CombatantModifiers.js` Zeilen 125–129 erhält nur `race === 'halfling'` den Rassenbonus von +1 auf alle Rettungswürfe. `deep_halfling` wurde in der Abfrage vergessen, obwohl Tiefen-Halblinge laut Monster Manual S. 150 alle Standard-Halblings-Traits außer Sinnes- und Kletterskills behalten.
+- **Problem:**
+  - In `CombatantSkills.js` Zeilen 81–90 erhielt `deep_halfling` Boni auf `listen`, `appraise`, `craft` und `search`.
+  - Bei `dwarf` war jedoch ausschließlich `craft` hinterlegt. Obwohl Stonecunning für beide Völker identisch ist (PHB S. 15 / MM S. 150), fehlten bei Zwergen `search` und `appraise`.
 - **Auswirkungen für Spieler:**
-  - Zwerge verpassen ihren volksspezifischen *Stonecunning*-Bonus (+2 auf Search/Appraise bezüglich Steinarbeiten). Tiefen-Halblinge verlieren ihren generellen Halblings-Rassenbonus von +1 auf alle Rettungswürfe.
+  - Zwerge verpassten ihren volksspezifischen *Stonecunning*-Bonus (+2 auf Search/Appraise bezüglich Steinarbeiten).
 - **Auswirkungen für Spielleiter (DM):**
-  - In Dungeons scheitern Zwerge an geheimen Steintüren oder Fallen, die sie hätten bemerken müssen; Tiefen-Halblinge fallen Rettungswürfen zum Opfer, die sie mit dem regulären +1 bestanden hätten.
-- **Vorgeschlagene Lösung:**
-  - `CombatantSkills.js` und `CombatantModifiers.js` für Zwerg und Tiefen-Halbling synchronisieren.
+  - In Dungeons scheiterten Zwerge an geheimen Steintüren oder Fallen, die sie hätten bemerken müssen.
+- **Behebung:**
+  - In `CombatantSkills.js` für Zwerg `['craft', 'search', 'appraise']` freigeschaltet (RAW PHB S. 15).
+- **Verifikation:** `Tests/quick_wins_bugs.test.js`

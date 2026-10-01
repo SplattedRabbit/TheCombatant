@@ -148,12 +148,14 @@ export function recalculatePCStats(pc) {
 
     if (pc.baseZa instanceof Stat) pc.baseZa.base = saves.fort;
     else pc.baseZa = new Stat(saves.fort);
+    pc.baseFort = pc.baseZa;
 
     if (pc.baseRef instanceof Stat) pc.baseRef.base = saves.ref;
     else pc.baseRef = new Stat(saves.ref);
 
     if (pc.baseWil instanceof Stat) pc.baseWil.base = saves.wil;
     else pc.baseWil = new Stat(saves.wil);
+    pc.baseWill = pc.baseWil;
     
     const calculatedSlots = SpellSlotCalculator.calculateSpellSlots(pc);
     if (calculatedSlots) {
@@ -162,7 +164,10 @@ export function recalculatePCStats(pc) {
           pc.spellSlots[lvl] = { max: 0, used: 0 };
         }
         pc.spellSlots[lvl].max = calculatedSlots[lvl] || 0;
-        pc.spellSlots[lvl].used = Math.min(pc.spellSlots[lvl].max, pc.spellSlots[lvl].used);
+        const currentUsed = typeof pc.spellSlots[lvl].used === 'number' && !isNaN(pc.spellSlots[lvl].used)
+          ? pc.spellSlots[lvl].used
+          : 0;
+        pc.spellSlots[lvl].used = Math.min(pc.spellSlots[lvl].max, Math.max(0, currentUsed));
       }
     } else {
       for (let lvl = 0; lvl <= 9; lvl++) {

@@ -79,7 +79,7 @@ export function getSkillModifierBreakdown(pc, skillKey) {
   let racialBonus = 0;
   let racialLabel = 'Racial bonus';
   if (race === 'dwarf') {
-    if (skillKey === 'craft') { racialBonus = 2; racialLabel = 'Racial bonus (Dwarf)'; }
+    if (['craft', 'search', 'appraise'].includes(skillKey)) { racialBonus = 2; racialLabel = 'Racial bonus (Dwarf)'; }
   } else if (race === 'elf') {
     if (['listen', 'search', 'spot'].includes(skillKey)) { racialBonus = 2; racialLabel = 'Racial bonus (Elf)'; }
   } else if (race === 'gnome') {

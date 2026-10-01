@@ -11,6 +11,19 @@
 import { BarbarianRules } from '../../../rules/classes/BarbarianRules.js';
 import { isShieldItem } from '../../Armor.js';
 
+/**
+ * Returns true if the item is a shield that actively suppresses the Monk/Ninja AC bonus.
+ * RAW PHB p. 123: A buckler does NOT suppress the Monk AC bonus — it is strapped to the
+ * forearm and requires no active use. All other shields (light, heavy, tower) do suppress it.
+ */
+function isActiveShieldItem(item) {
+  if (!isShieldItem(item)) return false;
+  // Bucklers are an exception: they don't suppress unarmored class AC bonuses (RAW PHB p. 123)
+  if (item.type === 'buckler') return false;
+  if (typeof item.isShield === 'boolean' && item.isBuckler === true) return false;
+  return true;
+}
+
 export function applyClassModifiers(pc, getMod) {
   if (pc.type === 'p' && Array.isArray(pc.classes)) {
     // A. Paladin: Divine Grace (Stufe >= 2)
@@ -24,14 +37,16 @@ export function applyClassModifiers(pc, getMod) {
       });
     }
 
-    // Monk and Ninja AC bonus requires character to be unarmored and unshielded (RAW: PHB p. 40, Complete Adventurer p. 6)
+    // Monk and Ninja AC bonus requires character to be unarmored and carrying no active shield
+    // RAW: PHB p. 40 (Monk), Complete Adventurer p. 6 (Ninja)
+    // Exception: A buckler (PHB p. 123) does NOT suppress the Monk/Ninja AC bonus.
     const hasArmor = typeof pc.getEquippedArmor === 'function'
       ? !!pc.getEquippedArmor()
       : (Array.isArray(pc.armors) && pc.armors.some(a => a.isEquipped && !isShieldItem(a)));
-    const hasShield = typeof pc.getEquippedShield === 'function'
-      ? !!pc.getEquippedShield()
-      : (Array.isArray(pc.armors) && pc.armors.some(a => a.isEquipped && isShieldItem(a)));
-    const isUnarmoredAndUnshielded = !hasArmor && !hasShield;
+    const hasActiveShield = typeof pc.getEquippedShield === 'function'
+      ? (() => { const s = pc.getEquippedShield(); return s ? isActiveShieldItem(s) : false; })()
+      : (Array.isArray(pc.armors) && pc.armors.some(a => a.isEquipped && isActiveShieldItem(a)));
+    const isUnarmoredAndUnshielded = !hasArmor && !hasActiveShield;
 
     // B. Monk: Wisdom AC Bonus & Level AC Bonus (Requires unarmored and unshielded)
     const monkClass = pc.classes.find(c => c.classType === 'monk');

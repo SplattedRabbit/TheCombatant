@@ -425,3 +425,49 @@ test('ClassModifiers - Monk und Ninja RK-Bonus entfällt bei getragener Rüstung
   assert.strictEqual(pcNinja.wil.modifiers.some(m => m.source === 'Ki Power (Will Save Bonus)'), true, 'Ki Power Will save remains active');
 });
 
+test('ClassModifiers - Buckler-Ausnahme: Mönch-RK-Bonus bleibt bei Buckler erhalten (RAW PHB S. 123)', () => {
+  const getMod = (stat) => (stat?.mod !== undefined ? stat.mod : Math.floor(((stat?.getValue ? stat.getValue() : parseInt(stat) || 10) - 10) / 2));
+
+  const pcMonk = new Combatant({
+    id: 'monk-buckler-tester',
+    name: 'Monk Buckler Tester',
+    type: 'p',
+    wis: 16, // +3 mod
+    classes: [{ classType: 'monk', level: 5 }] // level 5 => +1 level AC bonus
+  });
+
+  // 1. Buckler allein: Monk-AC-Bonus bleibt aktiv (RAW PHB S. 123)
+  const buckler = new Armor({ type: 'buckler', isEquipped: true });
+  pcMonk.armors = [buckler];
+  applyClassModifiers(pcMonk, getMod);
+  assert.strictEqual(
+    pcMonk.ac.modifiers.some(m => m.source === 'Monk AC Bonus'), true,
+    'Mönch mit Buckler behält seinen Wis+Level RK-Bonus (RAW PHB S. 123)'
+  );
+  assert.strictEqual(pcMonk.ac.getValue(), 14, 'Mönch+Buckler: AC 10 + 4 (Wis+Level) = 14');
+
+  // 2. Leichter Stahlschild (kein Buckler): Monk-AC-Bonus wird suspendiert
+  const lightShield = new Armor({ type: 'shield_light_steel', isEquipped: true });
+  pcMonk.armors = [lightShield];
+  pcMonk.ac.modifiers = [];
+  pcMonk.acTouch.modifiers = [];
+  pcMonk.acFlat.modifiers = [];
+  applyClassModifiers(pcMonk, getMod);
+  assert.strictEqual(
+    pcMonk.ac.modifiers.some(m => m.source === 'Monk AC Bonus'), false,
+    'Mönch mit Leichtschild verliert RK-Bonus (kein Buckler)'
+  );
+
+  // 3. Buckler + Rüstung zusammen: Rüstung dominiert, Bonus wird suspendiert
+  const breastplate = new Armor({ type: 'breastplate', isEquipped: true });
+  pcMonk.armors = [buckler, breastplate];
+  pcMonk.ac.modifiers = [];
+  pcMonk.acTouch.modifiers = [];
+  pcMonk.acFlat.modifiers = [];
+  applyClassModifiers(pcMonk, getMod);
+  assert.strictEqual(
+    pcMonk.ac.modifiers.some(m => m.source === 'Monk AC Bonus'), false,
+    'Mönch mit Buckler UND Rüstung verliert RK-Bonus (Rüstung dominiert)'
+  );
+});
+
