@@ -170,8 +170,10 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         }
       } catch {}
       const allPCs = state.combatants.filter((c: any) => c.type === 'p');
-      const pc = allPCs.find((c: any) => c.id === this.activeCharacterId || (localId && c.id === localId))
-        || (allPCs.length === 1 ? allPCs[0] : null);
+      const pc = allPCs.find((c: any) => 
+        (this.activeCharacterId && (c.id === this.activeCharacterId || c.characterId === this.activeCharacterId)) || 
+        (localId && c.id === localId)
+      ) || (allPCs.length === 1 ? allPCs[0] : null);
       if (pc) {
         this.saveToLocalCache({
           ...state,
@@ -180,7 +182,8 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
           mode: 'player',
         });
       } else {
-        this.saveToLocalCache(state);
+        // Multiple combatants exist and none matched local PC: keep existing isolated cache!
+        return;
       }
     } else {
       this.saveToLocalCache(state);
@@ -279,11 +282,24 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         const allPCs = combatants.filter((c: any) => c.type === 'p');
 
         // Locate local player character: match activeCharacterId or stored localId
-        const pc = allPCs.find((c: any) => c.id === this.activeCharacterId || (localId && c.id === localId))
-          || (allPCs.length === 1 ? allPCs[0] : null);
+        const pc = allPCs.find((c: any) => 
+          (this.activeCharacterId && (c.id === this.activeCharacterId || c.characterId === this.activeCharacterId)) || 
+          (localId && c.id === localId)
+        ) || (allPCs.length === 1 ? allPCs[0] : null);
 
         if (!pc && allPCs.length > 1) {
           logger.warn('[SupabaseStorage] Multiple player combatants detected in session, but none matched local character ID. Skipping overwrite to prevent corrupting local sheet with another player.');
+          return;
+        }
+
+        if (!pc) {
+          logger.warn('[SupabaseStorage] No local PC found to save. Skipping cloud save.');
+          return;
+        }
+
+        // SAFETY LOCK: If activeCharacterId is NOT set and multiple combatants exist, NEVER auto-create a character row!
+        if (!this.activeCharacterId && allPCs.length > 1) {
+          logger.warn('[SupabaseStorage] Refusing to auto-create character row while connected to a multiplayer table with multiple combatants.');
           return;
         }
 
@@ -431,9 +447,10 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
       const combatants = Array.isArray(characterData?.combatants) ? characterData.combatants : [];
       const allPCs = combatants.filter((c: any) => c.type === 'p');
 
-      const pc = allPCs.find((c: any) => c.id === validId || (localId && c.id === localId))
-        || allPCs[0]
-        || characterData;
+      const pc = allPCs.find((c: any) => 
+        (validId && (c.id === validId || c.characterId === validId)) || 
+        (localId && c.id === localId)
+      ) || (allPCs.length === 1 ? allPCs[0] : null) || characterData;
 
       const charName = pc?.name || characterData?.name || 'Held';
       const charLevel = typeof pc?.level === 'number' ? pc.level : (characterData?.level || 1);

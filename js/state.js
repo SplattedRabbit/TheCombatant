@@ -18,6 +18,7 @@ import {
   setRole,
   getRole,
   getActivePC,
+  setLocalPCId,
   updateSession
 } from './state/state-core.js';
 
@@ -245,6 +246,7 @@ export const CombatState = {
   setRole,
   getRole,
   getActivePC,
+  setLocalPCId,
   recalculatePCStats,
   recalculateDailyAbilities,
   updatePCBatch,

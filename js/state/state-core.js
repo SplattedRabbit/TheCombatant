@@ -115,12 +115,40 @@ export function getActivePC() {
     }
   }
 
-  // If not a live multiplayer session (e.g. single-player encounter or unit test),
-  // or if there is only 1 PC, fallback to the first PC
+  // 1. Try matching by characterId if available in storage
+  if (!localPCId && allPCs.length > 0) {
+    let activeCharId = null;
+    try {
+      const storage = (typeof window !== 'undefined' && window.localStorage) 
+        ? window.localStorage 
+        : ((typeof globalThis !== 'undefined' && globalThis.localStorage) ? globalThis.localStorage : null);
+      if (storage) {
+        for (let i = 0; i < storage.length; i++) {
+          const k = storage.key(i);
+          if (k && k.startsWith('dnd_active_char_')) {
+            activeCharId = storage.getItem(k);
+            break;
+          }
+        }
+      }
+    } catch (_) {}
+
+    if (activeCharId) {
+      const matchingPC = allPCs.find(c => (c.characterId && c.characterId === activeCharId) || c.id === activeCharId);
+      if (matchingPC) {
+        localPCId = matchingPC.id;
+        setStoredLocalPCId(localPCId);
+      }
+    }
+  }
+
+  // 2. Fallback to first PC if single PC or not in a live multiplayer session
   if (!localPCId && (allPCs.length === 1 || !isMultiplayerClient)) {
     if (allPCs.length > 0) {
       localPCId = allPCs[0].id;
-      setStoredLocalPCId(localPCId);
+      if (allPCs.length === 1) {
+        setStoredLocalPCId(localPCId);
+      }
     }
   }
 
@@ -133,7 +161,9 @@ export function getActivePC() {
     if (allPCs.length > 0) {
       pc = allPCs[0];
       localPCId = pc.id;
-      setStoredLocalPCId(localPCId);
+      if (allPCs.length === 1) {
+        setStoredLocalPCId(localPCId);
+      }
     }
   }
 
@@ -141,7 +171,11 @@ export function getActivePC() {
     if (s.mode === 'dm' || s.mode === 'host' || (s.session && s.session.role === 'host')) {
       return null;
     }
-    // Bootstrap safeguard: create default PC to avoid circular import dependency on EncounterManager
+    // If in multiplayer and local PC is not found among combatants, do NOT hijack another player's PC!
+    if (isMultiplayerClient && allPCs.length > 1) {
+      return null;
+    }
+    // Bootstrap safeguard: create default PC ONLY when combatants is completely empty
     pc = createCombatant({ name: 'Adventurer', type: 'p' });
     s.combatants.push(pc);
     localPCId = pc.id;

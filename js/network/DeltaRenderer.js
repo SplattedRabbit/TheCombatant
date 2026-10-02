@@ -6,6 +6,10 @@ import { getState } from '../state/state-core.js';
  * Protects user's active keyboard focus and cursor position during DOM updates.
  */
 export function applyWithFocusGuard(applyFn) {
+  if (typeof document === 'undefined') {
+    applyFn();
+    return;
+  }
   const activeEl = document.activeElement;
   const activeId = activeEl ? activeEl.id : null;
   const activeName = activeEl ? activeEl.name : null;

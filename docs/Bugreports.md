@@ -885,3 +885,42 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
   - Neuer Unit-Test-Suite: [`Tests/multiplayer_roster_isolation.test.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/Tests/multiplayer_roster_isolation.test.js) (5 Tests, deckt Multiplayer-Tische mit wechselnder Initiativereihenfolge, Host-State-Diffs, Session-Reloads und Roster-Isolation ab).
   - Neuer Component-Test-Suite: [`src/__tests__/CharacterRosterDialog.test.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/__tests__/CharacterRosterDialog.test.tsx) (3 Vitest-Komponententests).
   - Vollständiger Regressionstest: Alle 451 Node-Tests und alle 52 Vitest-Tests erfolgreich.
+
+### 44. Multiplayer-Schaden/Heilung & F5-Reload führt zu fremdem Doppel-Charakter im Roster
+- **Status:** **Behoben (Branch: `main`)**
+- **Klassifizierung:** **Kritischer Bug** (Multiplayer Session-Aktivierung, falscher Linkage-Check im Banner und Index-0-Fallback bei Host-Diffs).
+- **Kategorie:** Multiplayer Realtime Sync, Session Activation & Storage Identity Guard
+- **Betroffene Dateien:**
+  - [`src/components/dialogs/JoinCampaignDialog.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/dialogs/JoinCampaignDialog.tsx)
+  - [`src/components/player/header/UnlinkedCharacterBanner.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/header/UnlinkedCharacterBanner.tsx)
+  - [`src/services/character/CharacterService.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/character/CharacterService.ts)
+  - [`src/services/storage/SupabaseStorageAdapter.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/storage/SupabaseStorageAdapter.ts)
+  - [`src/services/storage/LocalStorageAdapter.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/storage/LocalStorageAdapter.ts)
+  - [`js/state/state-core.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/state/state-core.js)
+  - [`js/network/SyncProtocol.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/network/SyncProtocol.js)
+- **Problem & Ablauf des Vorfalls:**
+  1. Spieler importierte seinen Charakter und sicherte ihn in der Cloud (Charakter erschien im Roster).
+  2. Spieler trat der Kampagne bei (hatte nur seinen Charakter zur Auswahl, trat erfolgreich bei).
+  3. Der Spielleiter fügte dem Charakter 100 Schaden zu (Charakter starb), heilte ihn anschließend um 100 (Charakter wieder da).
+  4. Spieler drückte F5 (Seiten-Reload): Der eigene Charakter war aus dem Roster verschwunden, stattdessen erschien der Charakter des anderen Spielers **zweifach** im Roster!
+- **Root Causes:**
+  1. **Fehlende Session-Aktivierung in `JoinCampaignDialog.tsx`:**
+     Beim Beitreten rief `JoinCampaignDialog` zwar `CombatState.setRole('player')` und `realtimeManager.joinCampaign` auf, **versäumte jedoch den Aufruf von `CombatState.updateSession(true, 'client', member.campaignId)`**.
+     Infolgedessen verblieb `s.session.active` auf `false`.
+  2. **Fehlgeschlagene Identitäts-Sperre in `state-core.js`:**
+     Weil `s.session.active` auf `false` stand, evaluierte `isMultiplayerClient` zu `false`. Wenn der Host nach Schadens- oder Heilungs-Aktionen ein `state_diff` mit mehreren `combatants` sendete, fiel `getActivePC()` mangels `isMultiplayerClient` auf `allPCs[0]` (den anderen Spieler) zurück und überschrieb `localPCId` und `localStorage['dd_local_pc_id']`.
+  3. **Identitäts-Fehlzuordnung im Cloud-Adapter:**
+     Weil `localId` nun auf den fremden Charakter zeigte, speicherte `performCloudSave` den fremden Charakter in die aktive Zeile des Spielers.
+  4. **UnlinkedCharacterBanner & doppelte Zeilenerstellung:**
+     In `UnlinkedCharacterBanner.tsx` verglich `isLinked = currentPC.id === currentId` eine `pc-xxx`-Combatant-ID mit einer Supabase-Zeilen-UUID. Da diese niemals übereinstimmten, wurde das Banner dauerhaft eingeblendet und forderte den Spieler zu "Save to Cloud" auf, was eine zweite Zeile mit dem fremden Charakter anlegte.
+- **Behebung:**
+  - `JoinCampaignDialog.tsx`: Ruft beim Beitreten explizit `CombatState.updateSession(true, 'client', member.campaignId)` auf und sperrt `setLocalPCId(activePC.id)` sowie `activePC.characterId = selectedCharId`.
+  - `UnlinkedCharacterBanner.tsx`: Korrigierte `isLinked`-Prüfung gegen `characterService.getActiveCharacterId()` und verhindert das Erzeugen von Duplikaten bei bereits verknüpften Cloud-Charakteren.
+  - `CharacterService.ts`: `saveCurrentPCToCloud()` aktualisiert bei vorhandener `activeCharacterId` die bestehende Zeile, anstatt neue Datensätze anzuhäufen; `switchActiveCharacter` verknüpft `characterId` direkt auf dem Combatant-Objekt.
+  - `state-core.js`: `getActivePC()` bindet im Mehrspieler-Modus und bei mehreren Gruppenmitgliedern strikt an die lokale ID und fällt **niemals** auf Index 0 fremder Charaktere zurück.
+  - `SupabaseStorageAdapter.ts` & `LocalStorageAdapter.ts`: Blockiert automatisches Überschreiben oder Anlegen, wenn mehrere PCs existieren und keiner der lokalen Identität entspricht.
+  - `SyncProtocol.js`: Erhält `characterId` und `setLocalPCId(backupPC.id)` beim Anwenden von Host-Board-Diffs unantastbar.
+- **Verifikation:**
+  - Test 8 in [`Tests/multiplayer_roster_isolation.test.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/Tests/multiplayer_roster_isolation.test.js) bildet exakt diesen Vorfall (Import -> Beitritt -> 100 Schaden/Tod -> 100 Heilung -> Diff -> Save -> F5 Reload) ab und belegt, dass der Originalcharakter unberührt bleibt und keinerlei Duplikate entstehen.
+  - 454 Node-Tests (100% pass) und 52 Vitest-Tests (100% pass).
+

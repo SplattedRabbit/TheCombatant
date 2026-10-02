@@ -192,8 +192,10 @@ export class LocalStorageAdapter implements IStorageAdapter {
           } catch {}
 
           const allPCs = state.combatants.filter((c: any) => c.type === 'p');
-          const pc = allPCs.find((c: any) => c.id === this.activeCharacterId || (localId && c.id === localId))
-            || (allPCs.length === 1 ? allPCs[0] : null);
+          const pc = allPCs.find((c: any) => 
+            (this.activeCharacterId && (c.id === this.activeCharacterId || c.characterId === this.activeCharacterId)) || 
+            (localId && c.id === localId)
+          ) || (allPCs.length === 1 ? allPCs[0] : null);
 
           if (pc) {
             characterState = {
@@ -202,6 +204,9 @@ export class LocalStorageAdapter implements IStorageAdapter {
               session: { active: false, role: 'player', roomCode: '' },
               mode: 'player',
             };
+          } else {
+            // Multiple combatants and none matched: skip saving to prevent corrupting local sheet
+            return;
           }
         }
         this.saveCharacter(this.activeCharacterId, characterState, true);
@@ -269,8 +274,10 @@ export class LocalStorageAdapter implements IStorageAdapter {
         } catch {}
 
         const allPCs = characterData.combatants.filter((c: any) => c.type === 'p');
-        const pc = allPCs.find((c: any) => c.id === characterId || (localId && c.id === localId))
-          || (allPCs.length === 1 ? allPCs[0] : null);
+        const pc = allPCs.find((c: any) => 
+          (characterId && (c.id === characterId || c.characterId === characterId)) || 
+          (localId && c.id === localId)
+        ) || (allPCs.length === 1 ? allPCs[0] : null);
 
         if (pc) {
           isolatedState = {
@@ -279,6 +286,9 @@ export class LocalStorageAdapter implements IStorageAdapter {
             session: { active: false, role: 'player', roomCode: '' },
             mode: 'player',
           };
+        } else if (allPCs.length > 1) {
+          // Multiple PCs and none matched characterId: skip to avoid overwriting with foreign PC
+          return;
         }
       }
 

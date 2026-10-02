@@ -8,6 +8,7 @@ import { CombatState } from '../js/state.js';
 import { getState, setLocalPCId, getActivePC } from '../js/state/state-core.js';
 import { applyWizardCharacterToState } from '../src/components/player/wizard/wizardSaveHelper.ts';
 import { sortCombatants, nextTurn, nextRound, mergeIncomingPC } from '../js/state/EncounterManager.js';
+import { applyIncomingDelta } from '../js/network/SyncProtocol.js';
 
 function createMockSupabaseClient() {
   const store = {
@@ -98,7 +99,17 @@ function createMockSupabaseClient() {
 
 describe('Multiplayer Roster Isolation & Safe Saving Test Suite', () => {
   beforeEach(() => {
-    if (globalThis.localStorage && typeof globalThis.localStorage.clear === 'function') {
+    if (!globalThis.localStorage) {
+      const mem = new Map();
+      globalThis.localStorage = {
+        getItem: (k) => mem.get(k) || null,
+        setItem: (k, v) => mem.set(k, String(v)),
+        removeItem: (k) => mem.delete(k),
+        clear: () => mem.clear(),
+        get length() { return mem.size; },
+        key: (i) => Array.from(mem.keys())[i] || null
+      };
+    } else if (typeof globalThis.localStorage.clear === 'function') {
       globalThis.localStorage.clear();
     }
     setLocalPCId(null);
@@ -353,6 +364,97 @@ describe('Multiplayer Roster Isolation & Safe Saving Test Suite', () => {
     assert.strictEqual(s.combatants[0].level, 2);
     assert.strictEqual(s.combatants[1].id, 'pc-user-2');
     assert.strictEqual(s.combatants[1].level, 1);
+  });
+
+  test('Test 8: Exact Incident Reproduction: Player imports PC, saves to cloud, joins table with another PC, takes lethal damage, gets healed, reloads (F5) - original PC remains intact and no duplicate is created', async () => {
+    // 1. Setup Player 2's client environment with isolated Supabase adapter
+    const mockSupabase = createMockSupabaseClient();
+    const adapterPlayer2 = new SupabaseStorageAdapter('user-player-2', { debounceMs: 10 });
+    adapterPlayer2.client = mockSupabase;
+
+    const s = getState();
+    s.mode = 'player';
+    s.session = { active: false, role: 'player', roomCode: '' };
+
+    // Player 2 imports a character ("Shadowblade")
+    const importedPC = {
+      id: 'pc-shadowblade-123',
+      name: 'Shadowblade',
+      type: 'p',
+      hp: 20,
+      maxHP: 20,
+      classes: [{ classType: 'rogue', level: 4 }]
+    };
+    s.combatants = [importedPC];
+    setLocalPCId(importedPC.id);
+
+    // Player 2 saves to cloud
+    await adapterPlayer2.saveCharacter('uuid-shadowblade-row', {
+      name: 'Shadowblade',
+      combatants: [importedPC],
+      mode: 'player'
+    });
+    adapterPlayer2.setActiveCharacterId('uuid-shadowblade-row');
+
+    // Verify Player 2 roster has exactly 1 character ("Shadowblade")
+    let rosterP2 = await adapterPlayer2.listCharacters();
+    assert.strictEqual(rosterP2.length, 1);
+    assert.strictEqual(rosterP2[0].name, 'Shadowblade');
+
+    // 2. Player 2 joins the table (DM has Valeros at index 0)
+    // Client activates session as client
+    CombatState.updateSession(true, 'client', 'camp-room-999');
+    setLocalPCId(importedPC.id);
+
+    // Host sends diff containing full table: Valeros (index 0) and Shadowblade (index 1)
+    const hostEncounterDiff = {
+      combatants: [
+        { id: 'pc-valeros-001', name: 'Valeros', type: 'p', hp: 45, maxHP: 45, classes: [{ classType: 'fighter', level: 5 }] },
+        { id: 'pc-shadowblade-123', name: 'Shadowblade', type: 'p', hp: 20, maxHP: 20, classes: [{ classType: 'rogue', level: 4 }] }
+      ]
+    };
+    applyIncomingDelta({ type: 'state_diff', diff: hostEncounterDiff }, 'client');
+
+    // Verify local PC on client is still Shadowblade, NOT Valeros
+    assert.strictEqual(getActivePC().name, 'Shadowblade');
+    assert.strictEqual(getActivePC().id, 'pc-shadowblade-123');
+
+    // 3. DM deals 100 damage: Shadowblade dies (hp drops to -80)
+    const damageDiff = {
+      'combatants.1.hp': -80
+    };
+    applyIncomingDelta({ type: 'state_diff', diff: damageDiff }, 'client');
+    assert.strictEqual(getActivePC().name, 'Shadowblade');
+    assert.strictEqual(getActivePC().hp, -80);
+
+    // 4. DM heals 100: Shadowblade revives (hp restores to 20)
+    const healDiff = {
+      'combatants.1.hp': 20
+    };
+    applyIncomingDelta({ type: 'state_diff', diff: healDiff }, 'client');
+    assert.strictEqual(getActivePC().name, 'Shadowblade');
+    assert.strictEqual(getActivePC().hp, 20);
+
+    // 5. Client triggers cloud save
+    adapterPlayer2.saveState(getState());
+    await adapterPlayer2.flushPendingSaves();
+
+    // 6. Simulate F5 (Page Reload):
+    // Clear in-memory state and reset local variables
+    s.combatants = [];
+    s.session = { active: false, role: 'choice', roomCode: '' };
+
+    // Reload state for Player 2
+    const loadedState = await adapterPlayer2.loadState();
+    assert.ok(loadedState, 'Loaded state must exist');
+    assert.strictEqual(loadedState.combatants.length, 1, 'Loaded state must contain only 1 isolated PC');
+    assert.strictEqual(loadedState.combatants[0].name, 'Shadowblade', 'Loaded state must be Shadowblade');
+
+    // Check Player 2's cloud roster
+    rosterP2 = await adapterPlayer2.listCharacters();
+    assert.strictEqual(rosterP2.length, 1, 'Roster must contain EXACTLY 1 character');
+    assert.strictEqual(rosterP2[0].name, 'Shadowblade', 'Roster character must NOT be overwritten by Valeros');
+    assert.strictEqual(rosterP2[0].id, 'uuid-shadowblade-row', 'Roster row ID must remain original');
   });
 });
 

@@ -25,7 +25,11 @@ export const UnlinkedCharacterBanner: React.FC = () => {
     const checkStatus = async () => {
       const currentId = characterService.getActiveCharacterId();
       const currentPC = getActivePC();
-      const isLinked = Boolean(currentId && currentPC && currentPC.id === currentId);
+      const isLinked = Boolean(
+        currentId &&
+        currentPC &&
+        (currentPC.characterId === currentId || !characterService.isDefaultOrBlankPC(currentPC))
+      );
       setActiveCharId(isLinked ? currentId : null);
       if (!isLinked) {
         try {
@@ -44,7 +48,11 @@ export const UnlinkedCharacterBanner: React.FC = () => {
     const onStateChanged = () => {
       const currentId = characterService.getActiveCharacterId();
       const currentPC = getActivePC();
-      const isLinked = Boolean(currentId && currentPC && currentPC.id === currentId);
+      const isLinked = Boolean(
+        currentId &&
+        currentPC &&
+        (currentPC.characterId === currentId || !characterService.isDefaultOrBlankPC(currentPC))
+      );
       setActiveCharId(isLinked ? currentId : null);
     };
 

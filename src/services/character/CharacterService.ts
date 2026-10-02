@@ -353,6 +353,23 @@ export class CharacterService {
       const pc = getActivePC();
       if (!pc) return null;
 
+      const activeId = this.getActiveCharacterId();
+      if (activeId) {
+        // Character is already saved in cloud roster - update it instead of creating a duplicate row!
+        const adapter = storageService.getAdapter();
+        if (typeof adapter.saveCharacter === 'function') {
+          const res = adapter.saveCharacter(activeId, {
+            ...state,
+            combatants: [pc],
+            mode: 'player',
+            session: { active: false, role: 'player', roomCode: '' },
+          });
+          if (res instanceof Promise) await res;
+        }
+        const updatedList = await this.listCharacters();
+        return updatedList.find(c => c.id === activeId) || null;
+      }
+
       const created = await this.createCharacter({
         name: pc.name || 'Hero',
         race: pc.race || 'human',
@@ -437,14 +454,18 @@ export class CharacterService {
 
       // 4. Set local PC ID and hydrate in-memory state
       const targetPC = (targetData?.combatants || []).find((c: any) => c.type === 'p');
-      if (targetPC?.id) {
-        setLocalPCId(targetPC.id);
+      if (targetPC) {
+        targetPC.characterId = characterId;
+        if (targetPC.id) {
+          setLocalPCId(targetPC.id);
+        }
       }
       applyLoadedState(targetData);
 
       // 5. Emit events to re-render UI
       const currentPC = getActivePC();
       if (currentPC) {
+        currentPC.characterId = characterId;
         setLocalPCId(currentPC.id);
       }
       StateEvents.emit('pc_changed', currentPC);

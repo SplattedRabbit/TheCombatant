@@ -75,6 +75,15 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
         const selectedChar = characters.find((c) => c.id === selectedCharId);
         const charName = activePC?.name || selectedChar?.name || 'Player';
 
+        // 2b. Explicitly lock local PC identity and activate multiplayer client session
+        if (activePC) {
+          if (selectedCharId) {
+            activePC.characterId = selectedCharId;
+          }
+          CombatState.setLocalPCId(activePC.id);
+        }
+        CombatState.updateSession(true, 'client', member.campaignId);
+
         // 3. Connect live WebSocket to DM's table
         await realtimeManager.joinCampaign(member.campaignId, 'player', {
           userId: member.userId,

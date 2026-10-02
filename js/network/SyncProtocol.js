@@ -8,7 +8,7 @@
  * @notHere   Verbindungsaufbau → NetworkManager.js | DOM-Updates → DeltaRenderer.js | PC-Mutationen → PCManager.js
  */
 import { CombatState } from '../state.js';
-import { getState, StateEvents } from '../state/state-core.js';
+import { getState, StateEvents, setLocalPCId } from '../state/state-core.js';
 import * as EncounterManager from '../state/EncounterManager.js';
 import { Stat, createCombatant, createConcentration } from '../models/model-core.js';
 import { DeltaRenderer } from './DeltaRenderer.js';
@@ -418,6 +418,7 @@ export function applyIncomingDelta(packet, role, conn = null) {
             const incomingHostPC = s.combatants[localIdx];
             // Preserve rich local player fields while keeping host combat state (hp, conditions, buffs, init)
             const mergedPC = createCombatant(backupPC);
+            if (backupPC.characterId) mergedPC.characterId = backupPC.characterId;
             if (incomingHostPC.hp !== undefined) mergedPC.hp = incomingHostPC.hp;
             if (incomingHostPC.conditions !== undefined) mergedPC.conditions = incomingHostPC.conditions;
             if (incomingHostPC.activeBuffs !== undefined) mergedPC.activeBuffs = incomingHostPC.activeBuffs;
@@ -428,6 +429,7 @@ export function applyIncomingDelta(packet, role, conn = null) {
           console.warn('SyncProtocol: Host diff attempted to delete local PC. Restoring local PC.');
           s.combatants.push(createCombatant(backupPC));
         }
+        setLocalPCId(backupPC.id);
       }
 
       // Rebuild modifiers on all client combatants to keep total AC / Saves in perfect sync
