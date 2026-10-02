@@ -98,6 +98,10 @@ export class StorageService {
     return this.currentUserId;
   }
 
+  public get name(): string {
+    return this.activeAdapter?.name || 'storage-service';
+  }
+
   public saveState(state: any): Promise<void> | void {
     return this.activeAdapter.saveState(state);
   }
@@ -108,6 +112,88 @@ export class StorageService {
 
   public clearState(): Promise<void> | void {
     return this.activeAdapter.clearState();
+  }
+
+  public saveCharacter(characterId: string, characterData: any): Promise<void> | void {
+    if (typeof this.activeAdapter.saveCharacter === 'function') {
+      return this.activeAdapter.saveCharacter(characterId, characterData);
+    }
+  }
+
+  public loadCharacter(characterId: string): Promise<any | null> | any | null {
+    if (typeof this.activeAdapter.loadCharacter === 'function') {
+      return this.activeAdapter.loadCharacter(characterId);
+    }
+    return null;
+  }
+
+  public listCharacters(): Promise<any[]> | any[] {
+    if (typeof this.activeAdapter.listCharacters === 'function') {
+      return this.activeAdapter.listCharacters();
+    }
+    return [];
+  }
+
+  public deleteCharacter(characterId: string): Promise<void> | void {
+    if (typeof this.activeAdapter.deleteCharacter === 'function') {
+      return this.activeAdapter.deleteCharacter(characterId);
+    }
+  }
+
+  public getActiveCharacterId(): string | null {
+    if (typeof this.activeAdapter.getActiveCharacterId === 'function') {
+      return this.activeAdapter.getActiveCharacterId();
+    }
+    return null;
+  }
+
+  public setActiveCharacterId(characterId: string | null): void {
+    if (typeof this.activeAdapter.setActiveCharacterId === 'function') {
+      this.activeAdapter.setActiveCharacterId(characterId);
+    }
+  }
+
+  public saveCampaign(
+    campaignId: string,
+    encounterState: any,
+    metadata?: { name?: string; description?: string; inviteCode?: string }
+  ): Promise<void> | void {
+    if (typeof this.activeAdapter.saveCampaign === 'function') {
+      return this.activeAdapter.saveCampaign(campaignId, encounterState, metadata);
+    }
+  }
+
+  public loadCampaign(campaignId: string): Promise<any | null> | any | null {
+    if (typeof this.activeAdapter.loadCampaign === 'function') {
+      return this.activeAdapter.loadCampaign(campaignId);
+    }
+    return null;
+  }
+
+  public listCampaigns(): Promise<any[]> | any[] {
+    if (typeof this.activeAdapter.listCampaigns === 'function') {
+      return this.activeAdapter.listCampaigns();
+    }
+    return [];
+  }
+
+  public deleteCampaign(campaignId: string): Promise<void> | void {
+    if (typeof this.activeAdapter.deleteCampaign === 'function') {
+      return this.activeAdapter.deleteCampaign(campaignId);
+    }
+  }
+
+  public getActiveCampaignId(): string | null {
+    if (typeof this.activeAdapter.getActiveCampaignId === 'function') {
+      return this.activeAdapter.getActiveCampaignId();
+    }
+    return null;
+  }
+
+  public setActiveCampaignId(campaignId: string | null): void {
+    if (typeof this.activeAdapter.setActiveCampaignId === 'function') {
+      this.activeAdapter.setActiveCampaignId(campaignId);
+    }
   }
 
   public async flushPendingSaves(): Promise<void> {

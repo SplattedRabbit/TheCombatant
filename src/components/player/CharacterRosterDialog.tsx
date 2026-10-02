@@ -12,6 +12,7 @@ import { showCustomAlert, showCustomConfirm, showCustomPrompt } from '@core/ui/c
 import { CombatState } from '@core/state.js';
 import { CharacterCard } from './roster/CharacterCard.tsx';
 import { CreateCharacterModal } from './roster/CreateCharacterModal.tsx';
+import { RosterToolbar } from './roster/RosterToolbar.tsx';
 
 interface CharacterRosterDialogProps {
   isOpen: boolean;
@@ -227,6 +228,34 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
     e.target.value = '';
   };
 
+  const handleSaveActiveToRoster = async () => {
+    try {
+      setIsActionInProgress(true);
+      const activePC = CombatState.getActivePC();
+      if (!activePC) {
+        showCustomAlert("Save Character", "No active character loaded to save.", "OK", "⚠️");
+        return;
+      }
+      const saved = await characterService.saveCurrentPCToCloud();
+      if (saved) {
+        await loadCharacters();
+        setActiveCharId(saved.id);
+        showCustomAlert(
+          "Character Saved",
+          `Character <strong>"${saved.name}"</strong> successfully saved to your roster!`,
+          "Great",
+          "💾"
+        );
+      } else {
+        showCustomAlert("Save Error", "Failed to save character to roster.", "OK", "⚠️");
+      }
+    } catch (err: any) {
+      showCustomAlert("Save Error", `Error saving character: ${err?.message || err}`, "OK", "⚠️");
+    } finally {
+      setIsActionInProgress(false);
+    }
+  };
+
   return createPortal(
     <div
       style={{
@@ -260,189 +289,20 @@ export const CharacterRosterDialog: React.FC<CharacterRosterDialogProps> = ({
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div
-          style={{
-            padding: '12px 18px',
-            borderBottom: '1.5px solid var(--pb, #c8a96e)',
-            background: 'linear-gradient(180deg, rgba(200, 169, 110, 0.25), rgba(200, 169, 110, 0.08))',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '20px' }}>📜</span>
-            <div>
-              <h2
-                style={{
-                  margin: 0,
-                  fontFamily: 'var(--font-title)',
-                  fontSize: '18px',
-                  color: 'var(--red, #8b1a1a)',
-                  lineHeight: 1.1,
-                }}
-              >
-                Character Roster
-              </h2>
-              <div style={{ fontSize: '10.5px', color: 'var(--inkm, #665c49)', fontFamily: 'var(--font-body)' }}>
-                {characters.length} {characters.length === 1 ? 'Character' : 'Characters'} available
-              </div>
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <input
-              type="text"
-              className="modal-input"
-              placeholder="🔍 Search characters..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{
-                width: '160px',
-                minHeight: '26px',
-                height: '26px',
-                padding: '2px 8px',
-                fontSize: '11.5px',
-                background: 'rgba(255, 255, 255, 0.85)',
-              }}
-            />
-            <button
-              type="button"
-              onClick={onClose}
-              className="btn"
-              style={{
-                padding: '3px 9px',
-                fontSize: '14px',
-                cursor: 'pointer',
-                color: 'var(--ink, #2c2214)',
-                border: '1px solid var(--pb)',
-                background: 'transparent',
-                borderRadius: '4px',
-              }}
-            >
-              ✕
-            </button>
-          </div>
-        </div>
-
-        {/* Action Bar */}
-        <div
-          style={{
-            padding: '8px 18px',
-            borderBottom: '1px solid rgba(200, 169, 110, 0.4)',
-            background: 'rgba(253, 246, 226, 0.6)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            flexWrap: 'wrap',
-          }}
-        >
-          <button
-            type="button"
-            onClick={() => setShowCreateModal(true)}
-            className="btn btn-p"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              padding: '4px 10px',
-              fontSize: '11px',
-              fontFamily: 'var(--font-title)',
-              fontWeight: 'bold',
-              background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-              border: '1px solid #8b6914',
-              color: '#ffffff',
-              borderRadius: '3px',
-              cursor: 'pointer',
-            }}
-          >
-            <span>➕</span>
-            <span>New Character</span>
-          </button>
-
-          {onOpenWizard && (
-            <button
-              type="button"
-              onClick={() => {
-                onClose();
-                onOpenWizard();
-              }}
-              className="btn"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px',
-                padding: '4px 10px',
-                fontSize: '11px',
-                fontFamily: 'var(--font-title)',
-                background: 'rgba(200, 169, 110, 0.2)',
-                border: '1px solid var(--pb)',
-                borderRadius: '3px',
-                cursor: 'pointer',
-              }}
-            >
-              <span>🧙</span>
-              <span>Create via Wizard</span>
-            </button>
-          )}
-
-          <button
-            type="button"
-            onClick={handleImportJsonClick}
-            disabled={isActionInProgress}
-            className="btn"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              padding: '4px 10px',
-              fontSize: '11px',
-              fontFamily: 'var(--font-title)',
-              background: 'rgba(200, 169, 110, 0.2)',
-              border: '1px solid var(--pb)',
-              borderRadius: '3px',
-              cursor: 'pointer',
-            }}
-            title="Import character from a JSON file directly into your roster"
-          >
-            <span>📁</span>
-            <span>Import JSON</span>
-          </button>
-
-          <input
-            type="file"
-            id="rosterImportFileInput"
-            accept=".json,application/json"
-            style={{ display: 'none' }}
-            onChange={handleImportFileChange}
-          />
-
-          <button
-            type="button"
-            onClick={handleImportLocal}
-            disabled={isActionInProgress}
-            className="btn"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              padding: '4px 10px',
-              fontSize: '11px',
-              fontFamily: 'var(--font-title)',
-              background: 'rgba(200, 169, 110, 0.1)',
-              border: '1px solid var(--pb)',
-              borderRadius: '3px',
-              cursor: 'pointer',
-              marginLeft: 'auto',
-            }}
-            title="Imports current local character into your cloud library"
-          >
-            <span>📥</span>
-            <span>Import from LocalStorage</span>
-          </button>
-        </div>
+        {/* Header & Action Bar Toolbar */}
+        <RosterToolbar
+          characterCount={characters.length}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          onClose={onClose}
+          onOpenCreateModal={() => setShowCreateModal(true)}
+          onOpenWizard={onOpenWizard}
+          onSaveActiveToRoster={handleSaveActiveToRoster}
+          onImportJsonClick={handleImportJsonClick}
+          onImportFileChange={handleImportFileChange}
+          onImportLocal={handleImportLocal}
+          isActionInProgress={isActionInProgress}
+        />
 
         {/* Content Body: Character Grid */}
         <div

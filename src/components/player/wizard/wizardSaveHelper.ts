@@ -4,10 +4,11 @@
  */
 
 import { CombatState } from '../../../../js/state.js';
-import { getStorageAdapter } from '../../../../js/state/StorageManager.js';
 import { getFeatSlotsAtLevel } from './helpers.feats.ts';
 import { getAllCompendiumSpells } from '../../../../js/rules.js';
 import { generateUUID } from '../../../utils/uuid.ts';
+import { setLocalPCId, getActivePC } from '../../../../js/state/state-core.js';
+import { storageService } from '../../../services/storage/StorageService.ts';
 
 export interface WizardStatMods {
   str?: number;
@@ -159,15 +160,13 @@ export function applyWizardCharacterToState(
   completedDraft: WizardDraftPC
 ) {
   const newCharId = generateUUID();
-  const _adapter = getStorageAdapter();
-  if (typeof (_adapter as any)?.setActiveCharacterId === 'function') {
-    (_adapter as any).setActiveCharacterId(newCharId);
-  }
 
   CombatState.updatePCBatch((freshPC: TargetPlayerCharacter) => {
     // Assign a fresh UUID so local state treats this as a new combatant,
     // not a mutation of the previously active PC.
     (freshPC as any).id = newCharId;
+    setLocalPCId(newCharId);
+    storageService.setActiveCharacterId(newCharId);
     freshPC.name = name.trim();
     freshPC.race = selectedRace;
     freshPC.isHuman = (selectedRace === 'human');
@@ -179,12 +178,12 @@ export function applyWizardCharacterToState(
     const lowSpeedRaces = ['dwarf', 'gnome', 'halfling', 'deep_halfling'];
     freshPC.baseBw = lowSpeedRaces.includes(selectedRace) ? 20 : 30;
 
-    freshPC.str.base = baseStats.str;
-    freshPC.dex.base = baseStats.dex;
-    freshPC.con.base = baseStats.con;
-    freshPC.int.base = baseStats.int;
-    freshPC.wis.base = baseStats.wis;
-    freshPC.cha.base = baseStats.cha;
+    if (!freshPC.str || typeof freshPC.str !== 'object') freshPC.str = { base: baseStats.str }; else freshPC.str.base = baseStats.str;
+    if (!freshPC.dex || typeof freshPC.dex !== 'object') freshPC.dex = { base: baseStats.dex }; else freshPC.dex.base = baseStats.dex;
+    if (!freshPC.con || typeof freshPC.con !== 'object') freshPC.con = { base: baseStats.con }; else freshPC.con.base = baseStats.con;
+    if (!freshPC.int || typeof freshPC.int !== 'object') freshPC.int = { base: baseStats.int }; else freshPC.int.base = baseStats.int;
+    if (!freshPC.wis || typeof freshPC.wis !== 'object') freshPC.wis = { base: baseStats.wis }; else freshPC.wis.base = baseStats.wis;
+    if (!freshPC.cha || typeof freshPC.cha !== 'object') freshPC.cha = { base: baseStats.cha }; else freshPC.cha.base = baseStats.cha;
 
     freshPC.levelIncreases = { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 };
     levelConfigs.forEach((cfg: WizardLevelConfig) => {
@@ -392,12 +391,19 @@ export function applyWizardCharacterToState(
     freshPC.rebuildStatModifiers();
   });
 
-  if (_adapter && typeof (_adapter as any).saveCharacter === 'function') {
-    try {
-      const fullState = CombatState.getState();
-      (_adapter as any).saveCharacter(newCharId, fullState);
-    } catch (err) {
-      console.warn('[wizardSaveHelper] Failed to sync new character to roster:', err);
-    }
+  try {
+    const fullState = CombatState.getState();
+    const activePC = getActivePC();
+    const cleanCharacterState = {
+      ...fullState,
+      combatants: activePC ? [activePC] : fullState.combatants.filter((c: any) => c.id === newCharId),
+      mode: 'player',
+      session: { active: false, role: 'player', roomCode: '' },
+    };
+    storageService.saveCharacter(newCharId, cleanCharacterState);
+    storageService.setActiveCharacterId(newCharId);
+    CombatState.saveToStorage();
+  } catch (err) {
+    console.warn('[wizardSaveHelper] Failed to sync new character to roster:', err);
   }
 }

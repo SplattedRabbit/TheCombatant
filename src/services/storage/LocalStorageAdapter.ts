@@ -183,7 +183,28 @@ export class LocalStorageAdapter implements IStorageAdapter {
       if (isDmSession && this.activeCampaignId) {
         this.saveCampaign(this.activeCampaignId, state, undefined, true);
       } else if (this.activeCharacterId) {
-        this.saveCharacter(this.activeCharacterId, state, true);
+        let characterState = state;
+        if (Array.isArray(state?.combatants) && state.combatants.length > 1) {
+          let localId: string | null = null;
+          try {
+            const storage = this.getStorage();
+            localId = storage.getItem('dd_local_pc_id');
+          } catch {}
+
+          const allPCs = state.combatants.filter((c: any) => c.type === 'p');
+          const pc = allPCs.find((c: any) => c.id === this.activeCharacterId || (localId && c.id === localId))
+            || (allPCs.length === 1 ? allPCs[0] : null);
+
+          if (pc) {
+            characterState = {
+              ...state,
+              combatants: [pc],
+              session: { active: false, role: 'player', roomCode: '' },
+              mode: 'player',
+            };
+          }
+        }
+        this.saveCharacter(this.activeCharacterId, characterState, true);
       }
 
       this.notify('saved');
@@ -238,7 +259,30 @@ export class LocalStorageAdapter implements IStorageAdapter {
   saveCharacter(characterId: string, characterData: any, silent: boolean = false): void {
     try {
       const storage = this.getStorage();
-      storage.setItem(`${CHARACTER_PREFIX}${characterId}`, JSON.stringify(characterData));
+
+      // Clean & isolate if multi-combatant encounter state is passed
+      let isolatedState = characterData;
+      if (Array.isArray(characterData?.combatants) && characterData.combatants.length > 1) {
+        let localId: string | null = null;
+        try {
+          localId = storage.getItem('dd_local_pc_id');
+        } catch {}
+
+        const allPCs = characterData.combatants.filter((c: any) => c.type === 'p');
+        const pc = allPCs.find((c: any) => c.id === characterId || (localId && c.id === localId))
+          || (allPCs.length === 1 ? allPCs[0] : null);
+
+        if (pc) {
+          isolatedState = {
+            ...characterData,
+            combatants: [pc],
+            session: { active: false, role: 'player', roomCode: '' },
+            mode: 'player',
+          };
+        }
+      }
+
+      storage.setItem(`${CHARACTER_PREFIX}${characterId}`, JSON.stringify(isolatedState));
 
       // Ensure characterId is present in index
       const index = this.getCharacterIndex();
@@ -275,7 +319,10 @@ export class LocalStorageAdapter implements IStorageAdapter {
       const raw = this.loadCharacter(id);
       if (!raw) continue;
 
-      const pc = (raw?.combatants || []).find((c: any) => c.type === 'p') || raw;
+      const allPCs = Array.isArray(raw?.combatants)
+        ? raw.combatants.filter((c: any) => c.type === 'p')
+        : [];
+      const pc = allPCs.find((c: any) => c.id === id) || allPCs[0] || raw;
       const name = pc?.name || raw?.name || 'Hero';
       const race = pc?.race || 'Human';
       const classSummary = pc?.classSummary || pc?.class_summary || (Array.isArray(pc?.classes) ? pc.classes.map((c: any) => `${c.name || c.classType} ${c.level}`).join(' / ') : '');

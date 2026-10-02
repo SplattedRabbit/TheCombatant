@@ -105,6 +105,9 @@ export function setLocalPCId(id) {
 export function getActivePC() {
   const s = getState();
   
+  const allPCs = (s.combatants || []).filter(c => c.type === 'p');
+  const isMultiplayerClient = Boolean(s.session?.active && (s.session.role === 'client' || s.session.role === 'player'));
+
   if (!localPCId) {
     const storedId = getStoredLocalPCId();
     if (storedId && s.combatants.some(c => c.id === storedId)) {
@@ -112,10 +115,11 @@ export function getActivePC() {
     }
   }
 
-  if (!localPCId) {
-    const pc = s.combatants.find(c => c.type === 'p');
-    if (pc) {
-      localPCId = pc.id;
+  // If not a live multiplayer session (e.g. single-player encounter or unit test),
+  // or if there is only 1 PC, fallback to the first PC
+  if (!localPCId && (allPCs.length === 1 || !isMultiplayerClient)) {
+    if (allPCs.length > 0) {
+      localPCId = allPCs[0].id;
       setStoredLocalPCId(localPCId);
     }
   }
@@ -125,9 +129,9 @@ export function getActivePC() {
     pc = s.combatants.find(c => c.id === localPCId);
   }
   
-  if (!pc) {
-    pc = s.combatants.find(c => c.type === 'p');
-    if (pc) {
+  if (!pc && (allPCs.length === 1 || !isMultiplayerClient)) {
+    if (allPCs.length > 0) {
+      pc = allPCs[0];
       localPCId = pc.id;
       setStoredLocalPCId(localPCId);
     }

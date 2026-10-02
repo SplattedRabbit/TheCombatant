@@ -8,7 +8,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../../context/AuthContext';
 import { characterService } from '../../../services/character/CharacterService';
 import { CharacterRosterDialog } from '../CharacterRosterDialog';
-import { StateEvents } from '@core/state/state-core.js';
+import { StateEvents, getActivePC } from '@core/state/state-core.js';
 
 export const UnlinkedCharacterBanner: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
@@ -24,8 +24,10 @@ export const UnlinkedCharacterBanner: React.FC = () => {
     let mounted = true;
     const checkStatus = async () => {
       const currentId = characterService.getActiveCharacterId();
-      setActiveCharId(currentId);
-      if (!currentId) {
+      const currentPC = getActivePC();
+      const isLinked = Boolean(currentId && currentPC && currentPC.id === currentId);
+      setActiveCharId(isLinked ? currentId : null);
+      if (!isLinked) {
         try {
           const list = await characterService.listCharacters();
           if (mounted) {
@@ -40,7 +42,10 @@ export const UnlinkedCharacterBanner: React.FC = () => {
     checkStatus();
 
     const onStateChanged = () => {
-      setActiveCharId(characterService.getActiveCharacterId());
+      const currentId = characterService.getActiveCharacterId();
+      const currentPC = getActivePC();
+      const isLinked = Boolean(currentId && currentPC && currentPC.id === currentId);
+      setActiveCharId(isLinked ? currentId : null);
     };
 
     StateEvents.on('pc_changed', onStateChanged);
@@ -92,12 +97,12 @@ export const UnlinkedCharacterBanner: React.FC = () => {
           <span style={{ fontSize: '16px' }}>☁️</span>
           <div>
             <strong style={{ color: 'var(--ink)', fontFamily: 'var(--font-title)', fontSize: '12px' }}>
-              Lokaler Charakter aktiv
+              Local Character Active
             </strong>
             <span style={{ color: 'var(--inkm)', marginLeft: '6px' }}>
               {cloudCharCount > 0
-                ? `Du hast ${cloudCharCount} Charakter${cloudCharCount > 1 ? 'e' : ''} in der Cloud. Dieser Held ist noch nicht verknüpft.`
-                : 'Dieser Charakter ist noch nicht in deiner Cloud gespeichert.'}
+                ? `You have ${cloudCharCount} character${cloudCharCount > 1 ? 's' : ''} in your cloud. This hero is not yet linked.`
+                : 'This character is not yet saved to your cloud roster.'}
             </span>
           </div>
         </div>
@@ -109,9 +114,9 @@ export const UnlinkedCharacterBanner: React.FC = () => {
             onClick={handleSaveToCloud}
             disabled={isSaving}
             style={{ fontSize: '10px', padding: '3px 10px', height: 'auto' }}
-            title="Speichert diesen Charakter als neuen Eintrag in deiner Supabase-Cloud"
+            title="Save this character to your cloud roster"
           >
-            {isSaving ? 'Speichern...' : '💾 In Cloud sichern'}
+            {isSaving ? 'Saving...' : '💾 Save to Cloud'}
           </button>
           {cloudCharCount > 0 && (
             <button
@@ -119,9 +124,9 @@ export const UnlinkedCharacterBanner: React.FC = () => {
               className="btn btn-s"
               onClick={() => setIsRosterOpen(true)}
               style={{ fontSize: '10px', padding: '3px 10px', height: 'auto' }}
-              title="Öffne das Roster um einen existierenden Cloud-Charakter zu laden"
+              title="Open roster to load an existing cloud character"
             >
-              📜 Roster öffnen
+              📜 Open Roster
             </button>
           )}
           <button
@@ -135,7 +140,7 @@ export const UnlinkedCharacterBanner: React.FC = () => {
               fontSize: '14px',
               padding: '2px 6px',
             }}
-            title="Hinweis ausblenden"
+            title="Dismiss notice"
           >
             ✕
           </button>

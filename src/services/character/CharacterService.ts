@@ -102,11 +102,31 @@ export class CharacterService {
         newPC.classes = [{ classType: classKey, level: input.level || 1 }];
       }
       fresh.combatants = [newPC];
+      fresh.mode = 'player';
+      fresh.session = { active: false, role: 'player', roomCode: '' };
       stateData = fresh;
-    } else if (input.name) {
-      // Ensure the top-level PC combatant name matches the specified character name
-      const pc = (stateData?.combatants || []).find((c: any) => c.type === 'p') || stateData;
-      if (pc) pc.name = input.name;
+    } else {
+      let localId: string | null = null;
+      try {
+        if (typeof window !== 'undefined' && window.localStorage) {
+          localId = window.localStorage.getItem('dd_local_pc_id');
+        }
+      } catch {}
+      const combatants = Array.isArray(stateData.combatants) ? stateData.combatants : [];
+      const allPCs = combatants.filter((c: any) => c.type === 'p');
+      const pc = allPCs.find((c: any) => (localId && c.id === localId)) || (allPCs.length === 1 ? allPCs[0] : null);
+      if (pc) {
+        if (input.name) pc.name = input.name;
+        stateData = {
+          ...stateData,
+          combatants: [pc],
+          mode: 'player',
+          session: { active: false, role: 'player', roomCode: '' },
+        };
+      } else if (input.name) {
+        const topPC = (stateData?.combatants || []).find((c: any) => c.type === 'p') || stateData;
+        if (topPC) topPC.name = input.name;
+      }
     }
 
     if (typeof adapter.saveCharacter === 'function') {
@@ -299,7 +319,7 @@ export class CharacterService {
       if (!parsed || !Array.isArray(parsed.combatants)) return null;
 
       const pc = parsed.combatants.find((c: any) => c.type === 'p') || {};
-      const charName = pc.name || 'Importierter Held';
+      const charName = pc.name || 'Imported Hero';
 
       // 2. Create as new character in active cloud adapter
       const created = await this.createCharacter({
@@ -307,7 +327,12 @@ export class CharacterService {
         race: pc.race || 'human',
         classSummary: pc.classSummary || pc.class_summary || '',
         level: typeof pc.level === 'number' ? pc.level : 1,
-        initialData: parsed,
+        initialData: {
+          ...parsed,
+          combatants: [pc],
+          mode: 'player',
+          session: { active: false, role: 'player', roomCode: '' },
+        },
       });
 
       // 3. Switch to it
@@ -333,7 +358,12 @@ export class CharacterService {
         race: pc.race || 'human',
         classSummary: pc.classSummary || pc.class_summary || '',
         level: typeof pc.level === 'number' ? pc.level : 1,
-        initialData: state,
+        initialData: {
+          ...state,
+          combatants: [pc],
+          mode: 'player',
+          session: { active: false, role: 'player', roomCode: '' },
+        },
       });
 
       await this.switchActiveCharacter(created.id);
@@ -405,7 +435,11 @@ export class CharacterService {
         adapter.setActiveCharacterId(characterId);
       }
 
-      // 4. Hydrate in-memory state
+      // 4. Set local PC ID and hydrate in-memory state
+      const targetPC = (targetData?.combatants || []).find((c: any) => c.type === 'p');
+      if (targetPC?.id) {
+        setLocalPCId(targetPC.id);
+      }
       applyLoadedState(targetData);
 
       // 5. Emit events to re-render UI

@@ -133,7 +133,7 @@ export function applyLoadedState(loadedState, preserveRole = true) {
       s.mode = 'player';
     }
 
-    const activePC = s.combatants.find(c => c.type === 'p');
+    const activePC = getActivePC();
     if (activePC) {
       StateEvents.emit('pc_changed', activePC);
     }

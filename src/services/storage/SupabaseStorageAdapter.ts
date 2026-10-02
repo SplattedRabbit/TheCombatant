@@ -160,8 +160,31 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
   }
 
   saveState(state: any): void {
-    // 1. Local-First: Immediate synchronous backup to local cache
-    this.saveToLocalCache(state);
+    // 1. Local-First: Immediate synchronous backup to local cache (isolated for player mode)
+    const isDmSession = state?.session?.role === 'host' || state?.mode === 'dm';
+    if (!isDmSession && Array.isArray(state?.combatants) && state.combatants.length > 1) {
+      let localId: string | null = null;
+      try {
+        if (typeof window !== 'undefined' && window.localStorage) {
+          localId = window.localStorage.getItem('dd_local_pc_id');
+        }
+      } catch {}
+      const allPCs = state.combatants.filter((c: any) => c.type === 'p');
+      const pc = allPCs.find((c: any) => c.id === this.activeCharacterId || (localId && c.id === localId))
+        || (allPCs.length === 1 ? allPCs[0] : null);
+      if (pc) {
+        this.saveToLocalCache({
+          ...state,
+          combatants: [pc],
+          session: { active: false, role: 'player', roomCode: '' },
+          mode: 'player',
+        });
+      } else {
+        this.saveToLocalCache(state);
+      }
+    } else {
+      this.saveToLocalCache(state);
+    }
     this.pendingStateToSave = state;
     this.notify('saving');
 
@@ -244,12 +267,37 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
           logger.log('%c[SupabaseStorage] No active campaign selected, skipping auto-campaign creation', 'color: #6b7280;');
         }
       } else {
-        // Player Character Mode: find active PC from combatants
-        const pc = (state?.combatants || []).find((c: any) => c.type === 'p') || null;
+        // Player Character Mode: safely find the LOCAL player's PC
+        let localId: string | null = null;
+        try {
+          if (typeof window !== 'undefined' && window.localStorage) {
+            localId = window.localStorage.getItem('dd_local_pc_id');
+          }
+        } catch {}
+
+        const combatants = Array.isArray(state?.combatants) ? state.combatants : [];
+        const allPCs = combatants.filter((c: any) => c.type === 'p');
+
+        // Locate local player character: match activeCharacterId or stored localId
+        const pc = allPCs.find((c: any) => c.id === this.activeCharacterId || (localId && c.id === localId))
+          || (allPCs.length === 1 ? allPCs[0] : null);
+
+        if (!pc && allPCs.length > 1) {
+          logger.warn('[SupabaseStorage] Multiple player combatants detected in session, but none matched local character ID. Skipping overwrite to prevent corrupting local sheet with another player.');
+          return;
+        }
+
         const charName = pc?.name || 'Hero';
         const charLevel = typeof pc?.level === 'number' ? pc.level : 1;
         const classSummary = pc?.classSummary || pc?.class_summary || (Array.isArray(pc?.classes) ? pc.classes.map((c: any) => `${c.name || c.classType} ${c.level}`).join(' / ') : '');
 
+        // Isolate single-character state so we never store the DM's entire table or other players' characters into a personal character row
+        const isolatedCharacterState = {
+          ...state,
+          combatants: pc ? [pc] : combatants.slice(0, 1),
+          session: { active: false, role: 'player', roomCode: '' },
+          mode: 'player',
+        };
 
         if (this.activeCharacterId) {
           const { error } = await this.client
@@ -258,7 +306,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
               name: charName,
               level: charLevel,
               class_summary: classSummary,
-              character_data: state,
+              character_data: isolatedCharacterState,
               updated_at: new Date().toISOString(),
             })
             .eq('id', this.activeCharacterId)
@@ -278,7 +326,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
                 name: charName,
                 level: charLevel,
                 class_summary: classSummary,
-                character_data: state,
+                character_data: isolatedCharacterState,
                 is_active: true,
                 updated_at: new Date().toISOString(),
               },
@@ -372,25 +420,54 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
     try {
       this.notify('saving');
       const validId = characterId || this.activeCharacterId || generateUUID();
-      const pc = (characterData?.combatants || []).find((c: any) => c.type === 'p') || characterData;
+
+      let localId: string | null = null;
+      try {
+        if (typeof window !== 'undefined' && window.localStorage) {
+          localId = window.localStorage.getItem('dd_local_pc_id');
+        }
+      } catch {}
+
+      const combatants = Array.isArray(characterData?.combatants) ? characterData.combatants : [];
+      const allPCs = combatants.filter((c: any) => c.type === 'p');
+
+      const pc = allPCs.find((c: any) => c.id === validId || (localId && c.id === localId))
+        || allPCs[0]
+        || characterData;
+
       const charName = pc?.name || characterData?.name || 'Held';
       const charLevel = typeof pc?.level === 'number' ? pc.level : (characterData?.level || 1);
       const classSummary = pc?.classSummary || pc?.class_summary || characterData?.class_summary || '';
 
+      const isolatedState = Array.isArray(characterData?.combatants)
+        ? {
+            ...characterData,
+            combatants: pc ? [pc] : characterData.combatants.slice(0, 1),
+            session: { active: false, role: 'player', roomCode: '' },
+            mode: 'player',
+          }
+        : characterData;
+
       const { error } = await this.client
         .from('characters')
-        .upsert({
-          id: validId,
-          user_id: this.userId,
-          name: charName,
-          level: charLevel,
-          class_summary: classSummary,
-          character_data: characterData,
-          is_active: true,
-          updated_at: new Date().toISOString(),
-        });
+        .upsert(
+          {
+            id: validId,
+            user_id: this.userId,
+            name: charName,
+            level: charLevel,
+            class_summary: classSummary,
+            character_data: isolatedState,
+            is_active: true,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: 'id' }
+        );
 
       if (error) throw error;
+      if (!this.activeCharacterId) {
+        this.setActiveCharacterId(validId);
+      }
       this.notify('saved');
     } catch (err: any) {
       console.error(`[SupabaseStorageAdapter] Failed to save character ${characterId}:`, err);
@@ -429,7 +506,10 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
 
       return (data || []).map((row: any) => {
         const rawData = row.character_data;
-        const pc = (rawData?.combatants || []).find((c: any) => c.type === 'p') || rawData || {};
+        const allPCs = Array.isArray(rawData?.combatants) 
+          ? rawData.combatants.filter((c: any) => c.type === 'p') 
+          : [];
+        const pc = allPCs.find((c: any) => c.id === row.id || c.name === row.name) || allPCs[0] || rawData || {};
         const race = pc?.race || 'Mensch';
         const hpCurrent = typeof pc?.hp === 'number' ? pc.hp : 10;
         const hpMax = typeof pc?.maxHP === 'number' ? pc.maxHP : (typeof pc?.maxHp === 'number' ? pc.maxHp : 10);

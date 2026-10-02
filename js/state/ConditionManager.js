@@ -53,14 +53,16 @@ export function tickConditionTimers() {
   const s = getState();
   s.combatants.forEach(c => {
     // 1. Tick conditions
-    c.conditions.forEach(cd => {
-      const d = parseInt(cd.dur);
-      if (!isNaN(d) && d > 0) {
-        cd.dur = d - 1;
-      } else if (d === 0) {
-        cd.dur = 0;
-      }
-    });
+    if (Array.isArray(c.conditions)) {
+      c.conditions.forEach(cd => {
+        const d = parseInt(cd.dur);
+        if (!isNaN(d) && d > 0) {
+          cd.dur = d - 1;
+        } else if (d === 0) {
+          cd.dur = 0;
+        }
+      });
+    }
 
     // 2. Tick active buffs
     if (Array.isArray(c.activeBuffs)) {

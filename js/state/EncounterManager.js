@@ -139,7 +139,7 @@ export function nextTurn() {
   if (s.turn === 0) {
     s.round++;
     tickConditionTimers();
-    s.concentrations.forEach(c => {
+    (s.concentrations || []).forEach(c => {
       if (c.dur > 0) c.dur--;
     });
   }
@@ -158,7 +158,7 @@ export function nextRound() {
   s.round++;
   s.turn = 0;
   tickConditionTimers();
-  s.concentrations.forEach(c => {
+  (s.concentrations || []).forEach(c => {
     if (c.dur > 0) c.dur--;
   });
   triggerSync();
@@ -176,7 +176,7 @@ export function importEncounterState(loadedState, isNetworkSync = false) {
   
   if (s.session && s.session.role === 'client') {
     if (isNetworkSync) {
-      let localPC = s.combatants.find(c => c.type === 'p');
+      let localPC = getActivePC();
       
       s.meta = { ...s.meta, ...(loadedState.meta || {}) };
       s.combatants = (loadedState.combatants || []).map(c => createCombatant(c));
@@ -190,9 +190,15 @@ export function importEncounterState(loadedState, isNetworkSync = false) {
       }
       triggerSync();
     } else {
-      const importedPC = (loadedState.combatants || []).find(c => c.type === 'p');
+      let importedPC = null;
+      const currentPC = getActivePC();
+      if (currentPC && Array.isArray(loadedState.combatants)) {
+        importedPC = loadedState.combatants.find(c => c.id === currentPC.id);
+      }
+      if (!importedPC) {
+        importedPC = (loadedState.combatants || []).find(c => c.type === 'p');
+      }
       if (importedPC) {
-        const currentPC = getActivePC();
         if (currentPC) {
           const currentId = currentPC.id;
           
@@ -240,7 +246,12 @@ export function mergeIncomingPC(pcData) {
   // Clone and ensure type is player ('p')
   const incoming = { ...pcData, type: 'p' };
   
-  const idx = s.combatants.findIndex(x => x.id === incoming.id || (x.type === 'p' && x.name && x.name === incoming.name));
+  const isGeneric = !incoming.name || incoming.name === 'Hero' || incoming.name === 'Adventurer';
+  const idx = s.combatants.findIndex(x => {
+    if (x.id === incoming.id) return true;
+    if (!isGeneric && x.type === 'p' && x.name && x.name === incoming.name) return true;
+    return false;
+  });
   let createdPC;
   if (idx !== -1) {
     const targetId = incoming.id || s.combatants[idx].id;

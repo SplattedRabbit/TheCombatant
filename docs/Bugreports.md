@@ -843,3 +843,45 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
 - **Behebung:**
   - In `CombatantSkills.js` für Zwerg `['craft', 'search', 'appraise']` freigeschaltet (RAW PHB S. 15).
 - **Verifikation:** `Tests/quick_wins_bugs.test.js`
+### 43. Multiplayer-Charakter-Überschreibung & Roster-Persistenz im Mehrspieler-Tisch
+- **Status:** **Behoben (Branch: `bugfixes`)**
+- **Klassifizierung:** **Kritischer Bug** (Cross-Account-Charakter-Überschreibung & fehlende Adapter-Delegation im Roster-Speicher).
+- **Kategorie:** Multiplayer Sync, Storage Adapters & Roster Persistence
+- **Betroffene Dateien:**
+  - [`src/services/storage/StorageService.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/storage/StorageService.ts)
+  - [`src/services/storage/SupabaseStorageAdapter.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/storage/SupabaseStorageAdapter.ts)
+  - [`src/services/storage/LocalStorageAdapter.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/storage/LocalStorageAdapter.ts)
+  - [`src/components/player/wizard/wizardSaveHelper.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/wizard/wizardSaveHelper.ts)
+  - [`src/components/player/CharacterRosterDialog.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/CharacterRosterDialog.tsx)
+  - [`src/components/player/header/UnlinkedCharacterBanner.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/header/UnlinkedCharacterBanner.tsx)
+  - [`js/state/state-core.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/state/state-core.js)
+  - [`js/state/EncounterManager.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/state/EncounterManager.js)
+- **Problem:**
+  - **Symptom 1 (Charakter-Überschreibung bei Reload / Tisch-Session):**
+    Ein Spieler wählte sich in eine Multiplayer-Session ein. Nach einem Seiten-Reload und Klick auf "Player Character" wurde plötzlich der Charakter eines *anderen* Spielers angezeigt, obwohl der Spieler in seinem eigenen Google-Account eingeloggt war.
+  - **Root Cause 1:**
+    In `SupabaseStorageAdapter.ts` suchte `performCloudSave` den aktiven PC blind via `(state?.combatants || []).find((c: any) => c.type === 'p')`.
+    In einer Multiplayer-Session befinden sich alle Gruppenmitglieder im `combatants`-Array (z.B. sortiert nach Initiative oder Zugreihenfolge). Hatte Spieler A eine höhere Initiative als Spieler B, fand der Autosave von Spieler B an Index 0 Spieler A!
+    Der Adapter extrahierte Namen, Level und Klassen von Spieler A und überschrieb die Zeile in Supabase unter der `user_id` von Spieler B. Zudem speicherte `character_data` das gesamte Multi-Encounter-Array statt des isolierten eigenen Charakters.
+    Ebenso griff `state-core.js` (`getActivePC`) bei undefiniertem/abweichendem Cache auf `allPCs[0]` zurück.
+  - **Symptom 2 (Charaktere lassen sich nicht im Roster ablegen):**
+    Spieler konnten erstellte Charaktere nicht im Roster persistieren.
+  - **Root Cause 2:**
+    `StorageService` (als Wrapper über `LocalStorageAdapter` und `SupabaseStorageAdapter`) leitete Entity-Methoden wie `saveCharacter`, `loadCharacter`, `listCharacters`, `deleteCharacter`, `getActiveCharacterId` und `setActiveCharacterId` überhaupt nicht an `this.activeAdapter` weiter. Aufrufe im Wizard gaben stumm `undefined` zurück, wodurch der Charakter nie in die Datenbank oder den LocalStorage-Roster gelangte.
+    Zudem fehlte im Roster-Dialog ein direkter Button "Aktiven Charakter im Roster speichern".
+- **Behebung:**
+  - `StorageService.ts`: Vollständige Weiterleitung aller Character- und Campaign-Entity-Methoden an `this.activeAdapter`.
+  - `SupabaseStorageAdapter.ts` & `LocalStorageAdapter.ts`:
+    - Strikte PC-Auflösung via `localId` (`dd_local_pc_id`) und `activeCharacterId` statt blindem `find(c => c.type === 'p')`.
+    - Isolierung der `character_data`: Es wird immer ein sauberer State mit `combatants: [pc]` und `mode: 'player'` gespeichert – niemals die gesamte Multiplayer-Tabelle fremder Spieler oder Monster.
+    - `saveCharacter` mit `{ onConflict: 'id' }` abgesichert.
+  - `state-core.js` & `EncounterManager.js`:
+    - `getActivePC()` unterscheidet nun strikt zwischen Live-Multiplayer-Client-Sessions und lokalen Tests/Solospielen. Im Multiplayer-Client-Modus wird strikt `localPCId` respektiert und niemals auf fremde Gruppencharaktere an Index 0 ausgewichen.
+  - `wizardSaveHelper.ts`:
+    - Verknüpft neu erstellte Charaktere direkt mit `setLocalPCId(newCharId)`, ruft `storageService.saveCharacter()` mit isoliertem Einzel-PC-Payload auf und setzt `setActiveCharacterId(newCharId)`.
+  - `CharacterRosterDialog.tsx`:
+    - Zusätzliche Schaltfläche "💾 Aktuellen Char im Roster speichern", um den derzeit geladenen Charakter jederzeit direkt in die Cloud bzw. den lokalen Roster zu schreiben.
+- **Verifikation:**
+  - Neuer Unit-Test-Suite: [`Tests/multiplayer_roster_isolation.test.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/Tests/multiplayer_roster_isolation.test.js) (5 Tests, deckt Multiplayer-Tische mit wechselnder Initiativereihenfolge, Host-State-Diffs, Session-Reloads und Roster-Isolation ab).
+  - Neuer Component-Test-Suite: [`src/__tests__/CharacterRosterDialog.test.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/__tests__/CharacterRosterDialog.test.tsx) (3 Vitest-Komponententests).
+  - Vollständiger Regressionstest: Alle 451 Node-Tests und alle 52 Vitest-Tests erfolgreich.
