@@ -25,6 +25,7 @@ export interface RealtimeEnvelope<T = any> {
   eventType: RealtimeEventType;
   senderId: string;
   senderName: string;
+  tabId?: string;
   campaignId: string;
   timestamp: number;
   payload: T;

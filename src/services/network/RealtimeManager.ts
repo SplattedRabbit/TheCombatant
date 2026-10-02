@@ -19,6 +19,8 @@ import type {
   RealtimeStatusListener,
 } from '../../types/realtime.ts';
 
+import { clearCachedEncounterState, clearCachedPCState } from '../../../js/network/SyncProtocol.js';
+
 export interface RealtimeManagerOptions {
   client?: any;
 }
@@ -27,6 +29,7 @@ export class RealtimeManager {
   private static instance: RealtimeManager | null = null;
 
   private client: any;
+  private tabId: string = 'tab_' + Math.random().toString(36).substring(2, 9) + '_' + Date.now();
   private activeChannel: any | null = null;
   private localBroadcastChannel: BroadcastChannel | null = null;
   private currentCampaignId: string | null = null;
@@ -274,6 +277,8 @@ export class RealtimeManager {
     this.currentCampaignId = null;
     this.updateStatus('disconnected');
     this.notifyPresence([]);
+    clearCachedEncounterState();
+    clearCachedPCState();
   }
 
   /**
@@ -318,6 +323,7 @@ export class RealtimeManager {
       eventType,
       senderId: this.currentUserId || 'local',
       senderName: this.currentUserProfile.userName || 'Abenteurer',
+      tabId: this.tabId,
       campaignId: this.currentCampaignId || '',
       timestamp: Date.now(),
       payload,
@@ -403,8 +409,9 @@ export class RealtimeManager {
   private handleIncomingEnvelope(envelope: RealtimeEnvelope): void {
     if (!envelope || !envelope.eventId) return;
 
-    // Echo prevention: Ignore events sent by ourselves or already processed
-    if (envelope.senderId === this.currentUserId || this.processedEventIds.has(envelope.eventId)) {
+    // Echo prevention: Ignore events sent by our own tab instance or already processed
+    const isSelfTab = envelope.tabId ? envelope.tabId === this.tabId : envelope.senderId === this.currentUserId;
+    if (isSelfTab || this.processedEventIds.has(envelope.eventId)) {
       return;
     }
 

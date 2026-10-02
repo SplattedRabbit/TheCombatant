@@ -8,8 +8,13 @@ import { realtimeManager } from './RealtimeManager.ts';
 import { getState, StateEvents, getActivePC } from '../../../js/state/state-core.js';
 import { onStateSave, saveToStorage } from '../../../js/state/StorageManager.js';
 import * as EncounterManager from '../../../js/state/EncounterManager.js';
-import { applyIncomingDelta, getEncounterStateDiff, getPCStateDiff, isProcessingNetworkIncoming } from '../../../js/network/SyncProtocol.js';
+import { applyIncomingDelta, getEncounterStateDiff, getPCStateDiff, isProcessingNetworkIncoming, clearCachedEncounterState, clearCachedPCState } from '../../../js/network/SyncProtocol.js';
 import { logger } from '../../utils/logger.ts';
+
+export function clearSyncCaches(): void {
+  clearCachedEncounterState();
+  clearCachedPCState();
+}
 
 let isBridgeInitialized = false;
 let previousHostPresent = false;
@@ -101,14 +106,14 @@ export function initRealtimeSyncBridge(): void {
 
     if (isHost) {
       // Check if any player at the table is missing from DM combatants
-      const missingPlayer = users.find((u) => 
+      const missingPlayers = users.filter((u) => 
         u.role === 'player' && 
         !state.combatants.some((c: any) => c.id === u.characterId || c.name === u.characterName || c.name === u.userName)
       );
-      if (missingPlayer) {
+      missingPlayers.forEach((missingPlayer) => {
         logger.log('[RealtimeSyncBridge] Detected connected player missing in combatants, requesting PC sheet:', missingPlayer.characterName || missingPlayer.userName);
         realtimeManager.broadcastEvent('request_pc_sync', { targetUserId: missingPlayer.userId });
-      }
+      });
     } else {
       const hasHost = users.some((u) => u.role === 'host');
       if (hasHost && !previousHostPresent) {

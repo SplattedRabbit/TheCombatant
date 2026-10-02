@@ -10,6 +10,7 @@ import type { CharacterSummary } from '../../types/character.ts';
 import { CombatState } from '@core/state.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
 import { characterService } from '../../services/character/CharacterService.ts';
+import { storageService } from '../../services/storage/StorageService.ts';
 import { campaignService } from '../../services/campaign/CampaignService.ts';
 import { realtimeManager } from '../../services/network/RealtimeManager.ts';
 import { broadcastActivePC } from '../../services/network/RealtimeSyncBridge.ts';
@@ -79,6 +80,7 @@ export const JoinCampaignDialog: React.FC<JoinCampaignDialogProps> = ({
         if (activePC) {
           if (selectedCharId) {
             activePC.characterId = selectedCharId;
+            storageService.setActiveCharacterId(selectedCharId);
           }
           CombatState.setLocalPCId(activePC.id);
         }

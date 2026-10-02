@@ -14,6 +14,7 @@ import { storageService } from '../services/storage/StorageService.ts';
 import { getState, getActivePC, StateEvents } from '@core/state/state-core.js';
 import { CombatSpells } from '@core/spells.js';
 import { CombatState } from '@core/state.js';
+import { realtimeManager } from '../services/network/RealtimeManager.ts';
 import { logger } from '../utils/logger';
 
 // Typendefinitionen für das Engine-Modul
@@ -68,6 +69,22 @@ export function CombatEngineProvider({ children }: ProviderProps) {
         if (storedState.session && storedState.session.active && storedState.session.roomCode) {
           logger.log("Restoring active network session:", storedState.session.role, "Room:", storedState.session.roomCode);
           CombatState.updateSession(true, storedState.session.role, storedState.session.roomCode);
+
+          // Auto-reconnect: Reconnect WebSocket channel after page reload (F5) to eliminate zombie sessions
+          const activePC = CombatState.getActivePC();
+          const userId = storageService.getCurrentUserId() || 'local-guest';
+          const isHost = storedState.session.role === 'host' || storedState.session.role === 'dm';
+          const role = isHost ? 'host' : 'player';
+          const charName = activePC?.name || (isHost ? 'Dungeon Master' : 'Player');
+
+          realtimeManager.joinCampaign(storedState.session.roomCode, role, {
+            userId,
+            userName: charName,
+            characterId: activePC?.characterId || activePC?.id,
+            characterName: activePC?.name,
+          }).catch((reconnErr: any) => {
+            logger.warn('[CombatEngineContext] Auto-reconnect on bootstrap failed:', reconnErr);
+          });
         } else {
           CombatState.setRole('choice');
         }

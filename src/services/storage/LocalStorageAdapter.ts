@@ -195,7 +195,7 @@ export class LocalStorageAdapter implements IStorageAdapter {
           const pc = allPCs.find((c: any) => 
             (this.activeCharacterId && (c.id === this.activeCharacterId || c.characterId === this.activeCharacterId)) || 
             (localId && c.id === localId)
-          ) || (allPCs.length === 1 ? allPCs[0] : null);
+          ) || (allPCs.length === 1 && !this.activeCharacterId ? allPCs[0] : null);
 
           if (pc) {
             characterState = {
@@ -265,30 +265,32 @@ export class LocalStorageAdapter implements IStorageAdapter {
     try {
       const storage = this.getStorage();
 
-      // Clean & isolate if multi-combatant encounter state is passed
+      // Clean & isolate if combatant encounter state is passed
       let isolatedState = characterData;
-      if (Array.isArray(characterData?.combatants) && characterData.combatants.length > 1) {
+      if (Array.isArray(characterData?.combatants)) {
         let localId: string | null = null;
         try {
           localId = storage.getItem('dd_local_pc_id');
         } catch {}
 
         const allPCs = characterData.combatants.filter((c: any) => c.type === 'p');
-        const pc = allPCs.find((c: any) => 
-          (characterId && (c.id === characterId || c.characterId === characterId)) || 
-          (localId && c.id === localId)
-        ) || (allPCs.length === 1 ? allPCs[0] : null);
+        if (allPCs.length > 0) {
+          const pc = allPCs.find((c: any) => 
+            (characterId && (c.id === characterId || c.characterId === characterId)) || 
+            (localId && c.id === localId)
+          ) || (allPCs.length === 1 && (!allPCs[0].characterId || allPCs[0].characterId === characterId) ? allPCs[0] : null);
 
-        if (pc) {
+          if (!pc) {
+            // Multiple or non-matching PCs and none matched characterId: skip to avoid overwriting with foreign PC
+            return;
+          }
+
           isolatedState = {
             ...characterData,
             combatants: [pc],
             session: { active: false, role: 'player', roomCode: '' },
             mode: 'player',
           };
-        } else if (allPCs.length > 1) {
-          // Multiple PCs and none matched characterId: skip to avoid overwriting with foreign PC
-          return;
         }
       }
 

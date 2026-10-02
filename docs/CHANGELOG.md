@@ -36,6 +36,13 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
   - If a character's class has no strike abilities (e.g. pure Cleric, Fighter without ACF), `StrikeAbilitySlot.tsx` renders a quiet, clean empty slot (`🎯 Class Ability` • `No class attacks available`) without redundant fake standard attack buttons.
 
 ### Fixed
+- **Multiplayer State & Realtime Sync Resilience (Bug 45):**
+  - **Smart Merge on Reconnect:** `EncounterManager.mergeIncomingPC` now preserves DM volatile combat state (current HP, conditions, active buffs, and initiative) when players reconnect or re-sync their character sheet.
+  - **Entity-Safe ID State Diffs:** `SyncProtocol.js` now broadcasts and applies HP diffs by entity ID (`combatant_hp_by_id`) rather than array index paths, preventing HP mismatches if combatants are sorted or added in differing order between host and client.
+  - **Zero-Loss Roster Identity Lock:** Removed aggressive single-PC fallback in `SupabaseStorageAdapter` and `LocalStorageAdapter`, preventing cross-character row overwrites when multiple combatants are present.
+  - **Auto-Reconnect on Reload:** `CombatEngineContext` automatically reconnects to the WebSocket room upon page reload (F5) if an active session exists, eliminating zombie disconnected states.
+  - **Cross-Tab Instance Echo Separation:** `RealtimeManager` attaches unique `tabId` to broadcast envelopes, allowing multiple tabs under the same user account or guest ID to communicate seamlessly without self-echo suppression.
+  - **Cache Clearance on Room Switch:** `CampaignService` and `RealtimeManager` flush delta caches upon switching or leaving campaigns to prevent stale diff bleed.
 - **Storage Session Defensive Initialization:**
   - Added safety fallback `if (!s.session) s.session = {};` in `js/state/StorageManager.js` before applying `s.session.active`, preventing rare initialization errors when loading state snapshots without an active session object.
 

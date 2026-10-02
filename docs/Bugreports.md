@@ -924,3 +924,38 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
   - Test 8 in [`Tests/multiplayer_roster_isolation.test.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/Tests/multiplayer_roster_isolation.test.js) bildet exakt diesen Vorfall (Import -> Beitritt -> 100 Schaden/Tod -> 100 Heilung -> Diff -> Save -> F5 Reload) ab und belegt, dass der Originalcharakter unberührt bleibt und keinerlei Duplikate entstehen.
   - 454 Node-Tests (100% pass) und 52 Vitest-Tests (100% pass).
 
+---
+
+### Bug 45: Multiplayer State & Sync Architekturaudit (Volatile State Overwrite, Array-Index Diffs, Zombie-Sessions & Roster-Schutz)
+- **Komponenten:**
+  - [`js/state/EncounterManager.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/state/EncounterManager.js)
+  - [`js/network/SyncProtocol.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/network/SyncProtocol.js)
+  - [`src/services/storage/SupabaseStorageAdapter.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/storage/SupabaseStorageAdapter.ts)
+  - [`src/services/storage/LocalStorageAdapter.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/storage/LocalStorageAdapter.ts)
+  - [`src/services/network/RealtimeManager.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/network/RealtimeManager.ts)
+  - [`src/services/network/RealtimeSyncBridge.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/network/RealtimeSyncBridge.ts)
+  - [`src/services/campaign/CampaignService.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/services/campaign/CampaignService.ts)
+  - [`src/context/CombatEngineContext.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/context/CombatEngineContext.tsx)
+  - [`src/components/dialogs/JoinCampaignDialog.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/dialogs/JoinCampaignDialog.tsx)
+- **Identifizierte Schwachstellen & behobene Probleme:**
+  1. **Volatiler Kampfzustand bei Re-Join überschrieben (`EncounterManager.mergeIncomingPC`):**
+     Wenn ein Spieler die Seite neu lud oder dem Tisch erneut beitrat, ersetzte `s.combatants[idx] = createCombatant(incoming)` das gesamte Kämpferobjekt auf dem DM-Tisch. Dadurch wurden laufender DM-Schaden, aktive Zustände (*Blinded*, *Stunned*), Buffs und Initiative mit dem unberührten lokalen Stand des Spielers überschrieben.
+     *Fix:* `mergeIncomingPC` führt nun einen Smart-Merge durch: DM-Verwaltungsfelder (`hp`, `conditions`, `activeBuffs`, `init`, `rawInit`) bleiben beim Zusammenführen geschützt, während Stammdaten (Talente, Zauber, Klassen, Max-HP) aktualisiert werden.
+  2. **Array-Index-basierte HP-Synchronisation (`SyncProtocol.js`):**
+     `getEncounterStateDiff` sendete HP-Änderungen als `diff['combatants.' + idx + '.hp']`. Bei unterschiedlicher Sortierung (z.B. nach Initiative-Wurf) oder unterschiedlicher Kämpfer-Anzahl zwischen DM und Spieler führte dies dazu, dass Schaden auf den falschen Kämpfer angewendet wurde.
+     *Fix:* `getEncounterStateDiff` emittiert nun zusätzlich `diff['combatant_hp_by_id.' + c.id] = c.hp`. Bei Vorhandensein von ID-basierten Diffs filtert `applyIncomingDelta` die fehleranfälligen Index-Pfade heraus und aktualisiert exakt die Zielentität per ID.
+  3. **Strikte Roster-Schutzprüfung (`SupabaseStorageAdapter.ts` & `LocalStorageAdapter.ts`):**
+     Gefährliche Notfall-Fallbacks (`|| (allPCs.length === 1 ? allPCs[0] : null)`) in `saveCharacter` und `performCloudSave` wurden entfernt. Zeilen in der Datenbank werden nur noch aktualisiert, wenn die ID exakt mit dem lokalen Helden übereinstimmt, wodurch ein Überschreiben eigener Charaktere durch Mitspieler unmöglich ist.
+  4. **Zombie-Session nach F5-Reload behoben (`CombatEngineContext.tsx`):**
+     Beim Wiederherstellen einer aktiven Sitzung (`session.active = true`) nach Seitenneuladen wird der WebSocket-Raum über `realtimeManager.joinCampaign` nun automatisch wieder verbunden.
+  5. **Echo-Filter-Kollision bei gleichem Benutzer / lokalen Tabs (`RealtimeManager.ts`):**
+     Zwei Tabs auf demselben PC oder Gastkonto teilten sich `currentUserId` und droppten gegenseitige Nachrichten. Durch Einführung einer instanzspezifischen `tabId` pro Tab werden nur echte Echos desselben Tabs verworfen, während Tabs untereinander reibungslos kommunizieren.
+  6. **Cache-Reset bei Kampagnen- und Raumwechseln:**
+     `clearCachedEncounterState()` und `clearCachedPCState()` leeren den Delta-Cache beim Verlassen oder Wechseln einer Kampagne, wodurch Geister-Diffs zwischen verschiedenen Abenteuern verhindert werden.
+  7. **Gleichzeitiger Mehrspieler-Beitritt (`RealtimeSyncBridge.ts`):**
+     `handlePresenceSync` prüft nun alle neu beigetretenen Spieler per `filter()` statt nur den ersten per `find()`.
+- **Verifikation:**
+  - Neue Test-Suite [`Tests/sync_protocol_entity_and_merge.test.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/Tests/sync_protocol_entity_and_merge.test.js) (Smart Merge, Entity-ID Diffs, Cache Clear).
+  - Alle 457 Node-Tests und 52 Vitest-Tests bestehen zu 100 %.
+  - `npm run build` kompiliert fehlerfrei.
+

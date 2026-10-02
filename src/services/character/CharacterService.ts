@@ -129,6 +129,11 @@ export class CharacterService {
       }
     }
 
+    const topPC = (stateData?.combatants || []).find((c: any) => c.type === 'p');
+    if (topPC) {
+      topPC.characterId = charId;
+    }
+
     if (typeof adapter.saveCharacter === 'function') {
       const res = adapter.saveCharacter(charId, stateData);
       if (res instanceof Promise) await res;

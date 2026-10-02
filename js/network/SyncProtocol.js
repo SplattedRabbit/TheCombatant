@@ -208,6 +208,10 @@ export function clearCachedPCState() {
   cachedPCState = null;
 }
 
+export function clearCachedEncounterState() {
+  cachedEncounterState = null;
+}
+
 /**
  * getPCStateDiff - Generates a diff packet for client's PC state
  */
@@ -270,9 +274,10 @@ export function getEncounterStateDiff() {
   // Explicitly sync HP changes on combatants (DM -> clients) since getObjectDiff skips 'hp'
   if (Array.isArray(currentEncounter.combatants) && Array.isArray(cachedEncounterState.combatants)) {
     currentEncounter.combatants.forEach((c, idx) => {
-      const cachedC = cachedEncounterState.combatants[idx];
-      if (cachedC && cachedC.id === c.id && cachedC.hp !== c.hp) {
+      const cachedC = cachedEncounterState.combatants.find(x => x.id === c.id);
+      if (cachedC && cachedC.hp !== c.hp) {
         diff[`combatants.${idx}.hp`] = c.hp;
+        diff[`combatant_hp_by_id.${c.id}`] = c.hp;
       }
     });
   }
@@ -407,7 +412,33 @@ export function applyIncomingDelta(packet, role, conn = null) {
       const activePC = CombatState.getActivePC();
       const backupPC = activePC ? deepClone(activePC) : null;
 
-      applyObjectDiff(s, packet.diff);
+      // If packet contains ID-based HP diffs, strip out index-based combatants.X.hp
+      // to avoid applying mismatched array index HP to the wrong combatants!
+      let diffToApply = packet.diff;
+      const hasIdBasedHp = packet.diff && Object.keys(packet.diff).some(k => k.startsWith('combatant_hp_by_id.'));
+      if (hasIdBasedHp) {
+        diffToApply = { ...packet.diff };
+        for (const k of Object.keys(diffToApply)) {
+          if (/^combatants\.\d+\.hp$/.test(k)) {
+            delete diffToApply[k];
+          }
+        }
+      }
+
+      applyObjectDiff(s, diffToApply);
+
+      // Apply entity-safe ID based HP changes if present in packet.diff
+      if (packet.diff) {
+        for (const [k, val] of Object.entries(packet.diff)) {
+          if (k.startsWith('combatant_hp_by_id.') && typeof val === 'number') {
+            const cId = k.replace('combatant_hp_by_id.', '');
+            const targetC = s.combatants.find(c => c.id === cId);
+            if (targetC) {
+              targetC.hp = val;
+            }
+          }
+        }
+      }
 
       // Safeguard: Ensure the player's own active PC is never overwritten or deleted by host diffs
       if (backupPC) {

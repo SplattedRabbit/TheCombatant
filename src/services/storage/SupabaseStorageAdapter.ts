@@ -285,10 +285,10 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         const pc = allPCs.find((c: any) => 
           (this.activeCharacterId && (c.id === this.activeCharacterId || c.characterId === this.activeCharacterId)) || 
           (localId && c.id === localId)
-        ) || (allPCs.length === 1 ? allPCs[0] : null);
+        ) || (allPCs.length === 1 && !this.activeCharacterId ? allPCs[0] : null);
 
-        if (!pc && allPCs.length > 1) {
-          logger.warn('[SupabaseStorage] Multiple player combatants detected in session, but none matched local character ID. Skipping overwrite to prevent corrupting local sheet with another player.');
+        if (!pc && allPCs.length > 0) {
+          logger.warn('[SupabaseStorage] Player combatants exist, but none matched activeCharacterId or local PC ID. Skipping cloud save to prevent cross-character corruption.');
           return;
         }
 
@@ -447,10 +447,20 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
       const combatants = Array.isArray(characterData?.combatants) ? characterData.combatants : [];
       const allPCs = combatants.filter((c: any) => c.type === 'p');
 
-      const pc = allPCs.find((c: any) => 
-        (validId && (c.id === validId || c.characterId === validId)) || 
-        (localId && c.id === localId)
-      ) || (allPCs.length === 1 ? allPCs[0] : null) || characterData;
+      let pc: any = null;
+      if (allPCs.length > 0) {
+        pc = allPCs.find((c: any) => 
+          (validId && (c.id === validId || c.characterId === validId)) || 
+          (localId && c.id === localId)
+        ) || (allPCs.length === 1 && (!allPCs[0].characterId || allPCs[0].characterId === validId) ? allPCs[0] : null);
+
+        if (!pc) {
+          logger.warn(`[SupabaseStorageAdapter] Refusing to overwrite character row ${validId}: None of the ${allPCs.length} combatant(s) matched target ID.`);
+          return;
+        }
+      } else {
+        pc = characterData;
+      }
 
       const charName = pc?.name || characterData?.name || 'Held';
       const charLevel = typeof pc?.level === 'number' ? pc.level : (characterData?.level || 1);
@@ -526,7 +536,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
         const allPCs = Array.isArray(rawData?.combatants) 
           ? rawData.combatants.filter((c: any) => c.type === 'p') 
           : [];
-        const pc = allPCs.find((c: any) => c.id === row.id || c.name === row.name) || allPCs[0] || rawData || {};
+        const pc = allPCs.find((c: any) => c.id === row.id || c.characterId === row.id || c.name === row.name) || allPCs[0] || rawData || {};
         const race = pc?.race || 'Mensch';
         const hpCurrent = typeof pc?.hp === 'number' ? pc.hp : 10;
         const hpMax = typeof pc?.maxHP === 'number' ? pc.maxHP : (typeof pc?.maxHp === 'number' ? pc.maxHp : 10);

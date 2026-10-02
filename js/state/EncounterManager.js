@@ -254,9 +254,18 @@ export function mergeIncomingPC(pcData) {
   });
   let createdPC;
   if (idx !== -1) {
-    const targetId = incoming.id || s.combatants[idx].id;
+    const existing = s.combatants[idx];
+    const targetId = incoming.id || existing.id;
     createdPC = createCombatant({ ...incoming, id: targetId });
     recalculatePCStats(createdPC);
+
+    // Preserve volatile combat state: keep DM's HP, conditions, buffs, and initiative
+    if (existing.hp !== undefined) createdPC.hp = existing.hp;
+    if (existing.conditions !== undefined) createdPC.conditions = existing.conditions;
+    if (existing.activeBuffs !== undefined) createdPC.activeBuffs = existing.activeBuffs;
+    if (existing.init !== undefined) createdPC.init = existing.init;
+    if (existing.rawInit !== undefined) createdPC.rawInit = existing.rawInit;
+
     s.combatants[idx] = createdPC;
   } else {
     createdPC = createCombatant(incoming);

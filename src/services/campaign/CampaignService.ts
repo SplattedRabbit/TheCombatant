@@ -12,6 +12,8 @@ import { generateUUID } from '../../utils/uuid.ts';
 import { applyLoadedState } from '../../../js/state/StorageManager.js';
 import { createInitialState } from '../../../js/models/model-core.js';
 import { getState, StateEvents } from '../../../js/state/state-core.js';
+import { clearSyncCaches } from '../network/RealtimeSyncBridge.ts';
+import { realtimeManager } from '../network/RealtimeManager.ts';
 
 export function generateInviteCode(campaignName: string = ''): string {
   const cleanName = campaignName.toUpperCase().replace(/[^A-Z0-9]/g, '');
@@ -213,6 +215,10 @@ export class CampaignService {
     try {
       const adapter = storageService.getAdapter();
 
+      // 0. Flush pending saves and clean sync caches
+      await storageService.flushPendingSaves();
+      clearSyncCaches();
+
       // 1. Load target campaign encounter state from storage
       const targetState = await this.getCampaign(campaignId);
       if (!targetState) {
@@ -228,7 +234,17 @@ export class CampaignService {
       // 3. Hydrate in-memory state
       applyLoadedState(targetState);
 
-      // 4. Emit state change events
+      // 4. Switch WebSocket room if connected
+      if (realtimeManager.getStatus() === 'connected') {
+        await realtimeManager.leaveCampaign();
+        const userId = storageService.getCurrentUserId() || 'dm-host';
+        await realtimeManager.joinCampaign(campaignId, 'host', {
+          userId,
+          userName: 'Dungeon Master',
+        });
+      }
+
+      // 5. Emit state change events
       StateEvents.emit('state_changed', getState());
       StateEvents.emit('encounter_changed', getState());
 
