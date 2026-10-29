@@ -406,6 +406,8 @@ declare module '*js/network/SyncProtocol.js' {
   export const applyIncomingDelta: (...args: any[]) => any;
   export const getEncounterStateDiff: (...args: any[]) => any;
   export const getPCStateDiff: (...args: any[]) => any;
+  export const clearCachedEncounterState: () => void;
+  export const clearCachedPCState: () => void;
   export let isProcessingNetworkIncoming: boolean;
 }
 
